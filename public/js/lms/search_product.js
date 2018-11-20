@@ -9,6 +9,10 @@ function prodListChange(prod_type, learn_pattern_ccd) {
 
     if (prod_type === 'book') {
         url = '/common/searchBook/';
+    } else if (prod_type === 'reading_room') {
+        url = '/common/searchReadingRoom/';
+    } else if (prod_type === 'locker') {
+        url = '/common/searchLockerRoom/';
     } else {
         url = '/common/searchLectureAll/';
     }

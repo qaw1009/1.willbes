@@ -27,6 +27,7 @@ class Regist extends \app\controllers\BaseController
 
         $this->load->view("pass/reading_room/regist/index", [
             'mang_title' => $this->readingRoomModel->arr_mang_title[$mang_type],
+            'prod_type' => $this->readingRoomModel->arr_prod_type[$mang_type],
             'default_query_string' => '&mang_type='.$mang_type,
             'arr_campus' => $arr_campus,
             'rdr_master_order_idx' => $rdr_master_order_idx,     //TODO : lms 방문결제페이지에 필요한 파라미터 차 후 삭제

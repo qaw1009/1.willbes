@@ -7,6 +7,10 @@ class BaseReadingRoomModel extends WB_Model
         'R' => '독서실',
         'L' => '사물함'
     ];
+    public $arr_prod_type = [
+        'R' => 'reading_room',
+        'L' => 'locker'
+    ];
     public $groupCcd = [
         'seat' => '682',        //좌석상태 (미사용, 사용중, 대기, 홀드, 고장)
         'payStatus' => '676',    //결제상태 (결제완료, 환불완료..)

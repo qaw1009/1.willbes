@@ -1,25 +1,53 @@
 @extends('lcms.layouts.master_modal')
 
 @section('layer_title')
-    독서실 검색
+    {{$mang_title}} 검색
 @stop
 
 @section('layer_header')
     <form class="form-horizontal" id="_search_form" name="_search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
+        <input type="hidden" name="site_code" id="site_code" value="{{$site_code}}"/>
+        <input type="hidden" name="prod_type" id="prod_type" value="{{$prod_type}}"/>
+        <input type="hidden" name="prod_tabs" id="prod_tabs" value="{{implode(',', $prod_tabs)}}"/>
+        <input type="hidden" name="return_type" id="return_type" value="{{$return_type}}"/>
+        <input type="hidden" name="target_id" id="target_id" value="{{$target_id}}"/>
+        <input type="hidden" name="target_field" id="target_field" value="{{$target_field}}"/>
         @endsection
 
         @section('layer_content')
-            <div class="form-group form-group-sm">
-                <ul class="nav nav-tabs nav-justified">
-                    <li {{$prod_type == 'on_lecture' ? 'class=active ':''}}><a href="javascript:;" onclick="listChange('on_lecture');"><strong>단과반</strong></a></li>
-                    <li {{$prod_type == 'off_lecture' ? 'class=active ':''}}><a href="javascript:;" onclick="listChange('off_lecture');"><strong>종합반</strong></a></li>
-                    <li {{$prod_type == 'book' ? 'class=active ':''}}><a href="javascript:;" onclick="listChange('book');"><strong>교재</strong></a></li>
-                    <li {{$prod_type == 'reading_room' ? 'class=active ':''}}><a href="javascript:;" onclick="listChange('reading_room');"><strong>독서실</strong></a></li>
-                    <li {{$prod_type == 'locker' ? 'class=active ':''}}><a href="javascript:;" onclick="listChange('locker');"><strong>사물함</strong></a></li>
-                    <li {{$prod_type == 'mock_exam' ? 'class=active ':''}}><a href="javascript:;" onclick="listChange('mock_exam');"><strong>모의고사</strong></a></li>
-                </ul>
-            </div>
+            @if(empty(array_filter($prod_tabs)) === false)
+                <div class="form-group no-padding no-border-bottom">
+                    <ul class="nav nav-tabs nav-justified mb-10">
+                        @if(in_array('on', $prod_tabs) === true)
+                            <li><a href="javascript:;" onclick="prodListChange('on', '615001');"><strong>단강좌</strong></a></li>
+                            <li><a href="javascript:;" onclick="prodListChange('on', '615003');"><strong>운영자패키지</strong></a></li>
+                            <li><a href="javascript:;" onclick="prodListChange('on', '615004');"><strong>기간제패키지</strong></a></li>
+                        @endif
+
+                        @if(in_array('off', $prod_tabs) === true)
+                            <li><a href="javascript:;" onclick="prodListChange('off', '615006');"><strong>단과반</strong></a></li>
+                            <li><a href="javascript:;" onclick="prodListChange('off', '615007');"><strong>종합반</strong></a></li>
+                        @endif
+
+                        @if(in_array('book', $prod_tabs) === true)
+                            <li {{$prod_type == 'book' ? 'class=active ':''}}><a href="javascript:;" onclick="prodListChange('book', '');"><strong>교재</strong></a></li>
+                        @endif
+
+                        @if(in_array('reading_room', $prod_tabs) === true)
+                            <li {{$prod_type == 'reading_room' ? 'class=active ':''}}><a href="javascript:;" onclick="prodListChange('reading_room', '');"><strong>{{$mang_title}}</strong></a></li>
+                        @endif
+
+                        @if(in_array('locker', $prod_tabs) === true)
+                            <li {{$prod_type == 'locker' ? 'class=active ':''}}><a href="javascript:;" onclick="prodListChange('locker', '');"><strong>사물함</strong></a></li>
+                        @endif
+
+                        @if(in_array('mock_exam', $prod_tabs) === true)
+                            <li {{$prod_type == 'mock_exam' ? 'class=active ':''}}><a href="javascript:;" onclick="prodListChange('mock_exam', '');"><strong>모의고사</strong></a></li>
+                        @endif
+                    </ul>
+                </div>
+            @endif
 
             <div class="form-group">
                 <label class="control-label col-md-1 pt-5" for="search_value">조건
@@ -70,8 +98,8 @@
                             <th>No</th>
                             <th>운영사이트</th>
                             <th>캠퍼스</th>
-                            <th>독서실코드</th>
-                            <th>독서실명</th>
+                            <th>{{$mang_title}}코드</th>
+                            <th>{{$mang_title}}명</th>
                             <th>강의실</th>
                             <th>예치금</th>
                             <th>판매가</th>
@@ -95,10 +123,20 @@
 
         @section('layer_footer')
     </form>
+
+    <script src="/public/js/lms/search_product.js"></script>
     <script type="text/javascript">
         var $datatable_modal;
         var $search_form_modal = $('#_search_form');
         var $_list_table = $('#_list_ajax_table');
+        var $parent_location_span = $("#target_id").val();
+
+        var $parent_regi_form = $('#regi_form');
+        var prod_type = $search_form_modal.find("input[name='prod_type']").val(); // 상품타입 (book)
+        var $return_type = '{{ $return_type }}';    // 리턴 방식
+        var $target_id = '#{{ $target_id }}';         // 리턴되는 타겟 레이어 id
+        var $target_field = '{{ $target_field }}';     // 리턴되는 교재상품코드 input hidden name
+        var $ori_selected_data = {};                    // 기선택된 교재상품코드 json 변수
 
         $(document).ready(function() {
             $search_form_modal.find('select[name="_search_campus_ccd"]').chained("#_search_site_code");
@@ -108,7 +146,7 @@
                 serverSide: true,
                 buttons: [],
                 ajax: {
-                    'url' : '{{ site_url('/common/searchReadingRoom/listAjax') }}',
+                    'url' : (prod_type == 'reading_room') ? '{{ site_url('/common/searchReadingRoom/listAjax') }}' : '{{ site_url('/common/searchLockerRoom/listAjax') }}',
                     'type' : 'POST',
                     'data' : function(data) {
                         return $.extend(arrToJson($search_form_modal.serializeArray()), { 'start' : data.start, 'length' : data.length});
@@ -123,8 +161,9 @@
                     {'data' : 'CampusName'},
                     {'data' : 'ProdCode'},
                     {'data' : 'ReadingRoomName', 'render' : function(data, type, row, meta) {
-                            var datas = 'data-idx="' + row.LrIdx + '" data-prod-name="'+row.ReadingRoomName+'" data-prod-code="'+row.ProdCode+'"';
+                            var datas = 'data-w-lec-idx="' + row.LrIdx + '" data-prod-name="'+row.ReadingRoomName+'" data-prod-code="'+row.ProdCode+'"';
                             datas += ' data-prod-price="' + row.main_RealSalePrice + '"';
+
                             return '<a href="javascript:void(0);" class="btn-select" '+datas+'><u>' + data + '</u></a>';
                         }},
                     {'data' : 'LakeLayer'},
@@ -146,30 +185,60 @@
             });
 
             $datatable_modal.on('click', '.btn-select', function() {
-                var html = '';
-                if (!confirm('해당 독서실을 선택하시겠습니까?')) {
+                if (!confirm("해당 {{$mang_title}}을 선택하시겠습니까?")) {
                     return;
                 }
 
-                //html append 부분
+                if ($return_type === 'table') {
+                    $(document).find($target_id).append(
+                    "<tr id='readingRoomTrId'>"
+                    +"		<input type='hidden' name='" + $target_field + "[]' id='" + $target_field + "' value='"+$(this).data('prod-code')+"'>"
+                    +"		<td>[{{$mang_title}}]&nbsp;" + $(this).data('prod-name') + "</td>"
+                    +"		<td>" + $(this).data('prod-price') + "</td>"
+                    +"		<td>"
+                    +"          <select name='OptionCcd[]' id='OptionCcd' class=\"form-control\">"
+                    @foreach($bookprovision_ccd as $key=>$val)
+                    +"                  <option value='{{$key}}'>{{$val}}</option>"
+                    @endforeach
+                    +"          </select>"
+                    +"      </td>"
+                    +"		<td><input type='text' id='' name='' class='form-control' maxlength='46' title='할인사유' value=''></td>"
+                    +"		<td><input type='text' id=' name='' class='form-control' maxlength='46' title='카드' value='" + $(this).data('prod-price') + "'></td>"
+                    +"		<td><input type='text' id='' name='' class='form-control' maxlength='46' title='현금' value=''></td>"
+                    +"		<td><input type='text' id=' name='' class='form-control' maxlength='46' title='결제금액' value='" + $(this).data('prod-price') + "'></td>"
+                    +"		<td><a href='javascript:;' onclick=\"rowDelete(\'readingRoomTrId')\"><i class=\"fa fa-times red\"></i></a></td>"
+                    +"	</tr>"
 
-
+                    +"  <tr id='readingRoomSubTrId'>"
+                    +"		<input type='hidden' name='" + $target_field + "[]' id='" + $target_field + "' value='"+$(this).data('prod-code')+"'>"
+                    +"		<td>[예치금]&nbsp;" + $(this).data('prod-name') + "</td>"
+                    +"		<td>" + $(this).data('prod-price') + "</td>"
+                    +"		<td>"
+                    +"          <select name='OptionCcd[]' id='OptionCcd' class=\"form-control\">"
+                    @foreach($bookprovision_ccd as $key=>$val)
+                    +"                  <option value='{{$key}}'>{{$val}}</option>"
+                    @endforeach
+                    +"          </select>"
+                    +"      </td>"
+                    +"		<td><input type='text' id='' name='' class='form-control' maxlength='46' title='할인사유' value=''></td>"
+                    +"		<td><input type='text' id=' name='' class='form-control' maxlength='46' title='카드' value='" + $(this).data('prod-price') + "'></td>"
+                    +"		<td><input type='text' id='' name='' class='form-control' maxlength='46' title='현금' value=''></td>"
+                    +"		<td><input type='text' id=' name='' class='form-control' maxlength='46' title='결제금액' value='" + $(this).data('prod-price') + "'></td>"
+                    +"		<td><a href='javascript:;' onclick=\"rowDelete(\'readingRoomSubTrId')\"><i class=\"fa fa-times red\"></i></a></td>"
+                    +"	</tr>"
+                    );
+                } else {
+                    //html append 부분
+                    html = '<span class="pr-10">' + $(this).data('prod-name');
+                    html += '   <a href="#none" data-prod-code="' + $(this).data('prod-code') + '" class="selected-product-delete"><i class="fa fa-times red"></i></a>';
+                    html += '   <input type="hidden" name="prod_code[]" value="' + $(this).data('prod-code') + '" data-prod-type="' + prod_type + '" data-learn-pattern-ccd="" data-w-lec-idx="' + $(this).data('w-lec-idx') + '"/>';
+                    html += '</span>';
+                    $(document).find("#" + $parent_location_span).append(html);
+                }
                 $("#pop_modal").modal('toggle');
             });
         });
 
-        function listChange(learnpattern) {
-            /*var url = '{{ site_url('common/searchLectureAll/')}}'+'?site_code='+$("#site_code").val()+'&prod_type='+$("#prod_type").val()
-                +'&return_type='+$("#return_type").val()+'&target_id='+$("#target_id").val()+'&target_field='+$("#target_field").val()+'&LearnPatternCcd='+learnpattern;
-            sendAjax(url,
-                '',
-                function(d){
-                    $("#pop_modal").find(".modal-content").html(d).end()
-                },
-                function(req, status, err){
-                    showError(req, status);
-                }, false, 'GET', 'html'
-            );*/
-        }
+
     </script>
 @endsection

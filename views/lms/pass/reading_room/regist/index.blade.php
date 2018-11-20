@@ -178,6 +178,10 @@
         <button type="button" class="btn btn-default" id="btn_test_submit">독서실 좌석 배정 TEST 결제</button>
         <button type="button" class="btn btn-default" id="btn_test_cancel">독서실 좌석 배정 TEST 취소</button>
         <button type="button" class="btn btn-default" id="btn_search_reading_room">독서실 상품 목록 TEST[공통]</button>
+
+        <div class="row">
+            <span id="selected_product" class="pl-10"></span>
+        </div>
     </div>
 
     <script type="text/javascript">
@@ -200,9 +204,16 @@
         });
 
         $('#btn_search_reading_room').click(function () {
+            var get_params = '';
+            var site_code = '';
+            var prod_type = '{{$prod_type}}';
+            var prod_tabs = 'off,book,reading_room,locker,mock_exam';
+
             $('#btn_search_reading_room').setLayer({
-                "url" : "{{ site_url('/common/searchReadingRoom') }}" + '?prod_type=reading_room',
-                "width" : "1200"
+                /*"url" : "{{ site_url('/common/searchReadingRoom') }}" + '?prod_type=reading_room',*/
+                /*"url" : "{{ site_url('/common/searchReadingRoom') }}" + '?prod_type=reading_room',*/
+                'url' : '{{ site_url('/common/searchReadingRoom/') }}?site_code=' + site_code + '&prod_type='+prod_type+'&return_type=table&target_id=selected_product&target_field=prod_code&prod_tabs='+prod_tabs,
+                'width' : '1200'
             });
         });
     </script>

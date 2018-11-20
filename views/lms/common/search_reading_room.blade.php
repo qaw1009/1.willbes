@@ -16,6 +16,9 @@
         @endsection
 
         @section('layer_content')
+            <div class="form-group form-group-sm no-border-bottom">
+                <p class="form-control-static"><span class="required">*</span> 검색한 {{$mang_title}}을 클릭해 주세요. (다중 선택 불가합니다.)</p>
+            </div>
             @if(empty(array_filter($prod_tabs)) === false)
                 <div class="form-group no-padding no-border-bottom">
                     <ul class="nav nav-tabs nav-justified mb-10">

@@ -38,7 +38,7 @@ class OrderListModel extends BaseOrderModel
                             else "O"    # 주문완료(계좌신청)
                         end, NULL			
                       ) as VBankStatus                    
-                    , O.IsEscrow, O.IsDelivery, O.IsVisitPay, O.AdminRegReason, O.RegAdminIdx, if(O.AdminRegReason is not null, fn_admin_name(O.RegAdminIdx), null) as RegAdminName
+                    , O.IsEscrow, O.IsDelivery, O.IsVisitPay, O.AdminRegReason, O.RegAdminIdx, if(O.RegAdminIdx is not null, fn_admin_name(O.RegAdminIdx), null) as RegAdminName
                     , O.CompleteDatm, O.OrderDatm
                     , OP.SalePatternCcd, OP.PayStatusCcd, OP.OrderPrice, OP.RealPayPrice, OP.CardPayPrice, OP.CashPayPrice, OP.DiscPrice
                     , OP.CardPayPrice as CalcCardRefundPrice, OP.CashPayPrice as CalcCashRefundPrice    # TODO : 임시 환불산출금액 (로직 추가 필요)
@@ -158,7 +158,8 @@ class OrderListModel extends BaseOrderModel
     /**
      * 추가 조인 테이블에 따른 쿼리 리턴
      * @param string $add_type [리턴할 쿼리 구분 : from, column, excel_column (엑셀다운로드용 컬럼)]
-     * @param array $arr_add_join [추가할 조인 테이블 구분 : category (카테고리), subject (과목), professor (교수), delivery_address (배송지), delivery_info (배송정보), member_info (회원정보), refund (환불정보)]
+     * @param array $arr_add_join [추가할 조인 테이블 구분 : category (카테고리), subject (과목), professor (교수), delivery_address (배송지), delivery_info (배송정보)
+     *  , member_info (회원정보), refund (환불정보), my_lecture (나의강좌), sublecture (패키지 서브강좌)]
      * @return mixed
      */
     private function _getAddListQuery($add_type, $arr_add_join = [])
@@ -266,6 +267,13 @@ class OrderListModel extends BaseOrderModel
                 $from .= '';
                 $column .= ', fn_order_my_lecture_data(O.OrderIdx, OP.OrderProdIdx) as MyLecData';
                 $excel_column .= ', fn_order_my_lecture_data(O.OrderIdx, OP.OrderProdIdx) as MyLecData';
+            }
+
+            // 패키지상품 서브강좌 정보 추가
+            if (in_array('sublecture', $arr_add_join) === true) {
+                $from .= '';
+                $column .= ', fn_product_sublecture_data(OP.ProdCode) as ProdSubLectureData';
+                $excel_column .= '';
             }
         }
 

@@ -14,7 +14,7 @@
             </div>
         </div>
 
-        <div class="willbes-Txt NGR c_both mt30 mb50 @if(get_cookie('moreInfo') == 'off') on @endif"">
+        <div class="willbes-Txt NGR c_both mt30 mb50 @if(get_cookie('moreInfo') == 'off') on @endif">
             <div class="willbes-Txt-Tit NG">· 수강시작일 설정 <div class="MoreBtn underline"><a href="javascript:;">@if(get_cookie('moreInfo') == 'off')열기 ▼@else닫기 ▲@endif</a></div></div>
             - 수강시작일은 개강일 전까지만 변경 가능합니다.<br/>
             - '시작일변경'버튼을 클릭하면 강의별 <span class="tx-red">최대 3회, 개강일기준 30일까지</span>만 변경이 가능합니다.<br/>
@@ -27,9 +27,9 @@
             <tr>
                 <td class="w-data tx-left pb-zero">
                     @if(empty($lec['SubjectName']) == false)
-                    <dl class="w-info">
-                        <dt>{{$lec['SubjectName']}}<span class="row-line">|</span>{{$lec['wProfName']}}교수님 <span class="NSK ml10 nBox n2">진행중</span></dt>
-                    </dl>
+                        <dl class="w-info">
+                            <dt>{{$lec['SubjectName']}}<span class="row-line">|</span>{{$lec['wProfName']}}교수님 <span class="NSK ml10 nBox n2">진행중</span></dt>
+                        </dl>
                     @endif
                     <div class="w-tit">
                         {{$lec['ProdName']}}
@@ -39,12 +39,6 @@
                     </dl>
                     <div class="w-s-date">
                         <div class="grid calendarPickerBtn">
-                            <!--
-                            <a class="pl20" href="#none" onclick="openWin('DATAPICKERPASS')">
-                                시작일 변경 : <input type="text" id="S-DATE" name="S-DATE" class="iptDate" maxlength="30" > (시작)
-                                ~ <input type="text" id="E-DATE" name="E-DATE" class="iptDate" maxlength="30"> (종료)
-                            </a>
-                            -->
                             @if($lec['ChgStartNum'] >= 3)
                                 수강시작일 변경횟수를 초과했습니다.
                             @else
@@ -56,9 +50,10 @@
                                     <input type="hidden" name="prodcodesub" value="{{empty($lec['ProdCodeSub']) == true ? '' : $lec['ProdCodeSub'] }}" />
                                     <input type="hidden" name="orderprodidx" value="{{$lec['OrderProdIdx']}}" />
                                     <input type="hidden" name="prodtype" value="@if($lec['LearnPatternCcd'] == '615001' || $lec['LearnPatternCcd'] == '615002'){{'S'}}@else{{'P'}}@endif" />
-                                    <input type="text" id="startdate" name="startdate" class="iptDate" maxlength="10" value="" data-maxdate="{{ date("Y-m-d", strtotime(substr($lec['OrderDate'], 10).'+30day')) }}" data-study-period="{{ $lec['RealLecExpireDay'] }}" readonly="readonly">&nbsp; ~&nbsp;
-                                    <input type="text" id="enddate" class="iptDate" maxlength="10" readonly="readonly">
-                                    시작일 입력시, 종료일이 자동 변경됩니다
+                                    <a class="pl20" href="javascript:" xonclick="openWin('DATAPICKERPASS')">
+                                        시작일 변경 : <input type="text" id="startdate" name="startdate" class="iptDate" maxlength="10" data-maxdate="{{ date("Y-m-d", strtotime(substr($lec['OrderDate'], 10).'+30day')) }}" data-study-period="{{ $lec['RealLecExpireDay'] }}" readonly="readonly"> (시작)
+                                        ~ <input type="text" id="enddate" class="iptDate" maxlength="10" readonly="readonly"> (종료)
+
                                 </form>
                             @endif
                         </div>
@@ -83,21 +78,21 @@
                 </colgroup>
                 <tbody>
                 @forelse( $log as $key => $row)
-                <tr>
-                    <td class="w-num"><strong>{{$key+1}}차</strong></td>
-                    <td class="w-data tx-left pl2p">
-                        <dl class="w-info">
-                            <dt>[수강변경일] {{$row['UpdStudyStartDate']}} ~ {{$row['UpdStudyEndDate']}}</dt>
-                        </dl>
-                        <dl class="w-info tx-gray">
-                            <dt>[변경자] {{$row['Name'] == '' ? sess_data('mem_name') : '관리자' }}<span class="row-line">|</span>[변경일] {{$row['UpdDatm']}}</dt>
-                        </dl>
-                    </td>
-                </tr>
+                    <tr>
+                        <td class="w-num"><strong>{{$key+1}}차</strong></td>
+                        <td class="w-data tx-left pl2p">
+                            <dl class="w-info">
+                                <dt>[수강변경일] {{$row['UpdStudyStartDate']}} ~ {{$row['UpdStudyEndDate']}}</dt>
+                            </dl>
+                            <dl class="w-info tx-gray">
+                                <dt>[변경자] {{$row['Name'] == '' ? sess_data('mem_name') : '관리자' }}<span class="row-line">|</span>[변경일] {{$row['UpdDatm']}}</dt>
+                            </dl>
+                        </td>
+                    </tr>
                 @empty
-                <tr>
-                    <td colspan="2" class="w-data tx-center pl2p">변경이력이 없습니다.</td>
-                </tr>
+                    <tr>
+                        <td colspan="2" class="w-data tx-center pl2p">변경이력이 없습니다.</td>
+                    </tr>
                 @endforelse
                 </tbody>
             </table>
@@ -109,100 +104,6 @@
             </a>
         </div>
         <!-- Topbtn -->
-
-        <div id="DATAPICKERPASS" class="willbes-Layer-Black">
-            <div class="willbes-Layer-PassBox willbes-Layer-PassBox600 h470 fix">
-                <a class="closeBtn" href="#none" onclick="closeWin('DATAPICKERPASS')">
-                    <img src="{{ img_url('m/calendar/close.png') }}">
-                </a>
-                <div class="calendarTable NG">
-                    <div class="datepicker-days">
-                        <table cellspacing="0" cellpadding="0" class="table-condensed">
-                            <colgroup>
-                                <col style="width: 14.28%;"/>
-                                <col style="width: 14.28%;"/>
-                                <col style="width: 14.28%;"/>
-                                <col style="width: 14.28%;"/>
-                                <col style="width: 14.28%;"/>
-                                <col style="width: 14.28%;"/>
-                                <col style="width: 14.28%;"/>
-                            </colgroup>
-                            <thead>
-                            <tr class="month">
-                                <th colspan="7" class="datepicker-switch">
-                                    <span class="prev Btn"><a href="#none"><img src="{{ img_url('m/calendar/calendar_prev.png') }}"></a></span>
-                                    <span class="month tx-light-blue">July</span> 2018
-                                    <span class="next Btn"><a href="#none"><img src="{{ img_url('m/calendar/calendar_next.png') }}"></a></span>
-                                </th>
-                            </tr>
-                            <tr class="week">
-                                <th class="dow">Sun</th>
-                                <th class="dow">Mon</th>
-                                <th class="dow">Tue</th>
-                                <th class="dow">Wed</th>
-                                <th class="dow">Thr</th>
-                                <th class="dow">Fri</th>
-                                <th class="dow">Sat</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td class="empty">&nbsp;</td>
-                                <td class="day"><div class="num">1</div></td>
-                                <td class="day"><div class="num">2</div></td>
-                                <td class="day"><div class="num">3</div></td>
-                                <td class="day"><div class="num">4</div></td>
-                                <td class="day"><div class="num">5</div></td>
-                                <td class="day"><div class="num">6</div></td>
-                            </tr>
-                            <tr>
-                                <td class="day"><div class="num">7</div></td>
-                                <td class="day"><div class="num">8</div></td>
-                                <td class="day"><div class="num">9</div></td>
-                                <td class="day"><div class="num">10</div></td>
-                                <td class="day"><div class="num">11</div></td>
-                                <td class="day"><div class="num">12</div></td>
-                                <td class="day"><div class="num">13</div></td>
-                            </tr>
-                            <tr>
-                                <td class="day"><div class="num">14</div></td>
-                                <td class="day"><div class="num">15</div></td>
-                                <td class="day"><div class="num">16</div></td>
-                                <td class="day start"><div class="num">17</div></td>
-                                <td class="day ing"><div class="num">18</div></td>
-                                <td class="day ing"><div class="num">19</div></td>
-                                <td class="day ing"><div class="num">20</div></td>
-                            </tr>
-                            <tr>
-                                <td class="day ing"><div class="num">21</div></td>
-                                <td class="day end"><div class="num">22</div></td>
-                                <td class="day"><div class="num">23</div></td>
-                                <td class="day"><div class="num">24</div></td>
-                                <td class="day"><div class="num">25</div></td>
-                                <td class="day"><div class="num">26</div></td>
-                                <td class="day"><div class="num">27</div></td>
-                            </tr>
-                            <tr>
-                                <td class="day"><div class="num">28</div></td>
-                                <td class="day"><div class="num">29</div></td>
-                                <td class="day"><div class="num">30</div></td>
-                                <td class="day"><div class="num">31</div></td>
-                                <td class="empty">&nbsp;</td>
-                                <td class="empty">&nbsp;</td>
-                                <td class="empty">&nbsp;</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="AddlecMore">
-                    <a href="#none">확인</a>
-                </div>
-            </div>
-            <div class="dim" onclick="closeWin('DATAPICKERPASS')"></div>
-        </div>
-        <!-- willbes-Layer-PassBox : 쪽지 -->
-
     </div>
     <!-- End Container -->
     <script>
@@ -212,7 +113,8 @@
                 endDate: "{{ date("Y-m-d", strtotime(substr($lec['OrderDate'], 10).'+30day')) }}",
                 format : "yyyy-mm-dd",
                 language : "kr",
-                todayHighlight: true
+                todayHighlight: true,
+                autoclose:true
             });
 
             $('#startdate').on('change', function(){

@@ -118,7 +118,8 @@
             endDate: "{{ date("Y-m-d", strtotime(substr($lec['OrderDate'], 10).'+30day')) }}",
             format : "yyyy-mm-dd",
             language : "kr",
-            todayHighlight: true
+            todayHighlight: true,
+            autoclose:true
         });
 
         $('#startdate').on('change', function(){

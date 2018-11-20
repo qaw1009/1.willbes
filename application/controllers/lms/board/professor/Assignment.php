@@ -157,22 +157,6 @@ class Assignment extends BaseBoard
     }
 
     /**
-     * 과제노출스케줄관리
-     */
-    public function createScheduleModal()
-    {
-        $method = 'POST';
-        $data = null;
-        $week_arr = explode(",",",,,,,,");
-
-        $this->load->view("board/professor/{$this->board_name}/create_schedule_modal", [
-            'method' => $method,
-            'week_arr' => $week_arr,
-            'data' => $data
-        ]);
-    }
-
-    /**
      * 과제등록관리[게시판]
      * @param array $params
      */
@@ -273,6 +257,46 @@ class Assignment extends BaseBoard
             'recordsTotal' => $count,
             'recordsFiltered' => $count,
             'data' => $list,
+        ]);
+    }
+
+    /**
+     * 과제노출스케줄관리
+     * @param array $params
+     */
+    public function createScheduleModal($params = [])
+    {
+        $this->setDefaultBoardParam();
+        $board_params = $this->getDefaultBoardParam();
+        $this->bm_idx = $board_params['bm_idx'];
+        $this->site_code = $this->_reqP('site_code');
+        $prof_idx = $this->_req('prof_idx');
+        $prod_code = $params[0];
+
+        // 기본 상품 정보
+        $arr_condition = [
+            'EQ' => [
+                'A.ProdTypeCcd' => $this->prodtypeccd,
+                'B.LearnPatternCcd' => $this->learnpatternccd,
+                'A.SiteCode' => $this->site_code,
+                'A.ProdCode' => $prod_code
+            ],
+            'LKB' => [
+                'E.ProfIdx_String' => $prof_idx,
+            ]
+        ];
+        $product_data = $this->lectureModel->listLecture(false, $arr_condition, 1, 0, ['A.ProdCode' => 'desc'])[0];
+        $product_data['temp_study_dnd_date'] = date('Y-m-d', strtotime("+12 months", strtotime($product_data['StudyStartDate'])));  //종료일 자동 셋팅 (강좌등록일기준 +365일)
+
+        $method = 'POST';
+        $data = null;
+        $week_arr = explode(",",",,,,,,");
+
+        $this->load->view("board/professor/{$this->board_name}/create_schedule_modal", [
+            'product_data' => $product_data,
+            'method' => $method,
+            'week_arr' => $week_arr,
+            'data' => $data
         ]);
     }
 

@@ -26,7 +26,7 @@ class LectureModel extends CommonLectureModel
                    A.ProdCode,A.ProdName,A.IsNew,A.IsBest,A.IsUse,A.RegDatm
                     ,Aa.CcdName as SaleStatusCcd_Name,A.SiteCode,Ab.SiteName
                     ,Ac.CcdName as ProdTypeCcd_Name
-                    ,B.CourseIdx,B.SubjectIdx,B.LearnPatternCcd,B.SchoolYear,B.MultipleApply,B.wLecIdx
+                    ,B.CourseIdx,B.SubjectIdx,B.LearnPatternCcd,B.SchoolYear,B.MultipleApply,B.wLecIdx,B.StudyStartDate
                     ,Ba.CourseName,Bb.SubjectName,Bc.CcdName as LearnPatternCcd_Name
                     ,Bd.CcdName as LecTypeCcd_Name
                     ,Bf.CcdName as FreeLecTypeCcd_Name

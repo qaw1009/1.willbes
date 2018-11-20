@@ -31,14 +31,14 @@
     <div class="form-group no-padding">
         <ul class="nav nav-tabs nav-justified mb-10">
             @if($prod_type === 'on' || in_array('on', $prod_tabs) === true)
-                <li {{$LearnPatternCcd == '615001' ? 'class=active ':''}}><a href="javascript:;" onclick="prodListChange('on', '615001');"><strong>단강좌</strong></a></li>
-                <li {{$LearnPatternCcd == '615003' ? 'class=active ':''}}><a href="javascript:;" onclick="prodListChange('on', '615003');"><strong>운영자패키지</strong></a></li>
-                <li {{$LearnPatternCcd == '615004' ? 'class=active ':''}}><a href="javascript:;" onclick="prodListChange('on', '615004');"><strong>기간제패키지</strong></a></li>
+                <li {{$LearnPatternCcd == '615001' ? 'class="active"':''}}><a href="javascript:;" onclick="prodListChange('on', '615001');"><strong>단강좌</strong></a></li>
+                <li {{$LearnPatternCcd == '615003' ? 'class="active"':''}}><a href="javascript:;" onclick="prodListChange('on', '615003');"><strong>운영자패키지</strong></a></li>
+                <li {{$LearnPatternCcd == '615004' ? 'class="active"':''}}><a href="javascript:;" onclick="prodListChange('on', '615004');"><strong>기간제패키지</strong></a></li>
             @endif
 
             @if($prod_type === 'off' || in_array('off', $prod_tabs) === true)
-                <li {{$LearnPatternCcd == '615006' ? 'class=active ':''}}><a href="javascript:;" onclick="prodListChange('off', '615006');"><strong>단과반</strong></a></li>
-                <li {{$LearnPatternCcd == '615007' ? 'class=active ':''}}><a href="javascript:;" onclick="prodListChange('off', '615007');"><strong>종합반</strong></a></li>
+                <li {{$LearnPatternCcd == '615006' ? 'class="active"':''}}><a href="javascript:;" onclick="prodListChange('off', '615006');"><strong>단과반</strong></a></li>
+                <li {{$LearnPatternCcd == '615007' ? 'class="active"':''}}><a href="javascript:;" onclick="prodListChange('off', '615007');"><strong>종합반</strong></a></li>
             @endif
 
             @if(in_array('book', $prod_tabs) === true)
@@ -46,15 +46,15 @@
             @endif
 
             @if(in_array('reading_room', $prod_tabs) === true)
-                <li {{$prod_type == 'reading_room' ? 'class=active ':''}}><a href="javascript:;" onclick="prodListChange('reading_room', '');"><strong>독서실</strong></a></li>
+                <li><a href="javascript:;" onclick="prodListChange('reading_room', '');"><strong>독서실</strong></a></li>
             @endif
 
             @if(in_array('locker', $prod_tabs) === true)
-                <li {{$prod_type == 'locker' ? 'class=active ':''}}><a href="javascript:;" onclick="prodListChange('locker', '');"><strong>사물함</strong></a></li>
+                <li><a href="javascript:;" onclick="prodListChange('locker', '');"><strong>사물함</strong></a></li>
             @endif
 
             @if(in_array('mock_exam', $prod_tabs) === true)
-                <li {{$prod_type == 'mock_exam' ? 'class=active ':''}}><a href="javascript:;" onclick="prodListChange('mock_exam', '');"><strong>모의고사</strong></a></li>
+                <li><a href="javascript:;" onclick="prodListChange('mock_exam', '');"><strong>모의고사</strong></a></li>
             @endif
         </ul>
     </div>

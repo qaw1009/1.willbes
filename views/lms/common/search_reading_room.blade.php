@@ -34,19 +34,19 @@
                         @endif
 
                         @if(in_array('book', $prod_tabs) === true)
-                            <li {{$prod_type == 'book' ? 'class=active ':''}}><a href="javascript:;" onclick="prodListChange('book', '');"><strong>교재</strong></a></li>
+                            <li><a href="javascript:;" onclick="prodListChange('book', '');"><strong>교재</strong></a></li>
                         @endif
 
                         @if(in_array('reading_room', $prod_tabs) === true)
-                            <li {{$prod_type == 'reading_room' ? 'class=active ':''}}><a href="javascript:;" onclick="prodListChange('reading_room', '');"><strong>{{$mang_title}}</strong></a></li>
+                            <li {{$prod_type == 'reading_room' ? 'class="active"':''}}><a href="javascript:;" onclick="prodListChange('reading_room', '');"><strong>{{$mang_title}}</strong></a></li>
                         @endif
 
                         @if(in_array('locker', $prod_tabs) === true)
-                            <li {{$prod_type == 'locker' ? 'class=active ':''}}><a href="javascript:;" onclick="prodListChange('locker', '');"><strong>사물함</strong></a></li>
+                            <li {{$prod_type == 'locker' ? 'class="active"':''}}><a href="javascript:;" onclick="prodListChange('locker', '');"><strong>사물함</strong></a></li>
                         @endif
 
                         @if(in_array('mock_exam', $prod_tabs) === true)
-                            <li {{$prod_type == 'mock_exam' ? 'class=active ':''}}><a href="javascript:;" onclick="prodListChange('mock_exam', '');"><strong>모의고사</strong></a></li>
+                            <li><a href="javascript:;" onclick="prodListChange('mock_exam', '');"><strong>모의고사</strong></a></li>
                         @endif
                     </ul>
                 </div>

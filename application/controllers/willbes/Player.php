@@ -768,4 +768,13 @@ class Player extends \app\controllers\FrontController
 
         return $protocol.$str;
     }
+
+
+    /**
+     * 모바일 스타플레이어 이벤트 API
+     */
+    public function StarplayerAPI()
+    {
+
+    }
 }

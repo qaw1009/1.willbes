@@ -540,6 +540,12 @@ class ClassroomFModel extends WB_Model
         return ($isCount === true) ? $result->row(0)->rownums : $result->result_array();
     }
 
+    /**
+     * 재구매 목록
+     * @param $cond
+     * @param bool $isCount
+     * @return mixed
+     */
     public function getRebuyLog($cond, $isCount = false)
     {
         if($isCount === true){

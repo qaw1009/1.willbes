@@ -57,23 +57,23 @@
                         </colgroup>
                         <tbody>
                         @forelse( $list as $row )
-                        <tr>
-                            <td class="w-data tx-left pl10">
-                                <dl class="w-info">
-                                    <dt>
-                                        {{$row['SubjectName']}}<span class="row-line">|</span>
-                                        {{$row['wProfName']}} 교수님
-                                        <span class="NSK ml15 nBox n{{ substr($row['AcceptStatusCcd'], -1)+1 }}">{{$row['AcceptStatusCcdName']}}</span>
-                                    </dt>
-                                </dl><br/>
-                                <div class="w-tit">{{$row['subProdName']}}</div>
-                            </td>
-                            <td class="w-period">{{str_replace('-', '.', $row['StudyStartDate'])}} ~ {{str_replace('-', '.', $row['StudyEndDate'])}}</td>
-                            <td class="w-schedule">
-                                {{$row['WeekArrayName']}}<br/>
-                                {{$row['Amount']}}회차
-                            </td>
-                        </tr>
+                            <tr>
+                                <td class="w-data tx-left pl10">
+                                    <dl class="w-info">
+                                        <dt>
+                                            {{$row['SubjectName']}}<span class="row-line">|</span>
+                                            {{$row['wProfName']}} 교수님
+                                            <span class="NSK ml15 nBox n{{ substr($row['AcceptStatusCcd'], -1)+1 }}">{{$row['AcceptStatusCcdName']}}</span>
+                                        </dt>
+                                    </dl><br/>
+                                    <div class="w-tit">{{$row['subProdName']}}</div>
+                                </td>
+                                <td class="w-period">{{str_replace('-', '.', $row['StudyStartDate'])}} ~ {{str_replace('-', '.', $row['StudyEndDate'])}}</td>
+                                <td class="w-schedule">
+                                    {{$row['WeekArrayName']}}<br/>
+                                    {{$row['Amount']}}회차
+                                </td>
+                            </tr>
                         @empty
                             <tr>
                                 <td colspan="2" class="tx-center">수강종료 강좌가 없습니다.</td>

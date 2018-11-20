@@ -141,7 +141,7 @@
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             // 리스트 번호
                             if (row.IsBest == '1') {
-                                return 'BEST';
+                                return 'HOT';
                             } else {
                                 return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                             }

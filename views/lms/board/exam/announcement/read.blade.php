@@ -8,14 +8,14 @@
 
         <div class="x_panel">
             <div class="x_title">
-                <h2>공지게시판 정보</h2>
+                <h2>시험공고 정보</h2>
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="">제목</label>
                     <div class="form-control-static col-md-10">
-                        {!! ($data['IsBest'] == '1') ? '<span class="red">[HOT]</span>' : '' !!} {{$data['Title']}}
+                        {!! ($data['IsBest'] == '1') ? '<span class="red">[공지]</span>' : '' !!} {{$data['Title']}}
                     </div>
                 </div>
 

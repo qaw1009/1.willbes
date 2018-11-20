@@ -250,7 +250,7 @@
                                 if (row.ReplyStatusCcd == '{{$arr_ccd_reply['finish']}}') {
                                     return '<a href="javascript:void(0);" class="btn-reply-modify" data-idx="' + row.BoardIdx + '"><u>수정</u></a>';
                                 } else {
-                                    return '<a href="javascript:void(0);" class="btn-reply-modify" data-idx="' + row.BoardIdx + '"><u>답변</u></a>';
+                                    return '<a href="javascript:void(0);" class="btn-reply-modify" data-idx="' + row.BoardIdx + '"><u><p class="red">답변</p></u></a>';
                                 }
                             }
                         }},

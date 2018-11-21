@@ -54,7 +54,7 @@
 
         function fnCheckPID()
         {
-            var url = "/player/checkDevice/";
+            var url = "/player/checkDevicePC/";
             var data = "o={{$data['orderidx']}}&op={{$data['orderprodidx']}}&p={{$data['prodcode']}}&m={{$data['memidx']}}&di=" + player.getPID();
 
             $.ajax({

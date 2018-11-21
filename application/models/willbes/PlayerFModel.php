@@ -13,7 +13,8 @@ class PlayerFModel extends WB_Model
         'study_log' => 'lms_lecture_studyinfo',
         'study_history' => 'lms_lecture_study_history',
         'lec_unit' => 'vw_unit_mylecture',
-        'mylec' => 'lms_my_lecture'
+        'mylec' => 'lms_my_lecture',
+        'device' => 'lms_member_device'
     ];
 
     public function __construct()
@@ -320,6 +321,45 @@ class PlayerFModel extends WB_Model
             'LecStudyTime' => $LecStudyTime,
             'LecRealStudyTime' => $LecRealStudyTime
         ];
+    }
+
+
+    /**
+     * 등록된 디바이스 구하기
+     * @param $cond
+     * @return mixed
+     */
+    function getDevice($cond)
+    {
+        $query = "SELECT COUNT(*) AS rownums FROM {$this->_table['device']} ";
+
+        $where = $this->_conn->makeWhere($cond);
+        $query .= $where->getMakeWhere(false);
+        $result = $this->_conn->query($query);
+
+        return $result->row(0)->rownums;
+    }
+
+    function storeDevice($input)
+    {
+        $this->_conn->trans_begin();
+
+        try{
+            if($this->_conn->set(array_merge($input,[
+                'DeviceType' => 'M'
+                ]))->insert($this->_table['device']) === false) {
+                throw new \Exception('기기등록에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return false;
+        }
+
+
+        return true;
     }
 
 }

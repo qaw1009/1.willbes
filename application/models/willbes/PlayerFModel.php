@@ -280,6 +280,7 @@ class PlayerFModel extends WB_Model
             $this->_conn->trans_commit();
 
         } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
             return false;
         }
 
@@ -287,6 +288,10 @@ class PlayerFModel extends WB_Model
     }
 
 
+    /**
+     * @param $cond
+     * @return array
+     */
     function getStudyLog($cond)
     {
         // 회차 시간을 구한다.
@@ -340,10 +345,13 @@ class PlayerFModel extends WB_Model
         return $result->row(0)->rownums;
     }
 
+    /**
+     * 디바이스등록
+     * @param $input
+     * @return bool
+     */
     function storeDevice($input)
     {
-        $this->_conn->trans_begin();
-
         try{
             if($this->_conn->set(array_merge($input,[
                 'DeviceType' => 'M'
@@ -351,13 +359,9 @@ class PlayerFModel extends WB_Model
                 throw new \Exception('기기등록에 실패했습니다.');
             }
 
-            $this->_conn->trans_commit();
-
         } catch (\Exception $e) {
-            $this->_conn->trans_rollback();
             return false;
         }
-
 
         return true;
     }

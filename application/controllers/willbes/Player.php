@@ -1034,7 +1034,7 @@ class Player extends \app\controllers\FrontController
         $latest_ratio_playtime = element('latest_ratio_playtime', $input); // 배속을 이용한 값을 적용한 시간 (초)
         $loopback_playtime = element('loopback_playtime', $input); // 구간반복 유무에 관게없이 누적 (초)
         $content_duration = element('content_duration', $input); // 강의 사간
-        $content_position = element('content_position', $input); // 현재 동영상 위치
+        $content_position = element('current_position', $input); // 현재 동영상 위치
         $play_ratio = element('play_ratio', $input); // 현재 배속정보
 
         $sum_latest_playtime = element('sum_latest_playtime', $input); // latest_playtime 합계 (초)

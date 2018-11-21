@@ -808,7 +808,7 @@ class Player extends \app\controllers\FrontController
         ]);
 
         if(empty($lec) === true){
-            $this->StarplayerReturn(true, '강좌정보가 없습니다.');
+            $this->StarplayerResult(true, '강좌정보가 없습니다.');
         }
 
         $lec = $lec[0];
@@ -846,11 +846,11 @@ class Player extends \app\controllers\FrontController
         }
 
         if($isstart == 'N'){
-            $this->StarplayerReturn(true,'아직 수강시작 전인 강의입니다.');
+            $this->StarplayerResult(true,'아직 수강시작 전인 강의입니다.');
         }
 
         if($ispause == 'Y'){
-            $this->StarplayerReturn(true, '일시중지 중인 강의입니다.');
+            $this->StarplayerResult(true, '일시중지 중인 강의입니다.');
         }
 
         // 회차 열어준경우 IN 생성
@@ -893,7 +893,7 @@ class Player extends \app\controllers\FrontController
         $data = $this->classroomFModel->getCurriculum($cond_arr);
 
         if(empty($data) == true){
-            $this->StarplayerReturn(true,'강의 정보가 없습니다.');
+            $this->StarplayerResult(true,'강의 정보가 없습니다.');
         }
 
         $XMLString  = "<?xml version='1.0' encoding='UTF-8' ?>";
@@ -1011,11 +1011,11 @@ class Player extends \app\controllers\FrontController
     {
         logger("StarplayerAPI : ".$_SERVER['QUERY_STRING']);
 
-        $this->StarplayerReturn(false, 'success');
+        $this->StarplayerResult(false, 'success');
     }
 
 
-    public function StarplayerReturn($error, $msg ='', $debug = '')
+    public function StarplayerResult($error, $msg ='', $debug = '')
     {
         if($error == true){
             $error = 1;

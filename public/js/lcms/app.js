@@ -501,11 +501,17 @@ function init_file() {
 
         $fileBox.each(function() {
             var $fileUpload = $(this).find('.input-file'),
-                $fileText = $(this).find('.file-text').attr('disabled', 'disabled');
-
+                $fileText = $(this).find('.file-text').attr('disabled', 'disabled'),
+                $fileReset = $(this).find('.file-reset');
+    
             $fileUpload.on('change', function() {
                 var fileName = $(this).val();
                 $fileText.attr('disabled', 'disabled').val(fileName);
+            });
+    
+            $fileReset.click(function() {
+                $(this).parents($fileBox).find($fileText).val('');
+                $(this).parents($fileBox).find($fileUpload).val('');
             });
         });
     });

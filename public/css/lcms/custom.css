@@ -923,6 +923,11 @@ table.dataTable tbody>tr.selected, table.dataTable tbody>tr>.selected {
     text-align: center;
     cursor: pointer;
 }
+.filetype .file-reset {
+    position: relative;
+    float: right;
+    z-index: 10;
+}
 
 /* modal seat */
 #mem_seat_list tr th ul li {

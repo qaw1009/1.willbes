@@ -100,6 +100,7 @@
                                     <span class="file-select file-btn">
                                         <input type="file" id="attach_file{{ $i }}" name="attach_file[]" class="form-control input-file" title="첨부{{ $i }}"/>
                                     </span>
+                                    <input class="file-reset btn-danger btn" type="button" value="X" />
                                 </div>
                                 @if(empty($data['arr_attach_file_path'][$i]) === false)
                                     <p class="form-control-static ml-10 mr-10">[ <a href="{{ $data['arr_attach_file_path'][$i] . $data['arr_attach_file_name'][$i] }}" rel="popup-image">{{ $data['arr_attach_file_real_name'][$i] }}</a> ]

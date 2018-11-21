@@ -38,6 +38,24 @@ class Assignment extends BaseBoard
     }
 
     /**
+     *
+     */
+    public function createCommonHolidayScheduleModal()
+    {
+        $method = 'POST';
+        $data = null;
+
+        //요일값 초기화
+        $week_arr = explode(",",",,,,,,");
+
+        $this->load->view("board/professor/{$this->board_name}/create_holiday_schedule_modal", [
+            'method' => $method,
+            'week_arr' => $week_arr,
+            'data' => $data
+        ]);
+    }
+
+    /**
      * 강사게시판 - 첨삭게시판
      */
     public function mainList()

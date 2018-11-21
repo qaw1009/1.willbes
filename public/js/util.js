@@ -37,8 +37,7 @@ function fnMobile($info_url, $license)
     StarPlayerApp.android_referer_return = "true";
     StarPlayerApp.debug = "false";
     StarPlayerApp.pmp = "false";
-window.open($info_url);
-return
+
     checkInstalled2();
     StarPlayerApp.executeApp($info_url);
 }

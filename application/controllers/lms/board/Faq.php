@@ -138,6 +138,7 @@ class Faq extends BaseBoard
             'recordsFiltered' => $count,
             'data' => $list,
             'faq_group_ccd_countList' => $faq_group_ccd_countList,
+            'search_group_faq_ccd' => $this->_reqP('search_group_faq_ccd')
         ]);
     }
 

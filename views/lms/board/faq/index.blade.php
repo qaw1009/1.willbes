@@ -215,15 +215,19 @@
                 ],
                 "drawCallback": function(settings) {
                     var arr_faq_count = settings.json.faq_group_ccd_countList;
+                    var search_group_faq_ccd = settings.json.search_group_faq_ccd;
                     var set_faq_count;
+                    var css_bold;
+
                     @foreach($faq_group_ccd as $key => $val)
                         if (typeof arr_faq_count['{{$key}}'] === 'undefined') {
                             set_faq_count = 0;
                         } else {
                             set_faq_count = arr_faq_count['{{$key}}'];
                         }
+                        css_bold = (search_group_faq_ccd == '{{$key}}') ? 'bold' : '';
                         set_group_html = '<a href="javascript:void(0)" class="blue btn-group-ccd" data-group-ccd="{{$key}}">';
-                        set_group_html += '<u class="mr-10">{{$val}} ('+set_faq_count+')</u>';
+                        set_group_html += '<u class="mr-10 '+css_bold+'">{{$val}} ('+set_faq_count+')</u>';
                         set_group_html += '</a>';
                         $("#faq_group_{{$key}}").html(set_group_html);
                     @endforeach

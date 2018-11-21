@@ -231,7 +231,9 @@ class Player extends \app\controllers\FrontController
             'ProdCodeSub' => $prodcodesub,
             'wLecIdx' => $lec['wLecIdx'],
             'wUnitIdx' => $unitidx,
-            'RealExpireTime' => $RealExpireTime
+            'RealExpireTime' => $RealExpireTime,
+            'PlayType' => 'S',
+            'StudyType' => 'O'
         ]);
 
         if($logidx == 0){
@@ -1051,21 +1053,21 @@ class Player extends \app\controllers\FrontController
         switch($event){
             case 'begin_app':
                 // 앱 실행
-                self::checkState($state); // 기기상태 체크
+                $this->checkState($state); // 기기상태 체크
                 $this->StarplayerResult(false,'앱실행');
                 break;
 
             case 'begin_content':
             case 'download_begin_content':
                 // 동영상을 시작하거나 다운로드 시작할때 체크
-                self::checkState($state); // 기기상태 체크
+                $this->checkState($state); // 기기상태 체크
         
                 // 재생가능한 강좌인지 체크
-                $lec = self::checkOrderProduct($content_id);
+                $lec = $this->checkOrderProduct($content_id);
 
                 // 기간제 패키지 이면 기기체크하기
                 if($lec['LearnPatternCcd'] == '615004'){
-                    self::checkDeviceMobile([
+                    $this->checkDeviceMobile([
                         'MemIdx' => $lec['MemIdx'],
                         'DeviceModel' => $device_model,
                         'DeviceId' => $device_id,
@@ -1081,6 +1083,14 @@ class Player extends \app\controllers\FrontController
             case 'end_content':
                 // 수강 기록 업데이트
                 // 수강 기록은 무조건 업데이트 한다.
+                $this->mobileLog([
+                    'content_id' => $content_id,
+                    'playtype' => $play_type,
+                    'st' => $latest_playtime,
+                    'rst' => $latest_ratio_playtime,
+                    'pos' => $content_position,
+                    'di' => $device_id
+                ]);
 
                 $this->StarplayerResult(false,'수강기록업데이트완료');
                 break;
@@ -1150,7 +1160,7 @@ class Player extends \app\controllers\FrontController
             || empty($prodcode) === true
             || empty($prodcodesub) === true
             || empty($unitidx) === true ){
-            self::StarplayerResult(true, '정보가 정확하지 않습니다.');
+            $this->StarplayerResult(true, '정보가 정확하지 않습니다.');
         }
 
         $lec = $this->classroomFModel->getLecture([
@@ -1166,7 +1176,7 @@ class Player extends \app\controllers\FrontController
         ]);
 
         if(empty($lec) === true){
-            self::StarplayerResult(true, '수강신청정보가 없습니다.');
+            $this->StarplayerResult(true, '수강신청정보가 없습니다.');
         }
 
         $lec = $lec[0];
@@ -1204,11 +1214,11 @@ class Player extends \app\controllers\FrontController
         }
 
         if($isstart == 'N'){
-            self::StarplayerResult(true, '수강시작 전인 강의입니다.');
+            $this->StarplayerResult(true, '수강시작 전인 강의입니다.');
         }
 
         if($ispause == 'Y'){
-            self::StarplayerResult(true, '일시중지중인 강의입니다.');
+            $this->StarplayerResult(true, '일시중지중인 강의입니다.');
         }
 
         // 회차 열어준경우 IN 생성
@@ -1234,7 +1244,7 @@ class Player extends \app\controllers\FrontController
         ]);
 
         if(empty($data) == true){
-            self::StarplayerResult(true, '강의정보가 없습니다.');
+            $this->StarplayerResult(true, '강의정보가 없습니다.');
         }
 
         $data = $data[0];
@@ -1278,7 +1288,7 @@ class Player extends \app\controllers\FrontController
         }
 
         if($timeover == 'Y'){
-            self::StarplayerResult(true, '수강가능시간이 초과되었습니다.');
+            $this->StarplayerResult(true, '수강가능시간이 초과되었습니다.');
         }
 
         return $lec;
@@ -1311,64 +1321,123 @@ class Player extends \app\controllers\FrontController
 
         // 등록기기댓수 초과
         if($count >= $limit){
-            self::StarplayerResult(true, '등록기기 댓수를 초과하였습니다.');
+            $this->StarplayerResult(true, '등록기기 댓수를 초과하였습니다.');
         }
 
         // 기기등록 시도
         if($this->playerFModel->storeDevice($input) == false){
             // 기기등록 실패
-            self::StarplayerResult(true, '기기등록에 실패했습니다.');
+            $this->StarplayerResult(true, '기기등록에 실패했습니다.');
         }
     }
 
 
-    private function mobileLog($data)
+    /**
+     * 모바일 수강기록 업데이트
+     * @param $data
+     */
+    private function mobileLog($input)
     {
-        $orderidx = $this->_req('o');
-        $prodcode = $this->_req('p');
-        $orderprodidx = $this->_req('op');
-        $prodcodesub = $this->_req('sp');
-        $lecidx = $this->_req('w');
-        $unitidx = $this->_req('u');
-        $logidx = $this->_req('l');
-        $memidx = $this->_req('m');
-        $studytime = $this->_req('st');
-        $realstudytime = $this->_req('rst');
-        $position = $this->_req('pos');
-        $deviceinfo = $this->_req('di');
+        $content_id = element('content_id', $input);
+        //     1          2          3                   4              5             6                 7
+        // ^{$MemId}^{$MemIdx}^{$OrderIdx}^{$lec['OrderProdIdx']}^{$ProdCode}^{$ProdCodeSub}^{$row['wUnitIdx']}^
+        @$input_arr = explode('^', $content_id);
+
+        $memid = $input_arr[1];
+        $memidx = $input_arr[2];
+        $orderidx = $input_arr[3];
+        $orderprodidx = $input_arr[4];
+        $prodcode = $input_arr[5];
+        $prodcodesub = $input_arr[6];
+        $unitidx = $input_arr[7];
+
+        $PlayType = element('playtype', $input);
+        if($PlayType == 'download'){
+            $PlayType = 'D';
+        } else {
+            $PlayType = 'S';
+        }
+
+        $studytime = element('st', $input);
+        $realstudytime = element('rst', $input);
+        $position = element('pos', $input);
+        $deviceinfo = element('di', $input);
 
         if( empty($orderidx) == true
             || empty($prodcode) == true
             || empty($orderprodidx) == true
             || empty($prodcodesub) == true
-            || empty($lecidx) == true
             || empty($unitidx) == true
-            || empty($logidx) == true
             || empty($memidx) == true ) {
-            echo 'ERROR';
             return;
         }
 
-        if($memidx != $this->session->userdata('mem_idx')){
-            echo 'ERROR';
+        // 강의정보 구하기
+        $lec = $this->classroomFModel->getLecture([
+            'EQ' => [
+                'MemIdx' => $memidx,
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub
+            ]
+        ]);
+
+        // 정보없음
+        if(empty($lec) === true){
             return;
         }
+
+        $lec = $lec[0];
+
+        // 커리큘럼 읽어오기
+        $data = $this->classroomFModel->getCurriculum([
+            'EQ' => [
+                'MemIdx' => $memidx,
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub,
+                'wLecIdx' => $lec['wLecIdx'],
+                'wUnitIdx' => $unitidx
+            ]
+        ]);
+
+        // 정보없음
+        if(empty($data) == true){
+            return;
+        }
+
+        $data = $data[0];
+
+        $RealExpireTime = intval($data['wRuntime']) * intval($lec['MultipleApply']);
+
+        // 수강히스토리 기록생성
+        $logidx = $this->playerFModel->storeStudyLog([
+            'MemIdx' => $memidx,
+            'OrderIdx' => $orderidx,
+            'OrderProdIdx' => $orderprodidx,
+            'ProdCode' => $prodcode,
+            'ProdCodeSub' => $prodcodesub,
+            'wLecIdx' => $lec['wLecIdx'],
+            'wUnitIdx' => $unitidx,
+            'RealExpireTime' => $RealExpireTime,
+            'PlayType' => $PlayType,
+            'StudyType' => 'M'
+        ]);
 
         $cond = [
             'EQ' => [
-                'MemIdx' => $this->session->userdata('mem_idx'),
+                'MemIdx' => $memidx,
                 'OrderIdx' => $orderidx,
                 'ProdCode' => $prodcode,
                 'ProdCodeSub' => $prodcodesub,
                 'OrderProdIdx' => $orderprodidx,
-                'wLecIdx' => $lecidx,
+                'wLecIdx' => $lec['wLecIdx'],
                 'wUnitIdx' => $unitidx
             ]
         ];
 
         $data = $this->playerFModel->getStudyLog($cond);
         if(empty($data) == true){
-            echo "ERROR";
             return;
         }
 
@@ -1377,7 +1446,7 @@ class Player extends \app\controllers\FrontController
             'ProdCode' => $prodcode,
             'ProdCodeSub' => $prodcodesub,
             'OrderProdIdx' => $orderprodidx,
-            'wLecIdx' => $lecidx,
+            'wLecIdx' => $lec['wLecIdx'],
             'wUnitIdx' => $unitidx,
             'LshIdx' => $logidx,
             'StudyTime' => $studytime,
@@ -1388,14 +1457,16 @@ class Player extends \app\controllers\FrontController
 
         $input = array_merge($input, $data);
 
-        if($this->playerFModel->updateStudyLog($input) == true){
-            echo 'OK';
-        } else {
-            echo 'ERROR';
-        }
+        $this->playerFModel->updateStudyLog($input);
     }
 
-    public function StarplayerResult($error, $msg ='', $debug = '')
+    /**
+     * 스타플레이어 리턴 xml 생성
+     * @param $error
+     * @param string $msg
+     * @param string $debug
+     */
+    private function StarplayerResult($error, $msg ='', $debug = '')
     {
         if($error == true){
             $error = 1;

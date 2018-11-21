@@ -179,8 +179,8 @@ class PlayerFModel extends WB_Model
             if($this->_conn->set(array_merge($insert_data, [
                     'AccessIp' => $this->input->ip_address(),
                     'DeviceInfo' => '',
-                    'PlayType' => 'S',
-                    'StudyType' => 'O'
+                    'PlayType' => element('PlayType', $input),
+                    'StudyType' => element('StudyType', $input),
                 ]))->insert($this->_table['study_history']) === false){
                 throw new \Exception('수강기록 초기화에 실패');
             }

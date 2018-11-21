@@ -205,7 +205,7 @@ class PlayerFModel extends WB_Model
         $wLecIdx = element('wLecIdx', $input);
         $wUnitIdx = element('wUnitIdx', $input);
         $LshIdx = element('LshIdx', $input);
-        $MemIdx = $this->session->userdata('mem_idx');
+        $MemIdx = element('MemIdx', $input);
 
         $LastPosition = element('LastPosition', $input);
         $DeviceInfo = element('DeviceInfo', $input);

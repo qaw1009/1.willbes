@@ -91,8 +91,8 @@
             var playedRealTime = Math.floor(player.getPlayTime()); // 2배속으로 1분 수강시 1분
             var currentPosition = Math.floor(player.getCurrentPosition());
 
-            data = data + "&rst=" + Math.floor(playedRealTime - globalStudiedRealTime);
             data = data + "&st=" + Math.floor(playedTime - globalStudiedTime);
+            data = data + "&rst=" + Math.floor(playedRealTime - globalStudiedRealTime);
             data = data + "&pos=" + currentPosition;
             data = data + "&di=" + player.getPID();
 

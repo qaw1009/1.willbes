@@ -698,6 +698,7 @@ class Player extends \app\controllers\FrontController
         }
 
         $input = [
+            'MemIdx' => $this->session->userdata('mem_idx'),
             'OrderIdx' => $orderidx,
             'ProdCode' => $prodcode,
             'ProdCodeSub' => $prodcodesub,
@@ -1086,8 +1087,8 @@ class Player extends \app\controllers\FrontController
                 $this->mobileLog([
                     'content_id' => $content_id,
                     'playtype' => $play_type,
-                    'st' => $latest_playtime,
-                    'rst' => $latest_ratio_playtime,
+                    'st' => $latest_ratio_playtime,
+                    'rst' => $latest_playtime,
                     'pos' => $content_position,
                     'di' => $device_id
                 ]);
@@ -1442,6 +1443,7 @@ class Player extends \app\controllers\FrontController
         }
 
         $input = [
+            'MemIdx' => $memidx,
             'OrderIdx' => $orderidx,
             'ProdCode' => $prodcode,
             'ProdCodeSub' => $prodcodesub,

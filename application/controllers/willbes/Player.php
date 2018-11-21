@@ -1009,7 +1009,7 @@ class Player extends \app\controllers\FrontController
      */
     public function StarplayerAPI()
     {
-        logger($_SERVER['QUERY_STRING']);
+        logger("StarplayerAPI : ".$_SERVER['QUERY_STRING']);
 
         $this->StarplayerReturn(false, 'success');
     }
@@ -1018,9 +1018,9 @@ class Player extends \app\controllers\FrontController
     public function StarplayerReturn($error, $msg ='', $debug = '')
     {
         if($error == true){
-            $error = 0;
-        } else if($error == false){
             $error = 1;
+        } else if($error == false){
+            $error = 0;
         }
 
         echo("<axis-app>");

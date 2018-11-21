@@ -56,9 +56,6 @@ class Faq extends BaseBoard
             $faq_ccd = $this->_getCcdArray($group_ccd);
         }
 
-        //FAQ구분별 게시글 횟수
-        $faq_group_ccd_countList = $this->boardModel->getFaqBoardCcdCountList($this->bm_idx, array_keys($faq_group_ccd));
-
         $this->load->view("board/{$this->board_name}/index", [
             'bm_idx' => $this->bm_idx,
             'arr_search_data' => $arr_search_data['arr_search_data'],
@@ -69,7 +66,6 @@ class Faq extends BaseBoard
             'faq_group_ccd' => $faq_group_ccd,
             'faq_ccd' => $faq_ccd,
             'faq_ccd_list' => $faq_ccd_list,
-            'faq_group_ccd_countList' => $faq_group_ccd_countList,
             'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}&site_code={$this->site_code}&group_ccd={$group_ccd}",
         ]);
     }
@@ -80,6 +76,12 @@ class Faq extends BaseBoard
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
         $this->site_code = $this->_reqP('search_site_code');
+
+        //FAQ구분
+        $faq_group_ccd = $this->_getFaqGroupInfo();
+
+        //FAQ구분별 게시글 횟수
+        $faq_group_ccd_countList = $this->boardModel->getFaqBoardCcdCountList($this->bm_idx, array_keys($faq_group_ccd), $this->site_code);
 
         $arr_condition = [
             'EQ' => [
@@ -135,6 +137,7 @@ class Faq extends BaseBoard
             'recordsTotal' => $count,
             'recordsFiltered' => $count,
             'data' => $list,
+            'faq_group_ccd_countList' => $faq_group_ccd_countList,
         ]);
     }
 

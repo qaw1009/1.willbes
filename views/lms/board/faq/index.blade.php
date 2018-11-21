@@ -13,16 +13,7 @@
                     <div class="col-md-11 form-control-static">
                         <a href="javascript:void(0);" class="blue btn-group-ccd"><u class="mr-10">전체</u></a>
                         @foreach($faq_group_ccd as $key => $val)
-                            @php
-                                if (json_decode($arr_search_data, true)['search_group_faq_ccd'] == $key) {
-                                    $class_type = 'red';
-                                } else {
-                                    $class_type = '';
-                                }
-                            @endphp
-                                <a href="javascript:void(0);" class="blue btn-group-ccd" data-group-ccd="{{$key}}">
-                                    <u class="mr-10 {{$class_type}}">{{$val}} ({{ empty($faq_group_ccd_countList[$key]) ? '0' : $faq_group_ccd_countList[$key] }})</u>
-                                </a>
+                            <span class="faq-group" id="faq_group_{{$key}}"></span>
                         @endforeach
                     </div>
                 </div>
@@ -134,6 +125,7 @@
         var $set_is_best = {};
 
         $(document).ready(function() {
+            var set_group_html;
             $.each(arr_search_data,function(key,value) {
                 $search_form.find('input[name="'+key+'"]').val(value);
                 $search_form.find('select[name="'+key+'"]').val(value);
@@ -220,7 +212,22 @@
                     {'data' : 'BoardIdx', 'render' : function(data, type, row, meta) {
                             return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.BoardIdx + '"><u>수정</u></a>';
                         }},
-                ]
+                ],
+                "drawCallback": function(settings) {
+                    var arr_faq_count = settings.json.faq_group_ccd_countList;
+                    var set_faq_count;
+                    @foreach($faq_group_ccd as $key => $val)
+                        if (typeof arr_faq_count['{{$key}}'] === 'undefined') {
+                            set_faq_count = 0;
+                        } else {
+                            set_faq_count = arr_faq_count['{{$key}}'];
+                        }
+                        set_group_html = '<a href="javascript:void(0)" class="blue btn-group-ccd" data-group-ccd="{{$key}}">';
+                        set_group_html += '<u class="mr-10">{{$val}} ('+set_faq_count+')</u>';
+                        set_group_html += '</a>';
+                        $("#faq_group_{{$key}}").html(set_group_html);
+                    @endforeach
+                }
             });
 
             $search_form.on('click', '.btn-group-ccd', function() {
@@ -233,7 +240,6 @@
             // site-code에 매핑되는 select box 자동 변경
             $search_form.find('select[name="search_campus_ccd"]').chained("#search_site_code");
             $search_form.find('select[name="search_faq_type"]').chained("#search_group_faq_ccd");
-
 
             // 데이터 수정 폼
             $list_table.on('click', '.btn-modify', function() {

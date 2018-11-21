@@ -926,15 +926,21 @@ class BoardModel extends WB_Model
      * FAQ구분별 게시글 횟수
      * @param $bm_idx
      * @param array $groupCcd
+     * @param array $site_code
      * @return array
      */
-    public function getFaqBoardCcdCountList($bm_idx, $groupCcd = [])
+    public function getFaqBoardCcdCountList($bm_idx, $groupCcd = [], $site_code = null)
     {
         $this->_conn->select("{$this->_table_sys_code}.Ccd, COUNT({$this->_table}.BoardIdx) AS count");
         $this->_conn->from($this->_table_sys_code);
         $this->_conn->where($this->_table.'.BmIdx', $bm_idx);
         $this->_conn->where_in($this->_table_sys_code.'.Ccd', $groupCcd);
         $this->_conn->where_in($this->_table.'.SiteCode', get_auth_site_codes(false, true));
+
+        if (empty($site_code) === false) {
+            $this->_conn->where($this->_table.'.SiteCode', $site_code);
+        }
+
         $this->_conn->join($this->_table, "{$this->_table_sys_code}.Ccd = {$this->_table}.FaqGroupTypeCcd");
         $this->_conn->group_by($this->_table.'.FaqGroupTypeCcd');
         $data = $this->_conn->get()->result_array();

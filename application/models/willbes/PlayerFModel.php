@@ -137,7 +137,7 @@ class PlayerFModel extends WB_Model
         $query = "SELECT COUNT(*) as rownums FROM {$this->_table['study_log']} ";
         $where = [
             'EQ' => [
-                'MemIdx' => $this->session->userdata('mem_idx'),
+                'MemIdx' => element('MemIdx', $input),
                 'OrderIdx' => element('OrderIdx', $input),
                 'OrderProdIdx' => element('OrderProdIdx', $input),
                 'ProdCode' => element('ProdCode', $input),
@@ -152,7 +152,7 @@ class PlayerFModel extends WB_Model
         $result = $this->_conn->query($query.$where);
 
         $insert_data = [
-            'MemIdx' => $this->session->userdata('mem_idx'),
+            'MemIdx' => element('MemIdx', $input),
             'OrderIdx' => element('OrderIdx', $input),
             'OrderProdIdx' => element('OrderProdIdx', $input),
             'ProdCode' => element('ProdCode', $input),

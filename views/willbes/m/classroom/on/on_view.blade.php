@@ -62,6 +62,7 @@
                     <div class="passListTabs c_both">
                         <form name="downForm" id="downForm" >
                             <input type="hidden" name="m" value="{{$lec['MemIdx']}}" />
+                            <input type="hidden" name="id" value="{{sess_data('mem_id')}}" />
                             <input type="hidden" name="o" value="{{$lec['OrderIdx']}}" />
                             <input type="hidden" name="op" value="{{$lec['OrderProdIdx']}}" />
                             <input type="hidden" name="p" value="{{$lec['ProdCode']}}" />
@@ -92,9 +93,9 @@
                                             <ul class="w-free NGEB">
                                                 @if($row['isstart'] == 'Y' && $row['ispause'] == 'N')
                                                     @if($row['timeover'] == 'N')
-                                                        @if($row['wWD'] != '')<li class="btn_black_line"><a href="javascript:;" onclick='fnMobile("https:{{front_url('/Player/getMobile/')}}?m={{$lec['MemIdx']}}&o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&sp={{$row['ProdCodeSub']}}&l={{$row['wLecIdx']}}&u={{$row['wUnitIdx']}}&q=WD&st=S", "{{config_item('starplayer_license')}}");' >WIDE</a></li>@endif
-                                                        @if($row['wHD'] != '')<li class="btn_blue"><a href="javascript:;" onclick='fnMobile("https:{{front_url('/Player/getMobile/')}}?m={{$lec['MemIdx']}}&o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&sp={{$row['ProdCodeSub']}}&l={{$row['wLecIdx']}}&u={{$row['wUnitIdx']}}&q=HD&st=S", "{{config_item('starplayer_license')}}");' >HIGH</a></li>@endif
-                                                        @if($row['wSD'] != '')<li class="btn_gray"><a href="javascript:;" onclick='fnMobile("https:{{front_url('/Player/getMobile/')}}?m={{$lec['MemIdx']}}&o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&sp={{$row['ProdCodeSub']}}&l={{$row['wLecIdx']}}&u={{$row['wUnitIdx']}}&q=SD&st=S", "{{config_item('starplayer_license')}}");' >LOW</a></li>@endif
+                                                        @if($row['wWD'] != '')<li class="btn_black_line"><a href="javascript:;" onclick='fnMobile("https:{{front_url('/Player/getMobile/')}}?m={{$lec['MemIdx']}}&id={{sess_data('mem_id')}}&o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&sp={{$row['ProdCodeSub']}}&l={{$row['wLecIdx']}}&u={{$row['wUnitIdx']}}&q=WD&st=S", "{{config_item('starplayer_license')}}");' >WIDE</a></li>@endif
+                                                        @if($row['wHD'] != '')<li class="btn_blue"><a href="javascript:;" onclick='fnMobile("https:{{front_url('/Player/getMobile/')}}?m={{$lec['MemIdx']}}&id={{sess_data('mem_id')}}&o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&sp={{$row['ProdCodeSub']}}&l={{$row['wLecIdx']}}&u={{$row['wUnitIdx']}}&q=HD&st=S", "{{config_item('starplayer_license')}}");' >HIGH</a></li>@endif
+                                                        @if($row['wSD'] != '')<li class="btn_gray"><a href="javascript:;" onclick='fnMobile("https:{{front_url('/Player/getMobile/')}}?m={{$lec['MemIdx']}}&id={{sess_data('mem_id')}}&o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&sp={{$row['ProdCodeSub']}}&l={{$row['wLecIdx']}}&u={{$row['wUnitIdx']}}&q=SD&st=S", "{{config_item('starplayer_license')}}");' >LOW</a></li>@endif
                                                     @else
                                                         <li class="btn_black_line"><a>시간초과</a></li>
                                                     @endif
@@ -141,6 +142,12 @@
     <!-- End Container -->
     <script src="/public/vendor/starplayer/js/starplayer_app.js"></script>
     <script>
+        $(document).ready(function() {
+            $('#allchk').on('change', function (){
+                $('.unitchk').prop('checked', $(this).is(':checked'));
+            });
+        });
+
         function fnDown($quility)
         {
             if($quility == ""){

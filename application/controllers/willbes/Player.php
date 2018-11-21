@@ -774,6 +774,7 @@ class Player extends \app\controllers\FrontController
         $this->load->library('Crypto',['license' => config_item('starplayer_license')]);
 
         $MemIdx = $this->_req("m");
+        $MemId = $this->_req("id");
         $OrderIdx = $this->_req("o");
         $ProdCode = $this->_req("p");
         $ProdCodeSub = $this->_req("sp");
@@ -793,8 +794,6 @@ class Player extends \app\controllers\FrontController
             $type = "streaming";
         }
 
-        $MemId = 'test';
-
         // 수강가능인지 체크
         $lec = $this->classroomFModel->getLecture([
             'EQ' => [
@@ -809,7 +808,7 @@ class Player extends \app\controllers\FrontController
         ]);
 
         if(empty($lec) === true){
-            self::StarplayerError('강좌정보가 없습니다.');
+            $this->StarplayerReturn(true, '강좌정보가 없습니다.');
         }
 
         $lec = $lec[0];
@@ -847,11 +846,11 @@ class Player extends \app\controllers\FrontController
         }
 
         if($isstart == 'N'){
-            self::StarplayerError('아직 수강시작 전인 강의입니다.');
+            $this->StarplayerReturn(true,'아직 수강시작 전인 강의입니다.');
         }
 
         if($ispause == 'Y'){
-            self::StarplayerError('일시중지 중인 강의입니다.');
+            $this->StarplayerReturn(true, '일시중지 중인 강의입니다.');
         }
 
         // 회차 열어준경우 IN 생성
@@ -894,14 +893,14 @@ class Player extends \app\controllers\FrontController
         $data = $this->classroomFModel->getCurriculum($cond_arr);
 
         if(empty($data) == true){
-            self::StarplayerError('강의 정보가 없습니다.');
+            $this->StarplayerReturn(true,'강의 정보가 없습니다.');
         }
 
         $XMLString  = "<?xml version='1.0' encoding='UTF-8' ?>";
         $XMLString .= "<axis-app>";
-        $XMLString .= "<security>true</security>";
-        $XMLString .= "<action-type>".$type."</action-type>";
-        $XMLString .= "<user-id><![CDATA[".$MemId."]]></user-id>";
+        $XMLString .= "<security>true</security>"; // 보안설정
+        $XMLString .= "<action-type>".$type."</action-type>"; // 스트리밍/다운로드
+        $XMLString .= "<user-id><![CDATA[".$MemId."]]></user-id>"; // 회원 아이디
 
         foreach($data as $key => $row){
             // 배수체크
@@ -944,7 +943,7 @@ class Player extends \app\controllers\FrontController
             }
 
             if($timeover == 'Y'){
-                show_alert('수강가능시간이 초과되었습니다.');
+                continue;
             }
 
             // 화질에 따른 동영상 경로 읽어오기
@@ -980,7 +979,6 @@ class Player extends \app\controllers\FrontController
             // 모든 경로없을때
             if(empty($filename) === true){
                 continue;
-                //show_alert('수강가능한 파일이 없습니다.', 'close');
             }
 
             $url = $this->clearUrl($row['wMediaUrl'].'/'.$filename);
@@ -1011,14 +1009,22 @@ class Player extends \app\controllers\FrontController
      */
     public function StarplayerAPI()
     {
+        logger($_SERVER['QUERY_STRING']);
 
+        $this->StarplayerReturn(false, 'success');
     }
 
 
-    public function StarplayerError($msg, $debug = '')
+    public function StarplayerReturn($error, $msg ='', $debug = '')
     {
+        if($error == true){
+            $error = 0;
+        } else if($error == false){
+            $error = 1;
+        }
+
         echo("<axis-app>");
-        echo("<error>1</error>");
+        echo("<error>".$error."</error>");
         echo("<message>".$msg."</message>");
         echo("<debug>".$debug."</debug>");
         echo("</axis-app>");

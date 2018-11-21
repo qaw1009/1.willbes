@@ -899,10 +899,12 @@ class Player extends \app\controllers\FrontController
 
         $XMLString  = "<?xml version='1.0' encoding='UTF-8' ?>";
         $XMLString .= "<axis-app>";
+        $XMLString .= "<security>true</security>";
         $XMLString .= "<action-type>".$type."</action-type>";
         $XMLString .= "<user-id><![CDATA[".$MemId."]]></user-id>";
 
         foreach($data as $key => $row){
+            // 배수체크
             if(empty($lec['MultipleApply']) == true){
                 // 무제한
                 $timeover = 'N';
@@ -945,6 +947,7 @@ class Player extends \app\controllers\FrontController
                 show_alert('수강가능시간이 초과되었습니다.');
             }
 
+            // 화질에 따른 동영상 경로 읽어오기
             switch($Quility){
                 case 'WD':
                     $filename = $row['wWD'];
@@ -992,7 +995,7 @@ class Player extends \app\controllers\FrontController
             $XMLString .= "<title><![CDATA[".$title."]]></title>";
             $XMLString .= "<category><![CDATA[".$category."]]></category>";
             if($type == 'download'){
-                $XMLString .= "<limit-date><![CDATA[".$enddate."]]></limit-date>";
+                $XMLString .= "<limit-date><![CDATA[".str_replace('-', '', $enddate)."235959]]></limit-date>";
             }
             $XMLString .= "</content>";
         }

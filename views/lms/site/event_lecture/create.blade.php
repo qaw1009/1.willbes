@@ -199,7 +199,7 @@
                                 <input type="text" class="form-control file-text" disabled="">
                                 <button class="btn btn-primary mb-0" type="button">파일 선택</button>
                                 <span class="file-select file-btn">
-                                <input type="file" id="attach_file_C" name="attach_file[]" @if($method == 'POST')required="required"@endif class="form-control input-file" title="내용 이미지">
+                                    <input type="file" id="attach_file_C" name="attach_file[]" @if($method == 'POST')required="required"@endif class="form-control input-file" title="내용 이미지">
                                 </span>
                             </div>
                             @if(empty($file_data['C']) === false)
@@ -223,8 +223,9 @@
                                 <input type="text" class="form-control file-text" disabled="">
                                 <button class="btn btn-primary mb-0" type="button">파일 선택</button>
                                 <span class="file-select file-btn">
-                                <input type="file" id="attach_file_F" name="attach_file[]" class="form-control input-file" title="첨부파일">
+                                    <input type="file" id="attach_file_F" name="attach_file[]" class="form-control input-file" title="첨부파일">
                                 </span>
+                                <input class="file-reset btn-danger btn" type="button" value="X" />
                             </div>
                             @if(empty($file_data['F']) === false)
                                 <p class="form-control-static ml-30 mr-10">[ <a href="{{ $file_data['F']['file_path'] }}" rel="popup-image">{{ $file_data['F']['file_real_name'] }}</a> ]
@@ -263,8 +264,9 @@
                                 <input type="text" class="form-control file-text" disabled="">
                                 <button class="btn btn-primary mb-0" type="button">파일 선택</button>
                                 <span class="file-select file-btn">
-                                <input type="file" id="attach_file_I" name="attach_file[]" class="form-control input-file" title="첨부파일">
+                                    <input type="file" id="attach_file_I" name="attach_file[]" class="form-control input-file" title="첨부파일">
                                 </span>
+                                <input class="file-reset btn-danger btn" type="button" value="X" />
                             </div>
                             @if(empty($file_data['I']) === false)
                                 <p class="form-control-static ml-30 mr-10">[ <a href="{{ $file_data['I']['file_path'] }}" rel="popup-image">{{ $file_data['I']['file_real_name'] }}</a> ]

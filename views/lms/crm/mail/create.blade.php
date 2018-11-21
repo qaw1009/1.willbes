@@ -83,9 +83,23 @@
 
                 <div class="form-group">
                     <label class="control-label col-md-2" for="send_attach_file">첨부파일</label>
+                    <div class="col-md-10 form-inline">
+                        <div class="title">
+                            <div class="filetype">
+                                <input type="text" class="form-control file-text" disabled="">
+                                <button class="btn btn-primary mb-0" type="button">파일 선택</button>
+                                <span class="file-select file-btn">
+                                    <input type="file" id="send_attach_file" name="send_attach_file" class="form-control input-file" title="첨부파일"/>
+                                </span>
+                                <input class="file-reset btn-danger btn" type="button" value="X" />
+                            </div>
+                        </div>
+                    </div>
+                    {{--
                     <div class="col-md-4">
                         <input type="file" id="send_attach_file" name="send_attach_file" class="form-control" title="첨부파일"/>
                     </div>
+                    --}}
                 </div>
 
                 <div class="form-group">

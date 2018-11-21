@@ -771,9 +771,7 @@ class Player extends \app\controllers\FrontController
 
     public function getMobile()
     {
-        // 아이디찾기용 아이핀 정보 생성
         $this->load->library('Crypto',['license' => config_item('starplayer_license')]);
-
 
         $MemIdx = $this->_req("m");
         $OrderIdx = $this->_req("o");
@@ -783,6 +781,10 @@ class Player extends \app\controllers\FrontController
         $Quility = $this->_req("q");
         $type = $this->_req("st");
 
+        $ispause = 'N';
+        $isstart = 'Y';
+        $timeover = 'N';
+
         $today = date("Y-m-d", time());
 
         if($type == "D"){
@@ -790,6 +792,8 @@ class Player extends \app\controllers\FrontController
         } else {
             $type = "streaming";
         }
+
+        $MemId = 'test';
 
         // 수강가능인지 체크
         $lec = $this->classroomFModel->getLecture([
@@ -814,9 +818,9 @@ class Player extends \app\controllers\FrontController
         if($lec['LearnPatternCcd'] == '615003'){
             $pkg = $this->classroomFModel->getPackage([
                 'EQ' => [
-                    'MemIdx' => $this->session->userdata('mem_idx'),
-                    'OrderIdx' => $orderidx,
-                    'ProdCode' => $prodcode
+                    'MemIdx' => $MemIdx,
+                    'OrderIdx' => $OrderIdx,
+                    'ProdCode' => $ProdCode
                 ],
                 'GTE' => [
                     'RealLecEndDate' => $today
@@ -863,7 +867,8 @@ class Player extends \app\controllers\FrontController
                     'MemIdx' => $MemIdx,
                     'OrderIdx' => $OrderIdx,
                     'ProdCode' => $ProdCode,
-                    'ProdCodeSub' => $ProdCodeSub
+                    'ProdCodeSub' => $ProdCodeSub,
+                    'wLecIdx' => $lec['wLecIdx']
                 ],
                 'IN' => [
                     'wUnitIdx' => $wUnitIdx
@@ -876,25 +881,17 @@ class Player extends \app\controllers\FrontController
                     'OrderIdx' => $OrderIdx,
                     'ProdCode' => $ProdCode,
                     'ProdCodeSub' => $ProdCodeSub,
+                    'wLecIdx' => $lec['wLecIdx'],
                     'wUnitIdx' => $wUnitIdx
+                ],
+                'IN' => [
+                    'wUnitIdx' => $wUnitIdxs
                 ]
             ];
         }
 
         // 커리큘럼 읽어오기
-        $data = $this->classroomFModel->getCurriculum([
-            'EQ' => [
-                'MemIdx' => $this->session->userdata('mem_idx'),
-                'OrderIdx' => $orderidx,
-                'ProdCode' => $prodcode,
-                'ProdCodeSub' => $prodcodesub,
-                'wLecIdx' => $lec['wLecIdx'],
-                'wUnitIdx' => $unitidx
-            ],
-            'IN' => [
-                'wUnitIdx' => $wUnitIdxs
-            ]
-        ]);
+        $data = $this->classroomFModel->getCurriculum($cond_arr);
 
         if(empty($data) == true){
             self::StarplayerError('강의 정보가 없습니다.');
@@ -906,8 +903,6 @@ class Player extends \app\controllers\FrontController
         $XMLString .= "<user-id><![CDATA[".$MemId."]]></user-id>";
 
         foreach($data as $key => $row){
-
-
             if(empty($lec['MultipleApply']) == true){
                 // 무제한
                 $timeover = 'N';
@@ -920,9 +915,9 @@ class Player extends \app\controllers\FrontController
                 // 회차별 수강시간 체크
 
                 // 수강시간은 초
-                $studytime = intval($data['RealStudyTime']);
+                $studytime = intval($row['RealStudyTime']);
                 // 제한시간 분 -> 초
-                $limittime = intval($data['RealExpireTime']) * 60;
+                $limittime = intval($row['RealExpireTime']) * 60;
 
                 if($studytime > $limittime){
                     $timeover = 'Y';
@@ -950,64 +945,62 @@ class Player extends \app\controllers\FrontController
                 show_alert('수강가능시간이 초과되었습니다.');
             }
 
-            switch($quility){
+            switch($Quility){
                 case 'WD':
-                    $filename = $data['wWD'];
-                    $ratio = 21; // 초 와이드는 고정
+                    $filename = $row['wWD'];
                     break;
 
                 case 'HD':
-                    $filename = $data['wHD'];
-                    $ratio = $data['wRatio']; // 고화질은 설정한 비율
+                    $filename = $row['wHD'];
                     break;
 
                 case 'SD':
-                    $filename = $data['wSD'];
-                    $ratio = $data['wRatio']; // 저화질도 설정한 비율
+                    $filename = $row['wSD'];
                     break;
 
                 default:
-                    $filename = $data['wWD'];
-                    $ratio = 21; // 초 와이드는 고정
+                    $filename = $row['wWD'];
                     break;
             }
 
             // 동영상 경로가 없을때 다른 경로로 재생
             if(empty($filename) === true){
-                $filename = $data['wWD'];
-                $ratio = 21;
+                $filename = $row['wWD'];
             }
             if(empty($filename) === true){
-                $filename = $data['wHD'];
-                $ratio = $data['wRatio'];
+                $filename = $row['wHD'];
             }
             if(empty($filename) === true){
-                $filename = $data['wSD'];
-                $ratio = $data['wRatio'];
+                $filename = $row['wSD'];
             }
 
             // 모든 경로없을때
             if(empty($filename) === true){
-                show_alert('수강가능한 파일이 없습니다.', 'close');
+                continue;
+                //show_alert('수강가능한 파일이 없습니다.', 'close');
             }
 
-            $url = $this->clearUrl($data['wMediaUrl'].'/'.$filename);
-
-
+            $url = $this->clearUrl($row['wMediaUrl'].'/'.$filename);
+            $title = $row['wUnitNum'].'회 '.$row['wUnitLectureNum'].'강 '.$row['wUnitName'];
+            $id = "^{$MemId}^{$MemIdx}^{$OrderIdx}^{$lec['OrderProdIdx']}^{$ProdCode}^{$ProdCodeSub}^{$row['wUnitIdx']}^";
+            $category = $lec['SubjectName'].'/'.$lec['CourseName'];
+            $enddate = $lec['RealLecEndDate'];
 
             $XMLString .= "<content>";
-            $XMLString .= "<id><![CDATA["."]]></id>";
-            $XMLString .= "<url><![CDATA["."]]></url>";
-            $XMLString .= "<title><![CDATA["."]]></title>";
-            $XMLString .= "<category><![CDATA["."]]></category>";
-            $XMLString .= "<limit-date><![CDATA["."]]></limit-date>";
+            $XMLString .= "<id><![CDATA[".$id."]]></id>";
+            $XMLString .= "<url><![CDATA[".$url."]]></url>";
+            $XMLString .= "<title><![CDATA[".$title."]]></title>";
+            $XMLString .= "<category><![CDATA[".$category."]]></category>";
+            if($type == 'download'){
+                $XMLString .= "<limit-date><![CDATA[".$enddate."]]></limit-date>";
+            }
             $XMLString .= "</content>";
         }
 
         $XMLString .= "</axis-app>";
-
-        return $XMLString;
-        return $this->crypto->encrypt($XMLString);
+echo $XMLString;
+return;
+        echo $this->crypto->encrypt($XMLString);
     }
 
 

@@ -998,8 +998,7 @@ class Player extends \app\controllers\FrontController
         }
 
         $XMLString .= "</axis-app>";
-echo $XMLString;
-return;
+
         echo $this->crypto->encrypt($XMLString);
     }
 

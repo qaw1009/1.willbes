@@ -61,7 +61,6 @@
                 <div id="notice1" class="tabContent">
                     <div class="passListTabs c_both">
                         <form name="downForm" id="downForm" >
-                            <input type="hidden" name="license" value="{{config_item('starplayer_license')}}" />
                             <input type="hidden" name="m" value="{{$lec['MemIdx']}}" />
                             <input type="hidden" name="o" value="{{$lec['OrderIdx']}}" />
                             <input type="hidden" name="op" value="{{$lec['OrderProdIdx']}}" />
@@ -157,7 +156,7 @@
 
             $info_url = 'https:{{front_url('/Player/getMobile/')}}?' + $('#downForm').serialize();
 
-            fnMobile($info_url);
+            fnMobile($info_url, '{{config_item('starplayer_license')}}');
         }
     </script>
 @stop

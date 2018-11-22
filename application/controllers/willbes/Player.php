@@ -1081,10 +1081,12 @@ class Player extends \app\controllers\FrontController
                 break;
 
             case 'begin_content':
-            case 'download_begin_content':
-                // 동영상을 시작하거나 다운로드 시작할때 체크
+                // 동영상을 시작할때
                 $this->checkState($state); // 기기상태 체크
-        
+
+            case 'download_begin_content':
+                // 다운로드 시작할때 + 동영상시작할때
+
                 // 재생가능한 강좌인지 체크
                 $lec = $this->checkOrderProduct($content_id);
 
@@ -1098,6 +1100,13 @@ class Player extends \app\controllers\FrontController
                         'App' => $app_version
                     ], $lec['DeviceLimitCount']);
                 }
+
+                $this->updateMobileDevice([
+                    'content_id' => $content_id,
+                    'DeviceModel' => $device_model,
+                    'OS' => $os_version,
+                    'APP' => $app_version
+                ]);
 
                 $this->StarplayerResult(false,'재생권한확인완료');
                 break;
@@ -1449,6 +1458,34 @@ class Player extends \app\controllers\FrontController
         $input = array_merge($input, $data);
 
         $this->playerFModel->updateStudyLog($input);
+    }
+
+    /**
+     * 동영상이 실행될때 해당 기기 정보 업데이트
+     * @param $data
+     */
+    private function updateMobileDevice($data)
+    {
+        $input = element('content_id', $data);
+
+        //     1          2          3                   4              5             6                 7
+        // ^{$MemId}^{$MemIdx}^{$OrderIdx}^{$lec['OrderProdIdx']}^{$ProdCode}^{$ProdCodeSub}^{$row['wUnitIdx']}^
+        @$input_arr = explode('^', $input);
+
+        $memid = $input_arr[1];
+        $memidx = $input_arr[2];
+        $orderidx = $input_arr[3];
+        $orderprodidx = $input_arr[4];
+        $prodcode = $input_arr[5];
+        $prodcodesub = $input_arr[6];
+        $unitidx = $input_arr[7];
+        $logidx = $input_arr[8];
+
+        $data = array_merge($data, [
+           'LshIdx' => $logidx
+        ]);
+
+        $this->playerFModel->storeDeviceLog($data);
     }
 
     /**

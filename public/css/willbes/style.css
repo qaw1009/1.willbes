@@ -8683,6 +8683,7 @@ table.testTable tr td.w-date {
 .pointTable tr td.w-period {
     line-height: 16px;
     padding: 10px 0;
+    word-break: keep-all;
 }
 
 /* subContainer : Mypage : 학습지원관리 : 쪽지관리 */

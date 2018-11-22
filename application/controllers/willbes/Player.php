@@ -793,8 +793,10 @@ class Player extends \app\controllers\FrontController
 
         if($type == "D"){
             $type = "download";
+            $PlayType = 'D';
         } else {
             $type = "streaming";
+            $PlayType = 'S';
         }
 
         // 수강가능인지 체크
@@ -984,9 +986,29 @@ class Player extends \app\controllers\FrontController
                 continue;
             }
 
+            $RealExpireTime = intval($row['wRuntime']) * intval($lec['MultipleApply']);
+
+            // 수강히스토리 기록생성
+            $logidx = $this->playerFModel->storeStudyLog([
+                'MemIdx' => $MemIdx,
+                'OrderIdx' => $OrderIdx,
+                'OrderProdIdx' => $lec['OrderProdIdx'],
+                'ProdCode' => $ProdCode,
+                'ProdCodeSub' => $ProdCodeSub,
+                'wLecIdx' => $lec['wLecIdx'],
+                'wUnitIdx' => $row['wUnitIdx'],
+                'RealExpireTime' => $RealExpireTime,
+                'PlayType' => $PlayType,
+                'StudyType' => 'M'
+            ]);
+
+            if(empty($logidx) == true){
+                continue;
+            }
+
             $url = $this->clearUrl($row['wMediaUrl'].'/'.$filename);
             $title = $row['wUnitNum'].'회 '.$row['wUnitLectureNum'].'강 '.$row['wUnitName'];
-            $id = "^{$MemId}^{$MemIdx}^{$OrderIdx}^{$lec['OrderProdIdx']}^{$ProdCode}^{$ProdCodeSub}^{$row['wUnitIdx']}^";
+            $id = "^{$MemId}^{$MemIdx}^{$OrderIdx}^{$lec['OrderProdIdx']}^{$ProdCode}^{$ProdCodeSub}^{$row['wUnitIdx']}^{$logidx}^";
             $category = $lec['SubjectName'].'/'.$lec['CourseName'];
             $enddate = $lec['RealLecEndDate'];
 
@@ -1025,7 +1047,7 @@ class Player extends \app\controllers\FrontController
         $online = element('online', $input); // online 시 yes offlien 시 no
         
         $play_type = element('play_time', $input); // streaming / download
-        $content_id = element('content_id', $input); // $id = "^{$MemId}^{$MemIdx}^{$OrderIdx}^{$lec['OrderProdIdx']}^{$ProdCode}^{$ProdCodeSub}^{$row['wUnitIdx']}^";
+        $content_id = element('content_id', $input); // $id = "^{$MemId}^{$MemIdx}^{$OrderIdx}^{$lec['OrderProdIdx']}^{$ProdCode}^{$ProdCodeSub}^{$row['wUnitIdx']}^{$logidx}^";
         $content_url = element('content_url', $input); // 강의 URL
         
         $play_time = element('play_time', $input); // 동영상 재생 누적시간 (초)
@@ -1149,6 +1171,7 @@ class Player extends \app\controllers\FrontController
         $prodcode = $input_arr[5];
         $prodcodesub = $input_arr[6];
         $unitidx = $input_arr[7];
+        $logidx = $input_arr[8];
 
         $today = date("Y-m-d", time());
         $ispause = 'N';
@@ -1340,8 +1363,8 @@ class Player extends \app\controllers\FrontController
     private function mobileLog($input)
     {
         $content_id = element('content_id', $input);
-        //     1          2          3                   4              5             6                 7
-        // ^{$MemId}^{$MemIdx}^{$OrderIdx}^{$lec['OrderProdIdx']}^{$ProdCode}^{$ProdCodeSub}^{$row['wUnitIdx']}^
+        //     1          2          3                   4              5             6                 7            8
+        // ^{$MemId}^{$MemIdx}^{$OrderIdx}^{$lec['OrderProdIdx']}^{$ProdCode}^{$ProdCodeSub}^{$row['wUnitIdx']}^{$logidx}^";
         @$input_arr = explode('^', $content_id);
 
         $memid = $input_arr[1];
@@ -1351,6 +1374,7 @@ class Player extends \app\controllers\FrontController
         $prodcode = $input_arr[5];
         $prodcodesub = $input_arr[6];
         $unitidx = $input_arr[7];
+        $logidx = $input_arr[8];
 
         $PlayType = element('playtype', $input);
         if($PlayType == 'download'){
@@ -1389,41 +1413,6 @@ class Player extends \app\controllers\FrontController
         }
 
         $lec = $lec[0];
-
-        // 커리큘럼 읽어오기
-        $data = $this->classroomFModel->getCurriculum([
-            'EQ' => [
-                'MemIdx' => $memidx,
-                'OrderIdx' => $orderidx,
-                'ProdCode' => $prodcode,
-                'ProdCodeSub' => $prodcodesub,
-                'wLecIdx' => $lec['wLecIdx'],
-                'wUnitIdx' => $unitidx
-            ]
-        ]);
-
-        // 정보없음
-        if(empty($data) == true){
-            return;
-        }
-
-        $data = $data[0];
-
-        $RealExpireTime = intval($data['wRuntime']) * intval($lec['MultipleApply']);
-
-        // 수강히스토리 기록생성
-        $logidx = $this->playerFModel->storeStudyLog([
-            'MemIdx' => $memidx,
-            'OrderIdx' => $orderidx,
-            'OrderProdIdx' => $orderprodidx,
-            'ProdCode' => $prodcode,
-            'ProdCodeSub' => $prodcodesub,
-            'wLecIdx' => $lec['wLecIdx'],
-            'wUnitIdx' => $unitidx,
-            'RealExpireTime' => $RealExpireTime,
-            'PlayType' => $PlayType,
-            'StudyType' => 'M'
-        ]);
 
         $cond = [
             'EQ' => [

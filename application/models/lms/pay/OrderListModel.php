@@ -323,6 +323,43 @@ class OrderListModel extends BaseOrderModel
     }
 
     /**
+     * 주문상품 조회
+     * @param array $arr_condition
+     * @param string $column
+     * @return mixed
+     */
+    public function findOrderProduct($arr_condition = [], $column = '')
+    {
+        if (empty($column) === true) {
+            $column = 'O.OrderIdx, OP.OrderProdIdx, OP.ProdCode, O.OrderNo, O.SiteCode, O.MemIdx, O.PayRouteCcd, O.PayMethodCcd, O.PgCcd, O.PgMid, O.PgTid
+                , O.OrderPrice as tOrderPrice, O.OrderProdPrice as tOrderProdPrice, O.RealPayPrice as tRealPayPrice
+                , O.CardPayPrice as tCardPayPrice, O.CashPayPrice as tCashPayPrice, O.DeliveryPrice as tDeliveryPrice, O.DeliveryAddPrice as tDeliveryAddPrice, O.DiscPrice as tDiscPrice
+                , O.UseLecPoint as tUseLecPoint, O.UseBookPoint as tUseBookPoint, O.SaveLecPoint as tSaveLecPoint, O.SaveBookPoint as tSaveBookPoint
+                , O.VBankCcd, O.VBankAccountNo, O.VBankDepositName, O.VBankExpireDatm, O.VBankCancelDatm
+                , O.IsEscrow, O.IsDelivery, O.IsVisitPay, O.CompleteDatm, O.OrderDatm 
+                , OP.SalePatternCcd, OP.PayStatusCcd, OP.OrderPrice, OP.RealPayPrice, OP.CardPayPrice, OP.CashPayPrice, OP.DiscPrice           
+                , OP.DiscRate, OP.DiscType, OP.DiscReason
+                , OP.UsePoint, OP.SavePoint, OP.IsUseCoupon, OP.UserCouponIdx, OP.UpdDatm
+                , P.ProdTypeCcd, P.ProdName';
+        }
+
+        $from = '
+            from ' . $this->_table['order'] . ' as O
+                inner join ' . $this->_table['order_product'] . ' as OP
+                    on O.OrderIdx = OP.OrderIdx	
+                left join ' . $this->_table['product'] . ' as P
+                    on OP.ProdCode = P.ProdCode and P.IsStatus = "Y"';
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where);
+
+        return $query->result_array();
+    }
+
+    /**
      * 주문 배송 주소 조회 by 주문식별자
      * @param int $order_idx
      * @return array

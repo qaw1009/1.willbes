@@ -22,6 +22,7 @@ class BaseOrderModel extends WB_Model
         'product_sale' => 'lms_product_sale',
         'product_division' => 'lms_product_division',
         'product_r_product' => 'lms_product_r_product',
+        'product_r_autocoupon' => 'lms_product_r_autocoupon',
         'product_professor_concat' => 'vw_product_r_professor_concat',
         'bms_book' => 'wbs_bms_book',
         'my_lecture' => 'lms_my_lecture',
@@ -33,8 +34,8 @@ class BaseOrderModel extends WB_Model
         'admin' => 'wbs_sys_admin'
     ];
 
-    // 공통그룹코드 => 결제채널, 결제루트, 결제방법, 상품구분, 학습형태, 결제상태, 배송상태
-    public $_group_ccd = ['PayChannel' => '669', 'PayRoute' => '670', 'PayMethod' => '604', 'ProdType' => '636', 'LearnPattern' => '615', 'PayStatus' => '676', 'DeliveryStatus' => '677', 'Bank' => '678'];
+    // 공통그룹코드 => 결제채널, 결제루트, 결제방법, 상품구분, 학습형태, 결제상태, 배송상태, 결제은행, 결제카드
+    public $_group_ccd = ['PayChannel' => '669', 'PayRoute' => '670', 'PayMethod' => '604', 'ProdType' => '636', 'LearnPattern' => '615', 'PayStatus' => '676', 'DeliveryStatus' => '677', 'Bank' => '678', 'Card' => '697'];
 
     // 상품타입 공통코드 (온라인강좌, 학원강좌, 교재, 사은품, 배송료, 추가 배송료, 독서실, 사물함, 예치금, 모의고사)
     public $_prod_type_ccd = ['on_lecture' => '636001', 'off_lecture' => '636002', 'book' => '636003', 'freebie' => '636004', 'delivery_price' => '636005', 'delivery_add_price' => '636006'
@@ -60,7 +61,7 @@ class BaseOrderModel extends WB_Model
     public $_pay_route_ccd = ['pg' => '670001', 'visit' => '670002', 'zero' => '670003', 'free' => '670004', 'alliance' => '670005'];
 
     // 결제방법 공통코드 (신용카드, 실시간계좌이체, 가상계좌, 휴대폰, 윌비스계좌이체, 방문카드, 방문현금, 방문현금+카드)
-    public $_pay_method_ccd = ['card' => '604001', 'direct_bank' => '604002', 'vbank' => '604003', 'phone' => '604004', 'willbes_bank' => '604005', 'visit_card' => '604006', 'visit_cash' => '604007', 'visit_cash_card' => '604008'];
+    public $_pay_method_ccd = ['card' => '604001', 'direct_bank' => '604002', 'vbank' => '604003', 'phone' => '604004', 'willbes_bank' => '604005', 'visit_card' => '604006', 'visit_cash' => '604007', 'visit_card_cash' => '604008'];
 
     // 결제상태 공통코드 (결제완료, 입금대기, 입금대기취소, 입금대기만료, 접수대기, 환불완료, 신청완료, 취소완료)
     public $_pay_status_ccd = ['paid' => '676001', 'vbank_wait' => '676002', 'vbank_wait_cancel' => '676003', 'vbank_wait_expire' => '676004', 'receipt_wait' => '676005', 'refund' => '676006', 'apply' => '676007', 'cancel' => '676008'];

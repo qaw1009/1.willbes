@@ -502,7 +502,8 @@ class OrderFModel extends BaseOrderFModel
 
             // 주문완료 장바구니 업데이트 (주문식별자, 만료일시 -> 현재시각으로 업데이트)
             $is_complete_update = $this->_conn->set('ConnOrderIdx', $order_idx)->set('ExpireDatm', 'NOW()', false)
-                ->where_in('CartIdx', $sess_cart_idx)->where('MemIdx', $sess_mem_idx)->update($this->_table['cart']);
+                ->where_in('CartIdx', $sess_cart_idx)->where('MemIdx', $sess_mem_idx)
+                ->update($this->_table['cart']);
             if ($is_complete_update === false) {
                 throw new \Exception('장바구니 주문 식별자 업데이트에 실패했습니다.');
             }
@@ -1164,7 +1165,9 @@ class OrderFModel extends BaseOrderFModel
 
             // 주문완료 장바구니 업데이트 (주문식별자, 만료일시 -> 현재시각으로 업데이트)
             $is_complete_update = $this->_conn->set('ConnOrderIdx', $order_idx)->set('ExpireDatm', 'NOW()', false)
-                ->where('SessId', $sess_cart_sess_id)->where('MemIdx', $sess_mem_idx)->where('IsVisitPay', 'Y')->update($this->_table['cart']);
+                ->where('SessId', $sess_cart_sess_id)->where('MemIdx', $sess_mem_idx)->where('IsVisitPay', 'Y')
+                ->where('ConnOrderIdx is ', 'null', false)
+                ->update($this->_table['cart']);
             if ($is_complete_update === false) {
                 throw new \Exception('장바구니 주문 식별자 업데이트에 실패했습니다.');
             }

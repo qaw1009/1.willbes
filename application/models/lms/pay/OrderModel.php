@@ -87,17 +87,17 @@ class OrderModel extends BaseOrderModel
             // 주문상품 조회
             $arr_condition = [
                 'EQ' => ['O.OrderIdx' => $order_idx, 'OP.PayStatusCcd' => $this->_pay_status_ccd['paid']],
-                'IN' => ['OP.OrderProdIdx' => array_keys($order_prod_param), 'O.SiteCode' => get_auth_site_codes()]
+                'IN' => ['OP.OrderProdIdx' => array_keys($order_prod_param)]
             ];
 
-            $order_prod_data = $this->orderListModel->listAllOrder(false, $arr_condition);
+            $order_prod_data = $this->orderListModel->findOrderProduct($arr_condition);
             if (empty($order_prod_data) === true) {
                 throw new \Exception('주문상품 데이터가 없습니다.', _HTTP_NOT_FOUND);
             }
 
             // 환불요청된 주문상품식별자의 개수와 조회된 주문상품 개수가 다를 경우 에러 리턴
             if (count($order_prod_data) != count(array_keys($order_prod_param))) {
-                throw new \Exception('환불요청된 주문상품 중에서 이미 처리된 상품이 있습니다.', _HTTP_NOT_FOUND);
+                throw new \Exception('환불요청된 주문상품 중에서 이미 처리된 상품이 있습니다.', _HTTP_BAD_REQUEST);
             }
 
             // 환불신청 데이터 저장
@@ -270,17 +270,16 @@ class OrderModel extends BaseOrderModel
             $total_order_price = 0;   // 전체주문금액
             $total_order_prod_price = 0;    // 전체상품주문금액
             $total_real_pay_price = 0;  // 전체실결제금액
-            $total_disc_price = 0;  // 전체할인금액
             $delivery_price = element('delivery_price', $input, 0);     // 배송료
             $is_delivery_info = false;  // 배송정보 등록 여부
             $arr_prod_row = [];    // 상품조회 결과 배열
 
-            // 상품코드 기준으로 주문상품 조회
+            // 상품코드 기준으로 주문상품 데이터 생성
             foreach ($arr_prod_info as $prod_info) {
                 // 상품정보 변수 할당
                 list($prod_code, $prod_type, $learn_pattern_ccd) = explode(':', $prod_info);
 
-                // 학습형태 조회 (단강좌, 운영자 일반형 패키지, 교재 상품만 장바구니 등록 가능)
+                // 학습형태 조회 (단강좌, 운영자 일반형 패키지, 학원 단과, 교재, 모의고사 상품만 주문 가능)
                 $learn_pattern = $this->getLearnPattern($prod_type, $learn_pattern_ccd);
                 if ($learn_pattern === false || in_array($learn_pattern, $arr_available_learn_pattern) === false) {
                     throw new \Exception('주문하실 수 없는 상품입니다.' . PHP_EOL . '온라인 단강좌, 운영자 일반형 패키지, 학원 단과, 교재, 모의고사 상품만 등록 가능합니다.', _HTTP_BAD_REQUEST);
@@ -393,7 +392,7 @@ class OrderModel extends BaseOrderModel
 
                 // 주문상품 등록
                 foreach ($arr_prod_row as $prod_row) {
-                    $is_order_product = $this->addOrderProduct($order_idx, $mem_idx, $this->_pay_status_ccd['paid'], $prod_row);
+                    $is_order_product = $this->addOrderProduct($order_idx, $mem_idx, $this->_pay_status_ccd['paid'], false, $prod_row);
                     if ($is_order_product !== true) {
                         throw new \Exception($is_order_product);
                     }
@@ -443,10 +442,11 @@ class OrderModel extends BaseOrderModel
      * @param int $order_idx [주문식별자]
      * @param int $mem_idx [회원식별자]
      * @param string $pay_status_ccd [결제상태공통코드]
+     * @param bool $is_auto_add [자동 강좌, 쿠폰 지급 여부]
      * @param array $input [상품정보 배열]
      * @return bool|string
      */
-    public function addOrderProduct($order_idx, $mem_idx, $pay_status_ccd, $input = [])
+    public function addOrderProduct($order_idx, $mem_idx, $pay_status_ccd, $is_auto_add = true, $input = [])
     {
         try {
             $order_prod_type = element('OrderProdType', $input);   // 주문상품타입
@@ -471,6 +471,7 @@ class OrderModel extends BaseOrderModel
                 'DiscPrice' => element('DiscPrice', $input, 0),
                 'DiscRate' => element('DiscRate', $input, 0),
                 'DiscType' => element('DiscType', $input, 'R'),
+                'DiscReason' => element('DiscReason', $input),
                 'UsePoint' => 0,
                 'SavePoint' => 0,
                 'IsUseCoupon' => 'N',
@@ -505,6 +506,22 @@ class OrderModel extends BaseOrderModel
                 $is_add_my_lecture = $this->addMyLecture($order_idx, $order_prod_idx, $order_prod_type, $prod_code, $arr_prod_code_sub, $input);
                 if ($is_add_my_lecture !== true) {
                     throw new \Exception($is_add_my_lecture);
+                }
+
+                if ($is_auto_add === true) {
+                    // 자동지급 주문상품 데이터 등록
+                    $is_add_auto_product = $this->addOrderProductForAutoProduct($order_idx, $prod_code, $mem_idx, $pay_status_ccd, $input);
+                    if ($is_add_auto_product !== true) {
+                        throw new \Exception($is_add_auto_product);
+                    }
+
+                    // 자동지급 쿠폰 데이터 등록 (결제상태가 결제완료일 경우)
+                    if ($pay_status_ccd == $this->_pay_status_ccd['paid']) {
+                        $is_add_auto_coupon = $this->addAutoMemberCoupon($order_prod_idx, $prod_code, $mem_idx);
+                        if ($is_add_auto_coupon !== true) {
+                            throw new \Exception($is_add_auto_coupon);
+                        }
+                    }
                 }
             }
 
@@ -761,5 +778,434 @@ class OrderModel extends BaseOrderModel
         }
 
         return true;
-    }    
+    }
+
+    /**
+     * 자동지급 강좌/사은품 주문상품 등록
+     * @param int $order_idx [주문식별자]
+     * @param int $prod_code [상품코드]
+     * @param int $mem_idx [회원식별자]
+     * @param string $pay_status_ccd [결제상태 공통코드]
+     * @param array $input [상품정보 배열]
+     * @return bool|string
+     */
+    public function addOrderProductForAutoProduct($order_idx, $prod_code, $mem_idx, $pay_status_ccd, $input = [])
+    {
+        try {
+            // 자동지급 상품 조회
+            $rows = $this->_conn->getJoinListResult($this->_table['product_r_product'] . ' as PP', 'left', $this->_table['product_lecture'] . ' as PL'
+                , 'PP.ProdCodeSub = PL.ProdCode', 'PP.ProdCodeSub, PP.ProdTypeCcd, PL.LearnPatternCcd', [
+                    'EQ' => ['PP.ProdCode' => $prod_code, 'PP.IsStatus' => 'Y'],
+                    'IN' => ['PP.ProdTypeCcd' => [$this->_prod_type_ccd['on_lecture'], $this->_prod_type_ccd['freebie']]]
+                ]);
+
+            // 자동지급 상품이 없을 경우
+            if (empty($rows) === true) {
+                return true;
+            }
+
+            foreach ($rows as $row) {
+                // 주문상품 등록
+                $data = [
+                    'OrderIdx' => $order_idx,
+                    'MemIdx' => $mem_idx,
+                    'ProdCode' => $row['ProdCodeSub'],
+                    'SaleTypeCcd' => element('SaleTypeCcd', $input),
+                    'SalePatternCcd' => $this->_sale_pattern_ccd['auto'],
+                    'PayStatusCcd' => $pay_status_ccd,
+                    'OrderPrice' => 0,
+                    'RealPayPrice' => 0,
+                    'CardPayPrice' => 0,
+                    'CashPayPrice' => 0,
+                    'DiscPrice' => 0,
+                    'DiscRate' => 0,
+                    'DiscType' => 'R',
+                    'UsePoint' => 0,
+                    'SavePoint' => 0,
+                    'IsUseCoupon' => 'N',
+                    'UserCouponIdx' => 0
+                ];
+
+                if ($this->_conn->set($data)->insert($this->_table['order_product']) === false) {
+                    throw new \Exception('자동지급 주문상품 정보 등록에 실패했습니다.');
+                }
+
+                // 주문상품 식별자
+                $order_prod_idx = $this->_conn->insert_id();
+
+                // 온라인 강좌일 경우 나의 강좌수정정보 데이터 등록
+                if ($row['ProdTypeCcd'] === $this->_prod_type_ccd['on_lecture']) {
+                    $learn_pattern = $this->getLearnPattern($row['ProdTypeCcd'], $row['LearnPatternCcd']);
+                    $is_add_my_lecture = $this->addMyLecture($order_idx, $order_prod_idx, $learn_pattern, $row['ProdCodeSub'], [], [
+                        'UserStudyStartDate' => element('UserStudyStartDate', $input, ''),
+                        'UserStudyPeriod' => element('UserStudyPeriod', $input, 0)
+                    ]);
+                    if ($is_add_my_lecture !== true) {
+                        throw new \Exception($is_add_my_lecture);
+                    }
+                }
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return true;
+    }
+
+    /**
+     * 자동지급 쿠폰 등록
+     * @param int $order_prod_idx [주문식별자]
+     * @param int $prod_code [상품코드]
+     * @param int $mem_idx [회원식별자]
+     * @return bool|string
+     */
+    public function addAutoMemberCoupon($order_prod_idx, $prod_code, $mem_idx)
+    {
+        try {
+            // 자동지급 쿠폰 조회
+            $rows = $this->_conn->getListResult($this->_table['product_r_autocoupon'], 'AutoCouponIdx', [
+                'EQ' => ['ProdCode' => $prod_code, 'IsStatus' => 'Y']
+            ]);
+
+            // 자동지급 쿠폰이 없을 경우
+            if (empty($rows) === true) {
+                return true;
+            }
+
+            // 쿠폰발급 모델 로드
+            $this->load->loadModels(['service/couponIssue']);
+            
+            foreach ($rows as $row) {
+                // 사용자 쿠폰 등록
+                $data = [
+                    'coupon_idx' => $row['AutoCouponIdx'], 'mem_idx' => [$mem_idx], 'issue_type' => 'order', 'issue_order_prod_idx' => $order_prod_idx
+                ];
+
+                $is_add_coupon = $this->couponIssueModel->addCouponDetail($data);
+                if ($is_add_coupon !== true) {
+                    throw new \Exception($is_add_coupon);
+                }                
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return true;
+    }
+
+    /**
+     * 방문결제 주문 등록
+     * @param array $input
+     * @return array|bool
+     */
+    public function procVisitOrder($input = [])
+    {
+        $this->_conn->trans_begin();
+
+        try {
+            // 결제금액 체크
+            $is_check = $this->checkVisitOrder($input);
+            if ($is_check !== true) {
+                throw new \Exception($is_check);
+            }
+
+            // 방문결제 등록
+            $sess_admin_idx = $this->session->userdata('admin_idx');
+            $reg_ip = $this->input->ip_address();
+            $mem_idx = element('mem_idx', $input);
+            $site_code = element('site_code', $input);
+            $arr_prod_info = element('prod_code', $input, []);  // 상품코드:상품타입:학습형태공통코드
+            $arr_available_learn_pattern = ['off_lecture', 'book', 'reading_room', 'locker', 'deposit', 'mock_exam'];     // 주문가능 상품구분
+            $total_order_price = 0;
+            $total_real_pay_price = 0;
+            $total_card_pay_price = 0;
+            $total_cash_pay_price = 0;
+            $total_disc_price = 0;
+            $arr_prod_row = [];    // 상품조회 결과 배열
+
+            if (empty($arr_prod_code) === true) {
+                throw new \Exception('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
+            }
+
+            // 상품코드 기준으로 주문상품 데이터 생성
+            foreach ($arr_prod_info as $idx => $prod_info) {
+                // 상품정보 변수 할당
+                list($prod_code, $prod_type, $learn_pattern_ccd) = explode(':', $prod_info);
+
+                // 학습형태 조회 (학원 단과, 교재, 독서실, 사물함, 예치금, 모의고사 상품만 주문 가능)
+                $learn_pattern = $this->getLearnPattern($prod_type, $learn_pattern_ccd);
+                if ($learn_pattern === false || in_array($learn_pattern, $arr_available_learn_pattern) === false) {
+                    throw new \Exception('주문하실 수 없는 상품입니다.' . PHP_EOL . '학원 단과, 교재, 독서실, 사물함, 예치금, 모의고사 상품만 등록 가능합니다.', _HTTP_BAD_REQUEST);
+                }
+
+                // 상품정보 조회
+                $column = 'ProdCode, SiteCode, ProdName, ProdPriceData';
+                $row = $this->salesProductModel->findSalesProductByProdCode($learn_pattern, $prod_code, $column);
+                if (empty($row) === true) {
+                    throw new \Exception('판매 중인 상품만 주문하실 수 있습니다.', _HTTP_NOT_FOUND);
+                }
+
+                $row['OrderProdType'] = $learn_pattern;     // 주문상품타입
+                $row['IsVisitPay'] = 'Y';   // 방문결제 여부
+                $row['IsDeliveryInfo'] = 'N';   // 배송여부 설정 (상품정보 데이터 무시)
+                $row['SalePatternCcd'] = $this->_sale_pattern_ccd['normal'];
+                $row['PayStatusCcd'] = $this->_pay_status_ccd['paid'];
+
+                // 판매가격정보 설정
+                $arr_prod_price_data = json_decode($row['ProdPriceData'], true);
+                if (empty($arr_prod_price_data) === true || isset($arr_prod_price_data[0]['RealSalePrice']) === false) {
+                    throw new \Exception('판매가격 정보가 없습니다.', _HTTP_NOT_FOUND);
+                }
+                $row['SaleTypeCcd'] = $arr_prod_price_data[0]['SaleTypeCcd'];
+                $row['RealSalePrice'] = $arr_prod_price_data[0]['SalePrice'];
+                $row['RealPayPrice'] = array_get($input, 'real_pay_price.' . $idx, 0);
+                $row['CardPayPrice'] = array_get($input, 'card_pay_price.' . $idx, 0);
+                $row['CashPayPrice'] = array_get($input, 'cash_pay_price.' . $idx, 0);
+                $row['DiscPrice'] = $row['RealSalePrice'] - $row['RealPayPrice'];
+                $row['DiscRate'] = array_get($input, 'disc_rate.' . $idx, 0);
+                $row['DiscType'] = array_get($input, 'disc_type.' . $idx, 'R');
+                $row['DiscReason'] = get_var(array_get($input, 'disc_reason.' . $idx), null);
+
+                // 전체주문 관련 금액 합산
+                $total_order_price += $row['RealSalePrice'];
+                $total_real_pay_price += $row['RealPayPrice'];
+                $total_card_pay_price += $row['CardPayPrice'];
+                $total_cash_pay_price += $row['CashPayPrice'];
+                $total_disc_price += $row['DiscPrice'];
+                $arr_prod_row[] = $row;
+            }
+
+            $repr_prod_name = $arr_prod_row[0]['ProdName'] . (count($arr_prod_row) > 1 ? ' 외 ' . (count($arr_prod_row) - 1) . '건' : '');    // 대표상품명
+
+            // 주문 데이터 등록 (방문결제는 배송료, 쿠폰 사용, 포인트 사용/적립, 주문배송주소 등록 없음)
+            $data = [
+                'OrderNo' => $this->makeOrderNo(),
+                'MemIdx' => $mem_idx,
+                'SiteCode' => $site_code,
+                'ReprProdName' => $repr_prod_name,
+                'PayChannelCcd' => $this->_pay_channel_ccd['pc'],
+                'PayRouteCcd' => $this->_pay_route_ccd['visit'],
+                'PayMethodCcd' => element('pay_method_ccd', $input),
+                'PgCcd' => '',
+                'PgMid' => '',
+                'PgTid' => '',
+                'OrderPrice' => $total_order_price,
+                'OrderProdPrice' => $total_order_price,
+                'RealPayPrice' => $total_real_pay_price,
+                'CardPayPrice' => $total_card_pay_price,
+                'CashPayPrice' => $total_cash_pay_price,
+                'DeliveryPrice' => 0,
+                'DeliveryAddPrice' => 0,
+                'DiscPrice' => $total_disc_price,
+                'UseLecPoint' => 0,
+                'UseBookPoint' => 0,
+                'SaveLecPoint' => 0,
+                'SaveBookPoint' => 0,
+                'IsEscrow' => 'N',
+                'IsCashReceipt' => 'N',
+                'IsDelivery' => 'N',
+                'IsVisitPay' => 'Y',
+                'VisitPayCardCcd' => element('card_ccd', $input),
+                'RegAdminIdx' => $sess_admin_idx,
+                'OrderIp' => $reg_ip
+            ];
+
+            if ($this->_conn->set($data)->set('CompleteDatm', 'NOW()', false)->insert($this->_table['order']) === false) {
+                throw new \Exception('주문정보 등록에 실패했습니다.');
+            }
+
+            // 주문 식별자
+            $order_idx = $this->_conn->insert_id();
+
+            // 주문상품 등록
+            foreach ($arr_prod_row as $prod_row) {
+                $is_order_product = $this->addOrderProduct($order_idx, $mem_idx, $this->_pay_status_ccd['paid'], true, $prod_row);
+                if ($is_order_product !== true) {
+                    throw new \Exception($is_order_product);
+                }
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+    /**
+     * 방문결제 결제완료 처리 (주문 데이터 수정)
+     * @param array $input
+     * @return array|bool
+     */
+    public function procVisitOrderComplete($input = [])
+    {
+        $this->_conn->trans_begin();
+
+        try {
+            // 결제금액 체크
+            $is_check = $this->checkVisitOrder($input);
+            if ($is_check !== true) {
+                throw new \Exception($is_check);
+            }
+
+            // 방문결제 수정
+            $sess_admin_idx = $this->session->userdata('admin_idx');
+            $mem_idx = element('mem_idx', $input);
+            $order_idx = element('order_idx', $input);
+            $arr_order_prod_idx = element('order_prod_idx', $input);
+            $total_real_pay_price = 0;
+            $total_card_pay_price = 0;
+            $total_cash_pay_price = 0;
+            $total_disc_price = 0;
+
+            if (empty($order_idx) === true || empty($arr_order_prod_idx) === true) {
+                throw new \Exception('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
+            }
+
+            // 주문상품 조회
+            $arr_condition = [
+                'EQ' => ['O.OrderIdx' => $order_idx, 'O.MemIdx' => $mem_idx, 'OP.PayStatusCcd' => $this->_pay_status_ccd['receipt_wait']],
+                'IN' => ['OP.OrderProdIdx' => $arr_order_prod_idx]
+            ];
+
+            $order_prod_data = $this->orderListModel->findOrderProduct($arr_condition);
+            if (empty($order_prod_data) === true) {
+                throw new \Exception('주문상품 데이터가 없습니다.', _HTTP_NOT_FOUND);
+            }
+
+            // 결제완료 처리할 주문상품식별자의 개수와 조회된 주문상품 개수가 다를 경우 에러 리턴
+            if (count($order_prod_data) != count($arr_order_prod_idx)) {
+                throw new \Exception('요청된 주문상품 중에서 이미 처리된 상품이 있습니다.', _HTTP_BAD_REQUEST);
+            }
+
+            // 주문상품 수정
+            foreach ($arr_order_prod_idx as $idx => $order_prod_idx) {
+                foreach ($order_prod_data as $row) {
+                    if ($row['OrderProdIdx'] == $order_prod_idx) {
+                        // 할인금액
+                        $real_pay_price = array_get($input, 'real_pay_price.' . $idx, 0);
+                        $card_pay_price = array_get($input, 'card_pay_price.' . $idx, 0);
+                        $cash_pay_price = array_get($input, 'cash_pay_price.' . $idx, 0);
+                        $disc_price = $row['OrderPrice'] - $real_pay_price;
+
+                        $data = [
+                            'PayStatusCcd' => $this->_pay_status_ccd['paid'],
+                            'RealPayPrice' => $real_pay_price,
+                            'CardPayPrice' => $card_pay_price,
+                            'CashPayPrice' => $cash_pay_price,
+                            'DiscPrice' => $disc_price,
+                            'DiscRate' => array_get($input, 'disc_rate.' . $idx, 0),
+                            'DiscType' => array_get($input, 'disc_type.' . $idx, 'R'),
+                            'DiscReason' => get_var(array_get($input, 'disc_reason.' . $idx), null),
+                            'UpdAdminIdx' => $sess_admin_idx
+                        ];
+
+                        $is_update = $this->_conn->set($data)->set('UpdDatm', 'NOW()', false)
+                            ->where('OrderIdx', $order_idx)->where('OrderProdIdx', $order_prod_idx)->where('MemIdx', $mem_idx)
+                            ->where('PayStatusCcd', $this->_pay_status_ccd['receipt_wait'])
+                            ->update($this->_table['order_product']);
+                        if ($is_update === false || $this->_conn->affected_rows() < 1) {
+                            throw new \Exception('주문상품 정보 수정에 실패했습니다.');
+                        }
+
+                        // 자동지급 쿠폰 데이터 등록 (학원 강좌일 경우만 실행)
+                        if ($row['ProdTypeCcd'] === $this->_prod_type_ccd['off_lecture']) {
+                            $is_add_auto_coupon = $this->addAutoMemberCoupon($order_prod_idx, $row['ProdCode'], $mem_idx);
+                            if ($is_add_auto_coupon !== true) {
+                                throw new \Exception($is_add_auto_coupon);
+                            }
+                        }
+
+                        // 전체주문 관련 금액 합산
+                        $total_real_pay_price += $real_pay_price;
+                        $total_card_pay_price += $card_pay_price;
+                        $total_cash_pay_price += $cash_pay_price;
+                        $total_disc_price += $disc_price;
+
+                        break;
+                    }
+                }
+            }
+
+            // 자동지급 강좌, 사은품 주문상품 결제완료 업데이트
+            $is_update = $this->_conn->set('PayStatusCcd', $this->_pay_status_ccd['paid'])->set('UpdDatm', 'NOW()', false)
+                ->set('UpdAdminIdx', $sess_admin_idx)
+                ->where('OrderIdx', $order_idx)->where('MemIdx', $mem_idx)
+                ->where('PayStatusCcd', $this->_pay_status_ccd['receipt_wait'])->where('SalePatternCcd', $this->_sale_pattern_ccd['auto'])
+                ->update($this->_table['order_product']);
+            if ($is_update === false) {
+                throw new \Exception('자동지급 강좌, 사은품 주문상품 결제완료 업데이트에 실패했습니다.');
+            }
+
+            // 주문 수정
+            $data = [
+                'PayMethodCcd' => element('pay_method_ccd', $input),
+                'RealPayPrice' => $total_real_pay_price,
+                'CardPayPrice' => $total_card_pay_price,
+                'CashPayPrice' => $total_cash_pay_price,
+                'DiscPrice' => $total_disc_price,
+                'VisitPayCardCcd' => element('card_ccd', $input)
+            ];
+
+            $is_update = $this->_conn->set($data)->set('CompleteDatm', 'NOW()', false)
+                ->where('OrderIdx', $order_idx)->where('MemIdx', $mem_idx)
+                ->where('PayRouteCcd', $this->_pay_route_ccd['visit'])->where('CompleteDatm is ', 'null', false)
+                ->update($this->_table['order']);
+            if ($is_update === false || $this->_conn->affected_rows() < 1) {
+                throw new \Exception('주문 정보 수정에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+    /**
+     * 방문결제 결제금액 체크
+     * @param array $input
+     * @return bool|string
+     */
+    public function checkVisitOrder($input = [])
+    {
+        $arr_order_price = element('order_price', $input);
+        $arr_real_pay_price = element('real_pay_price', $input);
+        $arr_card_pay_price = element('card_pay_price', $input);
+        $arr_cash_pay_price = element('cash_pay_price', $input);
+        $arr_disc_rate = element('disc_rate', $input);
+        $arr_disc_type = element('disc_type', $input);
+        $total_real_pay_price = element('total_real_pay_price', $input);
+        $total_card_pay_price = element('total_card_pay_price', $input);
+        $total_cash_pay_price = element('total_cash_pay_price', $input);
+        $sum_real_pay_price = 0;
+        $sum_card_pay_price = 0;
+        $sum_cash_pay_price = 0;
+
+        // 카드 + 현금 = 결제금액 일치여부 확인
+        foreach ($arr_real_pay_price as $idx => $real_pay_price) {
+            if ($real_pay_price != ($arr_card_pay_price[$idx] + $arr_cash_pay_price[$idx])) {
+                return ($idx + 1) . '번째 상품의 카드, 현금 결제금액이 올바르지 않습니다.';
+            }
+
+            $disc_price = $arr_disc_type[$idx] === 'R' ? (int) ($arr_order_price[$idx] * ($arr_disc_rate[$idx] / 100)) : $arr_disc_rate[$idx];
+            if ($arr_order_price[$idx] != ($real_pay_price + $disc_price)) {
+                return ($idx + 1) . '번째 상품의 실결제금액이 올바르지 않습니다.';
+            }
+
+            $sum_real_pay_price += $real_pay_price;
+            $sum_card_pay_price += $arr_card_pay_price[$idx];
+            $sum_cash_pay_price += $arr_cash_pay_price[$idx];
+        }
+
+        if ($total_real_pay_price != $sum_real_pay_price || $total_card_pay_price != $sum_card_pay_price || $total_cash_pay_price != $sum_cash_pay_price) {
+            return '결제금액별 합계가 일치하지 않습니다.';
+        }
+
+        return true;
+    }
 }

@@ -95,7 +95,7 @@
                                         <!--
                                             @if($row['IsExten'] == 'N')
                                             <li class="btn_blue"><a>수강연장불가</a></li>
-@elseif($row['RebuyCount'] >= $row['ExtenNum'])
+                                            @elseif($row['RebuyCount'] >= $row['ExtenNum'])
                                             <li class="btn_blue"><a>연장횟수초과({{$row['RebuyCount']}})</a></li>
                                             @else
                                             <li class="btn_blue"><a href="javascript:;" onclick="fnExtend('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}','S');">수강연장({{$row['RebuyCount']}})</a></li>
@@ -108,7 +108,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td class="w-data tx-center pb-zero">수강중인 강좌가 없습니다.</td>
+                                <td class="tx-center">수강대기중인 강좌가 없습니다.</td>
                             </tr>
                         @endforelse
                         </tbody>
@@ -133,7 +133,7 @@
                                         </dl>
                                         <div class="w-start tx-gray">
                                             <ul class="f_left two">
-                                            @if(true)
+                                                @if(false)
                                                 <!-- 패키지강의 일시중지 불가 -->
                                                 @elseif($row['IsPause'] == 'N')
                                                     <li class="btn_white"><a>일시정지불가</a></li>
@@ -232,7 +232,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td class="w-data tx-center pb-zero">수강중인 강좌가 없습니다.</td>
+                                <td class="tx-center">수강대기중인 강좌가 없습니다.</td>
                             </tr>
                         @endforelse
                         </tbody>
@@ -358,6 +358,8 @@
             $('#prodcode').val(p);
             $('#prodcodesub').val(sp);
             $('#prodtype').val(t);
+            $("#postForm").attr("action", "{{ front_url("/classroom/on/layerPause/") }}").submit();
+            return;
 
             url = "{{ front_url("/classroom/on/layerPause/") }}";
             data = $('#postForm').serialize();

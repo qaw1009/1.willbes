@@ -82,7 +82,7 @@
                                 <tbody>
                                 @forelse($curriculum as $row)
                                     <tr>
-                                        <td class="w-chk"><input type="checkbox" id="wUnitIdx" name="u[]" value="{{$row['wUnitIdx']}}" class="goods_chk unitchk"></td>
+                                        <td class="w-chk"><input type="checkbox" id="wUnitIdx" name="u[]" value="{{$row['wUnitIdx']}}" class="goods_chk unitchk" @if($row['timeover'] == 'Y')disabled="diabbled"@endif></td>
                                         <td class="w-data tx-left">
                                             <div class="w-tit mb10">{{$row['wUnitNum']}}회 {{$row['wUnitLectureNum']}}강 {{$row['wUnitName']}}</div>
                                             <dl class="w-info tx-gray mb10">
@@ -104,7 +104,8 @@
                                                 @else
                                                     <li class="btn_black_line"><a>수강대기</a></li>
                                                 @endif
-                                                <li class="w-data">@if(empty($row['wUnitAttachFile']) == false)
+                                                <li class="w-data">
+                                                    @if(empty($row['wUnitAttachFile']) == false)
                                                         <a href="/classroom/on/download/{{$row['OrderIdx']}}/{{$row['ProdCode']}}/{{$row['ProdCodeSub']}}/{{$row['wLecIdx']}}/{{$row['wUnitIdx']}}"><img src="{{ img_url('m/mypage/icon_lec.png') }}"> <span class="underline">강의자료</span></a>
                                                     @endif
                                                 </li>
@@ -113,7 +114,7 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="2" class="w-data tx-left">개설된 강좌 목록이 없습니다.</td>
+                                        <td colspan="2" class="w-data tx-center">개설된 강좌 목록이 없습니다.</td>
                                     </tr>
                                 @endforelse
                                 </tbody>
@@ -130,6 +131,7 @@
             </a>
         </div>
         <!-- Topbtn -->
+        @if($lec['isstart'] == 'Y' && $lec['ispause'] == 'N')
         <div id="Fixbtn" class="Fixbtn three">
             <ul>
                 <li class="btn_black_line"><a href="javascript:;" onclick="fnDown('WD');">WIDE 다운</a></li>
@@ -137,6 +139,7 @@
                 <li class="btn_gray"><a href="javascript:;" onclick="fnDown('SD');">LOW 다운</a></li>
             </ul>
         </div>
+        @endif
         <!-- Fixbtn -->
     </div>
     <!-- End Container -->

@@ -14,7 +14,8 @@ class PlayerFModel extends WB_Model
         'study_history' => 'lms_lecture_study_history',
         'lec_unit' => 'vw_unit_mylecture',
         'mylec' => 'lms_my_lecture',
-        'device' => 'lms_member_device'
+        'device' => 'lms_member_device',
+        'device_log' => 'lms_lecture_study_mobile_log'
     ];
 
     public function __construct()
@@ -326,6 +327,33 @@ class PlayerFModel extends WB_Model
             'LecStudyTime' => $LecStudyTime,
             'LecRealStudyTime' => $LecRealStudyTime
         ];
+    }
+
+    /**
+     * 강의 시작할때 디바이스 로그를 저장
+     * @param $input
+     */
+    function storeDeviceLog($input)
+    {
+        $input = [
+            'LshIdx' => element('LshIdx', $input),
+            'OS' => element('OS', $input),
+            'APP' => element('APP', $input),
+            'DeviceModel' => element('DeviceModel', $input)
+        ];
+
+        $where = $this->_conn->makeWhere([ 'EQ' => ['LshIdx' => element('LshIdx', $input)]]);
+        $where = $where->getMakeWhere(false);
+        $result = $this->_conn->query("SELECT COUNT(*) AS rownums FROM {$this->_table['device_log']} ".$where);
+
+        // 이미 로그가 있으면 패스
+        if($result->row(0)->rownums > 0){
+            return;
+        }
+
+        try{
+            $this->_conn->set($input)->insert($this->_table['device_log']);
+        } catch (\Exception $e) {}
     }
 
 

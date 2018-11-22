@@ -1099,6 +1099,13 @@ class Player extends \app\controllers\FrontController
                     ], $lec['DeviceLimitCount']);
                 }
 
+                $this->updateMobileDevice([
+                    'content_id' => $content_id,
+                    'DeviceModel' => $device_model,
+                    'OS' => $os_version,
+                    'APP' => $app_version
+                ]);
+
                 $this->StarplayerResult(false,'재생권한확인완료');
                 break;
 
@@ -1449,6 +1456,34 @@ class Player extends \app\controllers\FrontController
         $input = array_merge($input, $data);
 
         $this->playerFModel->updateStudyLog($input);
+    }
+
+    /**
+     * 동영상이 실행될때 해당 기기 정보 업데이트
+     * @param $data
+     */
+    private function updateMobileDevice($data)
+    {
+        $input = element('content_id', $data);
+
+        //     1          2          3                   4              5             6                 7
+        // ^{$MemId}^{$MemIdx}^{$OrderIdx}^{$lec['OrderProdIdx']}^{$ProdCode}^{$ProdCodeSub}^{$row['wUnitIdx']}^
+        @$input_arr = explode('^', $input);
+
+        $memid = $input_arr[1];
+        $memidx = $input_arr[2];
+        $orderidx = $input_arr[3];
+        $orderprodidx = $input_arr[4];
+        $prodcode = $input_arr[5];
+        $prodcodesub = $input_arr[6];
+        $unitidx = $input_arr[7];
+        $logidx = $input_arr[8];
+
+        $data = array_merge($data, [
+           'LshIdx' => $logidx
+        ]);
+
+        $this->playerFModel->storeDeviceLog($data);
     }
 
     /**

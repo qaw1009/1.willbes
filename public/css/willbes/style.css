@@ -8678,7 +8678,9 @@ table.testTable tr td.w-date {
 }
 
 /* subContainer : Mypage : 결제관리 : 쿠폰/수강권관리 */
-.pointTable tr td.w-list {
+.pointTable tr td.w-list,
+.pointTable tr td.w-l-price, 
+.pointTable tr td.w-period {
     line-height: 16px;
     padding: 10px 0;
 }

@@ -1081,10 +1081,12 @@ class Player extends \app\controllers\FrontController
                 break;
 
             case 'begin_content':
-            case 'download_begin_content':
-                // 동영상을 시작하거나 다운로드 시작할때 체크
+                // 동영상을 시작할때
                 $this->checkState($state); // 기기상태 체크
-        
+
+            case 'download_begin_content':
+                // 다운로드 시작할때 + 동영상시작할때
+
                 // 재생가능한 강좌인지 체크
                 $lec = $this->checkOrderProduct($content_id);
 

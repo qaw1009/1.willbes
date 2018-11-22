@@ -1078,7 +1078,8 @@ class Player extends \app\controllers\FrontController
                     'content_id' => $content_id,
                     'DeviceModel' => $device_model,
                     'OS' => $os_version,
-                    'APP' => $app_version
+                    'APP' => $app_version,
+                    'DeviceId' => $device_id
                 ]);
 
                 $this->StarplayerResult(false,'재생권한확인완료');

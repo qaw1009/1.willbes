@@ -340,7 +340,8 @@ class PlayerFModel extends WB_Model
             'LshIdx' => element('LshIdx', $input),
             'OS' => element('OS', $input),
             'APP' => element('APP', $input),
-            'DeviceModel' => element('DeviceModel', $input)
+            'DeviceModel' => element('DeviceModel', $input),
+            'DeviceId' => element('DeviceId', $input)
         ];
 
         $where = $this->_conn->makeWhere([ 'EQ' => ['LshIdx' => element('LshIdx', $input)]]);

@@ -481,6 +481,6 @@ if(!function_exists( 'clean_string')) {
      */
     function clean_string($value)
     {
-        return preg_replace("/[ #\&\+\-%@=\/\\\:;,\.'\"\^`~\_|\!\?\*$#<>()\[\]\{\}]/i", "", $value);
+        return preg_replace("/[#\&\+\-%@=\/\\\:;,\.'\"\^`~\_|\!\?\*$#<>()\[\]\{\}]/i", "", $value);
     }
 }

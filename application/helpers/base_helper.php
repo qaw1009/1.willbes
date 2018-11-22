@@ -472,3 +472,15 @@ if (!function_exists('value')) {
         return $value instanceof Closure ? $value() : $value;
     }
 }
+
+if(!function_exists( 'clean_string')) {
+    /**
+     * 특수문자를 제거한 문자열을 반환
+     * @param $value
+     * @return null|string|string[]
+     */
+    function clean_string($value)
+    {
+        return preg_replace("/[ #\&\+\-%@=\/\\\:;,\.'\"\^`~\_|\!\?\*$#<>()\[\]\{\}]/i", "", $value);
+    }
+}

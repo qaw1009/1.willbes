@@ -722,6 +722,9 @@ class Player extends \app\controllers\FrontController
     }
 
 
+    /**
+     * PC에서 디바이스 체크
+     */
     public function checkDevicePC()
     {
         $orderidx = $this->_req('o');
@@ -738,43 +741,13 @@ class Player extends \app\controllers\FrontController
         echo 'OK';
     }
 
-    /** URL 에서 // 를 제거하기 위해서
-     * @param $str
-     * @return string
+
+    /**
+     * 모바일 컨텐츠 아이디 생성
      */
-    private function clearUrl($str)
-    {
-        $protocol_arr = ['mms://', 'http://', 'https://'];
-        $protocol = '';
-        $i = 0;
-
-        // 앞에 protocol 제거 하고 저장
-        foreach($protocol_arr as $key){
-            $str = str_replace($key, '', $str, $i);
-            if($i > 0){
-                $protocol = $key;
-                break;
-            }
-        }
-
-        // 프로코톨이 겁색이 안되었을경우 기본 http로 설정
-        if($protocol == ""){
-            $protocol = 'http://';
-        }
-
-        // 공백제거
-        $str = str_replace(' ', '', $str, $i);
-
-        do {
-            $str = str_replace('//', '/', $str, $i);
-        } while($i > 0);
-
-        return $protocol.$str;
-    }
-
     public function getMobile()
     {
-        $this->load->library('Crypto',['license' => config_item('starplayer_license')]);
+        $this->load->library('Crypto', ['license' => config_item('starplayer_license')]);
 
         $MemIdx = $this->_req("m");
         $MemId = $this->_req("id");
@@ -1015,8 +988,8 @@ class Player extends \app\controllers\FrontController
             $XMLString .= "<content>";
             $XMLString .= "<id><![CDATA[".$id."]]></id>";
             $XMLString .= "<url><![CDATA[".$url."]]></url>";
-            $XMLString .= "<title><![CDATA[".$title."]]></title>";
-            $XMLString .= "<category><![CDATA[".$category."]]></category>";
+            $XMLString .= "<title><![CDATA[".clean_string($title)."]]></title>";
+            $XMLString .= "<category><![CDATA[".clean_string($lec['subProdName'])."]]></category>";
             if($type == 'download'){
                 $XMLString .= "<limit-date><![CDATA[".str_replace('-', '', $enddate)."235959]]></limit-date>";
             }
@@ -1509,5 +1482,40 @@ class Player extends \app\controllers\FrontController
         echo("</axis-app>");
 
         exit ;
+    }
+
+
+    /** URL 에서 // 를 제거하기 위해서
+     * @param $str
+     * @return string
+     */
+    private function clearUrl($str)
+    {
+        $protocol_arr = ['mms://', 'http://', 'https://'];
+        $protocol = '';
+        $i = 0;
+
+        // 앞에 protocol 제거 하고 저장
+        foreach($protocol_arr as $key){
+            $str = str_replace($key, '', $str, $i);
+            if($i > 0){
+                $protocol = $key;
+                break;
+            }
+        }
+
+        // 프로코톨이 겁색이 안되었을경우 기본 http로 설정
+        if($protocol == ""){
+            $protocol = 'http://';
+        }
+
+        // 공백제거
+        $str = str_replace(' ', '', $str, $i);
+
+        do {
+            $str = str_replace('//', '/', $str, $i);
+        } while($i > 0);
+
+        return $protocol.$str;
     }
 }

@@ -19,13 +19,16 @@ class BaseSearchReadingRoom extends \app\controllers\BaseController
         $arr_campus = $this->siteModel->getSiteCampusArray('');
 
         $prod_type = $this->_req('prod_type');
+        $prod_tabs = array_filter(explode(',', $this->_req('prod_tabs')));  // 노출되는 상품 탭
+        $hide_tabs = array_filter(explode(',', $this->_req('hide_tabs')));  // 비노출되는 상품 탭
         $return_type = get_var($this->_req('return_type'), 'table');
 
         $data = [
             'arr_campus' => $arr_campus,
             'mang_title' => $this->readingRoomModel->arr_mang_title[$this->mang_type],
             'prod_type' => $prod_type,
-            'prod_tabs' => explode(',', $this->_req('prod_tabs')),  // 노출되는 상품 탭
+            'prod_tabs' => $prod_tabs,
+            'hide_tabs' => $hide_tabs,
             'site_code' => $this->_req('site_code'),
             'return_type' => $return_type,
             'target_id' => get_var($this->_req('target_id'), 'bookList'),

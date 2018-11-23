@@ -9,10 +9,11 @@
         {!! csrf_field() !!}
         <input type="hidden" name="site_code" id="site_code" value="{{$site_code}}"/>
         <input type="hidden" name="prod_type" id="prod_type" value="{{$prod_type}}"/>
-        <input type="hidden" name="prod_tabs" id="prod_tabs" value="{{implode(',', $prod_tabs)}}"/>
         <input type="hidden" name="return_type" id="return_type" value="{{$return_type}}"/>
         <input type="hidden" name="target_id" id="target_id" value="{{$target_id}}"/>
         <input type="hidden" name="target_field" id="target_field" value="{{$target_field}}"/>
+        <input type="hidden" name="prod_tabs" id="prod_tabs" value="{{implode(',', $prod_tabs)}}"/>
+        <input type="hidden" name="hide_tabs" id="hide_tabs" value="{{implode(',', $hide_tabs)}}"/>
         @endsection
 
         @section('layer_content')
@@ -23,30 +24,30 @@
                 <div class="form-group no-padding no-border-bottom">
                     <ul class="nav nav-tabs nav-justified mb-10">
                         @if(in_array('on', $prod_tabs) === true)
-                            <li><a href="javascript:;" onclick="prodListChange('on', '615001');"><strong>단강좌</strong></a></li>
-                            <li><a href="javascript:;" onclick="prodListChange('on', '615003');"><strong>운영자패키지</strong></a></li>
-                            <li><a href="javascript:;" onclick="prodListChange('on', '615004');"><strong>기간제패키지</strong></a></li>
+                            <li><a href="#none" onclick="prodListChange('on', '615001');"><strong>단강좌</strong></a></li>
+                            <li class="{{ in_array('adminpack_lecture', $hide_tabs) === true ? 'hide' : '' }}"><a href="#none" onclick="prodListChange('on', '615003');"><strong>운영자패키지</strong></a></li>
+                            <li class="{{ in_array('periodpack_lecture', $hide_tabs) === true ? 'hide' : '' }}"><a href="#none" onclick="prodListChange('on', '615004');"><strong>기간제패키지</strong></a></li>
                         @endif
 
                         @if(in_array('off', $prod_tabs) === true)
-                            <li><a href="javascript:;" onclick="prodListChange('off', '615006');"><strong>단과반</strong></a></li>
-                            <li><a href="javascript:;" onclick="prodListChange('off', '615007');"><strong>종합반</strong></a></li>
+                            <li><a href="#none" onclick="prodListChange('off', '615006');"><strong>단과반</strong></a></li>
+                            <li class="{{ in_array('off_pack_lecture', $hide_tabs) === true ? 'hide' : '' }}"><a href="#none" onclick="prodListChange('off', '615007');"><strong>종합반</strong></a></li>
                         @endif
 
                         @if(in_array('book', $prod_tabs) === true)
-                            <li><a href="javascript:;" onclick="prodListChange('book', '');"><strong>교재</strong></a></li>
+                            <li><a href="#none" onclick="prodListChange('book', '');"><strong>교재</strong></a></li>
                         @endif
 
                         @if(in_array('reading_room', $prod_tabs) === true)
-                            <li class="{{$prod_type == 'reading_room' ? 'active':''}}"><a href="javascript:;" onclick="prodListChange('reading_room', '');"><strong>{{$mang_title}}</strong></a></li>
+                            <li class="{{$prod_type == 'reading_room' ? 'active':''}}"><a href="#none" onclick="prodListChange('reading_room', '');"><strong>{{$mang_title}}</strong></a></li>
                         @endif
 
                         @if(in_array('locker', $prod_tabs) === true)
-                            <li class="{{$prod_type == 'locker' ? 'active':''}}"><a href="javascript:;" onclick="prodListChange('locker', '');"><strong>사물함</strong></a></li>
+                            <li class="{{$prod_type == 'locker' ? 'active':''}}"><a href="#none" onclick="prodListChange('locker', '');"><strong>사물함</strong></a></li>
                         @endif
 
                         @if(in_array('mock_exam', $prod_tabs) === true)
-                            <li><a href="javascript:;" onclick="prodListChange('mock_exam', '');"><strong>모의고사</strong></a></li>
+                            <li><a href="#none" onclick="prodListChange('mock_exam', '');"><strong>모의고사</strong></a></li>
                         @endif
                     </ul>
                 </div>
@@ -209,7 +210,7 @@
                     +"		<td><input type='text' id=' name='' class='form-control' maxlength='46' title='카드' value='" + $(this).data('prod-price') + "'></td>"
                     +"		<td><input type='text' id='' name='' class='form-control' maxlength='46' title='현금' value=''></td>"
                     +"		<td><input type='text' id=' name='' class='form-control' maxlength='46' title='결제금액' value='" + $(this).data('prod-price') + "'></td>"
-                    +"		<td><a href='javascript:;' onclick=\"rowDelete(\'readingRoomTrId')\"><i class=\"fa fa-times red\"></i></a></td>"
+                    +"		<td><a href='#none' onclick=\"rowDelete(\'readingRoomTrId')\"><i class=\"fa fa-times red\"></i></a></td>"
                     +"	</tr>"
 
                     +"  <tr id='readingRoomSubTrId'>"
@@ -227,7 +228,7 @@
                     +"		<td><input type='text' id=' name='' class='form-control' maxlength='46' title='카드' value='" + $(this).data('prod-price') + "'></td>"
                     +"		<td><input type='text' id='' name='' class='form-control' maxlength='46' title='현금' value=''></td>"
                     +"		<td><input type='text' id=' name='' class='form-control' maxlength='46' title='결제금액' value='" + $(this).data('prod-price') + "'></td>"
-                    +"		<td><a href='javascript:;' onclick=\"rowDelete(\'readingRoomSubTrId')\"><i class=\"fa fa-times red\"></i></a></td>"
+                    +"		<td><a href='#none' onclick=\"rowDelete(\'readingRoomSubTrId')\"><i class=\"fa fa-times red\"></i></a></td>"
                     +"	</tr>"
                     );
                 } else {

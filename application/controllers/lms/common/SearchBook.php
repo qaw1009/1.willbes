@@ -14,9 +14,13 @@ class SearchBook extends \app\controllers\BaseController
     public function index()
     {
         $return_type = get_var($this->_req('return_type'), 'table');
+        $prod_tabs = array_filter(explode(',', $this->_req('prod_tabs')));  // 노출되는 상품 탭
+        $hide_tabs = array_filter(explode(',', $this->_req('hide_tabs')));  // 비노출되는 상품 탭
+
         $data = [
             'prod_type' => 'book',
-            'prod_tabs' => explode(',', $this->_req('prod_tabs')),  // 노출되는 상품 탭
+            'prod_tabs' => $prod_tabs,
+            'hide_tabs' => $hide_tabs,
             'site_code' => $this->_req('site_code'),
             'return_type' => $return_type,
             'target_id' => get_var($this->_req('target_id'), 'bookList'),

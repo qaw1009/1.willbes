@@ -15,6 +15,8 @@ class SearchLectureAll extends \app\controllers\BaseController
     {
         $prod_type = $this->_req('prod_type');
         $LearnPatternCcd = $this->_req('LearnPatternCcd');
+        $prod_tabs = array_filter(explode(',', $this->_req('prod_tabs')));  // 노출되는 상품 탭
+        $hide_tabs = array_filter(explode(',', $this->_req('hide_tabs')));  // 비노출되는 상품 탭
 
         if($prod_type === 'on' && empty($LearnPatternCcd) ) {
             $LearnPatternCcd = '615001';        //단강좌
@@ -24,7 +26,8 @@ class SearchLectureAll extends \app\controllers\BaseController
 
         $this->load->view('common/search_lecture_all',[
             'prod_type' => $prod_type
-            ,'prod_tabs' => explode(',', $this->_req('prod_tabs'))  // 노출되는 상품 탭
+            ,'prod_tabs' => $prod_tabs
+            ,'hide_tabs' => $hide_tabs
             ,'site_code' => $this->_req('site_code')
             ,'return_type' => $this->_req('return_type')
             ,'target_id' => $this->_req('target_id')

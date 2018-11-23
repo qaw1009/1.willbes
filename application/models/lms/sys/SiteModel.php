@@ -55,8 +55,9 @@ class SiteModel extends WB_Model
     }
 
     /**
-     * 사이트 코드 목록 조회 : $is_column 추가 : 다른 항목 추출시 컬럼명 전달
+     * 사이트 코드 목록 조회
      * @param bool $is_auth
+     * @param string $is_column [추가 컬럼 조회시 컬럼명 전달]
      * @return array
      */
     public function getSiteArray($is_auth = true, $is_column = 'SiteName')

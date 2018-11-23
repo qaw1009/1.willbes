@@ -23,6 +23,7 @@
         <input type="hidden" name="target_field" id="target_field" value="{{$target_field}}"/>
         <input type="hidden" name="prod_tabs" id="prod_tabs" value="{{implode(',', $prod_tabs)}}"/>
         <input type="hidden" name="hide_tabs" id="hide_tabs" value="{{implode(',', $hide_tabs)}}"/>
+        <input type="hidden" name="is_event" id="is_event" value="{{$is_event}}"/>
 @endsection
 
 @section('layer_content')
@@ -160,9 +161,8 @@
                 columns: [
                     {'data' : null, 'render' : function(data, type, row, meta) {
                         var seq = meta.row + meta.settings._iDisplayStart;
-                        var codeInfo= row.ProdCode+'@$['+row.ProdCode+'] '+ row.ProdName + '@$';
-                        codeInfo += row.wLecIdx != null ? row.wLecIdx : '';  // 마스터강의식별자 추가
-                        return '<input type="checkbox" id="checkIdx' + seq + '" name="checkIdx" class="flat" value="' + codeInfo + '" />';
+
+                        return '<input type="checkbox" id="checkIdx' + seq + '" name="checkIdx" class="flat" value="' + row.ProdCode + '" data-row-idx="' + meta.row + '"/>';
                     }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                         return row.SiteName+'<BR>'+(row.CateName_Parent == null ? '' : row.CateName_Parent+'<BR>')+(row.CateName)+'<BR>'+row.SchoolYear;
@@ -277,22 +277,32 @@
                 if(addCnt === 0) {alert("적용할 강좌가 없습니다. 선택 후 적용하여 주십시오.");return;}
                 var prod_type = $search_form_modal.find("input[name='prod_type']").val() + '_lecture'; // 상품타입 (on/off)
                 var learn_pattern_ccd = $search_form_modal.find("input[name='LearnPatternCcd']").val(); // 학습형태
-                var html;
+                var row, data, html;
 
                 if (!confirm('해당 강좌를 적용하시겠습니까?')) {return;}
 
                 for (i=0;i<allCnt;i++)	 {	//노출된 갯수에서 선택한 것만 적용
                     if ($("input:checkbox[id='checkIdx"+i+"']").is(":checked") === true) {
-                        temp_data = $("#checkIdx"+i).val();
-                        temp_data_arr = temp_data.split("@$");
+                        row = $datatable_modal.row($("#checkIdx"+i).data('row-idx')).data();
 
-                        html = '<span class="pr-10">' + temp_data_arr[1];
-                        html += '   <a href="#none" data-prod-code="' + temp_data_arr[0] + '" class="selected-product-delete"><i class="fa fa-times red"></i></a>';
-                        html += '   <input type="hidden" name="prod_code[]" value="' + temp_data_arr[0] + '" data-prod-type="' + prod_type + '" data-learn-pattern-ccd="' + learn_pattern_ccd + '" data-w-lec-idx="' + temp_data_arr[2]  + '"/>';
+                        data = ' data-prod-type="' + prod_type + '" data-learn-pattern-ccd="' + learn_pattern_ccd + '" data-w-lec-idx="' + (row.wLecIdx != null ? row.wLecIdx : '') + '"';
+                        data += ' data-prod-name="' + Base64.encode(row.ProdName) + '" data-sale-price="' + row.SalePrice + '" data-real-sale-price="' + row.RealSalePrice + '"';
+                        data += ' data-prod-type-ccd-name="' + row.ProdTypeCcd_Name + '" data-learn-pattern-ccd-name="' + row.LearnPatternCcd_Name + '"';
+
+                        html = '<span class="pr-10">[' + row.ProdCode + '] ' + row.ProdName;
+                        html += '   <a href="#none" data-prod-code="' + row.ProdCode + '" class="selected-product-delete"><i class="fa fa-times red"></i></a>';
+                        html += '   <input type="hidden" name="prod_code[]" value="' + row.ProdCode + '"' + data + '/>';
                         html += '</span>';
+
                         $(document).find("#"+$parent_location_span).append(html);
                     }
                 }
+
+                // change 이벤트 발생
+                if ($search_form_modal.find("input[name='is_event']").val() === 'Y') {
+                    $(document).find("#"+$parent_location_span).trigger('change');
+                }
+
                 $("#pop_modal").modal('toggle');
             }
         });

@@ -9,7 +9,7 @@
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group no-border-bottom">
-                    <label class="control-label col-md-1" for="search_member_value">회원검색</label>
+                    <label class="control-label col-md-1" for="search_mem_id">회원검색</label>
                     <div class="col-md-8 form-inline">
                         <input type="text" id="search_mem_id" name="search_mem_id" class="form-control" title="회원검색어" value="">
                         <button type="button" name="btn_member_search" data-result-type="single" class="btn btn-primary mb-0 ml-5">회원검색</button>

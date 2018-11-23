@@ -18,6 +18,7 @@
         <input type="hidden" name="target_field" id="target_field" value="{{$target_field}}"/>
         <input type="hidden" name="prod_tabs" id="prod_tabs" value="{{implode(',', $prod_tabs)}}"/>
         <input type="hidden" name="hide_tabs" id="hide_tabs" value="{{implode(',', $hide_tabs)}}"/>
+        <input type="hidden" name="is_event" id="is_event" value="{{$is_event}}"/>
 @endsection
 
 @section('layer_content')
@@ -126,7 +127,7 @@
                         var codeInfo= row.ProdCode+'@$'+row.ProdName+'@$'+addComma(row.SalePrice)+'원@$'+addComma(row.RealSalePrice)+'원@$'+row.wSaleCcdName;
                         var checked = ($ori_selected_data.hasOwnProperty(row.ProdCode) === true) ? ' checked="checked"' : '';
 
-                        return '<input type="checkbox" id="checkBook' + seq + '" name="checkBook" class="flat" value="' + codeInfo + '"' + checked + '/>';
+                        return '<input type="checkbox" id="checkBook' + seq + '" name="checkBook" class="flat" value="' + codeInfo + '" data-row-idx="' + meta.row + '"' + checked + '/>';
                     }},
                     {'data' : 'SiteName'},
                     {'data' : 'ProdCode'},
@@ -197,21 +198,31 @@
                         }
                     }
                 } else if ($return_type === 'inline') {
-                    $("input[name='checkBook']:checked").each(function() {
-                        var temp_data = $(this).val();		                //해당 id값 추출
-                        var temp_data_arr = temp_data.split("@$");	    //문자열 분리
-                        var prod_type = $search_form_modal.find("input[name='prod_type']").val(); // 상품타입 (book)
+                    var prod_type = $search_form_modal.find("input[name='prod_type']").val(); // 상품타입 (book)
+                    var row, data;
 
+                    $("input[name='checkBook']:checked").each(function() {
                         // 기존 선택된 것 이외의 것만 추가
-                        if ($ori_selected_data.hasOwnProperty(temp_data_arr[0]) === false) {
+                        if ($ori_selected_data.hasOwnProperty($(this).val()) === false) {
+                            row = $datatable_modal.row($(this).data('row-idx')).data();
+
+                            data = ' data-prod-type="' + prod_type + '" data-learn-pattern-ccd=""';
+                            data += ' data-prod-name="' + Base64.encode(row.ProdName) + '" data-sale-price="' + row.SalePrice + '" data-real-sale-price="' + row.RealSalePrice + '"';
+                            data += ' data-prod-type-ccd-name="교재" data-learn-pattern-ccd-name=""';
+
                             $(document).find($target_id).append(
-                                '<span class="pr-10">' + temp_data_arr[1] +
-                                '   <a href="#none" data-prod-code="' + temp_data_arr[0] + '" class="selected-product-delete"><i class="fa fa-times red"></i></a>' +
-                                '   <input type="hidden" name="' + $target_field + '[]" value="' + temp_data_arr[0] + '" data-prod-type="' + prod_type + '" data-learn-pattern-ccd=""/>' +
+                                '<span class="pr-10">[' + row.ProdCode + '] ' + row.ProdName +
+                                '   <a href="#none" data-prod-code="' + row.ProdCode + '" class="selected-product-delete"><i class="fa fa-times red"></i></a>' +
+                                '   <input type="hidden" name="' + $target_field + '[]" value="' + row.ProdCode + '"' + data + '/>' +
                                 '</span>'
                             );
                         }
                     });
+
+                    // change 이벤트 발생
+                    if ($search_form_modal.find("input[name='is_event']").val() === 'Y') {
+                        $(document).find("#"+$parent_location_span).trigger('change');
+                    }
                 }
 
                 $("#pop_modal").modal('toggle');

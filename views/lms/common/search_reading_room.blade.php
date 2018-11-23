@@ -14,6 +14,7 @@
         <input type="hidden" name="target_field" id="target_field" value="{{$target_field}}"/>
         <input type="hidden" name="prod_tabs" id="prod_tabs" value="{{implode(',', $prod_tabs)}}"/>
         <input type="hidden" name="hide_tabs" id="hide_tabs" value="{{implode(',', $hide_tabs)}}"/>
+        <input type="hidden" name="is_event" id="is_event" value="{{$is_event}}"/>
         @endsection
 
         @section('layer_content')
@@ -150,7 +151,7 @@
                 serverSide: true,
                 buttons: [],
                 ajax: {
-                    'url' : (prod_type == 'reading_room') ? '{{ site_url('/common/searchReadingRoom/listAjax') }}' : '{{ site_url('/common/searchLockerRoom/listAjax') }}',
+                    'url' : (prod_type === 'reading_room') ? '{{ site_url('/common/searchReadingRoom/listAjax') }}' : '{{ site_url('/common/searchLockerRoom/listAjax') }}',
                     'type' : 'POST',
                     'data' : function(data) {
                         return $.extend(arrToJson($search_form_modal.serializeArray()), { 'start' : data.start, 'length' : data.length});
@@ -158,31 +159,28 @@
                 },
                 columns: [
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            // 리스트 번호
-                            return $datatable_modal.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
-                        }},
+                        // 리스트 번호
+                        return $datatable_modal.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
+                    }},
                     {'data' : 'SiteName'},
                     {'data' : 'CampusName'},
                     {'data' : 'ProdCode'},
                     {'data' : 'ReadingRoomName', 'render' : function(data, type, row, meta) {
-                            var datas = 'data-w-lec-idx="' + row.LrIdx + '" data-prod-name="'+row.ReadingRoomName+'" data-prod-code="'+row.ProdCode+'"';
-                            datas += ' data-prod-price="' + row.main_RealSalePrice + '"';
-
-                            return '<a href="javascript:void(0);" class="btn-select" '+datas+'><u>' + data + '</u></a>';
-                        }},
+                        return '<a href="javascript:void(0);" data-row-idx="' + meta.row + '" class="btn-select"><u>' + data + '</u></a>';
+                    }},
                     {'data' : 'LakeLayer'},
                     {'data' : 'sub_RealSalePrice'},
                     {'data' : 'main_RealSalePrice'},
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            return row.countY+'/'+row.UseQty;
-                        }},
+                        return row.countY+'/'+row.UseQty;
+                    }},
                     {'data' : 'countN'},
                     {'data' : 'IsSmsUse', 'render' : function(data, type, row, meta) {
-                            return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
-                        }},
+                        return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
+                    }},
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
-                            return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
-                        }},
+                        return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
+                    }},
                     {'data' : 'RegAdminName'},
                     {'data' : 'RegDatm'}
                 ]
@@ -193,52 +191,23 @@
                     return;
                 }
 
-                if ($return_type === 'table') {
-                    $(document).find($target_id).append(
-                    "<tr id='readingRoomTrId'>"
-                    +"		<input type='hidden' name='" + $target_field + "[]' id='" + $target_field + "' value='"+$(this).data('prod-code')+"'>"
-                    +"		<td>[{{$mang_title}}]&nbsp;" + $(this).data('prod-name') + "</td>"
-                    +"		<td>" + $(this).data('prod-price') + "</td>"
-                    +"		<td>"
-                    +"          <select name='OptionCcd[]' id='OptionCcd' class=\"form-control\">"
-                    @foreach($bookprovision_ccd as $key=>$val)
-                    +"                  <option value='{{$key}}'>{{$val}}</option>"
-                    @endforeach
-                    +"          </select>"
-                    +"      </td>"
-                    +"		<td><input type='text' id='' name='' class='form-control' maxlength='46' title='할인사유' value=''></td>"
-                    +"		<td><input type='text' id=' name='' class='form-control' maxlength='46' title='카드' value='" + $(this).data('prod-price') + "'></td>"
-                    +"		<td><input type='text' id='' name='' class='form-control' maxlength='46' title='현금' value=''></td>"
-                    +"		<td><input type='text' id=' name='' class='form-control' maxlength='46' title='결제금액' value='" + $(this).data('prod-price') + "'></td>"
-                    +"		<td><a href='#none' onclick=\"rowDelete(\'readingRoomTrId')\"><i class=\"fa fa-times red\"></i></a></td>"
-                    +"	</tr>"
+                var row = $datatable_modal.row($(this).data('row-idx')).data();
+                var data = ' data-prod-type="' + prod_type + '" data-learn-pattern-ccd=""';
+                data += ' data-prod-name="' + Base64.encode(row.ProdName) + '" data-sale-price="' + row.main_SalePrice + '" data-real-sale-price="' + row.main_RealSalePrice + '"';
+                data += ' data-prod-type-ccd-name="{{$mang_title}}" data-learn-pattern-ccd-name=""';
 
-                    +"  <tr id='readingRoomSubTrId'>"
-                    +"		<input type='hidden' name='" + $target_field + "[]' id='" + $target_field + "' value='"+$(this).data('prod-code')+"'>"
-                    +"		<td>[예치금]&nbsp;" + $(this).data('prod-name') + "</td>"
-                    +"		<td>" + $(this).data('prod-price') + "</td>"
-                    +"		<td>"
-                    +"          <select name='OptionCcd[]' id='OptionCcd' class=\"form-control\">"
-                    @foreach($bookprovision_ccd as $key=>$val)
-                    +"                  <option value='{{$key}}'>{{$val}}</option>"
-                    @endforeach
-                    +"          </select>"
-                    +"      </td>"
-                    +"		<td><input type='text' id='' name='' class='form-control' maxlength='46' title='할인사유' value=''></td>"
-                    +"		<td><input type='text' id=' name='' class='form-control' maxlength='46' title='카드' value='" + $(this).data('prod-price') + "'></td>"
-                    +"		<td><input type='text' id='' name='' class='form-control' maxlength='46' title='현금' value=''></td>"
-                    +"		<td><input type='text' id=' name='' class='form-control' maxlength='46' title='결제금액' value='" + $(this).data('prod-price') + "'></td>"
-                    +"		<td><a href='#none' onclick=\"rowDelete(\'readingRoomSubTrId')\"><i class=\"fa fa-times red\"></i></a></td>"
-                    +"	</tr>"
-                    );
-                } else {
-                    //html append 부분
-                    html = '<span class="pr-10">' + $(this).data('prod-name');
-                    html += '   <a href="#none" data-prod-code="' + $(this).data('prod-code') + '" class="selected-product-delete"><i class="fa fa-times red"></i></a>';
-                    html += '   <input type="hidden" name="prod_code[]" value="' + $(this).data('prod-code') + '" data-prod-type="' + prod_type + '" data-learn-pattern-ccd=""/>';
-                    html += '</span>';
-                    $(document).find("#" + $parent_location_span).append(html);
+                //html append 부분
+                var html = '<span class="pr-10">[' + row.ProdCode + '] ' + row.ProdName;
+                html += '   <a href="#none" data-prod-code="' + row.ProdCode + '" class="selected-product-delete"><i class="fa fa-times red"></i></a>';
+                html += '   <input type="hidden" name="prod_code[]" value="' + row.ProdCode + '"' + data + '/>';
+                html += '</span>';
+                $(document).find("#" + $parent_location_span).append(html);
+
+                // change 이벤트 발생
+                if ($search_form_modal.find("input[name='is_event']").val() === 'Y') {
+                    $(document).find("#"+$parent_location_span).trigger('change');
                 }
+
                 $("#pop_modal").modal('toggle');
             });
         });

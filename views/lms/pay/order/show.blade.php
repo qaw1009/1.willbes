@@ -477,7 +477,6 @@
             </div>
         </div>
     </div>
-    <script src="/public/js/lms/order_memo.js"></script>
     <script type="text/javascript">
         var $refund_proc_form = $('#refund_proc_form');
 

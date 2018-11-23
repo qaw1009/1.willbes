@@ -38,24 +38,6 @@ class Assignment extends BaseBoard
     }
 
     /**
-     *
-     */
-    public function createCommonHolidayScheduleModal()
-    {
-        $method = 'POST';
-        $data = null;
-
-        //요일값 초기화
-        $week_arr = explode(",",",,,,,,");
-
-        $this->load->view("board/professor/{$this->board_name}/create_holiday_schedule_modal", [
-            'method' => $method,
-            'week_arr' => $week_arr,
-            'data' => $data
-        ]);
-    }
-
-    /**
      * 강사게시판 - 첨삭게시판
      */
     public function mainList()
@@ -463,7 +445,7 @@ class Assignment extends BaseBoard
             'input_params' => $input_params,
             'prod_code' => $prod_code,
             'data' => $data,
-            'attach_file_cnt' => $this->boardModel->_attach_img_cnt
+            'attach_file_cnt' => 5
         ]);
     }
 
@@ -526,7 +508,7 @@ class Assignment extends BaseBoard
             'data' => $data,
             'getCategoryArray' => $get_category_array,
             'board_idx' => $params[0],
-            'attach_file_cnt' => $this->boardModel->_attach_img_cnt,
+            'attach_file_cnt' => 5,
             'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}&prof_idx={$data['ProfIdx']}&site_code={$data['SiteCode']}&cate_code={$data['CateCode']}&board_idx={$data['BoardIdx']}",
         ]);
     }

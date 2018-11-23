@@ -40,15 +40,21 @@
             <div class="col-md-10 form-inline">
                 @for($i = 0; $i < $attach_file_cnt; $i++)
                     <div class="title">
-                        <div class="filetype col-md-10">
-                            <input type="text" class="form-control form-inline file-text mr-10 mt-5" disabled="" style="width: 70%">
-                            <button class="btn form-inline btn-sm btn-primary mb-0 mt-5" type="button">파일 선택</button>
+                        <div class="filetype col-md-10 mt-5">
+                            <input type="text" class="form-control file-text mr-10" disabled="">
+                            <button class="btn btn-sm btn-primary mb-0" type="button">파일 선택</button>
                             <span class="file-select file-btn">
                                 <input type="file" id="attach_file{{ $i }}" name="attach_file[]" class="form-control input-file" title="첨부{{ $i }}"/>
                             </span>
+                            <input class="file-reset btn-danger btn" type="button" value="X" />
                         </div>
                         @if(empty($data['arr_attach_file_path'][$i]) === false)
-                            <p class="form-control-static">[ <a href="{{ $data['arr_attach_file_path'][$i] . $data['arr_attach_file_name'][$i] }}" rel="popup-image">{{ $data['arr_attach_file_real_name'][$i] }}</a> ]
+                            {{--<p class="form-control-static">[ <a href="{{ $data['arr_attach_file_path'][$i] . $data['arr_attach_file_name'][$i] }}" rel="popup-image">{{ $data['arr_attach_file_real_name'][$i] }}</a> ]
+                                <a href="#none" class="file-delete" data-attach-idx="{{ $data['arr_attach_file_idx'][$i]  }}"><i class="fa fa-times red"></i></a>
+                            </p>--}}
+                            <p class="form-control-static">[ <a href="javascript:void(0);" class="file-download" data-file-path="{{ urlencode($data['arr_attach_file_path'][$i].$data['arr_attach_file_name'][$i])}}" data-file-name="{{ urlencode($data['arr_attach_file_real_name'][$i]) }}" target="_blank">
+                                {{ $data['arr_attach_file_real_name'][$i] }}
+                                </a> ]
                                 <a href="#none" class="file-delete" data-attach-idx="{{ $data['arr_attach_file_idx'][$i]  }}"><i class="fa fa-times red"></i></a>
                             </p>
                         @endif
@@ -90,6 +96,12 @@
                     $datatable.draw();
                 }
             }, showValidateError, null, false, 'alert');
+        });
+
+        //파일다운로드
+        $('.file-download').click(function() {
+            var _url = '{{ site_url("/board/professor/{$boardName}/download") }}/' + getQueryString() + '&path=' + $(this).data('file-path') + '&fname=' + $(this).data('file-name');
+            window.open(_url, '_blank');
         });
 
         // 파일삭제

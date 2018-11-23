@@ -103,6 +103,24 @@
 
     <a href="{{ site_url('/home/html/acad_offline_list_packagesub_new') }}" target="_blank">** 학원 방문결제 접수 > 종합반 상세 page 이동</a><br/><br/>
 
+    <a href="{{ site_url('/home/html/cscenter_index') }}" target="_blank">고객센터 Index page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/cscenter1') }}" target="_blank">고객센터 > 자주하는 질문 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/cscenter2') }}" target="_blank">고객센터 > 공지사항 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/cscenter3') }}" target="_blank">고객센터 > 1:1상담 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/cscenter4') }}" target="_blank">고객센터 > 사이트 이용가이드 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/cscenter5') }}" target="_blank">고객센터 > 모바일 이용가이드 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/cscenter6_1') }}" target="_blank">고객센터 > PC 원격지원 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/cscenter6_2') }}" target="_blank">고객센터 > 학습 프로그램설치 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/cscenter7') }}" target="_blank">고객센터 > 부정사용자 규제 page 이동</a><br/><br/><br/>
+
 </div>
 
 <div style="float:left; width: 420px; height: 750px; border-right: 1px solid #ccc; margin-right: 15px; font-size: 15px;">
@@ -157,23 +175,7 @@
 
     <a href="{{ site_url('/home/html/mypage_userinfo2') }}" target="_blank">내강의실 > 회원정보 > 비밀번호변경 page 이동</a><br/><br/>
 
-    <a href="{{ site_url('/home/html/cscenter_index') }}" target="_blank">고객센터 Index page 이동</a><br/><br/>
 
-    <a href="{{ site_url('/home/html/cscenter1') }}" target="_blank">고객센터 > 자주하는 질문 page 이동</a><br/><br/>
-
-    <a href="{{ site_url('/home/html/cscenter2') }}" target="_blank">고객센터 > 공지사항 page 이동</a><br/><br/>
-
-    <a href="{{ site_url('/home/html/cscenter3') }}" target="_blank">고객센터 > 1:1상담 page 이동</a><br/><br/>
-
-    <a href="{{ site_url('/home/html/cscenter4') }}" target="_blank">고객센터 > 사이트 이용가이드 page 이동</a><br/><br/>
-
-    <a href="{{ site_url('/home/html/cscenter5') }}" target="_blank">고객센터 > 모바일 이용가이드 page 이동</a><br/><br/>
-
-    <a href="{{ site_url('/home/html/cscenter6_1') }}" target="_blank">고객센터 > PC 원격지원 page 이동</a><br/><br/>
-
-    <a href="{{ site_url('/home/html/cscenter6_2') }}" target="_blank">고객센터 > 학습 프로그램설치 page 이동</a><br/><br/>
-
-    <a href="{{ site_url('/home/html/cscenter7') }}" target="_blank">고객센터 > 부정사용자 규제 page 이동</a><br/><br/><br/>
 
     <a href="{{ site_url('/home/html/test_popup') }}" target="_blank">*** test popup page 이동</a><br/><br/>
     <a href="{{ site_url('/home/html/test_popup2') }}" target="_blank">*** test 인증하기 page 이동</a><br/><br/>

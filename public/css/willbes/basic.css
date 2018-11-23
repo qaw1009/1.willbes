@@ -509,6 +509,9 @@ select[disabled] {
 .h900 {
   height: 900px !important;
 }
+.h920 {
+  height: 920px !important;
+}
 .h960 {
   height: 960px !important;
 }
@@ -730,6 +733,9 @@ select[disabled] {
 }
 .pr20 {
   padding-right: 20px !important;
+}
+.pr30 {
+  padding-right: 30px !important;
 }
 
 .pb-zero,

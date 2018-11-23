@@ -125,6 +125,28 @@ $(function() {
     });
 });
 
+// 첨삭강좌 채점결과 모달팝업 Script
+function markInfoModal(ele_id, tabId) {
+    $('#' + ele_id).show().css('display', 'block').trigger('create');
+    $('ul.tabWrap').find('#' + tabId).click(); 
+}
+
+// 나의 과제제출 버튼 Script
+$(function() {
+    $('.editTable .MoreBtn a').click(function() {
+        if ($('.editTableList').hasClass('hover')) {
+            $('.editTableList').removeClass('hover');
+            $('.editTable .MoreBtn a .txt').text('열기');
+            $('.editTableList tr.editCont').css('display','none');
+            
+        } else {
+            $('.editTableList').addClass('hover');
+            $('.editTable .MoreBtn a .txt').text('닫기');
+            $('.editTableList.hover tr.editCont').css('display','');
+        }
+    });
+});
+
 // 장바구니 상품정보 Script
 $(function() {
     $('td.w-list a').click(function(){

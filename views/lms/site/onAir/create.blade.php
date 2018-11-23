@@ -71,7 +71,7 @@
                         <input type="checkbox" name="week[]" class="flat" @if($week_arr[5] == "Y") checked="checked" @endif> <span class="day">금</span>
                         <input type="checkbox" name="week[]" class="flat" @if($week_arr[6] == "Y") checked="checked" @endif> <span class="day">토</span>
                         &nbsp;
-                        <button type="button" onclick="setOnAirDate();" class="btn btn-sm btn-primary">적용</button>
+                        <button type="button" onclick="setOnAirDate('');" class="btn btn-sm btn-primary">적용</button>
                         <input type="hidden" id="week_str" name="week_str" value="">
                     </div>
                 </div>
@@ -421,7 +421,7 @@
                     return str;
                 }
 
-                function setOnAirDate() {
+                function setOnAirDate(state) {
                     if($("#study_start_date").val() == "") {alert("개강일을 선택해 주세요.");$("#study_start_date").focus();return;}
                     if($('#on_air_num').val() == '') {alert('회차를 입력해 주세요.'); $('#on_air_num').focus();return;}
 
@@ -444,13 +444,24 @@
                             var i = 0;
 
                             result += "<table border='0' cellpadding='0' cellspacing='0' style='float: left;'><tr>";
-                            while (parseInt($("#on_air_num").val(), 10) > total ) {
-                                ty = yy + parseInt((mm + i - 1) / 12);
-                                tm = Months[((mm + i) % 12)];
-                                result += "<td style='padding:5px;' valign='top'>";
-                                result += Calendar(ty, tm);
-                                result += "</td>";
-                                i++;
+                            if (state == 'modify') {
+                                while (parseInt($("#on_air_num").val(), 10) > total ) {
+                                    ty = yy + parseInt((mm + i - 1) / 12);
+                                    tm = Months[((mm + i) % 12)];
+                                    result += "<td style='padding:5px;' valign='top'>";
+                                    result += Calendar_modify(ty, tm);
+                                    result += "</td>";
+                                    i++;
+                                }
+                            } else {
+                                while (parseInt($("#on_air_num").val(), 10) > total ) {
+                                    ty = yy + parseInt((mm + i - 1) / 12);
+                                    tm = Months[((mm + i) % 12)];
+                                    result += "<td style='padding:5px;' valign='top'>";
+                                    result += Calendar(ty, tm);
+                                    result += "</td>";
+                                    i++;
+                                }
                             }
                             result += "</tr></table>";
 
@@ -524,6 +535,78 @@
                     return output_string;
                 }
 
+                function Calendar_modify( Year, Month ) {
+                    var set_onair_date = new Array(
+                            @foreach($arr_onair_date as $row)
+                                "{{$row["OnAirDate"]}}"@if($loop->last == false),@endif
+                            @endforeach
+                            );
+                    var days = new Array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
+                    var weekDay = new Array("일", "월", "화", "수", "목", "금", "토");
+
+                    firstDay = new Date(Year,Month-1,1).getDay();
+                    days[1] = (((Year % 4 == 0) && (Year % 100 != 0)) || (Year % 400 == 0)) ? 29 : 28;
+
+                    var output_string = "";
+                    output_string += "<table border='0' cellpadding='0' cellspacing='0' width='176'>";
+                    output_string += "<tr><td align='center'><b>";
+                    output_string += Year + " / " + Month;
+                    output_string += "</b></td></tr>";
+                    output_string += "</table>";
+                    output_string += "<table border='0' cellpadding='0' cellspacing='1' bgcolor='#999999'>";
+                    output_string += "<tr align='center' bgcolor='#dadada' height='25'> ";
+                    for (var dayNum= 0; dayNum <= 6; dayNum++) {
+                        output_string += "<td width='24'>" + weekDay[dayNum] + "</td>";
+                    }
+                    output_string += "</tr>";
+
+                    var kMonth = (Month < 10) ? "0"+Month : Month;
+                    var nDay = 1;
+
+                    for(var i=0; i<6; i++) {
+                        output_string += "<tr align='center'>";
+                        for(var j=0; j<7; j++) {
+                            var checked = "";
+                            tarr = i*7+j;
+                            if(firstDay <= tarr && days[Month-1] >= nDay ) {
+                                var kDay = (nDay < 10) ? "0"+nDay : nDay;
+                                var bg_color = "";
+                                var frm_value = "";
+
+                                for(k=0;k<set_onair_date.length;k++){
+                                    if(Year +"-"+ kMonth +"-"+ kDay == set_onair_date[k]) {
+                                        checked = "Y"
+                                    }
+                                }
+
+                                if (checked == 'Y') {
+                                    bg_color ="yellow";
+                                    frm_value = Year +""+ kMonth +""+ kDay;
+                                    total++;
+                                } else {
+                                    bg_color ="#ffffff";
+                                    frm_value = "";
+                                }
+
+                                output_string += "<td id='"+ (Year +""+ kMonth +""+ kDay) +"' style='background-color:"+ bg_color +";cursor:hand;cursor:pointer;' width='24' height='20' ";
+                                output_string += " onClick=\"javascript:chkDay('"+ parseInt((Year +""+ kMonth +""+ kDay),10)  +"', "+ karr +");\">";
+                                output_string += nDay
+                                output_string += "<input type='hidden' name='savDay[]' value='"+ frm_value +"'>";
+                                output_string += "</td>";
+                                nDay++;
+                                karr++;
+                            } else {
+                                output_string += "<td bgcolor='#ffffff' width='24' height='20'>"+ "&nbsp;" +"</td>";
+                            }
+                        }
+                    }
+
+                    output_string += "</tr>";
+                    output_string += "</table>";
+
+                    return output_string;
+                }
+
                 function chkDay(clkDay, arr) {
                     var id = $("#"+clkDay);
                     var id_val = $('input[name="savDay[]"]:eq('+arr+')').val().length;
@@ -544,7 +627,7 @@
                     $("#on_air_num").val(t);
                 }
 
-                @if($method === "PUT")setOnAirDate();@endif
+                @if($method === "PUT")setOnAirDate('modify');@endif
                 // 송출기간 달력 생성 end --------------------------
             </script>
 

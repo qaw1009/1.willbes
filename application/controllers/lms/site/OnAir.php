@@ -68,6 +68,7 @@ class OnAir extends \app\controllers\BaseController
     {
         $method = 'POST';
         $data = null;
+        $arr_onair_date = [];
         $oa_idx = '';
         $arr_title = [];
 
@@ -101,6 +102,9 @@ class OnAir extends \app\controllers\BaseController
                 show_error('데이터 조회에 실패했습니다.');
             }
 
+            //송출기간조회
+            $arr_onair_date = $this->onAirModel->listOnAirDate($oa_idx);
+
             // 카테고리 연결 데이터 조회
             $arr_cate_code = $this->onAirModel->listOnAirCategory($oa_idx);
             $data['CateCodes'] = $arr_cate_code;
@@ -117,6 +121,7 @@ class OnAir extends \app\controllers\BaseController
             'arr_campus' => $arr_campus,
             'list_class_room' => $list_class_room,
             'data' => $data,
+            'arr_onair_date' => $arr_onair_date,
             'oa_idx' => $oa_idx,
             'week_arr' => $week_arr,
             'arr_professor' => $arr_professor,

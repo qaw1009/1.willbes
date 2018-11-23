@@ -7,6 +7,8 @@ class BoardModel extends WB_Model
     private $_table_r_category = 'lms_board_r_category';
     private $_table_attach = 'lms_board_attach';
     private $_table_memo = 'lms_board_memo';
+    private $_table_r_assignment_schedule = 'lms_board_r_assignment_schedule';
+    private $_table_r_assignment_schedule_r_date = 'lms_board_r_assignment_schedule_r_date';
     private $_table_sys_site = 'lms_site';
     private $_table_sys_admin = 'wbs_sys_admin';
     private $_table_sys_code = 'lms_sys_code';
@@ -1045,6 +1047,100 @@ class BoardModel extends WB_Model
 
         // 쿼리 실행
         return $this->_conn->query('select ' . $column . $from . $where)->row_array();
+    }
+
+    /**
+     * 과제스케줄데이터 조회
+     * @param $prod_code
+     * @return mixed
+     */
+    public function getAssignmentSchedule($prod_code)
+    {
+        $column = 'StartDate, EndDate, WeekArray';
+        $from = "
+            FROM {$this->_table_r_assignment_schedule}
+        ";
+        $arr_condition = [
+            'EQ' => ['ProdCode' => $prod_code]
+        ];
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        // 쿼리 실행
+        return $this->_conn->query('select ' . $column . $from . $where)->row_array();
+    }
+
+    /**
+     * 과제스케줄데이터 조회
+     * @param $prod_code
+     * @return mixed
+     */
+    public function getAssignmentScheduleDate($prod_code)
+    {
+        $column = 'ScheduleDate';
+        $from = "
+            FROM {$this->_table_r_assignment_schedule_r_date}
+        ";
+        $arr_condition = [
+            'EQ' => ['ProdCode' => $prod_code]
+        ];
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        // 쿼리 실행
+        return $this->_conn->query('select ' . $column . $from . $where)->result_array();
+    }
+
+    /**
+     * 과제스케줄데이터 등록
+     * @param $prod_code
+     * @param $params_post
+     * @return array|bool
+     */
+    public function addAssignmentSchedule($prod_code, $params_post)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $admin_idx = $this->session->userdata('admin_idx');
+            $reg_ip = $this->input->ip_address();
+
+            $is_delete = $this->_conn->where('ProdCode', $prod_code)->delete($this->_table_r_assignment_schedule);
+            if ($is_delete === false) {
+                throw new \Exception('기존 등록된 강좌스케줄 삭제에 실패했습니다.');
+            }
+
+            $inputData = [
+                'ProdCode' => $prod_code,
+                'StartDate' => element('start_date', $params_post),
+                'EndDate' => element('end_date', $params_post),
+                'WeekArray' => element('week_str', $params_post),
+                'RegAdminIdx' => $admin_idx,
+                'RegIp' => $reg_ip
+            ];
+            if ($this->_conn->set($inputData)->insert($this->_table_r_assignment_schedule) === false) {
+                throw new \Exception('강좌스케줄 등록에 실패했습니다.');
+            }
+
+            foreach (element('savDay', $params_post) as $key => $val) {
+                if (empty($val) === false) {
+                    $inputData = [
+                        'ProdCode' => $prod_code,
+                        'ScheduleDate' => date('Y-m-d', strtotime($val))
+                    ];
+                    if ($this->_conn->set($inputData)->insert($this->_table_r_assignment_schedule_r_date) === false) {
+                        throw new \Exception('강좌스케줄 등록에 실패했습니다.');
+                    }
+                }
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
     }
 
     /**

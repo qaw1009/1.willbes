@@ -9,11 +9,6 @@
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">
-                    <div class="col-xs-12 form-inline">
-                        <button type="button" class="btn btn-sm btn-dark btn-open-calendar">공통 미노출일자 등록/관리</button>
-                    </div>
-                </div>
-                <div class="form-group">
                     <label class="control-label col-md-1" for="search_value">통합검색</label>
                     <div class="col-md-3">
                         <input type="text" class="form-control" id="search_value" name="search_value">
@@ -90,14 +85,6 @@
             // 교수별 리스트 페이지
             $list_table.on('click', '.btn-detailList', function() {
                 location.href='{{ site_url("/board/professor/{$boardName}/productList") }}/' + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}' + '&prof_idx=' + $(this).data('idx');
-            });
-
-            //공통 미노출일자 등록/관리
-            $('.btn-open-calendar').click(function () {
-                $('.btn-open-calendar').setLayer({
-                    "url" : "{{ site_url("/board/professor/{$boardName}/createCommonHolidayScheduleModal/?") }}" + '{!! $boardDefaultQueryString !!}',
-                    "width" : "1200"
-                });
             });
         });
     </script>

@@ -537,7 +537,7 @@ class OnAirModel extends WB_Model
             $arr_onair_category = $this->_getOnAirCategoryArray($oa_idx);
 
             // 기존 온에어 일정 조회
-            $arr_onair_date = $this->_listOnAirDate($oa_idx);
+            $arr_onair_date = $this->listOnAirDate($oa_idx);
 
             // 기존 온에어 타이틀 정보 조회
             $arr_onair_title = $this->_listOnAirTitle($oa_idx);
@@ -616,6 +616,24 @@ class OnAirModel extends WB_Model
             return error_result($e);
         }
         return true;
+    }
+
+    /**
+     * 송출기간 조회
+     * @param $oa_idx
+     * @return mixed
+     */
+    public function listOnAirDate($oa_idx)
+    {
+        $column = 'OadIdx, OnAirDate, OnAirNum';
+        $from = "
+            FROM {$this->_table['onair_date']}
+        ";
+        $where = ' where OaIdx = ? and IsStatus = "Y"';
+        $order_by_offset_limit = ' order by OadIdx asc';
+
+        // 쿼리 실행
+        return $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit, [$oa_idx])->result_array();
     }
 
     /**
@@ -704,24 +722,6 @@ class OnAirModel extends WB_Model
         ]);
         $data = array_pluck($data, 'CateCode', 'CcIdx');
         return $data;
-    }
-
-    /**
-     * 송출기간 조회
-     * @param $oa_idx
-     * @return mixed
-     */
-    private function _listOnAirDate($oa_idx)
-    {
-        $column = 'OadIdx, OnAirDate, OnAirNum';
-        $from = "
-            FROM {$this->_table['onair_date']}
-        ";
-        $where = ' where OaIdx = ? and IsStatus = "Y"';
-        $order_by_offset_limit = ' order by OadIdx asc';
-
-        // 쿼리 실행
-        return $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit, [$oa_idx])->result_array();
     }
 
     private function _listOnAirTitle($oa_idx)

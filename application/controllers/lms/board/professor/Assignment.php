@@ -304,18 +304,99 @@ class Assignment extends BaseBoard
             ]
         ];
         $product_data = $this->lectureModel->listLecture(false, $arr_condition, 1, 0, ['A.ProdCode' => 'desc'])[0];
-        $product_data['temp_study_dnd_date'] = date('Y-m-d', strtotime("+12 months", strtotime($product_data['StudyStartDate'])));  //종료일 자동 셋팅 (강좌등록일기준 +365일)
 
-        $method = 'POST';
-        $data = null;
-        $week_arr = explode(",",",,,,,,");
+        // 스케줄 정보 조회
+        $schedule = $this->boardModel->getAssignmentSchedule($prod_code);
+        // 스케줄 상세 정보 조회
+        $arr_schedule_date = $this->boardModel->getAssignmentScheduleDate($prod_code);
+
+        if (empty($schedule) === true) {
+            $method = 'POST';
+            $schedule_data = [
+                'start_date' => $product_data['StudyStartDate'],
+                'end_date' => date('Y-m-d', strtotime("+12 months", strtotime($product_data['StudyStartDate']))),   //종료일 자동 셋팅 (강좌등록일기준 +365일)
+                'week_arr' => explode(",",",,,,,,"),
+                'arr_schedule_date' => []
+            ];
+        } else {
+            $method = 'PUT';
+            $schedule_data = [
+                'start_date' => $schedule['StartDate'],
+                'end_date' => $schedule['EndDate'],
+                'week_arr' => explode(",",$schedule['WeekArray']),
+                'arr_schedule_date' => $arr_schedule_date
+            ];
+        }
+
+        /*$schedule_data = [
+            'schedule' => $schedule,
+            'arr_schedule_date' => $arr_schedule_date
+        ];
+        print_r($schedule_data);*/
+
+
+
 
         $this->load->view("board/professor/{$this->board_name}/create_schedule_modal", [
-            'product_data' => $product_data,
+            'boardName' => $this->board_name,
+            'prod_code' => $prod_code,
             'method' => $method,
-            'week_arr' => $week_arr,
-            'data' => $data
+            'schedule_data' => $schedule_data,
+            'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}&prof_idx={$prof_idx}&site_code={$product_data['SiteCode']}",
         ]);
+    }
+
+    /**
+     * 과제노출스케줄 등록
+     * @param array $params
+     */
+    public function storeSchedule($params = [])
+    {
+        $prod_code = $params[0];
+
+        $rules = [
+            ['field' => 'start_date', 'label' => '강좌등록일', 'rules' => 'trim|required'],
+            ['field' => 'end_date', 'label' => '강좌종료일', 'rules' => 'trim|required'],
+            ['field' => 'week[]', 'label' => '노출요일', 'rules' => 'trim|required']
+        ];
+
+        $savDays = count($this->_reqP('savDay[]'));
+        if ($savDays <= 0) {
+            $rules = array_merge($rules, [
+                ['field'=>'savDay[]', 'label'=>'송출기간', 'rules'=>'trim|required']
+            ]);
+        }
+
+        $method = 'add';
+        if(empty($this->_reqP('oa_idx',false))===false) {
+            $method = 'modify';
+        }
+
+        $arr_condition = [
+            'EQ' => [
+                'A.ProdTypeCcd' => $this->prodtypeccd,
+                'B.LearnPatternCcd' => $this->learnpatternccd,
+                'A.SiteCode' => $this->site_code,
+                'A.ProdCode' => $prod_code
+            ],
+            'LKB' => [
+                'E.ProfIdx_String' => $this->_reqG('prof_idx'),
+            ]
+        ];
+        $product_data = $this->lectureModel->listLecture(false, $arr_condition, 1, 0, ['A.ProdCode' => 'desc'])[0];
+        if (empty($product_data) === true) {
+            $rules = array_merge($rules, [
+                ['field'=>'prod_code', 'label'=>'상품코드', 'rules'=>'trim|required']
+            ]);
+        }
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->boardModel->{$method.'AssignmentSchedule'}($prod_code, $this->_reqP(null));
+        //var_dump($result);exit;
+        $this->json_result($result, '저장 되었습니다.', $result);
     }
 
     /**

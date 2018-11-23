@@ -7,8 +7,8 @@ class BoardModel extends WB_Model
     private $_table_r_category = 'lms_board_r_category';
     private $_table_attach = 'lms_board_attach';
     private $_table_memo = 'lms_board_memo';
-    private $_table_r_assignment_schedule = 'lms_board_r_assignment_schedule';
-    private $_table_r_assignment_schedule_r_date = 'lms_board_r_assignment_schedule_r_date';
+    private $_table_assignment_r_schedule = 'lms_board_assignment_r_schedule';
+    private $_table_assignment_r_schedule_date = 'lms_board_assignment_r_schedule_date';
     private $_table_sys_site = 'lms_site';
     private $_table_sys_admin = 'wbs_sys_admin';
     private $_table_sys_code = 'lms_sys_code';
@@ -1058,7 +1058,7 @@ class BoardModel extends WB_Model
     {
         $column = 'StartDate, EndDate, WeekArray';
         $from = "
-            FROM {$this->_table_r_assignment_schedule}
+            FROM {$this->_table_assignment_r_schedule}
         ";
         $arr_condition = [
             'EQ' => ['ProdCode' => $prod_code]
@@ -1080,7 +1080,7 @@ class BoardModel extends WB_Model
     {
         $column = 'ScheduleDate';
         $from = "
-            FROM {$this->_table_r_assignment_schedule_r_date}
+            FROM {$this->_table_assignment_r_schedule_date}
         ";
         $arr_condition = [
             'EQ' => ['ProdCode' => $prod_code]
@@ -1106,7 +1106,7 @@ class BoardModel extends WB_Model
             $admin_idx = $this->session->userdata('admin_idx');
             $reg_ip = $this->input->ip_address();
 
-            $is_delete = $this->_conn->where('ProdCode', $prod_code)->delete($this->_table_r_assignment_schedule);
+            $is_delete = $this->_conn->where('ProdCode', $prod_code)->delete($this->_table_assignment_r_schedule);
             if ($is_delete === false) {
                 throw new \Exception('기존 등록된 강좌스케줄 삭제에 실패했습니다.');
             }
@@ -1119,7 +1119,7 @@ class BoardModel extends WB_Model
                 'RegAdminIdx' => $admin_idx,
                 'RegIp' => $reg_ip
             ];
-            if ($this->_conn->set($inputData)->insert($this->_table_r_assignment_schedule) === false) {
+            if ($this->_conn->set($inputData)->insert($this->_table_assignment_r_schedule) === false) {
                 throw new \Exception('강좌스케줄 등록에 실패했습니다.');
             }
 
@@ -1129,7 +1129,7 @@ class BoardModel extends WB_Model
                         'ProdCode' => $prod_code,
                         'ScheduleDate' => date('Y-m-d', strtotime($val))
                     ];
-                    if ($this->_conn->set($inputData)->insert($this->_table_r_assignment_schedule_r_date) === false) {
+                    if ($this->_conn->set($inputData)->insert($this->_table_assignment_r_schedule_date) === false) {
                         throw new \Exception('강좌스케줄 등록에 실패했습니다.');
                     }
                 }

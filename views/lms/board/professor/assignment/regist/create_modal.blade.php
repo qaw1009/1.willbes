@@ -40,13 +40,13 @@
             <div class="col-md-10 form-inline">
                 @for($i = 0; $i < $attach_file_cnt; $i++)
                     <div class="title">
-                        <div class="filetype col-md-10 mt-5">
+                        <div class="filetype col-md-8-1 mt-5">
                             <input type="text" class="form-control file-text mr-10" disabled="">
                             <button class="btn btn-sm btn-primary mb-0" type="button">파일 선택</button>
                             <span class="file-select file-btn">
                                 <input type="file" id="attach_file{{ $i }}" name="attach_file[]" class="form-control input-file" title="첨부{{ $i }}"/>
                             </span>
-                            <input class="file-reset btn-danger btn" type="button" value="X" />
+                            <input class="file-reset btn-danger btn" type="button" value="X" style="padding: 4px 10px" />
                         </div>
                         @if(empty($data['arr_attach_file_path'][$i]) === false)
                             {{--<p class="form-control-static">[ <a href="{{ $data['arr_attach_file_path'][$i] . $data['arr_attach_file_name'][$i] }}" rel="popup-image">{{ $data['arr_attach_file_real_name'][$i] }}</a> ]

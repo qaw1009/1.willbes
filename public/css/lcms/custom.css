@@ -758,6 +758,9 @@ table.dataTable tbody>tr.selected, table.dataTable tbody>tr>.selected {
 .col-md-8 {
     width: 66.66666667%;
 }
+.col-md-8-1 {
+    width: 69.88888888%;
+}
 .col-md-9 {
     width: 75%;
 }

@@ -328,15 +328,6 @@ class Assignment extends BaseBoard
             ];
         }
 
-        /*$schedule_data = [
-            'schedule' => $schedule,
-            'arr_schedule_date' => $arr_schedule_date
-        ];
-        print_r($schedule_data);*/
-
-
-
-
         $this->load->view("board/professor/{$this->board_name}/create_schedule_modal", [
             'boardName' => $this->board_name,
             'prod_code' => $prod_code,
@@ -360,11 +351,23 @@ class Assignment extends BaseBoard
             ['field' => 'week[]', 'label' => '노출요일', 'rules' => 'trim|required']
         ];
 
-        $savDays = count($this->_reqP('savDay[]'));
-        if ($savDays <= 0) {
+        if (empty($this->_reqP('savDay[]')) === true) {
             $rules = array_merge($rules, [
-                ['field'=>'savDay[]', 'label'=>'송출기간', 'rules'=>'trim|required']
+                ['field'=>'savDay[]', 'label'=>'노출일', 'rules'=>'trim|required']
             ]);
+        } else {
+            $c = 0;
+            foreach ($this->_reqP('savDay[]') as $key => $val) {
+                if (empty($val) === false) {
+                    $c = $c + 1;
+                }
+            }
+
+            if ($c <= 0) {
+                $rules = array_merge($rules, [
+                    ['field'=>'savDay[]', 'label'=>'노출일', 'rules'=>'trim|required']
+                ]);
+            }
         }
 
         $method = 'add';

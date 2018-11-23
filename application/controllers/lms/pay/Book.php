@@ -15,7 +15,7 @@ class Book extends BaseOrder
         parent::__construct();
 
         // 교재결제현황 상품타입
-        $this->_book_prod_type_ccd = array_values(array_filter_keys($this->orderListModel->_prod_type_ccd, ['book', 'delivery_price', 'delivery_add_price']));
+        $this->_book_prod_type_ccd = array_values(array_filter_keys($this->orderListModel->_prod_type_ccd, ['book']));
     }
 
     /**

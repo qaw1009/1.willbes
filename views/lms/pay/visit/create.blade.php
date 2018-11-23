@@ -83,10 +83,10 @@
                                             <input type="text" name="disc_reason[]" class="form-control input-sm" title="할인사유" value="">
                                         </td>
                                         <td>
-                                            <input type="number" name="card_pay_price[]" class="form-control input-sm set-sum-price" title="카드결제금액" value="">
+                                            <input type="number" name="card_pay_price[]" class="form-control input-sm set-sum-price" title="카드결제금액" value="0">
                                         </td>
                                         <td>
-                                            <input type="number" name="cash_pay_price[]" class="form-control input-sm set-sum-price" title="현금결제금액" value="">
+                                            <input type="number" name="cash_pay_price[]" class="form-control input-sm set-sum-price" title="현금결제금액" value="0">
                                         </td>
                                         <td>
                                             <input type="number" name="real_pay_price[]" class="form-control input-sm set-sum-price" title="실결제금액" value="{{ $order_prod_row['RealPayPrice'] }}" readonly="readonly">

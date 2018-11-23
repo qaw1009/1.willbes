@@ -266,7 +266,6 @@ class OrderModel extends BaseOrderModel
             $site_code = element('site_code', $input);  // 사이트 코드
             $arr_mem_idx = element('mem_idx', $input, []);
             $arr_prod_info = element('prod_code', $input, []);  // 상품코드:상품타입:학습형태공통코드
-            $arr_available_learn_pattern = ['on_lecture', 'adminpack_lecture', 'off_lecture', 'book', 'mock_exam'];     // 주문가능 상품구분
             $total_order_price = 0;   // 전체주문금액
             $total_order_prod_price = 0;    // 전체상품주문금액
             $total_real_pay_price = 0;  // 전체실결제금액
@@ -279,28 +278,17 @@ class OrderModel extends BaseOrderModel
                 // 상품정보 변수 할당
                 list($prod_code, $prod_type, $learn_pattern_ccd) = explode(':', $prod_info);
 
-                // 학습형태 조회 (단강좌, 운영자 일반형 패키지, 학원 단과, 교재, 모의고사 상품만 주문 가능)
-                $learn_pattern = $this->getLearnPattern($prod_type, $learn_pattern_ccd);
-                if ($learn_pattern === false || in_array($learn_pattern, $arr_available_learn_pattern) === false) {
-                    throw new \Exception('주문하실 수 없는 상품입니다.' . PHP_EOL . '온라인 단강좌, 운영자 일반형 패키지, 학원 단과, 교재, 모의고사 상품만 등록 가능합니다.', _HTTP_BAD_REQUEST);
-                }
-
                 // 상품정보 조회
+                $learn_pattern = $this->getLearnPattern($prod_type, $learn_pattern_ccd);
                 $column = 'ProdCode, SiteCode, ProdName, ProdPriceData';
-                $learn_pattern == 'adminpack_lecture' && $column .= ', PackTypeCcd, fn_product_sublecture_codes(ProdCode) as ProdCodeSub';
+                strpos($learn_pattern, 'pack_') !== false && $column .= ', fn_product_sublecture_codes(ProdCode) as ProdCodeSub';   // 패키지 상품의 경우 서브강좌 조회 추가
 
                 $row = $this->salesProductModel->findSalesProductByProdCode($learn_pattern, $prod_code, $column);
                 if (empty($row) === true) {
                     throw new \Exception('판매 중인 상품만 주문하실 수 있습니다.', _HTTP_NOT_FOUND);
                 }
 
-                // 운영자 선택형 패키지는 주문 불가
-                if ($learn_pattern == 'adminpack_lecture' && $row['PackTypeCcd'] != $this->_adminpack_lecture_type_ccd['normal']) {
-                    throw new \Exception('운영자 선택형 패키지는 주문하실 수 없습니다.', _HTTP_BAD_REQUEST);
-                }
-
                 $row['OrderProdType'] = $learn_pattern;     // 주문상품타입
-                $learn_pattern != 'adminpack_lecture' && $row['ProdCodeSub'] = '';  // 상품코드서브 설정 (운영자 일반형 패키지 이 외에는 데이터 없음 처리)
                 $row['IsVisitPay'] = 'N';   // 방문결제 여부
                 $row['IsDeliveryInfo'] = 'N';   // 배송여부 설정 (상품정보 데이터 무시)
 
@@ -1091,18 +1079,16 @@ class OrderModel extends BaseOrderModel
                         $disc_price = $row['OrderPrice'] - $real_pay_price;
 
                         $data = [
-                            'PayStatusCcd' => $this->_pay_status_ccd['paid'],
                             'RealPayPrice' => $real_pay_price,
                             'CardPayPrice' => $card_pay_price,
                             'CashPayPrice' => $cash_pay_price,
                             'DiscPrice' => $disc_price,
                             'DiscRate' => array_get($input, 'disc_rate.' . $idx, 0),
                             'DiscType' => array_get($input, 'disc_type.' . $idx, 'R'),
-                            'DiscReason' => get_var(array_get($input, 'disc_reason.' . $idx), null),
-                            'UpdAdminIdx' => $sess_admin_idx
+                            'DiscReason' => get_var(array_get($input, 'disc_reason.' . $idx), null)
                         ];
 
-                        $is_update = $this->_conn->set($data)->set('UpdDatm', 'NOW()', false)
+                        $is_update = $this->_conn->set($data)
                             ->where('OrderIdx', $order_idx)->where('OrderProdIdx', $order_prod_idx)->where('MemIdx', $mem_idx)
                             ->where('PayStatusCcd', $this->_pay_status_ccd['receipt_wait'])
                             ->update($this->_table['order_product']);
@@ -1129,14 +1115,14 @@ class OrderModel extends BaseOrderModel
                 }
             }
 
-            // 자동지급 강좌, 사은품 주문상품 결제완료 업데이트
+            // 주문상품 결제완료 업데이트 (자동지급 강좌, 사은품 포함)
             $is_update = $this->_conn->set('PayStatusCcd', $this->_pay_status_ccd['paid'])->set('UpdDatm', 'NOW()', false)
                 ->set('UpdAdminIdx', $sess_admin_idx)
                 ->where('OrderIdx', $order_idx)->where('MemIdx', $mem_idx)
-                ->where('PayStatusCcd', $this->_pay_status_ccd['receipt_wait'])->where('SalePatternCcd', $this->_sale_pattern_ccd['auto'])
+                ->where('PayStatusCcd', $this->_pay_status_ccd['receipt_wait'])
                 ->update($this->_table['order_product']);
-            if ($is_update === false) {
-                throw new \Exception('자동지급 강좌, 사은품 주문상품 결제완료 업데이트에 실패했습니다.');
+            if ($is_update === false || $this->_conn->affected_rows() < 1) {
+                throw new \Exception('주문상품 결제완료 업데이트에 실패했습니다.');
             }
 
             // 주문 수정

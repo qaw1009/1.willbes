@@ -235,7 +235,7 @@
                     //html append 부분
                     html = '<span class="pr-10">' + $(this).data('prod-name');
                     html += '   <a href="#none" data-prod-code="' + $(this).data('prod-code') + '" class="selected-product-delete"><i class="fa fa-times red"></i></a>';
-                    html += '   <input type="hidden" name="prod_code[]" value="' + $(this).data('prod-code') + '" data-prod-type="' + prod_type + '" data-learn-pattern-ccd="" data-w-lec-idx="' + $(this).data('w-lec-idx') + '"/>';
+                    html += '   <input type="hidden" name="prod_code[]" value="' + $(this).data('prod-code') + '" data-prod-type="' + prod_type + '" data-learn-pattern-ccd=""/>';
                     html += '</span>';
                     $(document).find("#" + $parent_location_span).append(html);
                 }

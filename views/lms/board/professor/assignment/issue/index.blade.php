@@ -105,6 +105,7 @@
         <table id="list_ajax_table" class="table table-striped table-bordered">
             <thead>
             <tr>
+                <th>번호</th>
                 <th>강의명</th>
                 <th>첨부</th>
                 <th>등록자</th>
@@ -142,22 +143,22 @@
                         return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                     }},
                 {'data' : 'Title', 'render' : function(data, type, row, meta) {
-                        return '<a href="javascript:void(0);" class="btn-read" data-idx="' + row.BoardIdx + '"><u>' + data + '</u></a>';
+                        return '<a href="javascript:void(0);" class="btn-manager-assignment" data-idx="' + row.BaIdx + '"><u>' + data + '</u></a>';
                     }},
                 {'data' : 'AttachFileName', 'render' : function(data, type, row, meta) {
                         var tmp_return;
                         (data === null) ? tmp_return = '' : tmp_return = '<p class="glyphicon glyphicon-file"></p>';
                         return tmp_return;
                     }},
-                {'data' : 'wAdminName'},
-                {'data' : 'RegDatm'},
-                {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
-                        return (data == 'Y') ? '사용' : '<p class="red">미사용</p>';
+                {'data' : null, 'render' : function(data, type, row, meta) {
+                        return data.MemName +'('+data.MemId+')<Br>('+data.MemPhone+')';
                     }},
-                {'data' : 'ReadCnt'},
-                {'data' : 'BoardIdx', 'render' : function(data, type, row, meta) {
-                        return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.BoardIdx + '"><u>수정</u></a>';
-                    }}
+                {'data' : 'RegDatm'},
+                {'data' : 'ReplyStatusName', 'render' : function(data, type, row, meta) {
+                        return data;
+                    }},
+                {'data' : 'ReplyRegProfName'},
+                {'data' : 'ReplyRegDatm'},
             ]
         });
 
@@ -167,38 +168,16 @@
         });
 
         //등록
-        $('.btn-create-assignment').click(function() {
-            var cate_code = $search_form.find('input[name="cate_code"]').val();
-            $('.btn-create-assignment').setLayer({
-                "url" : "{{ site_url("/board/professor/{$boardName}/createAssignmentModal/{$prod_code}?") }}" + '{!! $boardDefaultQueryString !!}',
-                "width" : "800",
+        $list_table.on('click', '.btn-manager-assignment', function() {
+            var idx = $(this).data('idx');
+            $('.btn-manager-assignment').setLayer({
+                "url" : "{{ site_url("/board/professor/{$boardName}/managerAssignmentModal/{$prod_code}?") }}" + '{!! $boardDefaultQueryString !!}',
+                "width" : "1200",
                 'add_param_type' : 'param',
                 'add_param' : [
-                    { 'id' : 'cate_code', 'name' : '카테고리', 'value' : cate_code, 'required' : true }
+                    { 'id' : 'ba_idx', 'name' : '첨삭식별자', 'value' : idx, 'required' : true },
+                    { 'id' : 'type', 'name' : '타입', 'value' : 'create', 'required' : true }
                 ]
-            });
-        });
-
-        //수정
-        $list_table.on('click', '.btn-modify', function() {
-            var cate_code = $search_form.find('input[name="cate_code"]').val();
-            var board_idx = $(this).data('idx');
-            $('.btn-modify').setLayer({
-                "url" : "{{ site_url("/board/professor/{$boardName}/createAssignmentModal/{$prod_code}?") }}" + '{!! $boardDefaultQueryString !!}',
-                "width" : "800",
-                'add_param_type' : 'param',
-                'add_param' : [
-                    { 'id' : 'cate_code', 'name' : '카테고리', 'value' : cate_code, 'required' : true },
-                    { 'id' : 'board_idx', 'name' : '게시판식별자', 'value' : board_idx, 'required' : true }
-                ]
-            });
-        });
-
-        //read
-        $list_table.on('click', '.btn-read', function() {
-            $('.btn-read').setLayer({
-                "url" : "{{ site_url("/board/professor/{$boardName}/readAssignmentModal/") }}" + $(this).data('idx') + '?' + '{!! $boardDefaultQueryString !!}',
-                "width" : "800"
             });
         });
     });

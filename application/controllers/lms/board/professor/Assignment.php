@@ -617,8 +617,21 @@ class Assignment extends BaseBoard
      */
     public function issueForBoardAjax()
     {
-        $count = 0;
-        $list = [];
+        $count = 1;
+        $list = [
+            0 => [
+                'BaIdx' => '1',
+                'Title' => '강의명~~~',
+                'AttachFileName' => null,
+                'MemName' => '최현탁',
+                'MemId' => 'dlumjjang',
+                'MemPhone' => '01012341234',
+                'RegDatm' => '2016-08-08 23:53:55',
+                'ReplyStatusName' => '미채점',
+                'ReplyRegProfName' => '나는교수다',
+                'ReplyRegDatm' => '2018-10-08 23:53:55'
+            ]
+        ];
 
         return $this->response([
             'recordsTotal' => $count,

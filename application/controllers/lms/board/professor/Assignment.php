@@ -370,11 +370,6 @@ class Assignment extends BaseBoard
             }
         }
 
-        $method = 'add';
-        if(empty($this->_reqP('oa_idx',false))===false) {
-            $method = 'modify';
-        }
-
         $arr_condition = [
             'EQ' => [
                 'A.ProdTypeCcd' => $this->prodtypeccd,
@@ -386,6 +381,7 @@ class Assignment extends BaseBoard
                 'E.ProfIdx_String' => $this->_reqG('prof_idx'),
             ]
         ];
+
         $product_data = $this->lectureModel->listLecture(false, $arr_condition, 1, 0, ['A.ProdCode' => 'desc'])[0];
         if (empty($product_data) === true) {
             $rules = array_merge($rules, [
@@ -397,8 +393,7 @@ class Assignment extends BaseBoard
             return;
         }
 
-        $result = $this->boardModel->{$method.'AssignmentSchedule'}($prod_code, $this->_reqP(null));
-        //var_dump($result);exit;
+        $result = $this->boardModel->addAssignmentSchedule($prod_code, $this->_reqP(null));
         $this->json_result($result, '저장 되었습니다.', $result);
     }
 

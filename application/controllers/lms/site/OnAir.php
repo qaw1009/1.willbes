@@ -174,11 +174,23 @@ class OnAir extends \app\controllers\BaseController
             $method = 'modify';
         }
 
-        $savDays = count($this->_reqP('savDay[]'));
-        if ($savDays <= 0) {
+        if (empty($this->_reqP('savDay[]')) === true) {
             $rules = array_merge($rules, [
                 ['field'=>'savDay[]', 'label'=>'송출기간', 'rules'=>'trim|required']
             ]);
+        } else {
+            $c = 0;
+            foreach ($this->_reqP('savDay[]') as $key => $val) {
+                if (empty($val) === false) {
+                    $c = $c + 1;
+                }
+            }
+
+            if ($c <= 0) {
+                $rules = array_merge($rules, [
+                    ['field'=>'savDay[]', 'label'=>'송출기간', 'rules'=>'trim|required']
+                ]);
+            }
         }
 
         if($this->validate($rules) === false) {
@@ -186,7 +198,6 @@ class OnAir extends \app\controllers\BaseController
         }
 
         $result = $this->onAirModel->{$method.'OnAir'}($this->_reqP(null));
-        //var_dump($result);exit;
         $this->json_result($result, '저장 되었습니다.', $result);
     }
 

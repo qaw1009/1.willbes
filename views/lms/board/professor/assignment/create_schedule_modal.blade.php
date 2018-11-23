@@ -8,7 +8,6 @@
 <form class="form-horizontal form-label-left" id="modal_regi_form" name="modal_regi_form" method="POST" onsubmit="return false;" novalidate>
 {{--<form class="form-horizontal form-label-left" id="modal_regi_form" name="modal_regi_form" method="POST" novalidate action="{{ site_url("/board/professor/{$boardName}/storeSchedule/{$prod_code}?{$boardDefaultQueryString}") }}">--}}
     {!! csrf_field() !!}
-    {!! method_field($method) !!}
 @endsection
 
 @section('layer_content')

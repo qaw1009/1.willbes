@@ -138,7 +138,9 @@
         var $datatable_modal;
         var $search_form_modal = $('#_search_form');
         var $list_table_modal = $('#_list_ajax_table');
-        var $parent_location_span = $("#target_id").val();
+        var $return_type = $("#return_type").val();     // 리턴 방식
+        var $target_id = '#' + $("#target_id").val();       // 리턴되는 타겟 레이어 id
+        var $target_field = $("#target_field").val();       // 리턴되는 교재상품코드 input hidden name
 
         $(document).ready(function() {
             // 페이징 번호에 맞게 일부 데이터 조회
@@ -291,16 +293,16 @@
 
                         html = '<span class="pr-10">[' + row.ProdCode + '] ' + row.ProdName;
                         html += '   <a href="#none" data-prod-code="' + row.ProdCode + '" class="selected-product-delete"><i class="fa fa-times red"></i></a>';
-                        html += '   <input type="hidden" name="prod_code[]" value="' + row.ProdCode + '"' + data + '/>';
+                        html += '   <input type="hidden" name="' + $target_field + '[]" value="' + row.ProdCode + '"' + data + '/>';
                         html += '</span>';
-
-                        $(document).find("#"+$parent_location_span).append(html);
                     }
                 }
 
+                $(document).find($target_id).append(html);
+
                 // change 이벤트 발생
                 if ($search_form_modal.find("input[name='is_event']").val() === 'Y') {
-                    $(document).find("#"+$parent_location_span).trigger('change');
+                    $(document).find($target_id).trigger('change');
                 }
 
                 $("#pop_modal").modal('toggle');

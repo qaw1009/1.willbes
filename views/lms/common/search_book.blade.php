@@ -99,10 +99,10 @@
         var $search_form_modal = $('#_search_form');
         var $list_table_modal = $('#_list_ajax_table');
         var $parent_regi_form = $('#regi_form');
-        var $return_type = '{{ $return_type }}';    // 리턴 방식
-        var $target_id = '#{{ $target_id }}';         // 리턴되는 타겟 레이어 id
-        var $target_field = '{{ $target_field }}';     // 리턴되는 교재상품코드 input hidden name
-        var $ori_selected_data = {};                    // 기선택된 교재상품코드 json 변수
+        var $return_type = $("#return_type").val();     // 리턴 방식
+        var $target_id = '#' + $("#target_id").val();       // 리턴되는 타겟 레이어 id
+        var $target_field = $("#target_field").val();       // 리턴되는 교재상품코드 input hidden name
+        var $ori_selected_data = {};    // 기선택된 교재상품코드 json 변수
 
         $(document).ready(function() {
             // 페이징 번호에 맞게 일부 데이터 조회
@@ -221,7 +221,7 @@
 
                     // change 이벤트 발생
                     if ($search_form_modal.find("input[name='is_event']").val() === 'Y') {
-                        $(document).find("#"+$parent_location_span).trigger('change');
+                        $(document).find($target_id).trigger('change');
                     }
                 }
 

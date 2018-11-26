@@ -5,11 +5,22 @@
     <div class="x_panel">
         <div class="x_content">
             {!! form_errors() !!}
-            <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
+            <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
                 {!! csrf_field() !!}
                 {!! method_field($method) !!}
                 <input type="hidden" name="order_idx" value="{{ $idx }}"/>
-                <input type="hidden" name="mem_idx" value="{{ $data['order']['MemIdx'] }}"/>
+                <input type="hidden" name="mem_idx" value="{{ $data['order']['MemIdx'] or '' }}" data-result-data="" required="required" title="회원식별자"/>
+                @if(isset($data['mem']) === false)
+                    <div class="row">
+                        <label class="control-label col-md-1" for="search_mem_id">· 회원검색</label>
+                        <div class="col-md-8 form-inline">
+                            <input type="text" id="search_mem_id" name="search_mem_id" class="form-control input-sm" title="회원검색어" value="">
+                            <button type="button" name="btn_member_search" data-result-type="single" class="btn btn-primary btn-sm mb-0 ml-5">회원검색</button>
+                            <p class="form-control-static ml-20">이름, 아이디, 휴대폰번호 검색 가능</p>
+                        </div>
+                    </div>
+                    <div class="ln_solid bdt-line mt-10 mb-20"></div>
+                @endif
                 <div class="row">
                     <div class="col-md-6">
                         <h4><strong>회원정보</strong></h4>
@@ -33,82 +44,129 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>{{ $data['mem']['MemIdx'] }} ({{ $data['mem']['SiteName'] }})</td>
-                                    <td>{{ $data['mem']['JoinDate'] }}</td>
-                                    <td>{{ $data['mem']['MemName'] }} ({{ $data['mem']['Sex'] == 'M' ? '남' : '여' }})</td>
-                                    <td>{{ $data['mem']['MemId'] }}</td>
-                                    <td>{{ $data['mem']['Phone'] }} ({{ $data['mem']['SmsRcvStatus'] }})</td>
-                                    <td>{{ $data['mem']['Mail'] }} ({{ $data['mem']['MailRcvStatus'] }})</td>
+                                    @if (isset($data['mem']) === true)
+                                        <td>{{ $data['mem']['MemIdx'] }} ({{ $data['mem']['SiteName'] }})</td>
+                                        <td>{{ $data['mem']['JoinDate'] }}</td>
+                                        <td>{{ $data['mem']['MemName'] }} ({{ $data['mem']['Sex'] == 'M' ? '남' : '여' }})</td>
+                                        <td>{{ $data['mem']['MemId'] }}</td>
+                                        <td>{{ $data['mem']['Phone'] }} ({{ $data['mem']['SmsRcvStatus'] }})</td>
+                                        <td>{{ $data['mem']['Mail'] }} ({{ $data['mem']['MailRcvStatus'] }})</td>
+                                    @else
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    @endif
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
                 <div class="ln_solid mt-5"></div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <h4><strong>· 상품결제정보</strong></h4>
+                @if($_is_order === true)
+                    {{-- 주문수정 --}}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4><strong>상품결제정보</strong></h4>
+                        </div>
+                        <div class="col-md-12">
+                            <table id="list_pay_info_table" class="table table-striped table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>상품명</th>
+                                    <th>주문금액</th>
+                                    <th>할인율 [ <input type="checkbox" name="is_all_disc_rate" data-set-field="disc_type:R,disc_rate:0" class="flat" value="Y"> 전체적용 ]</th>
+                                    <th>할인사유 [ <input type="checkbox" name="is_all_disc_reason" data-set-field="disc_reason:" class="flat" value="Y"> 전체적용 ]</th>
+                                    <th>카드</th>
+                                    <th>현금</th>
+                                    <th>결제금액</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($data['order_prod'] as $order_prod_row)
+                                        <tr>
+                                            <td><div class="blue inline-block">[{{ $order_prod_row['LearnPatternCcdName'] or $order_prod_row['ProdTypeCcdName'] }}]</div> {{ $order_prod_row['ProdName'] }}
+                                                <input type="hidden" name="order_prod_idx[]" value="{{ $order_prod_row['OrderProdIdx'] }}"/>
+                                            </td>
+                                            <td>
+                                                <input type="number" name="order_price[]" class="form-control input-sm" title="주문금액" value="{{ $order_prod_row['OrderPrice'] }}" readonly="readonly">
+                                            </td>
+                                            <td class="form-inline">
+                                                <select class="form-control input-sm set-pay-price" name="disc_type[]">
+                                                    <option value="R">%</option>
+                                                    <option value="P">원</option>
+                                                </select>
+                                                <input type="number" name="disc_rate[]" class="form-control input-sm set-pay-price" title="할인율" value="0" style="width: 160px;">
+                                            </td>
+                                            <td>
+                                                <input type="text" name="disc_reason[]" class="form-control input-sm" title="할인사유" value="">
+                                            </td>
+                                            <td>
+                                                <input type="number" name="card_pay_price[]" class="form-control input-sm set-sum-price" title="카드결제금액" value="0">
+                                            </td>
+                                            <td>
+                                                <input type="number" name="cash_pay_price[]" class="form-control input-sm set-sum-price" title="현금결제금액" value="0">
+                                            </td>
+                                            <td>
+                                                <input type="number" name="real_pay_price[]" class="form-control input-sm set-sum-price" title="실결제금액" value="{{ $order_prod_row['RealPayPrice'] }}" readonly="readonly">
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <td colspan="7" class="form-inline text-right bg-info bold">
+                                        [총 실결제금액] <input type="number" name="total_real_pay_price" class="form-control input-sm ml-10" title="총 실결제금액" value="{{ $data['order']['tRealPayPrice'] }}" readonly="readonly"> 원
+                                    </td>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
                     </div>
-                    <div class="col-md-12">
-                        <table id="list_order_detail_table" class="table table-striped table-bordered">
-                        @if($_is_order === true)
-                            <thead>
-                            <tr>
-                                <th>상품명</th>
-                                <th>주문금액</th>
-                                <th>할인율 [ <input type="checkbox" name="is_all_disc_rate" data-set-field="disc_type:R,disc_rate:0" class="flat" value="Y"> 전체적용 ]</th>
-                                <th>할인사유 [ <input type="checkbox" name="is_all_disc_reason" data-set-field="disc_reason:" class="flat" value="Y"> 전체적용 ]</th>
-                                <th>카드</th>
-                                <th>현금</th>
-                                <th>결제금액</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($data['order_prod'] as $order_prod_row)
-                                    <tr>
-                                        <td><div class="blue inline-block">[{{ $order_prod_row['LearnPatternCcdName'] or $order_prod_row['ProdTypeCcdName'] }}]</div> {{ $order_prod_row['ProdName'] }}
-                                            <input type="hidden" name="order_prod_idx[]" value="{{ $order_prod_row['OrderProdIdx'] }}"/>
-                                        </td>
-                                        <td>
-                                            <input type="number" name="order_price[]" class="form-control input-sm" title="주문금액" value="{{ $order_prod_row['OrderPrice'] }}" readonly="readonly">
-                                        </td>
-                                        <td class="form-inline">
-                                            <select class="form-control input-sm set-pay-price" name="disc_type[]">
-                                                <option value="R">%</option>
-                                                <option value="P">원</option>
-                                            </select>
-                                            <input type="number" name="disc_rate[]" class="form-control input-sm set-pay-price" title="할인율" value="0" style="width: 160px;">
-                                        </td>
-                                        <td>
-                                            <input type="text" name="disc_reason[]" class="form-control input-sm" title="할인사유" value="">
-                                        </td>
-                                        <td>
-                                            <input type="number" name="card_pay_price[]" class="form-control input-sm set-sum-price" title="카드결제금액" value="0">
-                                        </td>
-                                        <td>
-                                            <input type="number" name="cash_pay_price[]" class="form-control input-sm set-sum-price" title="현금결제금액" value="0">
-                                        </td>
-                                        <td>
-                                            <input type="number" name="real_pay_price[]" class="form-control input-sm set-sum-price" title="실결제금액" value="{{ $order_prod_row['RealPayPrice'] }}" readonly="readonly">
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                            <tfoot>
-                            <tr>
-                                <td colspan="7" class="form-inline text-right bg-info bold">
-                                    [총 실결제금액] <input type="number" name="total_real_pay_price" class="form-control input-sm ml-10" title="총 실결제금액" value="{{ $data['order']['tRealPayPrice'] }}" readonly="readonly"> 원
-                                </td>
-                            </tr>
-                            </tfoot>
-                        @endif
-                        </table>
+                @else
+                    {{-- 주문등록 --}}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4><strong>상품결제정보</strong></h4>
+                        </div>
+                        <div class="col-md-6 text-right form-inline item">
+                            {!! html_site_select('', 'site_code', 'site_code', 'form-control input-sm', '운영 사이트', 'required', '', false, $arr_off_site_code) !!}
+                            <button type="button" id="btn_product_search" class="btn btn-sm btn-primary mb-0 ml-5">상품검색</button>
+                            <span id="selected_product" class="hide"></span>
+                        </div>
+                        <div class="col-md-12">
+                            <table id="list_pay_info_table" class="table table-striped table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>상품명</th>
+                                    <th>주문금액</th>
+                                    <th>할인율 [ <input type="checkbox" name="is_all_disc_rate" data-set-field="disc_type:R,disc_rate:0" class="flat" value="Y"> 전체적용 ]</th>
+                                    <th>할인사유 [ <input type="checkbox" name="is_all_disc_reason" data-set-field="disc_reason:" class="flat" value="Y"> 전체적용 ]</th>
+                                    <th>카드</th>
+                                    <th>현금</th>
+                                    <th>결제금액</th>
+                                    <th>삭제</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <td colspan="8" class="form-inline text-right bg-info bold">
+                                        [총 실결제금액] <input type="number" name="total_real_pay_price" class="form-control input-sm ml-10" title="총 실결제금액" value="0" readonly="readonly"> 원
+                                    </td>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
                     </div>
-                </div>
+                @endif
                 <div class="ln_solid mt-5"></div>
                 <div class="row">
                     <div class="col-md-6">
-                        <h4><strong>· 상품결제처리</strong></h4>
+                        <h4><strong>상품결제처리</strong></h4>
                     </div>
                     <div class="col-md-12 bold">
                         <div class="form-group bdt-line bg-odd">
@@ -140,10 +198,38 @@
                     </div>
                 </div>
             </form>
-            <div class="ln_solid mt-5"></div>
+            @if($_is_order === true)
+                <div class="ln_solid mt-5"></div>
+                <div class="row">
+                    {{-- 주문 메모 --}}
+                    @include('lms.pay.order.order_memo_partial')
+                </div>
+            @endif
+            <div class="ln_solid mt-15"></div>
             <div class="row">
-                {{-- 주문 메모 --}}
-                @include('lms.pay.order.order_memo_partial')
+                <div class="col-md-6">
+                    <h4><strong>학원방문수강접수 전체내역</strong></h4>
+                </div>
+                <div class="col-md-12">
+                    <table id="list_order_detail_table" class="table table-striped table-bordered">
+                        <thead>
+                        <tr>
+                            <th>NO</th>
+                            <th class="rowspan">주문번호</th>
+                            <th class="rowspan">결제수단</th>
+                            <th class="rowspan">결제완료일 (접수신청일)</th>
+                            <th class="rowspan">총 실결제금액</th>
+                            <th>상품구분</th>
+                            <th>상품명</th>
+                            <th>실결제금액</th>
+                            <th>결제상태</th>
+                            <th class="rowspan">등록자</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <div class="ln_solid"></div>
             <div class="text-center">
@@ -151,9 +237,12 @@
             </div>
         </div>
     </div>
-    <script src="/public/js/lms/order_memo.js"></script>
+    <script src="/public/js/lms/search_member.js"></script>
     <script type="text/javascript">
+        var $datatable;
         var $regi_form = $('#regi_form');
+        var $list_table = $('#list_order_detail_table');
+        var $selected_prod_code = {};
 
         $(document).ready(function() {
             // 수강등록하기 버튼 클릭
@@ -212,6 +301,114 @@
 
                 return true;
             };
+
+        {{-- 주문등록 --}}
+        @if($_is_order === false)
+            // 회원선택 결과 이벤트
+            $regi_form.on('change', 'input[name="mem_idx"]', function() {
+                // 회원정보 셋팅
+                var mem_data = $(this).data('result-data');
+                var $mem_table_td = $('#list_mem_table tbody tr td');
+
+                $mem_table_td.eq(0).html(mem_data.MemIdx + ' (' + mem_data.SiteName + ')');
+                $mem_table_td.eq(1).html(mem_data.JoinDate);
+                $mem_table_td.eq(2).html(mem_data.MemName + ' (' + (mem_data.Sex === 'M' ? '남' : '여') + ')');
+                $mem_table_td.eq(3).html(mem_data.MemId);
+                $mem_table_td.eq(4).html(mem_data.Phone + ' (' + mem_data.SmsRcvStatus + ')');
+                $mem_table_td.eq(5).html(mem_data.Mail + ' (' + mem_data.MailRcvStatus + ')');
+
+                // 방문수강접수 목록
+                $datatable.draw();
+            });
+
+            // 상품검색 버튼 클릭
+            $('#btn_product_search').on('click', function() {
+                var site_code = $regi_form.find('select[name="site_code"]').val();
+                if (!site_code) {
+                    alert('운영사이트를 먼저 선택해 주십시오.');
+                    return false;
+                }
+
+                $('#btn_product_search').setLayer({
+                    'url' : '{{ site_url('/common/searchLectureAll/') }}?site_code=' + site_code + '&prod_type=off&return_type=inline&target_id=selected_product&target_field=prod_code'
+                        + '&prod_tabs=off,book,reading_room,locker,mock_exam&hide_tabs=off_pack_lecture&is_event=Y',
+                    'width' : 1200
+                });
+            });
+
+            // 상품선택 결과 이벤트
+            $regi_form.on('change', '#selected_product', function() {
+                var $tbody = $('#list_pay_info_table tbody');
+                var code, data, html = '';
+
+                $(this).find('input[name="prod_code[]"]').each(function() {
+                    code = $(this).val();
+                    data = $(this).data();
+
+                    if ($selected_prod_code.hasOwnProperty(code) === false) {
+                        html += '<tr>\n' +
+                            '    <td><div class="blue inline-block">[' + (data.learnPatternCcdName !== '' ? data.learnPatternCcdName : data.prodTypeCcdName) + ']</div> ' + Base64.decode(data.prodName) +
+                            '    ' + '<input type="hidden" name="prod_code[]" value="' + code + ':' + data.prodType + ':' + data.learnPatternCcd+ '"/>' +
+                            '    ' + (data.prodType === 'reading_room' || data.prodType === 'locker' ? '<br/><button type="button" name="btn_set_seat" class="btn btn-xs btn-success mt-5 mb-0" data-prod-type="' + data.prodType + '" data-prod-code="' + code + '">' + data.prodTypeCcdName + '배정</button>' : '') +
+                            '    </td>\n' +
+                            '    <td>\n' +
+                            '       <input type="number" name="order_price[]" class="form-control input-sm" title="주문금액" value="' + data.salePrice + '" readonly="readonly">\n' +
+                            '    </td>\n' +
+                            '    <td class="form-inline">\n' +
+                            '        <select class="form-control input-sm set-pay-price" name="disc_type[]">\n' +
+                            '            <option value="R">%</option>\n' +
+                            '            <option value="P">원</option>\n' +
+                            '        </select>\n' +
+                            '        <input type="number" name="disc_rate[]" class="form-control input-sm set-pay-price" title="할인율" value="0" style="width: 160px;">\n' +
+                            '    </td>\n' +
+                            '    <td>\n' +
+                            '        <input type="text" name="disc_reason[]" class="form-control input-sm" title="할인사유" value="">\n' +
+                            '    </td>\n' +
+                            '    <td>\n' +
+                            '        <input type="number" name="card_pay_price[]" class="form-control input-sm set-sum-price" title="카드결제금액" value="0">\n' +
+                            '    </td>\n' +
+                            '    <td>\n' +
+                            '        <input type="number" name="cash_pay_price[]" class="form-control input-sm set-sum-price" title="현금결제금액" value="0">\n' +
+                            '    </td>\n' +
+                            '    <td>\n' +
+                            '        <input type="number" name="real_pay_price[]" class="form-control input-sm set-sum-price" title="실결제금액" value="' + data.salePrice + '" readonly="readonly">\n' +
+                            '    </td>\n' +
+                            '    <td>\n' +
+                            '        <a href="#none" data-prod-code="' + code + '" class="selected-product-delete"><i class="fa fa-times red"></i></a>\n' +
+                            '    </td>\n' +
+                            '</tr>';
+
+                        // 선택된 상품코드 저장
+                        $selected_prod_code[code] = code;
+                    }
+                });
+
+                $(this).html('');    // 기 선택 상품 초기화
+                $tbody.append(html);
+                $regi_form.find('[name="real_pay_price[]"]').eq(0).trigger('change');   // 결제금액 변경 이벤트 발생
+            });
+
+            // 선택상품 삭제 (상품결제정보 테이블 row 삭제)
+            $regi_form.on('click', '.selected-product-delete', function() {
+                var that = $(this);
+                var index = $regi_form.find('.selected-product-delete').index(this);
+                that.parent().parent().remove();
+
+                delete $selected_prod_code[that.data('prod-code')];     // 저장된 상품코드 삭제
+                $regi_form.find('[name="disc_type[]"]').eq(index).trigger('change');    // 결제금액 변경 이벤트 발생
+            });
+        @endif
+
+            // 독서실, 사물함 좌석배정 버튼 클릭
+            $regi_form.on('click', 'button[name="btn_set_seat"]', function() {
+                var param = '?mang_type=' + ($(this).data('prod-type') === 'reading_room' ? 'R' : 'L');
+                param += '&rdr_master_order_idx=' + $regi_form.find('input[name="order_idx"]').val();
+
+                $('button[name="btn_set_seat"]').setLayer({
+                    "url" : "{{ site_url('/common/searchReadingRoom/createSeatModal/') }}"+ $(this).data('prod-code') + param,
+                    "width" : "1200"
+                });
+            });
 
             // 전체적용 체크박스 클릭
             $regi_form.on('ifChanged', 'input[name="is_all_disc_rate"], input[name="is_all_disc_reason"]', function() {
@@ -292,6 +489,49 @@
                         }
                     }
                 }
+            });
+
+            // 방문수강접수 목록
+            $datatable = $list_table.DataTable({
+                serverSide: true,
+                ajax: {
+                    'url' : '{{ site_url('/pay/visit/listAjax') }}?search_type=mem_idx',
+                    'type' : 'POST',
+                    'data' : function(data) {
+                        return $.extend(arrToJson($regi_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
+                    }
+                },
+                dom: 'T<"clear">rtip',
+                rowsGroup: ['.rowspan'],
+                columns: [
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                        // 리스트 번호
+                        return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
+                    }},
+                    {'data' : 'OrderNo', 'render' : function(data, type, row, meta) {
+                        return '<a href="{{ site_url('/pay/visit/show') }}/' + row.OrderIdx + '" class="blue" target="_blank"><u>' + data + '</u></a>';
+                    }},
+                    {'data' : 'PayMethodCcdName'},
+                    {'data' : 'CompleteDatm', 'render' : function(data, type, row, meta) {
+                        return data !== null ? data : '' + '(' + row.OrderDatm + ')';
+                    }},
+                    {'data' : 'tRealPayPrice', 'render' : function(data, type, row, meta) {
+                        return addComma(data);
+                    }},
+                    {'data' : 'ProdTypeCcdName', 'render' : function(data, type, row, meta) {
+                        return data + (row.SalePatternCcdName !== '' ? '<br/>(' + row.SalePatternCcdName + ')' : '');
+                    }},
+                    {'data' : 'ProdName', 'render' : function(data, type, row, meta) {
+                        return '<span class="blue no-line-height">[' + (row.LearnPatternCcdName !== null ? row.LearnPatternCcdName : row.ProdTypeCcdName) + ']</span> ' + data;
+                    }},
+                    {'data' : 'RealPayPrice', 'render' : function(data, type, row, meta) {
+                        return addComma(data);
+                    }},
+                    {'data' : 'PayStatusCcdName', 'render' : function(data, type, row, meta) {
+                        return data + (row.PayStatusCcd === '{{ $_pay_status_ccd['refund'] }}' ? '<br/>' + row.RefundDatm.substr(0, 10) + '<br/>(' + row.RefundAdminName + ')' : '');
+                    }},
+                    {'data' : 'RegAdminName'}
+                ]
             });
 
             // 목록 이동

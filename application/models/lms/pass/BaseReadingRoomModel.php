@@ -858,6 +858,8 @@ class BaseReadingRoomModel extends WB_Model
 
             //월별가격 [일별가격 * 월별기간]
             $arr_monthly_price = $this->_setMonthlyPrice($product_data['RealSalePrice'], $use_start_date, $use_end_date);
+            print_r($arr_monthly_price);
+            exit;
 
             if (empty($target_month) === false) {
                 $arr_monthly_price[$target_month][0] = $target_start_date;
@@ -1208,10 +1210,27 @@ class BaseReadingRoomModel extends WB_Model
         $arr_day = $this->_setMonthDays($start_date, $end_date);
 
         //월별(일자계산) 가격
+        $temp_sum_price = 0;
         foreach ($arr_day as $key => $day) {
             $interval = $this->_setDayDiff($day[0], $day[1]);
+            $temp_sum_price += $interval * $daily_price;
             $arr_day[$key][] = $interval * $daily_price;
         }
+
+        //남은 금액 차에 따른 월별 금액 분배
+        $temp_price = $price - $temp_sum_price;
+        foreach ($arr_day as $key => $rows) {
+            if ($temp_price >= 0) {
+                if ($key == key($arr_day)) {
+                    $arr_day[$key][2] = $temp_price + $arr_day[$key][2];
+                }
+            } else {    //결제금액이 월별가격보다 적을 경우 (-) 마지막배열에서 빼 줌
+                if ($rows[0] === end($arr_day)[0]) {
+                    $arr_day[$key][2] = $arr_day[$key][2] + $temp_price;
+                }
+            }
+        }
+
         return $arr_day;
     }
 

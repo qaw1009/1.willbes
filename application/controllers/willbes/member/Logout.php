@@ -30,8 +30,6 @@ class Logout extends BaseMember
         $this->memberFModel->setMemberLogout($login_key);
 
         //  $this->session->sess_destroy();
-        show_alert("로그아웃 되었습니다.", "/", false);
-
-
+        show_alert("로그아웃 되었습니다.", front_url('/'), false);
     }
 }

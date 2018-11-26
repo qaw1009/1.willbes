@@ -638,7 +638,7 @@ class BaseReadingRoomModel extends WB_Model
     private function _setProductData($input = [], $input_type = 'main')
     {
         $SaleStartDatm = element('use_start_date',$input).' '.date('H').':00:00';
-        $SaleEndDatm = element('use_end_date',$input).'23:59:59';
+        $SaleEndDatm = element('use_end_date',$input).' 23:59:59';
 
         $input_product = [
             'ProdName' => element('rd_name',$input),
@@ -648,7 +648,7 @@ class BaseReadingRoomModel extends WB_Model
             'IsSaleEnd' => 'N',
             'IsCoupon' => 'N',
             'IsPoint' => 'N',
-            'PointApplyCcd' => '',
+            'PointApplyCcd' => '635001',
             'PointSavePrice' => '0',
             'PointSaveType' => 'R',
             'IsBest' => 'N',

@@ -161,7 +161,7 @@
                 param += '&rdr_prod_code=' + '{{$rdr_prod_code}}';
 
                 $('.btn-create-seat-modal').setLayer({
-                    "url" : "{{ site_url('/pass/readingRoom/regist/createSeatModal/') }}"+ $(this).data('prod-code') + '?' + '{!! $default_query_string !!}' + param,
+                    "url" : "{{ site_url('/common/searchReadingRoom/createSeatModal/') }}"+ $(this).data('prod-code') + '?' + '{!! $default_query_string !!}' + param,
                     "width" : "1200"
                 });
             });

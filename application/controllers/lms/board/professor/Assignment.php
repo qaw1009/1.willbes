@@ -640,6 +640,20 @@ class Assignment extends BaseBoard
         ]);
     }
 
+    public function managerAssignmentModal()
+    {
+        $this->setDefaultBoardParam();
+        $board_params = $this->getDefaultBoardParam();
+        $this->bm_idx = $board_params['bm_idx'];
+        $this->site_code = $this->_req('site_code');
+
+
+
+        $this->load->view("board/professor/{$this->board_name}/issue/manager_modal", [
+
+        ]);
+    }
+
     /**
      * 첨부파일 다운로드
      */

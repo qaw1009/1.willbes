@@ -134,13 +134,15 @@ function markInfoModal(ele_id, tabId) {
 // 나의 과제제출 버튼 Script
 $(function() {
     $('.editTable .MoreBtn a').click(function() {
-        if ($('.editTableList').hasClass('hover')) {
-            $('.editTableList').removeClass('hover');
+        var $lec_info_table = $(this).parents('.PASSZONE-Lec-Section').find('.editTableList');
+
+        if ($lec_info_table.hasClass('hover')) {
+            $lec_info_table.removeClass('hover');
             $('.editTable .MoreBtn a .txt').text('열기');
             $('.editTableList tr.editCont').css('display','none');
             
         } else {
-            $('.editTableList').addClass('hover');
+            $lec_info_table.addClass('hover');
             $('.editTable .MoreBtn a .txt').text('닫기');
             $('.editTableList.hover tr.editCont').css('display','');
         }

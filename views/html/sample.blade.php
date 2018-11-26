@@ -23,8 +23,6 @@
 
     <a href="{{ site_url('/home/html/profsub') }}" target="_blank">교수진소개 > 교수진 상세 page 이동</a><br/><br/>
 
-    <a href="{{ site_url('/home/html/profsub_tpass') }}" target="_blank">교수진소개 > 교수진 상세 T-pass page 이동</a><br/><br/>
-
     <a href="{{ site_url('/home/html/package1') }}" target="_blank">패키지 > 추천패키지 수강신청 page 이동</a><br/><br/>
 
     <a href="{{ site_url('/home/html/packagesub1') }}" target="_blank">패키지 > 추천패키지 수강신청 상세 page 이동</a><br/><br/>

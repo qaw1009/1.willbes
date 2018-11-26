@@ -699,12 +699,13 @@
 
         <div class="willbes-Prof-Tabs">
             <div class="ProfDetailWrap">
-                <ul class="tabWrap tabDepthProf">
+                <ul class="tabWrap tabDepthProf tabDepthProf_6">
                     <li><a href="#Proftab1" class="on">개설강좌</a></li>
                     <li><a href="#Proftab2">공지사항</a></li>
                     <li><a href="#Proftab3">학습Q&A</a></li>
                     <li><a href="#Proftab4">학습자료실</a></li>
                     <li><a href="#Proftab5">무료강좌</a></li>
+                    <li><a href="#Proftab6">T-pass자료실</a></li>
                 </ul>
                 <div class="tabBox">
                     <div id="Proftab1" class="tabLink">
@@ -2640,6 +2641,221 @@
                             </ul>
                         </div>
                         <!-- willbes-Lec-buyBtn -->
+                    </div>
+                    <div id="Proftab6" class="tabLink">
+                        <div class="willbes-Prof-Subject pl-zero NG tx-dark-black">
+                            · T-pass자료실
+                            <div class="willbes-Lec-Search GM f_right">
+                                <div class="inputBox p_re">
+                                    <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="제목 또는 내용을 입력해 주세요" maxlength="30">
+                                    <button type="submit" onclick="" class="search-Btn">
+                                        <span>검색</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- List -->
+                        <div class="willbes-Leclist c_both">
+                            <div class="willbes-Lec-Selected tx-gray">
+                                <select id="acad" name="acad" title="구분" class="seleAcad" style="width: 220px">
+                                    <option selected="selected">T-pass 강좌명</option>
+                                    <option value="2019 한덕현 국가직 T-pass">2019 한덕현 국가직 T-pass</option>
+                                    <option value="2019 한덕현 국가직 T-pass2">2019 한덕현 국가직 T-pass2</option>
+                                </select>
+                                <div class="InfoBtn h27 p_re">
+                                    <a class="dropdown" href="#none">수강신청안내 <span>▶</span>
+                                        <div class="drop-Box info-Box">
+                                            <dl>
+                                                <dt>· T-pass 수강생 전용 자료실로<br/>
+                                                &nbsp;&nbsp;수강중인 T-pass강좌 자료를 확인할 수 있습니다.
+                                                </dt>
+                                                <dt>&nbsp;&nbsp;(T-pass자료 제공 여부는 교수별, 강좌별로 상이)</dt>
+                                            </dl>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="LeclistTable">
+                                <table cellspacing="0" cellpadding="0" class="listTable qnaTable upper-gray upper-black bdb-gray tx-gray">
+                                    <colgroup>
+                                        <col style="width: 65px;">
+                                        <col style="width: 620px;">
+                                        <col style="width: 65px;">
+                                        <col style="width: 100px;">
+                                        <col style="width: 90px;">
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th>No<span class="row-line">|</span></th>
+                                            <th>제목<span class="row-line">|</span></th>
+                                            <th>첨부<span class="row-line">|</span></th>
+                                            <th>작성일<span class="row-line">|</span></th>
+                                            <th>조회수</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="top">
+                                            <td class="w-no"><img src="{{ img_url('prof/icon_notice.gif') }}"></td>
+                                            <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
+                                            <td class="w-file">
+                                                <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"></a>
+                                            </td>
+                                            <td class="w-date">2018-00-00</td>
+                                            <td class="w-click">123</td>
+                                        </tr>
+                                        <tr class="top">
+                                            <td class="w-no"><img src="{{ img_url('prof/icon_notice.gif') }}"></td>
+                                            <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
+                                            <td class="w-file">
+                                                <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"></a>
+                                            </td>
+                                            <td class="w-date">2018-00-00</td>
+                                            <td class="w-click">244</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-no">10</td>
+                                            <td class="w-list tx-left pl20">
+                                                <a href="#none">
+                                                    2018 필살기실전모의고사파본관련공지
+                                                    <div class="subTit">2018 [국가직대비] 정채영 국어 적중 50선 특강 (4~5월)</div>
+                                                </a>
+                                            </td>
+                                            <td class="w-file">&nbsp;</td>
+                                            <td class="w-date">2018-00-00</td>
+                                            <td class="w-click">355</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-no">9</td>
+                                            <td class="w-list tx-left pl20">
+                                                <a href="#none">
+                                                    2018 필살기실전모의고사파본관련공지
+                                                    <div class="subTit">2018 [국가직대비] 정채영 국어 적중 50선 특강 (4~5월)</div>
+                                                </a>
+                                            </td>
+                                            <td class="w-file">&nbsp;</td>
+                                            <td class="w-date">2018-00-00</td>
+                                            <td class="w-click">466</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-no">8</td>
+                                            <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
+                                            <td class="w-file">&nbsp;</td>
+                                            <td class="w-date">2018-00-00</td>
+                                            <td class="w-click">355</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-no">7</td>
+                                            <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
+                                            <td class="w-file">&nbsp;</td>
+                                            <td class="w-date">2018-00-00</td>
+                                            <td class="w-click">466</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-no">6</td>
+                                            <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
+                                            <td class="w-file">&nbsp;</td>
+                                            <td class="w-date">2018-00-00</td>
+                                            <td class="w-click">355</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-no">5</td>
+                                            <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
+                                            <td class="w-file">&nbsp;</td>
+                                            <td class="w-date">2018-00-00</td>
+                                            <td class="w-click">466</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-no">4</td>
+                                            <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
+                                            <td class="w-file">&nbsp;</td>
+                                            <td class="w-date">2018-00-00</td>
+                                            <td class="w-click">355</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-no">3</td>
+                                            <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
+                                            <td class="w-file">&nbsp;</td>
+                                            <td class="w-date">2018-00-00</td>
+                                            <td class="w-click">466</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-no">2</td>
+                                            <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
+                                            <td class="w-file">&nbsp;</td>
+                                            <td class="w-date">2018-00-00</td>
+                                            <td class="w-click">355</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-list tx-center" colspan="5">검색 결과가 없습니다.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- willbes-Leclist -->
+
+                        <br/><br/><br/>
+
+                        <!-- View -->
+                        <div class="willbes-Leclist c_both">
+                            <div class="LecViewTable">
+                                <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black bdb-gray tx-gray">
+                                    <colgroup>
+                                        <col style="width: 640px;">
+                                        <col style="width: 150px;">
+                                        <col style="width: 150px;">
+                                    </colgroup>
+                                    <thead>
+                                        <tr><th colspan="3" class="w-list tx-left  pl20"><img src="{{ img_url('prof/icon_notice.gif') }}" style="marign-right: 5px;"> <strong>2018 필살기실전모의고사파본관련공지</strong></th></tr>
+                                        <tr>
+                                            <td class="subTit tx-left pl20">2018 [국가직대비] 정채영 국어 적중 50선 특강 (4~5월)<span class="row-line">|</span></td>
+                                            <td class="w-date">2018-00-00<span class="row-line">|</span></td>
+                                            <td class="w-click"><strong>조회수</strong> 123</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="w-file tx-left pl20" colspan="3">
+                                                <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일1이 노출됩니다.docx</a>
+                                                <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일2가 노출됩니다.docx</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-txt tx-left" colspan="3">
+                                                이달의 개강 강좌 공지입니다.<br/>
+                                                이달의 개강 강좌 공지입니다.<br/>
+                                                이달의 개강 강좌 공지입니다.
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="search-Btn btnAuto90 h36 mt20 mb30 f_right">
+                                    <button type="submit" onclick="" class="mem-Btn bg-purple-gray bd-dark-gray">
+                                        <span>목록</span>
+                                    </button>
+                                </div>
+                                <table cellspacing="0" cellpadding="0" class="listTable prevnextTable upper-gray bdt-gray bdb-gray tx-gray">
+                                    <colgroup>
+                                        <col style="width: 150px;">
+                                        <col style="width: 640px;">
+                                        <col style="width: 150px;">
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <td class="w-prev bg-light-gray"><strong>이전글</strong></td>
+                                            <td class="tx-left pl20"><a href="#none">[개강] 황남기 헌법, 행정법 리마인드 핵심 이론 + 기출문풀</a><span class="row-line">|</span></td>
+                                            <td class="w-date">2018-00-00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-next bg-light-gray"><strong>다음글</strong></td>
+                                            <td class="tx-left pl20"><a href="#none">[헌법] 5~6월 강의안내</a><span class="row-line">|</span></td>
+                                            <td class="w-date">2018-00-00</td>
+                                        </tr> 
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- willbes-Leclist -->
                     </div>
                 </div>
             </div>

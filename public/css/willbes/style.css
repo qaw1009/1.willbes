@@ -6268,6 +6268,28 @@ ul li.profList .willbes-Layer-ProfileBox {
     margin: -3px 0 0 10px;
 }
 
+/* subContainer : Prof : 수강신청안내버튼 */
+.drop-Box.info-Box {
+    top: 35px;
+    right: 0;
+    width: 290px;
+    padding: 15px;
+    border: 1px solid #2f2f2f;
+    box-shadow: none;
+}
+.drop-Box.info-Box dl dt {
+    font-size: 12px;
+    text-align: left;
+    line-height: 20px;
+}
+.drop-Box.info-Box:before {
+    margin-left: 90px;
+    border-color: transparent transparent #2f2f2f;
+}
+.drop-Box.info-Box:after {
+    margin-left: 91px;
+}
+
 
 /* subContainer : Prof : 공지사항 */
 .oBox {

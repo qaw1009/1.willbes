@@ -2662,8 +2662,8 @@
                                     <option value="2019 한덕현 국가직 T-pass">2019 한덕현 국가직 T-pass</option>
                                     <option value="2019 한덕현 국가직 T-pass2">2019 한덕현 국가직 T-pass2</option>
                                 </select>
-                                <div class="InfoBtn h27 p_re">
-                                    <a class="dropdown" href="#none">수강신청안내 <span>▶</span>
+                                <div class="InfoBtn h27 p_re" style="width: 80px;">
+                                    <a class="dropdown" href="#none">이용안내 <span>▶</span>
                                         <div class="drop-Box info-Box">
                                             <dl>
                                                 <dt>· T-pass 수강생 전용 자료실로<br/>

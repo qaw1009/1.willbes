@@ -40,7 +40,7 @@
                         @endif
 
                         @if(in_array('reading_room', $prod_tabs) === true)
-                            <li class="{{$prod_type == 'reading_room' ? 'active':''}}"><a href="#none" onclick="prodListChange('reading_room', '');"><strong>{{$mang_title}}</strong></a></li>
+                            <li class="{{$prod_type == 'reading_room' ? 'active':''}}"><a href="#none" onclick="prodListChange('reading_room', '');"><strong>독서실</strong></a></li>
                         @endif
 
                         @if(in_array('locker', $prod_tabs) === true)
@@ -134,14 +134,11 @@
         var $datatable_modal;
         var $search_form_modal = $('#_search_form');
         var $_list_table = $('#_list_ajax_table');
-        var $parent_location_span = $("#target_id").val();
-
         var $parent_regi_form = $('#regi_form');
+        var $return_type = $("#return_type").val();     // 리턴 방식
+        var $target_id = '#' + $("#target_id").val();       // 리턴되는 타겟 레이어 id
+        var $target_field = $("#target_field").val();       // 리턴되는 교재상품코드 input hidden name
         var prod_type = $search_form_modal.find("input[name='prod_type']").val(); // 상품타입 (book)
-        var $return_type = '{{ $return_type }}';    // 리턴 방식
-        var $target_id = '#{{ $target_id }}';         // 리턴되는 타겟 레이어 id
-        var $target_field = '{{ $target_field }}';     // 리턴되는 교재상품코드 input hidden name
-        var $ori_selected_data = {};                    // 기선택된 교재상품코드 json 변수
 
         $(document).ready(function() {
             $search_form_modal.find('select[name="_search_campus_ccd"]').chained("#_search_site_code");
@@ -192,26 +189,38 @@
                 }
 
                 var row = $datatable_modal.row($(this).data('row-idx')).data();
+
+                // 독서실 or 사물함
                 var data = ' data-prod-type="' + prod_type + '" data-learn-pattern-ccd=""';
-                data += ' data-prod-name="' + Base64.encode(row.ProdName) + '" data-sale-price="' + row.main_SalePrice + '" data-real-sale-price="' + row.main_RealSalePrice + '"';
+                data += ' data-prod-name="' + Base64.encode(row.ReadingRoomName) + '" data-sale-price="' + row.main_SalePrice + '" data-real-sale-price="' + row.main_RealSalePrice + '"';
                 data += ' data-prod-type-ccd-name="{{$mang_title}}" data-learn-pattern-ccd-name=""';
 
-                //html append 부분
-                var html = '<span class="pr-10">[' + row.ProdCode + '] ' + row.ProdName;
+                var html = '<span class="pr-10">[' + row.ProdCode + '] ' + row.ReadingRoomName;
                 html += '   <a href="#none" data-prod-code="' + row.ProdCode + '" class="selected-product-delete"><i class="fa fa-times red"></i></a>';
-                html += '   <input type="hidden" name="prod_code[]" value="' + row.ProdCode + '"' + data + '/>';
+                html += '   <input type="hidden" name="' + $target_field + '[]" value="' + row.ProdCode + '"' + data + '/>';
                 html += '</span>';
-                $(document).find("#" + $parent_location_span).append(html);
+
+                // 예치금 (판매금액이 0원 이상일 경우만)
+                if (row.sub_SalePrice > 0) {
+                    data = ' data-prod-type="deposit" data-learn-pattern-ccd=""';
+                    data += ' data-prod-name="' + Base64.encode(row.ReadingRoomName) + '" data-sale-price="' + row.sub_SalePrice + '" data-real-sale-price="' + row.sub_RealSalePrice + '"';
+                    data += ' data-prod-type-ccd-name="예치금" data-learn-pattern-ccd-name=""';
+
+                    html += '<span class="pr-10">[' + row.SubProdCode + '] ' + row.ReadingRoomName;
+                    html += '   <a href="#none" data-prod-code="' + row.SubProdCode + '" class="selected-product-delete"><i class="fa fa-times red"></i></a>';
+                    html += '   <input type="hidden" name="' + $target_field + '[]" value="' + row.SubProdCode + '"' + data + '/>';
+                    html += '</span>';
+                }
+
+                $(document).find($target_id).append(html);
 
                 // change 이벤트 발생
                 if ($search_form_modal.find("input[name='is_event']").val() === 'Y') {
-                    $(document).find("#"+$parent_location_span).trigger('change');
+                    $(document).find($target_id).trigger('change');
                 }
 
                 $("#pop_modal").modal('toggle');
             });
         });
-
-
     </script>
 @endsection

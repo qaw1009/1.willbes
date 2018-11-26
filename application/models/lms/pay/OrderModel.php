@@ -10,7 +10,7 @@ class OrderModel extends BaseOrderModel
         parent::__construct();
 
         // 사용 모델 로드
-        $this->load->loadModels(['pay/salesProduct', 'pay/orderList']);
+        $this->load->loadModels(['pay/salesProduct', 'pay/orderList', 'sys/site']);
     }
 
     /**
@@ -258,8 +258,8 @@ class OrderModel extends BaseOrderModel
         $this->_conn->trans_begin();
 
         try {
-            // 주문메모, 사이트 모델 로드
-            $this->load->loadModels(['pay/orderMemo', 'sys/site']);
+            // 주문메모 모델 로드
+            $this->load->loadModels(['pay/orderMemo']);
             
             $sess_admin_idx = $this->session->userdata('admin_idx');
             $reg_ip = $this->input->ip_address();
@@ -911,7 +911,7 @@ class OrderModel extends BaseOrderModel
             $total_disc_price = 0;
             $arr_prod_row = [];    // 상품조회 결과 배열
 
-            if (empty($arr_prod_code) === true) {
+            if (empty($arr_prod_info) === true) {
                 throw new \Exception('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
             }
 
@@ -963,9 +963,9 @@ class OrderModel extends BaseOrderModel
                 $arr_prod_row[] = $row;
             }
 
+            // 주문 데이터 등록 (방문결제는 배송료, 쿠폰 사용, 포인트 사용/적립, 주문배송주소 등록 없음)
             $repr_prod_name = $arr_prod_row[0]['ProdName'] . (count($arr_prod_row) > 1 ? ' 외 ' . (count($arr_prod_row) - 1) . '건' : '');    // 대표상품명
 
-            // 주문 데이터 등록 (방문결제는 배송료, 쿠폰 사용, 포인트 사용/적립, 주문배송주소 등록 없음)
             $data = [
                 'OrderNo' => $this->makeOrderNo(),
                 'MemIdx' => $mem_idx,

@@ -5,7 +5,7 @@ require_once APPPATH . 'controllers/lms/pay/BaseOrder.php';
 
 class Visit extends BaseOrder
 {
-    protected $models = array('pay/orderList', 'pay/order', 'member/manageMember', 'service/point', 'sys/code');
+    protected $models = array('pay/orderList', 'pay/order', 'member/manageMember', 'service/point', 'sys/site', 'sys/code');
     protected $helpers = array();
     private $_list_add_join = array('refund');
 
@@ -28,8 +28,13 @@ class Visit extends BaseOrder
             $this->orderListModel->_pay_status_ccd['receipt_wait'], $this->orderListModel->_pay_status_ccd['paid'], $this->orderListModel->_pay_status_ccd['refund']
         ]);
 
+        // 결제방법 공통코드에서 방문결제용 코드만 필터링
+        $arr_pay_method_ccd = array_filter_keys($codes[$this->_group_ccd['PayMethod']], [
+            $this->orderListModel->_pay_method_ccd['visit_card'], $this->orderListModel->_pay_method_ccd['visit_cash'], $this->orderListModel->_pay_method_ccd['visit_card_cash']
+        ]);
+
         $this->load->view('pay/visit/index', [
-            'arr_pay_method_ccd' => $codes[$this->_group_ccd['PayMethod']],
+            'arr_pay_method_ccd' => $arr_pay_method_ccd,
             'arr_prod_type_ccd' => $codes[$this->_group_ccd['ProdType']],
             'arr_learn_pattern_ccd' => $codes[$this->_group_ccd['LearnPattern']],
             'arr_pay_status_ccd' => $arr_pay_status_ccd,
@@ -43,13 +48,18 @@ class Visit extends BaseOrder
      */
     public function listAjax()
     {
-        $arr_condition = $this->_getListConditions();
+        $search_type = get_var($this->_req('search_type'), 'list');
+        $arr_condition = $this->_getListConditions($search_type);
 
+        $count = 0;
         $list = [];
-        $count = $this->orderListModel->listAllOrder(true, $arr_condition, null, null, [], $this->_list_add_join);
 
-        if ($count > 0) {
-            $list = $this->orderListModel->listAllOrder(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), $this->_getListOrderBy(), $this->_list_add_join);
+        if ($search_type == 'list' || ($search_type != 'list' && empty($this->_reqP($search_type)) === false)) {
+            $count = $this->orderListModel->listAllOrder(true, $arr_condition, null, null, [], $this->_list_add_join);
+
+            if ($count > 0) {
+                $list = $this->orderListModel->listAllOrder(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), $this->_getListOrderBy(), $this->_list_add_join);
+            }
         }
 
         return $this->response([
@@ -60,50 +70,60 @@ class Visit extends BaseOrder
     }
 
     /**
-     * 일반수강접수 조회 조건 리턴 
+     * 일반수강접수 조회 조건 리턴
+     * @param string $search_type [조회 구분, list : 목록 페이지, mem_idx : 회원식별자 기준)
      * @return array
      */
-    private function _getListConditions()
+    private function _getListConditions($search_type = 'list')
     {
         // 기본조건
         $arr_condition = [
-            'EQ' => [
-                'O.PayRouteCcd' => $this->orderListModel->_pay_route_ccd['visit'],
-                'O.SiteCode' => $this->_reqP('search_site_code'),
-                'O.PayMethodCcd' => $this->_reqP('search_pay_method_ccd'),
-                'P.ProdTypeCcd' => $this->_reqP('search_prod_type_ccd'),
-                'PL.LearnPatternCcd' => $this->_reqP('search_learn_pattern_ccd'),
-                'OP.PayStatusCcd' => $this->_reqP('search_pay_status_ccd')
-            ],
+            'EQ' => ['O.PayRouteCcd' => $this->orderListModel->_pay_route_ccd['visit']],
             'IN' => ['O.SiteCode' => get_auth_site_codes()],    //사이트 권한 추가
-            'ORG1' => [
-                'LKR' => [
-                    'M.MemName' => $this->_reqP('search_member_value'),
-                    'M.MemId' => $this->_reqP('search_member_value'),
-                    'M.Phone3' => $this->_reqP('search_member_value'),
-                ]
-            ],
-            'ORG2' => [
-                'LKR' => [
-                    'O.OrderNo' => $this->_reqP('search_prod_value')
-                ],
-                'LKB' => [
-                    'P.ProdName' => $this->_reqP('search_prod_value')
-                ],
-            ],
         ];
 
-        // 날짜 검색
-        $search_start_date = get_var($this->_reqP('search_start_date'), date('Y-m-01'));
-        $search_end_date = get_var($this->_reqP('search_end_date'), date('Y-m-t'));
+        if ($search_type == 'list') {
+            $arr_condition = array_merge_recursive($arr_condition, [
+                'EQ' => [
+                    'O.SiteCode' => $this->_reqP('search_site_code'),
+                    'O.PayMethodCcd' => $this->_reqP('search_pay_method_ccd'),
+                    'P.ProdTypeCcd' => $this->_reqP('search_prod_type_ccd'),
+                    'PL.LearnPatternCcd' => $this->_reqP('search_learn_pattern_ccd'),
+                    'OP.PayStatusCcd' => $this->_reqP('search_pay_status_ccd')
+                ],
+                'ORG1' => [
+                    'LKR' => [
+                        'M.MemName' => $this->_reqP('search_member_value'),
+                        'M.MemId' => $this->_reqP('search_member_value'),
+                        'M.Phone3' => $this->_reqP('search_member_value'),
+                    ]
+                ],
+                'ORG2' => [
+                    'LKR' => [
+                        'O.OrderNo' => $this->_reqP('search_prod_value')
+                    ],
+                    'LKB' => [
+                        'P.ProdName' => $this->_reqP('search_prod_value')
+                    ],
+                ],
+            ]);
 
-        switch ($this->_reqP('search_date_type')) {
-            case 'order' :
-                $arr_condition['BDT'] = ['O.OrderDatm' => [$search_start_date, $search_end_date]];
-                break;
-            default :
-                $arr_condition['BDT'] = ['O.CompleteDatm' => [$search_start_date, $search_end_date]];
-                break;
+            // 날짜 검색
+            $search_start_date = get_var($this->_reqP('search_start_date'), date('Y-m-01'));
+            $search_end_date = get_var($this->_reqP('search_end_date'), date('Y-m-t'));
+
+            switch ($this->_reqP('search_date_type')) {
+                case 'order' :
+                    $arr_condition['BDT'] = ['O.OrderDatm' => [$search_start_date, $search_end_date]];
+                    break;
+                default :
+                    $arr_condition['BDT'] = ['O.CompleteDatm' => [$search_start_date, $search_end_date]];
+                    break;
+            }
+        } elseif ($search_type == 'mem_idx') {
+            $arr_condition = array_merge_recursive($arr_condition, [
+                'EQ' => ['O.MemIdx' => $this->_reqP('mem_idx')]
+            ]);
         }
 
         return $arr_condition;
@@ -137,6 +157,7 @@ class Visit extends BaseOrder
         $order_idx = element('0', $params);
         $is_order = empty($order_idx) === false ? true : false;
         $method = 'POST';
+        $arr_off_site_code = [];
         $data = [];
 
         // 방문결제 데이터 조회
@@ -156,6 +177,8 @@ class Visit extends BaseOrder
 
             // 회원정보
             $data['mem'] = $this->manageMemberModel->getMember($data['order']['MemIdx']);
+        } else {
+            $arr_off_site_code = $this->siteModel->getOffLineSiteArray();
         }
 
         // 카드사 공통코드 조회
@@ -166,8 +189,10 @@ class Visit extends BaseOrder
             'idx' => $order_idx,
             'data' => $data,
             'arr_card_ccd' => $arr_card_ccd,
+            'arr_off_site_code' => $arr_off_site_code,
             '_is_order' => $is_order,
-            '_pay_method_ccd' => $this->orderListModel->_pay_method_ccd
+            '_pay_method_ccd' => $this->orderListModel->_pay_method_ccd,
+            '_pay_status_ccd' => $this->orderListModel->_pay_status_ccd
         ]);
     }
 

@@ -123,6 +123,8 @@ class OrderModel extends BaseOrderModel
             foreach ($order_prod_data as $row) {
                 $card_refund_price = array_get($order_prod_param, $row['OrderProdIdx'] . '.card_refund_price', 0);
                 $cash_refund_price = array_get($order_prod_param, $row['OrderProdIdx'] . '.cash_refund_price', 0);
+                $card_deduct_price = $row['CardPayPrice'] - $card_refund_price;     // 카드공제금액
+                $cash_deduct_price = $row['CashPayPrice'] - $cash_refund_price;     // 현금공제금액
                 $is_point_refund = array_get($order_prod_param, $row['OrderProdIdx'] . '.is_point_refund', 'N');
                 $is_coupon_refund = array_get($order_prod_param, $row['OrderProdIdx'] . '.is_coupon_refund', 'N');
                 $reco_point_idx = null;
@@ -131,6 +133,11 @@ class OrderModel extends BaseOrderModel
                 // 0원결제가 아닌 경우 환불금액 확인
                 if ($row['RealPayPrice'] > 0 && $card_refund_price + $cash_refund_price < 1) {
                     throw new \Exception('환불요청 금액이 올바르지 않습니다.');
+                }
+                
+                // 공제금액 확인
+                if ($card_deduct_price < 0 || $cash_deduct_price < 0) {
+                    throw new \Exception('환불요청 금액이 실결제금액보다 큽니다.');
                 }
 
                 // 자동지급 쿠폰 회수 (온라인, 학원강좌일 경우만 실행, 쿠폰 복구보다 먼저 실행되어야 함 => 나중에 실행되면 복구된 쿠폰도 다시 회수 처리됨)
@@ -208,11 +215,11 @@ class OrderModel extends BaseOrderModel
                     'OrderIdx' => $order_idx,
                     'OrderProdIdx' => $row['OrderProdIdx'],
                     'RefundPrice' => $card_refund_price + $cash_refund_price,
-                    'DeductPrice' => 0,
+                    'DeductPrice' => $card_deduct_price + $cash_deduct_price,
                     'CardRefundPrice' => $card_refund_price,
                     'CashRefundPrice' => $cash_refund_price,
-                    'CardDeductPrice' => 0,
-                    'CashDeductPrice' => 0,
+                    'CardDeductPrice' => $card_deduct_price,
+                    'CashDeductPrice' => $cash_deduct_price,
                     'IsPointRefund' => $is_point_refund,
                     'RecoPointIdx' => $reco_point_idx,
                     'IsCouponRefund' => $is_coupon_refund,

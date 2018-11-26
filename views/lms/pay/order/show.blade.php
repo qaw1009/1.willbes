@@ -206,10 +206,10 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <input id="card_refund_price_{{ $order_prod_row['OrderProdIdx'] }}" name="card_refund_price[]" class="form-control input-sm" title="카드환불금액" value="{{ $order_prod_row['CalcCardRefundPrice'] }}" style="width: 140px;"/>
+                                                <input id="card_refund_price_{{ $order_prod_row['OrderProdIdx'] }}" name="card_refund_price[]" class="form-control input-sm" title="카드환불금액" value="{{ $order_prod_row['CardPayPrice'] }}" @if($order_prod_row['CardPayPrice'] < 1) readonly="readonly" @endif style="width: 140px;"/>
                                             </td>
                                             <td>
-                                                <input id="cash_refund_price_{{ $order_prod_row['OrderProdIdx'] }}" name="cash_refund_price[]" class="form-control input-sm" title="현금환불금액" value="{{ $order_prod_row['CalcCashRefundPrice'] }}" style="width: 140px;"/>
+                                                <input id="cash_refund_price_{{ $order_prod_row['OrderProdIdx'] }}" name="cash_refund_price[]" class="form-control input-sm" title="현금환불금액" value="{{ $order_prod_row['CashPayPrice'] }}" @if($order_prod_row['CashPayPrice'] < 1) readonly="readonly" @endif style="width: 140px;"/>
                                             </td>
                                             <td>
                                                 @if($order_prod_row['IsUseCoupon'] == 'Y')

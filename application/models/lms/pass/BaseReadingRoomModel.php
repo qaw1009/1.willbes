@@ -1196,6 +1196,9 @@ class BaseReadingRoomModel extends WB_Model
 
     /**
      * 월별 가격 계산
+     * 남은 금액 차에 따른 월별 금액 분배
+     * - 상품가격보다 남은 금액이 적을 경우 : 첫째달에서 금액 더하기
+     * - 상품가격보다 남은 금액이 많을 경우 : 마지막달에서 금액 빼기
      * @param $price
      * @param $start_date
      * @param $end_date
@@ -1217,14 +1220,14 @@ class BaseReadingRoomModel extends WB_Model
             $arr_day[$key][] = $interval * $daily_price;
         }
 
-        //남은 금액 차에 따른 월별 금액 분배
+        //상품가격, 월별계산 가격 차이
         $temp_price = $price - $temp_sum_price;
         foreach ($arr_day as $key => $rows) {
             if ($temp_price >= 0) {
                 if ($rows[0] === reset($arr_day)[0]) {
                     $arr_day[$key][2] = $temp_price + $arr_day[$key][2];
                 }
-            } else {    //결제금액이 월별가격보다 적을 경우 (-) 마지막배열에서 빼 줌
+            } else {
                 if ($rows[0] === end($arr_day)[0]) {
                     $arr_day[$key][2] = $arr_day[$key][2] + $temp_price;
                 }

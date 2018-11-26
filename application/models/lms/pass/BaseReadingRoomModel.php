@@ -41,7 +41,7 @@ class BaseReadingRoomModel extends WB_Model
     private $_lr_idx;
     private $_arr_sale_status_ccd = [
         'main' => '618001',    //판매상태(판매가능)
-        'sub' => '618003'      //판매상태(판매불가)
+        'sub' => '618001'      //판매상태(판매불가)
     ];
     private $_sale_type_ccd = '613001'; // 상품판매구분 > PC+모바일
 

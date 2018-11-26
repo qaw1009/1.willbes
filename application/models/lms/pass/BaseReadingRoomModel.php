@@ -1221,7 +1221,7 @@ class BaseReadingRoomModel extends WB_Model
         $temp_price = $price - $temp_sum_price;
         foreach ($arr_day as $key => $rows) {
             if ($temp_price >= 0) {
-                if ($key == key($arr_day)) {
+                if ($rows[0] === reset($arr_day)[0]) {
                     $arr_day[$key][2] = $temp_price + $arr_day[$key][2];
                 }
             } else {    //결제금액이 월별가격보다 적을 경우 (-) 마지막배열에서 빼 줌

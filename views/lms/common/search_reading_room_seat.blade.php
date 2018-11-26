@@ -303,14 +303,14 @@
                     return false;
                 }
 
-                html += '<input type="hidden" id="rdr_prod_code_{{$prod_code}}" name="rdr_prod_code[]" value="{{$prod_code}}">';
-                html += '<input type="hidden" id="rdr_master_order_idx_{{$prod_code}}" name="rdr_master_order_idx[]" value="{{$rdr_master_order_idx}}">';
-                html += '<input type="hidden" id="rdr_is_extension_{{$prod_code}}" name="rdr_is_extension[]" value="{{$is_extension}}">';
-                html += '<input type="hidden" id="rdr_serial_num_{{$prod_code}}" name="rdr_serial_num[]" value="'+rdr_serial_num+'">';
-                html += '<input type="hidden" id="rdr_seat_status_{{$prod_code}}" name="rdr_seat_status[]" value="'+rdr_seat_status+'">';
-                html += '<input type="hidden" id="rdr_use_start_date_{{$prod_code}}" name="rdr_use_start_date[]" value="'+rdr_use_start_date+'">';
-                html += '<input type="hidden" id="rdr_use_end_date_{{$prod_code}}" name="rdr_use_end_date[]" value="'+rdr_use_end_date+'">';
-                html += '<input type="hidden" id="rdr_memo_{{$prod_code}}" name="rdr_memo[]" value="'+rdr_memo+'">';
+                html += '<input type="hidden" class="rdr_{{$prod_code}}" id="rdr_prod_code_{{$prod_code}}" name="rdr_prod_code[]" value="{{$prod_code}}">';
+                html += '<input type="hidden" class="rdr_{{$prod_code}}" id="rdr_master_order_idx_{{$prod_code}}" name="rdr_master_order_idx[]" value="{{$rdr_master_order_idx}}">';
+                html += '<input type="hidden" class="rdr_{{$prod_code}}" id="rdr_is_extension_{{$prod_code}}" name="rdr_is_extension[]" value="{{$is_extension}}">';
+                html += '<input type="hidden" class="rdr_{{$prod_code}}" id="rdr_serial_num_{{$prod_code}}" name="rdr_serial_num[]" value="'+rdr_serial_num+'">';
+                html += '<input type="hidden" class="rdr_{{$prod_code}}" id="rdr_seat_status_{{$prod_code}}" name="rdr_seat_status[]" value="'+rdr_seat_status+'">';
+                html += '<input type="hidden" class="rdr_{{$prod_code}}" id="rdr_use_start_date_{{$prod_code}}" name="rdr_use_start_date[]" value="'+rdr_use_start_date+'">';
+                html += '<input type="hidden" class="rdr_{{$prod_code}}" id="rdr_use_end_date_{{$prod_code}}" name="rdr_use_end_date[]" value="'+rdr_use_end_date+'">';
+                html += '<input type="hidden" class="rdr_{{$prod_code}}" id="rdr_memo_{{$prod_code}}" name="rdr_memo[]" value="'+rdr_memo+'">';
 
                 $parent_regi_form.find('input[id="rdr_prod_code_{{$prod_code}}"]').remove();
                 $parent_regi_form.find('input[id="rdr_master_order_idx_{{$prod_code}}"]').remove();

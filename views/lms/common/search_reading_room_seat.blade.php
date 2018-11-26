@@ -68,9 +68,10 @@
                 </label>
                 <div class="col-md-10 form-inline">
                     <div class="radio">
-                        @foreach($arr_seat_status as $key => $val)
+                        <input type="radio" name="rdr_seat_status" class="flat" value="682002" title="좌석상태" checked="checked">사용
+                        {{--@foreach($arr_seat_status as $key => $val)
                             <input type="radio" id="rdr_seat_status_{{$key}}" name="rdr_seat_status" class="flat" value="{{$key}}" title="좌석상태" @if($arr_use_seat_data['StatusCcd'] == $key)checked="checked"@endif/> <label for="rdr_seat_status_{{$key}}" class="input-label">{{$val}}</label>
-                        @endforeach
+                        @endforeach--}}
                     </div>
                 </div>
             </div>
@@ -98,13 +99,10 @@
                 </div>
             </div>
             <div class="form-group form-group-sm">
-                <label class="control-label col-md-1-1" for="is_sub_price">예치금반환여부 <span class="required">*</span>
+                <label class="control-label col-md-1-1" for="rdr_memo">메모 <span class="required">*</span>
                 </label>
-                <div class="col-md-10 form-inline">
-                    <div class="checkbox">
-                        <input type="checkbox" id="is_sub_price" name="is_sub_price" value="Y" class="flat" @if($data['sub_RealSalePrice'] > 0)checked="checked"@endif/> <label class="inline-block mr-5" for="is_sub_price">예치금있음</label>
-                    </div>
-                    &nbsp;&nbsp;&nbsp;&nbsp;• 결제/환불정보로 자동 셋팅 (환불 시 '반환', 예치금 0원 시 '없음')
+                <div class="col-md-10">
+                    <textarea id="rdr_memo" name="rdr_memo" class="form-control" rows="3" title="내용" placeholder="ex) 총무 결제, 1층A 6번 → 2층B 4번으로 자리 이동"></textarea>
                 </div>
             </div>
 
@@ -157,16 +155,8 @@
                 <div class="text-left col-md-6 form-inline">
                     <h5 class="clearfix">• 메모관리</h5>
                 </div>
-                <div class="text-right col-md-6 form-inline">
-                    <button type="button" class="btn btn-sm btn-primary mr-20" id="btn_memo">메모저장</button>
-                </div>
             </div>
 
-            <div class="form-group form-group-sm">
-                <div class="col-md-12">
-                    <textarea id="rdr_memo" name="rdr_memo" class="form-control" rows="7" title="내용" placeholder="ex) 총무 결제, 1층A 6번 → 2층B 4번으로 자리 이동"></textarea>
-                </div>
-            </div>
             <div class="form-group form-group-sm">
                 <div class="col-md-12">
                     <table id="list_ajax_table_modal" class="table table-striped table-bordered">
@@ -227,7 +217,6 @@
             var set_rdr_seat_status = $parent_regi_form.find('input[id="rdr_seat_status_{{$prod_code}}"]').val();
             var set_rdr_use_start_date = $parent_regi_form.find('input[id="rdr_use_start_date_{{$prod_code}}"]').val();
             var set_rdr_use_end_date = $parent_regi_form.find('input[id="rdr_use_end_date_{{$prod_code}}"]').val();
-            var set_rdr_is_sub_price = $parent_regi_form.find('input[id="rdr_is_sub_price_{{$prod_code}}"]').val();
             var set_rdr_memo = $parent_regi_form.find('input[id="rdr_memo_{{$prod_code}}"]').val();
 
             if (typeof set_rdr_serial_num != 'undefined') {
@@ -241,15 +230,6 @@
                 $_search_form.find('input[name="rdr_use_start_date"]').val(set_rdr_use_start_date);
             }
             $_search_form.find('input[name="rdr_use_end_date"]').val(set_rdr_use_end_date);
-
-            console.log(set_rdr_is_sub_price);
-            if (typeof set_rdr_is_sub_price != 'undefined') {
-                if (set_rdr_is_sub_price == 'Y') {
-                    $_search_form.find('input:checkbox[name="is_sub_price"]').attr("checked", true);
-                } else {
-                    $_search_form.find('input:checkbox[name="is_sub_price"]').attr("checked", false);
-                }
-            }
             $_search_form.find('textarea[name="rdr_memo"]').val(set_rdr_memo);
             $('#_seat_'+set_rdr_serial_num).css('background-color','#12ec23');
 
@@ -291,27 +271,22 @@
             });
 
             // 메모값 부모창 설정
-            $('#btn_memo').click(function() {
+            /*$('#btn_memo').click(function() {
                 var rdr_memo = $('#rdr_memo').val();
                 var html = '<input type="hidden" id="rdr_memo_{{$prod_code}}" name="rdr_memo[]" value="'+rdr_memo+'">';
                 $parent_regi_form.find('input[id="rdr_memo_{{$prod_code}}"]').remove();
                 $parent_regi_form.append(html);
-            });
+            });*/
 
             //최종선택
             $('#btn_seat_success').click(function() {
-                var rdr_seat_status, rdr_serial_num, rdr_use_start_date, rdr_use_end_date, rdr_memo, rdr_is_sub_price, html = '';
+                var rdr_seat_status, rdr_serial_num, rdr_use_start_date, rdr_use_end_date, rdr_memo, html = '';
 
                 rdr_serial_num = $('#rdr_choice_serial_num').val();
                 rdr_seat_status = $(":input:radio[name=rdr_seat_status]:checked").val();
                 rdr_use_start_date = $('#rdr_use_start_date').val();
                 rdr_use_end_date = $('#rdr_use_end_date').val();
                 rdr_memo = $('#rdr_memo').val();
-                if ($('input:checkbox[name="is_sub_price"]').is(":checked") ==  true) {
-                    rdr_is_sub_price = 'Y';
-                } else {
-                    rdr_is_sub_price = 'N';
-                }
 
                 if (rdr_serial_num == '') {
                     alert('좌석을 선택해주세요.');
@@ -335,7 +310,6 @@
                 html += '<input type="hidden" id="rdr_seat_status_{{$prod_code}}" name="rdr_seat_status[]" value="'+rdr_seat_status+'">';
                 html += '<input type="hidden" id="rdr_use_start_date_{{$prod_code}}" name="rdr_use_start_date[]" value="'+rdr_use_start_date+'">';
                 html += '<input type="hidden" id="rdr_use_end_date_{{$prod_code}}" name="rdr_use_end_date[]" value="'+rdr_use_end_date+'">';
-                html += '<input type="hidden" id="rdr_is_sub_price_{{$prod_code}}" name="is_sub_price[]" value="'+rdr_is_sub_price+'">';
                 html += '<input type="hidden" id="rdr_memo_{{$prod_code}}" name="rdr_memo[]" value="'+rdr_memo+'">';
 
                 $parent_regi_form.find('input[id="rdr_prod_code_{{$prod_code}}"]').remove();
@@ -345,7 +319,6 @@
                 $parent_regi_form.find('input[id="rdr_seat_status_{{$prod_code}}"]').remove();
                 $parent_regi_form.find('input[id="rdr_use_start_date_{{$prod_code}}"]').remove();
                 $parent_regi_form.find('input[id="rdr_use_end_date_{{$prod_code}}"]').remove();
-                $parent_regi_form.find('input[id="rdr_is_sub_price_{{$prod_code}}"]').remove();
                 $parent_regi_form.find('input[id="rdr_memo_{{$prod_code}}"]').remove();
                 $parent_regi_form.append(html);
                 $("#pop_modal").modal('toggle');

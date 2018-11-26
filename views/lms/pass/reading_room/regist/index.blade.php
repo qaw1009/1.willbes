@@ -194,12 +194,10 @@
             $regi_form.find('input[name="rdr_prod_code[]"]').remove();
             $regi_form.find('input[name="rdr_master_order_idx[]"]').remove();
             $regi_form.find('input[name="rdr_is_extension[]"]').remove();
-            $regi_form.find('input[name="is_sub_price[]"]').remove();
             $regi_form.find('input[name="rdr_serial_num[]"]').remove();
             $regi_form.find('input[name="rdr_seat_status[]"]').remove();
             $regi_form.find('input[name="rdr_use_start_date[]"]').remove();
             $regi_form.find('input[name="rdr_use_end_date[]"]').remove();
-            $regi_form.find('input[name="rdr_is_sub_price[]"]').remove();
             $regi_form.find('input[name="rdr_memo[]"]').remove();
         });
 

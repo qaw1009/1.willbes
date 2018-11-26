@@ -36,9 +36,28 @@
     <div class="x_content" id="showLoding">
         <div class="form-group form-group-sm">
             <ul class="nav nav-tabs nav-justified">
-                <li class="active"><a data-toggle="tab" href="#content_1" class="send_type" data-content-type="1">개별 발송</a></li>
-                <li><a data-toggle="tab" href="#content_2" class="send_type" data-content-type="2">일괄 발송</a></li>
+                <li><a data-toggle="tab" href="#content_1">과제보기</a></li>
+                <li><a data-toggle="tab" href="#content_2">작성답안</a></li>
+                <li class="active"><a data-toggle="tab" href="#content_3">채점하기</a></li>
             </ul>
+        </div>
+    </div>
+
+    <div id="content_1">
+        <div class="row">
+            1
+        </div>
+    </div>
+
+    <div id="content_2">
+        <div class="row">
+            2
+        </div>
+    </div>
+
+    <div id="content_3">
+        <div class="row">
+            3
         </div>
     </div>
 </div>

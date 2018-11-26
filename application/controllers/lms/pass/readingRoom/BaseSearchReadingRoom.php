@@ -16,7 +16,7 @@ class BaseSearchReadingRoom extends \app\controllers\BaseController
     public function index()
     {
         //캠퍼스 조회
-        $arr_campus = $this->siteModel->getSiteCampusArray('');
+        $arr_campus = $this->siteModel->getSiteCampusArray($this->_req('site_code'));
 
         $prod_type = $this->_req('prod_type');
         $prod_tabs = array_filter(explode(',', $this->_req('prod_tabs')));  // 노출되는 상품 탭
@@ -51,7 +51,7 @@ class BaseSearchReadingRoom extends \app\controllers\BaseController
             'EQ' => [
                 'a.IsStatus' => 'Y',
                 'a.IsUse' => 'Y',
-                'a.SiteCode' => $this->_reqP('_search_site_code'),
+                'a.SiteCode' => $this->_reqP('site_code'),
                 'a.CampusCcd' => $this->_reqP('_search_campus_ccd'),
                 'a.IsSmsUse' => $this->_reqP('_search_is_sms_use')
             ],
@@ -91,7 +91,6 @@ class BaseSearchReadingRoom extends \app\controllers\BaseController
         $is_extension = false;  //연장여부 기본 설정
         $prod_code = $params[0];
         $rdr_master_order_idx = $this->_reqG('rdr_master_order_idx');
-        $rdr_prod_code = $this->_reqG('rdr_prod_code');
         $now_date = date('Ymd');
 
         //좌석상태공통코드
@@ -108,7 +107,7 @@ class BaseSearchReadingRoom extends \app\controllers\BaseController
         $seat_data = $this->readingRoomModel->listSeat($prod_code);
 
         //연장일 경우
-        if ($prod_code == $rdr_prod_code) {
+        if (empty($rdr_master_order_idx) === false) {
             $is_extension = true;
             $master_order_idx = $rdr_master_order_idx;
 

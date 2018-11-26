@@ -58,11 +58,10 @@
                 <label class="control-label col-md-1 pt-5" for="search_value">조건
                 </label>
                 <div class="col-md-4 form-inline">
-                    {!! html_site_select('', '_search_site_code', '_search_site_code', '', '운영 사이트', '', '', false) !!}
                     <select class="form-control" id="_search_campus_ccd" name="_search_campus_ccd">
                         <option value="">캠퍼스</option>
-                        @foreach($arr_campus as $row)
-                            <option value="{{ $row['CampusCcd'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CampusName'] }}</option>
+                        @foreach($arr_campus as $key => $val)
+                            <option value="{{ $key }}">{{ $val }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -141,7 +140,7 @@
         var prod_type = $search_form_modal.find("input[name='prod_type']").val(); // 상품타입 (book)
 
         $(document).ready(function() {
-            $search_form_modal.find('select[name="_search_campus_ccd"]').chained("#_search_site_code");
+            /*$search_form_modal.find('select[name="_search_campus_ccd"]').chained("#_search_site_code");*/
 
             // 페이징 번호에 맞게 일부 데이터 조회
             $datatable_modal = $_list_table.DataTable({

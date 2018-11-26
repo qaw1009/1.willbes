@@ -858,8 +858,6 @@ class BaseReadingRoomModel extends WB_Model
 
             //월별가격 [일별가격 * 월별기간]
             $arr_monthly_price = $this->_setMonthlyPrice($product_data['RealSalePrice'], $use_start_date, $use_end_date);
-            print_r($arr_monthly_price);
-            exit;
 
             if (empty($target_month) === false) {
                 $arr_monthly_price[$target_month][0] = $target_start_date;

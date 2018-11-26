@@ -1013,6 +1013,26 @@ class OrderModel extends BaseOrderModel
                 }
             }
 
+            // 독서실 좌석배정 등록
+            if (empty(element('rdr_prod_code', $input)) === false) {
+                $this->load->loadModels(['pass/readingRoom']);
+
+                $data = [
+                    'prod_code' => element('rdr_prod_code', $input),
+                    'rdr_master_order_idx' => element('rdr_master_order_idx', $input),
+                    'rdr_is_extension' => element('rdr_is_extension', $input),
+                    'serial_num' => element('rdr_serial_num', $input),
+                    'seat_status' => element('rdr_seat_status', $input),
+                    'rdr_use_start_date' => element('rdr_use_start_date', $input),
+                    'rdr_use_end_date' => element('rdr_use_end_date', $input),
+                    'rdr_memo' => element('rdr_memo', $input)
+                ];
+
+                if ($this->readingRoomModel->addSeat($data, $order_idx) !== true) {
+                    throw new \Exception('좌석 배정에 실패했습니다.');
+                }
+            }
+
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();
@@ -1153,12 +1173,13 @@ class OrderModel extends BaseOrderModel
     }
 
     /**
-     * 방문결제 결제금액 체크
+     * 방문결제 결제금액, 좌석배정 정보 체크
      * @param array $input
      * @return bool|string
      */
     public function checkVisitOrder($input = [])
     {
+        $arr_prod_info = element('prod_code', $input, []);  // 상품코드:상품타입:학습형태공통코드
         $arr_order_price = element('order_price', $input);
         $arr_real_pay_price = element('real_pay_price', $input);
         $arr_card_pay_price = element('card_pay_price', $input);
@@ -1190,6 +1211,29 @@ class OrderModel extends BaseOrderModel
 
         if ($total_real_pay_price != $sum_real_pay_price || $total_card_pay_price != $sum_card_pay_price || $total_cash_pay_price != $sum_cash_pay_price) {
             return '결제금액별 합계가 일치하지 않습니다.';
+        }
+
+        if (empty($arr_prod_info) === false) {
+            foreach ($arr_prod_info as $idx => $prod_info) {
+                // 상품정보 변수 할당
+                list($prod_code, $prod_type, $learn_pattern_ccd) = explode(':', $prod_info);
+
+                // 독서실, 사물함 상품일 경우 좌석배정 정보 확인
+                if ($prod_type == 'reading_room' || $prod_type == 'locker') {
+                    $arr_rdr_prod_code = element('rdr_prod_code', $input, []);
+
+                    if (in_array($prod_code, $arr_rdr_prod_code) === false) {
+                        return '좌석 배정 정보가 없습니다.';
+                    }
+
+                    foreach ($arr_rdr_prod_code as $rdr_idx => $rdr_prod_code) {
+                        if (empty(array_get($input, 'rdr_serial_num.' . $rdr_idx)) === true || empty(array_get($input, 'rdr_use_start_date.' . $rdr_idx)) === true
+                            || empty(array_get($input, 'rdr_use_end_date.' . $rdr_idx)) === true) {
+                            return '좌석 배정 상세 정보가 없습니다.';
+                        }
+                    }
+                }
+            }
         }
 
         return true;

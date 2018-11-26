@@ -9,7 +9,7 @@
                 {!! csrf_field() !!}
                 {!! method_field($method) !!}
                 <input type="hidden" name="order_idx" value="{{ $idx }}"/>
-                <input type="hidden" name="mem_idx" value="{{ $data['order']['MemIdx'] or '' }}" data-result-data="" required="required" title="회원식별자"/>
+                <input type="hidden" name="mem_idx" value="{{ $data['order']['MemIdx'] or '' }}" data-result-data=""/>
                 @if(isset($data['mem']) === false)
                     <div class="row">
                         <label class="control-label col-md-1" for="search_mem_id">· 회원검색</label>
@@ -242,7 +242,6 @@
         var $datatable;
         var $regi_form = $('#regi_form');
         var $list_table = $('#list_order_detail_table');
-        var $selected_prod_code = {};
 
         $(document).ready(function() {
             // 수강등록하기 버튼 클릭
@@ -262,11 +261,16 @@
                 var cash_pay_price = 0;
                 var is_pay_check = true;
 
-                if ($regi_form.find('[name="pay_method_ccd"]:checked').length < 1) {
-                    alert('결제수단이 선택되지 않았습니다.');
+                if ($regi_form.find('[name="mem_idx"]').val().length < 1) {
+                    alert('회원을 선택해 주세요.');
                     return false;
                 }
-                
+
+                if ($regi_form.find('[name="pay_method_ccd"]:checked').length < 1) {
+                    alert('결제수단을 선택해 주세요.');
+                    return false;
+                }
+
                 if ($regi_form.find('[name="pay_method_ccd"]:checked').prop('id').indexOf('_card') > -1 && $regi_form.find('[name="card_ccd"]').val() === '') {
                     alert('결제카드를 선택해 주세요.');
                     return false;
@@ -340,6 +344,13 @@
             $regi_form.on('change', '#selected_product', function() {
                 var $tbody = $('#list_pay_info_table tbody');
                 var code, data, html = '';
+                var $selected_prod_code = {};
+
+                // 기 선택된 상품코드 저장
+                $tbody.find('input[name="prod_code[]"]').each(function() {
+                    code = $(this).val().split(':')[0];
+                    $selected_prod_code[code] = code;
+                });
 
                 $(this).find('input[name="prod_code[]"]').each(function() {
                     code = $(this).val();
@@ -377,25 +388,22 @@
                             '        <a href="#none" data-prod-code="' + code + '" class="selected-product-delete"><i class="fa fa-times red"></i></a>\n' +
                             '    </td>\n' +
                             '</tr>';
-
-                        // 선택된 상품코드 저장
-                        $selected_prod_code[code] = code;
                     }
                 });
 
                 $(this).html('');    // 기 선택 상품 초기화
                 $tbody.append(html);
-                $regi_form.find('[name="real_pay_price[]"]').eq(0).trigger('change');   // 결제금액 변경 이벤트 발생
+                setTotalPrice();   // 결제금액 재계산
             });
 
             // 선택상품 삭제 (상품결제정보 테이블 row 삭제)
             $regi_form.on('click', '.selected-product-delete', function() {
                 var that = $(this);
-                var index = $regi_form.find('.selected-product-delete').index(this);
+                var prod_code = that.data('prod-code');
                 that.parent().parent().remove();
 
-                delete $selected_prod_code[that.data('prod-code')];     // 저장된 상품코드 삭제
-                $regi_form.find('[name="disc_type[]"]').eq(index).trigger('change');    // 결제금액 변경 이벤트 발생
+                $regi_form.find('.rdr_' + prod_code).remove();  // 독서실, 사물함 좌석배정 정보 삭제
+                setTotalPrice();   // 결제금액 재계산
             });
         @endif
 
@@ -448,48 +456,53 @@
                 }
 
                 $regi_form.find('[name="real_pay_price[]"]').eq(index).val(real_pay_price);
-                $regi_form.find('[name="real_pay_price[]"]').eq(index).trigger('change');   // 결제금액 변경 이벤트 발생
+                setTotalPrice();   // 결제금액 재계산
             });
 
-            // 결제, 카드, 현금금액 합산
+            // 결제, 카드, 현금금액 변경할 경우 결제금액 재계산
             $regi_form.on('change', '.set-sum-price', function() {
-                var target = $(this).prop('name').split('_')[0];
-                var input = $regi_form.find('[name="' + $(this).prop('name') + '"]');
-                var total_pay_price = 0;
-                var total_card_pay_price = 0;
-                var total_cash_pay_price = 0;
+                setTotalPrice();
+            });
 
-                // 금액 합산
-                input.each(function() {
-                    total_pay_price += parseInt($(this).val()) || 0;
-                });
-                $regi_form.find('[name="total_' + target + '_pay_price"]').val(total_pay_price);
+            // 결제, 카드, 현금금액 합산 및 결제수단 셋팅
+            var setTotalPrice = function() {
+                var inputs = ['real_pay_price', 'card_pay_price', 'cash_pay_price'];
+                var input, total_pay_price = 0, i = 0;
 
-                // 카드, 현금결제금액 변경할 경우만
-                if (target !== 'real') {
-                    // 총 카드, 현금결제금액
-                    total_card_pay_price = parseInt($regi_form.find('[name="total_card_pay_price"]').val());
-                    total_cash_pay_price = parseInt($regi_form.find('[name="total_cash_pay_price"]').val());
-                    $regi_form.find('[name="sum_real_pay_price"]').val(total_card_pay_price + total_cash_pay_price);
+                for(i = 0; i < inputs.length; i++) {
+                    total_pay_price = 0;
+                    input = $regi_form.find('[name="' + inputs[i] + '[]"]');
 
-                    // 결제수단, 카드사 선택 셋팅
-                    $regi_form.find('[name="pay_method_ccd"]').iCheck('disable');
+                    // 금액 합산
+                    input.each(function() {
+                        total_pay_price += parseInt($(this).val()) || 0;
+                    });
 
-                    if (total_card_pay_price > 0) {
-                        $regi_form.find('[name="card_ccd"]').prop('disabled', false);
-                        if (total_cash_pay_price > 0) {
-                            $regi_form.find('[id="pay_method_card_cash"]').iCheck('enable').iCheck('check');
-                        } else {
-                            $regi_form.find('[id="pay_method_card"]').iCheck('enable').iCheck('check');
-                        }
+                    $regi_form.find('[name="total_' + inputs[i] + '"]').val(total_pay_price);
+                }
+
+                // 총 카드, 현금결제금액
+                var total_card_pay_price = parseInt($regi_form.find('[name="total_card_pay_price"]').val());
+                var total_cash_pay_price = parseInt($regi_form.find('[name="total_cash_pay_price"]').val());
+                $regi_form.find('[name="sum_real_pay_price"]').val(total_card_pay_price + total_cash_pay_price);
+
+                // 결제수단, 카드사 선택 셋팅
+                $regi_form.find('[name="pay_method_ccd"]').iCheck('disable');
+
+                if (total_card_pay_price > 0) {
+                    $regi_form.find('[name="card_ccd"]').prop('disabled', false);
+                    if (total_cash_pay_price > 0) {
+                        $regi_form.find('[id="pay_method_card_cash"]').iCheck('enable').iCheck('check');
                     } else {
-                        if (total_cash_pay_price > 0) {
-                            $regi_form.find('[name="card_ccd"]').prop('disabled', true);
-                            $regi_form.find('[id="pay_method_cash"]').iCheck('enable').iCheck('check');
-                        }
+                        $regi_form.find('[id="pay_method_card"]').iCheck('enable').iCheck('check');
+                    }
+                } else {
+                    if (total_cash_pay_price > 0) {
+                        $regi_form.find('[name="card_ccd"]').prop('disabled', true);
+                        $regi_form.find('[id="pay_method_cash"]').iCheck('enable').iCheck('check');
                     }
                 }
-            });
+            };
 
             // 방문수강접수 목록
             $datatable = $list_table.DataTable({
@@ -513,7 +526,7 @@
                     }},
                     {'data' : 'PayMethodCcdName'},
                     {'data' : 'CompleteDatm', 'render' : function(data, type, row, meta) {
-                        return data !== null ? data : '' + '(' + row.OrderDatm + ')';
+                        return (data !== null ? data : '') + '<br/>(' + row.OrderDatm + ')';
                     }},
                     {'data' : 'tRealPayPrice', 'render' : function(data, type, row, meta) {
                         return addComma(data);

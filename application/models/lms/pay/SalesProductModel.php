@@ -15,6 +15,9 @@ class SalesProductModel extends BaseOrderModel
         'book' => 'vw_product_book',
         'delivery_price' => 'vw_product_delivery_price',
         'delivery_add_price' => 'vw_product_delivery_add_price',
+        'reading_room' => 'vw_product_reading_room',
+        'locker' => 'vw_product_locker',
+        'deposit' => 'vw_product_deposit',
         'product' => 'lms_product',
         'product_lecture' => 'lms_product_lecture',
         'cms_lecture_unit' => 'wbs_cms_lecture_unit'
@@ -87,9 +90,12 @@ class SalesProductModel extends BaseOrderModel
                 ]);
                 break;
 
-            // 배송료 상품
+            // 배송료, 추가배송료, 독서실, 사물함, 예치금 상품
             case 'delivery_price' :
             case 'delivery_add_price' :
+            case 'reading_room' :
+            case 'locker' :
+            case 'deposit' :
                 $column .= ', IsCart, ProdPriceData';
                 break;
 

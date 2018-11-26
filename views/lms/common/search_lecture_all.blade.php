@@ -279,7 +279,7 @@
                 if(addCnt === 0) {alert("적용할 강좌가 없습니다. 선택 후 적용하여 주십시오.");return;}
                 var prod_type = $search_form_modal.find("input[name='prod_type']").val() + '_lecture'; // 상품타입 (on/off)
                 var learn_pattern_ccd = $search_form_modal.find("input[name='LearnPatternCcd']").val(); // 학습형태
-                var row, data, html;
+                var row, data, html = '';
 
                 if (!confirm('해당 강좌를 적용하시겠습니까?')) {return;}
 
@@ -291,7 +291,7 @@
                         data += ' data-prod-name="' + Base64.encode(row.ProdName) + '" data-sale-price="' + row.SalePrice + '" data-real-sale-price="' + row.RealSalePrice + '"';
                         data += ' data-prod-type-ccd-name="' + row.ProdTypeCcd_Name + '" data-learn-pattern-ccd-name="' + row.LearnPatternCcd_Name + '"';
 
-                        html = '<span class="pr-10">[' + row.ProdCode + '] ' + row.ProdName;
+                        html += '<span class="pr-10">[' + row.ProdCode + '] ' + row.ProdName;
                         html += '   <a href="#none" data-prod-code="' + row.ProdCode + '" class="selected-product-delete"><i class="fa fa-times red"></i></a>';
                         html += '   <input type="hidden" name="' + $target_field + '[]" value="' + row.ProdCode + '"' + data + '/>';
                         html += '</span>';

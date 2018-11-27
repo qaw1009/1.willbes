@@ -18,7 +18,7 @@
                 <strong>'휴면회원 해제'</strong> 버튼을 클릭해 주세요.
             </div>
             <div class="dormant-Btn btnAuto180 h36">
-                <button type="button" onclick="location.replace('{{app_url('/member/sleep/', 'www')}}');" class="mem-Btn bg-blue bd-dark-blue">
+                <button type="button" onclick="location.replace('{{front_app_url('/member/sleep/', 'www')}}');" class="mem-Btn bg-blue bd-dark-blue">
                     <span>휴면회원 해제</span>
                 </button>
             </div>

@@ -42,7 +42,7 @@
             </table>
         </div>
         <div class="convert-Btn mt60 tx-center btnAuto h36">
-            <button type="button" onclick="location.replace('{{app_url('/member/login/', 'www')}}');" class="mem-Btn btnAuto180 bg-blue bd-dark-blue">
+            <button type="button" onclick="location.replace('{{front_app_url('/member/login/', 'www')}}');" class="mem-Btn btnAuto180 bg-blue bd-dark-blue">
                 <span>로그인</span>
             </button>
         </div>

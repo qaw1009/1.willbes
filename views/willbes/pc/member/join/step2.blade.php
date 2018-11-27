@@ -875,7 +875,7 @@
             {
                 var obj = $('input[name="MemId"]');
                 var msg = obj.parent().parent().children('.error_msg');
-                var _url = '{{app_url("/member/join/checkID/", "www")}}';
+                var _url = '{{front_app_url("/member/join/checkID/", "www")}}';
                 var data = $('#join_form').formSerialize();
 
                 $.ajax({

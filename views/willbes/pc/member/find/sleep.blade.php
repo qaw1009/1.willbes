@@ -15,9 +15,9 @@
                 계정정보를 인증하시면 정상적으로 서비스를 이용하실 수 있습니다.
             </div>
             <ul class="tabs c_both">
-                <li><a href="{{app_url('/member/find/id/', 'www')}}">아이디 찾기</a></li>
-                <li><a href="{{app_url('/member/find/pwd/', 'www')}}">비밀번호 찾기</a></li>
-                <li><a class='on' href="{{app_url('/Member/Sleep', 'www')}}">휴면회원 해제</a></li>
+                <li><a href="{{front_app_url('/member/find/id/', 'www')}}">아이디 찾기</a></li>
+                <li><a href="{{front_app_url('/member/find/pwd/', 'www')}}">비밀번호 찾기</a></li>
+                <li><a class='on' href="{{front_app_url('/Member/Sleep', 'www')}}">휴면회원 해제</a></li>
             </ul>
             <ul class="tabWrap tabLoginDepth2 tabs-Certi">
                 <li id="tab1"><a href="#lock_certi1"><div>휴대폰 인증</div></a></li>

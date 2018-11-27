@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div class="renew-password-Btn btnAuto180 h36">
-                <button type="button" onclick="location.replace('{{app_url('/member/login/', 'www')}}');" class="mem-Btn bg-blue bd-dark-blue">
+                <button type="button" onclick="location.replace('{{front_app_url('/member/login/', 'www')}}');" class="mem-Btn bg-blue bd-dark-blue">
                     <span>로그인페이지</span>
                 </button>
             </div>

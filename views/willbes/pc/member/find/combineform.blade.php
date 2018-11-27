@@ -292,7 +292,7 @@
             {
                 var obj = $('input[name="ChangeId"]');
                 var msg = obj.parent().parent().children('.error_msg');
-                var _url = '{{app_url("/member/combine/checkID/", "www")}}';
+                var _url = '{{front_app_url("/member/combine/checkID/", "www")}}';
                 var data = $('#combine_form').formSerialize();
 
                 $.ajax({

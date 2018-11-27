@@ -22,7 +22,7 @@
             <div class="combinefin-Btn mt60">
                 <ul>
                     <li class="btnAuto180 h36">
-                        <button type="button" onclick="location.replace('{{app_url('/member/join/', 'www')}}');" class="mem-Btn bg-blue bd-dark-blue">
+                        <button type="button" onclick="location.replace('{{front_app_url('/member/join/', 'www')}}');" class="mem-Btn bg-blue bd-dark-blue">
                             <span>회원가입</span>
                         </button>
                     </li>

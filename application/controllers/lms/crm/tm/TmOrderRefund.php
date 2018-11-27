@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class TmOrder extends \app\controllers\BaseController
+class TmOrderRefund extends \app\controllers\BaseController
 {
     protected $models = array('sys/site', 'sys/code', 'crm/tm/tm');
     protected $helpers = array();
@@ -11,12 +11,12 @@ class TmOrder extends \app\controllers\BaseController
         parent::__construct();
     }
 
-    //결제 기본 정보 페이지
+    //환불 기본 정보 페이지
     public function index()
     {
         //TM 목록
         $tm_admin = $this->tmModel->listAdmin(['EQ'=>['C.RoleIdx'=>'1010']]);   //TM목록
-        $this->load->view('crm/tm/order_list',[
+        $this->load->view('crm/tm/order_refund_list',[
             'AssignAdmin' => $tm_admin
         ]);
     }
@@ -25,20 +25,21 @@ class TmOrder extends \app\controllers\BaseController
      * 목록 추출
      * @return CI_Output
      */
-    public function orderListAjax()
+    public function orderRefundListAjax()
     {
         $arr_condition = $this->_getListConditions();
 
-        $order_by =  ['o.OrderIdx'=>'desc', 'op.OrderProdIdx' => 'asc'];
+        $order_by =  ['opr.RefundDatm '=>'desc', 'o.OrderIdx'=>'desc', 'op.OrderProdIdx' => 'asc'];
 
         $list = [];
-        $result = $this->tmModel->listOrder(true,$arr_condition);
+        $result = $this->tmModel->listRefundOrder(true,$arr_condition);
 
         $count = $result['numrows'];
         $sum_price = $result['sum_price'];
+        $sum_refund_price = $result['sum_refund_price'];
 
         if($count > 0) {
-            $list =  $this->tmModel->listOrder(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), $order_by);
+            $list =  $this->tmModel->listRefundOrder(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), $order_by);
         }
 
         return $this->response([
@@ -46,6 +47,7 @@ class TmOrder extends \app\controllers\BaseController
             'recordsFiltered' =>  $count,
             'data' => $list,
             'sum_price' =>  $sum_price,
+            'sum_refund_price' =>  $sum_refund_price,
             'sum_count' =>  $count
         ]);
     }
@@ -62,11 +64,11 @@ class TmOrder extends \app\controllers\BaseController
         $arr_condition = [
             'EQ' => [
                 'p.ProdTypeCcd' => '636001',		#온라인 강좌상품
-                'o.SiteCode' => $this->_reqP('search_site_code'),
+                'o.SiteCode' => $this->_reqP('search_site_code')
             ]
             ,'IN' => [
                 'op.SalePatternCcd' => ['694001','694002','694003']      #일반/재수강/수강연장 인것
-                ,'op.PayStatusCcd' => ['676001','676006']                  #결제완료/환불완료
+                ,'op.PayStatusCcd' => ['676006']                              #환불완료
                 ,'o.PayRouteCcd' => ['670001','670002','670005']         #온라인결제(PG사), 학원방문결제, 제휴사결제
             ]
         ];
@@ -113,17 +115,18 @@ class TmOrder extends \app\controllers\BaseController
     /**
      * 결제내역 엑셀추출
      */
-    public function orderListExcel()
+    public function orderRefundListExcel()
     {
         $arr_condition = $this->_getListConditions();
         $order_by =  ['o.OrderIdx'=>'desc', 'op.OrderProdIdx' => 'asc'];
 
-        $list = $this->tmModel->listOrderExcel($arr_condition, $order_by);
+        $list = $this->tmModel->listOrderRefundExcel($arr_condition, $order_by);
 
-        $headers = ['NO', '회원명', '회원아이디', '주문번호', '사이트', '결제완료일', '상품명', '결제금액', '결제상태', 'TM담당자', '배정일', '최종상담일'];
+        $headers = ['NO', '회원명', '회원아이디', '주문번호', '사이트', '결제완료일', '상품명', '결제금액', '환불금액','환불완료일', 'TM담당자', '배정일', '최종상담일'];
         // export excel
         $this->load->library('excel');
-        $this->excel->exportExcel('TM결제내역('.date("Y-m-d").')', $list, $headers);
+        $this->excel->exportExcel('TM환불내역('.date("Y-m-d").')', $list, $headers);
     }
+
 
 }

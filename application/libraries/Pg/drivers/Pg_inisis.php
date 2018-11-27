@@ -289,6 +289,7 @@ class Pg_inisis extends CI_Driver
                     // 망취소 API
                     $this->cancel([
                         'order_no' => $returns['orderNumber'],
+                        'mid' => $returns['mid'],
                         'net_cancel_url' => $returns['netCancelUrl'],
                         'auth_params' => $auth_params,
                         'cancel_reason' => $e->getMessage()
@@ -325,12 +326,19 @@ class Pg_inisis extends CI_Driver
                 throw new \Exception('결제취소에 필요한 주문번호가 없습니다.');
             }
 
+            $_mid = element('mid', $params);
             $_tid = element('tid', $params);
             $_cancel_reason = element('cancel_reason', $params, '');
+            
+            // 취소로그 기본 파라미터
+            $log_params = [
+                'MOID' => $_order_no,
+                'mid' => $_mid,
+                'ReqReason' => $_cancel_reason
+            ];
 
             if (empty($_tid) === false) {
                 // 관리자 취소
-                $_mid = element('mid', $params);
                 if (empty($_mid) === true) {
                     throw new \Exception('관리자 결제취소에 필요한 상점아이디가 없습니다.');
                 }
@@ -358,11 +366,12 @@ class Pg_inisis extends CI_Driver
                 $cancel_result_msg = iconv('EUC-KR', 'UTF-8', $inipay->getResult('ResultMsg'));
                 
                 // 승인취소 결과로그 전달 파라미터 설정
-                $log_params = [
-                    'cancel_result_code' => $cancel_result_code,
-                    'cancel_result_msg' => $cancel_result_msg,
-                    'cancel_reason' => $_cancel_reason
-                ];
+                $log_params = array_merge($log_params, [
+                    'PayType' => 'CA',
+                    'tid' => $_tid,
+                    'resultCode' => $cancel_result_code,
+                    'resultMsg' => $cancel_result_msg
+                ]);
 
                 // 로그 메시지
                 $cancel_log_msg = '(결과코드 : ' . $cancel_result_code . ', 결과메시지 : ' . $cancel_result_msg;
@@ -382,26 +391,22 @@ class Pg_inisis extends CI_Driver
                 // 망취소 API
                 if ($this->_http_util->processHTTP($net_cancel_url, $auth_params)) {
                     $cancel_results = json_decode($this->_http_util->body, true);
-                    $cancel_result_code = element('resultCode', $cancel_results);
-                    $cancel_result_msg = element('resultMsg', $cancel_results);
 
-                    if ($cancel_result_code != '416623') {
-                        // 망취소 결과로그 전달 파라미터 설정 (해당거래 없음이 아닐 경우)
-                        $log_params = [
-                            'cancel_result_code' => $cancel_result_code,
-                            'cancel_result_msg' => $cancel_result_msg,
-                            'cancel_reason' => $_cancel_reason
-                        ];
-                    }
+                    $log_params = array_merge($log_params, [
+                        'PayType' => 'NC',
+                        'tid' => element('tid', $cancel_results),
+                        'resultCode' => element('resultCode', $cancel_results),
+                        'resultMsg' => element('resultMsg', $cancel_results)
+                    ]);
 
                     $this->_parent->saveFileLog('망취소 성공 (결과메시지 : ' . $this->_http_util->body . ')');
                 } else {
                     // 망취소 결과로그 전달 파라미터 설정 (통신에러일 경우)
-                    $log_params = [
-                        'cancel_result_code' => $this->_http_util->errorcode,
-                        'cancel_result_msg' => $this->_http_util->errormsg,
-                        'cancel_reason' => $_cancel_reason
-                    ];
+                    $log_params = array_merge($log_params, [
+                        'PayType' => 'NC',
+                        'resultCode' => $this->_http_util->errorcode,
+                        'resultMsg' => $this->_http_util->errormsg
+                    ]);
 
                     throw new \Exception('망취소 실패 (결과메시지 : ' . $this->_http_util->errormsg . ')');
                 }
@@ -514,10 +519,10 @@ class Pg_inisis extends CI_Driver
      * 로그 저장
      * @param array $params
      * @param string $log_type
-     * @param null|string $order_no [결제 : 주문번호, 가상계좌입금통보 : 입금식별자]
+     * @param null|int $log_idx [가상계좌입금통보 : 입금식별자]
      * @return int|bool
      */
-    private function _saveLog($params = [], $log_type = 'pay', $order_no = null)
+    private function _saveLog($params = [], $log_type = 'pay', $log_idx = null)
     {
         $_db = $this->_CI->load->database('lms', true);   // load database
 
@@ -525,49 +530,39 @@ class Pg_inisis extends CI_Driver
             if ($log_type == 'pay') {
                 $_table = $this->_parent->_log_table;
 
-                if (empty($order_no) === true) {
-                    // 결제방법별 상세 코드 (신용카드, 은행)
-                    $pay_detail_code = '';
-                    if (empty(element('CARD_Code', $params)) === false) {
-                        $pay_detail_code = element('CARD_Code', $params);
-                    } else if (empty(element('ACCT_BankCode', $params)) === false) {
-                        $pay_detail_code = element('ACCT_BankCode', $params);
-                    } else if (empty(element('VACT_BankCode', $params)) === false) {
-                        $pay_detail_code = element('VACT_BankCode', $params);
-                    }
+                // 결제방법별 상세 코드 (신용카드, 은행)
+                $pay_detail_code = null;
+                if (empty(element('CARD_Code', $params)) === false) {
+                    $pay_detail_code = element('CARD_Code', $params);
+                } else if (empty(element('ACCT_BankCode', $params)) === false) {
+                    $pay_detail_code = element('ACCT_BankCode', $params);
+                } else if (empty(element('VACT_BankCode', $params)) === false) {
+                    $pay_detail_code = element('VACT_BankCode', $params);
+                }
 
-                    $data = [
-                        'OrderNo' => element('MOID', $params),
-                        'PgDriver' => 'inisis',
-                        'PgMid' => element('mid', $params),
-                        'PgTid' => element('tid', $params),
-                        'ResultCode' => element('resultCode', $params),
-                        'ResultMsg' => element('resultMsg', $params),
-                        'ApprovalNo' => element('applNum', $params, ''),
-                        'PayMethod' => element('payMethod', $params),
-                        'PayDetailCode' => $pay_detail_code,
-                        'RealPayPrice' => element('TotPrice', $params),
-                        'ApprovalDatm' => element('applDatm', $params)
-                    ];
+                $data = [
+                    'OrderNo' => element('MOID', $params),
+                    'PayType' => element('PayType', $params, 'PA'),
+                    'PgDriver' => 'inisis',
+                    'PgMid' => element('mid', $params),
+                    'PgTid' => element('tid', $params),
+                    'PayMethod' => element('payMethod', $params),
+                    'PayDetailCode' => $pay_detail_code,
+                    'ReqPayPrice' => element('TotPrice', $params),
+                    'ApprovalNo' => element('applNum', $params),
+                    'ApprovalDatm' => element('applDatm', $params),
+                    'ResultCode' => element('resultCode', $params),
+                    'ResultMsg' => element('resultMsg', $params),
+                    'ReqReason' => element('ReqReason', $params),
+                ];
 
-                    if ($_db->set($data)->insert($_table) === false) {
-                        throw new \Exception('결제 승인결과 로그 저장에 실패했습니다.');
-                    }
-                } else {
-                    $data = [
-                        'CancelResultCode' => element('cancel_result_code', $params),
-                        'CancelResultMsg' => element('cancel_result_msg', $params),
-                        'CancelReason' => element('cancel_reason', $params),
-                    ];
-
-                    if ($_db->set('CancelDatm', 'NOW()', false)->set($data)->where('OrderNo', $order_no)->update($_table) === false) {
-                        throw new \Exception('결제취소 로그 업데이트에 실패했습니다.');
-                    }
+                if ($_db->set($data)->insert($_table) === false) {
+                    throw new \Exception('결제 로그 저장에 실패했습니다.');
                 }
             } elseif ($log_type == 'deposit') {
                 $_table = $this->_parent->_log_deposit_table;
 
-                if (empty($order_no) === true) {
+                if (empty($log_idx) === true) {
                     $data = [
                         'OrderNo' => element('no_oid', $params),
                         'MsgSeq' => element('no_msgseq', $params),
@@ -590,7 +585,7 @@ class Pg_inisis extends CI_Driver
                     // 예외적으로 입금식별자 리턴
                     return $_db->insert_id();
                 } else {
-                    if ($_db->set('ErrorMsg', element('err_msg', $params))->where('DepositIdx', $order_no)->update($_table) === false) {
+                    if ($_db->set('ErrorMsg', element('err_msg', $params))->where('DepositIdx', $log_idx)->update($_table) === false) {
                         throw new \Exception('가상계좌 입금통보 에러 메시지 업데이트에 실패했습니다.');
                     }
                 }

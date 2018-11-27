@@ -1,6 +1,6 @@
 @extends('lcms.layouts.master')
 @section('content')
-    <h5>- TM을 진행한 회원들의 결제 내역을 확인하는 메뉴입니다.</h5>
+    <h5>- TM을 진행한 회원들의 환불 내역을 확인하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
 
@@ -27,6 +27,7 @@
                     <label class="control-label col-md-1">기간검색</label>
                     <div class="col-md-4 form-inline">
                         <select name="DateType" id="DateType" class="form-control" >
+                            <option value="opr.RefundDatm">환불완료일</option>
                             <option value="o.CompleteDatm">결제완료일</option>
                             <option value="tc1.AssignDatm">배정일</option>
                         </select>
@@ -49,14 +50,18 @@
             <table class="table table-striped table-bordered" >
                 <thead>
                 <tr>
-                    <th width="50%">결제금액</th>
-                    <th width="50%">결제건수</th>
+                    <th width="33%">결제금액</th>
+                    <th width="33%">환불금액</th>
+                    <th width="33%">환불건수</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
                     <td>
                         <span id="sum_price">0 원</span>
+                    </td>
+                    <td>
+                        <span id="sum_refund_price">0 원</span>
                     </td>
                     <td>
                         <span id="sum_count">0</span>
@@ -78,8 +83,9 @@
                     <th width="150">주문번호</th>
                     <th width="110">결제완료일</th>
                     <th width="">상품명</th>
-                    <th width="100">결제금액</th>
-                    <th width="100">결제상태</th>
+                    <th width="80">결제금액</th>
+                    <th width="80">환불금액</th>
+                    <th width="80">환불완료일</th>
                     <th width="80">TM담당자</th>
                     <th width="100">배정일</th>
                     <th width="100">최종상담일</th>
@@ -104,7 +110,7 @@
                     { text: '<i class="fa fa-file-excel-o mr-5"></i> 엑셀다운로드', className: 'btn-sm btn-success border-radius-reset btn-excel' }
                 ],
                 ajax: {
-                    'url' : '{{ site_url('/crm/tm/TmOrder/orderListAjax') }}',
+                    'url' : '{{ site_url('/crm/tm/TmOrderRefund/orderRefundListAjax') }}',
                     'type' : 'POST',
                     'data' : function(data) {
                         return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
@@ -129,8 +135,9 @@
                             return addComma(data.RealPayPrice)+'';
                         }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            return (data.PayStatusCcd != '676001') ? '<font color="red">'+data.PayStatusCcd_Name+'</font>' : data.PayStatusCcd_Name;
+                            return '<b><font color="red">-'+addComma(data.RealPayPrice)+'</font></b>';
                         }},
+                    {'data' : 'RefundDatm'},
                     {'data' : 'ConsultAdmin_Name'},
                     {'data' : 'AssignDatm'},
                     {'data' : 'ConsultDatm'}
@@ -139,6 +146,7 @@
 
             $datatable.on('xhr.dt', function(e, settings, json) {
                 $('#sum_price').html('<b>'+addComma(json.sum_price) + ' 원</b>');
+                $('#sum_refund_price').html(json.sum_refund_price == 0 ? '<b>0 원</b>':'<b><font color="red">-'+addComma(json.sum_refund_price) + ' 원</font></b>');
                 $('#sum_count').html('<b>'+addComma(json.sum_count) + ' 건</b>');
             });
 
@@ -146,7 +154,7 @@
             $('.btn-excel').on('click', function(event) {
                 event.preventDefault();
                 if (confirm('엑셀다운로드 하시겠습니까?')) {
-                    formCreateSubmit('{{ site_url('/crm/tm/TmOrder/orderListExcel/') }}', $search_form.serializeArray(), 'POST');
+                    formCreateSubmit('{{ site_url('/crm/tm/TmOrderRefund/orderRefundListExcel/') }}', $search_form.serializeArray(), 'POST');
                 }
             });
 

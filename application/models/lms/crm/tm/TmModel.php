@@ -71,26 +71,51 @@ class TmModel extends WB_Model
 
         //기본 조건
         $where = ' where 
-                        A.IsStatus=\'Y\' And A.IsBlackList=\'N\' #and B.SmsRcvStatus=\'Y\' 
-                        and A.MemIdx not in
-                        ( # 21일이내 배정여부 확인
-                            select 
-                            ta.MemIdx
-                            from
-                                lms_tm t
-                                join lms_tm_assign ta on t.TmIdx = ta.TmIdx
-                            where 
-                                    t.IsStatus=\'Y\'
-                                    AND DATE_FORMAT(t.regDatm,\'%Y-%m-%d\') BETWEEN  DATE_FORMAT(DATE_ADD(NOW(), INTERVAL -21 DAY),\'%Y-%m-%d\') AND DATE_FORMAT(NOW(),\'%Y-%m-%d\') 
-                        ) ';
+                        A.IsStatus=\'Y\' And A.IsBlackList=\'N\' 
+                        #and B.SmsRcvStatus=\'Y\'
+                        ';
 
+        if($assign_ccd === '687001' || $assign_ccd === '687002' || $assign_ccd === '687004' ) {
 
-        if($assign_ccd === '687001') {      // 신규 (가입 후 한 달 이내 유료 구매가 없는 회원)
-            $where .= ' 
-                            /* 신규 조건 */
-                            and DATE_FORMAT(A.JoinDate,\'%Y-%m-%d\') =\''.$search_date.'\'
+            $where .= '
+                            # 30일이내 배정여부 확인   
                             and A.MemIdx not in
-                            ( # 30일내 주문내역 조회
+                            (
+                                select 
+                                ta.MemIdx
+                                from
+                                    lms_tm t
+                                    join lms_tm_assign ta on t.TmIdx = ta.TmIdx
+                                where 
+                                        t.IsStatus=\'Y\' and ta.IsStatus=\'Y\'
+                                        AND DATE_FORMAT(t.regDatm,\'%Y-%m-%d\') 
+                                                BETWEEN  DATE_FORMAT(DATE_ADD(NOW(), INTERVAL -30 DAY),\'%Y-%m-%d\') AND DATE_FORMAT(NOW(),\'%Y-%m-%d\') 
+                            )';
+
+        } else if($assign_ccd === '687003'){
+
+            $where .= '
+                            #재수강의 경우 배정 내역이 없어야 함
+                            and A.MemIdx not in
+                            (
+                                select 
+                                ta.MemIdx
+                                from
+                                    lms_tm t
+                                    join lms_tm_assign ta on t.TmIdx = ta.TmIdx
+                                where 
+                                        t.IsStatus=\'Y\' and ta.IsStatus=\'Y\'
+                             )';
+        }
+
+        if($assign_ccd === '687001') {      // 신규 (온라인강좌 상품 주문이력이 없고, 장바구니에도 온라인강좌 상품이 없어야 함)
+            $where .= ' 
+                            #검색일이 가입일
+                            and DATE_FORMAT(A.JoinDate,\'%Y-%m-%d\') =\''.$search_date.'\'    
+                            
+                            #온라인강좌 상품 주문 이력이 없어야 함.
+                            and A.MemIdx not in	
+                            ( 
                                 select 
                                 aa.MemIdx
                                 from
@@ -98,16 +123,15 @@ class TmModel extends WB_Model
                                     join lms_order_product bb on aa.OrderIdx = bb.OrderIdx
                                     join lms_product cc on bb.ProdCode = cc.ProdCode
                                 where 
-                                        aa.PayRouteCcd in (\'670001\',\'670002\',\'670005\') #온라인결제(PG사), 학원방문결제, 제휴사결제
-                                        and bb.PayStatusCcd = \'676001\'	#결제완료
+                                        aa.PayRouteCcd in (\'670001\',\'670002\',\'670005\') #온라인결제(PG사), 학원방문결제, 제휴사결제 (0원결제,무료결제 제외)
+                                        and bb.SalePatternCcd in (\'694001\',\'694002\',\'694003\')	#일반/재수강/수강연장 인것
+                                        #and bb.PayStatusCcd = \'676001\'	#주문이력이 있는 것들은 죄다..
                                         and cc.ProdTypeCcd = \'636001\'	#온라인강좌상품
-                                        and DATE_FORMAT(aa.OrderDatm ,\'%Y-%m-%d\') < DATE_ADD(\''.$search_date.'\', INTERVAL 1 month)
                                 group by aa.MemIdx
-                            ) ';
-
-        } elseif($assign_ccd === '687002') {      // 장바구니 ( ‘검색일-7일’  (미결제 상태) )
-            $where .= ' 
-                            and A.MemIdx in
+                            )
+                            
+                            #장바구니에 담긴 온라인강좌 상품이 없어야 함.
+                            and A.MemIdx not in 
                             ( 
                                 select 
                                 aa.MemIdx
@@ -116,12 +140,34 @@ class TmModel extends WB_Model
                                     join lms_product bb on aa.ProdCode = bb.ProdCode
                                 where 
                                     aa.IsDirectPay=\'N\' and aa.IsVisitPay=\'N\' and aa.IsStatus=\'Y\' and isnull(aa.ConnOrderIdx)
-                                    and bb.IsStatus=\'Y\' and bb.IsUse=\'Y\' and bb.ProdTypeCcd = \'636001\'	#온라인강좌상품
-                                    and DATE_FORMAT(aa.RegDatm ,\'%Y-%m-%d\') = DATE_ADD(\''.$search_date.'\', INTERVAL -7 day)
+                                    and aa.SalePatternCcd in (\'694001\',\'694002\',\'694003\')	#일반/재수강/수강연장 인것
                                     and DATE_FORMAT(aa.ExpireDatm ,\'%Y-%m-%d\') >= DATE_FORMAT(NOW() ,\'%Y-%m-%d\')	#소멸일자는 현재날짜보다 같거나 크고
+                                    and bb.IsStatus=\'Y\' and bb.IsUse=\'Y\'
+                                    and bb.ProdTypeCcd = \'636001\'	#온라인강좌상품
+                            )
+                        ';
+
+        } elseif($assign_ccd === '687002') {      // #장바구니에 온라인 상품이 존재해야 함
+            $where .= ' 
+                            #검색일이 가입일
+                            and DATE_FORMAT(A.JoinDate,\'%Y-%m-%d\') =\''.$search_date.'\'    
+            
+                            and A.MemIdx in
+                            ( 
+                                	select 
+                                        aa.MemIdx
+                                    from
+                                        lms_cart aa
+                                        join lms_product bb on aa.ProdCode = bb.ProdCode
+                                    where 
+                                        aa.IsDirectPay=\'N\' and aa.IsVisitPay=\'N\' and aa.IsStatus=\'Y\' and isnull(aa.ConnOrderIdx)
+                                        and aa.SalePatternCcd in (\'694001\',\'694002\',\'694003\')	#일반/재수강/수강연장 인것
+                                        and DATE_FORMAT(aa.ExpireDatm ,\'%Y-%m-%d\') >= DATE_FORMAT(NOW() ,\'%Y-%m-%d\')	#소멸일자는 현재날짜보다 같거나 크고                                        
+                                        and bb.IsStatus=\'Y\' and bb.IsUse=\'Y\'
+                                        and bb.ProdTypeCcd = \'636001\'	#온라인강좌상품
                             )';
 
-        } elseif($assign_ccd === '687003') {      // 재수강 ( ‘검색일-30일 < 수강종료일 < 검색일+30일’ 회원 중  ‘검색일-30일 < 구매일’인 회원 제외 )
+        } elseif($assign_ccd === '687003') {      // 재수강 ( ‘검색일-30일 <= 수강종료일 <= 검색일+30일’ 회원 중  ‘검색일-30일 <= 결제완료일 <= 검색일+30일' 결제가 존재하지 않는 회원 )
             $where .= ' 
                             and A.MemIdx in
                             (
@@ -135,12 +181,13 @@ class TmModel extends WB_Model
                                 where 
                                     aa.PayRouteCcd in (\'670001\',\'670002\',\'670005\') #온라인결제(PG사), 학원방문결제, 제휴사결제
                                     and bb.PayStatusCcd = \'676001\'	#결제완료
+                                    and bb.SalePatternCcd in (\'694001\',\'694002\',\'694003\')	#일반/재수강/수강연장 인것
                                     and cc.ProdTypeCcd = \'636001\'	#온라인강좌상품
-                                    and (dd.RealLecEndDate between DATE_ADD(\''.$search_date.'\', INTERVAL -1 month) and DATE_ADD(\''.$search_date.'\', INTERVAL +1 month) ) #검색일 기준 -30 +30 사이의 수강죵료면서
+                                    and (dd.RealLecEndDate between DATE_ADD(\''.$search_date.'\', INTERVAL -30 DAY) and DATE_ADD(\''.$search_date.'\', INTERVAL +30 DAY) ) #검색일 기준 -30 +30 사이의 수강죵료면서
                                     and aa.MemIdx not in
-                                        (	# 검색일 기준 -30 이후 결제가 있는 사람
+                                        (	# 검색일 기준 -30 +30 사이 결제가 있는 사람 추출 후 제외
                                             select 
-                                                aa.MemIdx
+                                                o.MemIdx
                                             from
                                                 lms_order o
                                                 join lms_order_product op on o.OrderIdx = op.OrderIdx
@@ -148,8 +195,9 @@ class TmModel extends WB_Model
                                             where 
                                                     o.PayRouteCcd in (\'670001\',\'670002\',\'670005\') #온라인결제(PG사), 학원방문결제, 제휴사결제
                                                     and op.PayStatusCcd = \'676001\'	#결제완료
+                                                    and op.SalePatternCcd in (\'694001\',\'694002\',\'694003\')	#일반/재수강/수강연장 인것
                                                     and p.ProdTypeCcd = \'636001\'	#온라인강좌상품
-                                                    and DATE_FORMAT(o.OrderDatm ,\'%Y-%m-%d\') >= DATE_ADD(\''.$search_date.'\', INTERVAL -1 month)
+                                                    and DATE_FORMAT(o.OrderDatm ,\'%Y-%m-%d\') between DATE_ADD(\''.$search_date.'\', INTERVAL -30 DAY) and DATE_ADD(\''.$search_date.'\', INTERVAL +30 DAY) #검색일 기준 -30 +30 사이의 결제가 있는사람
                                         )
                             )';
         } elseif($assign_ccd === '687004') {      // 회수(부재중) ( 상담분류값이 부재중으로 등록된 회원 )
@@ -174,7 +222,8 @@ class TmModel extends WB_Model
             $where .= ' 1=2 ';
         }
 
-        $order_by = $this->_conn->makeOrderBy(['A.JoinDate' =>'ASC'])->getMakeOrderBy();
+        //$order_by = $this->_conn->makeOrderBy(['A.JoinDate' =>'ASC'])->getMakeOrderBy();
+        $order_by = ' Order by rand() ';
 
         $query = $this->_conn->query('select ' .$column .$from .$where. $order_by. $limit);
         //echo $this->_conn->last_query();
@@ -333,7 +382,9 @@ class TmModel extends WB_Model
             $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $column = 'A.TmIdx,A.RegDatm,Date_format(A.RegDatm,\'%Y-%m-%d\') as RegDate, B.TaIdx,AssignAdminIdx,B.MemIdx,C.CcdName as AssignCcd_Name,D.MemId,D.MemName
+            $column = ' straight_join  
+                            A.TmIdx,A.RegDatm,Date_format(A.RegDatm,\'%Y-%m-%d\') as RegDate, B.TaIdx,AssignAdminIdx
+                            ,B.MemIdx,C.CcdName as AssignCcd_Name,D.MemId,D.MemName
                             ,fn_dec(D.PhoneEnc) as Phone,E.wAdminName
                             ,(select RegDatm from lms_tm_consult aa where aa.taIdx = B.TaIdx order by aa.RegDatm LIMIT 0, 1 ) as LastCousultDate
             ';
@@ -372,7 +423,8 @@ class TmModel extends WB_Model
             $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $column = 'A.TmIdx,A.RegDatm,Date_format(A.RegDatm,\'%Y-%m-%d\') as RegDate,A.AssignCcd
+            $column = ' straight_join 
+                A.TmIdx,A.RegDatm,Date_format(A.RegDatm,\'%Y-%m-%d\') as RegDate,A.AssignCcd
                  ,B.MemIdx
                  ,C.CcdName as AssignCcd_Name
                  ,D.TmContent,D.RegDatm as writeDate
@@ -432,5 +484,236 @@ class TmModel extends WB_Model
 
         return true;
     }
+
+    /**
+     * 결제내역
+     * @param $is_count
+     * @param array $arr_condition
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
+     */
+    public function listOrder($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    {
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows, ifnull(sum(op.RealPayPrice),0) as sum_price';
+            $order_by_offset_limit = '';
+        } else {
+            $column = ' straight_join 
+                            o.OrderIdx,o.OrderNo,o.CompleteDatm
+                            ,op.OrderProdIdx,op.ProdCode,op.RealPayPrice,op.PayStatusCcd
+                            ,s.SiteName
+                            ,sc1.CcdName as PayStatusCcd_Name
+                            ,p.ProdName
+                            ,pl.LearnPatternCcd
+                            ,sc2.CcdName as LearnPatternCcd_Name
+                            ,m.MemIdx,m.MemId,m.MemName,fn_dec(m.PhoneEnc) as Phone
+                            ,mo.SmsRcvStatus
+                            ,tc1.* ';
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $from = '
+            from
+                lms_order o
+                join lms_order_product op on o.OrderIdx = op.OrderIdx
+                join lms_site s on o.SiteCode = s.SiteCode
+                join lms_sys_code sc1 on op.PayStatusCcd = sc1.Ccd
+                join lms_product p on op.ProdCode = p.ProdCode
+                join lms_product_lecture pl on p.ProdCode = pl.ProdCode
+                join lms_sys_code sc2 on pl.LearnPatternCcd = sc2.Ccd 
+                join lms_member m on op.MemIdx = m.MemIdx
+                join lms_member_otherinfo mo on m.MemIdx = mo.MemIdx
+                
+                left join vw_tm_consult tc1 
+                on tc1.TcIdx = 
+                    (
+                        select tc.TcIdx from vw_tm_consult tc 
+                        where m.MemIdx = tc.MemIdx and o.CompleteDatm between tc.ConsultDatm and DATE_ADD(tc.ConsultDatm, INTERVAL 21 day) 
+                        order by TcIdx desc limit 1
+                    )  
+            where 
+                    o.CompleteDatm is not null 
+                    and tc1.TmIdx is not null 
+                ';
+
+            $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
+            $result = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+            //echo $this->_conn->last_query();
+            //return ($is_count === true) ? $result->row(0)->numrows : $result->result_array();
+            return ($is_count === true) ? $result->row_array() : $result->result_array();
+    }
+
+    /**
+     * 결제내역 - 엑셀
+     * @param array $arr_condition
+     * @param array $order_by
+     * @return mixed
+     */
+    public function listOrderExcel($arr_condition = [], $order_by = [])
+    {
+
+        $out_column = '@SEQ := @SEQ+1 as NO, MemName, MemId, OrderNo, SiteName, CompleteDatm
+                        , ProdName, RealPayPrice, PayStatusCcd_Name, ConsultAdmin_Name, AssignDatm, ConsultDatm';
+
+        $column = ' straight_join 
+                        m.MemName, m.MemId, o.OrderNo, s.SiteName, o.CompleteDatm
+                        , p.ProdName, op.RealPayPrice, sc1.CcdName AS PayStatusCcd_Name, ConsultAdmin_Name, AssignDatm, ConsultDatm';
+
+        $from = '
+            from
+                lms_order o
+                join lms_order_product op on o.OrderIdx = op.OrderIdx
+                join lms_site s on o.SiteCode = s.SiteCode
+                join lms_sys_code sc1 on op.PayStatusCcd = sc1.Ccd
+                join lms_product p on op.ProdCode = p.ProdCode
+                join lms_product_lecture pl on p.ProdCode = pl.ProdCode
+                join lms_sys_code sc2 on pl.LearnPatternCcd = sc2.Ccd 
+                join lms_member m on op.MemIdx = m.MemIdx
+                join lms_member_otherinfo mo on m.MemIdx = mo.MemIdx
+                
+                left join vw_tm_consult tc1 
+                on tc1.TcIdx = 
+                    (
+                        select tc.TcIdx from vw_tm_consult tc 
+                        where m.MemIdx = tc.MemIdx and o.CompleteDatm between tc.ConsultDatm and DATE_ADD(tc.ConsultDatm, INTERVAL 21 day) 
+                        order by TcIdx desc limit 1
+                    )  
+            where 
+                    o.CompleteDatm is not null 
+                    and tc1.TmIdx is not null 
+                ';
+
+        $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
+
+        $sql  = ' select '.$out_column.' from (SELECT @SEQ := 0) A, ( select ' . $column . $from . $where . $order_by_offset_limit .') mm Order by @SEQ DESC';
+
+        $result = $this->_conn->query($sql);
+        //echo $this->_conn->last_query();exit;
+        return $result->result_array();
+    }
+
+
+    /**
+     * 환불내역
+     * @param $is_count
+     * @param array $arr_condition
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
+     */
+    public function listRefundOrder($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    {
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows, ifnull(sum(op.RealPayPrice),0) as sum_price, ifnull(sum(op.RealPayPrice),0) as sum_refund_price';   // ifnull(sum(opr.RefundPrice),0) as sum_refund_price
+            $order_by_offset_limit = '';
+        } else {
+            $column = ' straight_join
+                            o.OrderIdx,o.OrderNo,o.CompleteDatm
+                            ,op.OrderProdIdx,op.ProdCode,op.RealPayPrice,op.PayStatusCcd
+                            ,opr.RefundPrice,opr.RefundDatm
+                            ,s.SiteName
+                            ,sc1.CcdName as PayStatusCcd_Name
+                            ,p.ProdName
+                            ,pl.LearnPatternCcd
+                            ,sc2.CcdName as LearnPatternCcd_Name
+                            ,m.MemIdx,m.MemId,m.MemName,fn_dec(m.PhoneEnc) as Phone
+                            ,mo.SmsRcvStatus
+                            ,tc1.* ';
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $from = '
+            from
+                lms_order o
+                join lms_order_product op on o.OrderIdx = op.OrderIdx
+                join lms_order_product_refund opr on opr.OrderProdIdx = op.OrderProdIdx
+                join lms_site s on o.SiteCode = s.SiteCode
+                join lms_sys_code sc1 on op.PayStatusCcd = sc1.Ccd
+                join lms_product p on op.ProdCode = p.ProdCode
+                join lms_product_lecture pl on p.ProdCode = pl.ProdCode
+                join lms_sys_code sc2 on pl.LearnPatternCcd = sc2.Ccd 
+                join lms_member m on op.MemIdx = m.MemIdx
+                join lms_member_otherinfo mo on m.MemIdx = mo.MemIdx
+                
+                left join vw_tm_consult tc1 
+                on tc1.TcIdx = 
+                    (
+                        select tc.TcIdx from vw_tm_consult tc 
+                        where m.MemIdx = tc.MemIdx and opr.RefundDatm between tc.ConsultDatm and DATE_ADD(tc.ConsultDatm, INTERVAL 30 day) 
+                        order by TcIdx desc limit 1
+                    )  
+            where 
+                    o.CompleteDatm is not null 
+                    and tc1.TmIdx is not null 
+                ';
+
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
+        $result = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        //echo $this->_conn->last_query();
+        //return ($is_count === true) ? $result->row(0)->numrows : $result->result_array();
+        return ($is_count === true) ? $result->row_array() : $result->result_array();
+    }
+
+
+    /**
+     * 환불내역 - 엑셀
+     * @param array $arr_condition
+     * @param array $order_by
+     * @return mixed
+     */
+    public function listOrderRefundExcel($arr_condition = [], $order_by = [])
+    {
+
+        $out_column = '@SEQ := @SEQ+1 as NO, MemName, MemId, OrderNo, SiteName, CompleteDatm
+                        , ProdName, RealPayPrice, RefundPrice, RefundDatm, ConsultAdmin_Name, AssignDatm, ConsultDatm';
+
+        $column = ' straight_join 
+                        m.MemName, m.MemId, o.OrderNo, s.SiteName, o.CompleteDatm
+                        , p.ProdName, op.RealPayPrice, sc1.CcdName AS PayStatusCcd_Name
+                        , CONCAT(\'-\',op.RealPayPrice) AS RefundPrice , opr.RefundDatm, ConsultAdmin_Name, AssignDatm, ConsultDatm';
+
+        $from = '
+            from
+                lms_order o
+                join lms_order_product op on o.OrderIdx = op.OrderIdx
+                join lms_order_product_refund opr on opr.OrderProdIdx = op.OrderProdIdx
+                join lms_site s on o.SiteCode = s.SiteCode
+                join lms_sys_code sc1 on op.PayStatusCcd = sc1.Ccd
+                join lms_product p on op.ProdCode = p.ProdCode
+                join lms_product_lecture pl on p.ProdCode = pl.ProdCode
+                join lms_sys_code sc2 on pl.LearnPatternCcd = sc2.Ccd 
+                join lms_member m on op.MemIdx = m.MemIdx
+                join lms_member_otherinfo mo on m.MemIdx = mo.MemIdx
+                
+                left join vw_tm_consult tc1 
+                on tc1.TcIdx = 
+                    (
+                        select tc.TcIdx from vw_tm_consult tc 
+                        where m.MemIdx = tc.MemIdx and o.CompleteDatm between tc.ConsultDatm and DATE_ADD(tc.ConsultDatm, INTERVAL 21 day) 
+                        order by TcIdx desc limit 1
+                    )  
+            where 
+                    o.CompleteDatm is not null 
+                    and tc1.TmIdx is not null 
+                ';
+
+        $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
+
+        $sql  = ' select '.$out_column.' from (SELECT @SEQ := 0) A, ( select ' . $column . $from . $where . $order_by_offset_limit .') mm Order by @SEQ DESC';
+
+        $result = $this->_conn->query($sql);
+        //echo $this->_conn->last_query();exit;
+        return $result->result_array();
+    }
+
 }
 

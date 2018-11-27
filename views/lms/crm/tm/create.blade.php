@@ -157,6 +157,9 @@
                     alert("조건 종료일을 선택해 주세요.");return;
                 }
 
+                $("#MemCnt").val('');
+                $("input[name='eachCnt[]']").val('');
+
                 var data =  {
                     '{{ csrf_token_name() }}' : $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
                     'AssignCcd' : $("#AssignCcd").val(),
@@ -195,8 +198,21 @@
                 for (i=0;i<tm_adminCnt;i++){
                     sum_cnt += divide_cnt;
 
-                    if(i < (tm_adminCnt-1) ) {
+                    if(member_count >= sum_cnt) {
                         $("input[name='eachCnt[]']:eq(" + i + ")").val(divide_cnt);
+                    } else {
+                        $("input[name='eachCnt[]']:eq(" + i + ")").val('0');
+                    }
+
+                    /*
+                    if(i < (tm_adminCnt-1) ) {
+
+                        if(member_count >= sum_cnt) {
+                            $("input[name='eachCnt[]']:eq(" + i + ")").val(divide_cnt);
+                        } else {
+                            $("input[name='eachCnt[]']:eq(" + i + ")").val('0');
+                        }
+
                     } else if( i == (tm_adminCnt -1) ) {    //마지막 배열이면
 
                         if(member_count != sum_cnt) {   //멤버수와 합계가 틀리면 조정
@@ -206,12 +222,15 @@
                            } else { // 합계가 적을경우
                                change_cnt = divide_cnt + (member_count-sum_cnt);
                             }
+                            if(change_cnt < 0) {
+                                change_cnt = 0;
+                            }
                             $("input[name='eachCnt[]']:eq(" + i + ")").val(change_cnt);
                         } else {
                             $("input[name='eachCnt[]']:eq(" + i + ")").val(divide_cnt);
                         }
-
                     }
+                    */
                 }
             }
 

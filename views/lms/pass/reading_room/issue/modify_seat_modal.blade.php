@@ -54,7 +54,7 @@
                 <label class="control-label col-md-1-1">독서실명(예치금)
                 </label>
                 <div class="col-md-4">
-                    <p class="form-control-static">{{$data['ReprProdName']}} <span class="blue">[예치금]</span> 원</p>
+                    <p class="form-control-static">{{$data['ReprProdName']}} <span class="blue">[예치금]</span> {{number_format($data['SubRealPayPrice'])}}원</p>
                 </div>
                 <label class="control-label col-md-1-1">좌석번호
                 </label>
@@ -187,6 +187,9 @@
         var is_change_seat = '{{$is_change_seat}}';
 
         $(document).ready(function() {
+            var set_table_row = '{{$data['TransverseNum']}}';
+            $('.n_mem_seat li').css('width', 'calc(100% / '+set_table_row+')');
+
             //좌석선택
             $('.btn_choice_seat').click(function() {
                 var seat_num = $(this).data('seat-num');

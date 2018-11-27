@@ -30,12 +30,12 @@ class BaseReadingRoomModel extends WB_Model
 
     protected $_order_route_ccd = '670002';    //학원방문결제
     protected $_sub_order_route_ccd = '670003';    //0원결제 [예치금]
+    protected $_sub_product_type_ccd = '636009';   //상품타입공통코드 예치금
 
     private $_arr_product_type_ccd = [
         'R' => '636007',    //상품타입공통코드 독서실
         'L' => '636008'     //상품타입공통코드 사물함
     ];
-    private $_sub_product_type_ccd = '636009';   //상품타입공통코드 예치금
     private $_prod_code;
     private $_sub_prod_code;
     private $_lr_idx;
@@ -50,6 +50,7 @@ class BaseReadingRoomModel extends WB_Model
         'lms_sys_code' => 'lms_sys_code',
         'lms_order' => 'lms_order',
         'lms_order_product' => 'lms_order_product',
+        'lms_order_product_refund' => 'lms_order_product_refund',
         'lms_member' => 'lms_member',
         'wbs_sys_admin' => 'wbs_sys_admin',
         'product' => 'lms_product',

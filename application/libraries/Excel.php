@@ -54,7 +54,7 @@ class Excel
 
             ob_end_clean();
             header('Content-type: application/vnd.ms-excel');
-            header('Content-Disposition: attachment; filename="' . $file_name . '.xls"');
+            header('Content-Disposition: attachment; filename="' . iconv('UTF-8','EUC-KR',$file_name).'.xls"');
             header('Expires: 0');
             header('Content-Transfer-Encoding: binary');
             header('Cache-Control: private, no-transform, no-store, must-revalidate');

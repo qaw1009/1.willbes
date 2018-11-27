@@ -141,12 +141,11 @@ class ReadingRoomModel extends BaseReadingRoomModel
     public function findReadingRoomForModify($OrderIdx, $arr_condition = [])
     {
         $column = '
-                a.LrIdx, a.CampusCcd, b.OrderIdx, b.OrderNo, m.MemId, m.MemName, fn_dec(m.PhoneEnc) AS MemPhone, op.ProdCode, op.RealPayPrice, b.OrderDatm,
+                a.LrIdx, a.CampusCcd, b.OrderIdx, b.OrderNo, b.ReprProdName, m.MemId, m.MemName, fn_dec(m.PhoneEnc) AS MemPhone, op.ProdCode, op.RealPayPrice, b.OrderDatm,
                 c.MasterOrderIdx, c.NowOrderIdx, c.SerialNumber, c.StatusCcd AS SeatStatusCcd, c.UseStartDate, c.UseEndDate,
-                op.PayStatusCcd, d.PayStatusCcd AS SubPayStatusCcd, d.RealPayPrice AS SubRealPayPrice, f.SiteName,
+                op.PayStatusCcd, f.SiteName,
                 fn_ccd_name(a.CampusCcd) AS CampusName,
                 fn_ccd_name(op.PayStatusCcd) AS PayStatusName,
-                fn_ccd_name(d.PayStatusCcd) AS SubPayStatusName,
                 e.wAdminName AS RegAdminName, c.RegDatm AS SeatRegDatm
             ';
         $from = "
@@ -160,12 +159,6 @@ class ReadingRoomModel extends BaseReadingRoomModel
             INNER JOIN {$this->_table['lms_member']} AS m ON b.MemIdx = m.MemIdx
             INNER JOIN {$this->_table['readingRoom']} AS a ON op.ProdCode = a.ProdCode AND a.MangType = 'R' AND a.IsStatus = 'Y'
             INNER JOIN {$this->_table['readingRoom_mst']} AS c ON b.OrderIdx = c.NowOrderIdx
-            INNER JOIN (
-                SELECT temp_b.ProdCode, temp_b.PayStatusCcd, temp_b.RealPayPrice
-                FROM {$this->_table['lms_order']} AS temp_a
-                INNER JOIN {$this->_table['lms_order_product']} temp_b ON temp_a.OrderIdx = temp_b.OrderIdx AND temp_a.PayRouteCcd = '{$this->_sub_order_route_ccd}'
-                GROUP BY temp_b.ProdCode
-            ) AS d ON a.SubProdCode = d.ProdCode
             
             INNER JOIN {$this->_table['lms_site']} AS f ON b.SiteCode = f.SiteCode AND f.IsStatus = 'Y'
             INNER JOIN {$this->_table['wbs_sys_admin']} AS e ON c.RegAdminIdx = e.wAdminIdx AND e.wIsStatus='Y'
@@ -403,6 +396,44 @@ class ReadingRoomModel extends BaseReadingRoomModel
     }
 
     /**
+     * 좌석상태수정
+     * 수정불가 : 사용중인 상태, 기타상태에서 '사용중'으로 업데이트할 경우
+     * @param $input
+     * @return array|bool
+     */
+    public function modifyReadingRoomSeatType($input)
+    {
+        $this->_conn->trans_begin();
+        try {
+            if ((element('seat_status', $input)) == $this->_arr_reading_room_status_ccd['Y']) {
+                throw new \Exception('사용중인 상태로 수정할 수 없습니다.');
+            }
+
+            //좌석정보 조회
+            $arr_condition = [
+                'EQ' => [
+                    'LrIdx' => element('lr_idx', $input),
+                    'SerialNumber' => element('choice_serial_num', $input)
+                ]
+            ];
+            $arr_use_seat_data = $this->getReadingRoomMst($arr_condition, 'MIdx, StatusCcd');
+            if ($arr_use_seat_data['StatusCcd'] == $this->_arr_reading_room_status_ccd['Y']) {
+                throw new \Exception('사용중인 좌석은 수정할 수 없습니다.');
+            }
+
+            if ($this->_updateSeatTypeForMst($input) !== true) {
+                throw new \Exception('좌석 상태 수정에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
      * 신규등록
      * @param $prod_code
      * @param $key
@@ -500,11 +531,10 @@ class ReadingRoomModel extends BaseReadingRoomModel
         } else {
             $column = '
                 a.LrIdx, b.OrderIdx, b.OrderNo, c.MasterOrderIdx, c.NowOrderIdx, b.ReprProdName, b.OrderDatm, op.OrderPrice
-                , c.NowMIdx, a.CampusCcd, op.PayStatusCcd, d.PayStatusCcd AS SubPayStatusCcd
+                , c.NowMIdx, a.CampusCcd, op.PayStatusCcd
                 , op.ProdCode, op.OrderPrice, m.MemName, fn_dec(m.PhoneEnc) AS MemPhone
                 , fn_ccd_name(a.CampusCcd) AS CampusName
                 , fn_ccd_name(op.PayStatusCcd) AS PayStatusName
-                , fn_ccd_name(d.PayStatusCcd) AS SubPayStatusName
                 , c.UseStartDate, c.UseEndDate, c.StatusCcd AS SeatStatusCcd
                 , fn_ccd_name(c.StatusCcd) AS SeatStatusName
                 , e.wAdminName AS RegAdminName, c.RegDatm AS SeatRegDatm
@@ -526,12 +556,6 @@ class ReadingRoomModel extends BaseReadingRoomModel
             INNER JOIN {$this->_table['readingRoom']} AS a ON op.ProdCode = a.ProdCode AND a.MangType = '{$mang_type}' AND a.IsStatus = 'Y'            
             INNER JOIN {$this->_table['readingRoom_useDetail']} AS c ON b.OrderIdx = c.NowOrderIdx            
             INNER JOIN {$this->_table['wbs_sys_admin']} AS e ON c.RegAdminIdx = e.wAdminIdx AND e.wIsStatus='Y'
-            INNER JOIN (
-                SELECT temp_b.ProdCode, temp_b.PayStatusCcd
-                FROM {$this->_table['lms_order']} AS temp_a
-                INNER JOIN {$this->_table['lms_order_product']} temp_b ON temp_a.OrderIdx = temp_b.OrderIdx AND temp_a.PayRouteCcd = '{$this->_sub_order_route_ccd}'
-                GROUP BY temp_b.ProdCode
-            ) AS d ON a.SubProdCode = d.ProdCode
             
             LEFT JOIN (
                 SELECT 

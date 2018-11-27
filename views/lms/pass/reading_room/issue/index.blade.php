@@ -158,7 +158,8 @@
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                         }},
                     {'data' : 'OrderNo', 'render' : function(data, type, row, meta) {
-                            return '<a href="javascript:void(0);" class="btn-modify" data-lr-idx="' + row.LrIdx + '"><u>' + data + '</u></a>';
+                            var _url = '{{ site_url('/pay/order/show/') }}' + row.NowOrderIdx + '/';
+                            return '<a href="'+ _url +'" target="_blank" class="btn-show-order"><u>'+data+'</u></span>';
                         }},
                     {'data' : 'MemName'},
                     {'data' : 'MemPhone'},
@@ -168,7 +169,9 @@
                     {'data' : 'OrderPrice'},
                     {'data' : 'PayStatusName'},
                     {'data' : 'NowMIdx'},
-                    {'data' : 'SubPayStatusName'},
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            return '예치금상태[개발미비]';
+                        }},
                     {'data' : 'UseStartDate'},
                     {'data' : 'UseEndDate'},
                     {'data' : 'SeatStatusName'},
@@ -187,7 +190,6 @@
                                 return '<p style="color: #bdbdbd">[연장]</p>';
                             } else {
                                 //기간 미만족
-                                /*if (row.ExtensionType == 'Y' && (row.SeatStatusCcd != '{{$arr_seat_status_ccd['out']}}' || row.SeatStatusCcd != '{{$arr_seat_status_ccd['end']}}')) {*/
                                 if (row.ExtensionType == 'Y'
                                     && (row.SeatStatusCcd == '{{$arr_seat_status_ccd['in']}}'
                                         || row.SeatStatusCcd == '{{$arr_seat_status_ccd['extension']}}'
@@ -203,7 +205,7 @@
                 ]
             });
 
-            // 좌석배정/좌석이동 TEST
+            // 좌석배정/좌석이동
             $list_table.on('click', '.btn-create-seat-modal', function() {
                 $('.btn-create-seat-modal').setLayer({
                     "url" : "{{ site_url('/pass/readingRoom/issue/modifySeatModal/') }}"+ $(this).data('prod-code') + '?' + '{!! $default_query_string !!}' + '&now_order_idx=' + $(this).data('order-idx'),
@@ -211,13 +213,10 @@
                 });
             });
 
-            /**
-             * TODO : lms 방문결제페이지 개발 시 해당 페이지로 링크 수정
-             */
             $list_table.on('click', '.btn-seat', function() {
-                var param = '&rdr_master_order_idx=' + $(this).data('order-idx');
-                param += '&rdr_prod_code=' + $(this).data('prod-code');
-                location.href='{{ site_url('/pass/readingRoom/regist') }}/?' + '{!! $default_query_string !!}' + param;
+                var param = '&target_order_idx=' + $(this).data('order-idx');
+                param += '&target_prod_code=' + $(this).data('prod-code');
+                location.href='{{ site_url('/pay/visit/create') }}/?' + param;
             });
         });
     </script>

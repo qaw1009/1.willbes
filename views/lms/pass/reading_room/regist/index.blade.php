@@ -132,7 +132,7 @@
                     {'data' : 'sub_RealSalePrice'},
                     {'data' : 'main_RealSalePrice'},
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            return row.countY+'/'+row.UseQty;
+                            return '<a href="javascript:void(0);" class="btn-modify-seat-modal" data-idx="'+row.LrIdx+'" data-prod-code="'+row.ProdCode+'"><u>'+row.countY+'/'+row.UseQty+'</u></a>';
                         }},
                     {'data' : 'countN'},
                     {'data' : 'IsSmsUse', 'render' : function(data, type, row, meta) {
@@ -153,6 +153,15 @@
             // 데이터 수정 폼
             $list_table.on('click', '.btn-modify', function() {
                 location.href='{{ site_url('/pass/readingRoom/regist/create') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $default_query_string !!}';
+            });
+
+            // 좌석현황/상태수정
+            $list_table.on('click', '.btn-modify-seat-modal', function() {
+                var param = '&lr_idx='+$(this).data('idx');
+                $('.btn-modify-seat-modal').setLayer({
+                    "url" : "{{ site_url('/pass/readingRoom/regist/modifySeatModal/') }}"+ $(this).data('prod-code') + '?' + '{!! $default_query_string !!}' + param,
+                    "width" : "1200"
+                });
             });
 
             // TODO : 좌석배정/좌석이동 TEST

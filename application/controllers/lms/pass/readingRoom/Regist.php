@@ -171,6 +171,59 @@ class Regist extends \app\controllers\BaseController
         $this->json_result($result, '저장 되었습니다.', $result);
     }
 
+    /**
+     * 좌석상태수정
+     * @param array $params
+     */
+    public function modifySeatModal($params = [])
+    {
+        $prod_code = $params[0];
+        $lr_idx = $this->_req('lr_idx');
+        $mang_type = $this->_req('mang_type');
+
+        $arr_seat_status = $this->codeModel->getCcd($this->readingRoomModel->groupCcd['seat']);
+        /*unset($arr_seat_status[$this->readingRoomModel->_arr_reading_room_status_ccd['N']]);*/
+
+        $data = $this->readingRoomModel->findReadingRoom($prod_code);
+        if (count($data) < 1) {
+            show_error('데이터 조회에 실패했습니다.');
+        }
+
+        //좌석정보
+        $seat_data = $this->readingRoomModel->listSeat($prod_code);
+
+        $this->load->view("pass/reading_room/regist/modify_seat_modal", [
+            'prod_code' => $prod_code,
+            'lr_idx' => $lr_idx,
+            'default_query_string' => '&mang_type='.$mang_type,
+            'arr_seat_status' => $arr_seat_status,
+            'data' => $data,
+            'seat_data' => $seat_data,
+            'method' => 'PUT'
+        ]);
+    }
+
+    /**
+     * 좌석상태수정
+     * 사용중인 좌석 상태 수정 불가
+     */
+    public function storeSeat()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'lr_idx', 'label' => '식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'seat_status', 'label' => '좌석상태', 'rules' => 'trim|required|integer'],
+        ['field' => 'choice_serial_num', 'label' => '좌석번호', 'rules' => 'trim|required|integer']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->readingRoomModel->modifyReadingRoomSeatType($this->_reqP(null,false));
+        $this->json_result($result, '수정 완료 되었습니다.', $result);
+    }
+
 
     /**
      * 독서실/사물함 방문결제 TEST
@@ -188,8 +241,7 @@ class Regist extends \app\controllers\BaseController
             'rdr_use_end_date' => $this->_reqP('rdr_use_end_date'),
             'rdr_memo' => $this->_reqP('rdr_memo')
         ];
-
-        $order_idx = '63';      //임의 생성한 주문식별자
+        $order_idx = '55';      //임의 생성한 주문식별자
         //$order_idx = '96';      //임의 생성한 주문식별자
 
         $result = $this->readingRoomModel->testAddSeat($arr_input, $order_idx);

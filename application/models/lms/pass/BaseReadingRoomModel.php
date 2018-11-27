@@ -729,6 +729,28 @@ class BaseReadingRoomModel extends WB_Model
     }
 
     /**
+     * 좌석상태수정
+     * @param $input
+     * @return bool|string
+     */
+    protected function _updateSeatTypeForMst($input)
+    {
+        try {
+            $data = [
+                'StatusCcd' => element('seat_status', $input),
+                'UpdAdminIdx' => $this->session->userdata('admin_idx')
+            ];
+
+            if ($this->_conn->set($data)->where('LrIdx', element('lr_idx', $input))->where('SerialNumber', element('choice_serial_num', $input))->update($this->_table['readingRoom_mst']) === false) {
+                throw new \Exception('좌석상태 수정에 실패했습니다.');
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+        return true;
+    }
+
+    /**
      * 좌석상태 업데이트
      * @param $lr_idx           [상품코드에 매핑되는 식별자]
      * @param $serial_number    [좌석번호]

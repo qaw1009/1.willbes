@@ -66,12 +66,13 @@
                 <label class="control-label col-md-1-1">좌석상태
                 </label>
                 <div class="col-md-10 form-inline">
-                    <div class="radio">
+                    <p class="form-control-static">{{$arr_seat_status[$data['SeatStatusCcd']]}}</p>
+                    {{--<div class="radio">
                         @foreach($arr_seat_status as $key => $val)
                             <input type="radio" id="rdr_seat_status_{{$key}}" name="rdr_seat_status" class="flat" value="{{$key}}" title="좌석상태" @if($data['SeatStatusCcd'] == $key)checked="checked"@endif/>
                             <label for="rdr_seat_status_{{$key}}" class="input-label">{{$val}}</label>
                         @endforeach
-                    </div>
+                    </div>--}}
                 </div>
             </div>
             <div class="form-group form-group-sm">
@@ -84,11 +85,23 @@
             <div class="form-group form-group-sm">
                 <label class="control-label col-md-1-1">좌석이동
                 </label>
-                <div class="col-md-3 form-inline">
+                <div class="col-md-2 form-inline">
                     <input type="text" class="form-control" id="set_seat" name="set_seat" value="{{$data['SerialNumber']}}" autocomplete="off" style="width: 80px;" readonly="readonly">
                 </div>
                 <div class="col-md-6 form-inline">
                     <p class="form-control-static">• 동일 운영사이트/캠퍼스 내에서만 이동 가능 (좌석표에서 좌석 선택 시 좌석번호 자동 입력)</p>
+                </div>
+            </div>
+            <div class="form-group form-group-sm">
+                <label class="control-label col-md-1-1">예치금여부
+                </label>
+                <div class="col-md-2 form-inline">
+                    <p class="form-control-static">
+                        반환!
+                    </p><button type="button" class="btn btn-sm btn-dark">예치금 반환</button>
+                </div>
+                <div class="col-md-6 form-inline">
+                    <p class="form-control-static bg-orange">• 결제/환불 정보에 따라 자동 셋팅되며 수정불가 ([LMS] 결제관리 > 환불관리에서 예치금 반환 처리 </p>
                 </div>
             </div>
 

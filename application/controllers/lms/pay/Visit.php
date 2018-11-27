@@ -5,7 +5,7 @@ require_once APPPATH . 'controllers/lms/pay/BaseOrder.php';
 
 class Visit extends BaseOrder
 {
-    protected $models = array('pay/orderList', 'pay/order', 'member/manageMember', 'service/point', 'sys/site', 'sys/code');
+    protected $models = array('pay/orderList', 'pay/order', 'pay/salesProduct', 'member/manageMember', 'service/point', 'sys/site', 'sys/code');
     protected $helpers = array();
     private $_list_add_join = array('refund');
 
@@ -156,7 +156,10 @@ class Visit extends BaseOrder
     {
         $order_idx = element('0', $params);
         $is_order = empty($order_idx) === false ? true : false;
+        $target_order_idx = $this->_req('target_order_idx');
+        $target_prod_code = $this->_req('target_prod_code');
         $method = 'POST';
+        $site_code = '';
         $arr_off_site_code = [];
         $data = [];
 
@@ -165,10 +168,9 @@ class Visit extends BaseOrder
             $method = 'PUT';
 
             // 주문상품 정보
-            $data['order_prod'] = $this->orderListModel->listAllOrder(false, [
-                'EQ' => ['O.OrderIdx' => $order_idx], 'NOT' => ['OP.SalePatternCcd' => $this->orderListModel->_sale_pattern_ccd['auto']]
-                ], null, null, ['sublecture']);
-            if (empty($data) === true) {
+            $arr_condition = ['EQ' => ['O.OrderIdx' => $order_idx], 'NOT' => ['OP.SalePatternCcd' => $this->orderListModel->_sale_pattern_ccd['auto']]];
+            $data['order_prod'] = $this->orderListModel->findOrderProduct($arr_condition);
+            if (empty($data['order_prod']) === true) {
                 show_error('데이터 조회에 실패했습니다.');
             }
 
@@ -178,7 +180,26 @@ class Visit extends BaseOrder
             // 회원정보
             $data['mem'] = $this->manageMemberModel->getMember($data['order']['MemIdx']);
         } else {
-            $arr_off_site_code = $this->siteModel->getOffLineSiteArray();
+            // 연결 주문상품 정보 조회
+            if (empty($target_order_idx) === false && empty($target_prod_code) === false) {
+                $arr_condition = ['EQ' => ['O.OrderIdx' => $target_order_idx, 'OP.ProdCode' => $target_prod_code, 'OP.PayStatusCcd' => $this->orderListModel->_pay_status_ccd['paid']]];
+                $column = 'O.MemIdx, O.SiteCode, OP.ProdCode, P.ProdName, P.ProdTypeCcd, PL.LearnPatternCcd, CPT.CcdName as ProdTypeCcdName, CLP.CcdName as LearnPatternCcdName';
+                $column .= ' , json_value(fn_product_saleprice_data(OP.ProdCode), "$[0].SalePrice") as SalePrice';
+                $data['order_prod'] = $this->orderListModel->findOrderProduct($arr_condition, $column, 1);
+                if (empty($data['order_prod']) === true) {
+                    show_error('데이터 조회에 실패했습니다.');
+                }
+
+                $data['order_prod'][0]['ProdType'] = $this->orderListModel->getLearnPattern($data['order_prod'][0]['ProdTypeCcd'], $data['order_prod'][0]['LearnPatternCcd']);
+                $data['order_prod'][0]['TargetOrderIdx'] = $target_order_idx;
+
+                // 회원정보
+                $data['mem'] = $this->manageMemberModel->getMember($data['order_prod'][0]['MemIdx']);
+
+                $site_code = $data['order_prod'][0]['SiteCode'];
+            }
+
+            $arr_off_site_code = $this->siteModel->getOffLineSiteArray($site_code);
         }
 
         // 카드사 공통코드 조회
@@ -188,6 +209,7 @@ class Visit extends BaseOrder
             'method' => $method,
             'idx' => $order_idx,
             'data' => $data,
+            'site_code' => $site_code,
             'arr_card_ccd' => $arr_card_ccd,
             'arr_off_site_code' => $arr_off_site_code,
             '_is_order' => $is_order,

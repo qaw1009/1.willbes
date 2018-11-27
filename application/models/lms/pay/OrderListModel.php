@@ -326,9 +326,12 @@ class OrderListModel extends BaseOrderModel
      * 주문상품 조회
      * @param array $arr_condition
      * @param string $column
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
      * @return mixed
      */
-    public function findOrderProduct($arr_condition = [], $column = '')
+    public function findOrderProduct($arr_condition = [], $column = '', $limit = null, $offset = null, $order_by = [])
     {
         if (empty($column) === true) {
             $column = 'O.OrderIdx, OP.OrderProdIdx, OP.ProdCode, O.OrderNo, O.SiteCode, O.MemIdx, O.PayRouteCcd, O.PayMethodCcd, O.PgCcd, O.PgMid, O.PgTid
@@ -340,7 +343,7 @@ class OrderListModel extends BaseOrderModel
                 , OP.SalePatternCcd, OP.PayStatusCcd, OP.OrderPrice, OP.RealPayPrice, OP.CardPayPrice, OP.CashPayPrice, OP.DiscPrice           
                 , OP.DiscRate, OP.DiscType, OP.DiscReason
                 , OP.UsePoint, OP.SavePoint, OP.IsUseCoupon, OP.UserCouponIdx, OP.UpdDatm
-                , P.ProdTypeCcd, P.ProdName';
+                , P.ProdTypeCcd, P.ProdName, PL.LearnPatternCcd, CPT.CcdName as ProdTypeCcdName, CLP.CcdName as LearnPatternCcdName';
         }
 
         $from = '
@@ -348,13 +351,23 @@ class OrderListModel extends BaseOrderModel
                 inner join ' . $this->_table['order_product'] . ' as OP
                     on O.OrderIdx = OP.OrderIdx	
                 left join ' . $this->_table['product'] . ' as P
-                    on OP.ProdCode = P.ProdCode and P.IsStatus = "Y"';
+                    on OP.ProdCode = P.ProdCode and P.IsStatus = "Y"
+                left join ' . $this->_table['product_lecture'] . ' as PL
+                    on OP.ProdCode = PL.ProdCode
+                left join ' . $this->_table['code'] . ' as CPT
+                    on P.ProdTypeCcd = CPT.Ccd and CPT.IsStatus = "Y"
+                left join ' . $this->_table['code'] . ' as CLP
+                    on PL.LearnPatternCcd = CLP.Ccd and CLP.IsStatus = "Y"';
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
 
+        $order_by_offset_limit = '';
+        empty($order_by) === false && $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+        is_null($limit) === false && is_null($offset) === false && $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+
         // 쿼리 실행
-        $query = $this->_conn->query('select ' . $column . $from . $where);
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
 
         return $query->result_array();
     }

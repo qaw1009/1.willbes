@@ -9,7 +9,7 @@
                 {!! csrf_field() !!}
                 {!! method_field($method) !!}
                 <input type="hidden" name="order_idx" value="{{ $idx }}"/>
-                <input type="hidden" name="mem_idx" value="{{ $data['order']['MemIdx'] or '' }}" data-result-data=""/>
+                <input type="hidden" name="mem_idx" value="{{ $data['mem']['MemIdx'] or '' }}" data-result-data=""/>
                 @if(isset($data['mem']) === false)
                     <div class="row">
                         <label class="control-label col-md-1" for="search_mem_id">· 회원검색</label>
@@ -132,7 +132,7 @@
                             <h4><strong>상품결제정보</strong></h4>
                         </div>
                         <div class="col-md-6 text-right form-inline item">
-                            {!! html_site_select('', 'site_code', 'site_code', 'form-control input-sm', '운영 사이트', 'required', '', false, $arr_off_site_code) !!}
+                            {!! html_site_select($site_code, 'site_code', 'site_code', 'form-control input-sm', '운영 사이트', 'required', '', false, $arr_off_site_code) !!}
                             <button type="button" id="btn_product_search" class="btn btn-sm btn-primary mb-0 ml-5">상품검색</button>
                             <span id="selected_product" class="hide"></span>
                         </div>
@@ -151,6 +151,45 @@
                                 </tr>
                                 </thead>
                                 <tbody>
+                                    @if(isset($data['order_prod']) === true)
+                                        {{-- 독서실, 사물함 연장 --}}
+                                        @foreach($data['order_prod'] as $order_prod_row)
+                                            <tr>
+                                                <td><div class="blue inline-block">[{{ $order_prod_row['LearnPatternCcdName'] or $order_prod_row['ProdTypeCcdName'] }}]</div> {{ $order_prod_row['ProdName'] }}
+                                                    <input type="hidden" name="prod_code[]" value="{{ $order_prod_row['ProdCode'] }}:{{ $order_prod_row['ProdType'] }}:{{ $order_prod_row['LearnPatternCcd'] }}"/>
+                                                    @if($order_prod_row['ProdType'] == 'reading_room' || $order_prod_row['ProdType'] == 'locker')
+                                                        <br/><button type="button" name="btn_set_seat" class="btn btn-xs btn-success mt-5 mb-0" data-prod-type="{{ $order_prod_row['ProdType'] }}" data-prod-code="{{ $order_prod_row['ProdCode'] }}" data-target-order-idx="{{ $order_prod_row['TargetOrderIdx'] }}"> {{ $order_prod_row['ProdTypeCcdName'] }} 배정</button>
+                                                    @endif
+                                                    <input type="hidden" name="target_order_idx[]" value="{{ $order_prod_row['TargetOrderIdx'] }}"/>
+                                                </td>
+                                                <td>
+                                                    <input type="number" name="order_price[]" class="form-control input-sm" title="주문금액" value="{{ $order_prod_row['SalePrice'] }}" readonly="readonly">
+                                                </td>
+                                                <td class="form-inline">
+                                                    <select class="form-control input-sm set-pay-price" name="disc_type[]">
+                                                        <option value="R">%</option>
+                                                        <option value="P">원</option>
+                                                    </select>
+                                                    <input type="number" name="disc_rate[]" class="form-control input-sm set-pay-price" title="할인율" value="0" style="width: 160px;">
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="disc_reason[]" class="form-control input-sm" title="할인사유" value="">
+                                                </td>
+                                                <td>
+                                                    <input type="number" name="card_pay_price[]" class="form-control input-sm set-sum-price" title="카드결제금액" value="0">
+                                                </td>
+                                                <td>
+                                                    <input type="number" name="cash_pay_price[]" class="form-control input-sm set-sum-price" title="현금결제금액" value="0">
+                                                </td>
+                                                <td>
+                                                    <input type="number" name="real_pay_price[]" class="form-control input-sm set-sum-price" title="실결제금액" value="{{ $order_prod_row['SalePrice'] }}" readonly="readonly">
+                                                </td>
+                                                <td>
+                                                    <a href="#none" data-prod-code="{{ $order_prod_row['ProdCode'] }}" class="selected-product-delete"><i class="fa fa-times red"></i></a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @endif
                                 </tbody>
                                 <tfoot>
                                 <tr>
@@ -359,8 +398,9 @@
                     if ($selected_prod_code.hasOwnProperty(code) === false) {
                         html += '<tr>\n' +
                             '    <td><div class="blue inline-block">[' + (data.learnPatternCcdName !== '' ? data.learnPatternCcdName : data.prodTypeCcdName) + ']</div> ' + Base64.decode(data.prodName) +
-                            '    ' + '<input type="hidden" name="prod_code[]" value="' + code + ':' + data.prodType + ':' + data.learnPatternCcd+ '"/>' +
-                            '    ' + (data.prodType === 'reading_room' || data.prodType === 'locker' ? '<br/><button type="button" name="btn_set_seat" class="btn btn-xs btn-success mt-5 mb-0" data-prod-type="' + data.prodType + '" data-prod-code="' + code + '">' + data.prodTypeCcdName + '배정</button>' : '') +
+                            '    ' + '<input type="hidden" name="prod_code[]" value="' + code + ':' + data.prodType + ':' + data.learnPatternCcd + '"/>' +
+                            '    ' + (data.prodType === 'reading_room' || data.prodType === 'locker' ? '<br/><button type="button" name="btn_set_seat" class="btn btn-xs btn-success mt-5 mb-0" data-prod-type="' + data.prodType + '" data-prod-code="' + code + '" data-target-order-idx="">' + data.prodTypeCcdName + '배정</button>' : '') +
+                            '    ' + '<input type="hidden" name="target_order_idx[]" value=""/>' +
                             '    </td>\n' +
                             '    <td>\n' +
                             '       <input type="number" name="order_price[]" class="form-control input-sm" title="주문금액" value="' + data.salePrice + '" readonly="readonly">\n' +
@@ -410,7 +450,7 @@
             // 독서실, 사물함 좌석배정 버튼 클릭
             $regi_form.on('click', 'button[name="btn_set_seat"]', function() {
                 var param = '?mang_type=' + ($(this).data('prod-type') === 'reading_room' ? 'R' : 'L');
-                param += '&rdr_master_order_idx=' + $regi_form.find('input[name="order_idx"]').val();
+                param += '&rdr_master_order_idx=' + $(this).data('target-order-idx');
 
                 $('button[name="btn_set_seat"]').setLayer({
                     "url" : "{{ site_url('/common/searchReadingRoom/createSeatModal/') }}"+ $(this).data('prod-code') + param,

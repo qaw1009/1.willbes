@@ -470,7 +470,10 @@ class OrderModel extends BaseOrderModel
                 'UsePoint' => 0,
                 'SavePoint' => 0,
                 'IsUseCoupon' => 'N',
-                'UserCouponIdx' => 0
+                'UserCouponIdx' => 0,
+                'TargetOrderIdx' => element('TargetOrderIdx', $input),
+                'TargetProdCode' => element('TargetProdCode', $input),
+                'TargetProdCodeSub' => element('TargetProdCodeSub', $input)
             ];
 
             if ($this->_conn->set($data)->insert($this->_table['order_product']) === false) {
@@ -960,6 +963,13 @@ class OrderModel extends BaseOrderModel
                 $row['DiscRate'] = array_get($input, 'disc_rate.' . $idx, 0);
                 $row['DiscType'] = array_get($input, 'disc_type.' . $idx, 'R');
                 $row['DiscReason'] = get_var(array_get($input, 'disc_reason.' . $idx), null);
+
+                // 독서실, 사물함 연장 타겟주문정보 설정
+                $row['TargetOrderIdx'] = get_var(array_get($input, 'target_order_idx.' . $idx), null);
+                if (empty($row['TargetOrderIdx']) === false) {
+                    $row['TargetProdCode'] = $row['ProdCode'];
+                    $row['TargetProdCodeSub'] = $row['ProdCode'];
+                }
 
                 // 전체주문 관련 금액 합산
                 $total_order_price += $row['RealSalePrice'];

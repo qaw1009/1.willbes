@@ -1,3 +1,10 @@
-Willbes 통합 사이트<br>
-StarPlayer Enterprise<br>
-연동페이지입니다.
+@extends('willbes.app.layouts.master')
+
+@section('content')
+    <!-- Container -->
+    <div id="Container" class="Container NG c_both">
+        윌비스 하이브리드앱 메인페이지입니다.
+
+    </div>
+    <!-- End Container -->
+@stop

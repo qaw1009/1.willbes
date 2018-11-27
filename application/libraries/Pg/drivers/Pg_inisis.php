@@ -330,13 +330,6 @@ class Pg_inisis extends CI_Driver
             $_tid = element('tid', $params);
             $_cancel_reason = element('cancel_reason', $params, '');
             
-            // 취소로그 기본 파라미터
-            $log_params = [
-                'MOID' => $_order_no,
-                'mid' => $_mid,
-                'ReqReason' => $_cancel_reason
-            ];
-
             if (empty($_tid) === false) {
                 // 관리자 취소
                 if (empty($_mid) === true) {
@@ -366,12 +359,15 @@ class Pg_inisis extends CI_Driver
                 $cancel_result_msg = iconv('EUC-KR', 'UTF-8', $inipay->getResult('ResultMsg'));
                 
                 // 승인취소 결과로그 전달 파라미터 설정
-                $log_params = array_merge($log_params, [
+                $log_params = [
+                    'MOID' => $_order_no,
                     'PayType' => 'CA',
+                    'mid' => $_mid,
                     'tid' => $_tid,
                     'resultCode' => $cancel_result_code,
-                    'resultMsg' => $cancel_result_msg
-                ]);
+                    'resultMsg' => $cancel_result_msg,
+                    'ReqReason' => $_cancel_reason
+                ];
 
                 // 로그 메시지
                 $cancel_log_msg = '(결과코드 : ' . $cancel_result_code . ', 결과메시지 : ' . $cancel_result_msg;
@@ -387,13 +383,17 @@ class Pg_inisis extends CI_Driver
                 // 망취소
                 $net_cancel_url = empty(element('net_cancel_url', $params)) === false ? element('net_cancel_url', $params) : $this->_net_cancel_url;
                 $auth_params = empty(element('auth_params', $params)) === false ? element('auth_params', $params) : $this->_auth_params;
+                $log_params = [
+                    'MOID' => $_order_no,
+                    'PayType' => 'NC',
+                    'mid' => $_mid,
+                    'ReqReason' => $_cancel_reason
+                ];
 
                 // 망취소 API
                 if ($this->_http_util->processHTTP($net_cancel_url, $auth_params)) {
                     $cancel_results = json_decode($this->_http_util->body, true);
-
                     $log_params = array_merge($log_params, [
-                        'PayType' => 'NC',
                         'tid' => element('tid', $cancel_results),
                         'resultCode' => element('resultCode', $cancel_results),
                         'resultMsg' => element('resultMsg', $cancel_results)
@@ -403,7 +403,6 @@ class Pg_inisis extends CI_Driver
                 } else {
                     // 망취소 결과로그 전달 파라미터 설정 (통신에러일 경우)
                     $log_params = array_merge($log_params, [
-                        'PayType' => 'NC',
                         'resultCode' => $this->_http_util->errorcode,
                         'resultMsg' => $this->_http_util->errormsg
                     ]);

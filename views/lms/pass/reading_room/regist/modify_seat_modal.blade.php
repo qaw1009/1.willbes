@@ -66,12 +66,15 @@
             <div class="form-group form-group-sm">
                 <label class="control-label col-md-1-1">좌석상태 <span class="required">*</span>
                 </label>
-                <div class="col-md-10 form-inline">
+                <div class="col-md-4 form-inline">
                     <div class="radio">
                         @foreach($arr_seat_status as $key => $val)
                             <input type="radio" id="seat_status_{{$key}}" name="seat_status" class="flat" value="{{$key}}" title="좌석상태"/> <label for="seat_status_{{$key}}" class="input-label">{{$val}}</label>
                         @endforeach
                     </div>
+                </div>
+                <div class="col-md-6">
+                    <p class="form-control-static bg-dark-blue"># 회원이 사용중인 좌석 상태는 변경 불가(ex. 고장 시, '이동' 혹은 '퇴실'좌석 비운 후 변경 가능)</p>
                 </div>
             </div>
 

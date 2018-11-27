@@ -169,9 +169,7 @@
                     {'data' : 'OrderPrice'},
                     {'data' : 'PayStatusName'},
                     {'data' : 'NowMIdx'},
-                    {'data' : null, 'render' : function(data, type, row, meta) {
-                            return '예치금상태[개발미비]';
-                        }},
+                    {'data' : 'SubRefundTypeName'},
                     {'data' : 'UseStartDate'},
                     {'data' : 'UseEndDate'},
                     {'data' : 'SeatStatusName'},

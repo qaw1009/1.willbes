@@ -141,12 +141,14 @@ class ReadingRoomModel extends BaseReadingRoomModel
     public function findReadingRoomForModify($OrderIdx, $arr_condition = [])
     {
         $column = '
-                a.LrIdx, a.CampusCcd, b.OrderIdx, b.OrderNo, b.ReprProdName, m.MemId, m.MemName, fn_dec(m.PhoneEnc) AS MemPhone, op.ProdCode, op.RealPayPrice, b.OrderDatm,
+                a.LrIdx, a.CampusCcd, a.TransverseNum, b.OrderIdx, b.OrderNo, b.ReprProdName, m.MemId, m.MemName, fn_dec(m.PhoneEnc) AS MemPhone, op.ProdCode, op.RealPayPrice, b.OrderDatm,
                 c.MasterOrderIdx, c.NowOrderIdx, c.SerialNumber, c.StatusCcd AS SeatStatusCcd, c.UseStartDate, c.UseEndDate,
                 op.PayStatusCcd, f.SiteName,
                 fn_ccd_name(a.CampusCcd) AS CampusName,
                 fn_ccd_name(op.PayStatusCcd) AS PayStatusName,
-                e.wAdminName AS RegAdminName, c.RegDatm AS SeatRegDatm
+                e.wAdminName AS RegAdminName, c.RegDatm AS SeatRegDatm,
+                IF(d.RefundIdx IS NULL,\'미반환\',\'반환\') AS SubRefundType,
+                d.RealPayPrice AS SubRealPayPrice
             ';
         $from = "
             FROM (
@@ -159,6 +161,14 @@ class ReadingRoomModel extends BaseReadingRoomModel
             INNER JOIN {$this->_table['lms_member']} AS m ON b.MemIdx = m.MemIdx
             INNER JOIN {$this->_table['readingRoom']} AS a ON op.ProdCode = a.ProdCode AND a.MangType = 'R' AND a.IsStatus = 'Y'
             INNER JOIN {$this->_table['readingRoom_mst']} AS c ON b.OrderIdx = c.NowOrderIdx
+            
+            INNER JOIN (
+                SELECT op.OrderProdIdx, op.ProdCode, op.PayStatusCcd, op.RealPayPrice, opr.RefundIdx, opr.RefundPrice
+                FROM lms_product AS p
+                INNER JOIN {$this->_table['lms_order_product']} AS op ON p.ProdCode = op.ProdCode
+                LEFT JOIN {$this->_table['lms_order_product_refund']} AS opr ON op.OrderProdIdx = opr.OrderProdIdx
+                WHERE p.ProdTypeCcd = '{$this->_sub_product_type_ccd}'
+            ) AS d ON a.SubProdCode = d.ProdCode
             
             INNER JOIN {$this->_table['lms_site']} AS f ON b.SiteCode = f.SiteCode AND f.IsStatus = 'Y'
             INNER JOIN {$this->_table['wbs_sys_admin']} AS e ON c.RegAdminIdx = e.wAdminIdx AND e.wIsStatus='Y'
@@ -539,6 +549,7 @@ class ReadingRoomModel extends BaseReadingRoomModel
                 , fn_ccd_name(c.StatusCcd) AS SeatStatusName
                 , e.wAdminName AS RegAdminName, c.RegDatm AS SeatRegDatm
                 , IFNULL(f.ExtensionType,\'N\') AS ExtensionType
+                , IF(d.RefundIdx IS NULL,\'미반환\',\'반환\') AS SubRefundTypeName
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -553,9 +564,17 @@ class ReadingRoomModel extends BaseReadingRoomModel
             
             INNER JOIN {$this->_table['lms_order_product']} AS op ON b.OrderIdx = op.OrderIdx
             INNER JOIN {$this->_table['lms_member']} AS m ON b.MemIdx = m.MemIdx
-            INNER JOIN {$this->_table['readingRoom']} AS a ON op.ProdCode = a.ProdCode AND a.MangType = '{$mang_type}' AND a.IsStatus = 'Y'            
-            INNER JOIN {$this->_table['readingRoom_useDetail']} AS c ON b.OrderIdx = c.NowOrderIdx            
+            INNER JOIN {$this->_table['readingRoom']} AS a ON op.ProdCode = a.ProdCode AND a.MangType = '{$mang_type}' AND a.IsStatus = 'Y'
+            INNER JOIN {$this->_table['readingRoom_useDetail']} AS c ON b.OrderIdx = c.NowOrderIdx
             INNER JOIN {$this->_table['wbs_sys_admin']} AS e ON c.RegAdminIdx = e.wAdminIdx AND e.wIsStatus='Y'
+            
+            INNER JOIN (
+                SELECT op.OrderProdIdx, op.ProdCode, op.PayStatusCcd, opr.RefundIdx, opr.RefundPrice
+                FROM lms_product AS p
+                INNER JOIN {$this->_table['lms_order_product']} AS op ON p.ProdCode = op.ProdCode
+                LEFT JOIN {$this->_table['lms_order_product_refund']} AS opr ON op.OrderProdIdx = opr.OrderProdIdx
+                WHERE p.ProdTypeCcd = '{$this->_sub_product_type_ccd}'
+            ) AS d ON a.SubProdCode = d.ProdCode
             
             LEFT JOIN (
                 SELECT 

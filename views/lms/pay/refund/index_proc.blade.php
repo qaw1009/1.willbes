@@ -132,7 +132,7 @@
                     <th rowspan="2" class="rowspan pb-30">결제수단</th>
                     <th rowspan="2" class="rowspan pb-20">결제완료(주문)일<br/>(가상계좌신청일)</th>
                     <th colspan="7">상품구분별정보</th>
-                    <th rowspan="2" class="pb-30">환불처리</th>
+                    <th rowspan="2" class="rowspan pb-30">환불처리</th>
                 </tr>
                 <tr class="bg-odd">
                     <th>상품구분</th>

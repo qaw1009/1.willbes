@@ -178,8 +178,7 @@ function dtParamsToQueryString($datatable) {
  * @param params
  * @param method
  */
-function formCreateSubmit(url, params, method)
-{
+function formCreateSubmit(url, params, method) {
     method = method || 'POST';
 
     var form = document.createElement('form');
@@ -199,7 +198,7 @@ function formCreateSubmit(url, params, method)
 
     document.body.appendChild(form);
     form.submit();
-    form.remove();
+    document.body.removeChild(form);
 }
 
 /**

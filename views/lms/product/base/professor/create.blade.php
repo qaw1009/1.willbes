@@ -498,11 +498,6 @@
                 }
             });
 
-            // 정산 테이블 필드 calendar 적용
-            $regi_form.on('focus', '.datepicker', function() {
-                init_datetimepicker();
-            });
-
             // 목록 이동
             $('#btn_list').click(function() {
                 location.replace('{{ site_url('/product/base/professor/index') }}' + getQueryString());

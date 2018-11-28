@@ -467,15 +467,17 @@
                 set_fields.forEach(function(val) {
                     field = val.split(':');
 
-                    if (is_set_all === 'Y') {
-                        set_value = $regi_form.find('[name="' + field[0] + '[]"]:eq(0)').val();
-                        $regi_form.find('[name="' + field[0] + '[]"]').val(set_value);
-                    } else {
-                        $regi_form.find('[name="' + field[0] + '[]"]').val(field[1]);
-                    }
+                    if ($regi_form.find('[name="' + field[0] + '[]"]').length > 0) {
+                        if (is_set_all === 'Y') {
+                            set_value = $regi_form.find('[name="' + field[0] + '[]"]:eq(0)').val();
+                            $regi_form.find('[name="' + field[0] + '[]"]').val(set_value);
+                        } else {
+                            $regi_form.find('[name="' + field[0] + '[]"]').val(field[1]);
+                        }
 
-                    if ($regi_form.find('[name="' + field[0] + '[]"]').prop('class').indexOf('set-pay-price') > -1) {
-                        $regi_form.find('[name="' + field[0] + '[]"]').trigger('change');   // 결제금액 변경 이벤트 발생
+                        if ($regi_form.find('[name="' + field[0] + '[]"]').prop('class').indexOf('set-pay-price') > -1) {
+                            $regi_form.find('[name="' + field[0] + '[]"]').trigger('change');   // 결제금액 변경 이벤트 발생
+                        }
                     }
                 });
             });

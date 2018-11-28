@@ -384,7 +384,7 @@ function init_magnificPopup() {
 function init_datatable() {
     // datatable search_form submit
     if(typeof $search_form !== 'undefined') {
-        $search_form.off();
+        //$search_form.off();
         $search_form.submit(function(e) {
             e.preventDefault();
             if ($(this).hasClass('searching') === true) {
@@ -430,7 +430,7 @@ function init_datatable() {
 
     //modal search submit
     if (typeof $search_form_modal !== 'undefined') {
-        $search_form_modal.off();
+        //$search_form_modal.off();
         $search_form_modal.submit(function(e) {
             e.preventDefault();
             if ($(this).hasClass('searching') === true) {

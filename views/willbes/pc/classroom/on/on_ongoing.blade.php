@@ -153,7 +153,7 @@
                                                     </dt>
                                                 </dl><br/>
                                                 <div class="w-tit">
-                                                    <a href="{{ site_url('/classroom/on/view/ongoing/') }}?o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&ps={{$row['ProdCodeSub']}}">{{$row['subProdName']}}</a>
+                                                    <a href="{{ site_url('/classroom/on/view/ongoing/') }}?o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&ps={{$row['ProdCodeSub']}}">{!! ($row['IsRebuy'] > 0) ? '<span class="tx-red">[수강연장]</span> ':'' !!}{{$row['subProdName']}}</a>
                                                 </div>
                                                 <dl class="w-info tx-gray">
                                                     <dt>강의수 : <span class="tx-black">{{$row['wUnitLectureCnt']}}강</span></dt>
@@ -193,7 +193,6 @@
                             </div>
                         </div>
                         <div id="Mypagetab2" class="tabLink">
-
                             @forelse( $pkgList as $row )
                                 <div class="willbes-Lec-Table willbes-Package-Table pt20 NG d_block">
                                     <table cellspacing="0" cellpadding="0" class="packTable lecTable bdt-dark-gray">
@@ -291,7 +290,7 @@
 
                         </div>
                         <div id="Mypagetab3" class="tabLink">
-                            <div class="willbes-Lec-Table pt20 NG d_block">
+                            <div class="willbes-Lec-Table pt20 NG">
                                 <table cellspacing="0" cellpadding="0" class="lecTable bdt-dark-gray">
                                     <colgroup>
                                         <col style="width: 120px;">
@@ -335,12 +334,12 @@
                         <div id="Mypagetab4" class="tabLink">
                             <div class="PassCurriBox CurrLineiBox">
                                 <dl class="w-info tx-gray">
-                                    <dt><a href="#none">단강좌</a></dt>
+                                    <dt><a href="javascript:;" onclick="fnAdminTab('admintab1');">단강좌</a></dt>
                                     <dt><span class="row-line">|</span></dt>
-                                    <dt><a href="#none">패키지</a></dt>
+                                    <dt><a href="javascript:;" onclick="fnAdminTab('admintab2');">패키지</a></dt>
                                 </dl>
                             </div>
-                            <div class="willbes-Lec-Table pt20 NG d_block">
+                            <div id="admintab1" class="willbes-Lec-Table pt20 NG admintab">
                                 <table cellspacing="0" cellpadding="0" class="lecTable bdt-dark-gray">
                                     <colgroup>
                                         <col style="width: 120px;">
@@ -379,6 +378,81 @@
                                     @endforelse
                                     </tbody>
                                 </table>
+                            </div>
+                            <div id="admintab2" class="willbes-Lec-Table pt20 NG d_block admintab" style="display:none !important;">
+                            @forelse( $adminList['pkg'] as $row )
+                                <div class="willbes-Lec-Table willbes-Package-Table pt20 NG d_block">
+                                    <table cellspacing="0" cellpadding="0" class="packTable lecTable bdt-dark-gray">
+                                        <colgroup>
+                                            <col style="width: 820px;">
+                                            <col style="width: 120px;">
+                                        </colgroup>
+                                        <tbody>
+                                        <tr class="bg-light-blue">
+                                            <td class="w-data tx-left pl30">
+                                                <div class="w-tit">
+                                                    {{$row['ProdName']}}
+                                                </div>
+                                                <dl class="w-info tx-gray">
+                                                    <dt>잔여기간 : <span class="tx-blue">{{$row['remainDays']}}일</span>({{str_replace('-', '.', $row['LecStartDate'])}}~{{str_replace('-', '.', $row['RealLecEndDate'])}})</dt>
+                                                    <dt><span class="row-line">|</span></dt>
+                                                    <dt>최종학습일 : <span class="tx-black">{{ $row['lastStudyDate'] == '' ? '학습이력없음' : $row['lastStudyDate'] }}</span></dt>
+                                                    <dt class="MoreBtn"><a href="#none">강좌 열기 ▼</a></dt>
+                                                </dl>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <table cellspacing="0" cellpadding="0" class="packInfoTable lecTable">
+                                        <colgroup>
+                                            <col style="width: 120px;">
+                                            <col style="width: 820px;">
+                                        </colgroup>
+                                        <tbody>
+                                        @foreach( $row['subleclist'] as $subrow )
+                                            <tr>
+                                                <td class="w-percent">진도율<br/>
+                                                    <span class="tx-blue">{{$subrow['StudyRate']}}%</span>
+                                                </td>
+                                                <td class="w-data tx-left pl10">
+                                                    <dl class="w-info">
+                                                        <dt>
+                                                            {{$subrow['SubjectName']}}<span class="row-line">|</span>
+                                                            {{$subrow['wProfName']}}교수님
+                                                            <span class="NSK ml15 nBox n{{ substr($subrow['wLectureProgressCcd'], -1)+1 }}">{{$subrow['wLectureProgressCcdName']}}</span>
+                                                        </dt>
+                                                    </dl><br/>
+                                                    <div class="w-tit">
+                                                        <a href="{{ site_url('/classroom/on/view/ongoing/') }}?o={{$subrow['OrderIdx']}}&p={{$subrow['ProdCode']}}&ps={{$subrow['ProdCodeSub']}}">{{$subrow['subProdName']}}</a>
+                                                    </div>
+                                                    <dl class="w-info tx-gray">
+                                                        <dt>강의수 : <span class="tx-black">{{$subrow['wUnitLectureCnt']}}강</span></dt>
+                                                        <dt><span class="row-line">|</span></dt>
+                                                        <dt>잔여기간 : <span class="tx-blue">{{$subrow['remainDays']}}일</span>({{str_replace('-', '.', $row['LecStartDate'])}}~{{str_replace('-', '.', $row['RealLecEndDate'])}})</dt>
+                                                        <dt><span class="row-line">|</span></dt>
+                                                        <dt>최종학습일 : <span class="tx-black">{{ $subrow['lastStudyDate'] == '' ? '학습이력없음' : $subrow['lastStudyDate'] }}</span></dt>
+                                                    </dl>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            @empty
+                                <div class="willbes-Lec-Table willbes-Package-Table pt20 NG d_block">
+                                    <table cellspacing="0" cellpadding="0" class="packTable lecTable bdt-dark-gray">
+                                        <colgroup>
+                                            <col style="width: 820px;">
+                                            <col style="width: 120px;">
+                                        </colgroup>
+                                        <tbody>
+                                        <tr>
+                                            <td colspan="2" class="tx-center">수강중인 패키지강좌가 없습니다.</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            @endforelse
                             </div>
                         </div>
                     </div>
@@ -485,6 +559,12 @@
                 function(ret, status){
                     alert(ret.ret_msg);
                 }, false, 'GET', 'html');
+        }
+
+        function fnAdminTab(obj)
+        {
+            $('.admintab').hide();
+            $('#'+obj).show();
         }
     </script>
 @stop

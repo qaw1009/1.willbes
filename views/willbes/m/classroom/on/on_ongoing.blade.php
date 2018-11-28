@@ -16,7 +16,7 @@
 
         <div class="lineTabs lecListTabs c_both">
             <ul class="tabWrap lineWrap rowlineWrap lecListWrap four mt-zero">
-                <li><a href="#leclist1" onclick="fnSetMoreTable();" class="on">단강좌 <span>{{count($lecList)}}</span></a><span class="row-line">|</span></li>
+                <li><a href="#leclist1" class="on" onclick="fnSetMoreTable();" >단강좌 <span>{{count($lecList)}}</span></a><span class="row-line">|</span></li>
                 <li><a href="#leclist2" onclick="fnSetMoreTable();">패키지강좌 <span>{{count($pkgList)}}</span></a><span class="row-line">|</span></li>
                 <li><a href="#leclist3" onclick="fnSetMoreTable();">무료강좌 <span>{{count($freeList)}}</span></a><span class="row-line">|</span></li>
                 <li><a href="#leclist4" onclick="fnSetMoreTable();">관리자부여 <span>{{count($adminList['lec'])+count($adminList['pkg'])}}</span></a></li>
@@ -73,7 +73,7 @@
                                         </dt>
                                     </dl>
                                     <div class="w-tit">
-                                        <a href="{{ front_url('/classroom/on/view/ongoing/') }}?o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&ps={{$row['ProdCodeSub']}}">{!! ($row['IsRebuy'] > 0) ? '<span class="tx-red">[수강연장]</span> ':'' !!}{{$row['subProdName']}}</a>
+                                        <a href="{{ front_url('/classroom/on/view/ongoing/') }}?o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&ps={{$row['ProdCodeSub']}}">{!! ($row['IsRebuy'] > 0) ? '<span class="tx-red">[수강연장]</span> ':'' !!} {{$row['subProdName']}}</a>
                                     </div>
                                     <dl class="w-info tx-gray">
                                         <dt>강의수 : <span class="tx-black">{{$row['wUnitLectureCnt']}}강</span><span class="row-line">|</span></dt>
@@ -133,7 +133,7 @@
                                         </dl>
                                         <div class="w-start tx-gray">
                                             <ul class="f_left two">
-                                                @if(false)
+                                            @if(false)
                                                 <!-- 패키지강의 일시중지 불가 -->
                                                 @elseif($row['IsPause'] == 'N')
                                                     <li class="btn_white"><a>일시정지불가</a></li>
@@ -243,61 +243,102 @@
                         <div class="willbes-Txt-Tit NG">· 관리자부여강좌 수강 유의사항 <div class="MoreBtn underline"><a href="#none">@if(get_cookie('moreInfo') == 'off')열기 ▼@else닫기 ▲@endif</a></div></div>
                         - 관리자부여강좌는 무상 혜택으로 지급된 강좌이므로 수강일변경, 일시정지, 수강연장기능이 제공되지 않습니다.<br/>
                     </div>
-                    <table cellspacing="0" cellpadding="0" width="100%" class="lecTable bdt-m-gray">
+                    <div class="willbes-Lec-Selected NG c_both tx-gray">
+                        <select id="admintab" name="admintab" title="lecture" class="seleLec width49p">
+                            <option value="admintab1" selected="selected">단강좌</option>
+                            <option value="admintab2">패키지</option>
+                        </select>
+                    </div>
+                    <table id="admintab1" cellspacing="0" cellpadding="0" width="100%" class="lecTable bdt-m-gray admintab">
                         <tbody>
-                        <tr>
-                            <td class="w-data tx-left pb-zero">
-                                <dl class="w-info">
-                                    <dt>영어<span class="row-line">|</span>한덕현교수님 <span class="NSK ml10 nBox n2">진행중</span></dt>
-                                </dl>
-                                <div class="w-tit">
-                                    <a href="#none">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
-                                </div>
-                                <dl class="w-info tx-gray">
-                                    <dt>강의수 : <span class="tx-black">12강</span><span class="row-line">|</span></dt>
-                                    <dt>진도율 : <span class="tx-blue">0%</span><span class="row-line">|</span></dt>
-                                    <dt>잔여기간 : <span class="tx-blue">50</span>일<span class="row-line">|</span></dt>
-                                    <dt>최종학습일 : <span class="tx-black">2018-00-00</span></dt>
-                                </dl>
-                                <div class="w-line mt20">-</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="w-data tx-left pb-zero">
-                                <dl class="w-info">
-                                    <dt>경찰<span class="row-line">|</span>한덕현교수님 <span class="NSK ml10 nBox n1">2배수</span></dt>
-                                </dl>
-                                <div class="w-tit">
-                                    <a href="#none"><span class="tx-red">[수강연장]</span> 2018 한덕현 제니스 영어 실전 동형 모의고사(4~5월) 영어제니스</a>
-                                </div>
-                                <dl class="w-info tx-gray">
-                                    <dt>강의수 : <span class="tx-black">16강</span><span class="row-line">|</span></dt>
-                                    <dt>진도율 : <span class="tx-blue">0%</span><span class="row-line">|</span></dt>
-                                    <dt>잔여기간 : <span class="tx-blue">100</span>일<span class="row-line">|</span></dt>
-                                    <dt>최종학습일 : <span class="tx-black">2018-00-00</span></dt>
-                                </dl>
-                                <div class="w-line mt20">-</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="w-data tx-left pb-zero">
-                                <dl class="w-info">
-                                    <dt>영어<span class="row-line">|</span>한덕현교수님 <span class="NSK ml10 nBox n2">진행중</span></dt>
-                                </dl>
-                                <div class="w-tit">
-                                    <a href="#none">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
-                                </div>
-                                <dl class="w-info tx-gray">
-                                    <dt>강의수 : <span class="tx-black">12강</span><span class="row-line">|</span></dt>
-                                    <dt>진도율 : <span class="tx-blue">0%</span><span class="row-line">|</span></dt>
-                                    <dt>잔여기간 : <span class="tx-blue">50</span>일<span class="row-line">|</span></dt>
-                                    <dt>최종학습일 : <span class="tx-black">2018-00-00</span></dt>
-                                </dl>
-                                <div class="w-line mt20">-</div>
-                            </td>
-                        </tr>
+                        @forelse( $adminList['lec'] as $row )
+                            <tr>
+                                <td class="w-data tx-left pb-zero">
+                                    <dl class="w-info">
+                                        <dt>
+                                            {{$row['SubjectName']}}<span class="row-line">|</span>{{$row['wProfName']}}교수님
+                                            <span class="NSK ml10 nBox nn{{ substr($row['wLectureProgressCcd'], -1)+1 }}">{{$row['wLectureProgressCcdName']}}</span>
+                                        </dt>
+                                    </dl>
+                                    <div class="w-tit">
+                                        <a href="{{ front_url('/classroom/on/view/ongoing/') }}?o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&ps={{$row['ProdCodeSub']}}"><span class="tx-red">[{{$row['PayRouteCcdName']}}]</span> {{$row['subProdName']}}</a>
+                                    </div>
+                                    <dl class="w-info tx-gray">
+                                        <dt>강의수 : <span class="tx-black">{{$row['wUnitLectureCnt']}}강</span><span class="row-line">|</span></dt>
+                                        <dt>진도율 : <span class="tx-blue">{{$row['StudyRate']}}%</span><span class="row-line">|</span></dt>
+                                        <dt>잔여기간 : <span class="tx-blue">{{$row['remainDays']}}</span>일<span class="row-line">|</span></dt>
+                                        <dt>최종학습일 : <span class="tx-black">{{ $row['lastStudyDate'] == '' ? '학습이력없음' : $row['lastStudyDate'] }}</span></dt>
+                                    </dl>
+                                    <div class="w-line mt20">-</div>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td class="tx-center">수강대기중인 강좌가 없습니다.</td>
+                            </tr>
+                        @endforelse
                         </tbody>
                     </table>
+                    <div id="admintab2" css="admintab" style="display:none;">
+                        @forelse( $adminList['pkg'] as $row )
+                            <div class="willbes-Open-Table">
+                                <table cellspacing="0" cellpadding="0" width="100%" class="lecTable bdt-m-gray">
+                                    <tbody>
+                                    <tr class="bg-light-blue">
+                                        <td class="w-data tx-left pb-zero">
+                                            <div class="w-tit">
+                                                <span class="tx-red">[{{$row['PayRouteCcdName']}}]</span> {{$row['ProdName']}}
+                                            </div>
+                                            <dl class="w-info tx-gray">
+                                                <dt>잔여기간 : <span class="tx-blue">{{$row['remainDays']}}</span>일 ({{str_replace('-', '.', $row['LecStartDate'])}}~{{str_replace('-', '.', $row['RealLecEndDate'])}})</dt>
+                                            </dl>
+                                            <div class="w-start tx-gray">
+                                                <div class="MoreBtn f_right tx-right">
+                                                    <a href="#none"><img src="{{ img_url('m/mypage/icon_arrow_on.png') }}"></a>
+                                                </div>
+                                            </div>
+                                            <div class="w-line">-</div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <table cellspacing="0" cellpadding="0" width="100%" class="lecTable openTable">
+                                    <tbody>
+                                    @foreach( $row['subleclist'] as $subrow )
+                                        <tr>
+                                            <td class="w-data tx-left pb-zero">
+                                                <dl class="w-info">
+                                                    <dt>
+                                                        {{$subrow['SubjectName']}}<span class="row-line">|</span>{{$subrow['wProfName']}}교수님
+                                                        <span class="NSK ml10 nBox n{{ substr($subrow['wLectureProgressCcd'], -1)+1 }}">{{$subrow['wLectureProgressCcdName']}}</span>
+                                                    </dt>
+                                                </dl>
+                                                <div class="w-tit">
+                                                    <a href="{{ front_url('/classroom/on/view/ongoing/') }}?o={{$subrow['OrderIdx']}}&p={{$subrow['ProdCode']}}&ps={{$subrow['ProdCodeSub']}}">{{$subrow['subProdName']}}</a>
+                                                </div>
+                                                <dl class="w-info tx-gray">
+                                                    <dt>강의수 : <span class="tx-black">{{$subrow['wUnitLectureCnt']}}강</span><span class="row-line">|</span></dt>
+                                                    <dt>진도율 : <span class="tx-blue">{{$subrow['StudyRate']}}%%</span><span class="row-line">|</span></dt>
+                                                    <dt>잔여기간 : <span class="tx-blue">{{$subrow['remainDays']}}</span>일<span class="row-line">|</span></dt>
+                                                    <dt>최종학습일 : <span class="tx-black">{{ $subrow['lastStudyDate'] == '' ? '학습이력없음' : $subrow['lastStudyDate'] }}</span></dt>
+                                                </dl>
+                                                <div class="w-line mt20">-</div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        @empty
+                            <table cellspacing="0" cellpadding="0" width="100%" class="lecTable bdt-m-gray">
+                                <tbody>
+                                <tr class="bg-light-blue">
+                                    <td class="w-data tx-center">수강대기중인 패키지가 없습니다.</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        @endforelse
+                    </div>
                 </div>
             </div>
         </div>
@@ -323,6 +364,11 @@
         $(document).ready(function() {
             $('#course_ccd,#subject_ccd,#prof_ccd,#orderby').on('change', function (){
                 $('#searchFrm').submit();
+            });
+
+            $("#admintab").on('change', function () {
+                $('.admintab').hide();
+                $('#'+$(this).val()).show();
             });
 
             // 검색어 입력 후 엔터

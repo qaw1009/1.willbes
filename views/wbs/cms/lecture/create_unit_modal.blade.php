@@ -257,12 +257,6 @@
                         }
                     });
 
-                    $("#list_table").on('focus', '.datepicker', function() {
-                        init_datetimepicker();
-                    });
-
-
-
                     // ajax submit
                     $regi_form.submit(function() {
                         var _url = '{{ site_url('/cms/lecture/storeUnit') }}';
@@ -274,8 +268,6 @@
                             }
                         }, showValidateError, null, false, 'alert');
                     });
-
-
                 });
 
                 function rowDelete(delSeq){

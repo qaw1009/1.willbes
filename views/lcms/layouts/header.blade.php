@@ -17,9 +17,9 @@
     <!-- bootstrap-datetimepicker -->
     <link href="/public/vendor/bootstrap/datetimepicker/css/bootstrap-datetimepicker.css" rel="stylesheet">
     <!-- bootstrap-progressbar -->
-    <link href="/public/vendor/bootstrap/progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <!--<link href="/public/vendor/bootstrap/progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">-->
     <!-- NProgress -->
-    <link href="/public/vendor/nprogress/nprogress.css" rel="stylesheet">
+    <!--<link href="/public/vendor/nprogress/nprogress.css" rel="stylesheet">-->
     <!-- iCheck -->
     <link href="/public/vendor/iCheck/skins/flat/blue.css" rel="stylesheet">
     <!-- Datatables -->
@@ -31,8 +31,8 @@
     <link href="/public/vendor/datatables/select/css/select.bootstrap.min.css" rel="stylesheet">
     <link href="/public/vendor/datatables/responsive/css/responsive.bootstrap.min.css" rel="stylesheet">
     <!-- FullCalendar -->
-    <link href="/public/vendor/fullcalendar/fullcalendar.min.css" rel="stylesheet">
-    <link href="/public/vendor/fullcalendar/fullcalendar.print.css" rel="stylesheet" media="print">
+    <!--<link href="/public/vendor/fullcalendar/fullcalendar.min.css" rel="stylesheet">-->
+    <!--<link href="/public/vendor/fullcalendar/fullcalendar.print.css" rel="stylesheet" media="print">-->
     <!-- PNotify -->
     <link href="/public/vendor/pnotify/pnotify.css" rel="stylesheet">
     <link href="/public/vendor/pnotify/pnotify.buttons.css" rel="stylesheet">
@@ -57,7 +57,7 @@
     <!-- FastClick -->
     <script src="/public/vendor/fastclick/fastclick.js"></script>
     <!-- NProgress -->
-    <script src="/public/vendor/nprogress/nprogress.js"></script>
+    <!--<script src="/public/vendor/nprogress/nprogress.js"></script>-->
     <!-- iCheck -->
     <script src="/public/vendor/iCheck/icheck.min.js"></script>
     <!-- Moment -->
@@ -66,11 +66,11 @@
     <!-- bootstrap-datetimepicker -->
     <script src="/public/vendor/bootstrap/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
     <!-- bootstrap-progressbar -->
-    <script src="/public/vendor/bootstrap/progressbar/bootstrap-progressbar.min.js"></script>
+    <!--<script src="/public/vendor/bootstrap/progressbar/bootstrap-progressbar.min.js"></script>-->
     <!-- jquery.inputmask -->
     <script src="/public/vendor/jquery/inputmask/jquery.inputmask.bundle.min.js"></script>
     <!-- jquery.smartwizard -->
-    <script src="/public/vendor/jquery/smartwizard/jquery.smartWizard.js"></script>
+    <!--<script src="/public/vendor/jquery/smartwizard/jquery.smartWizard.js"></script>-->
     <!-- jquery.chained -->
     <script src="/public/vendor/jquery/chained/jquery.chained.min.js"></script>
     <!-- Datatables -->
@@ -93,7 +93,7 @@
     <script src="/public/vendor/datatables/responsive/js/dataTables.responsive.min.js"></script>
     <script src="/public/vendor/datatables/responsive/js/responsive.bootstrap.js"></script>
     <!-- FullCalendar -->
-    <script src="/public/vendor/fullcalendar/fullcalendar.min.js"></script>
+    <!--<script src="/public/vendor/fullcalendar/fullcalendar.min.js"></script>-->
     <!-- PNotify -->
     <script src="/public/vendor/pnotify/pnotify.js"></script>
     <script src="/public/vendor/pnotify/pnotify.buttons.js"></script>

@@ -71,13 +71,13 @@ var setContentHeight = function() {
 
 // Sidebar
 function init_sidebar() {
-    $SIDEBAR_MENU.find('a').on('click', function(ev) {
+    $SIDEBAR_MENU.find('a').on('click', function() {
         //console.log('clicked - sidebar_menu');
         var $li = $(this).parent();
 
         if ($li.is('.active')) {
             $li.removeClass('active active-sm');
-            $('ul:first', $li).slideUp(function() {
+            $li.find('ul:first').slideUp(function() {
                 setContentHeight();
             });
         } else {
@@ -93,7 +93,7 @@ function init_sidebar() {
             }
             $li.addClass('active');
 
-            $('ul:first', $li).slideDown(function() {
+            $li.find('ul:first').slideDown(function() {
                 setContentHeight();
             });
         }
@@ -146,6 +146,7 @@ function init_sidebar() {
 
     setContentHeight();
 
+    /* 사용안함
     // fixed sidebar
     if ($.fn.mCustomScrollbar) {
         $('.menu_fixed').mCustomScrollbar({
@@ -153,13 +154,12 @@ function init_sidebar() {
             theme: 'minimal',
             mouseWheel: {preventDefault: true}
         });
-    }
+    }*/
 }
-// /Sidebar
 
 // Panel toolbox
 $(document).ready(function() {
-    $('.collapse-link').on('click', function() {
+    $(document).on('click', '.collapse-link', function() {
         var $BOX_PANEL = $(this).closest('.x_panel'),
             $ICON = $(this).find('i'),
             $BOX_CONTENT = $BOX_PANEL.find('.x_content');
@@ -177,35 +177,37 @@ $(document).ready(function() {
         $ICON.toggleClass('fa-chevron-up fa-chevron-down');
     });
 
-    $('.close-link').click(function() {
+    $(document).on('click', '.close-link', function() {
         var $BOX_PANEL = $(this).closest('.x_panel');
 
         $BOX_PANEL.remove();
     });
 });
-// /Panel toolbox
 
 // Tooltip
 $(document).ready(function() {
-    $('[data-toggle="tooltip"]').tooltip({
+    $(document).tooltip({
+        selector : '[data-toggle="tooltip"]',
         container: 'body'
     });
 });
-// /Tooltip
 
+/* 사용안함
 // Progressbar
-if ($(".progress .progress-bar")[0]) {
-    $('.progress .progress-bar').progressbar();
-}
-// /Progressbar
+if (typeof $.fn.progressbar !== 'undefined') {
+    var $progress_bar = $('.progress .progress-bar');
+    if ($progress_bar[0]) {
+        $progress_bar.progressbar();
+    }
+}*/
 
 // Accordion
 $(document).ready(function() {
-    $(".expand").on("click", function() {
+    $(document).on('click', '.expand', function() {
         $(this).next().slideToggle(200);
-        $expand = $(this).find(">:first-child");
+        $expand = $(this).find('>:first-child');
 
-        if ($expand.text() == "+") {
+        if ($expand.text() === "+") {
             $expand.text("-");
         } else {
             $expand.text("+");
@@ -213,16 +215,16 @@ $(document).ready(function() {
     });
 });
 
+/* 사용안함
 // NProgress
-if (typeof NProgress != 'undefined') {
-    /* 사용안함
+if (typeof NProgress !== 'undefined') {
     $(document).ready(function() {
         NProgress.start();
     });
     $(window).load(function() {
         NProgress.done();
-    });*/
-}
+    });
+}*/
 
 //hover and retain popover when on popover content
 var originalLeave = $.fn.popover.Constructor.prototype.leave;
@@ -247,21 +249,25 @@ $.fn.popover.Constructor.prototype.leave = function(obj) {
     }
 };
 
-$('body').popover({
-    selector: '[data-popover]',
-    trigger: 'click hover',
-    delay: {
-        show: 50,
-        hide: 400
-    }
+$(document).ready(function() {
+    $(document).popover({
+        selector: '[data-toggle="popover"]',
+        trigger: 'click hover',
+        delay: {
+            show: 50,
+            hide: 400
+        }
+    });
 });
 
-/* AUTOSIZE */
+/* 사용안함
+// AUTOSIZE
 function init_autosize() {
     if (typeof $.fn.autosize !== 'undefined') {
         autosize($('.resizable_textarea'));
     }
 }
+*/
 
 /* INPUT MASK */
 function init_InputMask() {
@@ -270,10 +276,11 @@ function init_InputMask() {
     }
     //console.log('init_InputMask');
 
-    $(":input").inputmask();
+    $(':input').inputmask();
 }
 
-/* SMART WIZARD */
+/* 사용안함
+// SMART WIZARD
 function init_SmartWizard() {
     if (typeof ($.fn.smartWizard) === 'undefined') {
         return;
@@ -289,7 +296,7 @@ function init_SmartWizard() {
     $('.buttonNext').addClass('btn btn-success');
     $('.buttonPrevious').addClass('btn btn-primary');
     $('.buttonFinish').addClass('btn btn-default');
-}
+}*/
 
 /* COMPOSE */
 function init_compose() {
@@ -298,7 +305,7 @@ function init_compose() {
     }
     //console.log('init_compose');
 
-    $('#compose, .compose-close').click(function() {
+    $(document).on('click', '#compose, .compose-close', function() {
         $('.compose').slideToggle();
     });
 }
@@ -312,11 +319,13 @@ function init_datetimepicker() {
     }
     //console.log('init_datetimepicker');
 
-    $('.datepicker').datetimepicker({
-        locale : 'ko',
-        format: 'YYYY-MM-DD',
-        ignoreReadonly: true,
-        allowInputToggle: true,
+    $(document).on('focus', '.datepicker', function() {
+        $(this).datetimepicker({
+            locale : 'ko',
+            format: 'YYYY-MM-DD',
+            ignoreReadonly: true,
+            allowInputToggle: true
+        });
     });
 }
 
@@ -327,15 +336,25 @@ function init_iCheck() {
     if (typeof ($.fn.iCheck) === 'undefined') {
         return;
     }
+    //console.log('init_iCheck');
 
     // iCheck
     $('input[type="checkbox"].flat, input[type="radio"].flat').iCheck({
         checkboxClass: 'icheckbox_flat-blue',
         radioClass: 'iradio_flat-blue'
     });
+}
 
-    // iCheck - Datatable
-    $('.dataTables_wrapper').on('draw.dt column-reorder.dt', function() {
+/**
+ * init iCheck datatable
+ */
+function init_iCheck_datatable() {
+    if (typeof ($.fn.iCheck) === 'undefined') {
+        return;
+    }
+    //console.log('init_iCheck_datatable');
+
+    $(document).on('draw.dt column-reorder.dt', '.dataTables_wrapper', function() {
         $('input[type="checkbox"].flat, input[type="radio"].flat').iCheck({
             checkboxClass: 'icheckbox_flat-blue',
             radioClass: 'iradio_flat-blue'
@@ -354,7 +373,7 @@ function init_magnificPopup() {
     $(document).on('click', '[rel^="popup-image"]', function(e) {
         e.preventDefault();
         $(this).magnificPopup({
-            type: 'image',
+            type: 'image'
         }).magnificPopup('open');
     });
 }
@@ -365,6 +384,7 @@ function init_magnificPopup() {
 function init_datatable() {
     // datatable search_form submit
     if(typeof $search_form !== 'undefined') {
+        $search_form.off();
         $search_form.submit(function(e) {
             e.preventDefault();
             if ($(this).hasClass('searching') === true) {
@@ -410,6 +430,7 @@ function init_datatable() {
 
     //modal search submit
     if (typeof $search_form_modal !== 'undefined') {
+        $search_form_modal.off();
         $search_form_modal.submit(function(e) {
             e.preventDefault();
             if ($(this).hasClass('searching') === true) {
@@ -444,7 +465,7 @@ function init_base() {
     });
 
     // 즐겨찾기 버튼 클릭
-    $('#btn_favorite').on('click', function() {
+    $(document).on('click', '#btn_favorite', function() {
         var is_regist = $(this).children('i').prop('class').indexOf('red') < 0;
         var msg = (is_regist === true) ? '즐겨찾기에 추가하시겠습니까?' : '즐겨찾기를 삭제하시겠습니까?';
 
@@ -462,7 +483,7 @@ function init_base() {
     });
 
     // 기간설정 버튼 클릭
-    $('.btn-set-search-date').click(function() {
+    $(document).on('click', '.btn-set-search-date', function() {
         var period = $(this).data('period');
         var periods = period.split('-');
         var default_date = $(this).data('default-date');
@@ -478,7 +499,7 @@ function init_base() {
 
 function init_board() {
     // 기본 검색 값 셋팅
-    $('#btn_search_setting').on('click', function() {
+    $(document).on('click', '#btn_search_setting', function() {
         var _url = '/sys/adminSettings/searchSetting';
 
         if (!confirm('현재의 검색 상태로 저장하시겠습니까?')) {
@@ -496,23 +517,21 @@ function init_board() {
 
 // 첨부파일 찾아보기 버튼 Script
 function init_file() {
-    $(function() {
-        var $fileBox = $('.filetype');
+    var $fileBox = $('.filetype');
 
-        $fileBox.each(function() {
-            var $fileUpload = $(this).find('.input-file'),
-                $fileText = $(this).find('.file-text').attr('disabled', 'disabled'),
-                $fileReset = $(this).find('.file-reset');
-    
-            $fileUpload.on('change', function() {
-                var fileName = $(this).val();
-                $fileText.attr('disabled', 'disabled').val(fileName);
-            });
-    
-            $fileReset.click(function() {
-                $(this).parents($fileBox).find($fileText).val('');
-                $(this).parents($fileBox).find($fileUpload).val('');
-            });
+    $fileBox.each(function() {
+        var $fileUpload = $(this).find('.input-file'),
+            $fileText = $(this).find('.file-text').attr('disabled', 'disabled'),
+            $fileReset = $(this).find('.file-reset');
+
+        $fileUpload.on('change', function() {
+            var fileName = $(this).val();
+            $fileText.attr('disabled', 'disabled').val(fileName);
+        });
+
+        $fileReset.click(function() {
+            $(this).parents($fileBox).find($fileText).val('');
+            $(this).parents($fileBox).find($fileUpload).val('');
         });
     });
 }
@@ -523,11 +542,10 @@ function init_file() {
 $(document).ready(function() {
     init_sidebar();
     init_InputMask();
-    init_SmartWizard();
     init_datetimepicker();
     init_compose();
-    init_autosize();
     init_iCheck();
+    init_iCheck_datatable();
     init_magnificPopup();
     init_datatable();
     init_base();

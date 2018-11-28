@@ -56,5 +56,5 @@
 		});
 	}
 
-	$('div.multi').on({'keydown.multifeild':funnel, 'keypress.multifeild':funnel, 'change.multifeild':combine}, 'input');
+    $(document).on({'keydown.multifeild':funnel, 'keypress.multifeild':funnel, 'change.multifeild':combine}, 'div.multi > input');	// 동적 이벤트 바인딩
 })();

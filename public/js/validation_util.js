@@ -200,20 +200,18 @@ function showValidateError(result, status, error_view)
             setValidateHasError(Object.keys(_result_filter)[0]);
         } else {
             var $form_errors = $('#form-errors');
-            // reset validate error message
-            if ($form_errors.length > 0) {
-                $form_errors.html('');
-            } else {
-                $('<div id="form-errors" class="alert alert-danger"><div>').insertBefore('form:eq(0)'); // form-errors가 없는 예외 처리
-            }
-
             var errorsHtml = '<ul>';
             $.each( _result_filter, function(key, value) {
                 //errorsHtml += '<li>' + value[0] + '</li>'; //showing only the first error. (laravel)
                 errorsHtml += '<li>' + value + '</li>';
             });
             errorsHtml += '</ul>';
-            $form_errors.html(errorsHtml); //appending to a <div id="form-error"></div> inside form
+
+            if ($form_errors.length > 0) {
+                $form_errors.html(errorsHtml); //appending to a <div id="form-error"></div> inside form
+            } else {
+                $('<div id="form-errors" class="alert alert-danger">' + errorsHtml + '<div>').insertBefore('form:eq(0)'); // form-errors가 없는 예외 처리
+            }
 
             // input 에 error 표시 (테두리)
             $.each(result, function(key, value) {

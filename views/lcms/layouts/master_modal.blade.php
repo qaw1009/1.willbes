@@ -16,5 +16,10 @@
 
 @yield('layer_footer')
 
-{{-- Main Scripts --}}
-@include('lcms.layouts.footer_script')
+<script type="text/javascript">
+    {{-- 동적 이벤트 바인딩 --}}
+    $(document).ready(function() {
+        init_iCheck();
+        init_datatable();
+    });
+</script>

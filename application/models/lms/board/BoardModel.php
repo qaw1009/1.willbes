@@ -3,9 +3,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class BoardModel extends WB_Model
 {
-    private $_table = 'lms_board';
+    protected $_table = 'lms_board';
     private $_table_r_category = 'lms_board_r_category';
-    private $_table_attach = 'lms_board_attach';
+    protected $_table_attach = 'lms_board_attach';
     private $_table_memo = 'lms_board_memo';
     private $_table_assignment_r_schedule = 'lms_board_assignment_r_schedule';
     private $_table_assignment_r_schedule_date = 'lms_board_assignment_r_schedule_date';
@@ -13,11 +13,11 @@ class BoardModel extends WB_Model
     private $_table_sys_admin = 'wbs_sys_admin';
     private $_table_sys_code = 'lms_sys_code';
     private $_table_sys_category = 'lms_sys_category';
-    private $_table_member = 'lms_member';
+    protected $_table_member = 'lms_member';
     private $_table_product = 'lms_product';                    //상품관리테이블
     private $_table_product_subject = 'lms_product_subject';    //상품과목관리테이블
     private $_table_product_course = 'lms_product_course';      //상품과정관리테이블
-    private $_table_professor = 'lms_professor';                //교수관리테이블
+    protected $_table_professor = 'lms_professor';                //교수관리테이블
 
     // 첨부 이미지 수
     public $_attach_img_cnt = 2;

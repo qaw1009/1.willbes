@@ -62,10 +62,10 @@
             <div class="form-group">
                 <label class="control-label col-md-1" for="search_value">조건</label>
                 <div class="col-md-2 form-inline">
-                    <select class="form-control" id="search_is_use" name="search_is_use">
-                        <option value="">사용여부</option>
-                        <option value="Y">사용</option>
-                        <option value="N">미사용</option>
+                    <select class="form-control" id="search_is_reply" name="search_is_reply">
+                        <option value="">채점여부</option>
+                        <option value="Y">채점</option>
+                        <option value="N">미채점</option>
                     </select>
                 </div>
             </div>
@@ -75,9 +75,14 @@
                     <input type="text" class="form-control" id="search_value" name="search_value">
                 </div>
 
-                <label class="control-label col-md-1 col-lg-offset-1" for="search_start_date">등록일</label>
-                <div class="col-md-5 form-inline">
-                    <div class="input-group">
+                <label class="control-label col-md-1 col-lg-offset-1" for="search_start_date">기간검색</label>
+                <div class="col-md-6 form-inline">
+                    <select class="form-control mr-10" id="search_date_type" name="search_date_type">
+                        <option value="R">등록일</option>
+                        <option value="M">채점일</option>
+                    </select>
+
+                    <div class="input-group mb-0 mr-20">
                         <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </div>
@@ -154,10 +159,10 @@
                         return data.MemName +'('+data.MemId+')<Br>('+data.MemPhone+')';
                     }},
                 {'data' : 'RegDatm'},
-                {'data' : 'ReplyStatusName', 'render' : function(data, type, row, meta) {
-                        return data;
+                {'data' : 'IsReply', 'render' : function(data, type, row, meta) {
+                        return (data == 'Y') ? '사용' : '<p class="red">미사용</p>';
                     }},
-                {'data' : 'ReplyRegProfName'},
+                {'data' : 'ProfNickName'},
                 {'data' : 'ReplyRegDatm'},
             ]
         });

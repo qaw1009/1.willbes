@@ -5,7 +5,7 @@ require APPPATH . 'controllers/lms/board//BaseBoard.php';
 
 class Assignment extends BaseBoard
 {
-    protected $temp_models = array('sys/boardMaster', 'board/board', 'product/base/professor', 'product/on/lecture');
+    protected $temp_models = array('sys/boardMaster', 'board/board', 'board/boardAssignment', 'product/base/professor', 'product/on/lecture');
     protected $helpers = array('download','file');
 
     private $board_name = 'assignment';
@@ -20,6 +20,11 @@ class Assignment extends BaseBoard
     private $_attach_reg_type = [
         'default' => 0,     //본문글 첨부
         'reply' => 1        //본문 답변글첨부
+    ];
+    private $_arr_assignment_status_ccd = [
+        'R' => '698001',    //임시저장
+        'S' => '698002',    //제출완료
+        'M' => '698003'     //채점완료
     ];
 
     public function __construct()
@@ -614,24 +619,73 @@ class Assignment extends BaseBoard
 
     /**
      * 과제제출목록관리 Ajax
+     * @param array $params
+     * @return CI_Output
      */
-    public function issueForBoardAjax()
+    public function issueForBoardAjax($params = [])
     {
-        $count = 1;
-        $list = [
-            0 => [
-                'BaIdx' => '1',
-                'Title' => '강의명~~~',
-                'AttachFileName' => null,
-                'MemName' => '최현탁',
-                'MemId' => 'dlumjjang',
-                'MemPhone' => '01012341234',
-                'RegDatm' => '2016-08-08 23:53:55',
-                'ReplyStatusName' => '미채점',
-                'ReplyRegProfName' => '나는교수다',
-                'ReplyRegDatm' => '2018-10-08 23:53:55'
+        $this->setDefaultBoardParam();
+        $board_params = $this->getDefaultBoardParam();
+        $this->bm_idx = $board_params['bm_idx'];
+        $prof_idx = $this->_req('prof_idx');
+        $this->site_code = $this->_req('site_code');
+        $prod_code = $params[0];
+
+        $target_condition = [
+            'IN' => [
+                'AssignmentStatusCcd' => [$this->_arr_assignment_status_ccd['S'], $this->_arr_assignment_status_ccd['M']]
             ]
         ];
+
+        $sub_query_condition = [
+            'EQ' => [
+                'BmIdx' => $this->bm_idx,
+                'ProdCode' => $prod_code,
+                'ProfIdx' => $prof_idx,
+            ]
+        ];
+
+        $arr_condition = [
+            'EQ' => [
+                'b.IsStatus' => 'Y',
+                'b.IsUse' => 'Y',
+                'a.IsReply' => $this->_reqP('search_is_reply')
+            ],
+            'ORG' => [
+                'LKB' => [
+                    'b.Title' => $this->_reqP('search_value'),
+                    'a.Content' => $this->_reqP('search_value'),
+                ]
+            ],
+        ];
+
+        if (!empty($this->_reqP('search_start_date')) && !empty($this->_reqP('search_end_date'))) {
+            if ($this->_reqP('search_date_type') == 'R') {
+                $arr_condition = array_merge($arr_condition, [
+                    'BDT' => ['a.RegDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]]
+                ]);
+            } else {
+                $arr_condition = array_merge($arr_condition, [
+                    'BDT' => ['a.ReplyRegDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]]
+                ]);
+            }
+        }
+
+        $column = ' STRAIGHT_JOIN
+            a.BaIdx, a.BoardIdx, a.MemIdx, a.AssignmentStatusCcd, a.RegDatm, a.ReplyRegDatm, a.ReplyRegProfIdx,
+            fn_ccd_name(a.AssignmentStatusCcd) AS AssignmentStatusCcdName,
+            a.IsReply,
+            b.Title, c.MemName, c.MemId, fn_dec(c.PhoneEnc) AS MemPhone,
+            d.ProfNickName, a.ReplyRegDatm,
+            e.AttachFilePath, e.AttachFileName, e.AttachRealFileName
+        ';
+
+        $list = [];
+        $count = $this->boardAssignmentModel->listAllBoardForAssignment(true, $target_condition, $arr_condition, $sub_query_condition, $this->site_code);
+
+        if ($count > 0) {
+            $list = $this->boardAssignmentModel->listAllBoardForAssignment(false, $target_condition, $arr_condition, $sub_query_condition, $this->site_code, $this->_reqP('length'), $this->_reqP('start'), ['a.BaIdx' => 'desc'], $column);
+        }
 
         return $this->response([
             'recordsTotal' => $count,
@@ -647,10 +701,17 @@ class Assignment extends BaseBoard
         $this->bm_idx = $board_params['bm_idx'];
         $this->site_code = $this->_req('site_code');
 
+        //과제정보
+        $data = null;
+
+        //회원등록정보
+        $user_content_data = null;
 
 
         $this->load->view("board/professor/{$this->board_name}/issue/manager_modal", [
-
+            'data' => $data,
+            'user_content_data' => $user_content_data,
+            'attach_file_cnt' => 5,
         ]);
     }
 

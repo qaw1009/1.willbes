@@ -50,16 +50,16 @@
                 </div>
             </div>
             <script type="text/javascript">
-                var $datatable;
-                var $search_form = $('#_search_form');
-                var $list_table = $('#_list_ajax_table');
+                var $datatable_modal;
+                var $search_form_modal = $('#_search_form');
+                var $list_table_modal = $('#_list_ajax_table');
                 var $parent_regi_form = $('#regi_form');
 
                 var $parent_location = "{{$locationid}}";
 
                 $(document).ready(function() {
                     // 페이징 번호에 맞게 일부 데이터 조회
-                    $datatable = $list_table.DataTable({
+                    $datatable_modal = $list_table_modal.DataTable({
                         serverSide: true,
                         buttons: [
                             { text: '적용', className: 'btn btn-success btn-sm mb-0',action : function(e, dt, node, config) {
@@ -71,7 +71,7 @@
                             'url' : '{{ site_url('/common/searchCoupon/listAjax') }}',
                             'type' : 'POST',
                             'data' : function(data) {
-                                return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
+                                return $.extend(arrToJson($search_form_modal.serializeArray()), { 'start' : data.start, 'length' : data.length});
                             }
                         },
 
@@ -94,7 +94,7 @@
                     });
 
                     // 전체선택
-                    $datatable.on('ifChanged', '#_is_all', function() {
+                    $datatable_modal.on('ifChanged', '#_is_all', function() {
                         if ($(this).prop('checked') === true) {
                             $('input[name="checkIdx"]').iCheck('check');
                         } else {

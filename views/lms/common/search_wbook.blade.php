@@ -63,25 +63,25 @@
         </div>
     </div>
     <script type="text/javascript">
-        var $datatable;
-        var $search_form = $('#_search_form');
-        var $list_table = $('#_list_ajax_table');
+        var $datatable_modal;
+        var $search_form_modal = $('#_search_form');
+        var $list_table_modal = $('#_list_ajax_table');
 
         $(document).ready(function() {
             // 페이징 번호에 맞게 일부 데이터 조회
-            $datatable = $list_table.DataTable({
+            $datatable_modal = $list_table_modal.DataTable({
                 serverSide: true,
                 ajax: {
                     'url' : '{{ site_url('/common/searchWBook/listAjax') }}',
                     'type' : 'POST',
                     'data' : function(data) {
-                        return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
+                        return $.extend(arrToJson($search_form_modal.serializeArray()), { 'start' : data.start, 'length' : data.length});
                     }
                 },
                 columns: [
                     {'data' : null, 'render' : function(data, type, row, meta) {
                         // 리스트 번호
-                        return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
+                        return $datatable_modal.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                     }},
                     {'data' : 'wBookIdx'},
                     {'data' : 'wBookName', 'render' : function(data, type, row, meta) {
@@ -98,13 +98,13 @@
             });
 
             // 교재 선택
-            $datatable.on('click', '.btn-select', function() {
+            $datatable_modal.on('click', '.btn-select', function() {
                 if (!confirm('해당 교재를 선택하시겠습니까?')) {
                     return;
                 }
 
                 var that = $(this);
-                var row = $datatable.row(that.data('row-idx')).data();
+                var row = $datatable_modal.row(that.data('row-idx')).data();
                 var $parent_regi_form = $('#regi_form');
                 var $parent_book_name = $parent_regi_form.find('input[name="book_name"]');
                 var $parent_selected_book = $('#selected_book');

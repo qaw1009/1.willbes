@@ -47,15 +47,15 @@
             </div>
 
             <script type="text/javascript">
-                var $datatable;
-                var $search_form = $('#_search_form');
-                var $list_table = $('#_list_ajax_table');
+                var $datatable_modal;
+                var $search_form_modal = $('#_search_form');
+                var $list_table_modal = $('#_list_ajax_table');
                 var $parent_selected_professor = $('#selected_professor');
                 var professorExist = {};
 
                 $(document).ready(function() {
                     // 페이징 번호에 맞게 일부 데이터 조회
-                    $datatable = $list_table.DataTable({
+                    $datatable_modal = $list_table_modal.DataTable({
                         language: {
                             "info": "[ 총 _MAX_건 ]",
                         },
@@ -65,7 +65,7 @@
                             'url' : '{{ site_url('/common/searchProfessor/list') }}',
                             'type' : 'POST',
                             'data' : function(data) {
-                                return $.extend(arrToJson($search_form.serializeArray()), {'start' : data.start, 'length' : data.length});
+                                return $.extend(arrToJson($search_form_modal.serializeArray()), {'start' : data.start, 'length' : data.length});
                             }
                         },
                         columns: [
@@ -88,8 +88,8 @@
                     });
 
                     // 적용
-                    $datatable.on('ifChanged', '[name="_prof_code"]', function() {
-                        var row = $datatable.row($(this).data('row-idx')).data();
+                    $datatable_modal.on('ifChanged', '[name="_prof_code"]', function() {
+                        var row = $datatable_modal.row($(this).data('row-idx')).data();
                         var txt = '';
 
                         if ($(this).prop('checked') === true) {

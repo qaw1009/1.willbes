@@ -61,9 +61,9 @@
         </div>
     </div>
     <script type="text/javascript">
-        var $datatable;
-        var $search_form = $('#_search_form');
-        var $list_table = $('#_list_ajax_table');
+        var $datatable_modal;
+        var $search_form_modal = $('#_search_form');
+        var $list_table_modal = $('#_list_ajax_table');
         var $parent_regi_form = $('#regi_form');
         var $parent_selected_category = $('#selected_category');
         var $selected_category = $('#_selected_category');
@@ -71,13 +71,13 @@
 
         $(document).ready(function() {
             // 페이징 번호에 맞게 일부 데이터 조회
-            $datatable = $list_table.DataTable({
+            $datatable_modal = $list_table_modal.DataTable({
                 serverSide: true,
                 ajax: {
                     'url' : '{{ site_url('/common/searchCategory/listAjax') }}',
                     'type' : 'POST',
                     'data' : function(data) {
-                        return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
+                        return $.extend(arrToJson($search_form_modal.serializeArray()), { 'start' : data.start, 'length' : data.length});
                     }
                 },
                 columns: [
@@ -97,7 +97,7 @@
             });
 
             // 전체선택
-            $datatable.on('ifChanged', '#_is_all', function() {
+            $datatable_modal.on('ifChanged', '#_is_all', function() {
                 var $_cate_code = $('input[name="_cate_code"]');
                 if ($(this).prop('checked') === true) {
                     $_cate_code.iCheck('check');
@@ -107,9 +107,9 @@
             });
 
             // 카테고리 선택
-            $datatable.on('ifChanged', 'input[name="_cate_code"]', function() {
+            $datatable_modal.on('ifChanged', 'input[name="_cate_code"]', function() {
                 var that = $(this);
-                var row = $datatable.row(that.data('row-idx')).data();
+                var row = $datatable_modal.row(that.data('row-idx')).data();
                 var code = that.val();
                 var route_name = '';
 

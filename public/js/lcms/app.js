@@ -384,7 +384,7 @@ function init_magnificPopup() {
 function init_datatable() {
     // datatable search_form submit
     if(typeof $search_form !== 'undefined') {
-        //$search_form.off();
+        $search_form.off('submit');
         $search_form.submit(function(e) {
             e.preventDefault();
             if ($(this).hasClass('searching') === true) {
@@ -395,11 +395,13 @@ function init_datatable() {
         });
 
         // searching: true 옵션일 경우 검색
+        $search_form.filter('.searching').off('keyup change ifChanged', 'input, select, input.flat');
         $search_form.filter('.searching').on('keyup change ifChanged', 'input, select, input.flat', function() {
             datatableSearching();
         });
 
         // 사이트 탭 클릭
+        $search_form.find('.tabs-site-code').off('click', 'li > a');
         $search_form.find('.tabs-site-code').on('click', 'li > a', function() {
             if (typeof $site_code !== 'undefined') {
                 $site_code = $(this).data('site-code');
@@ -415,12 +417,14 @@ function init_datatable() {
         });
 
         // 초기화 버튼 클릭
+        $search_form.off('click', '#btn_reset, #_btn_reset');
         $search_form.on('click', '#btn_reset, #_btn_reset', function() {
             $search_form[0].reset();
             $datatable.draw();
         });
 
         // 초기화 버튼 클릭 (날짜 설정 버튼이 있는 경우, 당월, 1주일 ...)
+        $search_form.off('click', '#btn_reset_in_set_search_date, #_btn_reset_in_set_search_date');
         $search_form.on('click', '#btn_reset_in_set_search_date, #_btn_reset_in_set_search_date', function() {
             $search_form[0].reset();
             $search_form.find('.btn-set-search-date:eq(0)').trigger('click');
@@ -430,11 +434,11 @@ function init_datatable() {
 
     //modal search submit
     if (typeof $search_form_modal !== 'undefined') {
-        //$search_form_modal.off();
+        $search_form_modal.off('submit');
         $search_form_modal.submit(function(e) {
             e.preventDefault();
             if ($(this).hasClass('searching') === true) {
-                datatableSearching();
+                datatableSearchingModal();
             } else {
                 $datatable_modal.draw();
             }

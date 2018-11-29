@@ -85,25 +85,25 @@
                 </div>
             </div>
             <script type="text/javascript">
-                var $datatable;
-                var $search_form = $('#_search_form');
-                var $list_table = $('#_list_ajax_table');
+                var $datatable_modal;
+                var $search_form_modal = $('#_search_form');
+                var $list_table_modal = $('#_list_ajax_table');
 
                 $(document).ready(function() {
                     // 페이징 번호에 맞게 일부 데이터 조회
-                    $datatable = $list_table.DataTable({
+                    $datatable_modal = $list_table_modal.DataTable({
                         serverSide: true,
                         ajax: {
                             'url' : '{{ site_url('/common/searchWMasterLecture/listAjax') }}',
                             'type' : 'POST',
                             'data' : function(data) {
-                                return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
+                                return $.extend(arrToJson($search_form_modal.serializeArray()), { 'start' : data.start, 'length' : data.length});
                             }
                         },
                         columns: [
                             {'data' : null, 'render' : function(data, type, row, meta) {
                                     // 리스트 번호
-                                    return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
+                                    return $datatable_modal.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                                 }},
                             {'data' : 'wCpName'},
                             {'data' : 'wContentCcd_Name'},
@@ -123,7 +123,7 @@
                     });
 
                     // 마스터강의선택
-                    $datatable.on('click', '.btn-select', function() {
+                    $datatable_modal.on('click', '.btn-select', function() {
 
                         if (!confirm('해당 강의를 선택하시겠습니까?')) {
                             return;
@@ -134,7 +134,7 @@
                         var $parent_cpInfo = $('#cpInfo');  //cp정보
 
                         var that = $(this);
-                        var row = $datatable.row(that.data('row-idx')).data();
+                        var row = $datatable_modal.row(that.data('row-idx')).data();
 
                         var $masterInfo = '[촬영형태] '+row.wShootingCcd_Name+' &nbsp;&nbsp; [진행상태] '+row.wProgressCcd_Name+''
                                                 + ' &nbsp;&nbsp; [제작월] '+row.wMakeYM;
@@ -171,7 +171,7 @@
                     });
 
                     $("#_btn_reset").click(function(){
-                        $search_form[0].reset();$datatable.draw();
+                        $search_form_modal[0].reset();$datatable_modal.draw();
                     });
 
                 });

@@ -55,13 +55,13 @@
         </div>
     </div>
     <script type="text/javascript">
-        var $datatable;
-        var $search_form = $('#_search_form');
-        var $list_table = $('#_list_table');
+        var $datatable_modal;
+        var $search_form_modal = $('#_search_form');
+        var $list_table_modal = $('#_list_table');
 
         $(document).ready(function() {
             // 페이징 번호에 맞게 일부 데이터 조회
-            $datatable = $list_table.DataTable({
+            $datatable_modal = $list_table_modal.DataTable({
                 ajax: false,
                 paging: false,
                 searching: true,
@@ -72,7 +72,7 @@
 
             // 복합연결 등록 폼
             $('.btn-complex-regist, .btn-complex-modify').click(function() {
-                var uri_param = $search_form.find('input[name="_conn_type"]').val() + '/' + $search_form.find('input[name="_site_code"]').val() + '/' + $search_form.find('input[name="_cate_code"]').val();
+                var uri_param = $search_form_modal.find('input[name="_conn_type"]').val() + '/' + $search_form_modal.find('input[name="_site_code"]').val() + '/' + $search_form_modal.find('input[name="_cate_code"]').val();
                 uri_param += '/' + ((typeof $(this).data('idx') === 'undefined') ? '000000' : $(this).data('idx'));
 
                 // 등록 폼으로 내용 변경
@@ -81,10 +81,9 @@
         });
 
         // datatable searching
-        function datatableSearching() {
-            console.log('1');
-            $datatable
-                .columns('.searching').flatten().search($search_form.find('input[name="search_value"]').val())
+        function datatableSearchingModal() {
+            $datatable_modal
+                .columns('.searching').flatten().search($search_form_modal.find('input[name="search_value"]').val())
                 .draw();
         }
     </script>

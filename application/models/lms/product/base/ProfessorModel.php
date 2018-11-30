@@ -510,7 +510,7 @@ class ProfessorModel extends WB_Model
 
             // 기존 교수 기본정보 조회
             $row = $this->findProfessor('ProfIdx', ['EQ' => ['ProfIdx' => $prof_idx]]);
-            if (count($row) < 1) {
+            if (empty($row) === true) {
                 throw new \Exception('데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
             }
 
@@ -854,7 +854,7 @@ class ProfessorModel extends WB_Model
             $row = $this->_conn->getFindResult($this->_table['professor_reference'], 'ReferIdx, ReferValue', [
                 'EQ' => ['ProfIdx' => $prof_idx, 'ReferType' => $img_type, 'IsStatus' => 'Y']    
             ]);
-            if (count($row) < 1) {
+            if (empty($row) === true) {
                 throw new \Exception('데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
             }
 

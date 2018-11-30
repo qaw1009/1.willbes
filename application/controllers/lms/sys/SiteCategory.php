@@ -49,7 +49,7 @@ class SiteCategory
             $idx = $params[1];
 
             $data = $this->_CI->categoryModel->findCategoryForModify($idx);
-            if (count($data) < 1) {
+            if (empty($data) === true) {
                 return $this->_CI->json_error('데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
             }
             $site_code = $data['SiteCode'];

@@ -166,7 +166,7 @@ class SampleModel extends WB_Model
 
         try {
             $data = $this->findSampleByIdx($idx);
-            if (count($data) < 1) {
+            if (empty($data) === true) {
                 throw new \Exception('데이터 조회에 실패했습니다.', 404);
             }
 

@@ -38,7 +38,7 @@ class Subject extends \app\controllers\BaseController
             $idx = $params[0];
             $data = $this->subjectModel->findSubjectForModify($idx);
 
-            if (count($data) < 1) {
+            if (empty($data) === true) {
                 show_error('데이터 조회에 실패했습니다.');
             }
         }

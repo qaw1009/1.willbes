@@ -273,7 +273,7 @@ class CategoryModel extends WB_Model
                 $_cate_code = $row['CateCode'];
 
                 $row = $this->findCategoryByCateCode($parent_cate_code);
-                if (count($row) < 1) {
+                if (empty($row) === true) {
                     throw new \Exception('부모 카테고리 데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
                 }
                 $_group_cate_code = $row['GroupCateCode'];
@@ -322,7 +322,7 @@ class CategoryModel extends WB_Model
 
             // 카테고리 정보 조회
             $row = $this->findCategoryByCateCode($cate_code);
-            if (count($row) < 1) {
+            if (empty($row) === true) {
                 throw new \Exception('데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
             }
 

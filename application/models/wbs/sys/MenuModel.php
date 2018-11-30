@@ -170,7 +170,7 @@ class MenuModel extends WB_Model
             } else {
                 // LNB, MenuDepth > 1
                 $row = $this->findMenuByMenuIdx($parent_menu_idx);
-                if (count($row) < 1) {
+                if (empty($row) === true) {
                     throw new \Exception('부모메뉴 데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
                 }
 
@@ -234,7 +234,7 @@ class MenuModel extends WB_Model
             if ($group_menu_idx > 0) {
                 // MenuDepth > 1
                 $row = $this->findMenuByMenuIdx($parent_menu_idx);
-                if (count($row) < 1) {
+                if (empty($row) === true) {
                     throw new \Exception('부모메뉴 데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
                 }
 

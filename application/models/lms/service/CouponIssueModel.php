@@ -242,7 +242,7 @@ class CouponIssueModel extends WB_Model
         // 기존 쿠폰 기본정보 조회
         $row = $this->couponRegistModel->findCoupon('CouponIdx, DeployType, PinType, PinIssueCnt, IssueStartDate, IssueEndDate, ValidDay, IsIssue'
             , ['EQ' => ['CouponIdx' => $coupon_idx, 'IsStatus' => 'Y']]);
-        if (count($row) < 1) {
+        if (empty($row) === true) {
             return '쿠폰 정보 조회에 실패했습니다.';
         }
 

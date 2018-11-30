@@ -74,7 +74,7 @@ class SiteCode
             $idx = $params[1];
             $data = $this->_CI->siteModel->findSiteForModify($idx);
 
-            if (count($data) < 1) {
+            if (empty($data) === true) {
                 show_error('데이터 조회에 실패했습니다.');
             }
 

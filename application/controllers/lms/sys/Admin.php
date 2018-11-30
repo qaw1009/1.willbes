@@ -88,7 +88,7 @@ class Admin extends \app\controllers\BaseController
 
         // 운영자 정보 조회
         $data = $this->adminModel->findAdminForModify($admin_idx);
-        if (count($data) < 1) {
+        if (empty($data) === true) {
             show_error('데이터 조회에 실패했습니다.');
         }
 

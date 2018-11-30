@@ -276,7 +276,7 @@ class SiteModel extends WB_Model
         try {
             // 기존 사이트 정보 조회
             $row = $this->findSiteForModify($site_code);
-            if (count($row) < 1) {
+            if (empty($row) === true) {
                 throw new \Exception('데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
             }
 
@@ -443,7 +443,7 @@ class SiteModel extends WB_Model
 
             // 데이터 조회
             $row = $this->findSite('Logo, Favicon', ['EQ' => ['SiteCode' => $site_code]]);
-            if (count($row) < 1) {
+            if (empty($row) === true) {
                 throw new \Exception('데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
             }
 

@@ -139,7 +139,7 @@ class AuthorModel extends WB_Model
 
             // 기존 저자 정보 조회
             $row = $this->findAuthorForModify($author_idx);
-            if (count($row) < 1) {
+            if (empty($row) === true) {
                 throw new \Exception('데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
             }
 

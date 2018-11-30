@@ -53,7 +53,7 @@ class SiteMenu extends \app\controllers\BaseController
 
             if ($menu_depth > 1) {
                 $row = $this->siteMenuModel->findSiteMenuWithRouteName($parent_menu_idx);
-                if (count($row) < 1) {
+                if (empty($row) === true) {
                     return $this->json_error('부모 메뉴 데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
                 }
 
@@ -66,7 +66,7 @@ class SiteMenu extends \app\controllers\BaseController
             $idx = $params[0];
 
             $data = $this->siteMenuModel->findSiteMenuForModify($idx);
-            if (count($data) < 1) {
+            if (empty($data) === true) {
                 return $this->json_error('데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
             }
             $site_code = $data['SiteCode'];

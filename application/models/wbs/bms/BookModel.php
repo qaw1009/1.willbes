@@ -230,7 +230,7 @@ class BookModel extends WB_Model
 
             // 기존 교재 기본정보 조회
             $row = $this->findBookForModify($book_idx);
-            if (count($row) < 1) {
+            if (empty($row) === true) {
                 throw new \Exception('데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
             }
 

@@ -182,7 +182,7 @@ class BookModel extends WB_Model
             // 첨부 이미지 업로드
             $data = [];
             $this->load->library('upload');
-            $upload_sub_dir = SUB_DOMAIN . '/book/' . date('Y') . '/' . $book_idx;
+            $upload_sub_dir = config_item('upload_prefix_dir') . '/book/' . date('Y') . '/' . $book_idx;
 
             $uploaded = $this->upload->uploadFile('img', ['attach_img'], ['book_' . $book_idx . $this->_img_postfix], $upload_sub_dir, 'allowed_types:jpg');
             if (is_array($uploaded) === false) {
@@ -271,7 +271,7 @@ class BookModel extends WB_Model
             $data = [];
             $this->load->library('upload');
             $this->load->library('image_lib');
-            $upload_sub_dir = SUB_DOMAIN . '/book/' . substr($row['wRegDatm'], 0, 4) . '/' . $book_idx;
+            $upload_sub_dir = config_item('upload_prefix_dir') . '/book/' . substr($row['wRegDatm'], 0, 4) . '/' . $book_idx;
             $bak_uploaded_files = [];
 
             // 첨부 이미지 삭제

@@ -45,14 +45,27 @@ $config['app_app_site_prefix'] = 'app';     // 앱 사이트 구분값
 
 /*
 |--------------------------------------------------------------------------
-| APP except config (서브 도메인 기준)
+| APP Name mapping (서브 도메인 기준)
 |--------------------------------------------------------------------------
 */
-$config['app_except_config'] = [
-    'www' => ['app_name' => 'willbes', 'route_add_path' => ''],
-    'cop' => ['app_name' => 'willbes', 'route_add_path' => '/site'],
-    'gosi' => ['app_name' => 'willbes', 'route_add_path' => '/site'],
-    'ssam' => ['app_name' => 'willbes', 'route_add_path' => '/site'],
+$config['app_name_mapping'] = [
+    'www' => 'willbes',
+    'cop' => 'willbes',
+    'gosi' => 'willbes',
+    'ssam' => 'willbes',
+    'tzone' => 'lms'
+];
+
+/*
+|--------------------------------------------------------------------------
+| APP front site except config (서브 도메인 기준)
+|--------------------------------------------------------------------------
+*/
+$config['app_front_site_except'] = [
+    'www' => ['route_add_path' => ''],
+    'cop' => ['route_add_path' => '/site'],
+    'gosi' => ['route_add_path' => '/site'],
+    'ssam' => ['route_add_path' => '/site']
 ];
 
 /*
@@ -83,7 +96,7 @@ defined('APP_DEVICE') OR define('APP_DEVICE', $__app_device);
 | Const APP_NAME
 |--------------------------------------------------------------------------
 */
-$__app_name = array_key_exists($__sub_domain, $config['app_except_config']) === true ? $config['app_except_config'][$__sub_domain]['app_name'] : $__sub_domain;
+$__app_name = array_key_exists($__sub_domain, $config['app_name_mapping']) === true ? $config['app_name_mapping'][$__sub_domain] : $__sub_domain;
 
 defined('APP_NAME') OR define('APP_NAME', $__app_name);
 

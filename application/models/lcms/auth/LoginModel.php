@@ -126,7 +126,7 @@ class LoginModel extends WB_Model
         ];
 
         try {
-            if (SUB_DOMAIN == 'lms') {
+            if (APP_NAME == 'lms') {
                 $_table = 'lms_sys_admin_login_log';
                 $prefix = '';
             } else {
@@ -140,9 +140,9 @@ class LoginModel extends WB_Model
                 $prefix . 'IsLogin' => $log_ccds[$log_ccd_name][1],
                 $prefix . 'LoginLogCcd' => $log_ccds[$log_ccd_name][0]
             ];
-            $this->{SUB_DOMAIN}->set($data)->set($prefix . 'LoginDatm', 'NOW()', false);
+            $this->{APP_NAME}->set($data)->set($prefix . 'LoginDatm', 'NOW()', false);
 
-            if ($this->{SUB_DOMAIN}->insert($_table) === false) {
+            if ($this->{APP_NAME}->insert($_table) === false) {
                 throw new \Exception('관리자 로그인 로그 등록에 실패했습니다.');
             }
         } catch (\Exception $e) {

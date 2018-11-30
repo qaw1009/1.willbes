@@ -60,19 +60,19 @@ $route['(lcms)/(.*)'] = '$1/$2';
 $__app_mobile_site_prefix = config_item('app_mobile_site_prefix');
 $__app_app_site_prefix = config_item('app_app_site_prefix');
 $__app_pass_site_prefix = config_item('app_pass_site_prefix');
-$__app_except_config = config_item('app_except_config');
+$__app_front_site_except = config_item('app_front_site_except');
 $__regex_app_prefix = '((' . $__app_mobile_site_prefix . '|' . $__app_app_site_prefix . ')\/)?(\/?' . $__app_pass_site_prefix . '\/)?';
 
-if (array_key_exists(SUB_DOMAIN, $__app_except_config) === true) {
+if (array_key_exists(SUB_DOMAIN, $__app_front_site_except) === true) {
     // 결제 컨트롤러 라우터 예외 처리
     $route[$__regex_app_prefix . '(payment\/.*)'] = APP_NAME . '/$4';
 
-    if (empty($__app_except_config[SUB_DOMAIN]['route_add_path']) === false) {
+    if (empty($__app_front_site_except[SUB_DOMAIN]['route_add_path']) === false) {
         // 사이트 디폴트 컨트롤러
-        $route['default_controller'] = APP_NAME . $__app_except_config[SUB_DOMAIN]['route_add_path'] . '/home/index';
+        $route['default_controller'] = APP_NAME . $__app_front_site_except[SUB_DOMAIN]['route_add_path'] . '/home/index';
 
         // 사이트 라우터 예외 처리
-        $route[$__regex_app_prefix . '(.*)'] = APP_NAME . $__app_except_config[SUB_DOMAIN]['route_add_path'] . '/$4';
+        $route[$__regex_app_prefix . '(.*)'] = APP_NAME . $__app_front_site_except[SUB_DOMAIN]['route_add_path'] . '/$4';
     } else {
         // 모바일, 앱 사이트 디폴트 컨트롤러 처리
         $route['(' . $__app_mobile_site_prefix . '|' . $__app_app_site_prefix . ')\/?$'] = APP_NAME . '/home/index';

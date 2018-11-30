@@ -86,7 +86,7 @@ abstract class FrontController extends BaseController
 
         $mobile_site_prefix = config_item('app_mobile_site_prefix');    // 모바일 사이트 구분값
         $pass_site_prefix = config_item('app_pass_site_prefix');    // 학원 사이트 구분값
-        $app_except_config = element(SUB_DOMAIN, config_item('app_except_config'), []);     // 사이트별 예외 설정 조회
+        $app_front_site_except = element(SUB_DOMAIN, config_item('app_front_site_except'), []);     // 프런트 사이트별 예외 설정 조회
 
         // 모바일 사이트 여부
         if (strtolower($this->uri->segment(1)) == $mobile_site_prefix) {
@@ -94,7 +94,7 @@ abstract class FrontController extends BaseController
         }
 
         // 프런트 사이트일 경우
-        if (empty(element('route_add_path', $app_except_config)) === false) {
+        if (empty(element('route_add_path', $app_front_site_except)) === false) {
             // 학원 사이트일 경우
             if ((strtolower($this->uri->segment(1)) == $pass_site_prefix)
                 || ($this->_is_mobile === true && strtolower($this->uri->segment(2)) == $pass_site_prefix)) {

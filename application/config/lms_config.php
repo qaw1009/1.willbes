@@ -10,6 +10,12 @@ $config['lms'] = array(
     'home_url' => '/home/main',
 );
 
+$config['tzone'] = array(
+    'site_name' => 'T-zone',
+    'head_title' => '미래를 준비는 사람들! : willbes.net',
+    'home_url' => '/home/main',
+);
+
 // 모의고사
 $config['mock'] = array(
     'sysCode_kind' => 686,             // 모의고사 직렬 운영코드 그룹값 (lms_sys_code)

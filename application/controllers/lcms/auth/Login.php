@@ -59,9 +59,9 @@ class Login extends \app\controllers\BaseController
         $is_auth = true;
         if ($row['wIsApproval'] != 'Y' || $row['wIsUse'] != 'Y') {
             $is_auth = false;
-        } else if (SUB_DOMAIN == 'wbs' && empty($row['wRoleIdx']) === true) {
+        } else if (APP_NAME == 'wbs' && empty($row['wRoleIdx']) === true) {
             $is_auth = false;
-        } else if (SUB_DOMAIN == 'lms') {
+        } else if (APP_NAME == 'lms') {
             $lms_role_idx = $this->loginModel->getLmsRoleIdx($row['wAdminIdx']);
             if (empty($lms_role_idx) === true) {
                 $is_auth = false;
@@ -254,7 +254,7 @@ class Login extends \app\controllers\BaseController
         $this->session->set_userdata('admin_idx', $data['wAdminIdx']);
         $this->session->set_userdata('admin_id', $data['wAdminId']);
         $this->session->set_userdata('admin_name', $data['wAdminName']);
-        $this->session->set_userdata('admin_conn_sites', [SUB_DOMAIN]);
+        $this->session->set_userdata('admin_conn_sites', [APP_NAME]);
         $this->session->set_userdata('is_admin_login', true);
 
         // 아이디 저장 쿠키 생성/삭제

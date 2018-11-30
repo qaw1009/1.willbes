@@ -110,7 +110,7 @@ class SampleModel extends WB_Model
             }
 
             $this->load->library('upload');
-            $results = $this->upload->uploadFile('img', ['attach_file', 'user_file'], [], SUB_DOMAIN . '/sample/' . date('Ymd'));
+            $results = $this->upload->uploadFile('img', ['attach_file', 'user_file'], [], config_item('upload_prefix_dir') . '/sample/' . date('Ymd'));
             if (is_array($results) === false) {
                 throw new \Exception($results);
             }

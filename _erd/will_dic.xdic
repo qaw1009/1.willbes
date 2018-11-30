@@ -199,7 +199,7 @@
   <term name="공제" physicalName="Deduct"/>
   <term name="지결" physicalName="Approval" physicalDescription="Approval"/>
   <term name="입금" physicalName="Deposit"/>
-  <term name="연결" description="Connect" physicalName="Conn"/>
+  <term name="연결" description="Connect" physicalName="Conn" physicalDescription="Conn"/>
   <term name="방문" physicalName="Visit"/>
   <term name="게이트웨이" description="Gateway" physicalName="Gw"/>
   <term name="발송" physicalName="Send" physicalDescription="Send"/>
@@ -211,4 +211,5 @@
   <term name="접속" physicalName="Access"/>
   <term name="잔여" physicalName="Remain"/>
   <term name="복구" description="Recovery" physicalName="Reco"/>
+  <term name="접근" description="Connect" physicalName="Conn" physicalDescription="Conn"/>
 </tm:TermDictionary>

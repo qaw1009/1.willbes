@@ -140,6 +140,11 @@ class LoginModel extends WB_Model
                 $prefix . 'IsLogin' => $log_ccds[$log_ccd_name][1],
                 $prefix . 'LoginLogCcd' => $log_ccds[$log_ccd_name][0]
             ];
+
+            if (APP_NAME == 'lms') {
+                $data['ConnSubDomain'] = SUB_DOMAIN;
+            }
+
             $this->{APP_NAME}->set($data)->set($prefix . 'LoginDatm', 'NOW()', false);
 
             if ($this->{APP_NAME}->insert($_table) === false) {

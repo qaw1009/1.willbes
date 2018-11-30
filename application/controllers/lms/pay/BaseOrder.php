@@ -70,7 +70,7 @@ class BaseOrder extends \app\controllers\BaseController
                     $refund_data[$row['RefundReqIdx']]['CashRefundPrice'][] = $row['CashRefundPrice'];
 
                     $refund_data[$row['RefundReqIdx']] = array_merge($refund_data[$row['RefundReqIdx']], [
-                        'RefundDatm' => $row['RefundDatm'], 'PayStatusCcdName' => $row['PayStatusCcdName'], 'IsApproval' => $row['IsApproval'], 'IsBankRefund' => $row['IsBankRefund'],
+                        'RefundDatm' => $row['RefundDatm'], 'PayStatusCcdName' => $row['PayStatusCcdName'], 'IsApproval' => $row['IsApproval'], 'RefundType' => $row['RefundType'],
                         'RefundReason' => $row['RefundReason'], 'RefundAdminName' => $row['RefundAdminName']
                     ]);
                 }

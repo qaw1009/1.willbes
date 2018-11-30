@@ -103,13 +103,13 @@ class OrderModel extends BaseOrderModel
             // 환불신청 데이터 저장
             $data = [
                 'OrderIdx' => $order_idx,
+                'RefundType' => 'B',   // TODO : PG 연동 후 수정 필요
                 'RefundBankCcd' => element('refund_bank_ccd', $input),
                 'RefundAccountNo' => element('refund_account_no', $input),
                 'RefundDepositName' => element('refund_deposit_name', $input),
                 'RefundReason' => element('refund_reason', $input),
                 'RefundMemo' => element('refund_memo', $input),
                 'IsApproval' => element('is_approval', $input, 'N'),
-                'IsBankRefund' => 'Y',   // TODO : PG 연동 후 수정 필요
                 'RefundReqAdminIdx' => $sess_admin_idx,
                 'RefundReqIp' => $reg_ip
             ];

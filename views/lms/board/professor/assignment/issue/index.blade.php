@@ -1,7 +1,7 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-<h5>- {{$arr_prof_info['ProfNickName']}} 교수 첨삭 게시판</h5>
+<h5>- {{--{{$arr_prof_info['ProfNickName']}}--}} 교수 첨삭 게시판</h5>
 <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
     {!! csrf_field() !!}
     {!! html_def_site_tabs($arr_prof_info['SiteCode'], 'tabs_site_code', 'tab', false, [], false, array($arr_prof_info['SiteCode'] => $arr_prof_info['SiteName'])) !!}
@@ -148,7 +148,7 @@
                         return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                     }},
                 {'data' : 'Title', 'render' : function(data, type, row, meta) {
-                        return '<a href="javascript:void(0);" class="btn-manager-assignment" data-idx="' + row.BaIdx + '"><u>' + data + '</u></a>';
+                        return '<a href="javascript:void(0);" class="btn-manager-assignment" data-idx="' + row.BaIdx + '" data-board-idx="' + row.BoardIdx + '"><u>' + data + '</u></a>';
                     }},
                 {'data' : 'AttachFileName', 'render' : function(data, type, row, meta) {
                         var tmp_return;
@@ -160,9 +160,11 @@
                     }},
                 {'data' : 'RegDatm'},
                 {'data' : 'IsReply', 'render' : function(data, type, row, meta) {
-                        return (data == 'Y') ? '사용' : '<p class="red">미사용</p>';
+                        return (data == 'Y') ? '채점' : '<p class="red">미채점</p>';
                     }},
-                {'data' : 'ProfNickName'},
+                {'data' : null, 'render' : function(data, type, row, meta) {
+                        return '';
+                    }},
                 {'data' : 'ReplyRegDatm'},
             ]
         });
@@ -175,13 +177,14 @@
         //등록
         $list_table.on('click', '.btn-manager-assignment', function() {
             var idx = $(this).data('idx');
+            var board_idx = $(this).data('board-idx');
             $('.btn-manager-assignment').setLayer({
-                "url" : "{{ site_url("/board/professor/{$boardName}/managerAssignmentModal/{$prod_code}?") }}" + '{!! $boardDefaultQueryString !!}',
+                "url" : "{{ site_url("/board/professor/{$boardName}/managerAssignmentModal?") }}" + '{!! $boardDefaultQueryString !!}',
                 "width" : "1200",
                 'add_param_type' : 'param',
                 'add_param' : [
                     { 'id' : 'ba_idx', 'name' : '첨삭식별자', 'value' : idx, 'required' : true },
-                    { 'id' : 'type', 'name' : '타입', 'value' : 'create', 'required' : true }
+                    { 'id' : 'board_idx', 'name' : '첨삭식별자', 'value' : board_idx, 'required' : true }
                 ]
             });
         });

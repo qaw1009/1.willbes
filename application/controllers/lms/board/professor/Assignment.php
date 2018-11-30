@@ -672,11 +672,11 @@ class Assignment extends BaseBoard
         }
 
         $column = ' STRAIGHT_JOIN
-            a.BaIdx, a.BoardIdx, a.MemIdx, a.AssignmentStatusCcd, a.RegDatm, a.ReplyRegDatm, a.ReplyRegProfIdx,
+            a.BaIdx, a.BoardIdx, a.MemIdx, a.AssignmentStatusCcd, a.RegDatm, a.ReplyRegDatm, a.ReplyRegAdminIdx,
             fn_ccd_name(a.AssignmentStatusCcd) AS AssignmentStatusCcdName,
             a.IsReply,
             b.Title, c.MemName, c.MemId, fn_dec(c.PhoneEnc) AS MemPhone,
-            d.ProfNickName, a.ReplyRegDatm,
+            a.ReplyRegDatm,
             e.AttachFilePath, e.AttachFileName, e.AttachRealFileName
         ';
 
@@ -694,25 +694,80 @@ class Assignment extends BaseBoard
         ]);
     }
 
+    /**
+     * 첨삭현황
+     */
     public function managerAssignmentModal()
     {
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
         $this->site_code = $this->_req('site_code');
+        $hidden_data = [
+            'bm_idx' => $this->bm_idx,
+            'ba_idx' => $this->_req('ba_idx'),
+            'board_idx' => $this->_req('board_idx'),
+            'prof_idx' => $this->_req('prof_idx')
+        ];
 
-        //과제정보
-        $data = null;
+        //첨삭데이터 조회
+        $column = '
+        STRAIGHT_JOIN
+        a.BaIdx, b.Title,
+        f.MemName, f.MemId, fn_dec(f.PhoneEnc) AS MemPhone, f2.SmsRcvStatus,
+        a.RegDatm, a.IsReply, a.ReplyRegDatm,
+        
+        b.Content AS ProfContent, a.Content AS MemContent, a.ReplyContent,
+        c.AttachFileIdx AS AttachFileIdx_Admin, c.AttachFilePath AS AttachFilePath_Admin, c.AttachFileName AS AttachFileName_Admin, c.AttachRealFileName AS AttachRealFileName_Admin,
+        d.AttachFileIdx AS AttachFileIdx_User, d.AttachFilePath AS AttachFilePath_User, d.AttachFileName AS AttachFileName_User, d.AttachRealFileName AS AttachRealFileName_User,
+        e.AttachFileIdx AS AttachFileIdx_Reply, e.AttachFilePath AS AttachFilePath_Reply, e.AttachFileName AS AttachFileName_Reply, e.AttachRealFileName AS AttachRealFileName_Reply
+        ';
+        $data = $this->boardAssignmentModel->findBoardForAssignment($column, $hidden_data['ba_idx'], $hidden_data['board_idx']);
 
-        //회원등록정보
-        $user_content_data = null;
+        if (count($data) < 1) {
+            show_error('데이터 조회에 실패했습니다.');
+        }
 
+        $data['arr_attach_file_idx_admin'] = explode(',', $data['AttachFileIdx_Admin']);
+        $data['arr_attach_file_path_admin'] = explode(',', $data['AttachFilePath_Admin']);
+        $data['arr_attach_file_name_admin'] = explode(',', $data['AttachFileName_Admin']);
+        $data['arr_attach_file_real_name_admin'] = explode(',', $data['AttachRealFileName_Admin']);
+
+        $data['arr_attach_file_idx_user'] = explode(',', $data['AttachFileIdx_User']);
+        $data['arr_attach_file_path_user'] = explode(',', $data['AttachFilePath_User']);
+        $data['arr_attach_file_name_user'] = explode(',', $data['AttachFileName_User']);
+        $data['arr_attach_file_real_name_user'] = explode(',', $data['AttachRealFileName_User']);
+
+        $data['arr_attach_file_idx_reply'] = explode(',', $data['AttachFileIdx_Reply']);
+        $data['arr_attach_file_path_reply'] = explode(',', $data['AttachFilePath_Reply']);
+        $data['arr_attach_file_name_reply'] = explode(',', $data['AttachFileName_Reply']);
+        $data['arr_attach_file_real_name_reply'] = explode(',', $data['AttachRealFileName_Reply']);
 
         $this->load->view("board/professor/{$this->board_name}/issue/manager_modal", [
+            'method' => 'PUT',
+            'boardName' => $this->board_name,
             'data' => $data,
-            'user_content_data' => $user_content_data,
+            'hidden_data' => $hidden_data,
             'attach_file_cnt' => 5,
         ]);
+    }
+
+    public function storeReply()
+    {
+        $rules = [
+            ['field' => 'ba_idx', 'label' => '첨삭게시판식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'prof_idx', 'label' => '교수식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'board_content', 'label' => '내용', 'rules' => 'trim|required']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        //_addBoard, _modifyBoard
+        $result = $this->boardAssignmentModel->modifyAssignmentBoard($this->_reqP(null, false), $this->_arr_assignment_status_ccd['M'], 'Y');
+
+        $this->json_result($result, '저장 되었습니다.', $result);
     }
 
     /**

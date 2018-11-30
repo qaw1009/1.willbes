@@ -1144,6 +1144,21 @@ class BoardModel extends WB_Model
     }
 
     /**
+     * 파일명 배열 생성
+     * @param $board_idx
+     * @return array
+     */
+    protected function _getAttachImgNames($board_idx)
+    {
+        $attach_file_names = [];
+        $temp_time = date('YmdHis');
+        for ($i = 1; $i <= $this->_attach_img_cnt; $i++) {
+            $attach_file_names[] = 'board_' . $board_idx . '_0' . $i . '_' . $temp_time;
+        }
+        return $attach_file_names;
+    }
+
+    /**
      * 게시판 카테고리 조회
      * @param $board_idx
      * @return array|int
@@ -1242,7 +1257,7 @@ class BoardModel extends WB_Model
      * @param $inputData
      * @return bool
      */
-    private function _addBoardAttach($inputData)
+    protected function _addBoardAttach($inputData)
     {
         try {
             if ($this->_conn->set($inputData)->insert($this->_table_attach) === false) {
@@ -1348,21 +1363,6 @@ class BoardModel extends WB_Model
             return false;
         }
         return true;
-    }
-
-    /**
-     * 파일명 배열 생성
-     * @param $board_idx
-     * @return array
-     */
-    private function _getAttachImgNames($board_idx)
-    {
-        $attach_file_names = [];
-        $temp_time = date('YmdHis');
-        for ($i = 1; $i <= $this->_attach_img_cnt; $i++) {
-            $attach_file_names[] = 'board_' . $board_idx . '_0' . $i . '_' . $temp_time;
-        }
-        return $attach_file_names;
     }
 
     /**

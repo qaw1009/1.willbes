@@ -14,9 +14,9 @@ $config['upload_prefix_dir'] = APP_NAME;
 $config['uri_segment_keys'] = ['site' => 'site', 'cate' => 'cate'];
 
 // 사용 포인트 설정
-$config['use_min_point'] = '2500';  // 최소 사용 포인트
-$config['use_point_unit'] = '1';    // 포인트 사용 단위
-$config['use_max_point_rate'] = '80';   // 결제금액 대비 포인트 사용 가능 최대 비율
+$config['use_min_point'] = '1000';  // 최소 사용 포인트 (2500)
+$config['use_point_unit'] = '1';    // 포인트 사용 단위 (1)
+$config['use_max_point_rate'] = '100';   // 결제금액 대비 포인트 사용 가능 최대 비율 (80)
 
 // 가상계좌결제
 $config['vbank_account_name'] = '(주)윌비스';   // 예금주 명

@@ -378,6 +378,17 @@ class OrderFModel extends BaseOrderFModel
                 throw new \Exception('잘못된 접근입니다.', _HTTP_BAD_REQUEST);
             }
 
+            // PG결제일 경우 필수 파라미터 체크
+            if ($pay_results['total_pay_price'] > 0) {
+                if (empty(element('tid', $pay_results)) === true) {
+                    throw new \Exception('PG사 결제 거래번호가 없습니다.', _HTTP_BAD_REQUEST);
+                }
+
+                if (empty($post_row['PgCcd']) === true || empty($post_row['PayMethodCcd']) === true) {
+                    throw new \Exception('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
+                }
+            }
+
             $post_data = unserialize($post_row['PostData']);    // 주문 폼 데이터 unserialize
             $arr_user_coupon_idx = json_decode($post_row['UserCouponIdxJson'], true);   // 사용자 쿠폰
             $is_vbank = $this->_pay_method_ccd['vbank'] == $post_row['PayMethodCcd'];   // 가상계좌 여부
@@ -411,11 +422,11 @@ class OrderFModel extends BaseOrderFModel
                 'SiteCode' => $post_row['SiteCode'],
                 'ReprProdName' => $post_row['ReprProdName'],
                 'PayChannelCcd' => element(APP_DEVICE, $this->_pay_channel_ccd),
-                'PayRouteCcd' => element('pg', $this->_pay_route_ccd),
+                'PayRouteCcd' => $cart_results['total_pay_price'] > 0 ? element('pg', $this->_pay_route_ccd) : element('on_zero', $this->_pay_route_ccd),   // PG결제 or 온라인 0원결제
                 'PayMethodCcd' => $post_row['PayMethodCcd'],
                 'PgCcd' => $post_row['PgCcd'],
-                'PgMid' => $pay_results['mid'],
-                'PgTid' => $pay_results['tid'],
+                'PgMid' => element('mid', $pay_results, ''),
+                'PgTid' => element('tid', $pay_results, ''),
                 'OrderPrice' => $post_row['OrderProdPrice'] + $post_row['DeliveryPrice'] + $post_row['DeliveryAddPrice'],
                 'OrderProdPrice' => $post_row['OrderProdPrice'],
                 'RealPayPrice' => $cart_results['total_pay_price'],

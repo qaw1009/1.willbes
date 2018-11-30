@@ -318,7 +318,7 @@
                                     </dl>
                                 </td>
                             </tr>
-                            <tr>
+                            <tr id="pay_method">
                                 <td class="w-list bg-light-white">결제수단</td>
                                 <td class="w-buyinfo tx-left pl25">
                                     <dl>
@@ -653,7 +653,44 @@
 
                     $regi_form.find('#total_save_point').html(addComma(total_save_point));
                 }
+
+                // 총결제금액에 따른 결제수단 표시 여부
+                if (total_pay_price > 0) {
+                    $regi_form.find('#pay_method').css('display', '');
+                    $regi_form.find('input[name="pay_method_ccd"]').prop('disabled', false);
+                    $regi_form.find('input[name="pay_method_ccd"]:eq(0)').prop('checked', true).trigger('click');
+                } else {
+                    $regi_form.find('#pay_method').css('display', 'none');
+                    $regi_form.find('#pay_method_name').html('');
+                    $regi_form.find('input[name="pay_method_ccd"]').prop('disabled', true);
+                    $regi_form.find('#is_escrow').css('display', 'none');
+                }
             });
+
+            // 결제수단 선택
+            $regi_form.find('input[name="pay_method_ccd"]').on('click', function() {
+                var code = $(this).val();
+                var caution_txt = '';
+
+                // 에스크로 필드 노출 여부
+                if ($regi_form.find('.willbes-Delivery-Info').length > 0) {
+                    if (code === '604002' || code === '604003') {
+                        $regi_form.find('#is_escrow').css('display', '');   // 실시간 계좌이체, 무통장입금(가상계좌) 일 경우
+                    } else {
+                        $regi_form.find('#is_escrow').css('display', 'none');
+                    }
+                }
+
+                // 결제수단별 주의사항
+                if (code === '604001') {
+                    caution_txt = '카드사별 무이자할부 카드 정보는 결제창에서 확인하실 수 있습니다.';
+                }
+                $regi_form.find('#pay_method_caution_txt').html(caution_txt);
+
+                // 선택한 결제수단명 노출
+                $regi_form.find('#pay_method_name').html('[' + $(this).data('pay-method-name') + ']');
+            });
+            $regi_form.find('input[name="pay_method_ccd"]:checked').trigger('click');
 
             // 나의 배송 주소록 버튼 클릭
             $regi_form.on('click', '#btn_my_addr_list', function() {
@@ -772,31 +809,6 @@
                 $regi_form.find('#delivery_memo_byte').html(byte_cnt);
             });
 
-            // 결제수단 선택
-            $regi_form.find('input[name="pay_method_ccd"]').on('click', function() {
-                var code = $(this).val();
-                var caution_txt = '';
-
-                // 에스크로 필드 노출 여부
-                if ($regi_form.find('.willbes-Delivery-Info').length > 0) {
-                    if (code === '604002' || code === '604003') {
-                        $regi_form.find('#is_escrow').css('display', '');   // 실시간 계좌이체, 무통장입금(가상계좌) 일 경우
-                    } else {
-                        $regi_form.find('#is_escrow').css('display', 'none');
-                    }
-                }
-
-                // 결제수단별 주의사항
-                if (code === '604001') {
-                    caution_txt = '카드사별 무이자할부 카드 정보는 결제창에서 확인하실 수 있습니다.';
-                }
-                $regi_form.find('#pay_method_caution_txt').html(caution_txt);
-
-                // 선택한 결제수단명 노출
-                $regi_form.find('#pay_method_name').html('[' + $(this).data('pay-method-name') + ']');
-            });
-            $regi_form.find('input[name="pay_method_ccd"]:checked').trigger('click');
-
             // 장바구니 가기 버튼 클릭
             $('button[name="btn_cart"]').on('click', function () {
                 location.href = '{{ front_url('/cart/index') }}';
@@ -807,7 +819,14 @@
                 var url = '{{ front_url('/payment/request') }}';
                 ajaxSubmit($regi_form, url, function(ret) {
                     if(ret.ret_cd) {
-                        $('body').append(ret.ret_data);
+                        if (ret.ret_data.hasOwnProperty('ret_url') === true) {
+                            if (ret.ret_msg !== '') {
+                                alert(ret.ret_msg);
+                            }
+                            location.replace(ret.ret_data.ret_url);
+                        } else {
+                            $('body').append(ret.ret_data);
+                        }
                     }
                 }, showValidateError, null, false, 'alert');
             });

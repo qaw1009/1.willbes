@@ -32,7 +32,7 @@ class Payment extends \app\controllers\FrontController
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
             ['field' => 'cart_type', 'label' => '장바구니구분', 'rules' => 'trim|required|in_list[on_lecture,off_lecture,book]'],
             ['field' => 'cart_idx[]', 'label' => '장바구니식별자', 'rules' => 'trim|required'],
-            ['field' => 'pay_method_ccd', 'label' => '결제수단', 'rules' => 'trim|required|integer'],
+            //['field' => 'pay_method_ccd', 'label' => '결제수단', 'rules' => 'trim|required|integer'],     // PG결제와 0원결제 혼용
             ['field' => 'agree1', 'label' => '유의사항안내 동의여부', 'rules' => 'trim|required|in_list[Y]'],
             ['field' => 'agree2', 'label' => '개인정보활용안내 동의여부', 'rules' => 'trim|required|in_list[Y]'],
             ['field' => 'agree3', 'label' => '환불정책안내 동의여부', 'rules' => 'trim|required|in_list[Y]']
@@ -74,7 +74,11 @@ class Payment extends \app\controllers\FrontController
 
         // 로컬, 개발서버 환경일 경우 결제금액 고정 ==> TODO : 서버 환경별 실행
         if (ENVIRONMENT == 'local' || ENVIRONMENT == 'development') {
-            $results['total_pay_price'] = 1000;
+            $results['total_pay_price'] = $results['total_pay_price'] > 0 ? 1000 : 0;
+        }
+
+        if ($results['total_pay_price'] > 0 && empty(element('pay_method_ccd', $arr_input)) === true) {
+            return $this->json_error('결제수단 필드는 필수입니다.');
         }
 
         // 주문번호 생성
@@ -86,8 +90,8 @@ class Payment extends \app\controllers\FrontController
             'cart_type' => $results['cart_type'],
             'cart_idxs' => $sess_cart_idx,
             'site_code' => $this->_site_code,
-            'pg_ccd' => config_app('PgCcd'),
-            'pay_method_ccd' => element('pay_method_ccd', $arr_input),
+            'pg_ccd' => $results['total_pay_price'] > 0 ? config_app('PgCcd') : '',
+            'pay_method_ccd' => element('pay_method_ccd', $arr_input, ''),
             'repr_prod_name' => $results['repr_prod_name'],
             'order_prod_price' => $results['total_prod_order_price'],
             'req_pay_price' => $results['total_pay_price'],
@@ -103,29 +107,49 @@ class Payment extends \app\controllers\FrontController
             return $this->json_error($is_post_data['ret_msg']);
         }
 
-        // PG사 결제요청 폼 생성
-        $data = [
-            'mid' => config_app('PgMid'),
-            'order_no' => $order_no,
-            'repr_prod_name' => $results['repr_prod_name'],
-            'req_pay_price' => $results['total_pay_price'],
-            'order_name' => $this->session->userdata('mem_name'),
-            'order_phone' => $this->session->userdata('mem_phone'),
-            'order_mail' => $this->session->userdata('mem_mail'),
-            'pay_method_ccd' => element('pay_method_ccd', $arr_input),
-            'is_escrow' => element('is_escrow', $arr_input),
-            'return_prefix_url' => front_url('/payment/'),
-            'return_data' => ''
-        ];
+        if ($results['total_pay_price'] > 0) {
+            // PG사 결제요청 폼 생성
+            $data = [
+                'mid' => config_app('PgMid'),
+                'order_no' => $order_no,
+                'repr_prod_name' => $results['repr_prod_name'],
+                'req_pay_price' => $results['total_pay_price'],
+                'order_name' => $this->session->userdata('mem_name'),
+                'order_phone' => $this->session->userdata('mem_phone'),
+                'order_mail' => $this->session->userdata('mem_mail'),
+                'pay_method_ccd' => element('pay_method_ccd', $arr_input),
+                'is_escrow' => element('is_escrow', $arr_input),
+                'return_prefix_url' => front_url('/payment/'),
+                'return_data' => ''
+            ];
 
-        $form = $this->pg->requestForm($data);
-        if ($form === false) {
-            return $this->json_error('결제요청 중 오류가 발생하였습니다.');
+            $form = $this->pg->requestForm($data);
+            if ($form === false) {
+                return $this->json_error('결제요청 중 오류가 발생하였습니다.');
+            } else {
+                // 주문번호 세션생성
+                $this->orderFModel->makeSessOrderNo($order_no);
+
+                return $this->json_result(true, '', [], $form);
+            }
         } else {
+            // 온라인 0원결제
             // 주문번호 세션생성
             $this->orderFModel->makeSessOrderNo($order_no);
 
-            return $this->json_result(true, '', [], $form);
+            // 결제 프로세스 실행
+            $result = $this->orderFModel->procOrder([
+                'order_no' => $order_no,
+                'total_pay_price' => $results['total_pay_price']
+            ]);
+
+            if ($result['ret_cd'] === true) {
+                // 결제완료 페이지 이동
+                return $this->json_result(true, '', [], ['ret_url' => front_url('/order/complete?order_no=' . $result['ret_data'])]);
+            } else {
+                // 결제오류
+                return $this->json_result(true, $result['ret_msg'], [], ['ret_url' => site_url('/cart/index')]);
+            }            
         }
     }
 

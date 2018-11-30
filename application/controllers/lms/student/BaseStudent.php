@@ -41,7 +41,10 @@ class BaseStudent extends \app\controllers\BaseController
     public function index()
     {
         //공통코드
-        $codes = $this->codeModel->getCcdInArray(['607','611','618']);
+        $codes = $this->codeModel->getCcdInArray(['607','611','618','653','654','675']);
+
+        // 캠퍼스
+        $campusList = $this->siteModel->getSiteCampusArray('');
 
         $category_data = $this->categoryModel->getCategoryArray();
         $arr_category = [];
@@ -60,7 +63,11 @@ class BaseStudent extends \app\controllers\BaseController
             'wProgress_ccd' => $this->wCodeModel->getCcd('105'),
             'LecType_ccd' => $codes['607'],
             'Multiple_ccd' => $codes['611'],
-            'Sales_ccd' => $codes['618']
+            'Sales_ccd' => $codes['618'],
+            'studypattern_ccd' => $codes['653'],
+            'studyapply_ccd' => $codes['654'],
+            'accept_ccd' => $codes['675'],
+            'campusList' => $campusList,
         ]);
     }
 
@@ -95,6 +102,14 @@ class BaseStudent extends \app\controllers\BaseController
                 'A.IsNew' =>$this->_reqP('search_new'),
                 'A.IsBest' =>$this->_reqP('search_best'),
                 'A.SaleStatusCcd' =>$this->_reqP('search_sales_ccd'),
+                'B.StudyPatternCcd' =>$this->_reqP('search_studypattern_ccd'),
+                'B.StudyApplyCcd' =>$this->_reqP('search_studyapply_ccd'),
+                'B.SchoolStartYear' =>$this->_reqP('search_schoolstartyear'),
+                'B.SchoolStartMonth' =>$this->_reqP('search_schoolstartmonth'),
+                'B.IsLecOpen' =>$this->_reqP('search_islecopen'),
+                'B.AcceptStatusCcd' =>$this->_reqP('search_acceptccd'),
+                'A.IsUse' =>$this->_reqP('search_is_use'),
+                'B.CampusCcd' => $this->_reqP('search_campus_code')
             ],
             'LKR' => [
                 'C.CateCode' => $this->_reqP('search_lg_cate_code'),
@@ -104,16 +119,7 @@ class BaseStudent extends \app\controllers\BaseController
             ]
         ];
 
-        if($this->_reqP('search_type') === 'lec') {
-            $arr_condition = array_merge($arr_condition,[
-                'ORG1' => [
-                    'LKB' => [
-                        'A.ProdCode' => $this->_reqP('search_value'),
-                        'A.ProdName' => $this->_reqP('search_value')
-                    ]
-                ],
-            ]);
-        } elseif ($this->_reqP('search_type') === 'wlec') {
+        if ($this->_reqP('search_type') === 'wlec') {
             $arr_condition = array_merge($arr_condition,[
                 'ORG2' => [
                     'LKB' => [
@@ -122,12 +128,40 @@ class BaseStudent extends \app\controllers\BaseController
                     ]
                 ],
             ]);
-        }
+        //} elseif($this->_reqP('search_type') === 'lec') {
+        } else {
+        $arr_condition = array_merge($arr_condition,[
+            'ORG1' => [
+                'LKB' => [
+                    'A.ProdCode' => $this->_reqP('search_value'),
+                    'A.ProdName' => $this->_reqP('search_value')
+                ]
+            ],
+        ]);
+    }
+
 
         if (!empty($this->_reqP('search_sdate')) && !empty($this->_reqP('search_edate'))) {
             $arr_condition = array_merge($arr_condition, [
                 'BDT' => [
                     'A.RegDatm' => [$this->_reqP('search_sdate'), $this->_reqP('search_edate')]
+                ],
+            ]);
+        }
+
+        if (!empty($this->_reqP('search_sdate')) && !empty($this->_reqP('search_edate'))) {
+            $arr_condition = array_merge($arr_condition, [
+                'BDT' => [
+                    $this->_reqP('search_date_type') => [$this->_reqP('search_sdate'), $this->_reqP('search_edate')]
+                ],
+            ]);
+        }
+
+        if( strlen($this->_req('search_calc')) > 0) {
+            $whereOper = $this->_req('search_calc') === '0' ? 'EQ' : 'GTE';
+            $arr_condition = array_merge_recursive($arr_condition,[
+                $whereOper => [
+                    'F.DivisionCount' => $this->_req('search_calc')
                 ],
             ]);
         }
@@ -138,7 +172,7 @@ class BaseStudent extends \app\controllers\BaseController
 
         if($count > 0){
             $list = $this->studentModel->getListLecture(false, $arr_condition,
-                $this->_reqP('length'), $this->_reqP('start'));
+                $this->_reqP('length'), $this->_reqP('start'), ['A.ProdCode' => 'desc']);
         }
 
         return $this->response([

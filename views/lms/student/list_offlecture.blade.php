@@ -11,6 +11,12 @@
                     <label class="control-label col-md-1" for="search_value">강좌기본정보</label>
                     <div class="col-md-11 form-inline">
                         {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
+                        <select class="form-control mr-10" id="search_campus_code" name="search_campus_code">
+                            <option value="">캠퍼스</option>
+                            @foreach($campusList as $row)
+                                <option value="{{$row['CampusCcd']}}" class="{{$row['SiteCode']}}" >{{$row['CampusName']}}</option>
+                            @endforeach
+                        </select>
                         <select class="form-control mr-10" id="search_lg_cate_code" name="search_lg_cate_code">
                             <option value="">대분류</option>
                             @foreach($arr_lg_category as $row)
@@ -57,25 +63,38 @@
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_value">제공정보</label>
                     <div class="col-md-11 form-inline">
-                        <select class="form-control" id="search_lectype_ccd" name="search_lectype_ccd">
-                            <option value="">강좌유형</option>
-                            @foreach($LecType_ccd as $key=>$val)
+                        <select class="form-control" id="search_studypattern_ccd" name="search_studypattern_ccd">
+                            <option value="">수강형태</option>
+                            @foreach($studypattern_ccd as $key => $val)
+                                @if($key != '653003')
+                                    <option value="{{ $key }}">{{ $val }}</option>
+                                @endif
+                            @endforeach
+                        </select>
+                        <select class="form-control" id="search_studyapply_ccd" name="search_studyapply_ccd">
+                            <option value="">수강신청구분</option>
+                            @foreach($studyapply_ccd as $key => $val)
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
                         </select>
-                        &nbsp;
-                        <select class="form-control" id="search_wprogress_ccd" name="search_wprogress_ccd">
-                            <option value="">진행상태</option>
-                            @foreach($wProgress_ccd as $key=>$val)
-                                <option value="{{ $key }}">{{ $val }}</option>
-                            @endforeach
-                        </select>
-                        &nbsp;
-                        <select class="form-control" id="search_multiple" name="search_multiple">
-                            <option value="">배수여부</option>
-                            @foreach($Multiple_ccd as $key=>$val)
-                                <option value="{{ $key }}">{{ $val }}</option>
-                            @endforeach
+                        <select name="search_schoolstartyear" id="search_schoolstartyear"  class="form-control" title="개강년도">
+                            <option value="">개강년도</option>
+                            @for($i=(date('Y')+1); $i>=2014; $i--)
+                                <option value="{{$i}}">{{$i}}</option>
+                            @endfor
+                        </select>&nbsp;
+                        <select name="search_schoolstartmonth" id="search_schoolstartmonth"  class="form-control" title="개강월">
+                            <option value="">개강월</option>
+                            @for($i=1;$i<=12;$i++)
+                                @if(strlen($i) == 1) {{$ii= '0'.$i}}@else{{$ii=$i}}@endif
+                                <option value="{{$ii}}">{{$ii}}</option>
+                            @endfor
+                        </select>                        &nbsp;
+
+                        <select class="form-control" id="search_islecopen" name="search_islecopen">
+                            <option value="">개설여부</option>
+                            <option value="Y">개설</option>
+                            <option value="N">폐강</option>
                         </select>
                         &nbsp;
                         <select class="form-control" id="search_sales_ccd" name="search_sales_ccd">
@@ -95,16 +114,27 @@
 
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_value">강좌검색</label>
-                    <div class="col-md-6 form-inline">
-
+                    <div class="col-md-3 form-inline">
                         <select class="form-control" id="search_type" name="search_type" style="width:120px;">
                             <option value="lec">단강좌</option>
                             <option value="wlec">마스터강의</option>
                         </select>
                         <input type="text" class="form-control" id="search_value" name="search_value" style="width:250px;">
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-md-2">
                         <p class="form-control-static">명칭, 코드 검색 가능</p>
+                    </div>
+                    <label class="control-label col-md-1" for="search_sdate">날짜검색</label>
+                    <div class="col-md-5 form-inline">
+                        <select class="form-control" id="search_date_type" name="search_date_type" style="width:120px;">
+                            <option value="B.StudyStartDate">개강일</option>
+                            <option value="B.StudyEndDate">종강일</option>
+                            <option value="A.SaleStartDatm">접수시작일</option>
+                            <option value="A.SaleEndDatm">접수종료일</option>
+                            <option value="A.RegDatm">등록일</option>
+                        </select>
+                        <input name="search_sdate"  class="form-control datepicker" id="search_sdate" style="width: 100px;"  type="text"  value="">
+                        ~ <input name="search_edate"  class="form-control datepicker" id="search_edate" style="width: 100px;"  type="text"  value="">
                     </div>
                 </div>
             </div>
@@ -112,6 +142,7 @@
         <div class="row">
             <div class="col-xs-12 text-center">
                 <button type="submit" class="btn btn-primary btn-search" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
+                <button type="button" class="btn btn-default btn-search" id="btn_reset_in_set_search_date">초기화</button>
             </div>
         </div>
     </form>
@@ -196,6 +227,7 @@
             });
 
             // 과정, 과목, 교수 자동 변경
+            $search_form.find('select[name="search_campus_code"]').chained("#search_site_code");
             $search_form.find('select[name="search_lg_cate_code"]').chained("#search_site_code");
             $search_form.find('select[name="search_md_cate_code"]').chained("#search_lg_cate_code");
             $search_form.find('select[name="search_course_idx"]').chained("#search_site_code");

@@ -39,7 +39,6 @@ class StudentModel extends WB_Model
                     ,Ca.CateName, Cb.CateName as CateName_Parent
                     ,D.SalePrice, D.SaleRate, D.RealSalePrice
                     ,E.ProfIdx_String, E.wProfName_String
-                    ,F.DivisionCount
                     ,Z.wAdminName
                     ,(
                         SELECT COUNT(*) FROM lms_order_product as OP WHERE
@@ -59,22 +58,27 @@ class StudentModel extends WB_Model
                             left outer join lms_sys_code Aa on A.SaleStatusCcd = Aa.Ccd and Aa.IsStatus='Y'
                             left outer join lms_site Ab on A.SiteCode = Ab.SiteCode
                             join lms_sys_code Ac on A.ProdTypeCcd = Ac.Ccd and Ac.IsStatus='Y'
+                            
                         join lms_product_lecture B on A.ProdCode = B.ProdCode
                             left outer join lms_product_course Ba on B.CourseIdx = Ba.CourseIdx and Ba.IsStatus='Y'
                             left outer join lms_product_subject Bb on B.SubjectIdx = Bb.SubjectIdx and Bb.IsStatus='Y'
                             left outer join lms_sys_code Bc on B.LearnPatternCcd = Bc.Ccd and Bc.IsStatus='Y'
                             left outer join lms_sys_code Bd on B.LecTypeCcd = Bd.Ccd and Bd.IsStatus='Y'
+                            left outer join wbs_cms_lecture_combine_lite Be on B.wLecIdx = Be.wLecIdx and Be.cp_wAdminIdx='{$this->session->userdata('admin_idx')}'
                             left outer join lms_sys_code Bf on B.FreeLecTypeCcd = Bf.Ccd and Bf.IsStatus='Y'
                             left outer join lms_sys_code Bg on B.PackTypeCcd = Bg.Ccd and Bg.IsStatus='Y'
                             left outer join lms_sys_code Bh on B.FreeLecTypeCcd = Bh.Ccd and Bh.IsStatus='Y'
-                            left outer join lms_sys_code Bi on B.StudyPeriod = Bi.CcdValue and Bi.IsStatus='Y'
-                            left outer join wbs_cms_lecture_combine_lite Be on B.wLecIdx = Be.wLecIdx and Be.cp_wAdminIdx='{$this->session->userdata('admin_idx')}'
+                            left outer join lms_sys_code Bi on B.StudyPeriod = Bi.CcdValue and Bi.IsStatus='Y' and Bi.GroupCcd='650'
+                            left outer join lms_sys_code Bj on B.StudyPatternCcd = Bj.Ccd and Bj.IsStatus='Y'
+                            left outer join lms_sys_code Bk on B.StudyApplyCcd = Bk.Ccd and Bk.IsStatus='Y'
+                            left outer join lms_sys_code Bl on B.CampusCcd = Bl.Ccd
+                            left outer join lms_sys_code Bm on B.AcceptStatusCcd = Bm.Ccd
+                            
                         join lms_product_r_category C on A.ProdCode = C.ProdCode and C.IsStatus='Y'
                             join lms_sys_category Ca on C.CateCode = Ca.CateCode  and Ca.IsStatus='Y'
                             left outer join lms_sys_category Cb on Ca.ParentCateCode = Cb.CateCode
                         left outer join lms_product_sale D on A.ProdCode = D.ProdCode and D.SaleTypeCcd='613001' and D.IsStatus='Y'
                         left outer join vw_product_r_professor_concat E on A.ProdCode = E.ProdCode
-                        left outer join (select ProdCode, count(*) as DivisionCount from lms_product_division where IsStatus='Y' group by ProdCode) as F on A.ProdCode = F.ProdCode
                         left outer join wbs_sys_admin Z on A.RegAdminIdx = Z.wAdminIdx
                      WHERE A.IsStatus='Y'
         ";

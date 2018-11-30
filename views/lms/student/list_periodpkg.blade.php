@@ -29,27 +29,6 @@
                                 <option value="{{$i}}">{{$i}}</option>
                             @endfor
                         </select>
-                    <!-- <select class="form-control mr-10" id="search_course_idx" name="search_course_idx">
-                            <option value="">과정</option>
-                            @foreach($arr_course as $row)
-                        <option value="{{ $row['CourseIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CourseName'] }}</option>
-                            @endforeach
-                            </select>
-                            <select class="form-control mr-10" id="search_subject_idx" name="search_subject_idx">
-                                <option value="">과목</option>
-@foreach($arr_subject as $row)
-                        <option value="{{ $row['SubjectIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['SubjectName'] }}</option>
-                            @endforeach
-                            </select>
-@if(sess_data('is_prof') == 'N')
-                        <select class="form-control mr-10" id="search_prof_idx" name="search_prof_idx">
-                            <option value="">교수</option>
-@foreach($arr_professor as $row)
-                            <option value="{{ $row['ProfIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['wProfName'] }}</option>
-                                @endforeach
-                                </select>
-@endif
-                            -->
                         <select class="form-control" id="search_sales_ccd" name="search_sales_ccd">
                             <option value="">판매여부</option>
                             @foreach($Sales_ccd as $key=>$val)
@@ -78,6 +57,7 @@
         <div class="row">
             <div class="col-xs-12 text-center">
                 <button type="submit" class="btn btn-primary btn-search" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
+                <button type="button" class="btn btn-default btn-search" id="btn_reset_in_set_search_date">초기화</button>
             </div>
         </div>
     </form>

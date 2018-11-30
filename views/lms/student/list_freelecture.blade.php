@@ -109,6 +109,7 @@
         <div class="row">
             <div class="col-xs-12 text-center">
                 <button type="submit" class="btn btn-primary btn-search" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
+                <button type="button" class="btn btn-default btn-search" id="btn_reset_in_set_search_date">초기화</button>
             </div>
         </div>
     </form>

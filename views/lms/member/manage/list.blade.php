@@ -182,7 +182,7 @@
                 },
                 columns: [
                     {'data' : null, 'render' : function(data, type, row, meta){
-                            return '<input type="checkbox" name="selectMember" value="'+row.MemId+'">'
+                            return '<input type="checkbox" name="selectMember" value="'+row.MemIdx+'">'
                         }},
                     {'data' : null, 'render' : function(data, type, row, meta){
                             // 리스트 번호
@@ -241,14 +241,14 @@
             $('#btn_mail').click(function (){
                var target_id = $('input[name=selectMember]:checked').map(function (){return this.value;}).get().join(',');
                if(target_id == ''){ alert('메일보낼 회원을 선택해주십시요.');return;}
-                window.open("{{ site_url('crm/mail/createSend/') }}?target_id="+target_id, "_blank");
+                window.open("{{ site_url('crm/mail/createSend/') }}?target_idx="+target_id, "_blank");
             });
 
             $('#btn_message').click(function (){
                 var target_id = $('input[name=selectMember]:checked').map(function (){return this.value;}).get().join(',');
                 if(target_id == ''){ alert('쪽지보낼 회원을 선택해주십시요.');return;}
                 $('#btn_message').setLayer({
-                    url : "{{ site_url('crm/message/createSendModal') }}?target_id="+target_id,
+                    url : "{{ site_url('crm/message/createSendModal') }}?target_idx="+target_id,
                     width : 800,
                     modal_id : "message_modal"
                 });
@@ -258,7 +258,7 @@
                 var target_id = $('input[name=selectMember]:checked').map(function (){return this.value;}).get().join(',');
                 if(target_id == ''){ alert('SMS보낼 회원을 선택해주십시요.');return;}
                 $('#btn_sms').setLayer({
-                    url : "{{ site_url('crm/sms/createSendModal') }}?target_id="+target_id,
+                    url : "{{ site_url('crm/sms/createSendModal') }}?target_idx="+target_id,
                     width : 1100,
                     modal_id : "message_modal"
                 });

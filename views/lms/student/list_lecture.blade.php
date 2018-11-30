@@ -23,14 +23,12 @@
                                 <option value="{{ $row['CateCode'] }}" class="{{ $row['ParentCateCode'] }}">{{ $row['CateName'] }}</option>
                             @endforeach
                         </select>
-
                         <select name="search_schoolyear" id="search_schoolyear" class="form-control" title="대비학년도">
                             <option value="">대비학년도</option>
                             @for($i=(date('Y')+1); $i>=2005; $i--)
                                 <option value="{{$i}}">{{$i}}</option>
                             @endfor
                         </select>
-                        &nbsp;
                         <select class="form-control mr-10" id="search_course_idx" name="search_course_idx">
                             <option value="">과정</option>
                             @foreach($arr_course as $row)
@@ -96,9 +94,8 @@
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_value">강좌검색</label>
                     <div class="col-md-6 form-inline">
-
                         <select class="form-control" id="search_type" name="search_type" style="width:120px;">
-                            <option value="lec">단강좌</option>
+                            <option value="lec">강좌명</option>
                             <option value="wlec">마스터강의</option>
                         </select>
                         <input type="text" class="form-control" id="search_value" name="search_value" style="width:250px;">
@@ -126,7 +123,7 @@
                     <th>과정</th>
                     <th>과목</th>
                     <th>교수</th>
-                    <th>단강좌명</th>
+                    <th>강좌명</th>
                     <th>진행상태</th>
                     <th>판매가</th>
                     <th>배수</th>
@@ -149,15 +146,13 @@
 
             $datatable = $list_table.DataTable({
                 serverSide: true,
-
                 ajax: {
-                    'url' : '{{ site_url('/student/lecture/listAjax/') }}'
+                    'url' : '{{ site_url('/student/'.$lecType.'/listAjax/') }}'
                     ,'type' : 'post'
                     ,'data' : function(data) {
                         return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
                     }
-                }
-                ,
+                },
                 columns: [
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
@@ -170,7 +165,7 @@
                     {'data' : 'SubjectName'},//과목명
                     {'data' : 'wProfName_String'}, // 교수
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            return '['+row.ProdCode+ '] <a href="/student/lecture/view/"><u>' + row.ProdName + '</u></a> ';
+                            return '['+row.ProdCode+ '] <a href="javascript:;" class="btn-view" data-prodcode="' + row.ProdCode + '"><u>' + row.ProdName + '</u></a> ';
                         }},//단강좌명
 
                     {'data' : null, 'render' : function(data, type, row, meta) {
@@ -180,7 +175,9 @@
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return addComma(row.RealSalePrice)+'원<BR><strike>'+addComma(row.SalePrice)+'원</strike>';
                         }}, //판매가
-                    {'data' : 'MultipleApply'},//배수
+                    {'data' : 'MultipleApply', 'render' : function(data, type, row, meat){
+                            return (data == '1') ? '무제한' : data + '배수';
+                        }},//배수
                     {'data' : 'SaleStatusCcd_Name', 'render' : function(data, type, row, meta) {
                             return (data !== '판매불가') ? data : '<span class="red">'+data+'</span>';
                         }},//판매여부
@@ -190,9 +187,7 @@
                     {'data' : 'Count', 'render' : function(data, type, row, meta) {
                             return data + '명';
                         }}
-
                 ]
-
             });
 
             // 과정, 과목, 교수 자동 변경
@@ -201,6 +196,10 @@
             $search_form.find('select[name="search_course_idx"]').chained("#search_site_code");
             $search_form.find('select[name="search_subject_idx"]').chained("#search_site_code");
             $search_form.find('select[name="search_prof_idx"]').chained("#search_site_code");
+
+            $list_table.on('click', '.btn-view', function() {
+                location.href = '{{ site_url('/student/'.$lecType.'/view') }}/' + $(this).data('prodcode') + dtParamsToQueryString($datatable);
+            });
 
         });
     </script>

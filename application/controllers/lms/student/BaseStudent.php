@@ -51,6 +51,7 @@ class BaseStudent extends \app\controllers\BaseController
         }
 
         return $this->load->view('/student/list_'.$this->LearnPattern, [
+            'lecType' => $this->LearnPattern,
             'arr_lg_category' => element('LG', $arr_category, []),
             'arr_md_category' => element('MD', $arr_category, []),
             'arr_subject' => $this->subjectModel->getSubjectArray(),
@@ -132,10 +133,12 @@ class BaseStudent extends \app\controllers\BaseController
         }
 
         $list = [];
-        $count = $this->studentModel->getListLecture(true, $arr_condition);
+        $count = $this->studentModel->getListLecture(true, $arr_condition,
+            $this->_reqP('length'), $this->_reqP('start'));
 
         if($count > 0){
-            $list = $this->studentModel->getListLecture(false, $arr_condition);
+            $list = $this->studentModel->getListLecture(false, $arr_condition,
+                $this->_reqP('length'), $this->_reqP('start'));
         }
 
         return $this->response([
@@ -149,18 +152,33 @@ class BaseStudent extends \app\controllers\BaseController
      * 수강생보기 레이아웃
      * @return object|string
      */
-    public function view()
+    public function view($params = [])
     {
+        if(empty($params[0]) == true){
+            show_alert('강좌코드가 없습니다.', 'back');
+        }
+
+        $ProdCode = $params[0];
+
+        $lec = $this->studentModel->getListLecture(false, ['EQ' => [ 'A.ProdCode' => $ProdCode]]);
+
+        if(empty($lec) == true){
+            show_alert('강좌정보가가 없습니다.', 'back');
+        }
+
+        $lec = $lec[0];
+
+        // 사용하는 코드값 조회
+        $codes = $this->codeModel->getCcdInArray(['670','604','694']);
+        
+        // 강좌 정보 읽어오기
+
         return $this->load->view('/student/view_'.$this->LearnPattern, [
-            'arr_lg_category' => element('LG', $arr_category, []),
-            'arr_md_category' => element('MD', $arr_category, []),
-            'arr_subject' => $this->subjectModel->getSubjectArray(),
-            'arr_course' => $this->courseModel->getCourseArray(),
-            'arr_professor' => $this->professorModel->getProfessorArray(),
-            'wProgress_ccd' => $this->wCodeModel->getCcd('105'),
-            'LecType_ccd' => $codes['607'],
-            'Multiple_ccd' => $codes['611'],
-            'Sales_ccd' => $codes['618']
+            'lecType' => $this->LearnPattern,
+            'lec' => $lec,
+            'arr_pay_route_ccd' => $codes['670'],
+            'arr_pay_method_ccd' => $codes['604'],
+            'arr_pay_type_ccd' => $codes['694']
         ]);
     }
 
@@ -171,11 +189,71 @@ class BaseStudent extends \app\controllers\BaseController
      */
     public function viewAjax()
     {
+        $arr_condition = [
+            'EQ' => [
+                'OP.ProdCode' => $this->_reqP('ProdCode'), // 강좌코드
+                'OP.SalePatternCcd' => $this->_reqP('search_pay_type_ccd'), // 상품구분
+                'O.PayRouteCcd' => $this->_reqP('search_pay_route_ccd'), // 결제루트
+                'O.PayMethodCcd' => $this->_reqP('search_pay_method_ccd'), // 결제수단
+                'MI.MailRcvStatus' => $this->_reqP('MailRcv'), // 이메일수신
+                'MI.SmsRcvStatus' => $this->_reqP('SmsRcv') // Sms 수신
+            ]
+        ];
+        // 날짜 검색
+        $search_start_date = get_var($this->_reqP('search_start_date'), date('Y-m-01'));
+        $search_end_date = get_var($this->_reqP('search_end_date'), date('Y-m-t'));
+        $arr_condition['BDT'] = ['O.CompleteDatm' => [$search_start_date, $search_end_date]];
+
+        // 강좌 수강중인 회원 읽어오기
+        $list = [];
+        $count = $this->studentModel->getStudentList(true, $arr_condition,
+            $this->_reqP('length'), $this->_reqP('start'));
+
+        if($count > 0){
+            $list = $this->studentModel->getStudentList(false, $arr_condition,
+                $this->_reqP('length'), $this->_reqP('start'));
+        }
+
         return $this->response([
             'recordsTotal' => $count,
             'recordsFiltered' => $count,
             'data' => $list
         ]);
+    }
+
+    /**
+     * 엑셀 읽어오기
+     */
+    public function excel()
+    {
+        $headers = [ '회원번호', '회원명', '아이디', '상품구분', '주문번호', '결제루트', '결제수단', '결제금액',
+            '결제자', '결제일', '휴대폰', '이메일'];
+        $column = 'MemIdx, MemName, MemId, SalePatternCcd_Name, OrderIdx, PayRouteCcd_Name, PayMethodCcd_Name, Price
+            ,ifnull(AdminName, MemName) AS AdminName, PayDate, Phone, Mail';
+
+        $lec = $this->studentModel->getListLecture(false, ['EQ' => [ 'A.ProdCode' => $this->_reqP('ProdCode')]]);
+        $lec = $lec[0];
+
+        $arr_condition = [
+            'EQ' => [
+                'OP.ProdCode' => $this->_reqP('ProdCode'), // 강좌코드
+                'OP.SalePatternCcd' => $this->_reqP('search_pay_type_ccd'), // 상품구분
+                'O.PayRouteCcd' => $this->_reqP('search_pay_route_ccd'), // 결제루트
+                'O.PayMethodCcd' => $this->_reqP('search_pay_method_ccd'), // 결제수단
+                'MI.MailRcvStatus' => $this->_reqP('MailRcv'), // 이메일수신
+                'MI.SmsRcvStatus' => $this->_reqP('SmsRcv') // Sms 수신
+            ]
+        ];
+        // 날짜 검색
+        $search_start_date = get_var($this->_reqP('search_start_date'), date('Y-m-01'));
+        $search_end_date = get_var($this->_reqP('search_end_date'), date('Y-m-t'));
+        $arr_condition['BDT'] = ['O.CompleteDatm' => [$search_start_date, $search_end_date]];
+
+        $list = $this->studentModel->getStudentExcelList($column, $arr_condition);
+
+        // export excel
+        $this->load->library('excel');
+        $this->excel->exportExcel('수강생현황('.$lec['ProdCode'].')_'.date("Ymd", time()), $list, $headers);
     }
 
 }

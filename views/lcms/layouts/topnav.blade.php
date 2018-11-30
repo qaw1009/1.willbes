@@ -5,7 +5,7 @@
                 <img src="/public/img/logo.gif" class="ml-15 mr-20"/>
                 <span class="blue valign-middle">{{ $__cfg['site_title'] }}</span>
             </div>
-            @if(SUB_DOMAIN == 'lms')
+            @if(SUB_DOMAIN != 'tzone')
                 <div class="col-md-5">
                     <ul class="nav nav-tabs bar_tabs">
                         <li role="presentation" class="@if(SUB_DOMAIN == 'wbs') active active-wbs @endif"><a href="{{ app_url('/', 'wbs') }}" class="">WBS</a></li>

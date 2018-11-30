@@ -30,7 +30,7 @@ class Home extends \app\controllers\BaseController
     {
         // 오늘 로그인 로그 조회
         $arr_condition = [
-            'EQ' => ['wAdminId' => $this->session->userdata('admin_id')],
+            'EQ' => ['wAdminId' => $this->session->userdata('admin_id'), 'ConnSubDomain' => SUB_DOMAIN],
             'BDT' => ['LoginDatm' => [date('Y-m-d'), date('Y-m-d')]]
         ];
 

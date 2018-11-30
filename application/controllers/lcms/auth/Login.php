@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Login extends \app\controllers\BaseController
 {
-    protected $models = array('_lcms/auth/login', '_wbs/sys/admin');
+    protected $models = array('_lcms/auth/login', '_wbs/sys/admin', '_lms/product/base/professor');
     protected $helpers = array();
 
     public function __construct()
@@ -48,7 +48,7 @@ class Login extends \app\controllers\BaseController
 
         // 관리자 아이디/비밀번호 확인
         $row = $this->loginModel->findAdminForLogin($admin_id, $this->_reqP('admin_passwd', false));
-        if (count($row) < 1) {
+        if (empty($row) === true) {
             // 로그인 로그 저장
             $this->loginModel->addLoginLog($admin_id, 'NO_MATCH');
 
@@ -128,7 +128,7 @@ class Login extends \app\controllers\BaseController
                 'EQ' => ['wAdminId' => $this->_reqP('admin_id')]
             ]);
 
-            if (count($row) < 1) {
+            if (empty($row) === true) {
                 return $this->json_error('일치하는 정보가 없습니다.', _HTTP_NOT_FOUND);
             }
 
@@ -164,7 +164,7 @@ class Login extends \app\controllers\BaseController
             'EQ' => ['wAdminId' => $this->_reqP('admin_id')]
         ]);
 
-        if (count($row) < 1) {
+        if (empty($row) === true) {
             return $this->json_error('운영자 정보가 없습니다.', _HTTP_NOT_FOUND);
         }
 
@@ -267,6 +267,14 @@ class Login extends \app\controllers\BaseController
             set_cookie('saved_admin_id', $enc_admin_id, 86400 * 30);
         } else {
             delete_cookie('saved_admin_id');
+        }
+        
+        // tzone으로 접근할 경우 사이트별 교수식별자 조회 및 세션 생성
+        if (SUB_DOMAIN == 'tzone' && empty($data['wProfIdx']) === false) {
+            $arr_prof_idx = array_keys($this->professorModel->getProfessorArray('all', $data['wProfIdx']));
+
+            $this->session->set_userdata('admin_wprof_idx', $data['wProfIdx']);
+            $this->session->set_userdata('admin_prof_idxs', $arr_prof_idx);
         }
 
         // 최종 로그인 일시, IP 저장

@@ -22,7 +22,7 @@
                     </div>
                     <div class="mt-20">
                         <button type="submit" id="btn_login" class="btn btn-sm btn-default">로그인</button>
-                        @if(SUB_DOMAIN == 'lms')
+                        @if(SUB_DOMAIN != 'tzone')
                             <button type="button" id="btn_regist" class="btn btn-sm btn-default">관리자 신청</button>
                         @endif
                     </div>
@@ -61,7 +61,7 @@
                 $login_form.find('input[name="admin_id"]').focus();
             }
 
-            @if(SUB_DOMAIN == 'lms')
+            @if(SUB_DOMAIN != 'tzone')
                 $('#btn_regist').setLayer({
                     'url' : '{{ site_url('/lcms/auth/regist/create') }}',
                     'width' : 900

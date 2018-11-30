@@ -18,9 +18,15 @@ class LoginModel extends WB_Model
      */
     public function findAdminForLogin($admin_id, $admin_passwd)
     {
-        $query = 'select wAdminIdx, wRoleIdx, wAdminId, wAdminName, wIsApproval, wIsUse, ifnull(wCertType, "") as wCertType, ifnull(wLastLoginIp, "") as wLastLoginIp';
+        $query = 'select wAdminIdx, wRoleIdx, wAdminId, wAdminName, wIsApproval, wProfIdx, wIsUse, ifnull(wCertType, "") as wCertType, ifnull(wLastLoginIp, "") as wLastLoginIp';
         $query .= ' from ' . $this->_table;
         $query .= ' where wAdminId = ? and wAdminPasswd = fn_hash(?) and wIsStatus = "Y"';
+
+        // tzone으로 접근할 경우 lms 접근 금지
+        if (SUB_DOMAIN != 'tzone') {
+            $query .= ' and wProfIdx is null';
+        }
+
         $result = $this->_conn->query($query, [$admin_id, $admin_passwd]);
 
         return $result->row_array();

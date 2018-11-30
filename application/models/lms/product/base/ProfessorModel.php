@@ -334,16 +334,24 @@ class ProfessorModel extends WB_Model
 
     /**
      * 교수 코드 목록 조회
-     * @param string $site_code
+     * @param string $site_code [사이트코드 (all : 사이트 권한과 상관없이 모든 교수식별자 조회)]
+     * @param string $wprof_idx [WBS 교수식별자]
      * @return array
      */
-    public function getProfessorArray($site_code = '')
+    public function getProfessorArray($site_code = '', $wprof_idx = '')
     {
         $arr_condition = ['EQ' => ['P.IsUse' => 'Y', 'P.IsStatus' => 'Y', 'WP.wIsUse' => 'Y', 'WP.wIsStatus' => 'Y']];
+
         if (empty($site_code) === false) {
-            $arr_condition['EQ']['P.SiteCode'] = $site_code;
+            if ($site_code != 'all') {
+                $arr_condition['EQ']['P.SiteCode'] = $site_code;
+            }
         } else {
             $arr_condition['IN']['P.SiteCode'] = get_auth_site_codes();
+        }
+
+        if (empty($wprof_idx) === false) {
+            $arr_condition['EQ']['P.wProfIdx'] = $wprof_idx;
         }
 
         $data = $this->_conn->getJoinListResult($this->_table['professor'] . ' as P', 'inner', $this->_table['pms_professor'] . ' as WP'

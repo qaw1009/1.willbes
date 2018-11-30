@@ -179,10 +179,12 @@
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                         }}, // 번호
                     {'data' : 'MemIdx'}, // 회원번호
-                    {'data' : null, 'render' : function(data, type, row, meta) {
-                            return row.MemId + '(' + row.MemName + ')';
+                    {'data' : 'MemIdx', 'render' : function(data, type, row, meta) {
+                            return '<a href="{{site_url('/member/manage/detail/')}}'+data+'" target="_blank"><u>'+row.MemId + '(' + row.MemName + ')'+'</u></a>';
                         }}, //회원명(아이디)
-                    {'data' : 'OrderIdx'},// 주문번호
+                    {'data' : 'OrderIdx', 'render' : function(data, type, row, meta) {
+                            return '<a href="{{site_url('/pay/order/show/')}}'+data+'" target="_blank"><u>'+data+'</u></a>';
+                        }},// 주문번호
                     {'data' : 'PayDate'}, // 결제일
                     {'data' : 'Phone'},// 휴대폰
                     {'data' : 'Mail'},//이메일

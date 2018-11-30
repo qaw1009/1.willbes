@@ -32,7 +32,7 @@
             <button type="button" class="btn btn-default" id="btn_mail">EM발송</button>
             <button type="button" class="btn btn-default" id="btn_message">쪽지발송</button>
             <button type="button" class="btn btn-default" id="btn_sms">SMS발송</button>
-            <button type="button" class="btn bg-blue" id="">자동로그인</button>
+            <button type="button" class="btn bg-blue" id="btn_login">자동로그인</button>
         </div>
         <div class="x_content">
             <table class="table table-striped table-bordered text-center">
@@ -164,6 +164,10 @@
 
             $('#btn_mail').click( function () {
                 window.open("{{ site_url('crm/mail/createSend/') }}?target_id={{$data['MemId']}}", "_blank");
+            });
+
+            $('#btn_login').click( function () {
+                window.open("{{ site_url('/member/manage/setMemberLogin/'.$data['MemIdx']) }}", "_blank");
             });
 
             $('#btn_sms').setLayer({

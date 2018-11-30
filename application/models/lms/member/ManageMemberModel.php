@@ -201,13 +201,16 @@ class ManageMemberModel extends WB_Model
             $order_by_offset_limit = '';
 
         } else {
-            $column = "MemIdx, IsLogin, LoginIp, LoginDatm, LogoutIp, LogoutDatm ";
+            $column = " Log.MemIdx, Log.IsLogin, Log.LoginIp, Log.LoginDatm, Log.LogoutIp, Log.LogoutDatm, 
+                ifnull(A.wAdminName, '') as AdminName ";
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
 
-        $from = " FROM {$this->_table['loginLog']} AS log ";
+        $from = " FROM {$this->_table['loginLog']} AS Log
+                    left outer join {$this->_table['admin']} AS A on A.wAdminIdx = Log.AdminIdx
+         ";
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
@@ -371,5 +374,49 @@ class ManageMemberModel extends WB_Model
 
         // 쿼리 실행/리턴
         return $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit)->result_array();
+    }
+
+
+    public function storeMemberLogin($data = [])
+    {
+        // 데이타에 문제가 있을경우 오류
+        if(empty($data) === true) return false;
+        if(empty($data['MemIdx']) === true) return false;
+
+        $this->_conn->trans_begin();
+
+        try {
+            // 로그인 로그 기록
+            if($this->_conn->set([
+                    'MemIdx' => $data['MemIdx'],
+                    'IsLogin' => 'Y',
+                    'LoginIp' => $this->input->ip_address(),
+                    'AdminIdx' => $this->session->userdata('admin_idx')
+                ])->insert($this->_table['loginLog']) === false) {
+
+                throw new \Exception('로그인기록 입력 실패');
+            }
+
+            $loginKey = $this->_conn->insert_id();
+
+            // 마지막 로그인일자 업데이트
+
+            // 세션에 로그인 데이타 입력
+            $this->session->set_userdata('mem_idx', $data['MemIdx']);
+            $this->session->set_userdata('mem_id', $data['MemId']);
+            $this->session->set_userdata('mem_name', $data['MemName']);
+            $this->session->set_userdata('mem_mail', $data['Mail']);
+            $this->session->set_userdata('mem_phone', $data['Phone']);
+            $this->session->set_userdata('login_key', $loginKey);
+            $this->session->set_userdata('is_login', true);
+
+            $this->_conn->trans_commit();
+
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return false;
+        }
+
+        return true;
     }
 }

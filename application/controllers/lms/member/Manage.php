@@ -17,7 +17,6 @@ class Manage extends \app\controllers\BaseController
      */
     public function index()
     {
-
         $this->load->view('member/manage/list');
     }
 
@@ -585,6 +584,26 @@ class Manage extends \app\controllers\BaseController
         $this->load->view('member/log/blacklist_modal', [
             'data' => $data
         ]);
+    }
+
+
+    /**
+     * 해당 회원으로 로그인후 메인 페이지로 이동
+     */
+    public function setMemberLogin($params = [])
+    {
+        if(empty($params[0]) == true){
+            show_alert('로그인할수 없습니다.', 'close');
+        }
+        $memIdx = $params[0];
+
+        $data = $this->manageMemberModel->getMember($memIdx);
+
+        if($this->manageMemberModel->storeMemberLogin($data) == false){
+            show_alert('로그인할수 없습니다.', 'close');
+        }
+
+        redirect(app_url('/', 'www'));
     }
 
 }

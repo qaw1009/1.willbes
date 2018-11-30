@@ -215,8 +215,8 @@
                     {'data' : null, 'render' : function(data, type, row, meta){
                             return 'PC : '+row.PcCount+'<br>모바일 : '+row.MobileCount;
                         }},
-                    {'data' : null, 'render' : function(data, type, row, meta){
-                            return '[자동로그인]';
+                    {'data' : 'MemIdx', 'render' : function(data, type, row, meta){
+                            return '<a href="{{site_url('/member/manage/setMemberLogin/')}}'+data+'/" target="_blank">[자동로그인]</a>';
                         }},
                     {'data' : null, 'render' : function(data, type, row, meta){
                             return '<a href="#" class="btn-view1 blue" data-idx="' + row.MemIdx + '"">[수강정보관리]</a><br>' +

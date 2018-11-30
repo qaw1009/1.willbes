@@ -48,6 +48,7 @@
                             <th>로그인 IP</th>
                             <th>로그아웃 날짜</th>
                             <th>로그아웃 IP</th>
+                            <th>로그인사용자</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -82,7 +83,10 @@
                             {'data' : 'LoginDatm'},
                             {'data' : 'LoginIp'},
                             {'data' : 'LogoutDatm'},
-                            {'data' : 'LogoutIp'}
+                            {'data' : 'LogoutIp'},
+                            {'data' : 'AdminName', 'render' : function(data, type, row,meta){
+                                    return (data == '') ? '사용자' : '운영자('+data+')';
+                                }}
                         ]
                     });
                 });

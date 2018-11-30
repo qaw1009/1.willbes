@@ -205,8 +205,8 @@
                     {'data' : 'Phone'},// 휴대폰
                     {'data' : 'Mail'},//이메일
                     {'data' : 'MemIdx', 'render' : function(data, type, row, meta) {
-                            return '';
-                        }},//자동로그인
+                            return '<a href="{{site_url('/member/manage/setMemberLogin/')}}'+data+'/" target="_blank">[자동로그인]</a>';
+                        }} //자동로그인
                 ]
 
             });

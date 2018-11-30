@@ -3,14 +3,19 @@
         <div class="col-md-12 mt-10">
             <div class="col-md-4 logo">
                 <img src="/public/img/logo.gif" class="ml-15 mr-20"/>
-                <span class="blue valign-middle">{{ $__cfg['site_name'] }}</span>
+                <span class="blue valign-middle">{{ $__cfg['site_title'] }}</span>
             </div>
-            <div class="col-md-5">
-                <ul class="nav nav-tabs bar_tabs">
-                    <li role="presentation" class="@if(SUB_DOMAIN == 'wbs') active active-wbs @endif"><a href="{{ app_url('/', 'wbs') }}" class="">WBS</a></li>
-                    <li role="presentation" class="@if(SUB_DOMAIN == 'lms') active active-lms @endif"><a href="{{ app_url('/', 'lms') }}" class="">LMS</a></li>
-                </ul>
-            </div>
+            @if(SUB_DOMAIN == 'lms')
+                <div class="col-md-5">
+                    <ul class="nav nav-tabs bar_tabs">
+                        <li role="presentation" class="@if(SUB_DOMAIN == 'wbs') active active-wbs @endif"><a href="{{ app_url('/', 'wbs') }}" class="">WBS</a></li>
+                        <li role="presentation" class="@if(SUB_DOMAIN == 'lms') active active-lms @endif"><a href="{{ app_url('/', 'lms') }}" class="">LMS</a></li>
+                    </ul>
+                </div>
+            @else
+                <div class="col-md-5">
+                </div>
+            @endif
             <div class="col-md-3 nav_login">
                 <div class="pull-right">
                     <div class="pull-left mr-20 mt-5">

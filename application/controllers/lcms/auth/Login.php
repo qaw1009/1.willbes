@@ -140,7 +140,7 @@ class Login extends \app\controllers\BaseController
             }
 
             // 인증성공 결과 업데이트
-            $result = $this->loginModel->modifyAdminCertInfo('Y', $row['wAdminIdx']);
+            $result = $this->loginModel->modifyAdminCertInfo($row['wAdminIdx'], 'Y');
 
             // 로그인 로그 저장
             $this->loginModel->addLoginLog($row['wAdminId'], 'CERT_SUCCESS');

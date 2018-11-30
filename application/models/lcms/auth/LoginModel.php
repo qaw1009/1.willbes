@@ -42,11 +42,11 @@ class LoginModel extends WB_Model
 
     /**
      * 운영자 본인 인증 결과 수정
-     * @param string $cert_type
      * @param $admin_idx
+     * @param string $cert_type
      * @return array|bool
      */
-    public function modifyAdminCertInfo($cert_type = 'Y', $admin_idx)
+    public function modifyAdminCertInfo($admin_idx, $cert_type = 'Y')
     {
         $this->_conn->trans_begin();
 

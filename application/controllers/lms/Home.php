@@ -45,7 +45,7 @@ class Home extends \app\controllers\BaseController
             ], true);
         }
 
-        $this->load->view('main', [
+        $this->load->view('main_' . SUB_DOMAIN, [
             'last_login_ip' => $this->input->ip_address(),
             'data' => $list
         ]);

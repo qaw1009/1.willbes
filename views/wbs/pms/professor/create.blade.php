@@ -75,7 +75,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group">
+                <!--div class="form-group">
                     <label class="control-label col-md-2" for="prof_passwd">교수비밀번호
                     </label>
                     <div class="col-md-2 item">
@@ -84,7 +84,25 @@
                     <div class="col-md-7">
                         <p class="form-control-static"># @if($method == 'PUT') 변경 시에만 입력 @else 미입력 시 `1111`로 자동 셋팅 @endif</p>
                     </div>
+                </div-->
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="admin_make">운영자생성
+                    </label>
+                    <div class="col-md-10 item">
+                        <div class="checkbox">
+                            @if(empty($data['admin_reg_check']))
+                                <input type="checkbox" id="admin_make" name="admin_make" class="flat"  title="운영자생성" value="Y">
+                                &nbsp;&nbsp; # 해당 교수아이디로 운영자 생성 (초기 비밀번호는 교수아이디 와 일치 -> 티존 로그인 후 반드시 비밀번호 변경 )
+                            @else
+                                 # 운영자 생성 완료 : 초기 비밀번호는 교수아이디
+                            @endif
+                        </div>
+
+
+                    </div>
                 </div>
+
+
                 <div class="form-group">
                     <label class="control-label col-md-2" for="sample_url">맛보기영상경로
                     </label>

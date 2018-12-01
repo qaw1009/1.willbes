@@ -15,6 +15,8 @@ class ProfessorModel extends WB_Model
     public function __construct()
     {
         parent::__construct('wbs');
+        // 사용 모델 로드
+        $this->load->loadModels(['sys/admin']);
     }
 
     /**
@@ -114,6 +116,9 @@ class ProfessorModel extends WB_Model
         $column .= ' , P.wAttachImgPath, P.wAttachImgName1, P.wAttachImgName2, P.wAttachImgName3, P.wAttachImgName4, P.wIsUse, P.wRegDatm, P.wRegAdminIdx, P.wUpdDatm, P.wUpdAdminIdx';
         $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = P.wRegAdminIdx and wIsStatus = "Y") as wRegAdminName';
         $column .= ' , if(P.wUpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = P.wUpdAdminIdx and wIsStatus = "Y")) as wUpdAdminName';
+        //운영자 등록
+        $column .=', (SELECT wProfIdx FROM wbs_sys_admin WHERE wProfIdx = P.wProfIdx) AS admin_reg_check ';
+
 
         return $this->_conn->getFindResult($this->_table['professor'] . ' as P', $column, [
             'EQ' => ['P.wProfIdx' => $prof_idx, 'P.wIsStatus' => 'Y']
@@ -130,8 +135,9 @@ class ProfessorModel extends WB_Model
         $count = $this->_conn->getListResult($this->_table['professor'], true, [
             'EQ' => ['wProfId' => $prof_id]
         ]);
+        $count2 = $this->adminModel->isDuplicateAdminId($prof_id); //운영자 아이디 중복여부 : 교수등록시 운영자까지 등록하므로 미리 체크
 
-        return ($count > 0) ? true : false;
+        return ($count > 0 || $count2 > 0) ? true : false;
     }
 
     /**
@@ -161,8 +167,8 @@ class ProfessorModel extends WB_Model
                 'wRegAdminIdx' => $this->session->userdata('admin_idx'),
             ];
 
-            // 비밀번호
-            $this->_conn->set('wProfPasswd', 'fn_hash("' . get_var(element('prof_passwd', $input), '1111') . '")', false);
+            // 비밀번호 : 운영자 등록시 운영자 항목에서
+            //$this->_conn->set('wProfPasswd', 'fn_hash("' . get_var(element('prof_passwd', $input), '1111') . '")', false);
 
             // 데이터 등록
             if ($this->_conn->set($data)->insert($this->_table['professor']) === false) {
@@ -202,6 +208,16 @@ class ProfessorModel extends WB_Model
                 }
             }
 
+            //운영자 등록하기
+            if(element('admin_make', $input)==='Y') {
+                $input = array_merge($input,[
+                    'wProfIdx' => $prof_idx
+                ]);
+
+                if ($this->_makeAddAdmin($input) !== true) {
+                    throw new \Exception('운영자 등록에 실패했습니다.');
+                }
+            }
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();
@@ -304,6 +320,18 @@ class ProfessorModel extends WB_Model
                 }
             }
 
+
+            //운영자 등록하기
+            if(element('admin_make', $input)==='Y') {
+                $input = array_merge($input,[
+                    'wProfIdx' => $prof_idx
+                ]);
+
+                if ($this->_makeAddAdmin($input) !== true) {
+                    throw new \Exception('운영자 등록에 실패했습니다.');
+                }
+            }
+
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();
@@ -387,4 +415,50 @@ class ProfessorModel extends WB_Model
 
         return $attach_img_names;
     }
+
+
+    /**
+     * 운영자 등록 : 교수 등록시 동시 생성
+     * @param array $input
+     * @param string $type
+     * @return array|bool
+     */
+    public function _makeAddAdmin($input = [])
+    {
+        try {
+            // 아이디 중복 체크
+            if ($this->adminModel->isDuplicateAdminId(element('prof_id', $input)) === true) {
+                throw new \Exception('이미 사용중인 운영자 아이디입니다. 다른 아이디를 입력해 주세요.', _HTTP_CONFLICT);
+            }
+
+            $data = [
+                'wAdminId' => element('prof_id', $input),
+                'wAdminPasswd' => element('prof_id', $input),
+                'wAdminName' => element('prof_name', $input),
+                'wAdminPhone1' => '010',
+                'wAdminPhone2' => '0000',
+                'wAdminPhone3' => '0000',
+                'wAdminMail' => 'empty@empty',
+                'wAdminDeptCcd' => '109001',        //WCA 소속
+                'wAdminPositionCcd' => '110010',    //교수
+                'wAdminDesc' => '자동 생성 계정',
+                'wIsUse' => element('is_use', $input),
+                'wIsApproval' => 'Y',
+                'wRoleIdx' => '1013',
+                'wProfIdx' => element('wProfIdx', $input),      //교수식별자 삽입
+                'wCertType' => 'E',      //인증제외
+            ];
+
+            if ($this->adminModel->_addAdmin($data) !== true) {
+                //throw new \Exception('운영자 등록에 실패했습니다.');
+                return false;
+            }
+
+        } catch (\Exception $e) {
+            return error_result($e);
+        }
+        return true;
+    }
+
+
 }

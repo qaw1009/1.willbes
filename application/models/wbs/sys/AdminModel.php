@@ -173,7 +173,7 @@ class AdminModel extends WB_Model
      * @param array $data
      * @return bool|string
      */
-    private function _addAdmin($data = [])
+    public function _addAdmin($data = [])
     {
         try {
             // 등록 운영자 식별자

@@ -39,8 +39,8 @@ class MenuModel extends WB_Model
         $column = 'U.*, A.wAdminName as LastRegAdminName';
         $from = '
             from (
-                select BMenuIdx, BMenuName, BMenuDepth, BOrderNum, if(BMenuDepth < LastMenuDepth, BIsUse, "") as BIsUse
-                    , MMenuIdx, MMenuName, MMenuDepth, MOrderNum, if(MMenuDepth < LastMenuDepth, MIsUse, "") as MIsUse, BIsTzone
+                select BMenuIdx, BMenuName, BMenuDepth, BOrderNum, if(BMenuDepth < LastMenuDepth, BIsUse, "") as BIsUse, BIsTzone
+                    , MMenuIdx, MMenuName, MMenuDepth, MOrderNum, if(MMenuDepth < LastMenuDepth, MIsUse, "") as MIsUse, MIsTzone
                     , SMenuIdx, SMenuName, SMenuDepth, SOrderNum, IsTzone
                     , if(LastMenuDepth = 1, BMenuUrl, if(LastMenuDepth = 2, MMenuUrl, SMenuUrl)) as LastMenuUrl
                     , if(LastMenuDepth = 1, BIsUse, if(LastMenuDepth = 2, MIsUse, SIsUse)) as LastIsUse
@@ -50,7 +50,7 @@ class MenuModel extends WB_Model
                     select BM.MenuIdx as BMenuIdx, BM.MenuName as BMenuName, BM.MenuDepth as BMenuDepth, BM.OrderNum as BOrderNum
                         , BM.IsUse as BIsUse, BM.MenuUrl as BMenuUrl, BM.RegAdminIdx as BRegAdminIdx, BM.RegDatm as BRegDatm, BM.IsTzone	as BIsTzone
                         , MM.MenuIdx as MMenuIdx, MM.MenuName as MMenuName, MM.MenuDepth as MMenuDepth, MM.OrderNum as MOrderNum
-                        , MM.IsUse as MIsUse, MM.MenuUrl as MMenuUrl, MM.RegAdminIdx as MRegAdminIdx, MM.RegDatm as MRegDatm
+                        , MM.IsUse as MIsUse, MM.MenuUrl as MMenuUrl, MM.RegAdminIdx as MRegAdminIdx, MM.RegDatm as MRegDatm ,MM.IsTzone as MIsTzone
                         , SM.MenuIdx as SMenuIdx, SM.MenuName as SMenuName, SM.MenuDepth as SMenuDepth, SM.OrderNum as SOrderNum
                         , SM.IsUse as SIsUse, SM.MenuUrl as SMenuUrl, SM.RegAdminIdx as SRegAdminIdx, SM.RegDatm as SRegDatm, SM.IsTzone as IsTzone
                         , greatest(BM.MenuDepth, ifnull(MM.MenuDepth, 0), ifnull(SM.MenuDepth, 0)) as LastMenuDepth		

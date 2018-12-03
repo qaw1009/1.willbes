@@ -57,6 +57,9 @@
                                 [<span class="blue">{{ $row['BMenuIdx'] }}</span>]
                                 @if($row['BIsUse'] == 'Y') (사용) @elseif($row['BIsUse'] == 'N') (<span class="red">미사용</span>) @endif
                             </div>
+                            <div class="form-group form-group-sm no-border-bottom">
+                            @if($row['BIsTzone'] == 'Y') <span class="right red">[Tzone]</span> @endif
+                            </div>
                         </td>
                         <td>
                             @if(empty($row['MMenuIdx']) === false)
@@ -67,6 +70,9 @@
                                     [<span class="blue">{{ $row['MMenuIdx'] }}</span>]
                                     @if($row['MIsUse'] == 'Y') (사용) @elseif($row['MIsUse'] == 'N') (<span class="red">미사용</span>) @endif
                                 </div>
+                                <div class="form-group form-group-sm no-border-bottom">
+                                @if($row['MIsTzone'] == 'Y') <span class="right red">[Tzone]</span> @endif
+                                </div>
                             @endif
                         </td>
                         <td>
@@ -76,11 +82,13 @@
                                     <a href="#none" class="btn-modify" data-idx="{{ $row['SMenuIdx'] }}"><u>{{ $row['SMenuName'] }}</u></a>
                                     [<span class="blue">{{ $row['SMenuIdx'] }}</span>]
                                 </div>
+                                <div class="form-group form-group-sm no-border-bottom">
+                                    @if($row['IsTzone'] == 'Y') <span class="right red">[Tzone]</span> @endif
+                                </div>
                             @endif
                         </td>
                         <td>
                             <span>{{ $row['LastMenuUrl'] }}</span>
-                            @if($row['IsTzone'] == 'Y') <span class="right red">[Tzone]</span> @endif
                         </td>
                         <td>@if($row['LastIsUse'] == 'Y') 사용 @elseif($row['LastIsUse'] == 'N') <span class="red">미사용</span> @endif
                             <span class="hide">{{ $row['LastIsUse'] }}</span>

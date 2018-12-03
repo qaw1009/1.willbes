@@ -52,7 +52,7 @@ class LmsAuthService extends AdminAuthService
 
         // tzone으로 접근할 경우 tzone 메뉴만 노출
         if (SUB_DOMAIN == 'tzone') {
-            $where .= ' and M.IsTzone = "Y"';
+            $where .= ' and M.IsTzone = "Y" and G.IsTzone = "Y" and P.IsTzone = "Y"';
         }
 
         $order_by_offset_limit = ' order by TreeNum asc';

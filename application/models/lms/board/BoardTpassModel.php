@@ -39,33 +39,90 @@ class BoardTpassModel extends BoardModel
         ) AS a
         INNER JOIN {$this->_table_member} AS b ON a.MemIdx = b.MemIdx
         INNER JOIN {$this->_table_sys_admin} AS c ON a.RegAdminIdx = c.wAdminIdx AND c.wIsStatus='Y'
-        INNER JOIN {$this->_table_sys_admin} AS d ON a.RetireAdminIdx = d.wAdminIdx AND d.wIsStatus='Y'
+        LEFT OUTER JOIN {$this->_table_sys_admin} AS d ON a.RetireAdminIdx = d.wAdminIdx AND d.wIsStatus='Y'
         ";
 
-        $where_temp = $this->_conn->makeWhere($arr_condition);
-        $where_temp = $where_temp->getMakeWhere(false);
-
-        // 캠퍼스 권한
-        $arr_auth_campus_ccds = get_auth_all_campus_ccds();
-        $where_campus = $this->_conn->group_start();
-        foreach ($arr_auth_campus_ccds as $set_site_ccd => $set_campus_ccd) {
-            $where_campus->or_group_start();
-            $where_campus->or_where('b.SiteCode',$set_site_ccd);
-            $where_campus->group_start();
-            $where_campus->where('b.CampusCcd', $this->codeModel->campusAllCcd);
-            $where_campus->or_where_in('b.CampusCcd', $set_campus_ccd);
-            $where_campus->group_end();
-            $where_campus->group_end();
-        }
-        $where_campus->or_where('b.CampusCcd', "''", false);
-        $where_campus->or_where('b.CampusCcd IS NULL');
-        $where_campus->group_end();
-        $where_campus = $where_campus->getMakeWhere(true);
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
 
         // 쿼리 실행
-        $where = $where_temp . $where_campus;
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
-
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    public function listAuthorityMember($arr_condition = [], $column)
+    {
+        $from = "
+            FROM {$this->_table_board_tpass_member_authority} AS a
+            INNER JOIN {$this->_table_member} AS b ON a.MemIdx = b.MemIdx
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        // 쿼리 실행
+        return $this->_conn->query('select ' . $column . $from . $where)->result_array();
+    }
+
+    public function addMemberAuthority($input, $prod_code)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $up_data_count = 0;
+            $arr_intersect_member = [];
+            $sess_admin_idx = $this->session->userdata('admin_idx');
+            $reg_ip = $this->input->ip_address();
+
+            $arr_condition = [
+                'EQ' => [
+                    'a.SiteCode' => element('site_code', $input),
+                    'a.ProdCode' => $prod_code,
+                    'a.ProfIdx' => element('prof_idx', $input),
+                    'a.IsValid' => 'Y',
+                    'a.IsStatus' => 'Y'
+                ],
+                'IN' => [
+                    'a.MemIdx' => element('mem_idx', $input)
+                ]
+            ];
+            $chk_member_list = $this->listAuthorityMember($arr_condition, 'a.MemIdx, b.MemName');
+            $arr_chk_member_list = array_pluck($chk_member_list, 'MemName', 'MemIdx');
+
+            $arr_mem_idx = array_flip(element('mem_idx', $input, []));
+
+            $set_mem_idx = array_diff_key($arr_mem_idx, $arr_chk_member_list);  //등록된회원정보제거
+            $up_data_count = count($set_mem_idx);   //등록할회원수
+            $arr_intersect_member = array_intersect_key($arr_chk_member_list, $arr_mem_idx);   //제거된회원정보 memidx, memname
+
+            if ($up_data_count <= 0) {
+                throw new \Exception('권한부여할 회원이 없습니다. 다시 시도해주세요.');
+            }
+
+            foreach ($set_mem_idx as $key => $val) {
+                //insert
+                $data = [
+                    'SiteCode' => element('site_code', $input),
+                    'ProdCode' => $prod_code,
+                    'ProfIdx' => element('prof_idx', $input),
+                    'MemIdx' => $key,
+                    'ValidStartDate' => element('valid_start_date', $input),
+                    'ValidDay' => element('valid_days', $input),
+                    'ValidReason' => element('valid_reason', $input),
+                    'RegAdminIdx' => $sess_admin_idx,
+                    'RegIp' => $reg_ip
+                ];
+                $this->_conn->set($data)->set('ValidEndDate', 'date_add("'.element('valid_start_date', $input).'", interval '.element('valid_days', $input).' - 1 day)', false);
+                if ($this->_conn->insert($this->_table_board_tpass_member_authority) === false) {
+                    throw new \Exception('권한부여 실패했습니다.');
+                }
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return array(error_result($e), $up_data_count, $arr_intersect_member);
+        }
+
+        return array(true, $up_data_count, $arr_intersect_member);
     }
 }

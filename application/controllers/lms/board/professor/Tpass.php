@@ -5,7 +5,7 @@ require APPPATH . 'controllers/lms/board//BaseBoard.php';
 
 class Tpass extends BaseBoard
 {
-    protected $temp_models = array('sys/code', 'sys/category', 'sys/boardMaster', 'board/board', 'product/base/professor', 'product/on/packageAdmin');
+    protected $temp_models = array('sys/code', 'sys/category', 'sys/boardMaster', 'board/board', 'board/boardTpass', 'product/base/professor', 'product/on/packageAdmin');
     protected $helpers = array('download','file');
     private $board_name = 'tpass';
     private $site_code = '';
@@ -289,6 +289,121 @@ class Tpass extends BaseBoard
 
         if ($count > 0) {
             $list = $this->boardModel->listAllBoard($this->board_name,false, $arr_condition, $sub_query_condition, $this->site_code, $this->_reqP('length'), $this->_reqP('start'), ['LB.IsBest' => 'desc', 'LB.BoardIdx' => 'desc'], $column);
+        }
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list,
+        ]);
+    }
+
+    /**
+     * 회원 자료실권한부여 등록 폼
+     * @param array $params
+     */
+    public function createMemberAuthorityModal($params = [])
+    {
+        $this->setDefaultBoardParam();
+        $board_params = $this->getDefaultBoardParam();
+        $this->bm_idx = $board_params['bm_idx'];
+        $prof_idx = $this->_req('prof_idx');
+        $this->site_code = $this->_req('site_code');
+        $prod_code = $params[0];
+        $method = 'POST';
+
+        $input_params = [
+            'site_code' => $this->site_code,
+            'prof_idx' => $prof_idx
+        ];
+
+        // 기본 상품 정보
+        $arr_condition = [
+            'EQ' => [
+                'A.ProdTypeCcd' => $this->prodtypeccd,
+                'B.LearnPatternCcd' => $this->learnpatternccd,
+                'A.SiteCode' => $this->site_code,
+                'A.ProdCode' => $prod_code
+            ]
+        ];
+        $product_data = $this->packageAdminModel->listLectureForProf(false, $prof_idx, $arr_condition, 1, 0, ['A.ProdCode' => 'desc'])[0];
+
+        $this->load->view("board/professor/{$this->board_name}/create_member_authority_modal", [
+            'boardName' => $this->board_name,
+            'prod_code' => $prod_code,
+            'method' => $method,
+            'input_params' => $input_params,
+            'product_data' => $product_data,
+            'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}&prof_idx={$prof_idx}&site_code={$product_data['SiteCode']}",
+        ]);
+    }
+
+
+    public function storeMemberAuthority($params = [])
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
+            ['field' => 'site_code', 'label' => '사이트코드', 'rules' => 'trim|required|integer'],
+            ['field' => 'prof_idx', 'label' => '교수식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'mem_idx[]', 'label' => '회원 선택', 'rules' => 'trim|required'],
+            ['field' => 'valid_start_date', 'label' => '시작일', 'rules' => 'trim|required'],
+            ['field' => 'valid_days', 'label' => '유효기간', 'rules' => 'trim|required'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        list($result, $return_count, $arr_intersect_mem_idx) = $this->boardTpassModel->addMemberAuthority($this->_reqP(null, false), $params[0]);
+        $success_msg = count($this->_reqP('mem_idx', false)).'명 중 '.$return_count.'명에게 권한이 부여되었습니다.';
+        $result_data = [
+            'intersect_count' => count($arr_intersect_mem_idx),
+            'arr_intersect' => $arr_intersect_mem_idx
+        ];
+        $this->json_result($result, $success_msg, $result, $result_data);
+    }
+
+    /**
+     * T-pass 자료실 회원 권한 목록
+     * @param array $params
+     * @return CI_Output
+     */
+    public function memberAuthorityAjax($params = [])
+    {
+        $this->setDefaultBoardParam();
+        $board_params = $this->getDefaultBoardParam();
+        $this->bm_idx = $board_params['bm_idx'];
+        $prof_idx = $this->_req('prof_idx');
+        $this->site_code = $this->_req('site_code');
+        $prod_code = $params[0];
+
+        $target_condition = [
+            'EQ' => [
+                'SiteCode' => $this->site_code,
+                'ProdCode' => $prod_code,
+                'ProfIdx' => $prof_idx
+            ]
+        ];
+
+        $arr_condition = [
+            'ORG' => [
+                'LKB' => [
+                    'b.MemName' => $this->_reqP('search_value'),
+                    'b.MemId' => $this->_reqP('search_value')
+                ]
+            ],
+        ];
+
+        $column = ' STRAIGHT_JOIN
+                    a.BtmaIdx, a.MemIdx, a.ValidStartDate, a.ValidEndDate, a.ValidDay, IFNULL(a.ValidReason, \'\') AS ValidReason, a.RegDatm, a.RegAdminIdx, IFNULL(a.RetireDatm, \'\') AS RetireDatm, a.RetireAdminIdx,
+                    b.MemId, b.MemName, c.wAdminName AS RegAdminName, IFNULL(d.wAdminName, \'\') AS RetireAdminName
+        ';
+
+        $list = [];
+        $count = $this->boardTpassModel->listAllBoardForTpassMemberAuthority(true, $target_condition, $arr_condition);
+
+        if ($count > 0) {
+            $list = $this->boardTpassModel->listAllBoardForTpassMemberAuthority(false, $target_condition, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['a.BtmaIdx' => 'desc'], $column);
         }
 
         return $this->response([

@@ -87,6 +87,7 @@
                 <th>판매여부</th>
                 <th>사용여부</th>
                 <th>등록</th>
+                <th>자료실권한부여</th>
             </tr>
             </thead>
             <tbody>
@@ -147,6 +148,9 @@
                     }},//사용여부
                 {'data' : null, 'render' : function(data, type, row, meta) {
                         return '<a href="javascript:void(0);" class="btn-manager" data-prod-code="' + row.ProdCode + '"><u>등록</u></a>';
+                    }},
+                {'data' : null, 'render' : function(data, type, row, meta) {
+                        return '<a href="javascript:void(0);" class="btn-authority" data-prod-code="' + row.ProdCode + '"><u>권한부여</u></a>';
                     }}
             ],
         });
@@ -154,6 +158,14 @@
         //T pass 게시판
         $list_table.on('click', '.btn-manager', function() {
             location.href='{{ site_url("/board/professor/{$boardName}/registForBoard") }}/' + $(this).data('prod-code') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}';
+        });
+
+        $list_table.on('click', '.btn-authority', function() {
+            $('.btn-authority').setLayer({
+                "url" : "{{ site_url("/board/professor/{$boardName}/createMemberAuthorityModal/") }}" + $(this).data('prod-code') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}',
+                "width" : "1200",
+                "modal_id" : "modal_html2"
+            });
         });
     });
 </script>

@@ -30,7 +30,7 @@ class StudentModel extends WB_Model
                     ,Ac.CcdName as ProdTypeCcd_Name
                     ,B.CourseIdx, B.SubjectIdx, B.LearnPatternCcd, B.SchoolYear
                     ,B.MultipleApply
-                    ,B.wLecIdx, B.StudyStartDate
+                    ,B.wLecIdx, B.StudyStartDate, B.StudyEndDate
                     ,Ba.CourseName, Bb.SubjectName, Bc.CcdName as LearnPatternCcd_Name
                     ,Bd.CcdName as LecTypeCcd_Name
                     ,Bf.CcdName as FreeLecTypeCcd_Name
@@ -47,6 +47,16 @@ class StudentModel extends WB_Model
                     ) as Count
                     ,B.PackTypeCCd, Bg.CcdName as PackTypeCcd_Name, B.FreeLecTypeCcd, Bh.CcdName as FreeLecTypeCcd_Name
                     ,Bi.CcdName as PackStudyPeriod_Name
+                    
+                    ,B.StudyPatternCcd ,Bj.CcdName as StudyPatternCcd_Name
+                    ,B.StudyApplyCcd ,Bk.CcdName as StudyApplyCcd_Name
+                    ,B.CampusCcd ,Bl.CcdName as CampusCcd_Name
+                    ,B.AcceptStatusCcd ,Bm.CcdName as AcceptStatusCcd_Name
+                    ,B.SchoolStartYear ,B.SchoolStartMonth, B.FixNumber, B.IsLecOpen
+                    ,DATE_FORMAT(A.SaleStartDatm,'%Y-%m-%d') as SaleStartDatm
+                    ,DATE_FORMAT(A.SaleStartDatm,'%H') as SaleStartHour
+                    ,DATE_FORMAT(A.SaleEndDatm,'%Y-%m-%d') as SaleEndDatm
+                    ,DATE_FORMAT(A.SaleEndDatm,'%H') as SaleEndHour
             ";
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();

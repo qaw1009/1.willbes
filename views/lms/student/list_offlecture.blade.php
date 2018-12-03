@@ -152,16 +152,21 @@
                 <thead>
                 <tr>
                     <th>No.</th>
+                    <td>캠퍼스</td>
                     <th>기본정보</th>
-                    <th>특강여부</th>
+                    <th>수강형태</th>
+                    <th>수강신청구분</th>
+                    <th>개강 년/월</th>
                     <th>과정</th>
                     <th>과목</th>
                     <th>교수</th>
-                    <th>단강좌명</th>
-                    <th>진행상태</th>
+                    <th>단과반명</th>
                     <th>판매가</th>
-                    <th>배수</th>
-                    <th>판매여부</th>
+                    <th>정원</th>
+                    <th>개강일~종강일</th>
+                    <th>개설여부</th>
+                    <th>접수기간</th>
+                    <th>접수상태</th>
                     <th>사용여부</th>
                     <th>수강생현황</th>
                 </tr>
@@ -182,7 +187,7 @@
                 serverSide: true,
 
                 ajax: {
-                    'url' : '{{ site_url('/student/offlecture/listAjax/') }}'
+                    'url' : '{{ site_url('/student/'.$lecType.'/listAjax/') }}'
                     ,'type' : 'post'
                     ,'data' : function(data) {
                         return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
@@ -193,35 +198,43 @@
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                         }}, // 번호
+                    {'data' : 'CampusCcd_Name' }, // 캠퍼스
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return row.SiteName+'<BR>'+(row.CateName_Parent == null ? '' : row.CateName_Parent+'<BR>')+(row.CateName)+'<BR>'+row.SchoolYear;
                         }}, //기본정보
-                    {'data' : 'LecTypeCcd_Name'},//강좌유형
+                    {'data' : 'StudyPatternCcd_Name' },// 수강형태
+                    {'data' : 'StudyApplyCcd_Name' },// 수강신청구분
+                    {'data' : null, 'render' : function (data, type, row,meta){
+                            return row.SchoolStartYear + '년 ' + row.SchoolStartMonth + '월';
+                        } },// 개강 년/월
                     {'data' : 'CourseName'},//과정명
                     {'data' : 'SubjectName'},//과목명
                     {'data' : 'wProfName_String'}, // 교수
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            return '['+row.ProdCode+ '] <a href="/student/lecture/view/"><u>' + row.ProdName + '</u></a> ';
+                            return '['+row.ProdCode+ '] <a href="javascript:;" class="btn-view" data-prodcode="' + row.ProdCode + '"><u>' + row.ProdName + '</u></a> ';
                         }},//단강좌명
-
-                    {'data' : null, 'render' : function(data, type, row, meta) {
-                            return row.wProgressCcd_Name+'<BR>('+row.wUnitCnt+'/'+row.wUnitLectureCnt+')';
-                        }},//진행상태
-
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return addComma(row.RealSalePrice)+'원<BR><strike>'+addComma(row.SalePrice)+'원</strike>';
                         }}, //판매가
-                    {'data' : 'MultipleApply'},//배수
-                    {'data' : 'SaleStatusCcd_Name', 'render' : function(data, type, row, meta) {
-                            return (data !== '판매불가') ? data : '<span class="red">'+data+'</span>';
-                        }},//판매여부
+                    {'data' : 'FixNumber', 'render' : function(data, type, row, meta){
+                            return data + '명';
+                        } },//정원
+                    {'data' : null, 'render' : function(data, type, row, meta){
+                            return row.StudyStartDate + ' ~ ' + row.StudyEndDate;
+                        } },// 개강일 종강일
+                    {'data' : 'IsLecOpen', 'render' : function(data, type, row, meta){
+                            return (data == 'Y') ? '개설' : '폐강';
+                        } },// 개설여부
+                    {'data' : null, 'render' : function(data, type, row, meta){
+                            return row.SaleStartDatm + ' ' + row.SaleStartHour + '시 ~ ' + row.SaleEndDatm + ' ' + row.SaleEndHour + '시';
+                        } },// 접수기간
+                    {'data' : 'AcceptStatusCcd_Name' },// 접수상태
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                             return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
                         }},//사용여부
                     {'data' : 'Count', 'render' : function(data, type, row, meta) {
                             return data + '명';
                         }}
-
                 ]
 
             });
@@ -233,6 +246,10 @@
             $search_form.find('select[name="search_course_idx"]').chained("#search_site_code");
             $search_form.find('select[name="search_subject_idx"]').chained("#search_site_code");
             $search_form.find('select[name="search_prof_idx"]').chained("#search_site_code");
+
+            $list_table.on('click', '.btn-view', function() {
+                location.href = '{{ site_url('/student/'.$lecType.'/view') }}/' + $(this).data('prodcode') + dtParamsToQueryString($datatable);
+            });
 
         });
     </script>

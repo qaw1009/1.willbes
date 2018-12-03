@@ -281,8 +281,8 @@ class BaseStudent extends \app\controllers\BaseController
             ]
         ];
         // 날짜 검색
-        $search_start_date = get_var($this->_reqP('search_start_date'), date('Y-m-01'));
-        $search_end_date = get_var($this->_reqP('search_end_date'), date('Y-m-t'));
+        $search_start_date = $this->_reqP('search_start_date');
+        $search_end_date = $this->_reqP('search_end_date');
         $arr_condition['BDT'] = ['O.CompleteDatm' => [$search_start_date, $search_end_date]];
 
         $list = $this->studentModel->getStudentExcelList($column, $arr_condition);

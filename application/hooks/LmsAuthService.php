@@ -41,7 +41,7 @@ class LmsAuthService extends AdminAuthService
                 inner join lms_sys_menu as G
                     on M.GroupMenuIdx = G.MenuIdx and G.IsStatus = "Y" and G.IsUse = "Y"
                 left join lms_sys_menu as P
-                    on M.ParentMenuIdx = P.MenuIdx and P.IsStatus = "Y" and P.IsUse = "Y"
+                    on M.ParentMenuIdx = P.MenuIdx and P.IsStatus = "Y" and P.IsUse = "Y"' . (SUB_DOMAIN == 'tzone' ? ' and P.IsTzone = "Y"' : '') . '
                 inner join lms_sys_admin_role_r_menu as RM
                     on RM.MenuIdx = M.MenuIdx and RM.IsStatus = "Y"
                 inner join lms_sys_admin_role as R
@@ -52,7 +52,7 @@ class LmsAuthService extends AdminAuthService
 
         // tzone으로 접근할 경우 tzone 메뉴만 노출
         if (SUB_DOMAIN == 'tzone') {
-            $where .= ' and M.IsTzone = "Y" and G.IsTzone = "Y" and P.IsTzone = "Y"';
+            $where .= ' and M.IsTzone = "Y" and G.IsTzone = "Y"';
         }
 
         $order_by_offset_limit = ' order by TreeNum asc';

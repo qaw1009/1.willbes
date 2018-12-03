@@ -40,19 +40,19 @@ class MenuModel extends WB_Model
         $from = '
             from (
                 select BMenuIdx, BMenuName, BMenuDepth, BOrderNum, if(BMenuDepth < LastMenuDepth, BIsUse, "") as BIsUse
-                    , MMenuIdx, MMenuName, MMenuDepth, MOrderNum, if(MMenuDepth < LastMenuDepth, MIsUse, "") as MIsUse
-                    , SMenuIdx, SMenuName, SMenuDepth, SOrderNum
+                    , MMenuIdx, MMenuName, MMenuDepth, MOrderNum, if(MMenuDepth < LastMenuDepth, MIsUse, "") as MIsUse, BIsTzone
+                    , SMenuIdx, SMenuName, SMenuDepth, SOrderNum, IsTzone
                     , if(LastMenuDepth = 1, BMenuUrl, if(LastMenuDepth = 2, MMenuUrl, SMenuUrl)) as LastMenuUrl
                     , if(LastMenuDepth = 1, BIsUse, if(LastMenuDepth = 2, MIsUse, SIsUse)) as LastIsUse
                     , if(LastMenuDepth = 1, BRegAdminIdx, if(LastMenuDepth = 2, MRegAdminIdx, SRegAdminIdx)) as LastRegAdminIdx
                     , if(LastMenuDepth = 1, BRegDatm, if(LastMenuDepth = 2, MRegDatm, SRegDatm)) as LastRegDatm
                 from (
                     select BM.MenuIdx as BMenuIdx, BM.MenuName as BMenuName, BM.MenuDepth as BMenuDepth, BM.OrderNum as BOrderNum
-                        , BM.IsUse as BIsUse, BM.MenuUrl as BMenuUrl, BM.RegAdminIdx as BRegAdminIdx, BM.RegDatm as BRegDatm	
+                        , BM.IsUse as BIsUse, BM.MenuUrl as BMenuUrl, BM.RegAdminIdx as BRegAdminIdx, BM.RegDatm as BRegDatm, BM.IsTzone	as BIsTzone
                         , MM.MenuIdx as MMenuIdx, MM.MenuName as MMenuName, MM.MenuDepth as MMenuDepth, MM.OrderNum as MOrderNum
                         , MM.IsUse as MIsUse, MM.MenuUrl as MMenuUrl, MM.RegAdminIdx as MRegAdminIdx, MM.RegDatm as MRegDatm
                         , SM.MenuIdx as SMenuIdx, SM.MenuName as SMenuName, SM.MenuDepth as SMenuDepth, SM.OrderNum as SOrderNum
-                        , SM.IsUse as SIsUse, SM.MenuUrl as SMenuUrl, SM.RegAdminIdx as SRegAdminIdx, SM.RegDatm as SRegDatm
+                        , SM.IsUse as SIsUse, SM.MenuUrl as SMenuUrl, SM.RegAdminIdx as SRegAdminIdx, SM.RegDatm as SRegDatm, SM.IsTzone as IsTzone
                         , greatest(BM.MenuDepth, ifnull(MM.MenuDepth, 0), ifnull(SM.MenuDepth, 0)) as LastMenuDepth		
                     from ' . $this->_table['menu'] . ' as BM
                         left join ' . $this->_table['menu'] . ' as MM
@@ -122,7 +122,7 @@ class MenuModel extends WB_Model
      */
     public function findMenuForModify($menu_idx)
     {
-        $column = 'M.MenuIdx, M.MenuName, M.ParentMenuIdx, M.GroupMenuIdx, M.MenuDepth, M.MenuUrl, M.IconClassName, M.OrderNum, M.IsUse, M.RegDatm, M.UpdDatm';
+        $column = 'M.MenuIdx, M.MenuName, M.ParentMenuIdx, M.GroupMenuIdx, M.MenuDepth, M.MenuUrl, M.IconClassName, M.OrderNum, M.IsUse, M.RegDatm, M.UpdDatm ,M.IsTzone';
         $column .= '    , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = M.RegAdminIdx and wIsStatus = "Y") as RegAdminName';
         $column .= '    , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = M.UpdAdminIdx and wIsStatus = "Y") as UpdAdminName';
 
@@ -158,6 +158,7 @@ class MenuModel extends WB_Model
             $admin_idx = $this->session->userdata('admin_idx');
             $data = [
                 'MenuName' => element('menu_name', $input),
+                'IsTzone' => element('is_tzone', $input,'N'),
                 'RegAdminIdx' => $admin_idx
             ];
 
@@ -228,6 +229,7 @@ class MenuModel extends WB_Model
 
             $data = [
                 'MenuName' => element('menu_name', $input),
+                'IsTzone' => element('is_tzone', $input,'N'),
                 'UpdAdminIdx' => $admin_idx
             ];
 

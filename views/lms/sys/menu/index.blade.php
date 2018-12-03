@@ -78,7 +78,10 @@
                                 </div>
                             @endif
                         </td>
-                        <td>{{ $row['LastMenuUrl'] }}</td>
+                        <td>
+                            <span>{{ $row['LastMenuUrl'] }}</span>
+                            @if($row['IsTzone'] == 'Y') <span class="right red">[Tzone]</span> @endif
+                        </td>
                         <td>@if($row['LastIsUse'] == 'Y') 사용 @elseif($row['LastIsUse'] == 'N') <span class="red">미사용</span> @endif
                             <span class="hide">{{ $row['LastIsUse'] }}</span>
                         </td>

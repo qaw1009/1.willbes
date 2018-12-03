@@ -30,6 +30,19 @@
                 <p class="form-control-static">@if($method == 'PUT'){{ $data['MenuIdx'] }}@else # 등록 시 자동 생성 @endif</p>
             </div>
         </div>
+        <div class="form-group form-group-sm">
+            <label class="control-label col-md-2" for="is_tzone">T-Zone 적용여부
+            </label>
+            <div class="col-md-3">
+                <div class="radio">
+                    <input type="radio" id="is_tzone_y" name="is_tzone" class="flat" value="Y" required="required" title="Tzone적용여부" @if( $data['IsTzone']=='Y')checked="checked"@endif/> <label for="is_tzone_y" class="input-label">적용</label>
+                    <input type="radio" id="is_tzone_n" name="is_tzone" class="flat" value="N" @if($method == 'POST' || $data['IsTzone']=='N')checked="checked"@endif/> <label for="is_tzone_n" class="input-label">미적용</label>
+                </div>
+            </div>
+            <div class="col-md-3 tx-left">
+                <p class="form-control-static"># T-Zone 사이트 메뉴 적용 여부</p>
+            </div>
+        </div>
     @else
         {{-- LNB 메뉴 등록 --}}
         @if(isset($parent_menus['GNB']) === true)
@@ -103,6 +116,19 @@
             </div>
         </div>
         @endif
+        <div class="form-group form-group-sm">
+            <label class="control-label col-md-2" for="is_tzone">T-Zone 적용여부
+            </label>
+            <div class="col-md-3">
+                <div class="radio">
+                    <input type="radio" id="is_tzone_y" name="is_tzone" class="flat" value="Y" required="required" title="Tzone적용여부" @if( $data['IsTzone']=='Y')checked="checked"@endif/> <label for="is_tzone_y" class="input-label">적용</label>
+                    <input type="radio" id="is_tzone_n" name="is_tzone" class="flat" value="N" @if($method == 'POST' || $data['IsTzone']=='N')checked="checked"@endif/> <label for="is_tzone_n" class="input-label">미적용</label>
+                </div>
+            </div>
+            <div class="col-md-3 tx-left">
+                <p class="form-control-static"># T-Zone 사이트 메뉴 적용 여부</p>
+            </div>
+        </div>
         <div class="form-group form-group-sm">
             <label class="control-label col-md-2" for="is_use">사용 여부 <span class="required">*</span>
             </label>

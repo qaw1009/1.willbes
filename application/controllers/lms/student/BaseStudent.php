@@ -233,10 +233,12 @@ class BaseStudent extends \app\controllers\BaseController
                 'MI.SmsRcvStatus' => $this->_reqP('SmsRcv') // Sms 수신
             ]
         ];
+
         // 날짜 검색
-        $search_start_date = get_var($this->_reqP('search_start_date'), date('Y-m-01'));
-        $search_end_date = get_var($this->_reqP('search_end_date'), date('Y-m-t'));
+        $search_start_date = $this->_reqP('search_start_date');
+        $search_end_date = $this->_reqP('search_end_date');
         $arr_condition['BDT'] = ['O.CompleteDatm' => [$search_start_date, $search_end_date]];
+
 
         // 강좌 수강중인 회원 읽어오기
         $list = [];

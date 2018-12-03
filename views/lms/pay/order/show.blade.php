@@ -298,7 +298,7 @@
                                             (카드 {{ number_format(array_sum($refund_prod_row['CardRefundPrice'])) }} + 현금 {{ number_format(array_sum($refund_prod_row['CashRefundPrice'])) }})
                                         </td>
                                         <td>{{ $refund_prod_row['PayStatusCcdName'] }}<br/>
-                                            ({{ $refund_prod_row['RefundType'] == 'P' ? '연동환불' : ($refund_prod_row['RefundType'] == 'B' ? '계좌환불' : '') }}{{ $refund_prod_row['IsApproval'] == 'Y' ? ', 지출결의' : '' }})
+                                            ({{ $refund_prod_row['RefundType'] == 'P' ? '연동환불' : ($refund_prod_row['RefundType'] == 'B' ? '계좌환불' : '0원환불') }}{{ $refund_prod_row['IsApproval'] == 'Y' ? ', 지출결의' : '' }})
                                         </td>
                                         <td>{{ $refund_prod_row['RefundReason'] }}</td>
                                         <td>{{ $refund_prod_row['RefundAdminName'] }}</td>

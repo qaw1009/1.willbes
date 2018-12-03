@@ -79,7 +79,17 @@ class Pg extends CI_Driver_Library
     }
 
     /**
-     * 결제 취소
+     * 부분취소
+     * @param array $params
+     * @return mixed
+     */
+    public function repay($params = [])
+    {
+        return $this->{$this->_driver}->repay($params);
+    }
+
+    /**
+     * 결제취소
      * @param array $params
      * @return mixed
      */

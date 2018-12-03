@@ -24,7 +24,7 @@ class OrderListModel extends BaseOrderModel
             } else {
                 $in_column = 'O.OrderIdx, OP.OrderProdIdx, OP.ProdCode, O.OrderNo, O.SiteCode, S.SiteName, O.MemIdx, M.MemId, M.MemName, fn_dec(M.PhoneEnc) as MemPhone
                     , O.PayChannelCcd, O.PayRouteCcd, O.PayMethodCcd, O.PgCcd, O.PgMid, O.PgTid
-                    , O.OrderPrice as tOrderPrice, O.OrderProdPrice as tOrderProdPrice, O.RealPayPrice as tRealPayPrice, fn_order_refund_price(O.OrderIdx, null, "refund") as tRefundPrice
+                    , O.OrderPrice as tOrderPrice, O.OrderProdPrice as tOrderProdPrice, O.RealPayPrice as tRealPayPrice, fn_order_refund_price(O.OrderIdx, 0, "refund") as tRefundPrice
                     , O.CardPayPrice as tCardPayPrice, O.CashPayPrice as tCashPayPrice, O.DeliveryPrice as tDeliveryPrice, O.DeliveryAddPrice as tDeliveryAddPrice
                     , O.DiscPrice as tDiscPrice, O.UseLecPoint as tUseLecPoint, O.UseBookPoint as tUseBookPoint, O.SaveLecPoint as tSaveLecPoint, O.SaveBookPoint as tSaveBookPoint
                     , O.VBankCcd, O.VBankAccountNo, O.VBankDepositName, O.VBankExpireDatm, O.VBankCancelDatm
@@ -83,7 +83,7 @@ class OrderListModel extends BaseOrderModel
     public function listExcelAllOrder($column, $arr_condition, $order_by = [], $arr_add_join = [])
     {
         $in_column = 'O.OrderIdx, OP.OrderProdIdx, O.OrderNo, S.SiteName, M.MemName, M.MemId, fn_dec(M.PhoneEnc) as MemPhone
-            , O.RealPayPrice as tRealPayPrice, fn_order_refund_price(O.OrderIdx, null, "refund") as tRefundPrice, O.DeliveryPrice as tDeliveryPrice, O.DeliveryAddPrice as tDeliveryAddPrice
+            , O.RealPayPrice as tRealPayPrice, fn_order_refund_price(O.OrderIdx, 0, "refund") as tRefundPrice, O.DeliveryPrice as tDeliveryPrice, O.DeliveryAddPrice as tDeliveryAddPrice
             , O.UseLecPoint as tUseLecPoint, O.UseBookPoint as tUseBookPoint                 
             , concat(O.VBankAccountNo, " ") as VBankAccountNo # 엑셀파일에서 텍스트 형태로 표기하기 위해 공백 삽입
             , O.VBankDepositName, O.VBankExpireDatm, O.VBankCancelDatm, if(O.VBankAccountNo is not null, O.OrderDatm, "") as VBankOrderDatm
@@ -290,19 +290,19 @@ class OrderListModel extends BaseOrderModel
     {
         if (empty($column) === true) {
             $column = 'O.OrderIdx, O.OrderNo, O.SiteCode, O.MemIdx, O.ReprProdName, O.PayChannelCcd, O.PayRouteCcd, O.PayMethodCcd, O.PgCcd, O.PgMid, O.PgTid
-                , O.OrderPrice as tOrderPrice, O.OrderProdPrice as tOrderProdPrice, O.RealPayPrice as tRealPayPrice, fn_order_refund_price(O.OrderIdx, null, "refund") as tRefundPrice
+                , O.OrderPrice as tOrderPrice, O.OrderProdPrice as tOrderProdPrice, O.RealPayPrice as tRealPayPrice, fn_order_refund_price(O.OrderIdx, 0, "refund") as tRefundPrice
                 , O.CardPayPrice as tCardPayPrice, O.CashPayPrice as tCashPayPrice, O.DeliveryPrice as tDeliveryPrice, O.DeliveryAddPrice as tDeliveryAddPrice, O.DiscPrice as tDiscPrice
                 , O.UseLecPoint as tUseLecPoint, O.UseBookPoint as tUseBookPoint, O.SaveLecPoint as tSaveLecPoint, O.SaveBookPoint as tSaveBookPoint
                 , O.VBankCcd, O.VBankAccountNo, O.VBankDepositName, O.VBankExpireDatm, O.VBankCancelDatm
                 , if(O.VBankAccountNo is not null, O.OrderDatm, NULL) as VBankOrderDatm
                 , if(O.VBankAccountNo is not null, "Y", "N") as IsVBank
                 , if(O.VBankAccountNo is not null,
-                    case 
+                    (case 
                         when O.CompleteDatm is not null then "P"        # 결제완료
                         when O.VBankCancelDatm is not null then "C"     # 계좌취소     
                         when O.VBankExpireDatm < NOW() then "E"     # 입금기한만료
                         else "O"    # 주문완료(계좌신청)
-                    end, NULL			
+                    end), NULL			
                   ) as VBankStatus
                 , O.IsEscrow, O.IsDelivery, O.IsVisitPay, O.CompleteDatm, O.OrderDatm                
             ';

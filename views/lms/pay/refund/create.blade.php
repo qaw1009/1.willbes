@@ -56,21 +56,28 @@
                         <div class="mt-5">
                             <input type="checkbox" id="is_approval" name="is_approval" class="flat" value="Y"/> 지결
                         </div>
+                        <div class="mt-5">
+                            @if($is_available_pg_refund === true)
+                                <input type="checkbox" id="is_pg_refund" name="is_pg_refund" class="flat" value="Y"/> 연동환불
+                            @endif
+                        </div>
                     </th>
                     <td class="form-inline form-group-sm pl-15">
-                        <div class="mt-5">
-                            [입금은행]
-                            <select class="form-control ml-5 mr-30" id="refund_bank_ccd" name="refund_bank_ccd" title="입금은행">
-                                <option value="">은행선택</option>
-                                @foreach($arr_bank_ccd as $key => $val)
-                                    <option value="{{ $key }}">{{ $val }}</option>
-                                @endforeach
-                            </select>
-                            [계좌번호]
-                            <input type="number" id="refund_account_no" name="refund_account_no" class="form-control ml-5 mr-30" title="계좌번호" value=""/>
-                            [예금주]
-                            <input type="text" id="refund_deposit_name" name="refund_deposit_name" class="form-control ml-5" title="예금주" value=""/>
-                        </div>
+                        @if($total_refund_price > 0)
+                            <div class="mt-5">
+                                [입금은행]
+                                <select class="form-control ml-5 mr-30" id="refund_bank_ccd" name="refund_bank_ccd" title="입금은행">
+                                    <option value="">은행선택</option>
+                                    @foreach($arr_bank_ccd as $key => $val)
+                                        <option value="{{ $key }}">{{ $val }}</option>
+                                    @endforeach
+                                </select>
+                                [계좌번호]
+                                <input type="number" id="refund_account_no" name="refund_account_no" class="form-control ml-5 mr-30" title="계좌번호" value=""/>
+                                [예금주]
+                                <input type="text" id="refund_deposit_name" name="refund_deposit_name" class="form-control ml-5" title="예금주" value=""/>
+                            </div>
+                        @endif
                         <div class="mt-10 item">
                             [환불사유]
                             <input type="text" id="refund_reason" name="refund_reason" class="form-control ml-5" title="환불사유" required="required" value="" style="width: 86%;"/>

@@ -221,9 +221,18 @@ class Pg_inisis extends CI_Driver
                         $auth_results['applDatm'] = date('Y-m-d H:i:s');
                     }
 
-                    $this->_parent->saveFileLog('결제 승인결과 리턴', $auth_results);
+                    // 결제방법별 상세코드 (신용카드, 은행)
+                    $auth_results['PayDetailCode'] = null;
+                    if (empty(element('CARD_Code', $params)) === false) {
+                        $auth_results['PayDetailCode'] = element('CARD_Code', $params);
+                    } else if (empty(element('ACCT_BankCode', $params)) === false) {
+                        $auth_results['PayDetailCode'] = element('ACCT_BankCode', $params);
+                    } else if (empty(element('VACT_BankCode', $params)) === false) {
+                        $auth_results['PayDetailCode'] = element('VACT_BankCode', $params);
+                    }
 
                     // 승인요청 결과로그 저장
+                    $this->_parent->saveFileLog('결제 승인결과 리턴', $auth_results);
                     $this->_saveLog($auth_results);
 
                     // 승인결과 위변조 체크 파라미터
@@ -275,6 +284,7 @@ class Pg_inisis extends CI_Driver
                             'mid' => $auth_results['mid'],
                             'tid' => $auth_results['tid'],
                             'total_pay_price' => $auth_results['TotPrice'],
+                            'pay_detail_code' => $auth_results['PayDetailCode'],
                             'approval_datm' => $auth_results['applDatm'],
                             'return_data' => $return_data
                         ], $add_results);
@@ -312,9 +322,118 @@ class Pg_inisis extends CI_Driver
     }
 
     /**
-     * 이니시스 결제 취소
+     * 이니시스 부분취소
      * @param array $params
-     * @return bool
+     * @return array
+     */
+    public function repay($params = [])
+    {
+        $log_params = [];
+        $_order_no = element('order_no', $params);
+
+        try {
+            $_mid = element('mid', $params);
+            $_tid = element('tid', $params);
+            $_total_remain_pay_price = element('total_remain_pay_price', $params);    // 전체남은금액 (총실결제금액 - 총환불금액)
+            $_cancel_price = element('cancel_price', $params);  // 취소금액
+            $_order_mail = element('order_mail', $params, '');  // 주문 메일주소 (원 거래 메일주소와 다를 경우 입력)
+            $_tax = element('tax', $params, '');    // 부가세
+            $_taxfree = element('taxfree', $params, '');    // 비과세
+
+            if (empty($_order_no) === true || empty($_mid) === true || empty($_tid) === true || empty($_total_remain_pay_price) === true || empty($_cancel_price) === true) {
+                throw new \Exception('부분취소에 필요한 정보가 없습니다.');
+            }
+
+            // 승인요청금액 (최종결제금액)
+            $_repay_price = $_total_remain_pay_price - $_cancel_price;
+            if ($_repay_price < 1) {
+                throw new \Exception('부분취소 취소금액이 올바르지 않습니다.');
+            }
+
+            // 이니시스 라이브러리 로드
+            require_once APPPATH . 'third_party/pg/inisis/libs/INILib.php';
+            if (class_exists('INIpay50', false) === true) {
+                $inipay = new INIpay50();
+            } else {
+                throw new \Exception('부분취소 라이브러리 유틸 로드 실패');
+            }
+
+            $inipay->SetField('inipayhome', APPPATH . 'third_party/pg/inisis');
+            $inipay->SetField('type', 'repay');     // 고정 (수정금지)
+            $inipay->SetField('pgid', 'INIphpRPAY');    // 고정 (수정금지)
+            $inipay->SetField('subpgip','203.238.3.10');    // 고정 (수정금지)
+            $inipay->SetField('log', 'false');
+            $inipay->SetField('debug', false);
+            $inipay->SetField('admin', $this->_mode_config['adminkey']);
+            $inipay->SetField('mid', $_mid);
+            $inipay->SetField('oldtid', $_tid);
+            $inipay->SetField('currency', $this->_mode_config['currency']);
+            $inipay->SetField('price', $_cancel_price);     // 취소금액
+            $inipay->SetField('confirm_price', $_repay_price);  // 승인요청금액
+            $inipay->SetField('buyeremail', $_order_mail);
+            $inipay->SetField('tax', $_tax);
+            $inipay->SetField('taxfree', $_taxfree);
+
+            $inipay->startAction();
+
+            // 연동결과
+            $result_code = $inipay->getResult('ResultCode');    // 00 : 재승인성공
+            $result_msg = iconv('EUC-KR', 'UTF-8', $inipay->getResult('ResultMsg'));
+            $result_tid = $inipay->getResult('TID');   // 신규 거래번호
+            $result_cancel_price = $inipay->getResult('PRTC_Price');   // 부분취소금액
+            $result_repay_price = $inipay->getResult('PRTC_Remains');   // 최종결제금액
+            $result_repay_type = $inipay->getResult('PRTC_Type');   // 부분취소(재승인) 구분 (0 : 재승인, 1 : 부분취소)
+            $result_repay_cnt = $inipay->getResult('PRTC_Cnt');   // 부분취소(재승인) 요청횟수
+
+            // 부분취소 결과로그 전달 파라미터 설정
+            $log_params = [
+                'MOID' => $_order_no,
+                'PayType' => 'RP',
+                'mid' => $_mid,
+                'tid' => $_tid,
+                'TotPrice' => $result_cancel_price,
+                'resultCode' => $result_code,
+                'resultMsg' => $result_msg,
+                'ResultPgTid' => $result_tid,
+                'ResultPayPrice' => $result_repay_price
+            ];
+
+            // 로그 메시지
+            $log_msg = '(결과코드 : ' . $result_code . ', 결과메시지 : ' . $result_msg;
+            $log_msg .= ', 주문번호 : ' . $_order_no . ', TID : ' . $_tid . ', 신규TID : ' . $result_tid . ', 취소금액 : ' . $result_cancel_price . ', 최종결제금액 : ' . $result_repay_price;
+            $log_msg .= ', 부분취소(재승인) 구분 : ' . $result_repay_type . ', 부분취소(재승인) 요청횟수 : ' . $result_repay_cnt . ')';
+
+            if (strcmp('00', $result_code) == 0) {
+                // 부분취소성공
+                $this->_parent->saveFileLog('부분취소 성공 ' . $log_msg);
+            } else {
+                throw new \Exception('부분취소 실패 ' . $log_msg);
+            }
+
+            return [
+                'result' => true,
+                'order_no' => $_order_no,
+                'repay_tid' => $result_tid
+            ];
+        } catch (\Exception $e) {
+            $this->_parent->saveFileLog($e->getMessage(), null, 'error');
+
+            return [
+                'result' => false,
+                'order_no' => $_order_no
+            ];
+        } finally {
+            // 로그 전달 파라미터가 있을 경우
+            if (empty($log_params) === false) {
+                $this->_saveLog($log_params, 'pay', $_order_no);
+            }
+        }
+    }
+
+    /**
+     * 이니시스 결제취소
+     * @param array $params
+     * @return array
      */
     public function cancel($params = [])
     {
@@ -345,39 +464,40 @@ class Pg_inisis extends CI_Driver
                 }
 
                 $inipay->SetField('inipayhome', APPPATH . 'third_party/pg/inisis');
-                $inipay->SetField('type', 'cancel');
+                $inipay->SetField('type', 'cancel');    // 고정 (수정금지)
                 $inipay->SetField('log', 'false');
                 $inipay->SetField('debug', false);
-                $inipay->SetField('mid', $_mid);
                 $inipay->SetField('admin', $this->_mode_config['adminkey']);
+                $inipay->SetField('mid', $_mid);
                 $inipay->SetField('tid', $_tid);
                 $inipay->SetField('cancelmsg', $_cancel_reason);
 
                 $inipay->startAction();
 
-                $cancel_result_code = $inipay->getResult('ResultCode');
-                $cancel_result_msg = iconv('EUC-KR', 'UTF-8', $inipay->getResult('ResultMsg'));
+                // 연동결과
+                $result_code = $inipay->getResult('ResultCode');     // 00 : 취소성공
+                $result_msg = iconv('EUC-KR', 'UTF-8', $inipay->getResult('ResultMsg'));
                 
-                // 승인취소 결과로그 전달 파라미터 설정
+                // 취소 결과로그 전달 파라미터 설정
                 $log_params = [
                     'MOID' => $_order_no,
                     'PayType' => 'CA',
                     'mid' => $_mid,
                     'tid' => $_tid,
-                    'resultCode' => $cancel_result_code,
-                    'resultMsg' => $cancel_result_msg,
+                    'resultCode' => $result_code,
+                    'resultMsg' => $result_msg,
                     'ReqReason' => $_cancel_reason
                 ];
 
                 // 로그 메시지
-                $cancel_log_msg = '(결과코드 : ' . $cancel_result_code . ', 결과메시지 : ' . $cancel_result_msg;
-                $cancel_log_msg .= ', 주문번호 : ' . $_order_no . ', TID : ' . $_tid . ', 취소날짜 : ' . $inipay->getResult('CancelDate') . ', 취소시간 : ' . $inipay->getResult('CancelTime') . ')';
+                $log_msg = '(결과코드 : ' . $result_code . ', 결과메시지 : ' . $result_msg;
+                $log_msg .= ', 주문번호 : ' . $_order_no . ', TID : ' . $_tid . ', 취소날짜 : ' . $inipay->getResult('CancelDate') . ', 취소시간 : ' . $inipay->getResult('CancelTime') . ')';
 
-                if (strcmp('00', $inipay->getResult('ResultCode')) == 0) {
+                if (strcmp('00', $result_code) == 0) {
                     // 취소성공
-                    $this->_parent->saveFileLog('결제 승인취소 성공 ' . $cancel_log_msg);
+                    $this->_parent->saveFileLog('결제 승인취소 성공 ' . $log_msg);
                 } else {
-                    throw new \Exception('결제 승인취소 실패 ' . $cancel_log_msg);
+                    throw new \Exception('결제 승인취소 실패 ' . $log_msg);
                 }
             } else {
                 // 망취소
@@ -410,17 +530,24 @@ class Pg_inisis extends CI_Driver
                     throw new \Exception('망취소 실패 (결과메시지 : ' . $this->_http_util->errormsg . ')');
                 }
             }
+
+            return [
+                'result' => true,
+                'order_no' => $_order_no
+            ];
         } catch (\Exception $e) {
             $this->_parent->saveFileLog($e->getMessage(), null, 'error');
-            return false;
+
+            return [
+                'result' => false,
+                'order_no' => $_order_no
+            ];
         } finally {
             // 로그 전달 파라미터가 있을 경우
             if (empty($log_params) === false) {
                 $this->_saveLog($log_params, 'pay', $_order_no);
             }
         }
-
-        return true;
     }
 
     /**
@@ -529,16 +656,6 @@ class Pg_inisis extends CI_Driver
             if ($log_type == 'pay') {
                 $_table = $this->_parent->_log_table;
 
-                // 결제방법별 상세 코드 (신용카드, 은행)
-                $pay_detail_code = null;
-                if (empty(element('CARD_Code', $params)) === false) {
-                    $pay_detail_code = element('CARD_Code', $params);
-                } else if (empty(element('ACCT_BankCode', $params)) === false) {
-                    $pay_detail_code = element('ACCT_BankCode', $params);
-                } else if (empty(element('VACT_BankCode', $params)) === false) {
-                    $pay_detail_code = element('VACT_BankCode', $params);
-                }
-
                 $data = [
                     'OrderNo' => element('MOID', $params),
                     'PayType' => element('PayType', $params, 'PA'),
@@ -546,13 +663,15 @@ class Pg_inisis extends CI_Driver
                     'PgMid' => element('mid', $params),
                     'PgTid' => element('tid', $params),
                     'PayMethod' => element('payMethod', $params),
-                    'PayDetailCode' => $pay_detail_code,
+                    'PayDetailCode' => element('PayDetailCode', $params),
                     'ReqPayPrice' => element('TotPrice', $params),
                     'ApprovalNo' => element('applNum', $params),
                     'ApprovalDatm' => element('applDatm', $params),
                     'ResultCode' => element('resultCode', $params),
                     'ResultMsg' => element('resultMsg', $params),
-                    'ReqReason' => element('ReqReason', $params),
+                    'ResultPgTid' => element('ResultPgTid', $params),
+                    'ResultPayPrice' => element('ResultPayPrice', $params),
+                    'ReqReason' => element('ReqReason', $params)
                 ];
 
                 if ($_db->set($data)->insert($_table) === false) {

@@ -89,15 +89,14 @@
                     <label class="control-label col-md-2" for="admin_make">운영자생성
                     </label>
                     <div class="col-md-10 item">
-                        <div class="checkbox">
                             @if(empty($data['admin_reg_check']))
+                            <div class="checkbox" >
                                 <input type="checkbox" id="admin_make" name="admin_make" class="flat"  title="운영자생성" value="Y">
                                 &nbsp;&nbsp; # 해당 교수아이디로 운영자 생성 (초기 비밀번호는 교수아이디 와 일치 -> 티존 로그인 후 반드시 비밀번호 변경 )
+                            </div>
                             @else
-                                 # 운영자 생성 완료 : 초기 비밀번호는 교수아이디
+                            <p class="form-control-static red"># 운영자 생성 완료 : 초기 비밀번호는 교수아이디</p>
                             @endif
-                        </div>
-
 
                     </div>
                 </div>

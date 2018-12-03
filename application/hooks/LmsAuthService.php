@@ -49,6 +49,12 @@ class LmsAuthService extends AdminAuthService
         ';
 
         $where = ' where M.IsStatus = "Y" and M.IsUse = "Y" and RM.RoleIdx = ?';
+
+        // tzone으로 접근할 경우 tzone 메뉴만 노출
+        if (SUB_DOMAIN == 'tzone') {
+            $where .= ' and M.IsTzone = "Y"';
+        }
+
         $order_by_offset_limit = ' order by TreeNum asc';
 
         // 쿼리 실행
@@ -77,7 +83,9 @@ class LmsAuthService extends AdminAuthService
                 if ($row['SettingType'] != 'favorite') {
                     $results[$row['SettingType']] = $row['SettingValue'];
                 } else {
-                    $results[$row['SettingType']][$row['SettingValue']] = ['MenuName' => $menu_names[$row['SettingValue']], 'MenuUrl' => $menu_urls[$row['SettingValue']]];
+                    if (isset($menu_names[$row['SettingValue']]) === true && isset($menu_urls[$row['SettingValue']]) === true) {
+                        $results[$row['SettingType']][$row['SettingValue']] = ['MenuName' => $menu_names[$row['SettingValue']], 'MenuUrl' => $menu_urls[$row['SettingValue']]];
+                    }
                 }
             }
         }

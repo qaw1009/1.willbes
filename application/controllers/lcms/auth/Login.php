@@ -45,6 +45,8 @@ class Login extends \app\controllers\BaseController
         }
 
         $admin_id = $this->_reqP('admin_id');
+        $wbs_prof_role_idx = '1013';    // WBS 교수관리자 역할식별자
+        $lms_prof_role_idx = '1011';    // LMS 교수관리자 역할식별자
 
         // 관리자 아이디/비밀번호 확인
         $row = $this->loginModel->findAdminForLogin($admin_id, $this->_reqP('admin_passwd', false));
@@ -59,11 +61,19 @@ class Login extends \app\controllers\BaseController
         $is_auth = true;
         if ($row['wIsApproval'] != 'Y' || $row['wIsUse'] != 'Y') {
             $is_auth = false;
-        } else if (APP_NAME == 'wbs' && empty($row['wRoleIdx']) === true) {
-            $is_auth = false;
+        } else if (APP_NAME == 'wbs') {
+            // 권한설정이 없거나 교수관리자 권한일 경우 wbs 접근 금지
+            if (empty($row['wRoleIdx']) === true || $row['wRoleIdx'] == $wbs_prof_role_idx) {
+                $is_auth = false;
+            }
         } else if (APP_NAME == 'lms') {
             $lms_role_idx = $this->loginModel->getLmsRoleIdx($row['wAdminIdx']);
             if (empty($lms_role_idx) === true) {
+                $is_auth = false;
+            }
+
+            // 교수관리자 권한으로 lms 접근 금지
+            if (SUB_DOMAIN == 'lms' && $lms_role_idx == $lms_prof_role_idx) {
                 $is_auth = false;
             }
         }

@@ -43,7 +43,6 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-12 text-right form-inline">
-                        <button type="button" class="btn btn-sm btn-dark ml-10 btn-open-calendar">노출/미노출날짜관리</button>
                         <button type="button" class="btn btn-sm btn-primary ml-10 btn-main-list">전체강좌목록</button>
                     </div>
                 </div>
@@ -200,7 +199,7 @@
         $(document).ready(function() {
             //전체강좌목록
             $('.btn-main-list').click(function() {
-                location.href = '{{ site_url("/board/professor/{$boardName}/registForBoard/{$prod_code}") }}/?' + '{!! $boardDefaultQueryString !!}'
+                location.href = '{{ site_url("/board/professor/{$boardName}/productList") }}/' + getQueryString();
             });
             
             // 목록 버튼 클릭

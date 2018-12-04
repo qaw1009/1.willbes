@@ -145,13 +145,14 @@
         <table id="list_ajax_table_modal" class="table table-striped table-bordered">
             <thead>
             <tr>
-                <th>선택</th>
+                <th>발송</th>
                 <th>NO</th>
                 <th>회원명(ID)</th>
                 <th>유효시작일</th>
                 <th>유효기간(만료일)</th>
                 <th>부여일(부여자)</th>
                 <th>부여사유</th>
+                <th>권한보여회수</th>
                 <th>회수일(회수자)</th>
             </tr>
             </thead>
@@ -170,24 +171,20 @@
         $datatable_modal = $list_table_modal.DataTable({
             serverSide: true,
             buttons: [
-                { text: '<i class="fa fa-copy mr-10"></i> HOT적용', className: 'btn-sm btn-danger border-radius-reset mr-15 btn-is-best' },
-
-                { text: '<i class="fa fa-copy mr-10"></i> 복사', className: 'btn-sm btn-success border-radius-reset mr-15 btn-copy' },
-
-                { text: '<i class="fa fa-pencil mr-10"></i> 등록', className: 'btn-sm btn-primary border-radius-reset', action: function(e, dt, node, config) {
-                        location.href = '{{ site_url("/board/professor/{$boardName}/createBoardForTpass/{$prod_code}") }}' + dtParamsToQueryString($datatable_modal) + '{!! $boardDefaultQueryString !!}';
-                    }}
+                { text: '<i class="fa fa-comment-o mr-5"></i> 쪽지발송', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-message' },
+                { text: '<i class="fa fa-mobile mr-5"></i> SMS발송', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-sms' },
+                { text: '<i class="fa fa-mobile mr-5"></i> 권한부여회수', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-update-authority' },
             ],
             ajax: {
                 'url' : '{{ site_url("/board/professor/{$boardName}/memberAuthorityAjax/{$prod_code}?") }}' + '{!! $boardDefaultQueryString !!}',
                 'type' : 'POST',
                 'data' : function(data) {
-                    return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
+                    return $.extend(arrToJson($regi_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
                 }
             },
             columns: [
                 {'data' : null, 'render' : function(data, type, row, meta) {
-                        return '<input type="checkbox" name="cancel_authority" value="1" class="flat is-authority" data-is-authority-idx="' + row.BtmaIdx + '"/>';
+                        return '<input type="checkbox" name="is_checked" value="1" class="flat" data-is-checked-idx="' + row.MemIdx + '" data-is-checked-id="' + row.MemId + '" data-is-checked-phone="' + row.Phone + '"/>';
                     }},
                 {'data' : null, 'render' : function(data, type, row, meta) {
                         // 리스트 번호
@@ -206,8 +203,21 @@
                 {'data' : null, 'render' : function(data, type, row, meta){
                         return row.ValidReason;
                     }},
+                {'data' : null, 'render' : function(data, type, row, meta) {
+                        var is_chk_type;
+                        if (row.IsValid == 'N') {
+                            is_chk_type = 'disabled';
+                        } else {
+                            is_chk_type = '';
+                        }
+                        return '<input type="checkbox" name="is_authority_checked" value="1" class="flat" '+is_chk_type+' data-idx="' + row.BtmaIdx + '"/>';
+                    }},
                 {'data' : null, 'render' : function(data, type, row, meta){
-                        return row.RetireDatm+' ('+row.RetireAdminName+')';
+                    if (row.RetireAdminName != '') {
+                        return row.RetireDatm + ' (' + row.RetireAdminName + ')';
+                    } else {
+                        return '';
+                    }
                     }},
             ]
         });
@@ -235,6 +245,86 @@
 
             return true;
         };
+
+        // 쪽지발송
+        $('.btn-message').click(function() {
+            var $params = new Array();
+            var uri_param = '';
+            var $params_length = 0;
+            $('input[name="is_checked"]:checked').each(function(key) {
+                $params[key] = $(this).data('is-checked-idx');
+            });
+
+            $params_length = Object.keys($params).length;
+            if ($params_length <= '0') {
+                alert('수신인 명단을 선택해주세요.');
+                return false;
+            }
+            uri_param = '?target_idx=' + $params;
+
+            $('.btn-message').setLayer({
+                "url" : "{{ site_url('crm/message/createSendModal') }}" + uri_param,
+                "width" : "1200"
+            });
+        });
+
+        // SMS발송
+        $('.btn-sms').click(function() {
+            var $params = new Array();
+            var $phone_params = new Array();
+            $('input[name="is_checked"]:checked').each(function(key) {
+                $params[key] = $(this).data('is-checked-id');
+                $phone_params[key] = $(this).data('is-checked-phone');
+            });
+
+            var params_length = Object.keys($params).length;
+            if (params_length <= '0') {
+                alert('수신인 명단을 선택해주세요.');
+                return false;
+            }
+
+            var uri_param = '?target_id=' + $params + '&target_phone=' + $phone_params;
+            $('.btn-sms').setLayer({
+                "url" : "{{ site_url('crm/sms/createSendModal') }}" + uri_param,
+                "width" : "1200"
+            });
+        });
+
+        // 권한부여회수
+        $('.btn-update-authority').click(function() {
+            var $params = new Array();
+            var $params_length = 0;
+
+            $('input[name="is_authority_checked"]:checked').each(function(key) {
+                $params[key] = $(this).data('idx');
+            });
+
+            $params_length = Object.keys($params).length;
+            if ($params_length <= '0') {
+                alert('권한을 회수할 명단을 선택해주세요.');
+                return false;
+            }
+
+            if (!confirm('부여된 권한을 회수하시겠습니까?')) {
+                return false;
+            }
+
+            data = {
+                '{{ csrf_token_name() }}' : $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                '_method' : 'PUT',
+                'is_authority' : 'N',
+                'params' : JSON.stringify($params)
+            };
+
+            var _url = '{{ site_url("/board/professor/{$boardName}/updateAuthority?") }}' + '{!! $boardDefaultQueryString !!}';
+            sendAjax(_url, data, function(ret) {
+                if (ret.ret_cd) {
+                    notifyAlert('success', '알림', ret.ret_msg);
+                    $datatable_modal.draw();
+
+                }
+            }, showError, false, 'POST');
+        });
     });
 </script>
 @stop

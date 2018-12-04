@@ -33,7 +33,7 @@ class BoardTpassModel extends BoardModel
 
         $from = "
         FROM (
-            SELECT BtmaIdx, MemIdx, ValidStartDate, ValidEndDate, ValidDay, ValidReason, RegDatm, RegAdminIdx, RetireDatm, RetireAdminIdx
+            SELECT BtmaIdx, MemIdx, ValidStartDate, ValidEndDate, ValidDay, ValidReason, IsValid, RegDatm, RegAdminIdx, RetireDatm, RetireAdminIdx
             FROM {$this->_table_board_tpass_member_authority}
             {$target_query_where}
         ) AS a
@@ -50,6 +50,12 @@ class BoardTpassModel extends BoardModel
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 
+    /**
+     * 회원 부여된 권한 목록
+     * @param array $arr_condition
+     * @param $column
+     * @return mixed
+     */
     public function listAuthorityMember($arr_condition = [], $column)
     {
         $from = "
@@ -124,5 +130,38 @@ class BoardTpassModel extends BoardModel
         }
 
         return array(true, $up_data_count, $arr_intersect_member);
+    }
+
+    /**
+     * 회원 권한 수정
+     * @param $input
+     * @return array|bool
+     */
+    public function modifyMemberAuthority($input)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $sess_admin_idx = $this->session->userdata('admin_idx');
+            $arr_target_id = json_decode(element('params', $input));
+
+            $set_data = [
+                'IsValid' => element('is_authority', $input),
+                'RetireDatm' => date('Y-m-d H:i:s'),
+                'RetireAdminIdx' => $sess_admin_idx
+            ];
+
+            $this->_conn-> set($set_data)->where_in('BtmaIdx',$arr_target_id);
+
+            if($this->_conn->update($this->_table_board_tpass_member_authority)=== false) {
+                throw new \Exception('데이터 수정에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return array(error_result($e));
+        }
+
+        return true;
     }
 }

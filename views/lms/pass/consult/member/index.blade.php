@@ -107,8 +107,8 @@
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 buttons: [
-                    { text: '<i class="fa fa-send mr-10"></i> 쪽지발송', className: 'btn-sm btn-info border-radius-reset btn-send-register-message' },
-                    { text: '<i class="fa fa-send mr-10"></i> SMS발송', className: 'btn-sm btn-info border-radius-reset ml-15 btn-send-register-sms' },
+                    { text: '<i class="fa fa-send mr-10"></i> 쪽지발송', className: 'btn-sm btn-info border-radius-reset btn-message' },
+                    { text: '<i class="fa fa-send mr-10"></i> SMS발송', className: 'btn-sm btn-info border-radius-reset ml-15 btn-sms' },
                 ],
                 ajax: {
                     'url' : '{{ site_url("/pass/consult/member/listAjax?") }}',
@@ -119,7 +119,7 @@
                 },
                 columns: [
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            return '<input type="checkbox" name="is_checked" value="'+ row.Phone +'" class="flat" data-is-checked-register-idx="' + row.MemIdx + '" data-is-checked-register-id="' + row.MemId + '" data-is-checked-name="' + row.MemName + '" data-is-checked-register-phone="' + row.Phone + '">';
+                            return '<input type="checkbox" name="is_checked" value="'+ row.Phone +'" class="flat" data-is-checked-idx="' + row.MemIdx + '" data-is-checked-register-id="' + row.MemId + '" data-is-checked-name="' + row.MemName + '" data-is-checked-register-phone="' + row.Phone + '">';
                         }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             // 리스트 번호
@@ -157,12 +157,12 @@
             });
 
             // 쪽지발송
-            $('.btn-send-register-message').click(function() {
+            $('.btn-message').click(function() {
                 var $params = new Array();
                 var uri_param = '';
                 var $params_length = 0;
                 $('input[name="is_checked"]:checked').each(function(key) {
-                    $params[key] = $(this).data('is-checked-register-id');
+                    $params[key] = $(this).data('is-checked-idx');
                 });
 
                 $params_length = Object.keys($params).length;
@@ -170,16 +170,16 @@
                     alert('수신인 명단을 선택해주세요.');
                     return false;
                 }
-                uri_param = '?target_id=' + $params;
+                uri_param = '?target_idx=' + $params;
 
-                $('.btn-send-register-message').setLayer({
+                $('.btn-message').setLayer({
                     "url" : "{{ site_url('crm/message/createSendModal') }}" + uri_param,
                     "width" : "1200"
                 });
             });
 
             // SMS발송
-            $('.btn-send-register-sms').click(function() {
+            $('.btn-sms').click(function() {
                 var $params = new Array();
                 var $phone_params = new Array();
                 $('input[name="is_checked"]:checked').each(function(key) {
@@ -194,7 +194,7 @@
                 }
 
                 var uri_param = '?target_id=' + $params + '&target_phone=' + $phone_params;
-                $('.btn-send-register-sms').setLayer({
+                $('.btn-sms').setLayer({
                     "url" : "{{ site_url('crm/sms/createSendModal') }}" + uri_param,
                     "width" : "1200"
                 });

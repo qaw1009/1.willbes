@@ -338,7 +338,10 @@ class Tpass extends BaseBoard
         ]);
     }
 
-
+    /**
+     * 회원 자료실 권한 부여
+     * @param array $params
+     */
     public function storeMemberAuthority($params = [])
     {
         $rules = [
@@ -395,8 +398,9 @@ class Tpass extends BaseBoard
         ];
 
         $column = ' STRAIGHT_JOIN
-                    a.BtmaIdx, a.MemIdx, a.ValidStartDate, a.ValidEndDate, a.ValidDay, IFNULL(a.ValidReason, \'\') AS ValidReason, a.RegDatm, a.RegAdminIdx, IFNULL(a.RetireDatm, \'\') AS RetireDatm, a.RetireAdminIdx,
-                    b.MemId, b.MemName, c.wAdminName AS RegAdminName, IFNULL(d.wAdminName, \'\') AS RetireAdminName
+                    a.BtmaIdx, a.MemIdx, a.IsValid, a.ValidStartDate, a.ValidEndDate, a.ValidDay, IFNULL(a.ValidReason, \'\') AS ValidReason, a.RegDatm, a.RegAdminIdx, IFNULL(a.RetireDatm, \'\') AS RetireDatm, a.RetireAdminIdx,
+                    b.MemId, b.MemName, fn_dec(b.PhoneEnc) AS Phone,
+                    c.wAdminName AS RegAdminName, IFNULL(d.wAdminName, \'\') AS RetireAdminName
         ';
 
         $list = [];
@@ -411,6 +415,25 @@ class Tpass extends BaseBoard
             'recordsFiltered' => $count,
             'data' => $list,
         ]);
+    }
+
+    /**
+     * 회원 권한 수정
+     */
+    public function updateAuthority()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'is_authority', 'label' => '권한여부', 'rules' => 'trim|required|in_list[Y,N]'],
+            ['field' => 'params[]', 'label' => '회원 선택', 'rules' => 'trim|required']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->boardTpassModel->modifyMemberAuthority($this->_reqP(null, false));
+        $this->json_result($result, '정상 처리 되었습니다.', $result);
     }
 
     /**

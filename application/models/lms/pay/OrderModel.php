@@ -294,7 +294,7 @@ class OrderModel extends BaseOrderModel
                     ]);
 
                     if ($cancel_results['result'] === false) {
-                        throw new \Exception('PG사 부분취소에 실패했습니다.');
+                        throw new \Exception('PG사 부분취소에 실패했습니다. (' . $cancel_results['result_msg'] . ')');
                     }
 
                     // 부분취소 신규 거래번호 업데이트
@@ -310,7 +310,7 @@ class OrderModel extends BaseOrderModel
                     ]);
 
                     if ($cancel_results['result'] === false) {
-                        throw new \Exception('PG사 결제취소에 실패했습니다.');
+                        throw new \Exception('PG사 결제취소에 실패했습니다. (' . $cancel_results['result_msg'] . ')');
                     }
                 }
             }

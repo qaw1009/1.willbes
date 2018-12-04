@@ -223,12 +223,12 @@ class Pg_inisis extends CI_Driver
 
                     // 결제방법별 상세코드 (신용카드, 은행)
                     $auth_results['PayDetailCode'] = null;
-                    if (empty(element('CARD_Code', $params)) === false) {
-                        $auth_results['PayDetailCode'] = element('CARD_Code', $params);
-                    } else if (empty(element('ACCT_BankCode', $params)) === false) {
-                        $auth_results['PayDetailCode'] = element('ACCT_BankCode', $params);
-                    } else if (empty(element('VACT_BankCode', $params)) === false) {
-                        $auth_results['PayDetailCode'] = element('VACT_BankCode', $params);
+                    if (empty(element('CARD_Code', $auth_results)) === false) {
+                        $auth_results['PayDetailCode'] = element('CARD_Code', $auth_results);
+                    } else if (empty(element('ACCT_BankCode', $auth_results)) === false) {
+                        $auth_results['PayDetailCode'] = element('ACCT_BankCode', $auth_results);
+                    } else if (empty(element('VACT_BankCode', $auth_results)) === false) {
+                        $auth_results['PayDetailCode'] = element('VACT_BankCode', $auth_results);
                     }
 
                     // 승인요청 결과로그 저장
@@ -328,8 +328,8 @@ class Pg_inisis extends CI_Driver
      */
     public function repay($params = [])
     {
-        $log_params = [];
         $_order_no = element('order_no', $params);
+        $log_params = [];
 
         try {
             $_mid = element('mid', $params);
@@ -412,6 +412,7 @@ class Pg_inisis extends CI_Driver
 
             return [
                 'result' => true,
+                'result_msg' => $result_msg,
                 'order_no' => $_order_no,
                 'repay_tid' => $result_tid
             ];
@@ -420,6 +421,7 @@ class Pg_inisis extends CI_Driver
 
             return [
                 'result' => false,
+                'result_msg' => isset($log_params['resultMsg']) === true ? $log_params['resultMsg'] : $e->getMessage(),
                 'order_no' => $_order_no
             ];
         } finally {
@@ -437,8 +439,8 @@ class Pg_inisis extends CI_Driver
      */
     public function cancel($params = [])
     {
-        $log_params = [];
         $_order_no = element('order_no', $params);
+        $log_params = [];
 
         try {
             if (empty($_order_no) === true) {
@@ -533,6 +535,7 @@ class Pg_inisis extends CI_Driver
 
             return [
                 'result' => true,
+                'result_msg' => $log_params['resultMsg'],
                 'order_no' => $_order_no
             ];
         } catch (\Exception $e) {
@@ -540,6 +543,7 @@ class Pg_inisis extends CI_Driver
 
             return [
                 'result' => false,
+                'result_msg' => isset($log_params['resultMsg']) === true ? $log_params['resultMsg'] : $e->getMessage(),
                 'order_no' => $_order_no
             ];
         } finally {
@@ -593,6 +597,7 @@ class Pg_inisis extends CI_Driver
 
             return [
                 'result' => true,
+                'result_msg' => '정상완료',
                 'order_no' => $returns['no_oid'],   // 주문번호
                 'seq' => $returns['no_msgseq'],     // 전문 일련번호
                 'mid' => $returns['id_merchant'],   // 상점아이디
@@ -611,6 +616,7 @@ class Pg_inisis extends CI_Driver
 
             return [
                 'result' => false,
+                'result_msg' => $e->getMessage(),
                 'order_no' => $returns['no_oid']
             ];
         }

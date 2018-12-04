@@ -58,7 +58,7 @@
                         </div>
                         <div class="mt-5">
                             @if($is_available_pg_refund === true)
-                                <input type="checkbox" id="is_pg_refund" name="is_pg_refund" class="flat" value="Y"/> 연동환불
+                                <input type="checkbox" id="is_pg_refund" name="is_pg_refund" class="flat" value="Y" checked="checked"/> 연동환불
                             @endif
                         </div>
                     </th>

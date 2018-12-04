@@ -160,12 +160,14 @@
             location.href='{{ site_url("/board/professor/{$boardName}/registForBoard") }}/' + $(this).data('prod-code') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}';
         });
 
+        //권한부여
         $list_table.on('click', '.btn-authority', function() {
-            $('.btn-authority').setLayer({
+            location.href='{{ site_url("/board/professor/{$boardName}/createMemberAuthority") }}/' + $(this).data('prod-code') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}';
+            /*$('.btn-authority').setLayer({
                 "url" : "{{ site_url("/board/professor/{$boardName}/createMemberAuthorityModal/") }}" + $(this).data('prod-code') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}',
                 "width" : "1200",
                 "modal_id" : "modal_html2"
-            });
+            });*/
         });
     });
 </script>

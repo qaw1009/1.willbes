@@ -23,6 +23,12 @@ class Assignment extends BaseSupport
 
     public function index()
     {
+        //과제노출 총 수 취득
+        /*$arr_condition = [
+
+        ];
+        $total_rows = $this->supportBoardTwoWayFModel->listBoard(true, $arr_condition);*/
+
         $this->load->view('classroom/assignment/index', [
         ]);
     }

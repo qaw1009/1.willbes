@@ -302,7 +302,7 @@ class Tpass extends BaseBoard
      * 회원 자료실권한부여 등록 폼
      * @param array $params
      */
-    public function createMemberAuthorityModal($params = [])
+    public function createMemberAuthority($params = [])
     {
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
@@ -317,6 +317,12 @@ class Tpass extends BaseBoard
             'prof_idx' => $prof_idx
         ];
 
+        // 기존 교수 기본정보 조회
+        $arr_prof_info = $this->_findProfessor($prof_idx);
+        if (count($arr_prof_info) < 1) {
+            show_error('조회된 교수 정보가 없습니다.', _HTTP_NO_PERMISSION, '정보 없음');
+        }
+
         // 기본 상품 정보
         $arr_condition = [
             'EQ' => [
@@ -328,9 +334,10 @@ class Tpass extends BaseBoard
         ];
         $product_data = $this->packageAdminModel->listLectureForProf(false, $prof_idx, $arr_condition, 1, 0, ['A.ProdCode' => 'desc'])[0];
 
-        $this->load->view("board/professor/{$this->board_name}/create_member_authority_modal", [
+        $this->load->view("board/professor/{$this->board_name}/create_member_authority", [
             'boardName' => $this->board_name,
             'prod_code' => $prod_code,
+            'arr_prof_info' => $arr_prof_info,
             'method' => $method,
             'input_params' => $input_params,
             'product_data' => $product_data,

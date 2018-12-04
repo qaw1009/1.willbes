@@ -65,6 +65,7 @@ class Order extends BaseOrder
         // 기본조건
         $arr_condition = [
             'EQ' => [
+                'M.MemIdx' => $this->_reqP('search_member_idx'),
                 'O.SiteCode' => $this->_reqP('search_site_code'),
                 'O.PayRouteCcd' => $this->_reqP('search_pay_route_ccd'),
                 'O.PayMethodCcd' => $this->_reqP('search_pay_method_ccd'),

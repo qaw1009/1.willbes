@@ -277,6 +277,16 @@ class OrderModel extends BaseOrderModel
                     // 총환불금액이 반영된 총실결제금액 (이전 총실결제금액, 현재 실행되는 환불금액은 반영되지 않음)
                     $total_remain_pay_price = $order_data['tRealPayPrice'] - $order_data['tRefundPrice'];
 
+                    // 로컬서버일 경우 이전 총실결제금액, 카드환불금액 고정 ==> TODO : 서버 환경별 실행
+                    if (ENVIRONMENT == 'local') {
+                        $temp_total_refund_price = element('tempTRefundPrice', $this->_conn->getFindResult($this->_table['order_refund_request'],
+                            'count(*) * 100 as tempTRefundPrice',
+                            ['EQ' => ['OrderIdx' => $order_idx, 'RefundType' => 'P']]), 0);
+
+                        $total_remain_pay_price = 1000 - $temp_total_refund_price + 100;
+                        $sum_card_refund_price = 100;
+                    }
+
                     // 부분취소
                     $cancel_results = $this->pg->repay([
                         'order_no' => $order_data['OrderNo'], 'mid' => $order_data['PgMid'], 'tid' => $order_data['PgTid'],

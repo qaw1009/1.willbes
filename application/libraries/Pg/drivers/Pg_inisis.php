@@ -346,7 +346,7 @@ class Pg_inisis extends CI_Driver
 
             // 승인요청금액 (최종결제금액)
             $_repay_price = $_total_remain_pay_price - $_cancel_price;
-            if ($_repay_price < 1) {
+            if ($_repay_price < 0) {
                 throw new \Exception('부분취소 취소금액이 올바르지 않습니다.');
             }
 

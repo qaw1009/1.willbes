@@ -197,7 +197,7 @@
                                         @if($order_prod_row['PayStatusCcd'] == $_pay_status_ccd['paid'])
                                             {{-- 결제완료 --}}
                                             <td>
-                                                @if($order_prod_row['ProdTypeCcd'] == $_prod_type_ccd['on_lecture'])
+                                                @if($order_prod_row['ProdTypeCcd'] == $_prod_type_ccd['on_lecture'] && $order_prod_row['RealPayPrice'] > 0)
                                                     <button name="btn_refund_check" class="btn btn-xs btn-success mb-0" data-order-prod-idx="{{ $order_prod_row['OrderProdIdx'] }}">환불산출금액확인</button>
                                                 @elseif($order_prod_row['ProdTypeCcd'] == $_prod_type_ccd['book'])
                                                     <button name="btn_delivery_check" class="btn btn-xs btn-success mb-0" data-order-prod-idx="{{ $order_prod_row['OrderProdIdx'] }}">반송확인</button>

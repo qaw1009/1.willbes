@@ -407,8 +407,8 @@ class OrderFModel extends BaseOrderFModel
                 throw new \Exception($cart_results);
             }
 
-            // 스테이징, 실서버일 경우만 체크 ==> TODO : 서버 환경별 실행
-            if (ENVIRONMENT == 'testing' || ENVIRONMENT == 'production') {
+            // 로컬서버가 아닐 경우 체크 ==> TODO : 서버 환경별 실행
+            if (ENVIRONMENT != 'local') {
                 // 결제요청금액, 실제결제금액, 장바구니 재계산 금액이 모두 일치하는지 여부 확인
                 if ($pay_results['total_pay_price'] != $post_row['ReqPayPrice'] || $pay_results['total_pay_price'] != $cart_results['total_pay_price']) {
                     throw new \Exception('결제금액이 일치하지 않습니다.', _HTTP_BAD_REQUEST);

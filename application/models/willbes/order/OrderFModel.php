@@ -977,6 +977,11 @@ class OrderFModel extends BaseOrderFModel
                 // 단강좌, 학원단과 정보 조회
                 $prod_rows = $this->productFModel->findProductLectureInfo($arr_prod_code_sub);
                 foreach ($prod_rows as $idx => $prod_row) {
+                    // 사용자패키지일 경우 패키지 판매정보의 수강연장일수 합산
+                    if ($learn_pattern == 'userpack_lecture') {
+                        $prod_row['StudyPeriod'] = $prod_row['StudyPeriod'] + element('AddExtenDay', $input, 0);
+                    }
+
                     // 수강시작일, 수강종료일 조회
                     $arr_lec_date = $this->getMyLectureLecStartEndDate($prod_row['LearnPatternCcd'], $prod_row['StudyStartDate'], $prod_row['StudyEndDate'], $prod_row['StudyPeriod'], $user_study_start_date);
 

@@ -34,7 +34,8 @@ class CartFModel extends BaseOrderFModel
                 , ifnull(JSON_VALUE(CalcPriceData, "$.SaleRate"), OriSaleRate) as SaleRate
                 , ifnull(JSON_VALUE(CalcPriceData, "$.SaleDiscType"), OriSaleDiscType) as SaleDiscType
                 , ifnull(JSON_VALUE(CalcPriceData, "$.RealSalePrice"), OriRealSalePrice) as RealSalePrice
-                , ifnull(JSON_EXTRACT(CalcPriceData, "$.SubRealSalePrice"), "") as SubRealSalePrice';
+                , ifnull(JSON_EXTRACT(CalcPriceData, "$.SubRealSalePrice"), "") as SubRealSalePrice
+                , ifnull(JSON_VALUE(CalcPriceData, "$.LecExten"), 0) as AddExtenDay';   // 사용자패키지 추가 수강연장 일수
 
             $in_column = 'CA.CartIdx, CA.MemIdx, CA.SiteCode, PC.CateCode, CA.ProdCode
                 , ifnull(if(PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['adminpack_lecture'] . '" and PL.PackTypeCcd = "' . $this->_adminpack_lecture_type_ccd['normal'] . '", fn_product_sublecture_codes(CA.ProdCode), CA.ProdCodeSub), "") as ProdCodeSub

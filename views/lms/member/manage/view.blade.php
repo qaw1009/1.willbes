@@ -104,27 +104,16 @@
         </div>
     </div>
 
-    <form name="search_form" class="form-horizontal searching" id="search_form" onsubmit="return false;" method="POST">
-        {!! csrf_field() !!}
-        <input type="hidden" name="memIdx" value="{{$data['MemIdx']}}" />
-        <ul class="tabs-site-code nav nav-tabs bar_tabs mt-30" id=" " role="tablist">
-            <li {{ $viewtype == 'takeinfo' ? 'class=active ' : '' }}role="presentation"><a role="tab" href="#none" data-toggle="tab" data-viewtype="takeinfo"><strong>수강정보관리</strong></a></li>
-            <li {{ $viewtype == 'orderinfo' ? 'class=active ' : '' }}role="presentation"><a role="tab" href="#none" data-toggle="tab" data-viewtype="orderinfo"><strong>결제정보관리</strong></a></li>
-            <li {{ $viewtype == 'consult' ? 'class=active ' : '' }}role="presentation"><a role="tab" href="#none" data-toggle="tab" data-viewtype="consult"><strong>상담/메모관리</strong></a></li>
-            <li {{ $viewtype == 'coupon' ? 'class=active ' : '' }}role="presentation"><a role="tab" href="#none" data-toggle="tab" data-viewtype="coupon"><strong>쿠폰관리</strong></a></li>
-            <li {{ $viewtype == 'point' ? 'class=active ' : '' }}role="presentation"><a role="tab" href="#none" data-toggle="tab" data-viewtype="point"><strong>포인트관리</strong></a></li>
-            <li {{ $viewtype == 'crm' ? 'class=active ' : '' }}role="presentation"><a role="tab" href="#none" data-toggle="tab" data-viewtype="crm"><strong>CRM관리</strong></a></li>
-        </ul>
-        <input name="search_viewtype" id="search_viewtype" type="hidden" value="{{$viewtype}}">
-        <div class="x_panel">
-            <div class="x_content">
-
-
-
-            </div>
-        </div>
-    </form>
-    <script>
+    <ul class="tabs-site-code nav nav-tabs bar_tabs mt-30" role="tablist">
+        <li role="presentation"><a role="tab" href="#none" data-toggle="tab" onclick="fnLoad('ajaxLecture');"><strong>수강정보관리</strong></a></li>
+        <li role="presentation"><a role="tab" href="#none" data-toggle="tab" onclick="fnLoad('ajaxPay');"><strong>결제정보관리</strong></a></li>
+        <li role="presentation"><a role="tab" href="#none" data-toggle="tab" onclick="fnLoad('lecture');"><strong>상담/메모관리</strong></a></li>
+        <li role="presentation"><a role="tab" href="#none" data-toggle="tab" onclick="fnLoad('lecture');"><strong>쿠폰관리</strong></a></li>
+        <li role="presentation"><a role="tab" href="#none" data-toggle="tab" onclick="fnLoad('lecture');"><strong>포인트관리</strong></a></li>
+        <li role="presentation"><a role="tab" href="#none" data-toggle="tab" onclick="fnLoad('lecture');"><strong>CRM관리</strong></a></li>
+    </ul>
+    <div id="tab-content"> </div>
+    <script type="text/javascript">
         $(document).ready(function() {
             $('#login_log').setLayer({
                 url : "{{ site_url("member/manage/loginLog/{$data['MemIdx']}") }}",
@@ -176,7 +165,6 @@
                 modal_id : "message_modal"
             });
 
-
             $('#search_value').keypress(function() {
                 if(event.keyCode == 13){
                     if($.trim($('#search_value').val()) != ''){
@@ -198,5 +186,21 @@
                 location.replace('{{ site_url('/member/manage/') }}' + getQueryString());
             });
         });
+
+
+        function fnLoad(cmd)
+        {
+            $url = '{{site_url('member/manage/')}}' + cmd;
+            $data = 'memIdx={{$data['MemIdx']}}';
+
+            sendAjax($url,
+                $data,
+                function(d){
+                    $("#tab-content").html(d).end()
+                },
+                function(req, status, err){
+                    showError(req, status);
+                }, false, 'GET', 'html');
+        }
     </script>
 @stop

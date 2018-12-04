@@ -113,7 +113,7 @@
         <div class="row">
             <div class="form-group">
                 <div class="col-xs-4">
-                    <button class="btn btn-default ml-20" type="button" id="btn_search_setting">엑셀다운로드</button>
+                    <button type="button" class="btn btn-default ml-20" id="btn_search_setting">엑셀다운로드</button>
                     <button type="button" class="btn btn-default" id="btn_mail">EM발송</button>
                     <button type="button" class="btn btn-default" id="btn_message">쪽지발송</button>
                     <button type="button" class="btn btn-default" id="btn_sms">SMS발송</button>

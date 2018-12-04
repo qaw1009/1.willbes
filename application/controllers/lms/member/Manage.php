@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Manage extends \app\controllers\BaseController
 {
-    protected $models = array('member/manageMember');
+    protected $models = array('member/manageMember','sys/code', 'pay/orderList');
     protected $helpers = array();
 
     public function __construct()
@@ -604,6 +604,26 @@ class Manage extends \app\controllers\BaseController
         }
 
         redirect(app_url('/', 'www'));
+    }
+
+
+
+    public function ajaxLecture()
+    {
+        $this->load->view('member/layer/lecture', [
+
+        ]);
+    }
+
+
+    public function ajaxPay()
+    {
+        $memIdx = $this->_req('memIdx');
+
+        $this->load->view('member/layer/pay', [
+            'memIdx' => $memIdx,
+            '_pay_status_ccd' => $this->orderListModel->_pay_status_ccd
+        ]);
     }
 
 }

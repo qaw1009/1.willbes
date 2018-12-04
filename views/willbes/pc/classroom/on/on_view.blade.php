@@ -162,6 +162,10 @@
 
             <div id="MoreBook" class="willbes-Layer-PassBox willbes-Layer-PassBox800 h1100 abs" style="height:600px !important;"></div>
 
+            @if($lec['IsEdit'] == 'Y')
+                @include('willbes.pc.classroom.on.on_ongoing_partial')
+            @endif
+
         </div>
         {!! banner('내강의실_우측날개', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
     </div>

@@ -164,6 +164,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property SalesProductModel $salesProductModel                              Sales Product Model Class
  * @property TmModel $tmModel                                                         Tm Model Class
  * @property StudentModel $studentModel                                          Student Model Class
+
+ ***************** MockTest *********************
+ * @property MockCommonModel $mockCommonModel                              MockTest MockCommon Model Class
+ * @property BaseCodeModel $baseCodeModel                                        MockTest BaseCod Model Class
+ * @property ApplyExamModel $applyExamModel                                      MockTest ApplyExam Model Class
+ * @property ApplyUserModel $applyUserModel                                        MockTest ApplyUser Model Class
+ * @property BaseRangeModel $baseRangeModel                                        MockTest BaseRange Model Class
+ * @property RegExamModel $regExamModel                                        MockTest RegExam Model Class
+ * @property RegGoodsModel $regGoodsModel                                        MockTest RegGoods Model Class
+ * @property RegGroupModel $regGroupModel                                       MockTest RegGroup Model Class
+ * @property StatsExamModel $statsExamModel                                        MockTest StatsExam Model Class
+ *
  ***************** FRONT ***********************
  * @property BaseProductFModel $baseProductFModel                            Product Base Model Class
  * @property ProfessorFModel $professorFModel                                    Professor Model Class

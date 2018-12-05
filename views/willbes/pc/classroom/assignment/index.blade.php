@@ -88,10 +88,6 @@
             </tbody>
         </table>
     </div>
-
-    <!-- willbes-Layer-PassBox : 과제제출 -->
-
-    <!-- willbes-Layer-PassBox : 채점결과 -->
 </div>
 
 

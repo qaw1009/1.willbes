@@ -24,7 +24,7 @@
                     <tr>
                         <th class="w-tit bg-light-white strong">과제제목</th>
                         <td class="w-data tx-left tx-gray pl15">
-                            제목이 노출됩니다.
+                            {{$data['Title']}}
                             <span class="MoreBtn"><a class="arrow" href="#none"><span class="txt">열기</span> <span class="arrow-Btn">></span></a></span>
                         </td>
                     </tr>
@@ -44,12 +44,7 @@
                     <tr class="editCont" style="display: none;">
                         <th class="w-tit bg-light-white strong">과제내용</th>
                         <td class="w-file tx-left pl15">
-                            A. 다음 각 문장을 끊어진 대로 해석하시오.<br/><br/>
-                            1. Everyone's nose is a different shape.// <br/><br/>
-                            2. Researchers may know why.// <br/><br/>
-                            3. Researchers say / it could be because of the climate.//<br/><br/>
-                            4. People with wider noses / live / in warm, humid areas.// <br/><br/>
-                            5. People with narrower noses / live / in colder, drier places.// <br/><br/>
+                            {!! $data['Content'] !!}
                         </td>
                     </tr>
                     </tbody>

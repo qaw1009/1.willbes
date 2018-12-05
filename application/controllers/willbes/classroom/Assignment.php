@@ -51,11 +51,7 @@ class Assignment extends BaseSupport
         $order_by = ['b.BoardIdx'=>'ASC'];
         if ($total_rows > 0) {
             $list = $this->supportBoardTwoWayFModel->listBoardForAssignment($arr_condition, $column, $total_rows, $order_by);
-            /*foreach ($list as $idx => $row) {
-                $list[$idx]['AttachData'] = json_decode($row['AttachData'],true);       //첨부파일
-            }*/
         }
-        /*print_r($list);*/
 
         $this->load->view('classroom/assignment/index', [
             'total_rows' => $total_rows,
@@ -68,7 +64,23 @@ class Assignment extends BaseSupport
      */
     public function create()
     {
+        $arr_input = array_merge($this->_reqG(null));
+        $board_idx = element('board_idx', $arr_input);
+
+        $column = 'BoardIdx, Title, Content, AttachData';
+        $arr_condition = [
+            'EQ' => [
+                'BmIdx' => $this->_bm_idx,
+                'IsUse' => 'Y'
+            ],
+        ];
+        $data = $this->supportBoardTwoWayFModel->findBoard($board_idx,$arr_condition,$column);
+        if (empty($data) === true) {
+            show_alert('조회된 과제가 없습니다.', '/classroom/home/', false);
+        }
+
         $this->load->view('classroom/assignment/create', [
+            'data' => $data
         ]);
     }
 

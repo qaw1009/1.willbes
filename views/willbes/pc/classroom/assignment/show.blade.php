@@ -31,9 +31,9 @@
                 </table>
                 <div class="editDetailWrap p_re mt30 mb60">
                     <ul class="tabWrap tabDepth2">
-                        <li><a id="edit1" href="#ch1">과제보기</a></li>
-                        <li><a id="edit2" href="#ch2">작성답안</a></li>
-                        <li><a id="edit3" href="#ch3">채점결과</a></li>
+                        <li><a id="edit1" href="#ch1" @if('1' == '2')class="on" @endif>과제보기</a></li>
+                        <li><a id="edit2" href="#ch2" @if('1' == '1')class="on" @endif>작성답안</a></li>
+                        <li><a id="edit3" href="#ch3" @if('1' == '2')class="on" @endif>채점결과</a></li>
                     </ul>
                     <div class="tabBox mt30">
                         <div id="ch1" class="tabLink">

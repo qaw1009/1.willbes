@@ -70,7 +70,7 @@
                             <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="">
                         </div>
                         <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-default mb-0 btn-set-search-date active" data-period="0-mon">당월</button>
+                            <button type="button" class="btn btn-default mb-0 btn-set-search-date" data-period="0-mon">당월</button>
                             <button type="button" class="btn btn-default mb-0 btn-set-search-date" data-period="1-weeks">1주일</button>
                             <button type="button" class="btn btn-default mb-0 btn-set-search-date" data-period="15-days">15일</button>
                             <button type="button" class="btn btn-default mb-0 btn-set-search-date" data-period="1-months">1개월</button>
@@ -137,7 +137,9 @@
 
         $(document).ready(function() {
             // 날짜검색 디폴트 셋팅
-            setDefaultDatepicker(0, 'mon', 'search_start_date', 'search_end_date');
+            if ($search_form.find('input[name="search_start_date"]').val().length < 1 || $search_form.find('input[name="search_end_date"]').val().length < 1) {
+                setDefaultDatepicker(0, 'mon', 'search_start_date', 'search_end_date');
+            }
 
             $datatable = $list_table.DataTable({
                 serverSide: true,

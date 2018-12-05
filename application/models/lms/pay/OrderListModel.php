@@ -262,11 +262,18 @@ class OrderListModel extends BaseOrderModel
                 $excel_column .= ', OPR.RefundPrice, OPR.RefundDatm, AR.wAdminName as RefundAdminName';
             }
 
+            // 환불산출금액 정보 추가
+            if (in_array('refund_proc', $arr_add_join) === true) {
+                $from .= '';
+                $column .= '';
+                $excel_column .= '';
+            }
+
             // 나의 강좌정보 추가
             if (in_array('my_lecture', $arr_add_join) === true) {
                 $from .= '';
-                $column .= ', fn_order_my_lecture_data(O.OrderIdx, OP.OrderProdIdx) as MyLecData';
-                $excel_column .= ', fn_order_my_lecture_data(O.OrderIdx, OP.OrderProdIdx) as MyLecData';
+                $column .= ', fn_order_my_lecture_data(O.OrderIdx, OP.OrderProdIdx, 0, 0, 1) as MyLecData';
+                $excel_column .= ', fn_order_my_lecture_data(O.OrderIdx, OP.OrderProdIdx, 0, 0, 1) as MyLecData';
             }
 
             // 패키지상품 서브강좌 정보 추가

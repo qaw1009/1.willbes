@@ -55,7 +55,23 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
+            @if(empty($list))
+                <tr>
+                    <td class="w-list tx-center" colspan="6">등록된 내용이 없습니다.</td>
+                </tr>
+            @endif
+            @foreach($list as $row)
+                <tr>
+                    <td class="w-no">4회</td>
+                    <td class="w-list tx-left pl20">온라인 독해 첨삭지도 과제4</td>
+                    <td class="w-status-send"><a href="#none" onclick="openWin('EDITPASS')"><span class="aBox waitBox_block NSK">과제제출</span></a></td>
+                    <td class="w-date">&nbsp;</td>
+                    <td class="w-status-mark">&nbsp;</td>
+                    <td class="w-date-fin">&nbsp;</td>
+                </tr>
+            @endforeach
+
+            {{--<tr>
                 <td class="w-no">4회</td>
                 <td class="w-list tx-left pl20">온라인 독해 첨삭지도 과제4</td>
                 <td class="w-status-send"><a href="#none" onclick="openWin('EDITPASS')"><span class="aBox waitBox_block NSK">과제제출</span></a></td>
@@ -86,25 +102,9 @@
                 <td class="w-date">2018-00-00</td>
                 <td class="w-status-mark"><span class="aBox finishBox NSK">채점완료</span></td>
                 <td class="w-date-fin">2018-00-00</td>
-            </tr>
+            </tr>--}}
             </tbody>
         </table>
-        <div class="Paging">
-            <ul>
-                <li class="Prev"><a href="#none"><img src="{{ img_url('paging/paging_prev.png') }}"> </a></li>
-                <li><a class="on" href="#none">1</a><span class="row-line">|</span></li>
-                <li><a href="#none">2</a><span class="row-line">|</span></li>
-                <li><a href="#none">3</a><span class="row-line">|</span></li>
-                <li><a href="#none">4</a><span class="row-line">|</span></li>
-                <li><a href="#none">5</a><span class="row-line">|</span></li>
-                <li><a href="#none">6</a><span class="row-line">|</span></li>
-                <li><a href="#none">7</a><span class="row-line">|</span></li>
-                <li><a href="#none">8</a><span class="row-line">|</span></li>
-                <li><a href="#none">9</a><span class="row-line">|</span></li>
-                <li><a href="#none">10</a></li>
-                <li class="Next"><a href="#none"><img src="{{ img_url('paging/paging_next.png') }}"> </a></li>
-            </ul>
-        </div>
     </div>
 
     <div id="EDITPASS" class="willbes-Layer-PassBox willbes-Layer-PassBox740 h920 abs">

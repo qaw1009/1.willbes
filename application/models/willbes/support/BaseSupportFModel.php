@@ -11,6 +11,7 @@ class BaseSupportFModel extends WB_Model
         ,'lms_board_log' => 'lms_board_read_log'
         ,'lms_board_r_category' => 'lms_board_r_category'
         ,'lms_board_attach' => 'lms_board_attach'
+        ,'lms_board_assignment_r_schedule_date' => 'lms_board_assignment_r_schedule_date'
         ,'menu' => 'lms_site_menu'
         ,'code' => 'lms_sys_code'
         ,'site' => 'lms_site'

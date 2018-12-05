@@ -198,6 +198,12 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
         return true;
     }
 
+    /**
+     * 게시판 글 수정
+     * @param array $inputData
+     * @param $idx
+     * @return array|bool
+     */
     public function modifyBoard($inputData = [], $idx)
     {
         $this->_conn->trans_begin();
@@ -321,7 +327,6 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
     /**
      * 등록 게시글의 교수 정보 조회
      * @param $arr_condition
-     * @param $column
      * @return array
      */
     public function getProfForMemberList($arr_condition)
@@ -363,5 +368,40 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
         // 쿼리 실행
         $data = $this->_conn->query('select ' .$column .$from .$where .$group_by)->result_array();
         return array_pluck($data, 'SubjectName', 'SubjectIdx');
+    }
+
+    /**
+     * 회원별 과제 노출 총 수
+     * @param array $arr_condition
+     * @return mixed
+     */
+    public function listTotalCountForAssignment($arr_condition = [])
+    {
+        $column = 'count(*) AS numrows';
+        $from = "
+            FROM {$this->_table['lms_board_assignment_r_schedule_date']}
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $query = $this->_conn->query('select ' . $column . $from . $where);
+        return $query->row(0)->numrows;
+    }
+
+    public function listBoardForAssignment($arr_condition=[], $column = null, $limit = null, $order_by = [])
+    {
+        $from = "
+            FROM {$this->_table['twoway_board']}
+            LEFT JOIN lms_board_assignment AS a ON a.BoardIdx = b.BoardIdx AND a.MemIdx = {$this->session->userdata('mem_idx')}
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+        $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit)->getMakeLimitOffset();
+
+        return $this->_conn->query('select '.$column .$from .$where . $order_by_offset_limit)->result_array();
     }
 }

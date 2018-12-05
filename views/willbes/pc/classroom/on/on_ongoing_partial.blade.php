@@ -1,4 +1,4 @@
-<iframe frameborder="0" scrolling="no" width="940px" onload="resizeIframe(this)" src="{{site_url("/classroom/assignment?p={$lec['ProdCode']}&pf={$lec['ProfIdx']}&sd=".str_replace('-','',$lec['LecStartDate'])."&ed=".str_replace('-','',$lec['RealLecEndDate']))}}"></iframe>
+<iframe frameborder="0" scrolling="no" width="940px" onload="resizeIframe(this)" src="{{site_url("/classroom/assignment?p={$lec['ProdCode']}&pf={$lec['ProfIdx']}&sd=".$lec['LecStartDate']."&ed=".$lec['RealLecEndDate'])}}"></iframe>
 <div id="NOTICEPASS" class="willbes-Layer-Black"></div>
 
 <script type="text/javascript">

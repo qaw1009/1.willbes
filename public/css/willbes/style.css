@@ -3669,6 +3669,10 @@ table.profTable tr td .priceWrap {
     padding: 0;
     height: 34px;
 }
+.select-menu.fixed {
+    width: 810px;
+    right: 310px;
+}
 
 /* subContainer : Content : 강좌정보 */
 .classInfo {
@@ -4423,6 +4427,10 @@ form .LeclistTable .evtTable tr td a.w-del {
     height: 34px;
 }
 .tabMock.three li {
+    float: left;
+    width: 160px;
+}
+.tabMock.four li {
     float: left;
     width: 160px;
 }
@@ -7639,6 +7647,12 @@ table.PassZoneTable .w-data {
 .willbes-Layer-PassBox740.h900.fix {
     margin-top: -450px;
     margin-left: -370px;  
+}
+.willbes-Layer-PassBox740.h920.fix {
+    margin-top: -460px;
+    margin-left: -370px; 
+    border: 1px solid #2f2f2f;
+    z-index: 110; 
 }
 
 /* subContainer : Mypage : 무한PASS존 : willbes-Mypage-PASSZONE : willbes-Layer-PassBox : PASSZONE-List */

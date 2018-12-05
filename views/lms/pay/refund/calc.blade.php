@@ -18,15 +18,15 @@
         <div class="col-md-12">
             <table class="table table-bordered">
                 <colgroup>
-                    <col width="25%"/>
-                    <col width="25%"/>
-                    <col width="25%"/>
-                    <col width="25%"/>
+                    <col width="20%"/>
+                    <col width="26%"/>
+                    <col width="27%"/>
+                    <col width="27%"/>
                 </colgroup>
                 <tbody>
                     <tr>
                         <td class="bg-odd">강좌명</td>
-                        <td colspan="3">온라인 강좌 | <div class="blue inline-block">단강좌</div> 단강좌명</td>
+                        <td colspan="3">{{ $data['ProdTypeCcdName'] }} | <div class="blue inline-block">[{{ $data['LearnPatternCcdName'] }}]</div> {{ $data['ProdName'] }}</td>
                     </tr>
                     <tr class="bg-odd">
                         <td>수강상태</td>
@@ -35,26 +35,25 @@
                         <td>수강료(정상가) / 결제금액</td>
                     </tr>
                     <tr>
-                        <td><span class="red">수강중</span></td>
-                        <td><span class="red">2강</span> / 40강</td>
-                        <td><span class="red">20일</span> / 50일</td>
-                        <td>60,000원 / <span class="red">50,000원</span></td>
+                        <td><span class="red">{{ $data['StudyStatusName'] }}</span></td>
+                        <td><span class="red">{{ $data['StudyUnitLectureCnt'] }}강</span> / {{ $data['TotalUnitLectureCnt'] }}강</td>
+                        <td><span class="red">{{ $data['StudyLecDay'] }}일</span> / {{ $data['RealLecExpireDay'] }}일</td>
+                        <td>{{ number_format($data['SalePrice']) }}원 / <span class="red">{{ number_format($data['CardPayPrice']) }}원</span></td>
                     </tr>
                 </tbody>
             </table>
             <div class="text-center">
-                <h4>[환불금액 산출] 50,000원 (결제금액) - (1,500원 * 2강) = <span class="red">47,000원</span></h4>
+                <h4>
+                    [환불금액 산출] {{ number_format($data['CardPayPrice']) }}원 (결제금액) - ({{ number_format($data['UnitLecturePrice']) }}원 * {{ $data['StudyUnitLectureCnt'] }}강)
+                    = <span class="red">{{ number_format($data['CalcCardRefundPrice']) }}원</span>
+                </h4>
             </div>
         </div>
         <div class="col-md-12 mt-10">
             <div class="pl-20 pt-20 bdt-line">
                 <p>
-                    <input type="radio" id="is_approval" name="" class="flat" value=""/>
-                    전체 <span class="blue">수강기간</span> 대비 강좌 정상가의 <span class="blue">1일</span> 이용 대금 : 60,000원 / 50일 = <span class="blue">1,200원</span>
-                </p>
-                <p>
-                    <input type="radio" id="is_approval" name="" class="flat" value=""/>
-                    전체 <span class="blue">강의수</span> 대비 강좌 정상가의 <span class="blue">1강</span> 이용 대금 : 60,000원 / 40강 = <span class="blue">1,500원</span>
+                    <i class="fa fa-chevron-circle-right"></i> 전체 <span class="blue">강의수</span> 대비 강좌 정상가의 <span class="blue">1강</span> 이용 대금 :
+                    {{ number_format($data['SalePrice']) }}원 / {{ $data['TotalUnitLectureCnt'] }}강 = <span class="blue">{{ number_format($data['UnitLecturePrice']) }}원</span>
                 </p>
             </div>
         </div>

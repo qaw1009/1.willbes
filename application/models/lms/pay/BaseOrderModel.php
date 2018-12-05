@@ -26,6 +26,7 @@ class BaseOrderModel extends WB_Model
         'product_professor_concat' => 'vw_product_r_professor_concat',
         'bms_book' => 'wbs_bms_book',
         'my_lecture' => 'lms_my_lecture',
+        'lecture_studyinfo' => 'lms_lecture_studyinfo',
         'member' => 'lms_member',
         'member_info' => 'lms_member_otherinfo',
         'category' => 'lms_sys_category',

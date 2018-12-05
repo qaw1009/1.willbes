@@ -32,7 +32,7 @@ class BaseOrder extends \app\controllers\BaseController
         }
 
         // 주문 조회
-        $data = $this->orderListModel->listAllOrder(false, ['EQ' => ['O.OrderIdx' => $order_idx]], null, null, [], ['delivery_info', 'refund', 'my_lecture']);
+        $data = $this->orderListModel->listAllOrder(false, ['EQ' => ['O.OrderIdx' => $order_idx]], null, null, [], ['delivery_info', 'refund', 'refund_proc', 'my_lecture']);
         if (empty($data) === true) {
             show_error('데이터 조회에 실패했습니다.');
         }
@@ -58,7 +58,7 @@ class BaseOrder extends \app\controllers\BaseController
         $admin_pay_data = [];
         $delivery_addr = [];
 
-        foreach ($data as $row) {
+        foreach ($data as $idx => $row) {
             if ($row['PayStatusCcd'] == $this->orderListModel->_pay_status_ccd['refund']) {
                 // 환불내역 데이터 가공 (환불처리에서만 사용)
                 if ($this->_is_refund_proc === true) {
@@ -79,6 +79,11 @@ class BaseOrder extends \app\controllers\BaseController
                 if ($is_refund_data === false) {
                     $is_refund_data = true;
                 }
+            }
+
+            // 환불산출금액이 0보다 작을 경우 0으로 셋팅
+            if ($this->_is_refund_proc === true) {
+                $row['CalcCardRefundPrice'] < 0 && $data[$idx]['CalcCardRefundPrice'] = 0;
             }
 
             // 관리자결제 상품 데이터 셋팅
@@ -126,6 +131,7 @@ class BaseOrder extends \app\controllers\BaseController
             '_is_refund_proc' => $this->_is_refund_proc,
             '_is_refund_data' => $is_refund_data,
             '_prod_type_ccd' => $this->orderListModel->_prod_type_ccd,
+            '_learn_pattern_ccd' => $this->orderListModel->_learn_pattern_ccd,
             '_pay_route_ccd' => $this->orderListModel->_pay_route_ccd,
             '_pay_status_ccd' => $this->orderListModel->_pay_status_ccd
         ]);

@@ -231,13 +231,44 @@ class RefundProc extends BaseOrder
     }
 
     /**
-     * 환불산출금액확인 폼
+     * 환불산출금액확인 모달창
+     * @return mixed
      */
     public function calc()
     {
-        var_dump($_GET);
-        $this->load->view('pay/refund/calc', [
+        $order_idx = $this->_reqG('order_idx');
+        $order_prod_idx = $this->_reqG('order_prod_idx');
 
+        if (empty($order_idx) === true || empty($order_prod_idx) === true) {
+            return $this->json_error('필수 파라미터 오류입니다.', _HTTP_VALIDATION_ERROR);
+        }
+
+        $arr_condition = ['EQ' => ['O.OrderIdx' => $order_idx, 'OP.OrderProdIdx' => $order_prod_idx, 'PL.LearnPatternCcd' => $this->orderListModel->_learn_pattern_ccd['on_lecture']]];
+        $column = 'OP.CardPayPrice, P.ProdName, CPT.CcdName as ProdTypeCcdName, CLP.CcdName as LearnPatternCcdName
+            , fn_product_saletype_price(OP.ProdCode, OP.SaleTypeCcd, "SalePrice") as SalePrice
+            , fn_product_unit_lecture_cnt(OP.ProdCode) as TotalUnitLectureCnt
+            , (select count(0) from ' . $this->orderListModel->_table['lecture_studyinfo'] . ' where OrderIdx = O.OrderIdx and OrderProdIdx = OP.OrderProdIdx and ProdCode = OP.ProdCode and ProdCodeSub = OP.ProdCode) as StudyUnitLectureCnt
+            , fn_order_my_lecture_data(O.OrderIdx, OP.OrderProdIdx, OP.ProdCode, OP.ProdCode, 1) as MyLecData';
+        $data = $this->orderListModel->findOrderProduct($arr_condition, $column, 1);
+        if (empty($data) === true) {
+            return $this->json_error('데이터 조회에 실패했습니다.');
+        }
+
+        $data = element('0', $data);
+        $my_lec_data = element('0', json_decode($data['MyLecData'], true), []);
+
+        $data['UnitLecturePrice'] = round($data['SalePrice'] / $data['TotalUnitLectureCnt']);
+        $data['CalcCardRefundPrice'] = $data['CardPayPrice'] - ($data['UnitLecturePrice'] * $data['StudyUnitLectureCnt']);
+        $data['RealLecExpireDay'] = $my_lec_data['RealLecExpireDay'];
+        $data['StudyLecDay'] = 0;
+        $data['StudyStatusName'] = '수강대기';
+        if ($data['StudyUnitLectureCnt'] > 0) {
+            $data['StudyLecDay'] = ((strtotime(date('Y-m-d')) - strtotime($my_lec_data['LecStartDate'])) / 86400) + 1;
+            $data['StudyStatusName'] = '수강중';
+        }
+
+        $this->load->view('pay/refund/calc', [
+            'data' => $data
         ]);
     }
 }

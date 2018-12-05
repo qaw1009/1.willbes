@@ -197,8 +197,10 @@
                                         @if($order_prod_row['PayStatusCcd'] == $_pay_status_ccd['paid'])
                                             {{-- 결제완료 --}}
                                             <td>
-                                                @if($order_prod_row['ProdTypeCcd'] == $_prod_type_ccd['on_lecture'] && $order_prod_row['RealPayPrice'] > 0)
+                                                @if($order_prod_row['LearnPatternCcd'] == $_learn_pattern_ccd['on_lecture'] && $order_prod_row['RealPayPrice'] > 0)
                                                     <button name="btn_refund_check" class="btn btn-xs btn-success mb-0" data-order-prod-idx="{{ $order_prod_row['OrderProdIdx'] }}">환불산출금액확인</button>
+                                                @elseif(($order_prod_row['ProdTypeCcd'] == $_prod_type_ccd['on_lecture'] || $order_prod_row['ProdTypeCcd'] == $_prod_type_ccd['off_lecture']) && $order_prod_row['RealPayPrice'] > 0)
+                                                    수동산출요망
                                                 @elseif($order_prod_row['ProdTypeCcd'] == $_prod_type_ccd['book'])
                                                     <button name="btn_delivery_check" class="btn btn-xs btn-success mb-0" data-order-prod-idx="{{ $order_prod_row['OrderProdIdx'] }}">반송확인</button>
                                                     <input type="hidden" id="is_delivery_check_{{ $order_prod_row['OrderProdIdx'] }}" name="is_delivery_check[]" value="N"/>
@@ -206,10 +208,10 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <input id="card_refund_price_{{ $order_prod_row['OrderProdIdx'] }}" name="card_refund_price[]" class="form-control input-sm" title="카드환불금액" value="{{ $order_prod_row['CardPayPrice'] }}" @if($order_prod_row['CardPayPrice'] < 1) readonly="readonly" @endif style="width: 140px;"/>
+                                                <input id="card_refund_price_{{ $order_prod_row['OrderProdIdx'] }}" name="card_refund_price[]" class="form-control input-sm" title="카드환불금액" value="{{ $order_prod_row['CalcCardRefundPrice'] }}" @if($order_prod_row['CardPayPrice'] < 1) readonly="readonly" @endif style="width: 140px;"/>
                                             </td>
                                             <td>
-                                                <input id="cash_refund_price_{{ $order_prod_row['OrderProdIdx'] }}" name="cash_refund_price[]" class="form-control input-sm" title="현금환불금액" value="{{ $order_prod_row['CashPayPrice'] }}" @if($order_prod_row['CashPayPrice'] < 1) readonly="readonly" @endif style="width: 140px;"/>
+                                                <input id="cash_refund_price_{{ $order_prod_row['OrderProdIdx'] }}" name="cash_refund_price[]" class="form-control input-sm" title="현금환불금액" value="{{ $order_prod_row['CalcCashRefundPrice'] }}" @if($order_prod_row['CashPayPrice'] < 1) readonly="readonly" @endif style="width: 140px;"/>
                                             </td>
                                             <td>
                                                 @if($order_prod_row['IsUseCoupon'] == 'Y')

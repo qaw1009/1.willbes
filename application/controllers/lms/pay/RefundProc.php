@@ -267,7 +267,7 @@ class RefundProc extends BaseOrder
             $data['StudyStatusName'] = '수강중';
         }
 
-        $this->load->view('pay/refund/calc', [
+        return $this->load->view('pay/refund/calc', [
             'data' => $data
         ]);
     }

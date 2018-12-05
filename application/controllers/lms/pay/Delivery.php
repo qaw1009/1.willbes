@@ -293,6 +293,7 @@ class Delivery extends BaseOrder
 
     /**
      * 프린트 폼
+     * @return mixed
      */
     public function print()
     {
@@ -301,43 +302,42 @@ class Delivery extends BaseOrder
         $delivery_status = $this->_req('status');
 
         if (empty($params) === true || empty($delivery_status) === true) {
-            echo 'ERR:필수 파라미터 오류입니다.';
-            return null;
+            return $this->json_error('필수 파라미터 오류입니다.', _HTTP_VALIDATION_ERROR);
+        }
+
+        // 기본 조건
+        $arr_condition = [
+            'EQ' => [
+                'P.ProdTypeCcd' => $this->orderListModel->_prod_type_ccd['book'],
+                'OP.PayStatusCcd' => $this->orderListModel->_pay_status_ccd['paid'],
+            ],
+            'IN' => [
+                'O.OrderIdx' => array_values($params)
+            ]
+        ];
+
+        if ($delivery_status == 'invoice') {
+            $arr_condition['RAW']['OPD.DeliveryStatusCcd is '] = 'null';
         } else {
-            // 기본 조건
-            $arr_condition = [
-                'EQ' => [
-                    'P.ProdTypeCcd' => $this->orderListModel->_prod_type_ccd['book'],
-                    'OP.PayStatusCcd' => $this->orderListModel->_pay_status_ccd['paid'],
-                ],
-                'IN' => [
-                    'O.OrderIdx' => array_values($params)
-                ]
-            ];
+            $arr_condition['EQ']['OPD.DeliveryStatusCcd'] = $this->orderListModel->_delivery_status_ccd['complete'];
+        }
 
-            if ($delivery_status == 'invoice') {
-                $arr_condition['RAW']['OPD.DeliveryStatusCcd is '] = 'null';
-            } else {
-                $arr_condition['EQ']['OPD.DeliveryStatusCcd'] = $this->orderListModel->_delivery_status_ccd['complete'];
-            }
+        // 주문정보 조회 (회원정보 추가)
+        $order_rows = $this->orderListModel->listAllOrder(false, $arr_condition, null, null, [], array_merge($this->_list_add_join, ['member_info']));
 
-            // 주문정보 조회 (회원정보 추가)
-            $order_rows = $this->orderListModel->listAllOrder(false, $arr_condition, null, null, [], array_merge($this->_list_add_join, ['member_info']));
-
-            if (empty($order_rows) === false) {
-                $tmp_order_idx = 0;
-                foreach ($order_rows as $idx => $order_row) {
-                    if ($tmp_order_idx != $order_row['OrderIdx']) {
-                        $data[$order_row['OrderIdx']]['order'] = $order_row;
-                    }
-                    $data[$order_row['OrderIdx']]['order_prod'][] = $order_row;
-
-                    $tmp_order_idx = $order_row['OrderIdx'];
+        if (empty($order_rows) === false) {
+            $tmp_order_idx = 0;
+            foreach ($order_rows as $idx => $order_row) {
+                if ($tmp_order_idx != $order_row['OrderIdx']) {
+                    $data[$order_row['OrderIdx']]['order'] = $order_row;
                 }
+                $data[$order_row['OrderIdx']]['order_prod'][] = $order_row;
+
+                $tmp_order_idx = $order_row['OrderIdx'];
             }
         }
 
-        $this->load->view('pay/delivery/print', [
+        return $this->load->view('pay/delivery/print', [
             'data' => $data
         ]);        
     }

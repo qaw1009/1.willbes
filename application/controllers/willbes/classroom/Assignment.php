@@ -34,11 +34,12 @@ class Assignment extends BaseSupport
             'LTE' => ['ScheduleDate' => element('ed',$arr_input)]
         ];
         $total_rows = $this->supportBoardTwoWayFModel->listTotalCountForAssignment($arr_condition);
+        $total_rows = 4;
 
         $column = '
-            *
-            ,a.BaIdx AS am_BaIdx, a.Content AS am_MemContent, a.AssignmentStatusCcd AS am_AssignmentStatusCcd, a.IsReply AS am_IsReply
-            ,a.RegDatm AS am_RegDatm, a.ReplyRegDatm AS am_ReplyRegDatm
+            b.*
+            ,a.BaIdx AS am_BaIdx, a.Content AS am_MemContent, a.AssignmentStatusCcd AS am_AssignmentStatusCcd, IFNULL(a.IsReply,"N") AS am_IsReply
+            ,DATE_FORMAT(a.RegDatm, \'%Y-%m-%d\') AS am_RegDatm ,DATE_FORMAT(a.ReplyRegDatm, \'%Y-%m-%d\') AS am_ReplyRegDatm
         ';
         $arr_condition = [
             'EQ' => [
@@ -47,17 +48,33 @@ class Assignment extends BaseSupport
                 'b.ProdCode' => element('p',$arr_input)
             ]
         ];
-        $order_by = ['b.BoardIdx'=>'Desc'];
+        $order_by = ['b.BoardIdx'=>'ASC'];
         if ($total_rows > 0) {
             $list = $this->supportBoardTwoWayFModel->listBoardForAssignment($arr_condition, $column, $total_rows, $order_by);
             /*foreach ($list as $idx => $row) {
                 $list[$idx]['AttachData'] = json_decode($row['AttachData'],true);       //첨부파일
             }*/
         }
+        /*print_r($list);*/
 
         $this->load->view('classroom/assignment/index', [
             'total_rows' => $total_rows,
             'list' => $list
+        ]);
+    }
+
+    /**
+     * 과제제출
+     */
+    public function create()
+    {
+        $this->load->view('classroom/assignment/create', [
+        ]);
+    }
+
+    public function show()
+    {
+        $this->load->view('classroom/assignment/show', [
         ]);
     }
 }

@@ -334,11 +334,10 @@ class SupportQna extends BaseSupport
     public function store()
     {
         $idx = '';
-
-        if ($this->_reqP('_method') == 'PUT') {
-            $s_site_code = $this->_reqP('put_site_code');
-        } else {
+        if ($this->_site_code == config_item('app_intg_site_code')) {
             $s_site_code = $this->_reqP('s_site_code');
+        } else {
+            $s_site_code = $this->_reqP('put_site_code');
         }
 
         //캠퍼스 사용 유/무 조회
@@ -355,11 +354,7 @@ class SupportQna extends BaseSupport
 
         switch ($this->_default_path) {
             case '/support/qna' :    //고객센터 상담게시판
-                if ($this->_reqP('_method') == 'PUT') {
-                    $rules = array_merge($rules, [
-                        ['field' => 'put_site_code', 'label' => '과정', 'rules' => 'trim|required|integer'],
-                    ]);
-                } else {
+                if (empty($s_site_code) === true) {
                     $rules = array_merge($rules, [
                         ['field' => 's_site_code', 'label' => '과정', 'rules' => 'trim|required|integer'],
                     ]);

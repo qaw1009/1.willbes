@@ -111,7 +111,7 @@
                     <th>결제금액</th>
                     <th>환불금액</th>
                     <th>결제상태</th>
-                    <th class="rowspan">수강증출력</th>
+                    <th>수강증출력</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -194,8 +194,8 @@
                         return (row.PayStatusCcd === '{{ $_pay_status_ccd['receipt_wait'] }}' ? '<a class="blue cs-pointer btn-visit-order" data-idx="' + row.OrderIdx + '"><u>' + data + '</u></a>' : data)
                             + (row.PayStatusCcd === '{{ $_pay_status_ccd['refund'] }}' ? '<br/>' + row.RefundDatm.substr(0, 10) + '<br/>(' + row.RefundAdminName + ')' : '');
                     }},
-                    {'data' : 'CompleteDatm', 'render' : function(data, type, row, meta) {
-                        return data !== null ? '<a class="blue cs-pointer btn-print" data-idx="' + row.OrderIdx + '">[출력]</a>' : '';
+                    {'data' : 'ProdTypeCcd', 'render' : function(data, type, row, meta) {
+                        return data === '{{ $_prod_type_ccd['off_lecture'] }}' && row.PayStatusCcd === '{{ $_pay_status_ccd['paid'] }}' ? '<a class="blue cs-pointer btn-print" data-order-idx="' + row.OrderIdx + '" data-order-prod-idx="' + row.OrderProdIdx + '">[출력]</a>' : '';
                     }}
                 ]
             });
@@ -208,6 +208,19 @@
             // 접수대기 버튼 클릭
             $list_table.on('click', '.btn-visit-order', function() {
                 location.href = '{{ site_url('/pay/visit/create') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable);
+            });
+
+            // 수강증 출력 버튼 클릭
+            $list_table.on('click', '.btn-print', function() {
+                $('.btn-print').setLayer({
+                    'url' : '{{ site_url('/pay/visit/print') }}',
+                    'width' : 1200,
+                    'add_param_type' : 'param',
+                    'add_param' : [
+                        { 'id' : 'order_idx', 'name' : '주문식별자', 'value' : $(this).data('order-idx'), 'required' : true },
+                        { 'id' : 'order_prod_idx', 'name' : '주문상품식별자', 'value' : $(this).data('order-prod-idx'), 'required' : true }
+                    ]
+                });
             });
 
             // 엑셀다운로드 버튼 클릭

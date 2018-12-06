@@ -118,7 +118,7 @@
     $(document).ready(function() {
         //editor load
         var $editor_profile = new cheditor();
-        $editor_profile.config.editorHeight = '170px';
+        $editor_profile.config.editorHeight = '500px';
         $editor_profile.config.editorWidth = '100%';
         $editor_profile.inputForm = 'board_content';
         $editor_profile.run();

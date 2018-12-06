@@ -375,7 +375,7 @@
                 </div>
             </div>
     
-            <div id="EDITPASS" class="willbes-Layer-PassBox willbes-Layer-PassBox740 h920 abs">
+            <div id="EDITPASS" class="willbes-Layer-PassBox willbes-Layer-PassBox1100 h920 abs">
                 <a class="closeBtn" href="#none" onclick="closeWin('EDITPASS')">
                     <img src="{{ img_url('sub/close.png') }}">
                 </a>
@@ -492,7 +492,7 @@
             </div>
             <!-- willbes-Layer-PassBox : 과제제출 -->
 
-            <div id="MARKPASS" class="willbes-Layer-PassBox willbes-Layer-PassBox740 h920 abs">
+            <div id="MARKPASS" class="willbes-Layer-PassBox willbes-Layer-PassBox1100 h920 abs">
                 <a class="closeBtn" href="#none" onclick="closeWin('MARKPASS')">
                     <img src="{{ img_url('sub/close.png') }}">
                 </a>

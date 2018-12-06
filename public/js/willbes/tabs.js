@@ -7,7 +7,7 @@ $(function() {
         // If the location.hash matches one of the links, use that as the active tab.
         // If no match is found, use the first link as the initial active tab.
         $active = $($links.filter('[href="' + location.hash + '"]')[0] || $links[0]);
-        $active.addClass('on');
+        //$active.addClass('on');
 
         $content = $($active[0].hash);
 

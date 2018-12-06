@@ -7610,9 +7610,15 @@ table.PassZoneTable .w-data {
 .willbes-Layer-PassBox900 {
     width: 900px;
 }
+.willbes-Layer-PassBox1100 {
+    width: 1100px;
+}
 .willbes-Layer-PassBox.abs {
     top: 80px;
     right: 20px; 
+}
+.willbes-Layer-PassBox1100.abs {
+    right: -180px;
 }
 .willbes-Layer-PassBox.fix {
     position: fixed;

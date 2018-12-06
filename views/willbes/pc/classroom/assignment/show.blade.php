@@ -161,16 +161,9 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
 </div>
-<script type="text/javascript">
-    $(document).ready(function() {
-        var tab_id = '{{$show_tab}}';
-        /*$('ul.tabWrap').find('#' + tab_id).click();*/
-        $('ul.tabWrap').find('#' + tab_id).trigger('create');
-    });
-</script>
+
 @stop

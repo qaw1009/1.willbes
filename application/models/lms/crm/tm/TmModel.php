@@ -476,7 +476,7 @@ class TmModel extends WB_Model
                 $checkCount = $this->_conn->query('select count(*) as chechcount ' . $from . $where)->row_array();
 
                 if ($checkCount['chechcount'] > 0) {
-                    throw new \Exception('21일전에 \'통화\' 로 등록된 상담 내역이 존재합니다. 22일 이후부터 \'통화\' 로 등록 가능합니다.');
+                    throw new \Exception("21일전에 '통화' 로 등록된 상담 내역이 존재합니다. \n\n22일 이후부터 '통화' 로 등록 가능합니다.");
                 }
             }
             $input_data = [

@@ -130,7 +130,7 @@
 
             <div class="pointDetailWrap mt35">
                 <ul class="tabWrap tabDepth3 NG">
-                    <li><a href="#point1">강좌포인트</a></li>
+                    <li><a href="#point1" class="on">강좌포인트</a></li>
                     <li><a href="#point2">교재포인트</a></li>
                 </ul>
                 <div class="tabBox">
@@ -157,7 +157,7 @@
                         </table>
                         <div class="useDetailWrap mt25">
                             <ul class="tabWrap tabDepthPass">
-                                <li><a href="#use1">적립내역</a></li>
+                                <li><a href="#use1" class="on">적립내역</a></li>
                                 <li><a href="#use2">사용내역</a></li>
                             </ul>
                             <div class="tabBox mt20">

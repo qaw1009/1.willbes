@@ -113,7 +113,7 @@
                             </dl>
                         </div>
                     </div>
-                    <div class="all-view subBtn NSK"><a href="#none">개설강좌 전체보기 ></a></div>
+                    <div class="all-view subBtn NSK"><a href="#none" class="NSK">개설강좌 전체보기 ></a></div>
                 </div>
             </div>
         </div>
@@ -349,7 +349,7 @@
                     </div>
                     <div class="bookBoxWrap">
                         <ul class="tabWrap tabDepth2">
-                            <li><a href="#info1">교재소개</a></li>
+                            <li><a href="#info1" class="on">교재소개</a></li>
                             <li><a href="#info2">교재목차</a></li>
                         </ul>
                         <div class="tabBox">

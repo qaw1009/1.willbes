@@ -57,7 +57,7 @@
                     <div class="willbes-guide NGEB">
                         <ul class="tabWrap tabcsDepth2 tab_Guide p_re NGEB">
                             <li class="w-guide1">
-                                <a class="qBox" href="#guide1"><span>주요메뉴 안내</span></a>
+                                <a class="qBox on" href="#guide1"><span>주요메뉴 안내</span></a>
                                 <div class="subBox on">
                                     <dl>
                                         <dt><button type="submit" onclick="">네비게이션</button><span class="row-line">|</span></dt>

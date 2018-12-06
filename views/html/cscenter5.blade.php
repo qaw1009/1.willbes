@@ -56,7 +56,7 @@
                 <div class="w-Guide mt40">
                     <div class="willbes-m-guide NGEB">
                         <ul class="tabWrap tabcsDepth2 tab_m_Guide p_re NG">
-                            <li class="w-m-guide1"><a class="qBox" href="#m_guide1"><span>모바일앱1</span></a></li>
+                            <li class="w-m-guide1"><a class="qBox on" href="#m_guide1"><span>모바일앱1</span></a></li>
                             <li class="w-m-guide2"><a class="qBox" href="#m_guide2"><span>모바일앱2</span></a></li>
                         </ul>
                         <div class="tabBox mt60">

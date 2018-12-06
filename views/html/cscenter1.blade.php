@@ -66,7 +66,7 @@
                     <div class="questionBoxWrap">
                         <ul class="tabWrap tabcsDepth2 tab_Question p_re NG">
                             <li>
-                                <a class="qBox" href="#question1">
+                                <a class="qBox on" href="#question1">
                                     <img src="{{ img_url('cs/icon_question623.gif') }}">
                                     <div>회원정보</div>
                                 </a>

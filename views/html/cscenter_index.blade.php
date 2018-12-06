@@ -228,7 +228,7 @@
                         </table>
                         <div class="csCenterTable">
                             <ul class="tabWrap tabcsDepth2 bg-light-gray p_re">
-                                <li><a class="qBox" href="#question1">회원정보</a></li>
+                                <li><a class="qBox on" href="#question1">회원정보</a></li>
                                 <li><a class="qBox" href="#question2">결제/환불</a></li>
                                 <li><a class="qBox" href="#question3">교재</a></li>
                                 <li><a class="qBox" href="#question4">온라인수강</a></li>

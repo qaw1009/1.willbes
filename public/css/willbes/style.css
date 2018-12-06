@@ -3465,6 +3465,14 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
     float: right;
     width: 125px;
 }
+.lec-profile .all-view a {
+    width: 140px;
+    height: 25px;
+    font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif";
+    font-size: 11px;
+    font-weight: 300;
+    line-height: 17px;
+}
 .lec-profile .w-notice {
     float: left;
     letter-spacing: -1px;
@@ -3669,7 +3677,9 @@ table.profTable tr td .priceWrap {
     padding: 0;
     height: 34px;
 }
-.select-menu.fixed {
+
+/* subContainer : Content : 강좌 acad-offline-menu810 */
+.acad-offline-menu810.fixed {
     width: 810px;
     right: 310px;
 }
@@ -6298,7 +6308,6 @@ ul li.profList .willbes-Layer-ProfileBox {
     margin-left: 101px;
 }
 
-
 /* subContainer : Prof : 공지사항 */
 .oBox {
     font-family: "굴림", "Gulim", "돋움", "Dotum", "Helvetica", "Apple SD Gothic Neo", "sans-serif";
@@ -7416,6 +7425,11 @@ ul li.profList .willbes-Layer-ProfileBox {
     height: 24px;
     line-height:22px;
 }
+.aBox.passBox a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
 .willbes-Lec-Table.d_block .w-answer .w-chk-st {
     float: left;
     width: 24px;
@@ -8136,9 +8150,6 @@ table.PassZoneTable .w-data {
 .editDetailWrap .editTable tr td ul.up-file li {
     padding-left: 30px;
 }
-
-
-
 
 /* subContainer : Mypage : 온라인강좌 : willbes-Mypage-Txt */
 .willbes-Mypage-Txt {
@@ -9291,7 +9302,6 @@ table.acadlecInfoPackageTable tr.Top td {
     float: none;
     margin: 0;
 }
-
 .w-info dt .acadBox {
     display: inline-block;
     font-size: 11px;
@@ -9314,6 +9324,19 @@ table.acadlecInfoPackageTable tr.Top td {
     color: #9c3eb4;
     border-color: #9c3eb4;
 }
+.w-thumb {}
+.w-thumb a.thumb_num {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.w-thumb .thumb_slide_wrap {
+    display: none;
+    position: absolute;
+}
+
+
+
 
 /* subContainer : Content : Aside */
 .Aside {

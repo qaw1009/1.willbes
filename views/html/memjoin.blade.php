@@ -137,12 +137,12 @@
         <div class="user-Txt tx-black tx-left">
             비밀번호를 5회 이상 잘못 입력하셨습니다.
             <div class="user-sub-Txt tx-gray">
-                개인정보 보호를 위해 비밀번호 재설정이 필요합니다.</br>
+                개인정보 보호를 위해 비밀번호 재설정이 필요합니다.<br/>
                 아이디 입력 후 원하시는 본인인증 방법을 선택해 주세요.
             </div>
         </div>
         <ul class="tabWrap tabLoginDepth1 tabs c_both">
-            <li><a href="#type1">휴대폰 인증</a></li>
+            <li><a href="#type1" class="on">휴대폰 인증</a></li>
             <li><a href="#type2">E-mail 인증</a></li>
             <li><a href="#type3">아이핀 인증</a></li>
         </ul>

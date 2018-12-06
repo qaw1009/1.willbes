@@ -632,7 +632,7 @@
             </div>
             <div class="lecDetailWrap">
                 <ul class="tabWrap tabDepth1 NG">
-                    <li><a id="hover1" href="#ch1">강좌상세정보</a></li>
+                    <li><a id="hover1" href="#ch1" class="on">강좌상세정보</a></li>
                     <li><a id="hover2" href="#ch2">교재상세정보 (총 2권)</a></li>
                 </ul>
                 <div class="tabBox">
@@ -707,7 +707,7 @@
                                     </div>
                                     <div class="bookBoxWrap">
                                         <ul class="tabWrap tabDepth2">
-                                            <li><a href="#info1">교재소개</a></li>
+                                            <li><a href="#info1" class="on">교재소개</a></li>
                                             <li><a href="#info2">교재목차</a></li>
                                         </ul>
                                         <div class="tabBox">
@@ -759,7 +759,7 @@
                                     </div>
                                     <div class="bookBoxWrap">
                                         <ul class="tabWrap tabDepth2">
-                                            <li><a href="#info3">교재소개</a></li>
+                                            <li><a href="#info3" class="on">교재소개</a></li>
                                             <li><a href="#info4">교재목차</a></li>
                                         </ul>
                                         <div class="tabBox">

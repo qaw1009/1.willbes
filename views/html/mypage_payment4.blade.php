@@ -122,7 +122,7 @@
         <div class="willbes-Mypage-Tabs mt40">
             <div class="pointDetailWrap">
                 <ul class="tabWrap tabDepth3 NG">
-                    <li><a href="#point1">쿠폰</a></li>
+                    <li><a href="#point1" class="on">쿠폰</a></li>
                     <li><a href="#point2">수강권</a></li>
                 </ul>
                 <div class="tabBox mt20">

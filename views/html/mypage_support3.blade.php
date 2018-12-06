@@ -103,7 +103,7 @@
         <div class="willbes-Mypage-Tabs mt40">
             <div class="pointDetailWrap p_re">
                 <ul class="tabWrap tabDepth4 NG">
-                    <li><a href="#point1">1:1상담 (1)</a></li>
+                    <li><a href="#point1" class="on">1:1상담 (1)</a></li>
                     <li><a href="#point2">학습Q&A(2)</a></li>
                 </ul>
                 <div class="tabBox mt40">

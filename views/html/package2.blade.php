@@ -73,7 +73,7 @@
         <div class="curriWrap c_both">
             <ul class="curriTabs c_both">
                 <li><a href="#none">전체</a></li>
-                <li class="on"><a href="#none">이론과정</a></li>
+                <li><a href="#none" class="on">이론과정</a></li>
                 <li><a href="#none">심화과정</a></li>
                 <li><a href="#none">문제풀이</a></li>
                 <li><a href="#none">특강</a></li>

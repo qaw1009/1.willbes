@@ -748,7 +748,7 @@
                                         <td colspan="5">
                                             <div class="lecDetailWrap p_re mt30 mb60">
                                                 <ul class="tabWrap tabDepth2">
-                                                    <li><a href="#ch1">강좌상세정보</a></li>
+                                                    <li><a href="#ch1" class="on">강좌상세정보</a></li>
                                                     <li><a href="#ch2">강좌목차</a></li>
                                                 </ul>
                                                 <div class="w-btn">
@@ -853,14 +853,14 @@
                                         <td colspan="5">
                                             <div class="lecDetailWrap p_re mt30 mb60">
                                                 <ul class="tabWrap tabDepth2">
-                                                    <li><a href="#ch1">강좌상세정보</a></li>
-                                                    <li><a href="#ch2">강좌목차</a></li>
+                                                    <li><a href="#ch3" class="on">강좌상세정보</a></li>
+                                                    <li><a href="#ch4">강좌목차</a></li>
                                                 </ul>
                                                 <div class="w-btn">
                                                     <a class="bg-blue bd-dark-blue NSK" href="#none" onclick="">현재 강좌추가</a>
                                                 </div>
                                                 <div class="tabBox mt30">
-                                                    <div id="ch1" class="tabLink">
+                                                    <div id="ch3" class="tabLink">
                                                         <table cellspacing="0" cellpadding="0" class="classTable under-gray bdt-gray tx-gray">
                                                             <colgroup>
                                                                 <col style="width: 105px;">
@@ -894,7 +894,7 @@
                                                             </tbody>
                                                         </table>
                                                     </div>
-                                                    <div id="ch2" class="tabLink">
+                                                    <div id="ch4" class="tabLink">
                                                         <div class="LeclistTable">
                                                             <table cellspacing="0" cellpadding="0" class="listTable upper-black under-gray tx-gray">
                                                                 <colgroup>

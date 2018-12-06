@@ -121,9 +121,9 @@
                 <!-- willbes-Buy-PackageList -->
 
                 <div id="Sticky" class="sticky-Wrap">
-                    <div class="sticky-Grid sticky-menu select-menu NG">
+                    <div class="sticky-Grid sticky-menu select-menu acad-offline-menu810 NG">
                         <ul class="tabWrap">
-                            <li><a href="#none" onclick="movePos('#Required');">필수과목 ▼</a></li>
+                            <li><a href="#none" onclick="movePos('#Required');" class="on">필수과목 ▼</a></li>
                             <li><a href="#none" onclick="movePos('#Choose');">선택과목 ▼</a></li>
                         </ul>
                     </div>

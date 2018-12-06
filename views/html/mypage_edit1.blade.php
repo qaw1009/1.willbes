@@ -374,8 +374,11 @@
                     </ul>
                 </div>
             </div>
-    
-            <div id="EDITPASS" class="willbes-Layer-PassBox willbes-Layer-PassBox1100 h920 abs">
+        </div>
+        <!-- willbes-Mypage-EDITZONE -->
+
+        <div id="EDITPASS" class="willbes-Layer-Black">
+            <div class="willbes-Layer-PassBox willbes-Layer-PassBox1100 h920 fix abs" style="display: block;">
                 <a class="closeBtn" href="#none" onclick="closeWin('EDITPASS')">
                     <img src="{{ img_url('sub/close.png') }}">
                 </a>
@@ -491,8 +494,10 @@
                 </div>
             </div>
             <!-- willbes-Layer-PassBox : 과제제출 -->
+        </div>
 
-            <div id="MARKPASS" class="willbes-Layer-PassBox willbes-Layer-PassBox1100 h920 abs">
+        <div id="MARKPASS" class="willbes-Layer-Black">
+            <div class="willbes-Layer-PassBox willbes-Layer-PassBox1100 h920 fix abs" style="display: block;">
                 <a class="closeBtn" href="#none" onclick="closeWin('MARKPASS')">
                     <img src="{{ img_url('sub/close.png') }}">
                 </a>
@@ -658,9 +663,7 @@
                 </div>
             </div>
             <!-- willbes-Layer-PassBox : 채점결과 -->
-
         </div>
-        <!-- willbes-Mypage-EDITZONE -->
 
     </div>
     <div class="Quick-Bnr ml20">

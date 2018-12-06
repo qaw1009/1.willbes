@@ -31,7 +31,7 @@
                             <ul class="tabcsDepth2 tab_Question p_re NG">
                             @foreach($faq_ccd as $row)
                                 <li>
-                                    <a class="@if($s_faq == $row['Ccd']) on @endif" href="{{site_url('support/faq/index?s_faq='.$row['Ccd'])}}">
+                                    <a class="@if($s_faq == $row['Ccd']) on @endif" href="{{front_url('/support/faq/index?s_faq='.$row['Ccd'])}}">
                                         <img src="{{ img_url('cs/icon_question'.$row['Ccd'].'.gif') }}">
                                         <div>{{$row['CcdName']}}</div>
                                     </a>
@@ -39,7 +39,7 @@
                                     <div class="subBox @if($s_faq == $row['Ccd']) on @endif">
                                         <dl>
                                             @foreach($row['subFaqData'] as $sub)
-                                                <dt><a href="{{site_url('support/faq/index?s_faq='.$row['Ccd']).'&s_sub_faq='.$sub['Ccd']}}">{{$sub['CcdName']}}</a>
+                                                <dt><a href="{{front_url('/support/faq/index?s_faq='.$row['Ccd']).'&s_sub_faq='.$sub['Ccd']}}">{{$sub['CcdName']}}</a>
                                                 @if($loop->last == false)
                                                 <span class="row-line">|</span>
                                                 @endif

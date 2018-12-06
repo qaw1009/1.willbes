@@ -47,7 +47,7 @@
                                 @if(empty($data['AttachData']) === false)
                                     @foreach($data['AttachData'] as $row)
                                         @if($row['FileType'] == 0)
-                                            <a href="{{site_url($default_path.'/download?path=').urlencode($row['FilePath'].$row['FileName']).'&fname='.urlencode($row['RealName']).'&board_idx='.$board_idx }}" target="_blank">
+                                            <a href="{{front_url($default_path.'/download?path=').urlencode($row['FilePath'].$row['FileName']).'&fname='.urlencode($row['RealName']).'&board_idx='.$board_idx }}" target="_blank">
                                             <img src="{{ img_url('prof/icon_file.gif') }}"> {{$row['RealName']}}</a>
                                         @endif
                                     @endforeach
@@ -95,7 +95,7 @@
                                     @if(empty($data['AttachData']) === false)
                                         @foreach($data['AttachData'] as $row)
                                             @if($row['FileType'] == 1)
-                                                <a href="{{site_url($default_path.'/download?path=').urlencode($row['FilePath'].$row['FileName']).'&fname='.urlencode($row['RealName']).'&board_idx='.$board_idx }}" target="_blank">
+                                                <a href="{{front_url($default_path.'/download?path=').urlencode($row['FilePath'].$row['FileName']).'&fname='.urlencode($row['RealName']).'&board_idx='.$board_idx }}" target="_blank">
                                                     <img src="{{ img_url('prof/icon_file.gif') }}"> {{$row['RealName']}}</a>
                                             @endif
                                         @endforeach
@@ -137,17 +137,17 @@
     $(document).ready(function() {
         //목록
         $('#btn_list').click(function() {
-            location.href = '{!! site_url($default_path.'/index?'.$get_params) !!}';
+            location.href = '{!! front_url($default_path.'/index?'.$get_params) !!}';
         });
 
         //수정
         $('#btn_modify').click(function() {
-            location.href = '{!! site_url($default_path.'/create?'.$get_params.'&board_idx='.$board_idx) !!}';
+            location.href = '{!! front_url($default_path.'/create?'.$get_params.'&board_idx='.$board_idx) !!}';
         });
 
         //삭제
         $('#btn_del').click(function() {
-            location.href = '{!! site_url($default_path.'/delete?'.$get_params.'&board_idx='.$board_idx) !!}';
+            location.href = '{!! front_url($default_path.'/delete?'.$get_params.'&board_idx='.$board_idx) !!}';
         });
     });
 </script>

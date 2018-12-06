@@ -51,7 +51,7 @@
                         <td class="w-no">@if($row['IsBest'] == '1')<img src="{{ img_url('prof/icon_HOT.gif') }}">@else{{$paging['rownum']}}@endif</td>
                         <td class="w-type"><div class="pBox p1 NSK">{{$row['TypeCcd_Name']}}</div></td>
                         <td class="w-list tx-left pl20">
-                            <a href="{{site_url($default_path.'/material/show?board_idx='.$row['BoardIdx'].'&'.$get_params)}}">
+                            <a href="{{front_url($default_path.'/material/show?board_idx='.$row['BoardIdx'].'&'.$get_params)}}">
                                 {{hpSubString($row['Title'],0,40,'...')}}
                             </a>
                         </td>

@@ -322,7 +322,7 @@
             @if(sess_data('is_login') != true)
                 alert('로그인 후 이용해 주세요.');
             @else
-                var url = '{{ site_url('/support/studyComment/store') }}';
+                var url = '{{ front_url('/support/studyComment/store') }}';
                 ajaxSubmit($_ajax_reg_form, url, function(ret) {
                     if(ret.ret_cd) {
                         alert(ret.ret_msg);
@@ -345,7 +345,7 @@
     function listAjax(page) {
         var add_table = '';
         var orderby = $_ajax_search_form.find('input[name="orderby"]').val();
-        var _url = '{{ site_url("support/studyComment/listAjax") }}';
+        var _url = '{{ front_url("/support/studyComment/listAjax") }}';
         var data = {
             '{{ csrf_token_name() }}' : $_ajax_search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
             'search_cate_code' : $('#search_cate_code').val(),
@@ -360,7 +360,7 @@
             var set_table_style;
             var param_board_idx = "{{ element('board_idx', $arr_input) }}";
             var rownum = ret.paging.rownum;
-            var lecture_path = "{{ site_url('/lecture/show/cate/' . element('cate_code', $arr_input) . '/pattern/only' . '/prod-code/') }}";
+            var lecture_path = "{{ front_url('/lecture/show/cate/' . element('cate_code', $arr_input) . '/pattern/only' . '/prod-code/') }}";
 
             if (ret.ret_data.length < 1) {
                 add_table += '<tr class="replyList w-replyList">';
@@ -424,7 +424,7 @@
     //page ajax
     function ajaxPaging(page)
     {
-        var _url = '{{ site_url("support/studyComment/ajaxPaging") }}';
+        var _url = '{{ front_url("/support/studyComment/ajaxPaging") }}';
         var data = {
             '{{ csrf_token_name() }}' : $_ajax_search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
             'search_cate_code' : $('#search_cate_code').val(),
@@ -462,7 +462,7 @@
         $('.subject-list').attr('class','subject-list off');
         $('#subject_'+subject_idx).attr('class','subject-list on');
 
-        var _url = '{{ site_url("support/studyComment/ajaxProfInfo") }}';
+        var _url = '{{ front_url("/support/studyComment/ajaxProfInfo") }}';
         var data = {
             '{{ csrf_token_name() }}' : $_ajax_search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
             'cate_code' : cate_code,
@@ -496,7 +496,7 @@
     //등록 : 과목값에 따른 교수목록 조회 (select box option 생성)
     function ajaxProfInfoForSelectBox(cate_code, subject_idx) {
         var $study_prof_idx = $_ajax_reg_form.find('select[name="study_prof_idx"]');
-        var _url = '{{ site_url("support/studyComment/ajaxProfInfo") }}';
+        var _url = '{{ front_url("/support/studyComment/ajaxProfInfo") }}';
         var data = {
             '{{ csrf_token_name() }}' : $_ajax_search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
             'cate_code' : cate_code,

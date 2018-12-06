@@ -50,7 +50,7 @@
                                 <option value="{{$key}}" @if(element('s_consult_type', $arr_input) == $key)selected="selected"@endif>{{$val}}</option>
                             @endforeach
                         </select>
-                        <div class="subBtn NSK f_right"><a href="{{site_url('/support/qna/create?'.$get_params)}}">문의하기 ></a></div>
+                        <div class="subBtn NSK f_right"><a href="{{front_url('/support/qna/create?'.$get_params)}}">문의하기 ></a></div>
                     </div>
                     <div class="LeclistTable">
                         <table cellspacing="0" cellpadding="0" class="listTable qnaTable upper-gray upper-black bdb-gray tx-gray">
@@ -89,7 +89,7 @@
                                         @if($row['RegType'] == '0' && $row['IsPublic'] == 'N' && $row['RegMemIdx'] != sess_data('mem_idx'))
                                             <a href="javascript:alert('비밀글입니다.');">
                                         @else
-                                            <a href="{{site_url($default_path.'/show?board_idx='.$row['BoardIdx'].'&'.$get_params)}}">
+                                            <a href="{{front_url($default_path.'/show?board_idx='.$row['BoardIdx'].'&'.$get_params)}}">
                                         @endif
                                                 @if($row['IsBest'] == 0 && $row['IsPublic'] == 'N')<img src="{{ img_url('prof/icon_locked.gif') }}">@endif
                                                 {{hpSubString($row['Title'],0,40,'...')}}

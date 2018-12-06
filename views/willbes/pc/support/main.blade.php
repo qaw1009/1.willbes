@@ -18,21 +18,21 @@
                             <div class="centerList NG">
                                 <ul>
                                     <li>
-                                        <a href="{{site_url('support/notice/index')}}">
+                                        <a href="{{front_url('/support/notice/index')}}">
                                             <img src="{{ img_url('cs/icon_center1.png') }}">
                                             <div class="nTxt">고객센터<br/>공지사항</div>
                                         </a>
                                     </li>
                                     <li class="arrow"><img src="{{ img_url('cs/icon_cs_arrow.png') }}"></li>
                                     <li>
-                                        <a href="{{site_url('support/faq/index')}}">
+                                        <a href="{{front_url('/support/faq/index')}}">
                                             <img src="{{ img_url('cs/icon_center2.png') }}">
                                             <div class="nTxt">자주하는<br/>질문</div>
                                         </a>
                                     </li>
                                     <li class="arrow"><img src="{{ img_url('cs/icon_cs_arrow.png') }}"></li>
                                     <li>
-                                        <a href="{{site_url('support/qna/index')}}">
+                                        <a href="{{front_url('/support/qna/index')}}">
                                             <img src="{{ img_url('cs/icon_center3.png') }}">
                                             <div class="nTxt">1:1 상담</div>
                                         </a>
@@ -168,7 +168,7 @@
                                 <tbody>
                                 <tr class="SearchBox NG">
                                     <td>
-                                        <form id="url_form" name="url_form" method="GET" action="{{site_url('support/faq/index')}}">
+                                        <form id="url_form" name="url_form" method="GET" action="{{front_url('/support/faq/index')}}">
                                             <span class="sTit tx-black">자주하는 질문</span>
                                             <select id="s_faq" name="s_faq" title="question" class="seleQuestion">
                                                 @foreach($faq_ccd as $row)
@@ -265,7 +265,7 @@
                     <div class="ActIndex4 mt30">
                         <div class="widthAuto530 f_left">
                             <div class="willbes-listTable willbes-program mr30 widthAuto330">
-                                <div class="will-Tit NG">학습 프로그램 <a class="f_right" href="{{site_url('support/program/index')}}"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
+                                <div class="will-Tit NG">학습 프로그램 <a class="f_right" href="{{front_url('/support/program/index')}}"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
                                 <dl class="List-Table NG tx-gray">
                                     @foreach($program_ccd as $row)
                                     <dt>
@@ -277,7 +277,7 @@
                                     @endforeach
                                 </dl>
                             </div>
-                            <a href="{{site_url('support/mobile/index')}}"><img src="{{ img_url('cs/bnr_mobile.jpg') }}"></a>
+                            <a href="{{front_url('/support/mobile/index')}}"><img src="{{ img_url('cs/bnr_mobile.jpg') }}"></a>
                         </div>
                         <div class="willbes-listTable willbes-info widthAuto365 f_left ml45">
                             <div class="will-Tit NG">공지사항 <a class="f_right" href="{{front_url('/support/notice')}}"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>

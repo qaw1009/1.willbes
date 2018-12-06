@@ -1,7 +1,11 @@
 @extends('willbes.pc.layouts.master_no_sitdbar')
 
 @section('content')
-<div class="willbes-Layer-PassBox willbes-Layer-PassBox740 h920 fix" style="display: block">
+<div class="willbes-Layer-PassBox willbes-Layer-PassBox1100 h920 fix" style="display: block">
+<form id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
+    {!! csrf_field() !!}
+    {!! method_field($method) !!}
+    <input type="hidden" name="idx" value="{{ $board_idx }}"/>
     <a class="closeBtn" href="#none" onclick="closeWin('EDITPASS')">
         <img src="{{ img_url('sub/close.png') }}">
     </a>
@@ -60,35 +64,28 @@
                         <tr>
                             <td class="w-tit bg-light-white tx-left strong pl30">답안제목<span class="tx-red">(*)</span></td>
                             <td class="w-text tx-left pl10 pr10">
-                                <input type="text" id="TITLE" name="TITLE" class="iptTitle" maxlength="30">
+                                <input type="text" id="board_title" name="board_title" class="iptTitle" maxlength="30" value="{{$data['Title']}}">
                             </td>
                         </tr>
                         <tr>
                             <td class="w-tit bg-light-white tx-left strong pl30">답안내용<span class="tx-red">(*)</span></td>
                             <td class="w-textarea write tx-left pl10 pr10">
-                                <textarea></textarea>
+                                <textarea id="board_content" name="board_content" class="form-control" rows="7" title="내용" placeholder="">{!! $data['Content'] !!}</textarea>
                             </td>
                         </tr>
                         <tr>
                             <td class="w-tit bg-light-white tx-left strong pl30">답안첨부</td>
                             <td class="w-file answer tx-left">
                                 <ul class="attach">
-                                    <li>
-                                        <div class="filetype">
-                                            <input type="text" class="file-text" />
-                                            <span class="file-btn bg-heavy-gray NSK">찾아보기</span>
-                                            <span class="file-select"><input type="file" class="input-file" size="3"></span>
-                                            <input class="file-reset NSK" type="button" value="X" />
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="filetype">
-                                            <input type="text" class="file-text" />
-                                            <span class="file-btn bg-heavy-gray NSK">찾아보기</span>
-                                            <span class="file-select"><input type="file" class="input-file" size="3"></span>
-                                            <input class="file-reset NSK" type="button" value="X" />
-                                        </div>
-                                    </li>
+                                    @for($i = 0; $i < $attach_file_cnt; $i++)
+                                        <li>
+                                            <div class="filetype">
+                                                <input type="text" class="file-text" />
+                                                <span class="file-btn bg-heavy-gray NSK">찾아보기</span>
+                                                <span class="file-select"><input type="file" id="attach_file{{ $i }}" name="attach_file[]" class="input-file" size="3"></span>
+                                            </div>
+                                        </li>
+                                    @endfor
                                     <li>
                                         • 첨부파일 총합 최대 5MB까지 등록 가능합니다.<br/>
                                         • hwp, doc, pdf, jpg, gif, png, zip 만 등록 가능합니다.
@@ -110,5 +107,21 @@
             </div>
         </div>
     </div>
+</form>
 </div>
+
+<link href="/public/vendor/cheditor/css/ui.css" rel="stylesheet">
+<script src="/public/vendor/cheditor/cheditor.js"></script>
+<script type="text/javascript">
+    var $regi_form = $('#regi_form');
+
+    $(document).ready(function() {
+        //editor load
+        var $editor_profile = new cheditor();
+        $editor_profile.config.editorHeight = '170px';
+        $editor_profile.config.editorWidth = '100%';
+        $editor_profile.inputForm = 'board_content';
+        $editor_profile.run();
+    });
+</script>
 @stop

@@ -80,6 +80,9 @@ class Assignment extends BaseSupport
         }
 
         $this->load->view('classroom/assignment/create', [
+            'method' => 'POST',
+            'board_idx' => $board_idx,
+            'attach_file_cnt' => $this->supportBoardTwoWayFModel->_attach_assignment_file_cnt,
             'data' => $data
         ]);
     }

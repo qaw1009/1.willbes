@@ -7,6 +7,7 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
 {
     // 첨부 이미지 수
     public $_attach_img_cnt = 2;
+    public $_attach_assignment_file_cnt = 5;
 
     public function __construct()
     {

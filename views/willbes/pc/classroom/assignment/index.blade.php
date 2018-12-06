@@ -75,9 +75,9 @@
                     <td class="w-status-mark">
                         @if(empty($row['am_BaIdx']) === false)
                             @if($row['am_IsReply'] == 'N')
-                                <a href="#none" onclick="goEdit('edit2', '{{$row['BoardIdx']}}')"><span class="aBox answerBox NSK">채점중</span></a>
+                                <a href="#none" onclick="goEdit('edit2', 'ch2', '{{$row['BoardIdx']}}')"><span class="aBox answerBox NSK">채점중</span></a>
                             @else
-                                <a href="#none" onclick="goEdit('edit3', '{{$row['BoardIdx']}}')"><span class="aBox finishBox NSK">채점완료</span></a>
+                                <a href="#none" onclick="goEdit('edit3', 'ch3', '{{$row['BoardIdx']}}')"><span class="aBox finishBox NSK">채점완료</span></a>
                             @endif
                         @endif
                     </td>
@@ -92,8 +92,8 @@
 
 
 <script type="text/javascript">
-    function goEdit(open_target, b_idx) {
-        parent.open_popup(open_target, b_idx);
+    function goEdit(open_target, open_content, b_idx) {
+        parent.open_popup(open_target, open_content, b_idx);
     }
 </script>
 @stop

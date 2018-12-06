@@ -2,10 +2,14 @@
 
 @section('content')
 <div class="willbes-Layer-PassBox willbes-Layer-PassBox1100 h920 fix" style="display: block">
-<form id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
+{{--<form id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>--}}
+<form id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" action="{{front_url('/classroom/assignment/store')}}" novalidate>
+
     {!! csrf_field() !!}
     {!! method_field($method) !!}
     <input type="hidden" name="idx" value="{{ $board_idx }}"/>
+    <input type="hidden" name="save_type" value="">
+
     <a class="closeBtn" href="#none" onclick="closeWin('EDITPASS')">
         <img src="{{ img_url('sub/close.png') }}">
     </a>
@@ -97,10 +101,10 @@
                     </table>
                 </div>
                 <div class="search-Btn mt20 h36 p_re">
-                    <button type="submit" onclick="" class="btnAuto90 h36 mem-Btn bg-white bd-dark-gray f_left">
+                    <button type="button" id="btn_temp_save" class="btnAuto90 h36 mem-Btn bg-white bd-dark-gray f_left">
                         <span class="tx-purple-gray">임시저장</span>
                     </button>
-                    <button type="submit" onclick="" class="btnAuto90 h36 mem-Btn bg-blue bd-dark-blue center">
+                    <button type="submit" class="btnAuto90 h36 mem-Btn bg-blue bd-dark-blue center">
                         <span>제출하기</span>
                     </button>
                 </div>
@@ -112,6 +116,7 @@
 
 <link href="/public/vendor/cheditor/css/ui.css" rel="stylesheet">
 <script src="/public/vendor/cheditor/cheditor.js"></script>
+<script src="/public/js/editor_util.js"></script>
 <script type="text/javascript">
     var $regi_form = $('#regi_form');
 
@@ -122,6 +127,47 @@
         $editor_profile.config.editorWidth = '100%';
         $editor_profile.inputForm = 'board_content';
         $editor_profile.run();
+
+        //임시저장
+        $('#btn_temp_save').click(function () {
+            var _url = '{{front_url('/classroom/assignment/store')}}';
+            if (!confirm('저장하시겠습니까?')) { return true; }
+            $regi_form.find('input[name="save_type"]').val('t');
+
+            /*ajaxSubmit($regi_form, _url, function(ret) {
+                if(ret.ret_cd) {
+                    notifyAlert('success', '알림', ret.ret_msg);
+                    location.reload();
+
+                    /!*location.href = '{!! front_url($default_path.'/index?'.$get_params) !!}';*!/
+                }
+            }, showValidateError, addValidate, false, 'alert');*/
+        });
+
+        // ajax submit
+        $regi_form.submit(function() {
+            getEditorBodyContent($editor_profile);
+            var _url = '{{front_url('/classroom/assignment/store')}}';
+            $regi_form.find('input[name="save_type"]').val('r');
+
+            /*ajaxSubmit($regi_form, _url, function(ret) {
+                if(ret.ret_cd) {
+                    notifyAlert('success', '알림', ret.ret_msg);
+                    location.reload();
+                }
+            }, showValidateError, addValidate, false, 'alert');*/
+        });
+
+        var addValidate = function() {
+            if($regi_form.find('input[name="board_title"]').val == '') {
+                alert('답안제목을 입력해 주세요.');
+                return false;
+            }
+
+            if (confirm('저장하시겠습니까?')) { return true; }
+
+            return false;
+        };
     });
 </script>
 @stop

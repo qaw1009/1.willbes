@@ -7,7 +7,7 @@
         iframe.height = (iframe.contentWindow.document.body.scrollHeight + 65) + "px";
     }
 
-    function open_popup(open_target, notice_idx) {
+    function open_popup(open_target, open_content, notice_idx) {
         var ele_id = '';
         var data = '';
         var _url = '';
@@ -18,7 +18,7 @@
             _url = '{{ site_url('/classroom/assignment/create') }}';
         } else {
             ele_id = 'MARKPASS';
-            data = {'ele_id' : ele_id, 'board_idx' : notice_idx, 'tab' : open_target};
+            data = {'ele_id' : ele_id, 'board_idx' : notice_idx, 'tab' : open_target, 'oc' : open_content};
             _url = '{{ site_url('/classroom/assignment/show') }}';
         }
 

@@ -87,14 +87,42 @@ class Assignment extends BaseSupport
         ]);
     }
 
+    /**
+     * 과제현황
+     */
     public function show()
     {
         $arr_input = array_merge($this->_reqG(null));
         $board_idx = element('board_idx', $arr_input);
         $tab = element('tab', $arr_input, '');
+        $show_content = element('oc', $arr_input, '');
 
         $this->load->view('classroom/assignment/show', [
-            'show_tab' => $tab
+            'show_tab' => $tab,
+            'show_content' => $show_content
         ]);
+    }
+
+    public function store()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
+
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        if (empty($this->_reqP('board_idx')) === false) {
+            $method = 'modify';
+            $idx = $this->_reqP('board_idx');
+        }
+
+        //
+        $result = $this->{'_' . $method . 'Board'}($this->_reqP(null, false));
+
+        $this->json_result($result, '저장 되었습니다.', $result);
+        print_r($this->_reqP(null, false));
     }
 }

@@ -165,5 +165,15 @@
         </div>
     </div>
 </div>
+<script src="/public/js/willbes/tabs.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        var tab_id = '{{$show_tab}}';
+        $('ul.tabWrap').find('#' + tab_id).click();
+        /*$('ul.tabWrap').find('#' + tab_id).trigger('create');*/
+
+        $content.show().css('display', 'block');
+    });
+</script>
 
 @stop

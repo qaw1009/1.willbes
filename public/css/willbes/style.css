@@ -9327,14 +9327,21 @@ table.acadlecInfoPackageTable tr.Top td {
 .w-thumb {}
 .w-thumb a.thumb_num {
     position: absolute;
-    bottom: 0;
-    right: 0;
+    bottom: 23px;
+    right: 10px;
+    background: #f90;
+    width: 20px;
+    height: 20px;
 }
 .w-thumb .thumb_slide_wrap {
     display: none;
     position: absolute;
+    background: #f00;
+    top: 10px;
 }
-
+.w-thumb .thumb_slide_wrap ul li {
+    float: left;
+}
 
 
 

@@ -465,6 +465,20 @@ class TmModel extends WB_Model
     public function addConsult($input=[])
     {
         try {
+            //통화로 등록시 해당 회원이 21일이내 '통화' 이력 있는지 확인
+            if(element('_reg_TmClassCcd',$input) === '689001') {
+
+                $memidx = element('MemIdx', $input);
+
+                $from = ' from vw_tm_consult where Now() <= DATE_ADD(ConsultDatm, INTERVAL 21 day) '; //21일내 '통화' 내역 존재 여부
+                $where = $this->_conn->makeWhere(['EQ' => ['MemIdx' => $memidx]])->getMakeWhere(true);
+
+                $checkCount = $this->_conn->query('select count(*) as chechcount ' . $from . $where)->row_array();
+
+                if ($checkCount['chechcount'] > 0) {
+                    throw new \Exception('21일전에 \'통화\' 로 등록된 상담 내역이 존재합니다. 22일 이후부터 \'통화\' 로 등록 가능합니다.');
+                }
+            }
             $input_data = [
                 'TaIdx' => element('TaIdx',$input),
                 'ConsultCcd' => element('_reg_ConsultCcd',$input),

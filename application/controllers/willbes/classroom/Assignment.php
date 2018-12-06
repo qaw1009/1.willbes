@@ -89,7 +89,12 @@ class Assignment extends BaseSupport
 
     public function show()
     {
+        $arr_input = array_merge($this->_reqG(null));
+        $board_idx = element('board_idx', $arr_input);
+        $tab = element('tab', $arr_input, '');
+
         $this->load->view('classroom/assignment/show', [
+            'show_tab' => $tab
         ]);
     }
 }

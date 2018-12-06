@@ -31,9 +31,9 @@
                 </table>
                 <div class="editDetailWrap p_re mt30 mb60">
                     <ul class="tabWrap tabDepth2">
-                        <li><a id="edit1" href="#ch1" @if('1' == '2')class="on" @endif>과제보기</a></li>
-                        <li><a id="edit2" href="#ch2" @if('1' == '1')class="on" @endif>작성답안</a></li>
-                        <li><a id="edit3" href="#ch3" @if('1' == '2')class="on" @endif>채점결과</a></li>
+                        <li><a id="edit1" href="#ch1" {!! ($show_tab == 'edit1' ? 'class=on' : '') !!}>과제보기</a></li>
+                        <li><a id="edit2" href="#ch2" {!! ($show_tab == 'edit2' ? 'class=on' : '') !!}>과제보기</a></li>
+                        <li><a id="edit3" href="#ch3" {!! ($show_tab == 'edit3' ? 'class=on' : '') !!}>과제보기</a></li>
                     </ul>
                     <div class="tabBox mt30">
                         <div id="ch1" class="tabLink">
@@ -166,4 +166,11 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        var tab_id = '{{$show_tab}}';
+        /*$('ul.tabWrap').find('#' + tab_id).click();*/
+        $('ul.tabWrap').find('#' + tab_id).trigger('create');
+    });
+</script>
 @stop

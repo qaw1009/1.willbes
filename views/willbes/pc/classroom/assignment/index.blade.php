@@ -75,9 +75,9 @@
                     <td class="w-status-mark">
                         @if(empty($row['am_BaIdx']) === false)
                             @if($row['am_IsReply'] == 'N')
-                                <a href="#none" onclick="goEdit('stby', '{{$row['BoardIdx']}}')"><span class="aBox answerBox NSK">채점중</span></a>
+                                <a href="#none" onclick="goEdit('edit2', '{{$row['BoardIdx']}}')"><span class="aBox answerBox NSK">채점중</span></a>
                             @else
-                                <a href="#none" onclick="goEdit('end', '{{$row['BoardIdx']}}')"><span class="aBox finishBox NSK">채점완료</span></a>
+                                <a href="#none" onclick="goEdit('edit3', '{{$row['BoardIdx']}}')"><span class="aBox finishBox NSK">채점완료</span></a>
                             @endif
                         @endif
                     </td>

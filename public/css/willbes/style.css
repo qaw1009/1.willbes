@@ -7617,9 +7617,6 @@ table.PassZoneTable .w-data {
     top: 80px;
     right: 20px; 
 }
-.willbes-Layer-PassBox1100.abs {
-    right: -180px;
-}
 .willbes-Layer-PassBox.fix {
     position: fixed;
     display: block;
@@ -7654,9 +7651,9 @@ table.PassZoneTable .w-data {
     margin-top: -450px;
     margin-left: -370px;  
 }
-.willbes-Layer-PassBox740.h920.fix {
+.willbes-Layer-PassBox1100.h920.fix {
     margin-top: -460px;
-    margin-left: -370px; 
+    margin-left: -550px; 
     border: 1px solid #2f2f2f;
     z-index: 110; 
 }
@@ -8044,13 +8041,10 @@ table.PassZoneTable .w-data {
     height: 680px;
     overflow-x: hidden;
     overflow-y: auto;
+    padding-right: 8px;
 }
 .editTableList {
     margin-bottom: 20px;
-}
-.editTableList.hover {
-    width: 713px;
-    padding-right: 8px;
 }
 .editTableList .listTable tr td {
     line-height: 25px;

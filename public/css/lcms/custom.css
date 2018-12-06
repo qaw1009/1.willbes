@@ -254,14 +254,6 @@ ul.bar_tabs > li.active a:hover {
 .x_content ul.pagination {
     margin: 2px 0;
 }
-#search_form .form-group {
-    margin-top: 10px;
-    margin-bottom: 0;
-}
-#search_form .form-group:first-child {
-    margin-top: 0;
-    margin-bottom: 0;
-}
 
 /* modal */
 body.modal-open {

@@ -26,9 +26,7 @@ class ZeroPay extends BaseOrder
         $codes = $this->codeModel->getCcdInArray(array_values($arr_target_group_ccd));
 
         // 결제상태 공통코드에서 0원결제용 코드만 필터링
-        $arr_pay_status_ccd = array_filter_keys($codes[$this->_group_ccd['PayStatus']], [
-            $this->orderListModel->_pay_status_ccd['paid'], $this->orderListModel->_pay_status_ccd['refund']
-        ]);
+        $arr_pay_status_ccd = array_filter_keys($codes[$this->_group_ccd['PayStatus']], array_filter_keys($this->orderListModel->_pay_status_ccd, ['paid', 'refund']));
 
         $this->load->view('pay/zero_pay/index', [
             'arr_prod_type_ccd' => $codes[$this->_group_ccd['ProdType']],

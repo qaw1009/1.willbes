@@ -24,14 +24,10 @@ class Visit extends BaseOrder
         $codes = $this->codeModel->getCcdInArray(array_values($arr_target_group_ccd));
 
         // 결제상태 공통코드에서 방문결제용 코드만 필터링
-        $arr_pay_status_ccd = array_filter_keys($codes[$this->_group_ccd['PayStatus']], [
-            $this->orderListModel->_pay_status_ccd['receipt_wait'], $this->orderListModel->_pay_status_ccd['paid'], $this->orderListModel->_pay_status_ccd['refund']
-        ]);
+        $arr_pay_status_ccd = array_filter_keys($codes[$this->_group_ccd['PayStatus']], array_filter_keys($this->orderListModel->_pay_status_ccd, ['receipt_wait', 'paid', 'refund']));
 
         // 결제방법 공통코드에서 방문결제용 코드만 필터링
-        $arr_pay_method_ccd = array_filter_keys($codes[$this->_group_ccd['PayMethod']], [
-            $this->orderListModel->_pay_method_ccd['visit_card'], $this->orderListModel->_pay_method_ccd['visit_cash'], $this->orderListModel->_pay_method_ccd['visit_card_cash']
-        ]);
+        $arr_pay_method_ccd = array_filter_keys($codes[$this->_group_ccd['PayMethod']], array_filter_keys($this->orderListModel->_pay_method_ccd, ['visit_card', 'visit_cash', 'visit_card_cash']));
 
         $this->load->view('pay/visit/index', [
             'arr_pay_method_ccd' => $arr_pay_method_ccd,

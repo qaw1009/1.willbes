@@ -28,9 +28,7 @@ class Free extends BaseOrder
         $codes = $this->codeModel->getCcdInArray(array_values($arr_target_group_ccd));
 
         // 결제상태 공통코드에서 무료강좌용 코드만 필터링
-        $arr_pay_status_ccd = array_filter_keys($codes[$this->_group_ccd['PayStatus']], [
-            $this->orderListModel->_pay_status_ccd['apply'], $this->orderListModel->_pay_status_ccd['cancel']
-        ]);
+        $arr_pay_status_ccd = array_filter_keys($codes[$this->_group_ccd['PayStatus']], array_filter_keys($this->orderListModel->_pay_status_ccd, ['apply', 'cancel']));
 
         $this->load->view('pay/free/index', [
             'arr_pay_channel_ccd' => $codes[$this->_group_ccd['PayChannel']],

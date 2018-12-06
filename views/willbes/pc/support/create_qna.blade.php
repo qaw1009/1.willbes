@@ -15,7 +15,7 @@
                     {!! method_field($method) !!}
                     <input type="hidden" name="idx" value="{{ $board_idx }}"/>
                     <input type="hidden" name="reg_type" value="{{$reg_type}}"/>
-                    <input type="hidden" name="put_site_code" value="{{$data['SiteCode']}}"/>
+                    <input type="hidden" name="put_site_code" value="{{($method=='PUT') ? $data['SiteCode'] : $__cfg['SiteCode']}}"/>
 
                     <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black bdt-gray bdb-gray tx-gray fc-bd-none">
                         <colgroup>

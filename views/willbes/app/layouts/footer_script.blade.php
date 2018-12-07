@@ -21,4 +21,5 @@
 <script src="/public/js/willbes/tabs.js?ver={{time()}}"></script>
 <script src="/public/js/willbes/sub.js?ver={{time()}}"></script>
 <script src="/public/js/willbes/app.js?ver={{time()}}"></script>
+<script src="/public/vendor/starplyer/js/starplayer_bridge.js?ver={{time()}}"></script>
 <!--// JAVASCRIPT -->

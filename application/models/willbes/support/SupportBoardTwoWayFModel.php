@@ -410,8 +410,8 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
             SELECT (@rownum := @rownum + 1) AS rownum, t.*
             FROM (
             SELECT {$column}
-            FROM vw_board_twoway AS b
-            LEFT JOIN lms_board_assignment AS a ON a.BoardIdx = b.BoardIdx AND a.MemIdx = {$this->session->userdata('mem_idx')}
+            FROM {$this->_table['twoway_board']}
+            LEFT JOIN {$this->_table['lms_board_assignment']} AS a ON a.BoardIdx = b.BoardIdx AND a.MemIdx = {$this->session->userdata('mem_idx')}
             ,(SELECT @rownum := 0) AS tmp
             {$where}
             {$order_by_offset_limit}
@@ -421,16 +421,114 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
         return $this->_conn->query($query)->result_array();
     }
 
-    public function findBoardForAssignment($arr_condition=[], $column = null)
+    /**
+     * 과제 상세 정보
+     * @param string $join_type
+     * @param array $arr_condition
+     * @param null $column
+     * @return mixed
+     */
+    public function findBoardForAssignment($join_type = 'INNER', $arr_condition=[], $column = null)
     {
         $from = "
             FROM {$this->_table['twoway_board']}
-            INNER JOIN {$this->_table['lms_board_assignment']} AS a ON a.BoardIdx = b.BoardIdx
+            {$join_type} JOIN {$this->_table['lms_board_assignment']} AS a ON a.BoardIdx = b.BoardIdx
         ";
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
 
         return $this->_conn->query('select STRAIGHT_JOIN '.$column .$from .$where)->row_array();
+    }
+
+    /**
+     * 과제 제출
+     * @param array $inputData
+     * @return array|bool
+     */
+    public function addBoardForAssignment($inputData = [])
+    {
+        $this->_conn->trans_begin();
+        try {
+            if ($this->_conn->set($inputData)->insert($this->_table['lms_board_assignment']) === false) {
+                throw new \Exception('과제 등록에 실패했습니다.');
+            }
+            $ba_idx = $this->_conn->insert_id();
+
+            $this->load->library('upload');
+            $upload_sub_dir = config_item('upload_prefix_dir') . '/board/88/' . date('Ymd');
+            $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->getAttachImgNames($ba_idx), $upload_sub_dir
+                ,'allowed_types:'.$this->upload_file_rule['allowed_types'].',overwrite:'.$this->upload_file_rule['overwrite'].',max_size:'.$this->upload_file_rule['max_size']);
+
+            if (is_array($uploaded) === false) {
+                throw new \Exception('파일 등록에 실패했습니다.');
+            }
+
+            foreach ($uploaded as $idx => $attach_files) {
+                if (count($attach_files) > 0) {
+                    $set_board_attach_data['BaIdx'] = $ba_idx;
+                    $set_board_attach_data['RegType'] = 0;
+                    $set_board_attach_data['AttachFileType'] = 0;
+                    $set_board_attach_data['AttachFilePath'] = $this->upload->_upload_url . $upload_sub_dir . '/';
+                    $set_board_attach_data['AttachFileName'] = $attach_files['orig_name'];
+                    $set_board_attach_data['AttachRealFileName'] = $attach_files['client_name'];
+                    $set_board_attach_data['AttachFileSize'] = $attach_files['file_size'];
+                    $set_board_attach_data['RegMemIdx'] = $this->session->userdata('mem_idx');
+                    $set_board_attach_data['RegIp'] = $this->input->ip_address();
+
+                    if ($this->addBoardAttach($set_board_attach_data) === false) {
+                        throw new \Exception('게시판 등록에 실패했습니다.');
+                    }
+                }
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * 과제 임시 저장 시 내용 수정
+     * @param $input
+     * @param $ba_idx
+     * @return array|bool
+     */
+    public function modifyBoardForAssignment($input = [], $ba_idx) {
+        $this->_conn->trans_begin();
+        try {
+            $board_idx = element('board_idx', $input);
+
+            $result = $this->findBoard($board_idx);
+            if (empty($result)) {
+                throw new \Exception('필수 데이터 누락입니다.');
+            }
+
+            $input = array_merge($input,[
+                'UpdMemIdx' => $this->session->userdata('mem_idx'),
+                'UpdDatm' => date('Y-m-d H:i:s'),
+                'UpIp' => $this->input->ip_address()
+            ]);
+
+            $this->_conn->set($input)->where('BaIdx', $ba_idx);
+            if ($this->_conn->update($this->_table['lms_board_assignment']) === false) {
+                throw new \Exception('제출된 과제 수정에 실패했습니다');
+            }
+
+            $reg_type = 0;              //0:일반유저등록, 1:관리자등록
+            $attach_file_type = 0;      //0 - 본문글 첨부파일, 1 - 본문내 답변글 첨부파일
+            $is_attach = $this->modifyBoardAttachForAssignment($ba_idx, $reg_type, $attach_file_type);
+            if ($is_attach !== true) {
+                throw new \Exception('파일 등록에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
     }
 }

@@ -115,8 +115,8 @@
                                 <tr>
                                     <td class="w-file tx-left pt-zero pb-zero" colspan="2">
                                         <ul class="up-file">
-                                            @if(empty($data['AttachAssignmentData_Admin']) === false)
-                                                @foreach($data['AttachAssignmentData_Admin'] as $row)
+                                            @if(empty($data['AttachAssignmentData_User']) === false)
+                                                @foreach($data['AttachAssignmentData_User'] as $row)
                                                     <li>
                                                         <a href="{{front_url('/classroom/assignment/download?path=').urlencode($row['FilePath'].$row['FileName']).'&fname='.urlencode($row['RealName']).'&board_idx='.$board_idx.'&attach_type=2' }}" target="_blank">
                                                             <img src="{{ img_url('prof/icon_file.gif') }}"> {{$row['RealName']}}</a>
@@ -143,8 +143,8 @@
                                     <th class="w-tit bg-light-white strong">첨삭첨부</th>
                                     <td class="w-file tx-left pt-zero pb-zero">
                                         <ul class="up-file">
-                                            @if(empty($data['AttachData']) === false)
-                                                @foreach($data['AttachData'] as $row)
+                                            @if(empty($data['AttachAssignmentData_Admin']) === false)
+                                                @foreach($data['AttachAssignmentData_Admin'] as $row)
                                                     <li>
                                                         <a href="{{front_url('/classroom/assignment/download?path=').urlencode($row['FilePath'].$row['FileName']).'&fname='.urlencode($row['RealName']).'&board_idx='.$board_idx.'&attach_type=0' }}" target="_blank">
                                                             <img src="{{ img_url('prof/icon_file.gif') }}"> {{$row['RealName']}}</a>
@@ -164,13 +164,11 @@
     </div>
 </div>
 
-{{--<script src="/public/js/willbes/tabs.js"></script>--}}
 <script type="text/javascript">
 $(document).ready(function() {
     var tab_id = '{{$show_tab}}';
     var content_id = '{{$show_content}}';
 
-    /*openLink(tab_id);*/
     $(function() {
         $('ul.tabWrap').find('#' + tab_id).click();
         $('#'+content_id).show().css('display', 'block');

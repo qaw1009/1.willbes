@@ -65,15 +65,19 @@
                     <td class="w-no">{{$total_rows}}회</td>
                     <td class="w-list tx-left pl20">{{$row['Title']}}</td>
                     <td class="w-status-send">
-                        @if(empty($row['am_BaIdx']) === true)
+                        @if(empty($row['am_BaIdx']) === true || $row['am_AssignmentStatusCcd'] == $arr_save_type_ccd[0])
                             <a href="#none" onclick="goEdit('ing', '', '{{$row['BoardIdx']}}')"><span class="aBox waitBox_block NSK">과제제출</span></a>
                         @else
                             제출완료
                         @endif
                     </td>
-                    <td class="w-date">{{$row['am_RegDatm']}}</td>
+                    <td class="w-date">
+                        @if(empty($row['am_BaIdx']) === false && $row['am_AssignmentStatusCcd'] != $arr_save_type_ccd[0])
+                            {{$row['am_RegDatm']}}
+                        @endif
+                    </td>
                     <td class="w-status-mark">
-                        @if(empty($row['am_BaIdx']) === false)
+                        @if(empty($row['am_BaIdx']) === false && $row['am_AssignmentStatusCcd'] != $arr_save_type_ccd[0])
                             @if($row['am_IsReply'] == 'N')
                                 <a href="#none" onclick="goEdit('edit2', 'ch2', '{{$row['BoardIdx']}}')"><span class="aBox answerBox NSK">채점중</span></a>
                             @else
@@ -89,7 +93,6 @@
         </table>
     </div>
 </div>
-
 
 <script type="text/javascript">
     function goEdit(open_target, open_content, b_idx) {

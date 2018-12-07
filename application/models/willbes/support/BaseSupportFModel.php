@@ -262,9 +262,74 @@ class BaseSupportFModel extends WB_Model
                         ];
                         $this->_updateBoardAttach($set_board_attach_data, $whereData);
                     }
-
                 }
+            }
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
 
+    /**
+     * 첨삭게시판 파일 수정
+     * @param $ba_idx
+     * @param $reg_type
+     * @param $attach_file_type
+     * @return array|bool
+     */
+    protected function modifyBoardAttachForAssignment($ba_idx, $reg_type, $attach_file_type)
+    {
+        try {
+            $board_attach_data = $_FILES['attach_file']['size'];
+            $arr_board_attach = $this->_getBoardAttachArray($ba_idx, $reg_type, $attach_file_type);
+            $arr_board_attach_keys = array_keys($arr_board_attach);
+
+            $this->load->library('upload');
+            $upload_sub_dir = config_item('upload_prefix_dir') . '/board/88/' . date('Ymd');
+            $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->getAttachImgNames($ba_idx) , $upload_sub_dir
+                ,'allowed_types:'.$this->upload_file_rule['allowed_types'].',overwrite:'.$this->upload_file_rule['overwrite'].',max_size:'.$this->upload_file_rule['max_size']);
+
+            if (is_array($uploaded) === false) {
+                throw new \Exception('파일 등록에 실패했습니다.');
+            }
+
+            foreach ($board_attach_data as $key => $val) {
+                if ($val > 0) {
+                    if (empty($arr_board_attach_keys[$key]) === true) {
+                        //ins
+                        $set_board_attach_data['BaIdx'] = $ba_idx;
+                        $set_board_attach_data['RegType'] = $reg_type;
+                        $set_board_attach_data['AttachFileType'] = $attach_file_type;
+                        $set_board_attach_data['AttachFilePath'] = $this->upload->_upload_url . $upload_sub_dir . '/';
+                        $set_board_attach_data['AttachFileName'] = $uploaded[$key]['orig_name'];
+                        $set_board_attach_data['AttachRealFileName'] = $uploaded[$key]['client_name'];
+                        $set_board_attach_data['AttachFileSize'] = $uploaded[$key]['file_size'];
+                        $set_board_attach_data['RegAdminIdx'] = $this->session->userdata('admin_idx');
+                        $set_board_attach_data['RegIp'] = $this->input->ip_address();
+
+                        if ($this->addBoardAttach($set_board_attach_data) === false) {
+                            throw new \Exception('파일 등록에 실패했습니다.');
+                        }
+                    } else {
+                        //up, 기존 파일 삭제
+                        $this->load->helper('file');
+                        $real_img_path = public_to_upload_path($arr_board_attach[$arr_board_attach_keys[$key]]);
+                        /*if (@unlink($real_img_path) === false) {
+                            throw new \Exception('이미지 삭제에 실패했습니다.');
+                        }*/
+
+                        $set_board_attach_data['AttachFilePath'] = $this->upload->_upload_url . $upload_sub_dir . '/';
+                        $set_board_attach_data['AttachFileName'] = $uploaded[$key]['orig_name'];
+                        $set_board_attach_data['AttachRealFileName'] = $uploaded[$key]['client_name'];
+                        $set_board_attach_data['AttachFileSize'] = $uploaded[$key]['file_size'];
+
+                        $whereData = [
+                            'BoardFileIdx' => $arr_board_attach_keys[$key]
+                        ];
+                        $this->_updateBoardAttach($set_board_attach_data, $whereData);
+                    }
+                }
             }
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();

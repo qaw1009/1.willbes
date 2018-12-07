@@ -2,12 +2,13 @@
 
 @section('content')
 <div class="willbes-Layer-PassBox willbes-Layer-PassBox1100 h920 fix" style="display: block">
-{{--<form id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>--}}
-<form id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" action="{{front_url('/classroom/assignment/store')}}" novalidate>
+<form id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
+{{--<form id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" action="{{front_url('/classroom/assignment/store')}}" novalidate>--}}
     {!! csrf_field() !!}
     {!! method_field($method) !!}
     <input type="hidden" name="idx" value="{{ $board_idx }}"/>
-    <input type="hidden" name="save_type" value="">
+    <input type="hidden" name="ba_idx" value="{{ $data['am_BaIdx'] }}"/>
+    <input type="hidden" name="save_type">
 
     <a class="closeBtn" href="#none" onclick="closeWin('EDITPASS')">
         <img src="{{ img_url('sub/close.png') }}">
@@ -39,12 +40,14 @@
                         <th class="w-tit bg-light-white strong">과제첨부</th>
                         <td class="w-file tx-left pt-zero pb-zero">
                             <ul class="up-file">
-                                <li><a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일1이 노출됩니다.docx</a></li>
-                                <li><a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일2가 노출됩니다.docx</a></li>
-                                <li><a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일3가 노출됩니다.docx</a></li>
-                            <!-- 최대 5개까지 노출
-                                                <li><a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일4가 노출됩니다.docx</a></li>
-                                                <li><a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일5가 노출됩니다.docx</a></li>-->
+                                @if(empty($data['AttachData']) === false)
+                                    @foreach($data['AttachData'] as $row)
+                                        <li>
+                                            <a href="{{front_url('/classroom/assignment/download?path=').urlencode($row['FilePath'].$row['FileName']).'&fname='.urlencode($row['RealName']).'&board_idx='.$board_idx.'&attach_type=0' }}" target="_blank">
+                                                <img src="{{ img_url('prof/icon_file.gif') }}"> {{$row['RealName']}}</a>
+                                        </li>
+                                    @endforeach
+                                @endif
                             </ul>
                         </td>
                     </tr>
@@ -67,13 +70,13 @@
                         <tr>
                             <td class="w-tit bg-light-white tx-left strong pl30">답안제목<span class="tx-red">(*)</span></td>
                             <td class="w-text tx-left pl10 pr10">
-                                <input type="text" id="board_title" name="board_title" class="iptTitle" maxlength="30" value="{{$data['Title']}}">
+                                <input type="text" id="board_title" name="board_title" class="iptTitle" maxlength="50" value="{{$data['temp_Title']}}">
                             </td>
                         </tr>
                         <tr>
                             <td class="w-tit bg-light-white tx-left strong pl30">답안내용<span class="tx-red">(*)</span></td>
                             <td class="w-textarea write tx-left pl10 pr10">
-                                <textarea id="board_content" name="board_content" class="form-control" rows="7" title="내용" placeholder="">{!! $data['Content'] !!}</textarea>
+                                <textarea id="board_content" name="board_content" class="form-control" rows="7" title="내용" placeholder="">{!! $data['temp_Content'] !!}</textarea>
                             </td>
                         </tr>
                         <tr>
@@ -86,6 +89,13 @@
                                                 <input type="text" class="file-text" />
                                                 <span class="file-btn bg-heavy-gray NSK">찾아보기</span>
                                                 <span class="file-select"><input type="file" id="attach_file{{ $i }}" name="attach_file[]" class="input-file" size="3"></span>
+                                                <input class="file-reset NSK" type="button" value="X" />
+                                                @if(empty($data['AttachAssignmentData_User'][$i]) === false)
+                                                    <span>
+                                                        <a href="{{front_url('/classroom/assignment/download?path=').urlencode($data['AttachAssignmentData_User'][$i]['FilePath'].$data['AttachAssignmentData_User'][$i]['FileName']).'&fname='.urlencode($data['AttachAssignmentData_User'][$i]['RealName']).'&board_idx='.$board_idx.'&attach_type=1' }}" target="_blank">
+                                                        <img src="{{ img_url('prof/icon_file.gif') }}"> {{$data['AttachAssignmentData_User'][$i]['RealName']}}</a>
+                                                    </span>
+                                                @endif
                                             </div>
                                         </li>
                                     @endfor
@@ -100,10 +110,10 @@
                     </table>
                 </div>
                 <div class="search-Btn mt20 h36 p_re">
-                    <button type="button" id="btn_temp_save" class="btnAuto90 h36 mem-Btn bg-white bd-dark-gray f_left">
+                    <button type="button" {{--onclick="javascript:save('{{$arr_save_type_ccd[0]}}');"--}} class="btnAuto90 h36 mem-Btn bg-white bd-dark-gray f_left btn_save" data-save-type="{{$arr_save_type_ccd[0]}}">
                         <span class="tx-purple-gray">임시저장</span>
                     </button>
-                    <button type="submit" class="btnAuto90 h36 mem-Btn bg-blue bd-dark-blue center">
+                    <button type="button" {{--onclick="javascript:save('{{$arr_save_type_ccd[1]}}');"--}} class="btnAuto90 h36 mem-Btn bg-blue bd-dark-blue center btn_save" data-save-type="{{$arr_save_type_ccd[1]}}">
                         <span>제출하기</span>
                     </button>
                 </div>
@@ -127,46 +137,50 @@
         $editor_profile.inputForm = 'board_content';
         $editor_profile.run();
 
-        //임시저장
-        $('#btn_temp_save').click(function () {
-            var _url = '{{front_url('/classroom/assignment/store')}}';
-            if (!confirm('저장하시겠습니까?')) { return true; }
-            $regi_form.find('input[name="save_type"]').val('t');
-
-            /*ajaxSubmit($regi_form, _url, function(ret) {
-                if(ret.ret_cd) {
-                    notifyAlert('success', '알림', ret.ret_msg);
-                    location.reload();
-
-                    /!*location.href = '{!! front_url($default_path.'/index?'.$get_params) !!}';*!/
-                }
-            }, showValidateError, addValidate, false, 'alert');*/
-        });
-
-        // ajax submit
-        $regi_form.submit(function() {
+        $('.btn_save').click(function() {
             getEditorBodyContent($editor_profile);
+            var save_type = $(this).data('save-type');
             var _url = '{{front_url('/classroom/assignment/store')}}';
-            $regi_form.find('input[name="save_type"]').val('r');
+            $regi_form.find('input[name="save_type"]').val(save_type);
 
-            /*ajaxSubmit($regi_form, _url, function(ret) {
+            ajaxSubmit($regi_form, _url, function(ret) {
                 if(ret.ret_cd) {
                     notifyAlert('success', '알림', ret.ret_msg);
                     location.reload();
                 }
-            }, showValidateError, addValidate, false, 'alert');*/
+            }, showValidateError, addValidate, false, 'alert');
         });
-
-        var addValidate = function() {
+        var addValidate = function () {
             if($regi_form.find('input[name="board_title"]').val == '') {
                 alert('답안제목을 입력해 주세요.');
                 return false;
             }
+            return true;
+        }
 
-            if (confirm('저장하시겠습니까?')) { return true; }
+        /*function save(save_type) {
+            var _url = '{{front_url('/classroom/assignment/store')}}';
+            if (!confirm('저장하시겠습니까?')) { return true; }
+            $regi_form.find('input[name="save_type"]').val(save_type);
 
-            return false;
-        };
+            /!*$regi_form.submit();*!/
+
+            ajaxSubmit($regi_form, _url, function(ret) {
+                getEditorBodyContent($editor_profile);
+                if(ret.ret_cd) {
+                    notifyAlert('success', '알림', ret.ret_msg);
+                    location.reload();
+                }
+            }, showValidateError, addValidate, false, 'alert');
+        }
+
+        function addValidate() {
+            if($regi_form.find('input[name="board_title"]').val == '') {
+                alert('답안제목을 입력해 주세요.');
+                return false;
+            }
+            return true;
+        }*/
     });
 </script>
 @stop

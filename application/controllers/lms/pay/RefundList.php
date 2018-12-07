@@ -105,7 +105,7 @@ class RefundList extends BaseOrder
         }
 
         // 환불완료된 주문상품이 1건이라도 있는 경우만 노출
-        $raw_query = '(select count(*) from ' . $this->orderListModel->_table['order_product'] . ' where OrderIdx = O.OrderIdx and PayStatusCcd = "' . $this->orderListModel->_pay_status_ccd['refund'] . '") >';
+        $raw_query = '(select count(0) from ' . $this->orderListModel->_table['order_product'] . ' where OrderIdx = O.OrderIdx and PayStatusCcd = "' . $this->orderListModel->_pay_status_ccd['refund'] . '") >';
         $arr_condition['RAW'][$raw_query] = '0';
 
         // 날짜 검색

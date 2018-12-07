@@ -19,22 +19,18 @@
                     <tbody>
                     <tr>
                         <th class="w-tit bg-light-white strong">과제제목</th>
-                        <td class="w-data tx-left tx-gray pl15" colspan="3">온라인 독해 첨삭지도1</td>
+                        <td class="w-data tx-left tx-gray pl15" colspan="3">{{$data['Title']}}</td>
                     </tr>
                     <tr>
                         <th class="w-tit bg-light-white strong">첨삭교수</th>
-                        <td class="w-data tx-left pl15">한덕현</td>
+                        <td class="w-data tx-left pl15">{{$data['ProfName']}}</td>
                         <th class="w-tit bg-light-white strong">채점완료일</th>
-                        <td class="w-data tx-left pl15">2018-00-00</td>
+                        <td class="w-data tx-left pl15">{{$data['am_ReplyRegDatm']}}</td>
                     </tr>
                     </tbody>
                 </table>
                 <div class="editDetailWrap p_re mt30 mb60">
                     <ul class="tabWrap tabDepth2">
-                        {{--<li><a id="edit1" href="#ch1" {!! ($show_tab == 'edit1' ? 'class=on' : '') !!}>과제보기</a></li>
-                        <li><a id="edit2" href="#ch2" {!! ($show_tab == 'edit2' ? 'class=on' : '') !!}>과제보기</a></li>
-                        <li><a id="edit3" href="#ch3" {!! ($show_tab == 'edit3' ? 'class=on' : '') !!}>과제보기</a></li>--}}
-
                         <li><a id="edit1" href="#ch1">과제보기</a></li>
                         <li><a id="edit2" href="#ch2">작성답안</a></li>
                         <li><a id="edit3" href="#ch3">채점결과</a></li>
@@ -49,22 +45,20 @@
                                 <tr>
                                     <td class="w-file tx-left pt-zero pb-zero">
                                         <ul class="up-file">
-                                            <li><a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일1이 노출됩니다.docx</a></li>
-                                            <li><a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일2가 노출됩니다.docx</a></li>
-                                            <li><a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일3가 노출됩니다.docx</a></li>
-                                            <li><a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일4가 노출됩니다.docx</a></li>
-                                            <li><a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일5가 노출됩니다.docx</a></li>
+                                            @if(empty($data['AttachData']) === false)
+                                                @foreach($data['AttachData'] as $row)
+                                                <li>
+                                                    <a href="{{front_url('/classroom/assignment/download?path=').urlencode($row['FilePath'].$row['FileName']).'&fname='.urlencode($row['RealName']).'&board_idx='.$board_idx.'&attach_type=0' }}" target="_blank">
+                                                        <img src="{{ img_url('prof/icon_file.gif') }}"> {{$row['RealName']}}</a>
+                                                </li>
+                                                @endforeach
+                                            @endif
                                         </ul>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="w-file tx-left pt20 pl30 pr30">
-                                        A. 다음 각 문장을 끊어진 대로 해석하시오.<br/><br/>
-                                        1. Everyone's nose is a different shape.// <br/><br/>
-                                        2. Researchers may know why.// <br/><br/>
-                                        3. Researchers say / it could be because of the climate.//<br/><br/>
-                                        4. People with wider noses / live / in warm, humid areas.// <br/><br/>
-                                        5. People with narrower noses / live / in colder, drier places.// <br/><br/>
+                                        {!! $data['Content'] !!}
                                     </td>
                                 </tr>
                                 </tbody>
@@ -78,31 +72,28 @@
                                 </colgroup>
                                 <thead>
                                 <tr>
-                                    <th class="w-list tx-left pl30"><strong>답안 제목이 노출됩니다.</strong><span class="row-line">|</span></th>
-                                    <th class="w-date normal">2018-00-00 00:00</th>
+                                    <th class="w-list tx-left pl30"><strong>{{$data['am_Title']}}</strong><span class="row-line">|</span></th>
+                                    <th class="w-date normal">{{$data['am_RegDatm']}}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr>
                                     <td class="w-file tx-left pt-zero pb-zero" colspan="2">
                                         <ul class="up-file">
-                                            <li><a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일1이 노출됩니다.docx</a></li>
-                                            <li><a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일2가 노출됩니다.docx</a></li>
-                                            <li><a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일3가 노출됩니다.docx</a></li>
+                                            @if(empty($data['AttachAssignmentData_User']) === false)
+                                                @foreach($data['AttachAssignmentData_User'] as $row)
+                                                    <li>
+                                                        <a href="{{front_url('/classroom/assignment/download?path=').urlencode($row['FilePath'].$row['FileName']).'&fname='.urlencode($row['RealName']).'&board_idx='.$board_idx.'&attach_type=1' }}" target="_blank">
+                                                            <img src="{{ img_url('prof/icon_file.gif') }}"> {{$row['RealName']}}</a>
+                                                    </li>
+                                                @endforeach
+                                            @endif
                                         </ul>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="w-file tx-left pt20 pl30 pr30" colspan="2">
-                                        A. 다음 각 문장을 끊어진 대로 해석하시오.<br/>
-                                        1. Riyadh, / the Saudi capital, / offers cheap cost of living / in a more stable environment, / with price controls on staples in Saudi Arabia continuing to guarantee low prices for many goods.//<br/>
-                                        Riyadh는 / 사우디의 수도인 / 낮은 생계비를 요구한다 / 보다 안정적인 환경에서, / 사우디 아라비아에서 주 요품목 가격 통제를 통해 / 많은 상폼의 낮은 가격 보장을 지속하면서.<br/><br/>
-
-                                        2. Saudi Arabia has / enough recoverable oil / to maintain current levels of production for 90 years.<br/>
-                                        사우디 아라비아는 가지고 있다 / 충분한 원유를 / 90년 간 현재 생산 수준을 유지할.<br/><br/>
-
-                                        3. Trends / in oil output and the global oil market / will remain a key determinant of the country's long-term prospects.<br/>
-                                        석유 생산과 국제 석유 시작의 경향은 / 유지될 것이다 / 국가의 장기적 전망의 핵심 결정 요인으로서.<br/><br/>
+                                        {!! $data['am_MemContent'] !!}
                                     </td>
                                 </tr>
                                 </tbody>
@@ -116,31 +107,28 @@
                                 </colgroup>
                                 <thead>
                                 <tr>
-                                    <th class="w-list tx-left pl30"><strong>답안 제목이 노출됩니다.</strong><span class="row-line">|</span></th>
-                                    <th class="w-date normal">2018-00-00 00:00</th>
+                                    <th class="w-list tx-left pl30"><strong>{{$data['am_Title']}}</strong><span class="row-line">|</span></th>
+                                    <th class="w-date normal">{{$data['am_ReplyRegDatm']}}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr>
                                     <td class="w-file tx-left pt-zero pb-zero" colspan="2">
                                         <ul class="up-file">
-                                            <li><a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일1이 노출됩니다.docx</a></li>
-                                            <li><a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일2가 노출됩니다.docx</a></li>
-                                            <li><a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일3가 노출됩니다.docx</a></li>
+                                            @if(empty($data['AttachAssignmentData_Admin']) === false)
+                                                @foreach($data['AttachAssignmentData_Admin'] as $row)
+                                                    <li>
+                                                        <a href="{{front_url('/classroom/assignment/download?path=').urlencode($row['FilePath'].$row['FileName']).'&fname='.urlencode($row['RealName']).'&board_idx='.$board_idx.'&attach_type=2' }}" target="_blank">
+                                                            <img src="{{ img_url('prof/icon_file.gif') }}"> {{$row['RealName']}}</a>
+                                                    </li>
+                                                @endforeach
+                                            @endif
                                         </ul>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="w-file tx-left pt20 pl30 pr30" colspan="2">
-                                        A. 다음 각 문장을 끊어진 대로 해석하시오.<br/>
-                                        1. Riyadh, / the Saudi capital, / offers cheap cost of living / in a more stable environment, / with price controls on staples in Saudi Arabia continuing to guarantee low prices for many goods.//<br/>
-                                        Riyadh는 / 사우디의 수도인 / 낮은 생계비를 요구한다 / 보다 안정적인 환경에서, / 사우디 아라비아에서 주 요품목 가격 통제를 통해 / 많은 상폼의 낮은 가격 보장을 지속하면서.<br/><br/>
-
-                                        2. Saudi Arabia has / enough recoverable oil / to maintain current levels of production for 90 years.<br/>
-                                        사우디 아라비아는 가지고 있다 / 충분한 원유를 / 90년 간 현재 생산 수준을 유지할.<br/><br/>
-
-                                        3. Trends / in oil output and the global oil market / will remain a key determinant of the country's long-term prospects.<br/>
-                                        석유 생산과 국제 석유 시작의 경향은 / 유지될 것이다 / 국가의 장기적 전망의 핵심 결정 요인으로서.<br/><br/>
+                                        {!! $data['am_ReplyContent'] !!}
                                     </td>
                                 </tr>
                                 </tbody>
@@ -155,8 +143,14 @@
                                     <th class="w-tit bg-light-white strong">첨삭첨부</th>
                                     <td class="w-file tx-left pt-zero pb-zero">
                                         <ul class="up-file">
-                                            <li><a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일1이 노출됩니다.docx</a></li>
-                                            <li><a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일2가 노출됩니다.docx</a></li>
+                                            @if(empty($data['AttachData']) === false)
+                                                @foreach($data['AttachData'] as $row)
+                                                    <li>
+                                                        <a href="{{front_url('/classroom/assignment/download?path=').urlencode($row['FilePath'].$row['FileName']).'&fname='.urlencode($row['RealName']).'&board_idx='.$board_idx.'&attach_type=0' }}" target="_blank">
+                                                            <img src="{{ img_url('prof/icon_file.gif') }}"> {{$row['RealName']}}</a>
+                                                    </li>
+                                                @endforeach
+                                            @endif
                                         </ul>
                                     </td>
                                 </tr>
@@ -170,13 +164,15 @@
     </div>
 </div>
 
-<script src="/public/js/willbes/tabs.js"></script>
+{{--<script src="/public/js/willbes/tabs.js"></script>--}}
 <script type="text/javascript">
 $(document).ready(function() {
     var tab_id = '{{$show_tab}}';
     var content_id = '{{$show_content}}';
-    openLink(tab_id);
+
+    /*openLink(tab_id);*/
     $(function() {
+        $('ul.tabWrap').find('#' + tab_id).click();
         $('#'+content_id).show().css('display', 'block');
     });
 });

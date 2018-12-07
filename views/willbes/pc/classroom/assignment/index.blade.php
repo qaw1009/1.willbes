@@ -66,7 +66,7 @@
                     <td class="w-list tx-left pl20">{{$row['Title']}}</td>
                     <td class="w-status-send">
                         @if(empty($row['am_BaIdx']) === true)
-                            <a href="#none" onclick="goEdit('ing', '{{$row['BoardIdx']}}')"><span class="aBox waitBox_block NSK">과제제출</span></a>
+                            <a href="#none" onclick="goEdit('ing', '', '{{$row['BoardIdx']}}')"><span class="aBox waitBox_block NSK">과제제출</span></a>
                         @else
                             제출완료
                         @endif

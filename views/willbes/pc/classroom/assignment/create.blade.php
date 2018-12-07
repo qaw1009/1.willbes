@@ -4,7 +4,6 @@
 <div class="willbes-Layer-PassBox willbes-Layer-PassBox1100 h920 fix" style="display: block">
 {{--<form id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>--}}
 <form id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" action="{{front_url('/classroom/assignment/store')}}" novalidate>
-
     {!! csrf_field() !!}
     {!! method_field($method) !!}
     <input type="hidden" name="idx" value="{{ $board_idx }}"/>

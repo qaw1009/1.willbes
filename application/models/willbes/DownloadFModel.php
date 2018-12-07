@@ -13,7 +13,7 @@ class DownloadFModel extends WB_Model
         parent::__construct('lms');
     }
 
-    public function saveLog($idx=null)
+    public function saveLog($idx=null, $attach_type = 0)
     {
         $refer_info = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : null ;
         $refer_domain = parse_url($refer_info, PHP_URL_HOST);
@@ -22,6 +22,7 @@ class DownloadFModel extends WB_Model
         $input_data = [
             'BoardIdx' => $idx,
             'MemIdx' => (empty($this->session->userdata('mem_idx')) ? null : $this->session->userdata('mem_idx')),
+            'AttachType' => $attach_type,
             'ReferDomain' => (empty($refer_domain) ? null : $refer_domain ),
             'ReferPath' => (empty($refer_info) ? null : $refer_info ),
             'ReferQuery' => urldecode($_SERVER['QUERY_STRING']),

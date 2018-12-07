@@ -390,21 +390,16 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
         return $query->row(0)->numrows;
     }
 
+    /**
+     * 회원별 과제 목록
+     * @param array $arr_condition
+     * @param null $column
+     * @param null $limit
+     * @param array $order_by
+     * @return mixed
+     */
     public function listBoardForAssignment($arr_condition=[], $column = null, $limit = null, $order_by = [])
     {
-        /*$from = "
-            FROM {$this->_table['twoway_board']}
-            LEFT JOIN lms_board_assignment AS a ON a.BoardIdx = b.BoardIdx AND a.MemIdx = {$this->session->userdata('mem_idx')}
-        ";
-
-        $where = $this->_conn->makeWhere($arr_condition);
-        $where = $where->getMakeWhere(false);
-
-        $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
-        $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit)->getMakeLimitOffset();
-
-        return $this->_conn->query('select '.$column .$from .$where . $order_by_offset_limit)->result_array();*/
-
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
 
@@ -424,5 +419,18 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
             ORDER BY rownum DESC
         ";
         return $this->_conn->query($query)->result_array();
+    }
+
+    public function findBoardForAssignment($arr_condition=[], $column = null)
+    {
+        $from = "
+            FROM {$this->_table['twoway_board']}
+            INNER JOIN {$this->_table['lms_board_assignment']} AS a ON a.BoardIdx = b.BoardIdx
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        return $this->_conn->query('select STRAIGHT_JOIN '.$column .$from .$where)->row_array();
     }
 }

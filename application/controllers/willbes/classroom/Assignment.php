@@ -34,7 +34,7 @@ class Assignment extends BaseSupport
             'LTE' => ['ScheduleDate' => element('ed',$arr_input)]
         ];
         $total_rows = $this->supportBoardTwoWayFModel->listTotalCountForAssignment($arr_condition);
-        $total_rows = 4;
+        $total_rows = 20;
 
         $column = '
             b.*
@@ -67,6 +67,10 @@ class Assignment extends BaseSupport
         $arr_input = array_merge($this->_reqG(null));
         $board_idx = element('board_idx', $arr_input);
 
+        if (empty($board_idx) == true) {
+            show_alert('잘못된 접근 입니다.', '/classroom/home/', false);
+        }
+
         $column = 'BoardIdx, Title, Content, AttachData';
         $arr_condition = [
             'EQ' => [
@@ -97,9 +101,36 @@ class Assignment extends BaseSupport
         $tab = element('tab', $arr_input, '');
         $show_content = element('oc', $arr_input, '');
 
+        $column = '
+            b.*
+            ,a.BaIdx AS am_BaIdx, a.Title AS am_Title, a.Content AS am_MemContent, a.AssignmentStatusCcd AS am_AssignmentStatusCcd
+            ,IFNULL(a.IsReply,"N") AS am_IsReply ,DATE_FORMAT(a.RegDatm, \'%Y-%m-%d %H:%i\') AS am_RegDatm
+            ,a.ReplyContent AS am_ReplyContent
+            ,DATE_FORMAT(a.ReplyRegDatm, \'%Y-%m-%d %H:%i\') AS am_ReplyRegDatm
+            ,IFNULL(fn_board_attach_data_assignment(a.BaIdx,1),\'N\') AS AttachAssignmentData_Admin 
+            ,IFNULL(fn_board_attach_data_assignment(a.BaIdx,0),\'N\') AS AttachAssignmentData_User
+        ';
+        $arr_condition = [
+            'EQ' => [
+                'b.BmIdx' => $this->_bm_idx,
+                'b.BoardIdx' => $board_idx,
+                'a.MemIdx' => $this->session->userdata('mem_idx'),
+                'b.IsUse' => 'Y'
+            ],
+        ];
+        $data = $this->supportBoardTwoWayFModel->findBoardForAssignment($arr_condition, $column);
+        if (empty($data) === true) {
+            show_alert('조회된 과제가 없습니다.', '/classroom/home/', false);
+        }
+        $data['AttachData'] = json_decode($data['AttachData'],true);       //과제 첨부파일
+        $data['AttachAssignmentData_Admin'] = json_decode($data['AttachAssignmentData_Admin'],true);    //답변 첨부파일
+        $data['AttachAssignmentData_User'] = json_decode($data['AttachAssignmentData_User'],true);      //과제 제출 첨부파일
+
         $this->load->view('classroom/assignment/show', [
+            'board_idx' => $board_idx,
             'show_tab' => $tab,
-            'show_content' => $show_content
+            'show_content' => $show_content,
+            'data' => $data,
         ]);
     }
 
@@ -114,15 +145,28 @@ class Assignment extends BaseSupport
             return;
         }
 
-        if (empty($this->_reqP('board_idx')) === false) {
+        /*if (empty($this->_reqP('board_idx')) === false) {
             $method = 'modify';
             $idx = $this->_reqP('board_idx');
         }
 
         //
-        $result = $this->{'_' . $method . 'Board'}($this->_reqP(null, false));
+        $result = $this->{'_' . $method . 'Board'}($this->_reqP(null, false));*/
+        $result = true;
 
         $this->json_result($result, '저장 되었습니다.', $result);
-        print_r($this->_reqP(null, false));
+    }
+
+    public function download()
+    {
+        $file_path = $this->_reqG('path');
+        $file_name = $this->_reqG('fname');
+        $board_idx = $this->_reqG('board_idx');
+        $attach_type = $this->_reqG('attach_type');
+
+        $this->downloadFModel->saveLog($board_idx, $attach_type);
+        public_download($file_path, $file_name);
+
+        show_alert('등록된 파일을 찾지 못했습니다.','close','');
     }
 }

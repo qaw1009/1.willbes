@@ -2129,6 +2129,39 @@ table.auTable tr td {
     padding: 40px 0;
 }
 
+/* Guide Container : Cop */
+/*수험가이드*/
+.examInfoGu1, .examInfoGu2, .examInfoGu3{line-height:1.5}
+.examInfoGu1 .hTy4, .examInfoGu2 .hTy4, .examInfoGu3 .hTy4{margin:30px 0 10px;padding-left:20px;font-size:14px;font-weight:bold;background:url(../img/common/ico_h5.gif) no-repeat 0 3px}
+.examInfoGu2 h5{margin-bottom:10px;padding-left:17px;font-size:12px;font-weight:bold;background:url(../img/common/ico_hty2.gif) no-repeat 0 1px}
+.examInfoGu1 h5,
+.examInfoGu3 h5{font-weight:bold;font-size:12px}
+.examInfoGu3 .pd{padding-left: 20px;padding-right:20px}
+.examInfoGu3 .stlist li{margin-bottom:20px}
+.examInfoGu2 .collage{margin-bottom:30px}
+.examInfoGu2 .collage ul{margin:0 20px 30px}
+.toggleCont{border-top:2px solid #7a7a7a}
+.toggleCont .toggleContList{}
+.toggleCont .tTitle{padding:10px;border-bottom:1px solid #cecece;font-size:12px !important;cursor:pointer;background:#f4f4f4 url(../img/common/t_down.gif) no-repeat 96% 50%;font-weight:bold}
+.toggleCont .tContWp{display:none;padding:20px 10px 20px;border-bottom:1px solid #7a7a7a}
+.toggleCont .toggleContList.show .tTitle{background:url(../img/common/t_up.gif) no-repeat 96% 50%}
+.toggleCont .tContWp h6{margin-bottom:10px;padding-left:17px;font-size:12px;font-weight:bold;background:url(../img/common/ico_hty2.gif) no-repeat 0 1px}
+.toggleCont .tContWp .tit1{padding-left:16px;background:url(../img/common/dot_cirb.png) no-repeat 3px 4px;font-weight:bold}
+.toggleCont .tContWp .inner_txt{margin-bottom:20px;padding:0 20px}
+.toggleCont .tContWp .inner_txt .tit1{margin-bottom:5px;padding-left:10px;background-position:0 4px}
+.toggleCont .tContWp .inner_txt .tit2{margin-bottom:5px}
+.toggleCont .tContWp .plistSq3, .toggleCont .tContWp .listSq3 li{background:url(../img/common/dot_bar3.gif) no-repeat 1px 6px}
+.ps{padding:10px 20px;background:#f4f4f4}
+.ps strong{color:#666}
+.mgT05{margin-top:5px}
+.basicTb{width:100%;border-left:1px solid #dbdbdb;border-top:1px solid #dbdbdb}
+.basicTb th,
+.basicTb td{border-right:1px solid #dbdbdb;border-bottom:1px solid #dbdbdb}
+.basicTb th{padding:7px 0;text-align:center}
+.basicTb td{padding:7px}
+.basicTb thead th{background:#efefef}
+
+
 
 
 /*********************************************     Main Container : Gosi     *********************************************/

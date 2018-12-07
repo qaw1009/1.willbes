@@ -285,6 +285,22 @@ $(function() {
     });
 });
 
+// 가이드 Script
+$(function() {
+    $('.tTitle').click(function() {
+        var $cont = $(this).parents('.toggleContList').find('.tContWp');
+
+        if ($(this).parents('.toggleContList').hasClass('show')) {
+            $(this).parents('.toggleContList').removeClass('show');
+            $cont.hide();
+        } else {
+            $(this).parents('.toggleContList').addClass('show');
+            $cont.show();
+        }   
+    });
+});
+
+
 // star rating Script //
 $(document).ready(function(){
 

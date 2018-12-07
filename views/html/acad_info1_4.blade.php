@@ -51,7 +51,7 @@
 
         <div class="willbes-AcadInfo c_both">
             <div class="willbes-Lec-Tit NG bd-none tx-black c_both pt-zero">
-                · 학원공지사항
+                · 학원강의정보
             </div>
             <div class="Acad_info mt30">
                 <ul class="tabMock four mb60">

@@ -267,6 +267,23 @@ $(function() {
     });
 });
 
+// 썸네일 더보기 Script
+$(function() {
+    $('.w-thumb a.thumb_num').mouseover(function(){
+        var $thumb_table = $(this).parents('.w-thumb').find('.thumb_slide_wrap');
+        var n = $(this).parents('.w-thumb').find('.thumb_slide_wrap ul li').length;
+        var width = parseInt(n)* 70;
+
+        $thumb_table.addClass('rollover').animate({
+            height: '92px'
+        }, 100).css('width', width).show();
+    })
+    $('.thumb_slide_wrap').mouseleave(function(){
+        $('.thumb_slide_wrap').removeClass('rollover').animate({
+            width: '80px'
+        }, 100).css('overflow','hidden').hide();
+    });
+});
 
 // star rating Script //
 $(document).ready(function(){

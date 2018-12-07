@@ -3,7 +3,6 @@
 @section('content')
 <div class="willbes-Layer-PassBox willbes-Layer-PassBox1100 h920 fix" style="display: block">
 <form id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
-{{--<form id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" action="{{front_url('/classroom/assignment/store')}}" novalidate>--}}
     {!! csrf_field() !!}
     {!! method_field($method) !!}
     <input type="hidden" name="idx" value="{{ $board_idx }}"/>
@@ -110,10 +109,10 @@
                     </table>
                 </div>
                 <div class="search-Btn mt20 h36 p_re">
-                    <button type="button" {{--onclick="javascript:save('{{$arr_save_type_ccd[0]}}');"--}} class="btnAuto90 h36 mem-Btn bg-white bd-dark-gray f_left btn_save" data-save-type="{{$arr_save_type_ccd[0]}}">
+                    <button type="button" class="btnAuto90 h36 mem-Btn bg-white bd-dark-gray f_left btn_save" data-save-type="{{$arr_save_type_ccd[0]}}">
                         <span class="tx-purple-gray">임시저장</span>
                     </button>
-                    <button type="button" {{--onclick="javascript:save('{{$arr_save_type_ccd[1]}}');"--}} class="btnAuto90 h36 mem-Btn bg-blue bd-dark-blue center btn_save" data-save-type="{{$arr_save_type_ccd[1]}}">
+                    <button type="button" class="btnAuto90 h36 mem-Btn bg-blue bd-dark-blue center btn_save" data-save-type="{{$arr_save_type_ccd[1]}}">
                         <span>제출하기</span>
                     </button>
                 </div>
@@ -157,30 +156,6 @@
             }
             return true;
         }
-
-        /*function save(save_type) {
-            var _url = '{{front_url('/classroom/assignment/store')}}';
-            if (!confirm('저장하시겠습니까?')) { return true; }
-            $regi_form.find('input[name="save_type"]').val(save_type);
-
-            /!*$regi_form.submit();*!/
-
-            ajaxSubmit($regi_form, _url, function(ret) {
-                getEditorBodyContent($editor_profile);
-                if(ret.ret_cd) {
-                    notifyAlert('success', '알림', ret.ret_msg);
-                    location.reload();
-                }
-            }, showValidateError, addValidate, false, 'alert');
-        }
-
-        function addValidate() {
-            if($regi_form.find('input[name="board_title"]').val == '') {
-                alert('답안제목을 입력해 주세요.');
-                return false;
-            }
-            return true;
-        }*/
     });
 </script>
 @stop

@@ -156,30 +156,6 @@
             }
             return true;
         }
-
-        /*function save(save_type) {
-            var _url = '{{front_url('/classroom/assignment/store')}}';
-            if (!confirm('저장하시겠습니까?')) { return true; }
-            $regi_form.find('input[name="save_type"]').val(save_type);
-
-            /!*$regi_form.submit();*!/
-
-            ajaxSubmit($regi_form, _url, function(ret) {
-                getEditorBodyContent($editor_profile);
-                if(ret.ret_cd) {
-                    notifyAlert('success', '알림', ret.ret_msg);
-                    location.reload();
-                }
-            }, showValidateError, addValidate, false, 'alert');
-        }
-
-        function addValidate() {
-            if($regi_form.find('input[name="board_title"]').val == '') {
-                alert('답안제목을 입력해 주세요.');
-                return false;
-            }
-            return true;
-        }*/
     });
 </script>
 @stop

@@ -1,7 +1,6 @@
 @extends('willbes.pc.layouts.master_no_sitdbar')
 
 @section('content')
-
 <div class="willbes-Mypage-EDITZONE mt60 c_both p_re">
     <div class="willbes-Prof-Subject willbes-Mypage-Tit NG">
         · 과제확인 및 답안제출

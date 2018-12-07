@@ -26,7 +26,9 @@ trait QueryBuilder
                     if (is_array($arr) && count($arr) > 0) {
                         foreach ($arr as $col => $val) {
                             if ($key == 'IN') {
-                                $this->makeWhereIn($col, $val, $is_and, $is_escape);
+                                $this->makeWhereIn($col, $val, false, $is_and, $is_escape);
+                            } elseif ($key == 'NOTIN') {
+                                $this->makeWhereIn($col, $val, true, $is_and, $is_escape);
                             } elseif ($key == 'BET' || $key == 'BDT') {
                                 $this->makeWhereBetween($col, $val, $key, $is_and, $is_escape);
                             } elseif ($key == 'RAW') {
@@ -98,14 +100,19 @@ trait QueryBuilder
      * in 조건 생성
      * @param string $column
      * @param array $values
+     * @param bool $is_not
      * @param bool $is_and
      * @param bool $is_escape
      * @return $this
      */
-    public function makeWhereIn($column, $values = [], $is_and = true, $is_escape = true)
+    public function makeWhereIn($column, $values = [], $is_not = false, $is_and = true, $is_escape = true)
     {
         if (is_array($values) && count($values) > 0) {
-            $method = ($is_and === true) ? 'where_in' : 'or_where_in';
+            if ($is_not === true) {
+                $method = ($is_and === true) ? 'where_not_in' : 'or_where_not_in';
+            } else {
+                $method = ($is_and === true) ? 'where_in' : 'or_where_in';
+            }
             $this->{$method}($column, $values, $is_escape);
         }
 

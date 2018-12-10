@@ -86,11 +86,12 @@
                 </div>
                 <div class="Mypage-PASSZONE-Btn">
                     <ul>
-                        <li class="subBtn blue NSK"><a href="#none">수강후기 작성하기 ></a></li>
+                        <li class="subBtn blue NSK"><a href="#none" class="btn-study" data-write-type="on">수강후기 작성하기</a></li>
                         <li class="subBtn NSK"><a target="_blank" href="//{{$lec['SiteUrl']}}/professor/show/cate/{{$lec['CateCode']}}/prof-idx/{{$lec['ProfIdx']}}/?subject_idx={{$lec['SubjectIdx']}}&subject_name={{rawurlencode($lec['SubjectName'])}}&tab=qna">학습 Q&A</a></li>
                     </ul>
                     <div class="aBox passBox answerBox_block NSK f_right"><a href="javascript:;" onclick="fnBookLayer('{{$lec['ProdCodeSub']}}');">교재구매</a></div>
                 </div>
+                <div id="WrapReply"></div>
             </div>
             <!-- willbes-Mypage-PASSZONE -->
 
@@ -109,13 +110,13 @@
                         </colgroup>
                         <thead>
                         <tr>
-                            <th>No<span class="row-line">|</span></li></th>
-                            <th>강의명<span class="row-line">|</span></li></th>
-                            <th>북페이지<span class="row-line">|</span></li></th>
-                            <th>자료<span class="row-line">|</span></li></th>
-                            <th>강의수강<span class="row-line">|</span></li></th>
-                            <th>강의시간<span class="row-line">|</span></li></th>
-                            <th>수강시간/배수시간<span class="row-line">|</span></li></th>
+                            <th>No<span class="row-line">|</span></th>
+                            <th>강의명<span class="row-line">|</span></th>
+                            <th>북페이지<span class="row-line">|</span></th>
+                            <th>자료<span class="row-line">|</span></th>
+                            <th>강의수강<span class="row-line">|</span></th>
+                            <th>강의시간<span class="row-line">|</span></th>
+                            <th>수강시간/배수시간<span class="row-line">|</span></th>
                             <th>잔여시간</th>
                         </tr>
                         </thead>
@@ -173,6 +174,31 @@
     <!-- End Container -->
     <script src="/public/js/willbes/player.js?ver={{time()}}"></script>
     <script>
+        $(document).ready(function() {
+            //수강후기작성
+            $('.btn-study').click(function () {
+                var is_login = '{{sess_data('is_login')}}';
+                var ele_id = 'WrapReply';
+                var data = {
+                    'ele_id' : ele_id,
+                    'show_onoff' : $(this).data('write-type'),
+                    'site_code' : '{{$lec['SiteCode']}}',
+                    'cate_code' : '{{$lec['CateCode']}}',
+                    'subject_idx' : '{{$lec['SubjectIdx']}}',
+                    'prof_idx' : '{{$lec['ProfIdx']}}'
+                };
+
+                if ($(this).data('write-type') == 'on' && is_login != true) {
+                    alert('로그인 후 이용해 주세요.');
+                    return false;
+                }
+
+                sendAjax('{{ front_url('/support/studyComment/') }}', data, function(ret) {
+                    $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');
+                }, showAlertError, false, 'GET', 'html');
+            });
+        });
+
         function fnBookLayer(ProdCode)
         {
             url = "{{ site_url("/classroom/on/layerBooklist/") }}";

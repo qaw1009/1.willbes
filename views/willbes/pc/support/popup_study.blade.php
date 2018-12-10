@@ -142,14 +142,17 @@
                         <tr>
                             <td class="w-tit bg-light-white tx-left strong pl30">수강정보<span class="tx-light-blue">(*)</span></td>
                             <td class="w-selected tx-left pl30 item">
-                                <select id="study_subject_idx" name="study_subject_idx" title="과목" class="seleSbj" onchange="ajaxProfInfoForSelectBox('{{element('cate_code', $arr_input)}}', this.value);" required="required" style="width: 150px;">
+                                <select id="study_subject_idx" name="study_subject_idx" title="과목" class="seleSbj" required="required" style="width: 150px;">
                                     <option value="">과목선택</option>
                                     @foreach($arr_base['subject'] as $idx => $row)
-                                        <option value="{{$row['SubjectIdx']}}">{{$row['SubjectName']}}</option>
+                                        <option value="{{$row['SubjectIdx']}}" @if(empty($arr_input['subject_idx']) === false && $arr_input['subject_idx'] == $row['SubjectIdx'])selected="selected"@endif>{{$row['SubjectName']}}</option>
                                     @endforeach
                                 </select>
                                 <select id="study_prof_idx" name="study_prof_idx" title="교수" class="seleProf" required="required" style="width: 150px;">
                                     <option value="">교수선택</option>
+                                    @foreach($arr_base['professor'] as $row)
+                                        <option class="{{$row['SubjectIdx']}}" value="{{$row['ProfIdx']}}" @if(empty($arr_input['prof_idx']) === false && $arr_input['prof_idx'] == $row['ProfIdx'])selected="selected"@endif>{{$row['wProfName']}}</option>
+                                    @endforeach
                                     {{--<option value="50004">김현식</option>
                                     <option value="50070">테스트</option>--}}
                                 </select>
@@ -233,6 +236,7 @@
     // star rating Script //
     $(document).ready(function(){
         var is_login = '{{sess_data('is_login')}}';
+        $_ajax_reg_form.find('select[name="study_prof_idx"]').chained("#study_subject_idx");
 
         /* 1. Visualizing things on Hover - See next part for action on click */
         $('#stars li').on('mouseover', function(){
@@ -491,30 +495,6 @@
             }
         }, showError, false, 'POST');
         callAjax(1);
-    }
-
-    //등록 : 과목값에 따른 교수목록 조회 (select box option 생성)
-    function ajaxProfInfoForSelectBox(cate_code, subject_idx) {
-        var $study_prof_idx = $_ajax_reg_form.find('select[name="study_prof_idx"]');
-        var _url = '{{ front_url("/support/studyComment/ajaxProfInfo") }}';
-        var data = {
-            '{{ csrf_token_name() }}' : $_ajax_search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
-            'cate_code' : cate_code,
-            'subject_idx' : subject_idx
-        };
-
-        $study_prof_idx.empty();
-        $study_prof_idx.append(('<option value="">교수선택</option>'));
-
-        if (subject_idx == '') { return false; }
-        sendAjax(_url, data, function(ret) {
-            var add_data = '';
-            if (ret.ret_cd) {
-                $.each(ret.ret_data, function (k, v) {
-                    $study_prof_idx.append($('<option>', { 'value' : k, 'text' : v}));
-                });
-            }
-        }, showError, false, 'POST');
     }
 
     function starCount(count) {

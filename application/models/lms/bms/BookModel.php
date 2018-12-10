@@ -9,6 +9,7 @@ class BookModel extends WB_Model
         'product_sale' => 'lms_product_sale',
         'product_r_category' => 'lms_product_r_category',
         'product_book_r_prof_subject' => 'lms_product_book_r_prof_subject',
+        'vw_product_book_r_prof_subject' => 'vw_product_book_r_professor_subject_concat',
         'bms_book' => 'wbs_bms_book',
         'vw_bms_book' => 'wbs_bms_book_combine',
         'site' => 'lms_site',
@@ -73,21 +74,7 @@ class BookModel extends WB_Model
                     on BC.CateCode = C.CateCode and C.IsStatus = "Y"                                        
                 left join ' . $this->_table['category'] . ' as PC
                     on C.ParentCateCode = PC.CateCode and PC.IsStatus = "Y"
-                left join (
-                    select LBPS.ProdCode
-                        , GROUP_CONCAT(LBPS.ProfIdx) as ProfIdxs
-                        , GROUP_CONCAT(LBPS.SubjectIdx) as SubjectIdxs
-                        , GROUP_CONCAT(CONCAT(LPSU.SubjectName, ">", LWP.wProfName)) as ProfSubjectNames
-                    from ' . $this->_table['product_book_r_prof_subject'] . ' as LBPS
-                        left join ' . $this->_table['professor'] . ' as LPF
-                            on LBPS.ProfIdx = LPF.ProfIdx and LPF.IsStatus = "Y"                            
-                        left join ' . $this->_table['pms_professor'] . ' as LWP
-                            on LPF.wProfIdx = LWP.wProfIdx and LWP.wIsStatus = "Y"
-                        left join ' . $this->_table['subject'] . ' as LPSU
-                            on LBPS.SubjectIdx = LPSU.SubjectIdx and LPSU.IsStatus = "Y"
-                    where LBPS.IsStatus = "Y"
-                    group by LBPS.ProdCode
-                ) as BPS
+                left join ' . $this->_table['vw_product_book_r_prof_subject'] . ' as BPS
                     on P.ProdCode = BPS.ProdCode
                 left join ' . $this->_table['admin'] . ' as A
                     on P.RegAdminIdx = A.wAdminIdx and A.wIsStatus = "Y"

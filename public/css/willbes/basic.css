@@ -755,8 +755,17 @@ select[disabled] {
 .pb40 {
   padding-bottom: 40px !important;
 }
+.pb50 {
+  padding-bottom: 50px !important;
+}
 .pb60 {
   padding-bottom: 60px !important;
+}
+.pb70 {
+  padding-bottom: 70px !important;
+}
+.pb80 {
+  padding-bottom: 80px !important;
 }
 .pb85 {
   padding-bottom: 85px !important;

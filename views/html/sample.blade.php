@@ -55,6 +55,10 @@
 
     <a href="{{ site_url('/home/html/mocktest3') }}" target="_blank">수험정보 > 기출문제 page 이동</a><br/><br/>
 
+    <a href="{{ site_url('/home/html/guide_cop') }}" target="_blank">수험정보 > 경찰가이드 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/guide_success_cop') }}" target="_blank">수험정보 > 초보합격전략 page 이동</a><br/><br/>
+
     <a href="{{ site_url('/home/html/mocktest6_1') }}" target="_blank">수험정보 > 모의고사 > 모의고사안내 page 이동</a><br/><br/>
 
     <a href="{{ site_url('/home/html/mocktest6_2') }}" target="_blank">수험정보 > 모의고사 > 모의고사접수 page 이동</a><br/><br/>

@@ -158,12 +158,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property CertApplyModel $certApplyModel                                       Cert Apply Model Class
  * @property OrderModel $orderModel                                                  Order Model Class
  * @property OrderListModel $orderListModel                                         Order List Model Class
+ * @property OrderStatsModel $orderStatsModel                                    Order Statistics Model Class
  * @property OrderMemoModel $orderMemoModel                                   Order Memo Model Class
  * @property CartModel $cartModel                                                     Cart Model Class
  * @property DeliveryInfoModel $deliveryInfoModel                                 Delivery Info Model Class
  * @property SalesProductModel $salesProductModel                              Sales Product Model Class
  * @property TmModel $tmModel                                                         Tm Model Class
- * @property StudentModel $studentModel                                          Student Model Class
+ * @property StudentModel $studentModel                                           Student Model Class
 
  ***************** MockTest *********************
  * @property MockCommonModel $mockCommonModel                              MockTest MockCommon Model Class

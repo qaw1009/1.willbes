@@ -378,12 +378,16 @@
                     $is_point_saving.filter('#is_point_saving_y').prop('checked', false).iCheck('update');
                     $is_point_saving.filter('#is_point_saving_y').prop('disabled', true).iCheck('update');
                     $is_point_saving.filter('#is_point_saving_n').iCheck('check');
-                    $dc_amt.change();
+                    $dc_amt.trigger('change');
                 } else {
                     $dc_amt.val('{{ $data['SaleRate'] or '' }}').prop('readonly', false);
                     $dc_type.val('{{ $data['SaleDiscType'] or 'R' }}').prop('disabled', false);
                     $is_coupon.filter('#is_coupon_y').prop('disabled', false).iCheck('update');
                     $is_point_saving.filter('#is_point_saving_y').prop('disabled', false).iCheck('update');
+
+                    if ($dc_amt.val() !== '' && (($dc_amt.val() !== '100' && $dc_type.val() === 'R') || ($dc_amt.val() !== '0' && $dc_type.val() === 'P'))) {
+                        $dc_amt.trigger('change');
+                    }
                 }
             });
 

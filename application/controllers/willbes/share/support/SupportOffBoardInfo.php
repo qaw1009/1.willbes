@@ -3,14 +3,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 require_once APPPATH . 'controllers/willbes/share/support/BaseSupport.php';
 
-class SupportOffLectureInfo extends BaseSupport
+class SupportOffBoardInfo extends BaseSupport
 {
     protected $models = array('support/supportBoardF', 'downloadF', 'categoryF', '_lms/sys/site');
-    protected $helpers = array('download');
+    protected $helpers = array('download', 'url');
     protected $auth_controller = false;
     protected $auth_methods = array();
 
-    protected $_bm_idx; //(80-강의시간표,82-강의실배정표,75-학원휴강/보강공지,78-신규강의안내)
+    protected $_bm_idx; //(80-강의시간표,82-강의실배정표,75-학원휴강/보강공지,78-신규강의안내,89-모의고사성적공지)
     protected $_default_path;
     protected $_paging_limit = 10;
     protected $_paging_count = 10;
@@ -27,17 +27,26 @@ class SupportOffLectureInfo extends BaseSupport
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
         $get_params = http_build_query($arr_input);
 
-        $bm_idx = $params[0];
+        if(empty($params[0])) {
+            $bm_idx = '80';
+        } else {
+            $bm_idx = $params[0];
+        }
+
+        if($bm_idx == '89') {
+            $bm_title = '모의고사성적공지';
+            $tab_menu = false;
+        } else {
+            $bm_title = '학원강의정보';
+            $tab_menu = true;
+        }
 
         $s_cate_code = element('s_cate_code',$arr_input);
         $s_campus = element('s_campus',$arr_input);
         $s_keyword = element('s_keyword',$arr_input);
-        $prof_idx = element('prof_idx',$arr_input);
-        $subject_idx = element('subject_idx',$arr_input);
-        $view_type = element('view_type',$arr_input);
-        $get_page_params = 's_cate_code='.$s_cate_code.'&s_campus='.$s_campus.'&s_keyword='.$s_keyword;
-        $get_page_params .= '&prof_idx='.$prof_idx.'&subject_idx='.$subject_idx;
-        $get_page_params .= '&view_type='.$view_type;
+
+        $get_page_params = '&s_cate_code='.$s_cate_code.'&s_campus='.$s_campus.'&s_keyword='.$s_keyword;
+        //echo current_url();exit;
 
         //카테고리목록
         $arr_base['category'] = $this->categoryFModel->listSiteCategory($this->_site_code);
@@ -51,7 +60,7 @@ class SupportOffLectureInfo extends BaseSupport
                 ,'b.IsUse' => 'Y'
                 ,'b.SiteCode' => $this->_site_code
                 ,'b.CampusCcd' => $s_campus
-                ,'b.SubjectIdx' => $subject_idx
+
             ],
             'LKB' => [
                 'Category_String'=>$s_cate_code
@@ -77,7 +86,9 @@ class SupportOffLectureInfo extends BaseSupport
             $paging_count = $this->_paging_count;
         }
         $total_rows = $this->supportBoardFModel->listBoard(true, $arr_condition);
-        $paging = $this->pagination((($this->_is_mobile === true) ? '/'.config_item('app_mobile_site_prefix') : '') . $this->_default_path.'/notice/index/?'.$get_page_params,$total_rows,$this->_paging_limit,$paging_count,true);
+        $paging = $this->pagination(( ($this->_is_mobile === true) ? '/'.config_item('app_mobile_site_prefix') : '') . $this->_default_path.'/index/'.$bm_idx.'?'.$get_page_params,$total_rows,$this->_paging_limit,$paging_count,true);
+
+
 
         if ($total_rows > 0) {
             $list = $this->supportBoardFModel->listBoard(false,$arr_condition,$column,$paging['limit'],$paging['offset'],$order_by);
@@ -86,33 +97,46 @@ class SupportOffLectureInfo extends BaseSupport
             }
         }
 
-        $this->load->view('site/off_info/lecture_info_list', [
+//        echo var_dump($paging);exit;
+
+        $this->load->view('site/off_info/board_info_list', [
             'default_path' => $this->_default_path,
             'arr_base' => $arr_base,
             'arr_input' => $arr_input,
             'get_params' => $get_params,
             'list'=>$list,
             'paging' => $paging,
+            'bm_idx' => $bm_idx,
+            'bm_title'=> $bm_title,
+            'tab_menu' => $tab_menu
         ]);
     }
 
-    public function show()
+    public function show($params=[])
     {
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
 
-        $bm_idx = element('bm_idx',$arr_input);
+        if(empty($params[0])) {
+            $bm_idx = '80';
+        } else {
+            $bm_idx = $params[0];
+        }
+
+        if($bm_idx == '89') {
+            $bm_title = '모의고사성적공지';
+            $tab_menu = false;
+        } else {
+            $bm_title = '학원강의정보';
+            $tab_menu = true;
+        }
 
         $board_idx = element('board_idx',$arr_input);
         $s_campus = element('s_campus',$arr_input);
         $s_keyword = element('s_keyword',$arr_input);
         $s_cate_code = element('s_cate_code',$arr_input);
-        $prof_idx = element('prof_idx',$arr_input);
-        $subject_idx = element('subject_idx',$arr_input);
-        $view_type = element('view_type',$arr_input);
         $page = element('page',$arr_input);
 
         $get_params = 's_cate_code='.$s_cate_code.'&s_campus='.$s_campus.'&s_keyword='.$s_keyword;
-        $get_params .= '&prof_idx='.$prof_idx.'&subject_idx='.$subject_idx.'&view_type='.$view_type;
         $get_params .= '&page='.$page;
 
         if (empty($board_idx)) {
@@ -159,8 +183,6 @@ class SupportOffLectureInfo extends BaseSupport
                 ,'b.BmIdx' => $bm_idx
                 ,'b.IsUse' => 'Y'
                 ,'b.CampusCcd' => $s_campus
-                ,'b.ProfIdx' => $prof_idx
-                ,'b.SubjectIdx' => $subject_idx
             ],
             'ORG' => [
                 'LKB' => [
@@ -191,7 +213,7 @@ class SupportOffLectureInfo extends BaseSupport
         $pre_data = $this->supportBoardFModel->findBoard(false,$pre_arr_condition,$column,1,null,$pre_order_by);
         $next_data = $this->supportBoardFModel->findBoard(false,$next_arr_condition,$column,1,null,$next_order_by);
 
-        $this->load->view('support/'.$view_type.'/show_notice',[
+        $this->load->view('site/off_info/board_info_show', [
                 'default_path' => $this->_default_path,
                 'board_idx' => $board_idx,
                 'get_params' => $get_params,
@@ -199,6 +221,9 @@ class SupportOffLectureInfo extends BaseSupport
                 'data' => $data,
                 'pre_data' => $pre_data,
                 'next_data' =>  $next_data,
+                'bm_idx' => $bm_idx,
+                'bm_title'=> $bm_title,
+                'tab_menu' => $tab_menu
             ]
         );
     }

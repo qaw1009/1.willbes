@@ -9,18 +9,24 @@
             @include('willbes.pc.layouts.partial.site_route_path')
         </div>
         <div class="Content p_re">
+            <form id="url_form" name="url_form" method="GET">
+                @foreach($arr_input as $key => $val)
+                    <input type="hidden" name="{{ $key }}" value="{{ $val }}"/>
+                @endforeach
 
             <div class="willbes-AcadInfo c_both">
                 <div class="willbes-Lec-Tit NG bd-none tx-black c_both pt-zero">
-                    · 학원강의정보
+                    · {{$bm_title}}
                 </div>
                 <div class="Acad_info mt30">
+                    @if($tab_menu === true)
                     <ul class="tabMock four mb60">
-                        <li><a class="on" href="#none">강의시간표</a></li>
-                        <li><a href="{{ site_url('/home/html/acad_info1_2') }}">강의실배정표</a></li>
-                        <li><a href="{{ site_url('/home/html/acad_info1_3') }}">휴강/보강공지</a></li>
-                        <li><a href="{{ site_url('/home/html/acad_info1_4') }}">신규강의안내</a></li>
+                        <li><a @if($bm_idx=='80')class="on" @endif href="{{ front_url('/offinfo/BoardInfo/index/80') }}">강의시간표</a></li>
+                        <li><a @if($bm_idx=='82')class="on" @endif href="{{ front_url('/offinfo/BoardInfo/index/82') }}">강의실배정표</a></li>
+                        <li><a @if($bm_idx=='75')class="on" @endif href="{{ front_url('/offinfo/BoardInfo/index/75') }}">휴강/보강공지</a></li>
+                        <li><a @if($bm_idx=='78')class="on" @endif href="{{ front_url('/offinfo/BoardInfo/index/78') }}">신규강의안내</a></li>
                     </ul>
+                    @endif
 
                     <!-- List -->
                     <div class="willbes-Leclist c_both">
@@ -84,7 +90,7 @@
                                         <td class="w-no">@if($row['IsBest'] == '1')<img src="{{ img_url('prof/icon_HOT.gif') }}">@else{{$paging['rownum']}}@endif</td>
                                         @if($__cfg['CampusCcdArr'] != 'N')<td><span class="oBox campus_{{$row['CampusCcd']}} NSK">{{$row['CampusCcd_Name']}}</span></td>@endif
                                         <td class="w-list tx-left pl20">
-                                            <a href="{{front_url($default_path.'/notice/show?board_idx='.$row['BoardIdx'].'&'.$get_params)}}">
+                                            <a href="{{front_url('/offinfo/LectureInfo/show/'.$bm_idx.'?board_idx='.$row['BoardIdx'].'&'.$get_params)}}">
                                                 @if($row['IsBest'] == '1')<strong>@endif{{hpSubString($row['Title'],0,40,'...')}}@if($row['IsBest'] == '1')</strong>@endif
                                             </a>
                                         </td>
@@ -111,7 +117,7 @@
                 </div>
             </div>
             <!-- willbes-AcadInfo -->
-
+            </form>
         </div>
         <div class="Quick-Bnr ml20">
             <img src="{{ img_url('sample/banner_180605.jpg') }}">

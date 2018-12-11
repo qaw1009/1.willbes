@@ -7,7 +7,7 @@
     </div>
     <div id="WrapReply"></div>
 
-    <iframe frameborder="0" scrolling="no" width="940px" onload="resizeIframe(this)" src="{{site_url("/support/studyComment/listFrame?cate=".$__cfg['CateCode']."&prod_code=".$data['ProdCode'])}}"></iframe>
+    <iframe frameborder="0" scrolling="no" width="940px" onload="resizeIframe(this)" src="{{front_url("/support/studyComment/listFrame?cate=".$__cfg['CateCode']."&prod_code=".$data['ProdCode'])}}"></iframe>
     <script type="text/javascript">
         $(document).ready(function() {
             $('.btn-study').click(function () {
@@ -16,7 +16,9 @@
                 var data = {
                     'ele_id' : ele_id,
                     'show_onoff' : $(this).data('write-type'),
-                    'cate_code' : '{{$__cfg['CateCode']}}'
+                    'cate_code' : '{{$__cfg['CateCode']}}',
+                    'subject_idx' : '{{$data['SubjectIdx']}}',
+                    'prof_idx' : '{{$data['ProfIdx']}}'
                 };
 
                 if ($(this).data('write-type') == 'on' && is_login != true) {
@@ -24,7 +26,7 @@
                     return false;
                 }
 
-                sendAjax('{{ site_url('/support/studyComment/') }}', data, function(ret) {
+                sendAjax('{{ front_url('/support/studyComment/') }}', data, function(ret) {
                     $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');
                 }, showAlertError, false, 'GET', 'html');
             });

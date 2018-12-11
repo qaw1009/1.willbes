@@ -89,6 +89,8 @@ class SupportStudyComment extends BaseSupport
     public function index()
     {
         $arr_input = array_merge($this->_reqG(null));
+        $site_code = element('site_code', $arr_input, $this->_site_code);
+
         if (element('show_onoff',$arr_input) == 'on') {
             $style_display['list'] = 'none';
             $style_display['show'] = 'block';
@@ -97,14 +99,17 @@ class SupportStudyComment extends BaseSupport
             $style_display['show'] = 'none';
         }
 
-
-        if ($this->_site_code == '2004') {
+        if ($site_code == '2004') {
             // 공무원일 경우 카테고별 직렬, 직렬별 과목 조회
-            $arr_base['series'] = $this->baseProductFModel->listSeriesCategoryMapping($this->_site_code, $this->_cate_code);
-            /*$arr_base['subject'] = $this->baseProductFModel->listSubjectSeriesMapping($this->_site_code, $this->_cate_code, element('series_ccd', $arr_input));*/
+            $arr_base['series'] = $this->baseProductFModel->listSeriesCategoryMapping($site_code, $this->_cate_code);
+            /*$arr_base['subject'] = $this->baseProductFModel->listSubjectSeriesMapping($site_code, $this->_cate_code, element('series_ccd', $arr_input));*/
+            // 전체 교수 목록
+            $arr_base['professor'] = $this->baseProductFModel->listProfessorSubjectMapping($site_code, ['ProfReferData', 'ProfEventData', 'IsNew'], $this->_cate_code);
         } else {
             // 카테고리별 과목 조회
-            $arr_base['subject'] = $this->baseProductFModel->listSubjectCategoryMapping($this->_site_code, element('cate_code', $arr_input));
+            $arr_base['subject'] = $this->baseProductFModel->listSubjectCategoryMapping($site_code, element('cate_code', $arr_input));
+            // 전체 교수 목록
+            $arr_base['professor'] = $this->baseProductFModel->listProfessorSubjectMapping($site_code, ['ProfReferData', 'ProfEventData', 'IsNew'], element('cate_code', $arr_input));
         }
 
         $this->load->view('support/popup_study', [

@@ -2131,29 +2131,77 @@ table.auTable tr td {
 
 /* Guide Container : Cop */
 /*수험가이드*/
-.examInfoGu1, .examInfoGu2, .examInfoGu3{line-height:1.5}
-.examInfoGu1 .hTy4, .examInfoGu2 .hTy4, .examInfoGu3 .hTy4{margin:30px 0 10px;padding-left:20px;font-size:14px;font-weight:bold;background:url(../img/common/ico_h5.gif) no-repeat 0 3px}
-.examInfoGu2 h5{margin-bottom:10px;padding-left:17px;font-size:12px;font-weight:bold;background:url(../img/common/ico_hty2.gif) no-repeat 0 1px}
-.examInfoGu1 h5,
-.examInfoGu3 h5{font-weight:bold;font-size:12px}
-.examInfoGu3 .pd{padding-left: 20px;padding-right:20px}
-.examInfoGu3 .stlist li{margin-bottom:20px}
+.tabWrap.tab_cop_Guide {
+    height: 58px;
+    border-bottom: none;
+}
+.tabWrap.tab_cop_Guide li {
+    width: 25%;
+    height: 58px;
+}
+.tabWrap.tab_cop_Guide li a {
+    background: #0a162c;
+}
+.tabWrap.tab_cop_Guide li a.on {
+    background: #0064e5;
+}
+.tabWrap.tab_cop_Guide li a,
+.tabWrap.tab_cop_Guide li a.on {
+    font-size: 17px;
+    color: #fff;
+    font-weight: 600;
+    line-height: 56px;
+    height: 58px;
+    border: none;
+    border-left: 1px solid #727272;
+}
+.tabWrap.tab_cop_Guide li:first-child a,
+.tabWrap.tab_cop_Guide li:first-child a.on {
+    border-left: none;
+}
+
+.examInfoGu1, 
+.examInfoGu1_1, 
+.examInfoGu2,
+.examInfoGu3 {color: #555; border: 1px solid #d0d0d0; padding: 15px 50px 0; line-height:1.5}
+.examInfoGu1 .hTy4,
+.examInfoGu3 .hTy4 {font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"; margin: 35px 0 10px; font-size:16px; font-weight:bold; color: #0064e5; line-height: 30px; border-bottom: 1px solid #cbcbcb}
+.examInfoGu1 .mgB2 {padding-bottom: 50px;}
+
+.examInfoGu1_1 .hTy4 {font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"; margin: 35px 0 10px; font-size:16px; font-weight:bold; color: #000; line-height: 30px;}
+.examInfoGu1_1 .mgB1_1 {float: left; margin-right: 25px; font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"; font-size: 13px; font-weight: 600; color: #666;}
+.examInfoGu1_1 .mgB1 {float: right; margin-top: 20px; font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"; color: #0064e5; padding-bottom: 35px;}
+.examInfoGu1_1 .mgB1 a {border-bottom: 1px solid #0064e5}
+.examInfoGu1_1 .hColor1 {color: #c00}
+.examInfoGu1_1 .mgB2.list {margin-bottom: 15px}
+.examInfoGu1_1 .mgB2 li {margin-top: 15px}
+.examInfoGu1_1 .mgB2 li strong {color: #0064e5;}
+
+.examInfoGu2 {padding-bottom: 50px}
+.examInfoGu2 .hTy4 {background: url("../../img/willbes/cop/guide/left_arrow.png") no-repeat 0 center; font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"; margin: 35px 0 10px; font-size:16px; font-weight:bold; color: #24446a; line-height: 30px; padding-left: 25px;}
+.examInfoGu2 .mgB1 {margin-bottom: 10px}
+.examInfoGu2 .ps {border-top: 1px solid #8696a9; padding: 20px}
+.examInfoGu2 h5 {font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"; font-size:16px;font-weight:bold; color: #694b23; border: 1px solid #c6b9ab; margin: 0 10px 15px; padding: 8px 25px; box-shadow: 2px 2px 0 #e1e1e1;}
 .examInfoGu2 .collage{margin-bottom:30px}
-.examInfoGu2 .collage ul{margin:0 20px 30px}
-.toggleCont{border-top:2px solid #7a7a7a}
-.toggleCont .toggleContList{}
-.toggleCont .tTitle{padding:10px;border-bottom:1px solid #cecece;font-size:12px !important;cursor:pointer;background:#f4f4f4 url(../img/common/t_down.gif) no-repeat 96% 50%;font-weight:bold}
-.toggleCont .tContWp{display:none;padding:20px 10px 20px;border-bottom:1px solid #7a7a7a}
-.toggleCont .toggleContList.show .tTitle{background:url(../img/common/t_up.gif) no-repeat 96% 50%}
-.toggleCont .tContWp h6{margin-bottom:10px;padding-left:17px;font-size:12px;font-weight:bold;background:url(../img/common/ico_hty2.gif) no-repeat 0 1px}
-.toggleCont .tContWp .tit1{padding-left:16px;background:url(../img/common/dot_cirb.png) no-repeat 3px 4px;font-weight:bold}
+.examInfoGu2 .collage ul{margin:0 35px 30px}
+
+.examInfoGu2 .stlist li{margin-bottom:20px}
+
+.toggleCont .toggleContList {margin-top: 5px}
+.toggleCont .tTitle {font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"; padding-left: 20px; border-top:1px solid #5c6068; border-bottom:1px solid #5c6068; height: 40px; font-size:14px; font-weight:bold; color: #fff; line-height: 38px; cursor:pointer; background: #6c7380 url("../../img/willbes/cop/guide/toggle_arrow.png") no-repeat 800px center;}
+.toggleCont .tContWp{display:none;padding:20px 10px 20px;}
+.toggleCont .tContWp h6{margin-bottom:10px;padding-left:17px;font-size:12px;font-weight:bold;background: url("../../img/willbes/cop/guide/ico_hty2.gif") no-repeat 0 1px}
+.toggleCont .tContWp .tit1{padding-left:16px;background: url("../../img/willbes/cop/guide/dot_cirb.png") no-repeat 3px 4px;font-weight:bold}
 .toggleCont .tContWp .inner_txt{margin-bottom:20px;padding:0 20px}
 .toggleCont .tContWp .inner_txt .tit1{margin-bottom:5px;padding-left:10px;background-position:0 4px}
 .toggleCont .tContWp .inner_txt .tit2{margin-bottom:5px}
-.toggleCont .tContWp .plistSq3, .toggleCont .tContWp .listSq3 li{background:url(../img/common/dot_bar3.gif) no-repeat 1px 6px}
-.ps{padding:10px 20px;background:#f4f4f4}
-.ps strong{color:#666}
-.mgT05{margin-top:5px}
+.toggleCont .tContWp .plistSq3, .toggleCont .tContWp .listSq3 li{background: url("../../img/willbes/cop/guide/dot_bar3.gif") no-repeat 1px 6px}
+.ps {padding:10px 20px;background:#f4f4f4}
+.ps strong {color:#666}
+
+.listSq3 li{margin-bottom:5px;padding-left:8px;background: url("../../img/willbes/cop/guide/dot_sq4.gif") no-repeat 0 7px}
+
+.agC{text-align:center !important}
 .basicTb{width:100%;border-left:1px solid #dbdbdb;border-top:1px solid #dbdbdb}
 .basicTb th,
 .basicTb td{border-right:1px solid #dbdbdb;border-bottom:1px solid #dbdbdb}
@@ -2161,7 +2209,78 @@ table.auTable tr td {
 .basicTb td{padding:7px}
 .basicTb thead th{background:#efefef}
 
-
+.tabWrap.tab_cop_success_Guide {
+    height: 67px;
+    border: 1px solid #24446a;
+}
+.tabWrap.tab_cop_success_Guide li {
+    width: 50%;
+    height: 65px;
+}
+.tabWrap.tab_cop_success_Guide li a {
+    background: #fff;
+    color: #24446a;
+}
+.tabWrap.tab_cop_success_Guide li a.on {
+    background: #24446a;
+    color: #fff;
+}
+.tabWrap.tab_cop_success_Guide li a,
+.tabWrap.tab_cop_success_Guide li a.on {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 63px;
+    height: 65px;
+    border: none;
+}
+.tabWrap.tab_cop_success_Guide a.on:before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    top: 66px;
+    left: 50%;
+    margin-left: -5px;
+    border-color: #24446a transparent transparent;
+    border-width: 10px;
+}
+.tabWrap.tab_cop_scuuess_list_Guide {
+    float: left;
+    height: 35px;
+    border-bottom: none;
+    clear: both;
+}
+.tabWrap.tab_cop_scuuess_list_Guide li {
+    height: 35px;
+}
+.tabWrap.tab_cop_scuuess_list_Guide li a {
+    color: #24446a;
+}
+.tabWrap.tab_cop_scuuess_list_Guide li a.on {
+    color: #8f724d;
+}
+.tabWrap.tab_cop_scuuess_list_Guide li a,
+.tabWrap.tab_cop_scuuess_list_Guide li a.on {
+    background: none;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 33px;
+    height: 35px;
+    border: none;
+}
+.tabWrap.tab_cop_scuuess_list_Guide li:first-child a,
+.tabWrap.tab_cop_scuuess_list_Guide li:first-child a.on {
+    border: none;
+}
+.tabWrap.tab_cop_scuuess_list_Guide .row-line {
+    float: right;
+    background: #b7b7b7;
+    width: 1px;
+    height: 16px;
+    margin: 11px 0;
+}
 
 
 /*********************************************     Main Container : Gosi     *********************************************/
@@ -2191,6 +2310,60 @@ table.auTable tr td {
 .gosi .tabWrap.noticeWrap li a.on {
     color: #8c6239;
 }
+
+/* Guide Container : Gosi */
+/*수험가이드*/
+.tabWrap.tab_gosi_Guide {
+    height: 62px;
+    border-bottom: none;
+}
+.tabWrap.tab_gosi_Guide li {
+    width: 12.5%;
+    height: 62px;
+}
+.tabWrap.tab_gosi_Guide li a.two,
+.tabWrap.tab_gosi_Guide li a.on.two {
+    line-height: 17px;
+}
+.tabWrap.tab_gosi_Guide li a.two span {
+    padding-top: 15px;
+    display: inline-block;
+}
+.tabWrap.tab_gosi_Guide li a.on.two span {
+    line-height: 17px;
+    padding-top: 10px;
+}
+.tabWrap.tab_gosi_Guide li a.on span {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: #fff;
+    color: #2a8000;
+    display: inline-block;
+    height: 54px;
+    line-height: 52px;
+    border-top: 1px solid #216102;
+    border-left: 1px solid #216102;
+    border-right: 1px solid #216102;
+}
+.tabWrap.tab_gosi_Guide li a,
+.tabWrap.tab_gosi_Guide li a.on {
+    background: #34870c;
+    color: #fff;
+    line-height: 58px;
+    font-size: 14px;
+    font-weight: 300;
+    height: 62px;
+    border: none;
+}
+.tabWrap.tab_gosi_Guide li:first-child a,
+.tabWrap.tab_gosi_Guide li:first-child a.on {
+    border: none;
+}
+
+
+
 
 
 

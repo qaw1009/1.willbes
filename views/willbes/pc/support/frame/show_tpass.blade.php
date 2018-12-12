@@ -43,10 +43,12 @@
                 </tr>
                 </tbody>
             </table>
-            <div class="search-Btn btnAuto90 h36 mt20 mb30 f_right">
-                <button type="button" class="mem-Btn bg-purple-gray bd-dark-gray btn-list">
-                    <span>목록</span>
-                </button>
+            <div class="search-Btn mt20 mb20 h36 p_re">
+                <div class="btnAuto90 h36 mem-Btn f_right">
+                    <button type="button" class="mem-Btn bg-purple-gray bd-dark-gray btn-list">
+                        <span>목록</span>
+                    </button>
+                </div>
             </div>
 
             @if($data['IsBest'] != '1')

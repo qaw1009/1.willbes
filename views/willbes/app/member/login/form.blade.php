@@ -29,23 +29,9 @@
                 <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
                     <span>로그인</span>
                 </button>
-                <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
-                    <span>로그인</span>
-                </button>
-                <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
-                    <span>로그인</span>
-                </button>
-                <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
-                    <span>로그인</span>
-                </button>
-                <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
-                    <span>로그인</span>
-                </button>
-                <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
-                    <span>로그인</span>
-                </button>
-                <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
-                    <span>로그인</span>
+                <br>
+                <button type="button" onclick="getDeviceInfo()" class="mem-Btn bg-blue bd-dark-blue">
+                    <span>디바이스정보</span>
                 </button>
             </div>
         </form>
@@ -95,5 +81,11 @@
                 }, null, true, 'alert');
             });
         });
+
+        function getDeviceInfo() {
+            app.getDeviceInfo(function(id, name, model){
+                alert("id : "+id+" name : "+name+" model : "+model);
+            });
+        }
     </script>
 @stop

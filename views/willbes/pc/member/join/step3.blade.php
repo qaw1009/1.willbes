@@ -19,15 +19,21 @@
                 아이디<span class="tx-blue"> {{$MemId}}</span>로 모든 윌비스 서비스를 이용하실 수 있습니다.
             </div>
             <img class="mt70" src="{{ img_url('login/willbes_welcome.jpg') }}">
-            <div class="info-Txt info-Txt-Wrap tx-black bg-none mt60">
-                <strong class="tx-gray">시작할 서비스를 선택해 주세요</strong>
-                <select id="site" name="site" title="선택안함" class="seleSite">
-                    <option value="/">선택안함</option>
-                    @foreach($Site as $row)
-                        <option value="//{{ $row['SiteUrl'] }}">{{ $row['SiteName'] }}</option>
-                    @endforeach
+            @if($ismobile == false)
+                <div class="info-Txt info-Txt-Wrap tx-black bg-none mt60">
+                    <strong class="tx-gray">시작할 서비스를 선택해 주세요</strong>
+                    <select id="site" name="site" title="선택안함" class="seleSite">
+                        <option value="/">선택안함</option>
+                        @foreach($Site as $row)
+                            <option value="//{{ $row['SiteUrl'] }}">{{ $row['SiteName'] }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            @else
+                <select id="site" name="site" title="선택안함" class="seleSite" style="display:none;">
+                    <option value="/m/">선택안함</option>
                 </select>
-            </div>
+            @endif
             <button type="button" id="btn_start" class="mem-Btn h36 mt30 bg-blue bd-dark-blue">
                 <span>시작하기</span>
             </button>

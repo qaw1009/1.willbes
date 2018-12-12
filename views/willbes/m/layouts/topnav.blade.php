@@ -21,11 +21,11 @@
             @if(strpos(strtoupper(current_url()), '/MEMBER/JOIN') === false)
                 @if(sess_data('is_login') != true)
                     <li class="Login">
-                        <a class="Tit" href="{{ front_app_url('/member/login/?rtnUrl='.rawurlencode('//' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']), 'www')}}" >로그인</a>
+                        <a class="Tit" href="{{ app_url('/member/login/?rtnUrl='.rawurlencode('//' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']), 'www')}}" >로그인</a>
                         <span class="row-line">|</span>
                     </li>
                     <li class="joinUs">
-                        <a class="Tit" href="{{ front_app_url('/member/join/', 'www') }}">회원가입</a>
+                        <a class="Tit" href="{{ app_url('/member/join/?ismobile=1&sitecode='.config_app('SiteCode'), 'www') }}">회원가입</a>
                     </li>
                 @else
                     <li class="Login">

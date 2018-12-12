@@ -12,7 +12,7 @@
                             </li>
                         @endif
                         <li class="joinUs dropdown">
-                            <a class="Tit" href="{{ app_url('/member/join/', 'www') }}">회원가입<span class="arrow-Btn">></span></a>
+                            <a class="Tit" href="{{ app_url('/member/join/?ismobile=0&sitecode='.config_app('SiteCode'), 'www') }}">회원가입<span class="arrow-Btn">></span></a>
                             <div class="drop-Box joinUs-Box">
                                 <ul>
                                     <li>

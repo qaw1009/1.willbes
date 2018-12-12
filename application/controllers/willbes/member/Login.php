@@ -127,7 +127,13 @@ class Login extends BaseMember
                     delete_cookie('saved_member_id');
                 }
 
-                show_alert('로그인 되었습니다.', $rtnUrl, false);
+                if($this->_is_app == true){
+                    return $this->load->view('/member/login/app', [
+                        'token' => $token
+                    ]);
+                } else {
+                    show_alert('로그인 되었습니다.', $rtnUrl, false);
+                }
 
             } else {
                 show_alert('로그인에 실패했습니다. 다시시도해 주십시요.', front_app_url("/member/loogin/", "www")."/?rtnUrl=".rawurlencode($rtnUrl), false);

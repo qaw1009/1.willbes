@@ -20,6 +20,15 @@ class Join extends BaseMember
             show_alert('이미 로그인 상태입니다.', '/', false);
         }
 
+        // 모바일 페이지에서 넘어온것인지 세션에 저장
+        $ismoblie = ($this->_req('ismobile') == '1') ? '1' : '0';
+        $this->session->set_userdata('join_mobile', $ismoblie);
+
+        // 회원가입버튼 누른 사이트코드 세션에 저장 해서 회원가입할때 같이 넣어줌
+        $sitecode = $this->_req('sitecode');
+        $sitecode = (empty($sitecode) == true) ? '2000' : $sitecode;
+        $this->session->set_userdata('join_sitecode', $ismoblie);
+
         // 이메일 코드
         $codes = $this->codeModel->getCcdInArray(['661']);
 
@@ -324,6 +333,13 @@ class Join extends BaseMember
             ]);
         }
 
+        // 가입페이지로 넘어올때 생성된 세션에서 사이트코드 얻어오기
+        $SiteCode = $this->session->userdata('join_sitecode');
+        $SiteCode = (empty($SiteCode) == true) ? '2000' : $SiteCode;
+        $input = array_merge($input, [
+            'Sitecode' => $SiteCode
+        ]);
+
         // 실제 데이타 입력
         $result = $this->memberFModel->storeMember($input);
 
@@ -346,11 +362,15 @@ class Join extends BaseMember
     {
         // 사용하고 있는 사이트들 검색
         $site = $this->siteModel->listSite(['SiteName', 'SiteUrl'], ['EQ'=>['IsUse'=>'Y'], 'NOT'=>['SiteCode'=>'2000']]);
+        
+        // 모바일에서 회원가입을 들어온것인지
+        $ismobile = ($this->session->userdata("join_mobile") == '1') ? true : false ;
 
         $this->load->view('member/join/step3', [
             'MemId' => $this->session->userdata('mem_id'),
             'MemName' => $this->session->userdata('mem_name'),
-            'Site' => $site
+            'Site' => $site,
+            'ismobile' => $ismobile
         ]);
     }
 

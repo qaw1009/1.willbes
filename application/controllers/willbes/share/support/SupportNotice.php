@@ -70,13 +70,16 @@ class SupportNotice extends BaseSupport
                        ';
         $order_by = ['b.IsBest'=>'Desc','b.BoardIdx'=>'Desc'];
 
-        if ($this->_is_mobile === true) {
-            $paging_count = $this->_paging_count_m;
-        } else {
+        if (APP_DEVICE == 'pc') {
             $paging_count = $this->_paging_count;
+        } else {
+            $paging_count = $this->_paging_count_m;
         }
+
         $total_rows = $this->supportBoardFModel->listBoard(true, $arr_condition);
         $paging = $this->pagination((($this->_is_mobile === true) ? '/'.config_item('app_mobile_site_prefix') : '') . $this->_default_path.'/notice/index/?'.$get_page_params,$total_rows,$this->_paging_limit,$paging_count,true);
+        /*$path = front_url($this->_default_path.'/notice/index/?'.$get_page_params);
+        $paging = $this->pagination($path,$total_rows,$this->_paging_limit,$paging_count,true);*/
 
         if ($total_rows > 0) {
             $list = $this->supportBoardFModel->listBoard(false,$arr_condition,$column,$paging['limit'],$paging['offset'],$order_by);

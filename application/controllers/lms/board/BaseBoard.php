@@ -3,6 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class BaseBoard extends \app\controllers\BaseController
 {
+    public $lms_prof_role_idx = '1011';     //LMS 교수관리자 역할식별자
     protected $models = array('sys/code', 'sys/site', 'sys/category', 'sys/adminSettings');
     protected $helpers = array();
     protected $boardDefaultParams = [];      //게시판 필수 기본 정보

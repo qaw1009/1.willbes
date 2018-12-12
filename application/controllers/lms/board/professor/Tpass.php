@@ -69,6 +69,15 @@ class Tpass extends BaseBoard
             ]
         ];
 
+        //교수관리자로 로그인 했을 경우 (T-zone)
+        if($this->session->userdata('admin_auth_data')['Role']['RoleIdx'] == $this->lms_prof_role_idx) {
+            $arr_condition = array_merge($arr_condition,[
+                'IN' => [
+                    'P.ProfIdx' => $this->session->userdata('admin_prof_idxs')
+                ]
+            ]);
+        }
+
         if (empty($this->_reqP('search_site_code')) === false) {
             $arr_condition['EQ']['P.SiteCode'] = $this->_reqP('search_site_code');
         } else {

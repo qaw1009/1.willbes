@@ -78,6 +78,14 @@ class Login extends \app\controllers\BaseController
             }
         }
 
+        // T-zone 일 경우 WBS,LMS 교수 정보 확인
+        if (SUB_DOMAIN == 'tzone') {
+            $arr_prof_idx = array_keys($this->professorModel->getProfessorArray('all', $row['wAdminIdx']));
+            if (empty($arr_prof_idx) === true) {
+                $is_auth = false;
+            }
+        }
+
         if ($is_auth === false) {
             // 로그인 로그 저장
             $this->loginModel->addLoginLog($admin_id, 'NO_AUTH');

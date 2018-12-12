@@ -43,7 +43,7 @@ class SupportProfTpass extends BaseSupport
 
         $arr_condition_pkg = [
             'EQ' => [
-                'MemIdx' => $this->session->userdata('mem_idx'),
+                /*'MemIdx' => $this->session->userdata('mem_idx'),*/
                 'LearnPatternCcd' => '615003',    //운영자패키지
             ],
             'LTE' => [
@@ -62,7 +62,7 @@ class SupportProfTpass extends BaseSupport
 
         $arr_condition_auth = [
             'EQ' => [
-                'a.MemIdx' => $this->session->userdata('mem_idx'),
+                /*'a.MemIdx' => $this->session->userdata('mem_idx'),*/
                 'a.ProfIdx' => $prof_idx,
                 'a.IsValid' => 'Y',
                 'a.IsStatus' => 'Y'

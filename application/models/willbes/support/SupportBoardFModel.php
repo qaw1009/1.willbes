@@ -210,7 +210,7 @@ class SupportBoardFModel extends BaseSupportFModel
      */
     private function _makePackageQueryString($arr_condition = [], $arr_condition_auth = [])
     {
-        $where_mylecture = $this->_conn->makeWhere($arr_condition, true, false);
+        $where_mylecture = $this->_conn->makeWhere($arr_condition);
         $where_mylecture = $where_mylecture->getMakeWhere(false);
 
         $where_auth = $this->_conn->makeWhere($arr_condition_auth);
@@ -218,13 +218,15 @@ class SupportBoardFModel extends BaseSupportFModel
 
         $column = 'STRAIGHT_JOIN DISTINCT ProdCode, ProdName';
         $from = "
-            FROM {$this->_table['mylecture_pkg']} 
+            FROM {$this->_table['mylecture_pkg']}
             {$where_mylecture}
+            AND MemIdx = '{$this->session->userdata('mem_idx')}'
             UNION
             SELECT a.ProdCode, b.ProdName
             FROM {$this->_table['board_tpass_member_authority']} AS a
             INNER JOIN lms_product AS b ON a.ProdCode = b.ProdCode
             {$where_auth}
+            AND a.MemIdx = '{$this->session->userdata('mem_idx')}'
         ";
 
         return 'select '.$column . $from;

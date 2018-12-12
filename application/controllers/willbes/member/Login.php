@@ -128,6 +128,8 @@ class Login extends BaseMember
                 }
 
                 if($this->_is_app == true){
+                    $token = '';
+
                     return $this->load->view('/member/login/app', [
                         'token' => $token,
                         'rtnUrl' => rawurlencode($rtnUrl)

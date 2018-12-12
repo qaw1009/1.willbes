@@ -2312,29 +2312,29 @@ table.auTable tr td {
 
 /* Guide Container : Gosi */
 /*수험가이드*/
-.tabWrap.tab_gosi_Guide {
+.tabShow.tab_gosi_Guide {
     background: #026f61;
     height: 62px;
     border-bottom: none;
 }
-.tabWrap.tab_gosi_Guide li {
+.tabShow.tab_gosi_Guide li {
     width: 12.5%;
     height: 62px;
     padding: 0 8px;
 }
-.tabWrap.tab_gosi_Guide li a.two,
-.tabWrap.tab_gosi_Guide li a.on.two {
+.tabShow.tab_gosi_Guide li a.two,
+.tabShow.tab_gosi_Guide li a.on.two {
     line-height: 17px;
 }
-.tabWrap.tab_gosi_Guide li a.two span {
+.tabShow.tab_gosi_Guide li a.two span {
     padding-top: 15px;
     display: inline-block;
 }
-.tabWrap.tab_gosi_Guide li a.on.two span {
+.tabShow.tab_gosi_Guide li a.on.two span {
     line-height: 17px;
     padding-top: 10px;
 }
-.tabWrap.tab_gosi_Guide li a.on span {
+.tabShow.tab_gosi_Guide li a.on span {
     position: absolute;
     bottom: 0;
     right: 0;
@@ -2348,8 +2348,8 @@ table.auTable tr td {
     border-left: 1px solid #026f61;
     border-right: 1px solid #026f61;
 }
-.tabWrap.tab_gosi_Guide li a,
-.tabWrap.tab_gosi_Guide li a.on {
+.tabShow.tab_gosi_Guide li a,
+.tabShow.tab_gosi_Guide li a.on {
     background: #026f61;
     color: #fff;
     line-height: 58px;
@@ -2358,8 +2358,8 @@ table.auTable tr td {
     height: 62px;
     border: none;
 }
-.tabWrap.tab_gosi_Guide li:first-child a,
-.tabWrap.tab_gosi_Guide li:first-child a.on {
+.tabShow.tab_gosi_Guide li:first-child a,
+.tabShow.tab_gosi_Guide li:first-child a.on {
     border: none;
 }
 
@@ -2403,7 +2403,6 @@ table.auTable tr td {
 .basicWd1 tr td {
     padding: 20px;
 }
-
 
 /*********************************************     CONTAINER PAGE     *********************************************/
 
@@ -4074,6 +4073,44 @@ table.classTable tr td.w-data {
 .tabBox .caution-txt {
     padding: 15px 20px;
     margin-left: 5px;
+}
+
+.tabShow {
+    height: 34px;
+    border-bottom: 1px solid #959595;
+}
+.tabShow li {
+    float: left;
+    width: 140px;
+    height: 34px;
+}
+.tabShow li a {
+    display: block;
+    width: 100%;
+    height: 33px;
+    line-height: 32px;
+    background: #f9f9f9;
+    font-size: 12px;
+    color: #959595;
+    text-align: center;
+    letter-spacing: 0;
+    border-top: 1px solid #e1e1e1;
+    border-right: 1px solid #e1e1e1;
+}
+.tabShow li:first-child a {
+    border-left: 1px solid #e1e1e1;
+} 
+.tabShow li a.on {
+    position: relative;
+    z-index: 2;
+    background: #fff;
+    height: 34px;
+    line-height: 32px;
+    font-weight: 600;
+    color: #686868;
+    border-top: 1px solid #959595;
+    border-left: 1px solid #959595;
+    border-right: 1px solid #959595;
 }
 
 /* subContainer : Content : 강의목차 : LeclistTable */

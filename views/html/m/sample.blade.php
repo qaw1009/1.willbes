@@ -9,6 +9,8 @@
 
     <a href="{{ site_url('/home/html/m/main') }}" target="_blank">메인 page 이동</a><br/><br/>
 
+    <a href="{{ site_url('/home/html/m/memjoin') }}" target="_blank">로그인 page 이동</a><br/><br/>
+
     <a href="{{ site_url('/home/html/m/mypage_pass1') }}" target="_blank">내강의실 > 무한PASS존 page 이동</a><br/><br/>
 
     <a href="{{ site_url('/home/html/m/mypage_pass4') }}" target="_blank">내강의실 > 무한PASS존 > 수강중인 강좌 page 이동</a><br/><br/>

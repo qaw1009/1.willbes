@@ -309,6 +309,81 @@ span {
 }
 
 
+/* Login Form */
+
+/* Basic Code */
+body.memBody .widthAuto,
+body.memBody .widthAuto320,
+body.memBody .widthAuto460,
+body.memBody .widthAuto550,
+body.memBody .widthAuto690,
+body.memBody .widthAuto770 {
+    width: 100% !important;
+    margin: 0 auto;
+}
+body.memBody #Gnb,
+body.memBody #Header,
+body.memBody #Footer {
+    display: none;
+}
+
+/* Login Form : 공통 */
+.mem-Tit {
+    text-align: center;
+    padding: 35px 0 70px;
+}
+.mem-Tit span {
+    font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "Malgun Gothic", "맑은 고딕";
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: -2px;
+    display: inline-block;
+    padding-top: 11px;
+    padding-left: 11px;
+    vertical-align: middle;
+}
+.Member {
+    padding: 0 5%;
+    letter-spacing: 0;
+}
+.Member .inputBox {
+    height: auto;
+    margin-bottom: 14px;
+}
+.Member .inputBox input {
+    width: 100%;
+    font-size: 14px;
+    padding: 10px;
+    border: 1px solid #d4d4d4;
+}
+
+/* Login Form : 로그인 */
+.mem-Login button.mem-Btn {
+    height: 40px;
+}
+.mem-Login .chkBox {
+    margin-bottom: 20px;
+}
+.mem-Login .chkBox ul {
+    height: 20px;
+}
+.mem-Login .chkBox ul li {
+    float: left;
+    width: 50%;
+    line-height: 18px;
+}
+.mem-Login .chkBox ul li input[type=checkbox] {
+    width: 20px;
+    height: 20px;
+    float: left;
+    margin: 0;
+    cursor: pointer;
+}
+.mem-Login .chkBox ul li .labelSave {
+    padding-left: 10px;
+}
+
+
 
 /*********************************************     MAIN PAGE     *********************************************/
 

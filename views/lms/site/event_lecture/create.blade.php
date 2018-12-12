@@ -201,6 +201,7 @@
                                 <span class="file-select file-btn">
                                     <input type="file" id="attach_file_C" name="attach_file[]" @if($method == 'POST')required="required"@endif class="form-control input-file" title="내용 이미지">
                                 </span>
+                                <input class="file-reset btn-danger btn" type="button" value="X" />
                             </div>
                             @if(empty($file_data['C']) === false)
                                 <p class="form-control-static ml-30 mr-10">[ <a href="{{ $file_data['C']['file_path'] }}" rel="popup-image">{{ $file_data['C']['file_real_name'] }}</a> ]
@@ -246,6 +247,7 @@
                                 <span class="file-select file-btn">
                                 <input type="file" id="attach_file_S" name="attach_file[]" @if($method == 'POST')required="required"@endif class="form-control input-file" title="리스트썸네일">
                                 </span>
+                                <input class="file-reset btn-danger btn" type="button" value="X" />
                             </div>
                             @if(empty($file_data['S']) === false)
                                 <p class="form-control-static ml-30 mr-10">[ <a href="{{ $file_data['S']['file_path'] }}" rel="popup-image">{{ $file_data['S']['file_real_name'] }}</a> ]

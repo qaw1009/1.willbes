@@ -266,7 +266,7 @@
     $(document).ready(function() {
         // 장바구니 디폴트 탭 설정
         $(function() {
-            var default_tab_id = '{{ element('tab', $arr_input) }}';
+            var default_tab_id = '{{ element('tab', $arr_input, 'on_lecture') }}';
             if (default_tab_id.length > 0) {
                 openLink('hover_' + default_tab_id);
             }

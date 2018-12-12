@@ -363,7 +363,7 @@ abstract class FrontController extends BaseController
         $this->load->library('pagination');
 
         // set pagination config
-        $config['base_url'] = $base_url;    // 페이징 링크 기본 URI
+        $config['base_url'] = $this->input->server('REQUEST_SCHEME').'://'.front_url($base_url);    // 페이징 링크 기본 URI
         $config['total_rows'] = $total_rows;    // 전체 데이터 건수
         $config['per_page'] = $limit;   // 페이지 당 노출될 데이터 건수
         $config['fixed_page_num'] = $show_page_num;     // 노출되는 페이지 수

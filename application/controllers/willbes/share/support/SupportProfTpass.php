@@ -104,7 +104,7 @@ class SupportProfTpass extends BaseSupport
         $order_by = ['b.IsBest'=>'Desc','b.BoardIdx'=>'Desc'];
 
         $total_rows = $this->supportBoardFModel->listBoardForTpass($this->_site_code, true, $arr_condition_board, $arr_condition_pkg, $arr_condition_auth);
-        $paging = $this->pagination((($this->_is_mobile === true) ? '/'.config_item('app_mobile_site_prefix') : '') . $this->_default_path.'/index/?'.$get_page_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
+        $paging = $this->pagination($this->_default_path.'/index/?'.$get_page_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
 
         if ($total_rows > 0) {
             $list = $this->supportBoardFModel->listBoardForTpass($this->_site_code, false, $arr_condition_board, $arr_condition_pkg, $arr_condition_auth, $column, $paging['limit'], $paging['offset'], $order_by);

@@ -39,7 +39,7 @@
                             @endif
 
                             @if(empty($arr_base['campus']) === false)
-                            <select id="s_campus" name="s_campus" title="campus" class="seleCampus">
+                            <select id="s_campus" name="s_campus" title="campus" class="seleCampus" onchange="goUrl('s_campus',this.value)">
                                 <option value="">캠퍼스</option>
                                 @foreach($arr_base['campus'] as $row)
                                     <option value="{{$row['CampusCcd']}}" @if(element('s_campus',$arr_input) == $row['CampusCcd']) selected @endif>{{$row['CcdName']}}</option>

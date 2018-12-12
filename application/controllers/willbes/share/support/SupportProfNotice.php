@@ -70,13 +70,13 @@ class SupportProfNotice extends BaseSupport
                        ';
         $order_by = ['b.IsBest'=>'Desc','b.BoardIdx'=>'Desc'];
 
-        if ($this->_is_mobile === true) {
-            $paging_count = $this->_paging_count_m;
-        } else {
+        if (APP_DEVICE == 'pc') {
             $paging_count = $this->_paging_count;
+        } else {
+            $paging_count = $this->_paging_count_m;
         }
         $total_rows = $this->supportBoardFModel->listBoardForSiteGroup(true, $this->_site_code, $arr_condition);
-        $paging = $this->pagination((($this->_is_mobile === true) ? '/'.config_item('app_mobile_site_prefix') : '') . $this->_default_path.'/notice/index/?'.$get_page_params,$total_rows,$this->_paging_limit,$paging_count,true);
+        $paging = $this->pagination($this->_default_path.'/notice/index/?'.$get_page_params,$total_rows,$this->_paging_limit,$paging_count,true);
 
         if ($total_rows > 0) {
             $list = $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $arr_condition, $column, $paging['limit'], $paging['offset'], $order_by);

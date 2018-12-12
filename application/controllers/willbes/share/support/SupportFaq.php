@@ -35,7 +35,7 @@ class SupportFaq extends BaseSupport
         }
 
         //pc일 경우에만 초기값
-        if($this->_is_mobile === false && empty($s_faq) == true) {
+        if(APP_DEVICE == 'pc' && empty($s_faq) == true) {
             $s_faq = $faq_ccd[0]['Ccd'];
         }
 
@@ -68,13 +68,13 @@ class SupportFaq extends BaseSupport
         $order_by = ['b.IsBest'=>'Desc','b.BoardIdx'=>'Desc'];
 
 
-        if ($this->_is_mobile === true) {
-            $paging_count = $this->_paging_count_m;
-        } else {
+        if (APP_DEVICE == 'pc') {
             $paging_count = $this->_paging_count;
+        } else {
+            $paging_count = $this->_paging_count_m;
         }
         $total_rows = $this->supportBoardFModel->listBoard(true, $arr_condition);
-        $paging = $this->pagination((($this->_is_mobile === true) ? '/'.config_item('app_mobile_site_prefix') : '') . '/support/faq/index/?s_faq='.$s_faq.'&s_sub_faq='.$s_sub_faq.'&s_keyword='.$s_keyword,$total_rows,$this->_paging_limit,$paging_count,true);
+        $paging = $this->pagination('/support/faq/index/?s_faq='.$s_faq.'&s_sub_faq='.$s_sub_faq.'&s_keyword='.$s_keyword,$total_rows,$this->_paging_limit,$paging_count,true);
         if ($total_rows > 0) {
             $list = $this->supportBoardFModel->listBoard(false,$arr_condition,$column,$paging['limit'],$paging['offset'],$order_by);
         }

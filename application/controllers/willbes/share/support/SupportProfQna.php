@@ -122,13 +122,13 @@ class SupportProfQna extends BaseSupport
         $column .= ', IF(IsCampus=\'Y\',\'학원\',\'온라인\') AS CampusType_Name, SiteGroupName';
         $order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
 
-        if ($this->_is_mobile === true) {
-            $paging_count = $this->_paging_count_m;
-        } else {
+        if (APP_DEVICE == 'pc') {
             $paging_count = $this->_paging_count;
+        } else {
+            $paging_count = $this->_paging_count_m;
         }
         $total_rows = $this->supportBoardTwoWayFModel->listBoardForSiteGroup(true, $this->_site_code, $arr_condition);
-        $paging = $this->pagination((($this->_is_mobile === true) ? '/'.config_item('app_mobile_site_prefix') : '') . $this->_default_path.'/index/?'.$get_page_params,$total_rows,$this->_paging_limit,$paging_count,true);
+        $paging = $this->pagination($this->_default_path.'/index/?'.$get_page_params,$total_rows,$this->_paging_limit,$paging_count,true);
         if ($total_rows > 0) {
             $list = $this->supportBoardTwoWayFModel->listBoardForSiteGroup(false, $this->_site_code,$arr_condition,$column,$paging['limit'],$paging['offset'],$order_by);
             foreach ($list as $idx => $row) {

@@ -224,12 +224,12 @@
 
             // 데이터 수정 폼
             $list_table.on('click', '.btn-modify', function() {
-                location.replace('{{ site_url('/service/coupon/regist/create') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable));
+                location.href = '{{ site_url('/service/coupon/regist/create') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable);
             });
 
             // 쿠폰발급 폼
             $list_table.on('click', '.btn-issue', function() {
-                location.replace('{{ site_url('/service/coupon/issue/create') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable));
+                location.href = '{{ site_url('/service/coupon/issue/create') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable);
             });
         });
     </script>

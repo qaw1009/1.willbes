@@ -40,6 +40,19 @@ class Home extends \app\controllers\FrontController
         //$this->caching->site_menu->save();
         //var_dump($this->caching->site_menu->get());
 
+        if($this->_is_app === true){
+            $token = $this->_req("token");
+            if(empty($token) == true){
+                redirect("/app/member/login/");
+            } else {
+                $this->load->view('main', [
+                   'token' => $token
+                ]);
+            }
+
+            return;
+        }
+
         $this->load->view('main');
     }
 

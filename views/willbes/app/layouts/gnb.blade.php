@@ -26,5 +26,8 @@
                 </ul>
             </div>
         </li>
+        <li class="ListBox">
+            <div class="List NGEB"><a href="{{front_app_url('/member/logout/','www')}}">로그아웃</a></div>
+        </li>
     </ul>
 </div>

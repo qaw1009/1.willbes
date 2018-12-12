@@ -44,4 +44,3 @@ function openTxt(tabId) {
     $('.Content .willbes-Mypage-Txt').css("display","none")
     $('.Content').find('#' + tabId).css("display","block")
 }
-

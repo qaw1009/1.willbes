@@ -272,16 +272,13 @@ $(function() {
     $('.w-thumb a.thumb_num').mouseover(function(){
         var $thumb_table = $(this).parents('.w-thumb').find('.thumb_slide_wrap');
         var n = $(this).parents('.w-thumb').find('.thumb_slide_wrap ul li').length;
-        var width = parseInt(n)* 70;
+        var width = parseInt(n)* 145 + 6;
 
-        $thumb_table.addClass('rollover').animate({
-            height: '92px'
-        }, 100).css('width', width).show();
+        $thumb_table.addClass('rollover').css('width', width).show(100);
     })
     $('.thumb_slide_wrap').mouseleave(function(){
-        $('.thumb_slide_wrap').removeClass('rollover').animate({
-            width: '80px'
-        }, 100).css('overflow','hidden').hide();
+        var $thumb_table = $(this).parents('.w-thumb').find('.thumb_slide_wrap');
+        $thumb_table.removeClass('rollover').hide(100);
     });
 });
 

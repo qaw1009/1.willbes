@@ -833,6 +833,9 @@ select[disabled] {
   font-weight: 300 !important;
 }
 
+.tx-origin-red {
+  color: #c00 !important;
+}
 .tx-red {
   color: #ed1c24 !important;
 }

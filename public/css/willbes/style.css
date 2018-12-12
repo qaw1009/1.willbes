@@ -2164,8 +2164,7 @@ table.auTable tr td {
 .examInfoGu1_1, 
 .examInfoGu2,
 .examInfoGu3 {color: #555; border: 1px solid #d0d0d0; padding: 15px 50px 0; line-height:1.5}
-.examInfoGu1 .hTy4,
-.examInfoGu3 .hTy4 {font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"; margin: 35px 0 10px; font-size:16px; font-weight:bold; color: #0064e5; line-height: 30px; border-bottom: 1px solid #cbcbcb}
+.examInfoGu1 .hTy4 {font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"; margin: 35px 0 10px; font-size:16px; font-weight:bold; color: #0064e5; line-height: 30px; border-bottom: 1px solid #cbcbcb}
 .examInfoGu1 .mgB2 {padding-bottom: 50px;}
 
 .examInfoGu1_1 .hTy4 {font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"; margin: 35px 0 10px; font-size:16px; font-weight:bold; color: #000; line-height: 30px;}
@@ -2184,7 +2183,6 @@ table.auTable tr td {
 .examInfoGu2 h5 {font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"; font-size:16px;font-weight:bold; color: #694b23; border: 1px solid #c6b9ab; margin: 0 10px 15px; padding: 8px 25px; box-shadow: 2px 2px 0 #e1e1e1;}
 .examInfoGu2 .collage{margin-bottom:30px}
 .examInfoGu2 .collage ul{margin:0 35px 30px}
-
 .examInfoGu2 .stlist li{margin-bottom:20px}
 
 .toggleCont .toggleContList {margin-top: 5px}
@@ -2201,7 +2199,8 @@ table.auTable tr td {
 
 .listSq3 li{margin-bottom:5px;padding-left:8px;background: url("../../img/willbes/cop/guide/dot_sq4.gif") no-repeat 0 7px}
 
-.agC{text-align:center !important}
+.agC {text-align:center !important}
+.agM {margin: 0 auto}
 .basicTb{width:100%;border-left:1px solid #dbdbdb;border-top:1px solid #dbdbdb}
 .basicTb th,
 .basicTb td{border-right:1px solid #dbdbdb;border-bottom:1px solid #dbdbdb}
@@ -2314,12 +2313,14 @@ table.auTable tr td {
 /* Guide Container : Gosi */
 /*수험가이드*/
 .tabWrap.tab_gosi_Guide {
+    background: #026f61;
     height: 62px;
     border-bottom: none;
 }
 .tabWrap.tab_gosi_Guide li {
     width: 12.5%;
     height: 62px;
+    padding: 0 8px;
 }
 .tabWrap.tab_gosi_Guide li a.two,
 .tabWrap.tab_gosi_Guide li a.on.two {
@@ -2339,17 +2340,17 @@ table.auTable tr td {
     right: 0;
     left: 0;
     background: #fff;
-    color: #2a8000;
+    color: #026f61;
     display: inline-block;
     height: 54px;
     line-height: 52px;
-    border-top: 1px solid #216102;
-    border-left: 1px solid #216102;
-    border-right: 1px solid #216102;
+    border-top: 1px solid #026f61;
+    border-left: 1px solid #026f61;
+    border-right: 1px solid #026f61;
 }
 .tabWrap.tab_gosi_Guide li a,
 .tabWrap.tab_gosi_Guide li a.on {
-    background: #34870c;
+    background: #026f61;
     color: #fff;
     line-height: 58px;
     font-size: 14px;
@@ -2362,9 +2363,46 @@ table.auTable tr td {
     border: none;
 }
 
-
-
-
+.examInfoGu3 {padding: 45px}
+.examInfoGu3 .hTy4 {font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"; margin: 0 0 20px; font-size:16px; font-weight:bold; color: #026f61; line-height: 30px}
+.examInfoGu3 .hTy5 {font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"; margin: 0 0 15px; font-size:14px; font-weight:bold; color: #555; line-height: 18px}
+.examInfoGu3 .hTy5 span  {font-size: 13px}
+.examInfoGu3 .hTy6 {font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"; margin: 15px 60px 0; font-size:13px; font-weight:bold; color: #d52b2b; line-height: 18px}
+.sliderGuide .bx-wrapper .bx-controls-direction {
+    width: 100%;
+    height: 45px;
+    position: absolute;
+    top: 50%;
+    margin-top: -22px;
+}
+.sliderGuide .bx-wrapper .bx-controls-direction a {
+    width: 35px;
+    height: 45px;
+}
+.sliderGuide .bx-wrapper .bx-controls-direction a.disabled {
+    display: block;
+    opacity: 0.5;
+}
+.sliderGuide .bx-wrapper .bx-prev {
+    background: url("../../img/willbes/gosi/guide/guide_prev.png") no-repeat 0 0;
+    left: -45px;
+    right: inherit;
+}
+.sliderGuide .bx-wrapper .bx-next {
+    background: url("../../img/willbes/gosi/guide/guide_next.png") no-repeat 0 0;
+    left: inherit;
+    right: -45px;
+}
+.guide_slider {
+    width: 848px !important;
+}
+.basicWd {
+    width:760px;
+    margin: 0 auto;
+}
+.basicWd1 tr td {
+    padding: 20px;
+}
 
 
 /*********************************************     CONTAINER PAGE     *********************************************/
@@ -9564,9 +9602,13 @@ table.acadlecInfoPackageTable tr.Top td {
     position: absolute;
     bottom: 20px;
     left: 110px;
-    background: #f90;
-    width: 20px;
+    background: #707070;
+    width: 40px;
     height: 20px;
+    line-height: 20px;
+}
+.w-thumb a.thumb_num span {
+    color: #fff;
 }
 .w-thumb .thumb_rollover {
     float: left;
@@ -9575,30 +9617,79 @@ table.acadlecInfoPackageTable tr.Top td {
 .w-thumb .thumb_slide_wrap {
     display: none;
     position: absolute;
-    top: 20px;
+    top: 14px;
     left: 10px;
     width: auto;
     overflow: hidden;
+    border: 1px solid #ccc;
 }
 .w-thumb .thumb_slide_wrap ul {
     float: left;
     width: 600px;
     overflow: hidden;
-    padding: 10px;
+    padding: 5px;
     background: #fff;
-    border: 1px solid #000;
 }
 .w-thumb .thumb_slide_wrap ul li {
     float: left;
-    width: 70px;
-    height: 70px;
-    background: #0d56ae;
+    width: 140px;
+    height: 80px;
+    background: #ddd;
+    margin-left: 5px;
+}
+.w-thumb .thumb_slide_wrap ul li:first-child {
+    margin-left: 0;
 }
 .w-thumb .thumb_txt {
     float: left;
 }
+.w-thumb .thumb_num_short {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: #707070;
+    width: 42px;
+    height: 20px;
+    color: #fff;
+    line-height: 22px;
+}
 
-
+/* subContainer : Content : 학원갤러리 */
+.sliderGallery {
+    width: 796px;
+    height: 294px;
+    margin: 45px auto;
+    border: 1px solid #c0c0c0;
+}
+.sliderGallery .bx-wrapper .bx-controls-direction {
+    width: 100%;
+    height: 45px;
+    position: absolute;
+    top: 50%;
+    margin-top: -22px;
+}
+.sliderGallery .bx-wrapper .bx-controls-direction a {
+    width: 35px;
+    height: 45px;
+}
+.sliderGallery .bx-wrapper .bx-controls-direction a.disabled {
+    display: block;
+    opacity: 0.3;
+}
+.sliderGallery .bx-wrapper .bx-prev {
+    background: url("../../img/willbes/sub/btn_prev.png") no-repeat 0 0;
+    left: -45px;
+    right: inherit;
+}
+.sliderGallery .bx-wrapper .bx-next {
+    background: url("../../img/willbes/sub/btn_next.png") no-repeat 0 0;
+    left: inherit;
+    right: -45px;
+}
+.w-gallery-txt {
+    margin: 0 20px 20px;
+    line-height: 24px;
+}
 
 /* subContainer : Content : Aside */
 .Aside {

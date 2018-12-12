@@ -29,6 +29,24 @@
                 <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
                     <span>로그인</span>
                 </button>
+                <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
+                    <span>로그인</span>
+                </button>
+                <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
+                    <span>로그인</span>
+                </button>
+                <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
+                    <span>로그인</span>
+                </button>
+                <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
+                    <span>로그인</span>
+                </button>
+                <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
+                    <span>로그인</span>
+                </button>
+                <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
+                    <span>로그인</span>
+                </button>
             </div>
         </form>
     </div>
@@ -46,9 +64,6 @@
 
         $(document).ready(function() {
             app = new StarPlayerBridge();
-            //app.bindEvent("downloadEvent", onDownloadEvent);
-            //app.bindEvent("initEvent", onInitEvent);
-            //app.bindEvent("playerClosedEvent", onPlayerClosedEvent);
 
             @if(empty($saved_member_id) === false)
             $("#pwd").focus();
@@ -80,15 +95,5 @@
                 }, null, true, 'alert');
             });
         });
-
-        function onDownloadEvent(url, status, sofarBytes, totalBytes) {
-        }
-
-        function onInitEvent() {
-        }
-
-        function onPlayerClosedEvent(url, contentId, currentPosition) {
-            //alert(url + "/" + contentId + "/" + currentPosition);
-        }
     </script>
 @stop

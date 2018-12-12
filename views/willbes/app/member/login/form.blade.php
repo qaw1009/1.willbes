@@ -42,11 +42,13 @@
     </form>
     <script type="text/javascript">
         var $login_frm = $('#login_frm');
+        var app = null;
 
         $(document).ready(function() {
-            var app = new StarPlayerBridge();
-            token = app.getToken();
-            alert(token);
+            app = new StarPlayerBridge();
+            //app.bindEvent("downloadEvent", onDownloadEvent);
+            //app.bindEvent("initEvent", onInitEvent);
+            //app.bindEvent("playerClosedEvent", onPlayerClosedEvent);
 
             @if(empty($saved_member_id) === false)
             $("#pwd").focus();
@@ -78,5 +80,15 @@
                 }, null, true, 'alert');
             });
         });
+
+        function onDownloadEvent(url, status, sofarBytes, totalBytes) {
+        }
+
+        function onInitEvent() {
+        }
+
+        function onPlayerClosedEvent(url, contentId, currentPosition) {
+            //alert(url + "/" + contentId + "/" + currentPosition);
+        }
     </script>
 @stop

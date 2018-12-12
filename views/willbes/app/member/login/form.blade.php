@@ -45,10 +45,13 @@
 
 
         $(document).ready(function() {
+            /*
             var $app = new StarPlayerBridge();
+
 
             $token = $app.getToken();
             alert($token);
+            */
 
             @if(empty($saved_member_id) === false)
             $("#pwd").focus();

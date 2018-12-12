@@ -2,6 +2,7 @@
 
 @section('content')
 <!-- Container -->
+<a href="https://www.local.willbes.net/home/html/m/memjoin">테스트페이지</a>
 <div id="Container" class="memContainer widthAuto c_both">
 
     <div class="mem-Tit">

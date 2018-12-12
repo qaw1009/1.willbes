@@ -109,6 +109,7 @@ class EventLectureModel extends WB_Model
             LEFT JOIN (
                 SELECT CIdx, ElIdx, COUNT(CIdx) AS CCount
                 FROM {$this->_table['event_comment']}
+                GROUP BY ElIdx
             ) AS H ON H.ElIdx = A.ElIdx
             LEFT JOIN {$this->_table['event_file']} AS K ON A.ElIdx = K.ElIdx AND K.IsUse = 'Y' AND K.FileType = 'S'
             INNER JOIN {$this->_table['site']} AS G ON A.SiteCode = G.SiteCode

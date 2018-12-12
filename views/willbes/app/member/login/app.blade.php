@@ -2,10 +2,12 @@
 
 @section('content')
     <script type="text/javascript">
+        var app = null;
         $(document).ready(function() {
-            var app = new StarPlayerBridge();
+            app = new StarPlayerBridge();
             app.login('{{$token}}');
-            location.replace('{{$rtnUrl}}');
+            alert(app.getToken());
+            //location.replace('{{$rtnUrl}}');
         });
     </script>
 @stop

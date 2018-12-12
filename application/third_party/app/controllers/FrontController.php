@@ -21,13 +21,12 @@ abstract class FrontController extends BaseController
     protected $_is_pass_site = false;
     // 모바일 사이트 여부
     protected $_is_mobile = false;
+    // 앱 사이트 여부
+    protected $_is_app = false;
 
     public function __construct()
     {
         parent::__construct();
-
-        // 로그인 체크
-        $this->_checkLogin();
 
         // 프런트 초기화
         $this->_frontInit();
@@ -41,12 +40,18 @@ abstract class FrontController extends BaseController
         // 멤버 변수 설정
         $this->_setSiteVars();
 
-        if ($this->_is_mobile === true) {
-            // 모바일 사이트 환경설정
-            $this->_setMobileSiteConfig();
-        } else {
+        // user agnet 체크
+        $this->_checkUserAgent();
+
+        // 로그인 체크
+        $this->_checkLogin();
+
+        if (APP_DEVICE == 'pc') {
             // 프런트 사이트 환경설정
             $this->_setFrontSiteConfig();
+        } else {
+            // 모바일, 앱 사이트 환경설정
+            $this->_setMobileSiteConfig();
         }
         
         // 접속별 고유 세션아이디 생성
@@ -84,20 +89,21 @@ abstract class FrontController extends BaseController
         // 기본 사이트 아이디
         $this->_site_id = SUB_DOMAIN;
 
-        $mobile_site_prefix = config_item('app_mobile_site_prefix');    // 모바일 사이트 구분값
         $pass_site_prefix = config_item('app_pass_site_prefix');    // 학원 사이트 구분값
         $app_front_site_except = element(SUB_DOMAIN, config_item('app_front_site_except'), []);     // 프런트 사이트별 예외 설정 조회
 
         // 모바일 사이트 여부
-        if (strtolower($this->uri->segment(1)) == $mobile_site_prefix) {
+        if (APP_DEVICE == config_item('app_mobile_site_prefix')) {
             $this->_is_mobile = true;
+        } elseif (APP_DEVICE == config_item('app_app_site_prefix')) {
+            $this->_is_app = true;
         }
 
         // 프런트 사이트일 경우
         if (empty(element('route_add_path', $app_front_site_except)) === false) {
             // 학원 사이트일 경우
             if ((strtolower($this->uri->segment(1)) == $pass_site_prefix)
-                || ($this->_is_mobile === true && strtolower($this->uri->segment(2)) == $pass_site_prefix)) {
+                || (APP_DEVICE != 'pc' && strtolower($this->uri->segment(2)) == $pass_site_prefix)) {
                 $this->_site_id .= $pass_site_prefix;
                 $this->_is_pass_site = true;
             }
@@ -233,7 +239,7 @@ abstract class FrontController extends BaseController
 
         $configs = array_merge(
             $site_cache,
-            ['CateCode' => $this->_cate_code, 'IsPassSite' => $this->_is_pass_site, 'IsMobile' => $this->_is_mobile],
+            ['CateCode' => $this->_cate_code, 'IsPassSite' => $this->_is_pass_site, 'IsMobile' => $this->_is_mobile, 'IsApp' => $this->_is_app],
             config_item(SUB_DOMAIN),
             ['GNBMenu' => $front_menus['GNB']],
             ['SiteMenu' => $front_menus[$this->_site_code]],
@@ -264,10 +270,25 @@ abstract class FrontController extends BaseController
 
         $configs = array_merge(
             $site_cache,
-            ['CateCode' => $this->_cate_code, 'IsPassSite' => $this->_is_pass_site, 'IsMobile' => $this->_is_mobile],
+            ['CateCode' => $this->_cate_code, 'IsPassSite' => $this->_is_pass_site, 'IsMobile' => $this->_is_mobile, 'IsApp' => $this->_is_app],
             config_item(SUB_DOMAIN)
         );
         $this->config->set_item(SUB_DOMAIN, $configs);
+    }
+
+    /**
+     * UserAgent 체크
+     */
+    private function _checkUserAgent()
+    {
+        // 로컬서버가 아닐 경우만 체크 ==> TODO : 서버 환경별 실행
+        if (ENVIRONMENT != 'local' && $this->_is_app === true) {
+            $user_agent = strtolower($this->input->server('HTTP_USER_AGENT'));
+
+            if (strpos($user_agent, 'starplayer') === false) {
+                redirect(app_url('/home/index', 'www'));
+            }
+        }
     }
 
     /**

@@ -178,7 +178,7 @@ if (!function_exists('front_url')) {
     function front_url($uri)
     {
         $uri_prefix = '';
-        config_app('IsMobile') === true && $uri_prefix .= '/' . config_item('app_mobile_site_prefix');
+        APP_DEVICE != 'pc' && $uri_prefix .= '/' . APP_DEVICE;
         config_app('IsPassSite') === true && $uri_prefix .= '/' . config_item('app_pass_site_prefix');
 
         return site_url($uri_prefix . $uri);
@@ -195,7 +195,7 @@ if (!function_exists('front_app_url')) {
     function front_app_url($uri, $sub_domain)
     {
         $uri_prefix = '';
-        config_app('IsMobile') === true && $uri_prefix .= '/' . config_item('app_mobile_site_prefix');
+        APP_DEVICE != 'pc' && $uri_prefix .= '/' . APP_DEVICE;
         config_app('IsPassSite') === true && $uri_prefix .= '/' . config_item('app_pass_site_prefix');
 
         return app_url($uri_prefix . $uri, $sub_domain);

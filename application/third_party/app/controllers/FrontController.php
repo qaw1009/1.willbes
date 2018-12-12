@@ -304,7 +304,12 @@ abstract class FrontController extends BaseController
                     exit(_HTTP_UNAUTHORIZED);
                 } else {
                     //show_error('접근 권한이 없습니다.', _HTTP_UNAUTHORIZED, '접근 권한 없음');
-                    redirect(app_url('/member/login/?rtnUrl=' . rawurlencode(app_url('/' . uri_string(), SUB_DOMAIN)), 'www'));
+                    if($this->_is_app === true){
+                        redirect(app_url('/app/member/login/?rtnUrl=' . rawurlencode(app_url('/' . uri_string(), SUB_DOMAIN)), 'www'));
+                    } else {
+                        redirect(app_url('/member/login/?rtnUrl=' . rawurlencode(app_url('/' . uri_string(), SUB_DOMAIN)), 'www'));
+                    }
+
                 }
             }
         }

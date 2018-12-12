@@ -129,7 +129,8 @@ class Login extends BaseMember
 
                 if($this->_is_app == true){
                     return $this->load->view('/member/login/app', [
-                        'token' => $token
+                        'token' => $token,
+                        'rtnUrl' => rawurlencode($rtnUrl)
                     ]);
                 } else {
                     show_alert('로그인 되었습니다.', $rtnUrl, false);

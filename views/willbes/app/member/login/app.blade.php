@@ -6,8 +6,9 @@
         $(document).ready(function() {
             app = new StarPlayerBridge();
             app.login('{{$token}}');
-            location.replace('{{$rtnUrl}}');
+            location.replace('{{(empty($rtnUrl) == true) ? '/app/classroom/on/list/ongogin/' : $rtnUrl }}');
         });
     </script>
     로그인 완료페이지...
+    {{$token}}
 @stop

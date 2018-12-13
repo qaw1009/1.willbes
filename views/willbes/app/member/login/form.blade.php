@@ -17,7 +17,7 @@
                 <div class="inputBox p_re">
                     <input type="password" id="pwd" name="pwd" class="iptPwd" placeholder="비밀번호" maxlength="30" required="required" title="비밀번호">
                 </div>
-                <div class="tx-red item" style="display: block;" id="ret_msg"></div>
+                <div class="tx-red item" style="display: block;" id`="ret_msg"></div>
                 <div class="chkBox mt30">
                     <ul>
                         <li class="chkBox-Save">
@@ -90,6 +90,12 @@
         function getDeviceInfo() {
             app.getDeviceInfo(function(id, name, model){
                 alert("id : "+id+" name : "+name+" model : "+model);
+            });
+        }
+
+        function getToken() {
+            app.getToken(function(token) {
+                alert(token);
             });
         }
     </script>

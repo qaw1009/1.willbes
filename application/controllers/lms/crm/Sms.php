@@ -188,14 +188,19 @@ class Sms extends \app\controllers\BaseController
         $site_csTel = json_encode($this->siteModel->getSiteArray(false,'CsTel'));
 
         $target_id = $this->_req('target_id');
+        $target_idx = $this->_req('target_idx');
         $target_phone = $this->_req('target_phone');
         $js_action = (empty($this->_req('js_action')) === true) ? 'NoAction' : $this->_req('js_action');
 
-        if (empty($target_id) === false) {
-            $set_send_member_ids = explode(',', $target_id);
+        if (empty($target_id) === false || empty($target_idx) === false) {
+            $set_send_member_idx = explode(',', $target_idx);
+            $set_send_member_id = explode(',', $target_id);
             $arr_condition = [
-                'IN' => [
-                    'MemId' => $set_send_member_ids
+                'ORG' => [
+                    'IN' => [
+                        'MemIdx' => $set_send_member_idx,
+                        'MemId' => $set_send_member_id
+                    ]
                 ]
             ];
             $list_send_member = $this->manageMemberModel->listSendMemberInfo($arr_condition);
@@ -205,7 +210,11 @@ class Sms extends \app\controllers\BaseController
                 $set_send_member_phone = explode(',', $target_phone);
 
                 foreach ($list_send_member as $key => $row) {
-                    if ($list_send_member[$key]['MemId'] == $set_send_member_ids[$key]) {
+                    if (empty($set_send_member_id[$key]) === false && $list_send_member[$key]['MemId'] == $set_send_member_id[$key]) {
+                        $list_send_member[$key]['Phone'] = $set_send_member_phone[$key];
+                    }
+
+                    if (empty($set_send_member_idx[$key]) === false && $list_send_member[$key]['MemIdx'] == $set_send_member_idx[$key]) {
                         $list_send_member[$key]['Phone'] = $set_send_member_phone[$key];
                     }
                 }

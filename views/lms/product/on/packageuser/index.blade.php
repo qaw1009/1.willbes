@@ -18,7 +18,7 @@
                                 <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CateName'] }}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_md_cate_code" name="search_md_cate_code">
+                        <select class="form-control mr-10 hide" id="search_md_cate_code" name="search_md_cate_code">
                             <option value="">중분류</option>
                             @foreach($arr_md_category as $row)
                                 <option value="{{ $row['CateCode'] }}" class="{{ $row['ParentCateCode'] }}">{{ $row['CateName'] }}</option>
@@ -82,7 +82,7 @@
                 <tr>
                     <th width="4%">복사<br>선택</th>
                     <th width="10%">대분류</th>
-                    <th width="10%">중분류</th>
+
                     <th width="8%">대비학년도</th>
                     <th>사용자패키지명</th>
                     <th width="5%">판매여부</th>
@@ -129,9 +129,7 @@
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return '<input type="radio" class="flat"  name="copyProdCode" value="'+row.ProdCode+'">';
                         }},
-                    {'data' : null, 'render' : function(data, type, row, meta) {
-                            return row.CateName_Parent;
-                        }},
+
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return row.CateName;
                         }},

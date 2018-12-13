@@ -240,6 +240,12 @@ class OffLectureModel extends CommonLectureModel
            //echo $this->_conn->last_query();
             /*----------------          강좌수정        ---------------*/
 
+            /*----------------          카테고리등록        ---------------*/
+            if($this->_setCategory($input,$prodcode) !== true) {
+                throw new \Exception('카테고리 등록에 실패했습니다.');
+            }
+            /*----------------          카테고리등록        ---------------*/
+
             /*----------------          샘플등록        ---------------*/
             if($this->_setSample($input,$prodcode) !== true) {
                 throw new \Exception('샘플 등록에 실패했습니다.');

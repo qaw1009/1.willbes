@@ -24,13 +24,12 @@
                                 <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CateName'] }}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_md_cate_code" name="search_md_cate_code">
+                        <select class="form-control mr-10 hide" id="search_md_cate_code" name="search_md_cate_code">
                             <option value="">중분류</option>
                             @foreach($arr_md_category as $row)
                                 <option value="{{ $row['CateCode'] }}" class="{{ $row['ParentCateCode'] }}">{{ $row['CateName'] }}</option>
                             @endforeach
                         </select>
-
                         <select name="search_schoolyear" id="search_schoolyear" class="form-control" title="대비학년도">
                             <option value="">대비학년도</option>
                             @for($i=(date('Y')+1); $i>=2005; $i--)

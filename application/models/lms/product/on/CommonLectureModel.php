@@ -352,6 +352,8 @@ class CommonLectureModel extends WB_Model
             if ($this->_conn->set($data)->insert($this->_table['category']) === false) {
                 throw new \Exception('카테고리 정보 등록에 실패했습니다.');
             }
+
+            //echo $this->_conn->last_query();
             /*  카테고리 등록  */
         } catch (\Exception $e) {
             return $e->getMessage();

@@ -205,6 +205,12 @@ class PackageUserModel extends CommonLectureModel
             //echo $this->_conn->last_query();
             /*----------------          강좌수정        ---------------*/
 
+            /*----------------          카테고리등록        ---------------*/
+            if($this->_setCategory($input,$prodcode) !== true) {
+                throw new \Exception('카테고리 등록에 실패했습니다.');
+            }
+            /*----------------          카테고리등록        ---------------*/
+
             /*----------------          메모등록        ---------------*/
             if($this->_setMemo($input,$prodcode) !== true) {
                 throw new \Exception('메모 등록에 실패했습니다.');

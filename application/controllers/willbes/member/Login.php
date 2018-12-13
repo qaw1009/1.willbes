@@ -31,7 +31,7 @@ class Login extends BaseMember
         }
 
         // 이미 로그인한 상태이면 호출한 페이지로 돌려보낸다.
-        if($this->session->userdata('is_login') === true){
+        if($this->session->userdata('is_login') === true && $this->_is_app == false){
             show_alert('이미 로그인 상태입니다.', $rtnUrl, false);
             return;
         }

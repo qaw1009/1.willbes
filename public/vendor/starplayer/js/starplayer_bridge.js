@@ -81,11 +81,8 @@ function StarPlayerBridge() {
     }
 
     this.login = function(token) {
-        alert(1);
         var obj = {"func":"login", "token":token};
-        alert(2);
-        self.bridge.callHandler('StarPlayer', obj, function(response) { alert('OK');});
-        alert(3);
+        self.bridge.callHandler('StarPlayer', obj, function(response) {});
     }
 
     this.logout = function() {

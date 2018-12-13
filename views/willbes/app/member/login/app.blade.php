@@ -2,6 +2,7 @@
 
 @section('content')
     <div id="Container" class="Container NG c_both">
+        로그인완료 처리 페이지
     <!-- <div id="Container" class="memContainer widthAuto c_both"> -->
         <div class="Member mem-Login widthAuto460">
             <button type="button" onclick="getDeviceInfo()" class="mem-Btn bg-blue bd-dark-blue">
@@ -17,8 +18,7 @@
         var app = null;
         $(document).ready(function() {
             app = new StarPlayerBridge();
-            token = "{{$token}}";
-            app.login(token);
+            app.login("{{$token}}");
             alert('setlogin');
             location.replace('{{(empty($rtnUrl) == true) ? '/app/classroom/on/list/ongogin/' : $rtnUrl }}');
         });
@@ -36,7 +36,5 @@
         }
 
     </script>
-
-    로그인 완료페이지...<br>
     {{$token}}
 @stop

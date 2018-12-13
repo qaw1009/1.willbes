@@ -2,6 +2,7 @@
 
 @section('content')
     <div id="Container" class="Container NG c_both">
+        로그아웃 처리 페이지
         <div class="Member mem-Login widthAuto460">
             <button type="button" onclick="getDeviceInfo()" class="mem-Btn bg-blue bd-dark-blue">
                 <span>디바이스정보</span>
@@ -33,5 +34,4 @@
             });
         }
     </script>
-    로그아웃 완료페이지...
 @stop

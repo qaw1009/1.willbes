@@ -47,8 +47,7 @@ function fnMobile($info_url, $license)
  */
 function fnAppStream($url, $data)
 {
-    sendAjax($url,
-        $data,
+    sendAjax($url, $data,
         function(d){
             app.streaming(d.ret_data);
         },

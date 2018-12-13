@@ -86,7 +86,7 @@
                     $("#real_login_frm").submit();
 
                 }, function(ret){
-                    $('#ret_msg').text(ret.ret_msg);
+                    alert(ret.ret_msg);
                 }, null, true, 'alert');
             });
         });

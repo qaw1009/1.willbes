@@ -1238,6 +1238,7 @@ class Player extends \app\controllers\FrontController
             }
 
             $url = $this->clearUrl($row['wMediaUrl'].'/'.$filename);
+            $url = 'http://www.axissoft.co.kr/contents/252782_ehd.mp4';
             $title = $row['wUnitNum'].'회 '.$row['wUnitLectureNum'].'강 '.$row['wUnitName'];
             $id = "^{$MemId}^{$MemIdx}^{$OrderIdx}^{$lec['OrderProdIdx']}^{$ProdCode}^{$ProdCodeSub}^{$row['wUnitIdx']}^{$logidx}^";
             $category = $lec['SubjectName'].'/'.$lec['CourseName'];

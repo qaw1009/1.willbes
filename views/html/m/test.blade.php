@@ -20,8 +20,28 @@
         <li style="width: 230px"><img style="width: 100%" src="{{ img_url('gosi/guide/icon_menu.png') }}"><div>png230</div></li>
         <li style="width: 150px"><img style="width: 100%" src="{{ img_url('gosi/guide/icon_menu.png') }}"><div>png150</div></li>
         <li style="width: 100px"><img style="width: 100%" src="{{ img_url('gosi/guide/icon_menu.png') }}"><div>png100</div></li>
-        <li style="width: 50px"><img style="width: 100%" src="{{ img_url('gosi/guide/icon_menu.png') }}"><div>png50</div></li>
+        <li style="width: 46px"><img style="width: 100%" src="{{ img_url('gosi/guide/icon_menu.png') }}"><div>png46</div></li>
         <li style="width: 25px"><img style="width: 100%" src="{{ img_url('gosi/guide/icon_menu.png') }}"><div>png25</div></li>
+    </ul>
+
+    <br/><br/><div style="clear:both"></div><br/><br/>
+
+    <ul>
+        <li style="width: 230px"><img style="width: 100%" src="{{ img_url('gosi/guide/icon_myacad_png.png') }}"><div>png230</div></li>
+        <li style="width: 150px"><img style="width: 100%" src="{{ img_url('gosi/guide/icon_myacad_png.png') }}"><div>png150</div></li>
+        <li style="width: 100px"><img style="width: 100%" src="{{ img_url('gosi/guide/icon_myacad_png.png') }}"><div>png100</div></li>
+        <li style="width: 46px"><img style="width: 100%" src="{{ img_url('gosi/guide/icon_myacad_png.png') }}"><div>png46</div></li>
+        <li style="width: 25px"><img style="width: 100%" src="{{ img_url('gosi/guide/icon_myacad_png.png') }}"><div>png25</div></li>
+    </ul>
+
+    <br/><br/><div style="clear:both"></div><br/><br/>
+
+    <ul>
+        <li style="width: 230px"><img style="width: 100%" src="{{ img_url('gosi/guide/icon_mypage.png') }}"><div>png230</div></li>
+        <li style="width: 150px"><img style="width: 100%" src="{{ img_url('gosi/guide/icon_mypage.png') }}"><div>png150</div></li>
+        <li style="width: 100px"><img style="width: 100%" src="{{ img_url('gosi/guide/icon_mypage.png') }}"><div>png100</div></li>
+        <li style="width: 46px"><img style="width: 100%" src="{{ img_url('gosi/guide/icon_mypage.png') }}"><div>png46</div></li>
+        <li style="width: 25px"><img style="width: 100%" src="{{ img_url('gosi/guide/icon_mypage.png') }}"><div>png25</div></li>
     </ul>
 </div>
 <!-- End Container -->

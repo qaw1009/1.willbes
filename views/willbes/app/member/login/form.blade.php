@@ -29,13 +29,18 @@
                 <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
                     <span>로그인</span>
                 </button>
-                <br>
+                <br><br>
                 <button type="button" onclick="getDeviceInfo()" class="mem-Btn bg-blue bd-dark-blue">
                     <span>디바이스정보</span>
+                </button>
+                <br><br>
+                <button type="button" onclick="getToken()" class="mem-Btn bg-blue bd-dark-blue">
+                    <span>겟토큰</span>
                 </button>
             </div>
         </form>
     </div>
+
     <form method="get" id="real_login_frm" name="real_login_frm" action="{{ front_app_url('/member/login/proc/', 'www') }}">
         {!! csrf_field() !!}
         <input type="hidden" name="chklogin" value="0" />

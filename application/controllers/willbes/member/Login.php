@@ -128,7 +128,9 @@ class Login extends BaseMember
                 }
 
                 if($this->_is_app == true){
-                    $token = '';
+                    $this->load->library('Jwt');
+                    $this->jwt->setTokenData($data['MemId'],$data['MemName']);
+                    $token = $this->jwt->getToken();
 
                     return $this->load->view('/member/login/app', [
                         'token' => $token,

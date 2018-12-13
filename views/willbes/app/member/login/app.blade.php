@@ -6,8 +6,7 @@
         $(document).ready(function() {
             app = new StarPlayerBridge();
             app.login('{{$token}}');
-            alert('로그인');
-            //location.replace('{{$rtnUrl}}');
+            location.replace('{{$rtnUrl}}');
         });
     </script>
 @stop

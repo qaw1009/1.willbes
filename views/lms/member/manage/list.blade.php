@@ -43,9 +43,9 @@
                                 <option value="outdate">회원탈퇴일</option>
                             </select>
                         </div>
-                        <div class="input-group">
+                        <div class="input-group mr-20">
                             <div class="input-group-addon no-border no-bgcolor"></div>
-                            <div class="input-group-addon">
+                            <div class="input-group-addon no-border-right">
                                 <i class="fa fa-calendar"></i>
                             </div>
                             <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="">
@@ -106,22 +106,12 @@
                         </label>
                     </div>
                 </div>
-
-
             </div>
         </div>
         <div class="row">
-            <div class="form-group">
-                <div class="col-xs-4">
-                    <button type="button" class="btn btn-default ml-20" id="btn_search_setting">엑셀다운로드</button>
-                    <button type="button" class="btn btn-default" id="btn_mail">EM발송</button>
-                    <button type="button" class="btn btn-default" id="btn_message">쪽지발송</button>
-                    <button type="button" class="btn btn-default" id="btn_sms">SMS발송</button>
-                </div>
-                <div class="col-xs-8 text-right form-inline">
-                    <button type="submit" class="btn btn-primary btn-search" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
-                    <button type="button" class="btn btn-default" id="_btn_reset">검색초기화</button>
-                </div>
+            <div class="col-xs-12 text-center">
+                <button type="submit" class="btn btn-primary btn-search" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
+                <button type="button" class="btn btn-default btn-search" id="btn_reset">초기화</button>
             </div>
         </div>
     </form>
@@ -153,7 +143,7 @@
                     <th>번호</th>
                     <th>수신여부</th>
                     <th>주소</th>
-                    <th>수신여부</th>
+                    <th class="bdr-line">수신여부</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -173,6 +163,12 @@
                 pagingType : 'simple_numbers',
                 lengthMenu: [10,20,30,50,100],
                 pageLength : 30,
+                buttons: [
+                    { text: '<i class="fa fa-file-excel-o mr-5"></i> 엑셀다운로드', className: 'btn-sm btn-success border-radius-reset mr-15 btn-excel' },
+                    { text: '<i class="fa fa-envelope-o mr-5"></i> 메일발송', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-mail' },
+                    { text: '<i class="fa fa-comment-o mr-5"></i> 쪽지발송', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-message' },
+                    { text: '<i class="fa fa-mobile mr-5"></i> SMS발송', className: 'btn-sm btn-primary border-radius-reset btn-sms' }
+                ],
                 ajax: {
                     'url' : '{{ site_url("/member/manage/ajaxList/") }}',
                     'type' : 'POST',
@@ -182,7 +178,7 @@
                 },
                 columns: [
                     {'data' : null, 'render' : function(data, type, row, meta){
-                            return '<input type="checkbox" name="selectMember" value="'+row.MemIdx+'">'
+                            return '<input type="checkbox" name="selectMember" class="flat target-crm-member" value="'+row.MemIdx+'" data-mem-idx="' + row.MemIdx + '">'
                         }},
                     {'data' : null, 'render' : function(data, type, row, meta){
                             // 리스트 번호
@@ -236,32 +232,6 @@
 
             $list_table.on('click', '.btn-view3', function() {
                 location.href=('{{ site_url('/member/manage/detail') }}/' + $(this).data('idx') + '/' + dtParamsToQueryString($datatable));
-            });
-
-            $('#btn_mail').click(function (){
-               var target_id = $('input[name=selectMember]:checked').map(function (){return this.value;}).get().join(',');
-               if(target_id == ''){ alert('메일보낼 회원을 선택해주십시요.');return;}
-                window.open("{{ site_url('crm/mail/createSend/') }}?target_idx="+target_id, "_blank");
-            });
-
-            $('#btn_message').click(function (){
-                var target_id = $('input[name=selectMember]:checked').map(function (){return this.value;}).get().join(',');
-                if(target_id == ''){ alert('쪽지보낼 회원을 선택해주십시요.');return;}
-                $('#btn_message').setLayer({
-                    url : "{{ site_url('crm/message/createSendModal') }}?target_idx="+target_id,
-                    width : 800,
-                    modal_id : "message_modal"
-                });
-            });
-
-            $('#btn_sms').click(function (){
-                var target_id = $('input[name=selectMember]:checked').map(function (){return this.value;}).get().join(',');
-                if(target_id == ''){ alert('SMS보낼 회원을 선택해주십시요.');return;}
-                $('#btn_sms').setLayer({
-                    url : "{{ site_url('crm/sms/createSendModal') }}?target_idx="+target_id,
-                    width : 1100,
-                    modal_id : "message_modal"
-                });
             });
         });
     </script>

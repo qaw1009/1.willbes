@@ -117,7 +117,6 @@
                         </label>
                     </div>
                 </div>
-                </div>
             </div>
         </div>
         <div class="row">
@@ -159,12 +158,11 @@
         var $list_table = $('#list_ajax_table');
 
         $(document).ready(function() {
-
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 buttons: [
                     { text: '<i class="fa fa-file-excel-o mr-5"></i> 엑셀다운로드', className: 'btn-sm btn-success border-radius-reset mr-15 btn-excel' },
-                    { text: '<i class="fa fa-comment-o mr-5"></i> 메일발송', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-email' },
+                    { text: '<i class="fa fa-envelope-o mr-5"></i> 메일발송', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-mail' },
                     { text: '<i class="fa fa-comment-o mr-5"></i> 쪽지발송', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-message' },
                     { text: '<i class="fa fa-mobile mr-5"></i> SMS발송', className: 'btn-sm btn-primary border-radius-reset btn-sms' }
                 ],
@@ -174,11 +172,10 @@
                     ,'data' : function(data) {
                         return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
                     }
-                }
-                ,
+                },
                 columns: [
                     {'data' : 'MemIdx', 'render' : function(data, type, row, meta) {
-                            return '<input type="checkbox" name="selectMember" class="flat" value="' + data + '" data-mem-id=>';
+                            return '<input type="checkbox" name="selectMember" class="flat target-crm-member" value="' + data + '" data-mem-idx="' + data + '">';
                         }}, // 체크박스
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
@@ -208,7 +205,6 @@
                             return '<a href="{{site_url('/member/manage/setMemberLogin/')}}'+data+'/" target="_blank">[자동로그인]</a>';
                         }} //자동로그인
                 ]
-
             });
 
             // 엑셀다운로드 버튼 클릭
@@ -218,33 +214,6 @@
                     formCreateSubmit('{{ site_url('/student/'.$lecType.'/excel/') }}', $search_form.serializeArray(), 'POST');
                 }
             });
-
-            $('.btn-email').click(function (){
-                var target_id = $('input[name=selectMember]:checked').map(function (){return this.value;}).get().join(',');
-                if(target_id == ''){ alert('메일보낼 회원을 선택해주십시요.');return;}
-                window.open("{{ site_url('crm/mail/createSend/') }}?target_idx="+target_id, "_blank");
-            });
-
-            $('.btn-message').click(function (){
-                var target_id = $('input[name=selectMember]:checked').map(function (){return this.value;}).get().join(',');
-                if(target_id == ''){ alert('쪽지보낼 회원을 선택해주십시요.');return;}
-                $('.btn-message').setLayer({
-                    url : "{{ site_url('crm/message/createSendModal') }}?target_idx="+target_id,
-                    width : 800,
-                    modal_id : "message_modal"
-                });
-            });
-
-            $('.btn-sms').click(function (){
-                var target_id = $('input[name=selectMember]:checked').map(function (){return this.value;}).get().join(',');
-                if(target_id == ''){ alert('SMS보낼 회원을 선택해주십시요.');return;}
-                $('.btn-sms').setLayer({
-                    url : "{{ site_url('crm/sms/createSendModal') }}?target_idx="+target_id,
-                    width : 1100,
-                    modal_id : "message_modal"
-                });
-            });
-
         });
     </script>
 @stop

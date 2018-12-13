@@ -27,12 +27,12 @@
             - 회원정보
         </div>
         <div class="text-right form-inline">
-            <button class="btn btn-primary" type="button" id="btn_list">목록</button>
+            <button type="button" class="btn btn-primary" id="btn_list">목록</button>
             <button type="button" class="btn btn-default" id="btn_pwd_reset">비번초기화</button>
-            <button type="button" class="btn btn-default" id="btn_mail">EM발송</button>
-            <button type="button" class="btn btn-default" id="btn_message">쪽지발송</button>
-            <button type="button" class="btn btn-default" id="btn_sms">SMS발송</button>
-            <button type="button" class="btn bg-blue" id="btn_login">자동로그인</button>
+            <button type="button" class="btn btn-default btn-mail" id="btn_mail" data-mem-idx="{{ $data['MemIdx'] }}">메일발송</button>
+            <button type="button" class="btn btn-default btn-message" id="btn_message" data-mem-idx="{{ $data['MemIdx'] }}">쪽지발송</button>
+            <button type="button" class="btn btn-default btn-sms" id="btn_sms" data-mem-idx="{{ $data['MemIdx'] }}">SMS발송</button>
+            <button type="button" class="btn bg-blue btn-auto-login" id="btn_login" data-mem-idx="{{ $data['MemIdx'] }}">자동로그인</button>
         </div>
         <div class="x_content">
             <table class="table table-striped table-bordered text-center">
@@ -143,26 +143,6 @@
             $('#chgname').setLayer({
                 url : "{{ site_url("member/manage/chgname/{$data['MemIdx']}") }}",
                 width : 1000
-            });
-
-            $('#btn_message').setLayer({
-                url : "{{ site_url('crm/message/createSendModal') }}?target_id={{$data['MemId']}}",
-                width : 800,
-                modal_id : "message_modal"
-            });
-
-            $('#btn_mail').click( function () {
-                window.open("{{ site_url('crm/mail/createSend/') }}?target_id={{$data['MemId']}}", "_blank");
-            });
-
-            $('#btn_login').click( function () {
-                window.open("{{ site_url('/member/manage/setMemberLogin/'.$data['MemIdx']) }}", "_blank");
-            });
-
-            $('#btn_sms').setLayer({
-                url : "{{ site_url('crm/sms/createSendModal') }}?target_id={{$data['MemId']}}",
-                width : 1100,
-                modal_id : "message_modal"
             });
 
             $('#search_value').keypress(function() {

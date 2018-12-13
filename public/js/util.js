@@ -43,6 +43,21 @@ function fnMobile($info_url, $license)
 }
 
 /**
+ *  앱 스트리밍 플레이어
+ */
+function fnAppStream($url, $data)
+{
+    sendAjax($url,
+        $data,
+        function(d){
+            app.streaming(d.ret_data);
+        },
+        function(ret, status){
+            alert(ret.ret_msg);
+        }, false, 'GET', 'json');
+}
+
+/**
  * 만나이
  * @param birth YYYYMMDD || YYYY-MM-DD
  * @returns {number}

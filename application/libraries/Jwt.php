@@ -44,7 +44,7 @@ class Jwt
 
         $token = $Builder->set('USER_ID', $this->_token_data['USER_ID'])
             ->set('USER_NM', $this->_token_data['USER_NM'])
-            ->set('USER_IDX', $this->_token_data['USER_IDX'])
+//            ->set('USER_IDX', $this->_token_data['USER_IDX'])
             ->sign($signer, $this->_key)
             ->getToken();
 

@@ -11,6 +11,10 @@
             <button type="button" onclick="getToken()" class="mem-Btn bg-blue bd-dark-blue">
                 <span>겟토큰</span>
             </button>
+            <br><br>
+            <button type="button" onclick="goSample()" class="mem-Btn bg-blue bd-dark-blue">
+                <span>샘플페이지</span>
+            </button>
         </div>
     </div>
     <!-- End Container -->
@@ -30,6 +34,10 @@
             app.getToken(function(token) {
                 alert(token);
             });
+        }
+
+        function goSample() {
+            location.href = "http://dev.starplayer.net/hybrid/willbes_portal.html";
         }
 
     </script>

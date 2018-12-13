@@ -1,7 +1,7 @@
 @extends('willbes.app.layouts.master')
 
 @section('content')
-    <div id="Container" class="memContainer widthAuto c_both">
+    <div id="Container" class="Container NG c_both">
         <div class="Member mem-Login widthAuto460">
             <button type="button" onclick="getDeviceInfo()" class="mem-Btn bg-blue bd-dark-blue">
                 <span>디바이스정보</span>
@@ -16,10 +16,10 @@
         var app = null;
         $(document).ready(function() {
             app = new StarPlayerBridge();
-            alert('생성');
+            alert(app);
             app.logout();
             alert("로그아웃되었습니다.");
-            location.replace('{{front_url('/classroom/on/list/ongoing/')}}');
+            location.replace('{{front_url('/)}}');
         });
 
         function getDeviceInfo() {

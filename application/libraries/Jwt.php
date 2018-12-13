@@ -18,11 +18,12 @@ class Jwt
      * @param $member_id
      * @param $member_name
      */
-    public function setTokenData($member_id, $member_name)
+    public function setTokenData($member_id, $member_name, $member_idx)
     {
         $this->_token_data = [
             'USER_ID' => $member_id,
-            'USER_NM' => $member_name
+            'USER_NM' => $member_name,
+            'USER_IDX' => $member_idx
         ];
     }
 
@@ -43,6 +44,7 @@ class Jwt
 
         $token = $Builder->set('USER_ID', $this->_token_data['USER_ID'])
             ->set('USER_NM', $this->_token_data['USER_NM'])
+            ->set('USER_IDX', $this->_token_data['USER_IDX'])
             ->sign($signer, $this->_key)
             ->getToken();
 

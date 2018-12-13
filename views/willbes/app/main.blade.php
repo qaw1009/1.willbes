@@ -10,6 +10,10 @@
                 <span>디바이스정보</span>
             </button>
             <br><br>
+            <button type="button" onclick="getDeviceId()" class="mem-Btn bg-blue bd-dark-blue">
+                <span>디바이스아이디</span>
+            </button>
+            <br><br>
             <button type="button" onclick="getToken()" class="mem-Btn bg-blue bd-dark-blue">
                 <span>겟토큰</span>
             </button>
@@ -34,6 +38,12 @@
         function getToken() {
             app.getToken(function(token) {
                 alert(token);
+            });
+        }
+
+        function getDeviceId() {
+            app.getDeviceId(function(id){
+                alert(id);
             });
         }
     </script>

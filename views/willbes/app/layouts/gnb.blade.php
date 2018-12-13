@@ -1,6 +1,11 @@
 <!-- aside -->
 <div id="aside">
     <ul class="NG">
+        @if(sess_data('is_login') == true)
+            <li class="ListBox">
+                <div class="List NGEB">{{sess_data('mem_name')}} ({{sess_data('mem_id')}})</div>
+            </li>
+        @endif
         <li class="ListTit"><h1 class="NGEB">내강의실</h1></li>
         <li class="ListBox">
             <div class="List NGEB"><a href="{{front_app_url('/classroom/pass/index','www')}}">무한 PASS존</a></div>
@@ -26,8 +31,10 @@
                 </ul>
             </div>
         </li>
-        <li class="ListBox">
-            <div class="List NGEB"><a href="{{front_app_url('/member/logout/','www')}}">로그아웃</a></div>
-        </li>
+        @if(sess_data('is_login') == true)
+            <li class="ListBox">
+                <div class="List NGEB"><a href="{{front_url('/member/logout/','www')}}">로그아웃</a></div>
+            </li>
+        @endif
     </ul>
 </div>

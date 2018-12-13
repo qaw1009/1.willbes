@@ -55,9 +55,13 @@
 
     <a href="{{ site_url('/home/html/mocktest3') }}" target="_blank">수험정보 > 기출문제 page 이동</a><br/><br/>
 
-    <a href="{{ site_url('/home/html/guide_cop') }}" target="_blank">수험정보 > 경찰가이드 page 이동</a><br/><br/>
+    <a href="{{ site_url('/home/html/guide_cop') }}" target="_blank">수험정보 > 경찰 가이드 page 이동</a><br/><br/>
 
-    <a href="{{ site_url('/home/html/guide_success_cop') }}" target="_blank">수험정보 > 초보합격전략 page 이동</a><br/><br/>
+    <a href="{{ site_url('/home/html/guide_success_cop') }}" target="_blank">수험정보 > 경찰 초보합격전략 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/guide_gosi') }}" target="_blank">수험정보 > 공무원 가이드 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/guide_success_gosi') }}" target="_blank">수험정보 > 공무원 초보합격전략 page 이동</a><br/><br/>
 
     <a href="{{ site_url('/home/html/mocktest6_1') }}" target="_blank">수험정보 > 모의고사 > 모의고사안내 page 이동</a><br/><br/>
 
@@ -77,6 +81,10 @@
 
     <a href="{{ site_url('/home/html/counsel3_3') }}" target="_blank">상담실 > 심층상담예약 > 상담예약확인 page 이동</a><br/><br/>
 
+</div>
+
+<div style="float:left; width: 340px; height: 750px; border-right: 1px solid #ccc; margin-right: 15px; font-size: 15px;">
+
     <a href="{{ site_url('/home/html/cart1') }}" target="_blank">결제 > 장바구니 page 이동</a><br/><br/>
 
     <a href="{{ site_url('/home/html/cart2') }}" target="_blank">결제 > 결제하기 page 이동</a><br/><br/>
@@ -84,10 +92,6 @@
     <a href="{{ site_url('/home/html/cart3') }}" target="_blank">결제 > 결제완료 page 이동</a><br/><br/>
 
     <a href="{{ site_url('/home/html/cart4') }}" target="_blank">결제 > 결제완료(무통장) page 이동</a><br/><br/>
-
-</div>
-
-<div style="float:left; width: 340px; height: 750px; border-right: 1px solid #ccc; margin-right: 15px; font-size: 15px;">
 
     <a href="{{ site_url('/home/html/acad_list') }}" target="_blank">학원수강신청 > 단과반 page 이동</a><br/><br/>
 

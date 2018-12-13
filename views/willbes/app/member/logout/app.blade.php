@@ -6,7 +6,8 @@
         $(document).ready(function() {
             app = new StarPlayerBridge();
             app.logout();
-            alert('logout');
+            alert("로그아웃되었습니다.");
+            location.replace('{{front_url('/classroom/on/list/ongoing/')}}');
         });
     </script>
 @stop

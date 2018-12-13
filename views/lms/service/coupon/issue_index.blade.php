@@ -136,7 +136,10 @@
                 },
                 columns: [
                     {'data' : 'CdIdx', 'render' : function(data, type, row, meta) {
-                        return (row.IsUse === 'Y' || row.RetireDatm != null) ? '회수불가' : '<input type="checkbox" name="cd_idx" class="flat" value="' + data + '" data-idx="' + row.CouponIdx + '">';
+                        var is_retireable = row.IsUse === 'Y' || row.RetireDatm != null ? 'N' : 'Y';
+
+                        return (data !== null) ? '<input type="checkbox" name="cd_idx" class="flat target-crm-member" value="' + data + '" data-idx="' + row.CouponIdx + '" data-is-retireable="' + is_retireable + '" data-mem-idx="' + row.MemIdx + '">' +
+                            (is_retireable === 'N' ? '<br/><span class="pt-5">회수불가</span>' : '') : '';
                     }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                         // 리스트 번호
@@ -188,8 +191,10 @@
             $('.btn-retire').on('click', function() {
                 var $checked_cd_idx = $list_table.find('input[name="cd_idx"]:checked');
                 var $params = {};
-                $checked_cd_idx.each(function(idx) {
-                    $params[$(this).data('idx')] = $(this).val();
+                $checked_cd_idx.each(function() {
+                    if ($(this).data('is-retireable') === 'Y') {
+                        $params[$(this).data('idx')] = $(this).val();
+                    }
                 });
 
                 if (Object.keys($params).length < 1) {

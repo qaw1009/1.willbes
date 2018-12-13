@@ -10,7 +10,7 @@
         function onInitEvent() {
             app.login("{{$token}}");
             alert("로그인되었습니다.");
-            location.replace('{{(empty($rtnUrl) == true) ? front_url('/app/classroom/on/list/ongoing/') : $rtnUrl }}');
+            location.replace('{{(empty($rtnUrl) == true) ? front_url('/app/classroom/on/list/ongoing/') : rawurldecode($rtnUrl) }}');
         }
     </script>
 @stop

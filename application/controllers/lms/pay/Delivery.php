@@ -78,6 +78,9 @@ class Delivery extends BaseOrder
             'IN' => [
                 'O.SiteCode' => get_auth_site_codes()   //사이트 권한 추가
             ],
+            'RAW' => [
+                'OPD.OrderProdDeliveryIdx is ' => 'not null'    // 주문배송정보가 있는 경우만
+            ],
             'ORG1' => [
                 'LKR' => [
                     'M.MemName' => $this->_reqP('search_member_value'),

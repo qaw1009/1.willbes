@@ -1240,6 +1240,7 @@ class Player extends \app\controllers\FrontController
             $url = $this->clearUrl($row['wMediaUrl'].'/'.$filename);
             $url = 'http://www.axissoft.co.kr/contents/252782_ehd.mp4';
             $title = $row['wUnitNum'].'회 '.$row['wUnitLectureNum'].'강 '.$row['wUnitName'];
+            $title = "test title";
             $id = "^{$MemId}^{$MemIdx}^{$OrderIdx}^{$lec['OrderProdIdx']}^{$ProdCode}^{$ProdCodeSub}^{$row['wUnitIdx']}^{$logidx}^";
             $category = $lec['SubjectName'].'/'.$lec['CourseName'];
             $enddate = $lec['RealLecEndDate'];
@@ -1253,7 +1254,7 @@ class Player extends \app\controllers\FrontController
                     'tracker' => '',
                     'subpage' => '',
                     'url' => $url,
-                    'title' => rawurlencode(clean_string($title)),
+                    'title' => clean_string($title),
                     'content_id' => $id
                 ];
             }

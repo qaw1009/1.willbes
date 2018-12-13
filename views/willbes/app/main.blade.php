@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- Container -->
-    <div id="Container" class="memContainer widthAuto c_both">
+    <div id="Container" class="Container NG c_both">
         <div class="Member mem-Login widthAuto460">
             <button type="button" onclick="getDeviceInfo()" class="mem-Btn bg-blue bd-dark-blue">
                 <span>디바이스정보</span>

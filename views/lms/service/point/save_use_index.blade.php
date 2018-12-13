@@ -98,8 +98,8 @@
                 serverSide: true,
                 buttons: [
                     { text: '<i class="fa fa-file-excel-o mr-5"></i> 엑셀다운로드', className: 'btn-sm btn-success border-radius-reset mr-15 btn-excel' },
-                    { text: '<i class="fa fa-comment-o mr-5"></i> 쪽지발송', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-message' },
-                    { text: '<i class="fa fa-mobile mr-5"></i> SMS발송', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-sms' },
+                    { text: '<i class="fa fa-comment-o mr-5"></i> 쪽지발송', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-message btn-target-crm-member' },
+                    { text: '<i class="fa fa-mobile mr-5"></i> SMS발송', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-sms btn-target-crm-member' },
                     { text: '<i class="fa fa-pencil mr-5"></i> 적립/차감바로등록', className: 'btn-sm btn-success border-radius-reset btn-direct-regist' }
                 ],
                 ajax: {
@@ -153,6 +153,8 @@
                 $mem_table_td.eq(3).html(mem_data.MemId);
                 $mem_table_td.eq(4).html(mem_data.Phone + ' (' + mem_data.SmsRcvStatus + ')');
                 $mem_table_td.eq(5).html(mem_data.Mail + ' (' + mem_data.MailRcvStatus + ')');
+
+                $('.btn-target-crm-member').data('mem-idx', mem_data.MemIdx);
 
                 // 포인트 목록
                 $datatable.draw();

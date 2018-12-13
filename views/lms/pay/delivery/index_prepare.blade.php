@@ -161,7 +161,7 @@
                 rowsGroup: ['.rowspan'],
                 columns: [
                     {'data' : 'OrderProdIdx', 'render' : function(data, type, row, meta) {
-                        return '<input type="checkbox" name="order_prod_idx" class="flat" value="' + data + '" data-pay-status-ccd-name="' + row.PayStatusCcdName + '">';
+                        return '<input type="checkbox" name="order_prod_idx" class="flat target-crm-member" value="' + data + '" data-pay-status-ccd-name="' + row.PayStatusCcdName + '" data-mem-idx="' + row.MemIdx + '">';
                     }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                         // 리스트 번호

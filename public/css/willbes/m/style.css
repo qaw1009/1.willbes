@@ -232,7 +232,7 @@ span {
 }
 #Header button.menubar {
     background: url("../../../img/willbes/m/main/icon_menu.png") no-repeat center center;
-    background-size: 38px 38px;
+    background-size: 100%;
     width: 46px;
     height: 46px;
     border: none;
@@ -243,7 +243,7 @@ span {
 }
 #Header button.mypage {
     background: url("../../../img/willbes/m/main/icon_mypage.png") no-repeat center center;
-    background-size: 38px 38px;
+    background-size: 100%;
     width: 46px;
     height: 46px;
     border: none;
@@ -254,7 +254,7 @@ span {
 }
 #Header button.myacad {
     background: url("../../../img/willbes/m/main/icon_myacad.png") no-repeat center center;
-    background-size: 38px 38px;
+    background-size: 100%;
     width: 46px;
     height: 46px;
     border: none;

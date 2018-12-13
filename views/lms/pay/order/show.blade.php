@@ -10,9 +10,9 @@
                     <h4><strong>회원정보</strong></h4>
                 </div>
                 <div class="col-md-6 text-right">
-                    <button class="btn btn-sm btn-primary mr-10 btn-message">쪽지발송</button>
-                    <button class="btn btn-sm btn-primary mr-10 btn-sms">SMS발송</button>
-                    <button class="btn btn-sm bg-dark mr-0 btn-auto-login">자동로그인</button>
+                    <button type="button" class="btn btn-sm btn-primary mr-10 btn-message" data-mem-idx="{{ $data['mem']['MemIdx'] }}">쪽지발송</button>
+                    <button type="button" class="btn btn-sm btn-primary mr-10 btn-sms" data-mem-idx="{{ $data['mem']['MemIdx'] }}">SMS발송</button>
+                    <button type="button" class="btn btn-sm bg-dark mr-0 btn-auto-login" data-mem-idx="{{ $data['mem']['MemIdx'] }}">자동로그인</button>
                 </div>
                 <div class="col-md-12">
                     <table id="list_mem_table" class="table table-striped table-bordered">

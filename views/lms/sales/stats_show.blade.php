@@ -281,7 +281,7 @@
                 },
                 columns: [
                     {'data' : 'OrderIdx', 'render' : function(data, type, row, meta) {
-                        return '<input type="checkbox" name="order_idx" class="flat" value="' + data + '">';
+                        return '<input type="checkbox" name="order_idx" class="flat target-crm-member" value="' + data + '" data-mem-idx="' + row.MemIdx + '">';
                     }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                         // 리스트 번호

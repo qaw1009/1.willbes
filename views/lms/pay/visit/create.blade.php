@@ -26,9 +26,9 @@
                         <h4><strong>회원정보</strong></h4>
                     </div>
                     <div class="col-md-6 text-right">
-                        <button class="btn btn-sm btn-primary mr-10 btn-message">쪽지발송</button>
-                        <button class="btn btn-sm btn-primary mr-10 btn-sms">SMS발송</button>
-                        <button class="btn btn-sm bg-dark mr-0 btn-auto-login">자동로그인</button>
+                        <button type="button" class="btn btn-sm btn-primary mr-10 btn-message btn-target-crm-member" data-mem-idx="{{ $data['mem']['MemIdx'] or '' }}">쪽지발송</button>
+                        <button type="button" class="btn btn-sm btn-primary mr-10 btn-sms btn-target-crm-member" data-mem-idx="{{ $data['mem']['MemIdx'] or '' }}">SMS발송</button>
+                        <button type="button" class="btn btn-sm bg-dark mr-0 btn-auto-login btn-target-crm-member" data-mem-idx="{{ $data['mem']['MemIdx'] or '' }}">자동로그인</button>
                     </div>
                     <div class="col-md-12">
                         <table id="list_mem_table" class="table table-striped table-bordered">
@@ -359,6 +359,8 @@
                 $mem_table_td.eq(3).html(mem_data.MemId);
                 $mem_table_td.eq(4).html(mem_data.Phone + ' (' + mem_data.SmsRcvStatus + ')');
                 $mem_table_td.eq(5).html(mem_data.Mail + ' (' + mem_data.MailRcvStatus + ')');
+
+                $('.btn-target-crm-member').data('mem-idx', mem_data.MemIdx);
 
                 // 방문수강접수 목록
                 $datatable.draw();

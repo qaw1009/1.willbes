@@ -499,6 +499,69 @@ function init_base() {
         $('.btn-set-search-date').removeClass('active');
         $(this).addClass('active');
     });
+
+    // 자동로그인 버튼 클릭
+    $('.btn-auto-login').on('click', function() {
+        var target_idx = $(this).data('mem-idx');
+
+        if (typeof (target_idx) === 'undefined' || target_idx === '') {
+            alert('회원 정보가 없습니다.');
+            return;
+        }
+
+        if (confirm('해당 회원님 계정으로 자동로그인하시겠습니까?')) {
+            window.open('/member/manage/setMemberLogin/' + target_idx, '_blank');
+        }
+    });
+
+    // 쪽지, SMS, 메일발송 버튼 클릭
+    $('.btn-message, .btn-sms, .btn-mail').on('click', function() {
+        var evt_type = '', evt_name = '';
+        var target_idx = $(this).data('mem-idx');
+
+        // 발송 대상자를 추출할 수 없을 경우
+        if (typeof (target_idx) === 'undefined' && $('.target-crm-member').length < 1) {
+            return;
+        }
+
+        if ($(this).prop('class').indexOf('btn-message') > -1) {
+            evt_type = 'message';
+            evt_name = '쪽지';
+        } else if ($(this).prop('class').indexOf('btn-sms') > -1) {
+            evt_type = 'sms';
+            evt_name = 'SMS';
+        } else {
+            evt_type = 'mail';
+            evt_name = '메일';
+        }
+
+        if (typeof (target_idx) === 'undefined') {
+            target_idx = [];
+            $('.target-crm-member:checked').each(function() {
+                if ($.inArray($(this).data('mem-idx'), target_idx) === -1) {
+                    target_idx.push($(this).data('mem-idx'));
+                }
+            });
+            target_idx = target_idx.join(',');
+        }
+
+        if (target_idx === '') {
+            alert(evt_name + '를 발송하실 회원을 선택해 주세요.');
+            return;
+        }
+
+        if (confirm('선택한 대상자에게 ' + evt_name + '를 발송하시겠습니까?')) {
+            if (evt_type === 'mail') {
+                window.open('/crm/mail/createSend/?target_idx='+target_idx, '_blank');
+            } else {
+                $('.btn-' + evt_type).setLayer({
+                    url: '/crm/' + evt_type + '/createSendModal?target_idx=' + target_idx,
+                    width: 1200,
+                    modal_id: 'message_modal'
+                });
+            }
+        }
+    });
 }
 
 function init_board() {

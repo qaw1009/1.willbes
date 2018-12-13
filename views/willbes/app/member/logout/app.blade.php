@@ -10,4 +10,5 @@
             location.replace('{{front_url('/classroom/on/list/ongoing/')}}');
         });
     </script>
+    로그아웃 완료페이지...
 @stop

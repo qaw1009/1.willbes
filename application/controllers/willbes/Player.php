@@ -1253,7 +1253,7 @@ class Player extends \app\controllers\FrontController
                     'tracker' => '',
                     'subpage' => '',
                     'url' => $url,
-                    'title' => clean_string($title),
+                    'title' => rawurlencode(clean_string($title)),
                     'content_id' => $id
                 ];
             }

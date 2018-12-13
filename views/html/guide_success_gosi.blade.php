@@ -6,8 +6,8 @@
     <div class="Menu NSK c_both">
         <h3>
             <ul class="menu-Tit">
-                <li class="Tit">경찰<span class="row-line">|</span></li>
-                <li class="subTit">일반경찰</li>
+                <li class="Tit">공무원<span class="row-line">|</span></li>
+                <li class="subTit">9급</li>
             </ul>
             <ul class="menu-List">
                 <li>
@@ -41,8 +41,8 @@
                             <li><a href="{{ site_url('/home/html/mocktest1') }}">시험공고</a></li>
                             <li><a href="{{ site_url('/home/html/mocktest2') }}">수험뉴스</a></li>
                             <li><a href="{{ site_url('/home/html/mocktest3') }}">기출문제</a></li>
-                            <li><a href="{{ site_url('/home/html/guide_cop') }}">경찰가이드</a></li>
-                            <li><a href="{{ site_url('/home/html/guide_success_cop') }}">초보합격전략</a></li>
+                            <li><a href="{{ site_url('/home/html/guide_gosi') }}">공무원가이드</a></li>
+                            <li><a href="{{ site_url('/home/html/guide_success_gosi') }}">초보합격전략</a></li>
                             <li><a href="{{ site_url('/home/html/mocktest6_1') }}">모의고사</a></li>
                         </ul>
                     </div>
@@ -79,16 +79,16 @@
         </div>
 
         <div class="willbes-Leclist c_both mt30">
-            <img src="{{ img_url('cop/guide/guide_success_visual.jpg') }}">
-            <div class="w-cop-Guide">
+            <img src="{{ img_url('gosi/guide/guide_success_visual.jpg') }}">
+            <div class="w-gosi-Guide">
                 <div class="willbes-cop-success-guide GM">
-                    <ul class="tabWrap tabcsDepth1 tab_cop_success_Guide p_re NSK">
+                    <ul class="tabWrap tabcsDepth1 tab_gosi_success_Guide p_re NSK">
                         <li class="w-cop-success-guide1"><a class="qBox on" href="#cop_success_guide1"><span>시험대비법</span></a></li>
                         <li class="w-cop-success-guide2"><a class="qBox" href="#cop_success_guide2"><span>수험서공부법</span></a></li>
                     </ul>
                     <div class="tabBox mt20">
                         <div id="cop_success_guide1" class="tabContent">
-                            <ul class="tabWrap tabcsDepth2 tab_cop_scuuess_list_Guide p_re NG">
+                            <ul class="tabWrap tabcsDepth2 tab_gosi_scuuess_list_Guide p_re NG">
                                 <li class="w-cop-success-guide1"><a class="qBox on" href="#cop_success_list1_guide1"><span>수험환경 점검</span><span class="row-line">|</span></a></li>
                                 <li class="w-cop-success-guide2"><a class="qBox" href="#cop_success_list1_guide2"><span>대학생 맞춤전략</span><span class="row-line">|</span></a></li>
                                 <li class="w-cop-success-guide3"><a class="qBox" href="#cop_success_list1_guide3"><span>직장인 맞춤전략</span></a></li>
@@ -174,7 +174,7 @@
                             </div>  
                         </div>
                         <div id="cop_success_guide2" class="tabContent">
-                            <ul class="tabWrap tabcsDepth2 tab_cop_scuuess_list_Guide p_re NG">
+                            <ul class="tabWrap tabcsDepth2 tab_gosi_scuuess_list_Guide p_re NG">
                                 <li class="w-cop-success-guide1"><a class="qBox on" href="#cop_success_list2_guide1"><span>수험서선택</span><span class="row-line">|</span></a></li>
                                 <li class="w-cop-success-guide2"><a class="qBox" href="#cop_success_list2_guide2"><span>수험서정복</span><span class="row-line">|</span></a></li>
                                 <li class="w-cop-success-guide3"><a class="qBox" href="#cop_success_list2_guide3"><span>취약과목보강</span><span class="row-line">|</span></a></li>

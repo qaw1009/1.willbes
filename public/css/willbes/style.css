@@ -2160,12 +2160,15 @@ table.auTable tr td {
     border-left: none;
 }
 
+.w-cop-Guide {letter-spacing: 0}
+.w-cop-Guide .examInfoGu2 .hTy4 {background: url("../../img/willbes/cop/guide/left_arrow.png") no-repeat 0 center; font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"; margin: 30px 0 10px; font-size:16px; font-weight:bold; color: #24446a; line-height: 30px; padding-left: 25px;}
+
 .examInfoGu1, 
 .examInfoGu1_1, 
 .examInfoGu2,
-.examInfoGu3 {color: #555; border: 1px solid #d0d0d0; padding: 15px 50px 0; line-height:1.5}
-.examInfoGu1 .hTy4 {font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"; margin: 35px 0 10px; font-size:16px; font-weight:bold; color: #0064e5; line-height: 30px; border-bottom: 1px solid #cbcbcb}
-.examInfoGu1 .mgB2 {padding-bottom: 50px;}
+.examInfoGu3 {color: #555; border: 1px solid #d0d0d0; padding: 0 50px; line-height:1.5}
+.examInfoGu1 .hTy4 {font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"; margin: 30px 0 10px; font-size:16px; font-weight:bold; color: #0064e5; line-height: 30px; border-bottom: 1px solid #cbcbcb}
+.examInfoGu1 .mgB2 {padding-bottom: 40px;}
 
 .examInfoGu1_1 .hTy4 {font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"; margin: 35px 0 10px; font-size:16px; font-weight:bold; color: #000; line-height: 30px;}
 .examInfoGu1_1 .mgB1_1 {float: left; margin-right: 25px; font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"; font-size: 13px; font-weight: 600; color: #666;}
@@ -2177,7 +2180,7 @@ table.auTable tr td {
 .examInfoGu1_1 .mgB2 li strong {color: #0064e5;}
 
 .examInfoGu2 {padding-bottom: 50px}
-.examInfoGu2 .hTy4 {background: url("../../img/willbes/cop/guide/left_arrow.png") no-repeat 0 center; font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"; margin: 35px 0 10px; font-size:16px; font-weight:bold; color: #24446a; line-height: 30px; padding-left: 25px;}
+
 .examInfoGu2 .mgB1 {margin-bottom: 10px}
 .examInfoGu2 .ps {border-top: 1px solid #8696a9; padding: 20px}
 .examInfoGu2 h5 {font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"; font-size:16px;font-weight:bold; color: #694b23; border: 1px solid #c6b9ab; margin: 0 10px 15px; padding: 8px 25px; box-shadow: 2px 2px 0 #e1e1e1;}
@@ -2187,6 +2190,7 @@ table.auTable tr td {
 
 .toggleCont .toggleContList {margin-top: 5px}
 .toggleCont .tTitle {font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"; padding-left: 20px; border-top:1px solid #5c6068; border-bottom:1px solid #5c6068; height: 40px; font-size:14px; font-weight:bold; color: #fff; line-height: 38px; cursor:pointer; background: #6c7380 url("../../img/willbes/cop/guide/toggle_arrow.png") no-repeat 800px center;}
+.toggleCont .toggleContList.show .tTitle {background: #6c7380 url("../../img/willbes/cop/guide/toggle_arrow_up.png") no-repeat 800px center;}
 .toggleCont .tContWp{display:none;padding:20px 10px 20px;}
 .toggleCont .tContWp h6{margin-bottom:10px;padding-left:17px;font-size:12px;font-weight:bold;background: url("../../img/willbes/cop/guide/ico_hty2.gif") no-repeat 0 1px}
 .toggleCont .tContWp .tit1{padding-left:16px;background: url("../../img/willbes/cop/guide/dot_cirb.png") no-repeat 3px 4px;font-weight:bold}
@@ -2194,6 +2198,10 @@ table.auTable tr td {
 .toggleCont .tContWp .inner_txt .tit1{margin-bottom:5px;padding-left:10px;background-position:0 4px}
 .toggleCont .tContWp .inner_txt .tit2{margin-bottom:5px}
 .toggleCont .tContWp .plistSq3, .toggleCont .tContWp .listSq3 li{background: url("../../img/willbes/cop/guide/dot_bar3.gif") no-repeat 1px 6px}
+
+.toggleCont .toggleContList.last .tContWp {padding-bottom: 5px;}
+.toggleCont .toggleContList.last .tContWp .inner_txt.last_txt {margin-bottom: 0;}
+
 .ps {padding:10px 20px;background:#f4f4f4}
 .ps strong {color:#666}
 
@@ -2201,6 +2209,7 @@ table.auTable tr td {
 
 .agC {text-align:center !important}
 .agM {margin: 0 auto}
+.mgB1{margin-bottom:10px !important}
 .basicTb{width:100%;border-left:1px solid #dbdbdb;border-top:1px solid #dbdbdb}
 .basicTb th,
 .basicTb td{border-right:1px solid #dbdbdb;border-bottom:1px solid #dbdbdb}
@@ -2280,6 +2289,7 @@ table.auTable tr td {
     height: 16px;
     margin: 11px 0;
 }
+
 
 
 /*********************************************     Main Container : Gosi     *********************************************/
@@ -2363,11 +2373,27 @@ table.auTable tr td {
     border: none;
 }
 
+.w-gosi-Guide {letter-spacing: 0}
+.w-gosi-Guide .examInfoGu2 .hTy4 {background: url("../../img/willbes/gosi/guide/left_arrow.png") no-repeat 0 center; font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"; margin: 30px 0 10px; font-size:16px; font-weight:bold; color: #24606a; line-height: 30px; padding-left: 25px;}
+
+
 .examInfoGu3 {padding: 45px}
-.examInfoGu3 .hTy4 {font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"; margin: 0 0 20px; font-size:16px; font-weight:bold; color: #026f61; line-height: 30px}
-.examInfoGu3 .hTy5 {font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"; margin: 0 0 15px; font-size:14px; font-weight:bold; color: #555; line-height: 18px}
-.examInfoGu3 .hTy5 span  {font-size: 13px}
-.examInfoGu3 .hTy6 {font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"; margin: 15px 60px 0; font-size:13px; font-weight:bold; color: #d52b2b; line-height: 18px}
+.examInfoGu3 .hTy {font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"}
+.examInfoGu3 .hTy.txt-gray {font-size: 14px; font-weight:bold; color: #555; line-height: 18px}
+.examInfoGu3 .hTy.txt-red {font-size: 14px; font-weight:bold; color: #d52b2b; line-height: 18px}
+.examInfoGu3 .hTy4 {margin: 0 0 20px; font-size:16px; font-weight:bold; color: #026f61; line-height: 30px}
+
+.examInfoGu3 .hTy5 {margin: 0 0 15px}
+.examInfoGu3 .hTy5 span {font-size: 13px}
+
+.examInfoGu3 .hTy6.center {margin: 15px 60px 0; font-size:13px}
+.examInfoGu3 .hTy6.right {margin: 0 0 5px; text-align: right;}
+.examInfoGu3 .hTy6.right span {font-size: 13px}
+.examInfoGu3 .hTy6.left span {margin: 5px 0 0; text-align: left; font-size: 12px}
+
+.sliderGuide .bx-wrapper .bx-viewport {
+    z-index: 10;
+}
 .sliderGuide .bx-wrapper .bx-controls-direction {
     width: 100%;
     height: 45px;
@@ -2403,6 +2429,135 @@ table.auTable tr td {
 .basicWd1 tr td {
     padding: 20px;
 }
+
+.mgBox {
+    background: #f0f0f0;
+    border: 1px solid #dbdbdb;
+    padding: 25px 30px;
+    width: 760px;
+    margin: 20px auto 0;
+}
+.mgBox .tt {
+    background: url("../../img/willbes/gosi/guide/right_arrow.png") no-repeat 0 6px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #232323;
+    padding-left: 12px;
+    margin-bottom: 10px;
+}
+.mgBox .st {
+    margin-bottom: 5px;
+}
+.mgBox .ttx {
+    font-size: 13px;
+    font-weight: 600;
+    color: #4d4d4d;
+}
+.mgBox ul li {
+    margin-top: 15px;
+}
+.mgBox ul li:first-child {
+    margin-top: 0;
+}
+.mgBox_no {
+    border: 1px solid #dbdbdb;
+    padding: 40px 60px;
+    width: 760px;
+    margin: 20px auto 0;
+}
+
+.tableBox tr th {
+    font-size: 21px;
+    font-weight: 600;
+    color: #243553;
+    border-right: 1px solid #bfbfbf;
+}
+.tableBox tr td {
+    font-size: 14px;
+    text-align: center;
+    border-top: 1px solid #bfbfbf;
+    border-right: 1px solid #bfbfbf;
+    border-bottom: 1px solid #bfbfbf;
+    padding: 25px 0;
+}
+.tableBox tr.hh td {
+    border: none;
+    height: 25px;
+}
+
+.tabWrap.tab_gosi_success_Guide {
+    height: 67px;
+    border: 1px solid #24606a;
+}
+.tabWrap.tab_gosi_success_Guide li {
+    width: 50%;
+    height: 65px;
+}
+.tabWrap.tab_gosi_success_Guide li a {
+    background: #fff;
+    color: #24606a;
+}
+.tabWrap.tab_gosi_success_Guide li a.on {
+    background: #24606a;
+    color: #fff;
+}
+.tabWrap.tab_gosi_success_Guide li a,
+.tabWrap.tab_gosi_success_Guide li a.on {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 63px;
+    height: 65px;
+    border: none;
+}
+.tabWrap.tab_gosi_success_Guide a.on:before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    top: 66px;
+    left: 50%;
+    margin-left: -5px;
+    border-color: #24606a transparent transparent;
+    border-width: 10px;
+}
+.tabWrap.tab_gosi_scuuess_list_Guide {
+    float: left;
+    height: 35px;
+    border-bottom: none;
+    clear: both;
+}
+.tabWrap.tab_gosi_scuuess_list_Guide li {
+    height: 35px;
+}
+.tabWrap.tab_gosi_scuuess_list_Guide li a {
+    color: #24606a;
+}
+.tabWrap.tab_gosi_scuuess_list_Guide li a.on {
+    color: #8f724d;
+}
+.tabWrap.tab_gosi_scuuess_list_Guide li a,
+.tabWrap.tab_gosi_scuuess_list_Guide li a.on {
+    background: none;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 33px;
+    height: 35px;
+    border: none;
+}
+.tabWrap.tab_gosi_scuuess_list_Guide li:first-child a,
+.tabWrap.tab_gosi_scuuess_list_Guide li:first-child a.on {
+    border: none;
+}
+.tabWrap.tab_gosi_scuuess_list_Guide .row-line {
+    float: right;
+    background: #b7b7b7;
+    width: 1px;
+    height: 16px;
+    margin: 11px 0;
+}
+
 
 /*********************************************     CONTAINER PAGE     *********************************************/
 

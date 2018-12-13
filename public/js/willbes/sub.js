@@ -270,6 +270,8 @@ $(function() {
 // 썸네일 더보기 Script
 $(function() {
     $('.w-thumb a.thumb_num').mouseover(function(){
+        $('.thumb_slide_wrap').css('display','none');
+
         var $thumb_table = $(this).parents('.w-thumb').find('.thumb_slide_wrap');
         var n = $(this).parents('.w-thumb').find('.thumb_slide_wrap ul li').length;
         var width = parseInt(n)* 145 + 6;
@@ -284,6 +286,8 @@ $(function() {
 
 // 가이드 Script
 $(function() {
+    $('.toggleCont .toggleContList:last-child').addClass('last');
+    $('.toggleCont .toggleContList.last .inner_txt:last-child').addClass('last_txt');
     $('.tTitle').click(function() {
         var $cont = $(this).parents('.toggleContList').find('.tContWp');
 

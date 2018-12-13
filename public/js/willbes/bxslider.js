@@ -50,7 +50,7 @@ $(function() {
         pager: false,
         adaptiveHeight: true,
         infiniteLoop: false,
-        hideControlOnEnd: true       
+        hideControlOnEnd: true,    
     });
 });
 

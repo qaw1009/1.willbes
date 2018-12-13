@@ -43,15 +43,8 @@ class Jwt
 
         $token = $Builder->set('USER_ID', $this->_token_data['USER_ID'])
             ->set('USER_NM', $this->_token_data['USER_NM'])
-//            ->setIssuer('https://www.willbes.net') // Configures the issuer (iss claim)
-  //          ->setAudience('https://www.willbes.net') // Configures the audience (aud claim)
-//            ->setId($token_data, false) // Configures the id (jti claim), replicating as a header item
-//            ->setIssuedAt(time()) // Configures the time that the token was issue (iat claim)
-    //        ->setNotBefore(time() + 60) // Configures the time that the token can be used (nbf claim)
-      //      ->setExpiration(time() + 3600) // Configures the expiration time of the token (exp claim)
-//            ->set('uid', 1) // Configures a new claim, called "uid"
-            ->sign($signer, $this->_key) // creates a signature using "testing" as key
-            ->getToken(); // Retrieves the generated token
+            ->sign($signer, $this->_key)
+            ->getToken();
 
         return $token;
     }

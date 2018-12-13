@@ -22,9 +22,6 @@
         var app = null;
         $(document).ready(function() {
             app = new StarPlayerBridge();
-            app.login("{{$token}}");
-            alert('setlogin');
-            location.replace('{{(empty($rtnUrl) == true) ? '/app/classroom/on/list/ongogin/' : $rtnUrl }}');
         });
 
         function getDeviceInfo() {
@@ -35,7 +32,8 @@
 
         function setToken() {
             app.login("{{$token}}");
-            alert("ok");
+            alert("로그인되었습니다.");
+            //location.replace('{{(empty($rtnUrl) == true) ? '/app/classroom/on/list/ongogin/' : $rtnUrl }}');
         }
 
         function getToken() {

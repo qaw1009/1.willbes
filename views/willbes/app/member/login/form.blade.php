@@ -37,6 +37,10 @@
                 <button type="button" onclick="getToken()" class="mem-Btn bg-blue bd-dark-blue">
                     <span>겟토큰</span>
                 </button>
+                <br><br>
+                <button type="button" onclick="loginToken()" class="mem-Btn bg-blue bd-dark-blue">
+                    <span>토큰 로그인</span>
+                </button>
             </div>
         </form>
     </div>
@@ -96,6 +100,16 @@
         function getToken() {
             app.getToken(function(token) {
                 alert(token);
+            });
+        }
+
+        function loginToken(){
+            app.getToken(function(token) {
+                if(token == ''){
+                    alert('토큰이 없습니다.');
+                } else {
+                    alert("토큰으로 로그인하겠습니다.")
+                }
             });
         }
     </script>

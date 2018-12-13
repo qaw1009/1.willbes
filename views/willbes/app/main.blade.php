@@ -2,31 +2,35 @@
 
 @section('content')
     <!-- Container -->
-    <div id="Container" class="Container NG c_both">
-        하이브리드 앱은 기본적으로 로그인 페이지
-        <br />
-        <br />
-        agent : {{$_SERVER['HTTP_USER_AGENT']}}
-        <br />
-        <br />
-        token : {{$token}}
-        <button onclick='javascript:setToken();'>로그인</button>
-        <br />
-        <br />
-        <!-- <h3>로그아웃</h3> -->
-        <button onclick='javascript:removeToken();'>로그아웃</button>
-        <br />
-        <br />
-        <!-- <h3>토큰정보 받기</h3> -->
-        <button onclick='javascript:getToken();'>토큰정보 받기</button>
-        <br />
-        <br />
-        <!-- <h3>디바이스ID 값 받기</h3> -->
-        <button onclick='javascript:showDeviceId();'>디바이스ID 값 받기</button>
-        <br />
-        <br />
-        <!-- <h3>디바이스정보 값 받기</h3> -->
-        <button onclick='javascript:getDeviceInfo();'>디바이스정보 값 받기</button>
+    <div id="Container" class="memContainer widthAuto c_both">
+        <div class="Member mem-Login widthAuto460">
+            <button type="button" onclick="getDeviceInfo()" class="mem-Btn bg-blue bd-dark-blue">
+                <span>디바이스정보</span>
+            </button>
+            <br><br>
+            <button type="button" onclick="getToken()" class="mem-Btn bg-blue bd-dark-blue">
+                <span>겟토큰</span>
+            </button>
+        </div>
     </div>
     <!-- End Container -->
+    <script type="text/javascript">
+        var app = null;
+        $(document).ready(function() {
+            app = new StarPlayerBridge();
+        });
+
+        function getDeviceInfo() {
+            app.getDeviceInfo(function(id, name, model){
+                alert("id : "+id+" name : "+name+" model : "+model);
+            });
+        }
+
+        function getToken() {
+            app.getToken(function(token) {
+                alert(token);
+            });
+        }
+
+    </script>
 @stop

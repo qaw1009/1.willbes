@@ -519,11 +519,6 @@ function init_base() {
         var evt_type = '', evt_name = '';
         var target_idx = $(this).data('mem-idx');
 
-        // 발송 대상자를 추출할 수 없을 경우
-        if (typeof (target_idx) === 'undefined' && $('.target-crm-member').length < 1) {
-            return;
-        }
-
         if ($(this).prop('class').indexOf('btn-message') > -1) {
             evt_type = 'message';
             evt_name = '쪽지';

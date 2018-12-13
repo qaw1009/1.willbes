@@ -137,7 +137,6 @@
         var $list_table = $('#list_ajax_table');
 
         $(document).ready(function() {
-
             $search_form.find('select[name="search_category"]').chained("#search_site_code");
 
             // 페이징 번호에 맞게 일부 데이터 조회
@@ -158,7 +157,7 @@
                 },
                 columns: [
                     {'data' : null, 'render' : function(data,type,row,meta) {
-                            return '<input type="checkbox" id="checkIdx'+data.CaIdx+ '" name="checkIdx[]" class="flat" value="'+data.CaIdx+'" data-memid="'+data.MemId+'"  data-memidx="'+data.MemIdx+'" data-approval="' + (data.ApprovalStatus ) + '"/>';
+                            return '<input type="checkbox" id="checkIdx'+data.CaIdx+ '" name="checkIdx[]" class="flat target-crm-member" value="'+data.CaIdx+'" data-mem-idx="'+data.MemIdx+'" data-approval="' + (data.ApprovalStatus ) + '"/>';
                         }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
@@ -334,29 +333,6 @@
                 }
 
             });
-
-            $('.btn-message').click(function (){
-                var target_idx = $('input:checkbox[name="checkIdx[]"]:checked').map(function (){return $(this).data('memidx');}).get().join(',');
-                if(target_idx == ''){ alert('쪽지발송 대상 회원을 선택해 주세요.');return;}
-                $('.btn-message').setLayer({
-                    url : "{{ site_url('crm/message/createSendModal') }}?target_idx="+target_idx,
-                    width : 800,
-                    modal_id : "message_modal"
-                });
-            });
-
-            $('.btn-sms').click(function (){
-                var target_id = $('input:checkbox[name="checkIdx[]"]:checked').map(function (){return $(this).data('memid');}).get().join(',');
-                if(target_id == ''){ alert('SMS발송 대상 회원을 선택해 주세요.');return;}
-                $('.btn-sms').setLayer({
-                    url : "{{ site_url('crm/sms/createSendModal') }}?target_id="+target_id,
-                    width : 1100,
-                    modal_id : "message_modal"
-                });
-            });
-
-
-
         });
     </script>
     </form>

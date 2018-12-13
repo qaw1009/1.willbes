@@ -15,6 +15,8 @@
             <button type="button" onclick="goSample()" class="mem-Btn bg-blue bd-dark-blue">
                 <span>샘플페이지</span>
             </button>
+            <br><br>
+            token : {{$token}}
         </div>
     </div>
     <!-- End Container -->
@@ -40,5 +42,4 @@
             location.href = "http://dev.starplayer.net/hybrid/willbes_portal.html";
         }
     </script>
-    {{$token}}
 @stop

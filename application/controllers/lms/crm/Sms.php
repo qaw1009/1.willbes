@@ -206,19 +206,19 @@ class Sms extends \app\controllers\BaseController
             $list_send_member = $this->manageMemberModel->listSendMemberInfo($arr_condition);
 
             //전송할 휴대폰번호가 폼데이터에 있을 경우 넘어온 휴대폰 번호로 대체
-            if (empty($target_phone) === false) {
+            /*if (empty($target_phone) === false) {
                 $set_send_member_phone = explode(',', $target_phone);
 
                 foreach ($list_send_member as $key => $row) {
-                    if (empty($set_send_member_id[$key]) === false && $list_send_member[$key]['MemId'] == $set_send_member_id[$key]) {
+                    if (empty($set_send_member_phone[$key]) === false && empty($set_send_member_id[$key]) === false && $list_send_member[$key]['MemId'] == $set_send_member_id[$key]) {
                         $list_send_member[$key]['Phone'] = $set_send_member_phone[$key];
                     }
 
-                    if (empty($set_send_member_idx[$key]) === false && $list_send_member[$key]['MemIdx'] == $set_send_member_idx[$key]) {
+                    if (empty($set_send_member_phone[$key]) === false && empty($set_send_member_idx[$key]) === false && $list_send_member[$key]['MemIdx'] == $set_send_member_idx[$key]) {
                         $list_send_member[$key]['Phone'] = $set_send_member_phone[$key];
                     }
                 }
-            }
+            }*/
         }
 
         $this->load->view("crm/sms/create_modal", [

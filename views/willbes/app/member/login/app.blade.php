@@ -22,6 +22,7 @@
         var app = null;
         $(document).ready(function() {
             app = new StarPlayerBridge();
+            app.bindEvent("initEvent", onInitEvent);
         });
 
         function getDeviceInfo() {
@@ -30,10 +31,10 @@
             });
         }
 
-        function setToken() {
+        function onInitEvent() {
             app.login("{{$token}}");
             alert("로그인되었습니다.");
-            //location.replace('{{(empty($rtnUrl) == true) ? '/app/classroom/on/list/ongogin/' : $rtnUrl }}');
+            location.replace('{{(empty($rtnUrl) == true) ? front_url('/app/classroom/on/list/ongogin/') : $rtnUrl }}');
         }
 
         function getToken() {

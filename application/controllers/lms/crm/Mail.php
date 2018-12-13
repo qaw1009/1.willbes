@@ -117,11 +117,16 @@ class Mail extends \app\controllers\BaseController
     {
         $list_send_member = [];
         $target_id = $this->_req('target_id');
-        if (empty($target_id) === false) {
-            $set_send_member_ids = explode(',', $target_id);
+        $target_idx = $this->_req('target_idx');
+        if (empty($target_id) === false || empty($target_idx) === false) {
+            $set_send_member_idx = explode(',', $target_idx);
+            $set_send_member_id = explode(',', $target_id);
             $arr_condition = [
-                'IN' => [
-                    'MemId' => $set_send_member_ids
+                'ORG' => [
+                    'IN' => [
+                        'MemIdx' => $set_send_member_idx,
+                        'MemId' => $set_send_member_id
+                    ]
                 ]
             ];
             $list_send_member = $this->manageMemberModel->listSendMemberInfo($arr_condition);

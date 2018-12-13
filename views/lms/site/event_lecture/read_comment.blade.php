@@ -93,8 +93,8 @@
             serverSide: true,
             buttons: [
                 { text: '<i class="fa fa-send mr-10"></i> 엑셀변환', className: 'btn-default btn-sm btn-success border-radius-reset mr-15 btn-excel-comment' },
-                { text: '<i class="fa fa-send mr-10"></i> 쪽지발송', className: 'btn-sm btn-info border-radius-reset btn-send-comment-message' },
-                { text: '<i class="fa fa-send mr-10"></i> SMS발송', className: 'btn-sm btn-info border-radius-reset ml-15 btn-send-comment-sms' },
+                { text: '<i class="fa fa-send mr-10"></i> 쪽지발송', className: 'btn-sm btn-info border-radius-reset btn-message' },
+                { text: '<i class="fa fa-send mr-10"></i> SMS발송', className: 'btn-sm btn-info border-radius-reset ml-15 btn-sms' },
                 { text: '<i class="fa fa-pencil mr-10"></i> 목록', className: 'btn-sm btn-primary border-radius-reset ml-15 btn-list' },
                 { text: '<i class="fa fa-pencil mr-10"></i> 공지등록', className: 'btn-sm btn-primary border-radius-reset ml-15 btn-evnet-notice' },
             ],
@@ -107,7 +107,7 @@
             },
             columns: [
                 {'data' : null, 'render' : function(data, type, row, meta) {
-                        return '<input type="checkbox" name="is_checked" value="'+ row.temp_Phone +'" class="flat" data-is-checked-comment-idx="' + row.temp_idx + '" data-is-checked-comment-id="' + row.temp_MemId + '" data-is-checked-name="' + row.temp_Name + '">';
+                        return '<input type="checkbox" name="is_checked" class="flat target-crm-member" data-mem-idx="' + row.row.temp_MemIdx + '">';
                     }},
                 {'data' : null, 'render' : function(data, type, row, meta) {
                         // 리스트 번호
@@ -191,50 +191,6 @@
             $('.btn-notice-read').setLayer({
                 "url" : '{{ site_url('/site/eventLecture/readNoticeModal/'.$el_idx) }}'+uri_param,
                 "width" : "1000"
-            });
-        });
-
-        // 쪽지발송
-        $('.btn-send-comment-message').click(function() {
-            var $params = new Array();
-            var uri_param = '';
-            var $params_length = 0;
-            $('input[name="is_checked"]:checked').each(function(key) {
-                $params[key] = $(this).data('is-checked-comment-id');
-            });
-
-            $params_length = Object.keys($params).length;
-            if ($params_length <= '0') {
-                alert('수신인 명단을 선택해주세요.');
-                return false;
-            }
-            uri_param = '?target_id=' + $params;
-
-            $('.btn-send-comment-message').setLayer({
-                "url" : "{{ site_url('crm/message/createSendModal') }}" + uri_param,
-                "width" : "1200"
-            });
-        });
-
-        // SMS발송
-        $('.btn-send-comment-sms').click(function() {
-            var $params = new Array();
-            var uri_param = '';
-            var $params_length = 0;
-            $('input[name="is_checked"]:checked').each(function(key) {
-                $params[key] = $(this).data('is-checked-comment-id');
-            });
-
-            $params_length = Object.keys($params).length;
-            if ($params_length <= '0') {
-                alert('수신인 명단을 선택해주세요.');
-                return false;
-            }
-            uri_param = '?target_id=' + $params;
-
-            $('.btn-send-comment-sms').setLayer({
-                "url" : "{{ site_url('crm/sms/createSendModal') }}" + uri_param,
-                "width" : "1200"
             });
         });
 

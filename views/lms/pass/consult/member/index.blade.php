@@ -119,7 +119,7 @@
                 },
                 columns: [
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            return '<input type="checkbox" name="is_checked" value="'+ row.Phone +'" class="flat" data-is-checked-idx="' + row.MemIdx + '" data-is-checked-register-id="' + row.MemId + '" data-is-checked-name="' + row.MemName + '" data-is-checked-register-phone="' + row.Phone + '">';
+                            return '<input type="checkbox" name="is_checked" class="flat target-crm-member" data-mem-idx="' + row.MemIdx + '">';
                         }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             // 리스트 번호
@@ -154,50 +154,6 @@
                             return data.RegDatm + '<br>'+data.CancelDatm;
                         }},
                 ],
-            });
-
-            // 쪽지발송
-            $('.btn-message').click(function() {
-                var $params = new Array();
-                var uri_param = '';
-                var $params_length = 0;
-                $('input[name="is_checked"]:checked').each(function(key) {
-                    $params[key] = $(this).data('is-checked-idx');
-                });
-
-                $params_length = Object.keys($params).length;
-                if ($params_length <= '0') {
-                    alert('수신인 명단을 선택해주세요.');
-                    return false;
-                }
-                uri_param = '?target_idx=' + $params;
-
-                $('.btn-message').setLayer({
-                    "url" : "{{ site_url('crm/message/createSendModal') }}" + uri_param,
-                    "width" : "1200"
-                });
-            });
-
-            // SMS발송
-            $('.btn-sms').click(function() {
-                var $params = new Array();
-                var $phone_params = new Array();
-                $('input[name="is_checked"]:checked').each(function(key) {
-                    $params[key] = $(this).data('is-checked-register-id');
-                    $phone_params[key] = $(this).data('is-checked-register-phone');
-                });
-
-                var params_length = Object.keys($params).length;
-                if (params_length <= '0') {
-                    alert('수신인 명단을 선택해주세요.');
-                    return false;
-                }
-
-                var uri_param = '?target_id=' + $params + '&target_phone=' + $phone_params;
-                $('.btn-sms').setLayer({
-                    "url" : "{{ site_url('crm/sms/createSendModal') }}" + uri_param,
-                    "width" : "1200"
-                });
             });
 
             $list_table.on('click', '.btn-schedule-member-read', function() {

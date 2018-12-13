@@ -83,8 +83,8 @@
             rowsGroup: ['.rowspan'],
             buttons: [
                 { text: '<i class="fa fa-send mr-10"></i> 엑셀변환', className: 'btn-default btn-sm btn-success border-radius-reset mr-15 btn-excel-register' },
-                { text: '<i class="fa fa-send mr-10"></i> 쪽지발송', className: 'btn-sm btn-info border-radius-reset btn-send-register-message' },
-                { text: '<i class="fa fa-send mr-10"></i> SMS발송', className: 'btn-sm btn-info border-radius-reset ml-15 btn-send-register-sms' },
+                { text: '<i class="fa fa-send mr-10"></i> 쪽지발송', className: 'btn-sm btn-info border-radius-reset btn-message' },
+                { text: '<i class="fa fa-send mr-10"></i> SMS발송', className: 'btn-sm btn-info border-radius-reset ml-15 btn-sms' },
                 { text: '<i class="fa fa-pencil mr-10"></i> 목록', className: 'btn-sm btn-primary border-radius-reset ml-15 btn-list' },
             ],
             ajax: {
@@ -96,7 +96,7 @@
             },
             columns: [
                 {'data' : null, 'render' : function(data, type, row, meta) {
-                        return '<input type="checkbox" name="is_checked" value="'+ row.Phone +'" class="flat" data-is-checked-register-idx="' + row.MemIdx + '" data-is-checked-register-id="' + row.MemId + '" data-is-checked-name="' + row.MemName + '">';
+                        return '<input type="checkbox" name="is_checked" value="'+ row.Phone +'" class="flat target-crm-member" data-mem-idx="' + row.MemIdx + '">';
                     }},
                 {'data' : null, 'render' : function(data, type, row, meta) {
                         // 리스트 번호

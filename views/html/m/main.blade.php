@@ -24,14 +24,23 @@
 <br/><br/><div style="clear:both"></div><br/><br/>
 
 <ul>
+    <li style="width: 230px"><img style="width: 100%" src="{{ img_url('m/main/icon_myacad1.png') }}"><div>png230</div></li>
+    <li style="width: 150px"><img style="width: 100%" src="{{ img_url('m/main/icon_myacad1.png') }}"><div>png150</div></li>
+    <li style="width: 100px"><img style="width: 100%" src="{{ img_url('m/main/icon_myacad1.png') }}"><div>png100</div></li>
+    <li style="width: 46px"><img style="width: 100%" src="{{ img_url('m/main/icon_myacad1.png') }}"><div>png46</div></li>
+    <li style="width: 25px"><img style="width: 100%" src="{{ img_url('m/main/icon_myacad1.png') }}"><div>png25</div></li>
+</ul>
+
+==================================================
+<br/><br/><div style="clear:both"></div><br/><br/>
+
+<ul>
     <li style="width: 230px"><img style="width: 100%" src="{{ img_url('m/main/icon_myacad.png') }}"><div>png230</div></li>
     <li style="width: 150px"><img style="width: 100%" src="{{ img_url('m/main/icon_myacad.png') }}"><div>png150</div></li>
     <li style="width: 100px"><img style="width: 100%" src="{{ img_url('m/main/icon_myacad.png') }}"><div>png100</div></li>
     <li style="width: 46px"><img style="width: 100%" src="{{ img_url('m/main/icon_myacad.png') }}"><div>png46</div></li>
     <li style="width: 25px"><img style="width: 100%" src="{{ img_url('m/main/icon_myacad.png') }}"><div>png25</div></li>
 </ul>
-
-<br/><br/><div style="clear:both"></div><br/><br/>
 
     <div class="MainBnrSlider swiper-container swiper-container-arrow">
         <div class="swiper-wrapper">

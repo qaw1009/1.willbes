@@ -8,6 +8,10 @@
                 <span>디바이스정보</span>
             </button>
             <br><br>
+            <button type="button" onclick="logout()" class="mem-Btn bg-blue bd-dark-blue">
+                <span>로그아웃</span>
+            </button>
+            <br><br>
             <button type="button" onclick="getToken()" class="mem-Btn bg-blue bd-dark-blue">
                 <span>겟토큰</span>
             </button>
@@ -32,6 +36,10 @@
             app.getToken(function(token) {
                 alert(token);
             });
+        }
+
+        function logout(){
+            app.logout();
         }
     </script>
 @stop

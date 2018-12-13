@@ -5,6 +5,10 @@
         로그인완료 처리 페이지
     <!-- <div id="Container" class="memContainer widthAuto c_both"> -->
         <div class="Member mem-Login widthAuto460">
+            <button type="button" onclick="setToken()" class="mem-Btn bg-blue bd-dark-blue">
+                <span>로그인</span>
+            </button>
+            <br><br>
             <button type="button" onclick="getDeviceInfo()" class="mem-Btn bg-blue bd-dark-blue">
                 <span>디바이스정보</span>
             </button>
@@ -29,12 +33,16 @@
             });
         }
 
+        function setToken() {
+            app.login("{{$token}}");
+            alert("ok");
+        }
+
         function getToken() {
             app.getToken(function(token) {
                 alert(token);
             });
         }
-
     </script>
     {{$token}}
 @stop

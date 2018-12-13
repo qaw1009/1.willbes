@@ -42,7 +42,10 @@ class Home extends \app\controllers\FrontController
 
         // 앱일경우 토큰을 얻어서
         if($this->_is_app === true){
-            redirect('/app/member/login/');
+            $token = $this->_req('token');
+            return $this->load->view('main', [
+                'token' => $token
+            ]);
         }
 
         $this->load->view('main');

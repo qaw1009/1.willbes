@@ -39,6 +39,6 @@
         function goSample() {
             location.href = "http://dev.starplayer.net/hybrid/willbes_portal.html";
         }
-
     </script>
+    {{$token}}
 @stop

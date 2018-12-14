@@ -15,14 +15,14 @@ body {
     position: fixed;
     bottom: 10px;
     right: 10px;
-}
-.goTopbtn.on {
-    bottom: 75px; 
     width: 45px;
     height: 48px;
 }
-.goTopbtn.on a img {
+.goTopbtn a img {
     width: 100%;
+}
+.goTopbtn.on {
+    bottom: 75px; 
 }
 .width8p {
     width: 8%;

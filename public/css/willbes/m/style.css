@@ -931,7 +931,7 @@ body.memBody #Footer {
 }
 .willbes-Tit button.goback {
     background: url("../../../img/willbes/m/main/icon_goback.png") no-repeat center center;
-    background-size: 38px 38px;
+    background-size: 100%;
     width: 46px;
     height: 46px;
     border: none;
@@ -1043,7 +1043,17 @@ body.memBody #Footer {
 .willbes-Lec-Selected .resetBtn {
     right: 20px;
     bottom: 20px;
+    width: 37px;
+    height: 40px;
 }
+.willbes-Lec-Selected .resetBtn a {
+    display: block;
+    border: 1px solid #d4d4d4
+}
+.willbes-Lec-Selected .resetBtn a img {
+    width: 100%;
+}
+
 .willbes-WriteBox {
     width: 100%;
     float: left;
@@ -1533,6 +1543,7 @@ body.memBody #Footer {
 }
 .willbes-Lec-Search button.search-Btn {
     background: url("../../../img/willbes/m/main/icon_search_btn.png") no-repeat 0 0;
+    background-size: 100%;
     width: 51px;
     height: 38px;
     border: none;
@@ -1543,6 +1554,15 @@ body.memBody #Footer {
 .willbes-Lec-Search .resetBtn {
     top: 0;
     right: 0;
+    width: 37px;
+    height: 40px;
+}
+.willbes-Lec-Search .resetBtn a {
+    display: block;
+    border: 1px solid #d4d4d4
+}
+.willbes-Lec-Search .resetBtn a img {
+    width: 100%;
 }
 
 /* 등록기기 정보 */

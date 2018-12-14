@@ -13,7 +13,7 @@
     <!-- left nav -->
     <div class="Lnb NG">
         <h2>교수진 소개</h2>
-        @include('willbes.pc.layouts.partial.site_professor_lnb_menu')
+        @include('willbes.pc.site.professor.lnb_menu_partial')
     </div>
     <div class="Content p_re ml20">
         <form id="url_form" name="url_form" method="GET">
@@ -57,7 +57,7 @@
                         @foreach($products['best'] as $idx => $row)
                             <div class="lec-profile p_re">
                                 <div class="w-tit">
-                                    <a href="{{ site_url('/lecture/show/cate/' . $__cfg['CateCode'] . '/pattern/only/prod-code/' . $row['ProdCode']) }}">{{ $row['ProdName'] }}</a>
+                                    <a href="{{ site_url('/lecture/show/cate/' . $def_cate_code . '/pattern/only/prod-code/' . $row['ProdCode']) }}">{{ $row['ProdName'] }}</a>
                                     @if($row['wLectureProgressCcd'] == '105001')
                                         <img src="{{ img_url('prof/icon_ing.gif') }}">
                                     @endif
@@ -118,7 +118,7 @@
                 <div class="will-Tit NG">신규강좌 <img style="vertical-align: top;" src="{{ img_url('prof/icon_new.gif') }}"></div>
                 <ul class="List-Table GM tx-gray">
                     @foreach($products['new'] as $idx => $row)
-                        <li><a href="{{ site_url('/lecture/show/cate/' . $__cfg['CateCode'] . '/pattern/only/prod-code/' . $row['ProdCode']) }}">{{ $row['ProdName'] }}</a></li>
+                        <li><a href="{{ site_url('/lecture/show/cate/' . $def_cate_code . '/pattern/only/prod-code/' . $row['ProdCode']) }}">{{ $row['ProdName'] }}</a></li>
                     @endforeach
                 </ul>
             </div>
@@ -193,7 +193,7 @@
             var data = {
                 'ele_id' : ele_id,
                 'show_onoff' : 'off',
-                'cate_code' : '{{$__cfg['CateCode']}}',
+                'cate_code' : '{{$def_cate_code}}',
                 'board_idx' : $(this).data('board-idx')
             };
             sendAjax('{{ site_url('/support/studyComment/') }}', data, function(ret) {

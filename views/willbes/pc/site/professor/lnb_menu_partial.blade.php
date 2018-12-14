@@ -6,10 +6,12 @@
         <div class="lnb-List-Depth">
             <dl>
                 @foreach(current($subject_row) as $prof_idx => $prof_name)
+                    @php
+                        $show_url = $__cfg['IsPassSite'] === false ? '/professor/show/cate/' . $def_cate_code . '/prof-idx/' . $prof_idx . '/?' : '/professor/show/prof-idx/' . $prof_idx . '/?cate_code=' . $def_cate_code;
+                        $show_url .= 'subject_idx=' . $subject_idx . '&subject_name=' . rawurlencode(key($subject_row));
+                    @endphp
                     <dt>
-                        <a href="{{ site_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/' . $prof_idx . '/?subject_idx=' . $subject_idx . '&subject_name=' . rawurlencode(key($subject_row))) }}">
-                            {{ $prof_name }}
-                        </a>
+                        <a href="{{ front_url($show_url) }}">{{ $prof_name }}</a>
                     </dt>
                 @endforeach
             </dl>

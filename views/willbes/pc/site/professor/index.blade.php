@@ -11,7 +11,7 @@
     <!-- left nav -->
     <div class="Lnb NG">
         <h2>교수진 소개</h2>
-        @include('willbes.pc.layouts.partial.site_professor_lnb_menu')
+        @include('willbes.pc.site.professor.lnb_menu_partial')
     </div>
     <div class="Content p_re ml20">
         <form id="url_form" name="url_form" method="GET">
@@ -19,6 +19,16 @@
                 <input type="hidden" name="{{ $key }}" value="{{ $val }}"/>
             @endforeach
         </form>
+        @if(isset($arr_base['category']) === true)
+        <div class="curriWrap c_both">
+            {{-- 카테고리 --}}
+            <ul class="curriTabs c_both mb40">
+                @foreach($arr_base['category'] as $idx => $row)
+                    <li><a href="#none" onclick="goUrl('cate_code', '{{ $row['CateCode'] }}');" class="@if($def_cate_code == $row['CateCode']) on @endif">{{ $row['CateName'] }}</a></li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
         <div class="willbes-NoticeWrap mb60 c_both">
             {!! banner('교수진소개_메인_상단', 'sliderPromotion widthAuto460 f_left mr20', $__cfg['SiteCode'], '0') !!}
             <div class="willbes-listTable willbes-newLec widthAuto460">
@@ -26,7 +36,7 @@
                 <ul class="List-Table GM tx-gray">
                     @foreach($arr_base['product'] as $idx => $row)
                         <li>
-                            <a href="{{ site_url('/lecture/show/cate/' . $__cfg['CateCode'] . '/pattern/only/prod-code/' . $row['ProdCode']) }}">{{ $row['ProdName'] }}</a><span class="date">{{ substr($row['RegDatm'], 0, 10) }}</span>
+                            <a href="{{ $__cfg['IsPassSite'] === false ? front_url('/lecture/show/cate/' . $def_cate_code . '/pattern/only/prod-code/' . $row['ProdCode']) : '#none' }}">{{ $row['ProdName'] }}</a><span class="date">{{ substr($row['RegDatm'], 0, 10) }}</span>
                         </li>
                     @endforeach
                 </ul>
@@ -112,10 +122,14 @@
             <div class="willbes-Prof-Subject tx-dark-black">· {{ $subject_name }}</div>
             <!-- willbes-Prof-Subject -->
             <ul class="profGrid">
-                {{-- 교수별 상품 리스트 loop --}}
+                {{-- 교수 리스트 loop --}}
                 @foreach($data['list'][$subject_idx] as $idx => $row)
                 <li class="profList">
-                    <a class="profBox" href="{{ site_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/' . $row['ProfIdx'] . '/?subject_idx=' . $subject_idx . '&subject_name=' . rawurlencode($subject_name)) }}">
+                    @php
+                        $show_url = $__cfg['IsPassSite'] === false ? '/professor/show/cate/' . $def_cate_code . '/prof-idx/' . $row['ProfIdx'] . '/?' : '/professor/show/prof-idx/' . $row['ProfIdx'] . '/?cate_code=' . $def_cate_code;
+                        $show_url .= 'subject_idx=' . $subject_idx . '&subject_name=' . rawurlencode($subject_name);
+                    @endphp
+                    <a class="profBox" href="{{ front_url($show_url) }}">
                         @if(empty($row['ProfEventData']) === false)
                             <a href="{{ $row['ProfEventData']['Link'] }}"><img class="Evt" src="{{ img_url('prof/icon_event.gif') }}"></a>
                         @endif

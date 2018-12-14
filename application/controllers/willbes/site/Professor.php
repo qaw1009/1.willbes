@@ -8,6 +8,7 @@ class Professor extends \app\controllers\FrontController
     protected $auth_controller = false;
     protected $auth_methods = array();
 
+    protected $_def_cate_code = '';     // 기본 카테고리 코드
     protected $_bm_idx = '63';       //bmidx : 강사게시판 : 공지사항
     protected $_paging_limit = 10;
     protected $_paging_count = 10;
@@ -15,6 +16,9 @@ class Professor extends \app\controllers\FrontController
     public function __construct()
     {
         parent::__construct();
+
+        // 학원사이트일 경우 `cate_code` 파라미터 셋팅
+        $this->_def_cate_code = get_var($this->_cate_code, $this->_reqG('cate_code'));
     }
 
     /**
@@ -26,23 +30,36 @@ class Professor extends \app\controllers\FrontController
         // input parameter
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
         $subject_idx = element('subject_idx', $arr_input);
+        
+        // 학원사이트일 경우
+        if ($this->_is_pass_site === true) {
+            // 카테고리 조회
+            $arr_base['category'] = $this->categoryFModel->listSiteCategory($this->_site_code);
+
+            // 카테고리 코드가 없을 경우 기본값 셋팅
+            empty($this->_def_cate_code) === true && $this->_def_cate_code = array_get($arr_base['category'], '0.CateCode', '');
+
+            $learn_pattern = 'off_lecture'; // 학습형태
+        } else {
+            $learn_pattern = 'on_lecture';  // 학습형태
+        }
 
         if ($this->_site_code == '2004') {
             // 공무원일 경우 카테고별 직렬, 직렬별 과목 조회
-            $arr_base['series'] = $this->baseProductFModel->listSeriesCategoryMapping($this->_site_code, $this->_cate_code);
-            $arr_base['subject'] = $this->baseProductFModel->listSubjectSeriesMapping($this->_site_code, $this->_cate_code, element('series_ccd', $arr_input));
+            $arr_base['series'] = $this->baseProductFModel->listSeriesCategoryMapping($this->_site_code, $this->_def_cate_code);
+            $arr_base['subject'] = $this->baseProductFModel->listSubjectSeriesMapping($this->_site_code, $this->_def_cate_code, element('series_ccd', $arr_input));
         } else {
             // 카테고리별 과목 조회
-            $arr_base['subject'] = $this->baseProductFModel->listSubjectCategoryMapping($this->_site_code, $this->_cate_code);
+            $arr_base['subject'] = $this->baseProductFModel->listSubjectCategoryMapping($this->_site_code, $this->_def_cate_code);
         }
 
         // 신규강좌 조회
-        $arr_base['product'] = $this->lectureFModel->listSalesProduct('on_lecture', false
-            , ['EQ' => ['SiteCode' => $this->_site_code, 'IsNew' => 'Y'], 'LKR' => ['CateCode' => $this->_cate_code]]
+        $arr_base['product'] = $this->lectureFModel->listSalesProduct($learn_pattern, false
+            , ['EQ' => ['SiteCode' => $this->_site_code, 'IsNew' => 'Y'], 'LKR' => ['CateCode' => $this->_def_cate_code]]
             , 5, 0, ['ProdCode' => 'desc']);
 
         // 전체 교수 조회
-        $arr_professor = $this->baseProductFModel->listProfessorSubjectMapping($this->_site_code, ['ProfReferData', 'ProfEventData', 'IsNew'], $this->_cate_code);
+        $arr_professor = $this->baseProductFModel->listProfessorSubjectMapping($this->_site_code, ['ProfReferData', 'ProfEventData', 'IsNew'], $this->_def_cate_code);
 
         // LNB 메뉴용 전체 교수 정보
         $arr_subject2professor = array_data_pluck($arr_professor, 'wProfName', ['SubjectIdx', 'SubjectName', 'ProfIdx']);
@@ -66,6 +83,7 @@ class Professor extends \app\controllers\FrontController
             'arr_input' => $arr_input,
             'arr_base' => $arr_base,
             'arr_subject2professors' => $arr_subject2professor,
+            'def_cate_code' => $this->_def_cate_code,
             'data' => [
                 'subjects' => $selected_subjects,
                 'list' => $selected_list
@@ -113,8 +131,11 @@ class Professor extends \app\controllers\FrontController
             show_alert('해당하는 교수정보가 없습니다.', 'back');
         }
 
+        // 학습형태
+        $learn_pattern = $this->_is_pass_site === true ? 'off_lecture' : 'on_lecture';
+
         // 전체 교수 조회
-        $arr_professor = $this->baseProductFModel->listProfessorSubjectMapping($this->_site_code, null, $this->_cate_code);
+        $arr_professor = $this->baseProductFModel->listProfessorSubjectMapping($this->_site_code, null, $this->_def_cate_code);
 
         // LNB 메뉴용 전체 교수 정보
         $arr_subject2professor = array_data_pluck($arr_professor, 'wProfName', ['SubjectIdx', 'SubjectName', 'ProfIdx']);
@@ -123,17 +144,17 @@ class Professor extends \app\controllers\FrontController
         $data['ProfReferData'] = $data['ProfReferData'] == 'N' ? [] : json_decode($data['ProfReferData'], true);
 
         // 수강후기 조회
-        $data['StudyCommentData'] = $this->professorFModel->findProfessorStudyCommentData($prof_idx, $this->_site_code, $this->_cate_code, element('subject_idx',$arr_input), 3);
+        $data['StudyCommentData'] = $this->professorFModel->findProfessorStudyCommentData($prof_idx, $this->_site_code, $this->_def_cate_code, element('subject_idx',$arr_input), 3);
 
         // 상품정보 조회
         // 상품조회 기본조건
         $arr_condition = ['EQ' => ['ProfIdx' => $prof_idx, 'SiteCode' => $this->_site_code, 'SubjectIdx' => element('subject_idx',$arr_input)],
-            'LKR' => ['CateCode' => $this->_cate_code]
+            'LKR' => ['CateCode' => $this->_def_cate_code]
         ];
         $order_by = ['ProdCode' => 'desc'];
 
         // 베스트강좌 조회
-        $products['best'] = $this->lectureFModel->listSalesProduct('on_lecture', false
+        $products['best'] = $this->lectureFModel->listSalesProduct($learn_pattern, false
             , array_merge_recursive($arr_condition, ['EQ' => ['IsBest' => 'Y']]), 4, 0, $order_by);
 
         $products['best'] = array_map(function ($arr) {
@@ -143,7 +164,7 @@ class Professor extends \app\controllers\FrontController
         }, $products['best']);
 
         // 신규강좌 조회
-        $products['new'] = $this->lectureFModel->listSalesProduct('on_lecture', false
+        $products['new'] = $this->lectureFModel->listSalesProduct($learn_pattern, false
             , array_merge_recursive($arr_condition, ['EQ' => ['IsNew' => 'Y']]), 2, 0, $order_by);
 
         // 선택된 탭에 맞는 정보 조회
@@ -164,6 +185,7 @@ class Professor extends \app\controllers\FrontController
         $this->load->view('site/professor/show', [
             'arr_input' => $arr_input,
             'arr_subject2professors' => $arr_subject2professor,
+            'def_cate_code' => $this->_def_cate_code,
             'data' => $data,
             'products' => $products,
             'tab_data' => $tab_data,
@@ -337,7 +359,7 @@ class Professor extends \app\controllers\FrontController
     private function _tab_notice($prof_idx, $wprof_idx, $arr_input)
     {
         $frame_path = '/prof/notice/index';
-        $frame_params = 's_cate_code='.$this->_cate_code.'&prof_idx='.$prof_idx.'&subject_idx='.element('subject_idx',$arr_input);
+        $frame_params = 's_cate_code='.$this->_def_cate_code.'&prof_idx='.$prof_idx.'&subject_idx='.element('subject_idx',$arr_input);
         $frame_params .= '&view_type=frame';
 
         $data = [
@@ -357,7 +379,7 @@ class Professor extends \app\controllers\FrontController
     private function _tab_qna($prof_idx, $wprof_idx, $arr_input)
     {
         $frame_path = '/prof/qna/index';
-        $frame_params = 's_cate_code='.$this->_cate_code.'&prof_idx='.$prof_idx.'&subject_idx='.element('subject_idx',$arr_input);
+        $frame_params = 's_cate_code='.$this->_def_cate_code.'&prof_idx='.$prof_idx.'&subject_idx='.element('subject_idx',$arr_input);
         $frame_params .= '&view_type=frame';
 
         $data = [
@@ -377,7 +399,7 @@ class Professor extends \app\controllers\FrontController
     private function _tab_material($prof_idx, $wprof_idx, $arr_input)
     {
         $frame_path = '/prof/material/index';
-        $frame_params = 's_cate_code='.$this->_cate_code.'&prof_idx='.$prof_idx.'&subject_idx='.element('subject_idx',$arr_input);
+        $frame_params = 's_cate_code='.$this->_def_cate_code.'&prof_idx='.$prof_idx.'&subject_idx='.element('subject_idx',$arr_input);
         $frame_params .= '&view_type=frame';
 
         $data = [
@@ -397,7 +419,7 @@ class Professor extends \app\controllers\FrontController
     private function _tab_tpass($prof_idx, $wprof_idx, $arr_input)
     {
         $frame_path = '/prof/tpass/index';
-        $frame_params = 's_cate_code='.$this->_cate_code.'&prof_idx='.$prof_idx.'&subject_idx='.element('subject_idx',$arr_input);
+        $frame_params = 's_cate_code='.$this->_def_cate_code.'&prof_idx='.$prof_idx.'&subject_idx='.element('subject_idx',$arr_input);
         $frame_params .= '&view_type=frame';
 
         $data = [

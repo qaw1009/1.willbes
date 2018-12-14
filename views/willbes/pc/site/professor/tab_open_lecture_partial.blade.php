@@ -78,7 +78,7 @@
                                             <td class="w-name">{{ $row['SubjectName'] }}<br/><span class="tx-blue">{{ $row['wProfName'] }}</span></td>
                                             <td class="w-data tx-left pl25">
                                                 <div class="w-tit">
-                                                    <a href="{{ site_url('/lecture/show/cate/' . $__cfg['CateCode'] . '/pattern/' . $pattern . '/prod-code/' . $row['ProdCode']) }}" class="prod-name">{{ $row['ProdName'] }}</a>
+                                                    <a href="{{ site_url('/lecture/show/cate/' . substr($row['CateCode'], 0, 4) . '/pattern/' . $pattern . '/prod-code/' . $row['ProdCode']) }}" class="prod-name">{{ $row['ProdName'] }}</a>
                                                 </div>
                                                 <dl class="w-info">
                                                     <dt class="mr20">
@@ -209,7 +209,7 @@
                                         <td class="w-list bg-light-white">{{$row['CourseName']}}</td>
                                         <td class="w-data tx-left pl25">
                                             <div class="w-tit">
-                                                <a href="{{ site_url('/package/show/cate/').$__cfg['CateCode'].'/pack/'.$pack.'/prod-code/'.$row['ProdCode'] }}">{{$row['ProdName']}}</a>
+                                                <a href="{{ site_url('/package/show/cate/').substr($row['CateCode'], 0, 4).'/pack/'.$pack.'/prod-code/'.$row['ProdCode'] }}">{{$row['ProdName']}}</a>
                                             </div>
                                             <dl class="w-info">
                                                 <dt class="mr20">
@@ -271,7 +271,7 @@
                                         <td class="w-list bg-light-white">{{$row['CourseName']}}</td>
                                         <td class="w-data tx-left pl25">
                                             <div class="w-tit">
-                                                <a href="{{ site_url('/package/show/cate/').$__cfg['CateCode'].'/pack/'.$pack.'/prod-code/'.$row['ProdCode'] }}">{{$row['ProdName']}}</a>
+                                                <a href="{{ site_url('/package/show/cate/').substr($row['CateCode'], 0, 4).'/pack/'.$pack.'/prod-code/'.$row['ProdCode'] }}">{{$row['ProdName']}}</a>
                                             </div>
                                             <dl class="w-info">
                                                 <dt class="mr20">

@@ -361,6 +361,7 @@
                 $mem_table_td.eq(5).html(mem_data.Mail + ' (' + mem_data.MailRcvStatus + ')');
 
                 $('.btn-target-crm-member').data('mem-idx', mem_data.MemIdx);
+                $regi_form.find('input[name="search_mem_id"]').val('');
 
                 // 방문수강접수 목록
                 $datatable.draw();

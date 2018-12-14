@@ -37,7 +37,7 @@
             <option value="학습유형2">학습유형2</option>
         </select>
         <div class="willbes-Lec-Search NG width100p mt1p">
-            <div class="inputBox width90p p_re">
+            <div class="inputBox width88p p_re">
                 <input type="text" id="SEARCH" name="SEARCH" class="labelSearch width100p" placeholder="강좌명" maxlength="30">
                 <button type="submit" onclick="" class="search-Btn">
                     <span class="hidden">검색</span>

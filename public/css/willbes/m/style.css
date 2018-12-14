@@ -18,6 +18,11 @@ body {
 }
 .goTopbtn.on {
     bottom: 75px; 
+    width: 45px;
+    height: 48px;
+}
+.goTopbtn.on a img {
+    width: 100%;
 }
 .width8p {
     width: 8%;
@@ -96,6 +101,9 @@ body {
 }
 .width85p {
     width: 85%;
+}
+.width88p {
+    width: 88%;
 }
 .width90p {
     width: 90%;
@@ -1892,6 +1900,9 @@ body.memBody #Footer {
     }
     .width45p {
         width: 40%;
+    }
+    .width88p {
+        width: 86%;
     }
     .width90p {
         width: 89%;

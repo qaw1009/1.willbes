@@ -21,7 +21,7 @@
             <option value="온라인">온라인</option>
         </select>
         <div class="willbes-Lec-Search NG width100p mt1p">
-            <div class="inputBox width90p p_re">
+            <div class="inputBox width88p p_re">
                 <input type="text" id="SEARCH" name="SEARCH" class="labelSearch width100p" placeholder="제목 및 내용 검색" maxlength="30">
                 <button type="submit" onclick="" class="search-Btn">
                     <span class="hidden">검색</span>

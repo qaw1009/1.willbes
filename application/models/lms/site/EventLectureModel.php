@@ -31,7 +31,8 @@ class EventLectureModel extends WB_Model
     ];
 
     // 신청유형
-    public $_requst_type_names = ['1' => '설명회','2' => '특강','3' => '이벤트'];
+    public $_requst_type_names = ['1' => '설명회','2' => '특강','3' => '이벤트','4'=>'합격수기'];
+    public $_option_rules = ['1','2','3'];
 
     // 참여구분
     public $_take_type_names = ['1' => '회원','2' => '회원+비회원'];
@@ -85,7 +86,7 @@ class EventLectureModel extends WB_Model
             A.ReadCnt, A.IsRegister, A.IsUse, A.RegDatm,
             G.SiteName, J.CcdName AS CampusName, D.CateCode, E.wAdminName AS RegAdminName, F.wAdminName AS UpdAdminName,
             K.FileFullPath, K.FileName, IFNULL(H.CCount,\'0\') AS CommentCount,
-            CASE RequstType WHEN 1 THEN \'설명회\' WHEN 2 THEN \'특강\' WHEN 3 THEN \'이벤트\' END AS RequstTypeName,
+            CASE RequstType WHEN 1 THEN \'설명회\' WHEN 2 THEN \'특강\' WHEN 3 THEN \'이벤트\' WHEN 4 THEN \'합격수기\' END AS RequstTypeName,
             CASE IsRegister WHEN \'Y\' THEN \'접수중\' WHEN \'N\' THEN \'마감\' END AS IsRegisterName,
             L.BannerName, L.BannerFullPath, L.BannerImgName, L.BannerImgRealName
             ';
@@ -160,7 +161,7 @@ class EventLectureModel extends WB_Model
                 }
             }
 
-            $set_option_ccd = implode(',', $option_ccds);
+            $set_option_ccd = count($option_ccds) > 0 ? implode(',', $option_ccds) : '';
             $set_comment_use_area = '';
             if (empty($comment_use_area) === false) {
                 $set_comment_use_area = implode(',', $comment_use_area);
@@ -358,10 +359,8 @@ class EventLectureModel extends WB_Model
                 throw new \Exception('데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
             }
 
-            $option_ccds = element('option_ccds', $input);
             $comment_use_area = element('comment_use_area', $input);
-
-            $set_option_ccd = implode(',', $option_ccds);
+            $set_option_ccd = count($option_ccds) > 0 ? implode(',', $option_ccds) : '';
             $set_comment_use_area = '';
             if (empty($comment_use_area) === false) {
                 $set_comment_use_area = implode(',', $comment_use_area);

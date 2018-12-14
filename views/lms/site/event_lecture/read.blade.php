@@ -119,6 +119,9 @@
             <div id="list_comment" class="form-group tab-pane fade">
                 @include('lms.site.event_lecture.read_comment')
             </div>
+            <div id="list_register" class="form-group tab-pane fade">
+                @include('lms.site.event_lecture.read_register')
+            </div>
         </div>
     </div>
 

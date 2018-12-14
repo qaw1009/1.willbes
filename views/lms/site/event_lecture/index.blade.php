@@ -163,7 +163,11 @@
 
                     /*{'data' : 'SendTel'},*/
                     {'data' : 'OptionCcds', 'render' : function(data, type, row, meta) {
-                            return (data.indexOf('{{$send_option_ccd}}') !== -1) ? 'Y' : 'N';
+                            if (data != null) {
+                                return (data.indexOf('{{$send_option_ccd}}') !== -1) ? 'Y' : 'N';
+                            } else {
+                                return 'N';
+                            }
                         }},
 
                     {'data' : 'IsRegisterName'},

@@ -172,7 +172,6 @@ class EventLecture extends \app\controllers\BaseController
     public function store()
     {
         $method = 'add';
-        $el_idx = '';
 
         //캠퍼스 Y 값 조회
         $offLineSite_list = $this->siteModel->getOffLineSiteArray();
@@ -180,16 +179,14 @@ class EventLecture extends \app\controllers\BaseController
         $rules = [
             ['field' => 'site_code', 'label' => '운영사이트', 'rules' => 'trim|required|integer'],
             ['field' => 'cate_code[]', 'label' => '카테고리', 'rules' => 'trim|required'],
-
             ['field' => 'campus_ccd', 'label' => '캠퍼스', 'rules' => 'trim|integer|callback_validateRequiredIf[site_code,' . implode(',', array_keys($offLineSite_list)) . ']'],
-
             ['field' => 'requst_type', 'label' => '신청유형', 'rules' => 'trim|required|integer'],
             ['field' => 'register_start_datm', 'label' => '접수기간시작일자', 'rules' => 'trim|required'],
             ['field' => 'register_end_datm', 'label' => '접수기간종료일자', 'rules' => 'trim|required'],
             ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => 'event_name', 'label' => '제목', 'rules' => 'trim|required|max_length[100]'],
             ['field' => 'content_type', 'label' => '내용옵션', 'rules' => 'trim|required|in_list[I,E]'],
-            ['field' => 'option_ccds[]', 'label' => '관리옵션', 'rules' => 'trim|required'],
+            ['field' => 'option_ccds[]', 'label' => '관리옵션', 'rules' => 'callback_validateRequiredIf[requst_type,'.implode(',', $this->eventLectureModel->_option_rules).']'],
         ];
 
         //상태 값에 따른 rules 적용
@@ -259,8 +256,6 @@ class EventLecture extends \app\controllers\BaseController
 
         } else {
             $method = 'modify';
-            $el_idx = $this->_reqP('el_idx');
-
             if ($content_type == 'E') {
                 $rules = array_merge($rules, [
                     ['field' => 'content', 'label' => '내용', 'rules' => 'trim|required']
@@ -273,7 +268,6 @@ class EventLecture extends \app\controllers\BaseController
         }
 
         $result = $this->eventLectureModel->{$method . 'EventLecture'}($this->_reqP(null, false));
-
         $this->json_result($result, '저장 되었습니다.', $result);
     }
 

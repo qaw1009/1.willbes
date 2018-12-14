@@ -284,7 +284,7 @@
                     <div class="col-md-10 form-inline item">
                         <div class="checkbox">
                             @foreach($arr_options as $key => $val)
-                                <input type="checkbox" id="option_ccds_{{$key}}" name="option_ccds[]" class="flat optoin-ccds" title="관리옵션" value="{{$key}}" data-code="{{$key}}" required="required"
+                                <input type="checkbox" id="option_ccds_{{$key}}" name="option_ccds[]" class="flat optoin-ccds" title="관리옵션" value="{{$key}}" data-code="{{$key}}"
                                        @if( empty($data['data_option_ccd']) === false && array_key_exists($key, $data['data_option_ccd']) === true )checked="checked"@endif/>
                                 <label class="inline-block mr-5" for="option_ccds_{{$key}}">{{$val}}</label>
                             @endforeach

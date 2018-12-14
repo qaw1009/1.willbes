@@ -110,6 +110,7 @@
             <ul class="nav nav-tabs nav-justified">
                 <li class="active"><a data-toggle="tab" href="#list_register" class="send_type" data-content-type="1">신청현황</a></li>
                 <li><a data-toggle="tab" href="#list_comment" class="send_type" data-content-type="2">댓글현황</a></li>
+                <li><a data-toggle="tab" href="#list_member_success" class="send_type" data-content-type="2">합격수기현황</a></li>
             </ul>
         </div>
         <div class="tab-content">
@@ -119,8 +120,8 @@
             <div id="list_comment" class="form-group tab-pane fade">
                 @include('lms.site.event_lecture.read_comment')
             </div>
-            <div id="list_register" class="form-group tab-pane fade">
-                @include('lms.site.event_lecture.read_register')
+            <div id="list_member_success" class="form-group tab-pane fade">
+                @include('lms.site.event_lecture.read_member_success')
             </div>
         </div>
     </div>

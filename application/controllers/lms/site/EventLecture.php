@@ -331,6 +331,15 @@ class EventLecture extends \app\controllers\BaseController
             }
         }
 
+        //응시직렬
+        $ms_datas['SerialCcd'] = $this->codeModel->getCcd($this->_groupCcd['SerialCcd']);
+
+        //응시지역
+        $ms_datas['CandidateAreaCcd'] = $this->codeModel->getCcd($this->_groupCcd['CandidateAreaCcd']);
+
+        //합격구분
+        $ms_datas['SuccessType'] = ['1' => '필기', '2' => '최종'];
+
         // 관리자명 리턴
         $wAdmin_info = $this->adminModel->findAdmin('wAdminName', ['EQ' => ['wAdminIdx' => $this->session->userdata('admin_idx')]]);
 
@@ -347,7 +356,8 @@ class EventLecture extends \app\controllers\BaseController
             'el_idx' => $el_idx,
             'file_data' => $file_data,
             'data_register_LM' => $data_register_LM,
-            'wAdmin_info' => $wAdmin_info
+            'wAdmin_info' => $wAdmin_info,
+            'ms_datas' => $ms_datas
         ]);
     }
 
@@ -447,6 +457,33 @@ class EventLecture extends \app\controllers\BaseController
         return $this->response([
             'recordsTotal' => count($list),
             'recordsFiltered' => count($list),
+            'data' => $list,
+        ]);
+    }
+
+    /**
+     * 이벤트 합격수기 현황
+     * @param array $params
+     * @return CI_Output
+     */
+    public function listMemberSuccessAjax($params = [])
+    {
+        $count = 0;
+        $list = [];
+        $el_idx = $params[0];
+
+        if (empty($el_idx) === false) {
+            $arr_condition = $this->_getMemberSuccessListConditions($el_idx);
+
+            /*$count = $this->eventLectureModel->listAllEventRegister(true, $arr_condition);
+            if ($count > 0) {
+                $list = $this->eventLectureModel->listAllEventRegister(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.EmIdx' => 'asc']);
+            }*/
+        }
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
             'data' => $list,
         ]);
     }
@@ -765,6 +802,29 @@ class EventLecture extends \app\controllers\BaseController
             ]
         ];
 
+        $arr_condition['BDT'] = ['A.RegDatm' => [$this->_reqP('search_member_start_date'), $this->_reqP('search_member_end_date')]];
+
+        return $arr_condition;
+    }
+
+    private function _getMemberSuccessListConditions($el_idx)
+    {
+        $arr_condition = [
+            'EQ' => [
+                'B.ElIdx' => $el_idx,
+                'B.IsStatus' => 'Y',
+                'B.ErIdx' => $this->_reqP('search_register_idx')
+            ],
+            'ORG1' => [
+                'LKB' => [
+                    'C.MemName' => $this->_reqP('search_member_value'),
+                    'C.MemId' => $this->_reqP('search_member_value'),
+                    'C.Phone3' => $this->_reqP('search_member_value'),
+                ]
+            ]
+        ];
+
+        // 날짜 검색
         $arr_condition['BDT'] = ['A.RegDatm' => [$this->_reqP('search_member_start_date'), $this->_reqP('search_member_end_date')]];
 
         return $arr_condition;

@@ -1,19 +1,29 @@
 <div class="row">
-    <form class="form-horizontal" id="search_register_form" name="search_register_form" method="POST">
+    <form class="form-horizontal" id="search_member_success_form" name="search_member_success_form" method="POST">
         {!! csrf_field() !!}
         <div class="form-group">
-            <label class="control-label col-md-2">다중특강정보</label>
-            <div class="col-md-2 form-inline">
-                <select class="form-control" id="search_register_idx" name="search_register_idx">
-                    <option value="">다중특강정보</option>
-                    @foreach($data_register_LM as $key => $val)
+            <label class="control-label col-md-2">조건</label>
+            <div class="col-md-8 form-inline">
+                <select class="form-control" id="search_serial_ccd" name="search_serial_ccd">
+                    <option value="">응시직렬</option>
+                    @foreach($ms_datas['SerialCcd'] as $key => $val)
                         <option value="{{$key}}">{{$val}}</option>
                     @endforeach
                 </select>
-            </div>
-            <label class="control-label col-md-3">신청자 / 정원</label>
-            <div class="col-md-2">
-                <p class="form-control-static" id="member_total_info"></p>
+
+                <select class="form-control" id="search_candidate_area_ccd" name="search_candidate_area_ccd">
+                    <option value="">응시지역</option>
+                    @foreach($ms_datas['CandidateAreaCcd'] as $key => $val)
+                        <option value="{{$key}}">{{$val}}</option>
+                    @endforeach
+                </select>
+
+                <select class="form-control" id="search_success_type" name="search_success_type">
+                    <option value="">합격구분</option>
+                    @foreach($ms_datas['SuccessType'] as $key => $val)
+                        <option value="{{$key}}">{{$val}}</option>
+                    @endforeach
+                </select>
             </div>
         </div>
         <div class="form-group">
@@ -22,9 +32,9 @@
                 <input type="text" class="form-control" id="search_member_value" name="search_member_value">
             </div>
             <div class="col-md-2">
-                <p class="form-control-static">• 이름, 아이디, 연락처 검색 기능</p>
+                <p class="form-control-static">• 이름, 아이디,응시번호 검색 가능</p>
             </div>
-            <label class="control-label col-md-1" for="search_member_start_date">신청기간검색</label>
+            <label class="control-label col-md-1" for="search_member_start_date">신청날짜검색</label>
             <div class="col-md-5">
                 <div class="col-md-11 form-inline">
                     <div class="input-group mb-0 mr-20">
@@ -52,18 +62,19 @@
 
 <div class="x_panel mt-20">
     <div class="x_content">
-        <table id="list_ajax_register_table" class="table table-striped table-bordered">
+        <table id="list_ajax_member_success_table" class="table table-striped table-bordered">
             <thead>
             <tr>
                 <th>선택</th>
                 <th>No</th>
-                <th>이름</th>
-                <th>아이디</th>
-                <th>연락처</th>
-                <th>이메일</th>
-                <th>신청일</th>
-                <th class="rowspan">신청특강/설명회</th>
-                <th>총신청수</th>
+                <th>회원명</th>
+                <th>응시번호</th>
+                <th>응시직렬</th>
+                <th>응시지역</th>
+                <th>합격구분</th>
+                <th>합격증첨부</th>
+                <th>수기첨부</th>
+                <th>등록일</th>
             </tr>
             </thead>
             <tbody>
@@ -74,13 +85,12 @@
 
 <script type="text/javascript">
     var $datatable_register;
-    var $search_register_form = $('#search_register_form');
-    var $list_regitster_table = $('#list_ajax_register_table');
+    var $search_member_success_form = $('#search_member_success_form');
+    var $list__member_success_table = $('#list_ajax_member_success_table');
 
     $(document).ready(function() {
-        $datatable_register = $list_regitster_table.DataTable({
+        $datatable_register = $list__member_success_table.DataTable({
             serverSide: true,
-            rowsGroup: ['.rowspan'],
             buttons: [
                 { text: '<i class="fa fa-send mr-10"></i> 엑셀변환', className: 'btn-default btn-sm btn-success border-radius-reset mr-15 btn-excel-register' },
                 { text: '<i class="fa fa-send mr-10"></i> 쪽지발송', className: 'btn-sm btn-info border-radius-reset btn-message' },
@@ -88,10 +98,10 @@
                 { text: '<i class="fa fa-pencil mr-10"></i> 목록', className: 'btn-sm btn-primary border-radius-reset ml-15 btn-list' },
             ],
             ajax: {
-                'url' : '{{ site_url('/site/eventLecture/listRegisterAjax/'.$el_idx) }}',
+                'url' : '{{ site_url('/site/eventLecture/listMemberSuccessAjax/'.$el_idx) }}',
                 'type' : 'POST',
                 'data' : function(data) {
-                    return $.extend(arrToJson($search_register_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
+                    return $.extend(arrToJson($search_member_success_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
                 }
             },
             columns: [
@@ -120,43 +130,14 @@
 
         // 검색초기화
         $('.btn-reset-register').click(function (){
-            $search_register_form[0].reset();
+            $search_member_success_form[0].reset();
             $datatable_register.draw();
-        });
-
-        // 신청자/정원 데이터 호출
-        $('#search_register_idx').change(function() {
-            var member_total_info = '';
-            var person_limit_type_name = '';
-            var _data = {};
-            var _url = '{{ site_url("/site/eventLecture/getAjaxRegisterMemberCount/") }}' + this.value;
-
-            if (this.value == '') {
-                $('#member_total_info').html('');
-                return false;
-            }
-
-            sendAjax(_url, _data, function(ret) {
-                if (ret.ret_cd) {
-                    if (Object.keys(ret.ret_data).length > 0) {
-                        $.each(ret.ret_data, function(key, val) {
-                            if (val.PersonLimitType == 'N') {
-                                person_limit_type_name = '인원 무제한';
-                            } else if (val.PersonLimitType == 'L') {
-                                person_limit_type_name = '인원 제한';
-                            }
-                            member_total_info = val.memberCnt + ' / ' + person_limit_type_name;
-                            $('#member_total_info').html(member_total_info);
-                        });
-                    }
-                }
-            }, showError, false, 'GET');
         });
 
         // 엑셀다운로드 버튼 클릭
         $('.btn-excel-register').on('click', function(event) {
             event.preventDefault();
-            formCreateSubmit('{{ site_url('/site/eventLecture/registerExcel/'.$el_idx) }}', $search_register_form.serializeArray(), 'POST');
+            formCreateSubmit('{{ site_url('/site/eventLecture/registerExcel/'.$el_idx) }}', $search_member_success_form.serializeArray(), 'POST');
         });
     });
 </script>

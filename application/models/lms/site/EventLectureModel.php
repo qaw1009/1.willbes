@@ -19,7 +19,9 @@ class EventLectureModel extends WB_Model
     ];
 
     public $_groupCcd = [
-        'option' => '660'
+        'option' => '660',
+        'SerialCcd' => '666',
+        'CandidateAreaCcd' => '631'
     ];
 
     // 이벤트 접수 관리(정원제한), 댓글기능, 자동문자, 바로신청팝업

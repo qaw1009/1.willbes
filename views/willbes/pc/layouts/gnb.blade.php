@@ -13,13 +13,13 @@
         <div class="sliderGNB bSlider">
             <div class="slider">
                 <div><img src="{{ img_url('gnbbanner/gnb_180918.jpg') }}"></div>
-                <div><a href="https://www.dev.willbes.net/support/notice/show?board_idx=1057" target="_blank"><img src="{{ img_url('gnbbanner/gnb_180919.jpg') }}"></a></div>
+                <div><a href="{{ app_url('/support/notice/show?board_idx=1057', 'www') }}" target="_blank"><img src="{{ img_url('gnbbanner/gnb_180919.jpg') }}"></a></div>
             </div>
         </div>
     @else
         <!-- gnb site menu -->
         <div class="topView">
-            @php $menu_group_row = $__cfg['GNBMenu']['TreeMenu'][$__cfg['GNBMenu']['ActiveGroupMenuIdx']] @endphp
+            @php $menu_group_row = $__cfg['GNBMenu']['TreeMenu'][$__cfg['GNBMenu']['ActiveGroupMenuIdx']]; @endphp
             <h1>
                 <img src="{{ img_url('gnb/icon_' . $menu_group_row['UrlSubDomain'] . '.gif') }}">{{ $menu_group_row['MenuName'] }}
             </h1>
@@ -27,8 +27,9 @@
                 <ul>
                     @foreach($menu_group_row['Children'] as $menu_idx => $menu_row)
                         @if($menu_row['MenuType'] == 'GN')
+                            @php $active_class = ends_with($menu_row['MenuUrl'], $__cfg['CateCode']) === true ? 'strong' : ''; @endphp
                             <li class="dropdown">
-                                <a href="{{ $menu_row['MenuUrl'] }}" target="_{{ $menu_row['UrlTarget'] }}">{{ $menu_row['MenuName'] }}</a>
+                                <a href="{{ $menu_row['MenuUrl'] }}" target="_{{ $menu_row['UrlTarget'] }}" class="{{ $active_class }}">{{ $menu_row['MenuName'] }}</a>
                                 @if(isset($menu_row['Children']) === true)
                                     <div class="left-drop-Box">
                                         <ul>
@@ -46,8 +47,9 @@
                                 @endif
                             </li>
                         @elseif($menu_row['MenuType'] == 'GA')
+                            @php $active_class = $__cfg['IsPassSite'] === true ? 'strong' : ''; @endphp
                             <li class="Acad">
-                                <a class="willbes-Acad-Tit" href="{{ $menu_row['MenuUrl'] }}" target="_{{ $menu_row['UrlTarget'] }}">{{ $menu_row['MenuName'] }}</a>
+                                <a class="willbes-Acad-Tit {{ $active_class }}" href="{{ $menu_row['MenuUrl'] }}" target="_{{ $menu_row['UrlTarget'] }}">{{ $menu_row['MenuName'] }}</a>
                                 <dl class="sns-Btn">
                                     <dt>
                                         <a href="#none">

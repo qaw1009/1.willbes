@@ -110,7 +110,7 @@ class Payment extends \app\controllers\FrontController
         if ($results['total_pay_price'] > 0) {
             // PG사 결제요청 폼 생성
             $data = [
-                'mid' => config_app('PgMid'),
+                'mid' => $results['cart_type'] == 'book' ? config_app('PgBookMid') : config_app('PgMid'),
                 'order_no' => $order_no,
                 'repr_prod_name' => $results['repr_prod_name'],
                 'req_pay_price' => $results['total_pay_price'],

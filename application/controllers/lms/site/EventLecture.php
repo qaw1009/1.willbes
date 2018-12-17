@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class EventLecture extends \app\controllers\BaseController
 {
     protected $models = array('site/eventLecture', 'sys/site', 'sys/code', 'sys/category', 'product/base/subject', 'product/base/professor', 'board/board', 'site/bannerRegist', '_wbs/sys/admin');
-    protected $helpers = array();
+    protected $helpers = array('download','file');
 
     protected $_groupCcd = [];
 
@@ -338,7 +338,7 @@ class EventLecture extends \app\controllers\BaseController
         $ms_datas['CandidateAreaCcd'] = $this->codeModel->getCcd($this->_groupCcd['CandidateAreaCcd']);
 
         //합격구분
-        $ms_datas['SuccessType'] = ['1' => '필기', '2' => '최종'];
+        $ms_datas['SuccessType'] = $this->eventLectureModel->_successType;
 
         // 관리자명 리턴
         $wAdmin_info = $this->adminModel->findAdmin('wAdminName', ['EQ' => ['wAdminIdx' => $this->session->userdata('admin_idx')]]);
@@ -475,10 +475,10 @@ class EventLecture extends \app\controllers\BaseController
         if (empty($el_idx) === false) {
             $arr_condition = $this->_getMemberSuccessListConditions($el_idx);
 
-            /*$count = $this->eventLectureModel->listAllEventRegister(true, $arr_condition);
+            $count = $this->eventLectureModel->listAllEventMemberSuccess(true, $arr_condition);
             if ($count > 0) {
-                $list = $this->eventLectureModel->listAllEventRegister(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.EmIdx' => 'asc']);
-            }*/
+                $list = $this->eventLectureModel->listAllEventMemberSuccess(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['a.EmsIdx' => 'DESC']);
+            }
         }
 
         return $this->response([
@@ -716,6 +716,31 @@ class EventLecture extends \app\controllers\BaseController
     }
 
     /**
+     * 합격수기 엑셀다운로드
+     * @param array $params
+     */
+    public function memberSuccessExcel($params = [])
+    {
+        $headers = ['이름', '아이디', '연락처', '응시번호', '응시직렬', '응시지역', '합격구분', '등록일'];
+
+        $el_idx = $params[0];
+        $arr_condition = $this->_getMemberSuccessListConditions($el_idx);
+        $list = $this->eventLectureModel->listAllEventMemberSuccess('excel', $arr_condition, null, null, ['a.EmsIdx' => 'DESC']);
+
+        // export excel
+        $this->load->library('excel');
+        $this->excel->exportExcel('합격수기', $list, $headers);
+    }
+
+    public function download()
+    {
+        $file_path = $this->_reqG('path');
+        $file_name = $this->_reqG('fname');
+
+        public_download($file_path, $file_name);
+    }
+
+    /**
      * 검색 조건 셋팅
      * @return array
      */
@@ -811,15 +836,17 @@ class EventLecture extends \app\controllers\BaseController
     {
         $arr_condition = [
             'EQ' => [
-                'B.ElIdx' => $el_idx,
-                'B.IsStatus' => 'Y',
-                'B.ErIdx' => $this->_reqP('search_register_idx')
+                'a.ElIdx' => $el_idx,
+                'a.IsStatus' => 'Y',
+                'a.SerialCcd' => $this->_reqP('search_serial_ccd'),
+                'a.CandidateAreaCcd' => $this->_reqP('search_candidate_area_ccd'),
+                'a.SuccessType' => $this->_reqP('search_success_type')
             ],
             'ORG1' => [
                 'LKB' => [
-                    'C.MemName' => $this->_reqP('search_member_value'),
-                    'C.MemId' => $this->_reqP('search_member_value'),
-                    'C.Phone3' => $this->_reqP('search_member_value'),
+                    'b.MemName' => $this->_reqP('search_member_value'),
+                    'b.MemId' => $this->_reqP('search_member_value'),
+                    'a.CandidateNum' => $this->_reqP('search_member_value'),
                 ]
             ]
         ];

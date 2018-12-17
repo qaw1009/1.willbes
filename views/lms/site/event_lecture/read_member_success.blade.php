@@ -55,8 +55,8 @@
 </div>
 <div class="row mt-10 mb-20">
     <div class="col-xs-12 text-right">
-        <button type="button" class="btn btn-primary btn-search-register"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
-        <button type="button" class="btn btn-default mr-20 btn-reset-register">검색초기화</button>
+        <button type="button" class="btn btn-primary btn-search-member-success"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
+        <button type="button" class="btn btn-default mr-20 btn-reset-member-success">검색초기화</button>
     </div>
 </div>
 
@@ -84,15 +84,15 @@
 </div>
 
 <script type="text/javascript">
-    var $datatable_register;
+    var $datatable_member_success;
     var $search_member_success_form = $('#search_member_success_form');
-    var $list__member_success_table = $('#list_ajax_member_success_table');
+    var $list_member_success_table = $('#list_ajax_member_success_table');
 
     $(document).ready(function() {
-        $datatable_register = $list__member_success_table.DataTable({
+        $datatable_member_success = $list_member_success_table.DataTable({
             serverSide: true,
             buttons: [
-                { text: '<i class="fa fa-send mr-10"></i> 엑셀변환', className: 'btn-default btn-sm btn-success border-radius-reset mr-15 btn-excel-register' },
+                { text: '<i class="fa fa-send mr-10"></i> 엑셀변환', className: 'btn-default btn-sm btn-success border-radius-reset mr-15 btn-excel-member-success' },
                 { text: '<i class="fa fa-send mr-10"></i> 쪽지발송', className: 'btn-sm btn-info border-radius-reset btn-message' },
                 { text: '<i class="fa fa-send mr-10"></i> SMS발송', className: 'btn-sm btn-info border-radius-reset ml-15 btn-sms' },
                 { text: '<i class="fa fa-pencil mr-10"></i> 목록', className: 'btn-sm btn-primary border-radius-reset ml-15 btn-list' },
@@ -106,38 +106,72 @@
             },
             columns: [
                 {'data' : null, 'render' : function(data, type, row, meta) {
-                        return '<input type="checkbox" name="is_checked" value="'+ row.Phone +'" class="flat target-crm-member" data-mem-idx="' + row.MemIdx + '">';
+                        return '<input type="checkbox" name="is_checked" class="flat target-crm-member" data-mem-idx="' + row.MemIdx + '">';
                     }},
                 {'data' : null, 'render' : function(data, type, row, meta) {
                         // 리스트 번호
-                        return $datatable_register.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
+                        return $datatable_member_success.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
+                    }},
+                {'data' : null, 'render' : function(data, type, row, meta) {
+                        var data = '<a href="javascript:void(0);" class="btn-member-info" data-idx="' + row.MemIdx + '">';
+                        data += '<u>';
+                        data += row.MemName+'('+row.MemId+')';
+                        data += '</u></a>';
+                        data += '<br>'+row.MemPhone+'('+row.SmsRcvStatus+')';
+                        return data;
                     }},
 
-                {'data' : 'UserName'},
-                {'data' : 'MemId'},
-                {'data' : 'Phone'},
-                {'data' : 'Mail'},
-                {'data' : 'RegDatm'},
-                {'data' : 'RegisterName'},
-                {'data' : 'registerCnt'}
+                {'data' : 'CandidateNum'},
+                {'data' : 'SerialName'},
+                {'data' : 'CandidateAreaName'},
+                {'data' : 'SuccessTypeName'},
+
+                {'data' : 'FileRealName1', 'render' : function(data, type, row, meta) {
+                        var tmp_return;
+                        if (data === null) {
+                            tmp_return = '';
+                        } else {
+                            tmp_return = '<a href="javascript:void(0);" class="file-download" data-file-path="'+row.FileFullPath1+row.FileName1+'" data-file-name="'+row.FileRealName1+'">'+row.FileRealName1+'</a>';
+                        }
+                        return tmp_return;
+                    }},
+                {'data' : 'FileRealName2', 'render' : function(data, type, row, meta) {
+                        var tmp_return;
+                        if (data === null) {
+                            tmp_return = '';
+                        } else {
+                            tmp_return = '<a href="javascript:void(0);" class="file-download" data-file-path="'+row.FileFullPath2+row.FileName2+'" data-file-name="'+row.FileRealName2+'">'+row.FileRealName2+'</a>';
+                        }
+                        return tmp_return;
+                    }},
+
+                {'data' : 'RegDatm'}
+
             ]
         });
 
         // 검색
-        $('.btn-search-register').click(function (){
-            $datatable_register.draw();
+        $('.btn-search-member-success').click(function (){
+            $datatable_member_success.draw();
         });
 
         // 검색초기화
-        $('.btn-reset-register').click(function (){
+        $('.btn-reset-member-success').click(function (){
             $search_member_success_form[0].reset();
-            $datatable_register.draw();
+            $datatable_member_success.draw();
         });
 
         // 엑셀다운로드 버튼 클릭
-        $('.btn-excel-register').on('click', function(event) {
+        $('.btn-excel-member-success').on('click', function(event) {
             event.preventDefault();
-            formCreateSubmit('{{ site_url('/site/eventLecture/registerExcel/'.$el_idx) }}', $search_member_success_form.serializeArray(), 'POST');
+            formCreateSubmit('{{ site_url('/site/eventLecture/memberSuccessExcel/'.$el_idx) }}', $search_member_success_form.serializeArray(), 'POST');
+        });
+
+        // 파일다운로드 버튼
+        $list_member_success_table.on('click', '.file-download', function() {
+            console.log('1');
+            var _url = '{{ site_url("/site/eventLecture/download") }}/' + '?path=' + $(this).data('file-path') + '&fname=' + $(this).data('file-name');
+            window.open(_url, '_blank');
         });
     });
 </script>

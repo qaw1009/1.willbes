@@ -10,10 +10,12 @@ class EventLectureModel extends WB_Model
         'event_file' => 'lms_event_file',
         'event_comment' => 'lms_event_comment',
         'event_member' => 'lms_event_member',
+        'event_member_successinfo' => 'lms_event_member_successinfo',
         'sys_category' => 'lms_sys_category',
         'site' => 'lms_site',
         'sys_code' => 'lms_sys_code',
         'member' => 'lms_member',
+        'member_otherinfo' => 'lms_member_otherinfo',
         'banner' => 'lms_banner',
         'admin' => 'wbs_sys_admin'
     ];
@@ -65,7 +67,10 @@ class EventLectureModel extends WB_Model
     // 이벤트 공지사항 식별자
     public $bm_idx = '86';
 
-    // 썸네일 이미지 생성 비율
+    // 이벤트 합격수기 : 합격구분
+    public  $_successType = ['1' => '필기', '2' => '최종'];
+
+   // 썸네일 이미지 생성 비율
     private $_thumb_radio = [
         'S' => '50%',
         /*'M' => '150%',
@@ -806,6 +811,56 @@ class EventLectureModel extends WB_Model
             'attach_file_type' => 0
         ];
         return $this->boardModel->findBoardForModify('notice', $column, $arr_condition, $arr_condition_file);
+    }
+
+    /**
+     * 합격수기 목록
+     * @param $is_count
+     * @param array $arr_condition
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
+     */
+    public function listAllEventMemberSuccess($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    {
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $column = '
+            a.EmsIdx, a.ElIdx, a.MemIdx, a.CandidateNum, a.SerialCcd, a.CandidateAreaCcd, a.SuccessType, a.FileName1,
+            a.FileRealName1, a.FileFullPath1, a.FileName2, a.FileRealName2, a.FileFullPath2, a.IsStatus, a.RegDatm, a.RegIp, a.UpdDatm,
+            b.MemId, b.MemName, fn_dec(b.PhoneEnc) AS MemPhone, c.SmsRcvStatus,
+            fn_ccd_name(a.SerialCcd) AS SerialName, fn_ccd_name(a.CandidateAreaCcd) AS CandidateAreaName,
+            CASE a.SuccessType WHEN 1 THEN \'필기\' WHEN 2 THEN \'최종\' END AS SuccessTypeName
+            ';
+
+            if ($is_count == 'excel') {
+                $column = '
+                b.MemName, b.MemId, fn_dec(b.PhoneEnc) AS MemPhone, a.CandidateNum,
+                fn_ccd_name(a.SerialCcd) AS SerialName, fn_ccd_name(a.CandidateAreaCcd) AS CandidateAreaName,
+                CASE a.SuccessType WHEN 1 THEN \'필기\' WHEN 2 THEN \'최종\' END AS SuccessTypeName,
+                a.RegDatm
+                ';
+            }
+
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $from = "
+            FROM {$this->_table['event_member_successinfo']} AS a
+            INNER JOIN {$this->_table['member']} AS b ON a.MemIdx = b.MemIdx
+            LEFT JOIN {$this->_table['member_otherinfo']} AS c ON b.MemIdx = c.MemIdx
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select STRAIGHT_JOIN ' . $column . $from . $where . $order_by_offset_limit);
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 
     /**

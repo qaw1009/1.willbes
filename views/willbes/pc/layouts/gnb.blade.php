@@ -1,11 +1,19 @@
-<div id="Gnb" class="NSK Gnb-md">
-    <div class="toggle-Btn gnb-Close">
+@php
+    // 네비게이션 설정에 따른 변수값 셋팅
+    $_gnb_size = get_var(get_cookie('_wb_client_gnb_size'), 'md');
+    $_gnb_img_size = $_gnb_size == 'md' ? '' : '_sm';
+    $_gnb_open = $_gnb_size == 'md' ? 'Close' : 'Open';
+    $_gnb_text = $_gnb_size == 'md' ? '숨김' : '열기';
+    $_gnb_logo = $_gnb_size == 'md' ? $__cfg['Logo'] : str_replace('.', $_gnb_img_size . '.', $__cfg['Logo']);
+@endphp
+<div id="Gnb" class="NSK Gnb-{{ $_gnb_size }}">
+    <div class="toggle-Btn gnb-{{ $_gnb_open }}">
         <a href="#none">
-            <div class="Txt c_both">숨김</div><span class="arrow-Btn">></span>
+            <div class="Txt c_both">{{ $_gnb_text }}</div><span class="arrow-Btn">></span>
         </a>
     </div>
     <div class="logo">
-        <a href="{{ app_url('/', 'www') }}"><img src="{{ $__cfg['Logo'] }}" onerror="this.src='{{ img_url('gnb/logo.gif') }}'"></a>
+        <a href="{{ app_url('/', 'www') }}"><img src="{{ $_gnb_logo }}" onerror="this.src='{{ img_url('gnb/logo' . $_gnb_img_size . '.gif') }}'"></a>
     </div>
 
     @if(empty($__cfg['GNBMenu']['ActiveGroupMenuIdx']) === true)
@@ -101,7 +109,7 @@
     <ul class="gnb-List-Sub p_re">
         <li>
             <a class="setting" href="#none" onclick="openWin('SettingForm')">
-                <img src="{{ img_url('gnb/icon_setting.gif') }}">
+                <img src="{{ img_url('gnb/icon_setting' . $_gnb_img_size . '.gif') }}">
                 <div class="Txt">통합사이트<br/>환경설정</div>
             </a>
             <!-- willbes Setting -->
@@ -109,55 +117,57 @@
                 <a class="closeBtn" href="#none" onclick="closeWin('SettingForm')">
                     <img src="{{ img_url('gnb/close.png') }}">
                 </a>
-                <div class="Layer-Tit tx-dark-black bdb-black2 NSK">
-                    윌비스 통합 <span class="tx-dark-blue">사이트 환경설정</span>
-                </div>
-                <div class="Layer-Login GM tx-left">
-                    <div class="chkBox-Save">
-                        <div class="tx-gray">
-                            <strong>추후 접속 시 현재 페이지를</strong>
+                <form id="setting_form" name="setting_form" method="POST" onsubmit="return false;">
+                    <div class="Layer-Tit tx-dark-black bdb-black2 NSK">
+                        윌비스 통합 <span class="tx-dark-blue">사이트 환경설정</span>
+                    </div>
+                    <div class="Layer-Login GM tx-left">
+                        <div class="chkBox-Save">
+                            <div class="tx-gray">
+                                <strong>추후 접속 시 현재 페이지를</strong>
+                            </div>
+                            <span>
+                                <input type="checkbox" id="add_startpage" name="add_startpage" class="iptSave" onclick="">
+                                <label for="add_startpage" class="labelSave tx-gray">시작페이지로</label>
+                            </span>
+                            <span>
+                                <input type="checkbox" id="add_favorite" name="add_favorite" class="iptSave" onclick="">
+                                <label for="add_favorite" class="labelSave tx-gray">즐겨찾기로</label>
+                            </span>
                         </div>
+                        <div class="chkBox-Save">
+                            <div class="tx-gray">
+                                <strong>추후 접속 시 윌비스 통합 네비게이션 영역을</strong>
+                            </div>
+                            <span>
+                                <input type="radio" id="fold_gnb" name="gnb_size" value="sm" class="iptSave"{!! $_gnb_size == 'sm' ? ' checked="checked"' : '' !!}>
+                                <label for="fold_gnb" class="labelSave tx-gray">숨김</label>
+                            </span>
+                            <span>
+                                <input type="radio" id="unfold_gnb" name="gnb_size" value="md" class="iptSave"{!! $_gnb_size == 'md' ? ' checked="checked"' : '' !!}>
+                                <label for="unfold_gnb" class="labelSave tx-gray">펼침</label>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="Layer-Btn NSK widthAuto320">
                         <span>
-                            <input type="checkbox" id="PAGE_SAVE" name="PAGE_SAVE" class="iptSave">
-                            <label for="PAGE_SAVE" class="labelSave tx-gray">시작페이지로</label>
+                            <button type="button" class="cf-Btn bg-dark-gray bd-gray" onclick="closeWin('SettingForm')">
+                                <span>닫기</span>
+                            </button>
                         </span>
                         <span>
-                            <input type="checkbox" id="BOOKMARK_SAVE" name="BOOKMARK_SAVE" class="iptSave">
-                            <label for="BOOKMARK_SAVE" class="labelSave tx-gray">즐겨찾기로</label>
+                            <button type="button" name="btn_setting_apply" class="cf-Btn bg-blue bd-dark-blue">
+                                <span>적용</span>
+                            </button>
                         </span>
                     </div>
-                    <div class="chkBox-Save">
-                        <div class="tx-gray">
-                            <strong>추후 접속 시 윌비스 통합 네비게이션 영역을</strong>
-                        </div>
-                        <span>
-                            <input type="radio" id="FOLD_SAVE" name="FOLD_SAVE" class="iptSave">
-                            <label for="FOLD_SAVE" class="labelSave tx-gray">숨김</label>
-                        </span>
-                        <span>
-                            <input type="radio" id="UNFOLD_SAVE" name="UNFOLD_SAVE" class="iptSave">
-                            <label for="UNFOLD_SAVE" class="labelSave tx-gray">펼침</label>
-                        </span>
-                    </div>
-                </div>
-                <div class="Layer-Btn NSK widthAuto320">
-                    <span>
-                        <button type="submit" onclick="" class="cf-Btn bg-dark-gray bd-gray">
-                            <span>닫기</span>
-                        </button>
-                    </span>
-                    <span>
-                        <button type="submit" onclick="" class="cf-Btn bg-blue bd-dark-blue">
-                            <span>적용</span>
-                        </button>
-                    </span>
-                </div>
+                </form>
             </div>
             <!-- End willbes Setting -->
         </li>
         <li>
             <a class="intro" href="#none">
-                <img src="{{ img_url('gnb/icon_intro.gif') }}">
+                <img src="{{ img_url('gnb/icon_intro' . $_gnb_img_size . '.gif') }}">
                 <div class="Txt">윌비스<br/>회사소개</div>
             </a>
         </li>

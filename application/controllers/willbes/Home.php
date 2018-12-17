@@ -13,33 +13,12 @@ class Home extends \app\controllers\FrontController
         parent::__construct();
     }
 
+    /**
+     * 메인 페이지
+     * @return mixed
+     */
     public function index()
     {
-        // web cache
-        //$this->output->cache(5);
-
-        // memcached
-        //$this->load->driver('cache', ['adapter' => 'memcached', 'backup' => 'file']);
-        //$this->load->driver('cache');
-        //$this->cache->delete('lms@site');
-        //dd($this->cache->get('lms@site'));
-
-        // caching
-        //$this->load->driver('caching', ['driver' => 'site']);
-        //$this->caching->delete();
-        //$this->caching->save();
-        //var_dump($this->caching->get());
-
-        //$this->load->driver('caching');
-        //$this->caching->delete('lms@site');
-        //$this->caching->save('site');
-        //var_dump($this->caching->get('lms@site'));
-
-        //$this->load->driver('caching');
-        //$this->caching->site_menu->delete();
-        //$this->caching->site_menu->save();
-        //var_dump($this->caching->site_menu->get());
-
         // 앱일경우 토큰을 얻어서
         if($this->_is_app === true){
             $token = $this->_req('token');
@@ -48,37 +27,7 @@ class Home extends \app\controllers\FrontController
             ]);
         }
 
-        $this->load->view('main');
-    }
-
-    public function test()
-    {
-        //$d = date('YmdHi', strtotime(date('Y-m-d H:i:s') . ' +7 day'));
-    }
-
-    public function cache($param)
-    {
-        unset($this->caching);
-        dd($this->getCacheItem($param[0]));
-    }
-
-    public function save_cache($param)
-    {
-        unset($this->caching);
-        $this->load->driver('caching');
-        $this->caching->{$param[0]}->delete();
-        $this->caching->{$param[0]}->save();
-
-        dd($this->getCacheItem($param[0]));
-    }
-
-    public function remove_cache($param)
-    {
-        unset($this->caching);
-        $this->load->driver('caching');
-        $this->caching->{$param[0]}->delete();
-
-        dd('deleted');
+        return $this->load->view('main');
     }
 
     /**

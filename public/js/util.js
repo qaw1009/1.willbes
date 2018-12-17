@@ -116,6 +116,27 @@ function addComma(value) {
 }
 
 /**
+ * 즐겨찾기 추가
+ */
+function addFavorite() {
+    var url = window.location.href;
+    var title = document.title;
+
+    if (window.sidebar && window.sidebar.addPanel) {
+        // Firefox
+        window.sidebar.addPanel(title, url, '');
+    } else {
+        if (window.external && ('AddFavorite' in window.external)) {
+            // Internet Explorer
+            window.external.AddFavorite(url, title);
+        } else {
+            // Opera, Google Chrome and Safari
+            alert('해당 브라우저는 즐겨찾기 추가 기능이 지원되지 않습니다.\n수동으로 즐겨찾기에 추가해 주세요.');
+        }
+    }
+}
+
+/**
  * array -> json 으로 변환
  * @param data
  * @returns {{}}
@@ -868,9 +889,7 @@ function setRowspan(classname) {
     }
 
     var config = $.cookie = function (key, value, options) {
-
         // Write
-
         if (value !== undefined && !$.isFunction(value)) {
             options = $.extend({}, config.defaults, options);
 
@@ -889,7 +908,6 @@ function setRowspan(classname) {
         }
 
         // Read
-
         var result = key ? undefined : {};
 
         // To prevent the for loop in the first place assign an empty array

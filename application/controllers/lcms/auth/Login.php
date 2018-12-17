@@ -80,15 +80,18 @@ class Login extends \app\controllers\BaseController
 
         // T-zone 일 경우 WBS 접근 권한 확인, WBS,LMS 교수 정보 확인
         if (SUB_DOMAIN == 'tzone') {
-            if (empty($row['wRoleIdx']) === true || $row['wRoleIdx'] != $wbs_prof_role_idx) {
+            /*if (empty($row['wRoleIdx']) === true || $row['wRoleIdx'] != $wbs_prof_role_idx) {
                 $is_auth = false;
             } else {
                 $arr_prof_idx = array_keys($this->professorModel->getProfessorArray('all', $row['wProfIdx']));
                 if (empty($arr_prof_idx) === true) {
                     $is_auth = false;
                 }
+            }*/
+            $arr_prof_idx = array_keys($this->professorModel->getProfessorArray('all', $row['wProfIdx']));
+            if (empty($arr_prof_idx) === true) {
+                $is_auth = false;
             }
-
         }
 
         if ($is_auth === false) {

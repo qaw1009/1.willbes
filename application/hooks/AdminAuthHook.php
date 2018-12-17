@@ -13,6 +13,9 @@ class AdminAuthHook
         '/lcms/auth/regist/store',
     ];
 
+    // LMS 교수관리자 역할식별자
+    private $_lms_prof_role_idx = '1011';
+
     // 메뉴 권한 체크 제외 URI - /{directory?}/{controller?}/{method?}
     protected $perm_excepts = [
         '/home/',
@@ -56,6 +59,10 @@ class AdminAuthHook
             if (is_null($role) === true || empty(element('Role', $role)) === true) {
                 //show_error('운영자 권한이 없습니다.', _HTTP_UNAUTHORIZED, '운영자 권한 없음');
                 show_alert('운영자 권한이 없습니다.', site_url('/lcms/auth/login'), false);
+            }
+
+            if (SUB_DOMAIN == 'lms' && $role['Role']['RoleIdx'] == $this->_lms_prof_role_idx) {
+                show_alert('운영자 권한이 없습니다.', 'back');
             }
 
             // 관리자 권한 정보 설정

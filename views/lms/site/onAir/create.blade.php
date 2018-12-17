@@ -155,10 +155,10 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="on_air_tab_name">탭명칭 <span class="required">*</span>
+                    <label class="control-label col-md-1-1" for="on_air_tab_name">탭명칭(과목명) <span class="required">*</span>
                     </label>
                     <div class="col-md-4 item">
-                        <input type="text" id="on_air_tab_name" name="on_air_tab_name" class="form-control" title="탭명칭" required="required" placeholder="" value="{{$data['OnAirTabName']}}">
+                        <input type="text" id="on_air_tab_name" name="on_air_tab_name" class="form-control" title="탭명칭(과목명)" required="required" placeholder="" value="{{$data['OnAirTabName']}}">
                     </div>
                     <label class="control-label col-md-1-1 d-line">사용여부 <span class="required">*</span>
                     </label>
@@ -169,10 +169,6 @@
                         </div>
                     </div>
                 </div>
-
-
-
-
                 <div class="form-group">
                     <label class="control-label col-md-1-1">타이틀 <span class="required">*</span>
                     </label>
@@ -265,6 +261,26 @@
                                 </p>
                             @endif
                         </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-1-1" for="right_exposure_type_M">맛보기 조건
+                    </label>
+                    <div class="col-md-10 form-inline">
+                        <span class="blue pr-10">[맛보기시간]</span>
+                        <input type="text" class="form-control" name="video_play_time" placeholder="60" value="{{$data['VideoPlayTime']}}" style="width: 60px;">초
+                        <span class="blue pr-10 pl-30">[로그인조건]</span>
+                        <input type="radio" id="login_type_Y" name="login_type" class="flat" value="Y" title="로그인" @if($method == 'POST' || $data['LoginType']=='Y')checked="checked"@endif/> <label for="login_type_Y" class="input-label">로그인</label>
+                        <input type="radio" id="login_type_N" name="login_type" class="flat" value="N" title="비로그인" @if($data['LoginType']=='N')checked="checked"@endif/> <label for="login_type_N" class="input-label">비로그인</label>
+                        <span class="blue pr-10 pl-30">[1일 최대 맛보기 횟수]</span>
+                        <select class="form-control" id="video_play_count" name="video_play_count" title="1일최대 맛보기 횟수">
+                            <option value="1" @if($data['VideoPlayCount'] == '1') selected="selected"@endif>1</option>
+                            <option value="2" @if($data['VideoPlayCount'] == '2') selected="selected"@endif>2</option>
+                            <option value="3" @if($method == 'POST' || $data['VideoPlayCount'] == '3') selected="selected"@endif>3</option>
+                            <option value="4" @if($data['VideoPlayCount'] == '4') selected="selected"@endif>4</option>
+                            <option value="5" @if($data['VideoPlayCount'] == '5') selected="selected"@endif>5</option>
+                        </select> 회
                     </div>
                 </div>
 

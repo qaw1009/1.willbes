@@ -43,6 +43,7 @@ class OnAirModel extends WB_Model
         } else {
             $column = '
             A.OaIdx, A.SiteCode, A.StudyStartDate, A.WeekArray, A.OnAirNum, A.OnAirStartType, IFNULL(A.OnAirStartTime,0) AS OnAirStartTime, IFNULL(A.OnAirEndTime,0) AS OnAirEndTime, A.OnAirName,
+            A.VideoPlayTime, A.LoginType, A.VideoPlayCount,
             A.IsUse, A.RegAdminIdx, A.RegDatm, A.UpdAdminIdx, A.UpdDatm,
             G.SiteName, D.CateCode, H.ProfIdx, I.ProfNickName, K.OnAirLastDate,
             E.wAdminName AS RegAdminName, F.wAdminName AS UpdAdminName
@@ -130,6 +131,7 @@ class OnAirModel extends WB_Model
             TIME_FORMAT(A.OnAirStartTime, \'%H\') AS OnAirStartHour, TIME_FORMAT(A.OnAirStartTime, \'%i\') AS OnAirStartMin,
             TIME_FORMAT(A.OnAirEndTime, \'%H\') AS OnAirEndHour, TIME_FORMAT(A.OnAirEndTime, \'%i\') AS OnAirEndMin,
             A.OnAirName, A.OnAirTabName, A.LeftExposureType,A.LeftFileName,A.LeftFileRealName,A.LeftFileFullPath,A.LeftLink,A.RightExposureType,A.RightFileName,A.RightFileRealName,A.RightFileFullPath,A.RightLink,
+            A.VideoPlayTime, A.LoginType, A.VideoPlayCount,
             A.IsUse, A.RegAdminIdx, A.RegDatm, A.UpdAdminIdx, A.UpdDatm,
             G.SiteName, D.CateCode, H.ProfIdx, H.Title as ProfTitle, I.ProfNickName, K.OnAirLastDate,
             E.wAdminName AS RegAdminName, F.wAdminName AS UpdAdminName
@@ -266,6 +268,9 @@ class OnAirModel extends WB_Model
                 'RightFileRealName' => (empty($uploaded[1]) === false) ? $uploaded[1]['client_name'] : '',
                 'RightFileFullPath' => $this->upload->_upload_url . $upload_dir . '/',
                 'RightLink' => element('right_link', $input),
+                'VideoPlayTime' => element('video_play_time', $input),
+                'LoginType' => element('login_type', $input),
+                'VideoPlayCount' => element('video_play_count', $input),
                 'IsUse' => element('is_use', $input),
                 'RegAdminIdx' => $admin_idx,
                 'RegIp' => $reg_ip
@@ -417,6 +422,9 @@ class OnAirModel extends WB_Model
                 'LeftLink' => element('left_link', $input),
                 'RightExposureType' => element('right_exposure_type', $input),
                 'RightLink' => element('right_link', $input),
+                'VideoPlayTime' => element('video_play_time', $input),
+                'LoginType' => element('login_type', $input),
+                'VideoPlayCount' => element('video_play_count', $input),
                 'IsUse' => element('is_use', $input),
                 'UpdAdminIdx' => $admin_idx
             ];
@@ -546,14 +554,14 @@ class OnAirModel extends WB_Model
             $insert_column = '
                 SiteCode, CampusCcd, CIdx, StudyStartDate, OnAirNum, WeekArray, OnAirStartType, OnAirStartTime, OnAirEndTime,
                 OnAirName,
-                OnAirTabName, LeftExposureType, LeftFileName, LeftFileRealName, LeftFileFullPath, LeftLink,
+                OnAirTabName, LeftExposureType, LeftFileName, LeftFileRealName, LeftFileFullPath, LeftLink, VideoPlayTime, LoginType, VideoPlayCount,
                 RightExposureType, RightFileName, RightFileRealName, RightFileFullPath, RightLink, IsUse, IsStatus,
                 RegAdminIdx, RegIp
             ';
             $select_column = '
                 SiteCode, CampusCcd, CIdx, StudyStartDate, OnAirNum, WeekArray, OnAirStartType, OnAirStartTime, OnAirEndTime,
                 CONCAT("복사본-", IF(LEFT(OnAirName,4)="복사본-", REPLACE(OnAirName, LEFT(OnAirName,4), ""), OnAirName)) AS OnAirName,
-                OnAirTabName, LeftExposureType, LeftFileName, LeftFileRealName, LeftFileFullPath, LeftLink,
+                OnAirTabName, LeftExposureType, LeftFileName, LeftFileRealName, LeftFileFullPath, LeftLink, VideoPlayTime, LoginType, VideoPlayCount,
                 RightExposureType, RightFileName, RightFileRealName, RightFileFullPath, RightLink, IsUse, IsStatus,
                 REPLACE(RegAdminIdx, RegAdminIdx, "'.$admin_idx.'") AS RegAdminIdx,
                 REPLACE(RegIp, RegIp, "'.$reg_ip.'") AS RegIp

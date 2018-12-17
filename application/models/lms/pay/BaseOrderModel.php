@@ -67,9 +67,6 @@ class BaseOrderModel extends WB_Model
     // 결제루트 공통코드 (온라인PG, 방문결제, 0원결제, 무료결제, 제휴사결제, 온라인0원)
     public $_pay_route_ccd = ['pg' => '670001', 'visit' => '670002', 'zero' => '670003', 'free' => '670004', 'alliance' => '670005', 'on_zero' => '670006'];
 
-    // PG사 공통코드 (이니시스, LG유플러스)
-    public $_pg_ccd = ['inisis' => '603001', 'lgu' => '603002'];
-
     // 결제방법 공통코드 (신용카드, 실시간계좌이체, 가상계좌, 휴대폰, 윌비스계좌이체, 방문카드, 방문현금, 방문현금+카드)
     public $_pay_method_ccd = ['card' => '604001', 'direct_bank' => '604002', 'vbank' => '604003', 'phone' => '604004', 'willbes_bank' => '604005', 'visit_card' => '604006', 'visit_cash' => '604007', 'visit_card_cash' => '604008'];
 

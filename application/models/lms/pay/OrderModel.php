@@ -270,7 +270,7 @@ class OrderModel extends BaseOrderModel
             // PG사 취소연동 (PG사 결제 and 가상계좌가 아닌 경우 and 카드환불금액이 0 이상)
             if ($refund_type == 'P' && $order_data['PayRouteCcd'] == $this->_pay_route_ccd['pg'] && $order_data['IsVBank'] == 'N' && $sum_card_refund_price > 0) {
                 // pg 라이브러리 로드
-                $this->load->driver('pg', ['driver' => array_search($order_data['PgCcd'], $this->_pg_ccd)]);
+                $this->load->driver('pg', ['driver' => get_var($order_data['PgDriver'], 'inisis')]);
 
                 // 총실결제금액보다 합계 카드환불금액이 작을 경우 부분취소
                 if ($order_data['tRealPayPrice'] > $sum_card_refund_price) {

@@ -312,7 +312,8 @@ class OrderListModel extends BaseOrderModel
                         else "O"    # 주문완료(계좌신청)
                     end), NULL			
                   ) as VBankStatus
-                , O.IsEscrow, O.IsDelivery, O.IsVisitPay, O.CompleteDatm, O.OrderDatm                
+                , O.IsEscrow, O.IsDelivery, O.IsVisitPay, O.CompleteDatm, O.OrderDatm
+                , if(O.PgCcd != "", (select CcdEtc from ' . $this->_table['code'] . ' where Ccd = O.PgCcd), "") as PgDriver               
             ';
         }
 

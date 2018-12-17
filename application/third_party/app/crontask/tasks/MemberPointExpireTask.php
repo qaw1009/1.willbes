@@ -3,7 +3,7 @@ namespace app\crontask\tasks;
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class SampleTask extends \app\crontask\tasks\Task
+class MemberPointExpireTask extends \app\crontask\tasks\Task
 {
     /**
      * @var \CI_DB_query_builder
@@ -22,13 +22,17 @@ class SampleTask extends \app\crontask\tasks\Task
         $this->_db->close();
     }
 
+    /**
+     * 회원포인트 소멸
+     * @return mixed|string
+     */
     public function run()
     {
-        $query = $this->_db->query('select NOW() as today');
-        $result = $query->row(0)->today;
+        $query = $this->_db->query('call sp_member_point_expire');
+        $result = $query->row(0);
 
-        $this->setOutput('SampleTask complete.');
+        $this->setOutput('MemberPointExpireTask complete.');
 
-        return $result;
+        return $result->ReturnMsg . ' (' . $result->ReturnCnt . ')';
     }
 }

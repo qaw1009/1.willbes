@@ -82,10 +82,12 @@ $__sub_domain = (empty($__sub_domain) === true) ? 'www' : strtolower(substr($__s
 
 // 접속 디바이스 구분 (pc|m|app)
 $__app_device = 'pc';
-if (strcasecmp($_SERVER['REQUEST_URI'], '/' . $config['app_mobile_site_prefix']) == 0 || stripos($_SERVER['REQUEST_URI'], '/' . $config['app_mobile_site_prefix'] . '/') === 0) {
-    $__app_device = $config['app_mobile_site_prefix'];
-} elseif (strcasecmp($_SERVER['REQUEST_URI'], '/' . $config['app_app_site_prefix']) == 0 || stripos($_SERVER['REQUEST_URI'], '/' . $config['app_app_site_prefix'] . '/') === 0) {
-    $__app_device = $config['app_app_site_prefix'];
+if (is_cli() === false) {
+    if (strcasecmp($_SERVER['REQUEST_URI'], '/' . $config['app_mobile_site_prefix']) == 0 || stripos($_SERVER['REQUEST_URI'], '/' . $config['app_mobile_site_prefix'] . '/') === 0) {
+        $__app_device = $config['app_mobile_site_prefix'];
+    } elseif (strcasecmp($_SERVER['REQUEST_URI'], '/' . $config['app_app_site_prefix']) == 0 || stripos($_SERVER['REQUEST_URI'], '/' . $config['app_app_site_prefix'] . '/') === 0) {
+        $__app_device = $config['app_app_site_prefix'];
+    }
 }
 
 defined('SUB_DOMAIN') OR define('SUB_DOMAIN', $__sub_domain);

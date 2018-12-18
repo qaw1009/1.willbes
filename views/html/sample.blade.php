@@ -41,8 +41,6 @@
 
     <a href="{{ site_url('/home/html/listsub') }}" target="_blank">강좌 > 단강좌, 무료강좌 수강신청 상세 page 이동</a><br/><br/>
 
-
-
 </div>
 
 <div style="float:left; width: 360px; height: 750px; border-right: 1px solid #ccc; margin-right: 15px; font-size: 15px;">

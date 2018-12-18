@@ -105,24 +105,12 @@
                 <span class="row-line">|</span>
                 <span>
                     <span class="price-txt">패키지</span>
-                    <span class="tx-light-blue">140,000원</span>
-                </span>
-                <span class="price-img">
-                    <img src="{{ img_url('sub/icon_plus.gif') }}">
-                </span>
-                <span>
-                    <span class="price-txt">교재</span>
-                    <span class="tx-light-blue">48,600원</span>
+                    <span class="tx-light-blue">188,600원</span>
                 </span>
                 <span class="price-total tx-light-blue">188,600원</span>
             </div>
             <div class="willbes-Lec-buyBtn">
                 <ul>
-                    <li class="btnAuto180 h36">
-                        <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
-                            <span>장바구니</span>
-                        </button>
-                    </li>
                     <li class="btnAuto180 h36">
                         <button type="submit" onclick="" class="mem-Btn bg-white bd-dark-blue">
                             <span class="tx-light-blue">바로결제</span>

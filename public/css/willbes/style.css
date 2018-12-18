@@ -2376,7 +2376,6 @@ table.auTable tr td {
 .w-gosi-Guide {letter-spacing: 0}
 .w-gosi-Guide .examInfoGu2 .hTy4 {background: url("../../img/willbes/gosi/guide/left_arrow.png") no-repeat 0 center; font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"; margin: 30px 0 10px; font-size:16px; font-weight:bold; color: #24606a; line-height: 30px; padding-left: 25px;}
 
-
 .examInfoGu3 {padding: 45px}
 .examInfoGu3 .hTy {font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"}
 .examInfoGu3 .hTy.txt-gray {font-size: 14px; font-weight:bold; color: #555; line-height: 18px}
@@ -2557,6 +2556,90 @@ table.auTable tr td {
     height: 16px;
     margin: 11px 0;
 }
+
+
+
+/*********************************************     Main Container : GPGosi     *********************************************/
+/* Main Container : GPGosi */
+.gpgosi .tx-color {
+    color: #8c6239;
+}
+.gpgosi .Menu .menu-List li.Acad a {
+    background: url("../../img/willbes/gosi/icon_acad.gif") no-repeat 0 0;
+    color: #8c6239;
+}
+.gpgosi .Menu .menu-List li.Acad a .arrow-Btn {
+    background: url("../../img/willbes/gosi/icon_arrow.gif") no-repeat 0 0;
+}
+.gpgosi .Section3 {
+    background: #f0f0f0;
+    padding: 40px 0;
+}
+.gpgosi .List-Table li a img,
+.gpgosi .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.gpgosi .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
+.gpgosi .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #8c6239;
+}
+.gpgosi .Section .SpecialBox dt .infoBox .infoTit,
+.gpgosi .Section .NoticeBox dt .infoBox .infoTit,
+.gpgosi .tabWrap.noticeWrap li a.on {
+    color: #8c6239;
+}
+
+/* Guide Container : GPGosi */
+/*수험가이드*/
+.tabShow.tab_gpgosi_Guide {
+    background: #026f61;
+    height: 62px;
+    border-bottom: none;
+}
+.tabShow.tab_gpgosi_Guide li {
+    width: 25%;
+    height: 62px;
+    padding: 0 8px;
+}
+.tabShow.tab_gpgosi_Guide li a.two,
+.tabShow.tab_gpgosi_Guide li a.on.two {
+    line-height: 17px;
+}
+.tabShow.tab_gpgosi_Guide li a.two span {
+    padding-top: 15px;
+    display: inline-block;
+}
+.tabShow.tab_gpgosi_Guide li a.on.two span {
+    line-height: 17px;
+    padding-top: 10px;
+}
+.tabShow.tab_gpgosi_Guide li a.on span {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: #fff;
+    color: #026f61;
+    display: inline-block;
+    height: 54px;
+    line-height: 52px;
+    border-top: 1px solid #026f61;
+    border-left: 1px solid #026f61;
+    border-right: 1px solid #026f61;
+}
+.tabShow.tab_gpgosi_Guide li a,
+.tabShow.tab_gpgosi_Guide li a.on {
+    background: #026f61;
+    color: #fff;
+    line-height: 58px;
+    font-size: 14px;
+    font-weight: 300;
+    height: 62px;
+    border: none;
+}
+.tabShow.tab_gpgosi_Guide li:first-child a,
+.tabShow.tab_gpgosi_Guide li:first-child a.on {
+    border: none;
+}
+
 
 
 /*********************************************     CONTAINER PAGE     *********************************************/
@@ -9793,18 +9876,18 @@ table.acadlecInfoPackageTable tr.Top td {
 .w-thumb a.thumb_num {
     position: absolute;
     bottom: 20px;
-    left: 110px;
-    background: #707070;
-    width: 40px;
-    height: 20px;
-    line-height: 20px;
+    left: 145px;
+    background: #0a458b;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
 }
 .w-thumb a.thumb_num span {
     color: #fff;
 }
 .w-thumb .thumb_rollover {
     float: left;
-    margin: 0 10px;
+    margin: 0 15px 0 10px;
 }
 .w-thumb .thumb_slide_wrap {
     display: none;
@@ -9814,20 +9897,23 @@ table.acadlecInfoPackageTable tr.Top td {
     width: auto;
     overflow: hidden;
     border: 1px solid #ccc;
+    max-width: 687px;
+    height: 177px;
 }
 .w-thumb .thumb_slide_wrap ul {
     float: left;
-    width: 600px;
+    width: 800px;
     overflow: hidden;
-    padding: 5px;
+    padding: 0 5px 5px;
     background: #fff;
 }
 .w-thumb .thumb_slide_wrap ul li {
     float: left;
-    width: 140px;
-    height: 80px;
+    width: 165px;
+    height: 165px;
     background: #ddd;
     margin-left: 5px;
+    margin-top: 5px;
 }
 .w-thumb .thumb_slide_wrap ul li:first-child {
     margin-left: 0;
@@ -9839,11 +9925,11 @@ table.acadlecInfoPackageTable tr.Top td {
     position: absolute;
     bottom: 0;
     right: 0;
-    background: #707070;
+    background: #0a458b;
     width: 42px;
-    height: 20px;
+    height: 30px;
     color: #fff;
-    line-height: 22px;
+    line-height: 30px;
 }
 
 /* subContainer : Content : 학원갤러리 */

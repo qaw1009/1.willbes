@@ -274,13 +274,13 @@ $(function() {
 
         var $thumb_table = $(this).parents('.w-thumb').find('.thumb_slide_wrap');
         var n = $(this).parents('.w-thumb').find('.thumb_slide_wrap ul li').length;
-        var width = parseInt(n)* 145 + 6;
+        var width = parseInt(n)* 170 + 6;
 
-        $thumb_table.addClass('rollover').css('width', width).show(100);
+        $thumb_table.addClass('rollover').css('width', width).show();
     })
     $('.thumb_slide_wrap').mouseleave(function(){
         var $thumb_table = $(this).parents('.w-thumb').find('.thumb_slide_wrap');
-        $thumb_table.removeClass('rollover').hide(100);
+        $thumb_table.removeClass('rollover').hide();
     });
 });
 

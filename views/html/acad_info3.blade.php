@@ -102,14 +102,14 @@
                                     <td class="w-thumb p_re">
                                         <div class="thumb_rollover">
                                             <a href="#none">
-                                                <img src="{{ img_url('sample/evt3.jpg') }}">
+                                                <img src="{{ img_url('sample/evt7.jpg') }}">
                                             </a>
-                                            <a href="#" class="thumb_num"><span>+ 3</span></a>
+                                            <a href="#" class="thumb_num"><span>+ N</span></a>
                                             <div class="thumb_slide_wrap">
                                                 <ul>
-                                                    <li><a href="#none"><img src="{{ img_url('sample/evt4.jpg') }}"></a></li>
-                                                    <li><a href="#none"><img src="{{ img_url('sample/evt4.jpg') }}"></a></li>
-                                                    <li><a href="#none"><img src="{{ img_url('sample/evt4.jpg') }}"></a></li>
+                                                    <li><a href="#none"><img src="{{ img_url('sample/evt8.jpg') }}"></a></li>
+                                                    <li><a href="#none"><img src="{{ img_url('sample/evt8.jpg') }}"></a></li>
+                                                    <li><a href="#none"><img src="{{ img_url('sample/evt8.jpg') }}"></a></li>
                                                 </ul>
                                                 <span class="thumb_num_short">4/10</span>
                                             </div>
@@ -132,15 +132,15 @@
                                     <td class="w-thumb p_re">
                                         <div class="thumb_rollover">
                                             <a href="#none">
-                                                <img src="{{ img_url('sample/evt3.jpg') }}">
+                                                <img src="{{ img_url('sample/evt7.jpg') }}">
                                             </a>
-                                            <a href="#" class="thumb_num"><span>+ 4</span></a>
+                                            <a href="#" class="thumb_num"><span>+ N</span></a>
                                             <div class="thumb_slide_wrap">
                                                 <ul>
-                                                    <li><a href="#none"><img src="{{ img_url('sample/evt4.jpg') }}"></a></li>
-                                                    <li><a href="#none"><img src="{{ img_url('sample/evt4.jpg') }}"></a></li>
-                                                    <li><a href="#none"><img src="{{ img_url('sample/evt4.jpg') }}"></a></li>
-                                                    <li><a href="#none"><img src="{{ img_url('sample/evt4.jpg') }}"></a></li>
+                                                    <li><a href="#none"><img src="{{ img_url('sample/evt8.jpg') }}"></a></li>
+                                                    <li><a href="#none"><img src="{{ img_url('sample/evt8.jpg') }}"></a></li>
+                                                    <li><a href="#none"><img src="{{ img_url('sample/evt8.jpg') }}"></a></li>
+                                                    <li><a href="#none"><img src="{{ img_url('sample/evt8.jpg') }}"></a></li>
                                                 </ul>
                                                 <span class="thumb_num_short">4/5</span>
                                             </div>
@@ -163,13 +163,13 @@
                                     <td class="w-thumb p_re">
                                         <div class="thumb_rollover">
                                             <a href="#none">
-                                                <img src="{{ img_url('sample/evt3.jpg') }}">
+                                                <img src="{{ img_url('sample/evt7.jpg') }}">
                                             </a>
-                                            <a href="#" class="thumb_num"><span>+ 2</span></a>
+                                            <a href="#" class="thumb_num"><span>+ N</span></a>
                                             <div class="thumb_slide_wrap">
                                                 <ul>
-                                                    <li><a href="#none"><img src="{{ img_url('sample/evt4.jpg') }}"></a></li>
-                                                    <li><a href="#none"><img src="{{ img_url('sample/evt4.jpg') }}"></a></li>
+                                                    <li><a href="#none"><img src="{{ img_url('sample/evt8.jpg') }}"></a></li>
+                                                    <li><a href="#none"><img src="{{ img_url('sample/evt8.jpg') }}"></a></li>
                                                 </ul>
                                                 <span class="thumb_num_short">15/20</span>
                                             </div>
@@ -254,7 +254,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <div class="search-Btn mt20 mb60 h36 p_re">
+                        <div class="search-Btn mt20 mb35 h36 p_re">
                             <div class="btnAuto90 h36 mem-Btn bg-purple-gray bd-dark-gray f_right">
                                 <a href="#none">목록</a>
                             </div>

@@ -324,14 +324,19 @@ class Pg_inisis extends CI_Driver
     /**
      * 이니시스 부분취소
      * @param array $params
+     * @param string $is_vbank [가상계좌여부 : Y/N]
      * @return array
      */
-    public function repay($params = [])
+    public function repay($params = [], $is_vbank = 'N')
     {
         $_order_no = element('order_no', $params);
         $log_params = [];
 
         try {
+            $this->_parent->saveFileLog('부분취소 요청 시작');
+            $this->_parent->saveFileLog('부분취소 요청 데이터', $params);
+
+            $_repay_type = $is_vbank == 'N' ? 'repay' : 'repayvacct';
             $_mid = element('mid', $params);
             $_tid = element('tid', $params);
             $_total_remain_pay_price = element('total_remain_pay_price', $params);    // 전체남은금액 (총실결제금액 - 총환불금액)
@@ -339,9 +344,18 @@ class Pg_inisis extends CI_Driver
             $_order_mail = element('order_mail', $params, '');  // 주문 메일주소 (원 거래 메일주소와 다를 경우 입력)
             $_tax = element('tax', $params, '');    // 부가세
             $_taxfree = element('taxfree', $params, '');    // 비과세
+            $_refund_bank_code = element('refund_bank_code', $params, '');  // 환불은행코드
+            $_refund_account_no = str_replace('-', '', element('refund_account_no', $params, ''));  // 환불계좌번호 (숫자만 입력)
+            $_refund_deposit_name = element('refund_deposit_name', $params, '');  // 환불계좌 예금주명
 
             if (empty($_order_no) === true || empty($_mid) === true || empty($_tid) === true || empty($_total_remain_pay_price) === true || empty($_cancel_price) === true) {
                 throw new \Exception('부분취소에 필요한 정보가 없습니다.');
+            }
+
+            if ($is_vbank == 'Y') {
+                if (empty($_refund_bank_code) === true || empty($_refund_account_no) === true || empty($_refund_deposit_name) === true) {
+                    throw new \Exception('가상계좌 부분취소에 필요한 환불계좌 정보가 없습니다.');
+                }
             }
 
             // 승인요청금액 (최종결제금액)
@@ -359,7 +373,7 @@ class Pg_inisis extends CI_Driver
             }
 
             $inipay->SetField('inipayhome', APPPATH . 'third_party/pg/inisis');
-            $inipay->SetField('type', 'repay');     // 고정 (수정금지)
+            $inipay->SetField('type', $_repay_type);     // 고정 (수정금지)
             $inipay->SetField('pgid', 'INIphpRPAY');    // 고정 (수정금지)
             $inipay->SetField('subpgip','203.238.3.10');    // 고정 (수정금지)
             $inipay->SetField('log', 'false');
@@ -371,8 +385,17 @@ class Pg_inisis extends CI_Driver
             $inipay->SetField('price', $_cancel_price);     // 취소금액
             $inipay->SetField('confirm_price', $_repay_price);  // 승인요청금액
             $inipay->SetField('buyeremail', $_order_mail);
-            $inipay->SetField('tax', $_tax);
-            $inipay->SetField('taxfree', $_taxfree);
+
+            if ($is_vbank == 'Y') {
+                // 환불계좌정보 셋팅
+                $inipay->SetField('refundbankcode', $_refund_bank_code);    // 환불은행코드
+                $inipay->SetField('refundacctnum', $_refund_account_no);     // 환불계좌번호 (숫자만 입력)
+                $inipay->SetField('refundacctname', $_refund_deposit_name);    // 환불계좌 예금주명
+                $inipay->SetField('refundfirmflag', '');                                // 펌뱅킹 사용여부 (사용 : 1, 사용안함 : 값없음)
+            } else {
+                $inipay->SetField('tax', $_tax);
+                $inipay->SetField('taxfree', $_taxfree);
+            }
 
             $inipay->startAction();
 
@@ -394,19 +417,22 @@ class Pg_inisis extends CI_Driver
                 'TotPrice' => $result_cancel_price,
                 'resultCode' => $result_code,
                 'resultMsg' => $result_msg,
-                'ResultPgTid' => $result_tid,
+                'ResultPgTid' => trim($result_tid),
                 'ResultPayPrice' => $result_repay_price
             ];
 
             // 로그 메시지
-            $log_msg = '(결과코드 : ' . $result_code . ', 결과메시지 : ' . $result_msg;
-            $log_msg .= ', 주문번호 : ' . $_order_no . ', TID : ' . $_tid . ', 신규TID : ' . $result_tid . ', 취소금액 : ' . $result_cancel_price . ', 최종결제금액 : ' . $result_repay_price;
-            $log_msg .= ', 부분취소(재승인) 구분 : ' . $result_repay_type . ', 부분취소(재승인) 요청횟수 : ' . $result_repay_cnt . ')';
+            $log_msg = '(결과코드 : ' . $result_code . ', 결과메시지 : ' . $result_msg . ', 주문번호 : ' . $_order_no . ', TID : ' . $_tid;
 
             if (strcmp('00', $result_code) == 0) {
                 // 부분취소성공
+                $log_msg .= ', 신규TID : ' . $result_tid . ', 취소금액 : ' . $result_cancel_price . ', 최종결제금액 : ' . $result_repay_price;
+                $log_msg .= ', 부분취소(재승인) 구분 : ' . $result_repay_type . ', 부분취소(재승인) 요청횟수 : ' . $result_repay_cnt . ')';
+
                 $this->_parent->saveFileLog('부분취소 성공 ' . $log_msg);
             } else {
+                $log_msg .= ')';
+
                 throw new \Exception('부분취소 실패 ' . $log_msg);
             }
 
@@ -453,6 +479,9 @@ class Pg_inisis extends CI_Driver
             
             if (empty($_tid) === false) {
                 // 관리자 취소
+                $this->_parent->saveFileLog('결제취소 요청 시작');
+                $this->_parent->saveFileLog('결제취소 요청 데이터', $params);
+
                 if (empty($_mid) === true) {
                     throw new \Exception('관리자 결제취소에 필요한 상점아이디가 없습니다.');
                 }
@@ -497,9 +526,9 @@ class Pg_inisis extends CI_Driver
 
                 if (strcmp('00', $result_code) == 0) {
                     // 취소성공
-                    $this->_parent->saveFileLog('결제 승인취소 성공 ' . $log_msg);
+                    $this->_parent->saveFileLog('결제취소 성공 ' . $log_msg);
                 } else {
-                    throw new \Exception('결제 승인취소 실패 ' . $log_msg);
+                    throw new \Exception('결제취소 실패 ' . $log_msg);
                 }
             } else {
                 // 망취소

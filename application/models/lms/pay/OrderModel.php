@@ -84,6 +84,10 @@ class OrderModel extends BaseOrderModel
             $order_idx = element('order_idx', $input);
             $order_prod_param = json_decode(base64_decode(element('params', $input)), true);
             $is_pg_refund = element('is_pg_refund', $input, 'N');   // 연동환불 여부
+            $refund_bank_ccd = str_first_pos_before(element('refund_bank_ccd', $input, ''), ':');   // 은행코드
+            $pg_bank_ccd = str_first_pos_after(element('refund_bank_ccd', $input, ''), ':');    // PG사 은행코드
+            $refund_account_no = element('refund_account_no', $input, '');
+            $refund_deposit_name = element('refund_deposit_name', $input, '');
             
             // 요청 환불금액 합계
             $sum_req_refund_price = array_sum(array_pluck($order_prod_param, 'card_refund_price')) + array_sum(array_pluck($order_prod_param, 'cash_refund_price'));
@@ -93,6 +97,13 @@ class OrderModel extends BaseOrderModel
             $order_data = $this->orderListModel->findOrderByOrderIdx($order_idx);
             if (empty($order_data) === true) {
                 throw new \Exception('주문 데이터가 없습니다.', _HTTP_NOT_FOUND);
+            }
+
+            // 가상계좌 부분환불일 경우 환불계좌정보 체크
+            if ($is_pg_refund == 'Y' && $order_data['IsVBank'] == 'Y' && $order_data['tRealPayPrice'] > $sum_req_refund_price) {
+                if (empty($refund_bank_ccd) === true || empty($pg_bank_ccd) === true || empty($refund_account_no) === true || empty($refund_deposit_name) === true) {
+                    throw new \Exception('가상계좌 부분취소에 필요한 환불계좌 정보가 없습니다.', _HTTP_BAD_REQUEST);  
+                }
             }
 
             // 주문상품 조회
@@ -125,9 +136,9 @@ class OrderModel extends BaseOrderModel
             $data = [
                 'OrderIdx' => $order_idx,
                 'RefundType' => $refund_type,
-                'RefundBankCcd' => element('refund_bank_ccd', $input, ''),
-                'RefundAccountNo' => element('refund_account_no', $input, ''),
-                'RefundDepositName' => element('refund_deposit_name', $input, ''),
+                'RefundBankCcd' => $refund_bank_ccd,
+                'RefundAccountNo' => $refund_account_no,
+                'RefundDepositName' => $refund_deposit_name,
                 'RefundReason' => element('refund_reason', $input),
                 'RefundMemo' => element('refund_memo', $input),
                 'IsApproval' => element('is_approval', $input, 'N'),
@@ -267,8 +278,8 @@ class OrderModel extends BaseOrderModel
                 $sum_card_refund_price += $card_refund_price;
             }
 
-            // PG사 취소연동 (PG사 결제 and 가상계좌가 아닌 경우 and 카드환불금액이 0 이상)
-            if ($refund_type == 'P' && $order_data['PayRouteCcd'] == $this->_pay_route_ccd['pg'] && $order_data['IsVBank'] == 'N' && $sum_card_refund_price > 0) {
+            // PG사 취소연동 (PG사 결제 and 카드환불금액이 0 이상)
+            if ($refund_type == 'P' && $order_data['PayRouteCcd'] == $this->_pay_route_ccd['pg'] && $sum_card_refund_price > 0) {
                 // pg 라이브러리 로드
                 $this->load->driver('pg', ['driver' => get_var($order_data['PgDriver'], 'inisis')]);
 
@@ -290,8 +301,9 @@ class OrderModel extends BaseOrderModel
                     // 부분취소
                     $cancel_results = $this->pg->repay([
                         'order_no' => $order_data['OrderNo'], 'mid' => $order_data['PgMid'], 'tid' => $order_data['PgTid'],
-                        'total_remain_pay_price' => $total_remain_pay_price, 'cancel_price' => $sum_card_refund_price
-                    ]);
+                        'total_remain_pay_price' => $total_remain_pay_price, 'cancel_price' => $sum_card_refund_price,
+                        'refund_bank_code' => $pg_bank_ccd, 'refund_account_no' => $refund_account_no, 'refund_deposit_name' => $refund_deposit_name
+                    ], $order_data['IsVBank']);
 
                     if ($cancel_results['result'] === false) {
                         throw new \Exception('PG사 부분취소에 실패했습니다. (' . $cancel_results['result_msg'] . ')');

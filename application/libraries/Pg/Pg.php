@@ -81,11 +81,12 @@ class Pg extends CI_Driver_Library
     /**
      * 부분취소
      * @param array $params
+     * @param string $is_vbank [가상계좌여부 : Y/N]
      * @return mixed
      */
-    public function repay($params = [])
+    public function repay($params = [], $is_vbank = 'N')
     {
-        return $this->{$this->_driver}->repay($params);
+        return $this->{$this->_driver}->repay($params, $is_vbank);
     }
 
     /**

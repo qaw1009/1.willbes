@@ -1,7 +1,7 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5>- 고객센터 온라인 공지사항 게시판을 관리하는 메뉴입니다.</h5>
+    <h5>- 학원 현장 모습을 담은 갤러리를 관리하는 메뉴입니다.</h5>
     {!! form_errors() !!}
     <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
     {{--<form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" action="{{ site_url("/board/offline/{$boardName}/store") }}?bm_idx=90" novalidate>--}}
@@ -11,7 +11,7 @@
         <input type="hidden" name="reg_type" value="{{$arr_reg_type['admin']}}"/>
         <div class="x_panel">
             <div class="x_title">
-                <h2>공지게시판 정보</h2>
+                <h2>갤러리 정보</h2>
                 <div class="pull-right">
                     <span class="required">*</span> 표시된 항목은 필수 입력 항목입니다.
                 </div>

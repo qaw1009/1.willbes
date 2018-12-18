@@ -1,7 +1,7 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5>- 고객센터 온라인 공지사항 게시판을 관리하는 메뉴입니다.</h5>
+    <h5>- 학원 현장 모습을 담은 갤러리를 관리하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         {!! html_def_site_tabs($ret_search_site_code, 'tabs_site_code', 'tab', true, [], false, $offLineSite_list) !!}

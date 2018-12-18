@@ -1,14 +1,14 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5>- 고객센터 온라인 공지사항 게시판을 관리하는 메뉴입니다.</h5>
+    <h5>- 학원 현장 모습을 담은 갤러리를 관리하는 메뉴입니다.</h5>
     {!! form_errors() !!}
     <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
     {!! csrf_field() !!}
 
     <div class="x_panel">
         <div class="x_title">
-            <h2>공지게시판 정보</h2>
+            <h2>갤러리 정보</h2>
             <div class="clearfix"></div>
         </div>
         <div class="x_content">
@@ -131,6 +131,10 @@
         </div>
     </div>
 
+    <!-- 댓글 리스트 -->
+    @if ($data['BoardIsComment'] == 'Y')
+        @include('lms.board.common.comment')
+    @endif
 
     <script type="text/javascript">
         var $regi_form = $('#regi_form');
@@ -167,7 +171,7 @@
                     '_method' : 'DELETE'
                 };
 
-                if (!confirm('해당 공지사항을 삭제하시겠습니까?')) {
+                if (!confirm('삭제하시겠습니까?')) {
                     return;
                 }
                 sendAjax(_url, data, function(ret) {

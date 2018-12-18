@@ -3,10 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class BoardModel extends WB_Model
 {
+    private $_table_master = 'lms_sys_board_master';
     protected $_table = 'lms_board';
     private $_table_r_category = 'lms_board_r_category';
     protected $_table_attach = 'lms_board_attach';
     private $_table_memo = 'lms_board_memo';
+    private $_table_r_comment = 'lms_board_r_comment';
     private $_table_assignment_r_schedule = 'lms_board_assignment_r_schedule';
     private $_table_assignment_r_schedule_date = 'lms_board_assignment_r_schedule_date';
     private $_table_sys_site = 'lms_site';
@@ -426,8 +428,16 @@ class BoardModel extends WB_Model
      */
     public function findBoardForModify($board_type, $column, $arr_condition, $arr_condition_file)
     {
+        $master_column = "
+            MST.BmTypeCcd, MST.OneWayOption, MST.TwoWayOption,
+            IF ((CASE MST.BmTypeCcd WHEN '601001' THEN INSTR(MST.OneWayOption, 1) ELSE '0' END) > 0, 'Y', 'N') AS BoardIsLogin,
+            IF ((CASE MST.BmTypeCcd WHEN '601001' THEN INSTR(MST.OneWayOption, 2) ELSE '0' END) > 0, 'Y', 'N') AS BoardIsComment,
+            IF ((CASE MST.BmTypeCcd WHEN '601002' THEN INSTR(MST.TwoWayOption, 1) ELSE '0' END) > 0, 'Y', 'N') AS BoardIsQna,
+        ";
+
         $from = "
             FROM {$this->_table} as LB
+            INNER JOIN {$this->_table_master} as MST ON LB.BmIdx = MST.BmIdx AND MST.IsUse = 'Y' AND MST.IsStatus = 'Y'
             LEFT JOIN (
                 select subLBrC.BoardIdx, GROUP_CONCAT(subLBrC.CateCode) AS CateCode
                 from {$this->_table_r_category} as subLBrC
@@ -550,8 +560,7 @@ class BoardModel extends WB_Model
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
-
-        return $this->_conn->query('select '.$column .$from .$where)->row_array();
+        return $this->_conn->query('select STRAIGHT_JOIN ' . $master_column . $column .$from .$where)->row_array();
     }
 
     /**
@@ -1135,6 +1144,71 @@ class BoardModel extends WB_Model
                         throw new \Exception('강좌스케줄 등록에 실패했습니다.');
                     }
                 }
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * 댓글 리스트
+     * @param $is_count
+     * @param array $arr_condition
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @param string $column
+     * @return mixed
+     */
+    public function listAllBoardForComment($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [], $column = '*')
+    {
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $from = "
+            FROM {$this->_table_r_comment} AS a
+            INNER JOIN {$this->_table_member} AS b ON a.RegMemIdx = b.MemIdx
+            LEFT JOIN {$this->_table_sys_admin} AS c ON a.RegAdminIdx = c.wAdminIdx AND c.wIsStatus = 'Y'
+            LEFT JOIN {$this->_table_sys_admin} AS d ON a.UpdAdminIdx = d.wAdminIdx AND d.wIsStatus = 'Y'
+        ";
+
+        $query = $this->_conn->query('select STRAIGHT_JOIN ' . $column . $from . $where . $order_by_offset_limit);
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    public function boardIsUseForComment($params = [], $is_use)
+    {
+        $this->_conn->trans_begin();
+
+        try {
+            if (count($params) < 1) {
+                throw new \Exception('필수 파라미터 오류입니다.');
+            }
+
+            $str_cmt_idx = implode(',', array_keys($params));
+            $arr_cmt_idx = explode(',', $str_cmt_idx);
+
+            $input = [
+                'IsUse' => $is_use,
+                'UpdAdminDatm' => date('Y-m-d H:i:s'),
+                'UpdAdminIdx' => $this->session->userdata('admin_idx')
+            ];
+
+            $this->_conn->set($input)->where_in('BoardCmtIdx',$arr_cmt_idx);
+            if($this->_conn->update($this->_table_r_comment)=== false) {
+                throw new \Exception('데이터 수정에 실패했습니다.');
             }
 
             $this->_conn->trans_commit();

@@ -188,6 +188,10 @@
         </div>
     </div>
 
+    <!-- 댓글 리스트 -->
+    @if ($data['BoardIsComment'] == 'Y')
+        @include('lms.board.common.comment')
+    @endif
 
     <script type="text/javascript">
         var $regi_form = $('#regi_form');

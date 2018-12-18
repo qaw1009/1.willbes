@@ -2166,7 +2166,8 @@ table.auTable tr td {
 .examInfoGu1, 
 .examInfoGu1_1, 
 .examInfoGu2,
-.examInfoGu3 {color: #555; border: 1px solid #d0d0d0; padding: 0 50px; line-height:1.5}
+.examInfoGu3,
+.examInfoGu4 {color: #555; border: 1px solid #d0d0d0; padding: 0 50px; line-height:1.5}
 .examInfoGu1 .hTy4 {font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"; margin: 30px 0 10px; font-size:16px; font-weight:bold; color: #0064e5; line-height: 30px; border-bottom: 1px solid #cbcbcb}
 .examInfoGu1 .mgB2 {padding-bottom: 40px;}
 
@@ -2418,9 +2419,6 @@ table.auTable tr td {
     left: inherit;
     right: -45px;
 }
-.guide_slider {
-    width: 848px !important;
-}
 .basicWd {
     width:760px;
     margin: 0 auto;
@@ -2558,7 +2556,6 @@ table.auTable tr td {
 }
 
 
-
 /*********************************************     Main Container : GPGosi     *********************************************/
 /* Main Container : GPGosi */
 .gpgosi .tx-color {
@@ -2590,14 +2587,13 @@ table.auTable tr td {
 /* Guide Container : GPGosi */
 /*수험가이드*/
 .tabShow.tab_gpgosi_Guide {
-    background: #026f61;
-    height: 62px;
+    background: #374931;
+    height: 58px;
     border-bottom: none;
 }
 .tabShow.tab_gpgosi_Guide li {
     width: 25%;
-    height: 62px;
-    padding: 0 8px;
+    height: 58px;
 }
 .tabShow.tab_gpgosi_Guide li a.two,
 .tabShow.tab_gpgosi_Guide li a.on.two {
@@ -2617,28 +2613,43 @@ table.auTable tr td {
     right: 0;
     left: 0;
     background: #fff;
-    color: #026f61;
+    color: #253321;
     display: inline-block;
-    height: 54px;
-    line-height: 52px;
-    border-top: 1px solid #026f61;
-    border-left: 1px solid #026f61;
-    border-right: 1px solid #026f61;
+    height: 58px;
+    line-height: 56px;
+    border-top: 1px solid #374931;
+    border-left: 1px solid #374931;
+    border-right: 1px solid #374931;
 }
 .tabShow.tab_gpgosi_Guide li a,
 .tabShow.tab_gpgosi_Guide li a.on {
-    background: #026f61;
+    background: #374931;
     color: #fff;
-    line-height: 58px;
-    font-size: 14px;
-    font-weight: 300;
-    height: 62px;
+    line-height: 56px;
+    font-size: 17px;
+    height: 58px;
     border: none;
 }
 .tabShow.tab_gpgosi_Guide li:first-child a,
 .tabShow.tab_gpgosi_Guide li:first-child a.on {
     border: none;
 }
+
+.w-gpgosi-Guide {letter-spacing: 0}
+
+.examInfoGu4 {padding: 30px 40px}
+.examInfoGu4 .hTy {font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"}
+.examInfoGu4 .hTy.txt-gray {font-size: 14px; font-weight:bold; color: #555; line-height: 18px}
+.examInfoGu4 .hTy.txt-red {font-size: 14px; font-weight:bold; color: #d52b2b; line-height: 18px}
+.examInfoGu4 .hTy4 {margin: 0 0 20px; font-size:16px; font-weight:bold; color: #026f61; line-height: 30px}
+
+.examInfoGu4 .hTy5 {margin: 0 0 15px}
+.examInfoGu4 .hTy5 span {font-size: 13px}
+
+.examInfoGu4 .hTy6.center {margin: 15px 60px 0; font-size:13px}
+.examInfoGu4 .hTy6.right {margin: 0 0 5px; text-align: right;}
+.examInfoGu4 .hTy6.right span {font-size: 13px}
+.examInfoGu4 .hTy6.left span {margin: 5px 0 0; text-align: left; font-size: 12px}
 
 
 

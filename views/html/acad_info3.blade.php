@@ -81,8 +81,8 @@
                     <div class="LeclistTable orderTable">
                         <table cellspacing="0" cellpadding="0" class="listTable cartTable upper-gray bdt-gray tx-gray">
                             <colgroup>
-                                <col style="width: 65px;">
-                                <col style="width: 595px;">
+                                <col style="width: 60px;">
+                                <col style="width: 600px;">
                                 <col style="width: 90px;">
                                 <col style="width: 90px;">
                                 <col style="width: 100px;">
@@ -224,9 +224,8 @@
                                 <tr>
                                     <td class="w-acad tx-left pl20">
                                         <dl>
-                                            <dt class="tx-bright-gray">신림<span class="row-line">|</span></dt>
-                                            <dt class="tx-bright-gray">회원+비회원<span class="row-line">|</span></dt>
-                                            <dt>[접수기간] 2018-00-00 ~ 2018-00-00</dt>
+                                            <dt class="tx-bright-gray">일반경찰 경행경채<span class="row-line">|</span></dt>
+                                            <dt class="tx-bright-gray">노량진</dt>
                                         </dl>
                                         <span class="row-line">|</span>
                                     </td>

@@ -3,12 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 require APPPATH . 'controllers/lms/board//BaseBoard.php';
 
-class LiveLectureMaterial extends BaseBoard
+class Gallery extends BaseBoard
 {
-    protected $temp_models = array('sys/boardMaster', 'sys/site', 'board/board', 'product/base/subject', 'product/base/course', 'product/base/professor');
+    protected $temp_models = array('sys/boardMaster', 'sys/site', 'board/board');
     protected $helpers = array('download','file');
 
-    private $board_name = 'liveLectureMaterial';
+    private $board_name = 'gallery';
     private $site_code = '';
     private $bm_idx;
     private $_reg_type = [
@@ -27,7 +27,7 @@ class LiveLectureMaterial extends BaseBoard
     }
 
     /**
-     * 공지게시판 인덱스 (리스트페이지)
+     * 갤러리게시판 인덱스
      */
     public function index()
     {
@@ -41,20 +41,11 @@ class LiveLectureMaterial extends BaseBoard
         //검색상태조회
         $arr_search_data = $this->getBoardSearchingArray($this->bm_idx);
 
-        //캠퍼스 조회
-        $arr_campus = $this->_getCampusArray('');
-
         //카테고리 조회(구분)
         $arr_category = $this->_getCategoryArray('');
 
-        //과목조회
-        $arr_subject = $this->_getSubjectArray();
-
-        //과정조회
-        $arr_course = $this->_getCourseArray();
-
-        //교수조회
-        $arr_professor = $this->_getProfessorArray();
+        //캠퍼스 조회
+        $arr_campus = $this->_getCampusArray('');
 
         $this->load->view("board/offline/{$this->board_name}/index", [
             'bm_idx' => $this->bm_idx,
@@ -63,16 +54,13 @@ class LiveLectureMaterial extends BaseBoard
             'ret_search_site_code' => $arr_search_data['ret_search_site_code'],
             'arr_campus' => $arr_campus,
             'arr_category' => $arr_category,
-            'arr_subject' => $arr_subject,
-            'arr_course' => $arr_course,
-            'arr_professor' => $arr_professor,
             'boardName' => $this->board_name,
             'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}"
         ]);
     }
 
     /**
-     * 공지사항 목록 조회
+     * 갤러리게시판 ajax
      * @return CI_Output
      */
     public function listAjax()
@@ -87,9 +75,6 @@ class LiveLectureMaterial extends BaseBoard
                 'LB.BmIdx' => $this->bm_idx,
                 'LB.IsStatus' => 'Y',
                 'LB.CampusCcd' => $this->_reqP('search_campus_ccd'),
-                'LB.SubjectIdx' => $this->_reqP('search_subject'),
-                'LB.CourseIdx' => $this->_reqP('search_course'),
-                'LB.ProfIdx' => $this->_reqP('search_professor'),
                 'LB.IsUse' => $this->_reqP('search_is_use'),
             ],
             'ORG' => [
@@ -118,10 +103,9 @@ class LiveLectureMaterial extends BaseBoard
         ];
 
         $column = '
-            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode, LS.SiteName, LB.Title,LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
-            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName,
-            LB.SubjectIdx, PS.SubjectName, LB.CourseIdx, PRODUCT_COURSE.CourseName, LB.ProfIdx, PROFESSOR.ProfNickName
-            ';
+            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
+            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName
+        ';
 
         $list = [];
         $count = $this->boardModel->listAllBoard($this->board_name,true, $arr_condition, $sub_query_condition, $this->site_code);
@@ -175,7 +159,7 @@ class LiveLectureMaterial extends BaseBoard
     }
 
     /**
-     * 라이브강의자료실 등록/수정 폼
+     * 갤러리 게시판 등록 폼
      * @param array $params
      */
     public function create($params = [])
@@ -194,20 +178,10 @@ class LiveLectureMaterial extends BaseBoard
         //캠퍼스'Y'상태 사이트 코드 조회
         $offLineSite_list = $this->siteModel->getOffLineSiteArray();
 
-        //과목조회
-        $arr_subject = $this->_getSubjectArray();
-
-        //과정조회
-        $arr_course = $this->_getCourseArray();
-
-        //교수조회
-        $arr_professor = $this->_getProfessorArray();
-
         if (empty($params[0]) === false) {
             $column = '
             LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
-            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName,
-            LB.SubjectIdx, PS.SubjectName, LB.CourseIdx, PRODUCT_COURSE.CourseName, LB.ProfIdx, PROFESSOR.ProfNickName
+            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName
             ';
             $method = 'PUT';
             $board_idx = $params[0];
@@ -243,19 +217,16 @@ class LiveLectureMaterial extends BaseBoard
             'arr_campus' => $arr_campus,
             'campus_all_ccd' => $this->codeModel->campusAllCcd,
             'offLineSite_list' => $offLineSite_list,
-            'arr_subject' => $arr_subject,
-            'arr_course' => $arr_course,
-            'arr_professor' => $arr_professor,
             'method' => $method,
             'data' => $data,
             'board_idx' => $board_idx,
             'arr_reg_type' => $this->_reg_type,
-            'attach_file_cnt' => $this->boardModel->_attach_img_cnt
+            'attach_file_cnt' => (count($data['arr_attach_file_idx']) < 1) ? $this->boardModel->_attach_img_cnt : count($data['arr_attach_file_idx'])
         ]);
     }
 
     /**
-     * 게시판 글 등록
+     * 갤러리 게시판 등록
      */
     public function store()
     {
@@ -269,9 +240,6 @@ class LiveLectureMaterial extends BaseBoard
             ['field' => 'site_code', 'label' => '운영사이트', 'rules' => 'trim|required'],
             ['field' => 'campus_ccd', 'label' => '캠퍼스', 'rules' => 'trim|required'],
             ['field' => 'cate_code[]', 'label' => '카테고리', 'rules' => 'trim|required'],
-            ['field' => 'subject_idx', 'label' => '과목명', 'rules' => 'trim|required'],
-            ['field' => 'course_idx', 'label' => '과정', 'rules' => 'trim|required'],
-            /*['field' => 'prof_idx', 'label' => '교수명', 'rules' => 'trim|required'],*/
             ['field' => 'title', 'label' => '제목', 'rules' => 'trim|required|max_length[50]'],
             ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => 'board_content', 'label' => '내용', 'rules' => 'trim|required'],
@@ -295,7 +263,7 @@ class LiveLectureMaterial extends BaseBoard
     }
 
     /**
-     * 공지게시판 Read 페이지
+     * 갤러리게시판 Read 페이지
      * @param array $params
      */
     public function read($params = [])
@@ -310,8 +278,7 @@ class LiveLectureMaterial extends BaseBoard
 
         $column = '
             LB.BoardIdx, LB.RegType, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
-            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm,
-            LB.SubjectIdx, PS.SubjectName, LB.CourseIdx, PRODUCT_COURSE.CourseName, LB.ProfIdx, PROFESSOR.ProfNickName
+            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm
             ';
         $board_idx = $params[0];
         $arr_condition = ([
@@ -363,9 +330,9 @@ class LiveLectureMaterial extends BaseBoard
             'data' => $data,
             'getCategoryArray' => $get_category_array,
             'board_idx' => $board_idx,
-            'attach_file_cnt' => $this->boardModel->_attach_img_cnt,
             'board_previous' => $board_previous,
             'board_next' => $board_next,
+            'attach_file_cnt' => (count($data['arr_attach_file_idx']) < 1) ? $this->boardModel->_attach_img_cnt : count($data['arr_attach_file_idx'])
         ]);
     }
 
@@ -421,9 +388,6 @@ class LiveLectureMaterial extends BaseBoard
                 'SiteCode' => element('site_code', $input),
                 'BmIdx' => $this->bm_idx,
                 'CampusCcd' => element('campus_ccd', $input),
-                'SubjectIdx' => element('subject_idx', $input),
-                'CourseIdx' => element('course_idx', $input),
-                'ProfIdx' => element('prof_idx', $input),
                 'RegType' => element('reg_type', $input),
                 'Title' => element('title', $input),
                 'IsBest' => (element('is_best', $input) == '1') ? '1' : '0',

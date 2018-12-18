@@ -132,6 +132,7 @@ class BoardModel extends WB_Model
                 ";
                 break;
             case "offlineBoard" :
+            case "gallery" :
                 $from = $from."
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.CampusCcd = LSC.Ccd
                 ";
@@ -524,6 +525,7 @@ class BoardModel extends WB_Model
                 ";
                 break;
             case "offlineBoard" :
+            case "gallery" :
                 $from = $from."
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.CampusCcd = LSC.Ccd
                 ";

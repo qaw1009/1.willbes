@@ -133,7 +133,7 @@ class Counsel extends BaseBoard
             $arr_condition['EQ'] = array_merge($arr_condition['EQ'], ['LB.VocCcd' => $this->_Ccd['voc']]);
         }
 
-        if ($this->_reqP('search_chk_notice_display') == 1) {
+        if ($this->_reqP('search_chk_hot_display') == 1) {
             $arr_condition['EQ'] = array_merge($arr_condition['EQ'], ['LB.IsBest' => '0']);
         }
 

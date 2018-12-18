@@ -103,7 +103,7 @@
                     <div class="checkbox">
                         <input type="checkbox" name="search_chk_vod_value" value="1" class="flat" id="vod_value"/> <label for="vod_value">강성 클레임</label>
                         <input type="checkbox" name="search_chk_delete_value" value="1" class="flat" id="delete_value"/> <label for="delete_value">삭제글 보기</label>
-                        <input type="checkbox" name="search_chk_notice_display" value="1" class="flat" id="notice_display"/> <label for="notice_display">공지 숨기기</label>
+                        <input type="checkbox" name="search_chk_hot_display" value="1" class="flat" id="notice_display"/> <label for="notice_display">공지 숨기기</label>
                     </div>
                     <button type="submit" class="btn btn-primary btn-search ml-10" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
                     <button type="button" class="btn btn-default ml-30 mr-30" id="_btn_reset">검색초기화</button>

@@ -1044,7 +1044,7 @@ class Player extends \app\controllers\FrontController
         ]);
 
         if(empty($lec) === true){
-            $this->json_error('강좌정보가 없습니다.');
+            return $this->json_error('강좌정보가 없습니다.');
         }
 
         $lec = $lec[0];
@@ -1082,11 +1082,11 @@ class Player extends \app\controllers\FrontController
         }
 
         if($isstart == 'N'){
-            $this->json_error('아직 수강시작 전인 강의입니다.');
+            return $this->json_error('아직 수강시작 전인 강의입니다.');
         }
 
         if($ispause == 'Y'){
-            $this->json_error('일시중지 중인 강의입니다.');
+            return $this->json_error('일시중지 중인 강의입니다.');
         }
 
         // 회차 열어준경우 IN 생성
@@ -1129,14 +1129,10 @@ class Player extends \app\controllers\FrontController
         $data = $this->classroomFModel->getCurriculum($cond_arr);
 
         if(empty($data) == true){
-            $this->json_error('강의 정보가 없습니다.');
+            return $this->json_error('강의 정보가 없습니다.');
         }
 
-        $XMLString  = "<?xml version='1.0' encoding='UTF-8' ?>";
-        $XMLString .= "<axis-app>";
-        $XMLString .= "<security>true</security>"; // 보안설정
-        $XMLString .= "<action-type>".$type."</action-type>"; // 스트리밍/다운로드
-        $XMLString .= "<user-id><![CDATA[".$MemId."]]></user-id>"; // 회원 아이디
+        $rtnData = [];
 
         foreach($data as $key => $row){
             // 배수체크
@@ -1246,6 +1242,10 @@ class Player extends \app\controllers\FrontController
             $enddate = $lec['RealLecEndDate'];
 
             if($type == 'download'){
+                $rtnData = array_merge($rtnData, [
+
+
+                ]);
 
             } else {
                 $rtnData = [
@@ -1261,8 +1261,7 @@ class Player extends \app\controllers\FrontController
 
         }
 
-        $this->json_result(true,'성공',null, $rtnData);
-
+        return $this->json_result(true,'성공',null, $rtnData);
     }
 
 

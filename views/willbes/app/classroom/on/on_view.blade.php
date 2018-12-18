@@ -93,9 +93,9 @@
                                             <ul class="w-free NGEB">
                                                 @if($row['isstart'] == 'Y' && $row['ispause'] == 'N')
                                                     @if($row['timeover'] == 'N')
-                                                        @if($row['wWD'] != '')<li class="btn_black_line"><a href="javascript:;" onclick='fnAppStream("https:{{front_url('/Player/getApp/')}}","m={{$lec['MemIdx']}}&id={{sess_data('mem_id')}}&o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&sp={{$row['ProdCodeSub']}}&l={{$row['wLecIdx']}}&u={{$row['wUnitIdx']}}&q=WD&st=S");' >WIDE</a></li>@endif
-                                                        @if($row['wHD'] != '')<li class="btn_blue"><a href="javascript:;" onclick='fnAppStream("https:{{site_url('/Player/getMobile/')}}?m={{$lec['MemIdx']}}&id={{sess_data('mem_id')}}&o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&sp={{$row['ProdCodeSub']}}&l={{$row['wLecIdx']}}&u={{$row['wUnitIdx']}}&q=HD&st=S", "{{config_item('starplayer_license')}}");' >HIGH</a></li>@endif
-                                                        @if($row['wSD'] != '')<li class="btn_gray"><a href="javascript:;" onclick='fnAppStream("https:{{site_url('/Player/getMobile/')}}?m={{$lec['MemIdx']}}&id={{sess_data('mem_id')}}&o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&sp={{$row['ProdCodeSub']}}&l={{$row['wLecIdx']}}&u={{$row['wUnitIdx']}}&q=SD&st=S", "{{config_item('starplayer_license')}}");' >LOW</a></li>@endif
+                                                        @if($row['wWD'] != '')<li class="btn_black_line"><a href="javascript:;" onclick='fnApp("https:{{front_url('/Player/getApp/')}}","m={{$lec['MemIdx']}}&id={{sess_data('mem_id')}}&o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&sp={{$row['ProdCodeSub']}}&l={{$row['wLecIdx']}}&u={{$row['wUnitIdx']}}&q=WD&st=S");' >WIDE</a></li>@endif
+                                                        @if($row['wHD'] != '')<li class="btn_blue"><a href="javascript:;"       onclick='fnApp("https:{{front_url('/Player/getApp/')}}","m={{$lec['MemIdx']}}&id={{sess_data('mem_id')}}&o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&sp={{$row['ProdCodeSub']}}&l={{$row['wLecIdx']}}&u={{$row['wUnitIdx']}}&q=HD&st=S");' >HIGH</a></li>@endif
+                                                        @if($row['wSD'] != '')<li class="btn_gray"><a href="javascript:;"       onclick='fnApp("https:{{front_url('/Player/getApp/')}}","m={{$lec['MemIdx']}}&id={{sess_data('mem_id')}}&o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&sp={{$row['ProdCodeSub']}}&l={{$row['wLecIdx']}}&u={{$row['wUnitIdx']}}&q=SD&st=S");' >LOW</a></li>@endif
                                                     @else
                                                         <li class="btn_black_line"><a>시간초과</a></li>
                                                     @endif
@@ -168,9 +168,7 @@
 
             $("#quility").val($quility);
 
-            $info_url = 'https:{{front_url('/Player/getMobile/')}}?' + $('#downForm').serialize();
-
-            fnMobile($info_url, '{{config_item('starplayer_license')}}');
+            fnApp('https:{{front_url('/Player/getApp/')}}', $('#downForm').serialize());
         }
 
         function onInitEvent(){ }

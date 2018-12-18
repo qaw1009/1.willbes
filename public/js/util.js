@@ -45,7 +45,7 @@ function fnMobile($info_url, $license)
 /**
  *  앱 스트리밍 플레이어
  */
-function fnAppStream($url, $data)
+function fnApp($url, $data)
 {
     sendAjax($url, $data,
         function(d){

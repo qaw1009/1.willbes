@@ -212,11 +212,21 @@
                 <div class="form-group">
                     <label class="control-label col-md-2" for="IsRefund">선수강좌구분 <span class="required">*</span>
                     </label>
-                    <div class="col-md-6 form-inline item" >
+                    <div class="col-md-4 form-inline item" >
                         <div class="radio">
                             <input type="radio" name="LecSaleType" class="flat" value="N" required="required" title="선수강좌구분" @if($method == 'POST' || $data['LecSaleType']=='N')checked="checked"@endif/> 일반강좌
                             &nbsp;&nbsp;
                             <input type="radio" name="LecSaleType" class="flat" value="B" @if($data['LecSaleType']=='B')checked="checked"@endif/> 선수강좌
+                        </div>
+                    </div>
+
+                    <label class="control-label col-md-2">신규/추천
+                    </label>
+                    <div class="col-md-4 form-inline item" >
+                        <div class="checkbox">
+                            <input type='checkbox' name='IsNew' value='Y' class="flat" @if($data['IsNew'] == 'Y') checked="checked"@endif> 신규
+                            &nbsp;&nbsp;
+                            <input type='checkbox' name='IsBest' value='Y' class="flat" @if($data['IsBest'] == 'Y') checked="checked"@endif> 추천
                         </div>
                     </div>
                 </div>

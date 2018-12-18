@@ -33,9 +33,19 @@
 
     <a href="{{ site_url('/home/html/diypackage') }}" target="_blank">패키지 > DIY패키지 수강신청 page 이동</a><br/><br/>
 
+    <a href="{{ site_url('/home/html/packagesub3') }}" target="_blank">패키지 > 기간제패키지(일반) 상세 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/packagesub4') }}" target="_blank">패키지 > 기간제패키지(선택) 상세 page 이동</a><br/><br/>
+
     <a href="{{ site_url('/home/html/list') }}" target="_blank">강좌 > 단강좌,무료강좌 수강신청 page 이동</a><br/><br/>
 
     <a href="{{ site_url('/home/html/listsub') }}" target="_blank">강좌 > 단강좌, 무료강좌 수강신청 상세 page 이동</a><br/><br/>
+
+
+
+</div>
+
+<div style="float:left; width: 360px; height: 750px; border-right: 1px solid #ccc; margin-right: 15px; font-size: 15px;">
 
     <a href="{{ site_url('/home/html/event_ing') }}" target="_blank">이벤트 > 진행중인 이벤트 page 이동</a><br/><br/>
 
@@ -44,10 +54,6 @@
     <a href="{{ site_url('/home/html/event_end') }}" target="_blank">이벤트 > 마감된 이벤트 page 이동</a><br/><br/>
 
     <a href="{{ site_url('/home/html/event_end_read') }}" target="_blank">이벤트 > 마감된 이벤트 상세 page 이동</a><br/><br/>
-
-</div>
-
-<div style="float:left; width: 360px; height: 750px; border-right: 1px solid #ccc; margin-right: 15px; font-size: 15px;">
 
     <a href="{{ site_url('/home/html/mocktest1') }}" target="_blank">수험정보 > 시험공고 page 이동</a><br/><br/>
 
@@ -63,6 +69,8 @@
 
     <a href="{{ site_url('/home/html/guide_success_gosi') }}" target="_blank">수험정보 > 공무원 초보합격전략 page 이동</a><br/><br/>
 
+    <a href="{{ site_url('/home/html/guide_gpgosi') }}" target="_blank">수험정보 > 군무원 수험가이드 page 이동</a><br/><br/>
+
     <a href="{{ site_url('/home/html/mocktest6_1') }}" target="_blank">수험정보 > 모의고사 > 모의고사안내 page 이동</a><br/><br/>
 
     <a href="{{ site_url('/home/html/mocktest6_2') }}" target="_blank">수험정보 > 모의고사 > 모의고사접수 page 이동</a><br/><br/>
@@ -70,6 +78,10 @@
     <a href="{{ site_url('/home/html/cart5') }}" target="_blank">수험정보 > 모의고사 > 모의고사결제 page 이동</a><br/><br/>
 
     <a href="{{ site_url('/home/html/mocktest6_3') }}" target="_blank">수험정보 > 모의고사 > 이의제기/정오표 page 이동</a><br/><br/>
+
+</div>
+
+<div style="float:left; width: 350px; height: 750px; border-right: 1px solid #ccc; margin-right: 15px; font-size: 15px;">
 
     <a href="{{ site_url('/home/html/counsel1') }}" target="_blank">상담실 > 일반상담 page 이동</a><br/><br/>
 
@@ -80,10 +92,6 @@
     <a href="{{ site_url('/home/html/counsel3_2') }}" target="_blank">상담실 > 심층상담예약 > 사전정보입력 page 이동</a><br/><br/>
 
     <a href="{{ site_url('/home/html/counsel3_3') }}" target="_blank">상담실 > 심층상담예약 > 상담예약확인 page 이동</a><br/><br/>
-
-</div>
-
-<div style="float:left; width: 340px; height: 750px; border-right: 1px solid #ccc; margin-right: 15px; font-size: 15px;">
 
     <a href="{{ site_url('/home/html/cart1') }}" target="_blank">결제 > 장바구니 page 이동</a><br/><br/>
 

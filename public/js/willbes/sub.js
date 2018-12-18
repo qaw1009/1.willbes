@@ -3,6 +3,11 @@ $(function() {
     $('ul li.profList:nth-child(4n)').addClass('nth');
 });
 
+// 교수 선택 페이지 nth-child(8n+1)
+$(function() {
+    $('ul.sbjProf li:nth-child(7n+1)').addClass('nth');
+});
+
 // 교재정보 전체보기 버튼 Script
 $(function() {
     $('.willbes-Lec-Subject .MoreBtn a').click(function() {

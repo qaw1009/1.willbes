@@ -57,20 +57,28 @@
                         @foreach($products['best'] as $idx => $row)
                             <div class="lec-profile p_re">
                                 <div class="w-tit">
-                                    <a href="{{ site_url('/lecture/show/cate/' . $def_cate_code . '/pattern/only/prod-code/' . $row['ProdCode']) }}">{{ $row['ProdName'] }}</a>
-                                    @if($row['wLectureProgressCcd'] == '105001')
+                                    <a href="{{ $__cfg['IsPassSite'] === false ? front_url('/lecture/show/cate/' . $def_cate_code . '/pattern/only/prod-code/' . $row['ProdCode']) : front_url('/offLecture/index#' . $row['ProdCode']) }}">{{ $row['ProdName'] }}</a>
+                                    @if(($__cfg['IsPassSite'] === false && $row['wLectureProgressCcd'] == '105001') || ($__cfg['IsPassSite'] === true && $row['AcceptStatusCcd'] == '675002'))
                                         <img src="{{ img_url('prof/icon_ing.gif') }}">
                                     @endif
                                 </div>
                                 <dl class="w-info">
-                                    <dt><span class="tx-blue">{{ $row['StudyPeriod'] }}</span>일</dt>
-                                    <dt><span class="row-line">|</span></dt>
-                                    <dt><span class="tx-blue">{{ $row['wUnitLectureCnt'] }}</span>강</dt>
+                                    @if($__cfg['IsPassSite'] === false)
+                                        <dt><span class="tx-blue">{{ $row['StudyPeriod'] }}</span>일</dt>
+                                        <dt><span class="row-line">|</span></dt>
+                                        <dt><span class="tx-blue">{{ $row['wUnitLectureCnt'] }}</span>강</dt>
+                                    @else
+                                        <dt><span class="tx-blue">{{ date('m/d', strtotime($row['StudyStartDate'])) }} ~ {{ date('m/d', strtotime($row['StudyEndDate'])) }}</dt>
+                                        <dt><span class="row-line">|</span></dt>
+                                        <dt><span class="tx-blue">{{ $row['Amount'] }}</span>회차</dt>
+                                    @endif
                                     <dt><span class="row-line">|</span></dt>
                                     <dt><span class="tx-blue">{{ number_format($row['ProdPriceData'][0]['RealSalePrice'], 0) }}</span>원</dt>
                                     <dt class="w-notice p_re">
                                         <div class="w-sp one">
-                                            <a href="{{ $row['LectureSampleData'][0]['wWD'] or $row['LectureSampleData'][0]['wHD'] or $row['LectureSampleData'][0]['wSD'] }}">맛보기</a>
+                                            @if(empty($row['LectureSampleData']) === false)
+                                                <a href="{{ $row['LectureSampleData'][0]['wWD'] or $row['LectureSampleData'][0]['wHD'] or $row['LectureSampleData'][0]['wSD'] }}">맛보기</a>
+                                            @endif
                                         </div>
                                     </dt>
                                 </dl>
@@ -118,7 +126,7 @@
                 <div class="will-Tit NG">신규강좌 <img style="vertical-align: top;" src="{{ img_url('prof/icon_new.gif') }}"></div>
                 <ul class="List-Table GM tx-gray">
                     @foreach($products['new'] as $idx => $row)
-                        <li><a href="{{ site_url('/lecture/show/cate/' . $def_cate_code . '/pattern/only/prod-code/' . $row['ProdCode']) }}">{{ $row['ProdName'] }}</a></li>
+                        <li><a href="{{ $__cfg['IsPassSite'] === false ? front_url('/lecture/show/cate/' . $def_cate_code . '/pattern/only/prod-code/' . $row['ProdCode']) : front_url('/offLecture/index#' . $row['ProdCode']) }}">{{ $row['ProdName'] }}</a></li>
                     @endforeach
                 </ul>
             </div>

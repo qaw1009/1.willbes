@@ -165,6 +165,7 @@
                 <!-- willbes-Lec-Line -->
 
                 @foreach($data['list'][$subject_idx] as $idx => $row)
+                    <a name="{{ $row['ProdCode'] }}"></a>
                     <div class="willbes-Lec-Table">
                         <table cellspacing="0" cellpadding="0" class="lecTable acadlecTable">
                             <colgroup>
@@ -195,7 +196,7 @@
                                     </td>
                                     <td class="w-schedule">
                                         <span class="tx-blue">{{ date('m/d', strtotime($row['StudyStartDate'])) }} ~ {{ date('m/d', strtotime($row['StudyEndDate'])) }}</span> <br/>
-                                        {{ $row['WeekArrayName'] }} ({{ $row['FixNumber'] }}회차)
+                                        {{ $row['WeekArrayName'] }} ({{ $row['Amount'] }}회차)
                                     </td>
                                     <td class="w-notice p_re">
                                         <div class="acadInfo NSK n{{ substr($row['AcceptStatusCcd'], -1) }}">{{ $row['AcceptStatusCcdName'] }}</div>

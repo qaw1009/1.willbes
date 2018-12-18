@@ -17,7 +17,9 @@ if (!function_exists('banner')) {
 
         return '<script src="' . app_url('/banner/show/?site_code=' . $site_code . '&cate_code=' . $cate_code . '&section=' . rawurlencode($section) . '&css_class=' . rawurlencode($css_class), 'www') . '"></script>';
     }
+}
 
+if (!function_exists('hpSubString')) {
     /**
      * 문자열 치환 함수
      * @param $string

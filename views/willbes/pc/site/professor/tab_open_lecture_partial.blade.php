@@ -319,7 +319,7 @@
         <div id="acad2" class="tabContent">
             <div class="tabGrid">
                 <ul class="tabWrap acadline two">
-                    <li><a href="#off_only_lecture" class="on">단강좌</a></li>
+                    <li><a href="#off_only_lecture" class="on">단과</a></li>
                     <li><a href="#off_pack_normal">종합반</a></li>
                 </ul>
             </div>
@@ -370,7 +370,7 @@
                                             </td>
                                             <td class="w-schedule">
                                                 <span class="tx-blue">{{ date('m/d', strtotime($row['StudyStartDate'])) }} ~ {{ date('m/d', strtotime($row['StudyEndDate'])) }}</span> <br/>
-                                                {{ $row['WeekArrayName'] }} ({{ $row['FixNumber'] }}회차)
+                                                {{ $row['WeekArrayName'] }} ({{ $row['Amount'] }}회차)
                                             </td>
                                             <td class="w-notice p_re">
                                                 <div class="acadInfo NSK n{{ substr($row['AcceptStatusCcd'], -1) }}">{{ $row['AcceptStatusCcdName'] }}</div>

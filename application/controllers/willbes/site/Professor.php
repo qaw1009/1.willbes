@@ -159,7 +159,7 @@ class Professor extends \app\controllers\FrontController
 
         $products['best'] = array_map(function ($arr) {
             $arr['ProdPriceData'] = json_decode($arr['ProdPriceData'], true);
-            $arr['LectureSampleData'] = json_decode($arr['LectureSampleData'], true);
+            $arr['LectureSampleData'] = empty($arr['LectureSampleData']) === false ? json_decode($arr['LectureSampleData'], true) : [];
             return $arr;
         }, $products['best']);
 

@@ -36,7 +36,8 @@
                 <ul class="List-Table GM tx-gray">
                     @foreach($arr_base['product'] as $idx => $row)
                         <li>
-                            <a href="{{ $__cfg['IsPassSite'] === false ? front_url('/lecture/show/cate/' . $def_cate_code . '/pattern/only/prod-code/' . $row['ProdCode']) : '#none' }}">{{ $row['ProdName'] }}</a><span class="date">{{ substr($row['RegDatm'], 0, 10) }}</span>
+                            <a href="{{ $__cfg['IsPassSite'] === false ? front_url('/lecture/show/cate/' . $def_cate_code . '/pattern/only/prod-code/' . $row['ProdCode']) : front_url('/offLecture/index#' . $row['ProdCode']) }}">{{ $row['ProdName'] }}</a>
+                            <span class="date">{{ substr($row['RegDatm'], 0, 10) }}</span>
                         </li>
                     @endforeach
                 </ul>
@@ -126,7 +127,7 @@
                 @foreach($data['list'][$subject_idx] as $idx => $row)
                 <li class="profList">
                     @php
-                        $show_url = $__cfg['IsPassSite'] === false ? '/professor/show/cate/' . $def_cate_code . '/prof-idx/' . $row['ProfIdx'] . '/?' : '/professor/show/prof-idx/' . $row['ProfIdx'] . '/?cate_code=' . $def_cate_code;
+                        $show_url = $__cfg['IsPassSite'] === false ? '/professor/show/cate/' . $def_cate_code . '/prof-idx/' . $row['ProfIdx'] . '/?' : '/professor/show/prof-idx/' . $row['ProfIdx'] . '/?cate_code=' . $def_cate_code . '&';
                         $show_url .= 'subject_idx=' . $subject_idx . '&subject_name=' . rawurlencode($subject_name);
                     @endphp
                     <a class="profBox" href="{{ front_url($show_url) }}">

@@ -7,7 +7,7 @@
             <dl>
                 @foreach(current($subject_row) as $prof_idx => $prof_name)
                     @php
-                        $show_url = $__cfg['IsPassSite'] === false ? '/professor/show/cate/' . $def_cate_code . '/prof-idx/' . $prof_idx . '/?' : '/professor/show/prof-idx/' . $prof_idx . '/?cate_code=' . $def_cate_code;
+                        $show_url = $__cfg['IsPassSite'] === false ? '/professor/show/cate/' . $def_cate_code . '/prof-idx/' . $prof_idx . '/?' : '/professor/show/prof-idx/' . $prof_idx . '/?cate_code=' . $def_cate_code . '&';
                         $show_url .= 'subject_idx=' . $subject_idx . '&subject_name=' . rawurlencode(key($subject_row));
                     @endphp
                     <dt>

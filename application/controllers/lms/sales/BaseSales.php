@@ -157,12 +157,11 @@ class BaseSales extends \app\controllers\BaseController
         // 교재일 경우 추가 조건
         if ($this->_sales_type == 'book') {
             // 교재상품이 포함된 주문만 조회
-            $raw_query = '(select count(0) from ' . $this->orderListModel->_table['order_product'] . ' as WOP
+            $raw_query = /** @lang text */ 'select 1 from ' . $this->orderListModel->_table['order_product'] . ' as WOP
                     inner join ' . $this->orderListModel->_table['product'] . ' as WP
                         on WOP.ProdCode = WP.ProdCode
-                where WOP.OrderIdx = O.OrderIdx and WP.ProdTypeCcd = "' . $this->orderListModel->_prod_type_ccd['book'] . '"                        
-            ) >';
-            $arr_condition['RAW'][$raw_query] = '0';
+                where WOP.OrderIdx = O.OrderIdx and WP.ProdTypeCcd = "' . $this->orderListModel->_prod_type_ccd['book'] . '"';
+            $arr_condition['RAW']['EXISTS ('] = $raw_query . ')';
         }
 
         // 날짜 검색

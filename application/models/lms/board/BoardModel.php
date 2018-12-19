@@ -45,9 +45,11 @@ class BoardModel extends WB_Model
     public function listAllBoard($board_type, $is_count, $arr_condition = [], $sub_query_condition = [], $site_code = '', $limit = null, $offset = null, $order_by = [], $column = '*')
     {
         if ($is_count === true) {
+            $master_column = '';
             $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
+            $master_column = ' (SELECT COUNT(*) FROM lms_board_r_comment AS CT WHERE LB.BoardIdx = CT.BoardIdx) AS CommentCnt, ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
@@ -185,7 +187,7 @@ class BoardModel extends WB_Model
 
         // 쿼리 실행
         $where = $where_temp . $where_campus;
-        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        $query = $this->_conn->query('select STRAIGHT_JOIN '. $master_column . $column . $from . $where . $order_by_offset_limit);
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }

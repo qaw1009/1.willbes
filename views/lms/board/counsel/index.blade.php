@@ -130,6 +130,7 @@
                     <th>답변일</th>
                     <th>공개</th>
                     <th>조회수</th>
+                    <th>댓글수</th>
                     <th>수정</th>
                 </tr>
                 </thead>
@@ -236,13 +237,11 @@
                                 return (data == 'Y') ? '공개' : '<p class="red">비공개</p>';
                             }
                         }},
-
-                    /*{'data' : 'ReadCnt'},*/
                     {'data' : 'ReadCnt', 'render' : function(data, type, row, meta) {
                             var cnt = Number(data) + Number(row.SettingReadCnt);
                             return cnt;
                         }},
-
+                    {'data' : 'CommentCnt'},
                     {'data' : 'BoardIdx', 'render' : function(data, type, row, meta) {
                             if (row.RegType == 1) {
                                 return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.BoardIdx + '"><u>수정</u></a>';

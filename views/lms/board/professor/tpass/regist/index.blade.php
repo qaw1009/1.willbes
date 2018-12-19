@@ -116,6 +116,7 @@
                 <th>HOT</th>
                 <th>사용</th>
                 <th>조회수</th>
+                <th>댓글수</th>
                 <th>수정</th>
             </tr>
             </thead>
@@ -183,18 +184,17 @@
 
                 {'data' : 'wAdminName'},
                 {'data' : 'RegDatm'},
-
                 {'data' : 'IsBest', 'render' : function(data, type, row, meta) {
                         //return (data == 'Y') ? '사용' : '<p class="red">미사용</p>';
                         var chk = '';
                         if (data == '1') { chk = 'checked=checked'; $set_is_best[row.BoardIdx] = 1; } else { chk = ''; }
                         return '<input type="checkbox" name="is_best" value="1" class="flat is-best" data-is-best-idx="' + row.BoardIdx + '" '+chk+'/>';
                     }},
-
                 {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                         return (data == 'Y') ? '사용' : '<p class="red">미사용</p>';
                     }},
                 {'data' : 'ReadCnt'},
+                {'data' : 'CommentCnt'},
                 {'data' : 'BoardIdx', 'render' : function(data, type, row, meta) {
                         return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.BoardIdx + '"><u>수정</u></a>';
                     }},

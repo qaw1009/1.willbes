@@ -61,6 +61,15 @@ class OrderFModel extends BaseOrderFModel
                 $row['SubRealSalePrice'] = json_decode($row['SubRealSalePrice'], true);
             }
 
+            // 기간제 선택형 패키지일 경우 연결된 과목/교수 정보 확인
+            if ($row['LearnPatternCcd'] == $this->_learn_pattern_ccd['periodpack_lecture'] && $row['PackTypeCcd'] == $this->_adminpack_lecture_type_ccd['choice']) {
+                $row['SubjectProfData'] = element('subject_prof_idx', (array) json_decode($row['PostData'], true), []);
+
+                if (empty($row['SubjectProfData']) === true) {
+                    return '기간제 선택형 패키지 과목/교수 정보가 없습니다.';
+                }
+            }
+
             // 상품 결제금액 초기화
             $row['RealPayPrice'] = $row['RealSalePrice'];
 
@@ -608,6 +617,7 @@ class OrderFModel extends BaseOrderFModel
             $site_code = element('SiteCode', $input);   // 사이트코드
             $prod_code = element('ProdCode', $input);   // 상품코드
             $arr_prod_code_sub = empty(element('ProdCodeSub', $input)) === false ? explode(',', element('ProdCodeSub', $input)) : [];   // 패키지의 서브상품코드 배열
+            $arr_subject_prof_idx = element('SubjectProfData', $input, []);     // 주문상품 과목/교수 연결 데이터 (기간제선택형패키지)
 
             $point_type = $cart_type == 'book' ? 'book' : 'lecture';    // 포인트 구분
             $real_use_point = element('RealUsePoint', $input, 0);   // 사용포인트
@@ -673,6 +683,21 @@ class OrderFModel extends BaseOrderFModel
 
                     if ($this->_conn->set($data)->insert($this->_table['order_sub_product']) === false) {
                         throw new \Exception('주문상품서브 정보 등록에 실패했습니다.');
+                    }
+                }
+            }
+
+            // 주문상품 과목/교수 연결 등록 (기간제선택형패키지)
+            if (empty($arr_subject_prof_idx) === false) {
+                foreach ($arr_subject_prof_idx as $subject_prof_idx) {
+                    $data = [
+                        'OrderProdIdx' => $order_prod_idx,
+                        'ProfIdx' => str_first_pos_after($subject_prof_idx, ':'),
+                        'SubjectIdx' => str_first_pos_before($subject_prof_idx, ':')
+                    ];
+
+                    if ($this->_conn->set($data)->insert($this->_table['order_product_prof_subject']) === false) {
+                        throw new \Exception('주문상품 과목/교수 정보 등록에 실패했습니다.');
                     }
                 }
             }

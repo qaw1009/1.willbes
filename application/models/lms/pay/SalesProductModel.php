@@ -10,6 +10,7 @@ class SalesProductModel extends BaseOrderModel
         'on_free_lecture' => 'vw_product_on_free_lecture',
         'adminpack_lecture' => 'vw_product_adminpack_lecture',
         'userpack_lecture' => 'vw_product_userpack_lecture',
+        'periodpack_lecture' => 'vw_product_periodpack_lecture',
         'off_lecture' => 'vw_product_off_lecture',
         'off_pack_lecture' => 'vw_product_off_pack_lecture',
         'book' => 'vw_product_book',
@@ -20,6 +21,8 @@ class SalesProductModel extends BaseOrderModel
         'deposit' => 'vw_product_deposit',
         'product' => 'lms_product',
         'product_lecture' => 'lms_product_lecture',
+        'product_division' => 'lms_product_division',
+        'product_r_sublecture' => 'lms_product_r_sublecture',
         'cms_lecture_unit' => 'wbs_cms_lecture_unit'
     ];
 
@@ -155,5 +158,31 @@ class SalesProductModel extends BaseOrderModel
         $arr_condition = ['IN' => ['wUnitIdx' => (array) $unit_idx]];
 
         return $this->_conn->getListResult($this->_table['cms_lecture_unit'], $column, $arr_condition);
+    }
+
+    /**
+     * 기간제패키지 서브강좌 과목/교수 조회 (관리자 결제 선택형 기간제패키지 주문일 경우 사용)
+     * @param int $prod_code [기간제패키지 상품코드]
+     * @return mixed
+     */
+    public function findPeriodPackageSubjectProfIdx($prod_code)
+    {
+        $column = 'PL.SubjectIdx, PD.ProfIdx';
+        $from = '
+            from ' . $this->_table['product_r_sublecture'] . ' as PS
+                inner join ' . $this->_table['product'] . ' as P
+                    on PS.ProdCodeSub = P.ProdCode
+                inner join ' . $this->_table['product_lecture'] . ' as PL
+                    on P.ProdCode = PL.ProdCode
+                inner join ' . $this->_table['product_division'] . ' as PD
+                    on P.ProdCode = PD.ProdCode
+            where PS.ProdCode = ? and PS.IsStatus = "Y"
+                and PD.IsStatus = "Y" and PD.IsReprProf = "Y"
+            group by PL.SubjectIdx, PD.ProfIdx';
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from, [$prod_code]);
+
+        return $query->result_array();
     }
 }

@@ -370,7 +370,15 @@ class OrderModel extends BaseOrderModel
                 // 상품정보 조회
                 $learn_pattern = $this->getLearnPattern($prod_type, $learn_pattern_ccd);
                 $column = 'ProdCode, SiteCode, ProdName, ProdPriceData';
-                strpos($learn_pattern, 'pack_') !== false && $column .= ', fn_product_sublecture_codes(ProdCode) as ProdCodeSub';   // 패키지 상품의 경우 서브강좌 조회 추가
+
+                // 기간제패키지 제외한 패키지 상품일 경우 서브강좌 조회, 기간제패키지일 경우 패키지타입공통코드 조회
+                if (strpos($learn_pattern, 'pack_') !== false) {
+                    if ($learn_pattern == 'periodpack_lecture') {
+                        $column .= ', PackTypeCcd';
+                    } else {
+                        $column .= ', fn_product_sublecture_codes(ProdCode) as ProdCodeSub';
+                    }
+                }
 
                 $row = $this->salesProductModel->findSalesProductByProdCode($learn_pattern, $prod_code, $column);
                 if (empty($row) === true) {
@@ -385,6 +393,11 @@ class OrderModel extends BaseOrderModel
                 if ($is_delivery_info === false && $learn_pattern == 'book') {
                     $is_delivery_info = true;
                     $row['IsDeliveryInfo'] = 'Y';
+                }
+
+                // 기간제선택형패키지일 경우 연결된 과목/교수 정보 조회
+                if ($learn_pattern == 'periodpack_lecture' && $row['PackTypeCcd'] == $this->_adminpack_lecture_type_ccd['choice']) {
+                    $row['SubjectProfData'] = $this->salesProductModel->findPeriodPackageSubjectProfIdx($prod_code);
                 }
 
                 // 판매형태 공통코드, 회차 설정
@@ -530,6 +543,7 @@ class OrderModel extends BaseOrderModel
             $site_code = element('SiteCode', $input);   // 사이트코드
             $prod_code = element('ProdCode', $input);   // 상품코드
             $arr_prod_code_sub = empty(element('ProdCodeSub', $input)) === false ? explode(',', element('ProdCodeSub', $input)) : [];   // 패키지의 서브상품코드 배열
+            $arr_subject_prof_idx = element('SubjectProfData', $input, []);     // 주문상품 과목/교수 연결 데이터 (기간제선택형패키지)
             $is_visit_pay = element('IsVisitPay', $input, 'N');     // 방문결제 여부
             $is_delivery_info = element('IsDeliveryInfo', $input, 'N');     // 주문상품배송정보 입력 여부
 
@@ -580,7 +594,22 @@ class OrderModel extends BaseOrderModel
                 }
             }
 
-            // 나의 강의정보 등록 (온라인 강좌, 학원 강좌일 경우만 실행)
+            // 주문상품 과목/교수 연결 등록 (기간제선택형패키지)
+            if (empty($arr_subject_prof_idx) === false) {
+                foreach ($arr_subject_prof_idx as $subject_prof_row) {
+                    $data = [
+                        'OrderProdIdx' => $order_prod_idx,
+                        'ProfIdx' => $subject_prof_row['ProfIdx'],
+                        'SubjectIdx' => $subject_prof_row['SubjectIdx']
+                    ];
+
+                    if ($this->_conn->set($data)->insert($this->_table['order_product_prof_subject']) === false) {
+                        throw new \Exception('주문상품 과목/교수 정보 등록에 실패했습니다.');
+                    }
+                }
+            }
+
+            // 나의 강의정보 등록(온라인 강좌, 학원 강좌일 경우만 실행)
             if (strpos($order_prod_type, '_lecture') !== false) {
                 // 나의 강좌수정정보 데이터 등록
                 $is_add_my_lecture = $this->addMyLecture($order_idx, $order_prod_idx, $order_prod_type, $prod_code, $arr_prod_code_sub, $input);

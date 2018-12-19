@@ -10,6 +10,7 @@ class BaseOrderFModel extends WB_Model
         'order' => 'lms_order',
         'order_product' => 'lms_order_product',
         'order_sub_product' => 'lms_order_sub_product',
+        'order_product_prof_subject' => 'lms_order_product_prof_subject',
         'order_product_delivery_info' => 'lms_order_product_delivery_info',
         'order_delivery_address' => 'lms_order_delivery_address',
         'order_post_data' => 'lms_order_post_data',

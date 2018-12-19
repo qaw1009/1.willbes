@@ -39,7 +39,7 @@ class CartFModel extends BaseOrderFModel
 
             $in_column = 'CA.CartIdx, CA.MemIdx, CA.SiteCode, PC.CateCode, CA.ProdCode
                 , ifnull(if(PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['adminpack_lecture'] . '" and PL.PackTypeCcd = "' . $this->_adminpack_lecture_type_ccd['normal'] . '", fn_product_sublecture_codes(CA.ProdCode), CA.ProdCodeSub), "") as ProdCodeSub
-                , CA.ParentProdCode, CA.SaleTypeCcd, CA.SalePatternCcd, CA.ProdQty, CA.IsDirectPay, CA.IsVisitPay, CA.CaIdx, CA.ExtenDay
+                , CA.ParentProdCode, CA.SaleTypeCcd, CA.SalePatternCcd, CA.ProdQty, CA.IsDirectPay, CA.IsVisitPay, CA.CaIdx, CA.ExtenDay, CA.PostData
                 , CA.TargetOrderIdx, CA.TargetProdCode, CA.TargetProdCodeSub 
                 , concat(P.ProdName, if(CA.SalePatternCcd != "' . $this->_sale_pattern_ccd['normal'] . '", concat(" (", fn_ccd_name(CA.SalePatternCcd), ")"), "")) as ProdName
                 , P.ProdTypeCcd, ifnull(PL.LearnPatternCcd, "") as LearnPatternCcd, PL.PackTypeCcd, P.IsCoupon, P.PointApplyCcd, P.PointSaveType, P.PointSavePrice
@@ -287,6 +287,7 @@ class CartFModel extends BaseOrderFModel
                     'TargetProdCode' => element('target_prod_code', $input),
                     'TargetProdCodeSub' => element('target_prod_code_sub', $input),
                     'ExtenDay' => element('extend_day', $input),
+                    'PostData' => element('post_data', $input),
                     'CaIdx' => element('ca_idx', $input),
                     'GwIdx' => $gw_idx,
                     'RegIp' => $reg_ip

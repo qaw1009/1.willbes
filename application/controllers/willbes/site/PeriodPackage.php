@@ -77,9 +77,14 @@ class PeriodPackage extends \app\controllers\FrontController
                 $model_method = 'subListProductGroupBy';
                 break;
         }
+        //일반형, 선택형 조건 값 추가
+        $arr_condition = [
+            'EQ' => [
+                'PackTypeCcd' => $pack
+            ]
+        ];
 
-
-        $data = $this->packageFModel->findProductByProdCode($this->_learn_pattern, $prod_code);  //상품 정보 추출
+        $data = $this->packageFModel->findProductByProdCode($this->_learn_pattern, $prod_code, null, $arr_condition);  //상품 정보 추출
         if (empty($data) === true) {
             show_alert('데이터 조회에 실패했습니다.', 'back');
         }

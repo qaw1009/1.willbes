@@ -31,8 +31,8 @@
                     </label>
                     <div class="col-md-3 item">
                         <div class="radio">
-                            <input type="radio" name="is_use" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['IsUse']=='Y')checked="checked"@endif/> 사용
-                            &nbsp; <input type="radio" name="is_use" class="flat" value="N" @if($data['IsUse']=='N')checked="checked"@endif/> 미사용
+                            <input type="radio" id="is_use_y" name="is_use" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['IsUse']=='Y')checked="checked"@endif/> <label for="is_use_y" class="input-label">사용</label>
+                            <input type="radio" id="is_use_n" name="is_use" class="flat" value="N" @if($data['IsUse']=='N')checked="checked"@endif/> <label for="is_use_n" class="input-label">미사용</label>
                         </div>
                     </div>
                 </div>
@@ -53,12 +53,12 @@
                     </label>
                     <div class="col-md-9 item">
                         <div class="radio">
-                            <input type="radio" id="none_campus" name="is_campus" class="flat" value="N" required="required" title="캠퍼스 구분" @if($method == 'POST' || $data['IsCampus']=='N')checked="checked"@endif/> 없음
-                            &nbsp; <input type="radio" id="exist_campus" name="is_campus" class="flat" value="Y" @if($method == 'POST' || $data['IsCampus']=='Y')checked="checked"@endif/> 있음
+                            <input type="radio" id="none_campus" name="is_campus" class="flat" value="N" required="required" title="캠퍼스 구분" @if($method == 'POST' || $data['IsCampus']=='N')checked="checked"@endif/> <label for="none_campus" class="input-label">없음</label>
+                            &nbsp; <input type="radio" id="exist_campus" name="is_campus" class="flat" value="Y" @if($method == 'POST' || $data['IsCampus']=='Y')checked="checked"@endif/> <label for="exist_campus" class="input-label">있음</label>
                             &nbsp; (&nbsp;
                             @foreach($campus_ccd as $key => $val)
-                                <input type="checkbox" name="campus_ccd[]" class="flat" value="{{ $key }}" @if($loop->index == 1) required="required_if:is_campus,Y" title="캠퍼스" @endif @if(in_array($key, explode(',', $data['CampusCcds'])) === true)checked="checked"@endif/>
-                                <div class="inline-block mr-5">{{ $val }}</div>
+                                <input type="checkbox" id="campus_ccd_{{ $loop->index }}" name="campus_ccd[]" class="flat" value="{{ $key }}" @if($loop->index == 1) required="required_if:is_campus,Y" title="캠퍼스" @endif @if(in_array($key, explode(',', $data['CampusCcds'])) === true)checked="checked"@endif/>
+                                <label for="campus_ccd_{{ $loop->index }}" class="input-label">{{ $val }}</label>
                             @endforeach
                             )
                         </div>
@@ -77,13 +77,33 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="control-label col-md-2" for="site_url">대표 도메인 <span class="required">*</span>
+                    </label>
+                    <div class="col-md-3 item">
+                        <input type="text" id="site_url" name="site_url" required="required" class="form-control" pattern="url" title="대표 도메인" value="{{ $data['SiteUrl'] }}">
+                    </div>
+                    <div class="col-md-6">
+                        <p class="form-control-static"># 대표 도메인을 입력해 주세요. ex) www.willbes.net</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="use_domain">접속 도메인 <span class="required">*</span>
+                    </label>
+                    <div class="col-md-5 item">
+                        <input type="text" id="use_domain" name="use_domain" required="required" class="form-control" title="접속 도메인" value="{{ $data['UseDomain'] }}">
+                    </div>
+                    <div class="col-md-4">
+                        <p class="form-control-static"># 접속하는 도메인을 모두 입력해 주세요. (구분자 콤마(,))</p>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="control-label col-md-2" for="pg_ccd">PG사 <span class="required">*</span>
                     </label>
                     <div class="col-md-9">
                         <div class="radio item">
                             @foreach($pg_ccd as $key => $val)
-                                <input type="radio" name="pg_ccd" class="flat" value="{{ $key }}" @if($loop->index == 1) required="required" title="PG사" @endif @if($data['PgCcd']==$key)checked="checked"@endif/>
-                                <div class="inline-block mr-5">{{ $val }}</div>
+                                <input type="radio" id="pg_ccd_{{ $loop->index }}" name="pg_ccd" class="flat" value="{{ $key }}" @if($loop->index == 1) required="required" title="PG사" @endif @if($data['PgCcd']==$key)checked="checked"@endif/>
+                                <label for="pg_ccd_{{ $loop->index }}" class="input-label">{{ $val }}</label>
                             @endforeach
                         </div>
                     </div>
@@ -94,9 +114,22 @@
                     <div class="col-md-9 item">
                         <div class="checkbox">
                             @foreach($pay_method_ccd as $key => $val)
-                                <input type="checkbox" name="pay_method_ccd[]" class="flat" value="{{ $key }}" @if($loop->index == 1) required="required" title="결제수단" @endif @if(in_array($key, explode(',', $data['PayMethodCcds'])) === true)checked="checked"@endif/>
-                                <div class="inline-block mr-10">{{ $val }}</div>
+                                <input type="checkbox" id="pay_method_ccd_{{ $loop->index }}" name="pay_method_ccd[]" class="flat" value="{{ $key }}" @if($loop->index == 1) required="required" title="결제수단" @endif @if(in_array($key, explode(',', $data['PayMethodCcds'])) === true)checked="checked"@endif/>
+                                <label for="pay_method_ccd_{{ $loop->index }}" class="input-label">{{ $val }}</label>
                             @endforeach
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="pg_mid">상점 아이디
+                    </label>
+                    <div class="col-md-9 form-inline">
+                        <div class="item inline-block">
+                            <input type="text" id="pg_mid" name="pg_mid" class="form-control" title="상점 아이디" value="{{ $data['PgMid'] }}">
+                        </div>
+                        <p class="form-control-static ml-30 mr-10 blue">[교재 상점 아이디]</p>
+                        <div class="item inline-block">
+                            <input type="text" id="pg_book_mid" name="pg_book_mid" class="form-control" title="교재 상점 아이디" value="{{ $data['PgBookMid'] }}">
                         </div>
                     </div>
                 </div>
@@ -137,26 +170,6 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="site_url">대표 도메인 <span class="required">*</span>
-                    </label>
-                    <div class="col-md-3 item">
-                        <input type="text" id="site_url" name="site_url" required="required" class="form-control" pattern="url" title="대표 도메인" value="{{ $data['SiteUrl'] }}">
-                    </div>
-                    <div class="col-md-6">
-                        <p class="form-control-static"># 대표 도메인을 입력해 주세요. ex) www.willbes.net</p>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-2" for="use_domain">접속 도메인 <span class="required">*</span>
-                    </label>
-                    <div class="col-md-5 item">
-                        <input type="text" id="use_domain" name="use_domain" required="required" class="form-control" title="접속 도메인" value="{{ $data['UseDomain'] }}">
-                    </div>
-                    <div class="col-md-4">
-                        <p class="form-control-static"># 접속하는 도메인을 모두 입력해 주세요. (구분자 콤마(,))</p>
-                    </div>
-                </div>
-                <div class="form-group">
                     <label class="control-label col-md-2" for="logo">상단 Logo
                     </label>
                     <div class="col-md-3 item">
@@ -164,7 +177,7 @@
                     </div>
                     <div class="col-md-6">
                         @if(empty($data['Logo']) === false)
-                        <p class="form-control-static"><a href="{{ $data['Logo'] }}" rel="popup-image">{{ str_last_pos_after($data['Logo'], '/') }}</a> <a href="#none" class="img-delete" data-img-type="logo"><i class="fa fa-times"></i></a></p>
+                        <p class="form-control-static"><a href="{{ $data['Logo'] }}" rel="popup-image">{{ str_last_pos_after($data['Logo'], '/') }}</a> <a href="#none" class="img-delete" data-img-type="logo"><i class="fa fa-times red"></i></a></p>
                         @endif
                     </div>
                 </div>
@@ -176,7 +189,7 @@
                     </div>
                     <div class="col-md-6">
                         @if(empty($data['Favicon']) === false)
-                        <p class="form-control-static"><a href="#none">{{ str_last_pos_after($data['Favicon'], '/') }}</a> <a href="#none" class="img-delete" data-img-type="favicon"><i class="fa fa-times"></i></a></p>
+                        <p class="form-control-static"><a href="#none">{{ str_last_pos_after($data['Favicon'], '/') }}</a> <a href="#none" class="img-delete" data-img-type="favicon"><i class="fa fa-times red"></i></a></p>
                         @endif
                     </div>
                 </div>
@@ -192,6 +205,21 @@
                         <p class="form-control-static"># 0000-0000 형식일경우첫번째, 두번째자리에입력(세번째자리공란처리)</p>
                     </div>
                 </div>
+
+                <div class="form-group form-group-sm">
+                    <label class="control-label col-md-2" for="site_mail_id">대표 이메일
+                    </label>
+                    <div class="col-md-9 item form-inline">
+                        <input type="text" id="site_mail_id" name="site_mail_id" class="form-control" title="메일 아이디" value="" style="width: 160px">
+                        @ <input type="text" id="site_mail_domain" name="site_mail_domain" class="form-control" title="메일 도메인" value="" style="width: 140px">
+                        <select name="site_mail_domain_ccd" id="site_mail_domain_ccd" class="form-control" title="메일 도메인">
+                            @foreach($mail_domain_ccd as $key => $val)
+                                <option value="{{ $key }}">{{ $val }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
                 <div class="form-group">
                     <label class="control-label col-md-2" for="head_title">사이트 Title
                     </label>
@@ -236,6 +264,7 @@
                         <textarea id="footer_info" name="footer_info" class="form-control" rows="7" title="푸터영역" placeholder="">{!! $data['FooterInfo'] !!}</textarea>
                     </div>
                 </div>
+                {{-- 사용안함
                 <div class="form-group">
                     <label class="control-label col-md-2" for="">이용약관
                         <br/><button class="btn btn-dark btn-xs mt-5">불러오기</button>
@@ -251,7 +280,7 @@
                     <div class="col-md-9">
                         <textarea id="terms_privacy" name="terms_privacy" class="form-control" rows="7" title="개인정보취급방침" placeholder=""></textarea>
                     </div>
-                </div>
+                </div>--}}
                 <div class="form-group">
                     <label class="control-label col-md-2">등록자
                     </label>
@@ -277,7 +306,7 @@
                     </div>
                 </div>
                 <div class="ln_solid"></div>
-                <div class="form-group text-center">
+                <div class="text-center">
                     <button type="submit" class="btn btn-success mr-10">저장</button>
                     <button class="btn btn-primary" type="button" id="btn_list">목록</button>
                 </div>
@@ -292,7 +321,7 @@
         var $regi_form = $('#regi_form');
 
         $(document).ready(function() {
-            // editor load
+            /*// editor load
             var $editor_terms_use = new cheditor();
             $editor_terms_use.config.editorHeight = '170px';
             $editor_terms_use.config.editorWidth = '100%';
@@ -303,15 +332,15 @@
             $editor_terms_privacy.config.editorHeight = '170px';
             $editor_terms_privacy.config.editorWidth = '100%';
             $editor_terms_privacy.inputForm = 'terms_privacy';
-            $editor_terms_privacy.run();
+            $editor_terms_privacy.run();*/
 
             // 사이트 등록/수정
             $regi_form.submit(function() {
                 var _url = '{{ site_url('/sys/site/store/code') }}';
 
                 // editor
-                getEditorBodyContent($editor_terms_use);
-                getEditorBodyContent($editor_terms_privacy);
+                //getEditorBodyContent($editor_terms_use);
+                //getEditorBodyContent($editor_terms_privacy);
 
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
@@ -319,6 +348,13 @@
                         location.replace('{{ site_url('/sys/site/index/code') }}' + getQueryString());
                     }
                 }, showValidateError, null, false, 'alert');
+            });
+
+            $regi_form.find('input[name="site_mail_id"]').val('{{ $data['SiteMailId'] }}');
+            setMailDomain('site_mail_domain_ccd', 'site_mail_domain', '{{ $data['SiteMailDomain'] }}');
+            // 메일 도메인 선택
+            $('select[name=site_mail_domain_ccd]').change(function () {
+                setMailDomain('site_mail_domain_ccd', 'site_mail_domain');
             });
 
             // 로고, 파비콘 삭제

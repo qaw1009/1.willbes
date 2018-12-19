@@ -7,7 +7,7 @@
                 <form id="login_form" name="login_form" method="POST" onsubmit="return false;" novalidate>
                     {!! csrf_field() !!}
                     {!! method_field('POST') !!}
-                    <h1>{{ strtoupper(SUB_DOMAIN) }} LOGIN</h1>
+                    <h1>{{ $__cfg['site_name'] }} LOGIN</h1>
                     <p class="text-left">계정정보 입력없이 로그인 버튼 클릭</p>
                     <div class="item">
                         <input type="text" name="admin_id" id="admin_id" class="form-control" placeholder="아이디" required="required" title="아이디" value="{{ $saved_admin_id }}" />
@@ -22,7 +22,9 @@
                     </div>
                     <div class="mt-20">
                         <button type="submit" id="btn_login" class="btn btn-sm btn-default">로그인</button>
-                        <button type="button" id="btn_regist" class="btn btn-sm btn-default">관리자 신청</button>
+                        @if(SUB_DOMAIN != 'tzone')
+                            <button type="button" id="btn_regist" class="btn btn-sm btn-default">관리자 신청</button>
+                        @endif
                     </div>
                 </form>
             </section>
@@ -59,10 +61,12 @@
                 $login_form.find('input[name="admin_id"]').focus();
             }
 
-            $('#btn_regist').setLayer({
-                'url' : '{{ site_url('/lcms/auth/regist/create') }}',
-                'width' : 900
-            });
+            @if(SUB_DOMAIN != 'tzone')
+                $('#btn_regist').setLayer({
+                    'url' : '{{ site_url('/lcms/auth/regist/create') }}',
+                    'width' : 900
+                });
+            @endif
         });
     </script>
 @stop

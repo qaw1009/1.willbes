@@ -62,7 +62,7 @@ class Regist extends \app\controllers\BaseController
         // 운영자 정보 조회
         $data = $this->adminModel->findAdminForModify($this->session->userdata('admin_idx'));
 
-        if (count($data) < 1) {
+        if (empty($data) === true) {
             return $this->json_error('데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
         }
 

@@ -1,4 +1,4 @@
-<?
+<?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class LectureModel extends WB_Model
@@ -153,8 +153,11 @@ class LectureModel extends WB_Model
                 throw new \Exception('교수 등록에 실패했습니다. 마스터강의 수정을 통해 교수등록을 다시 진행하여 주십시오');
             }
 
+            //년도 삽입 새로운 경로로 수정
+            $filePath = config_item('upload_prefix_dir').'/lecture/'.date("Y").'/'.$lec_idx;
+
             // 첨부파일 등록
-            if($this->setUpload(element('attach_delete',$input),$lec_idx) !== true) {
+            if($this->setUpload(element('attach_delete',$input),$lec_idx,$filePath) !== true) {
                 throw new \Exception('첨부파일 등록에 실패했습니다.');
             }
 
@@ -206,8 +209,13 @@ class LectureModel extends WB_Model
                 throw new \Exception('교수 등록에 실패했습니다. 마스터강의 수정을 통해 교수등록을 다시 진행하여 주십시오');
             }
 
+            //첨부파일 경로 생성을 위한 등록일 : 인풋에서 히든으로 전송
+            $regdateyear = element('regdateyear', $input);
+
+            $filePath = config_item('upload_prefix_dir').'/lecture/'.$regdateyear.'/'.$lec_idx;
+
             // 첨부파일 등록
-            if($this->setUpload(element('attach_delete',$input),$lec_idx) !== true) {
+            if($this->setUpload(element('attach_delete',$input),$lec_idx,$filePath) !== true) {
                 throw new \Exception('첨부파일 등록에 실패했습니다.');
             }
 
@@ -240,7 +248,7 @@ class LectureModel extends WB_Model
             'wIsStatus'=>'N'
             ,'wUpdAdminIdx'=>$admin_idx
         ];
-        $this->_conn->set($del_data)->set('wUpdDatm','NOW()',false)->where('wLecIdx',$lec_idx);
+        $this->_conn->set($del_data)->set('wUpdDatm','NOW()',false)->where('wLecIdx',$lec_idx)->where('wIsStatus','Y');
         if($this->_conn->update($_r_table) === false) {
             //throw new \Exception('교수 연결 삭제 처리에 실패했습니다.');
             return false;
@@ -272,59 +280,63 @@ class LectureModel extends WB_Model
      * @param $lec_idx
      * @return array|bool|string
      */
-    public function setUpload($delete_flag,$lec_idx)
+    public function setUpload($delete_flag,$lec_idx,$file_Path)
     {
 
         $data = [];
         $this->load->library('upload');
-        $upload_sub_dir = SUB_DOMAIN.'/lecture/'.$lec_idx;
+        $upload_sub_dir = $file_Path;
+
+        $filename = date("YmdHis");
+
+        //첨부자료 등록
+        $upload_result = $this->upload->uploadFile('file','attachfile',$filename,$upload_sub_dir,'overwrite:false');
+
+        if(is_array($upload_result) === false) {
+            return false;
+        }
+
+        //첨부파일경로
+        $data_new['wAttachPath'] = $this->upload->_upload_url.$upload_sub_dir.'/';
+
+        //첨부파일명
+        if(count($upload_result) > 0) {
+            $data_new['wAttachFileReal'] = $upload_result[0]['client_name'];
+            $data_new['wAttachFile'] = $upload_result[0]['file_name'];
+
+            $delete_flag = 'Y';     //신규 파일이 등록될경우 기존 파일 삭제처리
+        }
 
         //파일 삭제 처리
         if($delete_flag === 'Y') {
-
             //파일정보 추출
             $row = $this->findLectureForModify($lec_idx);
-
             $attach_info = $row['wAttachPath'].$row['wAttachFile'];     //해당경로는 삭제가 안됨. 실제 디렉토리로 삭제해야함.
-            //$attach_info_real = $this->upload->upload_path . $upload_sub_dir . '/' .$row['wAttachFile'];        //파일 실 디렉토리
-            $attach_info_real = public_to_upload_path($row['wAttachPath']).'/' .$row['wAttachFile'];        //파일 실 디렉토리
+            //$attach_info_real = public_to_upload_path($row['wAttachPath']).'/' .$row['wAttachFile'];        //파일 실 디렉토리
+            //var_dump($attach_info);exit;
 
-            if(empty($attach_info) === false) {
-                if(unlink($attach_info_real) === false) {
-                    return false;       //파일 삭제 실패
-                } else {
-                    $data['wAttachFile'] = '';
-                    $data['wAttachPath'] = '';
-                    //Db 업데이트
-                    if ($this->_conn->set($data)->where('wLecIdx',$lec_idx)->update($this->_table) === false) {
-                        //throw new \Exception('첨부파일 등록에 실패했습니다.');
-                        return false;
-                    }
+            if(empty($row['wAttachFile']) === false) {  //기존 파일이 존재할경우. 백업폴더로 이동
+                //if(unlink($attach_info_real) === false) {//파일 삭제 실패
+                if($this->upload->bakUploadedFile($attach_info, true) !== true) {// 파익 백업 이동
+                    return false;
                 }
+            }
+
+            $data['wAttachFileReal'] = NULL;
+            $data['wAttachFile'] = NULL;
+            //Db 업데이트
+            if ($this->_conn->set($data)->where('wLecIdx',$lec_idx)->update($this->_table) === false) {
+                //throw new \Exception('첨부파일 등록에 실패했습니다.');
+                echo "업데이트 실패";
+                return false;
             }
         }
 
-        //첨부자료 등록
-        $upload_result = $this->upload->uploadFile('file','attachfile','',$upload_sub_dir);
-
-        if(is_array($upload_result) === false) {
-            //throw new \Exception($upload_result);
-            return false;
-        }
-        
-        //첨부파일명
-        if(count($upload_result) > 0) {
-            $data['wAttachFile'] = $upload_result[0]['file_name'];
-        }
-        
-        //첨부파일경로
-        $data['wAttachPath'] = $this->upload->_upload_url.$upload_sub_dir.'/';
-        
         //Db 업데이트
-        if ($this->_conn->set($data)->where('wLecIdx',$lec_idx)->update($this->_table) === false) {
+        if ($this->_conn->set($data_new)->where('wLecIdx',$lec_idx)->update($this->_table) === false) {
             return false;
         }
-        
+
         return true;
     }
 

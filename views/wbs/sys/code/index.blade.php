@@ -1,7 +1,7 @@
 @extends('lcms.layouts.master')
 @section('content')
     <h5>- WBS 운영을 위한 공통 코드를 관리하는 메뉴입니다.</h5>
-    <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
+    <form class="form-horizontal searching" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         <div class="x_panel">
             <div class="x_content">
@@ -37,7 +37,9 @@
                 <tr>
                     <th>No</th>
                     <th class="searching rowspan">그룹유형 [<span class="blue">코드</span>]</th>
-                    <th class="searching">세부항목 [<span class="blue">코드</span>] <button type="button" class="btn btn-xs btn-success ml-10 btn-regist" data-code-type="sub">추가</button></th>
+                    <th class="searching">세부항목명 [<span class="blue">코드</span>] <button type="button" class="btn btn-xs btn-success ml-10 btn-regist" data-code-type="sub">추가</button></th>
+                    <th>세부항목값</th>
+                    <th>세부항목설명</th>
                     <th class="searching_is_use">사용여부</th>
                     <th>등록자</th>
                     <th>등록일</th>
@@ -55,6 +57,8 @@
                                 <a href="#none" class="btn-modify" data-ccd="{{ $row['wCcd'] }}" data-code-type="sub" data-group-ccd="{{ $row['ParentCcd'] }}"><u>{{ $row['wCcdName'] }}  [<span class="blue">{{$row['wCcd']}}</span>]</u></a>
                                 @endif
                         </td>
+                        <td>{{ $row['wCcdValue'] }}</td>
+                        <td>{{ $row['wCcdDesc'] }}</td>
                         <td>{!! str_replace('미사용','<span class="red">미사용</span>',$row['wIsUseView']) !!}<span class="hide">{{ $row['wIsUse'] }}</span></td>
                         <td>{{ $row['wAdminName'] }}</td>
                         <td>{{ $row['wRegDatm'] }}</td>
@@ -81,25 +85,6 @@
                     { text: '<i class="fa fa-pencil mr-5"></i> 그룹유형등록', className: 'btn-sm btn-primary border-radius-reset btn-regist' }
                 ]
             });
-
-            // 검색
-            $search_form.submit(function(e) {
-                e.preventDefault();
-                datatableSearching();
-            });
-
-            //event
-            $search_form.find('input[name="search_value"], select[name="search_is_use"]').on('keyup change', function () {
-                datatableSearching();
-            });
-
-            // 검색 실행
-            var datatableSearching = function() {
-                $datatable
-                    .columns('.searching').flatten().search($search_form.find('input[name="search_value"]').val())
-                    .column('.searching_is_use').search($search_form.find('select[name="search_is_use"]').val())
-                    .draw();
-            };
 
             $('.btn-regist, .btn-modify-parent, .btn-modify').click(function() {
                 var strMakeType = '';
@@ -138,5 +123,13 @@
                 });
             });
         });
+
+        // datatable searching
+        function datatableSearching() {
+            $datatable
+                .columns('.searching').flatten().search($search_form.find('input[name="search_value"]').val())
+                .column('.searching_is_use').search($search_form.find('select[name="search_is_use"]').val())
+                .draw();
+        }
     </script>
 @stop

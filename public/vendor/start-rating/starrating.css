@@ -1,0 +1,13 @@
+.star-rating {
+    list-style: none;
+    padding: 0;
+    margin-top: 5px;
+}
+.star-rating > li {
+    display: inline-block;
+    font-size: 18px;
+    color: #ccc;
+    /*cursor: pointer;*/
+}
+.star-rating > li.active, li.hover { color: orange; }
+.star-rating.hover li.active:not(.hover) { color: #ccc }

@@ -33,8 +33,8 @@
                     </label>
                     <div class="col-md-3 item">
                         <div class="radio">
-                            <input type="radio" name="is_use" class="flat" value="Y" required="required" @if($method == 'POST' || $data['wIsUse'] == 'Y')checked="checked"@endif/> 사용
-                            &nbsp; <input type="radio" name="is_use" class="flat" value="N" @if($data['wIsUse']=='N')checked="checked"@endif/> 미사용
+                            <input type="radio" id="is_use_y" name="is_use" class="flat" value="Y" required="required" @if($method == 'POST' || $data['wIsUse'] == 'Y')checked="checked"@endif/> <label for="is_use_y" class="input-label">사용</label>
+                            <input type="radio" id="is_use_n" name="is_use" class="flat" value="N" @if($data['wIsUse']=='N')checked="checked"@endif/> <label for="is_use_n" class="input-label">미사용</label>
                         </div>
                     </div>
                     <label class="control-label col-md-2" for="cp_idx">적용CP
@@ -42,8 +42,8 @@
                     <div class="col-md-4 item">
                         <div class="checkbox">
                             @foreach($cps as $row)
-                                <input type="checkbox" name="cp_idx[]" class="flat" value="{{ $row['wCpIdx'] }}" @if($row['wCpIdx'] == $row['wRCpIdx'])checked="checked"@endif/>
-                                <span class="inline-block mr-10">{{ $row['wCpName'] }}</span>
+                                <input type="checkbox" id="cp_idx_{{ $loop->index }}" name="cp_idx[]" class="flat" value="{{ $row['wCpIdx'] }}" @if($row['wCpIdx'] == $row['wRCpIdx'])checked="checked"@endif/>
+                                <label for="cp_idx_{{ $loop->index }}" class="input-label">{{ $row['wCpName'] }}</label>
                             @endforeach
                         </div>
                     </div>
@@ -73,7 +73,7 @@
                     </div>
                 </div>
                 <div class="ln_solid"></div>
-                <div class="form-group text-center">
+                <div class="text-center">
                     <button type="submit" class="btn btn-success mr-10">저장</button>
                     <button class="btn btn-primary btn_list" type="button">목록</button>
                 </div>
@@ -99,20 +99,20 @@
                     @foreach($menus as $row)
                         <tr>
                             <td>
-                                <div class="form-group form-group-sm">
+                                <div class="form-group form-group-sm no-border-bottom">
                                     <input type="checkbox" name="menu_idx[]" value="{{ $row['wBMenuIdx'] }}" class="flat menu-depth1" @if($row['wBMenuIdx']==$row['wRBMenuIdx'])checked="checked"@endif/> {{ $row['wBMenuName'] }}
                                 </div>
                             </td>
                             <td>
                                 @if(empty($row['wMMenuIdx']) === false)
-                                <div class="form-group form-group-sm">
+                                <div class="form-group form-group-sm no-border-bottom">
                                     <input type="checkbox" name="menu_idx[]" value="{{ $row['wMMenuIdx'] }}" data-group-menu-idx="{{ $row['wGroupMenuIdx'] }}" data-parent-menu-idx="{{ $row['wMParentMenuIdx'] }}" class="flat menu-depth2" @if($row['wMMenuIdx']==$row['wRMMenuIdx'])checked="checked"@endif/> {{ $row['wMMenuName'] }}
                                 </div>
                                 @endif
                             </td>
                             <td>
                                 @if(empty($row['wSMenuIdx']) === false)
-                                <div class="form-group form-group-sm">
+                                <div class="form-group form-group-sm no-border-bottom">
                                     <input type="checkbox" name="menu_idx[]" value="{{ $row['wSMenuIdx'] }}" data-group-menu-idx="{{ $row['wGroupMenuIdx'] }}" data-parent-menu-idx="{{ $row['wSParentMenuIdx'] }}" class="flat menu-depth3" @if($row['wSMenuIdx']==$row['wRSMenuIdx'])checked="checked"@endif/> {{ $row['wSMenuName'] }}
                                 </div>
                                 @endif
@@ -122,9 +122,8 @@
                     @endforeach
                     </tbody>
                 </table>
-                <div class="clearfix"></div>
                 <div class="ln_solid"></div>
-                <div class="form-group text-center">
+                <div class="text-center clear">
                     <button type="submit" class="btn btn-success mr-10" id="btn_menu_regist">저장</button>
                     <button class="btn btn-primary btn_list" type="button">목록</button>
                 </div>

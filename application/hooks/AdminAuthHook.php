@@ -13,9 +13,13 @@ class AdminAuthHook
         '/lcms/auth/regist/store',
     ];
 
-    // 메뉴 권한 체크 제외 URI - /{directory?}/{controller}/{method?}
+    // LMS 교수관리자 역할식별자
+    private $_lms_prof_role_idx = '1011';
+
+    // 메뉴 권한 체크 제외 URI - /{directory?}/{controller?}/{method?}
     protected $perm_excepts = [
         '/home/',
+        '/common/',
         '/lcms/auth/regist/edit',
         '/lcms/auth/regist/update',
         '/sys/adminSettings',
@@ -32,31 +36,43 @@ class AdminAuthHook
      */
     public function authenticate()
     {
+        // CI 전역변수 초기화
+        $vars = ['__auth' => [], '__settings' => [], '__menu' => []];
+
         if (empty(uri_string()) === false && starts_with('/' . uri_string(), $this->excepts) === false) {
             if ($this->_CI->session->userdata('is_admin_login') !== true) {
-                show_error('운영자 인증에 실패했습니다.', _HTTP_UNAUTHORIZED, '운영자 인증 실패');
+                //show_error('운영자 인증에 실패했습니다.', _HTTP_UNAUTHORIZED, '운영자 인증 실패');
+                show_alert('운영자 인증에 실패했습니다.', site_url('/lcms/auth/login'), false);
             }
 
             // 현재 URI의 /{directory}/{controller}/{method}
-            $uri_str = '/' . str_replace(SUB_DOMAIN . '/', '', $this->_CI->router->directory) . $this->_CI->router->class . '/' . $this->_CI->router->method;
+            $uri_str = '/' . str_replace(APP_NAME . '/', '', $this->_CI->router->directory) . $this->_CI->router->class . '/' . $this->_CI->router->method;
 
             // 관리자 권한 서비스 로드
-            $class_name = ucfirst(SUB_DOMAIN) . 'AuthService';
+            $class_name = ucfirst(APP_NAME) . 'AuthService';
 
             require_once $class_name . '.php';
             $adminAuthService = new $class_name();
 
-            // 관리자별 권한유형 정보 조회
+            // 1. 관리자별 권한유형 정보 조회
             $role = $adminAuthService->getAdminRole();
-            if (is_null($role) === true) {
-                show_error('운영자 권한이 없습니다.', _HTTP_UNAUTHORIZED, '운영자 권한 없음');
+            if (is_null($role) === true || empty(element('Role', $role)) === true) {
+                //show_error('운영자 권한이 없습니다.', _HTTP_UNAUTHORIZED, '운영자 권한 없음');
+                show_alert('운영자 권한이 없습니다.', site_url('/lcms/auth/login'), false);
             }
 
-            // 관리자 권한유형 정보 설정
-            $vars['__roles'] = $role;
+            if (SUB_DOMAIN == 'lms' && $role['Role']['RoleIdx'] == $this->_lms_prof_role_idx) {
+                show_alert('운영자 권한이 없습니다.', 'back');
+            }
 
-            // 권한유형별 메뉴 트리 조회
-            $menus = $adminAuthService->getAuthMenu($role['RoleIdx']);
+            // 관리자 권한 정보 설정
+            $vars['__auth'] = $role;
+
+            // 관리자 권한 세션 설정
+            $adminAuthService->setSessionAdminAuthData($vars['__auth']);
+
+            // 2. 권한유형별 메뉴 트리 조회
+            $menus = $adminAuthService->getAuthMenu($role['Role']['RoleIdx']);
 
             // 메뉴권한 체크 제외 URI 체크
             $currents = [];
@@ -69,7 +85,7 @@ class AdminAuthHook
                 show_error('메뉴 권한이 없습니다.', _HTTP_NO_PERMISSION, '메뉴 권한 없음');
             }
 
-            // 관리자별 환경설정 정보 조회
+            // 3. 관리자별 환경설정 정보 조회
             $vars['__settings'] = $adminAuthService->getAdminSettings($menus);
 
             // 뷰 페이지로 전달할 메뉴 데이터 생성
@@ -81,13 +97,16 @@ class AdminAuthHook
                 $vars['__menu']['CURRENT']['IsFavorite'] = is_null(element($vars['__menu']['CURRENT']['MenuIdx'], $vars['__settings']['favorite'])) !== true;
             }
 
-            // 메뉴, 관리자 환경설정 데이터를 뷰 페이지로 전달하기 위해 CI 전역변수에 저장
-            $this->_CI->load->vars($vars);
-
-            // LCMS 전환 로그인 로그 저장
-            if (in_array(SUB_DOMAIN, $this->_CI->session->userdata('admin_conn_sites')) === false) {
+            // 4. LCMS 전환 로그인 로그 저장
+            if (in_array(APP_NAME, $this->_CI->session->userdata('admin_conn_sites')) === false) {
                 $adminAuthService->setTransLogin();
+
+                // 현재 접속한 사이트 서브 도메인 세션 설정
+                $adminAuthService->setSessionAdminConnSites();
             }
         }
+
+        // 5. 메뉴, 관리자 환경설정 데이터를 뷰 페이지로 전달하기 위해 CI 전역변수에 저장
+        $this->_CI->load->vars($vars);
     }
 }

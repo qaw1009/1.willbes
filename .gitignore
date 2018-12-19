@@ -53,6 +53,10 @@ readme.rst
 !/storage/logs/index.html
 /storage/sessions/*
 !/storage/sessions/index.html
-/storage/uploads/*
-!/storage/uploads/index.html
+/storage/uploads
+/storage/cli/*
+!/storage/cli/index.html
+!/storage/cli/task/index.html
+/public/uploads
 #application/config/database.php
+/_erd/.metadata/*

@@ -3,7 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class LoginLogModel extends WB_Model
 {
-    private $_table = 'wbs_sys_admin_login_log';
+    private $_table = [
+        'admin_login_log' => 'wbs_sys_admin_login_log',
+        'admin_role' => 'wbs_sys_admin_role',
+        'admin' => 'wbs_sys_admin',
+    ];
 
     public function __construct()
     {
@@ -18,9 +22,9 @@ class LoginLogModel extends WB_Model
      */
     public function listTopLoginLog($arr_condition = [], $limit = null)
     {
-        $colum = 'wLogIdx, wAdminId, wLoginDatm, wLoginIp, wIsLogin, wLoginLogCcd';
+        $column = 'wLogIdx, wAdminId, wLoginDatm, wLoginIp, wIsLogin, wLoginLogCcd';
 
-        return $this->_conn->getListResult($this->_table, $colum, $arr_condition, $limit, 0, ['wLogIdx' => 'desc']);
+        return $this->_conn->getListResult($this->_table['admin_login_log'], $column, $arr_condition, $limit, 0, ['wLogIdx' => 'desc']);
     }
 
     /**
@@ -35,10 +39,10 @@ class LoginLogModel extends WB_Model
     public function listLoginLog($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         if ($is_count === true) {
-            $colum = 'count(*) AS numrows';
+            $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $colum = '
+            $column = '
                 L.wLogIdx, L.wAdminId, L.wLoginIp, L.wLoginDatm, L.wLoginLogCcd
                     , ifnull(A.wAdminName, "비운영자") as wAdminName, A.wAdminDeptCcd, A.wAdminPositionCcd, A.wIsUse
                     , R.wRoleName           
@@ -49,19 +53,18 @@ class LoginLogModel extends WB_Model
         }
 
         $from = '
-            from ' . $this->_table . ' as L 
-                left join wbs_sys_admin as A
+            from ' . $this->_table['admin_login_log'] . ' as L 
+                left join ' . $this->_table['admin'] . ' as A
                     on L.wAdminId = A.wAdminId and A.wIsStatus = "Y"
-                left join wbs_sys_admin_role as R
+                left join ' . $this->_table['admin_role'] . ' as R
                     on A.wRoleIdx = R.wRoleIdx and R.wIsStatus = "Y"
-            where 1=1
         ';
 
         $where = $this->_conn->makeWhere($arr_condition);
-        $where = $where->getMakeWhere(true);
+        $where = $where->getMakeWhere(false);
 
         // 쿼리 실행
-        $query = $this->_conn->query('select ' . $colum . $from . $where . $order_by_offset_limit);
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }

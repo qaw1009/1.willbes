@@ -3,8 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class CategoryModel extends WB_Model
 {
-    private $_table = 'lms_sys_category';
-
+    private $_table = [
+        'site' => 'lms_site',
+        'category' => 'lms_sys_category',
+        'admin' => 'wbs_sys_admin'
+    ];
+    
     public function __construct()
     {
         parent::__construct('lms');
@@ -20,10 +24,10 @@ class CategoryModel extends WB_Model
      */
     public function listCategory($arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
-        $colum = 'CateCode, SiteCode, CateName, ParentCateCode, GroupCateCode, CateDepth, OrderNum, IsUse';
+        $column = 'CateCode, SiteCode, CateName, ParentCateCode, GroupCateCode, CateDepth, OrderNum, IsUse';
         $arr_condition['EQ']['IsStatus'] = 'Y';
 
-        return $this->_conn->getListResult($this->_table, $colum, $arr_condition, $limit, $offset, $order_by);
+        return $this->_conn->getListResult($this->_table['category'], $column, $arr_condition, $limit, $offset, $order_by);
     }
 
     /**
@@ -33,7 +37,7 @@ class CategoryModel extends WB_Model
      */
     public function listAllCategory($arr_condition = [])
     {
-        $colum = 'U.*, A.wAdminName as LastRegAdminName';
+        $column = 'U.*, A.wAdminName as LastRegAdminName';
         $from = '
             from (
                 select SiteCode, SiteName 
@@ -49,15 +53,16 @@ class CategoryModel extends WB_Model
                         , MC.CateCode as MCateCode, MC.CateName as MCateName, MC.CateDepth as MCateDepth, MC.OrderNum as MOrderNum
                         , MC.IsUse as MIsUse, MC.RegAdminIdx as MRegAdminIdx, MC.RegDatm as MRegDatm
                         , greatest(BC.CateDepth, ifnull(MC.CateDepth, 0)) as LastCateDepth
-                    from lms_site as S
-                        inner join ' . $this->_table . ' as BC
+                    from ' . $this->_table['site'] . ' as S
+                        inner join ' . $this->_table['category'] . ' as BC
                             on S.SiteCode = BC.SiteCode
-                        left join ' . $this->_table . ' as MC
+                        left join ' . $this->_table['category'] . ' as MC
                             on MC.GroupCateCode = BC.CateCode and MC.CateDepth = 2 and MC.IsStatus = "Y"
-                    where BC.CateDepth = 1 and BC.IsStatus = "Y"
+                    where S.IsStatus = "Y" and BC.CateDepth = 1 and BC.IsStatus = "Y"
                 ) as I
-            ) as U inner join wbs_sys_admin as A
-                on U.LastRegAdminIdx = A.wAdminIdx 
+            ) as U 
+                left join ' . $this->_table['admin'] . ' as A
+                    on U.LastRegAdminIdx = A.wAdminIdx and A.wIsStatus = "Y" 
         ';
 
         $where = $this->_conn->makeWhere($arr_condition);
@@ -65,9 +70,56 @@ class CategoryModel extends WB_Model
         $order_by_offset_limit = $this->_conn->makeOrderBy(['SiteCode' => 'asc', 'BOrderNum' => 'asc', 'MOrderNum' => 'asc'])->getMakeOrderBy();
 
         // 쿼리 실행
-        $query = $this->_conn->query('select ' . $colum . $from . $where . $order_by_offset_limit);
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
 
         return $query->result_array();
+    }
+
+    /**
+     * 카테고리 검색 (상품관리 > 카테고리 검색)
+     * @param $is_count
+     * @param array $arr_condition
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
+     */
+    public function listSearchCategory($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    {
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $column = '
+                S.SiteCode, S.SiteName
+                    , C.CateCode, C.CateName, ifnull(PC.CateCode, "") as ParentCateCode, ifnull(PC.CateName, "") as ParentCateName
+                    , concat(S.SiteName, if(PC.CateCode is null, "", concat(" > ", PC.CateName)), " > ", C.CateName) as CateRouteName
+                    , C.IsUse, C.RegDatm, C.RegAdminIdx, A.wAdminName as RegAdminName	                
+            ';
+
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $from = '
+            from ' . $this->_table['site'] . ' as S
+                inner join ' . $this->_table['category'] . ' as C
+                    on S.SiteCode = C.SiteCode
+                left join ' . $this->_table['category'] . ' as PC
+                    on C.ParentCateCode = PC.CateCode and PC.IsUse = "Y" and PC.IsStatus = "Y"
+                left join ' . $this->_table['admin'] . ' as A
+                    on C.RegAdminIdx = A.wAdminIdx and A.wIsStatus = "Y"
+            where S.IsUse = "Y" and S.IsStatus = "Y"
+                and C.IsStatus = "Y"             
+        ';
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(true);
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 
     /**
@@ -77,10 +129,10 @@ class CategoryModel extends WB_Model
      */
     public function listSameDepthCategory($cate_code)
     {
-        $colum = 'PC.CateCode, PC.CateName, PC.CateDepth';
+        $column = 'PC.CateCode, PC.CateName, PC.CateDepth';
         $from = '
-            from ' . $this->_table . ' as C
-                inner join ' . $this->_table . ' as PC
+            from ' . $this->_table['category'] . ' as C
+                inner join ' . $this->_table['category'] . ' as PC
                     on C.ParentCateCode = PC.ParentCateCode            
         ';
         $where = $this->_conn->makeWhere([
@@ -92,26 +144,67 @@ class CategoryModel extends WB_Model
         $order_by_offset_limit = $this->_conn->makeOrderBy(['PC.OrderNum' => 'asc'])->getMakeOrderBy();
 
         // 쿼리 실행
-        $query = $this->_conn->query('select ' . $colum . $from . $where . $order_by_offset_limit);
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
 
         return $query->result_array();
     }
 
     /**
-     * 부모 카테고리 코드가 동일한 카테고리 코드 목록 조회
-     * @param $site_code
-     * @param $parent_cate_code
+     * 카테고리 코드 목록 조회
+     * @param string $site_code
+     * @param string $parent_cate_code
+     * @param string $group_cate_code
+     * @param string $cate_depth
      * @return array
      */
-    public function getCategoryArray($site_code, $parent_cate_code)
+    public function getCategoryArray($site_code = '', $parent_cate_code = '', $group_cate_code = '', $cate_depth = '')
     {
-        $data = $this->_conn->getListResult($this->_table, 'CateCode, CateName', [
-            'EQ' => ['SiteCode' => $site_code, 'ParentCateCode' => $parent_cate_code, 'IsUse' => 'Y', 'IsStatus' => 'Y']
-        ], null, null, [
-            'CateCode' => 'asc'
+        $arr_condition = ['EQ' => [
+            'ParentCateCode' => $parent_cate_code, 'GroupCateCode' => $group_cate_code, 'CateDepth' => $cate_depth, 'IsUse' => 'Y', 'IsStatus' => 'Y'
+        ]];
+
+        if (empty($site_code) === false) {
+            $arr_condition['EQ']['SiteCode'] = $site_code;
+        } else {
+            $arr_condition['IN']['SiteCode'] = get_auth_site_codes();
+        }
+
+        $data = $this->_conn->getListResult($this->_table['category'], 'SiteCode, CateCode, CateName, ParentCateCode, GroupCateCode, CateDepth',
+            $arr_condition, null, null, [
+            'SiteCode' => 'asc', 'OrderNum' => 'asc'
         ]);
 
-        return array_pluck($data, 'CateName', 'CateCode');
+        return (empty($site_code) === false) ? array_pluck($data, 'CateName', 'CateCode') : $data;
+    }
+
+    /**
+     * 카테고리 경로 리턴
+     * @param $site_code
+     * @param $cate_code
+     * @return mixed
+     */
+    public function getCategoryRouteName($site_code, $cate_code)
+    {
+        $column = 'S.SiteName, C.CateName, PC.CateName as ParentCateName';
+        $column .= ' , (case C.CateDepth when 1 then concat(S.SiteName, ">", C.CateName) when 2 then concat(S.SiteName, ">", PC.CateName, ">", C.CateName) end) as CateRouteName';
+        $from = '
+            from ' . $this->_table['site'] . ' as S
+                inner join ' . $this->_table['category'] . ' as C
+                    on S.SiteCode = C.SiteCode
+                left join ' . $this->_table['category'] . ' as PC
+                    on S.SiteCode = PC.SiteCode and C.ParentCateCode = PC.CateCode and PC.IsStatus = "Y"   
+        ';
+        $where = $this->_conn->makeWhere([
+            'EQ' => [
+                'S.SiteCode' => $site_code, 'C.CateCode' => $cate_code, 'S.IsStatus' => 'Y', 'C.IsStatus' => 'Y'
+            ]
+        ]);
+        $where = $where->getMakeWhere(false);
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where);
+
+        return element('CateRouteName', $query->row_array());
     }
 
     /**
@@ -121,7 +214,7 @@ class CategoryModel extends WB_Model
      */
     public function findCategoryByCateCode($cate_code)
     {
-        return $this->_conn->getFindResult($this->_table, 'CateCode, SiteCode, CateName, ParentCateCode, GroupCateCode, CateDepth', [
+        return $this->_conn->getFindResult($this->_table['category'], 'CateCode, SiteCode, CateName, ParentCateCode, GroupCateCode, CateDepth', [
             'EQ' => ['CateCode' => $cate_code, 'IsStatus' => 'Y']
         ]);
     }
@@ -133,11 +226,11 @@ class CategoryModel extends WB_Model
      */
     public function findCategoryForModify($cate_code)
     {
-        $colum = 'C.CateCode, C.SiteCode, C.CateName, C.ParentCateCode, C.GroupCateCode, C.CateDepth, C.OrderNum, C.IsUse, C.RegDatm, C.UpdDatm';
-        $colum .= '    , (select wAdminName from wbs_sys_admin where wAdminIdx = C.RegAdminIdx) as RegAdminName';
-        $colum .= '    , if(C.UpdAdminIdx is null, "", (select wAdminName from wbs_sys_admin where wAdminIdx = C.UpdAdminIdx)) as UpdAdminName';
+        $column = 'C.CateCode, C.SiteCode, C.CateName, C.ParentCateCode, C.GroupCateCode, C.CateDepth, C.OrderNum, C.IsUse, C.RegDatm, C.UpdDatm';
+        $column .= '    , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = C.RegAdminIdx and wIsStatus = "Y") as RegAdminName';
+        $column .= '    , if(C.UpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = C.UpdAdminIdx and wIsStatus = "Y")) as UpdAdminName';
 
-        return $this->_conn->getFindResult($this->_table . ' as C', $colum, [
+        return $this->_conn->getFindResult($this->_table['category'] . ' as C', $column, [
             'EQ' => ['C.CateCode' => $cate_code, 'C.IsStatus' => 'Y']
         ]);
     }
@@ -150,7 +243,7 @@ class CategoryModel extends WB_Model
      */
     public function getCategoryOrderNum($site_code, $parent_cate_code)
     {
-        return $this->_conn->getFindResult($this->_table, 'ifnull(max(OrderNum), 0) + 1 as NextOrderNum', [
+        return $this->_conn->getFindResult($this->_table['category'], 'ifnull(max(OrderNum), 0) + 1 as NextOrderNum', [
             'EQ' => ['SiteCode' => $site_code, 'ParentCateCode' => $parent_cate_code]
         ])['NextOrderNum'];
     }
@@ -170,17 +263,17 @@ class CategoryModel extends WB_Model
 
             if ($group_cate_code == 0) {
                 // 대분류
-                $row = $this->_conn->getFindResult($this->_table, 'ifnull(max(CateCode) + 1, 3001) as CateCode', ['EQ' => ['CateDepth' => 1]]);
+                $row = $this->_conn->getFindResult($this->_table['category'], 'ifnull(max(CateCode) + 1, 3001) as CateCode', ['EQ' => ['CateDepth' => 1]]);
                 $_cate_code = $row['CateCode'];
                 $_group_cate_code = $_cate_code;
                 $_cate_depth = 1;
             } else {
                 // 하위분류
-                $row = $this->_conn->getFindResult($this->_table, 'ifnull(max(CateCode) + 1, ' . intval($parent_cate_code . '01') . ') as CateCode', ['EQ' => ['ParentCateCode' => $parent_cate_code]]);
+                $row = $this->_conn->getFindResult($this->_table['category'], 'ifnull(max(CateCode) + 1, ' . intval($parent_cate_code . '01') . ') as CateCode', ['EQ' => ['ParentCateCode' => $parent_cate_code]]);
                 $_cate_code = $row['CateCode'];
 
                 $row = $this->findCategoryByCateCode($parent_cate_code);
-                if (count($row) < 1) {
+                if (empty($row) === true) {
                     throw new \Exception('부모 카테고리 데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
                 }
                 $_group_cate_code = $row['GroupCateCode'];
@@ -201,7 +294,7 @@ class CategoryModel extends WB_Model
                 'RegIp' => $this->input->ip_address()
             ];
 
-            if ($this->_conn->set($data)->insert($this->_table) === false) {
+            if ($this->_conn->set($data)->insert($this->_table['category']) === false) {
                 throw new \Exception('데이터 저장에 실패했습니다.');
             }
 
@@ -229,7 +322,7 @@ class CategoryModel extends WB_Model
 
             // 카테고리 정보 조회
             $row = $this->findCategoryByCateCode($cate_code);
-            if (count($row) < 1) {
+            if (empty($row) === true) {
                 throw new \Exception('데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
             }
 
@@ -243,7 +336,7 @@ class CategoryModel extends WB_Model
 
             $this->_conn->set($data)->where('CateCode', $cate_code);
 
-            if ($this->_conn->update($this->_table) === false) {
+            if ($this->_conn->update($this->_table['category']) === false) {
                 throw new \Exception('데이터 수정에 실패했습니다.');
             }
 
@@ -261,7 +354,7 @@ class CategoryModel extends WB_Model
      * @param array $params
      * @return array|bool
      */
-    public function modifyCategoryReorder($params = [])
+    public function modifyCategoriesReorder($params = [])
     {
         $this->_conn->trans_begin();
 
@@ -270,10 +363,12 @@ class CategoryModel extends WB_Model
                 throw new \Exception('필수 파라미터 오류입니다.');
             }
 
-            foreach ($params as $cate_code => $order_num) {
-                $this->_conn->set('OrderNum', $order_num)->where('CateCode', $cate_code);
+            $admin_idx = $this->session->userdata('admin_idx');
 
-                if ($this->_conn->update($this->_table) === false) {
+            foreach ($params as $cate_code => $order_num) {
+                $this->_conn->set('OrderNum', $order_num)->set('UpdAdminIdx', $admin_idx)->where('CateCode', $cate_code);
+
+                if ($this->_conn->update($this->_table['category']) === false) {
                     throw new \Exception('데이터 수정에 실패했습니다.');
                 }
             }

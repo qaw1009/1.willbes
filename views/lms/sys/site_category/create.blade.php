@@ -13,10 +13,8 @@
 @endsection
 
 @section('layer_content')
-        <div class="form-group form-group-sm">
-            <div class="x_title text-right">
-                <span class="required">*</span> 표시된 항목은 필수 입력 항목입니다.
-            </div>
+        <div class="x_title text-right">
+            <span class="required">*</span> 표시된 항목은 필수 입력 항목입니다.
         </div>
         {!! form_errors() !!}
         <div class="form-group form-group-sm">
@@ -79,8 +77,8 @@
             </label>
             <div class="col-md-4 item form-inline">
                 <div class="radio">
-                    <input type="radio" name="is_use" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['IsUse']=='Y')checked="checked"@endif/> 사용
-                    &nbsp; <input type="radio" name="is_use" class="flat" value="N" @if($data['IsUse']=='N')checked="checked"@endif/> 미사용
+                    <input type="radio" id="is_use_y" name="is_use" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['IsUse']=='Y')checked="checked"@endif/> <label for="is_use_y" class="input-label">사용</label>
+                    <input type="radio" id="is_use_n" name="is_use" class="flat" value="N" @if($data['IsUse']=='N')checked="checked"@endif/> <label for="is_use_n" class="input-label">미사용</label>
                 </div>
             </div>
             <label class="control-label col-md-2" for="order_num">정렬
@@ -146,7 +144,7 @@
                         if(ret.ret_cd) {
                             notifyAlert('success', '알림', ret.ret_msg);
                             $("#pop_modal").modal('toggle');
-                            location.reload();
+                            location.replace('{{ site_url('/sys/site/index/category/') }}' + dtParamsToQueryString($datatable));
                         }
                     }, showValidateError, null, false, 'alert');
                 });

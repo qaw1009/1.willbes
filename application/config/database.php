@@ -79,8 +79,8 @@ $db['wbs'] = array(
     'username' => 'git',
     'password' => 'localhost',
     'database' => 'willbes',*/
-    'dsn' => 'mysql:host=116.125.124.164; port=9925; dbname=wbs',
-	'hostname' => '116.125.124.164',
+    'dsn' => 'mysql:host=192.168.13.21; port=9925; dbname=wbs',
+	'hostname' => '192.168.13.21',
     'username' => 'willbes',
     'password' => 'willbesdev^2017',
     'database' => 'wbs',
@@ -88,7 +88,8 @@ $db['wbs'] = array(
     'dbdriver' => 'pdo',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
-	'db_debug' => (ENVIRONMENT !== 'production'),
+	//'db_debug' => (ENVIRONMENT !== 'production'),
+    'db_debug' => FALSE,
 	'cache_on' => FALSE,
 	'cachedir' => '',
 	'char_set' => 'utf8',
@@ -103,13 +104,8 @@ $db['wbs'] = array(
 );
 
 $db['lms'] = array(
-    /*	'dsn' => 'mysql:host=localhost; dbname=willbes',
-        'hostname' => 'localhost',
-        'username' => 'git',
-        'password' => 'localhost',
-        'database' => 'willbes',*/
-    'dsn' => 'mysql:host=116.125.124.164; port=9925; dbname=lms',
-    'hostname' => '116.125.124.164',
+    'dsn' => 'mysql:host=192.168.13.21; port=9925; dbname=lms',
+    'hostname' => '192.168.13.21',
     'username' => 'willbes',
     'password' => 'willbesdev^2017',
     'database' => 'lms',
@@ -117,7 +113,8 @@ $db['lms'] = array(
     'dbdriver' => 'pdo',
     'dbprefix' => '',
     'pconnect' => FALSE,
-    'db_debug' => (ENVIRONMENT !== 'production'),
+    //'db_debug' => (ENVIRONMENT !== 'production'),
+    'db_debug' => FALSE,
     'cache_on' => FALSE,
     'cachedir' => '',
     'char_set' => 'utf8',

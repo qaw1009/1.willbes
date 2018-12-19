@@ -54,7 +54,7 @@ class Menu extends \app\controllers\BaseController
             $idx = $params[0];
 
             $data = $this->menuModel->findMenuForModify($idx);
-            if (count($data) < 1) {
+            if (empty($data) === true) {
                 return $this->json_error('데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
             }
             $menu_depth = $data['wMenuDepth'];
@@ -137,7 +137,7 @@ class Menu extends \app\controllers\BaseController
             return;
         }
 
-        $result = $this->menuModel->modifyMenuReorder(json_decode($this->_reqP('params'), true));
+        $result = $this->menuModel->modifyMenusReorder(json_decode($this->_reqP('params'), true));
 
         $this->json_result($result, '저장 되었습니다.', $result);
     }

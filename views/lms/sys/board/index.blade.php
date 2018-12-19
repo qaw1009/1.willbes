@@ -2,7 +2,7 @@
 
 @section('content')
     <h5>- 윌비스 사이트 운영 게시판 정보를 관리하는 메뉴입니다.</h5>
-    <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
+    <form class="form-horizontal searching" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         <div class="x_panel">
             <div class="x_content">
@@ -40,6 +40,7 @@
                     <th class="">게시판타입</th>
                     <th class="searching">게시판코드</th>
                     <th class="searching">게시판명</th>
+                    <th class="searching">사이트그룹정보적용</th>
                     <th class="searching_is_use">사용여부</th>
                     <th>등록자</th>
                     <th>등록일</th>
@@ -52,6 +53,10 @@
                         <td>{{$bmType_list[$row['BmTypeCcd']]}} [<span class="blue">{{ $row['BmTypeCcd'] }}</span>]</td>
                         <td>{{$row['BmIDX']}}</td>
                         <td><a href="#" class="btn-modify" data-idx="{{ $row['BmIDX'] }}"><u>{{ $row['BmName'] }}</u></a></td>
+                        <td>
+                            @if($row['IsSiteGroup'] == 'Y')적용@endif
+                            <span class="hide">{{ $row['IsSiteGroup'] }}</span>
+                        </td>
                         <td>@if($row['IsUse'] == 'Y') 사용 @elseif($row['IsUse'] == 'N') <span class="red">미사용</span> @endif
                             <span class="hide">{{ $row['IsUse'] }}</span>
                         </td>
@@ -77,34 +82,24 @@
                 buttons : [
                     {
                         text: '<i class="fa fa-pencil mr-5"></i> 게시판 등록', className: 'btn-sm btn-primary border-radius-reset', action: function(e, dt, node, config) {
-                            location.href = '{{ site_url('/sys/board/create') }}';
+                            location.href = '{{ site_url('/sys/board/create') }}' + dtParamsToQueryString($datatable);
                         }
                     }
                 ]
             });
 
-            // datatable searching
-            var datatableSearching = function() {
-                $datatable
-                    .columns('.searching').flatten().search($search_form.find('input[name="search_value"]').val())
-                    .column('.searching_is_use').search($search_form.find('select[name="search_is_use"]').val())
-                    .draw();
-            };
-
-            // 검색
-            $search_form.submit(function(e) {
-                e.preventDefault();
-                datatableSearching();
-            });
-
-            $search_form.find('input[name="search_value"], select[name="search_is_use"]').on('keyup change', function () {
-                datatableSearching();
-            });
-
             // 데이터 수정 폼
             $list_table.on('click', '.btn-modify', function() {
-                location.replace('{{ site_url('/sys/board/create') }}/' + $(this).data('idx'));
+                location.replace('{{ site_url('/sys/board/create') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable));
             });
         });
+
+        // datatable searching
+        function datatableSearching() {
+            $datatable
+                .columns('.searching').flatten().search($search_form.find('input[name="search_value"]').val())
+                .column('.searching_is_use').search($search_form.find('select[name="search_is_use"]').val())
+                .draw();
+        }
     </script>
 @stop

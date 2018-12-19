@@ -132,6 +132,17 @@
                 }, showError, false, 'POST');
             });
 
+/*            // 상황별 컬럼 visible 처리
+            $datatable.on( 'draw', function () {
+                var column = $datatable.column('SiteName:name');
+
+                if ($('#search_is_use').val() === 'Y') {
+                    column.visible(false);
+                } else {
+                    column.visible(true);
+                }
+            }); */
+
             // 데이터 등록 모달창 오픈
             function createModal() {
                 $('.btn-create-modal').setLayer({

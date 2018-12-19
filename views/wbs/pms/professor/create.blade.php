@@ -22,8 +22,8 @@
                     <div class="col-md-5 item">
                         <div class="checkbox">
                             @foreach($cps as $row)
-                                <input type="checkbox" name="cp_idx[]" class="flat" @if($loop->index == 1) required="required" title="적용CP" @endif value="{{ $row['wCpIdx'] }}" @if($row['wCpIdx'] == $row['wPCpIdx'])checked="checked"@endif/>
-                                <span class="inline-block mr-10">{{ $row['wCpName'] }}</span>
+                                <input type="checkbox" id="cp_idx_{{ $loop->index }}" name="cp_idx[]" class="flat" @if($loop->index == 1) required="required" title="적용CP" @endif value="{{ $row['wCpIdx'] }}" @if($row['wCpIdx'] == $row['wPCpIdx'])checked="checked"@endif/>
+                                <label for="cp_idx_{{ $loop->index }}" class="input-label">{{ $row['wCpName'] }}</label>
                             @endforeach
                         </div>
                     </div>
@@ -70,12 +70,12 @@
                     </label>
                     <div class="col-md-3 item">
                         <div class="radio">
-                            <input type="radio" name="is_use" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['wIsUse']=='Y')checked="checked"@endif/> 사용
-                            &nbsp; <input type="radio" name="is_use" class="flat" value="N" @if($data['wIsUse']=='N')checked="checked"@endif/> 미사용
+                            <input type="radio" id="is_use_y" name="is_use" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['wIsUse']=='Y')checked="checked"@endif/> <label for="is_use_y" class="input-label">사용</label>
+                            <input type="radio" id="is_use_n" name="is_use" class="flat" value="N" @if($data['wIsUse']=='N')checked="checked"@endif/> <label for="is_use_n" class="input-label">미사용</label>
                         </div>
                     </div>
                 </div>
-                <div class="form-group">
+                <!--div class="form-group">
                     <label class="control-label col-md-2" for="prof_passwd">교수비밀번호
                     </label>
                     <div class="col-md-2 item">
@@ -84,9 +84,26 @@
                     <div class="col-md-7">
                         <p class="form-control-static"># @if($method == 'PUT') 변경 시에만 입력 @else 미입력 시 `1111`로 자동 셋팅 @endif</p>
                     </div>
-                </div>
+                </div-->
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="admin_desc">맛보기영상경로
+                    <label class="control-label col-md-2" for="admin_make">운영자생성
+                    </label>
+                    <div class="col-md-10 item">
+                            @if(empty($data['admin_reg_check']))
+                            <div class="checkbox" >
+                                <input type="checkbox" id="admin_make" name="admin_make" class="flat"  title="운영자생성" value="Y">
+                                &nbsp;&nbsp; # 해당 교수아이디로 운영자 생성 (초기 비밀번호는 교수아이디 와 일치 -> 티존 로그인 후 반드시 비밀번호 변경 )
+                            </div>
+                            @else
+                            <p class="form-control-static red"># 운영자 생성 완료 : 초기 비밀번호는 교수아이디</p>
+                            @endif
+
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="sample_url">맛보기영상경로
                     </label>
                     <div class="col-md-9 item">
                         <input type="text" id="sample_url" name="sample_url" class="form-control optional" pattern="url" title="맛보기영상경로" value="{{ $data['wSampleUrl'] }}">
@@ -96,14 +113,14 @@
                     <label class="control-label col-md-2" for="prof_profile">교수프로필
                     </label>
                     <div class="col-md-9">
-                        <textarea id="prof_profile" name="prof_profile" class="form-control" rows="7" title="교수프로필" placeholder="">{!! $data['wProfProfile'] !!}</textarea>
+                        <textarea id="prof_profile" name="prof_profile" class="form-control" rows="7" title="교수프로필" placeholder="">{{ $data['wProfProfile'] }}</textarea>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-md-2" for="book_content">주요저서
                     </label>
                     <div class="col-md-9">
-                        <textarea id="book_content" name="book_content" class="form-control" rows="7" title="주요저서" placeholder="">{!! $data['wBookContent'] !!}</textarea>
+                        <textarea id="book_content" name="book_content" class="form-control" rows="7" title="주요저서" placeholder="">{{ $data['wBookContent'] }}</textarea>
                     </div>
                 </div>
                 <div class="form-group">
@@ -116,7 +133,7 @@
                                 @if(empty($data{'wAttachImgName' . $i}) === false)
                                     <p class="form-control-static ml-30 mr-10">[ <a href="{{ $data['wAttachImgPath'] . $data{'wAttachImgName' . $i} }}" rel="popup-image">{{ $data{'wAttachImgName' . $i} }}</a> ]</p>
                                     <div class="checkbox">
-                                        <input type="checkbox" name="attach_img_delete[]" value="{{ $i }}" class="flat"/> <span class="red">삭제</span>
+                                        <input type="checkbox" id="attach_img_delete_{{ $i }}" name="attach_img_delete[]" value="{{ $i }}" class="flat"/> <label for="attach_img_delete_{{ $i }}" class="input-label red">삭제</label>
                                     </div>
                                 @endif
                             </div>
@@ -148,7 +165,7 @@
                     </div>
                 </div>
                 <div class="ln_solid"></div>
-                <div class="form-group text-center">
+                <div class="text-center">
                     <button type="submit" class="btn btn-success mr-10">저장</button>
                     <button class="btn btn-primary" type="button" id="btn_list">목록</button>
                 </div>

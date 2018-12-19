@@ -2,12 +2,12 @@
 
 @section('content')
     <ul class="nav nav-tabs bar_tabs mb-20" role="tablist">
-        <li role="presentation"><a href="{{ site_url('/sys/site/index/code') }}" class="cs-pointer">사이트 생성관리</a></li>
+        <li role="presentation"><a href="{{ site_url('/sys/site/index/code') }}">사이트 생성관리</a></li>
         <li role="presentation"><a href="{{ site_url('/sys/site/index/group') }}">사이트 그룹 정보관리</a></li>
-        <li role="presentation" class="active"><a href="{{ site_url('/sys/site/index/category') }}"><strong>사이트 카테고리 관리</strong></a></li>
+        <li role="presentation" class="active"><a href="{{ site_url('/sys/site/index/category') }}" class="cs-pointer"><strong>사이트 카테고리 관리</strong></a></li>
     </ul>
     <h5>- 윌비스 사용자 운영 사이트 카테고리를 생성하는 메뉴입니다.</h5>
-    <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
+    <form class="form-horizontal searching" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">
@@ -53,14 +53,9 @@
                     <tbody>
                     @foreach($data as $row)
                         <tr>
+                            <td>{{ $row['SiteName'] }} [<span class="blue">{{ $row['SiteCode'] }}</span>]</td>
                             <td>
-                                <div class="form-group form-group-sm">
-                                    {{ $row['SiteName'] }}
-                                    [<span class="blue">{{ $row['SiteCode'] }}</span>]
-                                </div>
-                            </td>
-                            <td>
-                                <div class="form-group form-group-sm">
+                                <div class="form-group form-group-sm no-border-bottom">
                                     <input type="text" name="order_num" class="form-control" value="{{ $row['BOrderNum'] }}" data-origin-order-num="{{ $row['BOrderNum'] }}" data-idx="{{ $row['BCateCode'] }}" style="width: 30px;" />
                                     <input type="radio" name="cate_code" value="{{ $row['BCateCode'] }}" data-cate-depth="{{ $row['BCateDepth'] }}" data-site-code="{{ $row['SiteCode'] }}" class="flat"/>
                                     <a href="#none" class="btn-modify" data-idx="{{ $row['BCateCode'] }}"><u>{{ $row['BCateName'] }}</u></a>
@@ -70,7 +65,7 @@
                             </td>
                             <td>
                                 @if(empty($row['MCateCode']) === false)
-                                    <div class="form-group form-group-sm">
+                                    <div class="form-group form-group-sm no-border-bottom">
                                         <input type="text" name="order_num" class="form-control" value="{{ $row['MOrderNum'] }}" data-origin-order-num="{{ $row['MOrderNum'] }}" data-idx="{{ $row['MCateCode'] }}" style="width: 30px;" />
                                         <a href="#none" class="btn-modify" data-idx="{{ $row['MCateCode'] }}"><u>{{ $row['MCateName'] }}</u></a>
                                         [<span class="blue">{{ $row['MCateCode'] }}</span>]
@@ -108,24 +103,6 @@
                 ]
             });
 
-            // datatable searching
-            var datatableSearching = function() {
-                $datatable
-                    .columns('.searching').flatten().search($search_form.find('input[name="search_value"]').val())
-                    .column('.searching_is_use').search($search_form.find('select[name="search_is_use"]').val())
-                    .draw();
-            };
-
-            // 검색
-            $search_form.submit(function(e) {
-                e.preventDefault();
-                datatableSearching();
-            });
-
-            $search_form.find('input[name="search_value"], select[name="search_is_use"]').on('keyup change', function () {
-                datatableSearching();
-            });
-
             // 순서 변경
             $('.btn-reorder').on('click', function() {
                 if (!confirm('변경된 순서를 적용하시겠습니까?')) {
@@ -152,7 +129,7 @@
                 sendAjax('{{ site_url('/sys/site/reorder/category') }}', data, function(ret) {
                     if (ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
-                        location.reload();
+                        location.replace(location.pathname + dtParamsToQueryString($datatable));
                     }
                 }, showError, false, 'POST');
             });
@@ -187,5 +164,13 @@
                 });
             });
         });
+
+        // datatable searching
+        function datatableSearching() {
+            $datatable
+                .columns('.searching').flatten().search($search_form.find('input[name="search_value"]').val())
+                .column('.searching_is_use').search($search_form.find('select[name="search_is_use"]').val())
+                .draw();
+        }
     </script>
 @stop

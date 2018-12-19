@@ -3,7 +3,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class SiteModel extends WB_Model
 {
-    private $_table = 'lms_site';
+    private $_table = [
+        'site' => 'lms_site',
+        'site_group' => 'lms_site_group',
+        'site_r_campus' => 'lms_site_r_campus',
+        'code' => 'lms_sys_code',
+        'admin' => 'wbs_sys_admin'
+    ];    
+    private $_ccd = [
+        'Campus' => '605',
+    ];
 
     public function __construct()
     {
@@ -12,30 +21,73 @@ class SiteModel extends WB_Model
 
     /**
      * 사이트 목록 조회
+     * @param $column
      * @param array $arr_condition
      * @param null $limit
      * @param null $offset
      * @param array $order_by
      * @return array|int
      */
-    public function listSite($arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    public function listSite($column, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
-        $colum = 'S.SiteCode, S.SiteGroupCode, S.SiteName, S.SiteUrl, S.IsCampus, S.IsUse, S.RegDatm, S.RegAdminIdx, G.SiteGroupName';
-        $colum .= ' , (select wAdminName from wbs_sys_admin where wAdminIdx = S.RegAdminIdx) as RegAdminName';
-        $arr_condition['EQ']['S.IsStatus'] = 'Y';
+        $arr_condition['EQ']['IsStatus'] = 'Y';
 
-        return $this->_conn->getJoinListResult($this->_table . ' as S', 'inner', 'lms_site_group as G', 'S.SiteGroupCode = G.SiteGroupCode', $colum, $arr_condition, $limit, $offset, $order_by);
+        return $this->_conn->getListResult($this->_table['site'], $column, $arr_condition, $limit, $offset, $order_by);
+    }
+
+    /**
+     * 사이트 관리 목록 조회
+     * @param array $arr_condition
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return array|int
+     */
+    public function listAllSite($arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    {
+        $column = 'S.SiteCode, S.SiteGroupCode, S.SiteName, S.SiteUrl, S.PgCcd, S.IsCampus, S.IsUse, S.RegDatm, S.RegAdminIdx, G.SiteGroupName';
+        $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = S.RegAdminIdx and wIsStatus = "Y") as RegAdminName';
+        $arr_condition['EQ']['S.IsStatus'] = 'Y';
+        $arr_condition['EQ']['G.IsStatus'] = 'Y';
+
+        return $this->_conn->getJoinListResult($this->_table['site'] . ' as S', 'inner', $this->_table['site_group'] . ' as G',
+            'S.SiteGroupCode = G.SiteGroupCode', $column, $arr_condition, $limit, $offset, $order_by);
     }
 
     /**
      * 사이트 코드 목록 조회
+     * @param bool $is_auth
+     * @param string $is_column [추가 컬럼 조회시 컬럼명 전달]
      * @return array
      */
-    public function getSiteArray()
+    public function getSiteArray($is_auth = true, $is_column = 'SiteName')
     {
-        $data = $this->_conn->getListResult($this->_table, 'SiteCode, SiteName', [
-            'EQ' => ['IsUse' => 'Y', 'IsStatus' => 'Y']
-        ], null, null, [
+        // 운영자 사이트 권한 체크
+        if ($is_auth === true) {
+            $data = get_auth_site_codes(true);
+        } else {
+            $arr_condition = ['EQ' => ['IsUse' => 'Y', 'IsStatus' => 'Y']];
+            $data = $this->_conn->getListResult($this->_table['site'], 'SiteCode,'.$is_column ,$arr_condition, null, null, [
+                'SiteCode' => 'asc'
+            ]);
+            $data = array_pluck($data, $is_column, 'SiteCode');
+        }
+
+        return $data;
+    }
+
+    /**
+     * 캠퍼스'Y'상태 사이트 코드 목록 조회
+     * @param string $site_code [사이트코드]
+     * @return array
+     */
+    public function getOffLineSiteArray($site_code = '')
+    {
+        $column = 'SiteCode,SiteName';
+        $arr_condition = ['EQ' => ['SiteCode' => $site_code, 'IsCampus' => 'Y', 'IsUse' => 'Y', 'IsStatus' => 'Y']];
+        $arr_condition['IN']['SiteCode'] = get_auth_site_codes();
+
+        $data = $this->_conn->getListResult($this->_table['site'], $column ,$arr_condition, null, null, [
             'SiteCode' => 'asc'
         ]);
 
@@ -43,16 +95,66 @@ class SiteModel extends WB_Model
     }
 
     /**
+     * 사이트 코드별 운영자 권한이 있는 캠퍼스 코드 목록 조회
+     * @param $site_code
+     * @return array
+     */
+    public function getSiteCampusArray($site_code)
+    {
+        $column = "SC.SiteCode, SC.CampusCcd, C.CcdName as CampusName";
+        $from = "
+            FROM {$this->_table['site_r_campus']} AS SC
+            INNER JOIN {$this->_table['code']} AS C ON SC.CampusCcd = C.Ccd
+        ";
+
+        $arr_condition = [
+            'EQ' => [
+                'SC.IsStatus' => 'Y',
+                'C.GroupCcd' => $this->_ccd['Campus'],
+                'C.IsUse' => 'Y',
+                'C.IsStatus' => 'Y'
+            ]
+        ];
+        if (empty($site_code) === false) {
+            $arr_condition['EQ']['SC.SiteCode'] = $site_code;
+        } else {
+            $arr_condition['IN']['SC.SiteCode'] = get_auth_site_codes();
+        }
+
+        $where_temp = $this->_conn->makeWhere($arr_condition);
+        $where_temp = $where_temp->getMakeWhere(false);
+
+        // 캠퍼스 권한
+        $where_campus = "";
+        $arr_auth_campus_ccds = get_auth_all_campus_ccds();
+        $where_campus = $this->_conn->group_start();
+        foreach ($arr_auth_campus_ccds as $set_site_ccd => $set_campus_ccd) {
+            $where_campus->or_group_start();
+                $where_campus->or_where('SC.SiteCode',$set_site_ccd);
+                $where_campus->where_in('SC.CampusCcd', $set_campus_ccd);
+            $where_campus->group_end();
+        }
+        $where_campus->group_end();
+        $where_campus = $where_campus->getMakeWhere(true);
+
+        // 쿼리 실행
+        $where = $where_temp . $where_campus;
+        $query = $this->_conn->query('select ' . $column . $from . $where . ' ORDER BY SC.SiteCode ASC, SC.CampusCcd ASC');
+        $data = $query->result_array();
+        return (empty($site_code) === false) ? array_pluck($data, 'CampusName', 'CampusCcd') : $data;
+    }
+
+    /**
      * 사이트 데이터 조회
-     * @param string $colum
+     * @param string $column
      * @param array $arr_condition
      * @return array
      */
-    public function findSite($colum = '*', $arr_condition = [])
+    public function findSite($column = '*', $arr_condition = [])
     {
         $arr_condition['EQ']['IsStatus'] = 'Y';
 
-        return $this->_conn->getFindResult($this->_table, $colum, $arr_condition);
+        return $this->_conn->getFindResult($this->_table['site'], $column, $arr_condition);
     }
 
     /**
@@ -62,15 +164,17 @@ class SiteModel extends WB_Model
      */
     public function findSiteForModify($site_code)
     {
-        $colum = 'S.SiteCode, S.SiteGroupCode, S.SiteTypeCcd, S.SiteName, S.SiteUrl, S.UseDomain, S.PgCcd, S.PayMethodCcds, S.DeliveryCompCcd, S.DeliveryPrice, S.DeliveryAddPrice, S.DeliveryFreePrice';
-        $colum .= ' , S.Logo, S.Favicon, S.CsTel, S.HeadTitle, S.MetaKeyword, S.MetaDesc, S.FrontCss, S.FooterInfo, S.IsCampus, S.IsUse, S.RegDatm, S.RegAdminIdx, S.UpdDatm, S.UpdAdminIdx';
-        $colum .= ' , if(IsCampus = "Y", (';
-        $colum .= '     select GROUP_CONCAT(CampusCcd separator ", ") from lms_site_r_campus where SiteCode = S.SiteCode and IsStatus = "Y"';
-        $colum .= '   ), "") as CampusCcds';
-        $colum .= ' , (select wAdminName from wbs_sys_admin where wAdminIdx = S.RegAdminIdx) as RegAdminName';
-        $colum .= ' , if(S.UpdAdminIdx is null, "", (select wAdminName from wbs_sys_admin where wAdminIdx = S.UpdAdminIdx)) as UpdAdminName';
+        $column = '
+            S.SiteCode, S.SiteGroupCode, S.SiteTypeCcd, S.SiteName, S.SiteUrl, S.UseDomain, S.UseMail, S.PgCcd, S.PgMid, S.PgBookMid, S.PayMethodCcds, S.DeliveryCompCcd, S.DeliveryPrice, S.DeliveryAddPrice, S.DeliveryFreePrice
+                , S.Logo, S.Favicon, S.CsTel, S.HeadTitle, S.MetaKeyword, S.MetaDesc, S.FrontCss, S.FooterInfo, S.IsCampus, S.IsUse, S.RegDatm, S.RegAdminIdx, S.UpdDatm, S.UpdAdminIdx
+                , if(IsCampus = "Y", (
+                    select GROUP_CONCAT(CampusCcd separator ", ") from ' . $this->_table['site_r_campus'] . ' where SiteCode = S.SiteCode and IsStatus = "Y"
+                  ), "") as CampusCcds
+                , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = S.RegAdminIdx and wIsStatus = "Y") as RegAdminName
+                , if(S.UpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = S.UpdAdminIdx and wIsStatus = "Y")) as UpdAdminName
+        ';
 
-        return $this->_conn->getFindResult($this->_table . ' as S', $colum, [
+        return $this->_conn->getFindResult($this->_table['site'] . ' as S', $column, [
             'EQ' => ['S.SiteCode' => $site_code]
         ]);
     }
@@ -88,13 +192,14 @@ class SiteModel extends WB_Model
             $site_group_code = element('site_group_code', $input);
 
             // 등록될 사이트 코드,  정렬순서 조회
-            $row = $this->_conn->getFindResult($this->_table, 'ifnull(max(SiteCode) + 1, 2001) as SiteCode, ifnull(max(OrderNum) + 1, 1) as OrderNum');
+            $row = $this->_conn->getFindResult($this->_table['site'], 'ifnull(max(SiteCode) + 1, 2001) as SiteCode, ifnull(max(OrderNum) + 1, 1) as OrderNum');
+            $site_code = $row['SiteCode'];
 
             // 로고, 파비콘 업로드
             $this->load->library('upload');
-            $upload_sub_dir = SUB_DOMAIN . '/site/' . $row['SiteCode'];
+            $upload_sub_dir = config_item('upload_prefix_dir') . '/site/' . $site_code;
 
-            $uploaded = $this->upload->uploadFile('img', ['logo', 'favicon'], ['logo_' . $row['SiteCode'], 'favicon_' . $row['SiteCode']], $upload_sub_dir, 'allowed_types:gif|jpg|jpeg|png|ico');
+            $uploaded = $this->upload->uploadFile('img', ['logo', 'favicon'], ['logo_' . $site_code, 'favicon_' . $site_code], $upload_sub_dir, 'allowed_types:gif|jpg|jpeg|png|ico');
             if (is_array($uploaded) === false) {
                 throw new \Exception($uploaded);
             }
@@ -107,13 +212,16 @@ class SiteModel extends WB_Model
 
             // 데이터 저장
             $data = [
-                'SiteCode' => $row['SiteCode'],
+                'SiteCode' => $site_code,
                 'SiteGroupCode' => $site_group_code,
                 'SiteTypeCcd' => element('site_type_ccd', $input),
                 'SiteName' => element('site_name', $input),
                 'SiteUrl' => element('site_url', $input),
                 'UseDomain' => element('use_domain', $input),
+                'UseMail' => element('site_mail_id', $input) . '@' . element('site_mail_domain', $input),
                 'PgCcd' => element('pg_ccd', $input),
+                'PgMid' => element('pg_mid', $input),
+                'PgBookMid' => element('pg_book_mid', $input),
                 'PayMethodCcds' => implode(',', element('pay_method_ccd', $input)),
                 'DeliveryCompCcd' => element('delivery_comp_ccd', $input),
                 'DeliveryPrice' => element('delivery_price', $input),
@@ -135,12 +243,12 @@ class SiteModel extends WB_Model
             isset($uploaded[0]['file_name']) === true && $data['Logo'] = $this->upload->_upload_url . $upload_sub_dir . '/' . $uploaded[0]['file_name'];
             isset($uploaded[1]['file_name']) === true && $data['Favicon'] = $this->upload->_upload_url . $upload_sub_dir . '/' . $uploaded[1]['file_name'];
 
-            if ($this->_conn->set($data)->insert($this->_table) === false) {
+            if ($this->_conn->set($data)->insert($this->_table['site']) === false) {
                 throw new \Exception('데이터 저장에 실패했습니다.');
             }
 
             // 사이트별 캠퍼스 등록
-            if ($this->replaceSiteCampus(element('campus_ccd', $input), element('is_campus', $input), $row['SiteCode']) !== true) {
+            if ($this->replaceSiteCampus(element('campus_ccd', $input), element('is_campus', $input), $site_code) !== true) {
                 throw new \Exception('캠퍼스 등록에 실패했습니다.');
             }
 
@@ -150,7 +258,7 @@ class SiteModel extends WB_Model
             return error_result($e);
         }
 
-        return true;
+        return ['ret_cd' => true, 'ret_data' => $site_code];
     }
 
     /**
@@ -162,15 +270,23 @@ class SiteModel extends WB_Model
     {
         $this->_conn->trans_begin();
 
+        // 사이트 코드
+        $site_code = element('idx', $input);
+
         try {
-            // 사이트 코드
-            $site_code = element('idx', $input);
+            // 기존 사이트 정보 조회
+            $row = $this->findSiteForModify($site_code);
+            if (empty($row) === true) {
+                throw new \Exception('데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
+            }
 
             // 로고, 파비콘 업로드
             $this->load->library('upload');
-            $upload_sub_dir = SUB_DOMAIN . '/site/' . $site_code;
+            $upload_sub_dir = config_item('upload_prefix_dir') . '/site/' . $site_code;
+            $attach_img_postfix = '_' . time();
+            $bak_uploaded_files = [];
 
-            $uploaded = $this->upload->uploadFile('img', ['logo', 'favicon'], ['logo_' . $site_code, 'favicon_' . $site_code], $upload_sub_dir, 'allowed_types:gif|jpg|jpeg|png|ico');
+            $uploaded = $this->upload->uploadFile('img', ['logo', 'favicon'], ['logo_' . $site_code . $attach_img_postfix, 'favicon_' . $site_code . $attach_img_postfix], $upload_sub_dir, 'allowed_types:gif|jpg|jpeg|png|ico,overwrite:false');
             if (is_array($uploaded) === false) {
                 throw new \Exception($uploaded);
             }
@@ -188,7 +304,10 @@ class SiteModel extends WB_Model
                 'SiteName' => element('site_name', $input),
                 'SiteUrl' => element('site_url', $input),
                 'UseDomain' => element('use_domain', $input),
+                'UseMail' => element('site_mail_id', $input) . '@' . element('site_mail_domain', $input),
                 'PgCcd' => element('pg_ccd', $input),
+                'PgMid' => element('pg_mid', $input),
+                'PgBookMid' => element('pg_book_mid', $input),
                 'PayMethodCcds' => implode(',', element('pay_method_ccd', $input)),
                 'DeliveryCompCcd' => element('delivery_comp_ccd', $input),
                 'DeliveryPrice' => element('delivery_price', $input),
@@ -205,19 +324,32 @@ class SiteModel extends WB_Model
                 'UpdAdminIdx' => $this->session->userdata('admin_idx')
             ];
 
-            isset($uploaded[0]['file_name']) === true && $data['Logo'] = $this->upload->_upload_url . $upload_sub_dir . '/' . $uploaded[0]['file_name'];
-            isset($uploaded[1]['file_name']) === true && $data['Favicon'] = $this->upload->_upload_url . $upload_sub_dir . '/' . $uploaded[1]['file_name'];
+            if (isset($uploaded[0]['file_name']) === true) {
+                $data['Logo'] = $this->upload->_upload_url . $upload_sub_dir . '/' . $uploaded[0]['file_name'];
+                $bak_uploaded_files[] = $row['Logo'];
+            }
+
+            if (isset($uploaded[1]['file_name']) === true) {
+                $data['Favicon'] = $this->upload->_upload_url . $upload_sub_dir . '/' . $uploaded[1]['file_name'];
+                $bak_uploaded_files[] = $row['Favicon'];
+            }
 
             $this->_conn->set($data)->where('SiteCode', $site_code);
 
-            if ($this->_conn->update($this->_table) === false) {
+            if ($this->_conn->update($this->_table['site']) === false) {
                 throw new \Exception('데이터 수정에 실패했습니다.');
+            }
+
+            // 수정된 첨부 이미지 백업
+            $is_bak_uploaded_file = $this->upload->bakUploadedFile($bak_uploaded_files, true);
+            if ($is_bak_uploaded_file !== true) {
+                throw new \Exception($is_bak_uploaded_file);
             }
 
             // 사이트별 캠퍼스 등록/삭제
             if ($this->replaceSiteCampus(element('campus_ccd', $input), element('is_campus', $input), $site_code) !== true) {
                 throw new \Exception('캠퍼스 등록에 실패했습니다.');
-            }            
+            }
 
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
@@ -225,7 +357,7 @@ class SiteModel extends WB_Model
             return error_result($e);
         }
 
-        return true;
+        return ['ret_cd' => true, 'ret_data' => $site_code];
     }
 
     /**
@@ -238,7 +370,7 @@ class SiteModel extends WB_Model
     public function replaceSiteCampus($arr_campus_ccd = [], $is_campus, $site_code)
     {
         try {
-            $_table = 'lms_site_r_campus';
+            $_table = $this->_table['site_r_campus'];
             $arr_campus_ccd = (is_null($arr_campus_ccd) === true) ? [] : array_values(array_unique($arr_campus_ccd));
             $admin_idx = $this->session->userdata('admin_idx');
             
@@ -311,20 +443,20 @@ class SiteModel extends WB_Model
 
             // 데이터 조회
             $row = $this->findSite('Logo, Favicon', ['EQ' => ['SiteCode' => $site_code]]);
-            if (count($row) < 1) {
+            if (empty($row) === true) {
                 throw new \Exception('데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
             }
 
-            // 이미지 삭제
-            $this->load->helper('file');
-
-            $real_img_path = public_to_upload_path($row[$img_type]);
-            if (@unlink($real_img_path) === false) {
-                throw new \Exception('이미지 삭제에 실패했습니다.');
+            // 이미지 백업
+            $this->load->library('upload');
+            $bak_uploaded_file = $row[$img_type];
+            $is_bak_uploaded_file = $this->upload->bakUploadedFile($bak_uploaded_file, true);
+            if ($is_bak_uploaded_file !== true) {
+                throw new \Exception($is_bak_uploaded_file);
             }
 
             // 데이터 수정
-            $is_update = $this->_conn->set($img_type, 'NULL', false)->where('SiteCode', $site_code)->update($this->_table);
+            $is_update = $this->_conn->set($img_type, 'NULL', false)->where('SiteCode', $site_code)->update($this->_table['site']);
             if ($is_update === false) {
                 throw new \Exception('데이터 수정에 실패했습니다.');
             }

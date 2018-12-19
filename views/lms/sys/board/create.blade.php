@@ -21,7 +21,7 @@
                     <div class="col-md-2 item form-inline">
                         <div class="radio" id="bm_type">
                             @foreach($bmType_list as $key => $val)
-                                <input type="radio" id="{{$key}}" name="bm_type_ccd" class="flat" value="{{$key}}" required="required" title="게시판타입" @if($key == $data['BmTypeCcd']) checked="checked"@endif/>
+                                <input type="radio" id="{{$key}}" name="bm_type_ccd" class="flat bm-type" value="{{$key}}" required="required" title="게시판타입" data-bm-type-name="{{$val}}" @if($key == $data['BmTypeCcd']) checked="checked"@endif/>
                                 <label style="margin-right: 10px" for="{{$key}}">{{$val}}</label>
                             @endforeach
                         </div>
@@ -47,7 +47,7 @@
                     <div class="col-md-3 form-inline">
                         <div class="checkbox" id="one_way_option">
                             @foreach($set_onewayoptions as $key => $val)
-                                <input type="checkbox" id="one_way_option_{{$key}}" name="one_way_option[]" value="{{$key}}" class="flat" @if(array_search($key, $data_onewayoptions) !== false)checked="checked"@endif>
+                                <input type="checkbox" id="one_way_option_{{$key}}" name="one_way_option[]" value="{{$key}}" class="flat one_way_option" @if(array_search($key, $data_onewayoptions) !== false)checked="checked"@endif>
                                 <label class="inline-block mr-5" for="one_way_option_{{$key}}">{{$val}}</label>
                             @endforeach
                         </div>
@@ -56,9 +56,19 @@
                     <div class="col-md-4 form-inline">
                         <div class="checkbox" id="two_way_option">
                             @foreach($set_twowayoptions as $key => $val)
-                                <input type="checkbox" id="two_way_option_{{$key}}" name="two_way_option[]" value="{{$key}}" class="flat" @if(array_search($key, $data_twowayoptions) !== false)checked="checked"@endif>
+                                <input type="checkbox" id="two_way_option_{{$key}}" name="two_way_option[]" value="{{$key}}" class="flat two_way_option" @if(array_search($key, $data_twowayoptions) !== false)checked="checked"@endif>
                                 <label class="inline-block mr-5" for="two_way_option_{{$key}}">{{$val}}</label>
                             @endforeach
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-xs-2" for="">사이트그룹정보적용</label>
+                    <div class="col-md-3 form-inline">
+                        <div class="checkbox">
+                            <input type="checkbox" id="is_site_group" name="is_site_group" value="Y" class="flat" @if($data['IsSiteGroup'] === 'Y')checked="checked"@endif>
+                            <label class="inline-block" for="is_site_group">적용</label>
                         </div>
                     </div>
                 </div>
@@ -114,7 +124,6 @@
     </div>
     <script type="text/javascript">
         var $regi_form = $('#regi_form');
-
         $(document).ready(function() {
             // ajax submit
             $regi_form.submit(function() {
@@ -123,15 +132,29 @@
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
-                        location.replace('{{ site_url('/sys/board/index') }}');
+                        location.replace('{{ site_url('/sys/board/index') }}' + getQueryString());
                     }
                 }, showValidateError, null, false, 'alert');
             });
 
             $('#btn_list').click(function() {
-                location.replace('{{ site_url('/sys/board/index') }}');
+                location.replace('{{ site_url('/sys/board/index') }}' + getQueryString());
+            });
+
+            //게시판타입 선택 시 옵션 항목 처리
+            $('.bm-type').on('ifChecked', function() {
+                var bmType_name = $(this).data('bm-type-name');
+                //iCheckAll('input[name="one_way_option[]"]', 'input[name="two_way_option[]"]');
+                if (bmType_name == '일방향') {
+                    $('.one_way_option').prop('disabled', false);
+                    $('.two_way_option').prop('disabled', true);
+                    $('.two_way_option').iCheck('uncheck');
+                } else if (bmType_name == '쌍방향') {
+                    $('.one_way_option').prop('disabled', true);
+                    $('.two_way_option').prop('disabled', false);
+                    $('.one_way_option').iCheck('uncheck');
+                }
             });
         });
-
     </script>
 @stop

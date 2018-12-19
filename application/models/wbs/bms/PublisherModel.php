@@ -3,8 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class PublisherModel extends WB_Model
 {
-    private $_table = 'wbs_bms_publisher';
-
+    private $_table = [
+        'publisher' => 'wbs_bms_publisher',
+        'admin' => 'wbs_sys_admin'
+    ];
+    
     public function __construct()
     {
         parent::__construct('wbs');
@@ -22,20 +25,20 @@ class PublisherModel extends WB_Model
     public function listPublisher($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         if ($is_count === true) {
-            $colum = 'count(*) AS numrows';
+            $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $colum = 'P.wPublIdx, P.wPublName, P.wPublManager, concat(P.wPublTel1, "-", P.wPublTel2, "-", P.wPublTel3) as wPublTel, concat(P.wPublPhone1, "-", P.wPublPhone2, "-", P.wPublPhone3) as wPublPhone';
-            $colum .= ' , P.wPublDesc, P.wIsUse, P.wRegDatm, P.wRegAdminIdx, A.wAdminName as wRegAdminName';
+            $column = 'P.wPublIdx, P.wPublName, P.wPublManager, concat(P.wPublTel1, "-", P.wPublTel2, "-", P.wPublTel3) as wPublTel, concat(P.wPublPhone1, "-", P.wPublPhone2, "-", P.wPublPhone3) as wPublPhone';
+            $column .= ' , P.wPublDesc, P.wIsUse, P.wRegDatm, P.wRegAdminIdx, A.wAdminName as wRegAdminName';
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
 
         $from = '
-            from ' . $this->_table . ' as P
-                left join wbs_sys_admin as A 
-                on P.wRegAdminIdx = A.wAdminIdx
+            from ' . $this->_table['publisher'] . ' as P
+                left join ' . $this->_table['admin'] . ' as A 
+                    on P.wRegAdminIdx = A.wAdminIdx and A.wIsStatus = "Y"
             where P.wIsStatus = "Y"  
         ';
 
@@ -43,7 +46,7 @@ class PublisherModel extends WB_Model
         $where = $where->getMakeWhere(true);
 
         // 쿼리 실행
-        $query = $this->_conn->query('select ' . $colum . $from . $where . $order_by_offset_limit);
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
@@ -54,7 +57,7 @@ class PublisherModel extends WB_Model
      */
     public function getPublisherArray()
     {
-        $data = $this->_conn->getListResult($this->_table, 'wPublIdx, wPublName', [
+        $data = $this->_conn->getListResult($this->_table['publisher'], 'wPublIdx, wPublName', [
             'EQ' => ['wIsUse' => 'Y', 'wIsStatus' => 'Y']
         ], null, null, [
             'wPublName' => 'asc'
@@ -65,15 +68,15 @@ class PublisherModel extends WB_Model
 
     /**
      * 출판사 조회
-     * @param string $colum
+     * @param string $column
      * @param array $arr_condition
      * @return array
      */
-    public function findPublisher($colum = '*', $arr_condition = [])
+    public function findPublisher($column = '*', $arr_condition = [])
     {
         $arr_condition['EQ']['wIsStatus'] = 'Y';
 
-        return $this->_conn->getFindResult($this->_table, $colum, $arr_condition);
+        return $this->_conn->getFindResult($this->_table['publisher'], $column, $arr_condition);
     }
 
     /**
@@ -83,12 +86,12 @@ class PublisherModel extends WB_Model
      */
     public function findPublisherForModify($publ_idx)
     {
-        $colum = 'P.wPublIdx, P.wPublName, P.wPublManager, P.wPublTel1, P.wPublTel2, P.wPublTel3, P.wPublPhone1, P.wPublPhone2, P.wPublPhone3';
-        $colum .= ' , P.wPublDesc, P.wIsUse, P.wRegDatm, P.wRegAdminIdx, P.wUpdDatm, P.wUpdAdminIdx';
-        $colum .= ' , (select wAdminName from wbs_sys_admin where wAdminIdx = P.wRegAdminIdx) as wRegAdminName';
-        $colum .= ' , if(P.wUpdAdminIdx is null, "", (select wAdminName from wbs_sys_admin where wAdminIdx = P.wUpdAdminIdx)) as wUpdAdminName';
+        $column = 'P.wPublIdx, P.wPublName, P.wPublManager, P.wPublTel1, P.wPublTel2, P.wPublTel3, P.wPublPhone1, P.wPublPhone2, P.wPublPhone3';
+        $column .= ' , P.wPublDesc, P.wIsUse, P.wRegDatm, P.wRegAdminIdx, P.wUpdDatm, P.wUpdAdminIdx';
+        $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = P.wRegAdminIdx and wIsStatus = "Y") as wRegAdminName';
+        $column .= ' , if(P.wUpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = P.wUpdAdminIdx and wIsStatus = "Y")) as wUpdAdminName';
 
-        return $this->_conn->getFindResult($this->_table . ' as P', $colum, [
+        return $this->_conn->getFindResult($this->_table['publisher'] . ' as P', $column, [
             'EQ' => ['P.wPublIdx' => $publ_idx, 'P.wIsStatus' => 'Y']
         ]);
     }
@@ -118,7 +121,7 @@ class PublisherModel extends WB_Model
             ];
 
             // 데이터 등록
-            if ($this->_conn->set($data)->insert($this->_table) === false) {
+            if ($this->_conn->set($data)->insert($this->_table['publisher']) === false) {
                 throw new \Exception('출판사 등록에 실패했습니다.');
             }
 
@@ -145,12 +148,12 @@ class PublisherModel extends WB_Model
 
             // 기존 출판사 정보 조회
             $row = $this->findPublisherForModify($publ_idx);
-            if (count($row) < 1) {
+            if (empty($row) === true) {
                 throw new \Exception('데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
             }
 
             // 백업 데이터 등록
-            $this->addBakData($this->_table, ['wPublIdx' => $publ_idx]);
+            $this->addBakData($this->_table['publisher'], ['wPublIdx' => $publ_idx]);
 
             $data = [
                 'wPublName' => element('publ_name', $input),
@@ -166,7 +169,7 @@ class PublisherModel extends WB_Model
                 'wUpdAdminIdx' => $this->session->userdata('admin_idx'),
             ];
 
-            if ($this->_conn->set($data)->where('wPublIdx', $publ_idx)->update($this->_table) === false) {
+            if ($this->_conn->set($data)->where('wPublIdx', $publ_idx)->update($this->_table['publisher']) === false) {
                 throw new \Exception('출판사 수정에 실패했습니다.');
             }
 

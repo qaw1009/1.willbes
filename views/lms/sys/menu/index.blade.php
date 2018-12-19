@@ -2,7 +2,7 @@
 
 @section('content')
     <h5>- 관리자 LNB 메뉴를 관리하는 메뉴입니다.</h5>
-    <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
+    <form class="form-horizontal searching" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">
@@ -50,35 +50,46 @@
                 @foreach($data as $row)
                     <tr>
                         <td>
-                            <div class="form-group form-group-sm">
-                                <input type="text" name="order_num" class="form-control" value="{{ $row['BOrderNum'] }}" data-origin-order-num="{{ $row['BOrderNum'] }}" data-idx="{{ $row['BMenuIdx'] }}" style="width: 30px;" />
+                            <div class="form-group form-group-sm no-border-bottom">
+                                <input type="text" name="order_num" class="form-control" value="{{ $row['BOrderNum'] }}" data-origin-order-num="{{ $row['BOrderNum'] }}" data-idx="{{ $row['BMenuIdx'] }}" style="width: 50px;" />
                                 <input type="radio" name="menu_idx" value="{{ $row['BMenuIdx'] }}" data-menu-depth="{{ $row['BMenuDepth'] }}" class="flat"/>
                                 <a href="#none" class="btn-modify" data-idx="{{ $row['BMenuIdx'] }}"><u>{{ $row['BMenuName'] }}</u></a>
                                 [<span class="blue">{{ $row['BMenuIdx'] }}</span>]
                                 @if($row['BIsUse'] == 'Y') (사용) @elseif($row['BIsUse'] == 'N') (<span class="red">미사용</span>) @endif
                             </div>
+                            <div class="form-group form-group-sm no-border-bottom">
+                            @if($row['BIsTzone'] == 'Y') <span class="right red">[Tzone]</span> @endif
+                            </div>
                         </td>
                         <td>
                             @if(empty($row['MMenuIdx']) === false)
-                                <div class="form-group form-group-sm">
-                                    <input type="text" name="order_num" class="form-control" value="{{ $row['MOrderNum'] }}" data-origin-order-num="{{ $row['MOrderNum'] }}" data-idx="{{ $row['MMenuIdx'] }}" style="width: 30px;" />
+                                <div class="form-group form-group-sm no-border-bottom">
+                                    <input type="text" name="order_num" class="form-control" value="{{ $row['MOrderNum'] }}" data-origin-order-num="{{ $row['MOrderNum'] }}" data-idx="{{ $row['MMenuIdx'] }}" style="width: 50px;" />
                                     <input type="radio" name="menu_idx" value="{{ $row['MMenuIdx'] }}" data-menu-depth="{{ $row['MMenuDepth'] }}" class="flat"/>
                                     <a href="#none" class="btn-modify" data-idx="{{ $row['MMenuIdx'] }}"><u>{{ $row['MMenuName'] }}</u></a>
                                     [<span class="blue">{{ $row['MMenuIdx'] }}</span>]
                                     @if($row['MIsUse'] == 'Y') (사용) @elseif($row['MIsUse'] == 'N') (<span class="red">미사용</span>) @endif
                                 </div>
+                                <div class="form-group form-group-sm no-border-bottom">
+                                @if($row['MIsTzone'] == 'Y') <span class="right red">[Tzone]</span> @endif
+                                </div>
                             @endif
                         </td>
                         <td>
                             @if(empty($row['SMenuIdx']) === false)
-                                <div class="form-group form-group-sm">
-                                    <input type="text" name="order_num" class="form-control" value="{{ $row['SOrderNum'] }}" data-origin-order-num="{{ $row['SOrderNum'] }}" data-idx="{{ $row['SMenuIdx'] }}" style="width: 30px;" />
+                                <div class="form-group form-group-sm no-border-bottom">
+                                    <input type="text" name="order_num" class="form-control" value="{{ $row['SOrderNum'] }}" data-origin-order-num="{{ $row['SOrderNum'] }}" data-idx="{{ $row['SMenuIdx'] }}" style="width: 50px;" />
                                     <a href="#none" class="btn-modify" data-idx="{{ $row['SMenuIdx'] }}"><u>{{ $row['SMenuName'] }}</u></a>
                                     [<span class="blue">{{ $row['SMenuIdx'] }}</span>]
                                 </div>
+                                <div class="form-group form-group-sm no-border-bottom">
+                                    @if($row['IsTzone'] == 'Y') <span class="right red">[Tzone]</span> @endif
+                                </div>
                             @endif
                         </td>
-                        <td>{{ $row['LastMenuUrl'] }}</td>
+                        <td>
+                            <span>{{ $row['LastMenuUrl'] }}</span>
+                        </td>
                         <td>@if($row['LastIsUse'] == 'Y') 사용 @elseif($row['LastIsUse'] == 'N') <span class="red">미사용</span> @endif
                             <span class="hide">{{ $row['LastIsUse'] }}</span>
                         </td>
@@ -110,24 +121,6 @@
                 ]
             });
 
-            // datatable searching
-            var datatableSearching = function() {
-                $datatable
-                    .columns('.searching').flatten().search($search_form.find('input[name="search_value"]').val())
-                    .column('.searching_is_use').search($search_form.find('select[name="search_is_use"]').val())
-                    .draw();
-            };
-
-            // 검색
-            $search_form.submit(function(e) {
-                e.preventDefault();
-                datatableSearching();
-            });
-
-            $search_form.find('input[name="search_value"], select[name="search_is_use"]').on('keyup change', function () {
-                datatableSearching();
-            });
-
             // 순서 변경
             $('.btn-reorder').on('click', function() {
                 if (!confirm('변경된 순서를 적용하시겠습니까?')) {
@@ -154,7 +147,7 @@
                 sendAjax('{{ site_url('/sys/menu/reorder') }}', data, function(ret) {
                     if (ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
-                        location.reload();
+                        location.replace(location.pathname + dtParamsToQueryString($datatable));
                     }
                 }, showError, false, 'POST');
             });
@@ -186,5 +179,13 @@
                 });
             });
         });
+
+        // datatable searching
+        function datatableSearching() {
+            $datatable
+                .columns('.searching').flatten().search($search_form.find('input[name="search_value"]').val())
+                .column('.searching_is_use').search($search_form.find('select[name="search_is_use"]').val())
+                .draw();
+        }
     </script>
 @stop

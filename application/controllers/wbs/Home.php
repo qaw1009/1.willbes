@@ -16,7 +16,11 @@ class Home extends \app\controllers\BaseController
      */
     public function index()
     {
-        redirect(site_url('/lcms/auth/login'));
+        if ($this->session->userdata('is_admin_login') === true) {
+            redirect(config_app('home_url'));
+        } else {
+            redirect(site_url('/lcms/auth/login'));
+        }
     }
 
     /**

@@ -10,7 +10,7 @@ class SiteCategory
         $this->_CI =& get_instance();
 
         // load model
-        $this->_CI->load->_loadModels(['sys/category', 'sys/site']);
+        $this->_CI->load->loadModels(['sys/category', 'sys/site']);
     }
 
     /**
@@ -49,7 +49,7 @@ class SiteCategory
             $idx = $params[1];
 
             $data = $this->_CI->categoryModel->findCategoryForModify($idx);
-            if (count($data) < 1) {
+            if (empty($data) === true) {
                 return $this->_CI->json_error('데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
             }
             $site_code = $data['SiteCode'];
@@ -83,7 +83,7 @@ class SiteCategory
     {
         $rules = [
             ['field' => 'cate_name', 'label' => '분류명', 'rules' => 'trim|required'],
-            ['field' => 'is_use', 'label' => '노출여부', 'rules' => 'trim|required|in_list[Y,N]'],
+            ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
         ];
 
         if (empty($this->_CI->_reqP('idx')) === true) {
@@ -123,7 +123,7 @@ class SiteCategory
             return;
         }
 
-        $result = $this->_CI->categoryModel->modifyCategoryReorder(json_decode($this->_CI->_reqP('params'), true));
+        $result = $this->_CI->categoryModel->modifyCategoriesReorder(json_decode($this->_CI->_reqP('params'), true));
 
         $this->_CI->json_result($result, '저장 되었습니다.', $result);
     }

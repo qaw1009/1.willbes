@@ -39,8 +39,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |  $autoload['packages'] = array(APPPATH.'third_party', '/usr/local/shared');
 |
 */
-//$autoload['packages'] = array();
-$autoload['packages'] = array(APPPATH.'third_party/restserver');
+$autoload['packages'] = array();
 
 /*
 | -------------------------------------------------------------------
@@ -59,7 +58,10 @@ $autoload['packages'] = array(APPPATH.'third_party/restserver');
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array('session');
+$autoload['libraries'] = array();
+if (is_cli() === false && in_array(APP_NAME, ['api']) === false) {
+    $autoload['libraries'][] = 'session';
+}
 
 /*
 | -------------------------------------------------------------------
@@ -90,7 +92,13 @@ $autoload['drivers'] = array();
 |
 |	$autoload['helper'] = array('url', 'file');
 */
-$autoload['helper'] = array('base', 'url', 'array', 'form', 'cookie');
+$autoload['helper'] = array('base', 'url', 'array');
+if (in_array(APP_NAME, ['api']) === false) {
+    $autoload['helper'] = array_merge($autoload['helper'], ['form', 'cookie']);
+}
+if (in_array(APP_NAME, ['lms', 'willbes']) === true) {
+    $autoload['helper'][] = APP_NAME;
+}
 
 /*
 | -------------------------------------------------------------------
@@ -104,7 +112,7 @@ $autoload['helper'] = array('base', 'url', 'array', 'form', 'cookie');
 | config files.  Otherwise, leave it blank.
 |
 */
-$autoload['config'] = array('base_config');
+$autoload['config'] = array('base_config', APP_NAME . '_config');
 
 /*
 | -------------------------------------------------------------------

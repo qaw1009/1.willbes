@@ -18,9 +18,10 @@ class LoginModel extends WB_Model
      */
     public function findAdminForLogin($admin_id, $admin_passwd)
     {
-        $query = 'select wAdminIdx, wRoleIdx, wAdminId, wAdminName, wIsApproval, wIsUse, ifnull(wCertType, "") as wCertType, ifnull(wLastLoginIp, "") as wLastLoginIp';
+        $query = 'select wAdminIdx, wRoleIdx, wAdminId, wAdminName, wIsApproval, wProfIdx, wIsUse, ifnull(wCertType, "") as wCertType, ifnull(wLastLoginIp, "") as wLastLoginIp';
         $query .= ' from ' . $this->_table;
-        $query .= ' where wAdminId = ? and wAdminPasswd = fn_hash_data(?, 256) and wIsStatus = "Y"';
+        $query .= ' where wAdminId = ? and wAdminPasswd = fn_hash(?) and wIsStatus = "Y"';
+
         $result = $this->_conn->query($query, [$admin_id, $admin_passwd]);
 
         return $result->row_array();
@@ -42,11 +43,11 @@ class LoginModel extends WB_Model
 
     /**
      * 운영자 본인 인증 결과 수정
-     * @param string $cert_type
      * @param $admin_idx
+     * @param string $cert_type
      * @return array|bool
      */
-    public function modifyAdminCertInfo($cert_type = 'Y', $admin_idx)
+    public function modifyAdminCertInfo($admin_idx, $cert_type = 'Y')
     {
         $this->_conn->trans_begin();
 
@@ -126,7 +127,7 @@ class LoginModel extends WB_Model
         ];
 
         try {
-            if (SUB_DOMAIN == 'lms') {
+            if (APP_NAME == 'lms') {
                 $_table = 'lms_sys_admin_login_log';
                 $prefix = '';
             } else {
@@ -140,9 +141,14 @@ class LoginModel extends WB_Model
                 $prefix . 'IsLogin' => $log_ccds[$log_ccd_name][1],
                 $prefix . 'LoginLogCcd' => $log_ccds[$log_ccd_name][0]
             ];
-            $this->{SUB_DOMAIN}->set($data)->set($prefix . 'LoginDatm', 'NOW()', false);
 
-            if ($this->{SUB_DOMAIN}->insert($_table) === false) {
+            if (APP_NAME == 'lms') {
+                $data['ConnSubDomain'] = SUB_DOMAIN;
+            }
+
+            $this->{APP_NAME}->set($data)->set($prefix . 'LoginDatm', 'NOW()', false);
+
+            if ($this->{APP_NAME}->insert($_table) === false) {
                 throw new \Exception('관리자 로그인 로그 등록에 실패했습니다.');
             }
         } catch (\Exception $e) {

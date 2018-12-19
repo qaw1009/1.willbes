@@ -19,13 +19,13 @@
                 <tbody>
                 @foreach($paging['data'] as $row)
                     <tr>
-                        <td>{{ $paging['list_num'] }}</td>
+                        <td>{{ $paging['rownum'] }}</td>
                         <td>{{ $row['idx'] }}</td>
                         <td>{{ $row['title'] }}</td>
                         <td>{{ $row['name'] }}</td>
                         <td>{{ $row['regi_date'] }}</td>
                     </tr>
-                    @php $paging['list_num']-- @endphp
+                    @php $paging['rownum']-- @endphp
                 @endforeach
                 </tbody>
             </table>

@@ -11,9 +11,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |	https://codeigniter.com/user_guide/general/hooks.html
 |
 */
-
-// 관리자 로그인 인증
-if (in_array(SUB_DOMAIN, ['wbs', 'lms']) === true) {
+if (in_array(APP_NAME, ['wbs', 'lms']) === true) {
+    // 관리자 로그인 인증
     $hook['post_controller_constructor'][] = array(
         'class' => 'AdminAuthHook',
         'function' => 'authenticate',
@@ -22,10 +21,12 @@ if (in_array(SUB_DOMAIN, ['wbs', 'lms']) === true) {
     );
 }
 
-// 쿼리빌더를 사용하여 실행한 쿼리 로그 저장
-$hook['post_system'][] = array(
-    'class' => 'LogQueryHook',
-    'function' => 'logQueries',
-    'filename' => 'LogQueryHook.php',
-    'filepath' => 'hooks'
-);
+if (in_array(APP_NAME, ['api']) === false) {
+    // 쿼리빌더를 사용하여 실행한 쿼리 로그 저장 (API는 수동으로 쿼리 로그 저장)
+    $hook['post_system'][] = array(
+        'class' => 'LogQueryHook',
+        'function' => 'logQueries',
+        'filename' => 'LogQueryHook.php',
+        'filepath' => 'hooks'
+    );
+}

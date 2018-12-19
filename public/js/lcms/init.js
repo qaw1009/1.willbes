@@ -61,11 +61,11 @@ $.extend(true, $.fn.dataTable.defaults, {
             //$(".right_col").css("height", $(document).height());
         },
         error: function(xmlHttpRequest, textStatus, errorThrown){
-            if(xmlHttpRequest.readyState == 0 || xmlHttpRequest.status == 0){
-                return
+            if(xmlHttpRequest.readyState === 0 || xmlHttpRequest.status === 0){
+                return;
             }
             else{
-                if(xmlHttpRequest.status == 401)
+                if(xmlHttpRequest.status === 401)
                     notifyAlert("error", "권한 없음", "리스트 조회 권한이 없습니다. [" + xmlHttpRequest.status + "]");
                 else
                     notifyAlert("error", "알림", "리스트 조회를 실패하였습니다. [" + xmlHttpRequest.status + "]");
@@ -78,8 +78,9 @@ $(document).ready(function() {
     // 관리자 목록 페이지 검색어 설정
     var json = queryStringToJson();
     var $search_form = $('#search_form');
+    var $tab_site_code = $('.tabs-site-code');
 
-    if (typeof $search_form === 'undefined' || json.hasOwnProperty('q') === false) {
+    if ($search_form.length < 1 || json.hasOwnProperty('q') === false) {
         return;
     }
 
@@ -96,15 +97,21 @@ $(document).ready(function() {
             } else {
                 $search_form.find('[name="' + key + '"]').val(value);
             }
+
+            if (key === 'search_site_code' && value !== '' && $tab_site_code.length > 0) {
+                // 사이트 탭 자동 선택
+                $tab_site_code.children('li').removeClass('active');
+                $tab_site_code.find('a[data-site-code="' + value + '"]').parent('li').addClass('active');
+            }
         }
     });
 
     // set datatable length and page
-    if (qs.start !== '' && qs.length !== '') {
+    if (typeof qs.start !== 'undefined' && typeof qs.length !== 'undefined') {
         // datatable ajax
         $.extend(true, $.fn.dataTable.defaults, {
             iDisplayStart: qs.start,
-            iDisplayLength: qs.length,
+            iDisplayLength: qs.length
         });
     } else {
         setTimeout(function() {

@@ -3,7 +3,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class MenuModel extends WB_Model
 {
-    private $_table = 'lms_sys_menu';
+    private $_table = [
+        'menu' => 'lms_sys_menu',
+        'admin' => 'wbs_sys_admin',
+    ];
 
     public function __construct()
     {
@@ -20,10 +23,10 @@ class MenuModel extends WB_Model
      */
     public function listMenu($arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
-        $colum = 'MenuIdx, MenuName, ParentMenuIdx, GroupMenuIdx, MenuDepth, MenuUrl, IconClassName, OrderNum, IsUse';
+        $column = 'MenuIdx, MenuName, ParentMenuIdx, GroupMenuIdx, MenuDepth, MenuUrl, IconClassName, OrderNum, IsUse';
         $arr_condition['EQ']['IsStatus'] = 'Y';
 
-        return $this->_conn->getListResult($this->_table, $colum, $arr_condition, $limit, $offset, $order_by);
+        return $this->_conn->getListResult($this->_table['menu'], $column, $arr_condition, $limit, $offset, $order_by);
     }
 
     /**
@@ -33,33 +36,34 @@ class MenuModel extends WB_Model
      */
     public function listAllMenu($arr_condition = [])
     {
-        $colum = 'U.*, A.wAdminName as LastRegAdminName';
+        $column = 'U.*, A.wAdminName as LastRegAdminName';
         $from = '
             from (
-                select BMenuIdx, BMenuName, BMenuDepth, BOrderNum, if(BMenuDepth < LastMenuDepth, BIsUse, "") as BIsUse
-                    , MMenuIdx, MMenuName, MMenuDepth, MOrderNum, if(MMenuDepth < LastMenuDepth, MIsUse, "") as MIsUse
-                    , SMenuIdx, SMenuName, SMenuDepth, SOrderNum
+                select BMenuIdx, BMenuName, BMenuDepth, BOrderNum, if(BMenuDepth < LastMenuDepth, BIsUse, "") as BIsUse, BIsTzone
+                    , MMenuIdx, MMenuName, MMenuDepth, MOrderNum, if(MMenuDepth < LastMenuDepth, MIsUse, "") as MIsUse, MIsTzone
+                    , SMenuIdx, SMenuName, SMenuDepth, SOrderNum, IsTzone
                     , if(LastMenuDepth = 1, BMenuUrl, if(LastMenuDepth = 2, MMenuUrl, SMenuUrl)) as LastMenuUrl
                     , if(LastMenuDepth = 1, BIsUse, if(LastMenuDepth = 2, MIsUse, SIsUse)) as LastIsUse
                     , if(LastMenuDepth = 1, BRegAdminIdx, if(LastMenuDepth = 2, MRegAdminIdx, SRegAdminIdx)) as LastRegAdminIdx
                     , if(LastMenuDepth = 1, BRegDatm, if(LastMenuDepth = 2, MRegDatm, SRegDatm)) as LastRegDatm
                 from (
                     select BM.MenuIdx as BMenuIdx, BM.MenuName as BMenuName, BM.MenuDepth as BMenuDepth, BM.OrderNum as BOrderNum
-                        , BM.IsUse as BIsUse, BM.MenuUrl as BMenuUrl, BM.RegAdminIdx as BRegAdminIdx, BM.RegDatm as BRegDatm	
+                        , BM.IsUse as BIsUse, BM.MenuUrl as BMenuUrl, BM.RegAdminIdx as BRegAdminIdx, BM.RegDatm as BRegDatm, BM.IsTzone	as BIsTzone
                         , MM.MenuIdx as MMenuIdx, MM.MenuName as MMenuName, MM.MenuDepth as MMenuDepth, MM.OrderNum as MOrderNum
-                        , MM.IsUse as MIsUse, MM.MenuUrl as MMenuUrl, MM.RegAdminIdx as MRegAdminIdx, MM.RegDatm as MRegDatm
+                        , MM.IsUse as MIsUse, MM.MenuUrl as MMenuUrl, MM.RegAdminIdx as MRegAdminIdx, MM.RegDatm as MRegDatm ,MM.IsTzone as MIsTzone
                         , SM.MenuIdx as SMenuIdx, SM.MenuName as SMenuName, SM.MenuDepth as SMenuDepth, SM.OrderNum as SOrderNum
-                        , SM.IsUse as SIsUse, SM.MenuUrl as SMenuUrl, SM.RegAdminIdx as SRegAdminIdx, SM.RegDatm as SRegDatm
+                        , SM.IsUse as SIsUse, SM.MenuUrl as SMenuUrl, SM.RegAdminIdx as SRegAdminIdx, SM.RegDatm as SRegDatm, SM.IsTzone as IsTzone
                         , greatest(BM.MenuDepth, ifnull(MM.MenuDepth, 0), ifnull(SM.MenuDepth, 0)) as LastMenuDepth		
-                    from ' . $this->_table . ' as BM
-                        left join ' . $this->_table . ' as MM
+                    from ' . $this->_table['menu'] . ' as BM
+                        left join ' . $this->_table['menu'] . ' as MM
                             on MM.GroupMenuIdx = BM.MenuIdx and MM.MenuDepth = 2 and MM.IsStatus = "Y"
-                        left join ' . $this->_table . ' as SM
+                        left join ' . $this->_table['menu'] . ' as SM
                             on SM.ParentMenuIdx = MM.MenuIdx and SM.MenuDepth = 3 and SM.IsStatus = "Y"
                     where BM.MenuDepth = 1 and BM.IsStatus = "Y"
                 ) as I
-            ) as U inner join wbs_sys_admin as A
-                on U.LastRegAdminIdx = A.wAdminIdx 
+            ) as U 
+                left join ' . $this->_table['admin'] . ' as A
+                    on U.LastRegAdminIdx = A.wAdminIdx and A.wIsStatus = "Y" 
         ';
 
         $where = $this->_conn->makeWhere($arr_condition);
@@ -67,7 +71,7 @@ class MenuModel extends WB_Model
         $order_by_offset_limit = $this->_conn->makeOrderBy(['BOrderNum' => 'asc', 'MOrderNum' => 'asc', 'SOrderNum' => 'asc'])->getMakeOrderBy();
 
         // 쿼리 실행
-        $query = $this->_conn->query('select ' . $colum . $from . $where . $order_by_offset_limit);
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
 
         return $query->result_array();
     }
@@ -79,10 +83,10 @@ class MenuModel extends WB_Model
      */
     public function listSameDepthMenu($menu_idx)
     {
-        $colum = 'PM.MenuIdx, PM.MenuName, PM.MenuDepth';
+        $column = 'PM.MenuIdx, PM.MenuName, PM.MenuDepth';
         $from = '
-            from ' . $this->_table . ' as M
-                inner join ' . $this->_table . ' as PM
+            from ' . $this->_table['menu'] . ' as M
+                inner join ' . $this->_table['menu'] . ' as PM
                     on M.ParentMenuIdx = PM.ParentMenuIdx            
         ';
         $where = $this->_conn->makeWhere([
@@ -94,7 +98,7 @@ class MenuModel extends WB_Model
         $order_by_offset_limit = $this->_conn->makeOrderBy(['PM.OrderNum' => 'asc'])->getMakeOrderBy();
 
         // 쿼리 실행
-        $query = $this->_conn->query('select ' . $colum . $from . $where . $order_by_offset_limit);
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
 
         return $query->result_array();
     }
@@ -106,7 +110,7 @@ class MenuModel extends WB_Model
      */
     public function findMenuByMenuIdx($menu_idx)
     {
-        return $this->_conn->getFindResult($this->_table, 'MenuIdx, ParentMenuIdx, GroupMenuIdx, MenuDepth', [
+        return $this->_conn->getFindResult($this->_table['menu'], 'MenuIdx, ParentMenuIdx, GroupMenuIdx, MenuDepth', [
             'EQ' => ['MenuIdx' => $menu_idx, 'IsStatus' => 'Y']
         ]);
     }
@@ -118,11 +122,11 @@ class MenuModel extends WB_Model
      */
     public function findMenuForModify($menu_idx)
     {
-        $colum = 'M.MenuIdx, M.MenuName, M.ParentMenuIdx, M.GroupMenuIdx, M.MenuDepth, M.MenuUrl, M.IconClassName, M.OrderNum, M.IsUse, M.RegDatm, M.UpdDatm';
-        $colum .= '    , (select wAdminName from wbs_sys_admin where wAdminIdx = M.RegAdminIdx) as RegAdminName';
-        $colum .= '    , (select wAdminName from wbs_sys_admin where wAdminIdx = M.UpdAdminIdx) as UpdAdminName';
+        $column = 'M.MenuIdx, M.MenuName, M.ParentMenuIdx, M.GroupMenuIdx, M.MenuDepth, M.MenuUrl, M.IconClassName, M.OrderNum, M.IsUse, M.RegDatm, M.UpdDatm ,M.IsTzone';
+        $column .= '    , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = M.RegAdminIdx and wIsStatus = "Y") as RegAdminName';
+        $column .= '    , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = M.UpdAdminIdx and wIsStatus = "Y") as UpdAdminName';
 
-        return $this->_conn->getFindResult($this->_table . ' as M', $colum, [
+        return $this->_conn->getFindResult($this->_table['menu'] . ' as M', $column, [
             'EQ' => ['M.MenuIdx' => $menu_idx, 'M.IsStatus' => 'Y']
         ]);
     }
@@ -134,7 +138,7 @@ class MenuModel extends WB_Model
      */
     public function getMenuOrderNum($parent_menu_idx)
     {
-        return $this->_conn->getFindResult($this->_table, 'ifnull(max(OrderNum), 0) + 1 as NextOrderNum', [
+        return $this->_conn->getFindResult($this->_table['menu'], 'ifnull(max(OrderNum), 0) + 1 as NextOrderNum', [
             'EQ' => ['ParentMenuIdx' => $parent_menu_idx]
         ])['NextOrderNum'];
     }
@@ -154,6 +158,7 @@ class MenuModel extends WB_Model
             $admin_idx = $this->session->userdata('admin_idx');
             $data = [
                 'MenuName' => element('menu_name', $input),
+                'IsTzone' => element('is_tzone', $input,'N'),
                 'RegAdminIdx' => $admin_idx
             ];
 
@@ -166,7 +171,7 @@ class MenuModel extends WB_Model
             } else {
                 // LNB, MenuDepth > 1
                 $row = $this->findMenuByMenuIdx($parent_menu_idx);
-                if (count($row) < 1) {
+                if (empty($row) === true) {
                     throw new \Exception('부모메뉴 데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
                 }
 
@@ -185,14 +190,14 @@ class MenuModel extends WB_Model
             }
             
             // 메뉴 등록
-            if ($this->_conn->set($data)->insert($this->_table) === false) {
+            if ($this->_conn->set($data)->insert($this->_table['menu']) === false) {
                 throw new \Exception('데이터 저장에 실패했습니다.');
             }
 
             // GNB 메뉴일 경우 GroupMenuIdx 값을 등록된 MenuIdx 값으로 업데이트
             if ($group_menu_idx == 0) {
                 $inserted_menu_idx = $this->_conn->insert_id();
-                $is_update = $this->_conn->set(['GroupMenuIdx' => $inserted_menu_idx, 'UpdAdminIdx' => $admin_idx])->where('MenuIdx', $inserted_menu_idx)->update($this->_table);
+                $is_update = $this->_conn->set(['GroupMenuIdx' => $inserted_menu_idx, 'UpdAdminIdx' => $admin_idx])->where('MenuIdx', $inserted_menu_idx)->update($this->_table['menu']);
                 if ($is_update === false) {
                     throw new \Exception('그룹메뉴식별자 수정에 실패했습니다.');
                 }
@@ -224,13 +229,14 @@ class MenuModel extends WB_Model
 
             $data = [
                 'MenuName' => element('menu_name', $input),
+                'IsTzone' => element('is_tzone', $input,'N'),
                 'UpdAdminIdx' => $admin_idx
             ];
 
             if ($group_menu_idx > 0) {
                 // MenuDepth > 1
                 $row = $this->findMenuByMenuIdx($parent_menu_idx);
-                if (count($row) < 1) {
+                if (empty($row) === true) {
                     throw new \Exception('부모메뉴 데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
                 }
 
@@ -248,7 +254,7 @@ class MenuModel extends WB_Model
             }
 
             $this->_conn->set($data)->where('MenuIdx', $menu_idx);
-            if ($this->_conn->update($this->_table) === false) {
+            if ($this->_conn->update($this->_table['menu']) === false) {
                 throw new \Exception('데이터 수정에 실패했습니다.');
             }
 
@@ -266,7 +272,7 @@ class MenuModel extends WB_Model
      * @param array $params
      * @return array|bool
      */
-    public function modifyMenuReorder($params = [])
+    public function modifyMenusReorder($params = [])
     {
         $this->_conn->trans_begin();
 
@@ -275,10 +281,12 @@ class MenuModel extends WB_Model
                 throw new \Exception('필수 파라미터 오류입니다.');
             }
 
-            foreach ($params as $menu_idx => $order_num) {
-                $this->_conn->set('OrderNum', $order_num)->where('MenuIdx', $menu_idx);
+            $admin_idx = $this->session->userdata('admin_idx');
 
-                if ($this->_conn->update($this->_table) === false) {
+            foreach ($params as $menu_idx => $order_num) {
+                $this->_conn->set('OrderNum', $order_num)->set('UpdAdminIdx', $admin_idx)->where('MenuIdx', $menu_idx);
+
+                if ($this->_conn->update($this->_table['menu']) === false) {
                     throw new \Exception('데이터 수정에 실패했습니다.');
                 }
             }

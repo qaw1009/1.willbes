@@ -82,8 +82,8 @@
                     <div class="col-md-3 item">
                         <div class="radio">
                             @foreach($edition_ccd as $key => $val)
-                                <input type="radio" name="edition_ccd" class="flat" value="{{ $key }}" @if($key == $data['wEditionCcd'])checked="checked"@endif @if($loop->index == 1)required="required" title="신판여부"@endif/>
-                                <span class="inline-block mr-10">{{ $val }}</span>
+                                <input type="radio" id="edition_ccd_{{ $loop->index }}" name="edition_ccd" class="flat" value="{{ $key }}" @if($key == $data['wEditionCcd'])checked="checked"@endif @if($loop->index == 1)required="required" title="신판여부"@endif/>
+                                <label for="edition_ccd_{{ $loop->index }}" class="input-label">{{ $val }}</label>
                             @endforeach
                         </div>
                     </div>
@@ -111,41 +111,56 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="control-label col-md-2" for="keyword">키워드
+                    </label>
+                    <div class="col-md-3 item">
+                        <input type="text" id="keyword" name="keyword" class="form-control" title="키워드" value="{{ $data['wKeyword'] }}">
+                    </div>
+                    <label class="control-label col-md-2" for="stock_cnt">재고 <span class="required">*</span>
+                    </label>
+                    <div class="col-md-3 item">
+                        <input type="number" id="stock_cnt" name="stock_cnt" required="required" class="form-control" title="재고" value="{{ $data['wStockCnt'] }}" style="width: 90px">
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="control-label col-md-2" for="sale_ccd">판매여부 <span class="required">*</span>
                     </label>
                     <div class="col-md-3 item">
                         <div class="radio">
                             @foreach($sale_ccd as $key => $val)
-                                <input type="radio" name="sale_ccd" class="flat" value="{{ $key }}" @if($key == $data['wSaleCcd'])checked="checked"@endif  @if($loop->index == 1)required="required" title="판매여부"@endif/>
-                                <span class="inline-block mr-10">{{ $val }}</span>
+                                <input type="radio" id="sale_ccd_{{ $loop->index }}" name="sale_ccd" class="flat" value="{{ $key }}" @if($key == $data['wSaleCcd'])checked="checked"@endif  @if($loop->index == 1)required="required" title="판매여부"@endif/>
+                                <label for="sale_ccd_{{ $loop->index }}" class="input-label">{{ $val }}</label>
                             @endforeach
                         </div>
                     </div>
-                    <label class="control-label col-md-2" for="keyword">키워드
+                    <label class="control-label col-md-2" for="is_use">사용여부 <span class="required">*</span>
                     </label>
-                    <div class="col-md-3">
-                        <input type="text" id="keyword" name="keyword" class="form-control" title="키워드" value="{{ $data['wKeyword'] }}">
+                    <div class="col-md-3 item">
+                        <div class="radio">
+                            <input type="radio" id="is_use_y" name="is_use" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['wIsUse']=='Y')checked="checked"@endif/> <label for="is_use_y" class="input-label">사용</label>
+                            <input type="radio" id="is_use_n" name="is_use" class="flat" value="N" @if($data['wIsUse']=='N')checked="checked"@endif/> <label for="is_use_n" class="input-label">미사용</label>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-md-2" for="book_desc">교재소개
                     </label>
                     <div class="col-md-9">
-                        <textarea id="book_desc" name="book_desc" class="form-control" rows="7" title="교재소개" placeholder="">{!! $data['wBookDesc'] !!}</textarea>
+                        <textarea id="book_desc" name="book_desc" class="form-control" rows="7" title="교재소개" placeholder="">{{ $data['wBookDesc'] }}</textarea>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-md-2" for="author_desc">저자소개
                     </label>
                     <div class="col-md-9">
-                        <textarea id="author_desc" name="author_desc" class="form-control" rows="7" title="저자소개" placeholder="">{!! $data['wAuthorDesc'] !!}</textarea>
+                        <textarea id="author_desc" name="author_desc" class="form-control" rows="7" title="저자소개" placeholder="">{{ $data['wAuthorDesc'] }}</textarea>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-md-2" for="table_desc">목차소개
                     </label>
                     <div class="col-md-9">
-                        <textarea id="table_desc" name="table_desc" class="form-control" rows="7" title="목차소개" placeholder="">{!! $data['wTableDesc'] !!}</textarea>
+                        <textarea id="table_desc" name="table_desc" class="form-control" rows="7" title="목차소개" placeholder="">{{ $data['wTableDesc'] }}</textarea>
                     </div>
                 </div>
                 <div class="form-group">
@@ -191,7 +206,7 @@
                     </div>
                 </div>
                 <div class="ln_solid"></div>
-                <div class="form-group text-center">
+                <div class="text-center">
                     <button type="submit" class="btn btn-success mr-10">저장</button>
                     <button class="btn btn-primary" type="button" id="btn_list">목록</button>
                 </div>

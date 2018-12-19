@@ -1,0 +1,163 @@
+@extends('lcms.layouts.master')
+@section('content')
+    <h5>- TM을 진행한 회원들의 환불 내역을 확인하는 메뉴입니다.</h5>
+    <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
+        {!! csrf_field() !!}
+
+        <div class="x_panel">
+            <div class="x_content">
+                <div class="form-group">
+                    <label class="control-label col-md-1" for="search_is_use">조건검색</label>
+                    <div class="col-md-10 form-inline">
+                        {!! html_site_select('', 'search_site_code', 'search_site_code', '', '운영 사이트', '') !!}
+                        <select class="form-control" id="AssignAdminIdx" name="AssignAdminIdx" @if(sess_data('admin_auth_data')['Role']['RoleIdx'] == '1010') disabled="disabled"@endif>
+                            <option value="">TM담당자</option>
+                            @foreach($AssignAdmin  as $row)
+                                <option value="{{ $row['wAdminIdx'] }}">{{ $row['wAdminName'] }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-1" for="search_value">회원검색</label>
+                    <div class="col-md-4 form-inline">
+                        <input type="text" class="form-control input-sm" id="search_value" name="search_value" style="width:200px">
+                        <p class="form-control-static">아이디, 이름, 연락처 검색 가능</p>
+                    </div>
+                    <label class="control-label col-md-1">기간검색</label>
+                    <div class="col-md-4 form-inline">
+                        <select name="DateType" id="DateType" class="form-control" >
+                            <option value="opr.RefundDatm">환불완료일</option>
+                            <option value="o.CompleteDatm">결제완료일</option>
+                            <option value="tc1.AssignDatm">배정일</option>
+                        </select>
+                        <input name="StartDate"  class="form-control datepicker" id="StartDate" style="width: 100px;"  type="text"  value="{{date("Y-m-d", strtotime("-7 days"))}}" >
+                        ~ <input name="EndDate"  class="form-control datepicker" id="EndDate" style="width: 100px;"  type="text"  value="{{date("Y-m-d", time())}}" >
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 text-right">
+                <button type="submit" class="btn btn-primary btn-search" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
+                <button type="button" class="btn btn-default mr-20" id="_btn_reset">검색초기화</button>
+            </div>
+        </div>
+    </form>
+    <div class="x_panel mt-10 ">
+        <div class="x_content col-md-4 ">
+
+            <table class="table table-striped table-bordered" >
+                <thead>
+                <tr>
+                    <th width="33%">결제금액</th>
+                    <th width="33%">환불금액</th>
+                    <th width="33%">환불건수</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <span id="sum_price">0 원</span>
+                    </td>
+                    <td>
+                        <span id="sum_refund_price">0 원</span>
+                    </td>
+                    <td>
+                        <span id="sum_count">0</span>
+                    </td>
+
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="x_panel mt-10">
+        <div class="x_content">
+            <table id="list_ajax_table" class="table table-striped table-bordered">
+                <thead>
+                <tr>
+                    <th width="50">NO</th>
+                    <th width="110">회원정보</th>
+                    <th width="150">주문번호</th>
+                    <th width="110">결제완료일</th>
+                    <th width="">상품명</th>
+                    <th width="80">결제금액</th>
+                    <th width="80">환불금액</th>
+                    <th width="80">환불완료일</th>
+                    <th width="80">TM담당자</th>
+                    <th width="100">배정일</th>
+                    <th width="100">최종상담일</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var $datatable;
+        var $search_form = $('#search_form');
+        var $list_table = $('#list_ajax_table');
+
+        $(document).ready(function() {
+
+            // 페이징 번호에 맞게 일부 데이터 조회
+            $datatable = $list_table.DataTable({
+                serverSide: true,
+                buttons: [
+                    { text: '<i class="fa fa-file-excel-o mr-5"></i> 엑셀다운로드', className: 'btn-sm btn-success border-radius-reset btn-excel' }
+                ],
+                ajax: {
+                    'url' : '{{ site_url('/crm/tm/TmOrderRefund/orderRefundListAjax') }}',
+                    'type' : 'POST',
+                    'data' : function(data) {
+                        return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
+                    }
+                },
+                columns: [
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            // 리스트 번호
+                            return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
+                        }},
+                    {'data' : null, 'render' : function(data,type,row,meta) {
+                            return data.MemName + ' ('+data.MemId+')<BR>'+ data.Phone +'';
+                        }},
+                    {'data' : null, 'render' : function(data,type,row,meta) {
+                            return data.OrderNo + '<BR>'+data.SiteName+'';
+                        }},
+                    {'data' : 'CompleteDatm'},
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            return'['+data.LearnPatternCcd_Name+'] '+data.ProdName;
+                        }},
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            return addComma(data.RealPayPrice)+'';
+                        }},
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            return '<b><font color="red">-'+addComma(data.RealPayPrice)+'</font></b>';
+                        }},
+                    {'data' : 'RefundDatm'},
+                    {'data' : 'ConsultAdmin_Name'},
+                    {'data' : 'AssignDatm'},
+                    {'data' : 'ConsultDatm'}
+                ]
+            });
+
+            $datatable.on('xhr.dt', function(e, settings, json) {
+                $('#sum_price').html('<b>'+addComma(json.sum_price) + ' 원</b>');
+                $('#sum_refund_price').html(json.sum_refund_price == 0 ? '<b>0 원</b>':'<b><font color="red">-'+addComma(json.sum_refund_price) + ' 원</font></b>');
+                $('#sum_count').html('<b>'+addComma(json.sum_count) + ' 건</b>');
+            });
+
+            // 엑셀다운로드 버튼 클릭
+            $('.btn-excel').on('click', function(event) {
+                event.preventDefault();
+                if (confirm('엑셀다운로드 하시겠습니까?')) {
+                    formCreateSubmit('{{ site_url('/crm/tm/TmOrderRefund/orderRefundListExcel/') }}', $search_form.serializeArray(), 'POST');
+                }
+            });
+
+        });
+    </script>
+@stop

@@ -4735,6 +4735,8 @@ form .LeclistTable .evtTable tr td a.w-del {
     margin-bottom: 15px;
     border: 1px solid #edeeef;
     padding: 10px;
+    width: 132px;
+    height: 161px;
 }
 .sbjProf li.nth {
     margin-left: 0;
@@ -4746,6 +4748,9 @@ form .LeclistTable .evtTable tr td a.w-del {
 }
 .sbjProf li img {
     background: #f4f3f3;
+    width: 110px;
+    height: 110px;
+    overflow: hidden;
 }
 .sbjProf li .prof-Name {
     font-size: 14px;

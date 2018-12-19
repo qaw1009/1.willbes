@@ -47,6 +47,7 @@ readme.rst
 /_bak/*
 #/_erd/*
 /storage/cache/*
+/storage/cache/memcached
 !/storage/cache/index.html
 !/storage/cache/views/index.html
 /storage/logs/*

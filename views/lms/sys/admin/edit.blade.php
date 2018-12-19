@@ -79,14 +79,14 @@
                                     @if(empty($row['CampusCcds']) === false)
                                         <div class="radio">
                                             <div class="inline-block item">
-                                                <input type="radio" id="all_campus_{{ $site_idx }}" name="is_all_campus[{{ $site_idx }}]" class="flat all-campus" value="Y" required="required_if:site_code[{{ $site_idx }}],{{ $row['SiteCode'] }}" title="캠퍼스 선택" data-site-idx="{{ $site_idx }}"/> 전체
-                                                &nbsp; <input type="radio" id="selected_campus_{{ $site_idx }}" name="is_all_campus[{{ $site_idx }}]" class="flat selected-campus" value="N" data-site-idx="{{ $site_idx }}"/> 선택
+                                                <input type="radio" id="all_campus_{{ $site_idx }}" name="is_all_campus[{{ $site_idx }}]" class="flat all-campus" value="Y" required="required_if:site_code[{{ $site_idx }}],{{ $row['SiteCode'] }}" title="캠퍼스 선택" data-site-idx="{{ $site_idx }}"/> <label for="all_campus_{{ $site_idx }}" class="input-label">전체</label>
+                                                <input type="radio" id="selected_campus_{{ $site_idx }}" name="is_all_campus[{{ $site_idx }}]" class="flat selected-campus" value="N" data-site-idx="{{ $site_idx }}"/> <label for="selected_campus_{{ $site_idx }}" class="input-label">선택</label>
                                             </div>
                                             &nbsp; (&nbsp;
                                             <div class="inline-block item">
                                             @foreach($row['CampusCcds'] as $campus)
-                                                <input type="checkbox" name="campus_ccd[{{ $row['SiteCode'] }}][]" class="flat campus-ccd" value="{{ $campus[0] }}" @if($loop->index == 1) required="required_if:is_all_campus[{{ $site_idx }}],N" title="캠퍼스" @endif @if($campus[2] == 'Y')checked="checked"@endif data-site-idx="{{ $site_idx }}"/>
-                                                <div class="inline-block mr-5">{{ $campus[1] }}</div>
+                                                <input type="checkbox" id="campus_ccd_{{ $row['SiteCode'] }}_{{ $campus[0] }}" name="campus_ccd[{{ $row['SiteCode'] }}][]" class="flat campus-ccd" value="{{ $campus[0] }}" @if($loop->index == 1) required="required_if:is_all_campus[{{ $site_idx }}],N" title="캠퍼스" @endif @if($campus[2] == 'Y')checked="checked"@endif data-site-idx="{{ $site_idx }}"/>
+                                                <label for="campus_ccd_{{ $row['SiteCode'] }}_{{ $campus[0] }}" class="input-label">{{ $campus[1] }}</label>
                                             @endforeach
                                             </div> )
                                         </div>
@@ -123,7 +123,7 @@
                     </div>
                 </div>
                 <div class="ln_solid"></div>
-                <div class="form-group text-center">
+                <div class="text-center">
                     <button type="submit" class="btn btn-success mr-10">저장</button>
                     <button class="btn btn-primary" type="button" id="btn_list">목록</button>
                 </div>

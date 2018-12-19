@@ -59,6 +59,11 @@ class CI_Session {
 	protected $_config;
 	protected $_sid_regexp;
 
+    /**
+     * TODO : system core modified (session)
+     */
+    protected $_old_session_id;
+
 	// ------------------------------------------------------------------------
 
 	/**
@@ -153,6 +158,11 @@ class CI_Session {
 			}
 			elseif ($_SESSION['__ci_last_regenerate'] < (time() - $regenerate_time))
 			{
+                /**
+                 * TODO : system core modified (session)
+                 */
+			    $this->_old_session_id = session_id();
+
 				$this->sess_regenerate((bool) config_item('sess_regenerate_destroy'));
 			}
 		}

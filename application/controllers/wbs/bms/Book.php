@@ -43,7 +43,7 @@ class Book extends \app\controllers\BaseController
             'ORG2' => [
                 'LKB' => [
                     'wPublName' => $this->_reqP('search_publ_author'),
-                    'wAuthorNameList' => $this->_reqP('search_publ_author'),
+                    'wAuthorNames' => $this->_reqP('search_publ_author'),
                 ]
             ],
         ];
@@ -89,7 +89,7 @@ class Book extends \app\controllers\BaseController
             $idx = $params[0];
             $data = $this->bookModel->findBookForModify($idx);
 
-            if (count($data) < 1) {
+            if (empty($data) === true) {
                 show_error('데이터 조회에 실패했습니다.');
             }
 
@@ -144,6 +144,7 @@ class Book extends \app\controllers\BaseController
             ['field' => 'edition_cnt', 'label' => '판', 'rules' => 'trim|required|numeric'],
             ['field' => 'print_cnt', 'label' => '쇄', 'rules' => 'trim|required|numeric'],
             ['field' => 'org_price', 'label' => '정가', 'rules' => 'trim|required|numeric'],
+            ['field' => 'stock_cnt', 'label' => '재고', 'rules' => 'trim|required|numeric'],
             ['field' => 'sale_ccd', 'label' => '판매여부', 'rules' => 'trim|required'],
         ];
 

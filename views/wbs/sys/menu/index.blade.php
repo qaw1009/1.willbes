@@ -2,7 +2,7 @@
 
 @section('content')
     <h5>- WBS 메뉴를 관리하는 메뉴입니다.</h5>
-    <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
+    <form class="form-horizontal searching" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">
@@ -50,7 +50,7 @@
                 @foreach($data as $row)
                     <tr>
                         <td>
-                            <div class="form-group form-group-sm">
+                            <div class="form-group form-group-sm no-border-bottom">
                                 <input type="text" name="order_num" class="form-control" value="{{ $row['wBOrderNum'] }}" data-origin-order-num="{{ $row['wBOrderNum'] }}" data-idx="{{ $row['wBMenuIdx'] }}" style="width: 30px;" />
                                 <input type="radio" name="menu_idx" value="{{ $row['wBMenuIdx'] }}" data-menu-depth="{{ $row['wBMenuDepth'] }}" class="flat"/>
                                 <a href="#none" class="btn-modify" data-idx="{{ $row['wBMenuIdx'] }}"><u>{{ $row['wBMenuName'] }}</u></a>
@@ -60,7 +60,7 @@
                         </td>
                         <td>
                             @if(empty($row['wMMenuIdx']) === false)
-                                <div class="form-group form-group-sm">
+                                <div class="form-group form-group-sm no-border-bottom">
                                     <input type="text" name="order_num" class="form-control" value="{{ $row['wMOrderNum'] }}" data-origin-order-num="{{ $row['wMOrderNum'] }}" data-idx="{{ $row['wMMenuIdx'] }}" style="width: 30px;" />
                                     <input type="radio" name="menu_idx" value="{{ $row['wMMenuIdx'] }}" data-menu-depth="{{ $row['wMMenuDepth'] }}" class="flat"/>
                                     <a href="#none" class="btn-modify" data-idx="{{ $row['wMMenuIdx'] }}"><u>{{ $row['wMMenuName'] }}</u></a>
@@ -71,7 +71,7 @@
                         </td>
                         <td>
                             @if(empty($row['wSMenuIdx']) === false)
-                                <div class="form-group form-group-sm">
+                                <div class="form-group form-group-sm no-border-bottom">
                                     <input type="text" name="order_num" class="form-control" value="{{ $row['wSOrderNum'] }}" data-origin-order-num="{{ $row['wSOrderNum'] }}" data-idx="{{ $row['wSMenuIdx'] }}" style="width: 30px;" />
                                     <a href="#none" class="btn-modify" data-idx="{{ $row['wSMenuIdx'] }}"><u>{{ $row['wSMenuName'] }}</u></a>
                                     [<span class="blue">{{ $row['wSMenuIdx'] }}</span>]
@@ -110,24 +110,6 @@
                 ]
             });
 
-            // datatable searching
-            var datatableSearching = function() {
-                $datatable
-                    .columns('.searching').flatten().search($search_form.find('input[name="search_value"]').val())
-                    .column('.searching_is_use').search($search_form.find('select[name="search_is_use"]').val())
-                    .draw();
-            };
-
-            // 검색
-            $search_form.submit(function(e) {
-                e.preventDefault();
-                datatableSearching();
-            });
-
-            $search_form.find('input[name="search_value"], select[name="search_is_use"]').on('keyup change', function () {
-                datatableSearching();
-            });
-
             // 순서 변경
             $('.btn-reorder').on('click', function() {
                 if (!confirm('변경된 순서를 적용하시겠습니까?')) {
@@ -154,7 +136,7 @@
                 sendAjax('{{ site_url('/sys/menu/reorder') }}', data, function(ret) {
                     if (ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
-                        location.reload();
+                        location.replace(location.pathname + dtParamsToQueryString($datatable));
                     }
                 }, showError, false, 'POST');
             });
@@ -186,5 +168,13 @@
                 });
             });
         });
+
+        // datatable searching
+        function datatableSearching() {
+            $datatable
+                .columns('.searching').flatten().search($search_form.find('input[name="search_value"]').val())
+                .column('.searching_is_use').search($search_form.find('select[name="search_is_use"]').val())
+                .draw();
+        }
     </script>
 @stop

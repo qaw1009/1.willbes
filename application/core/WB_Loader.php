@@ -18,7 +18,7 @@ class WB_Loader extends CI_Loader
      * 모델 로드
      * @param array $models
      */
-    public function _loadModels($models = [])
+    public function loadModels($models = [])
     {
         foreach ($models as $key => $value) {
             if (is_int($key)) {
@@ -39,7 +39,7 @@ class WB_Loader extends CI_Loader
         if(starts_with($model, '_') === true) {
             return substr(str_replace('%', $model, $this->model_postfix), 1);
         } else {
-            return SUB_DOMAIN . '/' . str_replace('%', $model, $this->model_postfix);
+            return APP_NAME . '/' . str_replace('%', $model, $this->model_postfix);
         }
     }
 
@@ -56,13 +56,12 @@ class WB_Loader extends CI_Loader
     {
         if($is_blade === true) {
             $view_dir = VIEWPATH;
-            $cache_dir = config_item('cache_path') . 'views/' . SUB_DOMAIN;
-            // (optional) 1=forced (test), 2=run fast (production), 0=automatic, default value.
-            //define("BLADEONE_MODE", 1);
+            $cache_dir = config_item('cache_path') . 'views/' . APP_NAME;
+
             $blade = new \eftec\bladeone\BladeOne($view_dir, $cache_dir);
 
-            // 서브 도메인 적용
-            $sub_domain === true && $view = SUB_DOMAIN . '/' . $view;
+            // 서브 도메인 적용 (PC/모바일 경로가 있을 경우 지정)
+            $sub_domain === true && $view = APP_NAME . config_get('view_add_path', '') . '/' . $view;
 
             // blade path 형식으로 변환
             $view = str_replace('/', '.', $view);

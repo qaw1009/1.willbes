@@ -77,4 +77,22 @@ class AdminSettings extends \app\controllers\BaseController
 
         $this->json_result($result, '처리 되었습니다.', $result);
     }
+
+    /**
+     * 검색 값 기본 셋팅
+     */
+    public function searchSetting()
+    {
+        $rules = [
+            ['field' => 'setting_bm_idx', 'label' => '셋팅식별자', 'rules' => 'trim|required|integer'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->adminSettingsModel->storeSearchSetting($this->_reqP(null, false));
+
+        $this->json_result($result, '처리 되었습니다.', $result);
+    }
 }

@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends \app\controllers\BaseController
 {
-    protected $models = array('_wbs/sys/code', 'sys/loginLog');
+    protected $models = array('sys/wCode', 'sys/loginLog');
     protected $helpers = array();
 
     public function __construct()
@@ -16,7 +16,11 @@ class Home extends \app\controllers\BaseController
      */
     public function index()
     {
-        redirect(site_url('/lcms/auth/login'));
+        if ($this->session->userdata('is_admin_login') === true) {
+            redirect(config_app('home_url'));
+        } else {
+            redirect(site_url('/lcms/auth/login'));
+        }
     }
 
     /**
@@ -26,14 +30,14 @@ class Home extends \app\controllers\BaseController
     {
         // 오늘 로그인 로그 조회
         $arr_condition = [
-            'EQ' => ['wAdminId' => $this->session->userdata('admin_id')],
+            'EQ' => ['wAdminId' => $this->session->userdata('admin_id'), 'ConnSubDomain' => SUB_DOMAIN],
             'BDT' => ['LoginDatm' => [date('Y-m-d'), date('Y-m-d')]]
         ];
 
         $list = $this->loginLogModel->listTopLoginLog($arr_condition, 15);
         if (count($list) > 0) {
             // 사용하는 코드값 조회
-            $login_log_ccds = $this->codeModel->getCcd('117');
+            $login_log_ccds = $this->wCodeModel->getCcd('117');
 
             // 코드값에 해당하는 코드명을 배열 원소로 추가
             $list = array_data_fill($list, [
@@ -41,7 +45,7 @@ class Home extends \app\controllers\BaseController
             ], true);
         }
 
-        $this->load->view('main', [
+        $this->load->view('main_' . SUB_DOMAIN, [
             'last_login_ip' => $this->input->ip_address(),
             'data' => $list
         ]);

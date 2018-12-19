@@ -5,6 +5,9 @@ class CodeModel extends WB_Model
 {
     private $_table = 'lms_sys_code';
 
+    // 캠퍼스코드 '전체코드' 셋팅 (캠퍼스코드 전체 값으로 저장될 경우 사용)
+    public $campusAllCcd = '605999';
+
     public function __construct()
     {
         parent::__construct('lms');
@@ -13,15 +16,19 @@ class CodeModel extends WB_Model
     /**
      * 그룹공통코드에 해당하는 공통코드 조회
      * @param $group_ccd
+     * @param string $add_column
+     * @param array $add_condition
      * @return array
      */
-    public function getCcd($group_ccd)
+    public function getCcd($group_ccd, $add_column = '', $add_condition = [])
     {
-        $data = $this->_conn->getListResult($this->_table, 'if(IsValueUse = "N", Ccd, CcdValue) as Ccd, CcdName', [
-            'EQ' => ['GroupCcd' => $group_ccd, 'IsUse' => 'Y', 'IsStatus' => 'Y']
-        ], null, null, [
-            'OrderNum' => 'asc'
-        ]);
+        $column = 'if(IsValueUse = "N", Ccd, CcdValue) as Ccd, ';
+        $column .= (empty($add_column) === false) ? 'concat(CcdName, ":", ' . $add_column . ') as CcdName' : 'CcdName';
+
+        $arr_condition = ['EQ' => ['GroupCcd' => $group_ccd, 'IsUse' => 'Y', 'IsStatus' => 'Y']];
+        empty($add_condition) === false && $arr_condition = array_merge_recursive($arr_condition, $add_condition);
+
+        $data = $this->_conn->getListResult($this->_table, $column, $arr_condition, null, null, ['OrderNum' => 'asc']);
 
         return array_pluck($data, 'CcdName', 'Ccd');
     }
@@ -29,16 +36,19 @@ class CodeModel extends WB_Model
     /**
      * 그룹공통코드 배열에 해당하는 공통코드 조회
      * @param array $group_ccds
+     * @param string $add_column
+     * @param array $add_condition
      * @return array
      */
-    public function getCcdInArray($group_ccds = [])
+    public function getCcdInArray($group_ccds = [], $add_column = '', $add_condition = [])
     {
-        $data = $this->_conn->getListResult($this->_table, 'GroupCcd, if(IsValueUse = "N", Ccd, CcdValue) as Ccd, CcdName', [
-            'IN' => ['GroupCcd' => $group_ccds],
-            'EQ' => ['IsUse' => 'Y', 'IsStatus' => 'Y']
-        ], null, null, [
-            'GroupCcd' => 'asc', 'OrderNum' => 'asc'
-        ]);
+        $column = 'GroupCcd, if(IsValueUse = "N", Ccd, CcdValue) as Ccd, ';
+        $column .= (empty($add_column) === false) ? 'concat(CcdName, ":", ' . $add_column . ') as CcdName' : 'CcdName';
+
+        $arr_condition = ['IN' => ['GroupCcd' => $group_ccds], 'EQ' => ['IsUse' => 'Y', 'IsStatus' => 'Y']];
+        empty($add_condition) === false && $arr_condition = array_merge_recursive($arr_condition, $add_condition);
+
+        $data = $this->_conn->getListResult($this->_table, $column, $arr_condition, null, null, ['GroupCcd' => 'asc', 'OrderNum' => 'asc']);
 
         $codes = [];
         foreach ($data as $rows) {
@@ -48,6 +58,22 @@ class CodeModel extends WB_Model
         return $codes;
     }
 
+    /**
+     * 그룹공통코드 조회
+     * @param array $group_ccds
+     * @return array
+     */
+    public function getGroupCcdInArray($group_ccds = [])
+    {
+        $data = $this->_conn->getListResult($this->_table, 'if(IsValueUse = "N", Ccd, CcdValue) as Ccd, CcdName', [
+            'IN' => ['Ccd' => $group_ccds],
+            'EQ' => ['IsUse' => 'Y', 'IsStatus' => 'Y', 'GroupCcd' => 0]
+        ], null, null, [
+            'OrderNum' => 'asc'
+        ]);
+
+        return array_pluck($data, 'CcdName', 'Ccd');
+    }
 
     /**
      * @param array $arr_condition
@@ -66,13 +92,8 @@ class CodeModel extends WB_Model
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
         $order_by = $this->_conn->makeOrderBy(['S.ParentOrder'=>'Desc','A.OrderNum'=>'Asc'])->getMakeOrderBy();
 
-        /*
-        $data = $this->_conn->query('select ' .$column .$from .$where .$order_by);
-        return $data->result_array();
-        */
         return $this->_conn->query('select ' .$column .$from .$where .$order_by)->result_array();
     }
-
 
     /**
      * 그룹유형코드 정보 및 세부코드 노출순서 추출 (하위코드 등록을 윈한 정보 조회)
@@ -81,13 +102,12 @@ class CodeModel extends WB_Model
      */
     public function findParentCcd($group_ccd)
     {
-        $column = 'CcdName, (Select ifNull(Max(OrderNum),0)+1 From '.$this->_table.' Where GroupCcd='.$group_ccd.' and IsStatus="Y" ) As NextOrderNum';
+        $column = 'CcdName, (Select ifNull(Max(OrderNum),0)+1 From '.$this->_table.' Where GroupCcd='.$group_ccd.' and OrderNum < 999 and IsStatus="Y" ) As NextOrderNum';
         return  $this->_conn->getFindResult($this->_table, $column, [
             'EQ'=>['Ccd'=>$group_ccd, 'IsStatus' => 'Y']
         ]);
     }
 
-    
     /**
      * 세부항목코드 노출순서 추출
      * @param $groupCcd
@@ -96,11 +116,11 @@ class CodeModel extends WB_Model
     public function getCcdOrderNum($groupCcd)
     {
         return $this->_conn->getFindResult($this->_table,'ifNull(Max(OrderNum),0)+1 as NextOrderNum',[
-            'EQ' => ['GroupCcd' => $groupCcd]
+            'EQ' => ['GroupCcd' => $groupCcd],
+            'LT' => ['OrderNum' => '999']
         ])['NextOrderNum'];
     }
 
-    
     /**
      * 코드수정을 위한 정보 추출
      * @param $ccd
@@ -121,7 +141,6 @@ class CodeModel extends WB_Model
         return $this->_conn->query('select '.$column .$from .$where)->row_array();
     }
 
-
     /**
      * 코드정보 저장
      * @param array $input
@@ -131,34 +150,34 @@ class CodeModel extends WB_Model
     {
         $this->_conn->trans_begin();
 
-        $query = 'insert into lms_sys_code (Ccd,GroupCcd,CcdName,CcdValue,OrderNum,IsUse,CcdDesc,RegAdminIdx) ';
-        $query .= 'select ifNull(max(Ccd)+1,?) ,? ,? ,ifNull(?,"0") ,ifNull(?,Max(OrderNum)+1) ,ifNull(?,"Y") ,? ,? From lms_sys_code Where IsStatus="Y" ';
+        $query = 'insert into lms_sys_code (Ccd,GroupCcd,CcdName,CcdValue,OrderNum,IsUse,CcdDesc,CcdEtc,RegAdminIdx) ';
+        $query .= 'select ifNull(max(Ccd)+1,?) ,? ,? ,ifNull(?,"0") ,ifNull(?,Max(OrderNum)+1) ,ifNull(?,"Y") ,? ,? ,? From lms_sys_code Where IsStatus="Y" ';
 
         $ccd = "601";  //그룹코드생성 기본값
 
-          try {
-              if (element('makeType',$input) === "group") {
-                  $query .= ' And GroupCcd = "0" ';
-                  $ordernum = NULL;
-              } else if (element('makeType', $input) === "sub") {
-                  $query .= ' And GroupCcd = "'.element('groupCcd', $input).'" ';
-                  $ccd = element('groupCcd', $input)."001";
-                  $ordernum = empty(element("OrderNum", $input) === true) ? $this->getCcdOrderNum(element("groupCcd",$input)) : element("OrderNum", $input);
-              }
+        try {
+            if (element('makeType',$input) === "group") {
+                $query .= ' And GroupCcd = "0" ';
+                $ordernum = NULL;
+            } else if (element('makeType', $input) === "sub") {
+                $query .= ' And GroupCcd = "'.element('groupCcd', $input).'" And Ccd not like "%999"';
+                $ccd = element('groupCcd', $input)."001";
+                $ordernum = empty(element("OrderNum", $input) === true) ? $this->getCcdOrderNum(element("groupCcd",$input)) : element("OrderNum", $input);
+            }
               
-              $result = $this->_conn->query($query, [
-                    $ccd
-                    ,element('groupCcd', $input)
-                    ,element('CcdName', $input)
-                    ,element('CcdValue', $input)
-                    ,$ordernum
-                    ,element('is_use', $input)
-                    ,element('CcdDesc', $input)
-                    ,$this->session->userdata('admin_idx')
-                ]);
+            $result = $this->_conn->query($query, [
+                $ccd
+                ,element('groupCcd', $input)
+                ,element('CcdName', $input)
+                ,element('CcdValue', $input)
+                ,$ordernum
+                ,element('is_use', $input)
+                ,element('CcdDesc', $input)
+                ,element('CcdEtc', $input)
+                ,$this->session->userdata('admin_idx')
+            ]);
 
-                $this->_conn->trans_commit();
-
+            $this->_conn->trans_commit();
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();
             return error_result($e);
@@ -176,7 +195,6 @@ class CodeModel extends WB_Model
         $this->_conn->trans_begin();
 
         try {
-
             $maketype = element('makeType',$input);
             $ccd = element('Ccd', $input);
             $ccdname = element('CcdName', $input);
@@ -184,6 +202,7 @@ class CodeModel extends WB_Model
             $ordernum = (empty(element("OrderNum", $input)) === true) ? $this->getCcdOrderNum(element("groupCcd",$input)) : element("OrderNum", $input);
             $is_use = element('is_use', $input);
             $ccdesc = element('CcdDesc', $input);
+            $ccdetc = element('CcdEtc', $input);
             $admin_idx = $this->session->userdata('admin_idx');
 
             $data = [
@@ -197,6 +216,7 @@ class CodeModel extends WB_Model
                     ,'OrderNum' => $ordernum
                     ,'IsUse' => $is_use
                     ,'CcdDesc' => $ccdesc
+                    ,'CcdEtc' => $ccdetc
                 ]);
             }
 
@@ -206,7 +226,6 @@ class CodeModel extends WB_Model
             }
 
             $this->_conn->trans_commit();
-
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();
             return error_result($e);
@@ -214,5 +233,4 @@ class CodeModel extends WB_Model
 
         return true;
     }
-
 }

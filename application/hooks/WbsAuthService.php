@@ -22,7 +22,7 @@ class WbsAuthService extends AdminAuthService
      */
     public function getAuthMenu($role_idx)
     {
-        $colum = '
+        $column = '
             M.wMenuIdx as MenuIdx, M.wMenuName as MenuName, M.wParentMenuIdx as ParentMenuIdx, M.wGroupMenuIdx as GroupMenuIdx, M.wMenuDepth as MenuDepth
                 , M.wMenuUrl as MenuUrl, M.wUrlType as UrlType, M.wUrlTarget as UrlTarget, M.wIconClassName as IconClassName
                 , (case M.wMenuDepth
@@ -53,7 +53,7 @@ class WbsAuthService extends AdminAuthService
         $order_by_offset_limit = ' order by TreeNum asc';
 
         // 쿼리 실행
-        $query = $this->_db->query('select ' . $colum . $from . $where . $order_by_offset_limit, [$role_idx]);
+        $query = $this->_db->query('select ' . $column . $from . $where . $order_by_offset_limit, [$role_idx]);
 
         return $query->result_array();
     }
@@ -92,7 +92,9 @@ class WbsAuthService extends AdminAuthService
      */
     public function getAdminRole()
     {
-        $colum = 'A.wRoleIdx as RoleIdx, R.wRoleName as RoleName';
+        $results = [];
+
+        $column = 'A.wRoleIdx as RoleIdx, R.wRoleName as RoleName';
         $from = '
             from wbs_sys_admin_role as R inner join wbs_sys_admin as A
 	            on R.wRoleIdx = A.wRoleIdx    
@@ -100,9 +102,10 @@ class WbsAuthService extends AdminAuthService
         $where = ' where A.wAdminIdx = ? and R.wIsUse = "Y" and R.wIsStatus = "Y" and A.wIsUse = "Y" and A.wIsStatus = "Y"';
 
         // 쿼리 실행
-        $query = $this->_db->query('select ' . $colum . $from . $where, [$this->_CI->session->userdata('admin_idx')]);
+        $query = $this->_db->query('select ' . $column . $from . $where, [$this->_CI->session->userdata('admin_idx')]);
+        $results['Role'] = $query->row_array();
 
-        return $query->row_array();
+        return $results;
     }
 
     /**
@@ -123,9 +126,6 @@ class WbsAuthService extends AdminAuthService
             if ($this->_db->insert('wbs_sys_admin_login_log') === false) {
                 throw new \Exception('관리자 LCMS 전환 로그인 로그 등록에 실패했습니다.');
             }
-
-            // 접속 사이트 세션 갱신
-            $this->setSessionAdminConnSites();
         } catch (\Exception $e) {
             log_message('error', $e->getFile() . ' : ' . $e->getLine() . ' line : ' . $e->getMessage());
         }

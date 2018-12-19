@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Login extends \app\controllers\BaseController
 {
-    protected $models = array('_lcms/auth/login', '_wbs/sys/admin');
+    protected $models = array('_lcms/auth/login', '_wbs/sys/admin', '_lms/product/base/professor');
     protected $helpers = array();
 
     public function __construct()
@@ -41,14 +41,16 @@ class Login extends \app\controllers\BaseController
         ];
 
         if ($this->validate($rules) === false) {
-            return;
+            return null;
         }
 
         $admin_id = $this->_reqP('admin_id');
+        $wbs_prof_role_idx = '1013';    // WBS 교수관리자 역할식별자
+        $lms_prof_role_idx = '1011';    // LMS 교수관리자 역할식별자
 
         // 관리자 아이디/비밀번호 확인
         $row = $this->loginModel->findAdminForLogin($admin_id, $this->_reqP('admin_passwd', false));
-        if (count($row) < 1) {
+        if (empty($row) === true) {
             // 로그인 로그 저장
             $this->loginModel->addLoginLog($admin_id, 'NO_MATCH');
 
@@ -59,11 +61,35 @@ class Login extends \app\controllers\BaseController
         $is_auth = true;
         if ($row['wIsApproval'] != 'Y' || $row['wIsUse'] != 'Y') {
             $is_auth = false;
-        } else if (SUB_DOMAIN == 'wbs' && empty($row['wRoleIdx']) === true) {
-            $is_auth = false;
-        } else if (SUB_DOMAIN == 'lms') {
+        } else if (APP_NAME == 'wbs') {
+            // 권한설정이 없거나 교수관리자 권한일 경우 wbs 접근 금지
+            if (empty($row['wRoleIdx']) === true || $row['wRoleIdx'] == $wbs_prof_role_idx) {
+                $is_auth = false;
+            }
+        } else if (APP_NAME == 'lms') {
             $lms_role_idx = $this->loginModel->getLmsRoleIdx($row['wAdminIdx']);
             if (empty($lms_role_idx) === true) {
+                $is_auth = false;
+            }
+
+            // 교수관리자 권한으로 lms 접근 금지
+            if (SUB_DOMAIN == 'lms' && $lms_role_idx == $lms_prof_role_idx) {
+                $is_auth = false;
+            }
+        }
+
+        // T-zone 일 경우 WBS 접근 권한 확인, WBS,LMS 교수 정보 확인
+        if (SUB_DOMAIN == 'tzone') {
+            /*if (empty($row['wRoleIdx']) === true || $row['wRoleIdx'] != $wbs_prof_role_idx) {
+                $is_auth = false;
+            } else {
+                $arr_prof_idx = array_keys($this->professorModel->getProfessorArray('all', $row['wProfIdx']));
+                if (empty($arr_prof_idx) === true) {
+                    $is_auth = false;
+                }
+            }*/
+            $arr_prof_idx = array_keys($this->professorModel->getProfessorArray('all', $row['wProfIdx']));
+            if (empty($arr_prof_idx) === true) {
                 $is_auth = false;
             }
         }
@@ -83,7 +109,7 @@ class Login extends \app\controllers\BaseController
                 $is_cert = true;
                 $log_ccd_name = 'CERT_FIRST_REQ';
             } elseif ($row['wLastLoginIp'] != $this->input->ip_address()) {
-                // 어플리케이션이 QA서버, 실서버 일 경우만 체크
+                // 스테이징, 실서버일 경우만 체크 ==> TODO : 서버 환경별 실행
                 if (ENVIRONMENT == 'testing' || ENVIRONMENT == 'production') {
                     $is_cert = true;
                     $log_ccd_name = 'CERT_IP_REQ';
@@ -128,7 +154,7 @@ class Login extends \app\controllers\BaseController
                 'EQ' => ['wAdminId' => $this->_reqP('admin_id')]
             ]);
 
-            if (count($row) < 1) {
+            if (empty($row) === true) {
                 return $this->json_error('일치하는 정보가 없습니다.', _HTTP_NOT_FOUND);
             }
 
@@ -140,7 +166,7 @@ class Login extends \app\controllers\BaseController
             }
 
             // 인증성공 결과 업데이트
-            $result = $this->loginModel->modifyAdminCertInfo('Y', $row['wAdminIdx']);
+            $result = $this->loginModel->modifyAdminCertInfo($row['wAdminIdx'], 'Y');
 
             // 로그인 로그 저장
             $this->loginModel->addLoginLog($row['wAdminId'], 'CERT_SUCCESS');
@@ -164,7 +190,7 @@ class Login extends \app\controllers\BaseController
             'EQ' => ['wAdminId' => $this->_reqP('admin_id')]
         ]);
 
-        if (count($row) < 1) {
+        if (empty($row) === true) {
             return $this->json_error('운영자 정보가 없습니다.', _HTTP_NOT_FOUND);
         }
 
@@ -246,12 +272,15 @@ class Login extends \app\controllers\BaseController
      */
     private function _loginSucceed($data)
     {
+        // 중복 로그인 방지 (이전 세션 데이터 삭제)
+        $this->session->removePrevSession($data['wAdminIdx'], 'A');
+
         // 로그인 세션 저장
         $this->session->sess_regenerate(true);
         $this->session->set_userdata('admin_idx', $data['wAdminIdx']);
         $this->session->set_userdata('admin_id', $data['wAdminId']);
         $this->session->set_userdata('admin_name', $data['wAdminName']);
-        $this->session->set_userdata('admin_conn_sites', [SUB_DOMAIN]);
+        $this->session->set_userdata('admin_conn_sites', [APP_NAME]);
         $this->session->set_userdata('is_admin_login', true);
 
         // 아이디 저장 쿠키 생성/삭제
@@ -265,12 +294,23 @@ class Login extends \app\controllers\BaseController
         } else {
             delete_cookie('saved_admin_id');
         }
+        
+        // tzone으로 접근할 경우 사이트별 교수식별자 조회 및 세션 생성
+        if (SUB_DOMAIN == 'tzone' && empty($data['wProfIdx']) === false) {
+            $arr_prof_idx = array_keys($this->professorModel->getProfessorArray('all', $data['wProfIdx']));
+
+            $this->session->set_userdata('admin_wprof_idx', $data['wProfIdx']);
+            $this->session->set_userdata('admin_prof_idxs', $arr_prof_idx);
+        }
 
         // 최종 로그인 일시, IP 저장
         $this->loginModel->modifyAdminLoginInfo($data['wAdminIdx']);
 
         // 로그인 로그 저장
         $this->loginModel->addLoginLog($data['wAdminId'], ($data['wCertType'] == 'Y') ? 'SUCCESS' : 'EX_SUCCESS');
+
+        // 세션 로그인 테이블에 이력 저장
+        $this->session->addSessionLogin($data['wAdminIdx'], 'A');
     }
     
     /**

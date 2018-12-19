@@ -1,10 +1,13 @@
-<?
+<?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class UnitModel extends WB_Model
 {
 
+    protected $models = array('cms/lecture');
+
     private $_table = 'wbs_cms_lecture_unit';
+
 
     public function __construct()
     {
@@ -18,12 +21,14 @@ class UnitModel extends WB_Model
      */
     public function listAllUnit($lecidx)
     {
-        $column = 'A.*,B.wProfName,C.wAdminName';
+        $column = 'A.*,B.wProfName,C.wAdminName,Ccd.*';
 
         $from = '
                     From '.$this->_table.' A 
-                    left outer join wbs_pms_professor B on A.wProfIdx = B.wProfIdx 
-                    left outer join wbs_sys_admin C on A.wRegAdminIdx = C.wAdminIdx ';
+                    left outer join wbs_pms_professor B on A.wProfIdx = B.wProfIdx And B.wIsStatus="Y"
+                    left outer join wbs_sys_admin C on A.wRegAdminIdx = C.wAdminIdx And C.wIsStatus="Y"
+                    left outer join wbs_sys_code Ccd on A.wContentSizeCcd = Ccd.wCcd
+                    ';
 
         $where =  $this->_conn->makeWhere([
             'EQ'=>['A.wLecIdx'=>$lecidx,'A.wIsStatus'=>'Y']
@@ -46,26 +51,33 @@ class UnitModel extends WB_Model
         $this->_conn->trans_begin();
 
         try {
-            
+
                 $delwUnitIdx = element('delwUnitIdx', $input);  //삭제 식별자
 
                 $lec_idx = element('LecIdx', $input);
                 $seq = element('seq', $input);
                 $wUnitIdx = element('wUnitIdx', $input);
                 $wUnitNum = element('wUnitNum', $input);
+                $wUnitLectureNum= element('wUnitLectureNum', $input);
                 $wUnitName = element('wUnitName', $input);
                 $wRuntime = element('wRuntime', $input);
                 $wBookPage = element('wBookPage', $input);
                 $wHD = element('wHD', $input);
-                $wLD = element('wLD', $input);
+                $wSD = element('wSD', $input);
+                $wWD = element('wWD', $input);
                 $wShootingDate = element('wShootingDate', $input);
                 $wProfIdx = element('wProfIdx', $input);
+                $wContentSizeCcd = element('wContentSizeCcd', $input);
 
                 $this->load->library('upload');
-                $upload_sub_dir = SUB_DOMAIN.'/lecture/'.$lec_idx;
+
+                $row = $this->lectureModel->findLectureForModify($lec_idx);
+                $upload_sub_dir = config_item('upload_prefix_dir').'/lecture/'.date("Y",strtotime($row['wRegDatm'])).'/'.$lec_idx;
 
                 //첨부자료 등록 처리
-                $upload_result = $this->upload->uploadFile('file',['wUnitAttachFile'],'',$upload_sub_dir);
+                //$upload_result = $this->upload->uploadFile('file',['wUnitAttachFile'],'',$upload_sub_dir);
+                $upload_result = $this->upload->uploadFile('file',['wUnitAttachFile'],$this->setAttachFileName(count($seq)),$upload_sub_dir,'overwrite:false');
+
                 if(is_array($upload_result) === false) {
                     throw new \Exception($upload_result);
                 }
@@ -90,15 +102,17 @@ class UnitModel extends WB_Model
                         // 기본항목
                         $input_data = [
                             'wUnitNum' => $wUnitNum[$i]
+                            ,'wUnitLectureNum' => $wUnitLectureNum[$i]
                             ,'wUnitName' => $wUnitName[$i]
                             ,'wRuntime' => $wRuntime[$i]
                             ,'wBookPage' => $wBookPage[$i]
                             ,'wHD' => $wHD[$i]
-                            ,'wLD' => $wLD[$i]
+                            ,'wSD' => $wSD[$i]
+                            ,'wWD' => $wWD[$i]
                             ,'wShootingDate' => $wShootingDate[$i]
                             ,'wProfIdx' => $wProfIdx[$i]
-                            ,'wContentTypeCcd'=>'106001'         //강의유형 : 임의로 고정
-                            ,'wContentSizeCcd'=>'108001'          //컨텐트사이즈 (800 * 600) : 임의로 고정
+                            ,'wContentTypeCcd' => '106001'         //강의유형 : 임의로 고정
+                            ,'wContentSizeCcd' => $wContentSizeCcd[$i]          //컨텐트사이즈 (800 * 600) : 임의로 고정
                         ];
 
                         //기존 회차식별자가 존재하면 업데이트 처리
@@ -113,7 +127,8 @@ class UnitModel extends WB_Model
                                 if(count($upload_result) > 0) {
                                     if(empty($upload_result[$i]) !== true) {
                                         $input_data = array_merge($input_data, [
-                                            'wUnitAttachFile' => $upload_result[$i]['file_name']
+                                            'wUnitAttachFileReal' => $upload_result[$i]['client_name']
+                                           ,'wUnitAttachFile' => $upload_result[$i]['file_name']
                                         ]);
                                     }
                                 }
@@ -141,7 +156,8 @@ class UnitModel extends WB_Model
                                 if(count($upload_result) > 0) {
                                     if(empty($upload_result[$i]) !== true) {
                                         $input_data = array_merge($input_data, [
-                                            'wUnitAttachFile' => $upload_result[$i]['file_name']
+                                            'wUnitAttachFileReal' => $upload_result[$i]['client_name']
+                                            ,'wUnitAttachFile' => $upload_result[$i]['file_name']
                                         ]);
                                     }
                                 }
@@ -159,6 +175,7 @@ class UnitModel extends WB_Model
             return error_result($e);
         }
 
+        //return false;
         return true;
     }
 
@@ -177,8 +194,25 @@ class UnitModel extends WB_Model
         $this->load->library('upload');
 
         $attach_info = $row['wAttachPath'].$row['wUnitAttachFile'];
-        $attach_info_real = public_to_upload_path($row['wAttachPath']).'/' .$row['wUnitAttachFile'];        //파일 실 디렉토리
 
+        if(empty($row['wUnitAttachFile']) === false) {  //기존 파일이 존재할경우. 백업폴더로 이동
+            if($this->upload->bakUploadedFile($attach_info, true) !== true) {// 파익 백업 이동
+                return false;
+            }
+        }
+        // 백업 데이터 등록
+        $this->addBakData($this->_table, ['wUnitIdx' => $unit_idx]);
+
+        $data['wUnitAttachFileReal'] = NULL;
+        $data['wUnitAttachFile'] = NULL;
+        $data['wUpdAdminIdx'] = $this->session->userdata('admin_idx');
+        //Db 업데이트
+        if ($this->_conn->set($data)->where('wUnitIdx', $unit_idx)->update($this->_table) === false) {
+            return false;
+        }
+
+        /*
+        $attach_info_real = public_to_upload_path($row['wAttachPath']).'/' .$row['wUnitAttachFile'];        //파일 실 디렉토리
         if(empty($attach_info) === false) {
             //echo var_dump($attach_info);
             if(is_file($attach_info_real)) {
@@ -201,6 +235,7 @@ class UnitModel extends WB_Model
                 return false;       //실제파일 없음
             }
         }
+        */
         return true;
     }
 
@@ -223,4 +258,27 @@ class UnitModel extends WB_Model
         return $this->_conn->query('select ' .$column .$from .$where)->row_array();
     }
 
+    /**
+     * 회차 첨부파일명 생성
+     * @param $attach_cnt
+     * @return array
+     */
+    public function setAttachFileName($attach_cnt)
+    {
+        $file_name = [];
+        $temp_name = 'unit_'.date("YmdHis");
+
+        for($i = 0; $i < $attach_cnt; $i++) {
+            $file_name[] = $temp_name.'_'.$i;
+        }
+        return $file_name;
+    }
+
 }
+
+
+
+
+
+
+

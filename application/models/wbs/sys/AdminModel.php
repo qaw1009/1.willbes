@@ -3,7 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class AdminModel extends WB_Model
 {
-    private $_table = 'wbs_sys_admin';
+    private $_table = [
+        'admin' => 'wbs_sys_admin',
+        'admin_role' => 'wbs_sys_admin_role',
+        'admin_role_r_cp' => 'wbs_sys_admin_role_r_cp',
+        'cp' => 'wbs_sys_cp'
+    ];    
 
     public function __construct()
     {
@@ -22,23 +27,23 @@ class AdminModel extends WB_Model
     public function listAdmin($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         if ($is_count === true) {
-            $colum = 'count(*) AS numrows';
+            $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $colum = '
+            $column = '
                 A.wAdminIdx, A.wRoleIdx, A.wAdminId, A.wAdminName, A.wAdminPositionCcd, A.wAdminDeptCcd, A.wIsApproval, A.wIsUse, A.wRegDatm, A.wRegAdminIdx
                     , ifnull(R.wRoleName, "-") as wRoleName
                     , (case when A.wAdminIdx = A.wRegAdminIdx 
                             then A.wAdminName
-                            else (select wAdminName from ' . $this->_table . ' where wAdminIdx = A.wRegAdminIdx)
+                            else (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = A.wRegAdminIdx and wIsStatus = "Y")
                       end) as wRegAdminName
                     , (case when A.wRoleIdx > 0
                             then (
                                 select GROUP_CONCAT(C.wCpName separator ", ")
-                                from wbs_sys_cp as C 
-                                    inner join wbs_sys_admin_role_r_cp as RC
-                                    on C.wCpIdx = RC.wCpIdx
-                                where C.wIsUse = "Y" and C.wIsStatus = "Y" 
+                                from ' . $this->_table['cp'] . ' as C 
+                                    inner join ' . $this->_table['admin_role_r_cp'] . ' as RC
+                                        on C.wCpIdx = RC.wCpIdx
+                                where C.wIsStatus = "Y" 
                                     and RC.wIsStatus = "Y" and RC.wRoleIdx = A.wRoleIdx
                                 group by RC.wRoleIdx
                             )
@@ -51,9 +56,9 @@ class AdminModel extends WB_Model
         }
 
         $from = '
-            from ' . $this->_table . ' as A 
-                left join wbs_sys_admin_role as R 
-                on A.wRoleIdx = R.wRoleIdx and R.wIsUse = "Y" and R.wIsStatus = "Y"
+            from ' . $this->_table['admin'] . ' as A 
+                left join ' . $this->_table['admin_role'] . ' as R 
+                    on A.wRoleIdx = R.wRoleIdx and R.wIsStatus = "Y"
             where A.wIsStatus = "Y"  
         ';
 
@@ -61,22 +66,22 @@ class AdminModel extends WB_Model
         $where = $where->getMakeWhere(true);
 
         // 쿼리 실행
-        $query = $this->_conn->query('select ' . $colum . $from . $where . $order_by_offset_limit);
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 
     /**
      * 운영자 데이터 조회
-     * @param string $colum
+     * @param string $column
      * @param array $arr_condition
      * @return array
      */
-    public function findAdmin($colum = '*', $arr_condition = [])
+    public function findAdmin($column = '*', $arr_condition = [])
     {
         $arr_condition['EQ']['wIsStatus'] = 'Y';
 
-        return $this->_conn->getFindResult($this->_table, $colum, $arr_condition);
+        return $this->_conn->getFindResult($this->_table['admin'], $column, $arr_condition);
     }
 
     /**
@@ -86,15 +91,15 @@ class AdminModel extends WB_Model
      */
     public function findAdminForModify($admin_idx)
     {
-        $colum = 'A.wAdminIdx, A.wAdminId, A.wAdminName, A.wAdminPhone1, A.wAdminPhone2, A.wAdminPhone3, A.wAdminMail, A.wAdminDeptCcd, A.wAdminPositionCcd, A.wAdminDesc';
-        $colum .= ' , A.wIsApproval, A.wApprovalDatm, A.wApprovalAdminIdx, A.wIsUse, A.wRegDatm, A.wRegAdminIdx, A.wUpdDatm, A.wUpdAdminIdx';
-        $colum .= ' , if(A.wRoleIdx = 0, "", A.wRoleIdx) as wRoleIdx';
-        $colum .= ' , if(A.wRoleIdx = 0, "", (select wRoleName from wbs_sys_admin_role where wRoleIdx = A.wRoleIdx)) as wRoleName';
-        $colum .= ' , if(A.wApprovalAdminIdx is null, "", (select wAdminName from ' . $this->_table . ' where wAdminIdx = A.wApprovalAdminIdx)) as wApprovalAdminName';
-        $colum .= ' , (select wAdminName from ' . $this->_table . ' where wAdminIdx = A.wRegAdminIdx) as wRegAdminName';
-        $colum .= ' , if(A.wUpdAdminIdx is null, "", (select wAdminName from ' . $this->_table . ' where wAdminIdx = A.wUpdAdminIdx)) as wUpdAdminName';
+        $column = 'A.wAdminIdx, A.wAdminId, A.wAdminName, A.wAdminPhone1, A.wAdminPhone2, A.wAdminPhone3, A.wAdminMail, A.wAdminDeptCcd, A.wAdminPositionCcd, A.wAdminDesc';
+        $column .= ' , A.wIsApproval, A.wApprovalDatm, A.wApprovalAdminIdx, A.wIsUse, A.wRegDatm, A.wRegAdminIdx, A.wUpdDatm, A.wUpdAdminIdx';
+        $column .= ' , if(A.wRoleIdx = 0, "", A.wRoleIdx) as wRoleIdx';
+        $column .= ' , if(A.wRoleIdx = 0, "", (select wRoleName from ' . $this->_table['admin_role'] . ' where wRoleIdx = A.wRoleIdx and wIsStatus = "Y")) as wRoleName';
+        $column .= ' , if(A.wApprovalAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = A.wApprovalAdminIdx and wIsStatus = "Y")) as wApprovalAdminName';
+        $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = A.wRegAdminIdx and wIsStatus = "Y") as wRegAdminName';
+        $column .= ' , if(A.wUpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = A.wUpdAdminIdx and wIsStatus = "Y")) as wUpdAdminName';
 
-        return $this->_conn->getFindResult($this->_table . ' as A', $colum, [
+        return $this->_conn->getFindResult($this->_table['admin'] . ' as A', $column, [
             'EQ' => ['A.wAdminIdx' => $admin_idx, 'A.wIsStatus' => 'Y']
         ]);
     }
@@ -106,7 +111,7 @@ class AdminModel extends WB_Model
      */
     public function isDuplicateAdminId($admin_id)
     {
-        $count = $this->_conn->getListResult($this->_table, true, [
+        $count = $this->_conn->getListResult($this->_table['admin'], true, [
             'EQ' => ['wAdminId' => $admin_id]
         ]);
 
@@ -168,7 +173,7 @@ class AdminModel extends WB_Model
      * @param array $data
      * @return bool|string
      */
-    private function _addAdmin($data = [])
+    public function _addAdmin($data = [])
     {
         try {
             // 등록 운영자 식별자
@@ -179,7 +184,7 @@ class AdminModel extends WB_Model
             unset($data['wAdminPasswd']);
 
             $this->_conn->set($data);
-            $this->_conn->set('wAdminPasswd', 'fn_hash_data("' . $admin_passwd . '", 256)', false);
+            $this->_conn->set('wAdminPasswd', 'fn_hash("' . $admin_passwd . '")', false);
 
             // 운영자 승인
             if (isset($data['wIsApproval']) === true && $data['wIsApproval'] == 'Y') {
@@ -188,14 +193,14 @@ class AdminModel extends WB_Model
             }
 
             // 데이터 등록
-            if ($this->_conn->insert($this->_table) === false) {
+            if ($this->_conn->insert($this->_table['admin']) === false) {
                 throw new \Exception('운영자 신청에 실패했습니다.');
             }
 
             if (empty($data['wRegAdminIdx']) === true) {
                 // 운영자 신청일 경우 RegAdminIdx 컬럼을 신청자 등록 후 생성된 식별자로 업데이트
                 $admin_idx = $this->_conn->insert_id();
-                $is_update = $this->_conn->set(['wRegAdminIdx' => $admin_idx, 'wUpdAdminIdx' => $admin_idx])->where('wAdminIdx', $admin_idx)->update($this->_table);
+                $is_update = $this->_conn->set(['wRegAdminIdx' => $admin_idx, 'wUpdAdminIdx' => $admin_idx])->where('wAdminIdx', $admin_idx)->update($this->_table['admin']);
                 if ($is_update === false) {
                     throw new \Exception('운영자 신청정보 수정에 실패했습니다.');
                 }
@@ -265,16 +270,16 @@ class AdminModel extends WB_Model
     {
         try {
             // 기존 운영자 데이터 조회
-            $row = $this->_conn->getFindResult($this->_table, 'ifnull(wApprovalDatm, "") as wApprovalDatm', [
+            $row = $this->_conn->getFindResult($this->_table['admin'], 'ifnull(wApprovalDatm, "") as wApprovalDatm', [
                 'EQ' => ['wAdminIdx' => $admin_idx, 'wIsStatus' => 'Y']
             ]);
-            if (count($row) < 1) {
+            if (empty($row) === true) {
                 throw new \Exception('데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
             }
 
             // 비밀번호
             if (empty($data['wAdminPasswd']) === false) {
-                $this->_conn->set($data)->set('wAdminPasswd', 'fn_hash_data("' . $data['wAdminPasswd'] . '", 256)', false);
+                $this->_conn->set($data)->set('wAdminPasswd', 'fn_hash("' . $data['wAdminPasswd'] . '")', false);
             } else {
                 unset($data['wAdminPasswd']);
                 $this->_conn->set($data);
@@ -298,7 +303,7 @@ class AdminModel extends WB_Model
             $this->_conn->where('wAdminIdx', $admin_idx);
             
             // 데이터 수정
-            if ($this->_conn->update($this->_table) === false) {
+            if ($this->_conn->update($this->_table['admin']) === false) {
                 throw new \Exception('데이터 수정에 실패했습니다.');
             }
         } catch (\Exception $e) {

@@ -50,7 +50,9 @@
                     <th>출판사</th>
                     <th>저자</th>
                     <th>가격</th>
+                    <th>재고</th>
                     <th>판매여부</th>
+                    <th>사용여부</th>
                     <th>등록자</th>
                     <th>등록일</th>
                 </tr>
@@ -103,13 +105,19 @@
                         return html;
                     }},
                     {'data' : 'wPublName'},
-                    {'data' : 'wAuthorNameList', 'render' : function(data, type, row, meta) {
+                    {'data' : 'wAuthorNames', 'render' : function(data, type, row, meta) {
                         return data.replace(/,/g, '<br/>');
                     }},
                     {'data' : 'wOrgPrice', 'render' : function(data, type, row, meta) {
                         return addComma(data) + '원';
                     }},
+                    {'data' : 'wStockCnt', 'render' : function(data, type, row, meta) {
+                        return addComma(data);
+                    }},
                     {'data' : 'wSaleCcdName'},
+                    {'data' : 'wIsUse', 'render' : function(data, type, row, meta) {
+                        return (data == 'Y') ? '사용' : '<span class="red">미사용</span>';
+                    }},
                     {'data' : 'wRegAdminName'},
                     {'data' : 'wRegDatm'}
                 ]
@@ -117,7 +125,7 @@
 
             // 데이터 수정 폼
             $list_table.on('click', '.btn-modify', function() {
-                location.replace('{{ site_url('/bms/book/create') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable));
+                location.href = '{{ site_url('/bms/book/create') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable);
             });
         });
     </script>

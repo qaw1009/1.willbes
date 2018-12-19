@@ -98,8 +98,8 @@
                     <div class="col-md-4 form-inline item">
                         <div class="radio">
                         @foreach($shooting_ccd as $key => $val)
-                            <input type="radio" name="ShootingCcd" class="flat" required="required" title="촬영형태" value="{{ $key }}" @if($data['wShootingCcd'] == $key)checked="checked"@endif>
-                            <span class="inline-block mr-10">{{ $val }}</span>
+                            <input type="radio" id="ShootingCcd{{ $loop->index }}" name="ShootingCcd" class="flat" required="required" title="촬영형태" value="{{ $key }}" @if($data['wShootingCcd'] == $key)checked="checked"@endif>
+                            <label for="ShootingCcd{{ $loop->index }}" class="input-label">{{ $val }}</label>
                         @endforeach
                         </div>
                     </div>
@@ -108,8 +108,8 @@
                     <div class="col-md-4 item">
                         <div class="radio">
                         @foreach($progress_ccd as $key => $val)
-                            <input type="radio" name="ProgressCcd" class="flat" required="required" title="진행상태" value="{{ $key }}" @if($data['wProgressCcd'] == $key)checked="checked"@endif>
-                            <span class="inline-block mr-10">{{ $val }}</span>
+                            <input type="radio" id="ProgressCcd{{ $loop->index }}" name="ProgressCcd" class="flat" required="required" title="진행상태" value="{{ $key }}" @if($data['wProgressCcd'] == $key)checked="checked"@endif>
+                            <label for="ProgressCcd{{ $loop->index }}" class="input-label">{{ $val }}</label>
                         @endforeach
                         </div>
                     </div>
@@ -149,8 +149,8 @@
                     </label>
                     <div class="col-md-4 form-inline item" >
                         <div class="radio">
-                          <input type="radio" name="is_use" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['wIsUse']=='Y')checked="checked"@endif/> 사용
-                            &nbsp; <input type="radio" name="is_use" class="flat" value="N" @if($data['wIsUse']=='N')checked="checked"@endif/> 미사용
+                            <input type="radio" id="is_use_y" name="is_use" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['wIsUse']=='Y')checked="checked"@endif/> <label for="is_use_y" class="input-label">사용</label>
+                            <input type="radio" id="is_use_n" name="is_use" class="flat" value="N" @if($data['wIsUse']=='N')checked="checked"@endif/> <label for="is_use_n" class="input-label">미사용</label>
                         </div>
                     </div>
                     <label class="control-label col-md-2" for="attachfile">첨부자료
@@ -161,8 +161,8 @@
                             @if(empty($data['wAttachFile']) === false)
                             <br>
                             <p class="form-control-static ml-10 mr-10">
-                                [ <a href="{{site_url('/cms/lecture/download/').urlencode($data['wAttachPath'].$data['wAttachFile']) }}" target="_blank">
-                                    {{ $data['wAttachFile'] }}</a> ]
+                                [ <a href="{{site_url('/cms/lecture/download/').urlencode($data['wAttachPath'].$data['wAttachFile']).'/'.urlencode($data['wAttachFileReal']) }}" target="_blank">
+                                    {{ $data['wAttachFileReal'] }}</a> ]
                             </p>
                             <div class="checkbox">
                                 <input type="checkbox" name="attach_delete" value="Y" class="flat"/> <span class="red">삭제</span>
@@ -195,6 +195,7 @@
                 </div>
 
     @if(empty($lecidx) === false)
+                <input type="hidden" name="regdateyear" value="{{date("Y",strtotime($data['wRegDatm']))}}">
                 <div class="form-group">
                     <label class="control-label col-md-2">등록자
                     </label>
@@ -222,7 +223,7 @@
     @endif
 
                 <div class="ln_solid"></div>
-                <div class="form-group text-center">
+                <div class="text-center">
                     <button type="submit" class="btn btn-success mr-10">저장</button>
                     <button class="btn btn-primary" type="button" id="btn_list">목록</button>
                 </div>
@@ -238,6 +239,7 @@
                             <th>영상제목/보조자료</th>
                             <th>강의시간/북페이지</th>
                             <th>영상경로</th>
+                            <th>영상비율</th>
                             <th>촬영일/교수</th>
                             <th>등록자</th>
                             <th>등록일</th>
@@ -247,15 +249,14 @@
                         @foreach($data_unit as $row)
                             <tr>
                                 <td>
-                                    {{ $row['wUnitNum'] }}
+                                    {{ $row['wUnitNum'] }}회차<br>{{ $row['wUnitLectureNum'] }}강
                                 </td>
                                 <td>
                                     {{ $row['wUnitName'] }}
                                     @if(empty($row['wUnitAttachFile']) === false)
                                         <br>
                                         <p class="form-control-static ml-10 mr-10">
-                                            <a href="{{site_url('/cms/lecture/download/').urlencode($data['wAttachPath'].$row['wUnitAttachFile']) }}" target="_blank">
-                                            [ <a href="{{site_url('/cms/lecture/download/').urlencode($data['wAttachPath'].$row['wUnitAttachFile'] ) }}" target="_blank">{{ $row['wUnitAttachFile'] }}</a> ]
+                                            [ <a href="{{site_url('/cms/lecture/download/').urlencode($data['wAttachPath'].$row['wUnitAttachFile']).'/'.urlencode($row['wUnitAttachFileReal'])}}" target="_blank">{{ $row['wUnitAttachFileReal'] }}</a> ]
                                         </p>
                                     @endif
                                 </td>
@@ -267,8 +268,11 @@
                                 <td>
                                     [고화질] {{ $row['wHD'] }}
                                     <br>
-                                    [저화질] {{ $row['wLD'] }}
+                                    [일반화질] {{ $row['wSD'] }}
+                                    <br>
+                                    [와이드] {{ $row['wWD'] }}
                                 </td>
+                                <td>{{$row['wCcdName']}}</td>
                                 <td>
                                     {{ $row['wShootingDate'] }}
                                     <Br>
@@ -325,7 +329,7 @@
 
                 $('.btn-unitregist').setLayer({
                     "url" : "{{ site_url('cms/lecture/createUnitModal/') }}"+ $('#LecIdx').val()
-                    ,width : "1300"
+                    ,width : "1800"
                 });
             });
         });

@@ -2,12 +2,12 @@
 
 @section('content')
     <ul class="nav nav-tabs bar_tabs mb-20" role="tablist">
-        <li role="presentation"><a href="{{ site_url('/sys/site/index/code') }}" class="cs-pointer">사이트 생성관리</a></li>
-        <li role="presentation" class="active"><a href="{{ site_url('/sys/site/index/group') }}"><strong>사이트 그룹 정보관리</strong></a></li>
+        <li role="presentation"><a href="{{ site_url('/sys/site/index/code') }}">사이트 생성관리</a></li>
+        <li role="presentation" class="active"><a href="{{ site_url('/sys/site/index/group') }}" class="cs-pointer"><strong>사이트 그룹 정보관리</strong></a></li>
         <li role="presentation"><a href="{{ site_url('/sys/site/index/category') }}">사이트 카테고리 관리</a></li>
     </ul>
     <h5>- 윌비스 사용자 운영 사이트 그룹 정보를 관리하는 메뉴입니다. (생성한 그룹 정보는 사이트생성 시 연동 처리 됩니다.)</h5>
-    <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
+    <form class="form-horizontal searching" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         <div class="x_panel">
             <div class="x_content">
@@ -36,6 +36,7 @@
                     <th>No</th>
                     <th class="searching">사이트그룹코드</th>
                     <th class="searching">사이트그룹명</th>
+                    <th>설명</th>
                     <th>사용여부</th>
                     <th>등록자</th>
                     <th>등록일</th>
@@ -47,6 +48,7 @@
                         <td>{{ $loop->index }}</td>
                         <td>{{ $row['SiteGroupCode'] }}</td>
                         <td><a href="#" class="btn-modify" data-idx="{{ $row['SiteGroupCode'] }}"><u class="blue">{{ $row['SiteGroupName'] }}</u></a></td>
+                        <td>{{ $row['SiteGroupDesc'] }}</td>
                         <td>@if($row['IsUse'] == 'Y') 사용 @elseif($row['IsUse'] == 'N') <span class="red">미사용</span> @endif</td>
                         <td>{{ $row['RegAdminName'] }}</td>
                         <td>{{ $row['RegDatm'] }}</td>
@@ -74,27 +76,17 @@
                 ]
             });
 
-            // datatable searching
-            var datatableSearching = function() {
-                $datatable
-                    .columns('.searching').flatten().search($search_form.find('input[name="search_value"]').val())
-                    .draw();
-            };
-
-            // 검색
-            $search_form.submit(function(e) {
-                e.preventDefault();
-                datatableSearching();
-            });
-
-            $search_form.find('input[name="search_value"]').on('keyup change', function () {
-                datatableSearching();
-            });
-
             // 데이터 수정 폼
             $list_table.on('click', '.btn-modify', function() {
-                location.replace('{{ site_url('/sys/site/create/group') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable));
+                location.href = '{{ site_url('/sys/site/create/group') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable);
             });
         });
+
+        // datatable searching
+        function datatableSearching() {
+            $datatable
+                .columns('.searching').flatten().search($search_form.find('input[name="search_value"]').val())
+                .draw();
+        }
     </script>
 @stop

@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class LoginLog extends \app\controllers\BaseController
 {
-    protected $models = array('_wbs/sys/code', 'sys/loginLog');
+    protected $models = array('sys/wCode', 'sys/loginLog');
     protected $helpers = array();
 
     public function __construct()
@@ -43,7 +43,7 @@ class LoginLog extends \app\controllers\BaseController
             $list = $this->loginLogModel->listLoginLog(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['L.LogIdx' => 'desc']);
 
             // 사용하는 코드값 조회
-            $codes = $this->codeModel->getCcdInArray(['109', '110', '117']);
+            $codes = $this->wCodeModel->getCcdInArray(['109', '110', '117']);
 
             // 코드값에 해당하는 코드명을 배열 원소로 추가
             $list = array_data_fill($list, [

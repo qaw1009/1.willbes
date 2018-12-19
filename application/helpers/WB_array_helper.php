@@ -3,10 +3,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 if (!function_exists('array_data_fill')) {
     /**
-     * $array 배열에 배열 원소를 채움
-     * @param $array
-     * @param $data
-     * @param $is_self_ref $array 배열의 값을 배열 첨자로 하여 $data 배열의 값을 참조할 경우 true, $data 값을 그대로 채울 경우 false
+     * $array 배열에 $data 배열의 키와 값을 추가
+     * @param array $array [대상 배열]
+     * @param array $data [추가할 배열 원소의 키와 값으로 구성된 배열, ex) k => v, k1 => [k2 => [k3 => v1, k3-2 => v2 ...]]]
+     * @param bool $is_self_ref [true => $data 배열의 k1 키의 값이 배열이고 $array 배열에서 k2 키의 값을 추출하여 그 값과 k3의 배열 키값이 같다면 그 값을 리턴, false => k1 키의 배열 값을 설정]
      * @return array
      */
     function array_data_fill($array, $data, $is_self_ref = false)
@@ -29,12 +29,25 @@ if (!function_exists('array_data_fill')) {
     }
 }
 
+if (!function_exists('array_filter_keys')) {
+    /**
+     * $array 배열에서 키값 배열과 일치하는 것만 필터링하여 리턴
+     * @param array $array [대상 배열]
+     * @param array $keys [대상 배열에서 필터링하고자 하는 키값 배열]
+     * @return array
+     */
+    function array_filter_keys($array, $keys)
+    {
+        return array_intersect_key($array, array_flip($keys));
+    }
+}
+
 if (!function_exists('array_get')) {
     /**
      * dot(.) 표기법으로 중첩된 배열에서 $key에 해당하는 값 리턴
-     * @param $array
-     * @param $key
-     * @param null $default
+     * @param array $array [대상 배열]
+     * @param string $key [dot(.) 표기법으로 설정된 대상 배열 키, ex) a1.a2.a3 = arr[a1][a2][a3]]
+     * @param null|mixed $default [해당하는 배열 키가 없을 경우 기본 값]
      * @return mixed
      */
     function array_get($array, $key, $default = null)
@@ -43,10 +56,8 @@ if (!function_exists('array_get')) {
 
         if (isset($array[$key])) return $array[$key];
 
-        foreach (explode('.', $key) as $segment)
-        {
-            if ( ! is_array($array) || ! array_key_exists($segment, $array))
-            {
+        foreach (explode('.', $key) as $segment) {
+            if (!is_array($array) || !array_key_exists($segment, $array)) {
                 return value($default);
             }
 
@@ -60,8 +71,8 @@ if (!function_exists('array_get')) {
 if (!function_exists('array_has')) {
     /**
      * dot(.) 표기법으로 중첩된 배열에서 $key가 존재하는지 여부 리턴
-     * @param $array
-     * @param $key
+     * @param array $array [대상 배열]
+     * @param string $key [dot(.) 표기법으로 설정된 대상 배열 키, ex) a1.a2.a3 = arr[a1][a2][a3]]
      * @return bool
      */
     function array_has($array, $key)
@@ -70,10 +81,8 @@ if (!function_exists('array_has')) {
 
         if (array_key_exists($key, $array)) return true;
 
-        foreach (explode('.', $key) as $segment)
-        {
-            if ( ! is_array($array) || ! array_key_exists($segment, $array))
-            {
+        foreach (explode('.', $key) as $segment) {
+            if (!is_array($array) || !array_key_exists($segment, $array)) {
                 return false;
             }
 
@@ -86,35 +95,69 @@ if (!function_exists('array_has')) {
 
 if (!function_exists('array_pluck')) {
     /**
-     * 배열의 $value 인자값으로 구성된 배열 리턴, $key 인자값이 있다면 리턴되는 결과 배열의 키값을 배열의 $key에 해당하는 배열 값으로 사용
-     * @param $array
-     * @param $value
-     * @param null $key
+     * $array 배열에서 $value 키에 해당하는 값 추출, $key가 있을 경우 배열 키를 $key에 해당하는 값으로 지정
+     * @param array $array [대상 배열]
+     * @param string $value [리턴되는 배열의 값이 되는 대상 배열의 키]
+     * @param null|string $key [리턴되는 배열의 키가 되는 대상 배열의 키]
      * @return array
      */
     function array_pluck($array, $value, $key = null)
     {
-        /* PHP 기본함수 사용
-        $results = [];
+        return array_column($array, $value, $key);
+    }
+}
+
+if (!function_exists('array_data_pluck')) {
+    /**
+     * $array 배열에서 $value 키에 해당하는 값 추출, $key가 있을 경우 배열 키를 $key에 해당하는 값으로 지정 ($value, $key를 dot(.) 표기법으로 사용)
+     * @param array $array [대상 배열]
+     * @param string|array $value [리턴되는 배열의 값이 되는 대상 배열의 키, 인자가 배열일 경우 구분자(::)로 연결하여 설정]
+     * @param null|string|array $key [리턴되는 배열의 키가 되는 대상 배열의 키, 인자가 배열일 경우 구분자(::)로 연결하여 설정]
+     * @return array
+     */
+    function array_data_pluck($array, $value, $key = null)
+    {
+        $results = array();
+
         foreach ($array as $item) {
-            if (is_null($key) === true) {
-                $results[] = $item[$value];
+            if (is_array($value)) {
+                $itemValue = '';
+                foreach ($value as $v) {
+                    $itemValue .= '::' . array_get($item, $v);
+                }
+                $itemValue = substr($itemValue, 2);
             } else {
-                $results[(string) $item[$key]] = $item[$value];
+                $itemValue = array_get($item, $value);
+            }
+
+            if (is_null($key)) {
+                $results[] = $itemValue;
+            } else {
+                if (is_array($key)) {
+                    $itemKey = '';
+                    foreach ($key as $k) {
+                        $itemKey .= '.' . array_get($item, $k);
+                    }
+                    $itemKey = substr($itemKey, 1);
+                    array_set($results, $itemKey, $itemValue);
+                } else {
+                    $itemKey = array_get($item, $key);
+                    $results[$itemKey] = $itemValue;
+                }
             }
         }
-        return $results;*/
-        return array_column($array, $value, $key);
+
+        return $results;
     }
 }
 
 if (!function_exists('array_set')) {
     /**
      * dot(.) 표기법으로 중첩된 배열에서 값을 설정
-     * @param $array
-     * @param $key
-     * @param $value
-     * @return mixed
+     * @param array $array [대상 배열]
+     * @param string $key [dot(.) 표기법으로 설정된 대상 배열 키, ex) a1.a2.a3 = arr[a1][a2][a3]]
+     * @param mixed $value [설정할 배열 값]
+     * @return array
      */
     function array_set(&$array, $key, $value)
     {
@@ -122,12 +165,10 @@ if (!function_exists('array_set')) {
 
         $keys = explode('.', $key);
 
-        while (count($keys) > 1)
-        {
+        while (count($keys) > 1) {
             $key = array_shift($keys);
 
-            if ( ! isset($array[$key]) || ! is_array($array[$key]))
-            {
+            if (!isset($array[$key]) || !is_array($array[$key])) {
                 $array[$key] = array();
             }
 

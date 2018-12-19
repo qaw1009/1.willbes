@@ -39,12 +39,8 @@
                             <option value="Y">사용</option>
                             <option value="N">미사용</option>
                         </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-5 col-md-offset-7">
-                        <div class="checkbox">
-                            <input type="checkbox" name="search_chk_no_site_campus" class="flat" value="N"/> 사이트/캠퍼스 권한 미부여
+                        <div class="checkbox mt-10">
+                            <input type="checkbox" id="search_chk_no_site_campus" name="search_chk_no_site_campus" class="flat" value="N"/> <label for="search_chk_no_site_campus" class="input-label">사이트/캠퍼스 권한 미부여</label>
                         </div>
                     </div>
                 </div>
@@ -105,7 +101,7 @@
                     {'data' : 'RoleIdx', 'render' : function(data, type, row, meta) {
                         var html = '';
 
-                        html += '<select class="form-control" name="role_idx" data-idx="' + row.wAdminIdx + '">';
+                        html += '<select class="form-control input-sm" name="role_idx" data-idx="' + row.wAdminIdx + '">';
                         html += '<option value="">권한미설정</option>';
                         @foreach($roles as $key => $val)
                             html += '<option value="{{ $key }}"' + ((data === '{{ $key }}') ? ' selected="selected"' : '') + '>{{ $val }}</option>';
@@ -154,7 +150,7 @@
 
             // 데이터 수정 폼
             $list_table.on('click', '.btn-modify', function() {
-                location.replace('{{ site_url('/sys/admin/edit') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable));
+                location.href = '{{ site_url('/sys/admin/edit') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable);
             });
         });
     </script>

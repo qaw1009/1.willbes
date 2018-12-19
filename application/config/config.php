@@ -3,6 +3,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 /*
 |--------------------------------------------------------------------------
+| Base System Domain
+|--------------------------------------------------------------------------
+*/
+$config['base_domain'] = 'willbes.net';
+
+/*
+|--------------------------------------------------------------------------
 | Base Site URL
 |--------------------------------------------------------------------------
 |
@@ -24,7 +31,77 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 //$config['base_url'] = '';
-$config['base_url'] = 'http://' . $_SERVER['HTTP_HOST'];
+$config['base_url'] = '//' . (is_cli() === false ? $_SERVER['HTTP_HOST'] : 'cli' . ENV_DOMAIN . '.' . $config['base_domain']);
+
+/*
+|--------------------------------------------------------------------------
+| APP site config
+|--------------------------------------------------------------------------
+*/
+$config['app_intg_site_code'] = '2000';     // 통합 사이트 코드
+$config['app_pass_site_prefix'] = 'pass';   // 학원 사이트 구분값
+$config['app_mobile_site_prefix'] = 'm';   // 모바일 사이트 구분값
+$config['app_app_site_prefix'] = 'app';     // 앱 사이트 구분값
+
+/*
+|--------------------------------------------------------------------------
+| APP Name mapping (서브 도메인 기준)
+|--------------------------------------------------------------------------
+*/
+$config['app_name_mapping'] = [
+    'www' => 'willbes',
+    'cop' => 'willbes',
+    'gosi' => 'willbes',
+    'ssam' => 'willbes',
+    'tzone' => 'lms'
+];
+
+/*
+|--------------------------------------------------------------------------
+| APP front site except config (서브 도메인 기준)
+|--------------------------------------------------------------------------
+*/
+$config['app_front_site_except'] = [
+    'www' => ['route_add_path' => ''],
+    'cop' => ['route_add_path' => '/site'],
+    'gosi' => ['route_add_path' => '/site'],
+    'ssam' => ['route_add_path' => '/site']
+];
+
+/*
+|--------------------------------------------------------------------------
+| Const SUB_DOMAIN, APP_DEVICE
+|--------------------------------------------------------------------------
+*/
+// http를 제외한 host
+$__http_host = parse_url($config['base_url'], PHP_URL_HOST);
+
+// 서브 도메인 추출
+$__sub_domain = str_replace($config['base_domain'], '', preg_replace('/(^' . $config['app_mobile_site_prefix'] . '\.)?(local\.|dev\.|stage\.)?/i', '', $__http_host));
+$__sub_domain = (empty($__sub_domain) === true) ? 'www' : strtolower(substr($__sub_domain, 0, -1));
+
+// 접속 디바이스 구분 (pc|m|app)
+$__app_device = 'pc';
+if (is_cli() === false) {
+    if (strcasecmp($_SERVER['REQUEST_URI'], '/' . $config['app_mobile_site_prefix']) == 0 || stripos($_SERVER['REQUEST_URI'], '/' . $config['app_mobile_site_prefix'] . '/') === 0) {
+        $__app_device = $config['app_mobile_site_prefix'];
+    } elseif (strcasecmp($_SERVER['REQUEST_URI'], '/' . $config['app_app_site_prefix']) == 0 || stripos($_SERVER['REQUEST_URI'], '/' . $config['app_app_site_prefix'] . '/') === 0) {
+        $__app_device = $config['app_app_site_prefix'];
+    }
+}
+
+defined('SUB_DOMAIN') OR define('SUB_DOMAIN', $__sub_domain);
+defined('APP_DEVICE') OR define('APP_DEVICE', $__app_device);
+
+/*
+|--------------------------------------------------------------------------
+| Const APP_NAME
+|--------------------------------------------------------------------------
+*/
+$__app_name = array_key_exists($__sub_domain, $config['app_name_mapping']) === true ? $config['app_name_mapping'][$__sub_domain] : $__sub_domain;
+
+defined('APP_NAME') OR define('APP_NAME', $__app_name);
+
 /*
 |--------------------------------------------------------------------------
 | Index File
@@ -241,7 +318,7 @@ $config['log_threshold'] = 2;
 |
 */
 //$config['log_path'] = '';
-$config['log_path'] = STORAGEPATH . 'logs/' . SUB_DOMAIN . '/';
+$config['log_path'] = STORAGEPATH . 'logs/' . APP_NAME . '/';
 
 /*
 |--------------------------------------------------------------------------
@@ -405,9 +482,10 @@ $config['sess_save_path'] = 'wb_sessions';
 //$config['sess_save_path'] = 'seed[]=127.0.0.1:7001&seed[]=127.0.0.1:7002&seed[]=127.0.0.1:7003&timeout=3&read_timeout=3&failover=error&persistent=0';    // distribute
 //$config['sess_save_path'] = 'rediscluster';
 //$config['sess_match_ip'] = FALSE;
-$config['sess_match_ip'] = TRUE;
+$config['sess_match_ip'] = FALSE;
 $config['sess_time_to_update'] = 300;
-$config['sess_regenerate_destroy'] = FALSE;
+//$config['sess_regenerate_destroy'] = FALSE;
+$config['sess_regenerate_destroy'] = TRUE;
 
 /*
 |--------------------------------------------------------------------------
@@ -426,7 +504,7 @@ $config['sess_regenerate_destroy'] = FALSE;
 */
 //$config['cookie_prefix']	= '';
 $config['cookie_prefix']	= '_wb_';
-$config['cookie_domain']	= substr($_SERVER['HTTP_HOST'], strpos($_SERVER['HTTP_HOST'], '.'));    //.willbes.net
+$config['cookie_domain']	= '.' . $config['base_domain'];
 $config['cookie_path']		= '/';
 $config['cookie_secure']	= FALSE;
 $config['cookie_httponly'] 	= FALSE;
@@ -472,19 +550,19 @@ $config['global_xss_filtering'] = TRUE;
 | 'csrf_cookie_name' = The cookie name
 | 'csrf_expire' = The number in seconds the token should expire.
 | 'csrf_regenerate' = Regenerate token on every submission
-| 'csrf_exclude_uris' = Array of URIs which ignore CSRF checks
+| 'csrf_exclude_uris' = Array of URIs which ignore CSRF checks (ex. controller/(.*))
 */
 //$config['csrf_protection'] = FALSE;
 //$config['csrf_token_name'] = 'csrf_test_name';
 //$config['csrf_cookie_name'] = 'csrf_cookie_name';
-$config['csrf_protection'] = TRUE;
+$config['csrf_protection'] = (APP_NAME == 'api') ? FALSE : TRUE;
 $config['csrf_token_name'] = '_csrf_token';
 $config['csrf_cookie_name'] = 'csrf_token';
 //$config['csrf_expire'] = 7200;
 //$config['csrf_regenerate'] = TRUE;
-$config['csrf_expire'] = 600;
+$config['csrf_expire'] = 6000;
 $config['csrf_regenerate'] = FALSE;
-$config['csrf_exclude_uris'] = array();
+$config['csrf_exclude_uris'] = array('Auth/[A-Za-z]+', 'player/StarplayerAPI', 'member/mailAuth', 'member/ipin', 'payment/returns', $config['app_pass_site_prefix'] . '/payment/returns', 'deposit/results');
 
 /*
 |--------------------------------------------------------------------------

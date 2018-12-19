@@ -1,7 +1,7 @@
 @extends('lcms.layouts.master')
 @section('content')
     <h5>- 윌비스 사이트 운영을 위한 공통코드를 관리하는 메뉴입니다.</h5>
-    <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
+    <form class="form-horizontal searching" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         <div class="x_panel">
             <div class="x_content">
@@ -37,7 +37,9 @@
                 <tr>
                     <th>No</th>
                     <th class="searching rowspan">그룹유형 [<span class="blue">코드</span>]</th>
-                    <th class="searching">세부항목 [<span class="blue">코드</span>] <button type="button" class="btn btn-xs btn-success ml-10 btn-regist" data-code-type="sub">추가</button></th>
+                    <th class="searching">세부항목명 [<span class="blue">코드</span>] <button type="button" class="btn btn-xs btn-success ml-10 btn-regist" data-code-type="sub">추가</button></th>
+                    <th>세부항목값</th>
+                    <th>세부항목설명</th>
                     <th class="searching_is_use">사용여부</th>
                     <th>등록자</th>
                     <th>등록일</th>
@@ -47,7 +49,7 @@
                 @foreach($data as $row)
                     <tr>
                         <td>{{ $loop->index }}</td>
-                        <td>
+                        <td class="row_td">
                             <input type="radio" name="GroupCcd" value="{{ $row['ParentCcd'] }}"  class="flat"/>
                             <a href="#none" class="btn-modify" data-ccd="{{ $row['ParentCcd'] }}" data-code-type="group" data-group-ccd="0" ><u> {{ $row['ParentName'] }}  [<span class="blue">{{$row['ParentCcd']}}</span>]</u></a>
                         </td>
@@ -55,6 +57,8 @@
                                 <a href="#none" class="btn-modify" data-ccd="{{ $row['Ccd'] }}" data-code-type="sub" data-group-ccd="{{ $row['ParentCcd'] }}"><u>{{ $row['CcdName'] }}  [<span class="blue">{{$row['Ccd']}}</span>]</u></a>
                                 @endif
                         </td>
+                        <td>{{ $row['CcdValue'] }}</td>
+                        <td>{{ $row['CcdDesc'] }}</td>
                         <td>{!! str_replace('미사용','<span class="red">미사용</span>',$row['IsUseView']) !!}<span class="hide">{{ $row['IsUse'] }}</span></td>
                         <td>{{ $row['wAdminName'] }}</td>
                         <td>{{ $row['RegDatm'] }}</td>
@@ -70,11 +74,13 @@
         var $list_table = $('#list_ajax_table');
 
         $(document).ready(function() {
+            //setRowspan('row_td'); //td rowspan
 
             $datatable = $list_table.DataTable({
                 serverSide: false,
                 ajax : false,
-                paging: false,
+                paging: true,
+                pageLength: 50,
                 searching: true,
                 rowsGroup: ['.rowspan'],
                 buttons: [
@@ -82,41 +88,20 @@
                 ]
             });
 
-            // 검색
-            $search_form.submit(function(e) {
-                e.preventDefault();
-                datatableSearching();
-            });
-
-            //event
-            $search_form.find('input[name="search_value"], select[name="search_is_use"]').on('keyup change', function () {
-                datatableSearching();
-            });
-
-            // 검색 실행
-            var datatableSearching = function() {
-                $datatable
-                    .columns('.searching').flatten().search($search_form.find('input[name="search_value"]').val())
-                    .column('.searching_is_use').search($search_form.find('select[name="search_is_use"]').val())
-                    .draw();
-            };
-
-            $('.btn-regist, .btn-modify-parent, .btn-modify').click(function() {
+            $('#list_ajax_table_wrapper').on('click', '.btn-regist, .btn-modify-parent, .btn-modify', function() {
                 var strMakeType = '';
                 var strGroupCcd = '';
                 var strCcd = '';
                 var uri_param = '';
-
-                var is_regist = ($(this).prop('class').indexOf('btn-regist') !== -1) ? true : false;
+                var is_regist = $(this).prop('class').indexOf('btn-regist') !== -1;
 
                 if (is_regist) {    //등록
+                    strMakeType = (typeof $(this).data('code-type') !== 'undefined') ? $(this).data('code-type') : "group";
 
-                    strMakeType = (typeof $(this).data('code-type') != 'undefined') ? $(this).data('code-type') : "group";
-
-                    if(strMakeType == "group") {
+                    if(strMakeType === "group") {
                         strGroupCcd = "0"
                     } else {
-                        if ($list_table.find('input[name="GroupCcd"]:checked').length == 0) {
+                        if ($list_table.find('input[name="GroupCcd"]:checked').length === 0) {
                             alert("그룹유형을 선택해 주세요.");
                             return false;
                         }
@@ -124,7 +109,6 @@
                     }
                     uri_param = strMakeType+"/"+strGroupCcd+"/";
                 }  else {           //수정
-
                     strMakeType = $(this).data('code-type');
                     strGroupCcd = $(this).data('group-ccd');
                     strCcd = $(this).data('ccd');
@@ -138,5 +122,13 @@
                 });
             });
         });
+
+        // datatable searching
+        function datatableSearching() {
+            $datatable
+                .columns('.searching').flatten().search($search_form.find('input[name="search_value"]').val())
+                .column('.searching_is_use').search($search_form.find('select[name="search_is_use"]').val())
+                .draw();
+        }
     </script>
 @stop

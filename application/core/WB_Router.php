@@ -9,39 +9,32 @@ class WB_Router extends CI_Router
     }
 
     /**
-     * 디폴트 컨트롤러 확장 (1 depth의 디렉토리까지 지정 가능하도록 확장)
-     * @return	void
+     * 디폴트 컨트롤러 확장 (서브 디렉토리 내의 컨트롤러 지정 가능하도록 확장)
      */
     protected function _set_default_controller()
     {
-        if (empty($this->default_controller))
-        {
+        if (empty($this->default_controller) === true) {
             show_error('Unable to determine what should be displayed. A default route has not been specified in the routing file.');
         }
 
-        // Is the method being specified?
-        if (sscanf($this->default_controller, '%[^/]/%s', $class, $method) !== 2)
-        {
-            $method = 'index';
-        }
+        $directory = implode('/', explode('/', $this->default_controller, -2));
+        $class_method = trim(str_replace($directory, '', $this->default_controller), '/');
 
-        // This is what I added, checks if the class is a directory
-        if( is_dir(APPPATH.'controllers/'.$class) )
-        {
-            // Set the class as the directory
-            $this->set_directory($class);
-
-            // $method is the class
-            $class = $method;
-
-            // Re check for slash if method has been set
-            if (sscanf($method, '%[^/]/%s', $class, $method) !== 2) {
-                $method = 'index';
+        if (empty($directory) === false) {
+            // 디렉토리가 존재할 경우
+            if(is_dir(APPPATH.'controllers/'.$directory) === true) {
+                // Set the class as the directory
+                $this->set_directory($directory);
             }
         }
 
-        if ( ! file_exists(APPPATH.'controllers/'.$this->directory.ucfirst($class).'.php'))
-        {
+        // Re check for slash if method has been set
+        $method = '';
+        if (sscanf($class_method, '%[^/]/%s', $class, $method) !== 2) {
+            $method = 'index';
+        }
+
+        if (file_exists(APPPATH.'controllers/'.$this->directory.ucfirst($class).'.php') === false) {
             // This will trigger 404 later
             return;
         }

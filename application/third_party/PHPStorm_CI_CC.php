@@ -49,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property CI_DB_utility $dbutil                             Database Utility Class
  ***************** CORE LIBRARIES *****************
  * @property CI_Cache $cache                                CodeIgniter Caching Class
- * @property CI_Session $session                             CodeIgniter Session Class
+ * @property WB_Session $session                           CodeIgniter Session Class
  * @property CI_Calendar $calendar                          This class enables the creation of calendars
  * @property CI_Cart $cart                                      Shopping Cart Class
  * @property CI_Driver_Library $driver                       This class enables you to create "Driver" libraries that add runtime ability to extend the capabilities of a class via additional driver objects
@@ -71,6 +71,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property CI_Xmlrpc $xmlrpc                              XML-RPC request handler class
  * @property CI_Xmlrpcs $xmlrpcs                           XML-RPC server class
  * @property CI_Zip $zip                                        Zip Compression Class
+ * @property Excel $excel                                  Loads framework components.
+ * @property Jwt $jwt                                      Loads Libraries JWT
  ***************** DEPRECATED LIBRARIES *****************
  * @property CI_Jquery $jquery                              Jquery Class
  * @property CI_Encrypt $encrypt                          Provides two-way keyed encoding using Mcrypt
@@ -81,6 +83,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property FirePHP $firephp                                FirePHP Class
  * @property Curl $curl                                         Curl Class
  * @property Format $format                                 Format Class
+ * @property RestClient $restclient                         REST Client Class
+ * @property Caching $caching                              Application Caching Driver Class
+ * @property Pg $pg                                            Pg Driver Class
  ***************** MY MODELS *****************
  * @property SampleModel $sampleModel                       Sample Model Class
  ***************** WBS ***********************
@@ -99,10 +104,105 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property AuthorModel $authorModel                         Author Model Class
  * @property BookModel $bookModel                              Book Model Class
  ***************** LMS ***********************
- * @property SiteModel $siteModel                                 Site Model Class
- * @property SiteGroupModel $siteGroupModel                  Site Group Model Class
- * @property CategoryModel $categoryModel                   Category Model Class
- * @property BoardMasterModel $boardMasterModel          BoardMaster Model Class
+ * @property WCodeModel $wCodeModel                                             WBS Code Model Class
+ * @property SearchWProfessorModel $searchWProfessorModel               Search WBS Professor Model Class
+ * @property SearchWBookModel $searchWBookModel                           Search WBS Book Model Class
+ * @property SearchMemberModel $searchMemberModel                        Search Member Model Class
+ * @property SiteModel $siteModel                                                     Site Model Class
+ * @property SiteGroupModel $siteGroupModel                                      Site Group Model Class
+ * @property SiteMenuModel $siteMenuModel                                       Site Menu Model Class
+ * @property CategoryModel $categoryModel                                       Category Model Class
+ * @property CourseModel $courseModel                                             Product Course Model Class
+ * @property SubjectModel $subjectModel                                           Product Subject Model Class
+ * @property SortMappingModel $sortMappingModel                               Product Sort Mapping Model Class
+ * @property BoardMasterModel $boardMasterModel                               BoardMaster Model Class
+ * @property BoardModel $boardModel                                                Board Model Class
+ * @property BoardAssignmentModel $boardAssignmentModel                            Board For Assignment Model Class
+ * @property BoardTpassModel $boardTpassModel                                      Board Tpass For Member Model Class
+ * @property WCpModel $wCpModel                                                    WCp Model Class
+ * @property SearchWMasterLectureModel $searchWMasterLectureModel  Search MasterLecture Model Class
+ * @property SmsModel $smsModel                                                     Search Sms Model Class
+ * @property MessageModel $messageModel                                         Search Message Model Class
+ * @property MailModel $mailModel                                                      Search Mail Model Class
+ * @property FreebieModel $freebieModel                                             Freebie Model Class
+ * @property ManageMemberModel $manageMemberModel                       Manage Member Model Class
+ * @property CouponRegistModel $couponRegistModel                            Coupon Regist Model Class
+ * @property CouponIssueModel $couponIssueModel                              Coupon Issue Model Class
+ * @property CouponPinModel $couponPinModel                                     Coupon Pin Model Class
+ * @property PointModel $pointModel                                                   Point Model Class
+ * @property PackageUserModel $packageUserModel                               Lecture user package Model Class
+ * @property PackageAdminModel $packageAdminModel                           Lecture admin package Model Class
+ * @property PackagePeriodModel $packagePeriodModel                          Lecture period package Model Class
+ * @property LectureFreeModel $lectureFreeModel                                 Lecture free Model Class
+ * @property OffLectureModel $offLectureModel                                     Off Lecture Model Class
+ * @property OffPackageAdminModel $offPackageAdminModel                   Off admin package Model Class
+ * @property BeforeLectureModel $beforeLectureModel                            BeforeLecture Model Model Class
+ * @property VideoManagerModel $videoManagerModel                           Live Video Manager Model Class
+ * @property ClassRoomModel $classRoomModel                                    ClassRoom Model Class
+ * @property ConsultModel $consultModel                                            Consult Model Class
+ * @property LandingPageModel $landingPageModel                                landingPage Model Class
+ * @property BannerRegistModel $bannerRegistModel                              bannerRegist Model Class
+ * @property BannerDispModel $bannerDispModel                                   bannerDisp Model Class
+ * @property PopupModel $popupModel                                                popup Model Class
+ * @property EventLectureModel $eventLectureModel                             EventLecture Model Class
+ * @property TermsModel $termsModel                                                Terms Model Class
+ * @property DDayModel $dDayModel                                                  d-day Model Class
+ * @property OnAirModel $onAirModel                                                  OnAir Model Class
+ * @property SearchaAnalysisModel $searchaAnalysisModel                     SearchaAnalysis Model Class
+ * @property BtobModel $btobModel                                                    BtoB Model Class
+ * @property DeliveryPriceModel $deliveryPriceModel                               Delivery Price Product Model Class
+ * @property ExtendNRetakeLectureModel $extendNRetakeLectureModel    Extend and Retake Product Model Class
+ * @property BaseReadingRoomModel $baseReadingRoomModel                 BaseReadingRoom Model Class
+ * @property ReadingRoomModel $readingRoomModel                              ReadingRoom Model Class
+ * @property CertModel $certModel                                                     Cert Model Class
+ * @property CertApplyModel $certApplyModel                                       Cert Apply Model Class
+ * @property OrderModel $orderModel                                                  Order Model Class
+ * @property OrderListModel $orderListModel                                         Order List Model Class
+ * @property OrderStatsModel $orderStatsModel                                    Order Statistics Model Class
+ * @property OrderMemoModel $orderMemoModel                                   Order Memo Model Class
+ * @property CartModel $cartModel                                                     Cart Model Class
+ * @property DeliveryInfoModel $deliveryInfoModel                                 Delivery Info Model Class
+ * @property SalesProductModel $salesProductModel                              Sales Product Model Class
+ * @property TmModel $tmModel                                                         Tm Model Class
+ * @property StudentModel $studentModel                                           Student Model Class
+
+ ***************** MockTest *********************
+ * @property MockCommonModel $mockCommonModel                              MockTest MockCommon Model Class
+ * @property BaseCodeModel $baseCodeModel                                        MockTest BaseCod Model Class
+ * @property ApplyExamModel $applyExamModel                                      MockTest ApplyExam Model Class
+ * @property ApplyUserModel $applyUserModel                                        MockTest ApplyUser Model Class
+ * @property BaseRangeModel $baseRangeModel                                        MockTest BaseRange Model Class
+ * @property RegExamModel $regExamModel                                        MockTest RegExam Model Class
+ * @property RegGoodsModel $regGoodsModel                                        MockTest RegGoods Model Class
+ * @property RegGroupModel $regGroupModel                                       MockTest RegGroup Model Class
+ * @property StatsExamModel $statsExamModel                                        MockTest StatsExam Model Class
+ *
+ ***************** FRONT ***********************
+ * @property BaseProductFModel $baseProductFModel                            Product Base Model Class
+ * @property ProfessorFModel $professorFModel                                    Professor Model Class
+ * @property ProductFModel $productFModel                                        Product Main Model Class
+ * @property LectureFModel $lectureFModel                                         Lecture Product Model Class
+ * @property PackageFModel $packageFModel                                      Package Product Model Class
+ * @property CartFModel $cartFModel                                                 Cart Model Class
+ * @property OrderFModel $orderFModel                                              Order Model Class
+ * @property OrderListFModel $orderListFModel                                     Order List Model Class
+ * @property MyDeliveryAddressFModel $myDeliveryAddressFModel           My Delivery Address Model Class
+ * @property CouponFModel $couponFModel                                         Coupon Model Class
+ * @property PointFModel $pointFModel                                               Point Model Class
+ * @property MemberFModel $memberFModel                                        Member Model Class
+ * @property BannerFModel $bannerFModel                                          Banner Model Class
+ * @property PlayerFModel $playerFModel                                            Player Model Class
+ * @property BaseSupportFModel $baseSupportFModel                           BaseSupport Model Class
+ * @property SupportBoardFModel $supportBoardFModel                         SupportBoard Model Class
+ * @property SupportBoardTwoWayFModel $supportBoardTwoWayFModel   SupportBoardTwoWayF Model Class
+ * @property SiteFModel $siteFModel                                                   Site Model Class
+ * @property CategoryFModel $categoryFModel                                     Category Model Class
+ * @property AccessFModel $accessFModel                                          Access Model Class
+ * @property DownloadFModel $downloadFModel                                    Download Model Class
+ * @property ClassroomFModel $classroomFModel                                   Classroom Model Class
+ * @property MessageFModel $messageFModel                                       Message Model Class
+ * @property CertApplyFModel $certApplyFModel                                    Cert Apply Model Class
+ * @property EventFModel $eventFModel                                            Event Model Class
  */
 class PHPStorm_CI_CC
 {

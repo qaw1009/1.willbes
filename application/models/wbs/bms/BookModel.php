@@ -3,7 +3,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class BookModel extends WB_Model
 {
-    private $_table = 'wbs_bms_book';
+    private $_table = [
+        'book' => 'wbs_bms_book',
+        'book_r_author' => 'wbs_bms_book_r_author',
+        'publisher' => 'wbs_bms_publisher',
+        'author' => 'wbs_bms_author',
+        'admin' => 'wbs_sys_admin'
+    ];
+
     // 교재 원본 이미지 후첨자
     public $_img_postfix = '_og';
     // 교재 썸네일 이미지 후첨자
@@ -36,42 +43,41 @@ class BookModel extends WB_Model
     public function listBook($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         if ($is_count === true) {
-            $colum = 'count(*) AS numrows';
+            $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $colum = '*';
+            $column = '*';
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
 
-        $in_colum = '
-                B.wBookIdx, B.wPublIdx, B.wBookName, B.wAttachImgPath, B.wAttachImgName, B.wOrgPrice, B.wSaleCcd, B.wIsUse, B.wRegDatm, B.wRegAdminIdx
-                    , P.wPublName, A.wAdminName as wRegAdminName
-                    , (
-                        select GROUP_CONCAT(A.wAuthorName separator ", ")
-                        from wbs_bms_author as A inner join wbs_bms_book_r_author as BA
-                            on A.wAuthorIdx = BA.wAuthorIdx
-                        where A.wIsUse = "Y" and A.wIsStatus = "Y"
-                            and BA.wIsStatus = "Y" and BA.wBookIdx = B.wBookIdx
-                        group by BA.wBookIdx
-                    ) as wAuthorNameList            
-         ';
+        $in_column = 'B.wBookIdx, B.wPublIdx, B.wBookName, B.wAttachImgPath, B.wAttachImgName, B.wOrgPrice, B.wStockCnt, B.wSaleCcd, B.wIsUse, B.wRegDatm, B.wRegAdminIdx
+            , ifnull(A.wAuthorNames, "") as wAuthorNames, P.wPublName, A.wAdminName as wRegAdminName';
 
         $from = '
-            from ' . $this->_table . ' as B 
-                left join wbs_bms_publisher as P
-                    on B.wPublIdx = P.wPublIdx and P.wIsUse = "Y" and P.wIsStatus = "Y"
-                left join wbs_sys_admin as A 
-                    on B.wRegAdminIdx = A.wAdminIdx
-            where B.wIsStatus = "Y" 
-        ';
+            from ' . $this->_table['book'] . ' as B 
+                left join (
+                    select GROUP_CONCAT(A.wAuthorName separator ", ") as wAuthorNames, BA.wBookIdx
+                    from ' . $this->_table['author'] . ' as A 
+                        inner join ' . $this->_table['book_r_author'] . ' as BA
+                            on A.wAuthorIdx = BA.wAuthorIdx
+                    where A.wIsStatus = "Y"
+                        and BA.wIsStatus = "Y"
+                    group by BA.wBookIdx                    
+                ) as A
+                    on B.wBookIdx = A.wBookIdx
+                left join ' . $this->_table['publisher'] . ' as P
+                    on B.wPublIdx = P.wPublIdx and P.wIsStatus = "Y"
+                left join ' . $this->_table['admin'] . ' as A 
+                    on B.wRegAdminIdx = A.wAdminIdx and A.wIsStatus = "Y"
+            where B.wIsStatus = "Y"';
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
 
         // 쿼리 실행
-        $query = $this->_conn->query('select ' . $colum . ' from (select ' . $in_colum . $from . ') U ' . $where . $order_by_offset_limit);
+        $query = $this->_conn->query('select ' . $column . ' from (select ' . $in_column . $from . ') U ' . $where . $order_by_offset_limit);
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
@@ -84,31 +90,32 @@ class BookModel extends WB_Model
     public function listBookAuthor($book_idx = 0)
     {
         $book_idx = (is_null($book_idx) === true) ? 0 : $book_idx;
-        $colum = 'A.wAuthorIdx, A.wAuthorName, ifnull(BA.wAuthorIdx, 0) as wBAuthroIdx';
+        $column = 'A.wAuthorIdx, A.wAuthorName, ifnull(BA.wAuthorIdx, 0) as wBAuthroIdx';
         $from = '
-            from wbs_bms_author as A left join wbs_bms_book_r_author as BA
-                on A.wAuthorIdx = BA.wAuthorIdx and BA.wIsStatus = "Y" and BA.wBookIdx = ?	
-            where A.wIsStatus = "Y" and A.wIsUse = "Y"
+            from ' . $this->_table['author'] . ' as A 
+                left join ' . $this->_table['book_r_author'] . ' as BA
+                    on A.wAuthorIdx = BA.wAuthorIdx and BA.wIsStatus = "Y" and BA.wBookIdx = ?	
+            where A.wIsUse = "Y" and A.wIsStatus = "Y"
         ';
-        $order_by_offset_limit = ' order by A.wAuthorName asc';
+        $order_by_offset_limit = ' order by A.wAuthorName asc, BA.wBaIdx asc';
 
         // 쿼리 실행
-        $query = $this->_conn->query('select ' . $colum . $from . $order_by_offset_limit, [$book_idx]);
+        $query = $this->_conn->query('select ' . $column . $from . $order_by_offset_limit, [$book_idx]);
 
         return $query->result_array();
     }
 
     /**
      * 교재 데이터 조회
-     * @param string $colum
+     * @param string $column
      * @param array $arr_condition
      * @return array
      */
-    public function findBook($colum = '*', $arr_condition = [])
+    public function findBook($column = '*', $arr_condition = [])
     {
         $arr_condition['EQ']['wIsStatus'] = 'Y';
 
-        return $this->_conn->getFindResult($this->_table, $colum, $arr_condition);
+        return $this->_conn->getFindResult($this->_table['book'], $column, $arr_condition);
     }
 
     /**
@@ -118,12 +125,12 @@ class BookModel extends WB_Model
      */
     public function findBookForModify($book_idx)
     {
-        $colum = 'B.wBookIdx, B.wBookName, B.wPublIdx, B.wPublDate, B.wIsbn, B.wPageCnt, B.wEditionCcd, B.wEditionCnt, B.wPrintCnt, B.wEditionSize, B.wOrgPrice, B.wSaleCcd, B.wKeyword';
-        $colum .= ' , B.wBookDesc, B.wAuthorDesc, B.wTableDesc, B.wAttachImgPath, B.wAttachImgName, B.wIsUse, B.wRegDatm, B.wRegAdminIdx, B.wUpdDatm, B.wUpdAdminIdx';
-        $colum .= ' , (select wAdminName from wbs_sys_admin where wAdminIdx = B.wRegAdminIdx) as wRegAdminName';
-        $colum .= ' , if(B.wUpdAdminIdx is null, "", (select wAdminName from wbs_sys_admin where wAdminIdx = B.wUpdAdminIdx)) as wUpdAdminName';
+        $column = 'B.wBookIdx, B.wBookName, B.wPublIdx, B.wPublDate, B.wIsbn, B.wPageCnt, B.wEditionCcd, B.wEditionCnt, B.wPrintCnt, B.wEditionSize, B.wOrgPrice, B.wStockCnt, B.wSaleCcd, B.wKeyword';
+        $column .= ' , B.wBookDesc, B.wAuthorDesc, B.wTableDesc, B.wAttachImgPath, B.wAttachImgName, B.wIsUse, B.wRegDatm, B.wRegAdminIdx, B.wUpdDatm, B.wUpdAdminIdx';
+        $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = B.wRegAdminIdx and wIsStatus = "Y") as wRegAdminName';
+        $column .= ' , if(B.wUpdAdminIdx is null, "", (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = B.wUpdAdminIdx and wIsStatus = "Y")) as wUpdAdminName';
 
-        return $this->_conn->getFindResult($this->_table . ' as B', $colum, [
+        return $this->_conn->getFindResult($this->_table['book'] . ' as B', $column, [
             'EQ' => ['B.wBookIdx' => $book_idx, 'B.wIsStatus' => 'Y']
         ]);
     }
@@ -149,16 +156,18 @@ class BookModel extends WB_Model
                 'wPrintCnt' => element('print_cnt', $input),
                 'wEditionSize' => element('edition_size', $input),
                 'wOrgPrice' => element('org_price', $input),
+                'wStockCnt' => element('stock_cnt', $input),
                 'wSaleCcd' => element('sale_ccd', $input),
                 'wKeyword' => element('keyword', $input),
                 'wBookDesc' => element('book_desc', $input),
                 'wAuthorDesc' => element('author_desc', $input),
                 'wTableDesc' => element('table_desc', $input),
+                'wIsUse' => element('is_use', $input),
                 'wRegAdminIdx' => $this->session->userdata('admin_idx'),
             ];
 
             // 데이터 등록
-            if ($this->_conn->set($data)->insert($this->_table) === false) {
+            if ($this->_conn->set($data)->insert($this->_table['book']) === false) {
                 throw new \Exception('교재 등록에 실패했습니다.');
             }
 
@@ -173,7 +182,7 @@ class BookModel extends WB_Model
             // 첨부 이미지 업로드
             $data = [];
             $this->load->library('upload');
-            $upload_sub_dir = SUB_DOMAIN . '/book/' . $book_idx;
+            $upload_sub_dir = config_item('upload_prefix_dir') . '/book/' . date('Y') . '/' . $book_idx;
 
             $uploaded = $this->upload->uploadFile('img', ['attach_img'], ['book_' . $book_idx . $this->_img_postfix], $upload_sub_dir, 'allowed_types:jpg');
             if (is_array($uploaded) === false) {
@@ -193,7 +202,7 @@ class BookModel extends WB_Model
                     throw new \Exception($is_thumb);
                 }
 
-                if ($this->_conn->set($data)->where('wBookIdx', $book_idx)->update($this->_table) === false) {
+                if ($this->_conn->set($data)->where('wBookIdx', $book_idx)->update($this->_table['book']) === false) {
                     throw new \Exception('교재 이미지 등록에 실패했습니다.');
                 }
             }
@@ -221,12 +230,12 @@ class BookModel extends WB_Model
 
             // 기존 교재 기본정보 조회
             $row = $this->findBookForModify($book_idx);
-            if (count($row) < 1) {
+            if (empty($row) === true) {
                 throw new \Exception('데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
             }
 
             // 백업 데이터 등록
-            $this->addBakData($this->_table, ['wBookIdx' => $book_idx]);
+            $this->addBakData($this->_table['book'], ['wBookIdx' => $book_idx]);
 
             $data = [
                 'wBookName' => element('book_name', $input),
@@ -239,15 +248,17 @@ class BookModel extends WB_Model
                 'wPrintCnt' => element('print_cnt', $input),
                 'wEditionSize' => element('edition_size', $input),
                 'wOrgPrice' => element('org_price', $input),
+                'wStockCnt' => element('stock_cnt', $input),
                 'wSaleCcd' => element('sale_ccd', $input),
                 'wKeyword' => element('keyword', $input),
                 'wBookDesc' => element('book_desc', $input),
                 'wAuthorDesc' => element('author_desc', $input),
                 'wTableDesc' => element('table_desc', $input),
+                'wIsUse' => element('is_use', $input),
                 'wUpdAdminIdx' => $this->session->userdata('admin_idx'),
             ];
 
-            if ($this->_conn->set($data)->where('wBookIdx', $book_idx)->update($this->_table) === false) {
+            if ($this->_conn->set($data)->where('wBookIdx', $book_idx)->update($this->_table['book']) === false) {
                 throw new \Exception('교재 기본정보 수정에 실패했습니다.');
             }
 
@@ -256,27 +267,23 @@ class BookModel extends WB_Model
                 throw new \Exception('저자 등록에 실패했습니다.');
             }
 
-            // 첨부 이미지 삭제
+            // 파일 업로드
             $data = [];
             $this->load->library('upload');
-            $upload_sub_dir = SUB_DOMAIN . '/book/' . $book_idx;
+            $this->load->library('image_lib');
+            $upload_sub_dir = config_item('upload_prefix_dir') . '/book/' . substr($row['wRegDatm'], 0, 4) . '/' . $book_idx;
+            $bak_uploaded_files = [];
 
+            // 첨부 이미지 삭제
             if (element('attach_img_delete', $input) == 'Y') {
-                $attach_img_realpath =  $this->upload->upload_path . $upload_sub_dir . '/';
+                $bak_uploaded_files = array_merge([$row['wAttachImgPath'] . $row['wAttachImgName']],
+                    $this->image_lib->getThumbImgNames($row['wAttachImgPath'] . $row['wAttachImgName'], $this->_thumb_postfixs));
 
-                if (is_file($attach_img_realpath . $row['wAttachImgName']) === true) {
-                    $this->load->helper('file');
-
-                    if (delete_files($attach_img_realpath, true) === false) {
-                        throw new \Exception('교재 이미지 삭제에 실패했습니다.');
-                    }
-
-                    $data['AttachImgName'] = '';
-                }
+                $data['wAttachImgName'] = '';
             }
 
             // 첨부 이미지 업로드
-            $uploaded = $this->upload->uploadFile('img', ['attach_img'], ['book_' . $book_idx . $this->_img_postfix], $upload_sub_dir, 'allowed_types:jpg');
+            $uploaded = $this->upload->uploadFile('img', ['attach_img'], ['book_' . $book_idx . $this->_img_postfix . '_' . time()], $upload_sub_dir, 'allowed_types:gif|jpg|jpeg|png,overwrite:false');
             if (is_array($uploaded) === false) {
                 throw new \Exception($uploaded);
             }
@@ -286,16 +293,25 @@ class BookModel extends WB_Model
                 $data['wAttachImgPath'] = $this->upload->_upload_url . $upload_sub_dir . '/';
 
                 // 썸네일 생성
-                $this->load->library('image_lib');
                 $new_imgs = $this->image_lib->getThumbImgNames($uploaded[0]['file_name'], $this->_thumb_postfixs);
                 $is_thumb = $this->image_lib->createThumbImgs($uploaded[0]['full_path'], $new_imgs, array_values($this->_thumb_radio));
                 if ($is_thumb === false) {
                     throw new \Exception($is_thumb);
                 }
+
+                // 기존 업로드된 첨부 이미지 정보
+                $bak_uploaded_files = array_merge([$row['wAttachImgPath'] . $row['wAttachImgName']],
+                    $this->image_lib->getThumbImgNames($row['wAttachImgPath'] . $row['wAttachImgName'], $this->_thumb_postfixs));
+            }
+
+            // 수정, 삭제된 첨부 이미지 백업
+            $is_bak_uploaded_file = $this->upload->bakUploadedFile(array_unique($bak_uploaded_files), true);
+            if ($is_bak_uploaded_file !== true) {
+                throw new \Exception($is_bak_uploaded_file);
             }
 
             if (count($data) > 0) {
-                if ($this->_conn->set($data)->where('wBookIdx', $book_idx)->update($this->_table) === false) {
+                if ($this->_conn->set($data)->where('wBookIdx', $book_idx)->update($this->_table['book']) === false) {
                     throw new \Exception('교재 이미지 수정에 실패했습니다.');
                 }
             }
@@ -318,7 +334,7 @@ class BookModel extends WB_Model
     public function replaceBookAuthor($arr_author_idx = [], $book_idx)
     {
         try {
-            $_table = 'wbs_bms_book_r_author';
+            $_table = $this->_table['book_r_author'];
             $arr_author_idx = (is_null($arr_author_idx) === true) ? [] : array_values(array_unique($arr_author_idx));
             $admin_idx = $this->session->userdata('admin_idx');
 

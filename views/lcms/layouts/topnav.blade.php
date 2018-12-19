@@ -3,20 +3,25 @@
         <div class="col-md-12 mt-10">
             <div class="col-md-4 logo">
                 <img src="/public/img/logo.gif" class="ml-15 mr-20"/>
-                <span class="blue valign-middle">{{ $__cfg['site_name'] }}</span>
+                <span class="blue valign-middle">{{ $__cfg['site_title'] }}</span>
             </div>
-            <div class="col-md-5">
-                <ul class="nav nav-tabs bar_tabs">
-                    <li role="presentation" class="@if(SUB_DOMAIN == 'wbs') active @endif"><a href="{{ config_get('wbs.base_url') . config_get('wbs.home_url') }}" class="">WBS</a></li>
-                    <li role="presentation" class="@if(SUB_DOMAIN == 'lms') active @endif"><a href="{{ config_get('lms.base_url') . config_get('lms.home_url') }}" class="">LMS</a></li>
-                </ul>
-            </div>
+            @if(SUB_DOMAIN != 'tzone')
+                <div class="col-md-5">
+                    <ul class="nav nav-tabs bar_tabs">
+                        <li role="presentation" class="@if(SUB_DOMAIN == 'wbs') active active-wbs @endif"><a href="{{ app_url('/', 'wbs') }}" class="">WBS</a></li>
+                        <li role="presentation" class="@if(SUB_DOMAIN == 'lms') active active-lms @endif"><a href="{{ app_url('/', 'lms') }}" class="">LMS</a></li>
+                    </ul>
+                </div>
+            @else
+                <div class="col-md-5">
+                </div>
+            @endif
             <div class="col-md-3 nav_login">
                 <div class="pull-right">
                     <div class="pull-left mr-20 mt-5">
                         {{ date('Y.m.d') }}
                         <span class="block ml-5 mr-5">|</span>
-                        <a href="#" class="btn-admin-modify">{{ sess_data('admin_name') }} <span class="blue">[{{ $__roles['RoleName'] }}]</span></a>
+                        <a href="#" class="btn-admin-modify">{{ sess_data('admin_name') }} <span class="blue">[{{ $__auth['Role']['RoleName'] }}]</span></a>
                     </div>
                     <div class="pull-left mr-15 mt-5">
                         <ul class="nav nav-pills" role="tablist">
@@ -72,7 +77,7 @@
                 <li role="presentation"><a href="#">TMS</a></li>
             </ul>--}}
             <ul class="nav nav-tabs bar_tabs">
-                <li role="presentation" class="active">
+                <li role="presentation" class="active @if(SUB_DOMAIN == 'wbs') active-wbs @else(SUB_DOMAIN == 'lms') active-lms @endif">
                     <a href="{{ site_url(get_var(element('home_url', $__settings), $__cfg['home_url'])) }}" class="cs-pointer">메인</a>
                 </li>
             @if(isset($__menu['GNB']) === true)

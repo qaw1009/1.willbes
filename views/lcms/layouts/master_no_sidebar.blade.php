@@ -1,3 +1,4 @@
+{{-- 사이드바(LNB)가 없는 레이아웃 --}}
 @include('lcms.layouts.header')
 
 <body class="no_sidebar top_nav_fixed footer_fixed">
@@ -28,11 +29,7 @@
         <!-- /footer content -->
     </div>
 </div>
-<!-- Main Scripts -->
-<!-- multifield -->
-<script src="/public/vendor/validator/multifield.js"></script>
-<script src="/public/js/util.js"></script>
-<script src="/public/js/validation_util.js"></script>
-<script src="/public/js/lcms/app.js"></script>
+{{-- Main Scripts --}}
+@include('lcms.layouts.footer_script')
 </body>
 </html>

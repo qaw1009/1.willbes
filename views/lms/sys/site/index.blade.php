@@ -7,7 +7,7 @@
         <li role="presentation"><a href="{{ site_url('/sys/site/index/category') }}">사이트 카테고리 관리</a></li>
     </ul>
     <h5>- 윌비스 사용자 운영 사이트 기본 정보를 관리하는 메뉴입니다.</h5>
-    <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
+    <form class="form-horizontal searching" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         <div class="x_panel">
             <div class="x_content">
@@ -49,9 +49,10 @@
                     <th>No</th>
                     <th class="searching">사이트 코드</th>
                     <th class="searching">사이트명</th>
-                    <th>사이트 그룹정보</th>
-                    <th>대표 도메인</th>
                     <th class="searching_is_campus">캠퍼스 구분</th>
+                    <th>대표 도메인</th>
+                    <th>사이트 그룹정보</th>
+                    <th>PG사</th>
                     <th class="searching_is_use">사용여부</th>
                     <th>등록자</th>
                     <th>등록일</th>
@@ -63,9 +64,10 @@
                         <td>{{ $loop->index }}</td>
                         <td>{{ $row['SiteCode'] }}</td>
                         <td><a href="#" class="btn-modify" data-idx="{{ $row['SiteCode'] }}"><u class="blue">{{ $row['SiteName'] }}</u></a></td>
-                        <td>{{ $row['SiteGroupName'] }}</td>
-                        <td>{{ $row['SiteUrl'] }}</td>
                         <td>@if($row['IsCampus'] == 'Y') 있음 @elseif($row['IsCampus'] == 'N') <span class="red">없음</span> @endif<span class="hide">{{ $row['IsCampus'] }}</span></td>
+                        <td>{{ $row['SiteUrl'] }}</td>
+                        <td>{{ $row['SiteGroupName'] }}</td>
+                        <td>{{ $row['PgName'] }}</td>
                         <td>@if($row['IsUse'] == 'Y') 사용 @elseif($row['IsUse'] == 'N') <span class="red">미사용</span> @endif<span class="hide">{{ $row['IsUse'] }}</span></td>
                         <td>{{ $row['RegAdminName'] }}</td>
                         <td>{{ $row['RegDatm'] }}</td>
@@ -93,29 +95,19 @@
                 ]
             });
 
-            // datatable searching
-            var datatableSearching = function() {
-                $datatable
-                    .columns('.searching').flatten().search($search_form.find('input[name="search_value"]').val())
-                    .column('.searching_is_campus').search($search_form.find('select[name="search_is_campus"]').val())
-                    .column('.searching_is_use').search($search_form.find('select[name="search_is_use"]').val())
-                    .draw();
-            };
-
-            // 검색
-            $search_form.submit(function(e) {
-                e.preventDefault();
-                datatableSearching();
-            });
-
-            $search_form.find('input[name="search_value"], select[name="search_is_campus"], select[name="search_is_use"]').on('keyup change', function () {
-                datatableSearching();
-            });
-
             // 데이터 수정 폼
             $list_table.on('click', '.btn-modify', function() {
-                location.replace('{{ site_url('/sys/site/create') }}/code/' + $(this).data('idx') + dtParamsToQueryString($datatable));
+                location.href = '{{ site_url('/sys/site/create') }}/code/' + $(this).data('idx') + dtParamsToQueryString($datatable);
             });
         });
+
+        // datatable searching
+        function datatableSearching() {
+            $datatable
+                .columns('.searching').flatten().search($search_form.find('input[name="search_value"]').val())
+                .column('.searching_is_campus').search($search_form.find('select[name="search_is_campus"]').val())
+                .column('.searching_is_use').search($search_form.find('select[name="search_is_use"]').val())
+                .draw();
+        }
     </script>
 @stop

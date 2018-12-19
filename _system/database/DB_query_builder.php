@@ -52,8 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 abstract class CI_DB_query_builder extends CI_DB_driver {
 
     /**
-     * TODO : ci upgrade할 경우 반영 필요
-     * query builder core extends
+     * TODO : system core modified (query builder)
      */
     use \app\libraries\QueryBuilder;
 

@@ -10,7 +10,7 @@ class SiteGroup
         $this->_CI =& get_instance();
 
         // load model
-        $this->_CI->load->_loadModels(['sys/siteGroup']);
+        $this->_CI->load->loadModels(['sys/siteGroup']);
     }
 
     /**
@@ -19,6 +19,12 @@ class SiteGroup
     public function index()
     {
         $list = $this->_CI->siteGroupModel->listSiteGroup([], null, null, ['S.SiteGroupCode' => 'asc']);
+
+        // 사이트 그룹 설명 문자열 자르기 데이터 추가
+        $list = array_map(function ($row) {
+            $row['SiteGroupShortDesc'] = ellipsize(str_replace(PHP_EOL, '', $row['SiteGroupDesc']), 30);
+            return $row;
+        }, $list);
 
         $this->_CI->load->view('sys/site_group/index', [
             'data' => $list
@@ -40,7 +46,7 @@ class SiteGroup
             $idx = $params[1];
             $data = $this->_CI->siteGroupModel->findSiteGroupForModify($idx);
 
-            if (count($data) < 1) {
+            if (empty($data) === true) {
                 show_error('데이터 조회에 실패했습니다.');
             }
         }

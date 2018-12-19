@@ -15,9 +15,19 @@ class ComposerStaticInit136ad16702ac7e6c67fa5bc49290b019
         array (
             'app\\' => 4,
         ),
+        'P' => 
+        array (
+            'Psr\\SimpleCache\\' => 16,
+            'PhpOffice\\PhpSpreadsheet\\' => 25,
+        ),
+        'L' => 
+        array (
+            'Lcobucci\\JWT\\' => 13,
+        ),
         'C' => 
         array (
             'Curl\\' => 5,
+            'Cron\\' => 5,
         ),
     );
 
@@ -31,9 +41,25 @@ class ComposerStaticInit136ad16702ac7e6c67fa5bc49290b019
         array (
             0 => __DIR__ . '/../..' . '/application/third_party/app',
         ),
+        'Psr\\SimpleCache\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/simple-cache/src',
+        ),
+        'PhpOffice\\PhpSpreadsheet\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet',
+        ),
+        'Lcobucci\\JWT\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/lcobucci/jwt/src',
+        ),
         'Curl\\' => 
         array (
             0 => __DIR__ . '/..' . '/php-curl-class/php-curl-class/src/Curl',
+        ),
+        'Cron\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron',
         ),
     );
 

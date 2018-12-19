@@ -61,7 +61,8 @@ $config['rest_supported_formats'] = [
 | The field name for the status inside the response
 |
 */
-$config['rest_status_field_name'] = 'status';
+//$config['rest_status_field_name'] = 'status';
+$config['rest_status_field_name'] = 'ret_cd';
 
 /*
 |--------------------------------------------------------------------------
@@ -71,7 +72,11 @@ $config['rest_status_field_name'] = 'status';
 | The field name for the message inside the response
 |
 */
-$config['rest_message_field_name'] = 'error';
+//$config['rest_message_field_name'] = 'error';
+$config['rest_message_field_name'] = 'ret_msg';
+$config['rest_data_field_name'] = 'ret_data';   // return data field name
+$config['rest_http_code_field_name'] = 'ret_status';    // return http code field name
+$config['rest_uri_field_name'] = 'uri';     // return uri field name
 
 /*
 |--------------------------------------------------------------------------
@@ -93,7 +98,8 @@ $config['enable_emulate_request'] = TRUE;
 | e.g: My Secret REST API
 |
 */
-$config['rest_realm'] = 'REST API';
+//$config['rest_realm'] = 'REST API';
+$config['rest_realm'] = 'WILL-API';
 
 /*
 |--------------------------------------------------------------------------
@@ -107,10 +113,10 @@ $config['rest_realm'] = 'REST API';
 | 'digest'  More secured login
 | 'session' Check for a PHP session variable. See 'auth_source' to set the
 |           authorization key
-|
+| 'token' Custom token authentication method
 */
 $config['rest_auth'] = FALSE;
-//$config['rest_auth'] = 'basic';
+//$config['rest_auth'] = 'token';
 
 /*
 |--------------------------------------------------------------------------
@@ -139,6 +145,7 @@ $config['auth_source'] = '';
 |
 */
 $config['allow_auth_and_keys'] = TRUE;
+$config['strict_api_and_auth'] = TRUE; // force the use of both api and auth before a valid api request is made
 
 /*
 |--------------------------------------------------------------------------
@@ -211,7 +218,7 @@ $config['auth_library_function'] = '';
 | Array of usernames and passwords for login, if ldap is configured this is ignored
 |
 */
-$config['rest_valid_logins'] = ['admin' => '1234'];
+$config['rest_valid_logins'] = ['willbes' => 'api@token.will'];
 
 /*
 |--------------------------------------------------------------------------
@@ -376,12 +383,14 @@ $config['rest_key_length'] = 40;
 |--------------------------------------------------------------------------
 |
 | Custom header to specify the API key
-
 | Note: Custom headers with the X- prefix are deprecated as of
 | 2012/06/12. See RFC 6648 specification for more details
 |
 */
 $config['rest_key_name'] = 'X-API-KEY';
+$config['rest_user_name'] = 'X-API-USER';         // Custom user name
+$config['rest_token_name'] = 'X-API-TOKEN';     // Custom token name
+$config['rest_nonce_name'] = 'X-API-NONCE';    // Custom nonce name
 
 /*
 |--------------------------------------------------------------------------
@@ -409,7 +418,7 @@ $config['rest_key_name'] = 'X-API-KEY';
 |
 */
 //$config['rest_enable_logging'] = FALSE;
-$config['rest_enable_logging'] = TRUE;
+$config['rest_enable_logging'] = FALSE;
 
 /*
 |--------------------------------------------------------------------------
@@ -444,7 +453,7 @@ $config['rest_logs_table'] = 'wb_api_logs';
 |
 */
 //$config['rest_enable_access'] = FALSE;
-$config['rest_enable_access'] = TRUE;
+$config['rest_enable_access'] = FALSE;
 
 /*
 |--------------------------------------------------------------------------
@@ -497,7 +506,7 @@ $config['rest_logs_json_params'] = TRUE;
 | See application/controllers/api/example.php for examples
 */
 //$config['rest_enable_limits'] = FALSE;
-$config['rest_enable_limits'] = TRUE;
+$config['rest_enable_limits'] = FALSE;
 
 /*
 |--------------------------------------------------------------------------
@@ -558,7 +567,8 @@ $config['rest_language'] = 'korean';
 | will access it through a browser
 |
 */
-$config['check_cors'] = FALSE;
+//$config['check_cors'] = FALSE;
+$config['check_cors'] = TRUE;
 
 /*
 |--------------------------------------------------------------------------
@@ -615,4 +625,48 @@ $config['allow_any_cors_domain'] = FALSE;
 | e.g. $config['allowed_origins'] = ['http://www.example.com', 'https://spa.example.com']
 |
 */
-$config['allowed_cors_origins'] = [];
+//$config['allowed_cors_origins'] = [];
+$config['allowed_cors_origins'] = ['https://www' . ENV_DOMAIN . '.' . config_item('base_domain')];
+
+/*
+|--------------------------------------------------------------------------
+| CORS Forced Headers
+|--------------------------------------------------------------------------
+|
+| If using CORS checks, always include the headers and values specified here 
+| in the OPTIONS client preflight.
+| Example:
+| $config['forced_cors_headers'] = [
+|   'Access-Control-Allow-Credentials' => 'true'
+| ];
+|
+| Added because of how Sencha Ext JS framework requires the header
+| Access-Control-Allow-Credentials to be set to true to allow the use of
+| credentials in the REST Proxy. 
+| See documentation here:
+| http://docs.sencha.com/extjs/6.5.2/classic/Ext.data.proxy.Rest.html#cfg-withCredentials
+|
+*/
+$config['forced_cors_headers'] = [];
+
+/*
+|--------------------------------------------------------------------------
+| Rest token available time (second)
+|--------------------------------------------------------------------------
+*/
+$config['rest_token_limit_time'] = 3600;
+
+/*
+|--------------------------------------------------------------------------
+| Rest server url from rest client
+|--------------------------------------------------------------------------
+*/
+$config['rest_server'] = 'https://api' . ENV_DOMAIN . '.' . config_item('base_domain');
+
+/*
+|--------------------------------------------------------------------------
+| Rest client ssl vertify
+|--------------------------------------------------------------------------
+*/
+$config['ssl_verify_peer'] = FALSE;
+$config['ssl_cainfo'] = '';

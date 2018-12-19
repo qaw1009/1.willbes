@@ -1,19 +1,56 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-if (!function_exists('config_get')) {
+if (!function_exists('app_url')) {
     /**
-     * dot(.) 표기법으로 $key에 해당하는 config 값 리턴
+     * 서브 도메인 (wbs, lms ...)에 맞는 전체 (도메인 포함) URL 리턴
+     * @param $uri
+     * @param $sub_domain
+     * @return string
+     */
+    function app_url($uri, $sub_domain)
+    {
+        return '//' . $sub_domain . ENV_DOMAIN . '.' . config_item('base_domain') . $uri;
+    }
+}
+
+if (!function_exists('app_to_env_url')) {
+    /**
+     * 실제 URL을 시스템 환경에 맞는 URL로 변환 후 리턴
+     * @param $url
+     * @return string
+     */
+    function app_to_env_url($url)
+    {
+        return substr($url, 0, strpos($url, '.')) . ENV_DOMAIN . '.' . substr($url, strpos($url, '.') + 1);
+    }
+}
+
+if (!function_exists('config_app')) {
+    /**
+     * 서브 도메인별 (wbs, lms ...) dot(.) 표기법으로 $key에 해당하는 config 값 리턴
+     * @example config_app('SiteCode'), 사이트 (서브 도메인) 하위의 설정 값 리턴
      * @param $key
+     * @param $default
      * @return mixed
      */
-    function config_get($key)
+    function config_app($key, $default = null)
     {
-        if (strpos($key, '.') === false) return config_item($key);
+        return array_get(config_item(SUB_DOMAIN), $key, $default);
+    }
+}
 
-        $configs = config_item(str_first_pos_before($key, '.'));
-
-        return array_get($configs, str_first_pos_after($key, '.'));
+if (!function_exists('config_get')) {
+    /**
+     * dot(.) 표기법으로 config.php에 설정된 $key에 해당하는 config 값 리턴
+     * @example config_get('cop.SiteCode'), 전체 설정값에서 해당 키에 해당하는 설정값 리턴
+     * @param $key
+     * @param $default
+     * @return mixed
+     */
+    function config_get($key, $default = null)
+    {
+        return array_get(get_config(), $key, $default);
     }
 }
 
@@ -69,6 +106,24 @@ if (!function_exists('dd')) {
     }
 }
 
+if (!function_exists('ends_with')) {
+    /**
+     * haystack(대상 문자열)이 needles(찾을 문자열 배열)로 끝나는지 여부 체크
+     * @param $haystack
+     * @param $needles
+     * @return bool
+     */
+    function ends_with($haystack, $needles)
+    {
+        foreach ((array) $needles as $needle) {
+            if ((string) $needle === substr($haystack, -strlen($needle))) {
+                return true;
+            }
+        }
+        return false;
+    }
+}
+
 if (!function_exists('error_result')) {
     /**
      * return exception error
@@ -114,12 +169,45 @@ if (!function_exists('form_errors')) {
     }
 }
 
+if (!function_exists('front_url')) {
+    /**
+     * site_url 대체 헬퍼 (모바일 사이트, 학원 사이트 여부를 판별하여 URI 생성)
+     * @param $uri
+     * @return string
+     */
+    function front_url($uri)
+    {
+        $uri_prefix = '';
+        APP_DEVICE != 'pc' && $uri_prefix .= '/' . APP_DEVICE;
+        config_app('IsPassSite') === true && $uri_prefix .= '/' . config_item('app_pass_site_prefix');
+
+        return site_url($uri_prefix . $uri);
+    }
+}
+
+if (!function_exists('front_app_url')) {
+    /**
+     * app_url 대체 헬퍼 (모바일 사이트, 학원 사이트 여부를 판별하여 URI 생성)
+     * @param $uri
+     * @param $sub_domain
+     * @return string
+     */
+    function front_app_url($uri, $sub_domain)
+    {
+        $uri_prefix = '';
+        APP_DEVICE != 'pc' && $uri_prefix .= '/' . APP_DEVICE;
+        config_app('IsPassSite') === true && $uri_prefix .= '/' . config_item('app_pass_site_prefix');
+
+        return app_url($uri_prefix . $uri, $sub_domain);
+    }
+}
+
 if (!function_exists('get_var')) {
     /**
      * 변수값이 빈값일 경우 default 값 리턴
      * @param $var
-     * @param string $default
-     * @return string
+     * @param $default
+     * @return mixed
      */
     function get_var($var, $default = '')
     {
@@ -127,17 +215,56 @@ if (!function_exists('get_var')) {
     }
 }
 
+if (!function_exists('get_app_var')) {
+    /**
+     * 어플리케이션 (CI_Controller)에 설정된 변수 리턴
+     * @param $key
+     * @return mixed
+     */
+    function get_app_var($key)
+    {
+        $_CI =& get_instance();
+        return $_CI->load->get_var('__' . $key);
+    }
+}
+
+if (!function_exists('img_url')) {
+    /**
+     * 이미지 경로 리턴
+     * @param string $img_path [img_base_path 이후의 이미지 경로, 맨앞 / 제외]
+     * @return string
+     */
+    function img_url($img_path)
+    {
+        return config_item('img_base_path') . $img_path;
+    }
+}
+
 if (!function_exists('logger')) {
     /**
      * log message
      * @param $msg
-     * @param array $vars
+     * @param null|mixed $vars
      * @param string $log_level
+     * @param string $log_path
      */
-    function logger($msg, $vars = array(), $log_level = 'debug')
+    function logger($msg, $vars = null, $log_level = 'debug', $log_path = '')
     {
-        $msg .= (is_array($vars) === true && count($vars) > 0) ? ' ' . json_encode($vars, JSON_UNESCAPED_UNICODE) : '';
-        log_message($log_level, $msg);
+        //$msg .= is_array($vars) === true && empty($vars) === false ? ' ' . json_encode($vars, JSON_UNESCAPED_UNICODE) : '';
+        $msg .= empty($vars) === false ? ' : ' . var_export($vars, true) : '';
+
+        if (empty($log_path) === true) {
+            log_message($log_level, $msg);
+        } else {
+            $_CI =& get_instance();
+            $_CI->load->helper('file');
+
+            $msg = strtoupper($log_level) . ' - ' . date('Y-m-d H:i:s') . ' --> ' . $msg . PHP_EOL;
+
+            if(write_file($log_path, $msg, 'a+') === false) {
+                log_message('debug', 'Unable to write the custom log file');
+            }
+        }
     }
 }
 
@@ -153,9 +280,24 @@ if (!function_exists('method_field')) {
     }
 }
 
+if (!function_exists('remove_utf8_bom')) {
+    /**
+     * 텍스트(txt) 파일 내용의 utf8-bom 값이 있을 경우 삭제 후 리턴
+     * @param string $str
+     * @return string
+     */
+    function remove_utf8_bom($str)
+    {
+        if (substr(bin2hex($str), 0, 6) == 'efbbbf') {
+            $str = substr($str, 3);
+        }    
+        return $str;
+    }
+}
+
 if (!function_exists('query_string_to_array')) {
     /**
-     * return query string to array
+     * return array from query string
      * @param $haystack
      * @return array
      */
@@ -189,6 +331,66 @@ if (!function_exists('sess_data')) {
     }
 }
 
+if (!function_exists('show_alert')) {
+    /**
+     * javascript alert
+     * @param string $msg
+     * @param string $url [리턴 URL, back : 이전 페이지, url : url 이동, empty : only alert]
+     * @param bool $is_href [URL 이동 방식 (true : href, false : replace)]
+     */
+    function show_alert($msg, $url = '', $is_href = true)
+    {
+        $_CI =& get_instance();
+
+        $output = '<meta http-equiv="Content-Type" content="text/html; charset=' . $_CI->config->item('charset') . '">' . PHP_EOL;
+        $output .= '<script type="text/javascript">' . PHP_EOL;
+        $output .= 'alert("' . $msg . '");' . PHP_EOL;
+        if (empty($url) === false) {
+            if ($url == 'back') {
+                $output .= 'history.back();' . PHP_EOL;
+            } else if($url == 'close') {
+                $output .= 'window.close();' . PHP_EOL;
+            } else {
+                if ($is_href === true) {
+                    $output .= 'location.href = "' . $url . '";' . PHP_EOL;
+                } else {
+                    $output .= 'location.replace("' . $url . '");' . PHP_EOL;
+                }
+            }
+        }
+        $output .= '</script>' . PHP_EOL;
+
+        echo($output);
+        exit(1);
+    }
+}
+
+if (!function_exists('login_check_inner_script')) {
+    /**
+     * javascript 내 로그인 여부 적용
+     * @param string $msg  - 경고 메세지
+     * @param string $move - 로그인 페이지로 이동여부 : Y 이동
+     */
+    function login_check_inner_script($msg='', $move='')
+    {
+        if (sess_data('is_login') !== true) {
+            $output = '';
+            if (empty($msg) === false) {
+                $output .= 'alert("' . $msg . '");' . PHP_EOL;
+            }
+
+            if ($move === 'Y') {
+                $output .= 'location.href = "' . app_url('/member/login/?rtnUrl=' . rawurlencode('//' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']), 'www') . '";' . PHP_EOL;
+            }
+
+            if(empty($msg) === false || empty($move) === false) {
+                $output .= 'return;';
+            }
+            echo($output);
+        }
+    }
+}
+
 if (!function_exists('starts_with')) {
     /**
      * haystack(대상 문자열)이 needles(찾을 문자열 배열)로 시작하는지 여부 체크
@@ -216,7 +418,7 @@ if (!function_exists('str_first_pos_before')) {
      */
     function str_first_pos_before($haystack, $needle)
     {
-        return substr($haystack, 0, strpos($haystack, $needle));
+        return strpos($haystack, $needle) === false ? $haystack : substr($haystack, 0, strpos($haystack, $needle));
     }
 }
 
@@ -229,7 +431,20 @@ if (!function_exists('str_first_pos_after')) {
      */
     function str_first_pos_after($haystack, $needle)
     {
-        return substr($haystack, strpos($haystack, $needle) + strlen($needle));
+        return strpos($haystack, $needle) === false ? $haystack : substr($haystack, strpos($haystack, $needle) + strlen($needle));
+    }
+}
+
+if (!function_exists('str_last_pos_before')) {
+    /**
+     * haystack(대상 문자열)에서 마지막 needle(찾을 문자열)의 위치 이전까지의 문자열 리턴
+     * @param $haystack
+     * @param $needle
+     * @return string
+     */
+    function str_last_pos_before($haystack, $needle)
+    {
+        return substr($haystack, 0, strrpos($haystack, $needle));
     }
 }
 
@@ -255,5 +470,17 @@ if (!function_exists('value')) {
     function value($value)
     {
         return $value instanceof Closure ? $value() : $value;
+    }
+}
+
+if(!function_exists( 'clean_string')) {
+    /**
+     * 특수문자를 제거한 문자열을 반환
+     * @param $value
+     * @return null|string|string[]
+     */
+    function clean_string($value)
+    {
+        return preg_replace("/[#\&\+\-%@=\/\\\:;,\.'\"\^`~\_|\!\?\*$#<>()\[\]\{\}]/i", "", $value);
     }
 }

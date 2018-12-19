@@ -1184,6 +1184,12 @@ table.auTable tr td {
 #SettingForm .Layer-Btn button.cf-Btn span {
     font-size: 15px;
 }
+.Gnb-md #SettingForm {
+    top: -255px;
+}
+.Gnb-sm #SettingForm {
+    top: -60px;
+}
 
 /* Footer */
 #Footer {

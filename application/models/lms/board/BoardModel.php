@@ -430,7 +430,7 @@ class BoardModel extends WB_Model
         $master_column = "
             MST.BmTypeCcd, MST.OneWayOption, MST.TwoWayOption,
             IF ((CASE MST.BmTypeCcd WHEN '601001' THEN INSTR(MST.OneWayOption, 1) ELSE '0' END) > 0, 'Y', 'N') AS BoardIsLogin,
-            IF ((CASE MST.BmTypeCcd WHEN '601001' THEN INSTR(MST.OneWayOption, 2) ELSE '0' END) > 0, 'Y', 'N') AS BoardIsComment,
+            IF ((CASE MST.BmTypeCcd WHEN '601001' THEN INSTR(MST.OneWayOption, 2) WHEN '601002' THEN INSTR(MST.TwoWayOption, 2) ELSE '0' END) > 0, 'Y', 'N') AS BoardIsComment,
             IF ((CASE MST.BmTypeCcd WHEN '601002' THEN INSTR(MST.TwoWayOption, 1) ELSE '0' END) > 0, 'Y', 'N') AS BoardIsQna,
         ";
 

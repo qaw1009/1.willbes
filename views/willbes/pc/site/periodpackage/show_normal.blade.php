@@ -12,13 +12,10 @@
             <div class="willbes-Package-Detail NG tx-black">
                 <table cellspacing="0" cellpadding="0" class="packageDetailTable">
                     <colgroup>
-
-                        <col style="width: 1px;"/>
-                        <col style="width: 804px;"/>
+                        <col style="width: 940px;"/>
                     </colgroup>
                     <tbody>
                     <tr>
-                        <td class="w-line"><span class="row-line">|</span></td>
                         <td class="pl30">
                             <div class="w-tit">{{$data['ProdName']}}</div>
                             <dl class="w-info">
@@ -46,31 +43,23 @@
                 <input type="hidden" name="is_direct_pay" value=""/>    {{-- 바로결제 여부 --}}
                 <input type="hidden" name="ca_idx" id="ca_idx" value=""/>    {{-- 인증 여부 --}}
 
-
                 <div class="willbes-Lec-Package-Price p_re">
                     <div class="total-PriceBox NG">
                         <span class="price-tit">총 주문금액</span>
                         <span class="row-line">|</span>
                         <span>
                             <span class="price-txt">패키지</span>
-                                    @if(empty($data['ProdPriceData'] ) === false)
-                                        @foreach($data['ProdPriceData']  as $price_row)
-                                            @if($loop -> index === 1)
-                                                @php
-                                                    $sale_type_ccd = $price_row['SaleTypeCcd'];
-                                                @endphp
-                                                <span class="lec_price tx-light-blue" data-info="{{$price_row['RealSalePrice']}}">{{ number_format($price_row['RealSalePrice'],0)}}원</span>
-                                            @endif
-                                        @endforeach
+                            @if(empty($data['ProdPriceData'] ) === false)
+                                @foreach($data['ProdPriceData']  as $price_row)
+                                    @if($loop -> index === 1)
+                                        @php
+                                            $sale_type_ccd = $price_row['SaleTypeCcd'];
+                                        @endphp
+                                        <span class="lec_price tx-light-blue" data-info="{{$price_row['RealSalePrice']}}">{{ number_format($price_row['RealSalePrice'],0)}}원</span>
                                     @endif
+                                @endforeach
+                            @endif
                         </span>
-                        <span class="price-img">
-                    <img src="{{ img_url('sub/icon_plus.gif') }}">
-                </span>
-                        <span>
-                    <span class="price-txt">교재</span>
-                    <span class="tx-light-blue" id="bookPrice">0원</span>
-                    </span>
                         <span class="price-total tx-light-blue" id="totalPrice"></span>
                     </div>
                     <input type="checkbox" name="prod_code[]" class="chk_products d_none" checked="checked" value="{{ $data['ProdCode'] . ':' . $sale_type_ccd . ':' . $data['ProdCode'] }}" data-prod-code="{{$data['ProdCode']}}" data-parent-prod-code="{{$data['ProdCode']}}" data-group-prod-code="{{$data['ProdCode']}}" data-sale-price="{{$price_row['RealSalePrice']}}"/>
@@ -88,7 +77,7 @@
                 <!-- willbes-Lec-Package-Price -->
 
                 <div class="willbes-Lec NG c_both">
-                    <div class="willbes-Lec-Subject tx-dark-black">강좌구성 및 교재선택<span class="MoreBtn"><a href="#none">교재정보 전체보기 ▼</a></span></div>
+                    <div class="willbes-Lec-Subject tx-dark-black">강좌구성</div>
                     <!-- willbes-Lec-Subject -->
 
                     <div class="willbes-Lec-Line">-</div>
@@ -123,123 +112,36 @@
                         <!-- lecTable -->
                     </div>
                     <!-- willbes-Buy-PackageList -->
+
                     <div class="willbes-Lec-Table-Overflow">
-                        @if(empty($data_sublist) === false)
-                            @foreach($data_sublist as $idx => $sub_row)
-                                <div id="lec_table_{{ $sub_row['ProdCode'] }}" class="willbes-Lec-Table">
-                                    <table cellspacing="0" cellpadding="0" class="lecTable">
-                                        <colgroup>
-                                            <col style="width: 75px;">
-                                            <col style="width: 85px;">
-                                            <col style="width: 600px;">
-                                            <col style="width: 180px;">
-                                        </colgroup>
-                                        <tbody>
-                                        <tr>
-                                            <td class="w-list">{{$sub_row['SubjectName']}}</td>
-                                            <td class="w-img"><img src="{{$sub_row['ProfReferData']['lec_list_img'] or '' }}"></td>
-                                            <td class="w-data tx-left pl25">
-                                                <dl class="w-info">
-                                                    <dt class="w-name">{{$sub_row['wProfName']}}</dt>
-                                                    <dt><span class="row-line">|</span></dt>
-                                                    <dt class="w-tit">{{ $sub_row['ProdName'] }}</dt>
-                                                </dl>
-                                                <dl class="w-info">
-                                                    <dt class="mr20">
-                                                        <a href="#none" onclick="productInfoModal('{{ $sub_row['ProdCode'] }}', 'hover1','{{ site_url() }}lecture')">
-                                                            <strong>강좌상세정보</strong>
-                                                        </a>
-                                                    </dt>
-                                                    <dt>강의수 : <span class="tx-blue">{{ $sub_row['wUnitLectureCnt'] }}강</span></dt>
-                                                    <dt><span class="row-line">|</span></dt>
-                                                    <dt>정상가 :
-                                                        @if(empty($sub_row['ProdPriceData']) === false)
-                                                            @foreach($sub_row['ProdPriceData'] as $price_row)
-                                                                @if($loop -> index === 1)
-                                                                    <span class="tx-blue">{{number_format($price_row['SalePrice'],0)}}원</span>
-                                                                @endif
-                                                            @endforeach
-                                                        @endif
-                                                    </dt>
-                                                    <dt class="NSK ml15">
-                                                        <span class="nBox n1">{{$sub_row['MultipleApply']}}배수</span>
-                                                        <span class="nBox n{{ substr($sub_row['wLectureProgressCcd'], -1)+1 }}">{{$sub_row['wLectureProgressCcdName']}}</span>
-                                                    </dt>
-                                                </dl>
-                                            </td>
-
-                                            <td class="w-notice p_re">
-                                                @if(empty($sub_row['LectureSampleData']) === false)
-                                                    <div class="w-sp one"><a href="#none" onclick="openWin('lec_sample_{{ $sub_row['ProdCode'] }}')">맛보기{{count($sub_row['LectureSampleData'])}}</a></div>
-                                                    <div id="lec_sample_{{ $sub_row['ProdCode'] }}" class="viewBox">
-                                                        <a class="closeBtn" href="#none" onclick="closeWin('lec_sample_{{ $sub_row['ProdCode'] }}')"><img src="{{ img_url('cart/close.png') }}"></a>
-                                                        @foreach($sub_row['LectureSampleData'] as $sample_idx => $sample_row)
-                                                            <dl class="NSK">
-                                                                <dt class="Tit NG">맛보기{{ $sample_idx + 1 }}</dt>
-                                                                @if(empty($sample_row['wHD']) === false || empty($sample_row['wWD']) === false) <dt class="tBox t1 black"><a href="{{ $sample_row['wWD'] or $sample_row['wHD'] }}">HIGH</a></dt> @endif
-                                                                @if(empty($sample_row['wSD']) === false) <dt class="tBox t2 gray"><a href="{{ $sample_row['wSD'] }}">LOW</a></dt> @endif
-                                                            </dl>
-                                                        @endforeach
-                                                    </div>
-                                                @endif
-                                                <div class="MoreBtn"><a href="#none">교재정보 보기 ▼</a></div>
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-
-                                    <!-- lecTable -->
-
-                                    <table cellspacing="0" cellpadding="0" class="lecInfoTable">
-                                        <colgroup>
-                                            <col style="width: 75px;">
-                                            <col style="width: 865px;">
-                                        </colgroup>
-                                        <tbody>
-
-                                        <tr>
-                                            <td>&nbsp;</td>
-                                            <td>
-                                                @if(empty($sub_row['ProdBookData']) === false)
-                                                    @foreach($sub_row['ProdBookData'] as $book_idx => $book_row)
-                                                        <div class="w-sub">
-                                                            <span class="w-obj tx-blue tx11">{{ $book_row['BookProvisionCcdName'] }}</span>
-                                                            <span class="w-subtit">{{ $book_row['ProdBookName'] }}</span>
-                                                            <span class="chk">
-                                                                <label class="@if($book_row['wSaleCcd'] == '112002' || $book_row['wSaleCcd'] == '112003') soldout @elseif($book_row['wSaleCcd'] == '112004') press @endif">
-                                                                    [{{ $book_row['wSaleCcdName'] }}]
-                                                                </label>
-                                                                <input type="checkbox" name="prod_code[]" value="{{ $book_row['ProdBookCode'] . ':' . $book_row['SaleTypeCcd'] . ':' . $data['ProdCode'] }}" data-prod-code="{{ $book_row['ProdBookCode'] }}" data-parent-prod-code="{{ $sub_row['ProdCode'] }}" data-group-prod-code="{{ $data['ProdCode'] }}" data-book-provision-ccd="{{ $book_row['BookProvisionCcd'] }}" data-sale-price="{{ $book_row['RealSalePrice'] }}" class="chk_books" @if($book_row['wSaleCcd'] != '112001') disabled="disabled" @endif/>
-                                                            </span>
-                                                            <span class="priceWrap">
-                                                                <span class="price tx-blue">{{ number_format($book_row['RealSalePrice'], 0) }}원</span>
-                                                                <span class="discount">(↓{{ $book_row['SaleRate'] . $book_row['SaleRateUnit'] }})</span>
-                                                            </span>
-                                                        </div>
-                                                    @endforeach
-                                                    <div class="w-sub tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>
-                                                    <div class="w-sub">
-                                                        <a href="#none" onclick="productInfoModal('{{ $sub_row['ProdCode'] }}', 'hover2','{{ site_url() }}lecture')"><strong>교재상세정보</strong></a>
-                                                    </div>
-                                                    <div class="prod-book-memo d_none">{{ $sub_row['ProdBookMemo'] }}</div>
-                                                @else
-                                                    <div class="w-sub">
-                                                        <span class="w-subtit none">※ 별도 구매 가능한 교재가 없습니다.</span>
-                                                    </div>
-                                                @endif
-                                            </td>
-                                        </tr>
-
-                                        </tbody>
-                                    </table>
-                                    <!-- lecInfoTable -->
-                                </div>
-                                <!-- willbes-Lec-Table -->
-                            @endforeach
-                        @endif
+                        <div class="willbes-Lec-Table bdb-none">
+                            <table cellspacing="0" cellpadding="0" class="lecTable lecTable15 under-gray">
+                                <colgroup>
+                                    <col style="width: 95px;">
+                                    <col style="width: 85px;">
+                                    <col style="width: 760px;">
+                                </colgroup>
+                                <tbody>
+                                    @if(empty($data_sublist) === false)
+                                        @foreach($data_sublist as $idx => $sub_row)
+                                            <tr id="lec_table_{{ $sub_row['ProdCode'] }}">
+                                                <td class="w-list">{{$sub_row['SubjectName']}}</td>
+                                                <td class="w-img"><img src="{{$sub_row['ProfReferData']['lec_list_img'] or '' }}"></td>
+                                                <td class="w-data tx-left pl25">
+                                                    <dl class="w-info">
+                                                        <dt class="w-name">{{$sub_row['wProfName']}}</dt>
+                                                        <dt><span class="row-line">|</span></dt>
+                                                        <dt class="w-tit">{{ $sub_row['ProdName'] }}</dt>
+                                                    </dl>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @endif
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                    <div id="InfoForm" class="willbes-Layer-Box"></div>
-
+  
                     <div class="TopBtn">
                         <a href="#none" onclick="goTop()"><span class="arrow-Btn">></span> TOP</a>
                     </div>

@@ -3466,6 +3466,10 @@ table.lecTable20 tr td {
 table.lecTable15 tr td {
     padding: 15px 0;
 }
+table.lecTable15 tr td.w-img img {
+    width: 60px;
+    height: 60px;
+}
 table.lecTable tr td.w-data {
     line-height: 30px;
 }

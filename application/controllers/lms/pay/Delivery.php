@@ -210,8 +210,8 @@ class Delivery extends BaseOrder
     public function sampleDownload()
     {
         $this->load->helper('download');
-        $file_path = PUBLICURL . 'uploads/' . config_item('upload_prefix_dir') . '/_sample_download/sample_invoice.xlsx';
-        public_download($file_path);
+        $file_path = STORAGEPATH . 'sample/' . config_item('upload_prefix_dir') . '/sample_invoice.xlsx';
+        force_download($file_path, null);
     }
 
     /**

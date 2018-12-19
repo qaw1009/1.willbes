@@ -3,12 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 require APPPATH . 'controllers/lms/board//BaseBoard.php';
 
-class Faq extends BaseBoard
+class Free extends BaseBoard
 {
-    protected $temp_models = array('sys/boardMaster', 'board/board');
+    protected $temp_models = array('sys/boardMaster', 'sys/site', 'board/board');
     protected $helpers = array('download','file');
 
-    private $board_name = 'faq';
+    private $board_name = 'free';
     private $site_code = '';
     private $bm_idx;
     private $_reg_type = [
@@ -27,14 +27,13 @@ class Faq extends BaseBoard
     }
 
     /**
-     * FAQ 게시판 인덱스 (리스트페이지)
+     * 공지게시판 인덱스 (리스트페이지)
      */
     public function index()
     {
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
-        $group_ccd = $this->_req('group_ccd');
 
         //검색상태조회
         $arr_search_data = $this->getBoardSearchingArray($this->bm_idx);
@@ -45,17 +44,6 @@ class Faq extends BaseBoard
         //캠퍼스 조회
         $arr_campus = $this->_getCampusArray('');
 
-        //FAQ구분
-        $faq_group_ccd = $this->_getFaqGroupInfo();
-        
-        //FAQ분류리스트
-        $faq_ccd_list = $this->_listAllCode(array_keys($faq_group_ccd));
-
-        $faq_ccd = [];
-        if (empty($group_ccd) === false) {
-            $faq_ccd = $this->_getCcdArray($group_ccd);
-        }
-
         $this->load->view("board/{$this->board_name}/index", [
             'bm_idx' => $this->bm_idx,
             'arr_search_data' => $arr_search_data['arr_search_data'],
@@ -63,13 +51,14 @@ class Faq extends BaseBoard
             'arr_campus' => $arr_campus,
             'arr_category' => $arr_category,
             'boardName' => $this->board_name,
-            'faq_group_ccd' => $faq_group_ccd,
-            'faq_ccd' => $faq_ccd,
-            'faq_ccd_list' => $faq_ccd_list,
-            'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}&site_code={$this->site_code}&group_ccd={$group_ccd}",
+            'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}"
         ]);
     }
 
+    /**
+     * 공지사항 목록 조회
+     * @return CI_Output
+     */
     public function listAjax()
     {
         $this->setDefaultBoardParam();
@@ -77,19 +66,11 @@ class Faq extends BaseBoard
         $this->bm_idx = $board_params['bm_idx'];
         $this->site_code = $this->_reqP('search_site_code');
 
-        //FAQ구분
-        $faq_group_ccd = $this->_getFaqGroupInfo();
-
-        //FAQ구분별 게시글 횟수
-        $faq_group_ccd_countList = $this->boardModel->getFaqBoardCcdCountList($this->bm_idx, array_keys($faq_group_ccd), $this->site_code);
-
         $arr_condition = [
             'EQ' => [
                 'LB.BmIdx' => $this->bm_idx,
                 'LB.IsStatus' => 'Y',
                 'LB.CampusCcd' => $this->_reqP('search_campus_ccd'),
-                'LB.FaqGroupTypeCcd' => $this->_reqP('search_group_faq_ccd'),
-                'LB.FaqTypeCcd' => $this->_reqP('search_faq_type'),
                 'LB.IsUse' => $this->_reqP('search_is_use'),
             ],
             'ORG' => [
@@ -100,9 +81,7 @@ class Faq extends BaseBoard
             ]
         ];
 
-        if ($this->_reqP('search_is_best') == 1) {
-            $arr_condition['EQ'] = array_merge($arr_condition['EQ'], ['LB.IsBest' => '1']);
-        } else if ($this->_reqP('search_is_best') == 2) {
+        if ($this->_reqP('search_chk_hot_display') == 1) {
             $arr_condition['EQ'] = array_merge($arr_condition['EQ'], ['LB.IsBest' => '0']);
         }
 
@@ -120,26 +99,41 @@ class Faq extends BaseBoard
         ];
 
         $column = '
-            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode, LB.FaqGroupTypeCcd, LB.FaqTypeCcd, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
-            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName,
-            LSC_FAQ1.CcdName as FaqGroupCcdName, LSC_FAQ2.CcdName as FaqCcdName,
-            LB.OrderNum
+            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
+            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName
         ';
 
         $list = [];
         $count = $this->boardModel->listAllBoard($this->board_name,true, $arr_condition, $sub_query_condition, $this->site_code);
 
         if ($count > 0) {
-            $list = $this->boardModel->listAllBoard($this->board_name,false, $arr_condition, $sub_query_condition, $this->site_code, $this->_reqP('length'), $this->_reqP('start'), ['LB.IsBest' => 'desc', 'LB.BoardIdx' => 'asc'], $column);
+            $list = $this->boardModel->listAllBoard($this->board_name,false, $arr_condition, $sub_query_condition, $this->site_code, $this->_reqP('length'), $this->_reqP('start'), ['LB.IsBest' => 'desc', 'LB.BoardIdx' => 'desc'], $column);
         }
 
         return $this->response([
             'recordsTotal' => $count,
             'recordsFiltered' => $count,
             'data' => $list,
-            'faq_group_ccd_countList' => $faq_group_ccd_countList,
-            'search_group_faq_ccd' => $this->_reqP('search_group_faq_ccd')
         ]);
+    }
+
+    /**
+     * 게시글 복사
+     * @param array $params
+     */
+    public function copy()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'board_idx', 'label' => '식별자', 'rules' => 'trim|required|integer']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->_boardCopy($this->_reqP('board_idx'));
+        $this->json_result($result, '저장 되었습니다.', $result);
     }
 
     /**
@@ -161,7 +155,7 @@ class Faq extends BaseBoard
     }
 
     /**
-     * FAQ 게시판 등록/수정 폼
+     * 공지게시판 등록/수정 폼
      * @param array $params
      */
     public function create($params = [])
@@ -179,7 +173,7 @@ class Faq extends BaseBoard
 
         if (empty($params[0]) === false) {
             $column = '
-            LB.BoardIdx, LB.SiteCode, LB.FaqGroupTypeCcd, LB.FaqTypeCcd, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
+            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
             LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName
             ';
             $method = 'PUT';
@@ -210,19 +204,11 @@ class Faq extends BaseBoard
             $data['arr_attach_file_real_name'] = explode(',', $data['AttachRealFileName']);
         }
 
-        //FAQ구분
-        $faq_group_ccd = $this->_getFaqGroupInfo();
-
-        //FAQ분류리스트
-        $faq_ccd_list = $this->_listAllCode(array_keys($faq_group_ccd));
-
         $this->load->view("board/{$this->board_name}/create", [
             'boardName' => $this->board_name,
             'bmIdx' => $this->bm_idx,
             'arr_campus' => $arr_campus,
             'campus_all_ccd' => $this->codeModel->campusAllCcd,
-            'faq_group_ccd' => $faq_group_ccd,
-            'faq_ccd_list' => $faq_ccd_list,
             'method' => $method,
             'data' => $data,
             'board_idx' => $board_idx,
@@ -247,18 +233,12 @@ class Faq extends BaseBoard
 
         $rules = [
             ['field' => 'site_code', 'label' => '운영사이트', 'rules' => 'trim|required'],
+            ['field' => 'cate_code[]', 'label' => '카테고리', 'rules' => 'trim|required'],
             ['field' => 'campus_ccd', 'label' => '캠퍼스', 'rules' => 'trim|integer|callback_validateRequiredIf[site_code,' . implode(',', array_keys($offLineSite_list)) . ']'],
             ['field' => 'title', 'label' => '제목', 'rules' => 'trim|required|max_length[50]'],
             ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => 'board_content', 'label' => '내용', 'rules' => 'trim|required'],
         ];
-
-        //사이트코드 통합코드가 아닐경우 카테고리 체크
-        if ($this->_reqP('site_code') != config_item('app_intg_site_code')) {
-            $rules = array_merge($rules, [
-                ['field' => 'cate_code[]', 'label' => '카테고리', 'rules' => 'trim|required']
-            ]);
-        }
 
         if ($this->validate($rules) === false) {
             return;
@@ -277,6 +257,10 @@ class Faq extends BaseBoard
         $this->json_result($result, '저장 되었습니다.', $result);
     }
 
+    /**
+     * 공지게시판 Read 페이지
+     * @param array $params
+     */
     public function read($params = [])
     {
         $this->setDefaultBoardParam();
@@ -288,10 +272,9 @@ class Faq extends BaseBoard
         }
 
         $column = '
-            LB.BoardIdx, LB.IsBest, LB.RegType, LB.SiteCode, LB.FaqGroupTypeCcd, LB.FaqTypeCcd, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
-            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm,
-            LSC_FAQ1.CcdName as FaqGroupCcdName, LSC_FAQ2.CcdName as FaqCcdName
-        ';
+            LB.BoardIdx, LB.RegType, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
+            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm
+            ';
         $board_idx = $params[0];
         $arr_condition = ([
             'EQ'=>[
@@ -313,10 +296,8 @@ class Faq extends BaseBoard
         $search_datas = json_decode($query_string,true);
 
         $data_PN = $this->_findBoardPrevious_Next($this->bm_idx, $board_idx, $data['IsBest'], $data['RegType'], $search_datas);
-        $board_previous = $data_PN['next'];     //다음글
-        $board_next = $data_PN['previous'];     //이전글
-
-
+        $board_previous = $data_PN['previous'];     //이전글
+        $board_next = $data_PN['next'];             //다음글
 
         $site_code = $data['SiteCode'];
         $arr_cate_code = explode(',', $data['CateCode']);
@@ -328,7 +309,6 @@ class Faq extends BaseBoard
         if (empty($this->site_code) === false) {
             $site_code = $this->site_code;
         }
-
         $get_category_array = $this->_getCategoryArray($site_code);
         if (empty($get_category_array) === true) {
             $data['arr_cate_code'] = [];
@@ -389,84 +369,6 @@ class Faq extends BaseBoard
     }
 
     /**
-     * FAQ 분류
-     * @param array $params
-     */
-    public function getAjaxFaqList($params = [])
-    {
-        $result = $this->_getCcdArray($params[0]);
-        $this->json_result(true, '', [], $result);
-    }
-
-    /**
-     * FAQ 정렬 변경
-     */
-    public function createOrderByModal()
-    {
-        $this->setDefaultBoardParam();
-        $board_params = $this->getDefaultBoardParam();
-        $this->bm_idx = $board_params['bm_idx'];
-        $select_faq_group = $this->_req('select_group_ccd');
-
-        //FAQ구분
-        $faq_group_ccd = $this->_getFaqGroupInfo();
-        $method = 'POST';
-
-        $arr_condition = [
-            'EQ' => [
-                'LB.BmIdx' => $this->bm_idx,
-                'LB.IsStatus' => 'Y',
-                'LB.RegType' => '1',
-                'LB.SiteCode' => $this->site_code
-            ]
-        ];
-
-        $column = "
-            LB.BoardIdx, LB.Title, LB.IsUse, LB.OrderNum, LB.FaqGroupTypeCcd,
-            LSC_FAQ1.CcdName as FaqGroupCcdName, LSC_FAQ2.CcdName as FaqCcdName
-        ";
-
-        $list = $this->boardModel->listFaqBoardForOrderBy($arr_condition, $column);
-
-        $this->load->view("board/{$this->board_name}/create_orderby_modal",[
-            'boardName' => $this->board_name,
-            'method' => $method,
-            'data' => $list,
-            'faq_group_ccd' => $faq_group_ccd,
-            'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}&site_code={$this->site_code}",
-            'select_group_ccd' => $select_faq_group
-        ]);
-    }
-
-    /**
-     * OrderValue Update
-     */
-    public function updateAjaxOrderBy()
-    {
-        $rules = [
-            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
-            ['field' => 'faq_group_ccd', 'label' => 'FAQ구분', 'rules' => 'trim|required|integer'],
-            ['field' => 'target_idx', 'label' => '식별자', 'rules' => 'trim|required|integer'],
-            ['field' => 'distance', 'label' => '순위', 'rules' => 'trim|required|integer'],
-        ];
-
-        if ($this->validate($rules) === false) {
-            return;
-        }
-
-        $data = [
-            'bm_idx' => $this->_req('bm_idx'),
-            'faq_group_ccd' => $this->_reqP('faq_group_ccd'),
-            'target_idx' => $this->_reqP('target_idx'),
-            'distance' => $this->_reqP('distance')
-        ];
-
-        $result = $this->boardModel->modifyOrderByBoard($data);
-
-        $this->json_result(true, '정렬이 변경되었습니다.', [], $result);
-    }
-
-    /**
      * 첨부파일 다운로드
      * @param array $fileinfo
      */
@@ -476,25 +378,13 @@ class Faq extends BaseBoard
     }
 
     private function _setInputData($input){
-        $arr_condition = [
-            'EQ' => [
-                'BmIdx' => $this->bm_idx,
-                'FaqGroupTypeCcd' => element('faq_group_ccd', $input)
-            ]
-        ];
-        $get_order_num = $this->getMaxOrderNum($arr_condition);
-        $order_num = $get_order_num['OrderNum'];
-
         $input_data = [
             'board' => [
                 'SiteCode' => element('site_code', $input),
                 'BmIdx' => $this->bm_idx,
-                'FaqGroupTypeCcd' => element('faq_group_ccd', $input),
-                'FaqTypeCcd' => element('faq_ccd', $input),
                 'CampusCcd' => element('campus_ccd', $input),
                 'RegType' => element('reg_type', $input),
                 'Title' => element('title', $input),
-                'OrderNum' => (empty($order_num) === true) ? '1' : $order_num + 1,
                 'IsBest' => (element('is_best', $input) == '1') ? '1' : '0',
                 'Content' => element('board_content', $input),
                 'IsUse' => element('is_use', $input),

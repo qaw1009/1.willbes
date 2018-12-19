@@ -80,6 +80,9 @@ class BoardModel extends WB_Model
 
         switch ($board_type) {
             case "notice" :
+            case "offlineBoard" :
+            case "gallery" :
+            case "free" :
                 $from = $from."
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.CampusCcd = LSC.Ccd
                 ";
@@ -133,12 +136,6 @@ class BoardModel extends WB_Model
                     LEFT JOIN {$this->_table_product} as lms_product ON LB.ProdCode = lms_product.ProdCode
                     LEFT OUTER JOIN {$this->_table_product_subject} as PS ON LB.SubjectIdx = PS.SubjectIdx
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.TypeCcd = LSC.Ccd
-                ";
-                break;
-            case "offlineBoard" :
-            case "gallery" :
-                $from = $from."
-                    LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.CampusCcd = LSC.Ccd
                 ";
                 break;
             case "liveLectureMaterial" :
@@ -465,6 +462,9 @@ class BoardModel extends WB_Model
         ";
         switch ($board_type) {
             case "notice" :
+            case "offlineBoard" :
+            case "gallery" :
+            case "free" :
                 $from = $from."
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.CampusCcd = LSC.Ccd
                 ";
@@ -534,12 +534,6 @@ class BoardModel extends WB_Model
                     LEFT JOIN {$this->_table_product} as lms_product ON LB.ProdCode = lms_product.ProdCode
                     LEFT OUTER JOIN {$this->_table_product_subject} as PS ON LB.SubjectIdx = PS.SubjectIdx
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.TypeCcd = LSC.Ccd
-                ";
-                break;
-            case "offlineBoard" :
-            case "gallery" :
-                $from = $from."
-                    LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.CampusCcd = LSC.Ccd
                 ";
                 break;
             case "liveLectureMaterial" :

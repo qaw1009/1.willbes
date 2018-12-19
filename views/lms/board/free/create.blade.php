@@ -1,10 +1,10 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5>- 고객센터 온라인 공지사항 게시판을 관리하는 메뉴입니다.</h5>
+    <h5>- 회원이 작성한 게시판을 관리하는 메뉴입니다.</h5>
     {!! form_errors() !!}
     <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
-    {{--<form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" action="{{ site_url("/board/{$boardName}/store") }}?bm_idx=45" novalidate>--}}
+        {{--<form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" action="{{ site_url("/board/offline/{$boardName}/store") }}?bm_idx=45" novalidate>--}}
         {!! csrf_field() !!}
         {!! method_field($method) !!}
         <input type="hidden" name="idx" value="{{ $board_idx }}"/>
@@ -20,11 +20,11 @@
             <div class="x_content">
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="site_code">운영사이트<span class="required">*</span></label>
-                    <div class="col-md-4 form-inline item">
-                        {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', '', true) !!}
+                    <div class="form-inline col-md-4 item">
+                        {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required') !!}
                     </div>
                     <label class="control-label col-md-1-1 d-line" for="campus_ccd">캠퍼스<span class="required">*</span></label>
-                    <div class="col-md-4 form-inline item ml-12-dot">
+                    <div class="form-inline col-md-4 item ml-12-dot">
                         <select class="form-control" id="campus_ccd" name="campus_ccd" required="required" title="캠퍼스">
                             <option value="">캠퍼스</option>
                             @php $temp='0'; @endphp
@@ -65,25 +65,25 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="title">제목<span class="required">*</span></label>
-                    <div class="col-md-10 item">
-                        <input type="text" id="title" name="title" required="required" class="form-control" maxlength="46" title="제목" value="{{ $data['Title'] }}" placeholder="제목 입니다.">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label col-md-1-1" for="is_best">HOT</label>
+                    <label class="control-label col-md-1-1" for="is_best">BEST</label>
                     <div class="col-md-4 form-inline">
                         <div class="checkbox">
-                            <input type="checkbox" id="is_best" name="is_best" value="1" class="flat" @if($data['IsBest']=='1')checked="checked"@endif/> <label class="inline-block mr-5 red" for="is_best">HOT</label>
+                            <input type="checkbox" id="is_best" name="is_best" value="1" class="flat" @if($data['IsBest']=='1')checked="checked"@endif/> <label class="inline-block mr-5 red" for="is_best">BEST</label>
                         </div>
                     </div>
                     <label class="control-label col-md-1-1 d-line" for="is_use_y">사용여부<span class="required">*</span></label>
-                    <div class="col-md-4 item form-inline ml-12-dot">
+                    <div class="col-md-4 ml-12-dot item form-inline">
                         <div class="radio">
                             <input type="radio" id="is_use_y" name="is_use" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['IsUse']=='Y')checked="checked"@endif/> <label for="is_use_y" class="input-label">사용</label>
                             <input type="radio" id="is_use_n" name="is_use" class="flat" value="N" @if($data['IsUse']=='N')checked="checked"@endif/> <label for="is_use_n" class="input-label">미사용</label>
                         </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-1-1" for="title">제목<span class="required">*</span></label>
+                    <div class="col-md-10 item">
+                        <input type="text" id="title" name="title" required="required" class="form-control" maxlength="46" title="제목" value="{{ $data['Title'] }}" placeholder="제목 입니다.">
                     </div>
                 </div>
 
@@ -122,7 +122,7 @@
                     <div class="col-md-10 form-inline">
                         실제 <input type="text" id="read_count" name="read_count" class="form-control" title="실제" readonly="readonly" value="{{$data['ReadCnt']}}" style="width: 60px; padding:5px">
                         +
-                        생성 <input type="number" id="setting_readCnt" name="setting_readCnt" class="form-control" title="생성" value="{!! empty($data['SettingReadCnt']) ? '0' : $data['SettingReadCnt'] !!}" style="width: 70px; padding:5px">
+                        생성 <input type="number" id="setting_readCnt" name="setting_readCnt" class="form-control" title="생성" value="{{$data['SettingReadCnt']}}" style="width: 70px; padding:5px">
                         =
                         노출 <input type="text" id="total_read_count" name="total_read_count" class="form-control" title="노출" readonly="readonly" value="" style="width: 70px; padding:5px">
                         &nbsp;&nbsp;&nbsp;&nbsp;• 사용자단에 노출되는 조회수는‘실조회수 + 조회수생성’입니다.
@@ -224,7 +224,7 @@
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
-                        location.href='{{ site_url("/board/{$boardName}") }}/' + getQueryString();
+                        location.replace('{{ site_url("/board/{$boardName}") }}/' + getQueryString());
                     }
                 }, showValidateError, addValidate, false, 'alert');
             });

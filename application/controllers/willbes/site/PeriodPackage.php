@@ -66,6 +66,7 @@ class PeriodPackage extends \app\controllers\FrontController
         }
 
         $order_by = [];
+        $model_method = 'subListProduct';
 
         switch ($pack) {
             case '648001':
@@ -73,7 +74,7 @@ class PeriodPackage extends \app\controllers\FrontController
                 break;
             case '648002':
                 $view_page = 'show_choice';
-                $order_by = ['B.IsEssential' => 'DESC', 'B.SubGroupName' => 'ASC'];
+                $model_method = 'subListProductGroupBy';
                 break;
         }
 
@@ -86,19 +87,37 @@ class PeriodPackage extends \app\controllers\FrontController
         $data['contents'] = $this->packageFModel->findProductContents($prod_code); //상품 컨텐츠 추출
         $data['ProdPriceData'] = json_decode($data['ProdPriceData'], true); //상품 가격 정보 치환
 
-        $data_sublist = $this->packageFModel->subListProduct($this->_learn_pattern, $prod_code, [], null, null, $order_by);   //패키지 하위 강좌 목록
+        $data_sublist = $this->packageFModel->{$model_method}($this->_learn_pattern, $prod_code, [], null, null, $order_by);   //패키지 하위 강좌 목록
 
-        foreach ($data_sublist as $idx => $row) {
-            $data_sublist[$idx]['ProdBookData'] = json_decode($row['ProdBookData'], true);
-            $data_sublist[$idx]['LectureSampleData'] = json_decode($row['LectureSampleData'], true);
-            $data_sublist[$idx]['ProfReferData'] = json_decode($row['ProfReferData'], true);
-            $data_sublist[$idx]['ProdPriceData'] = json_decode($row['ProdPriceData'], true);
+        $selected_subjects = [];
+
+        // 일반형일 경우 데이터별 항목 풀기
+        if($pack === '648001') {
+
+            foreach ($data_sublist as $idx => $row) {
+                $data_sublist[$idx]['ProdBookData'] = json_decode($row['ProdBookData'], true);
+                $data_sublist[$idx]['LectureSampleData'] = json_decode($row['LectureSampleData'], true);
+                $data_sublist[$idx]['ProfReferData'] = json_decode($row['ProfReferData'], true);
+                $data_sublist[$idx]['ProdPriceData'] = json_decode($row['ProdPriceData'], true);
+            }
+
+        // 선택형일 경우 과목별 교수 묶기
+        } else  {
+
+            //필수,선택별 과목 묶기
+            $selected_subjects = array_data_pluck($data_sublist, 'SubjectName', ['IsEssential','SubjectIdx']);
+
+            foreach ($data_sublist as $idx => $row) {
+                $data_sublist[$idx]['ProfReferData'] = json_decode($row['ProfReferData'], true);
+            }
+
         }
 
         $this->load->view('site/periodpackage/' . $view_page, [
             'arr_input' => $arr_input,
             'data' => $data,
             'data_sublist' => $data_sublist,
+            'selected_subjects' => $selected_subjects,
             'learn_pattern' => $this->_learn_pattern
         ]);
     }

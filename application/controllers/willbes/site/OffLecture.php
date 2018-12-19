@@ -54,8 +54,8 @@ class OffLecture extends \app\controllers\FrontController
 
         // 과목 조회
         if (empty($cate_code) === false) {
-            if ($this->_site_code == '2004') {
-                // 공무원일 경우 카테고별 직렬, 직렬별 과목 조회
+            if (config_app('SiteGroupCode') == '1002') {
+                // 사이트그룹이 공무원일 경우 카테고별 직렬, 직렬별 과목 조회
                 $arr_base['series'] = $this->baseProductFModel->listSeriesCategoryMapping($this->_site_code, $cate_code);
                 $arr_base['subject'] = $this->baseProductFModel->listSubjectSeriesMapping($this->_site_code, $cate_code, element('series_ccd', $arr_input));
             } else {

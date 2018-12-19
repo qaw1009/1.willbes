@@ -204,7 +204,7 @@
                 'cate_code' : '{{$def_cate_code}}',
                 'board_idx' : $(this).data('board-idx')
             };
-            sendAjax('{{ site_url('/support/studyComment/') }}', data, function(ret) {
+            sendAjax('{{ front_url('/support/studyComment/') }}', data, function(ret) {
                 $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');
             }, showAlertError, false, 'GET', 'html');
         });

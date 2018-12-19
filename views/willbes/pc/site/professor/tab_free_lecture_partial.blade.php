@@ -56,7 +56,7 @@
                             </div>
                             <dl class="w-info">
                                 <dt class="mr20">
-                                    <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', 'hover1','{{ site_url() }}lecture', 'pattern/{{ $pattern }}/')">
+                                    <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', 'hover1','{{ site_url('/lecture') }}', 'pattern/{{ $pattern }}/')">
                                         <strong>강좌상세정보</strong>
                                     </a>
                                 </dt>
@@ -137,7 +137,7 @@
                                     <div class="w-sub tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>
                                 @endif
                                 <div class="w-sub">
-                                    <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', 'hover2','{{ site_url() }}lecture', 'pattern/{{ $pattern }}/')"><strong>교재상세정보</strong></a>
+                                    <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', 'hover2','{{ site_url('/lecture') }}', 'pattern/{{ $pattern }}/')"><strong>교재상세정보</strong></a>
                                 </div>
                                 <div class="prod-book-memo d_none">{{ $row['ProdBookMemo'] }}</div>
                             @else

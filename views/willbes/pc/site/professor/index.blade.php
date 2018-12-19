@@ -166,7 +166,7 @@
             var ele_id = $(this).data('subject-idx') + '' + $prof_idx;
             var data = { 'ele_id' : ele_id };
 
-            sendAjax('{{ site_url('/professor/profile/prof-idx/') }}' + $prof_idx, data, function(ret) {
+            sendAjax('{{ front_url('/professor/profile/prof-idx/') }}' + $prof_idx, data, function(ret) {
                 $('#ProfileWrap' + ele_id).html(ret).show().css('display', 'block').trigger('create');
             }, showError, false, 'GET', 'html');
 

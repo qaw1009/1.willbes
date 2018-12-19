@@ -49,13 +49,11 @@ readme.rst
 /storage/cache/*
 !/storage/cache/index.html
 !/storage/cache/views/index.html
-!/storage/cache/memcached/index.html
 /storage/logs/*
 !/storage/logs/index.html
 /storage/sessions/*
 !/storage/sessions/index.html
 /storage/uploads/*
-!/storage/uploads/index.html
 /storage/cli/*
 !/storage/cli/index.html
 !/storage/cli/task/index.html

@@ -160,13 +160,68 @@
 
             <div class="willbes-Lec-Table-Overflow">
                 <div class="willbes-Lec-Table bdb-none">
-                    <table cellspacing="0" cellpadding="0" class="lecTable under-gray">
+                    <table cellspacing="0" cellpadding="0" class="lecTable lecTable15 under-gray">
                         <colgroup>
                             <col style="width: 75px;">
                             <col style="width: 85px;">
                             <col style="width: 780px;">
                         </colgroup>
                         <tbody>
+                            <tr>
+                                <td class="w-list">국어</td>
+                                <td class="w-img"><img src="{{ img_url('sample/prof3.jpg') }}"></td>
+                                <td class="w-data tx-left pl25">
+                                    <dl class="w-info">
+                                        <dt class="w-name">이현나</dt>
+                                        <dt><span class="row-line">|</span></dt>
+                                        <dt class="w-tit">2017 이현나 국어 기출문제(11-12월)</dt>
+                                    </dl>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-list">국어</td>
+                                <td class="w-img"><img src="{{ img_url('sample/prof3-1.jpg') }}"></td>
+                                <td class="w-data tx-left pl25">
+                                    <dl class="w-info">
+                                        <dt class="w-name">이현나</dt>
+                                        <dt><span class="row-line">|</span></dt>
+                                        <dt class="w-tit">2017 이현나 국어 기출문제(11-12월)</dt>
+                                    </dl>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-list">국어</td>
+                                <td class="w-img"><img src="{{ img_url('sample/prof3-2.jpg') }}"></td>
+                                <td class="w-data tx-left pl25">
+                                    <dl class="w-info">
+                                        <dt class="w-name">이현나</dt>
+                                        <dt><span class="row-line">|</span></dt>
+                                        <dt class="w-tit">2017 이현나 국어 실전 동형모의고사(3월)</dt>
+                                    </dl>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-list">국어</td>
+                                <td class="w-img"><img src="{{ img_url('sample/prof3-3.jpg') }}"></td>
+                                <td class="w-data tx-left pl25">
+                                    <dl class="w-info">
+                                        <dt class="w-name">이현나</dt>
+                                        <dt><span class="row-line">|</span></dt>
+                                        <dt class="w-tit">2017 이현나 국어 실전 동형모의고사(3월)</dt>
+                                    </dl>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-list">국어</td>
+                                <td class="w-img"><img src="{{ img_url('sample/prof3-4.jpg') }}"></td>
+                                <td class="w-data tx-left pl25">
+                                    <dl class="w-info">
+                                        <dt class="w-name">이현나</dt>
+                                        <dt><span class="row-line">|</span></dt>
+                                        <dt class="w-tit">2017 이현나 국어 실전 동형모의고사(3월)</dt>
+                                    </dl>
+                                </td>
+                            </tr>
                             <tr>
                                 <td class="w-list">국어</td>
                                 <td class="w-img"><img src="{{ img_url('sample/prof3.jpg') }}"></td>

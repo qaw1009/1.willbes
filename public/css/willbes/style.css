@@ -3372,7 +3372,7 @@ table.auTable tr td {
     overflow-x: hidden;
     overflow-y: auto;
     width: 940px;
-    height: 484px;
+    height: 364px;
 }
 
 /* subContainer : Content : Lec-Table : d_block */
@@ -3453,6 +3453,12 @@ table.lecTable {
 table.lecTable tr td {
     line-height: 16px;
     padding: 30px 0;
+}
+table.lecTable20 tr td {
+    padding: 20px 0;
+}
+table.lecTable15 tr td {
+    padding: 15px 0;
 }
 table.lecTable tr td.w-data {
     line-height: 30px;

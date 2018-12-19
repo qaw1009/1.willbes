@@ -65,8 +65,8 @@
     </div>
     <div class="Depth">
         <img src="{{ img_url('sub/icon_home.gif') }}"> 
-        <span class="1depth"><span class="depth-Arrow">></span><strong>패키지</strong></span>
-        <span class="2depth"><span class="depth-Arrow">></span><strong>기간제패키지(일반)</strong></span>
+        <span class="1depth"><span class="depth-Arrow">></span><strong>PASS</strong></span>
+        <span class="2depth"><span class="depth-Arrow">></span><strong>무한 PASS</strong></span>
     </div>
     <div class="Content p_re">
 
@@ -162,32 +162,27 @@
             <ul class="sbjProf">
                 <li>
                     <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
-                    <img src="{{ img_url('sample/prof8_1.jpg') }}">
+                    <img src="{{ img_url('sample/prof9_1.png') }}">
                     <div class="prof-Name">신광은</div>
                 </li>
                 <li>
                     <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
-                    <img src="{{ img_url('sample/prof8_1.jpg') }}">
+                    <img src="{{ img_url('sample/prof9_1.png') }}">
                     <div class="prof-Name">신광은</div>
                 </li>
                 <li>
                     <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
-                    <img src="{{ img_url('sample/prof8_1.jpg') }}">
+                    <img src="{{ img_url('sample/prof9_1.png') }}">
                     <div class="prof-Name">신광은</div>
                 </li>
                 <li>
                     <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
-                    <img src="{{ img_url('sample/prof8_1.jpg') }}">
+                    <img src="{{ img_url('sample/prof9_1.png') }}">
                     <div class="prof-Name">신광은</div>
                 </li>
                 <li>
                     <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
-                    <img src="{{ img_url('sample/prof8_1.jpg') }}">
-                    <div class="prof-Name">신광은</div>
-                </li>
-                <li>
-                    <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
-                    <img src="{{ img_url('sample/prof8_2.jpg') }}">
+                    <img src="{{ img_url('sample/prof9_2.png') }}">
                     <div class="prof-Name">신광은</div>
                 </li>
             </ul>
@@ -196,7 +191,7 @@
             <ul class="sbjProf">
                 <li>
                     <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
-                    <img src="{{ img_url('sample/prof8_1.jpg') }}">
+                    <img src="{{ img_url('sample/prof9_1.png') }}">
                     <div class="prof-Name">신광은</div>
                 </li>
             </ul>
@@ -205,47 +200,47 @@
             <ul class="sbjProf">
                 <li>
                     <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
-                    <img src="{{ img_url('sample/prof8_1.jpg') }}">
+                    <img src="{{ img_url('sample/prof9_1.png') }}">
                     <div class="prof-Name">신광은</div>
                 </li>
                 <li>
                     <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
-                    <img src="{{ img_url('sample/prof8_1.jpg') }}">
+                    <img src="{{ img_url('sample/prof9_1.png') }}">
                     <div class="prof-Name">신광은</div>
                 </li>
                 <li>
                     <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
-                    <img src="{{ img_url('sample/prof8_2.jpg') }}">
+                    <img src="{{ img_url('sample/prof9_2.png') }}">
                     <div class="prof-Name">신광은</div>
                 </li>
                 <li>
                     <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
-                    <img src="{{ img_url('sample/prof8_1.jpg') }}">
+                    <img src="{{ img_url('sample/prof9_1.png') }}">
                     <div class="prof-Name">신광은</div>
                 </li>
                 <li>
                     <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
-                    <img src="{{ img_url('sample/prof8_1.jpg') }}">
+                    <img src="{{ img_url('sample/prof9_1.png') }}">
                     <div class="prof-Name">신광은</div>
                 </li>
                 <li>
                     <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
-                    <img src="{{ img_url('sample/prof8_2.jpg') }}">
+                    <img src="{{ img_url('sample/prof9_2.png') }}">
                     <div class="prof-Name">신광은</div>
                 </li>
                 <li>
                     <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
-                    <img src="{{ img_url('sample/prof8_1.jpg') }}">
+                    <img src="{{ img_url('sample/prof9_1.png') }}">
                     <div class="prof-Name">신광은</div>
                 </li>
                 <li>
                     <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
-                    <img src="{{ img_url('sample/prof8_1.jpg') }}">
+                    <img src="{{ img_url('sample/prof9_1.png') }}">
                     <div class="prof-Name">신광은</div>
                 </li>
                 <li>
                     <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
-                    <img src="{{ img_url('sample/prof8_2.jpg') }}">
+                    <img src="{{ img_url('sample/prof9_2.png') }}">
                     <div class="prof-Name">신광은</div>
                 </li>
             </ul>

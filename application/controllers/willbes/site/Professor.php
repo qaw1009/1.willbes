@@ -186,6 +186,7 @@ class Professor extends \app\controllers\FrontController
             'arr_input' => $arr_input,
             'arr_subject2professors' => $arr_subject2professor,
             'def_cate_code' => $this->_def_cate_code,
+            'prof_idx' => $prof_idx,
             'data' => $data,
             'products' => $products,
             'tab_data' => $tab_data,

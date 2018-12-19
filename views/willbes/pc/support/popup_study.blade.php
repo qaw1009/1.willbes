@@ -7,8 +7,8 @@
         <form class="form-horizontal form-label-left" id="_ajax_search_form" name="_ajax_search_form" method="POST" onsubmit="return false;" novalidate>
             {!! csrf_field() !!}
             <input type="hidden" id="search_cate_code" name="search_cate_code" value="{{element('cate_code', $arr_input)}}">
-            <input type="hidden" id="search_subject_idx" name="search_subject_idx">
-            <input type="hidden" id="search_prof_idx" name="search_prof_idx">
+            <input type="hidden" id="search_subject_idx" name="search_subject_idx" value="{{element('subject_idx', $arr_input)}}">
+            <input type="hidden" id="search_prof_idx" name="search_prof_idx" value="{{element('prof_idx', $arr_input)}}">
             <input type="hidden" id="search_prod_code" name="search_prod_code">
             <input type="hidden" id="orderby" name="orderby">
 
@@ -31,7 +31,7 @@
                             <th class="tx-gray">과목선택</th>
                             <td colspan="8">
                                 <ul class="curriSelect">
-                                    <li><a href="#none" id="subject_all" onclick="ajaxProfInfo('{{element('cate_code', $arr_input)}}', 'all');" class="subject-list on">전체</a></li>
+                                    <li><a href="#none" id="subject_all" onclick="ajaxProfInfo('{{element('cate_code', $arr_input)}}', 'all');" class="subject-list">전체</a></li>
                                     @foreach($arr_base['subject'] as $idx => $row)
                                         <li><a href="#none" id="subject_{{$row['SubjectIdx']}}" class="subject-list" onclick="ajaxProfInfo('{{element('cate_code', $arr_input)}}', '{{$row['SubjectIdx']}}');">{{$row['SubjectName']}}</a></li>
                                     @endforeach
@@ -360,6 +360,7 @@
             'page' : page,
             'orderby' : orderby
         };
+        console.log(data);
         sendAjax(_url, data, function(ret) {
             var set_table_style;
             var param_board_idx = "{{ element('board_idx', $arr_input) }}";
@@ -460,11 +461,14 @@
     }
 
     //교수목록조회
-    function ajaxProfInfo(cate_code, subject_idx) {
+    function ajaxProfInfo(cate_code, subject_idx, ajax_call_type = true) {
         $('#search_subject_idx').val(subject_idx);
-        $('#search_prof_idx').val('');
         $('.subject-list').attr('class','subject-list off');
         $('#subject_'+subject_idx).attr('class','subject-list on');
+
+        if (ajax_call_type == true) {
+            $('#search_prof_idx').val('');
+        }
 
         var _url = '{{ front_url("/support/studyComment/ajaxProfInfo") }}';
         var data = {
@@ -494,7 +498,10 @@
                 }
             }
         }, showError, false, 'POST');
-        callAjax(1);
+
+        if (ajax_call_type == true) {
+            callAjax(1);
+        }
     }
 
     function starCount(count) {

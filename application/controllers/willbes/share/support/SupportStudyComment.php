@@ -88,6 +88,7 @@ class SupportStudyComment extends BaseSupport
      */
     public function index()
     {
+
         $arr_input = array_merge($this->_reqG(null));
         $site_code = element('site_code', $arr_input, $this->_site_code);
         $cate_code = element('cate_code', $arr_input, $this->_cate_code);

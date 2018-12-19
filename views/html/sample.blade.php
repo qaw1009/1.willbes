@@ -5,7 +5,7 @@
 
 <h3>HTML 퍼블리싱 페이지</h3>  
 
-<div style="float:left; width: 350px; height: 750px; border-right: 1px solid #ccc; margin-right: 15px; font-size: 15px;">
+<div style="float:left; width: 390px; height: 750px; border-right: 1px solid #ccc; margin-right: 15px; font-size: 14px;">
 
     <a href="{{ site_url('/home/html/main') }}" target="_blank">통합메인</a>&nbsp;/
     <a href="{{ site_url('/home/html/main_cop') }}" target="_blank">경찰메인</a>&nbsp;/
@@ -33,9 +33,11 @@
 
     <a href="{{ site_url('/home/html/diypackage') }}" target="_blank">패키지 > DIY패키지 수강신청 page 이동</a><br/><br/>
 
-    <a href="{{ site_url('/home/html/packagesub3') }}" target="_blank">패키지 > 기간제패키지(일반) 상세 page 이동</a><br/><br/>
+    <a href="{{ site_url('/home/html/packagesub5') }}" target="_blank">패키지 > 기간제패키지(일반 Table Ver) 상세 page 이동</a><br/><br/>
 
-    <a href="{{ site_url('/home/html/packagesub4') }}" target="_blank">패키지 > 기간제패키지(선택) 상세 page 이동</a><br/><br/>
+    <a href="{{ site_url('/home/html/packagesub3') }}" target="_blank">패키지 > 기간제패키지(일반 교수선택 Ver) 상세 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/packagesub4') }}" target="_blank">패키지 > 기간제패키지(선택 교수선택 Ver) 상세 page 이동</a><br/><br/>
 
     <a href="{{ site_url('/home/html/list') }}" target="_blank">강좌 > 단강좌,무료강좌 수강신청 page 이동</a><br/><br/>
 
@@ -43,7 +45,7 @@
 
 </div>
 
-<div style="float:left; width: 360px; height: 750px; border-right: 1px solid #ccc; margin-right: 15px; font-size: 15px;">
+<div style="float:left; width: 340px; height: 750px; border-right: 1px solid #ccc; margin-right: 15px; font-size: 14px;">
 
     <a href="{{ site_url('/home/html/event_ing') }}" target="_blank">이벤트 > 진행중인 이벤트 page 이동</a><br/><br/>
 
@@ -79,7 +81,7 @@
 
 </div>
 
-<div style="float:left; width: 350px; height: 750px; border-right: 1px solid #ccc; margin-right: 15px; font-size: 15px;">
+<div style="float:left; width: 340px; height: 750px; border-right: 1px solid #ccc; margin-right: 15px; font-size: 14px;">
 
     <a href="{{ site_url('/home/html/counsel1') }}" target="_blank">상담실 > 일반상담 page 이동</a><br/><br/>
 
@@ -125,7 +127,7 @@
 
 </div>
 
-<div style="float:left; width: 420px; height: 750px; border-right: 1px solid #ccc; margin-right: 15px; font-size: 15px;">
+<div style="float:left; width: 400px; height: 750px; border-right: 1px solid #ccc; margin-right: 15px; font-size: 14px;">
 
     <a href="{{ site_url('/home/html/mypage_pass_index') }}" target="_blank">내강의실 > 무한PASS존 Index page 이동</a><br/><br/>
 
@@ -167,7 +169,7 @@
 
 </div>
 
-<div style="float:left; width: 330px; height: 750px; font-size: 15px;">
+<div style="float:left; width: 330px; height: 750px; font-size: 14px;">
 
     <a href="{{ site_url('/home/html/mypage_support1') }}" target="_blank">내강의실 > 학습지원관리 > 쪽지관리 page 이동</a><br/><br/>
 

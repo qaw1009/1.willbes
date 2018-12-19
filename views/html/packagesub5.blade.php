@@ -122,7 +122,7 @@
         <!-- willbes-Lec-Package-Price -->
 
         <div class="willbes-Lec NG c_both">
-            <div class="willbes-Lec-Subject tx-dark-black">교수선택</div>
+            <div class="willbes-Lec-Subject tx-dark-black">강좌구성</div>
             <!-- willbes-Lec-Subject -->
 
             <div class="willbes-Lec-Line">-</div>

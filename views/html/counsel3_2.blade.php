@@ -115,7 +115,7 @@
                     </table>
                 </div>
             </div>
-            <div class="willbes-counsel_step mt60 c_both">
+            <div class="willbes-counsel_step willbes-counsel_step2 mt60 c_both">
                 <div class="step mb50 NG">
                     <ul>
                         <li><div class="num">01</div>상담일자/시간선택</li>
@@ -134,7 +134,7 @@
                         </dl>
                     </div>
                 </div>
-                <div class="willbes-User-Info p_re pb30">
+                <div class="willbes-User-Info willbes-User-Info2 p_re pb30">
                     <div class="InfoTable GM">
                         <table cellspacing="0" cellpadding="0" class="classTable userInfoTable counselTable under-gray bdt-gray bdb-gray tx-gray">
                             <colgroup>

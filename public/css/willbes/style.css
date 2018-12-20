@@ -5550,7 +5550,15 @@ table.counselTable .w-info .Detail-gradeBox {
     color: #363636;
     text-decoration: underline;
 }
-
+.willbes-counsel_step {
+    float: left;
+    width: 940px;
+}
+.willbes-User-Info {
+    float: left;
+    width: 940px;
+    clear: both;
+}
 
 
 /*********************************************     CART PAGE     *********************************************/

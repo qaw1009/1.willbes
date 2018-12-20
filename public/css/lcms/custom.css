@@ -34,6 +34,7 @@ body.no_sidebar {
 /* top_col */
 .top_col, .top_col .nav-tabs {
     background: #fff !important;
+    margin-bottom: 1px !important;
 }
 .top_col .main_top_header.row {
     border-bottom: 1px solid #e6e9ed;
@@ -103,7 +104,7 @@ body.no_sidebar {
 }
 .top_nav_fixed .left_col {
     position: relative;
-    top: 63px;
+    top: 56px;  /*top: 63px;*/
     z-index: 998 !important;
 }
 .top_nav_fixed .right_col {
@@ -131,7 +132,7 @@ body.no_sidebar {
     margin-top: -63px;
 }
 .nav.side-menu>li:first-child {
-    margin-top: 75px;
+    margin-top: 65px;   /*margin-top: 75px;*/
 }
 .menu_section>ul {
     margin-top: 0;
@@ -1069,7 +1070,7 @@ table.dataTable tbody>tr.selected, table.dataTable tbody>tr>.selected {
         position: fixed; margin-top: 0;
     }
     .top_nav_fixed .right_col {
-        top: 125px;
+        top: 112px; /*top: 125px;*/
     }
     footer {
         padding: 5px 20px 10px;

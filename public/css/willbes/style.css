@@ -2383,13 +2383,13 @@ table.auTable tr td {
 .w-gosi-Guide {letter-spacing: 0}
 .w-gosi-Guide .examInfoGu2 .hTy4 {background: url("../../img/willbes/gosi/guide/left_arrow.png") no-repeat 0 center; font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"; margin: 30px 0 10px; font-size:16px; font-weight:bold; color: #24606a; line-height: 30px; padding-left: 25px;}
 
-.examInfoGu3 {padding: 45px}
+.examInfoGu3 {padding: 35px 45px 55px}
 .examInfoGu3 .hTy {font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"}
 .examInfoGu3 .hTy.txt-gray {font-size: 14px; font-weight:bold; color: #555; line-height: 18px}
 .examInfoGu3 .hTy.txt-red {font-size: 14px; font-weight:bold; color: #d52b2b; line-height: 18px}
-.examInfoGu3 .hTy4 {margin: 0 0 20px; font-size:16px; font-weight:bold; color: #026f61; line-height: 30px}
+.examInfoGu3 .hTy4 {width: 786px; margin: 0 auto 20px; font-size:16px; font-weight:bold; color: #026f61; line-height: 30px}
 
-.examInfoGu3 .hTy5 {margin: 0 0 15px}
+.examInfoGu3 .hTy5 {width: 786px; margin: 0 auto 15px}
 .examInfoGu3 .hTy5 span {font-size: 13px}
 
 .examInfoGu3 .hTy6.center {margin: 15px 60px 0; font-size:13px}
@@ -2425,22 +2425,30 @@ table.auTable tr td {
     left: inherit;
     right: -45px;
 }
+.sliderGuide .bx-wrapper .bx-pager {
+    font-size: 12px;
+    font-weight: 300;
+    padding: 0;
+    bottom: -40px;
+}
+
 .guide_slider {
     width: 848px !important;
 }
 .basicWd {
-    width:760px;
+    width:786px;
     margin: 0 auto;
 }
 .basicWd1 tr td {
     padding: 20px;
 }
+.basicWd .txtL ul li {margin-bottom:5px;padding-left:8px;background: url("../../img/willbes/cop/guide/dot_sq3.gif") no-repeat 0 6px}
 
 .mgBox {
     background: #f0f0f0;
     border: 1px solid #dbdbdb;
     padding: 25px 30px;
-    width: 760px;
+    width: 786px;
     margin: 20px auto 0;
 }
 .mgBox .tt {
@@ -2461,6 +2469,12 @@ table.auTable tr td {
 }
 .mgBox ul li {
     margin-top: 15px;
+    padding-left: 10px;
+    background: url("../../img/willbes/cop/guide/dot_sq3.gif") no-repeat 0 7px;
+}
+.mgBox dl dt {
+    background: url("../../img/willbes/cop/guide/dot_sq3.gif") no-repeat 0 7px;
+    padding-left: 10px;
 }
 .mgBox ul li:first-child {
     margin-top: 0;
@@ -2468,8 +2482,11 @@ table.auTable tr td {
 .mgBox_no {
     border: 1px solid #dbdbdb;
     padding: 40px 60px;
-    width: 760px;
+    width: 786px;
     margin: 20px auto 0;
+}
+.mgBox span {
+    vertical-align: baseline;
 }
 
 .tableBox tr th {

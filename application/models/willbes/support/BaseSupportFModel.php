@@ -17,6 +17,7 @@ class BaseSupportFModel extends WB_Model
         ,'code' => 'lms_sys_code'
         ,'site' => 'lms_site'
         ,'mylecture_pkg' => 'vw_pkg_mylecture'
+        ,'mylecture_on' => 'vw_on_mylecture'
         ,'board_tpass_member_authority' => 'lms_board_tpass_member_authority'
     ];
 
@@ -103,7 +104,6 @@ class BaseSupportFModel extends WB_Model
         return $query->result_array();
     }
 
-
     /**
      * Campus 목록 추출
      * @param $site_code
@@ -114,9 +114,7 @@ class BaseSupportFModel extends WB_Model
         $arr_condition=[
             'EQ' => ['A.SiteCode'=>$site_code]
         ];
-
         $column = 'B.SiteCode,B.CampusCcd,C.CcdName';
-
         $from  = '
             from 
                 lms_site A 
@@ -126,13 +124,10 @@ class BaseSupportFModel extends WB_Model
                 A.IsCampus=\'Y\' and A.IsStatus=\'Y\' and B.IsStatus=\'Y\' and C.IsStatus=\'Y\' and C.IsUse=\'Y\'
         ';
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
-
         $order_by = ' order by C.OrderNum ASC';
-
         $query = $this->_conn->query('select ' . $column . $from . $where. $order_by);
         return $query->result_array();
     }
-
 
     /**
      * 학습프로그램 목록 추출
@@ -143,20 +138,15 @@ class BaseSupportFModel extends WB_Model
         $arr_condition=[
             'EQ' => ['GroupCcd'=>'671']
         ];
-
         $column = 'Ccd,CcdName, CcdValue, CcdDesc, CcdEtc';
-
         $from = '
             from 
                 '.$this->_table['code'] .'
             WHERE 
                 IsStatus=\'Y\' and IsUse=\'Y\'
         ';
-
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
-
         $order_by = ' order by OrderNum ASC';
-
         $query = $this->_conn->query('select '. $column . $from . $where. $order_by);
         return $query->result_array();
     }
@@ -201,6 +191,26 @@ class BaseSupportFModel extends WB_Model
         }
         //echo $this->_conn->last_query();
         return true;
+    }
+
+    /**
+     * 수강목록 조회
+     * @param array $arr_condition
+     * @return array|mixed
+     */
+    public function getOnMyLectureArray($arr_condition = [])
+    {
+        $query = "SELECT STRAIGHT_JOIN DISTINCT ProdCodeSub, ProdName";
+        $query .= " FROM {$this->_table['mylecture_on']}";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $query .= $where->getMakeWhere(false);
+
+        $query = $this->_conn->query($query);
+        $data = $query->result_array();
+
+        $data = array_pluck($data, 'ProdName', 'ProdCodeSub');
+        return $data;
     }
 
     /**

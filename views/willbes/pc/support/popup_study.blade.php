@@ -47,14 +47,9 @@
                             <td colspan="8" class="tx-left">
                                 <select id="sel_prod_code" name="sel_prod_code" title="강좌를 선택해 주세요.">
                                     <option value="">강좌를 선택해 주세요.</option>
-                                    <option value="200105">2018 신광은 형사소송법 기본이론 (18년 9월)</option>
-                                    <option value="200107">2018 신광은 형사소송법 파이널 실전모의고사</option>
-                                    <option value="200113">2018 장정훈 경찰학개론 기본이론 (18년 9월)</option>
-                                    <option value="200114">2018년 장정훈 경찰학개론 파이널 실전모의고사</option>
-                                    <option value="200120">2018 기미진 기특한 국어 아침 실전동형모의고사 (9월)</option>
-                                    <option value="200119">2018 [서울시대비] 기미진 국어 적중 파이널특강</option>
-                                    <option value="200117">2018 한덕현 영어 새벽실전모의고사(스킬올킬 96) (9월)</option>
-                                    <option value="200118">2018 한덕현 제니스영어 실전문법464 (짝수편) (9-10월)</option>
+                                    @foreach($arr_base['on_my_lecture'] as $key => $val)
+                                        <option value="{{$key}}">{{$val}}</option>
+                                    @endforeach
                                 </select>
                             </td>
                         </tr>
@@ -153,19 +148,12 @@
                                     @foreach($arr_base['professor'] as $row)
                                         <option class="{{$row['SubjectIdx']}}" value="{{$row['ProfIdx']}}" @if(empty($arr_input['prof_idx']) === false && $arr_input['prof_idx'] == $row['ProfIdx'])selected="selected"@endif>{{$row['wProfName']}}</option>
                                     @endforeach
-                                    {{--<option value="50004">김현식</option>
-                                    <option value="50070">테스트</option>--}}
                                 </select>
                                 <select id="study_prod_code" name="study_prod_code" title="강좌" class="seleLec" required="required" style="width: 360px;">
                                     <option value="">강좌선택</option>
-                                    <option value="200105">2018 신광은 형사소송법 기본이론 (18년 9월)</option>
-                                    <option value="200107">2018 신광은 형사소송법 파이널 실전모의고사</option>
-                                    <option value="200113">2018 장정훈 경찰학개론 기본이론 (18년 9월)</option>
-                                    <option value="200114">2018년 장정훈 경찰학개론 파이널 실전모의고사</option>
-                                    <option value="200120">2018 기미진 기특한 국어 아침 실전동형모의고사 (9월)</option>
-                                    <option value="200119">2018 [서울시대비] 기미진 국어 적중 파이널특강</option>
-                                    <option value="200117">2018 한덕현 영어 새벽실전모의고사(스킬올킬 96) (9월)</option>
-                                    <option value="200118">2018 한덕현 제니스영어 실전문법464 (짝수편) (9-10월)</option>
+                                    @foreach($arr_base['on_my_lecture'] as $key => $val)
+                                        <option value="{{$key}}">{{$val}}</option>
+                                    @endforeach
                                 </select>
                             </td>
                         </tr>

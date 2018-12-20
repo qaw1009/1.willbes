@@ -88,7 +88,6 @@ class SupportStudyComment extends BaseSupport
      */
     public function index()
     {
-
         $arr_input = array_merge($this->_reqG(null));
         $site_code = element('site_code', $arr_input, $this->_site_code);
         $cate_code = element('cate_code', $arr_input, $this->_cate_code);
@@ -112,6 +111,16 @@ class SupportStudyComment extends BaseSupport
 
         // 전체 교수 목록
         $arr_base['professor'] = $this->baseProductFModel->listProfessorSubjectMapping($site_code, ['ProfReferData', 'ProfEventData', 'IsNew'], $cate_code);
+
+        // 수강중인 강좌 목록 [단강좌 AND 수강이력 AND 강좌종료일 + 30 데이터]
+        $arr_condition = [
+            'RAW' => [
+                'MemIdx = ' => empty($this->session->userdata('mem_idx')) === true ? '\'\'' : $this->session->userdata('mem_idx'),
+                'RealLecEndDate >= ' => 'DATE_FORMAT(DATE_ADD(NOW(), INTERVAL +30 DAY),\'%Y-%m-%d\')',
+                'lastStudyDate != ' => '\'\''
+            ]
+        ];
+        $arr_base['on_my_lecture'] = $this->supportBoardTwoWayFModel->getOnMyLectureArray($arr_condition);
 
         $this->load->view('support/popup_study', [
             'arr_input' => $arr_input,

@@ -2451,6 +2451,10 @@ table.auTable tr td {
     width: 786px;
     margin: 20px auto 0;
 }
+.mgBox-none {
+    background: none;
+    border: none;
+}
 .mgBox .tt {
     background: url("../../img/willbes/gosi/guide/right_arrow.png") no-repeat 0 6px;
     font-size: 16px;
@@ -2487,6 +2491,11 @@ table.auTable tr td {
 }
 .mgBox span {
     vertical-align: baseline;
+}
+ul.dot li {
+    margin-top: 15px;
+    padding-left: 10px;
+    background: url("../../img/willbes/cop/guide/dot_sq3.gif") no-repeat 0 7px;
 }
 
 .tableBox tr th {

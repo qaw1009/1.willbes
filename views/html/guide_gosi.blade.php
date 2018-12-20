@@ -558,12 +558,18 @@
                                                         <tr>
                                                             <th>취업지원대상자</th>
                                                             <th>과목별 만점의 10% 또는 5%</th>
-                                                            <th rowspan="3">
-                                                                취업지원대상자 가점과 의사상자 등<br/>
-                                                                가점은 1개만 적용<br/><br/>
-                                                                취업지원대상자/ 의사상자 등 가점과<br/>
-                                                                자격증 가산점은 각각 적용
-                                                            </th>
+                                                            <td class="txtL" rowspan="3">
+                                                                <ul>
+                                                                    <li>
+                                                                        취업지원대상자 가점과 의사상자 등<br/>
+                                                                        가점은 1개만 적용
+                                                                    </li>
+                                                                    <li>
+                                                                        취업지원대상자/ 의사상자 등 가점과<br/>
+                                                                        자격증 가산점은 각각 적용
+                                                                    </li>
+                                                                </ul>
+                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <th>
@@ -582,20 +588,20 @@
                                                     </tbody>
                                                 </table>
                                             </div>
-                                            <h5 class="hTy6 hTy txt-red left pl45"><span>국가직의 경우, 직렬 공통으로 적용되엇던 통신 · 정보처리 및 사무관리분야 자격증 가산점은 2017년부터 폐지</span></h5>
+                                            <h5 class="hTy6 hTy txt-red left pl45"><span>국가직의 경우, 직렬 공통으로 적용되었던 통신 · 정보처리 및 사무관리분야 자격증 가산점은 2017년부터 폐지</span></h5>
                                             <h4 class="hTy4 hTy mt50">취업지원대상자 및 의사상자 등</h4> 
                                             <div class="mgBox NG">
                                                 <div class="ttx">
-                                                    독립유공자예우에 관한 법률 제16조, 국가유공자 등 예우 및 지원에 관한 법률 제 29조, 보훈보상대상자 지원에 관한 법률 제33조, 5·18민주<br/>
-                                                    유공자 예우에 관한 법률 제20조, 특수임무유공자 예우 및 단체설립에 관한 법률 제19조에 의한 취업지원대상자, 고엽제 후유의증 등 환자지원<br/> 
-                                                    및 단체설립에 관한 법률 제7조의 9에 의한 고엽제 후유의증환자와 그 가족 및 국가공무원법 제36조의 2에 의한 의사자 유족, 의사자 본인 및<br/> 
-                                                    가족은 각 과목별 득점에 위 표에서 정한 가산비율에 해당하는 점수를 가산합니다.<br/><br/>
-
-                                                    취업지원대상자 및 의사상자 등 가점은 각 과목 마점의 40%이상 득점한 자에 한하여, 각 과목별 득점에 각 과목별 만점의 일정비율(10%,5%,<br/>
-                                                    3%)에 해당하는 점수를 가산합니다.<br/><br/>
-
-                                                    국가유공자 5·18민주 유공자, 특수임무유공자 등 취업지원대상자 가점을 받아 합격하는 사람은 선발예정인원의 30%(의사상자 등 가점의<br/> 
-                                                    경우 10%)를 초과할 수 없습니다. 다만, 응시인원이 선발예정인원과 같거나 그보다 적은 경우에는 그러하지 않습니다.
+                                                    <ul>
+                                                        <li>
+                                                            독립유공자예우에 관한 법률 제16조, 국가유공자 등 예우 및 지원에 관한 법률 제 29조, 보훈보상대상자 지원에 관한 법률 제33조, 5·18민주 
+                                                            유공자 예우에 관한 법률 제20조, 특수임무유공자 예우 및 단체설립에 관한 법률 제19조에 의한 취업지원대상자, 고엽제 후유의증 등 환자지원
+                                                            및 단체설립에 관한 법률 제7조의 9에 의한 고엽제 후유의증환자와 그 가족 및 국가공무원법 제36조의 2에 의한 의사자 유족, 의사자 본인 및 
+                                                            가족은 각 과목별 득점에 위 표에서 정한 가산비율에 해당하는 점수를 가산합니다.
+                                                        </li>
+                                                        <li>취업지원대상자 및 의사상자 등 가점은 각 과목 만점의 40%이상 득점한 자에 한하여, 각 과목별 득점에 각 과목별 만점의 일정비율(10%,5%,3%)에 해당하는 점수를 가산합니다.</li>
+                                                        <li>국가유공자 5·18민주 유공자, 특수임무유공자 등 취업지원대상자 가점을 받아 합격하는 사람은 선발예정인원의 30%(의사상자 등 가점의경우 10%)를 초과할 수 없습니다. 다만, 응시인원이 선발예정인원과 같거나 그보다 적은 경우에는 그러하지 않습니다.</li>
+                                                    </ul>
                                                 </div>
                                             </div>
                                         </div>
@@ -603,26 +609,28 @@
                                             <h4 class="hTy4 hTy">직렬별 가산대상 자격증 소지자</h4>      
                                             <div class="mgBox NG mt-zero">
                                                 <div class="tt">행정직</div>
-                                                <ul class="ttx">
-                                                    <li class="st tx-origin-red">각 과목 만점의 40% 이상 득점한 자에 한하여 각 과목별 득점에 각 과목별 만점의 5% 가산</li>
-                                                    <li>
-                                                        - 행정직(일반행정-선거행정) : 변호사, 변리사 / 행정직(교육행정) : 변호사 / 행정직(회계) : 공인회계사 / 행정직(고용노동) : 변호사, 공인노무사<br/>
-                                                        직업상담사 1급, 직업상담사 2급 <span class="st tx-origin-red">(단, 7급은 3% 가산)</span><br/>
+                                                <div class="ttx">
+                                                    <div class="st tx-origin-red mb15">각 과목 만점의 40% 이상 득점한 자에 한하여 각 과목별 득점에 각 과목별 만점의 5% 가산</div>
+                                                    <div>
+                                                        - 행정직(일반행정-선거행정) : 변호사, 변리사 / 행정직(교육행정) : 변호사 / 행정직(회계) : 공인회계사 <br/>
+                                                        &nbsp;/ 행정직(고용노동) : 변호사, 공인노무사, 직업상담사 1급, 직업상담사 2급 <span class="st tx-origin-red">(단, 7급은 3% 가산)</span><br/>
                                                         - 직업상담직 : 변호사, 공인노무사, 직업상담사 1급, 직업상담사 2급 <span class="st tx-origin-red">(단,7급은 3%가산)</span><br/>
                                                         - 세무직 : 변호사, 공인회계사, 세무사<br/>
                                                         - 관세직 : 변호사, 공인회계사, 관세사<br/>
                                                         - 감사직 : 변호사, 공인회계사, 감정평가사, 세무사<br/>
                                                         - 교정직 · 보호직 · 철도경찰직 : 변호사, 법무사<br/>
                                                         - 통계직 : 사회조사분석사 1급, 사회조사분석사 2급 <span class="st tx-origin-red">(단,7급은 3%가산)</span>
-                                                    </li>
-                                                </ul>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="mgBox NG">
+                                            <div class="mgBox mgBox-none NG">
                                                 <div class="tt">기술직</div>
                                                 <div class="ttx">
                                                     국가기술자격법령 또는 그 밖의 법령에서 정한 자격증 소지자가 해당 분야(전산직 제외)에 응시할 경우<br/>
                                                     각 과목 만점의 40% 이상 득점한 자에 한하여 각 과목별 득점에 각 과목별 만점의 일정비율에 해당하는 점수를 가산합니다.<br/><br/>
-                                                    <table class="basicTb">
+                                                </div>
+                                                <div class="mgB3 GM">
+                                                    <table class="basicTb basicWd1">
                                                         <colgroup>
                                                             <col width="12%">
                                                             <col width="22%">
@@ -630,37 +638,39 @@
                                                             <col width="22%">
                                                             <col width="22%">
                                                         </colgroup>
-                                                        <tbody>
+                                                        <thead>
                                                             <tr>
-                                                                <th class="bg-white" rowspan="2">구분</th>
-                                                                <th class="bg-white" colspan="2">7급</th>
-                                                                <th class="bg-white" colspan="2">9급</th>
+                                                                <th rowspan="2">구분</th>
+                                                                <th colspan="2">7급</th>
+                                                                <th colspan="2">9급</th>
                                                             </tr>
                                                             <tr>
-                                                                <th>
+                                                                <th class="bg-white">
                                                                     기술사, 기능장, 기사<br/>
                                                                     <span class="tx-green">[시설직(건축)의<br/>
                                                                     건축사 포함]
                                                                     </span>
                                                                 </th>
-                                                                <th>산업기사</th>
-                                                                <th>
+                                                                <th class="bg-white">산업기사</th>
+                                                                <th class="bg-white">
                                                                     기술사, 기능장, 기사,<br/>
                                                                     산업기사<br/>
-                                                                    <span class="tx-green">[시설직 (건축)의 건축사 포함]</span>
+                                                                    <span class="tx-green">[시설직 (건축)의<br/> 건축사 포함]</span>
                                                                 </th>
-                                                                <th>
+                                                                <th class="bg-white">
                                                                     기능사<br/>
                                                                     <span class="tx-green">[농업직(일반농업)의<br/>
                                                                     농산물품질관리사 포함]</span>
                                                                 </th>
                                                             </tr>
+                                                        </thead>
+                                                        <tbody>
                                                             <tr>
-                                                                <th>가점비율</th>
-                                                                <th>5%</th>
-                                                                <th>3%</th>
-                                                                <th>5%</th>
-                                                                <th>3%</th>
+                                                                <th class="bg-white tx-red">가점비율</th>
+                                                                <th class="bg-white tx-red">5%</th>
+                                                                <th class="bg-white tx-red">3%</th>
+                                                                <th class="bg-white tx-red">5%</th>
+                                                                <th class="bg-white tx-red">3%</th>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -669,33 +679,33 @@
                                         </div>
                                         <div class="guide_slider">
                                             <h4 class="hTy4 hTy">직렬별 가산대상 자격증 소지자</h4>      
-                                            <div class="mgBox NG mt-zero">
-                                                <div class="tt">서울시/지방직 자격증 소지자 가산특전</div>
+                                            <div class="mgBox mgBox-none NG mt-zero">
+                                                <div class="tt">서울시/지방직 자격증 소지자 가산 특전</div>
                                                 <h5 class="hTy6 hTy txt-red right"><span>국가직은 2017.1.1부터 정보화자격증 가산점 폐지</span></h5>
-                                                <div class="ttx">
+                                                <div class="mgB3 GM">
                                                     <table class="basicTb basicWd1">
                                                         <colgroup>
                                                             <col width="20%">
                                                             <col width="*">
                                                             <col width="*">
                                                         </colgroup>
-                                                        <tbody>
+                                                        <thead>
                                                             <tr>
-                                                                <th class="bg-white" rowspan="2">구분</th>
-                                                                <th class="bg-white" colspan="2">자격증 등급별 가산비율</th>
+                                                                <th class="" rowspan="2">구분</th>
+                                                                <th class="" colspan="2">자격증 등급별 가산비율</th>
                                                             </tr>
                                                             <tr>
-                                                                <th class="bg-gray-purple tx-white">1%</th>
-                                                                <th class="bg-gray-purple tx-white">0.5%</th>
+                                                                <th class="tx-red">1%</th>
+                                                                <th class="tx-red">0.5%</th>
                                                             </tr>
                                                             <tr>
                                                                 <th>7급</th>
-                                                                <td>
+                                                                <td class="bg-white">
                                                                     정보관리기술사, 컴퓨터시스템응용기술사<br/>
                                                                     정보처리기사, 전자계산기조직응용기사<br/>
                                                                     컴퓨터활용능력 1급
                                                                 </td>
-                                                                <td>
+                                                                <td class="bg-white">
                                                                     사무자동화산업기사, 정보처리산업기사<br/>
                                                                     전자계산기제어산업기사, 워드프로세서<br/>
                                                                     컴퓨터활용능력 2급
@@ -703,19 +713,19 @@
                                                             </tr>
                                                             <tr>
                                                                 <th>9급</th>
-                                                                <td>
+                                                                <td class="bg-white">
                                                                     정보관리기술사, 컴퓨터시스템응용기술사<br/>
                                                                     정보처리기사, 전자계산기조직응용기사<br/>
                                                                     사무자동화산업기사, 정보처리산업기사<br/><br/>
 
                                                                     전자계산기제어산업기사, 컴퓨터활용능력 1급
                                                                 </td>
-                                                                <td>
+                                                                <td class="bg-white">
                                                                     정보기기운용기능사, 정보처리기능사<br/>
                                                                     워드프로세서, 컴퓨터활용능력 2급
                                                                 </td>
                                                             </tr>
-                                                        </tbody>
+                                                        </thead>
                                                     </table>
                                                 </div>
                                             </div>
@@ -1090,17 +1100,17 @@
                                                     <tbody>
                                                         <tr>
                                                             <th>9급 세무직</th>
-                                                            <td class="tx18 bg-gray">
+                                                            <td class="tx18 bg-light-gray">
                                                                 <span class="tx-origin-red tx16">[ 국가직 ]</span><br/>
                                                                 세법개론
                                                             </td>
-                                                            <td class="bg-light-gray">
+                                                            <td class="bg-white">
                                                                 국어<br/>
                                                                 영어<br/>
                                                                 한국사<br/>
                                                                 회계학
                                                             </td>
-                                                            <td class="tx18 bg-gray">
+                                                            <td class="tx18 bg-light-gray">
                                                                 <span class="tx-origin-red tx16">[ 서울시/지방직 ]</span><br/>
                                                                 지방세법
                                                             </td>
@@ -1108,20 +1118,20 @@
                                                         <tr class="hh"><td></td></tr>
                                                         <tr>
                                                             <th>7급 일반행정</th>
-                                                            <td class="tx18 bg-gray">
+                                                            <td class="tx18 bg-light-gray">
                                                                 <span class="tx-origin-red tx16">[ 국가직 ]</span><br/>
                                                                 영어<br/>
                                                                 <span class="tx13">(영어검정능력시험으로 대체)</span><br/>
                                                                 경제학
                                                             </td>
-                                                            <td class="bg-light-gray">
+                                                            <td class="bg-white">
                                                                 국어<br/>
                                                                 헌법<br/>
                                                                 한국사<br/>
                                                                 행정학<br/>
                                                                 행정법
                                                             </td>
-                                                            <td class="bg-gray">
+                                                            <td class="bg-light-gray">
                                                                 <span class="tx-origin-red tx16">[ 서울시/지방직 ]</span><br/>
                                                                 경제학원론<br/>
                                                                 지방자치론<br/>
@@ -1198,19 +1208,16 @@
                                                     </tbody>
                                                 </table>
                                             </div>
-                                            <h5 class="hTy5 hTy txt-gray pl45 pr45 mt30">
-                                                <span>
-                                                    2015.1.1 이후 국내에서 실시된 시험으로서, 필기시험 시행예정일 전날까지 점수(등급)가 발표된 시험으로 한정하며 기준점수 이상으로 확인된 시험만<br/>
-                                                    인정됩니다.<br/><br/>
-
-                                                    2015.1.1 이후 외국에서 응시한 TOEFL,일본에서 응시한 TOEIC, 미국에서 응시한 G-TELP는 필기시험 시행예정일 전날까지 점수(등급)가 발표된 시험<br/>
-                                                    으로 한정하며 기준점수 이상으로 확인된 시험만 인정됩니다.<br/><br/>
-
-                                                    다만, 자체 유효기간이 2년인 시험(TOEIC, TOEFL, TEPS, G-TELP)의 경우에는 유효기간이 경과되면 시행기관으로부터 성적을 조회할 수 없어 진위여부<br/>
-                                                    가 확인되지 않습니다. 따라서 해당능력검정시험의 유효기간이 만료될 예정인 경우 반드시 유효기간 만료 전 별도 안내하는 기간에 사이버국가고시센타<br/>
-                                                    (HTTP://GOSL.KR)를 통해 사전등록을 해야 합니다.
-                                                </span>
-                                            </h5>
+                                            <div class="hTy txt-gray pl45 pr45 mt30 mb15">
+                                                <ul class="dot">
+                                                    <li>2015.1.1 이후 국내에서 실시된 시험으로서, 필기시험 시행예정일 전날까지 점수(등급)가 발표된 시험으로 한정하며 기준점수 이상으로 확인된 시험만 인정됩니다.</li>
+                                                    <li>2015.1.1 이후 외국에서 응시한 TOEFL,일본에서 응시한 TOEIC, 미국에서 응시한 G-TELP는 필기시험 시행예정일 전날까지 점수(등급)가 발표된 시험으로 한정하며 기준점수 이상으로 확인된 시험만 인정됩니다.</li>
+                                                    <li>
+                                                        다만, 자체 유효기간이 2년인 시험(TOEIC, TOEFL, TEPS, G-TELP)의 경우에는 유효기간이 경과되면 시행기관으로부터 성적을 조회할 수 없어 진위여부가 확인되지 않습니다. 
+                                                        따라서 해당능력검정시험의 유효기간이 만료될 예정인 경우 반드시 유효기간 만료 전 별도 안내하는 기간에 사이버국가고시센타(HTTP://GOSL.KR)를 통해 사전등록을 해야 합니다.
+                                                    </li>
+                                                </ul>
+                                            </div>
                                             <h5 class="hTy6 hTy txt-red left pl45"><span>* 사전등록을 하지않고 유효기간이 경과되어 진위여부 확인이 불가능한 성적은 인정되지 않으니 유의하시기 바랍니다.</span></h5>
                                         </div>
                                     </div>

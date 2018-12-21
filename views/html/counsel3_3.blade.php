@@ -115,105 +115,105 @@
                     </table>
                 </div>
             </div>
-            <div class="willbes-counsel_step willbes-counsel_step3 mt60 c_both">
-                <div class="step mb50 NG">
-                    <ul>
-                        <li><div class="num">01</div>상담일자/시간선택</li>
-                        <li class="arrow"><img src="{{ img_url('counsel/icon_arrow_step.png') }}"></li>
-                        <li><div class="num">02</div>사전정보입력</li>
-                        <li class="arrow"><img src="{{ img_url('counsel/icon_arrow_step.png') }}"></li>
-                        <li class="active"><div class="num">03</div>상담예약확인</li>
-                    </ul>
-                    <div class="info-Box info-Box3 NG">
-                        <dl>
-                            <dt>
-                                · 상담 예약이 완료되었습니다. 예약사항을 다시 한 번 확인해 주세요.<br/>
-                                · <span class="tx-blue">상담예약일시를 변경하시려면 예약 취소를 하시고 1단계 상담일자/시간선택 부터 다시 신청하셔야 합니다</span>.<br/>
-                                · 예약하신 날짜 및 시간에 도착하지 않으실 경우 상담이 취소될 수 있습니다.<br/>
-                            </dt>
-                        </dl>
-                    </div>
-                </div>
-                <div class="willbes-User-Info willbes-User-Info3 p_re pb30">
-                    <div class="InfoTable GM">
-                        <table cellspacing="0" cellpadding="0" class="classTable userInfoTable counselTable under-gray bdt-gray bdb-gray tx-gray">
-                            <colgroup>
-                                <col style="width: 160px;">
-                                <col style="width: 780px;">
-                                <col width="*">
-                            </colgroup>
-                            <tbody>
-                                <tr>
-                                    <td class="w-tit">상담예약 일시</td>
-                                    <td class="w-info"><span class="tx-light-blue">2018-10-25 (목) 10:00 ~ 10:30</span></td>
-                                </tr>
-                                <tr>
-                                    <td class="w-tit">이름(아이디)</td>
-                                    <td class="w-info">홍길동(아이디)</td>
-                                </tr>
-                                <tr>
-                                    <td class="w-tit">생년월일</td>
-                                    <td class="w-info">19990101</td>
-                                </tr>
-                                <tr>
-                                    <td class="w-tit">연락처</td>
-                                    <td class="w-info">01012345678</td>
-                                </tr>
-                                <tr>
-                                    <td class="w-tit">이메일</td>
-                                    <td class="w-info">willbes@willbes.com</td>
-                                </tr>
-                                <tr>
-                                    <td class="w-tit">응시직렬</td>
-                                    <td class="w-info">일반</td>
-                                </tr>
-                                <tr>
-                                    <td class="w-tit">응시지역</td>
-                                    <td class="w-info">서울</td>
-                                </tr>
-                                <tr>
-                                    <td class="w-tit">수험기간</td>
-                                    <td class="w-info">6개월 미만</td>
-                                </tr>
-                                <tr>
-                                    <td class="w-tit">취약과목</td>
-                                    <td class="w-info">영어</td>
-                                </tr>
-                                <tr>
-                                    <td class="w-tit">수강여부</td>
-                                    <td class="w-info">학원</td>
-                                </tr>
-                                <tr>
-                                    <td class="w-tit">상세정보</td>
-                                    <td class="w-info">
-                                        2018년 1차 시험<br/>
-                                        - 국어: 50점<br/>
-                                        - 영어: 50점<br/>
-                                        - 사회: 50점<br/>
-                                        - 행정법: 50점<br/>
-                                        - 행정학: 50점<br/>
-                                        * 기타상담사항: 처음 준비합니다. 자세한 상담이 필요합니다.<br/>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="willbes-Lec-buyBtn">
-                        <ul>
-                            <li class="btnAuto90 h36">
-                                <button type="submit" onclick="" class="mem-Btn bg-white bd-dark-gray">
-                                    <span class="tx-purple-gray">예약취소</span>
-                                </button>
-                            </li>
-                            <li class="btnAuto90 h36">
-                                <button type="submit" onclick="" class="mem-Btn bg-purple-gray bd-dark-gray">
-                                    <span>완료</span>
-                                </button>
-                            </li>
-                        </ul>
-                    </div>
+    
+            <div class="willbes-counsel_step step mt60 mb50 NG c_both">
+                <ul>
+                    <li><div class="num">01</div>상담일자/시간선택</li>
+                    <li class="arrow"><img src="{{ img_url('counsel/icon_arrow_step.png') }}"></li>
+                    <li><div class="num">02</div>사전정보입력</li>
+                    <li class="arrow"><img src="{{ img_url('counsel/icon_arrow_step.png') }}"></li>
+                    <li class="active"><div class="num">03</div>상담예약확인</li>
+                </ul>
+                <div class="info-Box info-Box3 NG">
+                    <dl>
+                        <dt>
+                            · 상담 예약이 완료되었습니다. 예약사항을 다시 한 번 확인해 주세요.<br/>
+                            · <span class="tx-blue">상담예약일시를 변경하시려면 예약 취소를 하시고 1단계 상담일자/시간선택 부터 다시 신청하셔야 합니다</span>.<br/>
+                            · 예약하신 날짜 및 시간에 도착하지 않으실 경우 상담이 취소될 수 있습니다.<br/>
+                        </dt>
+                    </dl>
                 </div>
             </div>
+            <div class="willbes-User-Info p_re pb30">
+                <div class="InfoTable GM">
+                    <table cellspacing="0" cellpadding="0" class="classTable userInfoTable counselTable under-gray bdt-gray bdb-gray tx-gray">
+                        <colgroup>
+                            <col style="width: 160px;">
+                            <col style="width: 780px;">
+                            <col width="*">
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <td class="w-tit">상담예약 일시</td>
+                                <td class="w-info"><span class="tx-light-blue">2018-10-25 (목) 10:00 ~ 10:30</span></td>
+                            </tr>
+                            <tr>
+                                <td class="w-tit">이름(아이디)</td>
+                                <td class="w-info">홍길동(아이디)</td>
+                            </tr>
+                            <tr>
+                                <td class="w-tit">생년월일</td>
+                                <td class="w-info">19990101</td>
+                            </tr>
+                            <tr>
+                                <td class="w-tit">연락처</td>
+                                <td class="w-info">01012345678</td>
+                            </tr>
+                            <tr>
+                                <td class="w-tit">이메일</td>
+                                <td class="w-info">willbes@willbes.com</td>
+                            </tr>
+                            <tr>
+                                <td class="w-tit">응시직렬</td>
+                                <td class="w-info">일반</td>
+                            </tr>
+                            <tr>
+                                <td class="w-tit">응시지역</td>
+                                <td class="w-info">서울</td>
+                            </tr>
+                            <tr>
+                                <td class="w-tit">수험기간</td>
+                                <td class="w-info">6개월 미만</td>
+                            </tr>
+                            <tr>
+                                <td class="w-tit">취약과목</td>
+                                <td class="w-info">영어</td>
+                            </tr>
+                            <tr>
+                                <td class="w-tit">수강여부</td>
+                                <td class="w-info">학원</td>
+                            </tr>
+                            <tr>
+                                <td class="w-tit">상세정보</td>
+                                <td class="w-info">
+                                    2018년 1차 시험<br/>
+                                    - 국어: 50점<br/>
+                                    - 영어: 50점<br/>
+                                    - 사회: 50점<br/>
+                                    - 행정법: 50점<br/>
+                                    - 행정학: 50점<br/>
+                                    * 기타상담사항: 처음 준비합니다. 자세한 상담이 필요합니다.<br/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="willbes-Lec-buyBtn">
+                    <ul>
+                        <li class="btnAuto90 h36">
+                            <button type="submit" onclick="" class="mem-Btn bg-white bd-dark-gray">
+                                <span class="tx-purple-gray">예약취소</span>
+                            </button>
+                        </li>
+                        <li class="btnAuto90 h36">
+                            <button type="submit" onclick="" class="mem-Btn bg-purple-gray bd-dark-gray">
+                                <span>완료</span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+   
         </div>
         <!-- willbes-Counsel -->
 
@@ -228,65 +228,62 @@
                     예약 완료된 상담중 ‘미방문’ 상담 상태가 있을 경우 추가 상담예약이 불가능합니다. (‘미방문’상태 예약취소 후 상담예약가능)
                 </div>
                 <div class="PASSZONE-Lec-Section">
-                    <div class="LeclistTable reserveTableList bdt-gray bdb-gray">
-                        <table cellspacing="0" cellpadding="0" class="listTable reserveTable upper-gray fc-bd-none tx-gray">
-                            <colgroup>
-                                <col style="width: 115px;">
-                                <col style="width: 235px;">
-                                <col style="width: 115px;">
-                                <col style="width: 235px;">
-                            </colgroup>
-                            <tbody>
-                                <tr>
-                                    <th class="w-tit bg-light-white strong">상담예약 일시</th>
-                                    <td class="w-data tx-left tx-gray pl15" colspan="3">
-                                        <dl>
-                                            <dt class="strong">노량진<span class="row-line">|</span></dt>
-                                            <dt class="strong">2018-10-25 (목) 10:00 ~ 10:30</dt>
+                    <div class="reserveOverflow">
+                        <div class="reserveTableList">
+                            <div class="reserveTable tx-gray">
+                                <div class="table-row top p_re">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>상담예약 일시</p></div>
+                                    <div class="table-cell w-data w-data-span3 tx-left tx-gray pl15">
+                                        <span>
+                                            <dl>
+                                                <dt class="strong">노량진<span class="row-line">|</span></dt>
+                                                <dt class="strong">2018-10-25 (목) 10:00 ~ 10:30</dt>
 
-                                            <dt class="sList"><span class="row-line" style="float: left; width: 1px;">|</span>[예약상태] 예약완료</dt>
-                                            <dt class="sList">[상담상태] 완료</dt>
-                                        </dl>
-                                        <span class="MoreBtn"><a href="#none">닫기 ▲</a></span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th class="w-tit bg-light-white strong">예약상태</th>
-                                    <td class="w-data tx-left pl15">예약완료</td>
-                                    <th class="w-tit bg-light-white strong">상담상태</th>
-                                    <td class="w-data tx-left pl15">미방문</td>
-                                </tr>
-                                <tr>
-                                    <th class="w-tit bg-light-white strong">이름(아이디)</th>
-                                    <td class="w-data tx-left pl15">홍길동(아이디)</td>
-                                    <th class="w-tit bg-light-white strong">생년월일</th>
-                                    <td class="w-data tx-left pl15">1999-01-01</td>
-                                </tr>
-                                <tr>
-                                    <th class="w-tit bg-light-white strong">연락처</th>
-                                    <td class="w-data tx-left pl15">01012345678</td>
-                                    <th class="w-tit bg-light-white strong">생년월일</th>
-                                    <td class="w-data tx-left pl15">asdf@willbes.com</td>
-                                </tr>
-                                <tr>
-                                    <th class="w-tit bg-light-white strong">응시직렬</th>
-                                    <td class="w-data tx-left pl15">일반</td>
-                                    <th class="w-tit bg-light-white strong">응시지역</th>
-                                    <td class="w-data tx-left pl15">서울</td>
-                                </tr>
-                                <tr>
-                                    <th class="w-tit bg-light-white strong">수험기간</th>
-                                    <td class="w-data tx-left pl15">6개월 미만</td>
-                                    <th class="w-tit bg-light-white strong">취약과목</th>
-                                    <td class="w-data tx-left pl15">영어</td>
-                                </tr>
-                                <tr>
-                                    <th class="w-tit bg-light-white strong">수강여부</th>
-                                    <td class="w-data tx-left pl15" colspan="3">학원</td>
-                                </tr>
-                                <tr>
-                                    <th class="w-tit bg-light-white strong">상세정보</th>
-                                    <td class="w-data tx-left pl15" colspan="3">
+                                                <dt class="sList"><span class="row-line" style="float: left; width: 1px;">|</span>[예약상태] 예약완료</dt>
+                                                <dt class="sList">[상담상태] 완료</dt>
+                                            </dl>
+                                        </span>
+                                    </div>
+                                    <span class="MoreBtn"><a href="#none">닫기 ▲</a></span>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>예약상태</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>예약완료</p></div>
+                                    <div class="table-cell w-tit bg-light-white strong"><p>상담상태</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>미방문</p></div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>이름(아이디)</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>홍길동(아이디)</p></div>
+                                    <div class="table-cell w-tit bg-light-white strong"><p>생년월일</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>1999-01-01</p></div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>연락처</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>01012345678</p></div>
+                                    <div class="table-cell w-tit bg-light-white strong"><p>이메일</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>asdf@willbes.com</p></div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>응시직렬</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>일반</p></div>
+                                    <div class="table-cell w-tit bg-light-white strong"><p>응시지역</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>서울</p></div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>수험기간</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>6개월 미만</p></div>
+                                    <div class="table-cell w-tit bg-light-white strong"><p>취약과목</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>영어</p></div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>수강여부</p></div>
+                                    <div class="table-cell w-data w-data-span3 tx-left pl15"><p>학원</p></div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>상세정보</p></div>
+                                    <div class="table-cell w-data w-data-span3 tx-left pl15">
+                                        <p>
                                         2018년 1차 시험<br/>
                                         - 국어: 50점<br/>
                                         - 영어: 50점<br/>
@@ -294,69 +291,66 @@
                                         - 행정법: 50점<br/>
                                         - 행정학: 50점<br/>
                                         * 기타상담사항: 처음 준비합니다. 자세한 상담이 필요합니다.<br/>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="LeclistTable reserveTableList bdt-gray bdb-gray">
-                        <table cellspacing="0" cellpadding="0" class="listTable reserveTable upper-gray fc-bd-none tx-gray on">
-                            <colgroup>
-                                <col style="width: 115px;">
-                                <col style="width: 235px;">
-                                <col style="width: 115px;">
-                                <col style="width: 235px;">
-                            </colgroup>
-                            <tbody>
-                                <tr>
-                                    <th class="w-tit bg-light-white strong">상담예약 일시</th>
-                                    <td class="w-data tx-left tx-gray pl15" colspan="3">
-                                        <dl>
-                                            <dt class="strong">노량진<span class="row-line">|</span></dt>
-                                            <dt class="strong">2018-10-20 (목) 10:00 ~ 10:30</dt>
-                                            <dt class="sList"><span class="row-line" style="float: left; width: 1px;">|</span>[예약상태] 예약완료</dt>
-                                            <dt class="sList">[상담상태] 완료</dt>
-                                        </dl>
-                                        <span class="MoreBtn"><a href="#none">보기 ▼</a></span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th class="w-tit bg-light-white strong">예약상태</th>
-                                    <td class="w-data tx-left pl15">예약완료</td>
-                                    <th class="w-tit bg-light-white strong">상담상태</th>
-                                    <td class="w-data tx-left pl15">미방문</td>
-                                </tr>
-                                <tr>
-                                    <th class="w-tit bg-light-white strong">이름(아이디)</th>
-                                    <td class="w-data tx-left pl15">홍길동(아이디)</td>
-                                    <th class="w-tit bg-light-white strong">생년월일</th>
-                                    <td class="w-data tx-left pl15">1999-01-01</td>
-                                </tr>
-                                <tr>
-                                    <th class="w-tit bg-light-white strong">연락처</th>
-                                    <td class="w-data tx-left pl15">01012345678</td>
-                                    <th class="w-tit bg-light-white strong">생년월일</th>
-                                    <td class="w-data tx-left pl15">asdf@willbes.com</td>
-                                </tr>
-                                <tr>
-                                    <th class="w-tit bg-light-white strong">응시직렬</th>
-                                    <td class="w-data tx-left pl15">일반</td>
-                                    <th class="w-tit bg-light-white strong">응시지역</th>
-                                    <td class="w-data tx-left pl15">서울</td>
-                                </tr>
-                                <tr>
-                                    <th class="w-tit bg-light-white strong">수험기간</th>
-                                    <td class="w-data tx-left pl15">6개월 미만</td>
-                                    <th class="w-tit bg-light-white strong">취약과목</th>
-                                    <td class="w-data tx-left pl15">영어</td>
-                                </tr>
-                                <tr>
-                                    <th class="w-tit bg-light-white strong">수강여부</th>
-                                    <td class="w-data tx-left pl15" colspan="3">학원</td>
-                                </tr>
-                                <tr>
-                                    <th class="w-tit bg-light-white strong">상세정보</th>
-                                    <td class="w-data tx-left pl15" colspan="3">
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="reserveTableList">
+                            <div class="reserveTable tx-gray on">
+                                <div class="table-row top p_re">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>상담예약 일시</p></div>
+                                    <div class="table-cell w-data w-data-span3 tx-left tx-gray pl15">
+                                        <span>
+                                            <dl>
+                                                <dt class="strong">노량진<span class="row-line">|</span></dt>
+                                                <dt class="strong">2018-10-25 (목) 10:00 ~ 10:30</dt>
+
+                                                <dt class="sList"><span class="row-line" style="float: left; width: 1px;">|</span>[예약상태] 예약완료</dt>
+                                                <dt class="sList">[상담상태] 완료</dt>
+                                            </dl>
+                                        </span>
+                                    </div>
+                                    <span class="MoreBtn"><a href="#none">보기 ▼</a></span>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>예약상태</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>예약완료</p></div>
+                                    <div class="table-cell w-tit bg-light-white strong"><p>상담상태</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>미방문</p></div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>이름(아이디)</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>홍길동(아이디)</p></div>
+                                    <div class="table-cell w-tit bg-light-white strong"><p>생년월일</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>1999-01-01</p></div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>연락처</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>01012345678</p></div>
+                                    <div class="table-cell w-tit bg-light-white strong"><p>이메일</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>asdf@willbes.com</p></div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>응시직렬</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>일반</p></div>
+                                    <div class="table-cell w-tit bg-light-white strong"><p>응시지역</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>서울</p></div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>수험기간</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>6개월 미만</p></div>
+                                    <div class="table-cell w-tit bg-light-white strong"><p>취약과목</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>영어</p></div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>수강여부</p></div>
+                                    <div class="table-cell w-data w-data-span3 tx-left pl15"><p>학원</p></div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>상세정보</p></div>
+                                    <div class="table-cell w-data w-data-span3 tx-left pl15">
+                                        <p>
                                         2018년 1차 시험<br/>
                                         - 국어: 50점<br/>
                                         - 영어: 50점<br/>
@@ -364,69 +358,66 @@
                                         - 행정법: 50점<br/>
                                         - 행정학: 50점<br/>
                                         * 기타상담사항: 처음 준비합니다. 자세한 상담이 필요합니다.<br/>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="LeclistTable reserveTableList bdt-gray bdb-gray">
-                        <table cellspacing="0" cellpadding="0" class="listTable reserveTable upper-gray fc-bd-none tx-gray on">
-                            <colgroup>
-                                <col style="width: 115px;">
-                                <col style="width: 235px;">
-                                <col style="width: 115px;">
-                                <col style="width: 235px;">
-                            </colgroup>
-                            <tbody>
-                                <tr>
-                                    <th class="w-tit bg-light-white strong">상담예약 일시</th>
-                                    <td class="w-data tx-left tx-gray pl15" colspan="3">
-                                        <dl>
-                                            <dt class="strong">노량진<span class="row-line">|</span></dt>
-                                            <dt class="strong">2018-10-15 (목) 10:00 ~ 10:30</dt>
-                                            <dt class="sList"><span class="row-line" style="float: left; width: 1px;">|</span>[예약상태] 예약완료</dt>
-                                            <dt class="sList">[상담상태] 완료</dt>
-                                        </dl>
-                                        <span class="MoreBtn"><a href="#none">보기 ▼</a></span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th class="w-tit bg-light-white strong">예약상태</th>
-                                    <td class="w-data tx-left pl15">예약완료</td>
-                                    <th class="w-tit bg-light-white strong">상담상태</th>
-                                    <td class="w-data tx-left pl15">미방문</td>
-                                </tr>
-                                <tr>
-                                    <th class="w-tit bg-light-white strong">이름(아이디)</th>
-                                    <td class="w-data tx-left pl15">홍길동(아이디)</td>
-                                    <th class="w-tit bg-light-white strong">생년월일</th>
-                                    <td class="w-data tx-left pl15">1999-01-01</td>
-                                </tr>
-                                <tr>
-                                    <th class="w-tit bg-light-white strong">연락처</th>
-                                    <td class="w-data tx-left pl15">01012345678</td>
-                                    <th class="w-tit bg-light-white strong">생년월일</th>
-                                    <td class="w-data tx-left pl15">asdf@willbes.com</td>
-                                </tr>
-                                <tr>
-                                    <th class="w-tit bg-light-white strong">응시직렬</th>
-                                    <td class="w-data tx-left pl15">일반</td>
-                                    <th class="w-tit bg-light-white strong">응시지역</th>
-                                    <td class="w-data tx-left pl15">서울</td>
-                                </tr>
-                                <tr>
-                                    <th class="w-tit bg-light-white strong">수험기간</th>
-                                    <td class="w-data tx-left pl15">6개월 미만</td>
-                                    <th class="w-tit bg-light-white strong">취약과목</th>
-                                    <td class="w-data tx-left pl15">영어</td>
-                                </tr>
-                                <tr>
-                                    <th class="w-tit bg-light-white strong">수강여부</th>
-                                    <td class="w-data tx-left pl15" colspan="3">학원</td>
-                                </tr>
-                                <tr>
-                                    <th class="w-tit bg-light-white strong">상세정보</th>
-                                    <td class="w-data tx-left pl15" colspan="3">
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="reserveTableList">
+                            <div class="reserveTable tx-gray on">
+                                <div class="table-row top p_re">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>상담예약 일시</p></div>
+                                    <div class="table-cell w-data w-data-span3 tx-left tx-gray pl15">
+                                        <span>
+                                            <dl>
+                                                <dt class="strong">노량진<span class="row-line">|</span></dt>
+                                                <dt class="strong">2018-10-25 (목) 10:00 ~ 10:30</dt>
+
+                                                <dt class="sList"><span class="row-line" style="float: left; width: 1px;">|</span>[예약상태] 예약완료</dt>
+                                                <dt class="sList">[상담상태] 완료</dt>
+                                            </dl>
+                                        </span>
+                                    </div>
+                                    <span class="MoreBtn"><a href="#none">보기 ▼</a></span>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>예약상태</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>예약완료</p></div>
+                                    <div class="table-cell w-tit bg-light-white strong"><p>상담상태</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>미방문</p></div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>이름(아이디)</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>홍길동(아이디)</p></div>
+                                    <div class="table-cell w-tit bg-light-white strong"><p>생년월일</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>1999-01-01</p></div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>연락처</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>01012345678</p></div>
+                                    <div class="table-cell w-tit bg-light-white strong"><p>이메일</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>asdf@willbes.com</p></div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>응시직렬</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>일반</p></div>
+                                    <div class="table-cell w-tit bg-light-white strong"><p>응시지역</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>서울</p></div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>수험기간</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>6개월 미만</p></div>
+                                    <div class="table-cell w-tit bg-light-white strong"><p>취약과목</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>영어</p></div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>수강여부</p></div>
+                                    <div class="table-cell w-data w-data-span3 tx-left pl15"><p>학원</p></div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>상세정보</p></div>
+                                    <div class="table-cell w-data w-data-span3 tx-left pl15">
+                                        <p>
                                         2018년 1차 시험<br/>
                                         - 국어: 50점<br/>
                                         - 영어: 50점<br/>
@@ -434,1137 +425,414 @@
                                         - 행정법: 50점<br/>
                                         - 행정학: 50점<br/>
                                         * 기타상담사항: 처음 준비합니다. 자세한 상담이 필요합니다.<br/>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="reserveTableList">
+                            <div class="reserveTable tx-gray on">
+                                <div class="table-row top p_re">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>상담예약 일시</p></div>
+                                    <div class="table-cell w-data w-data-span3 tx-left tx-gray pl15">
+                                        <span>
+                                            <dl>
+                                                <dt class="strong">노량진<span class="row-line">|</span></dt>
+                                                <dt class="strong">2018-10-25 (목) 10:00 ~ 10:30</dt>
 
+                                                <dt class="sList"><span class="row-line" style="float: left; width: 1px;">|</span>[예약상태] 예약완료</dt>
+                                                <dt class="sList">[상담상태] 완료</dt>
+                                            </dl>
+                                        </span>
+                                    </div>
+                                    <span class="MoreBtn"><a href="#none">보기 ▼</a></span>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>예약상태</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>예약완료</p></div>
+                                    <div class="table-cell w-tit bg-light-white strong"><p>상담상태</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>미방문</p></div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>이름(아이디)</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>홍길동(아이디)</p></div>
+                                    <div class="table-cell w-tit bg-light-white strong"><p>생년월일</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>1999-01-01</p></div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>연락처</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>01012345678</p></div>
+                                    <div class="table-cell w-tit bg-light-white strong"><p>이메일</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>asdf@willbes.com</p></div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>응시직렬</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>일반</p></div>
+                                    <div class="table-cell w-tit bg-light-white strong"><p>응시지역</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>서울</p></div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>수험기간</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>6개월 미만</p></div>
+                                    <div class="table-cell w-tit bg-light-white strong"><p>취약과목</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>영어</p></div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>수강여부</p></div>
+                                    <div class="table-cell w-data w-data-span3 tx-left pl15"><p>학원</p></div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>상세정보</p></div>
+                                    <div class="table-cell w-data w-data-span3 tx-left pl15">
+                                        <p>
+                                        2018년 1차 시험<br/>
+                                        - 국어: 50점<br/>
+                                        - 영어: 50점<br/>
+                                        - 사회: 50점<br/>
+                                        - 행정법: 50점<br/>
+                                        - 행정학: 50점<br/>
+                                        * 기타상담사항: 처음 준비합니다. 자세한 상담이 필요합니다.<br/>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="reserveTableList">
+                            <div class="reserveTable tx-gray on">
+                                <div class="table-row top p_re">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>상담예약 일시</p></div>
+                                    <div class="table-cell w-data w-data-span3 tx-left tx-gray pl15">
+                                        <span>
+                                            <dl>
+                                                <dt class="strong">노량진<span class="row-line">|</span></dt>
+                                                <dt class="strong">2018-10-25 (목) 10:00 ~ 10:30</dt>
 
+                                                <dt class="sList"><span class="row-line" style="float: left; width: 1px;">|</span>[예약상태] 예약완료</dt>
+                                                <dt class="sList">[상담상태] 완료</dt>
+                                            </dl>
+                                        </span>
+                                    </div>
+                                    <span class="MoreBtn"><a href="#none">보기 ▼</a></span>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>예약상태</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>예약완료</p></div>
+                                    <div class="table-cell w-tit bg-light-white strong"><p>상담상태</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>미방문</p></div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>이름(아이디)</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>홍길동(아이디)</p></div>
+                                    <div class="table-cell w-tit bg-light-white strong"><p>생년월일</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>1999-01-01</p></div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>연락처</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>01012345678</p></div>
+                                    <div class="table-cell w-tit bg-light-white strong"><p>이메일</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>asdf@willbes.com</p></div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>응시직렬</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>일반</p></div>
+                                    <div class="table-cell w-tit bg-light-white strong"><p>응시지역</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>서울</p></div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>수험기간</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>6개월 미만</p></div>
+                                    <div class="table-cell w-tit bg-light-white strong"><p>취약과목</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>영어</p></div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>수강여부</p></div>
+                                    <div class="table-cell w-data w-data-span3 tx-left pl15"><p>학원</p></div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>상세정보</p></div>
+                                    <div class="table-cell w-data w-data-span3 tx-left pl15">
+                                        <p>
+                                        2018년 1차 시험<br/>
+                                        - 국어: 50점<br/>
+                                        - 영어: 50점<br/>
+                                        - 사회: 50점<br/>
+                                        - 행정법: 50점<br/>
+                                        - 행정학: 50점<br/>
+                                        * 기타상담사항: 처음 준비합니다. 자세한 상담이 필요합니다.<br/>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="reserveTableList">
+                            <div class="reserveTable tx-gray on">
+                                <div class="table-row top p_re">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>상담예약 일시</p></div>
+                                    <div class="table-cell w-data w-data-span3 tx-left tx-gray pl15">
+                                        <span>
+                                            <dl>
+                                                <dt class="strong">노량진<span class="row-line">|</span></dt>
+                                                <dt class="strong">2018-10-25 (목) 10:00 ~ 10:30</dt>
 
+                                                <dt class="sList"><span class="row-line" style="float: left; width: 1px;">|</span>[예약상태] 예약완료</dt>
+                                                <dt class="sList">[상담상태] 완료</dt>
+                                            </dl>
+                                        </span>
+                                    </div>
+                                    <span class="MoreBtn"><a href="#none">보기 ▼</a></span>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>예약상태</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>예약완료</p></div>
+                                    <div class="table-cell w-tit bg-light-white strong"><p>상담상태</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>미방문</p></div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>이름(아이디)</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>홍길동(아이디)</p></div>
+                                    <div class="table-cell w-tit bg-light-white strong"><p>생년월일</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>1999-01-01</p></div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>연락처</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>01012345678</p></div>
+                                    <div class="table-cell w-tit bg-light-white strong"><p>이메일</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>asdf@willbes.com</p></div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>응시직렬</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>일반</p></div>
+                                    <div class="table-cell w-tit bg-light-white strong"><p>응시지역</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>서울</p></div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>수험기간</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>6개월 미만</p></div>
+                                    <div class="table-cell w-tit bg-light-white strong"><p>취약과목</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>영어</p></div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>수강여부</p></div>
+                                    <div class="table-cell w-data w-data-span3 tx-left pl15"><p>학원</p></div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>상세정보</p></div>
+                                    <div class="table-cell w-data w-data-span3 tx-left pl15">
+                                        <p>
+                                        2018년 1차 시험<br/>
+                                        - 국어: 50점<br/>
+                                        - 영어: 50점<br/>
+                                        - 사회: 50점<br/>
+                                        - 행정법: 50점<br/>
+                                        - 행정학: 50점<br/>
+                                        * 기타상담사항: 처음 준비합니다. 자세한 상담이 필요합니다.<br/>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="reserveTableList">
+                            <div class="reserveTable tx-gray on">
+                                <div class="table-row top p_re">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>상담예약 일시</p></div>
+                                    <div class="table-cell w-data w-data-span3 tx-left tx-gray pl15">
+                                        <span>
+                                            <dl>
+                                                <dt class="strong">노량진<span class="row-line">|</span></dt>
+                                                <dt class="strong">2018-10-25 (목) 10:00 ~ 10:30</dt>
 
+                                                <dt class="sList"><span class="row-line" style="float: left; width: 1px;">|</span>[예약상태] 예약완료</dt>
+                                                <dt class="sList">[상담상태] 완료</dt>
+                                            </dl>
+                                        </span>
+                                    </div>
+                                    <span class="MoreBtn"><a href="#none">보기 ▼</a></span>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>예약상태</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>예약완료</p></div>
+                                    <div class="table-cell w-tit bg-light-white strong"><p>상담상태</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>미방문</p></div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>이름(아이디)</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>홍길동(아이디)</p></div>
+                                    <div class="table-cell w-tit bg-light-white strong"><p>생년월일</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>1999-01-01</p></div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>연락처</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>01012345678</p></div>
+                                    <div class="table-cell w-tit bg-light-white strong"><p>이메일</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>asdf@willbes.com</p></div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>응시직렬</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>일반</p></div>
+                                    <div class="table-cell w-tit bg-light-white strong"><p>응시지역</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>서울</p></div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>수험기간</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>6개월 미만</p></div>
+                                    <div class="table-cell w-tit bg-light-white strong"><p>취약과목</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>영어</p></div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>수강여부</p></div>
+                                    <div class="table-cell w-data w-data-span3 tx-left pl15"><p>학원</p></div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>상세정보</p></div>
+                                    <div class="table-cell w-data w-data-span3 tx-left pl15">
+                                        <p>
+                                        2018년 1차 시험<br/>
+                                        - 국어: 50점<br/>
+                                        - 영어: 50점<br/>
+                                        - 사회: 50점<br/>
+                                        - 행정법: 50점<br/>
+                                        - 행정학: 50점<br/>
+                                        * 기타상담사항: 처음 준비합니다. 자세한 상담이 필요합니다.<br/>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="reserveTableList">
+                            <div class="reserveTable tx-gray on">
+                                <div class="table-row top p_re">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>상담예약 일시</p></div>
+                                    <div class="table-cell w-data w-data-span3 tx-left tx-gray pl15">
+                                        <span>
+                                            <dl>
+                                                <dt class="strong">노량진<span class="row-line">|</span></dt>
+                                                <dt class="strong">2018-10-25 (목) 10:00 ~ 10:30</dt>
 
-                    <div class="LeclistTable reserveTableList bdt-gray bdb-gray">
-                        <table cellspacing="0" cellpadding="0" class="listTable reserveTable upper-gray fc-bd-none tx-gray on">
-                            <colgroup>
-                                <col style="width: 115px;">
-                                <col style="width: 235px;">
-                                <col style="width: 115px;">
-                                <col style="width: 235px;">
-                            </colgroup>
-                            <tbody>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">상담예약 일시</th>
-                                <td class="w-data tx-left tx-gray pl15" colspan="3">
-                                    <dl>
-                                        <dt class="strong">노량진<span class="row-line">|</span></dt>
-                                        <dt class="strong">2018-10-15 (목) 10:00 ~ 10:30</dt>
-                                        <dt class="sList"><span class="row-line" style="float: left; width: 1px;">|</span>[예약상태] 예약완료</dt>
-                                        <dt class="sList">[상담상태] 완료</dt>
-                                    </dl>
+                                                <dt class="sList"><span class="row-line" style="float: left; width: 1px;">|</span>[예약상태] 예약완료</dt>
+                                                <dt class="sList">[상담상태] 완료</dt>
+                                            </dl>
+                                        </span>
+                                    </div>
                                     <span class="MoreBtn"><a href="#none">보기 ▼</a></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">예약상태</th>
-                                <td class="w-data tx-left pl15">예약완료</td>
-                                <th class="w-tit bg-light-white strong">상담상태</th>
-                                <td class="w-data tx-left pl15">미방문</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">이름(아이디)</th>
-                                <td class="w-data tx-left pl15">홍길동(아이디)</td>
-                                <th class="w-tit bg-light-white strong">생년월일</th>
-                                <td class="w-data tx-left pl15">1999-01-01</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">연락처</th>
-                                <td class="w-data tx-left pl15">01012345678</td>
-                                <th class="w-tit bg-light-white strong">생년월일</th>
-                                <td class="w-data tx-left pl15">asdf@willbes.com</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">응시직렬</th>
-                                <td class="w-data tx-left pl15">일반</td>
-                                <th class="w-tit bg-light-white strong">응시지역</th>
-                                <td class="w-data tx-left pl15">서울</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">수험기간</th>
-                                <td class="w-data tx-left pl15">6개월 미만</td>
-                                <th class="w-tit bg-light-white strong">취약과목</th>
-                                <td class="w-data tx-left pl15">영어</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">수강여부</th>
-                                <td class="w-data tx-left pl15" colspan="3">학원</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">상세정보</th>
-                                <td class="w-data tx-left pl15" colspan="3">
-                                    2018년 1차 시험<br/>
-                                    - 국어: 50점<br/>
-                                    - 영어: 50점<br/>
-                                    - 사회: 50점<br/>
-                                    - 행정법: 50점<br/>
-                                    - 행정학: 50점<br/>
-                                    * 기타상담사항: 처음 준비합니다. 자세한 상담이 필요합니다.<br/>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="LeclistTable reserveTableList bdt-gray bdb-gray">
-                        <table cellspacing="0" cellpadding="0" class="listTable reserveTable upper-gray fc-bd-none tx-gray on">
-                            <colgroup>
-                                <col style="width: 115px;">
-                                <col style="width: 235px;">
-                                <col style="width: 115px;">
-                                <col style="width: 235px;">
-                            </colgroup>
-                            <tbody>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">상담예약 일시</th>
-                                <td class="w-data tx-left tx-gray pl15" colspan="3">
-                                    <dl>
-                                        <dt class="strong">노량진<span class="row-line">|</span></dt>
-                                        <dt class="strong">2018-10-15 (목) 10:00 ~ 10:30</dt>
-                                        <dt class="sList"><span class="row-line" style="float: left; width: 1px;">|</span>[예약상태] 예약완료</dt>
-                                        <dt class="sList">[상담상태] 완료</dt>
-                                    </dl>
-                                    <span class="MoreBtn"><a href="#none">보기 ▼</a></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">예약상태</th>
-                                <td class="w-data tx-left pl15">예약완료</td>
-                                <th class="w-tit bg-light-white strong">상담상태</th>
-                                <td class="w-data tx-left pl15">미방문</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">이름(아이디)</th>
-                                <td class="w-data tx-left pl15">홍길동(아이디)</td>
-                                <th class="w-tit bg-light-white strong">생년월일</th>
-                                <td class="w-data tx-left pl15">1999-01-01</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">연락처</th>
-                                <td class="w-data tx-left pl15">01012345678</td>
-                                <th class="w-tit bg-light-white strong">생년월일</th>
-                                <td class="w-data tx-left pl15">asdf@willbes.com</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">응시직렬</th>
-                                <td class="w-data tx-left pl15">일반</td>
-                                <th class="w-tit bg-light-white strong">응시지역</th>
-                                <td class="w-data tx-left pl15">서울</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">수험기간</th>
-                                <td class="w-data tx-left pl15">6개월 미만</td>
-                                <th class="w-tit bg-light-white strong">취약과목</th>
-                                <td class="w-data tx-left pl15">영어</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">수강여부</th>
-                                <td class="w-data tx-left pl15" colspan="3">학원</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">상세정보</th>
-                                <td class="w-data tx-left pl15" colspan="3">
-                                    2018년 1차 시험<br/>
-                                    - 국어: 50점<br/>
-                                    - 영어: 50점<br/>
-                                    - 사회: 50점<br/>
-                                    - 행정법: 50점<br/>
-                                    - 행정학: 50점<br/>
-                                    * 기타상담사항: 처음 준비합니다. 자세한 상담이 필요합니다.<br/>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="LeclistTable reserveTableList bdt-gray bdb-gray">
-                        <table cellspacing="0" cellpadding="0" class="listTable reserveTable upper-gray fc-bd-none tx-gray on">
-                            <colgroup>
-                                <col style="width: 115px;">
-                                <col style="width: 235px;">
-                                <col style="width: 115px;">
-                                <col style="width: 235px;">
-                            </colgroup>
-                            <tbody>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">상담예약 일시</th>
-                                <td class="w-data tx-left tx-gray pl15" colspan="3">
-                                    <dl>
-                                        <dt class="strong">노량진<span class="row-line">|</span></dt>
-                                        <dt class="strong">2018-10-15 (목) 10:00 ~ 10:30</dt>
-                                        <dt class="sList"><span class="row-line" style="float: left; width: 1px;">|</span>[예약상태] 예약완료</dt>
-                                        <dt class="sList">[상담상태] 완료</dt>
-                                    </dl>
-                                    <span class="MoreBtn"><a href="#none">보기 ▼</a></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">예약상태</th>
-                                <td class="w-data tx-left pl15">예약완료</td>
-                                <th class="w-tit bg-light-white strong">상담상태</th>
-                                <td class="w-data tx-left pl15">미방문</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">이름(아이디)</th>
-                                <td class="w-data tx-left pl15">홍길동(아이디)</td>
-                                <th class="w-tit bg-light-white strong">생년월일</th>
-                                <td class="w-data tx-left pl15">1999-01-01</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">연락처</th>
-                                <td class="w-data tx-left pl15">01012345678</td>
-                                <th class="w-tit bg-light-white strong">생년월일</th>
-                                <td class="w-data tx-left pl15">asdf@willbes.com</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">응시직렬</th>
-                                <td class="w-data tx-left pl15">일반</td>
-                                <th class="w-tit bg-light-white strong">응시지역</th>
-                                <td class="w-data tx-left pl15">서울</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">수험기간</th>
-                                <td class="w-data tx-left pl15">6개월 미만</td>
-                                <th class="w-tit bg-light-white strong">취약과목</th>
-                                <td class="w-data tx-left pl15">영어</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">수강여부</th>
-                                <td class="w-data tx-left pl15" colspan="3">학원</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">상세정보</th>
-                                <td class="w-data tx-left pl15" colspan="3">
-                                    2018년 1차 시험<br/>
-                                    - 국어: 50점<br/>
-                                    - 영어: 50점<br/>
-                                    - 사회: 50점<br/>
-                                    - 행정법: 50점<br/>
-                                    - 행정학: 50점<br/>
-                                    * 기타상담사항: 처음 준비합니다. 자세한 상담이 필요합니다.<br/>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="LeclistTable reserveTableList bdt-gray bdb-gray">
-                        <table cellspacing="0" cellpadding="0" class="listTable reserveTable upper-gray fc-bd-none tx-gray on">
-                            <colgroup>
-                                <col style="width: 115px;">
-                                <col style="width: 235px;">
-                                <col style="width: 115px;">
-                                <col style="width: 235px;">
-                            </colgroup>
-                            <tbody>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">상담예약 일시</th>
-                                <td class="w-data tx-left tx-gray pl15" colspan="3">
-                                    <dl>
-                                        <dt class="strong">노량진<span class="row-line">|</span></dt>
-                                        <dt class="strong">2018-10-15 (목) 10:00 ~ 10:30</dt>
-                                        <dt class="sList"><span class="row-line" style="float: left; width: 1px;">|</span>[예약상태] 예약완료</dt>
-                                        <dt class="sList">[상담상태] 완료</dt>
-                                    </dl>
-                                    <span class="MoreBtn"><a href="#none">보기 ▼</a></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">예약상태</th>
-                                <td class="w-data tx-left pl15">예약완료</td>
-                                <th class="w-tit bg-light-white strong">상담상태</th>
-                                <td class="w-data tx-left pl15">미방문</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">이름(아이디)</th>
-                                <td class="w-data tx-left pl15">홍길동(아이디)</td>
-                                <th class="w-tit bg-light-white strong">생년월일</th>
-                                <td class="w-data tx-left pl15">1999-01-01</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">연락처</th>
-                                <td class="w-data tx-left pl15">01012345678</td>
-                                <th class="w-tit bg-light-white strong">생년월일</th>
-                                <td class="w-data tx-left pl15">asdf@willbes.com</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">응시직렬</th>
-                                <td class="w-data tx-left pl15">일반</td>
-                                <th class="w-tit bg-light-white strong">응시지역</th>
-                                <td class="w-data tx-left pl15">서울</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">수험기간</th>
-                                <td class="w-data tx-left pl15">6개월 미만</td>
-                                <th class="w-tit bg-light-white strong">취약과목</th>
-                                <td class="w-data tx-left pl15">영어</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">수강여부</th>
-                                <td class="w-data tx-left pl15" colspan="3">학원</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">상세정보</th>
-                                <td class="w-data tx-left pl15" colspan="3">
-                                    2018년 1차 시험<br/>
-                                    - 국어: 50점<br/>
-                                    - 영어: 50점<br/>
-                                    - 사회: 50점<br/>
-                                    - 행정법: 50점<br/>
-                                    - 행정학: 50점<br/>
-                                    * 기타상담사항: 처음 준비합니다. 자세한 상담이 필요합니다.<br/>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="LeclistTable reserveTableList bdt-gray bdb-gray">
-                        <table cellspacing="0" cellpadding="0" class="listTable reserveTable upper-gray fc-bd-none tx-gray on">
-                            <colgroup>
-                                <col style="width: 115px;">
-                                <col style="width: 235px;">
-                                <col style="width: 115px;">
-                                <col style="width: 235px;">
-                            </colgroup>
-                            <tbody>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">상담예약 일시</th>
-                                <td class="w-data tx-left tx-gray pl15" colspan="3">
-                                    <dl>
-                                        <dt class="strong">노량진<span class="row-line">|</span></dt>
-                                        <dt class="strong">2018-10-15 (목) 10:00 ~ 10:30</dt>
-                                        <dt class="sList"><span class="row-line" style="float: left; width: 1px;">|</span>[예약상태] 예약완료</dt>
-                                        <dt class="sList">[상담상태] 완료</dt>
-                                    </dl>
-                                    <span class="MoreBtn"><a href="#none">보기 ▼</a></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">예약상태</th>
-                                <td class="w-data tx-left pl15">예약완료</td>
-                                <th class="w-tit bg-light-white strong">상담상태</th>
-                                <td class="w-data tx-left pl15">미방문</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">이름(아이디)</th>
-                                <td class="w-data tx-left pl15">홍길동(아이디)</td>
-                                <th class="w-tit bg-light-white strong">생년월일</th>
-                                <td class="w-data tx-left pl15">1999-01-01</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">연락처</th>
-                                <td class="w-data tx-left pl15">01012345678</td>
-                                <th class="w-tit bg-light-white strong">생년월일</th>
-                                <td class="w-data tx-left pl15">asdf@willbes.com</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">응시직렬</th>
-                                <td class="w-data tx-left pl15">일반</td>
-                                <th class="w-tit bg-light-white strong">응시지역</th>
-                                <td class="w-data tx-left pl15">서울</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">수험기간</th>
-                                <td class="w-data tx-left pl15">6개월 미만</td>
-                                <th class="w-tit bg-light-white strong">취약과목</th>
-                                <td class="w-data tx-left pl15">영어</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">수강여부</th>
-                                <td class="w-data tx-left pl15" colspan="3">학원</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">상세정보</th>
-                                <td class="w-data tx-left pl15" colspan="3">
-                                    2018년 1차 시험<br/>
-                                    - 국어: 50점<br/>
-                                    - 영어: 50점<br/>
-                                    - 사회: 50점<br/>
-                                    - 행정법: 50점<br/>
-                                    - 행정학: 50점<br/>
-                                    * 기타상담사항: 처음 준비합니다. 자세한 상담이 필요합니다.<br/>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="LeclistTable reserveTableList bdt-gray bdb-gray">
-                        <table cellspacing="0" cellpadding="0" class="listTable reserveTable upper-gray fc-bd-none tx-gray on">
-                            <colgroup>
-                                <col style="width: 115px;">
-                                <col style="width: 235px;">
-                                <col style="width: 115px;">
-                                <col style="width: 235px;">
-                            </colgroup>
-                            <tbody>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">상담예약 일시</th>
-                                <td class="w-data tx-left tx-gray pl15" colspan="3">
-                                    <dl>
-                                        <dt class="strong">노량진<span class="row-line">|</span></dt>
-                                        <dt class="strong">2018-10-15 (목) 10:00 ~ 10:30</dt>
-                                        <dt class="sList"><span class="row-line" style="float: left; width: 1px;">|</span>[예약상태] 예약완료</dt>
-                                        <dt class="sList">[상담상태] 완료</dt>
-                                    </dl>
-                                    <span class="MoreBtn"><a href="#none">보기 ▼</a></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">예약상태</th>
-                                <td class="w-data tx-left pl15">예약완료</td>
-                                <th class="w-tit bg-light-white strong">상담상태</th>
-                                <td class="w-data tx-left pl15">미방문</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">이름(아이디)</th>
-                                <td class="w-data tx-left pl15">홍길동(아이디)</td>
-                                <th class="w-tit bg-light-white strong">생년월일</th>
-                                <td class="w-data tx-left pl15">1999-01-01</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">연락처</th>
-                                <td class="w-data tx-left pl15">01012345678</td>
-                                <th class="w-tit bg-light-white strong">생년월일</th>
-                                <td class="w-data tx-left pl15">asdf@willbes.com</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">응시직렬</th>
-                                <td class="w-data tx-left pl15">일반</td>
-                                <th class="w-tit bg-light-white strong">응시지역</th>
-                                <td class="w-data tx-left pl15">서울</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">수험기간</th>
-                                <td class="w-data tx-left pl15">6개월 미만</td>
-                                <th class="w-tit bg-light-white strong">취약과목</th>
-                                <td class="w-data tx-left pl15">영어</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">수강여부</th>
-                                <td class="w-data tx-left pl15" colspan="3">학원</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">상세정보</th>
-                                <td class="w-data tx-left pl15" colspan="3">
-                                    2018년 1차 시험<br/>
-                                    - 국어: 50점<br/>
-                                    - 영어: 50점<br/>
-                                    - 사회: 50점<br/>
-                                    - 행정법: 50점<br/>
-                                    - 행정학: 50점<br/>
-                                    * 기타상담사항: 처음 준비합니다. 자세한 상담이 필요합니다.<br/>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="LeclistTable reserveTableList bdt-gray bdb-gray">
-                        <table cellspacing="0" cellpadding="0" class="listTable reserveTable upper-gray fc-bd-none tx-gray on">
-                            <colgroup>
-                                <col style="width: 115px;">
-                                <col style="width: 235px;">
-                                <col style="width: 115px;">
-                                <col style="width: 235px;">
-                            </colgroup>
-                            <tbody>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">상담예약 일시</th>
-                                <td class="w-data tx-left tx-gray pl15" colspan="3">
-                                    <dl>
-                                        <dt class="strong">노량진<span class="row-line">|</span></dt>
-                                        <dt class="strong">2018-10-15 (목) 10:00 ~ 10:30</dt>
-                                        <dt class="sList"><span class="row-line" style="float: left; width: 1px;">|</span>[예약상태] 예약완료</dt>
-                                        <dt class="sList">[상담상태] 완료</dt>
-                                    </dl>
-                                    <span class="MoreBtn"><a href="#none">보기 ▼</a></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">예약상태</th>
-                                <td class="w-data tx-left pl15">예약완료</td>
-                                <th class="w-tit bg-light-white strong">상담상태</th>
-                                <td class="w-data tx-left pl15">미방문</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">이름(아이디)</th>
-                                <td class="w-data tx-left pl15">홍길동(아이디)</td>
-                                <th class="w-tit bg-light-white strong">생년월일</th>
-                                <td class="w-data tx-left pl15">1999-01-01</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">연락처</th>
-                                <td class="w-data tx-left pl15">01012345678</td>
-                                <th class="w-tit bg-light-white strong">생년월일</th>
-                                <td class="w-data tx-left pl15">asdf@willbes.com</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">응시직렬</th>
-                                <td class="w-data tx-left pl15">일반</td>
-                                <th class="w-tit bg-light-white strong">응시지역</th>
-                                <td class="w-data tx-left pl15">서울</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">수험기간</th>
-                                <td class="w-data tx-left pl15">6개월 미만</td>
-                                <th class="w-tit bg-light-white strong">취약과목</th>
-                                <td class="w-data tx-left pl15">영어</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">수강여부</th>
-                                <td class="w-data tx-left pl15" colspan="3">학원</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">상세정보</th>
-                                <td class="w-data tx-left pl15" colspan="3">
-                                    2018년 1차 시험<br/>
-                                    - 국어: 50점<br/>
-                                    - 영어: 50점<br/>
-                                    - 사회: 50점<br/>
-                                    - 행정법: 50점<br/>
-                                    - 행정학: 50점<br/>
-                                    * 기타상담사항: 처음 준비합니다. 자세한 상담이 필요합니다.<br/>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="LeclistTable reserveTableList bdt-gray bdb-gray">
-                        <table cellspacing="0" cellpadding="0" class="listTable reserveTable upper-gray fc-bd-none tx-gray on">
-                            <colgroup>
-                                <col style="width: 115px;">
-                                <col style="width: 235px;">
-                                <col style="width: 115px;">
-                                <col style="width: 235px;">
-                            </colgroup>
-                            <tbody>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">상담예약 일시</th>
-                                <td class="w-data tx-left tx-gray pl15" colspan="3">
-                                    <dl>
-                                        <dt class="strong">노량진<span class="row-line">|</span></dt>
-                                        <dt class="strong">2018-10-15 (목) 10:00 ~ 10:30</dt>
-                                        <dt class="sList"><span class="row-line" style="float: left; width: 1px;">|</span>[예약상태] 예약완료</dt>
-                                        <dt class="sList">[상담상태] 완료</dt>
-                                    </dl>
-                                    <span class="MoreBtn"><a href="#none">보기 ▼</a></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">예약상태</th>
-                                <td class="w-data tx-left pl15">예약완료</td>
-                                <th class="w-tit bg-light-white strong">상담상태</th>
-                                <td class="w-data tx-left pl15">미방문</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">이름(아이디)</th>
-                                <td class="w-data tx-left pl15">홍길동(아이디)</td>
-                                <th class="w-tit bg-light-white strong">생년월일</th>
-                                <td class="w-data tx-left pl15">1999-01-01</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">연락처</th>
-                                <td class="w-data tx-left pl15">01012345678</td>
-                                <th class="w-tit bg-light-white strong">생년월일</th>
-                                <td class="w-data tx-left pl15">asdf@willbes.com</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">응시직렬</th>
-                                <td class="w-data tx-left pl15">일반</td>
-                                <th class="w-tit bg-light-white strong">응시지역</th>
-                                <td class="w-data tx-left pl15">서울</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">수험기간</th>
-                                <td class="w-data tx-left pl15">6개월 미만</td>
-                                <th class="w-tit bg-light-white strong">취약과목</th>
-                                <td class="w-data tx-left pl15">영어</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">수강여부</th>
-                                <td class="w-data tx-left pl15" colspan="3">학원</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">상세정보</th>
-                                <td class="w-data tx-left pl15" colspan="3">
-                                    2018년 1차 시험<br/>
-                                    - 국어: 50점<br/>
-                                    - 영어: 50점<br/>
-                                    - 사회: 50점<br/>
-                                    - 행정법: 50점<br/>
-                                    - 행정학: 50점<br/>
-                                    * 기타상담사항: 처음 준비합니다. 자세한 상담이 필요합니다.<br/>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="LeclistTable reserveTableList bdt-gray bdb-gray">
-                        <table cellspacing="0" cellpadding="0" class="listTable reserveTable upper-gray fc-bd-none tx-gray on">
-                            <colgroup>
-                                <col style="width: 115px;">
-                                <col style="width: 235px;">
-                                <col style="width: 115px;">
-                                <col style="width: 235px;">
-                            </colgroup>
-                            <tbody>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">상담예약 일시</th>
-                                <td class="w-data tx-left tx-gray pl15" colspan="3">
-                                    <dl>
-                                        <dt class="strong">노량진<span class="row-line">|</span></dt>
-                                        <dt class="strong">2018-10-15 (목) 10:00 ~ 10:30</dt>
-                                        <dt class="sList"><span class="row-line" style="float: left; width: 1px;">|</span>[예약상태] 예약완료</dt>
-                                        <dt class="sList">[상담상태] 완료</dt>
-                                    </dl>
-                                    <span class="MoreBtn"><a href="#none">보기 ▼</a></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">예약상태</th>
-                                <td class="w-data tx-left pl15">예약완료</td>
-                                <th class="w-tit bg-light-white strong">상담상태</th>
-                                <td class="w-data tx-left pl15">미방문</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">이름(아이디)</th>
-                                <td class="w-data tx-left pl15">홍길동(아이디)</td>
-                                <th class="w-tit bg-light-white strong">생년월일</th>
-                                <td class="w-data tx-left pl15">1999-01-01</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">연락처</th>
-                                <td class="w-data tx-left pl15">01012345678</td>
-                                <th class="w-tit bg-light-white strong">생년월일</th>
-                                <td class="w-data tx-left pl15">asdf@willbes.com</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">응시직렬</th>
-                                <td class="w-data tx-left pl15">일반</td>
-                                <th class="w-tit bg-light-white strong">응시지역</th>
-                                <td class="w-data tx-left pl15">서울</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">수험기간</th>
-                                <td class="w-data tx-left pl15">6개월 미만</td>
-                                <th class="w-tit bg-light-white strong">취약과목</th>
-                                <td class="w-data tx-left pl15">영어</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">수강여부</th>
-                                <td class="w-data tx-left pl15" colspan="3">학원</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">상세정보</th>
-                                <td class="w-data tx-left pl15" colspan="3">
-                                    2018년 1차 시험<br/>
-                                    - 국어: 50점<br/>
-                                    - 영어: 50점<br/>
-                                    - 사회: 50점<br/>
-                                    - 행정법: 50점<br/>
-                                    - 행정학: 50점<br/>
-                                    * 기타상담사항: 처음 준비합니다. 자세한 상담이 필요합니다.<br/>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="LeclistTable reserveTableList bdt-gray bdb-gray">
-                        <table cellspacing="0" cellpadding="0" class="listTable reserveTable upper-gray fc-bd-none tx-gray on">
-                            <colgroup>
-                                <col style="width: 115px;">
-                                <col style="width: 235px;">
-                                <col style="width: 115px;">
-                                <col style="width: 235px;">
-                            </colgroup>
-                            <tbody>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">상담예약 일시</th>
-                                <td class="w-data tx-left tx-gray pl15" colspan="3">
-                                    <dl>
-                                        <dt class="strong">노량진<span class="row-line">|</span></dt>
-                                        <dt class="strong">2018-10-15 (목) 10:00 ~ 10:30</dt>
-                                        <dt class="sList"><span class="row-line" style="float: left; width: 1px;">|</span>[예약상태] 예약완료</dt>
-                                        <dt class="sList">[상담상태] 완료</dt>
-                                    </dl>
-                                    <span class="MoreBtn"><a href="#none">보기 ▼</a></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">예약상태</th>
-                                <td class="w-data tx-left pl15">예약완료</td>
-                                <th class="w-tit bg-light-white strong">상담상태</th>
-                                <td class="w-data tx-left pl15">미방문</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">이름(아이디)</th>
-                                <td class="w-data tx-left pl15">홍길동(아이디)</td>
-                                <th class="w-tit bg-light-white strong">생년월일</th>
-                                <td class="w-data tx-left pl15">1999-01-01</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">연락처</th>
-                                <td class="w-data tx-left pl15">01012345678</td>
-                                <th class="w-tit bg-light-white strong">생년월일</th>
-                                <td class="w-data tx-left pl15">asdf@willbes.com</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">응시직렬</th>
-                                <td class="w-data tx-left pl15">일반</td>
-                                <th class="w-tit bg-light-white strong">응시지역</th>
-                                <td class="w-data tx-left pl15">서울</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">수험기간</th>
-                                <td class="w-data tx-left pl15">6개월 미만</td>
-                                <th class="w-tit bg-light-white strong">취약과목</th>
-                                <td class="w-data tx-left pl15">영어</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">수강여부</th>
-                                <td class="w-data tx-left pl15" colspan="3">학원</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">상세정보</th>
-                                <td class="w-data tx-left pl15" colspan="3">
-                                    2018년 1차 시험<br/>
-                                    - 국어: 50점<br/>
-                                    - 영어: 50점<br/>
-                                    - 사회: 50점<br/>
-                                    - 행정법: 50점<br/>
-                                    - 행정학: 50점<br/>
-                                    * 기타상담사항: 처음 준비합니다. 자세한 상담이 필요합니다.<br/>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="LeclistTable reserveTableList bdt-gray bdb-gray">
-                        <table cellspacing="0" cellpadding="0" class="listTable reserveTable upper-gray fc-bd-none tx-gray on">
-                            <colgroup>
-                                <col style="width: 115px;">
-                                <col style="width: 235px;">
-                                <col style="width: 115px;">
-                                <col style="width: 235px;">
-                            </colgroup>
-                            <tbody>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">상담예약 일시</th>
-                                <td class="w-data tx-left tx-gray pl15" colspan="3">
-                                    <dl>
-                                        <dt class="strong">노량진<span class="row-line">|</span></dt>
-                                        <dt class="strong">2018-10-15 (목) 10:00 ~ 10:30</dt>
-                                        <dt class="sList"><span class="row-line" style="float: left; width: 1px;">|</span>[예약상태] 예약완료</dt>
-                                        <dt class="sList">[상담상태] 완료</dt>
-                                    </dl>
-                                    <span class="MoreBtn"><a href="#none">보기 ▼</a></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">예약상태</th>
-                                <td class="w-data tx-left pl15">예약완료</td>
-                                <th class="w-tit bg-light-white strong">상담상태</th>
-                                <td class="w-data tx-left pl15">미방문</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">이름(아이디)</th>
-                                <td class="w-data tx-left pl15">홍길동(아이디)</td>
-                                <th class="w-tit bg-light-white strong">생년월일</th>
-                                <td class="w-data tx-left pl15">1999-01-01</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">연락처</th>
-                                <td class="w-data tx-left pl15">01012345678</td>
-                                <th class="w-tit bg-light-white strong">생년월일</th>
-                                <td class="w-data tx-left pl15">asdf@willbes.com</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">응시직렬</th>
-                                <td class="w-data tx-left pl15">일반</td>
-                                <th class="w-tit bg-light-white strong">응시지역</th>
-                                <td class="w-data tx-left pl15">서울</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">수험기간</th>
-                                <td class="w-data tx-left pl15">6개월 미만</td>
-                                <th class="w-tit bg-light-white strong">취약과목</th>
-                                <td class="w-data tx-left pl15">영어</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">수강여부</th>
-                                <td class="w-data tx-left pl15" colspan="3">학원</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">상세정보</th>
-                                <td class="w-data tx-left pl15" colspan="3">
-                                    2018년 1차 시험<br/>
-                                    - 국어: 50점<br/>
-                                    - 영어: 50점<br/>
-                                    - 사회: 50점<br/>
-                                    - 행정법: 50점<br/>
-                                    - 행정학: 50점<br/>
-                                    * 기타상담사항: 처음 준비합니다. 자세한 상담이 필요합니다.<br/>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="LeclistTable reserveTableList bdt-gray bdb-gray">
-                        <table cellspacing="0" cellpadding="0" class="listTable reserveTable upper-gray fc-bd-none tx-gray on">
-                            <colgroup>
-                                <col style="width: 115px;">
-                                <col style="width: 235px;">
-                                <col style="width: 115px;">
-                                <col style="width: 235px;">
-                            </colgroup>
-                            <tbody>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">상담예약 일시</th>
-                                <td class="w-data tx-left tx-gray pl15" colspan="3">
-                                    <dl>
-                                        <dt class="strong">노량진<span class="row-line">|</span></dt>
-                                        <dt class="strong">2018-10-15 (목) 10:00 ~ 10:30</dt>
-                                        <dt class="sList"><span class="row-line" style="float: left; width: 1px;">|</span>[예약상태] 예약완료</dt>
-                                        <dt class="sList">[상담상태] 완료</dt>
-                                    </dl>
-                                    <span class="MoreBtn"><a href="#none">보기 ▼</a></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">예약상태</th>
-                                <td class="w-data tx-left pl15">예약완료</td>
-                                <th class="w-tit bg-light-white strong">상담상태</th>
-                                <td class="w-data tx-left pl15">미방문</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">이름(아이디)</th>
-                                <td class="w-data tx-left pl15">홍길동(아이디)</td>
-                                <th class="w-tit bg-light-white strong">생년월일</th>
-                                <td class="w-data tx-left pl15">1999-01-01</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">연락처</th>
-                                <td class="w-data tx-left pl15">01012345678</td>
-                                <th class="w-tit bg-light-white strong">생년월일</th>
-                                <td class="w-data tx-left pl15">asdf@willbes.com</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">응시직렬</th>
-                                <td class="w-data tx-left pl15">일반</td>
-                                <th class="w-tit bg-light-white strong">응시지역</th>
-                                <td class="w-data tx-left pl15">서울</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">수험기간</th>
-                                <td class="w-data tx-left pl15">6개월 미만</td>
-                                <th class="w-tit bg-light-white strong">취약과목</th>
-                                <td class="w-data tx-left pl15">영어</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">수강여부</th>
-                                <td class="w-data tx-left pl15" colspan="3">학원</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">상세정보</th>
-                                <td class="w-data tx-left pl15" colspan="3">
-                                    2018년 1차 시험<br/>
-                                    - 국어: 50점<br/>
-                                    - 영어: 50점<br/>
-                                    - 사회: 50점<br/>
-                                    - 행정법: 50점<br/>
-                                    - 행정학: 50점<br/>
-                                    * 기타상담사항: 처음 준비합니다. 자세한 상담이 필요합니다.<br/>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="LeclistTable reserveTableList bdt-gray bdb-gray">
-                        <table cellspacing="0" cellpadding="0" class="listTable reserveTable upper-gray fc-bd-none tx-gray on">
-                            <colgroup>
-                                <col style="width: 115px;">
-                                <col style="width: 235px;">
-                                <col style="width: 115px;">
-                                <col style="width: 235px;">
-                            </colgroup>
-                            <tbody>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">상담예약 일시</th>
-                                <td class="w-data tx-left tx-gray pl15" colspan="3">
-                                    <dl>
-                                        <dt class="strong">노량진<span class="row-line">|</span></dt>
-                                        <dt class="strong">2018-10-15 (목) 10:00 ~ 10:30</dt>
-                                        <dt class="sList"><span class="row-line" style="float: left; width: 1px;">|</span>[예약상태] 예약완료</dt>
-                                        <dt class="sList">[상담상태] 완료</dt>
-                                    </dl>
-                                    <span class="MoreBtn"><a href="#none">보기 ▼</a></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">예약상태</th>
-                                <td class="w-data tx-left pl15">예약완료</td>
-                                <th class="w-tit bg-light-white strong">상담상태</th>
-                                <td class="w-data tx-left pl15">미방문</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">이름(아이디)</th>
-                                <td class="w-data tx-left pl15">홍길동(아이디)</td>
-                                <th class="w-tit bg-light-white strong">생년월일</th>
-                                <td class="w-data tx-left pl15">1999-01-01</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">연락처</th>
-                                <td class="w-data tx-left pl15">01012345678</td>
-                                <th class="w-tit bg-light-white strong">생년월일</th>
-                                <td class="w-data tx-left pl15">asdf@willbes.com</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">응시직렬</th>
-                                <td class="w-data tx-left pl15">일반</td>
-                                <th class="w-tit bg-light-white strong">응시지역</th>
-                                <td class="w-data tx-left pl15">서울</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">수험기간</th>
-                                <td class="w-data tx-left pl15">6개월 미만</td>
-                                <th class="w-tit bg-light-white strong">취약과목</th>
-                                <td class="w-data tx-left pl15">영어</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">수강여부</th>
-                                <td class="w-data tx-left pl15" colspan="3">학원</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">상세정보</th>
-                                <td class="w-data tx-left pl15" colspan="3">
-                                    2018년 1차 시험<br/>
-                                    - 국어: 50점<br/>
-                                    - 영어: 50점<br/>
-                                    - 사회: 50점<br/>
-                                    - 행정법: 50점<br/>
-                                    - 행정학: 50점<br/>
-                                    * 기타상담사항: 처음 준비합니다. 자세한 상담이 필요합니다.<br/>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="LeclistTable reserveTableList bdt-gray bdb-gray">
-                        <table cellspacing="0" cellpadding="0" class="listTable reserveTable upper-gray fc-bd-none tx-gray on">
-                            <colgroup>
-                                <col style="width: 115px;">
-                                <col style="width: 235px;">
-                                <col style="width: 115px;">
-                                <col style="width: 235px;">
-                            </colgroup>
-                            <tbody>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">상담예약 일시</th>
-                                <td class="w-data tx-left tx-gray pl15" colspan="3">
-                                    <dl>
-                                        <dt class="strong">노량진<span class="row-line">|</span></dt>
-                                        <dt class="strong">2018-10-15 (목) 10:00 ~ 10:30</dt>
-                                        <dt class="sList"><span class="row-line" style="float: left; width: 1px;">|</span>[예약상태] 예약완료</dt>
-                                        <dt class="sList">[상담상태] 완료</dt>
-                                    </dl>
-                                    <span class="MoreBtn"><a href="#none">보기 ▼</a></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">예약상태</th>
-                                <td class="w-data tx-left pl15">예약완료</td>
-                                <th class="w-tit bg-light-white strong">상담상태</th>
-                                <td class="w-data tx-left pl15">미방문</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">이름(아이디)</th>
-                                <td class="w-data tx-left pl15">홍길동(아이디)</td>
-                                <th class="w-tit bg-light-white strong">생년월일</th>
-                                <td class="w-data tx-left pl15">1999-01-01</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">연락처</th>
-                                <td class="w-data tx-left pl15">01012345678</td>
-                                <th class="w-tit bg-light-white strong">생년월일</th>
-                                <td class="w-data tx-left pl15">asdf@willbes.com</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">응시직렬</th>
-                                <td class="w-data tx-left pl15">일반</td>
-                                <th class="w-tit bg-light-white strong">응시지역</th>
-                                <td class="w-data tx-left pl15">서울</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">수험기간</th>
-                                <td class="w-data tx-left pl15">6개월 미만</td>
-                                <th class="w-tit bg-light-white strong">취약과목</th>
-                                <td class="w-data tx-left pl15">영어</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">수강여부</th>
-                                <td class="w-data tx-left pl15" colspan="3">학원</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">상세정보</th>
-                                <td class="w-data tx-left pl15" colspan="3">
-                                    2018년 1차 시험<br/>
-                                    - 국어: 50점<br/>
-                                    - 영어: 50점<br/>
-                                    - 사회: 50점<br/>
-                                    - 행정법: 50점<br/>
-                                    - 행정학: 50점<br/>
-                                    * 기타상담사항: 처음 준비합니다. 자세한 상담이 필요합니다.<br/>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="LeclistTable reserveTableList bdt-gray bdb-gray">
-                        <table cellspacing="0" cellpadding="0" class="listTable reserveTable upper-gray fc-bd-none tx-gray on">
-                            <colgroup>
-                                <col style="width: 115px;">
-                                <col style="width: 235px;">
-                                <col style="width: 115px;">
-                                <col style="width: 235px;">
-                            </colgroup>
-                            <tbody>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">상담예약 일시</th>
-                                <td class="w-data tx-left tx-gray pl15" colspan="3">
-                                    <dl>
-                                        <dt class="strong">노량진<span class="row-line">|</span></dt>
-                                        <dt class="strong">2018-10-15 (목) 10:00 ~ 10:30</dt>
-                                        <dt class="sList"><span class="row-line" style="float: left; width: 1px;">|</span>[예약상태] 예약완료</dt>
-                                        <dt class="sList">[상담상태] 완료</dt>
-                                    </dl>
-                                    <span class="MoreBtn"><a href="#none">보기 ▼</a></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">예약상태</th>
-                                <td class="w-data tx-left pl15">예약완료</td>
-                                <th class="w-tit bg-light-white strong">상담상태</th>
-                                <td class="w-data tx-left pl15">미방문</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">이름(아이디)</th>
-                                <td class="w-data tx-left pl15">홍길동(아이디)</td>
-                                <th class="w-tit bg-light-white strong">생년월일</th>
-                                <td class="w-data tx-left pl15">1999-01-01</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">연락처</th>
-                                <td class="w-data tx-left pl15">01012345678</td>
-                                <th class="w-tit bg-light-white strong">생년월일</th>
-                                <td class="w-data tx-left pl15">asdf@willbes.com</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">응시직렬</th>
-                                <td class="w-data tx-left pl15">일반</td>
-                                <th class="w-tit bg-light-white strong">응시지역</th>
-                                <td class="w-data tx-left pl15">서울</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">수험기간</th>
-                                <td class="w-data tx-left pl15">6개월 미만</td>
-                                <th class="w-tit bg-light-white strong">취약과목</th>
-                                <td class="w-data tx-left pl15">영어</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">수강여부</th>
-                                <td class="w-data tx-left pl15" colspan="3">학원</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">상세정보</th>
-                                <td class="w-data tx-left pl15" colspan="3">
-                                    2018년 1차 시험<br/>
-                                    - 국어: 50점<br/>
-                                    - 영어: 50점<br/>
-                                    - 사회: 50점<br/>
-                                    - 행정법: 50점<br/>
-                                    - 행정학: 50점<br/>
-                                    * 기타상담사항: 처음 준비합니다. 자세한 상담이 필요합니다.<br/>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="LeclistTable reserveTableList bdt-gray bdb-gray">
-                        <table cellspacing="0" cellpadding="0" class="listTable reserveTable upper-gray fc-bd-none tx-gray on">
-                            <colgroup>
-                                <col style="width: 115px;">
-                                <col style="width: 235px;">
-                                <col style="width: 115px;">
-                                <col style="width: 235px;">
-                            </colgroup>
-                            <tbody>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">상담예약 일시</th>
-                                <td class="w-data tx-left tx-gray pl15" colspan="3">
-                                    <dl>
-                                        <dt class="strong">노량진<span class="row-line">|</span></dt>
-                                        <dt class="strong">2018-10-15 (목) 10:00 ~ 10:30</dt>
-                                        <dt class="sList"><span class="row-line" style="float: left; width: 1px;">|</span>[예약상태] 예약완료</dt>
-                                        <dt class="sList">[상담상태] 완료</dt>
-                                    </dl>
-                                    <span class="MoreBtn"><a href="#none">보기 ▼</a></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">예약상태</th>
-                                <td class="w-data tx-left pl15">예약완료</td>
-                                <th class="w-tit bg-light-white strong">상담상태</th>
-                                <td class="w-data tx-left pl15">미방문</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">이름(아이디)</th>
-                                <td class="w-data tx-left pl15">홍길동(아이디)</td>
-                                <th class="w-tit bg-light-white strong">생년월일</th>
-                                <td class="w-data tx-left pl15">1999-01-01</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">연락처</th>
-                                <td class="w-data tx-left pl15">01012345678</td>
-                                <th class="w-tit bg-light-white strong">생년월일</th>
-                                <td class="w-data tx-left pl15">asdf@willbes.com</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">응시직렬</th>
-                                <td class="w-data tx-left pl15">일반</td>
-                                <th class="w-tit bg-light-white strong">응시지역</th>
-                                <td class="w-data tx-left pl15">서울</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">수험기간</th>
-                                <td class="w-data tx-left pl15">6개월 미만</td>
-                                <th class="w-tit bg-light-white strong">취약과목</th>
-                                <td class="w-data tx-left pl15">영어</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">수강여부</th>
-                                <td class="w-data tx-left pl15" colspan="3">학원</td>
-                            </tr>
-                            <tr>
-                                <th class="w-tit bg-light-white strong">상세정보</th>
-                                <td class="w-data tx-left pl15" colspan="3">
-                                    2018년 1차 시험<br/>
-                                    - 국어: 50점<br/>
-                                    - 영어: 50점<br/>
-                                    - 사회: 50점<br/>
-                                    - 행정법: 50점<br/>
-                                    - 행정학: 50점<br/>
-                                    * 기타상담사항: 처음 준비합니다. 자세한 상담이 필요합니다.<br/>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>예약상태</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>예약완료</p></div>
+                                    <div class="table-cell w-tit bg-light-white strong"><p>상담상태</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>미방문</p></div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>이름(아이디)</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>홍길동(아이디)</p></div>
+                                    <div class="table-cell w-tit bg-light-white strong"><p>생년월일</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>1999-01-01</p></div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>연락처</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>01012345678</p></div>
+                                    <div class="table-cell w-tit bg-light-white strong"><p>이메일</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>asdf@willbes.com</p></div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>응시직렬</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>일반</p></div>
+                                    <div class="table-cell w-tit bg-light-white strong"><p>응시지역</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>서울</p></div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>수험기간</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>6개월 미만</p></div>
+                                    <div class="table-cell w-tit bg-light-white strong"><p>취약과목</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>영어</p></div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>수강여부</p></div>
+                                    <div class="table-cell w-data w-data-span3 tx-left pl15"><p>학원</p></div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>상세정보</p></div>
+                                    <div class="table-cell w-data w-data-span3 tx-left pl15">
+                                        <p>
+                                        2018년 1차 시험<br/>
+                                        - 국어: 50점<br/>
+                                        - 영어: 50점<br/>
+                                        - 사회: 50점<br/>
+                                        - 행정법: 50점<br/>
+                                        - 행정학: 50점<br/>
+                                        * 기타상담사항: 처음 준비합니다. 자세한 상담이 필요합니다.<br/>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="reserveTableList">
+                            <div class="reserveTable tx-gray on">
+                                <div class="table-row top p_re">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>상담예약 일시</p></div>
+                                    <div class="table-cell w-data w-data-span3 tx-left tx-gray pl15">
+                                        <span>
+                                            <dl>
+                                                <dt class="strong">노량진<span class="row-line">|</span></dt>
+                                                <dt class="strong">2018-10-25 (목) 10:00 ~ 10:30</dt>
 
+                                                <dt class="sList"><span class="row-line" style="float: left; width: 1px;">|</span>[예약상태] 예약완료</dt>
+                                                <dt class="sList">[상담상태] 완료</dt>
+                                            </dl>
+                                        </span>
+                                    </div>
+                                    <span class="MoreBtn"><a href="#none">보기 ▼</a></span>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>예약상태</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>예약완료</p></div>
+                                    <div class="table-cell w-tit bg-light-white strong"><p>상담상태</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>미방문</p></div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>이름(아이디)</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>홍길동(아이디)</p></div>
+                                    <div class="table-cell w-tit bg-light-white strong"><p>생년월일</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>1999-01-01</p></div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>연락처</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>01012345678</p></div>
+                                    <div class="table-cell w-tit bg-light-white strong"><p>이메일</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>asdf@willbes.com</p></div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>응시직렬</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>일반</p></div>
+                                    <div class="table-cell w-tit bg-light-white strong"><p>응시지역</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>서울</p></div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>수험기간</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>6개월 미만</p></div>
+                                    <div class="table-cell w-tit bg-light-white strong"><p>취약과목</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>영어</p></div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>수강여부</p></div>
+                                    <div class="table-cell w-data w-data-span3 tx-left pl15"><p>학원</p></div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell w-tit bg-light-white strong"><p>상세정보</p></div>
+                                    <div class="table-cell w-data w-data-span3 tx-left pl15">
+                                        <p>
+                                        2018년 1차 시험<br/>
+                                        - 국어: 50점<br/>
+                                        - 영어: 50점<br/>
+                                        - 사회: 50점<br/>
+                                        - 행정법: 50점<br/>
+                                        - 행정학: 50점<br/>
+                                        * 기타상담사항: 처음 준비합니다. 자세한 상담이 필요합니다.<br/>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

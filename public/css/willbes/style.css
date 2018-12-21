@@ -5239,20 +5239,20 @@ form .LeclistTable .evtTable tr td a.w-del {
 }
 
 /* counsel Step */
-.willbes-counsel_step .step:after {
+.willbes-counsel_step.step:after {
     content: '';
     display: block;
     clear: both;
 }
-.willbes-counsel_step .step ul:after {
+.willbes-counsel_step.step ul:after {
     content: '';
     display: block;
     clear: both;
 }
-.willbes-counsel_step .step ul {
+.willbes-counsel_step.step ul {
     margin-bottom: 25px;
 }
-.willbes-counsel_step .step ul li {
+.willbes-counsel_step.step ul li {
     float: left;
     width: 280px;
     height: 80px;
@@ -5263,22 +5263,22 @@ form .LeclistTable .evtTable tr td a.w-del {
     text-align: center;
     line-height: 26px;
 }
-.willbes-counsel_step .step ul li.arrow {
+.willbes-counsel_step.step ul li.arrow {
     float: left;
     width: 30px;
     height: 80px;
     margin: 0 10px;
     border: none;
 }
-.willbes-counsel_step .step ul li.arrow img {
+.willbes-counsel_step.step ul li.arrow img {
     position: relative;
     top: 50%;
     margin-top: -15px;
 }
-.willbes-counsel_step .step ul li.active {
+.willbes-counsel_step.step ul li.active {
     border: 1px solid #1a8ccc;
 }
-.willbes-counsel_step .step ul li .num {
+.willbes-counsel_step.step ul li .num {
     font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "sans-serif";
     font-size: 21px;
     font-weight: 300;
@@ -5288,7 +5288,7 @@ form .LeclistTable .evtTable tr td a.w-del {
 }
 
 /* counsel Step : 01. 상담일자/시간선택 */
-.willbes-counsel_step .step .info-Box {
+.willbes-counsel_step.step .info-Box {
     position: relative;
     background: #eee;
     width: 940px;
@@ -5298,8 +5298,8 @@ form .LeclistTable .evtTable tr td a.w-del {
     color: #434343;
     line-height: 26px;
 }
-.willbes-counsel_step .step .info-Box:after,
-.willbes-counsel_step .step .info-Box:before {
+.willbes-counsel_step.step .info-Box:after,
+.willbes-counsel_step.step .info-Box:before {
     content: '';
     display: block;
     position: absolute;
@@ -5307,32 +5307,32 @@ form .LeclistTable .evtTable tr td a.w-del {
     height: 0;
     border-style: solid;
 }
-.willbes-counsel_step .step .info-Box:before {
+.willbes-counsel_step.step .info-Box:before {
     top: -25px;
     border-color: transparent transparent #bebebe;
     border-width: 12px;
 }
-.willbes-counsel_step .step .info-Box:after {
+.willbes-counsel_step.step .info-Box:after {
     top: -24px;
     border-color: transparent transparent #eee;
     border-width: 12px;
 }
-.willbes-counsel_step .step .info-Box1:before {
+.willbes-counsel_step.step .info-Box1:before {
     margin-left: 105px;
 }
-.willbes-counsel_step .step .info-Box1:after {
+.willbes-counsel_step.step .info-Box1:after {
     margin-left: 105px;
 }
-.willbes-counsel_step .step .info-Box2:before {
+.willbes-counsel_step.step .info-Box2:before {
     margin-left: 430px;
 }
-.willbes-counsel_step .step .info-Box2:after {
+.willbes-counsel_step.step .info-Box2:after {
     margin-left: 430px;
 }
-.willbes-counsel_step .step .info-Box3:before {
+.willbes-counsel_step.step .info-Box3:before {
     margin-left: 760px;
 }
-.willbes-counsel_step .step .info-Box3:after {
+.willbes-counsel_step.step .info-Box3:after {
     margin-left: 760px;
 }
 
@@ -5371,75 +5371,76 @@ table.counselTable .w-info .Detail-gradeBox {
 
 /* calendarTable */
 .calendarTable {
-    width: 630px;
+    width: 68%;
+}
+table.calendar {
+    width: 100%;
     border: 1px solid #bebebe;
 }
-.calendarTable .table-condensed thead tr.week th,
-.calendarTable .table-condensed tr td {
+tr.calendar_week td,
+tr.calendar_day td {
     border-top: 1px solid #bebebe;
     border-left: 1px solid #bebebe;
     font-size: 13px;
 }
-.calendarTable .table-condensed thead tr.week th:first-child,
-.calendarTable .table-condensed tr td:first-child {
+tr.calendar_week td:first-child,
+tr.calendar_day td:first-child {
     border-left: none;
     color: #ed1c24;
 }
-.calendarTable .table-condensed thead tr.week th:last-child,
-.calendarTable .table-condensed tr td:last-child {
+tr.calendar_week th:last-child,
+tr.calendar_day td:last-child {
     color: #1a8ccb;
 }
-.calendarTable .table-condensed thead tr.week th {
+tr.calendar_week td {
     background: #f1f1f1;
     height: 36px;
     text-align: center;
 }
-.calendarTable .table-condensed tr td {
+tr.calendar_day td {
+    position: relative;
     height: 66px;
     padding: 12px 12px 8px;
     vertical-align: top;
 }
-.calendarTable .table-condensed tr.month th {
+tr.calendar_month th {
     font-size: 18px;
     padding: 22px 0;
 }
-.calendarTable .table-condensed tr.month th span {
+tr.calendar_month th span {
     display: inline-block;
     width: 29px;
     height: 29px;
     margin: 0 30px;
 }
-.calendarTable .table-condensed tr td button {
-    width: 60px;
-    height: 20px;
-    text-align: center;
-    display: block;
-    margin: 10px auto 0;
-}
-.calendarTable .table-condensed tr td button span {
+span.calendar_btn {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
     font-family: "NanumGothic-Regular", "Nanum Gothic", "나눔고딕", "sans-serif";
     font-size: 12px;
     font-weight: 300;
+    text-align: center;
     line-height: 16px;
+    margin: 0 8%;
+    padding: 2px 0;
 }
-.calendarTable .table-condensed tr td button.end {
+.btn_end {
     background: #eaeaea;
     border: 1px solid #c9c9c9;
-}
-.calendarTable .table-condensed tr td button.end span {
     color: #888;
 }
-.calendarTable .table-condensed tr td button.ing {
+.btn_ing {
     background: #1a8ccb;
     border: 1px solid #1a8ccb;
-}
-.calendarTable .table-condensed tr td button.ing span {
     color: #fff;
 }
 
+
 /* timeTable */
 .timeTable {
-    width: 285px;
+    width: 31%;
     height: 441px;
     border: 1px solid #bebebe;
 }
@@ -5486,79 +5487,121 @@ table.counselTable .w-info .Detail-gradeBox {
     float: left;
 }
 .SelectTime ul li div.Time {
-    width: 150px;
+    width: 50%;
     height: 34px;
     text-align: center;
     border-right: 1px solid #e0e0e0;
 }
 .SelectTime ul li div.Condition {
-    width: 116px;
+    width: 50%;
     height: 100%;
     text-align: center;
 }
 .SelectTime ul li div.Condition a {
     display: block;
-    widtH: 100%;
+    width: 100%;
     height: 100%;
 }
 .SelectTime ul li div.Condition.ing a {
-    background: url("../../img/willbes/counsel/icon_arrow.png") no-repeat 85px center;
     color: #1b8ccc;    
 }
 
 /* counsel Step : 03. 상담예약확인 */
+.reserveOverflow {
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 592px;
+}
+.reserveTable {
+    display: table;
+    width: 100%;
+    letter-spacing: 0;
+    border-top: 1px solid #959595;
+    border-bottom: 1px solid #959595;
+}
+.reserveTable .row-line {
+    float: right;
+    background: #707070;
+    width: 2px;
+    height: 11px;
+    margin: 4px 6px;
+}
+.table-row {
+    border-top: 1px solid #edeeef;
+}
+.table-row.top {
+    border-top: none;
+}
+.table-cell {
+    display: table-cell;
+    height: 40px;
+}
+.reserveTable dl dt {
+    float: left;
+    line-height: 20px;
+}
+.reserveTable dl dt.sList {
+    display: none;
+    margin-right: 10px;
+}
+.reserveTable.on dl dt.sList {
+    display: block;
+}
+.reserveTable dl dt.sList .row-line {
+    float: left;
+    width: 1px;
+    margin: 6px 10px;
+}
+.reserveTable .MoreBtn {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    margin-top: -6px;
+}
+.reserveTable .MoreBtn a {
+    color: #363636;
+    text-decoration: underline;
+}
+.reserveTable .table-cell p {
+    line-height: 20px;
+}
+.reserveTable .table-cell.w-tit {
+    vertical-align: middle;
+    text-align: center;
+}
+.reserveTable .table-cell.w-tit p {
+    width: 113px;
+}
+.reserveTable .table-cell.w-data {
+    width: 231px;
+    padding: 10px;
+}
+.reserveTable .table-cell.w-data-span3 {
+    width: 575px;
+}
 .reserveTableList {
     margin-bottom: 20px;
 }
 .reserveTableList .reserveTable.on {
     display: block;
-    height: 39px;
+    height: 41px;
     overflow: hidden;
 }
-.reserveTableList .listTable tr th,
-.reserveTableList .listTable tr td {
-    line-height: 25px;
-    padding: 7px 0;
+.reserveTableList .reserveTable.on .table-cell.w-data {
+    padding: 0;
 }
-.reserveTableList .listTable tr td dl dt {
-    float: left;
-}
-.reserveTableList .listTable tr td dl dt.sList {
-    display: none;
-    margin-right: 10px;
-}
-.reserveTableList .listTable.on tr td dl dt.sList {
-    display: block;
-}
-.reserveTableList .listTable tr td dl dt.sList .row-line {
-    float: left;
-    width: 1px;
-    margin: 6px 10px;
-}
-.reserveTableList .listTable tr th .row-line,
-.reserveTableList .listTable tr td .row-line {
-    float: right;
-    background: #707070;
-    width: 2px;
-    height: 11px;
+.reserveTableList .reserveTable.on dl dt {
+    line-height: 24px;   
+} 
+.reserveTableList .reserveTable.on .row-line {
     margin: 6px;
-}
-.reserveTableList .listTable tr td .MoreBtn {
-    float: right;
-}
-.reserveTableList .listTable tr td .MoreBtn a {
-    color: #363636;
-    text-decoration: underline;
-}
-.willbes-counsel_step {
-    float: left;
-    width: 940px;
 }
 .willbes-User-Info {
     float: left;
     width: 940px;
     clear: both;
 }
+
 
 
 /*********************************************     CART PAGE     *********************************************/

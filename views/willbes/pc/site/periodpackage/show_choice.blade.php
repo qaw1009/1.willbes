@@ -162,14 +162,19 @@
                                 <div class="sbjTit">{{$key}} - {{($val)}}</div>
                                 <ul class="sbjProf">
                                 @foreach($data_sublist as $idx2 => $sub_row)
-
                                     @if($idx == $sub_row['IsEssential'] && $key == $sub_row['SubjectIdx'] )
                                         <li>
                                             <input type="checkbox" id="subject_prof_ess_{{$sub_row['SubjectIdx']}}_{{$sub_row['ProfIdx']}}" name="subject_prof[]" value="{{$sub_row['SubjectIdx']}}:{{$sub_row['ProfIdx']}}"
-                                                   class="essSubGroup-{{$sub_row['SubjectIdx']}}" onclick="checkOnly('.essSubGroup-{{$sub_row['SubjectIdx']}}', this.value);">
+                                                   class="essSubGroup-{{$sub_row['SubjectIdx']}}" onclick="checkOnly('.essSubGroup-{{$sub_row['SubjectIdx']}}', this.value);"
+                                                   checked="checked">
                                             <img src="{{ $sub_row['ProfReferData']['lec_list_img'] }}">
                                             <div class="prof-Name">{{$sub_row['wProfName']}}</div>
                                         </li>
+                                        <script type="text/javascript">
+                                            $(document).ready(function() {
+                                                checkOnly('.essSubGroup-{{$sub_row['SubjectIdx']}}', '{{$sub_row['SubjectIdx']}}:{{$sub_row['ProfIdx']}}')
+                                            });
+                                        </script>
                                     @endif
 
                                 @endforeach

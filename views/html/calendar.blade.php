@@ -91,7 +91,11 @@
     </tr>
 
     <tr>
-        <td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td>
+        <td><span class="btn-예약마감">2</span></td>
+        <td><span class="btn-예약가능">3</span></td>
+        <td><span class="btn-예약마감">4</span></td>
+        <td><span class="btn-예약마감">5</span></td>
+        <td>6</td><td>7</td><td>8</td>
     </tr>
 
     <tr>

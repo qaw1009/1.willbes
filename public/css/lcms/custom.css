@@ -93,6 +93,13 @@ body.no_sidebar {
     margin-top: -4px;
     margin-left: 0;
 }
+.top_col .main_top_menu .navbar-nav .open .dropdown-menu {
+    right: auto !important;
+}
+.top_col .main_top_menu .navbar-nav > .active > a, .top_col .main_top_menu .navbar-nav .open > a {
+    background: none;
+    text-decoration: underline;
+}
 
 /* top_nav_fixed */
 .top_nav_fixed .top_col {
@@ -221,7 +228,7 @@ ul.bar_tabs > li.active a:hover {
 }
 .dropdown-submenu > .dropdown-menu {
     top: 3px;
-    left: 100%;
+    left: 100% !important;
     margin-top: 0;
     margin-left: -1px;
 }

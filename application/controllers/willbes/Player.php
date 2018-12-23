@@ -1386,6 +1386,28 @@ class Player extends \app\controllers\FrontController
         }
     }
 
+
+    /**
+     * 스타플레이어 E 하이브리드 앱 수강기록 업데이트
+     *
+     */
+    function StarplayerEntAPI()
+    {
+        $user_id = $this->_req('user_id');
+        $device_id = $this->_req('device_id');
+        $content_url = $this->_req('content_url');
+        $content_id = $this->_req('content_id');
+        $actual_playback_duration = $this->_req('actual_playback_duration');
+        $playback_duration = $this->_req('playback_duration');
+        $current_position = $this->_req('current_position');
+        $begin_date = $this->_req('begin_date');
+        $end_date = $this->_req('end_date');
+        $tracker = $this->_req('tracker');
+        $rating = $this->_req('rating');
+        $token = $this->_req('token');
+        $play_type = $this->_req('play_type');
+    }
+
     /**
      * 기기산태체크
      * @param string $state

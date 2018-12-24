@@ -188,4 +188,64 @@ class OrderStatsModel extends BaseOrderModel
 
         return ${$add_type};
     }
+
+    /**
+     * 전체매출현황 조회 (사이트코드, 상품타입공통코드, 그룹카테고리코드 기준)
+     * @param array $arr_condition
+     * @param string $column
+     * @return mixed
+     */
+    public function listAllStatsOrder($arr_condition, $column = '')
+    {
+        if (empty($column) === true) {
+            $column = 'ifnull(U.SiteCode, "9999") as SiteCode, ifnull(U.ProdTypeCcd, "999999") as ProdTypeCcd, ifnull(U.LgCateCode, "9999") as LgCateCode
+                    , U.SumPayPrice, U.SumRefundPrice, (U.SumPayPrice - U.SumRefundPrice) as SumRemainPrice, U.OrderProdCnt
+                    , ifnull(S.SiteName, "") as SiteName, ifnull(C.CcdName, "") as ProdTypeCcdName, ifnull(SC.CateName, "") as LgCateName';
+        }
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(true);
+
+        // 전체, 사이트코드, 강좌상품 rollup 데이터 추출 포함 (강좌 이외 상품 rollup 데이터 제외 처리)
+        $prod_type_in_query = '"' . $this->_prod_type_ccd['on_lecture'] . '", "' . $this->_prod_type_ccd['off_lecture'] . '"';
+        $from = '
+            from (
+                select O.SiteCode, P.ProdTypeCcd, ifnull(SC.GroupCateCode, "0000") as LgCateCode
+                    , ifnull(sum(OP.RealPayPrice), 0) as SumPayPrice, ifnull(sum(OPR.RefundPrice), 0) as SumRefundPrice, count(*) as OrderProdCnt
+                from ' . $this->_table['order'] . ' as O
+                    inner join ' . $this->_table['order_product'] . ' as OP
+                        on O.OrderIdx = OP.OrderIdx
+                    inner join ' . $this->_table['product'] . ' as P
+                        on OP.ProdCode = P.ProdCode		
+                    left join ' . $this->_table['order_product_refund'] . ' as OPR
+                        on OP.OrderProdIdx = OPR.OrderProdIdx
+                    left join ' . $this->_table['product_r_category'] . ' as PC
+                        on OP.ProdCode = PC.ProdCode and PC.IsStatus = "Y" and P.ProdTypeCcd in (' . $prod_type_in_query . ')
+                    left join ' . $this->_table['category'] . ' as SC
+                        on PC.CateCode = SC.CateCode and SC.IsStatus = "Y"
+                where O.PayRouteCcd not in ("' . $this->_pay_route_ccd['zero'] . '", "' . $this->_pay_route_ccd['free'] . '")
+                    and OP.PayStatusCcd in ("' . $this->_pay_status_ccd['paid'] . '", "' . $this->_pay_status_ccd['refund'] . '")
+                    and OP.SalePatternCcd in ("' . $this->_sale_pattern_ccd['normal'] . '", "' . $this->_sale_pattern_ccd['extend'] . '", "' . $this->_sale_pattern_ccd['retake'] . '")
+                    ' . $where . '                    
+                group by O.SiteCode, P.ProdTypeCcd, LgCateCode
+                with rollup 
+            ) as U
+                left join lms_site as S
+                    on U.SiteCode = S.SiteCode and S.IsStatus = "Y"
+                left join lms_sys_code as C
+                    on U.ProdTypeCcd = C.Ccd and C.GroupCcd = "' . $this->_group_ccd['ProdType'] . '" and C.IsStatus = "Y"
+                left join lms_sys_category as SC
+                    on U.LgCateCode = SC.CateCode and SC.IsStatus = "Y"
+            where U.SiteCode is null
+                or U.ProdTypeCcd is null
+                or U.ProdTypeCcd in (' . $prod_type_in_query . ') 
+                or (U.ProdTypeCcd not in (' . $prod_type_in_query . ') and U.LgCateCode = "0000")
+            order by U.SiteCode, ProdTypeCcd, LgCateCode                         
+        ';
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select straight_join ' . $column . $from);
+
+        return $query->result_array();
+    }
 }

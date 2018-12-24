@@ -99,10 +99,10 @@ class OrderModel extends BaseOrderModel
                 throw new \Exception('주문 데이터가 없습니다.', _HTTP_NOT_FOUND);
             }
 
-            // 가상계좌 부분환불일 경우 환불계좌정보 체크
-            if ($is_pg_refund == 'Y' && $order_data['IsVBank'] == 'Y' && $order_data['tRealPayPrice'] > $sum_req_refund_price) {
+            // 가상계좌 환불일 경우 환불계좌정보 체크
+            if ($is_pg_refund == 'Y' && $order_data['IsVBank'] == 'Y') {
                 if (empty($refund_bank_ccd) === true || empty($pg_bank_ccd) === true || empty($refund_account_no) === true || empty($refund_deposit_name) === true) {
-                    throw new \Exception('가상계좌 부분취소에 필요한 환불계좌 정보가 없습니다.', _HTTP_BAD_REQUEST);  
+                    throw new \Exception('가상계좌 환불에 필요한 환불계좌 정보가 없습니다.', _HTTP_BAD_REQUEST);
                 }
             }
 
@@ -318,8 +318,9 @@ class OrderModel extends BaseOrderModel
                     // 결제취소
                     $cancel_results = $this->pg->cancel([
                         'order_no' => $order_data['OrderNo'], 'mid' => $order_data['PgMid'], 'tid' => $order_data['PgTid'],
-                        'cancel_reason' => element('refund_reason', $input, '')
-                    ]);
+                        'cancel_reason' => element('refund_reason', $input, ''),
+                        'refund_bank_code' => $pg_bank_ccd, 'refund_account_no' => $refund_account_no, 'refund_deposit_name' => $refund_deposit_name
+                    ], $order_data['IsVBank']);
 
                     if ($cancel_results['result'] === false) {
                         throw new \Exception('PG사 결제취소에 실패했습니다. (' . $cancel_results['result_msg'] . ')');

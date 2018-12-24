@@ -461,9 +461,10 @@ class Pg_inisis extends CI_Driver
     /**
      * 이니시스 결제취소
      * @param array $params
+     * @param string $is_vbank [가상계좌여부 : Y/N]
      * @return array
      */
-    public function cancel($params = [])
+    public function cancel($params = [], $is_vbank = 'N')
     {
         $_order_no = element('order_no', $params);
         $log_params = [];
@@ -482,8 +483,19 @@ class Pg_inisis extends CI_Driver
                 $this->_parent->saveFileLog('결제취소 요청 시작');
                 $this->_parent->saveFileLog('결제취소 요청 데이터', $params);
 
+                $_cancel_type = $is_vbank == 'N' ? 'cancel' : 'refund';
+                $_refund_bank_code = element('refund_bank_code', $params, '');  // 환불은행코드
+                $_refund_account_no = str_replace('-', '', element('refund_account_no', $params, ''));  // 환불계좌번호 (숫자만 입력)
+                $_refund_deposit_name = element('refund_deposit_name', $params, '');  // 환불계좌 예금주명
+
                 if (empty($_mid) === true) {
                     throw new \Exception('관리자 결제취소에 필요한 상점아이디가 없습니다.');
+                }
+
+                if ($is_vbank == 'Y') {
+                    if (empty($_refund_bank_code) === true || empty($_refund_account_no) === true || empty($_refund_deposit_name) === true) {
+                        throw new \Exception('가상계좌 결제취소에 필요한 환불계좌 정보가 없습니다.');
+                    }
                 }
                 
                 // 이니시스 라이브러리 로드
@@ -495,13 +507,21 @@ class Pg_inisis extends CI_Driver
                 }
 
                 $inipay->SetField('inipayhome', APPPATH . 'third_party/pg/inisis');
-                $inipay->SetField('type', 'cancel');    // 고정 (수정금지)
+                $inipay->SetField('type', $_cancel_type);    // 고정 (수정금지)
                 $inipay->SetField('log', 'false');
                 $inipay->SetField('debug', false);
                 $inipay->SetField('admin', $this->_mode_config['adminkey']);
                 $inipay->SetField('mid', $_mid);
                 $inipay->SetField('tid', $_tid);
                 $inipay->SetField('cancelmsg', $_cancel_reason);
+
+                if ($is_vbank == 'Y') {
+                    // 환불계좌정보 셋팅
+                    $inipay->SetField('rbankcode', $_refund_bank_code);    // 환불은행코드
+                    $inipay->SetField('racctnum', $_refund_account_no);     // 환불계좌번호 (숫자만 입력)
+                    $inipay->SetField('racctname', $_refund_deposit_name);    // 환불계좌 예금주명
+                    $inipay->SetField('refundflgremit', '');                        // 펌뱅킹 사용여부 (사용 : 1, 사용안함 : 값없음)
+                }
 
                 $inipay->startAction();
 

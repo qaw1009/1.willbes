@@ -152,7 +152,7 @@
                     @endphp
 
                     <div class="lec-essential">
-                    @foreach($data_subject_cnt as $idx => $subject)
+                    @foreach($data_subject_cnt as $subject)
                         @if($subject['IsEssential'] === 'Y')
 
                             @php
@@ -202,7 +202,7 @@
                         </div>
                     </div>
                     <div class="lec-choice">
-                        @foreach($data_subject_cnt as $idx => $subject)
+                        @foreach($data_subject_cnt as $subject)
                             @if($subject['IsEssential'] === 'Y')
 
                                 <div class="sbjTit">{{--$subject['SubjectIdx']--}}{{($subject['SubjectName'])}}</div>

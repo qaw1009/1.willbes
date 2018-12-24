@@ -188,8 +188,8 @@ class RefundProc extends BaseOrder
         // PG사 환불가능 여부 (PG사 결제 and 환불금액이 0 이상)
         $is_available_pg_refund = $order_prod_data[0]['PayRouteCcd'] == $this->orderListModel->_pay_route_ccd['pg'] && $total_refund_price > 0;
 
-        // 가상계좌 부분환불가능 여부 (가상계좌결제 and 총실결제금액 > 총환불금액)
-        $is_available_vbank_repay = $order_prod_data[0]['IsVBank'] == 'Y' && $order_prod_data[0]['tRealPayPrice'] > $total_refund_price;
+        // 가상계좌 환불여부
+        $is_vbank_refund = $order_prod_data[0]['IsVBank'] == 'Y';
 
         // 은행코드 조회 (PG사 결제일 경우 PG사 은행코드 조합)
         $arr_bank_ccd = [];
@@ -212,8 +212,8 @@ class RefundProc extends BaseOrder
             'order_prod_param' => $order_prod_param,    // 주문상품 파라미터 json_decode
             'order_prod_data' => $order_prod_data,      // 조회된 주문상품 데이터
             'total_refund_price' => $total_refund_price,    // 요청한 총환불금액
-            'is_available_vbank_repay' => $is_available_vbank_repay,    // 가상계좌 부분환불가능 여부
-            'is_available_pg_refund' => $is_available_pg_refund   // PG사 환불가능 여부
+            'is_available_pg_refund' => $is_available_pg_refund,   // PG사 환불가능 여부
+            'is_vbank_refund' => $is_vbank_refund    // 가상계좌 환불여부
         ]);        
     }
 

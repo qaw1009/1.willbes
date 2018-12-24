@@ -224,7 +224,7 @@ class BaseStats extends \app\controllers\BaseController
             show_error('필수 파라미터 오류입니다.');
         }
 
-        // 상품코드별 매출현황 조회
+        // 상품코드별 매출현황 파라미터 셋팅
         $arr_input = [
             'prod_code' => $prod_code,
             'search_date_type' => element('search_date_type', $qs),
@@ -330,9 +330,9 @@ class BaseStats extends \app\controllers\BaseController
      */
     protected function orderListExcel()
     {
-        $headers = ['주문번호', '회원명', '회원아이디', '회원휴대폰번호', '결제채널', '결제루트', '결제수단', '상품구분', '상품명', '결제금액', '결제완료일', '환불금액', '환불완료일', '결제상태'];
+        $headers = ['주문번호', '운영사이트', '회원명', '회원아이디', '회원휴대폰번호', '결제채널', '결제루트', '결제수단', '상품구분', '상품명', '결제금액', '결제완료일', '환불금액', '환불완료일', '결제상태'];
 
-        $column = 'OrderNo, MemName, MemId, MemPhone, PayChannelCcdName, PayRouteCcdName, PayMethodCcdName, ProdTypeCcdName, ProdName
+        $column = 'OrderNo, SiteName, MemName, MemId, MemPhone, PayChannelCcdName, PayRouteCcdName, PayMethodCcdName, ProdTypeCcdName, ProdName
             , RealPayPrice, CompleteDatm, RefundPrice, RefundDatm, PayStatusCcdName';
 
         $arr_condition = $this->_getOrderListConditions();

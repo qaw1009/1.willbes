@@ -308,7 +308,7 @@
                 });
 
                 if($check_cnt !== parseInt({{$data['PackSelCount']}})) {
-                    alert("선택과목 중 {{$data['PackSelCount']}} 명을 선택하셔야 합니다.");
+                    alert("선택과목 중 {{$data['PackSelCount']}}명을 선택하셔야 합니다.");
                     return;
                 }
 

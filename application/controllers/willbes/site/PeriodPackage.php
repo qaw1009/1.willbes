@@ -92,13 +92,11 @@ class PeriodPackage extends \app\controllers\FrontController
         $data['contents'] = $this->packageFModel->findProductContents($prod_code); //상품 컨텐츠 추출
         $data['ProdPriceData'] = json_decode($data['ProdPriceData'], true); //상품 가격 정보 치환
 
-        $data_sublist = $this->packageFModel->{$model_method}($this->_learn_pattern, $prod_code, [], null, null, $order_by);   //패키지 하위 강좌 목록
+        $data_subject_cnt = [];
 
-        $selected_subjects = [];
-
-        // 일반형일 경우 데이터별 항목 풀기
         if($pack === '648001') {
-
+            $data_sublist = $this->packageFModel->{$model_method}($this->_learn_pattern, $prod_code, [], null, null, $order_by);   //패키지 하위 강좌 목록
+            // 일반형일 경우 데이터별 항목 풀기
             foreach ($data_sublist as $idx => $row) {
                 $data_sublist[$idx]['ProdBookData'] = json_decode($row['ProdBookData'], true);
                 $data_sublist[$idx]['LectureSampleData'] = json_decode($row['LectureSampleData'], true);
@@ -106,23 +104,25 @@ class PeriodPackage extends \app\controllers\FrontController
                 $data_sublist[$idx]['ProdPriceData'] = json_decode($row['ProdPriceData'], true);
             }
 
-        // 선택형일 경우 과목별 교수 묶기
-        } else  {
+        } else {
+            // 교수 목록 및 과목별 교수 갯수 구룹핑
+            list($data_sublist, $data_subject_cnt) = $this->packageFModel->{$model_method}($this->_learn_pattern, $prod_code, [], null, null, $order_by);   //패키지 하위 강좌 목록
 
-            //필수,선택별 과목 묶기
-            $selected_subjects = array_data_pluck($data_sublist, 'SubjectName', ['IsEssential','SubjectIdx']);
+            // 필수,선택별 과목 묶기 --  $data_subject_cnt 로 대체
+            //$selected_subjects = array_data_pluck($data_sublist, 'SubjectName', ['IsEssential','SubjectIdx']);
 
             foreach ($data_sublist as $idx => $row) {
                 $data_sublist[$idx]['ProfReferData'] = json_decode($row['ProfReferData'], true);
             }
-
         }
+
+        //echo var_dump($data_subject_cnt);
 
         $this->load->view('site/periodpackage/' . $view_page, [
             'arr_input' => $arr_input,
             'data' => $data,
             'data_sublist' => $data_sublist,
-            'selected_subjects' => $selected_subjects,
+            'data_subject_cnt' => $data_subject_cnt,
             'learn_pattern' => $this->_learn_pattern
         ]);
     }

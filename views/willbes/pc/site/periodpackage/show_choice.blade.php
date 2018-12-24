@@ -147,40 +147,38 @@
                         </div>
                     </div>
 
-
                     @php
                         $subGroup_array = [];
                     @endphp
 
                     <div class="lec-essential">
-                    @foreach($selected_subjects as $idx => $subject)
-                        @if($idx === 'Y')
-                            @foreach($subject as $key => $val)
-                                @php
-                                    $subGroup_array[] = $key;
-                                @endphp
-                                <div class="sbjTit">{{$key}} - {{($val)}}</div>
-                                <ul class="sbjProf">
-                                @foreach($data_sublist as $idx2 => $sub_row)
-                                    @if($idx == $sub_row['IsEssential'] && $key == $sub_row['SubjectIdx'] )
-                                        <li>
-                                            <input type="checkbox" id="subject_prof_ess_{{$sub_row['SubjectIdx']}}_{{$sub_row['ProfIdx']}}" name="subject_prof[]" value="{{$sub_row['SubjectIdx']}}:{{$sub_row['ProfIdx']}}"
-                                                   class="essSubGroup-{{$sub_row['SubjectIdx']}}" onclick="checkOnly('.essSubGroup-{{$sub_row['SubjectIdx']}}', this.value);"
-                                                   checked="checked">
-                                            <img src="{{ $sub_row['ProfReferData']['lec_list_img'] }}">
-                                            <div class="prof-Name">{{$sub_row['wProfName']}}</div>
-                                        </li>
-                                        <script type="text/javascript">
-                                            $(document).ready(function() {
-                                                checkOnly('.essSubGroup-{{$sub_row['SubjectIdx']}}', '{{$sub_row['SubjectIdx']}}:{{$sub_row['ProfIdx']}}')
-                                            });
-                                        </script>
+                    @foreach($data_subject_cnt as $idx => $subject)
+                        @if($subject['IsEssential'] === 'Y')
+
+                            @php
+                                $subGroup_array[] = $subject['SubjectIdx'];
+                            @endphp
+                            <div class="sbjTit">{{--$subject['SubjectIdx']--}}{{($subject['SubjectName'])}}</div>
+                            <ul class="sbjProf">
+
+                            @foreach($data_sublist as $idx2 => $sub_row)
+                                @if($subject['IsEssential'] == $sub_row['IsEssential'] && $subject['SubjectIdx'] == $sub_row['SubjectIdx'] )
+                                    <li>
+                                        <input type="checkbox" id="subject_prof_ess_{{$sub_row['SubjectIdx']}}_{{$sub_row['ProfIdx']}}" name="subject_prof[]" value="{{$sub_row['SubjectIdx']}}:{{$sub_row['ProfIdx']}}"
+                                               class="essSubGroup-{{$sub_row['SubjectIdx']}}" onclick="checkOnly('.essSubGroup-{{$sub_row['SubjectIdx']}}', this.value);"
+                                               @if($subject['subjectCount'] == '1')checked="checked"@endif>
+                                        <img src="{{ $sub_row['ProfReferData']['lec_list_img'] }}">
+                                        <div class="prof-Name">{{$sub_row['wProfName']}}</div>
+                                    </li>
+
+                                        @php
+                                            $prev_subject = $sub_row['SubjectIdx']
+                                        @endphp
+
                                     @endif
 
-                                @endforeach
-                                </ul>
-
                             @endforeach
+                            </ul>
                         @endif
                     @endforeach
                     </div>
@@ -204,14 +202,14 @@
                         </div>
                     </div>
                     <div class="lec-choice">
-                    @foreach($selected_subjects as $idx => $subject)
-                        @if($idx === 'N')
-                            @foreach($subject as $key => $val)
-                                <div class="sbjTit">{{$key}} - {{($val)}}</div>
+                        @foreach($data_subject_cnt as $idx => $subject)
+                            @if($subject['IsEssential'] === 'Y')
+
+                                <div class="sbjTit">{{--$subject['SubjectIdx']--}}{{($subject['SubjectName'])}}</div>
                                 <ul class="sbjProf">
                                     @foreach($data_sublist as $idx2 => $sub_row)
 
-                                        @if($idx == $sub_row['IsEssential'] && $key == $sub_row['SubjectIdx'] )
+                                        @if($subject['IsEssential'] == $sub_row['IsEssential'] && $subject['SubjectIdx'] == $sub_row['SubjectIdx'] )
                                             <li>
                                                 <input type="checkbox" id="subject_prof_cho_{{$sub_row['SubjectIdx']}}_{{$sub_row['ProfIdx']}}" name="subject_prof[]" value="{{$sub_row['SubjectIdx']}}:{{$sub_row['ProfIdx']}}" class="choSubGroup">
                                                 <img src="{{ $sub_row['ProfReferData']['lec_list_img'] }}">
@@ -221,10 +219,8 @@
 
                                     @endforeach
                                 </ul>
-
-                            @endforeach
-                        @endif
-                    @endforeach
+                            @endif
+                        @endforeach
                     </div>
 
                     <!-- pos2 -->

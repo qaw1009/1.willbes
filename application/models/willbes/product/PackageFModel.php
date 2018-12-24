@@ -100,6 +100,25 @@ class PackageFModel extends ProductFModel
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
         $order_by = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
         //echo 'Select straight_join '. $column. $from. $where .$group_by .$order_by;
-        return $this->_conn->query('Select straight_join '. $column. $from. $where .$group_by .$order_by)->result_array();
+        //return $this->_conn->query('Select straight_join '. $column. $from. $where .$group_by .$order_by)->result_array();
+
+        $result = $this->_conn->query('Select straight_join '. $column. $from. $where .$group_by .$order_by)->result_array();
+
+
+        /************************ 필수 과목 교수 갯수 추출 : 뷰에서 처리용 *****************************/
+        $column_subject = ' IsEssential, SubjectName, SubjectIdx, Count(*) as subjectCount ';
+
+        $from_subject = '
+            from 
+             (
+                      Select straight_join '. $column. $from. $where. $group_by.
+            ') mm  
+        ';
+
+        $group_by_subject = ' Group by IsEssential, SubjectName, SubjectIdx';
+        //echo 'Select '. $column_subject. $from_subject. $group_by_subject;
+        $result_subject  = $this->_conn->query('Select '. $column_subject. $from_subject. $group_by_subject)->result_array();
+
+        return array($result, $result_subject);
     }
 }

@@ -272,7 +272,7 @@ class RefundProc extends BaseOrder
         $data = element('0', $data);
         $my_lec_data = element('0', json_decode($data['MyLecData'], true), []);
 
-        $data['UnitLecturePrice'] = round($data['SalePrice'] / $data['TotalUnitLectureCnt']);
+        $data['UnitLecturePrice'] = $data['TotalUnitLectureCnt'] > 0 ? round($data['SalePrice'] / $data['TotalUnitLectureCnt']) : $data['SalePrice'];
         $data['CalcCardRefundPrice'] = $data['CardPayPrice'] - ($data['UnitLecturePrice'] * $data['StudyUnitLectureCnt']);
         $data['RealLecExpireDay'] = $my_lec_data['RealLecExpireDay'];
         $data['StudyLecDay'] = 0;

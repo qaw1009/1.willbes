@@ -122,7 +122,7 @@
                     <li class="arrow"><img src="{{ img_url('counsel/icon_arrow_step.png') }}"></li>
                     <li><div class="num">02</div>사전정보입력</li>
                     <li class="arrow"><img src="{{ img_url('counsel/icon_arrow_step.png') }}"></li>
-                    <li class="active"><div class="num">03</div>상담예약확인</li>
+                    <li class="active"><div class="num">03</div>상담예약완료</li>
                 </ul>
                 <div class="info-Box info-Box3 NG">
                     <dl>
@@ -240,7 +240,7 @@
                                                 <dt class="strong">2018-10-25 (목) 10:00 ~ 10:30</dt>
 
                                                 <dt class="sList"><span class="row-line" style="float: left; width: 1px;">|</span>[예약상태] 예약완료</dt>
-                                                <dt class="sList">[상담상태] 완료</dt>
+                                                <dt class="sList">[상담상태] 미방문</dt>
                                             </dl>
                                         </span>
                                     </div>
@@ -248,7 +248,9 @@
                                 </div>
                                 <div class="table-row">
                                     <div class="table-cell w-tit bg-light-white strong"><p>예약상태</p></div>
-                                    <div class="table-cell w-data tx-left pl15"><p>예약완료</p></div>
+                                    <div class="table-cell w-data tx-left pl15">
+                                        <p>예약완료 <a class="btn whiteBox" href="#none" onclick="">예약취소</a></p>
+                                    </div>
                                     <div class="table-cell w-tit bg-light-white strong"><p>상담상태</p></div>
                                     <div class="table-cell w-data tx-left pl15"><p>미방문</p></div>
                                 </div>
@@ -317,7 +319,7 @@
                                     <div class="table-cell w-tit bg-light-white strong"><p>예약상태</p></div>
                                     <div class="table-cell w-data tx-left pl15"><p>예약완료</p></div>
                                     <div class="table-cell w-tit bg-light-white strong"><p>상담상태</p></div>
-                                    <div class="table-cell w-data tx-left pl15"><p>미방문</p></div>
+                                    <div class="table-cell w-data tx-left pl15"><p>완료</p></div>
                                 </div>
                                 <div class="table-row">
                                     <div class="table-cell w-tit bg-light-white strong"><p>이름(아이디)</p></div>

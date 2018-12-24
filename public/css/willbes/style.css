@@ -5505,6 +5505,16 @@ span.calendar_btn {
 .SelectTime ul li div.Condition.ing a {
     color: #1b8ccc;    
 }
+.SelectTime ul li.SelectTxt {
+    border: none;
+    margin: 157px 0;
+}
+.SelectTime ul li.SelectTxt .Txt {
+    width: 100%;
+    text-align: center;
+    line-height: 17px;
+}
+
 
 /* counsel Step : 03. 상담예약확인 */
 .reserveOverflow {
@@ -5564,6 +5574,10 @@ span.calendar_btn {
 }
 .reserveTable .table-cell p {
     line-height: 20px;
+}
+.reserveTable .table-cell p a.btn {
+    padding: 4px 5px;
+    margin-left: 5px;
 }
 .reserveTable .table-cell.w-tit {
     vertical-align: middle;

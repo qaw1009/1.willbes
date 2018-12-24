@@ -100,9 +100,8 @@
         </div>
         <!-- willbes-Mypage-USERINFOZONE -->
 
-        <div class="willbes-Leclist c_both p_re pb60">
-
-            <div class="willbes-User-Info">
+        <div class="willbes-Leclist c_both">
+            <div class="willbes-User-Info p_re pb30">
                 <div class="InfoTable GM">
                     <div class="willbes-UserInfo-Tit NG">* 기본정보</div>
                     <table cellspacing="0" cellpadding="0" class="classTable userInfoTable under-gray bdt-gray tx-gray">
@@ -419,8 +418,6 @@
                     </ul>
                 </div>
             </div>
-            <!-- willbes-User-Info -->
-            
         </div>
         <!-- willbes-Leclist -->
 

@@ -122,7 +122,7 @@
                     <li class="arrow"><img src="{{ img_url('counsel/icon_arrow_step.png') }}"></li>
                     <li><div class="num">02</div>사전정보입력</li>
                     <li class="arrow"><img src="{{ img_url('counsel/icon_arrow_step.png') }}"></li>
-                    <li><div class="num">03</div>상담예약확인</li>
+                    <li><div class="num">03</div>상담예약완료</li>
                 </ul>
                 <div class="info-Box info-Box1 NG">
                     <dl>
@@ -230,6 +230,12 @@
                     <div class="SelectDay NGR"><span class="NGEB">[날짜]</span>&nbsp;2018-10-25 (목)</div>
                     <div class="SelectTime NGR">
                         <ul>
+                            <li class="SelectTxt">
+                                <div class="Txt">
+                                    캠퍼스 선택 후<br/>
+                                    상담일자를 선택해 주세요.
+                                </div>
+                            </li>
                             <li>
                                 <div class="Time">10:00 ~ 10:30</div>
                                 <div class="Condition end">예약마감</div>

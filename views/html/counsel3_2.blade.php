@@ -122,7 +122,7 @@
                     <li class="arrow"><img src="{{ img_url('counsel/icon_arrow_step.png') }}"></li>
                     <li class="active"><div class="num">02</div>사전정보입력</li>
                     <li class="arrow"><img src="{{ img_url('counsel/icon_arrow_step.png') }}"></li>
-                    <li><div class="num">03</div>상담예약확인</li>
+                    <li><div class="num">03</div>상담예약완료</li>
                 </ul>
                 <div class="info-Box info-Box2 NG">
                     <dl>

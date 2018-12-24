@@ -203,7 +203,7 @@
                     </div>
                     <div class="lec-choice">
                         @foreach($data_subject_cnt as $subject)
-                            @if($subject['IsEssential'] === 'Y')
+                            @if($subject['IsEssential'] === 'N')
 
                                 <div class="sbjTit">{{--$subject['SubjectIdx']--}}{{($subject['SubjectName'])}}</div>
                                 <ul class="sbjProf">

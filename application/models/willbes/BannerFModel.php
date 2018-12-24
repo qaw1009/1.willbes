@@ -14,14 +14,18 @@ class BannerFModel extends WB_Model
     }
 
     /**
-     * 사이트 코드, 카테고리 코드, 노출섹션에 맞는 배너 조회
-     * @param $disp_name
-     * @param $site_code
-     * @param null $cate_code
+     * 노출섹션명, 사이트코드, 대분류 카테고리 코드에 맞는 배너 조회
+     * @param string $disp_name [노출섹션명]
+     * @param int $site_code [사이트코드]
+     * @param int $cate_code [대분류 카테고리 코드, `0`이면 전체카테고리]
      * @return array
      */
-    public function findBanners($disp_name, $site_code, $cate_code = null)
+    public function findBanners($disp_name, $site_code, $cate_code = 0)
     {
+        if (empty($disp_name) === true || empty($site_code) === true) {
+            return [];
+        }
+
         $column = 'B.BIdx, BD.BdIdx, B.BannerName, B.LinkType, B.LinkUrl, B.BannerFullPath, B.BannerImgName, BD.DispTypeCcd, BD.DispRollingTypeCcd, BD.DispRollingTime';
         $arr_condition = [
             'EQ' => [

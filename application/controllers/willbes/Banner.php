@@ -42,7 +42,7 @@ class Banner extends \app\controllers\BaseController
             shuffle($data);
         }
 
-        $this->load->view('common/banner', [
+        return $this->load->view('common/banner', [
             'disp' => $disp_data,
             'data' => $data,
             'css_class' => $arr_input['css_class']

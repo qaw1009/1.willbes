@@ -191,6 +191,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property PointFModel $pointFModel                                               Point Model Class
  * @property MemberFModel $memberFModel                                        Member Model Class
  * @property BannerFModel $bannerFModel                                          Banner Model Class
+ * @property PopupFModel $popupFModel                                            Popup Model Class
  * @property PlayerFModel $playerFModel                                            Player Model Class
  * @property BaseSupportFModel $baseSupportFModel                           BaseSupport Model Class
  * @property SupportBoardFModel $supportBoardFModel                         SupportBoard Model Class
@@ -203,6 +204,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property MessageFModel $messageFModel                                       Message Model Class
  * @property CertApplyFModel $certApplyFModel                                    Cert Apply Model Class
  * @property EventFModel $eventFModel                                            Event Model Class
+ * @property ConsultFModel $consultFModel                                       Consult Model Class
  */
 class PHPStorm_CI_CC
 {

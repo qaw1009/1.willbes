@@ -377,7 +377,7 @@ class ConsultModel extends WB_Model
             INNER JOIN {$this->_table['consult_schedule_time']} AS B ON A.CstIdx = B.CstIdx AND B.IsStatus = 'Y'
             INNER JOIN {$this->_table['consult_schedule']} AS C ON B.CsIdx = C.CsIdx AND C.IsStatus = 'Y'
             INNER JOIN {$this->_table['member']} AS D ON A.MemIdx = D.MemIdx
-            INNER JOIN {$this->_table['sys_category']} AS E ON A.CandidatePosition = E.CateCode AND E.IsStatus = 'Y'
+            LEFT JOIN {$this->_table['sys_category']} AS E ON A.CandidatePosition = E.CateCode AND E.IsStatus = 'Y'
             INNER JOIN {$this->_table['site']} AS J ON C.SiteCode = J.SiteCode
         ";
 

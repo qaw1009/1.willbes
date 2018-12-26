@@ -58,7 +58,6 @@ function fnApp($url, $data)
                 "content_id" : 'test',
                 "subpage" : ""
             };
-            d.ret_data.title = "[액시스소프트] 이투스 테스트!!";
             d.ret_data.content_id = "test";
             media['url'] = d.ret_data.url;
             media['title'] = d.ret_data.title;

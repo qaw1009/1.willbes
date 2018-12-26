@@ -60,7 +60,7 @@ function fnApp($url, $data)
             };
             d.ret_data.title = "[액시스소프트] 이투스 테스트!!";
             d.ret_data.content_id = "test";
-            media = d.ret_data;
+            media.url = d.ret_data.url;
             alert(media.url);
             app.streaming(media);
         },

@@ -1238,6 +1238,7 @@ class Player extends \app\controllers\FrontController
             $title = $row['wUnitNum'].'회 '.$row['wUnitLectureNum'].'강 '.$row['wUnitName'];
             $title = "test title";
             $id = "^{$MemId}^{$MemIdx}^{$OrderIdx}^{$lec['OrderProdIdx']}^{$ProdCode}^{$ProdCodeSub}^{$row['wUnitIdx']}^{$logidx}^";
+            $id = 'test';
             $category = $lec['SubjectName'].'/'.$lec['CourseName'];
             $enddate = $lec['RealLecEndDate'];
 
@@ -1258,7 +1259,6 @@ class Player extends \app\controllers\FrontController
                     'content_id' => $id
                 ];
             }
-
         }
 
         return $this->json_result(true,'성공',null, $rtnData);

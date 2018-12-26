@@ -100,7 +100,7 @@
                                         <dd>
                                             <ul>
                                                 <li> 군 부대에서 군인과 함께 근무하는 공무원으로서 신분은 국가공무원법상 특정직 공무원으로 분류된다.<br>
-                                                    군무원은 군부대에서 군인과 함께 근무하는 공무원을 말합니다. 국가공무원법상 경찰이나 소방공무원, 국가정보원 직원 등과 함께 특정직공무원으로 규정돼 있다.<br>
+                                                    군무원은 군부대에서 군인과 함께 근무하는 공무원을 말한다. 국가공무원법상 경찰이나 소방공무원, 국가정보원 직원 등과 함께 특정직공무원으로 규정돼 있다.<br>
                                                     합동참모본부, 육·해·공군본부와 예하 부대, 국방부 직할부대인 기무사, 정보사, 의무사 등에서 근무한다. <br>
                                                     군무원이 활약하는 분야는 행정, 국방정책, 군사정보,  토목·건축·환경, 전기·전자·통신, 총포·탄약·전차, 병리·재활치료, 항해나 항공지원, 군 범죄 수사에 이르기까지 다양하다.<br>
                                                 </li>
@@ -138,10 +138,10 @@
                         </div>
                         <div id="gpgosi_guide2" class="tabContent">
                             <div class="examInfoGu4"> 
-                                <h4 class="hTy4 hTy">군무원 시험의 모든것</h4>  
                                 <div class="sliderGuide cSliderTM">
                                     <div class="sliderControlsTM">
                                         <div class="guide_slider">
+                                            <h4 class="hTy4 hTy">시험안내</h4>  
                                             <div class="hTy">
                                                 <dl class="gd_txt">
                                                     <dt>
@@ -150,7 +150,7 @@
                                                     <dd>
                                                         <ul>
                                                             <li>
-                                                                1년에 한번 6월 마지막 토요일이나, 7월의 첫째 토요일에 시행<br>
+                                                                1년에 한 번 6월 마지막 토요일이나, 7월의 첫째 토요일에 시행<br>
                                                                 (* 2018년에는 한국사능력검정시험 도입으로 8월11일 시행함)
                                                             </li>
                                                         </ul>
@@ -188,9 +188,9 @@
                                                     <dd>
                                                         <ul>
                                                             <li>
-                                                                ① 문제형식 및 문항 수: <br>객관식 선택형, 과목당 25문항 <br>
-                                                                ② 시험시간: <br>과목당 25분 <br>
-                                                                ③ 합격자 선발: <br>선발예정인원의 1.3배수(130%) 범위 내 <br>
+                                                                ① 문제형식 및 문항 수: <br>&nbsp; - 객관식 선택형, 과목당 25문항 <br>
+                                                                ② 시험시간: <br>&nbsp; - 과목당 25분 <br>
+                                                                ③ 합격자 선발: <br>&nbsp; - 선발예정인원의 1.3배수(130%) 범위 내 <br>
                                                                 <span class="tx-red">
                                                                     (단, 선발예정인원이 6명 이하인 경우, 선발예정인원에 2명을 합한 인원의 범위)<br>
                                                                     (합격 기준에 해당하는 동점자는 합격처리)
@@ -223,17 +223,17 @@
                                                         <ul>
                                                             <li>
                                                                 ① 응시연령: <br>
-                                                                7급 만 20세 이상 / 8급 이하(9급) 만 18세 이상 <br>
-                                                                <span class="tx-red">※ 상한 연령은 두고 있지 않으며 정년(60세) 전에는 자유롭게 응시 가능.</span> <br>
-                                                                (단, 20년 미만 근무 시 공무원연금 대상이 아님)<br>
+                                                                &nbsp; - 7급 만 20세 이상 / 8급 이하(9급) 만 18세 이상 <br>
+                                                                &nbsp; <span class="tx-red">※ 상한 연령은 두고 있지 않으며 정년(60세) 전에는 자유롭게 응시 가능.</span> <br>
+                                                                &nbsp; (단, 20년 미만 근무 시 공무원연금 대상이 아님)<br>
                                                                 ② 자격조건<br>
-                                                                - 행정직 및 기술직은 관련 자격증 또는 면허증 소지자에 한해 응시 가능<br>
+                                                                &nbsp; - 행정직 및 기술직은 관련 자격증 또는 면허증 소지자에 한해 응시 가능<br>
                                                                 <span class="tx-red"> 
-                                                                    * 행정직 - 사서 <br>
-                                                                    * 기술직 - 환경, 전산, 항해, 약무, 병리, 방사선, 치무, 재활치료, 의무기록, 영양관리
+                                                                &nbsp; * 행정직 - 사서 <br>
+                                                                &nbsp; * 기술직 - 환경, 전산, 항해, 약무, 병리, 방사선, 치무, 재활치료, 의무기록, 영양관리
                                                                 </span><br>
-                                                                - 한국사능력검정시험 / 어학능력검정시험은 계급별 합격 기준 점수 필요<br>
-                                                                <span class="tx-red">(* 자세한 사항은 시험과목 (다음페이지) 에서 확인)</span>
+                                                                &nbsp; - 한국사능력검정시험 / 어학능력검정시험은 계급별 합격 기준 점수 필요<br>
+                                                                &nbsp; <span class="tx-red">(* 자세한 사항은 시험과목 (다음페이지) 에서 확인)</span>
                                                             </li>
                                                         </ul>
                                                     </dd>
@@ -241,6 +241,7 @@
                                             </div>
                                         </div>
                                         <div class="guide_slider">
+                                            <h4 class="hTy4 hTy">시험안내</h4>  
                                             <div class="hTy">
                                                 <dl class="gd_txt">
                                                     <dt>
@@ -356,8 +357,10 @@
                                                         <tbody>
                                                         <tr>
                                                             <td class="td_13">5급&nbsp;</td>
-                                                            <td class="gd_txt_bg">2급 <br>
-                                                            이상&nbsp;</td>
+                                                            <td class="gd_txt_bg td_14">
+                                                                2급<br>
+                                                                이상
+                                                            </td>
                                                             <td>고급    <br>
                                                             (50문항 5지 택1형) <br>
                                                             1급 - 70점 이상 <br>
@@ -368,21 +371,24 @@
                                                         </tr>
                                                         <tr>
                                                             <td class="td_13">7급&nbsp;</td>
-                                                            <td class="gd_txt_bg">3급 <br>
-                                                            이상&nbsp;</td>
+                                                            <td class="gd_txt_bg td_14">
+                                                                3급<br>
+                                                                이상
+                                                            </td>
                                                             <td>중급<br>(50문항 5지 택1형) <br>
                                                             3급 -  70점 이상 <br>
                                                             4급 – 60점~69점&nbsp;</td>
-                                                            <td class="td_l">한국사 기초 심화과정으로 한국사에 대한 <br>
-                                                            기본적인 이해를 바탕으로 한국사의 흐름을 <br>
-                                                            대략적으로 이해할 수 있는 능력과, <br>
+                                                            <td class="td_l">한국사 기초 심화과정으로 한국사에 대한 기본적인 이해를 바탕으로<br>
+                                                            한국사의 흐름을 대략적으로 이해할 수 있는 능력과,<br>
                                                             전반적인 이해를 바탕으로 한국사의 개념과 전개 과정을 <br>
                                                             체계적으로 파악할 수 있는 능력 평가&nbsp;</td>
                                                         </tr>
                                                         <tr>
                                                             <td class="td_13">9급</td>
-                                                            <td class="gd_txt_bg">4급 <br>
-                                                            이상&nbsp;</td>
+                                                            <td class="gd_txt_bg td_14">
+                                                                4급<br>
+                                                                이상
+                                                            </td>
                                                             <td>초급<br>(40문항 4지 택1형) <br>
                                                             5급 -  70점 이상 <br>
                                                             6급 – 60점~69점&nbsp;</td>
@@ -393,6 +399,9 @@
                                                     </table>
                                                 </div>
                                             </div>
+                                        </div>
+                                        <div class="guide_slider">
+                                            <h4 class="hTy4 hTy">직렬별 시험과목</h4>  
                                             <div class="hTy">
                                                 <dl class="gd_txt">
                                                     <dt>
@@ -710,6 +719,31 @@
                                                             <td class="gd_txt_bg">9급</td>
                                                             <td>국어, 한국사, 영어, 전자공학, 기계공학</td>
                                                         </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="guide_slider">
+                                            <h4 class="hTy4 hTy">직렬별 시험과목</h4>  
+                                            <div class="hTy">
+                                                <dl class="gd_txt">
+                                                    <dt>
+                                                        <h2>직렬별 시험과목</h2>
+                                                    </dt>
+                                                </dl>
+                                                <div class="mgB3">
+                                                    <table cellspacing="0" cellpadding="0" class="basicTb basicWd gd_table mt20">
+                                                        <colgroup><col width="15%">
+                                                        <col width="8%">
+                                                        <col width="">
+                                                        </colgroup><thead><tr>
+                                                            <th>직렬</th>
+                                                            <th>계급</th>
+                                                            <th>시 험 과 목</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
                                                         <tr>
                                                             <td rowspan="3" class="td_13">탄약</td>
                                                             <td class="gd_txt_bg">5급</td>
@@ -1022,6 +1056,7 @@
                                             </div>
                                         </div>
                                         <div class="guide_slider">
+                                            <h4 class="hTy4 hTy">시험안내</h4>  
                                             <div class="hTy">
                                                 <dl class="gd_txt">
                                                     <dt>

@@ -1247,7 +1247,7 @@ class Player extends \app\controllers\FrontController
                     'cc' => '',
                     'title' => base64_encode(rawurlencode($title)),
                     'desc' => '',
-                    'teacher' => $orw['ProfName'],
+                    'teacher' => $lec['wProfName'],
                     'expiry_date' => $enddate,
                     'content_id' => $id
                 ]);

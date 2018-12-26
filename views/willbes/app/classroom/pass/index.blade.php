@@ -54,9 +54,11 @@
             @endif
             </tbody>
         </table>
+        @if(empty($passinfo) == false)
         <div class="AddlecMore">
             <a href="javascript:;" onclick="fnMoreLec('{{$passinfo['OrderIdx']}}','{{$passinfo['ProdCode']}}');"><img src="{{ img_url('m/mypage/icon_add_black.png') }}"> 강좌추가</a>
         </div>
+        @endif
         <div class="willbes-Lec-Selected NG c_both tx-gray">
             <form name="searchFrm2" id="searchFrm2" action="{{front_app_url('/classroom/pass/index', 'www')}}" onsubmit="">
                 <input type="hidden" name="sitecode" value="{{(empty($input_arr['sitecode']) == true) ? '' : $input_arr['sitecode']}}" >

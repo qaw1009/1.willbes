@@ -1250,12 +1250,12 @@ class Player extends \app\controllers\FrontController
 
             } else {
                 $rtnData = [
+                    'url' => $url,
                     'cc' => '',
                     'position' => 0,
                     'tracker' => '',
-                    'subpage' => '',
-                    'url' => $url,
                     'title' => clean_string($title),
+                    'subpage' => '',
                     'content_id' => $id
                 ];
             }

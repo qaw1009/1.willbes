@@ -58,8 +58,8 @@ function fnApp($url, $data)
                 "content_id" : 'test',
                 "subpage" : ""
             };
+            media = d.ret_data;
             app.streaming(media);
-            //app.streaming(d.ret_data);
         },
         function(ret, status){
             alert(ret.ret_msg);

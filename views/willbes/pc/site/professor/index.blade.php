@@ -158,13 +158,15 @@
     </div>
 </div>
 <div class="willbes-Layer-Black" style="display: block;">
-    <div id="Popup1" class="willbes-Layer-Box" style="display: block;">
-        <div class="Layer-Cont p_re">
-            <img src="/public/uploads/willbes/popup/20180709/popup_20181224154655.jpg"/>
+    <div id="Popup1" class="willbes-Layer-popBox" style="display: block;">
+        <div class="Layer-Cont">
+            <a href="#none">
+                <img src="/public/uploads/willbes/popup/20180709/popup_20181224154655.jpg"/>
+            </a>
         </div>
-        <ul class="btnWrapbt">
-            <li class="subBtn black"><a href="#none" id="btn_addr_regist">저장</a></li>
-            <li class="subBtn black"><a href="#none" onclick="closeWin('AddModify'); openWin('AddList')">목록</a></li>
+        <ul class="btnWrapbt popbtn mt10">
+            <li class="subBtn black"><a href="#none" id="btn_addr_regist">하루 보지않기</a></li>
+            <li class="subBtn black"><a href="#none" onclick="closeWin('AddModify'); openWin('AddList')">Close</a></li>
         </ul>
     </div>
 </div>

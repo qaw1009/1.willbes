@@ -1,15 +1,15 @@
 <div class="col-md-12 top_col">
-    <div class="row main_top_header">
+    <div class="row main_top_header @if(SUB_DOMAIN == 'wbs')wbs @else(SUB_DOMAIN == 'lms')lms @endif">
         <div class="col-md-12 mt-10">
             <div class="col-md-4 logo">
-                <img src="/public/img/logo.gif" class="ml-15 mr-20"/>
+                <img src="/public/img/logo.png" class="ml-15 mr-20"/>
                 <span class="blue valign-middle">{{ $__cfg['site_title'] }}</span>
             </div>
             @if(SUB_DOMAIN != 'tzone')
                 <div class="col-md-5">
                     <ul class="nav nav-tabs bar_tabs">
-                        <li role="presentation" class="@if(SUB_DOMAIN == 'wbs') active active-wbs @endif"><a href="{{ app_url('/', 'wbs') }}" class="">WBS</a></li>
-                        <li role="presentation" class="@if(SUB_DOMAIN == 'lms') active active-lms @endif"><a href="{{ app_url('/', 'lms') }}" class="">LMS</a></li>
+                        <li role="presentation" class="@if(SUB_DOMAIN == 'wbs') active @endif"><a href="{{ app_url('/', 'wbs') }}" class="">WBS</a></li>
+                        <li role="presentation" class="@if(SUB_DOMAIN == 'lms') active @endif"><a href="{{ app_url('/', 'lms') }}" class="">LMS</a></li>
                     </ul>
                 </div>
             @else
@@ -51,7 +51,8 @@
     </div>
     <div class="row main_top_menu mt-10">
         <div class="col-md-12">
-{{--            <div class="navbar navbar-default no-border bdb-line" role="navigation">
+            {{--
+            <div class="navbar navbar-default no-border bdb-line" role="navigation">
                 <div class="container-fluid bg-white-only">
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -88,40 +89,41 @@
                         </ul>
                     </div><!--/.nav-collapse -->
                 </div>
-            </div>--}}
+            </div>
+            --}}
             <ul class="nav nav-tabs bar_tabs">
-                <li role="presentation" class="active @if(SUB_DOMAIN == 'wbs') active-wbs @else(SUB_DOMAIN == 'lms') active-lms @endif">
+                <li role="presentation" class="active">
                     <a href="{{ site_url(get_var(element('home_url', $__settings), $__cfg['home_url'])) }}" class="cs-pointer">메인</a>
                 </li>
-            @if(isset($__menu['GNB']) === true)
-                @foreach($__menu['GNB'] as $bmenu)
-                    @if(isset($bmenu['Children']) === true)
-                        <li role="presentation" class="dropdown">
-                            <a id="{{ $bmenu['TreeNum'] }}" href="#">
-                                {{ $bmenu['MenuName'] }} <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                @foreach($bmenu['Children'] as $mmenu)
-                                    @if(isset($mmenu['Children']) === true)
-                                        <li role="presentation" class="dropdown-submenu">
-                                            <a id="{{ $mmenu['TreeNum'] }}" href="#">{{ $mmenu['MenuName'] }}</a>
-                                            <ul class="dropdown-menu animated fadeIn">
-                                                @foreach($mmenu['Children'] as $smenu)
-                                                    <li role="presentation"><a tabindex="-1" href="{{ site_url($smenu['MenuUrl']) }}">{{ $smenu['MenuName'] }}</a></li>
-                                                @endforeach
-                                            </ul>
-                                        </li>
-                                    @else
-                                        <li role="presentation"><a tabindex="-1" href="{{ site_url($mmenu['MenuUrl']) }}">{{ $mmenu['MenuName'] }}</a></li>
-                                    @endif
-                                @endforeach
-                            </ul>
-                        </li>
-                    @else
-                        <li role="presentation"><a href="#">{{ $bmenu['MenuName'] }}</a></li>
-                    @endif
-                @endforeach
-            @endif
+                @if(isset($__menu['GNB']) === true)
+                    @foreach($__menu['GNB'] as $bmenu)
+                        @if(isset($bmenu['Children']) === true)
+                            <li role="presentation" class="dropdown">
+                                <a id="{{ $bmenu['TreeNum'] }}" href="#">
+                                    {{ $bmenu['MenuName'] }} <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    @foreach($bmenu['Children'] as $mmenu)
+                                        @if(isset($mmenu['Children']) === true)
+                                            <li role="presentation" class="dropdown-submenu">
+                                                <a id="{{ $mmenu['TreeNum'] }}" href="#">{{ $mmenu['MenuName'] }}</a>
+                                                <ul class="dropdown-menu animated fadeIn">
+                                                    @foreach($mmenu['Children'] as $smenu)
+                                                        <li role="presentation"><a tabindex="-1" href="{{ site_url($smenu['MenuUrl']) }}">{{ $smenu['MenuName'] }}</a></li>
+                                                    @endforeach
+                                                </ul>
+                                            </li>
+                                        @else
+                                            <li role="presentation"><a tabindex="-1" href="{{ site_url($mmenu['MenuUrl']) }}">{{ $mmenu['MenuName'] }}</a></li>
+                                        @endif
+                                    @endforeach
+                                </ul>
+                            </li>
+                        @else
+                            <li role="presentation"><a href="#">{{ $bmenu['MenuName'] }}</a></li>
+                        @endif
+                    @endforeach
+                @endif
             </ul>
         </div>
     </div>

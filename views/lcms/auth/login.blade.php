@@ -10,10 +10,10 @@
                     <h1>{{ $__cfg['site_name'] }} LOGIN</h1>
                     <p class="text-left">계정정보 입력없이 로그인 버튼 클릭</p>
                     <div class="item">
-                        <input type="text" name="admin_id" id="admin_id" class="form-control" placeholder="아이디" required="required" title="아이디" value="{{ $saved_admin_id }}" />
+                        <input type="text" name="admin_id" id="admin_id" class="form-control" placeholder="아이디" required="required" title="아이디" value="{{ $saved_admin_id }}" style="padding: 6px 12px; height: 34px;" />
                     </div>
                     <div class="item">
-                        <input type="password" name="admin_passwd" id="admin_passwd" class="form-control" placeholder="비밀번호" required="required" title="비밀번호" />
+                        <input type="password" name="admin_passwd" id="admin_passwd" class="form-control" placeholder="비밀번호" required="required" title="비밀번호" style="padding: 6px 12px; height: 34px;" />
                     </div>
                     <div class="checkbox">
                         <label>

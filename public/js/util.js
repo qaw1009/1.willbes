@@ -56,7 +56,7 @@ function fnApp($url, $data)
                 "tracker" : "30:200,300:400",
                 "title" : window.btoa(encodeURIComponent("[액시스소프트] 이투스 테스트!!")),
                 "content_id" : 'test',
-                "subpage" : "http://dev.starplayer.net/hybrid/willbes_portal.html"
+                "subpage" : ""
             };
             app.streaming(media);
             //app.streaming(d.ret_data);

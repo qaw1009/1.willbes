@@ -51,10 +51,10 @@ function fnApp($url, $data)
         function(d){
             var media = {
                 "url" : 'http://www.axissoft.co.kr/contents/252782_ehd.mp4',
-                "cc" : "http://m.starplayer.net/dev/kr.smi",
+                "cc" : "",
                 "position" : 0,
-                "tracker" : "30:200,300:400",
-                "title" : window.btoa(encodeURIComponent("[액시스소프트] 이투스 테스트!!")),
+                "tracker" : "",
+                "title" : "[액시스소프트] 이투스 테스트!!",
                 "content_id" : 'test',
                 "subpage" : ""
             };

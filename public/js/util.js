@@ -49,7 +49,17 @@ function fnApp($url, $data)
 {
     sendAjax($url, $data,
         function(d){
-            app.streaming(d.ret_data);
+            var media = {
+                "url":url,
+                "cc":"http://m.starplayer.net/dev/kr.smi",
+                "position":position,
+                "tracker":"30:200,300:400",
+                "title":window.btoa(encodeURIComponent("[액시스소프트] 이투스 테스트!!")),
+                "content_id":content_id,
+                "subpage":"http://dev.starplayer.net/hybrid/willbes_portal.html"
+            };
+            app.streaming(media);
+            //app.streaming(d.ret_data);
         },
         function(ret, status){
             alert(ret.ret_msg);

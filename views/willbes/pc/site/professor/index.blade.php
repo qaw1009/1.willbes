@@ -157,6 +157,17 @@
         <!-- willbes-Prof-List -->
     </div>
 </div>
+<div class="willbes-Layer-Black" style="display: block;">
+    <div id="Popup1" class="willbes-Layer-Box" style="display: block;">
+        <div class="Layer-Cont p_re">
+            <img src="/public/uploads/willbes/popup/20180709/popup_20181224154655.jpg"/>
+        </div>
+        <ul class="btnWrapbt">
+            <li class="subBtn black"><a href="#none" id="btn_addr_regist">저장</a></li>
+            <li class="subBtn black"><a href="#none" onclick="closeWin('AddModify'); openWin('AddList')">목록</a></li>
+        </ul>
+    </div>
+</div>
 <!-- End Container -->
 <script type="text/javascript">
     $(document).ready(function() {

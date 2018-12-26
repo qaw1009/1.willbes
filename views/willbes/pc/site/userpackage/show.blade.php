@@ -213,6 +213,7 @@
         </div>
     </div>
     <!-- willbes-Lec-buyBtn-sm -->
+    {!! popup('657002') !!}
     <!-- End Container -->
     <script src="/public/js/willbes/product_util.js"></script>
     <script type="text/javascript">

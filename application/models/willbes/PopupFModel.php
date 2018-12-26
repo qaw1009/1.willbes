@@ -15,15 +15,19 @@ class PopupFModel extends WB_Model
     }
 
     /**
-     * 사이트 코드, 카테고리 코드, 노출섹션에 맞는 팝업 조회
+     * 노출섹션공통코드, 사이트코드, 해당 대분류 카테고리 코드에 맞는 팝업 조회 (전체 카테고리 노출 팝업 포함)
      * @param int $disp_code [노출섹션공통코드]
      * @param int $site_code [사이트코드]
-     * @param int $cate_code [대분류 카테고리코드, `0`이면 전체카테고리 노출]
+     * @param int $cate_code [대분류 카테고리코드]
      * @return array
      */
     public function findPopups($disp_code, $site_code, $cate_code = 0)
     {
-        $column = 'P.PIdx, P.TopPixel, P.LeftPixel, P.Width, P.Height, P.LinkUrl, P.LinkType, P.PopUpFullPath, P.PopUpImgName
+        if (empty($disp_code) === true || empty($site_code) === true) {
+            return [];
+        }
+
+        $column = 'P.PIdx, P.DispCcd, P.TopPixel, P.LeftPixel, P.Width, P.Height, P.LinkUrl, P.LinkType, P.PopUpFullPath, P.PopUpImgName
             , (select concat("[", GROUP_CONCAT(JSON_OBJECT("ImgType", ImgType, "ImgArea", ImgArea, "LinkUrl", LinkUrl)), "]")
                 from ' . $this->_table['popup_imagemap'] . '
                 where PIdx = P.PIdx and IsUse = "Y" and IsStatus = "Y" and ImgType != "default"
@@ -38,14 +42,12 @@ class PopupFModel extends WB_Model
             ],
             'RAW' => [
                 'NOW() between ' => 'P.DispStartDatm and P.DispEndDatm'
+            ],
+            'ORG' => [
+                'RAW' => ['PC.CateCode is ' => 'null'],
+                'EQ' => ['PC.CateCode' => $cate_code]
             ]
         ];
-
-        if (empty($cate_code) === true) {
-            $arr_condition['RAW']['PC.CateCode is '] = 'null';
-        } else {
-            $arr_condition['EQ']['PC.CateCode'] = $cate_code;
-        }
 
         $order_by = ['P.OrderNum' => 'asc', 'P.PIdx' => 'desc'];
 

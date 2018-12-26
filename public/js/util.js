@@ -61,7 +61,8 @@ function fnApp($url, $data)
             d.ret_data.title = "[액시스소프트] 이투스 테스트!!";
             d.ret_data.content_id = "test";
             media['url'] = d.ret_data.url;
-            alert(media['url']);
+            media['title'] = d.ret_data.title;
+            alert(media['title']);
             app.streaming(media);
         },
         function(ret, status){

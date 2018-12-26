@@ -8,7 +8,7 @@
                     img_link_url = '//{{ strpos($row['LinkUrl'], config_item('base_domain')) === false ? $row['LinkUrl'] : app_to_env_url($row['LinkUrl']) }}';
                 @endif
 
-                html += '<div id="Popup{{ $row['PIdx'] }}" class="willbes-Layer-popBox" style="top: {{ $row['TopPixel'] }}px; left: {{ $row['LeftPixel'] }}px;">';
+                html += '<div id="Popup{{ $row['PIdx'] }}" class="PopupWrap willbes-Layer-popBox" style="top: {{ $row['TopPixel'] }}px; left: {{ $row['LeftPixel'] }}px;">';
                 html += '   <div class="Layer-Cont">';
                 html += '       <a href="' + img_link_url + '" target="_{{ $row['LinkType'] }}">';
                 html += '           <img src="{{ $row['PopUpFullPath'] }}{{ $row['PopUpImgName'] }}" usemap="#PopupImgMap{{ $row['PIdx'] }}"/>';
@@ -18,7 +18,6 @@
                 html += '       <li class="subBtn black"><a href="#none" class="btn-popup-close" data-popup-idx="{{ $row['PIdx'] }}" data-popup-hide-days="1">하루 보지않기</a></li>';
                 html += '       <li class="subBtn black"><a href="#none" class="btn-popup-close" data-popup-idx="{{ $row['PIdx'] }}" data-popup-hide-days="">Close</a></li>';
                 html += '   </ul>';
-                html += '</div>';
 
                 @if(empty($row['PopUpImgMapData']) === false)
                     html += '<map name="PopupImgMap{{ $row['PIdx'] }}">';
@@ -33,24 +32,26 @@
                     @endforeach
                     html += '</map>';
                 @endif
+
+                html += '</div>';
             }
         @endforeach
 
         if (html !== '') {
-            html = '<div id="PopupWrap" class="willbes-Layer-Black">' + html + '</div>';
+            html += '<div id="PopupBackWrap" class="willbes-Layer-Black"></div>';
 
             $('body').append(html);
-            $('#PopupWrap .willbes-Layer-popBox').show();
-            $('#PopupWrap').fadeIn();
+            $('.PopupWrap').fadeIn();
+            $('#PopupBackWrap').fadeIn();
         }
 
         // Close 버튼 클릭
-        $('#PopupWrap').on('click', '.btn-popup-close', function() {
+        $('.PopupWrap').on('click', '.btn-popup-close', function() {
             var popup_idx = $(this).data('popup-idx');
             var hide_days = $(this).data('popup-hide-days');
 
             // popup close
-            $(this).parents('#PopupWrap .willbes-Layer-popBox').fadeOut();
+            $(this).parents('.PopupWrap').fadeOut();
 
             // 하루 보지않기
             if (hide_days !== '') {
@@ -65,14 +66,15 @@
             }
 
             // 전체 popup 창이 닫힐 경우 백그라운드 레이어 숨김 처리
-            if ($('#PopupWrap .willbes-Layer-popBox').filter(':visible').length < 2) {
-                $('#PopupWrap').fadeOut();
+            if ($('.PopupWrap').filter(':visible').length < 2) {
+                $('#PopupBackWrap').fadeOut();
             }
         });
 
         // 백그라운드 클릭
-        $('#PopupWrap').on('click', function() {
-            $('#PopupWrap').fadeOut();
+        $('#PopupBackWrap').on('click', function() {
+            $('.PopupWrap').fadeOut();
+            $('#PopupBackWrap').fadeOut();
         });
     });
 @endif

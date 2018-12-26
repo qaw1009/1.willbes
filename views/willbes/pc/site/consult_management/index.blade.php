@@ -14,47 +14,46 @@
             @include('willbes.pc.site.consult_management.common')
         </div>
 
-        <div class="willbes-User-Info">
-            <span id="calendar_box"></span>
-            <span id="schedule_box"></span>
-        </div>
+        <form id="calendar_form" name="calendar_form" method="POST">
+            <div class="willbes-User-Info">
+                <span id="calendar_box"></span>
+                <span id="schedule_box"></span>
+            </div>
+        </form>
     </div>
 
     {!! banner('고객센터_우측날개', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
 </div>
 
 <script type="text/javascript">
-$(document).ready(function() {
-    show_calendar('');
-});
+    var $calendar_form = $('#calendar_form');
+    $(document).ready(function() {
+        show_calendar('');
+        show_schedule('');
 
-function show_calendar(url) {
-    var data = '';
-    var _url  = '';
+        $calendar_form.on('click', '.btn_ing', function() {
+            /*console.log($(this).data('cs_idx'));*/
+            show_schedule($(this).data('cs_idx'));
+        });
+    });
 
-    if (url == '') {
-        _url = '{{ front_url('/consultManagement/calendar/') }}';
-    } else {
-        _url = url;
+    function show_calendar(url) {
+        var data = '';
+        var _url = '';
+        if (url == '') { _url = '{{ front_url('/consultManagement/showCalendar/') }}'; } else { _url = url; }
+        _url = _url + '?s_campus='+$('#s_campus').val();
+
+        sendAjax(_url, data, function(ret) {
+            $('#calendar_box').html(ret).show().css('display', 'block').trigger('click');
+        }, showAlertError, false, 'GET', 'html');
     }
 
-    _url = _url + '?s_campus='+$('#s_campus').val();
+    function show_schedule(cs_idx) {
+        var _url = '{{ front_url('/consultManagement/showSchedule/') }}' + '?cs_idx=' + cs_idx;
 
-    sendAjax(_url, data, function(ret) {
-        $('#calendar_box').html(ret).show().css('display', 'block').trigger('click');
-    }, showAlertError, false, 'GET', 'html');
-}
-
-function show_schedule(data) {
-    var data = {
-        '{{ csrf_token_name() }}' : $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
-        'site_code' : '',
-        'learnpatternccd' : $("#LearnPatternCcd").val()
-    };
-
-    sendAjax(_url, data, function(ret) {
-        $('#calendar_box').html(ret).show().css('display', 'block').trigger('click');
-    }, showAlertError, false, 'GET', 'html');
-}
+        sendAjax(_url, '', function(ret) {
+            $('#schedule_box').html(ret).show().css('display', 'block').trigger('click');
+        }, showAlertError, false, 'GET', 'html');
+    }
 </script>
 @stop

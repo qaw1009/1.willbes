@@ -26,7 +26,7 @@ class ConsultFModel extends WB_Model
         $arr_condition = [
             'RAW' => [
                 'SiteCode = ' => $site_code,
-                'CampusCcd = ' => $campus_code,
+                'CampusCcd = ' => (empty($campus_code) === true) ? '\'\'' : '\''.$campus_code.'\'',
                 'ConsultDate between ' => ' DATE_FORMAT(CONCAT(\''.$target_month.'\',\'-1\'),\'%Y-%m-%d\') and LAST_DAY(DATE_FORMAT(CONCAT(\''.$target_month.'\',\'-1\'),\'%Y-%m-%d\'))'
             ],
             'EQ' => [
@@ -35,8 +35,8 @@ class ConsultFModel extends WB_Model
             ]
         ];
 
-        $default_where = $this->_conn->makeWhere($arr_condition);
-        $default_where = $default_where->getMakeWhere(false);
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
 
         $column = 'STRAIGHT_JOIN a.CsIdx, a.SiteCode, a.CampusCcd, DATE_FORMAT(a.ConsultDate, \'%d\') AS ConsultDay, IFNULL(b.DayCount, 0) AS DayCount, IFNULL(c.MemberDayCount, 0) AS MemberDayCount';
         $from = "
@@ -44,7 +44,7 @@ class ConsultFModel extends WB_Model
             (
                 SELECT *
                     FROM {$this->_table['consult_schedule']}
-                {$default_where}
+                {$where}
                 GROUP BY ConsultDate
                 ORDER BY ConsultDate ASC
             ) AS a 
@@ -55,7 +55,7 @@ class ConsultFModel extends WB_Model
                 INNER JOIN (
                     SELECT CsIdx
                         FROM {$this->_table['consult_schedule']}
-                        {$default_where}
+                        {$where}
                         GROUP BY ConsultDate
                 ) AS b ON a.CsIdx = b.CsIdx
                 WHERE a.IsUse = 'Y' AND a.IsStatus = 'Y'
@@ -70,7 +70,6 @@ class ConsultFModel extends WB_Model
                 GROUP BY CsIdx
             ) AS c ON a.CsIdx = c.CsIdx
         ";
-        $query = $this->_conn->query('select ' . $column . $from);
-        return $query->result_array();
+        return $this->_conn->query('select ' . $column . $from)->result_array();
     }
 }

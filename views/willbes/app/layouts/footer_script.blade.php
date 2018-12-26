@@ -1,4 +1,6 @@
 <!-- JAVASCRIPT -->
+<!-- Slider -->
+<script src="/public/vendor/jquery/bxslider/jquery.bxslider.min.js"></script>
 <!-- PNotify -->
 <script src="/public/vendor/pnotify/pnotify.js"></script>
 <script src="/public/vendor/pnotify/pnotify.buttons.js"></script>

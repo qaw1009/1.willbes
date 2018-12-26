@@ -14,12 +14,16 @@
             @include('willbes.pc.site.consult_management.common')
         </div>
 
-        <form id="calendar_form" name="calendar_form" method="POST">
+
             <div class="willbes-User-Info">
-                <span id="calendar_box"></span>
-                <span id="schedule_box"></span>
+                <form id="calendar_form" name="calendar_form">
+                    <span id="calendar_box"></span>
+                </form>
+
+                    <span id="schedule_box"></span>
+
             </div>
-        </form>
+
     </div>
 
     {!! banner('고객센터_우측날개', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
@@ -32,7 +36,6 @@
         show_schedule('');
 
         $calendar_form.on('click', '.btn_ing', function() {
-            /*console.log($(this).data('cs_idx'));*/
             show_schedule($(this).data('cs_idx'));
         });
     });
@@ -46,6 +49,9 @@
         sendAjax(_url, data, function(ret) {
             $('#calendar_box').html(ret).show().css('display', 'block').trigger('click');
         }, showAlertError, false, 'GET', 'html');
+
+        $('#schedule_list_table').html('');
+        $('#this_date').text('날짜를 선택해주세요.');
     }
 
     function show_schedule(cs_idx) {

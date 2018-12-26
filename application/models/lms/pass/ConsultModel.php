@@ -188,10 +188,16 @@ class ConsultModel extends WB_Model
      */
     public function findConsultScheduleTimeForModify($arr_condition)
     {
-        $column = "A.CstIdx, A.ConsultPersonCount, A.ConsultTargetType, A.IsUse";
+        $column = "a.CstIdx, a.ConsultPersonCount, a.ConsultTargetType, a.IsUse, IFNULL(b.memCount, 0) AS memCount";
 
         $form = "
-            FROM {$this->_table['consult_schedule_time']} AS A
+            FROM {$this->_table['consult_schedule_time']} AS a
+            LEFT JOIN 
+            (
+                SELECT CstIdx, COUNT(CstIdx) AS memCount
+                FROM {$this->_table['consult_schedule_member']}
+                GROUP BY CstIdx
+            ) AS b ON a.CstIdx = b.CstIdx
         ";
 
         $where = $this->_conn->makeWhere($arr_condition);

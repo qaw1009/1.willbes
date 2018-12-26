@@ -274,7 +274,7 @@
                             </li>
                             <li>
                                 <div class="Time">16:10 ~ 16:30</div>
-                                <div class="Condition ing"><a href="#none">예약가능 <img src="{{ img_url('counsel/icon_arrow.png') }}"></a></div>
+                                <div class="Condition ing"><a href="#none">예약가능 ></a></div>
                             </li>
                             <li>
                                 <div class="Time">16:40 ~ 17:00</div>

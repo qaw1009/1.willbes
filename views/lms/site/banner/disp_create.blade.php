@@ -118,8 +118,7 @@
                         <p class="form-control-static">@if($method == 'PUT'){{ $data['UpdDatm'] }}@endif</p>
                     </div>
                 </div>
-
-                <div class="form-group text-center btn-wrap mt-50">
+                <div class="text-center mt-20">
                     <button type="submit" class="btn btn-success mr-10">저장</button>
                     <button class="btn btn-primary" type="button" id="btn_list">목록</button>
                 </div>

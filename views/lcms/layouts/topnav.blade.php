@@ -33,7 +33,7 @@
                                 @if(isset($__settings['favorite']) === true)
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="favorite">
                                     @foreach($__settings['favorite'] as $menu_idx => $menu)
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ $menu['MenuUrl'] }}">{{ $menu['MenuName'] }}</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ $menu['MenuUrl'] }}" class="dark-blue">{{ $menu['MenuName'] }}</a></li>
                                     @endforeach
                                 </ul>
                                 @endif

@@ -58,9 +58,11 @@ function fnApp($url, $data)
                 "content_id" : 'test',
                 "subpage" : ""
             };
-            d.ret_dat.url = 'http://www.axissoft.co.kr/contents/252782_ehd.mp4';
-            d.ret_dat.title = "[액시스소프트] 이투스 테스트!!";
+            d.ret_data.url = 'http://www.axissoft.co.kr/contents/252782_ehd.mp4';
+            d.ret_data.title = "[액시스소프트] 이투스 테스트!!";
+            d.ret_data.content_id = "test";
             media = d.ret_data;
+            alert(media.url);
             app.streaming(media);
         },
         function(ret, status){

@@ -77,7 +77,7 @@
                                     @php
                                     for($i=0; $i<=23; $i++) {
                                         $str = (strlen($i) <= 1) ? '0' : '';
-                                        $selected = ($i == data['DispStartTime']) ? "selected='selected'" : "";
+                                        $selected = ($i == substr($data['DispStartDatm'], 11, 2)) ? "selected='selected'" : "";
                                         echo "<option value='{$i}' {$selected}>{$str}{$i}</option>";
                                     }
                                     @endphp
@@ -90,8 +90,8 @@
                                     @php
                                         for($i=0; $i<=23; $i++) {
                                             $str = (strlen($i) <= 1) ? '0' : '';
-                                            $selected = ($i == data['DispEndTime']) ? "selected='selected'" : "";
-                                            echo "<option value='{$i}' {$selected}>{$str}{$i}</option>";
+                                            $selected = ($i == substr($data['DispEndDatm'], 11, 2)) ? "selected='selected'" : "";
+                                            echo "<option value='{$i}' {$selected}>{$str}{$i}</option>" ;
                                         }
                                     @endphp
                                 </select>

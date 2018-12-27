@@ -103,18 +103,18 @@
                                     {{ $bmenu['MenuName'] }} <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    @foreach($bmenu['Children'] as $mmenu)
+                                    @foreach($bmenu['Children'] as $midx => $mmenu)
                                         @if(isset($mmenu['Children']) === true)
                                             <li role="presentation" class="dropdown-submenu">
                                                 <a id="{{ $mmenu['TreeNum'] }}" href="#">{{ $mmenu['MenuName'] }}</a>
                                                 <ul class="dropdown-menu animated fadeIn">
-                                                    @foreach($mmenu['Children'] as $smenu)
-                                                        <li role="presentation"><a tabindex="-1" href="{{ site_url($smenu['MenuUrl']) }}">{{ $smenu['MenuName'] }}</a></li>
+                                                    @foreach($mmenu['Children'] as $sidx => $smenu)
+                                                        <li role="presentation"><a tabindex="-1" href="{{ site_url($smenu['MenuUrl']) }}" class="{{ isset($__menu['CURRENT']['MenuIdx']) && $sidx == $__menu['CURRENT']['MenuIdx'] ? 'current' : '' }}">{{ $smenu['MenuName'] }}</a></li>
                                                     @endforeach
                                                 </ul>
                                             </li>
                                         @else
-                                            <li role="presentation"><a tabindex="-1" href="{{ site_url($mmenu['MenuUrl']) }}">{{ $mmenu['MenuName'] }}</a></li>
+                                            <li role="presentation"><a tabindex="-1" href="{{ site_url($mmenu['MenuUrl']) }}" class="{{ isset($__menu['CURRENT']['MenuIdx']) && $midx == $__menu['CURRENT']['MenuIdx'] ? 'current' : '' }}">{{ $mmenu['MenuName'] }}</a></li>
                                         @endif
                                     @endforeach
                                 </ul>

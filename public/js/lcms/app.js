@@ -457,13 +457,6 @@ function init_base() {
         $(this).find('.dropdown-menu').stop(true, true).delay(0).fadeOut(0);
     });
 
-    // top-menu current
-    $(".nav-tabs li.dropdown a").each(function() {
-        if(this.href == CURRENT_URL) {
-            $(this).addClass('current');
-        }
-    });
-
     // 관리자 정보수정 모달창 오픈
     $('.btn-admin-modify').setLayer({
         "url" : "/lcms/auth/regist/edit",

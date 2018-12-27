@@ -1,7 +1,7 @@
 @extends('lcms.layouts.master_single')
 
 @section('content')
-    <div class="row @if(SUB_DOMAIN == 'wbs')wbs @else(SUB_DOMAIN == 'lms')lms @endif">
+    <div class="row {{ SUB_DOMAIN }}">
         <div class="login_header col-md-12 pt-10 pd-zero p_re">
             <div class="col-md-4 logo">
                 <img src="/public/img/logo.png" class="ml-15 mr-20"/>
@@ -18,7 +18,7 @@
                 </div>
             @endif
             <div class="col-md-3 nav_txt">
-                <span class="pull-right valign-middle">윌비스 통합 관리자(LCMS)</span>
+                <span class="pull-right valign-middle">{{ $__cfg['site_title'] }}</span>
             </div>
         </div>
         <div class="login_section">

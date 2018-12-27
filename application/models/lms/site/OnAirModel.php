@@ -159,7 +159,7 @@ class OnAirModel extends WB_Model
             ) AS K ON A.OaIdx = K.OaIdx
             
             INNER JOIN {$this->_table['admin']} AS E ON A.RegAdminIdx = E.wAdminIdx AND E.wIsStatus='Y'
-            INNER JOIN {$this->_table['onair_title']} AS H ON A.OaIdx = H.OaIdx AND H.TitleType = '{$this->_title_type['1']}'
+            INNER JOIN {$this->_table['onair_title']} AS H ON A.OaIdx = H.OaIdx AND H.TitleType = '{$this->_title_type['1']}' AND H.IsStatus = 'Y'
             INNER JOIN {$this->_table['professor']} AS I ON H.ProfIdx = I.ProfIdx
             LEFT OUTER JOIN {$this->_table['admin']} AS F ON A.UpdAdminIdx = F.wAdminIdx AND F.wIsStatus='Y'
         ";

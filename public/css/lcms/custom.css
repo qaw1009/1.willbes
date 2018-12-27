@@ -345,7 +345,6 @@ body.no_sidebar {
     padding-top: 3px;
     color: #fff !important;
 }
-
 .top_col .main_top_header .col-md-5 {
     width: auto;
     position: absolute;
@@ -355,7 +354,6 @@ body.no_sidebar {
 .top_col .main_top_header .col-md-5 ul li:first-child {
     margin-left: 0;
 }
-
 .top_col .main_top_header .nav.nav-pills li a .dark-blue {
     color: #fff !important;
 }
@@ -426,6 +424,9 @@ body.no_sidebar {
 .top_col .main_top_menu .navbar-nav .open > a {
     background: none;
     text-decoration: underline;
+}
+.top_col .main_top_menu .nav-tabs ul.dropdown-menu a.current {
+    background: #e5e9ef !important;   
 }
 
 /* dropdown-menu */
@@ -513,7 +514,7 @@ ul.bar_tabs > li {
 }
 ul.bar_tabs > li a {
     background: #fff !important;
-    border-top-right-radius: 4px;
+    border-radius: 0;
 }
 ul.bar_tabs > li.dropdown > a {
     padding: 10px 10px 10px 15px;

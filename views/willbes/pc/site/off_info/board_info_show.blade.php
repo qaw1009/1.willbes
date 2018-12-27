@@ -21,10 +21,10 @@
                     <div class="Acad_info mt30">
                         @if($tab_menu === true)
                         <ul class="tabMock four mb60">
-                            <li><a @if($bm_idx=='80')class="on" @endif href="{{ front_url('/offinfo/LectureInfo/index/80') }}">강의시간표</a></li>
-                            <li><a @if($bm_idx=='82')class="on" @endif href="{{ front_url('/offinfo/LectureInfo/index/82') }}">강의실배정표</a></li>
-                            <li><a @if($bm_idx=='75')class="on" @endif href="{{ front_url('/offinfo/LectureInfo/index/75') }}">휴강/보강공지</a></li>
-                            <li><a @if($bm_idx=='78')class="on" @endif href="{{ front_url('/offinfo/LectureInfo/index/78') }}">신규강의안내</a></li>
+                            <li><a @if($bm_idx=='80')class="on" @endif href="{{ front_url($default_path.'/index/80') }}">강의시간표</a></li>
+                            <li><a @if($bm_idx=='82')class="on" @endif href="{{ front_url($default_path.'/index/82') }}">강의실배정표</a></li>
+                            <li><a @if($bm_idx=='75')class="on" @endif href="{{ front_url($default_path.'/index/75') }}">휴강/보강공지</a></li>
+                            <li><a @if($bm_idx=='78')class="on" @endif href="{{ front_url($default_path.'/index/78') }}">신규강의안내</a></li>
                         </ul>
                         @endif
 
@@ -59,7 +59,7 @@
                                             <tr>
                                                 <td class="w-file tx-left pl20" colspan="4">
                                                     @foreach($data['AttachData'] as $row)
-                                                        <a href="{{front_url('/offinfo/LectureInfo/download?path=').urlencode($row['FilePath'].$row['FileName']).'&fname='.urlencode($row['RealName']).'&board_idx='.$board_idx }}" target="_blank">
+                                                        <a href="{{front_url($default_path.'/download?path=').urlencode($row['FilePath'].$row['FileName']).'&fname='.urlencode($row['RealName']).'&board_idx='.$board_idx }}" target="_blank">
                                                             <img src="{{ img_url('prof/icon_file.gif') }}"> {{$row['RealName']}}</a>
                                                     @endforeach
                                                 </td>
@@ -74,7 +74,7 @@
                                     </table>
                                     <div class="search-Btn btnAuto90 h36 mt20 mb30 f_right">
                                         <div class="btnAuto90 h36 mem-Btn bg-purple-gray bd-dark-gray f_right">
-                                            <a href="{{front_url('/offinfo/LectureInfo/index/'.$bm_idx.'?'.$get_params)}}"><span>목록</span></a>
+                                            <a href="{{front_url($default_path.'/index/'.$bm_idx.'?'.$get_params)}}"><span>목록</span></a>
                                         </div>
                                     </div>
                                     <table cellspacing="0" cellpadding="0" class="listTable prevnextTable upper-gray bdt-gray bdb-gray tx-gray">
@@ -88,7 +88,7 @@
                                             <td class="w-prev bg-light-gray"><strong>이전글</strong></td>
                                             <td class="tx-left pl20">
                                                 @if(empty($pre_data) === false)
-                                                    <a href="{{front_url('/offinfo/LectureInfo/show/'.$bm_idx.'?board_idx='.$pre_data['BoardIdx'].'&'.$get_params)}}">{{$pre_data['Title']}}</a><span class="row-line">|</span>
+                                                    <a href="{{front_url($default_path.'/show/'.$bm_idx.'?board_idx='.$pre_data['BoardIdx'].'&'.$get_params)}}">{{$pre_data['Title']}}</a><span class="row-line">|</span>
                                                 @else
                                                     이전글이 없습니다.
                                                 @endif
@@ -99,7 +99,7 @@
                                             <td class="w-next bg-light-gray"><strong>다음글</strong></td>
                                             <td class="tx-left pl20">
                                                 @if(empty($next_data) === false)
-                                                    <a href="{{front_url('/offinfo/LectureInfo/show/'.$bm_idx.'?board_idx='.$next_data['BoardIdx'].'&'.$get_params)}}">{{$next_data['Title']}}</a><span class="row-line">|</span>
+                                                    <a href="{{front_url($default_path.'/show/'.$bm_idx.'?board_idx='.$next_data['BoardIdx'].'&'.$get_params)}}">{{$next_data['Title']}}</a><span class="row-line">|</span>
                                                 @else
                                                     다음글이 없습니다.
                                                 @endif

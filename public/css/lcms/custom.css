@@ -5,10 +5,253 @@ body {
     font-family: "Dotum", "돋움", "Gulim", "굴림", "Arial", sans-serif;
 }
 body.single {
-    background: #f7f7f7;
+    background: #fff;
 }
 body.no_sidebar {
     background: #fff;
+}
+
+/* loginForm */
+.login_header {
+    font-family: "Nanum Gothic", "나눔고딕", "Arial", sans-serif;
+    font-weight: 600;
+}
+.login_header .nav-tabs {
+    background: none !important;
+    border-bottom: 0;
+    margin-top: 22px;
+    margin-bottom: 0;
+    padding-left: 0;
+    height: 23px;
+    font-family: "Arial",sans-serif;
+}
+.login_header .nav-tabs li.active a:hover {
+    line-height: 38px;
+}
+.login_header .nav_txt {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 32%;
+    height: 45px;
+    padding-right: 10px;
+}
+.login_header .nav_txt .valign-middle {
+    padding: 16px 0;
+}
+.login_header ul.bar_tabs > li {
+    border: none !important;
+    border-radius: 10px 10px 0 0;
+    min-width: 200px;
+    height: 40px;
+}
+.login_header ul.bar_tabs > li a {
+    background: none !important;
+    border: 0;
+    padding: 0 !important;
+    font-size: 20px;
+    font-weight: 600;
+    color: #fff;
+    line-height: 40px;
+    text-align: center;
+}
+.login_header ul.bar_tabs > li a:hover {
+    background: none !important;
+}
+.login_header ul.bar_tabs > li.active a {
+    padding: 0 !important;
+    border: none;
+}
+.login_header div {
+    padding-left: 0;
+    padding-right: 0;
+    position: relative;
+    color: #fff;
+}
+.login_header div a {
+    color: #fff;
+}
+.login_header .logo {
+    padding-bottom: 10px;
+    text-align: left;
+}
+.login_header .logo span {
+    display: inline-block;
+    padding-top: 3px;
+    color: #fff !important;
+}
+.login_header .col-md-5 {
+    width: auto;
+    position: absolute;
+    left: 50%;
+    margin-left: -204px;
+}
+.login_header .col-md-5 ul li:first-child {
+    margin-left: 0;
+}
+
+.login_section {
+    clear: both;
+}
+.login_content {
+    width: 630px;
+    text-shadow: none;
+    padding: 0;
+}
+.login_content form {
+    margin: 0
+}
+.login_content h1:after,
+.login_content h1:before {
+    display: none;
+}
+.login_content h1 {
+    font-family: "Arial", sans-serif;
+    font-size: 40px;
+    line-height: 40px;
+    letter-spacing: 0;
+    margin: 0;
+    padding-top: 50px;
+}
+.login_content h1 span {
+    font-weight: 600;
+}
+.login_content h2 {
+    margin: 10px 0 60px;
+}
+
+.loginform {
+    border-top: 3px solid #3f3f3f;
+    border-bottom: 1px solid #3f3f3f;
+    padding: 60px 0;
+}
+.loginbox {
+    width: 370px;
+    margin: 0 auto;
+    font-family: "Arial", sans-serif, "Malgun Gothic", "맑은 고딕" ;
+}
+.login_content .loginbox:before,
+.login_content .loginbox:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.login_content .loginbox .item {
+    float: left;
+}
+.login_content .loginbox .item input {
+    background: #f5f5f5;
+    width: 205px;
+    height: 37px;
+    border: 1px solid #d4d4d4;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 10px;
+    letter-spacing: 1px;
+    margin-bottom: 14px;
+    font-size: 17px;
+    color: #707070;
+}
+.login_content .loginbox .checkbox {
+    clear: both;
+    font-size: 14px;
+    text-align: left;
+    line-height: 14px;
+    margin-bottom: 0;
+}
+.login_content .loginbox .checkbox label {
+    padding-left: 0;
+    height: 14px;
+    min-height: 14px;
+    color: #707070;
+}
+.icheckbox_flat-blue,
+.iradio_flat-blue {
+    background: url("../../vendor/iCheck/skins/flat/flat.png") no-repeat;
+}
+
+.login_content .loginbox .checkbox .icheckbox_flat-blue {
+    float: left;
+    margin-right: 5px;
+}
+.login_content .loginbox button#btn_login {
+    float: right;
+    width: 146px;
+    height: 88px;
+    font-size: 24px;
+    font-weight: 600;
+    color: #fff;
+    border-radius: 15px;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+.logininfo {
+    font-family: "Malgun Gothic", "맑은 고딕", "Arial", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: #7d7d7d;
+    text-align: left;
+    margin-top: 90px;
+}
+.logininfo button#btn_regist {
+    font-size: 10px;
+    font-weight: 600;
+    color: #fff;
+    padding: 0 3px;
+    margin: 0 0 2px 0;
+}
+
+/* LMS */
+.lms .login_header {
+    background: #4a84d5;
+}
+.lms .login_header .nav-tabs li {
+    background: #8cb1e5;
+}
+.lms .login_header .nav-tabs li.active {
+    background: #fff;
+}
+.lms .login_header ul.bar_tabs > li.active a {
+    color: #4885d5;
+}
+.lms .color {
+    color: #4a84d5;
+}
+.lms .bg {
+    background: #4a84d5;
+}
+.lms .logininfo button#btn_regist {
+    border: 1px solid #2963b1;
+}
+.lms .login_content .loginbox .item input:focus {
+    border: 1px solid #4a84d5;
+}
+
+/* WBS */
+.wbs .login_header {
+    background: #6eb442;
+}
+.wbs .login_header .nav-tabs li {
+    background: #a1cf86;
+}
+.wbs .login_header .nav-tabs li.active {
+    background: #fff;
+}
+.wbs .login_header ul.bar_tabs > li.active a {
+    color: #6eb442;
+}
+.wbs .color {
+    color: #6eb442;
+}
+.wbs .bg {
+    background: #6eb442;
+}
+.wbs .logininfo button#btn_regist {
+    border: 1px solid #56992c;
+}
+.wbs .login_content .loginbox .item input:focus {
+    border: 1px solid #6eb442;
 }
 
 /* container */
@@ -901,6 +1144,9 @@ select.input-sm {
     margin-right: 50px !important;
 }
 
+.pd-zero {
+    padding: 0 !important;
+}
 /* padding-top */
 .pt-0 {
     padding-top: 0 !important;
@@ -982,6 +1228,14 @@ select.input-sm {
 }
 .pr-30 {
     padding-right: 30px !important;
+}
+
+/* position */
+.p_re {
+    position: relative;
+}
+.p_ab {
+    position: absolute;
 }
 
 /* col-md */

@@ -1814,9 +1814,16 @@ table.auTable tr td {
 .main .Act2 span {
     display: inline-block;
 }
-.main .Act2 tr td {
-    padding: 20px 0;
-    text-align: center;
+.main .Act2 .dDayBox {
+    float: left;
+    width: 25%;
+    height: 80px;
+    overflow: hidden;
+    padding: 20px 0 20px 40px;
+    border-left: 1px solid #e2e2e2;
+}
+.main .Act2 .dDayBox:first-child {
+    border-left: none;
 }
 .main .Act2 .dTit {
     font-size: 14px;

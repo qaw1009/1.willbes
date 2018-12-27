@@ -116,115 +116,31 @@
                 </div>
             </div>
         </div>
+    @if(isset($data['dday']) === true)
+        {{-- Dday --}}
         <div class="Section Act2 mb50">
             <div class="widthAuto">
                 <div class="will-Tit mb-zero">시험일정</div>
                 <div class="sliderDayList cSlider">
                     <div class="sliderControls">
                         <div>
-                            <table cellspacing="0" cellpadding="0" class="mainTable">
-                                <colgroup>
-                                    <col style="width: 253px;"/>
-                                    <col style="width: 1px;"/>
-                                    <col style="width: 253px;"/>
-                                    <col style="width: 1px;"/>
-                                    <col style="width: 253px;"/>
-                                    <col style="width: 1px;"/>
-                                    <col style="width: 253px;"/>
-                                </colgroup>
-                                <tbody>
-                                <tr>
-                                    <td>
-                                        <a href="#none">
-                                            <span class="dTit">
-                                                2018 경찰 3차
-                                                <div class="w-date">2018-11-23</div>
-                                            </span>
-                                            <span class="dDay tx-color">D-349</span>
-                                        </a>
-                                    </td>
-                                    <td class="line">-</td>
-                                    <td>
-                                        <a href="#none">
-                                            <span class="dTit">
-                                                2018 서울시
-                                                <div class="w-date">2018-10-05</div>
-                                            </span>
-                                            <span class="dDay tx-color">D-35</span>
-                                        </a>
-                                    </td>
-                                    <td class="line">-</td>
-                                    <td>
-                                        <span class="dTit">
-                                            2018 지방직
-                                            <div class="w-date">2019-04-18</div>
-                                        </span>
-                                        <span class="dDay tx-color">D-94</span>
-                                    </td>
-                                    <td class="line">-</td>
-                                    <td>
-                                        <span class="dTit">
-                                            2018 법원/검찰직
-                                            <div class="w-date">2019-04-19</div>
-                                        </span>
-                                        <span class="dDay tx-color">D-97</span>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div>
-                            <table cellspacing="0" cellpadding="0" class="mainTable">
-                                <colgroup>
-                                    <col style="width: 25%;"/>
-                                    <col style="width: 1px;"/>
-                                    <col style="width: 25%;"/>
-                                    <col style="width: 1px;"/>
-                                    <col style="width: 25%;"/>
-                                    <col style="width: 1px;"/>
-                                    <col style="width: 25%;"/>
-                                </colgroup>
-                                <tbody>
-                                <tr>
-                                    <td>
-                                        <span class="dTit">
-                                            2018 경찰 3차
-                                            <div class="w-date">2018-11-23</div>
-                                        </span>
-                                        <span class="dDay tx-color">D-349</span>
-                                    </td>
-                                    <td class="line">-</td>
-                                    <td>
-                                        <span class="dTit">
-                                            2018 서울시
-                                            <div class="w-date">2018-10-05</div>
-                                        </span>
-                                        <span class="dDay tx-color">D-35</span>
-                                    </td>
-                                    <td class="line">-</td>
-                                    <td>
-                                        <span class="dTit">
-                                            2018 지방직
-                                            <div class="w-date">2019-04-18</div>
-                                        </span>
-                                        <span class="dDay tx-color">D-94</span>
-                                    </td>
-                                    <td class="line">-</td>
-                                    <td>
-                                        <span class="dTit">
-                                            2018 법원/검찰직
-                                            <div class="w-date">2019-04-19</div>
-                                        </span>
-                                        <span class="dDay tx-color">D-97</span>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
+                        @foreach($data['dday'] as $idx => $row)
+                            @if($idx != 0 && $idx % 4 == 0)
+                                </div><div>
+                            @endif
+                            <div class="dDayBox">
+                                <a href="#none">
+                                    <span class="dTit">{{ $row['DayTitle'] }}<div class="w-date">{{ $row['DayDatm'] }}</div></span>
+                                    <span class="dDay tx-color">D{{ $row['DDay'] }}</span>
+                                </a>
+                            </div>
+                        @endforeach
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    @endif
         <div class="Section Act3 mb90">
             <div class="widthAuto">
                 <dl>

@@ -228,6 +228,21 @@ if (!function_exists('get_app_var')) {
     }
 }
 
+if (!function_exists('get_domain_to_url')) {
+    /**
+     * URL에서 서브 도메인을 제외한 메인 도메인 추출
+     * @param string $url [scheme가 포함된 full url, ex) https://www.willbes.net]
+     * @return mixed [일치하는 패턴이 없을 경우 false 리턴]
+     */
+    function get_domain_to_url($url)
+    {
+        $url = parse_url($url, PHP_URL_HOST);
+        preg_match('/[\w-]+\.[a-zA-Z]*$/', $url, $matches);
+
+        return element('0', $matches, false);
+    }
+}
+
 if (!function_exists('img_url')) {
     /**
      * 이미지 경로 리턴

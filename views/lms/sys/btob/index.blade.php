@@ -41,6 +41,9 @@
                         <th>No</th>
                         <th class="searching">제휴사 코드</th>
                         <th class="searching">제휴사명</th>
+                        <th class="searching">담당자</th>
+                        <th class="searching">연락처</th>
+                        <th class="searching">참조도메인</th>
                         <th class="searching">설명</th>
                         <th class="searching_is_use">사용여부</th>
                         <th>등록자</th>
@@ -51,8 +54,11 @@
                     @foreach($data as $row)
                         <tr>
                             <td>{{ ($loop->count) - ($loop->index) + 1}}</td>
-                            <td>{{ $row['CompIdx'] }}</td>
-                            <td><a href="#" class="btn-modify" data-idx="{{ $row['CompIdx'] }}"><u>{{ $row['CompName'] }}</u></a></td>
+                            <td>{{ $row['BtobIdx'] }}</td>
+                            <td><a href="#" class="btn-modify" data-idx="{{ $row['BtobIdx'] }}"><u>{{ $row['BtobName'] }}</u></a></td>
+                            <td>{{ $row['ManagerName'] }}</td>
+                            <td>@if(!empty($row['Tel2'])){{ $row['Tel1'] .'-'. $row['Tel2'].'-'.$row['Tel3']  }}@endif</td>
+                            <td>{{ $row['ReferDomains'] }}</td>
                             <td>{{ $row['Desc'] }}</td>
                             <td>@if($row['IsUse'] == 'Y') 사용 @elseif($row['IsUse'] == 'N') <span class="red">미사용</span> @endif
                                 <span class="hide">{{ $row['IsUse'] }}</span>
@@ -90,7 +96,7 @@
                 var uri_param = (is_regist === true) ? '' : $(this).data('idx');
 
                 $('.btn-regist, .btn-modify').setLayer({
-                    'url' : '{{ site_url('/sys/btob/create/') }}' + uri_param,
+                    'url' : '{{ site_url('/sys/btob/btobInfo/create/') }}' + uri_param,
                     'width' : 900
                 });
             });

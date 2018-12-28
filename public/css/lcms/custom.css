@@ -670,6 +670,7 @@ table.dataTable tbody>tr.selected, table.dataTable tbody>tr>.selected {
     border-radius: 0;
     padding: 5px 9px 4px;
 }
+
 button.btn-default,
 button.btn-primary,
 button.btn-success,
@@ -685,7 +686,8 @@ button.btn-danger {
 .text-right button.btn-success,
 .text-right button.btn-info,
 .text-right button.btn-warning,
-.text-right button.btn-danger {
+.text-right button.btn-danger,
+button#act-excelDown {
     font-size: 12px;
     padding: 2px 9px;
 }
@@ -699,6 +701,7 @@ button.btn-danger {
     font-size: 12px;
     padding: 3px 11px;
 }
+
 .modal-footer button.btn-default,
 .modal-footer button.btn-primary,
 .modal-footer button.btn-success,
@@ -708,16 +711,50 @@ button.btn-danger {
     font-size: 12px;
     padding: 3px 11px;
 }
-button.btn-primary.btn-search {
+
+.form-inline button.btn-default,
+.form-inline button.btn-primary,
+.form-inline button.btn-success,
+.form-inline button.btn-info,
+.form-inline button.btn-warning,
+.form-inline button.btn-danger,
+.form-inline button.btn-auto-login {
+    font-size: 12px;
+    padding: 4px 7px;
+}
+
+th button.btn-default,
+th button.btn-primary,
+th button.btn-success,
+th button.btn-info,
+th button.btn-warning,
+th button.btn-danger {
+    padding: 0 9px !important;
+}
+
+button.btn-default.btn-search,
+button.btn-primary.btn-search,
+button.btn-success.btn-search,
+button.btn-info.btn-search,
+button.btn-warning.btn-search,
+button.btn-danger.btn-search,
+button.btn-info {
     width: auto;
     min-width: 1px;
-    padding: 2px 11px 2px 2px;
-    font-family:monospace;
+    padding: 3px 11px 2px;
 }
+
 button.btn-primary.btn-search i {
-    display: none;
     font-family:monospace;
+    width: 0px;
+    margin: -5px;
+    opacity: 0;
+    animation: none;
 }
+.text-right button.btn-primary.btn-search i {
+    margin: 0;
+}
+
 .btn.active,
 .btn:active {
     box-shadow: none;
@@ -725,8 +762,8 @@ button.btn-primary.btn-search i {
 .dt-buttons.btn-group .border-radius-reset {
     border-radius: 0 !important;
 }
-.btn-group-sm>.btn,
-.btn-sm {
+.btn-group-sm > .btn,
+button.btn-sm {
     padding: 2px 7px;
 }
 .pull-right .btn-sm.mr-15 {

@@ -1470,13 +1470,11 @@ class Player extends \app\controllers\FrontController
 
             default;
                 // 알수없는 이벤트는 에러
-                $this->response(['result'=>'error']);
+                $this->response(['result'=>'success']);
         }
-
-        // 기본적으로 무조건 success
-        $this->response(['result'=>'success']);
     }
 
+    
     /**
      * 기기산태체크
      * @param string $state

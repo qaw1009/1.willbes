@@ -49,7 +49,7 @@ class AccessFModel extends WB_Model
                 'GwIdx' => $idx
             ]);
 
-        } else if($strType == 'asp') {
+        } else if($strType == 'bb') {
 
             $input_data = array_merge($input_data,[
 

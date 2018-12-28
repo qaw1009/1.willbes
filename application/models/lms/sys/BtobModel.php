@@ -152,7 +152,6 @@ class BtobModel extends WB_Model
     public function inputCommon($input=[])
     {
 
-
         //테이블 입력
         $input_product = [
             'BtobName'=>element('BtobName',$input)
@@ -168,6 +167,91 @@ class BtobModel extends WB_Model
         ];
 
         return $input_product;
+    }
+
+
+    public function addIp($input=[])
+    {
+        try {
+            //테이블 입력
+            $input_data = [
+                'BtobIdx' => element('btobidx', $input)
+                , 'ApprovalIp' => element('ApprovalIp', $input)
+                , 'RegAdminIdx' => $this->session->userdata('admin_idx')
+            ];
+
+            if ($this->_conn->set($input_data)->insert('lms_btob_ip') === false) {
+                throw new \Exception('IP 등록에 실패했습니다.');
+            }
+
+        } catch (\Exception $e) {
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+    public function deleteIp($input=[])
+    {
+        try {
+
+            $btobidx = element('btobidx', $input);
+            $biIdx = element('biIdx', $input);
+
+            $input_data = [
+                 'IsStatus' => 'N'
+                , 'UpdAdminIdx' => $this->session->userdata('admin_idx')
+            ];
+
+            $this->_conn->set($input_data)->where([
+                'BtobIdx' => $btobidx,
+                'BiIdx' => $biIdx
+            ]);
+
+            if ($this->_conn->update('lms_btob_ip') === false) {
+                throw new \Exception('IP 삭제에 실패했습니다.');
+            }
+
+        } catch (\Exception $e) {
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+
+    /**
+     * 목록 추출
+     * @param $is_count
+     * @param array $arr_condition
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
+     */
+    public function listIp($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    {
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $column = ' straight_join A.*,B.wAdminName';
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $from = '
+                    from lms_btob_ip A
+	                        left outer join wbs_sys_admin B on A.RegAdminIdx = B.wAdminIdx
+                    where A.IsStatus=\'Y\' ';
+
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
+
+        $result = $this->_conn->query('select '. $column .$from .$where. $order_by_offset_limit);
+        //var_dump($result);exit;
+        //echo $this->_conn->last_query();
+        return ($is_count === true) ? $result->row(0)->numrows : $result->result_array();
+
     }
 
 }

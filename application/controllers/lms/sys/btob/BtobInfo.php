@@ -80,4 +80,79 @@ class BtobInfo extends \app\controllers\BaseController
         $this->json_result($result,'저장 되었습니다.',$result);
     }
 
+
+    /**
+     * IP 등록 폼
+     * @param array $params
+     */
+    public function createIp($params=[])
+    {
+
+        $method='POST';
+        $btobidx = $params[0];
+
+        $this->load->view('sys/btob/create_ip_modal',[
+            'method' => $method
+            ,'btobidx' => $btobidx
+       ]);
+
+    }
+
+    /**
+     * ip 등록 처리
+     */
+    public function storeIp()
+    {
+        $rules = [
+            ['field' => 'btobidx', 'label' => '제휴사식별자', 'rules' => 'trim|required'],
+            ['field' => 'ApprovalIp', 'label' => 'IP주소', 'rules' => 'trim|required'],
+        ];
+
+        if($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->btobModel->addIp($this->_reqP(null));
+        //echo var_dump($result);exit;
+        $this->json_result($result,'저장 되었습니다.',$result);
+    }
+
+
+    /**
+     * 목록추출
+     * @return CI_Output
+     */
+    public function listIp()
+    {
+
+        $arr_condition = [
+            'EQ' => [
+                'A.BtoBIdx' => $this->_reqP('btobidx'),
+            ]
+        ];
+        $order_by =  ['A.BiIdx'=>'desc'];
+
+        $list = [];
+        $count = $this->btobModel->listIp(true,$arr_condition);
+
+        if($count > 0) {
+            $list = $this->btobModel->listIp(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), $order_by);
+        }
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list
+        ]);
+
+    }
+
+
+    public function deleteIp()
+    {
+        $result = $this->btobModel->deleteIp($this->_reqP(null));
+
+        return $this->json_result($result, '', $result);
+
+    }
 }

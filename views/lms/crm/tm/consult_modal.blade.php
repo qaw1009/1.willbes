@@ -239,7 +239,8 @@
                                 notifyAlert('success', '알림', '상담이 저정되었습니다.');
                                 $regi_form_modal[0].reset();
                                 $search_form_modal[0].reset();
-                                $search_form_modal.submit();
+                                //$search_form_modal.submit();
+                                $datatable_modal.draw();
                             }
                         }, showValidateError, null, false, 'alert');
                     });

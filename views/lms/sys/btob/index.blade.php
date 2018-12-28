@@ -48,6 +48,7 @@
                         <th class="searching_is_use">사용여부</th>
                         <th>등록자</th>
                         <th>등록일</th>
+                        <th>IP등록</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -65,6 +66,7 @@
                             </td>
                             <td>{{ $row['RegAdminName'] }}</td>
                             <td>{{ $row['RegDatm'] }}</td>
+                            <td><button type="button" class="btn btn-primary btn_ip" id="btn_ip" data-idx="{{$row['BtobIdx']}}">등록</button></td>
                         </tr>
                     @endforeach
                     </tbody>
@@ -98,8 +100,19 @@
                 $('.btn-regist, .btn-modify').setLayer({
                     'url' : '{{ site_url('/sys/btob/btobInfo/create/') }}' + uri_param,
                     'width' : 900
+                    ,'modal_id' : 'modal_info'
                 });
             });
+
+            $('.btn_ip').click(function(){
+                var uri_param = $(this).data('idx');
+                $('.btn_ip').setLayer({
+                    'url' : '{{ site_url('/sys/btob/btobInfo/createIp/') }}' + uri_param,
+                    'width' : 700
+                    ,'modal_id' : 'modal_ip'
+                });
+            });
+
         });
 
         // datatable searching

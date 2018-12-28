@@ -48,11 +48,11 @@ class Access extends BaseAccess
     }
 
     /**
-     * ASP 를 위한 업체 연동 접속
-     * TODO ASP 관련 기획 문서 정리 후 개발 진행
+     * Btob 를 위한 업체 연동 접속
+     * TODO Btob 관련 기획 문서 정리 후 개발 진행
      * @param array $params
      */
-    public function asp($params=[])
+    public function btob($params=[])
     {
         $result_msg = '';
         $return_url = '';

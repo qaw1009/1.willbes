@@ -81,8 +81,9 @@
                 <div class="col-md-4 form-inline item">
                     <div class="item inline-block">
                         @foreach($control as $key=>$val)
+
                             <input type="checkbox" id="control_{{$key}}" name="IpControlTypeCcds[]" class="flat" value="{{$key}}" required="required" title="제어구분"
-                                   @if(strpos($data['IpControlTypeCcds'],trim($key)) !== false)checked="checked"@endif/> <label for="control_{{$key}}" class="input-label">{{$val}}</label>
+                                   @if(strpos($data['IpControlTypeCcds'],$key) == false)checked="checked"@endif/> <label for="control_{{$key}}" class="input-label">{{$val}}</label>
                         @endforeach
                     </div>
                 </div>
@@ -151,7 +152,7 @@
                             if(ret.ret_cd) {
                                 notifyAlert('success', '알림', ret.ret_msg);
                                 $("#pop_modal").modal('toggle');
-                                location.replace('{{ site_url('/sys/btob/btobInfo/') }}' + dtParamsToQueryString($datatable));
+                                location.replace('{{ site_url('/sys/btob/btobInfo/') }}' + dtParamsToQueryString());
                             }
                         }, showValidateError, null, false, 'alert');
                     });

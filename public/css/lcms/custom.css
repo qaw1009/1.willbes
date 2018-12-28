@@ -165,18 +165,17 @@ body.no_sidebar {
     min-height: 14px;
     color: #707070;
 }
-.login_content .icheckbox_flat-blue,
+/*.login_content .icheckbox_flat-blue,
 .login_content .iradio_flat-blue {
     background: url("../../vendor/iCheck/skins/flat/flat.png") no-repeat;
     width: 15px;
     height: 15px;
     background-size: 118px;
 }
-
 .login_content .loginbox .checkbox .icheckbox_flat-blue {
     float: left;
     margin-right: 5px;
-}
+}*/
 .login_content .loginbox button#btn_login {
     float: right;
     width: 146px;
@@ -923,8 +922,8 @@ select.input-sm {
     padding: 2px;
 }
 
-/* blue */ 
-.icheckbox_flat-blue,
+/* icheck flat blue */
+/*.icheckbox_flat-blue,
 .iradio_flat-blue {
     width: 15px;
     height: 15px;
@@ -957,9 +956,7 @@ select.input-sm {
     }
     .iradio_flat-blue.checked.disabled {
         background-position: -154px 0;
-    }
-
-
+    }*/
 
 /* display */
 .inline-block {

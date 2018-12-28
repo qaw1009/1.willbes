@@ -21,7 +21,7 @@
     <!-- NProgress -->
     <!--<link href="/public/vendor/nprogress/nprogress.css" rel="stylesheet">-->
     <!-- iCheck -->
-    <link href="/public/vendor/iCheck/skins/flat/blue.css" rel="stylesheet">
+    <link href="/public/vendor/iCheck/skins/minimal/blue.css" rel="stylesheet">
     <!-- Datatables -->
     <link href="/public/vendor/datatables/v.1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet">
     <link href="/public/vendor/datatables/buttons/css/buttons.bootstrap.min.css" rel="stylesheet">

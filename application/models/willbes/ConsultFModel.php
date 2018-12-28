@@ -3,10 +3,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class ConsultFModel extends WB_Model
 {
+    public $_ccds = ['661','666','614','631','667', '668'];   //이메일,응시직렬,응시지역,수험기간,수강여부
+
     private $_table = [
         'consult_schedule' => 'lms_consult_schedule',
         'consult_schedule_time' => 'lms_consult_schedule_time',
-        'consult_schedule_member' => 'lms_consult_schedule_member'
+        'consult_schedule_member' => 'lms_consult_schedule_member',
+        'consult_schedule_member_r_ccd' => 'lms_consult_schedule_member_r_ccd'
     ];
 
     public function __construct()
@@ -100,7 +103,7 @@ class ConsultFModel extends WB_Model
             ';
 
         $from = "
-        FROM {$this->_table['consult_schedule']} AS A        
+        FROM {$this->_table['consult_schedule']} AS A
         INNER JOIN (
             SELECT CsIdx, SUM(ConsultPersonCount) AS totalConsult
             FROM {$this->_table['consult_schedule_time']}
@@ -147,5 +150,101 @@ class ConsultFModel extends WB_Model
 
         // 쿼리 실행
         return $this->_conn->query('select ' . $column . $form . $where . $order_by)->result_array();
+    }
+
+    /**
+     * 특정시간대 기준 데이터 조회
+     * @param $arr_condition
+     * @param $arr_sub_condition
+     * @param $column
+     * @return mixed
+     */
+    public function findConsultScheduleTimeForOnly($arr_condition, $arr_sub_condition, $column)
+    {
+        $sub_where = $this->_conn->makeWhere($arr_sub_condition);
+        $sub_where = $sub_where->getMakeWhere(false);
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $form = "
+            FROM {$this->_table['consult_schedule_time']} AS a
+            INNER JOIN {$this->_table['consult_schedule']} AS b ON a.CsIdx = b.CsIdx AND b.IsUse = 'Y' AND b.IsStatus = 'Y'
+            LEFT JOIN (
+                SELECT CstIdx, COUNT(*) AS memCnt
+                FROM lms_consult_schedule_member
+                {$sub_where}
+            ) AS c ON a.CstIdx = c.CstIdx
+        ";
+
+        // 쿼리 실행
+        return $this->_conn->query('select ' . $column . $form . $where)->row_array();
+    }
+
+    /**
+     * 상담예약 등록
+     * @param array $inputData
+     * @return array|bool
+     */
+    public function addConsultSchedule($inputData = [])
+    {
+        $this->_conn->trans_begin();
+        try {
+            $arr_serial_ccd = element('serial_ccd', $inputData);
+            $arr_study_ccd = element('study_ccd', $inputData);
+
+            $inputData = [
+                'CstIdx' => element('cst_idx', $inputData),
+                'CateCode' => element('cate_code', $inputData, ''),
+                'MemIdx' => $this->session->userdata('mem_idx'),
+                'CandidateAreaCcd' => element('candidate_area_ccd', $inputData),
+                'ExamPeriodCcd' => element('exam_period_ccd', $inputData),
+                'SubjectName' => element('subject_name', $inputData),
+                'Memo' => element('memo', $inputData),
+                'IsReg' => 'Y',
+                'IsConsult' => 'N',
+                'RegIp' => $this->input->ip_address()
+            ];
+
+            $this->_conn->set($inputData)
+                ->set('PhoneEnc', 'fn_enc("' . element('phone', $inputData) . '")', false)
+                ->set('MailEnc', 'fn_enc("' . element('mail_id', $inputData). '@' . element('mail_domain,', $inputData) . '")', false);
+
+            if ($this->_conn->set($inputData)->insert($this->_table['consult_schedule_member']) === false) {
+                throw new \Exception('상담예약 등록에 실패했습니다.1');
+            }
+            $csm_idx = $this->_conn->insert_id();
+
+            //응시직렬저장 (공무원일경우 groupccd 분기처리)
+            foreach ($arr_serial_ccd as $key => $val) {
+                $inputData = [
+                    'CsmIdx' => $csm_idx,
+                    'GroupCcd' => (config_app('SiteGroupCode') == '1002') ? '614' : '666',
+                    'CcdValue' => $val
+                ];
+                if ($this->_conn->set($inputData)->insert($this->_table['consult_schedule_member_r_ccd']) === false) {
+                    throw new \Exception('상담예약 등록에 실패했습니다.2');
+                }
+            }
+
+            //수강여부저장
+            foreach ($arr_study_ccd as $key => $val) {
+                $inputData = [
+                    'CsmIdx' => $csm_idx,
+                    'GroupCcd' => '668',
+                    'CcdValue' => $val
+                ];
+                if ($this->_conn->set($inputData)->insert($this->_table['consult_schedule_member_r_ccd']) === false) {
+                    throw new \Exception('상담예약 등록에 실패했습니다.3');
+                }
+            }
+
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
     }
 }

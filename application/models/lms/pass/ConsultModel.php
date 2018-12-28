@@ -411,6 +411,7 @@ class ConsultModel extends WB_Model
             $category_code = element('cate_code', $input);
 
             //상담시간표 변수 셋팅
+            $arr_schedule_time = element('add_schedule_time', $input);
             $arr_person_count = element('add_person_count', $input);
             $arr_target_type = element('add_target_type', $input);
             $arr_is_use = element('add_is_use', $input);
@@ -458,13 +459,15 @@ class ConsultModel extends WB_Model
                     $cs_idx = $this->_conn->insert_id();
 
                     //카테고리 저장
-                    foreach ($category_code as $key => $val) {
-                        $category_data['CsIdx'] = $cs_idx;
-                        $category_data['CateCode'] = $val;
-                        $category_data['RegAdminIdx'] = $admin_idx;
-                        $category_data['RegIp'] = $reg_ip;
-                        if ($this->_addConsultCategory($category_data) === false) {
-                            throw new \Exception('카테고리 등록에 실패했습니다.');
+                    if (empty($category_code) === false) {
+                        foreach ($category_code as $key => $val) {
+                            $category_data['CsIdx'] = $cs_idx;
+                            $category_data['CateCode'] = $val;
+                            $category_data['RegAdminIdx'] = $admin_idx;
+                            $category_data['RegIp'] = $reg_ip;
+                            if ($this->_addConsultCategory($category_data) === false) {
+                                throw new \Exception('카테고리 등록에 실패했습니다.');
+                            }
                         }
                     }
 
@@ -472,6 +475,7 @@ class ConsultModel extends WB_Model
                     $_order_num = 1;
                     foreach ($arr_target_type as $key => $val) {
                         $time_data['CsIdx'] = $cs_idx;
+                        $time_data['TimeValue'] = $arr_schedule_time[$key];
                         $time_data['OrderNum'] = $_order_num;
                         $time_data['ConsultPersonCount'] = $arr_person_count[$key];
                         $time_data['ConsultTargetType'] = $val;

@@ -17,7 +17,7 @@
             <tr class="userInfoBox">
                 <th><strong>캠퍼스 선택</strong></th>
                 <td class="w-list tx-left pl20">
-                    <select id="s_campus" name="s_campus" title="campus" class="seleCampus" onchange="goUrl('s_campus',this.value)">
+                    <select id="s_campus" name="s_campus" title="campus" class="seleCampus" onchange="goUrl('s_campus',this.value)" @if($arr_base['depth'] > 1) disabled @endif>
                         <option value="">캠퍼스 선택</option>
                         @foreach($arr_base['campus'] as $row)
                             <option value="{{$row['CampusCcd']}}" @if(element('s_campus',$arr_input) == $row['CampusCcd']) selected @endif>{{$row['CampusCcdName']}}</option>

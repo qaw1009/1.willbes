@@ -3,10 +3,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class ConsultManagement extends \app\controllers\FrontController
 {
-    protected $models = array('consultF');
+    protected $models = array('consultF', 'memberF', '_lms/sys/code');
     protected $helpers = array();
     protected $auth_controller = false;
-    protected $auth_methods = array();
+    protected $auth_methods = array('create', 'store');
 
     public function __construct()
     {
@@ -16,7 +16,6 @@ class ConsultManagement extends \app\controllers\FrontController
     public function index()
     {
         $arr_input = array_merge($this->_reqG(null));
-
         $arr_base['depth'] = 1;
         $arr_base['comment'] = $this->_depth_comment($arr_base['depth']);
         $arr_base['site_code'] = $this->_site_code;
@@ -89,39 +88,71 @@ class ConsultManagement extends \app\controllers\FrontController
     public function create()
     {
         $arr_input = array_merge($this->_reqP(null));
-        if (empty(element('s_campus', $arr_input)) === true) {
+        if (empty(element('s_campus', $arr_input)) === true || empty(element('cst_idx', $arr_input)) === true) {
             show_alert('필수 파라미터 오류입니다.', 'back');
         }
 
-        if (empty(element('cst_idx', $arr_input)) === true) {
-            show_alert('필수 파라미터 오류입니다.', 'back');
+        // 상담예약 정보
+        $data = $this->_findConsultScheduleTimeForOnly($arr_input);
+        if (empty($data) === true) {
+            show_alert('조회된 데이터가 없습니다. 다시 시도해 주세요.', 'back');
         }
 
+        if ($data['consultType'] != 'Y') {
+            show_alert('예약할 수 있는 정원이 초과된 상태입니다. 다른 시간대를 선택해 주세요.', 'back');
+        }
+
+        // 회원정보 조회
+        $arr_base['member_info'] = $this->memberFModel->getMember(false, ['EQ' => ['Mem.MemIdx' => $this->session->userdata('mem_idx')]]);
+
+        //공통코드 조회
+        $codes = $this->codeModel->getCcdInArray($this->consultFModel->_ccds);
+        $arr_base['mail_domain_ccd'] = $codes['661'];
+        $arr_base['serial_ccd'] = (config_app('SiteGroupCode') == '1002') ? $codes['614'] : $codes['666'];
+        $arr_base['candidate_area_ccd'] = $codes['631'];
+        $arr_base['exam_period_ccd'] = $codes['667'];
+        $arr_base['study_ccd'] = $codes['668'];
+
+        $arr_base['data'] = $data;
         $arr_base['depth'] = 2;
         $arr_base['comment'] = $this->_depth_comment($arr_base['depth']);
-        $arr_base['site_code'] = $this->_site_code;
-        $get_data_campus = element('s_campus', $arr_input);
+        $arr_base['memo'] = $this->_default_memo();
 
-        // 캠퍼스 조회
-        $arr_campus = array_map(function($var) {
+        $arr_base['site_code'] = $this->_site_code;
+        $arr_base['campus'] = array_map(function($var) {
             $tmp_arr = explode(':', $var);
             return ['CampusCcd' => $tmp_arr[0], 'CampusCcdName' => $tmp_arr[1]];
         }, explode(',', config_app('CampusCcdArr')));
-        $arr_campus = array_pluck($arr_campus, 'CampusCcdName', 'CampusCcd');
-
-        if (empty($arr_campus[$get_data_campus]) === true) {
-            show_alert('캠퍼스 정보가 올바르지 않습니다. 다시 시도해 주세요.', 'back');
-        }
-
-        $arr_base['campus'] = [
-            'ccd' => $get_data_campus,
-            'name' => $arr_campus[$get_data_campus]
-        ];
 
         $this->load->view('site/consult_management/create', [
             'arr_input' => $arr_input,
-            'arr_base' => $arr_base
+            'arr_base' => $arr_base,
+            'yoil' => $this->consultFModel->yoil
         ]);
+    }
+
+    public function store()
+    {
+        $rules = [
+            ['field' => 'cst_idx', 'label' => '상담예약식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 's_campus', 'label' => '캠퍼스코드', 'rules' => 'trim|required|integer'],
+            ['field' => 'phone', 'label' => '연락처', 'rules' => 'trim|required|integer'],
+            ['field' => 'mail_id', 'label' => '이메일', 'rules' => 'trim|required|max_length[30]'],
+            ['field' => 'mail_domain', 'label' => '이메일', 'rules' => 'trim|required|max_length[30]'],
+            ['field' => 'serial_ccd[]', 'label' => '응시직렬', 'rules' => 'trim|required'],
+            ['field' => 'candidate_area_ccd', 'label' => '응시지역', 'rules' => 'trim|required|integer|integer'],
+            ['field' => 'exam_period_ccd', 'label' => '수험기간', 'rules' => 'trim|required|integer'],
+            ['field' => 'subject_name', 'label' => '취약과목', 'rules' => 'trim|required|max_length[20]'],
+            ['field' => 'study_ccd[]', 'label' => '수강여부', 'rules' => 'trim|required'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->consultFModel->addConsultSchedule($this->_reqP(null, false));
+
+        $this->json_result($result, '저장 되었습니다.', $result);
     }
 
     /**
@@ -192,8 +223,66 @@ class ConsultManagement extends \app\controllers\FrontController
                 · 예약하신 날짜 및 시간에 도착하지 않으실 경우 상담이 취소될 수 있습니다.<br/>
                 ';
                 break;
+            default : $comment = '';
         }
 
         return $comment;
+    }
+
+    /**
+     * 상세정보 기본값 셋팅
+     * @return string
+     */
+    private function _default_memo()
+    {
+        return "[모의고사명] (예:[2016 1차])
+필수과목________( ), ________( )
+선택과목________( ), ________( ). ________( ). 총점( )
+[모의고사명] (예:[2016 2차])
+필수과목________( ), ________( )
+선택과목________( ), ________( ). ________( ). 총점( )
+[모의고사명] (예:[모의고사])
+필수과목________( ), ________( )
+선택과목________( ), ________( ). ________( ). 총점( )
+* 기타상담사항: 처음준비합니다. 자세한상담이필요합니다.";
+    }
+
+    /**
+     * 특정시간대 기준 데이터 조회
+     * @param $arr_input
+     * @return mixed
+     */
+    private function _findConsultScheduleTimeForOnly($arr_input)
+    {
+        $cst_idx = element('cst_idx', $arr_input);
+        $s_campus = element('s_campus', $arr_input);
+
+        $column = '
+            STRAIGHT_JOIN a.CstIdx, b.CsIdx, b.ConsultDate, a.TimeValue, a.ConsultTargetType, a.ConsultPersonCount, IFNULL(c.memCnt, 2) AS memCnt
+            , IF (a.ConsultPersonCount <= IFNULL(c.memCnt, 0), \'N\', \'Y\') AS consultType
+        ';
+
+        $arr_condition = ([
+            'RAW' => [
+                'a.CstIdx = ' => (empty($cst_idx) === true) ? '\'\'' : '\''.$cst_idx.'\'',
+                'b.CampusCcd =' => (empty($s_campus) === true) ? '\'\'' : '\''.$s_campus.'\'',
+            ],
+            'EQ'=>[
+                'b.SiteCode' => $this->_site_code,
+                'a.IsUse' => 'Y',
+                'a.IsStatus' => 'Y'
+            ]
+        ]);
+        $arr_sub_condition = ([
+            'RAW' => [
+                'CstIdx = ' => (empty($cst_idx) === true) ? '\'\'' : '\''.$cst_idx.'\''
+            ],
+            'EQ'=>[
+                'IsReg' => 'Y'
+            ]
+        ]);
+
+        $data = $this->consultFModel->findConsultScheduleTimeForOnly($arr_condition, $arr_sub_condition, $column);
+        return $data;
     }
 }

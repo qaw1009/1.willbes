@@ -1397,6 +1397,9 @@ class Player extends \app\controllers\FrontController
      */
     function StarplayerEntAPI()
     {
+        $input = array_merge($this->_reqP(null), $this->_reqG(null));
+
+        $event = $this->_req('event');
         $user_id = $this->_req('user_id');
         $device_id = $this->_req('device_id');
         $content_url = $this->_req('content_url');
@@ -1411,6 +1414,64 @@ class Player extends \app\controllers\FrontController
         $token = $this->_req('token');
         $play_type = $this->_req('play_type');
 
+        // API 접근 로그남기기
+        $params = '';
+        foreach($input as $key => $value){
+            $params .= $key.'='.$value.'&';
+        }
+        logger($params);
+
+        switch($event){
+            case '111':
+                break;
+
+            case '222download_begin_content':
+                // 다운로드 시작할때 + 동영상시작할때
+
+                // 재생가능한 강좌인지 체크
+                $lec = $this->checkOrderProduct($content_id);
+
+                // 기간제 패키지 이면 기기체크하기
+                if($lec['LearnPatternCcd'] == '615004'){
+                    $this->checkDeviceMobile([
+                        'MemIdx' => $lec['MemIdx'],
+                        'DeviceModel' => $device_model,
+                        'DeviceId' => $device_id,
+                        'Os' => $os_version,
+                        'App' => $app_version
+                    ], $lec['DeviceLimitCount']);
+                }
+
+                $this->updateMobileDevice([
+                    'content_id' => $content_id,
+                    'DeviceModel' => $device_model,
+                    'OS' => $os_version,
+                    'APP' => $app_version,
+                    'DeviceId' => $device_id
+                ]);
+
+                $this->response(['result'=>'success']);
+                break;
+
+            case '333':
+                // 수강 기록 업데이트
+                // 수강 기록은 무조건 업데이트 한다.
+                $this->mobileLog([
+                    'content_id' => $content_id,
+                    'playtype' => $play_type,
+                    'st' => $playback_duration,
+                    'rst' => $actual_playback_duration,
+                    'pos' => $current_position,
+                    'di' => $device_id
+                ]);
+
+                $this->response(['result'=>'success']);
+                break;
+
+            default;
+                // 알수없는 이벤트는 에러
+                $this->response(['result'=>'error']);
+        }
 
         // 기본적으로 무조건 success
         $this->response(['result'=>'success']);
@@ -1761,7 +1822,7 @@ class Player extends \app\controllers\FrontController
      * @param string $msg
      * @param string $debug
      */
-    private function StarplayerResult($error, $msg ='', $debug = '')
+    private function StarplayerResult($error, $msg ='', $debug = '', $isApp = false)
     {
         if($error == true){
             $error = 1;
@@ -1769,11 +1830,16 @@ class Player extends \app\controllers\FrontController
             $error = 0;
         }
 
-        echo("<axis-app>");
-        echo("<error>".$error."</error>");
-        echo("<message>".$msg."</message>");
-        echo("<debug>".$debug."</debug>");
-        echo("</axis-app>");
+        if($isApp == true){
+            $this->response(['result' => 'success']);
+
+        } else {
+            echo("<axis-app>");
+            echo("<error>".$error."</error>");
+            echo("<message>".$msg."</message>");
+            echo("<debug>".$debug."</debug>");
+            echo("</axis-app>");
+        }
 
         exit ;
     }

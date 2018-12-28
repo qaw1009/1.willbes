@@ -1410,6 +1410,10 @@ class Player extends \app\controllers\FrontController
         $rating = $this->_req('rating');
         $token = $this->_req('token');
         $play_type = $this->_req('play_type');
+
+
+        // 기본적으로 무조건 success
+        $this->response(['result'=>'success']);
     }
 
     /**

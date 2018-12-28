@@ -14,7 +14,7 @@
             </div>
         </div>
 
-        <div class="willbes-Line">이용중인 무한 PASS (2)</div>
+        <div class="willbes-Line">이용중인 무한 PASS ({{count($passlist)}})</div>
         <div class="willbes-Lec-Selected NG c_both tx-gray">
             <form name="searchFrm1" id="searchFrm1" action="{{front_app_url('/classroom/pass/index', 'www')}}" onsubmit="">
                 <select id="sitecode" name="sitecode" title="process" class="seleProcess width25p">

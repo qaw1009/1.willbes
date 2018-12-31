@@ -55,7 +55,7 @@ class BtobModel extends WB_Model
     {
 
         $column = 'BtobIdx, BtobName, ManagerName, Phone1, fn_dec(Phone2Enc) as Phone2, Phone3, Tel1, fn_dec(Tel2Enc) as Tel2, Tel3
-                        ,fn_dec(EmailEnc) as Email, ReferDomains, `Desc`, IpControlTypeCcds, A.IsUse, A.RegDatm, A.RegIp, A.UpdDatm
+                        ,fn_dec(EmailEnc) as Email, ReferDomains, `Desc`, IpControlTypeCcds, A.ReturnUrl, A.IsUse, A.RegDatm, A.RegIp, A.UpdDatm
                         ,C.wAdminName as RegAdminName 
                         ,D.wAdminName as UpdAdminName ';
         $from = '
@@ -163,6 +163,7 @@ class BtobModel extends WB_Model
             ,'ReferDomains'=>element('ReferDomains',$input)
             ,'Desc' => element('Desc',$input)
             ,'IpControlTypeCcds' => implode(',',element('IpControlTypeCcds',$input))
+            ,'ReturnUrl' => element('ReturnUrl',$input)
             ,'IsUse'=>element('IsUse',$input)
         ];
 
@@ -170,6 +171,11 @@ class BtobModel extends WB_Model
     }
 
 
+    /**
+     * IP  등록
+     * @param array $input
+     * @return array|bool
+     */
     public function addIp($input=[])
     {
         try {
@@ -191,6 +197,11 @@ class BtobModel extends WB_Model
         return true;
     }
 
+    /**
+     * IP삭제
+     * @param array $input
+     * @return array|bool
+     */
     public function deleteIp($input=[])
     {
         try {
@@ -221,7 +232,7 @@ class BtobModel extends WB_Model
 
 
     /**
-     * 목록 추출
+     * 등록 IP 목록 추출
      * @param $is_count
      * @param array $arr_condition
      * @param null $limit
@@ -244,6 +255,44 @@ class BtobModel extends WB_Model
                     from lms_btob_ip A
 	                        left outer join wbs_sys_admin B on A.RegAdminIdx = B.wAdminIdx
                     where A.IsStatus=\'Y\' ';
+
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
+
+        $result = $this->_conn->query('select '. $column .$from .$where. $order_by_offset_limit);
+        //var_dump($result);exit;
+        //echo $this->_conn->last_query();
+        return ($is_count === true) ? $result->row(0)->numrows : $result->result_array();
+
+    }
+
+
+    /**
+     * 접속 목록 추출
+     * @param $is_count
+     * @param array $arr_condition
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
+     */
+    public function listLog($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    {
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $column = ' straight_join A.*,B.BtobIdx,B.BtobName,C.SiteName';
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $from = '
+                    from
+                        lms_btob_access_log A
+                        join lms_btob B on A.BtobIdx = B.BtobIdx
+                        join lms_site C on A.SiteCode = C.SiteCode 
+                    where B.IsStatus=\'Y\'
+                    ';
 
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
 

@@ -15,6 +15,7 @@ class BtobInfo extends \app\controllers\BaseController
 
     public function index()
     {
+
         $arr_condition = [
         ];
 
@@ -119,7 +120,7 @@ class BtobInfo extends \app\controllers\BaseController
 
 
     /**
-     * 목록추출
+     * ip 목록추출
      * @return CI_Output
      */
     public function listIp()

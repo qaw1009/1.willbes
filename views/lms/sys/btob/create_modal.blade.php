@@ -99,11 +99,21 @@
             <div class="form-group form-group-sm">
                 <label class="control-label col-md-2" for="Desc">참조도메인
                 </label>
-                <div class="col-md-8 item">
+                <div class="col-md-7 item">
                     <input type="text" id="ReferDomains" name="ReferDomains" class="form-control" title="참조도메인" placeholder="접속하는 도메인 정보 모두 입력 예) naver.com,daum.net" value="{{$data['ReferDomains'] }}">
                 </div>
-                <div class="col-md-2 item">
+                <div class="col-md-3 item">
                     <p class="form-control-static">( ',' 로 연결 )</p>
+                </div>
+            </div>
+            <div class="form-group form-group-sm">
+                <label class="control-label col-md-2" for="Desc">이동 URL
+                </label>
+                <div class="col-md-7 item">
+                    <input type="text" id="ReturnUrl" name="ReturnUrl" class="form-control" title="이동 URL" placeholder="접속 후 이동 할 URL" value="{{$data['ReturnUrl'] }}">
+                </div>
+                <div class="col-md-3 item">
+                    <p class="form-control-static"> (접속 후 이동 할 URL)</p>
                 </div>
             </div>
 

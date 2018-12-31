@@ -159,6 +159,7 @@ class OrderModel extends BaseOrderModel
                 $cash_deduct_price = $row['CashPayPrice'] - $cash_refund_price;     // 현금공제금액
                 $is_point_refund = array_get($order_prod_param, $row['OrderProdIdx'] . '.is_point_refund', 'N');
                 $is_coupon_refund = array_get($order_prod_param, $row['OrderProdIdx'] . '.is_coupon_refund', 'N');
+                $arr_sub_refund_price = array_get($order_prod_param, $row['OrderProdIdx'] . '.sub_refund_price', '');   // 사용자패키지 단강좌별 환불금액
                 $reco_point_idx = null;
                 $reco_coupon_idx = null;
 
@@ -272,6 +273,18 @@ class OrderModel extends BaseOrderModel
                     ->update($this->_table['order_product']);
                 if ($is_pay_status_update === false) {
                     throw new \Exception('주문상품 결제상태 수정에 실패했습니다.');
+                }
+
+                // 사용자패키지 단강좌별 환불금액 업데이트
+                if (empty($arr_sub_refund_price) === false) {
+                    foreach ($arr_sub_refund_price as $order_prod_sub_idx => $sub_row) {
+                        $is_sub_prod_update = $this->_conn->set('RefundPrice', $sub_row['card_refund_price'] + $sub_row['cash_refund_price'])
+                            ->where('OrderProdIdx', $row['OrderProdIdx'])->where('OrderProdSubIdx', $order_prod_sub_idx)
+                            ->update($this->_table['order_sub_product']);
+                        if ($is_sub_prod_update === false) {
+                            throw new \Exception('주문상품서브 환불금액 수정에 실패했습니다.');
+                        }
+                    }
                 }
 
                 // 요청 카드환불금액 합계

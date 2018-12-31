@@ -265,7 +265,7 @@ class OrderListModel extends BaseOrderModel
             if (in_array('refund_proc', $arr_add_join) === true) {
                 $from .= '';
                 $column .= ', if(PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['on_lecture'] . '" and OP.CardPayPrice > 0
-                    , OP.CardPayPrice - fn_order_refund_deduct_price(O.OrderIdx, OP.OrderProdIdx, OP.ProdCode, OP.SaleTypeCcd, PL.LearnPatternCcd)
+                    , OP.CardPayPrice - fn_order_refund_deduct_price(O.OrderIdx, OP.OrderProdIdx, OP.ProdCode, OP.ProdCode, OP.SaleTypeCcd, PL.LearnPatternCcd)
                     , OP.CardPayPrice) as CalcCardRefundPrice, OP.CashPayPrice as CalcCashRefundPrice';
                 $excel_column .= '';
             }
@@ -382,7 +382,45 @@ class OrderListModel extends BaseOrderModel
     }
 
     /**
-     * 주문 배송 주소 조회 by 주문식별자
+     * 주문상품서브 조회
+     * @param array $arr_condition
+     * @param string $column
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
+     */
+    public function findOrderSubProduct($arr_condition = [], $column = '', $limit = null, $offset = null, $order_by = [])
+    {
+        if (empty($column) === true) {
+            $column = 'OP.OrderIdx, OP.OrderProdIdx, OP.ProdCode, OSP.OrderProdSubIdx, OSP.ProdCodeSub, P.ProdName as ProdNameSub
+                , OSP.RealPayPrice, OSP.RealPayPrice as CardPayPrice, 0 as CashPayPrice
+                , OSP.RealPayPrice - fn_order_refund_deduct_price(OP.OrderIdx, OP.OrderProdIdx, OP.ProdCode, OSP.ProdCodeSub, OP.SaleTypeCcd, null) as CalcCardRefundPrice
+                , 0 as CalcCashRefundPrice';
+        }
+
+        $from = '
+            from ' . $this->_table['order_product'] . ' as OP
+                inner join ' . $this->_table['order_sub_product'] . ' as OSP
+                    on OP.OrderProdIdx = OSP.OrderProdIdx
+                left join ' . $this->_table['product'] . ' as P
+                    on OSP.ProdCodeSub = P.ProdCode and P.IsStatus = "Y"';
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $order_by_offset_limit = '';
+        empty($order_by) === false && $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+        is_null($limit) === false && is_null($offset) === false && $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select straight_join ' . $column . $from . $where . $order_by_offset_limit);
+
+        return $query->result_array();
+    }
+
+    /**
+     * 주문 배송주소 조회 by 주문식별자
      * @param int $order_idx
      * @return array
      */

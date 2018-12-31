@@ -168,6 +168,12 @@ class ConsultManagement extends \app\controllers\FrontController
         $arr_input = $this->_reqP(null);
         $arr_input['s_campus'] = $this->_reqG('s_campus');
 
+        // 캠퍼스 조회
+        $arr_base['campus'] = array_map(function($var) {
+            $tmp_arr = explode(':', $var);
+            return ['CampusCcd' => $tmp_arr[0], 'CampusCcdName' => $tmp_arr[1]];
+        }, explode(',', config_app('CampusCcdArr')));
+
         if (empty(element('s_campus', $arr_input)) === true || empty(element('cst_idx', $arr_input)) === true) {
             show_alert('필수 파라미터 오류입니다.', 'back');
         }

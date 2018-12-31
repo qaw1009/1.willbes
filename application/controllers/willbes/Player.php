@@ -1404,8 +1404,8 @@ class Player extends \app\controllers\FrontController
         $device_id = $this->_req('device_id');
         $content_url = $this->_req('content_url');
         $content_id = $this->_req('content_id');
-        $actual_playback_duration = $this->_req('actual_playback_duration');
-        $playback_duration = $this->_req('playback_duration');
+        $actual_playback_duration = $this->_req('actual_playback_duration'); // 1분
+        $playback_duration = $this->_req('playback_duration'); // 2분
         $current_position = $this->_req('current_position');
         $begin_date = $this->_req('begin_date');
         $end_date = $this->_req('end_date');
@@ -1422,11 +1422,11 @@ class Player extends \app\controllers\FrontController
         logger($params);
 
         switch($event){
-            case '111':
+            case 'downloaded':
                 break;
 
-            case '222download_begin_content':
-                // 다운로드 시작할때 + 동영상시작할때
+            case 'openingDownloadedContent':
+                // 다운로드한 강의 재생 시작할때
 
                 // 재생가능한 강좌인지 체크
                 $lec = $this->checkOrderProduct($content_id);
@@ -1453,7 +1453,7 @@ class Player extends \app\controllers\FrontController
                 $this->response(['result'=>'success']);
                 break;
 
-            case '333':
+            case 'learninghistory':
                 // 수강 기록 업데이트
                 // 수강 기록은 무조건 업데이트 한다.
                 $this->mobileLog([
@@ -1474,7 +1474,7 @@ class Player extends \app\controllers\FrontController
         }
     }
 
-    
+
     /**
      * 기기산태체크
      * @param string $state
@@ -1829,7 +1829,11 @@ class Player extends \app\controllers\FrontController
         }
 
         if($isApp == true){
-            $this->response(['result' => 'success']);
+            if($error == true){
+                $this->response(['result' => 'error']);
+            } else {
+                $this->response(['result' => 'success']);
+            }
 
         } else {
             echo("<axis-app>");

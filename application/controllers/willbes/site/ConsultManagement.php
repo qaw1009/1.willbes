@@ -6,7 +6,7 @@ class ConsultManagement extends \app\controllers\FrontController
     protected $models = array('consultF', 'memberF', '_lms/sys/code');
     protected $helpers = array();
     protected $auth_controller = false;
-    protected $auth_methods = array('create', 'store');
+    protected $auth_methods = array('create', 'store', 'success', 'cancel');
 
     public function __construct()
     {
@@ -102,6 +102,12 @@ class ConsultManagement extends \app\controllers\FrontController
             show_alert('예약할 수 있는 정원이 초과된 상태입니다. 다른 시간대를 선택해 주세요.', 'back');
         }
 
+        $member_data = $this->consultFModel->getScheduleDataForMemberIsConsult($this->_site_code, element('s_campus', $arr_input));
+        $isCount_cnt = $member_data['cnt'];
+        if ($isCount_cnt > 0) {
+            show_alert('등록된 상담예약건이 존재합니다. 취소 후 다시 예약해 주세요.', 'back');
+        }
+
         // 회원정보 조회
         $arr_base['member_info'] = $this->memberFModel->getMember(false, ['EQ' => ['Mem.MemIdx' => $this->session->userdata('mem_idx')]]);
 
@@ -150,9 +156,60 @@ class ConsultManagement extends \app\controllers\FrontController
             return;
         }
 
-        $result = $this->consultFModel->addConsultSchedule($this->_reqP(null, false));
+        $result = $this->consultFModel->addConsultSchedule($this->_reqP(null, false), $this->_site_code);
 
         $this->json_result($result, '저장 되었습니다.', $result);
+    }
+
+    public function success()
+    {
+        $arr_base['depth'] = 3;
+        $arr_base['comment'] = $this->_depth_comment($arr_base['depth']);
+        $arr_input = $this->_reqP(null);
+        $arr_input['s_campus'] = $this->_reqG('s_campus');
+
+        if (empty(element('s_campus', $arr_input)) === true || empty(element('cst_idx', $arr_input)) === true) {
+            show_alert('필수 파라미터 오류입니다.', 'back');
+        }
+
+        // 회원정보 조회
+        $arr_base['member_info'] = $this->memberFModel->getMember(false, ['EQ' => ['Mem.MemIdx' => $this->session->userdata('mem_idx')]]);
+
+        // 상담예약 정보
+        $arr_base['data'] = $this->consultFModel->findConsultScheduleForMember(element('csm_idx', $arr_input));
+        $serial_data = $this->consultFModel->findConsultScheduleDetailForMember_R_Ccd(element('csm_idx', $arr_input), '666');
+        if (empty($serial_data) === true) {
+            $serial_data = $this->consultFModel->findConsultScheduleDetailForMember_R_Ccd(element('csm_idx', $arr_input), '614');
+        }
+        $study_data = $this->consultFModel->findConsultScheduleDetailForMember_R_Ccd(element('csm_idx', $arr_input), '668');
+
+        $arr_base['data']['SerialName'] = implode(', ', array_values($serial_data));
+        $arr_base['data']['StudyName'] = implode(', ', array_values($study_data));
+
+        $this->load->view('site/consult_management/success', [
+            'arr_input' => $arr_input,
+            'arr_base' => $arr_base,
+            'yoil' => $this->consultFModel->yoil
+        ]);
+    }
+
+    /**
+     * 방문예약취소
+     */
+    public function cancel()
+    {
+        $rules = [
+            ['field' => 'csm_idx', 'label' => '상담예약식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 's_campus', 'label' => '캠퍼스코드', 'rules' => 'trim|required|integer']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->consultFModel->cancelConsultSchedule($this->_reqP(null, false));
+
+        $this->json_result($result, '상담 예약이 취소되었습니다.', $result);
     }
 
     /**
@@ -166,7 +223,10 @@ class ConsultManagement extends \app\controllers\FrontController
     {
         $month_data = [];
 
+        //월별예약현황
         $data = $this->consultFModel->getScheduleDataForMonth($site_code, $campus_code, $target_month);
+        $member_data = $this->consultFModel->getScheduleDataForMemberIsConsult($site_code, $campus_code);
+        $isCount_cnt = $member_data['cnt'];
 
         //조회된 데이터 가공처리
         foreach ($data as $row) {
@@ -181,9 +241,15 @@ class ConsultManagement extends \app\controllers\FrontController
                     $temp_style = '';
                     $temp_title = '예약마감';
                 } else {
-                    $temp_css = 'btn_ing';
-                    $temp_style = 'style="cursor: pointer"';
-                    $temp_title = '예약가능';
+                    if ($isCount_cnt > 0) {
+                        $temp_css = 'btn_end';
+                        $temp_style = 'style="color: red"';
+                        $temp_title = '예약불가';
+                    } else {
+                        $temp_css = 'btn_ing';
+                        $temp_style = 'style="cursor: pointer"';
+                        $temp_title = '예약가능';
+                    }
                 }
             }
 
@@ -193,9 +259,8 @@ class ConsultManagement extends \app\controllers\FrontController
                 $today_css = '';
             }
 
-            $month_data[$row['ConsultDay']] = '<span class="calendar_btn '.$temp_css.' '.$today_css.'" '.$temp_style.' data-cs_idx="'.$row['CsIdx'].'">'.$temp_title.'</span>';
+            $month_data[(int)$row['ConsultDay']] = '<span class="calendar_btn '.$temp_css.' '.$today_css.'" '.$temp_style.' data-cs_idx="'.$row['CsIdx'].'">'.$temp_title.'</span>';
         }
-
         return $month_data;
     }
 

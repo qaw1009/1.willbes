@@ -13,17 +13,10 @@
         <div class="willbes-Counsel c_both">
             @include('willbes.pc.site.consult_management.common')
         </div>
-
-
             <div class="willbes-User-Info">
-                <form id="calendar_form" name="calendar_form">
-                    <span id="calendar_box"></span>
-                </form>
-
-                    <span id="schedule_box"></span>
-
-            </div>
-
+                <form id="calendar_form" name="calendar_form"><span id="calendar_box"></span></form>
+                <span id="schedule_box"></span>
+           </div>
     </div>
 
     {!! banner('고객센터_우측날개', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}

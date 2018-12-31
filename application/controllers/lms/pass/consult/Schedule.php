@@ -233,6 +233,15 @@ class Schedule extends \app\controllers\BaseController
         $data['CateCodes'] = $arr_cate_code;
         $data['CateNames'] = implode(', ', array_values($arr_cate_code));
 
+        $serial_data = $this->consultModel->findConsultScheduleDetailForMember_R_Ccd($csm_idx, '666');
+        if (empty($serial_data) === true) {
+            $serial_data = $this->consultModel->findConsultScheduleDetailForMember_R_Ccd($csm_idx, '614');
+        }
+        $study_data = $this->consultModel->findConsultScheduleDetailForMember_R_Ccd($csm_idx, '668');
+
+        $data['SerialName'] = implode(', ', array_values($serial_data));
+        $data['StudyName'] = implode(', ', array_values($study_data));
+
         $this->load->view("pass/consult/schedule/detail_member_modal",[
             'csm_idx' => $csm_idx,
             'method' => 'PUT',

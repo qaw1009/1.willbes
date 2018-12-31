@@ -9,7 +9,8 @@ class ConsultFModel extends WB_Model
         'consult_schedule' => 'lms_consult_schedule',
         'consult_schedule_time' => 'lms_consult_schedule_time',
         'consult_schedule_member' => 'lms_consult_schedule_member',
-        'consult_schedule_member_r_ccd' => 'lms_consult_schedule_member_r_ccd'
+        'consult_schedule_member_r_ccd' => 'lms_consult_schedule_member_r_ccd',
+        'sys_category' => 'lms_sys_category'
     ];
 
     public function __construct()
@@ -18,6 +19,38 @@ class ConsultFModel extends WB_Model
     }
 
     public $yoil = array("일","월","화","수","목","금","토");
+
+    /**
+     * 로그인 회원 상담예약 방문상태 조회
+     * @param $site_code
+     * @param $campus_code
+     * @return mixed
+     */
+    public function getScheduleDataForMemberIsConsult($site_code, $campus_code)
+    {
+        $arr_condition = [
+            'RAW' => [
+                'c.MemIdx = ' => (empty($this->session->userdata('mem_idx')) === true) ? '\'\'' : $this->session->userdata('mem_idx'),
+                'a.SiteCode = ' => (empty($site_code) === true) ? '\'\'' : '\''.$site_code.'\'',
+                'a.CampusCcd = ' => (empty($campus_code) === true) ? '\'\'' : '\''.$campus_code.'\'',
+            ],
+            'EQ' => [
+                'a.IsUse' => 'Y',
+                'a.IsStatus' => 'Y'
+            ]
+        ];
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $column = 'STRAIGHT_JOIN COUNT(*) AS cnt';
+        $from = "
+            FROM {$this->_table['consult_schedule']} AS a
+            INNER JOIN {$this->_table['consult_schedule_time']} AS b ON a.CsIdx = b.CsIdx
+            INNER JOIN {$this->_table['consult_schedule_member']} AS c ON b.CstIdx = c.CstIdx AND c.IsConsult = 'N' AND c.IsReg = 'Y'
+        ";
+        return $this->_conn->query('select ' . $column . $from . $where)->row_array();
+    }
 
     /**
      * 월별 예약 현황 조회
@@ -172,7 +205,7 @@ class ConsultFModel extends WB_Model
             INNER JOIN {$this->_table['consult_schedule']} AS b ON a.CsIdx = b.CsIdx AND b.IsUse = 'Y' AND b.IsStatus = 'Y'
             LEFT JOIN (
                 SELECT CstIdx, COUNT(*) AS memCnt
-                FROM lms_consult_schedule_member
+                FROM {$this->_table['consult_schedule_member']}
                 {$sub_where}
             ) AS c ON a.CstIdx = c.CstIdx
         ";
@@ -186,14 +219,20 @@ class ConsultFModel extends WB_Model
      * @param array $inputData
      * @return array|bool
      */
-    public function addConsultSchedule($inputData = [])
+    public function addConsultSchedule($inputData = [], $site_code)
     {
         $this->_conn->trans_begin();
         try {
+            $member_data = $this->consultFModel->getScheduleDataForMemberIsConsult($site_code, element('s_campus', $inputData));
+            $isCount_cnt = $member_data['cnt'];
+            if ($isCount_cnt > 0) {
+                throw new \Exception('등록된 상담예약건이 존재합니다. 취소 후 다시 예약해 주세요.');
+            }
+
             $arr_serial_ccd = element('serial_ccd', $inputData);
             $arr_study_ccd = element('study_ccd', $inputData);
 
-            $inputData = [
+            $input_Data = [
                 'CstIdx' => element('cst_idx', $inputData),
                 'CateCode' => element('cate_code', $inputData, ''),
                 'MemIdx' => $this->session->userdata('mem_idx'),
@@ -206,12 +245,12 @@ class ConsultFModel extends WB_Model
                 'RegIp' => $this->input->ip_address()
             ];
 
-            $this->_conn->set($inputData)
+            $this->_conn->set($input_Data)
                 ->set('PhoneEnc', 'fn_enc("' . element('phone', $inputData) . '")', false)
-                ->set('MailEnc', 'fn_enc("' . element('mail_id', $inputData). '@' . element('mail_domain,', $inputData) . '")', false);
+                ->set('MailEnc', 'fn_enc("' . element('mail_id', $inputData). '@' . element('mail_domain', $inputData) . '")', false);
 
-            if ($this->_conn->set($inputData)->insert($this->_table['consult_schedule_member']) === false) {
-                throw new \Exception('상담예약 등록에 실패했습니다.1');
+            if ($this->_conn->insert($this->_table['consult_schedule_member']) === false) {
+                throw new \Exception('상담예약 등록에 실패했습니다.');
             }
             $csm_idx = $this->_conn->insert_id();
 
@@ -223,7 +262,7 @@ class ConsultFModel extends WB_Model
                     'CcdValue' => $val
                 ];
                 if ($this->_conn->set($inputData)->insert($this->_table['consult_schedule_member_r_ccd']) === false) {
-                    throw new \Exception('상담예약 등록에 실패했습니다.2');
+                    throw new \Exception('상담예약 등록에 실패했습니다.');
                 }
             }
 
@@ -235,16 +274,102 @@ class ConsultFModel extends WB_Model
                     'CcdValue' => $val
                 ];
                 if ($this->_conn->set($inputData)->insert($this->_table['consult_schedule_member_r_ccd']) === false) {
-                    throw new \Exception('상담예약 등록에 실패했습니다.3');
+                    throw new \Exception('상담예약 등록에 실패했습니다.');
                 }
             }
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return ['ret_cd' => true, 'ret_status' => '200', 'ret_msg' => $csm_idx];
+    }
 
+    /**
+     * 예약정보조회
+     * @param $csm_idx
+     * @return mixed
+     */
+    public function findConsultScheduleForMember($csm_idx)
+    {
+        $arr_condition = [
+            'RAW' => [
+                'a.MemIdx = ' => (empty($this->session->userdata('mem_idx')) === true) ? '\'\'' : $this->session->userdata('mem_idx'),
+                'a.CsmIdx = ' => (empty($csm_idx) === true) ? '\'\'' : '\''.$csm_idx.'\''
+            ],
+            'EQ' => [
+                'c.IsUse' => 'Y',
+                'c.IsStatus' => 'Y'
+            ]
+        ];
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $column = '
+            STRAIGHT_JOIN
+            a.CsmIdx, a.CstIdx, a.CateCode, a.MemIdx, fn_dec(a.PhoneEnc) AS Phone, fn_dec(a.MailEnc) AS Mail,
+            e.CateName AS CandidatePositionName,
+            fn_ccd_name(A.CandidateAreaCcd) AS CandidateAreaName,
+            fn_ccd_name(A.ExamPeriodCcd) AS ExamPeriodName,
+            a.SubjectName, a.Memo, a.IsReg,
+            c.ConsultDate, b.TimeValue
+        ';
+        $from = "
+            FROM {$this->_table['consult_schedule_member']} AS a
+            INNER JOIN {$this->_table['consult_schedule_time']} AS b ON a.CstIdx = b.CstIdx
+            INNER JOIN {$this->_table['consult_schedule']} AS c ON b.CsIdx = c.CsIdx
+            LEFT JOIN {$this->_table['sys_category']} AS e ON a.CandidatePosition = e.CateCode AND e.IsStatus = 'Y'
+        ";
+        return $this->_conn->query('select ' . $column . $from . $where)->row_array();
+    }
+
+    /**
+     * 예약회원정보 관계테이블
+     * @param $csm_idx
+     * @param $group_ccd
+     * @return array
+     */
+    public function findConsultScheduleDetailForMember_R_Ccd($csm_idx, $group_ccd)
+    {
+        $column = '
+            CsmIdx, GROUP_CONCAT(fn_ccd_name(CcdValue)) AS CcdName
+        ';
+        $from = '
+            FROM '.$this->_table['consult_schedule_member_r_ccd'].'
+        ';
+        $where = ' where CsmIdx = ? and GroupCcd = ?';
+        $group_by = ' GROUP BY GroupCcd';
+
+        // 쿼리 실행
+        $data = $this->_conn->query('select ' . $column . $from . $where . $group_by, [$csm_idx, $group_ccd])->result_array();
+
+        return array_pluck($data, 'CcdName', 'CsmIdx');
+    }
+
+    /**
+     * 상담예약취소
+     */
+    public function cancelConsultSchedule($formData = [])
+    {
+        $this->_conn->trans_begin();
+        try {
+            $csm_idx = element('csm_idx', $formData);
+
+            $data['IsReg'] = 'N';
+            $data['CancelDatm'] = date('Y-m-d H:i:s');
+            $this->_conn->set($data)->where(['CsmIdx' => $csm_idx, 'MemIdx' => $this->session->userdata('mem_idx'), 'IsReg' => 'Y']);
+
+            if ($this->_conn->update($this->_table['consult_schedule_member']) === false) {
+                throw new \Exception('데이터 수정에 실패했습니다.');
+            }
 
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();
             return error_result($e);
         }
+
         return true;
     }
 }

@@ -13,6 +13,11 @@
             <div class="willbes-Counsel c_both">
                 @include('willbes.pc.site.consult_management.common')
             </div>
+            <form id="success_form" name="success_form" method="POST" onsubmit="return false;" novalidate>
+                {!! csrf_field() !!}
+                <input type="hidden" name="cst_idx" value="{{element('cst_idx', $arr_input)}}">
+                <input type="hidden" id="csm_idx" name="csm_idx">
+            </form>
 
             <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
             {{--<form id="regi_form" name="regi_form" method="POST" action="{{ front_url('/consultManagement/store') }}" novalidate>--}}
@@ -135,13 +140,13 @@
                     <div class="willbes-Lec-buyBtn">
                         <ul>
                             <li class="btnAuto90 h36">
-                                <button type="button" class="mem-Btn bg-white bd-dark-gray" id="btn_cancle">
+                                <button type="button" class="mem-Btn bg-white bd-dark-gray" id="btn_cancel">
                                     <span class="tx-purple-gray">이전단계</span>
                                 </button>
                             </li>
                             <li class="btnAuto90 h36">
                                 <button type="submit" class="mem-Btn bg-purple-gray bd-dark-gray">
-                                    <span>다음단계</span>
+                                    <span>예약</span>
                                 </button>
                             </li>
                         </ul>
@@ -154,8 +159,10 @@
 
     <script type="text/javascript">
         var $regi_form = $('#regi_form');
+        var success_form = document.success_form;
+
         $(document).ready(function() {
-            $('#btn_cancle').click(function () {
+            $('#btn_cancel').click(function () {
                 location.replace('{{ front_url('/consultManagement/index') }}' + '?s_campus=' + '{{element('s_campus', $arr_input)}}');
             });
 
@@ -163,7 +170,9 @@
                 var _url = '{{ front_url('/consultManagement/store') }}';
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
-                        location.replace('{{ front_url('/consultManagement/success') }}' + getQueryString());
+                        success_form.csm_idx.value = ret.ret_msg;
+                        success_form.action = '{{ front_url('/consultManagement/success') }}' + '?s_campus=' + '{{element('s_campus', $arr_input)}}';
+                        success_form.submit();
                     }
                 }, showValidateError, addValidate, false, 'alert');
             });

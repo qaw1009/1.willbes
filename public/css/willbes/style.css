@@ -838,9 +838,12 @@ table.auTable tr td {
 #Gnb.Gnb-sm .sliderGNB,
 #Gnb.Gnb-sm .topView,
 .Gnb-sm .gnb-List-Tit .Txt,
-.Gnb-sm .gnb-List-Depth,
 .Gnb-sm .gnb-List-Sub .Txt {
     display: none !important;
+}
+.Gnb-sm .gnb-List-Depth {
+    opacity: 0;
+    height: 0;
 }
 .Gnb-sm .gnb-List {
     padding: 10px 0;
@@ -3569,7 +3572,7 @@ table.lecWrapTable.lec-essential,
 table.lecWrapTable.lec-choice {
     overflow-x: hidden;
     overflow-y: auto;
-    height: 484px;
+    max-height: 484px;
     display: block;
 }
 table.lecWrapTable .willbes-Lec-Table {

@@ -223,7 +223,7 @@ class OrderStatsModel extends BaseOrderModel
                         on OP.ProdCode = PC.ProdCode and PC.IsStatus = "Y" and P.ProdTypeCcd in (' . $prod_type_in_query . ')
                     left join ' . $this->_table['category'] . ' as SC
                         on PC.CateCode = SC.CateCode and SC.IsStatus = "Y"
-                where O.PayRouteCcd not in ("' . $this->_pay_route_ccd['zero'] . '", "' . $this->_pay_route_ccd['free'] . '")
+                where OP.RealPayPrice > 0
                     and OP.PayStatusCcd in ("' . $this->_pay_status_ccd['paid'] . '", "' . $this->_pay_status_ccd['refund'] . '")
                     and OP.SalePatternCcd in ("' . $this->_sale_pattern_ccd['normal'] . '", "' . $this->_sale_pattern_ccd['extend'] . '", "' . $this->_sale_pattern_ccd['retake'] . '")
                     ' . $where . '                    

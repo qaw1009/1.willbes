@@ -201,13 +201,13 @@ class AllStats extends \app\controllers\BaseController
                 'P.ProdTypeCcd' => $this->_reqP('prod_type_ccd'),
                 'SC.GroupCateCode' => $this->_reqP('cate_code')
             ],
+            'GT' => [
+                'OP.RealPayPrice' => 0
+            ],
             'IN' => [
                 'OP.PayStatusCcd' => array_values(array_filter_keys($this->orderListModel->_pay_status_ccd, ['paid', 'refund'])),
                 'OP.SalePatternCcd' => array_values(array_filter_keys($this->orderListModel->_sale_pattern_ccd, ['normal', 'extend', 'retake']))
-            ],
-            'NOTIN' => [
-                'O.PayRouteCcd' => array_values(array_filter_keys($this->orderListModel->_pay_route_ccd, ['zero', 'free'])),  // 0원결제, 무료결제 제외
-            ],
+            ]
         ];
 
         // 매출합계 날짜 조건

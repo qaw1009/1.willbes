@@ -214,8 +214,20 @@ class ConsultManagement extends \app\controllers\FrontController
         }
 
         $result = $this->consultFModel->cancelConsultSchedule($this->_reqP(null, false));
-
         $this->json_result($result, '상담 예약이 취소되었습니다.', $result);
+    }
+
+    /**
+     * 회원 예약 현황 목록
+     */
+    public function showMySchedule()
+    {
+        $arr_input = array_merge($this->_reqG(null));
+
+        $this->load->view('site/consult_management/popup_show_my_schedule', [
+            'arr_input' => $arr_input,
+            /*'arr_base' => $arr_base*/
+        ]);
     }
 
     /**

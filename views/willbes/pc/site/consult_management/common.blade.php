@@ -25,7 +25,7 @@
                     </select>
                 </td>
                 <td>
-                    <button type="submit" onclick="" class="mem-Btn combine-Btn bg-blue bd-dark-blue">
+                    <button type="button" class="mem-Btn combine-Btn bg-blue bd-dark-blue" onclick="javascript:mySchedule();">
                         <span><strong>나의 예약현황</strong></span>
                     </button>
                 </td>
@@ -34,6 +34,8 @@
         </table>
     </div>
 </div>
+
+<div id="RESERVEPASS"></div>
 
 <div class="willbes-counsel_step step mt60 mb50 NG c_both">
     <ul>
@@ -46,12 +48,60 @@
     <div class="info-Box info-Box{{$arr_base['depth']}} NG">
         <dl>
             <dt>{!! $arr_base['comment'] !!}</dt>
-            {{--<dt>
-                · 상담은 월 ~ 토요일 오전 10시부터 오후 5시까지 진행됩니다.<br/>
-                · 원하시는 상담일자를 선택하여 예약가능 버튼을 클릭해 주세요.<br/>
-                · 예약이 마감된 경우 또는 상담시간 이외 시간대는 예약신청이 불가능 합니다. (예약취소 발생시 ‘ 예약가능 ’ 버튼 재활성화)<br/>
-                · 예약하기를 신청하신후 반드시 사전정보 입력을 해 주셔야 상담신청이 완료됩니다.<br/>
-            </dt>--}}
         </dl>
     </div>
 </div>
+
+<script type="text/javascript">
+    function mySchedule() {
+        var is_login = '{{sess_data('is_login')}}';
+        var s_campus = $('#s_campus option:selected').val();
+        var ele_id = 'RESERVEPASS';
+        var data = {
+            'ele_id': ele_id,
+            's_campus': s_campus
+        };
+
+        if (is_login != true) {
+            alert('로그인 후 이용해 주세요.');
+            return false;
+        }
+
+        if (s_campus == '') {
+            alert('캠퍼스를 선택해 주세요.');
+            return false;
+        }
+
+        sendAjax('{{ front_url('/consultManagement/showMySchedule/') }}', data, function (ret) {
+            $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');
+        }, showAlertError, false, 'GET', 'html');
+    }
+
+
+    /*$(document).ready(function() {
+        $('.btn-my-schedule').click(function () {
+            var is_login = '{{sess_data('is_login')}}';
+            var s_campus = $('#s_campus option:selected').val();
+            var ele_id = 'RESERVEPASS';
+            var data = {
+                'ele_id': ele_id,
+                's_campus': s_campus
+            };
+
+            if (is_login != true) {
+                alert('로그인 후 이용해 주세요.');
+                return false;
+            }
+
+            if (s_campus == '') {
+                alert('캠퍼스를 선택해 주세요.');
+                return false;
+            }
+
+            sendAjax('{{ front_url('/consultManagement/showMySchedule/') }}', data, function (ret) {
+                $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');
+            }, showAlertError, false, 'GET', 'html');
+        });
+
+    });*/
+</script>

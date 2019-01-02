@@ -21,10 +21,10 @@
                 <div class="Acad_info mt30">
                     @if($tab_menu === true)
                     <ul class="tabMock four mb60">
-                        <li><a @if($bm_idx=='80')class="on" @endif href="{{ front_url('/offinfo/BoardInfo/index/80') }}">강의시간표</a></li>
-                        <li><a @if($bm_idx=='82')class="on" @endif href="{{ front_url('/offinfo/BoardInfo/index/82') }}">강의실배정표</a></li>
-                        <li><a @if($bm_idx=='75')class="on" @endif href="{{ front_url('/offinfo/BoardInfo/index/75') }}">휴강/보강공지</a></li>
-                        <li><a @if($bm_idx=='78')class="on" @endif href="{{ front_url('/offinfo/BoardInfo/index/78') }}">신규강의안내</a></li>
+                        <li><a @if($bm_idx=='80')class="on" @endif href="{{ front_url('/offinfo/boardInfo/index/80') }}">강의시간표</a></li>
+                        <li><a @if($bm_idx=='82')class="on" @endif href="{{ front_url('/offinfo/boardInfo/index/82') }}">강의실배정표</a></li>
+                        <li><a @if($bm_idx=='75')class="on" @endif href="{{ front_url('/offinfo/boardInfo/index/75') }}">휴강/보강공지</a></li>
+                        <li><a @if($bm_idx=='78')class="on" @endif href="{{ front_url('/offinfo/boardInfo/index/78') }}">신규강의안내</a></li>
                     </ul>
                     @endif
 

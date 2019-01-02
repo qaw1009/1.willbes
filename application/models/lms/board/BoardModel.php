@@ -23,6 +23,7 @@ class BoardModel extends WB_Model
 
     // 첨부 이미지 수
     public $_attach_img_cnt = 2;
+    public $_attach_img_cnt_gallery = 50;
 
     public function __construct()
     {
@@ -265,7 +266,7 @@ class BoardModel extends WB_Model
             $this->load->library('upload');
             $upload_sub_dir = config_item('upload_prefix_dir') . '/board/' . $board_data['BmIdx'] . '/' . date('Ymd');
 
-            $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->_getAttachImgNames($board_idx), $upload_sub_dir);
+            $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->_getAttachImgNames($board_idx, $board_data['BmIdx']), $upload_sub_dir);
             if (is_array($uploaded) === false) {
                 throw new \Exception($uploaded);
             }
@@ -1218,13 +1219,19 @@ class BoardModel extends WB_Model
     /**
      * 파일명 배열 생성
      * @param $board_idx
+     * @param string $bm_idx
      * @return array
      */
-    protected function _getAttachImgNames($board_idx)
+    protected function _getAttachImgNames($board_idx, $bm_idx = '')
     {
+        if ($bm_idx == '90') {
+            $file_max_cnt = $this->_attach_img_cnt_gallery;
+        } else {
+            $file_max_cnt = $this->_attach_img_cnt;
+        }
         $attach_file_names = [];
         $temp_time = date('YmdHis');
-        for ($i = 1; $i <= $this->_attach_img_cnt; $i++) {
+        for ($i = 1; $i <= $file_max_cnt; $i++) {
             $attach_file_names[] = 'board_' . $board_idx . '_0' . $i . '_' . $temp_time;
         }
         return $attach_file_names;
@@ -1361,7 +1368,7 @@ class BoardModel extends WB_Model
             $this->load->library('upload');
             $upload_sub_dir = config_item('upload_prefix_dir') . '/board/' . $board_data['BmIdx'] . '/' . date('Ymd');
 
-            $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->_getAttachImgNames($board_idx), $upload_sub_dir);
+            $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->_getAttachImgNames($board_idx, $board_data['BmIdx']), $upload_sub_dir);
 
             if (is_array($uploaded) === false) {
                 throw new \Exception($uploaded);

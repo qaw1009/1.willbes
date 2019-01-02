@@ -182,22 +182,22 @@
             var exam_period_ccd = $(":input:radio[name=exam_period_ccd]:checked").length;
             if ($('#phone').val() == '') {
                 alert('연락처를 입력해 주세요.');
-                return false;
+                return;
             }
 
             if ($('#mail_id').val() == '') {
                 alert('이메일을 입력해 주세요.');
-                return false;
+                return;
             }
 
             if ($("input:checkbox[name='serial_ccd[]']").is(":checked") == false) {
                 alert('응시직렬을 체크해 주세요.');
-                return false;
+                return;
             }
 
             if ($('#candidate_area_ccd').val() == '') {
                 alert('응시지역을 선택해 주세요.');
-                return false;
+                return;
             }
 
             if (exam_period_ccd < 1) {
@@ -207,12 +207,12 @@
 
             if ($('#subject_name').val() == '') {
                 alert('취약과목을 입력해 주세요.');
-                return false;
+                return;
             }
 
             if ($("input:checkbox[name='study_ccd[]']").is(":checked") == false) {
                 alert('수강여부를 체크해 주세요.');
-                return false;
+                return;
             }
             return true;
         }

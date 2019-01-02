@@ -92,7 +92,7 @@
 
         if (is_login != true) {
             alert('로그인 후 이용해 주세요.');
-            return false;
+            return;
         }
 
         form.s_campus.value = $('#s_campus').val();

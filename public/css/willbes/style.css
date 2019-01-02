@@ -10146,9 +10146,8 @@ table.acadlecInfoPackageTable tr.Top td {
 /* subContainer : Content : 학원갤러리 */
 .sliderGallery {
     width: 796px;
-    height: 294px;
+    height: auto;
     margin: 45px auto;
-    border: 1px solid #c0c0c0;
 }
 .sliderGallery .bx-wrapper .bx-controls-direction {
     width: 100%;

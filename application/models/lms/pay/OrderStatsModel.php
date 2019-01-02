@@ -40,7 +40,7 @@ class OrderStatsModel extends BaseOrderModel
         is_null($limit) === false && is_null($offset) === false && $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
 
         // 쿼리 실행
-        $query = $this->_conn->query('select straight_join ' . $column . $from . $where . $order_by_offset_limit);
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
@@ -244,7 +244,7 @@ class OrderStatsModel extends BaseOrderModel
         ';
 
         // 쿼리 실행
-        $query = $this->_conn->query('select straight_join ' . $column . $from);
+        $query = $this->_conn->query('select ' . $column . $from);
 
         return $query->result_array();
     }

@@ -3572,9 +3572,6 @@ table.lecWrapTable.lec-essential,
 table.lecWrapTable.lec-choice {
     overflow-x: hidden;
     overflow-y: auto;
-    height: auto;
-    max-height: 484px;
-    display: block;
 }
 table.lecWrapTable .willbes-Lec-Table {
     border-bottom: none;

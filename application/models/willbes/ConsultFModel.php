@@ -10,7 +10,8 @@ class ConsultFModel extends WB_Model
         'consult_schedule_time' => 'lms_consult_schedule_time',
         'consult_schedule_member' => 'lms_consult_schedule_member',
         'consult_schedule_member_r_ccd' => 'lms_consult_schedule_member_r_ccd',
-        'sys_category' => 'lms_sys_category'
+        'sys_category' => 'lms_sys_category',
+        'lms_member' => 'lms_member'
     ];
 
     public function __construct()
@@ -286,7 +287,91 @@ class ConsultFModel extends WB_Model
     }
 
     /**
-     * 예약정보조회
+     * 회원예약정보 목록
+     * @param $site_code
+     * @param $campus_code
+     * @return mixed
+     */
+    public function listConsultScheduleForMember($site_code, $campus_code)
+    {
+        $mem_idx = $this->session->userdata('mem_idx');
+
+        $arr_condition = [
+            'RAW' => [
+                'a.SiteCode = ' => (empty((int)$site_code) === true) ? '\'\'' : (int)$site_code,
+                'a.CampusCcd = ' => (empty((int)$campus_code) === true) ? '\'\'' : (int)$campus_code
+            ],
+            'EQ' => [
+                'c.IsReg' => 'Y',
+                'a.IsUse' => 'Y',
+                'a.IsStatus' => 'Y'
+            ]
+        ];
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $column = '
+            STRAIGHT_JOIN
+            c.CsmIdx, a.CampusCcd, fn_ccd_name(a.CampusCcd) AS CampusName, a.ConsultDate
+            ,b.TimeValue, c.IsReg, c.IsConsult
+            ,fn_dec(c.PhoneEnc) AS MemPhone
+            ,fn_dec(c.MailEnc) AS MemMail
+            ,c.CandidatePosition, c.CandidateAreaCcd, fn_ccd_name(c.CandidateAreaCcd) AS CandidateAreaName
+            ,c.ExamPeriodCcd, fn_ccd_name(c.ExamPeriodCcd) AS ExamPeriodName, c.SubjectName
+            ,d.MemId, d.MemName, d.BirthDay, c.Memo
+            ,IFNULL(f.CcdName, e.CcdName) AS SerialName, g.CcdName AS StudyName
+        ';
+        $from = "
+            FROM {$this->_table['consult_schedule']} AS a
+            INNER JOIN {$this->_table['consult_schedule_time']} AS b ON a.CsIdx = b.CsIdx AND b.IsUse = 'Y' AND b.IsStatus = 'Y'
+            INNER JOIN {$this->_table['consult_schedule_member']} AS c ON b.CstIdx = c.CstIdx AND c.MemIdx = '5000005'
+            
+            LEFT JOIN (
+                SELECT b.CsmIdx, GROUP_CONCAT(fn_ccd_name(b.CcdValue)) AS CcdName
+                FROM (
+                    SELECT CsmIdx
+                    FROM {$this->_table['consult_schedule_member']}
+                    WHERE MemIdx = '{$mem_idx}'
+                ) AS a
+                INNER JOIN {$this->_table['consult_schedule_member_r_ccd']} AS b ON a.CsmIdx= b.CsmIdx
+                WHERE b.GroupCcd = '666'
+                GROUP BY b.CsmIdx, b.GroupCcd
+            ) AS e ON c.CsmIdx = e.CsmIdx
+            
+            LEFT JOIN (
+                SELECT b.CsmIdx, GROUP_CONCAT(fn_ccd_name(b.CcdValue)) AS CcdName
+                FROM (
+                    SELECT CsmIdx
+                    FROM {$this->_table['consult_schedule_member']}
+                    WHERE MemIdx = '{$mem_idx}'
+                ) AS a
+                INNER JOIN {$this->_table['consult_schedule_member_r_ccd']} AS b ON a.CsmIdx= b.CsmIdx
+                WHERE b.GroupCcd = '614'
+                GROUP BY b.CsmIdx, b.GroupCcd
+            ) AS f ON c.CsmIdx = f.CsmIdx
+            
+            LEFT JOIN (
+                SELECT b.CsmIdx, GROUP_CONCAT(fn_ccd_name(b.CcdValue)) AS CcdName
+                FROM (
+                    SELECT CsmIdx
+                    FROM {$this->_table['consult_schedule_member']}
+                    WHERE MemIdx = '{$mem_idx}'
+                ) AS a
+                INNER JOIN {$this->_table['consult_schedule_member_r_ccd']} AS b ON a.CsmIdx= b.CsmIdx
+                WHERE b.GroupCcd = '668'
+                GROUP BY b.CsmIdx, b.GroupCcd
+            ) AS g ON c.CsmIdx = g.CsmIdx
+            
+            INNER JOIN {$this->_table['lms_member']} AS d ON c.MemIdx = d.MemIdx
+        ";
+        $order_by = $this->_conn->makeOrderBy(['c.CsmIdx' => 'DESC'])->getMakeOrderBy();
+
+        return $this->_conn->query('select ' . $column . $from . $where . $order_by)->result_array();
+    }
+
+    /**
+     * 회원예약정보 조회
      * @param $csm_idx
      * @return mixed
      */

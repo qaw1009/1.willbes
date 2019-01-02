@@ -218,15 +218,17 @@ class ConsultManagement extends \app\controllers\FrontController
     }
 
     /**
-     * 회원 예약 현황 목록
+     * 회원예약현황 목록팝업
      */
     public function showMySchedule()
     {
-        $arr_input = array_merge($this->_reqG(null));
+        $arr_input = $this->_reqG(null, false);
+        $arr_base['list'] = $this->consultFModel->listConsultScheduleForMember($this->_site_code, element('s_campus', $arr_input));
 
         $this->load->view('site/consult_management/popup_show_my_schedule', [
             'arr_input' => $arr_input,
-            /*'arr_base' => $arr_base*/
+            'arr_base' => $arr_base,
+            'yoil' => $this->consultFModel->yoil
         ]);
     }
 

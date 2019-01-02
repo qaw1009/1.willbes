@@ -17,10 +17,12 @@ class OrderListModel extends BaseOrderModel
      */
     public function listAllOrder($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [], $arr_add_join = [])
     {
+        $is_all_from = true;    // 모든 테이블 조인
         if (is_bool($is_count) === true) {
             if ($is_count === true) {
                 $in_column = 'count(*) AS numrows';
                 $column = 'numrows';
+                $is_all_from = false;
             } else {
                 $in_column = 'O.OrderIdx, OP.OrderProdIdx, OP.ProdCode, O.OrderNo, O.SiteCode, S.SiteName, O.MemIdx, M.MemId, M.MemName, fn_dec(M.PhoneEnc) as MemPhone
                     , O.PayChannelCcd, O.PayRouteCcd, O.PayMethodCcd, O.PgCcd, O.PgMid, O.PgTid
@@ -55,7 +57,7 @@ class OrderListModel extends BaseOrderModel
             $column = '*';
         }
 
-        $from = $this->_getListFrom($arr_add_join);
+        $from = $this->_getListFrom($arr_add_join, $is_all_from);
 
         // where 조건
         $where = $this->_conn->makeWhere($arr_condition);
@@ -116,9 +118,10 @@ class OrderListModel extends BaseOrderModel
     /**
      * 주문목록 조회 from절 리턴
      * @param array $arr_add_join
+     * @param bool $is_all_from [true : 모든 테이블 조인, false : code, admin 테이블 조인 제외]
      * @return string
      */
-    private function _getListFrom($arr_add_join = [])
+    private function _getListFrom($arr_add_join = [], $is_all_from = true)
     {
         $from = '
             from ' . $this->_table['order'] . ' as O
@@ -131,7 +134,10 @@ class OrderListModel extends BaseOrderModel
                 left join ' . $this->_table['product_lecture'] . ' as PL
                     on OP.ProdCode = PL.ProdCode
                 left join ' . $this->_table['member'] . ' as M
-                    on O.MemIdx = M.MemIdx
+                    on O.MemIdx = M.MemIdx';
+
+        if ($is_all_from === true) {
+            $from .= '                                
                 left join ' . $this->_table['code'] . ' as CPG
                     on O.PgCcd = CPG.Ccd and CPG.IsStatus = "Y"                    
                 left join ' . $this->_table['code'] . ' as CPC
@@ -150,8 +156,9 @@ class OrderListModel extends BaseOrderModel
                     on P.ProdTypeCcd = CPT.Ccd and CPT.IsStatus = "Y"
                 left join ' . $this->_table['code'] . ' as CLP
                     on PL.LearnPatternCcd = CLP.Ccd and CLP.IsStatus = "Y"';
+        }
 
-        return $from . $this->_getAddListQuery('from', $arr_add_join);
+        return $from . $this->_getAddListQuery('from', $arr_add_join, $is_all_from);
     }
 
     /**
@@ -159,9 +166,10 @@ class OrderListModel extends BaseOrderModel
      * @param string $add_type [리턴할 쿼리 구분 : from, column, excel_column (엑셀다운로드용 컬럼)]
      * @param array $arr_add_join [추가할 조인 테이블 구분 : category (카테고리), subject (과목), professor (교수), delivery_address (배송지), delivery_info (배송정보)
      *  , member_info (회원정보), refund (환불정보), my_lecture (나의강좌), sublecture (패키지 서브강좌)]
+     * @param bool $is_all_from [true : 모든 테이블 조인, false : code, admin 테이블 조인 제외]
      * @return mixed
      */
-    private function _getAddListQuery($add_type, $arr_add_join = [])
+    private function _getAddListQuery($add_type, $arr_add_join = [], $is_all_from = true)
     {
         $from = '';
         $column = '';
@@ -214,17 +222,20 @@ class OrderListModel extends BaseOrderModel
             if (in_array('delivery_info', $arr_add_join) === true) {
                 $from .= '
                     left join ' . $this->_table['order_product_delivery_info'] . ' as OPD		
-                        on OP.OrderProdIdx = OPD.OrderProdIdx
-                    left join ' . $this->_table['code'] . ' as CDS
-                        on OPD.DeliveryStatusCcd = CDS.Ccd and CDS.IsStatus = "Y"
-                    left join ' . $this->_table['admin'] . ' as AIR
-                        on OPD.InvoiceRegAdminIdx = AIR.wAdminIdx and AIR.wIsStatus = "Y"
-                    left join ' . $this->_table['admin'] . ' as AIU
-                        on OPD.InvoiceUpdAdminIdx = AIU.wAdminIdx and AIU.wIsStatus = "Y"
-                    left join ' . $this->_table['admin'] . ' as ADS
-                        on OPD.DeliverySendAdminIdx = ADS.wAdminIdx and ADS.wIsStatus = "Y"
-                    left join ' . $this->_table['admin'] . ' as ASU
-                        on OPD.StatusUpdAdminIdx = ASU.wAdminIdx and ASU.wIsStatus = "Y"';
+                        on OP.OrderProdIdx = OPD.OrderProdIdx';
+                if ($is_all_from === true) {
+                    $from .= '                        
+                        left join ' . $this->_table['code'] . ' as CDS
+                            on OPD.DeliveryStatusCcd = CDS.Ccd and CDS.IsStatus = "Y"
+                        left join ' . $this->_table['admin'] . ' as AIR
+                            on OPD.InvoiceRegAdminIdx = AIR.wAdminIdx and AIR.wIsStatus = "Y"
+                        left join ' . $this->_table['admin'] . ' as AIU
+                            on OPD.InvoiceUpdAdminIdx = AIU.wAdminIdx and AIU.wIsStatus = "Y"
+                        left join ' . $this->_table['admin'] . ' as ADS
+                            on OPD.DeliverySendAdminIdx = ADS.wAdminIdx and ADS.wIsStatus = "Y"
+                        left join ' . $this->_table['admin'] . ' as ASU
+                            on OPD.StatusUpdAdminIdx = ASU.wAdminIdx and ASU.wIsStatus = "Y"';
+                }
                 $column .= ', OPD.DeliveryStatusCcd, CDS.CcdName as DeliveryStatusCcdName, ifnull(OPD.InvoiceNo, "") as InvoiceNo
                     , OPD.InvoiceRegDatm, OPD.InvoiceUpdDatm, OPD.DeliverySendDatm, OPD.StatusUpdDatm
                     , AIR.wAdminName as InvoiceRegAdminName, AIU.wAdminName as InvoiceUpdAdminName
@@ -252,9 +263,12 @@ class OrderListModel extends BaseOrderModel
                     left join ' . $this->_table['order_product_refund'] . ' as OPR		
                         on OP.OrderProdIdx = OPR.OrderProdIdx
                     left join ' . $this->_table['order_refund_request'] . ' as ORR		
-                        on OPR.RefundReqIdx = ORR.RefundReqIdx
-                    left join ' . $this->_table['admin'] . ' as AR
-                        on OPR.RefundAdminIdx = AR.wAdminIdx and AR.wIsStatus = "Y"';
+                        on OPR.RefundReqIdx = ORR.RefundReqIdx';
+                if ($is_all_from === true) {
+                    $from .= '                
+                        left join ' . $this->_table['admin'] . ' as AR
+                            on OPR.RefundAdminIdx = AR.wAdminIdx and AR.wIsStatus = "Y"';
+                }
                 $column .= ', OPR.RefundIdx, OPR.RefundReqIdx, ifnull(OPR.RefundPrice, 0) as RefundPrice, ifnull(OPR.CardRefundPrice, 0) as CardRefundPrice, ifnull(OPR.CashRefundPrice, 0) as CashRefundPrice 
                     , OPR.IsPointRefund, OPR.RecoPointIdx, OPR.IsCouponRefund, OPR.RecoCouponIdx
                     , OPR.RefundDatm, AR.wAdminName as RefundAdminName, ORR.RefundReason, ORR.IsApproval, ORR.RefundType';

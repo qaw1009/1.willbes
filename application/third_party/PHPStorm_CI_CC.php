@@ -195,7 +195,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property PlayerFModel $playerFModel                                            Player Model Class
  * @property BaseSupportFModel $baseSupportFModel                           BaseSupport Model Class
  * @property SupportBoardFModel $supportBoardFModel                         SupportBoard Model Class
- * @property SupportBoardTwoWayFModel $supportBoardTwoWayFModel   SupportBoardTwoWayF Model Class
+ * @property SupportBoardTwoWayFModel $supportBoardTwoWayFModel             SupportBoardTwoWayF Model Class
+ * @property BoardAttachFModel $boardAttachFModel                           BoardAttachF Model Class
  * @property SiteFModel $siteFModel                                                   Site Model Class
  * @property CategoryFModel $categoryFModel                                     Category Model Class
  * @property AccessFModel $accessFModel                                          Access Model Class

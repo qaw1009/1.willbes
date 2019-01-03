@@ -68,7 +68,7 @@ class OrderStatsModel extends BaseOrderModel
                     left join ' . $this->_table['product_lecture'] . ' as PL
                         on OP.ProdCode = PL.ProdCode
                     left join ' . $this->_table['order_product_refund'] . ' as OPR
-                        on OP.OrderProdIdx = OPR.OrderProdIdx
+                        on O.OrderIdx = OPR.OrderIdx and OP.OrderProdIdx = OPR.OrderProdIdx
             ' . $where . '                                    
                 group by OP.ProdCode
             ) as SU       
@@ -218,7 +218,7 @@ class OrderStatsModel extends BaseOrderModel
                     inner join ' . $this->_table['product'] . ' as P
                         on OP.ProdCode = P.ProdCode		
                     left join ' . $this->_table['order_product_refund'] . ' as OPR
-                        on OP.OrderProdIdx = OPR.OrderProdIdx
+                        on O.OrderIdx = OPR.OrderIdx and OP.OrderProdIdx = OPR.OrderProdIdx
                     left join ' . $this->_table['product_r_category'] . ' as PC
                         on OP.ProdCode = PC.ProdCode and PC.IsStatus = "Y" and P.ProdTypeCcd in (' . $prod_type_in_query . ')
                     left join ' . $this->_table['category'] . ' as SC

@@ -261,7 +261,7 @@ class OrderListModel extends BaseOrderModel
             if (in_array('refund', $arr_add_join) === true) {
                 $from .= '
                     left join ' . $this->_table['order_product_refund'] . ' as OPR		
-                        on OP.OrderProdIdx = OPR.OrderProdIdx
+                        on O.OrderIdx = OPR.OrderIdx and OP.OrderProdIdx = OPR.OrderProdIdx
                     left join ' . $this->_table['order_refund_request'] . ' as ORR		
                         on OPR.RefundReqIdx = ORR.RefundReqIdx';
                 if ($is_all_from === true) {

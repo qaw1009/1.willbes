@@ -1,7 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-
 class BaseSupport extends \app\controllers\FrontController
 {
     protected $helpers = array();
@@ -22,6 +21,4 @@ class BaseSupport extends \app\controllers\FrontController
 
         show_alert('등록된 파일을 찾지 못했습니다.','close','');
     }
-
-
 }

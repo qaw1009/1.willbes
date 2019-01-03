@@ -13,6 +13,8 @@ class BaseSupportFModel extends WB_Model
         ,'lms_board_attach' => 'lms_board_attach'
         ,'lms_board_assignment' => 'lms_board_assignment'
         ,'lms_board_assignment_r_schedule_date' => 'lms_board_assignment_r_schedule_date'
+        ,'lms_board_r_comment' => 'lms_board_r_comment'
+        ,'lms_member' => 'lms_member'
         ,'menu' => 'lms_site_menu'
         ,'code' => 'lms_sys_code'
         ,'site' => 'lms_site'
@@ -211,6 +213,118 @@ class BaseSupportFModel extends WB_Model
 
         $data = array_pluck($data, 'ProdName', 'ProdCodeSub');
         return $data;
+    }
+
+    /**
+     * 게시판 댓글 목록 조회
+     * @param $is_count
+     * @param array $arr_condition
+     * @param null $column
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
+     */
+    public function listComment($is_count, $arr_condition=[], $column = null, $limit = null, $offset = null, $order_by = [])
+    {
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $from = "
+            FROM {$this->_table['lms_board_r_comment']} as a
+            LEFT JOIN {$this->_table['lms_member']} AS b ON a.RegMemIdx = b.MemIdx
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    /**
+     * 게시판 댓글 등록
+     * @param array $requestData
+     * @return array|bool
+     */
+    public function addComment($requestData = [])
+    {
+        $this->_conn->trans_begin();
+        try {
+            $inputData = [
+                'BoardIdx' => $requestData['board_idx'],
+                'RegMemIdx' => $this->session->userdata('mem_idx'),
+                'RegType' => '0',
+                'Comment' => $requestData['comment'],
+                'RegIp' => $this->input->ip_address()
+            ];
+
+            if ($this->_conn->set($inputData)->insert($this->_table['lms_board_r_comment']) === false) {
+                throw new \Exception('댓글 등록에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * 댓글 삭제 처리
+     * @param $comment_idx
+     * @return array|bool
+     */
+    public function delComment($comment_idx)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $result = $this->_findCommentData($comment_idx, 'BoardCmtIdx');
+            if (empty($result)) {
+                throw new \Exception('조회된 댓글이 없습니다.');
+            }
+
+            $is_update = $this->_conn->set([
+                'IsStatus' => 'N',
+                'UpdDatm' => date('Y-m-d H:i:s')
+            ])->where('BoardCmtIdx', $comment_idx)->where('IsStatus', 'Y')->update($this->_table['lms_board_r_comment']);
+
+            if ($is_update === false) {
+                throw new \Exception('데이터 삭제에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    private function _findCommentData($idx, $column = '*')
+    {
+        $from = "
+            FROM {$this->_table['lms_board_r_comment']}
+        ";
+        $where = $this->_conn->makeWhere([
+            'EQ' => [
+                'BoardCmtIdx' => $idx,
+                'IsStatus' => 'Y'
+            ]
+        ]);
+        $where = $where->getMakeWhere(false);
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where);
+        $query = $query->row_array();
+
+        return $query;
     }
 
     /**

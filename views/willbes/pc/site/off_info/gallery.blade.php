@@ -101,7 +101,7 @@
                                                             if($i != 0) {
                                                                 echo "<li>
                                                                 <a href='".front_url($default_path.'/show/?board_idx='.$row['BoardIdx'].'&'.$get_params)."'>
-                                                                    <img src='".$attach_row['FilePath'].$attach_row['FileName']."'>
+                                                                    <img src='".$attach_row['FilePath'].$attach_row['FileName']."' width='165px' height='165px'>
                                                                 </a>
                                                                 </li>";
                                                             }
@@ -137,5 +137,6 @@
                 </div>
             </div>
         </div>
+        {!! banner('고객센터_우측날개', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
     </div>
 @stop

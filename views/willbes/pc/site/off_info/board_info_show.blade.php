@@ -27,10 +27,7 @@
                             <li><a @if($bm_idx=='78')class="on" @endif href="{{ front_url($default_path.'/index/78') }}">신규강의안내</a></li>
                         </ul>
                         @endif
-
-                        <!-- List -->
                         <div class="willbes-Leclist c_both">
-
                             <div class="willbes-Leclist c_both">
                                 <div class="LecViewTable">
                                     <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black bdb-gray tx-gray">
@@ -111,15 +108,12 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
                 <!-- willbes-AcadInfo -->
             </form>
         </div>
-        <div class="Quick-Bnr ml20">
-            <img src="{{ img_url('sample/banner_180605.jpg') }}">
-        </div>
+        {!! banner('고객센터_우측날개', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
     </div>
     <!-- End Container -->
 @stop

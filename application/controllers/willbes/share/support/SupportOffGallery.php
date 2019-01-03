@@ -5,7 +5,7 @@ require_once APPPATH . 'controllers/willbes/share/support/BaseSupport.php';
 
 class SupportOffGallery extends BaseSupport
 {
-    protected $models = array('categoryF', 'support/supportBoardF');
+    protected $models = array('categoryF', 'support/supportBoardF', 'support/boardAttachF');
     protected $helpers = array();
     protected $auth_controller = false;
     protected $auth_methods = array();
@@ -62,8 +62,8 @@ class SupportOffGallery extends BaseSupport
             ,b.Title,b.Content, (b.ReadCnt + b.SettingReadCnt) as TotalReadCnt
             ,b.CampusCcd_Name, b.TypeCcd_Name,b.AreaCcd_Name, Category_NameString
             ,b.SubjectName,b.CourseName,b.AttachData,DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm
-            ,(SELECT COUNT(*) AS cnt FROM lms_board_r_comment AS temp_c WHERE b.BoardIdx = temp_c.BoardIdx) AS TotalCommentCnt
-            ,(SELECT COUNT(*) AS cnt FROM lms_board_attach AS temp_f WHERE b.BoardIdx = temp_f.BoardIdx) AS TotalFileCnt
+            ,(SELECT COUNT(*) AS cnt FROM lms_board_r_comment AS temp_c WHERE b.BoardIdx = temp_c.BoardIdx AND temp_c.IsStatus = \'Y\' AND temp_c.IsUse = \'Y\') AS TotalCommentCnt
+            ,(SELECT COUNT(*) AS cnt FROM lms_board_attach AS temp_f WHERE b.BoardIdx = temp_f.BoardIdx AND temp_f.IsStatus = \'Y\') AS TotalFileCnt
         ';
         $order_by = ['b.IsBest'=>'Desc','b.BoardIdx'=>'Desc'];
 
@@ -90,5 +90,62 @@ class SupportOffGallery extends BaseSupport
             'list'=>$list,
             'paging' => $paging
         ]);
+    }
+
+    public function show()
+    {
+        $arr_input = $this->_reqG(null, false);
+        $get_params = http_build_query($arr_input);
+
+        $board_idx = element('board_idx',$arr_input);
+        $s_cate_code = element('s_cate_code',$arr_input);
+        $s_campus = element('s_campus',$arr_input);
+        $s_keyword = element('s_keyword',$arr_input);
+        $page = element('page',$arr_input);
+
+        $get_params = 's_cate_code='.$s_cate_code.'&s_campus='.$s_campus.'&s_keyword='.$s_keyword;
+        $get_params .= '&page='.$page;
+
+        if (empty($board_idx)) {
+            show_alert('게시글번호가 존재하지 않습니다.', 'back');
+        }
+
+        $arr_condition = [
+            'EQ' => [
+                'b.SiteCode' => $this->_site_code
+                ,'b.BmIdx' => $this->_bm_idx
+                ,'b.IsUse' => 'Y'
+            ]
+        ];
+
+        $column = '
+            b.BoardIdx,b.CampusCcd,b.TypeCcd,b.IsBest,b.AreaCcd
+            ,b.Title,b.Content, (b.ReadCnt + b.SettingReadCnt) as TotalReadCnt
+            ,b.IsCampus,b.CampusCcd_Name, b.TypeCcd_Name,b.AreaCcd_Name, Category_NameString
+            ,b.SubjectName,b.CourseName,b.AttachData,DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm
+        ';
+
+        $data = $this->supportBoardFModel->findBoard($board_idx,$arr_condition,$column);
+        if (empty($data)) {
+            show_alert('게시글이 존재하지 않습니다.', 'back');
+        }
+
+        $column_attach = 'a.BoardFileIdx, a.BoardIdx, a.RegType, a.AttachFileType, a.AttachFilePath, a.AttachFileName, a.AttachRealFileName, a.AttachFileSize, a.RegDatm';
+        $attach_data = $this->boardAttachFModel->findAttachData($this->_bm_idx, $board_idx, $column_attach);
+        $data['AttachData'] = $attach_data;
+
+        $result = $this->supportBoardFModel->modifyBoardRead($board_idx);
+        if($result !== true) {
+            show_alert('게시글 조회시 오류가 발생되었습니다.', 'back');
+        }
+
+        $this->load->view('site/off_info/gallery_show', [
+                'default_path' => $this->_default_path,
+                'board_idx' => $board_idx,
+                'get_params' => $get_params,
+                'arr_input' => $arr_input,
+                'data' => $data
+            ]
+        );
     }
 }

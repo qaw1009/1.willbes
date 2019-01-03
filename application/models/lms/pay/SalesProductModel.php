@@ -161,7 +161,7 @@ class SalesProductModel extends BaseOrderModel
     }
 
     /**
-     * 기간제패키지 서브강좌 과목/교수 조회 (관리자 결제 선택형 기간제패키지 주문일 경우 사용)
+     * 기간제패키지 서브강좌 과목/교수 조회 (관리자결제 기간제패키지 주문일 경우 사용)
      * @param int $prod_code [기간제패키지 상품코드]
      * @return mixed
      */
@@ -177,6 +177,7 @@ class SalesProductModel extends BaseOrderModel
                 inner join ' . $this->_table['product_division'] . ' as PD
                     on P.ProdCode = PD.ProdCode
             where PS.ProdCode = ? and PS.IsStatus = "Y"
+                and P.IsStatus = "Y"
                 and PD.IsStatus = "Y" and PD.IsReprProf = "Y"
             group by PL.SubjectIdx, PD.ProfIdx';
 

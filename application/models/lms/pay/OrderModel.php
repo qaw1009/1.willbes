@@ -409,8 +409,8 @@ class OrderModel extends BaseOrderModel
                     $row['IsDeliveryInfo'] = 'Y';
                 }
 
-                // 기간제선택형패키지일 경우 연결된 과목/교수 정보 조회
-                if ($learn_pattern == 'periodpack_lecture' && $row['PackTypeCcd'] == $this->_adminpack_lecture_type_ccd['choice']) {
+                // 기간제패키지일 경우 연결된 과목/교수 정보 조회
+                if ($learn_pattern == 'periodpack_lecture') {
                     $row['SubjectProfData'] = $this->salesProductModel->findPeriodPackageSubjectProfIdx($prod_code);
                 }
 
@@ -557,7 +557,7 @@ class OrderModel extends BaseOrderModel
             $site_code = element('SiteCode', $input);   // 사이트코드
             $prod_code = element('ProdCode', $input);   // 상품코드
             $arr_prod_code_sub = empty(element('ProdCodeSub', $input)) === false ? explode(',', element('ProdCodeSub', $input)) : [];   // 패키지의 서브상품코드 배열
-            $arr_subject_prof_idx = element('SubjectProfData', $input, []);     // 주문상품 과목/교수 연결 데이터 (기간제선택형패키지)
+            $arr_subject_prof_idx = element('SubjectProfData', $input, []);     // 주문상품 과목/교수 연결 데이터 (기간제패키지)
             $is_visit_pay = element('IsVisitPay', $input, 'N');     // 방문결제 여부
             $is_delivery_info = element('IsDeliveryInfo', $input, 'N');     // 주문상품배송정보 입력 여부
 

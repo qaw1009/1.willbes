@@ -1328,7 +1328,7 @@ class Player extends \app\controllers\FrontController
                 // 다운로드 시작할때 + 동영상시작할때
 
                 // 재생가능한 강좌인지 체크
-                $lec = $this->checkOrderProduct($content_id);
+                $lec = $this->checkOrderProduct($content_id, false);
 
                 // 기간제 패키지 이면 기기체크하기
                 if($lec['LearnPatternCcd'] == '615004'){
@@ -1338,7 +1338,7 @@ class Player extends \app\controllers\FrontController
                         'DeviceId' => $device_id,
                         'Os' => $os_version,
                         'App' => $app_version
-                    ], $lec['DeviceLimitCount']);
+                    ], $lec['DeviceLimitCount'], false);
                 }
 
                 $this->updateMobileDevice([
@@ -1429,7 +1429,7 @@ class Player extends \app\controllers\FrontController
                 // 다운로드한 강의 재생 시작할때
 
                 // 재생가능한 강좌인지 체크
-                $lec = $this->checkOrderProduct($content_id);
+                $lec = $this->checkOrderProduct($content_id,  true);
 
                 // 기간제 패키지 이면 기기체크하기
                 if($lec['LearnPatternCcd'] == '615004'){
@@ -1439,7 +1439,7 @@ class Player extends \app\controllers\FrontController
                         'DeviceId' => $device_id,
                         'Os' => $os_version,
                         'App' => $app_version
-                    ], $lec['DeviceLimitCount']);
+                    ], $lec['DeviceLimitCount'], true);
                 }
 
                 $this->updateMobileDevice([
@@ -1483,7 +1483,7 @@ class Player extends \app\controllers\FrontController
     {
         if($state != 'normal'){
             // 기기상태가 normal 이 아니면 재생 불가
-            $this->StarplayerResult(true, '루팅 혹은 탈옥 기기는 수강이 불가능합니다.');
+            $this->StarplayerResult(true, '루팅 혹은 탈옥 기기는 수강이 불가능합니다.', '', false);
         }
     }
 
@@ -1493,7 +1493,7 @@ class Player extends \app\controllers\FrontController
      * @param $input
      * @return mixed
      */
-    private function checkOrderProduct($input)
+    private function checkOrderProduct($input, $isApp = false)
     {
         //     1          2          3                   4              5             6                 7
         // ^{$MemId}^{$MemIdx}^{$OrderIdx}^{$lec['OrderProdIdx']}^{$ProdCode}^{$ProdCodeSub}^{$row['wUnitIdx']}^
@@ -1519,7 +1519,7 @@ class Player extends \app\controllers\FrontController
             || empty($prodcode) === true
             || empty($prodcodesub) === true
             || empty($unitidx) === true ){
-            $this->StarplayerResult(true, '정보가 정확하지 않습니다.');
+            $this->StarplayerResult(true, '정보가 정확하지 않습니다.', '', $isApp);
         }
 
         $lec = $this->classroomFModel->getLecture([
@@ -1535,7 +1535,7 @@ class Player extends \app\controllers\FrontController
         ]);
 
         if(empty($lec) === true){
-            $this->StarplayerResult(true, '수강신청정보가 없습니다.');
+            $this->StarplayerResult(true, '수강신청정보가 없습니다.', '', $isApp);
         }
 
         $lec = $lec[0];
@@ -1573,11 +1573,11 @@ class Player extends \app\controllers\FrontController
         }
 
         if($isstart == 'N'){
-            $this->StarplayerResult(true, '수강시작 전인 강의입니다.');
+            $this->StarplayerResult(true, '수강시작 전인 강의입니다.','', $isApp);
         }
 
         if($ispause == 'Y'){
-            $this->StarplayerResult(true, '일시중지중인 강의입니다.');
+            $this->StarplayerResult(true, '일시중지중인 강의입니다.','', $isApp);
         }
 
         // 회차 열어준경우 IN 생성
@@ -1603,7 +1603,7 @@ class Player extends \app\controllers\FrontController
         ]);
 
         if(empty($data) == true){
-            $this->StarplayerResult(true, '강의정보가 없습니다.');
+            $this->StarplayerResult(true, '강의정보가 없습니다.','', $isApp);
         }
 
         $data = $data[0];
@@ -1647,7 +1647,7 @@ class Player extends \app\controllers\FrontController
         }
 
         if($timeover == 'Y'){
-            $this->StarplayerResult(true, '수강가능시간이 초과되었습니다.');
+            $this->StarplayerResult(true, '수강가능시간이 초과되었습니다.','', $isApp);
         }
 
         return $lec;
@@ -1658,7 +1658,7 @@ class Player extends \app\controllers\FrontController
      * @param $device_id
      * @param $limit
      */
-    private function checkDeviceMobile($input, $limit = 2)
+    private function checkDeviceMobile($input, $limit = 2, $isApp = false)
     {
         // 등록된 디바이스 인지 체크
         $count = $this->playerFModel->getDevice([ 'EQ' => [
@@ -1680,13 +1680,13 @@ class Player extends \app\controllers\FrontController
 
         // 등록기기댓수 초과
         if($count >= $limit){
-            $this->StarplayerResult(true, '등록기기 댓수를 초과하였습니다.');
+            $this->StarplayerResult(true, '등록기기 댓수를 초과하였습니다.','', $isApp);
         }
 
         // 기기등록 시도
         if($this->playerFModel->storeDevice($input) == false){
             // 기기등록 실패
-            $this->StarplayerResult(true, '기기등록에 실패했습니다.');
+            $this->StarplayerResult(true, '기기등록에 실패했습니다.','', $isApp);
         }
     }
 

@@ -2307,7 +2307,48 @@ table.auTable tr td {
     margin: 11px 0;
 }
 
+/* 실시간방송 */
+.passLive {margin-bottom:20px}
+    .onAir {background:#eaeaea}
+        .onAirBar {position:relative; background:url(http://www.willbescop.net/assets/img/academy/main/onair_bar_bg.gif) no-repeat; height:40px}
+        .onAirBar span.state {float:left; display:block; line-height:40px; margin-left:20px}
+        .onAirBar span.state img {vertical-align:middle}
+        .onAirBar span.onAirBarBtn {position:absolute; width:100px; top:0; right:10px; display:block; line-height:40px; margin-right:10px; width:50px; text-align:right; z-index:999}
+        .onAirBar span.onAirBarBtn a {display:block; color:#fff; cursor:pointer}
+        .onAirBar ul {position:absolute; top:0; width:660px; left:180px; z-index:2; overflow:hidden; height:40px}
+        .onAirBar li {line-height:40px; font-weight:bold; color:#fff}
+        .onAirCt {position:relative; background:#ececec; padding:0 0 14px}
+            .onAirTabs.tabWrap {background:#FFF; border:none;height:40px}
+            .onAirTabs.tabWrap li {display:inline; float:left;height: 40px}
+            .onAirTabs.tabWrap a {display:block; padding:0 15px; height:40px; line-height:40px; font-weight:bold; color:#c4c3c3; border:none !important;}
+            .onAirTabs.tabWrap a:hover,
+            .onAirTabs.tabWrap a.on {background:#ececec; color:#f42412;z-index:auto; border:none;height:40px;line-height:40px}
+            .onAirTabs.tabWrap:after {content:""; display:block; clear:both}
+            
+            .onAirTabInto {position:absolute; top:15px; right:0; text-align:right}
+            
+            .onAirLec {margin:14px 0 0 132px}
+            .onAirLec li {display:inline; float:left; width:320px}
+            .onAirLec li img {width:320px; height:180px}
+            .onAirLec li.li01 {width:160px; padding:15px 20px; line-height:1.5; background:#fff; min-height:150px}
+            .onAirLec li p.ptxt1 {color:#4d4d4d}
+            .onAirLec li p.ptxt2 {color:#f42412; font-weight:bold; margin-bottom:15px}
+            .onAirLec li p.ptxt3 {color:#acacac}
+            .onAirLec:after {content:""; display:block; clear:both}
+            .onAirProf {position:absolute; top:25px; left:0; width:175px; height:208px; overflow:hidden; z-index:1}
+            .onAirBtn {position:absolute; top:190px; left:70px; width:230px; overflow:hidden; z-index:2}
+            .onAirBtn li {display:inline; float:left; margin-right:1px}
+    .onAirBar:after {content:""; display:block; clear:both}
+    
+    .offAir {}
+        .offAirBar {position:relative; background:#aeaeae; height:40px}
+        .offAirBar span.state {float:left; display:block; line-height:40px; margin-left:20px}		
+        .offAirBar span.offAirBarBtn {float:right; isplay:block; color:#fff; line-height:40px; margin-right:10px}
+        .offAirBar span img	{vertical-align:middle}
+        .offAirBar ul {position:absolute; width:660px; left:180px; z-index:2; overflow:hidden; height:40px}
+        .offAirBar li {line-height:40px; font-weight:bold; color:#fff}
 
+        
 
 /*********************************************     Main Container : Gosi     *********************************************/
 /* Main Container : Gosi */
@@ -8980,6 +9021,48 @@ table.PassZoneTable .w-data {
 }
 .willbes-Lec-Table .packInfoTable {
     display: none;
+}
+
+/* subContainer : Mypage : 온라인강좌 : willbes-Mypage-Txt */
+table.certifiTable th {
+    background: #f9f9f9;
+    font-weight: 600;
+}
+table.certifiTable tr td.w-total-price {
+    text-align: left;
+    padding-left: 20px;
+    font-weight: 600;
+}
+.confirm-txt {
+    font-size: 16px;
+    margin-bottom: 32px;
+}
+.confirm-txt .date {
+    font-size: 12px;
+}
+.certifi-info {
+    border-top: 1px solid #959595;
+    text-align: center;
+    line-height: 24px;
+}
+.certifi-info:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+.certifi-info li {
+    display: inline-block;
+    text-align: center;
+    margin: 0 -2px;
+    padding: 10px 0;
+}
+.certifi-info li.address {
+    width: 85%;
+    line-height: 24px;
+}
+.certifi-info li.stamp {
+    width: 15%;
+    border-left: 1px solid #ededed;
 }
 
 /* subContainer : Mypage : 학원강좌 : acadTable */

@@ -1006,7 +1006,7 @@ select.input-sm {
 
 /* vertical-align */
 .valign-middle {
-    vertical-align: middle;
+    vertical-align: middle !important;
 }
 
 /* cursor */

@@ -128,7 +128,7 @@
                                 </div>
                                 <div class="onAirBtn">
                                     <ul>
-                                        <li><a href="#none"><img src="http://www.willbescop.net/assets/img/academy/main/onair_btn3.gif" alt="60초맛보기"></a></li>
+                                        <li><a class="sample" href="#none">60초맛보기</a></li>
                                         <li><a href="#none"><img src="http://www.willbescop.net/assets/img/academy/main/onair_btn1.gif" alt="강의시간표"></a></li>
                                         <li><a href="#none"><img src="http://www.willbescop.net/assets/img/academy/main/onair_btn2.gif" alt="학원수강"></a></li>
                                     </ul>
@@ -154,7 +154,7 @@
                                 </div>
                                 <div class="onAirBtn">
                                     <ul>
-                                        <li><a href="#none"><img src="http://www.willbescop.net/assets/img/academy/main/onair_btn3.gif" alt="60초맛보기"></a></li>
+                                        <li><a class="sample" href="#none">60초맛보기</a></li>
                                         <li><a href="#none"><img src="http://www.willbescop.net/assets/img/academy/main/onair_btn1.gif" alt="강의시간표"></a></li>
                                         <li><a href="#none"><img src="http://www.willbescop.net/assets/img/academy/main/onair_btn2.gif" alt="학원수강"></a></li>
                                     </ul>

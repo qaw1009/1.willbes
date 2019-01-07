@@ -2338,6 +2338,8 @@ table.auTable tr td {
             .onAirProf {position:absolute; top:25px; left:0; width:175px; height:208px; overflow:hidden; z-index:1}
             .onAirBtn {position:absolute; top:190px; left:70px; width:230px; overflow:hidden; z-index:2}
             .onAirBtn li {display:inline; float:left; margin-right:1px}
+            .onAirBtn li a.sample {background: #515151; width: 77px; height: 21px; line-height: 19px; display: block; font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "sans-serif"; font-size: 11px; color: #fff; text-align: center;}
+
     .onAirBar:after {content:""; display:block; clear:both}
     
     .offAir {}

@@ -164,6 +164,19 @@
                         
                     </div><!--onAirCt//-->
                 </div><!--onAir//-->
+
+                <div class="offAir">
+                    <div class="offAirBar">
+                        <span class="state"><img src="{{ img_url('sample/onair_off.png') }}" alt="방송중이아닙니다."></span>
+                        <ul>
+                            <li>현재 진행중인 라이브 강의가 없습니다.</li>
+                        </ul>
+                        <span class="offAirBarBtn">
+                            <a href="#none"><img src="{{ img_url('sample/onair_btn1.gif') }}" alt="강의시간표"></a>
+                            <a href="#none"><img src="{{ img_url('sample/onair_btn2.gif') }}" alt="학원수강"></a>
+                        </span>
+                    </div><!--offAirBar//-->
+                </div><!--offAir//-->
                 
             </div><!--passLive//-->
      

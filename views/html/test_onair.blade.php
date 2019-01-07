@@ -95,7 +95,7 @@
                             <a id="stoggleBtn"><p id="stoggleBtnNm">닫기 ▼</p></a>
                             <!-- <a id="stoggleBtn">닫기 ▲</a> -->
                         </span>
-                        <span class="state"><img src="http://www.willbescop.net/assets/img/academy/main/onair.png" alt="방송중"></span>
+                        <span class="state"><img src="{{ img_url('sample/onair.png') }}" alt="방송중"></span>
                         <ul id="scroll" style="position: relative; overflow: hidden;"><li>현재 전국캠퍼스에 신광은 경찰팀의 라이브 강의가 실시간 송출 되고 있습니다.</li></ul>
                     </div><!--onAirBar//-->
                     
@@ -117,20 +117,20 @@
                                         <p class="ptxt3">믿어주셔서 감사합니다. 합격으로 보답하겠습니다.</p>
                                     </li>
                                     <li>  
-                                        <img src="http://file3.willbes.net/board/20161219171917659.jpg">
+                                        <img src="{{ img_url('sample/20161219171917659.jpg') }}">
                                     </li>
                                     <li> 
-                                        <img src="http://file3.willbes.net/board/20161219171917675.jpg">
+                                        <img src="{{ img_url('sample/20161219171917675.jpg') }}">
                                     </li>
                                 </ul>
                                 <div class="onAirProf">
-                                    <img src="http://file3.willbes.net/new_cop/onair_prof_wc_007.png" alt="강사이미지" onerror="javascript:this.src='http://file3.willbes.net/new_cop/onair_prof.png'">
+                                    <img src="{{ img_url('sample/onair_prof_wc_007.png') }}" alt="강사이미지" onerror="javascript:this.src='{{ img_url('sample/onair_prof.png') }}'">
                                 </div>
                                 <div class="onAirBtn">
                                     <ul>
                                         <li><a class="sample" href="#none">60초맛보기</a></li>
-                                        <li><a href="#none"><img src="http://www.willbescop.net/assets/img/academy/main/onair_btn1.gif" alt="강의시간표"></a></li>
-                                        <li><a href="#none"><img src="http://www.willbescop.net/assets/img/academy/main/onair_btn2.gif" alt="학원수강"></a></li>
+                                        <li><a href="#none"><img src="{{ img_url('sample/onair_btn1.gif') }}" alt="강의시간표"></a></li>
+                                        <li><a href="#none"><img src="{{ img_url('sample/onair_btn2.gif') }}" alt="학원수강"></a></li>
                                     </ul>
                                 </div>
                             </div><!--onAirLecBox//-->
@@ -143,20 +143,20 @@
                                         <p class="ptxt3">믿어주셔서 감사합니다. 합격으로 보답하겠습니다.</p>
                                     </li>
                                     <li>
-                                        <img src="http://file3.willbes.net/board/20161219171917659.jpg">
+                                        <img src="{{ img_url('sample/20161219171917659.jpg') }}">
                                     </li>
                                     <li>
-                                        <img src="http://file3.willbes.net/board/20161219171917675.jpg">
+                                        <img src="{{ img_url('sample/20161219171917675.jpg') }}">
                                     </li>
                                 </ul>
                                 <div class="onAirProf">
-                                    <img src="http://file3.willbes.net/new_cop/onair_prof_wc_005.png" alt="강사이미지" onerror="javascript:this.src='http://file3.willbes.net/new_cop/onair_prof.png'">
+                                    <img src="{{ img_url('sample/onair_prof_wc_005.png') }}" alt="강사이미지" onerror="javascript:this.src='{{ img_url('sample/onair_prof.png') }}'">
                                 </div>
                                 <div class="onAirBtn">
                                     <ul>
                                         <li><a class="sample" href="#none">60초맛보기</a></li>
-                                        <li><a href="#none"><img src="http://www.willbescop.net/assets/img/academy/main/onair_btn1.gif" alt="강의시간표"></a></li>
-                                        <li><a href="#none"><img src="http://www.willbescop.net/assets/img/academy/main/onair_btn2.gif" alt="학원수강"></a></li>
+                                        <li><a href="#none"><img src="{{ img_url('sample/onair_btn1.gif') }}" alt="강의시간표"></a></li>
+                                        <li><a href="#none"><img src="{{ img_url('sample/onair_btn2.gif') }}" alt="학원수강"></a></li>
                                     </ul>
                                 </div>
                             </div><!--onAirLecBox//-->

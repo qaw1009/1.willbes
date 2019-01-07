@@ -2310,7 +2310,7 @@ table.auTable tr td {
 /* 실시간방송 */
 .passLive {margin-bottom:20px}
     .onAir {background:#eaeaea}
-        .onAirBar {position:relative; background:url(http://www.willbescop.net/assets/img/academy/main/onair_bar_bg.gif) no-repeat; height:40px}
+        .onAirBar {position:relative; background: url("../../img/willbes/sample/onair_bar_bg.gif") no-repeat 0 0; height:40px}
         .onAirBar span.state {float:left; display:block; line-height:40px; margin-left:20px}
         .onAirBar span.state img {vertical-align:middle}
         .onAirBar span.onAirBarBtn {position:absolute; width:100px; top:0; right:10px; display:block; line-height:40px; margin-right:10px; width:50px; text-align:right; z-index:999}

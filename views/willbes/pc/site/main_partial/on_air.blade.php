@@ -101,8 +101,8 @@
 
         //라이브송출 스크립트
         $(".btn-video").click(function () {
-            /*var is_login = '{{sess_data('is_login')}}', oa_idx = $(this).data('oa-idx'), login_type = $(this).data('login-type'), play_count = $(this).data('play-count');
-            var popWidth = 800, popHeight = 500;    //팝업창 사이즈
+            var is_login = '{{sess_data('is_login')}}', oa_idx = $(this).data('oa-idx'), login_type = $(this).data('login-type'), play_count = $(this).data('play-count');
+            var popWidth = 980, popHeight = 555;    //팝업창 사이즈
             var mtWidth = window.outerWidth;        //윈도우width
             var mtHeight = window.outerHeight;      //윈도우height
             var scX = window.screenLeft;            //현재 브라우저의 x 좌표
@@ -110,18 +110,8 @@
             var popX = scX + (mtWidth - popWidth) / 2 - 50;
             var popY = scY + (mtHeight - popHeight) / 2 - 50;
 
-            var _url = '{{ front_url("/onAir/winPopup") }}?oa_idx='+oa_idx;
-            window.open(_url,'on_air', 'status=no, width='+ popWidth +', height='+ popHeight +', toolbar=no, menubar=no, scrollbars=no, resizable=no, left='+ popX + ', top='+ popY);*/
-
-
-            var oa_idx = $(this).data('oa-idx')
-            var _url = '{{ front_url("/onAir/onAirPlay") }}';
-            var _data = {'oa_idx' : oa_idx};
-            sendAjax(_url, _data, function(ret) {
-                $('#onAirPlay').html(ret);
-            }, showAlertError, false, 'GET', 'html');
-
-
+            var _url = '{{ front_url("/onAir/onAirPlay") }}?oa_idx='+oa_idx;
+            window.open(_url,'on_air', 'status=no, width='+ popWidth +', height='+ popHeight +', toolbar=no, menubar=no, scrollbars=no, resizable=no, left='+ popX + ', top='+ popY);
         });
     })
     //]]>

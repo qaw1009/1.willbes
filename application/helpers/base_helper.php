@@ -106,6 +106,25 @@ if (!function_exists('dd')) {
     }
 }
 
+if (!function_exists('decimal_format')) {
+    /**
+     * 숫자 포맷 리턴 (소수점이 있을 경우 불필요한 뒷자리 0값 삭제)
+     * @param int|float $num
+     * @param int $decimal
+     * @return string
+     */
+    function decimal_format($num, $decimal = 0) {
+        $num = number_format($num, $decimal);
+
+        if ($decimal > 0) {
+            $arr_num = explode('.', $num);
+            $num = $arr_num[0] . (floatval('0.' . $arr_num[1]) > 0 ? '.' . rtrim($arr_num[1], '0') : '');
+        }
+
+        return $num;
+    }
+}
+
 if (!function_exists('ends_with')) {
     /**
      * haystack(대상 문자열)이 needles(찾을 문자열 배열)로 끝나는지 여부 체크

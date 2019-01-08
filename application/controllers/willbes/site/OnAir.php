@@ -16,28 +16,54 @@ class OnAir extends \app\controllers\FrontController
     public function onAirPlay()
     {
         $input = $this->_reqG(null);
-        
-        
         //on air play 검증
-        
-        $result = true;
-        
-        if($result === false) {
-            show_alert('온에어정보가 없습니다.', 'back');
+        $arr_condition = [
+            'RAW' => [
+                'O.OaIdx = ' => element('oa_idx', $input, '\'\'')
+            ]
+        ];
+        $data = $this->onAirFModel->getLiveOnAir($this->_site_code, $arr_condition);
+        if (empty($data) === true) {
+            show_alert('온에어 정보가 없습니다.', 'close');
         }
-        
-        
-        $this->load->view('site/on_air/popup_video', [
-            'oa_idx' => element('oa_idx', $input)
+        $arrOnAirData = $data[0];
+        $result = $this->_playValidate($arrOnAirData);
+        if ($result !== true) {
+            show_alert('error msg~', 'close');
+        }
+
+        print_r($arrOnAirData);
+
+
+        $this->load->view('site/on_air/play_video_popup', [
+            'video_route' => 'rtmp://willbes.flive.skcdn.com/willbeslive/livestreamcop4022'
         ]);
     }
 
-    public function winPopup()
+    /**
+     * 동영상플레이 검증
+     * @param $onAirData
+     * @return bool
+     */
+    private function _playValidate($arrOnAirData)
     {
-        $input = $this->_reqG(null);
 
-        $this->load->view('site/on_air/play_video', [
-            'video_route' => 'rtmp://willbes.flive.skcdn.com/willbeslive/livestreamcop4022'
-        ]);
+
+        return true;
+    }
+
+    private function _errorMsg($ret_code)
+    {
+        $arr_msg = [
+            '1' => '로그인 후 이용해 주세요.',
+            '2' => '로그인 후 이용해 주세요.',
+        ];
+        switch ($ret_code) {
+            case "1" :
+                $msg = '로그인 후 이용해 주세요.';
+                break;
+        }
+
+        return $msg;
     }
 }

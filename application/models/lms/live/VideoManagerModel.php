@@ -79,8 +79,6 @@ class VideoManagerModel extends WB_Model
      */
     public function findLiveVideo($arr_condition = [], $column)
     {
-        $arr_condition['EQ']['IsStatus'] = 'Y';
-
         return $this->_conn->getFindResult($this->_table['live_video'], $column, $arr_condition);
     }
 
@@ -118,9 +116,13 @@ class VideoManagerModel extends WB_Model
 
             //중복데이터 체크
             $arr_condition = [
-                'SiteCode' => $site_code,
-                'CampusCcd' => element('campus_ccd', $input),
-                'CIdx' => element('class_room_idx', $input)
+                'EQ' => [
+                    'SiteCode' => $site_code,
+                    'CampusCcd' => element('campus_ccd', $input),
+                    'CIdx' => element('class_room_idx', $input),
+                    'IsUse' => 'Y',
+                    'IsStatus' => 'Y'
+                ]
             ];
             $liveVideoData = $this->findLiveVideo($arr_condition, 'LecLiveVideoIdx');
             if (empty($liveVideoData) === false) {
@@ -170,11 +172,15 @@ class VideoManagerModel extends WB_Model
             $admin_idx = $this->session->userdata('admin_idx');
 
             //사용중으로 수정 시 중복데이터 체크
-            if (element('is_use', $input) == 'Y') {
+            if ($row['IsUse'] == 'N' && element('is_use', $input) == 'Y') {
                 $arr_condition = [
-                    'SiteCode' => $site_code,
-                    'CampusCcd' => element('campus_ccd', $input),
-                    'CIdx' => element('class_room_idx', $input)
+                    'EQ' => [
+                        'SiteCode' => $site_code,
+                        'CampusCcd' => element('campus_ccd', $input),
+                        'CIdx' => element('class_room_idx', $input),
+                        'IsUse' => 'Y',
+                        'IsStatus' => 'Y'
+                    ]
                 ];
                 $liveVideoData = $this->findLiveVideo($arr_condition, 'LecLiveVideoIdx');
                 if (empty($liveVideoData) === false) {

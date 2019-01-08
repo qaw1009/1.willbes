@@ -36,8 +36,11 @@
                         </div>
                         <div class="tabBox">
                             @foreach($arr_base['onAirData'] as $key => $row)
+                                @php
+                                    $arr_onAirTitle = explode('|', $row['OnAirTitle']);
+                                @endphp
                                 <div id="tab_onAirLecBox_{{$row['OaIdx']}}" class="onAirLecBox tabLink">
-                                    <input type="hidden" class="top_text_item" id="top_text_item_{{$row['OaIdx']}}" value="{{$row['OnAirTitle']}}">
+                                    <input type="hidden" class="top_text_item" id="top_text_item_{{$row['OaIdx']}}" value="{{$arr_onAirTitle[0]}}">
                                     <ul class="onAirLec">
                                         <li class="li01">
                                             <p class="ptxt1">{{$row['OnAirStartTime']}} ~ {{$row['OnAirEndTime']}}</p>

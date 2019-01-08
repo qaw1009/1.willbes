@@ -16,16 +16,25 @@
 
                 $(document).ready(function() {
                     //팝업오픈 제한 스크립트
-                    /*var cnt = 1;
+                    var cnt = 1;
+                    var play_time = '{{$video_play_time}}';
                     var counter = setInterval(function () {
-                        if (cnt <= 3) {
+                        if (cnt <= play_time) {
                             cnt++;
                         } else {
+                            jwplayer().remove();      //동영상 remove
+                            clearInterval(counter); //js 카운트 종료
                             alert('맛보기플레이어가 종료됩니다.');
-                            window.close();
+                            closeWindow();
                         }
-                    },1000);*/
+                    },1000);
                 });
+
+                function closeWindow() {
+                    top.window.open('about:blank','_self').close();
+                    top.window.opener=self;
+                    top.self.close();
+                }
             </script>
         </div>
     </div>

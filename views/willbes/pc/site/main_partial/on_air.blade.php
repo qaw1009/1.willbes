@@ -18,11 +18,20 @@
                 @else
                     <div class="onAirBar">
                         <span class="onAirBarBtn">
-                            <a id="stoggleBtn"><p id="stoggleBtnNm">닫기 ▼</p></a>
+                            <a id="stoggleBtn"><p id="stoggleBtnNm">닫기 ▲</p></a>
                             <!-- <a id="stoggleBtn">닫기 ▲</a> -->
                         </span>
                         <span class="state"><img src="{{ img_url('sample/onair.png') }}" alt="방송중"></span>
-                        <ul id="scroll" style="position: relative; overflow: hidden;"><li class="on_air_title"></li></ul>
+                        <ul id="scroll" class="on_air_title" style="position: relative; overflow: hidden;">
+                            @foreach($arr_base['onAirData'] as $key => $row)
+                                @php
+                                    $arr_onAirTitle = explode('|', $row['OnAirTitle']);
+                                @endphp
+                                @foreach($arr_onAirTitle as $key => $val)
+                                    <li>{{$val}}</li>
+                                @endforeach
+                            @endforeach
+                        </ul>
                     </div><!--onAirBar//-->
 
                     <div class="onAirCt" style="display: block;">
@@ -40,7 +49,9 @@
                                     $arr_onAirTitle = explode('|', $row['OnAirTitle']);
                                 @endphp
                                 <div id="tab_onAirLecBox_{{$row['OaIdx']}}" class="onAirLecBox tabLink">
-                                    <input type="hidden" class="top_text_item" id="top_text_item_{{$row['OaIdx']}}" value="{{$arr_onAirTitle[0]}}">
+                                    @foreach($arr_onAirTitle as $key => $val)
+                                        <input type="hidden" class="top_text_item" id="top_text_item_{{$row['OaIdx']}}_{{$key}}" value="{{$val}}">
+                                    @endforeach
                                     <ul class="onAirLec">
                                         <li class="li01">
                                             <p class="ptxt1">@if($row['OnAirStartType'] == 'D'){{$row['OnAirStartTime']}} ~ {{$row['OnAirEndTime']}}@endif</p>
@@ -115,19 +126,19 @@
 <script type="text/javascript">
     //<![CDATA[
     $(function(){
-        var topText = function() {
+        /*var onair_line_title = function() {
             if ($(".top_text_item").val() != '') {
                 $(".on_air_title").text($(".top_text_item").val());
             }
         };
-        topText();
+        onair_line_title();*/
 
         $("#stoggleBtn").click(function(){
             $(".onAirCt").slideToggle("slow"); //옵션 "slow", "fast", "normal", "밀리초(1000=1초)"
             if($("#stoggleBtnNm").text().substring(0,2) == "닫기"){
-                $("#stoggleBtnNm").text("열기 ▲");
+                $("#stoggleBtnNm").text("열기 ▼");
             }else{
-                $("#stoggleBtnNm").text("닫기 ▼");
+                $("#stoggleBtnNm").text("닫기 ▲");
             }
         });
 

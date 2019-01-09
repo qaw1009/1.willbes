@@ -43,7 +43,7 @@
                                     <input type="hidden" class="top_text_item" id="top_text_item_{{$row['OaIdx']}}" value="{{$arr_onAirTitle[0]}}">
                                     <ul class="onAirLec">
                                         <li class="li01">
-                                            <p class="ptxt1">{{$row['OnAirStartTime']}} ~ {{$row['OnAirEndTime']}}</p>
+                                            <p class="ptxt1">@if($row['OnAirStartType'] == 'D'){{$row['OnAirStartTime']}} ~ {{$row['OnAirEndTime']}}@endif</p>
                                             <p class="ptxt2">{{$row['OnAirName']}}</p>
                                             <p class="ptxt3">{{$row['ProfTitle']}}</p>
                                         </li>

@@ -23,12 +23,14 @@
                         </span>
                         <span class="state"><img src="{{ img_url('sample/onair.png') }}" alt="방송중"></span>
                         <ul id="scroll" class="on_air_title" style="position: relative; overflow: hidden;">
+                            @php $i=0; @endphp
                             @foreach($arr_base['onAirData'] as $key => $row)
                                 @php
                                     $arr_onAirTitle = explode('|', $row['OnAirTitle']);
                                 @endphp
                                 @foreach($arr_onAirTitle as $t_key => $t_val)
-                                    <li class="onair_rolling" data-title-id="{{$row['OaIdx']}}">{{$t_val}}</li>
+                                    <li class="onair_rolling" id="onair_rolling_{{$i}}" data-onair-title-id="{{$row['OaIdx']}}">{{$t_val}}</li>
+                                    @php $i++; @endphp
                                 @endforeach
                             @endforeach
                         </ul>
@@ -128,14 +130,16 @@
 <span id="onAirPlay"></span>
 
 <script type="text/javascript">
+    var real_search_keyword;
+
     //<![CDATA[
-    $(function(){
-        /*var onair_line_title = function() {
-            if ($(".top_text_item").val() != '') {
-                $(".on_air_title").text($(".top_text_item").val());
+    $(document).ready(function(){
+        //tab 클리 시 타이틀 동적 변경
+        $(document).on('click', '.tab_onAirLecBox', function () {
+            if ($(this).hasClass('on') == true) {
+                onair_line_title();
             }
-        };
-        onair_line_title();*/
+        });
 
         $("#stoggleBtn").click(function(){
             $(".onAirCt").slideToggle("slow"); //옵션 "slow", "fast", "normal", "밀리초(1000=1초)"
@@ -163,9 +167,23 @@
     })
     //]]>
 
-    /*function tab_onAirLecBox(obj) {
-        $(".on_air_title").text($('#top_text_item_' + obj).val());
-    }*/
+    //온에어 타이틀 적용
+    function onair_line_title() {
+        var temp_on_box_id = 0;
+        $('.tab_onAirLecBox').each(function(){
+            if ($(this).hasClass('on') == true) {
+                temp_on_box_id = $(this).data('onair-box-id');
+            }
+        });
+
+        $('.onair_rolling').each(function(item){
+            if ($(this).data('onair-title-id') == temp_on_box_id) {
+                $("#onair_rolling_"+item).css("display", "block");
+            } else {
+                $("#onair_rolling_"+item).css("display", "none");
+            }
+        });
+    };
 
     function textScroll(scroll_el_id) {
         this.objElement = document.getElementById(scroll_el_id);
@@ -218,4 +236,14 @@
     textScroll.prototype.start = function() {
         this.timer = setTimeout(this.name+".move()",3000);
     }
+
+    function scroll_top_text(){
+        if(parseInt('1')>0){
+            real_search_keyword = new textScroll('scroll'); // 스크롤링 하고자하는 ul 엘리먼트의 id값을 인자로 넣습니다
+            real_search_keyword.name = "real_search_keyword"; // 인스턴스 네임을 등록합니다
+            real_search_keyword.start(); // 스크롤링 시작
+        }
+    }
+    onair_line_title();
+    scroll_top_text();
 </script>

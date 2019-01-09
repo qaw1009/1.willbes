@@ -70,7 +70,6 @@ class RegGoodsModel extends WB_Model
         $data = $this->_conn->query($select . $from . $where . $order . $offset_limit)->result_array();
         $count = $this->_conn->query($selectCount . $from . $where)->row()->cnt;
 
-        // todo 접수현황 추가
 
 
         // 직렬이름 추출
@@ -161,10 +160,10 @@ class RegGoodsModel extends WB_Model
             $sql = "
                 INSERT INTO {$this->_table['mockProduct']}
                     (ProdCode, TakePart, MockPart, TakeFormsCcds, TakeAreas1CCds, TakeAreas2Ccd, AddPointsCcd, MockYear, MockRotationNo,
-                     ClosingPerson, IsRegister, TakeType, TakeStartDatm, TakeEndDatm, TakeTime, IsUse,
+                     ClosingPerson, IsRegister,  TakeStartDatm, TakeEndDatm, TakeTime, IsUse,
                      RegIp, RegAdminIdx, RegDatm)
                 SELECT ?, TakePart, MockPart, TakeFormsCcds, TakeAreas1CCds, TakeAreas2Ccd, AddPointsCcd, MockYear, MockRotationNo,
-                       ClosingPerson, IsRegister, TakeType, TakeStartDatm, TakeEndDatm, TakeTime, 'N', ?, ?, ?
+                       ClosingPerson, IsRegister,  TakeStartDatm, TakeEndDatm, TakeTime, 'N', ?, ?, ?
                 FROM {$this->_table['mockProduct']}
                 WHERE ProdCode = ? AND IsStatus = 'Y'";
             $this->_conn->query($sql, array($prodcode, $RegIp, $RegAdminIdx, $RegDatm, $idx));
@@ -223,6 +222,7 @@ class RegGoodsModel extends WB_Model
                 'PointApplyCcd' => $this->config->item('sysCode_PointApplyCcd', 'mock'),
                 'IsSms'         => $this->input->post('IsSms'),
                 'IsUse'         => $this->input->post('IsUse'),
+                'IsCart'         => 'N',
                 'RegIp'         => $this->input->ip_address(),
                 'RegDatm'       => $date,
                 'RegAdminIdx'   => $this->session->userdata('admin_idx'),
@@ -278,7 +278,7 @@ class RegGoodsModel extends WB_Model
                 'MockRotationNo' => $this->input->post('MockRotationNo'),
                 'ClosingPerson'  => empty($this->input->post('ClosingPerson')) ? '' : $this->input->post('ClosingPerson'),
                 'IsRegister'     => $this->input->post('IsRegister'), // 접수상태
-                'TakeType'       => $this->input->post('TakeType'),
+                //'TakeType'       => $this->input->post('TakeType'),
                 'TakeStartDatm'  => ($this->input->post('TakeType') == 'A') ? null : $TakeStartDatm,
                 'TakeEndDatm'    => ($this->input->post('TakeType') == 'A') ? null : $TakeEndDatm,
                 'TakeTime'       => $this->input->post('TakeTime'), // 분
@@ -384,7 +384,7 @@ class RegGoodsModel extends WB_Model
                 'MockRotationNo' => $this->input->post('MockRotationNo'),
                 'ClosingPerson'  => empty($this->input->post('ClosingPerson')) ? '' : $this->input->post('ClosingPerson'),
                 'IsRegister'     => $this->input->post('IsRegister'),
-                'TakeType'       => $this->input->post('TakeType'),
+                //'TakeType'       => $this->input->post('TakeType'),
                 'TakeStartDatm'  => ($this->input->post('TakeType') == 'A') ? null : $TakeStartDatm,
                 'TakeEndDatm'    => ($this->input->post('TakeType') == 'A') ? null : $TakeEndDatm,
                 'TakeTime'       => $this->input->post('TakeTime'), // 분

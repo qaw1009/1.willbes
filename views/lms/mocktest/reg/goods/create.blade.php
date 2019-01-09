@@ -123,14 +123,14 @@
                         <td colspan="3" class="form-inline">
                             <input type="text" class="form-control datepicker" style="width:100px;" name="SaleStartDatm_d" value="@if($method == 'PUT'){{ substr($data['SaleStartDatm'], 0, 10) }}@endif" readonly>
                             <select name="SaleStartDatm_h" class="form-control">
-                                <option value="">선택</option>
+                                <!--option value="">선택</option//-->
                                 @foreach(range(0, 23) as $i)
                                     @php $v = sprintf("%02d", $i); @endphp
                                     <option value="{{$v}}" @if($method==='PUT' && substr($data['SaleStartDatm'], 11, 2) == $v) selected @endif>{{$v}}</option>
                                 @endforeach
                             </select> 시
                             <select name="SaleStartDatm_m" class="form-control">
-                                <option value="">선택</option>
+                                <!--option value="">선택</option//-->
                                 @foreach(range(0, 59) as $i)
                                     @php $v = sprintf("%02d", $i); @endphp
                                     <option value="{{$v}}" @if($method==='PUT' && substr($data['SaleStartDatm'], 14, 2) == $v) selected @endif>{{$v}}</option>
@@ -139,14 +139,14 @@
                             <span class="ml-10 mr-10"> ~ </span>
                             <input type="text" class="form-control datepicker" style="width:100px;" name="SaleEndDatm_d" value="@if($method == 'PUT'){{ substr($data['SaleEndDatm'], 0, 10) }}@endif" readonly>
                             <select name="SaleEndDatm_h" class="form-control">
-                                <option value="">선택</option>
+                                <!--option value="">선택</option//-->
                                 @foreach(range(0, 23) as $i)
                                     @php $v = sprintf("%02d", $i); @endphp
                                     <option value="{{$v}}" @if($method==='PUT' && substr($data['SaleEndDatm'], 11, 2) == $v) selected @endif>{{$v}}</option>
                                 @endforeach
                             </select> 시
                             <select name="SaleEndDatm_m" class="form-control">
-                                <option value="">선택</option>
+                                <!--option value="">선택</option//-->
                                 @foreach(range(0, 59) as $i)
                                     @php $v = sprintf("%02d", $i); @endphp
                                     <option value="{{$v}}" @if($method==='PUT' && substr($data['SaleEndDatm'], 14, 2) == $v) selected @endif>{{$v}}</option>
@@ -171,40 +171,42 @@
                     <tr>
                         <th colspan="1">응시가능기간 <span class="required">*</span></th>
                         <td colspan="3" class="form-inline">
-                            <input type="text" class="form-control datepicker" style="width:100px;" name="TakeStartDatm_d" value="@if($method == 'PUT'){{ substr($data['TakeStartDatm'], 0, 10) }}@endif" readonly>
+                            <input type="text" class="form-control datepicker" style="width:100px;" name="TakeStartDatm_d" value="@if($method == 'PUT'){{ substr($data['TakeStartDatm'], 0, 10) }}@else{{ date("Y-m-d") }}@endif" readonly>
                             <select name="TakeStartDatm_h" class="form-control">
-                                <option value="">선택</option>
+                                <!--option value="">선택</option//-->
                                 @foreach(range(0, 23) as $i)
                                     @php $v = sprintf("%02d", $i); @endphp
                                     <option value="{{$v}}" @if($method==='PUT' && substr($data['TakeStartDatm'], 11, 2) == $v) selected @endif>{{$v}}</option>
                                 @endforeach
                             </select> 시
                             <select name="TakeStartDatm_m" class="form-control">
-                                <option value="">선택</option>
+                                <!--option value="">선택</option//-->
                                 @foreach(range(0, 59) as $i)
                                     @php $v = sprintf("%02d", $i); @endphp
                                     <option value="{{$v}}" @if($method==='PUT' && substr($data['TakeStartDatm'], 14, 2) == $v) selected @endif>{{$v}}</option>
                                 @endforeach
                             </select> 분
                             <span class="ml-10 mr-10"> ~ </span>
-                            <input type="text" class="form-control datepicker" style="width:100px;" name="TakeEndDatm_d" value="@if($method == 'PUT'){{ substr($data['TakeEndDatm'], 0, 10) }}@endif" readonly>
+                            <input type="text" class="form-control datepicker" style="width:100px;" name="TakeEndDatm_d" value="@if($method == 'PUT'){{ substr($data['TakeEndDatm'], 0, 10) }}@else{{date("Y-m-d", strtotime(date("Y-m-d").'1year'))}} @endif" readonly>
                             <select name="TakeEndDatm_h" class="form-control">
-                                <option value="">선택</option>
+                                <!--option value="">선택</option//-->
                                 @foreach(range(0, 23) as $i)
                                     @php $v = sprintf("%02d", $i); @endphp
                                     <option value="{{$v}}" @if($method==='PUT' && substr($data['TakeEndDatm'], 11, 2) == $v) selected @endif>{{$v}}</option>
                                 @endforeach
                             </select> 시
                             <select name="TakeEndDatm_m" class="form-control">
-                                <option value="">선택</option>
+                                <!--option value="">선택</option//-->
                                 @foreach(range(0, 59) as $i)
                                     @php $v = sprintf("%02d", $i); @endphp
                                     <option value="{{$v}}" @if($method==='PUT' && substr($data['TakeEndDatm'], 14, 2) == $v) selected @endif>{{$v}}</option>
                                 @endforeach
                             </select> 분
+                            <!--
                             <span class="ml-20 mr-20"> | </span>
                             <input type="radio" name="TakeType" class="flat" value="A" @if($method == 'POST' || ($method == 'PUT' && $data['TakeType'] == 'A')) checked="checked" @endif> <span class="flat-text mr-10">상시</span>
                             <input type="radio" name="TakeType" class="flat" value="L" @if($method == 'PUT' && $data['TakeType'] == 'L') checked="checked" @endif> <span class="flat-text mr-20">기간제한</span>
+                            //-->
                         </td>
                     </tr>
                     <tr>

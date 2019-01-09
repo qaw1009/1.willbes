@@ -187,7 +187,7 @@ class RegGoods extends \app\controllers\BaseController
 
             ['field' => 'ClosingPerson', 'label' => '접수마감인원', 'rules' => 'trim|is_natural_no_zero'],
             ['field' => 'IsRegister', 'label' => '접수상태', 'rules' => 'trim|required|in_list[Y,N]'],
-            ['field' => 'TakeType', 'label' => '응시가능타입', 'rules' => 'trim|required|in_list[A,L]'],
+            //['field' => 'TakeType', 'label' => '응시가능타입', 'rules' => 'trim|required|in_list[A,L]'],
             ['field' => 'TakeStartDatm_d', 'label' => '응시시작일', 'rules' => 'trim'],
             ['field' => 'TakeStartDatm_h', 'label' => '응시시작(시)', 'rules' => 'trim|numeric'],
             ['field' => 'TakeStartDatm_m', 'label' => '응시시작(분)', 'rules' => 'trim|numeric'],

@@ -27,8 +27,8 @@
                                 @php
                                     $arr_onAirTitle = explode('|', $row['OnAirTitle']);
                                 @endphp
-                                @foreach($arr_onAirTitle as $key => $val)
-                                    <li>{{$val}}</li>
+                                @foreach($arr_onAirTitle as $t_key => $t_val)
+                                    <li class="onair_rolling" data-title-id="{{$row['OaIdx']}}">{{$t_val}}</li>
                                 @endforeach
                             @endforeach
                         </ul>
@@ -37,7 +37,11 @@
                     <div class="onAirCt" style="display: block;">
                         <ul class="tabWrap onAirTabs">
                             @foreach($arr_base['onAirData'] as $key => $row)
-                                <li><a href="#tab_onAirLecBox_{{$row['OaIdx']}}" onclick="javascript:tab_onAirLecBox('{{$row['OaIdx']}}');" @if($key == 0)class="on"@endif>{{$row['OnAirTabName']}}</a></li>
+                                <li>
+                                    <a href="#tab_onAirLecBox_{{$row['OaIdx']}}" class="tab_onAirLecBox{!! $key == 0 ? ' on' : '' !!}" data-onair-box-id="{{$row['OaIdx']}}">
+                                        {{$row['OnAirTabName']}}
+                                    </a>
+                                </li>
                             @endforeach
                         </ul>
                         <div class="onAirTabInto">
@@ -159,9 +163,9 @@
     })
     //]]>
 
-    function tab_onAirLecBox(obj) {
+    /*function tab_onAirLecBox(obj) {
         $(".on_air_title").text($('#top_text_item_' + obj).val());
-    }
+    }*/
 
     function textScroll(scroll_el_id) {
         this.objElement = document.getElementById(scroll_el_id);

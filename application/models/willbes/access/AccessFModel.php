@@ -5,7 +5,7 @@ class AccessFModel extends WB_Model
 {
     protected $_table = [
         'gw' => 'lms_gateway',
-        'asp' => 'lms_btob_company',
+        'btob' => 'lms_btob',
     ];
 
     public function __construct()
@@ -14,7 +14,7 @@ class AccessFModel extends WB_Model
     }
 
     /**
-     * 외부접속 로그 저장 (광고 / ASP 연동 정보 저장)
+     * 외부접속 로그 저장 (광고 / 제휴사 연동 정보 저장)
      * @param $strType
      * @param null $idx
      * @return array|bool
@@ -33,10 +33,9 @@ class AccessFModel extends WB_Model
         */
 
         $input_data = [
+            'SiteCode' => config_app('SiteCode'),
             'ReferDomain' => (empty($refer_domain) ? null : $refer_domain ),
             'ReferInfo' => (empty($refer_info) ? null : $refer_info ),
-            'UserPlatform' =>$platform,
-            'UserAgentShort' =>substr($agent_short,0,99),
             'UserAgent' =>substr($agent,0,199),
             'RegIp' =>$this->input->ip_address()
         ];
@@ -46,20 +45,23 @@ class AccessFModel extends WB_Model
         if($strType == 'gw') {
 
             $input_data = array_merge($input_data,[
+                'UserPlatform' =>$platform,
+                'UserAgentShort' =>substr($agent_short,0,99),
                 'GwIdx' => $idx
             ]);
 
-        } else if($strType == 'asp') {
+        } else if($strType == 'btob') {
 
             $input_data = array_merge($input_data,[
-
+                'BtobIdx' => $idx,
+                'MemIdx' => $this->session->userdata('mem_idx')
             ]);
 
         }
 
         try {
             if ($this->_conn->set($input_data)->insert($this->_table[$strType].'_access_log') === false) {
-                //echo $this->_conn->last_query();
+                echo $this->_conn->last_query();
                 throw new \Exception('접속 정보 저장에 실패했습니다.');
             }
         } catch (\Exception $e) {
@@ -81,11 +83,13 @@ class AccessFModel extends WB_Model
             $arr_condition = [
                 'EQ' => ['GwIdx' => $idx]
             ];
-        } else if ($strType == 'asp') {
+        } else if ($strType == 'btob') {
             $arr_condition = [
+                'EQ' => ['BtobIdx' => $idx]
             ];
         }
         $result = $this->_conn->getListResult($this->_table[$strType],'*',$arr_condition,null,null,[]);
+
         return element('0', $result, []);
     }
 

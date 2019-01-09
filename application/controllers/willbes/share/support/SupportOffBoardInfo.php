@@ -88,8 +88,6 @@ class SupportOffBoardInfo extends BaseSupport
         $total_rows = $this->supportBoardFModel->listBoard(true, $arr_condition);
         $paging = $this->pagination($this->_default_path.'/index/'.$bm_idx.'?'.$get_page_params,$total_rows,$this->_paging_limit,$paging_count,true);
 
-
-
         if ($total_rows > 0) {
             $list = $this->supportBoardFModel->listBoard(false,$arr_condition,$column,$paging['limit'],$paging['offset'],$order_by);
             foreach ($list as $idx => $row) {

@@ -1234,31 +1234,35 @@ class Player extends \app\controllers\FrontController
             }
 
             $url = $this->clearUrl($row['wMediaUrl'].'/'.$filename);
-            $url = 'http://www.axissoft.co.kr/contents/252782_ehd.mp4';
             $title = $row['wUnitNum'].'회 '.$row['wUnitLectureNum'].'강 '.$row['wUnitName'];
-            $title = "test title";
             $id = "^{$MemId}^{$MemIdx}^{$OrderIdx}^{$lec['OrderProdIdx']}^{$ProdCode}^{$ProdCodeSub}^{$row['wUnitIdx']}^{$logidx}^";
             $category = $lec['SubjectName'].'/'.$lec['CourseName'];
             $enddate = $lec['RealLecEndDate'];
 
             if($type == 'download'){
                 $rtnData = array_merge($rtnData, [
-
-
+                    'category' => $category,
+                    'thumbnail' => '',
+                    'url' => $url,
+                    'cc' => '',
+                    'title' => base64_encode(rawurlencode($title)),
+                    'desc' => '',
+                    'teacher' => $lec['wProfName'],
+                    'expiry_date' => $enddate,
+                    'content_id' => $id
                 ]);
 
             } else {
                 $rtnData = [
+                    'url' => $url,
                     'cc' => '',
                     'position' => 0,
                     'tracker' => '',
+                    'title' => base64_encode(rawurlencode($title)),
                     'subpage' => '',
-                    'url' => $url,
-                    'title' => clean_string($title),
                     'content_id' => $id
                 ];
             }
-
         }
 
         return $this->json_result(true,'성공',null, $rtnData);
@@ -1324,7 +1328,7 @@ class Player extends \app\controllers\FrontController
                 // 다운로드 시작할때 + 동영상시작할때
 
                 // 재생가능한 강좌인지 체크
-                $lec = $this->checkOrderProduct($content_id);
+                $lec = $this->checkOrderProduct($content_id, false);
 
                 // 기간제 패키지 이면 기기체크하기
                 if($lec['LearnPatternCcd'] == '615004'){
@@ -1334,7 +1338,7 @@ class Player extends \app\controllers\FrontController
                         'DeviceId' => $device_id,
                         'Os' => $os_version,
                         'App' => $app_version
-                    ], $lec['DeviceLimitCount']);
+                    ], $lec['DeviceLimitCount'], false);
                 }
 
                 $this->updateMobileDevice([
@@ -1386,6 +1390,91 @@ class Player extends \app\controllers\FrontController
         }
     }
 
+
+    /**
+     * 스타플레이어 E 하이브리드 앱 수강기록 업데이트
+     *
+     */
+    function StarplayerEntAPI()
+    {
+        $input = array_merge($this->_reqP(null), $this->_reqG(null));
+
+        $event = $this->_req('event');
+        $user_id = $this->_req('user_id');
+        $device_id = $this->_req('device_id');
+        $content_url = $this->_req('content_url');
+        $content_id = $this->_req('content_id');
+        $actual_playback_duration = $this->_req('actual_playback_duration'); // 1분
+        $playback_duration = $this->_req('playback_duration'); // 2분
+        $current_position = $this->_req('current_position');
+        $begin_date = $this->_req('begin_date');
+        $end_date = $this->_req('end_date');
+        $tracker = $this->_req('tracker');
+        $rating = $this->_req('rating');
+        $token = $this->_req('token');
+        $play_type = $this->_req('play_type');
+
+        // API 접근 로그남기기
+        $params = '';
+        foreach($input as $key => $value){
+            $params .= $key.'='.$value.'&';
+        }
+        logger($params);
+
+        switch($event){
+            case 'downloaded':
+                break;
+
+            case 'openingDownloadedContent':
+                // 다운로드한 강의 재생 시작할때
+
+                // 재생가능한 강좌인지 체크
+                $lec = $this->checkOrderProduct($content_id,  true);
+
+                // 기간제 패키지 이면 기기체크하기
+                if($lec['LearnPatternCcd'] == '615004'){
+                    $this->checkDeviceMobile([
+                        'MemIdx' => $lec['MemIdx'],
+                        'DeviceModel' => $device_model,
+                        'DeviceId' => $device_id,
+                        'Os' => $os_version,
+                        'App' => $app_version
+                    ], $lec['DeviceLimitCount'], true);
+                }
+
+                $this->updateMobileDevice([
+                    'content_id' => $content_id,
+                    'DeviceModel' => $device_model,
+                    'OS' => $os_version,
+                    'APP' => $app_version,
+                    'DeviceId' => $device_id
+                ]);
+
+                $this->response(['result'=>'success']);
+                break;
+
+            case 'learninghistory':
+                // 수강 기록 업데이트
+                // 수강 기록은 무조건 업데이트 한다.
+                $this->mobileLog([
+                    'content_id' => $content_id,
+                    'playtype' => $play_type,
+                    'st' => $playback_duration,
+                    'rst' => $actual_playback_duration,
+                    'pos' => $current_position,
+                    'di' => $device_id
+                ]);
+
+                $this->response(['result'=>'success']);
+                break;
+
+            default;
+                // 알수없는 이벤트는 에러
+                $this->response(['result'=>'success']);
+        }
+    }
+
+
     /**
      * 기기산태체크
      * @param string $state
@@ -1394,7 +1483,7 @@ class Player extends \app\controllers\FrontController
     {
         if($state != 'normal'){
             // 기기상태가 normal 이 아니면 재생 불가
-            $this->StarplayerResult(true, '루팅 혹은 탈옥 기기는 수강이 불가능합니다.');
+            $this->StarplayerResult(true, '루팅 혹은 탈옥 기기는 수강이 불가능합니다.', '', false);
         }
     }
 
@@ -1404,7 +1493,7 @@ class Player extends \app\controllers\FrontController
      * @param $input
      * @return mixed
      */
-    private function checkOrderProduct($input)
+    private function checkOrderProduct($input, $isApp = false)
     {
         //     1          2          3                   4              5             6                 7
         // ^{$MemId}^{$MemIdx}^{$OrderIdx}^{$lec['OrderProdIdx']}^{$ProdCode}^{$ProdCodeSub}^{$row['wUnitIdx']}^
@@ -1430,7 +1519,7 @@ class Player extends \app\controllers\FrontController
             || empty($prodcode) === true
             || empty($prodcodesub) === true
             || empty($unitidx) === true ){
-            $this->StarplayerResult(true, '정보가 정확하지 않습니다.');
+            $this->StarplayerResult(true, '정보가 정확하지 않습니다.', '', $isApp);
         }
 
         $lec = $this->classroomFModel->getLecture([
@@ -1446,7 +1535,7 @@ class Player extends \app\controllers\FrontController
         ]);
 
         if(empty($lec) === true){
-            $this->StarplayerResult(true, '수강신청정보가 없습니다.');
+            $this->StarplayerResult(true, '수강신청정보가 없습니다.', '', $isApp);
         }
 
         $lec = $lec[0];
@@ -1484,11 +1573,11 @@ class Player extends \app\controllers\FrontController
         }
 
         if($isstart == 'N'){
-            $this->StarplayerResult(true, '수강시작 전인 강의입니다.');
+            $this->StarplayerResult(true, '수강시작 전인 강의입니다.','', $isApp);
         }
 
         if($ispause == 'Y'){
-            $this->StarplayerResult(true, '일시중지중인 강의입니다.');
+            $this->StarplayerResult(true, '일시중지중인 강의입니다.','', $isApp);
         }
 
         // 회차 열어준경우 IN 생성
@@ -1514,7 +1603,7 @@ class Player extends \app\controllers\FrontController
         ]);
 
         if(empty($data) == true){
-            $this->StarplayerResult(true, '강의정보가 없습니다.');
+            $this->StarplayerResult(true, '강의정보가 없습니다.','', $isApp);
         }
 
         $data = $data[0];
@@ -1558,7 +1647,7 @@ class Player extends \app\controllers\FrontController
         }
 
         if($timeover == 'Y'){
-            $this->StarplayerResult(true, '수강가능시간이 초과되었습니다.');
+            $this->StarplayerResult(true, '수강가능시간이 초과되었습니다.','', $isApp);
         }
 
         return $lec;
@@ -1569,7 +1658,7 @@ class Player extends \app\controllers\FrontController
      * @param $device_id
      * @param $limit
      */
-    private function checkDeviceMobile($input, $limit = 2)
+    private function checkDeviceMobile($input, $limit = 2, $isApp = false)
     {
         // 등록된 디바이스 인지 체크
         $count = $this->playerFModel->getDevice([ 'EQ' => [
@@ -1591,13 +1680,13 @@ class Player extends \app\controllers\FrontController
 
         // 등록기기댓수 초과
         if($count >= $limit){
-            $this->StarplayerResult(true, '등록기기 댓수를 초과하였습니다.');
+            $this->StarplayerResult(true, '등록기기 댓수를 초과하였습니다.','', $isApp);
         }
 
         // 기기등록 시도
         if($this->playerFModel->storeDevice($input) == false){
             // 기기등록 실패
-            $this->StarplayerResult(true, '기기등록에 실패했습니다.');
+            $this->StarplayerResult(true, '기기등록에 실패했습니다.','', $isApp);
         }
     }
 
@@ -1731,7 +1820,7 @@ class Player extends \app\controllers\FrontController
      * @param string $msg
      * @param string $debug
      */
-    private function StarplayerResult($error, $msg ='', $debug = '')
+    private function StarplayerResult($error, $msg ='', $debug = '', $isApp = false)
     {
         if($error == true){
             $error = 1;
@@ -1739,11 +1828,20 @@ class Player extends \app\controllers\FrontController
             $error = 0;
         }
 
-        echo("<axis-app>");
-        echo("<error>".$error."</error>");
-        echo("<message>".$msg."</message>");
-        echo("<debug>".$debug."</debug>");
-        echo("</axis-app>");
+        if($isApp == true){
+            if($error == true){
+                $this->response(['result' => 'error']);
+            } else {
+                $this->response(['result' => 'success']);
+            }
+
+        } else {
+            echo("<axis-app>");
+            echo("<error>".$error."</error>");
+            echo("<message>".$msg."</message>");
+            echo("<debug>".$debug."</debug>");
+            echo("</axis-app>");
+        }
 
         exit ;
     }

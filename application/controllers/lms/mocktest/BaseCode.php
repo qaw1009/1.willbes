@@ -27,6 +27,7 @@ class BaseCode extends \app\controllers\BaseController
         $cateD2 = $this->mockCommonModel->getMockKind(false);
 
         list($listDB, $subjectNames, $subjectIdxs) = $this->baseCodeModel->list();
+
         $this->load->view('mocktest/base/code/index', [
             'siteCodeDef' => $cateD1[0]['SiteCode'],
             'cateD1' => $cateD1,

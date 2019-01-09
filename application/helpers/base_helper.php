@@ -106,6 +106,25 @@ if (!function_exists('dd')) {
     }
 }
 
+if (!function_exists('decimal_format')) {
+    /**
+     * 숫자 포맷 리턴 (소수점이 있을 경우 불필요한 뒷자리 0값 삭제)
+     * @param int|float $num
+     * @param int $decimal
+     * @return string
+     */
+    function decimal_format($num, $decimal = 0) {
+        $num = number_format($num, $decimal);
+
+        if ($decimal > 0) {
+            $arr_num = explode('.', $num);
+            $num = $arr_num[0] . (floatval('0.' . $arr_num[1]) > 0 ? '.' . rtrim($arr_num[1], '0') : '');
+        }
+
+        return $num;
+    }
+}
+
 if (!function_exists('ends_with')) {
     /**
      * haystack(대상 문자열)이 needles(찾을 문자열 배열)로 끝나는지 여부 체크
@@ -225,6 +244,21 @@ if (!function_exists('get_app_var')) {
     {
         $_CI =& get_instance();
         return $_CI->load->get_var('__' . $key);
+    }
+}
+
+if (!function_exists('get_domain_to_url')) {
+    /**
+     * URL에서 서브 도메인을 제외한 메인 도메인 추출
+     * @param string $url [scheme가 포함된 full url, ex) https://www.willbes.net]
+     * @return mixed [일치하는 패턴이 없을 경우 false 리턴]
+     */
+    function get_domain_to_url($url)
+    {
+        $url = parse_url($url, PHP_URL_HOST);
+        preg_match('/[\w-]+\.[a-zA-Z]*$/', $url, $matches);
+
+        return element('0', $matches, false);
     }
 }
 

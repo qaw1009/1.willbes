@@ -21,10 +21,10 @@
                 <div class="Acad_info mt30">
                     @if($tab_menu === true)
                     <ul class="tabMock four mb60">
-                        <li><a @if($bm_idx=='80')class="on" @endif href="{{ front_url('/offinfo/BoardInfo/index/80') }}">강의시간표</a></li>
-                        <li><a @if($bm_idx=='82')class="on" @endif href="{{ front_url('/offinfo/BoardInfo/index/82') }}">강의실배정표</a></li>
-                        <li><a @if($bm_idx=='75')class="on" @endif href="{{ front_url('/offinfo/BoardInfo/index/75') }}">휴강/보강공지</a></li>
-                        <li><a @if($bm_idx=='78')class="on" @endif href="{{ front_url('/offinfo/BoardInfo/index/78') }}">신규강의안내</a></li>
+                        <li><a @if($bm_idx=='80')class="on" @endif href="{{ front_url('/offinfo/boardInfo/index/80') }}">강의시간표</a></li>
+                        <li><a @if($bm_idx=='82')class="on" @endif href="{{ front_url('/offinfo/boardInfo/index/82') }}">강의실배정표</a></li>
+                        <li><a @if($bm_idx=='75')class="on" @endif href="{{ front_url('/offinfo/boardInfo/index/75') }}">휴강/보강공지</a></li>
+                        <li><a @if($bm_idx=='78')class="on" @endif href="{{ front_url('/offinfo/boardInfo/index/78') }}">신규강의안내</a></li>
                     </ul>
                     @endif
 
@@ -41,7 +41,7 @@
                                 </select>
                             @endif
                             @if(empty($arr_base['campus']) === false)
-                                <select id="s_campus" name="s_campus" title="campus" class="seleCampus">
+                                <select id="s_campus" name="s_campus" title="campus" class="seleCampus" onchange="goUrl('s_campus',this.value)">
                                     <option value="">캠퍼스</option>
                                         @foreach($arr_base['campus'] as $row)
                                             <option value="{{$row['CampusCcd']}}" @if(element('s_campus',$arr_input) == $row['CampusCcd']) selected @endif>{{$row['CcdName']}}</option>
@@ -90,7 +90,7 @@
                                         <td class="w-no">@if($row['IsBest'] == '1')<img src="{{ img_url('prof/icon_HOT.gif') }}">@else{{$paging['rownum']}}@endif</td>
                                         @if($__cfg['CampusCcdArr'] != 'N')<td><span class="oBox campus_{{$row['CampusCcd']}} NSK">{{$row['CampusCcd_Name']}}</span></td>@endif
                                         <td class="w-list tx-left pl20">
-                                            <a href="{{front_url('/offinfo/LectureInfo/show/'.$bm_idx.'?board_idx='.$row['BoardIdx'].'&'.$get_params)}}">
+                                            <a href="{{front_url($default_path.'/show/'.$bm_idx.'?board_idx='.$row['BoardIdx'].'&'.$get_params)}}">
                                                 @if($row['IsBest'] == '1')<strong>@endif{{hpSubString($row['Title'],0,40,'...')}}@if($row['IsBest'] == '1')</strong>@endif
                                             </a>
                                         </td>
@@ -119,9 +119,7 @@
             <!-- willbes-AcadInfo -->
             </form>
         </div>
-        <div class="Quick-Bnr ml20">
-            <img src="{{ img_url('sample/banner_180605.jpg') }}">
-        </div>
+        {!! banner('고객센터_우측날개', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
     </div>
     <!-- End Container -->
 @stop

@@ -158,7 +158,7 @@
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
-                        location.replace('{{ site_url("/site/dDay/") }}/' + getQueryString());
+                        location.replace('{{ site_url("/site/dDay/") }}' + getQueryString());
                     }
                 }, showValidateError, null, false, 'alert');
             });

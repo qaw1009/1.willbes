@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends \app\controllers\FrontController
 {
-    protected $models = array();
+    protected $models = array('dDayF');
     protected $helpers = array();
     protected $auth_controller = false;
     protected $auth_methods = array();
@@ -27,7 +27,12 @@ class Home extends \app\controllers\FrontController
             ]);
         }
 
-        return $this->load->view('main');
+        // 시험일정 조회 (디데이)
+        $data['dday'] = $this->dDayFModel->getDDays();
+
+        return $this->load->view('main', [
+            'data' => $data
+        ]);
     }
 
     /**

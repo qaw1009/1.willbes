@@ -943,7 +943,7 @@ select[disabled] {
   background: #636363;
 }
 .bg-white {
-  background: #fff;
+  background: #fff !important;
 }
 .bg-light-white {
   background: #f9f9f9;

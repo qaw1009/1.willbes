@@ -14,7 +14,7 @@
             </div>
         </div>
 
-        <div class="willbes-Line">이용중인 무한 PASS (2)</div>
+        <div class="willbes-Line">이용중인 무한 PASS ({{count($passlist)}})</div>
         <div class="willbes-Lec-Selected NG c_both tx-gray">
             <form name="searchFrm1" id="searchFrm1" action="{{front_app_url('/classroom/pass/index', 'www')}}" onsubmit="">
                 <select id="sitecode" name="sitecode" title="process" class="seleProcess width25p">
@@ -54,9 +54,11 @@
             @endif
             </tbody>
         </table>
+        @if(empty($passinfo) == false)
         <div class="AddlecMore">
             <a href="javascript:;" onclick="fnMoreLec('{{$passinfo['OrderIdx']}}','{{$passinfo['ProdCode']}}');"><img src="{{ img_url('m/mypage/icon_add_black.png') }}"> 강좌추가</a>
         </div>
+        @endif
         <div class="willbes-Lec-Selected NG c_both tx-gray">
             <form name="searchFrm2" id="searchFrm2" action="{{front_app_url('/classroom/pass/index', 'www')}}" onsubmit="">
                 <input type="hidden" name="sitecode" value="{{(empty($input_arr['sitecode']) == true) ? '' : $input_arr['sitecode']}}" >

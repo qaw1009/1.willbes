@@ -601,9 +601,12 @@
                     </dt>
                 </dl>
             </div>
-            
         </div>
-    </div>   
+    </div>
+
+    {{-- on air include --}}
+    @include('willbes.pc.site.main_partial.on_air')
 </div>
+{!! popup('657001') !!}
 <!-- End Container -->
 @stop

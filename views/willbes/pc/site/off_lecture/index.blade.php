@@ -255,6 +255,8 @@
         {!! banner('강좌상품_우측날개', '', $__cfg['SiteCode'], '0') !!}
     </div>
 </div>
+{!! popup('657002') !!}
+<!-- End Container -->
 <script type="text/javascript">
     $(document).ready(function() {
         // 검색어 입력 후 엔터
@@ -274,5 +276,4 @@
         };
     });
 </script>
-<!-- End Container -->
 @stop

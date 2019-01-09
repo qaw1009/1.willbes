@@ -114,12 +114,12 @@ class Popup extends \app\controllers\BaseController
                 ['field' => 'attach_img', 'label' => '팝업이미지', 'rules' => 'callback_validateFileRequired[attach_img]']
             ]);
 
-            //사이트코드 통합코드가 아닐경우 카테고리 체크
-            if ($this->_reqP('site_code') != config_item('app_intg_site_code')) {
+            //사이트코드 통합코드가 아닐경우 카테고리 체크 ==> 카테고리 없이 등록 가능 (2018.12.24, bsshin)
+            /*if ($this->_reqP('site_code') != config_item('app_intg_site_code')) {
                 $rules = array_merge($rules, [
                     ['field' => 'cate_code[]', 'label' => '카테고리', 'rules' => 'trim|required']
                 ]);
-            }
+            }*/
         } else {
             $method = 'modify';
             $rules = array_merge($rules, [

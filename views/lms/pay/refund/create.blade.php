@@ -119,7 +119,7 @@
                 var $refund_account_no = $_refund_proc_form.find('input[name="refund_account_no"]');
                 var $refund_deposit_name = $_refund_proc_form.find('input[name="refund_deposit_name"]');
 
-                @if($is_available_pg_refund === true && $is_available_vbank_repay === true)
+                @if($is_available_pg_refund === true && $is_vbank_refund === true)
                     if ($_refund_proc_form.find('input[name="is_pg_refund"]:checked').length > 0) {
                         if (!($refund_bank_ccd.val() !== '' && $refund_account_no.val() !== '' && $refund_deposit_name.val() !== '')) {
                             alert('환불계좌정보를 모두 입력해 주세요.');

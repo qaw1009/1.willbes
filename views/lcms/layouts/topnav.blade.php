@@ -1,15 +1,15 @@
 <div class="col-md-12 top_col">
-    <div class="row main_top_header">
+    <div class="row main_top_header @if(SUB_DOMAIN == 'wbs')wbs @else(SUB_DOMAIN == 'lms')lms @endif">
         <div class="col-md-12 mt-10">
             <div class="col-md-4 logo">
-                <img src="/public/img/logo.gif" class="ml-15 mr-20"/>
+                <img src="/public/img/logo.png" class="ml-15 mr-20"/>
                 <span class="blue valign-middle">{{ $__cfg['site_title'] }}</span>
             </div>
             @if(SUB_DOMAIN != 'tzone')
                 <div class="col-md-5">
                     <ul class="nav nav-tabs bar_tabs">
-                        <li role="presentation" class="@if(SUB_DOMAIN == 'wbs') active active-wbs @endif"><a href="{{ app_url('/', 'wbs') }}" class="">WBS</a></li>
-                        <li role="presentation" class="@if(SUB_DOMAIN == 'lms') active active-lms @endif"><a href="{{ app_url('/', 'lms') }}" class="">LMS</a></li>
+                        <li role="presentation" class="@if(SUB_DOMAIN == 'wbs') active @endif"><a href="{{ app_url('/', 'wbs') }}" class="">WBS</a></li>
+                        <li role="presentation" class="@if(SUB_DOMAIN == 'lms') active @endif"><a href="{{ app_url('/', 'lms') }}" class="">LMS</a></li>
                     </ul>
                 </div>
             @else
@@ -33,7 +33,7 @@
                                 @if(isset($__settings['favorite']) === true)
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="favorite">
                                     @foreach($__settings['favorite'] as $menu_idx => $menu)
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ $menu['MenuUrl'] }}">{{ $menu['MenuName'] }}</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ $menu['MenuUrl'] }}" class="dark-blue">{{ $menu['MenuName'] }}</a></li>
                                     @endforeach
                                 </ul>
                                 @endif
@@ -49,66 +49,81 @@
             </div>
         </div>
     </div>
-    <div class="row mt-10 main_top_menu">
+    <div class="row main_top_menu mt-10">
         <div class="col-md-12">
-            {{--<ul class="nav nav-tabs bar_tabs">
-                <li role="presentation" class="active">
-                    <a href="{{ site_url('/home/main') }}">메인</a>
-                </li>
-                <li role="presentation" class="dropdown">
-                    <a id="top_menu2" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
-                        시스템 공통관리 <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu" role="menu" aria-labelledby="top_menu2">
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ site_url('sys/code') }}">공통코드 관리</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ site_url('sys/menu/index') }}">메뉴 관리</a></li>
-                        <li role="presentation" class="dropdown-submenu">
-                            <a id="top_menu2_3" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">운영자 관리</a>
-                            <ul class="dropdown-menu animated fadeIn" role="menu" aria-labelledby="top_menu2_3">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ site_url('sys/admin/index') }}">운영자 정보관리</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ site_url('sys/role/index') }}">권한유형 관리</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ site_url('sys/loginLog/index') }}">운영자 접속관리</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li role="presentation"><a href="#">CMS</a></li>
-                <li role="presentation"><a href="#">BMS</a></li>
-                <li role="presentation"><a href="#">TMS</a></li>
-            </ul>--}}
+            {{--
+            <div class="navbar navbar-default no-border bdb-line" role="navigation">
+                <div class="container-fluid bg-white-only">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse">
+                        <!--<ul class="nav navbar-nav navbar-right">
+                            <li><a href="#">Right Menu</a></li>
+                        </ul>-->
+                        <ul class="nav navbar-nav">
+                            <li class=""><a href="#">Home</a></li>
+                            <li>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Menu 1 <b class="caret"></b></a>
+                                <ul class="dropdown-menu multi-level">
+                                    <li><a href="#">Action</a></li>
+                                    <li><a href="#">Another action</a></li>
+                                    <li><a href="#">Something else here</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Separated link</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">One more separated link</a></li>
+                                    <li class="dropdown-submenu">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#">Action</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div><!--/.nav-collapse -->
+                </div>
+            </div>
+            --}}
             <ul class="nav nav-tabs bar_tabs">
-                <li role="presentation" class="active @if(SUB_DOMAIN == 'wbs') active-wbs @else(SUB_DOMAIN == 'lms') active-lms @endif">
+                <li role="presentation" class="active">
                     <a href="{{ site_url(get_var(element('home_url', $__settings), $__cfg['home_url'])) }}" class="cs-pointer">메인</a>
                 </li>
-            @if(isset($__menu['GNB']) === true)
-                @foreach($__menu['GNB'] as $bmenu)
-                    @if(isset($bmenu['Children']) === true)
-                        <li role="presentation" class="dropdown">
-                            <a id="{{ $bmenu['TreeNum'] }}" href="#">
-                                {{ $bmenu['MenuName'] }} <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                @foreach($bmenu['Children'] as $mmenu)
-                                    @if(isset($mmenu['Children']) === true)
-                                        <li role="presentation" class="dropdown-submenu">
-                                            <a id="{{ $mmenu['TreeNum'] }}" href="#">{{ $mmenu['MenuName'] }}</a>
-                                            <ul class="dropdown-menu animated fadeIn">
-                                                @foreach($mmenu['Children'] as $smenu)
-                                                    <li role="presentation"><a tabindex="-1" href="{{ site_url($smenu['MenuUrl']) }}">{{ $smenu['MenuName'] }}</a></li>
-                                                @endforeach
-                                            </ul>
-                                        </li>
-                                    @else
-                                        <li role="presentation"><a tabindex="-1" href="{{ site_url($mmenu['MenuUrl']) }}">{{ $mmenu['MenuName'] }}</a></li>
-                                    @endif
-                                @endforeach
-                            </ul>
-                        </li>
-                    @else
-                        <li role="presentation"><a href="#">{{ $bmenu['MenuName'] }}</a></li>
-                    @endif
-                @endforeach
-            @endif
+                @if(isset($__menu['GNB']) === true)
+                    @foreach($__menu['GNB'] as $bmenu)
+                        @if(isset($bmenu['Children']) === true)
+                            <li role="presentation" class="dropdown">
+                                <a id="{{ $bmenu['TreeNum'] }}" href="#">
+                                    {{ $bmenu['MenuName'] }} <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    @foreach($bmenu['Children'] as $midx => $mmenu)
+                                        @if(isset($mmenu['Children']) === true)
+                                            <li role="presentation" class="dropdown-submenu">
+                                                <a id="{{ $mmenu['TreeNum'] }}" href="#">{{ $mmenu['MenuName'] }}</a>
+                                                <ul class="dropdown-menu animated fadeIn">
+                                                    @foreach($mmenu['Children'] as $sidx => $smenu)
+                                                        <li role="presentation"><a tabindex="-1" href="{{ site_url($smenu['MenuUrl']) }}" class="{{ isset($__menu['CURRENT']['MenuIdx']) && $sidx == $__menu['CURRENT']['MenuIdx'] ? 'current' : '' }}">{{ $smenu['MenuName'] }}</a></li>
+                                                    @endforeach
+                                                </ul>
+                                            </li>
+                                        @else
+                                            <li role="presentation"><a tabindex="-1" href="{{ site_url($mmenu['MenuUrl']) }}" class="{{ isset($__menu['CURRENT']['MenuIdx']) && $midx == $__menu['CURRENT']['MenuIdx'] ? 'current' : '' }}">{{ $mmenu['MenuName'] }}</a></li>
+                                        @endif
+                                    @endforeach
+                                </ul>
+                            </li>
+                        @else
+                            <li role="presentation"><a href="#">{{ $bmenu['MenuName'] }}</a></li>
+                        @endif
+                    @endforeach
+                @endif
             </ul>
         </div>
     </div>

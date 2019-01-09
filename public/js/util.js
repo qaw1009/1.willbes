@@ -49,7 +49,17 @@ function fnApp($url, $data)
 {
     sendAjax($url, $data,
         function(d){
-            app.streaming(d.ret_data);
+            var media = {
+                "url" : 'http://www.axissoft.co.kr/contents/252782_ehd.mp4',
+                "cc" : "",
+                "position" : 0,
+                "tracker" : "",
+                "title" : "[액시스소프트] 이투스 테스트!!",
+                "content_id" : 'test',
+                "subpage" : ""
+            };
+            media = d.ret_data;
+            app.streaming(media);
         },
         function(ret, status){
             alert(ret.ret_msg);
@@ -111,8 +121,7 @@ function app_url($uri, $sub_domain) {
  * @returns {string}
  */
 function addComma(value) {
-    return value.toString().replace(/\D/g, "")
-        .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
 /**
@@ -306,6 +315,29 @@ function isJson(data) {
     } catch (e) {
         return false;
     }    
+}
+
+/**
+ * 숫자 포맷 리턴 (소수점이 있을 경우 불필요한 뒷자리 0값 삭제)
+ * @param num
+ * @param decimal
+ * @returns {*}
+ */
+function decimalFormat(num, decimal) {
+    num = (num * 1).toFixed(decimal);
+
+    if (decimal > 0) {
+        var arr_num, i_num, d_num;
+
+        arr_num = num.toString().split('.');
+        i_num = addComma(arr_num[0]);
+        d_num = parseFloat('0.' + arr_num[1]);
+        num = i_num + (d_num > 0 ? '.' + d_num.toString().substr(2) : '')
+    } else {
+        num = addComma(num);
+    }
+
+    return num;
 }
 
 /**

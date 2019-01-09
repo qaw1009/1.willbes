@@ -340,8 +340,8 @@ function init_iCheck() {
 
     // iCheck
     $('input[type="checkbox"].flat, input[type="radio"].flat').iCheck({
-        checkboxClass: 'icheckbox_flat-blue',
-        radioClass: 'iradio_flat-blue'
+        checkboxClass: 'icheckbox_minimal-blue',
+        radioClass: 'iradio_minimal-blue'
     });
 }
 
@@ -356,8 +356,8 @@ function init_iCheck_datatable() {
 
     $(document).on('draw.dt column-reorder.dt', '.dataTables_wrapper', function() {
         $('input[type="checkbox"].flat, input[type="radio"].flat').iCheck({
-            checkboxClass: 'icheckbox_flat-blue',
-            radioClass: 'iradio_flat-blue'
+            checkboxClass: 'icheckbox_minimal-blue',
+            radioClass: 'iradio_minimal-blue'
         });
     });
 }

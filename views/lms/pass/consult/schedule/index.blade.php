@@ -137,11 +137,13 @@
                     {'data' : 'SiteName'},
                     {'data' : 'CampusName'},
                     {'data' : 'CateCode', 'render' : function(data, type, row, meta){
+                        var str = '';
+                        if (data != null) {
                             var obj = data.split(',');
-                            var str = '';
                             for (key in obj) {
-                                str += obj[key]+"<br>";
+                                str += obj[key] + "<br>";
                             }
+                        }
                             return str;
                         }},
                     {'data' : 'ConsultDate', 'render' : function(data, type, row, meta) {

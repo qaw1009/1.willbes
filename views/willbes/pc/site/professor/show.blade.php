@@ -202,7 +202,9 @@
                 'ele_id' : ele_id,
                 'show_onoff' : 'off',
                 'cate_code' : '{{$def_cate_code}}',
-                'board_idx' : $(this).data('board-idx')
+                'prof_idx' : '{{$prof_idx}}',
+                'board_idx' : $(this).data('board-idx'),
+                'subject_idx' : '{{$arr_input['subject_idx']}}'
             };
             sendAjax('{{ front_url('/support/studyComment/') }}', data, function(ret) {
                 $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');

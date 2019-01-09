@@ -23,6 +23,7 @@ class BoardModel extends WB_Model
 
     // 첨부 이미지 수
     public $_attach_img_cnt = 2;
+    public $_attach_img_cnt_gallery = 50;
 
     public function __construct()
     {
@@ -49,7 +50,7 @@ class BoardModel extends WB_Model
             $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $master_column = ' (SELECT COUNT(*) FROM lms_board_r_comment AS CT WHERE LB.BoardIdx = CT.BoardIdx) AS CommentCnt, ';
+            $master_column = ' (SELECT COUNT(*) FROM lms_board_r_comment AS CT WHERE LB.BoardIdx = CT.BoardIdx AND CT.IsStatus = \'Y\') AS CommentCnt, ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
@@ -80,6 +81,9 @@ class BoardModel extends WB_Model
 
         switch ($board_type) {
             case "notice" :
+            case "offlineBoard" :
+            case "gallery" :
+            case "free" :
                 $from = $from."
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.CampusCcd = LSC.Ccd
                 ";
@@ -133,12 +137,6 @@ class BoardModel extends WB_Model
                     LEFT JOIN {$this->_table_product} as lms_product ON LB.ProdCode = lms_product.ProdCode
                     LEFT OUTER JOIN {$this->_table_product_subject} as PS ON LB.SubjectIdx = PS.SubjectIdx
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.TypeCcd = LSC.Ccd
-                ";
-                break;
-            case "offlineBoard" :
-            case "gallery" :
-                $from = $from."
-                    LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.CampusCcd = LSC.Ccd
                 ";
                 break;
             case "liveLectureMaterial" :
@@ -268,7 +266,7 @@ class BoardModel extends WB_Model
             $this->load->library('upload');
             $upload_sub_dir = config_item('upload_prefix_dir') . '/board/' . $board_data['BmIdx'] . '/' . date('Ymd');
 
-            $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->_getAttachImgNames($board_idx), $upload_sub_dir);
+            $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->_getAttachImgNames($board_idx, $board_data['BmIdx']), $upload_sub_dir);
             if (is_array($uploaded) === false) {
                 throw new \Exception($uploaded);
             }
@@ -433,7 +431,7 @@ class BoardModel extends WB_Model
         $master_column = "
             MST.BmTypeCcd, MST.OneWayOption, MST.TwoWayOption,
             IF ((CASE MST.BmTypeCcd WHEN '601001' THEN INSTR(MST.OneWayOption, 1) ELSE '0' END) > 0, 'Y', 'N') AS BoardIsLogin,
-            IF ((CASE MST.BmTypeCcd WHEN '601001' THEN INSTR(MST.OneWayOption, 2) ELSE '0' END) > 0, 'Y', 'N') AS BoardIsComment,
+            IF ((CASE MST.BmTypeCcd WHEN '601001' THEN INSTR(MST.OneWayOption, 2) WHEN '601002' THEN INSTR(MST.TwoWayOption, 2) ELSE '0' END) > 0, 'Y', 'N') AS BoardIsComment,
             IF ((CASE MST.BmTypeCcd WHEN '601002' THEN INSTR(MST.TwoWayOption, 1) ELSE '0' END) > 0, 'Y', 'N') AS BoardIsQna,
         ";
 
@@ -465,6 +463,9 @@ class BoardModel extends WB_Model
         ";
         switch ($board_type) {
             case "notice" :
+            case "offlineBoard" :
+            case "gallery" :
+            case "free" :
                 $from = $from."
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.CampusCcd = LSC.Ccd
                 ";
@@ -534,12 +535,6 @@ class BoardModel extends WB_Model
                     LEFT JOIN {$this->_table_product} as lms_product ON LB.ProdCode = lms_product.ProdCode
                     LEFT OUTER JOIN {$this->_table_product_subject} as PS ON LB.SubjectIdx = PS.SubjectIdx
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.TypeCcd = LSC.Ccd
-                ";
-                break;
-            case "offlineBoard" :
-            case "gallery" :
-                $from = $from."
-                    LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.CampusCcd = LSC.Ccd
                 ";
                 break;
             case "liveLectureMaterial" :
@@ -1224,13 +1219,19 @@ class BoardModel extends WB_Model
     /**
      * 파일명 배열 생성
      * @param $board_idx
+     * @param string $bm_idx
      * @return array
      */
-    protected function _getAttachImgNames($board_idx)
+    protected function _getAttachImgNames($board_idx, $bm_idx = '')
     {
+        if ($bm_idx == '90') {
+            $file_max_cnt = $this->_attach_img_cnt_gallery;
+        } else {
+            $file_max_cnt = $this->_attach_img_cnt;
+        }
         $attach_file_names = [];
         $temp_time = date('YmdHis');
-        for ($i = 1; $i <= $this->_attach_img_cnt; $i++) {
+        for ($i = 1; $i <= $file_max_cnt; $i++) {
             $attach_file_names[] = 'board_' . $board_idx . '_0' . $i . '_' . $temp_time;
         }
         return $attach_file_names;
@@ -1367,7 +1368,7 @@ class BoardModel extends WB_Model
             $this->load->library('upload');
             $upload_sub_dir = config_item('upload_prefix_dir') . '/board/' . $board_data['BmIdx'] . '/' . date('Ymd');
 
-            $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->_getAttachImgNames($board_idx), $upload_sub_dir);
+            $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->_getAttachImgNames($board_idx, $board_data['BmIdx']), $upload_sub_dir);
 
             if (is_array($uploaded) === false) {
                 throw new \Exception($uploaded);

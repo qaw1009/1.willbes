@@ -43,7 +43,8 @@ class Board extends \app\controllers\BaseController
         ];
         //쌍방향옵션셋팅
         $set_twowayoptions = [
-            '1' => '1:1게시'
+            '1' => '1:1게시',
+            '2' => '댓글 적용'
         ];
         $onewayoptions = [];
         $twowayoptions = [];

@@ -100,7 +100,7 @@
                                         <dd>
                                             <ul>
                                                 <li> 군 부대에서 군인과 함께 근무하는 공무원으로서 신분은 국가공무원법상 특정직 공무원으로 분류된다.<br>
-                                                    군무원은 군부대에서 군인과 함께 근무하는 공무원을 말합니다. 국가공무원법상 경찰이나 소방공무원, 국가정보원 직원 등과 함께 특정직공무원으로 규정돼 있다.<br>
+                                                    군무원은 군부대에서 군인과 함께 근무하는 공무원을 말한다. 국가공무원법상 경찰이나 소방공무원, 국가정보원 직원 등과 함께 특정직공무원으로 규정돼 있다.<br>
                                                     합동참모본부, 육·해·공군본부와 예하 부대, 국방부 직할부대인 기무사, 정보사, 의무사 등에서 근무한다. <br>
                                                     군무원이 활약하는 분야는 행정, 국방정책, 군사정보,  토목·건축·환경, 전기·전자·통신, 총포·탄약·전차, 병리·재활치료, 항해나 항공지원, 군 범죄 수사에 이르기까지 다양하다.<br>
                                                 </li>
@@ -138,10 +138,10 @@
                         </div>
                         <div id="gpgosi_guide2" class="tabContent">
                             <div class="examInfoGu4"> 
-                                <h4 class="hTy4 hTy">군무원 시험의 모든것</h4>  
                                 <div class="sliderGuide cSliderTM">
                                     <div class="sliderControlsTM">
                                         <div class="guide_slider">
+                                            <h4 class="hTy4 hTy">시험안내</h4>  
                                             <div class="hTy">
                                                 <dl class="gd_txt">
                                                     <dt>
@@ -150,7 +150,7 @@
                                                     <dd>
                                                         <ul>
                                                             <li>
-                                                                1년에 한번 6월 마지막 토요일이나, 7월의 첫째 토요일에 시행<br>
+                                                                1년에 한 번 6월 마지막 토요일이나, 7월의 첫째 토요일에 시행<br>
                                                                 (* 2018년에는 한국사능력검정시험 도입으로 8월11일 시행함)
                                                             </li>
                                                         </ul>
@@ -188,9 +188,9 @@
                                                     <dd>
                                                         <ul>
                                                             <li>
-                                                                ① 문제형식 및 문항 수: <br>객관식 선택형, 과목당 25문항 <br>
-                                                                ② 시험시간: <br>과목당 25분 <br>
-                                                                ③ 합격자 선발: <br>선발예정인원의 1.3배수(130%) 범위 내 <br>
+                                                                ① 문제형식 및 문항 수: <br>&nbsp; - 객관식 선택형, 과목당 25문항 <br>
+                                                                ② 시험시간: <br>&nbsp; - 과목당 25분 <br>
+                                                                ③ 합격자 선발: <br>&nbsp; - 선발예정인원의 1.3배수(130%) 범위 내 <br>
                                                                 <span class="tx-red">
                                                                     (단, 선발예정인원이 6명 이하인 경우, 선발예정인원에 2명을 합한 인원의 범위)<br>
                                                                     (합격 기준에 해당하는 동점자는 합격처리)
@@ -223,17 +223,17 @@
                                                         <ul>
                                                             <li>
                                                                 ① 응시연령: <br>
-                                                                7급 만 20세 이상 / 8급 이하(9급) 만 18세 이상 <br>
-                                                                <span class="tx-red">※ 상한 연령은 두고 있지 않으며 정년(60세) 전에는 자유롭게 응시 가능.</span> <br>
-                                                                (단, 20년 미만 근무 시 공무원연금 대상이 아님)<br>
+                                                                &nbsp; - 7급 만 20세 이상 / 8급 이하(9급) 만 18세 이상 <br>
+                                                                &nbsp; <span class="tx-red">※ 상한 연령은 두고 있지 않으며 정년(60세) 전에는 자유롭게 응시 가능.</span> <br>
+                                                                &nbsp; (단, 20년 미만 근무 시 공무원연금 대상이 아님)<br>
                                                                 ② 자격조건<br>
-                                                                - 행정직 및 기술직은 관련 자격증 또는 면허증 소지자에 한해 응시 가능<br>
+                                                                &nbsp; - 행정직 및 기술직은 관련 자격증 또는 면허증 소지자에 한해 응시 가능<br>
                                                                 <span class="tx-red"> 
-                                                                    * 행정직 - 사서 <br>
-                                                                    * 기술직 - 환경, 전산, 항해, 약무, 병리, 방사선, 치무, 재활치료, 의무기록, 영양관리
+                                                                &nbsp; * 행정직 - 사서 <br>
+                                                                &nbsp; * 기술직 - 환경, 전산, 항해, 약무, 병리, 방사선, 치무, 재활치료, 의무기록, 영양관리
                                                                 </span><br>
-                                                                - 한국사능력검정시험 / 어학능력검정시험은 계급별 합격 기준 점수 필요<br>
-                                                                <span class="tx-red">(* 자세한 사항은 시험과목 (다음페이지) 에서 확인)</span>
+                                                                &nbsp; - 한국사능력검정시험 / 어학능력검정시험은 계급별 합격 기준 점수 필요<br>
+                                                                &nbsp; <span class="tx-red">(* 자세한 사항은 시험과목 (다음페이지) 에서 확인)</span>
                                                             </li>
                                                         </ul>
                                                     </dd>
@@ -241,6 +241,7 @@
                                             </div>
                                         </div>
                                         <div class="guide_slider">
+                                            <h4 class="hTy4 hTy">시험안내</h4>  
                                             <div class="hTy">
                                                 <dl class="gd_txt">
                                                     <dt>
@@ -356,8 +357,10 @@
                                                         <tbody>
                                                         <tr>
                                                             <td class="td_13">5급&nbsp;</td>
-                                                            <td class="gd_txt_bg">2급 <br>
-                                                            이상&nbsp;</td>
+                                                            <td class="gd_txt_bg td_14">
+                                                                2급<br>
+                                                                이상
+                                                            </td>
                                                             <td>고급    <br>
                                                             (50문항 5지 택1형) <br>
                                                             1급 - 70점 이상 <br>
@@ -368,21 +371,24 @@
                                                         </tr>
                                                         <tr>
                                                             <td class="td_13">7급&nbsp;</td>
-                                                            <td class="gd_txt_bg">3급 <br>
-                                                            이상&nbsp;</td>
+                                                            <td class="gd_txt_bg td_14">
+                                                                3급<br>
+                                                                이상
+                                                            </td>
                                                             <td>중급<br>(50문항 5지 택1형) <br>
                                                             3급 -  70점 이상 <br>
                                                             4급 – 60점~69점&nbsp;</td>
-                                                            <td class="td_l">한국사 기초 심화과정으로 한국사에 대한 <br>
-                                                            기본적인 이해를 바탕으로 한국사의 흐름을 <br>
-                                                            대략적으로 이해할 수 있는 능력과, <br>
+                                                            <td class="td_l">한국사 기초 심화과정으로 한국사에 대한 기본적인 이해를 바탕으로<br>
+                                                            한국사의 흐름을 대략적으로 이해할 수 있는 능력과,<br>
                                                             전반적인 이해를 바탕으로 한국사의 개념과 전개 과정을 <br>
                                                             체계적으로 파악할 수 있는 능력 평가&nbsp;</td>
                                                         </tr>
                                                         <tr>
                                                             <td class="td_13">9급</td>
-                                                            <td class="gd_txt_bg">4급 <br>
-                                                            이상&nbsp;</td>
+                                                            <td class="gd_txt_bg td_14">
+                                                                4급<br>
+                                                                이상
+                                                            </td>
                                                             <td>초급<br>(40문항 4지 택1형) <br>
                                                             5급 -  70점 이상 <br>
                                                             6급 – 60점~69점&nbsp;</td>
@@ -393,6 +399,9 @@
                                                     </table>
                                                 </div>
                                             </div>
+                                        </div>
+                                        <div class="guide_slider">
+                                            <h4 class="hTy4 hTy">직렬별 시험과목</h4>  
                                             <div class="hTy">
                                                 <dl class="gd_txt">
                                                     <dt>
@@ -710,6 +719,31 @@
                                                             <td class="gd_txt_bg">9급</td>
                                                             <td>국어, 한국사, 영어, 전자공학, 기계공학</td>
                                                         </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="guide_slider">
+                                            <h4 class="hTy4 hTy">직렬별 시험과목</h4>  
+                                            <div class="hTy">
+                                                <dl class="gd_txt">
+                                                    <dt>
+                                                        <h2>직렬별 시험과목</h2>
+                                                    </dt>
+                                                </dl>
+                                                <div class="mgB3">
+                                                    <table cellspacing="0" cellpadding="0" class="basicTb basicWd gd_table mt20">
+                                                        <colgroup><col width="15%">
+                                                        <col width="8%">
+                                                        <col width="">
+                                                        </colgroup><thead><tr>
+                                                            <th>직렬</th>
+                                                            <th>계급</th>
+                                                            <th>시 험 과 목</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
                                                         <tr>
                                                             <td rowspan="3" class="td_13">탄약</td>
                                                             <td class="gd_txt_bg">5급</td>
@@ -1022,6 +1056,7 @@
                                             </div>
                                         </div>
                                         <div class="guide_slider">
+                                            <h4 class="hTy4 hTy">시험안내</h4>  
                                             <div class="hTy">
                                                 <dl class="gd_txt">
                                                     <dt>
@@ -2458,7 +2493,7 @@
                                                     <td rowspan="6" class="td_13">행정<br>
                                                     (6)</td>
                                                     <td class="gd_txt_bg">행정</td>
-                                                    <td class="td_l"> - 국방정책,군사전략, 체계분석, 평가, 제도, 계획, 연구업무<br>
+                                                    <td class="td_l txtL"> - 국방정책,군사전략, 체계분석, 평가, 제도, 계획, 연구업무<br>
                                                     - 일반행정, 정훈, 심리업무<br>
                                                     - 법제, 송무, 행정소송업무<br>
                                                     - 세입, 세출결산, 재정금융 조사분석, 계산증명, 급여업무<br>
@@ -2466,76 +2501,76 @@
                                                 </tr>
                                                 <tr>
                                                     <td class="gd_txt_bg">군수</td>
-                                                    <td class="td_l">-  수품 소요, 조달, 보급, 재고관리, 정비계획, 장비관리, 물자수불업무<br>
+                                                    <td class="td_l txtL">-  수품 소요, 조달, 보급, 재고관리, 정비계획, 장비관리, 물자수불업무<br>
                                                     - 군수품 생산, 공정, 품질, 안전관리, 자원활용업무<br>
                                                     - 작업계획, 생산시설유지, 생산품 처리업무</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="gd_txt_bg">사서</td>
-                                                    <td class="td_l">- 도서의 수집, 선택, 분류, 목록작성, 보관, 열람에 관한 업무&nbsp;</td>
+                                                    <td class="td_l txtL">- 도서의 수집, 선택, 분류, 목록작성, 보관, 열람에 관한 업무&nbsp;</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="gd_txt_bg">수사</td>
-                                                    <td class="td_l">-   범죄수사, 비위조사, 범죄예방, 계몽활동 등에 관한 업무&nbsp;</td>
+                                                    <td class="td_l txtL">-   범죄수사, 비위조사, 범죄예방, 계몽활동 등에 관한 업무&nbsp;</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="gd_txt_bg">군사정보</td>
-                                                    <td class="td_l">-  주변국 및 대북 군사정보 수집, 생산관리, 부대전파 및 군사 보안업무&nbsp;</td>
+                                                    <td class="td_l txtL">-  주변국 및 대북 군사정보 수집, 생산관리, 부대전파 및 군사 보안업무&nbsp;</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="gd_txt_bg">기술정보</td>
-                                                    <td class="td_l">-  외국정보 및 산업, 경제, 과학기술 정보의 수집, 생산관리 보안업무 <br>
+                                                    <td class="td_l txtL">-  외국정보 및 산업, 경제, 과학기술 정보의 수집, 생산관리 보안업무 <br>
                                                     - 정보용 장비, 기기 등에 의한 정보수집 업무&nbsp;</td>
                                                 </tr>
                                                 <tr>
                                                     <td rowspan="4" class="td_13">시설<br>
                                                     (4)</td>
                                                     <td class="gd_txt_bg">토목</td>
-                                                    <td class="td_l">-  토목공사에 관한 계획, 설계, 시공 및 감독업무</td>
+                                                    <td class="td_l txtL">-  토목공사에 관한 계획, 설계, 시공 및 감독업무</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="gd_txt_bg">건축</td>
-                                                    <td class="td_l">-  건축공사에 관한계획, 설계, 시공 및 감독업무</td>
+                                                    <td class="td_l txtL">-  건축공사에 관한계획, 설계, 시공 및 감독업무</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="gd_txt_bg">시설</td>
-                                                    <td class="td_l">-  건물에 시설된 각종 냉, 난방장치의 설비, 시공, 검사, 정비, 수리업무</td>
+                                                    <td class="td_l txtL">-  건물에 시설된 각종 냉, 난방장치의 설비, 시공, 검사, 정비, 수리업무</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="gd_txt_bg">환경</td>
-                                                    <td class="td_l">-  대기수질, 폐기물, 오염검사, 및 소음진동 측정, 시설물 시공 평가에 관한 업무</td>
+                                                    <td class="td_l txtL">-  대기수질, 폐기물, 오염검사, 및 소음진동 측정, 시설물 시공 평가에 관한 업무</td>
                                                 </tr>
                                                 <tr>
                                                     <td rowspan="7" class="td_13">정보통신<br>
                                                     (6)&nbsp;</td>
                                                     <td class="gd_txt_bg">전산</td>
-                                                    <td class="td_l">-  소프트웨어 개발, 프로그램작성 업무</td>
+                                                    <td class="td_l txtL">-  소프트웨어 개발, 프로그램작성 업무</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="gd_txt_bg">　</td>
-                                                    <td class="td_l">-  시스템 구조 설계, 전산통신 분석, 체계개발 업무&nbsp;</td>
+                                                    <td class="td_l txtL">-  시스템 구조 설계, 전산통신 분석, 체계개발 업무&nbsp;</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="gd_txt_bg">통신</td>
-                                                    <td class="td_l">-  유,무선 통신장비, 기기 조작운용 등 통신 전반에 관한 정비, 수리업무</td>
+                                                    <td class="td_l txtL">-  유,무선 통신장비, 기기 조작운용 등 통신 전반에 관한 정비, 수리업무</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="gd_txt_bg">전기</td>
-                                                    <td class="td_l">-  전기설계, 전도기, 발전기, 전원부하, 송배전 및 변전, 전기에너지, <br>
+                                                    <td class="td_l txtL">-  전기설계, 전도기, 발전기, 전원부하, 송배전 및 변전, 전기에너지, <br>
                                                     -  압추기구,전자기기 ,전기시설 등 전기    전반에 관한 정비, 수리업무&nbsp;</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="gd_txt_bg">전자</td>
-                                                    <td class="td_l">-  전기설계, 전도기, 발전기, 전원부하, 송배전 및 변전, 전기에너지, <br>
+                                                    <td class="td_l txtL">-  전기설계, 전도기, 발전기, 전원부하, 송배전 및 변전, 전기에너지, <br>
                                                     -  압추기구,전자기기 ,전기시설 등 전기 전반에    관한 정비, 수리업무</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="gd_txt_bg">지도</td>
-                                                    <td class="td_l">-  각종 지도 측량, 편집, 지도제작 업무</td>
+                                                    <td class="td_l txtL">-  각종 지도 측량, 편집, 지도제작 업무</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="gd_txt_bg">영상</td>
-                                                    <td class="td_l">-  각종 사진 촬영, 현상,인화, 확대편집, 필름보관 관리 업무<br>
+                                                    <td class="td_l txtL">-  각종 사진 촬영, 현상,인화, 확대편집, 필름보관 관리 업무<br>
                                                     - 각종 사진기, 영사기 조작, 관리 업무<br>
                                                     - 항공사진 제작 분석, 판독 및 항고표적 분석, 자료생산 업무<br>
                                                     - 항공사진 인화, 확대, 현상, 필름보관 관리 업무</td>
@@ -2544,64 +2579,64 @@
                                                     <td rowspan="11" class="td_13">공업<br>
                                                     (11)</td>
                                                     <td class="gd_txt_bg">일반기계</td>
-                                                    <td class="td_l">-  각종 기계 및 장비 부속품의 설계업무 <br>
+                                                    <td class="td_l txtL">-  각종 기계 및 장비 부속품의 설계업무 <br>
                                                     - 각종 공작기계.공구 등을 조작하여 금속류의 가공.제작.조립 업무 <br>
                                                     - 각종 장비의 기골.외피의 금속부분 제작, 정비, 수리업무<br></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="gd_txt_bg">금속</td>
-                                                    <td class="td_l">-  금형제작, 주물생산, 금속 및 비금속 성분의 용해로 운용업무<br>
+                                                    <td class="td_l txtL">-  금형제작, 주물생산, 금속 및 비금속 성분의 용해로 운용업무<br>
                                                     - 금속의 탄소밀도 변화처리<br>
                                                     - 금속 표면의 산화 및 마모 방지를 위한 각종 도금업무<br></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="gd_txt_bg">용접</td>
-                                                    <td class="td_l">-  전기, 단조저항, 가수, 특수용접 등 각종 용접업무</td>
+                                                    <td class="td_l txtL">-  전기, 단조저항, 가수, 특수용접 등 각종 용접업무</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="gd_txt_bg">물리분석</td>
-                                                    <td class="td_l">-  물리학적 감식,검출업무 <br>
+                                                    <td class="td_l txtL">-  물리학적 감식,검출업무 <br>
                                                     - 방사선 및 전자파 등을 이용 금속의 결함 탐지, 검사업무&nbsp;</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="gd_txt_bg">화학분석</td>
-                                                    <td class="td_l">-  각종 금속, 비금속 재료에 대한 화학적 성분 검사업무<br>
+                                                    <td class="td_l txtL">-  각종 금속, 비금속 재료에 대한 화학적 성분 검사업무<br>
                                                     - 각종 연료 분광, 분석 검사업무<br>
                                                     - 화학물질의 성질과 상호간 화학적 반응 개발업무<br>
                                                     - 생체 구성분 결정, 생체 성분간 화학적 변화 및 생화학 연구개발업무&nbsp;</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="gd_txt_bg">유도무기</td>
-                                                    <td class="td_l">-  포 및 유도무기, 사격통제장치, 각종 축적기계 장비의 정비, 수리업무<br>
+                                                    <td class="td_l txtL">-  포 및 유도무기, 사격통제장치, 각종 축적기계 장비의 정비, 수리업무<br>
                                                     - 각종 광학장비 정비.수리업무<br>
                                                     - 함정, 항공기 탑재 무장장비 및 관련 장비 재생, 설치, 정비, 수리업무<br></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="gd_txt_bg">총포</td>
-                                                    <td class="td_l">-  유도장치가 있는 무기를 제외한 각종 총포, 화포, 특수무기 생산, 제작, 정비,수리업무<br>
+                                                    <td class="td_l txtL">-  유도장치가 있는 무기를 제외한 각종 총포, 화포, 특수무기 생산, 제작, 정비,수리업무<br>
                                                     - 각종 화학병기 및 장비의 제작, 관리, 정비 ,수리업무</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="gd_txt_bg">탄약</td>
-                                                    <td class="td_l"> -  탄약의 제조, 분해, 품질검사, 성능검사, 저장.안전관리, 정비수리,재고통제,적송 업무<br>
+                                                    <td class="td_l txtL"> -  탄약의 제조, 분해, 품질검사, 성능검사, 저장.안전관리, 정비수리,재고통제,적송 업무<br>
                                                     - 비파괴시험을 통한 탄약의 결함 검출 및 판독 업무<br>
                                                     - 각종 유도탄, 수중탄 발사장치 및 관계되는 장비 분해, 조립, 설치, 정비, <br>
                                                     수리업무</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="gd_txt_bg">전차</td>
-                                                    <td class="td_l">-  전차, 장갑차량의 부품제작, 조립, 정비, 수리업무<br>
+                                                    <td class="td_l txtL">-  전차, 장갑차량의 부품제작, 조립, 정비, 수리업무<br>
                                                     - 내.외연기관 및 엔진부품의 생산, 조립, 정비, 수리업무</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="gd_txt_bg">차 량</td>
-                                                    <td class="td_l">-  건설장비(중장비.경장비.컴프레서) 및 연계된 장비 정비.수리 및 관리업무<br>
+                                                    <td class="td_l txtL">-  건설장비(중장비.경장비.컴프레서) 및 연계된 장비 정비.수리 및 관리업무<br>
                                                     - 육상용 차량 분해, 조립, 부품대체, 정비, 수리업무<br>
                                                     - 내.외연기관 및 엔진부품의 생산, 조립, 정비, 수리업무</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="gd_txt_bg">인쇄</td>
-                                                    <td class="td_l">-  인쇄기기 조작, 운용, 정비, 수리업무<br>
+                                                    <td class="td_l txtL">-  인쇄기기 조작, 운용, 정비, 수리업무<br>
                                                     - 편집, 교정, 교열, 화공 등에 관한 업무 <br>
                                                     - 원판, 조판, 연마, 제판, 제본 등에 관한 업무</td>
                                                 </tr>
@@ -2609,94 +2644,94 @@
                                                     <td rowspan="5" class="td_13">함정<br>
                                                     (5)</td>
                                                     <td class="gd_txt_bg">선체</td>
-                                                    <td class="td_l">-  선체골격, 늑골 접합, 의장, 설계, 제작 및 정비, 수리업무<br>
+                                                    <td class="td_l txtL">-  선체골격, 늑골 접합, 의장, 설계, 제작 및 정비, 수리업무<br>
                                                     - 선목의 골격, 늑골 접합, 선체의 목재부분 의장, 설계, 제작, 정비, 수리업무<br>
                                                     - 대.소형 선박용 보일러 제작.설치.실험 및 각종 파이프 가공제작.정비.수리업무</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="gd_txt_bg">함정기관</td>
-                                                    <td class="td_l">-  주 추진기관, 선박용 발전기, 원동기 및 관련되는 보조장비정비, 수리업무</td>
+                                                    <td class="td_l txtL">-  주 추진기관, 선박용 발전기, 원동기 및 관련되는 보조장비정비, 수리업무</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="gd_txt_bg">항해</td>
-                                                    <td class="td_l">-  함정 입,출거지 도선 및 기타 항해업무</td>
+                                                    <td class="td_l txtL">-  함정 입,출거지 도선 및 기타 항해업무</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="gd_txt_bg">선거</td>
-                                                    <td class="td_l">-  입거 함정의 선저(수면하 선체), 장비이동 및 관계되는 업무</td>
+                                                    <td class="td_l txtL">-  입거 함정의 선저(수면하 선체), 장비이동 및 관계되는 업무</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="gd_txt_bg">잠수</td>
-                                                    <td class="td_l">-  수면하 선체보수, 수로 장애물 제거, 수중폭파, 용접, 절단, 탐색에 관한 업무</td>
+                                                    <td class="td_l txtL">-  수면하 선체보수, 수로 장애물 제거, 수중폭파, 용접, 절단, 탐색에 관한 업무</td>
                                                 </tr>
                                                 <tr>
                                                     <td rowspan="5" class="td_13">항공<br>
                                                     (4)</td>
                                                     <td class="gd_txt_bg">기체</td>
-                                                    <td class="td_l">-  항공기 기체, 제작, 분해, 조립, 정비, 수리업무</td>
+                                                    <td class="td_l txtL">-  항공기 기체, 제작, 분해, 조립, 정비, 수리업무</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="gd_txt_bg">항공기관</td>
-                                                    <td class="td_l">-  항공기 엔진 및 관련되는 보조장비 분해, 조립, 정비, 수리업무</td>
+                                                    <td class="td_l txtL">-  항공기 엔진 및 관련되는 보조장비 분해, 조립, 정비, 수리업무</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="gd_txt_bg">항공보기</td>
-                                                    <td class="td_l">-  보조기기 및 관련된 보조장비 분해, 조립, 제작, 정비, 수리업무</td>
+                                                    <td class="td_l txtL">-  보조기기 및 관련된 보조장비 분해, 조립, 제작, 정비, 수리업무</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="gd_txt_bg">항공도장</td>
-                                                    <td class="td_l">-  항공기 내,외부 도장 및 각종 특수도장 업무</td>
+                                                    <td class="td_l txtL">-  항공기 내,외부 도장 및 각종 특수도장 업무</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="gd_txt_bg">항공지원</td>
-                                                    <td class="td_l">-  지원되는 소방차, 급유차, 견인차, 특수차량, 운전, 정비, 수리, 검사업무</td>
+                                                    <td class="td_l txtL">-  지원되는 소방차, 급유차, 견인차, 특수차량, 운전, 정비, 수리, 검사업무</td>
                                                 </tr>
                                                 <tr>
                                                     <td rowspan="8" class="td_13">보건<br>
                                                     (8)</td>
                                                     <td class="gd_txt_bg">약무</td>
-                                                    <td class="td_l"><p>- 각종 의약품 획득, 투약, 분배, 저장관리 업무</p></td>
+                                                    <td class="td_l txtL"><p>- 각종 의약품 획득, 투약, 분배, 저장관리 업무</p></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="gd_txt_bg">병리</td>
-                                                    <td class="td_l">-  병리 임상검사, 원인분석, 임상관찰, 환자치료에 관계되는 자료관리 업무</td>
+                                                    <td class="td_l txtL">-  병리 임상검사, 원인분석, 임상관찰, 환자치료에 관계되는 자료관리 업무</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="gd_txt_bg">방사선</td>
-                                                    <td class="td_l">-  방사선 이용 질병진단, 환부투시, 촬영, 치료 및 자료관리 업무</td>
+                                                    <td class="td_l txtL">-  방사선 이용 질병진단, 환부투시, 촬영, 치료 및 자료관리 업무</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="gd_txt_bg">치무</td>
-                                                    <td class="td_l">-  각종 의치설계, 제작업무</td>
+                                                    <td class="td_l txtL">-  각종 의치설계, 제작업무</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="gd_txt_bg">재활치료</td>
-                                                    <td class="td_l">-  질병 및 신체장애를 예방하기 위해 전기, 광선, 물,<br>
+                                                    <td class="td_l txtL">-  질병 및 신체장애를 예방하기 위해 전기, 광선, 물,<br>
                                                     -  냉온열 등을 이용한 치료적 마사지와 운동치료를 포함한 치료 업무&nbsp;</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="gd_txt_bg">의무기록</td>
-                                                    <td class="td_l">-  진료전반에 대한 통계와 의무기록의 분석 및 미비기록 관리,의무기록 재검토, 질병색인,<br>
+                                                    <td class="td_l txtL">-  진료전반에 대한 통계와 의무기록의 분석 및 미비기록 관리,의무기록 재검토, 질병색인,<br>
                                                     수술색인 등의 색인 업무</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="gd_txt_bg">의공</td>
-                                                    <td class="td_l">-  의지, 의안 설계, 제작업무<br>
+                                                    <td class="td_l txtL">-  의지, 의안 설계, 제작업무<br>
                                                     - 각종 의료장비, 기기 제작 및 정비, 수리업무</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="gd_txt_bg">영양관리</td>
-                                                    <td class="td_l">-  식품저장, 가공, 영양분석, 식단작성업무</td>
+                                                    <td class="td_l txtL">-  식품저장, 가공, 영양분석, 식단작성업무</td>
                                                 </tr>
                                                 <tr>
                                                     <td rowspan="2" class="td_13">기상<br>
                                                     (2)</td>
                                                     <td class="gd_txt_bg">기상정보</td>
-                                                    <td class="td_l">-  각종 기상장비, 기기 및 관계된 장비 조작, 운용관리 업무</td>
+                                                    <td class="td_l txtL">-  각종 기상장비, 기기 및 관계된 장비 조작, 운용관리 업무</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="gd_txt_bg">기상예보</td>
-                                                    <td class="td_l">-  기상관측, 예보, 분석, 통계관리 등에 관한 업무</td>
+                                                    <td class="td_l txtL">-  기상관측, 예보, 분석, 통계관리 등에 관한 업무</td>
                                                 </tr>
                                             </tbody>
                                         </table>

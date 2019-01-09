@@ -607,6 +607,8 @@ class OrderFModel extends BaseOrderFModel
             $cart_prod_type = element('CartProdType', $input);   // 장바구니 상품 타입
             $site_code = element('SiteCode', $input);   // 사이트코드
             $prod_code = element('ProdCode', $input);   // 상품코드
+            $learn_pattern_ccd = element('LearnPatternCcd', $input);    // 학습형태
+            $pack_type_ccd = element('PackTypeCcd', $input);    // 패키지구분
             $arr_prod_code_sub = empty(element('ProdCodeSub', $input)) === false ? explode(',', element('ProdCodeSub', $input)) : [];   // 패키지의 서브상품코드 배열
 
             $point_type = $cart_type == 'book' ? 'book' : 'lecture';    // 포인트 구분
@@ -616,6 +618,7 @@ class OrderFModel extends BaseOrderFModel
             $is_visit_pay = element('IsVisitPay', $input, 'N');     // 방문결제 여부
             $is_delivery_info = element('IsDeliveryInfo', $input, 'N');     // 주문상품배송정보 입력 여부
             $ca_idx = element('CaIdx', $input);     // 인증신청식별자
+            $post_data = element('PostData', $input);   // 장바구니 저장 데이터
             
             // 실결제금액 체크
             if ($real_pay_price < 0) {
@@ -673,6 +676,48 @@ class OrderFModel extends BaseOrderFModel
 
                     if ($this->_conn->set($data)->insert($this->_table['order_sub_product']) === false) {
                         throw new \Exception('주문상품서브 정보 등록에 실패했습니다.');
+                    }
+                }
+            }
+
+            // 주문상품 과목/교수 연결 등록 (기간제패키지)
+            if ($learn_pattern_ccd == $this->_learn_pattern_ccd['periodpack_lecture']) {
+                if ($pack_type_ccd == $this->_adminpack_lecture_type_ccd['normal']) {
+                    // 일반형
+                    $arr_subject_prof_idx = $this->productFModel->findPeriodPackageSubjectProfIdx($prod_code);
+                    if (empty($arr_subject_prof_idx) === true) {
+                        throw new \Exception('기간제 일반형 패키지 과목/교수 정보가 없습니다.');
+                    }
+
+                    foreach ($arr_subject_prof_idx as $subject_prof_row) {
+                        $data = [
+                            'OrderProdIdx' => $order_prod_idx,
+                            'ProfIdx' => $subject_prof_row['ProfIdx'],
+                            'SubjectIdx' => $subject_prof_row['SubjectIdx']
+                        ];
+
+                        if ($this->_conn->set($data)->insert($this->_table['order_product_prof_subject']) === false) {
+                            throw new \Exception('주문상품 과목/교수 정보 등록에 실패했습니다.');
+                        }
+                    }
+                } else {
+                    // 선택형
+                    $arr_subject_prof_idx = element('subject_prof_idx', (array) json_decode($post_data, true), []);
+                    $arr_subject_prof_idx = array_unique($arr_subject_prof_idx);    // 중복 제거
+                    if (empty($arr_subject_prof_idx) === true) {
+                        throw new \Exception('기간제 선택형 패키지 과목/교수 정보가 없습니다.');
+                    }
+
+                    foreach ($arr_subject_prof_idx as $subject_prof_idx) {
+                        $data = [
+                            'OrderProdIdx' => $order_prod_idx,
+                            'ProfIdx' => str_first_pos_after($subject_prof_idx, ':'),
+                            'SubjectIdx' => str_first_pos_before($subject_prof_idx, ':')
+                        ];
+
+                        if ($this->_conn->set($data)->insert($this->_table['order_product_prof_subject']) === false) {
+                            throw new \Exception('주문상품 과목/교수 정보 등록에 실패했습니다.');
+                        }
                     }
                 }
             }

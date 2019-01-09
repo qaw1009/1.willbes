@@ -15,9 +15,10 @@ class ProductFModel extends WB_Model
         'delivery_price' => 'vw_product_delivery_price',
         'delivery_add_price' => 'vw_product_delivery_add_price',
         'product' => 'lms_product',
-        'product_r_product' => 'lms_product_r_product',
-        'product_r_sublecture' => 'lms_product_r_sublecture',
         'product_lecture' => 'lms_product_lecture',
+        'product_division' => 'lms_product_division',
+        'product_r_sublecture' => 'lms_product_r_sublecture',
+        'product_r_product' => 'lms_product_r_product',
         'product_salebook' => 'vw_product_salebook',
         'product_content' => 'lms_product_content',
         'product_memo' => 'lms_product_memo',
@@ -363,6 +364,33 @@ class ProductFModel extends WB_Model
 
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where, [$prod_code]);
+
+        return $query->result_array();
+    }
+
+    /**
+     * 기간제패키지 서브강좌 과목/교수 조회 (기간제패키지 주문일 경우 사용)
+     * @param int $prod_code [기간제패키지 상품코드]
+     * @return mixed
+     */
+    public function findPeriodPackageSubjectProfIdx($prod_code)
+    {
+        $column = 'PL.SubjectIdx, PD.ProfIdx';
+        $from = '
+            from ' . $this->_table['product_r_sublecture'] . ' as PS
+                inner join ' . $this->_table['product'] . ' as P
+                    on PS.ProdCodeSub = P.ProdCode
+                inner join ' . $this->_table['product_lecture'] . ' as PL
+                    on P.ProdCode = PL.ProdCode
+                inner join ' . $this->_table['product_division'] . ' as PD
+                    on P.ProdCode = PD.ProdCode
+            where PS.ProdCode = ? and PS.IsStatus = "Y"
+                and P.IsStatus = "Y"
+                and PD.IsStatus = "Y" and PD.IsReprProf = "Y"
+            group by PL.SubjectIdx, PD.ProfIdx';
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from, [$prod_code]);
 
         return $query->result_array();
     }

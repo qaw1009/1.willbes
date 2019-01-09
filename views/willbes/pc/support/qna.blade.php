@@ -2,7 +2,11 @@
 
 @section('content')
 <div id="Container" class="subContainer widthAuto c_both">
-    @include('willbes.pc.layouts.partial.site_tab_menu')
+    @if (empty($__cfg['TabMenu']) === true)
+        @include('willbes.pc.layouts.partial.site_menu')
+    @else
+        @include('willbes.pc.layouts.partial.site_tab_menu')
+    @endif
     <div class="Depth">
         @include('willbes.pc.layouts.partial.site_route_path')
     </div>
@@ -50,7 +54,7 @@
                                 <option value="{{$key}}" @if(element('s_consult_type', $arr_input) == $key)selected="selected"@endif>{{$val}}</option>
                             @endforeach
                         </select>
-                        <div class="subBtn NSK f_right"><a href="{{front_url('/support/qna/create?'.$get_params)}}">문의하기 ></a></div>
+                        <div class="subBtn NSK f_right"><a href="{{front_url($default_path.'/create?'.$get_params)}}">문의하기 ></a></div>
                     </div>
                     <div class="LeclistTable">
                         <table cellspacing="0" cellpadding="0" class="listTable qnaTable upper-gray upper-black bdb-gray tx-gray">

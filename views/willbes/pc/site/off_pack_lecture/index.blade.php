@@ -167,6 +167,7 @@
             {!! banner('강좌상품_우측날개', '', $__cfg['SiteCode'], '0') !!}
         </div>
     </div>
+    {!! popup('657002') !!}
     <!-- End Container -->
     <script src="/public/js/willbes/product_util.js"></script>
     <script type="text/javascript">
@@ -189,8 +190,6 @@
             var goSearch = function() {
                 goUrl('search_text', Base64.encode(document.getElementById('search_keyword').value + ':' + document.getElementById('search_value').value));
             };
-
-
         });
     </script>
     <!-- End Container -->

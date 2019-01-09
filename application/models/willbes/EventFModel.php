@@ -16,6 +16,7 @@ class EventFModel extends WB_Model
         'vw_board' => 'vw_board',
         'sys_category' => 'lms_sys_category',
         'site' => 'lms_site',
+        'site_group' => 'lms_site_group',
         'sys_code' => 'lms_sys_code',
         'crm_send' => 'lms_crm_send',
         'crm_send_r_receive_sms' => 'lms_crm_send_r_receive_sms',
@@ -500,6 +501,54 @@ class EventFModel extends WB_Model
         }
         //echo $this->_conn->last_query();
         return true;
+    }
+
+    /**
+     * MyClass -> 회원 이벤트신청현황
+     * @param $is_count
+     * @param array $arr_condition
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
+     */
+    public function listAllEventForMyClass($is_count, $arr_condition=[], $limit = null, $offset = null, $order_by = [])
+    {
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $column = 'A.*';
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $from = "
+            FROM (
+                SELECT STRAIGHT_JOIN
+                    c.ElIdx, c.CampusCcd, fn_ccd_name(c.CampusCcd) AS CampusName, f.SiteGroupName, IF(e.IsCampus = 'Y', '학원', '온라인') AS OnOffTypeName,
+                    c.EventName, CASE c.RequstType WHEN 1 THEN '설명회' WHEN 2 THEN '특강' WHEN 3 THEN '이벤트' END AS RequstTypeName,
+                    DATE_FORMAT(c.RegisterStartDate, '%Y-%m-%d') AS RegisterStartDate,
+	                DATE_FORMAT(c.RegisterEndDate, '%Y-%m-%d') AS RegisterEndDate,
+                    d.FileFullPath, d.FileName,
+                    DATE_FORMAT(a.RegDatm, '%Y-%m-%d') AS MemRegDatm
+                FROM
+                    {$this->_table['event_member']} AS a
+                    INNER JOIN {$this->_table['event_register']} AS b ON a.ErIdx = b.ErIdx
+                    INNER JOIN {$this->_table['event_lecture']} AS c ON b.ElIdx = c.ElIdx
+                    LEFT JOIN {$this->_table['event_file']} AS d ON c.ElIdx = d.ElIdx AND d.IsUse = 'Y' AND d.FileType = 'S'
+                    INNER JOIN {$this->_table['site']} AS e ON c.SiteCode = e.SiteCode
+                    INNER JOIN {$this->_table['site_group']} AS f ON e.SiteGroupCode = f.SiteGroupCode
+                {$where}
+                GROUP BY c.Elidx
+            ) AS A
+        ";
+
+        $query = $this->_conn->query('select STRAIGHT_JOIN ' . $column . $from . $order_by_offset_limit);
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 
     /**

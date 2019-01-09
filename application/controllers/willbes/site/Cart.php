@@ -237,8 +237,10 @@ class Cart extends \app\controllers\FrontController
         $prod_code = $this->_reqP('prod_code');
         $is_direct_pay = $this->_reqP('is_direct_pay');
         $site_code = $this->_site_code;
+        $arr_subject_prof_idx = $this->_reqP('subject_prof');
         $is_visit_pay = 'N';
         $ret_url = '';
+        $post_data = null;
 
         if (empty($prod_code) === true || empty($is_direct_pay) === true) {
             return '필수 파라미터 오류입니다.';
@@ -249,13 +251,20 @@ class Cart extends \app\controllers\FrontController
             $is_visit_pay = 'Y';
         }
 
+        // 기간제선택형패키지 과목/교수 정보
+        if (empty($arr_subject_prof_idx) === false) {
+            $post_data['subject_prof_idx'] = (array) $arr_subject_prof_idx;
+            $post_data = json_encode($post_data);
+        }
+
         $add_data = [
             'prod_code' => $prod_code,
             'prod_code_sub' => $this->_reqP('prod_code_sub'),
             'site_code' => $site_code,
             'is_direct_pay' => $is_direct_pay,
             'is_visit_pay' => $is_visit_pay,
-            'ca_idx' => $this->_reqP('ca_idx')
+            'ca_idx' => $this->_reqP('ca_idx'),
+            'post_data' => $post_data
         ];
 
         // 리턴 URL 지정

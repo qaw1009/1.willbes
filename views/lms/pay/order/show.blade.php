@@ -199,6 +199,9 @@
                                             <td>
                                                 @if($order_prod_row['LearnPatternCcd'] == $_learn_pattern_ccd['on_lecture'] && $order_prod_row['RealPayPrice'] > 0)
                                                     <button name="btn_refund_check" class="btn btn-xs btn-success mb-0" data-order-prod-idx="{{ $order_prod_row['OrderProdIdx'] }}">환불산출금액확인</button>
+                                                @elseif($order_prod_row['LearnPatternCcd'] == $_learn_pattern_ccd['userpack_lecture'])
+                                                    <button name="btn_sub_refund_check" class="btn btn-xs btn-success mb-0" data-order-prod-idx="{{ $order_prod_row['OrderProdIdx'] }}">개별환불처리</button>
+                                                    <input type="hidden" id="sub_refund_price_{{ $order_prod_row['OrderProdIdx'] }}" name="sub_refund_price[]" value=""/>
                                                 @elseif(($order_prod_row['ProdTypeCcd'] == $_prod_type_ccd['on_lecture'] || $order_prod_row['ProdTypeCcd'] == $_prod_type_ccd['off_lecture']) && $order_prod_row['RealPayPrice'] > 0)
                                                     수동산출요망
                                                 @elseif($order_prod_row['ProdTypeCcd'] == $_prod_type_ccd['book'])
@@ -208,10 +211,10 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <input id="card_refund_price_{{ $order_prod_row['OrderProdIdx'] }}" name="card_refund_price[]" class="form-control input-sm" title="카드환불금액" value="{{ $order_prod_row['CalcCardRefundPrice'] }}" @if($order_prod_row['CardPayPrice'] < 1) readonly="readonly" @endif style="width: 140px;"/>
+                                                <input id="card_refund_price_{{ $order_prod_row['OrderProdIdx'] }}" name="card_refund_price[]" class="form-control input-sm" title="카드환불금액" value="{{ $order_prod_row['CalcCardRefundPrice'] }}" @if($order_prod_row['CardPayPrice'] < 1 || $order_prod_row['LearnPatternCcd'] == $_learn_pattern_ccd['userpack_lecture']) readonly="readonly" @endif style="width: 140px;"/>
                                             </td>
                                             <td>
-                                                <input id="cash_refund_price_{{ $order_prod_row['OrderProdIdx'] }}" name="cash_refund_price[]" class="form-control input-sm" title="현금환불금액" value="{{ $order_prod_row['CalcCashRefundPrice'] }}" @if($order_prod_row['CashPayPrice'] < 1) readonly="readonly" @endif style="width: 140px;"/>
+                                                <input id="cash_refund_price_{{ $order_prod_row['OrderProdIdx'] }}" name="cash_refund_price[]" class="form-control input-sm" title="현금환불금액" value="{{ $order_prod_row['CalcCashRefundPrice'] }}" @if($order_prod_row['CashPayPrice'] < 1 || $order_prod_row['LearnPatternCcd'] == $_learn_pattern_ccd['userpack_lecture']) readonly="readonly" @endif style="width: 140px;"/>
                                             </td>
                                             <td>
                                                 @if($order_prod_row['IsUseCoupon'] == 'Y')
@@ -535,10 +538,26 @@
                 });
             });
 
+            // 개별환불처리 버튼 클릭
+            $refund_proc_form.on('click', 'button[name="btn_sub_refund_check"]', function() {
+                var order_idx = $refund_proc_form.find('input[name="order_idx"]').val();
+                var order_prod_idx = $(this).data('order-prod-idx');
+
+                $('button[name="btn_sub_refund_check"]').setLayer({
+                    'url' : '{{ site_url('/pay/refundProc/calcSub') }}',
+                    'width' : 900,
+                    'add_param_type' : 'param',
+                    'add_param' : [
+                        { 'id' : 'order_idx', 'name' : '주문식별자', 'value' : order_idx, 'required' : true },
+                        { 'id' : 'order_prod_idx', 'name' : '주문상품식별자', 'value' : order_prod_idx, 'required' : true }
+                    ]
+                });
+            });
+
             // 환불처리하기 버튼 클릭
             $refund_proc_form.on('click', 'button[name="btn_refund_proc"]', function() {
                 var $params = {};
-                var order_prod_idx = '', real_pay_price = 0, card_refund_price = 0, cash_refund_price = 0, is_coupon_refund = '', is_point_refund = '', is_delivery_check = '', is_check = true;
+                var order_prod_idx = '', real_pay_price = 0, card_refund_price = 0, cash_refund_price = 0, sub_refund_price = '', is_coupon_refund = '', is_point_refund = '', is_delivery_check = '', is_check = true;
                 var $order_prod_idx = $refund_proc_form.find('input[name="order_prod_idx[]"]:checked');
                 var order_idx = $refund_proc_form.find('input[name="order_idx"]').val();
 
@@ -552,6 +571,7 @@
                     real_pay_price = parseInt($(this).data('real-pay-price'));
                     card_refund_price = parseInt($refund_proc_form.find('#card_refund_price_' + order_prod_idx).val()) || 0;
                     cash_refund_price = parseInt($refund_proc_form.find('#cash_refund_price_' + order_prod_idx).val()) || 0;
+                    sub_refund_price = $refund_proc_form.find('#sub_refund_price_' + order_prod_idx).val() || '';
                     is_coupon_refund = $refund_proc_form.find('#is_coupon_refund_' + order_prod_idx + ':checked').val() || 'N';
                     is_point_refund = $refund_proc_form.find('#is_point_refund_' + order_prod_idx + ':checked').val() || 'N';
                     is_delivery_check = $refund_proc_form.find('#is_delivery_check_' + order_prod_idx).val();
@@ -562,22 +582,33 @@
                         return false;
                     }
 
+                    if ($refund_proc_form.find('#sub_refund_price_' + order_prod_idx).length > 0 && sub_refund_price === '') {
+                        alert('먼저 개별환불처리 버튼을 클릭하여 개별상품 환불금액을 입력해 주세요.');
+                        is_check = false;
+                        return false;
+                    }
+
                     if (typeof is_delivery_check !== 'undefined' && is_delivery_check === 'N') {
                         alert('먼저 반송확인 버튼을 클릭해 주세요.');
                         is_check = false;
                         return false;
                     }
 
+                    if (sub_refund_price !== '') {
+                        sub_refund_price = JSON.parse(Base64.decode(sub_refund_price));
+                    }
+
                     $params[order_prod_idx] = {
                         'card_refund_price' : card_refund_price,
                         'cash_refund_price' : cash_refund_price,
+                        'sub_refund_price' : sub_refund_price,
                         'is_coupon_refund' : is_coupon_refund,
                         'is_point_refund' : is_point_refund
                     };
                 });
 
                 if (is_check === false) {
-                    return;
+                    return false;
                 }
 
                 $('button[name="btn_refund_proc"]').setLayer({

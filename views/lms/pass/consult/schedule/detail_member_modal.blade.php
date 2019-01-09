@@ -162,7 +162,7 @@
             ajaxSubmit($list_modal_form, _url, function(ret) {
                 if(ret.ret_cd) {
                     notifyAlert('success', '알림', ret.ret_msg);
-                    location.replace('{{ site_url('/pass/consult/schedule/') }}' + getQueryString());
+                    location.replace('{{ site_url('/pass/consult/member/') }}' + getQueryString());
                 }
             }, showValidateError, null, false, 'alert');
         });

@@ -72,6 +72,17 @@ class VideoManagerModel extends WB_Model
     }
 
     /**
+     * 라이브 송출관리 데이터 조회
+     * @param array $arr_condition
+     * @param $column
+     * @return array
+     */
+    public function findLiveVideo($arr_condition = [], $column)
+    {
+        return $this->_conn->getFindResult($this->_table['live_video'], $column, $arr_condition);
+    }
+
+    /**
      * 수정 폼을 위한 데이터 조회
      * @param $idx
      * @return array
@@ -102,6 +113,21 @@ class VideoManagerModel extends WB_Model
             $site_code = element('site_code', $input);
             $order_num = get_var(element('order_num', $input), $this->_getVideoOrderNum($site_code));
             $admin_idx = $this->session->userdata('admin_idx');
+
+            //중복데이터 체크
+            $arr_condition = [
+                'EQ' => [
+                    'SiteCode' => $site_code,
+                    'CampusCcd' => element('campus_ccd', $input),
+                    'CIdx' => element('class_room_idx', $input),
+                    'IsUse' => 'Y',
+                    'IsStatus' => 'Y'
+                ]
+            ];
+            $liveVideoData = $this->findLiveVideo($arr_condition, 'LecLiveVideoIdx');
+            if (empty($liveVideoData) === false) {
+                throw new \Exception('중복된 라이브송출 데이터가 존재합니다.');
+            }
 
             $data = [
                 'SiteCode' => $site_code,
@@ -144,6 +170,23 @@ class VideoManagerModel extends WB_Model
             $site_code = element('site_code', $input);
             $order_num = get_var(element('order_num', $input), $this->_getVideoOrderNum($site_code));
             $admin_idx = $this->session->userdata('admin_idx');
+
+            //사용중으로 수정 시 중복데이터 체크
+            if ($row['IsUse'] == 'N' && element('is_use', $input) == 'Y') {
+                $arr_condition = [
+                    'EQ' => [
+                        'SiteCode' => $site_code,
+                        'CampusCcd' => element('campus_ccd', $input),
+                        'CIdx' => element('class_room_idx', $input),
+                        'IsUse' => 'Y',
+                        'IsStatus' => 'Y'
+                    ]
+                ];
+                $liveVideoData = $this->findLiveVideo($arr_condition, 'LecLiveVideoIdx');
+                if (empty($liveVideoData) === false) {
+                    throw new \Exception('중복된 라이브송출 데이터가 존재합니다.');
+                }
+            }
 
             $data = [
                 'SiteCode' => $site_code,

@@ -145,6 +145,12 @@
 
     <a href="{{ site_url('/home/html/mypage_online4') }}" target="_blank">내강의실 > 온라인강좌 > 수강종료강좌 page 이동</a><br/><br/>
 
+    <a href="{{ site_url('/home/html/mypage_online5') }}" target="_blank">내강의실 > 온라인강좌 > 북마크 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/mypage_online6') }}" target="_blank">내강의실 > 온라인강좌 > 북마크상세 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/mypage_online7') }}" target="_blank">내강의실 > 온라인강좌 > 수강확인증출력 page 이동</a><br/><br/>
+
     <a href="{{ site_url('/home/html/mypage_acad1') }}" target="_blank">내강의실 > 학원강좌 > 수강신청강좌 page 이동</a><br/><br/>
 
     <a href="{{ site_url('/home/html/mypage_acad2') }}" target="_blank">내강의실 > 학원강좌 > 수강종료강좌 page 이동</a><br/><br/>
@@ -163,13 +169,13 @@
 
     <a href="{{ site_url('/home/html/mypage_payment2_2') }}" target="_blank">내강의실 > 결제관리 > 주문/배송조회(입금대기) page 이동</a><br/><br/>
 
-    <a href="{{ site_url('/home/html/mypage_payment3') }}" target="_blank">내강의실 > 결제관리 > 포인트관리 page 이동</a><br/><br/>
-
-    <a href="{{ site_url('/home/html/mypage_payment4') }}" target="_blank">내강의실 > 결제관리 > 쿠폰/수강권관리 page 이동</a><br/><br/>
-
 </div>
 
 <div style="float:left; width: 330px; height: 750px; font-size: 14px;">
+
+    <a href="{{ site_url('/home/html/mypage_payment3') }}" target="_blank">내강의실 > 결제관리 > 포인트관리 page 이동</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/mypage_payment4') }}" target="_blank">내강의실 > 결제관리 > 쿠폰/수강권관리 page 이동</a><br/><br/>
 
     <a href="{{ site_url('/home/html/mypage_support1') }}" target="_blank">내강의실 > 학습지원관리 > 쪽지관리 page 이동</a><br/><br/>
 
@@ -202,6 +208,7 @@
     <a href="{{ site_url('/home/html/test_popup') }}" target="_blank">*** test popup page 이동</a><br/><br/>
     <a href="{{ site_url('/home/html/test_popup2') }}" target="_blank">*** test 인증하기 page 이동</a><br/><br/>
     <a href="{{ site_url('/home/html/test_video') }}" target="_blank">*** test video page 이동</a><br/><br/>
+    <a href="{{ site_url('/home/html/test_onair') }}" target="_blank">*** test onair page 이동</a><br/><br/>
 
 </div>
 

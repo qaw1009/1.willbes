@@ -45,6 +45,8 @@ class SupportBoardFModel extends BaseSupportFModel
                 'b.BoardIdx' => $board_idx,
             ]
         ]);
+        $column = $column . ',b.BoardIsComment';
+
         $result = $this->_conn->getListResult($this->_table['board'], $column, $arr_condition, $limit, $offset, $order_by);
         //echo $this->_conn->last_query();exit;
         return element('0', $result, []);

@@ -13,10 +13,13 @@ class BaseSupportFModel extends WB_Model
         ,'lms_board_attach' => 'lms_board_attach'
         ,'lms_board_assignment' => 'lms_board_assignment'
         ,'lms_board_assignment_r_schedule_date' => 'lms_board_assignment_r_schedule_date'
+        ,'lms_board_r_comment' => 'lms_board_r_comment'
+        ,'lms_member' => 'lms_member'
         ,'menu' => 'lms_site_menu'
         ,'code' => 'lms_sys_code'
         ,'site' => 'lms_site'
         ,'mylecture_pkg' => 'vw_pkg_mylecture'
+        ,'mylecture_on' => 'vw_on_mylecture'
         ,'board_tpass_member_authority' => 'lms_board_tpass_member_authority'
     ];
 
@@ -103,7 +106,6 @@ class BaseSupportFModel extends WB_Model
         return $query->result_array();
     }
 
-
     /**
      * Campus 목록 추출
      * @param $site_code
@@ -114,9 +116,7 @@ class BaseSupportFModel extends WB_Model
         $arr_condition=[
             'EQ' => ['A.SiteCode'=>$site_code]
         ];
-
         $column = 'B.SiteCode,B.CampusCcd,C.CcdName';
-
         $from  = '
             from 
                 lms_site A 
@@ -126,13 +126,10 @@ class BaseSupportFModel extends WB_Model
                 A.IsCampus=\'Y\' and A.IsStatus=\'Y\' and B.IsStatus=\'Y\' and C.IsStatus=\'Y\' and C.IsUse=\'Y\'
         ';
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
-
         $order_by = ' order by C.OrderNum ASC';
-
         $query = $this->_conn->query('select ' . $column . $from . $where. $order_by);
         return $query->result_array();
     }
-
 
     /**
      * 학습프로그램 목록 추출
@@ -143,20 +140,15 @@ class BaseSupportFModel extends WB_Model
         $arr_condition=[
             'EQ' => ['GroupCcd'=>'671']
         ];
-
         $column = 'Ccd,CcdName, CcdValue, CcdDesc, CcdEtc';
-
         $from = '
             from 
                 '.$this->_table['code'] .'
             WHERE 
                 IsStatus=\'Y\' and IsUse=\'Y\'
         ';
-
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
-
         $order_by = ' order by OrderNum ASC';
-
         $query = $this->_conn->query('select '. $column . $from . $where. $order_by);
         return $query->result_array();
     }
@@ -201,6 +193,138 @@ class BaseSupportFModel extends WB_Model
         }
         //echo $this->_conn->last_query();
         return true;
+    }
+
+    /**
+     * 수강목록 조회
+     * @param array $arr_condition
+     * @return array|mixed
+     */
+    public function getOnMyLectureArray($arr_condition = [])
+    {
+        $query = "SELECT STRAIGHT_JOIN DISTINCT ProdCodeSub, ProdName";
+        $query .= " FROM {$this->_table['mylecture_on']}";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $query .= $where->getMakeWhere(false);
+
+        $query = $this->_conn->query($query);
+        $data = $query->result_array();
+
+        $data = array_pluck($data, 'ProdName', 'ProdCodeSub');
+        return $data;
+    }
+
+    /**
+     * 게시판 댓글 목록 조회
+     * @param $is_count
+     * @param array $arr_condition
+     * @param null $column
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
+     */
+    public function listComment($is_count, $arr_condition=[], $column = null, $limit = null, $offset = null, $order_by = [])
+    {
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $from = "
+            FROM {$this->_table['lms_board_r_comment']} as a
+            LEFT JOIN {$this->_table['lms_member']} AS b ON a.RegMemIdx = b.MemIdx
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    /**
+     * 게시판 댓글 등록
+     * @param array $requestData
+     * @return array|bool
+     */
+    public function addComment($requestData = [])
+    {
+        $this->_conn->trans_begin();
+        try {
+            $inputData = [
+                'BoardIdx' => $requestData['board_idx'],
+                'RegMemIdx' => $this->session->userdata('mem_idx'),
+                'RegType' => '0',
+                'Comment' => $requestData['comment'],
+                'RegIp' => $this->input->ip_address()
+            ];
+
+            if ($this->_conn->set($inputData)->insert($this->_table['lms_board_r_comment']) === false) {
+                throw new \Exception('댓글 등록에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * 댓글 삭제 처리
+     * @param $comment_idx
+     * @return array|bool
+     */
+    public function delComment($comment_idx)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $result = $this->_findCommentData($comment_idx, 'BoardCmtIdx');
+            if (empty($result)) {
+                throw new \Exception('조회된 댓글이 없습니다.');
+            }
+
+            $is_update = $this->_conn->set([
+                'IsStatus' => 'N',
+                'UpdDatm' => date('Y-m-d H:i:s')
+            ])->where('BoardCmtIdx', $comment_idx)->where('IsStatus', 'Y')->update($this->_table['lms_board_r_comment']);
+
+            if ($is_update === false) {
+                throw new \Exception('데이터 삭제에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    private function _findCommentData($idx, $column = '*')
+    {
+        $from = "
+            FROM {$this->_table['lms_board_r_comment']}
+        ";
+        $where = $this->_conn->makeWhere([
+            'EQ' => [
+                'BoardCmtIdx' => $idx,
+                'IsStatus' => 'Y'
+            ]
+        ]);
+        $where = $where->getMakeWhere(false);
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where);
+        $query = $query->row_array();
+
+        return $query;
     }
 
     /**

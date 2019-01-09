@@ -7,8 +7,8 @@
         <form class="form-horizontal form-label-left" id="_ajax_search_form" name="_ajax_search_form" method="POST" onsubmit="return false;" novalidate>
             {!! csrf_field() !!}
             <input type="hidden" id="search_cate_code" name="search_cate_code" value="{{element('cate_code', $arr_input)}}">
-            <input type="hidden" id="search_subject_idx" name="search_subject_idx">
-            <input type="hidden" id="search_prof_idx" name="search_prof_idx">
+            <input type="hidden" id="search_subject_idx" name="search_subject_idx" value="{{element('subject_idx', $arr_input)}}">
+            <input type="hidden" id="search_prof_idx" name="search_prof_idx" value="{{element('prof_idx', $arr_input)}}">
             <input type="hidden" id="search_prod_code" name="search_prod_code">
             <input type="hidden" id="orderby" name="orderby">
 
@@ -31,7 +31,7 @@
                             <th class="tx-gray">과목선택</th>
                             <td colspan="8">
                                 <ul class="curriSelect">
-                                    <li><a href="#none" id="subject_all" onclick="ajaxProfInfo('{{element('cate_code', $arr_input)}}', 'all');" class="subject-list on">전체</a></li>
+                                    <li><a href="#none" id="subject_all" onclick="ajaxProfInfo('{{element('cate_code', $arr_input)}}', 'all');" class="subject-list">전체</a></li>
                                     @foreach($arr_base['subject'] as $idx => $row)
                                         <li><a href="#none" id="subject_{{$row['SubjectIdx']}}" class="subject-list" onclick="ajaxProfInfo('{{element('cate_code', $arr_input)}}', '{{$row['SubjectIdx']}}');">{{$row['SubjectName']}}</a></li>
                                     @endforeach
@@ -47,14 +47,9 @@
                             <td colspan="8" class="tx-left">
                                 <select id="sel_prod_code" name="sel_prod_code" title="강좌를 선택해 주세요.">
                                     <option value="">강좌를 선택해 주세요.</option>
-                                    <option value="200105">2018 신광은 형사소송법 기본이론 (18년 9월)</option>
-                                    <option value="200107">2018 신광은 형사소송법 파이널 실전모의고사</option>
-                                    <option value="200113">2018 장정훈 경찰학개론 기본이론 (18년 9월)</option>
-                                    <option value="200114">2018년 장정훈 경찰학개론 파이널 실전모의고사</option>
-                                    <option value="200120">2018 기미진 기특한 국어 아침 실전동형모의고사 (9월)</option>
-                                    <option value="200119">2018 [서울시대비] 기미진 국어 적중 파이널특강</option>
-                                    <option value="200117">2018 한덕현 영어 새벽실전모의고사(스킬올킬 96) (9월)</option>
-                                    <option value="200118">2018 한덕현 제니스영어 실전문법464 (짝수편) (9-10월)</option>
+                                    @foreach($arr_base['on_my_lecture'] as $key => $val)
+                                        <option value="{{$key}}">{{$val}}</option>
+                                    @endforeach
                                 </select>
                             </td>
                         </tr>
@@ -153,19 +148,12 @@
                                     @foreach($arr_base['professor'] as $row)
                                         <option class="{{$row['SubjectIdx']}}" value="{{$row['ProfIdx']}}" @if(empty($arr_input['prof_idx']) === false && $arr_input['prof_idx'] == $row['ProfIdx'])selected="selected"@endif>{{$row['wProfName']}}</option>
                                     @endforeach
-                                    {{--<option value="50004">김현식</option>
-                                    <option value="50070">테스트</option>--}}
                                 </select>
                                 <select id="study_prod_code" name="study_prod_code" title="강좌" class="seleLec" required="required" style="width: 360px;">
                                     <option value="">강좌선택</option>
-                                    <option value="200105">2018 신광은 형사소송법 기본이론 (18년 9월)</option>
-                                    <option value="200107">2018 신광은 형사소송법 파이널 실전모의고사</option>
-                                    <option value="200113">2018 장정훈 경찰학개론 기본이론 (18년 9월)</option>
-                                    <option value="200114">2018년 장정훈 경찰학개론 파이널 실전모의고사</option>
-                                    <option value="200120">2018 기미진 기특한 국어 아침 실전동형모의고사 (9월)</option>
-                                    <option value="200119">2018 [서울시대비] 기미진 국어 적중 파이널특강</option>
-                                    <option value="200117">2018 한덕현 영어 새벽실전모의고사(스킬올킬 96) (9월)</option>
-                                    <option value="200118">2018 한덕현 제니스영어 실전문법464 (짝수편) (9-10월)</option>
+                                    @foreach($arr_base['on_my_lecture'] as $key => $val)
+                                        <option value="{{$key}}">{{$val}}</option>
+                                    @endforeach
                                 </select>
                             </td>
                         </tr>
@@ -360,6 +348,7 @@
             'page' : page,
             'orderby' : orderby
         };
+        console.log(data);
         sendAjax(_url, data, function(ret) {
             var set_table_style;
             var param_board_idx = "{{ element('board_idx', $arr_input) }}";
@@ -460,11 +449,14 @@
     }
 
     //교수목록조회
-    function ajaxProfInfo(cate_code, subject_idx) {
+    function ajaxProfInfo(cate_code, subject_idx, ajax_call_type = true) {
         $('#search_subject_idx').val(subject_idx);
-        $('#search_prof_idx').val('');
         $('.subject-list').attr('class','subject-list off');
         $('#subject_'+subject_idx).attr('class','subject-list on');
+
+        if (ajax_call_type == true) {
+            $('#search_prof_idx').val('');
+        }
 
         var _url = '{{ front_url("/support/studyComment/ajaxProfInfo") }}';
         var data = {
@@ -494,7 +486,10 @@
                 }
             }
         }, showError, false, 'POST');
-        callAjax(1);
+
+        if (ajax_call_type == true) {
+            callAjax(1);
+        }
     }
 
     function starCount(count) {

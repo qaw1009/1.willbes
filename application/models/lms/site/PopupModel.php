@@ -207,7 +207,7 @@ class PopupModel extends WB_Model
 
             //카테고리 저장
             if ($site_code != config_item('app_intg_site_code')) {
-                $category_code = element('cate_code', $input);
+                $category_code = element('cate_code', $input, []);
                 foreach ($category_code as $key => $val) {
                     $category_data['PIdx'] = $p_idx;
                     $category_data['CateCode'] = $val;

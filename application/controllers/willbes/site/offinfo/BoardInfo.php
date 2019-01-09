@@ -5,7 +5,7 @@ require_once APPPATH . 'controllers/willbes/share/support/SupportOffBoardInfo.ph
 
 class BoardInfo extends SupportOffBoardInfo
 {
-    protected $_default_path = '/pass/offinfo/BoardInfo';
+    protected $_default_path = '/offinfo/boardInfo';
 
     public function __construct()
     {

@@ -296,8 +296,8 @@
         </div>
     </div>
     <style type="text/css">
-        .iradio_flat-blue.checked.disabled { background-position: -110px 0 !important; }
-        .icheckbox_flat-blue.checked.disabled { background-position: -22px 0 !important; }
+        .icheckbox_minimal-blue.checked.disabled { background-position: -40px 0 !important; }
+        .iradio_minimal-blue.checked.disabled { background-position: -140px 0 !important; }
     </style>
     <script type="text/javascript">
         var $regi_form = $('#regi_form');

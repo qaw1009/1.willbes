@@ -96,19 +96,22 @@
                             <!-- <a id="stoggleBtn">닫기 ▲</a> -->
                         </span>
                         <span class="state"><img src="{{ img_url('sample/onair.png') }}" alt="방송중"></span>
-                        <ul id="scroll" style="position: relative; overflow: hidden;"><li>현재 전국캠퍼스에 신광은 경찰팀의 라이브 강의가 실시간 송출 되고 있습니다.</li></ul>
+                        <ul id="scroll" style="position: relative; overflow: hidden;">
+                            <li>111현재 전국캠퍼스에 신광은 경찰팀의 라이브 강의가 실시간 송출 되고 있습니다.</li>
+                            <li>222현재 전국캠퍼스에 신광은 경찰팀의 라이브 강의가 실시간 송출 되고 있습니다.</li>
+                        </ul>
                     </div><!--onAirBar//-->
                     
                     <div class="onAirCt" style="display: block;">
                         <ul class="tabWrap onAirTabs">
-                            <li><a href="#tab_onAirLecBox1" class="on">한국사</a></li>
-                            <li><a href="#tab_onAirLecBox2">한국사</a></li>
+                            <li><a href="#onAirLecBox1" id="tab_onAirLecBox1" class="on">한국사</a></li>
+                            <li><a href="#onAirLecBox2" id="tab_onAirLecBox2">한국사</a></li>
                         </ul>
                         <div class="onAirTabInto">
                             ※ 각 탭을 클릭 하시면 해당 정보를 확인 할 수 있습니다.
                         </div>
                         <div class="tabBox">
-                            <div id="tab_onAirLecBox1" class="onAirLecBox tabLink">
+                            <div id="onAirLecBox1" class="onAirLecBox tabLink">
                                 <input type="hidden" class="top_text_item" value="현재 전국캠퍼스에 신광은 경찰팀의 라이브 강의가 실시간 송출 되고 있습니다./">
                                 <ul class="onAirLec">
                                     <li class="li01">
@@ -134,7 +137,7 @@
                                     </ul>
                                 </div>
                             </div><!--onAirLecBox//-->
-                            <div id="tab_onAirLecBox2" class="onAirLecBox tabLink">
+                            <div id="onAirLecBox2" class="onAirLecBox tabLink">
                                 <input type="hidden" class="top_text_item" value="현재 전국캠퍼스에 신광은 경찰팀의 라이브 강의가 실시간 송출 되고 있습니다./">
                                 <ul class="onAirLec">
                                     <li class="li01">
@@ -179,6 +182,39 @@
                 </div><!--offAir//-->
                 
             </div><!--passLive//-->
+
+            <script type="text/javascript">
+                var real_search_keyword;
+                scroll_top_text();
+                function scroll_top_text(){
+                    if(parseInt('1')>0){
+                        real_search_keyword = new textScroll('scroll'); // 스크롤링 하고자하는 ul 엘리먼트의 id값을 인자로 넣습니다
+                        real_search_keyword.name = "real_search_keyword"; // 인스턴스 네임을 등록합니다
+                        real_search_keyword.start(); // 스크롤링 시작
+                    }
+                }
+                $(document).ready(function(){
+                    $(".onAirTabs > li").find("a").click(function(){
+                        $(".onAirTabs > li").find("a").removeClass("active");
+                        $(this).addClass("active");
+                        var id = $(this).attr("id").replace("tab_","");
+                        $(".onAirLecBox").hide();
+                        $("#"+id).show();
+                        var top_text = $("#"+id).find(".top_text_item").val();
+                        var html = "";
+                        var top_arr = top_text.split("/");
+                        var i=0;
+                        for(i=0;i<top_arr.length;i++){
+                            if($.trim(top_arr[i])!=null&&$.trim(top_arr[i])!=""){
+                                html += "<li>"+top_arr[i]+"</li>"
+                            }
+                        }
+                        $("#scroll").html(html);
+                        scroll_top_text();
+                        
+                    });
+                });
+            </script>
      
         </div>
         <!--라이브방송//-->

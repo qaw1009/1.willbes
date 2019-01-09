@@ -112,7 +112,7 @@
                         </div>
                         <div class="tabBox">
                             <div id="onAirLecBox1" class="onAirLecBox tabLink">
-                                <input type="hidden" class="top_text_item" value="현재 전국캠퍼스에 신광은 경찰팀의 라이브 강의가 실시간 송출 되고 있습니다./">
+                                <input type="hidden" class="top_text_item" value="aa현재 전국캠퍼스에 신광은 경찰팀의 라이브 강의가 실시간 송출 되고 있습니다./">
                                 <ul class="onAirLec">
                                     <li class="li01">
                                         <p class="ptxt1">08:40 ~ 13:00</p>
@@ -138,7 +138,7 @@
                                 </div>
                             </div><!--onAirLecBox//-->
                             <div id="onAirLecBox2" class="onAirLecBox tabLink">
-                                <input type="hidden" class="top_text_item" value="현재 전국캠퍼스에 신광은 경찰팀의 라이브 강의가 실시간 송출 되고 있습니다./">
+                                <input type="hidden" class="top_text_item" value="bb현재 전국캠퍼스에 신광은 경찰팀의 라이브 강의가 실시간 송출 되고 있습니다./">
                                 <ul class="onAirLec">
                                     <li class="li01">
                                         <p class="ptxt1">08:40 ~ 13:00</p>

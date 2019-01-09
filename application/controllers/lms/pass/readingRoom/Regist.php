@@ -18,10 +18,6 @@ class Regist extends \app\controllers\BaseController
     {
         $mang_type = $this->_req('mang_type');
 
-        // TODO : lms 방문결제페이지에 필요한 파라미터 차 후 삭제
-        $rdr_master_order_idx = $this->_reqG('rdr_master_order_idx');
-        $rdr_prod_code = $this->_reqG('rdr_prod_code');
-
         //캠퍼스 조회
         $arr_campus = $this->siteModel->getSiteCampusArray('');
 
@@ -29,9 +25,7 @@ class Regist extends \app\controllers\BaseController
             'mang_title' => $this->readingRoomModel->arr_mang_title[$mang_type],
             'prod_type' => $this->readingRoomModel->arr_prod_type[$mang_type],
             'default_query_string' => '&mang_type='.$mang_type,
-            'arr_campus' => $arr_campus,
-            'rdr_master_order_idx' => $rdr_master_order_idx,     //TODO : lms 방문결제페이지에 필요한 파라미터 차 후 삭제
-            'rdr_prod_code' => $rdr_prod_code     //TODO : lms 방문결제페이지에 필요한 파라미터 차 후 삭제
+            'arr_campus' => $arr_campus
         ]);
     }
 
@@ -222,30 +216,5 @@ class Regist extends \app\controllers\BaseController
 
         $result = $this->readingRoomModel->modifyReadingRoomSeatType($this->_reqP(null,false));
         $this->json_result($result, '수정 완료 되었습니다.', $result);
-    }
-
-
-    /**
-     * 독서실/사물함 방문결제 TEST
-     * TODO : 방문결제 개발 시 해당 메소드 삭제
-     */
-    public function testStoreSeat()
-    {
-        $arr_input = [
-            'prod_code' => $this->_reqP('rdr_prod_code'),
-            'rdr_master_order_idx' => $this->_reqP('rdr_master_order_idx'),
-            'rdr_is_extension' => $this->_reqP('rdr_is_extension'),
-            'serial_num' => $this->_reqP('rdr_serial_num'),
-            'seat_status' => $this->_reqP('rdr_seat_status'),
-            'rdr_use_start_date' => $this->_reqP('rdr_use_start_date'),
-            'rdr_use_end_date' => $this->_reqP('rdr_use_end_date'),
-            'rdr_memo' => $this->_reqP('rdr_memo')
-        ];
-        $order_idx = '55';      //임의 생성한 주문식별자
-        //$order_idx = '96';      //임의 생성한 주문식별자
-
-        $result = $this->readingRoomModel->testAddSeat($arr_input, $order_idx);
-        print_r($result);
-        return $result;
     }
 }

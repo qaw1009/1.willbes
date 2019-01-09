@@ -733,30 +733,4 @@ class ReadingRoomModel extends BaseReadingRoomModel
         }
         return true;
     }
-
-
-
-
-    /**
-     * @param $input
-     * @param $now_order_idx
-     * @return array|bool
-     * TODO : 방문결제 개발 시 해당 메소드 삭제
-     */
-    public function testAddSeat($input, $now_order_idx)
-    {
-        $this->_conn->trans_begin();
-        try {
-            if ($this->addSeat($input, $now_order_idx) !== true) {
-                throw new \Exception('좌석 등록에 실패했습니다.');
-            }
-
-            $this->_conn->trans_commit();
-        } catch (\Exception $e) {
-            $this->_conn->trans_rollback();
-            return error_result($e);
-        }
-
-        return true;
-    }
 }

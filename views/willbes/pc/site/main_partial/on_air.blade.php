@@ -52,14 +52,43 @@
                                             <img src="{{$row['LeftFileFullPath'] . $row['LeftFileName']}}">
                                         </li>
                                         @else
-                                            {{$row['LeftLink']}}
+                                            <li>
+                                                <div id="jw-player-left"></div>
+                                                <script src="/public/vendor/jwplayer/jwplayer.js"></script>
+                                                <div id="jw-player-left">
+                                                    <script type="text/javascript">jwplayer.key="kl6lOhGqjWCTpx6EmOgcEVnVykhoGWmf4CXllubWP5JwYq6K34m5XnpF0KGiCbQN";</script>
+                                                    <script type="text/javascript">
+                                                        jwplayer("jw-player-left").setup({
+                                                            width: '100%',
+                                                            //image: "",
+                                                            aspectratio: "16:9",
+                                                            autostart: false,
+                                                            file: "{{$row['LeftLink']}}"
+                                                        });
+                                                    </script>
+                                                </div>
+                                            </li>
                                         @endif
                                         @if($row['RightExposureType'] == 'I')
                                         <li>
                                             <img src="{{$row['RightFileFullPath'] . $row['RightFileName']}}">
                                         </li>
                                         @else
-                                            {{$row['RightLink']}}
+                                            <li>
+                                                <script src="/public/vendor/jwplayer/jwplayer.js"></script>
+                                                <div id="jw-player-right">
+                                                    <script type="text/javascript">jwplayer.key="kl6lOhGqjWCTpx6EmOgcEVnVykhoGWmf4CXllubWP5JwYq6K34m5XnpF0KGiCbQN";</script>
+                                                    <script type="text/javascript">
+                                                        jwplayer("jw-player-right").setup({
+                                                            width: '100%',
+                                                            //image: "",
+                                                            aspectratio: "16:9",
+                                                            autostart: false,
+                                                            file: "{{$row['RightLink']}}"
+                                                        });
+                                                    </script>
+                                                </div>
+                                            </li>
                                         @endif
                                     </ul>
                                     <div class="onAirProf">

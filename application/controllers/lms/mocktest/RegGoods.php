@@ -20,6 +20,7 @@ class RegGoods extends \app\controllers\BaseController
     protected $addPoint;
     protected $applyType_on;
     protected $applyType_off;
+    protected $acceptStatus;
 
 
     public function __construct()
@@ -32,6 +33,7 @@ class RegGoods extends \app\controllers\BaseController
         $this->addPoint = $this->config->item('sysCode_addPoint', 'mock');
         $this->applyType_on = $this->config->item('sysCode_applyType_on', 'mock');
         $this->applyType_off = $this->config->item('sysCode_applyType_off', 'mock');
+        $this->acceptStatus = $this->config->item('sysCode_acceptStatus', 'mock');
     }
 
     /**
@@ -39,15 +41,19 @@ class RegGoods extends \app\controllers\BaseController
      */
     public function index()
     {
+        //공통코드
+        $codes = $this->codeModel->getCcdInArray(['675']);
+
         $cateD1 = $this->categoryModel->getCategoryArray('', '', '', 1);
         $cateD2 = $this->mockCommonModel->getMockKind();
-        $codes = $this->codeModel->getCcdInArray([$this->applyType]);
+        $codes = $this->codeModel->getCcdInArray([$this->applyType, $this->acceptStatus]);
 
         $this->load->view('mocktest/reg/goods/index', [
             'siteCodeDef' => $cateD1[0]['SiteCode'],
             'cateD1' => $cateD1,
             'cateD2' => $cateD2,
             'applyType' => $codes[$this->applyType],
+            'accept_ccd' => $codes[$this->acceptStatus],
         ]);
     }
 
@@ -64,8 +70,8 @@ class RegGoods extends \app\controllers\BaseController
             ['field' => 'search_year', 'label' => '연도', 'rules' => 'trim|is_natural_no_zero'],
             ['field' => 'search_round', 'label' => '회차', 'rules' => 'trim|is_natural_no_zero'],
             ['field' => 'search_TakeFormsCcds', 'label' => '응시형태', 'rules' => 'trim|is_natural_no_zero'],
-            ['field' => 'search_IsRegister', 'label' => '접수상태', 'rules' => 'trim|in_list[Y,N]'],
-            ['field' => 'search_TakeType', 'label' => '응시기간', 'rules' => 'trim|in_list[A,L]'],
+            ['field' => 'search_AcceptStatus', 'label' => '접수상태', 'rules' => 'trim|is_natural_no_zero'],
+            //['field' => 'search_TakeType', 'label' => '응시기간', 'rules' => 'trim|in_list[A,L]'],
             ['field' => 'search_use', 'label' => '사용여부', 'rules' => 'trim|in_list[Y,N]'],
             ['field' => 'search_fi', 'label' => '검색', 'rules' => 'trim'],
             ['field' => 'length', 'label' => 'Length', 'rules' => 'trim|numeric'],
@@ -79,9 +85,9 @@ class RegGoods extends \app\controllers\BaseController
                 'PC.CateCode' => $this->input->post('search_cateD1'),
                 'MP.MockYear' => $this->input->post('search_year'),
                 'MP.MockRotationNo' => $this->input->post('search_round'),
-                'MP.IsRegister' => $this->input->post('search_IsRegister'),
+                'MP.AcceptStatusCcd' => $this->input->post('search_AcceptStatus'),
                 'MP.TakeType' => $this->input->post('search_TakeType'),
-                'MP.IsUse' => $this->input->post('search_use'),
+                'PD.IsUse' => $this->input->post('search_use'),
             ],
             'LKB' => [
                 'MP.MockPart' => $this->input->post('search_cateD2'),
@@ -130,8 +136,9 @@ class RegGoods extends \app\controllers\BaseController
     {
         $cateD1 = $this->categoryModel->getCategoryArray('', '', '', 1);
         $cateD2 = $this->mockCommonModel->getMockKind();
-        $codes = $this->codeModel->getCcdInArray([$this->applyType, $this->applyArea1, $this->applyArea2, $this->addPoint]);
+        $codes = $this->codeModel->getCcdInArray([$this->applyType, $this->applyArea1, $this->applyArea2, $this->addPoint, $this->acceptStatus]);
         $csTel = $this->siteModel->getSiteArray(false, 'CsTel');
+
 
         $cateD2Json = array();
         foreach ($cateD2 as $it) {
@@ -150,6 +157,7 @@ class RegGoods extends \app\controllers\BaseController
             'csTel' => json_encode($csTel),
             'cateD2_sel' => json_encode(array()),
             'applyType_on' => $this->applyType_on,
+            'accept_ccd' => $codes[$this->acceptStatus],
         ]);
     }
 
@@ -167,7 +175,7 @@ class RegGoods extends \app\controllers\BaseController
 
             ['field' => 'TakeFormsCcds[]', 'label' => '응시형태', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'TakeAreas1CCds[]', 'label' => 'Off(학원)응시지역1', 'rules' => 'trim|is_natural_no_zero'],
-            ['field' => 'TakeAreas2Ccd[]', 'label' => 'Off(학원)응시지역2', 'rules' => 'trim|is_natural_no_zero'],
+            ['field' => 'TakeAreas2Ccds[]', 'label' => 'Off(학원)응시지역2', 'rules' => 'trim|is_natural_no_zero'],
             ['field' => 'AddPointsCcd[]', 'label' => '가산점', 'rules' => 'trim|required|is_natural'],
             ['field' => 'MockYear', 'label' => '연도', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'MockRotationNo', 'label' => '회차', 'rules' => 'trim|required|is_natural_no_zero'],
@@ -245,7 +253,7 @@ class RegGoods extends \app\controllers\BaseController
 
         // 응시형태 OFF 포함인 경우 응시지역, 접수마감인원 필수
         if( in_array($this->applyType_off, $this->input->post('TakeFormsCcds')) ) {
-            if( !$this->input->post('TakeAreas1CCds') || !$this->input->post('TakeAreas2Ccd') || !$this->input->post('ClosingPerson') ) {
+            if( !$this->input->post('TakeAreas1CCds') || !$this->input->post('TakeAreas2Ccds') || !$this->input->post('ClosingPerson') ) {
                 $this->json_error('응시형태 OFF(학원)선택시 응시지역, 접수마감인원은 필수입니다.');
                 return;
             }
@@ -292,7 +300,7 @@ class RegGoods extends \app\controllers\BaseController
     {
         $cateD1 = $this->categoryModel->getCategoryArray('', '', '', 1);
         $cateD2 = $this->mockCommonModel->getMockKind();
-        $codes = $this->codeModel->getCcdInArray([$this->applyType, $this->applyArea1, $this->applyArea2, $this->addPoint]);
+        $codes = $this->codeModel->getCcdInArray([$this->applyType, $this->applyArea1, $this->applyArea2, $this->addPoint,$this->acceptStatus]);
         $csTel = $this->siteModel->getSiteArray(false, 'CsTel');
 
         $cateD2Json = array();
@@ -318,6 +326,7 @@ class RegGoods extends \app\controllers\BaseController
             'addPoint' => $codes[$this->addPoint],
             'csTel' => json_encode($csTel),
             'applyType_on' => $this->applyType_on,
+            'accept_ccd' => $codes[$this->acceptStatus],
 
             'data' => $data,
             'sData' => $sData,
@@ -346,7 +355,7 @@ class RegGoods extends \app\controllers\BaseController
         $rules = [
             ['field' => 'TakeFormsCcds[]', 'label' => '응시형태', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'TakeAreas1CCds[]', 'label' => 'Off(학원)응시지역1', 'rules' => 'trim|is_natural_no_zero'],
-            ['field' => 'TakeAreas2Ccd[]', 'label' => 'Off(학원)응시지역2', 'rules' => 'trim|is_natural_no_zero'],
+            ['field' => 'TakeAreas2Ccds[]', 'label' => 'Off(학원)응시지역2', 'rules' => 'trim|is_natural_no_zero'],
             ['field' => 'AddPointsCcd[]', 'label' => '가산점', 'rules' => 'trim|required|is_natural'],
             ['field' => 'MockYear', 'label' => '연도', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'MockRotationNo', 'label' => '회차', 'rules' => 'trim|required|is_natural_no_zero'],
@@ -365,12 +374,12 @@ class RegGoods extends \app\controllers\BaseController
             ['field' => 'SaleEndDatm_m', 'label' => '접수마감(분)', 'rules' => 'trim|required|numeric'],
 
             ['field' => 'ClosingPerson', 'label' => '접수마감인원', 'rules' => 'trim|is_natural_no_zero'],
-            ['field' => 'IsRegister', 'label' => '접수상태', 'rules' => 'trim|required|in_list[Y,N]'],
-            ['field' => 'TakeType', 'label' => '응시가능타입', 'rules' => 'trim|required|in_list[A,L]'],
+            ['field' => 'AcceptStatusCcd', 'label' => '접수상태', 'rules' => 'trim'],
+            //['field' => 'TakeType', 'label' => '응시가능타입', 'rules' => 'trim|required|in_list[A,L]'],
             ['field' => 'TakeStartDatm_d', 'label' => '응시시작일', 'rules' => 'trim'],
             ['field' => 'TakeStartDatm_h', 'label' => '응시시작(시)', 'rules' => 'trim|numeric'],
             ['field' => 'TakeStartDatm_m', 'label' => '응시시작(분)', 'rules' => 'trim|numeric'],
-            ['field' => 'TakeEndDatm_d', 'label' => '응시마감일', 'rules' => 'trim'],
+            ['field' => 'TakeEndDatm_d', 'label' => '응시마감일', 'rules' => 'trim|required'],
             ['field' => 'TakeEndDatm_h', 'label' => '응시마감(시)', 'rules' => 'trim|numeric'],
             ['field' => 'TakeEndDatm_m', 'label' => '응시마감(분)', 'rules' => 'trim|numeric'],
             ['field' => 'TakeTime', 'label' => '응시시간', 'rules' => 'trim|required|is_natural_no_zero'],
@@ -429,7 +438,7 @@ class RegGoods extends \app\controllers\BaseController
 
         // 응시형태 OFF 포함인 경우 응시지역, 접수마감인원 필수
         if( in_array($this->applyType_off, $this->input->post('TakeFormsCcds')) ) {
-            if( !$this->input->post('TakeAreas1CCds') || !$this->input->post('TakeAreas2Ccd') || !$this->input->post('ClosingPerson') ) {
+            if( !$this->input->post('TakeAreas1CCds') || !$this->input->post('TakeAreas2Ccds') || !$this->input->post('ClosingPerson') ) {
                 $this->json_error('응시형태 OFF(학원)선택시 응시지역, 접수마감인원은 필수입니다.');
                 return;
             }

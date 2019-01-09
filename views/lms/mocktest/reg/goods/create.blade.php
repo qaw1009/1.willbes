@@ -63,7 +63,7 @@
                         <th colspan="1">OFF(학원) 응시지역2 <span class="required">*</span></th>
                         <td colspan="3">
                             @foreach($applyArea2 as $k => $v)
-                                <input type="checkbox" class="flat" name="TakeAreas2Ccd[]" value="{{$k}}" @if($method == 'PUT' && in_array($k, $data['TakeAreas2Ccd'])) checked @endif> <span class="flat-text mr-20">{{$v}}</span>
+                                <input type="checkbox" class="flat" name="TakeAreas2Ccds[]" value="{{$k}}" @if($method == 'PUT' && in_array($k, $data['TakeAreas2Ccds'])) checked @endif> <span class="flat-text mr-20">{{$v}}</span>
                             @endforeach
                         </td>
                     </tr>
@@ -164,8 +164,13 @@
                     <tr>
                         <th colspan="1">접수상태 <span class="required">*</span></th>
                         <td colspan="3">
-                            <input type="radio" name="IsRegister" class="flat" value="Y" @if($method == 'POST' || ($method == 'PUT' && $data['IsRegister'] == 'Y')) checked="checked" @endif> <span class="flat-text mr-10">접수중</span>
-                            <input type="radio" name="IsRegister" class="flat" value="N" @if($method == 'PUT' && $data['IsRegister'] == 'N') checked="checked" @endif> <span class="flat-text mr-20">접수마감</span>
+
+                            {{$data['AcceptStatusCcd'] }}
+                            @foreach($accept_ccd as $key=>$val)
+                                @if($key != '675001' ) {{--접수예정 제외--}}
+                                <input type="radio" name="AcceptStatusCcd" class="flat" value="{{$key}}" @if( $data['AcceptStatusCcd'] == $key) checked="checked" @endif required title="접수상태"> <span class="flat-text mr-10">{{$val}}</span>
+                                @endif
+                            @endforeach
                         </td>
                     </tr>
                     <tr>
@@ -577,16 +582,16 @@
 
                 if(selType.length === 1 && selType[0] === applyType_on) {
                     $('[name="TakeAreas1CCds[]"]').iCheck('uncheck').prop('disabled', true);
-                    $('[name="TakeAreas2Ccd[]"]').iCheck('uncheck').prop('disabled', true);
+                    $('[name="TakeAreas2Ccds[]"]').iCheck('uncheck').prop('disabled', true);
                     $('[name="ClosingPerson"]').val('').prop('disabled', true);
                 }
                 else {
                     $('[name="TakeAreas1CCds[]"]').prop('disabled', false);
-                    $('[name="TakeAreas2Ccd[]"]').prop('disabled', false);
+                    $('[name="TakeAreas2Ccds[]"]').prop('disabled', false);
                     $('[name="ClosingPerson"]').prop('disabled', false);
                 }
                 $('[name="TakeAreas1CCds[]"]').iCheck('update');
-                $('[name="TakeAreas2Ccd[]"]').iCheck('update');
+                $('[name="TakeAreas2Ccds[]"]').iCheck('update');
             }
 
 

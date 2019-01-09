@@ -43,16 +43,19 @@
                                 <option value="{{$k}}">{{$v}}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-5" id="search_IsRegister" name="search_IsRegister">
+                        <select class="form-control mr-5" id="search_AcceptStatus" name="search_AcceptStatus">
                             <option value="">접수상태</option>
-                            <option value="Y">접수중</option>
-                            <option value="N">접수마감</option>
+                            @foreach($accept_ccd as $key=>$val)
+                                @if($key != '675001' ) {{--접수예정 제외--}}
+                                <option value="{{$key}}">{{$val}}</option>
+                                @endif
+                            @endforeach
                         </select>
-                        <select class="form-control mr-5" id="search_TakeType" name="search_TakeType">
+                        <!--select class="form-control mr-5" id="search_TakeType" name="search_TakeType">
                             <option value="">응시기간</option>
                             <option value="A">상시</option>
                             <option value="L">기간제한</option>
-                        </select>
+                        </select//-->
                         <select class="form-control mr-5" id="search_use" name="search_use">
                             <option value="">사용여부</option>
                             <option value="Y">사용</option>
@@ -192,9 +195,7 @@
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) { return 0; }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) { return 0; }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) { return 0; }},
-                    {'data' : 'IsRegister', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                        return (data === 'Y') ? '접수중' : '접수마감';
-                    }},
+                    {'data' : 'AcceptStatusCcd_Name', 'class': 'text-center'},
                     {'data' : 'TakeType', 'class': 'text-center', 'render' : function(data, type, row, meta) {
                         return (data === 'A') ? '상시' : '기간제한';
                     }},

@@ -16,6 +16,10 @@ class Regist extends \app\controllers\BaseController
      */
     public function index()
     {
+        /*$test_result = $this->readingRoomModel->refundReadingRoom('200137', '105');
+        print_r($test_result);
+        exit;*/
+
         $mang_type = $this->_req('mang_type');
 
         //캠퍼스 조회

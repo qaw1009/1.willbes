@@ -112,7 +112,6 @@ class Schedule extends \app\controllers\BaseController
             $method = 'add';
             $rules = [
                 ['field'=>'site_code', 'label' => '운영사이트', 'rules' => 'trim|required'],
-                ['field'=>'cate_code[]', 'label'=>'카테고리', 'rules'=>'trim|required'],
                 ['field'=>'campus_ccd', 'label'=>'캠퍼스', 'rules'=>'trim|required'],
                 ['field'=>'is_use', 'label'=>'사용여부', 'rules'=>'trim|required|in_list[Y,N]'],
                 ['field'=>'schedule_start_date', 'label'=>'상담시작일정', 'rules'=>'trim|required'],
@@ -130,6 +129,7 @@ class Schedule extends \app\controllers\BaseController
                 ['field'=>'consult_time', 'label'=>'1회상담시간', 'rules'=>'trim|required'],
                 ['field'=>'break_time', 'label'=>'쉬는시간', 'rules'=>'trim|required'],
                 ['field'=>'add_person_count[]', 'label'=>'시간표 상담인원', 'rules'=>'trim|required'],
+                ['field'=>'add_schedule_time[]', 'label'=>'시간표 시간', 'rules'=>'trim|required'],
                 ['field'=>'add_target_type[]', 'label'=>'시간표 상담대상', 'rules'=>'trim|required'],
                 ['field'=>'add_is_use[]', 'label'=>'시간표 사용여부', 'rules'=>'trim|required']
             ];
@@ -138,6 +138,7 @@ class Schedule extends \app\controllers\BaseController
             $rules = [
                 ['field'=>'is_use', 'label'=>'사용여부', 'rules'=>'trim|required|in_list[Y,N]'],
                 ['field'=>'add_schedule_idx[]', 'label'=>'시간표 식별자', 'rules'=>'trim|required'],
+                ['field'=>'add_schedule_time[]', 'label'=>'시간표 시간', 'rules'=>'trim|required'],
                 ['field'=>'add_person_count[]', 'label'=>'시간표 상담인원', 'rules'=>'trim|required'],
                 ['field'=>'add_target_type[]', 'label'=>'시간표 상담대상', 'rules'=>'trim|required'],
                 ['field'=>'add_is_use[]', 'label'=>'시간표 사용여부', 'rules'=>'trim|required']
@@ -231,6 +232,15 @@ class Schedule extends \app\controllers\BaseController
         $arr_cate_code = $this->consultModel->listConsultScheduleCategory($data['CsIdx']);
         $data['CateCodes'] = $arr_cate_code;
         $data['CateNames'] = implode(', ', array_values($arr_cate_code));
+
+        $serial_data = $this->consultModel->findConsultScheduleDetailForMember_R_Ccd($csm_idx, '666');
+        if (empty($serial_data) === true) {
+            $serial_data = $this->consultModel->findConsultScheduleDetailForMember_R_Ccd($csm_idx, '614');
+        }
+        $study_data = $this->consultModel->findConsultScheduleDetailForMember_R_Ccd($csm_idx, '668');
+
+        $data['SerialName'] = implode(', ', array_values($serial_data));
+        $data['StudyName'] = implode(', ', array_values($study_data));
 
         $this->load->view("pass/consult/schedule/detail_member_modal",[
             'csm_idx' => $csm_idx,

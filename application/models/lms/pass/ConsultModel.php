@@ -8,6 +8,7 @@ class ConsultModel extends WB_Model
         'consult_r_category' => 'lms_consult_r_category',
         'consult_schedule_time' => 'lms_consult_schedule_time',
         'consult_schedule_member' => 'lms_consult_schedule_member',
+        'consult_schedule_member_r_ccd' => 'lms_consult_schedule_member_r_ccd',
         'member' => 'lms_member',
         'sys_category' => 'lms_sys_category',
         'site' => 'lms_site',
@@ -188,10 +189,16 @@ class ConsultModel extends WB_Model
      */
     public function findConsultScheduleTimeForModify($arr_condition)
     {
-        $column = "A.CstIdx, A.ConsultPersonCount, A.ConsultTargetType, A.IsUse";
+        $column = "a.CstIdx, a.ConsultPersonCount, a.ConsultTargetType, a.IsUse, IFNULL(b.memCount, 0) AS memCount";
 
         $form = "
-            FROM {$this->_table['consult_schedule_time']} AS A
+            FROM {$this->_table['consult_schedule_time']} AS a
+            LEFT JOIN 
+            (
+                SELECT CstIdx, COUNT(CstIdx) AS memCount
+                FROM {$this->_table['consult_schedule_member']}
+                GROUP BY CstIdx
+            ) AS b ON a.CstIdx = b.CstIdx
         ";
 
         $where = $this->_conn->makeWhere($arr_condition);
@@ -284,10 +291,14 @@ class ConsultModel extends WB_Model
                 ,DATE_FORMAT(C.StartTime,\'%i\') AS StartMin
                 ,DATE_FORMAT(C.EndTime,\'%H\') AS EndHour
                 ,DATE_FORMAT(C.EndTime,\'%i\') AS EndMin
-                ,A.CsmIdx, A.MemIdx, D.MemId, D.MemName ,A.BirthDay ,fn_dec(A.PhoneEnc) AS Phone ,fn_dec(A.MailEnc) AS Mail
-                ,E.CateName ,fn_ccd_name(A.SerialCcd) as SerialName ,fn_ccd_name(A.CandidateAreaCcd) as CandidateAreaName ,fn_ccd_name(A.ExamPeriodCcd) as ExamPeriodName
-                ,A.SubjectName ,fn_ccd_name(A.StudyCcd) as StudyName
+                ,A.CsmIdx, A.MemIdx, D.MemId, D.MemName ,D.BirthDay ,fn_dec(A.PhoneEnc) AS Phone ,fn_dec(A.MailEnc) AS Mail
+                ,E.CateName
+                ,fn_ccd_name(A.CandidateAreaCcd) as CandidateAreaName ,fn_ccd_name(A.ExamPeriodCcd) as ExamPeriodName
+                ,A.SubjectName
                 ,A.Memo ,A.IsReg ,A.IsConsult ,A.ConsultMemo ,A.RegDatm, IFNULL(A.CancelDatm, \'\') AS CancelDatm
+                
+                ,IFNULL(L.CcdName, K.CcdName) AS SerialName
+                ,M.CcdName AS StudyName
             ';
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
@@ -299,8 +310,32 @@ class ConsultModel extends WB_Model
             INNER JOIN {$this->_table['consult_schedule_time']} AS B ON A.CstIdx = B.CstIdx AND B.IsStatus = 'Y'
             INNER JOIN {$this->_table['consult_schedule']} AS C ON B.CsIdx = C.CsIdx AND C.IsStatus = 'Y'
             INNER JOIN {$this->_table['member']} AS D ON A.MemIdx = D.MemIdx
-            INNER JOIN {$this->_table['sys_category']} AS E ON A.CateCode = E.CateCode AND E.IsStatus = 'Y'
+            LEFT JOIN {$this->_table['sys_category']} AS E ON A.CateCode = E.CateCode AND E.IsStatus = 'Y'
             INNER JOIN {$this->_table['site']} AS J ON C.SiteCode = J.SiteCode
+            
+            LEFT JOIN (
+            SELECT a.CsmIdx, GROUP_CONCAT(fn_ccd_name(a.CcdValue)) AS CcdName
+            FROM {$this->_table['consult_schedule_member_r_ccd']} AS a
+            INNER JOIN {$this->_table['consult_schedule_member']} AS b ON a.CsmIdx= b.CsmIdx
+            WHERE GroupCcd = '666'
+            GROUP BY a.CsmIdx, a.GroupCcd
+            ) AS K ON A.CsmIdx = K.CsmIdx
+            
+            LEFT JOIN (
+            SELECT a.CsmIdx, GROUP_CONCAT(fn_ccd_name(a.CcdValue)) AS CcdName
+            FROM {$this->_table['consult_schedule_member_r_ccd']} AS a
+            INNER JOIN {$this->_table['consult_schedule_member']} AS b ON a.CsmIdx= b.CsmIdx
+            WHERE GroupCcd = '614'
+            GROUP BY a.CsmIdx, a.GroupCcd
+            ) AS L ON A.CsmIdx = L.CsmIdx
+            
+            LEFT JOIN (
+            SELECT a.CsmIdx, GROUP_CONCAT(fn_ccd_name(a.CcdValue)) AS CcdName
+            FROM {$this->_table['consult_schedule_member_r_ccd']} AS a
+            INNER JOIN {$this->_table['consult_schedule_member']} AS b ON a.CsmIdx= b.CsmIdx
+            WHERE GroupCcd = '668'
+            GROUP BY a.CsmIdx, a.GroupCcd
+            ) AS M ON A.CsmIdx = M.CsmIdx
         ";
         $arr_condition['IN']['C.SiteCode'] = get_auth_site_codes(false, true);
         $where_temp = $this->_conn->makeWhere($arr_condition);
@@ -357,16 +392,14 @@ class ConsultModel extends WB_Model
             ,DATE_FORMAT(C.StartTime,\'%i\') AS StartMin
             ,DATE_FORMAT(C.EndTime,\'%H\') AS EndHour
             ,DATE_FORMAT(C.EndTime,\'%i\') AS EndMin
-            ,D.MemId, D.MemName
-            ,A.BirthDay
+            ,D.MemId, D.MemName ,D.BirthDay
             ,fn_dec(A.PhoneEnc) AS Phone
             ,fn_dec(A.MailEnc) AS Mail
             ,E.CateName AS CandidatePositionName
-            ,fn_ccd_name(A.SerialCcd) as SerialName
+
             ,fn_ccd_name(A.CandidateAreaCcd) as CandidateAreaName
             ,fn_ccd_name(A.ExamPeriodCcd) as ExamPeriodName
             ,A.SubjectName
-            ,fn_ccd_name(A.StudyCcd) as StudyName
             ,A.Memo
             ,A.IsConsult
             ,A.ConsultMemo
@@ -377,7 +410,7 @@ class ConsultModel extends WB_Model
             INNER JOIN {$this->_table['consult_schedule_time']} AS B ON A.CstIdx = B.CstIdx AND B.IsStatus = 'Y'
             INNER JOIN {$this->_table['consult_schedule']} AS C ON B.CsIdx = C.CsIdx AND C.IsStatus = 'Y'
             INNER JOIN {$this->_table['member']} AS D ON A.MemIdx = D.MemIdx
-            INNER JOIN {$this->_table['sys_category']} AS E ON A.CandidatePosition = E.CateCode AND E.IsStatus = 'Y'
+            LEFT JOIN {$this->_table['sys_category']} AS E ON A.CandidatePosition = E.CateCode AND E.IsStatus = 'Y'
             INNER JOIN {$this->_table['site']} AS J ON C.SiteCode = J.SiteCode
         ";
 
@@ -385,6 +418,29 @@ class ConsultModel extends WB_Model
         $where = $where->getMakeWhere(false);
 
         return $this->_conn->query('select '.$column .$from .$where)->row_array();
+    }
+
+    /**
+     * 예약회원정보 관계테이블
+     * @param $csm_idx
+     * @param $group_ccd
+     * @return array
+     */
+    public function findConsultScheduleDetailForMember_R_Ccd($csm_idx, $group_ccd)
+    {
+        $column = '
+            CsmIdx, GROUP_CONCAT(fn_ccd_name(CcdValue)) AS CcdName
+        ';
+        $from = '
+            FROM '.$this->_table['consult_schedule_member_r_ccd'].'
+        ';
+        $where = ' where CsmIdx = ? and GroupCcd = ?';
+        $group_by = ' GROUP BY GroupCcd';
+
+        // 쿼리 실행
+        $data = $this->_conn->query('select ' . $column . $from . $where . $group_by, [$csm_idx, $group_ccd])->result_array();
+
+        return array_pluck($data, 'CcdName', 'CsmIdx');
     }
 
     /**
@@ -405,6 +461,7 @@ class ConsultModel extends WB_Model
             $category_code = element('cate_code', $input);
 
             //상담시간표 변수 셋팅
+            $arr_schedule_time = element('add_schedule_time', $input);
             $arr_person_count = element('add_person_count', $input);
             $arr_target_type = element('add_target_type', $input);
             $arr_is_use = element('add_is_use', $input);
@@ -452,13 +509,15 @@ class ConsultModel extends WB_Model
                     $cs_idx = $this->_conn->insert_id();
 
                     //카테고리 저장
-                    foreach ($category_code as $key => $val) {
-                        $category_data['CsIdx'] = $cs_idx;
-                        $category_data['CateCode'] = $val;
-                        $category_data['RegAdminIdx'] = $admin_idx;
-                        $category_data['RegIp'] = $reg_ip;
-                        if ($this->_addConsultCategory($category_data) === false) {
-                            throw new \Exception('카테고리 등록에 실패했습니다.');
+                    if (empty($category_code) === false) {
+                        foreach ($category_code as $key => $val) {
+                            $category_data['CsIdx'] = $cs_idx;
+                            $category_data['CateCode'] = $val;
+                            $category_data['RegAdminIdx'] = $admin_idx;
+                            $category_data['RegIp'] = $reg_ip;
+                            if ($this->_addConsultCategory($category_data) === false) {
+                                throw new \Exception('카테고리 등록에 실패했습니다.');
+                            }
                         }
                     }
 
@@ -466,6 +525,7 @@ class ConsultModel extends WB_Model
                     $_order_num = 1;
                     foreach ($arr_target_type as $key => $val) {
                         $time_data['CsIdx'] = $cs_idx;
+                        $time_data['TimeValue'] = $arr_schedule_time[$key];
                         $time_data['OrderNum'] = $_order_num;
                         $time_data['ConsultPersonCount'] = $arr_person_count[$key];
                         $time_data['ConsultTargetType'] = $val;

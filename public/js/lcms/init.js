@@ -114,8 +114,10 @@ $(document).ready(function() {
             iDisplayLength: qs.length
         });
     } else {
-        setTimeout(function() {
-            $search_form.submit();
-        }, 0);
+        if ($search_form.hasClass('searching') === true) {
+            setTimeout(function() {
+                $search_form.submit();
+            }, 0);
+        }
     }
 });

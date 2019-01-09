@@ -126,10 +126,10 @@
                             <div class="tx-gray">
                                 <strong>추후 접속 시 현재 페이지를</strong>
                             </div>
-                            <span>
+                            {{--<span>
                                 <input type="checkbox" id="add_startpage" name="add_startpage" class="iptSave" onclick="">
                                 <label for="add_startpage" class="labelSave tx-gray">시작페이지로</label>
-                            </span>
+                            </span>--}}
                             <span>
                                 <input type="checkbox" id="add_favorite" name="add_favorite" class="iptSave" onclick="">
                                 <label for="add_favorite" class="labelSave tx-gray">즐겨찾기로</label>

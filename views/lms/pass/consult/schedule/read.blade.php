@@ -199,10 +199,7 @@
 
             // 등록/수정 모달창 오픈
             $('.btn-schedule-member-read').click(function() {
-
                 var uri_param = $(this).data('csm-idx');
-                console.log(uri_param);
-
                 $('.btn-schedule-member-read').setLayer({
                     'url' : '{{ site_url('/pass/consult/schedule/detailMemberModal/') }}' + uri_param,
                     'width' : 900

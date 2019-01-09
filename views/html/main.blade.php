@@ -122,104 +122,72 @@
             <div class="sliderDayList cSlider">
                 <div class="sliderControls">
                     <div>
-                        <table cellspacing="0" cellpadding="0" class="mainTable">
-                            <colgroup>
-                                <col style="width: 253px;"/>
-                                <col style="width: 1px;"/>
-                                <col style="width: 253px;"/>
-                                <col style="width: 1px;"/>
-                                <col style="width: 253px;"/>
-                                <col style="width: 1px;"/>
-                                <col style="width: 253px;"/>
-                            </colgroup>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <a href="#none">
-                                            <span class="dTit">
-                                                2018 경찰 3차
-                                                <div class="w-date">2018-11-23</div>
-                                            </span>
-                                            <span class="dDay tx-color">D-349</span>
-                                        </a>
-                                    </td>
-                                    <td class="line">-</td>   
-                                    <td>
-                                        <a href="#none">
-                                            <span class="dTit">
-                                                2018 서울시
-                                                <div class="w-date">2018-10-05</div>
-                                            </span>
-                                            <span class="dDay tx-color">D-35</span>
-                                        </a>
-                                    </td>
-                                    <td class="line">-</td>   
-                                    <td>
-                                        <span class="dTit">
-                                            2018 지방직
-                                            <div class="w-date">2019-04-18</div>
-                                        </span>
-                                        <span class="dDay tx-color">D-94</span>
-                                    </td>
-                                    <td class="line">-</td>   
-                                    <td>
-                                        <span class="dTit">
-                                            2018 법원/검찰직
-                                            <div class="w-date">2019-04-19</div>
-                                        </span>
-                                        <span class="dDay tx-color">D-97</span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="dDayBox">
+                            <a href="#none">
+                                <span class="dTit">
+                                    2018 경찰 3차
+                                    <div class="w-date">2018-11-23</div>
+                                </span>
+                                <span class="dDay tx-color">D-349</span>
+                            </a>
+                        </div>
+                        <div class="dDayBox">
+                            <a href="#none">
+                                <span class="dTit">
+                                    2018 서울시
+                                    <div class="w-date">2018-10-05</div>
+                                </span>
+                                <span class="dDay tx-color">D-35</span>
+                            </a>
+                        </div>
+                        <div class="dDayBox">
+                            <span class="dTit">
+                                2018 지방직
+                                <div class="w-date">2019-04-18</div>
+                            </span>
+                            <span class="dDay tx-color">D-94</span>
+                        </div>
+                        <div class="dDayBox">
+                            <span class="dTit">
+                                2018 법원/검찰직
+                                <div class="w-date">2019-04-19</div>
+                            </span>
+                            <span class="dDay tx-color">D-97</span>
+                        </div>
                     </div>
                     <div>
-                        <table cellspacing="0" cellpadding="0" class="mainTable">
-                            <colgroup>
-                                <col style="width: 25%;"/>
-                                <col style="width: 1px;"/>
-                                <col style="width: 25%;"/>
-                                <col style="width: 1px;"/>
-                                <col style="width: 25%;"/>
-                                <col style="width: 1px;"/>
-                                <col style="width: 25%;"/>
-                            </colgroup>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <span class="dTit">
-                                            2018 경찰 3차
-                                            <div class="w-date">2018-11-23</div>
-                                        </span>
-                                        <span class="dDay tx-color">D-349</span>
-                                    </td>
-                                    <td class="line">-</td>   
-                                    <td>
-                                        <span class="dTit">
-                                            2018 서울시
-                                            <div class="w-date">2018-10-05</div>
-                                        </span>
-                                        <span class="dDay tx-color">D-35</span>
-                                    </td>
-                                    <td class="line">-</td>   
-                                    <td>
-                                        <span class="dTit">
-                                            2018 지방직
-                                            <div class="w-date">2019-04-18</div>
-                                        </span>
-                                        <span class="dDay tx-color">D-94</span>
-                                    </td>
-                                    <td class="line">-</td>   
-                                    <td>
-                                        <span class="dTit">
-                                            2018 법원/검찰직
-                                            <div class="w-date">2019-04-19</div>
-                                        </span>
-                                        <span class="dDay tx-color">D-97</span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="dDayBox">
+                            <a href="#none">
+                                <span class="dTit">
+                                    2018 경찰 5차
+                                    <div class="w-date">2019-12-25</div>
+                                </span>
+                                <span class="dDay tx-color">D-1</span>
+                            </a>
+                        </div>
+                        <div class="dDayBox">
+                            <a href="#none">
+                                <span class="dTit">
+                                    2019 서울시
+                                    <div class="w-date">2019-00-00</div>
+                                </span>
+                                <span class="dDay tx-color">D-20</span>
+                            </a>
+                        </div>
+                        <div class="dDayBox">
+                            <span class="dTit">
+                                2018 지방직
+                                <div class="w-date">2019-03-18</div>
+                            </span>
+                            <span class="dDay tx-color">D-30</span>
+                        </div>
+                        <div class="dDayBox">
+                            <span class="dTit">
+                                2018 법원/검찰직
+                                <div class="w-date">2019-07-19</div>
+                            </span>
+                            <span class="dDay tx-color">D-400</span>
+                        </div>
                     </div>
                 </div>
             </div>

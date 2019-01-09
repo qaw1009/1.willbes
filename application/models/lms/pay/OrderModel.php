@@ -99,10 +99,10 @@ class OrderModel extends BaseOrderModel
                 throw new \Exception('주문 데이터가 없습니다.', _HTTP_NOT_FOUND);
             }
 
-            // 가상계좌 부분환불일 경우 환불계좌정보 체크
-            if ($is_pg_refund == 'Y' && $order_data['IsVBank'] == 'Y' && $order_data['tRealPayPrice'] > $sum_req_refund_price) {
+            // 가상계좌 환불일 경우 환불계좌정보 체크
+            if ($is_pg_refund == 'Y' && $order_data['IsVBank'] == 'Y') {
                 if (empty($refund_bank_ccd) === true || empty($pg_bank_ccd) === true || empty($refund_account_no) === true || empty($refund_deposit_name) === true) {
-                    throw new \Exception('가상계좌 부분취소에 필요한 환불계좌 정보가 없습니다.', _HTTP_BAD_REQUEST);  
+                    throw new \Exception('가상계좌 환불에 필요한 환불계좌 정보가 없습니다.', _HTTP_BAD_REQUEST);
                 }
             }
 
@@ -159,6 +159,7 @@ class OrderModel extends BaseOrderModel
                 $cash_deduct_price = $row['CashPayPrice'] - $cash_refund_price;     // 현금공제금액
                 $is_point_refund = array_get($order_prod_param, $row['OrderProdIdx'] . '.is_point_refund', 'N');
                 $is_coupon_refund = array_get($order_prod_param, $row['OrderProdIdx'] . '.is_coupon_refund', 'N');
+                $arr_sub_refund_price = array_get($order_prod_param, $row['OrderProdIdx'] . '.sub_refund_price', '');   // 사용자패키지 단강좌별 환불금액
                 $reco_point_idx = null;
                 $reco_coupon_idx = null;
 
@@ -274,6 +275,18 @@ class OrderModel extends BaseOrderModel
                     throw new \Exception('주문상품 결제상태 수정에 실패했습니다.');
                 }
 
+                // 사용자패키지 단강좌별 환불금액 업데이트
+                if (empty($arr_sub_refund_price) === false) {
+                    foreach ($arr_sub_refund_price as $order_prod_sub_idx => $sub_row) {
+                        $is_sub_prod_update = $this->_conn->set('RefundPrice', $sub_row['card_refund_price'] + $sub_row['cash_refund_price'])
+                            ->where('OrderProdIdx', $row['OrderProdIdx'])->where('OrderProdSubIdx', $order_prod_sub_idx)
+                            ->update($this->_table['order_sub_product']);
+                        if ($is_sub_prod_update === false) {
+                            throw new \Exception('주문상품서브 환불금액 수정에 실패했습니다.');
+                        }
+                    }
+                }
+
                 // 요청 카드환불금액 합계
                 $sum_card_refund_price += $card_refund_price;
             }
@@ -318,8 +331,9 @@ class OrderModel extends BaseOrderModel
                     // 결제취소
                     $cancel_results = $this->pg->cancel([
                         'order_no' => $order_data['OrderNo'], 'mid' => $order_data['PgMid'], 'tid' => $order_data['PgTid'],
-                        'cancel_reason' => element('refund_reason', $input, '')
-                    ]);
+                        'cancel_reason' => element('refund_reason', $input, ''),
+                        'refund_bank_code' => $pg_bank_ccd, 'refund_account_no' => $refund_account_no, 'refund_deposit_name' => $refund_deposit_name
+                    ], $order_data['IsVBank']);
 
                     if ($cancel_results['result'] === false) {
                         throw new \Exception('PG사 결제취소에 실패했습니다. (' . $cancel_results['result_msg'] . ')');
@@ -370,7 +384,15 @@ class OrderModel extends BaseOrderModel
                 // 상품정보 조회
                 $learn_pattern = $this->getLearnPattern($prod_type, $learn_pattern_ccd);
                 $column = 'ProdCode, SiteCode, ProdName, ProdPriceData';
-                strpos($learn_pattern, 'pack_') !== false && $column .= ', fn_product_sublecture_codes(ProdCode) as ProdCodeSub';   // 패키지 상품의 경우 서브강좌 조회 추가
+
+                // 기간제패키지 제외한 패키지 상품일 경우 서브강좌 조회, 기간제패키지일 경우 패키지타입공통코드 조회
+                if (strpos($learn_pattern, 'pack_') !== false) {
+                    if ($learn_pattern == 'periodpack_lecture') {
+                        $column .= ', PackTypeCcd';
+                    } else {
+                        $column .= ', fn_product_sublecture_codes(ProdCode) as ProdCodeSub';
+                    }
+                }
 
                 $row = $this->salesProductModel->findSalesProductByProdCode($learn_pattern, $prod_code, $column);
                 if (empty($row) === true) {
@@ -385,6 +407,11 @@ class OrderModel extends BaseOrderModel
                 if ($is_delivery_info === false && $learn_pattern == 'book') {
                     $is_delivery_info = true;
                     $row['IsDeliveryInfo'] = 'Y';
+                }
+
+                // 기간제패키지일 경우 연결된 과목/교수 정보 조회
+                if ($learn_pattern == 'periodpack_lecture') {
+                    $row['SubjectProfData'] = $this->salesProductModel->findPeriodPackageSubjectProfIdx($prod_code);
                 }
 
                 // 판매형태 공통코드, 회차 설정
@@ -530,6 +557,7 @@ class OrderModel extends BaseOrderModel
             $site_code = element('SiteCode', $input);   // 사이트코드
             $prod_code = element('ProdCode', $input);   // 상품코드
             $arr_prod_code_sub = empty(element('ProdCodeSub', $input)) === false ? explode(',', element('ProdCodeSub', $input)) : [];   // 패키지의 서브상품코드 배열
+            $arr_subject_prof_idx = element('SubjectProfData', $input, []);     // 주문상품 과목/교수 연결 데이터 (기간제패키지)
             $is_visit_pay = element('IsVisitPay', $input, 'N');     // 방문결제 여부
             $is_delivery_info = element('IsDeliveryInfo', $input, 'N');     // 주문상품배송정보 입력 여부
 
@@ -580,7 +608,22 @@ class OrderModel extends BaseOrderModel
                 }
             }
 
-            // 나의 강의정보 등록 (온라인 강좌, 학원 강좌일 경우만 실행)
+            // 주문상품 과목/교수 연결 등록 (기간제선택형패키지)
+            if (empty($arr_subject_prof_idx) === false) {
+                foreach ($arr_subject_prof_idx as $subject_prof_row) {
+                    $data = [
+                        'OrderProdIdx' => $order_prod_idx,
+                        'ProfIdx' => $subject_prof_row['ProfIdx'],
+                        'SubjectIdx' => $subject_prof_row['SubjectIdx']
+                    ];
+
+                    if ($this->_conn->set($data)->insert($this->_table['order_product_prof_subject']) === false) {
+                        throw new \Exception('주문상품 과목/교수 정보 등록에 실패했습니다.');
+                    }
+                }
+            }
+
+            // 나의 강의정보 등록(온라인 강좌, 학원 강좌일 경우만 실행)
             if (strpos($order_prod_type, '_lecture') !== false) {
                 // 나의 강좌수정정보 데이터 등록
                 $is_add_my_lecture = $this->addMyLecture($order_idx, $order_prod_idx, $order_prod_type, $prod_code, $arr_prod_code_sub, $input);

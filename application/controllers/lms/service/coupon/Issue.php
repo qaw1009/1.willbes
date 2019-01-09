@@ -86,6 +86,7 @@ class Issue extends \app\controllers\BaseController
                     'IssueUserId' => $this->_reqP('search_member_value'),
                 ],
                 'EQ' => [
+                    'MemIdx' => $this->_reqP('search_member_value'),
                     'Phone3' => $this->_reqP('search_member_value'),
                     'PhoneEnc' => $this->couponIssueModel->getEncString($this->_reqP('search_member_value'))
                 ]

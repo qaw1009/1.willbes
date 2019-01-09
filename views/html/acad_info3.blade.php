@@ -237,12 +237,15 @@
                                 <tr>
                                     <td class="w-gallery" colspan="7">
                                         <div class="sliderGallery cSliderTM">
-                                            <div class="sliderControlsTM">
+                                            <div class="sliderNum">
                                                 <div class="gallery_slider">
                                                     <img src="{{ img_url('sample/evt5.jpg') }}"> 
                                                 </div>
                                                 <div class="gallery_slider">
                                                     <img src="{{ img_url('sample/evt6.jpg') }}"> 
+                                                </div>
+                                                <div class="gallery_slider">
+                                                    <img src="{{ img_url('sample/evt6-1.jpg') }}"> 
                                                 </div>
                                             </div>
                                         </div>

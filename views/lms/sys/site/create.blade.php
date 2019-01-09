@@ -206,7 +206,7 @@
                     </div>
                 </div>
 
-                <div class="form-group form-group-sm">
+                <div class="form-group">
                     <label class="control-label col-md-2" for="site_mail_id">대표 이메일
                     </label>
                     <div class="col-md-9 item form-inline">

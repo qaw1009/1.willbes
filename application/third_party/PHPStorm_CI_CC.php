@@ -159,6 +159,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property OrderModel $orderModel                                                  Order Model Class
  * @property OrderListModel $orderListModel                                         Order List Model Class
  * @property OrderStatsModel $orderStatsModel                                    Order Statistics Model Class
+ * @property OrderCalcModel $orderCalcModel                                       Order Professor Calculate Model Class
+ * @property OrderAdvanceModel $orderAdvanceModel                           Order Advance Received Model Class
  * @property OrderMemoModel $orderMemoModel                                   Order Memo Model Class
  * @property CartModel $cartModel                                                     Cart Model Class
  * @property DeliveryInfoModel $deliveryInfoModel                                 Delivery Info Model Class
@@ -191,10 +193,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property PointFModel $pointFModel                                               Point Model Class
  * @property MemberFModel $memberFModel                                        Member Model Class
  * @property BannerFModel $bannerFModel                                          Banner Model Class
+ * @property PopupFModel $popupFModel                                            Popup Model Class
  * @property PlayerFModel $playerFModel                                            Player Model Class
  * @property BaseSupportFModel $baseSupportFModel                           BaseSupport Model Class
  * @property SupportBoardFModel $supportBoardFModel                         SupportBoard Model Class
- * @property SupportBoardTwoWayFModel $supportBoardTwoWayFModel   SupportBoardTwoWayF Model Class
+ * @property SupportBoardTwoWayFModel $supportBoardTwoWayFModel             SupportBoardTwoWayF Model Class
+ * @property BoardAttachFModel $boardAttachFModel                           BoardAttachF Model Class
  * @property SiteFModel $siteFModel                                                   Site Model Class
  * @property CategoryFModel $categoryFModel                                     Category Model Class
  * @property AccessFModel $accessFModel                                          Access Model Class
@@ -202,7 +206,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property ClassroomFModel $classroomFModel                                   Classroom Model Class
  * @property MessageFModel $messageFModel                                       Message Model Class
  * @property CertApplyFModel $certApplyFModel                                    Cert Apply Model Class
- * @property EventFModel $eventFModel                                            Event Model Class
+ * @property EventFModel $eventFModel                                              Event Model Class
+ * @property ConsultFModel $consultFModel                                          Consult Model Class
+ * @property OnAirFModel $onAirFModel                                                OnAir Model Class
+ * @property DDayFModel $dDayFModel                                                D-Day Model Class
  */
 class PHPStorm_CI_CC
 {

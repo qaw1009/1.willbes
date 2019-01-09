@@ -92,11 +92,12 @@ class Pg extends CI_Driver_Library
     /**
      * 결제취소
      * @param array $params
+     * @param string $is_vbank [가상계좌여부 : Y/N]
      * @return mixed
      */
-    public function cancel($params = [])
+    public function cancel($params = [], $is_vbank = 'N')
     {
-        return $this->{$this->_driver}->cancel($params);
+        return $this->{$this->_driver}->cancel($params, $is_vbank);
     }
 
     /**

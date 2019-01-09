@@ -76,6 +76,7 @@
                 <tr>
                     <th>삭제</th>
                     <th>No</th>
+                    <th>운영사이트</th>
                     <th>카테고리</th>
                     <th>노출섹션</th>
                     <th>팝업명</th>
@@ -121,38 +122,30 @@
                 },
                 columns: [
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            return '<input type="checkbox" class="flat" name="is_use" value="N" data-is-use-idx="'+ row.PIdx +'">';
-                        }},
+                        return '<input type="checkbox" class="flat" name="is_use" value="N" data-is-use-idx="'+ row.PIdx +'">';
+                    }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            // 리스트 번호
-                            return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
-                        }},
+                        // 리스트 번호
+                        return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
+                    }},
+                    {'data' : 'SiteName'},
                     {'data' : 'CateCode', 'render' : function(data, type, row, meta){
-                            if (row.SiteCode == {{config_item('app_intg_site_code')}}) {
-                                return '통합';
-                            } else {
-                                var obj = data.split(',');
-                                var str = '';
-                                for (key in obj) {
-                                    str += obj[key]+"<br>";
-                                }
-                                return str;
-                            }
-                        }},
+                        return data === null ? '전체카테고리' : data.replace(/,/g, '<br/>');
+                    }},
                     {'data' : 'DispName'},
                     {'data' : 'PopUpName', 'render' : function(data, type, row, meta) {
-                            return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.PIdx + '"><u class="blue">' + data + '</u></a>';
-                        }},
+                        return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.PIdx + '"><u class="blue">' + data + '</u></a>';
+                    }},
                     {'data' : 'PopUpRealFullPath', 'render' : function(data, type, row, meta) {
-                            var img_url = row.PopUpFullPath + row.PopUpImgName;
-                            return "<img class='img_"+row.PIdx+"' src='"+img_url+"' width='100%' height='30%'>";
-                        }},
+                        var img_url = row.PopUpFullPath + row.PopUpImgName;
+                        return "<img class='img_"+row.PIdx+"' src='"+img_url+"' width='100%' height='30%'>";
+                    }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            return row.DispStartDatm + ' ~ ' + row.DispEndDatm;
-                        }},
+                        return row.DispStartDatm + ' ~ ' + row.DispEndDatm;
+                    }},
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
-                            return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
-                        }},
+                        return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
+                    }},
                     {'data' : 'RegAdminName'},
                     {'data' : 'RegDatm'},
                     {'data' : 'UpdAdminName'},

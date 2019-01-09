@@ -114,7 +114,7 @@ $(document).ready(function() {
 });
 
 function comment_submit() {
-    var _url = '{!! site_url('/event/commentStore') !!}';
+    var _url = '{!! front_url('/event/commentStore') !!}';
     if (!confirm('등록하시겠습니까?')) { return true; }
     ajaxSubmit($regi_form_comment, _url, function(ret) {
         if(ret.ret_cd) {

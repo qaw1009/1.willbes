@@ -18,6 +18,10 @@
                 <span>겟토큰</span>
             </button>
             <br><br>
+            <button type="button" onclick="location.href='http://dev.starplayer.net/hybrid/willbes.html';" class="mem-Btn bg-blue bd-dark-blue">
+                <span>테스트 페이지</span>
+            </button>
+            <br><br>
             <br><br>
             token : {{$token}}
         </div>

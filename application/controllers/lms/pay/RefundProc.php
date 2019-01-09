@@ -188,8 +188,8 @@ class RefundProc extends BaseOrder
         // PG사 환불가능 여부 (PG사 결제 and 환불금액이 0 이상)
         $is_available_pg_refund = $order_prod_data[0]['PayRouteCcd'] == $this->orderListModel->_pay_route_ccd['pg'] && $total_refund_price > 0;
 
-        // 가상계좌 부분환불가능 여부 (가상계좌결제 and 총실결제금액 > 총환불금액)
-        $is_available_vbank_repay = $order_prod_data[0]['IsVBank'] == 'Y' && $order_prod_data[0]['tRealPayPrice'] > $total_refund_price;
+        // 가상계좌 환불여부
+        $is_vbank_refund = $order_prod_data[0]['IsVBank'] == 'Y';
 
         // 은행코드 조회 (PG사 결제일 경우 PG사 은행코드 조합)
         $arr_bank_ccd = [];
@@ -212,8 +212,8 @@ class RefundProc extends BaseOrder
             'order_prod_param' => $order_prod_param,    // 주문상품 파라미터 json_decode
             'order_prod_data' => $order_prod_data,      // 조회된 주문상품 데이터
             'total_refund_price' => $total_refund_price,    // 요청한 총환불금액
-            'is_available_vbank_repay' => $is_available_vbank_repay,    // 가상계좌 부분환불가능 여부
-            'is_available_pg_refund' => $is_available_pg_refund   // PG사 환불가능 여부
+            'is_available_pg_refund' => $is_available_pg_refund,   // PG사 환불가능 여부
+            'is_vbank_refund' => $is_vbank_refund    // 가상계좌 환불여부
         ]);        
     }
 
@@ -272,7 +272,7 @@ class RefundProc extends BaseOrder
         $data = element('0', $data);
         $my_lec_data = element('0', json_decode($data['MyLecData'], true), []);
 
-        $data['UnitLecturePrice'] = round($data['SalePrice'] / $data['TotalUnitLectureCnt']);
+        $data['UnitLecturePrice'] = $data['TotalUnitLectureCnt'] > 0 ? round($data['SalePrice'] / $data['TotalUnitLectureCnt']) : $data['SalePrice'];
         $data['CalcCardRefundPrice'] = $data['CardPayPrice'] - ($data['UnitLecturePrice'] * $data['StudyUnitLectureCnt']);
         $data['RealLecExpireDay'] = $my_lec_data['RealLecExpireDay'];
         $data['StudyLecDay'] = 0;
@@ -283,6 +283,40 @@ class RefundProc extends BaseOrder
         }
 
         return $this->load->view('pay/refund/calc', [
+            'data' => $data
+        ]);
+    }
+
+    /**
+     * 개별환불처리 모달창
+     * @return mixed
+     */
+    public function calcSub()
+    {
+        $order_idx = $this->_reqG('order_idx');
+        $order_prod_idx = $this->_reqG('order_prod_idx');
+
+        if (empty($order_idx) === true || empty($order_prod_idx) === true) {
+            return $this->json_error('필수 파라미터 오류입니다.', _HTTP_VALIDATION_ERROR);
+        }
+
+        // 주문상품조회
+        $arr_condition = ['EQ' => ['O.OrderIdx' => $order_idx, 'OP.OrderProdIdx' => $order_prod_idx]];
+        $order_prod_data = $this->orderListModel->findOrderProduct($arr_condition);
+        if (empty($order_prod_data) === true) {
+            return $this->json_error('주문상품 데이터 조회에 실패했습니다.');
+        }
+        $order_prod_data = element('0', $order_prod_data);
+
+        // 주문상품서브 조회
+        $arr_condition = ['EQ' => ['OP.OrderIdx' => $order_idx, 'OP.OrderProdIdx' => $order_prod_idx]];
+        $data = $this->orderListModel->findOrderSubProduct($arr_condition);
+        if (empty($data) === true) {
+            return $this->json_error('데이터 조회에 실패했습니다.');
+        }
+        
+        return $this->load->view('pay/refund/calc_sub', [
+            'order_prod_data' => $order_prod_data,
             'data' => $data
         ]);
     }

@@ -17,10 +17,12 @@ class OrderListModel extends BaseOrderModel
      */
     public function listAllOrder($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [], $arr_add_join = [])
     {
+        $is_all_from = true;    // 모든 테이블 조인
         if (is_bool($is_count) === true) {
             if ($is_count === true) {
                 $in_column = 'count(*) AS numrows';
                 $column = 'numrows';
+                $is_all_from = false;
             } else {
                 $in_column = 'O.OrderIdx, OP.OrderProdIdx, OP.ProdCode, O.OrderNo, O.SiteCode, S.SiteName, O.MemIdx, M.MemId, M.MemName, fn_dec(M.PhoneEnc) as MemPhone
                     , O.PayChannelCcd, O.PayRouteCcd, O.PayMethodCcd, O.PgCcd, O.PgMid, O.PgTid
@@ -55,7 +57,7 @@ class OrderListModel extends BaseOrderModel
             $column = '*';
         }
 
-        $from = $this->_getListFrom($arr_add_join);
+        $from = $this->_getListFrom($arr_add_join, $is_all_from);
 
         // where 조건
         $where = $this->_conn->makeWhere($arr_condition);
@@ -66,7 +68,7 @@ class OrderListModel extends BaseOrderModel
         is_null($limit) === false && is_null($offset) === false && $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
 
         // 쿼리 실행
-        $query = $this->_conn->query('select straight_join ' . $column . ' from (select ' . $in_column . $from . $where . ') U ' . $order_by_offset_limit);
+        $query = $this->_conn->query('select ' . $column . ' from (select ' . $in_column . $from . $where . ') U ' . $order_by_offset_limit);
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
@@ -110,15 +112,16 @@ class OrderListModel extends BaseOrderModel
         }
 
         // 쿼리 실행 및 결과값 리턴
-        return $this->_conn->query('select straight_join ' . $column . ' from (select ' . $in_column . $from . $where . ') U ' . $order_by_offset_limit)->result_array();
+        return $this->_conn->query('select ' . $column . ' from (select ' . $in_column . $from . $where . ') U ' . $order_by_offset_limit)->result_array();
     }
 
     /**
      * 주문목록 조회 from절 리턴
      * @param array $arr_add_join
+     * @param bool $is_all_from [true : 모든 테이블 조인, false : code, admin 테이블 조인 제외]
      * @return string
      */
-    private function _getListFrom($arr_add_join = [])
+    private function _getListFrom($arr_add_join = [], $is_all_from = true)
     {
         $from = '
             from ' . $this->_table['order'] . ' as O
@@ -131,7 +134,10 @@ class OrderListModel extends BaseOrderModel
                 left join ' . $this->_table['product_lecture'] . ' as PL
                     on OP.ProdCode = PL.ProdCode
                 left join ' . $this->_table['member'] . ' as M
-                    on O.MemIdx = M.MemIdx
+                    on O.MemIdx = M.MemIdx';
+
+        if ($is_all_from === true) {
+            $from .= '                                
                 left join ' . $this->_table['code'] . ' as CPG
                     on O.PgCcd = CPG.Ccd and CPG.IsStatus = "Y"                    
                 left join ' . $this->_table['code'] . ' as CPC
@@ -150,8 +156,9 @@ class OrderListModel extends BaseOrderModel
                     on P.ProdTypeCcd = CPT.Ccd and CPT.IsStatus = "Y"
                 left join ' . $this->_table['code'] . ' as CLP
                     on PL.LearnPatternCcd = CLP.Ccd and CLP.IsStatus = "Y"';
+        }
 
-        return $from . $this->_getAddListQuery('from', $arr_add_join);
+        return $from . $this->_getAddListQuery('from', $arr_add_join, $is_all_from);
     }
 
     /**
@@ -159,9 +166,10 @@ class OrderListModel extends BaseOrderModel
      * @param string $add_type [리턴할 쿼리 구분 : from, column, excel_column (엑셀다운로드용 컬럼)]
      * @param array $arr_add_join [추가할 조인 테이블 구분 : category (카테고리), subject (과목), professor (교수), delivery_address (배송지), delivery_info (배송정보)
      *  , member_info (회원정보), refund (환불정보), my_lecture (나의강좌), sublecture (패키지 서브강좌)]
+     * @param bool $is_all_from [true : 모든 테이블 조인, false : code, admin 테이블 조인 제외]
      * @return mixed
      */
-    private function _getAddListQuery($add_type, $arr_add_join = [])
+    private function _getAddListQuery($add_type, $arr_add_join = [], $is_all_from = true)
     {
         $from = '';
         $column = '';
@@ -214,17 +222,20 @@ class OrderListModel extends BaseOrderModel
             if (in_array('delivery_info', $arr_add_join) === true) {
                 $from .= '
                     left join ' . $this->_table['order_product_delivery_info'] . ' as OPD		
-                        on OP.OrderProdIdx = OPD.OrderProdIdx
-                    left join ' . $this->_table['code'] . ' as CDS
-                        on OPD.DeliveryStatusCcd = CDS.Ccd and CDS.IsStatus = "Y"
-                    left join ' . $this->_table['admin'] . ' as AIR
-                        on OPD.InvoiceRegAdminIdx = AIR.wAdminIdx and AIR.wIsStatus = "Y"
-                    left join ' . $this->_table['admin'] . ' as AIU
-                        on OPD.InvoiceUpdAdminIdx = AIU.wAdminIdx and AIU.wIsStatus = "Y"
-                    left join ' . $this->_table['admin'] . ' as ADS
-                        on OPD.DeliverySendAdminIdx = ADS.wAdminIdx and ADS.wIsStatus = "Y"
-                    left join ' . $this->_table['admin'] . ' as ASU
-                        on OPD.StatusUpdAdminIdx = ASU.wAdminIdx and ASU.wIsStatus = "Y"';
+                        on OP.OrderProdIdx = OPD.OrderProdIdx';
+                if ($is_all_from === true) {
+                    $from .= '                        
+                        left join ' . $this->_table['code'] . ' as CDS
+                            on OPD.DeliveryStatusCcd = CDS.Ccd and CDS.IsStatus = "Y"
+                        left join ' . $this->_table['admin'] . ' as AIR
+                            on OPD.InvoiceRegAdminIdx = AIR.wAdminIdx and AIR.wIsStatus = "Y"
+                        left join ' . $this->_table['admin'] . ' as AIU
+                            on OPD.InvoiceUpdAdminIdx = AIU.wAdminIdx and AIU.wIsStatus = "Y"
+                        left join ' . $this->_table['admin'] . ' as ADS
+                            on OPD.DeliverySendAdminIdx = ADS.wAdminIdx and ADS.wIsStatus = "Y"
+                        left join ' . $this->_table['admin'] . ' as ASU
+                            on OPD.StatusUpdAdminIdx = ASU.wAdminIdx and ASU.wIsStatus = "Y"';
+                }
                 $column .= ', OPD.DeliveryStatusCcd, CDS.CcdName as DeliveryStatusCcdName, ifnull(OPD.InvoiceNo, "") as InvoiceNo
                     , OPD.InvoiceRegDatm, OPD.InvoiceUpdDatm, OPD.DeliverySendDatm, OPD.StatusUpdDatm
                     , AIR.wAdminName as InvoiceRegAdminName, AIU.wAdminName as InvoiceUpdAdminName
@@ -250,11 +261,14 @@ class OrderListModel extends BaseOrderModel
             if (in_array('refund', $arr_add_join) === true) {
                 $from .= '
                     left join ' . $this->_table['order_product_refund'] . ' as OPR		
-                        on OP.OrderProdIdx = OPR.OrderProdIdx
+                        on O.OrderIdx = OPR.OrderIdx and OP.OrderProdIdx = OPR.OrderProdIdx
                     left join ' . $this->_table['order_refund_request'] . ' as ORR		
-                        on OPR.RefundReqIdx = ORR.RefundReqIdx
-                    left join ' . $this->_table['admin'] . ' as AR
-                        on OPR.RefundAdminIdx = AR.wAdminIdx and AR.wIsStatus = "Y"';
+                        on OPR.RefundReqIdx = ORR.RefundReqIdx';
+                if ($is_all_from === true) {
+                    $from .= '                
+                        left join ' . $this->_table['admin'] . ' as AR
+                            on OPR.RefundAdminIdx = AR.wAdminIdx and AR.wIsStatus = "Y"';
+                }
                 $column .= ', OPR.RefundIdx, OPR.RefundReqIdx, ifnull(OPR.RefundPrice, 0) as RefundPrice, ifnull(OPR.CardRefundPrice, 0) as CardRefundPrice, ifnull(OPR.CashRefundPrice, 0) as CashRefundPrice 
                     , OPR.IsPointRefund, OPR.RecoPointIdx, OPR.IsCouponRefund, OPR.RecoCouponIdx
                     , OPR.RefundDatm, AR.wAdminName as RefundAdminName, ORR.RefundReason, ORR.IsApproval, ORR.RefundType';
@@ -265,7 +279,7 @@ class OrderListModel extends BaseOrderModel
             if (in_array('refund_proc', $arr_add_join) === true) {
                 $from .= '';
                 $column .= ', if(PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['on_lecture'] . '" and OP.CardPayPrice > 0
-                    , OP.CardPayPrice - fn_order_refund_deduct_price(O.OrderIdx, OP.OrderProdIdx, OP.ProdCode, OP.SaleTypeCcd, PL.LearnPatternCcd)
+                    , OP.CardPayPrice - fn_order_refund_deduct_price(O.OrderIdx, OP.OrderProdIdx, OP.ProdCode, OP.ProdCode, OP.SaleTypeCcd, PL.LearnPatternCcd)
                     , OP.CardPayPrice) as CalcCardRefundPrice, OP.CashPayPrice as CalcCashRefundPrice';
                 $excel_column .= '';
             }
@@ -376,13 +390,51 @@ class OrderListModel extends BaseOrderModel
         is_null($limit) === false && is_null($offset) === false && $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
 
         // 쿼리 실행
-        $query = $this->_conn->query('select straight_join ' . $column . $from . $where . $order_by_offset_limit);
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
 
         return $query->result_array();
     }
 
     /**
-     * 주문 배송 주소 조회 by 주문식별자
+     * 주문상품서브 조회
+     * @param array $arr_condition
+     * @param string $column
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
+     */
+    public function findOrderSubProduct($arr_condition = [], $column = '', $limit = null, $offset = null, $order_by = [])
+    {
+        if (empty($column) === true) {
+            $column = 'OP.OrderIdx, OP.OrderProdIdx, OP.ProdCode, OSP.OrderProdSubIdx, OSP.ProdCodeSub, P.ProdName as ProdNameSub
+                , OSP.RealPayPrice, OSP.RealPayPrice as CardPayPrice, 0 as CashPayPrice
+                , OSP.RealPayPrice - fn_order_refund_deduct_price(OP.OrderIdx, OP.OrderProdIdx, OP.ProdCode, OSP.ProdCodeSub, OP.SaleTypeCcd, null) as CalcCardRefundPrice
+                , 0 as CalcCashRefundPrice';
+        }
+
+        $from = '
+            from ' . $this->_table['order_product'] . ' as OP
+                inner join ' . $this->_table['order_sub_product'] . ' as OSP
+                    on OP.OrderProdIdx = OSP.OrderProdIdx
+                left join ' . $this->_table['product'] . ' as P
+                    on OSP.ProdCodeSub = P.ProdCode and P.IsStatus = "Y"';
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $order_by_offset_limit = '';
+        empty($order_by) === false && $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+        is_null($limit) === false && is_null($offset) === false && $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+
+        return $query->result_array();
+    }
+
+    /**
+     * 주문 배송주소 조회 by 주문식별자
      * @param int $order_idx
      * @return array
      */

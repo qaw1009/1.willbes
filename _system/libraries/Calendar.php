@@ -253,7 +253,7 @@ class CI_Calendar {
 		$colspan = ($this->show_next_prev === TRUE) ? 5 : 7;
 
 		$this->replacements['heading_title_cell'] = str_replace('{colspan}', $colspan,
-								str_replace('{heading}', $this->get_month_name($month).'&nbsp;'.$year, $this->replacements['heading_title_cell']));
+								str_replace('{heading}', $year.'년&nbsp;&nbsp;&nbsp;&nbsp;'.$this->get_month_name($month), $this->replacements['heading_title_cell']));
 
 		$out .= $this->replacements['heading_title_cell']."\n";
 
@@ -473,7 +473,7 @@ class CI_Calendar {
 	public function default_template()
 	{
 		return array(
-			'table_open'				=> '<table border="0" cellpadding="4" cellspacing="0">',
+			/*'table_open'				=> '<table border="0" cellpadding="4" cellspacing="0">',
 			'heading_row_start'			=> '<tr>',
 			'heading_previous_cell'		=> '<th><a href="{previous_url}">&lt;&lt;</a></th>',
 			'heading_title_cell'		=> '<th colspan="{colspan}">{heading}</th>',
@@ -496,7 +496,7 @@ class CI_Calendar {
 			'cal_cell_end_today'		=> '</td>',
 			'cal_cell_end_other'		=> '</td>',
 			'cal_row_end'				=> '</tr>',
-			'table_close'				=> '</table>'
+			'table_close'				=> '</table>'*/
 		);
 	}
 

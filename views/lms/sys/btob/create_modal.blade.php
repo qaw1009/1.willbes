@@ -9,7 +9,7 @@
         {!! csrf_field() !!}
         {!! method_field($method) !!}
 
-        <input type="hidden" name="CompIdx" id="CompIdx" value="{{$compidx}}"/>
+        <input type="hidden" name="btobidx" id="btobidx" value="{{$btobidx}}"/>
 
         @endsection
 
@@ -19,27 +19,31 @@
             </div>
             {!! form_errors() !!}
             <div class="form-group form-group-sm">
-                <label class="control-label col-md-2" for="CompName">제휴사명 <span class="required">*</span>
+                <label class="control-label col-md-2" for="BtobName">제휴사명 <span class="required">*</span>
                 </label>
                 <div class="col-md-4 item">
-                    <input type="text" id="CompName" name="CompName" required="required" class="form-control" title="제휴사명" value="{{ $data['CompName'] }}">
+                    <input type="text" id="BtobName" name="BtobName" required="required" class="form-control" title="제휴사명" value="{{ $data['BtobName'] }}">
                 </div>
                 <label class="control-label col-md-2" for="">제휴사 코드
                 </label>
                 <div class="col-md-4">
-                    <p class="form-control-static">@if($method == 'PUT'){{ $data['CompIdx'] }}@else # 등록 시 자동 생성 @endif</p>
+                    <p class="form-control-static">@if($method == 'PUT'){{ $data['BtobIdx'] }}@else # 등록 시 자동 생성 @endif</p>
                 </div>
             </div>
             <div class="form-group form-group-sm">
                 <label class="control-label col-md-2" for="ManagerName">담당자명
                 </label>
-                <div class="col-md-2 item">
-                    <input type="text" id="ManagerName" name="ManagerName" class="form-control" title="담당자명" value="{{ $data['ManagerName'] }}">
+
+                <div class="col-md-4 item form-inline">
+                    <div class="item inline-block">
+                        <input type="text" id="ManagerName" name="ManagerName" class="form-control" title="담당자명" style="width: 80px"  value="{{ $data['ManagerName'] }}"> • 제휴사 담당자명
+                    </div>
                 </div>
-                <div class="col-md-6 item">
-                    <p class="form-control-static">
-                        • 제휴사 담당자명 입력
-                    </p>
+
+                <label class="control-label col-md-2" for="EmailEnc">이메일
+                </label>
+                <div class="col-md-4 item">
+                    <input type="text" id="Email" name="Email" class="form-control" title="이메일" value="{{ $data['ManagerName'] }}">
                 </div>
             </div>
             <div class="form-group form-group-sm">
@@ -72,11 +76,15 @@
                 </div>
             </div>
             <div class="form-group form-group-sm">
-                <label class="control-label col-md-2" for="site_code">정산율 <span class="required">*</span>
+                <label class="control-label col-md-2" for="site_code">제어구분 <span class="required">*</span>
                 </label>
                 <div class="col-md-4 form-inline item">
                     <div class="item inline-block">
-                        <input type="number" id="CalcRate" name="CalcRate" required="required" class="form-control" title="정산율" value="{{ $data['CalcRate'] }}" style="width: 80px" maxlength="3"> %
+                        @foreach($control as $key=>$val)
+
+                            <input type="checkbox" id="control_{{$key}}" name="IpControlTypeCcds[]" class="flat" value="{{$key}}" required="required" title="제어구분"
+                                   @if(strpos($data['IpControlTypeCcds'],$key) == false)checked="checked"@endif/> <label for="control_{{$key}}" class="input-label">{{$val}}</label>
+                        @endforeach
                     </div>
                 </div>
                 <label class="control-label col-md-2" for="is_use">사용 여부 <span class="required">*</span>
@@ -86,6 +94,26 @@
                         <input type="radio" id="IsUse_y" name="IsUse" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['IsUse']=='Y')checked="checked"@endif/> <label for="is_use_y" class="input-label">사용</label>
                         <input type="radio" id="IsUse_n" name="IsUse" class="flat" value="N" @if($data['IsUse']=='N')checked="checked"@endif/> <label for="is_use_n" class="input-label">미사용</label>
                     </div>
+                </div>
+            </div>
+            <div class="form-group form-group-sm">
+                <label class="control-label col-md-2" for="Desc">참조도메인
+                </label>
+                <div class="col-md-7 item">
+                    <input type="text" id="ReferDomains" name="ReferDomains" class="form-control" title="참조도메인" placeholder="접속하는 도메인 정보 모두 입력 예) naver.com,daum.net" value="{{$data['ReferDomains'] }}">
+                </div>
+                <div class="col-md-3 item">
+                    <p class="form-control-static">( ',' 로 연결 )</p>
+                </div>
+            </div>
+            <div class="form-group form-group-sm">
+                <label class="control-label col-md-2" for="Desc">이동 URL
+                </label>
+                <div class="col-md-7 item">
+                    <input type="text" id="ReturnUrl" name="ReturnUrl" class="form-control" title="이동 URL" placeholder="접속 후 이동 할 URL" value="{{$data['ReturnUrl'] }}">
+                </div>
+                <div class="col-md-3 item">
+                    <p class="form-control-static"> (접속 후 이동 할 URL)</p>
                 </div>
             </div>
 
@@ -128,13 +156,13 @@
                 $(document).ready(function() {
                     // 과목 등록
                     $regi_form.submit(function() {
-                        var _url = '{{ site_url('/sys/btob/store') }}';
+                        var _url = '{{ site_url('/sys/btob/btobInfo/store') }}';
 
                         ajaxSubmit($regi_form, _url, function(ret) {
                             if(ret.ret_cd) {
                                 notifyAlert('success', '알림', ret.ret_msg);
                                 $("#pop_modal").modal('toggle');
-                                location.replace('{{ site_url('/sys/btob/') }}' + dtParamsToQueryString($datatable));
+                                location.replace('{{ site_url('/sys/btob/btobInfo/') }}' + dtParamsToQueryString());
                             }
                         }, showValidateError, null, false, 'alert');
                     });

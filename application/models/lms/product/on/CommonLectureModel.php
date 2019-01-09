@@ -453,7 +453,7 @@ class CommonLectureModel extends WB_Model
             $IsReprProf = element('IsReprProf',$input);                               //대표강사
 
             $prodcodesub = element('ProdCodeDiv',$input,'');
-            $ProfIdx = element('ProfIdx',$input);
+            $ProfIdx = element('ProfIdx',$input,[]);
             $TotalPrice = element('TotalPrice',$input);
             $ProdDivisionPrice = element('ProdDivisionPrice',$input);           //안분가격
             $ProdDivisionRate = element('ProdDivisionRate',$input);             //안분율

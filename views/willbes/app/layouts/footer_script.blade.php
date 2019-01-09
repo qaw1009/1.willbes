@@ -1,4 +1,6 @@
 <!-- JAVASCRIPT -->
+<!-- Slider -->
+<script src="/public/vendor/jquery/bxslider/jquery.bxslider.min.js"></script>
 <!-- PNotify -->
 <script src="/public/vendor/pnotify/pnotify.js"></script>
 <script src="/public/vendor/pnotify/pnotify.buttons.js"></script>
@@ -21,5 +23,6 @@
 <script src="/public/js/willbes/tabs.js?ver={{time()}}"></script>
 <script src="/public/js/willbes/sub.js?ver={{time()}}"></script>
 <script src="/public/js/willbes/app.js?ver={{time()}}"></script>
+<script src="/public/js/willbes/bxslider.js?ver={{time()}}"></script>
 <script src="/public/vendor/starplayer/js/starplayer_bridge.js?ver={{time()}}"></script>
 <!--// JAVASCRIPT -->

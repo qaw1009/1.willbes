@@ -152,7 +152,7 @@
                                     <td>
                                         <select name="wContentSizeCcd[]" id="wContentSizeCcd{{$i}}" class="form-control" title="화면비율" >
                                             @foreach($codes['108'] as $key => $value)
-                                                <option value="{{$key}}" @if($row['wCcd'] == $key){{'SELECTED'}}@endif >{{$value}}</option>
+                                                <option value="{{$key}}">{{$value}}</option>
                                             @endforeach
                                         </select>
                                     </td>

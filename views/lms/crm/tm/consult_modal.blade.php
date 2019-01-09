@@ -130,7 +130,7 @@
                 <div class="col-md-12">
                     <p><strong>· CS상담관리 (회원 정보 개발 후)</strong></p>
                 </div>
-                <div class="col-md-10 form-inline">
+                <div class="col-md-12 form-inline">
                     <table class="table table-striped table-bordered">
                         <thead>
                         <tr>
@@ -154,23 +154,25 @@
 
 
             <br>
+            <form class="form-horizontal" id="_coupon_search_form" name="_coupon_search_form" method="POST" onsubmit="return false;">
+                <input type="hidden" name="search_member_value" id="search_member_value" value="{{ $data_mem['MemIdx'] }}">
             <div class="row">
                 <div class="col-md-12">
-                    <p><strong>· 쿠폰관리 (회원 정보 개발 후)</strong></p>
+                    <p><strong>· 쿠폰관리</strong></p>
                 </div>
-                <div class="col-md-10 form-inline">
-                    <table class="table table-striped table-bordered">
+                <div class="col-md-12 form-inline">
+                    <table id="coupon_list_ajax_table" class="table table-striped table-bordered">
                         <thead>
                         <tr>
-                            <th width="3%">NO</th>
-                            <th width="10%">쿠폰번호</th>
-                            <th width="10%">쿠폰정보</th>
-                            <th width="10%">발급구분</th>
-                            <th>발급일</th>
-                            <th width="10%">유효여부</th>
-                            <th width="10%">사용여부</th>
-                            <th width="10%">사용상품</th>
-                            <th width="10%">발급회수일</th>
+                            <th>No</th>
+                            <th>쿠폰핀번호</th>
+                            <th>쿠폰정보</th>
+                            <th>발급구분</th>
+                            <th>발급일 (발급자)</th>
+                            <th>유효여부 (만료일)</th>
+                            <th>사용여부 (사용일)</th>
+                            <th>사용상품 (주문번호)</th>
+                            <th>발급회수일 (회수자)</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -178,6 +180,7 @@
                     </table>
                 </div>
             </div>
+            </form>
 
             <script type="text/javascript">
                 var $datatable_modal;
@@ -185,7 +188,13 @@
                 var $search_form_modal = $('#_consult_search_form');
                 var $list_table_modal = $('#_consult_list_ajax_table');
 
+                var $_coupon_list_table = $('#coupon_list_ajax_table');
+                var $_coupon_search_form = $('#_coupon_search_form');
+
+
                 $(document).ready(function() {
+
+
                     // 페이징 번호에 맞게 일부 데이터 조회
                     $datatable_modal = $list_table_modal.DataTable({
                         serverSide: true,
@@ -239,10 +248,57 @@
                                 notifyAlert('success', '알림', '상담이 저정되었습니다.');
                                 $regi_form_modal[0].reset();
                                 $search_form_modal[0].reset();
-                                $search_form_modal.submit();
+                                //$search_form_modal.submit();
+                                $datatable_modal.draw();
                             }
                         }, showValidateError, null, false, 'alert');
                     });
+
+
+
+                    // 쿠폰발급 목록
+                    $datatable_coupon = $_coupon_list_table.DataTable({
+                        serverSide: true,
+                        buttons: [
+                            /*{  text: '<i class="fa fa-undo mr-5"></i> 쿠폰발급', className: 'btn-sm btn-success border-radius-reset mr-15 btn-make' },*/
+                        ],
+                        ajax: {
+                            'url' : '{{ site_url('/service/coupon/issue/listAjax') }}',
+                            'type' : 'POST',
+                            'data' : function(data) {
+                                return $.extend(arrToJson($_coupon_search_form.serializeArray()), { '{{ csrf_token_name() }}' : $regi_form_modal.find('input[name="{{ csrf_token_name() }}"]').val() });
+                            }
+                        },
+                        columns: [
+
+                            {'data' : null, 'render' : function(data, type, row, meta) {
+                                    // 리스트 번호
+                                    return $datatable_coupon.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
+                                }},
+                            {'data' : 'CouponPin'},
+                            {'data' : 'CouponName', 'render' : function(data, type, row, meta) {
+                                    return '<a href="#none" class="btn-modify" data-idx="' + row.CouponIdx + '"><u class="blue">' + data + '</u></a> [' + row.CouponIdx + ']';
+                                }},
+                            {'data' : 'IssueTypeName'},
+                            {'data' : 'IssueDatm', 'render' : function(data, type, row, meta) {
+                                    return data.substr(0, 10) + '<br/>(' + row.IssueUserName + ')';
+                                }},
+                            {'data' : 'ValidStatus', 'render' : function(data, type, row, meta) {
+                                    return ((data !== '유효') ? '<span class="red">' + data + '</span>' : data) + '<br/>(' + row.ExpireDatm.substr(0, 10) + ')';
+                                }},
+                            {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
+                                    return (data === 'Y') ? '사용 (' + row.UseDatm.substr(0, 16) + ')' : '<span class="red">미사용</span>';
+                                }},
+                            {'data' : 'ProdName', 'render' : function(data, type, row, meta) {
+                                    return (row.IsUse === 'Y') ? data + '<br/>(<u class="blue">' + row.OrderNo + '</u>)' : '';
+                                }},
+                            {'data' : 'RetireDatm', 'render' : function(data, type, row, meta) {
+                                    return (data !== null) ? data.substr(0, 16) + '<br/>(' + row.RetireUserName + ')' : '';
+                                }}
+                        ]
+                    });
+
+
 
                     $('.btn-modal-message').click(function (){
                         var target_idx = $('#MemIdx').val();

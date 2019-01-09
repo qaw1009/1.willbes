@@ -41,8 +41,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-1-1">카테고리정보 <span class="required">*</span>
-                    </label>
+                    <label class="control-label col-md-1-1">카테고리정보</label>
                     <div class="col-md-10 form-inline">
                         @if($method == 'PUT')
                             <p class="form-control-static">{{ $data['CateNames'] }}</p>
@@ -412,10 +411,10 @@
 
             $regi_form.submit(function() {
                 @if($method == 'POST')
-                    if($regi_form.find('input[name="cate_code[]"]').length < 1) {
+                    /*if($regi_form.find('input[name="cate_code[]"]').length < 1) {
                         alert('카테고리 선택 필드는 필수입니다.');
                         return false;
-                    }
+                    }*/
                 @endif
 
                 var _url = '{{ site_url('/pass/consult/schedule/store') }}';
@@ -471,6 +470,7 @@
 
             var add_lists;
             add_lists = '<input type="hidden" name="add_schedule_idx[]" value="'+schedule_idx+'">';
+            add_lists += '<input type="hidden" name="add_schedule_time[]" value="'+start_time+'-'+end_time+'">';
             add_lists += '<tr role="row">';
             add_lists += '<td><p class="form-control-static">'+start_time+'~'+end_time+'</p></td>';
             add_lists += '<td><input type="text" id="add_person_count_'+list_count+'" name="add_person_count[]" class="form-control" title="상담인원" value="'+consult_person_count+'" style="width: 60px;"> 명</td>';

@@ -115,96 +115,113 @@
                     </table>
                 </div>
             </div>
-            <div class="willbes-counsel_step mt60 c_both">
-                <div class="step mb50 NG">
-                    <ul>
-                        <li class="active"><div class="num">01</div>상담일자/시간선택</li>
-                        <li class="arrow"><img src="{{ img_url('counsel/icon_arrow_step.png') }}"></li>
-                        <li><div class="num">02</div>사전정보입력</li>
-                        <li class="arrow"><img src="{{ img_url('counsel/icon_arrow_step.png') }}"></li>
-                        <li><div class="num">03</div>상담예약확인</li>
-                    </ul>
-                    <div class="info-Box info-Box1 NG">
-                        <dl>
-                            <dt>
-                                · 상담은 월 ~ 토요일 오전 10시부터 오후 5시까지 진행됩니다.<br/>
-                                · 원하시는 상담일자를 선택하여 예약가능 버튼을 클릭해 주세요.<br/>
-                                · 예약이 마감된 경우 또는 상담시간 이외 시간대는 예약신청이 불가능 합니다. (예약취소 발생시 ‘ 예약가능 ’ 버튼 재활성화)<br/>
-                                · 예약하기를 신청하신후 반드시 사전정보 입력을 해 주셔야 상담신청이 완료됩니다.<br/>
-                            </dt>
-                        </dl>
-                    </div>
+
+            <div class="willbes-counsel_step step mt60 mb50 NG c_both">
+                <ul>
+                    <li class="active"><div class="num">01</div>상담일자/시간선택</li>
+                    <li class="arrow"><img src="{{ img_url('counsel/icon_arrow_step.png') }}"></li>
+                    <li><div class="num">02</div>사전정보입력</li>
+                    <li class="arrow"><img src="{{ img_url('counsel/icon_arrow_step.png') }}"></li>
+                    <li><div class="num">03</div>상담예약완료</li>
+                </ul>
+                <div class="info-Box info-Box1 NG">
+                    <dl>
+                        <dt>
+                            · 상담은 월 ~ 토요일 오전 10시부터 오후 5시까지 진행됩니다.<br/>
+                            · 원하시는 상담일자를 선택하여 예약가능 버튼을 클릭해 주세요.<br/>
+                            · 예약이 마감된 경우 또는 상담시간 이외 시간대는 예약신청이 불가능 합니다. (예약취소 발생시 ‘ 예약가능 ’ 버튼 재활성화)<br/>
+                            · 예약하기를 신청하신후 반드시 사전정보 입력을 해 주셔야 상담신청이 완료됩니다.<br/>
+                        </dt>
+                    </dl>
                 </div>
-                <div class="calendarTable f_left NG">
-                    <div class="datepicker-days">
-                        <table cellspacing="0" cellpadding="0" class="table-condensed">
-                            <thead>
-                                <tr class="month">
-                                    <th colspan="7" class="datepicker-switch">
-                                        <span class="prev"><a href="#none"><img src="{{ img_url('counsel/calendar_prev.png') }}"></a></span>
-                                        2018년&nbsp;&nbsp;&nbsp;&nbsp;10월
-                                        <span class="next"><a href="#none"><img src="{{ img_url('counsel/calendar_next.png') }}"></a></span>
-                                    </th>
-                                </tr>
-                                <tr class="week">
-                                    <th class="dow">일</th>
-                                    <th class="dow">월</th>
-                                    <th class="dow">화</th>
-                                    <th class="dow">수</th>
-                                    <th class="dow">목</th>
-                                    <th class="dow">금</th>
-                                    <th class="dow">토</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="empty">&nbsp;</td>
-                                    <td class="day">1<button type="submit" onclick="" class="end"><span>예약마감</span></button></td>
-                                    <td class="day">2<button type="submit" onclick="" class="end"><span>예약마감</span></button></td>
-                                    <td class="day">3<button type="submit" onclick="" class="end"><span>예약마감</span></button></td>
-                                    <td class="day">4<button type="submit" onclick="" class="end"><span>예약마감</span></button></td>
-                                    <td class="day">5<button type="submit" onclick="" class="end"><span>예약마감</span></button></td>
-                                    <td class="day">6<button type="submit" onclick="" class="end"><span>예약마감</span></button></td>
-                                </tr>
-                                <tr>
-                                    <td class="day">7<button type="submit" onclick="" class="end"><span>예약마감</span></button></td>
-                                    <td class="day">8<button type="submit" onclick="" class="end"><span>예약마감</span></button></td>
-                                    <td class="day">9<button type="submit" onclick="" class="end"><span>예약마감</span></button></td>
-                                    <td class="day">10<button type="submit" onclick="" class="end"><span>예약마감</span></button></td>
-                                    <td class="day">11<button type="submit" onclick="" class="end"><span>예약마감</span></button></td>
-                                    <td class="day">12<button type="submit" onclick="" class="end"><span>예약마감</span></button></td>
-                                    <td class="day">13<button type="submit" onclick="" class="end"><span>예약마감</span></button></td>
-                                </tr>
-                                <tr>
-                                    <td class="day">14<button type="submit" onclick="" class="end"><span>예약마감</span></button></td>
-                                    <td class="day">15<button type="submit" onclick="" class="end"><span>예약마감</span></button></td>
-                                    <td class="day">16<button type="submit" onclick="" class="end"><span>예약마감</span></button></td>
-                                    <td class="day">17<button type="submit" onclick="" class="end"><span>예약마감</span></button></td>
-                                    <td class="day">18<button type="submit" onclick="" class="end"><span>예약마감</span></button></td>
-                                    <td class="day">19<button type="submit" onclick="" class="end"><span>예약마감</span></button></td>
-                                    <td class="day">20<button type="submit" onclick="" class="end"><span>예약마감</span></button></td>
-                                </tr>
-                                <tr>
-                                    <td class="day">21<button type="submit" onclick="" class="end"><span>예약마감</span></button></td>
-                                    <td class="day">22<button type="submit" onclick="" class="end"><span>예약마감</span></button></td>
-                                    <td class="day">23<button type="submit" onclick="" class="end"><span>예약마감</span></button></td>
-                                    <td class="day">24<button type="submit" onclick="" class="ing"><span>예약가능</span></button></td>
-                                    <td class="day">25<button type="submit" onclick="" class="ing"><span>예약가능</span></button></td>
-                                    <td class="day">26<button type="submit" onclick="" class="ing"><span>예약가능</span></button></td>
-                                    <td class="day">27<button type="submit" onclick="" class="ing"><span>예약가능</span></button></td>
-                                </tr>
-                                <tr>
-                                    <td class="day">28<button type="submit" onclick="" class="ing"><span>예약가능</span></button></td>
-                                    <td class="day">29<button type="submit" onclick="" class="ing"><span>예약가능</span></button></td>
-                                    <td class="day">30<button type="submit" onclick="" class="ing"><span>예약가능</span></button></td>
-                                    <td class="day">31<button type="submit" onclick="" class="ing"><span>예약가능</span></button></td>
-                                    <td class="empty">&nbsp;</td>
-                                    <td class="empty">&nbsp;</td>
-                                    <td class="empty">&nbsp;</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>  
+            </div>
+            <div class="willbes-User-Info">
+                <div class="calendarTable f_left">
+                    <table cellpadding="0" cellspacing="0" class="calendar NG">
+                        <colgroup>
+                            <col style="width: 14.28%"/>
+                            <col style="width: 14.28%"/>
+                            <col style="width: 14.28%"/>
+                            <col style="width: 14.28%"/>
+                            <col style="width: 14.28%"/>
+                            <col style="width: 14.28%"/>
+                            <col style="width: 14.28%"/>
+                        </colgroup>
+                        <thead>
+                            <tr class="calendar_month">
+                                <th colspan="7" class="">
+                                    <span class="prev"><a href="#none"><img src="{{ img_url('counsel/calendar_prev.png') }}"></a></span>
+                                    2018년&nbsp;&nbsp;&nbsp;&nbsp;12월
+                                    <span class="next"><a href="#none"><img src="{{ img_url('counsel/calendar_next.png') }}"></a></span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="calendar_week">
+                                <td>일</td>
+                                <td>월</td>
+                                <td>화</td>
+                                <td>수</td>
+                                <td>목</td>
+                                <td>금</td>
+                                <td>토</td>
+                            </tr>
+                            <tr class="calendar_day">
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>1</td>
+                            </tr>
+                            <tr class="calendar_day">
+                                <td>2<span class="calendar_btn btn_end">예약마감</span></td>
+                                <td>3<span class="calendar_btn btn_ing">예약가능</span></td>
+                                <td>4<span class="calendar_btn btn_end">예약마감</span></td>
+                                <td>5<span class="calendar_btn btn_end">예약마감</span></td>
+                                <td>6</td>
+                                <td>7</td>
+                                <td>8</td>
+                            </tr>
+                            <tr class="calendar_day">
+                                <td>9</td>
+                                <td>10</td>
+                                <td>11</td>
+                                <td>12</td>
+                                <td>13</td>
+                                <td>14</td>
+                                <td>15</td>
+                            </tr>
+                            <tr class="calendar_day">
+                                <td>16</td>
+                                <td>17</td>
+                                <td>18</td>
+                                <td>19</td>
+                                <td>20</td>
+                                <td><div class="highlight">21</div></td>
+                                <td>22</td>
+                            </tr>
+                            <tr class="calendar_day">
+                                <td>23</td>
+                                <td>24</td>
+                                <td>25</td>
+                                <td>26</td>
+                                <td>27</td>
+                                <td>28</td>
+                                <td>29</td>
+                            </tr>
+                            <tr class="calendar_day">
+                                <td>30</td>
+                                <td>31</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
                 <div class="timeTable f_right NG">
                     <div class="timeTit">
@@ -213,6 +230,12 @@
                     <div class="SelectDay NGR"><span class="NGEB">[날짜]</span>&nbsp;2018-10-25 (목)</div>
                     <div class="SelectTime NGR">
                         <ul>
+                            <li class="SelectTxt">
+                                <div class="Txt">
+                                    캠퍼스 선택 후<br/>
+                                    상담일자를 선택해 주세요.
+                                </div>
+                            </li>
                             <li>
                                 <div class="Time">10:00 ~ 10:30</div>
                                 <div class="Condition end">예약마감</div>
@@ -235,11 +258,11 @@
                             </li>
                             <li>
                                 <div class="Time">14:10 ~ 14:30</div>
-                                <div class="Condition ing"><a href="#none">예약가능</a></div>
+                                <div class="Condition ing"><a href="#none">예약가능 <img src="{{ img_url('counsel/icon_arrow.png') }}"></a></div>
                             </li>
                             <li>
                                 <div class="Time">14:40 ~ 15:00</div>
-                                <div class="Condition ing"><a href="#none">예약가능</a></div>
+                                <div class="Condition ing"><a href="#none">예약가능 <img src="{{ img_url('counsel/icon_arrow.png') }}"></a></div>
                             </li>
                             <li>
                                 <div class="Time">15:10 ~ 15:30</div>
@@ -251,19 +274,19 @@
                             </li>
                             <li>
                                 <div class="Time">16:10 ~ 16:30</div>
-                                <div class="Condition ing"><a href="#none">예약가능</a></div>
+                                <div class="Condition ing"><a href="#none">예약가능 ></a></div>
                             </li>
                             <li>
                                 <div class="Time">16:40 ~ 17:00</div>
-                                <div class="Condition ing"><a href="#none">예약가능</a></div>
+                                <div class="Condition ing"><a href="#none">예약가능 <img src="{{ img_url('counsel/icon_arrow.png') }}"></a></div>
                             </li>
                             <li>
                                 <div class="Time">17:10 ~ 17:30</div>
-                                <div class="Condition ing"><a href="#none">예약가능</a></div>
+                                <div class="Condition ing"><a href="#none">예약가능 <img src="{{ img_url('counsel/icon_arrow.png') }}"></a></div>
                             </li>
                             <li>
                                 <div class="Time">17:40 ~ 18:00</div>
-                                <div class="Condition ing"><a href="#none">예약가능</a></div>
+                                <div class="Condition ing"><a href="#none">예약가능 <img src="{{ img_url('counsel/icon_arrow.png') }}"></a></div>
                             </li>
                         </ul>
                     </div>

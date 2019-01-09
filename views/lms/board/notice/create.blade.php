@@ -25,7 +25,7 @@
                     </div>
                     <label class="control-label col-md-1-1 d-line" for="campus_ccd">캠퍼스<span class="required">*</span></label>
                     <div class="col-md-4 form-inline item ml-12-dot">
-                        <select class="form-control" id="campus_ccd" name="campus_ccd" required="required">
+                        <select class="form-control" id="campus_ccd" name="campus_ccd" required="required" title="캠퍼스">
                             <option value="">캠퍼스</option>
                             @php $temp='0'; @endphp
                             @foreach($arr_campus as $row)

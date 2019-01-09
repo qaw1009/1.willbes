@@ -12,10 +12,12 @@ $(function() {
     $('.sliderNum').bxSlider({
         auto: true,
         controls: true,
-        pause: 3000,
+        pause: 4000,
         pager: true,
         pagerType: 'short',
         moveSlides:1,
+        adaptiveHeight: true,
+        infiniteLoop: true
     });
 });
 
@@ -47,7 +49,8 @@ $(function() {
         auto: false,
         controls: true,
         pause: 3000,
-        pager: false,
+        pager: true,
+        pagerType: 'short',
         adaptiveHeight: true,
         infiniteLoop: false,
         hideControlOnEnd: true,    

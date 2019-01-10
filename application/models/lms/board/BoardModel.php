@@ -590,7 +590,7 @@ class BoardModel extends WB_Model
         $order_by_offset_limit .= $this->_conn->makeLimitOffset(1, 0)->getMakeLimitOffset();
 
         $query = $this->_conn->query('select '.$column . $from .$where . $order_by_offset_limit);
-        return $query->first_row();
+        return $query->row_array();
     }
 
     /**
@@ -623,7 +623,7 @@ class BoardModel extends WB_Model
         $order_by_offset_limit .= $this->_conn->makeLimitOffset(1, 0)->getMakeLimitOffset();
 
         $query = $this->_conn->query('select '.$column . $from .$where . $order_by_offset_limit);
-        return $query->first_row();
+        return $query->row_array();
     }
 
     public function listBoardCategory($board_idx)

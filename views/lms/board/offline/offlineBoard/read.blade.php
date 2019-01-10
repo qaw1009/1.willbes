@@ -115,7 +115,7 @@
                 @if(count($board_previous) <= 0)
                     이전글이 없습니다.
                 @else
-                    <a href='javascript:void(0);' id='btn_previous' data-idx='{{$board_previous->BoardIdx}}'><u>{{$board_previous->Title}}</u></a>
+                    <a href='javascript:void(0);' id='btn_previous' data-idx='{{$board_previous['BoardIdx']}}'><u>{{$board_previous['Title']}}</u></a>
                 @endif
             </div>
         </div>
@@ -125,7 +125,7 @@
                 @if(count($board_next) <= 0)
                     다음글이 없습니다.
                 @else
-                    <a href='javascript:void(0);' id='btn_next' data-idx='{{$board_next->BoardIdx}}'><u>{{$board_next->Title}}</u></a>
+                    <a href='javascript:void(0);' id='btn_next' data-idx='{{$board_next['BoardIdx']}}'><u>{{$board_next['Title']}}</u></a>
                 @endif
             </div>
         </div>

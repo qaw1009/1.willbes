@@ -31,6 +31,7 @@ class BaseReadingRoomModel extends WB_Model
     protected $_order_route_ccd = '670002';    //학원방문결제
     protected $_sub_order_route_ccd = '670003';    //0원결제 [예치금]
     protected $_sub_product_type_ccd = '636009';   //상품타입공통코드 예치금
+    protected $_order_pay_status_ccd = '676001';    //결제완료상품
 
     private $_arr_product_type_ccd = [
         'R' => '636007',    //상품타입공통코드 독서실
@@ -994,15 +995,25 @@ class BaseReadingRoomModel extends WB_Model
      * 좌석관리테이블 업데이트
      * @param $arr_condition
      * @param $input
+     * @param null $is_refund
      * @return array|bool
      */
-    protected function updateReadingRoomMst($arr_condition, $input)
+    protected function updateReadingRoomMst($arr_condition, $input, $is_refund = null)
     {
         try {
             $input['UpdAdminIdx'] = $this->session->userdata('admin_idx');
             $input['UpdDatm'] = date('Y-m-d H:i:s');
 
             $is_update = $this->_conn->set($input);
+
+            //호출방식이 환불일경우 해당 데이터 null 으로 update
+            if ($is_refund == 'Y') {
+                $is_update = $is_update->set('MasterOrderIdx', 'null', false);
+                $is_update = $is_update->set('NowOrderIdx', 'null', false);
+                $is_update = $is_update->set('UseStartDate', 'null', false);
+                $is_update = $is_update->set('UseEndDate', 'null', false);
+            }
+
             $is_update = $is_update->where($arr_condition);
             $is_update = $is_update->update($this->_table['readingRoom_mst']);
 

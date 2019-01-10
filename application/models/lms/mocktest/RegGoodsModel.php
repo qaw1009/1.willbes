@@ -51,26 +51,28 @@ class RegGoodsModel extends WB_Model
 
 
         $select = "
-            SELECT MP.*, A.wAdminName, PD.ProdName, PD.SaleStartDatm, PD.SaleEndDatm, PS.SalePrice, PS.RealSalePrice,          
+            SELECT MP.*, A.wAdminName, PD.ProdName, PD.SaleStartDatm, PD.SaleEndDatm, PD.IsUse, PS.SalePrice, PS.RealSalePrice,          
             C1.CateName, C1.IsUse AS IsUseCate
+            ,SC1.CcdName As AcceptStatusCcd_Name
         ";
         $from = "
             FROM {$this->_table['mockProduct']} AS MP
-            JOIN {$this->_table['Product']} AS PD ON MP.ProdCode = PD.ProdCode AND PD.IsStatus = 'Y'
+            JOIN {$this->_table['Product']} AS PD ON MP.ProdCode = PD.ProdCode 
             JOIN {$this->_table['ProductCate']} AS PC ON MP.ProdCode = PC.ProdCode AND PC.IsStatus = 'Y'
             JOIN {$this->_table['category']} AS C1 ON PC.CateCode = C1.CateCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y'
             JOIN {$this->_table['ProductSale']} AS PS ON MP.ProdCode = PS.ProdCode AND PS.IsStatus = 'Y'
             LEFT JOIN {$this->_table['admin']} AS A ON MP.RegAdminIdx = A.wAdminIdx
+            LEFT OUTER JOIN {$this->_table['sysCode']} AS SC1 ON MP.AcceptStatusCcd = SC1.Ccd
         ";
         $selectCount = "SELECT COUNT(*) AS cnt";
-        $where = "WHERE MP.IsStatus = 'Y'";
+        $where = "WHERE PD.IsStatus = 'Y' ";
         $where .= $this->_conn->makeWhere($condition)->getMakeWhere(true)."\n";
         $order = "ORDER BY MP.ProdCode DESC\n";
 
+        //echo $select . $from . $where . $order . $offset_limit;
+
         $data = $this->_conn->query($select . $from . $where . $order . $offset_limit)->result_array();
         $count = $this->_conn->query($selectCount . $from . $where)->row()->cnt;
-
-        // todo 접수현황 추가
 
 
         // 직렬이름 추출
@@ -83,7 +85,7 @@ class RegGoodsModel extends WB_Model
         $applyType_off = $this->config->item('sysCode_applyType_off', 'mock'); // 응시형태(offline)
 
         foreach ($data as &$it) {
-            $takeFormsCcds = explode(',', $it['TakeFormsCcds']);
+            $takeFormsCcds = explode(',', $it['TakeFormsCcd']);
             $it['TakePart_on'] = ( in_array($applyType_on, $takeFormsCcds) ) ? 'Y' : 'N';
             $it['TakePart_off'] = ( in_array($applyType_off, $takeFormsCcds) ) ? 'Y' : 'N';
 
@@ -160,11 +162,11 @@ class RegGoodsModel extends WB_Model
             // lms_Product_Mock 복사
             $sql = "
                 INSERT INTO {$this->_table['mockProduct']}
-                    (ProdCode, TakePart, MockPart, TakeFormsCcds, TakeAreas1CCds, TakeAreas2Ccd, AddPointsCcd, MockYear, MockRotationNo,
-                     ClosingPerson, IsRegister, TakeType, TakeStartDatm, TakeEndDatm, TakeTime, IsUse,
+                    (ProdCode, TakePart, MockPart, TakeFormsCcd, TakeAreas1CCds, TakeAreas2Ccds, AddPointTypes, MockYear, MockRotationNo,
+                     ClosingPerson, AcceptStatusCcd, TakeStartDatm, TakeEndDatm, TakeTime, 
                      RegIp, RegAdminIdx, RegDatm)
-                SELECT ?, TakePart, MockPart, TakeFormsCcds, TakeAreas1CCds, TakeAreas2Ccd, AddPointsCcd, MockYear, MockRotationNo,
-                       ClosingPerson, IsRegister, TakeType, TakeStartDatm, TakeEndDatm, TakeTime, 'N', ?, ?, ?
+                SELECT ?, TakePart, MockPart, TakeFormsCcd, TakeAreas1CCds, TakeAreas2Ccds, AddPointTypes, MockYear, MockRotationNo,
+                       ClosingPerson, AcceptStatusCcd, TakeStartDatm, TakeEndDatm, TakeTime, ?, ?, ?
                 FROM {$this->_table['mockProduct']}
                 WHERE ProdCode = ? AND IsStatus = 'Y'";
             $this->_conn->query($sql, array($prodcode, $RegIp, $RegAdminIdx, $RegDatm, $idx));
@@ -223,6 +225,7 @@ class RegGoodsModel extends WB_Model
                 'PointApplyCcd' => $this->config->item('sysCode_PointApplyCcd', 'mock'),
                 'IsSms'         => $this->input->post('IsSms'),
                 'IsUse'         => $this->input->post('IsUse'),
+                'IsCart'         => 'N',
                 'RegIp'         => $this->input->ip_address(),
                 'RegDatm'       => $date,
                 'RegAdminIdx'   => $this->session->userdata('admin_idx'),
@@ -270,19 +273,20 @@ class RegGoodsModel extends WB_Model
                 'ProdCode'       => $prodcode,
                 'TakePart'       => $this->input->post('TakePart'),
                 'MockPart'       => implode(',', $this->input->post('cateD2')),
-                'TakeFormsCcds'  => implode(',', $this->input->post('TakeFormsCcds')),
+                'TakeFormsCcd'  => implode(',', $this->input->post('TakeFormsCcd')),
                 'TakeAreas1CCds' => empty($this->input->post('TakeAreas1CCds')) ? '': implode(',', $this->input->post('TakeAreas1CCds')),
-                'TakeAreas2Ccd'  => empty($this->input->post('TakeAreas2Ccd')) ? '' : implode(',', $this->input->post('TakeAreas2Ccd')),
-                'AddPointsCcd'   => implode(',', $this->input->post('AddPointsCcd')),
+                'TakeAreas2Ccds'  => empty($this->input->post('TakeAreas2Ccds')) ? '' : implode(',', $this->input->post('TakeAreas2Ccds')),
+                'AddPointTypes'   => implode(',', $this->input->post('AddPointTypes')),
                 'MockYear'       => $this->input->post('MockYear'),
                 'MockRotationNo' => $this->input->post('MockRotationNo'),
                 'ClosingPerson'  => empty($this->input->post('ClosingPerson')) ? '' : $this->input->post('ClosingPerson'),
-                'IsRegister'     => $this->input->post('IsRegister'), // 접수상태
-                'TakeType'       => $this->input->post('TakeType'),
+                'AcceptStatusCcd' => $this->input->post('AcceptStatusCcd'),
+                //'IsRegister'     => $this->input->post('IsRegister'), // 접수상태
+                //'TakeType'       => $this->input->post('TakeType'),
                 'TakeStartDatm'  => ($this->input->post('TakeType') == 'A') ? null : $TakeStartDatm,
                 'TakeEndDatm'    => ($this->input->post('TakeType') == 'A') ? null : $TakeEndDatm,
                 'TakeTime'       => $this->input->post('TakeTime'), // 분
-                'IsUse'          => $this->input->post('IsUse'),
+                //'IsUse'          => $this->input->post('IsUse'),
                 'RegIp'          => $this->input->ip_address(),
                 'RegDatm'        => $date,
                 'RegAdminIdx'    => $this->session->userdata('admin_idx'),
@@ -376,19 +380,21 @@ class RegGoodsModel extends WB_Model
 
             // lms_Product_Mock 저장
             $data = array(
-                'TakeFormsCcds'  => implode(',', $this->input->post('TakeFormsCcds')),
+                //'TakeFormsCcd'  => implode(',', $this->input->post('TakeFormsCcd')),
+                'TakeFormsCcd'  =>  $this->input->post('TakeFormsCcd'),
                 'TakeAreas1CCds' => empty($this->input->post('TakeAreas1CCds')) ? '': implode(',', $this->input->post('TakeAreas1CCds')),
-                'TakeAreas2Ccd'  => empty($this->input->post('TakeAreas2Ccd')) ? '' : implode(',', $this->input->post('TakeAreas2Ccd')),
-                'AddPointsCcd'   => implode(',', $this->input->post('AddPointsCcd')),
+                'TakeAreas2Ccds'  => empty($this->input->post('TakeAreas2Ccds')) ? '' : implode(',', $this->input->post('TakeAreas2Ccds')),
+                'AddPointTypes'   => implode(',', $this->input->post('AddPointTypes')),
                 'MockYear'       => $this->input->post('MockYear'),
                 'MockRotationNo' => $this->input->post('MockRotationNo'),
                 'ClosingPerson'  => empty($this->input->post('ClosingPerson')) ? '' : $this->input->post('ClosingPerson'),
-                'IsRegister'     => $this->input->post('IsRegister'),
-                'TakeType'       => $this->input->post('TakeType'),
+                'AcceptStatusCcd' => $this->input->post('AcceptStatusCcd'),
+                //'IsRegister'     => $this->input->post('IsRegister'),
+                //'TakeType'       => $this->input->post('TakeType'),
                 'TakeStartDatm'  => ($this->input->post('TakeType') == 'A') ? null : $TakeStartDatm,
                 'TakeEndDatm'    => ($this->input->post('TakeType') == 'A') ? null : $TakeEndDatm,
                 'TakeTime'       => $this->input->post('TakeTime'), // 분
-                'IsUse'          => $this->input->post('IsUse'),
+                //'IsUse'          => $this->input->post('IsUse'),
                 'UpdDatm'        => $date,
                 'UpdAdminIdx'    => $this->session->userdata('admin_idx'),
             );
@@ -473,23 +479,23 @@ class RegGoodsModel extends WB_Model
         // 기본정보
         $sql = "
             SELECT MP.*,
-                   PD.SiteCode, PD.ProdName, PD.SaleStartDatm, PD.SaleEndDatm, PD.IsSms, PC.CateCode,
+                   PD.SiteCode, PD.ProdName, PD.SaleStartDatm, PD.SaleEndDatm, PD.IsSms, PD.IsUse, PC.CateCode,
                    PS.SalePrice, PS.SaleRate, PS.SaleDiscType, PS.RealSalePrice,
                    SMS.SendTel, SMS.Memo
             FROM {$this->_table['mockProduct']} AS MP
-            JOIN {$this->_table['Product']} AS PD ON MP.ProdCode = PD.ProdCode AND PD.IsStatus = 'Y'
+            JOIN {$this->_table['Product']} AS PD ON MP.ProdCode = PD.ProdCode  
             JOIN {$this->_table['ProductCate']} AS PC ON MP.ProdCode = PC.ProdCode AND PC.IsStatus = 'Y'
             JOIN {$this->_table['ProductSale']} AS PS ON MP.ProdCode = PS.ProdCode AND PS.IsStatus = 'Y'
             JOIN {$this->_table['ProductSMS']} AS SMS ON MP.ProdCode = SMS.ProdCode AND SMS.IsStatus = 'Y'
-            WHERE MP.IsStatus = 'Y' AND MP.ProdCode = '$idx'";
+            WHERE PD.IsStatus = 'Y' AND MP.ProdCode = '$idx'";
 
         $data = $this->_conn->query($sql)->row_array();
 
         $data['MockPart'] = explode(',', $data['MockPart']);
-        $data['TakeFormsCcds'] = explode(',', $data['TakeFormsCcds']);
+        $data['TakeFormsCcd'] = explode(',', $data['TakeFormsCcd']);
         $data['TakeAreas1CCds'] = explode(',', $data['TakeAreas1CCds']);
-        $data['TakeAreas2Ccd'] = explode(',', $data['TakeAreas2Ccd']);
-        $data['AddPointsCcd'] = explode(',', $data['AddPointsCcd']);
+        $data['TakeAreas2Ccds'] = explode(',', $data['TakeAreas2Ccds']);
+        $data['AddPointTypes'] = explode(',', $data['AddPointTypes']);
 
 
         // 과목정보
@@ -503,7 +509,7 @@ class RegGoodsModel extends WB_Model
             JOIN {$this->_table['subject']} AS SJ ON MS.SubjectIdx = SJ.SubjectIdx AND SJ.IsStatus = 'Y'
             JOIN {$this->_table['professor']} AS P ON EB.ProfIdx = P.ProfIdx AND P.IsStatus = 'Y'
             JOIN {$this->_table['pms_professor']} AS PMS ON P.wProfIdx = PMS.wProfIdx AND PMS.wIsStatus = 'Y'
-            WHERE MP.IsStatus = 'Y' AND MP.ProdCode = '$idx'
+            WHERE MP.ProdCode = '$idx'
             ORDER BY MPE.OrderNum ASC";
 
         $sData = $this->_conn->query($sql)->result_array();

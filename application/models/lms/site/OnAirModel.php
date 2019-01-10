@@ -405,7 +405,7 @@ class OnAirModel extends WB_Model
                     $file_path = $row['LeftFileFullPath'].$row['LeftFileName'];
                     $real_file_path = public_to_upload_path($file_path);
                     if (@unlink($real_file_path) === false) {
-                        throw new \Exception('이미지 삭제에 실패했습니다.');
+                        /*throw new \Exception('이미지 삭제에 실패했습니다.');*/
                     }
                 }
                 $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->_getAttachImgNames(2), $upload_dir);
@@ -418,7 +418,7 @@ class OnAirModel extends WB_Model
                     $file_path = $row['RightFileFullPath'].$row['RightFileName'];
                     $real_file_path = public_to_upload_path($file_path);
                     if (@unlink($real_file_path) === false) {
-                        throw new \Exception('이미지 삭제에 실패했습니다.');
+                        /*throw new \Exception('이미지 삭제에 실패했습니다.');*/
                     }
                 }
                 $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->_getAttachImgNames(2), $upload_dir);

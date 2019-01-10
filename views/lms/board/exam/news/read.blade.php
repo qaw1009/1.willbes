@@ -105,7 +105,7 @@
         <div class="form-group">
             <label class="control-label col-md-1-1" for="btn_previous" style="margin-top: 7px;">이전글</label>
             <div class="form-control-static col-md-10">
-                @if(count($board_previous) <= 0)
+                @if(empty($board_previous) === true)
                     이전글이 없습니다.
                 @else
                     <a href='javascript:void(0);' id='btn_previous' data-idx='{{$board_previous['BoardIdx']}}'><u>{{$board_previous['Title']}}</u></a>

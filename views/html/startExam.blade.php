@@ -16,7 +16,7 @@
                     <li class="txt">- 응시 중간에 우측 상단의 'X'를 클릭하거나, <span class="tx-red">임의로 시험을 중단 및 임시저장 후 제출 시, 시험결과를 확인할 수 없습니다.</span>(무효처리)</li>
                     <li class="txt">- <span class="tx-red">응시후 답안지는 모두 체크하셔야 답안 제출이 가능</span>합니다.</li>
                     <li class="txt">- 시험시간이 종료되기 전 답안을 제출해 주세요. 답안을 제출하지 않을 경우 시험 결과를 확인할 수 없습니다.</li>
-                    <li class="txt">&nbsp; (시험시간 종료 시 답안 제출 불가)</li>
+                    <li class="txt">&nbsp; <span class="tx-red">(시험시간 종료 시 답안 제출 불가)</span></li>
 
                 </ul>
                 <div class="PASSZONE-Lec-Section">

@@ -85,7 +85,7 @@ class RegGoodsModel extends WB_Model
         $applyType_off = $this->config->item('sysCode_applyType_off', 'mock'); // 응시형태(offline)
 
         foreach ($data as &$it) {
-            $takeFormsCcds = explode(',', $it['TakeFormsCcds']);
+            $takeFormsCcds = explode(',', $it['TakeFormsCcd']);
             $it['TakePart_on'] = ( in_array($applyType_on, $takeFormsCcds) ) ? 'Y' : 'N';
             $it['TakePart_off'] = ( in_array($applyType_off, $takeFormsCcds) ) ? 'Y' : 'N';
 
@@ -162,10 +162,10 @@ class RegGoodsModel extends WB_Model
             // lms_Product_Mock 복사
             $sql = "
                 INSERT INTO {$this->_table['mockProduct']}
-                    (ProdCode, TakePart, MockPart, TakeFormsCcds, TakeAreas1CCds, TakeAreas2Ccds, AddPointsCcd, MockYear, MockRotationNo,
+                    (ProdCode, TakePart, MockPart, TakeFormsCcd, TakeAreas1CCds, TakeAreas2Ccds, AddPointTypes, MockYear, MockRotationNo,
                      ClosingPerson, AcceptStatusCcd, TakeStartDatm, TakeEndDatm, TakeTime, 
                      RegIp, RegAdminIdx, RegDatm)
-                SELECT ?, TakePart, MockPart, TakeFormsCcds, TakeAreas1CCds, TakeAreas2Ccds, AddPointsCcd, MockYear, MockRotationNo,
+                SELECT ?, TakePart, MockPart, TakeFormsCcd, TakeAreas1CCds, TakeAreas2Ccds, AddPointTypes, MockYear, MockRotationNo,
                        ClosingPerson, AcceptStatusCcd, TakeStartDatm, TakeEndDatm, TakeTime, ?, ?, ?
                 FROM {$this->_table['mockProduct']}
                 WHERE ProdCode = ? AND IsStatus = 'Y'";
@@ -273,10 +273,10 @@ class RegGoodsModel extends WB_Model
                 'ProdCode'       => $prodcode,
                 'TakePart'       => $this->input->post('TakePart'),
                 'MockPart'       => implode(',', $this->input->post('cateD2')),
-                'TakeFormsCcds'  => implode(',', $this->input->post('TakeFormsCcds')),
+                'TakeFormsCcd'  => implode(',', $this->input->post('TakeFormsCcd')),
                 'TakeAreas1CCds' => empty($this->input->post('TakeAreas1CCds')) ? '': implode(',', $this->input->post('TakeAreas1CCds')),
                 'TakeAreas2Ccds'  => empty($this->input->post('TakeAreas2Ccds')) ? '' : implode(',', $this->input->post('TakeAreas2Ccds')),
-                'AddPointsCcd'   => implode(',', $this->input->post('AddPointsCcd')),
+                'AddPointTypes'   => implode(',', $this->input->post('AddPointTypes')),
                 'MockYear'       => $this->input->post('MockYear'),
                 'MockRotationNo' => $this->input->post('MockRotationNo'),
                 'ClosingPerson'  => empty($this->input->post('ClosingPerson')) ? '' : $this->input->post('ClosingPerson'),
@@ -380,10 +380,11 @@ class RegGoodsModel extends WB_Model
 
             // lms_Product_Mock 저장
             $data = array(
-                'TakeFormsCcds'  => implode(',', $this->input->post('TakeFormsCcds')),
+                //'TakeFormsCcd'  => implode(',', $this->input->post('TakeFormsCcd')),
+                'TakeFormsCcd'  =>  $this->input->post('TakeFormsCcd'),
                 'TakeAreas1CCds' => empty($this->input->post('TakeAreas1CCds')) ? '': implode(',', $this->input->post('TakeAreas1CCds')),
                 'TakeAreas2Ccds'  => empty($this->input->post('TakeAreas2Ccds')) ? '' : implode(',', $this->input->post('TakeAreas2Ccds')),
-                'AddPointsCcd'   => implode(',', $this->input->post('AddPointsCcd')),
+                'AddPointTypes'   => implode(',', $this->input->post('AddPointTypes')),
                 'MockYear'       => $this->input->post('MockYear'),
                 'MockRotationNo' => $this->input->post('MockRotationNo'),
                 'ClosingPerson'  => empty($this->input->post('ClosingPerson')) ? '' : $this->input->post('ClosingPerson'),
@@ -491,10 +492,10 @@ class RegGoodsModel extends WB_Model
         $data = $this->_conn->query($sql)->row_array();
 
         $data['MockPart'] = explode(',', $data['MockPart']);
-        $data['TakeFormsCcds'] = explode(',', $data['TakeFormsCcds']);
+        $data['TakeFormsCcd'] = explode(',', $data['TakeFormsCcd']);
         $data['TakeAreas1CCds'] = explode(',', $data['TakeAreas1CCds']);
         $data['TakeAreas2Ccds'] = explode(',', $data['TakeAreas2Ccds']);
-        $data['AddPointsCcd'] = explode(',', $data['AddPointsCcd']);
+        $data['AddPointTypes'] = explode(',', $data['AddPointTypes']);
 
 
         // 과목정보

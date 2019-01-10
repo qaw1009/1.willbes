@@ -37,7 +37,7 @@
                             @endforeach
                         </select>
 
-                        <select class="form-control mr-5" id="search_TakeFormsCcds" name="search_TakeFormsCcds">
+                        <select class="form-control mr-5" id="search_TakeFormsCcd" name="search_TakeFormsCcd">
                             <option value="">응시형태</option>
                             @foreach($applyType as $k => $v)
                                 <option value="{{$k}}">{{$v}}</option>

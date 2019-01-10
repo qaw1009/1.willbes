@@ -47,7 +47,7 @@
                         <th colspan="1">응시형태 <span class="required">*</span></th>
                         <td colspan="3">
                             @foreach($applyType as $k => $v)
-                                <input type="checkbox" class="flat" name="TakeFormsCcds[]" value="{{$k}}" @if($method == 'PUT' && in_array($k, $data['TakeFormsCcds'])) checked @endif> <span class="flat-text mr-20">{{$v}}</span>
+                                <input type="radio" class="flat" name="TakeFormsCcd" value="{{$k}}" @if($method == 'PUT' && in_array($k, $data['TakeFormsCcd'])) checked @endif> <span class="flat-text mr-20">{{$v}}</span>
                             @endforeach
                         </td>
                     </tr>
@@ -71,7 +71,7 @@
                         <th colspan="1">가산점 <span class="required">*</span></th>
                         <td colspan="3">
                             @foreach($addPoint as $k => $v)
-                                <input type="checkbox" class="flat" name="AddPointsCcd[]" value="{{$k}}" @if($method == 'PUT' && in_array($k, $data['AddPointsCcd'])) checked @endif> <span class="flat-text mr-20">{{$v}}</span>
+                                <input type="checkbox" class="flat" name="AddPointTypes[]" value="{{$k}}" @if($method == 'PUT' && in_array($k, $data['AddPointTypes'])) checked @endif> <span class="flat-text mr-20">{{$v}}</span>
                             @endforeach
                         </td>
                     </tr>
@@ -164,8 +164,6 @@
                     <tr>
                         <th colspan="1">접수상태 <span class="required">*</span></th>
                         <td colspan="3">
-
-                            {{$data['AcceptStatusCcd'] }}
                             @foreach($accept_ccd as $key=>$val)
                                 @if($key != '675001' ) {{--접수예정 제외--}}
                                 <input type="radio" name="AcceptStatusCcd" class="flat" value="{{$key}}" @if( $data['AcceptStatusCcd'] == $key) checked="checked" @endif required title="접수상태"> <span class="flat-text mr-10">{{$val}}</span>
@@ -176,7 +174,7 @@
                     <tr>
                         <th colspan="1">응시가능기간 <span class="required">*</span></th>
                         <td colspan="3" class="form-inline">
-                            <input type="text" class="form-control datepicker" style="width:100px;" name="TakeStartDatm_d" value="@if($method == 'PUT'){{ substr($data['TakeStartDatm'], 0, 10) }}@else{{ date("Y-m-d") }}@endif" readonly>
+                            <input type="text" class="form-control datepicker" style="width:100px;" name="TakeStartDatm_d" value="@if($method == 'PUT'){{ substr($data['TakeStartDatm'], 0, 10) }}@else{{ date("Y-m-d") }}@endif" readonly required="required" title="응시가능기간 시작일">
                             <select name="TakeStartDatm_h" class="form-control">
                                 <!--option value="">선택</option//-->
                                 @foreach(range(0, 23) as $i)
@@ -192,7 +190,7 @@
                                 @endforeach
                             </select> 분
                             <span class="ml-10 mr-10"> ~ </span>
-                            <input type="text" class="form-control datepicker" style="width:100px;" name="TakeEndDatm_d" value="@if($method == 'PUT'){{ substr($data['TakeEndDatm'], 0, 10) }}@else{{date("Y-m-d", strtotime(date("Y-m-d").'1year'))}} @endif" readonly>
+                            <input type="text" class="form-control datepicker" style="width:100px;" name="TakeEndDatm_d" value="@if($method == 'PUT'){{ substr($data['TakeEndDatm'], 0, 10) }}@else{{date("Y-m-d", strtotime(date("Y-m-d").'1year'))}} @endif" readonly  required="required" title="응시가능기간 종료일">
                             <select name="TakeEndDatm_h" class="form-control">
                                 <!--option value="">선택</option//-->
                                 @foreach(range(0, 23) as $i)
@@ -571,12 +569,12 @@
             @endif
 
             // 응시형태에 따른 웅시지역, 접수마감인원 분기처리
-            $regi_form.on('ifChanged', '[name="TakeFormsCcds[]"]', TakeFormCheck);
+            $regi_form.on('ifChanged', '[name="TakeFormsCcd"]', TakeFormCheck);
             TakeFormCheck();
 
             function TakeFormCheck() {
                 var applyType_on = '{{$applyType_on}}';
-                var selType = $('[name="TakeFormsCcds[]"]:checked').map(function () {
+                var selType = $('[name="TakeFormsCcd"]:checked').map(function () {
                     return this.value;
                 }).get();
 

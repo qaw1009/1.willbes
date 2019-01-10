@@ -102,7 +102,7 @@ class Issue extends \app\controllers\BaseController
         $count = $this->readingRoomModel->listSeatDetail($mang_type,true, $arr_condition);
 
         if ($count > 0) {
-            $order_by = ['c.StatusCcd' => 'ASC', 'c.UseEndDate' => 'ASC', 'c.RrudIdx' => 'DESC'];
+            $order_by = ['b.OrderIdx' => 'DESC', 'c.StatusCcd' => 'ASC', 'c.UseEndDate' => 'ASC', 'c.RrudIdx' => 'DESC'];
             $list = $this->readingRoomModel->listSeatDetail($mang_type,false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), $order_by);
         }
 

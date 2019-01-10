@@ -147,7 +147,7 @@ class ReadingRoomModel extends BaseReadingRoomModel
                 fn_ccd_name(a.CampusCcd) AS CampusName,
                 fn_ccd_name(op.PayStatusCcd) AS PayStatusName,
                 e.wAdminName AS RegAdminName, c.RegDatm AS SeatRegDatm,
-                IF(d.RefundIdx IS NULL,\'미반환\',\'반환\') AS SubRefundType,
+                IF(d.RefundIdx IS NULL,\'미반환\',\'반환\') AS SubRefundTypeName,
                 d.RealPayPrice AS SubRealPayPrice
             ';
         $from = "
@@ -565,7 +565,7 @@ class ReadingRoomModel extends BaseReadingRoomModel
             INNER JOIN {$this->_table['lms_order_product']} AS op ON b.OrderIdx = op.OrderIdx
             INNER JOIN {$this->_table['lms_member']} AS m ON b.MemIdx = m.MemIdx
             INNER JOIN {$this->_table['readingRoom']} AS a ON op.ProdCode = a.ProdCode AND a.MangType = '{$mang_type}' AND a.IsStatus = 'Y'
-            INNER JOIN {$this->_table['readingRoom_useDetail']} AS c ON b.OrderIdx = c.NowOrderIdx
+            INNER JOIN {$this->_table['readingRoom_useDetail']} AS c ON b.OrderIdx = c.NowOrderIdx AND a.LrIdx = c.LrIdx
             INNER JOIN {$this->_table['wbs_sys_admin']} AS e ON c.RegAdminIdx = e.wAdminIdx AND e.wIsStatus='Y'
             
             INNER JOIN (
@@ -578,11 +578,12 @@ class ReadingRoomModel extends BaseReadingRoomModel
             
             LEFT JOIN (
                 SELECT STRAIGHT_JOIN
-                    LrIdx, MasterOrderIdx, NowOrderIdx, SerialNumber, UseEndDate,
-                    IF ((TIMESTAMPDIFF(DAY, DATE_FORMAT(NOW(),'%Y-%m-%d'), UseEndDate) >= 0 && TIMESTAMPDIFF(DAY, DATE_FORMAT(NOW(),'%Y-%m-%d'), UseEndDate) <= 7) ||
-                            (TIMESTAMPDIFF(DAY, DATE_FORMAT(NOW(),'%Y-%m-%d'), UseEndDate) <= 0 && TIMESTAMPDIFF(DAY, DATE_FORMAT(NOW(),'%Y-%m-%d'), UseEndDate) >= -7), 'Y','N'
+                    a.LrIdx, a.MasterOrderIdx, a.NowOrderIdx, a.SerialNumber, a.UseEndDate,
+                    IF ((TIMESTAMPDIFF(DAY, DATE_FORMAT(NOW(),'%Y-%m-%d'), a.UseEndDate) >= 0 && TIMESTAMPDIFF(DAY, DATE_FORMAT(NOW(),'%Y-%m-%d'), a.UseEndDate) <= 7) ||
+                            (TIMESTAMPDIFF(DAY, DATE_FORMAT(NOW(),'%Y-%m-%d'), a.UseEndDate) <= 0 && TIMESTAMPDIFF(DAY, DATE_FORMAT(NOW(),'%Y-%m-%d'), a.UseEndDate) >= -7), 'Y','N'
                     ) AS ExtensionType
-                    FROM {$this->_table['readingRoom_mst']}
+                    FROM {$this->_table['readingRoom_mst']} as a
+                    INNER JOIN {$this->_table['readingRoom']} AS b ON a.LrIdx = b.LrIdx AND b.MangType = '{$mang_type}' AND b.IsStatus = 'Y'
                     WHERE StatusCcd = '{$this->_arr_reading_room_status_ccd['Y']}'
             ) AS f ON
             f.LrIdx = a.LrIdx AND f.SerialNumber = c.NowMIdx AND f.UseEndDate = c.UseEndDate
@@ -759,7 +760,7 @@ class ReadingRoomModel extends BaseReadingRoomModel
                 'StatusCcd' => $this->_arr_reading_room_status_ccd['N'],
             ];
             if ($this->updateReadingRoomMst($arr_update_condition, $arr_target_data, 'Y') !== true) {
-                throw new \Exception('좌석 상태 수정에 실패했습니다.1');
+                throw new \Exception('좌석 상태 수정에 실패했습니다.');
             }
 
             //환불로 인한 회원의 좌석 상태 수정
@@ -771,7 +772,7 @@ class ReadingRoomModel extends BaseReadingRoomModel
                 'StatusCcd' => $this->_arr_reading_room_seat_status_ccd['out'],
             ];
             if ($this->updateSeatDetail($arr_update_condition, $arr_target_data) !== true) {
-                throw new \Exception('회원 좌석 상태 수정에 실패했습니다.2');
+                throw new \Exception('회원 좌석 상태 수정에 실패했습니다.');
             }
             $this->_conn->trans_commit();
         } catch (\Exception $e) {

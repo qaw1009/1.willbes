@@ -48,7 +48,7 @@ class OnAirFModel extends WB_Model
                     on V.CIdx = CR.CIdx
                     
                 LEFT JOIN (
-                    SELECT OaIdx, GROUP_CONCAT(Title,\'|\') AS Title
+                    SELECT OaIdx, GROUP_CONCAT(Title SEPARATOR \'|\') AS Title
                     FROM ' . $this->_table['onair_title'] . '
                     WHERE TitleType = \'O\' AND IsStatus = \'Y\'
                     GROUP BY OaIdx

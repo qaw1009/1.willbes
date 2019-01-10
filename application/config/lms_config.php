@@ -32,6 +32,7 @@ $config['mock'] = array(
     'sysCode_PointApplyCcd' => 635001, // lms_Product > 포인트적용코드 입력값 (전체)
     'sysCode_SaleTypeCcd' => 613001,   // lms_Product_Sale > 판매타입코드 입력값 (PC+모바일)
     'sysCode_paymentStatus' => 676,    // 결제상태
+    'sysCode_acceptStatus' => 675,        // 접수상태
 
     'upload_path_mock' => $config['upload_prefix_dir'] . '/mocktest/', // 통파일 저장경로: ~/mocktest/{idx}/
     'upload_path_mockQ' => '/question/',                               // 개별 문제파일 저장경로 {$uploadPath_mock}/question/

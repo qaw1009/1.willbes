@@ -45,7 +45,7 @@ class ReadingRoomModel extends BaseReadingRoomModel
             LEFT OUTER JOIN {$this->_table['lms_sys_code']} AS d ON a.CampusCcd = d.Ccd
             INNER JOIN {$this->_table['wbs_sys_admin']} AS e ON a.RegAdminIdx = e.wAdminIdx AND e.wIsStatus='Y'
             INNER JOIN (
-                SELECT temp_a.LrIdx,
+                SELECT STRAIGHT_JOIN temp_a.LrIdx,
                 SUM(IF(temp_a.StatusCcd = {$this->_arr_reading_room_status_ccd['N']}, '1', '0')) AS countN,
                 SUM(IF(temp_a.StatusCcd = {$this->_arr_reading_room_status_ccd['Y']}, '1', '0')) AS countY
                 FROM {$this->_table['readingRoom_mst']} AS temp_a
@@ -62,7 +62,7 @@ class ReadingRoomModel extends BaseReadingRoomModel
         //켐퍼스 권한
         $where_campus = $this->_makeAuthCampusQueryString();
         $where = $where_temp . $where_campus;
-        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        $query = $this->_conn->query('select STRAIGHT_JOIN ' . $column . $from . $where . $order_by_offset_limit);
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
@@ -120,7 +120,7 @@ class ReadingRoomModel extends BaseReadingRoomModel
             INNER JOIN {$this->_table['wbs_sys_admin']} AS e ON a.RegAdminIdx = e.wAdminIdx AND e.wIsStatus='Y'
             LEFT OUTER JOIN {$this->_table['wbs_sys_admin']} AS eb ON a.UpdAdminIdx = eb.wAdminIdx AND eb.wIsStatus='Y'
             INNER JOIN (
-                SELECT temp_a.LrIdx,
+                SELECT STRAIGHT_JOIN temp_a.LrIdx,
                 SUM(IF(temp_a.StatusCcd = {$this->_arr_reading_room_status_ccd['N']}, '1', '0')) AS countN,
                 SUM(IF(temp_a.StatusCcd = {$this->_arr_reading_room_status_ccd['Y']}, '1', '0')) AS countY
                 FROM {$this->_table['readingRoom_mst']} AS temp_a
@@ -129,7 +129,7 @@ class ReadingRoomModel extends BaseReadingRoomModel
             ) AS ab ON a.LrIdx = ab.LrIdx
         ";
 
-        return $this->_conn->query('select '.$column .$from)->row_array();
+        return $this->_conn->query('select STRAIGHT_JOIN '.$column .$from)->row_array();
     }
 
     /**
@@ -163,7 +163,7 @@ class ReadingRoomModel extends BaseReadingRoomModel
             INNER JOIN {$this->_table['readingRoom_mst']} AS c ON b.OrderIdx = c.NowOrderIdx
             
             INNER JOIN (
-                SELECT op.OrderProdIdx, op.ProdCode, op.PayStatusCcd, op.RealPayPrice, opr.RefundIdx, opr.RefundPrice
+                SELECT STRAIGHT_JOIN op.OrderProdIdx, op.ProdCode, op.PayStatusCcd, op.RealPayPrice, opr.RefundIdx, opr.RefundPrice
                 FROM lms_product AS p
                 INNER JOIN {$this->_table['lms_order_product']} AS op ON p.ProdCode = op.ProdCode
                 LEFT JOIN {$this->_table['lms_order_product_refund']} AS opr ON op.OrderProdIdx = opr.OrderProdIdx
@@ -177,7 +177,7 @@ class ReadingRoomModel extends BaseReadingRoomModel
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
 
-        return $this->_conn->query('select '.$column . $from . $where)->row_array();
+        return $this->_conn->query('select STRAIGHT_JOIN '.$column . $from . $where)->row_array();
     }
 
     /**
@@ -195,7 +195,7 @@ class ReadingRoomModel extends BaseReadingRoomModel
                 WHERE ProdCode = '{$prod_code}' AND IsUse = 'Y' AND IsStatus = 'Y'
             ) AS a
             INNER JOIN (
-                SELECT temp_a.LrIdx, temp_a.SerialNumber, temp_a.StatusCcd, temp_d.MemIdx, temp_d.MemName
+                SELECT STRAIGHT_JOIN temp_a.LrIdx, temp_a.SerialNumber, temp_a.StatusCcd, temp_d.MemIdx, temp_d.MemName
                 FROM {$this->_table['readingRoom_mst']} AS temp_a
                 INNER JOIN {$this->_table['readingRoom']} AS temp_b ON temp_a.LrIdx = temp_b.LrIdx
                 LEFT JOIN {$this->_table['lms_order']} AS temp_c ON temp_a.NowOrderIdx = temp_c.OrderIdx
@@ -204,7 +204,7 @@ class ReadingRoomModel extends BaseReadingRoomModel
             ) AS b ON a.LrIdx = b.LrIdx
         ";
 
-        return $this->_conn->query('select '.$column .$from)->result_array();
+        return $this->_conn->query('select STRAIGHT_JOIN '.$column .$from)->result_array();
     }
 
     public function getReadingRoomMst($arr_condition, $column)
@@ -349,7 +349,7 @@ class ReadingRoomModel extends BaseReadingRoomModel
         $where = $where->getMakeWhere(false);
         $order_by_offset_limit = $this->_conn->makeOrderBy(['a.RmIdx' => 'DESC'])->getMakeOrderBy();
 
-        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        $query = $this->_conn->query('select STRAIGHT_JOIN ' . $column . $from . $where . $order_by_offset_limit);
         return $query->result_array();
     }
 
@@ -569,7 +569,7 @@ class ReadingRoomModel extends BaseReadingRoomModel
             INNER JOIN {$this->_table['wbs_sys_admin']} AS e ON c.RegAdminIdx = e.wAdminIdx AND e.wIsStatus='Y'
             
             INNER JOIN (
-                SELECT op.OrderProdIdx, op.ProdCode, op.PayStatusCcd, opr.RefundIdx, opr.RefundPrice
+                SELECT STRAIGHT_JOIN op.OrderProdIdx, op.ProdCode, op.PayStatusCcd, opr.RefundIdx, opr.RefundPrice
                 FROM lms_product AS p
                 INNER JOIN {$this->_table['lms_order_product']} AS op ON p.ProdCode = op.ProdCode
                 LEFT JOIN {$this->_table['lms_order_product_refund']} AS opr ON op.OrderProdIdx = opr.OrderProdIdx
@@ -577,7 +577,7 @@ class ReadingRoomModel extends BaseReadingRoomModel
             ) AS d ON a.SubProdCode = d.ProdCode
             
             LEFT JOIN (
-                SELECT 
+                SELECT STRAIGHT_JOIN
                     LrIdx, MasterOrderIdx, NowOrderIdx, SerialNumber, UseEndDate,
                     IF ((TIMESTAMPDIFF(DAY, DATE_FORMAT(NOW(),'%Y-%m-%d'), UseEndDate) >= 0 && TIMESTAMPDIFF(DAY, DATE_FORMAT(NOW(),'%Y-%m-%d'), UseEndDate) <= 7) ||
                             (TIMESTAMPDIFF(DAY, DATE_FORMAT(NOW(),'%Y-%m-%d'), UseEndDate) <= 0 && TIMESTAMPDIFF(DAY, DATE_FORMAT(NOW(),'%Y-%m-%d'), UseEndDate) >= -7), 'Y','N'
@@ -596,7 +596,7 @@ class ReadingRoomModel extends BaseReadingRoomModel
         //켐퍼스 권한
         $where_campus = $this->_makeAuthCampusQueryString();
         $where = $where_temp . $where_campus;
-        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        $query = $this->_conn->query('select STRAIGHT_JOIN ' . $column . $from . $where . $order_by_offset_limit);
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
@@ -734,29 +734,82 @@ class ReadingRoomModel extends BaseReadingRoomModel
         return true;
     }
 
-
-
-
     /**
-     * @param $input
+     * 독서실/사물함 환불
+     * @param $prod_code
      * @param $now_order_idx
      * @return array|bool
-     * TODO : 방문결제 개발 시 해당 메소드 삭제
      */
-    public function testAddSeat($input, $now_order_idx)
+    public function refundReadingRoom($prod_code, $now_order_idx)
     {
         $this->_conn->trans_begin();
         try {
-            if ($this->addSeat($input, $now_order_idx) !== true) {
-                throw new \Exception('좌석 등록에 실패했습니다.');
+            //환불대상데이터 조회
+            $target_data = $this->_findReadingRoomForTargetRefund($prod_code, $now_order_idx);
+            if (empty($target_data) === true) {
+                throw new \Exception('환불대상 상품이 없습니다.');
             }
 
+            //환불로 인한 좌석 상태 수정
+            $arr_update_condition = [
+                'LrIdx' => $target_data['LrIdx'],
+                'NowOrderIdx' => $now_order_idx
+            ];
+            $arr_target_data = [
+                'StatusCcd' => $this->_arr_reading_room_status_ccd['N'],
+            ];
+            if ($this->updateReadingRoomMst($arr_update_condition, $arr_target_data, 'Y') !== true) {
+                throw new \Exception('좌석 상태 수정에 실패했습니다.1');
+            }
+
+            //환불로 인한 회원의 좌석 상태 수정
+            $arr_update_condition = [
+                'LrIdx' => $target_data['LrIdx'],
+                'NowOrderIdx' => $now_order_idx,
+            ];
+            $arr_target_data = [
+                'StatusCcd' => $this->_arr_reading_room_seat_status_ccd['out'],
+            ];
+            if ($this->updateSeatDetail($arr_update_condition, $arr_target_data) !== true) {
+                throw new \Exception('회원 좌석 상태 수정에 실패했습니다.2');
+            }
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();
             return error_result($e);
         }
-
         return true;
+    }
+
+    /**
+     * 환불대상 데이터 조회
+     * @param $prod_code
+     * @param $now_order_idx
+     * @return mixed
+     */
+    private function _findReadingRoomForTargetRefund($prod_code, $now_order_idx)
+    {
+        $column = 'a.LrIdx';
+        $arr_condition = [
+            'RAW' => [
+                'a.ProdCode = ' => (empty($prod_code) === true) ? '\'\'' : $prod_code,
+                'b.NowOrderIdx = ' => (empty($now_order_idx) === true) ? '\'\'' : $now_order_idx,
+            ],
+            'EQ' => [
+                'b.StatusCcd' => $this->_arr_reading_room_status_ccd['Y'],
+                'OP.PayStatusCcd' => $this->_order_pay_status_ccd,
+            ],
+        ];
+
+        $from = "
+            FROM {$this->_table['readingRoom']} AS a
+            INNER JOIN {$this->_table['readingRoom_mst']} AS b ON a.LrIdx = b.LrIdx
+            INNER JOIN {$this->_table['lms_order_product']} AS OP ON b.NowOrderIdx = OP.OrderIdx AND a.ProdCode = OP.ProdCode
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        return $this->_conn->query('select STRAIGHT_JOIN '.$column . $from . $where)->row_array();
     }
 }

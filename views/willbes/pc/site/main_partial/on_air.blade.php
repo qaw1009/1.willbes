@@ -18,17 +18,32 @@
                 @else
                     <div class="onAirBar">
                         <span class="onAirBarBtn">
-                            <a id="stoggleBtn"><p id="stoggleBtnNm">닫기 ▼</p></a>
+                            <a id="stoggleBtn"><p id="stoggleBtnNm">닫기 ▲</p></a>
                             <!-- <a id="stoggleBtn">닫기 ▲</a> -->
                         </span>
                         <span class="state"><img src="{{ img_url('sample/onair.png') }}" alt="방송중"></span>
-                        <ul id="scroll" style="position: relative; overflow: hidden;"><li class="on_air_title"></li></ul>
+                        <ul id="scroll" class="on_air_title" style="position: relative; overflow: hidden;">
+                            @php $i=0; @endphp
+                            @foreach($arr_base['onAirData'] as $key => $row)
+                                @php
+                                    $arr_onAirTitle = explode('|', $row['OnAirTitle']);
+                                @endphp
+                                @foreach($arr_onAirTitle as $t_key => $t_val)
+                                    <li class="onair_rolling" id="onair_rolling_{{$i}}" data-onair-title-id="{{$row['OaIdx']}}">{{$t_val}}</li>
+                                    @php $i++; @endphp
+                                @endforeach
+                            @endforeach
+                        </ul>
                     </div><!--onAirBar//-->
 
                     <div class="onAirCt" style="display: block;">
                         <ul class="tabWrap onAirTabs">
                             @foreach($arr_base['onAirData'] as $key => $row)
-                                <li><a href="#tab_onAirLecBox_{{$row['OaIdx']}}" onclick="javascript:tab_onAirLecBox('{{$row['OaIdx']}}');" @if($key == 0)class="on"@endif>{{$row['OnAirTabName']}}</a></li>
+                                <li>
+                                    <a id="tab_onAirLecBox{{$row['OaIdx']}}" href="#onAirLecBox{{$row['OaIdx']}}" class="tab_onAirLecBox{!! $key == 0 ? ' on' : '' !!}" data-onair-box-id="{{$row['OaIdx']}}">
+                                        {{$row['OnAirTabName']}}
+                                    </a>
+                                </li>
                             @endforeach
                         </ul>
                         <div class="onAirTabInto">
@@ -39,8 +54,10 @@
                                 @php
                                     $arr_onAirTitle = explode('|', $row['OnAirTitle']);
                                 @endphp
-                                <div id="tab_onAirLecBox_{{$row['OaIdx']}}" class="onAirLecBox tabLink">
-                                    <input type="hidden" class="top_text_item" id="top_text_item_{{$row['OaIdx']}}" value="{{$arr_onAirTitle[0]}}">
+                                <div id="onAirLecBox{{$row['OaIdx']}}" class="onAirLecBox tabLink">
+                                    @foreach($arr_onAirTitle as $key => $val)
+                                        <span class="top_text_item d_none" id="top_text_item_{{$row['OaIdx']}}_{{$key}}">{{$val}}/</span>
+                                    @endforeach
                                     <ul class="onAirLec">
                                         <li class="li01">
                                             <p class="ptxt1">@if($row['OnAirStartType'] == 'D'){{$row['OnAirStartTime']}} ~ {{$row['OnAirEndTime']}}@endif</p>
@@ -52,14 +69,43 @@
                                             <img src="{{$row['LeftFileFullPath'] . $row['LeftFileName']}}">
                                         </li>
                                         @else
-                                            {{$row['LeftLink']}}
+                                            <li>
+                                                <div id="jw-player-left"></div>
+                                                <script src="/public/vendor/jwplayer/jwplayer.js"></script>
+                                                <div id="jw-player-left">
+                                                    <script type="text/javascript">jwplayer.key="kl6lOhGqjWCTpx6EmOgcEVnVykhoGWmf4CXllubWP5JwYq6K34m5XnpF0KGiCbQN";</script>
+                                                    <script type="text/javascript">
+                                                        jwplayer("jw-player-left").setup({
+                                                            width: '100%',
+                                                            //image: "",
+                                                            aspectratio: "16:9",
+                                                            autostart: false,
+                                                            file: "{{$row['LeftLink']}}"
+                                                        });
+                                                    </script>
+                                                </div>
+                                            </li>
                                         @endif
                                         @if($row['RightExposureType'] == 'I')
                                         <li>
                                             <img src="{{$row['RightFileFullPath'] . $row['RightFileName']}}">
                                         </li>
                                         @else
-                                            {{$row['RightLink']}}
+                                            <li>
+                                                <script src="/public/vendor/jwplayer/jwplayer.js"></script>
+                                                <div id="jw-player-right">
+                                                    <script type="text/javascript">jwplayer.key="kl6lOhGqjWCTpx6EmOgcEVnVykhoGWmf4CXllubWP5JwYq6K34m5XnpF0KGiCbQN";</script>
+                                                    <script type="text/javascript">
+                                                        jwplayer("jw-player-right").setup({
+                                                            width: '100%',
+                                                            //image: "",
+                                                            aspectratio: "16:9",
+                                                            autostart: false,
+                                                            file: "{{$row['RightLink']}}"
+                                                        });
+                                                    </script>
+                                                </div>
+                                            </li>
                                         @endif
                                     </ul>
                                     <div class="onAirProf">
@@ -84,21 +130,23 @@
 <span id="onAirPlay"></span>
 
 <script type="text/javascript">
+    var real_search_keyword;
+
     //<![CDATA[
-    $(function(){
-        var topText = function() {
-            if ($(".top_text_item").val() != '') {
-                $(".on_air_title").text($(".top_text_item").val());
+    $(document).ready(function(){
+        //tab 클리 시 타이틀 동적 변경
+        $(document).on('click', '.tab_onAirLecBox', function () {
+            if ($(this).hasClass('on') == true) {
+                onair_line_title();
             }
-        };
-        topText();
+        });
 
         $("#stoggleBtn").click(function(){
             $(".onAirCt").slideToggle("slow"); //옵션 "slow", "fast", "normal", "밀리초(1000=1초)"
             if($("#stoggleBtnNm").text().substring(0,2) == "닫기"){
-                $("#stoggleBtnNm").text("열기 ▲");
+                $("#stoggleBtnNm").text("열기 ▼");
             }else{
-                $("#stoggleBtnNm").text("닫기 ▼");
+                $("#stoggleBtnNm").text("닫기 ▲");
             }
         });
 
@@ -119,9 +167,15 @@
     })
     //]]>
 
-    function tab_onAirLecBox(obj) {
-        $(".on_air_title").text($('#top_text_item_' + obj).val());
-    }
+    //온에어 타이틀 적용
+        function onair_line_title() {
+        var temp_on_box_id = 0;
+        $('.tab_onAirLecBox').each(function(){
+            if ($(this).hasClass('on') == true) {
+                temp_on_box_id = $(this).data('onair-box-id');
+            }
+        });
+    };
 
     function textScroll(scroll_el_id) {
         this.objElement = document.getElementById(scroll_el_id);
@@ -174,4 +228,37 @@
     textScroll.prototype.start = function() {
         this.timer = setTimeout(this.name+".move()",3000);
     }
+
+    var real_search_keyword;
+    scroll_top_text();
+    function scroll_top_text(){
+        if(parseInt('1')>0){
+            real_search_keyword = new textScroll('scroll'); // 스크롤링 하고자하는 ul 엘리먼트의 id값을 인자로 넣습니다
+            real_search_keyword.name = "real_search_keyword"; // 인스턴스 네임을 등록합니다
+            real_search_keyword.start(); // 스크롤링 시작
+        }
+    }
+    $(document).ready(function(){
+        $(".onAirTabs > li").find("a").click(function(){
+            $(".onAirTabs > li").find("a").removeClass("active");
+            $(this).addClass("active");
+            var id = $(this).attr("id").replace("tab_","");
+            $(".onAirLecBox").hide();
+            $("#"+id).show();
+            var top_text = $("#"+id).find(".top_text_item").text();
+            var html = "";
+            var top_arr = top_text.split("/");
+            var i=0;
+            for(i=0;i<top_arr.length;i++){
+                if($.trim(top_arr[i])!=null&&$.trim(top_arr[i])!=""){
+                    html += "<li>"+top_arr[i]+"</li>"
+                }
+            }
+            $("#scroll").html(html);
+            scroll_top_text();
+            
+        });
+    });
+
+    onair_line_title();
 </script>

@@ -82,7 +82,6 @@
                     <th>사용여부</th>
                     <th>등록자</th>
                     <th>등록일</th>
-                    <th>좌석배정</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -142,11 +141,7 @@
                             return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
                         }},
                     {'data' : 'RegAdminName'},
-                    {'data' : 'RegDatm'},
-                    {'data' : null, 'render' : function(data, type, row, meta) {
-                            /*return '<a href="javascript:void(0);" class="btn-detail-list" data-idx="' + row.LrIdx + '"><u>배정TEST</u></a>';*/
-                            return '<a href="javascript:void(0);" class="btn-create-seat-modal" data-prod-code="'+row.ProdCode+'">배정TEST</u></a>';
-                        }}
+                    {'data' : 'RegDatm'}
                 ]
             });
 
@@ -162,65 +157,6 @@
                     "url" : "{{ site_url('/pass/readingRoom/regist/modifySeatModal/') }}"+ $(this).data('prod-code') + '?' + '{!! $default_query_string !!}' + param,
                     "width" : "1200"
                 });
-            });
-
-            // TODO : 좌석배정/좌석이동 TEST
-            $list_table.on('click', '.btn-create-seat-modal', function() {
-                var param = '&rdr_master_order_idx=' + '{{$rdr_master_order_idx}}';
-                param += '&rdr_prod_code=' + '{{$rdr_prod_code}}';
-
-                $('.btn-create-seat-modal').setLayer({
-                    "url" : "{{ site_url('/common/searchReadingRoom/createSeatModal/') }}"+ $(this).data('prod-code') + '?' + '{!! $default_query_string !!}' + param,
-                    "width" : "1200"
-                });
-            });
-        });
-    </script>
-
-
-    <!-- TODO : TEST 결제위한 폼 -> lms 방문결제페이지 개발 시 해당 기능 삭제 -->
-    {{--<form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" ></form>--}}
-    <form id="regi_form" name="regi_form" method="POST" action="{{ site_url("/pass/readingRoom/regist/testStoreSeat/?{$default_query_string}") }}" novalidate>
-    {!! csrf_field() !!}
-    </form>
-    <div class="x_panel mt-10">
-        <button type="button" class="btn btn-default" id="btn_test_submit">독서실 좌석 배정 TEST 결제</button>
-        <button type="button" class="btn btn-default" id="btn_test_cancel">독서실 좌석 배정 TEST 취소</button>
-        <button type="button" class="btn btn-default" id="btn_search_reading_room">독서실 상품 목록 TEST[공통]</button>
-
-        <div class="row">
-            <span id="selected_product" class="pl-10"></span>
-        </div>
-    </div>
-
-    <script type="text/javascript">
-        var $regi_form = $('#regi_form');
-        $('#btn_test_submit').click(function() {
-            $regi_form.submit();
-        });
-
-        $('#btn_test_cancel').click(function() {
-            $regi_form.find('input[name="rdr_prod_code[]"]').remove();
-            $regi_form.find('input[name="rdr_master_order_idx[]"]').remove();
-            $regi_form.find('input[name="rdr_is_extension[]"]').remove();
-            $regi_form.find('input[name="rdr_serial_num[]"]').remove();
-            $regi_form.find('input[name="rdr_seat_status[]"]').remove();
-            $regi_form.find('input[name="rdr_use_start_date[]"]').remove();
-            $regi_form.find('input[name="rdr_use_end_date[]"]').remove();
-            $regi_form.find('input[name="rdr_memo[]"]').remove();
-        });
-
-        $('#btn_search_reading_room').click(function () {
-            var get_params = '';
-            var site_code = '';
-            var prod_type = '{{$prod_type}}';
-            var prod_tabs = 'off,book,reading_room,locker,mock_exam';
-
-            $('#btn_search_reading_room').setLayer({
-                /*"url" : "{{ site_url('/common/searchReadingRoom') }}" + '?prod_type=reading_room',*/
-                /*"url" : "{{ site_url('/common/searchReadingRoom') }}" + '?prod_type=reading_room',*/
-                'url' : '{{ site_url('/common/searchReadingRoom/') }}?site_code=' + site_code + '&prod_type='+prod_type+'&return_type=table&target_id=selected_product&target_field=prod_code&prod_tabs='+prod_tabs,
-                'width' : '1200'
             });
         });
     </script>

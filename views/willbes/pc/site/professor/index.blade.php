@@ -144,7 +144,7 @@
                     </a>
                     <div class="w-notice">
                         <dl>
-                            <dt><a href="{{ $row['ProfReferData']['ot_url'] or 'javascript:alert(\'등록된 대표강의가 없습니다.\');' }}">대표강의</a></dt>
+                            <dt><a href="#none" onclick="{{ empty($row['ProfReferData']['ot_url']) === false ? 'fnPlayerProf(\'' . $row['ProfIdx'] . '\', \'OT\');' : 'alert(\'등록된 대표강의가 없습니다.\');' }}">대표강의</a></dt>
                             <dt><a href="#none" class="btn-prof-profile" data-subject-idx="{{ $subject_idx }}" data-prof-idx="{{ $row['ProfIdx'] }}">프로필</a></dt>
                         </dl>
                     </div>

@@ -218,7 +218,7 @@ class RegGroupModel extends WB_Model
         $applyType_off = $this->config->item('sysCode_applyType_off', 'mock'); // 응시형태(offline)
 
         foreach ($mData as &$it) {
-            $takeFormsCcds = explode(',', $it['TakeFormsCcds']);
+            $takeFormsCcds = explode(',', $it['TakeFormsCcd']);
             $it['TakePart_on'] = ( in_array($applyType_on, $takeFormsCcds) ) ? 'Y' : 'N';
             $it['TakePart_off'] = ( in_array($applyType_off, $takeFormsCcds) ) ? 'Y' : 'N';
 
@@ -272,7 +272,7 @@ class RegGroupModel extends WB_Model
         $applyType_off = $this->config->item('sysCode_applyType_off', 'mock'); // 응시형태(offline)
 
         foreach ($data as &$it) {
-            $takeFormsCcds = explode(',', $it['TakeFormsCcds']);
+            $takeFormsCcds = explode(',', $it['TakeFormsCcd']);
             $it['TakePart_on'] = ( in_array($applyType_on, $takeFormsCcds) ) ? 'Y' : 'N';
             $it['TakePart_off'] = ( in_array($applyType_off, $takeFormsCcds) ) ? 'Y' : 'N';
 

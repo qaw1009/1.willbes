@@ -47,7 +47,7 @@
                         <th colspan="1">응시형태 <span class="required">*</span></th>
                         <td colspan="3">
                             @foreach($applyType as $k => $v)
-                                <input type="checkbox" class="flat" name="TakeFormsCcds[]" value="{{$k}}" @if($method == 'PUT' && in_array($k, $data['TakeFormsCcds'])) checked @endif> <span class="flat-text mr-20">{{$v}}</span>
+                                <input type="radio" class="flat" name="TakeFormsCcd" value="{{$k}}" @if($method == 'PUT' && in_array($k, $data['TakeFormsCcd'])) checked @endif> <span class="flat-text mr-20">{{$v}}</span>
                             @endforeach
                         </td>
                     </tr>
@@ -63,7 +63,7 @@
                         <th colspan="1">OFF(학원) 응시지역2 <span class="required">*</span></th>
                         <td colspan="3">
                             @foreach($applyArea2 as $k => $v)
-                                <input type="checkbox" class="flat" name="TakeAreas2Ccd[]" value="{{$k}}" @if($method == 'PUT' && in_array($k, $data['TakeAreas2Ccd'])) checked @endif> <span class="flat-text mr-20">{{$v}}</span>
+                                <input type="checkbox" class="flat" name="TakeAreas2Ccds[]" value="{{$k}}" @if($method == 'PUT' && in_array($k, $data['TakeAreas2Ccds'])) checked @endif> <span class="flat-text mr-20">{{$v}}</span>
                             @endforeach
                         </td>
                     </tr>
@@ -71,7 +71,7 @@
                         <th colspan="1">가산점 <span class="required">*</span></th>
                         <td colspan="3">
                             @foreach($addPoint as $k => $v)
-                                <input type="checkbox" class="flat" name="AddPointsCcd[]" value="{{$k}}" @if($method == 'PUT' && in_array($k, $data['AddPointsCcd'])) checked @endif> <span class="flat-text mr-20">{{$v}}</span>
+                                <input type="checkbox" class="flat" name="AddPointTypes[]" value="{{$k}}" @if($method == 'PUT' && in_array($k, $data['AddPointTypes'])) checked @endif> <span class="flat-text mr-20">{{$v}}</span>
                             @endforeach
                         </td>
                     </tr>
@@ -123,14 +123,14 @@
                         <td colspan="3" class="form-inline">
                             <input type="text" class="form-control datepicker" style="width:100px;" name="SaleStartDatm_d" value="@if($method == 'PUT'){{ substr($data['SaleStartDatm'], 0, 10) }}@endif" readonly>
                             <select name="SaleStartDatm_h" class="form-control">
-                                <option value="">선택</option>
+                                <!--option value="">선택</option//-->
                                 @foreach(range(0, 23) as $i)
                                     @php $v = sprintf("%02d", $i); @endphp
                                     <option value="{{$v}}" @if($method==='PUT' && substr($data['SaleStartDatm'], 11, 2) == $v) selected @endif>{{$v}}</option>
                                 @endforeach
                             </select> 시
                             <select name="SaleStartDatm_m" class="form-control">
-                                <option value="">선택</option>
+                                <!--option value="">선택</option//-->
                                 @foreach(range(0, 59) as $i)
                                     @php $v = sprintf("%02d", $i); @endphp
                                     <option value="{{$v}}" @if($method==='PUT' && substr($data['SaleStartDatm'], 14, 2) == $v) selected @endif>{{$v}}</option>
@@ -139,14 +139,14 @@
                             <span class="ml-10 mr-10"> ~ </span>
                             <input type="text" class="form-control datepicker" style="width:100px;" name="SaleEndDatm_d" value="@if($method == 'PUT'){{ substr($data['SaleEndDatm'], 0, 10) }}@endif" readonly>
                             <select name="SaleEndDatm_h" class="form-control">
-                                <option value="">선택</option>
+                                <!--option value="">선택</option//-->
                                 @foreach(range(0, 23) as $i)
                                     @php $v = sprintf("%02d", $i); @endphp
                                     <option value="{{$v}}" @if($method==='PUT' && substr($data['SaleEndDatm'], 11, 2) == $v) selected @endif>{{$v}}</option>
                                 @endforeach
                             </select> 시
                             <select name="SaleEndDatm_m" class="form-control">
-                                <option value="">선택</option>
+                                <!--option value="">선택</option//-->
                                 @foreach(range(0, 59) as $i)
                                     @php $v = sprintf("%02d", $i); @endphp
                                     <option value="{{$v}}" @if($method==='PUT' && substr($data['SaleEndDatm'], 14, 2) == $v) selected @endif>{{$v}}</option>
@@ -164,47 +164,52 @@
                     <tr>
                         <th colspan="1">접수상태 <span class="required">*</span></th>
                         <td colspan="3">
-                            <input type="radio" name="IsRegister" class="flat" value="Y" @if($method == 'POST' || ($method == 'PUT' && $data['IsRegister'] == 'Y')) checked="checked" @endif> <span class="flat-text mr-10">접수중</span>
-                            <input type="radio" name="IsRegister" class="flat" value="N" @if($method == 'PUT' && $data['IsRegister'] == 'N') checked="checked" @endif> <span class="flat-text mr-20">접수마감</span>
+                            @foreach($accept_ccd as $key=>$val)
+                                @if($key != '675001' ) {{--접수예정 제외--}}
+                                <input type="radio" name="AcceptStatusCcd" class="flat" value="{{$key}}" @if( $data['AcceptStatusCcd'] == $key) checked="checked" @endif required title="접수상태"> <span class="flat-text mr-10">{{$val}}</span>
+                                @endif
+                            @endforeach
                         </td>
                     </tr>
                     <tr>
                         <th colspan="1">응시가능기간 <span class="required">*</span></th>
                         <td colspan="3" class="form-inline">
-                            <input type="text" class="form-control datepicker" style="width:100px;" name="TakeStartDatm_d" value="@if($method == 'PUT'){{ substr($data['TakeStartDatm'], 0, 10) }}@endif" readonly>
+                            <input type="text" class="form-control datepicker" style="width:100px;" name="TakeStartDatm_d" value="@if($method == 'PUT'){{ substr($data['TakeStartDatm'], 0, 10) }}@else{{ date("Y-m-d") }}@endif" readonly required="required" title="응시가능기간 시작일">
                             <select name="TakeStartDatm_h" class="form-control">
-                                <option value="">선택</option>
+                                <!--option value="">선택</option//-->
                                 @foreach(range(0, 23) as $i)
                                     @php $v = sprintf("%02d", $i); @endphp
                                     <option value="{{$v}}" @if($method==='PUT' && substr($data['TakeStartDatm'], 11, 2) == $v) selected @endif>{{$v}}</option>
                                 @endforeach
                             </select> 시
                             <select name="TakeStartDatm_m" class="form-control">
-                                <option value="">선택</option>
+                                <!--option value="">선택</option//-->
                                 @foreach(range(0, 59) as $i)
                                     @php $v = sprintf("%02d", $i); @endphp
                                     <option value="{{$v}}" @if($method==='PUT' && substr($data['TakeStartDatm'], 14, 2) == $v) selected @endif>{{$v}}</option>
                                 @endforeach
                             </select> 분
                             <span class="ml-10 mr-10"> ~ </span>
-                            <input type="text" class="form-control datepicker" style="width:100px;" name="TakeEndDatm_d" value="@if($method == 'PUT'){{ substr($data['TakeEndDatm'], 0, 10) }}@endif" readonly>
+                            <input type="text" class="form-control datepicker" style="width:100px;" name="TakeEndDatm_d" value="@if($method == 'PUT'){{ substr($data['TakeEndDatm'], 0, 10) }}@else{{date("Y-m-d", strtotime(date("Y-m-d").'1year'))}} @endif" readonly  required="required" title="응시가능기간 종료일">
                             <select name="TakeEndDatm_h" class="form-control">
-                                <option value="">선택</option>
+                                <!--option value="">선택</option//-->
                                 @foreach(range(0, 23) as $i)
                                     @php $v = sprintf("%02d", $i); @endphp
                                     <option value="{{$v}}" @if($method==='PUT' && substr($data['TakeEndDatm'], 11, 2) == $v) selected @endif>{{$v}}</option>
                                 @endforeach
                             </select> 시
                             <select name="TakeEndDatm_m" class="form-control">
-                                <option value="">선택</option>
+                                <!--option value="">선택</option//-->
                                 @foreach(range(0, 59) as $i)
                                     @php $v = sprintf("%02d", $i); @endphp
                                     <option value="{{$v}}" @if($method==='PUT' && substr($data['TakeEndDatm'], 14, 2) == $v) selected @endif>{{$v}}</option>
                                 @endforeach
                             </select> 분
+                            <!--
                             <span class="ml-20 mr-20"> | </span>
                             <input type="radio" name="TakeType" class="flat" value="A" @if($method == 'POST' || ($method == 'PUT' && $data['TakeType'] == 'A')) checked="checked" @endif> <span class="flat-text mr-10">상시</span>
                             <input type="radio" name="TakeType" class="flat" value="L" @if($method == 'PUT' && $data['TakeType'] == 'L') checked="checked" @endif> <span class="flat-text mr-20">기간제한</span>
+                            //-->
                         </td>
                     </tr>
                     <tr>
@@ -564,27 +569,27 @@
             @endif
 
             // 응시형태에 따른 웅시지역, 접수마감인원 분기처리
-            $regi_form.on('ifChanged', '[name="TakeFormsCcds[]"]', TakeFormCheck);
+            $regi_form.on('ifChanged', '[name="TakeFormsCcd"]', TakeFormCheck);
             TakeFormCheck();
 
             function TakeFormCheck() {
                 var applyType_on = '{{$applyType_on}}';
-                var selType = $('[name="TakeFormsCcds[]"]:checked').map(function () {
+                var selType = $('[name="TakeFormsCcd"]:checked').map(function () {
                     return this.value;
                 }).get();
 
                 if(selType.length === 1 && selType[0] === applyType_on) {
                     $('[name="TakeAreas1CCds[]"]').iCheck('uncheck').prop('disabled', true);
-                    $('[name="TakeAreas2Ccd[]"]').iCheck('uncheck').prop('disabled', true);
+                    $('[name="TakeAreas2Ccds[]"]').iCheck('uncheck').prop('disabled', true);
                     $('[name="ClosingPerson"]').val('').prop('disabled', true);
                 }
                 else {
                     $('[name="TakeAreas1CCds[]"]').prop('disabled', false);
-                    $('[name="TakeAreas2Ccd[]"]').prop('disabled', false);
+                    $('[name="TakeAreas2Ccds[]"]').prop('disabled', false);
                     $('[name="ClosingPerson"]').prop('disabled', false);
                 }
                 $('[name="TakeAreas1CCds[]"]').iCheck('update');
-                $('[name="TakeAreas2Ccd[]"]').iCheck('update');
+                $('[name="TakeAreas2Ccds[]"]').iCheck('update');
             }
 
 

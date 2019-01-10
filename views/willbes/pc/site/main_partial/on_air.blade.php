@@ -40,7 +40,7 @@
                         <ul class="tabWrap onAirTabs">
                             @foreach($arr_base['onAirData'] as $key => $row)
                                 <li>
-                                    <a href="#tab_onAirLecBox_{{$row['OaIdx']}}" class="tab_onAirLecBox{!! $key == 0 ? ' on' : '' !!}" data-onair-box-id="{{$row['OaIdx']}}">
+                                    <a id="tab_onAirLecBox{{$row['OaIdx']}}" href="#onAirLecBox{{$row['OaIdx']}}" class="tab_onAirLecBox{!! $key == 0 ? ' on' : '' !!}" data-onair-box-id="{{$row['OaIdx']}}">
                                         {{$row['OnAirTabName']}}
                                     </a>
                                 </li>
@@ -54,9 +54,9 @@
                                 @php
                                     $arr_onAirTitle = explode('|', $row['OnAirTitle']);
                                 @endphp
-                                <div id="tab_onAirLecBox_{{$row['OaIdx']}}" class="onAirLecBox tabLink">
+                                <div id="onAirLecBox{{$row['OaIdx']}}" class="onAirLecBox tabLink">
                                     @foreach($arr_onAirTitle as $key => $val)
-                                        <input type="hidden" class="top_text_item" id="top_text_item_{{$row['OaIdx']}}_{{$key}}" value="{{$val}}">
+                                        <span class="top_text_item d_none" id="top_text_item_{{$row['OaIdx']}}_{{$key}}">{{$val}}/</span>
                                     @endforeach
                                     <ul class="onAirLec">
                                         <li class="li01">
@@ -168,19 +168,11 @@
     //]]>
 
     //온에어 타이틀 적용
-    function onair_line_title() {
+        function onair_line_title() {
         var temp_on_box_id = 0;
         $('.tab_onAirLecBox').each(function(){
             if ($(this).hasClass('on') == true) {
                 temp_on_box_id = $(this).data('onair-box-id');
-            }
-        });
-
-        $('.onair_rolling').each(function(item){
-            if ($(this).data('onair-title-id') == temp_on_box_id) {
-                $("#onair_rolling_"+item).css("display", "block");
-            } else {
-                $("#onair_rolling_"+item).css("display", "none");
             }
         });
     };
@@ -237,6 +229,8 @@
         this.timer = setTimeout(this.name+".move()",3000);
     }
 
+    var real_search_keyword;
+    scroll_top_text();
     function scroll_top_text(){
         if(parseInt('1')>0){
             real_search_keyword = new textScroll('scroll'); // 스크롤링 하고자하는 ul 엘리먼트의 id값을 인자로 넣습니다
@@ -244,6 +238,27 @@
             real_search_keyword.start(); // 스크롤링 시작
         }
     }
+    $(document).ready(function(){
+        $(".onAirTabs > li").find("a").click(function(){
+            $(".onAirTabs > li").find("a").removeClass("active");
+            $(this).addClass("active");
+            var id = $(this).attr("id").replace("tab_","");
+            $(".onAirLecBox").hide();
+            $("#"+id).show();
+            var top_text = $("#"+id).find(".top_text_item").text();
+            var html = "";
+            var top_arr = top_text.split("/");
+            var i=0;
+            for(i=0;i<top_arr.length;i++){
+                if($.trim(top_arr[i])!=null&&$.trim(top_arr[i])!=""){
+                    html += "<li>"+top_arr[i]+"</li>"
+                }
+            }
+            $("#scroll").html(html);
+            scroll_top_text();
+            
+        });
+    });
+
     onair_line_title();
-    scroll_top_text();
 </script>

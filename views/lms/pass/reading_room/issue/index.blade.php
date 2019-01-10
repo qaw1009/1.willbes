@@ -91,6 +91,9 @@
             </div>
         </div>
         <div class="row">
+            <div class="col-xs-12 text-right bold mb-10">
+                * 연장 가능 기간 : 대여종료일 7일 전 ~ 대여종료일 7일 후
+            </div>
             <div class="col-xs-12 text-right">
                 <button type="submit" class="btn btn-primary btn-search" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
                 <button type="button" class="btn btn-default" id="_btn_reset">검색초기화</button>

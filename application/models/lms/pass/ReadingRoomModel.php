@@ -162,13 +162,13 @@ class ReadingRoomModel extends BaseReadingRoomModel
             INNER JOIN {$this->_table['readingRoom']} AS a ON op.ProdCode = a.ProdCode AND a.MangType = 'R' AND a.IsStatus = 'Y'
             INNER JOIN {$this->_table['readingRoom_mst']} AS c ON b.OrderIdx = c.NowOrderIdx
             
-            INNER JOIN (
-                SELECT STRAIGHT_JOIN op.OrderProdIdx, op.ProdCode, op.PayStatusCcd, op.RealPayPrice, opr.RefundIdx, opr.RefundPrice
+            LEFT JOIN (
+                SELECT STRAIGHT_JOIN op.OrderIdx, op.ProdCode, op.PayStatusCcd, opr.RefundIdx, opr.RefundPrice, op.RealPayPrice
                 FROM lms_product AS p
                 INNER JOIN {$this->_table['lms_order_product']} AS op ON p.ProdCode = op.ProdCode
-                LEFT JOIN {$this->_table['lms_order_product_refund']} AS opr ON op.OrderProdIdx = opr.OrderProdIdx
+                INNER JOIN {$this->_table['lms_order_product_refund']} AS opr ON op.OrderProdIdx = opr.OrderProdIdx
                 WHERE p.ProdTypeCcd = '{$this->_sub_product_type_ccd}'
-            ) AS d ON a.SubProdCode = d.ProdCode
+            ) AS d ON a.SubProdCode = d.ProdCode AND c.NowOrderIdx = d.OrderIdx
             
             INNER JOIN {$this->_table['lms_site']} AS f ON b.SiteCode = f.SiteCode AND f.IsStatus = 'Y'
             INNER JOIN {$this->_table['wbs_sys_admin']} AS e ON c.RegAdminIdx = e.wAdminIdx AND e.wIsStatus='Y'
@@ -568,14 +568,6 @@ class ReadingRoomModel extends BaseReadingRoomModel
             INNER JOIN {$this->_table['readingRoom_useDetail']} AS c ON b.OrderIdx = c.NowOrderIdx AND a.LrIdx = c.LrIdx
             INNER JOIN {$this->_table['wbs_sys_admin']} AS e ON c.RegAdminIdx = e.wAdminIdx AND e.wIsStatus='Y'
             
-            INNER JOIN (
-                SELECT STRAIGHT_JOIN op.OrderProdIdx, op.ProdCode, op.PayStatusCcd, opr.RefundIdx, opr.RefundPrice
-                FROM lms_product AS p
-                INNER JOIN {$this->_table['lms_order_product']} AS op ON p.ProdCode = op.ProdCode
-                LEFT JOIN {$this->_table['lms_order_product_refund']} AS opr ON op.OrderProdIdx = opr.OrderProdIdx
-                WHERE p.ProdTypeCcd = '{$this->_sub_product_type_ccd}'
-            ) AS d ON a.SubProdCode = d.ProdCode
-            
             LEFT JOIN (
                 SELECT STRAIGHT_JOIN
                     a.LrIdx, a.MasterOrderIdx, a.NowOrderIdx, a.SerialNumber, a.UseEndDate,
@@ -585,8 +577,15 @@ class ReadingRoomModel extends BaseReadingRoomModel
                     FROM {$this->_table['readingRoom_mst']} as a
                     INNER JOIN {$this->_table['readingRoom']} AS b ON a.LrIdx = b.LrIdx AND b.MangType = '{$mang_type}' AND b.IsStatus = 'Y'
                     WHERE StatusCcd = '{$this->_arr_reading_room_status_ccd['Y']}'
-            ) AS f ON
-            f.LrIdx = a.LrIdx AND f.SerialNumber = c.NowMIdx AND f.UseEndDate = c.UseEndDate
+            ) AS f ON f.LrIdx = a.LrIdx AND f.SerialNumber = c.NowMIdx AND f.UseEndDate = c.UseEndDate
+            
+            LEFT JOIN (
+                SELECT STRAIGHT_JOIN op.OrderIdx, op.ProdCode, op.PayStatusCcd, opr.RefundIdx, opr.RefundPrice
+                FROM lms_product AS p
+                INNER JOIN {$this->_table['lms_order_product']} AS op ON p.ProdCode = op.ProdCode
+                INNER JOIN {$this->_table['lms_order_product_refund']} AS opr ON op.OrderProdIdx = opr.OrderProdIdx
+                WHERE p.ProdTypeCcd = '{$this->_sub_product_type_ccd}'
+            ) AS d ON a.SubProdCode = d.ProdCode AND c.NowOrderIdx = d.OrderIdx
         ";
 
         //사이트 권한

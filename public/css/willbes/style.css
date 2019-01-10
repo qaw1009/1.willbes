@@ -1280,6 +1280,20 @@ table.auTable tr td {
     line-height: 36px;
     margin-bottom: 20px;
 }
+.Section .will-Tit span {
+    vertical-align: baseline;
+}
+.Section .will-nTit {
+    font-size: 16px;
+    font-weight: 600;
+    color: #363636;
+    border-bottom: 1px solid #000;
+    line-height: 24px;
+    margin-bottom: 18px;
+}
+.Section .will-nTit span {
+    vertical-align: baseline;
+}
 .Section .will-subTit {
     float: right;
     font-size: 13px;
@@ -1294,6 +1308,19 @@ table.auTable tr td {
     color: #464646;
     line-height: 16px;
     margin-bottom: 25px;
+}
+.Section .will-nlistTit {
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+    line-height: 45px;
+    border-bottom: 2px solid #000;
+}
+.Section .will-nlistTit a.btn-add {
+    margin-left: 5px;
+}
+.Section .will-nlistTit a.btn-add img {
+    margin-top: -4px;
 }
 
 /* Main Container : MainVisual */
@@ -1389,15 +1416,21 @@ table.auTable tr td {
     margin-left: 0;
 }
 
+.Section .ProfBox:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
 /* Main Container : Prof : cSlider : graySlider 회색버전 */
 .cSlider.graySlider .bx-wrapper {
     background: none;
 }
 .cSlider.graySlider .bx-wrapper .bx-prev {
-    background: url("../../img/willbes/cop/btn_prof_prev.jpg") no-repeat 0 0;
+    background: url("../../img/willbes/gosi/btn_prof_prev.jpg") no-repeat 0 0;
 }
 .cSlider.graySlider .bx-wrapper .bx-next {
-    background: url("../../img/willbes/cop/btn_prof_next.jpg") no-repeat 0 0;
+    background: url("../../img/willbes/gosi/btn_prof_next.jpg") no-repeat 0 0;
     left: 14px;
 }
 .cSlider.graySlider .bx-wrapper .bx-controls {
@@ -2133,6 +2166,9 @@ table.auTable tr td {
 .cop .tx-color {
     color: #1087ef;
 }
+.cop .cop-color {
+    color: #0c5dc0;
+}
 .cop .Menu .menu-List li.Acad a {
     background: url("../../img/willbes/sub/icon_acad.gif") no-repeat 0 0;
     color: #2784d2;
@@ -2140,9 +2176,615 @@ table.auTable tr td {
 .cop .Menu .menu-List li.Acad a .arrow-Btn {
     background: url("../../img/willbes/sub/icon_arrow.gif") no-repeat 0 0;
 }
-.cop .Section3 {
-    background: #f0f0f0;
-    padding: 40px 0;
+.cop .Section2 {
+    background: #f7f7f7;
+}
+.cop .Section4 {
+    background: #f7f7f7;
+}
+
+/* Main Container : Tit : Cop */
+.Section .will-big-Tit {
+    text-align: center;
+}
+.Section .will-big-Tit span {
+    vertical-align: baseline;
+}
+.Section .will-big-Tit .big {
+    font-size: 47px;
+    color: #000;
+    letter-spacing: -3px;
+    line-height: 57px;
+}
+.Section .will-big-Tit .big .small {
+    font-size: 47px;
+    color: #363636;
+}
+.Section .will-big-Tit .small {
+    font-size: 32px;
+    color: #363636;
+}
+.Section .will-big-Tit .cop-color {
+    color: #0c5dc0;
+}
+.Section .big-Tit-line {
+    border-bottom: 3px solid #000
+}
+
+/* Main Container : Prof : Cop */
+.Section .ProfCopBox li {
+    float: left;
+    width: 185px;
+    height: 327px;
+    margin-left: 2px;
+}
+.Section .ProfCopBox li:first-child {
+    margin-left: 0;
+}
+
+/* Main Container : Prof : cSlider : Cop */
+.cSlider.copSlider .bx-wrapper {
+    background: none;
+}
+.cSlider.copSlider .bx-wrapper .bx-prev {
+    background: url("../../img/willbes/cop/btn_prof_prev.jpg") no-repeat 0 0;
+}
+.cSlider.copSlider .bx-wrapper .bx-next {
+    background: url("../../img/willbes/cop/btn_prof_next.jpg") no-repeat 0 0;
+    left: 14px;
+}
+.cSlider.copSlider .bx-wrapper .bx-controls {
+    position: absolute;
+    width: 27px;
+    height: 14px;
+    z-index: 1;
+}
+.cSlider.copSlider .bx-wrapper .bx-controls-direction {
+    width: 27px;
+    height: 14px; 
+}
+.cSlider.copSlider .bx-wrapper .bx-controls-direction a {
+    width: auto;
+    height: 14px;
+}
+.cSlider.AbsControls .bx-controls {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 100%;
+}
+
+/* Main Container : Dday : Cop */
+.newTopDday {padding: 20px 0; border-bottom: 1px solid #f2f2f2}
+.newTopDday #ddaytime li {float:left; margin-right:1px; text-align:center; color:#000}
+.newTopDday #ddaytime li.txt {font-weight: 600; color: #3c3e3c}
+.newTopDday #ddaytime li.toptxt {width: 330px; text-align: right; margin-right: 10px; margin-top: 15px}
+.newTopDday #ddaytime li.lasttxt {margin-left: 25px; text-align: left;}
+.newTopDday #ddaytime li span {vertical-align: baseline}
+.newTopDday #ddaytime li .small {font-size: 14px; line-height: 18px}
+.newTopDday #ddaytime li .big {font-size: 18px}
+.newTopDday #ddaytime li .cop-color {color: #0c5dc0}
+.newTopDday #ddaytime li .btn {text-align:left; margin-top: 8px}
+.newTopDday #ddaytime li .btn a {display:inline-block; font-size:16px; padding:8px 21px; background:#0c5dc0; color:#fff; text-align:center; border-radius:7px}
+.newTopDday #ddaytime li .btn a:hover {background:#333}
+.newTopDday #ddaytime li strong {font-size: 24px; color: #3c3e3c; line-height:62px; margin: 0 7px}
+.newTopDday #ddaytime li img {width:42px}
+.newTopDday #ddaytime ul:after {content:""; display:block; clear:both}
+
+/* Main Container : flipped : Cop */
+.Flipped {background: url("../../img/willbes/cop/flipped/flipped_bg.jpg") repeat-x center 90px; padding-bottom: 90px;}
+.Flipped ul.inner {height:420px}
+.Flipped ul.inner li {float:left; width:280px; height:100%; margin-left:20px}
+.Flipped ul.inner li:first-child {width:520px; margin-left:0}
+.Flipped ul.inner a {position:relative; display:block; width:100%; height:100%; perspective:3500px}
+.Flipped ul.inner a span {display:inline-block}
+.Flipped .wrap_ban {
+	position:absolute; left:0; width:100%; height:100%;
+	transition:transform 0.6s; -webkit-transition:-webkit-transform 0.6s;
+	transform-style: preserve-3d; backface-visibility: hidden;
+	/* backface-visibility:hidden;-webkit-backface-visibility:hidden */
+}
+.Flipped .wrap_ban.front {transform:rotateY(0deg)}
+.Flipped .wrap_ban.back {visibility:hidden; transform:rotateY(-180deg)}
+.Flipped li .f-tit {font-size:16px; font-weight: 600; line-height: 50px;}
+.Flipped li .tit1 {color: #0c5dc0}
+.Flipped li .tit2 {color: #fd6c38}
+.Flipped li .tit3 {color: #d8ab36}
+.Flipped li:hover .wrap_ban.front {transform:rotateY(180deg)}
+.Flipped li:hover .wrap_ban.back {transform:rotateY(0)}
+.Flipped li.flipped .wrap_ban.front {visibility:hidden}
+.Flipped li.flipped .wrap_ban.back {visibility:visible}
+
+/* Main Container : curriculumBox : Cop */
+.cswRollingSlider {
+    line-height: 20px;
+    padding-top: 20px;
+    border-top: 2px solid #c2c2c2;
+    margin-top: 100px;
+}
+.cswRollingSlider:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+.cswRollingSlider ul li {
+    position: relative;
+    float: left;
+    width: 16.66%;
+    text-align: center;
+    margin-top: -37px;
+}
+.cswRollingSlider ul li a {
+    font-size: 16px;
+    font-weight: 600;
+    color: #bbb;
+    line-height: 30px;
+}
+.cswRollingSlider ul li a.active {
+    color: #0c5dc0;
+} 
+.cswRollingSlider ul li img {
+    position: absolute; 
+    left: 0;
+    right: 0;
+    top: -28px;
+    margin: 0 auto;
+}
+.sliderCurriList {
+    width: 1070px;
+    margin: 0 auto;
+}
+.curriculumBox {
+    float: left;
+    background: #f7f7f7;
+    width: 260px;
+    height: 272px;
+    font-family: "NotoSansCJKkr-Thin", "Noto Sans KR", "sans-serif";
+    border: 1px solid #e7e7e7;
+    color: #cfcfcf;
+    text-align: center;
+    letter-spacing: 0;
+}
+.curriculumBox .Tit {
+    font-family: "NotoSansCJKkr-Black", "Noto Sans KR", "sans-serif";
+    font-size: 26px;
+    padding-top: 40px;
+}
+.curriculumBox .subTit {
+    font-size: 19px;
+    margin-top: 15px;
+}
+.curriculumBox .info {
+    width: 160px;
+    margin: 40px auto;
+    font-weight: 600;
+    text-align: left;
+    line-height: 24px;
+}
+.curriculumBox .info li {
+    font-size: 14px;
+}
+.curriculumBox a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.active-slide .curriculumBox {
+    background: #fff;
+    border: 10px solid #0c5dc0;
+    color: #0c5dc0;
+}
+.active-slide .curriculumBox .Tit {
+    padding-top: 31px;
+}
+.curriculumTxt {
+    font-size: 22px;
+    color: #363636;
+    text-align: center;
+    line-height: 33px;
+    margin-top: 60px;
+}
+.curriculumTxt span {
+    vertical-align: baseline;
+}
+.curriculumTxt span.btn {
+    margin: -7px 0 -7px 20px;
+    display: inline-block;
+}
+.curriculumTxt span.btn a {
+    float: left;
+    font-size:16px; 
+    padding:8px 21px; 
+    background:#0c5dc0; 
+    color:#fff; 
+    text-align:center;
+    line-height: 16px;
+    border-radius: 20px
+}
+.curriculumTxt span.btn a:hover {
+    background:#333
+}
+
+
+
+
+/* Main Container : pass : cSlider : sliderPassList : Cop */
+.cswSlider.sliderCurriList .bx-wrapper .bx-prev {
+    background: url("../../img/willbes/cop/btn_prev_on.png") no-repeat 0 0;
+    left: -40px;
+}
+.cswSlider.sliderCurriList .bx-wrapper .bx-next {
+    background: url("../../img/willbes/cop/btn_next_on.png") no-repeat 0 0;
+    right: -40px;
+    left: inherit;
+}
+.cswSlider.sliderCurriList .bx-wrapper .bx-prev.disabled {
+    background: url("../../img/willbes/cop/btn_prev_off.png") no-repeat 0 0;
+    display: block;
+}
+.cswSlider.sliderCurriList .bx-wrapper .bx-next.disabled {
+    background: url("../../img/willbes/cop/btn_next_off.png") no-repeat 0 0;
+    display: block;
+}
+.cswSlider.sliderCurriList .bx-wrapper .bx-viewport {
+    z-index: 10;
+}
+.cswSlider.sliderCurriList .bx-wrapper .bx-controls {
+    position: absolute;
+    top: 50%;
+    margin-top: -38px;
+    width: 100%;
+    height: 77px;
+    z-index: 1;
+}
+.cswSlider.sliderCurriList .bx-wrapper .bx-controls-direction {
+    width: 100%;
+    height: 77px;
+}
+.cswSlider.sliderCurriList .bx-wrapper .bx-controls-direction a {
+    width: 21px;
+    height: 77px;
+}
+
+
+
+
+
+/* Main Container : SpecialLecBox */
+.Section .SpecialLecBox dl dt {
+    background: #fff;
+    float: left;
+    width: 1120px;
+    height: 260px;
+    border: 1px solid #e3e3e3;
+    padding: 50px 105px;
+    margin-left: 20px;
+}
+.Section .SpecialLecBox dl dt:first-child {
+    margin-left: 0;
+}
+.Section .SpecialLecBox .infoTit {
+    float: left;
+    width: 240px;
+}
+.Section .SpecialLecBox .infoTit .small {
+    font-size: 15px;
+    font-weight: 600;
+    color: #909090;
+    line-height: 21px;
+}
+.Section .SpecialLecBox .infoTit .big {
+    font-size: 36px;
+    font-weight: 600;
+    color: #000;
+    line-height: 36px;
+}
+.Section .SpecialLecBox .infoTit .btn {
+    margin-top: 20px;
+}
+.Section .SpecialLecBox .infoTit .btn div {
+    width: 100px;
+    height: 24px;
+    line-height: 24px;
+}
+.Section .SpecialLecBox .infoTit .btn div a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    font-size: 13px;
+    font-weight: 300;
+    color: #fff;
+    text-align: center;
+}
+.Section .SpecialLecBox .infoTit .btn .btn-sbj a {
+    background: #0c5dc0;
+}
+.Section .SpecialLecBox .infoTit .btn .btn-lec a {
+    background: #464646;
+}
+.Section .SpecialLecBox .infoList {
+    float: left;
+    width: 668px;
+    color: #3a3a3a;
+    line-height: 18px;
+}
+.Section .SpecialLecBox .infoList ul li .btn-more {
+    display: inline-block;
+    width: 76px;
+    height: 22px;
+    border: 1px solid #c9c9c9;
+    margin: 0 20px;
+}
+.Section .SpecialLecBox .infoList ul li .btn-more a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    font-size: 11px;
+    color: #898989;
+    line-height: 20px;
+    text-align: center;
+}
+.Section .SpecialLecBox .infoList .List-Table {
+    padding: 0;
+}
+.Section .SpecialLecBox .infoList .List-Table li {
+    font-size: 14px;
+    color: #3a3a3a;
+    line-height: 41px;
+    height: 41px;
+    clear: both;
+    border-bottom: 1px solid #ececec;
+}
+.Section .SpecialLecBox .infoList .List-Table li:first-child {
+    border-top: 1px solid #ececec; 
+}
+.Section .SpecialLecBox .infoList .List-Table li a {
+    display: inline-block;
+    width: 550px;
+}
+.Section .SpecialLecBox .infoList .List-Table li a span {
+    float: left;
+    width: 130px;
+    color: #009ef5;
+    text-align: center;
+}
+
+/* Main Container : Pass : Cop */
+.sliderPassList {
+    width: 1040px;
+    margin: 0 auto;
+}
+.passBox {
+    float: left;
+    background: #fff;
+    width: 200px;
+    height: 297px;
+    border: 1px solid #ececec;
+    text-align: center;
+    margin-left: 10px;
+}
+.passBox:first-child {
+    margin-left: 0;
+}
+.passBox a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.passBox .name {
+    font-size: 19px;
+    font-weight: 600;
+    color: #010101;
+    margin-top: 25px;
+}
+.passBox .img {
+    width: 86px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+.passBox .img .cover {
+    position: absolute;
+}
+.passBox .cmt {
+    font-family: "NotoSansCJKkr-Thin", "Noto Sans KR", "sans-serif";
+    font-size: 13px;
+    color: #010101;
+    margin-top: 25px;
+    line-height: 19px;
+}
+
+/* Main Container : pass : cSlider : sliderPassList : Cop */
+.cSlider.sliderPassList .bx-wrapper .bx-prev {
+    background: url("../../img/willbes/cop/btn_prev_on.png") no-repeat 0 0;
+    left: -40px;
+}
+.cSlider.sliderPassList .bx-wrapper .bx-next {
+    background: url("../../img/willbes/cop/btn_next_on.png") no-repeat 0 0;
+    right: -40px;
+    left: inherit;
+}
+.cSlider.sliderPassList .bx-wrapper .bx-prev.disabled {
+    background: url("../../img/willbes/cop/btn_prev_off.png") no-repeat 0 0;
+    display: block;
+}
+.cSlider.sliderPassList .bx-wrapper .bx-next.disabled {
+    background: url("../../img/willbes/cop/btn_next_off.png") no-repeat 0 0;
+    display: block;
+}
+.cSlider.sliderPassList .bx-wrapper .bx-viewport {
+    z-index: 10;
+}
+.cSlider.sliderPassList .bx-wrapper .bx-controls {
+    position: absolute;
+    top: 50%;
+    margin-top: -38px;
+    width: 100%;
+    height: 77px;
+    z-index: 1;
+}
+.cSlider.sliderPassList .bx-wrapper .bx-controls-direction {
+    width: 100%;
+    height: 77px;
+}
+.cSlider.sliderPassList .bx-wrapper .bx-controls-direction a {
+    width: 21px;
+    height: 77px;
+}
+
+/* Main Container : pick : nSlider : Cop */
+.sliderPick {
+    float: left;
+    width: 763px;
+}
+.pickBox {
+    float: left;
+    width: 379px;
+}
+.pickBox.pick1 {
+    margin-right: 5px;
+}
+.sliderEvt {
+    float: right;
+    width: 353px;
+}
+.sliderEvt ul li {
+    margin-top: 4px;
+}
+.sliderEvt ul li:first-child {
+    margin-top: 0;
+}
+.nSlider.pick .bx-wrapper .bx-controls {
+    background: #000;
+    width: 62px;
+    height: 19px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.nSlider.pick .bx-wrapper .bx-prev {
+    background: url("../../img/willbes/cop/btn_pick_prev.jpg") no-repeat 0 0;
+    left: 0;
+}
+.nSlider.pick .bx-wrapper .bx-next {
+    background: url("../../img/willbes/cop/btn_pick_next.jpg") no-repeat 0 0;
+    right: 0;
+    left: auto;
+}
+.nSlider.pick .bx-wrapper .bx-controls-direction {
+    position: absolute;
+    top: 3px;
+    left: 4px;
+    right: 4px;
+    width: 54px;
+    height: 13px;
+}
+.nSlider.pick .bx-wrapper .bx-controls-direction a {
+    width: 12px;
+    height: 13px;
+}
+.nSlider.pick .bx-wrapper .bx-pager {
+    width: auto;
+    position: absolute;
+    top: 5px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    font-size: 10px;
+    font-weight: 300;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    letter-spacing: 0;
+}
+
+/* Main Container : Notice : Cop */
+.Section .nNoticeBox {
+    clear: both;
+}
+.Section .nNoticeBox:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.Section .nNoticeBox .Lec {
+    border-bottom: 1px solid #e2e2e2;
+}
+.Section .nNoticeBox .LecBox {
+    float: left;
+    width: 50%;
+    margin: 15px 0 30px;
+    border-left: 1px solid #e2e2e2;
+    padding-top: 10px;
+    padding-left: 20px;
+}
+.Section .nNoticeBox .LecBox:first-child {
+    border-left: none;
+    padding-left: 5px;
+}
+.Section .nNoticeBox .imgBox {
+    float: left;
+    width: 82px;
+    margin: 0 15px 0 0;
+}
+.Section .nNoticeBox .imgBox img {
+    width: 100%;
+} 
+.Section .nNoticeBox .imgBox.cover {
+    position: relative;
+}
+.Section .nNoticeBox .imgBox.cover img.coverImg {
+    position: absolute;
+}
+.Section .nNoticeBox .infoBox {
+    font-size: 13px;
+    letter-spacing: 0;
+}
+.Section .nNoticeBox .infoBox .infoTit {
+    color: #0c5dc0;
+    line-height: 20px;
+    font-weight: 600;
+}
+.Section .nNoticeBox .infoBox .infoTxt {
+    color: #464646;
+    line-height: 20px;
+    font-weight: 600;
+}
+.Section .nNoticeBox .infoBox .infoTxt .small {
+    color: #3a3a3a;
+    font-size: 12px;
+    font-weight: 300;
+}
+.Section .nNoticeBox .nSliderTM.graySlider .bx-viewport {
+    height: auto !important;
+}
+.Section .nNoticeBox .nSliderTM.AbsControls .bx-controls {
+    top: -33px;
+}
+.Section .nNoticeBox .List-Table {
+    padding: 20px 0;
+}
+.Section .nNoticeBox .List-Table li {
+    font-size: 13px;
+    line-height: 27px;
+    height: 27px;
+    clear: both;
+}
+.Section .nNoticeBox .List-Table li a {
+    display: inline-block;
+    width: 285px;
+}
+.Section .nNoticeBox .List-Table li a span {
+    float: left;
+    max-width: 265px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.Section .nNoticeBox .List-Table li a img {
+    margin: -2px 0 0 5px;
+}
+.Section .nNoticeBox .List-Table li span.date {
+    float: right;
 }
 
 /* Guide Container : Cop */
@@ -2326,6 +2968,21 @@ table.auTable tr td {
             .onAirTabs.tabWrap:after {content:""; display:block; clear:both}
             
             .onAirTabInto {position:absolute; top:15px; right:0; text-align:right}
+
+            .onair_rolling.remove {
+                height: 0 !important; visibility: hidden !important; display: none !important; top: 0 !important;
+            }
+            .rollingOnAir {}
+            .rollingOnAir .bx-wrapper {
+                max-width: 660px !important;
+                margin-left: 300px;
+            }
+            .rollingOnAir .bx-wrapper .sliderVertical {
+                position: absolute !important;
+                top: 40px;
+                left: 0;
+            }
+            .rollingOnAir .bx-wrapper .sliderVertical li {}
             
             .onAirLec {margin:14px 0 0 132px}
             .onAirLec li {display:inline; float:left; width:320px}
@@ -2345,7 +3002,7 @@ table.auTable tr td {
     .offAir {}
         .offAirBar {position:relative; background:#aeaeae; height:40px}
         .offAirBar span.state {float:left; display:block; line-height:40px; margin-left:20px}		
-        .offAirBar span.offAirBarBtn {float:right; isplay:block; color:#fff; line-height:40px; margin-right:10px}
+        .offAirBar span.offAirBarBtn {float:right; display:block; color:#fff; line-height:40px; margin-right:10px}
         .offAirBar span img	{vertical-align:middle}
         .offAirBar ul {position:absolute; width:660px; left:180px; z-index:2; overflow:hidden; height:40px}
         .offAirBar li {line-height:40px; font-weight:bold; color:#fff}
@@ -6691,11 +7348,14 @@ ul li.profList .willbes-Layer-ProfileBox {
     padding: 30px 0 20px;
 } 
 .willbes-Layer-CurriBox .Layer-Txt {
-    height: 183px;
     padding: 20px;
     line-height: 24px;
     border: 1px solid #e2e2e2;
     overflow-x: auto;
+}
+.willbes-Layer-CurriBox .Layer-Txt img {
+    width: 100%;
+    height: 100%;
 }
 
 /* subContainer : Prof : willbes-Layer-ReplyBox */
@@ -9274,6 +9934,10 @@ table.testTable tr td.w-date {
     color: #666; 
     text-align: center;
 }
+.ExamBox .answerTb tr td .q_img {
+    width: 18px;
+    margin-top: -2px;
+}
 .ExamBox .answerTb tr th {
     background: #d4d4d4;
     height: 30px;
@@ -9282,6 +9946,7 @@ table.testTable tr td.w-date {
 }
 .ExamBox .answerTb tr td {
     height: 28px;
+    line-height: 26px;
 }
 .ExamBox .answerTb tr.nth {
     background: #f4f4f4;

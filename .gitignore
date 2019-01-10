@@ -59,5 +59,5 @@ readme.rst
 !/storage/cli/index.html
 !/storage/cli/task/index.html
 /public/uploads
-#application/config/database.php
+/application/config/database.php
 /_erd/.metadata/*

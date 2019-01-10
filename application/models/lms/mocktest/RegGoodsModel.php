@@ -127,6 +127,7 @@ class RegGoodsModel extends WB_Model
                 FROM {$this->_table['Product']}
                 WHERE ProdCode = ? AND IsStatus = 'Y'";
             $this->_conn->query($sql, array($prodcode, $RegIp, $RegAdminIdx, $RegDatm, $idx));
+            //echo $this->_conn->last_query().'<BR><BR><BR>';
 
 
             // lms_Product_R_Category 복사
@@ -137,7 +138,7 @@ class RegGoodsModel extends WB_Model
                 FROM {$this->_table['ProductCate']}
                 WHERE ProdCode = ? AND IsStatus = 'Y'";
             $this->_conn->query($sql, array($prodcode, $RegIp, $RegAdminIdx, $RegDatm, $idx));
-
+            //echo $this->_conn->last_query().'<BR><BR><BR>';
 
             // lms_Product_Sale 복사
             $sql = "
@@ -147,7 +148,7 @@ class RegGoodsModel extends WB_Model
                 FROM {$this->_table['ProductSale']}
                 WHERE ProdCode = ? AND IsStatus = 'Y'";
             $this->_conn->query($sql, array($prodcode, $RegIp, $RegAdminIdx, $RegDatm, $idx));
-
+            //echo $this->_conn->last_query().'<BR><BR><BR>';
 
             // lms_Product_Sms 복사
             $sql = "
@@ -157,7 +158,7 @@ class RegGoodsModel extends WB_Model
                 FROM {$this->_table['ProductSMS']}
                 WHERE ProdCode = ? AND IsStatus = 'Y'";
             $this->_conn->query($sql, array($prodcode, $RegIp, $RegAdminIdx, $RegDatm, $idx));
-
+            //echo $this->_conn->last_query().'<BR><BR><BR>';
 
             // lms_Product_Mock 복사
             $sql = "
@@ -168,9 +169,9 @@ class RegGoodsModel extends WB_Model
                 SELECT ?, TakePart, MockPart, TakeFormsCcd, TakeAreas1CCds, TakeAreas2Ccds, AddPointTypes, MockYear, MockRotationNo,
                        ClosingPerson, AcceptStatusCcd, TakeStartDatm, TakeEndDatm, TakeTime, ?, ?, ?
                 FROM {$this->_table['mockProduct']}
-                WHERE ProdCode = ? AND IsStatus = 'Y'";
+                WHERE ProdCode = ? ";
             $this->_conn->query($sql, array($prodcode, $RegIp, $RegAdminIdx, $RegDatm, $idx));
-
+            //echo $this->_conn->last_query().'<BR><BR><BR>';
 
             // lms_Product_Mock_R_Paper 복사
             $sql = "
@@ -180,7 +181,7 @@ class RegGoodsModel extends WB_Model
                 FROM {$this->_table['mockProductExam']}
                 WHERE ProdCode = ? AND IsStatus = 'Y'";
             $this->_conn->query($sql, array($prodcode, $RegIp, $RegAdminIdx, $RegDatm, $idx));
-
+            //echo $this->_conn->last_query().'<BR><BR><BR>';
 
             $this->_conn->trans_complete();
             if ($this->_conn->trans_status() === false) {

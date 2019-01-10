@@ -60,4 +60,5 @@ readme.rst
 !/storage/cli/task/index.html
 /public/uploads
 /application/config/database.php
+/application/config/memcached.php
 /_erd/.metadata/*

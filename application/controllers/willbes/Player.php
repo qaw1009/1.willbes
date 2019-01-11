@@ -346,6 +346,11 @@ class Player extends \app\controllers\FrontController
 
         $this->load->view('/player/sample', [
             'data' => [
+                'title' => '',
+                'pretitle' => '',
+                'quility' => 'WD',
+                'startPosition' => 0,
+                'ratio' => 21,
                 'isIntro' => false,
                 'ratio' => $ratio,
                 'startPosition' => 0,
@@ -403,8 +408,12 @@ class Player extends \app\controllers\FrontController
 
         $this->load->view('/player/professor', [
             'data' => [
+                'title' => '',
+                'pretitle' => '',
+                'quility' => 'WD',
+                'startPosition' => 0,
+                'ratio' => 21,
                 'isIntro' => false,
-                'ratio' => 12,
                 'startPosition' => 0,
                 'url' => $url,
                 'memid' => $MemId

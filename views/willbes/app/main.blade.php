@@ -31,7 +31,18 @@
         var app = null;
         $(document).ready(function() {
             app = new StarPlayerBridge();
+            app.bindEvent("initEvent", onInitEvent);
         });
+
+        function onInitEvent() {
+            app.getToken(function(token) {
+                if($.trim(token) == ""){
+
+                } else {
+
+                }
+            });
+        }
 
         function getDeviceInfo() {
             app.getDeviceInfo(function(id, name, model){

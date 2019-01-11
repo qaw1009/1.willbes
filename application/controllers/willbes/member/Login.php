@@ -141,17 +141,9 @@ class Login extends BaseMember
                 }
 
             } else {
-                show_alert('로그인에 실패했습니다. 다시시도해 주십시요.', front_app_url("/member/loogin/", "www")."/?rtnUrl=".rawurlencode($rtnUrl), false);
+                show_alert('로그인에 실패했습니다. 다시시도해 주십시요.', front_app_url("/member/login/", "www")."/?rtnUrl=".rawurlencode($rtnUrl), false);
             }
         }
-    }
-
-    /**
-     * 앱에서 토큰으로 로그인
-     */
-    public function token()
-    {
-        
     }
 
 }

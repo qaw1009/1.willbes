@@ -2,6 +2,8 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 use Lcobucci\JWT\Builder;
+use Lcobucci\JWT\Parser;
+use Lcobucci\JWT\ValidationData;
 use Lcobucci\JWT\Signer\Hmac\Sha256;
 
 /**
@@ -12,6 +14,7 @@ class Jwt
 {
     private $_token_data;
     private $_key = 'axissoft7173450';
+
 
     /**
      * 토큰데이터 셋팅
@@ -27,6 +30,7 @@ class Jwt
         ];
     }
 
+
     /**
      * 토큰데이터 리턴
      * @return mixed
@@ -40,15 +44,49 @@ class Jwt
     {
         $signer = new Sha256();
         $Builder = new Builder();
-        $token_data = $this->getTokenData();
 
         $token = $Builder->set('USER_ID', $this->_token_data['USER_ID'])
             ->set('USER_NM', $this->_token_data['USER_NM'])
-//            ->set('USER_IDX', $this->_token_data['USER_IDX'])
+            ->set('USER_IDX', $this->_token_data['USER_IDX'])
             ->sign($signer, $this->_key)
             ->getToken();
 
         return $token;
     }
 
+
+    /**
+     *  넘어온 토큰값이 정상인지 확인
+     * @param $token
+     * @return bool
+     */
+    public function verify($token)
+    {
+        $signer = new Sha256();
+
+        try{
+            $token = (new Parser())->parse((string)$token);
+        } catch (\Exception $e) {
+            return false;
+        }
+
+        return $token->verify($signer, $this->_key);
+    }
+
+
+    /**
+     *  토큰값을 풀어서 array 반환
+     * @param $token
+     * @return array
+     */
+    public function getClaims($token)
+    {
+        $token = (new Parser())->parse((string)$token);
+
+        return [
+            'USER_IDX' => $token->getClaim('USER_IDX', ''),
+            'USER_ID' => $token->getClaim('USER_ID', ''),
+            'USER_NM' => $token->getClaim('USER_NM', '')
+        ];
+    }
 }

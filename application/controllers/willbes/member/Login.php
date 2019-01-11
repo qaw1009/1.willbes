@@ -146,4 +146,12 @@ class Login extends BaseMember
         }
     }
 
+    /**
+     * 앱에서 토큰으로 로그인
+     */
+    public function token()
+    {
+        
+    }
+
 }

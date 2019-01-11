@@ -5,7 +5,6 @@
         $(document).ready(function (){
             SubFrameTag_width = 0;
 
-            getScreenSize();
             setScreenReSizeVal();
             screenResize();
             fnDefense();
@@ -41,9 +40,9 @@
                 startTime: 0
             };
 
-            fnPlayer();
-
-            realPlayerTime = new Speedplaytime(player);
+            fnStartPlayer(config, media);
         });
+
+        function fnCheckPID(){}
     </script>
 @stop

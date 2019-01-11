@@ -3,11 +3,11 @@
 @section('script')
     <script type="text/javascript">
         $(document).ready(function (){
-            getScreenSize();
+            SubFrameTag_width = 0;
+
             setScreenReSizeVal();
             screenResize();
             fnDefense();
-            $("#subframe").prop('src', '/player/info');
 
             config = {
                 userId: "{{$data['memid']}}",
@@ -40,9 +40,9 @@
                 startTime: 0
             };
 
-            fnStartPlayer();
-
-            realPlayerTime = new Speedplaytime(player);
+            fnStartPlayer(config, media);
         });
+
+        function fnCheckPID(){}
     </script>
 @stop

@@ -29,7 +29,7 @@
                     </li>
                 @else
                     <li class="Login">
-                        {{sess_data('mem_name')}}님 로그인중입니다. 자동배포 테스트
+                        {{sess_data('mem_name')}}님 로그인중입니다.
                         <span class="row-line">|</span>
                     </li>
                     <li class="joinUs">

@@ -30,6 +30,8 @@ class NiceAuth
      * @Param $sReturnType
      * @return Array
      */
+
+    /*
     public function cpEnc($sReturnType)
     {
         $sRtnCode = 0;
@@ -82,13 +84,15 @@ class NiceAuth
             'rtnMsg' => $sRtnMsg,
             'encData' => $sEncData
         ];
-    }
+    } */
 
     /*
      * 간편 본인인증 복호화
      * @Param $sEncData
      * @return Array
      */
+
+    /*
     public function cpDec($sEncData)
     {
         $sRtnCode = 0;
@@ -175,7 +179,7 @@ class NiceAuth
             'mobileno' => $mobileno,
             'mobileco' => $mobileco
         ];
-    }
+    } */
 
     /*
      * 아이핀 암호화 암수

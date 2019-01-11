@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-require APPPATH . 'controllers/lms/board//BaseBoard.php';
+require APPPATH . 'controllers/lms/board/BaseBoard.php';
 
 class Notice extends BaseBoard
 {
@@ -23,6 +23,6 @@ class Notice extends BaseBoard
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
 
-        redirect(site_url("/board/mocktest/reg_goods?bm_idx={$this->bm_idx}"));
+        redirect(site_url("/board/mocktest/main?bm_idx={$this->bm_idx}"));
     }
 }

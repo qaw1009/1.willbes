@@ -16,7 +16,7 @@ class Subject extends \app\controllers\BaseController
      */
     public function index()
     {
-        $list = $this->subjectModel->listSubject([], null, null, ['PS.SubjectIdx' => 'asc']);
+        $list = $this->subjectModel->listSubject([], null, null, ['PS.SiteCode' => 'asc', 'PS.OrderNum' => 'asc']);
 
         $this->load->view('product/base/subject/index',[
             'data' => $list

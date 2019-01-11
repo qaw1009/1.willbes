@@ -84,7 +84,7 @@
                                 <input type="text" id="ot_url" name="ot_url" class="form-control optional" pattern="url" title="OT영상" value="{{ $data['ot_url'] or '' }}">
                             </div>
                             <div class="col-md-2 pl-0">
-                                <button type="button" class="btn btn-default btn-movie-view">보기</button>
+                                <button type="button" class="btn btn-sm btn-primary btn-movie-view" data-movie-url="{{ $data['ot_url'] or '' }}" data-view-type="OT">보기</button>
                             </div>
                         </div>
                     </div>
@@ -100,7 +100,7 @@
                                 <input type="text" id="wsample_url" name="wsample_url" class="form-control optional bg-info" pattern="url" title="맛보기영상" value="{{ $data['wsample_url'] or '' }}" placeholder="교수 검색 시 맛보기 정보 자동 출력 (수정가능)">
                             </div>
                             <div class="col-md-2 pl-0">
-                                <button type="button" class="btn btn-default btn-movie-view">보기</button>
+                                <button type="button" class="btn btn-sm btn-primary btn-movie-view" data-movie-url="{{ $data['wsample_url'] or '' }}" data-view-type="WS">보기</button>
                             </div>
                         </div>
                         <div class="row mt-5">
@@ -110,7 +110,7 @@
                                 <input type="text" id="sample_url1" name="sample_url1" class="form-control optional" pattern="url" title="맛보기1" value="{{ $data['sample_url1'] or '' }}">
                             </div>
                             <div class="col-md-2 pl-0">
-                                <button type="button" class="btn btn-default btn-movie-view">보기</button>
+                                <button type="button" class="btn btn-sm btn-primary btn-movie-view" data-movie-url="{{ $data['sample_url1'] or '' }}" data-view-type="S1">보기</button>
                             </div>
                         </div>
                         <div class="row mt-5">
@@ -120,7 +120,7 @@
                                 <input type="text" id="sample_url2" name="sample_url2" class="form-control optional" pattern="url" title="맛보기2" value="{{ $data['sample_url2'] or '' }}">
                             </div>
                             <div class="col-md-2 pl-0">
-                                <button type="button" class="btn btn-default btn-movie-view">보기</button>
+                                <button type="button" class="btn btn-sm btn-primary btn-movie-view" data-movie-url="{{ $data['sample_url2'] or '' }}" data-view-type="S2">보기</button>
                             </div>
                         </div>
                         <div class="row mt-5">
@@ -130,7 +130,7 @@
                                 <input type="text" id="sample_url3" name="sample_url3" class="form-control optional" pattern="url" title="맛보기3" value="{{ $data['sample_url3'] or '' }}">
                             </div>
                             <div class="col-md-2 pl-0">
-                                <button type="button" class="btn btn-default btn-movie-view">보기</button>
+                                <button type="button" class="btn btn-sm btn-primary btn-movie-view" data-movie-url="{{ $data['sample_url3'] or '' }}" data-view-type="S3">보기</button>
                             </div>
                         </div>
                     </div>
@@ -441,6 +441,16 @@
             $regi_form.on('click', '.selected-subject-mapping-delete', function() {
                 var that = $(this);
                 that.parent().remove();
+            });
+
+            // 샘플동영상 보기 버튼 클릭
+            $regi_form.on('click', '.btn-movie-view', function() {
+                if ($(this).data('movie-url') === '') {
+                    alert('해당 영상 경로를 저장 후 보기가 가능합니다.');
+                    return;
+                }
+
+                fnPlayerProf($regi_form.find('input[name="idx"]').val(), $(this).data('view-type'));
             });
 
             // 교수카페정보

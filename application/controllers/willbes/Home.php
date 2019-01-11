@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends \app\controllers\FrontController
 {
-    protected $models = array('dDayF');
+    protected $models = array('dDayF', 'memberF');
     protected $helpers = array();
     protected $auth_controller = false;
     protected $auth_methods = array();
@@ -22,6 +22,39 @@ class Home extends \app\controllers\FrontController
         // 앱일경우 토큰을 얻어서
         if($this->_is_app === true){
             $token = $this->_req('token');
+
+            if(empty($token) == false){
+                // 토큰로그인처리
+                $this->load->library('Jwt');
+
+                if($this->jwt->verify($token) == true){
+                    // 토큰이 정상일때
+                    $tokenArr = $this->jwt->getClaims($token);
+
+                    $data = [
+                        'MemIdx' => $tokenArr['USER_IDX']
+                    ];
+                    
+                    if($this->session->userdata('is_login') == true && $this->session->userdata('mem_idx') == $tokenArr['USER_IDX']){
+                        // 이미 로그인중이고 토큰데이타와 동일하면 그냥 내강의실로
+                        redirect(front_url('/classroom/on/list/ongoing'));
+                    }
+
+                    // 넘어온 토큰데이타로 로그인처리
+                    if($this->memberFModel->storeMemberLogin($data) == true){
+                        // 로그인성공
+                        redirect(front_url('/classroom/on/list/ongoing'));
+                    } else {
+                        // 로그인 실패
+                        redirect(front_url('/member/login'));
+                    }
+                    
+                } else {
+                    // 토큰값이 정상이 아닐때
+                    redirect(front_url('/member/login'));
+                }
+            }
+
             return $this->load->view('main', [
                 'token' => $token
             ]);

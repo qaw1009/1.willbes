@@ -11,6 +11,8 @@
 
     <a href="{{ site_url('/home/html/main_cop_online') }}" target="_blank">경찰메인(온라인)</a><br/><br/>
     <!--구버전<a href="{{ site_url('/home/html/main_cop') }}" target="_blank">경찰메인</a><br/><br/>-->
+
+    <a href="{{ site_url('/home/html/main_cop_acad') }}" target="_blank">경찰메인(학원)</a><br/><br/>
     
     <a href="{{ site_url('/home/html/main_gosi') }}" target="_blank">공무원메인</a><br/><br/>
 

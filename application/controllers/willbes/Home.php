@@ -42,7 +42,7 @@ class Home extends \app\controllers\FrontController
                     }
 
                     // 넘어온 토큰데이타로 로그인처리
-                    if($this->memberFModel->storeMemberLogin($data) == true){
+                    if($this->memberFModel->storeMemberLogin($data, 'TOKEN') == true){
                         // 로그인성공
                         logger('토큰로그인 성공');
                         redirect(front_url('/classroom/on/list/ongoing'));

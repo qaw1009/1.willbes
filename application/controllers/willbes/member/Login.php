@@ -113,7 +113,13 @@ class Login extends BaseMember
             }
 
             // 실제 로그인처리하기 로그인 처리및 로그저장
-            $result = $this->memberFModel->storeMemberLogin($data);
+            if($this->_is_app == true){
+                $loginType = 'APP';
+            } else {
+                $loginType = 'NORMAL';
+            }
+
+            $result = $this->memberFModel->storeMemberLogin($data, $loginType);
 
             if($result === true){
                 // 아이디 저장 쿠키 생성/삭제

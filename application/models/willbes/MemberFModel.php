@@ -128,7 +128,7 @@ class MemberFModel extends WB_Model
      * @param array $data
      * @return bool
      */
-    public function storeMemberLogin($data = [])
+    public function storeMemberLogin($data = [], $loginType = 'NORMAL')
     {
         // 데이타에 문제가 있을경우 오류
         if(empty($data) === true) return false;
@@ -141,7 +141,8 @@ class MemberFModel extends WB_Model
             if($this->_conn->set([
                     'MemIdx' => $data['MemIdx'],
                     'IsLogin' => 'Y',
-                    'LoginIp' => $this->input->ip_address()
+                    'LoginIp' => $this->input->ip_address(),
+                    'LoginType' => $loginType
                 ])->insert($this->_table['loginlog']) === false) {
 
                 throw new \Exception('로그인기록 입력 실패');

@@ -651,7 +651,7 @@
             </div>
             
         </div>
-    </div>   
+    </div> 
 </div>
 <!-- End Container -->
 @stop

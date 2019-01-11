@@ -7,8 +7,11 @@
 
 <div style="float:left; width: 390px; height: 750px; border-right: 1px solid #ccc; margin-right: 15px; font-size: 14px;">
 
-    <a href="{{ site_url('/home/html/main') }}" target="_blank">통합메인</a>&nbsp;/
-    <a href="{{ site_url('/home/html/main_cop') }}" target="_blank">경찰메인</a>&nbsp;/
+    <a href="{{ site_url('/home/html/main') }}" target="_blank">통합메인</a><br/><br/>
+
+    <a href="{{ site_url('/home/html/main_cop_online') }}" target="_blank">경찰메인(온라인)</a><br/><br/>
+    <!--구버전<a href="{{ site_url('/home/html/main_cop') }}" target="_blank">경찰메인</a><br/><br/>-->
+    
     <a href="{{ site_url('/home/html/main_gosi') }}" target="_blank">공무원메인</a><br/><br/>
 
     <a href="{{ site_url('/home/html/memjoin') }}" target="_blank">로그인 page 이동</a><br/><br/>

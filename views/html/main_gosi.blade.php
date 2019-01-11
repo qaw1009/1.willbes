@@ -53,7 +53,6 @@
             </ul>
         </h3>
     </div>
-
     <div class="Section MainVisual mt20 mb30">
         <div class="widthAuto">
             <div class="VisualBox p_re">
@@ -482,7 +481,7 @@
                             <div>
                                 <a href="#none">
                                     <div class="imgBox cover">
-                                        <img class="coverImg" src="{{ img_url('cop/prof_cover.png') }}">
+                                        <img class="coverImg" src="{{ img_url('gosi/prof_cover.png') }}">
                                         <img src="{{ img_url('sample/prof3-5.jpg') }}">
                                     </div>
                                     <div class="infoBox">
@@ -498,7 +497,7 @@
                             <div>
                                 <a href="#none">
                                     <div class="imgBox cover">
-                                        <img class="coverImg" src="{{ img_url('cop/prof_cover.png') }}">
+                                        <img class="coverImg" src="{{ img_url('gosi/prof_cover.png') }}">
                                         <img src="{{ img_url('sample/prof3.jpg') }}">
                                     </div>
                                     <div class="infoBox">
@@ -521,7 +520,7 @@
                             <div>
                                 <a href="#none">
                                     <div class="imgBox cover">
-                                        <img class="coverImg" src="{{ img_url('cop/prof_cover.png') }}">
+                                        <img class="coverImg" src="{{ img_url('gosi/prof_cover.png') }}">
                                         <img src="{{ img_url('sample/prof3-6.jpg') }}">
                                     </div>
                                     <div class="infoBox">
@@ -537,7 +536,7 @@
                             <div>
                                 <a href="#none">
                                     <div class="imgBox cover">
-                                        <img class="coverImg" src="{{ img_url('cop/prof_cover.png') }}">
+                                        <img class="coverImg" src="{{ img_url('gosi/prof_cover.png') }}">
                                         <img src="{{ img_url('sample/prof3-4.jpg') }}">
                                     </div>
                                     <div class="infoBox">

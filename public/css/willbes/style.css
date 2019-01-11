@@ -2386,14 +2386,20 @@ table.auTable tr td {
     margin-top: -37px;
 }
 .cswRollingSlider ul li a {
+    display: block;
     font-size: 16px;
     font-weight: 600;
     color: #bbb;
     line-height: 30px;
 }
+
+.cswRollingSlider ul li.active a {
+    color: #0c5dc0;
+} 
 .cswRollingSlider ul li a.active {
     color: #0c5dc0;
 } 
+
 .cswRollingSlider ul li img {
     position: absolute; 
     left: 0;
@@ -2404,6 +2410,11 @@ table.auTable tr td {
 .sliderCurriList {
     width: 1070px;
     margin: 0 auto;
+}
+.CurriSwipe ul li a {
+    display: block;
+    width: 100%;
+    height: 100%;
 }
 .curriculumBox {
     float: left;
@@ -2435,17 +2446,12 @@ table.auTable tr td {
 .curriculumBox .info li {
     font-size: 14px;
 }
-.curriculumBox a {
-    display: block;
-    width: 100%;
-    height: 100%;
-}
-.active-slide .curriculumBox {
+.active .curriculumBox {
     background: #fff;
     border: 10px solid #0c5dc0;
     color: #0c5dc0;
 }
-.active-slide .curriculumBox .Tit {
+.active .curriculumBox .Tit {
     padding-top: 31px;
 }
 .curriculumTxt {

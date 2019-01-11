@@ -244,38 +244,6 @@ class Professor extends \app\controllers\FrontController
     }
 
     /**
-     * 학원 단과, 종합반 조회
-     * @param $learn_pattern
-     * @param $site_code
-     * @param $prof_idx
-     * @param array $arr_input
-     * @return array|int
-     */
-    private function _getOffLectureData($learn_pattern, $site_code, $prof_idx, $arr_input = [])
-    {
-        $arr_condition = [
-            'EQ' => ['SiteCode' => $site_code],
-            'IN' => ['StudyApplyCcd' => ['654002', '654003']] // 온라인 접수, 방문+온라인
-        ];
-
-        if ($learn_pattern === 'off_lecture') {
-            $arr_condition = array_replace_recursive($arr_condition, ['EQ' => ['ProfIdx' => $prof_idx]]);
-        } else {
-            $arr_condition = array_replace_recursive($arr_condition, ['LKB' => ['ProfIdx_String' => $prof_idx]]);
-        }
-
-        $data = $this->lectureFModel->listSalesProduct($learn_pattern, false, $arr_condition, null, null, ['ProdCode' => 'desc']);
-
-        // 상품 json 데이터 decode
-        $data = array_map(function ($row) {
-            $row['ProdPriceData'] = json_decode($row['ProdPriceData'], true);
-            return $row;
-        }, $data);
-
-        return $data;
-    }
-
-    /**
      * 온라인 단강좌, 무료강좌 데이터 조회
      * @param $learn_pattern
      * @param $site_code
@@ -286,6 +254,10 @@ class Professor extends \app\controllers\FrontController
     private function _getOnLectureData($learn_pattern, $site_code, $prof_idx, $arr_input = [])
     {
         $arr_condition = ['EQ' => ['ProfIdx' => $prof_idx, 'SiteCode' => $site_code, 'CourseIdx' => element('course_idx', $arr_input)]];
+        if ($this->_is_pass_site === false) {
+            // 온라인 사이트일 경우 카테고리 조건 추가
+            $arr_condition['LKR']['CateCode'] = $this->_def_cate_code;
+        }
 
         $data = $this->lectureFModel->listSalesProduct($learn_pattern, false, $arr_condition, null, null, ['ProdCode' => 'desc']);
 
@@ -313,8 +285,49 @@ class Professor extends \app\controllers\FrontController
     private function _getOnPackageData($learn_pattern, $adminpack_lecture_type_ccd, $site_code, $prof_idx, $arr_input = [])
     {
         $arr_condition = ['EQ' => ['SiteCode' => $site_code, 'PackTypeCcd' => $adminpack_lecture_type_ccd], 'LKB' => ['ProfIdx_String' => $prof_idx]];
+        if ($this->_is_pass_site === false) {
+            // 온라인 사이트일 경우 카테고리 조건 추가
+            $arr_condition['LKR']['CateCode'] = $this->_def_cate_code;
+        }
 
         $data = $this->packageFModel->listSalesProduct($learn_pattern,false, $arr_condition,null,null, ['ProdCode' => 'desc']);
+
+        // 상품 json 데이터 decode
+        $data = array_map(function ($row) {
+            $row['ProdPriceData'] = json_decode($row['ProdPriceData'], true);
+            return $row;
+        }, $data);
+
+        return $data;
+    }
+
+    /**
+     * 학원 단과, 종합반 조회
+     * @param $learn_pattern
+     * @param $site_code
+     * @param $prof_idx
+     * @param array $arr_input
+     * @return array|int
+     */
+    private function _getOffLectureData($learn_pattern, $site_code, $prof_idx, $arr_input = [])
+    {
+        $arr_condition = [
+            'EQ' => ['SiteCode' => $site_code],
+            'IN' => ['StudyApplyCcd' => ['654002', '654003']] // 온라인 접수, 방문+온라인
+        ];
+
+        if ($this->_is_pass_site === true) {
+            // 학원 사이트일 경우 카테고리 조건 추가
+            $arr_condition['LKR']['CateCode'] = $this->_def_cate_code;
+        }        
+
+        if ($learn_pattern === 'off_lecture') {
+            $arr_condition = array_replace_recursive($arr_condition, ['EQ' => ['ProfIdx' => $prof_idx]]);
+        } else {
+            $arr_condition = array_replace_recursive($arr_condition, ['LKB' => ['ProfIdx_String' => $prof_idx]]);
+        }
+
+        $data = $this->lectureFModel->listSalesProduct($learn_pattern, false, $arr_condition, null, null, ['ProdCode' => 'desc']);
 
         // 상품 json 데이터 decode
         $data = array_map(function ($row) {

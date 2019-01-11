@@ -266,11 +266,11 @@
                                     {{ $row['wBookPage']  }}
                                 </td>
                                 <td>
-                                    [고화질] {{ $row['wHD'] }}
+                                    <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodViewUnit('HD',{{$row['wUnitIdx']}})">고화질</button> {{ $row['wHD'] }}
                                     <br>
-                                    [일반화질] {{ $row['wSD'] }}
+                                    <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodViewUnit('SD',{{$row['wUnitIdx']}})">일반화질</button> {{ $row['wSD'] }}
                                     <br>
-                                    [와이드] {{ $row['wWD'] }}
+                                    <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodViewUnit('WD',{{$row['wUnitIdx']}})">와이드</button> {{ $row['wWD'] }}
                                 </td>
                                 <td>{{$row['wCcdName']}}</td>
                                 <td>
@@ -333,5 +333,9 @@
                 });
             });
         });
+
+        function vodViewUnit(quility, idx) {
+            popupOpen(app_url('/cms/lecture/player/?lecidx={{$lecidx}}&unitidx='+idx+'&quility=' + quility , 'wbs'), 'wbsPlayer', '1000', '600', null, null, 'no', 'no');
+        }
     </script>
 @stop

@@ -274,6 +274,27 @@ class UnitModel extends WB_Model
         return $file_name;
     }
 
+
+    public function getUnit($unitidx)
+    {
+        $column = 'A.*,B.wProfName,C.wAdminName,Ccd.*';
+
+        $from = '
+                    From '.$this->_table.' A 
+                    left outer join wbs_pms_professor B on A.wProfIdx = B.wProfIdx And B.wIsStatus="Y"
+                    left outer join wbs_sys_admin C on A.wRegAdminIdx = C.wAdminIdx And C.wIsStatus="Y"
+                    left outer join wbs_sys_code Ccd on A.wContentSizeCcd = Ccd.wCcd
+                    ';
+
+        $where =  $this->_conn->makeWhere([
+            'EQ'=>['A.wUnitIdx'=>$unitidx,'A.wIsStatus'=>'Y']
+        ])->getMakeWhere(false);
+
+        $order_by = $this->_conn->makeOrderBy(['A.wOrderNum'=>'ASC'])->getMakeOrderBy();
+
+        return $this->_conn->query('select ' .$column .$from .$where .$order_by) ->result_array();
+    }
+
 }
 
 

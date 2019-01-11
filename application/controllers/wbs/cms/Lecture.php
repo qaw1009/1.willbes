@@ -230,4 +230,65 @@ class Lecture extends \app\controllers\BaseController
         $this->json_result($result,'저장 되었습니다.',$result);
     }
 
+    /**
+     *  마스터강의 회차 실행
+     */
+    public function player()
+    {
+        $lecidx = $this->_req("lecidx");
+        $unitidx = $this->_req('unitidx');
+        $quility = $this->_req('quility');
+        $url = $this->_req("url");
+        $ratio = $this->_req("ratio");
+
+        $data = $data = $this->lectureModel->findLectureForModify($lecidx);
+
+        if( empty($unitidx) == true){
+            $ratioArr = $this->codeModel->getCode($ratio);
+            $ratio = $ratioArr[0]['wCcdValue'];
+            $title = 'URL : '.$url;
+
+        } else {
+            $unitdata = $this->unitModel->getUnit($unitidx);
+
+            if(empty($unitdata) == true){
+                show_alert('회차정보가 없습니다.', 'close');
+            }
+
+            $unitdata = $unitdata[0];
+            $ratioArr = $this->codeModel->getCode($unitdata['wContentSizeCcd']);
+            $ratio = $ratioArr[0]['wCcdValue'];
+
+            switch($quility){
+                case 'WD':
+                    $filename = $unitdata['wWD'];
+                    $ratio = 21;
+                    break;
+
+                case 'HD':
+                    $filename = $unitdata['wHD'];
+                    break;
+
+                case 'SD':
+                    $filename = $unitdata['wSD'];
+                    break;
+
+                default:
+                    $filename = $unitdata['wWD'];
+                    break;
+            }
+
+            $url = $data['wMediaUrl'].'/'.$filename;
+            $title = $unitdata['wUnitNum'].'회 '.$unitdata['wUnitLectureNum'].'강 '.$unitdata['wUnitName'];
+        }
+
+
+        $this->load->view('cms/lecture/player', [
+            'title' => $title,
+            'url' => $url,
+            'ratio'=> $ratio,
+            'data' => $data
+        ]);
+    }
+
 }

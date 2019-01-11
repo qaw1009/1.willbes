@@ -303,10 +303,10 @@
                     }
                 }
 
-
-                /*동영상 플레이어 개발 후 추가 개발 진행*/
-                function vodView(strUrl) {
-                    return;
+                function vodView(type, idx) {
+                    // 데이타를 저장하지 않고도 확인하기 위해 현제 입력한 URL 을 정보로 강의를 플레이합니다.
+                    $url = $('#MediaUrl').val() + '/' + $('#w'+type+idx).val();
+                    popupOpen(app_url('/cms/lecture/player/?lecidx={{$lecidx}}&url='+$url+'&ratio='+$('#wContentSizeCcd'+idx).val() , 'wbs'), 'wbsPlayer', '1000', '600', null, null, 'no', 'no');
                 }
 
             </script>

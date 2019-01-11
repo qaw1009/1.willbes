@@ -738,46 +738,40 @@ class ReadingRoomModel extends BaseReadingRoomModel
      * 독서실/사물함 환불
      * @param $prod_code
      * @param $now_order_idx
-     * @return array|bool
+     * @return bool
      */
     public function refundReadingRoom($prod_code, $now_order_idx)
     {
-        $this->_conn->trans_begin();
-        try {
-            //환불대상데이터 조회
-            $target_data = $this->_findReadingRoomForTargetRefund($prod_code, $now_order_idx);
-            if (empty($target_data) === true) {
-                throw new \Exception('환불대상 상품이 없습니다.');
-            }
-
-            //환불로 인한 좌석 상태 수정
-            $arr_update_condition = [
-                'LrIdx' => $target_data['LrIdx'],
-                'NowOrderIdx' => $now_order_idx
-            ];
-            $arr_target_data = [
-                'StatusCcd' => $this->_arr_reading_room_status_ccd['N'],
-            ];
-            if ($this->updateReadingRoomMst($arr_update_condition, $arr_target_data, 'Y') !== true) {
-                throw new \Exception('좌석 상태 수정에 실패했습니다.');
-            }
-
-            //환불로 인한 회원의 좌석 상태 수정
-            $arr_update_condition = [
-                'LrIdx' => $target_data['LrIdx'],
-                'NowOrderIdx' => $now_order_idx,
-            ];
-            $arr_target_data = [
-                'StatusCcd' => $this->_arr_reading_room_seat_status_ccd['out'],
-            ];
-            if ($this->updateSeatDetail($arr_update_condition, $arr_target_data) !== true) {
-                throw new \Exception('회원 좌석 상태 수정에 실패했습니다.');
-            }
-            $this->_conn->trans_commit();
-        } catch (\Exception $e) {
-            $this->_conn->trans_rollback();
-            return error_result($e);
+        //환불대상데이터 조회
+        $target_data = $this->_findReadingRoomForTargetRefund($prod_code, $now_order_idx);
+        if (empty($target_data) === true) {
+            return '환불대상 상품 없습니다.';
         }
+
+        //환불로 인한 좌석 상태 수정
+        $arr_update_condition = [
+            'LrIdx' => $target_data['LrIdx'],
+            'NowOrderIdx' => $now_order_idx
+        ];
+        $arr_target_data = [
+            'StatusCcd' => $this->_arr_reading_room_status_ccd['N'],
+        ];
+        if ($this->updateReadingRoomMst($arr_update_condition, $arr_target_data, 'Y') !== true) {
+            return '좌석 상태 수정에 실패했습니다.';
+        }
+
+        //환불로 인한 회원의 좌석 상태 수정
+        $arr_update_condition = [
+            'LrIdx' => $target_data['LrIdx'],
+            'NowOrderIdx' => $now_order_idx,
+        ];
+        $arr_target_data = [
+            'StatusCcd' => $this->_arr_reading_room_seat_status_ccd['out'],
+        ];
+        if ($this->updateSeatDetail($arr_update_condition, $arr_target_data) !== true) {
+            return '회원좌석 상태 수정에 실패했습니다.';
+        }
+
         return true;
     }
 

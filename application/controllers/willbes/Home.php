@@ -45,22 +45,22 @@ class Home extends \app\controllers\FrontController
                         // 로그인성공
                         redirect(front_url('/classroom/on/list/ongoing'));
                     } else {
-                        // 로그인 실패
+                        // 로그인 실패시 세션 파괴
                         $this->session->sess_destroy();
-                        redirect(front_url('/member/login'));
                     }
                     
                 } else {
-                    // 토큰값이 정상이 아닐때
+                    // 토큰값이 정상이 아닐때 세션 파괴
                     $this->session->sess_destroy();
-                    redirect(front_url('/member/login'));
                 }
                 
             } else {
-                // 토큰이 없으면 로그인으로
+                // 토큰이 없으면 세션 파괴
                 $this->session->sess_destroy();
-                redirect(front_url('/member/login'));
             }
+
+            // 기본 내강의실로 이동
+            redirect(front_url('/classroom/on/list/ongoing'));
         }
 
         // 시험일정 조회 (디데이)

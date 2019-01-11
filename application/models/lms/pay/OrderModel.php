@@ -242,6 +242,16 @@ class OrderModel extends BaseOrderModel
                     }
                 }
 
+                // 독서실/사물함 좌석취소
+                if ($row['ProdTypeCcd'] == $this->_prod_type_ccd['reading_room'] || $row['ProdTypeCcd'] == $this->_prod_type_ccd['locker']) {
+                    $this->load->loadModels(['pass/readingRoom']);
+
+                    $is_seat_cancel = $this->readingRoomModel->refundReadingRoom($row['ProdCode'], $order_idx);
+                    if ($is_seat_cancel !== true) {
+                        throw new \Exception($is_seat_cancel);
+                    }
+                }
+
                 // 환불상품 데이터 저장
                 $data = [
                     'RefundReqIdx' => $refund_req_idx,

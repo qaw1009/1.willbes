@@ -181,6 +181,9 @@ class Lecture extends \app\controllers\BaseController
 
         if(empty($params[0]) === false) {
             $lecidx = $params[0];
+            if(empty($params[1]) == false) {
+                $selected_prof_idx =  $params[1];
+            }
 
             // 화면비율 코드
             $codes = $this->codeModel->getCcdInArray(['108']);
@@ -201,6 +204,7 @@ class Lecture extends \app\controllers\BaseController
                 ,'prof_list'=> $prof
                 ,'data_unit' => $data_unit
                 ,'codes' => $codes
+                ,'selected_prof_idx' => $selected_prof_idx
             ]);
 
         } else {

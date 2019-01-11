@@ -328,7 +328,7 @@
             $('.btn-unitregist').click(function() {
 
                 $('.btn-unitregist').setLayer({
-                    "url" : "{{ site_url('cms/lecture/createUnitModal/') }}"+ $('#LecIdx').val()
+                    "url" : "{{ site_url('cms/lecture/createUnitModal/') }}"+ $('#LecIdx').val() +"/"+$("#ProfIdx1").val()
                     ,width : "1600"
                 });
             });

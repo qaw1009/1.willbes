@@ -140,13 +140,13 @@
                                         <input type="text" name="wBookPage[]" id="wBookPage{{$i}}" class="form-control" title="북페이지" value="" style="width: 50px"> P
                                     </td>
                                     <td>
-                                        [와이드] <input type="text" name="wWD[]" id="wWD{{$i}}" class="form-control" title="와이드" value="" style="width: 400px">
+                                        [와이드] <input type="text" name="wWD[]" id="wWD{{$i}}" class="form-control" title="와이드" value="" style="width: 300px">
                                         <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodView('WD','{{$i}}')">보기</button>
                                         <BR>
-                                        [고화질] <input type="text" name="wHD[]" id="wHD{{$i}}" class="form-control" required="required" title="고화질" value="" style="width: 400px">
+                                        [고화질] <input type="text" name="wHD[]" id="wHD{{$i}}" class="form-control" required="required" title="고화질" value="" style="width: 300px">
                                         <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodView('HD','{{$i}}')">보기</button>
                                         <BR>
-                                        [일반화질] <input type="text" name="wSD[]" id="wSD{{$i}}" class="form-control" required="required" title="일반화질" value="" style="width: 400px">
+                                        [일반화질] <input type="text" name="wSD[]" id="wSD{{$i}}" class="form-control" required="required" title="일반화질" value="" style="width: 300px">
                                         <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodView('SD','{{$i}}')">보기</button>
                                     </td>
                                     <td>
@@ -162,7 +162,7 @@
                                         <select name="wProfIdx[]" id="wProfIdx{{$i}}" required="required" class="form-control" title="교수">
                                             <option value="">교수</option>
                                             @foreach($prof_list as $prof_row)
-                                                <option value="{{$prof_row['wProfIdx']}}">{{$prof_row['wProfName']}} [ {{ $prof_row['wProfIdx'] }} ]</option>
+                                                <option value="{{$prof_row['wProfIdx']}}" @if($selected_prof_idx == $prof_row['wProfIdx'])selected @endif>{{$prof_row['wProfName']}} [ {{ $prof_row['wProfIdx'] }} ]</option>
                                             @endforeach
                                         </select>
                                     </td>
@@ -245,7 +245,7 @@
                                 +'<select name="wProfIdx[]" id="wProfIdx" required="required" class="form-control" title="교수">'
                                 +'<option value="">교수</option>'
                                     @foreach($prof_list as $prof_row)
-                                +'  <option value="{{$prof_row['wProfIdx']}}">{{$prof_row['wProfName']}} [ {{ $prof_row['wProfIdx'] }} ]</option>'
+                                +'  <option value="{{$prof_row['wProfIdx']}}"  @if($selected_prof_idx == $prof_row['wProfIdx'])selected @endif>{{$prof_row['wProfName']}} [ {{ $prof_row['wProfIdx'] }} ]</option>'
                                     @endforeach
                                 +'    </select>'
                                 +'   </td>'

@@ -68,10 +68,12 @@ class Lecture extends \app\controllers\FrontController
         // 수강후기 게시판 자료 추가
         $add_column = ', ifnull(fn_professor_study_comment_data(ProfIdx, SiteCode, CateCode, SubjectIdx, 3), "N") as StudyCommentData';
 
+        // 상품 조회
         $list = $this->lectureFModel->listSalesProduct($this->_learn_pattern, false, $arr_condition, null, null, ['ProdCode' => 'desc'], $add_column);
 
         // 상품조회 결과에 존재하는 과목 정보
-        $selected_subjects = array_pluck($list, 'SubjectName', 'SubjectIdx');
+        $selected_subjects = array_pluck($this->baseProductFModel->listSubject($this->_site_code, array_unique(array_pluck($list, 'SubjectIdx'))), 'SubjectName', 'SubjectIdx');
+
         // 상품조회 결과에 존재하는 교수 정보
         $selected_professor_names = array_data_pluck($list, ['wProfName', 'ProfSlogan'], ['SubjectIdx', 'ProfIdx']);    // 교수명, 슬로건
         $selected_professor_study_comments = array_data_pluck($list, 'StudyCommentData', ['SubjectIdx', 'ProfIdx']);    // 수강후기

@@ -89,10 +89,11 @@ class OffLecture extends \app\controllers\FrontController
             'IN' => ['StudyApplyCcd' => $_study_apply_ccds] // 접수방식
         ];
 
+        // 상품조회
         $list = $this->lectureFModel->listSalesProduct($this->_learn_pattern, false, $arr_condition, null, null, ['ProdCode' => 'desc']);
 
         // 상품조회 결과에 존재하는 과목 정보
-        $selected_subjects = array_pluck($list, 'SubjectName', 'SubjectIdx');
+        $selected_subjects = array_pluck($this->baseProductFModel->listSubject($this->_site_code, array_unique(array_pluck($list, 'SubjectIdx'))), 'SubjectName', 'SubjectIdx');
 
         // 상품 조회결과 재정의
         $selected_list = [];

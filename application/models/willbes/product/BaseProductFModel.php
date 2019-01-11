@@ -23,7 +23,7 @@ class BaseProductFModel extends WB_Model
 
     /**
      * 과정 데이터 조회
-     * @param $site_code
+     * @param int $site_code
      * @return array
      */
     public function listCourse($site_code)
@@ -38,6 +38,34 @@ class BaseProductFModel extends WB_Model
 
         return $this->_conn->getJoinListResult($this->_table['course'] . ' as PC', 'inner', $this->_table['site'] . ' as S', 'PC.SiteCode = S.SiteCode'
             , $column, $arr_condition, null, null, ['PC.OrderNum' => 'asc']
+        );
+    }
+
+    /**
+     * 과목 데이터 조회
+     * @param int $site_code
+     * @param array $arr_subject_idx
+     * @return array|int
+     */
+    public function listSubject($site_code, $arr_subject_idx = [])
+    {
+        $column = 'PS.SubjectIdx, PS.SubjectName';
+        $arr_condition = [
+            'EQ' => [
+                'PS.SiteCode' => $site_code, 'PS.IsStatus' => 'Y',
+                'S.IsUse' => 'Y', 'S.IsStatus' => 'Y',
+            ],
+            'IN' => [
+                'PS.SubjectIdx' => (array) $arr_subject_idx
+            ]
+        ];
+
+        if (empty($arr_subject_idx) === true) {
+            $arr_condition['EQ']['PS.IsUse'] = 'Y';
+        }
+
+        return $this->_conn->getJoinListResult($this->_table['subject'] . ' as PS', 'inner', $this->_table['site'] . ' as S', 'PS.SiteCode = S.SiteCode'
+            , $column, $arr_condition, null, null, ['PS.OrderNum' => 'asc']
         );
     }
 

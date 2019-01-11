@@ -37,29 +37,29 @@ class Home extends \app\controllers\FrontController
                     
                     if($this->session->userdata('is_login') == true && $this->session->userdata('mem_idx') == $tokenArr['USER_IDX']){
                         // 이미 로그인중이고 토큰데이타와 동일하면 그냥 내강의실로
-                        redirect(front_url('/app/classroom/on/list/ongoing'));
+                        redirect(front_url('/classroom/on/list/ongoing'));
                     }
 
                     // 넘어온 토큰데이타로 로그인처리
                     if($this->memberFModel->storeMemberLogin($data) == true){
                         // 로그인성공
-                        redirect(front_url('/app/classroom/on/list/ongoing'));
+                        redirect(front_url('/classroom/on/list/ongoing'));
                     } else {
                         // 로그인 실패
                         $this->session->sess_destroy();
-                        redirect(front_url('/app/member/login'));
+                        redirect(front_url('/member/login'));
                     }
                     
                 } else {
                     // 토큰값이 정상이 아닐때
                     $this->session->sess_destroy();
-                    redirect(front_url('/app/member/login'));
+                    redirect(front_url('/member/login'));
                 }
                 
             } else {
                 // 토큰이 없으면 로그인으로
                 $this->session->sess_destroy();
-                redirect(front_url('/app/member/login'));
+                redirect(front_url('/member/login'));
             }
         }
 

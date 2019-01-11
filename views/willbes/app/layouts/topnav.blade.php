@@ -6,7 +6,7 @@
                 <span class="hidden">메뉴바</span>
             </button>
             <div class="logo">
-                <img src="{{ img_url('m/main/logo.png') }}">
+                <a><img src="{{ img_url('m/main/logo.png') }}"></a>
             </div>
         </div>
 

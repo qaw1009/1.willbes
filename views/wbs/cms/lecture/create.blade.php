@@ -261,16 +261,16 @@
                                     @endif
                                 </td>
                                 <td>
-                                    {{ $row['wRuntime']  }}
+                                    {{ $row['wRuntime']  }} 분
                                     <BR>
-                                    {{ $row['wBookPage']  }}
+                                    {{ $row['wBookPage']  }} P
                                 </td>
                                 <td>
+                                    <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodViewUnit('WD',{{$row['wUnitIdx']}})">와이드</button> {{ $row['wWD'] }}
+                                    <BR>
                                     <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodViewUnit('HD',{{$row['wUnitIdx']}})">고화질</button> {{ $row['wHD'] }}
                                     <br>
                                     <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodViewUnit('SD',{{$row['wUnitIdx']}})">일반화질</button> {{ $row['wSD'] }}
-                                    <br>
-                                    <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodViewUnit('WD',{{$row['wUnitIdx']}})">와이드</button> {{ $row['wWD'] }}
                                 </td>
                                 <td>{{$row['wCcdName']}}</td>
                                 <td>
@@ -278,8 +278,8 @@
                                     <Br>
                                     {{ $row['wProfName'] }}
                                 </td>
-                                <td>{{ $row['wRegDatm'] }}</td>
                                 <td>{{ $row['wAdminName'] }}</td>
+                                <td>{{ $row['wRegDatm'] }}</td>
                             </tr>
                         @endforeach
                         </tbody>
@@ -329,7 +329,7 @@
 
                 $('.btn-unitregist').setLayer({
                     "url" : "{{ site_url('cms/lecture/createUnitModal/') }}"+ $('#LecIdx').val()
-                    ,width : "1800"
+                    ,width : "1600"
                 });
             });
         });

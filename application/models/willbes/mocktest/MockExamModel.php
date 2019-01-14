@@ -90,7 +90,7 @@ class MockExamModel extends WB_Model
     public function subjectCall($arr_condition=[]){
 
         $column = "
-            (SELECT SubjectName FROM lms_product_subject WHERE SubjectIdx = RP.SubjectIdx) AS SubjectName,
+            (SELECT SubjectName FROM {$this->_table['subject']} WHERE SubjectIdx = RP.SubjectIdx) AS SubjectName,
             MpIdx, MockType, OrderNum, MR.MrIdx
         ";
 
@@ -98,7 +98,7 @@ class MockExamModel extends WB_Model
             FROM
                 {$this->_table['mockProduct']} AS PM
                 JOIN {$this->_table['mockRegister']} AS MR ON PM.ProdCode = MR.ProdCode 
-                JOIN {$this->_table['mockRegisterR']} AS RP ON PM.ProdCode = RP.ProdCode 
+                JOIN {$this->_table['mockRegisterR']} AS RP ON PM.ProdCode = RP.ProdCode AND MR.MrIdx = RP.MrIdx
                 JOIN {$this->_table['mockProductExam']} AS MP ON RP.PmrpIdx = MP.PmrpIdx
         ";
 
@@ -106,7 +106,7 @@ class MockExamModel extends WB_Model
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
-        //echo "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
+       //echo "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
         $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
         return $query->result_array();
 
@@ -381,14 +381,19 @@ class MockExamModel extends WB_Model
 
                 $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
 
+
+
                 $result = $query->row_array();
+
+
 
                 if($result['MatIdx']){
                     // 데이터 수정
                     $data = [
                         'Answer' => ${"answer$i"}
                     ];
-                    $this->_conn->set($data)->set('RegDatm', 'NOW()', false)->where(['MemIdx' => $this->session->userdata('mem_idx'), 'ProdCode' => $ProdCode, 'MrIdx' => $MrIDx, 'MpIdx' => $MpIdx, 'MqIdx' => ${"MqIdx$i"}]);
+
+                    $this->_conn->set($data)->set('RegDatm', 'NOW()', false)->where(['MemIdx' => $this->session->userdata('mem_idx'), 'ProdCode' => $ProdCode, 'MrIdx' => $MrIdx, 'MpIdx' => $MpIdx, 'MqIdx' => ${"MqIdx$i"}]);
 
                     if ($this->_conn->update($this->_table['mockAnswerTemp']) === false) {
                         throw new \Exception('임시저장에 수정에 실패했습니다.');
@@ -412,6 +417,7 @@ class MockExamModel extends WB_Model
                     }
 
                 }
+
             }
 
             $this->saveTime($LogIdx, $RemainSec);

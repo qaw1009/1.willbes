@@ -20,8 +20,8 @@
         <!-- main slider -->
         <div class="sliderGNB bSlider">
             <div class="slider">
-                <div><img src="{{ img_url('gnbbanner/2_bn1.gif') }}"></div>
-                <div><img src="{{ img_url('gnbbanner/2_bn2.gif') }}"></div>
+                <div><a href="http://www.willbescop.net/movie/event.html?event_cd=On_181228_p&topMenuType=O" target="_blank"><img src="{{ img_url('gnbbanner/2_bn1.gif') }}"></a></div>
+                <div><a href="http://www.willbescop.net/movie/event.html?event_cd=On_190102_y" target="_blank"><img src="{{ img_url('gnbbanner/2_bn2.gif') }}"></a></div>
             </div>
         </div>
     @else
@@ -47,8 +47,8 @@
                                         </ul>
                                         <div class="sliderView bSlider">
                                             <div class="slider">
-                                                <div><img src="{{ img_url('gnbbanner/1_bn1.gif') }}"></div>
-                                                <div><img src="{{ img_url('gnbbanner/1_bn2.gif') }}"></div>
+                                                <div><a href="http://www.willbescop.net/event/movie/event.html?event_cd=On_181226_p&topMenuType=O" target="_blank"><img src="{{ img_url('gnbbanner/1_bn1.gif') }}"></a></div>
+                                                <div><a href="http://www.willbescop.net/movie/event.html?event_cd=On_181228_p&topMenuType=O" target="_blank"><img src="{{ img_url('gnbbanner/1_bn2.gif') }}"></a></div>
                                             </div>
                                         </div>
                                     </div>

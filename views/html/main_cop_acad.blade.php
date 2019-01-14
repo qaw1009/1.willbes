@@ -66,7 +66,7 @@
         <div class="widthAuto">
             <ul>
                 <li class="VisualBox_acad">
-                    <a href="" target="_blank"><img src="{{ img_url('cop_acad/visual/visual_190111.jpg') }}"></a>
+                    <a href="http://www.willbescop.net/event/movie/event.html?event_cd=Off_basic&EventReply=Y&topMenuType=F#main" target="_blank"><img src="{{ img_url('cop_acad/visual/visual_190111.jpg') }}"></a>
                     <!--
                     <div class="bSlider acad">
                         <div class="slider">
@@ -77,7 +77,7 @@
                     -->
                 </li>
                 <li class="VisualsubBox_acad">
-                    <a href="" target="_blank"><img src="{{ img_url('cop_acad/visual/visualsub_190110.jpg') }}"></a>
+                    <a href="http://www.willbescop.net/gosi/event.html?event_cd=Off_pass_4month&topMenuType=F" target="_blank"><img src="{{ img_url('cop_acad/visual/visualsub_190110.jpg') }}"></a>
                     <!--
                     <div class="bSlider acad">
                         <div class="slider">
@@ -88,12 +88,15 @@
                     -->
                 </li>
                 <li class="VisualsubBox_acad">
+                    <a href="https://cop.dev.willbes.net/pass/offinfo/boardInfo/show/78?board_idx=1360&" target="_blank"><img src="{{ img_url('cop_acad/visual/visualsub_190111.jpg') }}"></a>
+                    <!--
                     <div class="bSlider acad">
                         <div class="bSlider slider">
                             <div><a href="#none"><img src="{{ img_url('cop_acad/visual/visualsub_190111.jpg') }}"></a></div>
                             <div><img src="{{ img_url('cop_acad/visual/visualsub_190110.jpg') }}"></div>
                         </div>
                     </div>
+                    -->
                 </li>
             </ul>
         </div>
@@ -103,7 +106,7 @@
             <div class="sliderPick pick">
                 <div class="will-acadTit">윌비스 <span class="tx-color">신광은경찰</span> 학원 Hot Pick</div>
                 <div class="pickBox pick1">
-                    <a href="#none"><img src="{{ img_url('cop_acad/event/evt_190101.jpg') }}"></a>
+                    <a href="http://www.willbescop.net/gosi/event.html?event_cd=Off_180828_g&topMenuType=F" target="_blank"><img src="{{ img_url('cop_acad/event/evt_190101.jpg') }}"></a>
                     <!--
                     <div class="bSlider acad">
                         <div class="slider">
@@ -114,7 +117,7 @@
                     -->
                 </div>
                 <div class="pickBox pick2">
-                    <a href="#none"><img src="{{ img_url('cop_acad/event/evt_190102.jpg') }}"></a>
+                    <a href="http://www.willbescop.net/movie/event.html?event_cd=On_181228_p&topMenuType=O" target="_blank"><img src="{{ img_url('cop_acad/event/evt_190102.jpg') }}"></a>
                     <!--
                     <div class="bSlider acad">
                         <div class="slider">
@@ -128,12 +131,12 @@
             <div class="sliderEvt pick">
                 <div class="will-acadTit">실력을 <span class="tx-color">변화시키는</span> 명품특강</div>
                 <ul>
-                    <li><a href="" target="_blank"><img src="{{ img_url('cop_acad/event/evt_190103.jpg') }}"></a></li>
+                    <li><a href="http://www.willbescop.net/event/movie/event.html?event_cd=On_181220_j&topMenuType=O#tab01" target="_blank"><img src="{{ img_url('cop_acad/event/evt_190103.jpg') }}"></a></li>
                     <li>
                         <div class="bSlider acad">
-                            <div class="slider">
-                                <div><img src="{{ img_url('cop_acad/event/evt_190104.jpg') }}"></div>
-                                <div><img src="{{ img_url('cop_acad/event/evt_190103.jpg') }}"></div>
+                            <div class="sliderTM">
+                                <div><a href="https://cop.dev.willbes.net/pass/offinfo/boardInfo/show/78?board_idx=1363&"><img src="{{ img_url('cop_acad/event/evt_190104.jpg') }}"></a></div>
+                                <div><a href="https://cop.dev.willbes.net/pass/offinfo/boardInfo/show/78?board_idx=1363&"><img src="{{ img_url('cop_acad/event/evt_190104.jpg') }}"></a></div>
                             </div>
                         </div>
                     </li>
@@ -141,10 +144,10 @@
             </div>
             <ul class="acad_infoBox">
                 <li class="w-infoBox1">
-                    <a href="#none"><span>1:1 심층상담</span></a>
+                    <a href="https://cop.dev.willbes.net/pass/consultManagement/index"><span>1:1 심층상담</span></a>
                 </li>
                 <li class="w-infoBox2">
-                    <a href="#none"><span>강의실배정표</span></a>
+                    <a href="https://cop.dev.willbes.net/pass/offinfo/boardInfo/index/82"><span>강의실배정표</span></a>
                 </li>
                 <li class="w-infoBox3">
                     <a href="#none"><span>방문접수</span></a>
@@ -166,18 +169,21 @@
         <div class="widthAuto">
             <div class="sliderSuccess">
                 <div class="will-acadTit">합격으로 증명된 윌비스 <span class="tx-color">신광은경찰</span></div>
+                <a href="http://www.willbescop.net/movie/event.html?event_cd=Off_181129_p&topMenuType=F" target="_blank"><img src="{{ img_url('cop_acad/event/info_190101.jpg') }}"></a>
+                <!--
                 <div class="bSlider acad blue">
                     <div class="slider">
                         <div><a href="#none"><img src="{{ img_url('cop_acad/event/info_190101.jpg') }}"></a></div>
                         <div><a href="#none"><img src="{{ img_url('cop_acad/event/info_190101.jpg') }}"></a></div>
                     </div>
                 </div>
+                -->
             </div>
             <div class="sliderInfo">
                 <div class="will-acadTit"><span class="tx-color">학원</span> 소식</div>
                 <ul>
-                    <li><a href="" target="_blank"><img src="{{ img_url('cop_acad/event/info_190102.jpg') }}"></a></li>
-                    <li><a href="" target="_blank"><img src="{{ img_url('cop_acad/event/info_190103.jpg') }}"></a></li>
+                    <li><a href="https://chamsooristudyclub.modoo.at/" target="_blank"><img src="{{ img_url('cop_acad/event/info_190102.jpg') }}"></a></li>
+                    <li><a href="https://cop.dev.willbes.net/pass/support/notice/show?board_idx=1361&"><img src="{{ img_url('cop_acad/event/info_190103.jpg') }}"></a></li>
                 </ul>
             </div>
             <div class="noticeTabs acad">
@@ -214,7 +220,7 @@
         <div class="widthAuto">
             <div class="willbes-Bnr">
                 <ul>
-                    <li><a href="#none" target="_blank"><img src="{{ img_url('cop_acad/banner/bnr_190110.jpg') }}"></a></li>
+                    <li><a href="https://cop.dev.willbes.net/lecture/index/cate/3001/pattern/free"><img src="{{ img_url('cop_acad/banner/bnr_190110.jpg') }}"></a></li>
                 </ul>
             </div>
         </div>
@@ -223,12 +229,12 @@
         <div class="widthAuto">
             <div class="will-acadTit">윌비스 <span class="tx-color">신광은경찰</span> 학원 강사진</div>
             <ul class="ProfBox">
-                <li><a href="https://cop.dev.willbes.net/professor/show/cate/3001/prof-idx/50082/?subject_idx=10028&subject_name=%ED%98%95%EC%82%AC%EC%86%8C%EC%86%A1%EB%B2%95" target="_blank"><img src="{{ img_url('cop_acad/prof/prof_190101.png') }}"></a></li>
-                <li><a href="https://cop.dev.willbes.net/professor/show/cate/3001/prof-idx/50083/?subject_idx=10030&subject_name=%EA%B2%BD%EC%B0%B0%ED%95%99%EA%B0%9C%EB%A1%A0" target="_blank"><img src="{{ img_url('cop_acad/prof/prof_190102.png') }}"></a></li>
-                <li><a href="#none"><img src="{{ img_url('cop_acad/prof/prof_190103.png') }}"></a></li>
-                <li><a href="#none"><img src="{{ img_url('cop_acad/prof/prof_190104.png') }}"></a></li>
-                <li><a href="#none"><img src="{{ img_url('cop_acad/prof/prof_190105.png') }}"></a></li>
-                <li><a href="#none"><img src="{{ img_url('cop_acad/prof/prof_190106.png') }}"></a></li>
+                <li><a href="https://cop.dev.willbes.net/pass/professor/show/prof-idx/50100/?cate_code=3006&subject_idx=10066&subject_name=%ED%98%95%EC%82%AC%EC%86%8C%EC%86%A1%EB%B2%95"><img src="{{ img_url('cop_acad/prof/prof_190101.png') }}"></a></li>
+                <li><a href="https://cop.dev.willbes.net/pass/professor/show/prof-idx/50101/?cate_code=3006&subject_idx=10068&subject_name=%EA%B2%BD%EC%B0%B0%ED%95%99%EA%B0%9C%EB%A1%A0"><img src="{{ img_url('cop_acad/prof/prof_190102.png') }}"></a></li>
+                <li><a href="https://cop.dev.willbes.net/pass/professor/show/prof-idx/50102/?cate_code=3006&subject_idx=10070&subject_name=%ED%98%95%EB%B2%95"><img src="{{ img_url('cop_acad/prof/prof_190103.png') }}"></a></li>
+                <li><a href="https://cop.dev.willbes.net/pass/professor/show/prof-idx/50103/?cate_code=3006&subject_idx=10072&subject_name=%EC%98%81%EC%96%B4"><img src="{{ img_url('cop_acad/prof/prof_190104.png') }}"></a></li>
+                <li><a href="https://cop.dev.willbes.net/pass/professor/show/prof-idx/50105/?cate_code=3006&subject_idx=10074&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC"><img src="{{ img_url('cop_acad/prof/prof_190105.png') }}"></a></li>
+                <li><a href="https://cop.dev.willbes.net/pass/professor/show/prof-idx/50104/?cate_code=3006&subject_idx=10074&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC"><img src="{{ img_url('cop_acad/prof/prof_190106.png') }}"></a></li>
                 <!--
                 <li class="p_re">         
                     <div class="cSlider graySlider AbsControls">
@@ -275,7 +281,7 @@
                                 <dt>
                                     <div class="c-tit">
                                         <span class="tx-color">노량진</span> 캠퍼스 공지사항
-                                        <a href="#none" class="btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}"></a>
+                                        <a href="https://cop.dev.willbes.net/pass/support/notice/index" class="btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}"></a>
                                     </div>
                                     <div class="c-info p_re">
                                         <ul class="List-Table">
@@ -302,7 +308,7 @@
                                 </dt>
                             </dl>
                             <div class="btn NSK-Black">
-                                <a href="" target="_blank">1:1 상담신청</a>
+                                <a href="https://cop.dev.willbes.net/pass/support/qna/index">1:1 상담신청</a>
                             </div>
                         </div>
                     </div>
@@ -315,7 +321,7 @@
                                 <dt>
                                     <div class="c-tit">
                                         <span class="tx-color">노량진</span> 캠퍼스 공지사항
-                                        <a href="#none" class="btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}"></a>
+                                        <a href="https://cop.dev.willbes.net/pass/support/notice/index" class="btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}"></a>
                                     </div>
                                     <div class="c-info p_re">
                                         <ul class="List-Table">
@@ -342,7 +348,7 @@
                                 </dt>
                             </dl>
                             <div class="btn NSK-Black">
-                                <a href="" target="_blank">1:1 상담신청</a>
+                                <a href="https://cop.dev.willbes.net/pass/support/qna/index">1:1 상담신청</a>
                             </div>
                         </div>
                     </div>
@@ -355,7 +361,7 @@
                                 <dt>
                                     <div class="c-tit">
                                         <span class="tx-color">노량진</span> 캠퍼스 공지사항
-                                        <a href="#none" class="btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}"></a>
+                                        <a href="https://cop.dev.willbes.net/pass/support/notice/index" class="btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}"></a>
                                     </div>
                                     <div class="c-info p_re">
                                         <ul class="List-Table">
@@ -382,7 +388,7 @@
                                 </dt>
                             </dl>
                             <div class="btn NSK-Black">
-                                <a href="" target="_blank">1:1 상담신청</a>
+                                <a href="https://cop.dev.willbes.net/pass/support/qna/index">1:1 상담신청</a>
                             </div>
                         </div>
                     </div>
@@ -395,7 +401,7 @@
                                 <dt>
                                     <div class="c-tit">
                                         <span class="tx-color">노량진</span> 캠퍼스 공지사항
-                                        <a href="#none" class="btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}"></a>
+                                        <a href="https://cop.dev.willbes.net/pass/support/notice/index" class="btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}"></a>
                                     </div>
                                     <div class="c-info p_re">
                                         <ul class="List-Table">
@@ -422,7 +428,7 @@
                                 </dt>
                             </dl>
                             <div class="btn NSK-Black">
-                                <a href="" target="_blank">1:1 상담신청</a>
+                                <a href="https://cop.dev.willbes.net/pass/support/qna/index">1:1 상담신청</a>
                             </div>
                         </div>
                     </div>
@@ -435,7 +441,7 @@
                                 <dt>
                                     <div class="c-tit">
                                         <span class="tx-color">노량진</span> 캠퍼스 공지사항
-                                        <a href="#none" class="btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}"></a>
+                                        <a href="https://cop.dev.willbes.net/pass/support/notice/index" class="btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}"></a>
                                     </div>
                                     <div class="c-info p_re">
                                         <ul class="List-Table">
@@ -462,7 +468,7 @@
                                 </dt>
                             </dl>
                             <div class="btn NSK-Black">
-                                <a href="" target="_blank">1:1 상담신청</a>
+                                <a href="https://cop.dev.willbes.net/pass/support/qna/index">1:1 상담신청</a>
                             </div>
                         </div>
                     </div>
@@ -475,7 +481,7 @@
                                 <dt>
                                     <div class="c-tit">
                                         <span class="tx-color">노량진</span> 캠퍼스 공지사항
-                                        <a href="#none" class="btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}"></a>
+                                        <a href="https://cop.dev.willbes.net/pass/support/notice/index" class="btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}"></a>
                                     </div>
                                     <div class="c-info p_re">
                                         <ul class="List-Table">
@@ -502,7 +508,7 @@
                                 </dt>
                             </dl>
                             <div class="btn NSK-Black">
-                                <a href="" target="_blank">1:1 상담신청</a>
+                                <a href="https://cop.dev.willbes.net/pass/support/qna/index">1:1 상담신청</a>
                             </div>
                         </div>
                     </div>
@@ -515,7 +521,7 @@
                                 <dt>
                                     <div class="c-tit">
                                         <span class="tx-color">노량진</span> 캠퍼스 공지사항
-                                        <a href="#none" class="btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}"></a>
+                                        <a href="https://cop.dev.willbes.net/pass/support/notice/index" class="btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}"></a>
                                     </div>
                                     <div class="c-info p_re">
                                         <ul class="List-Table">
@@ -542,7 +548,7 @@
                                 </dt>
                             </dl>
                             <div class="btn NSK-Black">
-                                <a href="" target="_blank">1:1 상담신청</a>
+                                <a href="https://cop.dev.willbes.net/pass/support/qna/index">1:1 상담신청</a>
                             </div>
                         </div>
                     </div>
@@ -555,7 +561,7 @@
                                 <dt>
                                     <div class="c-tit">
                                         <span class="tx-color">노량진</span> 캠퍼스 공지사항
-                                        <a href="#none" class="btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}"></a>
+                                        <a href="https://cop.dev.willbes.net/pass/support/notice/index" class="btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}"></a>
                                     </div>
                                     <div class="c-info p_re">
                                         <ul class="List-Table">
@@ -582,7 +588,7 @@
                                 </dt>
                             </dl>
                             <div class="btn NSK-Black">
-                                <a href="" target="_blank">1:1 상담신청</a>
+                                <a href="https://cop.dev.willbes.net/pass/support/qna/index">1:1 상담신청</a>
                             </div>
                         </div>
                     </div>
@@ -595,7 +601,7 @@
                                 <dt>
                                     <div class="c-tit">
                                         <span class="tx-color">노량진</span> 캠퍼스 공지사항
-                                        <a href="#none" class="btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}"></a>
+                                        <a href="https://cop.dev.willbes.net/pass/support/notice/index" class="btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}"></a>
                                     </div>
                                     <div class="c-info p_re">
                                         <ul class="List-Table">
@@ -622,7 +628,7 @@
                                 </dt>
                             </dl>
                             <div class="btn NSK-Black">
-                                <a href="" target="_blank">1:1 상담신청</a>
+                                <a href="https://cop.dev.willbes.net/pass/support/qna/index">1:1 상담신청</a>
                             </div>
                         </div>
                     </div>

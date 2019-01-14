@@ -10,6 +10,18 @@ $(function() {
     });
 });
 
+// Slider Script (수동)
+$(function() {
+    $('.sliderTM').bxSlider({
+        auto: false,
+        controls: false,
+        pause: 3000,
+        onSliderLoad: function(){
+            $(".slider").css("visibility", "visible").animate({opacity:1}); 
+        } 
+    });
+});
+
 // Slider Number Script
 $(function() {
     $('.sliderNum').bxSlider({

@@ -77,7 +77,7 @@
                                     <dt class="w-notice p_re">
                                         <div class="w-sp one">
                                             @if(empty($row['LectureSampleData']) === false)
-                                                <a href="{{ $row['LectureSampleData'][0]['wWD'] or $row['LectureSampleData'][0]['wHD'] or $row['LectureSampleData'][0]['wSD'] }}">맛보기</a>
+                                                <a href="javascript:fnPlayerSample('{{$row['ProdCode']}}','{{$row['LectureSampleData'][0]['wUnitIdx']}}','HD');">맛보기</a>
                                             @endif
                                         </div>
                                     </dt>

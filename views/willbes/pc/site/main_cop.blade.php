@@ -738,10 +738,6 @@
                 </li>
             </ul>
         </div>
-        {{-- on air include --}}
-        @if ($__cfg['IsPassSite'] === true)
-            @include('willbes.pc.site.main_partial.on_air')
-        @endif
     </div>
     {!! popup('657001') !!}
     <!-- End Container -->

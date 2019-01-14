@@ -2,11 +2,11 @@
     <div class="static clearfix">
         <div class="passLive">
             <div class="onAir">
-                @if(empty($arr_base['onAirData']) === true)
+                @if(empty($arr_base['onAir']) === true)
                     <div class="offAir">
                         <div class="offAirBar">
                             <span class="state">윌비스 <span class="tx-color">신광은경찰</span> 학원 <img src="{{ img_url('onair/onair_off.png') }}" alt="방송중이아닙니다."></span>
-                            <ul>
+                            <ul id="scroll" class="on_air_title" style="position: relative; overflow: hidden;">
                                 <li>현재 진행중인 라이브 강의가 없습니다.</li>
                             </ul>
                             <span class="offAirBarBtn">
@@ -24,7 +24,7 @@
                         <span class="state">윌비스 <span class="tx-color">신광은경찰</span> 학원 <img src="{{ img_url('onair/onair.png') }}" alt="방송중"></span>
                         <ul id="scroll" class="on_air_title" style="position: relative; overflow: hidden;">
                             @php $i=0; @endphp
-                            @foreach($arr_base['onAirData'] as $key => $row)
+                            @foreach($arr_base['onAir'] as $key => $row)
                                 @php
                                     $arr_onAirTitle = explode('|', $row['OnAirTitle']);
                                 @endphp
@@ -38,7 +38,7 @@
 
                     <div class="onAirCt" style="display: block;">
                         <ul class="tabWrap onAirTabs">
-                            @foreach($arr_base['onAirData'] as $key => $row)
+                            @foreach($arr_base['onAir'] as $key => $row)
                                 <li>
                                     <a id="tab_onAirLecBox{{$row['OaIdx']}}" href="#onAirLecBox{{$row['OaIdx']}}" class="tab_onAirLecBox{!! $key == 0 ? ' on' : '' !!}" data-onair-box-id="{{$row['OaIdx']}}">
                                         {{$row['OnAirTabName']}}
@@ -50,7 +50,7 @@
                             ※ 한 과목당 5회까지 맛보기 재생이 가능합니다. (과목별 상이)
                         </div>
                         <div class="tabBox">
-                            @foreach($arr_base['onAirData'] as $key => $row)
+                            @foreach($arr_base['onAir'] as $key => $row)
                                 @php
                                     $arr_onAirTitle = explode('|', $row['OnAirTitle']);
                                 @endphp

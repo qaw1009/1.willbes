@@ -15,11 +15,59 @@ class Home extends \app\controllers\FrontController
 
     public function index()
     {
-        //OnAir 조회
-        $arr_base['onAirData'] = $this->onAirFModel->getLiveOnAir($this->_site_code, '');
+        // 온라인, 학원 분기처리
+        if ($this->_is_pass_site === true) {
+            $_view_path = 'pass_';
+            $arr_base = $this->_getOffLineData();
+        } else {
+            $_view_path = 'main_';
+            $arr_base = $this->_getOnLineData();
+        }
 
-        $this->load->view('site/main_' . SUB_DOMAIN, [
+        $this->load->view('site/'. $_view_path . SUB_DOMAIN, [
             'arr_base' => $arr_base,
         ]);
+    }
+
+    /**
+     * 메인에 사용할 데이터 셋팅 [온라인]
+     * @return mixed
+     */
+    private function _getOnLineData()
+    {
+        $data['onAir'] = $this->_onAir();
+        $data['notice'] = $this->_notice();
+        return $data;
+    }
+
+    /**
+     * 메인에 사용할 데이터 셋팅 [학원]
+     * @return mixed
+     */
+    private function _getOffLineData()
+    {
+        $data['onAir'] = [];
+        $data['notice'] = $this->_notice();
+        return $data;
+    }
+
+    /**
+     * OnAir 조회
+     * @return array
+     */
+    private function _onAir()
+    {
+        $data = $this->onAirFModel->getLiveOnAir($this->_site_code, '');
+        return $data;
+    }
+
+    /**
+     * 게시판
+     * @return array
+     */
+    private function _notice()
+    {
+        $data = [];
+        return $data;
     }
 }

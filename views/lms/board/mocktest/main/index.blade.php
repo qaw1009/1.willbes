@@ -51,11 +51,6 @@
                                 @endif
                             @endforeach
                         </select>
-                        <!--select class="form-control mr-5" id="search_TakeType" name="search_TakeType">
-                            <option value="">응시기간</option>
-                            <option value="A">상시</option>
-                            <option value="L">기간제한</option>
-                        </select//-->
                         <select class="form-control mr-5" id="search_use" name="search_use">
                             <option value="">사용여부</option>
                             <option value="Y">사용</option>
@@ -65,14 +60,32 @@
                 </div>
                 <div class="form-group form-inline">
                     <label class="col-md-1 control-label">통합검색</label>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <input type="text" class="form-control" style="width:300px;" id="search_fi" name="search_fi" value=""> 명칭, 코드 검색 가능
                     </div>
-                    <div class="col-md-5 text-right">
-                        <button type="submit" class="btn btn-primary" id="btn_search">검색</button>
-                        <button type="button" class="btn btn-default" id="searchInit">초기화</button>
+                    <label class="control-label col-md-1" for="search_start_date">접수기간검색</label>
+                    <div class="col-md-6">
+                        <div class="col-md-11 form-inline">
+                            <div class="input-group mb-0 mr-20">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                                <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="">
+                                <div class="input-group-addon no-border no-bgcolor">~</div>
+                                <div class="input-group-addon no-border-right">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                                <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="">
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 text-right">
+                <button type="submit" class="btn btn-primary btn-search" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
+                <button type="button" class="btn btn-default mr-20" id="_btn_reset">검색초기화</button>
             </div>
         </div>
     </form>
@@ -157,7 +170,7 @@
                     {'data' : 'MockYear', 'class': 'text-center'},
                     {'data' : 'MockRotationNo', 'class': 'text-center'},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return '<span class="blue underline-link act-edit">[' + row.ProdCode + '] ' + row.ProdName + '</span>';
+                            return '[' + row.ProdCode + '] ' + row.ProdName;
                         }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             return row.RealSalePrice + '원<br><span style="text-decoration:line-through">' + row.SalePrice + '원</span>';
@@ -173,12 +186,16 @@
                             return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
                         }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return data.qnaUnAnsweredCnt+'/'+data.qnaTotalCnt;
+                            return '<a href="javascript:void(0);" class="btn-list-qna" data-idx="' + row.ProdCode + '"><u class="blue">' + data.qnaUnAnsweredCnt+'/'+data.qnaTotalCnt + '</u></a>';
                         }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return data.noticeCnt;
+                            return '<a href="javascript:void(0);" class="btn-list-notice" data-idx="' + row.ProdCode + '"><u class="blue">' + data.noticeCnt + '</u></a>';
                         }},
                 ]
+            });
+
+            $list_table.on('click', '.btn-list-qna', function() {
+                /*location.href='{{ site_url('/site/eventLecture/read') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable);*/
             });
         });
     </script>

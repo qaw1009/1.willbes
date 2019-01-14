@@ -45,8 +45,45 @@ class Main extends BaseBoard
 
     public function listAjax()
     {
-        $condition = [
+        $arr_condition = $this->_getListConditions();
+
+        $list = [];
+        $count = $this->boardMockModel->mainList(true, $arr_condition);
+        if ($count > 0) {
+            $list = $this->boardMockModel->mainList(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['MP.ProdCode' => 'desc']);
+
+            // 직렬이름 추출
+            $mockKindCode = $this->config->item('sysCode_kind', 'mock'); // 직렬 운영코드값
+            $codes = $this->codeModel->getCcdInArray([$mockKindCode]);
+
+            // 데이터정리
+            $applyType_on = $this->config->item('sysCode_applyType_on', 'mock');   // 응시형태(online)
+            $applyType_off = $this->config->item('sysCode_applyType_off', 'mock'); // 응시형태(offline)
+
+            foreach ($list as &$it) {
+                $takeFormsCcds = explode(',', $it['TakeFormsCcd']);
+                $it['TakePart_on'] = ( in_array($applyType_on, $takeFormsCcds) ) ? 'Y' : 'N';
+                $it['TakePart_off'] = ( in_array($applyType_off, $takeFormsCcds) ) ? 'Y' : 'N';
+
+                $mockPart = explode(',', $it['MockPart']);
+                foreach ($mockPart as $mp) {
+                    if( !empty($codes[$mockKindCode][$mp]) ) $it['MockPartName'][] = $codes[$mockKindCode][$mp];
+                }
+            }
+        }
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list,
+        ]);
+    }
+
+    private function _getListConditions()
+    {
+        $arr_condition = [
             'EQ' => [
+                'PD.IsStatus' => 'Y',
                 'PD.SiteCode' => $this->_reqP('search_site_code'),
                 'PC.CateCode' => $this->_reqP('search_cateD1'),
                 'MP.MockYear' => $this->_reqP('search_year'),
@@ -69,12 +106,16 @@ class Main extends BaseBoard
                 ]
             ],
         ];
-        list($data, $count) = $this->boardMockModel->mainList($condition, $this->_reqP('length'), $this->_reqP('start'));
 
-        return $this->response([
-            'recordsTotal' => $count,
-            'recordsFiltered' => $count,
-            'data' => $data,
-        ]);
+        // 날짜 검색
+        if (empty($this->_reqP('search_start_date')) === false && empty($this->_reqP('search_end_date')) === false) {
+            $arr_condition['ORG']['BET'] = [
+                'PD.SaleStartDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')],
+                'PD.SaleEndDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')],
+            ];
+            $arr_condition['ORG']['RAW'] = ['(PD.SaleStartDatm < "' => $this->_reqP('search_start_date') . '" AND PD.SaleEndDatm > "' . $this->_reqP('search_end_date') . '")'];
+        }
+
+        return $arr_condition;
     }
 }

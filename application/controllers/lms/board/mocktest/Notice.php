@@ -17,6 +17,9 @@ class Notice extends Main
         parent::__construct();
     }
 
+    /**
+     * 메인 리스트 페이지 리턴
+     */
     public function index()
     {
         $this->setDefaultBoardParam();

@@ -15,21 +15,24 @@ class BoardMockModel extends BoardModel
         'sysCode' => 'lms_sys_code',
     ];
 
-    public function mainList($conditionAdd='', $limit='', $offset='')
+    public function mainList($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
-        $condition = [ 'IN' => ['PD.SiteCode' => get_auth_site_codes()] ];    //사이트 권한 추가
-        if($conditionAdd) $condition = array_merge_recursive($condition, $conditionAdd);
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $column = '
+                MP.*, A.wAdminName, PD.ProdName, PD.SaleStartDatm, PD.SaleEndDatm, PD.IsUse, PS.SalePrice, PS.RealSalePrice,          
+                C1.CateName, C1.IsUse AS IsUseCate,
+                SC1.CcdName As AcceptStatusCcd_Name,
+                IFNULL(BD1.cnt, 0) AS qnaTotalCnt, IFNULL(BD2.cnt, 0) AS qnaUnAnsweredCnt,
+                IFNULL(BD3.cnt, 0) AS noticeCnt
+            ';
 
-        $offset_limit = (is_numeric($limit) && is_numeric($offset)) ? "LIMIT $offset, $limit" : "";
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
 
-
-        $select = "
-            SELECT MP.*, A.wAdminName, PD.ProdName, PD.SaleStartDatm, PD.SaleEndDatm, PD.IsUse, PS.SalePrice, PS.RealSalePrice,          
-            C1.CateName, C1.IsUse AS IsUseCate,
-            SC1.CcdName As AcceptStatusCcd_Name,
-            IFNULL(BD1.cnt, 0) AS qnaTotalCnt, IFNULL(BD2.cnt, 0) AS qnaUnAnsweredCnt,
-            IFNULL(BD3.cnt, 0) AS noticeCnt
-        ";
         $from = "
             FROM {$this->_mock_table['mockProduct']} AS MP
             JOIN {$this->_mock_table['Product']} AS PD ON MP.ProdCode = PD.ProdCode 
@@ -60,37 +63,13 @@ class BoardMockModel extends BoardModel
                 GROUP BY ProdCode
             ) AS BD3 ON BD3.ProdCode = MP.ProdCode
         ";
-        $selectCount = "SELECT COUNT(*) AS cnt";
-        $where = "WHERE PD.IsStatus = 'Y' ";
-        $where .= $this->_conn->makeWhere($condition)->getMakeWhere(true)."\n";
-        $order = "ORDER BY MP.ProdCode DESC\n";
 
-        //echo $select . $from . $where . $order . $offset_limit;
+        $arr_condition['IN']['PD.SiteCode'] = get_auth_site_codes();
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
 
-        $data = $this->_conn->query($select . $from . $where . $order . $offset_limit)->result_array();
-        $count = $this->_conn->query($selectCount . $from . $where)->row()->cnt;
-
-
-        // 직렬이름 추출
-        $mockKindCode = $this->config->item('sysCode_kind', 'mock'); // 직렬 운영코드값
-        $codes = $this->codeModel->getCcdInArray([$mockKindCode]);
-
-
-        // 데이터정리
-        $applyType_on = $this->config->item('sysCode_applyType_on', 'mock');   // 응시형태(online)
-        $applyType_off = $this->config->item('sysCode_applyType_off', 'mock'); // 응시형태(offline)
-
-        foreach ($data as &$it) {
-            $takeFormsCcds = explode(',', $it['TakeFormsCcd']);
-            $it['TakePart_on'] = ( in_array($applyType_on, $takeFormsCcds) ) ? 'Y' : 'N';
-            $it['TakePart_off'] = ( in_array($applyType_off, $takeFormsCcds) ) ? 'Y' : 'N';
-
-            $mockPart = explode(',', $it['MockPart']);
-            foreach ($mockPart as $mp) {
-                if( !empty($codes[$mockKindCode][$mp]) ) $it['MockPartName'][] = $codes[$mockKindCode][$mp];
-            }
-        }
-
-        return array($data, $count);
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 }

@@ -3025,20 +3025,23 @@ table.auTable tr td {
 
 /* 실시간방송 */
 .passLive {margin-bottom:20px}
-    .onAir {background:#eaeaea}
-        .onAirBar {position:relative; background: url("../../img/willbes/sample/onair_bar_bg.gif") no-repeat 0 0; height:40px}
-        .onAirBar span.state {float:left; display:block; line-height:40px; margin-left:20px}
-        .onAirBar span.state img {vertical-align:middle}
-        .onAirBar span.onAirBarBtn {position:absolute; width:100px; top:0; right:10px; display:block; line-height:40px; margin-right:10px; width:50px; text-align:right; z-index:999}
-        .onAirBar span.onAirBarBtn a {display:block; color:#fff; cursor:pointer}
-        .onAirBar ul {position:absolute; top:0; width:660px; left:180px; z-index:2; overflow:hidden; height:40px}
-        .onAirBar li {line-height:40px; font-weight:bold; color:#fff}
-        .onAirCt {position:relative; background:#ececec; padding:0 0 14px}
-            .onAirTabs.tabWrap {background:#FFF; border:none;height:40px}
-            .onAirTabs.tabWrap li {display:inline; float:left;height: 40px}
-            .onAirTabs.tabWrap a {display:block; padding:0 15px; height:40px; line-height:40px; font-weight:bold; color:#c4c3c3; border:none !important;}
-            .onAirTabs.tabWrap a:hover,
-            .onAirTabs.tabWrap a.on {background:#ececec; color:#f42412;z-index:auto; border:none;height:40px;line-height:40px}
+.passLive:after {content:""; display:block; clear:both}
+    .onAir {background:#eaeaea; clear: both}
+        .onAirBar {float: left; width: 100%; position:relative; background: #ececec; height: 60px}
+        .onAirBar span.state {font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "sans-serif"; width: 310px; position: absolute; float:left; display:block; line-height:60px; font-size: 19px; font-weight: 600; padding-left: 40px;}
+        .onAirBar span.state .tx-color {vertical-align: baseline; color: #0c5dc0}
+        .onAirBar span.state img {vertical-align:middle; margin: -2px 0 0 10px}
+        .onAirBar span.onAirBarBtn {position:absolute; width:100px; top:0; right:10px; display:block; line-height:60px; margin-right:10px; width:50px; text-align:right; z-index:999}
+        .onAirBar span.onAirBarBtn a {display:block; font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "sans-serif"; font-size: 13px; color:#333; cursor:pointer}
+        .onAirBar ul {position:absolute; top:0; width:1030px; z-index:2; overflow:hidden; height:60px; margin: 0; padding-left: 350px}
+        .onAirBar li {font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "sans-serif"; line-height:60px; font-size: 13px; color:#333}
+        .onAirCt {float: left; width: 100%; position:relative;padding:0 0 30px; margin-top: 20px; border-bottom: 1px solid #0c5dc0}
+
+
+            .onAirTabs.tabWrap {background:#FFF; border:none; height: 35px; border-bottom: 1px solid #0c5dc0}
+            .onAirTabs.tabWrap li {width: 230px; float:left; height: 35px; margin-right: -1px;}
+            .onAirTabs.tabWrap a {background:#FFF; display:block; height:34px; line-height:35px; font-weight:bold; color:#7c7c7c; border:1px solid #e1e1e1; border-bottom: none;}
+            .onAirTabs.tabWrap a.on {background:#fff; color:#0c5dc0; z-index:auto; border:1px solid #0c5dc0; border-bottom: none; height:35px; line-height:35px}
             .onAirTabs.tabWrap:after {content:""; display:block; clear:both}
             
             .onAirTabInto {position:absolute; top:15px; right:0; text-align:right}
@@ -3053,33 +3056,34 @@ table.auTable tr td {
             }
             .rollingOnAir .bx-wrapper .sliderVertical {
                 position: absolute !important;
-                top: 40px;
+                top: 60px;
                 left: 0;
             }
             .rollingOnAir .bx-wrapper .sliderVertical li {}
             
-            .onAirLec {margin:14px 0 0 132px}
-            .onAirLec li {display:inline; float:left; width:320px}
+            .onAirLec {font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "sans-serif"; margin:30px 0 0 190px; border: 1px solid #ececec}
+            .onAirLec li {float:left; width:320px}
             .onAirLec li img {width:320px; height:180px}
-            .onAirLec li.li01 {width:160px; padding:15px 20px; line-height:1.5; background:#fff; min-height:150px}
-            .onAirLec li p.ptxt1 {color:#4d4d4d}
-            .onAirLec li p.ptxt2 {color:#f42412; font-weight:bold; margin-bottom:15px}
-            .onAirLec li p.ptxt3 {color:#acacac}
+            .onAirLec li.li01 {width:288px; padding:15px 45px 15px 15px; line-height:1.5; background:#fff; min-height:150px}
+            .onAirLec li p.ptxt1 {font-size:12px; color:#4d4d4d}
+            .onAirLec li p.ptxt2 {font-size:15px; color:#0c5dc0; font-weight:bold; margin-bottom:15px}
+            .onAirLec li p.ptxt3 {font-size:13px; color:#262626}
             .onAirLec:after {content:""; display:block; clear:both}
-            .onAirProf {position:absolute; top:25px; left:0; width:175px; height:208px; overflow:hidden; z-index:1}
-            .onAirBtn {position:absolute; top:190px; left:70px; width:230px; overflow:hidden; z-index:2}
+            .onAirProf {position:absolute; bottom:0; left:0; width:175px; height:208px; overflow:hidden; z-index:1}
+            .onAirBtn {position:absolute; top:205px; left:210px; width:230px; overflow:hidden; z-index:2}
             .onAirBtn li {display:inline; float:left; margin-right:1px}
             .onAirBtn li a.sample {background: #515151; width: 77px; height: 21px; line-height: 19px; display: block; font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "sans-serif"; font-size: 11px; color: #fff; text-align: center;}
 
     .onAirBar:after {content:""; display:block; clear:both}
     
-    .offAir {}
-        .offAirBar {position:relative; background:#aeaeae; height:40px}
-        .offAirBar span.state {float:left; display:block; line-height:40px; margin-left:20px}		
-        .offAirBar span.offAirBarBtn {float:right; display:block; color:#fff; line-height:40px; margin-right:10px}
-        .offAirBar span img	{vertical-align:middle}
-        .offAirBar ul {position:absolute; width:660px; left:180px; z-index:2; overflow:hidden; height:40px}
-        .offAirBar li {line-height:40px; font-weight:bold; color:#fff}
+    .offAir {clear: both}
+        .offAirBar {position:relative; background:#ececec; height:60px}
+        .offAirBar span.state {font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "sans-serif"; width: 310px; position: absolute; float:left; display:block; line-height:60px; font-size: 19px; font-weight: 600; padding-left: 40px;}
+        .offAirBar span.state .tx-color {vertical-align: baseline; color: #0c5dc0}
+        .offAirBar span.state img {vertical-align:middle; margin: -2px 0 0 10px}
+        .offAirBar span.offAirBarBtn {float:right; display:block; color:#fff; line-height:60px; margin-right:20px}
+        .offAirBar ul {position:absolute; top:0; z-index:2; overflow:hidden; height:60px; margin: 0; padding-left: 350px}
+        .offAirBar li {font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "sans-serif"; line-height:60px; font-size: 13px; color:#333}
 
 
 

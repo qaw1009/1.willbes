@@ -1251,7 +1251,7 @@ class Player extends \app\controllers\FrontController
             if($type == 'download'){
                 $rtnData = array_merge($rtnData, [
                     $key => [
-                        'category' => $category,
+                        'category' => base64_encode(rawurlencode($category)),
                         'thumbnail' => '',
                         'url' => $url,
                         'cc' => '',

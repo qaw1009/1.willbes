@@ -94,8 +94,8 @@ function fnAppDown($url, $data)
             media = d.ret_data;
 
             var media1 = {
-                "category":category,
-                "thumbnail":thumbnail,
+                "category":media[0].category,
+                "thumbnail":media[0].thumbnail,
                 "url":media[0].url,
                 "cc":"",
                 "title":window.btoa(encodeURIComponent(title)),
@@ -105,8 +105,8 @@ function fnAppDown($url, $data)
                 "content_id":"test01/test02/test03/test04"
             };
             var media2 = {
-                "category":category,
-                "thumbnail":thumbnail,
+                "category":media[1].category,
+                "thumbnail":media[1].thumbnail,
                 "url":media[1].url,
                 "cc":"",
                 "title":window.btoa(encodeURIComponent(title)),

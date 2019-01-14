@@ -71,25 +71,33 @@ class Lecture extends \app\controllers\FrontController
         // 상품 조회
         $list = $this->lectureFModel->listSalesProduct($this->_learn_pattern, false, $arr_condition, null, null, ['ProdCode' => 'desc'], $add_column);
 
-        // 상품조회 결과에 존재하는 과목 정보
-        $selected_subjects = array_pluck($this->baseProductFModel->listSubject($this->_site_code, array_unique(array_pluck($list, 'SubjectIdx'))), 'SubjectName', 'SubjectIdx');
-
-        // 상품조회 결과에 존재하는 교수 정보
-        $selected_professor_names = array_data_pluck($list, ['wProfName', 'ProfSlogan'], ['SubjectIdx', 'ProfIdx']);    // 교수명, 슬로건
-        $selected_professor_study_comments = array_data_pluck($list, 'StudyCommentData', ['SubjectIdx', 'ProfIdx']);    // 수강후기
-        $selected_professor_refers = array_map(function ($val) {
-            return json_decode($val, true);
-        }, array_pluck($list, 'ProfReferData', 'ProfIdx'));
-
-        // 상품 조회결과 재정의
+        // 상품조회 결과 배열 초기화
+        $selected_subjects = [];
+        $selected_professor_names = [];
+        $selected_professor_refers = [];
+        $selected_professor_study_comments = [];
         $selected_list = [];
-        foreach ($list as $idx => $row) {
-            $row['ProdPriceData'] = json_decode($row['ProdPriceData'], true);
-            $row['ProdBookData'] = json_decode($row['ProdBookData'], true);
-            $row['LectureSampleData'] = json_decode($row['LectureSampleData'], true);
-            unset($row['ProfReferData']);
 
-            $selected_list[$row['SubjectIdx']][$row['ProfIdx']][] = $row;
+        if (empty($list) === false) {
+            // 상품조회 결과에 존재하는 과목 정보
+            $selected_subjects = array_pluck($this->baseProductFModel->listSubject($this->_site_code, array_unique(array_pluck($list, 'SubjectIdx'))), 'SubjectName', 'SubjectIdx');
+
+            // 상품조회 결과에 존재하는 교수 정보
+            $selected_professor_names = array_data_pluck($list, ['wProfName', 'ProfSlogan'], ['SubjectIdx', 'ProfIdx']);    // 교수명, 슬로건
+            $selected_professor_study_comments = array_data_pluck($list, 'StudyCommentData', ['SubjectIdx', 'ProfIdx']);    // 수강후기
+            $selected_professor_refers = array_map(function ($val) {
+                return json_decode($val, true);
+            }, array_pluck($list, 'ProfReferData', 'ProfIdx'));
+
+            // 상품 조회결과 재정의
+            foreach ($list as $idx => $row) {
+                $row['ProdPriceData'] = json_decode($row['ProdPriceData'], true);
+                $row['ProdBookData'] = json_decode($row['ProdBookData'], true);
+                $row['LectureSampleData'] = json_decode($row['LectureSampleData'], true);
+                unset($row['ProfReferData']);
+
+                $selected_list[$row['SubjectIdx']][$row['ProfIdx']][] = $row;
+            }
         }
 
         $this->load->view('site/lecture/index', [

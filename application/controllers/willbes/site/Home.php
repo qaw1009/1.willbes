@@ -23,7 +23,7 @@ class Home extends \app\controllers\FrontController
             $_view_path = 'main_';
             $arr_base = $this->_getOnLineData();
         }
-
+        
         $this->load->view('site/'. $_view_path . SUB_DOMAIN, [
             'arr_base' => $arr_base,
         ]);
@@ -35,7 +35,6 @@ class Home extends \app\controllers\FrontController
      */
     private function _getOnLineData()
     {
-        $data['onAir'] = $this->_onAir();
         $data['notice'] = $this->_notice();
         return $data;
     }
@@ -46,6 +45,7 @@ class Home extends \app\controllers\FrontController
      */
     private function _getOffLineData()
     {
+        $data['onAir'] = $this->_onAir();
         $data['notice'] = $this->_notice();
         return $data;
     }

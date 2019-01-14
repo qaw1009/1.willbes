@@ -3100,6 +3100,13 @@ table.auTable tr td {
 .cop_acad .tx-color {
     color: #0c5dc0;
 }
+.cop_acad .Menu .menu-List li.Acad a {
+    background: url("../../img/willbes/cop_acad/icon_acad.png") no-repeat 0 2px;
+    color: #2784d2;
+}
+.cop_acad .Menu .menu-List li.Acad a .arrow-Btn {
+    background: url("../../img/willbes/sub/icon_arrow.gif") no-repeat 0 0;
+}
 
 /* Main Container : MainVisual : Cop Acad */
 .MainVisual:after {
@@ -3292,7 +3299,7 @@ table.auTable tr td {
 .tabWrap.noticeWrap_acad li a.on {
     position: relative;
     z-index: 2;
-    background: none;
+    background: #fff;
     height: 34px;
     line-height: 33px;
     color: #0c5dc0;
@@ -7671,6 +7678,8 @@ ul li.profList .willbes-Layer-ProfileBox {
 }
 .willbes-Prof-Profile .prof-brief-btn li a {
     display: block;
+    width: 100%;
+    height: 100%;
 }
 .willbes-Prof-Profile .prof-brief-btn li img {
     padding-top: 10px;

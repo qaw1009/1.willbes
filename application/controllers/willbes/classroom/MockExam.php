@@ -349,6 +349,7 @@ class MockExam extends \app\controllers\FrontController
      */
     public function tempSaveAjax()
     {
+        ////////////////////////////////////////////////
         $result = $this->mockExamModel->answerTempAllSave($this->_reqP(null, false));
         $this->json_result($result, '저장되었습니다.', $result, $result);
 

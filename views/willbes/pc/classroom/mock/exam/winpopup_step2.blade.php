@@ -216,6 +216,7 @@
 
         //광클릭방지
         if(tempValue != currentValue){
+
             var _url = '{{ front_url('/classroom/MockExam/answerAjax') }}';
             ajaxSubmit($regi_form, _url, function(ret) {
                 if(ret.ret_cd) {
@@ -223,6 +224,7 @@
                     //alert(ret.ret_msg);
                 }
             }, showValidateError, null, false, 'alert');
+
         }
     }
 

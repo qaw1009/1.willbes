@@ -1411,7 +1411,10 @@ class Player extends \app\controllers\FrontController
 
         $event = $this->_req('event');
         $user_id = $this->_req('user_id');
+        $os = $this->_req('os');
+        $os_version = $this->_req('os_version');
         $device_id = $this->_req('device_id');
+        $device_model = $this->_req('device_model');
         $content_url = $this->_req('content_url');
         $content_id = $this->_req('content_id');
         $actual_playback_duration = $this->_req('actual_playback_duration'); // 1분
@@ -1423,6 +1426,7 @@ class Player extends \app\controllers\FrontController
         $rating = $this->_req('rating');
         $token = $this->_req('token');
         $play_type = $this->_req('play_type');
+        $app_version = ' ';
 
         // API 접근 로그남기기
         $params = '';
@@ -1447,7 +1451,7 @@ class Player extends \app\controllers\FrontController
                         'MemIdx' => $lec['MemIdx'],
                         'DeviceModel' => $device_model,
                         'DeviceId' => $device_id,
-                        'Os' => $os_version,
+                        'Os' => $os.' '.$os_version,
                         'App' => $app_version
                     ], $lec['DeviceLimitCount'], true);
                 }

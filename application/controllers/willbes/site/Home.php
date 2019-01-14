@@ -46,7 +46,6 @@ class Home extends \app\controllers\FrontController
      */
     private function _getOffLineData()
     {
-        $data['onAir'] = [];
         $data['notice'] = $this->_notice();
         return $data;
     }

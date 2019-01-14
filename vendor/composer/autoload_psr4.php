@@ -13,4 +13,5 @@ return array(
     'Lcobucci\\JWT\\' => array($vendorDir . '/lcobucci/jwt/src'),
     'Curl\\' => array($vendorDir . '/php-curl-class/php-curl-class/src/Curl'),
     'Cron\\' => array($vendorDir . '/dragonmantank/cron-expression/src/Cron'),
+    'Box\\Spout\\' => array($vendorDir . '/box/spout/src/Spout'),
 );

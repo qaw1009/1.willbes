@@ -5,7 +5,7 @@ $(function() {
         controls: false,
         pause: 3000,
         onSliderLoad: function(){
-            $(".slider").css("visibility", "visible").animate({opacity:1}); 
+            $(".bSlider").css("visibility", "visible").animate({opacity:1}); 
         } 
     });
 });
@@ -17,7 +17,7 @@ $(function() {
         controls: false,
         pause: 3000,
         onSliderLoad: function(){
-            $(".slider").css("visibility", "visible").animate({opacity:1}); 
+            $(".bSlider").css("visibility", "visible").animate({opacity:1}); 
         } 
     });
 });
@@ -34,7 +34,7 @@ $(function() {
         adaptiveHeight: true,
         infiniteLoop: true,
         onSliderLoad: function(){
-            $(".sliderNum").css("visibility", "visible").animate({opacity:1}); 
+            $(".nSlider").css("visibility", "visible").animate({opacity:1}); 
         }  
     });
 });
@@ -49,7 +49,7 @@ $(function() {
         pagerType: 'short',
         moveSlides:1,
         onSliderLoad: function(){
-            $(".sliderNumTM").css("visibility", "visible").animate({opacity:1}); 
+            $(".nSliderTM").css("visibility", "visible").animate({opacity:1}); 
         }  
     });
 });
@@ -62,7 +62,7 @@ $(function() {
         pause: 3000,
         pager: false,
         onSliderLoad: function(){
-            $(".sliderControls").css("visibility", "visible").animate({opacity:1}); 
+            $(".cSlider").css("visibility", "visible").animate({opacity:1}); 
         }  
     });
 });
@@ -79,7 +79,7 @@ $(function() {
         infiniteLoop: false,
         hideControlOnEnd: true,
         onSliderLoad: function(){
-            $(".sliderControlsTM").css("visibility", "visible").animate({opacity:1}); 
+            $(".cSliderTM").css("visibility", "visible").animate({opacity:1}); 
         }    
     });
 });
@@ -96,7 +96,7 @@ $(function() {
         pause: 3000,
         pager: false,
         onSliderLoad: function(){
-            $(".sliderVertical").css("visibility", "visible").animate({opacity:1}); 
+            $(".vSlider").css("visibility", "visible").animate({opacity:1}); 
         }
     });
 });
@@ -123,11 +123,13 @@ $(function(){
     $('.cswSlider .bx-controls .bx-controls-direction a').click(function() { 
         $(".cswRolling li").removeClass("active");
         $(".cswRolling a").removeClass("active");
+        $(".CurriSwipe.cswRolling").removeClass("transform");
     });
     $(".CurriSwipe").bxSlider({
+        controls:false,
         slideWidth: '260px',
         minSlides: 1,
-        maxSlides: 4,
+        maxSlides: 1,
         moveSlides: 1,
         slideMargin: 10,
         infiniteLoop: false,
@@ -141,6 +143,41 @@ $(function(){
             $(".CurriSwipe").children().removeClass("active");
             $slideElement.addClass("active");
         }
+    });
+
+    $(function() {
+        $('.w-thumb a.thumb_num').mouseover(function(){
+            $('.thumb_slide_wrap').css('display','none');
+    
+            var $thumb_table = $(this).parents('.w-thumb').find('.thumb_slide_wrap');
+            var n = $(this).parents('.w-thumb').find('.thumb_slide_wrap ul li').length;
+            var width = parseInt(n)* 170 + 6;
+    
+            $thumb_table.addClass('rollover').css('width', width).show();
+        })
+    });
+
+    $('.cswRolling li').click(function() { 
+        $(".CurriSwipe.cswRolling").removeClass("transform");
+    });
+
+    $('.sliderCurriList .bx-wrapper ul li:nth-last-child(3)').click(function() { 
+        $(".CurriSwipe.cswRolling").addClass("transform");
+    });
+    $('.sliderCurriList .bx-wrapper ul li:nth-last-child(2)').click(function() { 
+        $(".CurriSwipe.cswRolling").addClass("transform");
+    });
+    $('.sliderCurriList .bx-wrapper ul li:nth-last-child(1)').click(function() { 
+        $(".CurriSwipe.cswRolling").addClass("transform");
+    });
+    $('.rollingTabs li:nth-last-child(3)').click(function() { 
+        $(".CurriSwipe.cswRolling").addClass("transform");
+    });
+    $('.rollingTabs li:nth-last-child(2)').click(function() { 
+        $(".CurriSwipe.cswRolling").addClass("transform");
+    });
+    $('.rollingTabs li:nth-last-child(1)').click(function() { 
+        $(".CurriSwipe.cswRolling").addClass("transform");
     });
 
     $('.cswRolling').each(function () {

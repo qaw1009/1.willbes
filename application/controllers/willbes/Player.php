@@ -408,8 +408,8 @@ class Player extends \app\controllers\FrontController
 
         $this->load->view('/player/professor', [
             'data' => [
-                'title' => '',
-                'pretitle' => '',
+                'title' => '맛보기강의 입니다.',
+                'pretitle' => $data['wProfName'].'교수님',
                 'quility' => 'WD',
                 'startPosition' => 0,
                 'ratio' => 21,

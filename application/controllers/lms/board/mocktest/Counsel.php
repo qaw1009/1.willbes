@@ -1,14 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-require APPPATH . 'controllers/lms/board/BaseBoard.php';
+require APPPATH . 'controllers/lms/board/mocktest/Main.php';
 
-class Counsel extends BaseBoard
+class Counsel extends Main
 {
     protected $temp_models = array();
     protected $helpers = array('download','file');
 
-    private $board_name = 'counsel';
+    public $board_name = 'mocktest/counsel';
     private $bm_idx;
 
     public function __construct()
@@ -23,6 +23,6 @@ class Counsel extends BaseBoard
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
 
-        redirect(site_url("/board/mocktest/main?bm_idx={$this->bm_idx}"));
+        redirect(site_url("/board/{$this->board_name}/mainList?bm_idx={$this->bm_idx}"));
     }
 }

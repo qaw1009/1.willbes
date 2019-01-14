@@ -98,7 +98,7 @@
                 <div class="gnb-List-Depth">
                     <dl>
                         @foreach(element('Children', $menu_group_row) as $menu_idx => $menu_row)
-                            <dt><a href="{{ $menu_row['MenuUrl'] }}" target="_{{ $menu_row['UrlTarget'] }}">{{ $menu_row['MenuName'] }}</a></dt>
+                            <dt class="{{ $menu_row['MenuType'] }}"><a href="{{ $menu_row['MenuUrl'] }}" target="_{{ $menu_row['UrlTarget'] }}">{{ $menu_row['MenuName'] }}</a></dt>
                         @endforeach
                     </dl>
                 </div>

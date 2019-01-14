@@ -822,7 +822,9 @@ table.auTable tr td {
     display: block;
     padding-left: 50px;
 }
-
+.Gnb-md .gnb-List .gnb-List-Depth dl dt.GA a {
+    color: #2784d2;
+}
 .Gnb-md .gnb-List-Sub li {
     background: #f6f6f6;
     float: left;

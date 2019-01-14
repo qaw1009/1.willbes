@@ -507,9 +507,8 @@ function resetModal(selector) {
  * @param is_file
  */
 function sendAjax(url, data, callback, error_callback, async, method, data_type, is_file) {
-
     //var target = (event.target) ? $(event.target) : $("button, .btn");
-    var target = (typeof(event) === 'undefined') ? $("button, .btn") : $(event.target);
+    var target = (typeof(event) === 'undefined' || target == null) ? $("button, .btn") : $(event.target);
     target.prop("disabled",true);
 
     if(typeof is_file === 'undefined') is_file = false;

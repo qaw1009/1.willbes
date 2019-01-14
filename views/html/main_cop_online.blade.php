@@ -481,7 +481,7 @@
                     -->
                 </div>
                 <div class="pickBox pick2">
-                    <a href="#none"><img src="{{ img_url('cop/event/evt_190101.jpg') }}"></a>
+                    <a href="#none"><img src="{{ img_url('cop/event/evt_190102.jpg') }}"></a>
                     <!--
                     <div class="sliderNum">
                         <div><a href="#none"><img src="{{ img_url('cop/event/evt_190101.jpg') }}"></a></div>

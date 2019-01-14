@@ -20,8 +20,8 @@
         <!-- main slider -->
         <div class="sliderGNB bSlider">
             <div class="slider">
-                <div><img src="{{ img_url('gnbbanner/gnb_180918.jpg') }}"></div>
-                <div><a href="{{ app_url('/support/notice/show?board_idx=1057', 'www') }}" target="_blank"><img src="{{ img_url('gnbbanner/gnb_180919.jpg') }}"></a></div>
+                <div><img src="{{ img_url('gnbbanner/2_bn1.gif') }}"></div>
+                <div><img src="{{ img_url('gnbbanner/2_bn2.gif') }}"></div>
             </div>
         </div>
     @else
@@ -47,8 +47,8 @@
                                         </ul>
                                         <div class="sliderView bSlider">
                                             <div class="slider">
-                                                <div><img src="{{ img_url('gnbbanner/gnb_180920.jpg') }}"></div>
-                                                <div><a href="https://www.dev.willbes.net/support/notice/show?board_idx=1057" target="_blank"><img src="{{ img_url('gnbbanner/gnb_180921.jpg') }}"></a></div>
+                                                <div><img src="{{ img_url('gnbbanner/1_bn1.gif') }}"></div>
+                                                <div><img src="{{ img_url('gnbbanner/1_bn2.gif') }}"></div>
                                             </div>
                                         </div>
                                     </div>

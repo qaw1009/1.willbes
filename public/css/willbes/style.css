@@ -2351,27 +2351,22 @@ table.auTable tr td {
 
 /* Main Container : flipped : Cop */
 .Flipped {background: url("../../img/willbes/cop/flipped/flipped_bg.jpg") repeat-x center 90px; padding-bottom: 90px;}
-.Flipped ul.inner {height:420px}
-.Flipped ul.inner li {float:left; width:280px; height:100%; margin-left:20px}
+.Flipped ul.inner {height:370px}
+.Flipped ul.inner li {position: relative; float:left; width:280px; height:100%; margin-left:20px}
 .Flipped ul.inner li:first-child {width:520px; margin-left:0}
 .Flipped ul.inner a {position:relative; display:block; width:100%; height:100%; perspective:3500px}
 .Flipped ul.inner a span {display:inline-block}
-.Flipped .wrap_ban {
-	position:absolute; left:0; width:100%; height:100%;
-	transition:transform 0.6s; -webkit-transition:-webkit-transform 0.6s;
-	transform-style: preserve-3d; backface-visibility: hidden;
-	/* backface-visibility:hidden;-webkit-backface-visibility:hidden */
-}
-.Flipped .wrap_ban.front {transform:rotateY(0deg)}
-.Flipped .wrap_ban.back {visibility:hidden; transform:rotateY(-180deg)}
+.Flipped .wrap_ban {position: absolute; top: 0; left: 0; right: 0;}
+.Flipped .wrap_ban.front {visibility:visible; opacity:1}
+.Flipped .wrap_ban.back {visibility:hidden; opacity:0}
 .Flipped li .f-tit {font-size:16px; font-weight: 600; line-height: 50px;}
 .Flipped li .tit1 {color: #0c5dc0}
 .Flipped li .tit2 {color: #fd6c38}
 .Flipped li .tit3 {color: #d8ab36}
-.Flipped li:hover .wrap_ban.front {transform:rotateY(180deg)}
-.Flipped li:hover .wrap_ban.back {transform:rotateY(0)}
-.Flipped li.flipped .wrap_ban.front {visibility:hidden}
-.Flipped li.flipped .wrap_ban.back {visibility:visible}
+.Flipped li:hover .wrap_ban.front {visibility:hidden; opacity:0}
+.Flipped li:hover .wrap_ban.back {visibility:visible; opacity:1}
+.Flipped li.flipped .wrap_ban.front {visibility:hidden; opacity:0}
+.Flipped li.flipped .wrap_ban.back {visibility:visible; opacity:1}
 
 /* Main Container : curriculumBox : Cop */
 .cswRollingSlider {

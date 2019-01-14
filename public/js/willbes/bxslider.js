@@ -4,6 +4,9 @@ $(function() {
         auto: true,
         controls: false,
         pause: 3000,
+        onSliderLoad: function(){
+            $(".slider").css("visibility", "visible").animate({opacity:1}); 
+        } 
     });
 });
 
@@ -17,7 +20,10 @@ $(function() {
         pagerType: 'short',
         moveSlides:1,
         adaptiveHeight: true,
-        infiniteLoop: true
+        infiniteLoop: true,
+        onSliderLoad: function(){
+            $(".sliderNum").css("visibility", "visible").animate({opacity:1}); 
+        }  
     });
 });
 
@@ -30,6 +36,9 @@ $(function() {
         pager: true,
         pagerType: 'short',
         moveSlides:1,
+        onSliderLoad: function(){
+            $(".sliderNumTM").css("visibility", "visible").animate({opacity:1}); 
+        }  
     });
 });
 
@@ -40,6 +49,9 @@ $(function() {
         controls: true,
         pause: 3000,
         pager: false,
+        onSliderLoad: function(){
+            $(".sliderControls").css("visibility", "visible").animate({opacity:1}); 
+        }  
     });
 });
 
@@ -53,7 +65,10 @@ $(function() {
         pagerType: 'short',
         adaptiveHeight: true,
         infiniteLoop: false,
-        hideControlOnEnd: true,    
+        hideControlOnEnd: true,
+        onSliderLoad: function(){
+            $(".sliderControlsTM").css("visibility", "visible").animate({opacity:1}); 
+        }    
     });
 });
 
@@ -68,6 +83,9 @@ $(function() {
         minSlides: 1,
         pause: 3000,
         pager: false,
+        onSliderLoad: function(){
+            $(".sliderVertical").css("visibility", "visible").animate({opacity:1}); 
+        }
     });
 });
 
@@ -105,6 +123,7 @@ $(function(){
         pagerCustom: '.cswRolling',
         onSliderLoad: function(currentIndex){
             $(".CurriSwipe").children().eq(currentIndex).addClass("active");
+            $(".CurriSwipe").css("visibility", "visible").animate({opacity:1}); 
         },
         onSlideBefore: function($slideElement){
             $(".CurriSwipe").children().removeClass("active");

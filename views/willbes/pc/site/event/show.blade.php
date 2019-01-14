@@ -84,7 +84,7 @@
     TODO : 배너섹션 등록 후 설정 필요
     -->
     <div class="Quick-Bnr ml20">
-        {!! banner('이벤트_바로신청팝업', '', $__cfg['SiteCode'], '0') !!}
+        {!! banner('이벤트_우측', '', $__cfg['SiteCode'], '0') !!}
     </div>
 </div>
 

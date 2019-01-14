@@ -15,7 +15,7 @@
         </form>
         <div class="willbes-CScenter c_both">
             <div class="willbes-Lec-Tit NG bd-none tx-black c_both pt-zero">
-                · 수험뉴스
+                · 기출문제
                 <div class="willbes-Lec-Search GM f_right">
                     <div class="inputBox p_re">
                         <input type="text" id="s_keyword" name="s_keyword" maxlength="30" value="{{ element('s_keyword', $arr_input) }}" class="labelSearch" placeholder="제목 또는 내용을 입력해 주세요">
@@ -117,7 +117,7 @@
         </div>
     <!-- willbes-CScenter -->
     </div>
-    {!! banner('고객센터_우측날개', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
+    {!! banner('수험정보_우측', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
 </div>
 <!-- End Container -->
 @stop

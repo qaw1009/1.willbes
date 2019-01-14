@@ -15,7 +15,7 @@
 
                 <div class="willbes-CScenter c_both">
                     <div class="willbes-Lec-Tit NG bd-none tx-black c_both pt-zero">
-                        · 시험공고
+                        · 수험뉴스
                     </div>
                     <div class="Act2 mt30">
                         <!-- List -->
@@ -104,7 +104,7 @@
             </form>
             <!-- willbes-CScenter -->
         </div>
-        {!! banner('고객센터_우측날개', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
+        {!! banner('수험정보_우측', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
     </div>
     <!-- End Container -->
 @stop

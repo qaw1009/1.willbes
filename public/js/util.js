@@ -140,8 +140,8 @@ function fnAppDown($url, $data)
             };
 
             var mediaArray = [media1, media2];
-            alert(mediaArray[0].url);
-            app.multiDownload(media);
+
+            app.multiDownload(mediaArray);
         },
         function(ret, status){
             alert(ret.ret_msg);

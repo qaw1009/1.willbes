@@ -3044,7 +3044,7 @@ table.auTable tr td {
         .onAirBar span.onAirBarBtn a {display:block; font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "sans-serif"; font-size: 13px; color:#333; cursor:pointer}
         .onAirBar ul {position:absolute; top:0; width:1030px; z-index:2; overflow:hidden; height:60px; margin: 0; padding-left: 350px}
         .onAirBar li {font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "sans-serif"; line-height:60px; font-size: 13px; color:#333}
-        .onAirCt {float: left; width: 100%; position:relative;padding:0 0 30px; margin-top: 20px; border-bottom: 1px solid #0c5dc0}
+        .onAirCt {float: left; width: 100%; position:relative; margin-top: 20px; border-bottom: 1px solid #0c5dc0}
 
 
             .onAirTabs.tabWrap {background:#FFF; border:none; height: 35px; border-bottom: 1px solid #0c5dc0}
@@ -3070,7 +3070,7 @@ table.auTable tr td {
             }
             .rollingOnAir .bx-wrapper .sliderVertical li {}
             
-            .onAirLec {font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "sans-serif"; margin:30px 0 0 190px; border: 1px solid #ececec}
+            .onAirLec {float: right; font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "sans-serif"; margin:30px 0 0 0; border: 1px solid #ececec}
             .onAirLec li {float:left; width:320px}
             .onAirLec li img {width:320px; height:180px}
             .onAirLec li.li01 {width:288px; padding:15px 45px 15px 15px; line-height:1.5; background:#fff; min-height:150px}
@@ -3078,7 +3078,7 @@ table.auTable tr td {
             .onAirLec li p.ptxt2 {font-size:15px; color:#0c5dc0; font-weight:bold; margin-bottom:15px}
             .onAirLec li p.ptxt3 {font-size:13px; color:#262626}
             .onAirLec:after {content:""; display:block; clear:both}
-            .onAirProf {position:absolute; bottom:0; left:0; width:175px; height:208px; overflow:hidden; z-index:1}
+            .onAirProf {float:left; margin-top: 34px; width:175px; height:208px; overflow:hidden; z-index:1}
             .onAirBtn {position:absolute; top:205px; left:210px; width:230px; overflow:hidden; z-index:2}
             .onAirBtn li {display:inline; float:left; margin-right:1px}
             .onAirBtn li a.sample {background: #515151; width: 77px; height: 21px; line-height: 19px; display: block; font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "sans-serif"; font-size: 11px; color: #fff; text-align: center;}

@@ -426,7 +426,7 @@ var DdayDiff = { //타이머를 설정합니다.
 function daycountDown() {
     //event_day = new Date(2016,4,6,23,59,59);
     // 한달 전 날짜로 셋팅 
-    event_day = new Date(2019,2,15,16,59,59);
+    event_day = new Date(2019,3,29,16,59,59);
     now = new Date();
     var timeGap = new Date(0, 0, 0, 0, 0, 0, (event_day - now)); 
     

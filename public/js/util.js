@@ -71,6 +71,30 @@ function fnAppDown($url, $data)
         function(d){
             var media = null;
             media = d.ret_data;
+            var media1 = {
+                "category":media[0].category,
+                "thumbnail":media[0].thumbnail,
+                "url":media[0].url,
+                "cc":"http://m.starplayer.net/dev/kr.smi",
+                "title":window.btoa(encodeURIComponent(media[0].title)),
+                "desc":window.btoa(encodeURIComponent(media[0].desc)),
+                "teacher":window.btoa(encodeURIComponent(media[0].teacher)),
+                "expiry_date":"2030-12-22",
+                "content_id":"test01/test02/test03/test04"
+            };
+            var media2 = {
+                "category":media[1].category,
+                "thumbnail":media[1].thumbnail,
+                "url":media[1].url,
+                "cc":"http://m.starplayer.net/dev/kr.smi",
+                "title":window.btoa(encodeURIComponent(media[1].title)),
+                "desc":window.btoa(encodeURIComponent(media[1].desc)),
+                "teacher":window.btoa(encodeURIComponent(media[1].teacher)),
+                "expiry_date":"2030-12-22",
+                "content_id":"test05/test06/test07/test08"
+            };
+            var mediaArray = [media1, media2];
+            alert(mediaArray[0].url);
             app.multiDownload(media);
         },
         function(ret, status){

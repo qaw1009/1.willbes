@@ -1250,15 +1250,17 @@ class Player extends \app\controllers\FrontController
 
             if($type == 'download'){
                 $rtnData = array_merge($rtnData, [
-                    'category' => $category,
-                    'thumbnail' => '',
-                    'url' => $url,
-                    'cc' => '',
-                    'title' => base64_encode(rawurlencode($title)),
-                    'desc' => '',
-                    'teacher' => $lec['wProfName'],
-                    'expiry_date' => $enddate,
-                    'content_id' => $id
+                    $key => [
+                        'category' => $category,
+                        'thumbnail' => '',
+                        'url' => $url,
+                        'cc' => '',
+                        'title' => base64_encode(rawurlencode($title)),
+                        'desc' => '',
+                        'teacher' => $lec['wProfName'],
+                        'expiry_date' => $enddate,
+                        'content_id' => $id
+                    ]
                 ]);
 
             } else {
@@ -1273,7 +1275,7 @@ class Player extends \app\controllers\FrontController
                 ];
             }
         }
-dd($rtnData);
+
         return $this->json_result(true,'성공',null, $rtnData);
     }
 

@@ -2487,6 +2487,9 @@ table.auTable tr td {
 }
 
 /* Main Container : pass : cSlider : sliderPassList : Cop */
+.cswSlider.sliderCurriList .bx-wrapper {
+    max-width: 1070px !important;
+}
 .cswSlider.sliderCurriList .bx-wrapper .bx-prev {
     background: url("../../img/willbes/cop/btn_prev_on.png") no-repeat 0 0;
     left: -40px;
@@ -2523,6 +2526,12 @@ table.auTable tr td {
     width: 21px;
     height: 77px;
 }
+.cswRolling.CurriSwipe li a {
+    display: block; 
+    width: 260px;
+    height: 272px;
+}
+.CurriSwipe.cswRolling.transform {transform: translate3d(-540px, 0px, 0px) !important}
 
 /* Main Container : SpecialLecBox */
 .Section .SpecialLecBox dl dt {
@@ -3081,8 +3090,8 @@ table.auTable tr td {
         .offAirBar span.state {font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "sans-serif"; width: 310px; position: absolute; float:left; display:block; line-height:60px; font-size: 19px; font-weight: 600; padding-left: 40px;}
         .offAirBar span.state .tx-color {vertical-align: baseline; color: #0c5dc0}
         .offAirBar span.state img {vertical-align:middle; margin: -2px 0 0 10px}
-        .offAirBar span.offAirBarBtn {float:right; display:block; color:#fff; line-height:60px; margin-right:20px}
-        .offAirBar ul {position:absolute; top:0; z-index:2; overflow:hidden; height:60px; margin: 0; padding-left: 350px}
+        .offAirBar span.offAirBarBtn {position: absolute; top:0; right: 0; z-index: 2; float:right; display:block; color:#fff; line-height:60px; margin-right:20px}
+        .offAirBar ul {position:absolute; top:0; z-index:2; overflow:hidden; height:60px; margin: 0; padding-left: 350px; width: 920px;}
         .offAirBar li {font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "sans-serif"; line-height:60px; font-size: 13px; color:#333}
 
 

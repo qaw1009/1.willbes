@@ -119,6 +119,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property BoardModel $boardModel                                                Board Model Class
  * @property BoardAssignmentModel $boardAssignmentModel                            Board For Assignment Model Class
  * @property BoardTpassModel $boardTpassModel                                      Board Tpass For Member Model Class
+ * @property BoardMockModel $boardMockModel                                        Board Mock Model Class
  * @property WCpModel $wCpModel                                                    WCp Model Class
  * @property SearchWMasterLectureModel $searchWMasterLectureModel  Search MasterLecture Model Class
  * @property SmsModel $smsModel                                                     Search Sms Model Class

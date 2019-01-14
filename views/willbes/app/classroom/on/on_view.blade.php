@@ -168,7 +168,7 @@
 
             $("#quility").val($quility);
 
-            fnApp('https:{{front_url('/Player/getApp/')}}', $('#downForm').serialize());
+            fnAppDown('https:{{front_url('/Player/getApp/')}}', $('#downForm').serialize());
         }
 
         function onInitEvent(){ }

@@ -43,23 +43,35 @@ function fnMobile($info_url, $license)
 }
 
 /**
- *  앱 스트리밍 플레이어
+ * 앱 스트리밍 플레이어
+ * @param $url
+ * @param $data
  */
 function fnApp($url, $data)
 {
     sendAjax($url, $data,
         function(d){
-            var media = {
-                "url" : 'http://www.axissoft.co.kr/contents/252782_ehd.mp4',
-                "cc" : "",
-                "position" : 0,
-                "tracker" : "",
-                "title" : "[액시스소프트] 이투스 테스트!!",
-                "content_id" : 'test',
-                "subpage" : ""
-            };
+            var media = null;
             media = d.ret_data;
             app.streaming(media);
+        },
+        function(ret, status){
+            alert(ret.ret_msg);
+        }, false, 'GET', 'json');
+}
+
+/**
+ * 앱 멀티 다운로드
+ * @param $url
+ * @param $data
+ */
+function fnAppDown($url, $data)
+{
+    sendAjax($url, $data,
+        function(d){
+            var media = null;
+            media = d.ret_data;
+            app.multiDownload(media);
         },
         function(ret, status){
             alert(ret.ret_msg);

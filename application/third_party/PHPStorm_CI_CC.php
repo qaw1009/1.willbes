@@ -211,6 +211,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property OnAirFModel $onAirFModel                                                OnAir Model Class
  * @property DDayFModel $dDayFModel                                                D-Day Model Class
  * @property MockInfoFModel $mockInfoFModel                                      MockTest Info  Model Class
+ * @property MockExamModel $mockExamModel                                         MockExam Class
  */
 class PHPStorm_CI_CC
 {

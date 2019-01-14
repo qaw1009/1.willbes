@@ -244,6 +244,7 @@
             // 과목컬럼 OR 검색을 위해 확장
             $.fn.dataTable.ext.search.push(
                 function (settings, data, dataIndex) {
+
                     findStr = $search_form.find('#sc_subject').val();
 
                     if (data[3].indexOf(findStr) != -1 || data[4].indexOf(findStr) != -1) return true;

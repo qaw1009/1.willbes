@@ -35,9 +35,9 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#none">
+                        <a href="#none" onclick="{{ empty($data['ProfReferData']['sample_url1']) === false ? 'fnPlayerProf(\'' . $prof_idx . '\', \'S1\');' : 'alert(\'등록된 맛보기 동영상이 없습니다.\');' }}">
                             <img src="{{ img_url('prof/icon_sample.png') }}">
-                            <div class="NSK"><a href="#none" onclick="{{ empty($data['ProfReferData']['sample_url1']) === false ? 'fnPlayerProf(\'' . $prof_idx . '\', \'S1\');' : 'alert(\'등록된 맛보기 동영상이 없습니다.\');' }}">맛보기</a></div>
+                            <div class="NSK">맛보기</div>
                         </a>
                     </li>
                     <li>

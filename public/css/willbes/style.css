@@ -11176,6 +11176,9 @@ table.userInfoTable .w-selec-Area label {
 /*********************************************     ACADEMY     *********************************************/
 
 /* subContainer : Content : Lec-Table */
+table.acadlecTable {
+    clear: both;
+}
 table.acadlecTable .w-schedule {
     line-height: 30px;
 }
@@ -11194,6 +11197,7 @@ table.acadlecInfoTable {
     background: #f9f9f9;
     height: 240px;
     overflow-x: auto;
+    clear: both;
 }
 table.acadlecTable tr.w-info td span.MoreBtn {
     display: inline-block;

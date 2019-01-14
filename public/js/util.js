@@ -67,32 +67,78 @@ function fnApp($url, $data)
  */
 function fnAppDown($url, $data)
 {
+    var urls = [
+        "http://www.axissoft.co.kr/contents/252782_ehd.mp4",
+        "http://starplayer.dl.cdn.cloudn.co.kr/etoos/L52961_00_ehd_org.mp4",
+        "http://starplayer.dl.cdn.cloudn.co.kr/sample.mp4",
+        "http://m.starplayer.net/kim.mp4",
+        "http://m.starplayer.net/dev/22_astroboy-tsr2_h1080p.mp4"
+    ];
+
+    var intros = [
+        "http://m.starplayer.net/sample.mp4",
+        "http://m.starplayer.net/sample.mp4",
+        "http://m.starplayer.net/sample.mp4"
+    ];
+
+    var category = window.btoa(encodeURIComponent("New2018 상위 1%만 아는 비밀"));
+
+    var thumbnail = "";
+    var title = "테스트";
+    var desc = "";
+    var teacher = "테스트강사";
+
     sendAjax($url, $data,
         function(d){
             var media = null;
             media = d.ret_data;
+            /*
             var media1 = {
                 "category":media[0].category,
                 "thumbnail":media[0].thumbnail,
                 "url":media[0].url,
-                "cc":"http://m.starplayer.net/dev/kr.smi",
+                "cc":"",
                 "title":window.btoa(encodeURIComponent(media[0].title)),
                 "desc":window.btoa(encodeURIComponent(media[0].desc)),
                 "teacher":window.btoa(encodeURIComponent(media[0].teacher)),
-                "expiry_date":"2030-12-22",
-                "content_id":"test01/test02/test03/test04"
+                "expiry_date":media[0].expiry_date
+                "content_id":media[0].content_id
             };
             var media2 = {
                 "category":media[1].category,
                 "thumbnail":media[1].thumbnail,
                 "url":media[1].url,
-                "cc":"http://m.starplayer.net/dev/kr.smi",
+                "cc":"",
                 "title":window.btoa(encodeURIComponent(media[1].title)),
                 "desc":window.btoa(encodeURIComponent(media[1].desc)),
                 "teacher":window.btoa(encodeURIComponent(media[1].teacher)),
+                "expiry_date":media[1].expiry_date
+                "content_id":media[1].content_id
+            }; */
+
+            var media1 = {
+                "category":category,
+                "thumbnail":thumbnail,
+                "url":"http://m.starplayer.net/sample.mp4",
+                "cc":"",
+                "title":window.btoa(encodeURIComponent(title)),
+                "desc":window.btoa(encodeURIComponent(desc)),
+                "teacher":window.btoa(encodeURIComponent(teacher)),
+                "expiry_date":"2030-12-22",
+                "content_id":"test01/test02/test03/test04"
+            };
+            var media2 = {
+                "category":category,
+                "thumbnail":thumbnail,
+                "url":"http://starplayer.dl.cdn.cloudn.co.kr/test/etoos/252826_ehd.mp4",
+                "cc":"",
+                "title":window.btoa(encodeURIComponent("New2017 상위 2%만 아는 비밀")),
+                "desc":window.btoa(encodeURIComponent(desc)),
+                "teacher":window.btoa(encodeURIComponent(teacher)),
                 "expiry_date":"2030-12-22",
                 "content_id":"test05/test06/test07/test08"
             };
+
             var mediaArray = [media1, media2];
             alert(mediaArray[0].url);
             app.multiDownload(media);

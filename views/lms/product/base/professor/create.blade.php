@@ -174,7 +174,7 @@
                 {{-- 강사료 정산 계약정보 --}}
                 @foreach($arr_calc_target as $on_off_type => $rows)
                     <div class="form-group">
-                        <label class="control-label col-md-2">@if($on_off_type == 'on')온라인상품@else학원상품@endif 강사료<br/>표준 계약정보 <span class="required">*</span>
+                        <label class="control-label col-md-2">@if($on_off_type == 'on')온라인@elseif($on_off_type == 'off')학원@else모의고사@endif 상품강사료<br/>표준 계약정보 <span class="required">*</span>
                         </label>
                         <div class="col-md-9 item">
                             <div class="x_panel mb-0">
@@ -203,8 +203,8 @@
                                                     <tr>
                                                         <td class="no-border-bottom"><input type="number" name="calc_rate[]" class="form-control" title="정산율" value="{{ array_get($data['CalcRate'], $_prefix_first_key . '.CalcRate') }}" style="width: 80px"/> %</td>
                                                         <td><input type="number" name="contrib_rate[]" class="form-control" title="기여도" value="{{ array_get($data['CalcRate'], $_prefix_first_key . '.ContribRate') }}" style="width: 80px"/> %</td>
-                                                        <td><input type="text" name="apply_start_date[]" class="form-control datepicker" title="계약기간 시작일" value="{{ array_get($data['CalcRate'], $_prefix_first_key . '.ApplyStartDate') }}" style="width: 100px">
-                                                            ~ <input type="text"name="apply_end_date[]" class="form-control datepicker" title="계약기간 종료일" value="{{ array_get($data['CalcRate'], $_prefix_first_key . '.ApplyEndDate') }}" style="width: 100px">
+                                                        <td><input type="text" name="apply_start_date[]" class="form-control datepicker" title="계약기간 시작일" value="{{ array_get($data['CalcRate'], $_prefix_first_key . '.ApplyStartDate', '2000-01-01') }}" style="width: 100px">
+                                                            ~ <input type="text"name="apply_end_date[]" class="form-control datepicker" title="계약기간 종료일" value="{{ array_get($data['CalcRate'], $_prefix_first_key . '.ApplyEndDate', '2030-12-31') }}" style="width: 100px">
                                                         </td>
                                                         <td><input type="text" name="calc_memo[]" class="form-control" title="비고" value="{{ array_get($data['CalcRate'], $_prefix_first_key . '.CalcMemo') }}"/></td>
                                                         <td><a href="#none" class="btn-calc-delete"><i class="fa fa-times fa-lg red"></i></a>

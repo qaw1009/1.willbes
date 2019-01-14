@@ -20,12 +20,8 @@ class ProfessorModel extends WB_Model
         'string' => ['ot_url', 'wsample_url', 'sample_url1', 'sample_url2', 'sample_url3', 'cafe_url'],
         'attach' => ['prof_index_img', 'prof_detail_img', 'lec_list_img', 'lec_detail_img', 'lec_review_img']
     ];
-    private $_ccd = [
-        'LearnPattern' => '615'
-    ];
-    public $_bm_idx = [
-        'notice' => 63, 'qna' => 66, 'data' => 69, 'tpass' => '87', 'assignment' => '88'
-    ];
+    private $_ccd = ['LearnPattern' => '615', 'ProdType' => '636'];
+    public $_bm_idx = ['notice' => 63, 'qna' => 66, 'data' => 69, 'tpass' => '87', 'assignment' => '88'];
 
     public function __construct()
     {
@@ -288,15 +284,19 @@ class ProfessorModel extends WB_Model
     }
 
     /**
-     * 교수 강사료 정산률 등록 대상 조회
+     * 교수 강사료 정산률 등록 대상 조회 (모의고사상품 추가)
      * @return array
      */
     public function listProfessorCalcRateTarget()
     {
         $results = [];
-        $list = $this->_conn->getListResult($this->_table['code'], 'Ccd, CcdName, json_value(CcdEtc, "$.type") as OnOffType', [
-            'EQ' => ['GroupCcd' => $this->_ccd['LearnPattern'], 'json_value(CcdEtc, "$.is_calc")' => 'Y', 'IsUse' => 'Y', 'IsStatus' => 'Y']
-        ]);
+        $arr_condition = [
+            'EQ' => ['IsUse' => 'Y', 'IsStatus' => 'Y'],
+            'IN' => ['GroupCcd' => array_values($this->_ccd)],
+            'ORG' => ['EQ' => ['json_value(CcdEtc, "$.is_calc")' => 'Y', 'Ccd' => '636010']]
+        ];
+
+        $list = $this->_conn->getListResult($this->_table['code'], 'Ccd, CcdName, ifnull(json_value(CcdEtc, "$.type"), "mock_exam") as OnOffType', $arr_condition);
 
         foreach ($list as $row) {
             $results[$row['OnOffType']][$row['Ccd']] = $row['CcdName'];
@@ -306,7 +306,7 @@ class ProfessorModel extends WB_Model
     }
 
     /**
-     * 교수 강사료 정산률 데이터 조회
+     * 교수 강사료 정산률 데이터 조회 (모의고사상품 추가)
      * @param $prof_idx
      * @return array
      */
@@ -316,13 +316,16 @@ class ProfessorModel extends WB_Model
         $column = '
             PCR.ProfCalcIdx, PCR.LearnPatternCcd, left(PCR.ApplyStartDatm, 10) as ApplyStartDate, left(PCR.ApplyEndDatm, 10) as ApplyEndDate
                 , PCR.CalcRate, PCR.ContribRate, PCR.CalcMemo
-                , json_value(C.CcdEtc, "$.type") as OnOffType            
+                , ifnull(json_value(C.CcdEtc, "$.type"), "mock_exam") as OnOffType            
         ';
+        $arr_condition = [
+            'EQ' => ['PCR.ProfIdx' => $prof_idx, 'PCR.IsStatus' => 'Y', 'C.IsUse' => 'Y', 'C.IsStatus' => 'Y'],
+            'IN' => ['C.GroupCcd' => array_values($this->_ccd)],
+        ];
         
         $list = $this->_conn->getJoinListResult($this->_table['professor_calculate_rate'] . ' as PCR', 'inner', $this->_table['code'] . ' as C'
             , 'PCR.LearnPatternCcd = C.Ccd'
-            , $column, ['EQ' => ['PCR.ProfIdx' => $prof_idx, 'PCR.IsStatus' => 'Y', 'C.GroupCcd' => $this->_ccd['LearnPattern'], 'C.IsUse' => 'Y', 'C.IsStatus' => 'Y']]
-            , null, null, ['PCR.ProfCalcIdx', 'asc']
+            , $column, $arr_condition, null, null, ['PCR.ProfCalcIdx', 'asc']
         );
 
         foreach ($list as $row) {

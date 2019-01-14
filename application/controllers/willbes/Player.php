@@ -346,8 +346,8 @@ class Player extends \app\controllers\FrontController
 
         $this->load->view('/player/sample', [
             'data' => [
-                'title' => '',
-                'pretitle' => '',
+                'pretitle' => $data['wUnitNum'].'회 '.$data['wUnitLectureNum'].'강',
+                'title' => $data['wUnitName'],
                 'quility' => 'WD',
                 'startPosition' => 0,
                 'ratio' => 21,
@@ -1273,7 +1273,7 @@ class Player extends \app\controllers\FrontController
                 ];
             }
         }
-
+dd($rtnData);
         return $this->json_result(true,'성공',null, $rtnData);
     }
 
@@ -1402,7 +1402,6 @@ class Player extends \app\controllers\FrontController
 
     /**
      * 스타플레이어 E 하이브리드 앱 수강기록 업데이트
-     *
      */
     function StarplayerEntAPI()
     {

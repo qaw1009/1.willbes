@@ -118,7 +118,7 @@ function fnAppDown($url, $data)
 
             var mediaArray = [media1, media2];
 
-            app.multiDownload(mediaArray);
+            app.multiDownload(media);
         },
         function(ret, status){
             alert(ret.ret_msg);

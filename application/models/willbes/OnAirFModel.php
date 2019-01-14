@@ -32,7 +32,7 @@ class OnAirFModel extends WB_Model
         $column = 'O.OaIdx, O.LoginType, DATE_FORMAT(O.OnAirStartTime, \'%H:%i\') AS OnAirStartTime, DATE_FORMAT(O.OnAirEndTime, \'%H:%i\') AS OnAirEndTime, O.OnAirName, O.OnAirTabName, O.VideoPlayTime, O.VideoPlayCount
             , O.LeftExposureType, O.LeftFileName, O.LeftFileFullPath, O.LeftLink, O.RightExposureType, O.RightFileName, O.RightFileFullPath, O.RightLink, O.OnAirStartType
             , OTO.Title as OnAirTitle, OTP.ProfIdx, OTP.Title as ProfTitle
-            , if(OTP.ProfIdx is not null, ifnull(json_value(fn_professor_refer_data(OTP.ProfIdx), "$.prof_index_img"), ""), "") as ProfImgFullPath
+            , if(OTP.ProfIdx is not null, ifnull(json_value(fn_professor_refer_data(OTP.ProfIdx), "$.lec_review_img"), ""), "") as ProfImgFullPath
             , V.LiveVideoRoute
             ';
 

@@ -92,51 +92,28 @@ function fnAppDown($url, $data)
         function(d){
             var media = null;
             media = d.ret_data;
-            /*
+
             var media1 = {
                 "category":media[0].category,
                 "thumbnail":media[0].thumbnail,
                 "url":media[0].url,
-                "cc":"",
-                "title":window.btoa(encodeURIComponent(media[0].title)),
-                "desc":window.btoa(encodeURIComponent(media[0].desc)),
-                "teacher":window.btoa(encodeURIComponent(media[0].teacher)),
-                "expiry_date":media[0].expiry_date
+                "cc":media[0].cc,
+                "title":media[0].url,
+                "desc":media[0].desc,
+                "teacher":media[0].teacher,
+                "expiry_date":media[0].expiry_date,
                 "content_id":media[0].content_id
             };
             var media2 = {
                 "category":media[1].category,
                 "thumbnail":media[1].thumbnail,
                 "url":media[1].url,
-                "cc":"",
-                "title":window.btoa(encodeURIComponent(media[1].title)),
-                "desc":window.btoa(encodeURIComponent(media[1].desc)),
-                "teacher":window.btoa(encodeURIComponent(media[1].teacher)),
-                "expiry_date":media[1].expiry_date
+                "cc":media[1].cc,
+                "title":media[1].url,
+                "desc":media[1].desc,
+                "teacher":media[1].teacher,
+                "expiry_date":media[1].expiry_date,
                 "content_id":media[1].content_id
-            }; */
-
-            var media1 = {
-                "category":category,
-                "thumbnail":thumbnail,
-                "url":"http://m.starplayer.net/sample.mp4",
-                "cc":"",
-                "title":window.btoa(encodeURIComponent(title)),
-                "desc":window.btoa(encodeURIComponent(desc)),
-                "teacher":window.btoa(encodeURIComponent(teacher)),
-                "expiry_date":"2030-12-22",
-                "content_id":"test01/test02/test03/test04"
-            };
-            var media2 = {
-                "category":category,
-                "thumbnail":thumbnail,
-                "url":"http://starplayer.dl.cdn.cloudn.co.kr/test/etoos/252826_ehd.mp4",
-                "cc":"",
-                "title":window.btoa(encodeURIComponent("New2017 상위 2%만 아는 비밀")),
-                "desc":window.btoa(encodeURIComponent(desc)),
-                "teacher":window.btoa(encodeURIComponent(teacher)),
-                "expiry_date":"2030-12-22",
-                "content_id":"test05/test06/test07/test08"
             };
 
             var mediaArray = [media1, media2];

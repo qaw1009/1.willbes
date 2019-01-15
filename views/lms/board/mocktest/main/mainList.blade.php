@@ -176,11 +176,11 @@
                             return row.RealSalePrice + '원<br><span style="text-decoration:line-through">' + row.SalePrice + '원</span>';
                         }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return row.SaleStartDatm.substr(0,10) + ' ~ ' + row.SaleEndDatm.substr(0,10);
+                            return row.SaleStartDate + ' ~ ' + row.SaleEndDate;
                         }},
                     {'data' : 'AcceptStatusCcd_Name', 'class': 'text-center'},
-                    {'data' : 'TakeType', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return (data === 'A') ? '상시' : '기간제한';
+                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                            return row.TakeStartDate + ' ~ ' + row.TakeEndDate;
                         }},
                     {'data' : 'IsUse', 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
@@ -194,10 +194,12 @@
                 ]
             });
 
+            //이의제기 목록
             $list_table.on('click', '.btn-list-qna', function() {
                 location.href='{{ site_url("/board/mocktest/qna/detailList") }}/' + dtParamsToQueryString($datatable) + '&bm_idx=95&prod_code=' + $(this).data('idx');
             });
 
+            //정오표 목록
             $list_table.on('click', '.btn-list-notice', function() {
                 location.href='{{ site_url("/board/mocktest/notice/detailList") }}/' + dtParamsToQueryString($datatable) + '&bm_idx=96&prod_code=' + $(this).data('idx');
             });

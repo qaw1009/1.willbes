@@ -3,6 +3,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 require APPPATH . 'controllers/lms/board/BaseBoard.php';
 
+/**
+ * 이의제기,정오표게시판 메인페이지 공통클레스
+ * Class Main
+ */
 class Main extends BaseBoard
 {
     protected $temp_main_models = array('board/boardMock', 'mocktest/mockCommon');
@@ -21,7 +25,7 @@ class Main extends BaseBoard
         $this->acceptStatus = $this->config->item('sysCode_acceptStatus', 'mock');
     }
 
-    public function mainList()
+    protected function _mainList()
     {
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
@@ -43,7 +47,7 @@ class Main extends BaseBoard
         ]);
     }
 
-    public function mainListAjax()
+    protected function _mainListAjax()
     {
         $arr_condition = $this->_getListConditions();
 

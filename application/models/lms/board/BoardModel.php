@@ -122,6 +122,7 @@ class BoardModel extends WB_Model
                 ";
                 break;
             case "qna" :
+            case "mocktest/qna" :
                 $from = $from."
                     LEFT OUTER JOIN {$this->_table_product_subject} as PS ON LB.SubjectIdx = PS.SubjectIdx
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC2 ON LB.TypeCcd = LSC2.Ccd
@@ -511,6 +512,7 @@ class BoardModel extends WB_Model
                 ";
                 break;
             case "qna" :
+            case "mocktest/qna" :
                 $from = $from."
                     LEFT OUTER JOIN {$this->_table_product_subject} as PS ON LB.SubjectIdx = PS.SubjectIdx
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC2 ON LB.TypeCcd = LSC2.Ccd

@@ -6,11 +6,12 @@ require_once  APPPATH . 'models/lms/board/BoardModel.php';
 class BoardMockModel extends BoardModel
 {
     private $_mock_table = [
-        'mockProduct' => 'lms_Product_Mock',
-        'Product' => 'lms_Product',
-        'ProductCate' => 'lms_Product_R_Category',
+        'site' => 'lms_site',
+        'mockProduct' => 'lms_product_mock',
+        'Product' => 'lms_product',
+        'ProductCate' => 'lms_product_r_category',
         'category' => 'lms_sys_category',
-        'ProductSale' => 'lms_Product_Sale',
+        'ProductSale' => 'lms_product_sale',
         'admin' => 'wbs_sys_admin',
         'sysCode' => 'lms_sys_code',
     ];
@@ -22,8 +23,10 @@ class BoardMockModel extends BoardModel
             $order_by_offset_limit = '';
         } else {
             $column = '
-                MP.*, A.wAdminName, PD.ProdName, PD.SaleStartDatm, PD.SaleEndDatm, PD.IsUse, PS.SalePrice, PS.RealSalePrice,          
-                C1.CateName, C1.IsUse AS IsUseCate,
+                PD.SiteCode, ST.SiteName, MP.*, A.wAdminName, PD.ProdName, PD.SaleStartDatm, PD.SaleEndDatm, PD.IsUse, PS.SalePrice, PS.RealSalePrice,
+                DATE_FORMAT(PD.SaleStartDatm, \'%Y-%m-%d\') AS SaleStartDate, DATE_FORMAT(PD.SaleEndDatm, \'%Y-%m-%d\') AS SaleEndDate,
+                DATE_FORMAT(MP.TakeStartDatm, \'%Y-%m-%d\') AS TakeStartDate, DATE_FORMAT(MP.TakeEndDatm, \'%Y-%m-%d\') AS TakeEndDate,
+                C1.CateCode, C1.CateName, C1.IsUse AS IsUseCate,
                 SC1.CcdName As AcceptStatusCcd_Name,
                 IFNULL(BD1.cnt, 0) AS qnaTotalCnt, IFNULL(BD2.cnt, 0) AS qnaUnAnsweredCnt,
                 IFNULL(BD3.cnt, 0) AS noticeCnt
@@ -41,6 +44,7 @@ class BoardMockModel extends BoardModel
             JOIN {$this->_mock_table['ProductSale']} AS PS ON MP.ProdCode = PS.ProdCode AND PS.IsStatus = 'Y'
             LEFT JOIN {$this->_mock_table['admin']} AS A ON MP.RegAdminIdx = A.wAdminIdx
             LEFT OUTER JOIN {$this->_mock_table['sysCode']} AS SC1 ON MP.AcceptStatusCcd = SC1.Ccd
+            INNER JOIN {$this->_mock_table['site']} AS ST ON PD.SiteCode = ST.SiteCode AND ST.IsStatus = 'Y' AND ST.IsUse = 'Y'
             
             LEFT JOIN (
                 SELECT ProdCode, COUNT(*) AS cnt

@@ -28,4 +28,21 @@ class Notice extends Main
 
         redirect(site_url("/board/{$this->boardName}/mainList?bm_idx={$this->bm_idx}"));
     }
+
+    /**
+     * 메인페이지
+     */
+    public function mainList()
+    {
+        return $this->_mainList();
+    }
+
+    /**
+     * 메인페이지 ajax
+     * @return CI_Output
+     */
+    public function mainListAjax()
+    {
+        return $this->_mainListAjax();
+    }
 }

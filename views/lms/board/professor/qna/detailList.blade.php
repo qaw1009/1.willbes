@@ -40,12 +40,12 @@
                             @endforeach
                         </select>
 
-                        <select class="form-control" id="search_reply_type" name="search_reply_type">
+                        {{--<select class="form-control" id="search_reply_type" name="search_reply_type">
                             <option value="">답변상태</option>
                             @foreach($arr_reply as $key => $val)
                                 <option value="{{$key}}">{{$val}}</option>
                             @endforeach
-                        </select>
+                        </select>--}}
 
                         <select class="form-control" id="search_is_use" name="search_is_use">
                             <option value="">사용여부</option>
@@ -100,6 +100,7 @@
                 </div>
                 <div class="col-xs-8 text-right form-inline">
                     <div class="checkbox">
+                        <input type="checkbox" name="search_chk_reply_display" value="1" class="flat" id="reply_display"/> <label for="reply_display">미답변 보기</label>
                         <input type="checkbox" name="search_chk_hot_display" value="1" class="flat" id="notice_display"/> <label for="notice_display">공지 숨기기</label>
                     </div>
                     <button type="submit" class="btn btn-primary btn-search ml-10" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
@@ -247,6 +248,11 @@
                             }
                         }},
                 ]
+            });
+
+            // 미답변 보기
+            $search_form.on('ifChanged', '#reply_display', function() {
+                $datatable.draw();
             });
 
             // 공지 숨기기

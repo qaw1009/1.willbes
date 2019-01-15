@@ -40,13 +40,6 @@
                             @endforeach
                         </select>
 
-                        {{--<select class="form-control" id="search_reply_type" name="search_reply_type">
-                            <option value="">답변상태</option>
-                            @foreach($arr_reply as $key => $val)
-                                <option value="{{$key}}">{{$val}}</option>
-                            @endforeach
-                        </select>--}}
-
                         <select class="form-control" id="search_is_use" name="search_is_use">
                             <option value="">사용여부</option>
                             <option value="Y">공개</option>

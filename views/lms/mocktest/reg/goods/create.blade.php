@@ -71,7 +71,7 @@
                         <th colspan="1">가산점 <span class="required">*</span></th>
                         <td colspan="3">
                             @foreach($addPoint as $k => $v)
-                                <input type="checkbox" class="flat" name="AddPointTypes[]" value="{{$k}}" @if($method == 'PUT' && in_array($k, $data['AddPointTypes'])) checked @endif> <span class="flat-text mr-20">{{$v}}</span>
+                                <input type="checkbox" class="flat" name="AddPointCcds[]" value="{{$k}}" @if($method == 'PUT' && in_array($k, $data['AddPointCcds'])) checked @endif> <span class="flat-text mr-20">{{$v}}</span>
                             @endforeach
                         </td>
                     </tr>
@@ -205,11 +205,12 @@
                                     <option value="{{$v}}" @if($method==='PUT' && substr($data['TakeEndDatm'], 14, 2) == $v) selected @endif>{{$v}}</option>
                                 @endforeach
                             </select> 분
-                            <!--
+                            {{--
                             <span class="ml-20 mr-20"> | </span>
                             <input type="radio" name="TakeType" class="flat" value="A" @if($method == 'POST' || ($method == 'PUT' && $data['TakeType'] == 'A')) checked="checked" @endif> <span class="flat-text mr-10">상시</span>
                             <input type="radio" name="TakeType" class="flat" value="L" @if($method == 'PUT' && $data['TakeType'] == 'L') checked="checked" @endif> <span class="flat-text mr-20">기간제한</span>
-                            //-->
+                            --}}
+
                         </td>
                     </tr>
                     <tr>

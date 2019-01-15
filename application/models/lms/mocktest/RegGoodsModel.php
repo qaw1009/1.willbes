@@ -163,10 +163,10 @@ class RegGoodsModel extends WB_Model
             // lms_Product_Mock 복사
             $sql = "
                 INSERT INTO {$this->_table['mockProduct']}
-                    (ProdCode, TakePart, MockPart, TakeFormsCcd, TakeAreas1CCds, TakeAreas2Ccds, AddPointTypes, MockYear, MockRotationNo,
+                    (ProdCode, TakePart, MockPart, TakeFormsCcd, TakeAreas1CCds, TakeAreas2Ccds, AddPointCcds, MockYear, MockRotationNo,
                      ClosingPerson, AcceptStatusCcd, TakeStartDatm, TakeEndDatm, TakeTime, 
                      RegIp, RegAdminIdx, RegDatm)
-                SELECT ?, TakePart, MockPart, TakeFormsCcd, TakeAreas1CCds, TakeAreas2Ccds, AddPointTypes, MockYear, MockRotationNo,
+                SELECT ?, TakePart, MockPart, TakeFormsCcd, TakeAreas1CCds, TakeAreas2Ccds, AddPointCcds, MockYear, MockRotationNo,
                        ClosingPerson, AcceptStatusCcd, TakeStartDatm, TakeEndDatm, TakeTime, ?, ?, ?
                 FROM {$this->_table['mockProduct']}
                 WHERE ProdCode = ? ";
@@ -277,7 +277,7 @@ class RegGoodsModel extends WB_Model
                 'TakeFormsCcd'  => implode(',', $this->input->post('TakeFormsCcd')),
                 'TakeAreas1CCds' => empty($this->input->post('TakeAreas1CCds')) ? '': implode(',', $this->input->post('TakeAreas1CCds')),
                 'TakeAreas2Ccds'  => empty($this->input->post('TakeAreas2Ccds')) ? '' : implode(',', $this->input->post('TakeAreas2Ccds')),
-                'AddPointTypes'   => implode(',', $this->input->post('AddPointTypes')),
+                'AddPointCcds'   => implode(',', $this->input->post('AddPointCcds')),
                 'MockYear'       => $this->input->post('MockYear'),
                 'MockRotationNo' => $this->input->post('MockRotationNo'),
                 'ClosingPerson'  => empty($this->input->post('ClosingPerson')) ? '' : $this->input->post('ClosingPerson'),
@@ -385,7 +385,7 @@ class RegGoodsModel extends WB_Model
                 'TakeFormsCcd'  =>  $this->input->post('TakeFormsCcd'),
                 'TakeAreas1CCds' => empty($this->input->post('TakeAreas1CCds')) ? '': implode(',', $this->input->post('TakeAreas1CCds')),
                 'TakeAreas2Ccds'  => empty($this->input->post('TakeAreas2Ccds')) ? '' : implode(',', $this->input->post('TakeAreas2Ccds')),
-                'AddPointTypes'   => implode(',', $this->input->post('AddPointTypes')),
+                'AddPointCcds'   => implode(',', $this->input->post('AddPointCcds')),
                 'MockYear'       => $this->input->post('MockYear'),
                 'MockRotationNo' => $this->input->post('MockRotationNo'),
                 'ClosingPerson'  => empty($this->input->post('ClosingPerson')) ? '' : $this->input->post('ClosingPerson'),
@@ -496,7 +496,7 @@ class RegGoodsModel extends WB_Model
         $data['TakeFormsCcd'] = explode(',', $data['TakeFormsCcd']);
         $data['TakeAreas1CCds'] = explode(',', $data['TakeAreas1CCds']);
         $data['TakeAreas2Ccds'] = explode(',', $data['TakeAreas2Ccds']);
-        $data['AddPointTypes'] = explode(',', $data['AddPointTypes']);
+        $data['AddPointCcds'] = explode(',', $data['AddPointCcds']);
 
 
         // 과목정보

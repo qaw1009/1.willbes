@@ -8,7 +8,7 @@ class Notice extends Main
     protected $temp_models = array();
     protected $helpers = array('download','file');
 
-    public $board_name = 'mocktest/notice';
+    public $boardName = 'mocktest/notice';
     private $bm_idx;
 
     public function __construct()
@@ -26,6 +26,6 @@ class Notice extends Main
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
 
-        redirect(site_url("/board/{$this->board_name}/mainList?bm_idx={$this->bm_idx}"));
+        redirect(site_url("/board/{$this->boardName}/mainList?bm_idx={$this->bm_idx}"));
     }
 }

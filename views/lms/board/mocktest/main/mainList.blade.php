@@ -150,7 +150,7 @@
                 buttons: [],
                 serverSide: true,
                 ajax: {
-                    'url' : '{{ site_url("/board/".$board_name."/listAjax?") }}' + '{!! $boardDefaultQueryString !!}',
+                    'url' : '{{ site_url("/board/".$boardName."/mainListAjax?") }}' + '{!! $boardDefaultQueryString !!}',
                     'type' : 'POST',
                     'data' : function(data) {
                         return $.extend(arrToJson($search_form.serializeArray()), {'start' : data.start, 'length' : data.length});
@@ -195,7 +195,11 @@
             });
 
             $list_table.on('click', '.btn-list-qna', function() {
-                /*location.href='{{ site_url('/site/eventLecture/read') }}/' + $(this).data('idx') + dtParamsToQueryString($datatable);*/
+                location.href='{{ site_url("/board/mocktest/qna/detailList") }}/' + dtParamsToQueryString($datatable) + '&bm_idx=95&prod_code=' + $(this).data('idx');
+            });
+
+            $list_table.on('click', '.btn-list-notice', function() {
+                location.href='{{ site_url("/board/mocktest/notice/detailList") }}/' + dtParamsToQueryString($datatable) + '&bm_idx=96&prod_code=' + $(this).data('idx');
             });
         });
     </script>

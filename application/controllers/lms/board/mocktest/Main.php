@@ -32,8 +32,8 @@ class Main extends BaseBoard
         $cateD2 = $this->mockCommonModel->getMockKind();
         $codes = $this->codeModel->getCcdInArray([$this->applyType, $this->acceptStatus]);
 
-        $this->load->view('board/mocktest/main/index', [
-            'board_name' => $this->board_name,
+        $this->load->view('board/mocktest/main/mainList', [
+            'boardName' => $this->boardName,
             'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}",
             'siteCodeDef' => $cateD1[0]['SiteCode'],
             'cateD1' => $cateD1,
@@ -43,7 +43,7 @@ class Main extends BaseBoard
         ]);
     }
 
-    public function listAjax()
+    public function mainListAjax()
     {
         $arr_condition = $this->_getListConditions();
 

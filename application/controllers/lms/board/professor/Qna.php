@@ -135,9 +135,6 @@ class Qna extends BaseBoard
         //상담유형
         $arr_type_group_ccd = $this->_getCcdArray($this->_groupCcd['type_group_ccd']);
 
-        //답변상태
-        $arr_reply = $this->_getCcdArray($this->_groupCcd['reply']);
-
         //과목
         $arr_subject = $this->professorModel->getProfessorSubjectArray($prof_idx);
 
@@ -147,7 +144,6 @@ class Qna extends BaseBoard
             'ret_search_site_code' => $arr_search_data['ret_search_site_code'],
             'arr_ccd_reply' => $this->_Ccd['reply'],
             'arr_type_group_ccd' => $arr_type_group_ccd,
-            'arr_reply' => $arr_reply,
             'arr_lg_category' => element('LG', $arr_category, []),
             'arr_md_category' => element('MD', $arr_category, []),
             'arr_subject' => $arr_subject,

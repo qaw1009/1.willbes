@@ -1,0 +1,131 @@
+<?php
+/**
+ * ======================================================================
+ * 모의고사성적관리 > 성적처리통계
+ * ======================================================================
+ *
+ * lms_Product_Mock, lms_Product_Mock_R_Paper, lms_Product, lms_Product_R_Category, lms_Product_Sale, lms_Product_Sms DB에 나눠서 분리 저장
+ */
+
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class StatisticsGrade extends \app\controllers\BaseController
+{
+    protected $models = array('sys/site', 'sys/code', 'sys/category', 'product/base/subject', 'common/searchProfessor', 'mocktest/mockCommon', 'mocktest/regGrade');
+    protected $helpers = array();
+
+    protected $applyType;
+    protected $applyArea1;
+    protected $applyArea2;
+    protected $addPoint;
+    protected $applyType_on;
+    protected $applyType_off;
+    protected $acceptStatus;
+
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->applyType = $this->config->item('sysCode_applyType', 'mock');
+        $this->applyArea1 = $this->config->item('sysCode_applyArea1', 'mock');
+        $this->applyArea2 = $this->config->item('sysCode_applyArea2', 'mock');
+        $this->addPoint = $this->config->item('sysCode_addPoint', 'mock');
+        $this->applyType_on = $this->config->item('sysCode_applyType_on', 'mock');
+        $this->applyType_off = $this->config->item('sysCode_applyType_off', 'mock');
+        $this->acceptStatus = $this->config->item('sysCode_acceptStatus', 'mock');
+    }
+
+    /**
+     * 메인
+     */
+    public function index()
+    {
+        //공통코드
+        $codes = $this->codeModel->getCcdInArray(['675']);
+
+        $cateD1 = $this->categoryModel->getCategoryArray('', '', '', 1);
+        $cateD2 = $this->mockCommonModel->getMockKind();
+        $codes = $this->codeModel->getCcdInArray([$this->applyType, $this->acceptStatus]);
+
+
+        $this->load->view('mocktest/statistics/grade/index', [
+            'siteCodeDef' => $cateD1[0]['SiteCode'],
+            'cateD1' => $cateD1,
+            'cateD2' => $cateD2,
+            'applyType' => $codes[$this->applyType],
+            'accept_ccd' => $codes[$this->acceptStatus],
+        ]);
+
+
+    }
+
+
+    /**
+     * 리스트
+     */
+    public function list()
+    {
+        $rules = [
+            ['field' => 'search_site_code', 'label' => '사이트', 'rules' => 'trim|is_natural_no_zero'],
+            ['field' => 'search_cateD1', 'label' => '카테고리', 'rules' => 'trim|is_natural_no_zero'],
+            ['field' => 'search_cateD2', 'label' => '직렬', 'rules' => 'trim|is_natural_no_zero'],
+            ['field' => 'search_year', 'label' => '연도', 'rules' => 'trim|is_natural_no_zero'],
+            ['field' => 'search_round', 'label' => '회차', 'rules' => 'trim|is_natural_no_zero'],
+            ['field' => 'search_TakeFormsCcd', 'label' => '응시형태', 'rules' => 'trim|is_natural_no_zero'],
+            ['field' => 'search_AcceptStatus', 'label' => '접수상태', 'rules' => 'trim|is_natural_no_zero'],
+            //['field' => 'search_TakeType', 'label' => '응시기간', 'rules' => 'trim|in_list[A,L]'],
+            ['field' => 'search_use', 'label' => '사용여부', 'rules' => 'trim|in_list[Y,N]'],
+            ['field' => 'search_fi', 'label' => '검색', 'rules' => 'trim'],
+            ['field' => 'length', 'label' => 'Length', 'rules' => 'trim|numeric'],
+            ['field' => 'start', 'label' => 'Start', 'rules' => 'trim|numeric'],
+        ];
+        if ($this->validate($rules) === false) return;
+
+        $condition = [
+            'EQ' => [
+                'PD.SiteCode' => $this->input->post('search_site_code'),
+                'PC.CateCode' => $this->input->post('search_cateD1'),
+                'MP.MockYear' => $this->input->post('search_year'),
+                'MP.MockRotationNo' => $this->input->post('search_round'),
+                'MP.AcceptStatusCcd' => $this->input->post('search_AcceptStatus'),
+                'MP.TakeType' => $this->input->post('search_TakeType'),
+                'PD.IsUse' => $this->input->post('search_use'),
+            ],
+            'LKB' => [
+                'MP.MockPart' => $this->input->post('search_cateD2'),
+                'MP.TakeFormsCcd' => $this->input->post('search_TakeFormsCcd'),
+            ],
+            'ORG' => [
+                'LKB' => [
+                    'PD.ProdName' => $this->input->post('search_fi', true),
+                    'A.wAdminName' => $this->input->post('search_fi', true),
+                    'PD.SaleStartDatm' => $this->input->post('search_fi', true),
+                    'PD.SaleEndDatm' => $this->input->post('search_fi', true),
+                    'PS.RealSalePrice' => $this->input->post('search_fi', true),
+                ]
+            ],
+        ];
+        list($data, $count) = $this->regGradeModel->mainList($condition, $this->input->post('length'), $this->input->post('start'));
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $data,
+        ]);
+    }
+
+
+    /**
+     * 임시저장 전체
+     * @return object|string
+     */
+    public function scoreMakeAjax()
+    {
+        ////////////////////////////////////////////////
+
+        $result = $this->regGradeModel->scoreMake($this->_reqP(null, false));
+        $this->json_result($result, '저장되었습니다.', $result, $result);
+
+    }
+}

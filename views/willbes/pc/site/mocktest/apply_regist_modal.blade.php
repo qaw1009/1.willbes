@@ -8,9 +8,10 @@
    <form id="_regi_mock_form" name="regi_mock_form" method="POST" onsubmit="return false;" novalidate>
     {!! csrf_field() !!}
     {!! method_field('POST') !!}
-        <input type="hidden" name="learn_pattern" value="mock_exam"/>  {{-- 학습형태 --}}
+       <input type="hidden" name="learn_pattern" value="mock_exam"/>  {{-- 학습형태 --}}
        <input type="checkbox" name="prod_code[]" class='d_none' value="{{ $ProdCode }}:613001:{{ $ProdCode }}" checked/>
-        <input type="hidden" name="cart_type" value="mock_exam"/>   {{-- 장바구니 탭 아이디 --}}
+       <input type="hidden" name="cart_type" value="mock_exam"/>   {{-- 장바구니 탭 아이디 --}}
+       <input type="hidden" name="is_direct_pay" value="Y"/>
 
         <div class="PASSZONE-Lec-Section">
             <div class="LeclistTable">

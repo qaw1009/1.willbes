@@ -20,7 +20,7 @@ $.extend(true, $.fn.dataTable.defaults, {
         },
         "sInfo": "총 _TOTAL_개의 항목 중 _START_ ~ _END_ 표시",
         "sLengthMenu": "_MENU_ 개의 항목 표시",
-        "sProcessing": "로딩 중 ...",
+        "sProcessing": "로딩 중 ... <i class='fa fa-spin fa-refresh'></i>",
         "sEmptyTable": "조회된 데이터가 없습니다.",
         "sZeroRecords": "일치하는 데이터가 없습니다.",
         "sInfoFiltered": "",

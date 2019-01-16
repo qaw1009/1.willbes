@@ -71,9 +71,20 @@ class OrderCalcModel extends BaseOrderModel
         }
 
         // 조회 로우 from 쿼리
+        // 결제완료일, 환불완료일 조건 => union으로 대체 (and (O.CompleteDatm between ? and ? or OPR.RefundDatm between ? and ?))
         $raw_query = '
             select ' . $in_column . '
-			from ' . $this->_table['order'] . ' as O
+			from (
+					select OrderIdx
+					from ' . $this->_table['order'] . '
+					where CompleteDatm between ? and ?
+					union
+					select OrderIdx
+					from ' . $this->_table['order_product_refund'] . '
+					where RefundDatm between ? and ?			
+			    ) as BO
+			    inner join ' . $this->_table['order'] . ' as O
+			        on BO.OrderIdx = O.OrderIdx
 				inner join ' . $this->_table['order_product'] . ' as OP
 					on O.OrderIdx = OP.OrderIdx
 				left join ' . $this->_table['order_product_refund'] . ' as OPR
@@ -95,8 +106,7 @@ class OrderCalcModel extends BaseOrderModel
 				left join ' . $this->_table['code'] . ' as CPM
 					on O.PayMethodCcd = CPM.Ccd and CPM.GroupCcd = "' . $this->_group_ccd['PayMethod'] . '" and CPM.IsStatus = "Y"
 			where OP.RealPayPrice > 0
-				and OP.PayStatusCcd in ("' . $this->_pay_status_ccd['paid'] . '", "' . $this->_pay_status_ccd['refund'] . '")
-				and (O.CompleteDatm between ? and ? or OPR.RefundDatm between ? and ?)
+				and OP.PayStatusCcd in ("' . $this->_pay_status_ccd['paid'] . '", "' . $this->_pay_status_ccd['refund'] . '")				
 				and (PL.PackTypeCcd is null or PL.PackTypeCcd = "' . $this->_adminpack_lecture_type_ccd['normal'] . '")';
 
         if ($prod_type === 'lecture') {
@@ -260,9 +270,20 @@ class OrderCalcModel extends BaseOrderModel
         }
 
         // 조회 로우 from 쿼리
+        // 결제완료일, 환불완료일 조건 => union으로 대체 (and (O.CompleteDatm between ? and ? or OPR.RefundDatm between ? and ?))
         $raw_query = '
             select ' . $in_column . '
-			from ' . $this->_table['order'] . ' as O
+			from (
+					select OrderIdx
+					from ' . $this->_table['order'] . '
+					where CompleteDatm between ? and ?
+					union
+					select OrderIdx
+					from ' . $this->_table['order_product_refund'] . '
+					where RefundDatm between ? and ?				 
+			    ) as BO
+			    inner join ' . $this->_table['order'] . ' as O
+			        on BO.OrderIdx = O.OrderIdx
 				inner join ' . $this->_table['order_product'] . ' as OP
 					on O.OrderIdx = OP.OrderIdx
 				left join ' . $this->_table['order_product_refund'] . ' as OPR
@@ -287,7 +308,6 @@ class OrderCalcModel extends BaseOrderModel
 					on O.PayMethodCcd = CPM.Ccd and CPM.GroupCcd = "' . $this->_group_ccd['PayMethod'] . '" and CPM.IsStatus = "Y"
 			where OP.RealPayPrice > 0
 				and OP.PayStatusCcd in ("' . $this->_pay_status_ccd['paid'] . '", "' . $this->_pay_status_ccd['refund'] . '")
-				and (O.CompleteDatm between ? and ? or OPR.RefundDatm between ? and ?)
 				and PL.PackTypeCcd = "' . $this->_adminpack_lecture_type_ccd['choice'] . '"';
 
         if ($prod_type === 'lecture') {
@@ -455,9 +475,20 @@ class OrderCalcModel extends BaseOrderModel
         }
 
         // 조회 로우 from 쿼리
+        // 결제완료일, 환불완료일 조건 => union으로 대체 (and (O.CompleteDatm between ? and ? or OPR.RefundDatm between ? and ?))
         $raw_query = '
             select ' . $in_column . '
-			from ' . $this->_table['order'] . ' as O
+			from (
+					select OrderIdx
+					from ' . $this->_table['order'] . '
+					where CompleteDatm between ? and ?
+					union
+					select OrderIdx
+					from ' . $this->_table['order_product_refund'] . '
+					where RefundDatm between ? and ?				
+			    ) as BO
+			    inner join ' . $this->_table['order'] . ' as O
+			        on BO.OrderIdx = O.OrderIdx
 				inner join ' . $this->_table['order_product'] . ' as OP
 					on O.OrderIdx = OP.OrderIdx
 				left join ' . $this->_table['order_product_refund'] . ' as OPR
@@ -473,8 +504,7 @@ class OrderCalcModel extends BaseOrderModel
 				left join ' . $this->_table['code'] . ' as CPM
 					on O.PayMethodCcd = CPM.Ccd and CPM.GroupCcd = "' . $this->_group_ccd['PayMethod'] . '" and CPM.IsStatus = "Y"							
 			where OP.RealPayPrice > 0
-				and OP.PayStatusCcd in ("' . $this->_pay_status_ccd['paid'] . '", "' . $this->_pay_status_ccd['refund'] . '")
-				and (O.CompleteDatm between ? and ? or OPR.RefundDatm between ? and ?)';
+				and OP.PayStatusCcd in ("' . $this->_pay_status_ccd['paid'] . '", "' . $this->_pay_status_ccd['refund'] . '")';
 
         if ($prod_type === 'lecture') {
             // 온라인강좌

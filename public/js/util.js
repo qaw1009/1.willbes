@@ -233,13 +233,18 @@ function dtParamsToQueryString($datatable) {
  * @param url
  * @param params
  * @param method
+ * @param target
  */
-function formCreateSubmit(url, params, method) {
+function formCreateSubmit(url, params, method, target) {
     method = method || 'POST';
 
     var form = document.createElement('form');
     form.setAttribute('method', method);
     form.setAttribute('action', url);
+
+    if (typeof target !== 'undefined') {
+        form.setAttribute('target', target);
+    }
 
     if (params != null) {
         for(var i = 0; i < params.length; i++) {

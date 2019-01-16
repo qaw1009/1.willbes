@@ -31,7 +31,6 @@ class MockTest extends \app\controllers\FrontController
      */
     public function apply()
     {
-        $sess_mem_idx = $this->session->userdata('mem_idx');
         $applyType = $this->codeModel->getCcd('675');
 
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));

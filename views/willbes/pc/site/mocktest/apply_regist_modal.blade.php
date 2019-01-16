@@ -8,9 +8,9 @@
    <form id="_regi_mock_form" name="regi_mock_form" method="POST" onsubmit="return false;" novalidate>
     {!! csrf_field() !!}
     {!! method_field('POST') !!}
-    <input type="hidden" name="prod_code" value="{{ $ProdCode }}"/>  {{-- 학습형태 --}}
-    <input type="hidden" name="cart_type" value=""/>   {{-- 장바구니 탭 아이디 --}}
-    <input type="hidden" name="is_direct_pay" value=""/>    {{-- 바로결제 여부 --}}
+        <input type="hidden" name="learn_pattern" value="mock_exam"/>  {{-- 학습형태 --}}
+       <input type="checkbox" name="prod_code[]" class='d_none' value="{{ $ProdCode }}:613001:{{ $ProdCode }}" checked/>
+        <input type="hidden" name="cart_type" value="mock_exam"/>   {{-- 장바구니 탭 아이디 --}}
 
         <div class="PASSZONE-Lec-Section">
             <div class="LeclistTable">
@@ -144,10 +144,7 @@
             <li class="tit strong">[결제시 유의사항]</li>
             <li class="txt">· 접수기간이 마감된 후에는 결제하기가 불가능합니다.</li>
             <li class="txt">· 환불요청은 시험응시 2일 전까지 가능하며, 시험응시일 이후에는 환불이 불가능합니다.</li>
-            <li class="txt">· 결제(접수)상태가 '결제대기'인 경우만 모의고사 접수정보 수정이 가능합니다.<br/>
-                &nbsp; (단, 접수기간이 마감된 경우 수정이 불가합니다.)
-            </li>
-            <li class="txt">· 결제대기 취소시 에는 해당 모의고사 접수정보는 내강의실 > 모의고사관리 > 접수현황메뉴에서 삭제 처리됩니다.</li>
+            <li class="txt">· 결제 후 모의고사 응시정보 수정은 불가능하며, 응시정보 수정을 원하실 경우 환불 후 재결제하셔야 합니다.</li>
             <li class="txt">· 자세한 사항은 고객센터 1566-5006으로 문의해 주세요.</li>
         </ul>
         <div class="passzonebtn tx-center">
@@ -172,7 +169,7 @@
 
 </div>
 
-
+<script src="/public/js/willbes/product_util.js"></script>
 <script type="text/javascript">
     var $regi_mock_form = $('#_regi_mock_form');
 
@@ -223,7 +220,7 @@
 
                 var $is_direct_pay = $(this).data('direct-pay');
                 var $is_redirect = $(this).data('is-redirect');
-                //cartNDirectPay($regi_mock_form, $is_direct_pay, $is_redirect);
+                cartNDirectPay($regi_mock_form, $is_direct_pay, $is_redirect);
             });
         });
 </script>

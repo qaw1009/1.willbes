@@ -61,6 +61,10 @@
                                                 @if($row['IsCoupon'] == 'Y')
                                                     <span class="tBox NSK t1 black"><a href="#none" class="btn-coupon-apply" data-cart-idx="{{ $row['CartIdx'] }}">쿠폰적용</a></span>
                                                 @endif
+                                                @if($row['CartProdType'] == 'mock_exam')
+                                                    {{-- 모의고사 응시정보 --}}
+                                                    <span class="pBox p4 ml5"><a href="#none" class="btn-mock-exam-info" data-cart-idx="{{ $row['CartIdx'] }}">응시정보</a></span>
+                                                @endif
                                             </dt>
                                             <dt>
                                                 {{-- 온라인강좌일 경우만 강좌시작일 설정 --}}
@@ -506,6 +510,13 @@
 
                 // 강좌종료일 설정
                 $regi_form.find('input[name="study_end_date[' + cart_idx + ']"]').val(moment(selected_date).add(study_days - 1, 'days').format('YYYY-MM-DD'));
+            });
+
+            // 모의고사 응시정보 버튼 클릭
+            $regi_form.on('click', '.btn-mock-exam-info', function() {
+                var cart_idx = $(this).data('cart-idx');
+
+                alert('장바구니식별자 = ' + cart_idx);
             });
 
             // 쿠폰적용 버튼 클릭

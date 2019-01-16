@@ -252,8 +252,19 @@ class Cart extends \app\controllers\FrontController
         }
 
         // 기간제선택형패키지 과목/교수 정보
-        if (empty($arr_subject_prof_idx) === false) {
+        if ($learn_pattern == 'periodpack_lecture' && empty($arr_subject_prof_idx) === false) {
             $post_data['subject_prof_idx'] = (array) $arr_subject_prof_idx;
+            $post_data = json_encode($post_data);
+        }
+
+        // 모의고사상품 선택정보
+        if ($learn_pattern == 'mock_exam') {
+            $post_data['mock_exam'] = [
+                'mock_part' => $this->_reqP('TakeMockPart'),
+                'subject_ess' => $this->_reqP('subject_ess'),
+                'subject_sub' => $this->_reqP('subject_sub'),
+                'add_point' => $this->_reqP('AddPoint')
+            ];
             $post_data = json_encode($post_data);
         }
 

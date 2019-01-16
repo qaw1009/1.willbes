@@ -170,6 +170,6 @@ class BaseOrder extends \app\controllers\BaseController
      */
     protected function _getListOrderBy()
     {
-        return ['OrderIdx' => 'desc', 'OrderProdIdx' => 'asc'];
+        return ['OrderIdx' => 'desc'];
     }
 }

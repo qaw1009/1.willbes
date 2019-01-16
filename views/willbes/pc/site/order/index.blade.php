@@ -471,7 +471,7 @@
             <!-- willbes-Layer-CartBox : Coupon -->
             <div id="MyAddress" class="willbes-Layer-Black"></div>
             <!-- willbes-Layer-CartBox : 나의 배송 주소록 -->
-            <div id="MockExam" class="willbes-Layer-Black"></div>
+            <div id="MockExam" class="willbes-Layer-PassBox willbes-Layer-PassBox740 abs"></div>
             <!-- willbes-Layer-CartBox : 모의고사 응시정보 -->
         </div>
         <div class="Quick-Bnr ml20 mt85">

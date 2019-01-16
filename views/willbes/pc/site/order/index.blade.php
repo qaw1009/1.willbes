@@ -471,6 +471,8 @@
             <!-- willbes-Layer-CartBox : Coupon -->
             <div id="MyAddress" class="willbes-Layer-Black"></div>
             <!-- willbes-Layer-CartBox : 나의 배송 주소록 -->
+            <div id="MockExam" class="willbes-Layer-Black"></div>
+            <!-- willbes-Layer-CartBox : 모의고사 응시정보 -->
         </div>
         <div class="Quick-Bnr ml20 mt85">
             <img src="{{ img_url('sample/banner_180605.jpg') }}">
@@ -515,8 +517,12 @@
             // 모의고사 응시정보 버튼 클릭
             $regi_form.on('click', '.btn-mock-exam-info', function() {
                 var cart_idx = $(this).data('cart-idx');
+                var ele_id = 'MockExam';
+                var data = { 'ele_id' : ele_id };
 
-                alert('장바구니식별자 = ' + cart_idx);
+                sendAjax('{{ front_url('/mockTest/apply_cart_modal/') }}' + cart_idx, data, function(ret) {
+                    $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');
+                }, showAlertError, false, 'GET', 'html');
             });
 
             // 쿠폰적용 버튼 클릭

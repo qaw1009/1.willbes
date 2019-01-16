@@ -329,6 +329,18 @@
                             </div>
                         </td>
                     </tr>
+
+                    <tr>
+                        <th colspan="1">쿠폰사용결제 <span class="required">*</span></th>
+                        <td colspan="3" class="form-inline">
+                            <div class="radio">
+                                <input type="radio" name="IsCoupon" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['IsCoupon']=='Y')checked="checked"@endif/> 가능
+                                &nbsp;
+                                <input type="radio" name="IsCoupon" class="flat" value="N" @if($data['IsCoupon']=='N')checked="checked"@endif/> 불가능
+                            </div>
+                        </td>
+                    </tr>
+
                     <tr>
                         <th colspan="1">자동문자(결제완료)</th>
                         <td colspan="3" class="form-inline">

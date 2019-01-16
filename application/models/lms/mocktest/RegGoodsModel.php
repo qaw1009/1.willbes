@@ -51,7 +51,7 @@ class RegGoodsModel extends WB_Model
 
 
         $select = "
-            SELECT MP.*, A.wAdminName, PD.ProdName, PD.SaleStartDatm, PD.SaleEndDatm, PD.IsUse, PS.SalePrice, PS.RealSalePrice,          
+            SELECT MP.*, A.wAdminName, PD.ProdName, PD.SaleStartDatm, PD.SaleEndDatm, PD.IsUse, PD.IsCoupon, PS.SalePrice, PS.RealSalePrice,          
             C1.CateName, C1.IsUse AS IsUseCate
             ,SC1.CcdName As AcceptStatusCcd_Name
         ";
@@ -121,9 +121,9 @@ class RegGoodsModel extends WB_Model
             // lms_Product 복사
             $sql = "
                 INSERT INTO {$this->_table['Product']}
-                    (ProdCode, SiteCode, ProdName, ProdTypeCcd, SaleStartDatm, SaleEndDatm, SaleStatusCcd, PointApplyCcd, IsSms, IsUse,
+                    (ProdCode, SiteCode, ProdName, ProdTypeCcd, SaleStartDatm, SaleEndDatm, SaleStatusCcd, PointApplyCcd, IsSms, IsUse, IsCoupon, IsCart,
                      RegIp, RegAdminIdx, RegDatm)
-                SELECT ?, SiteCode, CONCAT('복사-', ProdName), ProdTypeCcd, SaleStartDatm, SaleEndDatm, SaleStatusCcd, PointApplyCcd, IsSms, 'N', ?, ?, ?
+                SELECT ?, SiteCode, CONCAT('복사-', ProdName), ProdTypeCcd, SaleStartDatm, SaleEndDatm, SaleStatusCcd, PointApplyCcd, IsSms, 'N', IsCoupon, IsCart, ?, ?, ?
                 FROM {$this->_table['Product']}
                 WHERE ProdCode = ? AND IsStatus = 'Y'";
             $this->_conn->query($sql, array($prodcode, $RegIp, $RegAdminIdx, $RegDatm, $idx));
@@ -226,6 +226,7 @@ class RegGoodsModel extends WB_Model
                 'PointApplyCcd' => $this->config->item('sysCode_PointApplyCcd', 'mock'),
                 'IsSms'         => $this->input->post('IsSms'),
                 'IsUse'         => $this->input->post('IsUse'),
+                'IsCoupon'       => $this->input->post('IsCoupon'),
                 'IsCart'         => 'N',
                 'RegIp'         => $this->input->ip_address(),
                 'RegDatm'       => $date,
@@ -342,6 +343,7 @@ class RegGoodsModel extends WB_Model
                 'SaleEndDatm'   => $SaleEndDatm,
                 'IsSms'         => $this->input->post('IsSms'), // 문자사용여부
                 'IsUse'         => $this->input->post('IsUse'),
+                'IsCoupon'         => $this->input->post('IsCoupon'),
                 'UpdDatm'       => $date,
                 'UpdAdminIdx'   => $this->session->userdata('admin_idx'),
             );
@@ -480,7 +482,7 @@ class RegGoodsModel extends WB_Model
         // 기본정보
         $sql = "
             SELECT MP.*,
-                   PD.SiteCode, PD.ProdName, PD.SaleStartDatm, PD.SaleEndDatm, PD.IsSms, PD.IsUse, PC.CateCode,
+                   PD.SiteCode, PD.ProdName, PD.SaleStartDatm, PD.SaleEndDatm, PD.IsSms, PD.IsUse, PC.CateCode,PD.IsCoupon, 
                    PS.SalePrice, PS.SaleRate, PS.SaleDiscType, PS.RealSalePrice,
                    SMS.SendTel, SMS.Memo
             FROM {$this->_table['mockProduct']} AS MP

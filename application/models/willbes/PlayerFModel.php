@@ -60,7 +60,7 @@ class PlayerFModel extends WB_Model
         $where = $this->_conn->makeWhere($cond);
         $where = $where->getMakeWhere(false);
 
-        $rows = $this->_conn->query('SELECT STRAIGHT_JOIN ' . $column . $from . $where);
+        $rows = $this->_conn->query('SELECT ' . $column . $from . $where);
         return empty($rows) === true ? [] : $rows->row_array();
     }
 
@@ -296,7 +296,7 @@ class PlayerFModel extends WB_Model
     function getStudyLog($cond)
     {
         // 회차 시간을 구한다.
-        $query = "SELECT STRAIGHT_JOIN * ";
+        $query = "SELECT * ";
         $query .= " FROM {$this->_table['lec_unit']} ";
         $where = $this->_conn->makeWhere($cond);
         $query .= $where->getMakeWhere(false);

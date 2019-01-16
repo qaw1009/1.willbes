@@ -83,7 +83,7 @@ class MemberFModel extends WB_Model
         $where = $this->_conn->makeWhere($arr_cond);
         $where = $where->getMakeWhere(false);
 
-        $rows = $this->_conn->query('SELECT STRAIGHT_JOIN ' . $column . $from . $where);
+        $rows = $this->_conn->query('SELECT ' . $column . $from . $where);
 
         return ($is_count === true) ? $rows->row(0)->rownums : $rows->row_array();
     }
@@ -98,10 +98,10 @@ class MemberFModel extends WB_Model
     public function getMemberForLogin($id, $pwd, $is_count = true)
     {
         if($is_count === true){ // 회원 수 검색
-            $query = "SELECT STRAIGHT_JOIN COUNT(*) AS rownums ";
+            $query = "SELECT COUNT(*) AS rownums ";
 
         } else { // 데이터 검색
-            $query = "SELECT STRAIGHT_JOIN 
+            $query = "SELECT  
             Mem.MemIdx, Mem.MemName, Mem.MemId, 
             Mem.IsStatus, Mem.IsDup, Mem.IsChange,
             fn_dec(Mem.MailEnc) AS Mail, fn_dec(Mem.PhoneEnc) AS Phone ";
@@ -444,7 +444,7 @@ class MemberFModel extends WB_Model
             return false;
         }
 
-        $query = " SELECT STRAIGHT_JOIN COUNT(*) AS rownums
+        $query = " SELECT COUNT(*) AS rownums
             FROM {$this->_table['member']} AS Mem 
             INNER JOIN {$this->_table['info']} AS Info ON Info.MemIdx = Mem.MemIdx
             WHERE Mem.MemIdx = ? 

@@ -549,9 +549,9 @@ class ClassroomFModel extends WB_Model
     public function getRebuyLog($cond, $isCount = false)
     {
         if($isCount === true){
-            $query = "SELECT STRAIGHT_JOIN COUNT(*) AS rownums ";
+            $query = "SELECT COUNT(*) AS rownums ";
         } else {
-            $query = "SELECT STRAIGHT_JOIN * ";
+            $query = "SELECT * ";
         }
 
         $query .= " FROM {$this->_table['mylecture']} ";
@@ -648,7 +648,7 @@ class ClassroomFModel extends WB_Model
      */
     public function getBooklist($cond)
     {
-        $query = "SELECT STRAIGHT_JOIN * FROM {$this->_table['booklist']} ";
+        $query = "SELECT * FROM {$this->_table['booklist']} ";
         $where = $this->_conn->makeWhere($cond);
         $query .= $where->getMakeWhere(false);
         $query .= " ORDER BY BookProvisionCcd ASC ";
@@ -689,7 +689,7 @@ class ClassroomFModel extends WB_Model
 
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
 
-        return $this->_conn->query('SELECT STRAIGHT_JOIN '. $column. $from. $where)->result_array();
+        return $this->_conn->query('SELECT '. $column. $from. $where)->result_array();
     }
 
 }

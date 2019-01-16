@@ -20,11 +20,11 @@ class StudentModel extends WB_Model
     public function getListLecture($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         if ($is_count === true) {
-            $column = ' STRAIGHT_JOIN count(*) AS numrows';
+            $column = '  count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
 
-            $column = " STRAIGHT_JOIN
+            $column = " 
                      A.ProdCode, A.ProdName, A.IsNew, A.IsBest, A.IsUse, A.RegDatm
                     ,Aa.CcdName as SaleStatusCcd_Name,A.SiteCode,Ab.SiteName
                     ,Ac.CcdName as ProdTypeCcd_Name
@@ -116,11 +116,11 @@ class StudentModel extends WB_Model
     public function getStudentList($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         if ($is_count === true) {
-            $column = ' STRAIGHT_JOIN count(*) AS numrows';
+            $column = '  count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
 
-            $column = " STRAIGHT_JOIN M.MemIdx, M.MemName, M.MemId, fn_dec(M.PhoneEnc) as Phone, fn_dec(M.MailEnc) as Mail
+            $column = "  M.MemIdx, M.MemName, M.MemId, fn_dec(M.PhoneEnc) as Phone, fn_dec(M.MailEnc) as Mail
                 ,OP.SalePatternCcd, OPa.CcdName as SalePatternCcd_Name, OP.RealPayPrice as Price
                 ,O.OrderIdx, O.payRouteCcd, Oa.CcdName as PayRouteCcd_Name, O.PayMethodCcd, Ob.CcdName as PayMethodCcd_Name
                 ,O.CompleteDatm as PayDate, ifnull(A.wAdminName, '') as AdminName
@@ -163,7 +163,7 @@ class StudentModel extends WB_Model
     public function getStudentExcelList($column, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
 
-        $in_column = " STRAIGHT_JOIN M.MemIdx, M.MemName, M.MemId, fn_dec(M.PhoneEnc) as Phone, fn_dec(M.MailEnc) as Mail
+        $in_column = "  M.MemIdx, M.MemName, M.MemId, fn_dec(M.PhoneEnc) as Phone, fn_dec(M.MailEnc) as Mail
             ,OP.SalePatternCcd, OPa.CcdName as SalePatternCcd_Name, OP.RealPayPrice as Price
             ,O.OrderIdx, O.payRouteCcd, Oa.CcdName as PayRouteCcd_Name, O.PayMethodCcd, Ob.CcdName as PayMethodCcd_Name
             ,O.CompleteDatm as PayDate, A.wAdminName as AdminName

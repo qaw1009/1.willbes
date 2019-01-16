@@ -251,6 +251,6 @@ class AllStats extends \app\controllers\BaseController
 
         // export excel
         $this->load->library('excel');
-        $this->excel->exportExcel('윌비스전체매출현황매출통계상세보기리스트', $list, $headers);
+        $this->excel->exportHugeExcel('윌비스전체매출현황_상세보기리스트', $list, $headers);
     }
 }

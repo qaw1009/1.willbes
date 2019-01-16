@@ -50,16 +50,57 @@ class Excel
             }
 
             // export
-            $writer = IOFactory::createWriter($spreadsheet, 'Xls');
-
             ob_end_clean();
-            header('Content-type: application/vnd.ms-excel');
-            header('Content-Disposition: attachment; filename="' . iconv('UTF-8','EUC-KR',$file_name).'.xls"');
+            header('Content-type: application/vnd.ms-excel'); // xls
+            //header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');  // xlsx
+            header('Content-Disposition: attachment; filename="' . iconv('UTF-8','EUC-KR', $file_name).'.xls"');
             header('Expires: 0');
             header('Content-Transfer-Encoding: binary');
             header('Cache-Control: private, no-transform, no-store, must-revalidate');
 
+            $writer = IOFactory::createWriter($spreadsheet, 'Xls');
             $writer->save('php://output');
+        } catch (\Exception $e) {
+            logger($e->getFile() . ' : ' . $e->getLine() . ' line : ' . $e->getMessage(), ['file_name' => $file_name], 'error');
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * export 대용량 엑셀파일 by box/spout library
+     * @param string $file_name [확장자를 제외한 파일명]
+     * @param array $data [데이터 배열]
+     * @param array $headers [헤드 타이틀 배열]
+     * @return bool
+     */
+    public function exportHugeExcel($file_name, $data = [], $headers = [])
+    {
+        try {
+            $writer = Box\Spout\Writer\WriterFactory::create(Box\Spout\Common\Type::XLSX);
+            //$writer->setTempFolder(STORAGEPATH . 'tmp/');
+            //$writer->openToFile('php://output');
+            $writer->openToBrowser($file_name . '.xlsx');
+            $writer->addRow($headers);
+
+            //for ($i = 0; $i < 1000; $i++) {     // TODO : 다운로드 테스트
+                foreach ($data as $idx => $row) {
+                    $writer->addRow($row);
+
+                    ob_flush();
+                    flush();
+                }
+            //}
+
+            ob_end_clean();
+            /* output download
+            header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+            header('Content-Disposition: attachment; filename="' . iconv('UTF-8','EUC-KR', $file_name).'.xlsx"');
+            header('Expires: 0');
+            header('Content-Transfer-Encoding: binary');
+            header('Cache-Control: private, no-transform, no-store, must-revalidate');*/
+
+            $writer->close();
         } catch (\Exception $e) {
             logger($e->getFile() . ' : ' . $e->getLine() . ' line : ' . $e->getMessage(), ['file_name' => $file_name], 'error');
             return false;

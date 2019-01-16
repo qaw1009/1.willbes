@@ -146,6 +146,7 @@ class Qna extends Main
             LB.BoardIdx, LB.RegType, LB.SiteCode, LB.CampusCcd, LBC.CateCode,
             LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.IsPublic, LB.IsStatus,
             LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName,
+            LBA_1.AttachFileIdx as reply_AttachFileIdx, LBA_1.AttachFilePath as reply_AttachFilePath, LBA_1.AttachFileName as reply_AttachFileName, LBA_1.AttachRealFileName as reply_AttachRealFileName,
             LB.RegMemIdx, MEM.MemName AS RegMemName,
             LB.ReplyAdminIdx, LB.ReplyRegDatm,
             LB.typeCcd, LSC2.CcdName AS TypeCcdName,

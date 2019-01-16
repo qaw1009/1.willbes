@@ -72,7 +72,7 @@ class BoardModel extends WB_Model
             LEFT OUTER JOIN (
                 SELECT BoardIdx, AttachFileType, GROUP_CONCAT(AttachFilePath) AS AttachFilePath, GROUP_CONCAT(AttachFileName) AS AttachFileName, GROUP_CONCAT(AttachRealFileName) AS AttachRealFileName
                 FROM {$this->_table_attach}
-                WHERE IsStatus = 'Y'
+                WHERE IsStatus = 'Y' AND RegType = 1
                 GROUP BY BoardIdx
             ) AS LBA ON LB.BoardIdx = LBA.BoardIdx
             LEFT OUTER JOIN {$this->_table_sys_site} as LS ON LB.SiteCode = LS.SiteCode
@@ -129,6 +129,12 @@ class BoardModel extends WB_Model
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC3 ON LB.ReplyStatusCcd = LSC3.Ccd
                     LEFT OUTER JOIN {$this->_table_sys_admin} as ADMIN2 ON LB.ReplyAdminIdx = ADMIN2.wAdminIdx
                     LEFT OUTER JOIN {$this->_table_sys_category} as MdSysCate ON LB.MdCateCode = MdSysCate.CateCode AND LB.SiteCode = MdSysCate.SiteCode
+                    LEFT OUTER JOIN (
+                        select BoardIdx, AttachFileType, GROUP_CONCAT(BoardFileIdx) AS AttachFileIdx, GROUP_CONCAT(AttachFilePath) AS AttachFilePath, GROUP_CONCAT(AttachFileName) AS AttachFileName, GROUP_CONCAT(AttachRealFileName) AS AttachRealFileName
+                        from {$this->_table_attach}
+                        where IsStatus = 'Y' and RegType = 0
+                        GROUP BY BoardIdx
+                    ) as LBA_1 ON LB.BoardIdx = LBA_1.BoardIdx
                 ";
                 break;
             case "material" :

@@ -146,6 +146,7 @@
                 <th>운영사이트</th>
                 <th>카테고리</th>
                 <th>제목</th>
+                <th>첨부</th>
                 <th>등록자</th>
                 <th>등록일</th>
                 <th>답변상태</th>
@@ -216,6 +217,16 @@
                         } else {
                             return '<a href="javascript:void(0);" class="btn-counsel-read" data-idx="' + row.BoardIdx + '"><u>' + data + '</u></a>';
                         }
+                    }},
+                {'data' : null, 'render' : function(data, type, row, meta) {
+                        var tmp_return;
+                        if (row.RegType == 1) {
+                            var file_data = row.AttachFileName;
+                        } else {
+                            var file_data = row.reply_AttachFileName;
+                        }
+                        (file_data === null) ? tmp_return = '' : tmp_return = '<p class="glyphicon glyphicon-file"></p>';
+                        return tmp_return;
                     }},
                 {'data' : 'RegType', 'render' : function(data, type, row, meta) {
                         if (data == 1) {

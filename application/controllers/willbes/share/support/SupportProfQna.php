@@ -186,6 +186,16 @@ class SupportProfQna extends BaseSupport
         //상담유형
         $arr_base['consult_type'] = $this->codeModel->getCcd($this->_groupCcd['consult_ccd']);
 
+        // 수강중인 강좌 목록 [단강좌 AND 수강이력 AND 강좌종료일 + 30 데이터]
+        $arr_condition = [
+            'RAW' => [
+                'MemIdx = ' => empty($this->session->userdata('mem_idx')) === true ? '\'\'' : $this->session->userdata('mem_idx'),
+                'RealLecEndDate >= ' => 'DATE_FORMAT(DATE_ADD(NOW(), INTERVAL +30 DAY),\'%Y-%m-%d\')',
+                'lastStudyDate != ' => '\'\''
+            ]
+        ];
+        $arr_base['on_my_lecture'] = $this->supportBoardTwoWayFModel->getOnMyLectureArray($arr_condition);
+
         $method = 'POST';
         $data = null;
 

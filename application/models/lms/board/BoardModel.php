@@ -167,6 +167,18 @@ class BoardModel extends WB_Model
         $where_temp = $this->_conn->makeWhere($arr_condition);
         $where_temp = $where_temp->getMakeWhere(false);
 
+        // Q&A일경우 조건 설정
+        $where_qna = '';
+        if ($board_type == 'qna' || $board_type == 'mocktest/qna') {
+            $where_qna = $this->_conn->group_start();
+                $this->_conn->group_start();
+                $where_qna->where('LB.RegType','1')->where('LB.IsStatus', 'Y');
+                $where_qna->group_end();
+                $where_qna->or_where('LB.RegType', '0');
+            $where_qna->group_end();
+            $where_qna = $where_qna->getMakeWhere(true);
+        }
+
         // 캠퍼스 권한
         $arr_auth_campus_ccds = get_auth_all_campus_ccds();
         $where_campus = $this->_conn->group_start();
@@ -185,7 +197,7 @@ class BoardModel extends WB_Model
         $where_campus = $where_campus->getMakeWhere(true);
 
         // 쿼리 실행
-        $where = $where_temp . $where_campus;
+        $where = $where_temp . $where_qna . $where_campus;
         $query = $this->_conn->query('select STRAIGHT_JOIN '. $master_column . $column . $from . $where . $order_by_offset_limit);
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
@@ -749,11 +761,18 @@ class BoardModel extends WB_Model
                 throw new \Exception('수정할 정보를 조회하지 못했습니다.');
             }
 
-            $inputData = array_merge($inputData,[
-                'ReplyAdminIdx' => $this->session->userdata('admin_idx'),
-                'ReplyRegDatm' => date('Y-m-d H:i:s'),
-                'ReplyRegIp' => $this->input->ip_address()
-            ]);
+            if ($result['ReplyStatusCcd'] == '621004') {
+                $inputData = array_merge($inputData,[
+                    'ReplyUpdAdminIdx' => $this->session->userdata('admin_idx'),
+                    'ReplyUpdDatm' => date('Y-m-d H:i:s')
+                ]);
+            } else {
+                $inputData = array_merge($inputData,[
+                    'ReplyAdminIdx' => $this->session->userdata('admin_idx'),
+                    'ReplyRegDatm' => date('Y-m-d H:i:s'),
+                    'ReplyRegIp' => $this->input->ip_address()
+                ]);
+            }
 
             $this->_conn->set($inputData)->where('BoardIdx', $board_idx);
             if ($this->_conn->update($this->_table) === false) {
@@ -1520,7 +1539,7 @@ class BoardModel extends WB_Model
      */
     private function _findBoardDataAll($idx)
     {
-        $column = 'BoardIdx';
+        $column = 'BoardIdx, ReplyStatusCcd';
         $from = "
             FROM {$this->_table}
         ";

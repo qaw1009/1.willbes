@@ -292,14 +292,24 @@
             $datatable.draw();
         });
 
-        // 공지 데이터 수정 폼
+        // 공지 수정 폼
         $list_table.on('click', '.btn-modify', function() {
             location.href='{{ site_url("/board/{$boardName}/createDetail") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}';
         });
 
-        // 공지 데이터 Read 페이지
+        // 공지 Read 페이지
         $list_table.on('click', '.btn-admin-read', function() {
             location.href='{{ site_url("/board/{$boardName}/readDetail") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}';
+        });
+
+        // 답변 수정/등록 폼
+        $list_table.on('click', '.btn-reply-modify', function() {
+            location.href='{{ site_url("/board/{$boardName}/createQnaReply") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}';
+        });
+
+        // 답변 Read 페이지
+        $list_table.on('click', '.btn-counsel-read', function() {
+            location.href='{{ site_url("/board/{$boardName}/readQnaReply") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}';
         });
     });
 </script>

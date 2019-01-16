@@ -24,6 +24,9 @@ class Qna extends Main
             'finish' => '621004'        //답변완료
         ]
     ];
+    private $_groupCcd = [
+        'reply' => '621',       //답변상태
+    ];
 
     public function __construct()
     {
@@ -106,6 +109,7 @@ class Qna extends Main
                 'LKB' => [
                     'LB.Title' => $this->_reqP('search_value'),
                     'LB.Content' => $this->_reqP('search_value'),
+                    'LB.ReplyContent' => $this->_reqP('search_replay_value'),
                     'MEM.MemId' => $this->_reqP('search_member_value'),
                     'MEM.MemName' => $this->_reqP('search_member_value'),
                     'MEM.Phone3' => $this->_reqP('search_member_value'),
@@ -268,6 +272,10 @@ class Qna extends Main
         $this->json_result($result, '저장 되었습니다.', $result);
     }
 
+    /**
+     * 모의고사 공지사항 뷰 페이지
+     * @param array $params
+     */
     public function readDetail($params = [])
     {
         $this->setDefaultBoardParam();
@@ -344,6 +352,217 @@ class Qna extends Main
     }
 
     /**
+     * 모의고사 공지사항 삭제
+     * @param array $params
+     */
+    public function deleteDetail($params = [])
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $idx = $params[0];
+        $result = $this->_delete($idx);
+        $this->json_result($result, '정상 처리 되었습니다.', $result);
+    }
+
+    /**
+     * 모의고사게시판 - 모의고사별 Q&A 답변 등록 페이지
+     * @param array $params
+     */
+    public function createQnaReply($params = [])
+    {
+        $this->setDefaultBoardParam();
+        $board_params = $this->getDefaultBoardParam();
+        $this->bm_idx = $board_params['bm_idx'];
+        $prod_code = $this->_req('prod_code');
+
+        if (empty($params[0]) === true) {
+            show_error('잘못된 접근 입니다.');
+        }
+
+        // 모의고사 상품 정보
+        $prod_data = $this->_prodData($prod_code);
+
+        $column = '
+            LB.BoardIdx, LB.RegType, LB.SiteCode, LB.CampusCcd, LBC.CateCode, LS.SiteName,
+            LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.IsPublic,
+            LB.ReadCnt, LB.SettingReadCnt,
+            LBA_1.AttachFileIdx as reply_AttachFileIdx, LBA_1.AttachFilePath as reply_AttachFilePath, LBA_1.AttachFileName as reply_AttachFileName, LBA_1.AttachRealFileName as reply_AttachRealFileName,
+            LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName,
+            LB.typeCcd, LSC2.CcdName AS TypeCcdName,
+            ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm,
+            MEM.MemName, MEM.MemId, fn_dec(MEM.PhoneEnc) AS MemPhone,
+            LB.VocCcd, LB.ReplyStatusCcd, LB.ReplyContent,
+            LB.SubjectIdx, PS.SubjectName,
+            LB.MdCateCode, MdSysCate.CateName as MdCateName
+            ';
+        $board_idx = $params[0];
+        $arr_condition = ([
+            'EQ'=>[
+                'LB.BoardIdx' => $board_idx,
+                'LB.RegType' => $this->_reg_type['user']
+            ]
+        ]);
+        $arr_condition_file = [
+            'reg_type' => $this->_reg_type['user'],
+            'attach_file_type' => $this->_attach_reg_type['default']
+        ];
+        $data = $this->boardModel->findBoardForModify($this->boardName, $column, $arr_condition, $arr_condition_file);
+
+        if (count($data) < 1) {
+            show_error('데이터 조회에 실패했습니다.');
+        }
+
+        $site_code = $data['SiteCode'];
+        $arr_cate_code = explode(',', $data['CateCode']);
+        $data['arr_attach_file_idx'] = explode(',', $data['AttachFileIdx']);
+        $data['arr_attach_file_path'] = explode(',', $data['AttachFilePath']);
+        $data['arr_attach_file_name'] = explode(',', $data['AttachFileName']);
+        $data['arr_attach_file_real_name'] = explode(',', $data['AttachRealFileName']);
+
+        $data['arr_reply_attach_file_idx'] = explode(',', $data['reply_AttachFileIdx']);
+        $data['arr_reply_attach_file_path'] = explode(',', $data['reply_AttachFilePath']);
+        $data['arr_reply_attach_file_name'] = explode(',', $data['reply_AttachFileName']);
+        $data['arr_reply_attach_file_real_name'] = explode(',', $data['reply_AttachRealFileName']);
+
+        $get_category_array = $this->_getCategoryArray($site_code);
+
+        foreach ($arr_cate_code as $item => $code) {
+            $data['arr_cate_code'][$code] = $get_category_array[$code];
+        }
+
+        $this->load->view("board/{$this->boardName}/create_qna_reply", [
+            'boardName' => $this->boardName,
+            'prod_data' => $prod_data,
+            'data' => $data,
+            'board_idx' => $board_idx,
+            'attach_file_cnt' => $this->boardModel->_attach_img_cnt
+        ]);
+    }
+
+    /**
+     * 모의고사 답변 등록
+     */
+    public function storeReply()
+    {
+        $this->setDefaultBoardParam();
+        $board_params = $this->getDefaultBoardParam();
+        $this->bm_idx = $board_params['bm_idx'];
+
+        $rules = [
+            ['field' => 'reply_contents', 'label' => '답변 내용', 'rules' => 'trim|required'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        if (empty($this->_reqP('idx')) === true) {
+            return $this->json_error('식별자가 없습니다.', _HTTP_NOT_FOUND);
+        } else {
+            $idx = $this->_reqP('idx');
+        }
+
+        $inputData = $this->_setReplyInputData($this->_reqP(null, false));
+
+        $result = $this->boardModel->replyAddBoard($inputData, $idx, $this->bm_idx);
+
+        $this->json_result($result, '저장 되었습니다.', $result);
+    }
+
+    public function readQnaReply($params = [])
+    {
+        $this->setDefaultBoardParam();
+        $board_params = $this->getDefaultBoardParam();
+        $this->bm_idx = $board_params['bm_idx'];
+        $prod_code = $this->_req('prod_code');
+
+        if (empty($params[0]) === true) {
+            show_error('잘못된 접근 입니다.');
+        }
+
+        // 모의고사 상품 정보
+        $prod_data = $this->_prodData($prod_code);
+
+        $column = '
+            LB.BoardIdx, LB.RegType, LB.SiteCode, LB.CampusCcd, LBC.CateCode, LS.SiteName,
+            LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.IsPublic,
+            LB.ReadCnt, LB.SettingReadCnt,
+            LBA_1.AttachFileIdx as reply_AttachFileIdx, LBA_1.AttachFilePath as reply_AttachFilePath, LBA_1.AttachFileName as reply_AttachFileName, LBA_1.AttachRealFileName as reply_AttachRealFileName,
+            LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName,
+            LB.typeCcd, LSC2.CcdName AS TypeCcdName,
+            ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm,
+            MEM.MemName, MEM.MemId, fn_dec(MEM.PhoneEnc) AS MemPhone,
+            LB.ReplyStatusCcd, LB.ReplyContent,
+            qnaAdmin.wAdminName AS qnaAdminName, qnaAdmin2.wAdminName AS qnaUpdAdminName,
+            LB.ReplyRegDatm, LB.ReplyUpdDatm,
+            LB.SubjectIdx, PS.SubjectName,
+            LB.MdCateCode, MdSysCate.CateName as MdCateName
+            ';
+        $board_idx = $params[0];
+        $arr_condition = ([
+            'EQ'=>[
+                'LB.BoardIdx' => $board_idx,
+                'LB.RegType' => $this->_reg_type['user'],
+                'LB.ProdCode' => $prod_code,
+            ]
+        ]);
+        $arr_condition_file = [
+            'reg_type' => $this->_reg_type['user'],
+            'attach_file_type' => $this->_attach_reg_type['default']
+        ];
+        $data = $this->boardModel->findBoardForModify($this->boardName, $column, $arr_condition, $arr_condition_file);
+
+        if (count($data) < 1) {
+            show_error('데이터 조회에 실패했습니다.');
+        }
+
+        $query_string = base64_decode(element('q',$this->_reqG(null)));
+        $search_datas = json_decode($query_string,true);
+
+        $data_PN = $this->_findBoardPrevious_Next($this->bm_idx, $board_idx, $data['IsBest'], $data['RegType'], $search_datas, '', '', $prod_code);
+        $board_previous = $data_PN['previous'];     //이전글
+        $board_next = $data_PN['next'];             //다음글
+
+        $site_code = $data['SiteCode'];
+        $arr_cate_code = explode(',', $data['CateCode']);
+        $data['arr_attach_file_idx'] = explode(',', $data['AttachFileIdx']);
+        $data['arr_attach_file_path'] = explode(',', $data['AttachFilePath']);
+        $data['arr_attach_file_name'] = explode(',', $data['AttachFileName']);
+        $data['arr_attach_file_real_name'] = explode(',', $data['AttachRealFileName']);
+
+        $data['arr_reply_attach_file_idx'] = explode(',', $data['reply_AttachFileIdx']);
+        $data['arr_reply_attach_file_path'] = explode(',', $data['reply_AttachFilePath']);
+        $data['arr_reply_attach_file_name'] = explode(',', $data['reply_AttachFileName']);
+        $data['arr_reply_attach_file_real_name'] = explode(',', $data['reply_AttachRealFileName']);
+
+        $get_category_array = $this->_getCategoryArray($site_code);
+        foreach ($arr_cate_code as $item => $code) {
+            $data['arr_cate_code'][$code] = $get_category_array[$code];
+        }
+
+        $arr_reply_code = $this->_getCcdArray($this->_groupCcd['reply']);
+        $data['reply_status'] = (empty($arr_reply_code[$data['ReplyStatusCcd']])) ? '' : $arr_reply_code[$data['ReplyStatusCcd']];
+
+        $this->load->view("board/{$this->boardName}/read_qna_reply", [
+            'boardName' => $this->boardName,
+            'prod_data' => $prod_data,
+            'data' => $data,
+            'getCategoryArray' => $get_category_array,
+            'board_idx' => $board_idx,
+            'arr_ccd_reply' => $this->_Ccd['reply'],
+            'attach_file_cnt' => $this->boardModel->_attach_img_cnt,
+            'board_previous' => $board_previous,
+            'board_next' => $board_next
+        ]);
+    }
+
+    /**
      * 첨부파일 다운로드
      */
     public function download()
@@ -371,6 +590,16 @@ class Qna extends Main
         ];
 
         return$input_data;
+    }
+
+    private function _setReplyInputData($input)
+    {
+        $input_data = [
+            'ReplyContent' => element('reply_contents', $input),
+            'ReplyStatusCcd' => $this->_Ccd['reply']['finish']
+        ];
+
+        return $input_data;
     }
 
     /**

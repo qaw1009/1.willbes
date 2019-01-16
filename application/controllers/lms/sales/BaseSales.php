@@ -186,7 +186,7 @@ class BaseSales extends \app\controllers\BaseController
      */
     private function _getListOrderBy()
     {
-        return ['OrderIdx' => 'desc', 'OrderProdIdx' => 'asc'];
+        return ['OrderIdx' => 'desc'];
     }
 
     /**

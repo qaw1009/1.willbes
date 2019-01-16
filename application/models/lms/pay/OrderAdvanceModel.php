@@ -187,7 +187,7 @@ class OrderAdvanceModel extends BaseOrderModel
                         on U.PackTypeCcd = CPT.Ccd and CPT.IsStatus = "Y"';
 
             // order by, offset, limit
-            $query .= ' order by U.OrderIdx desc, U.OrderProdIdx asc';
+            $query .= ' order by U.OrderIdx desc';
             is_null($limit) === false && is_null($offset) === false && $query .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
 
@@ -197,7 +197,7 @@ class OrderAdvanceModel extends BaseOrderModel
                 , ProdCode, ProdName, ProdCodeSub, ProdNameSub, wProfName, RealPayPrice, left(CompleteDatm, 10) as CompleteDate, RefundPrice, left(RefundDatm, 10) as RefundDate
                 , PayStatusName, RemainPrice, ProdDivisionRate, DivisionPayPrice, ProdCalcPerc, DivisionCalcPrice, LecStartDate, LecEndDate, RealLecEndDate, tExtenDays, tPauseDays
                 , LecPausePeriod1, LecPausePeriod2, LecPausePeriod3, StudyStatusName, LecExpireDay, LecRemainDay, LecUseDay, DivisionRemainPrice, DivisionUsePrice, BaseDate';
-            $query = 'select ' . $excel_column . ' from (' . $query . ') as ED order by OrderIdx desc, OrderProdIdx asc';
+            $query = 'select ' . $excel_column . ' from (' . $query . ') as ED order by OrderIdx desc';
         }
 
         // 쿼리 실행
@@ -352,7 +352,7 @@ class OrderAdvanceModel extends BaseOrderModel
                         on U.PackTypeCcd = CPT.Ccd and CPT.IsStatus = "Y"';
 
             // order by, offset, limit
-            $query .= ' order by U.OrderIdx desc, U.OrderProdIdx asc';
+            $query .= ' order by U.OrderIdx desc';
             is_null($limit) === false && is_null($offset) === false && $query .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
 
@@ -362,7 +362,7 @@ class OrderAdvanceModel extends BaseOrderModel
                 , ProdCode, ProdName, ProdCodeSub, ProdNameSub, wProfName, SubjectName, RealPayPrice, left(CompleteDatm, 10) as CompleteDate, RefundPrice, left(RefundDatm, 10) as RefundDate
                 , PayStatusName, RemainPrice, ProdDivisionRate, DivisionPayPrice, ProdCalcPerc, DivisionCalcPrice, LecStartDate, LecEndDate, LecAmount, LecRemainAmount, LecUseAmount
                 , DivisionRemainPrice, DivisionUsePrice, BaseDate';
-            $query = 'select ' . $excel_column . ' from (' . $query . ') as ED order by OrderIdx desc, OrderProdIdx asc';
+            $query = 'select ' . $excel_column . ' from (' . $query . ') as ED order by OrderIdx desc';
         }
 
         // 쿼리 실행

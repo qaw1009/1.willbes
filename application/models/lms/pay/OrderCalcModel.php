@@ -172,7 +172,7 @@ class OrderCalcModel extends BaseOrderModel
 
                 if ($is_count === false) {
                     // 상세보기 주문목록 order by, offset, limit
-                    $query .= ' order by U.OrderIdx desc, U.OrderProdIdx asc';
+                    $query .= ' order by U.OrderIdx desc';
                     is_null($limit) === false && is_null($offset) === false && $query .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
                 }
             } else {
@@ -187,7 +187,7 @@ class OrderCalcModel extends BaseOrderModel
                 , RefundPrice, left(RefundDatm, 10) as RefundDate, PayStatusName, LgCateName, LearnPatternCcdName, ifnull(PackTypeCcdName, SalePatternCcdName) as ProdDetailTypeName
                 , ProdCode, ProdName, CourseName, ProdCodeSub, ProdNameSub, SubjectName, wProfName, ProdDivisionRate, DivisionPayPrice, DivisionPgFeePrice, DivisionRefundPrice
                 , ProdCalcPerc, DivisionCalcPrice, DivisionIncomeTax, DivisionResidentTax, FinalCalcPrice';
-            $query = 'select ' . $excel_column . ' from (' . $query . ') as ED order by OrderIdx desc, OrderProdIdx asc';
+            $query = 'select ' . $excel_column . ' from (' . $query . ') as ED order by OrderIdx desc';
         }
 
         // 쿼리 실행
@@ -364,7 +364,7 @@ class OrderCalcModel extends BaseOrderModel
 
                 if ($is_count === false) {
                     // 상세보기 주문목록 order by, offset, limit
-                    $query .= ' order by U.OrderIdx desc, U.OrderProdIdx asc';
+                    $query .= ' order by U.OrderIdx desc';
                     is_null($limit) === false && is_null($offset) === false && $query .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
                 }
             } else {
@@ -379,7 +379,7 @@ class OrderCalcModel extends BaseOrderModel
                 , RefundPrice, left(RefundDatm, 10) as RefundDate, PayStatusName, LgCateName, LearnPatternCcdName, ifnull(PackTypeCcdName, SalePatternCcdName) as ProdDetailTypeName
                 , ProdCode, ProdName, CourseName, ProdCodeSub, ProdNameSub, SubjectName, wProfName, ProdDivisionRate, DivisionPayPrice, DivisionPgFeePrice, DivisionRefundPrice
                 , ProdCalcPerc, DivisionCalcPrice, DivisionIncomeTax, DivisionResidentTax, FinalCalcPrice';
-            $query = 'select ' . $excel_column . ' from (' . $query . ') as ED order by OrderIdx desc, OrderProdIdx asc';
+            $query = 'select ' . $excel_column . ' from (' . $query . ') as ED order by OrderIdx desc';
         }
 
         // 쿼리 실행
@@ -550,7 +550,7 @@ class OrderCalcModel extends BaseOrderModel
 
                 if ($is_count === false) {
                     // 상세보기 주문목록 order by, offset, limit
-                    $query .= ' order by U.OrderIdx desc, U.OrderProdIdx asc';
+                    $query .= ' order by U.OrderIdx desc';
                     is_null($limit) === false && is_null($offset) === false && $query .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
                 }
             } else {
@@ -565,7 +565,7 @@ class OrderCalcModel extends BaseOrderModel
                 , RefundPrice, left(RefundDatm, 10) as RefundDate, PayStatusName, LgCateName, LearnPatternCcdName, PackTypeCcdName, ProdCode, ProdName
                 , StudyPeriodMonth, SubjectName, wProfName, ProdContribPerc, DivisionPayPrice, DivisionPgFeePrice, DivisionRefundPrice
                 , DivisionMonthPrice, ProdCalcPerc, DivisionCalcPrice, DivisionIncomeTax, DivisionResidentTax, FinalCalcPrice';
-            $query = 'select ' . $excel_column . ' from (' . $query . ') as ED order by OrderIdx desc, OrderProdIdx asc';
+            $query = 'select ' . $excel_column . ' from (' . $query . ') as ED order by OrderIdx desc';
         }
 
         // 쿼리 실행

@@ -53,7 +53,7 @@ class BaseAdvance extends \app\controllers\BaseController
             $method = ucfirst($this->_advance_type);
             $arr_condition = ['EQ' => ['O.SiteCode' => $this->_reqP('search_site_code')]];
 
-            $list = $this->orderAdvanceModel->{'listAdvance' . $method}($search_date, false, $arr_condition, 100);
+            $list = $this->orderAdvanceModel->{'listAdvance' . $method}($search_date, false, $arr_condition, 100, 0);
             $count = count($list);
         }
 
@@ -112,7 +112,7 @@ class BaseAdvance extends \app\controllers\BaseController
     {
         set_time_limit(0);
         ini_set('memory_limit', -1);
-
+        
         $search_date = $this->_reqP('search_date');
         if (empty($search_date) === true) {
             show_alert('필수 파라미터 오류입니다.', 'back');

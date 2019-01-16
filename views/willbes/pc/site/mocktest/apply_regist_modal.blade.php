@@ -81,7 +81,7 @@
                             @if(empty($subject_ess) == false)
                                 @foreach($subject_ess as $row)
                                     @if(empty($pre) == false),@endif
-                                    <input type="hidden" id="mock_paper_subject_1" name="mock_paper_subject[]"  value="{{$row['MpIdx']}}|{{$row['SubjectIdx']}}">{{$row['SubjectName']}}
+                                    <input type="hidden" name="subject_ess[]"  value="{{$row['MpIdx']}}|{{$row['SubjectIdx']}}">{{$row['SubjectName']}}
                                     @php $pre='Y' @endphp
                                 @endforeach
                             @endif
@@ -91,7 +91,7 @@
                     <tr>
                         <th class="w-tit">응시선택과목</th>
                         <td class="w-list" colspan="3">
-                            <select id="mock_paper_subject_2" name="mock_paper_subject[]" title="응시선택과목1" class="sele1" required="required">
+                            <select id="mock_paper_subject_2" name="subject_sub[]" title="응시선택과목1" class="sele1" required="required">
                                 <option value="">선택과목1</option>
                                 @if(empty($subject_sub) == false)
                                     @foreach($subject_sub as $row)
@@ -99,7 +99,7 @@
                                     @endforeach
                                 @endif
                             </select>
-                            <select id="mock_paper_subject_3" name="mock_paper_subject[]" title="응시선택과목2" class="sele1" required="required">
+                            <select id="mock_paper_subject_3" name="subject_sub[]" title="응시선택과목2" class="sele1" required="required">
                                 <option value="">선택과목2</option>
                                 @if(empty($subject_sub) == false)
                                     @foreach($subject_sub as $row)

@@ -5,8 +5,6 @@
 <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
     {!! csrf_field() !!}
     {!! html_def_site_tabs($prod_data['SiteCode'], 'tabs_site_code', 'tab', false, [], false, array($prod_data['SiteCode'] => $prod_data['SiteName'])) !!}
-    <input type="hidden" name="setting_bm_idx" value="{{$bm_idx}}">
-
     <div class="x_panel">
         <div class="x_content">
             <table class="table table-striped table-bordered">
@@ -81,13 +79,11 @@
                             <option value="{{ $key }}">{{ $val }}</option>
                         @endforeach
                     </select>
-
                     <select class="form-control" id="search_is_public" name="search_is_public">
                         <option value="">공개여부</option>
                         <option value="Y">공개</option>
                         <option value="N">비공개</option>
                     </select>
-
                     <select class="form-control" id="search_is_use" name="search_is_use">
                         <option value="">사용여부</option>
                         <option value="Y">공개</option>
@@ -95,7 +91,6 @@
                     </select>
                 </div>
             </div>
-
             <div class="form-group">
                 <label class="control-label col-md-1" for="search_value">제목/내용</label>
                 <div class="col-md-4">
@@ -106,7 +101,6 @@
                     <input type="text" class="form-control" id="search_replay_value" name="search_replay_value">
                 </div>
             </div>
-
             <div class="form-group">
                 <label class="control-label col-md-1" for="search_member_value">회원검색</label>
                 <div class="col-md-1">
@@ -116,15 +110,11 @@
                     <p class="form-control-static">• 이름, 아이디, 휴대폰번호(끝 4자리) 검색 기능</p>
                 </div>
             </div>
-
         </div>
     </div>
     <div class="row">
         <div class="form-group">
-            <div class="col-xs-4">
-                <button class="btn btn-info ml-20" type="button" id="btn_search_setting">기본화면셋팅</button>
-            </div>
-            <div class="col-xs-8 text-right form-inline">
+            <div class="col-xs-12 text-right form-inline">
                 <div class="checkbox">
                     <input type="checkbox" name="search_chk_reply_display" value="1" class="flat" id="reply_display"/> <label for="reply_display">미답변 보기</label>
                     <input type="checkbox" name="search_chk_delete_display" value="1" class="flat" id="delete_display"/> <label for="delete_display">삭제글 보기</label>

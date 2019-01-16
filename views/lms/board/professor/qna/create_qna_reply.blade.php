@@ -133,9 +133,8 @@
             </div>
 
             <div class="form-group text-center btn-wrap mt-50">
-                <button type="button" class="pull-left btn btn-danger" id="btn_delete">삭제</button>
-                <button type="button" class="pull-right btn btn-primary mr-10" id="btn_list">목록</button>
-                <button type="submit" class="pull-right btn btn-success" id="btn_modify">답변등록</button>
+                <button type="submit" class="btn btn-success" id="btn_modify">답변등록</button>
+                <button type="button" class="btn btn-primary mr-10" id="btn_list">목록</button>
             </div>
         
         </form>

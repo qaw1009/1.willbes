@@ -602,43 +602,4 @@ class Qna extends Main
 
         return $input_data;
     }
-
-    /**
-     * 모의고사 단일 상품 조회
-     * @param $prod_code
-     * @return mixed
-     */
-    private function _prodData($prod_code)
-    {
-        // 모의고사 기본정보 조회
-        $arr_condition = [
-            'EQ' => [
-                'MP.ProdCode' => $prod_code,
-                'PD.IsStatus' => 'Y'
-            ]
-        ];
-
-        $prod_data = $this->boardMockModel->mainList(false, $arr_condition, 1, 0, ['MP.ProdCode' => 'desc']);
-        if (empty($prod_data) === true) {
-            show_error('조회된 모의고사 상품 정보가 없습니다.', _HTTP_NO_PERMISSION, '정보 없음');
-        }
-        $prod_data = $prod_data[0];
-        // 직렬이름 추출
-        $mockKindCode = $this->config->item('sysCode_kind', 'mock'); // 직렬 운영코드값
-        $codes = $this->codeModel->getCcdInArray([$mockKindCode]);
-
-        // 데이터정리
-        $applyType_on = $this->config->item('sysCode_applyType_on', 'mock');   // 응시형태(online)
-        $applyType_off = $this->config->item('sysCode_applyType_off', 'mock'); // 응시형태(offline)
-
-        $takeFormsCcds = explode(',', $prod_data['TakeFormsCcd']);
-        $prod_data['TakePart_on'] = ( in_array($applyType_on, $takeFormsCcds) ) ? 'Y' : 'N';
-        $prod_data['TakePart_off'] = ( in_array($applyType_off, $takeFormsCcds) ) ? 'Y' : 'N';
-        $mockPart = explode(',', $prod_data['MockPart']);
-        foreach ($mockPart as $mp) {
-            if( !empty($codes[$mockKindCode][$mp]) ) $prod_data['MockPartName'][] = $codes[$mockKindCode][$mp];
-        }
-
-        return $prod_data;
-    }
 }

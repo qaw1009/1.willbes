@@ -59,6 +59,9 @@ class On extends \app\controllers\FrontController
 
         // 셀렉트박스 구해오기
         $cond_arr = [
+            'EQ' => [
+                'MemIdx' => $this->session->userdata('mem_idx') // 사용자
+            ],
             'GT' => [
                 'LecStartDate' => $today // 시작일 > 오늘
             ],
@@ -409,6 +412,7 @@ class On extends \app\controllers\FrontController
                 'PayRouteCcd' => ['670001','670002']
             ],
             'EQ' => [
+                'MemIdx' => $this->session->userdata('mem_idx'), // 사용자
                 'IsRebuy' => '0' // 재수강이 아닌강의
             ]
         ];

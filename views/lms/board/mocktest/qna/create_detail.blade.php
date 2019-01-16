@@ -140,12 +140,10 @@
                         &nbsp;&nbsp;&nbsp;&nbsp;• 사용자단에 노출되는 조회수는‘실조회수 + 조회수생성’입니다.
                     </div>
                 </div>
-
                 <div class="form-group text-center btn-wrap mt-50">
                     <button type="submit" class="btn btn-success mr-10">저장</button>
                     <button class="btn btn-primary" type="button" id="btn_list">목록</button>
                 </div>
-
             </div>
         </div>
     </form>

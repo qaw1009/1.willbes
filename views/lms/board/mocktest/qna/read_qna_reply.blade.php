@@ -3,9 +3,8 @@
 @section('content')
     <h5>- 모의고사 이의제기/정오표 게시판을 관리하는 메뉴입니다.</h5>
     {!! form_errors() !!}
-    <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+    <form class="form-horizontal form-label-left" novalidate>
         {!! html_def_site_tabs($prod_data['SiteCode'], 'tabs_site_code', 'tab', false, [], false, array($prod_data['SiteCode'] => $prod_data['SiteName'])) !!}
-        {!! csrf_field() !!}
         <div class="x_panel">
             <div class="x_content">
                 <table class="table table-striped table-bordered">
@@ -67,7 +66,9 @@
                 </div>
             </div>
         </div>
+    </form>
 
+    <form class="form-horizontal form-label-left" novalidate>
         <div class="x_panel">
             <div class="x_title">
                 <h2>이의제기</h2>
@@ -95,70 +96,123 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="">조회수(생성)</label>
+                    <label class="control-label col-md-1-1" for="">등록자</label>
                     <div class="form-control-static col-md-4">
-                        {{$data['ReadCnt']}} ({{$data['SettingReadCnt']}})
+                        {{$data['MemName']}}({{$data['MemId']}})
+                    </div>
+                    <label class="control-label col-md-1-1 d-line" for="">휴대폰 번호</label>
+                    <div class="form-control-static col-md-4 ml-12-dot">
+                        {{$data['MemPhone']}}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-1-1" for="">등록일</label>
+                    <div class="form-control-static col-md-4">
+                        {{ $data['RegDatm'] }}
                     </div>
                     <label class="control-label col-md-1-1 d-line" for="">사용</label>
                     <div class="form-control-static col-md-4 ml-12-dot">
-                        {{ ($data['IsUse'] == 'Y') ? '사용' : '미사용' }}
+                        {!! ($data['IsUse'] == 'Y') ? '사용' : '<span class="red">미사용</span>'  !!}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-1-1" for="">공개여부</label>
+                    <div class="form-control-static col-md-4">
+                        {!! ($data['IsPublic'] == 'Y') ? '공개' : '<span class="red">미공개</span>'  !!}
+                    </div>
+                    <label class="control-label col-md-1 d-line" for="">조회수</label>
+                    <div class="form-control-static col-md-4 ml-12-dot">
+                        {{$data['ReadCnt']}} ({{$data['SettingReadCnt']}})
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="">첨부</label>
-                    <div class="col-md-4">
+                    <div class="form-control-static col-md-4">
                         @for($i = 0; $i < $attach_file_cnt; $i++)
                             @if(empty($data['arr_attach_file_path'][$i]) === false)
-                                <p class="form-control-static">
-                                    [ <a href="javascript:void(0);" class="file-download" data-file-path="{{ urlencode($data['arr_attach_file_path'][$i].$data['arr_attach_file_name'][$i])}}" data-file-name="{{ urlencode($data['arr_attach_file_real_name'][$i]) }}" target="_blank">
-                                        {{ $data['arr_attach_file_real_name'][$i] }}
-                                    </a> ]
-                                </p>
+                                [ <a href="javascript:void(0);" class="file-download" data-file-path="{{ urlencode($data['arr_attach_file_path'][$i].$data['arr_attach_file_name'][$i])}}" data-file-name="{{ urlencode($data['arr_attach_file_real_name'][$i]) }}" target="_blank">
+                                    {{ $data['arr_attach_file_real_name'][$i] }}
+                                </a> ]
                             @endif
                         @endfor
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="">내용</label>
+                    <label class="control-label col-md-1-1" for="">질문</label>
                     <div class="form-control-static col-md-10">{!! $data['Content'] !!}</div>
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label col-md-1-1">등록자
-                    </label>
-                    <div class="col-md-4">
-                        <p class="form-control-static">{{ $data['wAdminName'] }}</p>
-                    </div>
-                    <label class="control-label col-md-1-1 d-line">등록일
-                    </label>
-                    <div class="col-md-4 ml-12-dot">
-                        <p class="form-control-static">{{ $data['RegDatm'] }}</p>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label col-md-1-1">최종 수정자
-                    </label>
-                    <div class="col-md-4">
-                        <p class="form-control-static">{{ $data['UpdAdminName'] }}</p>
-                    </div>
-                    <label class="control-label col-md-1-1 d-line">최종 수정일
-                    </label>
-                    <div class="col-md-4 ml-12-dot">
-                        <p class="form-control-static">{{ $data['UpdDatm'] }}</p>
-                    </div>
-                </div>
-
-                <div class="form-group text-center btn-wrap mt-50">
-                    <button type="button" class="pull-left btn btn-danger" id="btn_delete">삭제</button>
-                    <button type="button" class="pull-right btn btn-primary" id="btn_list">목록</button>
-                    <button type="button" class="pull-right btn btn-success mr-10" id="btn_modify">수정</button>
                 </div>
             </div>
         </div>
     </form>
+
+    <div class="x_panel">
+        <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
+            {!! csrf_field() !!}
+            <input type="hidden" name="idx" value="{{ $board_idx }}"/>
+            <div class="row">
+                <label class="col-md-1-1 mt-15 text-right" for="">답변</label>
+                <div class="col-md-9">
+                    <div class="form-control-static col-md-1-1">
+                        <div class="form-control-static col-md-12 short-div"><b>답변자</b></div>
+                        <div class="form-control-static col-md-12 short-div"><b>수정자</b></div>
+                        <div class="form-control-static col-md-12 short-div"><b>첨부파일</b></div>
+                    </div>
+
+                    <div class="form-control-static col-md-4">
+                        <div class="form-control-static short-div">
+                            {{$data['qnaAdminName']}}
+                        </div>
+                        <div class="form-control-static short-div">
+                            {{$data['qnaUpdAdminName']}}
+                        </div>
+                        <div class="form-control-static short-div">
+                            @for($i = 0; $i < $attach_file_cnt; $i++)
+                                @if(empty($data['arr_reply_attach_file_idx'][$i]) === false)
+                                    [ <a href="javascript:void(0);" class="file-download" data-file-path="{{ urlencode($data['arr_reply_attach_file_path'][$i].$data['arr_reply_attach_file_name'][$i])}}" data-file-name="{{ urlencode($data['arr_reply_attach_file_real_name'][$i]) }}" target="_blank">
+                                        {{ $data['arr_reply_attach_file_real_name'][$i] }}
+                                    </a> ]
+                                @endif
+                            @endfor
+                        </div>
+                    </div>
+
+                    <div class="form-control-static col-md-1-1">
+                        <div class="form-control-static short-div"><b>답변일</b></div>
+                        <div class="form-control-static short-div"><b>수정일</b></div>
+                    </div>
+
+                    <div class="form-control-static col-md-4">
+                        <div class="form-control-static short-div">{{$data['ReplyRegDatm']}}</div>
+                        <div class="form-control-static short-div">{{$data['ReplyUpdDatm']}}</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group">
+                    <label class="col-md-1-1 text-right" for="">답변내용</label>
+                    <div class="col-md-9 ml-20">
+                        {!! $data['ReplyContent'] !!}
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group text-center btn-wrap mt-50">
+                {{--<button type="button" class="pull-left btn btn-danger" id="btn_delete">삭제</button>--}}
+                @if($data['ReplyStatusCcd'] == $arr_ccd_reply['finish'])
+                    <button class="btn btn-success mr-10" type="button" id="btn_reply_modify">수정</button>
+                @else
+                    <button class="btn btn-success mr-10" type="button" id="btn_reply_modify">답변</button>
+                @endif
+                <button type="button" class="btn btn-primary" id="btn_list">목록</button>
+            </div>
+
+        </form>
+    </div>
 
     <div class="x_panel">
         <div class="x_title">
@@ -195,32 +249,17 @@
                 location.href = '{{ site_url("/board/{$boardName}/mainList") }}/' + getQueryString();
             });
 
-            //이의제기 목록
-            $('.btn-list-qna').click(function() {
-                location.href='{{ site_url("/board/mocktest/qna/detailList") }}/?bm_idx=95&prod_code=' + $(this).data('idx');
-            });
-
-            //정오표 목록
-            $('.btn-list-notice').click(function() {
-                location.href='{{ site_url("/board/mocktest/notice/detailList") }}/?bm_idx=96&prod_code=' + $(this).data('idx');
-            });
-
             // 목록 버튼 클릭
             $('#btn_list').click(function() {
                 location.href='{{ site_url("/board/{$boardName}") }}/detailList/' + getQueryString();
             });
 
-            //데이터 수정 폼
-            $('#btn_modify').click(function() {
-                location.href='{{ site_url("/board/{$boardName}/createDetail") }}/' + {{$board_idx}} + getQueryString();
-            });
-
             $('#btn_previous').click(function() {
-                location.href='{{ site_url("/board/{$boardName}/readDetail") }}/' + $(this).data('idx') + getQueryString();
+                location.href='{{ site_url("/board/{$boardName}/readQnaReply") }}/' + $(this).data('idx') + getQueryString();
             });
 
             $('#btn_next').click(function() {
-                location.href='{{ site_url("/board/{$boardName}/readDetail") }}/' + $(this).data('idx') + getQueryString();
+                location.href='{{ site_url("/board/{$boardName}/readQnaReply") }}/' + $(this).data('idx') + getQueryString();
             });
 
             $('.file-download').click(function() {
@@ -228,23 +267,10 @@
                 window.open(_url, '_blank');
             });
 
-            //데이터 삭제
-            $('#btn_delete').click(function() {
-                var _url = '{{ site_url("/board/{$boardName}/deleteDetail") }}/' + {{$board_idx}} + getQueryString();
-                var data = {
-                    '{{ csrf_token_name() }}' : $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
-                    '_method' : 'DELETE'
-                };
-
-                if (!confirm('해당 공지사항을 삭제하시겠습니까?')) {
-                    return;
-                }
-                sendAjax(_url, data, function(ret) {
-                    if (ret.ret_cd) {
-                        notifyAlert('success', '알림', ret.ret_msg);
-                        location.replace('{{ site_url("/board/{$boardName}") }}/detailList/' + getQueryString());
-                    }
-                }, showError, false, 'POST');
+            // 답변 수정/등록 폼
+            $('#btn_reply_modify').click(function() {
+                var idx = $regi_form.find('input[name="idx"]').val();
+                location.replace('{{ site_url("/board/{$boardName}/createQnaReply") }}/' + idx + getQueryString());
             });
         });
     </script>

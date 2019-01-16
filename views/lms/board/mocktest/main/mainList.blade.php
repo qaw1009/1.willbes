@@ -89,7 +89,6 @@
             </div>
         </div>
     </form>
-    <div class="mt-20">* 접수현황 : 결제대기, 결제완료, 환불완료 인원의 총합</div>
     <div class="x_panel mt-10" style="overflow-x: auto; overflow-y: hidden;">
         <div class="x_content">
             <form class="form-horizontal" id="list_form" name="list_form" method="POST" onsubmit="return false;">

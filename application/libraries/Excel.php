@@ -83,14 +83,14 @@ class Excel
             $writer->openToBrowser($file_name . '.xlsx');
             $writer->addRow($headers);
 
-            for ($i = 0; $i < 1000; $i++) {
+            //for ($i = 0; $i < 1000; $i++) {     // TODO : 다운로드 테스트
                 foreach ($data as $idx => $row) {
                     $writer->addRow($row);
 
                     ob_flush();
                     flush();
                 }
-            }
+            //}
 
             ob_end_clean();
             /* output download

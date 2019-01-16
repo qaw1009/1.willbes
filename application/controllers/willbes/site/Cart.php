@@ -138,7 +138,7 @@ class Cart extends \app\controllers\FrontController
         $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
             ['field' => 'cart_idx[]', 'label' => '장바구니 식별자', 'rules' => 'trim|required'],
-            ['field' => 'cart_type', 'label' => '장바구니 구분', 'rules' => 'trim|required|in_list[on_lecture,off_lecture,book]'],
+            ['field' => 'cart_type', 'label' => '장바구니 구분', 'rules' => 'trim|required|in_list[on_lecture,off_lecture,book,mock_exam]'],
         ];
 
         if ($this->validate($rules) === false) {
@@ -260,7 +260,9 @@ class Cart extends \app\controllers\FrontController
         // 모의고사상품 선택정보
         if ($learn_pattern == 'mock_exam') {
             $post_data['mock_exam'] = [
-                'mock_part' => $this->_reqP('TakeMockPart'),
+                'take_form' => $this->_reqP('TakeForm'),
+                'take_area' => $this->_reqP('TakeArea'),
+                'take_part' => $this->_reqP('TakeMockPart'),
                 'subject_ess' => $this->_reqP('subject_ess'),
                 'subject_sub' => $this->_reqP('subject_sub'),
                 'add_point' => $this->_reqP('AddPoint')

@@ -548,6 +548,17 @@ class CartFModel extends BaseOrderFModel
             if ($check_result !== true) {
                 return $check_result;
             }
+        } elseif ($learn_pattern == 'mock_exam') {
+            // 응시형태가 학원일 경우 정원 체크
+            if ($data['TakeFormsCcd'] == '690002') {
+                $mock_paid_cnt = $this->orderListFModel->listOrderProduct(true, [
+                    'EQ' => ['OP.ProdCode' => $prod_code, 'OP.PayStatusCcd' => $this->_pay_status_ccd['paid']]
+                ]);
+
+                if ($mock_paid_cnt >= $data['ClosingPerson']) {
+                    return '접수가 마감되었습니다.';
+                }
+            }
         } else {
             // 학원강좌일 경우
             if (starts_with($learn_pattern, 'off') === true) {

@@ -23,6 +23,8 @@ class BaseOrderFModel extends WB_Model
         'product_r_product' => 'lms_product_r_product',
         'product_r_autocoupon' => 'lms_product_r_autocoupon',
         'bms_book' => 'wbs_bms_book',
+        'mock_register' => 'lms_mock_register',
+        'mock_register_r_paper' => 'lms_mock_register_r_paper',
         'my_lecture' => 'lms_my_lecture',
         'cert_apply' => 'lms_cert_apply',
         'code' => 'lms_sys_code'

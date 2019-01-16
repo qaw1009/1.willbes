@@ -328,8 +328,8 @@
                                     <dl>
                                         <dt>
                                             <ul class="item">
-                                                @foreach(explode(',', $__cfg['PayMethodCcdArr']) as $idx => $val)
-                                                    <li><input type="radio" name="pay_method_ccd" value="{{ str_first_pos_before($val, ':') }}" data-pay-method-name="{{ str_first_pos_after($val, ':') }}" @if($idx == 0) title="결제수단" required="required" checked="checked" @endif/><label>{{ str_first_pos_after($val, ':') }}</label></li>
+                                                @foreach($arr_pay_method_ccd as $key => $val)
+                                                    <li><input type="radio" name="pay_method_ccd" value="{{ $key }}" data-pay-method-name="{{ $val }}" @if($loop->index == 1) title="결제수단" required="required" checked="checked" @endif/><label>{{ $val }}</label></li>
                                                 @endforeach
                                             </ul>
                                         </dt>

@@ -128,6 +128,7 @@ class OrderListFModel extends BaseOrderFModel
                      when PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['off_lecture'] . '" then "off_lecture"
                      when PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['off_pack_lecture'] . '" then "off_pack_lecture"
                      when P.ProdTypeCcd = "' . $this->_prod_type_ccd['book'] . '" then "book"
+                     when P.ProdTypeCcd = "' . $this->_prod_type_ccd['mock_exam'] . '" then "mock_exam"
                      when P.ProdTypeCcd = "' . $this->_prod_type_ccd['delivery_price'] . '" then "delivery_price"
                      when P.ProdTypeCcd = "' . $this->_prod_type_ccd['delivery_add_price'] . '" then "delivery_add_price"
                      when P.ProdTypeCcd = "' . $this->_prod_type_ccd['freebie'] . '" then "freebie"

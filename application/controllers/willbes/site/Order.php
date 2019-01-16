@@ -9,8 +9,7 @@ class Order extends \app\controllers\FrontController
     protected $auth_methods = array();
 
     // 사용하는 그룹공통코드
-    private $_tel1_ccd = '672';
-    private $_phone1_ccd = '673';
+    private $_group_ccd = ['Tel1' => '672', 'Phone1' => '673', 'PayMethod' => '604'];
 
     public function __construct()
     {
@@ -45,12 +44,21 @@ class Order extends \app\controllers\FrontController
         $results['point_type_name'] = $this->orderFModel->_point_type_name[$cart_type];
         $results['point'] = $this->pointFModel->getMemberPoint($cart_type == 'book' ? 'book' : 'lecture');
 
-        // 지역번호, 휴대폰번호 공통코드 조회
-        $codes = $this->codeModel->getCcdInArray([$this->_tel1_ccd, $this->_phone1_ccd]);
+        // 지역번호, 휴대폰번호, 결제수단 공통코드 조회
+        $codes = $this->codeModel->getCcdInArray(array_values($this->_group_ccd));
+
+        // 결제수단공통코드 (사이트정보에 설정된 결제수단만 필터링)
+        $arr_pay_method_ccd = array_filter_keys($codes[$this->_group_ccd['PayMethod']], explode(',', config_app('PayMethodCcds')));
+        
+        if ($cart_type == 'mock_exam') {
+            // 모의고사 상품 결제일 경우 무통장입금 삭제
+            unset($arr_pay_method_ccd[$this->orderFModel->_pay_method_ccd['vbank']]);
+        }
 
         $this->load->view('site/order/index', [
-            'arr_tel1_ccd' => $codes[$this->_tel1_ccd],
-            'arr_phone1_ccd' => $codes[$this->_phone1_ccd],
+            'arr_tel1_ccd' => $codes[$this->_group_ccd['Tel1']],
+            'arr_phone1_ccd' => $codes[$this->_group_ccd['Phone1']],
+            'arr_pay_method_ccd' => $arr_pay_method_ccd,
             'results' => $results
         ]);
     }
@@ -120,7 +128,7 @@ class Order extends \app\controllers\FrontController
 
         $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
-            ['field' => 'cart_type', 'label' => '장바구니구분', 'rules' => 'trim|required|in_list[on_lecture,off_lecture,book]'],
+            ['field' => 'cart_type', 'label' => '장바구니구분', 'rules' => 'trim|required|in_list[on_lecture,off_lecture,book,mock_exam]'],
             ['field' => 'use_point', 'label' => '사용포인트', 'rules' => 'trim|required|integer'],
             ['field' => 'coupon_detail_idx', 'label' => '쿠폰식별자', 'rules' => 'trim|required']
         ];

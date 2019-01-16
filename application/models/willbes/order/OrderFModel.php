@@ -745,6 +745,14 @@ class OrderFModel extends BaseOrderFModel
                 }
             }
 
+            // 모의고사 접수정보 등록
+            if ($cart_type == 'mock_exam') {
+                $is_mock_register = $this->addMockRegister($order_prod_idx, $prod_code, $post_data);
+                if ($is_mock_register !== true) {
+                    throw new \Exception($is_mock_register);
+                }
+            }
+
             // 주문상품배송정보 데이터 등록 (방문결제가 아닐 경우)
             if ($is_delivery_info == 'Y' && $is_visit_pay == 'N') {
                 $data = [
@@ -779,6 +787,67 @@ class OrderFModel extends BaseOrderFModel
                 $is_point_use = $this->pointFModel->addOrderUsePoint($point_type, $real_use_point, $site_code, $order_idx, $order_prod_idx);
                 if ($is_point_use !== true) {
                     throw new \Exception($is_point_use);
+                }
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return true;
+    }
+
+    /**
+     * 모의고사 응시정보 등록
+     * @param int $order_prod_idx [주문상품식별자]
+     * @param int $prod_code [상품코드]
+     * @param string $post_data [응시정보 json 데이터]
+     * @return bool|string
+     */
+    public function addMockRegister($order_prod_idx, $prod_code, $post_data)
+    {
+        try {
+            $sess_mem_idx = $this->session->userdata('mem_idx');    // 회원 식별자 세션
+            $input = element('mock_exam', json_decode($post_data, true));    // 응시정보 데이터
+            $input_subjects = array_merge(element('subject_ess', $input, []), element('subject_sub', $input, []));     // 응시정보 과목 데이터
+
+            if (empty($input) === true || empty($input_subjects) === true) {
+                throw new \Exception('모의고사 응시정보가 없습니다.');
+            }
+
+            // 모의고사 접수등록
+            $data = [
+                'ProdCode' => $prod_code,
+                'MemIdx' => $sess_mem_idx,
+                'OrderProdIdx' => $order_prod_idx,
+                'TakeMockPart' => element('take_part', $input, ''),
+                'TakeForm' => element('take_form', $input, ''),
+                'TakeArea' => element('take_area', $input, ''),
+                'AddPoint' => element('add_point', $input, 0)
+            ];
+
+            $is_mock_register = $this->_conn->set($data)->insert($this->_table['mock_register']);
+            if ($is_mock_register === false) {
+                throw new \Exception('모의고사 접수등록에 실패했습니다.');
+            }
+
+            // 모의고사 접수식별자 조회
+            $mr_idx = array_get($this->_conn->getListResult($this->_table['mock_register'], 'MrIdx', [
+                'EQ' => ['ProdCode' => $prod_code, 'MemIdx' => $sess_mem_idx, 'OrderProdIdx' => $order_prod_idx]
+            ], 1, 0, ['MrIdx' => 'desc']), '0.MrIdx');
+
+            if (empty($mr_idx) === true) {
+                throw new \Exception('모의고사 접수식별자 조회에 실패했습니다.');
+            }
+
+            // 모의고사 접수 시험지 연결 데이터 등록
+            foreach ($input_subjects as $subject) {
+                $arr_subject = explode('|', $subject);
+                $is_mock_register_paper = $this->_conn->set([
+                    'MrIdx' => $mr_idx, 'ProdCode' => $prod_code, 'MpIdx' => element('0', $arr_subject), 'SubjectIdx' => element('1', $arr_subject)
+                ])->insert($this->_table['mock_register_r_paper']);
+
+                if ($is_mock_register_paper === false) {
+                    throw new \Exception('모의고사 접수과목 등록에 실패했습니다.');
                 }
             }
         } catch (\Exception $e) {

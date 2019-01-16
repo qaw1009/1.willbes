@@ -154,9 +154,9 @@ class ClassroomFModel extends WB_Model
     public function getCurriculum($cond = [], $isCount = false)
     {
         if($isCount === true){
-            $query = "SELECT COUNT(*) AS rownums ";
+            $query = "SELECT STRAIGHT_JOIN COUNT(*) AS rownums ";
         } else {
-            $query = "SELECT * ";
+            $query = "SELECT STRAIGHT_JOIN * ";
         }
 
         $query .= " FROM {$this->_table['lec_unit']} ";

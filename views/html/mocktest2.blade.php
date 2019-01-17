@@ -71,7 +71,7 @@
         </span>
     </div>
     <div class="Content p_re">
-        <div class="willbes-Lec-Search GM mg0">
+        <div class="willbes-Lec-Search GM mt0 mb20">
             <div class="inputBox p_re f_right">
                 <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="제목 또는 내용을 입력해 주세요" maxlength="30">
                 <button type="submit" onclick="" class="search-Btn">
@@ -80,7 +80,7 @@
             </div>
         </div>
   
-        <div class="willbes-Leclist c_both mt30">
+        <div class="willbes-Leclist c_both">
 
             <!-- List -->
             <div class="willbes-Leclist c_both">

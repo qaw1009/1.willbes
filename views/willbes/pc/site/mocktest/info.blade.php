@@ -17,8 +17,11 @@
                 </div>
             </div>
             <!-- "willbes-Mocktest INFOZONE -->
-
+            <div class="willbes-Mypage-Tabs mt10">
                 @include('willbes.pc.site.mocktest.tab_menu_partial')
+
+                모의고사안내 컨텐츠 삽입
+
 
 
             </div>

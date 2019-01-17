@@ -92,22 +92,22 @@
                     <tr>
                         <th class="w-tit">응시선택과목</th>
                         <td class="w-list" colspan="3">
-                            <select id="mock_paper_subject_2" name="subject_sub[]" title="응시선택과목1" class="sele1" required="required">
-                                <option value="">선택과목1</option>
-                                @if(empty($subject_sub) == false)
+                            @if(empty($subject_sub) == false)
+                                <select id="mock_paper_subject_2" name="subject_sub[]" title="응시선택과목1" class="sele1" required="required">
+                                    <option value="">선택과목1</option>
                                     @foreach($subject_sub as $row)
                                         <option value="{{$row['MpIdx']}}|{{$row['SubjectIdx']}}">{{$row['SubjectName']}}</option>
                                     @endforeach
-                                @endif
-                            </select>
-                            <select id="mock_paper_subject_3" name="subject_sub[]" title="응시선택과목2" class="sele1" required="required">
-                                <option value="">선택과목2</option>
-                                @if(empty($subject_sub) == false)
+                                </select>
+                                <select id="mock_paper_subject_3" name="subject_sub[]" title="응시선택과목2" class="sele1" required="required">
+                                    <option value="">선택과목2</option>
                                     @foreach($subject_sub as $row)
                                         <option value="{{$row['MpIdx']}}|{{$row['SubjectIdx']}}">{{$row['SubjectName']}}</option>
                                     @endforeach
-                                @endif
-                            </select>
+                                </select>
+                            @else
+                                선태과목 없음
+                            @endif
                         </td>
                     </tr>
                     <tr>
@@ -151,13 +151,13 @@
         <div class="passzonebtn tx-center">
             <span>
                 @if($mock_data['TakeFormsCcd'] =='690001')
-                    @if($my_pay_check == 0 && $mock_data["IsSalesAble"] == 'Y')
+                    @if($order_prod_idx == 0 && $mock_data["IsSalesAble"] == 'Y')
                         <button type="submit" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y" class="btnAuto130 h36 mem-Btn bg-blue bd-dark-blue strong">
                             <span class="strong">바로결제</span>
                         </button>
                     @endif
                 @elseif($mock_data['TakeFormsCcd'] =='690002') {{--학원응시일경우 전체결제건수가 마감인원보다 작아야 가능--}}
-                    @if($all_pay_check < $mock_data['ClosingPerson'] && $mock_data["IsSalesAble"] == 'Y')
+                    @if($all_pay_check < $mock_data['ClosingPerson'] && $order_prod_idx == 0 && $mock_data["IsSalesAble"] == 'Y')
                         <button type="submit" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y" class="btnAuto130 h36 mem-Btn bg-blue bd-dark-blue strong">
                             <span class="strong">바로결제</span>
                         </button>
@@ -181,7 +181,7 @@
                     alert("신청 할 수 없는 모의고사입니다.");return;
                 @endif
 
-                @if($my_pay_check > 0)
+                @if($order_prod_idx > 0)
                     alert("이미 신청 하신 모의고사입니다.");return;
                 @endif
 

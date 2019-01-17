@@ -92,14 +92,6 @@
         </span>
     </div>
     <div class="Content p_re">
-
-        <div class="willbes-Mypage-SUPPORTZONE c_both">
-            <div class="willbes-Prof-Subject willbes-Mypage-Tit NG">
-                · 쪽지관리
-            </div>
-        </div>
-        <!-- willbes-Mypage-SUPPORTZONE -->
-
         <div class="willbes-Leclist c_both">
             <div class="willbes-LecreplyList tx-gray c_both mt-zero">
                 <span class="willbes-Lec-Search willbes-SelectBox mb20 GM f_left">

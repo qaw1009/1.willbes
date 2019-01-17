@@ -18,11 +18,7 @@
         @endforeach
 
         <div class="willbes-Leclist c_both">
-            <div class="willbes-Lec-Tit NG bd-none tx-black c_both pt-zero">
-                · 1:1상담
-            </div>
-
-            <div class="Act3 mt30">
+            <div class="Act3">
                 <div class="LecViewTable">
                     <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black tx-gray">
                         <colgroup>

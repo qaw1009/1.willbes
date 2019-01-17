@@ -96,9 +96,6 @@
     <div class="Content p_re">
 
         <div class="willbes-Mypage-ONLINEZONE c_both">
-            <div class="willbes-Prof-Subject willbes-Mypage-Tit NG">
-                · 수강확인증출력
-            </div>
             <div id="info1" class="willbes-Cart-Txt willbes-Mypage-Txt NG p_re">
                 <span class="MoreBtn"><a href="#none">유의사항안내 닫기 ▲</a></span>
                 <table cellspacing="0" cellpadding="0" class="txtTable tx-black">

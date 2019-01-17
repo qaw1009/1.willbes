@@ -10,9 +10,6 @@
         <div class="Content p_re">
 
             <div class="willbes-Mypage-ONLINEZONE c_both">
-                <div class="willbes-Prof-Subject willbes-Mypage-Tit NG">
-                    · 수강종료강좌
-                </div>
                 <div class="willbes-Cart-Txt willbes-Mypage-Txt NG p_re">
                     <span class="MoreBtn"><a href="#none">유의사항안내 @if(get_cookie('moreInfo') == 'off')보기 ▼@else닫기 ▲@endif</a></span>
                     <table cellspacing="0" cellpadding="0" class="txtTable tx-black @if(get_cookie('moreInfo') == 'off') off @endif">

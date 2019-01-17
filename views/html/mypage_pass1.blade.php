@@ -93,11 +93,10 @@
     <div class="Content p_re">
 
         <div class="willbes-Mypage-PASSZONE c_both">
-            <div class="willbes-Prof-Subject willbes-Mypage-Tit NG">
-                · 무한PASS존
+            <div class="c_both f_left widthAutoFull NG mb30">
                 <ul>
-                    <li class="InfoBtn"><a href="#none" onclick="openWin('MyTablets')">등록기기정보 <span>▶</span></a></li>
-                    <li class="InfoBtn"><a href="#none" onclick="openWin('MorePASS')">프리패스이용안내 <span>▶</span></a></li>
+                    <li class="InfoBtn ml10"><a href="#none" onclick="openWin('MyTablets')">등록기기정보 <span>▶</span></a></li>
+                    <li class="InfoBtn ml10"><a href="#none" onclick="openWin('MorePASS')">프리패스이용안내 <span>▶</span></a></li>
                 </ul>
             </div>
             <div class="willbes-Lec-Table NG d_block">

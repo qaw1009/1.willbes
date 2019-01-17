@@ -14,15 +14,12 @@
             @endforeach
         </form>
         <div class="willbes-CScenter c_both">
-            <div class="willbes-Lec-Tit NG bd-none tx-black c_both pt-zero">
-                · 수험뉴스
-                <div class="willbes-Lec-Search GM f_right">
-                    <div class="inputBox p_re">
-                        <input type="text" id="s_keyword" name="s_keyword" maxlength="30" value="{{ element('s_keyword', $arr_input) }}" class="labelSearch" placeholder="제목 또는 내용을 입력해 주세요">
-                        <button type="button" onclick="goUrl('s_keyword', document.getElementById('s_keyword').value)" class="search-Btn">
-                            <span>검색</span>
-                        </button>
-                    </div>
+            <div class="willbes-Lec-Search GM mg0">
+                <div class="inputBox p_re f_right">
+                    <input type="text" id="s_keyword" name="s_keyword" maxlength="30" value="{{ element('s_keyword', $arr_input) }}" class="labelSearch" placeholder="제목 또는 내용을 입력해 주세요">
+                    <button type="button" onclick="goUrl('s_keyword', document.getElementById('s_keyword').value)" class="search-Btn">
+                        <span>검색</span>
+                    </button>
                 </div>
             </div>
             <div class="Act2 mt30">

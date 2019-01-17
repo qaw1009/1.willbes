@@ -10,8 +10,7 @@
         <div class="Content p_re">
             <!-- willbes-CScenter -->
             <div id="cs4" class="CScenter4">
-                <div class="willbes-Lec-Tit NG bd-none tx-black c_both pt-zero">· 사이트 이용가이드</div>
-                <div class="Act4 mt30">
+                <div class="Act4">
                     <img src="{{ img_url('cs/willbes_guide.jpg') }}">
                     <div class="w-Guide mt40">
                         <div class="willbes-guide NGEB">

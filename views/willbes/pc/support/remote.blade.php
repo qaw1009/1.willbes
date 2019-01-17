@@ -10,8 +10,7 @@
         <div class="Content p_re">
             <!-- willbes-CScenter -->
             <div class="willbes-CScenter c_both">
-                <div class="willbes-Lec-Tit NG bd-none tx-black pt-zero">· PC 원격지원</div>
-                <div class="Act6 mt30">
+                <div class="Act6">
                     <div class="support_infoBox tx-black p_re NGR">
                         <img src="{{ img_url('cs/willbes_pc_support.jpg') }}">
                         <div class="support-Btn NSK">

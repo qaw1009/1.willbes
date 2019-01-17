@@ -94,9 +94,6 @@
     <div class="Content p_re">
 
         <div class="willbes-Mypage-SUPPORTZONE c_both">
-            <div class="willbes-Prof-Subject willbes-Mypage-Tit NG">
-                · 알림관리
-            </div>
             <div class="willbes-Notice-chk">
                 <span class="subTit tx-gray">회원정보 SMS 수신여부와 상관없이, SMS 알림 설정시 SMS가 발송됩니다.</span>
                 <table cellspacing="0" cellpadding="0" class="userNoticeTable NG">

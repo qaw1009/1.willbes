@@ -71,25 +71,10 @@
         </span>
     </div>
     <div class="Content p_re">
-
-        <div class="willbes-Mocktest INFOZONE c_both">
-            <div class="willbes-Lec-Tit NG bd-none tx-black c_both pt-zero">
-                · 시험공고
-                <div class="willbes-Lec-Search GM f_right" style="margin: 0;">
-                    <div class="inputBox p_re">
-                        <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="제목 또는 내용을 입력해 주세요" maxlength="30">
-                        <button type="submit" onclick="" class="search-Btn">
-                            <span>검색</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="willbes-Leclist c_both mt30">
+        <div class="willbes-Leclist c_both">
             <!-- List -->
             <div class="willbes-Leclist c_both">
-                <div class="willbes-Lec-Selected tx-gray">
+                <div class="willbes-Lec-Selected tx-gray mt0">
                     <select id="type" name="type" title="공고유형" class="seleType">
                         <option selected="selected">공고유형</option>
                         <option value="시험공고">시험공고</option>
@@ -100,6 +85,14 @@
                         <option value="경기도">경기도</option>
                         <option value="경상북도">경상북도</option>
                     </select>
+                    <div class="willbes-Lec-Search GM f_right mg0">
+                        <div class="inputBox p_re">
+                            <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="제목 또는 내용을 입력해 주세요" maxlength="30">
+                            <button type="submit" onclick="" class="search-Btn">
+                                <span>검색</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
                 <div class="LeclistTable">
                     <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black bdb-gray tx-gray">

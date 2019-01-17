@@ -9,13 +9,7 @@
         @include('willbes.pc.layouts.partial.site_route_path')
     </div>
     <div class="Content p_re">
-        <div class="willbes-Eventzone EVTZONE c_both">
-            <div class="willbes-Lec-Tit NG bd-none tx-black c_both pt-zero">
-                {{($arr_base['onoff_type'] == 'ongoing') ? '· 진행중인 이벤트' : '· 마감된 이벤트'}}
-            </div>
-        </div>
-
-        <div class="willbes-Leclist c_both mt30 pb60">
+        <div class="willbes-Leclist c_both pb60">
             <!-- View -->
             <div class="willbes-Leclist c_both">
                 <div class="LecViewTable">

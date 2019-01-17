@@ -14,22 +14,9 @@
                 <input type="hidden" name="{{ $key }}" value="{{ $val }}"/>
             @endforeach
         </form>
-        <div class="willbes-Eventzone EVTZONE c_both">
-            <div class="willbes-Lec-Tit NG bd-none tx-black c_both pt-zero">
-                {{($arr_base['onoff_type'] == 'ongoing') ? '· 진행중인 이벤트' : '· 마감된 이벤트'}}
-                <div class="willbes-Lec-Search GM f_right" style="margin: 0;">
-                    <div class="inputBox p_re">
-                        <input type="text" id="s_keyword" name="s_keyword" class="labelSearch" placeholder="제목을 입력해 주세요" maxlength="30" value="{{element('s_keyword', $arr_input)}}">
-                        <button type="button" onclick="goUrl('s_keyword', document.getElementById('s_keyword').value)" class="search-Btn">
-                            <span>검색</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <div class="willbes-Leclist c_both mt30 p_re">
-            <div class="willbes-LecreplyList tx-gray c_both">
+        <div class="willbes-Leclist c_both mt0 p_re">
+            <div class="willbes-LecreplyList tx-gray c_both mt0">
                 <span class="willbes-Lec-Search willbes-SelectBox mb20 GM f_left">
                     <select id="s_request_type" name="s_request_type" title="이벤트종류" class="seleEvt f_left" onchange="goUrl('s_request_type',this.value)">
                         <option value="">전체 이벤트</option>
@@ -44,6 +31,14 @@
                         @endforeach
                     </select>
                 </span>
+                <div class="willbes-Lec-Search GM f_right ">
+                    <div class="inputBox p_re">
+                        <input type="text" id="s_keyword" name="s_keyword" class="labelSearch" placeholder="제목을 입력해 주세요" maxlength="30" value="{{element('s_keyword', $arr_input)}}">
+                        <button type="button" onclick="goUrl('s_keyword', document.getElementById('s_keyword').value)" class="search-Btn">
+                            <span>검색</span>
+                        </button>
+                    </div>
+                </div>
             </div>
             <div class="LeclistTable orderTable">
                 <table cellspacing="0" cellpadding="0" class="listTable cartTable upper-gray bdt-gray tx-gray">

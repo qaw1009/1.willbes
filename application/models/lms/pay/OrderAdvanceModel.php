@@ -30,7 +30,8 @@ class OrderAdvanceModel extends BaseOrderModel
             $column = '';
         } else {
             $in_column = '? as BaseDate 
-				, ML.OrderIdx, ML.OrderProdIdx, ML.ProdCode, ML.ProdCodeSub, ML.LecStartDate, ML.LecEndDate, ML.RealLecEndDate, ML.LecExpireDay
+				, ML.OrderIdx, ML.OrderProdIdx, ML.ProdCode, ML.ProdCodeSub, ML.LecStartDate, ML.LecEndDate, ML.RealLecEndDate
+				, datediff(ML.LecEndDate, ML.LecStartDate) + 1 as LecExpireDay  #, ML.LecExpireDay
 				, O.OrderNo, O.MemIdx, O.PayRouteCcd, O.PayMethodCcd, OP.SalePatternCcd, O.CompleteDatm
 				, if(OPR.RefundDatm <= ?, OPR.RefundDatm, null) as RefundDatm
 				, if(PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['userpack_lecture'] . '", OSP.RealPayPrice, OP.RealPayPrice) as RealPayPrice		

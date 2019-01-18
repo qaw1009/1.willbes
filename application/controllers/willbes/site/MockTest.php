@@ -6,7 +6,7 @@ class MockTest extends \app\controllers\FrontController
     protected $models = array('mocktest/mockInfoF','_lms/sys/code');
     protected $helpers = array();
     protected $auth_controller = false;
-    protected $auth_methods = array();
+    protected $auth_methods = array('apply_modal','apply_cart_modal','apply_order');
 
     protected $_paging_limit = 10;
     protected $_paging_count = 10;
@@ -73,6 +73,11 @@ class MockTest extends \app\controllers\FrontController
         ]);
     }
 
+    /**
+     * 모의고사 신청하기 폼
+     * @param array $params
+     * @return CI_Output
+     */
     public function apply_modal($params=[])
     {
         $prod_code = element('prod-code', $params);
@@ -93,18 +98,11 @@ class MockTest extends \app\controllers\FrontController
             return $this->json_error('모의고사 정보가 존재하지 않습니다.', _HTTP_BAD_REQUEST);
         }
 
-
-
         //내결제이력 (0보다 크면 이력 존재)
-        $my_pay_check = $mock_data['PayCnt'];
+        $order_prod_idx = $mock_data['OrderProdIdx'];
 
         //전체결제이력 (학원응시일 경우 접수마감인원 체크)
         $all_pay_check =  $mock_data['AllPayCnt'];
-
-        $mock_apply = '';
-        if($my_pay_check > 0) {
-            $mock_apply = $this->mockInfoFModel->findApplyMockTestByProdCode($prod_code);
-        }
 
         //직렬 추출
         $mock_part = $this->mockInfoFModel->listMockTestMockPart($prod_code);
@@ -124,7 +122,7 @@ class MockTest extends \app\controllers\FrontController
         $this->load->view('site/mocktest/apply_regist_modal', [
             'ele_id' => $this->_req('ele_id'),
             'ProdCode' => $prod_code,
-            'my_pay_check' => $my_pay_check,
+            'order_prod_idx' => $order_prod_idx,
             'all_pay_check' => $all_pay_check,
             'mock_data' => $mock_data,
             'mock_part' => $mock_part,
@@ -132,9 +130,117 @@ class MockTest extends \app\controllers\FrontController
             'subject_ess' => $subject_ess,
             'subject_sub' => $subject_sub,
             'mock_addpoint' => $mock_addpoint,
-            'mock_apply' => $mock_apply
         ]);
+    }
 
+
+    /**
+     * 장바구니 신청 내역 조회
+     * @param array $params
+     * @return CI_Output
+     */
+    public function apply_cart_modal($params=[])
+    {
+        $cart_idx = $params[0];
+
+        $cart_info = $this->mockInfoFModel->findCartByCartIdx($cart_idx);
+
+        $cart_info['PostData'] = json_decode($cart_info['PostData'], true);
+
+        $cart_info['take_form'] =$cart_info['PostData']['mock_exam']['take_form'];          //응시형태
+        $cart_info['take_area'] =$cart_info['PostData']['mock_exam']['take_area'];          //지역
+        $cart_info['take_part'] =$cart_info['PostData']['mock_exam']['take_part'];          //직렬
+        $cart_info['subject_ess'] =$cart_info['PostData']['mock_exam']['subject_ess'];  //필수과목
+        $cart_info['subject_sub'] =$cart_info['PostData']['mock_exam']['subject_sub'];  //선택과목
+        $cart_info['add_point'] =$cart_info['PostData']['mock_exam']['add_point'];      //가산점
+
+        //dd($cart_info);
+
+        $prod_code = $cart_info['ProdCode'];
+
+        if (empty($prod_code) === true) {
+            return $this->json_error('모의고사 코드가 존재하지 않습니다.', _HTTP_BAD_REQUEST);
+        }
+
+        $arr_condition = [
+            'EQ' => [
+                'pm.ProdCode' => $prod_code
+                ,'pm.IsUse' => 'Y'
+            ],
+        ];
+
+        $mock_data = $this->mockInfoFModel->listMockTest(false, $arr_condition,null,null,null, null)[0];
+
+        if (empty($mock_data) === true) {
+            return $this->json_error('모의고사 정보가 존재하지 않습니다.', _HTTP_BAD_REQUEST);
+        }
+
+        //직렬 추출
+        $mock_part = $this->mockInfoFModel->listMockTestMockPart($prod_code);
+
+        //응시지역 추출
+        $mock_area = $this->mockInfoFModel->listMockTestArea($prod_code);
+
+        //필수 과목정보 추출
+        $subject_ess = $this->mockInfoFModel->listMockTestSubject($prod_code, 'E');
+
+        //선택 과목정보 추출
+        $subject_sub = $this->mockInfoFModel->listMockTestSubject($prod_code, 'S');
+
+        //가산점 추출
+        $mock_addpoint = $this->mockInfoFModel->listMockTestAddPoint($prod_code);
+
+        $this->load->view('site/mocktest/apply_cart_modal', [
+            'ele_id' => $this->_req('ele_id'),
+            'ProdCode' => $prod_code,
+            'mock_data' => $mock_data,
+            'mock_part' => $mock_part,
+            'mock_area' => $mock_area,
+            'subject_ess' => $subject_ess,
+            'subject_sub' => $subject_sub,
+            'mock_addpoint' => $mock_addpoint,
+            'cart_info' => $cart_info
+        ]);
+    }
+
+
+    /**
+     * 주문내역 조회
+     * @param array $params
+     * @return CI_Output
+     */
+    public function apply_order($params=[])
+    {
+
+        if(empty($params)) {
+            return $this->json_error('주문 코드가 존재하지 않습니다.', _HTTP_BAD_REQUEST);
+        }
+
+        $order_prod_idx = $params[0];
+
+        //신청 내역
+        $order_info = $this->mockInfoFModel->findRegistByOrderProdIdx($order_prod_idx);
+
+        //신청 과목정보 추출
+        $regist_subject = $this->mockInfoFModel->findRegistSubject($order_prod_idx);
+
+        $subject_ess = '';
+        $subject_sub = [];
+        foreach ($regist_subject as $rows) {
+            if($rows['MockType'] == 'E') {
+                $subject_ess = $rows['subject_names'];
+            } else if($rows['MockType'] == 'S') {
+                $subject_sub = explode(',',$rows['subject_names']);
+            }
+        }
+
+        //$this->load->view('site/mocktest/apply_order_popup', [
+        $this->load->view('site/mocktest/apply_order_popup', [
+            'ele_id' => $this->_req('ele_id'),
+            'order_info' => $order_info,
+            'subject_ess' => $subject_ess,
+            'subject_sub' => $subject_sub,
+        ]);
     }
 
 

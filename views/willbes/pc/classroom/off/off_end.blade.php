@@ -8,14 +8,6 @@
             @include('willbes.pc.layouts.partial.site_route_path')
         </div>
         <div class="Content p_re">
-
-            <div class="willbes-Mypage-ACADZONE c_both">
-                <div class="willbes-Prof-Subject willbes-Mypage-Tit NG">
-                    · 수강종료강좌
-                </div>
-            </div>
-            <!-- willbes-Mypage-ACADZONE -->
-
             <div class="willbes-Leclist c_both">
                 <form name="searchFrm" id="searchFrm" action="{{app_url('/classroom/off/list/end/', 'www')}}" onsubmit="">
                     <div class="willbes-Lec-Selected willbes-Mypage-Selected willbes-Mypage-Selected-Search tx-gray">

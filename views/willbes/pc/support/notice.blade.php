@@ -14,21 +14,10 @@
                 @endforeach
 
             <div class="willbes-CScenter c_both">
-                <div class="willbes-Lec-Tit NG bd-none tx-black c_both pt-zero">
-                    · 공지사항
-                    <div class="willbes-Lec-Search GM f_right">
-                        <div class="inputBox p_re">
-                            <input type="text" id="s_keyword" name="s_keyword" maxlength="30" value="{{ element('s_keyword', $arr_input) }}" class="labelSearch" placeholder="제목 또는 내용을 입력해 주세요">
-                            <button type="submit" onclick="goUrl('s_keyword', document.getElementById('s_keyword').value);" class="search-Btn">
-                                <span>검색</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="Act2 mt30">
+                <div class="Act2">
                     <!-- List -->
                     <div class="willbes-Leclist c_both">
-                        <div class="willbes-Lec-Selected tx-gray">
+                        <div class="willbes-Lec-Selected tx-gray mt0">
                             @if(empty($arr_base['category']) === false)
                             <select id="s_cate_code" name="s_cate_code" title="카테고리" class="seleCategory" onchange="goUrl('s_cate_code',this.value)" {{--@if($__cfg['SiteCode'] != config_item('app_intg_site_code')) disabled @endif--}}>
                                 <option value="">카테고리</option>
@@ -46,6 +35,15 @@
                                 @endforeach
                             </select>
                             @endif
+
+                            <div class="willbes-Lec-Search GM f_right mg0">
+                                <div class="inputBox p_re">
+                                    <input type="text" id="s_keyword" name="s_keyword" maxlength="30" value="{{ element('s_keyword', $arr_input) }}" class="labelSearch" placeholder="제목 또는 내용을 입력해 주세요">
+                                    <button type="submit" onclick="goUrl('s_keyword', document.getElementById('s_keyword').value);" class="search-Btn">
+                                        <span>검색</span>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                         <div class="LeclistTable">
                             <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black bdb-gray tx-gray">

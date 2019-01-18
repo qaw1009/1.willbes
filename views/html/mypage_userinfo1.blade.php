@@ -92,18 +92,10 @@
         </span>
     </div>
     <div class="Content p_re">
-
-        <div class="willbes-Mypage-USERINFOZONE c_both">
-            <div class="willbes-Prof-Subject willbes-Mypage-Tit NG pb-zero">
-                · 개인정보관리
-            </div>
-        </div>
-        <!-- willbes-Mypage-USERINFOZONE -->
-
         <div class="willbes-Leclist c_both">
             <div class="willbes-User-Info p_re pb30">
                 <div class="InfoTable GM">
-                    <div class="willbes-UserInfo-Tit NG">* 기본정보</div>
+                    <div class="willbes-UserInfo-Tit NG mt0">* 기본정보</div>
                     <table cellspacing="0" cellpadding="0" class="classTable userInfoTable under-gray bdt-gray tx-gray">
                         <colgroup>
                             <col style="width: 150px;">

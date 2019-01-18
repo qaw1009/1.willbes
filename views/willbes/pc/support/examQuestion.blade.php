@@ -14,21 +14,10 @@
             @endforeach
         </form>
         <div class="willbes-CScenter c_both">
-            <div class="willbes-Lec-Tit NG bd-none tx-black c_both pt-zero">
-                · 기출문제
-                <div class="willbes-Lec-Search GM f_right">
-                    <div class="inputBox p_re">
-                        <input type="text" id="s_keyword" name="s_keyword" maxlength="30" value="{{ element('s_keyword', $arr_input) }}" class="labelSearch" placeholder="제목 또는 내용을 입력해 주세요">
-                        <button type="button" onclick="goUrl('s_keyword', document.getElementById('s_keyword').value)" class="search-Btn">
-                            <span>검색</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="Act2 mt30">
+            <div class="Act2">
                 <!-- List -->
                 <div class="willbes-Leclist c_both">
-                    <div class="willbes-Lec-Selected tx-gray">
+                    <div class="willbes-Lec-Selected tx-gray mt0">
                         <select id="s_area" name="s_area" title="지역" class="seleLecA" onchange="goUrl('s_area',this.value)">
                             <option value="">지역</option>
                             @foreach($arr_base['area'] as $key => $val)
@@ -49,6 +38,15 @@
                                 <option value="{{$key}}" @if(element('s_subject', $arr_input) == $key)selected="selected"@endif>{{$val}}</option>
                             @endforeach
                         </select>
+
+                        <div class="willbes-Lec-Search GM f_right mg0">
+                            <div class="inputBox p_re">
+                                <input type="text" id="s_keyword" name="s_keyword" maxlength="30" value="{{ element('s_keyword', $arr_input) }}" class="labelSearch" placeholder="제목 또는 내용을 입력해 주세요">
+                                <button type="button" onclick="goUrl('s_keyword', document.getElementById('s_keyword').value)" class="search-Btn">
+                                    <span>검색</span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="LeclistTable">

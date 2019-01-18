@@ -10,11 +10,10 @@
         <div class="Content p_re">
             <form name="searchFrm1" id="searchFrm1" action="{{app_url('/classroom/pass/index', 'www')}}" onsubmit="">
                 <div class="willbes-Mypage-PASSZONE c_both">
-                    <div class="willbes-Prof-Subject willbes-Mypage-Tit NG">
-                        · 무한PASS존
+                    <div class="c_both f_left widthAutoFull NG mb30">
                         <ul>
-                            @if(empty($passinfo) == false)<li class="InfoBtn"><a href="javascript:;" onclick="fnMyDevice();">등록기기정보 <span>▶</span></a></li>@endif
-                            <li class="InfoBtn"><a href="javascript:;" onclick="openWin('MorePASS')">프리패스이용안내 <span>▶</span></a></li>
+                            @if(empty($passinfo) == false)<li class="InfoBtn ml10"><a href="javascript:;" onclick="fnMyDevice();">등록기기정보 <span>▶</span></a></li>@endif
+                            <li class="InfoBtn ml10"><a href="javascript:;" onclick="openWin('MorePASS')">프리패스이용안내 <span>▶</span></a></li>
                         </ul>
                     </div>
                     <div class="willbes-Lec-Table NG d_block">

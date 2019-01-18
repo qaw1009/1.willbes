@@ -553,7 +553,8 @@ select[disabled] {
   height: 1100px !important;
 }
 
-.mg-zero {
+.mg-zero,
+.mg0 {
   margin: 0 !important;
 }
 

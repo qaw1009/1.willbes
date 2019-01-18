@@ -30,7 +30,8 @@ class OrderAdvanceModel extends BaseOrderModel
             $column = '';
         } else {
             $in_column = '? as BaseDate 
-				, ML.OrderIdx, ML.OrderProdIdx, ML.ProdCode, ML.ProdCodeSub, ML.LecStartDate, ML.LecEndDate, ML.RealLecEndDate, ML.LecExpireDay
+				, ML.OrderIdx, ML.OrderProdIdx, ML.ProdCode, ML.ProdCodeSub, ML.LecStartDate, ML.LecEndDate, ML.RealLecEndDate
+				, datediff(ML.LecEndDate, ML.LecStartDate) + 1 as LecExpireDay  #, ML.LecExpireDay
 				, O.OrderNo, O.MemIdx, O.PayRouteCcd, O.PayMethodCcd, OP.SalePatternCcd, O.CompleteDatm
 				, if(OPR.RefundDatm <= ?, OPR.RefundDatm, null) as RefundDatm
 				, if(PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['userpack_lecture'] . '", OSP.RealPayPrice, OP.RealPayPrice) as RealPayPrice		
@@ -100,7 +101,7 @@ class OrderAdvanceModel extends BaseOrderModel
         // 조회 로우 from 쿼리
         $raw_query = '
             select ' . $in_column . '
-			from ' . $this->_table['my_lecture'] . ' as ML
+			from ' . $this->_table['my_lecture'] . ' as ML force index (IX_lms_My_Lecture_LecEndDate)   # 인덱스 강제 적용
 				inner join ' . $this->_table['order'] . ' as O
 					on ML.OrderIdx = O.OrderIdx
 				inner join ' . $this->_table['order_product'] . ' as OP
@@ -112,9 +113,10 @@ class OrderAdvanceModel extends BaseOrderModel
 				inner join ' . $this->_table['product'] . ' as P
 					on ML.ProdCode = P.ProdCode
 				inner join ' . $this->_table['product_lecture'] . ' as PL
-					on ML.ProdCode = PL.ProdCode			
+					on ML.ProdCode = PL.ProdCode 
+					    and ML.ProdCodeSub = if(PL.LearnPatternCcd in ("' . $this->_learn_pattern_ccd['on_lecture'] . '", "' . $this->_learn_pattern_ccd['periodpack_lecture'] . '"), ML.ProdCode, ML.ProdCodeSub)			
 				left join ' . $this->_table['product'] . ' as SP		
-					on ML.ProdCodeSub = SP.ProdCode and PL.LearnPatternCcd != "' . $this->_learn_pattern_ccd['periodpack_lecture'] . '"	# 기간제패키지 서브상품명 없음
+					on ML.ProdCodeSub = SP.ProdCode
 				left join ' . $this->_table['product_division'] . ' as PD
 					on PD.ProdCode = ML.ProdCode and PD.ProdCodeSub = ML.ProdCodeSub and PD.IsStatus = "Y"
 						and PL.LearnPatternCcd in ("' . $this->_learn_pattern_ccd['on_lecture'] . '", "' . $this->_learn_pattern_ccd['adminpack_lecture'] . '") 
@@ -266,7 +268,7 @@ class OrderAdvanceModel extends BaseOrderModel
         // 조회 로우 from 쿼리
         $raw_query = '
             select ' . $in_column . '
-			from ' . $this->_table['my_lecture'] . ' as ML
+			from ' . $this->_table['my_lecture'] . ' as ML force index (IX_lms_My_Lecture_LecEndDate)   # 인덱스 강제 적용
 				inner join ' . $this->_table['order'] . ' as O
 					on ML.OrderIdx = O.OrderIdx
 				inner join ' . $this->_table['order_product'] . ' as OP

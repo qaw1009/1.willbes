@@ -808,7 +808,7 @@ class OrderFModel extends BaseOrderFModel
         try {
             $sess_mem_idx = $this->session->userdata('mem_idx');    // 회원 식별자 세션
             $input = element('mock_exam', json_decode($post_data, true));    // 응시정보 데이터
-            $input_subjects = array_merge(element('subject_ess', $input, []), element('subject_sub', $input, []));     // 응시정보 과목 데이터
+            $input_subjects = array_filter(array_merge((array) element('subject_ess', $input), (array) element('subject_sub', $input)));     // 응시정보 과목 데이터
 
             if (empty($input) === true || empty($input_subjects) === true) {
                 throw new \Exception('모의고사 응시정보가 없습니다.');

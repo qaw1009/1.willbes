@@ -38,16 +38,16 @@ class MockInfoFModel extends WB_Model
                 ';
                 //본인 결제한 내역 추출
                 if(empty($this->session->userdata('mem_idx'))) {
-                    $column .= ', \'0\' as PayCnt ';
+                    $column .= ', \'0\' as OrderProdIdx ';
                 } else {
                     $column .= ', (
                                 select
-                                    count(*)
+                                    IFNULL(max(OrderProdIdx),0)
                                 from
                                     lms_order_product op 
                                     join lms_order o on op.OrderIdx = o.OrderIdx
                                 where op.PayStatusCcd=\'676001\' and ProdCode = pm.ProdCode and op.MemIdx = \''.$this->session->userdata('mem_idx').'\'
-                            ) as PayCnt' ;
+                            ) as OrderProdIdx' ;
                 }
 
             }
@@ -56,17 +56,6 @@ class MockInfoFModel extends WB_Model
         return $result;
     }
 
-
-    /**
-     * 모의고사 주문내역 조회
-     * @param $prod_code
-     * @return bool
-     */
-    public function findApplyMockTestByProdCode($prod_code)
-    {
-        
-        return false;
-    }
 
 
     /**
@@ -185,5 +174,100 @@ class MockInfoFModel extends WB_Model
     }
 
 
+    /**
+     * 장바구니 내역 조회
+     * @param $cart_idx
+     * @return mixed
+     */
+    public function findCartByCartIdx($cart_idx)
+    {
+        $select = 'Select * ';
+
+        $from = '
+                    from 
+                        lms_cart c
+                    ';
+        $where = ' where c.IsStatus=\'Y\' ';
+
+        $where .= $this->_conn->makeWhere(['EQ'=>['c.CartIdx' => $cart_idx]])->getMakeWhere(true);
+
+        $result = $this->_conn->query($select. $from. $where)->row_array();
+
+        return $result;
+    }
+
+
+
+    /**
+     * 모의고사 주문내역 조회
+     * @param $prod_code
+     * @return bool
+     */
+    public function findRegistByOrderProdIdx($order_prod_idx)
+    {
+
+        $select = '
+                        select 
+                            op.ProdCode,op.RealPayPrice,op.IsUseCoupon,op.PayStatusCcd
+                            ,sc1.CcdName as PayStatusCcd_Name 
+                            ,o.OrderIdx,o.CompleteDatm
+                            ,sc2.CcdName as PayRouteCcd_Name
+                            ,sc3.CcdName as PayMethodCcd_Name
+                            ,mr.MrIdx,mr.TakeMockPart,mr.TakeForm,mr.TakeArea,Ifnull(mr.AddPoint,\'0\') as AddPoint,mr.IsStatus
+                            ,sc4.CcdName as TakeMockPart_Name
+                            ,sc5.CcdName as TakeArea_Name
+                            ,sc6.CcdName as TakeForm_Name
+                            ,pm.ProdName,pm.CateName,pm.TakeStartDatm,pm.TakeEndDatm
+        ';
+
+        $from = '
+                    from
+                        lms_order_product op 
+                        join lms_order o on op.OrderIdx = o.OrderIdx
+                        join lms_sys_code sc1 on op.PayStatusCcd = sc1.Ccd
+                        join lms_sys_code sc2 on o.PayRouteCcd = sc2.Ccd
+                        join lms_sys_code sc3 on o.PayMethodCcd = sc3.Ccd
+                        join lms_mock_register mr on op.OrderProdIdx = mr.OrderProdIdx
+                        join lms_sys_code sc4 on mr.TakeMockPart = sc4.Ccd
+                        join lms_sys_code sc5 on mr.TakeArea = sc5.Ccd
+                        join lms_sys_code sc6 on mr.TakeForm = sc6.Ccd
+                        join vw_product_mocktest pm on mr.ProdCode = pm.ProdCode';
+
+        $where = '
+                    where op.MemIdx=\''.$this->session->userdata('mem_idx').'\' ';
+
+        $where .= $this->_conn->makeWhere(['EQ'=>['op.OrderProdIdx' => $order_prod_idx]])->getMakeWhere(true);
+
+        $result = $this->_conn->query($select. $from. $where)->row_array();
+
+        //echo $this->_conn->last_query();
+        return $result;
+    }
+
+
+    /**
+     * 신청한 시험의 과목정보
+     * @param $order_prod_idx
+     * @return mixed
+     */
+    public function findRegistSubject($order_prod_idx)
+    {
+            $select = 'select
+                            pmp.MockType
+                            ,group_concat(ps.SubjectName,\'\') as subject_names ';
+            $from = ' from
+                            lms_mock_register mr
+                            join lms_mock_register_r_paper mrp on mr.MrIdx = mrp.MrIdx 
+                            join lms_product_mock_r_paper pmp on mrp.ProdCode = pmp.ProdCode and mrp.MpIdx = pmp.MpIdx 
+                            join lms_product_subject ps on mrp.SubjectIdx = ps.SubjectIdx ';
+            $where = ' where 1=1 ';//pmp.MockType='E'
+
+            $group_by = 'group by pmp.MockType';
+
+            $where .= $this->_conn->makeWhere(['EQ'=>['mr.OrderProdIdx' => $order_prod_idx]])->getMakeWhere(true);
+
+            $result = $this->_conn->query($select. $from. $where. $group_by)->result_array();
+            return $result;
+    }
 
 }

@@ -92,14 +92,6 @@
         </span>
     </div>
     <div class="Content p_re">
-
-        <div class="willbes-Mypage-SUPPORTZONE c_both">
-            <div class="willbes-Prof-Subject willbes-Mypage-Tit NG">
-                · 상담내역
-            </div>
-        </div>
-        <!-- willbes-Mypage-SUPPORTZONE -->
-
         <div class="willbes-Mypage-Tabs mt40">
             <div class="pointDetailWrap p_re">
                 <ul class="tabWrap tabDepth4 NG">

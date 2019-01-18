@@ -50,21 +50,10 @@
     <div class="Content p_re">
 
         <div class="willbes-CScenter c_both">
-            <div class="willbes-Lec-Tit NG bd-none tx-black c_both pt-zero">
-                · 공지사항
-                <div class="willbes-Lec-Search GM f_right" style="margin: 0;">
-                    <div class="inputBox p_re">
-                        <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="제목 또는 내용을 입력해 주세요" maxlength="30">
-                        <button type="submit" onclick="" class="search-Btn">
-                            <span>검색</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="Act2 mt30">
+            <div class="Act2">
                 <!-- List -->
                 <div class="willbes-Leclist c_both">
-                    <div class="willbes-Lec-Selected tx-gray">
+                    <div class="willbes-Lec-Selected tx-gray mt0">
                         <select id="acad" name="acad" title="구분" class="seleAcad">
                             <option selected="selected">구분</option>
                             <option value="학원">학원</option>
@@ -76,6 +65,14 @@
                             <option value="스파르타반">스파르타반</option>
                             <option value="공직선거법">공직선거법</option>
                         </select>
+                        <div class="willbes-Lec-Search GM f_right mg0">
+                            <div class="inputBox p_re">
+                                <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="제목 또는 내용을 입력해 주세요" maxlength="30">
+                                <button type="submit" onclick="" class="search-Btn">
+                                    <span>검색</span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                     <div class="LeclistTable">
                         <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black bdb-gray tx-gray">

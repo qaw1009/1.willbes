@@ -4032,6 +4032,9 @@ ul.dot li {
     padding: 0 10px;
     vertical-align: baseline;
 }
+.Depth .depth:last-child strong {
+    color: #2784d2;
+}
 
 /* subContainer : Lnb */
 .Lnb {
@@ -8288,7 +8291,7 @@ ul li.profList .willbes-Layer-ProfileBox {
 }
 .willbes-Lec-Selected select {
     width: 140px;
-    height: 27px;
+    height: 30px;
     margin-right: 8px;
 }
 
@@ -11365,7 +11368,7 @@ table.acadlecInfoPackageTable tr.Top td {
     overflow: hidden;
     border: 1px solid #ccc;
     max-width: 687px;
-    height: 177px;
+    height: 117px;
 }
 .w-thumb .thumb_slide_wrap ul {
     float: left;
@@ -11377,7 +11380,7 @@ table.acadlecInfoPackageTable tr.Top td {
 .w-thumb .thumb_slide_wrap ul li {
     float: left;
     width: 165px;
-    height: 165px;
+    height: 105px;
     background: #ddd;
     margin-left: 5px;
     margin-top: 5px;
@@ -11387,6 +11390,9 @@ table.acadlecInfoPackageTable tr.Top td {
 }
 .w-thumb .thumb_txt {
     float: left;
+}
+.w-thumb .thumb_txt .w-tit {
+    font-size: 14px;
 }
 .w-thumb .thumb_num_short {
     position: absolute;

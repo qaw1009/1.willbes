@@ -378,7 +378,7 @@
             <div class="PASSZONE-List widthAutoFull">
                 <div class="PASSZONE-Lec-Section">
                     <div class="LeclistTable">
-                        <table cellspacing="0" cellpadding="0" class="listTable userMemoTable mockpopupTable under-gray bdt-gray tx-gray GM">
+                        <table cellspacing="0" cellpadding="0" class="listTable userMemoTable mockpopupTable under-black bdt-gray tx-gray GM">
                             <colgroup>
                                 <col style="width: 20%;"/>
                                 <col style="width: 30%;"/>

@@ -275,10 +275,17 @@ class RegGoods extends \app\controllers\BaseController
             if($v == 'E') $orderE[] = $_POST['OrderNum'][$k];
             else if($v == 'S') $orderS[] = $_POST['OrderNum'][$k];
         }
+        /*
         if( count($orderE) == 0 || count($orderS) == 0 ) {
             $this->json_error('과목을 선택해 주세요.');
             return;
         }
+        */
+        if( count($orderE) == 0 ) {     //필수과목만 적용 (선태과목 없을 수 있음)
+            $this->json_error('과목을 선택해 주세요.');
+            return;
+        }
+
         if( count($orderE) != count(array_unique($orderE)) || count($orderE) != count(array_unique($orderE)) ) {
             $this->json_error('과목 정렬번호가 중복되어 있습니다.');
             return;
@@ -461,10 +468,18 @@ class RegGoods extends \app\controllers\BaseController
             if($v == 'E') $orderE[] = $_POST['OrderNum'][$k];
             else if($v == 'S') $orderS[] = $_POST['OrderNum'][$k];
         }
+        /*
         if( count($orderE) == 0 || count($orderS) == 0 ) {
             $this->json_error('과목을 선택해 주세요.');
             return;
         }
+        */
+        if( count($orderE) == 0 ) {     //필수과목만 적용 (선태과목 없을 수 있음)
+            $this->json_error('과목을 선택해 주세요.');
+            return;
+        }
+
+
         if( count($orderE) != count(array_unique($orderE)) || count($orderE) != count(array_unique($orderE)) ) {
             $this->json_error('과목 정렬번호가 중복되어 있습니다.');
             return;

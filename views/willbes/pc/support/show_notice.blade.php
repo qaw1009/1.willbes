@@ -14,10 +14,7 @@
                 @endforeach
 
                 <div class="willbes-CScenter c_both">
-                    <div class="willbes-Lec-Tit NG bd-none tx-black c_both pt-zero">
-                        · 공지사항
-                    </div>
-                    <div class="Act2 mt30">
+                    <div class="Act2">
                         <!-- List -->
                         <div class="willbes-Leclist c_both">
                             <div class="LecViewTable">

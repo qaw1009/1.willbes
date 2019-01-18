@@ -71,23 +71,8 @@
         </span>
     </div>
     <div class="Content p_re">
-
-        <div class="willbes-Eventzone EVTZONE c_both">
-            <div class="willbes-Lec-Tit NG bd-none tx-black c_both pt-zero">
-                · 진행중인 이벤트
-                <div class="willbes-Lec-Search GM f_right" style="margin: 0;">
-                    <div class="inputBox p_re">
-                        <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="제목 또는 내용을 입력해 주세요" maxlength="30">
-                        <button type="submit" onclick="" class="search-Btn">
-                            <span>검색</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="willbes-Leclist c_both mt30">
-            <div class="willbes-LecreplyList tx-gray c_both">
+        <div class="willbes-Leclist c_both mt0">
+            <div class="willbes-LecreplyList tx-gray c_both mt0">
                 <span class="willbes-Lec-Search willbes-SelectBox mb20 GM f_left">
                     <select id="event" name="event" title="event" class="seleEvt f_left">
                         <option selected="selected">전체 이벤트</option>
@@ -100,6 +85,14 @@
                         <option value="캠퍼스2">캠퍼스2</option>
                     </select>
                 </span>
+                <div class="willbes-Lec-Search GM f_right" style="margin: 0;">
+                    <div class="inputBox p_re">
+                        <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="제목 또는 내용을 입력해 주세요" maxlength="30">
+                        <button type="submit" onclick="" class="search-Btn">
+                            <span>검색</span>
+                        </button>
+                    </div>
+                </div>
             </div>
             <div class="LeclistTable orderTable">
                 <table cellspacing="0" cellpadding="0" class="listTable cartTable upper-gray bdt-gray tx-gray">

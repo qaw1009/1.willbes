@@ -81,11 +81,11 @@
                                             <td class="w-type">{{$row['CateName']}}</td>
                                             <td class="w-form">{{$row['TakeFormsCcd_Name']}}</td>
                                             <td class="w-date">{{$row['TakeStartDatm']}} ~<br/>{{$row['TakeEndDatm']}}</td>
-                                            <td class="w-list tx-left pl15"><a href="javascript:;" onclick="applyRegist('{{$row['ProdCode']}}')">{{$row['ProdName']}}</a></td>
+                                            <td class="w-list tx-left pl15"><a href="javascript:;" onclick="applyRegist('{{$row['ProdCode']}}','{{$row['OrderProdIdx']}}')">{{$row['ProdName']}}</a></td>
                                             <td class="w-price">@if(empty($sales_info)==false){{ number_format($sales_info[0]['RealSalePrice'],0)}}원@endif</td>
                                             <td class="w-day">{{$row['SaleStartDatm']}}~<br/>{{$row['SaleEndDatm']}}</td>
                                             <td class="w-state">{{$row['AcceptStatusCcd_Name']}}</td>
-                                            <td class="w-user-state">{{$row['PayCnt'] > 0 ? '결제완료' : '미접수'}}</td>
+                                            <td class="w-user-state">{{$row['OrderProdIdx'] > 0 ? '결제완료' : '미접수'}}</td>
                                         </tr>
                                         @php $paging['rownum']-- @endphp
                                     @endforeach
@@ -106,6 +106,7 @@
 
             <div id="mock_apply" class="willbes-Layer-PassBox willbes-Layer-PassBox740 abs"></div>
 
+
         </div>
         <div class="Quick-Bnr ml20">
             <img src="{{ img_url('sample/banner_180605.jpg') }}">
@@ -117,29 +118,35 @@
 
         });
 
+        function applyRegist(prod_code,order_prod) {
 
-        function applyRegist(prod_code) {
             @if( empty(sess_data('mem_idx')) )
                 alert("로그인 후 이용하실 수 있습니다.");
             @else
 
-                url = '{{front_url('/mockTest/apply_modal/')}}' + 'prod-code/' + prod_code;
-                ele_id = 'mock_apply';
-                var data = { 'ele_id' : ele_id };
+                if(order_prod == '0') {
+                    url = '{{front_url('/mockTest/apply_modal/')}}' + 'prod-code/' + prod_code;
+                    ele_id = 'mock_apply';
+                    var data = { 'ele_id' : ele_id };
+                    sendAjax(url, data, function(ret) {
+                        $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');
+                    }, showAlertError, false, 'GET', 'html');
+                } else {
+                    /*
+                    url = '{{front_url('/mockTest/apply_order/')}}' + order_prod;
+                    ele_id = 'mock_apply';
+                    var data = { 'ele_id' : ele_id };
+                    sendAjax(url, data, function(ret) {
+                        $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');
+                    }, showAlertError, false, 'GET', 'html');
+                   */
+                    url = '{{front_url('/mockTest/apply_order/')}}' + order_prod;
+                    window.open(url, '_blank', 'width=753, height=845, scrollbars=yes, resizable=no');
 
-                sendAjax(url, data, function(ret) {
-                    $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');
-                }, showAlertError, false, 'GET', 'html');
-
-
+            }
 
             @endif
         }
-
-        function productInfoModal(prod_code) {
-
-        }
-
 
     </script>
 @stop

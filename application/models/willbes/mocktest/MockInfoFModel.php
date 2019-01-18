@@ -4,7 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class MockInfoFModel extends WB_Model
 {
     protected $_table = [
-        'mock_product' => 'vw_product_mocktest as pm'
+        'mock_product' => 'vw_product_mocktest as pm',
+        'board' => 'lms_board'
     ];
 
     public function __construct()
@@ -17,46 +18,43 @@ class MockInfoFModel extends WB_Model
      */
     public function listMockTest($is_count, $arr_condition=[], $add_column = null, $limit = null, $offset = null, $order_by = [])
     {
+        if($is_count===true) {
+            $column = true;
+        } else {
 
-            if($is_count===true) {
-                $column = true;
-            } else {
-
-                $column = '';
-                if(empty($add_column) == false) {
-                    $column = $add_column . ',';
-                }
-                $column .= '    pm.*
-                            , (
-                                select
-                                    count(*)
-                                from
-                                    lms_order_product op 
-                                    join lms_order o on op.OrderIdx = o.OrderIdx
-                                where op.PayStatusCcd=\'676001\' and ProdCode = pm.ProdCode 
-                            ) as AllPayCnt
-                ';
-                //본인 결제한 내역 추출
-                if(empty($this->session->userdata('mem_idx'))) {
-                    $column .= ', \'0\' as OrderProdIdx ';
-                } else {
-                    $column .= ', (
-                                select
-                                    IFNULL(max(OrderProdIdx),0)
-                                from
-                                    lms_order_product op 
-                                    join lms_order o on op.OrderIdx = o.OrderIdx
-                                where op.PayStatusCcd=\'676001\' and ProdCode = pm.ProdCode and op.MemIdx = \''.$this->session->userdata('mem_idx').'\'
-                            ) as OrderProdIdx' ;
-                }
-
+            $column = '';
+            if(empty($add_column) == false) {
+                $column = $add_column . ',';
             }
+            $column .= '    pm.*
+                        , (
+                            select
+                                count(*)
+                            from
+                                lms_order_product op 
+                                join lms_order o on op.OrderIdx = o.OrderIdx
+                            where op.PayStatusCcd=\'676001\' and ProdCode = pm.ProdCode 
+                        ) as AllPayCnt
+            ';
+            //본인 결제한 내역 추출
+            if(empty($this->session->userdata('mem_idx'))) {
+                $column .= ', \'0\' as OrderProdIdx ';
+            } else {
+                $column .= ', (
+                            select
+                                IFNULL(max(OrderProdIdx),0)
+                            from
+                                lms_order_product op 
+                                join lms_order o on op.OrderIdx = o.OrderIdx
+                            where op.PayStatusCcd=\'676001\' and ProdCode = pm.ProdCode and op.MemIdx = \''.$this->session->userdata('mem_idx').'\'
+                        ) as OrderProdIdx' ;
+            }
+
+        }
         $result = $this->_conn->getListResult($this->_table['mock_product'], $column, $arr_condition, $limit, $offset, $order_by);
         //echo $this->_conn->last_query();
         return $result;
     }
-
-
 
     /**
      * 모의고사 상품 필수과목, 선택과목 추출
@@ -85,7 +83,6 @@ class MockInfoFModel extends WB_Model
         //echo $this->_conn->last_query();exit;
         return $result;
     }
-
 
     /**
      * 응시직렬 추출
@@ -147,7 +144,6 @@ class MockInfoFModel extends WB_Model
         return $result;
     }
 
-
     /**
      * 가산점 항목 추출
      * @param $prod_code
@@ -173,7 +169,6 @@ class MockInfoFModel extends WB_Model
         return $result;
     }
 
-
     /**
      * 장바구니 내역 조회
      * @param $cart_idx
@@ -195,8 +190,6 @@ class MockInfoFModel extends WB_Model
 
         return $result;
     }
-
-
 
     /**
      * 모의고사 주문내역 조회
@@ -244,7 +237,6 @@ class MockInfoFModel extends WB_Model
         return $result;
     }
 
-
     /**
      * 신청한 시험의 과목정보
      * @param $order_prod_idx
@@ -270,4 +262,39 @@ class MockInfoFModel extends WB_Model
             return $result;
     }
 
+
+    public function listMockTestForBoard($is_count, $arr_condition=[], $column = null, $limit = null, $offset = null, $order_by = [])
+    {
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $from = "
+            FROM {$this->_table['mock_product']}
+            LEFT JOIN (
+                SELECT ProdCode, COUNT(*) AS cnt
+                FROM {$this->_table['board']}
+                WHERE BmIdx = '95' AND RegType = '0' AND IsStatus = 'Y'
+                GROUP BY ProdCode
+            ) AS BD1 ON BD1.ProdCode = pm.ProdCode
+            
+            LEFT JOIN (
+                SELECT ProdCode, COUNT(*) AS cnt
+                FROM {$this->_table['board']}
+                WHERE BmIdx = '96' AND IsStatus = 'Y'
+                GROUP BY ProdCode
+            ) AS BD2 ON BD2.ProdCode = pm.ProdCode
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
 }

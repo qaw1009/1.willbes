@@ -245,17 +245,79 @@ class MockTest extends \app\controllers\FrontController
 
 
     /**
-     * 이의제기/정오표
+     * 이의제기/정오표 : 모의고사 리스트
      */
     public function board()
     {
+        $arr_input = $this->_reqG(null,false);
+        $s_keyword = element('s_keyword',$arr_input);
+        $get_params = http_build_query($arr_input);
+        $get_page_params = 's_keyword='.$s_keyword;
 
-        $this->load->view('site/mocktest/board',[
-            'page_type' => 'board'
+
+        $arr_condition = [
+            'EQ' => [
+                'pm.SiteCode' => $this->_site_code,
+                'pm.CateCode' => $this->_cate_code,
+                'pm.IsUse' => 'Y'
+
+            ],
+            'LKB' => [
+                'pm.ProdName' => $s_keyword
+            ]
+        ];
+
+        $column = 'pm.*,
+                    IFNULL(DATE_FORMAT(pm.TakeStartDatm, \'%Y%m%d\'), 0) as TakeStartDate,
+                    IFNULL(DATE_FORMAT(pm.TakeEndDatm, \'%Y%m%d\'), 0) as TakeEndDate,
+                    IFNULL(BD1.cnt, 0) AS qnaTotalCnt, IFNULL(BD2.cnt, 0) AS noticeCnt
+                    ';
+        $order_by = ['pm.ProdCode'=>'Desc'];
+
+        $list = [];
+        $count = $this->mockInfoFModel->listMockTestForBoard(true, $arr_condition);
+        $paging = $this->pagination('mockTest/board/cate/'.$this->_cate_code.'/?'.$get_page_params,$count,$this->_paging_limit,$this->_paging_count,true);
+        if($count > 0) {
+            $list = $this->mockInfoFModel->listMockTestForBoard(false, $arr_condition, $column, $paging['limit'], $paging['offset'], $order_by);
+        }
+
+        $this->load->view('site/mocktest/board_product',[
+            'page_type' => 'board',
+            'arr_input' => $arr_input,
+            'get_params' => $get_params,
+            'def_cate_code' => $this->_cate_code,
+            'count' => $count,
+            'list'=>$list,
+            'paging' => $paging,
         ]);
-
     }
 
+    public function createQna()
+    {
+        $arr_input = $this->_reqG(null,false);
+        $prod_code = element('prod_code', $arr_input);
 
+        // 모의고사 상품 상세 조회
+        $arr_condition = [
+            'EQ' => [
+                'pm.CateCode' => $this->_cate_code
+                ,'pm.IsUse' => 'Y'
+                ,'pm.SiteCode' => $this->_site_code
+                ,'pm.ProdCode' => $prod_code
+            ]
+        ];
+
+        $order_by = ['pm.ProdCode'=>'Desc'];
+        $data = $this->mockInfoFModel->listMockTest(false, $arr_condition,null,1,0,$order_by);
+        if (empty($data) === true) {
+            show_alert('조회된 모의고사 상품이 없습니다.', 'back');
+        }
+
+        $prod_data = $data[0];
+        if (empty($prod_data['OrderProdIdx']) === true) {
+            show_alert('응시한 모의고사 상품이 아닙니다.', 'back');
+        }
+        print_r($prod_data);
+    }
 
 }

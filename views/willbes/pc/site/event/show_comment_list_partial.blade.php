@@ -9,7 +9,7 @@
     function popup_notice_view(notice_idx) {
         var ele_id = 'NOTICEPASS';
         var data = {'ele_id' : ele_id, 'board_idx' : notice_idx};
-        sendAjax('{{ site_url('/event/popupNoticeShow/') }}', data, function(ret) {
+        sendAjax('{{ front_url('/event/popupNoticeShow/') }}', data, function(ret) {
             $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');
         }, showAlertError, false, 'GET', 'html');
     }

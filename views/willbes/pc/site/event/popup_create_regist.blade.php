@@ -91,7 +91,7 @@
         });
 
         function epopup_register_submit() {
-            var _url = '{!! site_url('/event/registerStore') !!}';
+            var _url = '{!! front_url('/event/registerStore') !!}';
             if (!confirm('저장하시겠습니까?')) { return true; }
             ajaxSubmit($epopup_regi_form_register, _url, function(ret) {
                 if(ret.ret_cd) {
@@ -123,7 +123,7 @@
         }
 
         function epopup_comment_submit() {
-            var _url = '{!! site_url('/event/commentStore') !!}';
+            var _url = '{!! front_url('/event/commentStore') !!}';
             if (!confirm('등록하시겠습니까?')) { return true; }
             ajaxSubmit($epopup_regi_form_comment, _url, function(ret) {
                 if(ret.ret_cd) {

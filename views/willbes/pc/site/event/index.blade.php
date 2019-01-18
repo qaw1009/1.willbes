@@ -70,7 +70,7 @@
                         <tr>
                             <td class="w-no">@if($row['IsBest'] == '1')<img src="{{ img_url('sub/icon_HOT.gif') }}">@else{{$paging['rownum']}}@endif</td>
                             <td class="w-img">
-                                <a href="{{site_url($arr_base['view_url'].'?event_idx='.$row['ElIdx'].'&'.$get_params)}}">
+                                <a href="{{front_url($arr_base['view_url'].'?event_idx='.$row['ElIdx'].'&'.$get_params)}}">
                                     <img src="{{$row['FileFullPath'] . $row['FileName']}}">
                                 </a>
                             </td>
@@ -79,7 +79,7 @@
                                     <dt>{{$row['CampusName']}}</dt>
                                 </dl><br/>
                                 <div class="w-tit">
-                                    <a href="{{site_url($arr_base['view_url'].'?event_idx='.$row['ElIdx'].'&'.$get_params)}}">
+                                    <a href="{{front_url($arr_base['view_url'].'?event_idx='.$row['ElIdx'].'&'.$get_params)}}">
                                         <strong><span class="tx-light-blue">[{{$row['RequstTypeName']}}]</span> {{hpSubString($row['EventName'],0,40,'...')}}</strong>
                                     </a>
                                 </div>

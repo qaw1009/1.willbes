@@ -35,7 +35,7 @@
                         <tr>
                             <td class="w-file tx-left pl20" colspan="5">
                                 @if(empty($data['UploadFileRealName']) === false)
-                                    <a href="{{site_url('/event/download?path=').urlencode($data['UploadFileFullPath'].$data['UploadFileName']).'&fname='.urlencode($data['UploadFileRealName']).'&event_idx='.element('event_idx', $arr_input) }}" target="_blank">
+                                    <a href="{{front_url('/event/download?path=').urlencode($data['UploadFileFullPath'].$data['UploadFileName']).'&fname='.urlencode($data['UploadFileRealName']).'&event_idx='.element('event_idx', $arr_input) }}" target="_blank">
                                     <img src="{{ img_url('prof/icon_file.gif') }}"> {{$data['UploadFileRealName']}}</a>
                                 @endif
                             </td>
@@ -85,7 +85,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $('#btn_list').click(function() {
-            location.href = '{!! site_url($arr_base['page_url']) !!}';
+            location.href = '{!! front_url($arr_base['page_url']) !!}';
         });
     });
 </script>

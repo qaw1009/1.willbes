@@ -11391,6 +11391,9 @@ table.acadlecInfoPackageTable tr.Top td {
 .w-thumb .thumb_txt {
     float: left;
 }
+.w-thumb .thumb_txt .w-tit {
+    font-size: 14px;
+}
 .w-thumb .thumb_num_short {
     position: absolute;
     bottom: 0;

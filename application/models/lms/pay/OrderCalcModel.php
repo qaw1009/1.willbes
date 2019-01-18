@@ -79,7 +79,7 @@ class OrderCalcModel extends BaseOrderModel
 					from ' . $this->_table['order'] . '
 					where CompleteDatm between ? and ?
 					union
-					select OrderIdx
+					select distinct(OrderIdx)
 					from ' . $this->_table['order_product_refund'] . '
 					where RefundDatm between ? and ?			
 			    ) as BO
@@ -278,7 +278,7 @@ class OrderCalcModel extends BaseOrderModel
 					from ' . $this->_table['order'] . '
 					where CompleteDatm between ? and ?
 					union
-					select OrderIdx
+					select distinct(OrderIdx)
 					from ' . $this->_table['order_product_refund'] . '
 					where RefundDatm between ? and ?				 
 			    ) as BO
@@ -483,7 +483,7 @@ class OrderCalcModel extends BaseOrderModel
 					from ' . $this->_table['order'] . '
 					where CompleteDatm between ? and ?
 					union
-					select OrderIdx
+					select distinct(OrderIdx)
 					from ' . $this->_table['order_product_refund'] . '
 					where RefundDatm between ? and ?				
 			    ) as BO

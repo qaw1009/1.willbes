@@ -255,7 +255,7 @@ $(document).ready(function() {
         trigger: 'click hover',
         delay: {
             show: 50,
-            hide: 400
+            hide: 50
         }
     });
 });

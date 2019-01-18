@@ -88,7 +88,7 @@
                                         <td class="w-thumb p_re">
                                             <div class="thumb_rollover">
                                                 <a href="{{front_url($default_path.'/show/?board_idx='.$row['BoardIdx'].'&'.$get_params)}}">
-                                                    <img src="{{$first_files}}" width="165px" height="165">
+                                                    <img src="{{$first_files}}" width="165px" height="105px">
                                                 </a>
                                                 <a href="#" class="thumb_num"><span>+ {{$file_total_cnt}}</span></a>
                                                 <div class="thumb_slide_wrap">

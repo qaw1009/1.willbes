@@ -11368,7 +11368,7 @@ table.acadlecInfoPackageTable tr.Top td {
     overflow: hidden;
     border: 1px solid #ccc;
     max-width: 687px;
-    height: 177px;
+    height: 117px;
 }
 .w-thumb .thumb_slide_wrap ul {
     float: left;
@@ -11380,7 +11380,7 @@ table.acadlecInfoPackageTable tr.Top td {
 .w-thumb .thumb_slide_wrap ul li {
     float: left;
     width: 165px;
-    height: 165px;
+    height: 105px;
     background: #ddd;
     margin-left: 5px;
     margin-top: 5px;

@@ -34,7 +34,7 @@
                         <th class="text-center" style="width:150px">모의고사그룹코드</th>
                         <th class="text-center">모의고사그룹명</th>
                         <th class="text-center">설명</th>
-                        <th class="text-center">중복신청</th>
+                        <th class="text-center">성적오픈일</th>
                         <th class="text-center">사용여부</th>
                         <th class="text-center">등록자</th>
                         <th class="text-center" style="width:130px">등록일</th>
@@ -96,9 +96,7 @@
                         return '<span class="blue underline-link act-edit" data-target-idx="'+ row.MgIdx +'">' + row.GroupName + '</span>';
                     }},
                     {'data' : 'GroupDesc', 'class': ''},
-                    {'data' : 'IsDup', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                        return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
-                    }},
+                    {'data' : 'GradeOpenDatm', 'class': ''},
                     {'data' : 'IsUse', 'class': 'text-center', 'render' : function(data, type, row, meta) {
                         return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
                     }},

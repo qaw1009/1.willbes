@@ -262,7 +262,16 @@ class MockInfoFModel extends WB_Model
             return $result;
     }
 
-
+    /**
+     * 이의제기/정오표 게시판 : 모의고사 상품 목록
+     * @param $is_count
+     * @param array $arr_condition
+     * @param null $column
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
+     */
     public function listMockTestForBoard($is_count, $arr_condition=[], $column = null, $limit = null, $offset = null, $order_by = [])
     {
         if ($is_count === true) {
@@ -296,5 +305,28 @@ class MockInfoFModel extends WB_Model
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    /**
+     * 이의제기/정오표 게시판 : 모의고사 상세 정보
+     * @param array $arr_condition
+     * @return mixed
+     */
+    public function findRegistForBoard($arr_condition=[])
+    {
+        $column = 'pm.*, mr.IsTake';
+
+        $from = "
+            FROM {$this->_table['mock_product']}
+            INNER JOIN lms_mock_register mr ON pm.ProdCode = mr.ProdCode
+            INNER JOIN lms_order_product op ON op.OrderProdIdx = mr.OrderProdIdx
+            INNER JOIN lms_order o on op.OrderIdx = o.OrderIdx
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $result = $this->_conn->query('select STRAIGHT_JOIN ' . $column . $from. $where)->row_array();
+        return $result;
     }
 }

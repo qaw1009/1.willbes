@@ -194,7 +194,7 @@ class RegGoods extends \app\controllers\BaseController
             ['field' => 'SaleEndDatm_m', 'label' => '접수마감(분)', 'rules' => 'trim|required|numeric'],
 
             ['field' => 'ClosingPerson', 'label' => '접수마감인원', 'rules' => 'trim|is_natural_no_zero'],
-            ['field' => 'IsRegister', 'label' => '접수상태', 'rules' => 'trim|required|in_list[Y,N]'],
+            ['field' => 'IsRegister', 'label' => '접수상태', 'rules' => 'trim'],
             //['field' => 'TakeType', 'label' => '응시가능타입', 'rules' => 'trim|required|in_list[A,L]'],
             ['field' => 'TakeStartDatm_d', 'label' => '응시시작일', 'rules' => 'trim'],
             ['field' => 'TakeStartDatm_h', 'label' => '응시시작(시)', 'rules' => 'trim|numeric'],
@@ -252,7 +252,8 @@ class RegGoods extends \app\controllers\BaseController
         }
 
         // 응시형태 OFF 포함인 경우 응시지역, 접수마감인원 필수
-        if( in_array($this->applyType_off, $this->input->post('TakeFormsCcd')) ) {
+        //if( in_array($this->applyType_off, $this->input->post('TakeFormsCcd')) ) {
+        if( $this->applyType_off == $this->input->post('TakeFormsCcd') ) {
             if( !$this->input->post('TakeAreas1CCds') || !$this->input->post('TakeAreas2Ccds') || !$this->input->post('ClosingPerson') ) {
                 $this->json_error('응시형태 OFF(학원)선택시 응시지역, 접수마감인원은 필수입니다.');
                 return;

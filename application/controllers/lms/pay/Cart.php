@@ -54,9 +54,6 @@ class Cart extends BaseOrder
             'EQ' => [
                 'CA.SiteCode' => $this->_reqP('search_site_code')
             ],
-            'LKB' => [
-                'P.ProdName' => $this->_reqP('search_prod_value')
-            ],
             'IN' => ['CA.SiteCode' => get_auth_site_codes()],    //사이트 권한 추가
             'ORG1' => [
                 'LKR' => [
@@ -66,7 +63,15 @@ class Cart extends BaseOrder
                     'A.wAdminId' => $this->_reqP('search_member_value'),
                     'A.wAdminName' => $this->_reqP('search_member_value')
                 ]
-            ]
+            ],
+            'ORG2' => [
+                'EQ' => [
+                    'P.ProdCode' => $this->_reqP('search_prod_value')
+                ],
+                'LKB' => [
+                    'P.ProdName' => $this->_reqP('search_prod_value')
+                ],
+            ],
         ];
 
         // 날짜 검색

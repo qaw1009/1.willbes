@@ -368,6 +368,7 @@ class BaseCalc extends \app\controllers\BaseController
             ],
             'ORG2' => [
                 'EQ' => [
+                    'O.OrderIdx' => $this->_reqP('search_prod_value'),
                     'O.OrderNo' => $this->_reqP('search_prod_value'),
                     'P.ProdCode' => $this->_reqP('search_prod_value')
                 ],

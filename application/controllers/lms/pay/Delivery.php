@@ -90,8 +90,10 @@ class Delivery extends BaseOrder
                 ]
             ],
             'ORG2' => [
-                'LKR' => [
+                'EQ' => [
+                    'O.OrderIdx' => $this->_reqP('search_prod_value'),
                     'O.OrderNo' => $this->_reqP('search_prod_value'),
+                    'P.ProdCode' => $this->_reqP('search_prod_value'),
                     'OPD.InvoiceNo' => $this->_reqP('search_prod_value')
                 ],
                 'LKB' => [

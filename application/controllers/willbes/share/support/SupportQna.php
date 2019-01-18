@@ -334,10 +334,10 @@ class SupportQna extends BaseSupport
     public function store()
     {
         $idx = '';
-        if ($this->_site_code == config_item('app_intg_site_code')) {
-            $s_site_code = $this->_reqP('s_site_code');
-        } else {
+        if ($this->_reqP('_method') == 'PUT') {
             $s_site_code = $this->_reqP('put_site_code');
+        } else {
+            $s_site_code = $this->_reqP('s_site_code');
         }
 
         //캠퍼스 사용 유/무 조회

@@ -336,7 +336,7 @@
                             <div class="radio">
                                 <input type="radio" name="IsCoupon" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['IsCoupon']=='Y')checked="checked"@endif/> 가능
                                 &nbsp;
-                                <input type="radio" name="IsCoupon" class="flat" value="N" @if($data['IsCoupon']=='N')checked="checked"@endif/> 불가능
+                                <input type="radio" name="IsCoupon" class="flat" value="N" @if($method == 'PUT' && $data['IsCoupon']=='N')checked="checked"@endif/> 불가능
                             </div>
                         </td>
                     </tr>

@@ -166,7 +166,7 @@
                         <td colspan="3">
                             @foreach($accept_ccd as $key=>$val)
                                 @if($key != '675001' ) {{--접수예정 제외--}}
-                                <input type="radio" name="AcceptStatusCcd" class="flat" value="{{$key}}" @if($method == 'PUT'){{ ($data['AcceptStatusCcd'] == $key) ? ' checked="checked" ' : '' }} @endif required title="접수상태"> <span class="flat-text mr-10">{{$val}}</span>
+                                <input type="radio" name="AcceptStatusCcd" class="flat" value="{{$key}}" @if($method == 'PUT'){{ ($data['AcceptStatusCcd'] == $key) ? ' checked="checked" ' : '' }} @endif title="접수상태"> <span class="flat-text mr-10">{{$val}}</span>
                                 @endif
                             @endforeach
                         </td>

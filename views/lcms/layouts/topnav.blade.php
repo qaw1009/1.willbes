@@ -97,6 +97,10 @@
                 </li>
                 @if(isset($__menu['GNB']) === true)
                     @foreach($__menu['GNB'] as $bmenu)
+                        @php
+                            $css_right_menu = $loop->remaining <= 2 ? 'right-menu' : '';
+                        @endphp
+
                         @if(isset($bmenu['Children']) === true)
                             <li role="presentation" class="dropdown">
                                 <a id="{{ $bmenu['TreeNum'] }}" href="#">
@@ -107,7 +111,7 @@
                                         @if(isset($mmenu['Children']) === true)
                                             <li role="presentation" class="dropdown-submenu">
                                                 <a id="{{ $mmenu['TreeNum'] }}" href="#">{{ $mmenu['MenuName'] }}</a>
-                                                <ul class="dropdown-menu animated fadeIn">
+                                                <ul class="dropdown-menu animated fadeIn {{ $css_right_menu }}">
                                                     @foreach($mmenu['Children'] as $sidx => $smenu)
                                                         <li role="presentation"><a tabindex="-1" href="{{ site_url($smenu['MenuUrl']) }}" class="{{ isset($__menu['CURRENT']['MenuIdx']) && $sidx == $__menu['CURRENT']['MenuIdx'] ? 'current' : '' }}">{{ $smenu['MenuName'] }}</a></li>
                                                     @endforeach

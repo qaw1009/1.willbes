@@ -441,6 +441,11 @@ body.no_sidebar {
     margin-top: -4px;
     margin-left: 0;
 }
+.top_col .nav-tabs li.dropdown .dropdown-menu .dropdown-submenu .dropdown-menu.right-menu,
+.top_col .nav-tabs li.dropdown:last-child .dropdown-menu .dropdown-submenu .dropdown-menu {
+    left: -100% !important;
+    margin-left: -2px;
+}
 .top_col .nav-tabs li.dropdown .dropdown-menu li {
     margin-left: 0;
 }
@@ -605,13 +610,6 @@ ul.bar_tabs > li.active a:hover {
     border-left-color: #ccc;
     margin-top: 5px;
     margin-right: -10px;
-}
-.dropdown-submenu.pull-left {
-    float: none;
-}
-.dropdown-submenu.pull-left > .dropdown-menu {
-    left: -100%;
-    margin-left: 10px;
 }
 
 /* panel */

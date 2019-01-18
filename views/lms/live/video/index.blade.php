@@ -40,9 +40,11 @@
         </div>
         <div class="row">
             <div class="form-group">
+                <div class="col-xs-2 live">
                 @foreach($boardInfo as $key => $val)
-                    <div class="col-xs-1"><button class="btn btn-info btn_board" type="button" data-bm-idx="{{$key}}">{{$val}}</button></div>
+                    <button class="btn btn-info btn_board" type="button" data-bm-idx="{{$key}}">{{$val}}</button>
                 @endforeach
+                </div>
                 <div class="col-xs-10 text-right form-inline">
                     <button type="submit" class="btn btn-primary btn-search" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
                 </div>

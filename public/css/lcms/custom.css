@@ -1599,6 +1599,10 @@ div.dataTables_wrapper div.dataTables_processing {
     font-size: 25px;
 }
 
+.col-xs-2.live button {
+    margin-right: -2px;
+}
+
 /* media Query */
 @media (max-width: 1200px) {
     .x_title h2 {

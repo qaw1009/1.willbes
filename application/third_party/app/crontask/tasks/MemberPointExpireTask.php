@@ -23,16 +23,22 @@ class MemberPointExpireTask extends \app\crontask\tasks\Task
     }
 
     /**
-     * 회원포인트 소멸
+     * 회원포인트 소멸 (프로시저에서 트랜잭션 처리)
      * @return mixed|string
      */
     public function run()
     {
-        $query = $this->_db->query('call sp_member_point_expire');
-        $result = $query->row(0);
+        try {
+            $query = $this->_db->query('call sp_member_point_expire');
+            $result = $query->row(0);
 
-        $this->setOutput('MemberPointExpireTask complete.');
+            $this->setOutput('MemberPointExpireTask complete.');
 
-        return $result->ReturnMsg . ' (' . $result->ReturnCnt . ')';
+            return $result->ReturnMsg . ' (' . $result->ReturnCnt . ')';
+        } catch (\Exception $e) {
+            $this->setOutput('MemberPointExpireTask error occured. [' . $e->getMessage() . ']');
+
+            return 'Error (0)';
+        }
     }
 }

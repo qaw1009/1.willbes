@@ -23,16 +23,22 @@ class VbankWaitToExpireTask extends \app\crontask\tasks\Task
     }
 
     /**
-     * 주문상품 입금대기 => 입금대기만료 업데이트 (오늘부터 31일 이전 주문건 대상)
+     * 주문상품 입금대기 => 입금대기만료 업데이트 (오늘부터 31일 이전 주문건 대상) (프로시저에서 트랜잭션 처리)
      * @return mixed|string
      */
     public function run()
     {
-        $query = $this->_db->query('call sp_order_vbank_wait_to_expire(?)', [31]);
-        $result = $query->row(0);
+        try {
+            $query = $this->_db->query('call sp_order_vbank_wait_to_expire(?)', [31]);
+            $result = $query->row(0);
 
-        $this->setOutput('VbankWaitToExpireTask complete.');
+            $this->setOutput('VbankWaitToExpireTask complete.');
 
-        return $result->ReturnMsg . ' (' . $result->ReturnCnt . ')';
+            return $result->ReturnMsg . ' (' . $result->ReturnCnt . ')';
+        } catch (\Exception $e) {
+            $this->setOutput('VbankWaitToExpireTask error occured. [' . $e->getMessage() . ']');
+
+            return 'Error (0)';
+        }
     }
 }

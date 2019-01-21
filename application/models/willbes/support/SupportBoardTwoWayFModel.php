@@ -531,4 +531,38 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
         }
         return true;
     }
+
+    /**
+     * 모의고사별 이의제기 목록
+     * @param $is_count
+     * @param array $arr_condition
+     * @param null $column
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
+     */
+    public function listBoardForMockTest($is_count, $arr_condition=[], $column = null, $limit = null, $offset = null, $order_by = [])
+    {
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $from = "
+            FROM {$this->_table['twoway_board']}
+            LEFT JOIN {$this->_table['lms_order_product']} AS op ON op.ProdCode = b.ProdCode AND b.RegMemIdx = op.MemIdx
+            LEFT JOIN {$this->_table['lms_mock_register']} AS mr ON op.OrderProdIdx = mr.OrderProdIdx
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
 }

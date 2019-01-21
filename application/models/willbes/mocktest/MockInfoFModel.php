@@ -314,13 +314,29 @@ class MockInfoFModel extends WB_Model
      */
     public function findRegistForBoard($arr_condition=[])
     {
-        $column = 'pm.*, mr.IsTake';
+        $column = '
+                pm.*, mr.IsTake, mr.TakeMockPart, fn_ccd_name(mr.TakeMockPart) AS TakeMockPart_Name,
+                IFNULL(BD1.cnt, 0) AS qnaTotalCnt, IFNULL(BD2.cnt, 0) AS noticeCnt
+            ';
 
         $from = "
             FROM {$this->_table['mock_product']}
             INNER JOIN lms_mock_register mr ON pm.ProdCode = mr.ProdCode
             INNER JOIN lms_order_product op ON op.OrderProdIdx = mr.OrderProdIdx
             INNER JOIN lms_order o on op.OrderIdx = o.OrderIdx
+            LEFT JOIN (
+                SELECT ProdCode, COUNT(*) AS cnt
+                FROM {$this->_table['board']}
+                WHERE BmIdx = '95' AND RegType = '0' AND IsStatus = 'Y'
+                GROUP BY ProdCode
+            ) AS BD1 ON BD1.ProdCode = pm.ProdCode
+            
+            LEFT JOIN (
+                SELECT ProdCode, COUNT(*) AS cnt
+                FROM {$this->_table['board']}
+                WHERE BmIdx = '96' AND IsStatus = 'Y'
+                GROUP BY ProdCode
+            ) AS BD2 ON BD2.ProdCode = pm.ProdCode
         ";
 
         $where = $this->_conn->makeWhere($arr_condition);

@@ -3,10 +3,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class MockTest extends \app\controllers\FrontController
 {
-    protected $models = array('mocktest/mockInfoF','_lms/sys/code');
+    protected $models = array('mocktest/mockInfoF','_lms/sys/code', 'support/supportBoardTwoWayF');
     protected $helpers = array();
     protected $auth_controller = false;
-    protected $auth_methods = array('apply_modal','apply_cart_modal','apply_order');
+    protected $auth_methods = array('apply_modal','apply_cart_modal','apply_order', 'createQna');
 
     protected $_paging_limit = 10;
     protected $_paging_count = 10;
@@ -296,15 +296,188 @@ class MockTest extends \app\controllers\FrontController
      */
     public function listQna()
     {
+        $list = [];
+        $arr_input = $this->_reqG(null);
+        $get_params = http_build_query($arr_input);
+        $prod_code = element('prod_code', $arr_input);
+        $take_mock_part = element('take_mock_part',$arr_input);
+        $s_keyword = element('s_keyword',$arr_input);
+        $get_page_params = 'prod_code='.$prod_code.'&s_take_mock_part='.$take_mock_part;
+        $get_page_params .= '&s_keyword='.urlencode($s_keyword);
+
+        //직렬 추출
+        $mock_part = $this->mockInfoFModel->listMockTestMockPart($prod_code);
+
+        // 모의고사 상품 상세 조회
+        $prod_data = $this->_getProdData($prod_code, 'N');
+
+        $arr_condition = [
+            'EQ' => [
+                'b.BmIdx' => '95',
+                'b.IsUse' => 'Y'
+            ],
+            'RAW' => [
+                'b.ProdCode' => $prod_code
+            ],
+            'ORG' => [
+                'LKB' => [
+                    'b.Title' => $s_keyword,
+                    'b.Content' => $s_keyword
+                ]
+            ]
+        ];
+
+        $column = 'BoardIdx, CampusCcd, TypeCcd, IsBest, RegType, RegMemIdx, ProdName';
+        $column .= ', Title, Content, (ReadCnt + SettingReadCnt) as TotalReadCnt';
+        $column .= ', AttachData,DATE_FORMAT(RegDatm, \'%Y-%m-%d\') as RegDatm';
+        $column .= ', IsPublic, CampusCcd_Name, TypeCcd_Name';
+        $column .= ', SiteName, ReplyStatusCcd, ReplyStatusCcd_Name, Category_NameString';
+        $column .= ', IF(RegType=1, \'\', RegMemName) AS RegName';
+        $column .= ', IF(IsCampus=\'Y\',\'offline\',\'online\') AS CampusType';
+        $column .= ', IF(IsCampus=\'Y\',\'학원\',\'온라인\') AS CampusType_Name, SiteGroupName';
+        $column .= ', fn_ccd_name(mr.TakeMockPart) AS TakeMockPart_Name';
+        $order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
+
+        $total_rows = $this->supportBoardTwoWayFModel->listBoardForMockTest(true, $arr_condition);
+        $paging = $this->pagination('mockTest/listQna/cate/'.$this->_cate_code.'/?'.$get_page_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
+        if ($total_rows > 0) {
+            $list = $this->supportBoardTwoWayFModel->listBoardForMockTest(false,$arr_condition,$column,$paging['limit'],$paging['offset'],$order_by);
+            foreach ($list as $idx => $row) {
+                $list[$idx]['AttachData'] = json_decode($row['AttachData'],true);       //첨부파일
+            }
+        }
+
         $this->load->view('site/mocktest/board_list_qna',[
-            'page_type' => 'board',
-            /*'arr_input' => $arr_input,
-            'get_params' => $get_params,
+            'page_type' => 'board_etc',
             'def_cate_code' => $this->_cate_code,
-            'count' => $count,
+            'prod_code' => $prod_code,
+            'prod_data' => $prod_data,
+            'arr_input' => $arr_input,
+            'get_params' => $get_params,
             'list'=>$list,
-            'paging' => $paging,*/
+            'paging' => $paging
         ]);
+    }
+
+    /**
+     * 모의고사 이의제기 등록 폼
+     */
+    public function createQna()
+    {
+        $arr_input = $this->_reqG(null,false);
+        $prod_code = element('prod_code', $arr_input);
+        $board_idx = element('board_idx', $arr_input);
+        $s_keyword = element('s_keyword', $arr_input);
+        $page = element('page', $arr_input);
+        $get_params = 's_keyword='.urlencode($s_keyword);
+        $get_params .= '&page='.$page;
+
+        if ($this->isLogin() !== true) {
+            show_alert('로그인 후 이용해 주세요.', 'back');
+        }
+
+        // 모의고사 상품 상세 조회
+        $prod_data = $this->_getProdData($prod_code, 'Y');
+
+        /*if ($data['IsTake'] != 'Y') {
+            show_alert('응시한 모의고사 상품이 아닙니다.', 'back');
+        }*/
+
+        $method = 'POST';
+        $board_data = null;
+        if (empty($board_idx) === false) {
+            $method = 'PUT';
+
+            $arr_condition = [
+                'EQ' => [
+                    'BmIdx' => '95',
+                    'IsUse' => 'Y'
+                ],
+            ];
+
+            $column = '
+                BoardIdx, SiteCode, MdCateCode, CampusCcd, RegType, TypeCcd, IsBest, IsPublic
+                , VocCcd, ProdApplyTypeCcd, ProdCode, LecScore, ProdName
+                , Title, Content, ReadCnt, SettingReadCnt
+                , RegDatm, RegMemIdx, RegMemId, RegMemName
+                , ReplyContent, ReplyRegDatm, ReplyStatusCcd
+                , CampusCcd_Name, ReplyStatusCcd_Name, TypeCcd_Name
+                , VocCcd_Name, MdCateCode_Name, SubJectName
+                , IF(RegType=1, \'\', RegMemName) AS RegName
+                , IF(IsCampus=\'Y\',\'offline\',\'online\') AS CampusType
+                , IF(IsCampus=\'Y\',\'학원\',\'온라인\') AS CampusType_Name, SiteGroupName
+                , AttachData, Category_String
+            ';
+
+            $board_data = $this->supportBoardTwoWayFModel->findBoard($board_idx,$arr_condition,$column);
+
+            if (empty($board_data)) {
+                show_alert('게시글이 존재하지 않습니다.', 'back');
+            }
+            $board_data['AttachData'] = json_decode($board_data['AttachData'],true);       //첨부파일
+
+            if ($board_data['RegType'] == '0' && $board_data['IsPublic'] == 'N' && $board_data['RegMemIdx'] != $this->session->userdata('mem_idx')) {
+                show_alert('잘못된 접근 입니다.', 'back');
+            }
+
+            $result = $this->supportBoardTwoWayFModel->modifyBoardRead($board_idx);
+            if($result !== true) {
+                show_alert('게시글 조회시 오류가 발생되었습니다.', 'back');
+            }
+        }
+
+        $arr_board_post_data = [
+            'board_idx' => $board_idx,
+            'site_code' => $prod_data['SiteCode'],
+            'cate_code' => $prod_data['CateCode'],
+            'prod_code' => $prod_data['ProdCode'],
+            'reg_type' => '0'
+        ];
+
+        $this->load->view('site/mocktest/board_create_qna',[
+            'method' => $method,
+            'page_type' => 'board_etc',
+            'arr_input' => $arr_input,
+            'get_params' => $get_params,
+            'prod_data' => $prod_data,
+            'board_data' => $board_data,
+            'arr_board_post_data' => $arr_board_post_data,
+            'attach_file_cnt' => $this->supportBoardTwoWayFModel->_attach_img_cnt
+        ]);
+    }
+
+    /**
+     * 모의고사 이의제기 등록
+     */
+    public function boardQnaStore()
+    {
+        $idx = '';
+        $method = 'add';
+        $msg = '저장되었습니다';
+        $rules = [
+            ['field' => 'site_code', 'label' => '사이트코드', 'rules' => 'trim|required|integer'],
+            ['field' => 'cate_code', 'label' => '응시분야코드', 'rules' => 'trim|required|integer'],
+            ['field' => 'prod_code', 'label' => '모의고사코드', 'rules' => 'trim|required|integer'],
+            ['field' => 'board_title', 'label' => '제목', 'rules' => 'trim|required|max_length[50]'],
+            ['field' => 'board_content', 'label' => '내용', 'rules' => 'trim|required'],
+            ['field' => 'is_public', 'label' => '공개여부', 'rules' => 'trim|required|in_list[Y,N]'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        if (empty($this->_reqP('board_idx')) === false) {
+            $method = 'modify';
+            $msg = '수정되었습니다';
+            $idx = $this->_reqP('board_idx');
+        }
+
+        $inputData = $this->_setInputForQnaData($this->_reqP(null, false));
+
+        //_addBoard, _modifyBoard
+        $result = $this->supportBoardTwoWayFModel->{$method . 'Board'}($inputData, $idx);
+        $this->json_result($result, $msg, $result);
     }
 
     /**
@@ -323,14 +496,37 @@ class MockTest extends \app\controllers\FrontController
         ]);
     }
 
-    /**
-     * 모의고사 이의제기 등록 폼
-     */
-    public function createQna()
+    private function _setInputForQnaData($input)
     {
-        $arr_input = $this->_reqG(null,false);
-        $prod_code = element('prod_code', $arr_input);
+        $input_data = [
+            'board' => [
+                'BmIdx' => '95',
+                'SiteCode' => element('site_code', $input),
+                'RegType' => element('reg_type', $input, 0),
+                'Title' => element('board_title', $input),
+                'Content' => element('board_content', $input),
+                'IsPublic' => element('is_public', $input),
+                'ReplyStatusCcd' => '621001',
+                'ReadCnt' => 0,
+                'SettingReadCnt' => 0,
+                'ProdCode' => element('prod_code', $input)
+            ],
+            'board_r_category' => [
+                'site_category' => element('cate_code', $input)
+            ]
+        ];
 
+        return$input_data;
+    }
+
+    /**
+     * 모의고사 상품 조회
+     * @param $prod_code
+     * @param string $err_type
+     * @return mixed
+     */
+    private function _getProdData($prod_code, $err_type = 'N')
+    {
         // 모의고사 상품 상세 조회
         $arr_condition = [
             'EQ' => [
@@ -345,21 +541,11 @@ class MockTest extends \app\controllers\FrontController
             ]
         ];
 
-        $data = $this->mockInfoFModel->findRegistForBoard($arr_condition);
-        /*if (empty($data) === true) {
-            show_alert('조회된 모의고사 상품이 없습니다.', 'back');
+        $prod_data = $this->mockInfoFModel->findRegistForBoard($arr_condition);
+        if (empty($prod_data) === true && $err_type == 'Y') {
+            show_alert('응시한 모의고사 상품이 없습니다.', 'back');
         }
 
-        if (empty($data['IsTake']) === true) {
-            show_alert('응시한 모의고사 상품이 아닙니다.', 'back');
-        }*/
-
-        $this->load->view('site/mocktest/board_create_qna',[
-            'page_type' => 'board',
-            'arr_input' => $arr_input,
-            'def_cate_code' => $this->_cate_code,
-            'data' => $data
-        ]);
+        return $prod_data;
     }
-
 }

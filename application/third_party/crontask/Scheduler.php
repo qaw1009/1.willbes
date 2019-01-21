@@ -1,9 +1,11 @@
 <?php
-namespace app\crontask;
+namespace crontask;
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-use app\crontask\interfaces\TaskInterface;
+require_once APPPATH . 'third_party/crontask/interfaces/TaskInterface.php';
+
+use crontask\interfaces\TaskInterface;
 
 class Scheduler
 {

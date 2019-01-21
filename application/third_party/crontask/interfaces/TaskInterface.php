@@ -1,5 +1,5 @@
 <?php
-namespace app\crontask\interfaces;
+namespace crontask\interfaces;
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 

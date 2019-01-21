@@ -1,9 +1,11 @@
 <?php
-namespace app\crontask\tasks;
+namespace crontask\tasks;
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Shell extends Task
+require_once APPPATH . 'third_party/crontask/tasks/Task.php';
+
+class Shell extends \crontask\tasks\Task
 {
     /**
      * @var string

@@ -1,10 +1,12 @@
 <?php
-namespace app\crontask\tasks;
+namespace crontask\tasks;
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+require_once APPPATH . 'third_party/crontask/interfaces/TaskInterface.php';
+
 use Cron\CronExpression;
-use app\crontask\interfaces\TaskInterface;
+use crontask\interfaces\TaskInterface;
 
 abstract class Task implements TaskInterface
 {

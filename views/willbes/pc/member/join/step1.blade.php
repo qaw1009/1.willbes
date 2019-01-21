@@ -16,7 +16,7 @@
                 <li>회원가입완료</li>
             </ul>
             <ul class="tabWrap tabLoginDepth1 tabs half c_both">
-                <li><a href="#join1">휴대폰 인증</a></li>
+                <li><a class="on" href="#join1">휴대폰 인증</a></li>
                 <li><a href="#join2">E-mail 인증</a></li>
             </ul>
             <div class="tabBox">

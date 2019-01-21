@@ -36,9 +36,9 @@
                             <div class="inputBox p_re">
                                 <input type="text" id="MemName" name="MemName" class="iptName" readonly value="{{$memName}}">
                                 <ul class="chkBox-Sex">
-                                    <li class="radio-Btn sexchk p_re">
+                                    <li class="radio-Btn sexchk p_re checked">
                                         <label for="Sex" class="labelName" style="display: block;">남성</label>
-                                        <input type="radio" id="SexM" name="Sex" class="chkSex" value="M" title="성별">
+                                        <input type="radio" id="SexM" name="Sex" class="chkSex" value="M" title="성별" checked="checked">
                                     </li>
                                     <li class="radio-Btn sexchk p_re">
                                         <label for="Sex" class="labelName" style="display: block;">여성</label>
@@ -113,7 +113,7 @@
                     <tr>
                         <td class="combine-Tit">이메일</td>
                         <td>
-                            <div class="inputBox">
+                            <div class="inputBox p_re">
                                 <dl>
                                     <dt class="mbox1 p_re">
                                         <input type="text" id="MailId" name="MailId" class="iptEmail01" placeholder="이메일" maxlength="30" @if ( $jointype == '655003' ) value="{{$MailId}}" readonly @endif>
@@ -137,7 +137,7 @@
                         <td class="combine-Tit">우편번호</td>
                         <td>
                             <div class="inputBox p_re">
-                                <input type="text" id="ZipCode" name="ZipCode" class="iptEmail01" placeholder="우편번호" maxlength="5" readonly>
+                                <input type="text" id="ZipCode" name="ZipCode" class="iptEmail01" style="width: 100%" placeholder="우편번호" maxlength="5" readonly>
                                 <button type="button" id="btn_zipcode" class="mem-Btn combine-Btn mb10 bg-dark-blue bd-dark-blue">
                                     <span>우편번호 찾기</span>
                                 </button>

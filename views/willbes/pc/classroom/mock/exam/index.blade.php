@@ -100,7 +100,7 @@
                                             @if($row['MrIsStatus'] == 'Y')
                                                 응시마감
                                             @else
-                                                <a class="bg-blue bd-dark-blue NSK" href="javascript:popwin({{ $row['ProdCode'] }})"
+                                                <a class="bg-blue bd-dark-blue NSK" href="javascript:popwin({{ $row['ProdCode']}},{{ $row['MrIdx'] }})"
                                                    onclick="">응시하기</a>
                                             @endif
                                         </td>
@@ -120,22 +120,22 @@
 
             <!-- willbes-Leclist -->
 
-            <div class="Quick-Bnr ml20">
-                <img src="{{ img_url('sample/banner_180605.jpg') }}">
-            </div>
+
+        </div>
+        <div class="Quick-Bnr ml20">
+            <img src="{{ img_url('sample/banner_180605.jpg') }}">
         </div>
         <!-- End Container -->
         <script>
             var win = '';
-            function popwin(prodcode){
-
+            function popwin(prodcode, mridx){
                 if (win == '') {
-                    var _url = '{{ front_url('/classroom/MockExam/winpopupstep1?prodcode=') }}' + prodcode;
+                    var _url = '{{ front_url('/classroom/MockExam/winpopupstep1?prodcode=') }}' + prodcode + '&mridx=' + mridx;
                     win = window.open(_url, 'mockPopup', 'width=980, height=845, scrollbars=yes, resizable=yes');
                     win.focus();
                 }else{
                     if(win.closed){
-                        var _url = '{{ front_url('/classroom/MockExam/winpopupstep1?prodcode=') }}' + prodcode;
+                        var _url = '{{ front_url('/classroom/MockExam/winpopupstep1?prodcode=') }}' + prodcode+ '&mridx=' + mridx;
                         win = window.open(_url, 'mockPopup', 'width=980, height=845, scrollbars=yes, resizable=yes');
                         win.focus();
                     } else {

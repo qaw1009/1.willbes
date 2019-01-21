@@ -151,7 +151,7 @@
                 }
             }, showValidateError, null, false, 'alert');
         }
-
+        
         function goStep2(){
             document.url_form.submit();
         }

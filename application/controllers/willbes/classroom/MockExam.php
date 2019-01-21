@@ -5,7 +5,7 @@ class MockExam extends \app\controllers\FrontController
 {
     protected $models = array('downloadF', 'mocktest/mockExam','_lms/sys/code');
     protected $helpers = array('download');
-    protected $auth_controller = false;
+    protected $auth_controller = true;
     protected $auth_methods = array();
 
     protected $_bm_idx = 45;
@@ -48,7 +48,7 @@ class MockExam extends \app\controllers\FrontController
             ]
         ];
 
-        $column = 'MP.*, A.wAdminName, MR.IsStatus AS MrIsStatus,
+        $column = 'MP.*, A.wAdminName, MR.IsTake AS MrIsStatus, MR.MrIdx,
                    (SELECT SiteGroupName FROM lms_site_group WHERE SiteGroupCode = (SELECT SiteGroupCode FROM lms_site WHERE SiteCode = PD.SiteCode)) AS SiteName,
                    (SELECT RegDatm FROM lms.lms_mock_answerpaper WHERE MemIdx = MR.MemIdx AND MrIdx = MR.MrIdx ORDER BY RegDatm DESC LIMIT 1) AS IsDate,
                    PD.ProdName, PD.SaleStartDatm, PD.SaleEndDatm, PS.SalePrice, PS.RealSalePrice,          
@@ -71,11 +71,13 @@ class MockExam extends \app\controllers\FrontController
 
         }
 
+        //var_dump($list);
+
         $this->load->view('/classroom/mock/exam/index', [
             'default_path' => $this->_default_path,
             'arr_input'    => $arr_input,
             'get_params'   => $get_params,
-            'list'         =>$list,
+            'list'         => $list,
             'paging'       => $paging,
         ]);
     }
@@ -89,6 +91,7 @@ class MockExam extends \app\controllers\FrontController
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
 
         $prodcode = element('prodcode',$arr_input);
+        $mridx = element('mridx',$arr_input);
 
         $arr_condition = [
             'EQ' => [
@@ -106,7 +109,7 @@ class MockExam extends \app\controllers\FrontController
 
         if($isTemp) $sec = $this->mockExamModel->callRemainTime($isTemp);
 
-        $logIdx = $this->mockExamModel->makeExamLog($isTemp,$sec);
+        $logIdx = $this->mockExamModel->makeExamLog($sec,$mridx);
         // 필수/선택과목 컬럼수 & 이름
         $pCnt = 0;
         $sCnt = 0;
@@ -167,6 +170,7 @@ class MockExam extends \app\controllers\FrontController
         $s_mpidx = element('s_mpidx',$arr_input);
         $logidx = element('logidx',$arr_input);
         $RemainSec = element('RemainSec',$arr_input);
+        $mridx = element('mridx',$arr_input);
 
         $arr_condition = [
             'EQ' => [
@@ -189,7 +193,7 @@ class MockExam extends \app\controllers\FrontController
         $rSec = $this->mockExamModel->callRemainTime($logidx);
         if(empty($RemainSec) === true) $RemainSec = $rSec;
 
-        $this->mockExamModel->makeExamLog($logidx,$rSec);
+        $logidx = $this->mockExamModel->makeExamLog($RemainSec,$mridx);
 
         // 필수/선택과목 컬럼수 & 이름
         $pCnt = 0;

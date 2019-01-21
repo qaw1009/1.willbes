@@ -81,6 +81,7 @@
                     <form class="form-horizontal" id="url_form" name="url_form" method="POST" action="/classroom/MockExam/winpopupstep2" onsubmit="return false;">
                         {!! csrf_field() !!}
                         <input type="hidden" id='prodcode' name="prodcode" value="{{ element('prodcode', $arr_input) }}" />
+                        <input type="hidden" name="mridx" value="{{ element('mridx', $arr_input) }}" />
                         <input type="hidden" id='logidx' name="logidx" value="{{ $logidx }}" />
                     </form>
                     <div class="PASSZONE-Lec-Section pt25">

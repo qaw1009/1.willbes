@@ -207,7 +207,6 @@
     }
 
     function selAreaAjax(){
-        var _url = '{{ front_url('/classroom/MockResult/selAreaAjax') }}';
         //체크해제
         if(firstChk != 'Y'){
             $('input:checkbox[id=ID_ALL]').prop('checked','');

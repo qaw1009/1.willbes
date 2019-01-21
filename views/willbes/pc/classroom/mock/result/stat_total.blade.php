@@ -46,7 +46,7 @@
                             {{ $row }}<br>
                         @endforeach
                         </td>
-                        <td>{{ $productInfo['OrderProdIdx'] }}</td>
+                        <td>{{ $productInfo['TakeNumber'] }}</td>
                         <td>{{ $memName }}</td>
                     </tr>
                     </tbody>

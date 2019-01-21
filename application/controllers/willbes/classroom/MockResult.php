@@ -83,10 +83,13 @@ class MockResult extends \app\controllers\FrontController
 
         }
 
+        $total_img_path = PUBLICURL."uploads/willbes/mocktest/";
+
         $this->load->view('/classroom/mock/result/index', [
             'default_path' => $this->_default_path,
             'arr_input'    => $arr_input,
             'get_params'   => $get_params,
+            'total_img_path' => $total_img_path,
             'list'         =>$list,
             'paging'       => $paging,
         ]);
@@ -377,6 +380,34 @@ class MockResult extends \app\controllers\FrontController
         ////////////////////////////////////////////////
         $result = $this->mockExamModel->noteDelete($this->_reqP(null, false));
         $this->json_result($result, '삭제되었습니다.', $result, $result);
+
+    }
+
+    /**
+     * 문제해설
+     * @return object|string
+     */
+    public function qaFileAjax()
+    {
+        ////////////////////////////////////////////////
+        $result = $this->mockExamModel->qaFile($this->_reqP(null, false));
+        $this->json_result($result, '삭제되었습니다.', $result, $result);
+    }
+
+    /**
+     * 문제/해설 ajax
+     * @return object|string
+     */
+    public function selQaFileAjax()
+    {
+
+        $prodcode = $this->_req("prodcode");
+
+        $list = $this->mockExamModel->selQaFile($prodcode);
+
+        return $this->response([
+            'data' => $list
+        ]);
 
     }
 

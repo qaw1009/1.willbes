@@ -85,7 +85,7 @@ class MockExamModel extends WB_Model
     }
 
     /**
-     * 과목정보호출(시험지코드포함)
+     * 과목정보호출
      * @param array $arr_condition
      * @return mixed
      */
@@ -113,6 +113,39 @@ class MockExamModel extends WB_Model
         return $query->result_array();
 
     }
+
+    /**
+     * 시험지과목파일정보호출
+     * @param array $arr_condition
+     * @return mixed
+     */
+    public function selQaFile($prodcode){
+
+        $column = "
+            (SELECT SubjectName FROM {$this->_table['subject']} WHERE SubjectIdx = RP.SubjectIdx) AS SubjectName,
+            MP.RealQuestionFile AS fileQ,
+            MP.RealExplanFile AS fileA,
+            MP.MpIdx  
+        ";
+
+        $from = "
+            FROM
+                {$this->_table['mockRegister']} AS MR    
+                JOIN {$this->_table['mockRegisterR']} AS RP ON MR.ProdCode = RP.ProdCode AND MR.MrIdx = RP.MrIdx 
+                LEFT OUTER JOIN {$this->_table['mockExamBase']} AS MP ON RP.MpIdx = MP.MpIdx AND MP.IsUse = 'Y' AND MP.IsStatus = 'Y'
+        ";
+
+        $obder_by = " ORDER BY SubjectIdx";
+
+        $where = " WHERE MR.MemIdx = ".$this->session->userdata('mem_idx')." AND MR.ProdCode = ".$prodcode. " AND MR.IsStatus = 'Y'";
+        //return 'select ' . $column . $from . $where . $obder_by;
+        $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+        return $query->result_array();
+
+    }
+
+
+
 
     /**
      * 문항정보호출(시험지코드포함)
@@ -191,7 +224,7 @@ class MockExamModel extends WB_Model
             MP.*, A.wAdminName, MR.IsTake AS MrIsStatus,
                    (SELECT RegDatm FROM {$this->_table['mockAnswerPaper']} WHERE MemIdx = MR.MemIdx AND MrIdx = MR.MrIdx ORDER BY RegDatm DESC LIMIT 1) AS IsDate,
                    PD.ProdName, PD.SaleStartDatm, PD.SaleEndDatm, PS.SalePrice, PS.RealSalePrice,          
-                   C1.CateName, C1.IsUse AS IsUseCate, MR.OrderProdIdx, MR.MrIdx
+                   C1.CateName, C1.IsUse AS IsUseCate, MR.OrderProdIdx, MR.MrIdx, MR.TakeNumber
         ";
 
         $from = "

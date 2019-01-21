@@ -89,14 +89,14 @@
                                             {{ round($row['TCNT'] / $row['KCNT'], 2) }}
                                         </td>
                                         @if($row['IsDisplay'] == 'Y')
-                                            <td class="w-report tx-red"><a href="javascript:popwin({{ $row['ProdCode'] }})">[성적확인]</a></td>
+                                            <td class="w-report tx-red"><a href="javascript:popwin({{ $row['ProdCode'] }}, 1)">[성적확인]</a></td>
                                         @else
                                         <td class="w-report">집계중</td>
                                         @endif
                                         <td class="w-file on tx-blue">
                                             @if($row['IsDisplay'] == 'Y')
-                                                <a href="#none" onclick="openWin('EXAMPASS')">[문제/해설]</a><br>
-                                                <a href="//www.local.willbes.net/home/html/answerNote" onclick="window.open(this.href, '_blank', 'width=980, height=845, scrollbars=yes, resizable=yes' ); return false">[오답노트]</a>
+                                                <a href="javascript:selQaFileAjax({{ $row['ProdCode'] }});">[문제/해설]</a><br>
+                                                <a href="javascript:popwin({{ $row['ProdCode'] }}, 2)">[오답노트]</a>
                                             @else
                                             @endif
                                         </td>
@@ -116,6 +116,42 @@
 
             <!-- willbes-Leclist -->
 
+            <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+                {!! csrf_field() !!}
+                <input type="hidden" id='prodcode' name="prodcode" />
+            </form>
+
+
+            <div id="EXAMPASS" class="willbes-Layer-PassBox abs willbes-Layer-PassBox450 h460 abs">
+                <a class="closeBtn" href="#none" onclick="closeWin('EXAMPASS')">
+                    <img src="/public/img/willbes/sub/close.png">
+                </a>
+                <div class="Layer-Tit tx-dark-black NG">문제/해설</div>
+                <div class="lecMoreWrap pt20">
+                    <div class="LeclistTable">
+                        <table cellspacing="0" cellpadding="0" class="listTable usertestTable examTable under-gray bdt-gray tx-gray GM">
+                            <colgroup>
+                                <col style="width: 33.33333333%;"/>
+                                <col style="width: 33.33333333%;"/>
+                                <col style="width: 33.33333333%;"/>
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th class="Top">과목</th>
+                                <th>문제</th>
+                                <th>해설</th>
+                            </tr>
+                            </thead>
+                            <tbody id="trArea">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- willbes-Layer-PassBox : 문제/해설 -->
+
+
         </div>
         <div class="Quick-Bnr ml20">
             <img src="{{ img_url('sample/banner_180605.jpg') }}">
@@ -123,21 +159,50 @@
         <!-- End Container -->
         <script>
             var win = '';
-            function popwin(prodcode){
-
+            function popwin(prodcode, mode){
+                var _url = '';
+                if(mode == 1){
+                    _url = '{{ front_url('/classroom/MockResult/winStatTotal?prodcode=') }}' + prodcode;
+                }else{
+                    _url = '{{ front_url('/classroom/MockResult/winAnswerNote?prodcode=') }}' + prodcode;
+                }
                 if (win == '') {
-                    var _url = '{{ front_url('/classroom/MockResult/winStatTotal?prodcode=') }}' + prodcode;
                     win = window.open(_url, 'mockPopupStat', 'width=980, height=845, scrollbars=yes, resizable=yes');
                     win.focus();
                 }else{
                     if(win.closed){
-                        var _url = '{{ front_url('/classroom/MockResult/winStatTotal?prodcode=') }}' + prodcode;
                         win = window.open(_url, 'mockPopupStat', 'width=980, height=845, scrollbars=yes, resizable=yes');
                         win.focus();
                     } else {
                         //alert('팝업떠있음');
                     }
                 }
+
+            }
+
+            function selQaFileAjax(prodcode){
+                $('#prodcode').val(prodcode);
+
+                url = "{{ site_url("/classroom/MockResult/selQaFileAjax") }}";
+                data = $('#regi_form').serialize();
+
+                sendAjax(url,
+                    data,
+                    function(d){
+                        var str = '';
+
+                        for(var i=0; i < d.data.length; i++){
+                            str += "<tr><td class='Top'>"+d.data[i].SubjectName+"</td>\n" +
+                                       "<td><a class=\"downBtn\" href=\"{{ $total_img_path }}\\"+d.data[i].MpIdx+"\\"+d.data[i].fileQ+"\" target='_blank'>다운로드</a></td>\n" +
+                                       "<td><a class=\"downBtn\" href=\"{{ $total_img_path }}\\"+d.data[i].MpIdx+"\\"+d.data[i].fileA+"\" target='_blank'>다운로드</a></td>\n" +
+                                   "</tr>";
+                            document.getElementById('EXAMPASS').style.display = "block";
+                        }
+                        $('#trArea').html(str);
+                    },
+                    function(ret, status){
+                        alert(ret);
+                    }, true, 'POST', 'json');
 
             }
 

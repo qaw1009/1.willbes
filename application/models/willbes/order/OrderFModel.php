@@ -815,17 +815,23 @@ class OrderFModel extends BaseOrderFModel
             }
 
             // 모의고사 접수등록
-            $data = [
-                'ProdCode' => $prod_code,
-                'MemIdx' => $sess_mem_idx,
-                'OrderProdIdx' => $order_prod_idx,
-                'TakeMockPart' => element('take_part', $input, ''),
-                'TakeForm' => element('take_form', $input, ''),
-                'TakeArea' => element('take_area', $input, ''),
-                'AddPoint' => element('add_point', $input, 0)
-            ];
+            // 접수번호 초기값 (경찰 5자리, 공무원 8자리)
+            switch (config_app('SiteGroupCode')) {
+                case '1001' : $first_take_number = '10001'; break;
+                case '1002' : $first_take_number = '10000001'; break;
+                default : $first_take_number = '10001'; break;
+            }
 
-            $is_mock_register = $this->_conn->set($data)->insert($this->_table['mock_register']);
+            $query = /** @lang text */ 'insert into ' . $this->_table['mock_register'] . ' (ProdCode, MemIdx, OrderProdIdx, TakeNumber, TakeMockPart, TakeForm, TakeArea, AddPoint)
+                select ?, ?, ?, ifnull(max(cast(TakeNumber as int)) + 1, ?), ?, ?, ?, ? from ' . $this->_table['mock_register'] . ' where ProdCode = ?';
+
+            $is_mock_register = $this->_conn->query($query, [
+                $prod_code, $sess_mem_idx, $order_prod_idx, $first_take_number,
+                element('take_part', $input, ''), element('take_form', $input, ''),
+                element('take_area', $input, ''), element('add_point', $input, 0),
+                $prod_code
+            ]);
+
             if ($is_mock_register === false) {
                 throw new \Exception('모의고사 접수등록에 실패했습니다.');
             }

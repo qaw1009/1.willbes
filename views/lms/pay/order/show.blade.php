@@ -122,7 +122,11 @@
                                     <td>{{ $order_prod_row['ProdTypeCcdName'] }}
                                         {!! empty($order_prod_row['SalePatternCcdName']) === false ? '<br/>(' . $order_prod_row['SalePatternCcdName'] . ')' : '' !!}
                                     </td>
-                                    <td><div class="blue inline-block">[{{ $order_prod_row['LearnPatternCcdName'] or $order_prod_row['ProdTypeCcdName'] }}]</div> {{ $order_prod_row['ProdName'] }}</td>
+                                    <td><div class="blue inline-block">[{{ $order_prod_row['LearnPatternCcdName'] or $order_prod_row['ProdTypeCcdName'] }}]</div> {{ $order_prod_row['ProdName'] }}
+                                        @if(empty($order_prod_row['OrderSubProdList']) === false)
+                                            <button name="btn_sub_product" class="btn btn-xs btn-success ml-5 mb-0" data-toggle="popover" data-html="true" data-content="{!! $order_prod_row['OrderSubProdList'] !!}">선택강좌</button>
+                                        @endif
+                                    </td>
                                     <td>{!! empty($order_prod_row['DeliveryStatusCcd']) === false ? $order_prod_row['DeliveryStatusCcdName'] . '<br/>' . substr($order_prod_row['DeliverySendDatm'], 0, 10) : '' !!}</td>
                                     <td>{{ number_format($order_prod_row['CardPayPrice']) }}</td>
                                     <td>{{ number_format($order_prod_row['CashPayPrice']) }}</td>

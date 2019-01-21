@@ -291,6 +291,13 @@ class OrderListModel extends BaseOrderModel
                 $excel_column .= ', fn_order_my_lecture_data(O.OrderIdx, OP.OrderProdIdx, 0, 0, 1) as MyLecData';
             }
 
+            // 주문상품서브 정보 추가
+            if (in_array('subproduct', $arr_add_join) === true) {
+                $from .= '';
+                $column .= ', fn_order_sub_product_data(OP.OrderProdIdx) as OrderSubProdData';
+                $excel_column .= '';
+            }
+
             // 패키지상품 서브강좌 정보 추가
             if (in_array('sublecture', $arr_add_join) === true) {
                 $from .= '';

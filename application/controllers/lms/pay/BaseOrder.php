@@ -32,7 +32,7 @@ class BaseOrder extends \app\controllers\BaseController
         }
 
         // 주문 조회
-        $data = $this->orderListModel->listAllOrder(false, ['EQ' => ['O.OrderIdx' => $order_idx]], null, null, [], ['delivery_info', 'refund', 'refund_proc', 'my_lecture']);
+        $data = $this->orderListModel->listAllOrder(false, ['EQ' => ['O.OrderIdx' => $order_idx]], null, null, [], ['delivery_info', 'refund', 'refund_proc', 'my_lecture', 'subproduct']);
         if (empty($data) === true) {
             show_error('데이터 조회에 실패했습니다.');
         }
@@ -91,6 +91,12 @@ class BaseOrder extends \app\controllers\BaseController
                 if ($row['ProdTypeCcd'] != $this->orderListModel->_prod_type_ccd['delivery_price'] && empty($order_data['RegAdminIdx']) === false) {
                     $admin_pay_data = $row;
                 }
+            }
+
+            // 주문상품서브 데이터 셋팅
+            if (empty($row['OrderSubProdData']) === false) {
+                $data[$idx]['OrderSubProdList'] = array_data_pluck(json_decode($row['OrderSubProdData'], true), ['ProdCode', 'ProdName']);
+                $data[$idx]['OrderSubProdList'] = '[' . str_replace('::', '] ', implode('<br/>[', $data[$idx]['OrderSubProdList']));
             }
         }
 

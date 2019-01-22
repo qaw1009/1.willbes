@@ -550,8 +550,119 @@ class Pass extends \app\controllers\FrontController
      */
     public function layerMyDevice()
     {
+        // PC등록수
+        $data['pc_cnt'] = $this->classroomFModel->getMyDevice(true, ['EQ' => [
+            'MemIdx' => $this->session->userdata('mem_idx'),
+            'DeviceType' => 'P',
+            'IsUse' => 'Y'
+        ]]);
+        
+        // 모바일 등록수
+        $data['mobile_cnt'] = $this->classroomFModel->getMyDevice(true, ['EQ' => [
+            'MemIdx' => $this->session->userdata('mem_idx'),
+            'DeviceType' => 'M',
+            'IsUse' => 'Y'
+        ]]);
 
-        return $this->load->view('/classroom/pass/layer/mydevice', []);
+        // 총 초기화 횟수
+        $data['reset_cnt'] = $this->classroomFModel->getMyDevice(true, ['EQ' => [
+            'MemIdx' => $this->session->userdata('mem_idx'),
+            'IsUse' => 'N'
+        ]]);
+        
+        // 사용자 초기화 가능횟수
+        $data['member_reset'] = ($data['reset_cnt'] == 0) ? 1 : 0;
+
+        // 리스트
+        $data['count'] = $this->classroomFModel->getMyDevice(true, [
+            'EQ' => [
+                'MemIdx' => $this->session->userdata('mem_idx')
+            ]
+        ]);
+
+        return $this->load->view('/classroom/pass/layer/mydevice', ['data' => $data]);
+    }
+
+
+    public function ajaxMyDevice()
+    {
+        $sdate = $this->_req('sdate');
+        $edate = $this->_req('edate');
+        $page = $this->_req('page');
+
+        if(is_numeric($page) == false){
+            $page = 1;
+        }
+
+        $offset = ($page-1) * 5;
+
+        // 총 초기화 횟수
+        $data['reset_cnt'] = $this->classroomFModel->getMyDevice(true, ['EQ' => [
+            'MemIdx' => $this->session->userdata('mem_idx'),
+            'IsUse' => 'N'
+        ]]);
+
+        // 리스트
+        $data['count'] = $this->classroomFModel->getMyDevice(true, [
+            'EQ' => [
+                'MemIdx' => $this->session->userdata('mem_idx')
+            ],
+            'GT' => [
+                'RegDatm' => $sdate
+            ],
+            'LT' => [
+                'RegDatm' => $edate
+            ]
+        ]);
+
+        $data['list'] = $this->classroomFModel->getMyDevice(false, [
+            'EQ' => [
+                'MemIdx' => $this->session->userdata('mem_idx')
+            ],
+            'GT' => [
+                'RegDatm' => $sdate
+            ],
+            'LT' => [
+                'RegDatm' => $edate
+            ]
+        ], 5, $offset);
+
+        return $this->load->view('/classroom/pass/layer/ajax_mydevice', [
+            'data' => $data
+        ]);
+    }
+
+    public function delMyDevice()
+    {
+        $mdidx = $this->_req('mdidx');
+
+        $list = $this->classroomFModel->getMyDevice(true, [
+            'EQ' => [
+                'MemIdx' => $this->session->userdata('mem_idx'),
+                'Mdidx' => $mdidx
+            ]
+        ]);
+
+        if($list < 1){
+            return $this->json_error('초기화할 기기 정보가 없습니다.');
+        }
+
+        $list = $this->classroomFModel->getMyDevice(true, [
+            'EQ' => [
+                'MemIdx' => $this->session->userdata('mem_idx'),
+                'IsUse' => 'N'
+            ]
+        ]);
+
+        if($list > 0){
+            return $this->json_error('사용자 초기화는 1번만 가능합니다.');
+        }
+
+        if($this->classroomFModel->delMyDevice($mdidx, $this->session->userdata('mem_idx')) == false){
+            return $this->json_error('초기화에 실패했습니다.');
+        }
+
+        return $this->json_result(true, '성공');
     }
 
 

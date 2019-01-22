@@ -16,7 +16,8 @@ class ClassroomFModel extends WB_Model
         'down_log' => 'lms_lecture_data_download_log',
         'order_product' => 'lms_order_product',
         'booklist' => 'vw_product_salebook',
-        'on_lecture' => 'vw_product_on_lecture'
+        'on_lecture' => 'vw_product_on_lecture',
+        'device' => 'lms_member_device'
     ];
 
     public function __construct()
@@ -690,6 +691,60 @@ class ClassroomFModel extends WB_Model
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
 
         return $this->_conn->query('SELECT '. $column. $from. $where)->result_array();
+    }
+
+    /**
+     *  등록된 디바이스 목록
+     * @param $cond
+     * @param bool $isCount
+     * @return mixed
+     */
+    public function getMyDevice($isCount, $cond, $limit = 5, $offset = 0)
+    {
+        if($isCount === true){
+            $query = "SELECT COUNT(*) AS rownums ";
+            $limitoffset = '';
+
+        } else {
+            $query = "SELECT * , ifnull(DelAdminIdx, '') AS DelName ";
+            $limitoffset = $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $query .= " FROM {$this->_table['device']} ";
+
+        $where = $this->_conn->makeWhere($cond);
+        $query .= $where->getMakeWhere(false);
+        $query .= " ORDER BY MdIdx DESC ";
+        $query .= $limitoffset;
+
+        $result = $this->_conn->query($query);
+
+        return ($isCount === true) ? $result->row(0)->rownums : $result->result_array();
+    }
+
+    /**
+     *  등록된 디바이스 사용자 삭제
+     * @param $mdidx
+     * @param $memidx
+     * @return bool
+     */
+    public function delMyDevice($mdidx, $memidx)
+    {
+        try {
+            if($this->_conn->
+                set('IsUse', 'N')->
+                set('DelDatm', 'NOW()', false)->
+                where('MdIdx', $mdidx)->
+                where('MemIdx', $memidx)->
+                update($this->_table['device']) == false){
+                throw new \Exception('업데이트 실패했습니다.');
+            }
+
+        } catch (\Exception $e) {
+            return false;
+        }
+
+        return true;
     }
 
 }

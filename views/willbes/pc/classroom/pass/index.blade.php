@@ -12,7 +12,7 @@
                 <div class="willbes-Mypage-PASSZONE c_both">
                     <div class="c_both f_left widthAutoFull NG mb30">
                         <ul>
-                            @if(empty($passinfo) == false)<li class="InfoBtn ml10"><a href="javascript:;" onclick="fnMyDevice();">등록기기정보 <span>▶</span></a></li>@endif
+                            <li class="InfoBtn ml10"><a href="javascript:;" onclick="fnMyDevice('');">등록기기정보 <span>▶</span></a></li>
                             <li class="InfoBtn ml10"><a href="javascript:;" onclick="openWin('MorePASS')">프리패스이용안내 <span>▶</span></a></li>
                         </ul>
                     </div>
@@ -366,7 +366,7 @@
                 </div>
             </div>
             <!-- willbes-Mypage-Tabs -->
-
+            @if(empty($passinfo) == false)
             <div id="MoreLec" class="willbes-Layer-PassBox willbes-Layer-PassBox900 h1100 abs">
                 <a class="closeBtn" href="#none" onclick="closeWin('MoreLec');">
                     <img src="{{ img_url('sub/close.png') }}">
@@ -527,7 +527,7 @@
 
             </div>
             <!-- willbes-Layer-PassBox : 무한PASS 교재구매 -->
-
+            @endif
             <div id="MyDevice" class="willbes-Layer-PassBox willbes-Layer-PassBox800 h960 abs"></div>
             <!-- willbes-Layer-PassBox : 등록기기정보 -->
 
@@ -622,8 +622,8 @@
             sendAjax(url,
                 data,
                 function(d){
-                    $("#MyDevice").html(d).end();
                     openWin('MyDevice');
+                    $("#MyDevice").html(d).end();
                 },
                 function(ret, status){
                     alert(ret.ret_msg);

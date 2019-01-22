@@ -58,9 +58,7 @@ var book_data = [];
         </tbody>
     </table>
 @endforelse
-<script>
-
-
+<script type="text/javascript">
     function fnDelBook(obj, price)
     {
         $(obj).parent().parent().remove();

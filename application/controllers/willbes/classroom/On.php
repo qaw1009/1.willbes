@@ -472,6 +472,7 @@ class On extends \app\controllers\FrontController
                 'PayRouteCcd' => ['670001','670002'] // 온, 방
             ]
         ]), $orderby);
+
         foreach($pkglist as $idx => $row){
             $pkgsublist =  $this->classroomFModel->getLecture([
                 'EQ' => [

@@ -59,7 +59,7 @@
                                 <th class="w-date">{{$board_data['RegDatm']}}</th>
                             </tr>
                             <tr>
-                                <td class="w-process tx-left pl20">남자<span class="row-line">|</span></td>
+                                <td class="w-process tx-left pl20">{{$prod_data['TakeMockPart_Name']}}<span class="row-line">|</span></td>
                                 <td class="w-write">{!! $board_data['RegMemIdx'] == sess_data('mem_idx') ? $board_data['RegName'] : hpSubString($board_data['RegName'],0,2,'*') !!}<span class="row-line">|</span></td>
                             </tr>
                             </thead>
@@ -172,7 +172,8 @@
 
             //삭제
             $('#btn_del').click(function() {
-                location.href = '{!! front_url('/mockTest/deleteQna/?'.$get_params.'&board_idx='.$board_idx) !!}';
+                if (!confirm('삭제하시겠습니까?')) { return true; }
+                location.href = '{!! front_url('/mockTest/deleteQna/cate/'.$__cfg['CateCode'].'?'.$get_params.'&board_idx='.$board_idx) !!}';
             });
         });
     </script>

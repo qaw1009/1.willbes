@@ -88,13 +88,13 @@
                                         <td class="w-average">
                                             {{ round($row['TCNT'] / $row['KCNT'], 2) }}
                                         </td>
-                                        @if($row['IsDisplay'] == 'Y')
+                                        @if(substr($row['GradeOpenDatm'],0,10) <= date('Y-m-d') && substr($row['GradeOpenDatm'],0,10) != '0000-00-00')
                                             <td class="w-report tx-red"><a href="javascript:popwin({{ $row['ProdCode'] }}, 1)">[성적확인]</a></td>
                                         @else
                                         <td class="w-report">집계중</td>
                                         @endif
                                         <td class="w-file on tx-blue">
-                                            @if($row['IsDisplay'] == 'Y')
+                                            @if(substr($row['GradeOpenDatm'],0,10) <= date('Y-m-d') && substr($row['GradeOpenDatm'],0,10) != '0000-00-00')
                                                 <a href="javascript:selQaFileAjax({{ $row['ProdCode'] }});">[문제/해설]</a><br>
                                                 <a href="javascript:popwin({{ $row['ProdCode'] }}, 2)">[오답노트]</a>
                                             @else

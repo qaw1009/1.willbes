@@ -64,7 +64,7 @@ class MockResult extends \app\controllers\FrontController
                    (SELECT COUNT(*) FROM lms_mock_register_r_paper WHERE MrIdx = MR.MrIdx AND ProdCode = MR.ProdCode) AS KCNT,
                    (SELECT RegDatm FROM lms_mock_answerpaper WHERE MemIdx = MR.MemIdx AND ProdCode = MR.ProdCode ORDER BY RegDatm DESC LIMIT 1) Wdate,
                    PD.ProdName, PD.SaleStartDatm, PD.SaleEndDatm, PS.SalePrice, PS.RealSalePrice,          
-                   C1.CateName, C1.IsUse AS IsUseCate, IsDisplay
+                   C1.CateName, C1.IsUse AS IsUseCate, IsDisplay, GradeOpenDatm
                        ';
         $order_by = ['MP.ProdCode'=>'Desc'];
 

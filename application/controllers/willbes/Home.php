@@ -41,6 +41,8 @@ class Home extends \app\controllers\FrontController
                         redirect(front_url('/classroom/on/list/ongoing'));
                     }
 
+                    $data = $this->memberFModel->getMember(false, ['MemIdx' => $data['MemIdx']]);
+
                     // 넘어온 토큰데이타로 로그인처리
                     if($this->memberFModel->storeMemberLogin($data, 'TOKEN') == true){
                         // 로그인성공

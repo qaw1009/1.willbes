@@ -8,15 +8,15 @@
             <div class="logo">
                 <a href="{{ front_url('/') }}"><img src="{{ img_url('m/main/logo.png') }}"></a>
             </div>
-            <button type="button" class="mypage">
+            <button type="button" class="mypage" onclick="document.location='{{front_url('/classroom/on/list/ongoing/')}}';">
                 <span class="hidden">내강의실</span>
             </button>
         </div>
         <div class="Login-List p_re">
             <!-- 2차 오픈메뉴 -->
-            <button type="button" class="myacad">
+            <!-- <button type="button" class="myacad">
                 <span class="hidden">수강신청</span>
-            </button>
+            </button> -->
             <ul class="myLog tx-black NG">
             @if(strpos(strtoupper(current_url()), '/MEMBER/JOIN') === false)
                 @if(sess_data('is_login') != true)

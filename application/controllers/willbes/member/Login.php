@@ -109,7 +109,11 @@ class Login extends BaseMember
             if($data['IsChange'] != 'Y') {
                 // 아이디가 통합상태가 아니면
                 $this->session->set_userdata('combine_id', $data['MemId']);
-                redirect('/member/combine/');
+                if($this->_is_app == true){
+                    show_alert('아이디 통합회원 전환이 필요합니다.\n통합회원 전환은 PC에서 가능합니다.', 'back');
+                } else {
+                    redirect('/member/combine/');
+                }
             }
 
             // 실제 로그인처리하기 로그인 처리및 로그저장

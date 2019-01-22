@@ -138,7 +138,7 @@
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
-                        location.href = '{!! front_url('/mockTest/board/cate/'.$__cfg['CateCode'].'/?'.$get_params) !!}';
+                        location.href = '{!! front_url('/mockTest/listQna/cate/'.$__cfg['CateCode'].'/?'.$get_params) !!}';
                     }
                 }, showValidateError, addValidate, false, 'alert');
             });

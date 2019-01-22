@@ -80,7 +80,7 @@
                             <tbody>
                             @if(empty($list) === true)
                                 <tr>
-                                    <td class="w-list tx-center" colspan="5">등록된 내용이 없습니다.</td>
+                                    <td class="w-list tx-center" colspan="8">등록된 내용이 없습니다.</td>
                                 </tr>
                             @else
                                 @foreach($list as $row)

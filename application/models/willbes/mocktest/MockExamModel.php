@@ -69,7 +69,7 @@ class MockExamModel extends WB_Model
                 JOIN {$this->_table['ProductCate']} AS PC ON MP.ProdCode = PC.ProdCode AND PC.IsStatus = 'Y'
                 JOIN {$this->_table['category']} AS C1 ON PC.CateCode = C1.CateCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y'
                 JOIN {$this->_table['ProductSale']} AS PS ON MP.ProdCode = PS.ProdCode AND PS.IsStatus = 'Y'
-                JOIN {$this->_table['mockRegister']} AS MR ON MP.ProdCode = MR.ProdCode AND MR.IsStatus = 'Y'
+                JOIN {$this->_table['mockRegister']} AS MR ON MP.ProdCode = MR.ProdCode AND MR.IsStatus = 'Y' AND TakeFormsCcd = '690001' -- 온라인응시자
                 LEFT JOIN {$this->_table['admin']} AS A ON MP.RegAdminIdx = A.wAdminIdx
         ";
 
@@ -144,9 +144,6 @@ class MockExamModel extends WB_Model
 
     }
 
-
-
-
     /**
      * 문항정보호출(시험지코드포함)
      * @param array $MpIdx $ProdCode
@@ -210,8 +207,6 @@ class MockExamModel extends WB_Model
         return $query->result_array();
 
     }
-
-
 
     /**
      * 상품정보
@@ -1125,7 +1120,6 @@ class MockExamModel extends WB_Model
             return error_result($e);
         }
         return true;
-
     }
 
     /**
@@ -1152,12 +1146,4 @@ class MockExamModel extends WB_Model
 
         return true;
     }
-
-
-
-
-
-
-
-
 }

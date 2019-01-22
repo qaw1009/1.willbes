@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Manage extends \app\controllers\BaseController
 {
-    protected $models = array('member/manageMember','sys/code', 'pay/orderList');
+    protected $models = array('member/manageMember','sys/code', 'pay/orderList','service/couponRegist','service/point');
     protected $helpers = array();
 
     public function __construct()
@@ -610,9 +610,7 @@ class Manage extends \app\controllers\BaseController
 
     public function ajaxLecture()
     {
-        $this->load->view('member/layer/lecture', [
 
-        ]);
     }
 
 
@@ -624,6 +622,82 @@ class Manage extends \app\controllers\BaseController
             'memIdx' => $memIdx,
             '_pay_status_ccd' => $this->orderListModel->_pay_status_ccd
         ]);
+    }
+
+    public function ajaxCoupon()
+    {
+        $memIdx = $this->_req('memIdx');
+
+        $arr_issue_type_ccd = $this->codeModel->getCcd($this->couponRegistModel->_ccd['IssueType']);
+
+        $this->load->view('member/layer/coupon', [
+            'memIdx' => $memIdx,
+            'arr_issue_type_ccd' => $arr_issue_type_ccd
+        ]);
+    }
+
+    public function ajaxPointLecture()
+    {
+        $memIdx = $this->_req('memIdx');
+
+        // 전체 유효포인트 조회
+        $valid_save_point = array_get($this->pointModel->listAllSaveUsePoint('lecture', 'save_only', $memIdx, 'ifnull(SUM(PSU.RemainPoint), 0) as RemainPoint', [
+            'EQ' => ['PSU.PointStatusCcd' => $this->pointModel->_point_status_ccd['save']],
+            'GT' => ['PSU.RemainPoint' => 0],
+            'RAW' => ['PSU.ExpireDatm >= ' => 'NOW()']
+        ]), '0.RemainPoint', 0);
+
+        // 당월소멸예정포인트 조회
+        $expire_save_point = array_get($this->pointModel->listAllSaveUsePoint('lecture', 'save_only', $memIdx, 'ifnull(SUM(PSU.RemainPoint), 0) as RemainPoint', [
+            'EQ' => ['PSU.PointStatusCcd' => $this->pointModel->_point_status_ccd['save']],
+            'GT' => ['PSU.RemainPoint' => 0],
+            'BDT' => ['PSU.ExpireDatm' => [date('Y-m-d'), date('Y-m-t')]]
+        ]), '0.RemainPoint', 0);
+
+        $this->load->view('member/layer/point', [
+            'memIdx' => $memIdx,
+            'arr_point_status_ccd' => $this->codeModel->getCcd('679'),
+            'valid_save_point' => $valid_save_point,
+            'expire_save_point' => $expire_save_point,
+            '_point_type' => 'lecture'
+        ]);
+    }
+
+    public function ajaxPointBook()
+    {
+        $memIdx = $this->_req('memIdx');
+
+        // 전체 유효포인트 조회
+        $valid_save_point = array_get($this->pointModel->listAllSaveUsePoint('book', 'save_only', $memIdx, 'ifnull(SUM(PSU.RemainPoint), 0) as RemainPoint', [
+            'EQ' => ['PSU.PointStatusCcd' => $this->pointModel->_point_status_ccd['save']],
+            'GT' => ['PSU.RemainPoint' => 0],
+            'RAW' => ['PSU.ExpireDatm >= ' => 'NOW()']
+        ]), '0.RemainPoint', 0);
+
+        // 당월소멸예정포인트 조회
+        $expire_save_point = array_get($this->pointModel->listAllSaveUsePoint('book', 'save_only', $memIdx, 'ifnull(SUM(PSU.RemainPoint), 0) as RemainPoint', [
+            'EQ' => ['PSU.PointStatusCcd' => $this->pointModel->_point_status_ccd['save']],
+            'GT' => ['PSU.RemainPoint' => 0],
+            'BDT' => ['PSU.ExpireDatm' => [date('Y-m-d'), date('Y-m-t')]]
+        ]), '0.RemainPoint', 0);
+
+        $this->load->view('member/layer/point', [
+            'memIdx' => $memIdx,
+            'arr_point_status_ccd' => $this->codeModel->getCcd('679'),
+            'valid_save_point' => $valid_save_point,
+            'expire_save_point' => $expire_save_point,
+            '_point_type' => 'book'
+        ]);
+    }
+
+    public function ajaxBoard()
+    {
+
+    }
+
+    public function ajaxCRM()
+    {
+
     }
 
 }

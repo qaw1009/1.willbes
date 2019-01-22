@@ -93,6 +93,7 @@ class AllStatus extends \app\controllers\BaseController
     {
         $arr_condition = [
             'EQ' => [
+                'M.MemIdx' => $this->_reqP('search_member_idx'),
                 'PSU.SiteCode' => $this->_reqP('search_site_code'),
                 'O.OrderNo' => $this->_reqP('search_order_no'),
                 'PSU.PointStatusCcd' => $this->_reqP('search_point_status_ccd')

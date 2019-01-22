@@ -156,8 +156,8 @@ class Mail extends \app\controllers\BaseController
      */
     public function sampleDownload()
     {
-        $fileinfo = '/public/uploads/willbes/_sample_download/sample_mail.xlsx';
-        public_download($fileinfo);
+        $file_path = STORAGEPATH . 'resources/sample/sample_mail.xlsx';
+        force_download($file_path, null);
     }
 
     /**

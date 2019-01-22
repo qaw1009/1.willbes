@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Sms extends \app\controllers\BaseController
 {
     protected $models = array('sys/code', 'sys/site', 'crm/send/sms', 'member/manageMember');
-    protected $helpers = array('download');
+    protected $helpers = array();
 
     private $_send_type = 'sms';
 
@@ -237,8 +237,9 @@ class Sms extends \app\controllers\BaseController
      */
     public function sampleDownload()
     {
-        $fileinfo = '/public/uploads/willbes/_sample_download/sample_sms.xlsx';
-        public_download($fileinfo);
+        $this->load->helper('download');
+        $file_path = STORAGEPATH . 'resources/sample/sample_sms.xlsx';
+        force_download($file_path, null);
     }
 
     /**

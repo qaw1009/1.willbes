@@ -542,7 +542,7 @@ function init_base() {
 
         if (target_idx === '') {
             alert(evt_name + '를 발송하실 회원을 선택해 주세요.');
-            return;
+            return false;
         }
 
         if (confirm('선택한 대상자에게 ' + evt_name + '를 발송하시겠습니까?')) {

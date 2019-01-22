@@ -58,10 +58,12 @@
                                 <th class="w-list tx-left pl20"><strong>{{$board_data['Title']}}</strong><span class="row-line">|</span></th>
                                 <th class="w-date">{{$board_data['RegDatm']}}</th>
                             </tr>
+                            @if ($board_data['RegType'] == '0')
                             <tr>
                                 <td class="w-process tx-left pl20">{{$prod_data['TakeMockPart_Name']}}<span class="row-line">|</span></td>
                                 <td class="w-write">{!! $board_data['RegMemIdx'] == sess_data('mem_idx') ? $board_data['RegName'] : hpSubString($board_data['RegName'],0,2,'*') !!}<span class="row-line">|</span></td>
                             </tr>
+                            @endif
                             </thead>
                             <tbody>
                             <tr>

@@ -3,14 +3,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class MockTest extends \app\controllers\FrontController
 {
-    protected $models = array('mocktest/mockInfoF','_lms/sys/code', 'support/supportBoardTwoWayF', 'downloadF');
+    protected $models = array('mocktest/mockInfoF','_lms/sys/code', 'support/supportBoardTwoWayF', 'support/supportBoardF', 'downloadF');
     protected $helpers = array('download');
     protected $auth_controller = false;
     protected $auth_methods = array('apply_modal','apply_cart_modal','apply_order', 'createQna');
 
     protected $_paging_limit = 10;
     protected $_paging_count = 10;
-    private $_bm_idx = '95';
+    private $_bm_idx_qna = '95';        //이의제기
+    private $_bm_idx_notice = '96';     //정오표
 
     public function __construct()
     {
@@ -252,7 +253,6 @@ class MockTest extends \app\controllers\FrontController
     {
         $arr_input = $this->_reqG(null,false);
         $s_keyword = element('s_keyword',$arr_input);
-        $get_params = http_build_query($arr_input);
         $get_page_params = 's_keyword='.$s_keyword;
 
         $arr_condition = [
@@ -284,7 +284,7 @@ class MockTest extends \app\controllers\FrontController
         $this->load->view('site/mocktest/board_product',[
             'page_type' => 'board',
             'arr_input' => $arr_input,
-            'get_params' => $get_params,
+            'get_params' => $get_page_params,
             'def_cate_code' => $this->_cate_code,
             'count' => $count,
             'list'=>$list,
@@ -310,11 +310,11 @@ class MockTest extends \app\controllers\FrontController
         $mock_part = $this->mockInfoFModel->listMockTestMockPart($prod_code);
 
         // 모의고사 상품 상세 조회
-        $prod_data = $this->_getProdData($prod_code, 'N');
+        $prod_data = $this->_getProdData($prod_code);
 
         $arr_condition = [
             'EQ' => [
-                'b.BmIdx' => $this->_bm_idx,
+                'b.BmIdx' => $this->_bm_idx_qna,
                 'b.IsUse' => 'Y',
                 'mr.TakeMockPart' => $s_take_mock_part
             ],
@@ -341,7 +341,7 @@ class MockTest extends \app\controllers\FrontController
         $order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
 
         $total_rows = $this->supportBoardTwoWayFModel->listBoardForMockTest(true, $arr_condition);
-        $paging = $this->pagination('mockTest/listQna/cate/'.$this->_cate_code.'/?'.$get_page_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
+        $paging = $this->pagination('/mockTest/listQna/cate/'.$this->_cate_code.'/?'.$get_page_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
         if ($total_rows > 0) {
             $list = $this->supportBoardTwoWayFModel->listBoardForMockTest(false,$arr_condition,$column,$paging['limit'],$paging['offset'],$order_by);
             foreach ($list as $idx => $row) {
@@ -357,7 +357,7 @@ class MockTest extends \app\controllers\FrontController
             'prod_data' => $prod_data,
             'arr_input' => $arr_input,
             'get_params' => $get_params,
-            'list'=>$list,
+            'list' => $list,
             'paging' => $paging
         ]);
     }
@@ -377,9 +377,25 @@ class MockTest extends \app\controllers\FrontController
         }
 
         // 모의고사 상품 상세 조회
-        $prod_data = $this->_getProdData($prod_code, 'Y');
+        $arr_condition = [
+            'EQ' => [
+                'pm.ProdCode' => $prod_code,
+                'pm.IsUse' => 'Y',
+                'pm.CateCode' => $this->_cate_code,
+                'pm.SiteCode' => $this->_site_code,
+                'op.PayStatusCcd' => '676001'
+            ],
+            'RAW' => [
+                'op.MemIdx' => $this->session->userdata('mem_idx')
+            ]
+        ];
+        $prod_data = $this->mockInfoFModel->findRegistForBoard($arr_condition);
 
-        /*if ($data['IsTake'] != 'Y') {
+        if (empty($prod_data) === true) {
+            show_alert('응시한 모의고사 상품이 아닙니다.', 'back');
+        }
+
+        /*if ($prod_data['IsTake'] != 'Y') {
             show_alert('응시한 모의고사 상품이 아닙니다.', 'back');
         }*/
 
@@ -390,7 +406,7 @@ class MockTest extends \app\controllers\FrontController
 
             $arr_condition = [
                 'EQ' => [
-                    'BmIdx' => $this->_bm_idx,
+                    'BmIdx' => $this->_bm_idx_qna,
                     'IsUse' => 'Y'
                 ],
             ];
@@ -492,20 +508,13 @@ class MockTest extends \app\controllers\FrontController
         $get_params .= '&s_keyword='.urlencode($s_keyword);
         $get_params .= '&page='.$page;
 
-        // 모의고사 상품 상세 조회
-        $prod_data = $this->_getProdData($prod_code, 'N');
-
-        /*if ($data['IsTake'] != 'Y') {
-            show_alert('응시한 모의고사 상품이 아닙니다.', 'back');
-        }*/
-
         if (empty($board_idx)) {
             show_alert('게시글번호가 존재하지 않습니다.', 'back');
         }
 
         $arr_condition = [
             'EQ' => [
-                'BmIdx' => $this->_bm_idx,
+                'BmIdx' => $this->_bm_idx_qna,
                 'ProdCode' => $prod_code,
                 'IsUse' => 'Y'
             ],
@@ -542,6 +551,31 @@ class MockTest extends \app\controllers\FrontController
         }
         $board_data['AttachData'] = json_decode($board_data['AttachData'],true);       //첨부파일
 
+        // 모의고사 상품 상세 조회
+        if ($board_data['RegType'] == '1') {
+            $prod_data = $this->_getProdData($prod_code);
+        } else {
+            $arr_condition = [
+                'EQ' => [
+                    'pm.ProdCode' => $prod_code,
+                    'pm.IsUse' => 'Y',
+                    'pm.CateCode' => $this->_cate_code,
+                    'pm.SiteCode' => $this->_site_code,
+                    'op.PayStatusCcd' => '676001'
+                ],
+                'RAW' => [
+                    'op.MemIdx' => $this->session->userdata('mem_idx')
+                ]
+            ];
+            $prod_data = $this->mockInfoFModel->findRegistForBoard($arr_condition);
+            if (empty($prod_data) === true) {
+                show_alert('응시한 모의고사 상품이 아닙니다.', 'back');
+            }
+            /*if ($prod_data['IsTake'] != 'Y') {
+                show_alert('응시한 모의고사 상품이 아닙니다.', 'back');
+            }*/
+        }
+
         $this->load->view('site/mocktest/board_show_qna',[
             'page_type' => 'board_etc',
             'arr_input' => $arr_input,
@@ -574,7 +608,7 @@ class MockTest extends \app\controllers\FrontController
             show_alert('삭제 실패입니다. 관리자에게 문의해주세요.', 'back');
         }
 
-        show_alert('삭제되었습니다.', front_url('/mocktest/listQna/cate/'.$this->_cate_code.'?'.$get_params));
+        show_alert('삭제되었습니다.', front_url('/mocktest/listQna/cate/'.$this->_cate_code.'/?'.$get_params));
     }
 
     /**
@@ -582,14 +616,129 @@ class MockTest extends \app\controllers\FrontController
      */
     public function listNotice()
     {
+        $list = [];
+        $arr_input = $this->_reqG(null);
+        $get_params = http_build_query($arr_input);
+        $prod_code = element('prod_code', $arr_input);
+        $s_keyword = element('s_keyword',$arr_input);
+        $get_page_params = 'prod_code='.$prod_code.'&s_keyword='.urlencode($s_keyword);
+
+        // 모의고사 상품 상세 조회
+        $prod_data = $this->_getProdData($prod_code);
+
+        // 직렬 추출 및 데이터 셋팅
+        $mockKindCode = $this->config->item('sysCode_kind', 'mock'); // 직렬 운영코드값
+        $codes = $this->codeModel->getCcdInArray([$mockKindCode]);
+        $mockPart = explode(',', $prod_data['MockPart']);
+        foreach ($mockPart as $mp) {
+            if( !empty($codes[$mockKindCode][$mp]) ) $prod_data['MockPartName'][] = $codes[$mockKindCode][$mp];
+        }
+
+        $arr_condition = [
+            'EQ' => [
+                'b.BmIdx' => $this->_bm_idx_notice,
+                'b.IsUse' => 'Y'
+            ],
+            'RAW' => [
+                'b.ProdCode' => $prod_code
+            ],
+            'ORG' => [
+                'LKB' => [
+                    'b.Title' => $s_keyword,
+                    'b.Content' => $s_keyword
+                ]
+            ]
+        ];
+
+        $column = 'b.BoardIdx,b.CampusCcd,b.TypeCcd,b.IsBest,b.AreaCcd
+                       ,b.Title,b.Content, (b.ReadCnt + b.SettingReadCnt) as TotalReadCnt
+                       ,b.CampusCcd_Name, b.TypeCcd_Name,b.AreaCcd_Name, Category_NameString
+                       ,b.SubjectName,b.CourseName,b.AttachData,DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm
+                       ';
+        $order_by = ['b.IsBest'=>'Desc','b.BoardIdx'=>'Desc'];
+
+        $total_rows = $this->supportBoardFModel->listBoard(true, $arr_condition);
+        $paging = $this->pagination('/mockTest/listNotice/cate/'.$this->_cate_code.'/?'.$get_page_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
+
+        if ($total_rows > 0) {
+            $list = $this->supportBoardFModel->listBoard(false,$arr_condition,$column,$paging['limit'],$paging['offset'],$order_by);
+            foreach ($list as $idx => $row) {
+                $list[$idx]['AttachData'] = json_decode($row['AttachData'],true);       //첨부파일
+            }
+        }
+
         $this->load->view('site/mocktest/board_list_notice',[
-            'page_type' => 'board',
-            /*'arr_input' => $arr_input,
-            'get_params' => $get_params,
+            'page_type' => 'board_etc',
             'def_cate_code' => $this->_cate_code,
-            'count' => $count,
-            'list'=>$list,
-            'paging' => $paging,*/
+            'prod_code' => $prod_code,
+            'prod_data' => $prod_data,
+            'arr_input' => $arr_input,
+            'get_params' => $get_params,
+            'list' => $list,
+            'paging' => $paging,
+        ]);
+    }
+
+    public function showNotice()
+    {
+        $arr_input = $this->_reqG(null, false);
+        $prod_code = element('prod_code', $arr_input);
+        $board_idx = element('board_idx', $arr_input);
+        $s_keyword = element('s_keyword', $arr_input);
+        $page = element('page',$arr_input);
+        $get_params = 'prod_code='.$prod_code.'&s_keyword='.urlencode($s_keyword);
+        $get_params .= '&page='.$page;
+
+        if (empty($board_idx)) {
+            show_alert('게시글번호가 존재하지 않습니다.', 'back');
+        }
+
+        // 모의고사 상품 상세 조회
+        $prod_data = $this->_getProdData($prod_code);
+
+        // 직렬 추출 및 데이터 셋팅
+        $mockKindCode = $this->config->item('sysCode_kind', 'mock'); // 직렬 운영코드값
+        $codes = $this->codeModel->getCcdInArray([$mockKindCode]);
+        $mockPart = explode(',', $prod_data['MockPart']);
+        foreach ($mockPart as $mp) {
+            if( !empty($codes[$mockKindCode][$mp]) ) $prod_data['MockPartName'][] = $codes[$mockKindCode][$mp];
+        }
+
+        // 게시글 조회
+        $arr_condition = [
+            'EQ' => [
+                'b.SiteCode' => $this->_site_code
+                ,'b.ProdCode' => $prod_code
+                ,'b.BmIdx' => $this->_bm_idx_notice
+                ,'b.IsUse' => 'Y'
+            ],
+        ];
+
+        $column = '
+           b.BoardIdx,b.CampusCcd,b.TypeCcd,b.IsBest,b.AreaCcd
+           ,b.Title,b.Content, (b.ReadCnt + b.SettingReadCnt) as TotalReadCnt
+           ,b.IsCampus,b.CampusCcd_Name, b.TypeCcd_Name,b.AreaCcd_Name, Category_NameString
+           ,b.SubjectName,b.CourseName,b.AttachData,DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm
+        ';
+        $board_data = $this->supportBoardFModel->findBoard($board_idx,$arr_condition,$column);
+
+        if (empty($board_data)) {
+            show_alert('게시글이 존재하지 않습니다.', 'back');
+        }
+        $board_data['AttachData'] = json_decode($board_data['AttachData'],true);       //첨부파일
+
+        $result = $this->supportBoardFModel->modifyBoardRead($board_idx);
+        if($result !== true) {
+            show_alert('게시글 조회시 오류가 발생되었습니다.', 'back');
+        }
+
+        $this->load->view('site/mocktest/board_show_notice',[
+            'page_type' => 'board_etc',
+            'arr_input' => $arr_input,
+            'get_params' => $get_params,
+            'prod_data' => $prod_data,
+            'board_data' => $board_data,
+            'board_idx' => $board_idx,
         ]);
     }
 
@@ -609,7 +758,7 @@ class MockTest extends \app\controllers\FrontController
     {
         $input_data = [
             'board' => [
-                'BmIdx' => $this->_bm_idx,
+                'BmIdx' => $this->_bm_idx_qna,
                 'SiteCode' => element('site_code', $input),
                 'RegType' => element('reg_type', $input, 0),
                 'Title' => element('board_title', $input),
@@ -631,10 +780,9 @@ class MockTest extends \app\controllers\FrontController
     /**
      * 모의고사 상품 조회
      * @param $prod_code
-     * @param string $err_type
      * @return mixed
      */
-    private function _getProdData($prod_code, $err_type = 'N')
+    private function _getProdData($prod_code)
     {
         // 모의고사 상품 상세 조회
         $arr_condition = [
@@ -642,17 +790,13 @@ class MockTest extends \app\controllers\FrontController
                 'pm.ProdCode' => $prod_code,
                 'pm.IsUse' => 'Y',
                 'pm.CateCode' => $this->_cate_code,
-                'pm.SiteCode' => $this->_site_code,
-                'op.PayStatusCcd' => '676001'
+                'pm.SiteCode' => $this->_site_code
             ],
-            'RAW' => [
-                'op.MemIdx' => $this->session->userdata('mem_idx')
-            ]
         ];
 
-        $prod_data = $this->mockInfoFModel->findRegistForBoard($arr_condition);
-        if (empty($prod_data) === true && $err_type == 'Y') {
-            show_alert('응시한 모의고사 상품이 없습니다.', 'back');
+        $prod_data = $this->mockInfoFModel->findMockTestForBoard($arr_condition);
+        if (empty($prod_data) === true) {
+            show_alert('모의고사 상품이 없습니다.', 'back');
         }
 
         return $prod_data;

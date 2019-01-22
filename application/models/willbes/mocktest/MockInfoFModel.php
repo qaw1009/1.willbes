@@ -312,6 +312,36 @@ class MockInfoFModel extends WB_Model
      * @param array $arr_condition
      * @return mixed
      */
+    public function findMockTestForBoard($arr_condition=[])
+    {
+        $column = '
+                pm.*, IFNULL(BD1.cnt, 0) AS qnaTotalCnt, IFNULL(BD2.cnt, 0) AS noticeCnt
+            ';
+
+        $from = "
+            FROM {$this->_table['mock_product']}
+            LEFT JOIN (
+                SELECT ProdCode, COUNT(*) AS cnt
+                FROM {$this->_table['board']}
+                WHERE BmIdx = '95' AND RegType = '0' AND IsStatus = 'Y'
+                GROUP BY ProdCode
+            ) AS BD1 ON BD1.ProdCode = pm.ProdCode
+            
+            LEFT JOIN (
+                SELECT ProdCode, COUNT(*) AS cnt
+                FROM {$this->_table['board']}
+                WHERE BmIdx = '96' AND IsStatus = 'Y'
+                GROUP BY ProdCode
+            ) AS BD2 ON BD2.ProdCode = pm.ProdCode
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $result = $this->_conn->query('select STRAIGHT_JOIN ' . $column . $from. $where)->row_array();
+        return $result;
+    }
+
     public function findRegistForBoard($arr_condition=[])
     {
         $column = '

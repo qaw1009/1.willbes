@@ -33,37 +33,34 @@ class Home extends \app\controllers\FrontController
 
                     if($this->session->userdata('is_login') == true && $this->session->userdata('mem_idx') == $tokenArr['USER_IDX']){
                         // 이미 로그인중이고 토큰데이타와 동일하면 그냥 내강의실로
-                        logger('이미 로그인중이고 토큰데이타와 동일하면 그냥 내강의실로');
+                        //logger('이미 로그인중이고 토큰데이타와 동일하면 그냥 내강의실로');
                         redirect(front_url('/classroom/on/list/ongoing'));
                     }
-
-                    logger('token:'.$token);
-                    logger('토큰로그인준비');
-
-                    $data = $this->memberFModel->getMember(false, ['Mem.MemIdx' => $tokenArr['USER_IDX']]);
-
-                    logger('사용자정보구해옴');
+                    //logger('token:'.$token);
+                    //logger('토큰로그인준비');
+                    $data = $this->memberFModel->getMember(false, [ 'EQ' => ['Mem.MemIdx' => $tokenArr['USER_IDX'] ]]);
+                    //logger('사용자정보구해옴');
 
                     // 넘어온 토큰데이타로 로그인처리
                     if($this->memberFModel->storeMemberLogin($data, 'TOKEN') == true){
                         // 로그인성공
-                        logger('토큰로그인 성공');
+                        //logger('토큰로그인 성공');
                         redirect(front_url('/classroom/on/list/ongoing'));
                     } else {
                         // 로그인 실패시 세션 파괴
-                        logger('로그인 실패 세션 파괴');
+                        //logger('로그인 실패 세션 파괴');
                         $this->session->sess_destroy();
                     }
                     
                 } else {
                     // 토큰값이 정상이 아닐때 세션 파괴
-                    logger('토큰 정상아님 세션 파괴');
+                    //logger('토큰 정상아님 세션 파괴');
                     $this->session->sess_destroy();
                 }
                 
             } else {
                 // 토큰이 없으면 세션 파괴
-                logger('토큰값이 안넘어 왔기 때문에 세션 파괴');
+                //logger('토큰값이 안넘어 왔기 때문에 세션 파괴');
                 $this->session->sess_destroy();
             }
 

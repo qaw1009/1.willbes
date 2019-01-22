@@ -455,4 +455,32 @@ class OrderListModel extends BaseOrderModel
 
         return $this->_conn->getFindResult($this->_table['order_delivery_address'], $column, $arr_condition);
     }
+
+    /**
+     * 주문환불요청 날짜별 건수 조회
+     * @param string $req_start_date [조회시작일자]
+     * @param string $req_end_date [조회종료일자]
+     * @return mixed
+     */
+    public function listOrderRefundReqCntPerSite($req_start_date, $req_end_date)
+    {
+        $req_start_date = $req_start_date . ' 00:00:00';
+        $req_end_date = $req_end_date . ' 23:59:59';
+
+        $column = 'S.SiteCode, max(S.IsCampus) as IsCampus, max(S.SiteName) as SiteName, count(ORR.RefundReqIdx) as RefundReqCnt';
+        $from = '
+            from ' . $this->_table['site'] . ' as S
+                left join ' . $this->_table['order'] . ' as O
+                    on S.SiteCode = O.SiteCode and O.CompleteDatm is not null
+                left join ' . $this->_table['order_refund_request'] . ' as ORR
+                    on O.OrderIdx = ORR.OrderIdx and ORR.RefundReqDatm between ? and ?
+            where S.SiteCode != ' . config_item('app_intg_site_code') . '
+                and S.IsUse = "Y"
+            group by S.SiteCode';
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from, [$req_start_date, $req_end_date]);
+
+        return $query->result_array();
+    }
 }

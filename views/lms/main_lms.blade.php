@@ -59,40 +59,52 @@
         <div class="col-md-3">
             <div class="x_panel">
                 <div class="x_title">
-                    <span class="gray"><i class="fa fa-check-square-o"></i> 온라인 환불요청 현황 <strong>[+]</strong></span>
+                    <span class="gray"><i class="fa fa-check-square-o"></i> 온라인 환불처리 현황 <strong>[+]</strong></span>
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
                     <table class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            <th style="width: 30%;">구분</th>
+                            <th>오늘 환불처리</th>
+                        </tr>
+                        </thead>
                         <tbody>
+                        @foreach($refund_data as $row)
+                            @if($row['IsCampus'] == 'N')
                             <tr>
-                                <td style="width: 50%;">전체 환불요청</td>
-                                <td><a href="#none" class="blue"><u>3건</u></a></td>
+                                <td>{{ $row['SiteName'] }}</td>
+                                <td><a href="{{ site_url('/pay/refundList/') }}" class="blue"><u>{{ number_format($row['RefundReqCnt']) }}건</u></a></td>
                             </tr>
-                            <tr>
-                                <td>오늘 환불요청</td>
-                                <td><a href="#none" class="blue"><u>3건</u></a></td>
-                            </tr>
+                            @endif
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
             </div>
             <div class="x_panel mt-30">
                 <div class="x_title">
-                    <span class="gray"><i class="fa fa-check-square-o"></i> 학원 환불요청 현황 <strong>[+]</strong></span>
+                    <span class="gray"><i class="fa fa-check-square-o"></i> 학원 환불처리 현황 <strong>[+]</strong></span>
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
                     <table class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            <th style="width: 30%;">구분</th>
+                            <th>오늘 환불처리</th>
+                        </tr>
+                        </thead>
                         <tbody>
-                        <tr>
-                            <td style="width: 50%;">전체 환불요청</td>
-                            <td><a href="#none" class="blue"><u>3건</u></a></td>
-                        </tr>
-                        <tr>
-                            <td>오늘 환불요청</td>
-                            <td><a href="#none" class="blue"><u>3건</u></a></td>
-                        </tr>
+                        @foreach($refund_data as $row)
+                            @if($row['IsCampus'] == 'Y')
+                                <tr>
+                                    <td>{{ $row['SiteName'] }}</td>
+                                    <td><a href="{{ site_url('/pay/refundList/') }}" class="blue"><u>{{ number_format($row['RefundReqCnt']) }}건</u></a></td>
+                                </tr>
+                            @endif
+                        @endforeach
                         </tbody>
                     </table>
                 </div>

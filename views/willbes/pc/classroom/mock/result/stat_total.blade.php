@@ -38,7 +38,7 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td>{{ $productInfo['SaleStartDatm'] }}</td>
+                        <td>{{ substr($productInfo['SaleStartDatm'],0,10) }}</td>
                         <td>{{ $productInfo['CateName'] }}</td>
                         <td>
 
@@ -325,58 +325,66 @@
                     <tr class="wBx">
                         <th>{{ $row }}</th>
                         <td>
-                            <div id="chart3_div{{$key}}" style="width: 800px; height: 165px;"><div style="position: relative;"><div dir="ltr" style="position: relative; width: 800px; height: 165px;"><div aria-label="차트입니다." style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%;"><svg width="800" height="165" aria-label="차트입니다." style="overflow: hidden;"><defs id="defs"><clipPath id="_ABSTRACT_RENDERER_ID_0"><rect x="85" y="32" width="630" height="102"></rect></clipPath></defs><rect x="0" y="0" width="800" height="165" stroke="none" stroke-width="0" fill="#ffffff"></rect><g><rect x="727" y="32" width="61" height="12" stroke="none" stroke-width="0" fill-opacity="0" fill="#ffffff"></rect><g><rect x="727" y="32" width="61" height="12" stroke="none" stroke-width="0" fill-opacity="0" fill="#ffffff"></rect><g><text text-anchor="start" x="756" y="42.2" font-family="Arial" font-size="12" stroke="none" stroke-width="0" fill="#222222">점수</text></g><rect x="727" y="32" width="24" height="12" stroke="none" stroke-width="0" fill="#3366cc"></rect></g></g><g><rect x="85" y="32" width="630" height="102" stroke="none" stroke-width="0" fill-opacity="0" fill="#ffffff"></rect><g clip-path="url(http://www.willbesgosi.net/mypage/stats/list.html?topMenuType=O&amp;topMenuGnb=OM_009&amp;topMenu=MAIN&amp;menuID=OM_009_004_002&amp;IDENTYID=03001011013&amp;MOCKCODE=E18000001#_ABSTRACT_RENDERER_ID_0)"><g><rect x="85" y="32" width="1" height="102" stroke="none" stroke-width="0" fill="#cccccc"></rect><rect x="242" y="32" width="1" height="102" stroke="none" stroke-width="0" fill="#cccccc"></rect><rect x="400" y="32" width="1" height="102" stroke="none" stroke-width="0" fill="#cccccc"></rect><rect x="557" y="32" width="1" height="102" stroke="none" stroke-width="0" fill="#cccccc"></rect><rect x="714" y="32" width="1" height="102" stroke="none" stroke-width="0" fill="#cccccc"></rect></g><g><rect x="86" y="39" width="320" height="21" stroke="none" stroke-width="0" fill="#3366cc"></rect><rect x="86" y="73" width="597" height="20" stroke="none" stroke-width="0" fill="#3366cc"></rect><rect x="86" y="106" width="188" height="21" stroke="none" stroke-width="0" fill="#3366cc"></rect></g><g><rect x="85" y="32" width="1" height="102" stroke="none" stroke-width="0" fill="#333333"></rect></g></g><g></g><g><g><text text-anchor="middle" x="85.5" y="151.2" font-family="Arial" font-size="12" stroke="none" stroke-width="0" fill="#444444">0</text></g><g><text text-anchor="middle" x="242.75" y="151.2" font-family="Arial" font-size="12" stroke="none" stroke-width="0" fill="#444444">25</text></g><g><text text-anchor="middle" x="400" y="151.2" font-family="Arial" font-size="12" stroke="none" stroke-width="0" fill="#444444">50</text></g><g><text text-anchor="middle" x="557.25" y="151.2" font-family="Arial" font-size="12" stroke="none" stroke-width="0" fill="#444444">75</text></g><g><text text-anchor="middle" x="714.5" y="151.2" font-family="Arial" font-size="12" stroke="none" stroke-width="0" fill="#444444">100</text></g><g><text text-anchor="end" x="73" y="53.53333333333333" font-family="Arial" font-size="12" stroke="none" stroke-width="0" fill="#222222">전체</text></g><g><text text-anchor="end" x="73" y="87.2" font-family="Arial" font-size="12" stroke="none" stroke-width="0" fill="#222222">최고</text></g><g><text text-anchor="end" x="73" y="120.86666666666666" font-family="Arial" font-size="12" stroke="none" stroke-width="0" fill="#222222">본인</text></g></g></g><g></g></svg><div aria-label="차트의 데이터를 나타낸 표입니다." style="position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden;"><table><thead><tr><th>Topping</th><th>점수</th></tr></thead><tbody><tr><td>전체</td><td>51</td></tr><tr><td>최고</td><td>95</td></tr><tr><td>본인</td><td>30</td></tr></tbody></table></div></div></div><div aria-hidden="true" style="display: none; position: absolute; top: 175px; left: 810px; white-space: nowrap; font-family: Arial; font-size: 12px;">점수</div><div></div></div></div>
+                            <div id="chart3_div{{$key}}" style="width: 800px; height: 165px;"></div>
                         </td>
-                        <script type="text/javascript">
-                            my_avg =  parseInt("{{ $dataDetail[$key]['grade'] }}");
-                            tot_avg = parseInt("{{ $dataDetail[$key]['avg'] }}");
-                            top_avg = parseInt("{{ $dataDetail[$key]['max'] }}");
-                        </script>
                     </tr>
                     <script type="text/javascript">
-                        // Some raw data (not necessarily accurate)
-                        var data = new google.visualization.DataTable();
-                        data.addColumn('string', 'Topping');
-                        data.addColumn('number', '점수');
-                        data.addRows([
-                            ['전체', tot_avg],
-                            ['최고', top_avg],
-                            ['본인', my_avg]
-                        ]);
-                        var options = {
-                            vAxis: {minValue:0}
-                        };
-                        var chart = new google.visualization.BarChart(document.getElementById("chart3_div{{ $key }}"));
-                        chart.draw(data, options);
+                        google.charts.load("current", {packages:["corechart"]});
+                        google.charts.setOnLoadCallback(drawChart);
+                        function drawChart() {
+                            var my_avg =  parseInt("{{ $dataDetail[$key]['grade'] }}");
+                            var tot_avg = parseInt("{{ $dataDetail[$key]['avg'] }}");
+                            var top_avg = parseInt("{{ $dataDetail[$key]['max'] }}");
+
+                            var data = google.visualization.arrayToDataTable([
+                                ["Element", "점수", { role: "style" } ],
+                                ['전체', tot_avg, "blue"],
+                                ['최고', top_avg, "blue"],
+                                ['본인', my_avg,"blue"]
+
+                            ]);
+
+                            var view = new google.visualization.DataView(data);
+
+                            var options = {
+                                vAxis: {minValue:0}
+                            };
+                            var chart = new google.visualization.BarChart(document.getElementById("chart3_div{{$key}}"));
+                            chart.draw(view, options);
+                        }
                     </script>
                 @endforeach
                 @foreach($sList2 as $key => $row)
                     <tr class="wBx">
                         <th>{{ $row }}</th>
                         <td>
-                            <div id="chart3_div{{ $key }}" style="width: 800px; height: 165px;"><div style="position: relative;"><div dir="ltr" style="position: relative; width: 800px; height: 165px;"><div aria-label="차트입니다." style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%;"><svg width="800" height="165" aria-label="차트입니다." style="overflow: hidden;"><defs id="defs"><clipPath id="_ABSTRACT_RENDERER_ID_0"><rect x="85" y="32" width="630" height="102"></rect></clipPath></defs><rect x="0" y="0" width="800" height="165" stroke="none" stroke-width="0" fill="#ffffff"></rect><g><rect x="727" y="32" width="61" height="12" stroke="none" stroke-width="0" fill-opacity="0" fill="#ffffff"></rect><g><rect x="727" y="32" width="61" height="12" stroke="none" stroke-width="0" fill-opacity="0" fill="#ffffff"></rect><g><text text-anchor="start" x="756" y="42.2" font-family="Arial" font-size="12" stroke="none" stroke-width="0" fill="#222222">점수</text></g><rect x="727" y="32" width="24" height="12" stroke="none" stroke-width="0" fill="#3366cc"></rect></g></g><g><rect x="85" y="32" width="630" height="102" stroke="none" stroke-width="0" fill-opacity="0" fill="#ffffff"></rect><g clip-path="url(http://www.willbesgosi.net/mypage/stats/list.html?topMenuType=O&amp;topMenuGnb=OM_009&amp;topMenu=MAIN&amp;menuID=OM_009_004_002&amp;IDENTYID=03001011013&amp;MOCKCODE=E18000001#_ABSTRACT_RENDERER_ID_0)"><g><rect x="85" y="32" width="1" height="102" stroke="none" stroke-width="0" fill="#cccccc"></rect><rect x="242" y="32" width="1" height="102" stroke="none" stroke-width="0" fill="#cccccc"></rect><rect x="400" y="32" width="1" height="102" stroke="none" stroke-width="0" fill="#cccccc"></rect><rect x="557" y="32" width="1" height="102" stroke="none" stroke-width="0" fill="#cccccc"></rect><rect x="714" y="32" width="1" height="102" stroke="none" stroke-width="0" fill="#cccccc"></rect></g><g><rect x="86" y="39" width="320" height="21" stroke="none" stroke-width="0" fill="#3366cc"></rect><rect x="86" y="73" width="597" height="20" stroke="none" stroke-width="0" fill="#3366cc"></rect><rect x="86" y="106" width="188" height="21" stroke="none" stroke-width="0" fill="#3366cc"></rect></g><g><rect x="85" y="32" width="1" height="102" stroke="none" stroke-width="0" fill="#333333"></rect></g></g><g></g><g><g><text text-anchor="middle" x="85.5" y="151.2" font-family="Arial" font-size="12" stroke="none" stroke-width="0" fill="#444444">0</text></g><g><text text-anchor="middle" x="242.75" y="151.2" font-family="Arial" font-size="12" stroke="none" stroke-width="0" fill="#444444">25</text></g><g><text text-anchor="middle" x="400" y="151.2" font-family="Arial" font-size="12" stroke="none" stroke-width="0" fill="#444444">50</text></g><g><text text-anchor="middle" x="557.25" y="151.2" font-family="Arial" font-size="12" stroke="none" stroke-width="0" fill="#444444">75</text></g><g><text text-anchor="middle" x="714.5" y="151.2" font-family="Arial" font-size="12" stroke="none" stroke-width="0" fill="#444444">100</text></g><g><text text-anchor="end" x="73" y="53.53333333333333" font-family="Arial" font-size="12" stroke="none" stroke-width="0" fill="#222222">전체</text></g><g><text text-anchor="end" x="73" y="87.2" font-family="Arial" font-size="12" stroke="none" stroke-width="0" fill="#222222">최고</text></g><g><text text-anchor="end" x="73" y="120.86666666666666" font-family="Arial" font-size="12" stroke="none" stroke-width="0" fill="#222222">본인</text></g></g></g><g></g></svg><div aria-label="차트의 데이터를 나타낸 표입니다." style="position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden;"><table><thead><tr><th>Topping</th><th>점수</th></tr></thead><tbody><tr><td>전체</td><td>51</td></tr><tr><td>최고</td><td>95</td></tr><tr><td>본인</td><td>30</td></tr></tbody></table></div></div></div><div aria-hidden="true" style="display: none; position: absolute; top: 175px; left: 810px; white-space: nowrap; font-family: Arial; font-size: 12px;">점수</div><div></div></div></div>
+                            <div id="chart3_div{{ $key }}" style="width: 800px; height: 165px;"></div>
                         </td>
-                        <script type="text/javascript">
-                            my_avg =  parseInt("{{ $dataDetail[$key]['gradeA'] }}");
-                            tot_avg = parseInt("{{ $dataDetail[$key]['avgA'] }}");
-                            top_avg = parseInt("{{ $dataDetail[$key]['maxA'] }}");
-                        </script>
                     </tr>
                     <script type="text/javascript">
-                        // Some raw data (not necessarily accurate)
-                        var data = new google.visualization.DataTable();
-                        data.addColumn('string', 'Topping');
-                        data.addColumn('number', '점수');
-                        data.addRows([
-                            ['전체', tot_avg],
-                            ['최고', top_avg],
-                            ['본인', my_avg]
-                        ]);
-                        var options = {
-                            vAxis: {minValue:0}
-                        };
-                        var chart = new google.visualization.BarChart(document.getElementById("chart3_div{{ $key }}"));
-                        chart.draw(data, options);
+                        google.charts.load("current", {packages:["corechart"]});
+                        google.charts.setOnLoadCallback(drawChart2);
+                        function drawChart2() {
+                            var my_avg =  parseInt("{{ $dataDetail[$key]['grade'] }}");
+                            var tot_avg = parseInt("{{ $dataDetail[$key]['avg'] }}");
+                            var top_avg = parseInt("{{ $dataDetail[$key]['max'] }}");
+
+                            var data = google.visualization.arrayToDataTable([
+                                ["Element", "점수", { role: "style" } ],
+                                ['전체', tot_avg, "blue"],
+                                ['최고', top_avg, "blue"],
+                                ['본인', my_avg,"blue"]
+
+                            ]);
+
+                            var view = new google.visualization.DataView(data);
+
+                            var options = {
+                                vAxis: {minValue:0}
+                            };
+                            var chart = new google.visualization.BarChart(document.getElementById("chart3_div{{$key}}"));
+                            chart.draw(view, options);
+                        }
                     </script>
                 @endforeach
 

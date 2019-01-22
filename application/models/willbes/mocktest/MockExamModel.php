@@ -38,7 +38,9 @@ class MockExamModel extends WB_Model
         'mockAnswerPaper' => 'lms_mock_answerpaper',
         'mockLog' => 'lms_mock_log',
         'mockGrades' => 'lms_mock_grades',
-        'answerNote' => 'lms_mock_wronganswernote'
+        'answerNote' => 'lms_mock_wronganswernote',
+        'mockGroupRProduct' => 'lms_mock_group_r_product',
+        'mockGroup' => 'lms_mock_group'
 
     ];
 
@@ -71,6 +73,8 @@ class MockExamModel extends WB_Model
                 JOIN {$this->_table['ProductSale']} AS PS ON MP.ProdCode = PS.ProdCode AND PS.IsStatus = 'Y'
                 JOIN {$this->_table['mockRegister']} AS MR ON MP.ProdCode = MR.ProdCode AND MR.IsStatus = 'Y' AND TakeFormsCcd = '690001' -- 온라인응시자
                 LEFT JOIN {$this->_table['admin']} AS A ON MP.RegAdminIdx = A.wAdminIdx
+                LEFT JOIN {$this->_table['mockGroupRProduct']} AS GR ON MP.ProdCode = GR.ProdCode AND GR.IsStatus = 'Y'
+                LEFT JOIN {$this->_table['mockGroup']} AS MG ON GR.MgIdx = MG.MgIdx AND MG.IsStatus = 'Y' AND MG.IsUse = 'Y'
         ";
 
         $where = $this->_conn->makeWhere($arr_condition);

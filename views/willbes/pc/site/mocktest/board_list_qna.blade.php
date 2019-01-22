@@ -46,18 +46,23 @@
                     </table>
                 </div>
 
+                <form id="url_form" name="url_form" method="GET">
+                    @foreach($arr_input as $key => $val)
+                        <input type="hidden" name="{{ $key }}" value="{{ $val }}"/>
+                    @endforeach
+                </form>
                 <div class="willbes-Leclist mt60 c_both">
                     <div class="willbes-Lec-Selected tx-gray">
-                        <select id="process" name="process" title="process" class="seleProcess">
-                            <option selected="selected">직렬</option>
-                            <option value="남자">남자</option>
-                            <option value="여자">여자</option>
-                            <option value="101단">101단</option>
+                        <select id="s_take_mock_part" name="s_take_mock_part" title="직렬" class="seleProcess" onchange="goUrl('s_take_mock_part',this.value)">
+                            <option value="">직렬</option>
+                            @foreach($mock_part as $row)
+                                <option value="{{$row['Ccd']}}" @if($row['Ccd'] == element('s_take_mock_part', $arr_input)) selected="selected" @endif>{{$row['CcdName']}}</option>
+                            @endforeach
                         </select>
                         <div class="willbes-Lec-Search GM f_right" style="margin: 0;">
                             <div class="inputBox p_re">
-                                <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="제목 또는 내용을 입력해 주세요" maxlength="30">
-                                <button type="submit" onclick="" class="search-Btn">
+                                <input type="text" id="s_keyword" name="s_keyword" maxlength="30" value="{{ element('s_keyword', $arr_input) }}" class="labelSearch" placeholder="제목 또는 내용을 입력해 주세요">
+                                <button type="button" onclick="goUrl('s_keyword', document.getElementById('s_keyword').value)" class="search-Btn">
                                     <span>검색</span>
                                 </button>
                             </div>

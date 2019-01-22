@@ -104,8 +104,4 @@
         </div>
         {!! banner('모의고사_우측', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
     </div>
-
-    <script type="text/javascript">
-
-    </script>
 @stop

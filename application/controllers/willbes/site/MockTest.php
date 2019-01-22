@@ -3,13 +3,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class MockTest extends \app\controllers\FrontController
 {
-    protected $models = array('mocktest/mockInfoF','_lms/sys/code', 'support/supportBoardTwoWayF');
-    protected $helpers = array();
+    protected $models = array('mocktest/mockInfoF','_lms/sys/code', 'support/supportBoardTwoWayF', 'downloadF');
+    protected $helpers = array('download');
     protected $auth_controller = false;
     protected $auth_methods = array('apply_modal','apply_cart_modal','apply_order', 'createQna');
 
     protected $_paging_limit = 10;
     protected $_paging_count = 10;
+    private $_bm_idx = '95';
 
     public function __construct()
     {
@@ -300,9 +301,9 @@ class MockTest extends \app\controllers\FrontController
         $arr_input = $this->_reqG(null);
         $get_params = http_build_query($arr_input);
         $prod_code = element('prod_code', $arr_input);
-        $take_mock_part = element('take_mock_part',$arr_input);
+        $s_take_mock_part = element('s_take_mock_part',$arr_input);
         $s_keyword = element('s_keyword',$arr_input);
-        $get_page_params = 'prod_code='.$prod_code.'&s_take_mock_part='.$take_mock_part;
+        $get_page_params = 'prod_code='.$prod_code.'&s_take_mock_part='.$s_take_mock_part;
         $get_page_params .= '&s_keyword='.urlencode($s_keyword);
 
         //직렬 추출
@@ -313,8 +314,9 @@ class MockTest extends \app\controllers\FrontController
 
         $arr_condition = [
             'EQ' => [
-                'b.BmIdx' => '95',
-                'b.IsUse' => 'Y'
+                'b.BmIdx' => $this->_bm_idx,
+                'b.IsUse' => 'Y',
+                'mr.TakeMockPart' => $s_take_mock_part
             ],
             'RAW' => [
                 'b.ProdCode' => $prod_code
@@ -350,6 +352,7 @@ class MockTest extends \app\controllers\FrontController
         $this->load->view('site/mocktest/board_list_qna',[
             'page_type' => 'board_etc',
             'def_cate_code' => $this->_cate_code,
+            'mock_part' => $mock_part,
             'prod_code' => $prod_code,
             'prod_data' => $prod_data,
             'arr_input' => $arr_input,
@@ -365,12 +368,9 @@ class MockTest extends \app\controllers\FrontController
     public function createQna()
     {
         $arr_input = $this->_reqG(null,false);
+        $get_params = http_build_query($arr_input);
         $prod_code = element('prod_code', $arr_input);
         $board_idx = element('board_idx', $arr_input);
-        $s_keyword = element('s_keyword', $arr_input);
-        $page = element('page', $arr_input);
-        $get_params = 's_keyword='.urlencode($s_keyword);
-        $get_params .= '&page='.$page;
 
         if ($this->isLogin() !== true) {
             show_alert('로그인 후 이용해 주세요.', 'back');
@@ -390,7 +390,7 @@ class MockTest extends \app\controllers\FrontController
 
             $arr_condition = [
                 'EQ' => [
-                    'BmIdx' => '95',
+                    'BmIdx' => $this->_bm_idx,
                     'IsUse' => 'Y'
                 ],
             ];
@@ -480,6 +480,103 @@ class MockTest extends \app\controllers\FrontController
         $this->json_result($result, $msg, $result);
     }
 
+    public function showQna()
+    {
+        $arr_input = $this->_reqG(null, false);
+        $prod_code = element('prod_code', $arr_input);
+        $board_idx = element('board_idx', $arr_input);
+        $s_take_mock_part = element('s_take_mock_part', $arr_input);
+        $s_keyword = element('s_keyword', $arr_input);
+        $page = element('page',$arr_input);
+        $get_params = 'prod_code='.$prod_code.'&s_take_mock_part='.$s_take_mock_part;
+        $get_params .= '&s_keyword='.urlencode($s_keyword);
+        $get_params .= '&page='.$page;
+
+        // 모의고사 상품 상세 조회
+        $prod_data = $this->_getProdData($prod_code, 'N');
+
+        /*if ($data['IsTake'] != 'Y') {
+            show_alert('응시한 모의고사 상품이 아닙니다.', 'back');
+        }*/
+
+        if (empty($board_idx)) {
+            show_alert('게시글번호가 존재하지 않습니다.', 'back');
+        }
+
+        $arr_condition = [
+            'EQ' => [
+                'BmIdx' => $this->_bm_idx,
+                'ProdCode' => $prod_code,
+                'IsUse' => 'Y'
+            ],
+        ];
+
+        $column = '
+            BoardIdx, SiteCode, MdCateCode, CampusCcd
+            , RegType, TypeCcd, IsBest, IsPublic
+            , VocCcd, ProdApplyTypeCcd, ProdCode, LecScore, ProdName
+            , Title, Content, ReadCnt, SettingReadCnt
+            , RegDatm
+            , RegMemIdx, RegMemId, RegMemName
+            , ReplyContent, ReplyRegDatm, ReplyStatusCcd
+            , CampusCcd_Name, ReplyStatusCcd_Name, TypeCcd_Name
+            , VocCcd_Name, MdCateCode_Name, SubJectName
+            , IF(RegType=1, \'\', RegMemName) AS RegName
+            , IF(IsCampus=\'Y\',\'offline\',\'online\') AS CampusType
+            , IF(IsCampus=\'Y\',\'학원\',\'온라인\') AS CampusType_Name, SiteGroupName        
+            , AttachData
+        ';
+
+        $board_data = $this->supportBoardTwoWayFModel->findBoard($board_idx,$arr_condition,$column);
+        if (empty($board_data)) {
+            show_alert('게시글이 존재하지 않습니다.', 'back');
+        }
+
+        if ($board_data['RegType'] == '0' && $board_data['IsPublic'] == 'N' && $board_data['RegMemIdx'] != $this->session->userdata('mem_idx')) {
+            show_alert('잘못된 접근 입니다.', 'back');
+        }
+
+        $result = $this->supportBoardTwoWayFModel->modifyBoardRead($board_idx);
+        if($result !== true) {
+            show_alert('게시글 조회시 오류가 발생되었습니다.', 'back');
+        }
+        $board_data['AttachData'] = json_decode($board_data['AttachData'],true);       //첨부파일
+
+        $this->load->view('site/mocktest/board_show_qna',[
+            'page_type' => 'board_etc',
+            'arr_input' => $arr_input,
+            'get_params' => $get_params,
+            'prod_data' => $prod_data,
+            'board_data' => $board_data,
+            'board_idx' => $board_idx,
+            'reply_type_complete' => '621004'   //답변등록상태 (답변완료)
+        ]);
+    }
+
+    /**
+     * 모의고사 이의제기 게시물 삭제
+     */
+    public function deleteQna()
+    {
+        $arr_input = $this->_reqG(null, false);
+        $prod_code = element('prod_code', $arr_input);
+        $board_idx = element('board_idx', $arr_input);
+        $s_take_mock_part = element('s_take_mock_part', $arr_input);
+        $s_keyword = element('s_keyword', $arr_input);
+        $page = element('page',$arr_input);
+        $get_params = 'prod_code='.$prod_code.'&s_take_mock_part='.$s_take_mock_part;
+        $get_params .= '&s_keyword='.urlencode($s_keyword);
+        $get_params .= '&page='.$page;
+
+        $result = $this->supportBoardTwoWayFModel->boardDelete($board_idx, '621004');
+
+        if (empty($result['ret_status']) === false) {
+            show_alert('삭제 실패입니다. 관리자에게 문의해주세요.', 'back');
+        }
+
+        show_alert('삭제되었습니다.', front_url('/mocktest/listQna/cate/'.$this->_cate_code.'?'.$get_params));
+    }
+
     /**
      * 모의고사 정오표 목록
      */
@@ -496,11 +593,23 @@ class MockTest extends \app\controllers\FrontController
         ]);
     }
 
+    public function boardFileDownload()
+    {
+        $file_path = $this->_reqG('path');
+        $file_name = $this->_reqG('fname');
+        $board_idx = $this->_reqG('board_idx');
+
+        $this->downloadFModel->saveLog($board_idx);
+        public_download($file_path, $file_name);
+
+        show_alert('등록된 파일을 찾지 못했습니다.','close','');
+    }
+
     private function _setInputForQnaData($input)
     {
         $input_data = [
             'board' => [
-                'BmIdx' => '95',
+                'BmIdx' => $this->_bm_idx,
                 'SiteCode' => element('site_code', $input),
                 'RegType' => element('reg_type', $input, 0),
                 'Title' => element('board_title', $input),

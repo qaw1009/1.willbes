@@ -77,10 +77,10 @@ class BaseMember extends \app\controllers\FrontController
 
         } else {
             // 전화번호 패턴 체크
-            $pattern = "^01(?:0|1|[6-9])(?:\d{3}|\d{4})\d{4}$^";
+            $pattern = "^((01[1|6|7|8|9])[1-9]+[0-9]{6,7})|(010[1-9][0-9]{7})$^";
             if(!preg_match($pattern, $phone)){
                 // 전화번호 패턴 오류
-                return $this->json_error("전화번호를 정확하게 입력해주십시요.");
+                return $this->json_error("정상적인 휴대폰번호가 아닙니다.");
             }
         }
 

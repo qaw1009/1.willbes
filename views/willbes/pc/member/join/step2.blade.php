@@ -89,7 +89,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="combine-Tit">비밀번호</td>
+                        <td class="combine-Tit">비밀번호확인</td>
                         <td>
                             <div class="inputBox p_re">
                                 <input type="password" id="MemPassword_chk" name="MemPassword_chk" class="iptPwd" placeholder="비밀번호 확인" maxlength="20" title="비밀번호 확인" />
@@ -137,7 +137,7 @@
                         <td class="combine-Tit">우편번호</td>
                         <td>
                             <div class="inputBox p_re">
-                                <input type="text" id="ZipCode" name="ZipCode" class="iptEmail01" style="width: 100%" placeholder="우편번호" maxlength="5" readonly>
+                                <input type="text" id="ZipCode" name="ZipCode" class="iptEmail01" xstyle="width: 100%" placeholder="우편번호" maxlength="5" readonly>
                                 <button type="button" id="btn_zipcode" class="mem-Btn combine-Btn mb10 bg-dark-blue bd-dark-blue">
                                     <span>우편번호 찾기</span>
                                 </button>
@@ -706,6 +706,10 @@
         var confirm_id = false;
 
         $(document).ready(function() {
+            $("#MemId").val('');
+            $("#MemPassword").val('');
+            $("#MemPassword_chk").val('');
+
             $join_form.validate({
                 onkeyup : false,
                 rules : {
@@ -764,10 +768,10 @@
                     },
                     MemId : {
                         required : "아이디를 입력해주십시요.",
-                        minlength : "아이디는 4~20자의 영어소문자, 숫자, -,_만 사용 가능합니다.1",
-                        maxlength : "아이디는 4~20자의 영어소문자, 숫자, -,_만 사용 가능합니다.2",
-                        id_char : "아이디는 4~20자의 영어소문자, 숫자, -,_만 사용 가능합니다.3",
-                        id_chk : "사용 불가능한 아이디입니다."
+                        minlength : "아이디는 4~20자의 영어소문자, 숫자 만 사용 가능합니다.",
+                        maxlength : "아이디는 4~20자의 영어소문자, 숫자 만 사용 가능합니다.",
+                        id_char : "아이디는 4~20자의 영어소문자, 숫자 만 사용 가능합니다.",
+                        id_chk : "이미 가입된 아이디입니다. (아이디는 4~20자의 영어소문자, 숫자 만 사용 가능합니다.)"
                     },
                     MemPassword : {
                         required : "비밀번호를 입력해주십시요.",
@@ -808,7 +812,7 @@
             });
 
             $.validator.addMethod("id_char", function(value, element) {
-                var p = /^[0-9a-z\-\_]{4,20}$/;
+                var p = /^[0-9a-z]{4,20}$/;
                 if(p.test(value)) {return true;}
                 else {return false;}
             });

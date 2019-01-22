@@ -555,6 +555,8 @@ function init_base() {
                     modal_id: 'message_modal'
                 });
             }
+        } else {
+            return false;
         }
     });
 }

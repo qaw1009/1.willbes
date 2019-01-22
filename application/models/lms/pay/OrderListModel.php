@@ -471,18 +471,45 @@ class OrderListModel extends BaseOrderModel
         // 주문상품 조회
         $arr_condition = ['EQ' => ['O.OrderIdx' => $order_idx, 'OP.OrderProdIdx' => $order_prod_idx, 'OP.PayStatusCcd' => $this->_pay_status_ccd['paid']]];
         $data = $this->listAllOrder(false, $arr_condition, null, null, []);
-
         if (empty($data) === true) {
             return '데이터 조회에 실패했습니다.';
         }
-        
-        // 나의 강좌정보 (my_lecture) 최소 강좌시작일자, 최대 강좌종료일자 조회
-        $my_data = $this->_conn->getFindResult($this->_table['my_lecture'], 'min(LecStartDate) as MinLecStartDate, max(LecEndDate) as MaxLecEndDate', [
-            'EQ' => ['OrderIdx' => $order_idx, 'OrderProdIdx' => $order_prod_idx]]);
+
+        $data = element('0', $data);
+        $add_data = [];
+
+        if ($data['SiteCode'] == '2002') {
+            // 경찰학원
+            $data['ViewType'] = 'C';
+
+            // 상품명 길이 조정
+            $this->load->helper('text');
+            $data['ProdName'] = ellipsize($data['ProdName'], 14, 1, '');
+
+            // 나의 강좌정보 (my_lecture) 최소 강좌시작일자, 최대 강좌종료일자 조회
+            $add_data = $this->_conn->getFindResult($this->_table['my_lecture'], 'min(LecStartDate) as MinLecStartDate, max(LecEndDate) as MaxLecEndDate', [
+                'EQ' => ['OrderIdx' => $order_idx, 'OrderProdIdx' => $order_prod_idx]]);
+
+            $add_data['MinLecStartDate'] = date('m/d', strtotime($add_data['MinLecStartDate']));
+            $add_data['MaxLecEndDate'] = date('m/d', strtotime($add_data['MaxLecEndDate']));
+        } elseif ($data['SiteCode'] == '2004') {
+            // 공무원학원
+            $data['ViewType'] = 'G';
+
+            // 주문상품서브 정보 조회
+            $sub_prod_data = $this->_conn->query('select fn_order_sub_product_data(?) as OrderSubProdData', [$order_prod_idx])->row(0)->OrderSubProdData;
+
+            if (empty($sub_prod_data) === false) {
+                $add_data['OrderSubProdData'] = array_pluck(json_decode($sub_prod_data, true), 'ProdName');
+            }
+        }
+
+        // 추가 데이터 가공
+        $data['PayMethodCcdName'] = str_replace('결제(방문)', '', $data['PayMethodCcdName']);
 
         // 데이터 병합
-        $data = array_merge(element('0', $data), (array) $my_data);
-        
+        $data = array_merge($data, $add_data);
+
         return $data;
     }
 

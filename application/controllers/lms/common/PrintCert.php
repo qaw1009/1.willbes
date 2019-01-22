@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class PrintCert extends \app\controllers\BaseController
 {
     protected $models = array('pay/orderList');
-    protected $helpers = array('text');
+    protected $helpers = array();
 
     public function __construct()
     {
@@ -27,13 +27,6 @@ class PrintCert extends \app\controllers\BaseController
 
                 // 데이터 조회
                 $data = $this->orderListModel->getPrintCertData($order_idx, $order_prod_idx);
-
-                // 데이터 가공
-                $data['SiteName'] = trim(str_replace('[학원]', '', $data['SiteName']));
-                $data['ProdName'] = ellipsize($data['ProdName'], 20, 1, '...');
-                $data['PayMethodCcdName'] = str_replace('결제(방문)', '', $data['PayMethodCcdName']);
-                $data['MinLecStartDate'] = date('m/d', strtotime($data['MinLecStartDate']));
-                $data['MaxLecEndDate'] = date('m/d', strtotime($data['MaxLecEndDate']));
                 break;
             case 'mock_exam' :
                 break;

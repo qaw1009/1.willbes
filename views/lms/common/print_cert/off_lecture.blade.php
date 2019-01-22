@@ -17,7 +17,7 @@
 			    입력값 구성 => '내용;글씨체;글씨크기;글씨굵기(true/false);정렬(left/right)';
             --}}
             ctkprint_bar.prt_text_L4 = '수강증;궁서;18;true;left';
-            ctkprint_bar.prt_text_L8 = '{{ $data['SiteName'] }}-{{ $data['ProdName'] }}' + ';굴림;18;true;left';
+            ctkprint_bar.prt_text_L8 = '{{ $data['ProdName'] }}' + ';굴림;18;true;left';
             ctkprint_bar.prt_text_L12 = '{{ $data['MinLecStartDate'] }} ~ {{ $data['MaxLecEndDate'] }}' + ';굴림;18;true;left';
             ctkprint_bar.prt_text_L16 = '{{ $data['MemName'] }}' + ';굴림;18;true;left';
             ctkprint_bar.prt_text_L19 = '({{ $data['MemId'] }})' + ';굴림;10;false;left';

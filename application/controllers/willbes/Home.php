@@ -31,19 +31,18 @@ class Home extends \app\controllers\FrontController
                     // 토큰이 정상일때
                     $tokenArr = $this->jwt->getClaims($token);
 
-                    $data = [
-                        'MemIdx' => $tokenArr['USER_IDX']
-                    ];
-                    
                     if($this->session->userdata('is_login') == true && $this->session->userdata('mem_idx') == $tokenArr['USER_IDX']){
                         // 이미 로그인중이고 토큰데이타와 동일하면 그냥 내강의실로
                         logger('이미 로그인중이고 토큰데이타와 동일하면 그냥 내강의실로');
                         redirect(front_url('/classroom/on/list/ongoing'));
                     }
 
+                    logger('token:'.$token);
                     logger('토큰로그인준비');
 
-                    $data = $this->memberFModel->getMember(false, ['Mem.MemIdx' => $data['MemIdx']]);
+                    $data = $this->memberFModel->getMember(false, ['Mem.MemIdx' => $tokenArr['USER_IDX']]);
+
+                    logger('사용자정보구해옴');
 
                     // 넘어온 토큰데이타로 로그인처리
                     if($this->memberFModel->storeMemberLogin($data, 'TOKEN') == true){

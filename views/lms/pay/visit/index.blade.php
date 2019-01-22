@@ -212,15 +212,8 @@
 
             // 수강증 출력 버튼 클릭
             $list_table.on('click', '.btn-print', function() {
-                $('.btn-print').setLayer({
-                    'url' : '{{ site_url('/pay/visit/print') }}',
-                    'width' : 1200,
-                    'add_param_type' : 'param',
-                    'add_param' : [
-                        { 'id' : 'order_idx', 'name' : '주문식별자', 'value' : $(this).data('order-idx'), 'required' : true },
-                        { 'id' : 'order_prod_idx', 'name' : '주문상품식별자', 'value' : $(this).data('order-prod-idx'), 'required' : true }
-                    ]
-                });
+                var url = '{{ site_url('/common/printCert/') }}?prod_type=off_lecture&order_idx=' + $(this).data('order-idx') + '&order_prod_idx=' + $(this).data('order-prod-idx');
+                popupOpen(url, '_cert_print', 620, 350);
             });
 
             // 엑셀다운로드 버튼 클릭

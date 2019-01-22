@@ -262,32 +262,4 @@ class Visit extends BaseOrder
 
         return $this->json_result($result, '수강 등록 되었습니다.', $result);
     }
-
-    /**
-     * 수강증 출력
-     * @return mixed
-     */
-    public function print()
-    {
-        $order_idx = $this->_reqG('order_idx');
-        $order_prod_idx = $this->_reqG('order_prod_idx');
-
-        if (empty($order_idx) === true || empty($order_prod_idx) === true) {
-            return $this->json_error('필수 파라미터 오류입니다.', _HTTP_VALIDATION_ERROR);
-        }
-
-        $arr_condition = ['EQ' => ['O.OrderIdx' => $order_idx, 'OP.OrderProdIdx' => $order_prod_idx, 'OP.PayStatusCcd' => $this->orderListModel->_pay_status_ccd['paid']]];
-        $data = $this->orderListModel->listAllOrder(false, $arr_condition, null, null, [], ['my_lecture']);
-
-        if (empty($data) === true) {
-            return $this->json_error('데이터 조회에 실패했습니다.');
-        }
-
-        $data = element('0', $data);
-        $data['MyLecData'] = element('0', json_decode($data['MyLecData'], true), []);
-
-        return $this->load->view('pay/visit/print', [
-            'data' => $data
-        ]);
-    }
 }

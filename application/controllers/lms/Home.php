@@ -50,7 +50,7 @@ class Home extends \app\controllers\BaseController
         // 사이트별 금일 주문환불처리 건수 조회
         $refund_data = [];
         if (SUB_DOMAIN == 'lms') {
-            $refund_data = $this->orderListModel->listOrderRefundReqCntPerSite($today, $today);
+            $refund_data = $this->orderListModel->getOrderRefundReqCntPerSite($today, $today);
         }
 
         $this->load->view('main_' . SUB_DOMAIN, [

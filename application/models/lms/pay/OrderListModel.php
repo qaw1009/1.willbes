@@ -457,12 +457,42 @@ class OrderListModel extends BaseOrderModel
     }
 
     /**
+     * 학원수강증 출력 데이터 조회
+     * @param int $order_idx [주문식별자]
+     * @param int $order_prod_idx [주문상품식별자]
+     * @return array|string
+     */
+    public function getPrintCertData($order_idx, $order_prod_idx)
+    {
+        if (empty($order_idx) === true || empty($order_prod_idx) === true) {
+            return '필수 파라미터 오류입니다.';
+        }
+
+        // 주문상품 조회
+        $arr_condition = ['EQ' => ['O.OrderIdx' => $order_idx, 'OP.OrderProdIdx' => $order_prod_idx, 'OP.PayStatusCcd' => $this->_pay_status_ccd['paid']]];
+        $data = $this->listAllOrder(false, $arr_condition, null, null, []);
+
+        if (empty($data) === true) {
+            return '데이터 조회에 실패했습니다.';
+        }
+        
+        // 나의 강좌정보 (my_lecture) 최소 강좌시작일자, 최대 강좌종료일자 조회
+        $my_data = $this->_conn->getFindResult($this->_table['my_lecture'], 'min(LecStartDate) as MinLecStartDate, max(LecEndDate) as MaxLecEndDate', [
+            'EQ' => ['OrderIdx' => $order_idx, 'OrderProdIdx' => $order_prod_idx]]);
+
+        // 데이터 병합
+        $data = array_merge(element('0', $data), (array) $my_data);
+        
+        return $data;
+    }
+
+    /**
      * 주문환불요청 날짜별 건수 조회
      * @param string $req_start_date [조회시작일자]
      * @param string $req_end_date [조회종료일자]
      * @return mixed
      */
-    public function listOrderRefundReqCntPerSite($req_start_date, $req_end_date)
+    public function getOrderRefundReqCntPerSite($req_start_date, $req_end_date)
     {
         $req_start_date = $req_start_date . ' 00:00:00';
         $req_end_date = $req_end_date . ' 23:59:59';

@@ -1,4 +1,4 @@
-<iframe frameborder="0" scrolling="no" width="940px" onload="resizeIframe(this)" src="{{front_url($arr_base['default_path'].'/event/frameCommentList?'.$frame_params)}}"></iframe>
+<iframe frameborder="0" scrolling="no" width="940px" onload="resizeIframe(this)" src="{{front_url('/event/frameCommentList?'.$frame_params)}}"></iframe>
 <div id="NOTICEPASS" class="willbes-Layer-Black"></div>
 
 <script type="text/javascript">

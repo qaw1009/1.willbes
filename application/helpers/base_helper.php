@@ -399,32 +399,6 @@ if (!function_exists('show_alert')) {
     }
 }
 
-if (!function_exists('login_check_inner_script')) {
-    /**
-     * javascript 내 로그인 여부 적용
-     * @param string $msg  - 경고 메세지
-     * @param string $move - 로그인 페이지로 이동여부 : Y 이동
-     */
-    function login_check_inner_script($msg='', $move='')
-    {
-        if (sess_data('is_login') !== true) {
-            $output = '';
-            if (empty($msg) === false) {
-                $output .= 'alert("' . $msg . '");' . PHP_EOL;
-            }
-
-            if ($move === 'Y') {
-                $output .= 'location.href = "' . app_url('/member/login/?rtnUrl=' . rawurlencode('//' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']), 'www') . '";' . PHP_EOL;
-            }
-
-            if(empty($msg) === false || empty($move) === false) {
-                $output .= 'return;';
-            }
-            echo($output);
-        }
-    }
-}
-
 if (!function_exists('starts_with')) {
     /**
      * haystack(대상 문자열)이 needles(찾을 문자열 배열)로 시작하는지 여부 체크
@@ -492,6 +466,23 @@ if (!function_exists('str_last_pos_after')) {
     function str_last_pos_after($haystack, $needle)
     {
         return substr($haystack, strrpos($haystack, $needle) + strlen($needle));
+    }
+}
+
+if (!function_exists('str_mb_pad')) {
+    /**
+     * 문자열을 지정한 글자수가 되도록 다른 문자열을 채움 (str_pad 함수는 바이트 길이만큼 채움)
+     * @param $str
+     * @param $pad_length
+     * @param $pad_string
+     * @param $pad_type
+     * @return string
+     */
+    function str_mb_pad($str, $pad_length, $pad_string = ' ', $pad_type = STR_PAD_RIGHT)
+    {
+        $pad_length = $pad_length + strlen($str) - mb_strlen($str);
+
+        return str_pad($str, $pad_length, $pad_string, $pad_type);
     }
 }
 

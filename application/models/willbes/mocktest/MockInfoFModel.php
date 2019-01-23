@@ -206,7 +206,7 @@ class MockInfoFModel extends WB_Model
                             ,o.OrderIdx,o.CompleteDatm
                             ,sc2.CcdName as PayRouteCcd_Name
                             ,sc3.CcdName as PayMethodCcd_Name
-                            ,mr.MrIdx,mr.TakeMockPart,mr.TakeForm,mr.TakeArea,Ifnull(mr.AddPoint,\'0\') as AddPoint,mr.IsStatus
+                            ,mr.MrIdx,mr.TakeMockPart,mr.TakeForm,mr.TakeArea,Ifnull(mr.AddPoint,\'0\') as AddPoint,mr.IsStatus,mr.TakeNumber
                             ,sc4.CcdName as TakeMockPart_Name
                             ,sc5.CcdName as TakeArea_Name
                             ,sc6.CcdName as TakeForm_Name
@@ -222,7 +222,7 @@ class MockInfoFModel extends WB_Model
                         join lms_sys_code sc3 on o.PayMethodCcd = sc3.Ccd
                         join lms_mock_register mr on op.OrderProdIdx = mr.OrderProdIdx
                         join lms_sys_code sc4 on mr.TakeMockPart = sc4.Ccd
-                        join lms_sys_code sc5 on mr.TakeArea = sc5.Ccd
+                        left outer join lms_sys_code sc5 on mr.TakeArea = sc5.Ccd
                         join lms_sys_code sc6 on mr.TakeForm = sc6.Ccd
                         join vw_product_mocktest pm on mr.ProdCode = pm.ProdCode';
 
@@ -256,9 +256,11 @@ class MockInfoFModel extends WB_Model
 
             $group_by = 'group by pmp.MockType';
 
+            $order = ' order by mrp.MrrpIdx';
+
             $where .= $this->_conn->makeWhere(['EQ'=>['mr.OrderProdIdx' => $order_prod_idx]])->getMakeWhere(true);
 
-            $result = $this->_conn->query($select. $from. $where. $group_by)->result_array();
+            $result = $this->_conn->query($select. $from. $where. $group_by, $order)->result_array();
             return $result;
     }
 

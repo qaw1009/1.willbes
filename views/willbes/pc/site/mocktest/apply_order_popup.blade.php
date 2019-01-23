@@ -30,7 +30,7 @@
                             <th class="w-tit">응시지역</th>
                             <td class="w-list">{{$order_info['TakeArea_Name']}}</td>
                             <th class="w-tit">응시번호</th>
-                            <td class="w-list">{{$order_info['MrIdx']}}</td>
+                            <td class="w-list">{{$order_info['TakeNumber']}}</td>
                         </tr>
                         <tr>
                             <th class="w-tit">시험응시일</th>

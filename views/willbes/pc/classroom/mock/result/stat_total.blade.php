@@ -75,41 +75,41 @@
                         <tbody>
                         <tr>
                             <td>총점</td>
-                            <td>{{ $dataOrg['grade'] }}</td>
-                            <td>{{ $dataAdjust['grade'] }}</td>
+                            <td>@if($dataOrg) {{ $dataOrg[$mem_idx]['grade'] }} @endif</td>
+                            <td>@if($dataAdjust) {{ $dataAdjust[$mem_idx]['grade'] }} @endif</td>
                         </tr>
                         <tr>
                             <td>평균</td>
-                            <td>{{ $dataOrg['avg'] }}</td>
-                            <td>{{ $dataAdjust['avg'] }}</td>
+                            <td>@if($dataOrg) {{ $dataOrg[$mem_idx]['avg'] }} @endif</td>
+                            <td>@if($dataAdjust) {{ $dataAdjust[$mem_idx]['avg'] }} @endif</td>
                         </tr>
                         <tr>
                             <td>전체평균</td>
-                            <td>{{ $dataOrgAll['tavg'] }}</td>
-                            <td>{{ $dataAdjustAll['tavg'] }}</td>
+                            <td>@if($dataOrg) {{ $dataOrgAll['tavg'] }} @endif</td>
+                            <td>@if($dataAdjust) {{ $dataAdjustAll['tavg'] }} @endif</td>
                         </tr>
                         <tr>
                             <td>석차</td>
-                            <td>{{ $dataOrg['rank'] }}</td>
-                            <td>{{ $dataAdjust['rank'] }}</td>
+                            <td>@if($dataOrg) {{ $dataOrg[$mem_idx]['rank'] }} @endif</td>
+                            <td>@if($dataAdjust) {{ $dataAdjust[$mem_idx]['rank'] }} @endif</td>
                         </tr>
                         <tr>
                             <td>상위수준</td>
-                            <td>{{  $dataOrg['tpct'] }}%</td>
-                            <td>{{ $dataAdjust['tpct'] }}%</td>
+                            <td>@if($dataOrg) {{  $dataOrg[$mem_idx]['tpct'] }}% @endif</td>
+                            <td>@if($dataAdjust) {{ $dataAdjust[$mem_idx]['tpct'] }}% @endif</td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
                 <div class="f_right wBx mt35 mb30">
-                    <div id="chart_div1" style="width: 450px; height: 265px;"><div style="position: relative;"><div dir="ltr" style="position: relative; width: 450px; height: 265px;"><div aria-label="차트입니다." style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%;"><svg width="450" height="265" aria-label="차트입니다." style="overflow: hidden;"><defs id="defs"><clipPath id="_ABSTRACT_RENDERER_ID_5"><rect x="83" y="51" width="284" height="164"></rect></clipPath></defs><rect x="0" y="0" width="450" height="265" stroke="none" stroke-width="0" fill="#ffffff"></rect><g><text text-anchor="start" x="83" y="31.35" font-family="Arial" font-size="11" font-weight="bold" stroke="none" stroke-width="0" fill="#000000">조정점수 기준</text><rect x="83" y="22" width="284" height="11" stroke="none" stroke-width="0" fill-opacity="0" fill="#ffffff"></rect></g><g><rect x="378" y="51" width="61" height="11" stroke="none" stroke-width="0" fill-opacity="0" fill="#ffffff"></rect><g><rect x="378" y="51" width="61" height="11" stroke="none" stroke-width="0" fill-opacity="0" fill="#ffffff"></rect><g><text text-anchor="start" x="404" y="60.35" font-family="Arial" font-size="11" stroke="none" stroke-width="0" fill="#222222">점수</text></g><rect x="378" y="51" width="22" height="11" stroke="none" stroke-width="0" fill="#3366cc"></rect></g></g><g><rect x="83" y="51" width="284" height="164" stroke="none" stroke-width="0" fill-opacity="0" fill="#ffffff"></rect><g clip-path="url(http://www.willbesgosi.net/mypage/stats/list.html?topMenuType=O&amp;topMenuGnb=OM_009&amp;topMenu=MAIN&amp;menuID=OM_009_004_002&amp;IDENTYID=03001011013&amp;MOCKCODE=E18000001#_ABSTRACT_RENDERER_ID_5)"><g><rect x="83" y="214" width="284" height="1" stroke="none" stroke-width="0" fill="#cccccc"></rect><rect x="83" y="173" width="284" height="1" stroke="none" stroke-width="0" fill="#cccccc"></rect><rect x="83" y="133" width="284" height="1" stroke="none" stroke-width="0" fill="#cccccc"></rect><rect x="83" y="92" width="284" height="1" stroke="none" stroke-width="0" fill="#cccccc"></rect><rect x="83" y="51" width="284" height="1" stroke="none" stroke-width="0" fill="#cccccc"></rect></g><g><rect x="102" y="138" width="58" height="76" stroke="none" stroke-width="0" fill="#3366cc"></rect><rect x="196" y="78" width="58" height="136" stroke="none" stroke-width="0" fill="#3366cc"></rect><rect x="290" y="186" width="58" height="28" stroke="none" stroke-width="0" fill="#3366cc"></rect></g><g><rect x="83" y="214" width="284" height="1" stroke="none" stroke-width="0" fill="#333333"></rect></g></g><g></g><g><g><text text-anchor="middle" x="130.66666666666666" y="231.35" font-family="Arial" font-size="11" stroke="none" stroke-width="0" fill="#222222">전체</text></g><g><text text-anchor="middle" x="225" y="231.35" font-family="Arial" font-size="11" stroke="none" stroke-width="0" fill="#222222">최고</text></g><g><text text-anchor="middle" x="319.3333333333333" y="231.35" font-family="Arial" font-size="11" stroke="none" stroke-width="0" fill="#222222">본인</text></g><g><text text-anchor="end" x="72" y="218.35" font-family="Arial" font-size="11" stroke="none" stroke-width="0" fill="#444444">0</text></g><g><text text-anchor="end" x="72" y="177.6" font-family="Arial" font-size="11" stroke="none" stroke-width="0" fill="#444444">25</text></g><g><text text-anchor="end" x="72" y="136.85" font-family="Arial" font-size="11" stroke="none" stroke-width="0" fill="#444444">50</text></g><g><text text-anchor="end" x="72" y="96.10000000000001" font-family="Arial" font-size="11" stroke="none" stroke-width="0" fill="#444444">75</text></g><g><text text-anchor="end" x="72" y="55.35" font-family="Arial" font-size="11" stroke="none" stroke-width="0" fill="#444444">100</text></g></g></g><g></g></svg><div aria-label="차트의 데이터를 나타낸 표입니다." style="position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden;"><table><thead><tr><th>Topping</th><th>점수</th></tr></thead><tbody><tr><td>전체</td><td>47</td></tr><tr><td>최고</td><td>84</td></tr><tr><td>본인</td><td>18</td></tr></tbody></table></div></div></div><div aria-hidden="true" style="display: none; position: absolute; top: 275px; left: 460px; white-space: nowrap; font-family: Arial; font-size: 11px;">점수</div><div></div></div></div>
+                    <div id="chart_div1" style="width: 450px; height: 265px;"></div>
 
 
                     <script type="text/javascript">
 
                         var tot_avg1 = parseInt("{{ $dataAdjustAll['tsum'] }}");
-                        var top_avg1 = parseInt("{{ $dataAdjust['admax'] }}");
-                        var my_avg1 = parseInt("{{ $dataAdjust['grade'] }}");
+                        var top_avg1 = parseInt("{{ $dataAdjust[$mem_idx]['admax'] }}");
+                        var my_avg1 = parseInt("{{ $dataAdjust[$mem_idx]['grade'] }}");
                         google.charts.load('visualization', {'packages': ['corechart'], 'callback': drawVisualization});
 
                         function drawVisualization() {
@@ -135,7 +135,9 @@
 
                 </div>
                 <div class="gBx mgB4">
-                    <p class="anlyTx"><strong>{{ $memName }}</strong>님의 점수는 평균 <strong>{{ $dataAdjust['avg'] }}점</strong>으로, 전체 <strong>{{ $dataAdjustAll[0]['COUNT'] }}명</strong>에서 <strong>{{ $dataAdjust['rankS'] }}위</strong>이며 상위 수준 <strong>{{ $dataAdjust['tpct'] }} %</strong>입니다.</p>
+                    @if($dataOrg)
+                    <p class="anlyTx"><strong>{{ $memName }}</strong>님의 점수는 평균 <strong>{{ $dataAdjust[$mem_idx]['avg'] }}점</strong>으로, 전체 <strong>{{ $dataAdjustAll[0]['COUNT'] }}명</strong>에서 <strong>{{ $dataAdjust[$mem_idx]['rankS'] }}위</strong>이며 상위 수준 <strong>{{ $dataAdjust[$mem_idx]['tpct'] }} %</strong>입니다.</p>
+                    @endif
                 </div>
             </div>
 
@@ -268,41 +270,41 @@
                 <tr>
                     <th>본인</th>
                     @foreach($pList2 as $key => $row)
-                    <td>{{ $dataDetail[$key]['grade'] }}</td>
+                    <td>@if($dataDetail) {{ $dataDetail[$mem_idx][$key]['grade'] }} @endif</td>
                     @endforeach
                     @foreach($sList2 as $key => $row)
-                    <td>{{ $dataDetail[$key]['grade'] }}</td>
-                    <td>{{ $dataDetail[$key]['gradeA'] }}</td>
+                    <td>{{ $dataDetail[$mem_idx][$key]['grade'] }}</td>
+                    <td>{{ $dataDetail[$mem_idx][$key]['gradeA'] }}</td>
                     @endforeach
                 </tr>
                 <tr>
                     <th>전체</th>
                     @foreach($pList2 as $key => $row)
-                    <td>{{ $dataDetail[$key]['avg'] }}</td>
+                    <td>{{ $dataDetail[$mem_idx][$key]['avg'] }}</td>
                     @endforeach
                     @foreach($sList2 as $key => $row)
-                    <td>{{ $dataDetail[$key]['avg'] }}</td>
-                    <td>{{ $dataDetail[$key]['avgA'] }}</td>
+                    <td>{{ $dataDetail[$mem_idx][$key]['avg'] }}</td>
+                    <td>{{ $dataDetail[$mem_idx][$key]['avgA'] }}</td>
                     @endforeach
                 </tr>
                 <tr>
                     <th>최고</th>
                     @foreach($pList2 as $key => $row)
-                        <td>{{ $dataDetail[$key]['max'] }}</td>
+                        <td>{{ $dataDetail[$mem_idx][$key]['max'] }}</td>
                     @endforeach
                     @foreach($sList2 as $key => $row)
-                        <td>{{ $dataDetail[$key]['max'] }}</td>
-                        <td>{{ $dataDetail[$key]['maxA'] }}</td>
+                        <td>{{ $dataDetail[$mem_idx][$key]['max'] }}</td>
+                        <td>{{ $dataDetail[$mem_idx][$key]['maxA'] }}</td>
                     @endforeach
                 </tr>
                 <tr>
                     <th>과목석차</th>
                     @foreach($pList2 as $key => $row)
-                        <td>{{ $dataDetail[$key]['orank'] }}</td>
+                        <td>{{ $dataDetail[$mem_idx][$key]['orank'] }}</td>
                     @endforeach
                     @foreach($sList2 as $key => $row)
-                        <td>{{ $dataDetail[$key]['orank'] }}</td>
-                        <td>{{ $dataDetail[$key]['arank'] }}</td>
+                        <td>{{ $dataDetail[$mem_idx][$key]['orank'] }}</td>
+                        <td>{{ $dataDetail[$mem_idx][$key]['arank'] }}</td>
                     @endforeach
                 </tr>
                 </tbody>
@@ -332,9 +334,9 @@
                         google.charts.load("current", {packages:["corechart"]});
                         google.charts.setOnLoadCallback(drawChart);
                         function drawChart() {
-                            var my_avg =  parseInt("{{ $dataDetail[$key]['grade'] }}");
-                            var tot_avg = parseInt("{{ $dataDetail[$key]['avg'] }}");
-                            var top_avg = parseInt("{{ $dataDetail[$key]['max'] }}");
+                            var my_avg =  parseInt("{{ $dataDetail[$mem_idx][$key]['grade'] }}");
+                            var tot_avg = parseInt("{{ $dataDetail[$mem_idx][$key]['avg'] }}");
+                            var top_avg = parseInt("{{ $dataDetail[$mem_idx][$key]['max'] }}");
 
                             var data = google.visualization.arrayToDataTable([
                                 ["Element", "점수", { role: "style" } ],
@@ -365,9 +367,9 @@
                         google.charts.load("current", {packages:["corechart"]});
                         google.charts.setOnLoadCallback(drawChart2);
                         function drawChart2() {
-                            var my_avg =  parseInt("{{ $dataDetail[$key]['grade'] }}");
-                            var tot_avg = parseInt("{{ $dataDetail[$key]['avg'] }}");
-                            var top_avg = parseInt("{{ $dataDetail[$key]['max'] }}");
+                            var my_avg =  parseInt("{{ $dataDetail[$mem_idx][$key]['grade'] }}");
+                            var tot_avg = parseInt("{{ $dataDetail[$mem_idx][$key]['avg'] }}");
+                            var top_avg = parseInt("{{ $dataDetail[$mem_idx][$key]['max'] }}");
 
                             var data = google.visualization.arrayToDataTable([
                                 ["Element", "점수", { role: "style" } ],

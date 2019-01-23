@@ -28,9 +28,11 @@
                                 <thead>
                                 <tr>
                                     <th class="Top" colspan="{{ $pCnt }}">필수과목</th>
-                                    @foreach($sList as $key => $row)
-                                        <th>선택과목{{ $key + 1 }}</th>
-                                    @endforeach
+                                    @if($sList)
+                                        @foreach($sList as $key => $row)
+                                            <th>선택과목{{ $key + 1 }}</th>
+                                        @endforeach
+                                    @endif
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -38,9 +40,11 @@
                                     @foreach($pList2 as $key => $row)
                                         <td class="@if($qtList[$key]['CNT'] == $qtList[$key]['TCNT']) round-red @elseif($qtList[$key]['CNT'] > 0) round-blue @endif">{{ $row }}</td>
                                     @endforeach
-                                    @foreach($sList2 as $key => $row)
-                                        <td class="@if($qtList[$key]['CNT'] == $qtList[$key]['TCNT']) round-red @elseif($qtList[$key]['CNT'] > 0) round-blue @endif">{{ $row }}</td>
-                                    @endforeach
+                                    @if($sList)
+                                        @foreach($sList2 as $key => $row)
+                                            <td class="@if($qtList[$key]['CNT'] == $qtList[$key]['TCNT']) round-red @elseif($qtList[$key]['CNT'] > 0) round-blue @endif">{{ $row }}</td>
+                                        @endforeach
+                                    @endif
                                 </tr>
                                 </tbody>
                             </table>

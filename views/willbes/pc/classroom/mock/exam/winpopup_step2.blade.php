@@ -27,14 +27,16 @@
                             </li>
                         @endif
                     @endforeach
-                    @foreach($sList as $key => $row)
-                        <li>
-                            <span class="row-line">|</span>
-                            <a class="@if($sMpIdx[$key] == element('s_mpidx', $arr_input)) exam-ing @endif
-                            @if($qtList[$sMpIdx[$key]]['CNT'] == $qtList[$sMpIdx[$key]]['TCNT']) exam-fin @elseif($qtList[$sMpIdx[$key]]['CNT'] > 0) exam-temp @endif"
-                            href="javascript:blinkTab('{{ $sMpIdx[$key] }}')" onclick="">{{ $row }}</a>
-                        </li>
-                    @endforeach
+                    @if($sList)
+                        @foreach($sList as $key => $row)
+                            <li>
+                                <span class="row-line">|</span>
+                                <a class="@if($sMpIdx[$key] == element('s_mpidx', $arr_input)) exam-ing @endif
+                                @if($qtList[$sMpIdx[$key]]['CNT'] == $qtList[$sMpIdx[$key]]['TCNT']) exam-fin @elseif($qtList[$sMpIdx[$key]]['CNT'] > 0) exam-temp @endif"
+                                href="javascript:blinkTab('{{ $sMpIdx[$key] }}')" onclick="">{{ $row }}</a>
+                            </li>
+                        @endforeach
+                    @endif
                 </ul>
                 <div class="countTime">남은시간 : <span id="timer" class="time">--:--:--</span></div>
             </div>

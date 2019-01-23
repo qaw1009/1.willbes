@@ -63,11 +63,11 @@ class MockExam extends \app\controllers\FrontController
         }
 
         $total_rows = $this->mockExamModel->listBoard(true, $arr_condition);
-        $paging = $this->pagination($this->_default_path.'?'.$get_page_params,$total_rows,$this->_paging_limit,$paging_count,true);
+        $paging = $this->pagination($this->_default_path.'?'.$get_page_params,$total_rows,$this->_paging_limit,$paging_count,true,1);
 
         if ($total_rows > 0) {
 
-            $list = $this->mockExamModel->listBoard(false,$arr_condition,$column,$paging['limit'],$paging['offset'],$order_by);
+            $list = $this->mockExamModel->listBoard(false,$arr_condition,$column,$paging['limit'],$paging['offset'],$order_by,1);
 
         }
 
@@ -113,7 +113,10 @@ class MockExam extends \app\controllers\FrontController
         // 필수/선택과목 컬럼수 & 이름
         $pCnt = 0;
         $sCnt = 0;
-
+        $sList = array();
+        $sList2 = array();
+        $pList = array();
+        $pList2 = array();
         foreach ($subject_list as $key => $val){
             if($val['MockType'] == 'E'){
                 $pCnt++;
@@ -198,6 +201,9 @@ class MockExam extends \app\controllers\FrontController
         // 필수/선택과목 컬럼수 & 이름
         $pCnt = 0;
         $sCnt = 0;
+        $sList = array();
+        $pList = array();
+        $sMpIdx = array();
         foreach ($subject_list as $key => $val){
             if($val['MockType'] == 'E'){
                 $pCnt++;
@@ -290,7 +296,10 @@ class MockExam extends \app\controllers\FrontController
         // 필수/선택과목 컬럼수 & 이름
         $pCnt = 0;
         $sCnt = 0;
-
+        $sList = array();
+        $sList2 = array();
+        $pList = array();
+        $pList2 = array();
         foreach ($subject_list as $key => $val){
             if($val['MockType'] == 'E'){
                 $pCnt++;

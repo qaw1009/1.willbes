@@ -564,7 +564,6 @@ class Event extends \app\controllers\FrontController
                         //비로그인 상태
                         $return_type = '2';
                     } else {
-                        echo 'bbb';
                         //로그인상태
                         $m_count = $this->eventFModel->getMemberForRegisterCount(element('event_idx', $arr_input), ['EQ' => ['a.MemIdx' => $this->session->userdata('mem_idx')]]);
                         if ($m_count < $register_count) {

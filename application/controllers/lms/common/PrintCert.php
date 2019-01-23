@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class PrintCert extends \app\controllers\BaseController
 {
-    protected $models = array('pay/orderList');
+    protected $models = array('pay/orderList', 'mocktest/applyUser');
     protected $helpers = array();
 
     public function __construct()
@@ -29,6 +29,19 @@ class PrintCert extends \app\controllers\BaseController
                 $data = $this->orderListModel->getPrintCertData($order_idx, $order_prod_idx);
                 break;
             case 'mock_exam' :
+
+                $mr_idx = $this->_reqG('mr_idx');
+
+                // 데이터 조회
+                $arr_condition = ['EQ' => ['MR.MrIdx' => $mr_idx]];
+                $data = $this->applyUserModel->mockRegistList($arr_condition,'','','Y');
+
+                // 출력 로그 저장
+                $log_save = $this->applyUserModel->ticketPrint($mr_idx);
+                if($log_save !== true) {
+                    show_alert($log_save,'close');
+                    break;
+                }
                 break;
             default :
                 show_alert('필수 파라미터 오류입니다.', 'close');

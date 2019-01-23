@@ -609,30 +609,38 @@ class Pass extends \app\controllers\FrontController
                 'RegDatm' => $edate
             ]
         ]);
+        if($data['count'] > 0) {
 
-        if(is_numeric($page) == false){
-            $page = 1;
-        } else if($page < 1) {
-            $page = 1;
-        } elseif($page > $data['count']){
-            $page = $data['count'];
+
+            if (is_numeric($page) == false) {
+                $page = 1;
+            } else if ($page < 1) {
+                $page = 1;
+            } elseif ($page > $data['count']) {
+                $page = $data['count'];
+            }
+
+            $offset = ($page - 1) * $pagesize;
+            $data['list'] = $this->classroomFModel->getMyDevice(false, [
+                'EQ' => [
+                    'MemIdx' => $this->session->userdata('mem_idx')
+                ],
+                'GT' => [
+                    'RegDatm' => $sdate
+                ],
+                'LT' => [
+                    'RegDatm' => $edate
+                ]
+            ], $pagesize, $offset);
+
+            $data['page'] = $page;
+            $data['totalpage'] = ceil($data['count'] / $pagesize);
+            
+        } else {
+            $data['page'] = 1;
+            $data['totalpage'] = 0;
+            $data['list'] = [];
         }
-
-        $offset = ($page-1) * $pagesize;
-        $data['list'] = $this->classroomFModel->getMyDevice(false, [
-            'EQ' => [
-                'MemIdx' => $this->session->userdata('mem_idx')
-            ],
-            'GT' => [
-                'RegDatm' => $sdate
-            ],
-            'LT' => [
-                'RegDatm' => $edate
-            ]
-        ], $pagesize, $offset);
-
-        $data['page'] = $page;
-        $data['totalpage'] = ceil($data['count'] / $pagesize);
 
         return $this->load->view('/classroom/pass/layer/ajax_mydevice', [
             'data' => $data

@@ -36,7 +36,6 @@ class OffPackage extends \app\controllers\FrontController
             $_view_page = 'site/off_visit/package_index';
         }
 
-
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
         $cate_code = element('cate_code', $arr_input, $this->_cate_code);
 
@@ -49,8 +48,11 @@ class OffPackage extends \app\controllers\FrontController
             return ['CampusCcd' => $tmp_arr[0], 'CampusCcdName' => $tmp_arr[1]];
         }, explode(',', config_app('CampusCcdArr')));
 
-        // 과정 조회
-        $arr_base['course'] = $this->baseProductFModel->listCourse($this->_site_code);
+        // 카테고리가 있을 경우에만 조회
+        if (empty($cate_code) === false) {
+            // 과정 조회
+            $arr_base['course'] = $this->baseProductFModel->listCourseCategoryMapping($this->_site_code, $cate_code);
+        }
 
         // 상품 조회
         $arr_search_text = explode(':', base64_decode(element('search_text', $arr_input)), 2);  // 검색어

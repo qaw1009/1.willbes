@@ -48,12 +48,13 @@ class OffLecture extends \app\controllers\FrontController
             $tmp_arr = explode(':', $var);
             return ['CampusCcd' => $tmp_arr[0], 'CampusCcdName' => $tmp_arr[1]];
         }, explode(',', config_app('CampusCcdArr')));
-
-        // 과정 조회
-        $arr_base['course'] = $this->baseProductFModel->listCourse($this->_site_code);
-
-        // 과목 조회
+        
+        // 카테고리가 있을 경우에만 조회
         if (empty($cate_code) === false) {
+            // 과정 조회
+            $arr_base['course'] = $this->baseProductFModel->listCourseCategoryMapping($this->_site_code, $cate_code);
+            
+            // 과목 조회    
             if (config_app('SiteGroupCode') == '1002') {
                 // 사이트그룹이 공무원일 경우 카테고별 직렬, 직렬별 과목 조회
                 $arr_base['series'] = $this->baseProductFModel->listSeriesCategoryMapping($this->_site_code, $cate_code);

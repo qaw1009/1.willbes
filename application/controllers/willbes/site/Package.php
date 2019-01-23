@@ -21,11 +21,10 @@ class Package extends \app\controllers\FrontController
      */
     public function index($params = [])
     {
-
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
 
         //사이트별 과정 조회
-        $arr_base['course'] = $this->baseProductFModel->listCourse($this->_site_code);
+        $arr_base['course'] = $this->baseProductFModel->listCourseCategoryMapping($this->_site_code, $this->_cate_code);
 
         $pack = element('pack', $params);
 

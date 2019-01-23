@@ -30,7 +30,7 @@ class Lecture extends \app\controllers\FrontController
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
 
         // 과정 조회
-        $arr_base['course'] = $this->baseProductFModel->listCourse($this->_site_code);
+        $arr_base['course'] = $this->baseProductFModel->listCourseCategoryMapping($this->_site_code, $this->_cate_code);
 
         if (config_app('SiteGroupCode') == '1002') {
             // 사이트그룹이 공무원일 경우 카테고별 직렬, 직렬별 과목 조회

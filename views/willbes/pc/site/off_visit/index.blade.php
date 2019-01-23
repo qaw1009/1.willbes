@@ -53,19 +53,26 @@
                                     </ul>
                                 </td>
                             </tr>
-                            <tr>
-                                <th class="tx-gray">과정선택</th>
-                                <td colspan="9">
-                                    <ul class="curriSelect">
+                            @if(isset($arr_base['course']) === true)
+                                <tr>
+                                    <th class="tx-gray">과정선택</th>
+                                    <td colspan="9">
                                         <ul class="curriSelect">
-                                            <li><a href="#none" onclick="goUrl('course_idx', '');" class="@if(empty(element('course_idx', $arr_input)) === true) on @endif">전체</a></li>
-                                            @foreach($arr_base['course'] as $idx => $row)
-                                                <li><a href="#none" onclick="goUrl('course_idx', '{{ $row['CourseIdx'] }}');" class="@if(element('course_idx', $arr_input) == $row['CourseIdx']) on @endif">{{ $row['CourseName'] }}</a></li>
-                                            @endforeach
+                                            <ul class="curriSelect">
+                                                <li><a href="#none" onclick="goUrl('course_idx', '');" class="@if(empty(element('course_idx', $arr_input)) === true) on @endif">전체</a></li>
+                                                @foreach($arr_base['course'] as $idx => $row)
+                                                    <li><a href="#none" onclick="goUrl('course_idx', '{{ $row['CourseIdx'] }}');" class="@if(element('course_idx', $arr_input) == $row['CourseIdx']) on @endif">{{ $row['CourseName'] }}</a></li>
+                                                @endforeach
+                                            </ul>
                                         </ul>
-                                    </ul>
-                                </td>
-                            </tr>
+                                    </td>
+                                </tr>
+                            @else
+                                <tr>
+                                    <th class="tx-gray">과정선택</th>
+                                    <td colspan="9" class="tx-blue tx-left">* 카테고리 선택시 카테고리별 과정을 확인하실 수 있습니다. 카테고리를 먼저 선택해 주세요!</td>
+                                </tr>
+                            @endif
                             @if(isset($arr_base['series']) === true)
                                 <tr>
                                     <th class="tx-gray">직렬선택</th>

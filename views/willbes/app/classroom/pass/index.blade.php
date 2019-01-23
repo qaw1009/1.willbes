@@ -36,9 +36,9 @@
         </div>
         <table cellspacing="0" cellpadding="0" width="100%" class="lecTable bdt-m-gray">
             <tbody>
-            @if(empty($passinfo) == false)
-                <tr>
-                    <td class="w-data tx-left">
+            <tr>
+                <td class="w-data tx-left">
+                    @if(empty($passinfo) == false)
                         <div class="w-tit">
                             {{$passinfo['ProdName']}}
                         </div>
@@ -48,10 +48,10 @@
                                 <span class="tx-black">(잔여기간<span class="tx-pink">{{$row['remainDays']}}일</span>)</span>
                             </dt>
                         </dl>
-                        <div class="InfoBtn btn_white mt10"><a href="javascript:;" onclick="fnMyDevice();">등록기기정보 <span>▶</span></a></div>
-                    </td>
-                </tr>
-            @endif
+                    @endif
+                    <div class="InfoBtn btn_white mt10"><a href="javascript:;" onclick="fnMyDevice();">등록기기정보 <span>▶</span></a></div>
+                </td>
+            </tr>
             </tbody>
         </table>
         @if(empty($passinfo) == false)

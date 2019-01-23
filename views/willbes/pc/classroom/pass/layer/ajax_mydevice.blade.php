@@ -40,17 +40,10 @@
 </table>
 <div class="Paging">
     <ul>
-        <li class="Prev"><a href="#none"><img src="{{ img_url('paging/paging_prev.png') }}"> </a></li>
-        <li><a class="on" href="#none">1</a><span class="row-line">|</span></li>
-        <li><a href="#none">2</a><span class="row-line">|</span></li>
-        <li><a href="#none">3</a><span class="row-line">|</span></li>
-        <li><a href="#none">4</a><span class="row-line">|</span></li>
-        <li><a href="#none">5</a><span class="row-line">|</span></li>
-        <li><a href="#none">6</a><span class="row-line">|</span></li>
-        <li><a href="#none">7</a><span class="row-line">|</span></li>
-        <li><a href="#none">8</a><span class="row-line">|</span></li>
-        <li><a href="#none">9</a><span class="row-line">|</span></li>
-        <li><a href="#none">10</a></li>
-        <li class="Next"><a href="#none"><img src="{{ img_url('paging/paging_next.png') }}"> </a></li>
+        @if($data['page'] > 1)<li class="Prev"><a href="javascript:fnDeviceList({{$data['page'] -1}});"><img src="{{ img_url('paging/paging_prev.png') }}"> </a></li>@endif
+        @for($i = 1; $i <= $data['totalpage']; $i++)
+            <li><a @if($i == $data['page']) class="on" @else href="javascript:fnDeviceList({{$i}});" @endif >{{$i}}</a>@if($i < $data['totalpage'])<span class="row-line">|</span>@endif</li>
+        @endfor
+        @if($data['page'] < $data['totalpage'])<li class="Next"><a href="javascript:fnDeviceList({{$data['page'] +1}});"><img src="{{ img_url('paging/paging_next.png') }}"> </a></li>@endif
     </ul>
 </div>

@@ -586,16 +586,11 @@ class Pass extends \app\controllers\FrontController
 
     public function ajaxMyDevice()
     {
+        $pagesize = 5;
+
         $sdate = $this->_req('sdate');
         $edate = $this->_req('edate');
         $page = $this->_req('page');
-
-        if(is_numeric($page) == false){
-            $page = 1;
-        }
-
-        $offset = ($page-1) * 5;
-
         // 총 초기화 횟수
         $data['reset_cnt'] = $this->classroomFModel->getMyDevice(true, ['EQ' => [
             'MemIdx' => $this->session->userdata('mem_idx'),
@@ -615,6 +610,15 @@ class Pass extends \app\controllers\FrontController
             ]
         ]);
 
+        if(is_numeric($page) == false){
+            $page = 1;
+        } else if($page < 1) {
+            $page = 1;
+        } elseif($page > $data['count']){
+            $page = $data['count'];
+        }
+
+        $offset = ($page-1) * $pagesize;
         $data['list'] = $this->classroomFModel->getMyDevice(false, [
             'EQ' => [
                 'MemIdx' => $this->session->userdata('mem_idx')
@@ -625,7 +629,10 @@ class Pass extends \app\controllers\FrontController
             'LT' => [
                 'RegDatm' => $edate
             ]
-        ], 5, $offset);
+        ], $pagesize, $offset);
+
+        $data['page'] = $page;
+        $data['totalpage'] = ceil($data['count'] / $pagesize);
 
         return $this->load->view('/classroom/pass/layer/ajax_mydevice', [
             'data' => $data

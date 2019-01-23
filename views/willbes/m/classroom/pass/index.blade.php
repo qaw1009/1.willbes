@@ -330,9 +330,7 @@
         function fnMyDevice()
         {
             url = "{{ front_url("/classroom/pass/layerMyDevice/") }}";
-            data = $('#postForm').serialize();
-
-            $("#postForm").prop('action', url).submit();
+            document.location.href = url;
         }
 
         function fnLike(code, obj)

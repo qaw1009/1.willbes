@@ -330,17 +330,7 @@
         function fnMyDevice()
         {
             url = "{{ front_url("/classroom/pass/layerMyDevice/") }}";
-            data = $('#postForm').serialize();
-
-            sendAjax(url,
-                data,
-                function(d){
-                    $("#MyDevice").html(d).end();
-                    openWin('MyDevice');
-                },
-                function(ret, status){
-                    alert(ret.ret_msg);
-                }, false, 'GET', 'html');
+            document.location.href = url;
         }
 
         function fnLike(code, obj)

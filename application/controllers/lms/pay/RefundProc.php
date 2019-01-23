@@ -266,7 +266,7 @@ class RefundProc extends BaseOrder
             , fn_product_unit_lecture_cnt(OP.ProdCode) as TotalUnitLectureCnt
             , (select count(0) from ' . $this->orderListModel->_table['lecture_studyinfo'] . ' where OrderIdx = O.OrderIdx and OrderProdIdx = OP.OrderProdIdx and ProdCode = OP.ProdCode and ProdCodeSub = OP.ProdCode) as StudyUnitLectureCnt
             , fn_order_my_lecture_data(O.OrderIdx, OP.OrderProdIdx, OP.ProdCode, OP.ProdCode, 1) as MyLecData';
-        $data = $this->orderListModel->findOrderProduct($arr_condition, $column, 1);
+        $data = $this->orderListModel->findOrderProduct($arr_condition, $column, 1, 0);
         if (empty($data) === true) {
             return $this->json_error('데이터 조회에 실패했습니다.');
         }

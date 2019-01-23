@@ -105,6 +105,7 @@ class OrderListModel extends BaseOrderModel
 
         $order_by_offset_limit = '';
         if (empty($order_by) === false) {
+            $_order_by = [];
             foreach ($order_by as $key => $val) {
                 $_order_by[str_first_pos_after($key, '.')] = $val;
             }

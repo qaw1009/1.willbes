@@ -30,15 +30,10 @@
                                 <option value="{{$k}}">{{$v}}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-5" id="search_IsStatus" name="search_IsStatus">
+                        <select class="form-control mr-5" id="search_IsTake" name="search_IsTake">
                             <option value="">응시여부</option>
                             <option value="Y">응시</option>
                             <option value="N">미응시</option>
-                        </select>
-                        <select class="form-control mr-5" id="search_IsTicketPrint" name="search_IsTicketPrint">
-                            <option value="">응시표출력</option>
-                            <option value="Y">출력</option>
-                            <option value="N">미출력</option>
                         </select>
                     </div>
                 </div>
@@ -50,7 +45,7 @@
                 </div>
                 <div class="pt-10">
                     <div class="col-md-6">
-                        <button type="button" class="btn btn-primary mr-50" id="act-excelDown">엑셀다운로드</button>
+                        <button type="button" class="btn btn-primary mr-50 btn-excel" id="btn-excel">엑셀다운로드</button>
                     </div>
                     <div class="col-md-6 text-right">
                         <button type="submit" class="btn btn-primary" id="btn_search">검색</button>
@@ -60,7 +55,7 @@
             </div>
         </div>
     </form>
-    <div class="mt-20">* 응시표 출력 제한 횟수는 '1회'로 제한되며, 추가 출력을 원할 경우 '응시표복원'을 선택해 주세요</div>
+
     <div class="x_panel mt-10" style="overflow-x: auto; overflow-y: hidden;">
         <div class="x_content">
             <form class="form-horizontal" id="list_form" name="list_form" method="POST" onsubmit="return false;">
@@ -87,6 +82,7 @@
                         <th class="text-center">응시지역</th>
                         <th class="text-center">응시여부</th>
                         <th class="text-center">응시표출력</th>
+                        <th class="text-center">출력횟수</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -125,9 +121,9 @@
                 },
                 dom: "<<'pull-left mb-5'i><'pull-right mb-5'B>>tp",
                 buttons: [
-                    { text: '<i class="fa fa-bolt"></i> 쪽지발송', className: 'btn btn-sm btn-primary mr-15 act-copy', action: sendMemo },
-                    { text: '<i class="fa fa-phone"></i> SMS발송', className: 'btn btn-sm btn-primary mr-15 act-copy', action: sendSms },
-                    { text: '<i class="fa fa-undo"></i> 응시표복원', className: 'btn btn-sm btn-success', action: restoreTicket }
+                    { text: '<i class="fa fa-comment-o mr-5"></i> 쪽지발송', className: 'btn btn-sm btn-primary mr-15 btn-message'  },
+                    { text: '<i class="fa fa-mobile mr-5"></i> SMS발송', className: 'btn btn-sm btn-primary mr-15 btn-sms' },
+
                 ],
                 serverSide: true,
                 ajax: {
@@ -139,16 +135,16 @@
                 },
                 columns: [
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                        return '<input type="checkbox" class="flat" name="target" value="' + row.MrIdx + '">';
+                            return '<input type="checkbox" id="checkIdx'+data.MrIdx+ '" name="checkIdx[]" class="flat target-crm-member" value="'+data.MrIdx+'" data-mem-idx="'+data.MemIdx+'" />';
                     }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
                         return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                     }},
                     {'data' : 'OrderNo', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                        return '<a href="{{ site_url('/') }}" target="_blank">' + data + '</a>';
+                        return '<a href="{{ site_url('/pay/order/show/') }}'+row.OrderIdx+'" target="_blank">' + data + '</a>';
                     }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                        return '<a href="{{ site_url('/') }}" target="_blank">' + row.MemName + '<br>(' + row.MemId + ')</a>';
+                        return '<a href="{{ site_url('/member/manage/detail/') }}'+row.MemIdx+'" target="_blank">' + row.MemName + '<br>(' + row.MemId + ')</a>';
                     }},
                     {'data' : 'MemPhone', 'class': 'text-center'},
                     {'data' : 'CompleteDatm', 'class': 'text-center'},
@@ -163,41 +159,58 @@
                     }},
                     {'data' : 'MockYear', 'class': 'text-center'},
                     {'data' : 'MockRotationNo', 'class': 'text-center'},
+                    /*
                     {'data' : 'TakeForm', 'class': 'text-center', 'render' : function(data, type, row, meta) {
                         return (typeof applyType[data] !== 'undefined') ? applyType[data] : '';
                     }},
-                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) { return 0; }},
+                    */
+                    {'data' : 'TakeForm_Name', 'class': 'text-center'},
+                    {'data' : 'TakeNumber', 'class': 'text-center'},
                     {'data' : 'CateName', 'class': 'text-center'},
-                    {'data' : 'CcdName', 'class': 'text-center'},
+                    {'data' : 'TakeMockPart_Name', 'class': 'text-center'},
                     {'data' : 'SubjectNameList', 'class': 'text-center'},
-                    {'data' : 'TakeArea', 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                    {'data' : 'TakeArea_Name', 'class': 'text-center'},
+                    /*{'data' : 'TakeArea', 'class': 'text-center', 'render' : function(data, type, row, meta) {
                         return (typeof applyArea[data] !== 'undefined') ? applyArea[data] : '';
-                    }},
-                    {'data' : 'IsStatus', 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                    }},*/
+                    {'data' : 'IsTake', 'class': 'text-center', 'render' : function(data, type, row, meta) {
                         return (data === 'Y') ? '응시' : '미응시';
                     }},
-                    {'data' : 'IsTicketPrint', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                        return (data === 'Y') ? '출력' : '<span class="blue underline-link">[미출력]</span>';
+                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                        return  '<a href="javascript:;" class="blue cs-pointer btn-print" data-idx="'+row.MrIdx+'">[출력]</a>';
                     }},
+                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                            return  '<a href="javascript:;" class="print-log" data-idx="'+row.MrIdx+'">'+row.PrintCnt+'</a>';
+                    }},
+
                 ]
             });
 
-            // 엑셀 다운로드
 
-            // 쪽지발송
-            function sendMemo() {
+            // 응시표  출력 폼
+            $list_table.on('click', '.btn-print', function() {
+                var url = '{{site_url('/common/printCert/')}}?prod_type=mock_exam&mr_idx='+$(this).data('idx');
+                popupOpen(url,'_cert_print', 620, 350);
+            });
 
-            }
+            // 응시표  출력 이력
+            $list_table.on('click', '.print-log', function() {
+                $('.print-log').setLayer({
+                    'url' : '{{site_url('/mocktest/applyUser/PrintLog/')}}'+$(this).data('idx'),
+                    'width' : 1400
+                });
 
-            // SMS발송
-            function sendSms() {
+            });
 
-            }
+            // 엑셀다운로드
+            $('.btn-excel').on('click', function(event) {
+                event.preventDefault();
+                if (confirm('엑셀다운로드 하시겠습니까?')) {
+                    formCreateSubmit('{{ site_url('/mocktest/applyUser/list/Y') }}', $search_form.serializeArray(), 'POST');
+                }
+            });
 
-            // 응시표복원
-            function restoreTicket() {
 
-            }
         });
     </script>
 @stop

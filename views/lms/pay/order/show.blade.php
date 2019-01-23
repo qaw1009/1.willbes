@@ -98,6 +98,7 @@
                         <thead>
                         <tr>
                             <th rowspan="2" class="pb-20">상품구분</th>
+                            <th rowspan="2" class="pb-20">상품코드</th>
                             <th rowspan="2" class="pb-20">상품명</th>
                             <th rowspan="2" class="pb-20">배송상태</th>
                             <th colspan="2">결제금액</th>
@@ -122,6 +123,7 @@
                                     <td>{{ $order_prod_row['ProdTypeCcdName'] }}
                                         {!! empty($order_prod_row['SalePatternCcdName']) === false ? '<br/>(' . $order_prod_row['SalePatternCcdName'] . ')' : '' !!}
                                     </td>
+                                    <td>{{ $order_prod_row['ProdCode'] }}</td>
                                     <td><div class="blue inline-block">[{{ $order_prod_row['LearnPatternCcdName'] or $order_prod_row['ProdTypeCcdName'] }}]</div> {{ $order_prod_row['ProdName'] }}
                                         @if(empty($order_prod_row['OrderSubProdList']) === false)
                                             <button name="btn_sub_product" class="btn btn-xs btn-success ml-5 mb-0" data-toggle="popover" data-html="true" data-content="{!! $order_prod_row['OrderSubProdList'] !!}">선택강좌</button>
@@ -142,7 +144,7 @@
                         </tbody>
                         <tfoot>
                         <tr>
-                            <td colspan="12" class="text-center bg-info">
+                            <td colspan="13" class="text-center bg-info">
                                 <strong>[총 실결제금액] <span class="blue">{{ number_format($data['order']['tRealPayPrice']) }}</span>
                                     (사용 포인트 : {{ number_format($data['order']['tUseLecPoint']) }} | 교재 {{ number_format($data['order']['tUseBookPoint']) }})
                                     <span class="red pl-20">[총 환불금액] {{ number_format($data['order']['tRefundPrice']) }}</span>

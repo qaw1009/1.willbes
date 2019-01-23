@@ -25,8 +25,9 @@ class BaseCalc extends \app\controllers\BaseController
      */
     protected function index()
     {
-        // 상품구분 파라미터
-        $search_type = get_var($this->_reqG('search_type'), ($this->_calc_type == 'lecture' ? 'LE' : 'OL'));
+        // 상품구분 파라미터 (우선순위 = `q` 파라미터값 > `search_type` 파라미터값 > `기본값`)
+        $search_type = array_get(json_decode(base64_decode($this->_reqG('q')), true), 'search_type', $this->_reqG('search_type'));
+        $search_type = get_var($search_type, ($this->_calc_type == 'lecture' ? 'LE' : 'OL'));
 
         // 사이트탭 조회
         $arr_site = $this->siteModel->listSite('SiteCode, SiteName', [

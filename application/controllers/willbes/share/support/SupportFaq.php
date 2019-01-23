@@ -61,6 +61,14 @@ class SupportFaq extends BaseSupport
             ]
         ];
 
+        if ($this->_site_code != config_item('app_intg_site_code')) {
+            $arr_condition = array_merge_recursive($arr_condition, [
+                'LKB' => [
+                    'Category_String' => $this->_cate_code
+                ]
+            ]);
+        }
+
         $column = 'b.BoardIdx,b.CampusCcd,b.FaqGroupTypeCcd,b.FaqTypeCcd,b.TypeCcd,b.IsBest,b.AreaCcd
                        ,b.Title,b.Content, (b.ReadCnt + b.SettingReadCnt) as TotalReadCnt
                        ,b.IsCampus,b.CampusCcd_Name,b.FaqGroupTypeCcd_Name, b.FaqTypeCcd_Name, b.TypeCcd_Name,b.AreaCcd_Name

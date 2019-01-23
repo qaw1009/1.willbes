@@ -39,9 +39,6 @@ class SupportStudyComment extends BaseSupport
                 'IsUse' => 'Y',
                 'IsBest' => '1',
                 'ProdCode' => $prod_code
-            ],
-            'LKB' => [
-                'Category_String' => $cate_code
             ]
         ];
 
@@ -50,11 +47,22 @@ class SupportStudyComment extends BaseSupport
                 'BmIdx' => $this->_bm_idx,
                 'IsUse' => 'Y',
                 'ProdCode' => $prod_code
-            ],
-            'LKB' => [
-                'Category_String' => $cate_code
             ]
         ];
+
+        if ($this->_site_code != config_item('app_intg_site_code')) {
+            $arr_best_condition = array_merge_recursive($arr_best_condition, [
+                'LKB' => [
+                    'Category_String' => $cate_code
+                ]
+            ]);
+
+            $arr_condition = array_merge_recursive($arr_condition, [
+                'LKB' => [
+                    'Category_String' => $cate_code
+                ]
+            ]);
+        }
 
         $column = 'BoardIdx, IsBest, RegType, RegMemIdx, RegMemId, RegMemName';
         $column .= ',Title, Content, (ReadCnt + SettingReadCnt) as TotalReadCnt';
@@ -152,9 +160,6 @@ class SupportStudyComment extends BaseSupport
                 'ProfIdx' => $prof_idx,
                 'ProdCode' => $prod_code
             ],
-            'LKB' => [
-                'Category_String' => $cate_code
-            ],
             'ORG' => [
                 'LKB' => [
                     'Title' => $s_keyword,
@@ -162,6 +167,14 @@ class SupportStudyComment extends BaseSupport
                 ]
             ]
         ];
+
+        if ($this->_site_code != config_item('app_intg_site_code')) {
+            $arr_condition = array_merge_recursive($arr_condition, [
+                'LKB' => [
+                    'Category_String' => $cate_code
+                ]
+            ]);
+        }
 
         $column = 'BoardIdx, IsBest, RegType, RegMemIdx, RegMemId, RegMemName';
         $column .= ',Title, Content, (ReadCnt + SettingReadCnt) as TotalReadCnt';
@@ -219,9 +232,6 @@ class SupportStudyComment extends BaseSupport
                 'ProfIdx' => $prof_idx,
                 'ProdCode' => $prod_code
             ],
-            'LKB' => [
-                'Category_String' => $cate_code
-            ],
             'ORG' => [
                 'LKB' => [
                     'Title' => $s_keyword,
@@ -229,6 +239,14 @@ class SupportStudyComment extends BaseSupport
                 ]
             ]
         ];
+
+        if ($this->_site_code != config_item('app_intg_site_code')) {
+            $arr_condition = array_merge_recursive($arr_condition, [
+                'LKB' => [
+                    'Category_String' => $cate_code
+                ]
+            ]);
+        }
 
         $total_rows = $this->supportBoardTwoWayFModel->listBoard(true, $arr_condition);
         $paging = $this->pagination('/support/studyComment/listAjax/',$total_rows,$this->_paging_limit,$this->_paging_count,true);

@@ -47,7 +47,6 @@ class SupportProfNotice extends BaseSupport
             'EQ' => [
                 'b.BmIdx' => $this->_bm_idx
                 ,'b.IsUse' => 'Y'
-                /*,'b.SiteCode' => $this->_site_code*/
                 ,'b.CampusCcd' => $s_campus
                 ,'b.ProfIdx' => $prof_idx
                 ,'b.SubjectIdx' => $subject_idx
@@ -118,7 +117,6 @@ class SupportProfNotice extends BaseSupport
         #-------------------------------- 게시글 조회
         $arr_condition = [
             'EQ' => [
-                /*'b.SiteCode' => $this->_site_code*/
                 'b.BmIdx' => $this->_bm_idx
                 ,'b.IsUse' => 'Y'
             ],
@@ -164,9 +162,9 @@ class SupportProfNotice extends BaseSupport
                     ,'b.Content' => $s_keyword
                 ]
             ],
-            /*'LKB' => [
+            'LKB' => [
                 'Category_String'=>$s_cate_code
-            ],*/
+            ],
         ];
 
         $pre_arr_condition = array_merge($arr_condition_base,[

@@ -272,6 +272,24 @@ class EventLecture extends \app\controllers\BaseController
     }
 
     /**
+     * 이벤트 파일 삭제
+     */
+    public function destroyFile()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]'],
+            ['field' => 'attach_idx', 'label' => '식별자', 'rules' => 'trim|required|integer'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->eventLectureModel->removeFile($this->_reqP('attach_idx'));
+        $this->json_result($result, '저장 되었습니다.', $result);
+    }
+
+    /**
      * 이벤트 접수 관리 : 정원제한 다중리스트 데이터 삭제
      */
     public function delRegister()

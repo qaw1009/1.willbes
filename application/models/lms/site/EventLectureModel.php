@@ -438,8 +438,6 @@ class EventLectureModel extends WB_Model
                     }
                 }
             }
-
-
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();
@@ -864,6 +862,44 @@ class EventLectureModel extends WB_Model
     }
 
     /**
+     * 파일삭제
+     */
+    public function removeFile($attach_idx)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $arr_data = $this->_findBoardAttach($attach_idx)[0];
+            if (empty($arr_data) === true) {
+                throw new \Exception('삭제할 데이터가 없습니다.');
+            }
+
+            $file_path = $arr_data['FileFullPath'].$arr_data['FileName'];
+            $this->load->helper('file');
+            $real_file_path = public_to_upload_path($file_path);
+            /*if (@unlink($real_file_path) === false) {
+                throw new \Exception('이미지 삭제에 실패했습니다.');
+            }*/
+
+            $data = [
+                'IsUse' => 'N',
+                'UpdAdminIdx' => $this->session->userdata('admin_idx'),
+                'UpdDatm' => date('Y-m-d H:i:s')
+            ];
+            $this->_conn->set($data)->where('EfIdx', $attach_idx);
+
+            if($this->_conn->update($this->_table['event_file'])=== false) {
+                throw new \Exception('데이터 수정에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
      * 파일저장
      * @param $el_idx
      * @param $cnt
@@ -1143,7 +1179,13 @@ class EventLectureModel extends WB_Model
         try {
             $el_attach_data = $_FILES['attach_file']['size'];
             $arr_event_attach = $this->_getEventAttachArray($el_idx);
-            $arr_event_attach_keys = array_keys($arr_event_attach);
+            $event_attach_data = [];
+            foreach ($arr_event_attach as $row) {
+                $event_attach_data[$row['num']] = [
+                    'EfIdx' => $row['EfIdx'],
+                    'FileInfo' => $row['FileInfo']
+                ];
+            }
 
             $this->load->library('upload');
             $this->load->library('image_lib');
@@ -1166,7 +1208,7 @@ class EventLectureModel extends WB_Model
                         }
                     }
 
-                    if (empty($arr_event_attach_keys[$key]) === true) {
+                    if (empty($event_attach_data[$key]) === true) {
                         //ins
                         $set_attach_data['ElIdx'] = $el_idx;
                         $set_attach_data['FileName'] = $uploaded[$key]['orig_name'];
@@ -1182,10 +1224,10 @@ class EventLectureModel extends WB_Model
                     } else {
                         //up, 기존 파일 삭제
                         $this->load->helper('file');
-                        $real_img_path = public_to_upload_path($arr_event_attach[$arr_event_attach_keys[$key]]);
+                        $real_img_path = public_to_upload_path($event_attach_data[$key]['FileInfo']);
 
                         if (@unlink($real_img_path) === false) {
-                            throw new \Exception('이미지 삭제에 실패했습니다.');
+                            /*throw new \Exception('이미지 삭제에 실패했습니다.');*/
                         }
 
                         $set_attach_data['FileFullPath'] = $this->upload->_upload_url . $upload_dir . '/';
@@ -1193,7 +1235,7 @@ class EventLectureModel extends WB_Model
                         $set_attach_data['FileRealName'] = $uploaded[$key]['client_name'];
 
                         $whereData = [
-                            'EfIdx' => $arr_event_attach_keys[$key]
+                            'EfIdx' => $event_attach_data[$key]['EfIdx']
                         ];
 
                         if ($this->_updateEventAttach($set_attach_data, $whereData) === false) {
@@ -1216,17 +1258,58 @@ class EventLectureModel extends WB_Model
      */
     private function _getEventAttachArray($el_idx)
     {
-        $arr_condition = [
-            'EQ' => [
-                'IsUse' => 'Y',
-                'ElIdx' => $el_idx
-            ]
-        ];
-        $data = $this->_conn->getListResult($this->_table['event_file'], 'EfIdx, CONCAT(FileFullPath, FileName) AS FileInfo', $arr_condition, null, null, [
-            'EfIdx' => 'asc'
-        ]);
+        $query = "
+            SELECT a.*
+            FROM (
+                SELECT '0' AS num, EfIdx, CONCAT(FileFullPath, FileName) AS FileInfo
+                FROM {$this->_table['event_file']}
+                WHERE IsUse = 'Y' AND ElIdx = '{$el_idx}' AND FileType = 'C' ORDER BY EfIdx DESC LIMIT 1
+            ) AS a
+            
+            UNION ALL
+            
+            SELECT b.*
+            FROM (
+                SELECT '1' AS num, EfIdx, CONCAT(FileFullPath, FileName) AS FileInfo
+                FROM {$this->_table['event_file']}
+                WHERE IsUse = 'Y' AND ElIdx = '{$el_idx}' AND FileType = 'F' ORDER BY EfIdx DESC LIMIT 1
+            ) AS b
+            
+            UNION ALL
+            
+            SELECT c.*
+            FROM (
+                SELECT '2' AS num, EfIdx, CONCAT(FileFullPath, FileName) AS FileInfo
+                FROM {$this->_table['event_file']}
+                WHERE IsUse = 'Y' AND ElIdx = '{$el_idx}' AND FileType = 'S' ORDER BY EfIdx DESC LIMIT 1
+            ) AS c
+            
+            UNION ALL
+            
+            SELECT d.*
+            FROM (
+                SELECT '3' AS num, EfIdx, CONCAT(FileFullPath, FileName) AS FileInfo
+                FROM {$this->_table['event_file']}
+                WHERE IsUse = 'Y' AND ElIdx = '{$el_idx}' AND FileType = 'I' ORDER BY EfIdx DESC LIMIT 1
+            ) AS d
+        ";
 
-        $data = array_pluck($data, 'FileInfo', 'EfIdx');
+        $data = $this->_conn->query($query)->result_array();
+        return $data;
+    }
+
+    /**
+     * 파일 식별자 기준 파일 목록 조회
+     * @param $attach_idx
+     * @return array|int
+     */
+    private function _findBoardAttach($attach_idx)
+    {
+        $column = 'EfIdx, ElIdx, FileFullPath, FileName';
+        $arr_condition = ['EQ' => ['IsUse' => 'Y', 'EfIdx' => $attach_idx]];
+        $data = $this->_conn->getListResult($this->_table['event_file'], $column, $arr_condition, null, null, [
+            'EfIdx' => 'DESC'
+        ]);
 
         return $data;
     }

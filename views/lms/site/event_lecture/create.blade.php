@@ -544,6 +544,25 @@
                 that.parent().remove();
             });
 
+            // 파일삭제
+            $regi_form.on('click', '.file-delete', function() {
+                var _url = '{{ site_url("/site/eventLecture/destroyFile") }}' + getQueryString();
+                var data = {
+                    '{{ csrf_token_name() }}' : $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                    '_method' : 'DELETE',
+                    'attach_idx' : $(this).data('attach-idx')
+                };
+                if (!confirm('정말로 삭제하시겠습니까?')) {
+                    return;
+                }
+                sendAjax(_url, data, function(ret) {
+                    if (ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                        location.reload();
+                    }
+                }, showError, false, 'POST');
+            });
+
             //내용옵션 선택
             $regi_form.on('ifChanged ifCreated', 'input[name="content_type"]:checked', function() {
                 var set_val = $(this).data('input');

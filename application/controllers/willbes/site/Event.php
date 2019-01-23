@@ -52,10 +52,13 @@ class Event extends \app\controllers\FrontController
             $page_url = '/event/list/cate/'.$params['cate'].'/pattern/'.$onoff_type;
             $view_url = '/event/show/cate/'.$params['cate'].'/pattern/'.$onoff_type;
         } else {
-            $pass_val = '/' . config_item('app_pass_site_prefix');
+            /*$pass_val = '/' . config_item('app_pass_site_prefix');
             $onoff_type = $params[0];
             $page_url = $pass_val.'/event/list/'.$onoff_type;
-            $view_url = $pass_val.'/event/show/'.$onoff_type;
+            $view_url = $pass_val.'/event/show/'.$onoff_type;*/
+            $onoff_type = $params[0];
+            $page_url = '/event/list/'.$onoff_type;
+            $view_url = '/event/show/'.$onoff_type;
         }
 
         if (empty($onoff_type) === true) {

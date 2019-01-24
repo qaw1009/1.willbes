@@ -26,8 +26,8 @@
                 </div>
                 <label class="control-label col-md-2" for="">제휴사 코드
                 </label>
-                <div class="col-md-4">
-                    <p class="form-control-static">@if($method == 'PUT'){{ $data['BtobIdx'] }}@else # 등록 시 자동 생성 @endif</p>
+                <div class="col-md-4 form-control-static">
+                    @if($method == 'PUT'){{ $data['BtobIdx'] }}@else # 등록 시 자동 생성 @endif
                 </div>
             </div>
             <div class="form-group form-group-sm">
@@ -102,8 +102,8 @@
                 <div class="col-md-7 item">
                     <input type="text" id="ReferDomains" name="ReferDomains" class="form-control" title="참조도메인" placeholder="접속하는 도메인 정보 모두 입력 예) naver.com,daum.net" value="{{$data['ReferDomains'] }}">
                 </div>
-                <div class="col-md-3 item">
-                    <p class="form-control-static">( ',' 로 연결 )</p>
+                <div class="col-md-3 item form-control-static">
+                    ( ',' 로 연결 )
                 </div>
             </div>
             <div class="form-group form-group-sm">
@@ -112,8 +112,8 @@
                 <div class="col-md-7 item">
                     <input type="text" id="ReturnUrl" name="ReturnUrl" class="form-control" title="이동 URL" placeholder="접속 후 이동 할 URL" value="{{$data['ReturnUrl'] }}">
                 </div>
-                <div class="col-md-3 item">
-                    <p class="form-control-static"> (접속 후 이동 할 URL)</p>
+                <div class="col-md-3 item form-control-static">
+                    (접속 후 이동 할 URL)
                 </div>
             </div>
 
@@ -128,25 +128,25 @@
                 <div class="form-group form-group-sm">
                     <label class="control-label col-md-2">등록자
                     </label>
-                    <div class="col-md-4">
-                        <p class="form-control-static">{{ $data['RegAdminName'] }}</p>
+                    <div class="col-md-4 form-control-static">
+                        {{ $data['RegAdminName'] }}
                     </div>
                     <label class="control-label col-md-2">등록일
                     </label>
-                    <div class="col-md-4">
-                        <p class="form-control-static">{{ $data['RegDatm'] }}</p>
+                    <div class="col-md-4 form-control-static">
+                        {{ $data['RegDatm'] }}
                     </div>
                 </div>
                 <div class="form-group form-group-sm">
                     <label class="control-label col-md-2">최종 수정자
                     </label>
-                    <div class="col-md-4">
-                        <p class="form-control-static">{{ $data['UpdAdminName'] }}</p>
+                    <div class="col-md-4 form-control-static">
+                        {{ $data['UpdAdminName'] }}
                     </div>
                     <label class="control-label col-md-2">최종 수정일
                     </label>
-                    <div class="col-md-4">
-                        <p class="form-control-static">{{ $data['UpdDatm'] }}</p>
+                    <div class="col-md-4 form-control-static">
+                        {{ $data['UpdDatm'] }}
                     </div>
                 </div>
             @endif

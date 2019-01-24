@@ -24,7 +24,7 @@
                 <div class="col-md-4 item">
                     <input type="text" id="ApprovalIp" name="ApprovalIp" required="required" class="form-control" title="ip주소" value="">
                 </div>
-                <button type="submit" class="btn btn-success">저장</button>
+                <button type="submit" class="btn btn-sm btn-success">저장</button>
             </div>
         </form>
 

@@ -25,8 +25,8 @@
         </div>
         <label class="control-label col-md-2 col-md-offset-1" for="admin_id">아이디 <span class="required">*</span>
         </label>
-        <div class="col-md-4 item form-inline">
-            <p class="form-control-static">{{ $data['wAdminId'] }}</p>
+        <div class="col-md-4 item form-inline form-control-static">
+            {{ $data['wAdminId'] }}
             <input type="hidden" id="admin_id" name="admin_id" required="required" class="form-control" title="아이디" value="{{ $data['wAdminId'] }}">
         </div>
     </div>
@@ -88,8 +88,8 @@
     <div class="form-group form-group-sm">
         <label class="control-label col-md-2">권한유형</span>
         </label>
-        <div class="col-md-9 item">
-            <p class="form-control-static">{{ $data['wRoleName'] }}</p>
+        <div class="col-md-9 item form-control-static">
+            {{ $data['wRoleName'] }}
         </div>
     </div>
     <script type="text/javascript">

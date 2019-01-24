@@ -39,8 +39,8 @@
         </div>
         <label class="control-label col-md-2" for="">과목 코드
         </label>
-        <div class="col-md-4">
-            <p class="form-control-static">@if($method == 'PUT'){{ $data['SubjectIdx'] }}@else # 등록 시 자동 생성 @endif</p>
+        <div class="col-md-4 form-control-static">
+            @if($method == 'PUT'){{ $data['SubjectIdx'] }}@else # 등록 시 자동 생성 @endif
         </div>
     </div>
     <div class="form-group form-group-sm">
@@ -54,32 +54,32 @@
         <div class="col-md-1">
             <input type="text" name="order_num" class="form-control" value="{{ $data['OrderNum'] }}" style="width: 60px;" />
         </div>
-        <div class="col-md-3">
-            <p class="form-control-static"># 미 입력시 마지막 DP</p>
+        <div class="col-md-3 form-control-static">
+            # 미 입력시 마지막 DP
         </div>
     </div>
     <div class="form-group form-group-sm">
         <label class="control-label col-md-2">등록자
         </label>
-        <div class="col-md-4">
-            <p class="form-control-static">{{ $data['RegAdminName'] }}</p>
+        <div class="col-md-4 form-control-static">
+            {{ $data['RegAdminName'] }}
         </div>
         <label class="control-label col-md-2">등록일
         </label>
-        <div class="col-md-4">
-            <p class="form-control-static">{{ $data['RegDatm'] }}</p>
+        <div class="col-md-4 form-control-static">
+            {{ $data['RegDatm'] }}
         </div>
     </div>
     <div class="form-group form-group-sm">
         <label class="control-label col-md-2">최종 수정자
         </label>
-        <div class="col-md-4">
-            <p class="form-control-static">{{ $data['UpdAdminName'] }}</p>
+        <div class="col-md-4 form-control-static">
+            {{ $data['UpdAdminName'] }}
         </div>
         <label class="control-label col-md-2">최종 수정일
         </label>
-        <div class="col-md-4">
-            <p class="form-control-static">{{ $data['UpdDatm'] }}</p>
+        <div class="col-md-4 form-control-static">
+            {{ $data['UpdDatm'] }}
         </div>
     </div>
     <script type="text/javascript">

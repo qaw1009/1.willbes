@@ -106,7 +106,7 @@ class BaseAdvance extends \app\controllers\BaseController
     }
 
     /**
-     * 선수금 목록 엑셀다운로드 (테이블 HTML 출력방식 => 엑셀파일 오픈속도 느림)
+     * 선수금 목록 엑셀다운로드 (사용안함, 테이블 HTML 출력방식 => 엑셀파일 오픈속도 느림)
      */
     protected function excelTable()
     {
@@ -154,22 +154,21 @@ class BaseAdvance extends \app\controllers\BaseController
                 }
                 echo '</tr>';
 
-                //for ($i = 0; $i < 1000; $i++) {
-                    foreach ($list as $idx => $row) {
-                        echo '<tr>';
-                        foreach ($row as $key => $val) {
-                            if ($key == 'OrderNo') {
-                                echo '<td style="mso-number-format: \@;">' . $val . '</td>';
-                            } else {
-                                echo '<td>' . $val . '</td>';
-                            }
+                foreach ($list as $idx => $row) {
+                    echo '<tr>';
+                    foreach ($row as $key => $val) {
+                        if ($key == 'OrderNo') {
+                            echo '<td style="mso-number-format: \@;">' . $val . '</td>';
+                        } else {
+                            echo '<td>' . $val . '</td>';
                         }
-                        echo '</tr>';
-
-                        ob_flush();
-                        flush();
                     }
-                //}
+                    echo '</tr>';
+
+                    ob_flush();
+                    flush();
+                }
+
                 echo '</table>';
             ob_end_clean();
         } catch (\Exception $e) {

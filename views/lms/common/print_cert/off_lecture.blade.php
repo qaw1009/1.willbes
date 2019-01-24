@@ -34,35 +34,12 @@
 
                 @if(isset($data['OrderSubProdData']) === true)
                     ctkprint_bar.prt_text_L8 = txt_blank + txt_pack + '{{ str_mb_pad($data['ProdName'], 16) }}' + ';굴림;8;false;left';
-                    ctkprint_bar.prt_text_L11 = txt_blank + txt_pack + '{{ str_mb_pad(element('0', $data['OrderSubProdData']), 16) }}' + ';굴림;8;false;left';
 
-                    @if(empty(element('1', $data['OrderSubProdData'])) === false)
-                        ctkprint_bar.prt_text_L14 = txt_blank + txt_pack + '{{ str_mb_pad(element('1', $data['OrderSubProdData']), 16) }}' + ';굴림;8;false;left';
-                    @endif
-
-                    @if(empty(element('2', $data['OrderSubProdData'])) === false)
-                        ctkprint_bar.prt_text_L17 = txt_blank + txt_pack + '{{ str_mb_pad(element('2', $data['OrderSubProdData']), 16) }}' + ';굴림;8;false;left';
-                    @endif
-
-                    @if(empty(element('3', $data['OrderSubProdData'])) === false)
-                        ctkprint_bar.prt_text_L20 = txt_blank + txt_pack + '{{ str_mb_pad(element('3', $data['OrderSubProdData']), 16) }}' + ';굴림;8;false;left';
-                    @endif
-
-                    @if(empty(element('4', $data['OrderSubProdData'])) === false)
-                        ctkprint_bar.prt_text_L23 = txt_blank + txt_pack + '{{ str_mb_pad(element('4', $data['OrderSubProdData']), 16) }}' + ';굴림;8;false;left';
-                    @endif
-
-                    @if(empty(element('5', $data['OrderSubProdData'])) === false)
-                        ctkprint_bar.prt_text_L26 = txt_blank + txt_pack + '{{ str_mb_pad(element('5', $data['OrderSubProdData']), 16) }}' + ';굴림;8;false;left';
-                    @endif
-
-                    @if(empty(element('6', $data['OrderSubProdData'])) === false)
-                        ctkprint_bar.prt_text_L29 = txt_blank + txt_pack + '{{ str_mb_pad(element('6', $data['OrderSubProdData']), 16) }}' + ';굴림;8;false;left';
-                    @endif
-
-                    @if(empty(element('7', $data['OrderSubProdData'])) === false)
-                        ctkprint_bar.prt_text_L32 = txt_blank + txt_pack + '{{ str_mb_pad(element('7', $data['OrderSubProdData']), 16) }}' + ';굴림;8;false;left';
-                    @endif
+                    @for($i = 0; $i <=7; $i++)
+                        @if(empty(element($i, $data['OrderSubProdData'])) === false)
+                            ctkprint_bar.prt_text_L{{ 11 + ($i * 3) }} = txt_blank + txt_pack + '{{ str_mb_pad(element($i, $data['OrderSubProdData']), 16) }}' + ';굴림;8;false;left';
+                        @endif
+                    @endfor
                 @else
                     ctkprint_bar.prt_text_L8 = txt_blank + '{{ str_mb_pad($data['ProdName'], 21) }}' + ';굴림;8;false;left';
                 @endif

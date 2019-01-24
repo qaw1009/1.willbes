@@ -98,7 +98,7 @@
                 @if(isset($__menu['GNB']) === true)
                     @foreach($__menu['GNB'] as $bmenu)
                         @php
-                            $css_right_menu = $loop->remaining <= 2 ? 'right-menu' : '';
+                            $css_right_menu = $loop->count > 15 && $loop->remaining <= 2 ? 'right-menu' : '';
                         @endphp
 
                         @if(isset($bmenu['Children']) === true)

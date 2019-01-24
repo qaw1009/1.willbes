@@ -123,7 +123,7 @@
                     <div class="col-md-3 item">
                         <input type="text" id="book_name" name="book_name" class="form-control" title="교재명" required="required" value="{{ $data['ProdName'] }}">
                     </div>
-                    <label class="control-label col-md-2">교재코드
+                    <label class="control-label col-md-2 col-md-offset-1">교재코드
                     </label>
                     <div class="col-md-4">
                         <p class="form-control-static">@if($method == 'PUT'){{ $data['ProdCode'] }}@else # 등록 시 자동 생성 @endif</p>
@@ -132,7 +132,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2" for="disp_type_ccd">노출위치 <span class="required">*</span>
                     </label>
-                    <div class="col-md-3 item">
+                    <div class="col-md-4 item">
                         <div class="radio">
                             @foreach($arr_disp_type_ccd as $key => $val)
                                 <input type="radio" id="disp_type_ccd_{{ $loop->index }}" name="disp_type_ccd" class="flat" value="{{ $key }}" @if($loop->index === 1) required="required" title="노출위치" @endif @if($data['DispTypeCcd'] == $key || ($method == 'POST' && $loop->index === 1))checked="checked"@endif/> <label for="disp_type_ccd_{{ $loop->index }}" class="input-label">{{ $val }}</label>
@@ -173,7 +173,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2" for="is_coupon_y">쿠폰적용 <span class="required">*</span>
                     </label>
-                    <div class="col-md-3 item">
+                    <div class="col-md-4 item">
                         <div class="radio">
                             <input type="radio" id="is_coupon_y" name="is_coupon" class="flat" value="Y" required="required" title="쿠폰적용여부" @if($method == 'POST' || $data['IsCoupon'] == 'Y')checked="checked"@endif/> <label for="is_coupon_y" class="input-label">가능</label>
                             <input type="radio" id="is_coupon_n" name="is_coupon" class="flat" value="N" @if($data['IsCoupon'] == 'N')checked="checked"@endif/> <label for="is_coupon_n" class="input-label">불가능</label>
@@ -224,7 +224,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2" for="is_use">사용여부 <span class="required">*</span>
                     </label>
-                    <div class="col-md-3 item">
+                    <div class="col-md-4 item">
                         <div class="radio">
                             <input type="radio" id="is_use_y" name="is_use" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['IsUse'] == 'Y')checked="checked"@endif/> <label for="is_use_y" class="input-label">사용</label>
                             <input type="radio" id="is_use_n" name="is_use" class="flat" value="N" @if($data['IsUse'] == 'N')checked="checked"@endif/> <label for="is_use_n" class="input-label">미사용</label>
@@ -243,7 +243,7 @@
                     @if($method == 'PUT')
                     <label class="control-label col-md-2">사용여부(W)
                     </label>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <p class="form-control-static">@if($data['wIsUse'] == 'Y') 사용 @else <span class="red">미사용</span> @endif</p>
                     </div>
                     @endif
@@ -256,7 +256,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2">등록자
                     </label>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <p class="form-control-static">{{ $data['RegAdminName'] }}</p>
                     </div>
                     <label class="control-label col-md-2">등록일
@@ -268,7 +268,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2">최종 수정자
                     </label>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <p class="form-control-static">{{ $data['UpdAdminName'] }}</p>
                     </div>
                     <label class="control-label col-md-2">최종 수정일

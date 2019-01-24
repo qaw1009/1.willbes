@@ -53,7 +53,7 @@
                     <div class="col-md-3 item">
                         <input type="text" id="coupon_name" name="coupon_name" class="form-control" title="쿠폰명" required="required" value="{{ $data['CouponName'] }}">
                     </div>
-                    <label class="control-label col-md-2">쿠폰코드
+                    <label class="control-label col-md-2 col-md-offset-1">쿠폰코드
                     </label>
                     <div class="col-md-4">
                         <p class="form-control-static">@if($method == 'PUT'){{ $data['CouponIdx'] }}@else # 등록 시 자동 생성 @endif</p>
@@ -62,7 +62,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2" for="deploy_type_1">쿠폰배포루트 <span class="required">*</span>
                     </label>
-                    <div class="col-md-3 item">
+                    <div class="col-md-4 item">
                         <div class="radio">
                             <input type="radio" id="deploy_type_1" name="deploy_type" class="flat" value="N" title="쿠폰배포루트" required="required" @if($method == 'POST' || $data['DeployType'] == 'N')checked="checked"@endif/> <label for="deploy_type_1" class="input-label">온라인</label>
                             <input type="radio" id="deploy_type_2" name="deploy_type" class="flat" value="F" @if($data['DeployType'] == 'F')checked="checked"@endif/> <label for="deploy_type_2" class="input-label">오프라인</label>
@@ -215,7 +215,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2" for="disc_rate">할인율 <span class="required">*</span>
                     </label>
-                    <div class="col-md-3 form-inline item">
+                    <div class="col-md-4 form-inline item">
                         <input type="number" id="disc_rate" name="disc_rate" class="form-control" required="required" title="할인율" value="{{ $data['DiscRate'] }}" style="width: 140px;">
                         <select class="form-control" id="disc_type" name="disc_type">
                             <option value="R" @if('R' == $data['DiscType']) selected="selected" @endif>%</option>
@@ -231,7 +231,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2" for="issue_start_date">유효기간 <span class="required">*</span>
                     </label>
-                    <div class="col-md-3 form-inline">
+                    <div class="col-md-4 form-inline">
                         <div class="input-group mb-0 item">
                             <input type="text" class="form-control datepicker" id="issue_start_date" name="issue_start_date" required="required" title="유효시작일자" value="{{ $data['IssueStartDate'] or date('Y-m-d') }}">
                             <div class="input-group-addon no-border no-bgcolor">~</div>
@@ -266,7 +266,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2">등록자
                     </label>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <p class="form-control-static">@if($method == 'PUT'){{ $data['RegAdminName'] }}@endif</p>
                     </div>
                     <label class="control-label col-md-2">등록일
@@ -278,7 +278,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2">최종 수정자
                     </label>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <p class="form-control-static">@if($method == 'PUT'){{ $data['UpdAdminName'] }}@endif</p>
                     </div>
                     <label class="control-label col-md-2">최종 수정일

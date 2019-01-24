@@ -26,8 +26,8 @@
             </div>
             <label class="control-label col-md-2" for="">운영 사이트 코드
             </label>
-            <div class="col-md-4">
-                <p id="selected_site_code" class="form-control-static">{{ $site_code }}</p>
+            <div class="col-md-4 form-control-static">
+                <p id="selected_site_code">{{ $site_code }}</p>
             </div>
         </div>
         {{-- 하위메뉴 등록 --}}
@@ -35,8 +35,8 @@
             <div class="form-group form-group-sm">
                 <label class="control-label col-md-2">메뉴 경로
                 </label>
-                <div class="col-md-10">
-                    <p class="form-control-static pl-0">{{ str_replace('>', ' > ', $menu_route_name) }}</p>
+                <div class="col-md-10 form-control-static">
+                    <p class="pl-0">{{ str_replace('>', ' > ', $menu_route_name) }}</p>
                 </div>
             </div>
         @endif
@@ -48,8 +48,8 @@
             </div>
             <label class="control-label col-md-2">메뉴코드
             </label>
-            <div class="col-md-4">
-                <p class="form-control-static">@if($method == 'PUT'){{ $data['MenuIdx'] }}@else # 등록 시 자동 생성 @endif</p>
+            <div class="col-md-4 form-control-static">
+                @if($method == 'PUT'){{ $data['MenuIdx'] }}@else # 등록 시 자동 생성 @endif
             </div>
         </div>
         <div class="form-group form-group-sm">
@@ -109,25 +109,25 @@
         <div class="form-group form-group-sm">
             <label class="control-label col-md-2">등록자
             </label>
-            <div class="col-md-4">
-                <p class="form-control-static">{{ $data['RegAdminName'] }}</p>
+            <div class="col-md-4 form-control-static">
+                {{ $data['RegAdminName'] }}
             </div>
             <label class="control-label col-md-2">등록일
             </label>
-            <div class="col-md-4">
-                <p class="form-control-static">{{ $data['RegDatm'] }}</p>
+            <div class="col-md-4 form-control-static">
+                {{ $data['RegDatm'] }}
             </div>
         </div>
         <div class="form-group form-group-sm">
             <label class="control-label col-md-2">최종 수정자
             </label>
-            <div class="col-md-4">
-                <p class="form-control-static">{{ $data['UpdAdminName'] }}</p>
+            <div class="col-md-4 form-control-static">
+                {{ $data['UpdAdminName'] }}
             </div>
             <label class="control-label col-md-2">최종 수정일
             </label>
-            <div class="col-md-4">
-                <p class="form-control-static">{{ $data['UpdDatm'] }}</p>
+            <div class="col-md-4 form-control-static">
+                {{ $data['UpdDatm'] }}
             </div>
         </div>
         <script type="text/javascript">

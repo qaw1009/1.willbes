@@ -24,8 +24,8 @@
         </div>
         <label class="control-label col-md-2" for="">저자 코드
         </label>
-        <div class="col-md-4">
-            <p class="form-control-static">@if($method == 'PUT'){{ $data['wAuthorIdx'] }}@else # 등록 시 자동 생성 @endif</p>
+        <div class="col-md-4 form-control-static">
+            @if($method == 'PUT'){{ $data['wAuthorIdx'] }}@else # 등록 시 자동 생성 @endif
         </div>
     </div>
     <div class="form-group form-group-sm">
@@ -48,25 +48,25 @@
     <div class="form-group form-group-sm">
         <label class="control-label col-md-2">등록자
         </label>
-        <div class="col-md-4">
-            <p class="form-control-static">{{ $data['wRegAdminName'] }}</p>
+        <div class="col-md-4 form-control-static">
+            {{ $data['wRegAdminName'] }}
         </div>
         <label class="control-label col-md-2">등록일
         </label>
-        <div class="col-md-4">
-            <p class="form-control-static">{{ $data['wRegDatm'] }}</p>
+        <div class="col-md-4 form-control-static">
+            {{ $data['wRegDatm'] }}
         </div>
     </div>
     <div class="form-group form-group-sm">
         <label class="control-label col-md-2">최종 수정자
         </label>
-        <div class="col-md-4">
-            <p class="form-control-static">{{ $data['wUpdAdminName'] }}</p>
+        <div class="col-md-4 form-control-static">
+            {{ $data['wUpdAdminName'] }}
         </div>
         <label class="control-label col-md-2">최종 수정일
         </label>
-        <div class="col-md-4">
-            <p class="form-control-static">{{ $data['wUpdDatm'] }}</p>
+        <div class="col-md-4 form-control-static">
+            {{ $data['wUpdDatm'] }}
         </div>
     </div>
     <script type="text/javascript">

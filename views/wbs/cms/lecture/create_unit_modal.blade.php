@@ -15,19 +15,16 @@
         @endsection
 
         @section('layer_content')
-            <div class="x_title text-right">
-                <span class="required">*</span> 표시된 항목은 필수 입력 항목입니다.
-            </div>
-
-            <div class="form-group form-group-sm no-border-bottom">
-                <div class="x_title text-left">
-                    마스터강의기본정보
+            <div class="x_title">
+                <div class="pull-left">
+                    <div class="inline-block bold">마스터강의기본정보</div>
                     · {{ $data['wCpName'] }} > {{ $data['wContentCcdName'] }} > {{ $data['wLecName'] }} > {{ $data['profName_string'] }}
                 </div>
+                <div class="text-right">
+                    <span class="required">*</span> 표시된 항목은 필수 입력 항목입니다.
+                </div>
             </div>
-
             {!! form_errors() !!}
-
             <div class="form-group form-group-sm no-border-bottom">
                 <div class="">
                     <div class="item form-inline">

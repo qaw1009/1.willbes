@@ -199,7 +199,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2">등록자
                     </label>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <p class="form-control-static">{{ $data['wAdminName'] }}</p>
                     </div>
                     <label class="control-label col-md-2">등록일
@@ -211,7 +211,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2">최종 수정자
                     </label>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <p class="form-control-static">{{ $data['wUpdAdminName'] }}</p>
                     </div>
                     <label class="control-label col-md-2">최종 수정일

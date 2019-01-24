@@ -115,6 +115,54 @@ class StatisticsGrade extends \app\controllers\BaseController
         ]);
     }
 
+    /**
+     * 모의고사정보
+     */
+    public function statSubject($param = [])
+    {
+        //$arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+        $prodcode = $param[0];
+
+        $productInfo = $this->regGradeModel->productInfo($prodcode);
+
+        // 직렬이름 추출
+        $mockKindCode = $this->config->item('sysCode_kind', 'mock'); // 직렬 운영코드값
+
+        $codes = $this->codeModel->getCcdInArray([$mockKindCode]);
+
+        $SiteCode = $productInfo['SiteCode'];
+        if(empty($productInfo)===false){
+            $productInfo['SiteName'] = $_SESSION['admin_auth_data']['Site'][$SiteCode]['SiteName'];
+
+            $mockPart = explode(',', $productInfo['MockPart']);
+            foreach ($mockPart as $mp) {
+                if( !empty($codes[$mockKindCode][$mp]) ){
+                    $productInfo['MockPartName'][] = $codes[$mockKindCode][$mp];
+                }
+            }
+        }
+
+        $list = $this->regGradeModel->subjectDetail($prodcode);
+
+        print_r($list);
+
+
+        $MpIdxSet = $list['MpIdxSet'];
+        $list = $list['rdata'];
+        $TakeMockPartSet = $list['TakeMockPartSet'];
+
+        var_dump($list['TakeMockPartSet']);
+
+        $this->load->view('mocktest/statistics/grade/stat_subject', [
+            'productInfo' => $productInfo,
+            'list' => $list,
+            'TakeMockPartSet' => $TakeMockPartSet,
+            'MpIdxSet' => $MpIdxSet,
+            'prodcode' => $prodcode
+        ]);
+
+
+    }
 
     /**
      * 임시저장 전체

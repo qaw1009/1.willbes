@@ -139,7 +139,6 @@ class RegGoods extends \app\controllers\BaseController
         $codes = $this->codeModel->getCcdInArray([$this->applyType, $this->applyArea1, $this->applyArea2, $this->addPoint, $this->acceptStatus]);
         $csTel = $this->siteModel->getSiteArray(false, 'CsTel');
 
-
         $cateD2Json = array();
         foreach ($cateD2 as $it) {
             $cateD2Json[ $it['ParentCateCode'] ][ $it['CateCode'] ] = $it['CateName'];

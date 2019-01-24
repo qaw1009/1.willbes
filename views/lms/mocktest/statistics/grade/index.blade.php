@@ -140,8 +140,6 @@
                 if($(eTarget).attr('id') == 'searchInit') $datatable.draw();
             });
 
-
-
             // DataTables
             $datatable = $list_table.DataTable({
                 info: true,
@@ -171,7 +169,7 @@
                     {'data' : 'MockYear', 'class': 'text-center'},
                     {'data' : 'MockRotationNo', 'class': 'text-center'},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return '<span class="blue underline-link act-edit">[' + row.ProdCode + '] ' + row.ProdName + '</span>';
+                            return '<span class="">[' + row.ProdCode + '] ' + row.ProdName + '</span>';
                         }},
 
                     {'data' : 'TakePart_on', 'class': 'text-center', 'render' : function(data, type, row, meta) {
@@ -182,8 +180,8 @@
                         }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) { return 0; }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) { return 0; }},
-                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return '<span class="blue underline-link act-edit">' + '확인' + '</span>';
+                    {'data' : 'ProdCode', 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                            return '<span class="blue underline-link act-edit"><input type="hidden" name="target" value="' + row.ProdCode + '" />확인</span>';
                         }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) { return 0; }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
@@ -196,20 +194,21 @@
             // 수정으로 이동
             $list_form.on('click', '.act-edit', function () {
                 var query = dtParamsToQueryString($datatable);
-                location.href = '{{ site_url('/mocktest/regGoods/edit/') }}' + $(this).closest('tr').find('[name=target]').val() + query;
+                location.href = '{{ site_url('/mocktest/statisticsGrade/statSubject/') }}' + $(this).closest('tr').find('[name=target]').val() + query;
             });
 
         });
 
         function scoreMake(prodcode){
             $('#ProdCode').val(prodcode);
-            var _url = '{{ front_url('/mocktest/statisticsGrade/scoreMakeAjax') }}';
-            ajaxSubmit($regi_form, _url, function(ret) {
 
+            var _url = '{{ site_url('/mocktest/statisticsGrade/scoreMakeAjax') }}';
+            ajaxSubmit($regi_form, _url, function(ret) {
                 if(ret.ret_cd) {
                     alert(ret.ret_msg);
                 }
             }, showValidateError, null, false, 'alert');
         }
+
     </script>
 @stop

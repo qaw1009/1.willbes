@@ -32,43 +32,17 @@
                 {{--
                 ctkprint_bar.prt_text_L10 라인에 들어가는 글자길이는 21자리 이상이어야 함
                 ctkprint_bar.prt_text_L14 라인에 들아가는 글자길이는 10자리 이상이어야 함
+                ctkprint_bar.prt_text_L16 . 18 라인에 들아가는 글자길이는 10자리 이상이어야 함
                 --}}
-
-                ctkprint_bar.prt_text_L2 = "                     성명 : 조규호;굴림;10;true;left";
-                ctkprint_bar.prt_text_L6 = "                                      응시번호 : 10000001;굴림;8;false;left";
-                ctkprint_bar.prt_text_L10 = "        공무원 모의고사 고고씽 ;굴림;8;false;left";
-                ctkprint_bar.prt_text_L14 = "                          [ 7급 세무 ] ;굴림;8;false;left";
-                ctkprint_bar.prt_text_L16 = "                          - 선택1 : ;굴림;8;false;left";
-                ctkprint_bar.prt_text_L18 = "                          - 선택2 : ;굴림;8;false;left";
-                ctkprint_bar.prt_text_L21 = "                          - 시험일(01/23);굴림;8;false;left";
-                ctkprint_bar.prt_text_L26 = "      2019-01-23" + ";굴림;8;false;left";
-
-
-            /*
-            ctkprint_bar.prt_text_L2 = "                     성명 : 현미선;굴림;10;true;left";
-            ctkprint_bar.prt_text_L6 = "                                      응시번호 : 1020111;굴림;8;false;left";
-            ctkprint_bar.prt_text_L10 = "        16년대비 1회 9급 전국모의고사 - 11/22(일) ;굴림;8;false;left";
-            ctkprint_bar.prt_text_L14 = "                          [ 9급공무원 세무직 ];굴림;8;false;left";
-            ctkprint_bar.prt_text_L16 = "                          - 선택1 : ;굴림;8;false;left";
-            ctkprint_bar.prt_text_L18 = "                          - 선택2 : ;굴림;8;false;left";
-            ctkprint_bar.prt_text_L21 = "                          - 시험일(11/22);굴림;8;false;left";
-            ctkprint_bar.prt_text_L26 = "      2019-01-23" + ";굴림;8;false;left";
-            */
-
-            /*
-           ctkprint_bar.prt_text_L2 = "                     성명 : {{$data['MemName']}};굴림;10;true;left";
-            ctkprint_bar.prt_text_L6 = "                                      응시번호 : {{$data['TakeNumber']}};굴림;8;false;left";
-            ctkprint_bar.prt_text_L10 = "        {{$data['ProdName_Print']}} ;굴림;8;false;left";
-            ctkprint_bar.prt_text_L14 = "                          [ {{$data['CateName']}} {{$data['TakeMockPart_Name']}} ];굴림;8;false;left";
-            ctkprint_bar.prt_text_L16 = "                          - 선택1 : {{$data['Subject_Sub'][0]}};굴림;8;false;left";
-            ctkprint_bar.prt_text_L18 = "                          - 선택2 : {{$data['Subject_Sub'][1]}};굴림;8;false;left";
-            ctkprint_bar.prt_text_L21 = "                          - 시험일({{$data['TakeDate']}});굴림;8;false;left";
-            ctkprint_bar.prt_text_L26 = "      {{ date('Y-m-d') }}" + ";굴림;8;false;left";
-            */
+                ctkprint_bar.prt_text_L2 = "                     성명 : {{$data['MemName']}};굴림;10;true;left";
+                ctkprint_bar.prt_text_L6 = "                                      응시번호 : {{$data['TakeNumber']}};굴림;8;false;left";
+                ctkprint_bar.prt_text_L10 = "        {{str_mb_pad($data['ProdName_Print'],21)}} ;굴림;8;false;left";
+                ctkprint_bar.prt_text_L14 = "                           [ {{$data['CateName']}} {{$data['TakeMockPart_Name']}} ];굴림;8;false;left";
+                ctkprint_bar.prt_text_L16 = "                          - 선택1 : {{str_mb_pad($data['Subject_Sub'][0],11)}} ;굴림;8;false;left";
+                ctkprint_bar.prt_text_L18 = "                          - 선택2 : {{str_mb_pad($data['Subject_Sub'][1],11)}};굴림;8;false;left";
+                ctkprint_bar.prt_text_L21 = "                          - 시험일({{$data['TakeDate']}});굴림;8;false;left";
+                ctkprint_bar.prt_text_L26 = "      {{ date('Y-m-d') }}" + ";굴림;8;false;left";
             @endif
-
-
-
             // 인쇄 관련 부분 시작
             ctkprint_bar.CT_DOC_Prt = 1;	    // 인쇄 요청 코드
             ctkprint_bar.CT_DOC_Prt2 = 1; 	// 미리보기 코드 (일반 프린터 인쇄)

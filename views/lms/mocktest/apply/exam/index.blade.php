@@ -30,9 +30,6 @@
                                 <option value="{{$k}}">{{$v}}</option>
                             @endforeach
                         </select>
-                        <input type="text" name="search_startDate" value="" class="form-control datepicker" style="width: 100px;" placeholder="기간시작일" readonly>
-                        <span class="pl-5 pr-5">~</span>
-                        <input type="text" name="search_endDate" value="" class="form-control datepicker"  style="width: 100px;" placeholder="기간종료일" readonly>
                     </div>
                 </div>
                 <div class="form-group form-inline">
@@ -43,7 +40,7 @@
                 </div>
                 <div class="pt-10">
                     <div class="col-md-6">
-                        <button type="button" class="btn btn-primary mr-50" id="act-excelDown">엑셀다운로드</button>
+                        <button type="button" class="btn btn-primary mr-50 btn-excel" id="btn-excel">엑셀다운로드</button>
                     </div>
                     <div class="col-md-6 text-right">
                         <button type="submit" class="btn btn-primary" id="btn_search">검색</button>
@@ -62,17 +59,16 @@
                     <tr>
                         <th rowspan="2" class="text-center">NO</th>
                         <th colspan="3" class="text-center">상품정보</th>
-                        <th rowspan="2" class="text-center">응시형태</th>
-                        <th rowspan="2" class="text-center">Off마감인원</th>
-                        <th rowspan="2" class="text-center">응시지역</th>
-                        <th colspan="3" class="text-center">접수현황</th>
+                        <th rowspan="2" class="text-center rowspan">응시형태</th>
+                        <th rowspan="2" class="text-center rowspan">Off<BR>마감인원</th>
+                        <th rowspan="2" class="text-center rowspan">응시지역</th>
+                        <th colspan="2" class="text-center">접수현황</th>
                         <th rowspan="2" class="text-center blue">응시인원</th>
                     </tr>
                     <tr>
-                        <th class="text-center">연도</th>
-                        <th class="text-center">회차</th>
-                        <th class="text-center">모의고사명</th>
-                        <th class="text-center">결제대기</th>
+                        <th class="text-center rowspan">연도</th>
+                        <th class="text-center rowspan">회차</th>
+                        <th class="text-center rowspan">모의고사명</th>
                         <th class="text-center blue">결제완료</th>
                         <th class="text-center">환불완료</th>
                     </tr>
@@ -116,32 +112,47 @@
                         return $.extend(arrToJson($search_form.serializeArray()), {'start' : data.start, 'length' : data.length});
                     }
                 },
+                rowsGroup: ['.rowspan'],
                 columns: [
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                        return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
-                    }},
-                    {'data' : 'MockYear', 'class': 'text-center'},
-                    {'data' : 'MockRotationNo', 'class': 'text-center'},
+                            return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
+                        }},
+                    {'data' : 'ProdCode', 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                            return '<span>' + row.MockYear +'</span>';
+                        }},
+                    {'data' : 'ProdCode', 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                            return '<span>' + row.MockRotationNo +'</span>';
+                        }},
+                    {'data' : 'ProdName', 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                            return '<span>[' + row.ProdCode + '] ' + row.ProdName + '</span>';
+                        }},
+                    {'data' : 'TakeForm_Name', 'class': 'text-center'},
+                    {'data' : 'ClosingPerson', 'class': 'text-center' , 'render' : function(data, type, row, meta) {
+                            return (data === '0') ? '-' : data;
+                        }},
+                    {'data' : 'TakeArea_Name', 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                            return (data === null) ? '없음' : data;
+                        }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                        return '<span>[' + row.ProdCode + '] ' + row.ProdName + '</span>';
-                    }},
-                    {'data' : 'TakeForm', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                        return (typeof applyType[data] !== 'undefined') ? applyType[data] : '';
-                    }},
-                    {'data' : 'ClosingPerson', 'class': 'text-center'},
-                    {'data' : 'TakeArea', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                        return (typeof applyArea[data] !== 'undefined') ? applyArea[data] : '';
-                    }},
-                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) { return 0; }},
-                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) { return 0; }},
-                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) { return 0; }},
-                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) { return 0; }}
+                            return '<a href="{{site_url('/mocktest/applyUser/')}}?search_PayStatusCcd=676001&search_fi='+row.ProdCode+'" target="_new">'+ row.pay_count +'</a>';
+                        }},
+                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                            return '<a href="{{site_url('/mocktest/applyUser/')}}?search_PayStatusCcd=676006&search_fi='+row.ProdCode+'" target="_new">'+ row.refund_count +'</a>';
+                        }},
+                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                            return '<a href="{{site_url('/mocktest/applyUser/')}}?search_IsTake=Y&search_fi='+row.ProdCode+'" target="_new">'+ row.take_count +'</a>';
+                        }},
                 ]
             });
 
             // 엑셀다운로드
+            $('.btn-excel').on('click', function(event) {
+                event.preventDefault();
+                if (confirm('엑셀다운로드 하시겠습니까?')) {
+                    formCreateSubmit('{{ site_url('/mocktest/applyExam/list/Y') }}', $search_form.serializeArray(), 'POST');
+                }
+            });
 
-            // 이동
         });
     </script>
 @stop

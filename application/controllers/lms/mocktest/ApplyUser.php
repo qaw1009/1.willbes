@@ -35,11 +35,19 @@ class ApplyUser extends \app\controllers\BaseController
         $applyAreaTmp2 = array_map(function($v) { return '[지역2] '. $v; }, $codes[$applyArea2]);
         $applyArea = $applyAreaTmp1 + $applyAreaTmp2;
 
+        /*모의고사별 접수현황 메뉴에서 검색조건 달고 페이지 접근*/
+        $search_PayStatusCcd = $this->_req('search_PayStatusCcd');
+        $search_IsTake = $this->_req('search_IsTake');
+        $search_fi = $this->_req('search_fi', true);
+
         $this->load->view('mocktest/apply/user/index', [
             'siteCodeDef' => $siteCode[0],
             'paymentStatus' => $codes[$paymentStatus],
             'applyType' => $codes[$applyType],
             'applyArea' => $applyArea,
+            'search_PayStatusCcd'=>$search_PayStatusCcd,
+            'search_IsTake'=>$search_IsTake,
+            'search_fi'=>$search_fi,
         ]);
     }
 
@@ -70,21 +78,21 @@ class ApplyUser extends \app\controllers\BaseController
 
         $condition = [
             'EQ' => [
-                'O.SiteCode' => $this->input->post('search_site_code'),
-                'OP.PayStatusCcd' => $this->input->post('search_PayStatusCcd'),
-                'MR.TakeForm' => $this->input->post('search_TakeForm'),
-                'MR.TakeArea' => $this->input->post('search_TakeArea'),
-                'MR.IsTake' => $this->input->post('search_IsTake'),
+                'O.SiteCode' => $this->_req('search_site_code'),
+                'OP.PayStatusCcd' => $this->_req('search_PayStatusCcd'),
+                'MR.TakeForm' => $this->_req('search_TakeForm'),
+                'MR.TakeArea' => $this->_req('search_TakeArea'),
+                'MR.IsTake' => $this->_req('search_IsTake'),
             ],
             'ORG' => [
                 'LKB' => [
-                    'U.MemName' => $this->input->post('search_fi', true),
-                    'U.MemId' => $this->input->post('search_fi', true),
-                    'U.Phone3' => $this->input->post('search_fi', true),
-                    'PD.ProdName' => $this->input->post('search_fi', true),
-                    'MR.ProdCode' => $this->input->post('search_fi', true),
-                    'MR.TakeNumber' => $this->input->post('search_fi', true),
-                    'O.OrderNo' => $this->input->post('search_fi', true),
+                    'U.MemName' => $this->_req('search_fi', true),
+                    'U.MemId' => $this->_req('search_fi', true),
+                    'U.Phone3' => $this->_req('search_fi', true),
+                    'PD.ProdName' => $this->_req('search_fi', true),
+                    'MR.ProdCode' => $this->_req('search_fi', true),
+                    'MR.TakeNumber' => $this->_req('search_fi', true),
+                    'O.OrderNo' => $this->_req('search_fi', true),
                 ]
             ],
         ];

@@ -15,7 +15,7 @@
                         <select class="form-control mr-5" id="search_PayStatusCcd" name="search_PayStatusCcd">
                             <option value="">결제상태</option>
                             @foreach($paymentStatus as $k => $v)
-                                <option value="{{$k}}">{{$v}}</option>
+                                <option value="{{$k}}" @if($search_PayStatusCcd == $k) selected @endif>{{$v}}</option>
                             @endforeach
                         </select>
                         <select class="form-control mr-5" id="search_TakeForm" name="search_TakeForm">
@@ -32,15 +32,15 @@
                         </select>
                         <select class="form-control mr-5" id="search_IsTake" name="search_IsTake">
                             <option value="">응시여부</option>
-                            <option value="Y">응시</option>
-                            <option value="N">미응시</option>
+                            <option value="Y" @if($search_IsTake == 'Y') selected @endif>응시</option>
+                            <option value="N" @if($search_IsTake == 'N') selected @endif>미응시</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-group form-inline">
                     <label class="col-md-1 control-label">회원검색</label>
                     <div class="col-md-6">
-                        <input type="text" class="form-control" style="width:300px;" id="search_fi" name="search_fi" value=""> 회원명, 연락처, 주문번호, 응시변호, 상품명/코드 검색 가능
+                        <input type="text" class="form-control" style="width:300px;" id="search_fi" name="search_fi" value="{{$search_fi}}"> 회원명, 연락처, 주문번호, 응시변호, 상품명/코드 검색 가능
                     </div>
                 </div>
                 <div class="pt-10">

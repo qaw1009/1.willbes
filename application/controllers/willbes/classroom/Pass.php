@@ -635,7 +635,7 @@ class Pass extends \app\controllers\FrontController
 
             $data['page'] = $page;
             $data['totalpage'] = ceil($data['count'] / $pagesize);
-            
+
         } else {
             $data['page'] = 1;
             $data['totalpage'] = 0;

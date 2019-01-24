@@ -1369,4 +1369,14 @@ class On extends \app\controllers\FrontController
         ]);
     }
 
+    public function bookmark()
+    {
+
+    }
+
+    public function Certificate()
+    {
+
+    }
+
 }

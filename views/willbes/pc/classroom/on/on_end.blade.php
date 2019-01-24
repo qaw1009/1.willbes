@@ -103,7 +103,7 @@
                                                 @if($row['IsRetake'] == 'N')
                                                     <span class="bBox whiteBox NSK">재수강불가</span>
                                                 @else
-                                                    <a href="javascript:;" onclick="fnRetake();"><span class="bBox blueBox NSK">재수강신청</span></a>
+                                                    <a href="javascript:;" onclick="fnRetake('{{app_to_env_url($row['SiteUrl'])}}','{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}');"><span class="bBox blueBox NSK">재수강신청</span></a>
                                                 @endif
                                                 <a href="javascript:;" onclick="fnPostscript();"><span class="bBox whiteBox NSK">후기등록</span></a>
                                             </td>
@@ -142,7 +142,8 @@
                                                 @if($row['IsRetake'] == 'N')
                                                     <span class="bBox whiteBox NSK">재수강불가</span>
                                                 @else
-                                                    <a href="javascript:;" onclick="fnRetake();"><span class="bBox blueBox NSK">재수강신청</span></a>
+                                                    <span class="bBox whiteBox NSK">재수강불가</span>
+                                                    <!-- <a href="javascript:;" onclick="fnRetake('','{{$row['OrderIdx']}}','{{$row['ProdCode']}}','');"><span class="bBox blueBox NSK">재수강신청</span></a> -->
                                                 @endif
                                             </td>
                                         </tr>
@@ -208,6 +209,14 @@
         </div>
         {!! banner('내강의실_우측날개', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
     </div>
+    <form name="retakeForm" id="retakeForm" method="POST" action="">
+    {!! csrf_field() !!}
+    {!! method_field('POST') !!}
+        <input type="hidden" name="sale_pattern" value="retake" />
+        <input type="hidden" name="target_order_idx" id="retake_orderidx" value="" />
+        <input type="hidden" name="target_prod_code" id="retake_prodcode" value="" />
+        <input type="hidden" name="target_prod_code_sub" id="retake_prodcodesub" value="" />
+    </form>
     <!-- End Container -->
     <script type="text/javascript">
         $(document).ready(function() {
@@ -223,9 +232,20 @@
             });
         });
 
-        function fnRetake()
+        function fnRetake($site, $o, $p, $ps)
         {
-            alert("재수강");
+            $('#retake_orderidx').val($o);
+            $('#retake_prodcode').val($p);
+            $('#retake_prodcodesub').val($ps);
+
+            if(window.confirm('재수강 신청하시겠습니까?') == true){
+                $('#retakeForm').prop('action', '//'+$site+'/cart/store').submit();
+            }
+        }
+
+        function fnPostscript()
+        {
+
         }
     </script>
 @stop

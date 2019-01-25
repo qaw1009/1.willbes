@@ -8,6 +8,8 @@ class Pass extends \app\controllers\FrontController
     protected $auth_controller = true;
     protected $auth_methods = array();
 
+    protected $_LearnPatternCcd_pass = ['615004'];
+
     public function __construct()
     {
         parent::__construct();
@@ -30,7 +32,6 @@ class Pass extends \app\controllers\FrontController
         $cond_arr = [
             'EQ' => [
                 'MemIdx' => $this->session->userdata('mem_idx'), // 사용자번호
-                'LearnPatternCcd' => '615004', // 학습방식 : 기간제패키지
             ],
             'LTE' => [
                 'LecStartDate' => $today // 시작일 <= 오늘
@@ -46,6 +47,9 @@ class Pass extends \app\controllers\FrontController
                     'ProdName' => $this->_req('search_text'), // 강의명 검색 (패키지명)
                     'subProdName' => $this->_req('search_text') // 강의명 검색 (실제 강좌명)
                 ]
+            ],
+            'IN' => [
+                'LearnPatternCcd' => $this->_LearnPatternCcd_pass, // 학습방식 : 기간제패키지
             ]
         ];
 
@@ -58,7 +62,6 @@ class Pass extends \app\controllers\FrontController
         $cond_arr = [
             'EQ' => [
                 'MemIdx' => $this->session->userdata('mem_idx'), // 사용자번호
-                'LearnPatternCcd' => '615004', // 학습방식 : 기간제패키지
                 'SiteCode' => $sitecode // 해당사이트의 강좌만
             ],
             'LTE' => [
@@ -75,6 +78,9 @@ class Pass extends \app\controllers\FrontController
                     'ProdName' => $this->_req('search_text'), // 강의명 검색 (패키지명)
                     'subProdName' => $this->_req('search_text') // 강의명 검색 (실제 강좌명)
                 ]
+            ],
+            'IN' => [
+                'LearnPatternCcd' => $this->_LearnPatternCcd_pass, // 학습방식 : 기간제패키지
             ]
         ];
 
@@ -235,7 +241,6 @@ class Pass extends \app\controllers\FrontController
             'leclist_end' => $leclist_end,
             'leclist_nodisp' => $leclist_nodisp
         ]);
-
     }
 
     /**
@@ -701,7 +706,6 @@ class Pass extends \app\controllers\FrontController
         $cond_arr = [
             'EQ' => [
                 'MemIdx' => $this->session->userdata('mem_idx'), // 사용자번호
-                'LearnPatternCcd' => '615004', // 학습방식 : 기간제패키지
                 'ProdCode' => $prodcode,
                 'OrderIdx' => $orderidx
             ],
@@ -714,6 +718,9 @@ class Pass extends \app\controllers\FrontController
             'GTE' => [
                 'RealLecEndDate' => $today // 종료일 >= 오늘
             ],
+            'IN' => [
+                'LearnPatternCcd' => $this->_LearnPatternCcd_pass, // 학습방식 : 기간제패키지
+            ]
         ];
 
         // 학습형태 : 기간제패키지
@@ -813,7 +820,6 @@ class Pass extends \app\controllers\FrontController
         $cond_arr = [
             'EQ' => [
                 'MemIdx' => $this->session->userdata('mem_idx'), // 사용자번호
-                'LearnPatternCcd' => '615004', // 학습방식 : 기간제패키지
                 'ProdCode' => $prodcode,
                 'OrderIdx' => $orderidx
             ],
@@ -826,6 +832,9 @@ class Pass extends \app\controllers\FrontController
             'GTE' => [
                 'RealLecEndDate' => $today // 종료일 >= 오늘
             ],
+            'IN' => [
+                'LearnPatternCcd' => $this->_LearnPatternCcd_pass, // 학습방식 : 기간제패키지
+            ]
         ];
 
         // 학습형태 : 기간제패키지
@@ -881,7 +890,6 @@ class Pass extends \app\controllers\FrontController
         $cond_arr = [
             'EQ' => [
                 'MemIdx' => $this->session->userdata('mem_idx'), // 사용자번호
-                'LearnPatternCcd' => '615004', // 학습방식 : 기간제패키지
                 'ProdCode' => $prodcode,
                 'OrderIdx' => $orderidx
             ],
@@ -894,6 +902,9 @@ class Pass extends \app\controllers\FrontController
             'GTE' => [
                 'RealLecEndDate' => $today // 종료일 >= 오늘
             ],
+            'IN' => [
+                'LearnPatternCcd' => $this->_LearnPatternCcd_pass, // 학습방식 : 기간제패키지
+            ]
         ];
 
         // 학습형태 : 기간제패키지

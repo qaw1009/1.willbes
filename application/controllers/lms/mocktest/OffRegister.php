@@ -9,7 +9,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class StatisticsGrade extends \app\controllers\BaseController
+class OffRegister extends \app\controllers\BaseController
 {
     protected $models = array('sys/site', 'sys/code', 'sys/category', 'product/base/subject', 'common/searchProfessor', 'mocktest/mockCommon', 'mocktest/regGrade');
     protected $helpers = array();
@@ -49,7 +49,7 @@ class StatisticsGrade extends \app\controllers\BaseController
         $codes = $this->codeModel->getCcdInArray([$this->applyType, $this->acceptStatus]);
 
 
-        $this->load->view('mocktest/statistics/grade/index', [
+        $this->load->view('mocktest/statistics/register/index', [
             'siteCodeDef' => $cateD1[0]['SiteCode'],
             'cateD1' => $cateD1,
             'cateD2' => $cateD2,
@@ -148,7 +148,7 @@ class StatisticsGrade extends \app\controllers\BaseController
         $list = $listArr['rdata'];
         $TakeMockPartSet = $listArr['TakeMockPartSet'];
 
-        $this->load->view('mocktest/statistics/grade/stat_subject', [
+        $this->load->view('mocktest/statistics/register/register', [
             'productInfo' => $productInfo,
             'list' => $list,
             'TakeMockPartSet' => $TakeMockPartSet,
@@ -160,15 +160,83 @@ class StatisticsGrade extends \app\controllers\BaseController
     }
 
     /**
-     * 임시저장 전체
-     * @return object|string
+     * 시험본리스트
      */
-    public function scoreMakeAjax()
+    public function privatelist()
     {
-        ////////////////////////////////////////////////
+        $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
 
-        $result = $this->regGradeModel->scoreMake($this->_reqP(null, false));
-        $this->json_result($result, '저장되었습니다.', $result, $result);
+        $prodcode = element('prodcode',$arr_input);
 
+        $condition = [
+            'EQ' => [
+                'MR.ProdCode' => $prodcode,
+
+            ],
+        ];
+
+        list($data, $count) = $this->regGradeModel->questionAnswerList($condition, $this->input->post('length'), $this->input->post('start'));
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $data,
+        ]);
     }
+
+    /**
+     * 성적등록용 엑셀업로드
+     */
+    public function redata()
+    {
+        $prodcode = get_var($this->_reqP('prodcode'), 'form');
+
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST,PUT]'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return null;
+        }
+
+
+        $params = $this->_getInvoiceExcelData();
+
+        if ($params === false) {
+            return $this->json_error('엑셀파일 읽기에 실패했습니다.');
+        }
+
+        $result = $this->regGradeModel->offGradeUpload($prodcode, $params);
+
+        return $this->json_result($result, '저장 되었습니다.', $result);
+    }
+
+    /**
+     * 업로드된 엑셀파일 변환
+     * @return array|bool
+     */
+    private function _getInvoiceExcelData()
+    {
+        try {
+            $this->load->library('excel');
+            $data = $this->excel->readExcel($_FILES['attach_file']['tmp_name']);
+
+        } catch (\Exception $e) {
+            return false;
+        }
+
+        return $data;
+    }
+
+    /**
+     * 샘플엑셀파일 다운로드
+     */
+    public function sampleDownload()
+    {
+        $this->load->helper('download');
+        $file_path = STORAGEPATH . 'resources/sample/sample_qa.xlsx';
+        force_download($file_path, null);
+    }
+
+
 }

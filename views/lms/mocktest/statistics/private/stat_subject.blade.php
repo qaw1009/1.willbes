@@ -7,9 +7,7 @@
             <div>
                 <div class="pull-left x_title mb-5"><h2>모의고사정보</h2></div>
                 <div class="pull-right text-right form-inline mb-5">
-                    <button class="btn btn-sm btn-primary" id="act-addRow" onClick="printPage()">인쇄</button>
-                    <button class="btn btn-sm btn-primary" id="act-sort" onClick="scoreMake({{ $prodcode }})">조정점수반영</button>
-                    <button class="btn btn-sm btn-success" id="goList">목록</button>
+                    <button class="btn btn-sm btn-primary act-move" data-idx="{{ $prodcode }}" data-mem="{{ $memidx }}">상세성적확인</button>
                 </div>
             </div>
             @if(empty($productInfo) === false)
@@ -64,7 +62,7 @@
             @if(empty($list)===false)
                 @foreach($list as $keys => $rows)
                     <div>
-                        <div class="pull-left x_title mb-5"><h2>{{ $rows['CcdName'] }}</h2></div>
+                        <div class="pull-left x_title mb-5"><h2>과목별득점분석</h2></div>
                     </div>
                     <div class="x_content">
 
@@ -86,49 +84,69 @@
                                 @endforeach
                             </tr>
                             <tr>
+                                <th>본인</th>
+                                @foreach($rows['E'] as $key => $row)
+                                    <td id="z{{ $key }}">{{ round($row['pOrgPoint'],2) }}</td>
+                                @endforeach
+                                @foreach($rows['S'] as $key => $row)
+                                    <td>{{ round($row['pOrgPoint'],2) }}</td>
+                                    <td id="z{{ $key }}">{{ round($row['pAdjustPoint'],2) }}</td>
+                                @endforeach
+                                <td id="zr"></td>
+                            </tr>
+                            <tr>
                                 <th>전체평균</th>
                                 @foreach($rows['E'] as $key => $row)
-                                    <td id="p{{ $keys }}_{{ $key }}">{{ round($row['opAVG'],2) }}</td>
+                                    <td id="p{{ $key }}">{{ round($row['opAVG'],2) }}</td>
                                 @endforeach
                                 @foreach($rows['S'] as $key => $row)
                                     <td>{{ round($row['opAVG'],2) }}</td>
-                                    <td id="p{{ $keys }}_{{ $key }}">{{ round($row['adAVG'],2) }}</td>
+                                    <td id="p{{ $key }}">{{ round($row['adAVG'],2) }}</td>
                                 @endforeach
-                                <td id="pr{{ $keys }}"></td>
+                                <td id="pr"></td>
+                            </tr>
+                            <tr>
+                                <th>과목석차</th>
+                                @foreach($rows['E'] as $key => $row)
+                                    <td id="k{{ $key }}">{{ $row['pRank'] }}</td>
+                                @endforeach
+                                @foreach($rows['S'] as $key => $row)
+                                    <td colspan="2" id="k{{ $key }}">{{ $row['pRank'] }}</td>
+                                @endforeach
+                                <td id="kr">{{ $rows['pSRank'] }}</td>
+                            </tr>
+                            <tr>
+                                <th>백분위</th>
+                                @foreach($rows['E'] as $key => $row)
+                                    <td id="b{{ $key }}">{{ round($row['tpct'],2) }} %</td>
+                                @endforeach
+                                @foreach($rows['S'] as $key => $row)
+                                    <td colspan="2" id="b{{ $key }}">{{ round($row['tpct'],2) }} %</td>
+                                @endforeach
+                                <td id="br">{{ $rows['stpct'] }} %</td>
                             </tr>
                             <tr>
                                 <th>최고점</th>
                                 @foreach($rows['E'] as $key => $row)
-                                    <td id="m{{ $keys }}_{{ $key }}">{{ round($row['opMax'],2) }}</td>
+                                    <td id="m{{ $key }}">{{ round($row['opMax'],2) }}</td>
                                 @endforeach
                                 @foreach($rows['S'] as $key => $row)
                                     <td>{{ round($row['opMax'],2) }}</td>
-                                    <td id="m{{ $keys }}_{{ $key }}">{{ round($row['adMax'],2) }}</td>
+                                    <td id="m{{ $key }}">{{ round($row['adMax'],2) }}</td>
                                 @endforeach
-                                <td id="mr{{ $keys }}"></td>
+                                <td id="mr"></td>
                             </tr>
                             <tr>
                                 <th>표준편차</th>
                                 @foreach($rows['E'] as $key => $row)
-                                    <td id="s{{ $keys }}_{{ $key }}">{{ round($row['StandardDeviation'],2) }}</td>
+                                    <td id="s{{ $key }}">{{ round($row['StandardDeviation'],2) }}</td>
                                 @endforeach
                                 @foreach($rows['S'] as $key => $row)
                                     <td>{{ round($row['StandardDeviation'],2) }}</td>
-                                    <td id="s{{ $keys }}_{{ $key }}">{{ round($row['StandardDeviation'],2) }}</td>
+                                    <td id="s{{ $key }}">{{ round($row['StandardDeviation'],2) }}</td>
                                 @endforeach
-                                <td id="sr{{ $keys }}"></td>
+                                <td id="sr"></td>
                             </tr>
-                            <tr>
-                                <th>응시인원</th>
-                                @foreach($rows['E'] as $key => $row)
-                                    <td id="q{{ $keys }}">{{ round($row['CNT'],2) }}</td>
-                                @endforeach
-                                @foreach($rows['S'] as $key => $row)
-                                    <td colspan="2">{{ round($row['CNT'],2) }}</td>
-                                @endforeach
-                                <td id="qr{{ $keys }}"></td>
-                            </tr>
-
                         </table>
 
                     </div>
@@ -141,6 +159,9 @@
                 </table>
             @endif
         </div>
+        <div class="pull-right text-right form-inline mb-5">
+        <button class="btn btn-sm btn-success" id="goList">목록</button>
+        </div>
     </div>
     <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
         {!! csrf_field() !!}
@@ -152,34 +173,52 @@
     </style>
     <script type="text/javascript">
         var $regi_form = $('#regi_form');
-        var TakeMockPartSet = {!! json_encode($TakeMockPartSet) !!};
         var MpIdxSet = {!! json_encode($MpIdxSet) !!};
 
         $(document).ready(function() {
-            for(var i=0; i < TakeMockPartSet.length; i++){
-                var pnum = 0;
-                var ptotal = 0;
-                var mnum = 0;
-                var mtotal = 0;
-                var snum = 0;
-                var stotal = 0;
-                var cnt = 0;
-                for(var j=0; j < MpIdxSet.length; j++){
-                    pnum = parseFloat($('#p'+TakeMockPartSet[i]+'_'+MpIdxSet[j]).html());
-                    ptotal += pnum;
-                    mnum = parseFloat($('#m'+TakeMockPartSet[i]+'_'+MpIdxSet[j]).html());
-                    mtotal += mnum;
-                    snum = parseFloat($('#s'+TakeMockPartSet[i]+'_'+MpIdxSet[j]).html());
-                    console.log(snum);
-                    stotal += snum;
-                    cnt++;
-                }
+            var pnum = 0;
+            var ptotal = 0;
+            var mnum = 0;
+            var mtotal = 0;
+            var snum = 0;
+            var stotal = 0;
+            var znum = 0;
+            var ztotal = 0;
 
-                $('#pr'+TakeMockPartSet[i]).html((ptotal / cnt).toFixed(2));
-                $('#mr'+TakeMockPartSet[i]).html((mtotal / cnt).toFixed(2));
-                $('#sr'+TakeMockPartSet[i]).html((stotal / cnt).toFixed(2));
-                $('#qr'+TakeMockPartSet[i]).html($('#q'+TakeMockPartSet[i]).html());
+            var cnt = 0;
+            for(var j=0; j < MpIdxSet.length; j++){
+                pnum = parseFloat($('#p'+MpIdxSet[j]).html());
+                ptotal += pnum;
+                mnum = parseFloat($('#m'+MpIdxSet[j]).html());
+                mtotal += mnum;
+                snum = parseFloat($('#s'+MpIdxSet[j]).html());
+                stotal += snum;
+                znum = parseFloat($('#z'+MpIdxSet[j]).html());
+                ztotal += znum;
+
+                cnt++;
             }
+
+            $('#pr').html((ptotal / cnt).toFixed(2));
+            $('#mr').html((mtotal / cnt).toFixed(2));
+            $('#sr').html((stotal / cnt).toFixed(2));
+            $('#zr').html((ztotal / cnt).toFixed(2));
+
+            // 모달창 오픈
+            $('.act-move').on('click', function() {
+
+                var uri_param;
+                var prodcode = $(this).data('idx');
+                var memidx = $(this).data('mem');
+
+                uri_param = 'prodcode=' + prodcode + '&memidx=' + memidx;
+
+                $('.act-move').setLayer({
+                    'url' : '{{ site_url() }}' + '/mocktest/statisticsPrivate/winStatTotal?' + uri_param,
+                    'width' : 1400
+                });
+            });
+
         });
 
         // 목록 이동
@@ -201,17 +240,7 @@
             return false;
         }
 
-        // 조정점수 반영
-        function scoreMake(prodcode){
-            $('#ProdCode').val(prodcode);
 
-            var _url = '{{ site_url('/mocktest/statisticsGrade/scoreMakeAjax') }}';
-            ajaxSubmit($regi_form, _url, function(ret) {
-                if(ret.ret_cd) {
-                    alert(ret.ret_msg);
-                }
-            }, showValidateError, null, false, 'alert');
-        }
 
     </script>
 @stop

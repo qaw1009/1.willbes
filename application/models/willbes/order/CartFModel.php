@@ -263,7 +263,7 @@ class CartFModel extends BaseOrderFModel
                 }
 
                 $prod_sub_code = '';
-                if (empty($input['prod_code_sub']) === false) {
+                if (empty(element('prod_code_sub', $input)) === false) {
                     // 서브 강좌가 있는 경우 (운영자 선택형 패키지, 사용자 패키지)
                     $prod_sub_code = implode(',', element('prod_code_sub', $input, []));
                 }

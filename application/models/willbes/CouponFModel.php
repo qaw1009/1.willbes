@@ -13,7 +13,8 @@ class CouponFModel extends WB_Model
         'site_group' => 'lms_site_group',
         'order' => 'lms_order',
         'order_product' => 'lms_order_product',
-        'product' => 'lms_product'
+        'product' => 'lms_product',
+        'product_lecture' => 'lms_product_lecture'
     ];
 
     // 쿠폰유형 (할인권, 수강권)
@@ -244,7 +245,7 @@ class CouponFModel extends WB_Model
      */
     public function findCoupon($arr_condition = [])
     {
-        $column = 'C.CouponIdx, C.CouponTypeCcd, C.DeployType, C.PinType, C.IssueStartDate, C.IssueEndDate, C.ValidDay, C.IsIssue
+        $column = 'C.CouponIdx, C.SiteCode, C.CouponTypeCcd, C.DeployType, C.PinType, C.IssueStartDate, C.IssueEndDate, C.ValidDay, C.IsIssue
             , ifnull(CP.CouponPin, "N") as CouponPin, date_add(NOW(), interval C.ValidDay day) as ExpireDatm';
 
         $arr_condition = array_merge_recursive($arr_condition, [
@@ -278,22 +279,64 @@ class CouponFModel extends WB_Model
     }
 
     /**
+     * 쿠폰 연결상품 리턴
+     * @param int $coupon_idx [쿠폰식별자]
+     * @return mixed
+     */
+    public function getCouponProduct($coupon_idx)
+    {
+        $column = 'CP.ProdCode, P.ProdName, P.ProdTypeCcd, PL.LearnPatternCcd, PL.PackTypeCcd';
+        $from = '
+            from ' . $this->_table['coupon_r_product'] . ' as CP
+                inner join ' . $this->_table['product'] . ' as P
+                    on CP.ProdCode = P.ProdCode
+                inner join ' . $this->_table['product_lecture'] . ' as PL
+                    on CP.ProdCode = PL.ProdCode
+            where CP.CouponIdx = ?
+                and CP.IsStatus = "Y"
+                and P.IsUse = "Y" and P.IsStatus = "Y"';
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from, [$coupon_idx]);
+
+        return $query->result_array();        
+    }
+
+    /**
      * 오프라인 쿠폰 등록
+     * @param string $coupon_type [쿠폰타입 (쿠폰 : coupon / 수강권 : voucher]
      * @param string $coupon_no [쿠폰번호]
      * @return array|bool
      */
-    public function addMemberCouponByPin($coupon_no)
+    public function addMemberCouponByPin($coupon_type, $coupon_no)
     {
         $this->_conn->trans_begin();
 
         try {
             // 사용자 쿠폰 등록
-            $is_add = $this->addMemberCoupon($coupon_no, true);
-            if ($is_add !== true) {
-                throw new \Exception($is_add);
+            $result = $this->addMemberCoupon($coupon_type, $coupon_no, true);
+            if ($result['ret_cd'] !== true) {
+                throw new \Exception($result['ret_msg']);
             }
 
-            // TODO : 발급된 쿠폰이 수강권일 경우 주문, 나의 강의정보 등록
+            // 발급된 쿠폰이 수강권일 경우 주문 등록
+            if ($result['ret_data']['coupon']['CouponTypeCcd'] == $this->_coupon_type_ccd['voucher']) {
+                // 사용자 쿠폰 식별자
+                $coupon_detail_idx = $result['ret_data']['coupon_detail_idx'];
+
+                // 쿠폰 연결상품 조회
+                $coupon_prod_data = $this->getCouponProduct($result['ret_data']['coupon']['CouponIdx']);
+                if (empty($coupon_prod_data) === true) {
+                    throw new \Exception('수강권 연결상품 조회에 실패했습니다.');
+                }
+
+                // 수강권 주문 등록
+                $this->load->loadModels(['order/orderF']);
+                $is_order = $this->orderFModel->procVoucherOrder($coupon_prod_data, $result['ret_data']['coupon']['SiteCode'], $coupon_detail_idx);
+                if ($is_order !== true) {
+                    throw new \Exception($is_order);
+                }
+            }
             
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
@@ -306,13 +349,14 @@ class CouponFModel extends WB_Model
 
     /**
      * 회원 쿠폰발급
+     * @param string $coupon_type [쿠폰타입 (쿠폰 : coupon / 수강권 : voucher]
      * @param int|string $coupon_no [쿠폰식별자 or 핀번호]
      * @param bool $is_pin [핀번호 여부, false : 쿠폰식별자를 사용하여 쿠폰 조회, 기 발급여부 체크]
      * @param string $issue_type [쿠폰발급구분]
      * @param int|null $issue_order_prod_idx [발급주문상품식별자]
-     * @return array|bool
+     * @return array
      */
-    public function addMemberCoupon($coupon_no, $is_pin = false, $issue_type = 'auto', $issue_order_prod_idx = null)
+    public function addMemberCoupon($coupon_type, $coupon_no, $is_pin = false, $issue_type = 'auto', $issue_order_prod_idx = null)
     {
         try {
             $sess_mem_idx = $this->session->userdata('mem_idx');    // 회원 식별자 세션
@@ -325,6 +369,11 @@ class CouponFModel extends WB_Model
             $row = $this->{'findCouponBy' . $find_method}($coupon_no);
             if (empty($row) === true) {
                 throw new \Exception('유효하지 않은 쿠폰입니다. 쿠폰번호를 확인해주세요.', _HTTP_NOT_FOUND);
+            }
+
+            // 쿠폰타입 체크
+            if ($this->_coupon_type_ccd[$coupon_type] != $row['CouponTypeCcd']) {
+                throw new \Exception('쿠폰타입이 일치하지 않습니다.', _HTTP_NO_PERMISSION);
             }
 
             // 발급유효기간 확인
@@ -366,10 +415,15 @@ class CouponFModel extends WB_Model
             if ($is_insert === false) {
                 throw new \Exception('쿠폰 등록에 실패했습니다.');
             }
-        } catch (\Exception $e) {
-            return $e->getMessage();
-        }
 
-        return true;
+            // 사용자 쿠폰 식별자
+            $coupon_detail_idx = $this->_conn->insert_id();
+
+            return ['ret_cd' => true, 'ret_data' => [
+                'coupon_detail_idx' => $coupon_detail_idx, 'coupon' => $row
+            ]];
+        } catch (\Exception $e) {
+            return ['ret_cd' => false, 'ret_msg' => $e->getMessage()];
+        }
     }
 }

@@ -216,12 +216,13 @@
                 <li class="txt">- 사용기간내 사용하지 못한 쿠폰은 소멸처리됩니다.</li>
             </ul>
             <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+                {!! csrf_field() !!}
+                {!! method_field('POST') !!}
+                <input type="hidden" name="coupon_type" value="coupon"/>
                 <table cellspacing="0" cellpadding="0" class="userPointTable userCouponTable NG">
                     <tbody>
                     <tr>
                         <td>
-                            {!! csrf_field() !!}
-                            {!! method_field('POST') !!}
                             쿠폰 번호 &nbsp;
                             <input type="text" id="coupon_no" name="coupon_no" title="쿠폰번호" maxlength="16" style="width: 290px;">
                             <span class="tBox t2Box black" style="height: 26px;"><a href="#none" id="btn_coupon_regi" style="padding: 4px 0;">등록</a></span>

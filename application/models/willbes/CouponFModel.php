@@ -320,7 +320,7 @@ class CouponFModel extends WB_Model
             }
 
             // 발급된 쿠폰이 수강권일 경우 주문 등록
-            if ($result['ret_data']['coupon']['CouponTypeCcd'] == $this->_coupon_type_ccd['voucher']) {
+            if ($coupon_type == 'voucher' && $result['ret_data']['coupon']['CouponTypeCcd'] == $this->_coupon_type_ccd['voucher']) {
                 // 사용자 쿠폰 식별자
                 $coupon_detail_idx = $result['ret_data']['coupon_detail_idx'];
 

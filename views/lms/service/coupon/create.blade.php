@@ -81,7 +81,7 @@
                 <div id="pin_off" class="form-group hide">
                     <label class="control-label col-md-2" for="pin_type_1">쿠폰핀번호유형 <span class="required">*</span>
                     </label>
-                    <div class="col-md-3 item">
+                    <div class="col-md-4 item">
                         <div class="radio">
                             <input type="radio" id="pin_type_1" name="pin_type" class="flat" value="S" required="required_if:deploy_type,F" title="쿠폰핀번호유형" @if($method == 'POST' || $data['PinType'] == 'S')checked="checked"@endif/> <label for="pin_type_1" class="input-label">공통핀번호</label>
                             <input type="radio" id="pin_type_2" name="pin_type" class="flat" value="R" @if($data['PinType'] == 'R')checked="checked"@endif/> <label for="pin_type_2" class="input-label">랜덤핀번호</label>
@@ -190,7 +190,7 @@
                             <span id="selected_product" class="pl-10">
                                 @if(isset($data['ProdCodes']) === true)
                                     @foreach($data['ProdCodes'] as $prod_code => $prod_name)
-                                        <span class="pr-10">{{ $prod_name }}
+                                        <span class="pr-10">[{{ $prod_code }}] {{ $prod_name }}
                                             <a href="#none" data-prod-code="{{ $prod_code }}" class="selected-product-delete"><i class="fa fa-times red"></i></a>
                                             <input type="hidden" name="prod_code[]" value="{{ $prod_code }}"/>
                                         </span>
@@ -315,6 +315,11 @@
                     alert('상품 선택 필드는 필수입니다.');
                     return false;
                 }
+                {{-- 수강권일 경우 1개의 상품만 등록 가능 --}}
+                if($regi_form.find('input[name="coupon_type_ccd"]:checked').val() === '644002' && $regi_form.find('input[name="prod_code[]"]').length !== 1) {
+                    alert('수강권일 경우 1개의 상품만 선택 가능합니다.');
+                    return false;
+                }
                 @endif
 
                 var _url = '{{ site_url('/service/coupon/regist/store') }}';
@@ -395,13 +400,29 @@
             });
 
             // 쿠폰유형 선택
-            $regi_form.on('ifChanged ifCreated', 'input[name="coupon_type_ccd"]:checked', function() {
+            $regi_form.on('ifChanged ifCreated', 'input[name="coupon_type_ccd"]:checked', function(evt) {
                 if ($(this).val() === '644002') {
                     // 수강권 선택
+                    if (evt.type === 'ifChanged') {
+                        $regi_form.find('input[name="deploy_type"][value="F"]').iCheck('check');
+                        $regi_form.find('input[name="apply_range_type"][value="P"]').iCheck('check');
+                    }
+
+                    $regi_form.find('input[name="deploy_type"][value="N"]').iCheck('disable');
+                    $regi_form.find('input[name="apply_type_ccd"]').not('[value="645001"]').iCheck('disable');
+                    $regi_form.find('input[name="apply_range_type"]').not('[value="P"]').iCheck('disable');
                     $regi_form.find('input[name="disc_rate"]').prop('readonly', 'readonly');
                     $regi_form.find('select[name="disc_type"] option[value="P"]').hide();
                     $regi_form.find('input[name="disc_rate"]').val('100');
                 } else {
+                    if (evt.type === 'ifChanged') {
+                        $regi_form.find('input[name="deploy_type"][value="N"]').iCheck('enable');
+                        $regi_form.find('input[name="deploy_type"][value="N"]').iCheck('check');
+                        $regi_form.find('input[name="apply_type_ccd"]').iCheck('enable');
+                        $regi_form.find('input[name="apply_range_type"]').iCheck('enable');
+                        $regi_form.find('input[name="apply_range_type"][value="A"]').iCheck('check');
+                    }
+
                     $regi_form.find('input[name="disc_rate"]').prop('readonly', '');
                     $regi_form.find('select[name="disc_type"] option[value="P"]').show();
                     $regi_form.find('input[name="disc_rate"]').val($regi_form.find('input[name="disc_rate"]').prop('defaultValue'));
@@ -457,6 +478,13 @@
                 }
 
                 // 적용범위
+                if (arr_set[1] === 'no') {
+                    if (evt.type === 'ifChanged') {
+                        // 전체선택
+                        $regi_form.find('input[name="apply_range_type"][value="A"]').iCheck('uncheck').iCheck('check');
+                    }
+                }
+
                 if (arr_set[1] === 'range') {
                     $('#apply_range').removeClass('hide').addClass('show');
 
@@ -465,8 +493,16 @@
                         $regi_form.find('input[name="apply_range_type"]:checked').iCheck('uncheck').iCheck('check');
                     }
                 }
-                // 모의고사
-                arr_set[1] === 'mock_exam' && $('#apply_mock_exam').removeClass('hide').addClass('show');
+
+                if (arr_set[1] === 'mock_exam') {
+                    // 모의고사
+                    $('#apply_mock_exam').removeClass('hide').addClass('show');
+
+                    if (evt.type === 'ifChanged') {
+                        // 특정상품 선택
+                        $regi_form.find('input[name="apply_range_type"][value="P"]').iCheck('uncheck').iCheck('check');
+                    }
+                }
             });
 
             // 적용범위 선택

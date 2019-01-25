@@ -178,6 +178,7 @@ class Lecture extends \app\controllers\BaseController
         $method='POST';
         $prof = [];
         $data_unit = [];
+        $selected_prof_idx = '';
 
         if(empty($params[0]) === false) {
             $lecidx = $params[0];

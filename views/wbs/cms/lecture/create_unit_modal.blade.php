@@ -45,8 +45,8 @@
                             <th>영상경로<span class="required">*</span></th>
                             <th>영상비율<span class="required">*</span></th>
                             <th>촬영일/교수<span class="required">*</span></th>
-                            <th>등록일</th>
                             <th>등록자</th>
+                            <th>등록일</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -108,8 +108,8 @@
                                         </select>
 
                                     </td>
-                                    <td>{{ $row['wRegDatm'] }}</td>
                                     <td>{{ $row['wAdminName'] }}</td>
+                                    <td>{{ $row['wRegDatm'] }}</td>
                                 </tr>
                             @endforeach
 
@@ -191,7 +191,6 @@
                         paging: false,
                         searching: false
                     });
-
 
                     $('#btn-add').click(function() {
                         var addCnt = $("#rowNum").val();		//추가할 갯수

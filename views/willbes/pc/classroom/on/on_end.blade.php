@@ -181,7 +181,7 @@
                                                     </dl>
                                                 </td>
                                                 <td class="w-answer">
-                                                    <a href=""><span class="bBox whiteBox NSK">후기등록</a>
+                                                    <a href="javascript:;" onclick="fnPostscript();"><span class="bBox whiteBox NSK">후기등록</a>
                                                 </td>
                                             </tr>
                                         @endforeach

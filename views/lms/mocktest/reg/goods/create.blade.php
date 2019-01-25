@@ -109,9 +109,8 @@
                         <th colspan="1">판매가 <span class="required">*</span></th>
                         <td colspan="3" class="form-inline">
                             <span class="blue">[정상가]</span> <input type="text" class="form-control" name="SalePrice" value="@if($method == 'PUT'){{ $data['SalePrice'] }}@endif" style="width:100px;"> 원
-                            <span class="blue ml-20">[할인]</span> <input type="text" class="form-control" name="SaleRate" value="@if($method == 'PUT'){{ $data['SaleRate'] }}@endif" style="width:100px;">
+                            <span class="blue ml-20">[할인]</span> <input type="text" class="form-control" name="SaleRate" @if($method == 'PUT')value="{{ $data['SaleRate'] }}" @else value="0" @endif" style="width:100px;">
                             <select name="SaleDiscType" class="form-control">
-                                <option value="">선택</option>
                                 <option value="R" @if($method == 'PUT' && $data['SaleDiscType'] == 'R') selected @endif>%</option>
                                 <option value="P" @if($method == 'PUT' && $data['SaleDiscType'] == 'P') selected @endif>-</option>
                             </select>
@@ -121,7 +120,7 @@
                     <tr>
                         <th colspan="1">접수기간 <span class="required">*</span></th>
                         <td colspan="3" class="form-inline">
-                            <input type="text" class="form-control datepicker" style="width:100px;" name="SaleStartDatm_d" value="@if($method == 'PUT'){{ substr($data['SaleStartDatm'], 0, 10) }}@endif" readonly>
+                            <input type="text" class="form-control datepicker" style="width:100px;" name="SaleStartDatm_d" value="@if($method == 'PUT'){{ substr($data['SaleStartDatm'], 0, 10) }}@else{{date('Y-m-d')}}@endif" readonly>
                             <select name="SaleStartDatm_h" class="form-control">
                                 <!--option value="">선택</option//-->
                                 @foreach(range(0, 23) as $i)
@@ -137,7 +136,7 @@
                                 @endforeach
                             </select> 분
                             <span class="ml-10 mr-10"> ~ </span>
-                            <input type="text" class="form-control datepicker" style="width:100px;" name="SaleEndDatm_d" value="@if($method == 'PUT'){{ substr($data['SaleEndDatm'], 0, 10) }}@endif" readonly>
+                            <input type="text" class="form-control datepicker" style="width:100px;" name="SaleEndDatm_d" value="@if($method == 'PUT'){{ substr($data['SaleEndDatm'], 0, 10) }}@else{{date('Y-m-d')}}@endif" readonly>
                             <select name="SaleEndDatm_h" class="form-control">
                                 <!--option value="">선택</option//-->
                                 @foreach(range(0, 23) as $i)

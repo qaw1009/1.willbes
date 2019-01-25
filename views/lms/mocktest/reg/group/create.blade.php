@@ -87,10 +87,10 @@
                         </td>
                     </tr>
                     <tr>
-                        <th>성적오픈일 </th>
+                        <th>성적오픈일 <span class="required">*</span></th>
                         <td colspan="3" class="form-inline">
 
-                            <input type="text" class="form-control datepicker" style="width:100px;" name="GradeOpenDatm_d" value="@if($method == 'PUT'){{ substr($data['GradeOpenDatm'], 0, 10) }}@endif" readonly>
+                            <input type="text" class="form-control datepicker" style="width:100px;" name="GradeOpenDatm_d" value="@if($method == 'PUT'){{ substr($data['GradeOpenDatm'], 0, 10) }}@endif" readonly required="required" title="성적오픈일">
                             <select name="GradeOpenDatm_h" class="form-control">
                                 @foreach(range(0, 23) as $i)
                                     @php $v = sprintf("%02d", $i); @endphp

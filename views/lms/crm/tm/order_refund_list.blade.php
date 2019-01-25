@@ -3,7 +3,15 @@
     <h5>- TM을 진행한 회원들의 환불 내역을 확인하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
-
+        <div class="form-group">
+            <div class="col-md-2 form-inline">
+                <p>• TM 환불내역</p>
+            </div>
+            <div class="col-md-10 form-inline" align="right">
+                <button type="button" class="btn btn-default" id="btn_info" onclick="openWin('in_pop_modal')">TM 운영정책</button>
+            </div>
+        </div>
+        @include('lms.crm.tm.tm_policy_partial')
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">

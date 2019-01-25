@@ -260,7 +260,8 @@
                     $datatable_coupon = $_coupon_list_table.DataTable({
                         serverSide: true,
                         buttons: [
-                            /*{  text: '<i class="fa fa-undo mr-5"></i> 쿠폰발급', className: 'btn-sm btn-success border-radius-reset mr-15 btn-make' },*/
+                            {  text: '<i class="fa fa-undo mr-5"></i> 발급회수', className: 'btn-sm btn-default border-radius-reset mr-15' },
+                            {  text: '<i class="fa fa-undo mr-5"></i> 쿠폰발급', className: 'btn-sm btn-success border-radius-reset mr-15 btn-make' },
                         ],
                         ajax: {
                             'url' : '{{ site_url('/service/coupon/issue/listAjax') }}',

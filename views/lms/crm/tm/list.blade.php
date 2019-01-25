@@ -4,6 +4,16 @@
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
 
+        <div class="form-group">
+            <div class="col-md-2 form-inline">
+                <p>• TM 배정이력</p>
+            </div>
+            <div class="col-md-10 form-inline" align="right">
+                <button type="button" class="btn btn-default" id="btn_info" onclick="openWin('in_pop_modal')">TM 운영정책</button>
+            </div>
+        </div>
+        @include('lms.crm.tm.tm_policy_partial')
+
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">
@@ -20,7 +30,6 @@
                     <div class="col-md-4 form-inline">
                         <input name="StartDate"  class="form-control datepicker" id="StartDate" style="width: 100px;"  type="text"  value="" >
                         ~ <input name="EndDate"  class="form-control datepicker" id="EndDate" style="width: 100px;"  type="text"  value="" >
-
                     </div>
                 </div>
             </div>
@@ -52,6 +61,9 @@
             </table>
         </div>
     </div>
+
+
+
     <script type="text/javascript">
         var $datatable;
         var $search_form = $('#search_form');

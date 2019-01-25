@@ -338,7 +338,7 @@ class CouponFModel extends WB_Model
                     // 오프라인 > 랜덤핀
                     $chk_condition = ['EQ' => ['CouponPin' => $row['CouponPin'], 'ValidStatus' => 'Y']];
                 } else {
-                    // 온라인, 오프라인 > 공통핀
+                    // 오프라인 > 공통핀
                     $chk_condition = ['EQ' => ['CouponIdx' => $row['CouponIdx'], 'MemIdx' => $sess_mem_idx, 'ValidStatus' => 'Y']];
                 }
 

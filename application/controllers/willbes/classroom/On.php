@@ -8,11 +8,13 @@ class On extends \app\controllers\FrontController
     protected $auth_controller = true;
     protected $auth_methods = array();
 
+    protected $_payroute_normal_ccd = ['670001','670002','670006'];
+    protected $_payroute_admin_ccd = ['670003','670004','670005'];
+
     public function __construct()
     {
         parent::__construct();
     }
-
 
     /**
      *  강좌리스트 분기
@@ -107,13 +109,13 @@ class On extends \app\controllers\FrontController
         $leclist = $this->classroomFModel->getLecture(array_merge($cond_arr, [
             'IN' => [
                 'LearnPatternCcd' => ['615001','615002'], // 단과, 사용자
-                'PayRouteCcd' => ['670001','670002'] // 온, 방
+                'PayRouteCcd' => $this->_payroute_normal_ccd // 온, 방
             ]
         ]));
 
         $pkglist = $this->classroomFModel->getPackage(array_merge($cond_arr, [
             'IN' => [
-                'PayRouteCcd' => ['670001','670002'] // 온, 방
+                'PayRouteCcd' => $this->_payroute_normal_ccd // 온, 방
             ]
         ]), $orderby);
         foreach($pkglist as $idx => $row){
@@ -165,7 +167,7 @@ class On extends \app\controllers\FrontController
             ],
             'IN' => [
                 'LearnPatternCcd' => ['615001','615002','615003','615005'], // 학습방식 : 단과, 사용자, 패키지, 무료
-                'PayRouteCcd' => ['670001','670002'] // 결제루트 : 온, 방
+                'PayRouteCcd' => $this->_payroute_normal_ccd // 결제루트 : 온, 방
             ]
         ];
 
@@ -214,7 +216,7 @@ class On extends \app\controllers\FrontController
         $leclist = $this->classroomFModel->getLecture(array_merge($cond_arr, [
             'IN' => [
                 'LearnPatternCcd' => ['615001','615002'], // 단과, 사용자
-                'PayRouteCcd' => ['670001','670002'] // 온, 방
+                'PayRouteCcd' => $this->_payroute_normal_ccd // 온, 방
             ]
         ]), $orderby);
 
@@ -223,7 +225,7 @@ class On extends \app\controllers\FrontController
         $pkglist = $this->classroomFModel->getPackage(array_merge($cond_arr, [
             'IN' => [
                 'LearnPatternCcd' => ['615003'], // 단과, 사용자
-                'PayRouteCcd' => ['670001','670002'] // 온, 방
+                'PayRouteCcd' => $this->_payroute_normal_ccd // 온, 방
             ]
         ]), $orderby);
         foreach($pkglist as $idx => $row){
@@ -251,7 +253,7 @@ class On extends \app\controllers\FrontController
         $adminlistLec = $this->classroomFModel->getLecture(array_merge($cond_arr, [
             'IN' => [
                 'LearnPatternCcd' => ['615001','615002'], // 단과, 사용자
-                'PayRouteCcd' => ['670003','670004','670005'] // 0원, 무료, 제휴사
+                'PayRouteCcd' => $this->_payroute_admin_ccd // 0원, 무료, 제휴사
             ]
         ]), $orderby);
 
@@ -260,7 +262,7 @@ class On extends \app\controllers\FrontController
         $adminlistPkg = $this->classroomFModel->getPackage(array_merge($cond_arr, [
             'IN' => [
                 'LearnPatternCcd' => ['615003'], // 단과, 사용자
-                'PayRouteCcd' => ['670003','670004','670005'] // 0원, 무료, 제휴사
+                'PayRouteCcd' => $this->_payroute_admin_ccd // 0원, 무료, 제휴사
             ]
         ]), $orderby);
         foreach($adminlistPkg as $idx => $row){
@@ -313,7 +315,7 @@ class On extends \app\controllers\FrontController
             ],
             'IN' => [
                 'LearnPatternCcd' => ['615001','615002'], // 학습방식 : 단과, 사용자
-                'PayRouteCcd' => ['670001','670002'] // 결제루트 : 온, 방
+                'PayRouteCcd' => $this->_payroute_normal_ccd // 결제루트 : 온, 방
             ]
         ];
 
@@ -359,14 +361,14 @@ class On extends \app\controllers\FrontController
         // 결제방식 : 온라인결제, 학원방문결제
         $leclist = $this->classroomFModel->getLecture(array_merge($cond_arr, ['IN' => [
             'LearnPatternCcd' => ['615001','615002'], // 단과, 사용자
-            'PayRouteCcd' => ['670001','670002'] // 온, 방
+            'PayRouteCcd' => $this->_payroute_normal_ccd // 온, 방
         ]]));
 
         // 학습형태 : 관리자패키지
         // 결제방식 : 온라인결제, 학원방문결제
         $pkglist = $this->classroomFModel->getPackage(array_merge($cond_arr, [
             'IN' => [
-                'PayRouteCcd' => ['670001','670002'] // 온, 방
+                'PayRouteCcd' => $this->_payroute_normal_ccd // 온, 방
             ]
         ]), $orderby);
         foreach($pkglist as $idx => $row){
@@ -409,7 +411,7 @@ class On extends \app\controllers\FrontController
             ],
             'IN' => [
                 'LearnPatternCcd' => ['615001','615002','615003','615005'],
-                'PayRouteCcd' => ['670001','670002']
+                'PayRouteCcd' => $this->_payroute_normal_ccd
             ],
             'EQ' => [
                 'MemIdx' => $this->session->userdata('mem_idx'), // 사용자
@@ -462,14 +464,14 @@ class On extends \app\controllers\FrontController
         // 결제방식 : 온라인결제, 학원방문결제
         $leclist = $this->classroomFModel->getLecture(array_merge($cond_arr, ['IN' => [
             'LearnPatternCcd' => ['615001','615002'], // 단과, 사용자
-            'PayRouteCcd' => ['670001','670002'] // 온, 방
+            'PayRouteCcd' => $this->_payroute_normal_ccd // 온, 방
         ]]));
 
         // 학습형태 : 관리자패키지
         // 결제방식 : 온라인결제, 학원방문결제
         $pkglist = $this->classroomFModel->getPackage(array_merge($cond_arr, [
             'IN' => [
-                'PayRouteCcd' => ['670001','670002'] // 온, 방
+                'PayRouteCcd' => $this->_payroute_normal_ccd // 온, 방
             ]
         ]), $orderby);
 
@@ -695,14 +697,14 @@ class On extends \app\controllers\FrontController
             $leclist = $this->classroomFModel->getLecture(array_merge($cond_arr, [
                 'IN' => [
                     'LearnPatternCcd' => ['615001','615002'], // 단과, 사용자
-                    'PayRouteCcd' => ['670001','670002'] // 온, 방
+                    'PayRouteCcd' => $this->_payroute_normal_ccd // 온, 방
                 ]
             ]));
 
         } else if($prodtype === 'P') {
             $leclist = $this->classroomFModel->getPackage(array_merge($cond_arr, [
                 'IN' => [
-                    'PayRouteCcd' => ['670001','670002'] // 온, 방
+                    'PayRouteCcd' => $this->_payroute_normal_ccd // 온, 방
                 ]
             ]));
 
@@ -797,14 +799,14 @@ class On extends \app\controllers\FrontController
             $leclist = $this->classroomFModel->getLecture(array_merge($cond_arr, [
                 'IN' => [
                     'LearnPatternCcd' => ['615001','615002'], // 단과, 사용자
-                    'PayRouteCcd' => ['670001','670002'] // 온, 방
+                    'PayRouteCcd' => $this->_payroute_normal_ccd // 온, 방
                 ]
             ]));
 
         } else if($prodtype === 'P') {
             $leclist = $this->classroomFModel->getPackage(array_merge($cond_arr, [
                 'IN' => [
-                    'PayRouteCcd' => ['670001','670002'] // 온, 방
+                    'PayRouteCcd' => $this->_payroute_normal_ccd // 온, 방
                 ]
             ]), $orderby);
 
@@ -885,14 +887,14 @@ class On extends \app\controllers\FrontController
             $leclist = $this->classroomFModel->getLecture(array_merge($cond_arr, [
                 'IN' => [
                     'LearnPatternCcd' => ['615001','615002'], // 단과, 사용자
-                    'PayRouteCcd' => ['670001','670002'] // 온, 방
+                    'PayRouteCcd' => $this->_payroute_normal_ccd // 온, 방
                 ]
             ]));
 
         } else if($prodtype === 'P') {
             $leclist = $this->classroomFModel->getPackage(array_merge($cond_arr, [
                 'IN' => [
-                    'PayRouteCcd' => ['670001','670002'] // 온, 방
+                    'PayRouteCcd' => $this->_payroute_normal_ccd // 온, 방
                 ]
             ]));
 
@@ -987,14 +989,14 @@ class On extends \app\controllers\FrontController
             $leclist = $this->classroomFModel->getLecture(array_merge($cond_arr, [
                 'IN' => [
                     'LearnPatternCcd' => ['615001','615002'], // 단과, 사용자
-                    'PayRouteCcd' => ['670001','670002'] // 온, 방
+                    'PayRouteCcd' => $this->_payroute_normal_ccd // 온, 방
                 ]
             ]));
 
         } else if($prodtype === 'P') {
             $leclist = $this->classroomFModel->getPackage(array_merge($cond_arr, [
                 'IN' => [
-                    'PayRouteCcd' => ['670001','670002'] // 온, 방
+                    'PayRouteCcd' => $this->_payroute_normal_ccd // 온, 방
                 ]
             ]), $orderby);
 
@@ -1086,14 +1088,14 @@ class On extends \app\controllers\FrontController
             $leclist = $this->classroomFModel->getLecture(array_merge($cond_arr, [
                 'IN' => [
                     'LearnPatternCcd' => ['615001','615002'], // 단과, 사용자
-                    'PayRouteCcd' => ['670001','670002'] // 온, 방
+                    'PayRouteCcd' => $this->_payroute_normal_ccd // 온, 방
                 ]
             ]));
 
         } else if($prodtype === 'P') {
             $leclist = $this->classroomFModel->getPackage(array_merge($cond_arr, [
                 'IN' => [
-                    'PayRouteCcd' => ['670001','670002'] // 온, 방
+                    'PayRouteCcd' => $this->_payroute_normal_ccd // 온, 방
                 ]
             ]), $orderby);
 
@@ -1152,14 +1154,14 @@ class On extends \app\controllers\FrontController
             $leclist = $this->classroomFModel->getLecture(array_merge($cond_arr, [
                 'IN' => [
                     'LearnPatternCcd' => ['615001', '615002'], // 단과, 사용자
-                    'PayRouteCcd' => ['670001', '670002'] // 온, 방
+                    'PayRouteCcd' => ['670001', '670002','670006'] // 온, 방
                 ]
             ]));
 
         } else if ($prodtype === 'P') {
             $leclist = $this->classroomFModel->getPackage(array_merge($cond_arr, [
                 'IN' => [
-                    'PayRouteCcd' => ['670001', '670002'] // 온, 방
+                    'PayRouteCcd' => ['670001', '670002','670006'] // 온, 방
                 ]
             ]));
 

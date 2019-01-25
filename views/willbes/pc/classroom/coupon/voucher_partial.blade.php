@@ -1,4 +1,7 @@
 <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+    {!! csrf_field() !!}
+    {!! method_field('POST') !!}
+    <input type="hidden" name="coupon_type" value="voucher"/>
     <table cellspacing="0" cellpadding="0" class="userPointTable userCouponTable NG">
         <tbody>
         <tr>
@@ -77,7 +80,7 @@
                                 <td class="w-process">{{ $row['SiteGroupName'] }}</td>
                                 <td class="w-c-num">{{ $row['CouponPin'] }}</td>
                                 <td class="w-list">{{ $row['CouponName'] }}</td>
-                                <td class="w-product">{{ $row['ApplyTypeCcdName'] }}</td>
+                                <td class="w-l-price">{{ $row['ProdName'] }}</td>
                                 <td class="w-date">{{ substr($row['IssueDatm'], 0, 10) }}</td>
                             </tr>
                         @endforeach

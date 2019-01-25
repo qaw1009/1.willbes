@@ -240,13 +240,18 @@ class CouponIssueModel extends WB_Model
         $this->load->loadModels(['service/couponRegist']);
 
         // 기존 쿠폰 기본정보 조회
-        $row = $this->couponRegistModel->findCoupon('CouponIdx, DeployType, PinType, PinIssueCnt, IssueStartDate, IssueEndDate, ValidDay, IsIssue'
+        $row = $this->couponRegistModel->findCoupon('CouponIdx, CouponTypeCcd, DeployType, PinType, PinIssueCnt, IssueStartDate, IssueEndDate, ValidDay, IsIssue'
             , ['EQ' => ['CouponIdx' => $coupon_idx, 'IsStatus' => 'Y']]);
         if (empty($row) === true) {
             return '쿠폰 정보 조회에 실패했습니다.';
         }
 
         // 쿠폰발급 가능여부 확인
+        // 쿠폰타입 확인
+        if ($row['CouponTypeCcd'] == $this->couponRegistModel->_coupon_type_ccd['voucher']) {
+            return '수강권 쿠폰은 발급하실 수 없습니다.';
+        }
+
         // 발급여부 확인
         if ($row['IsIssue'] == 'N') {
             return '해당 쿠폰은 미발급 상태입니다.';

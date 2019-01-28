@@ -146,7 +146,18 @@
         {{-- 과목별 상품 리스트 --}}
         @foreach($data['subjects'] as $subject_idx => $subject_name)
             <div class="willbes-Lec NG c_both mt20">
-                <div class="willbes-Lec-Subject tx-dark-black">· {{ $subject_name }}<span class="MoreBtn"><a href="#none">교재정보 <span>전체보기 ▼</span></a></span></div>
+                <div class="willbes-Lec-Subject tx-dark-black">
+                    · {{ $subject_name }}
+                    <div class="selectBoxForm">
+                        <span class="MoreBtn"><a href="#none">교재정보 <span>전체보기 ▼</span></a></span>
+                        <span class="selectBox ml10">
+                            <select id="" name="" title="" class="">
+                                <option selected="selected">최근등록순</option>
+                                <option value="과정순">과정순</option>
+                            </select>
+                        </span>
+                    </div>
+                </div>
                 <!-- willbes-Lec-Subject -->
                 {{-- 교수명 타이틀 loop --}}
                 @foreach($data['professor_names'][$subject_idx] as $prof_idx => $prof_name)

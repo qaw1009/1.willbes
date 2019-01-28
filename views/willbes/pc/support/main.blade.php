@@ -172,28 +172,28 @@
                     <div class="ActIndex ActIndex2 mt50">
                         <div class="LeclistTable c_both">
                             <div class="csCenterSearch">
+                                <div class="will-Tit NSK">윌비스에 <span class="tx-light-blue">자주하는</span> 질문 검색하기</div>
                                 <div class="SearchBox NG">
                                     <form id="url_form" name="url_form" method="GET" action="{{front_url('/support/faq/index')}}">
-                                        <span class="sTit tx-dark-black"><span class="tx-light-blue">자주하는</span> 질문 검색하기</span>
                                         <span class="sTitsub">
                                             궁금한 점이 있으신가요?<br/>
                                             검색을 통해 찾고 싶은 내용 / 단어를 입력해 주세요.
                                         </span>
-                                        <!--
-                                        <select id="s_faq" name="s_faq" title="question" class="seleQuestion">
-                                            @foreach($faq_ccd as $row)
-                                            <option value="{{$row['Ccd']}}">{{$row['CcdName']}}</option>
-                                            @endforeach
-                                        </select>
-                                        -->
-                                        <span class="willbes-Lec-Search">
-                                            <div class="inputBox p_re">
-                                                <input type="text" id="s_keyword" name="s_keyword" class="labelSearch" placeholder="찾고 싶은 내용 / 단어를 입력해 주세요." maxlength="30">
-                                                <button type="submit" class="search-Btn">
-                                                    <span>검색</span>
-                                                </button>
-                                            </div>
-                                        </span>
+                                        <div class="searchBoxForm">
+                                            <select id="s_faq" name="s_faq" title="question" class="seleQuestion">
+                                                @foreach($faq_ccd as $row)
+                                                <option value="{{$row['Ccd']}}">{{$row['CcdName']}}</option>
+                                                @endforeach
+                                            </select>
+                                            <span class="willbes-Lec-Search">
+                                                <div class="inputBox p_re">
+                                                    <input type="text" id="s_keyword" name="s_keyword" class="labelSearch" placeholder="찾고 싶은 내용 / 단어를 입력해 주세요." maxlength="30">
+                                                    <button type="submit" class="search-Btn">
+                                                        <span>검색</span>
+                                                    </button>
+                                                </div>
+                                            </span>
+                                        </div>
                                     </form>
                                 </div>
                                 <ul class="tabWrap tabcsDepth2 bg-light-gray NSK p_re">

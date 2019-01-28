@@ -8249,6 +8249,9 @@ ul li.profList .willbes-Layer-ProfileBox {
 .onlineBox {
     background: #0d74ae;
 }
+.allBox {
+    background: #000;
+}
 .nyBox {
     background: #703eb4;
 }
@@ -8417,249 +8420,249 @@ ul li.profList .willbes-Layer-ProfileBox {
 
 
 /*********************************************     CSCENTER PAGE     *********************************************/
-
-/* subContainer : Cs : 인덱스 */
-.tabWrap.tabCsDepth1,
-.tabWrapIndex {
-    height:50px;
-    border-bottom: none;
-}
-.tabWrap.tabCsDepth1 li,
-.tabWrapIndex li {
-    float: left;
-    width: 14.38571428571429%;
-    height: 50px;
-    margin-right: -1px;
-}
-.tabWrap.tabCsDepth1 li a,
-.tabWrapIndex li a {
-    position: relative;
+/* subContainer : Cs : CScenterIndex : 공통 */
+.ActIndex:after {
+    content: '';
+    clear: both;
     display: block;
-    width: 100%;
-    height: 100%;
-    line-height: 48px;
-    background: #fff;
-    font-size: 14px;
+}
+.ActIndex .will-Tit {
+    font-size: 19px;
     font-weight: 600;
-    color: #383838;
+}
+
+/* subContainer : Cs : CScenterIndex : MainVisual */
+.ActIndex.MainVisual {
+    background: #fbfbfb;
+    border-bottom: 1px solid #e5e5e5;
+    margin-top: 30px;
+}
+.ActIndex.MainVisual .will-main-Tit {
+    float: left;
+    padding-top: 70px;
+    padding-bottom: 82px;
+    font-size: 27px;
+    font-weight: 300;
+    line-height: 40px;
+}
+.ActIndex.MainVisual .will-main-Tit .tx-light-blue {
+    font-size: 43px;
+    font-weight: 600;
+}
+.ActIndex.MainVisual .will-main-Tit .NSK-Thin {
+    font-size: 12px;
+    color: #1f1f1f;
+    line-height: 14px;
+    padding-top: 20px;
+}
+
+.ActIndex.MainVisual .centerList {
+    float: right;
+    padding-top: 70px;
     text-align: center;
-    letter-spacing: 0;
-    border: 1px solid #ccc;
 }
-.tabWrap.tabCsDepth1 li:first-child a,
-.tabWrapIndex li:first-child a {
-    border-left: 1px solid #ccc;
+.ActIndex.MainVisual .centerList ul li {
+    display: inline-block;
 }
-.tabWrap.tabCsDepth1 li a.on,
-.tabWrapIndex li a:hover {
-    z-index: 2;
-    background: #fff;
-    color: #0d74ae;
-    border: 1px solid #0d74ae;
+.ActIndex.MainVisual .centerList ul li.arrow {
+    margin: 0 15px;
 }
-.willbes-CScenter .willbes-Lec-Search {
-    margin: 7px 0;
+.ActIndex.MainVisual .centerList ul li .nStep {
+    font-size: 10px;
+    color: #898989;
+    text-align: left;
+    margin-left: 5px;
+}
+.ActIndex.MainVisual .centerList ul li .nTxt {
+    font-size: 13px;
+    color: #555;
+    line-height: 15px;
 }
 
 /* subContainer : Cs : CScenterIndex : ActIndex1 */
-.CScenterIndex .ActIndex1 {
-    height: 250px;
+.will-Tit .center-Btn {
+    float: right;
 }
-.CSpartner .centerList {
-    background: #f1f1f1;
-    height: 225px;
-    text-align: center;
-    border: 1px solid #ebebeb;
-}
-.CSpartner .centerList ul {
-    border-bottom: 1px solid #dddbdb;
-    margin: 0 40px;
-    padding: 32px 0;
-}
-.CSpartner .centerList ul li {
-    display: inline-block;
-}
-.CSpartner .centerList ul li.arrow {
-    margin: 0 15px;
-}
-.CSpartner .centerList ul li .nTxt {
-    font-size: 14px;
-    color: #555;
-}
-.CSpartner .centerList .Txt {
-    font-size: 14px;
-    color: #1f1f1f;
-    padding: 20px 0;
-}
-.callTable {
-    text-align: center;
-}
-.callTable tr td {
-    font-size: 14px;
-    color: #3a3a3a;
-    height: 60px;
-}
-.callTable tr td.tx-light-blue {
-    font-size: 22px;
-}
-.callBox {
-    height: 225px;
-}
-.callBox .center-Btn {
-    margin-top: 9px;
-}
-.callBox .center-Btn a {
+.will-Tit .center-Btn a {
     display: block;
     width: 100%;
     height: 100%;
     font-size: 13px;
-    color: #fff;
     text-align: center;
-    line-height: 34px;
+    line-height: 22px;
+}
+.callBox ul {
+    border: 1px solid #e5e5e5;
+    height: 66px;
+    margin-top: 10px;
+}
+.callBox ul li {
+    position: relative;
+    float: left;
+    width: 33.33333333%;
+    height: 64px;
+    line-height: 62px;
+    text-align: center;
+}
+.callBox ul li .row-line {
+    position: absolute;
+    top: 12px;
+    right: 0;
+    background: #e4e4e4;
+    width: 1px;
+    height: 40px;
+}
+.callBox ul li .tit {
+    font-size: 14px;
+    font-weight: 600;
+    color: #3a3a3a;
+    margin: 0 10px;
+}
+.callBox ul li .num {
+    font-size: 22px;
+    font-weight: 600;
+}
+.callBox ul li a.bnr_go {
+    margin-left: 10px;
 }
 
 /* subContainer : Cs : CScenterIndex : ActIndex2 */
-.LeclistTable .csCenterTable tbody tr.replyTxt th,
-.LeclistTable .csCenterTable tbody tr.replyTxt td {
-    line-height: 24px;
-    padding: 15px 0;
+.csCenterSearch .SearchBox {
+    border-top: 1px solid #acacac;
+    border-left: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    margin-bottom: 1px;
 }
-.csCenterTable tr.SearchBox {
-    border-top: 2px solid #000;
+.csCenterSearch .SearchBox:after {
+    content: '';
+    clear: both;
+    display: block;
 }
-.csCenterTable ul {
+.csCenterSearch .SearchBox span {
+    display: inline-block;
+} 
+.csCenterSearch .SearchBox .sTit {
+    font-size: 22px;
+    margin: 0 40px;
+    line-height: 90px;
+}
+.csCenterSearch .SearchBox .sTit span {
+    vertical-align: baseline;    
+}
+.csCenterSearch .SearchBox .sTitsub {
+    font-size: 12px;
+    color: #555;
+    line-height: 16px;
+}
+
+.csCenterSearch .willbes-Lec-Search {
+    float: right;
+    height: 40px;
+    margin: 25px;
+}
+.csCenterSearch .willbes-Lec-Search .inputBox {
+    background: #f4f4f5;
+    width: 310px;
+    height: 40px;
+    border: 4px solid #636363;
+}
+.csCenterSearch .willbes-Lec-Search .inputBox input {
+    background: #f4f4f5;
+    width: 220px;
+    height: 32px;
+    border: none;
+    outline: none;
+}
+.csCenterSearch .willbes-Lec-Search .inputBox button {
+    float: right;
+}
+.csCenterSearch .SearchBox select {
+    width: 90px;
+    height: 30px;
+    padding-bottom: 1px;
+}
+
+.csCenterSearch ul {
     text-align: center;
-    height: 50px;
-    border-bottom: 2px solid #b5b5b5;
+    height: 55px;
+    border-bottom: none;
 }
-.csCenterTable ul li {
+.csCenterSearch ul li {
     display: inline-block;
     margin: 0 45px;
-    line-height: 50px;
+    line-height: 55px;
     width: auto;
-    height: 50px;
+    height: 55px;
     float: inherit;
 }
-.csCenterTable ul li:first-child a {
+.csCenterSearch ul li:first-child a {
     border: none;
 }
-.csCenterTable ul li a {
+.csCenterSearch ul li a {
     background: none;
     border: none;
     height: auto;
-    line-height: 48px;
+    line-height: 55px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #707070;
 }
-
-.csCenterTable ul li a.on {
+.csCenterSearch ul li a.on {
     background: none;
     height: auto;
     border: none;
-    line-height: 48px;
-    color: #323232;
+    line-height: 55px;
+    color: #0d74ae;
 }
 
-.csCenterTable .replyList .arrow-Btn {
+.csCenterSearch tbody tr.replyTxt th,
+.csCenterSearch tbody tr.replyTxt td {
+    line-height: 24px;
+}
+.csCenterSearch .replyList .arrow-Btn {
     background: url("../../img/willbes/cs/icon_arrow.gif") no-repeat 0 -18px;
     float: right;
     width: 11px;
     height: 9px;
     margin: 15px;
 }
-.csCenterTable .replyList.hover .arrow-Btn {
+.csCenterSearch .replyList.hover .arrow-Btn {
     background: url("../../img/willbes/cs/icon_arrow.gif") no-repeat 0 0;
-}
-.csCenterTable .SearchBox td {
-    padding: 30px 0;
-}
-.csCenterTable .SearchBox span {
-    display: inline-block;
-} 
-.csCenterTable .SearchBox .sTit {
-    font-size: 17px;
-    margin: 0 15px;
-}
-.csCenterTable .willbes-Lec-Search .inputBox {
-    width: 570px;
-}
-.csCenterTable .willbes-Lec-Search .inputBox input {
-    width: 490px;
-}
-.csCenterTable .SearchBox select {
-    widtH: 90px;
-    height: 30px;
-    padding-bottom: 1px;
 }
 
 /* subContainer : Cs : CScenterIndex : ActIndex3 */
-.willbes-firstinfo {
-    font-weight: 600;
-    height: 110px;
-    border-top: 1px solid #dedede;
-    border-bottom: 3px solid #ccc;
-}
-.willbes-firstinfo ul li.Tit {
-    position: relative;
-    width: 210px;
-    height: 106px;
-    font-size: 24px;
-    color: #3f3f3e;
-    line-height: 32px;
-    padding: 22px;
-    border-right: 1px solid #dedede;
-}
-.willbes-firstinfo ul li.Tit:after,
-.willbes-firstinfo ul li.Tit:before {
-    content: '';
-    display: block;
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-style: solid;
-}
-.willbes-firstinfo ul li.Tit:before {
-    top: 50%;
-    right: -18px;
-    margin-top: -9px;
-    border-color: transparent transparent transparent #dedede;
-    border-width: 9px;
-}
-.willbes-firstinfo ul li.Tit:after {
-    top: 50%;
-    right: -16px;
-    margin-top: -9px;
-    border-color: transparent transparent transparent #fff;
-    border-width: 9px;
-}
-.willbes-firstinfo ul li.Tit span {
-    vertical-align: baseline;
-}
-.willbes-firstinfo ul li.Tit span.NGR {
-    font-weight: 300;
-    color: #323232;
+.willbes-firstinfo ul {
+    border: 1px solid #e5e5e5;
+    height: 86px;
+    margin-top: 15px;
 }
 .willbes-firstinfo ul li {
+    position: relative;
     float: left;
-    width: 145px;
-    height: 146px;
+    width: 20%;
+    height: 84px;
 }
 .willbes-firstinfo ul li .row-line {
-    float: right;
+    position: absolute;
+    top: 20px;
+    right: 0;
     background: #e4e4e4;
     width: 1px;
-    height: 65px;
-    margin: 20px 0;
+    height: 44px;
 }
 .willbes-firstinfo ul li a {
     float: left;
     display: block;
-    width: 142px;
+    width: 100%;
     height: 100%;
     font-size: 13px;
+    color: #3a3a3a;
     text-align: center;
-    margin: 0 1px;
+    line-height: 84px;
 }
-.willbes-firstinfo ul li a img {
-    padding-top: 15px;
+.willbes-firstinfo ul li a span {
+    margin: 0 5px;
 }
 
 /* subContainer : Cs : CScenterIndex : ActIndex3 : willbes-Layer-CScenterBox */
@@ -8667,7 +8670,7 @@ ul li.profList .willbes-Layer-ProfileBox {
     display: none;
     background: #fff;
     position: absolute;
-    top: 85px;
+    top: 29px;
     right: 0;
     z-index: 110;
     width: 700px;
@@ -8705,31 +8708,13 @@ ul li.profList .willbes-Layer-ProfileBox {
 }
 
 /* subContainer : Cs : CScenterIndex : ActIndex4 */
-.CScenterIndex .ActIndex4 {
-    height: 202px;
-}
-.willbes-program {
-    float: left;
-    height: 202px;
-    border-bottom: 1px solid #e2e2e2;
-}
-.willbes-program dl dt {
-    float: left;
-    width: 25%;
-    text-align: center;
-    margin: 39px 0;
-}
-.willbes-program dl dt div {
-    height:30px;
-    line-height: 15px;
-    margin-bottom: 10px;
-}
-.willbes-info {
-    height: 202px;
-}
 .willbes-info .List-Table li {
     line-height: 44px;
     height: 44px;
+}
+.willbes-info.willbes-notice .List-Table li {
+    line-height: 29px;
+    height: 29px;
 }
 .willbes-info .List-Table li a {
     float: left;
@@ -8741,6 +8726,33 @@ ul li.profList .willbes-Layer-ProfileBox {
 .willbes-info .List-Table li .date {
     float: right;
     color: #959595;
+}
+
+.willbes-program dl dt {
+    float: left;
+    width: 84px;
+    text-align: center;
+    margin-top: 25px;
+    margin-left: 8px;
+}
+.willbes-program dl dt:first-child {
+    margin-left: 0;
+}
+.willbes-program dl dt a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 5px solid #eaeaea;
+    padding: 10px;
+}
+.willbes-program dl dt div {
+    font-size: 11px;
+    color: #3a3a3a;
+    margin-bottom: 10px;
+}
+.bnr_mobile {
+    display: block;
+    margin-top: -4px;
 }
 
 /* subContainer : Cs : CScenter1 : Act1 : 자주하는 질문 */
@@ -9033,116 +9045,162 @@ ul li.profList .willbes-Layer-ProfileBox {
 
 
 /*********************************************     MYPAGE     *********************************************/
-
-/* subContainer : Mypage : 무한PASS존 : Mypage_PASS_Index : ActIndex1 */
-.Mypage_PASS_Index .ActIndex1 {
-    height: 270px;
-    border-bottom: 1px solid #959595;
+/* subContainer : Mypage : 무한PASS존 : Mypage_PASS_Index : MyInfo */
+.ActIndex.MyInfo {
+    background: #fbfbfb;
+    border-bottom: 1px solid #e5e5e5;
+    margin-top: 30px;
 }
-.MyInfoBox {
-    float: left;
-    width: 575px;
-    padding: 10px 0 5px 0;
+.ActIndex.MyInfo .will-Tit {
+    margin-top: -30px;
 }
-.MyInfoBox ul li {
+.MyLecInfoBox {
     float: left;
-    width: 277px;
+    background: #fff;
+    width: 635px;
+    margin: 30px 0 35px;
+    padding: 10px;
+    border: 1px solid #e5e5e5;
+}
+.MyLecInfoBox ul li {
+    float: left;
+    width: 390px;
     height: 110px;
-    border: 1px solid #d7d7d7;
-    box-shadow: 0 2px 0 #e5e5e5;
-    margin: 0 10px 5px 0;
     text-align: center;
+    padding-left: 20px;
+    padding-top: 20px;
 }
-.MyInfoBox ul li .Tit {
+.MyLecInfoBox ul li.sm {
     float: left;
-    width: 100px;
-    height: 108px;
-    font-size: 16px;
-    color: #fff;
-    text-align: left;
-    line-height: 18px;
-    padding: 25px 0 0 15px;
-    background-image: url("../../img/willbes/mypage/icon_arrow.png");
-    background-position: 65px 85px;
-    background-repeat: no-repeat; 
+    width: 223px;
+    height: 110px;
+    text-align: center;
+    padding-left: 30px;
+    border-left: 1px solid #e5e5e5;
 }
-.MyInfoBox .TableInfo {
-    float: right;
-    margin: 20px 30px;
+.MyLecInfoBox ul li.line {
+    border-bottom: 1px solid #e5e5e5;
+    padding-top: 10px;
 }
-.MyInfoBox table.myTable {
+.MyLecInfoBox ul li .Tit {
+    background: #f6f6f6;
+    float: left;
+    width: 88px;
+    height: 88px;
+    border-radius: 88px;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 19px;
+    padding: 26px 0;
+}
+.MyLecInfoBox .TableInfo {
+    margin-top: 20px;
+}
+.MyLecInfoBox .TableInfo dl dt {
+    display: inline-block;
+    margin: 0 15px;
+}
+.MyLecInfoBox .TableInfo dl dt .subTit {
+    font-size: 14px;
+}
+.MyLecInfoBox .TableInfo dl dt div {
+    font-size: 17px;
+    line-height: 20px;
+} 
+.MyLecInfoBox .TableInfo dl dt div a {
+    border-bottom: 1px solid #0d74ae;
+
+}
+.MyLecInfoBox table.myTable {
     width: 115px;
     height: 68px;
     font-size: 13px;
 }
-.MyInfoBox table.myTable td.subTit {
-    text-align: left;
-}
-.MyInfoBox table.myTable td {
-    text-align: right;
-}
 
-.willbes-myinfo {
-    float: left;
-    width: 365px;
+.MyInfoBox {
+    float: right;
+    width: 285px;
     height: 245px;
-    border-left: 1px solid #959595;
+    margin-top: 30px;
 }
-.willbes-myinfoList .will-Tit {
+.MyInfoBoxList .will-Tit {
+    background: #fff;
     font-size: 14px;
-    border-bottom: 1px solid #eaeaea;
-    height: 35px;
-    line-height: 35px;
+    color: #323232;
+    border: 1px solid #e5e5e5;
+    height: 34px;
+    line-height: 32px;
     padding: 0 0 0 15px;
+    margin-top: 0 !important;
 }
-.willbes-myinfoList .List-Table {
-    padding-left: 20px;
-    margin: 13px 0;
+.MyInfoBoxList .will-Tit a {
+    display: block;
+    width: 20px;
+    height: 20px;
+    margin: 6px;
+}
+.MyInfoBoxList .will-Tit a img {
+    float: left;
+}
+.MyInfoBoxList .List-Table {
+    padding-left: 15px;
+    margin: 13px 0 22px;
     letter-spacing: 0;
 }
-.willbes-myinfoList .List-Table li {
+.MyInfoBoxList .List-Table li {
     border-bottom: none;
-    height: 30px;
-    line-height: 30px;
-}
-.willbes-myinfoList .List-Table li a {
-    width: auto;
-}
-.willbes-myinfoList .List-Table li a img {
-    margin: -4px 0 0 5px;
-}
-.willbes-myinfoList .List-Table.myTablet {
-    background: url("../../img/willbes/mypage/icon_pc.png") no-repeat 0 4px;
-    padding: 18px 0 18px 110px;
-    margin: 0;
-}
-.willbes-myinfoList .List-Table.myTablet li {
     height: 25px;
     line-height: 25px;
 }
-/* subContainer : Mypage : 무한PASS존 : Mypage_PASS_Index : ActIndex2 */
-.Mypage_PASS_Index .ActIndex2 table.lecTable tr td.w-list {
-    background: #f9f9f9;
-    font-size: 14px;
-    line-height: 18px;
-    padding: 0;
+.MyInfoBoxList .List-Table li a {
+    width: auto;
 }
-.Mypage_PASS_Index .ActIndex2 table.lecTable tr td.w-list a {
+.MyInfoBoxList .List-Table li a img {
+    margin: -4px 0 0 5px;
+}
+.MyInfoBoxList .List-Table.myTablet {
+    background: url("../../img/willbes/mypage/icon_pc_n.png") no-repeat 0 4px;
+    padding: 18px 0 18px 110px;
+    margin: 0;
+}
+.MyInfoBoxList .List-Table.myTablet li {
+    height: 25px;
+    line-height: 25px;
+}
+
+/* subContainer : Mypage : 무한PASS존 : Mypage_PASS_Index : ActIndex1 */
+.Mypage_PASS_Index .ActIndex1 table.lecTable tr td {
+    padding: 10px 0;
+}
+.Mypage_PASS_Index .ActIndex1 table.lecTable tr td.w-list {
+    padding-left: 15px;
+}
+.Mypage_PASS_Index .ActIndex1 table.lecTable tr td.w-list a {
     display: block; 
     padding: 0
 }
-/* subContainer : Mypage : 무한PASS존 : Mypage_PASS_Index : ActIndex3 */
-.Mypage_PASS_Index .ActIndex3 {
-    height: 202px;
+.Mypage_PASS_Index .ActIndex1 table.lecTable tr td.w-percent .round {
+    background: #f6f6f6;
+    width: 78px;
+    height: 78px;
+    border-radius: 78px;
+    margin: 0 auto;
+    font-size: 12px;
+    color: #3a3a3a;
+    line-height: 18px;
+    padding-top: 18px;
 }
+.Mypage_PASS_Index .ActIndex1 table.lecTable tr td.w-percent .round .tx-blue {
+    font-size: 20px;
+}
+
+/* subContainer : Mypage : 무한PASS존 : Mypage_PASS_Index : ActIndex2 */
 .willbes-info .List-Table .aBox {
     float: right;
     margin: 11px 5px 11px 20px;
 }
-/* subContainer : Mypage : 무한PASS존 : Mypage_PASS_Index : ActIndex4 */
-.Mypage_PASS_Index .ActIndex4 {
-    height: 202px;
-}
+
+/* subContainer : Mypage : 무한PASS존 : Mypage_PASS_Index : ActIndex3 */
 .willbes-info860 .List-Table li a {
     width: 870px;
 }
@@ -12109,8 +12167,6 @@ table.acadlecInfoPackageTable tr.Top td {
     text-align: left;
 }
 
-
-
 /* Certification */
 .CertiBox {
     width: 900px;
@@ -12202,22 +12258,15 @@ table.acadlecInfoPackageTable tr.Top td {
     padding: 4px 8px;
 }
 
-
-
-
-
-
 /* subContainer : Content : Quick-Bnr */
+.Quick-Top {
+    position: absolute;
+    top: -30px;
+    right: 0;
+}
 .Quick-Bnr {
     float: left;
 }
-
-
-
-
-
-
-
 
 
 
@@ -12226,26 +12275,11 @@ table.acadlecInfoPackageTable tr.Top td {
 #SettingForm .chkBox-Save strong {
     letter-spacing: -2px \0;
 }
+
 /* IE10 and IE11 */
 @media screen and (-ms-black-contrast:active), (-ms-black-contrast:none) {
     #SettingForm .chkBox-Save strong {letter-spacing: -2px;}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 @media only screen and (max-width: 768px) {
 

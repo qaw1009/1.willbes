@@ -78,8 +78,7 @@
             </div>
         </div>
 
-        <div class="willbes-Leclist c_both mt30">
-            <img src="{{ img_url('gosi/guide/guide_visual.jpg') }}">
+        <div class="willbes-Leclist c_both mt10">
             <div class="w-gosi-Guide">
                 <div class="willbes-gosi-guide GM">
                     <ul class="tabShow tabcsDepth2 tab_gosi_Guide p_re NG">

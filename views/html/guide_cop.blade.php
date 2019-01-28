@@ -78,8 +78,7 @@
             </div>
         </div>
 
-        <div class="willbes-Leclist c_both mt30">
-            <img src="{{ img_url('cop/guide/guide_visual.jpg') }}">
+        <div class="willbes-Leclist c_both mt10">
             <div class="w-cop-Guide">
                 <div class="willbes-cop-guide GM">
                     <ul class="tabWrap tabcsDepth2 tab_cop_Guide p_re NG">

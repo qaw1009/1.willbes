@@ -383,6 +383,10 @@ select[disabled] {
   width: 353px;
   margin: 0 auto;
 }
+.widthAuto360 {
+  width: 360px;
+  margin: 0 auto;
+}
 .widthAuto365 {
   width: 365px;
   margin: 0 auto;

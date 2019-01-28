@@ -120,7 +120,7 @@
             <div class="inputBox p_re">
                 <div class="selectBox">
                     <select id="search_order" name="search_order" class="" onchange="goUrl('search_order', this.value);">
-                        <option value="regist" @if(element('search_order', $arr_input) == 'recent') selected="selected" @endif>최근등록순</option>
+                        <option value="regist" @if(element('search_order', $arr_input) == 'regist') selected="selected" @endif>최근등록순</option>
                         <option value="course" @if(element('search_order', $arr_input) == 'course') selected="selected" @endif>과정순</option>
                     </select>
                 </div>

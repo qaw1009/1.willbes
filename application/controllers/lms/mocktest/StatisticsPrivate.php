@@ -42,8 +42,13 @@ class StatisticsPrivate extends \app\controllers\BaseController
     /**
      * 리스트
      */
-    public function list()
+    public function list($params = [])
     {
+        if(empty($params) == false) {
+            $excel = $params[0];
+        } else {
+            $excel = '';
+        }
 
         $rules = [
             ['field' => 'search_site_code', 'label' => '사이트', 'rules' => 'trim|is_natural_no_zero'],
@@ -85,14 +90,23 @@ class StatisticsPrivate extends \app\controllers\BaseController
             ],
         ];
 
+        if($excel === 'Y') {
 
-        list($data, $count) = $this->regGradeModel->privateList($condition, $this->input->post('length'), $this->input->post('start'));
+            $data  = $this->regGradeModel->privateListExcel($condition);
 
-        return $this->response([
-            'recordsTotal' => $count,
-            'recordsFiltered' => $count,
-            'data' => $data,
-        ]);
+            $headers = ['NO', '회원명', '연락처', '응시번호', '응시형태', '연도', '회차', '모의고사명', '카테고리', '직렬', '과목', '응시지역', '총점', '등록일'];
+
+            $this->load->library('excel');
+            $this->excel->exportExcel('개인별성적통계('.date("Y-m-d").')', $data, $headers);
+        } else {
+            list($data, $count) = $this->regGradeModel->privateList($condition, $this->input->post('length'), $this->input->post('start'));
+
+            return $this->response([
+                'recordsTotal' => $count,
+                'recordsFiltered' => $count,
+                'data' => $data,
+            ]);
+        }
     }
 
 

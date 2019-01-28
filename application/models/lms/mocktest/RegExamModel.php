@@ -23,6 +23,8 @@ class RegExamModel extends WB_Model
         'subject' => 'lms_product_subject',
         'professor' => 'lms_professor',
         'pms_professor' => 'wbs_pms_professor',
+        'mockRegisterR' => 'lms_mock_register_r_paper',
+        'mockRegister' => 'lms_mock_register',
     ];
 
     public $upload_path;            // 업로드 기본경로
@@ -56,6 +58,14 @@ class RegExamModel extends WB_Model
         $select = "
             SELECT EB.*, A.wAdminName, MB.CateCode, MB.Ccd, MS.SubjectType,
                    CONCAT(C1.CateName, ' > ', SC.CcdName) AS CateRouteName, SJ.SubjectName, PMS.wProfName,
+                   (SELECT COUNT(MemIdx) 
+                      FROM lms_mock_register AS MR
+                           JOIN lms_mock_register_r_paper AS RR ON MR.MrIdx = RR.MrIdx
+                      WHERE IsStatus = 'Y' AND IsTake = 'Y' AND MpIdx = EB.MpIdx AND TakeForm = (SELECT Ccd FROM lms_sys_code Where CcdName = 'online')) AS OnlineCnt,
+                   (SELECT COUNT(MemIdx) 
+                      FROM lms_mock_register AS MR
+                           JOIN lms_mock_register_r_paper AS RR ON MR.MrIdx = RR.MrIdx 
+                      WHERE IsStatus = 'Y' AND IsTake = 'Y' AND MpIdx = EB.MpIdx AND TakeForm = (SELECT Ccd FROM lms_sys_code Where CcdName = 'off(학원)')) AS OfflineCnt,
                    (SELECT COUNT(*) FROM {$this->_table['mockExamQuestion']} AS EQ WHERE EB.MpIdx = EQ.MpIdx AND EQ.IsStatus = 'Y') AS ListCnt,
                    IF(MB.Isuse = 'N' OR C1.IsUse = 'N' OR SC.IsUse = 'N', 'N', 'Y') AS IsUseCate,
                    IF(MS.Isuse = 'N' OR SJ.IsUse = 'N', 'N', 'Y') AS IsUseSubject,
@@ -77,7 +87,7 @@ class RegExamModel extends WB_Model
         $where = "WHERE EB.IsStatus = 'Y'";
         $where .= $this->_conn->makeWhere($condition)->getMakeWhere(true)."\n";
         $order = "ORDER BY EB.MpIdx DESC\n";
-
+        //echo "<pre>".$select . $from . $where . $order . $offset_limit."</pre>";
         $data = $this->_conn->query($select . $from . $where . $order . $offset_limit)->result_array();
         $count = $this->_conn->query($selectCount . $from . $where)->row()->cnt;
 

@@ -70,10 +70,21 @@ class RegGradeModel extends WB_Model
             SELECT 
             MP.*, CONCAT(A.wAdminName,'\<br\>(', MP.RegDatm,')') AS wAdminName, PD.ProdName, PD.SaleStartDatm, PD.SaleEndDatm, 
             PD.IsUse, PS.SalePrice, PS.RealSalePrice, CONCAT(TakeStartDatm,'~',TakeEndDatm) AS SETIME, CONCAT(TakeTime,' 분') AS TakeStr,
+            (SELECT COUNT(MemIdx) FROM {$this->_table['mockRegister']} WHERE IsStatus = 'Y' AND IsTake = 'Y' AND ProdCode = MP.ProdCode AND TakeForm = (SELECT Ccd FROM {$this->_table['sysCode']} Where CcdName = 'online')) AS OnlineCnt,
+	        (SELECT COUNT(MemIdx) FROM {$this->_table['mockRegister']} WHERE IsStatus = 'Y' AND IsTake = 'Y' AND ProdCode = MP.ProdCode AND TakeForm = (SELECT Ccd FROM {$this->_table['sysCode']} Where CcdName = 'off(학원)')) AS OfflineCnt,
             (SELECT COUNT(*) FROM {$this->_table['mockGrades']} WHERE ProdCode = PD.ProdCode) AS GradeCNT,  
-            IF(CURDATE() >= left(PD.SaleStartDatm,10) && CURDATE() <= left(PD.SaleEndDatm,10), '접수중', IF(CURDATE() < left(PD.SaleStartDatm,10),'접수전','접수마감')) AS SState,            
-            C1.CateName, C1.IsUse AS IsUseCate
-            ,SC1.CcdName As AcceptStatusCcd_Name
+            (SELECT CcdName FROM {$this->_table['sysCode']} WHERE Ccd = MP.AcceptStatusCcd) AS AcceptStatusCcd,            
+            C1.CateName, C1.IsUse AS IsUseCate,
+            (
+                SELECT 
+                  GradeOpenDatm 
+                FROM 
+                  {$this->_table['mockGroup']} AS MG 
+                  JOIN {$this->_table['mockGroupR']} AS GR ON MG.MgIdx = GR.MgIdx AND GR.IsStatus = 'Y'  
+                WHERE
+                   GR.ProdCode = MP.ProdCode
+            )AS GradeOpenDatm, 
+            SC1.CcdName As AcceptStatusCcd_Name
         ";
         $from = "
             FROM {$this->_table['mockProduct']} AS MP
@@ -203,6 +214,78 @@ class RegGradeModel extends WB_Model
         }
 
         return array($data, $count);
+    }
+
+    /**
+     * 신청목록-Excel
+     */
+    public function privateListExcel($conditionAdd='')
+    {
+
+        $condition = [ 'IN' => ['PD.SiteCode' => get_auth_site_codes()] ];    //사이트 권한 추가
+        if($conditionAdd) $condition = array_merge_recursive($condition, $conditionAdd);
+
+        $column = "
+                   (SELECT MemName FROM {$this->_table['member']} WHERE MemIdx = MR.MemIdx) AS MemName,
+                   (SELECT CONCAT(Phone1,'-',fn_dec(Phone2Enc),'-',phone3) FROM {$this->_table['member']} WHERE MemIdx = MR.MemIdx) AS Phone,
+                   MR.TakeNumber,
+                   (SELECT CcdName FROM {$this->_table['sysCode']} WHERE Ccd = MR.TakeForm) AS TakeFormType,
+                   MockYear,
+                   MockRotationNo,
+                   CONCAT('[',PD.ProdCode,']',PD.ProdName) AS ProdName,
+                   C1.CateName,
+                   (
+                        SELECT
+                            GROUP_CONCAT(CcdName)
+                        FROM
+                            {$this->_table['sysCode']}
+                            WHERE
+                                Ccd IN (MP.TakeFormsCcd)
+                   ) AS MockPartName,
+                   (
+                        SELECT 
+                            GROUP_CONCAT(SubjectName) 
+                        FROM {$this->_table['mockRegisterR']} AS RP
+                             JOIN {$this->_table['subject']} AS PS ON RP.SubjectIdx = PS.SubjectIdx
+                        WHERE 
+                             RP.SubjectIdx IN (SELECT GROUP_CONCAT(SubjectIdx) FROM {$this->_table['mockRegisterR']} WHERE ProdCode = MR.ProdCode AND MrIdx = MR.MrIdx GROUP BY MpIdx)
+                             AND MrIdx = MR.MrIdx
+                   ) AS SubjectName,
+                   (SELECT CcdName FROM {$this->_table['sysCode']} WHERE Ccd = MR.TakeArea) AS TakeAreaName,
+                   (SELECT SUM(AdjustPoint) FROM {$this->_table['mockGrades']} WHERE MemIdx = MR.MemIdx) AS AdjustSum,
+                   (SELECT RegDatm FROM {$this->_table['mockLog']} WHERE MrIdx = MR.MrIdx ORDER BY RegDatm LIMIT 1) AS ExamRegDatm
+        ";
+        $from = "
+            FROM 
+                {$this->_table['mockProduct']} AS MP
+                JOIN {$this->_table['Product']} AS PD ON MP.ProdCode = PD.ProdCode AND PD.IsStatus = 'Y'
+                JOIN {$this->_table['ProductCate']} AS PC ON MP.ProdCode = PC.ProdCode AND PC.IsStatus = 'Y'
+                JOIN {$this->_table['category']} AS C1 ON PC.CateCode = C1.CateCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y'
+                JOIN {$this->_table['ProductSale']} AS PS ON MP.ProdCode = PS.ProdCode AND PS.IsStatus = 'Y'
+                JOIN {$this->_table['mockRegister']} AS MR ON MP.ProdCode = MR.ProdCode AND MR.IsStatus = 'Y' 
+                LEFT JOIN {$this->_table['admin']} AS A ON MP.RegAdminIdx = A.wAdminIdx
+                LEFT OUTER JOIN {$this->_table['sysCode']} AS SC1 ON MP.AcceptStatusCcd = SC1.Ccd
+                LEFT JOIN {$this->_table['mockGroupR']} AS GR ON MP.ProdCode = GR.ProdCode AND GR.IsStatus = 'Y'
+                LEFT JOIN {$this->_table['mockGroup']} AS MG ON GR.MgIdx = MG.MgIdx AND MG.IsStatus = 'Y' AND MG.IsUse = 'Y'
+                
+        ";
+
+        $where = " WHERE PD.IsStatus = 'Y' ";
+        $where .= $this->_conn->makeWhere($condition)->getMakeWhere(true)."\n";
+        $order = " ORDER BY MP.ProdCode DESC ";
+
+        $sql = "Select @SEQ := @SEQ+1 as NO,mm.*
+                    From  (SELECT @SEQ := 0) A,
+                    (
+                      SELECT 
+                        $column     
+                        $from  
+                        $where 
+                        $order              
+                    ) mm Order by @SEQ DESC
+        ";
+        $data = $this->_conn->query($sql)->result_array();
+        return $data;
     }
 
 

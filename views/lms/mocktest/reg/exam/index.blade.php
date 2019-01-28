@@ -182,8 +182,8 @@
                     }},
                     {'data' : 'AnswerNum', 'class': 'text-center'},
                     {'data' : 'ListCnt', 'class': 'text-center'},
-                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) { return 0; }},
-                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) { return 0; }},
+                    {'data' : 'OnlineCnt', 'class': 'text-center'},
+                    {'data' : 'OfflineCnt', 'class': 'text-center'},
                     {'data' : 'IsUse', 'class': 'text-center', 'render' : function(data, type, row, meta) {
                         return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
                     }},

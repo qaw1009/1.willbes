@@ -191,10 +191,10 @@
                     {'data' : 'TakePart_off', 'class': 'text-center', 'render' : function(data, type, row, meta) {
                         return (data === 'Y') ? 'Y' : '<span class="red">N</span>';
                     }},
-                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) { return 0; }},
-                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) { return 0; }},
-                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) { return 0; }},
-                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) { return 0; }},
+                    {'data' : 'OnlineRegCnt', 'class': 'text-center'},
+                    {'data' : 'OfflineRegCnt', 'class': 'text-center'},
+                    {'data' : 'OnlineCnt', 'class': 'text-center'},
+                    {'data' : 'OfflineCnt', 'class': 'text-center'},
                     {'data' : 'AcceptStatusCcd_Name', 'class': 'text-center'},
                     {'data' : 'TakeType', 'class': 'text-center', 'render' : function(data, type, row, meta) {
                         return (data === 'A') ? '상시' : '기간제한';

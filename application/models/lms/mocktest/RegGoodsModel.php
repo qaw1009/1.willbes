@@ -31,6 +31,7 @@ class RegGoodsModel extends WB_Model
         'ProductCate' => 'lms_Product_R_Category',
         'ProductSale' => 'lms_Product_Sale',
         'ProductSMS' => 'lms_Product_Sms',
+        'mockRegister' => 'lms_mock_register',
     ];
 
 
@@ -53,7 +54,11 @@ class RegGoodsModel extends WB_Model
         $select = "
             SELECT MP.*, A.wAdminName, PD.ProdName, PD.SaleStartDatm, PD.SaleEndDatm, PD.IsUse, PD.IsCoupon, PS.SalePrice, PS.RealSalePrice,          
             C1.CateName, C1.IsUse AS IsUseCate
-            ,SC1.CcdName As AcceptStatusCcd_Name
+            ,SC1.CcdName As AcceptStatusCcd_Name,
+            (SELECT COUNT(MemIdx) FROM {$this->_table['mockRegister']} WHERE IsStatus = 'Y' AND IsTake = 'Y' AND ProdCode = MP.ProdCode AND TakeForm = (SELECT Ccd FROM {$this->_table['sysCode']} Where CcdName = 'online')) AS OnlineCnt,
+	        (SELECT COUNT(MemIdx) FROM {$this->_table['mockRegister']} WHERE IsStatus = 'Y' AND IsTake = 'Y' AND ProdCode = MP.ProdCode AND TakeForm = (SELECT Ccd FROM {$this->_table['sysCode']} Where CcdName = 'off(학원)')) AS OfflineCnt,
+	        (SELECT COUNT(MemIdx) FROM {$this->_table['mockRegister']} WHERE IsStatus = 'Y' AND ProdCode = MP.ProdCode AND TakeForm = (SELECT Ccd FROM {$this->_table['sysCode']} Where CcdName = 'online')) AS OnlineRegCnt,
+	        (SELECT COUNT(MemIdx) FROM {$this->_table['mockRegister']} WHERE IsStatus = 'Y' AND ProdCode = MP.ProdCode AND TakeForm = (SELECT Ccd FROM {$this->_table['sysCode']} Where CcdName = 'off(학원)')) AS OfflineRegCnt
         ";
         $from = "
             FROM {$this->_table['mockProduct']} AS MP
@@ -68,8 +73,6 @@ class RegGoodsModel extends WB_Model
         $where = "WHERE PD.IsStatus = 'Y' ";
         $where .= $this->_conn->makeWhere($condition)->getMakeWhere(true)."\n";
         $order = "ORDER BY MP.ProdCode DESC\n";
-
-        //echo $select . $from . $where . $order . $offset_limit;
 
         $data = $this->_conn->query($select . $from . $where . $order . $offset_limit)->result_array();
         $count = $this->_conn->query($selectCount . $from . $where)->row()->cnt;

@@ -169,7 +169,7 @@
                     {'data' : 'MockYear', 'class': 'text-center'},
                     {'data' : 'MockRotationNo', 'class': 'text-center'},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return '<span class="">[' + row.ProdCode + '] ' + row.ProdName + '</span>';
+                            return '<span class="blue underline-link act-edit">[' + row.ProdCode + '] ' + row.ProdName + '</span>';
                         }},
 
                     {'data' : 'TakePart_on', 'class': 'text-center', 'render' : function(data, type, row, meta) {
@@ -178,12 +178,13 @@
                     {'data' : 'TakePart_off', 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             return (data === 'Y') ? 'Y' : '<span class="red">N</span>';
                         }},
-                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) { return 0; }},
-                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) { return 0; }},
+
+                    {'data' : 'OnlineCnt', 'class': 'text-center'},
+                    {'data' : 'OfflineCnt', 'class': 'text-center'},
                     {'data' : 'ProdCode', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return '<span class="blue underline-link act-edit"><input type="hidden" name="target" value="' + row.ProdCode + '" />확인</span>';
+                            return '<span class="blue underline-link act-view"><input type="hidden" name="target" value="' + row.ProdCode + '" />확인</span>';
                         }},
-                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) { return 0; }},
+                    {'data' : 'GradeOpenDatm', 'class': 'text-center'},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             return '<span class="blue underline-link" onClick="scoreMake('+ row.ProdCode +')">' + '조정점수반영' + '</span>';
                         }},
@@ -191,10 +192,16 @@
                 ]
             });
 
+            // 성적페이지로 이동
+            $list_form.on('click', '.act-view', function () {
+                var query = dtParamsToQueryString($datatable);
+                location.href = '{{ site_url('/mocktest/statisticsGrade/statSubject/') }}' + $(this).closest('tr').find('[name=target]').val() + query;
+            });
+
             // 수정으로 이동
             $list_form.on('click', '.act-edit', function () {
                 var query = dtParamsToQueryString($datatable);
-                location.href = '{{ site_url('/mocktest/statisticsGrade/statSubject/') }}' + $(this).closest('tr').find('[name=target]').val() + query;
+                location.href = '{{ site_url('/mocktest/regGoods/edit/') }}' + $(this).closest('tr').find('[name=target]').val() + query;
             });
 
         });

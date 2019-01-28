@@ -64,7 +64,7 @@
                 </div>
                 <div class="form-group form-inline">
                     <div class="col-md-1 text-right">
-                        <button type="button" name="btn_invoice_file_download" class="btn btn-success btn-sm mb-0 btn-excel">엑셀다운로드</button>
+                        <button type="button" class="btn btn-primary mr-50 btn-excel" id="btn-excel">엑셀다운로드</button>
                     </div>
                     <div class="col-md-10 text-right">
                         <button type="submit" class="btn btn-primary" id="btn_search">검색</button>
@@ -162,7 +162,7 @@
                     {'data' : 'MockYear', 'class': 'text-center'},
                     {'data' : 'MockRotationNo', 'class': 'text-center'},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return '<span class="">[' + row.ProdCode + '] ' + row.ProdName + '</span>';
+                            return '<span class="blue underline-link act-edit">[' + row.ProdCode + '] ' + row.ProdName + '</span>';
                         }},
                     {'data' : 'CateName', 'class': 'text-center'},
                     {'data' : 'MockPartName', 'class': 'text-center', 'render' : function(data, type, row, meta) {
@@ -173,22 +173,28 @@
                     {'data' : 'AdjustSum', 'class': 'text-center'},
                     {'data' : 'ExamRegDatm', 'class': 'text-center'},
                     {'data' : 'ProdCode', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return '<span class="blue underline-link act-edit"><input type="hidden" name="prod" value="' + row.ProdCode +'/'+ row.MemIdx+ '" />확인</span>';
+                            return '<span class="blue underline-link act-view"><input type="hidden" name="prod" value="' + row.ProdCode +'/'+ row.MemIdx+ '" />확인</span>';
                         }},
                 ]
             });
 
             // 수정으로 이동
-            $list_form.on('click', '.act-edit', function () {
+            $list_form.on('click', '.act-view', function () {
                 var query = dtParamsToQueryString($datatable);
                 location.href = '{{ site_url('/mocktest/statisticsPrivate/statSubject/') }}' + $(this).closest('tr').find('[name=prod]').val() + query;
             });
 
-            // 엑셀다운로드 버튼 클릭
+            // 수정으로 이동
+            $list_form.on('click', '.act-edit', function () {
+                var query = dtParamsToQueryString($datatable);
+                location.href = '{{ site_url('/mocktest/regGoods/edit/') }}' + $(this).closest('tr').find('[name=prod]').val() + query;
+            });
+
+            // 엑셀다운로드
             $('.btn-excel').on('click', function(event) {
                 event.preventDefault();
-                if (confirm('정말로 엑셀다운로드 하시겠습니까?')) {
-                    formCreateSubmit('{{ site_url('/pay/order/excel') }}', $search_form.serializeArray(), 'POST');
+                if (confirm('엑셀다운로드 하시겠습니까?')) {
+                    formCreateSubmit('{{ site_url('/mocktest/statisticsPrivate/list/Y') }}', $search_form.serializeArray(), 'POST');
                 }
             });
 

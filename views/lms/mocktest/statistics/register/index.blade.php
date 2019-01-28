@@ -170,7 +170,7 @@
                     {'data' : 'MockYear', 'class': 'text-center'},
                     {'data' : 'MockRotationNo', 'class': 'text-center'},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return '<span class="">[' + row.ProdCode + '] ' + row.ProdName + '</span>';
+                            return '<span class="blue underline-link act-edit">[' + row.ProdCode + '] ' + row.ProdName + '</span>';
                         }},
                     {'data' : 'SETIME', 'class': 'text-center'},
                     {'data' : 'TakeStr', 'class': 'text-center'},
@@ -182,7 +182,7 @@
                             return (data === 'Y') ? 'Y' : '<span class="red">N</span>';
                         }},
 
-                    {'data' : 'SState', 'class': 'text-center'},
+                    {'data' : 'AcceptStatusCcd', 'class': 'text-center'},
                     {'data' : 'IsUse', 'class': 'text-center', 'render' : function(data, type, row, meta) {
                         return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
                     }},
@@ -191,16 +191,22 @@
                     }},
 
                     {'data' : 'ProdCode', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return '<span class="blue underline-link act-edit"><input type="hidden" name="target" value="' + row.ProdCode + '" />확인</span>';
+                            return '<span class="blue underline-link act-regist"><input type="hidden" name="target" value="' + row.ProdCode + '" />확인</span>';
                         }},
                     {'data' : 'wAdminName', 'class': 'text-center'}
                 ]
             });
 
+            // 성적등록으로 이동
+            $list_form.on('click', '.act-regist', function () {
+                var query = dtParamsToQueryString($datatable);
+                location.href = '{{ site_url('/mocktest/offRegister/statSubject/') }}' + $(this).closest('tr').find('[name=target]').val() + query;
+            });
+
             // 수정으로 이동
             $list_form.on('click', '.act-edit', function () {
                 var query = dtParamsToQueryString($datatable);
-                location.href = '{{ site_url('/mocktest/offRegister/statSubject/') }}' + $(this).closest('tr').find('[name=target]').val() + query;
+                location.href = '{{ site_url('/mocktest/regGoods/edit/') }}' + $(this).closest('tr').find('[name=target]').val() + query;
             });
 
         });

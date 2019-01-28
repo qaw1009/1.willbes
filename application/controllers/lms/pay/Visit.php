@@ -27,7 +27,7 @@ class Visit extends BaseOrder
         $arr_pay_status_ccd = array_filter_keys($codes[$this->_group_ccd['PayStatus']], array_filter_keys($this->orderListModel->_pay_status_ccd, ['receipt_wait', 'paid', 'refund']));
 
         // 결제방법 공통코드에서 방문결제용 코드만 필터링
-        $arr_pay_method_ccd = array_filter_keys($codes[$this->_group_ccd['PayMethod']], array_filter_keys($this->orderListModel->_pay_method_ccd, ['visit_card', 'visit_cash', 'visit_card_cash']));
+        $arr_pay_method_ccd = array_filter_keys($codes[$this->_group_ccd['PayMethod']], array_filter_keys($this->orderListModel->_pay_method_ccd, ['willbes_bank', 'visit_card', 'visit_cash', 'visit_card_cash']));
 
         $this->load->view('pay/visit/index', [
             'arr_pay_method_ccd' => $arr_pay_method_ccd,

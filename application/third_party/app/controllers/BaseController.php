@@ -99,8 +99,7 @@ abstract class BaseController extends \CI_Controller
             if (is_array($err_data) === false || count($err_data) < 1) {
                 $err_data = [
                     'ret_cd' => false,
-                    //'ret_msg' => '에러가 발생하였습니다.',
-                    'ret_msg' => $ret_cd,
+                    'ret_msg' => '에러가 발생하였습니다.',
                     'ret_status' => _HTTP_ERROR
                 ];
             }

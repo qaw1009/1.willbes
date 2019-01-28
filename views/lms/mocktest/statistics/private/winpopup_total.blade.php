@@ -271,9 +271,10 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <th>본인</th>
+
+                            <th>본인 </th>
                             @foreach($pList2 as $key => $row)
-                                <td>@if($dataDetail) {{ $dataDetail[$mem_idx][$key]['grade'] }} @endif</td>
+                                <td>{{ $dataDetail[$mem_idx][$key]['grade'] }}</td>
                             @endforeach
                             @foreach($sList2 as $key => $row)
                                 <td>{{ $dataDetail[$mem_idx][$key]['grade'] }}</td>

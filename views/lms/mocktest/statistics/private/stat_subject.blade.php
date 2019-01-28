@@ -223,7 +223,7 @@
 
         // 목록 이동
         $('#goList').on('click', function() {
-            location.replace('{{ site_url('/mocktest/statisticsGrade/') }}' + getQueryString());
+            location.replace('{{ site_url('/mocktest/statisticsPrivate/') }}' + getQueryString());
         });
 
         //인쇄

@@ -145,7 +145,7 @@ class RegGradeModel extends WB_Model
                    (SELECT CcdName FROM {$this->_table['sysCode']} WHERE Ccd = MR.TakeForm) AS TakeFormType,
                    (SELECT CcdName FROM {$this->_table['sysCode']} WHERE Ccd = MR.TakeArea) AS TakeAreaName,
                    (SELECT CONCAT(Phone1,'-',fn_dec(Phone2Enc),'-',phone3) FROM {$this->_table['member']} WHERE MemIdx = MR.MemIdx) AS Phone,
-                   (SELECT SUM(AdjustPoint) FROM {$this->_table['mockGrades']} WHERE MemIdx = MR.MemIdx) AS AdjustSum,
+                   (SELECT SUM(AdjustPoint) FROM {$this->_table['mockGrades']} WHERE MemIdx = MR.MemIdx AND ProdCode = PD.Prodcode) AS AdjustSum,
                    (SELECT RegDatm FROM {$this->_table['mockLog']} WHERE MrIdx = MR.MrIdx ORDER BY RegDatm LIMIT 1) AS ExamRegDatm,
                    (
                         SELECT 
@@ -252,7 +252,7 @@ class RegGradeModel extends WB_Model
                              AND MrIdx = MR.MrIdx
                    ) AS SubjectName,
                    (SELECT CcdName FROM {$this->_table['sysCode']} WHERE Ccd = MR.TakeArea) AS TakeAreaName,
-                   (SELECT SUM(AdjustPoint) FROM {$this->_table['mockGrades']} WHERE MemIdx = MR.MemIdx) AS AdjustSum,
+                   (SELECT SUM(AdjustPoint) FROM {$this->_table['mockGrades']} WHERE MemIdx = MR.MemIdx AND ProdCode = PD.Prodcode) AS AdjustSum,
                    (SELECT RegDatm FROM {$this->_table['mockLog']} WHERE MrIdx = MR.MrIdx ORDER BY RegDatm LIMIT 1) AS ExamRegDatm
         ";
         $from = "

@@ -71,7 +71,8 @@
 
                         columns: [
                             {'data' : null, 'render' : function(data, type, row, meta) {
-                                    var seq = meta.row + meta.settings._iDisplayStart;
+                                    //var seq = meta.row + meta.settings._iDisplayStart;
+                                    var seq = meta.row;     //무조건 0 부터 시작 하단에서 걸림 ( for (i=0;i<allCnt;i++)	 {	//노출된 갯수에서 선택한 것만 적용되게끔... )
                                     var codeInfo= row.ProdCode+'@$'+row.ProdName+'@$'+addComma(row.RefundSetPrice)+'원@$'+row.Stock+'@$';
                                     return '<input type="checkbox" id="checkIdx' + seq + '" name="checkIdx" class="flat" value="' + codeInfo + '" />';
                                 }},

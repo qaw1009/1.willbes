@@ -1002,20 +1002,29 @@ table.auTable tr td {
     opacity: 1;
     visibility: visible;
     width: 380px;
+    height: auto;
+}
+.dropdown.active .left-drop-Box .sliderView {
+    width: 242px;
+    height: 103px;
+    margin: 14px;
 }
 .left-drop-Box {
     position: absolute;
     top: -5px;
     left: 149px;
     background: #fff;
-    width: 380px;
     border: 1px solid #acacac;
     box-shadow: 5px 5px 25px #e1e1e1;
     opacity: 0;
     visibility: hidden;
     width: 0;
+    height: 0;
 }
-
+.left-drop-Box .sliderView {
+    height: 0;
+    margin: 0;
+}
 .left-drop-Box:after,
 .left-drop-Box:before {
     content: '';

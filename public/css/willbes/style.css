@@ -697,6 +697,9 @@ table.auTable tr td {
     padding-top: 15px;
     margin: 15px 10px 0;
 }
+#Gnb .topView h4 ul li.dropdown {
+    position: relative;
+}
 #Gnb .sns-Btn {
     text-align: center;
     margin-top: 5px;
@@ -1002,7 +1005,7 @@ table.auTable tr td {
 }
 .left-drop-Box {
     position: absolute;
-    top: 10px;
+    top: -5px;
     left: 149px;
     background: #fff;
     width: 380px;

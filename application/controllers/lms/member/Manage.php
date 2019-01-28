@@ -692,7 +692,11 @@ class Manage extends \app\controllers\BaseController
 
     public function ajaxBoard()
     {
+        $memIdx = $this->_req('memIdx');
 
+        $this->load->view('member/layer/board/index', [
+            'memIdx' => $memIdx,
+        ]);
     }
 
     public function ajaxCRM()

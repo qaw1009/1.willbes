@@ -272,6 +272,7 @@ class MockExam extends \app\controllers\FrontController
         $prodcode = element('ProdCode',$arr_input);
         $logIdx = element('LogIdx',$arr_input);
         $qcnt = element('QCnt',$arr_input);
+        $mridx = element('MrIdx',$arr_input);
 
         for($i = 1; $i <= $qcnt; $i++){
             ${"answer$i"} = element('answer'.$i,$arr_input);
@@ -338,7 +339,7 @@ class MockExam extends \app\controllers\FrontController
             'sList'       => $sList,
             'sList2'       => $sList2,
             'logidx'      => $logIdx,
-            'MrIdx'          => $subject_list[0]['MrIdx'],
+            'mridx'          => $mridx,
             'qtList'   => $qtList,
             'RemainSec' => $sec
         ]);

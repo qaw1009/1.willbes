@@ -39,7 +39,7 @@
                     </div>
                     <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
                         {!! csrf_field() !!}
-                        <input type="hidden" name="MrIdx"    value="{{ $MrIdx }}">
+                        <input type="hidden" name="MrIdx"    value="{{ $mridx }}">
                         <input type="hidden" name="ProdCode" value="{{ element('ProdCode', $arr_input) }}">
                         <input type="hidden" name="LogIdx"   value="{{ element('LogIdx', $arr_input) }}" />
                     </form>
@@ -80,6 +80,7 @@
                         {!! csrf_field() !!}
                         <input type="hidden" name="prodcode" value="{{ element('ProdCode', $arr_input) }}" />
                         <input type="hidden" name="logidx" value="{{ $logidx }}" />
+                        <input type="hidden" name="mridx" value="{{ $mridx }}" />
                     </form>
                     <div class="passzonefinInfo tx-gray tx-center mt50">
                         답안제출이 모두 완료되었습니다.<br/>
@@ -131,7 +132,7 @@
             var _url = '{{ front_url('/classroom/MockExam/examSendAjax') }}';
             ajaxSubmit($regi_form, _url, function(ret) {
                 if(ret.ret_cd) {
-                    //alert(ret.ret_msg);
+                    alert(ret.ret_msg);
                 }
             }, showValidateError, null, false, 'alert');
         }

@@ -783,7 +783,7 @@ class MockExamModel extends WB_Model
 
             // 데이터 수정
             $data = [
-                'IsStatus' => 'Y'
+                'IsTake' => 'Y'
             ];
 
             $this->_conn->set($data)->where(['MemIdx' => $this->session->userdata('mem_idx'), 'ProdCode' => $ProdCode, 'MrIdx' => $MrIdx]);

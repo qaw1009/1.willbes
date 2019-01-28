@@ -39,6 +39,7 @@ class OffLectureModel extends CommonLectureModel
                             ,Ca.CateName, Cb.CateName as CateName_Parent
                             ,D.SalePrice, D.SaleRate, D.RealSalePrice
                             ,E.ProfIdx_String,E.wProfName_String
+                            ,IFNULL(F.DivisionCount,0) AS DivisionCount
                             ,Z.wAdminName
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
@@ -63,7 +64,8 @@ class OffLectureModel extends CommonLectureModel
                             join lms_sys_category Ca on C.CateCode = Ca.CateCode  and Ca.IsStatus=\'Y\'
                             left outer join lms_sys_category Cb on Ca.ParentCateCode = Cb.CateCode
                         left outer join lms_product_sale D on A.ProdCode = D.ProdCode and D.SaleTypeCcd=\'613001\' and D.IsStatus=\'Y\'	#Pc+모바일 판매가만 추출
-                        join vw_product_r_professor_concat E on A.ProdCode = E.ProdCode
+                        left outer join vw_product_r_professor_concat E on A.ProdCode = E.ProdCode
+                        left outer join (select ProdCode, count(*) as DivisionCount from lms_product_division where IsStatus=\'Y\' group by ProdCode) as F on A.ProdCode = F.ProdCode
                         left outer join wbs_sys_admin Z on A.RegAdminIdx = Z.wAdminIdx
                     where A.IsStatus=\'Y\'
         ';

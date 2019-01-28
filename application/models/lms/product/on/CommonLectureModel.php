@@ -53,7 +53,7 @@ class CommonLectureModel extends WB_Model
                                 lms_product A
                                 join lms_product_lecture B on A.ProdCode = B.ProdCode
                                     Left Outer join wbs_cms_lecture_combine Ba on B.wLecIdx = Ba.wLecIdx and Ba.cp_wAdminIdx='. $this->session->userdata('admin_idx') .'
-                                join lms_product_r_category C on A.ProdCode = C.ProdCode
+                                join lms_product_r_category C on A.ProdCode = C.ProdCode and C.IsStatus=\'Y\'
                                     join vw_category_concat Ca on C.CateCode = Ca.CateCode
                                 left outer join wbs_sys_admin D on A.RegAdminIdx = D.wAdminIdx
 	                            left outer join wbs_sys_admin E on A.UpdAdminIdx = E.wAdminIdx

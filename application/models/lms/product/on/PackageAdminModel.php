@@ -32,9 +32,9 @@ class PackageAdminModel extends CommonLectureModel
                     ,C.CateCode
                     ,Ca.CateName, Cb.CateName as CateName_Parent
                     ,D.SalePrice, D.SaleRate, D.RealSalePrice
-                    ,fn_product_cart_count(A.ProdCode) as CartCnt
-                    ,fn_product_order_count(A.ProdCode,\'\') as PayIngCnt
-                    ,fn_product_order_count(A.ProdCode,\'\') as PayEndCnt
+                    ,fn_product_count_cart(A.ProdCode) as CartCnt
+                    ,fn_product_count_order(A.ProdCode,\'676002\') as PayIngCnt
+                    ,fn_product_count_order(A.ProdCode,\'676001\') as PayEndCnt
                     ,Z.wAdminName
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
@@ -65,7 +65,7 @@ class PackageAdminModel extends CommonLectureModel
 
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
-        //echo 'select ' . $column . $from . $where . $order_by_offset_limit;        exit;
+        //echo 'select ' . $column . $from . $where . $order_by_offset_limit;
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 
@@ -97,9 +97,9 @@ class PackageAdminModel extends CommonLectureModel
                     ,C.CateCode
                     ,Ca.CateName, Cb.CateName as CateName_Parent
                     ,D.SalePrice, D.SaleRate, D.RealSalePrice
-                    ,fn_product_cart_count(A.ProdCode) as CartCnt
-                    ,fn_product_order_count(A.ProdCode,\'\') as PayIngCnt
-                    ,fn_product_order_count(A.ProdCode,\'\') as PayEndCnt
+                    ,fn_product_count_cart(A.ProdCode) as CartCnt
+                    ,fn_product_count_order(A.ProdCode,\'676002\') as PayIngCnt
+                    ,fn_product_count_order(A.ProdCode,\'676001\') as PayEndCnt
                     ,Z.wAdminName
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();

@@ -18,8 +18,6 @@
     }
 @endphp
 
-
-
     <h5>- 온라인 단강좌 상품 정보를 관리하는 메뉴입니다.</h5>
     <div class="x_panel">
         <div class="x_title">
@@ -386,7 +384,7 @@
                                                 <option value="R" @if($SaleDiscType == 'R') selected="selected"@endif>%</option>
                                                 <option value="P" @if($SaleDiscType == 'p') selected="selected"@endif>-</option>
                                             </select>&nbsp;
-                                            <input type="number" name="SaleRate[]" id="SaleRate_{{$key}}"  value="{{$SaleRate}}" maxlength="8" class="form-control" onkeyup="priceCheck('{{$key}}')" @if($key=="613001")required="required"@endif title="할인">
+                                            <input type="number" name="SaleRate[]" id="SaleRate_{{$key}}"  value="@if($method=="POST"){{0}}@else{{$SaleRate}}@endif" maxlength="8" class="form-control" onkeyup="priceCheck('{{$key}}')" @if($key=="613001")required="required"@endif title="할인">
                                         </td>
                                         <td><input type="number" name="RealSalePrice[]" id="RealSalePrice_{{$key}}"  value="{{$RealSalePrice}}" readonly class="form-control" @if($key=="613001")required="required"@endif title="판매가"> 원</td>
                                     </tr>
@@ -515,7 +513,7 @@
                         <input type="hidden" name="PointApplyCcd" id="PointApplyCcd" value="635001">
                         <input type="radio" name="IsPoint" class="flat" value="Y" required="required" title="결제포인트적립" @if($method == 'POST' || $data['IsPoint']=='Y')checked="checked"@endif/> 가능
                         [
-                        <input type='number' name='PointSavePrice' value='{{$data['PointSavePrice']}}' title="결제포인트적립" class="form-control" size="2" required="required" >
+                        <input type='number' name='PointSavePrice' value='@if($method="POST"){{1}}@else{{$data['PointSavePrice']}}@endif' title="결제포인트적립" class="form-control" size="2" required="required" >
                         <select name="PointSaveType" id="PointSaveType" class="form-control">
                             <option value="R" @if($data['PointSaveType'] == 'R')selected="selected"@endif>%</option>
                             <option value="P" @if($data['PointSaveType'] == 'P')selected="selected"@endif>원</option>
@@ -591,9 +589,9 @@
                     <div class="col-md-10 form-inline">
                         <input type="radio" name="IsRetake" class="flat" value="Y" required="required" title="재수강신청" @if($method == 'POST' || $data['IsRetake']=='Y')checked="checked"@endif/> 가능
                         &nbsp;&nbsp;
-                        [할인율] <input type="number" name="RetakeSaleRate" id="RetakeSaleRate" value="@if($method == 'POST'){{0}}@else{{$data['RetakeSaleRate']}}@endif" class="form-control" size="2"> %
+                        [할인율] <input type="number" name="RetakeSaleRate" id="RetakeSaleRate" value="@if($method == 'POST'){{20}}@else{{$data['RetakeSaleRate']}}@endif" class="form-control" size="2"> %
                         &nbsp;&nbsp;
-                        [신청가능기간] 수강종료 후 <input type='number' name='RetakePeriod' value='{{$data['RetakePeriod']}} ' class="form-control" size="2"> 일까지 ]
+                        [신청가능기간] 수강종료 후 <input type='number' name='RetakePeriod' value='@if($method == 'POST'){{30}}@else{{$data['RetakePeriod']}}@endif' class="form-control" size="2"> 일까지 ]
                         &nbsp;&nbsp;
                         <input type="radio" name="IsRetake" class="flat" value="N" @if($data['IsRetake']=='N')checked="checked"@endif/> 불가능
                     </div>
@@ -643,9 +641,9 @@
                     </label>
                     <div class="col-md-6 form-inline item" >
                         <div class="radio">
-                            <input type="radio" name="IsRefund" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['IsRefund']=='Y')checked="checked"@endif/> 가능
+                            <input type="radio" name="IsRefund" class="flat" value="Y" required="required" title="환불신청" @if($data['IsRefund']=='Y')checked="checked"@endif/> 가능
                             &nbsp;&nbsp;
-                            <input type="radio" name="IsRefund" class="flat" value="N" @if($data['IsRefund']=='N')checked="checked"@endif/> 불가능
+                            <input type="radio" name="IsRefund" class="flat" value="N" @if($method == 'POST' || $data['IsRefund']=='N')checked="checked"@endif/> 불가능
                             &nbsp;&nbsp;&nbsp;&nbsp;• 내강의실에서 사용자가 직접 환불신청 가능한지 여부
                         </div>
                     </div>
@@ -1096,8 +1094,6 @@
                     */
                     location.reload();
 
-
-
                 } else {
                     $(this).val(prev_val);
                     return false;
@@ -1207,7 +1203,7 @@
 
                             $("#teacherDivision tbody").remove();   //기등록 내용 초기화
 
-                            $("#teacherDivision").append("<tbody>")
+                            $("#teacherDivision").append("<tbody>");
                             for(var i in data_array) {
                                 //console.log(data_array[i].wProfName + ' / ' + data_array[i].ProfIdx);
                                 if(i==0) {
@@ -1242,7 +1238,6 @@
                             $("#rateRemainProfIdx").val(''); //선택교수 초기화
                             $("#rateRemain").val('');//남는안분값 초기화
 
-                            radioclass();   //강제로 라디오버튼에 클래스를 먹이는데... 적용이 안됨.
                         } else {
                             alert("등록된 교수정보가 존재하지 않습니다.");
                         }
@@ -1309,8 +1304,6 @@
             @endif
 
 
-
-
             // ajax submit
             $regi_form.submit(function() {
 
@@ -1338,17 +1331,11 @@
             }
 
 
-
-
             $('#btn_list').click(function() {
                 location.replace('{{ site_url('/product/on/lecture/') }}' + getQueryString());
             });
         });
 
-        //강제로 클래스 먹임... 근데 안먹힘
-        function radioclass() {
-            $("input[name=mainFlag]").attr({"class":"flat"});
-        }
         function rowDelete(strRow) {
             $('#'+strRow).remove();
         }

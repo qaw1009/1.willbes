@@ -18,8 +18,6 @@
     }
 @endphp
 
-
-
     <h5>- 온라인 운영자패키지 상품 정보를 관리하는 메뉴입니다.(운영자패키지 : 운영자가 구성한 강좌를 할인을 적용한 패키지)</h5>
     <div class="x_panel">
         <div class="x_title">
@@ -1065,7 +1063,7 @@
 
                             $("#teacherDivision tbody").remove();   //기등록 내용 초기화
 
-                            $("#teacherDivision").append("<tbody>")
+                            $("#teacherDivision").append("<tbody>");
                             for(var i in data_array) {
                                 //console.log(data_array[i].wProfName + ' / ' + data_array[i].ProfIdx);
 
@@ -1100,8 +1098,6 @@
                     }
                 }, showError, false, 'POST');
             });
-
-
 
             //단강좌검색
             $('#lecAdd,#essLecAdd,#selLecAdd').on('click', function(e) {
@@ -1190,7 +1186,6 @@
 
                 return true;
             }
-
 
             $('#btn_list').click(function() {
                 location.replace('{{ site_url('/product/on/packageAdmin/') }}' + getQueryString());

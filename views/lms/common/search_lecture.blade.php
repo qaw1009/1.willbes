@@ -104,7 +104,9 @@
                         columns: [
                             @if(empty($wLecIdx) === true)
                             {'data' : null, 'render' : function(data, type, row, meta) {
-                                    var seq = meta.row + meta.settings._iDisplayStart;
+                                    //console.log(meta);
+                                    //var seq = meta.row + meta.settings._iDisplayStart;
+                                    var seq = meta.row;     //무조건 0 부터 시작 하단에서 걸림 ( for (i=0;i<allCnt;i++)	 {	//노출된 갯수에서 선택한 것만 적용되게끔... )
                                     var codeInfo= row.ProdCode+'@$'
                                         +row.CateName+'@$'
                                         +row.CourseName+'@$'
@@ -176,6 +178,12 @@
                         var nowRowCnt = ($parent_regi_form.find("#"+$parent_location+" tr")).length - 1;
                         var seq = nowRowCnt+1;
 
+                        /*
+                        console.log($parent_location);
+                        console.log(nowRowCnt);
+                        console.log(seq);
+                        */
+
                         for (i=0;i<allCnt;i++)	 {	//노출된 갯수에서 선택한 것만 적용되게끔...
                             //##
                             if ( $("input:checkbox[id='checkIdx"+i+"']").is(":checked") == true  ) {
@@ -184,6 +192,7 @@
                                 temp_data_arr = temp_data.split("@$");
 
                                 $(document).find("#"+$parent_location).append(
+
                                     "<tr id='"+$parent_location_tr+seq+"' name='"+ $parent_location_tr +"'>"
                                     +"		<input type='hidden'  name='"+$parent_element+"[]' id='"+$parent_element+seq+"' value='"+temp_data_arr[0]+"'>"
                                         @if($locationid === 'essLecAdd' || $locationid === 'selLecAdd' )

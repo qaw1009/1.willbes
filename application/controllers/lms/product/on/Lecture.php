@@ -62,6 +62,7 @@ Class Lecture extends \app\controllers\BaseController
                 'A.IsNew' =>$this->_reqP('search_new'),
                 'A.IsBest' =>$this->_reqP('search_best'),
                 'A.SaleStatusCcd' =>$this->_reqP('search_sales_ccd'),
+                'Be.wIsUse'=>$this->_reqP('search_w_is_use'),
             ],
             'LKR' => [
                 'C.CateCode' => $this->_reqP('search_lg_cate_code'),

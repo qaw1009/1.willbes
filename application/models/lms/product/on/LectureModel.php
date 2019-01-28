@@ -35,10 +35,10 @@ class LectureModel extends CommonLectureModel
                     ,Ca.CateName, Cb.CateName as CateName_Parent
                     ,D.SalePrice, D.SaleRate, D.RealSalePrice
                     ,E.ProfIdx_String,E.wProfName_String
-                    ,F.DivisionCount
-                    ,fn_product_cart_count(A.ProdCode) as CartCnt
-                    ,fn_product_order_count(A.ProdCode,\'\') as PayIngCnt
-                    ,fn_product_order_count(A.ProdCode,\'\') as PayEndCnt
+                    ,IFNULL(F.DivisionCount,0) AS DivisionCount
+                    ,fn_product_count_cart(A.ProdCode) as CartCnt
+                    ,fn_product_count_order(A.ProdCode,\'676002\') as PayIngCnt
+                    ,fn_product_count_order(A.ProdCode,\'676001\') as PayEndCnt
                     #,fn_product_professor_name(A.ProdCode) as ProfName_Arr	//검색때문에 vw_product_r_professor_concat 사용
                     ,Z.wAdminName
             ';
@@ -50,22 +50,22 @@ class LectureModel extends CommonLectureModel
                     from
                         lms_product A
                             left outer join lms_sys_code Aa on A.SaleStatusCcd = Aa.Ccd and Aa.IsStatus=\'Y\'
-                            left outer join lms_site Ab on A.SiteCode = Ab.SiteCode
+                            join lms_site Ab on A.SiteCode = Ab.SiteCode
                             join lms_sys_code Ac on A.ProdTypeCcd = Ac.Ccd and Ac.IsStatus=\'Y\'
-                        join lms_product_lecture B on A.ProdCode = B.ProdCode
+                            join lms_product_lecture B on A.ProdCode = B.ProdCode
                             left outer join lms_product_course Ba on B.CourseIdx = Ba.CourseIdx and Ba.IsStatus=\'Y\'
                             left outer join lms_product_subject Bb on B.SubjectIdx = Bb.SubjectIdx and Bb.IsStatus=\'Y\'
-                            left outer join lms_sys_code Bc on B.LearnPatternCcd = Bc.Ccd and Bc.IsStatus=\'Y\'
-                            left outer join lms_sys_code Bd on B.LecTypeCcd = Bd.Ccd and Bd.IsStatus=\'Y\'
+                            join lms_sys_code Bc on B.LearnPatternCcd = Bc.Ccd and Bc.IsStatus=\'Y\'
+                            join lms_sys_code Bd on B.LecTypeCcd = Bd.Ccd and Bd.IsStatus=\'Y\'
                             left outer join lms_sys_code Bf on B.FreeLecTypeCcd = Bf.Ccd and Bf.IsStatus=\'Y\'
                             join wbs_cms_lecture_combine_lite Be on B.wLecIdx = Be.wLecIdx and Be.cp_wAdminIdx='. $this->session->userdata('admin_idx') .'
-                        join lms_product_r_category C on A.ProdCode = C.ProdCode and C.IsStatus=\'Y\'
+                            join lms_product_r_category C on A.ProdCode = C.ProdCode and C.IsStatus=\'Y\'
                             join lms_sys_category Ca on C.CateCode = Ca.CateCode  and Ca.IsStatus=\'Y\'
                             left outer join lms_sys_category Cb on Ca.ParentCateCode = Cb.CateCode
-                        left outer join lms_product_sale D on A.ProdCode = D.ProdCode and D.SaleTypeCcd=\'613001\' and D.IsStatus=\'Y\'	#Pc+모바일 판매가만 추출
-                        left outer join vw_product_r_professor_concat E on A.ProdCode = E.ProdCode
-                        left outer join (select ProdCode, count(*) as DivisionCount from lms_product_division where IsStatus=\'Y\' group by ProdCode) as F on A.ProdCode = F.ProdCode
-                        left outer join wbs_sys_admin Z on A.RegAdminIdx = Z.wAdminIdx
+                            left outer join lms_product_sale D on A.ProdCode = D.ProdCode and D.SaleTypeCcd=\'613001\' and D.IsStatus=\'Y\'	#Pc+모바일 판매가만 추출
+                            left outer join vw_product_r_professor_concat E on A.ProdCode = E.ProdCode
+                            left outer join (select ProdCode, count(*) as DivisionCount from lms_product_division where IsStatus=\'Y\' group by ProdCode) as F on A.ProdCode = F.ProdCode
+                            join wbs_sys_admin Z on A.RegAdminIdx = Z.wAdminIdx
                      where A.IsStatus=\'Y\'
         ';
 

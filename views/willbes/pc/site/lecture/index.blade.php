@@ -118,6 +118,12 @@
 
         <div class="willbes-Lec-Search">
             <div class="inputBox p_re">
+                <div class="selectBox">
+                    <select id="search_order" name="search_order" class="" onchange="goUrl('search_order', this.value);">
+                        <option value="regist" @if(element('search_order', $arr_input) == 'recent') selected="selected" @endif>최근등록순</option>
+                        <option value="course" @if(element('search_order', $arr_input) == 'course') selected="selected" @endif>과정순</option>
+                    </select>
+                </div>
                 @php $arr_search_text = explode(':', base64_decode(element('search_text', $arr_input)), 2) @endphp
                 <div class="selectBox">
                     <select id="search_keyword" name="search_keyword" title="직접입력" class="">
@@ -148,15 +154,7 @@
             <div class="willbes-Lec NG c_both mt20">
                 <div class="willbes-Lec-Subject tx-dark-black">
                     · {{ $subject_name }}
-                    <div class="selectBoxForm">
-                        <span class="MoreBtn"><a href="#none">교재정보 <span>전체보기 ▼</span></a></span>
-                        <span class="selectBox ml10">
-                            <select id="" name="" title="" class="">
-                                <option selected="selected">최근등록순</option>
-                                <option value="과정순">과정순</option>
-                            </select>
-                        </span>
-                    </div>
+                    <span class="MoreBtn"><a href="#none">교재정보 <span>전체보기 ▼</span></a></span>
                 </div>
                 <!-- willbes-Lec-Subject -->
                 {{-- 교수명 타이틀 loop --}}
@@ -190,6 +188,11 @@
                     <!-- willbes-Lec-Line -->
 
                     {{-- 교수별 상품 리스트 loop --}}
+                    @if(element('search_order', $arr_input) == 'course')
+                        {{-- 정렬방식이 과정순일 경우 배열키 (OrderNumCourse + ProdCode) 순으로 재정렬 --}}
+                       @php ksort($data['list'][$subject_idx][$prof_idx]); @endphp
+                    @endif
+
                     @foreach($data['list'][$subject_idx][$prof_idx] as $idx => $row)
                         <div id="lec_table_{{ $row['ProdCode'] }}" class="willbes-Lec-Table">
                             <table cellspacing="0" cellpadding="0" class="lecTable">

@@ -112,6 +112,21 @@ $(function() {
     });
 });
 
+// 즐겨찾는 고객센터 버튼 Script
+$(function() {
+    $('.ActIndex1 .center-Btn a').click(function() {
+        if ($(this).hasClass('on')) {
+            $(this).removeClass('on').text('서비스별 고객센터 전체보기 ▼').attr("onclick","openWin('CScenter')");
+        } else {
+            $(this).addClass('on').text('서비스별 고객센터 전체보기 ▲').attr("onclick","closeWin('CScenter')");
+        }
+    });
+    $('#CScenter.willbes-Layer-CScenterBox a').click(function() {
+        $('.ActIndex1 .center-Btn a').removeClass('on').text('서비스별 고객센터 전체보기 ▼').attr("onclick","openWin('CScenter')");
+
+    });
+});
+
 // 나의 예약현황 버튼 Script
 $(function() {
     $('.reserveTable .MoreBtn a').click(function() {

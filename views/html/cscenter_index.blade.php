@@ -210,30 +210,30 @@
                 <div class="ActIndex ActIndex2 mt50">
                     <div class="LeclistTable c_both">
                         <div class="csCenterSearch">
+                            <div class="will-Tit NSK">윌비스에 <span class="tx-light-blue">자주하는</span> 질문 검색하기</div>
                             <div class="SearchBox NG">
-                                <span class="sTit tx-dark-black"><span class="tx-light-blue">자주하는</span> 질문 검색하기</span>
                                 <span class="sTitsub">
                                     궁금한 점이 있으신가요?<br/>
                                     검색을 통해 찾고 싶은 내용 / 단어를 입력해 주세요.
                                 </span>
-                                <!--
-                                <select id="question" name="question" title="question" class="seleQuestion">
-                                    <option selected="selected">회원정보</option>
-                                    <option value="결제/환불">결제/환불</option>
-                                    <option value="교재">교재</option>
-                                    <option value="온라인수강">온라인수강</option>
-                                    <option value="학원수강">학원수강</option>
-                                    <option value="모바일">모바일</option>
-                                </select>
-                                -->
-                                <span class="willbes-Lec-Search">
-                                    <div class="inputBox p_re">
-                                        <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="찾고 싶은 내용 / 단어를 입력해 주세요." maxlength="30">
-                                        <button type="submit" onclick="" class="search-Btn">
-                                            <span>검색</span>
-                                        </button>
-                                    </div>
-                                </span>
+                                <div class="searchBoxForm">
+                                    <select id="question" name="question" title="question" class="seleQuestion">
+                                        <option selected="selected">회원정보</option>
+                                        <option value="결제/환불">결제/환불</option>
+                                        <option value="교재">교재</option>
+                                        <option value="온라인수강">온라인수강</option>
+                                        <option value="학원수강">학원수강</option>
+                                        <option value="모바일">모바일</option>
+                                    </select>
+                                    <span class="willbes-Lec-Search">
+                                        <div class="inputBox p_re">
+                                            <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="찾고 싶은 내용 / 단어를 입력해 주세요." maxlength="30">
+                                            <button type="submit" onclick="" class="search-Btn">
+                                                <span>검색</span>
+                                            </button>
+                                        </div>
+                                    </span>
+                                </div>
                             </div>
                             <ul class="tabWrap tabcsDepth2 bg-light-gray NSK p_re">
                                 <li><a class="qBox on" href="#question1">회원정보</a></li>

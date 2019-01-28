@@ -90,20 +90,20 @@
                             <div class="willbes-Lec-Table NG d_block">
                                 <table cellspacing="0" cellpadding="0" class="lecTable">
                                     <colgroup>
-                                        <col style="width: 100px;">
-                                        <col style="width: 100px;">
-                                        <col style="width: 740px;">
+                                        <col style="width: 125px;">
+                                        <col style="width: 140px;">
+                                        <col style="width: 675px;">
                                     </colgroup>
                                     <tbody>
                                         <tr>
-                                            <td class="w-list NGEB"><a href="#none">무한<br/>PASS<br/>+</a></td>
+                                            <td class="w-list NGEB"><a href="#none"><img src="{{ img_url('mypage/icon_name1.png') }}"></a></td>
                                             <td class="w-percent">
                                                 <div class="round">
                                                     진도율<br/>
                                                     <span class="tx-blue">77%</span>
                                                 </div>
                                             </td>
-                                            <td class="w-data tx-left">
+                                            <td class="w-data tx-left pl25">
                                                 <dl class="w-info">
                                                     <dt>
                                                         경찰<span class="row-line">|</span>
@@ -125,14 +125,14 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="w-list NGEB"><a href="#none">패키지<br/>+</a></td>
+                                            <td class="w-list NGEB"><a href="#none"><img src="{{ img_url('mypage/icon_name2.png') }}"></a></td>
                                             <td class="w-percent">
                                                 <div class="round">
                                                     진도율<br/>
                                                     <span class="tx-blue">5%</span>
                                                 </div>
                                             </td>
-                                            <td class="w-data tx-left">
+                                            <td class="w-data tx-left pl25">
                                                 <dl class="w-info">
                                                     <dt>
                                                         공무원<span class="row-line">|</span>
@@ -154,14 +154,14 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="w-list NGEB"><a href="#none">단강좌<br/>+</a></td>
+                                            <td class="w-list NGEB"><a href="#none"><img src="{{ img_url('mypage/icon_name3.png') }}"></a></td>
                                             <td class="w-percent">
                                                 <div class="round">
                                                     진도율<br/>
                                                     <span class="tx-blue">9%</span>
                                                 </div>
                                             </td>
-                                            <td class="w-data tx-left">
+                                            <td class="w-data tx-left pl25">
                                                 <dl class="w-info">
                                                     <dt>
                                                         공무원<span class="row-line">|</span>

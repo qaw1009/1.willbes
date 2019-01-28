@@ -78,8 +78,7 @@
             </div>
         </div>
 
-        <div class="willbes-Leclist c_both mt30">
-            <img src="{{ img_url('gosi/guide/guide_success_visual.jpg') }}">
+        <div class="willbes-Leclist c_both mt10">
             <div class="w-gosi-Guide">
                 <div class="willbes-cop-success-guide GM">
                     <ul class="tabWrap tabcsDepth1 tab_gosi_success_Guide p_re NSK">

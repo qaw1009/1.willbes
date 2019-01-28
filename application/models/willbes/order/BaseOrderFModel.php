@@ -112,13 +112,13 @@ class BaseOrderFModel extends WB_Model
     }
 
     /**
-     * 교재상품 배송료 계산
+     * 교재상품 배송료 계산 (무료교재일 경우 배송료 부과)
      * @param $price
      * @return int
      */
     public function getBookDeliveryPrice($price)
     {
-        return $price > 0 && $price < config_app('DeliveryFreePrice', 0) ? config_app('DeliveryPrice', 0) : 0;
+        return $price < config_app('DeliveryFreePrice', 0) ? config_app('DeliveryPrice', 0) : 0;
     }
 
     /**

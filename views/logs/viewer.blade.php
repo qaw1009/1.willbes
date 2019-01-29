@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex">
-    <title>Will Log Viewer</title>
+    <title>Log Viewer</title>
     <!-- Bootstrap -->
     <link href="/public/vendor/bootstrap/v.3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <!-- bootstrap-datetimepicker -->
@@ -22,12 +22,14 @@
 </head>
 <body>
 <div class="container-fluid">
-    <h1>Will Log Viewer</h1>
+    <h1>Log Viewer</h1>
     <div class="row">
         <div class="col-xs-12">
             <div class="panel panel-default">
                 <div class="panel-body">
                     <form id="search_form" name="search_form" method="GET">
+                        <input type="hidden" name="sort_idx" value="{{ $sort_idx }}"/>
+                        <input type="hidden" name="sort_dir" value="{{ $sort_dir }}"/>
                         <div class="col-xs-1" style="padding-left: 0;">
                             <select class="form-control" id="log_type" name="log_type" required="required">
                                 <option value="">TYPE</option>
@@ -157,11 +159,19 @@
         });
 
         // datatable
+        var _arr_order = ['{{ $sort_idx }}', '{{ $sort_dir }}'];
         $datatable = $('#log_table').dataTable({
-            order: [[0, 'asc']],
+            order: [_arr_order],
             pageLength: 50,
             lengthMenu: [[20, 50, 100, 1000], [20, 50, 100, 1000]],
             paginationType : 'full_numbers'
+        });
+
+        $datatable.on('order.dt', function() {
+            var arr_order = $datatable.api().order();
+
+            $search_form.find('input[name="sort_idx"]').val(arr_order[0][0]);
+            $search_form.find('input[name="sort_dir"]').val(arr_order[0][1]);
         });
 
         $datatable.on('page.dt', function() {

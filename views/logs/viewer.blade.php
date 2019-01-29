@@ -49,7 +49,7 @@
                         </div>
                         <div class="col-xs-1" style="padding-left: 0;">
                             <select class="form-control" id="log_level" name="log_level">
-                                <option value="">Level</option>
+                                <option value="ALL">Level</option>
                                 <option value="DEBUG">DEBUG</option>
                                 <option value="ERROR">ERROR</option>
                             </select>

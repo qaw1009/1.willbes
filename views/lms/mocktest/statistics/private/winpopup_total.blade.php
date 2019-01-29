@@ -73,31 +73,31 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>총점</td>
-                            <td>@if($dataOrg) {{ $dataOrg[$mem_idx]['grade'] }} @endif</td>
-                            <td>@if($dataAdjust) {{ $dataAdjust[$mem_idx]['grade'] }} @endif</td>
-                        </tr>
-                        <tr>
-                            <td>평균</td>
-                            <td>@if($dataOrg) {{ $dataOrg[$mem_idx]['avg'] }} @endif</td>
-                            <td>@if($dataAdjust) {{ $dataAdjust[$mem_idx]['avg'] }} @endif</td>
-                        </tr>
-                        <tr>
-                            <td>전체평균</td>
-                            <td>@if($dataOrg) {{ $dataOrgAll['tavg'] }} @endif</td>
-                            <td>@if($dataAdjust) {{ $dataAdjustAll['tavg'] }} @endif</td>
-                        </tr>
-                        <tr>
-                            <td>석차</td>
-                            <td>@if($dataOrg) {{ $dataOrg[$mem_idx]['rank'] }} @endif</td>
-                            <td>@if($dataAdjust) {{ $dataAdjust[$mem_idx]['rank'] }} @endif</td>
-                        </tr>
-                        <tr>
-                            <td>상위수준</td>
-                            <td>@if($dataOrg) {{  $dataOrg[$mem_idx]['tpct'] }}% @endif</td>
-                            <td>@if($dataAdjust) {{ $dataAdjust[$mem_idx]['tpct'] }}% @endif</td>
-                        </tr>
+                            <tr>
+                                <td>총점</td>
+                                <td>@if($dataOrg) {{ $dataOrg[$mem_idx]['grade'] }} @endif</td>
+                                <td>@if($dataAdjust) {{ $dataAdjust[$mem_idx]['grade'] }} @endif</td>
+                            </tr>
+                            <tr>
+                                <td>평균</td>
+                                <td>@if($dataOrg) {{ $dataOrg[$mem_idx]['avg'] }} @endif</td>
+                                <td>@if($dataAdjust) {{ $dataAdjust[$mem_idx]['avg'] }} @endif</td>
+                            </tr>
+                            <tr>
+                                <td>전체평균</td>
+                                <td>@if($dataOrg) {{ $dataOrgAll['tavg'] }} @endif</td>
+                                <td>@if($dataAdjust) {{ $dataAdjustAll['tavg'] }} @endif</td>
+                            </tr>
+                            <tr>
+                                <td>석차</td>
+                                <td>@if($dataOrg) {{ $dataOrg[$mem_idx]['rank'] }} @endif</td>
+                                <td>@if($dataAdjust) {{ $dataAdjust[$mem_idx]['rank'] }} @endif</td>
+                            </tr>
+                            <tr>
+                                <td>상위수준</td>
+                                <td>@if($dataOrg) {{  $dataOrg[$mem_idx]['tpct'] }}% @endif</td>
+                                <td>@if($dataAdjust) {{ $dataAdjust[$mem_idx]['tpct'] }}% @endif</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -131,10 +131,6 @@
                         }
 
                     </script>
-
-
-
-
                 </div>
             </div>
             <div class="form-group border-dark">

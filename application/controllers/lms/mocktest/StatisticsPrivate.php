@@ -297,8 +297,8 @@ class StatisticsPrivate extends \app\controllers\BaseController
         $productInfo = $this->regGradeModel->productInfoV2($arr_condition);
 
         //과목별 문항분석 쿼리(mode = 1) , 영역 및 학습요소(mode = 2)
-        $dataSubject = $this->regGradeModel->gradeSubjectDetailCall($prodcode, 1);
-        $dataSubject2 = $this->regGradeModel->gradeSubjectDetailCall($prodcode, 2);
+        $dataSubject = $this->regGradeModel->gradeSubjectDetailCall($prodcode, $memidx, 1);
+        $dataSubject2 = $this->regGradeModel->gradeSubjectDetailCall($prodcode, $memidx, 2);
 
         // 문항별분석
         foreach($dataSubject as $key => $val){

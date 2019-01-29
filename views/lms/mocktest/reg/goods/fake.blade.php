@@ -70,9 +70,8 @@
                     <tr>
                         <th colspan="1">가산점 <span class="required">*</span></th>
                         <td colspan="3">
-                            @foreach($addPoint as $k => $v)
-                                <input type="checkbox" class="flat" name="AddPointCcds[]" value="{{$k}}" @if($method == 'PUT' && in_array($k, $data['AddPointCcds'])) checked @endif> <span class="flat-text mr-20">{{$v}}</span>
-                            @endforeach
+                            <input type="checkbox" class="flat" name="AddPointCcds[]" value="5" checked> <span class="flat-text mr-20">5%</span>
+                            <input type="checkbox" class="flat" name="AddPointCcds[]" value="10"> <span class="flat-text mr-20">10%</span>
                         </td>
                     </tr>
                     <tr>

@@ -264,7 +264,6 @@ class StatisticsPrivate extends \app\controllers\BaseController
             'dataOrg'     => $dataOrg,
             'dataAdjustAll' => $dataAdjust,
             'dataAdjust' => $dataAdjust,
-            'memName'  => $_SESSION['mem_name'],
             'pList' => $pList,
             'sList' => $sList,
             'pList2' => $pList2,

@@ -51,7 +51,7 @@
                             @endforeach
                         </td>
                         <td>{{ $productInfo['TakeNumber'] }}</td>
-                        <td>{{ $memName }}</td>
+                        <td>{{ $productInfo['MemName'] }}</td>
                     </tr>
                     </tbody>
                 </table>
@@ -140,7 +140,7 @@
             <div class="form-group border-dark">
                 <div class="col-md-12">
                 @if($dataOrg)
-                    <p class="h5 border-dark-blue"><strong>{{ $memName }}</strong>님의 점수는 평균 <strong>{{ $dataAdjust[$mem_idx]['avg'] }}점</strong>으로, 전체 <strong>{{ $dataAdjustAll[0]['COUNT'] }}명</strong>에서 <strong>{{ $dataAdjust[$mem_idx]['rankS'] }}위</strong>이며 상위 수준 <strong>{{ $dataAdjust[$mem_idx]['tpct'] }} %</strong>입니다.</p>
+                    <p class="h5 border-dark-blue"><strong>{{ $productInfo['MemName'] }}</strong>님의 점수는 평균 <strong>{{ $dataAdjust[$mem_idx]['avg'] }}점</strong>으로, 전체 <strong>{{ $dataAdjustAll[0]['COUNT'] }}명</strong>에서 <strong>{{ $dataAdjust[$mem_idx]['rankS'] }}위</strong>이며 상위 수준 <strong>{{ $dataAdjust[$mem_idx]['tpct'] }} %</strong>입니다.</p>
                 @endif
                 </div>
             </div>

@@ -234,6 +234,8 @@ class StatisticsPrivate extends \app\controllers\BaseController
         if($adTotal) $dataAdjust['tsum'] = $adTotal ? round($adTotal / $tcnt, 2) : 0;
         //종합분석(끝)
 
+        //var_dump($dataAdjust);
+
         // 필수/선택과목 컬럼수 & 이름
         $pCnt = 0;
         $sCnt = 0;

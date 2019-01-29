@@ -1229,7 +1229,7 @@ class RegGradeModel extends WB_Model
                 ) AS KCNT,
                 (
                     SELECT MAX(ad) FROM(
-                        SELECT SUM(AdjustPoint) AS ad FROM {$this->_table['mockGrades']} GROUP BY MemIdx
+                        SELECT SUM(AdjustPoint) AS ad FROM {$this->_table['mockGrades']} WHERE ProdCode = ".$ProdCode." GROUP BY MemIdx
                     ) AS A
                     WHERE ProdCode = MG.ProdCode 
                 ) AS ADMAX

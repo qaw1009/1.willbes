@@ -49,7 +49,7 @@
                         </div>
                         <div class="col-xs-1" style="padding-left: 0;">
                             <select class="form-control" id="log_level" name="log_level">
-                                <option value="">Level</option>
+                                <option value="ALL">Level</option>
                                 <option value="DEBUG">DEBUG</option>
                                 <option value="ERROR">ERROR</option>
                             </select>
@@ -142,6 +142,10 @@
         $search_form.find('select[name="log_pattern"]').val('{{ $log_pattern }}');
         $search_form.find('select[name="log_level"]').val('{{ $log_level }}');
         $search_form.find('input[name="log_date"]').val('{{ $log_date }}');
+
+        if ($search_form.find('select[name="log_pattern"]').val() !== 'log') {
+            $search_form.find('select[name="log_level"]').prop('disabled', true);
+        }
 
         // 로그유형 선택 이벤트
         $search_form.on('change', 'select[name="log_pattern"]', function() {

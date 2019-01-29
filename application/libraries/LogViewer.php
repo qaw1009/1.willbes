@@ -22,6 +22,7 @@ class LogViewer
      */
     public function getLogData($log_date, $log_level = '', $log_pattern = '', $log_type = '')
     {
+        $log_level === 'ALL' && $log_level = '';
         $log_path = $this->_getLogPath($log_date, $log_pattern, $log_type);
         $log_method = $this->log_pattern == 'log' ? '_getLogData' : '_getQueryLogData';
 

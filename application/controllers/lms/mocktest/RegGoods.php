@@ -130,8 +130,8 @@ class RegGoods extends \app\controllers\BaseController
 
 
     /**
-     * 등록폼
-     */
+ * 등록폼
+ */
     public function create()
     {
         $cateD1 = $this->categoryModel->getCategoryArray('', '', '', 1);
@@ -158,6 +158,55 @@ class RegGoods extends \app\controllers\BaseController
             'applyType_on' => $this->applyType_on,
             'accept_ccd' => $codes[$this->acceptStatus],
         ]);
+    }
+
+    /**
+     * 등록폼
+     */
+    public function fakeCreate($param = [])
+    {
+        $cateD1 = $this->categoryModel->getCategoryArray('', '', '', 1);
+        $cateD2 = $this->mockCommonModel->getMockKind();
+        $codes = $this->codeModel->getCcdInArray([$this->applyType, $this->applyArea1, $this->applyArea2, $this->addPoint,$this->acceptStatus]);
+        $csTel = $this->siteModel->getSiteArray(false, 'CsTel');
+
+        $cateD2Json = array();
+        foreach ($cateD2 as $it) {
+            $cateD2Json[ $it['ParentCateCode'] ][ $it['CateCode'] ] = $it['CateName'];
+        }
+
+
+        list($data, $sData) = $this->regGoodsModel->getGoods($param[0]);
+        if (!$data) {
+            $this->json_error('데이터 조회에 실패했습니다.');
+            return;
+        }
+
+        $this->load->view('mocktest/reg/goods/fake', [
+            'method' => 'PUT',
+            'siteCodeDef' => $data['SiteCode'],
+            'cateD1' => $cateD1,
+            'cateD2' => json_encode($cateD2Json),
+            'applyType' => $codes[$this->applyType],
+            'applyArea1' => $codes[$this->applyArea1],
+            'applyArea2' => $codes[$this->applyArea2],
+            'addPoint' => $codes[$this->addPoint],
+            'csTel' => json_encode($csTel),
+            'applyType_on' => $this->applyType_on,
+            'accept_ccd' => $codes[$this->acceptStatus],
+
+            'data' => $data,
+            'sData' => $sData,
+            'cateD2_sel' => json_encode($data['MockPart']),
+            'adminName' => $this->mockCommonModel->getAdminNames(),
+        ]);
+    }
+
+    function fakeInsert(){
+        $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+
+        $condition = $arr_input;
+        $this->regGoodsModel->saveFake($condition);
     }
 
 

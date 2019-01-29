@@ -203,7 +203,9 @@
                         return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
                     }},
                     {'data' : 'wAdminName', 'class': 'text-center'},
-                    {'data' : 'RegDatm', 'class': 'text-center'}
+                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                            return '<span class="blue underline-link act-fake"><input type="hidden" class="flat" name="prod" value="'+ row.ProdCode + '">' + row.RegDatm + '</span>';
+                        }}
                 ]
             });
 
@@ -211,6 +213,13 @@
             $list_form.on('click', '.act-edit', function () {
                 var query = dtParamsToQueryString($datatable);
                 location.href = '{{ site_url('/mocktest/regGoods/edit/') }}' + $(this).closest('tr').find('[name=target]').val() + query;
+            });
+
+            // 짝퉁데이터 생성으로 이동
+            $list_form.on('click', '.act-fake', function () {
+                var query = dtParamsToQueryString($datatable);
+
+                location.href = '{{ site_url('/mocktest/regGoods/fakeCreate/') }}' + $(this).closest('tr').find('[name=prod]').val() + query;
             });
 
             // 복사

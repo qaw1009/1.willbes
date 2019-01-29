@@ -321,7 +321,7 @@ class MockExamModel extends WB_Model
             $obder_by = " ORDER BY RegDatm DESC LIMIT 1";
 
             $where = " WHERE MrIdx = ".$MrIdx;
-            //echo "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
+
             $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
             $data = $query->row_array();
 
@@ -1032,7 +1032,7 @@ class MockExamModel extends WB_Model
 
         $from = "
             FROM
-                lms_mock_paper MP
+                {$this->_table['mockExamBase']} MP
                 JOIN {$this->_table['mockExamQuestion']} AS MQ  ON MP.MpIdx = MQ.MpIdx AND MP.IsUse = 'Y' AND MP.IsStatus = 'Y' AND MQ.IsStatus = 'Y'
                 JOIN {$this->_table['mockAreaList']} AS MA ON MQ.MalIdx = MA.MalIdx AND MA.IsStatus = 'Y'
                 LEFT OUTER JOIN {$this->_table['mockAnswerPaper']} AS AP ON MQ.MqIdx = AP.MqIdx AND AP.ProdCode = ".$ProdCode." AND AP.MemIdx = ".$this->session->userdata('mem_idx')."
@@ -1068,7 +1068,7 @@ class MockExamModel extends WB_Model
 
         $from = "
             FROM 
-                lms_mock_paper MP
+                {$this->_table['mockExamBase']} MP
                 JOIN {$this->_table['mockExamQuestion']} AS MQ  ON MP.MpIdx = MQ.MpIdx AND MP.IsUse = 'Y' AND MP.IsStatus = 'Y' AND MQ.IsStatus = 'Y'
                 JOIN {$this->_table['mockAreaList']} AS MA ON MQ.MalIdx = MA.MalIdx AND MA.IsStatus = 'Y'
                 LEFT OUTER JOIN {$this->_table['mockAnswerPaper']} AS AP ON MQ.MqIdx = AP.MqIdx AND AP.ProdCode = ".$prodcode ." AND AP.MemIdx = ".$this->session->userdata('mem_idx')."

@@ -15,18 +15,18 @@ class Guide extends \app\controllers\FrontController
     public function show($params = [])
     {
         if (empty($this->_is_pass_site) === true) {
-            $method = $params['pattern'];
+            $view_type = $params['pattern'];
         } else {
-            $method = $params[0];
+            $view_type = $params[0];
         }
 
-        switch ($method) {
+        switch ($view_type) {
             case "cop" :
             case "cop_success" :
             case "gosi" :
             case "gosi_success" :
             case "gpgosi" :
-                $this->load->view('site/guide/'.$method.'_show',[]);
+                $this->load->view('site/guide/'.$view_type.'_show',[]);
                 break;
             default:
                 show_alert('잘못된 접근 입니다.', '/');

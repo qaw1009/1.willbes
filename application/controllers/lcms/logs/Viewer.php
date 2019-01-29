@@ -21,10 +21,12 @@ class Viewer extends \app\controllers\BaseController
     {
         $log_type = get_var($this->_reqG('log_type'), 'willbes');
         $log_pattern = get_var($this->_reqG('log_pattern'), 'log');
-        $log_level = get_var($this->_reqG('log_level'), '');
+        $log_level = get_var($this->_reqG('log_level'), 'ERROR');
         $log_date = get_var($this->_reqG('log_date'), date('Y-m-d'));
 
         $log_data = $this->logviewer->getLogData($log_date, $log_level, $log_pattern, $log_type);
+
+        dd($log_data);
 
         $this->load->view('logs/viewer', [
             'log_type' => $log_type,

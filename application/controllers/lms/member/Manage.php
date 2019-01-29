@@ -690,6 +690,9 @@ class Manage extends \app\controllers\BaseController
         ]);
     }
 
+    /**
+     * 상담/메모관리 : 상담게시판
+     */
     public function ajaxCounsel()
     {
         $memIdx = $this->_req('memIdx');
@@ -755,9 +758,64 @@ class Manage extends \app\controllers\BaseController
         ]);
     }
 
+    public function ajaxCs()
+    {
+        $memIdx = $this->_req('memIdx');
+        $tabs_data = $this->_arrBoardForMemberCnt($memIdx);
+
+        $this->load->view('member/layer/board/counsel', [
+            'memIdx' => $memIdx,
+            'tabs_data' => $tabs_data,
+            '_board_type' => 'counsel'
+        ]);
+    }
+
+    public function ajaxTm()
+    {
+        $memIdx = $this->_req('memIdx');
+        $tabs_data = $this->_arrBoardForMemberCnt($memIdx);
+
+        $this->load->view('member/layer/board/counsel', [
+            'memIdx' => $memIdx,
+            'tabs_data' => $tabs_data,
+            '_board_type' => 'counsel'
+        ]);
+    }
+
+    public function ajaxProfQna()
+    {
+        $memIdx = $this->_req('memIdx');
+        $tabs_data = $this->_arrBoardForMemberCnt($memIdx);
+
+        $this->load->view('member/layer/board/counsel', [
+            'memIdx' => $memIdx,
+            'tabs_data' => $tabs_data,
+            '_board_type' => 'counsel'
+        ]);
+    }
+
+    public function ajaxConsumer()
+    {
+        $memIdx = $this->_req('memIdx');
+        $tabs_data = $this->_arrBoardForMemberCnt($memIdx);
+
+        $this->load->view('member/layer/board/counsel', [
+            'memIdx' => $memIdx,
+            'tabs_data' => $tabs_data,
+            '_board_type' => 'counsel'
+        ]);
+    }
+
     public function ajaxCRM()
     {
+        $memIdx = $this->_req('memIdx');
+        $tabs_data = $this->_arrBoardForMemberCnt($memIdx);
 
+        $this->load->view('member/layer/board/counsel', [
+            'memIdx' => $memIdx,
+            'tabs_data' => $tabs_data,
+            '_board_type' => 'counsel'
+        ]);
     }
 
     /**

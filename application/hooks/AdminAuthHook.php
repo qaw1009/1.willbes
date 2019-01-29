@@ -10,7 +10,7 @@ class AdminAuthHook
         '/lcms/auth/login',
         '/lcms/auth/regist/create',
         '/lcms/auth/regist/idCheck',
-        '/lcms/auth/regist/store',
+        '/lcms/auth/regist/store'
     ];
 
     // LMS 교수관리자 역할식별자
@@ -22,8 +22,9 @@ class AdminAuthHook
         '/common/',
         '/lcms/auth/regist/edit',
         '/lcms/auth/regist/update',
-        '/sys/adminSettings',
-        '/sample/',
+        '/lcms/logs/viewer/',
+        '/sys/adminSettings/',
+        '/sample/'
     ];
 
     public function __construct()

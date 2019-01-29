@@ -71,8 +71,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property CI_Xmlrpc $xmlrpc                              XML-RPC request handler class
  * @property CI_Xmlrpcs $xmlrpcs                           XML-RPC server class
  * @property CI_Zip $zip                                        Zip Compression Class
- * @property Excel $excel                                  Loads framework components.
- * @property Jwt $jwt                                      Loads Libraries JWT
+ * @property Excel $excel                                      Loads framework components.
+ * @property Jwt $jwt                                           Loads Libraries JWT
+ * @property LogViewer $logviewer                          CodeIgniter Log Viewer
  ***************** DEPRECATED LIBRARIES *****************
  * @property CI_Jquery $jquery                              Jquery Class
  * @property CI_Encrypt $encrypt                          Provides two-way keyed encoding using Mcrypt

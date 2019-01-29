@@ -105,12 +105,12 @@
     </div>
 
     <ul class="tabs-site-code nav nav-tabs bar_tabs mt-30" role="tablist">
-        <li role="presentation"><a role="tab" href="javascript:;" data-toggle="tab" onclick="fnLoad('ajaxLecture');"><strong>수강정보관리</strong></a></li>
-        <li role="presentation"><a role="tab" href="javascript:;" data-toggle="tab" onclick="fnLoad('ajaxPay');"><strong>결제정보관리</strong></a></li>
-        <li role="presentation"><a role="tab" href="javascript:;" data-toggle="tab" onclick="fnLoad('ajaxBoard');"><strong>상담/메모관리</strong></a></li>
-        <li role="presentation"><a role="tab" href="javascript:;" data-toggle="tab" onclick="fnLoad('ajaxCoupon');"><strong>쿠폰관리</strong></a></li>
-        <li role="presentation"><a role="tab" href="javascript:;" data-toggle="tab" onclick="fnLoad('ajaxPointLecture');"><strong>포인트관리</strong></a></li>
-        <li role="presentation"><a role="tab" href="javascript:;" data-toggle="tab" onclick="fnLoad('ajaxCRM');"><strong>CRM관리</strong></a></li>
+        <li role="presentation"><a role="tab" href="#none" data-toggle="tab" onclick="fnLoad('ajaxLecture');"><strong>수강정보관리</strong></a></li>
+        <li role="presentation"><a role="tab" href="#none" data-toggle="tab" onclick="fnLoad('ajaxPay');"><strong>결제정보관리</strong></a></li>
+        <li role="presentation"><a role="tab" href="#none" data-toggle="tab" onclick="fnLoad('ajaxCounsel');"><strong>상담/메모관리</strong></a></li>
+        <li role="presentation"><a role="tab" href="#none" data-toggle="tab" onclick="fnLoad('ajaxCoupon');"><strong>쿠폰관리</strong></a></li>
+        <li role="presentation"><a role="tab" href="#none" data-toggle="tab" onclick="fnLoad('ajaxPointLecture');"><strong>포인트관리</strong></a></li>
+        <li role="presentation"><a role="tab" href="#none" data-toggle="tab" onclick="fnLoad('ajaxCRM');"><strong>CRM관리</strong></a></li>
     </ul>
     <div id="tab-content"> </div>
     <script type="text/javascript">

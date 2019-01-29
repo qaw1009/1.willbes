@@ -3,7 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Manage extends \app\controllers\BaseController
 {
-    protected $models = array('member/manageMember','sys/code', 'pay/orderList','service/couponRegist','service/point','member/manageLecture');
+    protected $models = array('member/manageMember','sys/code', 'pay/orderList','service/couponRegist','service/point', 'board/board','member/manageLecture');
+
     protected $helpers = array();
 
     public function __construct()
@@ -736,20 +737,159 @@ class Manage extends \app\controllers\BaseController
         ]);
     }
 
-    public function ajaxBoard()
+    /**
+     * 상담/메모관리 : 상담게시판
+     */
+    public function ajaxCounsel()
     {
         $memIdx = $this->_req('memIdx');
+        $tabs_data = $this->_arrBoardForMemberCnt($memIdx);
 
-        $this->load->view('member/layer/board/index', [
+        $this->load->view('member/layer/board/counsel', [
             'memIdx' => $memIdx,
+            'tabs_data' => $tabs_data,
+            '_board_type' => 'counsel'
+        ]);
+    }
+
+    public function ajaxCounselDataTable()
+    {
+        $arr_condition = [
+            'EQ' => [
+                'LB.BmIdx' => '48',
+                'LB.RegMemIdx' => $memIdx = $this->_reqP('search_member_idx')
+            ],
+            'ORG' => [
+                'LKB' => [
+                    'LB.Title' => $this->_reqP('search_value'),
+                    'LB.Content' => $this->_reqP('search_value'),
+                    'LB.ReplyContent' => $this->_reqP('search_replay_value')
+                ]
+            ]
+        ];
+
+        if ($this->_req('search_chk_delete_value') == '1') {
+            $arr_condition['EQ'] = array_merge($arr_condition['EQ'], ['LB.IsStatus' => 'N']);
+        }
+
+        $sub_query_condition = [
+            'EQ' => [
+                'subLBrC.IsStatus' => 'Y',
+                'subLBrC.CateCode' => $this->_reqP('search_category')
+            ]
+        ];
+
+        $column = '
+            LB.BoardIdx, LB.RegType, LB.SiteCode, LB.MdCateCode, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode,
+            LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.IsStatus,
+            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName,
+            LB.RegMemIdx, MEM.MemName AS RegMemName,
+            LB.IsPublic, LB.VocCcd, LB.ReplyAdminIdx, LB.ReplyRegDatm,
+            LB.typeCcd, LSC2.CcdName AS TypeCcdName,
+            LB.ReplyStatusCcd, LSC3.CcdName AS ReplyStatusCcdName,
+            ADMIN2.wAdminName as ReplyRegAdminName,
+            MdSysCate.CateName as MdCateName
+        ';
+
+        $list = [];
+        $count = $this->boardModel->listAllBoard('counsel',true, $arr_condition, $sub_query_condition, '');
+
+        if ($count > 0) {
+            $list = $this->boardModel->listAllBoard('counsel',false, $arr_condition, $sub_query_condition, '', $this->_reqP('length'), $this->_reqP('start'), ['LB.IsBest' => 'desc', 'LB.BoardIdx' => 'desc'], $column);
+        }
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list,
+        ]);
+    }
+
+    public function ajaxCs()
+    {
+        $memIdx = $this->_req('memIdx');
+        $tabs_data = $this->_arrBoardForMemberCnt($memIdx);
+
+        $this->load->view('member/layer/board/counsel', [
+            'memIdx' => $memIdx,
+            'tabs_data' => $tabs_data,
+            '_board_type' => 'counsel'
+        ]);
+    }
+
+    public function ajaxTm()
+    {
+        $memIdx = $this->_req('memIdx');
+        $tabs_data = $this->_arrBoardForMemberCnt($memIdx);
+
+        $this->load->view('member/layer/board/counsel', [
+            'memIdx' => $memIdx,
+            'tabs_data' => $tabs_data,
+            '_board_type' => 'counsel'
+        ]);
+    }
+
+    public function ajaxProfQna()
+    {
+        $memIdx = $this->_req('memIdx');
+        $tabs_data = $this->_arrBoardForMemberCnt($memIdx);
+
+        $this->load->view('member/layer/board/counsel', [
+            'memIdx' => $memIdx,
+            'tabs_data' => $tabs_data,
+            '_board_type' => 'counsel'
+        ]);
+    }
+
+    public function ajaxConsumer()
+    {
+        $memIdx = $this->_req('memIdx');
+        $tabs_data = $this->_arrBoardForMemberCnt($memIdx);
+
+        $this->load->view('member/layer/board/counsel', [
+            'memIdx' => $memIdx,
+            'tabs_data' => $tabs_data,
+            '_board_type' => 'counsel'
         ]);
     }
 
     public function ajaxCRM()
     {
+        $memIdx = $this->_req('memIdx');
+        $tabs_data = $this->_arrBoardForMemberCnt($memIdx);
 
+        $this->load->view('member/layer/board/counsel', [
+            'memIdx' => $memIdx,
+            'tabs_data' => $tabs_data,
+            '_board_type' => 'counsel'
+        ]);
     }
 
 
+    /**
+     * 상담/메모관리 서브탭별 조회수
+     * @param $memIdx
+     * @return array
+     */
+    private function _arrBoardForMemberCnt($memIdx)
+    {
+        $data = [];
+        $arr_condition = [
+            'EQ' => [
+                'BmIdx' => '48',
+                'RegMemIdx' => $memIdx,
+                'IsStatus' => 'Y',
+                'ReplyStatusCcd' => '621001'    //미답변
+            ]
+        ];
+        $arr_unAnswered = $this->boardModel->getUnAnserArray($arr_condition);
+        $data['unAnswered'] = (empty($arr_unAnswered) === true) ? 0 : $arr_unAnswered['all'];
+        $data['cs'] = '0';
+        $data['tm'] = '0';
+        $data['profQna'] = '0';
+        $data['consumer'] = '0';
+
+        return $data;
+    }
 
 }

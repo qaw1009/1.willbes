@@ -1191,15 +1191,11 @@ class RegGradeModel extends WB_Model
                 MemIdx, SUM(OrgPoint) AS ORG,
                 (
                     SELECT COUNT(*) FROM (
-                        SELECT ProdCode, COUNT(*) FROM {$this->_table['mockGrades']} GROUP BY MemIdx
+                        SELECT ProdCode, COUNT(*) FROM {$this->_table['mockGrades']} WHERE ProdCode = ".$ProdCode." GROUP BY MemIdx
                     ) AS A
-                    WHERE ProdCode = MG.ProdCode	
                 ) AS COUNT,
                 (
-                    SELECT COUNT(*) FROM (
-                        SELECT MpIdx FROM {$this->_table['mockRegisterR']} GROUP BY MpIdx
-                    )AS A
-                    WHERE prodCode=MG.ProdCode
+                    SELECT COUNT(*) FROM {$this->_table['mockGrades']} WHERE ProdCode = ".$ProdCode." GROUP BY MemIdx LIMIT 1
                 ) AS KCNT
             ";
 
@@ -1217,21 +1213,16 @@ class RegGradeModel extends WB_Model
                 MemIdx, SUM(AdjustPoint) AS AD,
                 (
                     SELECT COUNT(*) FROM (
-                        SELECT ProdCode, COUNT(*) FROM {$this->_table['mockGrades']} GROUP BY MemIdx
+                        SELECT ProdCode, COUNT(*) FROM {$this->_table['mockGrades']} WHERE ProdCode = ".$ProdCode." GROUP BY MemIdx
                     ) AS A
-                    WHERE ProdCode = MG.ProdCode	
                 ) AS COUNT,
                 (
-                    SELECT COUNT(*) FROM (
-                        SELECT MpIdx FROM {$this->_table['mockRegisterR']}  GROUP BY MpIdx
-                    )AS A
-                    WHERE prodCode=MG.ProdCode
+                    SELECT COUNT(*) FROM {$this->_table['mockGrades']} WHERE ProdCode = ".$ProdCode." GROUP BY MemIdx LIMIT 1
                 ) AS KCNT,
                 (
                     SELECT MAX(ad) FROM(
-                        SELECT SUM(AdjustPoint) AS ad FROM {$this->_table['mockGrades']} GROUP BY MemIdx
+                        SELECT SUM(AdjustPoint) AS ad FROM {$this->_table['mockGrades']} WHERE ProdCode = ".$ProdCode." GROUP BY MemIdx
                     ) AS A
-                    WHERE ProdCode = MG.ProdCode 
                 ) AS ADMAX
             ";
 
@@ -1300,7 +1291,7 @@ class RegGradeModel extends WB_Model
      * @param array $MpIdx $ProdCode
      * @return mixed
      */
-    public function gradeSubjectDetailCall($ProdCode, $mode){
+    public function gradeSubjectDetailCall($ProdCode, $memidx, $mode){
 
         $column = "
             PM.MockType,
@@ -1355,7 +1346,7 @@ class RegGradeModel extends WB_Model
                 {$this->_table['mockExamBase']} AS MP
                 JOIN {$this->_table['mockExamQuestion']} AS MQ ON MQ.MpIdx = MP.MpIdx AND MP.IsUse = 'Y' AND MQ.IsStatus = 'Y'
                 JOIN {$this->_table['mockProductExam']} AS PM ON Mp.MpIdx = PM.MpIdx AND PM.ProdCode = ".$ProdCode." AND PM.IsStatus = 'Y'
-                LEFT OUTER JOIN {$this->_table['mockAnswerPaper']} AS AP ON MQ.MqIdx = AP.MqIdx AND AP.ProdCode = ".$ProdCode." AND AP.MemIdx = ".$this->session->userdata('mem_idx')."
+                LEFT OUTER JOIN {$this->_table['mockAnswerPaper']} AS AP ON MQ.MqIdx = AP.MqIdx AND AP.ProdCode = ".$ProdCode." AND AP.MemIdx = ".$memidx."
                 
         ";
 

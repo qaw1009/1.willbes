@@ -119,7 +119,7 @@ class StatisticsPrivate extends \app\controllers\BaseController
     {
         $prodcode = $param[0];
         $memidx = $param[1];
-
+        //echo $memidx;
         $productInfo = $this->regGradeModel->productInfo($prodcode);
 
         // 직렬이름 추출
@@ -169,6 +169,8 @@ class StatisticsPrivate extends \app\controllers\BaseController
                 'MR.ProdCode' => $prodcode
             ]
         ];
+
+
 
         $subject_list = $this->regGradeModel->subjectCall($arr_condition);
         $productInfo = $this->regGradeModel->productInfoV2($arr_condition);
@@ -234,6 +236,8 @@ class StatisticsPrivate extends \app\controllers\BaseController
         if($adTotal) $dataAdjust['tsum'] = $adTotal ? round($adTotal / $tcnt, 2) : 0;
         //종합분석(끝)
 
+        //var_dump($dataAdjust);
+
         // 필수/선택과목 컬럼수 & 이름
         $pCnt = 0;
         $sCnt = 0;
@@ -297,8 +301,8 @@ class StatisticsPrivate extends \app\controllers\BaseController
         $productInfo = $this->regGradeModel->productInfoV2($arr_condition);
 
         //과목별 문항분석 쿼리(mode = 1) , 영역 및 학습요소(mode = 2)
-        $dataSubject = $this->regGradeModel->gradeSubjectDetailCall($prodcode, 1);
-        $dataSubject2 = $this->regGradeModel->gradeSubjectDetailCall($prodcode, 2);
+        $dataSubject = $this->regGradeModel->gradeSubjectDetailCall($prodcode, $memidx, 1);
+        $dataSubject2 = $this->regGradeModel->gradeSubjectDetailCall($prodcode, $memidx, 2);
 
         // 문항별분석
         foreach($dataSubject as $key => $val){

@@ -58,6 +58,7 @@ class RegGoodsModel extends WB_Model
         $MpIdx = $condition['MpIdx'];
         $AddPointCcds = $condition['AddPointCcds'];
         $people = $condition['people'];
+        $cate = $condition['cate'];
 
         for($i =0; $i < COUNT($MpIdx); $i++){
             $cuMP = $MpIdx[$i];
@@ -107,7 +108,7 @@ class RegGoodsModel extends WB_Model
                 'MemIdx'  => $MemIdx,
                 'OrderProdIdx'=> '1',
                 'TakeNumber' => '1000000'+$key,
-                'TakeMockPart' => '99999999',
+                'TakeMockPart' => $cate,
                 'TakeForm' => $TakeFormsCcd,
                 'TakeArea' => '99999999',
                 'AddPoint' => $AddPointCcds,

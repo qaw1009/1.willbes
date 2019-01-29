@@ -40,7 +40,14 @@
                     <tr>
                         <th colspan="1">직렬 <span class="required">*</span></th>
                         <td colspan="3" class="form-inline">
-                            <div id="cateD2-wrap"></div>
+                            <SELECT class="form-control" name="cate">
+                                <option value="686001">일반행정</option>
+                                <option value="686002">검찰직</option>
+                                <option value="686003">남자</option>
+                                <option value="686004">여자</option>
+                            </SELECT>
+
+
                         </td>
                     </tr>
                     <tr>

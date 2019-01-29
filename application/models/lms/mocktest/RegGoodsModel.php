@@ -49,13 +49,15 @@ class RegGoodsModel extends WB_Model
      * @throws Exception
      */
     function saveFake($condition){
-        //var_dump($condition);
+        var_dump($condition);
 
         $arrMPSet = array();
 
         $idx = $condition['idx'];
         $TakeFormsCcd = $condition['TakeFormsCcd'];
         $MpIdx = $condition['MpIdx'];
+
+        $MpIdx[] = $condition['SMpIdx'];
         $AddPointCcds = $condition['AddPointCcds'];
         $people = $condition['people'];
         $cate = $condition['cate'];

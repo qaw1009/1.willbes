@@ -301,37 +301,16 @@
                                     <button type="button" class="btn btn-sm btn-success act-su-sort">정렬변경</button>
                                 </div>
                                 <table class="table table-bordered">
-                                    <thead>
-                                    <tr>
-                                        <th class="text-center">정렬</th>
-                                        <th class="text-center">연도</th>
-                                        <th class="text-center">회차</th>
-                                        <th class="text-center">과목명</th>
-                                        <th class="text-center">교수명</th>
-                                        <th class="text-center">과목별시험지명</th>
-                                        <th class="text-center">삭제</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    @if($method == 'PUT')
-                                        @foreach($sData as $row)
-                                            @continue($row['MockType'] == 'E')
 
-                                            <tr data-subject-idx="{{ $row['PmrpIdx'] }}">
-                                                <td class="text-center form-inline">
-                                                    <input type="text" class="form-control" style="width:30px" name="OrderNum[]" value="{{ $row['OrderNum'] }}">
-                                                    <input type="hidden" name="MpIdx[]" value="{{ $row['MpIdx'] }}">
-                                                    <input type="hidden" name="MockType[]" value="{{ $row['MockType'] }}">
-                                                </td>
-                                                <td class="text-center">{{ $row['Year'] }}</td>
-                                                <td class="text-center">{{ $row['RotationNo'] }}</td>
-                                                <td class="text-center">{{ $row['SubjectName'] }}</td>
-                                                <td class="text-center">{{ $row['wProfName'] }}</td>
-                                                <td>{{ '['. $row['MpIdx'] .'] '. $row['PapaerName'] }}</td>
-                                                <td class="text-center"><span class="act-su-del link-cursor"><i class="fa fa-times fa-lg red"></i></span></td>
-                                            </tr>
-                                        @endforeach
-                                    @endif
+                                    <tbody>
+                                    <select name="SMpIdx" class="form-control">
+                                        @if($method == 'PUT')
+                                            @foreach($sData as $row)
+                                                @continue($row['MockType'] == 'E')
+                                                <option value="{{ $row['MpIdx'] }}">{{ $row['SubjectName'] }}[{{ $row['MpIdx'] }}]</td>
+                                            @endforeach
+                                        @endif
+                                    </select>
                                     </tbody>
                                 </table>
                             </div>

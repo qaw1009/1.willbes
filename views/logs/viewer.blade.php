@@ -98,7 +98,7 @@
                                 <th style="width: 120px;">time</th>
                                 <th class="rowspan">uri</th>
                                 <th>seq</th>
-                                <th>exec time</th>
+                                <th>exec</th>
                                 <th>query</th>
                             </tr>
                             </thead>

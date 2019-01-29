@@ -71,14 +71,7 @@
         </span>
     </div>
     <div class="Content p_re">
-
-        <div class="willbes-Mocktest INFOZONE c_both">
-            <div class="willbes-Lec-Tit NG bd-none tx-black c_both pt-zero">
-                · 공무원가이드
-            </div>
-        </div>
-
-        <div class="willbes-Leclist c_both mt10">
+        <div class="willbes-Leclist c_both">
             <div class="w-gosi-Guide">
                 <div class="willbes-gosi-guide GM">
                     <ul class="tabShow tabcsDepth2 tab_gosi_Guide p_re NG">

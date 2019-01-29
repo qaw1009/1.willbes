@@ -8,12 +8,7 @@
             @include('willbes.pc.layouts.partial.site_route_path')
         </div>
         <div class="Content p_re">
-            <div class="willbes-Mocktest INFOZONE c_both">
-                <div class="willbes-Lec-Tit NG bd-none tx-black c_both pt-zero">
-                    · 군무원가이드
-                </div>
-            </div>
-            <div class="willbes-Leclist c_both mt10">
+            <div class="willbes-Leclist c_both">
                 <div class="w-gpgosi-Guide">
                     <div class="willbes-gpgosi-guide GM">
                         <ul class="tabShow tabcsDepth2 tab_gpgosi_Guide p_re NGEB">

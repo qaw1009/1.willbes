@@ -48,7 +48,7 @@
     </div>
 
     <div class="ActIndex MainVisual widthAutoFull">
-        <div class="widthAuto">
+        <div class="widthAuto p_re">
             <div class="Content p_re">
                 <div class="will-main-Tit NSK">
                     든든한 학습 파트너, <div class="tx-light-blue">윌비스 통합 고객센터</div>

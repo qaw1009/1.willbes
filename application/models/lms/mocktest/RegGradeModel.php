@@ -1191,15 +1191,11 @@ class RegGradeModel extends WB_Model
                 MemIdx, SUM(OrgPoint) AS ORG,
                 (
                     SELECT COUNT(*) FROM (
-                        SELECT ProdCode, COUNT(*) FROM {$this->_table['mockGrades']} GROUP BY MemIdx
+                        SELECT ProdCode, COUNT(*) FROM {$this->_table['mockGrades']} WHERE ProdCode = ".$ProdCode." GROUP BY MemIdx
                     ) AS A
-                    WHERE ProdCode = MG.ProdCode	
                 ) AS COUNT,
                 (
-                    SELECT COUNT(*) FROM (
-                        SELECT MpIdx FROM {$this->_table['mockRegisterR']} GROUP BY MpIdx
-                    )AS A
-                    WHERE prodCode=MG.ProdCode
+                    SELECT COUNT(*) FROM {$this->_table['mockGrades']} WHERE ProdCode = ".$ProdCode." GROUP BY MemIdx LIMIT 1
                 ) AS KCNT
             ";
 
@@ -1221,9 +1217,7 @@ class RegGradeModel extends WB_Model
                     ) AS A
                 ) AS COUNT,
                 (
-                    SELECT COUNT(*) FROM (
-                        SELECT MpIdx FROM {$this->_table['mockRegisterR']} WHERE ProdCode = ".$ProdCode." GROUP BY MpIdx
-                    )AS A
+                    SELECT COUNT(*) FROM {$this->_table['mockGrades']} WHERE ProdCode = ".$ProdCode." GROUP BY MemIdx LIMIT 1
                 ) AS KCNT,
                 (
                     SELECT MAX(ad) FROM(

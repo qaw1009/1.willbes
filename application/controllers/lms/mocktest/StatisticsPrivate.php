@@ -119,7 +119,7 @@ class StatisticsPrivate extends \app\controllers\BaseController
     {
         $prodcode = $param[0];
         $memidx = $param[1];
-
+        //echo $memidx;
         $productInfo = $this->regGradeModel->productInfo($prodcode);
 
         // 직렬이름 추출
@@ -169,6 +169,8 @@ class StatisticsPrivate extends \app\controllers\BaseController
                 'MR.ProdCode' => $prodcode
             ]
         ];
+
+
 
         $subject_list = $this->regGradeModel->subjectCall($arr_condition);
         $productInfo = $this->regGradeModel->productInfoV2($arr_condition);

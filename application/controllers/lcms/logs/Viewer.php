@@ -26,8 +26,6 @@ class Viewer extends \app\controllers\BaseController
 
         $log_data = $this->logviewer->getLogData($log_date, $log_level, $log_pattern, $log_type);
 
-        dd($log_data);
-
         $this->load->view('logs/viewer', [
             'log_type' => $log_type,
             'log_pattern' => $log_pattern,

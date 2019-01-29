@@ -22,8 +22,8 @@ class AdminAuthHook
         '/common/',
         '/lcms/auth/regist/edit',
         '/lcms/auth/regist/update',
-        '/lcms/logs/viewer',
-        '/sys/adminSettings',
+        '/lcms/logs/viewer/',
+        '/sys/adminSettings/',
         '/sample/'
     ];
 

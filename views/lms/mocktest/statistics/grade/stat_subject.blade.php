@@ -70,30 +70,48 @@
 
                     <table class="table table-bordered modal-table">
                         <tr>
-                            <th rowspan="2">구분</th>
+                            @if(empty($rows['S'])===false)
+                                <th rowspan="2">구분</th>
+                            @else
+                                <th>구분</th>
+                            @endif
                             @foreach($rows['E'] as $key => $row)
-                            <th rowspan="2">{{ $row['SubjectName'] }}</th>
+                                @if(empty($rows['S'])===false)
+                                    <th rowspan="2">{{ $row['SubjectName'] }}</th>
+                                @else
+                                    <th>{{ $row['SubjectName'] }}</th>
+                                @endif
                             @endforeach
-                            @foreach($rows['S'] as $key => $row)
-                            <th colspan="2">{{ $row['SubjectName'] }}</th>
-                            @endforeach
-                            <th rowspan="2">평균</th>
+                            @if(empty($rows['S'])===false)
+                                @foreach($rows['S'] as $key => $row)
+                                <th colspan="2">{{ $row['SubjectName'] }}</th>
+                                @endforeach
+                            @endif
+                            @if(empty($rows['S'])===false)
+                                <th rowspan="2">평균</th>
+                            @else
+                                <th>평균</th>
+                            @endif
                         </tr>
+                        @if(empty($rows['S'])===false)
                         <tr>
-                            @foreach($rows['S'] as $key => $row)
-                            <th>원점수</th>
-                            <th>조정점수</th>
-                            @endforeach
+                                @foreach($rows['S'] as $key => $row)
+                                <th>원점수</th>
+                                <th>조정점수</th>
+                                @endforeach
                         </tr>
+                        @endif
                         <tr>
                             <th>전체평균</th>
                             @foreach($rows['E'] as $key => $row)
                             <td id="p{{ $keys }}_{{ $key }}">{{ round($row['opAVG'],2) }}</td>
                             @endforeach
-                            @foreach($rows['S'] as $key => $row)
-                                <td>{{ round($row['opAVG'],2) }}</td>
-                                <td id="p{{ $keys }}_{{ $key }}">{{ round($row['adAVG'],2) }}</td>
-                            @endforeach
+                            @if(empty($rows['S'])===false)
+                                @foreach($rows['S'] as $key => $row)
+                                    <td>{{ round($row['opAVG'],2) }}</td>
+                                    <td id="p{{ $keys }}_{{ $key }}">{{ round($row['adAVG'],2) }}</td>
+                                @endforeach
+                            @endif
                             <td id="pr{{ $keys }}"></td>
                         </tr>
                         <tr>
@@ -101,10 +119,12 @@
                             @foreach($rows['E'] as $key => $row)
                                 <td id="m{{ $keys }}_{{ $key }}">{{ round($row['opMax'],2) }}</td>
                             @endforeach
-                            @foreach($rows['S'] as $key => $row)
-                                <td>{{ round($row['opMax'],2) }}</td>
-                                <td id="m{{ $keys }}_{{ $key }}">{{ round($row['adMax'],2) }}</td>
-                            @endforeach
+                            @if(empty($rows['S'])===false)
+                                @foreach($rows['S'] as $key => $row)
+                                    <td>{{ round($row['opMax'],2) }}</td>
+                                    <td id="m{{ $keys }}_{{ $key }}">{{ round($row['adMax'],2) }}</td>
+                                @endforeach
+                            @endif
                             <td id="mr{{ $keys }}"></td>
                         </tr>
                         <tr>
@@ -112,10 +132,12 @@
                             @foreach($rows['E'] as $key => $row)
                                 <td id="s{{ $keys }}_{{ $key }}">{{ round($row['StandardDeviation'],2) }}</td>
                             @endforeach
-                            @foreach($rows['S'] as $key => $row)
-                                <td>{{ round($row['StandardDeviation'],2) }}</td>
-                                <td id="s{{ $keys }}_{{ $key }}">{{ round($row['StandardDeviation'],2) }}</td>
-                            @endforeach
+                            @if(empty($rows['S'])===false)
+                                @foreach($rows['S'] as $key => $row)
+                                    <td>{{ round($row['StandardDeviation'],2) }}</td>
+                                    <td id="s{{ $keys }}_{{ $key }}">{{ round($row['StandardDeviation'],2) }}</td>
+                                @endforeach
+                            @endif
                             <td id="sr{{ $keys }}"></td>
                         </tr>
                         <tr>
@@ -123,9 +145,11 @@
                             @foreach($rows['E'] as $key => $row)
                                 <td id="q{{ $keys }}">{{ round($row['CNT'],2) }}</td>
                             @endforeach
-                            @foreach($rows['S'] as $key => $row)
-                                <td colspan="2">{{ round($row['CNT'],2) }}</td>
-                            @endforeach
+                            @if(empty($rows['S'])===false)
+                                @foreach($rows['S'] as $key => $row)
+                                    <td colspan="2">{{ round($row['CNT'],2) }}</td>
+                                @endforeach
+                            @endif
                             <td id="qr{{ $keys }}"></td>
                         </tr>
 

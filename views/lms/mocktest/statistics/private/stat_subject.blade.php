@@ -205,14 +205,7 @@
         var MpIdxSet = {!! json_encode($MpIdxSet) !!};
 
         $(document).ready(function() {
-            var pnum = 0;
-            var ptotal = 0;
-            var mnum = 0;
-            var mtotal = 0;
-            var snum = 0;
-            var stotal = 0;
-            var znum = 0;
-            var ztotal = 0;
+            var pnum = 0; ptotal = 0; mnum = 0; mtotal = 0; snum = 0; stotal = 0; znum = 0; ztotal = 0;
 
             var cnt = 0;
             for(var j=0; j < MpIdxSet.length; j++){
@@ -268,8 +261,6 @@
             window.print();
             return false;
         }
-
-
 
     </script>
 @stop

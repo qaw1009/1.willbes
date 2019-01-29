@@ -967,15 +967,17 @@ class RegGradeModel extends WB_Model
                 ) AS B
                 WHERE B.MemIdx = '".$MemIdx."'
 		    ) ,'/', (
-                SELECT COUNT(MemIdx) FROM (
-                    SELECT 
-                        MG.MpIdx, MG.MemIdx 
-                    FROM
-                        {$this->_table['mockExamBase']} AS MP
-                        JOIN {$this->_table['mockGrades']} AS MG ON MG.MpIdx = MP.MpIdx AND MP.IsUse = 'Y' AND ProdCode = '" . $ProdCode . "'
-                        JOIN {$this->_table['mockRegister']} AS MR ON MR.MrIdx = MG.MrIdx AND MR.IsStatus = 'Y' 
-                ) AS I
-                WHERE I.MpIdx = A.MpIdx 
+                SELECT MAX(CNT) FROM (
+                    SELECT COUNT(MemIdx) AS CNT FROM (
+                                SELECT 
+                                    MG.MpIdx, MG.MemIdx 
+                                FROM
+                                    {$this->_table['mockExamBase']} AS MP
+                                    JOIN {$this->_table['mockGrades']} AS MG ON MG.MpIdx = MP.MpIdx AND MP.IsUse = 'Y' AND ProdCode = '" . $ProdCode . "'
+                                    JOIN {$this->_table['mockRegister']} AS MR ON MR.MrIdx = MG.MrIdx AND MR.IsStatus = 'Y' 
+                            ) AS I
+                    GROUP BY I.MpIdx
+                ) AS K
             )) AS pSRank,
             CONCAT((
                 SELECT 
@@ -1018,7 +1020,20 @@ class RegGradeModel extends WB_Model
                         JOIN {$this->_table['mockRegister']} AS MR ON MR.MrIdx = MG.MrIdx AND MR.IsStatus = 'Y' 
                 ) AS I
                 WHERE I.MpIdx = A.MpIdx 
-            ) AS CNT
+            ) AS CNT,
+            (
+                SELECT MAX(CNT) FROM (
+                    SELECT COUNT(MemIdx) AS CNT FROM (
+                                SELECT 
+                                    MG.MpIdx, MG.MemIdx 
+                                FROM
+                                    {$this->_table['mockExamBase']} AS MP
+                                    JOIN {$this->_table['mockGrades']} AS MG ON MG.MpIdx = MP.MpIdx AND MP.IsUse = 'Y' AND ProdCode = '" . $ProdCode . "'
+                                    JOIN {$this->_table['mockRegister']} AS MR ON MR.MrIdx = MG.MrIdx AND MR.IsStatus = 'Y' 
+                            ) AS I
+                    GROUP BY I.MpIdx
+                ) AS K
+            ) AS MAXCNT
             ";
 
         $from = "
@@ -1078,7 +1093,7 @@ class RegGradeModel extends WB_Model
             $rdata[$ProdCode][$MockType][$mpidx]['CNT'] = $val['CNT'];
             $rdata[$ProdCode][$MockType][$mpidx]['SubjectName'] = $subjectName;
             $rdata[$ProdCode]['pSRank'] = $val['pSRank'];
-            $rdata[$ProdCode]['stpct'] = round(100 - ((($srank) / $val['CNT']) * 100 - (100 / $val['CNT'])),2);
+            $rdata[$ProdCode]['stpct'] = round(100 - ((($srank) / $val['MAXCNT']) * 100 - (100 / $val['MAXCNT'])),2);
 
             $MpIdxSet[] = $mpidx;
         }

@@ -313,19 +313,23 @@ class StatisticsPrivate extends \app\controllers\BaseController
 
         foreach ($subject_list as $key => $val){
             $pList[$val['MpIdx']] = $val['SubjectName'];
+            $pIsList[] = $val['MpIdx'];
         }
-
+        //var_dump($pList);
         // 영역 및 학습요소
         foreach($dataSubject2 as $key => $val){
             $mpidx = $val['MpIdx'];
             $malidx = $val['MpIdx'].$val['MalIdx'];
-            $dataSubjectV2[$malidx]['areaName'] = $val['areaName'];
-            if($val['IsWrong'] == 'N') $dataSubjectV2[$malidx]['XCNT'][] = $val['QuestionNO'];
-            else                       $dataSubjectV2[$malidx]['OCNT'][] = $val['QuestionNO'];
-            $dataSubjectV2[$malidx]['ALL'][] = $val['QuestionNO'];
-            $dataSubjectV2[$malidx]['AVR'] = $val['AVR'];
-            $dataSubjectV2[$malidx]['QuestionNO'][] = $val['QuestionNO'];
-            $dataSubjectV2[$malidx]['MP'] = $pList[$mpidx];
+            //선택과목에 안본시험은 나올필요가 없기때문에 처리
+            if (in_array($mpidx, $pIsList)) {
+                $dataSubjectV2[$malidx]['areaName'] = $val['areaName'];
+                if ($val['IsWrong'] == 'N') $dataSubjectV2[$malidx]['XCNT'][] = $val['QuestionNO'];
+                else                       $dataSubjectV2[$malidx]['OCNT'][] = $val['QuestionNO'];
+                $dataSubjectV2[$malidx]['ALL'][] = $val['QuestionNO'];
+                $dataSubjectV2[$malidx]['AVR'] = $val['AVR'];
+                $dataSubjectV2[$malidx]['QuestionNO'][] = $val['QuestionNO'];
+                $dataSubjectV2[$malidx]['MP'] = $pList[$mpidx];
+            }
         }
 
         $this->load->view('/mocktest/statistics/private/winpopup_stat', [

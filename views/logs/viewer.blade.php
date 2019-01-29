@@ -143,6 +143,10 @@
         $search_form.find('select[name="log_level"]').val('{{ $log_level }}');
         $search_form.find('input[name="log_date"]').val('{{ $log_date }}');
 
+        if ($search_form.find('select[name="log_pattern"]').val() !== 'log') {
+            $search_form.find('select[name="log_level"]').prop('disabled', true);
+        }
+
         // 로그유형 선택 이벤트
         $search_form.on('change', 'select[name="log_pattern"]', function() {
             if ($(this).val() === 'log') {

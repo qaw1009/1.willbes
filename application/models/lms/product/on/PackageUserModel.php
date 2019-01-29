@@ -32,6 +32,7 @@ class PackageUserModel extends CommonLectureModel
                                 ,fn_product_count_cart(A.ProdCode) as CartCnt
                                 ,fn_product_count_order(A.ProdCode,\'676002\') as PayIngCnt
                                 ,fn_product_count_order(A.ProdCode,\'676001\') as PayEndCnt
+                                ,IFNULL(Y.ProdCode_Original,\'\') as ProdCode_Original
                                 ,Z.wAdminName
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
@@ -48,6 +49,7 @@ class PackageUserModel extends CommonLectureModel
                         join lms_product_r_category C on A.ProdCode = C.ProdCode and C.IsStatus=\'Y\'
                             join lms_sys_category Ca on C.CateCode = Ca.CateCode  and Ca.IsStatus=\'Y\'
                             left outer join lms_sys_category Cb on Ca.ParentCateCode = Cb.CateCode
+                        left outer join lms_product_copy_log Y on A.ProdCode = Y.ProdCode
                         left outer join wbs_sys_admin Z on A.RegAdminIdx = Z.wAdminIdx
                      where A.IsStatus=\'Y\'
         ';

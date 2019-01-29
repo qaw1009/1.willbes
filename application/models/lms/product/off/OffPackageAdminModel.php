@@ -37,6 +37,7 @@ class OffPackageAdminModel extends CommonLectureModel
                     ,C.CateCode
                     ,Ca.CateName, Cb.CateName as CateName_Parent
                     ,D.SalePrice, D.SaleRate, D.RealSalePrice
+                    ,IFNULL(Y.ProdCode_Original,\'\') as ProdCode_Original
                     ,Z.wAdminName
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
@@ -60,6 +61,7 @@ class OffPackageAdminModel extends CommonLectureModel
                             join lms_sys_category Ca on C.CateCode = Ca.CateCode  and Ca.IsStatus=\'Y\'
                             left outer join lms_sys_category Cb on Ca.ParentCateCode = Cb.CateCode
                         left outer join lms_product_sale D on A.ProdCode = D.ProdCode and D.SaleTypeCcd=\'613001\' and D.IsStatus=\'Y\'	#Pc+모바일 판매가만 추출
+                        left outer join lms_product_copy_log Y on A.ProdCode = Y.ProdCode
                         left outer join wbs_sys_admin Z on A.RegAdminIdx = Z.wAdminIdx
                      where A.IsStatus=\'Y\'
         ';

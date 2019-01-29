@@ -111,6 +111,7 @@
                     <th width="5%">결제완료</th>
                     <th width="5%">등록자</th>
                     <th  width="8%">등록일</th>
+                    <th>복사</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -187,7 +188,10 @@
                     {'data' : 'PayIngCnt'},//입금대기
                     {'data' : 'PayEndCnt'},//결제완료
                     {'data' : 'wAdminName'},//등록자
-                    {'data' : 'RegDatm'}//등록일
+                    {'data' : 'RegDatm'},//등록일
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            return (row.ProdCode_Original !== '') ? '<span class="red">Y</span>' : '';
+                        }},//복사여부
                 ]
 
             });

@@ -170,6 +170,7 @@
                     <th>정산입력</th>
                     <th>등록자</th>
                     <th>등록일</th>
+                    <th>복사</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -271,7 +272,10 @@
                             return (data !== '0') ? '입력' : '<span class="red">미입력</span>';
                         }},//정산입력
                     {'data' : 'wAdminName'},//등록자
-                    {'data' : 'RegDatm'}//등록일
+                    {'data' : 'RegDatm'},//등록일
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            return (row.ProdCode_Original !== '') ? '<span class="red">Y</span>' : '';
+                        }},//복사여부
                 ]
 
             });

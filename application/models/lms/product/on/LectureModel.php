@@ -40,6 +40,7 @@ class LectureModel extends CommonLectureModel
                     ,fn_product_count_order(A.ProdCode,\'676002\') as PayIngCnt
                     ,fn_product_count_order(A.ProdCode,\'676001\') as PayEndCnt
                     #,fn_product_professor_name(A.ProdCode) as ProfName_Arr	//검색때문에 vw_product_r_professor_concat 사용
+                    ,IFNULL(Y.ProdCode_Original,\'\') as ProdCode_Original
                     ,Z.wAdminName
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
@@ -65,6 +66,7 @@ class LectureModel extends CommonLectureModel
                             left outer join lms_product_sale D on A.ProdCode = D.ProdCode and D.SaleTypeCcd=\'613001\' and D.IsStatus=\'Y\'	#Pc+모바일 판매가만 추출
                             left outer join vw_product_r_professor_concat E on A.ProdCode = E.ProdCode
                             left outer join (select ProdCode, count(*) as DivisionCount from lms_product_division where IsStatus=\'Y\' group by ProdCode) as F on A.ProdCode = F.ProdCode
+                            left outer join lms_product_copy_log Y on A.ProdCode = Y.ProdCode
                             join wbs_sys_admin Z on A.RegAdminIdx = Z.wAdminIdx
                      where A.IsStatus=\'Y\'
         ';

@@ -110,7 +110,7 @@ class RegGoodsModel extends WB_Model
                 'TakeMockPart' => '99999999',
                 'TakeForm' => $TakeFormsCcd,
                 'TakeArea' => '99999999',
-                'AddPoint' => $AddPointCcds[0],
+                'AddPoint' => $AddPointCcds,
                 'IsStatus' => 'Y',
                 'IsTicketPrint' => 'N',
                 'IsDisplay' => 'Y',

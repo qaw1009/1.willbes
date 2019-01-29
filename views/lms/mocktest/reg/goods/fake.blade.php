@@ -70,8 +70,11 @@
                     <tr>
                         <th colspan="1">가산점 <span class="required">*</span></th>
                         <td colspan="3">
-                            <input type="checkbox" class="flat" name="AddPointCcds[]" value="5" checked> <span class="flat-text mr-20">5%</span>
-                            <input type="checkbox" class="flat" name="AddPointCcds[]" value="10"> <span class="flat-text mr-20">10%</span>
+                            <SELECT class="form-control" name="AddPointCcds">
+                                <option value="0">해당없음</option>
+                                <option value="5">5%</option>
+                                <option value="10">10%</option>
+                            </SELECT>
                         </td>
                     </tr>
                     <tr>

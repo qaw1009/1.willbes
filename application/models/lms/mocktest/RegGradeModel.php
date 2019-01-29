@@ -1124,9 +1124,9 @@ class RegGradeModel extends WB_Model
         $selectCount = "SELECT COUNT(*) AS cnt FROM (SELECT MR.ProdCode";
         $where = " WHERE MR.IsStatus = 'Y' ";
         $where .= $this->_conn->makeWhere($condition)->getMakeWhere(true)."\n";
-        $order = " ORDER BY MA.RegDatm DESC, MA.MpIdx, MQ.QuestionNO ";
+        $order = " ORDER BY MR.MemIdx, MA.RegDatm DESC, MA.MpIdx, MQ.QuestionNO ";
         $group = " GROUP BY MA.MqIdx, MR.MemIdx ";
-        //echo $selectCount . $from . $where . $group . ") AS A";
+        //echo $select . $from . $where . $group . $order . $offset_limit;
         $data = $this->_conn->query($select . $from . $where . $group . $order . $offset_limit)->result_array();
         $count = $this->_conn->query($selectCount . $from . $where . $group . ") AS A")->row()->cnt;
 

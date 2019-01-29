@@ -107,8 +107,8 @@
         $datatable = $list_table.DataTable({
             serverSide: true,
             buttons: [
-                { text: '<i class="fa fa-file-excel-o mr-5"></i> 쿠폰발급', className: 'btn-sm btn-success border-radius-reset mr-15 btn-regist' },
-                { text: '<i class="fa fa-undo mr-5"></i> 쿠폰발급회수', className: 'btn-sm btn-success border-radius-reset mr-15 btn-retire' },
+//                { text: '<i class="fa fa-file-excel-o mr-5"></i> 쿠폰발급', className: 'btn-sm btn-success border-radius-reset mr-15 btn-regist' },
+  //              { text: '<i class="fa fa-undo mr-5"></i> 쿠폰발급회수', className: 'btn-sm btn-success border-radius-reset mr-15 btn-retire' },
             ],
             ajax: {
                 'url' : '{{ site_url('/service/coupon/issue/listAjax') }}',
@@ -156,41 +156,12 @@
             iCheckAll($list_table.find('input[name="cd_idx"]'), $(this));
         });
 
-        // 엑셀다운로드 버튼 클릭
         $('.btn-regist').on('click', function(event) {
-            event.preventDefault();
+
         });
 
-        // 쿠폰발급회수 버튼 클릭
         $('.btn-retire').on('click', function() {
-            var $checked_cd_idx = $list_table.find('input[name="cd_idx"]:checked');
-            var $params = {};
-            $checked_cd_idx.each(function() {
-                if ($(this).data('is-retireable') === 'Y') {
-                    $params[$(this).data('idx')] = $(this).val();
-                }
-            });
 
-            if (Object.keys($params).length < 1) {
-                alert('선택된 쿠폰이 없습니다.');
-                return;
-            }
-
-            if (!confirm('해당 쿠폰을 회수하시겠습니까?')) {
-                return;
-            }
-
-            var data = {
-                '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
-                '_method' : 'PUT',
-                'params' : JSON.stringify($params)
-            };
-            sendAjax('{{ site_url('/service/coupon/issue/retire') }}', data, function(ret) {
-                if (ret.ret_cd) {
-                    notifyAlert('success', '알림', ret.ret_msg);
-                    $datatable.draw();
-                }
-            }, showError, false, 'POST');
         });
 
         // 쿠폰 수정 폼

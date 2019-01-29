@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Manage extends \app\controllers\BaseController
 {
-    protected $models = array('member/manageMember','sys/code', 'pay/orderList','service/couponRegist','service/point');
+    protected $models = array('member/manageMember','sys/code', 'pay/orderList','service/couponRegist','service/point','member/manageLecture');
     protected $helpers = array();
 
     public function __construct()
@@ -610,7 +610,53 @@ class Manage extends \app\controllers\BaseController
 
     public function ajaxLecture()
     {
+        $memIdx = $this->_req('memIdx');
+        $search_value = $this->_req('search_value');
 
+        $dan = $this->manageLectureModel->getLecture(false, [
+            'EQ' => [
+                'MemIdx' => $memIdx,
+                'LearnPatternCcd' => '615001'
+            ],
+            'ORG' => [
+                'LKB' => [
+                    'ProdName' => $search_value,
+                    'subProdName' => $search_value
+                ]
+            ]
+        ]);
+
+        $userpkg = [];
+
+        $pkg = [];
+
+        $pass = [];
+
+        $free = [];
+
+        $admin = [];
+
+        $offdan = $this->manageLectureModel->getLecture(false, [
+            'EQ' => [
+                'MemIdx' => $memIdx,
+                'LearnPatternCcd' => '615001'
+            ]
+        ], true);
+
+        $offpkg = [];
+
+        $this->load->view('member/layer/lecture/list', [
+            'memIdx' => $memIdx,
+            'search_value' => $search_value,
+            'dan' => $dan,
+            'userpkg' => $userpkg,
+            'pkg' => $pkg,
+            'pass' => $pass,
+            'free' => $free,
+            'admin' =>$admin,
+            'offdan' => $offdan,
+            'offpkg' => $offpkg
+        ]);
     }
 
 
@@ -703,5 +749,7 @@ class Manage extends \app\controllers\BaseController
     {
 
     }
+
+
 
 }

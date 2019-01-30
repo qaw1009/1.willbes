@@ -37,6 +37,7 @@ class LogViewer
      */
     private function _getLogData($log_path, $log_level = '')
     {
+        ini_set('memory_limit', '1024M');
         $data = [];
 
         if(file_exists($log_path)) {

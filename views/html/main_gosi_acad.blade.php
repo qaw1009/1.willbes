@@ -83,7 +83,7 @@
                 <ul>
                     <li>
                         <div class="bSlider acad">
-                            <div class="slider">
+                            <div class="sliderTM">
                                 <div><a href="#none"><img src="{{ img_url('gosi_acad/visual/visualsub_190129.jpg') }}" alt="배너명"></a></div>
                                 <div><a href="#none"><img src="{{ img_url('gosi_acad/visual/visualsub_190131.jpg') }}" alt="배너명"></a></div>
                             </div>
@@ -91,7 +91,7 @@
                     </li>
                     <li>
                         <div class="bSlider acad">
-                            <div class="slider">
+                            <div class="sliderTM">
                                 <div><a href="#none"><img src="{{ img_url('gosi_acad/visual/visualsub_190130.jpg') }}" alt="배너명"></a></div>
                                 <div><a href="#none"><img src="{{ img_url('gosi_acad/visual/visualsub_190129.jpg') }}" alt="배너명"></a></div>
                             </div>
@@ -99,7 +99,7 @@
                     </li>
                     <li>
                         <div class="bSlider acad">
-                            <div class="bSlider slider">
+                            <div class="sliderTM">
                                 <div><a href="#none"><img src="{{ img_url('gosi_acad/visual/visualsub_190131.jpg') }}" alt="배너명"></a></div>
                                 <div><a href="#none"><img src="{{ img_url('gosi_acad/visual/visualsub_190130.jpg') }}" alt="배너명"></a></div>
                             </div>
@@ -131,7 +131,7 @@
             <ul class="ProfBox">
                 <li>
                 	<div class="bSlider acad">
-						<div class="slider">
+						<div class="sliderTM">
 							<div><a href="#none"><img src="{{ img_url('gosi_acad/prof/ProfBox01.jpg') }}" alt="배너명"></a></div>
 							<div><a href="#none"><img src="{{ img_url('gosi_acad/prof/ProfBox04.jpg') }}" alt="배너명"></a></div>
                         </div>
@@ -139,7 +139,7 @@
                 </li>
                 <li>
                 	<div class="bSlider acad">
-						<div class="slider">
+						<div class="sliderTM">
 							<div><a href="#none"><img src="{{ img_url('gosi_acad/prof/ProfBox02.jpg') }}" alt="배너명"></a></div>
 							<div><a href="#none"><img src="{{ img_url('gosi_acad/prof/ProfBox05.jpg') }}" alt="배너명"></a></div>
                         </div>
@@ -147,7 +147,7 @@
                 </li>
                 <li>
                 	<div class="bSlider acad">
-						<div class="slider">
+						<div class="sliderTM">
 							<div><a href="#none"><img src="{{ img_url('gosi_acad/prof/ProfBox03.jpg') }}" alt="배너명"></a></div>
 							<div><a href="#none"><img src="{{ img_url('gosi_acad/prof/ProfBox01.jpg') }}" alt="배너명"></a></div>
                         </div>
@@ -155,7 +155,7 @@
                 </li>
                 <li>
                 	<div class="bSlider acad">
-						<div class="slider">
+						<div class="sliderTM">
 							<div><a href="#none"><img src="{{ img_url('gosi_acad/prof/ProfBox04.jpg') }}" alt="배너명"></a></div>
 							<div><a href="#none"><img src="{{ img_url('gosi_acad/prof/ProfBox02.jpg') }}" alt="배너명"></a></div>
                         </div>
@@ -163,7 +163,7 @@
                 </li>
                 <li>
                 	<div class="bSlider acad">
-						<div class="slider">
+						<div class="sliderTM">
 							<div><a href="#none"><img src="{{ img_url('gosi_acad/prof/ProfBox05.jpg') }}" alt="배너명"></a></div>
 							<div><a href="#none"><img src="{{ img_url('gosi_acad/prof/ProfBox03.jpg') }}" alt="배너명"></a></div>
                         </div>
@@ -178,14 +178,14 @@
     <div class="Section Section1 mb10">
         <div class="widthAuto">
             <div class="noticeTabs acad">
-                <ul class="tabWrap noticeWrap_acad two">
+                <ul class="tabWrap noticeWrap_acad three">
                     <li><a href="#notice1" class="on">시험공고</a></li>
                     <li><a href="#notice2" class="">수험뉴스</a></li>
-                    <li><a href="#notice2" class="">합격수기</a></li>
+                    <li><a href="#notice3" class="">합격수기</a></li>
                 </ul>
                 <div class="tabBox noticeBox_acad">
                     <div id="notice1" class="tabContent p_re">
-                        <a href="#none" class="f_right btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}" alt="더보기"></a>
+                        <a href="#none" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
                         <ul class="List-Table">
                             <li><a href="#none">국가직 | 2019년도 국가공무원 공개경쟁채용시험 등 계획 공고</a></li>
                             <li><a href="#none">서울시 | 2019 제1회 서울시 지방공무원(7,9급 등) 임용시험 시행계획 변경 공고</a></li>
@@ -195,7 +195,7 @@
                         </ul>
                     </div>
                     <div id="notice2" class="tabContent p_re">
-                        <a href="#none" class="f_right btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}" alt="더보기"></a>
+                        <a href="#none" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
                         <ul class="List-Table">
                             <li><a href="#none">공지사항 제목이 출력됩니다.</a></li>
                             <li><a href="#none">3월 31일(금) 새벽시스템점검안내222</a></li>
@@ -205,23 +205,24 @@
                         </ul>
                     </div>
                     <div id="notice3" class="tabContent p_re">
-                        <a href="#none" class="f_right btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}" alt="더보기"></a>
+                        <a href="#none" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
                         <ul class="List-Table">
-                            <li><a href="#none">공지사항 제목이 출력됩니다.</a></li>
-                            <li><a href="#none">3월 31일(금) 새벽시스템점검안내222</a></li>
-                            <li><a href="#none">설연휴학원고객센터운영안내22</a></li>
-                            <li><a href="#none">추석교재배송및고객센터휴무안내22</a></li>
-                            <li><a href="#none">추석교재배송및고객센터휴무안내22</a></li>
+                            <li><a href="#none">공지사항 제목이 출력됩니다.333</a></li>
+                            <li><a href="#none">3월 31일(금) 새벽시스템점검안내333</a></li>
+                            <li><a href="#none">설연휴학원고객센터운영안내333</a></li>
+                            <li><a href="#none">추석교재배송및고객센터휴무안내333</a></li>
+                            <li><a href="#none">추석교재배송및고객센터휴무안내333</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
+            
             <div class="sliderEvt pick">
                 <div class="will-acadTit">윌비스 <span class="tx-color">이벤트</span></div>
                 <div class="bSlider acad">
                     <div class="sliderTM">
-                        <div><a href="#none"><img src="{{ img_url('cop_acad/event/evt_190104.jpg') }}" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="{{ img_url('cop_acad/event/evt_190104.jpg') }}" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="{{ img_url('gosi_acad/event/evt190130.jpg') }}" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="{{ img_url('gosi_acad/event/evt190130.jpg') }}" alt="배너명"></a></div>
                     </div>
                 </div>
             </div>

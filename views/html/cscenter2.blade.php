@@ -54,18 +54,20 @@
                 <!-- List -->
                 <div class="willbes-Leclist c_both">
                     <div class="willbes-Lec-Selected tx-gray mt0">
-                        <select id="acad" name="acad" title="구분" class="seleAcad">
-                            <option selected="selected">구분</option>
-                            <option value="학원">학원</option>
-                            <option value="온라인">온라인</option>
-                        </select>
-                        <select id="campus" name="campus" title="campus" class="seleCampus">
-                            <option selected="selected">캠퍼스</option>
-                            <option value="헌법">헌법</option>
-                            <option value="스파르타반">스파르타반</option>
-                            <option value="공직선거법">공직선거법</option>
-                        </select>
-                        <div class="willbes-Lec-Search GM f_right mg0">
+                        <div class="f_left">
+                            <select id="acad" name="acad" title="구분" class="seleAcad">
+                                <option selected="selected">구분</option>
+                                <option value="학원">학원</option>
+                                <option value="온라인">온라인</option>
+                            </select>
+                            <select id="campus" name="campus" title="campus" class="seleCampus">
+                                <option selected="selected">캠퍼스</option>
+                                <option value="헌법">헌법</option>
+                                <option value="스파르타반">스파르타반</option>
+                                <option value="공직선거법">공직선거법</option>
+                            </select>
+                        </div>
+                        <div class="willbes-Lec-Search GM f_left mg0">
                             <div class="inputBox p_re">
                                 <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="제목 또는 내용을 입력해 주세요" maxlength="30">
                                 <button type="submit" onclick="" class="search-Btn">

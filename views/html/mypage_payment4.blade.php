@@ -142,7 +142,7 @@
                         </table>
                         <div class="useDetailWrap mt25">
                             <ul class="tabWrap tabDepthPass">
-                                <li><a href="#use1">보유쿠폰</a></li>
+                                <li><a href="#use1" class="on">보유쿠폰</a></li>
                                 <li><a href="#use2">사용/만료쿠폰</a></li>
                             </ul>
                             <div class="tabBox mt20">
@@ -170,7 +170,7 @@
                                                 <span>검색</span>
                                             </button>
                                         </div>
-                                        <div class="willbes-Lec-Search willbes-SelectBox mb20 GM f_right">
+                                        <div class="willbes-Lec-Search willbes-SelectBox mb20 GM f_left">
                                             <select id="process" name="process" title="process" class="seleProcess f_left mr10">
                                                 <option selected="selected">과정</option>
                                                 <option value="헌법">헌법</option>
@@ -338,7 +338,7 @@
                                                 <span>검색</span>
                                             </button>
                                         </div>
-                                        <div class="willbes-Lec-Search willbes-SelectBox mb20 GM f_right">
+                                        <div class="willbes-Lec-Search willbes-SelectBox mb20 GM f_left">
                                             <select id="process" name="process" title="process" class="seleProcess f_left mr10">
                                                 <option selected="selected">과정</option>
                                                 <option value="헌법">헌법</option>
@@ -529,7 +529,7 @@
                                         <span>검색</span>
                                     </button>
                                 </div>
-                                <div class="willbes-Lec-Search willbes-SelectBox mb20 GM f_right">
+                                <div class="willbes-Lec-Search willbes-SelectBox mb20 GM f_left">
                                     <select id="process" name="process" title="process" class="seleProcess f_left mr10">
                                         <option selected="selected">과정</option>
                                         <option value="헌법">헌법</option>

@@ -75,17 +75,19 @@
             <!-- List -->
             <div class="willbes-Leclist c_both">
                 <div class="willbes-Lec-Selected tx-gray mt0">
-                    <select id="type" name="type" title="공고유형" class="seleType">
-                        <option selected="selected">공고유형</option>
-                        <option value="시험공고">시험공고</option>
-                        <option value="합격자공고">합격자공고</option>
-                    </select>
-                    <select id="area" name="area" title="지역" class="seleArea">
-                        <option selected="selected">지역</option>
-                        <option value="경기도">경기도</option>
-                        <option value="경상북도">경상북도</option>
-                    </select>
-                    <div class="willbes-Lec-Search GM f_right mg0">
+                    <div class="f_left">
+                        <select id="type" name="type" title="공고유형" class="seleType">
+                            <option selected="selected">공고유형</option>
+                            <option value="시험공고">시험공고</option>
+                            <option value="합격자공고">합격자공고</option>
+                        </select>
+                        <select id="area" name="area" title="지역" class="seleArea">
+                            <option selected="selected">지역</option>
+                            <option value="경기도">경기도</option>
+                            <option value="경상북도">경상북도</option>
+                        </select>
+                    </div>
+                    <div class="willbes-Lec-Search GM f_left mg0">
                         <div class="inputBox p_re">
                             <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="제목 또는 내용을 입력해 주세요" maxlength="30">
                             <button type="submit" onclick="" class="search-Btn">

@@ -108,7 +108,7 @@
                             <option value="접수마감">접수마감</option>
                         </select>
                     </span>
-                    <span class="willbes-Lec-Search willbes-SelectBox mb20 GM f_right">
+                    <span class="willbes-Lec-Search willbes-SelectBox mb20 GM f_left">
                         <div class="inputBox p_re">
                             <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="모의고사명을 입력해 주세요" maxlength="30">
                             <button type="submit" onclick="" class="search-Btn">

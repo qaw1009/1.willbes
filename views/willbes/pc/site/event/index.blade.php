@@ -17,21 +17,21 @@
 
         <div class="willbes-Leclist c_both mt0 p_re">
             <div class="willbes-LecreplyList tx-gray c_both mt0">
-                <span class="willbes-Lec-Search willbes-SelectBox mb20 GM f_left">
-                    <select id="s_request_type" name="s_request_type" title="이벤트종류" class="seleEvt f_left" onchange="goUrl('s_request_type',this.value)">
+                <div class="willbes-Lec-Search willbes-SelectBox mb20 GM f_left">
+                    <select id="s_request_type" name="s_request_type" title="이벤트종류" class="seleEvt f_left mr10" onchange="goUrl('s_request_type',this.value)">
                         <option value="">전체 이벤트</option>
                         @foreach($arr_base['request_type'] as $key => $val)
                             <option value="{{$key}}" @if(element('s_request_type', $arr_input) == $key)selected="selected"@endif>{{$val}}</option>
                         @endforeach
                     </select>
-                    <select id="s_campus" name="s_campus" title="캠퍼스" class="seleCampus ml10 f_left" onchange="goUrl('s_campus',this.value)">
+                    <select id="s_campus" name="s_campus" title="캠퍼스" class="seleCampus f_left mr10" onchange="goUrl('s_campus',this.value)">
                         <option value="">전체 캠퍼스</option>
                         @foreach($arr_base['campus'] as $key => $val)
                             <option value="{{$key}}" @if(element('s_campus', $arr_input) == $key)selected="selected"@endif>{{$val}}</option>
                         @endforeach
                     </select>
-                </span>
-                <div class="willbes-Lec-Search GM f_right ">
+                </div>
+                <div class="willbes-Lec-Search GM f_left">
                     <div class="inputBox p_re">
                         <input type="text" id="s_keyword" name="s_keyword" class="labelSearch" placeholder="제목을 입력해 주세요" maxlength="30" value="{{element('s_keyword', $arr_input)}}">
                         <button type="button" onclick="goUrl('s_keyword', document.getElementById('s_keyword').value)" class="search-Btn">

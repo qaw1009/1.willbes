@@ -74,13 +74,13 @@
         <div class="willbes-Leclist c_both mt0">
             <div class="willbes-LecreplyList tx-gray c_both mt0">
                 <span class="willbes-Lec-Search willbes-SelectBox mb20 GM f_left">
-                    <select id="campus" name="campus" title="campus" class="seleCampus f_left">
+                    <select id="campus" name="campus" title="campus" class="seleCampus f_left mr10">
                         <option selected="selected">전체 캠퍼스</option>
                         <option value="캠퍼스1">캠퍼스1</option>
                         <option value="캠퍼스2">캠퍼스2</option>
                     </select>
                 </span>
-                <div class="willbes-Lec-Search GM f_right" style="margin: 0;">
+                <div class="willbes-Lec-Search GM f_left" style="margin: 0;">
                     <div class="inputBox p_re">
                         <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="제목 또는 내용을 입력해 주세요" maxlength="30">
                         <button type="submit" onclick="" class="search-Btn">

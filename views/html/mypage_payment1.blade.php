@@ -136,7 +136,7 @@
                     <span>검색</span>
                 </button>
             </div>
-            <div class="willbes-Lec-Search willbes-SelectBox mb20 GM f_right">
+            <div class="willbes-Lec-Search willbes-SelectBox mb20 GM f_left">
                 <select id="process" name="process" title="process" class="seleProcess f_left">
                     <option selected="selected">과정</option>
                     <option value="헌법">헌법</option>

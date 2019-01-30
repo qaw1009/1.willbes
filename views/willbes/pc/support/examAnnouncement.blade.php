@@ -18,21 +18,22 @@
                 <!-- List -->
                 <div class="willbes-Leclist c_both">
                     <div class="willbes-Lec-Selected tx-gray mt0">
-                        <select id="s_announcement_type" name="s_announcement_type" title="공고유형" class="seleLecA" onchange="goUrl('s_announcement_type',this.value)">
-                            <option value="">공고유형</option>
-                            @foreach($arr_base['announcement_type'] as $key => $val)
-                                <option value="{{$key}}" @if(element('s_announcement_type', $arr_input) == $key)selected="selected"@endif>{{$val}}</option>
-                            @endforeach
-                        </select>
+                        <div class="f_left">
+                            <select id="s_announcement_type" name="s_announcement_type" title="공고유형" class="seleLecA" onchange="goUrl('s_announcement_type',this.value)">
+                                <option value="">공고유형</option>
+                                @foreach($arr_base['announcement_type'] as $key => $val)
+                                    <option value="{{$key}}" @if(element('s_announcement_type', $arr_input) == $key)selected="selected"@endif>{{$val}}</option>
+                                @endforeach
+                            </select>
 
-                        <select id="s_area" name="s_area" title="지역" class="seleLecA" onchange="goUrl('s_area',this.value)">
-                            <option value="">지역</option>
-                            @foreach($arr_base['area'] as $key => $val)
-                                <option value="{{$key}}" @if(element('s_area', $arr_input) == $key)selected="selected"@endif>{{$val}}</option>
-                            @endforeach
-                        </select>
-
-                        <div class="willbes-Lec-Search GM f_right mg0">
+                            <select id="s_area" name="s_area" title="지역" class="seleLecA" onchange="goUrl('s_area',this.value)">
+                                <option value="">지역</option>
+                                @foreach($arr_base['area'] as $key => $val)
+                                    <option value="{{$key}}" @if(element('s_area', $arr_input) == $key)selected="selected"@endif>{{$val}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="willbes-Lec-Search GM f_left mg0">
                             <div class="inputBox p_re">
                                 <input type="text" id="s_keyword" name="s_keyword" maxlength="30" value="{{ element('s_keyword', $arr_input) }}" class="labelSearch" placeholder="제목 또는 내용을 입력해 주세요">
                                 <button type="button" onclick="goUrl('s_keyword', document.getElementById('s_keyword').value)" class="search-Btn">

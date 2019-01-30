@@ -465,9 +465,8 @@ class RegGradeModel extends WB_Model
                                     (
                                     SELECT SUM(Res) / (
                                             SELECT COUNT(MemIdx) FROM (
-                                                SELECT MpIdx, MemIdx FROM {$this->_table['mockAnswerPaper']} GROUP BY MemIdx, MpIdx
+                                                SELECT MemIdx FROM {$this->_table['mockAnswerPaper']} WHERE ProdCode = " . $ProdCode . " AND MpIdx = ".$vmp." GROUP BY MemIdx, MpIdx
                                             ) AS I
-                                            WHERE I.MpIdx = A.MpIdx
                                         ) AS R 
                                         FROM (
                                             SELECT 
@@ -484,8 +483,7 @@ class RegGradeModel extends WB_Model
                                             GROUP BY MA.MemIdx, MA.MpIdx
                                             ORDER BY MpIdx, Res DESC
                                         ) AS A
-                                    WHERE A.MpIdx = MP.MpIdx
-                                    GROUP BY A.MpIdx
+                                   
                                  ),2) AS total
                             FROM
                                 {$this->_table['mockExamBase']} AS MP
@@ -494,12 +492,11 @@ class RegGradeModel extends WB_Model
                                 JOIN {$this->_table['mockRegister']} AS MR ON MR.MrIdx = MA.MrIdx AND MR.IsStatus = 'Y' 
                             WHERE 
                                 MP.MpIdx = ".$vmp."
-                            GROUP BY MR.MemIdx, MP.MpIdx
-                            ORDER BY MP.MpIdx
+                            GROUP BY MR.MemIdx
                         )AS B
                     ";
 
-                    $obder_by = " GROUP BY B.MpIdx ";
+                    $obder_by = " ";
 
                     $where = " ";
                     //return "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
@@ -508,62 +505,55 @@ class RegGradeModel extends WB_Model
                     $tresult = $query->row_array();
 
                     $arrMP[$vmp]['SUMAVG'] = $tresult['TOT'];
-                }
 
-                // 원점수평균/MpIdx/인원
-                $column = "
+
+                    // 원점수평균/MpIdx/인원
+                    $column = "
                     A.MpIdx, 
                     ROUND((SUM(Res) / (
                         SELECT COUNT(MemIdx) FROM (
-                            SELECT MpIdx, MemIdx FROM {$this->_table['mockAnswerPaper']} GROUP BY MemIdx, MpIdx
+                            SELECT MemIdx FROM {$this->_table['mockAnswerPaper']} WHERE ProdCode = " . $ProdCode . " AND MpIdx = ".$vmp." GROUP BY MemIdx
                         ) AS I
-                        WHERE I.MpIdx = A.MpIdx
                     )),2) AS AVG, 
                     (
                         SELECT COUNT(MemIdx) FROM (
-                            SELECT MpIdx, MemIdx FROM {$this->_table['mockAnswerPaper']} GROUP BY MemIdx, MpIdx
+                            SELECT MemIdx FROM {$this->_table['mockAnswerPaper']} WHERE ProdCode = " . $ProdCode . " AND MpIdx = ".$vmp." GROUP BY MemIdx
                         ) AS I
-                        WHERE I.MpIdx = A.MpIdx
                     )AS CNT
-                ";
+                    ";
 
-                $from = "
-                        
-                    FROM
-                    (
-                        SELECT
-                                MA.MpIdx,
-                                MA.ProdCode,
-                                SUM(IF(MA.IsWrong = 'Y', Scoring, '0')) + TotalScore * (AddPoint * 0.01) AS Res 
-                                FROM
-                                        {$this->_table['mockExamBase']} AS MP
-                                        JOIN {$this->_table['mockExamQuestion']} AS MQ ON MQ.MpIdx = MP.MpIdx AND MP.IsUse = 'Y' AND MQ.IsStatus = 'Y'
-                                        LEFT OUTER JOIN {$this->_table['mockAnswerPaper']} AS MA ON MQ.MqIdx = MA.MqIdx AND ProdCode = " . $ProdCode . "
-                                        JOIN {$this->_table['mockRegister']} AS MR ON MR.MrIdx = MA.MrIdx AND MR.IsStatus = 'Y' 
-                        WHERE
-                        MP.MpIdx IN (
-                                    " . $MpIdxIn . "
-                                )
-                        AND MA.ProdCode = " . $ProdCode . " AND MP.IsStatus = 'Y'
-                        GROUP BY MA.MemIdx, MA.MpIdx
-                        ORDER BY MpIdx, Res DESC
-                    ) AS A
-                ";
+                    $from = "
+                            
+                        FROM
+                        (
+                            SELECT
+                                    MA.MpIdx,
+                                    MA.ProdCode,
+                                    SUM(IF(MA.IsWrong = 'Y', Scoring, '0')) + TotalScore * (AddPoint * 0.01) AS Res 
+                                    FROM
+                                            {$this->_table['mockExamBase']} AS MP
+                                            JOIN {$this->_table['mockExamQuestion']} AS MQ ON MQ.MpIdx = MP.MpIdx AND MP.IsUse = 'Y' AND MQ.IsStatus = 'Y'
+                                            LEFT OUTER JOIN {$this->_table['mockAnswerPaper']} AS MA ON MQ.MqIdx = MA.MqIdx AND ProdCode = " . $ProdCode . "
+                                            JOIN {$this->_table['mockRegister']} AS MR ON MR.MrIdx = MA.MrIdx AND MR.IsStatus = 'Y' 
+                            WHERE
+                            MP.MpIdx = ".$vmp."
+                            AND MA.ProdCode = " . $ProdCode . " AND MP.IsStatus = 'Y'
+                            GROUP BY MA.MemIdx
+                        ) AS A
+                    ";
 
-                $obder_by = " GROUP BY MpIdx ";
+                    $obder_by = " ";
 
-                $where = " ";
-                //return "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
-                $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+                    $where = " ";
+                    //return "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
+                    $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
 
-                $wresult = $query->result_array();
+                    $wresult = $query->row_array();
 
-                foreach ($wresult AS $key => $val) {
-                    $mp = $val['MpIdx'];
-                    $avg = $val['AVG'];
-                    $cnt = $val['CNT'];
-                    $arrMP[$mp]['AVG'] = $avg;
-                    $arrMP[$mp]['CNT'] = $cnt;
+                    $avg = $wresult['AVG'];
+                    $cnt = $wresult['CNT'];
+                    $arrMP[$vmp]['AVG'] = $avg;
+                    $arrMP[$vmp]['CNT'] = $cnt;
                 }
 
                 // 응시자 개별과목 / 점수

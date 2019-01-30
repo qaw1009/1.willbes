@@ -1,0 +1,103 @@
+/*********************************************     Main Container : GPGosi     *********************************************/
+/* Main Container : GPGosi */
+.gpgosi .tx-color {
+    color: #8c6239;
+}
+.gpgosi .Menu .menu-List li.Acad a {
+    background: url("../../img/willbes/gosi/icon_acad.gif") no-repeat 0 0;
+    color: #8c6239;
+}
+.gpgosi .Menu .menu-List li.Acad a .arrow-Btn {
+    background: url("../../img/willbes/gosi/icon_arrow.gif") no-repeat 0 0;
+}
+.gpgosi .Section3 {
+    background: #f0f0f0;
+    padding: 40px 0;
+}
+.gpgosi .List-Table li a img,
+.gpgosi .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.gpgosi .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
+.gpgosi .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #8c6239;
+}
+.gpgosi .Section .SpecialBox dt .infoBox .infoTit,
+.gpgosi .Section .NoticeBox dt .infoBox .infoTit,
+.gpgosi .tabWrap.noticeWrap li a.on {
+    color: #8c6239;
+}
+
+/* Guide Container : GPGosi */
+/*수험가이드*/
+.tabShow.tab_gpgosi_Guide {
+    background: #374931;
+    height: 58px;
+    border-bottom: none;
+}
+.tabShow.tab_gpgosi_Guide li {
+    width: 25%;
+    height: 58px;
+}
+.tabShow.tab_gpgosi_Guide li a.two,
+.tabShow.tab_gpgosi_Guide li a.on.two {
+    line-height: 17px;
+}
+.tabShow.tab_gpgosi_Guide li a.two span {
+    padding-top: 15px;
+    display: inline-block;
+}
+.tabShow.tab_gpgosi_Guide li a.on.two span {
+    line-height: 17px;
+    padding-top: 10px;
+}
+.tabShow.tab_gpgosi_Guide li a.on span {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: #fff;
+    color: #253321;
+    display: inline-block;
+    height: 58px;
+    line-height: 56px;
+    border-top: 1px solid #374931;
+    border-left: 1px solid #374931;
+    border-right: 1px solid #374931;
+}
+.tabShow.tab_gpgosi_Guide li a,
+.tabShow.tab_gpgosi_Guide li a.on {
+    background: #374931;
+    color: #fff;
+    line-height: 56px;
+    font-size: 17px;
+    height: 58px;
+    border: none;
+}
+.tabShow.tab_gpgosi_Guide li:first-child a,
+.tabShow.tab_gpgosi_Guide li:first-child a.on {
+    border: none;
+}
+
+.w-gpgosi-Guide {letter-spacing: 0}
+
+.examInfoGu4 {padding: 30px 45px 45px}
+.examInfoGu4 .hTy {font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"}
+.examInfoGu4 .hTy4 {font-size:16px; font-weight:bold; color: #3e4831; line-height: 30px; border-bottom: 1px solid #cbcbcb;}
+
+/*가이드 텍스트 및 테이블 Css*/
+.gd_txt {text-align:left; margin:auto;  font-size:13px; color:#666; letter-spacing:-1px; line-height:40px; overflow:auto}
+.gd_txt h2 {font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"; border-top: 1px solid #5c6068; border-bottom: 1px solid #5c6068; background: #73806c; height: 40px; font-size:15px; font-weight:bold; color:#fff; clear:both; padding-left: 10px; margin-top:40px; line-height: 38px; letter-spacing:0}
+.gd_txt ul {margin:15px 0 0;}
+.gd_txt ul li:first-child {padding-top: 0;}
+.gd_txt ul li {font-family: "굴림", "Gulim", "돋움", "Dotum", "Helvetica", "Apple SD Gothic Neo", "sans-serif"; font-size: 12px; font-weight:300; line-height:21px; color: #555; padding: 20px 12px 0; letter-spacing: 0;}
+.gd_txt ul li span {vertical-align: baseline;}
+.gd_txt_c {width:100%; max-width:780px; text-align:center;}
+.gd_txt_big {font-size:48px; color:#38442a; font-weight:800; letter-spacing:-6px; font-family:Nanum Gothic, "맑은 고딕",Malgun Gothic,"돋움",Dotum,Arial;}
+.gd_txt_small {font-size:24px; color:#588338;  font-weight:400; letter-spacing:-4px; padding-top:20px; font-family:Nanum Gothic, "맑은 고딕",Malgun Gothic,"돋움",Dotum,Arial;}
+.gd_table {font-family: "굴림", "Gulim", "돋움", "Dotum", "Helvetica", "Apple SD Gothic Neo", "sans-serif"; width:760px; margin:auto; border-left:1px solid #ccc; background-color:#fff;border-top:1px solid #ccc;}
+.gd_table th {padding:7px 0; color:#222; text-align:center; background:#eceff1; border-right:1px solid #ccc;border-bottom:1px solid #ccc;}
+.gd_table td {padding:7px 0; text-align:center; border-bottom:1px solid #ccc; border-right:1px solid #ccc; letter-spacing:0px; color:#585858; font-size:12px; line-height:18px;}
+.gd_table .td_13 {background: #efefef}
+.gd_table .td_14 {background: #f9f9f9}
+.gd_table td.txtL {text-align:left; padding-left: 15px;}
+.gd_txt12 {font-size:12px; color:#d8482d}
+.gd_txt13 {font-size:13px; color:#9b402f}

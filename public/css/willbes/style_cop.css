@@ -1,0 +1,920 @@
+/*********************************************     Main Container : Cop     *********************************************/
+/* Main Container : Cop */
+.cop .tx-color {
+    color: #1087ef;
+}
+.cop .cop-color {
+    color: #0c5dc0;
+}
+.cop .Menu .menu-List li.Acad a {
+    background: url("../../img/willbes/sub/icon_acad.gif") no-repeat 0 0;
+    color: #2784d2;
+}
+.cop .Menu .menu-List li.Acad a .arrow-Btn {
+    background: url("../../img/willbes/sub/icon_arrow.gif") no-repeat 0 0;
+}
+.cop .Section2 {
+    background: #f7f7f7;
+}
+.cop .Section4 {
+    background: #f7f7f7;
+}
+
+/* Main Container : QuickMenu : Cop */
+.MainQuickMenu {
+    position: fixed;
+    top: 60px;
+    right: 20px;
+    width: 100px;
+    height: auto;
+}
+.MainQuickMenu ul li {
+    background: #fff;
+    margin-bottom: 10px;
+}
+.QuickDdayBox {
+    height: 90px;
+    border: 1px solid #dbdbdb;
+    text-align: center; 
+}
+.QuickDdayBox .q_tit {
+    font-size: 15px;
+    font-weight: 600;
+    color: #464646;
+    padding-top: 10px;
+}
+.QuickDdayBox .q_day {
+    font-size: 11px;
+    color: #464646;
+    line-height: 16px;
+}
+.QuickDdayBox .q_dday {
+    font-size: 24px;
+    font-weight: 600;
+    color: #0068c0;
+    padding-top: 10px;
+    letter-spacing: 0;
+}
+.QuickSlider .bx-wrapper .bx-prev {
+    background: url("../../img/willbes/cop/btn_quick_prev.jpg") no-repeat 0 0;
+    left: 0;
+}
+.QuickSlider .bx-wrapper .bx-next {
+    background: url("../../img/willbes/cop/btn_quick_next.jpg") no-repeat 0 0;
+    right: 0;
+    left: auto;
+}
+.QuickSlider .bx-wrapper .bx-controls-direction {
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    right: 0;
+    width: 54px;
+    height: 14px;
+    margin: 0 auto;
+}
+.QuickSlider .bx-wrapper .bx-controls-direction a {
+    width: 12px;
+    height: 13px;
+}
+.QuickSlider .bx-wrapper .bx-pager {
+    width: auto;
+    position: absolute;
+    bottom: 7px;
+    left: 0;
+    right: 0;
+    font-size: 10px;
+    font-weight: 300;
+    color: #000;
+    margin: 0;
+    padding: 0;
+    letter-spacing: 0;
+}
+
+/* Main Container : Tit : Cop */
+.Section .will-big-Tit {
+    text-align: center;
+}
+.Section .will-big-Tit span {
+    vertical-align: baseline;
+}
+.Section .will-big-Tit .big {
+    font-size: 47px;
+    color: #000;
+    letter-spacing: -3px;
+    line-height: 57px;
+}
+.Section .will-big-Tit .big .small {
+    font-size: 47px;
+    color: #363636;
+}
+.Section .will-big-Tit .small {
+    font-size: 32px;
+    color: #363636;
+}
+.Section .will-big-Tit .cop-color {
+    color: #0c5dc0;
+}
+.Section .big-Tit-line {
+    border-bottom: 3px solid #000
+}
+
+/* Main Container : Prof : Cop */
+.Section .ProfCopBox li {
+    float: left;
+    width: 185px;
+    height: 327px;
+    margin-left: 2px;
+}
+.Section .ProfCopBox li:first-child {
+    margin-left: 0;
+}
+
+/* Main Container : Prof : cSlider : Cop */
+.cSlider.copSlider .bx-wrapper {
+    background: none;
+}
+.cSlider.copSlider .bx-wrapper .bx-prev {
+    background: url("../../img/willbes/cop/btn_prof_prev.jpg") no-repeat 0 0;
+}
+.cSlider.copSlider .bx-wrapper .bx-next {
+    background: url("../../img/willbes/cop/btn_prof_next.jpg") no-repeat 0 0;
+    left: 14px;
+}
+.cSlider.copSlider .bx-wrapper .bx-controls {
+    position: absolute;
+    width: 27px;
+    height: 14px;
+    z-index: 1;
+}
+.cSlider.copSlider .bx-wrapper .bx-controls-direction {
+    width: 27px;
+    height: 14px; 
+}
+.cSlider.copSlider .bx-wrapper .bx-controls-direction a {
+    width: auto;
+    height: 14px;
+}
+.cSlider.AbsControls .bx-controls {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 100%;
+}
+
+/* Main Container : Dday : Cop */
+.newTopDday {padding: 20px 0; border-bottom: 1px solid #f2f2f2}
+.newTopDday #ddaytime li {float:left; margin-right:1px; text-align:center; color:#000}
+.newTopDday #ddaytime li.txt {font-weight: 600; color: #3c3e3c}
+.newTopDday #ddaytime li.toptxt {width: 330px; text-align: right; margin-right: 10px; margin-top: 15px}
+.newTopDday #ddaytime li.lasttxt {margin-left: 25px; text-align: left;}
+.newTopDday #ddaytime li span {vertical-align: baseline}
+.newTopDday #ddaytime li .small {font-size: 14px; line-height: 18px}
+.newTopDday #ddaytime li .big {font-size: 18px}
+.newTopDday #ddaytime li .cop-color {color: #0c5dc0}
+.newTopDday #ddaytime li .btn {text-align:left; margin-top: 8px}
+.newTopDday #ddaytime li .btn a {display:inline-block; font-size:16px; padding:8px 21px; background:#0c5dc0; color:#fff; text-align:center; border-radius:7px}
+.newTopDday #ddaytime li .btn a:hover {background:#333}
+.newTopDday #ddaytime li strong {font-size: 24px; color: #3c3e3c; line-height:62px; margin: 0 7px}
+.newTopDday #ddaytime li img {width:42px}
+.newTopDday #ddaytime ul:after {content:""; display:block; clear:both}
+
+/* Main Container : flipped : Cop */
+.Flipped {background: url("../../img/willbes/cop/flipped/flipped_bg.jpg") repeat-x center 90px; padding-bottom: 90px;}
+.Flipped ul.inner {height:370px}
+.Flipped ul.inner li {position: relative; float:left; width:280px; height:100%; margin-left:20px}
+.Flipped ul.inner li:first-child {width:520px; margin-left:0}
+.Flipped ul.inner a {position:relative; display:block; width:100%; height:100%; perspective:3500px}
+.Flipped ul.inner a span {display:inline-block}
+.Flipped .wrap_ban {position: absolute; top: 0; left: 0; right: 0;}
+.Flipped .wrap_ban.front {visibility:visible; opacity:1}
+.Flipped .wrap_ban.back {visibility:hidden; opacity:0}
+.Flipped li .f-tit {font-size:16px; font-weight: 600; line-height: 50px;}
+.Flipped li .tit1 {color: #0c5dc0}
+.Flipped li .tit2 {color: #fd6c38}
+.Flipped li .tit3 {color: #d8ab36}
+.Flipped li:hover .wrap_ban.front {visibility:hidden; opacity:0}
+.Flipped li:hover .wrap_ban.back {visibility:visible; opacity:1}
+.Flipped li.flipped .wrap_ban.front {visibility:hidden; opacity:0}
+.Flipped li.flipped .wrap_ban.back {visibility:visible; opacity:1}
+
+/* Main Container : curriculumBox : Cop */
+.cswRollingSlider {
+    line-height: 20px;
+    padding-top: 20px;
+    border-top: 2px solid #c2c2c2;
+    margin-top: 100px;
+}
+.cswRollingSlider:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+.cswRollingSlider ul li {
+    position: relative;
+    float: left;
+    width: 16.66%;
+    text-align: center;
+    margin-top: -37px;
+}
+.cswRollingSlider ul li a {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    color: #bbb;
+    line-height: 30px;
+}
+
+.cswRollingSlider ul li.active a {
+    color: #0c5dc0;
+} 
+.cswRollingSlider ul li a.active {
+    color: #0c5dc0;
+} 
+
+.cswRollingSlider ul li img {
+    position: absolute; 
+    left: 0;
+    right: 0;
+    top: -28px;
+    margin: 0 auto;
+}
+.sliderCurriList {
+    width: 1070px;
+    margin: 0 auto;
+}
+.CurriSwipe ul li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.curriculumBox {
+    float: left;
+    background: #f7f7f7;
+    width: 260px;
+    height: 272px;
+    font-family: "NotoSansCJKkr-Thin", "Noto Sans KR", "sans-serif";
+    border: 1px solid #e7e7e7;
+    color: #cfcfcf;
+    text-align: center;
+    letter-spacing: 0;
+}
+.curriculumBox .Tit {
+    font-family: "NotoSansCJKkr-Black", "Noto Sans KR", "sans-serif";
+    font-size: 26px;
+    padding-top: 40px;
+}
+.curriculumBox .subTit {
+    font-size: 19px;
+    margin-top: 15px;
+}
+.curriculumBox .info {
+    width: 160px;
+    margin: 40px auto;
+    font-weight: 600;
+    text-align: left;
+    line-height: 24px;
+}
+.curriculumBox .info li {
+    font-size: 14px;
+}
+.active .curriculumBox {
+    background: #fff;
+    border: 10px solid #0c5dc0;
+    color: #0c5dc0;
+}
+.active .curriculumBox .Tit {
+    padding-top: 31px;
+}
+.curriculumTxt {
+    font-size: 22px;
+    color: #363636;
+    text-align: center;
+    line-height: 33px;
+    margin-top: 60px;
+}
+.curriculumTxt span {
+    vertical-align: baseline;
+}
+.curriculumTxt span.btn {
+    margin: -7px 0 -7px 20px;
+    display: inline-block;
+}
+.curriculumTxt span.btn a {
+    float: left;
+    font-size:16px; 
+    padding:8px 21px; 
+    background:#0c5dc0; 
+    color:#fff; 
+    text-align:center;
+    line-height: 16px;
+    border-radius: 20px
+}
+.curriculumTxt span.btn a:hover {
+    background:#333
+}
+
+/* Main Container : pass : cSlider : sliderPassList : Cop */
+.cswSlider.sliderCurriList .bx-wrapper {
+    max-width: 1070px !important;
+}
+.cswSlider.sliderCurriList .bx-wrapper .bx-prev {
+    background: url("../../img/willbes/cop/btn_prev_on.png") no-repeat 0 0;
+    left: -40px;
+}
+.cswSlider.sliderCurriList .bx-wrapper .bx-next {
+    background: url("../../img/willbes/cop/btn_next_on.png") no-repeat 0 0;
+    right: -40px;
+    left: inherit;
+}
+.cswSlider.sliderCurriList .bx-wrapper .bx-prev.disabled {
+    background: url("../../img/willbes/cop/btn_prev_off.png") no-repeat 0 0;
+    display: block;
+}
+.cswSlider.sliderCurriList .bx-wrapper .bx-next.disabled {
+    background: url("../../img/willbes/cop/btn_next_off.png") no-repeat 0 0;
+    display: block;
+}
+.cswSlider.sliderCurriList .bx-wrapper .bx-viewport {
+    z-index: 10;
+}
+.cswSlider.sliderCurriList .bx-wrapper .bx-controls {
+    position: absolute;
+    top: 50%;
+    margin-top: -38px;
+    width: 100%;
+    height: 77px;
+    z-index: 1;
+}
+.cswSlider.sliderCurriList .bx-wrapper .bx-controls-direction {
+    width: 100%;
+    height: 77px;
+}
+.cswSlider.sliderCurriList .bx-wrapper .bx-controls-direction a {
+    width: 21px;
+    height: 77px;
+}
+.cswRolling.CurriSwipe li a {
+    display: block; 
+    width: 260px;
+    height: 272px;
+}
+.CurriSwipe.cswRolling.transform {transform: translate3d(-540px, 0px, 0px) !important}
+
+/* Main Container : SpecialLecBox */
+.Section .SpecialLecBox dl dt {
+    background: #fff;
+    float: left;
+    width: 1120px;
+    height: 260px;
+    border: 1px solid #e3e3e3;
+    padding: 50px 105px;
+    margin-left: 20px;
+}
+.Section .SpecialLecBox dl dt:first-child {
+    margin-left: 0;
+}
+.Section .SpecialLecBox .infoTit {
+    float: left;
+    width: 240px;
+}
+.Section .SpecialLecBox .infoTit .small {
+    font-size: 15px;
+    font-weight: 600;
+    color: #909090;
+    line-height: 21px;
+}
+.Section .SpecialLecBox .infoTit .big {
+    font-size: 36px;
+    font-weight: 600;
+    color: #000;
+    line-height: 36px;
+}
+.Section .SpecialLecBox .infoTit .btn {
+    margin-top: 20px;
+}
+.Section .SpecialLecBox .infoTit .btn div {
+    width: 100px;
+    height: 24px;
+    line-height: 24px;
+}
+.Section .SpecialLecBox .infoTit .btn div a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    font-size: 13px;
+    font-weight: 300;
+    color: #fff;
+    text-align: center;
+}
+.Section .SpecialLecBox .infoTit .btn .btn-sbj a {
+    background: #0c5dc0;
+}
+.Section .SpecialLecBox .infoTit .btn .btn-lec a {
+    background: #464646;
+}
+.Section .SpecialLecBox .infoList {
+    float: left;
+    width: 668px;
+    color: #3a3a3a;
+    line-height: 18px;
+}
+.Section .SpecialLecBox .infoList ul li .btn-more {
+    display: inline-block;
+    width: 76px;
+    height: 22px;
+    border: 1px solid #c9c9c9;
+    margin: 0 20px;
+}
+.Section .SpecialLecBox .infoList ul li .btn-more a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    font-size: 11px;
+    color: #898989;
+    line-height: 20px;
+    text-align: center;
+}
+.Section .SpecialLecBox .infoList .List-Table {
+    padding: 0;
+}
+.Section .SpecialLecBox .infoList .List-Table li {
+    font-size: 14px;
+    color: #3a3a3a;
+    line-height: 41px;
+    height: 41px;
+    clear: both;
+    border-bottom: 1px solid #ececec;
+}
+.Section .SpecialLecBox .infoList .List-Table li:first-child {
+    border-top: 1px solid #ececec; 
+}
+.Section .SpecialLecBox .infoList .List-Table li a {
+    display: inline-block;
+    width: 550px;
+}
+.Section .SpecialLecBox .infoList .List-Table li a span {
+    float: left;
+    width: 130px;
+    color: #009ef5;
+    text-align: center;
+}
+
+/* Main Container : Pass : Cop */
+.sliderPassList {
+    width: 1040px;
+    margin: 0 auto;
+}
+.passBox {
+    float: left;
+    background: #fff;
+    width: 200px;
+    height: 297px;
+    border: 1px solid #ececec;
+    text-align: center;
+    margin-left: 10px;
+}
+.passBox:first-child {
+    margin-left: 0;
+}
+.passBox a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.passBox .name {
+    font-size: 19px;
+    font-weight: 600;
+    color: #010101;
+    margin-top: 25px;
+}
+.passBox .img {
+    width: 86px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+.passBox .img .cover {
+    position: absolute;
+}
+.passBox .cmt {
+    font-family: "NotoSansCJKkr-Thin", "Noto Sans KR", "sans-serif";
+    font-size: 13px;
+    color: #010101;
+    margin-top: 25px;
+    line-height: 19px;
+}
+
+/* Main Container : pass : cSlider : sliderPassList : Cop */
+.cSlider.sliderPassList .bx-wrapper .bx-prev {
+    background: url("../../img/willbes/cop/btn_prev_on.png") no-repeat 0 0;
+    left: -40px;
+}
+.cSlider.sliderPassList .bx-wrapper .bx-next {
+    background: url("../../img/willbes/cop/btn_next_on.png") no-repeat 0 0;
+    right: -40px;
+    left: inherit;
+}
+.cSlider.sliderPassList .bx-wrapper .bx-prev.disabled {
+    background: url("../../img/willbes/cop/btn_prev_off.png") no-repeat 0 0;
+    display: block;
+}
+.cSlider.sliderPassList .bx-wrapper .bx-next.disabled {
+    background: url("../../img/willbes/cop/btn_next_off.png") no-repeat 0 0;
+    display: block;
+}
+.cSlider.sliderPassList .bx-wrapper .bx-viewport {
+    z-index: 10;
+}
+.cSlider.sliderPassList .bx-wrapper .bx-controls {
+    position: absolute;
+    top: 50%;
+    margin-top: -38px;
+    width: 100%;
+    height: 77px;
+    z-index: 1;
+}
+.cSlider.sliderPassList .bx-wrapper .bx-controls-direction {
+    width: 100%;
+    height: 77px;
+}
+.cSlider.sliderPassList .bx-wrapper .bx-controls-direction a {
+    width: 21px;
+    height: 77px;
+}
+
+/* Main Container : pick : nSlider : Cop */
+.sliderPick {
+    float: left;
+    width: 763px;
+}
+.pickBox {
+    float: left;
+    width: 379px;
+}
+.pickBox.pick1 {
+    margin-right: 5px;
+}
+.sliderEvt {
+    float: right;
+    width: 353px;
+}
+.sliderEvt ul li {
+    margin-top: 4px;
+}
+.sliderEvt ul li:first-child {
+    margin-top: 0;
+}
+.nSlider.pick .bx-wrapper .bx-controls {
+    background: #000;
+    width: 62px;
+    height: 19px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.nSlider.pick .bx-wrapper .bx-prev {
+    background: url("../../img/willbes/cop/btn_pick_prev.jpg") no-repeat 0 0;
+    left: 0;
+}
+.nSlider.pick .bx-wrapper .bx-next {
+    background: url("../../img/willbes/cop/btn_pick_next.jpg") no-repeat 0 0;
+    right: 0;
+    left: auto;
+}
+.nSlider.pick .bx-wrapper .bx-controls-direction {
+    position: absolute;
+    top: 3px;
+    left: 4px;
+    right: 4px;
+    width: 54px;
+    height: 13px;
+}
+.nSlider.pick .bx-wrapper .bx-controls-direction a {
+    width: 12px;
+    height: 13px;
+}
+.nSlider.pick .bx-wrapper .bx-pager {
+    width: auto;
+    position: absolute;
+    top: 5px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    font-size: 10px;
+    font-weight: 300;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    letter-spacing: 0;
+}
+
+/* Main Container : Notice : Cop */
+.Section .nNoticeBox {
+    clear: both;
+}
+.Section .nNoticeBox:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.Section .nNoticeBox .Lec {
+    border-bottom: 1px solid #e2e2e2;
+}
+.Section .nNoticeBox .LecBox {
+    float: left;
+    width: 50%;
+    margin: 15px 0 30px;
+    border-left: 1px solid #e2e2e2;
+    padding-top: 10px;
+    padding-left: 20px;
+}
+.Section .nNoticeBox .LecBox:first-child {
+    border-left: none;
+    padding-left: 5px;
+}
+.Section .nNoticeBox .imgBox {
+    float: left;
+    width: 82px;
+    margin: 0 15px 0 0;
+}
+.Section .nNoticeBox .imgBox img {
+    width: 100%;
+} 
+.Section .nNoticeBox .imgBox.cover {
+    position: relative;
+}
+.Section .nNoticeBox .imgBox.cover img.coverImg {
+    position: absolute;
+}
+.Section .nNoticeBox .infoBox {
+    font-size: 13px;
+    letter-spacing: 0;
+}
+.Section .nNoticeBox .infoBox .infoTit {
+    color: #0c5dc0;
+    line-height: 20px;
+    font-weight: 600;
+}
+.Section .nNoticeBox .infoBox .infoTxt {
+    color: #464646;
+    line-height: 20px;
+    font-weight: 600;
+}
+.Section .nNoticeBox .infoBox .infoTxt .small {
+    color: #3a3a3a;
+    font-size: 12px;
+    font-weight: 300;
+}
+.Section .nNoticeBox .nSliderTM.graySlider .bx-viewport {
+    height: auto !important;
+}
+.Section .nNoticeBox .nSliderTM.AbsControls .bx-controls {
+    top: -33px;
+}
+.Section .nNoticeBox .List-Table {
+    padding: 20px 0;
+}
+.Section .nNoticeBox .List-Table li {
+    font-size: 13px;
+    line-height: 27px;
+    height: 27px;
+    clear: both;
+}
+.Section .nNoticeBox .List-Table li a {
+    display: inline-block;
+    width: 285px;
+}
+.Section .nNoticeBox .List-Table li a span {
+    float: left;
+    max-width: 265px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.Section .nNoticeBox .List-Table li a img {
+    margin: -2px 0 0 5px;
+}
+.Section .nNoticeBox .List-Table li span.date {
+    float: right;
+}
+
+/* Guide Container : Cop */
+/*수험가이드*/
+.tabWrap.tab_cop_Guide {
+    height: 58px;
+    border-bottom: none;
+}
+.tabWrap.tab_cop_Guide li {
+    width: 25%;
+    height: 58px;
+}
+.tabWrap.tab_cop_Guide li a {
+    background: #0a162c;
+}
+.tabWrap.tab_cop_Guide li a.on {
+    background: #0064e5;
+}
+.tabWrap.tab_cop_Guide li a,
+.tabWrap.tab_cop_Guide li a.on {
+    font-size: 17px;
+    color: #fff;
+    font-weight: 600;
+    line-height: 56px;
+    height: 58px;
+    border: none;
+    border-left: 1px solid #727272;
+}
+.tabWrap.tab_cop_Guide li:first-child a,
+.tabWrap.tab_cop_Guide li:first-child a.on {
+    border-left: none;
+}
+
+.w-cop-Guide {letter-spacing: 0}
+.w-cop-Guide .examInfoGu2 .hTy4 {background: url("../../img/willbes/cop/guide/left_arrow.png") no-repeat 0 center; font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"; margin: 30px 0 10px; font-size:16px; font-weight:bold; color: #24446a; line-height: 30px; padding-left: 25px;}
+
+.examInfoGu1, 
+.examInfoGu1_1, 
+.examInfoGu2,
+.examInfoGu3,
+.examInfoGu4 {color: #555; border: 1px solid #d0d0d0; padding: 0 50px; line-height:1.5}
+.examInfoGu1 .hTy4 {font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"; margin: 30px 0 10px; font-size:16px; font-weight:bold; color: #0064e5; line-height: 30px; border-bottom: 1px solid #cbcbcb}
+.examInfoGu1 .mgB2 {padding-bottom: 40px;}
+
+.examInfoGu1_1 .hTy4 {font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"; margin: 35px 0 10px; font-size:16px; font-weight:bold; color: #000; line-height: 30px;}
+.examInfoGu1_1 .mgB1_1 {float: left; margin-right: 25px; font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"; font-size: 13px; font-weight: 600; color: #666;}
+.examInfoGu1_1 .mgB1 {float: right; margin-top: 20px; font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"; color: #0064e5; padding-bottom: 35px;}
+.examInfoGu1_1 .mgB1 a {border-bottom: 1px solid #0064e5}
+.examInfoGu1_1 .hColor1 {color: #c00}
+.examInfoGu1_1 .mgB2.list {margin-bottom: 15px}
+.examInfoGu1_1 .mgB2 li {margin-top: 15px}
+.examInfoGu1_1 .mgB2 li strong {color: #0064e5;}
+
+.examInfoGu2 {padding-bottom: 50px}
+
+.examInfoGu2 .mgB1 {margin-bottom: 10px}
+.examInfoGu2 .ps {border-top: 1px solid #8696a9; padding: 20px}
+.examInfoGu2 h5 {font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"; font-size:16px;font-weight:bold; color: #694b23; border: 1px solid #c6b9ab; margin: 0 10px 15px; padding: 8px 25px; box-shadow: 2px 2px 0 #e1e1e1;}
+.examInfoGu2 .collage{margin-bottom:30px}
+.examInfoGu2 .collage ul{margin:0 35px 30px}
+.examInfoGu2 .stlist li{margin-bottom:20px}
+
+.toggleCont .toggleContList {margin-top: 5px}
+.toggleCont .tTitle {font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"; padding-left: 20px; border-top:1px solid #5c6068; border-bottom:1px solid #5c6068; height: 40px; font-size:14px; font-weight:bold; color: #fff; line-height: 38px; cursor:pointer; background: #6c7380 url("../../img/willbes/cop/guide/toggle_arrow.png") no-repeat 800px center;}
+.toggleCont .toggleContList.show .tTitle {background: #6c7380 url("../../img/willbes/cop/guide/toggle_arrow_up.png") no-repeat 800px center;}
+.toggleCont .tContWp{display:none;padding:20px 10px 20px;}
+.toggleCont .tContWp h6{margin-bottom:10px;padding-left:17px;font-size:12px;font-weight:bold;background: url("../../img/willbes/cop/guide/ico_hty2.gif") no-repeat 0 1px}
+.toggleCont .tContWp .tit1{padding-left:16px;background: url("../../img/willbes/cop/guide/dot_cirb.png") no-repeat 3px 4px;font-weight:bold}
+.toggleCont .tContWp .inner_txt{margin-bottom:20px;padding:0 20px}
+.toggleCont .tContWp .inner_txt .tit1{margin-bottom:5px;padding-left:10px;background-position:0 4px}
+.toggleCont .tContWp .inner_txt .tit2{margin-bottom:5px}
+.toggleCont .tContWp .plistSq3, .toggleCont .tContWp .listSq3 li{background: url("../../img/willbes/cop/guide/dot_bar3.gif") no-repeat 1px 6px}
+
+.toggleCont .toggleContList.last .tContWp {padding-bottom: 5px;}
+.toggleCont .toggleContList.last .tContWp .inner_txt.last_txt {margin-bottom: 0;}
+
+.ps {padding:10px 20px;background:#f4f4f4}
+.ps strong {color:#666}
+
+.listSq3 li{margin-bottom:5px;padding-left:8px;background: url("../../img/willbes/cop/guide/dot_sq4.gif") no-repeat 0 7px}
+
+.agC {text-align:center !important}
+.agM {margin: 0 auto}
+.mgB1{margin-bottom:10px !important}
+.basicTb{width:100%;border-left:1px solid #dbdbdb;border-top:1px solid #dbdbdb}
+.basicTb th,
+.basicTb td{border-right:1px solid #dbdbdb;border-bottom:1px solid #dbdbdb}
+.basicTb th{padding:7px 0;text-align:center}
+.basicTb td{padding:7px}
+.basicTb thead th{background:#efefef}
+
+.tabWrap.tab_cop_success_Guide {
+    height: 67px;
+    border: 1px solid #24446a;
+}
+.tabWrap.tab_cop_success_Guide li {
+    width: 50%;
+    height: 65px;
+}
+.tabWrap.tab_cop_success_Guide li a {
+    background: #fff;
+    color: #24446a;
+}
+.tabWrap.tab_cop_success_Guide li a.on {
+    background: #24446a;
+    color: #fff;
+}
+.tabWrap.tab_cop_success_Guide li a,
+.tabWrap.tab_cop_success_Guide li a.on {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 63px;
+    height: 65px;
+    border: none;
+}
+.tabWrap.tab_cop_success_Guide a.on:before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    top: 66px;
+    left: 50%;
+    margin-left: -5px;
+    border-color: #24446a transparent transparent;
+    border-width: 10px;
+}
+.tabWrap.tab_cop_scuuess_list_Guide {
+    float: left;
+    height: 35px;
+    border-bottom: none;
+    clear: both;
+}
+.tabWrap.tab_cop_scuuess_list_Guide li {
+    height: 35px;
+}
+.tabWrap.tab_cop_scuuess_list_Guide li a {
+    color: #24446a;
+}
+.tabWrap.tab_cop_scuuess_list_Guide li a.on {
+    color: #8f724d;
+}
+.tabWrap.tab_cop_scuuess_list_Guide li a,
+.tabWrap.tab_cop_scuuess_list_Guide li a.on {
+    background: none;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 33px;
+    height: 35px;
+    border: none;
+}
+.tabWrap.tab_cop_scuuess_list_Guide li:first-child a,
+.tabWrap.tab_cop_scuuess_list_Guide li:first-child a.on {
+    border: none;
+}
+.tabWrap.tab_cop_scuuess_list_Guide .row-line {
+    float: right;
+    background: #b7b7b7;
+    width: 1px;
+    height: 16px;
+    margin: 11px 0;
+}
+
+/* 실시간방송 */
+.passLive {margin-bottom:20px}
+.passLive:after {content:""; display:block; clear:both}
+    .onAir {background:#eaeaea; clear: both}
+        .onAirBar {float: left; width: 100%; position:relative; background: #ececec; height: 60px}
+        .onAirBar span.state {font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "sans-serif"; width: 310px; position: absolute; float:left; display:block; line-height:60px; font-size: 19px; font-weight: 600; padding-left: 40px;}
+        .onAirBar span.state .tx-color {vertical-align: baseline; color: #0c5dc0}
+        .onAirBar span.state img {vertical-align:middle; margin: -2px 0 0 10px}
+        .onAirBar span.onAirBarBtn {position:absolute; width:100px; top:0; right:10px; display:block; line-height:60px; margin-right:10px; width:50px; text-align:right; z-index:999}
+        .onAirBar span.onAirBarBtn a {display:block; font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "sans-serif"; font-size: 13px; color:#333; cursor:pointer}
+        .onAirBar ul {position:absolute; top:0; width:1030px; z-index:2; overflow:hidden; height:60px; margin: 0; padding-left: 350px}
+        .onAirBar li {font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "sans-serif"; line-height:60px; font-size: 13px; color:#333}
+        .onAirCt {float: left; width: 100%; position:relative; margin-top: 20px; border-bottom: 1px solid #0c5dc0}
+
+
+            .onAirTabs.tabWrap {background:#FFF; border:none; height: 35px; border-bottom: 1px solid #0c5dc0}
+            .onAirTabs.tabWrap li {width: 230px; float:left; height: 35px; margin-right: -1px;}
+            .onAirTabs.tabWrap a {background:#FFF; display:block; height:34px; line-height:35px; font-weight:bold; color:#7c7c7c; border:1px solid #e1e1e1; border-bottom: none;}
+            .onAirTabs.tabWrap a.on {background:#fff; color:#0c5dc0; z-index:auto; border:1px solid #0c5dc0; border-bottom: none; height:35px; line-height:35px}
+            .onAirTabs.tabWrap:after {content:""; display:block; clear:both}
+            
+            .onAirTabInto {position:absolute; top:15px; right:0; text-align:right}
+
+            .onair_rolling.remove {
+                height: 0 !important; visibility: hidden !important; display: none !important; top: 0 !important;
+            }
+            .rollingOnAir .bx-wrapper {
+                max-width: 660px !important;
+                margin-left: 300px;
+            }
+            .rollingOnAir .bx-wrapper .sliderVertical {
+                position: absolute !important;
+                top: 60px;
+                left: 0;
+            } 
+            .onAirLec {float: right; font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "sans-serif"; margin:30px 0 0 0; border: 1px solid #ececec}
+            .onAirLec li {float:left; width:320px}
+            .onAirLec li img {width:320px; height:180px}
+            .onAirLec li.li01 {width:288px; padding:15px 45px 15px 15px; line-height:1.5; background:#fff; min-height:150px}
+            .onAirLec li p.ptxt1 {font-size:12px; color:#4d4d4d}
+            .onAirLec li p.ptxt2 {font-size:15px; color:#0c5dc0; font-weight:bold; margin-bottom:15px}
+            .onAirLec li p.ptxt3 {font-size:13px; color:#262626}
+            .onAirLec:after {content:""; display:block; clear:both}
+            .onAirProf {float:left; margin-top: 34px; width:175px; height:208px; overflow:hidden; z-index:1}
+            .onAirBtn {position:absolute; top:205px; left:210px; width:230px; overflow:hidden; z-index:2}
+            .onAirBtn li {display:inline; float:left; margin-right:1px}
+            .onAirBtn li a.sample {background: #515151; width: 77px; height: 21px; line-height: 19px; display: block; font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "sans-serif"; font-size: 11px; color: #fff; text-align: center;}
+
+    .onAirBar:after {content:""; display:block; clear:both}
+    
+    .offAir {clear: both}
+        .offAirBar {position:relative; background:#ececec; height:60px}
+        .offAirBar span.state {font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "sans-serif"; width: 310px; position: absolute; float:left; display:block; line-height:60px; font-size: 19px; font-weight: 600; padding-left: 40px;}
+        .offAirBar span.state .tx-color {vertical-align: baseline; color: #0c5dc0}
+        .offAirBar span.state img {vertical-align:middle; margin: -2px 0 0 10px}
+        .offAirBar span.offAirBarBtn {position: absolute; top:0; right: 0; z-index: 2; float:right; display:block; color:#fff; line-height:60px; margin-right:20px}
+        .offAirBar ul {position:absolute; top:0; z-index:2; overflow:hidden; height:60px; margin: 0; padding-left: 350px; width: 920px;}
+        .offAirBar li {font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "sans-serif"; line-height:60px; font-size: 13px; color:#333}

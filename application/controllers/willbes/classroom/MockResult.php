@@ -132,8 +132,8 @@ class MockResult extends \app\controllers\FrontController
             $dataDetail[$memidx][$mpidx]['gradeA'] = $val['AdjustPoint'];
             $dataDetail[$memidx][$mpidx]['avg'] = $val['ORGSUM'] ? round($val['ORGSUM'] / $val['COUNT'],2) : 0;
             $dataDetail[$memidx][$mpidx]['avgA'] = $val['ORGSUM'] ? round($val['ADSUM'] / $val['COUNT'],2) : 0;
-            $dataDetail[$memidx][$mpidx]['max'] = $val['ORGMAX'];
-            $dataDetail[$memidx][$mpidx]['maxA'] = $val['ADMAX'];
+            $dataDetail[$memidx][$mpidx]['max'] = round($val['ORGMAX'],2);
+            $dataDetail[$memidx][$mpidx]['maxA'] = round($val['ADMAX'],2);
             $dataDetail[$memidx][$mpidx]['orank'] = $tempnum."/".$val['COUNT'];
             $dataDetail[$memidx][$mpidx]['arank'] = $val['Rank']."/".$val['COUNT'];
             $tempMpIdx = $val['MpIdx'];
@@ -165,7 +165,7 @@ class MockResult extends \app\controllers\FrontController
         foreach($dataAdjust as $key => $val){
             $memidx = $val['MemIdx'];
             $tcnt   = $val['COUNT'];
-            $dataAdjust[$memidx]['grade'] = $val['AD'];
+            $dataAdjust[$memidx]['grade'] = round($val['AD']);
             $dataAdjust[$memidx]['avg'] = round($val['AD'] / $val['KCNT'] , 2);
             $adTotal = $adTotal + $val['AD'];
             $dataAdjust[$memidx]['rank'] = ($key+1).'/'.$val['COUNT'];

@@ -119,25 +119,8 @@ class StatisticsPrivate extends \app\controllers\BaseController
     {
         $prodcode = $param[0];
         $memidx = $param[1];
-        //echo $memidx;
-        $productInfo = $this->regGradeModel->productInfo($prodcode);
 
-        // 직렬이름 추출
-        $mockKindCode = $this->config->item('sysCode_kind', 'mock'); // 직렬 운영코드값
-
-        $codes = $this->codeModel->getCcdInArray([$mockKindCode]);
-
-        $SiteCode = $productInfo['SiteCode'];
-        if(empty($productInfo)===false){
-            $productInfo['SiteName'] = $_SESSION['admin_auth_data']['Site'][$SiteCode]['SiteName'];
-
-            $mockPart = explode(',', $productInfo['MockPart']);
-            foreach ($mockPart as $mp) {
-                if( !empty($codes[$mockKindCode][$mp]) ){
-                    $productInfo['MockPartName'][] = $codes[$mockKindCode][$mp];
-                }
-            }
-        }
+        $privateExamInfo = $this->regGradeModel->privateExamInfo($prodcode, $memidx);
 
         $listArr = $this->regGradeModel->subjectDetailPrivate($prodcode, $memidx);
 
@@ -145,7 +128,7 @@ class StatisticsPrivate extends \app\controllers\BaseController
         $list = $listArr['rdata'];
 
         $this->load->view('mocktest/statistics/private/stat_subject', [
-            'productInfo' => $productInfo,
+            'privateExamInfo' => $privateExamInfo,
             'list' => $list,
             'MpIdxSet' => $MpIdxSet,
             'prodcode' => $prodcode,
@@ -188,9 +171,9 @@ class StatisticsPrivate extends \app\controllers\BaseController
             $dataDetail[$MemIdx][$mpidx]['grade'] = $val['OrgPoint'];
             $dataDetail[$MemIdx][$mpidx]['gradeA'] = $val['AdjustPoint'];
             $dataDetail[$MemIdx][$mpidx]['avg'] = $val['ORGSUM'] ? round($val['ORGSUM'] / $val['COUNT'],2) : 0;
-            $dataDetail[$MemIdx][$mpidx]['avgA'] = $val['ORGSUM'] ? round($val['ADSUM'] / $val['COUNT'],2) : 0;
-            $dataDetail[$MemIdx][$mpidx]['max'] = $val['ORGMAX'];
-            $dataDetail[$MemIdx][$mpidx]['maxA'] = $val['ADMAX'];
+            $dataDetail[$MemIdx][$mpidx]['avgA'] = $val['ADSUM'] ? round($val['ADSUM'] / $val['COUNT'],2) : 0;
+            $dataDetail[$MemIdx][$mpidx]['max'] = round($val['ORGMAX'],2);
+            $dataDetail[$MemIdx][$mpidx]['maxA'] = round($val['ADMAX'],2);
             $dataDetail[$MemIdx][$mpidx]['orank'] = $tempnum."/".$val['COUNT'];
             $dataDetail[$MemIdx][$mpidx]['arank'] = $val['Rank']."/".$val['COUNT'];
             $tempMpIdx = $val['MpIdx'];
@@ -222,7 +205,7 @@ class StatisticsPrivate extends \app\controllers\BaseController
         foreach($dataAdjust as $key => $val){
             $MemIdx = $val['MemIdx'];
             $tcnt   = $val['COUNT'];
-            $dataAdjust[$MemIdx]['grade'] = $val['AD'];
+            $dataAdjust[$MemIdx]['grade'] = round($val['AD'],2);
             $dataAdjust[$MemIdx]['avg'] = round($val['AD'] / $val['KCNT'] , 2);
             $adTotal = $adTotal + $val['AD'];
             $dataAdjust[$MemIdx]['rank'] = ($key+1).'/'.$val['COUNT'];

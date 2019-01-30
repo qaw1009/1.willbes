@@ -10,43 +10,39 @@
                     <button class="btn btn-sm btn-primary act-move" data-idx="{{ $prodcode }}" data-mem="{{ $memidx }}">상세성적확인</button>
                 </div>
             </div>
-            @if(empty($productInfo) === false)
+            @if(empty($privateExamInfo) === false)
                 <div class="x_content">
                     <table class="table table-bordered modal-table">
                         <tr>
-                            <th>모의고사그룹명</th>
-                            <th>운영사이트</th>
-                            <th>카테고리</th>
-                            <th>직렬</th>
+                            <th>회원명</th>
+                            <th>연락처</th>
+                            <th>응시번호</th>
+                            <th>응시형태</th>
                             <th>연도</th>
                             <th>회차</th>
                             <th>모의고사명</th>
-                            <th>응시형태</th>
-                            <th>응시현황</th>
+                            <th>카테고리</th>
+                            <th>직렬</th>
+                            <th>과목</th>
+                            <th>응시지역</th>
+                            <th>응시일자</th>
                         </tr>
                         <tr>
-                            <td>{{ $productInfo['GroupName'] }}</td>
-                            <td>{{ $productInfo['SiteName'] }}</td>
-                            <td>{{ $productInfo['CateName'] }}</td>
-                            <td>
-                                @foreach($productInfo['MockPartName'] as $key => $row)
-                                    {{ $row }}<br>
-                                @endforeach
-                            </td>
-                            <td>{{ $productInfo['MockYear'] }}</td>
-                            <td>{{ $productInfo['MockRotationNo'] }}</td>
-                            <td>{{ $productInfo['ProdName'] }}</td>
-                            <td>{{ $productInfo['TakeFormsCcd_Name'] }}</td>
-                            <td>{{ $productInfo['USERCNT'] }}</td>
+                            <td>{{ $privateExamInfo['MemName'] }}</td>
+                            <td>{{ $privateExamInfo['Phone'] }}</td>
+                            <td>{{ $privateExamInfo['TakeNumber'] }}</td>
+                            <td>{{ $privateExamInfo['TakeFormType'] }}</td>
+                            <td>{{ $privateExamInfo['MockYear'] }}</td>
+                            <td>{{ $privateExamInfo['MockRotationNo'] }}</td>
+                            <td>{{ $privateExamInfo['ProdName'] }}</td>
+                            <td>{{ $privateExamInfo['CateName'] }}</td>
+                            <td>{{ $privateExamInfo['TakeMockPartName'] }}</td>
+                            <td>{{ $privateExamInfo['SubjectName'] }}</td>
+                            <td>{{ $privateExamInfo['TakeAreaName'] }}</td>
+                            <td>{{ $privateExamInfo['GradeDatm'] }}</td>
+
                         </tr>
-                        <tr>
-                            <th>성적오픈일</th>
-                            <td>{{ $productInfo['GradeOpenDatm'] }}</td>
-                            <th colspan="2">조정점수 최종반영자</th>
-                            <td colspan="2">{{ $productInfo['writer'] }}</td>
-                            <th>조정점수 최종반영일</th>
-                            <td colspan="4">{{ $productInfo['wdate'] }}</td>
-                        </tr>
+
                     </table>
                 </div>
             @else
@@ -82,7 +78,7 @@
                                 @endforeach
                                 @if(empty($rows['S'])===false)
                                     @foreach($rows['S'] as $key => $row)
-                                        <th colspan="2">{{ $row['SubjectName'] }} {{ $row['MpIdx'] }}</th>
+                                        <th colspan="2">{{ $row['SubjectName'] }}</th>
                                     @endforeach
                                 @endif
 

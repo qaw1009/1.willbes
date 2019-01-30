@@ -8,6 +8,7 @@ class BaseAdvance extends \app\controllers\BaseController
     protected $_advance_type = '';
     protected $_advance_name = '';
     protected $_group_ccd = [];
+    protected $_memory_limit_size = '512M';     // 엑셀파일 다운로드 메모리 제한 설정값
 
     public function __construct($advance_type, $advance_name)
     {
@@ -70,7 +71,7 @@ class BaseAdvance extends \app\controllers\BaseController
     protected function excel()
     {
         set_time_limit(0);
-        ini_set('memory_limit', -1);
+        ini_set('memory_limit', $this->_memory_limit_size);
 
         $search_date = $this->_reqP('search_date');
         if (empty($search_date) === true) {
@@ -111,7 +112,7 @@ class BaseAdvance extends \app\controllers\BaseController
     protected function excelTable()
     {
         set_time_limit(0);
-        ini_set('memory_limit', -1);
+        ini_set('memory_limit', $this->_memory_limit_size);
         
         $search_date = $this->_reqP('search_date');
         if (empty($search_date) === true) {

@@ -27,7 +27,8 @@
         <div class="col-xs-12">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <form id="search_form" name="search_form" method="GET">
+                    <form class="form-horizontal" id="search_form" name="search_form" method="GET">
+                        {!! csrf_field() !!}
                         <input type="hidden" name="sort_idx" value="{{ $sort_idx }}"/>
                         <input type="hidden" name="sort_dir" value="{{ $sort_dir }}"/>
                         <div class="col-xs-1" style="padding-left: 0;">
@@ -56,11 +57,16 @@
                                 <option value="ERROR">ERROR</option>
                             </select>
                         </div>
-                        <div class="col-xs-2 input-group">
-                            <input type="text" id="log_date" name="log_date" class="form-control datepicker" value="{{ date('Y-m-d') }}" required="required" autocomplete="off"/>
-                            <span class="input-group-btn">
-                                <button class="btn btn-primary" type="submit" id="btn_search">Search</button>
-                            </span>
+                        <div class="col-xs-2">
+                            <div class="input-group">
+                                <input type="text" id="log_date" name="log_date" class="form-control datepicker" value="{{ date('Y-m-d') }}" required="required" autocomplete="off"/>
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary" type="submit" id="btn_search">Search</button>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-xs-7 text-right">
+                            <button class="btn btn-success" type="button" id="btn_download">Download</button>
                         </div>
                     </form>
                 </div>
@@ -140,6 +146,8 @@
 <!-- Datatables -->
 <script src="/public/vendor/datatables/v.1.10.15/js/jquery.dataTables.min.js"></script>
 <script src="/public/vendor/datatables/v.1.10.15/js/dataTables.bootstrap.min.js"></script>
+<!-- Custom Util -->
+<script src="/public/js/util.js"></script>
 <script type="text/javascript">
     var $search_form = $('#search_form');
     var $datatable;
@@ -184,6 +192,14 @@
             $('html, body').animate({
                 scrollTop: 0
             }, 300);
+        });
+
+        // 다운로드 버튼 클릭
+        $search_form.on('click', '#btn_download', function(event) {
+            event.preventDefault();
+            if (confirm('정말로 로그파일을 다운로드 하시겠습니까?')) {
+                formCreateSubmit('{{ site_url('/lcms/logs/viewer/download') }}', $search_form.serializeArray(), 'POST');
+            }
         });
 
         // datepicker

@@ -24,7 +24,7 @@ class LogViewer
     public function getLogData($log_date, $log_level = '', $log_pattern = '', $log_type = '')
     {
         $log_level === 'ALL' && $log_level = '';
-        $log_path = $this->_getLogPath($log_date, $log_pattern, $log_type);
+        $log_path = $this->getLogPath($log_date, $log_pattern, $log_type);
         $log_method = $this->log_pattern == 'log' ? '_getLogData' : '_getQueryLogData';
 
         return $this->{$log_method}($log_path, $log_level);
@@ -40,7 +40,7 @@ class LogViewer
     {
         $data = [];
 
-        if(file_exists($log_path)) {
+        if (file_exists($log_path)) {
             $is_check = $this->_checkFileSize($log_path);
             if ($is_check !== true) {
                 return $is_check;
@@ -110,7 +110,7 @@ class LogViewer
     {
         $data = [];
 
-        if(file_exists($log_path)) {
+        if (file_exists($log_path)) {
             $is_check = $this->_checkFileSize($log_path);
             if ($is_check !== true) {
                 return $is_check;
@@ -177,7 +177,7 @@ class LogViewer
      * @param string $log_type
      * @return string
      */
-    private function _getLogPath($log_date, $log_pattern, $log_type = '')
+    public function getLogPath($log_date, $log_pattern, $log_type = '')
     {
         empty($log_type) === false && $this->log_type = strtolower($log_type);
         empty($log_pattern) === false && $this->log_pattern = strtolower($log_pattern);
@@ -207,7 +207,7 @@ class LogViewer
         $file_size = filesize($log_path);
 
         if ($file_size > $this->max_file_size) {
-            return '로그파일 크기가 ' . $this->max_file_size . '바이트를 초과하였습니다.';
+            return '로그파일 크기가 ' . number_format($this->max_file_size) . ' 바이트를 초과하였습니다.';
         } else {
             return true;
         }

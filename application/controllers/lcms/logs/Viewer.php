@@ -39,4 +39,23 @@ class Viewer extends \app\controllers\BaseController
             'css_classes' => $this->_css_classes
         ], false);
     }
+
+    /**
+     * 로그파일 다운로드
+     */
+    public function download()
+    {
+        $log_type = get_var($this->_reqP('log_type'), 'willbes');
+        $log_pattern = get_var($this->_reqP('log_pattern'), 'log');
+        $log_date = get_var($this->_reqP('log_date'), date('Y-m-d'));
+
+        $log_path = $this->logviewer->getLogPath($log_date, $log_pattern, $log_type);
+
+        if (file_exists($log_path)) {
+            $this->load->helper('download');
+            force_download($log_path, null);
+        } else {
+            show_alert('로그파일이 없습니다.', 'back');
+        }
+    }
 }

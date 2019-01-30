@@ -69,11 +69,11 @@
                     <div class="bx-wrapper">
                         <div class="bx-viewport">
                             <ul class="MaintabSlider">
-                                <li><a href="#none" target="_blank"><img src="{{ img_url('gosi/visual/visual_180914.jpg') }}"></a></li>
-                                <li><a href="#none" target="_blank"><img src="{{ img_url('gosi/visual/visual_180915.jpg') }}"></a></li>
-                                <li><a href="#none" target="_blank"><img src="{{ img_url('gosi/visual/visual_180916.jpg') }}"></a></li>
-                                <li><a href="#none" target="_blank"><img src="{{ img_url('gosi/visual/visual_180916.jpg') }}"></a></li>
-                                <li><a href="#none" target="_blank"><img src="{{ img_url('gosi/visual/visual_180916.jpg') }}"></a></li>
+                                <li><a href="#none" target="_blank"><img src="{{ img_url('gosi_acad/visual/MaintabSlider01.jpg') }}"></a></li>
+                                <li><a href="#none" target="_blank"><img src="{{ img_url('gosi_acad/visual/MaintabSlider02.jpg') }}"></a></li>
+                                <li><a href="#none" target="_blank"><img src="{{ img_url('gosi_acad/visual/MaintabSlider03.jpg') }}"></a></li>
+                                <li><a href="#none" target="_blank"><img src="{{ img_url('gosi_acad/visual/MaintabSlider04.jpg') }}"></a></li>
+                                <li><a href="#none" target="_blank"><img src="{{ img_url('gosi_acad/visual/MaintabSlider05.jpg') }}"></a></li>
                             </ul>
                         </div>
                     </div> 

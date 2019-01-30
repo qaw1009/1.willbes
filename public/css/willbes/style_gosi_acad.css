@@ -4,19 +4,19 @@
     clear: both;
     float: left;
     width: 1120px;
-    height: 268px;
+    height: 380px;
     overflow: hidden;
 }
 .GA .VisualBox .MaintabList {
     position: absolute;
-    bottom: 8px;
+    bottom: 34px;
     left: 0;
     right: 0;
     z-index: 99;
     text-align: center;
 }
 .GA .VisualBox .MaintabList ul li {
-    background: #38434d;
+    background: #251c1c;
     display: inline-block; 
     height: 28px;
     font-size: 14px;
@@ -40,6 +40,9 @@
     height: 100%;
 }
 
+.GA .VisualBox .MaintabList ul li a:hover,
+.GA .VisualBox .MaintabList ul li a.active { background:#FFF; color:#251c1c}
+
 .GA .VisualsubBox {
     clear: both;
     float: left;
@@ -55,3 +58,5 @@
 .GA .VisualsubBox ul li:first-child {
     margin-left: 0;
 }
+
+.GA .VisualsubBox .MaintabSlider

@@ -5,6 +5,7 @@ class LogViewer
 {
     protected $log_type = 'willbes';
     protected $log_pattern = 'log';
+    protected $max_file_size = 52428800;    // 50M (52428800)
 
     public function __construct($config = [])
     {
@@ -28,24 +29,30 @@ class LogViewer
 
         return $this->{$log_method}($log_path, $log_level);
     }
-    
+
     /**
      * 일반 로그파일 데이터 리턴
      * @param string $log_path
      * @param string $log_level
-     * @return array
+     * @return array|string
      */
     private function _getLogData($log_path, $log_level = '')
     {
         $data = [];
 
         if(file_exists($log_path)) {
+            $is_check = $this->_checkFileSize($log_path);
+            if ($is_check !== true) {
+                return $is_check;
+            }
+
             $handle = fopen($log_path, 'r');
             $sub_line = '';
             $prev_line = '';
 
             while (! feof($handle)) {
-                $line = trim(fgets($handle));
+                $line = trim(fgets($handle, 4096));
+                //$line = trim(stream_get_line($handle, 1024 * 1024, PHP_EOL));
 
                 if (starts_with($line, ['ERROR', 'DEBUG', 'INFO']) === true) {
                     $content = $prev_line . $sub_line;
@@ -93,17 +100,29 @@ class LogViewer
         return $data;
     }
 
+    /**
+     * 쿼리 로그파일 데이터 리턴
+     * @param string $log_path
+     * @param string $log_level
+     * @return array|bool
+     */
     private function _getQueryLogData($log_path, $log_level = '')
     {
         $data = [];
 
         if(file_exists($log_path)) {
+            $is_check = $this->_checkFileSize($log_path);
+            if ($is_check !== true) {
+                return $is_check;
+            }
+
             $handle = fopen($log_path, 'r');
             $sub_line = '';
             $prev_line = '';
 
             while (! feof($handle)) {
                 $line = trim(fgets($handle, 4096));
+                //$line = trim(stream_get_line($handle, 1024 * 1024, PHP_EOL));
 
                 if (starts_with($line, '/*=') === true) {
                     continue;
@@ -176,5 +195,21 @@ class LogViewer
         }
 
         return STORAGEPATH . 'logs/' . $log_path . '/' . $log_file;
+    }
+
+    /**
+     * 로그파일 사이즈 체크
+     * @param string $log_path
+     * @return bool
+     */
+    private function _checkFileSize($log_path)
+    {
+        $file_size = filesize($log_path);
+
+        if ($file_size > $this->max_file_size) {
+            return '로그파일 크기가 ' . $this->max_file_size . '바이트를 초과하였습니다.';
+        } else {
+            return true;
+        }
     }
 }

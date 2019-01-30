@@ -165,6 +165,22 @@
             $('#btn_list').click(function() {
                 location.replace('{{ site_url('/member/manage/') }}' + getQueryString());
             });
+
+            $('#btn_pwd_reset').click(function() {
+               if(window.confirm('해당 회원의 비밀번호를 초기화 하시겠습니까?\n초기화할 경우 1111 로 자동변경 됩니다.')){
+                   $url = '{{site_url('member/manage/resetPwd')}}';
+                   $data = 'memIdx={{$data['MemIdx']}}';
+
+                   sendAjax($url,
+                       $data,
+                       function(d){
+                           alert('비밀번호가 1111 로 초기화 되었습니다.');
+                       },
+                       function(req, status, err){
+                           showError(req, status);
+                       }, false, 'GET', 'json');
+               }
+            });
         });
 
 

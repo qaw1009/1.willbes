@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Manage extends \app\controllers\BaseController
 {
-    protected $models = array('member/manageMember','sys/code', 'pay/orderList','service/couponRegist','service/point', 'board/board','member/manageLecture');
+    protected $models = array('member/manageMember','sys/code', 'pay/orderList','service/couponRegist','service/point', 'board/board', 'crm/tm/tm', 'member/manageLecture');
 
     protected $helpers = array();
 
@@ -784,7 +784,7 @@ class Manage extends \app\controllers\BaseController
         $arr_condition = [
             'EQ' => [
                 'LB.BmIdx' => '48',
-                'LB.RegMemIdx' => $memIdx = $this->_reqP('search_member_idx')
+                'LB.RegMemIdx' => $this->_reqP('search_member_idx')
             ],
             'ORG' => [
                 'LKB' => [
@@ -839,8 +839,9 @@ class Manage extends \app\controllers\BaseController
     {
         $memIdx = $this->_req('memIdx');
         $tabs_data = $this->_arrBoardForMemberCnt($memIdx);
+        $codes = $this->codeModel->getCcdInArray(['700','701']);
 
-        $this->load->view('member/layer/board/counsel', [
+        $this->load->view('member/layer/board/cs', [
             'memIdx' => $memIdx,
             'tabs_data' => $tabs_data,
             '_board_type' => 'cs'
@@ -854,11 +855,44 @@ class Manage extends \app\controllers\BaseController
     {
         $memIdx = $this->_req('memIdx');
         $tabs_data = $this->_arrBoardForMemberCnt($memIdx);
+        $codes = $this->codeModel->getCcdInArray(['688','689']);
 
-        $this->load->view('member/layer/board/counsel', [
+        $this->load->view('member/layer/board/tm', [
             'memIdx' => $memIdx,
             'tabs_data' => $tabs_data,
+            'ConsultCcd' => $codes['688'],
+            'TmClassCcd' => $codes['689'],
             '_board_type' => 'tm'
+        ]);
+    }
+
+    public function ajaxTmDataTable()
+    {
+        $arr_condition = [
+            'EQ' => [
+                'B.MemIdx' => $this->_reqP('search_member_idx')
+                ,'D.ConsultCcd' => $this->_reqP('_consult_search_ConsultCcd')
+                ,'D.TmClassCcd' => $this->_reqP('_consult_search_TmClassCcd')
+            ],
+
+            'LKB' => [
+                'D.TmContent' => $this->_reqP('_consult_search_value'),
+            ],
+        ];
+
+        $order_by =  ['D.TcIdx'=>'desc'];
+
+        $list = [];
+
+        $count = $this->tmModel->listConsult(true,$arr_condition);
+        if($count > 0) {
+            $list = $this->tmModel->listConsult(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), $order_by);
+        }
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list
         ]);
     }
 
@@ -883,7 +917,7 @@ class Manage extends \app\controllers\BaseController
         $arr_condition = [
             'EQ' => [
                 'LB.BmIdx' => '66',
-                'LB.RegMemIdx' => $memIdx = $this->_reqP('search_member_idx')
+                'LB.RegMemIdx' => $this->_reqP('search_member_idx')
             ],
             'ORG' => [
                 'LKB' => [
@@ -969,15 +1003,21 @@ class Manage extends \app\controllers\BaseController
             ]
         ];
 
+        //상담게시판 미답변
         $arr_condition = array_replace_recursive($arr_condition, ['EQ' => ['BmIdx' => '48']]);
         $arr_unAnswered = $this->boardModel->getUnAnserArray($arr_condition);
 
+        //교수학습Q&A 미답변
         $arr_condition = array_replace_recursive($arr_condition, ['EQ' => ['BmIdx' => '66']]);
         $arr_unAnswered_prof = $this->boardModel->getUnAnserArray($arr_condition);
 
+        //TM상담관리 수
+        $arr_condition = ['EQ' => ['B.MemIdx' => $memIdx]];
+        $tm_count = $this->tmModel->listConsult(true,$arr_condition);
+
         $data['unAnswered'] = (empty($arr_unAnswered) === true) ? 0 : $arr_unAnswered['all'];
         $data['cs'] = '0';
-        $data['tm'] = '0';
+        $data['tm'] = $tm_count;
         $data['profQna'] = (empty($arr_unAnswered_prof) === true) ? 0 : $arr_unAnswered_prof['all'];
         $data['consumer'] = '0';
 

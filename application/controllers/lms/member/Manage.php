@@ -608,6 +608,32 @@ class Manage extends \app\controllers\BaseController
     }
 
 
+    /**
+     *  회원 비밀번호 초기화
+     * @return CI_Output
+     */
+    public function resetPWD()
+    {
+        $memIdx = $this->_req('memIdx');
+
+        if(empty($memIdx) == true){
+            return $this->json_error('해당하는 회원정보가 없습니다.');
+        }
+
+        $data = $this->manageMemberModel->getMember($memIdx);
+
+        if(empty($data) == true){
+            return $this->json_error('해당하는 회원정보가 없습니다.');
+        }
+
+        if($this->manageMemberModel->resetPWD($memIdx) == false){
+            return $this->json_error('비밀번호 초기화에 실패했습니다.');
+        }
+
+        return $this->json_result(true, '비밀번호를 초기화 했습니다.');
+    }
+
+
 
     public function ajaxLecture()
     {

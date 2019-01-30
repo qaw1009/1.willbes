@@ -59,7 +59,7 @@
                                 }},
                             {'data' : 'UpdDatm'},
                             {'data' : null, 'render' : function(data, type, row, meta){
-                                return (row.adminName == '') ? '사용자' : row.AdminName;
+                                return ((row.adminName == '') ? '사용자' : '관리자('+row.adminName+')');
                                 }}
                         ]
                     });

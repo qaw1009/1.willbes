@@ -184,9 +184,15 @@
                             // 리스트 번호
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                         }},
-                    {'data' : 'MemIdx'},
-                    {'data' : 'MemName'},
-                    {'data' : 'MemId'},
+                    {'data' : 'MemIdx', 'render' : function(data,type,row,meta){
+                            return '<a href="#" class="btn-view1 blue" data-idx="' + row.MemIdx + '">' + data + '</a>';
+                        }},
+                    {'data' : 'MemName', 'render' : function(data,type,row,meta){
+                            return '<a href="#" class="btn-view1 blue" data-idx="' + row.MemIdx + '">' + data + '</a>';
+                        }},
+                    {'data' : 'MemId', 'render' : function(data,type,row,meta){
+                            return '<a href="#" class="btn-view1 blue" data-idx="' + row.MemIdx + '">' + data + '</a>';
+                        }},
                     {'data' : 'Phone'},
                     {'data' : 'SmsRcvStatus'},
                     {'data' : 'Mail'},

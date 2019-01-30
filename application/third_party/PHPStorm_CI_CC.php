@@ -170,6 +170,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property SalesProductModel $salesProductModel                              Sales Product Model Class
  * @property TmModel $tmModel                                                         Tm Model Class
  * @property StudentModel $studentModel                                           Student Model Class
+ * @property ManageCsModel $manageCsModel                                   Member Manage Cs Model Class
 
  ***************** MockTest *********************
  * @property MockCommonModel $mockCommonModel                              MockTest MockCommon Model Class

@@ -772,6 +772,7 @@ class Manage extends \app\controllers\BaseController
         $tabs_data = $this->_arrBoardForMemberCnt($memIdx);
 
         $this->load->view('member/layer/board/counsel', [
+            'bm_idx' => '48',
             'memIdx' => $memIdx,
             'tabs_data' => $tabs_data,
             '_board_type' => 'counsel'
@@ -831,6 +832,9 @@ class Manage extends \app\controllers\BaseController
         ]);
     }
 
+    /**
+     * 상담/메모관리 : CS 상담관리
+     */
     public function ajaxCs()
     {
         $memIdx = $this->_req('memIdx');
@@ -839,10 +843,13 @@ class Manage extends \app\controllers\BaseController
         $this->load->view('member/layer/board/counsel', [
             'memIdx' => $memIdx,
             'tabs_data' => $tabs_data,
-            '_board_type' => 'counsel'
+            '_board_type' => 'cs'
         ]);
     }
 
+    /**
+     * 상담/메모관리 : TM 상담관리
+     */
     public function ajaxTm()
     {
         $memIdx = $this->_req('memIdx');
@@ -851,22 +858,84 @@ class Manage extends \app\controllers\BaseController
         $this->load->view('member/layer/board/counsel', [
             'memIdx' => $memIdx,
             'tabs_data' => $tabs_data,
-            '_board_type' => 'counsel'
+            '_board_type' => 'tm'
         ]);
     }
 
+    /**
+     * 상담/메모관리 : 교수학습 Q&A
+     */
     public function ajaxProfQna()
     {
         $memIdx = $this->_req('memIdx');
         $tabs_data = $this->_arrBoardForMemberCnt($memIdx);
 
-        $this->load->view('member/layer/board/counsel', [
+        $this->load->view('member/layer/board/prof_qna', [
+            'bm_idx' => '66',
             'memIdx' => $memIdx,
             'tabs_data' => $tabs_data,
-            '_board_type' => 'counsel'
+            '_board_type' => 'profQna'
         ]);
     }
 
+    public function ajaxProfQnaDataTable()
+    {
+        $arr_condition = [
+            'EQ' => [
+                'LB.BmIdx' => '66',
+                'LB.RegMemIdx' => $memIdx = $this->_reqP('search_member_idx')
+            ],
+            'ORG' => [
+                'LKB' => [
+                    'LB.Title' => $this->_reqP('search_value'),
+                    'LB.Content' => $this->_reqP('search_value'),
+                    'LB.ReplyContent' => $this->_reqP('search_replay_value')
+                ]
+            ]
+        ];
+
+        if ($this->_req('search_chk_delete_value') == '1') {
+            $arr_condition['EQ'] = array_merge($arr_condition['EQ'], ['LB.IsStatus' => 'N']);
+        }
+
+        $sub_query_condition = [
+            'EQ' => [
+                'subLBrC.IsStatus' => 'Y',
+                'subLBrC.CateCode' => $this->_reqP('search_category')
+            ]
+        ];
+
+        $column = '
+            LB.BoardIdx, LB.RegType, LB.SiteCode, LB.CampusCcd, LBC.CateCode,
+            LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.IsPublic, LB.IsStatus,
+            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName,
+            LB.RegMemIdx, MEM.MemName AS RegMemName,
+            LB.ReplyAdminIdx, LB.ReplyRegDatm,
+            LB.typeCcd, LSC2.CcdName AS TypeCcdName,
+            LB.SubjectIdx, PS.SubjectName,
+            LB.ReplyStatusCcd, LSC3.CcdName AS ReplyStatusCcdName,
+            ADMIN2.wAdminName as ReplyRegAdminName,
+            LB.MdCateCode, MdSysCate.CateName as MdCateName,
+            LB.ProfIdx, PROFESSOR.ProfNickName
+        ';
+
+        $list = [];
+        $count = $this->boardModel->listAllBoard('qna',true, $arr_condition, $sub_query_condition, '');
+
+        if ($count > 0) {
+            $list = $this->boardModel->listAllBoard('qna',false, $arr_condition, $sub_query_condition, '', $this->_reqP('length'), $this->_reqP('start'), ['LB.IsBest' => 'desc', 'LB.BoardIdx' => 'desc'], $column);
+        }
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list,
+        ]);
+    }
+
+    /**
+     * 상담/메모관리 : 블랙컨슈머
+     */
     public function ajaxConsumer()
     {
         $memIdx = $this->_req('memIdx');
@@ -875,22 +944,14 @@ class Manage extends \app\controllers\BaseController
         $this->load->view('member/layer/board/counsel', [
             'memIdx' => $memIdx,
             'tabs_data' => $tabs_data,
-            '_board_type' => 'counsel'
+            '_board_type' => 'consumer'
         ]);
     }
 
     public function ajaxCRM()
     {
-        $memIdx = $this->_req('memIdx');
-        $tabs_data = $this->_arrBoardForMemberCnt($memIdx);
 
-        $this->load->view('member/layer/board/counsel', [
-            'memIdx' => $memIdx,
-            'tabs_data' => $tabs_data,
-            '_board_type' => 'counsel'
-        ]);
     }
-
 
     /**
      * 상담/메모관리 서브탭별 조회수
@@ -902,17 +963,22 @@ class Manage extends \app\controllers\BaseController
         $data = [];
         $arr_condition = [
             'EQ' => [
-                'BmIdx' => '48',
                 'RegMemIdx' => $memIdx,
                 'IsStatus' => 'Y',
                 'ReplyStatusCcd' => '621001'    //미답변
             ]
         ];
+
+        $arr_condition = array_replace_recursive($arr_condition, ['EQ' => ['BmIdx' => '48']]);
         $arr_unAnswered = $this->boardModel->getUnAnserArray($arr_condition);
+
+        $arr_condition = array_replace_recursive($arr_condition, ['EQ' => ['BmIdx' => '66']]);
+        $arr_unAnswered_prof = $this->boardModel->getUnAnserArray($arr_condition);
+
         $data['unAnswered'] = (empty($arr_unAnswered) === true) ? 0 : $arr_unAnswered['all'];
         $data['cs'] = '0';
         $data['tm'] = '0';
-        $data['profQna'] = '0';
+        $data['profQna'] = (empty($arr_unAnswered_prof) === true) ? 0 : $arr_unAnswered_prof['all'];
         $data['consumer'] = '0';
 
         return $data;

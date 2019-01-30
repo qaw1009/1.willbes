@@ -119,7 +119,7 @@ class StatisticsPrivate extends \app\controllers\BaseController
     {
         $prodcode = $param[0];
         $memidx = $param[1];
-        //echo $memidx;
+        echo $memidx;
         $productInfo = $this->regGradeModel->productInfo($prodcode);
 
         // 직렬이름 추출

@@ -16,6 +16,7 @@ class Cron extends \app\controllers\BaseController
      * 스케줄러 실행
      * # crontab 설정 (개발환경에 맞게 CI_ENV 환경변수 설정 필요, /index.php 참조 요망)
      * # 10,40 0-6 * * * CI_ENV="production" php /home/web/will/index.php cron index > /dev/null 2>&1 (매일 0시~6시 10, 40분에 실행)
+     * # setExpression = 분 시 일 월 요일 (일요일 0 ~ 토 7)
      */
     public function index()
     {

@@ -26,6 +26,12 @@ class Scheduler
     protected $lockFileDir = STORAGEPATH . 'cli/task/';
 
     /**
+     * task log file store directory
+     * @var string
+     */
+    protected $logFileDir = STORAGEPATH . 'logs/cron/';
+
+    /**
      * Scheduler constructor
      */
     public function __construct()
@@ -147,7 +153,8 @@ class Scheduler
     private function _writeLog($output = [])
     {
         if (empty($output) === false) {
-            logger('Cron run log: ', $output);
+            $log_path = $this->logFileDir . 'log-' . date('Y-m-d') . '.log';
+            logger('Cron run log: ', $output, 'debug', $log_path);
         }
 
         return null;

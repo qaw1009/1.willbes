@@ -165,9 +165,7 @@
                             return '<span class="blue underline-link act-edit">[' + row.ProdCode + '] ' + row.ProdName + '</span>';
                         }},
                     {'data' : 'CateName', 'class': 'text-center'},
-                    {'data' : 'MockPartName', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return data.join('<br>');
-                        }},
+                    {'data' : 'TakeMockPartName', 'class': 'text-center'},
                     {'data' : 'SubjectName', 'class': 'text-center'},
                     {'data' : 'TakeAreaName', 'class': 'text-center'},
                     {'data' : 'AdjustSum', 'class': 'text-center'},

@@ -28,7 +28,7 @@
                             <th>응시일자</th>
                         </tr>
                         <tr>
-                            <td>{{ $privateExamInfo['MemName'] }}</td>
+                            <td>{{ $privateExamInfo['MemName'] }}({{ $privateExamInfo['MemId'] }})</td>
                             <td>{{ $privateExamInfo['Phone'] }}</td>
                             <td>{{ $privateExamInfo['TakeNumber'] }}</td>
                             <td>{{ $privateExamInfo['TakeFormType'] }}</td>

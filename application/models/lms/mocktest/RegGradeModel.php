@@ -158,6 +158,7 @@ class RegGradeModel extends WB_Model
                     ) AS SubjectName,
                    (SELECT SiteGroupName FROM {$this->_table['siteGroup']} WHERE SiteGroupCode = (SELECT SiteGroupCode FROM lms_site WHERE SiteCode = PD.SiteCode)) AS SiteName,
                    (SELECT RegDatm FROM {$this->_table['mockAnswerPaper']} WHERE MemIdx = MR.MemIdx AND MrIdx = MR.MrIdx ORDER BY RegDatm DESC LIMIT 1) AS IsDate,
+                   (SELECT CcdName FROM {$this->_table['sysCode']} WHERE Ccd = MR.TakeMockPart) AS TakeMockPartName,
                    (SELECT 
                         SUM(IF(MA.IsWrong = 'Y', Scoring, '0')) AS Res 
                    FROM
@@ -191,6 +192,7 @@ class RegGradeModel extends WB_Model
         $where = " WHERE PD.IsStatus = 'Y' ";
         $where .= $this->_conn->makeWhere($condition)->getMakeWhere(true)."\n";
         $order = " ORDER BY MP.ProdCode DESC ";
+
         $data = $this->_conn->query($select . $from . $where . $order . $offset_limit)->result_array();
         $count = $this->_conn->query($selectCount . $from . $where)->row()->cnt;
 
@@ -388,6 +390,7 @@ class RegGradeModel extends WB_Model
                    (SELECT RegDatm FROM {$this->_table['mockGradesLog']} WHERE ProdCode = ".$prodcode." AND MemIdx = ".$memidx." ORDER BY RegDatm DESC LIMIT 1) AS GradeDatm,
                    (SELECT CcdName FROM {$this->_table['sysCode']} WHERE Ccd = MR.TakeMockPart) AS TakeMockPartName,
                    (SELECT MemName FROM {$this->_table['member']} WHERE MemIdx = MR.MemIdx) AS MemName,
+                   (SELECT MemId FROM {$this->_table['member']} WHERE MemIdx = MR.MemIdx) AS MemId,
                    (SELECT CcdName FROM {$this->_table['sysCode']} WHERE Ccd = MR.TakeForm) AS TakeFormType,
                    (SELECT CcdName FROM {$this->_table['sysCode']} WHERE Ccd = MR.TakeArea) AS TakeAreaName,
                    (SELECT CONCAT(Phone1,'-',fn_dec(Phone2Enc),'-',phone3) FROM {$this->_table['member']} WHERE MemIdx = MR.MemIdx) AS Phone,

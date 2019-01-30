@@ -59,3 +59,67 @@
     margin-left: 0;
 }
 
+/* slider : 페이징 버튼 => bSlider */
+.GA .bSlider .bx-wrapper .bx-pager.bx-default-pager a {
+    background: #b7b7b7;
+}
+.GA .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.GA .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
+.GA .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #ba560e;
+}
+
+
+.GA .Section2 {
+    background: #f7f7f7;
+}
+.GA .Section .gosi-acadTit {
+    font-size: 33px;
+    color: #363636;
+    line-height: 1;
+}
+.GA .Section .gosi-acadTit strong {
+    vertical-align: baseline;
+	color:#c19653;
+} 
+.GA .Section .gosi-acadTit span {
+    color:#000;
+	vertical-align: baseline;
+}
+
+/* Main Container : Prof */
+.GA .Section .ProfBox li {
+    float: left;
+    width: 216px;
+	height: 207px !important;
+    margin-left: 10px;
+	background: #330;
+}
+.GA .Section .ProfBox li:first-child {
+    margin-left: 0;
+}
+
+.GA .Section .ProfBox:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+/* slider : 페이징 버튼 => bSlider */
+.GA .ProfBox .bSlider .bx-wrapper .bx-pager.bx-default-pager a {
+    background: #fff;
+    width: 9px;
+    height: 9px;
+}
+.GA .ProfBox .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.GA .ProfBox .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
+.GA .ProfBox .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #313131;
+}
+
+/* Main Container : Notice : noticeTabs */
+.GA .noticeTabs.acad {
+    float: right;
+    width: 698px;
+    margin-top: 27px;
+}

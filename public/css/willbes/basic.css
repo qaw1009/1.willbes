@@ -744,6 +744,9 @@ select[disabled] {
 .pt50 {
   padding-top: 50px !important;
 }
+.pt80 {
+  padding-top: 80px !important;
+}
 .pt100 {
   padding-top: 100px !important;
 }
@@ -1134,3 +1137,6 @@ select[disabled] {
   margin: 0;
   cursor: pointer;
 }
+
+.FL {float: left;}
+.FR {float: right;}

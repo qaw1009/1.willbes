@@ -109,7 +109,7 @@
             </div>
         </div>
     </div>
-    <div class="Section Bnr mt5 mb60">
+    <div class="Section Bnr mt5 mb80">
         <div class="widthAuto">
             <div class="willbes-Bnr">
                 <ul>
@@ -122,34 +122,53 @@
 
 
 
-    <div class="Section Section2 mb80">
+    <div class="Section Section2 pt80 pb80">
         <div class="widthAuto">
-            <div class="will-acadTit">윌비스 <span class="tx-color">공무원학원</span> 교수님</div>
+            <div class="gosi-acadTit NSK-Thin mb50">
+                여러분의 꿈과 목표를 위해,<br />
+                <strong class="NSK-Black">오늘도 최선을 다하는 <span class="tx-color">윌비스 고시학원</span></strong>
+            </div>
             <ul class="ProfBox">
-                <li><a href="#none"><img src="{{ img_url('cop_acad/prof/prof_190101.png') }}" alt="배너명"></a></li>
-                <li><a href="#none"><img src="{{ img_url('cop_acad/prof/prof_190102.png') }}" alt="배너명"></a></li>
-                <li><a href="#none"><img src="{{ img_url('cop_acad/prof/prof_190103.png') }}" alt="배너명"></a></li>
-                <li><a href="#none"><img src="{{ img_url('cop_acad/prof/prof_190104.png') }}" alt="배너명"></a></li>
-                <li><a href="#none"><img src="{{ img_url('cop_acad/prof/prof_190105.png') }}" alt="배너명"></a></li>
-                <li><a href="#none"><img src="{{ img_url('cop_acad/prof/prof_190106.png') }}" alt="배너명"></a></li>
-                <!--
-                <li class="p_re">         
-                    <div class="cSlider graySlider AbsControls">
-                        <div class="sliderControls">
-                            <div><a href="#none"><img src="{{ img_url('cop/prof/prof_180918.png') }}"></a></div>
-                            <div><a href="#none"><img src="{{ img_url('cop/prof/prof_180914.png') }}"></a></div>
+                <li>
+                	<div class="bSlider acad">
+						<div class="slider">
+							<div><a href="#none"><img src="{{ img_url('gosi_acad/prof/ProfBox01.jpg') }}" alt="배너명"></a></div>
+							<div><a href="#none"><img src="{{ img_url('gosi_acad/prof/ProfBox04.jpg') }}" alt="배너명"></a></div>
                         </div>
-                    </div>
+					</div>
                 </li>
-                <li class="p_re">         
-                    <div class="cSlider graySlider AbsControls">
-                        <div class="sliderControls">
-                            <div><a href="#none"><img src="{{ img_url('cop/prof/prof_180919.png') }}"></a></div>
-                            <div><a href="#none"><img src="{{ img_url('cop/prof/prof_180916.png') }}"></a></div>
+                <li>
+                	<div class="bSlider acad">
+						<div class="slider">
+							<div><a href="#none"><img src="{{ img_url('gosi_acad/prof/ProfBox02.jpg') }}" alt="배너명"></a></div>
+							<div><a href="#none"><img src="{{ img_url('gosi_acad/prof/ProfBox05.jpg') }}" alt="배너명"></a></div>
                         </div>
-                    </div>
+					</div>
                 </li>
-                -->
+                <li>
+                	<div class="bSlider acad">
+						<div class="slider">
+							<div><a href="#none"><img src="{{ img_url('gosi_acad/prof/ProfBox03.jpg') }}" alt="배너명"></a></div>
+							<div><a href="#none"><img src="{{ img_url('gosi_acad/prof/ProfBox01.jpg') }}" alt="배너명"></a></div>
+                        </div>
+					</div>
+                </li>
+                <li>
+                	<div class="bSlider acad">
+						<div class="slider">
+							<div><a href="#none"><img src="{{ img_url('gosi_acad/prof/ProfBox04.jpg') }}" alt="배너명"></a></div>
+							<div><a href="#none"><img src="{{ img_url('gosi_acad/prof/ProfBox02.jpg') }}" alt="배너명"></a></div>
+                        </div>
+					</div>
+                </li>
+                <li>
+                	<div class="bSlider acad">
+						<div class="slider">
+							<div><a href="#none"><img src="{{ img_url('gosi_acad/prof/ProfBox05.jpg') }}" alt="배너명"></a></div>
+							<div><a href="#none"><img src="{{ img_url('gosi_acad/prof/ProfBox03.jpg') }}" alt="배너명"></a></div>
+                        </div>
+					</div>
+                </li>
             </ul>
         </div>
     </div>
@@ -158,7 +177,7 @@
 
     <div class="Section Section1 mb10">
         <div class="widthAuto">
-            <div class="noticeTabs acad" style="float: left;">
+            <div class="noticeTabs acad">
                 <ul class="tabWrap noticeWrap_acad two">
                     <li><a href="#notice1" class="on">시험공고</a></li>
                     <li><a href="#notice2" class="">수험뉴스</a></li>
@@ -231,32 +250,7 @@
     <div class="Section Section2 mb80">
         <div class="widthAuto">
             <div class="will-acadTit">윌비스 <span class="tx-color">공무원학원</span> 교수님</div>
-            <ul class="ProfBox">
-                <li><a href="#none"><img src="{{ img_url('cop_acad/prof/prof_190101.png') }}" alt="배너명"></a></li>
-                <li><a href="#none"><img src="{{ img_url('cop_acad/prof/prof_190102.png') }}" alt="배너명"></a></li>
-                <li><a href="#none"><img src="{{ img_url('cop_acad/prof/prof_190103.png') }}" alt="배너명"></a></li>
-                <li><a href="#none"><img src="{{ img_url('cop_acad/prof/prof_190104.png') }}" alt="배너명"></a></li>
-                <li><a href="#none"><img src="{{ img_url('cop_acad/prof/prof_190105.png') }}" alt="배너명"></a></li>
-                <li><a href="#none"><img src="{{ img_url('cop_acad/prof/prof_190106.png') }}" alt="배너명"></a></li>
-                <!--
-                <li class="p_re">         
-                    <div class="cSlider graySlider AbsControls">
-                        <div class="sliderControls">
-                            <div><a href="#none"><img src="{{ img_url('cop/prof/prof_180918.png') }}"></a></div>
-                            <div><a href="#none"><img src="{{ img_url('cop/prof/prof_180914.png') }}"></a></div>
-                        </div>
-                    </div>
-                </li>
-                <li class="p_re">         
-                    <div class="cSlider graySlider AbsControls">
-                        <div class="sliderControls">
-                            <div><a href="#none"><img src="{{ img_url('cop/prof/prof_180919.png') }}"></a></div>
-                            <div><a href="#none"><img src="{{ img_url('cop/prof/prof_180916.png') }}"></a></div>
-                        </div>
-                    </div>
-                </li>
-                -->
-            </ul>
+            <img src="{{ img_url('cop_acad/prof/prof_190101.png') }}" alt="배너명">
         </div>
     </div>
 

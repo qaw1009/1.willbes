@@ -45,7 +45,8 @@ class LogViewer
             $prev_line = '';
 
             while (! feof($handle)) {
-                $line = trim(fgets($handle));
+                //$line = trim(fgets($handle, 4096));
+                $line = trim(stream_get_line($handle, 1024 * 1024, '\n'));
 
                 if (starts_with($line, ['ERROR', 'DEBUG', 'INFO']) === true) {
                     $content = $prev_line . $sub_line;
@@ -103,7 +104,8 @@ class LogViewer
             $prev_line = '';
 
             while (! feof($handle)) {
-                $line = trim(fgets($handle, 4096));
+                //$line = trim(fgets($handle, 4096));
+                $line = trim(stream_get_line($handle, 1024 * 1024, '\n'));
 
                 if (starts_with($line, '/*=') === true) {
                     continue;

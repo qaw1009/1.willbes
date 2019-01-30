@@ -69,39 +69,39 @@
                     <div class="bx-wrapper">
                         <div class="bx-viewport">
                             <ul class="MaintabSlider">
-                                <li><a href="#none" target="_blank"><img src="{{ img_url('gosi_acad/visual/MaintabSlider01.jpg') }}"></a></li>
-                                <li><a href="#none" target="_blank"><img src="{{ img_url('gosi_acad/visual/MaintabSlider02.jpg') }}"></a></li>
-                                <li><a href="#none" target="_blank"><img src="{{ img_url('gosi_acad/visual/MaintabSlider03.jpg') }}"></a></li>
-                                <li><a href="#none" target="_blank"><img src="{{ img_url('gosi_acad/visual/MaintabSlider04.jpg') }}"></a></li>
-                                <li><a href="#none" target="_blank"><img src="{{ img_url('gosi_acad/visual/MaintabSlider05.jpg') }}"></a></li>
+                                <li><a href="#none" target="_blank"><img src="{{ img_url('gosi_acad/visual/MaintabSlider01.jpg') }}" alt="배너명"></a></li>
+                                <li><a href="#none" target="_blank"><img src="{{ img_url('gosi_acad/visual/MaintabSlider02.jpg') }}" alt="배너명"></a></li>
+                                <li><a href="#none" target="_blank"><img src="{{ img_url('gosi_acad/visual/MaintabSlider03.jpg') }}" alt="배너명"></a></li>
+                                <li><a href="#none" target="_blank"><img src="{{ img_url('gosi_acad/visual/MaintabSlider04.jpg') }}" alt="배너명"></a></li>
+                                <li><a href="#none" target="_blank"><img src="{{ img_url('gosi_acad/visual/MaintabSlider05.jpg') }}" alt="배너명"></a></li>
                             </ul>
                         </div>
                     </div> 
                 </div>
             </div>
-            <div class="VisualsubBox">
+            <div class="VisualsubBox mt20">
                 <ul>
                     <li>
                         <div class="bSlider acad">
                             <div class="slider">
-                                <div><a href="#none"><img src="{{ img_url('gosi_acad/visual/visualsub_190129.jpg') }}"></a></div>
-                                <div><img src="{{ img_url('gosi_acad/visual/visualsub_190131.jpg') }}"></div>
+                                <div><a href="#none"><img src="{{ img_url('gosi_acad/visual/visualsub_190129.jpg') }}" alt="배너명"></a></div>
+                                <div><a href="#none"><img src="{{ img_url('gosi_acad/visual/visualsub_190131.jpg') }}" alt="배너명"></a></div>
                             </div>
                         </div>
                     </li>
                     <li>
                         <div class="bSlider acad">
                             <div class="slider">
-                                <div><a href="#none"><img src="{{ img_url('gosi_acad/visual/visualsub_190130.jpg') }}"></a></div>
-                                <div><img src="{{ img_url('gosi_acad/visual/visualsub_190129.jpg') }}"></div>
+                                <div><a href="#none"><img src="{{ img_url('gosi_acad/visual/visualsub_190130.jpg') }}" alt="배너명"></a></div>
+                                <div><a href="#none"><img src="{{ img_url('gosi_acad/visual/visualsub_190129.jpg') }}" alt="배너명"></a></div>
                             </div>
                         </div>
                     </li>
                     <li>
                         <div class="bSlider acad">
                             <div class="bSlider slider">
-                                <div><a href="#none"><img src="{{ img_url('gosi_acad/visual/visualsub_190131.jpg') }}"></a></div>
-                                <div><img src="{{ img_url('gosi_acad/visual/visualsub_190130.jpg') }}"></div>
+                                <div><a href="#none"><img src="{{ img_url('gosi_acad/visual/visualsub_190131.jpg') }}" alt="배너명"></a></div>
+                                <div><a href="#none"><img src="{{ img_url('gosi_acad/visual/visualsub_190130.jpg') }}" alt="배너명"></a></div>
                             </div>
                         </div>
                     </li>
@@ -113,7 +113,7 @@
         <div class="widthAuto">
             <div class="willbes-Bnr">
                 <ul>
-                    <li><a href="#none"><img src="{{ img_url('gosi_acad/banner/bnr_190129.jpg') }}"></a></li>
+                    <li><a href="#none"><img src="{{ img_url('gosi_acad/banner/bnr_190129.jpg') }}" alt="배너명"></a></li>
                 </ul>
             </div>
         </div>
@@ -126,12 +126,12 @@
         <div class="widthAuto">
             <div class="will-acadTit">윌비스 <span class="tx-color">공무원학원</span> 교수님</div>
             <ul class="ProfBox">
-                <li><a href="#none"><img src="{{ img_url('cop_acad/prof/prof_190101.png') }}"></a></li>
-                <li><a href="#none"><img src="{{ img_url('cop_acad/prof/prof_190102.png') }}"></a></li>
-                <li><a href="#none"><img src="{{ img_url('cop_acad/prof/prof_190103.png') }}"></a></li>
-                <li><a href="#none"><img src="{{ img_url('cop_acad/prof/prof_190104.png') }}"></a></li>
-                <li><a href="#none"><img src="{{ img_url('cop_acad/prof/prof_190105.png') }}"></a></li>
-                <li><a href="#none"><img src="{{ img_url('cop_acad/prof/prof_190106.png') }}"></a></li>
+                <li><a href="#none"><img src="{{ img_url('cop_acad/prof/prof_190101.png') }}" alt="배너명"></a></li>
+                <li><a href="#none"><img src="{{ img_url('cop_acad/prof/prof_190102.png') }}" alt="배너명"></a></li>
+                <li><a href="#none"><img src="{{ img_url('cop_acad/prof/prof_190103.png') }}" alt="배너명"></a></li>
+                <li><a href="#none"><img src="{{ img_url('cop_acad/prof/prof_190104.png') }}" alt="배너명"></a></li>
+                <li><a href="#none"><img src="{{ img_url('cop_acad/prof/prof_190105.png') }}" alt="배너명"></a></li>
+                <li><a href="#none"><img src="{{ img_url('cop_acad/prof/prof_190106.png') }}" alt="배너명"></a></li>
                 <!--
                 <li class="p_re">         
                     <div class="cSlider graySlider AbsControls">
@@ -166,7 +166,7 @@
                 </ul>
                 <div class="tabBox noticeBox_acad">
                     <div id="notice1" class="tabContent p_re">
-                        <a href="#none" class="f_right btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}"></a>
+                        <a href="#none" class="f_right btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}" alt="더보기"></a>
                         <ul class="List-Table">
                             <li><a href="#none">국가직 | 2019년도 국가공무원 공개경쟁채용시험 등 계획 공고</a></li>
                             <li><a href="#none">서울시 | 2019 제1회 서울시 지방공무원(7,9급 등) 임용시험 시행계획 변경 공고</a></li>
@@ -176,7 +176,7 @@
                         </ul>
                     </div>
                     <div id="notice2" class="tabContent p_re">
-                        <a href="#none" class="f_right btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}"></a>
+                        <a href="#none" class="f_right btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}" alt="더보기"></a>
                         <ul class="List-Table">
                             <li><a href="#none">공지사항 제목이 출력됩니다.</a></li>
                             <li><a href="#none">3월 31일(금) 새벽시스템점검안내222</a></li>
@@ -186,7 +186,7 @@
                         </ul>
                     </div>
                     <div id="notice3" class="tabContent p_re">
-                        <a href="#none" class="f_right btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}"></a>
+                        <a href="#none" class="f_right btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}" alt="더보기"></a>
                         <ul class="List-Table">
                             <li><a href="#none">공지사항 제목이 출력됩니다.</a></li>
                             <li><a href="#none">3월 31일(금) 새벽시스템점검안내222</a></li>
@@ -201,8 +201,8 @@
                 <div class="will-acadTit">윌비스 <span class="tx-color">이벤트</span></div>
                 <div class="bSlider acad">
                     <div class="sliderTM">
-                        <div><a href="#none"><img src="{{ img_url('cop_acad/event/evt_190104.jpg') }}"></a></div>
-                        <div><a href="#none"><img src="{{ img_url('cop_acad/event/evt_190104.jpg') }}"></a></div>
+                        <div><a href="#none"><img src="{{ img_url('cop_acad/event/evt_190104.jpg') }}" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="{{ img_url('cop_acad/event/evt_190104.jpg') }}" alt="배너명"></a></div>
                     </div>
                 </div>
             </div>
@@ -232,12 +232,12 @@
         <div class="widthAuto">
             <div class="will-acadTit">윌비스 <span class="tx-color">공무원학원</span> 교수님</div>
             <ul class="ProfBox">
-                <li><a href="#none"><img src="{{ img_url('cop_acad/prof/prof_190101.png') }}"></a></li>
-                <li><a href="#none"><img src="{{ img_url('cop_acad/prof/prof_190102.png') }}"></a></li>
-                <li><a href="#none"><img src="{{ img_url('cop_acad/prof/prof_190103.png') }}"></a></li>
-                <li><a href="#none"><img src="{{ img_url('cop_acad/prof/prof_190104.png') }}"></a></li>
-                <li><a href="#none"><img src="{{ img_url('cop_acad/prof/prof_190105.png') }}"></a></li>
-                <li><a href="#none"><img src="{{ img_url('cop_acad/prof/prof_190106.png') }}"></a></li>
+                <li><a href="#none"><img src="{{ img_url('cop_acad/prof/prof_190101.png') }}" alt="배너명"></a></li>
+                <li><a href="#none"><img src="{{ img_url('cop_acad/prof/prof_190102.png') }}" alt="배너명"></a></li>
+                <li><a href="#none"><img src="{{ img_url('cop_acad/prof/prof_190103.png') }}" alt="배너명"></a></li>
+                <li><a href="#none"><img src="{{ img_url('cop_acad/prof/prof_190104.png') }}" alt="배너명"></a></li>
+                <li><a href="#none"><img src="{{ img_url('cop_acad/prof/prof_190105.png') }}" alt="배너명"></a></li>
+                <li><a href="#none"><img src="{{ img_url('cop_acad/prof/prof_190106.png') }}" alt="배너명"></a></li>
                 <!--
                 <li class="p_re">         
                     <div class="cSlider graySlider AbsControls">

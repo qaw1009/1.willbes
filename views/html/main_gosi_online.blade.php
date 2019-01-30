@@ -67,9 +67,9 @@
                     <div class="bx-wrapper">
                         <div class="bx-viewport">
                             <ul class="MaintabSlider">
-                                <li><a href="http://www.willbesgosi.net/event/movie/event.html?event_cd=On_180703_c" target="_blank"><img src="{{ img_url('gosi/visual/visual_180914.jpg') }}"></a></li>
-                                <li><a href="http://www.willbesgosi.net/event/movie/event.html?event_cd=On_180627_g" target="_blank"><img src="{{ img_url('gosi/visual/visual_180915.jpg') }}"></a></li>
-                                <li><a href="http://www.willbesgosi.net/event/movie/event.html?event_cd=On_180906_c#event" target="_blank"><img src="{{ img_url('gosi/visual/visual_180916.jpg') }}"></a></li>
+                                <li><a href="http://www.willbesgosi.net/event/movie/event.html?event_cd=On_180703_c" target="_blank"><img src="{{ img_url('gosi/visual/visual_180914.jpg') }}" alt="배너명"></a></li>
+                                <li><a href="http://www.willbesgosi.net/event/movie/event.html?event_cd=On_180627_g" target="_blank"><img src="{{ img_url('gosi/visual/visual_180915.jpg') }}" alt="배너명"></a></li>
+                                <li><a href="http://www.willbesgosi.net/event/movie/event.html?event_cd=On_180906_c#event" target="_blank"><img src="{{ img_url('gosi/visual/visual_180916.jpg') }}" alt="배너명"></a></li>
                             </ul>
                         </div>
                     </div> 

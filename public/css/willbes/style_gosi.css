@@ -1,4 +1,76 @@
 /*********************************************     Main Container : Gosi     *********************************************/
+/* Main Container : MainVisual */
+.MainVisual:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.MainVisual .will-Tit {
+    border-bottom: 0;
+    margin-top:0;
+    padding-top: 35px;
+}
+.VisualBox {
+    float: left;
+    width: 740px;
+    height: 268px;
+    overflow: hidden;
+}
+.VisualBox .MaintabList {
+    position: absolute;
+    bottom: 8px;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    text-align: center;
+}
+.VisualBox .MaintabList ul li {
+    background: #38434d;
+    display: inline-block; 
+    height: 28px;
+    font-size: 14px;
+    color: #fff;
+    line-height: 26px;
+    border: 1px solid #fff;
+    margin: 0 -2px;
+}
+.VisualBox .MaintabList.three ul li {
+    width: 209px;
+}
+.VisualBox .MaintabList.four ul li {
+    width: 156px;
+}
+.VisualBox .MaintabList ul li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.VisualsubBox {
+    float: right;
+    width: 380px;
+    height: 268px;
+    overflow: hidden;
+}
+.VisualList {
+    float: left;
+    width: 100%;
+    border-top: 1px solid #ebebeb;
+    border-bottom: 1px solid #ebebeb;
+}
+.VisualList:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.VisualList ul li {
+    float: left;
+    border-right: 1px solid #ebebeb;
+}
+.VisualList ul li:first-child {
+    border-left: 1px solid #ebebeb;
+}
+
+
 /* Main Container : Gosi */
 .gosi .tx-color {
     color: #ba560e;

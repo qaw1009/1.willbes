@@ -292,18 +292,38 @@
                     </tr>
                     <tr data-su-type="S">
                         <th colspan="1">
-                            선택과목 <span class="required">*</span>
+                            선택과목1 <span class="required">*</span>
                             <button type="button" class="btn btn-sm btn-primary ml-10 act-su-search">검색</button>
                         </th>
-                        <td colspan="3">
+                        <td colspan="">
                             <div id="sSubject-wrap" class="subject-wrap form-table form-table-sm" style="overflow-x: auto; overflow-y: hidden;">
-                                <div class="text-right">
-                                    <button type="button" class="btn btn-sm btn-success act-su-sort">정렬변경</button>
-                                </div>
+
                                 <table class="table table-bordered">
 
                                     <tbody>
-                                    <select name="SMpIdx" class="form-control">
+                                    <select name="SMpIdx1" class="form-control">
+                                        @if($method == 'PUT')
+                                            @foreach($sData as $row)
+                                                @continue($row['MockType'] == 'E')
+                                                <option value="{{ $row['MpIdx'] }}">{{ $row['SubjectName'] }}[{{ $row['MpIdx'] }}]</td>
+                                            @endforeach
+                                        @endif
+                                    </select>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </td>
+                        <th colspan="1">
+                            선택과목2 <span class="required">*</span>
+                            <button type="button" class="btn btn-sm btn-primary ml-10 act-su-search">검색</button>
+                        </th>
+                        <td colspan="">
+                            <div id="sSubject-wrap" class="subject-wrap form-table form-table-sm" style="overflow-x: auto; overflow-y: hidden;">
+
+                                <table class="table table-bordered">
+
+                                    <tbody>
+                                    <select name="SMpIdx2" class="form-control">
                                         @if($method == 'PUT')
                                             @foreach($sData as $row)
                                                 @continue($row['MockType'] == 'E')

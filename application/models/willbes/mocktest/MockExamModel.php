@@ -264,7 +264,8 @@ class MockExamModel extends WB_Model
             MP.*, A.wAdminName, MR.IsTake AS MrIsStatus,
                    (SELECT RegDatm FROM {$this->_table['mockAnswerPaper']} WHERE MemIdx = MR.MemIdx AND MrIdx = MR.MrIdx ORDER BY RegDatm DESC LIMIT 1) AS IsDate,
                    PD.ProdName, PD.SaleStartDatm, PD.SaleEndDatm, PS.SalePrice, PS.RealSalePrice,          
-                   C1.CateName, C1.IsUse AS IsUseCate, MR.OrderProdIdx, MR.MrIdx, MR.TakeNumber
+                   C1.CateName, C1.IsUse AS IsUseCate, MR.OrderProdIdx, MR.MrIdx, MR.TakeNumber,
+                   (SELECT CcdName FROM {$this->_table['sysCode']} WHERE Ccd = MR.TakeMockPart) AS TakeMockPartName
         ";
 
         $from = "

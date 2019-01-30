@@ -82,7 +82,7 @@
                                 @endforeach
                                 @if(empty($rows['S'])===false)
                                     @foreach($rows['S'] as $key => $row)
-                                        <th colspan="2">{{ $row['SubjectName'] }}</th>
+                                        <th colspan="2">{{ $row['SubjectName'] }} {{ $row['MpIdx'] }}</th>
                                     @endforeach
                                 @endif
 

@@ -175,7 +175,7 @@
 
 
 
-    <div class="Section Section1 mb10">
+    <div class="Section Section1 mb80">
         <div class="widthAuto">
             <div class="noticeTabs acad">
                 <ul class="tabWrap noticeWrap_acad three">
@@ -248,26 +248,42 @@
     </div>
 
 
-    <div class="Section Section2 mb80">
+    <div class="Section mb80">
         <div class="widthAuto">
             <div class="will-acadTit">윌비스 <span class="tx-color">공무원학원</span> 교수님</div>
-            <img src="{{ img_url('cop_acad/prof/prof_190101.png') }}" alt="배너명">
+            <img src="{{ img_url('gosi_acad/prof/ProfBig.jpg') }}" alt="배너명">
         </div>
     </div>
 
 
-    <div class="Section Section3 mb50">
+    <div class="Section mb50">
         <div class="widthAuto">
             <div class="sliderSuccess">
                 <div class="will-acadTit">학원 <span class="tx-color">갤러리</span></div>
-                <a href="#none" target="_blank">
-                    <img src="{{ img_url('cop_acad/event/info_190101.jpg') }}">
-                </a>
+                <a href="#none" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
+                <ul>
+                    <li>
+                        <img src="{{ img_url('gosi_acad/gallery/gallery01.jpg') }}" alt="배너명">    
+                        <div>   
+                            <strong>[노량진]</strong>
+                            <p>새벽부터 길게 늘어선 학원수강생의 모습 학원수강생의 모습 학원수강생의 모습</p>
+                            <span>2019-01-15</span>   
+                        </div> 
+                    </li>
+                    <li>
+                        <img src="{{ img_url('gosi_acad/gallery/gallery02.jpg') }}" alt="배너명">    
+                        <div>   
+                            <strong>[노량진]</strong>
+                            <p>새벽부터 길게 늘어선 학원수강생의 모습 학원수강생의 모습 학원수강생의 모습</p>
+                            <span>2019-01-15</span>   
+                        </div>     
+                    </li>
+                </ul>
             </div>
             <div class="sliderInfo">
                 <div class="will-acadTit">Hot <span class="tx-color">Focus</span></div>
                 <a href="#none" target="_blank">
-                    <img src="{{ img_url('cop_acad/event/info_190101.jpg') }}">
+                    <img src="{{ img_url('gosi_acad/event/hotFocus01.jpg') }}" alt="배너명">
                 </a>
             </div>
         </div>
@@ -288,7 +304,7 @@
                 <div class="tabBox noticeBox_campus">
                     <div id="campus1" class="tabContent">
                         <div class="map_img">
-                            <img src="{{ img_url('gosi_acad/map/map1.jpg') }}">
+                            <img src="{{ img_url('gosi_acad/map/mapSeoul.jpg') }}" alt="노량진">
                         </div>
                         <div class="campus_info">
                             <dl>
@@ -328,7 +344,7 @@
                     </div>
                     <div id="campus2" class="tabContent">
                         <div class="map_img">
-                            <img src="{{ img_url('gosi_acad/map/map1.jpg') }}">
+                            <img src="{{ img_url('gosi_acad/map/mapIC.jpg') }}" alt="인천">
                         </div>
                         <div class="campus_info">
                             <dl>
@@ -368,7 +384,7 @@
                     </div>
                     <div id="campus3" class="tabContent">
                         <div class="map_img">
-                            <img src="{{ img_url('gosi_acad/map/map1.jpg') }}">
+                            <img src="{{ img_url('gosi_acad/map/mapDG.jpg') }}" alt="대구">
                         </div>
                         <div class="campus_info">
                             <dl>
@@ -408,7 +424,7 @@
                     </div>
                     <div id="campus4" class="tabContent">
                         <div class="map_img">
-                            <img src="{{ img_url('gosi_acad/map/map1.jpg') }}">
+                            <img src="{{ img_url('gosi_acad/map/mapBS.jpg') }}" alt="부산">
                         </div>
                         <div class="campus_info">
                             <dl>
@@ -448,7 +464,7 @@
                     </div>
                     <div id="campus5" class="tabContent">
                         <div class="map_img">
-                            <img src="{{ img_url('gosi_acad/map/map1.jpg') }}">
+                            <img src="{{ img_url('gosi_acad/map/mapKJ.jpg') }}" alt="광주">
                         </div>
                         <div class="campus_info">
                             <dl>

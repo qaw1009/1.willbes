@@ -172,3 +172,61 @@
 .GA .acad_infoBox li.w-infoBox5 a:hover {
     background: url("../../img/willbes/gosi_acad/icon_info5_on.png") no-repeat 30px center;
 }
+
+/* Main Container : nSlider : gosi Acad */
+.GA .sliderSuccess {
+    float: left;
+    width: 668px;
+    margin-right: 0;
+    position: relative;
+}
+.GA .sliderSuccess a.btn-add {
+    position: absolute;
+    top: 20px;
+    right: 0;
+}
+.GA .sliderSuccess ul {
+    border-top:1px solid #000;
+    border-bottom:1px solid #000;
+    padding:6px 0;
+}
+.GA .sliderSuccess li {
+    display: inline; 
+    float: left; 
+    width: 50%; 
+    position: relative;
+}
+.GA .sliderSuccess li div {
+    position:absolute;
+    font-size: 14px;
+    top:2px;
+    left: 180px;   
+    z-index: 1;
+}
+.GA .sliderSuccess li div p {
+    line-height: 1.4;
+    margin: 4px 0;
+}
+.GA .sliderSuccess li strong {
+    color:#ba560e;
+}
+.GA .sliderSuccess li span {
+    font-size: 12px;
+}
+.GA .sliderSuccess li img {    
+    width: 155px;
+    height: 100px;
+    margin: 0 10px    
+}
+.GA .sliderSuccess ul:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+
+.GA .sliderInfo {
+    float: right;
+    width: 420px;
+    margin-right: 0;
+}

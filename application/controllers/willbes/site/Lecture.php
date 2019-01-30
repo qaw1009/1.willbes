@@ -29,9 +29,6 @@ class Lecture extends \app\controllers\FrontController
         // input parameter
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
 
-        // 과정 조회
-        $arr_base['course'] = $this->baseProductFModel->listCourseCategoryMapping($this->_site_code, $this->_cate_code);
-
         if (config_app('SiteGroupCode') == '1002') {
             // 사이트그룹이 공무원일 경우 카테고별 직렬, 직렬별 과목 조회
             $arr_base['series'] = $this->baseProductFModel->listSeriesCategoryMapping($this->_site_code, $this->_cate_code);
@@ -46,24 +43,31 @@ class Lecture extends \app\controllers\FrontController
             $arr_base['professor'] = $this->baseProductFModel->listProfessorSubjectMapping($this->_site_code, null, $this->_cate_code, element('subject_idx', $arr_input));
         }
 
-        // 상품 조회
-        $arr_search_text = explode(':', base64_decode(element('search_text', $arr_input)), 2);  // 검색어
+        // 상품 기본조회 조건
+        $arr_condition = ['EQ' => ['SiteCode' => $this->_site_code], 'LKR' => ['CateCode' => $this->_cate_code]];
 
-        $arr_condition = [
+        // 과정 조회
+        if ($this->_learn_pattern == 'on_lecture') {
+            // 단강좌 (카테고리 소트매핑된 과정 조회)
+            $arr_base['course'] = $this->baseProductFModel->listCourseCategoryMapping($this->_site_code, $this->_cate_code);
+        } else {
+            // 무료강좌 (상품에 설정된 과정 조회)
+            $arr_base['course'] = $this->lectureFModel->listSalesProduct($this->_learn_pattern, 'distinct(CourseIdx), CourseName', $arr_condition);
+        }
+
+        // 상품 검색조건 추가
+        $arr_search_text = explode(':', base64_decode(element('search_text', $arr_input)), 2);  // 검색어
+        $arr_condition = array_merge($arr_condition, [
             'EQ' => [
-                'SiteCode' => $this->_site_code,
                 'CourseIdx' => element('course_idx', $arr_input),
                 'SubjectIdx' => element('subject_idx', $arr_input),
                 'ProfIdx' => element('prof_idx', $arr_input),
                 'SchoolYear' => element('school_year', $arr_input)
             ],
-            'LKR' => [
-                'CateCode' => $this->_cate_code,
-            ],
             'LKB' => [
                 $arr_search_text[0] => element('1', $arr_search_text),
             ]
-        ];
+        ]);
 
         // 수강후기 게시판 자료 추가
         $add_column = ', ifnull(fn_professor_study_comment_data(ProfIdx, SiteCode, CateCode, SubjectIdx, 3), "N") as StudyCommentData';

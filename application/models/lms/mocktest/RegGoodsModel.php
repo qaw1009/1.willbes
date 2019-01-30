@@ -49,7 +49,7 @@ class RegGoodsModel extends WB_Model
      * @throws Exception
      */
     function saveFake($condition){
-        var_dump($condition);
+        //var_dump($condition);
 
         $arrMPSet = array();
 
@@ -57,10 +57,14 @@ class RegGoodsModel extends WB_Model
         $TakeFormsCcd = $condition['TakeFormsCcd'];
         $MpIdx = $condition['MpIdx'];
 
-        $MpIdx[] = $condition['SMpIdx'];
+        $MpIdx[] = $condition['SMpIdx1'];
+        $MpIdx[] = $condition['SMpIdx2'];
+
         $AddPointCcds = $condition['AddPointCcds'];
         $people = $condition['people'];
         $cate = $condition['cate'];
+
+        $MpIdx = array_unique ($MpIdx);
 
         for($i =0; $i < COUNT($MpIdx); $i++){
             $cuMP = $MpIdx[$i];

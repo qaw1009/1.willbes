@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Manage extends \app\controllers\BaseController
 {
-    protected $models = array('member/manageMember','sys/code', 'pay/orderList','service/couponRegist','service/point', 'board/board', 'crm/tm/tm', 'member/manageLecture');
+    protected $models = array('member/manageMember','sys/code', 'pay/orderList','service/couponRegist','service/point', 'board/board', 'crm/tm/tm', 'member/manageCs', 'member/manageLecture');
 
     protected $helpers = array();
 
@@ -839,11 +839,21 @@ class Manage extends \app\controllers\BaseController
     {
         $memIdx = $this->_req('memIdx');
         $tabs_data = $this->_arrBoardForMemberCnt($memIdx);
-        $codes = $this->codeModel->getCcdInArray(['700','701']);
+        $codes['consult_group_ccd'] = [
+            '700' => '고객상담',
+            '701' => '환불'
+        ];
+        $tmp_codes = $this->codeModel->getCcdInArray(['700','701']);
+        foreach ($tmp_codes as $keys => $row) {
+            foreach ($row as $key => $val) {
+                $codes['consult_ccd'][$keys.'_'.$key] = $val;
+            }
+        }
 
         $this->load->view('member/layer/board/cs', [
             'memIdx' => $memIdx,
             'tabs_data' => $tabs_data,
+            'codes' => $codes,
             '_board_type' => 'cs'
         ]);
     }

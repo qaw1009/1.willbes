@@ -15,7 +15,7 @@
     
     <a href="{{ site_url('/home/html/main_gosi_online') }}" target="_blank">공무원메인(온라인)</a><br/><br/>
     
-    <!--<a href="{{ site_url('/home/html/main_gosi_acad') }}" target="_blank">공무원메인(학원)</a><br/><br/>-->
+    <a href="{{ site_url('/home/html/main_gosi_acad') }}" target="_blank">공무원메인(학원)</a><br/><br/>
 
     <a href="{{ site_url('/home/html/memjoin') }}" target="_blank">로그인 page 이동</a><br/><br/>
 

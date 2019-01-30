@@ -3073,7 +3073,6 @@ table.auTable tr td {
             .onair_rolling.remove {
                 height: 0 !important; visibility: hidden !important; display: none !important; top: 0 !important;
             }
-            .rollingOnAir {}
             .rollingOnAir .bx-wrapper {
                 max-width: 660px !important;
                 margin-left: 300px;
@@ -3082,9 +3081,7 @@ table.auTable tr td {
                 position: absolute !important;
                 top: 60px;
                 left: 0;
-            }
-            .rollingOnAir .bx-wrapper .sliderVertical li {}
-            
+            } 
             .onAirLec {float: right; font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "sans-serif"; margin:30px 0 0 0; border: 1px solid #ececec}
             .onAirLec li {float:left; width:320px}
             .onAirLec li img {width:320px; height:180px}
@@ -3353,6 +3350,7 @@ table.auTable tr td {
     height: 60px;
     border-bottom: none;
     border-top: 2px solid #000;
+    clear: both;
 }
 .tabWrap.noticeWrap_campus li {
     float: left;
@@ -3394,6 +3392,9 @@ table.auTable tr td {
     margin: -36px 0 0;
 }
 
+.tabBox.noticeBox_campus {
+    clear: both;
+}
 .tabBox.noticeBox_campus a.btn-add {
     position: relative;
     top: -1px;
@@ -3489,11 +3490,11 @@ table.auTable tr td {
 /*********************************************     Main Container : Gosi     *********************************************/
 /* Main Container : Gosi */
 .gosi .tx-color {
-    color: #8c6239;
+    color: #ba560e;
 }
 .gosi .Menu .menu-List li.Acad a {
     background: url("../../img/willbes/gosi/icon_acad.gif") no-repeat 0 0;
-    color: #8c6239;
+    color: #ba560e;
 }
 .gosi .Menu .menu-List li.Acad a .arrow-Btn {
     background: url("../../img/willbes/gosi/icon_arrow.gif") no-repeat 0 0;
@@ -3506,12 +3507,12 @@ table.auTable tr td {
 .gosi .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
 .gosi .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
 .gosi .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
-    background: #8c6239;
+    background: #ba560e;
 }
 .gosi .Section .SpecialBox dt .infoBox .infoTit,
 .gosi .Section .NoticeBox dt .infoBox .infoTit,
 .gosi .tabWrap.noticeWrap li a.on {
-    color: #8c6239;
+    color: #ba560e;
 }
 
 /* Guide Container : Gosi */
@@ -3776,6 +3777,67 @@ ul.dot li {
     height: 16px;
     margin: 11px 0;
 }
+
+
+
+/*********************************************     Main Container : Gosi Acad     *********************************************/
+/* Main Container : Gosi Acad */
+.GA .VisualBox {
+    clear: both;
+    float: left;
+    width: 1120px;
+    height: 268px;
+    overflow: hidden;
+}
+.GA .VisualBox .MaintabList {
+    position: absolute;
+    bottom: 8px;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    text-align: center;
+}
+.GA .VisualBox .MaintabList ul li {
+    background: #38434d;
+    display: inline-block; 
+    height: 28px;
+    font-size: 14px;
+    color: #fff;
+    line-height: 26px;
+    border: 1px solid #fff;
+    margin: 0 -2px;
+}
+.GA .VisualBox .MaintabList.three ul li {
+    width: 209px;
+}
+.GA .VisualBox .MaintabList.four ul li {
+    width: 156px;
+}
+.GA .VisualBox .MaintabList.five ul li {
+    width: 188px;
+}
+.GA .VisualBox .MaintabList ul li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.GA .VisualsubBox {
+    clear: both;
+    float: left;
+    width: 1120px;
+    height: 160px;
+    overflow: hidden;
+}
+.GA .VisualsubBox ul li {
+    float: left;
+    width: 370px;
+    margin-left: 5px;
+}
+.GA .VisualsubBox ul li:first-child {
+    margin-left: 0;
+}
+
 
 
 /*********************************************     Main Container : GPGosi     *********************************************/

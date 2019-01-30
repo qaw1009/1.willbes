@@ -45,7 +45,7 @@ class LogViewer
             $prev_line = '';
 
             while (! feof($handle)) {
-                $line = trim(fgets($handle, 4096));
+                $line = trim(fgets($handle));
 
                 if (starts_with($line, ['ERROR', 'DEBUG', 'INFO']) === true) {
                     $content = $prev_line . $sub_line;

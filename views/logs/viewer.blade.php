@@ -36,7 +36,7 @@
                                 <option value="willbes">willbes</option>
                                 <option value="lms">lms</option>
                                 <option value="wbs">wbs</option>
-                                <option value="cli">cron</option>
+                                <option value="cron">cron</option>
                                 <option value="pg">PG결제</option>
                                 <option value="deposit">PG입금통보</option>
                             </select>

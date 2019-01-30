@@ -68,6 +68,7 @@
         </div>
     </div>
     <div class="row">
+    @if(is_array($log_data) === true)
         <div class="col-xs-12">
             <div class="panel panel-default">
                 <div class="panel-heading"><strong>{{ $log_type }} > {{ $log_pattern }} > {{ $log_date }}</strong></div>
@@ -122,6 +123,11 @@
                 </div>
             </div>
         </div>
+    @else
+        <div class="col-xs-12">
+            <div class="alert alert-danger" role="alert">{{ $log_data }}</div>
+        </div>
+    @endif
     </div>
 </div>
 <!-- Jquery -->

@@ -236,14 +236,7 @@ class RegGradeModel extends WB_Model
                    MockRotationNo,
                    CONCAT('[',PD.ProdCode,']',PD.ProdName) AS ProdName,
                    C1.CateName,
-                   (
-                        SELECT
-                            GROUP_CONCAT(CcdName)
-                        FROM
-                            {$this->_table['sysCode']}
-                            WHERE
-                                Ccd IN (MP.TakeFormsCcd)
-                   ) AS MockPartName,
+                   (SELECT CcdName FROM {$this->_table['sysCode']} WHERE Ccd = MR.TakeMockPart) AS TakeMockPartName,
                    (
                         SELECT 
                             GROUP_CONCAT(SubjectName) 

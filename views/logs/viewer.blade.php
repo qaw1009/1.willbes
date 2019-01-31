@@ -28,7 +28,6 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <form class="form-horizontal" id="search_form" name="search_form" method="GET">
-                        {!! csrf_field() !!}
                         <input type="hidden" name="sort_idx" value="{{ $sort_idx }}"/>
                         <input type="hidden" name="sort_dir" value="{{ $sort_dir }}"/>
                         <div class="col-xs-1" style="padding-left: 0;">
@@ -65,7 +64,7 @@
                                 </span>
                             </div>
                         </div>
-                        <div class="col-xs-7 text-right">
+                        <div class="col-xs-7 text-right" style="padding-right: 0;">
                             <button class="btn btn-success" type="button" id="btn_download">Download</button>
                         </div>
                     </form>
@@ -198,7 +197,10 @@
         $search_form.on('click', '#btn_download', function(event) {
             event.preventDefault();
             if (confirm('정말로 로그파일을 다운로드 하시겠습니까?')) {
-                formCreateSubmit('{{ site_url('/lcms/logs/viewer/download') }}', $search_form.serializeArray(), 'POST');
+                var params = $search_form.serializeArray();
+                params.push({ 'name' : '{{ csrf_token_name() }}', 'value' : '{{ csrf_token() }}'});
+
+                formCreateSubmit('{{ site_url('/lcms/logs/viewer/download') }}', params, 'POST');
             }
         });
 

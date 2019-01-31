@@ -7,6 +7,8 @@
 
 <div style="float:left; width: 450px; height: 750px; border-right: 1px solid #ccc; margin-right: 30px">
 
+    <a href="{{ site_url('/home/html/m/intro') }}" target="_blank">인트로 page 이동</a><br/><br/>
+
     <a href="{{ site_url('/home/html/m/main') }}" target="_blank">메인 page 이동</a><br/><br/>
 
     <a href="{{ site_url('/home/html/m/memjoin') }}" target="_blank">로그인 page 이동</a><br/><br/>

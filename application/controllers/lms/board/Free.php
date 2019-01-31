@@ -287,7 +287,7 @@ class Free extends BaseBoard
             'attach_file_type' => $this->_attach_reg_type['default']
         ];
         $data = $this->boardModel->findBoardForModify($this->board_name, $column, $arr_condition, $arr_condition_file);
-        if ($this->bm_idx != '91') {
+        if ($this->bm_idx != '91') {    //합격수기일 경우 제외
             // 첨부파일 이미지일 경우 해당 배열에 담기
             $data['Content'] = $this->_getBoardForContent($data['Content'], $data['AttachFilePath'], $data['AttachFileName']);
         }

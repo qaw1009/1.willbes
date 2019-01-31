@@ -867,9 +867,9 @@ class Manage extends \app\controllers\BaseController
         $arr_condition = [
             'EQ' => [
                 'MemIdx' => $this->_reqP('search_member_idx'),
-                'SiteCode' => $this->_reqP('search_group_cs_ccd'),
-                'CsGroupCcd' => $this->_reqP('search_cs_ccd'),
-                'CsCcd' => $this->_reqP('search_value'),
+                'SiteCode' => $this->_reqP('search_site_code'),
+                'CsGroupCcd' => $this->_reqP('search_group_cs_ccd'),
+                'CsCcd' => $this->_reqP('search_cs_ccd'),
             ],
             'ORG' => [
                 'LKB' => [

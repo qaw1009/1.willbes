@@ -22,7 +22,14 @@
 </head>
 <body>
 <div class="container-fluid">
-    <h1>Log Viewer</h1>
+    <div class="row">
+        <div class="col-xs-6">
+            <h1>Log Viewer</h1>
+        </div>
+        <div class="col-xs-6 text-right">
+            <h2>{{ $_SERVER['SERVER_NAME'] }} ({{ $_SERVER['SERVER_ADDR'] }})</h2>
+        </div>
+    </div>
     <div class="row">
         <div class="col-xs-12">
             <div class="panel panel-default">

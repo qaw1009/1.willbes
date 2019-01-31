@@ -28,7 +28,7 @@ class Viewer extends \app\controllers\BaseController
 
         $log_data = $this->logviewer->getLogData($log_date, $log_level, $log_pattern, $log_type);
 
-        $this->load->view('logs/viewer', [
+        $this->load->view('lcms/logs/viewer', [
             'log_type' => $log_type,
             'log_pattern' => $log_pattern,
             'log_level' => $log_level,

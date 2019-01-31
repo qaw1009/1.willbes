@@ -843,12 +843,16 @@ class Manage extends \app\controllers\BaseController
             '700' => '고객상담',
             '701' => '환불'
         ];
-        $tmp_codes = $this->codeModel->getCcdInArray(['700','701']);
-        foreach ($tmp_codes as $keys => $row) {
+        $temp_codes = $this->codeModel->getCcdInArray(['700','701']);
+        $temp_data = [];
+        foreach ($temp_codes as $keys => $row) {
             foreach ($row as $key => $val) {
-                $codes['consult_ccd'][$keys.'_'.$key] = $val;
+                $temp_data[$key]['group'] = $keys;
+                $temp_data[$key]['ccd'] = $key;
+                $temp_data[$key]['ccd_name'] = $val;
             }
         }
+        $codes['consult_ccd'] = $temp_data;
 
         $this->load->view('member/layer/board/cs', [
             'memIdx' => $memIdx,
@@ -856,6 +860,71 @@ class Manage extends \app\controllers\BaseController
             'codes' => $codes,
             '_board_type' => 'cs'
         ]);
+    }
+
+    public function ajaxCsDataTable()
+    {
+        $arr_condition = [
+            'EQ' => [
+                'MemIdx' => $this->_reqP('search_member_idx'),
+                'SiteCode' => $this->_reqP('search_group_cs_ccd'),
+                'CsGroupCcd' => $this->_reqP('search_cs_ccd'),
+                'CsCcd' => $this->_reqP('search_value'),
+            ],
+            'ORG' => [
+                'LKB' => [
+                    'Content' => $this->_reqP('search_value')
+                ]
+            ]
+        ];
+
+        $column = '
+            a.CsIdx, a.MemIdx, a.SiteCode, a.CsGroupCcd, a.CsCcd, a.IsSuccess, a.Content, a.IsStatus, a.RegAdminIdx, a.RegDatm, a.RegIp, a.UpdAdminIdx, a.UpdDatm,
+            b.SiteName, c.wAdminName AS RegAdminName, d.wAdminName AS UpdAdminName,
+            fn_ccd_name(a.CsGroupCcd) AS CsGroupCcdName ,fn_ccd_name(a.CsCcd) AS CsCcdName,
+            CASE a.IsSuccess WHEN \'Y\' THEN \'조치\' WHEN \'N\' THEN \'미조치\' END AS IsSuccessName
+        ';
+
+        $list = [];
+        $count = $this->manageCsModel->list(true, $arr_condition);
+
+        if ($count > 0) {
+            $list = $this->manageCsModel->list(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['CsIdx' => 'desc'], $column);
+        }
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list,
+        ]);
+    }
+
+    public function storeMemberCs()
+    {
+        $method = 'add';
+        $idx = '';
+
+        $rules = [
+            ['field' => 'regi_memIdx', 'label' => '회원식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'regi_site_code', 'label' => '운영사이트', 'rules' => 'trim|required|integer'],
+            ['field' => 'regi_group_cs_ccd', 'label' => '상담구분', 'rules' => 'trim|required|integer'],
+            ['field' => 'regi_cs_ccd', 'label' => '상담분류', 'rules' => 'trim|required|integer'],
+            ['field' => 'regi_is_success', 'label' => '조치여부', 'rules' => 'trim|required'],
+            ['field' => 'regi_content', 'label' => '내용', 'rules' => 'trim|required']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        if (empty($this->_reqP('cs_idx')) === false) {
+            $method = 'modify';
+            $idx = $this->_reqP('cs_idx');
+        }
+
+        $result = $this->manageCsModel->{$method . 'MemberCs'}($this->_reqP(null, false), $idx);
+
+        $this->json_result($result, '저장 되었습니다.', $result);
     }
 
     /**

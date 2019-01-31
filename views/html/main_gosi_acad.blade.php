@@ -246,7 +246,7 @@
     </div>
 
 
-    <div class="Section mb80">
+    <div class="Section mt80">
         <div class="widthAuto">
             <div class="will-acadTit">윌비스 <span class="tx-color">공무원학원</span> 교수님</div>
             <img src="{{ img_url('gosi_acad/prof/ProfBig.jpg') }}" alt="배너명">
@@ -337,6 +337,7 @@
                             </dl>
                             <div class="btn NSK-Black">
                                 <a href="https://cop.dev.willbes.net/pass/support/qna/index">1:1 상담신청</a>
+                                <a href="http://pf.kakao.com/_kcZIu/chat" target="_blank"><img src="{{ img_url('gosi_acad/icon_kakaotalk.png') }}"> 카톡상담신청</a>
                             </div>
                         </div>
                     </div>

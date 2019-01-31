@@ -358,4 +358,26 @@ class BaseBoard extends \app\controllers\BaseController
 
         public_download($file_path, $file_name);
     }
+
+    /**
+     * 게시판 내용 재가공 처리
+     * @param $content
+     * @param $file_path
+     * @param $file_name
+     * @param $cnt
+     * @return string
+     */
+    protected function _getBoardForContent($content, $file_path, $file_name, $cnt = 2)
+    {
+        $arr_file_path = explode(',', $file_path);
+        $arr_file_name = explode(',', $file_name);
+
+        $tmp_images = '';
+        for ($i=0; $i<$cnt; $i++) {
+            if (empty($arr_file_path[$i]) === false) {
+                $tmp_images .= make_image_tag($arr_file_path[$i] . $arr_file_name[$i]);
+            }
+        }
+        return $tmp_images . $content;
+    }
 }

@@ -75,7 +75,6 @@ class SupportFaq extends BaseSupport
                        ,b.AttachData';
         $order_by = ['b.IsBest'=>'Desc','b.BoardIdx'=>'Desc'];
 
-
         if (APP_DEVICE == 'pc') {
             $paging_count = $this->_paging_count;
         } else {
@@ -85,6 +84,10 @@ class SupportFaq extends BaseSupport
         $paging = $this->pagination('/support/faq/index/?s_faq='.$s_faq.'&s_sub_faq='.$s_sub_faq.'&s_keyword='.$s_keyword,$total_rows,$this->_paging_limit,$paging_count,true);
         if ($total_rows > 0) {
             $list = $this->supportBoardFModel->listBoard(false,$arr_condition,$column,$paging['limit'],$paging['offset'],$order_by);
+            foreach ($list as $key => $row) {
+                // 첨부파일 이미지일 경우 해당 배열에 담기
+                $list[$key]['Content'] = $this->_getBoardForContent($row['Content'], $row['AttachData']);
+            }
         }
 
         $this->load->view('support/faq', [

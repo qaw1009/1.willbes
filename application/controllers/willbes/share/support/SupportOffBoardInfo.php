@@ -157,10 +157,12 @@ class SupportOffBoardInfo extends BaseSupport
                        ';
 
         $data = $this->supportBoardFModel->findBoard($board_idx,$arr_condition,$column);
-
         if (empty($data)) {
             show_alert('게시글이 존재하지 않습니다.', 'back');
         }
+        // 첨부파일 이미지일 경우 해당 배열에 담기
+        $data['Content'] = $this->_getBoardForContent($data['Content'], $data['AttachData']);
+
         $data['AttachData'] = json_decode($data['AttachData'],true);       //첨부파일
 
         $result = $this->supportBoardFModel->modifyBoardRead($board_idx);

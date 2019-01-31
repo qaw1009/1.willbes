@@ -21,4 +21,25 @@ class BaseSupport extends \app\controllers\FrontController
 
         show_alert('등록된 파일을 찾지 못했습니다.','close','');
     }
+
+    /**
+     * 게시판 내용 재가공 처리
+     * @param $content
+     * @param $arr_file_info
+     * @param $reg_type
+     * @return string
+     */
+    protected function _getBoardForContent($content, $arr_file_info, $reg_type = 0)
+    {
+        $tmp_images = '';
+        if (empty($arr_file_info) === false && $arr_file_info != 'N') {
+            $arr_file_info = json_decode($arr_file_info, true);
+            foreach ($arr_file_info as $row) {
+                if ($row['FileType'] == $reg_type) {
+                    $tmp_images .= make_image_tag($row['FilePath'] . $row['FileName']);
+                }
+            }
+        }
+        return $tmp_images . $content;
+    }
 }

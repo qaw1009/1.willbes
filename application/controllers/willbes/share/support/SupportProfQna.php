@@ -315,6 +315,10 @@ class SupportProfQna extends BaseSupport
             show_alert('게시글 조회시 오류가 발생되었습니다.', 'back');
         }
 
+        // 첨부파일 이미지일 경우 해당 배열에 담기
+        $data['Content'] = $this->_getBoardForContent($data['Content'], $data['AttachData']);
+        $data['ReplyContent'] = $this->_getBoardForContent($data['ReplyContent'], $data['AttachData'], 1);
+
         $data['AttachData'] = json_decode($data['AttachData'],true);       //첨부파일
         $this->load->view('support/'.$view_type.'/show_qna',[
                 'default_path' => $this->_default_path,

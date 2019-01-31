@@ -14,8 +14,8 @@
     <!-- Slider -->
     <link rel="stylesheet" href="/public/vendor/jquery/swiper/swiper.min.css">
     <!-- Custom Theme Style -->
-    <link href="/public/css/willbes/basic.css" rel="stylesheet">
-    <link href="/public/css/willbes/m/style.css" rel="stylesheet">
+    <link href="/public/css/willbes/basic.css?ver={{time()}}" rel="stylesheet">
+    <link href="/public/css/willbes/m/style.css?ver={{time()}}" rel="stylesheet">
     <!--// CSS -->
     <!-- JAVASCRIPT -->
     <!-- jQuery -->

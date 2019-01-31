@@ -83,45 +83,45 @@ $(function() {
 
 // Swiper Script
 $(function() {
-    var swiper = new Swiper('.swiper-container-page', {
+    new Swiper('.swiper-container-page', {
         spaceBetween: 0,
         centeredSlides: true,
         autoplay: {
             delay: 3000,
-            disableOnInteraction: false,
+            disableOnInteraction: false
         },
         loop: true,
         loopFillGroupWithBlank: true,
         pagination: {
             el: '.swiper-pagination',
-            clickable: true,
-        },
+            clickable: true
+        }
     });
-    var swiper = new Swiper('.swiper-container-arrow', {
+    new Swiper('.swiper-container-arrow', {
         spaceBetween: 0,
         centeredSlides: true,
         autoplay: {
             delay: 3000,
-            disableOnInteraction: false,
+            disableOnInteraction: false
         },
         loop: true,
         loopFillGroupWithBlank: true,
         navigation: {
             nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
+            prevEl: '.swiper-button-prev'
+        }
     });
-    var swiper = new Swiper('.swiper-container-campus', {
+    new Swiper('.swiper-container-campus', {
         slidesPerView: 'auto',
-        spaceBetween: 0,
+        spaceBetween: 0
     });
-    var swiper = new Swiper('.swiper-container-campus-list', {
+    new Swiper('.swiper-container-campus-list', {
         slidesPerView: 'auto',
         spaceBetween: 0,
         navigation: {
             nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
+            prevEl: '.swiper-button-prev'
+        }
     });
 });
 

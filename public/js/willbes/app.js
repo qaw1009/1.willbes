@@ -1,5 +1,9 @@
 // GNB 버튼 Script
 $(function() {
+    if (typeof ($.fn.bxSlider) === 'undefined') {
+        return;
+    }
+
     var selector = $('#Gnb .sliderGNB .slider').length > 0 ? '#Gnb .sliderGNB .slider' : '#Gnb .sliderView .slider';
     var option = {
         auto: true,

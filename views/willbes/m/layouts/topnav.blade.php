@@ -6,7 +6,7 @@
                 <span class="hidden">메뉴바</span>
             </button>
             <div class="logo">
-                <a href="{{ front_url('/') }}"><img src="{{ img_url('m/main/logo.png') }}"></a>
+                <a href="{{ front_url('/home/index') }}"><img src="{{ img_url('m/main/logo.png') }}"></a>
             </div>
             <button type="button" class="mypage" onclick="document.location='{{front_url('/classroom/on/list/ongoing/')}}';">
                 <span class="hidden">내강의실</span>

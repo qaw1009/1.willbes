@@ -85,6 +85,7 @@
                     <th>카테고리</th>
                     <th>노출섹션명</th>
                     <th>노출방식</th>
+                    <th>롤링방식</th>
                     <th>사용여부</th>
                     <th>등록자</th>
                     <th>등록일</th>
@@ -124,19 +125,19 @@
                 },
                 columns: [
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            // 리스트 번호
-                            return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
-                        }},
+                        // 리스트 번호
+                        return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
+                    }},
                     {'data' : 'SiteName'},
                     {'data' : 'CateName'},
                     {'data' : 'DispName', 'render' : function(data, type, row, meta) {
-                            return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.BdIdx + '"><u class="blue">' + data + '</u></a>';
-                        }},
-
-                    {'data' : 'CcdName'},
+                        return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.BdIdx + '"><u class="blue">' + data + '</u></a>';
+                    }},
+                    {'data' : 'DispTypeCcdName'},
+                    {'data' : 'DispRollingTypeCcdName'},
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
-                            return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
-                        }},
+                        return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
+                    }},
                     {'data' : 'RegAdminName'},
                     {'data' : 'RegDatm'}
                 ]

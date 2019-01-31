@@ -15,7 +15,7 @@ if (!function_exists('banner')) {
         empty($site_code) === true && $site_code = config_app('SiteCode');
         empty($cate_code) === true && strlen($cate_code) < 1 && $cate_code = config_app('CateCode');
 
-        return '<script src="' . app_url('/banner/show/?site_code=' . $site_code . '&cate_code=' . $cate_code . '&section=' . rawurlencode($section) . '&css_class=' . rawurlencode($css_class), 'www') . '"></script>';
+        return '<script src="' . front_app_url('/banner/show/?site_code=' . $site_code . '&cate_code=' . $cate_code . '&section=' . rawurlencode($section) . '&css_class=' . rawurlencode($css_class), 'www') . '"></script>';
     }
 }
 

@@ -109,9 +109,6 @@ class StatisticsPrivate extends \app\controllers\BaseController
         }
     }
 
-
-
-
     /**
      * 모의고사정보
      */
@@ -136,7 +133,6 @@ class StatisticsPrivate extends \app\controllers\BaseController
         ]);
     }
 
-
     /**
      * 온라인 모의고사 팝업
      * @return object|string
@@ -152,8 +148,6 @@ class StatisticsPrivate extends \app\controllers\BaseController
                 'MR.ProdCode' => $prodcode
             ]
         ];
-
-
 
         $subject_list = $this->regGradeModel->subjectCall($arr_condition);
         $productInfo = $this->regGradeModel->productInfoV2($arr_condition);
@@ -180,8 +174,6 @@ class StatisticsPrivate extends \app\controllers\BaseController
             $tempnum++;
         }
 
-        //var_dump($dataDetail);
-
         $orgTotal = 0;
         $orgtnum = 0;
         if($dataOrg){
@@ -195,7 +187,6 @@ class StatisticsPrivate extends \app\controllers\BaseController
                 $dataOrg[$MemIdx]['tpct'] = round(100 - ((($key+1) / $val['COUNT']) * 100 - (100 / $val['COUNT'])),2);
             }
         }
-
 
         if($orgTotal) $dataOrg['tavg'] = $orgTotal ? round($orgTotal / $orgtnum, 2) : 0;
 
@@ -218,8 +209,6 @@ class StatisticsPrivate extends \app\controllers\BaseController
         if($adTotal) $dataAdjust['tavg'] = $adTotal ? round($adTotal / $orgtnum, 2) : 0;
         if($adTotal) $dataAdjust['tsum'] = $adTotal ? round($adTotal / $tcnt, 2) : 0;
         //종합분석(끝)
-
-        //var_dump($dataAdjust);
 
         // 필수/선택과목 컬럼수 & 이름
         $pCnt = 0;
@@ -301,7 +290,6 @@ class StatisticsPrivate extends \app\controllers\BaseController
             $pList[$val['MpIdx']] = $val['SubjectName'];
             $pIsList[] = $val['MpIdx'];
         }
-        //var_dump($pList);
         // 영역 및 학습요소
         foreach($dataSubject2 as $key => $val){
             $mpidx = $val['MpIdx'];

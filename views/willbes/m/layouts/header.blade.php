@@ -9,10 +9,10 @@
     <meta name="keywords" content="{{ $__cfg['MetaKeyword'] }}">
     <meta name="description" content="{{ $__cfg['MetaDesc'] }}">
     <!-- CSS -->
-    <!-- bootstrap-datepicker -->
-    <link rel="stylesheet" href="/public/vendor/bootstrap/datepicker/css/bootstrap-datepicker.standalone.min.css">
     <!-- Slider -->
     <link rel="stylesheet" href="/public/vendor/jquery/swiper/swiper.min.css">
+    <!-- bootstrap-datepicker -->
+    <link rel="stylesheet" href="/public/vendor/bootstrap/datepicker/css/bootstrap-datepicker.standalone.min.css">
     <!-- Custom Theme Style -->
     <link href="/public/css/willbes/basic.css?ver={{time()}}" rel="stylesheet">
     <link href="/public/css/willbes/m/style.css?ver={{time()}}" rel="stylesheet">

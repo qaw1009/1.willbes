@@ -190,7 +190,7 @@
     color:#fff;
     padding: 0 10px;
     border-radius: 10px;
-    margin-right: 5px
+    margin-right: 5px;
 }
 
 .GA .sliderEvt {
@@ -291,9 +291,45 @@
     clear: both;
 }
 
-
 .GA .sliderInfo {
     float: right;
     width: 420px;
     margin-right: 0;
+}
+
+/* Main Container : campus : Cop Acad */
+.GA .tabWrap.noticeWrap_campus li a.on {
+    color: #ba560e;
+}
+.GA .campus_info {
+    position: relative;
+    float: right;
+    width: 350px;
+    height: 328px;
+}
+.GA .campus_info .btn {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+.GA .campus_info .btn a {
+    display: inline-block; 
+    font-size: 17px; 
+    font-weight: bold;
+    height: 40px;
+    line-height: 40px;
+    padding: 0;
+    width: 168px;
+    margin-right: 5px;
+    color: #ba560e;
+    text-align: center;
+    border: 1px solid #ba560e;    
+}
+.GA .campus_info .btn a:last-child {
+    background: #f9e000;
+    color:#381e1f;
+    border: 1px solid #f9e000;
+}
+.GA .campus_info .btn a img {
+    vertical-align: middle;
 }

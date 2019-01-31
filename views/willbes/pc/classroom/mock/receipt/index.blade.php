@@ -86,7 +86,7 @@
                             <td class="w-form">{{ $val['TakeForm_Name'] }}</td>
                             <td class="w-date">{{ $val['TakeStartDatm'] }} ~ <br>{{ $val['TakeEndDatm'] }}</td>
                             <td class="w-list">
-                                <a href="#none" onclick="lShow({{ $val['ProdCode'] }},{{ $val['MemIdx'] }},{{$paging['rownum']}})">{{ $val['ProdName'] }}</a>
+                                <a href="#none" onclick="lShow({{ $val['ProdCode'] }},{{ $val['MemIdx'] }},{{$paging['rownum']}})" style="color:#2784db;">{{ $val['ProdName'] }}</a>
                                 <input type="hidden" id="memname{{$paging['rownum']}}" value="{{ $val['MemName'] }}( {{ substr($val['MemId'],0,3) }}@for($i=0; $i<$val['IdLength']-3; $i++)*@endfor )" />
                                 <input type="hidden" id="partname{{$paging['rownum']}}" value="{{ $val['TakeMockPart_Name'] }}" />
                                 <input type="hidden" id="catename{{$paging['rownum']}}" value="{{ $val['CateName'] }}" />

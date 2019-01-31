@@ -15,17 +15,19 @@ class DeliveryInfoModel extends BaseOrderModel
     public function modifyInvoiceNo($is_regist, $idx_column, $params = [])
     {
         $this->_conn->trans_begin();
+        $upd_cnt = 0;
 
         try {
             $sess_admin_idx = $this->session->userdata('admin_idx');
             $column_prefix = 'Invoice' . ($is_regist === true ? 'Reg' : 'Upd');
+            $idx_column = ($idx_column == 'OrderNo' ? 'O.' : 'OP.') . $idx_column;
 
-            if (count($params) < 1) {
+            if (empty($params) === true) {
                 throw new \Exception('필수 파라미터 오류입니다.');
             }
 
             foreach ($params as $order_idx => $invoice_no) {
-                if (empty($order_idx) === false && empty($invoice_no) === false && is_numeric($order_idx) === true && is_numeric($invoice_no)) {
+                if (empty($order_idx) === false && empty($invoice_no) === false && is_numeric($order_idx) === true && is_numeric($invoice_no) === true) {
                     // 수정할 배송정보 셋팅
                     $data = [
                         'InvoiceNo' => trim($invoice_no),
@@ -39,7 +41,7 @@ class DeliveryInfoModel extends BaseOrderModel
 
                     // 주문정보 조회
                     $order_prod_rows = $this->_conn->getJoinListResult($this->_table['order'] . ' as O', 'inner', $this->_table['order_product'] . ' as OP'
-                        , 'O.OrderIdx = OP.OrderIdx', 'OP.OrderProdIdx', ['EQ' => ['OP.' . $idx_column => trim($order_idx)]]
+                        , 'O.OrderIdx = OP.OrderIdx', 'OP.OrderProdIdx', ['EQ' => [$idx_column => trim($order_idx)]]
                     );
 
                     if (empty($order_prod_rows) === false) {
@@ -50,7 +52,13 @@ class DeliveryInfoModel extends BaseOrderModel
                         if ($is_update === false) {
                             throw new \Exception('송장번호 등록에 실패했습니다.');
                         }
+
+                        if ($this->_conn->affected_rows() > 0) {
+                            $upd_cnt++;
+                        }
                     }
+                } else {
+                    throw new \Exception('주문번호와 송장번호는 필수이며 숫자이어야 합니다.');
                 }
             }
 
@@ -60,7 +68,11 @@ class DeliveryInfoModel extends BaseOrderModel
             return error_result($e);
         }
 
-        return true;
+        return $upd_cnt > 0 ? true : [
+            'ret_cd' => false,
+            'ret_msg' => '일치하는 주문번호가 없습니다.',
+            'ret_status' => _HTTP_NOT_FOUND
+        ];
     }
 
     /**

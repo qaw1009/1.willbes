@@ -288,6 +288,11 @@
                     return;
                 }
 
+                if (Object.keys($params).length < 1) {
+                    alert('송장번호를 수정할 주문을 선택해 주세요.');
+                    return;
+                }
+
                 modifyInvoiceNo($params);
             });
 

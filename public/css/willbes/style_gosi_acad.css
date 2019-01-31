@@ -123,13 +123,80 @@
     width: 668px;
     margin-top: 27px;
 }
+.GA .tabWrap.noticeWrap_acad {
+    height: 34px;
+    border:0;
+}
+.GA .tabWrap.noticeWrap_acad li {
+    float: left;
+    width: 100px;
+    height: 22px;
+    margin-right: -1px;
+}
+.GA .tabWrap.noticeWrap_acad li a {
+    display: block;
+    width: 100%;
+    height: 22px;
+    line-height: 22px;
+    background: none;
+    font-size: 18px;
+    color: #7c7c7c;
+    text-align: center;
+    letter-spacing: 0;
+    border:0;
+    border-right: 1px solid #e1e1e1;
+}
+.GA .tabWrap.noticeWrap_acad li:last-child a {
+    border:0;
+}
+.GA .tabWrap.noticeWrap_acad li a.on {
+    position: relative;
+    z-index: 2;
+    background: #fff;
+    height: 22px;
+    line-height: 22px;
+    color: #ba560e;
+}
+.GA .tabBox.noticeBox_acad a.btn-add {
+    position: absolute;
+    top: -30px;
+    right: 0;
+}
+.GA .tabBox.noticeBox_acad .List-Table {
+    padding:0;
+    border-top:1px solid #000;
+    border-bottom:1px solid #000;
+}
+.GA .tabBox.noticeBox_acad .List-Table li {
+    font-size: 13px;
+    color: #3a3a3a;
+    height: 37px;
+    line-height: 37px;
+    border-top: 1px solid #e3e3e3;
+}
+.GA .tabBox.noticeBox_acad .List-Table li:first-child {
+    border-top: none;
+}
+.GA .tabBox.noticeBox_acad .List-Table li a {
+    display: inline-block;
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    letter-spacing: 0;
+}
+.GA .tabBox.noticeBox_acad .List-Table li a span {
+    background: #ba560e;
+    color:#fff;
+    padding: 0 10px;
+    border-radius: 10px;
+    margin-right: 5px
+}
 
-/* Main Container : pick : nSlider : gosi */
 .GA .sliderEvt {
     float: right;
     width: 420px;
 }
-
 
 /* Main Container : acad_infoBox : gosi Acad */
 .GA .acad_infoBox li a.on,

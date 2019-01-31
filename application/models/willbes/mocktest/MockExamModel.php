@@ -25,6 +25,12 @@ class MockExamModel extends WB_Model
         'pms_professor' => 'wbs_pms_professor',
         'site' => 'lms_site',
 
+        'mockPrint' => 'lms_mock_register_print_log',
+        'member' => 'lms_Member',
+        'order' => 'lms_Order',
+        'orderProduct' => 'lms_Order_Product',
+
+
         'mockProduct' => 'lms_product_mock',
         'mockProductExam' => 'lms_product_mock_r_paper',
         'mockRegisterR' => 'lms_mock_register_r_paper',
@@ -127,6 +133,148 @@ class MockExamModel extends WB_Model
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
 
+    }
+
+    /**
+     * 온라인모의고사 접수현황
+     * @param array $is_count $arr_condition $column $limit $offset $order_by
+     * @return mixed
+     */
+    public function listBoardReceipt($is_count, $condition=[], $limit = null, $offset = null, $order_by = [])
+    {
+
+        if ($is_count === true) {
+            $column = ' COUNT(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            /* 신청 과목 정보 전체*/
+            $subject_all = "
+            SELECT GROUP_CONCAT(SJ.SubjectName)
+            FROM {$this->_table['mockRegisterR']} AS MAS
+            JOIN {$this->_table['subject']} AS SJ ON MAS.SubjectIdx = SJ.SubjectIdx
+            WHERE MR.MrIdx = MAS.MrIdx
+            ";
+
+            /* 필수 신청 과목 정보*/
+            $subject_ess = "
+            SELECT GROUP_CONCAT(ps.SubjectName)
+            from
+                    lms_mock_register_r_paper mrp 
+                    join lms_product_mock_r_paper pmp on mrp.ProdCode = pmp.ProdCode and mrp.MpIdx = pmp.MpIdx and pmp.IsStatus='Y'
+                    join lms_mock_paper mp on pmp.MpIdx = mp.MpIdx and mp.IsStatus='Y'
+                    join lms_mock_r_category mrc on mp.MrcIdx = mrc.MrcIdx and mrc.IsStatus='Y'
+                    join lms_mock_r_subject mrs on  mrc.MrsIdx = mrs.MrsIdx and mrs.IsStatus='Y'
+                    join lms_product_subject ps on mrs.SubjectIdx = ps.SubjectIdx 
+            WHERE pmp.MockType='E' And mrp.MrIdx = MR.MrIdx 
+            ";
+
+            /* 선택 신청 과목 정보*/
+            $subject_sub = "
+            SELECT GROUP_CONCAT(ps.SubjectName)
+            from
+                    lms_mock_register_r_paper mrp 
+                    join lms_product_mock_r_paper pmp on mrp.ProdCode = pmp.ProdCode and mrp.MpIdx = pmp.MpIdx and pmp.IsStatus='Y'
+                    join lms_mock_paper mp on pmp.MpIdx = mp.MpIdx and mp.IsStatus='Y'
+                    join lms_mock_r_category mrc on mp.MrcIdx = mrc.MrcIdx and mrc.IsStatus='Y'
+                    join lms_mock_r_subject mrs on  mrc.MrsIdx = mrs.MrsIdx and mrs.IsStatus='Y'
+                    join lms_product_subject ps on mrs.SubjectIdx = ps.SubjectIdx 
+            WHERE pmp.MockType='S' And mrp.MrIdx = MR.MrIdx
+            order by mrp.MrrpIdx 
+            ";
+
+            $column = " Straight_join
+                            MR.*, PD.ProdName, PD.SiteCode, MP.MockYear, MP.MockRotationNo, MP.TakeStartDatm, MP.TakeEndDatm, PD.RegDatm AS PDReg, LENGTH(MemId) AS IdLength
+                            , (SELECT CcdName FROM {$this->_table['sysCode']} WHERE Ccd = MR.TakeArea) AS TakeAreaName
+                            , (SELECT CcdName FROM {$this->_table['sysCode']} WHERE Ccd = O.PayRouteCcd) AS route
+                            , (SELECT CcdName FROM {$this->_table['sysCode']} WHERE Ccd = O.PayMethodCcd) AS paymethod
+                            , OP.IsUseCoupon, OP.OrderPrice, O.CompleteDatm 
+                            ,fn_day_name(MP.TakeStartDatm,'') as day_name
+                            ,C1.CateName
+                            ,U.MemId, U.MemName, fn_dec(U.PhoneEnc) AS MemPhone
+                            ,O.OrderIdx, O.OrderNo, O.RealPayPrice, O.CompleteDatm, OP.PayStatusCcd
+                            ,SC1.CcdName as TakeMockPart_Name
+                            ,SC2.CcdName as TakeForm_Name
+                            ,SC3.CcdName as TakeArea_Name
+                            ,SC4.CcdName as PayStatusCcd_Name
+                            ,SC5.CcdName as PayMethodCcd_Name
+                            ,(
+                                select count(*) 
+                                from {$this->_table['mockPrint']} mrpl
+                                where mrpl.MrIdx = Mr.MrIdx
+                            ) as PrintCnt
+                            ,($subject_all) AS SubjectNameList
+                            ,($subject_ess) AS SubjectNameList_Ess
+                            ,($subject_sub) AS SubjectNameList_Sub
+            ";
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $from = "
+            FROM {$this->_table['mockRegister']} AS MR
+                JOIN {$this->_table['member']} AS U ON MR.MemIdx = U.MemIdx AND U.IsStatus = 'Y'
+                JOIN {$this->_table['orderProduct']} AS OP ON OP.OrderProdIdx = MR.OrderProdIdx
+                JOIN {$this->_table['order']} AS O ON OP.OrderIdx = O.OrderIdx
+                JOIN {$this->_table['mockProduct']} AS MP ON MR.ProdCode = MP.ProdCode
+                JOIN {$this->_table['Product']} AS PD ON MP.ProdCode = PD.ProdCode AND PD.IsStatus = 'Y'
+                JOIN {$this->_table['ProductCate']} AS PC ON MP.ProdCode = PC.ProdCode AND PC.IsStatus = 'Y'
+                JOIN {$this->_table['category']} AS C1 ON PC.CateCode = C1.CateCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y'
+                JOIN {$this->_table['ProductSMS']} AS PS ON MP.ProdCode = PS.ProdCode AND PS.IsStatus = 'Y'
+                JOIN {$this->_table['sysCode']} AS SC1 ON MR.TakeMockPart = SC1.Ccd AND SC1.IsStatus = 'Y'
+                JOIN {$this->_table['sysCode']} AS SC2 ON MR.TakeForm = SC2.Ccd AND SC2.IsStatus = 'Y'
+                LEFT OUTER JOIN {$this->_table['sysCode']} AS SC3 ON MR.TakeArea = SC3.Ccd AND SC3.IsStatus = 'Y'
+                JOIN {$this->_table['sysCode']} AS SC4 ON OP.PayStatusCcd = SC4.Ccd AND SC4.IsStatus = 'Y'
+                JOIN {$this->_table['sysCode']} AS SC5 ON O.PayMethodCcd = SC5.Ccd AND SC5.IsStatus = 'Y'
+        ";
+        $where = " WHERE MR.IsStatus = 'Y'";
+        $where .= $this->_conn->makeWhere($condition)->getMakeWhere(true)."\n";
+
+        //echo "<pre>".'select ' . $column . $from . $where . $order_by_offset_limit."</pre>";
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+
+    }
+
+    /**
+     * 모의고사 개인성적 과목상세
+     * @param array $prodcode
+     * @return mixed
+     */
+    public function subjectDetailPrivate($ProdCode, $MemIdx)
+    {
+        //시험코드
+        $column = "
+                    MP.MpIdx, MP.MockType, 
+                    (SELECT SubjectName FROM {$this->_table['subject']} WHERE SubjectIdx = RP.SubjectIdx) AS SubjectName
+                ";
+
+        $from = "
+                    FROM
+                        {$this->_table['mockProduct']}  AS PM
+                        JOIN {$this->_table['mockProductExam']} AS MP ON PM.Prodcode = MP.ProdCode
+                        JOIN {$this->_table['mockRegister']} AS MR ON PM.ProdCode = MR.ProdCode AND MR.IsStatus = 'Y' 
+                        JOIN {$this->_table['mockRegisterR']} AS RP ON PM.ProdCode = RP.ProdCode AND MR.MrIdx = RP.MrIdx AND MP.MpIdx = RP.MpIdx
+                ";
+
+        $obder_by = " GROUP BY MpIdx ORDER BY MockType, OrderNum";
+
+        $where = "WHERE PM.`ProdCode` = '" . $ProdCode . "' AND MP.IsStatus = 'Y' AND MR.MemIdx = " . $MemIdx;
+        $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+
+        $resMp = $query->result_array();
+        $num = 1;
+        foreach ($resMp AS $key => $val) {
+            $mockType = $val['MockType'];
+            if($mockType == 'S'){
+                $arrSubjectName[$mockType][] = '[선택과목'.$num.']'.$val['SubjectName'];
+            }else{
+                $arrSubjectName[$mockType][] = $val['SubjectName'];
+            }
+        }
+
+        return $arrSubjectName;
     }
 
     /**

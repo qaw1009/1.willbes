@@ -304,6 +304,9 @@ class StudyComment extends BaseBoard
         ];
         $data = $this->boardModel->findBoardForModify($this->board_name, $column, $arr_condition, $arr_condition_file);
 
+        // 첨부파일 이미지일 경우 해당 배열에 담기
+        $data['Content'] = $this->_getBoardForContent($data['Content'], $data['AttachFilePath'], $data['AttachFileName']);
+
         if (count($data) < 1) {
             show_error('데이터 조회에 실패했습니다.');
         }

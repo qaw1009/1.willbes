@@ -265,7 +265,7 @@
                         <input type="hidden" name="PointApplyCcd" id="PointApplyCcd" value="635001">
                         <input type="radio" name="IsPoint" class="flat" value="Y" required="required" title="결제포인트적립" @if($method == 'POST' || $data['IsPoint']=='Y')checked="checked"@endif/> 가능
                         [
-                        <input type='number' name='PointSavePrice' value='{{$data['PointSavePrice']}}' title="결제포인트적립" class="form-control" style="width: 80px"  required="required" >
+                        <input type='number' name='PointSavePrice' value='@if($method==="POST"){{1}}@else{{$data['PointSavePrice']}}@endif' title="결제포인트적립" class="form-control" style="width: 80px"  required="required" >
                         <select name="PointSaveType" id="PointSaveType" class="form-control">
                             <option value="R" @if($data['PointSaveType'] == 'R')selected="selected"@endif>%</option>
                             <option value="P" @if($data['PointSaveType'] == 'P')selected="selected"@endif>원</option>

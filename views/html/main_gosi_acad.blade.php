@@ -173,9 +173,7 @@
         </div>
     </div>
 
-
-
-    <div class="Section Section1 mb80">
+    <div class="Section Section1 mt60">
         <div class="widthAuto">
             <div class="noticeTabs acad">
                 <ul class="tabWrap noticeWrap_acad three">
@@ -187,8 +185,8 @@
                     <div id="notice1" class="tabContent p_re">
                         <a href="#none" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
                         <ul class="List-Table">
-                            <li><a href="#none">국가직 | 2019년도 국가공무원 공개경쟁채용시험 등 계획 공고</a></li>
-                            <li><a href="#none">서울시 | 2019 제1회 서울시 지방공무원(7,9급 등) 임용시험 시행계획 변경 공고</a></li>
+                            <li><a href="#none"><span>HOT</span>국가직 | 2019년도 국가공무원 공개경쟁채용시험 등 계획 공고</a></li>
+                            <li><a href="#none"><span>HOT</span>서울시 | 2019 제1회 서울시 지방공무원(7,9급 등) 임용시험 시행계획 변경 공고</a></li>
                             <li><a href="#none">제주도 | 2019년도 제주교육청 지방공무원 임용시험 일정안내</a></li>
                             <li><a href="#none">광주광역시 | 2019년도 광주교육청 지방공무원 임용시험 일정안내</a></li>
                             <li><a href="#none">부산광역시 | 2019년도 부산교육청 지방공무원 임용시험 일정안내</a></li>
@@ -197,7 +195,7 @@
                     <div id="notice2" class="tabContent p_re">
                         <a href="#none" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
                         <ul class="List-Table">
-                            <li><a href="#none">공지사항 제목이 출력됩니다.</a></li>
+                            <li><a href="#none"><span>HOT</span>공지사항 제목이 출력됩니다.</a></li>
                             <li><a href="#none">3월 31일(금) 새벽시스템점검안내222</a></li>
                             <li><a href="#none">설연휴학원고객센터운영안내22</a></li>
                             <li><a href="#none">추석교재배송및고객센터휴무안내22</a></li>
@@ -207,7 +205,7 @@
                     <div id="notice3" class="tabContent p_re">
                         <a href="#none" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
                         <ul class="List-Table">
-                            <li><a href="#none">공지사항 제목이 출력됩니다.333</a></li>
+                            <li><a href="#none"><span>HOT</span>공지사항 제목이 출력됩니다.333</a></li>
                             <li><a href="#none">3월 31일(금) 새벽시스템점검안내333</a></li>
                             <li><a href="#none">설연휴학원고객센터운영안내333</a></li>
                             <li><a href="#none">추석교재배송및고객센터휴무안내333</a></li>
@@ -350,7 +348,7 @@
                             <dl>
                                 <dt>
                                     <div class="c-tit">
-                                        <span class="tx-color">노량진</span> 캠퍼스 공지사항
+                                        <span class="tx-color">인천</span> 캠퍼스 공지사항
                                         <a href="https://cop.dev.willbes.net/pass/support/notice/index" class="btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}"></a>
                                     </div>
                                     <div class="c-info p_re">
@@ -361,7 +359,7 @@
                                     </div>
                                 </dt>
                                 <dt>
-                                    <div class="c-tit"><span class="tx-color">노량진</span> 캠퍼스 오시는 길</div>
+                                    <div class="c-tit"><span class="tx-color">인천</span> 캠퍼스 오시는 길</div>
                                     <div class="c-info">
                                         <div class="address">
                                             <span class="a-tit">주소</span>
@@ -390,7 +388,7 @@
                             <dl>
                                 <dt>
                                     <div class="c-tit">
-                                        <span class="tx-color">노량진</span> 캠퍼스 공지사항
+                                        <span class="tx-color">대구</span> 캠퍼스 공지사항
                                         <a href="https://cop.dev.willbes.net/pass/support/notice/index" class="btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}"></a>
                                     </div>
                                     <div class="c-info p_re">
@@ -401,7 +399,7 @@
                                     </div>
                                 </dt>
                                 <dt>
-                                    <div class="c-tit"><span class="tx-color">노량진</span> 캠퍼스 오시는 길</div>
+                                    <div class="c-tit"><span class="tx-color">대구</span> 캠퍼스 오시는 길</div>
                                     <div class="c-info">
                                         <div class="address">
                                             <span class="a-tit">주소</span>
@@ -430,7 +428,7 @@
                             <dl>
                                 <dt>
                                     <div class="c-tit">
-                                        <span class="tx-color">노량진</span> 캠퍼스 공지사항
+                                        <span class="tx-color">부산</span> 캠퍼스 공지사항
                                         <a href="https://cop.dev.willbes.net/pass/support/notice/index" class="btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}"></a>
                                     </div>
                                     <div class="c-info p_re">
@@ -441,7 +439,7 @@
                                     </div>
                                 </dt>
                                 <dt>
-                                    <div class="c-tit"><span class="tx-color">노량진</span> 캠퍼스 오시는 길</div>
+                                    <div class="c-tit"><span class="tx-color">부산</span> 캠퍼스 오시는 길</div>
                                     <div class="c-info">
                                         <div class="address">
                                             <span class="a-tit">주소</span>
@@ -470,7 +468,7 @@
                             <dl>
                                 <dt>
                                     <div class="c-tit">
-                                        <span class="tx-color">노량진</span> 캠퍼스 공지사항
+                                        <span class="tx-color">광주</span> 캠퍼스 공지사항
                                         <a href="https://cop.dev.willbes.net/pass/support/notice/index" class="btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}"></a>
                                     </div>
                                     <div class="c-info p_re">
@@ -481,7 +479,7 @@
                                     </div>
                                 </dt>
                                 <dt>
-                                    <div class="c-tit"><span class="tx-color">노량진</span> 캠퍼스 오시는 길</div>
+                                    <div class="c-tit"><span class="tx-color">광주</span> 캠퍼스 오시는 길</div>
                                     <div class="c-info">
                                         <div class="address">
                                             <span class="a-tit">주소</span>

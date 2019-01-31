@@ -6,7 +6,9 @@ class Banner extends \app\controllers\BaseController
     protected $models = array('bannerF');
     protected $helpers = array();
 
-    private $_rolling_type = ['665001' => 'bSlider',  '665002' => 'cSlider', '665003' => 'nSlider', '665004' => 'vSlider'];
+    private $_rolling_type = ['665001' => 'bSlider',  '665002' => 'cSlider', '665003' => 'nSlider', '665004' => 'vSlider'
+        , '665005' => '', '665006' => 'swiper-container-arrow', '665007' => 'swiper-container-page'
+    ];
 
     public function __construct()
     {
@@ -31,11 +33,27 @@ class Banner extends \app\controllers\BaseController
             return '';
         }
 
+        // 롤링타입코드명
+        $rolling_type_name = element($data[0]['DispRollingTypeCcd'], $this->_rolling_type, '');
+            
+        if (APP_DEVICE == 'pc') {
+            if (strpos($rolling_type_name, 'Slider') === false) {
+                return '';
+            }
+        } else {
+            if (strpos($rolling_type_name, 'Slider') > -1) {
+                return '';
+            }            
+        }
+
         // 노출섹션 정보 추출
         $disp_data = [
             'BdIdx' => $data[0]['BdIdx'], 'DispTypeCcd' => $data[0]['DispTypeCcd'], 'DispRollingTime' => $data[0]['DispRollingTime'],
-            'DispRollingTypeCcd' => $data[0]['DispRollingTypeCcd'], 'DispRollingTypeName' => element($data[0]['DispRollingTypeCcd'], $this->_rolling_type, ''),
+            'DispRollingTypeCcd' => $data[0]['DispRollingTypeCcd'], 'DispRollingTypeName' => $rolling_type_name,
         ];
+
+        logger('banner1', $data);
+        logger('banner2', $disp_data);
 
         // 랜덤 노출일 경우
         if ($disp_data['DispTypeCcd'] == '664003') {

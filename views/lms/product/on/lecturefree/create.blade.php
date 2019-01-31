@@ -312,7 +312,7 @@
                                 <input type='hidden' name='rateRemain' id='rateRemain' value='0'>  <!--단수적용을 위한 나머지 값//-->
                                 <input type='hidden' name='rateRemainProfIdx' id='rateRemainProfIdx' value=''> <!--단수적용 교수 코드 : 스크립트 용//-->
                                 @php
-                                    $rateRemain = '';
+                                    $rateRemain = 0;
                                     $rateRemainProfIdx = '';
                                 @endphp
                                 @foreach($data_division as $row)

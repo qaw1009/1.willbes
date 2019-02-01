@@ -620,9 +620,9 @@
                     </label>
                     <div class="col-md-4 form-inline item" >
                         <div class="radio">
-                            <input type="radio" name="IsEdit" class="flat" value="Y" title="첨삭사용여부" @if($method == 'POST' || $data['IsEdit']=='Y')checked="checked"@endif/> 가능
+                            <input type="radio" name="IsEdit" class="flat" value="Y" title="첨삭사용여부" @if($data['IsEdit']=='Y')checked="checked"@endif/> 가능
    &nbsp;&nbsp;                         &nbsp;
-                            <input type="radio" name="IsEdit" class="flat" value="N" title="첨삭사용여부" @if($data['IsEdit']=='N')checked="checked"@endif/> 불가능
+                            <input type="radio" name="IsEdit" class="flat" value="N" title="첨삭사용여부" @if($method == 'POST' || $data['IsEdit']=='N')checked="checked"@endif/> 불가능
                         </div>
                     </div>
                     <label class="control-label col-md-2" for="IsCart">장바구니담기<br>가능여부 <span class="required">*</span>
@@ -630,7 +630,7 @@
                     <div class="col-md-4 form-inline item" >
                         <div class="checkbox">
                             <input type="radio" name="IsCart" class="flat" value="Y" required="required" title="장바구니담기" @if($method == 'POST' || $data['IsCart']=='Y')checked="checked"@endif/> 가능
-                            &nbsp;&nbsp;
+                            &nbsp;
                             <input type="radio" name="IsCart" class="flat" value="N" @if($data['IsCart']=='N')checked="checked"@endif/> 불가능
                         </div>
                     </div>

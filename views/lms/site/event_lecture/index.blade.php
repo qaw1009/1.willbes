@@ -87,6 +87,7 @@
                     <th>조회수</th>
                     <th>접수상태</th>
                     <th>배너명</th>
+                    <th>복사여부</th>
                     <th>사용여부</th>
                     <th>등록자</th>
                     <th>등록일</th>
@@ -175,8 +176,11 @@
                     {'data' : 'ReadCnt'},
                     {'data' : 'IsRegisterName'},
                     {'data' : 'BannerName'},
+                    {'data' : 'IsCopy', 'render' : function(data, type, row, meta) {
+                            return (data === 'N') ? '미복사' : '<p class="red">복사</p>';
+                        }},
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
-                            return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
+                            return (data === 'Y') ? '사용' : '<p class="red">미사용</p>';
                         }},
                     {'data' : 'RegAdminName'},
                     {'data' : 'RegDatm'},

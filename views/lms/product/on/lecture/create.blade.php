@@ -621,7 +621,7 @@
                     <div class="col-md-4 form-inline item" >
                         <div class="radio">
                             <input type="radio" name="IsEdit" class="flat" value="Y" title="첨삭사용여부" @if($data['IsEdit']=='Y')checked="checked"@endif/> 가능
-   &nbsp;&nbsp;                         &nbsp;
+                           &nbsp;
                             <input type="radio" name="IsEdit" class="flat" value="N" title="첨삭사용여부" @if($method == 'POST' || $data['IsEdit']=='N')checked="checked"@endif/> 불가능
                         </div>
                     </div>
@@ -642,7 +642,7 @@
                     <div class="col-md-6 form-inline item" >
                         <div class="radio">
                             <input type="radio" name="IsRefund" class="flat" value="Y" required="required" title="환불신청" @if($data['IsRefund']=='Y')checked="checked"@endif/> 가능
-                            &nbsp;&nbsp;
+                            &nbsp;
                             <input type="radio" name="IsRefund" class="flat" value="N" @if($method == 'POST' || $data['IsRefund']=='N')checked="checked"@endif/> 불가능
                             &nbsp;&nbsp;&nbsp;&nbsp;• 내강의실에서 사용자가 직접 환불신청 가능한지 여부
                         </div>

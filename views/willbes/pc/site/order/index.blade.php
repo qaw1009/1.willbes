@@ -252,14 +252,14 @@
                                     <td class="w-tit bg-light-white tx-left pl20">휴대폰번호<span class="tx-light-blue">(*)</span></td>
                                     <td class="w-info tx-left pl20">
                                         <div class="item multi">
-                                            <select id="receiver_phone1" name="receiver_phone1" title="휴대폰번호1" class="selePhone">
+                                            <select id="receiver_phone1" name="receiver_phone1" title="휴대폰번호1" required="required" class="selePhone">
                                                 <option value="">선택</option>
                                                 @foreach($arr_phone1_ccd as $key => $val)
                                                     <option value="{{ $key }}">{{ $val }}</option>
                                                 @endforeach
                                             </select> -
-                                            <input type="text" id="receiver_phone2" name="receiver_phone2" title="휴대폰번호2" class="iptCellhone1 phone" maxlength="4"> -
-                                            <input type="text" id="receiver_phone3" name="receiver_phone3" title="휴대폰번소3" class="iptCellhone2 phone" maxlength="4">
+                                            <input type="text" id="receiver_phone2" name="receiver_phone2" title="휴대폰번호2" required="required" class="iptCellhone1 phone" maxlength="4"> -
+                                            <input type="text" id="receiver_phone3" name="receiver_phone3" title="휴대폰번소3" required="required" class="iptCellhone2 phone" maxlength="4">
                                             <input type="hidden" id="receiver_phone" name="receiver_phone" title="휴대폰번호" required="required" pattern="phone"/>
                                         </div>
                                     </td>

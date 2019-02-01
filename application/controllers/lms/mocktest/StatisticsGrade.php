@@ -165,9 +165,9 @@ class StatisticsGrade extends \app\controllers\BaseController
      */
     public function scoreMakeAjax()
     {
-        ////////////////////////////////////////////////
-
-        $result = $this->regGradeModel->scoreMake($this->_reqP(null, false));
+        $formData = $this->_reqP(null, false);
+        $ProdCode = element('ProdCode', $formData);
+        $result = $this->regGradeModel->scoreMake($ProdCode,'web');
         $this->json_result($result, '저장되었습니다.', $result, $result);
 
     }

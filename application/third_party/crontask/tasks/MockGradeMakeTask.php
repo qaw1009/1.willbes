@@ -16,12 +16,12 @@ class MockGradeMakeTask extends \crontask\tasks\Task
     {
         parent::__construct();
 
-        $this->_db = $this->_CI->load->database('lms', true);
+        //$this->_db = $this->_CI->load->database('lms', true);
     }
 
     public function __destruct()
     {
-        $this->_db->close();
+        //$this->_db->close();
     }
 
     /**
@@ -32,22 +32,19 @@ class MockGradeMakeTask extends \crontask\tasks\Task
     {
         /*
         try {
-            $query = $this->_db->query('call sp_member_point_expire');
-            $result = $query->row(0);
+            $this->setOutput('MockGradeMakeTask complete.');
 
-            $this->setOutput('MemberPointExpireTask complete.');
-
-            return $result->ReturnMsg . ' (' . $result->ReturnCnt . ')';
+            return 'result';
         } catch (\Exception $e) {
-            $this->setOutput('MemberPointExpireTask error occured. [' . $e->getMessage() . ']');
+            $this->setOutput('MockGradeMakeTask error occured. [' . $e->getMessage() . ']');
 
             return 'Error (0)';
-        }
-        */
+        }*/
         try {
-            $this->_CI->load->model('mocktest/regGrade')->todayScoreMake();
-            $this->_CI->load->model('mocktest/regGrade');
-            $result = $this->regGrade->todayScoreMake();
+            //$this->_CI->load->model('mocktest/regGrade')->todayScoreMake();
+            $this->_CI->load->model('lms/mocktest/regGradeModel');
+            $result = $this->_CI->regGradeModel->todayScoreMake();
+
             if($result == 1) $result = "정상등록";
             else             $result = "오류발생";
 
@@ -57,5 +54,6 @@ class MockGradeMakeTask extends \crontask\tasks\Task
 
             return 'Error (0)';
         }
+
     }
 }

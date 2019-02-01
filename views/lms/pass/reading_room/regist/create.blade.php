@@ -98,7 +98,7 @@
                         <span class="mr-20"></span>
 
                         <span class="blue mr-10">[할인율]</span>
-                        <input type="number" class="form-control" id="sale_rate" name="sale_rate" required="required" title="할인율" value="{{ $data['main_SaleRate'] }}" style="width: 140px;">
+                        <input type="number" class="form-control" id="sale_rate" name="sale_rate" required="required" title="할인율" value="{{ ($method == 'POST') ? '0' : $data['main_SaleRate'] }}" style="width: 140px;">
                         <select name="sale_disc_type" id="sale_disc_type" class="form-control">
                             <option value="R" @if($data['main_SaleDiscType'] == 'R')selected="selected"@endif>%</option>
                             <option value="P" @if($data['main_SaleDiscType'] == 'L')selected="selected"@endif>원</option>

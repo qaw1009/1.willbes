@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Manage extends \app\controllers\BaseController
 {
-    protected $models = array('member/manageMember','sys/code', 'pay/orderList','service/couponRegist','service/point', 'board/board', 'crm/tm/tm', 'member/manageCs', 'member/manageLecture');
+    protected $models = array('member/manageMember','sys/code', 'pay/orderList','service/couponRegist','service/point', 'board/board', 'crm/tm/tm', 'member/manageCs', 'member/manageBlackConsumer', 'member/manageLecture');
 
     protected $helpers = array();
 
@@ -1049,16 +1049,68 @@ class Manage extends \app\controllers\BaseController
     /**
      * 상담/메모관리 : 블랙컨슈머
      */
-    public function ajaxConsumer()
+    public function ajaxBlackConsumer()
     {
         $memIdx = $this->_req('memIdx');
         $tabs_data = $this->_arrBoardForMemberCnt($memIdx);
 
-        $this->load->view('member/layer/board/counsel', [
+        $this->load->view('member/layer/board/black_consumer', [
             'memIdx' => $memIdx,
             'tabs_data' => $tabs_data,
-            '_board_type' => 'consumer'
+            '_board_type' => 'blackConsumer'
         ]);
+    }
+
+    public function ajaxBlackConsumerDataTable()
+    {
+        $arr_condition = [
+            'EQ' => [
+                'MemIdx' => $this->_reqP('search_member_idx')
+            ]
+        ];
+
+        $column = '
+            a.BcIdx, a.MemIdx, a.SiteCode, a.Content, a.IsStatus, a.RegAdminIdx, a.RegDatm, a.RegIp, a.UpdAdminIdx, a.UpdDatm,
+            b.SiteName, c.wAdminName AS RegAdminName, d.wAdminName AS UpdAdminName
+        ';
+
+        $list = [];
+        $count = $this->manageBlackConsumerModel->list(true, $arr_condition);
+
+        if ($count > 0) {
+            $list = $this->manageBlackConsumerModel->list(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['BcIdx' => 'desc'], $column);
+        }
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list,
+        ]);
+    }
+
+    public function storeBlackConsumer()
+    {
+        $method = 'add';
+        $idx = '';
+
+        $rules = [
+            ['field' => 'regi_memIdx', 'label' => '회원식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'regi_site_code', 'label' => '운영사이트', 'rules' => 'trim|required|integer'],
+            ['field' => 'regi_content', 'label' => '내용', 'rules' => 'trim|required']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        if (empty($this->_reqP('bc_idx')) === false) {
+            $method = 'modify';
+            $idx = $this->_reqP('bc_idx');
+        }
+
+        $result = $this->manageBlackConsumerModel->{$method . 'MemberBlackConsumer'}($this->_reqP(null, false), $idx);
+
+        $this->json_result($result, '저장 되었습니다.', $result);
     }
 
     public function ajaxCRM()
@@ -1094,11 +1146,19 @@ class Manage extends \app\controllers\BaseController
         $arr_condition = ['EQ' => ['B.MemIdx' => $memIdx]];
         $tm_count = $this->tmModel->listConsult(true,$arr_condition);
 
+        //CS상담관리 수
+        $arr_condition = ['EQ' => ['a.MemIdx' => $memIdx, 'a.IsStatus' => 'Y']];
+        $cs_count = $this->manageCsModel->list(true, $arr_condition);
+
+        //블랙컨슈머관리 수
+        $arr_condition = ['EQ' => ['a.MemIdx' => $memIdx, 'a.IsStatus' => 'Y']];
+        $bc_count = $this->manageBlackConsumerModel->list(true, $arr_condition);
+
         $data['unAnswered'] = (empty($arr_unAnswered) === true) ? 0 : $arr_unAnswered['all'];
-        $data['cs'] = '0';
+        $data['cs'] = $cs_count;
         $data['tm'] = $tm_count;
         $data['profQna'] = (empty($arr_unAnswered_prof) === true) ? 0 : $arr_unAnswered_prof['all'];
-        $data['consumer'] = '0';
+        $data['blackConsumer'] = $bc_count;
 
         return $data;
     }

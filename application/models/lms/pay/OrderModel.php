@@ -926,11 +926,15 @@ class OrderModel extends BaseOrderModel
     {
         try {
             // 자동지급 상품 조회
-            $rows = $this->_conn->getJoinListResult($this->_table['product_r_product'] . ' as PP', 'left', $this->_table['product_lecture'] . ' as PL'
-                , 'PP.ProdCodeSub = PL.ProdCode', 'PP.ProdCodeSub, PP.ProdTypeCcd, PL.LearnPatternCcd', [
-                    'EQ' => ['PP.ProdCode' => $prod_code, 'PP.IsStatus' => 'Y'],
-                    'IN' => ['PP.ProdTypeCcd' => [$this->_prod_type_ccd['on_lecture'], $this->_prod_type_ccd['freebie']]]
-                ]);
+            $column = 'PP.ProdCodeSub, PP.ProdTypeCcd, PL.LearnPatternCcd';
+            $from = '
+                from ' . $this->_table['product_r_product'] . ' as PP
+                    inner join ' . $this->_table['product'] . ' as P
+                        on PP.ProdCodeSub = P.ProdCode and PP.ProdTypeCcd = P.ProdTypeCcd
+                    left join ' . $this->_table['product_lecture'] . ' as PL
+                        on PP.ProdCodeSub = PL.ProdCode
+                where PP.ProdCode = ? and PP.ProdTypeCcd in (?, ?) and PP.IsStatus = "Y" and P.IsStatus = "Y"';
+            $rows = $this->_conn->query('select ' . $column . $from, [$prod_code, $this->_prod_type_ccd['on_lecture'], $this->_prod_type_ccd['freebie']])->result_array();
 
             // 자동지급 상품이 없을 경우
             if (empty($rows) === true) {

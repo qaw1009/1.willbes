@@ -877,11 +877,11 @@ class OrderFModel extends BaseOrderFModel
             $sess_mem_idx = $this->session->userdata('mem_idx');    // 회원 식별자 세션
 
             // 자동지급 상품 조회
-            $rows = $this->_conn->getJoinListResult($this->_table['product_r_product'] . ' as PRP', 'inner', $this->_table['product'] . ' as P'
-                , 'PRP.ProdCodeSub = P.ProdCode and PRP.ProdTypeCcd = P.ProdTypeCcd'
-                , 'PRP.ProdCodeSub, PRP.ProdTypeCcd', [
-                    'EQ' => ['PRP.ProdCode' => $prod_code, 'PRP.IsStatus' => 'Y', 'P.IsStatus' => 'Y'],
-                    'IN' => ['PRP.ProdTypeCcd' => [$this->_prod_type_ccd['on_lecture'], $this->_prod_type_ccd['freebie']]]
+            $rows = $this->_conn->getJoinListResult($this->_table['product_r_product'] . ' as PP', 'inner', $this->_table['product'] . ' as P'
+                , 'PP.ProdCodeSub = P.ProdCode and PP.ProdTypeCcd = P.ProdTypeCcd'
+                , 'PP.ProdCodeSub, PP.ProdTypeCcd', [
+                    'EQ' => ['PP.ProdCode' => $prod_code, 'PP.IsStatus' => 'Y', 'P.IsStatus' => 'Y'],
+                    'IN' => ['PP.ProdTypeCcd' => [$this->_prod_type_ccd['on_lecture'], $this->_prod_type_ccd['freebie']]]
                 ]);
 
             // 자동지급 상품이 없을 경우

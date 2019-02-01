@@ -434,9 +434,7 @@ class RegGradeModel extends WB_Model
     public function todayScoreMake()
     {
 
-        $column = "
-                ProdCode
-            ";
+        $column = "ProdCode";
 
         $from = "
                 FROM
@@ -444,7 +442,7 @@ class RegGradeModel extends WB_Model
 	                JOIN lms_Mock_Group_R_Product AS RP ON MG.MgIdx = RP.MgIdx
             ";
 
-        $obder_by = " LIMIT 1";
+        $obder_by = " Group By ProdCode";
 
         $where = " WHERE GradeOpenDatm = curdate() ";
 
@@ -452,7 +450,9 @@ class RegGradeModel extends WB_Model
 
         $prodcode = $query->row_array();
 
-        if ($prodcode['ProdCode']) return $this->scoreMake($prodcode['ProdCode'], 'cron');
+        if ($prodcode['ProdCode']){
+            return $this->scoreMake($prodcode['ProdCode'], 'cron');
+        }
     }
 
     /**

@@ -6,7 +6,7 @@
         <div class="x_panel">
             <div>
                 <div class="pull-left x_title mb-5"><h2>모의고사정보</h2></div>
-                <div class="pull-right text-right form-inline mb-5">
+                <div id='btnarea' class="pull-right text-right form-inline mb-5">
                     <button class="btn btn-sm btn-primary" id="act-addRow" onClick="printPage()">인쇄</button>
                     <button class="btn btn-sm btn-primary" id="act-sort" onClick="scoreMake({{ $prodcode }})">조정점수반영</button>
                     <button class="btn btn-sm btn-success" id="goList">목록</button>
@@ -216,9 +216,11 @@
             var initBody;
             window.onbeforeprint = function(){
                 initBody = document.body.innerHTML;
+                $('#btnarea').hide();
                 document.body.innerHTML =  $('#content').html();
             };
             window.onafterprint = function(){
+                $('#btnarea').show();
                 document.body.innerHTML = initBody;
             };
             window.print();

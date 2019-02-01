@@ -1,9 +1,8 @@
 @extends('willbes.pc.layouts.master_popup')
 
 @section('content')
-
     <!-- Popup -->
-    <div class="Popup ExamBox">
+    <div id='' class="Popup ExamBox">
         <div class="popTitBox">
             <div class="pop-Tit NG"><img src="{{ img_url('/mypage/logo.gif') }}"> 전국 모의고사</div>
             <div class="pop-subTit">{{ $productInfo['ProdName'] }}</div>
@@ -16,7 +15,7 @@
             </ul>
             <!-- //tab -->
             <div class="btnAgR mgT1 mgB1 mb30">
-                <a class="btnlineGray"href="javascript:window.print()">출력</a>
+                <a id='printBtn' class="btnlineGray" href="javascript:window.print()">출력</a>
             </div>
             <div class="cartBx mgB4">
                 <table cellspacing="0" cellpadding="0" class="whtInfoTb">
@@ -99,7 +98,7 @@
                     </table>
                 </div>
                 <div class="f_right wBx mt35 mb30">
-                    <div id="chart_div1" style="width: 450px; height: 265px;"></div>
+                    <div id="chart_div1" style="width: 410px; height: 265px;"></div>
 
 
                     <script type="text/javascript">
@@ -406,5 +405,6 @@
             }
             document.url_form.submit();
         }
+
     </script>
 @stop

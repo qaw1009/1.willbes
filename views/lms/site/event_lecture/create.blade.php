@@ -637,8 +637,10 @@
                 add_lists += '<td><a href="#none" class="btn-lecture-delete" data-lecture-temp-idx="'+temp_idx+'"><i class="fa fa-times fa-lg red"></i></a></td>';
                 add_lists += '<tr>';
                 $('#table_lecture > tbody:last').append(add_lists);
-
                 temp_idx = temp_idx + 1;
+
+                $('#temp_person_limit').val('');
+                $('#temp_lecture_name').val('');
             });
 
             // 특강 tr 삭제, hidden 데이터 삭제

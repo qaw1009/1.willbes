@@ -194,7 +194,7 @@ class EventLecture extends \app\controllers\BaseController
         $option_ccds = $this->_reqP('option_ccds[]');       //관리옵션
         $limit_type = $this->_reqP('limit_type');           //정원제한타입
 
-        if (count($option_ccds) > 0) {
+        if ((empty($option_ccds) === false) && count($option_ccds) > 0) {
             foreach ($option_ccds as $key => $val) {
                 switch ($val) {
                     case $this->eventLectureModel->_event_lecture_option_ccds[0] :

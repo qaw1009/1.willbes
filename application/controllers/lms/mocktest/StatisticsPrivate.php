@@ -310,7 +310,6 @@ class StatisticsPrivate extends \app\controllers\BaseController
             'productInfo' => $productInfo,
             'dataSubject' => $dataSubject,
             'dataSubjectV2' => $dataSubjectV2,
-            'memName'  => $_SESSION['mem_name'],
             'pList' => $pList,
             'prodcode' => $prodcode,
             'mem_idx' => $memidx

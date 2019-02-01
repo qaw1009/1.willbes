@@ -45,10 +45,7 @@
                         <td>{{ substr($productInfo['SaleStartDatm'],0,10) }}</td>
                         <td>{{ $productInfo['CateName'] }}</td>
                         <td>
-
-                            @foreach($productInfo['MockPartName'] as $key => $row)
-                                {{ $row }}<br>
-                            @endforeach
+                            {{ $productInfo['TakeMockPartName'] }}<br>
                         </td>
                         <td>{{ $productInfo['TakeNumber'] }}</td>
                         <td>{{ $productInfo['MemName'] }}</td>

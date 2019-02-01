@@ -44,7 +44,7 @@ class RegGoodsModel extends WB_Model
     }
 
     /***********
-     * 테스트용 가짜성적입력
+     * 테스트용 랜덤성적입력
      * @param $condition
      * @throws Exception
      */
@@ -83,7 +83,6 @@ class RegGoodsModel extends WB_Model
 
             $where = " WHERE MpIdx = ".$cuMP;
 
-            //echo "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
             $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
             $data = $query->row_array();
             $arrMPSet[$cuMP] = $data['SubjectIdx'];

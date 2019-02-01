@@ -55,47 +55,46 @@ class RegExamModel extends WB_Model
         $offset_limit = (is_numeric($limit) && is_numeric($offset)) ? "LIMIT $offset, $limit" : "";
 
 
-        $select = "
-            SELECT EB.*, A.wAdminName, MB.CateCode, MB.Ccd, MS.SubjectType,
-                   CONCAT(C1.CateName, ' > ', SC.CcdName) AS CateRouteName, SJ.SubjectName, PMS.wProfName,
-                   (SELECT COUNT(MemIdx) 
-                      FROM lms_mock_register AS MR
-                           JOIN lms_mock_register_r_paper AS RR ON MR.MrIdx = RR.MrIdx
-                      WHERE IsStatus = 'Y' AND IsTake = 'Y' AND MpIdx = EB.MpIdx AND TakeForm = (SELECT Ccd FROM lms_sys_code Where CcdName = 'online')) AS OnlineCnt,
-                   (SELECT COUNT(MemIdx) 
-                      FROM lms_mock_register AS MR
-                           JOIN lms_mock_register_r_paper AS RR ON MR.MrIdx = RR.MrIdx 
-                      WHERE IsStatus = 'Y' AND IsTake = 'Y' AND MpIdx = EB.MpIdx AND TakeForm = (SELECT Ccd FROM lms_sys_code Where CcdName = 'off(학원)')) AS OfflineCnt,
-                   (SELECT COUNT(*) FROM {$this->_table['mockExamQuestion']} AS EQ WHERE EB.MpIdx = EQ.MpIdx AND EQ.IsStatus = 'Y') AS ListCnt,
-                   IF(MB.Isuse = 'N' OR C1.IsUse = 'N' OR SC.IsUse = 'N', 'N', 'Y') AS IsUseCate,
-                   IF(MS.Isuse = 'N' OR SJ.IsUse = 'N', 'N', 'Y') AS IsUseSubject,
-                   IF(P.Isuse = 'N' OR PMS.wIsUse = 'N', 'N', 'Y') AS IsUseProfessor
+        $column = "
+            EB.*, A.wAdminName, MB.CateCode, MB.Ccd, MS.SubjectType,
+            CONCAT(C1.CateName, ' > ', SC.CcdName) AS CateRouteName, SJ.SubjectName, PMS.wProfName,
+            (SELECT COUNT(MemIdx) 
+              FROM lms_mock_register AS MR
+                   JOIN lms_mock_register_r_paper AS RR ON MR.MrIdx = RR.MrIdx
+              WHERE IsStatus = 'Y' AND IsTake = 'Y' AND MpIdx = EB.MpIdx AND TakeForm = (SELECT Ccd FROM lms_sys_code Where CcdName = 'online')) AS OnlineCnt,
+            (SELECT COUNT(MemIdx) 
+              FROM lms_mock_register AS MR
+                   JOIN lms_mock_register_r_paper AS RR ON MR.MrIdx = RR.MrIdx 
+              WHERE IsStatus = 'Y' AND IsTake = 'Y' AND MpIdx = EB.MpIdx AND TakeForm = (SELECT Ccd FROM lms_sys_code Where CcdName = 'off(학원)')) AS OfflineCnt,
+            (SELECT COUNT(*) FROM {$this->_table['mockExamQuestion']} AS EQ WHERE EB.MpIdx = EQ.MpIdx AND EQ.IsStatus = 'Y') AS ListCnt,
+            IF(MB.Isuse = 'N' OR C1.IsUse = 'N' OR SC.IsUse = 'N', 'N', 'Y') AS IsUseCate,
+            IF(MS.Isuse = 'N' OR SJ.IsUse = 'N', 'N', 'Y') AS IsUseSubject,
+            IF(P.Isuse = 'N' OR PMS.wIsUse = 'N', 'N', 'Y') AS IsUseProfessor
         ";
         $from = "
-            FROM {$this->_table['mockExamBase']} AS EB
-            JOIN {$this->_table['mockAreaCate']} AS MC ON EB.MrcIdx = MC.MrcIdx AND MC.IsStatus = 'Y'
-            JOIN {$this->_table['mockSubject']} AS MS ON MC.MrsIdx = MS.MrsIdx AND MS.IsStatus = 'Y'
-            JOIN {$this->_table['subject']} AS SJ ON MS.SubjectIdx = SJ.SubjectIdx AND SJ.IsStatus = 'Y'
-            JOIN {$this->_table['mockBase']} AS MB ON MS.MmIdx = MB.MmIdx AND MB.IsStatus = 'Y'
-            JOIN {$this->_table['category']} AS C1 ON MB.CateCode = C1.CateCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y'
-            JOIN {$this->_table['sysCode']} AS SC ON MB.Ccd = SC.Ccd AND SC.IsStatus = 'Y'
-            JOIN {$this->_table['professor']} AS P ON EB.ProfIdx = P.ProfIdx AND P.IsStatus = 'Y'
-            JOIN {$this->_table['pms_professor']} AS PMS ON P.wProfIdx = PMS.wProfIdx AND PMS.wIsStatus = 'Y'
-            LEFT JOIN {$this->_table['admin']} AS A ON EB.RegAdminIdx = A.wAdminIdx
+            FROM 
+                {$this->_table['mockExamBase']} AS EB
+                JOIN {$this->_table['mockAreaCate']} AS MC ON EB.MrcIdx = MC.MrcIdx AND MC.IsStatus = 'Y'
+                JOIN {$this->_table['mockSubject']} AS MS ON MC.MrsIdx = MS.MrsIdx AND MS.IsStatus = 'Y'
+                JOIN {$this->_table['subject']} AS SJ ON MS.SubjectIdx = SJ.SubjectIdx AND SJ.IsStatus = 'Y'
+                JOIN {$this->_table['mockBase']} AS MB ON MS.MmIdx = MB.MmIdx AND MB.IsStatus = 'Y'
+                JOIN {$this->_table['category']} AS C1 ON MB.CateCode = C1.CateCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y'
+                JOIN {$this->_table['sysCode']} AS SC ON MB.Ccd = SC.Ccd AND SC.IsStatus = 'Y'
+                JOIN {$this->_table['professor']} AS P ON EB.ProfIdx = P.ProfIdx AND P.IsStatus = 'Y'
+                JOIN {$this->_table['pms_professor']} AS PMS ON P.wProfIdx = PMS.wProfIdx AND PMS.wIsStatus = 'Y'
+                LEFT JOIN {$this->_table['admin']} AS A ON EB.RegAdminIdx = A.wAdminIdx
         ";
         $selectCount = "SELECT COUNT(*) AS cnt";
         $where = "WHERE EB.IsStatus = 'Y'";
         $where .= $this->_conn->makeWhere($condition)->getMakeWhere(true)."\n";
         $order = "ORDER BY EB.MpIdx DESC\n";
-        //echo "<pre>".$select . $from . $where . $order . $offset_limit."</pre>";
-        $data = $this->_conn->query($select . $from . $where . $order . $offset_limit)->result_array();
+        $data = $this->_conn->query('SELECT '.$column . $from . $where . $order . $offset_limit)->result_array();
         $count = $this->_conn->query($selectCount . $from . $where)->row()->cnt;
 
         // TODO 응시현황 추가
 
         return array($data, $count);
     }
-
 
     /**
      * 데이터 복사

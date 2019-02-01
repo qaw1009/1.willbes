@@ -4,7 +4,7 @@
     <h5>- 학원에 방문한 수강생의 학원강좌 결제를 진행하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
-        {!! html_site_tabs('tabs_site_code') !!}
+        {!! html_site_tabs('tabs_site_code', 'tab', true, [], false, $arr_site_code) !!}
         <input type="hidden" id="search_site_code" name="search_site_code" value=""/>
         <div class="x_panel">
             <div class="x_content">

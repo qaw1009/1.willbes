@@ -19,6 +19,9 @@ class Visit extends BaseOrder
      */
     public function index()
     {
+        // 학원사이트 코드 조회
+        $arr_site_code = $this->siteModel->getOffLineSiteArray('');
+
         // 사용하는 코드값 조회
         $arr_target_group_ccd = array_filter_keys($this->_group_ccd, ['PayMethod', 'ProdType', 'LearnPattern', 'PayStatus']);
         $codes = $this->codeModel->getCcdInArray(array_values($arr_target_group_ccd));
@@ -30,6 +33,7 @@ class Visit extends BaseOrder
         $arr_pay_method_ccd = array_filter_keys($codes[$this->_group_ccd['PayMethod']], array_filter_keys($this->orderListModel->_pay_method_ccd, ['willbes_bank', 'visit_card', 'visit_cash', 'visit_card_cash']));
 
         $this->load->view('pay/visit/index', [
+            'arr_site_code' => $arr_site_code,
             'arr_pay_method_ccd' => $arr_pay_method_ccd,
             'arr_prod_type_ccd' => $codes[$this->_group_ccd['ProdType']],
             'arr_learn_pattern_ccd' => $codes[$this->_group_ccd['LearnPattern']],

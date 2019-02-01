@@ -452,7 +452,7 @@ class EventLecture extends \app\controllers\BaseController
             // 댓글현황 조회
             $arr_condition = $this->_getCommentListConditions($el_idx);
             $count_comment = $this->eventLectureModel->listAllEventComment(true, $arr_condition);
-            if (count($count_comment) > 0) {
+            if (empty($count_comment) === false) {
                 $data_comment = $this->eventLectureModel->listAllEventComment(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.CIdx' => 'asc']);
 
                 foreach ($data_comment as $key => $row) {

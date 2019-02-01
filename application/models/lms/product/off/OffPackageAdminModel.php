@@ -63,6 +63,7 @@ class OffPackageAdminModel extends CommonLectureModel
                         left outer join lms_product_sale D on A.ProdCode = D.ProdCode and D.SaleTypeCcd=\'613001\' and D.IsStatus=\'Y\'	#Pc+모바일 판매가만 추출
                         left outer join lms_product_copy_log Y on A.ProdCode = Y.ProdCode
                         left outer join wbs_sys_admin Z on A.RegAdminIdx = Z.wAdminIdx
+                        join lms_sys_admin_r_site_campus X on (A.SiteCode = X.SiteCode and B.CampusCcd = X.CampusCcd) and X.IsStatus=\'Y\' and X.wAdminIdx='.$this->session->userdata('admin_idx').'
                      where A.IsStatus=\'Y\'
         ';
 

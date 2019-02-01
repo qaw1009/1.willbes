@@ -69,6 +69,7 @@ class OffLectureModel extends CommonLectureModel
                         left outer join (select ProdCode, count(*) as DivisionCount from lms_product_division where IsStatus=\'Y\' group by ProdCode) as F on A.ProdCode = F.ProdCode
                         left outer join lms_product_copy_log Y on A.ProdCode = Y.ProdCode
                         left outer join wbs_sys_admin Z on A.RegAdminIdx = Z.wAdminIdx
+                        join lms_sys_admin_r_site_campus X on (A.SiteCode = X.SiteCode and B.CampusCcd = X.CampusCcd) and X.IsStatus=\'Y\' and X.wAdminIdx='.$this->session->userdata('admin_idx').'
                     where A.IsStatus=\'Y\'
         ';
 

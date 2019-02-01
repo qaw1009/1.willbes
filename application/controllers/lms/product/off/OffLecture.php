@@ -16,6 +16,10 @@ Class OffLecture extends \app\controllers\BaseController
 
     public function index()
     {
+        /* 학원사이트 탭 만 노출하기 위한 함수*/
+        $arr_code['arr_site_code'] = $this->siteModel->getOffLineSiteArray('');
+        $def_site_code = key($arr_code['arr_site_code']);
+
         //공통코드
         $codes = $this->codeModel->getCcdInArray(['653','654','675']);
 
@@ -39,6 +43,8 @@ Class OffLecture extends \app\controllers\BaseController
             'studyapply_ccd' => $codes['654'],
             'accept_ccd' => $codes['675'],
             'campusList' => $campusList,
+            'def_site_code' => $def_site_code,
+            'arr_site_code' => $arr_code['arr_site_code']
         ]);
     }
 
@@ -110,10 +116,12 @@ Class OffLecture extends \app\controllers\BaseController
             $list = $this->offLectureModel->listLecture(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.ProdCode' => 'desc']);
         }
 
+
         return $this->response([
             'recordsTotal' => $count,
             'recordsFiltered' => $count,
-            'data' => $list
+            'data' => $list,
+
         ]);
     }
 

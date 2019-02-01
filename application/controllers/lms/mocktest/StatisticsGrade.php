@@ -22,7 +22,6 @@ class StatisticsGrade extends \app\controllers\BaseController
     protected $applyType_off;
     protected $acceptStatus;
 
-
     public function __construct()
     {
         parent::__construct();
@@ -56,10 +55,7 @@ class StatisticsGrade extends \app\controllers\BaseController
             'applyType' => $codes[$this->applyType],
             'accept_ccd' => $codes[$this->acceptStatus],
         ]);
-
-
     }
-
 
     /**
      * 리스트
@@ -74,7 +70,6 @@ class StatisticsGrade extends \app\controllers\BaseController
             ['field' => 'search_round', 'label' => '회차', 'rules' => 'trim|is_natural_no_zero'],
             ['field' => 'search_TakeFormsCcd', 'label' => '응시형태', 'rules' => 'trim|is_natural_no_zero'],
             ['field' => 'search_AcceptStatus', 'label' => '접수상태', 'rules' => 'trim|is_natural_no_zero'],
-            //['field' => 'search_TakeType', 'label' => '응시기간', 'rules' => 'trim|in_list[A,L]'],
             ['field' => 'search_use', 'label' => '사용여부', 'rules' => 'trim|in_list[Y,N]'],
             ['field' => 'search_fi', 'label' => '검색', 'rules' => 'trim'],
             ['field' => 'length', 'label' => 'Length', 'rules' => 'trim|numeric'],
@@ -120,7 +115,6 @@ class StatisticsGrade extends \app\controllers\BaseController
      */
     public function statSubject($param = [])
     {
-        //$arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
         $prodcode = $param[0];
 
         $productInfo = $this->regGradeModel->productInfo($prodcode);

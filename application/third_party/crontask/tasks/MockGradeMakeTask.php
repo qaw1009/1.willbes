@@ -7,11 +7,6 @@ require_once APPPATH . 'third_party/crontask/tasks/Task.php';
 
 class MockGradeMakeTask extends \crontask\tasks\Task
 {
-    /**
-     * @var \CI_DB_query_builder
-     */
-    private $_db;
-
     public function __construct()
     {
         parent::__construct();
@@ -31,15 +26,17 @@ class MockGradeMakeTask extends \crontask\tasks\Task
             $this->_CI->load->model('lms/mocktest/regGradeModel');
             $result = $this->_CI->regGradeModel->todayScoreMake();
 
-            if($result == 1) $result = "정상등록";
-            else             $result = "오류발생";
+            if($result == 1) {
+                $result = '정상등록';
+            } else {
+                $result = '오류발생';
+            }
 
             return $result;
         } catch (\Exception $e) {
-            $this->setOutput('SampleTask error occured. [' . $e->getMessage() . ']');
+            $this->setOutput('MockGradeMakeTask error occured. [' . $e->getMessage() . ']');
 
             return 'Error (0)';
         }
-
     }
 }

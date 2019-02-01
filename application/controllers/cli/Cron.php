@@ -25,9 +25,9 @@ class Cron extends \app\controllers\BaseController
         $scheduler = new crontask\Scheduler();
 
         $scheduler->addTasks([
-            (new crontask\tasks\MockGradeMakeTask())->setExpression('20 0 * * *'),  // 매일 0시 20분 실행
             (new crontask\tasks\MemberPointExpireTask())->setExpression('10 0 * * *'),  // 매일 0시 10분 실행
-            (new crontask\tasks\VbankWaitToExpireTask())->setExpression('40 0 * * *')   // 매일 0시 40분 실행
+            (new crontask\tasks\VbankWaitToExpireTask())->setExpression('40 0 * * *'),   // 매일 0시 40분 실행
+            (new crontask\tasks\MockGradeMakeTask())->setExpression('10 1 * * *')  // 매일 1시 10분 실행
         ]);
 
         $scheduler->run();

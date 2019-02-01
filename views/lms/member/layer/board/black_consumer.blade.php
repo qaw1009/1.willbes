@@ -6,8 +6,10 @@
     <div class="x_panel mt-5">
         <div class="x_content">
             <div class="form-group">
-                <div class="col-xs-12 form-inline">
+                <div class="col-xs-1">
                     {!! html_site_select('', 'regi_site_code', 'regi_site_code', '', '운영 사이트', '', '', true) !!}
+                </div>
+                <div class="col-md-5 form-inline">
                     <button type="submit" class="btn btn-success mr-10">저장</button>
                     <button type="button" class="btn btn-default mr-10" onclick="javascript:data_clear();">취소</button>
                 </div>

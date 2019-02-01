@@ -5,7 +5,7 @@
 
 @section('layer_header')
     <form class="form-horizontal" id="search_form_modal" name="search_form_modal" method="POST" onsubmit="return false;">
-        <input type="hidden" name="memIdx" value="{{$data['MemIdx']}}" />
+        <input type="hidden" name="search_member_idx" value="{{$data['MemIdx']}}" />
         <input type="hidden" name="UpdTypeCcd" value="656006" />
         {!! csrf_field() !!}
         @endsection
@@ -19,6 +19,7 @@
                         <thead>
                         <tr>
                             <th>No</th>
+                            <th>운영사이트</th>
                             <th>이유</th>
                             <th>날짜</th>
                             <th>관리자</th>
@@ -42,7 +43,7 @@
                         pageLength : 10,
                         pagingType : 'simple_numbers',
                         ajax: {
-                            'url' : '{{ site_url("/member/manage/ajaxinfologList/") }}',
+                            'url' : '{{ site_url('/member/manage/ajaxBlackConsumerDataTable/') }}',
                             'type' : 'POST',
                             'data' : function(data) {
                                 return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
@@ -53,9 +54,12 @@
                                     // 리스트 번호
                                     return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                                 }},
-                            {'data' : 'UpdMemo'},
-                            {'data' : 'UpdDatm'},
-                            {'data' : 'adminName'}
+                            {'data' : 'SiteName'},
+                            {'data' : 'Content', 'render' : function(data, type, row, meta) {
+                                    return '<p id="content_id_'+row.BcIdx+'">'+nl2br(data)+'</p>';
+                                }},
+                            {'data' : 'RegDatm'},
+                            {'data' : 'RegAdminName'}
                         ]
                     });
                 });
@@ -68,4 +72,9 @@
 
         @section('layer_footer')
     </form>
+    <script type="text/javascript">
+        function nl2br(str){
+            return str.replace(/\n/g, "<br />");
+        }
+    </script>
 @endsection

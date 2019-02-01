@@ -30,6 +30,7 @@ class MockGradeMakeTask extends \crontask\tasks\Task
      */
     public function run()
     {
+        /*
         try {
             $query = $this->_db->query('call sp_member_point_expire');
             $result = $query->row(0);
@@ -42,11 +43,11 @@ class MockGradeMakeTask extends \crontask\tasks\Task
 
             return 'Error (0)';
         }
-        /*
+        */
         try {
-            //$this->_CI->load->model('mocktest/regGrade')->todayScoreMake();
-            //$this->_CI->load->model('mocktest/regGrade');
-            //$result = $this->regGrade->todayScoreMake();
+            $this->_CI->load->model('mocktest/regGrade')->todayScoreMake();
+            $this->_CI->load->model('mocktest/regGrade');
+            $result = $this->regGrade->todayScoreMake();
             if($result == 1) $result = "정상등록";
             else             $result = "오류발생";
 
@@ -55,6 +56,6 @@ class MockGradeMakeTask extends \crontask\tasks\Task
             $this->setOutput('SampleTask error occured. [' . $e->getMessage() . ']');
 
             return 'Error (0)';
-        }*/
+        }
     }
 }

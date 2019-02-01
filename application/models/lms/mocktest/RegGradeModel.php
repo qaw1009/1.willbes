@@ -440,17 +440,43 @@ class RegGradeModel extends WB_Model
     }
 
     /**
+     * 크론탭에서 호출(성적오픈일에 성적데이터생성)
+     * @param
+     * @return result
+     */
+    public function todayScoreMake(){
+
+        $column = "
+                ProdCode
+            ";
+
+        $from = "
+                FROM
+                    lms_mock_group AS MG 
+	                JOIN lms_Mock_Group_R_Product AS RP ON MG.MgIdx = RP.MgIdx
+            ";
+
+        $obder_by = " LIMIT 1";
+
+        $where = " WHERE GradeOpenDatm = curdate() ";
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+
+        $prodcode = $query->row_array();
+
+        if($prodcode['ProdCode']) return $this->scoreMake($prodcode['ProdCode'],'cron');
+    }
+
+    /**
      * 조정점수반영
      * @param array $formData
      * @return mixed
      */
-    public function scoreMake($formData = [])
+    public function scoreMake($ProdCodeOrigin,$mode)
     {
 
         try {
             $this->_conn->trans_begin();
-
-            $ProdCodeOrigin = element('ProdCode', $formData);
 
             $column = "
                 ProdCode
@@ -479,10 +505,18 @@ class RegGradeModel extends WB_Model
                 }
 
                 // 데이터 입력
-                $data = [
-                    'MemId' => $this->session->userdata('admin_id'),
-                    'ProdCode' => $ProdCode
-                ];
+                if($mode == 'web'){
+
+                    $data = [
+                        'MemId' => $this->session->userdata('admin_id'),
+                        'ProdCode' => $ProdCode
+                    ];
+                }else{
+                    $data = [
+                        'MemId' => 'systemcron',
+                        'ProdCode' => $ProdCode
+                    ];
+                }
 
                 if ($this->_conn->set($data)->set('RegDatm', 'NOW()', false)->insert($this->_table['mockGradesLog']) === false) {
                     throw new \Exception('시험데이터가 없습니다.');

@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 require_once APPPATH . 'third_party/crontask/Scheduler.php';
 require_once APPPATH . 'third_party/crontask/tasks/MemberPointExpireTask.php';
 require_once APPPATH . 'third_party/crontask/tasks/VbankWaitToExpireTask.php';
-//require_once APPPATH . 'third_party/crontask/tasks/MockGradeMakeTask.php';
+require_once APPPATH . 'third_party/crontask/tasks/MockGradeMakeTask.php';
 
 
 class Cron extends \app\controllers\BaseController
@@ -25,7 +25,7 @@ class Cron extends \app\controllers\BaseController
         $scheduler = new crontask\Scheduler();
 
         $scheduler->addTasks([
-            //(new crontask\tasks\MockGradeMakeTask())->setExpression('* * * * *')  // 매일 0시 20분 실행
+            (new crontask\tasks\MockGradeMakeTask())->setExpression('20 0 * * *'),  // 매일 0시 20분 실행
             (new crontask\tasks\MemberPointExpireTask())->setExpression('10 0 * * *'),  // 매일 0시 10분 실행
             (new crontask\tasks\VbankWaitToExpireTask())->setExpression('40 0 * * *')   // 매일 0시 40분 실행
         ]);

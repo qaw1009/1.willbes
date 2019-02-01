@@ -6,7 +6,7 @@
             <li role="presentation" id="tab_cs"><a href="javascript:boardLoad('ajaxCs');">CS상담관리({{$tabs_data['cs']}})</a></li>
             <li role="presentation" id="tab_tm"><a href="javascript:boardLoad('ajaxTm');">TM상담관리({{$tabs_data['tm']}})</a></li>
             <li role="presentation" id="tab_profQna"><a href="javascript:boardLoad('ajaxProfQna');">교수학습Q&A({{$tabs_data['profQna']}})</a></li>
-            <li role="presentation" id="tab_consumer"><a href="javascript:boardLoad('ajaxConsumer');">블랙컨슈머({{$tabs_data['consumer']}})</a></li>
+            <li role="presentation" id="tab_blackConsumer"><a href="javascript:boardLoad('ajaxBlackConsumer');">블랙컨슈머({{$tabs_data['blackConsumer']}})</a></li>
         </ul>
     </div>
 </div>

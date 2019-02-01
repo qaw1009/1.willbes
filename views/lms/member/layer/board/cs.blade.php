@@ -99,7 +99,7 @@
         $search_form.find('select[name="search_cs_ccd"]').chained("#search_group_cs_ccd");
         $regi_form.find('select[name="regi_cs_ccd"]').chained("#regi_group_cs_ccd");
 
-        // 전체포인트현황 목록
+        // 목록
         $datatable = $list_table.DataTable({
             serverSide: true,
             paging: true,
@@ -126,7 +126,7 @@
                 {'data' : 'RegDatm'},
                 {'data' : 'UpdAdminName'},
                 {'data' : 'UpdDatm'},
-                {'data' : 'BoardIdx', 'render' : function(data, type, row, meta) {
+                {'data' : 'CsIdx', 'render' : function(data, type, row, meta) {
                         var return_data = '';
                         return_data += '<a href="javascript:void(0);" class="btn-modify" ';
                         return_data += 'data-cs-idx="'+row.CsIdx+'" ';

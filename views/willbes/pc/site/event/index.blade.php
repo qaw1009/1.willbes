@@ -24,12 +24,15 @@
                             <option value="{{$key}}" @if(element('s_request_type', $arr_input) == $key)selected="selected"@endif>{{$val}}</option>
                         @endforeach
                     </select>
+
+                    @if(empty($arr_base['campus']) === false)
                     <select id="s_campus" name="s_campus" title="캠퍼스" class="seleCampus f_left mr10" onchange="goUrl('s_campus',this.value)">
                         <option value="">전체 캠퍼스</option>
                         @foreach($arr_base['campus'] as $key => $val)
                             <option value="{{$key}}" @if(element('s_campus', $arr_input) == $key)selected="selected"@endif>{{$val}}</option>
                         @endforeach
                     </select>
+                    @endif
                 </div>
                 <div class="willbes-Lec-Search GM f_left">
                     <div class="inputBox p_re">

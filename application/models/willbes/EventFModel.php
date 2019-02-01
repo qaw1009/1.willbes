@@ -20,6 +20,9 @@ class EventFModel extends WB_Model
         'sys_code' => 'lms_sys_code',
         'crm_send' => 'lms_crm_send',
         'crm_send_r_receive_sms' => 'lms_crm_send_r_receive_sms',
+        'product_subject' => 'lms_product_subject',
+        'professor' => 'lms_professor',
+        'pms_professor' => 'wbs_pms_professor'
     ];
     public $_request_type = [
         '1' => '설명회',
@@ -121,7 +124,8 @@ class EventFModel extends WB_Model
             IFNULL(H.CCount,\'0\') AS CommentCount,
             CASE A.RequstType WHEN 1 THEN \'설명회\' WHEN 2 THEN \'특강\' WHEN 3 THEN \'이벤트\' WHEN 4 THEN \'합격수기\' END AS RequstTypeName,
             CASE A.IsRegister WHEN \'Y\' THEN \'접수중\' WHEN 2 THEN \'마감\' END AS IsRegisterName,
-            CASE A.TakeType WHEN 1 THEN \'회원\' WHEN 2 THEN \'회원+비회원\' END AS TakeTypeName
+            CASE A.TakeType WHEN 1 THEN \'회원\' WHEN 2 THEN \'회원+비회원\' END AS TakeTypeName,
+            P.SubjectName, R.wProfName
             ';
 
         $from = "
@@ -134,6 +138,9 @@ class EventFModel extends WB_Model
             LEFT JOIN {$this->_table['event_file']} AS L ON A.ElIdx = L.ElIdx AND L.IsUse = 'Y' AND L.FileType = 'F'
             INNER JOIN {$this->_table['site']} AS G ON A.SiteCode = G.SiteCode
             LEFT OUTER JOIN {$this->_table['sys_code']} AS J ON A.CampusCcd = J.Ccd
+            LEFT OUTER JOIN {$this->_table['product_subject']} as P ON A.SubjectIdx = P.SubjectIdx
+            LEFT OUTER JOIN {$this->_table['professor']} as Q ON A.ProfIdx = Q.ProfIdx
+            INNER JOIN {$this->_table['pms_professor']} as R ON Q.wProfIdx = R.wProfIdx
         ";
 
         $where = $this->_conn->makeWhere($arr_condition);

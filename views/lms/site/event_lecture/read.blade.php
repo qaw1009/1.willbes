@@ -30,8 +30,10 @@
             <div class="form-group">
                 <label class="control-label col-md-1-1">신청유형</label>
                 <div class="form-control-static col-md-4">{{$data['RequstTypeName']}}</div>
-                <label class="control-label col-md-1-1 d-line">진행일시</label>
-                <div class="form-control-static col-md-4 ml-12-dot">진행일시</div>
+                <label class="control-label col-md-1-1 d-line">특강구분</label>
+                <div class="form-control-static col-md-4 ml-12-dot">
+                    {{$data['SubjectName']}} {{$data['ProfNickName']}}
+                </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-md-1-1">참여구분</label>

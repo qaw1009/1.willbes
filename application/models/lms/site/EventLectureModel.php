@@ -17,7 +17,9 @@ class EventLectureModel extends WB_Model
         'member' => 'lms_member',
         'member_otherinfo' => 'lms_member_otherinfo',
         'banner' => 'lms_banner',
-        'admin' => 'wbs_sys_admin'
+        'admin' => 'wbs_sys_admin',
+        'product_subject' => 'lms_product_subject',
+        'professor' => 'lms_professor'
     ];
 
     public $_groupCcd = [
@@ -474,7 +476,8 @@ class EventLectureModel extends WB_Model
             A.ContentType, A.Content, A.OptionCcds, A.LimitType, A.SelectType,
             A.SendTel, A.SmsContent, A.PopupTitle, A.CommentUseArea, A.Link, A.ReadCnt, A.AdjuReadCnt,
             A.RegDatm, A.RegAdminIdx, A.RegIp, A.UpdDatm, A.UpdAdminIdx, C.wAdminName AS RegAdminName, D.wAdminName AS UpdAdminName,
-            B.SiteName, E.CcdName AS CampusName
+            B.SiteName, E.CcdName AS CampusName,
+            G.SubjectName, H.ProfNickName
             ";
 
         $from = "
@@ -484,6 +487,8 @@ class EventLectureModel extends WB_Model
             LEFT OUTER JOIN {$this->_table['admin']} AS D ON A.UpdAdminIdx = D.wAdminIdx AND D.wIsStatus='Y'
             LEFT OUTER JOIN {$this->_table['sys_code']} AS E ON A.CampusCcd = E.Ccd AND E.IsStatus='Y'
             LEFT OUTER JOIN {$this->_table['banner']} as F ON A.BIdx = F.BIdx AND F.LinkType = 'layer'
+            LEFT OUTER JOIN {$this->_table['product_subject']} as G ON A.SubjectIdx = G.SubjectIdx
+            LEFT OUTER JOIN {$this->_table['professor']} as H ON A.ProfIdx = H.ProfIdx
         ";
 
         $where = $this->_conn->makeWhere($arr_condition);

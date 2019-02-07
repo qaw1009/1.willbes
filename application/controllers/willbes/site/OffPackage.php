@@ -43,10 +43,13 @@ class OffPackage extends \app\controllers\FrontController
         $arr_base['category'] = $this->categoryFModel->listSiteCategory($this->_site_code);
 
         // 캠퍼스 조회
-        $arr_base['campus'] = array_map(function($var) {
-            $tmp_arr = explode(':', $var);
-            return ['CampusCcd' => $tmp_arr[0], 'CampusCcdName' => $tmp_arr[1]];
-        }, explode(',', config_app('CampusCcdArr')));
+        $arr_base['campus'] = [];
+        if (config_app('CampusCcdArr') != 'N') {
+            $arr_base['campus'] = array_map(function ($var) {
+                $tmp_arr = explode(':', $var);
+                return ['CampusCcd' => $tmp_arr[0], 'CampusCcdName' => $tmp_arr[1]];
+            }, explode(',', config_app('CampusCcdArr')));
+        }
 
         // 카테고리가 있을 경우에만 조회
         if (empty($cate_code) === false) {

@@ -8,7 +8,7 @@
                 <div class="pull-left x_title mb-5"><h2>모의고사정보</h2></div>
                 <div id='btnarea' class="pull-right text-right form-inline mb-5">
                     <button class="btn btn-sm btn-primary" id="act-addRow" onClick="printPage()">인쇄</button>
-                    <button class="btn btn-sm btn-primary" id="act-sort" onClick="scoreMake({{ $prodcode }})">조정점수반영</button>
+                    <button class="btn btn-sm btn-primary" id="act-sort" onClick="scoreMake({{ $mgidx }})">조정점수반영</button>
                     <button class="btn btn-sm btn-success" id="goList">목록</button>
                 </div>
             </div>
@@ -168,7 +168,7 @@
     </div>
     <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
         {!! csrf_field() !!}
-        <input type="hidden" id="ProdCode" name="ProdCode" value="">
+        <input type="hidden" id="MgIdx" name="MgIdx" value="">
     </form>
     <style>
         .tooltip-inner { max-width: 100%; padding: 2px; background: #555; }
@@ -228,8 +228,8 @@
         }
 
         // 조정점수 반영
-        function scoreMake(prodcode){
-            $('#ProdCode').val(prodcode);
+        function scoreMake(mgidx){
+            $('#MgIdx').val(mgidx);
 
             var _url = '{{ site_url('/mocktest/statisticsGrade/scoreMakeAjax') }}';
             ajaxSubmit($regi_form, _url, function(ret) {
@@ -237,6 +237,7 @@
                     alert(ret.ret_msg);
                 }
             }, showValidateError, null, false, 'alert');
+
         }
 
     </script>

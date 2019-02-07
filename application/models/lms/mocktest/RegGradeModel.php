@@ -68,6 +68,7 @@ class RegGradeModel extends WB_Model
         $column = "
                 MP.*, CONCAT(A.wAdminName,'\<br\>(', MP.RegDatm,')') AS wAdminName, PD.ProdName, PD.SaleStartDatm, PD.SaleEndDatm, 
                 PD.IsUse, PS.SalePrice, PS.RealSalePrice, CONCAT(TakeStartDatm,'~',TakeEndDatm) AS SETIME, CONCAT(TakeTime,' 분') AS TakeStr,
+                (SELECT MgIdx FROM lms_mock_group_r_product WHERE ProdCode = PD.ProdCode AND IsStatus='Y') AS MgIdx,
                 (SELECT COUNT(MemIdx) FROM {$this->_table['mockRegister']} WHERE IsStatus = 'Y' AND IsTake = 'Y' AND ProdCode = MP.ProdCode AND TakeForm = (SELECT Ccd FROM {$this->_table['sysCode']} Where CcdName = 'online')) AS OnlineCnt,
                 (SELECT COUNT(MemIdx) FROM {$this->_table['mockRegister']} WHERE IsStatus = 'Y' AND IsTake = 'Y' AND ProdCode = MP.ProdCode AND TakeForm = (SELECT Ccd FROM {$this->_table['sysCode']} Where CcdName = 'off(학원)')) AS OfflineCnt,
                 (SELECT COUNT(*) FROM {$this->_table['mockGrades']} WHERE ProdCode = PD.ProdCode) AS GradeCNT,  
@@ -433,8 +434,7 @@ class RegGradeModel extends WB_Model
      */
     public function todayScoreMake()
     {
-
-        $column = "ProdCode";
+        $column = "RP.MgIdx";
 
         $from = "
                 FROM
@@ -442,25 +442,25 @@ class RegGradeModel extends WB_Model
 	                JOIN lms_Mock_Group_R_Product AS RP ON MG.MgIdx = RP.MgIdx
             ";
 
-        $obder_by = " Group By ProdCode";
+        $obder_by = " Group By RP.MgIdx";
 
         $where = " WHERE GradeOpenDatm = curdate() ";
 
         $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
 
-        $prodcode = $query->row_array();
+        $res = $query->row_array();
 
-        if ($prodcode['ProdCode']){
-            return $this->scoreMake($prodcode['ProdCode'], 'cron');
+        if ($res['MgIdx']){
+            return $this->scoreMake($res['MgIdx'], 'cron');
         }
     }
 
     /**
      * 조정점수반영
-     * @param array $formData
+     * @param $MgIdx $mode = cron or web
      * @return mixed
      */
-    public function scoreMake($ProdCodeOrigin, $mode)
+    public function scoreMake($MgIdx, $mode)
     {
 
         try {
@@ -479,10 +479,7 @@ class RegGradeModel extends WB_Model
 
             $where = " 
             WHERE 
-                MgIdx = (
-                    SELECT MgIdx FROM {$this->_table['mockGroupR']} 
-                    WHERE ProdCode = " . $ProdCodeOrigin . " AND IsStatus='Y' LIMIT 1
-                ) 
+                MgIdx = " . $MgIdx . "
                 AND IsStatus = 'Y' ";
 
             $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);

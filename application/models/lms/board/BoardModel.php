@@ -675,10 +675,9 @@ class BoardModel extends WB_Model
     /**
      * Best 상태 update
      * @param array $params
-     * @param array $before_params
      * @return array|bool
      */
-    public function boardIsBest($params = [], $before_params = [])
+    public function boardIsBest($params = [])
     {
         $this->_conn->trans_begin();
 
@@ -687,28 +686,13 @@ class BoardModel extends WB_Model
                 throw new \Exception('필수 파라미터 오류입니다.');
             }
 
-            $set_data_Y = ['IsBest'=>'1'];
-            $set_data_N = ['IsBest'=>'0'];
-            $str_board_idx_Y = implode(',', array_keys($params));
-            $arr_board_idx_Y = explode(',', $str_board_idx_Y);
+            foreach ($params as $board_idx => $columns) {
+                $this->_conn->set($columns)->set('UpdAdminIdx', $this->session->userdata('admin_idx'))->where('BoardIdx', $board_idx);
 
-            $str_board_idx_N = implode(',', array_keys($before_params));
-            $arr_board_idx_N = explode(',', $str_board_idx_N);
-
-            //배열의 차집합 취득
-            array_values(array_diff($arr_board_idx_Y, $arr_board_idx_N));
-            $arr_board_idx_N = array_values(array_diff($arr_board_idx_N, $arr_board_idx_Y));
-
-            $this->_conn-> set($set_data_Y)->where_in('boardIdx',$arr_board_idx_Y);
-            if($this->_conn->update($this->_table)=== false) {
-                throw new \Exception('데이터 수정에 실패했습니다.');
-            }
-
-            if (count($arr_board_idx_N) > 0) {
-                $this->_conn->set($set_data_N)->where_in('boardIdx', $arr_board_idx_N);
                 if ($this->_conn->update($this->_table) === false) {
-                    throw new \Exception('데이터 수정에 실패했습니다.');
+                    throw new \Exception('게시판 정보 수정에 실패했습니다.');
                 }
+                //echo $this->_conn->last_query();
             }
 
             $this->_conn->trans_commit();

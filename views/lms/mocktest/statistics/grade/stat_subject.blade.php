@@ -8,7 +8,7 @@
                 <div class="pull-left x_title mb-5"><h2>모의고사정보</h2></div>
                 <div id='btnarea' class="pull-right text-right form-inline mb-5">
                     <button class="btn btn-sm btn-primary" id="act-addRow" onClick="printPage()">인쇄</button>
-                    <button class="btn btn-sm btn-primary" id="act-sort" onClick="scoreMake({{ $prodcode }})">조정점수반영</button>
+                    <button class="btn btn-sm btn-primary" id="act-sort" onClick="scoreMake({{ $mgidx }})">조정점수반영</button>
                     <button class="btn btn-sm btn-success" id="goList">목록</button>
                 </div>
             </div>
@@ -59,7 +59,7 @@
                 </table>
             @endif
         </div>
-        <h5 class="mt-20">- 모의고사 기준으로 조정점수를 수동반영하고 성적 통계를 확인하는 메뉴입니다.(개인 성적표 통계 처리를 위한 단계)</h5>
+        <h5 class="mt-20">- 직렬별 응시인원 = 모의고사그룹코드로 묶인 경우, 그룹핑된 각 모의고사를 응시한 인원의 총합(각 모의고사의 응시인원과 상이할 수 있음)</h5>
         <div class="x_panel">
             @if(empty($list)===false)
                 @foreach($list as $keys => $rows)
@@ -168,7 +168,7 @@
     </div>
     <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
         {!! csrf_field() !!}
-        <input type="hidden" id="ProdCode" name="ProdCode" value="">
+        <input type="hidden" id="MgIdx" name="MgIdx" value="">
     </form>
     <style>
         .tooltip-inner { max-width: 100%; padding: 2px; background: #555; }
@@ -228,8 +228,8 @@
         }
 
         // 조정점수 반영
-        function scoreMake(prodcode){
-            $('#ProdCode').val(prodcode);
+        function scoreMake(mgidx){
+            $('#MgIdx').val(mgidx);
 
             var _url = '{{ site_url('/mocktest/statisticsGrade/scoreMakeAjax') }}';
             ajaxSubmit($regi_form, _url, function(ret) {
@@ -237,6 +237,7 @@
                     alert(ret.ret_msg);
                 }
             }, showValidateError, null, false, 'alert');
+
         }
 
     </script>

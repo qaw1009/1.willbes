@@ -116,6 +116,7 @@ class StatisticsGrade extends \app\controllers\BaseController
     public function statSubject($param = [])
     {
         $prodcode = $param[0];
+        $mgidx = $param[1];
 
         $productInfo = $this->regGradeModel->productInfo($prodcode);
 
@@ -147,7 +148,8 @@ class StatisticsGrade extends \app\controllers\BaseController
             'list' => $list,
             'TakeMockPartSet' => $TakeMockPartSet,
             'MpIdxSet' => $MpIdxSet,
-            'prodcode' => $prodcode
+            'prodcode' => $prodcode,
+            'mgidx' => $mgidx
         ]);
 
 
@@ -160,8 +162,8 @@ class StatisticsGrade extends \app\controllers\BaseController
     public function scoreMakeAjax()
     {
         $formData = $this->_reqP(null, false);
-        $ProdCode = element('ProdCode', $formData);
-        $result = $this->regGradeModel->scoreMake($ProdCode,'web');
+        $MgIdx = element('MgIdx', $formData);
+        $result = $this->regGradeModel->scoreMake($MgIdx,'web');
         $this->json_result($result, '저장되었습니다.', $result, $result);
 
     }

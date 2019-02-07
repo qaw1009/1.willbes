@@ -68,10 +68,11 @@ class RegGradeModel extends WB_Model
         $column = "
                 MP.*, CONCAT(A.wAdminName,'\<br\>(', MP.RegDatm,')') AS wAdminName, PD.ProdName, PD.SaleStartDatm, PD.SaleEndDatm, 
                 PD.IsUse, PS.SalePrice, PS.RealSalePrice, CONCAT(TakeStartDatm,'~',TakeEndDatm) AS SETIME, CONCAT(TakeTime,' 분') AS TakeStr,
+                (SELECT MgIdx FROM lms_mock_group_r_product WHERE ProdCode = PD.ProdCode AND IsStatus='Y') AS MgIdx,
                 (SELECT COUNT(MemIdx) FROM {$this->_table['mockRegister']} WHERE IsStatus = 'Y' AND IsTake = 'Y' AND ProdCode = MP.ProdCode AND TakeForm = (SELECT Ccd FROM {$this->_table['sysCode']} Where CcdName = 'online')) AS OnlineCnt,
                 (SELECT COUNT(MemIdx) FROM {$this->_table['mockRegister']} WHERE IsStatus = 'Y' AND IsTake = 'Y' AND ProdCode = MP.ProdCode AND TakeForm = (SELECT Ccd FROM {$this->_table['sysCode']} Where CcdName = 'off(학원)')) AS OfflineCnt,
                 (SELECT COUNT(*) FROM {$this->_table['mockGrades']} WHERE ProdCode = PD.ProdCode) AS GradeCNT,  
-                (SELECT CcdName FROM {$this->_table['sysCode']} WHERE Ccd = MP.AcceptStatusCcd) AS AcceptStatusCcd,            
+                fn_ccd_name(MP.AcceptStatusCcd) AS AcceptStatusCcd,            
                 C1.CateName, C1.IsUse AS IsUseCate,
                 (
                     SELECT 
@@ -138,8 +139,8 @@ class RegGradeModel extends WB_Model
         $column = "
             MR.MemIdx, MP.*, A.wAdminName, MR.IsTake AS MrIsStatus, MR.MrIdx, MR.TakeNumber, MR.TakeArea,
             (SELECT MemName FROM {$this->_table['member']} WHERE MemIdx = MR.MemIdx) AS MemName,
-            (SELECT CcdName FROM {$this->_table['sysCode']} WHERE Ccd = MR.TakeForm) AS TakeFormType,
-            (SELECT CcdName FROM {$this->_table['sysCode']} WHERE Ccd = MR.TakeArea) AS TakeAreaName,
+            fn_ccd_name(MR.TakeForm) AS TakeFormType,
+            fn_ccd_name(MR.TakeArea) AS TakeAreaName,
             (SELECT CONCAT(Phone1,'-',fn_dec(Phone2Enc),'-',phone3) FROM {$this->_table['member']} WHERE MemIdx = MR.MemIdx) AS Phone,
             (SELECT ROUND(SUM(AdjustPoint),2) FROM {$this->_table['mockGrades']} WHERE MemIdx = MR.MemIdx AND ProdCode = PD.Prodcode) AS AdjustSum,
             (SELECT RegDatm FROM {$this->_table['mockLog']} WHERE MrIdx = MR.MrIdx ORDER BY RegDatm LIMIT 1) AS ExamRegDatm,
@@ -154,7 +155,7 @@ class RegGradeModel extends WB_Model
             ) AS SubjectName,
             (SELECT SiteGroupName FROM {$this->_table['siteGroup']} WHERE SiteGroupCode = (SELECT SiteGroupCode FROM lms_site WHERE SiteCode = PD.SiteCode)) AS SiteName,
             (SELECT RegDatm FROM {$this->_table['mockAnswerPaper']} WHERE MemIdx = MR.MemIdx AND MrIdx = MR.MrIdx ORDER BY RegDatm DESC LIMIT 1) AS IsDate,
-            (SELECT CcdName FROM {$this->_table['sysCode']} WHERE Ccd = MR.TakeMockPart) AS TakeMockPartName,
+            fn_ccd_name(MR.TakeMockPart) AS TakeMockPartName,
             (SELECT 
                 SUM(IF(MA.IsWrong = 'Y', Scoring, '0')) AS Res 
             FROM
@@ -227,12 +228,12 @@ class RegGradeModel extends WB_Model
             (SELECT MemName FROM {$this->_table['member']} WHERE MemIdx = MR.MemIdx) AS MemName,
             (SELECT CONCAT(Phone1,'-',fn_dec(Phone2Enc),'-',phone3) FROM {$this->_table['member']} WHERE MemIdx = MR.MemIdx) AS Phone,
             MR.TakeNumber,
-            (SELECT CcdName FROM {$this->_table['sysCode']} WHERE Ccd = MR.TakeForm) AS TakeFormType,
+            fn_ccd_name(MR.TakeForm) AS TakeFormType,
             MockYear,
             MockRotationNo,
             CONCAT('[',PD.ProdCode,']',PD.ProdName) AS ProdName,
             C1.CateName,
-            (SELECT CcdName FROM {$this->_table['sysCode']} WHERE Ccd = MR.TakeMockPart) AS TakeMockPartName,
+            fn_ccd_name(MR.TakeMockPart) AS TakeMockPartName,
             (
                 SELECT 
                     GROUP_CONCAT(SubjectName) 
@@ -242,7 +243,7 @@ class RegGradeModel extends WB_Model
                      RP.SubjectIdx IN (SELECT GROUP_CONCAT(SubjectIdx) FROM {$this->_table['mockRegisterR']} WHERE ProdCode = MR.ProdCode AND MrIdx = MR.MrIdx GROUP BY MpIdx)
                      AND MrIdx = MR.MrIdx
             ) AS SubjectName,
-            (SELECT CcdName FROM {$this->_table['sysCode']} WHERE Ccd = MR.TakeArea) AS TakeAreaName,
+            fn_ccd_name(MR.TakeArea) AS TakeAreaName,
             (SELECT ROUND(SUM(AdjustPoint),2) FROM {$this->_table['mockGrades']} WHERE MemIdx = MR.MemIdx AND ProdCode = PD.Prodcode) AS AdjustSum,
             (SELECT RegDatm FROM {$this->_table['mockLog']} WHERE MrIdx = MR.MrIdx ORDER BY RegDatm LIMIT 1) AS ExamRegDatm
         ";
@@ -332,7 +333,7 @@ class RegGradeModel extends WB_Model
                    (SELECT RegDatm FROM {$this->_table['mockAnswerPaper']} WHERE MemIdx = MR.MemIdx AND MrIdx = MR.MrIdx ORDER BY RegDatm DESC LIMIT 1) AS IsDate,
                    PD.ProdName, PD.SaleStartDatm, PD.SaleEndDatm, PS.SalePrice, PS.RealSalePrice,          
                    C1.CateName, C1.IsUse AS IsUseCate, MR.OrderProdIdx, MR.MrIdx, MR.TakeNumber , M.MemName,
-                   (SELECT CcdName FROM {$this->_table['sysCode']} WHERE Ccd = MR.TakeMockPart) AS TakeMockPartName
+                   fn_ccd_name(MR.TakeMockPart) AS TakeMockPartName
         ";
 
         $from = "
@@ -368,11 +369,11 @@ class RegGradeModel extends WB_Model
         $column = "
                    MR.MemIdx, MP.*, A.wAdminName, MR.IsTake AS MrIsStatus, MR.MrIdx, MR.TakeNumber, MR.TakeArea, MR.TakeMockPart,
                    (SELECT RegDatm FROM {$this->_table['mockGradesLog']} WHERE ProdCode = " . $prodcode . " AND MemIdx = " . $memidx . " ORDER BY RegDatm DESC LIMIT 1) AS GradeDatm,
-                   (SELECT CcdName FROM {$this->_table['sysCode']} WHERE Ccd = MR.TakeMockPart) AS TakeMockPartName,
+                   fn_ccd_name(MR.TakeMockPart) AS TakeMockPartName,
                    (SELECT MemName FROM {$this->_table['member']} WHERE MemIdx = MR.MemIdx) AS MemName,
                    (SELECT MemId FROM {$this->_table['member']} WHERE MemIdx = MR.MemIdx) AS MemId,
-                   (SELECT CcdName FROM {$this->_table['sysCode']} WHERE Ccd = MR.TakeForm) AS TakeFormType,
-                   (SELECT CcdName FROM {$this->_table['sysCode']} WHERE Ccd = MR.TakeArea) AS TakeAreaName,
+                   fn_ccd_name(MR.TakeForm) AS TakeFormType,
+                   fn_ccd_name(MR.TakeArea) AS TakeAreaName,
                    (SELECT CONCAT(Phone1,'-',fn_dec(Phone2Enc),'-',phone3) FROM {$this->_table['member']} WHERE MemIdx = MR.MemIdx) AS Phone,
                    (SELECT ROUND(SUM(AdjustPoint),2) FROM {$this->_table['mockGrades']} WHERE MemIdx = MR.MemIdx AND ProdCode = PD.Prodcode) AS AdjustSum,
                    (SELECT RegDatm FROM {$this->_table['mockLog']} WHERE MrIdx = MR.MrIdx ORDER BY RegDatm LIMIT 1) AS ExamRegDatm,
@@ -433,8 +434,7 @@ class RegGradeModel extends WB_Model
      */
     public function todayScoreMake()
     {
-
-        $column = "ProdCode";
+        $column = "RP.MgIdx";
 
         $from = "
                 FROM
@@ -442,25 +442,25 @@ class RegGradeModel extends WB_Model
 	                JOIN lms_Mock_Group_R_Product AS RP ON MG.MgIdx = RP.MgIdx
             ";
 
-        $obder_by = " Group By ProdCode";
+        $obder_by = " Group By RP.MgIdx";
 
         $where = " WHERE GradeOpenDatm = curdate() ";
 
         $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
 
-        $prodcode = $query->row_array();
+        $res = $query->row_array();
 
-        if ($prodcode['ProdCode']){
-            return $this->scoreMake($prodcode['ProdCode'], 'cron');
+        if ($res['MgIdx']){
+            return $this->scoreMake($res['MgIdx'], 'cron');
         }
     }
 
     /**
      * 조정점수반영
-     * @param array $formData
+     * @param $MgIdx $mode = cron or web
      * @return mixed
      */
-    public function scoreMake($ProdCodeOrigin, $mode)
+    public function scoreMake($MgIdx, $mode)
     {
 
         try {
@@ -479,10 +479,7 @@ class RegGradeModel extends WB_Model
 
             $where = " 
             WHERE 
-                MgIdx = (
-                    SELECT MgIdx FROM {$this->_table['mockGroupR']} 
-                    WHERE ProdCode = " . $ProdCodeOrigin . " AND IsStatus='Y' LIMIT 1
-                ) 
+                MgIdx = " . $MgIdx . "
                 AND IsStatus = 'Y' ";
 
             $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
@@ -710,8 +707,8 @@ class RegGradeModel extends WB_Model
                             * 선택과목은 아래와 같은 계산법을 따른다.
                             *
                             * 원점수평균 = 선택과목점수총합 / 응시자수
-                            * 원점수표준편차 = 루트( (응시자점수 - 원점수평균)제곱(총) / (응시자수 - 1) )
-                            * 조정점수 = (응시자점수 - 선택과목의평균점수 / 원점수표준편차) * 10 + 50
+                            * 원점수표준편차 = 루트( (응시자점수 - 원점수평균)제곱(응시자전체) / (응시자수 - 1) )
+                            * 조정점수 = ((응시자점수 - 선택과목의평균점수) / 원점수표준편차) * 10 + 50
                             *
                             */
 
@@ -738,7 +735,7 @@ class RegGradeModel extends WB_Model
                             // 응시자수
                             $pcnt = $arrMP[$vmp]['CNT'];
                             //표준편차
-                            $tempRes = sqrt($sumAVG / ($pcnt - 1));
+                            $tempRes = round(sqrt($sumAVG / ($pcnt - 1)), 2);
 
                             //필수과목일경우 가산점만 반영한다.
                             $AdjustPoint = round($val['Res'], 2);

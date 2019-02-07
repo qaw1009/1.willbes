@@ -150,6 +150,26 @@ class Event extends \app\controllers\FrontController
         $data['data_option_ccd'] = array_flip(explode(',', $data['OptionCcds']));   // 관리옵션 데이터 가공처리
         $data['data_comment_use_area'] = array_flip(explode(',', $data['CommentUseArea']));   // 댓글사용영역 데이터 가공처리
 
+        //이벤트 파일 기본 검색 조건
+        $arr_condition_file = [
+            'EQ' => [
+                'ElIdx' => element('event_idx', $arr_input),
+                'IsUse' => 'Y'
+            ]
+        ];
+
+        //이벤트 내용관련 파일
+        $arr_condition_file_C = array_merge_recursive($arr_condition_file,[
+            'EQ' => [ 'FileType' => 'C' ]
+        ]);
+        $arr_base['file_C'] = $this->eventFModel->findAttachData($arr_condition_file_C);
+
+        //이벤트 첨부파일
+        $arr_condition_file_F = array_merge_recursive($arr_condition_file,[
+            'EQ' => [ 'FileType' => 'F' ]
+        ]);
+        $arr_base['file_F'] = $this->eventFModel->findAttachData($arr_condition_file_F);
+
         //이벤트 신청리스트 조회
         $arr_register_data = $this->eventFModel->listEventForRegister($default_condition);
         $arr_base['register_list'] = $arr_register_data;

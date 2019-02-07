@@ -1,7 +1,7 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5 class="mt-20">- 모의고사 상품정보를 등록하고 관리하는 메뉴입니다.</h5>
+    <h5 class="mt-20">- 모의고사 기준으로 조정점수를 수동반영하고 성적 통계를 확인하는 메뉴입니다.(개인 성적표 통계 처리를 위한 단계)</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! html_def_site_tabs($siteCodeDef, 'tabs_site_code', 'tab', false) !!}
         {!! csrf_field() !!}
@@ -78,9 +78,10 @@
     </form>
     <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
         {!! csrf_field() !!}
-        <input type="hidden" id="ProdCode" name="ProdCode" value="">
+        <input type="hidden" id="MgIdx" name="MgIdx" value="">
     </form>
-    <div class="mt-20">* 접수현황 : 결제대기, 결제완료, 환불완료 인원의 총합</div>
+    <div class="mt-20">* 성적오픈일 이후 응시자가 성적을 제출하면 자동으로 성적처리됩니다.(조정점수 자동산출)</div>
+    <div class="mt-20">* 수동으로 '조정점수반영' 클릭 시 현재 시점으로 조정점수가 재산출됩니다.</div>
     <div class="x_panel mt-10" style="overflow-x: auto; overflow-y: hidden;">
         <div class="x_content">
             <form class="form-horizontal" id="list_form" name="list_form" method="POST" onsubmit="return false;">
@@ -182,11 +183,11 @@
                     {'data' : 'OnlineCnt', 'class': 'text-center'},
                     {'data' : 'OfflineCnt', 'class': 'text-center'},
                     {'data' : 'ProdCode', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return '<span class="blue underline-link act-view"><input type="hidden" name="target" value="' + row.ProdCode + '" />확인</span>';
+                            return '<span class="blue underline-link act-view"><input type="hidden" name="target" value="' + row.ProdCode + '" /><input type="hidden" name="mgidx" value="' + row.MgIdx + '" />확인</span>';
                         }},
                     {'data' : 'GradeOpenDatm', 'class': 'text-center'},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return '<span class="blue underline-link" onClick="scoreMake('+ row.ProdCode +')">' + '조정점수반영' + '</span>';
+                            return '<span class="blue underline-link" onClick="scoreMake('+ row.MgIdx +')">' + '조정점수반영' + '</span>';
                         }},
                     {'data' : 'wAdminName', 'class': 'text-center'}
                 ]
@@ -195,7 +196,7 @@
             // 성적페이지로 이동
             $list_form.on('click', '.act-view', function () {
                 var query = dtParamsToQueryString($datatable);
-                location.href = '{{ site_url('/mocktest/statisticsGrade/statSubject/') }}' + $(this).closest('tr').find('[name=target]').val() + query;
+                location.href = '{{ site_url('/mocktest/statisticsGrade/statSubject/') }}' + $(this).closest('tr').find('[name=target]').val() + '/' + $(this).closest('tr').find('[name=mgidx]').val() + query;
             });
 
             // 수정으로 이동
@@ -206,8 +207,8 @@
 
         });
 
-        function scoreMake(prodcode){
-            $('#ProdCode').val(prodcode);
+        function scoreMake(mgidx){
+            $('#MgIdx').val(mgidx);
 
             var _url = '{{ site_url('/mocktest/statisticsGrade/scoreMakeAjax') }}';
             ajaxSubmit($regi_form, _url, function(ret) {
@@ -215,6 +216,7 @@
                     alert(ret.ret_msg);
                 }
             }, showValidateError, null, false, 'alert');
+
         }
 
     </script>

@@ -246,12 +246,11 @@ class BaseBoard extends \app\controllers\BaseController
     /**
      * 게시판 Best 적용
      * @param array $params
-     * @param array $before_params
      * @return array|bool
      */
-    protected function _boardIsBest($params = [], $before_params = [])
+    protected function _boardIsBest($params = [])
     {
-        return $this->boardModel->boardIsBest($params, $before_params);
+        return $this->boardModel->boardIsBest($params);
     }
 
     /**

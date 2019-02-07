@@ -351,8 +351,8 @@ class Material extends BaseBoard
             ['field' => 'cate_code[]', 'label' => '카테고리', 'rules' => 'trim|required'],
             ['field' => 'subject_idx', 'label' => '과목', 'rules' => 'trim|required|integer'],
             ['field' => 'type_ccd', 'label' => '자료유형', 'rules' => 'trim|required|integer'],
-            ['field' => 'prod_type_ccd', 'label' => '강좌적용구분', 'rules' => 'trim|required'],
-            ['field' => 'prod_code[]', 'label' => '강좌명', 'rules' => 'trim|required'],
+            ['field' => 'prod_type_ccd', 'label' => '강좌적용구분', 'rules' => 'callback_validateRequiredIf[type_ccd,632002]'],
+            ['field' => 'prod_code[]', 'label' => '강좌명', 'rules' => 'callback_validateRequiredIf[type_ccd,632002]'],
             ['field' => 'title', 'label' => '제목', 'rules' => 'trim|required|max_length[50]'],
             ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => 'board_content', 'label' => '내용', 'rules' => 'trim|required']

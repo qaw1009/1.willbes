@@ -135,7 +135,7 @@
                     {'data' : 'BCateName'},
                     {'data' : 'MCateName'},
                     {'data' : 'ProfSubjectNames', 'render' : function(data, type, row, meta) {
-                        return data.replace(/,/g, '<br/>');
+                        return data !== null ? data.replace(/,/g, '<br/>') : '';
                     }},
                     {'data' : 'ProdCode'},
                     {'data' : 'ProdName', 'render' : function(data, type, row, meta) {

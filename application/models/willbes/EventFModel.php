@@ -119,8 +119,6 @@ class EventFModel extends WB_Model
             A.OptionCcds, A.ReadCnt, A.IsRegister, A.IsUse, A.RegDatm, DATE_FORMAT(A.RegDatm, \'%Y-%m-%d\') AS RegDay,
             A.SendTel, A.SmsContent,
             G.SiteName, J.CcdName AS CampusName,
-            K.FileFullPath, K.FileName,
-            L.FileFullPath AS UploadFileFullPath, L.FileName AS UploadFileName, L.FileRealName as UploadFileRealName,
             IFNULL(H.CCount,\'0\') AS CommentCount,
             CASE A.RequstType WHEN 1 THEN \'설명회\' WHEN 2 THEN \'특강\' WHEN 3 THEN \'이벤트\' WHEN 4 THEN \'합격수기\' END AS RequstTypeName,
             CASE A.IsRegister WHEN \'Y\' THEN \'접수중\' WHEN 2 THEN \'마감\' END AS IsRegisterName,
@@ -134,13 +132,11 @@ class EventFModel extends WB_Model
                 SELECT CIdx, ElIdx, COUNT(CIdx) AS CCount
                 FROM {$this->_table['event_comment']}
             ) AS H ON H.ElIdx = A.ElIdx
-            LEFT JOIN {$this->_table['event_file']} AS K ON A.ElIdx = K.ElIdx AND K.IsUse = 'Y' AND K.FileType = 'C'
-            LEFT JOIN {$this->_table['event_file']} AS L ON A.ElIdx = L.ElIdx AND L.IsUse = 'Y' AND L.FileType = 'F'
             INNER JOIN {$this->_table['site']} AS G ON A.SiteCode = G.SiteCode
             LEFT OUTER JOIN {$this->_table['sys_code']} AS J ON A.CampusCcd = J.Ccd
             LEFT OUTER JOIN {$this->_table['product_subject']} as P ON A.SubjectIdx = P.SubjectIdx
             LEFT OUTER JOIN {$this->_table['professor']} as Q ON A.ProfIdx = Q.ProfIdx
-            INNER JOIN {$this->_table['pms_professor']} as R ON Q.wProfIdx = R.wProfIdx
+            LEFT JOIN {$this->_table['pms_professor']} as R ON Q.wProfIdx = R.wProfIdx
         ";
 
         $where = $this->_conn->makeWhere($arr_condition);
@@ -556,6 +552,21 @@ class EventFModel extends WB_Model
 
         $query = $this->_conn->query('select STRAIGHT_JOIN ' . $column . $from . $order_by_offset_limit);
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    public function findAttachData($arr_condition)
+    {
+        $column = '
+            EfIdx, ElIdx, FileName, FileRealName, FileFullPath, FileType
+        ';
+        $from = "
+            FROM {$this->_table['event_file']}
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        return $this->_conn->query('select '. $column . $from . $where . ' limit 1')->row_array();
     }
 
     /**

@@ -150,6 +150,11 @@
                     }
                 });
 
+                if (Object.keys($params).length < 1) {
+                    alert('변경된 내용이 없습니다.');
+                    return;
+                }
+
                 var data = {
                     '{{ csrf_token_name() }}' : $list_form.find('input[name="{{ csrf_token_name() }}"]').val(),
                     '_method' : 'PUT',

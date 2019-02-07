@@ -8,6 +8,8 @@
     </ul>
     <h5>- 윌비스 사용자 운영 사이트 카테고리를 생성하는 메뉴입니다.</h5>
     <form class="form-horizontal searching" id="search_form" name="search_form" method="POST" onsubmit="return false;">
+        {!! html_site_tabs('tabs_site_code', 'tab', true, [], false) !!}
+        <input type="hidden" id="search_site_code" name="search_site_code" value=""/>
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">
@@ -42,7 +44,7 @@
                 <table id="list_table" class="table table-striped table-bordered">
                     <thead>
                     <tr>
-                        <th class="searching rowspan">사이트 [<span class="blue">코드</span>]</th>
+                        <th class="searching searching_site_code rowspan">사이트 [<span class="blue">코드</span>]</th>
                         <th class="searching rowspan">대분류 [<span class="blue">코드</span>]</th>
                         <th class="searching">중분류 [<span class="blue">코드</span>] <button type="button" class="btn btn-xs btn-success ml-10 btn-regist" data-cate-depth="2">추가</button></th>
                         <th class="searching_is_use">사용여부</th>
@@ -121,6 +123,11 @@
                     }
                 });
 
+                if (Object.keys($params).length < 1) {
+                    alert('변경된 내용이 없습니다.');
+                    return;
+                }
+
                 var data = {
                     '{{ csrf_token_name() }}' : $list_form.find('input[name="{{ csrf_token_name() }}"]').val(),
                     '_method' : 'PUT',
@@ -170,6 +177,7 @@
             $datatable
                 .columns('.searching').flatten().search($search_form.find('input[name="search_value"]').val())
                 .column('.searching_is_use').search($search_form.find('select[name="search_is_use"]').val())
+                .column('.searching_site_code').search($search_form.find('input[name="search_site_code"]').val())
                 .draw();
         }
     </script>

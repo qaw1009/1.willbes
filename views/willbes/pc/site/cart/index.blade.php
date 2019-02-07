@@ -320,7 +320,7 @@
                 };
                 sendAjax('{{ front_url('/cart/destroy') }}', data, function(ret) {
                     if (ret.ret_cd) {
-                        var reload_url = location.href.replace('#none', '') + '?tab=' + $tab_id;
+                        var reload_url = location.pathname + '?tab=' + $tab_id;
                         location.replace(reload_url);
                     }
                 }, showAlertError, false, 'POST');
@@ -356,7 +356,7 @@
 
         // 다른상품 더보기 버튼 클릭
         $('button[name="btn_continue"]').on('click', function () {
-            var $cate_code = '{{ $results['recent_cate_code'] or '' }}';
+            var $cate_code = '{{ $results['recent_cate_code'] or element('DefCateCode', $__cfg, '') }}';
             location.href = $cate_code.length > 0 ? '{{ front_url('/lecture/index/cate/') }}' + $cate_code + '/pattern/only' : frontUrl('');
         });
 

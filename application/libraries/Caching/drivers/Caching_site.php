@@ -37,6 +37,7 @@ class Caching_site extends CI_Driver
             'site' => 'lms_site',
             'site_group' => 'lms_site_group',
             'site_r_campus' => 'lms_site_r_campus',
+            'category' => 'lms_sys_category',
             'code' => 'lms_sys_code'
         ];
         $_group_ccd = [
@@ -50,6 +51,7 @@ class Caching_site extends CI_Driver
             S.SiteCode, S.SiteName, S.SiteGroupCode, SG.SiteGroupName, S.SiteTypeCcd, S.SiteUrl, S.UseDomain, S.PgCcd, S.PgMid, S.PgBookMid, S.PayMethodCcds
                 , S.DeliveryCompCcd, S.DeliveryPrice, S.DeliveryAddPrice, S.DeliveryFreePrice
                 , S.Logo, S.Favicon, S.CsTel, S.HeadTitle, S.MetaKeyword, S.MetaDesc, S.FrontCss, S.FooterInfo
+                , (select CateCode from ' . $_table['category'] . ' where SiteCode = S.SiteCode and CateDepth = 1 and IsUse = "Y" and IsStatus = "Y" order by OrderNum asc limit 1) as DefCateCode
                 , DCC.CcdName as DeliveryCompName
                 , PGC.CcdEtc as PgDriver
                 , if(IsCampus = "Y", (

@@ -50,7 +50,7 @@ class Cart extends \app\controllers\FrontController
         $results['delivery_price']['on_lecture'] = $this->cartFModel->getLectureDeliveryPrice(array_pluck(array_get($results, 'list.on_lecture', []), 'IsFreebiesTrans'));
 
         // 교재 배송료
-        $results['delivery_price']['book'] = $this->cartFModel->getBookDeliveryPrice(array_get($results, 'price.book', 0));
+        $results['delivery_price']['book'] = isset($results['count']['book']) === true ? $this->cartFModel->getBookDeliveryPrice(array_get($results, 'price.book', 0)) : 0;
 
         $this->load->view('site/cart/index', [
             'arr_input' => $arr_input,

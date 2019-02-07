@@ -90,7 +90,7 @@
                             <th class="text-center">NO</th>
                             <th class="text-center" style="min-width:40px">회원명</th>
                             <th class="text-center">응시번호</th>
-                            <th class="text-center">과목</th>
+                            <th class="text-center">과목[과목코드]</th>
                             <th class="text-center">문항번호</th>
                             <th class="text-center">답변</th>
                             <th class="text-center">정답여부</th>
@@ -143,7 +143,11 @@
                     }},
                     {'data' : 'MemName', 'class': 'text-center'},
                     {'data' : 'TakeNumber', 'class': 'text-center'},
-                    {'data' : 'SubjectName', 'class': 'text-center'},
+
+                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                            return '<span class="">' + row.SubjectName + '[' + row.MpIdx + ']</span>';
+                        }},
+
                     {'data' : 'QuestionNO', 'class': 'text-center'},
                     {'data' : 'Answer', 'class': 'text-center'},
                     {'data' : 'IsWrong', 'class': 'text-center'}

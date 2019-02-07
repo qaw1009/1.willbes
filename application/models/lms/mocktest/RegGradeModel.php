@@ -1170,8 +1170,8 @@ class RegGradeModel extends WB_Model
     {
         $offset_limit = (is_numeric($limit) && is_numeric($offset)) ? "LIMIT $offset, $limit" : "";
 
-        $select = "
-            SELECT
+        $column = "
+            
                 CONCAT((SELECT MemName FROM lms_member WHERE MemIdx = MR.MemIdx),'(',
                 (SELECT MemId FROM lms_member WHERE MemIdx = MR.MemIdx),')') AS MemName,
                 TakeNumber, 
@@ -1193,10 +1193,10 @@ class RegGradeModel extends WB_Model
         $selectCount = "SELECT COUNT(*) AS cnt FROM (SELECT MR.ProdCode";
         $where = " WHERE MR.IsStatus = 'Y' ";
         $where .= $this->_conn->makeWhere($condition)->getMakeWhere(true) . "\n";
-        $order = " ORDER BY MR.MemIdx, MA.RegDatm DESC, MA.MpIdx, MQ.QuestionNO ";
-        $group = " GROUP BY MA.MqIdx, MR.MemIdx ";
-
-        $data = $this->_conn->query($select . $from . $where . $group . $order . $offset_limit)->result_array();
+        $order = " ORDER BY MR.MemIdx, MA.MpIdx, MQ.QuestionNO ";
+        $group = " ";
+        //echo "<pre>".'SELECT'.$column . $from . $where . $group . $order . $offset_limit."</pre>";
+        $data = $this->_conn->query('SELECT'.$column . $from . $where . $group . $order . $offset_limit)->result_array();
         $count = $this->_conn->query($selectCount . $from . $where . $group . ") AS A")->row()->cnt;
 
         return array($data, $count);
@@ -1423,6 +1423,8 @@ class RegGradeModel extends WB_Model
      */
     public function offGradeUpload($prodcode, $params = [])
     {
+        //print_r($params);
+
         $this->_conn->trans_begin();
 
         try {
@@ -1441,10 +1443,14 @@ class RegGradeModel extends WB_Model
 
                 $obder_by = "";
 
-                $where = " WHERE MB.MemId = '" . $val['A'] . "'";
+                $where = " WHERE MB.MemId = '". $val['A'] ."' AND ProdCode=".$prodcode;
 
                 $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
                 $data = $query->row_array();
+
+                if(empty($data['MrIdx'])==true){
+                    throw new \Exception('모의고사 접수회원이 아닙니다.');
+                }
 
                 //로그테이블등록
                 $log_data = [
@@ -1477,6 +1483,7 @@ class RegGradeModel extends WB_Model
                 $where = " WHERE MA.ProdCode = " . $prodcode . " AND MA.MemIdx = " . $data['MemIdx'] . " AND MA.MrIdx = " . $data['MrIdx'] . " AND MA.MpIdx = " . $val['B'] . " AND QuestionNO = " . $val['C'];
 
                 $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+                //echo "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
                 $IsData = $query->row_array();
 
                 $column = "
@@ -1494,6 +1501,7 @@ class RegGradeModel extends WB_Model
                 $where = " WHERE MpIdx = " . $val['B'] . " AND QuestionNO = " . $val['C'];
 
                 $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+
                 $indata = $query->row_array();
 
                 if ($indata['RightAnswer'] == $val['D']) {
@@ -1526,6 +1534,8 @@ class RegGradeModel extends WB_Model
                         'Answer' => $val['D'],
                         'IsWrong' => $okYN
                     ];
+
+                    //print_r($addData);
 
                     if ($this->_conn->set($addData)->set('RegDatm', 'NOW()', false)->insert($this->_table['mockAnswerPaper']) === false) {
                         throw new \Exception('등록에 실패했습니다.');

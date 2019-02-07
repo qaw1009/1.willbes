@@ -1,7 +1,7 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5 class="mt-20">- 모의고사 상품정보를 등록하고 관리하는 메뉴입니다.</h5>
+    <h5 class="mt-20">- 모의고사 기준으로 조정점수를 수동반영하고 성적 통계를 확인하는 메뉴입니다.(개인 성적표 통계 처리를 위한 단계)</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! html_def_site_tabs($siteCodeDef, 'tabs_site_code', 'tab', false) !!}
         {!! csrf_field() !!}
@@ -80,7 +80,8 @@
         {!! csrf_field() !!}
         <input type="hidden" id="ProdCode" name="ProdCode" value="">
     </form>
-    <div class="mt-20">* 접수현황 : 결제대기, 결제완료, 환불완료 인원의 총합</div>
+    <div class="mt-20">* 성적오픈일 이후 응시자가 성적을 제출하면 자동으로 성적처리됩니다.(조정점수 자동산출)</div>
+    <div class="mt-20">* 수동으로 '조정점수반영' 클릭 시 현재 시점으로 조정점수가 재산출됩니다.</div>
     <div class="x_panel mt-10" style="overflow-x: auto; overflow-y: hidden;">
         <div class="x_content">
             <form class="form-horizontal" id="list_form" name="list_form" method="POST" onsubmit="return false;">

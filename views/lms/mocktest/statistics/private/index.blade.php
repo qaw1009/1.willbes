@@ -1,7 +1,7 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5 class="mt-20">- 모의고사 구성을 위해 과목별 문제, 정답, 해설을 등록하는 메뉴입니다.</h5>
+    <h5 class="mt-20">- 응시자 가준으로 개별 모의고사성적을 확인하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! html_def_site_tabs($siteCodeDef, 'tabs_site_code', 'tab', false) !!}
         {!! csrf_field() !!}

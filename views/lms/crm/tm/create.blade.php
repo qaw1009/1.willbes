@@ -147,14 +147,13 @@
                 var sum_cnt = 0;
                 for (i=0;i<tm_adminCnt;i++){
                     sum_cnt += divide_cnt;
-
+                    /*
                     if(member_count >= sum_cnt) {
                         $("input[name='eachCnt[]']:eq(" + i + ")").val(divide_cnt);
                     } else {
                         $("input[name='eachCnt[]']:eq(" + i + ")").val('0');
                     }
-
-                    /*
+                    */
                     if(i < (tm_adminCnt-1) ) {
 
                         if(member_count >= sum_cnt) {
@@ -180,7 +179,7 @@
                             $("input[name='eachCnt[]']:eq(" + i + ")").val(divide_cnt);
                         }
                     }
-                    */
+
                 }
             }
 

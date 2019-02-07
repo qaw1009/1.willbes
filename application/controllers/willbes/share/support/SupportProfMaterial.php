@@ -115,6 +115,7 @@ class SupportProfMaterial extends BaseSupport
                        ,b.Title,b.Content, (b.ReadCnt + b.SettingReadCnt) as TotalReadCnt
                        ,b.CampusCcd_Name, b.TypeCcd_Name,b.AreaCcd_Name
                        ,b.SubjectName,b.CourseName,b.AttachData,DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm
+                       ,p.ProdName
                        ';
 
         $data = $this->supportBoardFModel->findBoardForSiteGroup($this->_site_code, $board_idx, $arr_condition, $column);

@@ -17,7 +17,12 @@
             <tr><th colspan="4" class="w-list tx-left  pl20"><img src="{{ img_url('prof/icon_notice.gif') }}" style="marign-right: 5px;"> <strong>{{$data['Title']}}</strong></th></tr>
             <tr>
                 <td class="w-lec">{{$data['TypeCcd_Name']}}<span class="row-line">|</span></td>
-                <td class="subTit tx-left pl20"><strong class="tx-light-blue" style="padding-right: 5px;">[강좌]</strong>강좌명 노출<span class="row-line">|</span></td>
+                <td class="subTit tx-left pl20">
+                    @if($data['TypeCcd'] == '632002')
+                        <strong class="tx-light-blue" style="padding-right: 5px;">[{{$data['TypeCcd_Name']}}]</strong>{{$data['ProdName']}}
+                    @endif
+                    <span class="row-line">|</span>
+                </td>
                 <td class="w-date">{{$data['RegDatm']}}<span class="row-line">|</span></td>
                 <td class="w-click"><strong>조회수</strong> {{$data['TotalReadCnt']}}</td>
             </tr>

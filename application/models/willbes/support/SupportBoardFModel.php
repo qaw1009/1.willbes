@@ -116,6 +116,7 @@ class SupportBoardFModel extends BaseSupportFModel
                 FROM {$this->_table['site']}
                 WHERE SiteCode = '{$site_code}'
             ) AS s ON b.SiteGroupCode = s.SiteGroupCode
+            LEFT JOIN lms_product AS p ON b.ProdCode = p.ProdCode
         ";
 
         $where = $this->_conn->makeWhere($arr_condition);

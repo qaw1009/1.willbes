@@ -42,7 +42,8 @@ class BaseStudent extends \app\controllers\BaseController
     {
         //공통코드
         $codes = $this->codeModel->getCcdInArray(['607','611','618','653','654','675']);
-
+        $arr_code['arr_site_code'] = $this->siteModel->getOffLineSiteArray('');
+        $def_site_code = key($arr_code['arr_site_code']);
         // 캠퍼스
         $campusList = $this->siteModel->getSiteCampusArray('');
 
@@ -68,6 +69,8 @@ class BaseStudent extends \app\controllers\BaseController
             'studyapply_ccd' => $codes['654'],
             'accept_ccd' => $codes['675'],
             'campusList' => $campusList,
+            'def_site_code' => $def_site_code,
+            'arr_site_code' => $arr_code['arr_site_code']
         ]);
     }
 

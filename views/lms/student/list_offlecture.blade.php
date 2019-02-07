@@ -1,10 +1,10 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5>- 온라인 단강좌 상품 정보를 관리하는 메뉴입니다.</h5>
+    <h5>- 학원 단강좌 상품 정보를 관리하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
-        {!! html_site_tabs('tabs_site_code') !!}
+        {!! html_def_site_tabs($def_site_code, 'tabs_site_code', 'tab', false, [], false, $arr_site_code) !!}
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">

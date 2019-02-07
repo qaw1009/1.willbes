@@ -3,7 +3,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Manage extends \app\controllers\BaseController
 {
-    protected $models = array('member/manageMember','sys/code', 'pay/orderList','service/couponRegist','service/point', 'board/board', 'crm/tm/tm', 'member/manageCs', 'member/manageBlackConsumer', 'member/manageLecture');
+    protected $models = array('member/manageMember','sys/code', 'pay/orderList','service/couponRegist','service/point',
+        'board/board', 'crm/tm/tm', 'member/manageCs', 'member/manageBlackConsumer', 'member/manageLecture');
+
+    // 결제루트코드 온라인/학원방문/0원/무료/제휴사/온라인0원
+    protected $_payroute_normal_ccd = ['670001','670002','670006'];
+    protected $_payroute_admin_ccd = ['670003','670004','670005'];
+
+    // 강의형태 단과/사용자패키지/운영자패키지/무료
+    protected $_LearnPatternCcd_dan = ['615001','615002'];
+    protected $_LearnPatternCcd_free = ['615005'];
+    protected $_LearnPatternCcd_pkg = ['615003'];
 
     protected $helpers = array();
 
@@ -634,7 +644,242 @@ class Manage extends \app\controllers\BaseController
     }
 
 
+    /**
+     * 강좌 수강 시간 정보 확인
+     */
+    public function viewCurriculum()
+    {
+        $memidx = $this->_req('memidx');
+        $orderidx = $this->_req('orderidx');
+        $prodcode = $this->_req('prodcode');
+        $prodcodesub = $this->_req('prodcodesub');
 
+        $member = $this->manageMemberModel->getMember($memidx);
+
+        $lec = $this->manageLectureModel->getLecture(false, [
+            'EQ' => [
+                'MemIdx' => $memidx,
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub
+            ]
+        ]);
+
+        if(empty($lec) == true){
+            show_alert('신청강좌 정보가 없습니다.', 'close');
+        }
+
+        $lec = $lec[0];
+
+        // 회차 열어준경우 IN 생성
+        if(empty($lec['wUnitIdxs']) == true){
+            $wUnitIdxs = [];
+        } else {
+            $wUnitIdxs = explode(',', $lec['wUnitIdxs']);
+        }
+
+        $curriculum = $this->manageLectureModel->getCurriculum([
+            'EQ' => [
+                'MemIdx' => $memidx,
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub,
+                'wLecIdx' => $lec['wLecIdx']
+            ],
+            'IN' => [
+                'wUnitIdx' => $wUnitIdxs
+            ]
+        ]);
+
+        $this->load->view('member/layer/lecture/curriculum',[
+            'member' => $member,
+            'lec' => $lec,
+            'curriculum' => $curriculum
+        ]);
+    }
+
+
+    /**
+     * 시작일 변경
+     * @return CI_Output|object|string
+     */
+    public function start()
+    {
+        $orderidx = $this->_req('orderidx');
+        $prodcode = $this->_req('prodcode');
+        $prodcodesub = $this->_req('prodcodesub');
+        $prodtype = $this->_req('prodtype');
+        $memidx = $this->_req('memidx');
+
+        $today = date("Y-m-d", time());
+
+        $cond_arr = [
+            'EQ' => [
+                'MemIdx' => $memidx, // 사용자
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub
+            ]
+        ];
+
+        if($prodtype === 'S'){
+            $leclist = $this->manageLectureModel->getLecture(false, $cond_arr);
+
+        } else if($prodtype === 'P') {
+            $leclist = $this->manageLectureModel->getPackage($cond_arr);
+
+        } else {
+            show_alert('신청강좌정보를 찾을수 없습니다.', 'close');
+        }
+
+        if(count($leclist) == 1){
+            $lec = $leclist[0];
+        } else {
+            show_alert('신청강좌정보를 찾을수 없습니다.', 'close');
+        }
+
+        if($lec['IsLecStart'] != 'Y'){
+            //show_alert('시작일을 변경할 수 없는 강좌입니다.', 'close');
+        }
+
+        if($lec['ChgStartNum'] >= 3) {
+            //return $this->json_error('시작일 변경횟수를 초과했습니다.');
+        }
+
+        $log = $this->manageLectureModel->getStartDateLog([
+            'EQ' => [
+                'MemIdx' => $memidx,
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub,
+                'OrderProdIdx' => $lec['OrderProdIdx']
+            ]
+        ]);
+
+        $member = $this->manageMemberModel->getMember($memidx);
+
+        return $this->load->view('member/layer/lecture/start', [
+            'member' => $member,
+            'lec' => $lec,
+            'log' => $log
+        ]);
+    }
+
+    public function setStart()
+    {
+        $memidx =  $this->_req('memidx');
+        $orderidx = $this->_req('orderidx');
+        $prodcode = $this->_req('prodcode');
+        $prodcodesub = $this->_req('prodcodesub');
+        $prodtype = $this->_req('prodtype');
+        $today = date("Y-m-d", time());
+
+        if(empty($start_date) === true){
+            $start_date = $this->_req("startdate");
+        }
+
+        if(empty($start_date) === true){
+            return $this->json_error('시작일이 잘못된 날짜 입니다.');
+        }
+
+        if(strtotime($start_date) == false){
+            return $this->json_error('시작일이 잘못된 날짜 입니다.');
+        }
+
+        if($start_date < $today){
+            return $this->json_error('시작일은 오늘 이후 날짜만 가능합니다.');
+        }
+
+        $cond_arr = [
+            'EQ' => [
+                'MemIdx' => $memidx, // 사용자
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub
+            ]
+        ];
+
+        if($prodtype === 'S'){
+            $leclist = $this->manageLectureModel->getLecture(false,array_merge($cond_arr, [
+                'IN' => [
+                    'LearnPatternCcd' => $this->_LearnPatternCcd_dan, // 단과, 사용자
+                    'PayRouteCcd' => $this->_payroute_normal_ccd // 온, 방
+                ]
+            ]));
+
+        } else if($prodtype === 'P') {
+            $leclist = $this->manageLectureModel->getPackage(array_merge($cond_arr, [
+                'IN' => [
+                    'PayRouteCcd' => $this->_payroute_normal_ccd // 온, 방
+                ]
+            ]));
+
+        } else {
+            return $this->json_error('신청강좌정보를 찾을수 없습니다.');
+        }
+
+        if(count($leclist) == 1){
+            $lec = $leclist[0];
+        } else {
+            return $this->json_error('신청강좌정보를 찾을수 없습니다.');
+        }
+
+        if($lec['IsLecStart'] != 'Y'){
+            return $this->json_error('시작일을 변경할 수 없는 강좌입니다.');
+        }
+
+        if($lec['ChgStartNum'] >= 3) {
+            if($start_date != $today){
+                return $this->json_error('시작일 변경횟수를 초과했습니다.');
+            }
+        }
+
+        if($lec['IsRebuy'] > 0 || $lec['RebuyCount'] > 0){
+            return $this->json_error('수강연장 강의는 시작일 변경이 불가능합니다.');
+        }
+
+
+        if($start_date > date("Y-m-d", strtotime(substr($lec['OrderDate'], 10).'+30day'))){
+            return $this->json_error('시작일은 주문일로부터 30일 이내만 변경 가능합니다.');
+        }
+
+        if($this->manageLectureModel->setStartDate([
+                'MemIdx' => $memidx,
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub,
+                'OrderProdIdx' => $lec['OrderProdIdx']
+            ], $start_date) === true){
+            return $this->json_result(true);
+        } else {
+            return $this->json_error('강의 시작일 변경중에 오류가 발생했습니다.');
+        }
+    }
+
+    public function extend()
+    {
+
+    }
+
+    public function setExtend()
+    {
+
+    }
+
+
+    public function pause()
+    {
+
+    }
+
+    public function setPause()
+    {
+
+    }
+
+    /**
+     * 수강한 강좌 리스트
+     */
     public function ajaxLecture()
     {
         $memIdx = $this->_req('memIdx');
@@ -659,7 +904,18 @@ class Manage extends \app\controllers\BaseController
 
         $pass = [];
 
-        $free = [];
+        $free = $this->manageLectureModel->getLecture(false, [
+            'EQ' => [
+                'MemIdx' => $memIdx,
+                'LearnPatternCcd' => '615005'
+            ],
+            'ORG' => [
+                'LKB' => [
+                    'ProdName' => $search_value,
+                    'subProdName' => $search_value
+                ]
+            ]
+        ]);;
 
         $admin = [];
 
@@ -1161,6 +1417,56 @@ class Manage extends \app\controllers\BaseController
         $data['blackConsumer'] = $bc_count;
 
         return $data;
+    }
+
+
+    public function download($params = [])
+    {
+        // 강좌정보 읽어오기
+        $prodcode = $params[0];
+        $prodcodesub = $params[1];
+        $lecidx = $params[2];
+        $unitidx = $params[3];
+
+        // 커리큘럼 읽어오기
+        $curriculum = $this->classroomFModel->getCurriculum([
+            'EQ' => [
+                'MemIdx' => $this->session->userdata('mem_idx'),
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub,
+                'wLecIdx' => $lec['wLecIdx'],
+                'wUnitIdx' => $unitidx
+            ]
+        ]);
+
+        if(empty($curriculum) == true){
+            show_alert('회차정보가 존재하지 않습니다.', 'back');
+        }
+
+        $curriculum = $curriculum[0];
+
+        $filepath = $curriculum['wAttachPath'] . $curriculum['wUnitAttachFile'];
+        $filename = $curriculum['wUnitAttachFileReal'];
+
+        if(is_file(public_to_upload_path($filepath)) == false){
+            show_alert('파일이 존재하지 않습니다.', 'back');
+        }
+
+        // 파일 다운로드 로그남기기
+        $this->classroomFModel->storeDownloadLog(
+            [
+                'MemIdx' => $this->session->userdata('mem_idx'),
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub,
+                'wLecIdx' => $lecidx,
+                'wUnitIdx' => $unitidx
+            ]
+        );
+
+        // 실제로 파일 다운로드 처리
+        public_download($filepath, $filename);
     }
 
 }

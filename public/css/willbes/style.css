@@ -2120,6 +2120,7 @@ table.auTable tr td {
 }
 .curriWrap tr td a {
     display: inline-block;
+    font-weight: 600;
     width: 100%;
     font-size: 11px;
     color: #999;
@@ -2127,8 +2128,7 @@ table.auTable tr td {
     line-height: 20px; 
 }
 .curriWrap tr td a:hover,
-.curriWrap tr td a.on {
-    font-weight: 600;
+.curriWrap tr td a.on {    
     color: #0d74ae;
     border: 1px solid #0d74ae;
 }

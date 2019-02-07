@@ -109,7 +109,7 @@ class MockExam extends \app\controllers\FrontController
 
         if($isTemp) $sec = $this->mockExamModel->callRemainTime($isTemp);
 
-        $logIdx = $this->mockExamModel->makeExamLog($sec,$mridx);
+        //$logIdx = $this->mockExamModel->makeExamLog($sec,$mridx);
         // 필수/선택과목 컬럼수 & 이름
         $pCnt = 0;
         $sCnt = 0;
@@ -138,7 +138,7 @@ class MockExam extends \app\controllers\FrontController
             ]
         ];
 
-        $qtCntList = $this->mockExamModel->questionTempCnt($arr_condition2);
+        $qtCntList = $this->mockExamModel->questionTempCnt($arr_condition2, $mridx);
         foreach ($qtCntList as $key => $val) {
             $mpIdx = $val['MpIdx'];
             $qtList[$mpIdx]['CNT'] =  $val['CNT'];
@@ -154,7 +154,7 @@ class MockExam extends \app\controllers\FrontController
             'pList2'       => $pList2,
             'sList'       => $sList,
             'sList2'       => $sList2,
-            'logidx'      => $logIdx,
+            //'logidx'      => $logIdx,
             'qtList'   => $qtList,
             'RemainSec' => $sec
         ]);
@@ -196,7 +196,7 @@ class MockExam extends \app\controllers\FrontController
         $rSec = $this->mockExamModel->callRemainTime($logidx);
         if(empty($RemainSec) === true) $RemainSec = $rSec;
 
-        $logidx = $this->mockExamModel->makeExamLog($RemainSec,$mridx);
+        $this->mockExamModel->saveTime($logidx, $RemainSec);
 
         // 필수/선택과목 컬럼수 & 이름
         $pCnt = 0;
@@ -224,7 +224,7 @@ class MockExam extends \app\controllers\FrontController
             ]
         ];
 
-        $qtCntList = $this->mockExamModel->questionTempCnt($arr_condition2);
+        $qtCntList = $this->mockExamModel->questionTempCnt($arr_condition2, $mridx);
         $etcALLYN = "YES";
         foreach ($qtCntList as $key => $val) {
             $mpIdx = $val['MpIdx'];
@@ -322,7 +322,7 @@ class MockExam extends \app\controllers\FrontController
             ]
         ];
 
-        $qtCntList = $this->mockExamModel->questionTempCnt($arr_condition2);
+        $qtCntList = $this->mockExamModel->questionTempCnt($arr_condition2, $mridx);
         foreach ($qtCntList as $key => $val) {
             $mpIdx = $val['MpIdx'];
             $qtList[$mpIdx]['CNT'] =  $val['CNT'];
@@ -367,6 +367,32 @@ class MockExam extends \app\controllers\FrontController
         $result = $this->mockExamModel->answerTempAllSave($this->_reqP(null, false));
         $this->json_result($result, '저장되었습니다.', $result, $result);
 
+    }
+
+    /**
+     * 시험시작
+     * @return object|string
+     */
+    public function startAjax()
+    {
+        $prodcode = $this->_req("prodcode");
+        $mridx = $this->_req("mridx");
+
+        $arr_condition = [
+            'EQ' => [
+                'MR.MemIdx' => $_SESSION['mem_idx'],
+                'MR.ProdCode' => $prodcode
+            ]
+        ];
+        $productInfo = $this->mockExamModel->productInfo($arr_condition);
+        //응시로그 저장
+        $sec = $productInfo['TakeTime'] * 60;
+
+        $logidx = $this->mockExamModel->makeExamLog($sec,$mridx);
+
+        return $this->response([
+            'data' => $logidx
+        ]);
     }
 
     /**

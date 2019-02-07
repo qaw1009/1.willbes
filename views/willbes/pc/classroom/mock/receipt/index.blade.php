@@ -86,7 +86,7 @@
                             <td class="w-form">{{ $val['TakeForm_Name'] }}</td>
                             <td class="w-date">{{ $val['TakeStartDatm'] }} ~ <br>{{ $val['TakeEndDatm'] }}</td>
                             <td class="w-list">
-                                <a href="#none" onclick="lShow({{ $val['ProdCode'] }},{{ $val['MemIdx'] }},{{$paging['rownum']}})" style="color:#2784db;">{{ $val['ProdName'] }}</a>
+                                <a href="#none" onclick="lShow({{ $val['OrderProdIdx'] }})" style="color:#2784db;">{{ $val['ProdName'] }}</a>
                                 <input type="hidden" id="memname{{$paging['rownum']}}" value="{{ $val['MemName'] }}( {{ substr($val['MemId'],0,3) }}@for($i=0; $i<$val['IdLength']-3; $i++)*@endfor )" />
                                 <input type="hidden" id="partname{{$paging['rownum']}}" value="{{ $val['TakeMockPart_Name'] }}" />
                                 <input type="hidden" id="catename{{$paging['rownum']}}" value="{{ $val['CateName'] }}" />
@@ -227,57 +227,21 @@
         </form>
         <!-- End Container -->
         <script>
-
-            function lShow(prodcode, memidx, idx){
-
-                $('#prodcode').val(prodcode);
-                $('#memidx').val(memidx);
-
-                $('#r0').html($('#prodname'+idx).val());
-                $('#r1').html($('#memname'+idx).val());
-                $('#r2').html($('#partname'+idx).val());
-                $('#r3').html($('#catename'+idx).val());
-                $('#r4').html($('#areaname'+idx).val());
-                $('#r5').html($('#takenum'+idx).val());
-                $('#r6').html($('#taketime'+idx).val());
-                $('#r7').html($('#part'+idx).val());
-                $('#r8').html($('#point'+idx).val());
-                $('#r9').html($('#price'+idx).val());
-                $('#r10').html($('#coupon'+idx).val());
-                $('#r11').html($('#route'+idx).val());
-                $('#r12').html($('#status'+idx).val());
-                $('#r13').html($('#paymethod'+idx).val());
-                $('#r14').html($('#complete'+idx).val());
-
-                url = "{{ site_url("/classroom/MockReceipt/subjectAjax") }}";
-                data = $('#regi_form').serialize();
-
-                sendAjax(url,
-                    data,
-                    function(d){
-                        if(d.data.E != undefined){
-                            var str = '';
-                            for(var i=0; i<d.data.E.length; i++){
-                                if(i == 0) str = d.data.E[i];
-                                else       str = str + ', ' + d.data.E[i];
-                            }
-                            $('#K1').html(str);
-                        }
-                        if(d.data.S != undefined){
-                            var str2 = '';
-                            for(var i=0; i<d.data.S.length; i++){
-                                if(i == 0) str2 = d.data.S[i];
-                                else       str2 = str + ' ' + d.data.S[i];
-                            }
-                            $('#K2').html(str2);
-                        }
-
-                        $('#MOCKTESTPASSFIN').show();
-                    },
-                    function(ret, status){
-                        alert(ret);
-                    }, true, 'POST', 'json'
-                );
+            //https://cop.local.willbes.net/mockTest/apply_order/241
+            var win = '';
+            function lShow(OrderProdIdx){
+                var _url = '{{ front_url("/mockTest/apply_order/") }}' + OrderProdIdx;
+                if (win == '') {
+                    win = window.open(_url, 'mockPopup', 'width=980, height=845, scrollbars=yes, resizable=yes');
+                    win.focus();
+                }else{
+                    if(win.closed){
+                        win = window.open(_url, 'mockPopup', 'width=980, height=845, scrollbars=yes, resizable=yes');
+                        win.focus();
+                    } else {
+                        //alert('팝업떠있음');
+                    }
+                }
             }
 
             //인쇄

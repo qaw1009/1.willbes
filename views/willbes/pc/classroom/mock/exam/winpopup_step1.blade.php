@@ -86,7 +86,7 @@
                         {!! csrf_field() !!}
                         <input type="hidden" id='prodcode' name="prodcode" value="{{ element('prodcode', $arr_input) }}" />
                         <input type="hidden" name="mridx" value="{{ element('mridx', $arr_input) }}" />
-                        <input type="hidden" id='logidx' name="logidx" value="{{ $logidx }}" />
+                        <input type="hidden" id='logidx' name="logidx"  />
                     </form>
                     <div class="PASSZONE-Lec-Section pt25">
                         <div class="Search-Result strong mb15 tx-gray">· 응시하기 참고</div>
@@ -127,7 +127,7 @@
                     </div>
                     <div class="passzonebtn tx-center mt20 none">
                     <span>
-                        <button type="submit" onclick="" class="btnAuto130 h36 mem-Btn bg-black bd-dark-gray strong">
+                        <button type="button" onclick="window.close();" class="btnAuto130 h36 mem-Btn bg-black bd-dark-gray strong">
                             <span class="strong">닫기</span>
                         </button>
                     </span>
@@ -143,6 +143,12 @@
         <!-- //popupContainer -->
     </div>
     <!-- End Popup -->
+    <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+        {!! csrf_field() !!}
+        <input type="hidden" id='prodcode' name="prodcode" value="{{ element('prodcode', $arr_input) }}" />
+        <input type="hidden" id='mridx' name="mridx" value="{{ element('mridx', $arr_input) }}"/>
+
+    </form>
     <script>
 
         $(document).ready(function() {
@@ -159,10 +165,19 @@
         });
 
         function goStep2(){
-            //값이 세팅되면 시작
-            if($('#prodcode').val()&&$('#logidx').val()){
+            url = "{{ site_url("/classroom/MockExam/startAjax") }}";
+            data = $('#regi_form').serialize();
+
+            sendAjax(url,
+                data,
+            function(d){
+                $('#logidx').val(d.data);
                 document.url_form.submit();
-            }
+            },
+            function(ret, status){
+                alert(ret.ret_msg);
+            }, true, 'POST', 'json');
+
         }
 
     </script>

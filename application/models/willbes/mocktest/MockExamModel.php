@@ -458,52 +458,20 @@ class MockExamModel extends WB_Model
      */
     public function makeExamLog($sec,$MrIdx){
         try {
+            // 데이터 등록
+            $log_data = [
+                'LogType'=> 'S',
+                'RegIp'=> $this->input->ip_address(),
+                'RemainSec' => $sec,
+                'MrIdx'=> $MrIdx
+            ];
 
-            $column = "
-                LogIdx
-            ";
-
-            $from = "
-                FROM {$this->_table['mockLog']}
-            ";
-
-            $obder_by = " ORDER BY RegDatm DESC LIMIT 1";
-
-            $where = " WHERE MrIdx = ".$MrIdx;
-
-            $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
-            $data = $query->row_array();
-
-            if($data['LogIdx']){
-                // 데이터 수정
-                $log_data = [
-                    'LogType'=> 'S',
-                    'RegIp'=> $this->input->ip_address(),
-                    'RemainSec' => $sec,
-                    'MrIdx' => $MrIdx
-                ];
-
-                $this->_conn->set($log_data)->set('RegDatm', 'NOW()', false)->where('MrIdx',$MrIdx)->update($this->_table['mockLog']);
-
-                if(!$this->_conn->affected_rows()) {
-                    throw new Exception('시험 로그변경에 실패했습니다.');
-                }
-                return $data['LogIdx'];
-            }else{
-                // 데이터 등록
-                $log_data = [
-                    'LogType'=> 'S',
-                    'RegIp'=> $this->input->ip_address(),
-                    'RemainSec' => $sec,
-                    'MrIdx'=> $MrIdx
-                ];
-
-                if ($this->_conn->set($log_data)->set('RegDatm', 'NOW()', false)->insert($this->_table['mockLog']) === false) {
-                    throw new \Exception('시험 로그등록에 실패했습니다.');
-                }
-                // 등록된 게시판 식별자
-                return $this->_conn->insert_id();
+            if ($this->_conn->set($log_data)->set('RegDatm', 'NOW()', false)->insert($this->_table['mockLog']) === false) {
+                throw new \Exception('시험 로그등록에 실패했습니다.');
             }
+            // 등록된 게시판 식별자
+            return $this->_conn->insert_id();
+
         } catch (\Exception $e) {
             //return error_result($e);
         }
@@ -526,14 +494,12 @@ class MockExamModel extends WB_Model
                 {$this->_table['mockLog']}
         ";
 
-        $obder_by = "";
+        $obder_by = " ORDER BY RegDatm DESC";
 
         $where = " WHERE LogIdx = ".$logIdx;
         //echo "<pre>".'select '. $column . $from . $where . $obder_by."</pre>";
         $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
         return $query->row_array()['RemainSec'];
-
-
     }
 
     /**
@@ -585,6 +551,7 @@ class MockExamModel extends WB_Model
                 // 데이터 수정
                 $data = [
                     'Answer' => $Answer,
+                    'LogIdx' => $LogIdx
                 ];
                 $this->_conn->set($data)->set('RegDatm', 'NOW()', false)->where(['MemIdx' => $this->session->userdata('mem_idx'), 'ProdCode' => $ProdCode, 'MrIdx' => $MrIdx, 'MpIdx' => $MpIdx, 'MqIdx' => $MqIdx]);
 
@@ -778,12 +745,12 @@ class MockExamModel extends WB_Model
      * @param array $arr_condition
      * @return mixed
      */
-    public function questionTempCnt($arr_condition=[]){
+    public function questionTempCnt($arr_condition=[], $mridx){
 
         $column = "
             MP.MpIdx,
             COUNT(*) AS TCNT,
-            (SELECT COUNT(*) FROM {$this->_table['mockAnswerTemp']} WHERE MpIdx = Mp.MpIdx AND Answer != '0'  AND MemIdx = '".$this->session->userdata('mem_idx')."') AS CNT
+            (SELECT COUNT(*) FROM {$this->_table['mockAnswerTemp']} WHERE MpIdx = Mp.MpIdx AND Answer != '0'  AND MemIdx = '".$this->session->userdata('mem_idx')."' AND MrIdx = ".$mridx.") AS CNT
         ";
 
         $from = "
@@ -797,7 +764,6 @@ class MockExamModel extends WB_Model
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
-        //echo "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
         $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
 
         return $query->result_array();

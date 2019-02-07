@@ -233,6 +233,7 @@
         }
     }
 
+    // 시간저장
     function timeSaveAjax(){
         var _url = '{{ front_url('/classroom/MockExam/timeSaveAjax') }}';
         ajaxSubmit($regi_form, _url, function(ret) {

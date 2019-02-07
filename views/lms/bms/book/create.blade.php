@@ -32,7 +32,7 @@
                     <label class="control-label col-md-2">카테고리정보 <span class="required">*</span>
                     </label>
                     <div class="col-md-9 form-inline">
-                        @if($method == 'PUT')
+                        @if($method == 'PUT' && empty($data['CateCode']) === false)
                             <p class="form-control-static">{{ $data['CateRouteName'] }}</p>
                         @else
                             <button type="button" id="btn_category_search" class="btn btn-sm btn-primary">카테고리검색</button>
@@ -306,6 +306,11 @@
                     alert('과목/교수 정보 필드는 필수입니다.');
                     return false;
                 }
+                if ($regi_form.find('input[name="sale_price"]').val() < 0) {
+                    alert('판매가를 0원 이상으로 입력해 주세요.');
+                    $regi_form.find('input[name="dc_amt"]').focus();
+                    return false;
+                }
                 return true;
             }
 
@@ -421,10 +426,18 @@
                     sale_price = org_price - dc_amt;
                 }
 
+                if (sale_price < 0) {
+                    alert('판매가를 0원 이상으로 입력해 주세요.');
+                    return;
+                }
+
                 if (sale_price < 1) {
                     // 판매금액이 0원일 경우 무료 체크
                     $regi_form.find('input[id="is_free_n"]').prop('checked', false).iCheck('update');
                     $regi_form.find('input[id="is_free_y"]').prop('checked', true).iCheck('update');
+                } else {
+                    $regi_form.find('input[id="is_free_n"]').prop('checked', true).iCheck('update');
+                    $regi_form.find('input[id="is_free_y"]').prop('checked', false).iCheck('update');
                 }
 
                 $regi_form.find('input[name="sale_price"]').val(sale_price);

@@ -163,7 +163,7 @@
                             //return (data == 'Y') ? '사용' : '<p class="red">미사용</p>';
                             var chk = '';
                             if (data == '1') { chk = 'checked=checked'; $set_is_best[row.BoardIdx] = 1; } else { chk = ''; }
-                            return '<input type="checkbox" name="is_best" value="1" class="flat is-best" data-is-best-idx="' + row.BoardIdx + '" '+chk+'/>';
+                            return '<input type="checkbox" name="is_best" value="1" class="flat is-best" data-is-best-idx="' + row.BoardIdx + '" '+chk+ ' data-origin-is-best = ' + ((data == '1') ? ' "1"' : "0") + '>';
                         }},
 
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
@@ -189,22 +189,33 @@
 
             // Best 적용
             $('.btn-is-best').on('click', function() {
+                if (!confirm('상태를 적용하시겠습니까?')) {
+                    return;
+                }
+
+                var $is_best = $list_table.find('input[name="is_best"]');
+                var origin_val, this_val, this_best_val;
                 var $params = {};
                 var _url = '{{ site_url("/board/exam/{$boardName}/storeIsBest/?") }}' + '{!! $boardDefaultQueryString !!}';
 
-                $('input[name="is_best"]:checked').each(function() {
-                    $params[$(this).data('is-best-idx')] = $(this).val();
+                $is_best.each(function(idx) {
+                    // 신규 또는 추천 값이 변하는 경우에만 파라미터 설정
+                    this_best_val = $(this).filter(':checked').val() || '0';
+                    this_val = this_best_val;
+                    origin_val = $is_best.eq(idx).data('origin-is-best');
+                    if (this_val != origin_val) {
+                        $params[$(this).data('is-best-idx')] = { 'IsBest' : this_best_val };
+                    }
                 });
 
-                if (Object.keys($params).length <= '0') {
-                    alert('공지 적용할 게시글을 선택해주세요.');
-                    return false;
+                if (Object.keys($params).length < 1) {
+                    alert('변경된 내용이 없습니다.');
+                    return;
                 }
 
                 var data = {
                     '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
                     '_method' : 'PUT',
-                    'before_params' : JSON.stringify($set_is_best),
                     'params' : JSON.stringify($params)
                 };
 

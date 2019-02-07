@@ -1,15 +1,15 @@
-@extends('lcms.layouts.master_modal')
+@extends('lcms.layouts.master_popup')
 
-@section('layer_title')
-    전국모의고사
+@section('popup_title')
 @stop
 
-@section('layer_header')
+@section('popup_header')
+@endsection
+
+@section('popup_content')
     <form class="form-horizontal" id="_sub_refund_check_form" name="_sub_refund_check_form" method="POST" onsubmit="return false;">
     {!! csrf_field() !!}
 
-    @endsection
-    @section('layer_content')
     <!-- Popup -->
         <div class="form-group mt-20">
             <div class="col-md-11">
@@ -114,13 +114,14 @@
             </div>
         </div>
 
-        <!-- //popupContainer -->
-        <form class="form-horizontal" id="url_form" name="url_form" method="POST" onsubmit="return false;">
-            {!! csrf_field() !!}
-            <input type="hidden" id='prodcode' name="prodcode" value="{{ $prodcode }}" />
-        </form>
     </div>
     <!-- End Popup -->
+    </form>
+    <!-- //popupContainer -->
+    <form class="form-horizontal" id="url_form" name="url_form" method="POST" onsubmit="return false;">
+        {!! csrf_field() !!}
+        <input type="hidden" id='prodcode' name="prodcode" value="{{ $prodcode }}" />
+    </form>
     <script>
         $(document).ready(function() {
 
@@ -132,11 +133,9 @@
                 var memidx = $(this).data('mem');
 
                 uri_param = 'prodcode=' + prodcode + '&memidx=' + memidx;
+                var _url = '{{ site_url() }}' + 'mocktest/statisticsPrivate/winStatTotal?' + uri_param
+                location.href=_url;
 
-                $('.act-move').setLayer({
-                    'url' : '{{ site_url() }}' + '/mocktest/statisticsPrivate/winStatTotal?' + uri_param,
-                    'width' : 1400
-                });
             });
 
         });
@@ -155,10 +154,7 @@
             return false;
         }
     </script>
-        @stop
-        @section('add_buttons')
-        @endsection
+@stop
 
-        @section('layer_footer')
-    </form>
+@section('popup_footer')
 @endsection

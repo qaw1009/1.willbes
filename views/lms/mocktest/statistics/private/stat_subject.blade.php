@@ -231,10 +231,11 @@
 
                 uri_param = 'prodcode=' + prodcode + '&memidx=' + memidx;
 
-                $('.act-move').setLayer({
-                    'url' : '{{ site_url() }}' + '/mocktest/statisticsPrivate/winStatTotal?' + uri_param,
-                    'width' : 1400
-                });
+
+                var _url = '{{ site_url() }}' + 'mocktest/statisticsPrivate/winStatTotal?' + uri_param
+                win = window.open(_url, 'mockPopup', 'width=980, height=845, scrollbars=yes, resizable=yes');
+                win.focus();
+
             });
 
         });
@@ -255,7 +256,6 @@
                 document.body.innerHTML = initBody;
             };
             window.print();
-            return false;
         }
 
     </script>

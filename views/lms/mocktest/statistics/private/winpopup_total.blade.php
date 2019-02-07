@@ -1,15 +1,14 @@
-@extends('lcms.layouts.master_modal')
+@extends('lcms.layouts.master_popup')
 
-@section('layer_title')
-    전국모의고사
+@section('popup_title')
 @stop
 
-@section('layer_header')
+@section('popup_header')
+@endsection
+
+@section('popup_content')
     <form class="form-horizontal" id="_sub_refund_check_form" name="_sub_refund_check_form" method="POST" onsubmit="return false;">
     {!! csrf_field() !!}
-
-    @endsection
-    @section('layer_content')
             <div class="form-group mt-20">
                 <div class="col-md-11">
                     <ul class="nav nav-pills" role="tablist">
@@ -400,13 +399,10 @@
                 var uri_param;
                 var prodcode = $(this).data('idx');
                 var memidx = $(this).data('mem');
-
                 uri_param = 'prodcode=' + prodcode + '&memidx=' + memidx;
 
-                $('.act-move').setLayer({
-                    'url' : '{{ site_url() }}' + '/mocktest/statisticsPrivate/winStatSubject?' + uri_param,
-                    'width' : 1400
-                });
+                var _url = '{{ site_url() }}' + 'mocktest/statisticsPrivate/winStatSubject?' + uri_param
+                location.href=_url;
             });
 
         });
@@ -422,13 +418,9 @@
                 document.body.innerHTML = initBody;
             };
             window.print();
-            return false;
         }
     </script>
-        @stop
-        @section('add_buttons')
-        @endsection
+@stop
 
-        @section('layer_footer')
-        </form>
+@section('popup_footer')
 @endsection

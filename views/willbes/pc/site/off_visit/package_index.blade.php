@@ -128,7 +128,7 @@
                                         <dl class="w-info acad">
                                             <dt>
                                                 <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', '', '{{ site_url() }}offPackage')">
-                                                    <strong>종합반 상세정보</strong>
+                                                    <strong class="open-info-modal">종합반 상세정보</strong>
                                                 </a>
                                             </dt>
                                             <dt><span class="row-line">|</span></dt>

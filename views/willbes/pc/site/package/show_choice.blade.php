@@ -185,7 +185,7 @@
                                                 <dl class="w-info">
                                                     <dt class="mr20">
                                                         <a href="#none" onclick="productInfoModal('{{ $sub_row['ProdCode'] }}', 'hover1','{{ site_url() }}lecture')">
-                                                            <strong>강좌상세정보</strong>
+                                                            <strong class="open-info-modal">강좌상세정보</strong>
                                                         </a>
                                                     </dt>
                                                     <dt>강의수 : <span class="tx-blue">{{ $sub_row['wUnitLectureCnt'] }}강</span></dt>
@@ -324,7 +324,7 @@
                                                 <dl class="w-info">
                                                     <dt class="mr20">
                                                         <a href="#none" onclick="productInfoModal('{{ $sub_row['ProdCode'] }}', 'hover1','{{ site_url() }}lecture')">
-                                                            <strong>강좌상세정보</strong>
+                                                            <strong class="open-info-modal">강좌상세정보</strong>
                                                         </a>
                                                     </dt>
                                                     <dt>강의수 : <span class="tx-blue">{{ $sub_row['wUnitLectureCnt'] }}강</span></dt>

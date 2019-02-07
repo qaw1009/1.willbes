@@ -38,10 +38,6 @@
                         <tbody>
                         <tr>
                             <td class="w-file tx-left pl20" colspan="7">
-                                {{--@if(empty($data['UploadFileRealName']) === false)
-                                    <a href="{{front_url('/event/download?path=').urlencode($data['UploadFileFullPath'].$data['UploadFileName']).'&fname='.urlencode($data['UploadFileRealName']).'&event_idx='.element('event_idx', $arr_input) }}" target="_blank">
-                                    <img src="{{ img_url('prof/icon_file.gif') }}"> {{$data['UploadFileRealName']}}</a>
-                                @endif--}}
                                 @if(empty($arr_base['file_F']) === false)
                                     <a href="{{front_url('/event/download?path=').urlencode($arr_base['file_F']['FileFullPath'].$arr_base['file_F']['FileName']).'&fname='.urlencode($arr_base['file_F']['FileRealName']).'&event_idx='.element('event_idx', $arr_input) }}" target="_blank">
                                         <img src="{{ img_url('prof/icon_file.gif') }}"> {{$arr_base['file_F']['FileRealName']}}</a>
@@ -51,7 +47,7 @@
                         <tr>
                             <td class="w-txt tx-left" colspan="7">
                                 @if($data['ContentType'] == $arr_base['content_type']['image'])
-                                    <img src="{{$arr_base['file_F']['FileFullPath'] . $arr_base['file_F']['FileName']}}">
+                                    <img src="{{$arr_base['file_C']['FileFullPath'] . $arr_base['file_C']['FileName']}}">
                                 @else
                                     {!! $data['Content'] !!}
                                 @endif

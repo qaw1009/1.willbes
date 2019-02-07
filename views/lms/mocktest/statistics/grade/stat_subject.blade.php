@@ -59,7 +59,7 @@
                 </table>
             @endif
         </div>
-        <h5 class="mt-20">- 모의고사 기준으로 조정점수를 수동반영하고 성적 통계를 확인하는 메뉴입니다.(개인 성적표 통계 처리를 위한 단계)</h5>
+        <h5 class="mt-20">- 직렬별 응시인원 = 모의고사그룹코드로 묶인 경우, 그룹핑된 각 모의고사를 응시한 인원의 총합(각 모의고사의 응시인원과 상이할 수 있음)</h5>
         <div class="x_panel">
             @if(empty($list)===false)
                 @foreach($list as $keys => $rows)

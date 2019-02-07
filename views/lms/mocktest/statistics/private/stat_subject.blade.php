@@ -2,7 +2,7 @@
 
 @section('content')
     <div id="content">
-        <h5 class="mt-20">- 모의고사 기준으로 조정점수를 수동반영하고 성적 통계를 확인하는 메뉴입니다.(개인 성적표 통계 처리를 위한 단계)</h5>
+        <h5 class="mt-20">- 응시자 기준으로 개별 모의고사성적을 확인하는 메뉴입니다.</h5>
         <div class="x_panel">
             <div>
                 <div class="pull-left x_title mb-5"><h2>모의고사정보</h2></div>
@@ -53,7 +53,7 @@
                 </table>
             @endif
         </div>
-        <h5 class="mt-20">- 모의고사 기준으로 조정점수를 수동반영하고 성적 통계를 확인하는 메뉴입니다.(개인 성적표 통계 처리를 위한 단계)</h5>
+
         <div class="x_panel">
             @if(empty($list)===false)
                 @foreach($list as $keys => $rows)

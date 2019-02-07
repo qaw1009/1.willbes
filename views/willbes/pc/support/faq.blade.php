@@ -36,11 +36,10 @@
                                     <div class="subBox @if($s_faq == $row['Ccd']) on @endif">
                                         <dl>
                                             @foreach($row['subFaqData'] as $sub)
-                                                <dt><a href="{{front_url('/support/faq/index?s_faq='.$row['Ccd']).'&s_sub_faq='.$sub['Ccd']}}">{{$sub['CcdName']}}</a>
-                                                @if($loop->last == false)
-                                                <span class="row-line">|</span>
-                                                @endif
-                                            </dt>
+                                                <dt>
+                                                    <button type="button" onclick="javascript:goSubmit('{{$row['Ccd']}}', '{{$sub['Ccd']}}')" @if( (element('s_sub_faq', $arr_input) == $sub['Ccd']) || (empty(element('s_sub_faq', $arr_input)) === true && $loop->first == true) )style="color: #0a8cc2" @endif>{{$sub['CcdName']}}</button>
+                                                    @if($loop->last == false)<span class="row-line">|</span>@endif
+                                                </dt>
                                             @endforeach
                                         </dl>
                                     </div>
@@ -107,4 +106,10 @@
         {!! banner('고객센터_우측날개', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
     </div>
     <!-- End Container -->
+    <script type="text/javascript">
+        function goSubmit(param1, param2) {
+            var url = "{{front_url('/support/faq/index')}}";
+            location.href = url+"?s_faq="+param1+"&s_sub_faq="+param2;
+        }
+    </script>
 @stop

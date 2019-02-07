@@ -85,9 +85,9 @@ class SupportProfQna extends BaseSupport
                     'Content' => $s_keyword
                 ]
             ],
-            'LKB' => [
+            /*'LKB' => [
                 'Category_String'=>$s_cate_code
-            ],
+            ],*/
         ];
 
         // 공지숨기기

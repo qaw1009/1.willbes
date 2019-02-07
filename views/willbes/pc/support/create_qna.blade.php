@@ -96,6 +96,11 @@
                                                 <span class="file-btn bg-heavy-gray NSK">찾아보기</span>
                                                 <span class="file-select"><input type="file" id="attach_file{{ $i }}" name="attach_file[]" class="input-file" size="3"></span>
                                                 <input class="file-reset NSK" type="button" value="X" />
+                                                @if(empty($data['AttachData'][$i]) === false)
+                                                    <p class="">[ {{ $data['AttachData'][$i]['RealName'] }} ]
+                                                        <a href="#none" class="file-delete" data-attach-idx="{{ $data['AttachData'][$i]['FileIdx']  }}">파일삭제</a>
+                                                    </p>
+                                                @endif
                                             </div>
                                         </li>
                                     @endfor
@@ -133,6 +138,24 @@
 
         $('#btn_list').click(function() {
             location.href = '{!! front_url($default_path.'/index?'.$get_params) !!}';
+        });
+
+        $('.file-delete').click(function() {
+            var _url = '{{ front_url("{$default_path}/destroyFile/?".$get_params) }}';
+            var data = {
+                '{{ csrf_token_name() }}' : $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                '_method' : 'DELETE',
+                'attach_idx' : $(this).data('attach-idx')
+            };
+            if (!confirm('정말로 삭제하시겠습니까?')) {
+                return;
+            }
+            sendAjax(_url, data, function(ret) {
+                if (ret.ret_cd) {
+                    notifyAlert('success', '알림', ret.ret_msg);
+                    location.reload();
+                }
+            }, showError, false, 'POST');
         });
 
         $regi_form.submit(function() {

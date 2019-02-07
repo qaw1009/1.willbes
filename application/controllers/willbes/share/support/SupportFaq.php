@@ -44,6 +44,9 @@ class SupportFaq extends BaseSupport
         if (empty($s_faq) === false) {
             $faq_sub_ccd = $this->codeModel->getCcd($s_faq);
         }
+        if (empty($faq_sub_ccd) === false && empty($s_sub_faq) === true) {
+            $s_sub_faq = array_keys($faq_sub_ccd)[0];
+        }
 
         $arr_condition = [
             'EQ' => [

@@ -6,7 +6,7 @@
 </div>
 <div class="willbes-Leclist c_both">
     <div class="LecViewTable">
-        <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black tx-gray">
+        <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black bdb-gray tx-gray">
             <colgroup>
                 <col style="width: 90px;">
                 <col style="width: 70px;">

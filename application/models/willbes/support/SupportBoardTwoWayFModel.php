@@ -565,4 +565,56 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
+
+    /**
+     * 파일 삭제
+     * @param $attach_idx
+     * @return array|bool
+     */
+    public function removeFile($attach_idx)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $arr_data = $this->_findBoardAttach($attach_idx)[0];
+            if (empty($arr_data) === true) {
+                throw new \Exception('삭제할 데이터가 없습니다.');
+            }
+
+            $file_path = $arr_data['AttachFilePath'].$arr_data['AttachFileName'];
+            $this->load->helper('file');
+            $real_file_path = public_to_upload_path($file_path);
+            /*if (@unlink($real_file_path) === false) {
+                throw new \Exception('이미지 삭제에 실패했습니다.');
+            }*/
+
+            $data = ['IsStatus'=>'N'];
+            $this->_conn->set($data)->where('BoardFileIdx', $attach_idx);
+
+            if($this->_conn->update($this->_table['lms_board_attach'])=== false) {
+                throw new \Exception('데이터 수정에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * 파일 식별자 기준 파일 목록 조회
+     * @param $attach_idx
+     * @return array|int
+     */
+    private function _findBoardAttach($attach_idx)
+    {
+        $column = 'BoardFileIdx, BoardIdx, AttachFilePath, AttachFileName, AttachFileSize';
+        $arr_condition = ['EQ' => ['IsStatus' => 'Y', 'BoardFileIdx' => $attach_idx]];
+        $data = $this->_conn->getListResult($this->_table['lms_board_attach'], $column, $arr_condition, null, null, [
+            'BoardFileIdx' => 'asc'
+        ]);
+
+        return $data;
+    }
 }

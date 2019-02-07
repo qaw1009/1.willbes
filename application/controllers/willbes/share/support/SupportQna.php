@@ -298,7 +298,7 @@ class SupportQna extends BaseSupport
             , VocCcd_Name, MdCateCode_Name, SubJectName
             , IF(RegType=1, \'\', RegMemName) AS RegName
             , IF(IsCampus=\'Y\',\'offline\',\'online\') AS CampusType
-            , IF(IsCampus=\'Y\',\'학원\',\'온라인\') AS CampusType_Name, SiteGroupName        
+            , IF(IsCampus=\'Y\',\'학원\',\'온라인\') AS CampusType_Name, SiteGroupName, Category_String
             , AttachData
         ';
 
@@ -319,9 +319,13 @@ class SupportQna extends BaseSupport
             show_alert('게시글 조회시 오류가 발생되었습니다.', 'back');
         }
 
+        // 카테고리 조회
+        $arr_base['category'] = $this->categoryFModel->listSiteCategory(null);
+
         $data['AttachData'] = json_decode($data['AttachData'],true);       //첨부파일
         $this->load->view('support/'.$view_type.'/show_qna',[
                 'default_path' => $this->_default_path,
+                'arr_base' => $arr_base,
                 'arr_input' => $arr_input,
                 'get_params' => $get_params,
                 'data' => $data,
@@ -438,6 +442,24 @@ class SupportQna extends BaseSupport
         }
 
         show_alert('삭제되었습니다.', front_url($this->_default_path.'/index?'.$get_params));
+    }
+
+    /**
+     * 파일 삭제
+     */
+    public function destroyFile()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]'],
+            ['field' => 'attach_idx', 'label' => '식별자', 'rules' => 'trim|required|integer'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->supportBoardTwoWayFModel->removeFile($this->_reqP('attach_idx'));
+        $this->json_result($result, '삭제 되었습니다.', $result);
     }
 
     /**

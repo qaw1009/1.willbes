@@ -91,9 +91,9 @@ class SupportProfTpass extends BaseSupport
                     ,'b.Content' => $s_keyword
                 ]
             ],
-            'LKB' => [
+            /*'LKB' => [
                 'Category_String'=>$s_cate_code
-            ]
+            ]*/
         ];
 
         $column = 'b.BoardIdx,b.CampusCcd,b.TypeCcd,b.IsBest,b.AreaCcd

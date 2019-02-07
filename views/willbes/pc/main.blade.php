@@ -5,7 +5,7 @@
     <div id="Container" class="Container main NSK c_both">
         <div class="Section MainVisual mt30 mb50">
             <div class="widthAuto">
-                <a href="https://www.dev.willbes.net/member/join/" target="_blank"><img src="{{ img_url('main/visual/visual_180917.jpg') }}"></a>
+                <a href="{{ site_url('/member/join/') }}" target="_blank"><img src="{{ img_url('main/visual/visual_180917.jpg') }}"></a>
             </div>
         </div>
         <div class="Section Act1 mb50">
@@ -14,7 +14,7 @@
                 <div class="ProcessBox">
                     <ul>
                         <li>
-                            <a href="https://gosi.dev.willbes.net/home/index/cate/3010" target="_blank">
+                            <a href="{{ app_url('/home/index/cate/3010', 'gosi') }}" target="_blank">
                                 <div class="wTit">
                                     <img src="{{ img_url('main/icon_willbes1.png') }}"> 공무원
                                 </div>
@@ -25,7 +25,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="https://cop.dev.willbes.net/home/index/cate/3001" target="_blank">
+                            <a href="{{ app_url('/home/index/cate/3001', 'cop') }}" target="_blank">
                                 <div class="wTit">
                                     <img src="{{ img_url('main/icon_willbes2.png') }}"> 경찰
                                 </div>

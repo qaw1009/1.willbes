@@ -646,6 +646,9 @@ table.dataTable tbody>tr.selected, table.dataTable tbody>tr>.selected {
 .dt-buttons.btn-group .border-radius-reset {
     border-radius: 3px !important;
 }
+.dataTables_paginate.paging_full_numbers {
+    width: 40% !important;
+}
 
 /* bootstrap3 alert */
 .alert {

@@ -103,7 +103,7 @@
                                 <dl class="w-info">
                                     <dt class="mr20">
                                         <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', '', '{{ site_url() }}package')">
-                                            <strong>패키지상세정보</strong>
+                                            <strong class="open-info-modal">패키지상세정보</strong>
                                         </a>
                                     </dt>
                                     <dt>개강일 : <span class="tx-blue">{{$row['StudyStartDateYM']}}</span></dt>

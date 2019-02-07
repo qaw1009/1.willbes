@@ -107,7 +107,7 @@ class MockExam extends \app\controllers\FrontController
 
         $isTemp = $this->mockExamModel->isExamTemp($prodcode);
 
-        if($isTemp) $sec = $this->mockExamModel->callRemainTime($isTemp);
+        if($isTemp) $sec = $this->mockExamModel->callRemainTime($mridx);
 
         //$logIdx = $this->mockExamModel->makeExamLog($sec,$mridx);
         // 필수/선택과목 컬럼수 & 이름
@@ -193,7 +193,7 @@ class MockExam extends \app\controllers\FrontController
         $question_list = $this->mockExamModel->questionCall($s_mpidx,$prodcode);
 
         //로그에서 남은시간 호출
-        $rSec = $this->mockExamModel->callRemainTime($logidx);
+        $rSec = $this->mockExamModel->callRemainTime($mridx);
         if(empty($RemainSec) === true) $RemainSec = $rSec;
 
         $this->mockExamModel->saveTime($logidx, $RemainSec);
@@ -292,7 +292,7 @@ class MockExam extends \app\controllers\FrontController
 
         $isTemp = $this->mockExamModel->isExamTemp($prodcode);
 
-        if($isTemp) $sec = $this->mockExamModel->callRemainTime($isTemp);
+        if($isTemp) $sec = $this->mockExamModel->callRemainTime($mridx);
 
         // 필수/선택과목 컬럼수 & 이름
         $pCnt = 0;

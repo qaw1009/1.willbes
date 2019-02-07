@@ -483,7 +483,7 @@ class MockExamModel extends WB_Model
      * @param array $logIdx
      * @return mixed
      */
-    public function callRemainTime($logIdx){
+    public function callRemainTime($mridx){
 
         $column = "
             RemainSec
@@ -494,9 +494,9 @@ class MockExamModel extends WB_Model
                 {$this->_table['mockLog']}
         ";
 
-        $obder_by = " ORDER BY RegDatm DESC";
+        $obder_by = " ORDER BY RemainSec";
 
-        $where = " WHERE LogIdx = ".$logIdx;
+        $where = " WHERE MrIdx = ".$mridx;
         //echo "<pre>".'select '. $column . $from . $where . $obder_by."</pre>";
         $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
         return $query->row_array()['RemainSec'];

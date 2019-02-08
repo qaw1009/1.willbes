@@ -37,14 +37,6 @@
                                 <option value="{{$i}}">{{$i}}</option>
                             @endfor
                         </select>
-                        &nbsp;<!--
-                        <select class="form-control mr-10" id="search_course_idx" name="search_course_idx">
-                            <option value="">과정</option>
-                            @foreach($arr_course as $row)
-                                <option value="{{ $row['CourseIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CourseName'] }}</option>
-                            @endforeach
-                        </select>
-                        //-->
                     </div>
                 </div>
 

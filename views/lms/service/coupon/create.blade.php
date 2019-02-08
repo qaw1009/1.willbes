@@ -205,7 +205,7 @@
                     </label>
                     <div class="col-md-9 form-inline">
                         @if($method == 'PUT')
-                            <p class="form-control-static">{{ $data['ApplyProdName'] }}</p>
+                            <p class="form-control-static">{{ $data['ProdNames'] or '' }}</p>
                         @else
                             <button type="button" id="btn_mock_exam_search" class="btn btn-sm btn-primary">모의고사검색</button>
                             <span id="selected_mock_exam" class="pl-10"></span>

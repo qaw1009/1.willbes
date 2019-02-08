@@ -441,8 +441,7 @@ body.no_sidebar {
     margin-top: -4px;
     margin-left: 0;
 }
-.top_col .nav-tabs li.dropdown .dropdown-menu .dropdown-submenu .dropdown-menu.right-menu,
-.top_col .nav-tabs li.dropdown:last-child .dropdown-menu .dropdown-submenu .dropdown-menu {
+.top_col .nav-tabs li.dropdown .dropdown-menu .dropdown-submenu .dropdown-menu.right-menu {
     left: -100% !important;
     margin-left: -2px;
 }

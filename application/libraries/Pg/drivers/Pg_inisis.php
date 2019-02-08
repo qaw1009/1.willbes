@@ -336,7 +336,7 @@ class Pg_inisis extends CI_Driver
             $this->_parent->saveFileLog('부분취소 요청 시작');
             $this->_parent->saveFileLog('부분취소 요청 데이터', $params);
 
-            $_repay_type = $is_vbank == 'N' ? 'repay' : 'repayvacct';
+            $_repay_type = $is_vbank == 'N' ? 'repay' : 'vacctrepay';
             $_mid = element('mid', $params);
             $_tid = element('tid', $params);
             $_total_remain_pay_price = element('total_remain_pay_price', $params);    // 전체남은금액 (총실결제금액 - 총환불금액)
@@ -391,7 +391,7 @@ class Pg_inisis extends CI_Driver
                 $inipay->SetField('refundbankcode', $_refund_bank_code);    // 환불은행코드
                 $inipay->SetField('refundacctnum', $_refund_account_no);     // 환불계좌번호 (숫자만 입력)
                 $inipay->SetField('refundacctname', $_refund_deposit_name);    // 환불계좌 예금주명
-                $inipay->SetField('refundfirmflag', '');                                // 펌뱅킹 사용여부 (사용 : 1, 사용안함 : 값없음)
+                $inipay->SetField('refundflgremit', '');                                // 펌뱅킹 사용여부 (사용 : 1, 사용안함 : 값없음)
             } else {
                 $inipay->SetField('tax', $_tax);
                 $inipay->SetField('taxfree', $_taxfree);

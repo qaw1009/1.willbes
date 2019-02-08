@@ -1142,7 +1142,7 @@ class MockExamModel extends WB_Model
                 JOIN {$this->_table['mockExamQuestion']} AS MQ  ON MP.MpIdx = MQ.MpIdx AND MP.IsUse = 'Y' AND MP.IsStatus = 'Y' AND MQ.IsStatus = 'Y'
                 JOIN {$this->_table['mockAreaList']} AS MA ON MQ.MalIdx = MA.MalIdx AND MA.IsStatus = 'Y'
                 LEFT OUTER JOIN {$this->_table['mockAnswerPaper']} AS AP ON MQ.MqIdx = AP.MqIdx AND AP.ProdCode = ".$ProdCode." AND AP.MemIdx = ".$this->session->userdata('mem_idx')."
-                LEFT OUTER JOIN {$this->_table['answerNote']} AS WN ON AP.MqIdx = WN.MqIdx
+                LEFT OUTER JOIN {$this->_table['answerNote']} AS WN ON AP.MqIdx = WN.MqIdx  AND WN.ProdCode = ".$ProdCode." AND WN.MemIdx = ".$this->session->userdata('mem_idx')."  
                 JOIN {$this->_table['mockRegisterR']} AS RP ON MP.MpIdx = RP.MpIdx AND AP.MrIdx = RP.MrIdx
         ";
 
@@ -1152,7 +1152,6 @@ class MockExamModel extends WB_Model
 
         if($MalIdxSet) $where .= " AND MQ.MalIdx in (".$MalIdxSet.")";
 
-        //echo "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
         $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
         return $query->result_array();
 

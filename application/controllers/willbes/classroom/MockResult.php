@@ -334,8 +334,6 @@ class MockResult extends \app\controllers\FrontController
             }
         }
 
-        echo $MalIdxSet;
-
         $answerNote = $this->mockExamModel->answerNoteCall($prodcode, $mpidx, $MalIdxSet);
 
         //문항이미지경로

@@ -47,7 +47,7 @@ class ManageCs extends \app\controllers\BaseController
         $count = $this->csModel->listManageCs(true, $arr_condition);
 
         if ($count > 0) {
-            $list = $this->csModel->listManageCs(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['CS.CtmIdx' => 'desc']);
+            $list = $this->csModel->listManageCs(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['CS.IsBest' => 'desc', 'CS.CtmIdx' => 'desc']);
         }
 
         return $this->response([

@@ -462,9 +462,12 @@ class RegGradeModel extends WB_Model
      */
     public function scoreMake($MgIdx, $mode)
     {
-
         try {
             $this->_conn->trans_begin();
+
+            if(empty($MgIdx) == true){
+                throw new \Exception('모의고사 그룹 미등록 상태입니다.');
+            }
 
             $column = "
                 ProdCode

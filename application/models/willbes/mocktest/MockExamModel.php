@@ -184,9 +184,9 @@ class MockExamModel extends WB_Model
 
             $column = " Straight_join
                             MR.*, PD.ProdName, PD.SiteCode, MP.MockYear, MP.MockRotationNo, MP.TakeStartDatm, MP.TakeEndDatm, PD.RegDatm AS PDReg, LENGTH(MemId) AS IdLength
-                            , (SELECT CcdName FROM {$this->_table['sysCode']} WHERE Ccd = MR.TakeArea) AS TakeAreaName
-                            , (SELECT CcdName FROM {$this->_table['sysCode']} WHERE Ccd = O.PayRouteCcd) AS route
-                            , (SELECT CcdName FROM {$this->_table['sysCode']} WHERE Ccd = O.PayMethodCcd) AS paymethod
+                            , fn_ccd_name(MR.TakeArea) AS TakeAreaName
+                            , fn_ccd_name(O.PayRouteCcd) AS route
+                            , fn_ccd_name(O.PayMethodCcd) AS paymethod
                             , OP.IsUseCoupon, OP.OrderPrice, O.CompleteDatm 
                             ,fn_day_name(MP.TakeStartDatm,'') as day_name
                             ,C1.CateName
@@ -413,7 +413,7 @@ class MockExamModel extends WB_Model
                    (SELECT RegDatm FROM {$this->_table['mockAnswerPaper']} WHERE MemIdx = MR.MemIdx AND MrIdx = MR.MrIdx ORDER BY RegDatm DESC LIMIT 1) AS IsDate,
                    PD.ProdName, PD.SaleStartDatm, PD.SaleEndDatm, PS.SalePrice, PS.RealSalePrice,          
                    C1.CateName, C1.IsUse AS IsUseCate, MR.OrderProdIdx, MR.MrIdx, MR.TakeNumber,
-                   (SELECT CcdName FROM {$this->_table['sysCode']} WHERE Ccd = MR.TakeMockPart) AS TakeMockPartName
+                   fn_ccd_name(MR.TakeMockPart) AS TakeMockPartName
         ";
 
         $from = "
@@ -986,8 +986,6 @@ class MockExamModel extends WB_Model
 
             $where = " WHERE ProdCode = ".$ProdCode;
         }
-
-
         //echo "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
         $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
         return $query->result_array();

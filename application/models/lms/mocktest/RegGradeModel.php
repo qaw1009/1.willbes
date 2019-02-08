@@ -702,9 +702,9 @@ class RegGradeModel extends WB_Model
                     // 랭킹 산정시 동일점수때문에 임시저장
                     $tempJum = '';
                     $Rank = 1;
-
+                    $minusRank = 1;
                     foreach ($result AS $key => $val) {
-
+                        $orgPoint = $val['OrgPoint'];
                         //조정점수 반영로직
                         if ($arrMockType[$vmp] == 'S') {
                             /*
@@ -745,10 +745,12 @@ class RegGradeModel extends WB_Model
                             $AdjustPoint = round($val['Res'], 2);
                         }
 
-                        if ($tempJum == $AdjustPoint) {
-                            $rRank = $Rank - 1;
+                        if ($tempJum == $orgPoint) {
+                            $rRank = $Rank - $minusRank;
+                            $minusRank++;
                         } else {
                             $rRank = $Rank;
+                            $minusRank = 1;
                         }
 
                         // 데이터 입력
@@ -764,7 +766,7 @@ class RegGradeModel extends WB_Model
                             'StandardDeviation' => $tempRes
                         ];
 
-                        $tempJum = $AdjustPoint;
+                        $tempJum = $val['OrgPoint'];
                         $Rank++;
 
                         if ($this->_conn->set($data)->insert($this->_table['mockGrades']) === false) {

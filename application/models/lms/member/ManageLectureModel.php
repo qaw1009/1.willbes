@@ -457,11 +457,12 @@ class ManageLectureModel extends WB_Model
         if($isCount === true){
             $query = "SELECT COUNT(*) AS rownums ";
         } else {
-            $query = "SELECT * , ifnull(RegAdminIdx, '') AS Name 
+            $query = "SELECT L.* , IFNULL(A.wAdminName, '') AS adminName 
               ";
         }
 
-        $query .= " FROM {$this->_table['extend']}  
+        $query .= " FROM {$this->_table['extend']} AS L
+            LEFT JOIN {$this->_table['admin']} AS A ON A.wAdminIdx = L.RegAdminIdx
          ";
 
         $where = $this->_conn->makeWhere($cond);

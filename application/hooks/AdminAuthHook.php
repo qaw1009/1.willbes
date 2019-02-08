@@ -24,6 +24,9 @@ class AdminAuthHook
         '/lcms/auth/regist/update',
         '/lcms/logs/viewer/',
         '/sys/adminSettings/',
+        '/service/coupon/issue/listAjax',
+        '/pay/order/listAjax',
+        '/service/point/allStatus/listAjax/',
         '/sample/'
     ];
 

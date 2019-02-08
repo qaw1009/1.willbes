@@ -231,13 +231,13 @@
             'setStart', 800, 800, null, null, 'yes','no');
     }
 
-    function fnExtend(orderidx, prodcode, prodcodesub)
+    function fnExtend(orderidx, prodcode, prodcodesub, prodtype)
     {
         popupOpen('/member/manage/extend/?memidx={{$memIdx}}&orderidx='+orderidx+'&prodcode='+prodcode+'&prodcodesub='+prodcodesub+'&prodtype='+prodtype,
             'Extend', 1200, 900, null, null, 'yes','no');
     }
 
-    function fnPause(orderidx, prodcode, prodcodesub)
+    function fnPause(orderidx, prodcode, prodcodesub, prodtype)
     {
         popupOpen('/member/manage/pause/?memidx={{$memIdx}}&orderidx='+orderidx+'&prodcode='+prodcode+'&prodcodesub='+prodcodesub+'&prodtype='+prodtype,
             'Pause', 1200, 900, null, null, 'yes','no');

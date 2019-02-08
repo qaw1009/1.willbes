@@ -858,7 +858,6 @@ class Manage extends \app\controllers\BaseController
 
     public function extend()
     {
-
     }
 
     public function setExtend()
@@ -869,7 +868,71 @@ class Manage extends \app\controllers\BaseController
 
     public function pause()
     {
+        $orderidx = $this->_req('orderidx');
+        $prodcode = $this->_req('prodcode');
+        $prodcodesub = $this->_req('prodcodesub');
+        $prodtype = $this->_req('prodtype');
+        $memidx =  $this->_req('memidx');
 
+        $cond_arr = [
+            'EQ' => [
+                'MemIdx' => $memidx, // 사용자
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub
+            ]
+        ];
+
+        if($prodtype === 'S'){
+            $leclist = $this->manageLectureModel->getLecture(false, $cond_arr);
+
+        } else if($prodtype === 'P') {
+            $leclist = $this->manageLectureModel->getPackage($cond_arr);
+
+        } else {
+            show_alert('신청강좌정보를 찾을수 없습니다.', 'close');
+        }
+
+        if(count($leclist) == 1){
+            $lec = $leclist[0];
+        } else {
+            show_alert('신청강좌정보를 찾을수 없습니다.', 'close');
+        }
+
+        if($lec['IsPause'] != 'Y'){
+            show_alert('일시중지할 수 없는 강좌입니다.', 'close');
+        }
+
+        $PauseRemain = $lec['LecExpireDay'] - $lec['PauseSum'];
+
+        if($PauseRemain < 0){
+            $PauseRemain = 0;
+        }
+
+        if($PauseRemain > $lec['remainDays']){
+            $PauseRemain = $lec['remainDays'];
+        }
+
+        $lec['PauseRemain'] = $PauseRemain;
+
+
+        $log = $this->manageLectureModel->getPauseLog([
+            'EQ' => [
+                'MemIdx' => $memidx,
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub,
+                'OrderProdIdx' => $lec['OrderProdIdx']
+            ]
+        ]);
+
+        $member = $this->manageMemberModel->getMember($memidx);
+
+        return $this->load->view('member/layer/lecture/pause', [
+            'member' => $member,
+            'lec' => $lec,
+            'log' => $log
+        ]);
     }
 
     public function setPause()

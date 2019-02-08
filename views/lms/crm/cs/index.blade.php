@@ -1,7 +1,7 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5>- 고객센터 온라인 공지사항 게시판을 관리하는 메뉴입니다.</h5>
+    <h5>- 고객 기술 응대 자료를 관리하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
     {!! csrf_field() !!}
         <div class="x_panel">
@@ -22,9 +22,6 @@
                     <label class="control-label col-md-1" for="search_value">제목/내용</label>
                     <div class="col-md-3">
                         <input type="text" class="form-control" id="search_value" name="search_value">
-                    </div>
-                    <div class="col-md-2">
-                        <p class="form-control-static">내용 가능</p>
                     </div>
                     <label class="control-label col-md-1" for="search_start_date">등록일</label>
                     <div class="col-md-5 form-inline">

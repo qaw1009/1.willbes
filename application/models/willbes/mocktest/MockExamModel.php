@@ -1177,14 +1177,12 @@ class MockExamModel extends WB_Model
                 JOIN {$this->_table['mockExamQuestion']} AS MQ  ON MP.MpIdx = MQ.MpIdx AND MP.IsUse = 'Y' AND MP.IsStatus = 'Y' AND MQ.IsStatus = 'Y'
                 JOIN {$this->_table['mockAreaList']} AS MA ON MQ.MalIdx = MA.MalIdx AND MA.IsStatus = 'Y'
                 LEFT OUTER JOIN {$this->_table['mockAnswerPaper']} AS AP ON MQ.MqIdx = AP.MqIdx AND AP.ProdCode = ".$prodcode ." AND AP.MemIdx = ".$this->session->userdata('mem_idx')."
-                LEFT OUTER JOIN {$this->_table['answerNote']} AS WN ON AP.MqIdx = WN.MqIdx AND WN.ProdCode = ".$ProdCode." AND WN.MemIdx = ".$this->session->userdata('mem_idx')."
-                JOIN {$this->_table['mockRegisterR']} AS RP ON MP.MpIdx = RP.MpIdx AND AP.MrIdx = RP.MrIdx
         ";
 
         $where = " WHERE AP.MpIdx = ".$mpidx;
         $obder_by = " GROUP BY MQ.MalIdx
                       ORDER BY MQ.MalIdx";
-
+        //echo "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
         $rows = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
 
         return $rows->result_array();

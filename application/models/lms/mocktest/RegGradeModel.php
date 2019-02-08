@@ -691,10 +691,10 @@ class RegGradeModel extends WB_Model
                             JOIN {$this->_table['mockRegister']} AS MR ON MR.MrIdx = MA.MrIdx AND MR.IsStatus = 'Y' 
                     ";
 
-                    $obder_by = " GROUP BY MemIdx";
+                    $obder_by = " GROUP BY MemIdx  ORDER BY OrgPoint DESC";
 
                     $where = "WHERE MP.MpIdx = " . $vmp;
-
+                    //echo "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
                     $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
 
                     $result = $query->result_array();

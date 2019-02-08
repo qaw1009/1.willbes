@@ -15,7 +15,7 @@ class ProfQna extends SupportQna
     protected $_paging_count = 10;
     protected $_reg_type = 0;    //등록타입
     private $_groupCcd = [
-        'consult_ccd' => '622',   //유형 그룹 코드 = 상담유형
+        'consult_ccd' => '702',   //유형 그룹 코드 = 상담유형
         'reply_status_ccd_not_complete' => '621001',    //답변등록상태 (미답변)
         'reply_status_ccd_complete' => '621004'         //답변등록상태 (답변완료)
     ];

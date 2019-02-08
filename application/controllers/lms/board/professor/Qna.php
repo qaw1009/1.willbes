@@ -28,7 +28,7 @@ class Qna extends BaseBoard
     private $_groupCcd = [
         'voc' => '620',
         'reply' => '621',       //답변상태
-        'type_group_ccd' => '622' //유형 그룹 코드 = 질문유형
+        'type_group_ccd' => '702' //유형 그룹 코드 = 질문유형
     ];
 
     public function __construct()

@@ -227,7 +227,7 @@
             $('#sr').html((stotal / cnt).toFixed(2));
             $('#zr').html((ztotal / cnt).toFixed(2));
             $('#br').html((btotal / cnt) + ' %');
-            $('#kr').html((ktotal / cnt) + '/' + tcnt);
+            $('#kr').html(Math.floor((ktotal / cnt)) + '/' + tcnt);
 
             // 모달창 오픈
             $('.act-move').on('click', function() {

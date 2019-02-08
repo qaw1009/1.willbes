@@ -130,7 +130,7 @@
             var win = '';
             function lShow(OrderProdIdx){
                 var url = '{{ front_url("/classroom/MockReceipt/apply_order/") }}' + OrderProdIdx;
-                window.open(url, 'mockPopup', 'width=755, height=845, scrollbars=yes, resizable=no');
+                window.open(url, 'mockReceiptPopup', 'width=755, height=845, scrollbars=yes, resizable=no');
             }
 
             //인쇄

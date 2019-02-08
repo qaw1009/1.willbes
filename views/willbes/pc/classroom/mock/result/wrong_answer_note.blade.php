@@ -154,11 +154,17 @@
     var MalArr = {!! json_encode($MalArr) !!};
     var firstChk = 'Y';
     var $regi_form_add = $('#regi_form_add');
+    var wrongYn = '{{ element('wrongYn', $arr_input) }}';
 
     $(document).ready(function() {
         selAreaAjax();
         if($('.exam-paperList > li').size() == 0){
-            $('.exam-paperList').html("<li style='text-align:center; font-weight:bold; width:100%'>- 등록된 오답노트가 없습니다. -</li>");
+            if(wrongYn == 'N'){
+                var str = '- 검색된 문항이 없습니다. -';
+            } else {
+                var str = '- 등록된 오답노트가 없습니다. -'
+            }
+            $('.exam-paperList').html("<li style='text-align:center; font-weight:bold; width:100%'>" + str +"</li>");
         }
     });
 

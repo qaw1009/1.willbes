@@ -8,7 +8,7 @@ class BaseCalc extends \app\controllers\BaseController
     protected $_calc_type = '';
     protected $_calc_name = '';
     protected $_methods = ['LE' => 'Lecture', 'AC' => 'AdminPackChoice', 'PP' => 'PeriodPack', 'OL' => 'Lecture', 'OP' => 'AdminPackChoice'];
-    protected $_search_name = ['LE' => '단강좌&사용자/운영자패키지(일반형)', 'AC' => '운영자패키지(선택형)', 'PP' => '기간제패키지', 'OL' => '단과반/종합반(일반형)', 'OP' => '종합반(선택형)'];
+    protected $_prod_name = ['LE' => '단강좌&사용자/운영자패키지(일반형)', 'AC' => '운영자패키지(선택형)', 'PP' => '기간제패키지', 'OL' => '단과반/종합반(일반형)', 'OP' => '종합반(선택형)'];
     protected $_group_ccd = [];
 
     public function __construct($calc_type, $calc_name)
@@ -25,9 +25,9 @@ class BaseCalc extends \app\controllers\BaseController
      */
     protected function index()
     {
-        // 상품구분 파라미터 (우선순위 = `q` 파라미터값 > `search_type` 파라미터값 > `기본값`)
-        $search_type = array_get(json_decode(base64_decode($this->_reqG('q')), true), 'search_type', $this->_reqG('search_type'));
-        $search_type = get_var($search_type, ($this->_calc_type == 'lecture' ? 'LE' : 'OL'));
+        // 상품구분 파라미터 (우선순위 = `prod_type` 파라미터값 > `q` 파라미터값 > `기본값`)
+        $prod_type = get_var($this->_reqG('prod_type'), array_get(json_decode(base64_decode($this->_reqG('q')), true), 'prod_type'));
+        $prod_type = get_var($prod_type, ($this->_calc_type == 'lecture' ? 'LE' : 'OL'));
 
         // 사이트탭 조회
         $arr_site = $this->siteModel->listSite('SiteCode, SiteName', [
@@ -43,7 +43,7 @@ class BaseCalc extends \app\controllers\BaseController
         $this->load->view('business/calc/index', [
             'calc_type' => $this->_calc_type,
             'calc_name' => $this->_calc_name,
-            'search_type' => $search_type,
+            'prod_type' => $prod_type,
             'def_site_code' => $def_site_code,
             'arr_site_code' => $arr_site_code,
             'arr_professor' => $arr_professor
@@ -56,7 +56,7 @@ class BaseCalc extends \app\controllers\BaseController
      */
     protected function listAjax()
     {
-        $search_type = $this->_reqP('search_type');
+        $prod_type = $this->_reqP('prod_type');
         $search_start_date = $this->_reqP('search_start_date');
         $search_end_date = $this->_reqP('search_end_date');
         $sum_type = 'sum';
@@ -64,10 +64,10 @@ class BaseCalc extends \app\controllers\BaseController
         $list = [];
         $sum_data = [];
 
-        if (empty($search_type) === false && empty($search_start_date) === false && empty($search_end_date) === false) {
-            $method = $this->_methods[$search_type];
+        if (empty($prod_type) === false && empty($search_start_date) === false && empty($search_end_date) === false) {
+            $method = $this->_methods[$prod_type];
             $arr_search_date = [$search_start_date, $search_end_date];
-            $arr_condition = $this->_getSumConditions($search_type, $this->_reqP(null));
+            $arr_condition = $this->_getSumConditions($prod_type, $this->_reqP(null));
 
             $list = $this->orderCalcModel->{'listCalc' . $method}($this->_calc_type, $arr_search_date, $sum_type, $arr_condition);
             $count = count($list);
@@ -87,23 +87,23 @@ class BaseCalc extends \app\controllers\BaseController
      */
     protected function excel()
     {
-        $search_type = $this->_reqP('search_type');
+        $prod_type = $this->_reqP('prod_type');
         $search_start_date = $this->_reqP('search_start_date');
         $search_end_date = $this->_reqP('search_end_date');
         $sum_type = 'sum';
         $results = [];
 
-        if (empty($search_type) === true || empty($search_start_date) === true || empty($search_end_date) === true) {
+        if (empty($prod_type) === true || empty($search_start_date) === true || empty($search_end_date) === true) {
             show_alert('필수 파라미터 오류입니다.', 'back');
         }
 
-        $method = $this->_methods[$search_type];
+        $method = $this->_methods[$prod_type];
         $arr_search_date = [$search_start_date, $search_end_date];
-        $arr_condition = $this->_getSumConditions($search_type, $this->_reqP(null));
+        $arr_condition = $this->_getSumConditions($prod_type, $this->_reqP(null));
         $list = $this->orderCalcModel->{'listCalc' . $method}($this->_calc_type, $arr_search_date, $sum_type, $arr_condition);
         $list[] = array_merge($this->_getTotalSum($list), ['wProfName' => '합계', 'SubjectName' => '']);
 
-        if ($search_type == 'PP') {
+        if ($prod_type == 'PP') {
             // 기간제패키지
             $headers = ['교수명', '과목명', '매출금액(C)', '결제수수료(D)', '환불금액(E)', '수강개월수(F1)', '월안분금액(F)', '정산금액(H)', '소득세(I)', '주민세(J)', '지급액'];
         } else {
@@ -117,7 +117,7 @@ class BaseCalc extends \app\controllers\BaseController
             $results[$idx]['tDivisionPgFeePrice'] = number_format($row['tDivisionPgFeePrice'], 8, '.', '');
             $results[$idx]['tDivisionRefundPrice'] = number_format($row['tDivisionRefundPrice'], 8, '.', '');
 
-            if ($search_type == 'PP') {
+            if ($prod_type == 'PP') {
                 // 기간제패키지
                 $results[$idx]['StudyPeriodMonth'] = $row['StudyPeriodMonth'];
                 $results[$idx]['tDivisionMonthPrice'] = number_format($row['tDivisionMonthPrice'], 8, '.', '');
@@ -144,14 +144,14 @@ class BaseCalc extends \app\controllers\BaseController
         $subject_idx = element('1', $params);
         $study_period = element('2', $params);  // 기간제패키지 수강기간
         $qs = json_decode(base64_decode($this->_reqG('q')), true);
-        $search_type = element('search_type', $qs);
+        $prod_type = element('prod_type', $qs);
         $search_site_code = element('search_site_code', $qs);
         $search_prof_idx = element('search_prof_idx', $qs);
         $search_start_date = element('search_start_date', $qs);
         $search_end_date = element('search_end_date', $qs);
         $sum_type = empty($prof_idx) === false ? 'sum' : 'tSum';
 
-        if (empty($search_type) === true || empty($search_start_date) === true || empty($search_end_date) === true) {
+        if (empty($prod_type) === true || empty($search_start_date) === true || empty($search_end_date) === true) {
             show_alert('필수 파라미터 오류입니다.', 'back');
         }
 
@@ -160,7 +160,7 @@ class BaseCalc extends \app\controllers\BaseController
             'prof_idx' => $prof_idx,
             'subject_idx' => $subject_idx,
             'study_period' => $study_period,
-            'search_type' => $search_type,
+            'prod_type' => $prod_type,
             'search_site_code' => $search_site_code,
             'search_prof_idx' => $search_prof_idx,
             'search_start_date' => $search_start_date,
@@ -168,9 +168,9 @@ class BaseCalc extends \app\controllers\BaseController
         ];
 
         // 합계
-        $method = $this->_methods[$search_type];
+        $method = $this->_methods[$prod_type];
         $arr_search_date = [$search_start_date, $search_end_date];
-        $arr_condition = $this->_getSumConditions($search_type, $arr_input, true);
+        $arr_condition = $this->_getSumConditions($prod_type, $arr_input, true);
         $data = $this->orderCalcModel->{'listCalc' . $method}($this->_calc_type, $arr_search_date, $sum_type, $arr_condition);
         $data = array_merge($this->_getTotalSum($data), [
             'wProfName' => array_get($data, '0.wProfName'), 'SubjectName' => array_get($data, '0.SubjectName'), 'StudyPeriodMonth' => array_get($data, '0.StudyPeriodMonth')
@@ -202,7 +202,7 @@ class BaseCalc extends \app\controllers\BaseController
         $this->load->view('business/calc/show', [
             'calc_type' => $this->_calc_type,
             'calc_name' => $this->_calc_name,
-            'search_name' => $this->_search_name[$search_type],
+            'prod_name' => $this->_prod_name[$prod_type],
             'arr_input' => $arr_input,
             'arr_category' => $arr_category,
             'arr_pay_channel_ccd' => $codes[$this->_group_ccd['PayChannel']],
@@ -221,7 +221,7 @@ class BaseCalc extends \app\controllers\BaseController
      */
     protected function orderListAjax()
     {
-        $search_type = $this->_reqP('search_type');
+        $prod_type = $this->_reqP('prod_type');
         $search_start_date = $this->_reqP('search_start_date');
         $search_end_date = $this->_reqP('search_end_date');
         $sum_type = empty($this->_reqP('prof_idx')) === false ? 'sum' : 'tSum';
@@ -229,11 +229,11 @@ class BaseCalc extends \app\controllers\BaseController
         $list = [];
         $sum_data = [];
 
-        if (empty($search_type) === false && empty($search_start_date) === false && empty($search_end_date) === false) {
-            $method = $this->_methods[$search_type];
+        if (empty($prod_type) === false && empty($search_start_date) === false && empty($search_end_date) === false) {
+            $method = $this->_methods[$prod_type];
             $arr_search_date = [$search_start_date, $search_end_date];
-            $arr_condition = $this->_getSumConditions($search_type, $this->_reqP(null), true);
-            $arr_condition = array_merge_recursive($arr_condition, $this->_getOrderListConditions($search_type, $this->_reqP(null)));
+            $arr_condition = $this->_getSumConditions($prod_type, $this->_reqP(null), true);
+            $arr_condition = array_merge_recursive($arr_condition, $this->_getOrderListConditions($prod_type, $this->_reqP(null)));
 
             $count = $this->orderCalcModel->{'listCalc' . $method}($this->_calc_type, $arr_search_date, true, $arr_condition);
 
@@ -258,22 +258,22 @@ class BaseCalc extends \app\controllers\BaseController
      */
     protected function orderListExcel()
     {
-        $search_type = $this->_reqP('search_type');
+        $prod_type = $this->_reqP('prod_type');
         $search_start_date = $this->_reqP('search_start_date');
         $search_end_date = $this->_reqP('search_end_date');
 
-        if (empty($search_type) === true || empty($search_start_date) === true || empty($search_end_date) === true) {
+        if (empty($prod_type) === true || empty($search_start_date) === true || empty($search_end_date) === true) {
             show_alert('필수 파라미터 오류입니다.', 'back');
         }
 
-        $method = $this->_methods[$search_type];
+        $method = $this->_methods[$prod_type];
         $arr_search_date = [$search_start_date, $search_end_date];
-        $arr_condition = $this->_getSumConditions($search_type, $this->_reqP(null), true);
-        $arr_condition = array_merge_recursive($arr_condition, $this->_getOrderListConditions($search_type, $this->_reqP(null)));
+        $arr_condition = $this->_getSumConditions($prod_type, $this->_reqP(null), true);
+        $arr_condition = array_merge_recursive($arr_condition, $this->_getOrderListConditions($prod_type, $this->_reqP(null)));
 
         $results = $this->orderCalcModel->{'listCalc' . $method}($this->_calc_type, $arr_search_date, 'excel', $arr_condition);
 
-        if ($search_type == 'PP') {
+        if ($prod_type == 'PP') {
             // 기간제패키지
             $headers = ['주문번호', '회원명', '회원아이디', '결제루트', '결제수단', '결제금액(A)', '결제수수료율(D2)', '결제수수료(D1)', '결제일', '환불금액(E1)', '환불완료일', '결제상태'
                 , '직종', '상품구분', '상품상세구분', '상품코드', '상품명', '수강개월수(F1)', '과목', '교수명'
@@ -291,19 +291,19 @@ class BaseCalc extends \app\controllers\BaseController
 
     /**
      * 강사료정산 과목/교수별 합계 조회조건 리턴
-     * @param string $search_type [조회구분]
+     * @param string $prod_type [조회구분]
      * @param array $params [조회파라미터]
      * @param bool $is_show [조회페이지구분]
      * @return array
      */
-    private function _getSumConditions($search_type, $params, $is_show = false)
+    private function _getSumConditions($prod_type, $params, $is_show = false)
     {
         $arr_condition = [];
         $search_prof_idx = get_var(element('search_prof_idx', $params), element('prof_idx', $params));
         $search_subject_idx = get_var(element('search_subject_idx', $params), element('subject_idx', $params));
         $search_study_period = get_var(element('search_study_period', $params), element('study_period', $params));
 
-        switch ($search_type) {
+        switch ($prod_type) {
             case 'LE' :
             case 'OL' :
                 // 단강좌, 사용자패키지, 운영자일반형패키지, 단과반, 종합반일반형
@@ -349,11 +349,11 @@ class BaseCalc extends \app\controllers\BaseController
 
     /**
      * 강사료정산 주문목록 상세 조회조건 리턴
-     * @param $search_type
+     * @param $prod_type
      * @param $params
      * @return array
      */
-    private function _getOrderListConditions($search_type, $params)
+    private function _getOrderListConditions($prod_type, $params)
     {
         $arr_condition = [
             'EQ' => [

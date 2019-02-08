@@ -13,12 +13,12 @@
                         {!! html_site_select($def_site_code, 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
                         <div class="radio">
                         @if($calc_type == 'lecture')
-                            <input type="radio" id="search_type_1" name="search_type" class="flat" value="LE" @if($search_type == 'LE') checked="checked" @endif/> <label for="search_type_1" class="input-label">단강좌&사용자/운영자패키지(일반형)</label>
-                            <input type="radio" id="search_type_2" name="search_type" class="flat" value="AC" @if($search_type == 'AC') checked="checked" @endif/> <label for="search_type_2" class="input-label">운영자패키지(선택형)</label>
-                            <input type="radio" id="search_type_3" name="search_type" class="flat" value="PP" @if($search_type == 'PP') checked="checked" @endif/> <label for="search_type_3" class="input-label">기간제패키지</label>
+                            <input type="radio" id="prod_type_1" name="prod_type" class="flat" value="LE" @if($prod_type == 'LE') checked="checked" @endif/> <label for="prod_type_1" class="input-label">단강좌&사용자/운영자패키지(일반형)</label>
+                            <input type="radio" id="prod_type_2" name="prod_type" class="flat" value="AC" @if($prod_type == 'AC') checked="checked" @endif/> <label for="prod_type_2" class="input-label">운영자패키지(선택형)</label>
+                            <input type="radio" id="prod_type_3" name="prod_type" class="flat" value="PP" @if($prod_type == 'PP') checked="checked" @endif/> <label for="prod_type_3" class="input-label">기간제패키지</label>
                         @else
-                            <input type="radio" id="search_type_1" name="search_type" class="flat" value="OL" @if($search_type == 'OL') checked="checked" @endif/> <label for="search_type_1" class="input-label">단과반/종합반(일반형)</label>
-                            <input type="radio" id="search_type_2" name="search_type" class="flat" value="OP" @if($search_type == 'OP') checked="checked" @endif/> <label for="search_type_2" class="input-label">종합반(선택형)</label>
+                            <input type="radio" id="prod_type_1" name="prod_type" class="flat" value="OL" @if($prod_type == 'OL') checked="checked" @endif/> <label for="prod_type_1" class="input-label">단과반/종합반(일반형)</label>
+                            <input type="radio" id="prod_type_2" name="prod_type" class="flat" value="OP" @if($prod_type == 'OP') checked="checked" @endif/> <label for="prod_type_2" class="input-label">종합반(선택형)</label>
                         @endif
                         </div>
                     </div>
@@ -73,7 +73,7 @@
                 <tr>
                     <th rowspan="2" class="valign-middle">No</th>
                     <th rowspan="2" class="valign-middle">교수명</th>
-                @if($search_type == 'PP')
+                @if($prod_type == 'PP')
                     {{-- 기간제패키지 --}}
                     <th rowspan="2" class="valign-middle">매출금액(C)<br/>*기여도 적용</th>
                     <th rowspan="2" class="valign-middle">결제수수료(D)<br/>*기여도 적용</th>
@@ -104,7 +104,7 @@
                     <th id="sumC" class="sumTh"></th>
                     <th id="sumD" class="sumTh"></th>
                     <th id="sumE" class="sumTh"></th>
-                @if($search_type == 'PP')
+                @if($prod_type == 'PP')
                     {{-- 기간제패키지 --}}
                     <th></th>
                     <th id="sumF" class="sumTh"></th>
@@ -163,7 +163,7 @@
                     {'data' : 'tDivisionRefundPrice', 'render' : function(data, type, row, meta) {
                         return decimalFormat(data, 8);
                     }},
-                @if($search_type == 'PP')
+                @if($prod_type == 'PP')
                     {{-- 기간제패키지 --}}
                     {'data' : 'StudyPeriodMonth', 'render' : function(data, type, row, meta) {
                         return data + '개월';
@@ -201,7 +201,7 @@
                     $('#sumI').html(decimalFormat(json.sum_data.tDivisionIncomeTax, 8));
                     $('#sumJ').html(decimalFormat(json.sum_data.tDivisionResidentTax, 8));
                     $('#sumFinal').html(decimalFormat(json.sum_data.tFinalCalcPrice, 0));
-                    @if($search_type == 'PP')
+                    @if($prod_type == 'PP')
                         {{-- 기간제패키지 --}}
                         $('#sumF').html(decimalFormat(json.sum_data.tDivisionMonthPrice, 8));
                     @endif
@@ -226,7 +226,7 @@
                 }
 
                 {{-- 기간제패키지 --}}
-                if ($search_form.find('input[name="search_type"]:checked').val() === 'PP' && $(this).data('study-period') !== '') {
+                if ($search_form.find('input[name="prod_type"]:checked').val() === 'PP' && $(this).data('study-period') !== '') {
                     show_uri += '/' + $(this).data('study-period');
                 }
 
@@ -234,8 +234,8 @@
             });
 
             // 상품구분 라디오 버튼 클릭
-            $search_form.on('ifClicked', 'input[name="search_type"]', function() {
-                location.replace('{{ site_url('/business/calc/' . $calc_type . '/index') }}?search_type=' + $(this).val());
+            $search_form.on('ifClicked', 'input[name="prod_type"]', function() {
+                location.replace('{{ site_url('/business/calc/' . $calc_type . '/index') }}?prod_type=' + $(this).val());
             });
         });
     </script>

@@ -16,7 +16,7 @@ class Site extends \app\controllers\BaseController
         $this->_site = ucfirst(get_var($this->uri->rsegment(3), 'code'));
 
         // load class
-        $this->load->library('../controllers/lms/sys/Site' . $this->_site, null,'site');
+        $this->load->library('../controllers/lms/sys/Site' . $this->_site, null, 'site');
     }
 
     /**

@@ -4,7 +4,7 @@
     <h5>- 윌비스 {{ $calc_name }} 강사료 정산 정보를 확인할 수 있습니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
-        <input type="hidden" name="search_type" value="{{ $arr_input['search_type'] }}"/>
+        <input type="hidden" name="prod_type" value="{{ $arr_input['prod_type'] }}"/>
         <input type="hidden" name="search_site_code" value="{{ $arr_input['search_site_code'] }}"/>
         <input type="hidden" name="search_prof_idx" value="{{ $arr_input['search_prof_idx'] }}"/>
         <input type="hidden" name="prof_idx" value="{{ $arr_input['prof_idx'] }}"/>
@@ -14,14 +14,14 @@
             <div class="x_content mt-0">
                 <div class="row">
                     <div class="col-md-12">
-                        <h4><strong>{{ $search_name }}</strong></h4>
+                        <h4><strong>{{ $prod_name }}</strong></h4>
                     </div>
                     <div class="col-md-12">
                         <table class="table table-bordered mb-0">
                             <thead class="bg-odd">
                             <tr>
                                 <th rowspan="2" class="valign-middle">교수명</th>
-                            @if($arr_input['search_type'] == 'PP')
+                            @if($arr_input['prod_type'] == 'PP')
                                 {{-- 기간제패키지 --}}
                                 <th rowspan="2" class="valign-middle">매출금액(C)<br/>*기여도 적용</th>
                                 <th rowspan="2" class="valign-middle">결제수수료(D)<br/>*기여도 적용</th>
@@ -49,7 +49,7 @@
                                 <td>{{ decimal_format($data['tDivisionPayPrice'], 8) }}</td>
                                 <td>{{ decimal_format($data['tDivisionPgFeePrice'], 8) }}</td>
                                 <td>{{ decimal_format($data['tDivisionRefundPrice'], 8) }}</td>
-                            @if($arr_input['search_type'] == 'PP')
+                            @if($arr_input['prod_type'] == 'PP')
                                 {{-- 기간제패키지 --}}
                                 <td>{{ $data['StudyPeriodMonth'] }}개월</td>
                                 <td>{{ decimal_format($data['tDivisionMonthPrice'], 8) }}</td>
@@ -119,7 +119,7 @@
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
                         </select>
-                    @if($arr_input['search_type'] == 'LE')
+                    @if($arr_input['prod_type'] == 'LE')
                         <select class="form-control mr-10" id="search_learn_pattern_ccd" name="search_learn_pattern_ccd">
                             <option value="">학습형태</option>
                             @foreach($arr_learn_pattern_ccd as $key => $val)
@@ -171,8 +171,8 @@
                 <tr>
                     <th rowspan="2" class="valign-middle">No</th>
                     <th colspan="11">주문정보</th>
-                    <th colspan="{{ $arr_input['search_type'] == 'PP' ? '7' : '9' }}">강좌정보</th>
-                    <th colspan="{{ $arr_input['search_type'] == 'PP' ? '10' : '9' }}">정산정보</th>
+                    <th colspan="{{ $arr_input['prod_type'] == 'PP' ? '7' : '9' }}">강좌정보</th>
+                    <th colspan="{{ $arr_input['prod_type'] == 'PP' ? '10' : '9' }}">정산정보</th>
                 </tr>
                 <tr>
                     <th class="valign-middle">주문번호</th>
@@ -190,7 +190,7 @@
                     <th class="valign-middle">상품구분</th>
                     <th class="valign-middle">상품코드</th>
                     <th class="valign-middle">상품명</th>
-                @if($arr_input['search_type'] == 'PP')
+                @if($arr_input['prod_type'] == 'PP')
                     {{-- 기간제패키지 --}}
                     <th class="valign-middle">수강개월수(F1)</th>
                     <th class="valign-middle">과목</th>
@@ -232,7 +232,7 @@
                     <th></th>
                     <th></th>
                     <th></th>
-                @if($arr_input['search_type'] == 'PP')
+                @if($arr_input['prod_type'] == 'PP')
                     {{-- 기간제패키지 --}}
                     <th></th>
                     <th></th>
@@ -331,7 +331,7 @@
                     }},
                     {'data' : 'ProdCode'},
                     {'data' : 'ProdName'},
-                @if($arr_input['search_type'] == 'PP')
+                @if($arr_input['prod_type'] == 'PP')
                     {{-- 기간제패키지 --}}
                     {'data' : 'StudyPeriodMonth'},
                     {'data' : 'SubjectName'},
@@ -354,7 +354,7 @@
                     {'data' : 'DivisionRefundPrice', 'render' : function(data, type, row, meta) {
                         return '<span class="red no-line-height">' + (data > 0 ? decimalFormat(data, 8) : 0) + '</span>';
                     }},
-                @if($arr_input['search_type'] == 'PP')
+                @if($arr_input['prod_type'] == 'PP')
                     {{-- 기간제패키지 --}}
                     {'data' : 'DivisionMonthPrice', 'render' : function(data, type, row, meta) {
                         return decimalFormat(data, 8);
@@ -390,7 +390,7 @@
                     $('#sumJ').html(decimalFormat(json.sum_data.tDivisionResidentTax, 8));
                     $('#sumFinal').html(addComma(json.sum_data.tFinalCalcPrice));
 
-                    @if($arr_input['search_type'] == 'PP')
+                    @if($arr_input['prod_type'] == 'PP')
                         {{-- 기간제패키지 --}}
                         $('#sumF').html(decimalFormat(json.sum_data.tDivisionMonthPrice, 8));
                     @endif

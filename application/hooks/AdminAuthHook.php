@@ -26,7 +26,7 @@ class AdminAuthHook
         '/sys/adminSettings/',
         '/service/coupon/issue/listAjax',
         '/pay/order/listAjax',
-        '/service/point/allStatus/listAjax/',
+        '/service/point/allStatus/listAjax',
         '/sample/'
     ];
 

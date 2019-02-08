@@ -183,11 +183,11 @@
                     {'data' : 'OnlineCnt', 'class': 'text-center'},
                     {'data' : 'OfflineCnt', 'class': 'text-center'},
                     {'data' : 'ProdCode', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return '<span class="blue underline-link act-view"><input type="hidden" name="target" value="' + row.ProdCode + '" /><input type="hidden" name="mgidx" value="' + row.MgIdx + '" />확인</span>';
+                            return row.GradeOpenDatm != null ? '<span class="blue underline-link act-view"><input type="hidden" name="target" value="' + row.ProdCode + '" /><input type="hidden" name="mgidx" value="' + row.MgIdx + '" />확인</span>' : '';
                         }},
                     {'data' : 'GradeOpenDatm', 'class': 'text-center'},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return '<span class="blue underline-link" onClick="scoreMake('+ row.MgIdx +')">' + '조정점수반영' + '</span>';
+                            return row.GradeOpenDatm != null ? '<span class="blue underline-link" onClick="scoreMake('+ row.MgIdx +')">' + '조정점수반영' + '</span>' : '';
                         }},
                     {'data' : 'wAdminName', 'class': 'text-center'}
                 ]

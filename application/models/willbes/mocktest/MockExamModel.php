@@ -782,6 +782,17 @@ class MockExamModel extends WB_Model
             $ProdCode = element('ProdCode', $formData);
             $MrIdx = element('MrIdx', $formData);
 
+            //삭제후 입력
+            $where = ['MemIdx' => $this->session->userdata('mem_idx'), 'ProdCode' => $ProdCode, 'MrIdx' => $MrIdx];
+
+            try {
+                if($this->_conn->delete($this->_table['mockAnswerPaper'], $where) === false){
+                    throw new \Exception('삭제에 실패했습니다.');
+                }
+            } catch (\Exception $e) {
+                return error_result($e);
+            }
+
             $column = "
                 MA.MpIdx, QuestionNO, Answer, RightAnswer, MrIdx, LogIdx, MQ.MqIdx
             ";
@@ -809,67 +820,24 @@ class MockExamModel extends WB_Model
             $result = $query->result_array();
 
             foreach ($result as $key => $val){
-                //정답제출문항중 답이 있는지 체크
-                $column = "
-                    MqIdx
-                ";
 
-                $from = "
-                    FROM {$this->_table['mockAnswerPaper']}
-                ";
-
-                $obder_by = "";
-                $arr_condition = [
-                    'EQ' => [
-                        'MemIdx'   => $this->session->userdata('mem_idx'),
-                        'ProdCode' => $ProdCode,
-                        'MrIdx' => $MrIdx,
-                        'MpIdx'    => $val['MpIdx'],
-                        'MqIdx'    => $val['MqIdx']
-                    ]
+                if($val['Answer'] == $val['RightAnswer']) $IsWrong = 'Y';
+                else                                      $IsWrong = 'N';
+                    // 데이터 입력
+                $data = [
+                    'MemIdx' => $this->session->userdata('mem_idx'),
+                    'MrIdx'  => $MrIdx,
+                    'ProdCode'=> $ProdCode,
+                    'LogIdx' => $val['LogIdx'],
+                    'MpIdx' => $val['MpIdx'],
+                    'MqIdx' => $val['MqIdx'],
+                    'Answer' => $val['Answer'],
+                    'IsWrong' => $IsWrong
                 ];
 
-                $where = $this->_conn->makeWhere($arr_condition);
-                $where = $where->getMakeWhere(false);
-
-                $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
-                $rowArr = $query->row_array();
-
-                if($rowArr['MqIdx']){
-                    if($val['Answer'] == $val['RightAnswer']) $IsWrong = 'Y';
-                    else                                      $IsWrong = 'N';
-                    // 데이터 수정
-                    $data = [
-                        'Answer' => $val['Answer'],
-                        'IsWrong' => $IsWrong,
-                        'LogIdx' => $val['LogIdx']
-                    ];
-                    $this->_conn->set($data)->set('RegDatm', 'NOW()', false)->where(['MemIdx' => $this->session->userdata('mem_idx'), 'ProdCode' => $ProdCode, 'MrIdx' => $MrIdx, 'MpIdx' => $val['MpIdx'], 'MqIdx' => $val['MqIdx']]);
-
-                    if ($this->_conn->update($this->_table['mockAnswerPaper']) === false) {
-                        throw new \Exception('정답저장 수정에 실패했습니다.');
-                    }
-
-                }else{
-                    if($val['Answer'] == $val['RightAnswer']) $IsWrong = 'Y';
-                    else                                      $IsWrong = 'N';
-                        // 데이터 입력
-                    $data = [
-                        'MemIdx' => $this->session->userdata('mem_idx'),
-                        'MrIdx'  => $MrIdx,
-                        'ProdCode'=> $ProdCode,
-                        'LogIdx' => $val['LogIdx'],
-                        'MpIdx' => $val['MpIdx'],
-                        'MqIdx' => $val['MqIdx'],
-                        'Answer' => $val['Answer'],
-                        'IsWrong' => $IsWrong
-                    ];
-
-                    if ($this->_conn->set($data)->set('RegDatm', 'NOW()', false)->insert($this->_table['mockAnswerPaper']) === false) {
-                        throw new \Exception('정답저장에 실패했습니다.');
-                    }
+                if ($this->_conn->set($data)->set('RegDatm', 'NOW()', false)->insert($this->_table['mockAnswerPaper']) === false) {
+                    throw new \Exception('정답저장에 실패했습니다.');
                 }
-
             }
             $this->_conn->trans_commit();
         } catch (\Exception $e) {

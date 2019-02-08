@@ -96,7 +96,7 @@ class Qna extends BaseBoard
         $count = $this->professorModel->listProfessorSubjectMappingForBoard(true, $arr_condition, $this->bm_idx, $this->_Ccd['reply']['unAnswered']);
 
         if ($count > 0) {
-            $list = $this->professorModel->listProfessorSubjectMappingForBoard(false, $arr_condition, $this->bm_idx, $this->_Ccd['reply']['unAnswered']);
+            $list = $this->professorModel->listProfessorSubjectMappingForBoard(false, $arr_condition, $this->bm_idx, $this->_Ccd['reply']['unAnswered'], $this->_reqP('length'), $this->_reqP('start'));
         }
 
         return $this->response([

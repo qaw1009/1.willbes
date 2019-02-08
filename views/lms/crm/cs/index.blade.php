@@ -97,7 +97,11 @@
                 columns: [
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             // 리스트 번호
-                            return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
+                            if (row.IsBest == '1') {
+                                return '공지';
+                            } else {
+                                return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
+                            }
                         }},
                     {'data' : 'IssueDivisionCcdName'},
                     {'data' : 'Title', 'render' : function(data, type, row, meta) {

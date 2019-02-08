@@ -143,10 +143,11 @@ class ProfessorModel extends WB_Model
      * @param $reply_status_ccd
      * @return mixed
      */
-    public function listProfessorSubjectMappingForBoard($is_count, $arr_condition, $bm_idx, $reply_status_ccd = null)
+    public function listProfessorSubjectMappingForBoard($is_count, $arr_condition, $bm_idx, $reply_status_ccd = null, $limit = null, $offset = null)
     {
         if ($is_count === true) {
             $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
         } else {
             $column = '
                 P.ProfIdx, P.wProfIdx, P.SiteCode, P.SiteName, P.ProfNickName, P.UseBoardJson, PrSC.CateCode
@@ -156,6 +157,8 @@ class ProfessorModel extends WB_Model
                     ,IFNULL(C.BoardProfCount,0) AS BoardProfCount
                 ';
             }
+
+            $order_by_offset_limit = $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
         $from = '
             FROM (
@@ -198,7 +201,7 @@ class ProfessorModel extends WB_Model
         $where = $set_where.$where;
 
         // 쿼리 실행
-        $query = $this->_conn->query('select ' . $column . $from . $where);
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }

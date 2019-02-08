@@ -500,7 +500,7 @@
 
                     if (evt.type === 'ifChanged') {
                         // 특정상품 선택
-                        $regi_form.find('input[name="apply_range_type"][value="P"]').iCheck('uncheck').iCheck('check');
+                        $regi_form.find('input[name="apply_range_type"][value="P"]').prop('checked', true).iCheck('update');
                     }
                 }
             });

@@ -497,7 +497,6 @@ class RegGradeModel extends WB_Model
 
                 // 데이터 입력
                 if ($mode == 'web') {
-
                     $data = [
                         'MemId' => $this->session->userdata('admin_id'),
                         'ProdCode' => $ProdCode
@@ -509,8 +508,9 @@ class RegGradeModel extends WB_Model
                     ];
                 }
 
-                if ($this->_conn->set($data)->set('RegDatm', 'NOW()', false)->insert($this->_table['mockGradesLog']) === false) {
-                    throw new \Exception('시험데이터가 없습니다.');
+                $is_insert = $this->_conn->set($data)->set('RegDatm', 'NOW()', false)->insert($this->_table['mockGradesLog']);
+                if ($is_insert === false) {
+                    throw new \Exception('로그생성실패.');
                 }
 
                 //시험코드
@@ -691,6 +691,7 @@ class RegGradeModel extends WB_Model
                     $obder_by = " GROUP BY MemIdx";
 
                     $where = "WHERE MP.MpIdx = " . $vmp;
+
                     $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
 
                     $result = $query->result_array();

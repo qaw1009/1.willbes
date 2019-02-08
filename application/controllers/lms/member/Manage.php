@@ -1371,6 +1371,27 @@ class Manage extends \app\controllers\BaseController
 
     public function ajaxCRM()
     {
+        $memIdx = $this->_req('memIdx');
+
+        $this->load->view('member/layer/crm/sms', [
+            'bm_idx' => '48',
+            'memIdx' => $memIdx,
+            '_crm_type' => 'sms'
+        ]);
+    }
+
+    public function ajaxSms()
+    {
+
+    }
+
+    public function ajaxMessage()
+    {
+
+    }
+
+    public function ajaxMail()
+    {
 
     }
 

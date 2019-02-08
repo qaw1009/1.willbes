@@ -14,7 +14,7 @@
         <div class="form-group mt-20">
             <div class="col-md-11">
                 <ul class="nav nav-pills" role="tablist">
-                    <li role="presentation" class="act-move" data-idx="{{ $prodcode }}" data-mem="{{ $mem_idx }}"><a href="#">전체 성적 분석</a></li>
+                    <li role="presentation" class="act-move"><a href="javascript:gotab('{{ $prodcode }}','{{ $mem_idx }}');">전체 성적 분석</a></li>
                     <li role="presentation" class="active"><a href="#">과목별 문항분석</a></li>
                 </ul>
             </div>
@@ -123,22 +123,13 @@
         <input type="hidden" id='prodcode' name="prodcode" value="{{ $prodcode }}" />
     </form>
     <script>
-        $(document).ready(function() {
+        function gotab(prodcode, memidx){
+            var uri_param;
+            uri_param = 'prodcode=' + prodcode + '&memidx=' + memidx;
 
-            // 모달창 오픈
-            $('.act-move').on('click', function() {
-
-                var uri_param;
-                var prodcode = $(this).data('idx');
-                var memidx = $(this).data('mem');
-
-                uri_param = 'prodcode=' + prodcode + '&memidx=' + memidx;
-                var _url = '{{ site_url() }}' + 'mocktest/statisticsPrivate/winStatTotal?' + uri_param
-                location.href=_url;
-
-            });
-
-        });
+            var _url = '{{ site_url() }}' + 'mocktest/statisticsPrivate/winStatTotal?' + uri_param;
+            location.href=_url;
+        }
 
         //인쇄
         function printPage(){

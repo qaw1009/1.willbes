@@ -97,16 +97,16 @@
                     <table id="list_order_detail_table" class="table table-striped table-bordered">
                         <thead>
                         <tr>
-                            <th rowspan="2" class="pb-20">상품구분</th>
-                            <th rowspan="2" class="pb-20">상품코드</th>
-                            <th rowspan="2" class="pb-20">상품명</th>
-                            <th rowspan="2" class="pb-20">배송상태</th>
+                            <th rowspan="2" class="valign-middle">상품구분</th>
+                            <th rowspan="2" class="valign-middle">상품코드</th>
+                            <th rowspan="2" class="valign-middle">상품명</th>
+                            <th rowspan="2" class="valign-middle">배송상태</th>
                             <th colspan="2">결제금액</th>
                             <th colspan="2">할인정보</th>
                             <th colspan="2">미수금정보</th>
-                            <th rowspan="2" class="pb-20">결제상태</th>
-                            <th rowspan="2" class="pb-20">송장번호</th>
-                            <th rowspan="2" class="pb-20">할인사유</th>
+                            <th rowspan="2" class="valign-middle">결제상태</th>
+                            <th rowspan="2" class="valign-middle">송장번호</th>
+                            <th rowspan="2" class="valign-middle">할인사유</th>
                         </tr>
                         <tr>
                             <th>카드</th>
@@ -168,11 +168,11 @@
                             <table id="list_refund_proc_table" class="table table-striped table-bordered">
                                 <thead>
                                 <tr>
-                                    <th rowspan="2" class="pb-20">선택</th>
-                                    <th rowspan="2" class="pb-20">상품구분</th>
-                                    <th rowspan="2" class="pb-20">상품명</th>
+                                    <th rowspan="2" class="valign-middle">선택</th>
+                                    <th rowspan="2" class="valign-middle">상품구분</th>
+                                    <th rowspan="2" class="valign-middle">상품명</th>
                                     <th colspan="2">결제금액</th>
-                                    <th rowspan="2" class="pb-20">결제상태</th>
+                                    <th rowspan="2" class="valign-middle">결제상태</th>
                                     <th colspan="7">환불정보</th>
                                 </tr>
                                 <tr>
@@ -340,10 +340,10 @@
                             <table id="list_refund_list_table" class="table table-striped table-bordered">
                                 <thead>
                                 <tr>
-                                    <th rowspan="2" class="pb-20">상품구분</th>
-                                    <th rowspan="2" class="pb-20">상품명</th>
+                                    <th rowspan="2" class="valign-middle">상품구분</th>
+                                    <th rowspan="2" class="valign-middle">상품명</th>
                                     <th colspan="2">결제금액</th>
-                                    <th rowspan="2" class="pb-20">결제상태</th>
+                                    <th rowspan="2" class="valign-middle">결제상태</th>
                                     <th colspan="6">환불정보</th>
                                 </tr>
                                 <tr>

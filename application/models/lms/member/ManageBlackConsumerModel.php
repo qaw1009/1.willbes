@@ -4,6 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class ManageBlackConsumerModel extends WB_Model
 {
     private $_table = [
+        'member' => 'lms_member',
         'member_blackconsumer' => 'lms_member_blackconsumer',
         'site' => 'lms_site',
         'sys_admin' => 'wbs_sys_admin'
@@ -59,6 +60,14 @@ class ManageBlackConsumerModel extends WB_Model
 
             if ($this->_conn->set($inputData)->insert($this->_table['member_blackconsumer']) === false) {
                 throw new \Exception('게시판 등록에 실패했습니다.');
+            }
+
+            // 해당 회원 블랙리스트 플래그 설정
+            if ($this->_conn
+                    ->set('IsBlackList' ,'Y')
+                    ->where('MemIdx', element('regi_memIdx', $input_data))
+                    ->update($this->_table['member']) === false) {
+                throw new \Exception('회원정보 블랙리스트 설정에 실패했습니다.');
             }
 
             $this->_conn->trans_commit();

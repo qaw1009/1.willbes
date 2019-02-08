@@ -42,9 +42,9 @@
         </div>
         <div class="row">
             <div class="form-group">
-                <div class="col-xs-12 text-right form-inline">
-                    <button type="submit" class="btn btn-primary btn-search ml-10" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
-                    <button type="button" class="btn btn-default ml-30 mr-30" id="_btn_reset">검색초기화</button>
+                <div class="col-xs-12 text-center">
+                    <button type="submit" class="btn btn-primary btn-search" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
+                    <button type="button" class="btn btn-default btn-search" id="btn_reset">초기화</button>
                 </div>
             </div>
         </div>
@@ -83,7 +83,10 @@
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 buttons: [
-                    { text: '<i class="fa fa-pencil mr-10"></i> 자료등록', className: 'btn-sm btn-primary border-radius-reset', action: function(e, dt, node, config) {
+                    { text: '<i class="fa fa-pencil mr-10"></i> 외부페이지확인', className: 'btn-sm btn-success border-radius-reset mr-10', action: function(e, dt, node, config) {
+                            window.open('{{ site_url("/crm/manageCs/noAuthList") }}');
+                        }},
+                    { text: '<i class="fa fa-pencil mr-10"></i> 자료등록', className: 'btn-sm btn-primary border-radius-reset mr-10', action: function(e, dt, node, config) {
                             location.href = '{{ site_url("/crm/manageCs/create") }}' + dtParamsToQueryString($datatable);
                         }}
                 ],
@@ -104,8 +107,8 @@
                             }
                         }},
                     {'data' : 'IssueDivisionCcdName'},
-                    {'data' : 'Title', 'render' : function(data, type, row, meta) {
-                            return '<a href="javascript:void(0);" class="btn-read" data-idx="' + row.CtmIdx + '"><u>' + data + '</u></a>';
+                    {'className' : 'details-control', 'orderable' : false, 'data' : 'Title', 'render' : function(data, type, row, meta) {
+                        return '<u class="bold" style="cursor: pointer">'+data+'</u>';
                         }},
                     {'data' : 'wAdminName'},
                     {'data' : 'RegDatm'},
@@ -118,7 +121,36 @@
                         }},
                 ],
             });
+
+            $list_table.on('click', 'td.details-control', function () {
+                var tr = $(this).closest('tr');
+                var row = $datatable.row(tr);
+
+                if ( row.child.isShown() ) {
+                    // This row is already open - close it
+                    row.child.hide();
+                    tr.removeClass('shown');
+                }
+                else {
+                    // Open this row
+                    row.child(format(row.data())).show();
+                    tr.addClass('shown');
+                }
+            });
+
+            // 데이터 수정 폼
+            $list_table.on('click', '.btn-modify', function() {
+                location.href='{{ site_url("/crm/manageCs/create") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable);
+            });
         });
 
+        function format(d) {
+            // `d` is the original data object for the row
+            return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
+                '<tr>'+
+                '<td>'+ d.Content +'</td>'+
+                '</tr>'+
+                '</table>';
+        }
     </script>
 @stop

@@ -10,7 +10,10 @@ class AdminAuthHook
         '/lcms/auth/login',
         '/lcms/auth/regist/create',
         '/lcms/auth/regist/idCheck',
-        '/lcms/auth/regist/store'
+        '/lcms/auth/regist/store',
+        '/crm/manageCs/noAuthList',
+        '/crm/manageCs/noAuthListAjax',
+        '/crm/manageCs/updateReadCnt',
     ];
 
     // LMS 교수관리자 역할식별자

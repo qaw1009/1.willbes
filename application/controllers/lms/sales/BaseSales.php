@@ -107,8 +107,8 @@ class BaseSales extends \app\controllers\BaseController
      */
     private function _getListConditions()
     {
-        $arr_search_prod_type_ccd = array_filter(explode(',', $this->_reqP('search_prod_type_ccd')));
-        $arr_search_sale_pattern_ccd = array_filter(explode(',', $this->_reqP('search_sale_pattern_ccd')));
+        $arr_search_prod_type_ccd = array_filter(explode(',', $this->_reqP('search_chk_prod_type_ccd')));
+        $arr_search_sale_pattern_ccd = array_filter(explode(',', $this->_reqP('search_chk_sale_pattern_ccd')));
         if ($this->_sales_type == 'all') {
             /* 전체매출현황 */
             empty($arr_search_sale_pattern_ccd) === true && $arr_search_sale_pattern_ccd = array_values(array_filter_keys($this->orderListModel->_sale_pattern_ccd, ['normal', 'extend', 'retake']));
@@ -129,9 +129,9 @@ class BaseSales extends \app\controllers\BaseController
             'IN' => [
                 'O.SiteCode' => get_auth_site_codes(),  // 사이트 권한 추가
                 'OP.PayStatusCcd' => array_values(array_filter_keys($this->orderListModel->_pay_status_ccd, ['paid', 'refund'])),
-                'SC.GroupCateCode' => array_filter(explode(',', $this->_reqP('search_cate_code'))),
+                'SC.GroupCateCode' => array_filter(explode(',', $this->_reqP('search_chk_cate_code'))),
                 'P.ProdTypeCcd' => $arr_search_prod_type_ccd,
-                'PL.LearnPatternCcd' => array_filter(explode(',', $this->_reqP('search_learn_pattern_ccd'))),
+                'PL.LearnPatternCcd' => array_filter(explode(',', $this->_reqP('search_chk_learn_pattern_ccd'))),
                 'OP.SalePatternCcd' => $arr_search_sale_pattern_ccd,
             ],
             'NOTIN' => [

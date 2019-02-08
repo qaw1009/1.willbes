@@ -37,6 +37,7 @@
                     <label class="control-label col-md-1-1">카테고리정보 <span class="required">*</span>
                     </label>
                     <div class="col-md-10 form-inline">
+                        <input type="checkbox" class="flat" id="_is_all" value="Y"><span class="bold mr-10">전체</span>
                         @foreach($arr_prof_info['arr_prof_cate_code'] as $key => $val)
                             <input type="checkbox" class="flat" name="cate_code[]" value="{{$val}}" @if(empty($data['CateCodes'][$val]) === false)checked="checked"@endif>{{$arr_prof_info['arr_prof_cate_name'][$key]}}
                         @endforeach
@@ -141,6 +142,16 @@
                 // 카테고리 검색 초기화
                 $regi_form.find('input[name="cate_code"]').val('');
                 $('#selected_category').html('');
+            });
+
+            // 전체선택
+            $regi_form.on('ifChanged', '#_is_all', function() {
+                var $_cate_code = $('input[name="cate_code[]"]');
+                if ($(this).prop('checked') === true) {
+                    $_cate_code.iCheck('check');
+                } else {
+                    $_cate_code.iCheck('uncheck');
+                }
             });
 
             // 카테고리 검색

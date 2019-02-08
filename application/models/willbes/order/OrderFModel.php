@@ -359,7 +359,7 @@ class OrderFModel extends BaseOrderFModel
             $sess_cart_idx = $this->checkSessCartIdx(false);    // 장바구니 식별자 세션 체크
             $sess_order_no = $this->checkSessOrderNo(false);    // 주문번호 세션 체크
 
-            if ($sess_cart_idx === false || $sess_order_no === false || $order_no != $sess_order_no) {
+            if ($sess_cart_idx === false || $sess_order_no === false || $order_no != $sess_order_no || isset($pay_results['total_pay_price']) === false) {
                 throw new \Exception('잘못된 접근입니다.', _HTTP_BAD_REQUEST);
             }
 
@@ -379,7 +379,11 @@ class OrderFModel extends BaseOrderFModel
             }
 
             // PG결제일 경우 필수 파라미터 체크
-            if ($pay_results['total_pay_price'] > 0) {
+            if (isset($pay_results['mid']) === true || $pay_results['total_pay_price'] > 0) {
+                if (empty(element('mid', $pay_results)) === true) {
+                    throw new \Exception('PG사 상점 아이디가 없습니다.', _HTTP_BAD_REQUEST);
+                }
+
                 if (empty(element('tid', $pay_results)) === true) {
                     throw new \Exception('PG사 결제 거래번호가 없습니다.', _HTTP_BAD_REQUEST);
                 }

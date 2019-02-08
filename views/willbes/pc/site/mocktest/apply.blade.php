@@ -141,7 +141,7 @@
                     }, showAlertError, false, 'GET', 'html');
                    */
                     url = '{{front_url('/mockTest/apply_order/')}}' + order_prod;
-                    window.open(url, '_blank', 'width=753, height=845, scrollbars=yes, resizable=no');
+                    window.open(url, '_blank', 'width=755, height=845, scrollbars=yes, resizable=no');
 
             }
 

@@ -115,107 +115,6 @@
                     </div>
                 </div>
             </div>
-            <!-- willbes-Leclist -->
-
-            <div id="MOCKTESTPASSFIN" class="willbes-Layer-PassBox willbes-Layer-PassBox740 abs">
-                <a class="closeBtn" href="#none" onclick="closeWin('MOCKTESTPASSFIN')">
-                    <img src="/public/img/willbes/sub/close.png">
-                </a>
-                <div class="Layer-Tit tx-dark-black NG">윌비스 <span class="tx-blue">전국모의고사</span></div>
-                <div class="passzoneTitInfo tx-light-blue tx-center NG mt20" id="r0"></div>
-                <div class="PASSZONE-List widthAutoFull">
-                    <div class="PASSZONE-Lec-Section">
-                        <div class="LeclistTable">
-                            <table cellspacing="0" cellpadding="0" class="listTable userMemoTable mockpopupTable under-gray bdt-gray tx-gray GM">
-                                <colgroup>
-                                    <col style="width: 20%;"/>
-                                    <col style="width: 30%;"/>
-                                    <col style="width: 20%;"/>
-                                    <col style="width: 30%;"/>
-                                </colgroup>
-                                <tbody>
-                                <tr>
-                                    <th class="w-tit">이름(아이디)</th>
-                                    <td class="w-list" colspan="3" id="r1"></td>
-                                </tr>
-                                <tr>
-                                    <th class="w-tit">응시형태</th>
-                                    <td class="w-list" id="r2"></td>
-                                    <th class="w-tit">응시분야</th>
-                                    <td class="w-list" id="r3"></td>
-                                </tr>
-                                <tr>
-                                    <th class="w-tit">응시지역</th>
-                                    <td class="w-list" id="r4"></td>
-                                    <th class="w-tit">응시번호</th>
-                                    <td class="w-list tx-bright-gray" id="r5"></td>
-                                </tr>
-                                <tr>
-                                    <th class="w-tit">시험응시일</th>
-                                    <td class="w-list" colspan="3" id="r6"></td>
-                                </tr>
-                                <tr>
-                                    <th class="w-tit">응시직렬</th>
-                                    <td class="w-list" colspan="3" id="r7"></td>
-                                </tr>
-                                <tr>
-                                    <th class="w-tit">응시필수과목</th>
-                                    <td class="w-list" colspan="3" id="K1"></td>
-                                </tr>
-                                <tr>
-                                    <th class="w-tit">응시선택과목</th>
-                                    <td class="w-list" colspan="3" id="K2"></td>
-                                </tr>
-                                <tr>
-                                    <th class="w-tit">가산점</th>
-                                    <td class="w-list" colspan="3" id="r8"></td>
-                                </tr>
-                                <tr>
-                                    <th class="w-tit">결제(접수)금액</th>
-                                    <td class="w-list" id="r9"></td>
-                                    <th class="w-tit">쿠폰적용</th>
-                                    <td class="w-list" id="r10"></td>
-                                </tr>
-                                <tr>
-                                    <th class="w-tit">결제(접수)루트</th>
-                                    <td class="w-list" id="r11"></td>
-                                    <th class="w-tit">결제(접수)상태</th>
-                                    <td class="w-list" id="r12"></td>
-                                </tr>
-                                <tr>
-                                    <th class="w-tit">결제(접수)수단</th>
-                                    <td class="w-list" id="r13"></td>
-                                    <th class="w-tit">결제(접수)일</th>
-                                    <td class="w-list" id="r14"></td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <ul class="passzoneListInfo BG tx-gray GM mt20">
-                        <li class="txt">· 나의 전국 모의고사 접수현황은 내강의실 > 모의고사관리 > 접수현황 메뉴에서 확인 가능합니다.</li>
-                        <li class="txt">· 나의 전국 모의고사 성적결과는 내강의실 > 모의고사관리 > 성적결과 메뉴에서 확인 가능합니다.</li>
-                        <li class="txt">· 단, 해당 모의고사 응시완료 시에만 성적결과 보기 및 문제/해설 다운로드가 가능합니다.</li>
-                    </ul>
-                    <ul class="passzoneListInfo tx-gray GM mt20 mb20">
-                        <li class="tit strong">[온라인 모의고사 유의사항]</li>
-                        <li class="txt">· 온라인 모의고사(응시형태가 Online인 경우)는 내강의실 > 모의고사관리 > 온라인 모의고사 응시 메뉴에서<br/>
-                            &nbsp; 응시해 주시기 바랍니다.</li>
-                        <li class="txt">· 시험응시 기간 동안 지정된 시간에만 응시 가능합니다.</li>
-                    </ul>
-                    <div class="passzonebtn tx-center">
-                    <span>
-                        <button type="submit" id='printbtn' onclick="printPage();" class="btnAuto130 h36 mem-Btn bg-blue bd-dark-blue strong">
-                            <span class="strong">응시표 출력</span>
-                        </button>
-                    </span>
-                    </div>
-                </div>
-            </div>
-            <!-- willbes-Layer-PassBox : 윌비스 전국모의고사 : 결제완료 -->
-
-
-
         </div>
         <div class="Quick-Bnr ml20">
             {!! banner('내강의실_우측날개', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
@@ -230,18 +129,8 @@
             //https://cop.local.willbes.net/mockTest/apply_order/241
             var win = '';
             function lShow(OrderProdIdx){
-                var _url = '{{ front_url("/mockTest/apply_order/") }}' + OrderProdIdx;
-                if (win == '') {
-                    win = window.open(_url, 'mockPopup', 'width=980, height=845, scrollbars=yes, resizable=yes');
-                    win.focus();
-                }else{
-                    if(win.closed){
-                        win = window.open(_url, 'mockPopup', 'width=980, height=845, scrollbars=yes, resizable=yes');
-                        win.focus();
-                    } else {
-                        //alert('팝업떠있음');
-                    }
-                }
+                var url = '{{ front_url("/classroom/MockReceipt/apply_order/") }}' + OrderProdIdx;
+                window.open(url, 'mockPopup', 'width=755, height=845, scrollbars=yes, resizable=no');
             }
 
             //인쇄

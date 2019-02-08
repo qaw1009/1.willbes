@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class MockReceipt extends \app\controllers\FrontController
 {
-    protected $models = array('downloadF', 'mocktest/mockExam','_lms/sys/code');
+    protected $models = array('downloadF', 'mocktest/mockExam','_lms/sys/code','mocktest/mockInfoF');
     protected $helpers = array('download');
     protected $auth_controller = true;
     protected $auth_methods = array();
@@ -17,6 +17,7 @@ class MockReceipt extends \app\controllers\FrontController
     public function __construct()
     {
         parent::__construct();
+        $this->load->library('session');
     }
 
     /**
@@ -108,6 +109,43 @@ class MockReceipt extends \app\controllers\FrontController
 
     }
 
+
+    /**
+     * 주문내역 조회
+     * @param array $params
+     * @return CI_Output
+     */
+    public function apply_order($params=[])
+    {
+        if(empty($params)) {
+            return $this->json_error('주문 코드가 존재하지 않습니다.', _HTTP_BAD_REQUEST);
+        }
+
+        $order_prod_idx = $params[0];
+
+        //신청 내역
+        $order_info = $this->mockInfoFModel->findRegistByOrderProdIdx($order_prod_idx);
+
+        //신청 과목정보 추출
+        $regist_subject = $this->mockInfoFModel->findRegistSubject($order_prod_idx);
+
+        $subject_ess = '';
+        $subject_sub = [];
+        foreach ($regist_subject as $rows) {
+            if($rows['MockType'] == 'E') {
+                $subject_ess = $rows['subject_names'];
+            } else if($rows['MockType'] == 'S') {
+                $subject_sub = explode(',',$rows['subject_names']);
+            }
+        }
+
+        $this->load->view('site/mocktest/apply_order_popup', [
+            'ele_id' => $this->_req('ele_id'),
+            'order_info' => $order_info,
+            'subject_ess' => $subject_ess,
+            'subject_sub' => $subject_sub,
+        ]);
+    }
 
 
 }

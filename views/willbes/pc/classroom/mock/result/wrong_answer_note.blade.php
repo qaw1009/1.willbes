@@ -158,7 +158,7 @@
     $(document).ready(function() {
         selAreaAjax();
         if($('.exam-paperList > li').size() == 0){
-            $('.exam-paperList').html("<li style='text-align:center; font-weight:bold;'>- 등록된 오답노트가 없습니다. -</li>");
+            $('.exam-paperList').html("<li style='text-align:center; font-weight:bold; width:100%'>- 등록된 오답노트가 없습니다. -</li>");
         }
     });
 

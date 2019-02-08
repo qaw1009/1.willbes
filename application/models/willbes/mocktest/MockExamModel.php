@@ -780,7 +780,6 @@ class MockExamModel extends WB_Model
             $this->_conn->trans_begin();
 
             $ProdCode = element('ProdCode', $formData);
-            $LogIdx = element('LogIdx', $formData);
             $MrIdx = element('MrIdx', $formData);
 
             $column = "
@@ -797,14 +796,14 @@ class MockExamModel extends WB_Model
                 'EQ' => [
                     'MemIdx'   => $this->session->userdata('mem_idx'),
                     'ProdCode' => $ProdCode,
-                    'LogIdx' => $LogIdx
+                    'MrIdx' => $MrIdx
                 ]
             ];
 
             $where = $this->_conn->makeWhere($arr_condition);
             $where = $where->getMakeWhere(false);
             $obder_by = " ORDER BY MpIdx";
-
+            //echo "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
             $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
             //입력문항과 정답문항
             $result = $query->result_array();
@@ -842,7 +841,8 @@ class MockExamModel extends WB_Model
                     // 데이터 수정
                     $data = [
                         'Answer' => $val['Answer'],
-                        'IsWrong' => $IsWrong
+                        'IsWrong' => $IsWrong,
+                        'LogIdx' => $val['LogIdx']
                     ];
                     $this->_conn->set($data)->set('RegDatm', 'NOW()', false)->where(['MemIdx' => $this->session->userdata('mem_idx'), 'ProdCode' => $ProdCode, 'MrIdx' => $MrIdx, 'MpIdx' => $val['MpIdx'], 'MqIdx' => $val['MqIdx']]);
 

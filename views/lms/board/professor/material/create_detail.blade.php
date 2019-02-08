@@ -29,6 +29,7 @@
                     <label class="control-label col-md-1-1">카테고리정보 <span class="required">*</span>
                     </label>
                     <div class="col-md-10 form-inline">
+                        <input type="checkbox" class="flat" id="_is_all" value="Y"><span class="bold mr-10">전체</span>
                         @foreach($arr_prof_info['arr_prof_cate_code'] as $key => $val)
                             <input type="checkbox" class="flat" name="cate_code[]" value="{{$val}}" @if(empty($data['CateCodes'][$val]) === false)checked="checked"@endif>{{$arr_prof_info['arr_prof_cate_name'][$key]}}
                         @endforeach
@@ -80,15 +81,6 @@
                             </span>
                     </div>
                 </div>
-
-                {{--<div class="form-group">
-                    <label class="control-label col-md-1-1" for="prod_code">강좌명<span class="required">*</span></label>
-                    <div class="form-inline col-md-10 item">
-                        <button type="button" id="btn_lec_search" class="btn btn-sm btn-primary" style="cursor: pointer;">강좌검색</button>
-                        <span id="selected_prod_code" class="pl-10"></span>
-                        <p class="form-control-static">• 명칭, 코드 검색 가능</p>
-                    </div>
-                </div>--}}
 
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="is_best">HOT</label>
@@ -189,6 +181,16 @@
                 $regi_form.find('input[name="cate_code"]').val('');
                 $('#selected_category').html('');
                 $('#selected_product').html('');
+            });
+
+            // 전체선택
+            $regi_form.on('ifChanged', '#_is_all', function() {
+                var $_cate_code = $('input[name="cate_code[]"]');
+                if ($(this).prop('checked') === true) {
+                    $_cate_code.iCheck('check');
+                } else {
+                    $_cate_code.iCheck('uncheck');
+                }
             });
 
             // 카테고리 검색 or 상품 검색

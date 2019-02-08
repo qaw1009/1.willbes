@@ -125,26 +125,26 @@
                             <tr>
                                 <th>과목석차</th>
                                 @foreach($rows['E'] as $key => $row)
-                                    <td id="k{{ $key }}">{{ $row['pRank'] }}</td>
+                                    <td><span id="k{{ $key }}">{{ $row['pRank'] }}/{{ $row['CNT'] }}</td>
                                 @endforeach
                                 @if(empty($rows['S'])===false)
                                     @foreach($rows['S'] as $key => $row)
-                                        <td colspan="2" id="k{{ $key }}">{{ $row['pRank'] }}</td>
+                                        <td colspan="2" ><span id="k{{ $key }}">{{ $row['pRank'] }}</span>/{{ $row['CNT'] }}</td>
                                     @endforeach
                                 @endif
-                                <td id="kr">{{ $rows['pSRank'] }}</td>
+                                <td id="kr"></td>
                             </tr>
                             <tr>
                                 <th>백분위</th>
                                 @foreach($rows['E'] as $key => $row)
-                                    <td id="b{{ $key }}">{{ round($row['tpct'],2) }} %</td>
+                                    <td><span id="b{{ $key }}">{{ round($row['tpct'],2) }}</span> %</td>
                                 @endforeach
                                 @if(empty($rows['S'])===false)
                                     @foreach($rows['S'] as $key => $row)
-                                        <td colspan="2" id="b{{ $key }}">{{ round($row['tpct'],2) }} %</td>
+                                        <td colspan="2"><span id="b{{ $key }}">{{ round($row['tpct'],2) }}</span> %</td>
                                     @endforeach
                                 @endif
-                                <td id="br">{{ $rows['stpct'] }} %</td>
+                                <td id="br"></td>
                             </tr>
                             <tr>
                                 <th>최고점</th>
@@ -199,9 +199,10 @@
     <script type="text/javascript">
         var $regi_form = $('#regi_form');
         var MpIdxSet = {!! json_encode($MpIdxSet) !!};
+        var tcnt = '{{ $row['CNT'] }}';
 
         $(document).ready(function() {
-            var pnum = 0; ptotal = 0; mnum = 0; mtotal = 0; snum = 0; stotal = 0; znum = 0; ztotal = 0;
+            var pnum = 0; ptotal = 0; knum = 0; ktotal = 0; bnum = 0; btotal = 0; mnum = 0; mtotal = 0; snum = 0; stotal = 0; znum = 0; ztotal = 0;
 
             var cnt = 0;
             for(var j=0; j < MpIdxSet.length; j++){
@@ -209,6 +210,10 @@
                 ptotal += pnum;
                 mnum = parseFloat($('#m'+MpIdxSet[j]).html());
                 mtotal += mnum;
+                bnum = parseFloat($('#b'+MpIdxSet[j]).html());
+                btotal += bnum;
+                knum = parseFloat($('#k'+MpIdxSet[j]).html());
+                ktotal += knum;
                 snum = parseFloat($('#s'+MpIdxSet[j]).html());
                 stotal += snum;
                 znum = parseFloat($('#z'+MpIdxSet[j]).html());
@@ -221,6 +226,8 @@
             $('#mr').html((mtotal / cnt).toFixed(2));
             $('#sr').html((stotal / cnt).toFixed(2));
             $('#zr').html((ztotal / cnt).toFixed(2));
+            $('#br').html((btotal / cnt) + ' %');
+            $('#kr').html((ktotal / cnt) + '/' + tcnt);
 
             // 모달창 오픈
             $('.act-move').on('click', function() {

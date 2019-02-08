@@ -1013,36 +1013,6 @@ class RegGradeModel extends WB_Model
                 WHERE Mp.MpIdx = A.MpIdx AND MR.MemIdx = '" . $MemIdx . "' 
             ) AS pAdjustPoint,
             CONCAT((
-                SELECT serial_number AS SNUM FROM (
-                    SELECT  @s:=@s+1 AS serial_number, A.MemIdx  FROM
-                    (
-                        SELECT 
-                             SUM(AdjustPoint) AS SAdjustPoint, MR.MemIdx  
-                        FROM
-                            {$this->_table['mockExamBase']} AS MP
-                            JOIN {$this->_table['mockGrades']} AS MG ON MG.MpIdx = MP.MpIdx AND MP.IsUse = 'Y' AND ProdCode = '" . $ProdCode . "'
-                            JOIN {$this->_table['mockRegister']} AS MR ON MR.MrIdx = MG.MrIdx AND MR.IsStatus = 'Y' 
-                        GROUP BY MR.MemIdx
-                        ORDER BY SUM(AdjustPoint) DESC
-                    ) AS A
-                    ,
-                    (SELECT @s:= 0) AS s
-                ) AS B
-                WHERE B.MemIdx = '" . $MemIdx . "'
-		    ) ,'/', (
-                SELECT MAX(CNT) FROM (
-                    SELECT COUNT(MemIdx) AS CNT FROM (
-                                SELECT 
-                                    MG.MpIdx, MG.MemIdx 
-                                FROM
-                                    {$this->_table['mockExamBase']} AS MP
-                                    JOIN {$this->_table['mockGrades']} AS MG ON MG.MpIdx = MP.MpIdx AND MP.IsUse = 'Y' AND ProdCode = '" . $ProdCode . "'
-                                    JOIN {$this->_table['mockRegister']} AS MR ON MR.MrIdx = MG.MrIdx AND MR.IsStatus = 'Y' 
-                            ) AS I
-                    GROUP BY I.MpIdx
-                ) AS K
-            )) AS pSRank,
-            CONCAT((
                 SELECT 
                     Rank  
                 FROM
@@ -1127,7 +1097,7 @@ class RegGradeModel extends WB_Model
         $obder_by = " GROUP BY A.MpIdx";
 
         $where = " ";
-
+        //echo "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
         $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
         $data = $query->result_array();
         $MpIdxSet = array();
@@ -1136,27 +1106,23 @@ class RegGradeModel extends WB_Model
             $mpidx = $val['MpIdx'];
             $MockType = $arrMockType[$mpidx];
             $subjectName = $arrSubjectName[$mpidx];
-            $arrTRank = explode('/', $val['pRank']);
-            $arrSRank = explode('/', $val['pSRank']);
+            $arrPRank = explode('/', $val['pRank']);
 
-            $trank = $arrTRank[0];
-            $srank = $arrSRank[0];
+            $prank = $arrPRank[0];
 
             $rdata[$ProdCode][$MockType][$mpidx]['MockType'] = $MockType;
             $rdata[$ProdCode][$MockType][$mpidx]['MpIdx'] = $val['MpIdx'];
             $rdata[$ProdCode][$MockType][$mpidx]['opMax'] = $val['opMax'];
             $rdata[$ProdCode][$MockType][$mpidx]['adMax'] = $val['adMax'];
             $rdata[$ProdCode][$MockType][$mpidx]['opAVG'] = $val['opAVG'];
-            $rdata[$ProdCode][$MockType][$mpidx]['pRank'] = $val['pRank'];
+            $rdata[$ProdCode][$MockType][$mpidx]['pRank'] = $prank;
             $rdata[$ProdCode][$MockType][$mpidx]['adAVG'] = $val['adAVG'];
-            $rdata[$ProdCode][$MockType][$mpidx]['tpct'] = round(100 - ((($trank) / $val['CNT']) * 100 - (100 / $val['CNT'])), 2);
+            $rdata[$ProdCode][$MockType][$mpidx]['tpct'] = round(100 - ((($prank) / $val['CNT']) * 100 - (100 / $val['CNT'])), 2);
             $rdata[$ProdCode][$MockType][$mpidx]['pOrgPoint'] = $val['pOrgPoint'];
             $rdata[$ProdCode][$MockType][$mpidx]['pAdjustPoint'] = $val['pAdjustPoint'];
             $rdata[$ProdCode][$MockType][$mpidx]['StandardDeviation'] = $val['StandardDeviation'];
             $rdata[$ProdCode][$MockType][$mpidx]['CNT'] = $val['CNT'];
             $rdata[$ProdCode][$MockType][$mpidx]['SubjectName'] = $subjectName;
-            $rdata[$ProdCode]['pSRank'] = $val['pSRank'];
-            $rdata[$ProdCode]['stpct'] = round(100 - ((($srank) / $val['MAXCNT']) * 100 - (100 / $val['MAXCNT'])), 2);
 
             $MpIdxSet[] = $mpidx;
         }

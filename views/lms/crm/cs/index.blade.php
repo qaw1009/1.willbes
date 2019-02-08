@@ -83,7 +83,7 @@
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 buttons: [
-                    { text: '<i class="fa fa-pencil mr-10"></i> 외부페이지확인', className: 'btn-sm btn-success border-radius-reset mr-10', action: function(e, dt, node, config) {
+                    { text: '<i class="glyphicon glyphicon-question-sign mr-10"></i> 외부페이지확인', className: 'btn-sm btn-success border-radius-reset mr-10', action: function(e, dt, node, config) {
                             window.open('{{ site_url("/crm/manageCs/noAuthList") }}');
                         }},
                     { text: '<i class="fa fa-pencil mr-10"></i> 자료등록', className: 'btn-sm btn-primary border-radius-reset mr-10', action: function(e, dt, node, config) {

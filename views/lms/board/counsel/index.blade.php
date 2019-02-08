@@ -160,6 +160,9 @@
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 buttons: [
+                    { text: '<i class="glyphicon glyphicon-question-sign mr-10"></i> 기술응대자료확인', className: 'btn-sm btn-success border-radius-reset mr-10', action: function(e, dt, node, config) {
+                            window.open('{{ site_url("/crm/manageCs/noAuthList") }}');
+                        }},
                     { text: '<i class="fa fa-pencil mr-10"></i> 공지 등록', className: 'btn-sm btn-primary border-radius-reset', action: function(e, dt, node, config) {
                             /*var this_site_code = $search_form.find('select[name="search_site_code"]').val();*/
                             location.href = '{{ site_url("/board/{$boardName}/create") }}' + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}';

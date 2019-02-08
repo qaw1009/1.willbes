@@ -37,23 +37,31 @@ class Order extends \app\controllers\FrontController
             show_alert($results, 'back');
         }
 
-        // 회원정보 조회
-        $results['member'] = $this->memberFModel->getMember(false, ['EQ' => ['Mem.MemIdx' => $sess_mem_idx]]);
-
-        // 회원 보유포인트
-        $results['point_type_name'] = $this->orderFModel->_point_type_name[$cart_type];
-        $results['point'] = $this->pointFModel->getMemberPoint($cart_type == 'book' ? 'book' : 'lecture');
-
         // 지역번호, 휴대폰번호, 결제수단 공통코드 조회
         $codes = $this->codeModel->getCcdInArray(array_values($this->_group_ccd));
 
         // 결제수단공통코드 (사이트정보에 설정된 결제수단만 필터링)
         $arr_pay_method_ccd = array_filter_keys($codes[$this->_group_ccd['PayMethod']], explode(',', config_app('PayMethodCcds')));
-        
+
         if ($cart_type == 'mock_exam') {
             // 모의고사 상품 결제일 경우 무통장입금 삭제
             unset($arr_pay_method_ccd[$this->orderFModel->_pay_method_ccd['vbank']]);
         }
+
+        // 회원정보 조회
+        $results['member'] = $this->memberFModel->getMember(false, ['EQ' => ['Mem.MemIdx' => $sess_mem_idx]]);
+        
+        // 전화번호 체크 (전화번호 양식이 아닐 경우 값 초기화)
+        if (isset($codes[$this->_group_ccd['Tel1']][$results['member']['Tel1']]) === false) {
+            $results['member']['Tel'] = '';
+            $results['member']['Tel1'] = '';
+            $results['member']['Tel2'] = '';
+            $results['member']['Tel3'] = '';
+        }
+
+        // 회원 보유포인트
+        $results['point_type_name'] = $this->orderFModel->_point_type_name[$cart_type];
+        $results['point'] = $this->pointFModel->getMemberPoint($cart_type == 'book' ? 'book' : 'lecture');
 
         $this->load->view('site/order/index', [
             'arr_tel1_ccd' => $codes[$this->_group_ccd['Tel1']],

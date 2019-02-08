@@ -19,7 +19,7 @@
  * @date            2008.01.16
  * @note						Encrypt,Decrypt 모듈 개선, pkcs5 padding 추가
  * @date            2008.01.24
- * @note						non block connect immediate return check code/str	
+ * @note						non block connect immediate return check code/str
  * @date            2008.02.11
  * @note						key load 후 read에러발생시 fclose 추가
  * @date            2008.03.03
@@ -54,7 +54,7 @@
  * @date            2009.12.16
  * @buildno			    5030
  * @note						add recv info
- * @date			2010.07.14  
+ * @date			2010.07.14
  * @note 						add Tax, TaxFree info(TX_TAX, TX_TAXFREE)
  * @date 			2010.09.09
  * @note						취소요청시 PG 설정 변경(도메인->IP, INILib.php)
@@ -73,8 +73,8 @@ ini_set('display_errors', 'Off');
 /* GLOBAL */
 define("PROGRAM", "INIPHP");
 define("LANG", "PHP");
-define("VERSION", "5047");
-define("BUILDDATE", "170421");
+define("VERSION", "NV5050");
+define("BUILDDATE", "20181201");
 define("TID_LEN", 40);
 define("MAX_KEY_LEN", 24);
 define("MAX_IV_LEN", 8);
@@ -94,14 +94,16 @@ define("INFO", 5);
 define("DEBUG", 7);
 
 /* SERVER INFO */
-define("PG_HOST", "pg.inicis.com");
+define("PG_HOST", "formpg.inicis.com");
 define("DRPG_HOST", "drpg.inicis.com");
 define("PG_IP", "203.238.37.3");
 define("DRPG_IP", "211.219.96.180");
+define("KSPG_IP", "39.115.212.10");
 define("PG_PORT", 34049);
 define("G_SERVER", "gthr.inicis.com");
 define("G_CGI", "/cgi-bin/g.cgi");
 define("G_PORT", 80);
+
 
 define("OK", "0");
 
@@ -157,11 +159,11 @@ define("CMD_RES_ACK", "0810");
 //added 2008.01.08
 define("CMD_REQ_DLV", "3020"); //배송등록
 define("CMD_REQ_CNF", "3030"); //구매확인
-define("CMD_REQ_DNY", "3040"); //구매거절 
+define("CMD_REQ_DNY", "3040"); //구매거절
 define("CMD_REQ_DNY_CNF", "3080"); //거절확인
 define("CMD_REQ_DLV_NETC", "3520"); //배송등록망상취소
 define("CMD_REQ_CNF_NETC", "3530"); //구매확인망상취소
-define("CMD_REQ_DNY_NETC", "3540"); //구매거절망상취소 
+define("CMD_REQ_DNY_NETC", "3540"); //구매거절망상취소
 //가상계좌환불(09.08.05)
 define("CMD_REQ_RFD", "0421");
 define("CMD_RES_RFD", "0431");
@@ -224,7 +226,6 @@ define("TYPE_ESCROW_DLV", "dlv");
 define("TYPE_ESCROW_CNF", "confirm"); //구매확인/거절(플러그인)
 define("TYPE_ESCROW_DNY", "deny");  //위에서 처리됨,의미없음
 define("TYPE_ESCROW_DNY_CNF", "dcnf");
-
 
 //------------------------------------------------------
 //PayMethod(서비스별, TX)
@@ -323,6 +324,8 @@ define("TX_CANCELREASON", "CancelReason");      //2012-10-19 취소사유코드 
 define("TX_REFUNDACCTNUM", "RefundAcctNum");
 define("TX_REFUNDBANKCODE", "RefundBankCode");
 define("TX_REFUNDACCTNAME", "RefundAcctName");
+define("TX_REFUNDFLGREMIT", "RefundFlgRemit");
+
 //PartCancelInfo
 define("TX_PRTC_TID", "PRTC_TID");
 define("TX_PRTC_PRICE", "PRTC_Price");
@@ -337,7 +340,7 @@ define("TX_PRTC_CURRENCY", "Currency");
 //국민은행 I계좌이체 부분취소시 계좌번호/계좌주성명추가 2011-10-06
 define("TX_PRTC_NOACCT", "PRTC_NoAcctFNBC");
 define("TX_PRTC_NMACCT", "PRTC_NmAcctFNBC");
-//가상계좌 부분환불 관련 추가 
+//가상계좌 부분환불 관련 추가
 define("TX_PRTC_REFUNDFLGREMIT", "PRTC_RefundFlgRemit");
 define("TX_PRTC_REFUNDBANKCODE", "PRTC_RefundBankCode");
 //CaptureInfo
@@ -494,6 +497,7 @@ define("ISP_PURCHASECODE", "ISP_PurchaseCode");
 define("ACCT_APPLDATE", "ACCT_ApplDate");
 define("ACCT_APPLTIME", "ACCT_ApplTime");
 define("ACCT_APPLNUM", "ACCT_ApplNum");
+
 //HPP
 define("HPP_APPLDATE", "HPP_ApplDate");
 define("HPP_APPLTIME", "HPP_ApplTime");

@@ -71,10 +71,10 @@ class Banner extends \app\controllers\BaseController
      */
     public function click()
     {
-        $banner_idx = $this->_reqG('bidx');
+        $banner_idx = $this->_reqG('banner_idx');
         $return_url = $this->_reqG('return_url');
 
-        if(empty($banner_idx) === false && empty($return_url) === false) {
+        if(empty($banner_idx) === false && is_numeric($banner_idx) === true && empty($return_url) === false) {
             // 접속로그 저장
             $this->accessFModel->saveLog('banner', $banner_idx);
 

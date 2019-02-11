@@ -439,7 +439,7 @@ class ManageLectureModel extends WB_Model
         $where = $this->_conn->makeWhere($cond);
         $query .= $where->getMakeWhere(false);
 
-        $query .= " ORDER BY MlIdx DESC ";
+        $query .= " ORDER BY L.MlIdx DESC ";
 
         $result = $this->_conn->query($query);
 
@@ -447,5 +447,67 @@ class ManageLectureModel extends WB_Model
     }
 
 
+    /**
+     * 강의 연장처리
+     * @param $input
+     * @return bool
+     */
+    public function storeExtend($input)
+    {
+        $this->_conn->trans_begin();
 
+        try {
+            // 일시정지 정보 삭제
+            if( $this->_conn->set('MemIdx', element('MemIdx', $input))
+                    ->set('TargetOrderIdx', element('OrderIdx', $input))
+                    ->set('TargetProdCode', element('ProdCode', $input))
+                    ->set('TargetProdCodeSub', element('ProdCodeSub', $input))
+                    ->set('ExtenType', element('ExtenType', $input))
+                    ->set('ExtenDay', element('ExtenDay', $input))
+                    ->set('RegDatm', 'NOW()', false)
+                    ->set('RegIp', $this->input->ip_address())
+                    ->set('ExtenMemo', element('ExtenMemo', $input))
+                    ->set('RegAdminIdx', $this->session->userdata('admin_idx'))
+                    ->insert($this->_table['extend']) == false){
+                throw new \Exception('연장데이터 추가에 실패했습니다.');
+            }
+
+            // 실제 수강일은 이전 수강일 - 취소한 일시정지일
+            $realecexpireday = element('RealLecExpireDay', $input) + element('ExtenDay', $input);
+            $lecstartdate = element('LecStartDate', $input);
+
+            // 강의 수강기간을 업데이트한다.
+            if(empty(element('ProdCodeSub', $input)) === true){
+                if($this->_conn->
+                    set('RealLecExpireDay', $realecexpireday)->
+                    set('RealLecEndDate', date("Y-m-d", strtotime($lecstartdate.'+'.($realecexpireday-1).'day')))->
+                    where('OrderIdx', element('OrderIdx', $input))->
+                    where('ProdCode', element('ProdCode', $input))->
+                    where('OrderProdIdx', element('OrderProdIdx', $input))->
+                    update($this->_table['mylec']) === false) {
+                    throw new \Exception('업데이트 실패했습니다.');
+                }
+
+            } else {
+                if($this->_conn->
+                    set('RealLecExpireDay', $realecexpireday)->
+                    set('RealLecEndDate', date("Y-m-d", strtotime($lecstartdate.'+'.($realecexpireday-1).'day')))->
+                    where('OrderIdx', element('OrderIdx', $input))->
+                    where('ProdCode', element('ProdCode', $input))->
+                    where('ProdCodeSub', element('ProdCodeSub', $input))->
+                    where('OrderProdIdx', element('OrderProdIdx', $input))->
+                    update($this->_table['mylec']) === false) {
+                    throw new \Exception('업데이트 실패했습니다.');
+                }
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return false;
+        }
+
+        return true;
+
+    }
 }

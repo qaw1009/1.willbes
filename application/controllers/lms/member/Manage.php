@@ -765,6 +765,10 @@ class Manage extends \app\controllers\BaseController
         ]);
     }
 
+    /**
+     *  강의 시작일변경처리
+     * @return CI_Output
+     */
     public function setStart()
     {
         $memidx =  $this->_req('memidx');
@@ -856,16 +860,134 @@ class Manage extends \app\controllers\BaseController
         }
     }
 
+
+    /**
+     *  기간 연장페이지
+     * @return object|string
+     */
     public function extend()
     {
+        $orderidx = $this->_req('orderidx');
+        $prodcode = $this->_req('prodcode');
+        $prodcodesub = $this->_req('prodcodesub');
+        $prodtype = $this->_req('prodtype');
+        $memidx =  $this->_req('memidx');
+
+        $cond_arr = [
+            'EQ' => [
+                'MemIdx' => $memidx, // 사용자
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub
+            ]
+        ];
+
+        if($prodtype === 'S'){
+            $leclist = $this->manageLectureModel->getLecture(false, $cond_arr);
+
+        } else if($prodtype === 'P') {
+            $leclist = $this->manageLectureModel->getPackage($cond_arr);
+
+        } else {
+            show_alert('신청강좌정보를 찾을수 없습니다.', 'close');
+        }
+
+        if(count($leclist) == 1){
+            $lec = $leclist[0];
+        } else {
+            show_alert('신청강좌정보를 찾을수 없습니다.', 'close');
+        }
+
+        $log = $this->manageLectureModel->getExtendLog([
+            'EQ' => [
+                'MemIdx' => $memidx,
+                'TargetOrderIdx' => $orderidx,
+                'TargetProdCode' => $prodcode,
+                'TargetProdCodeSub' => $prodcodesub
+            ]
+        ]);
+
+        $member = $this->manageMemberModel->getMember($memidx);
+
+        return $this->load->view('member/layer/lecture/extend', [
+            'member' => $member,
+            'lec' => $lec,
+            'log' => $log
+        ]);
     }
 
+
+    /**
+     *  사용자 기간 연장처리
+     * @return CI_Output|object|string
+     */
     public function setExtend()
     {
+        $orderidx = $this->_req('orderidx');
+        $prodcode = $this->_req('prodcode');
+        $prodcodesub = $this->_req('prodcodesub');
+        $prodtype = $this->_req('prodtype');
+        $memidx =  $this->_req('memidx');
+        $extenday = $this->_req("extenday");
+        $extenmemo = $this->_req("extenmemo");
+        $extentype = $this->_req("extentype");
 
+        if(is_numeric($extenday) === false){
+            return $this->json_error('연장기간은 숫자로 입력해야합니다.');
+        }
+
+        if(empty($extenmemo) === true){
+            return $this->json_error('연장사유를 입력해주십시요.');
+        }
+
+        $cond_arr = [
+            'EQ' => [
+                'MemIdx' => $memidx,
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub
+            ]
+        ];
+
+        if($prodtype === 'S'){
+            $leclist = $this->manageLectureModel->getLecture(false, $cond_arr);
+
+        } else if($prodtype === 'P') {
+            $leclist = $this->manageLectureModel->getPackage($cond_arr);
+
+        } else {
+            return $this->json_error('신청강좌정보를 찾을수 없습니다.');
+        }
+
+        if(count($leclist) == 1){
+            $lec = $leclist[0];
+        } else {
+            return $this->json_error('신청강좌정보를 찾을수 없습니다.');
+        }
+
+        if($this->manageLectureModel->storeExtend([
+                'MemIdx' => $memidx,
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub,
+                'ExtenType' => $extentype,
+                'ExtenDay' => $extenday,
+                'ExtenMemo' => $extenmemo,
+                'RealLecExpireDay' => $lec['RealLecExpireDay'],
+                'LecStartDate' => $lec['LecStartDate'],
+                'OrderProdIdx' => $lec['OrderProdIdx']
+            ]) === false){
+            return $this->json_error('강의 연장에 실패했습니다.');
+        } else {
+            return $this->json_result(true,'처리 완료되었습니다.');
+        }
     }
 
 
+    /**
+     *  일시중지 페이지
+     * @return object|string
+     */
     public function pause()
     {
         $orderidx = $this->_req('orderidx');
@@ -935,6 +1057,11 @@ class Manage extends \app\controllers\BaseController
         ]);
     }
 
+    
+    /**
+     *  일시중지 처리
+     * @return CI_Output
+     */
     public function setPause()
     {
         $orderidx = $this->_req('orderidx');
@@ -1005,6 +1132,10 @@ class Manage extends \app\controllers\BaseController
         }
     }
 
+    /**
+     *  일시중지 취소
+     * @return CI_Output
+     */
     public function cancelPause()
     {
         $orderidx = $this->_req('orderidx');

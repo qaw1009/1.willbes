@@ -403,11 +403,15 @@ body.memBody #Footer {
 
 
 /*********************************************     INTRO PAGE     *********************************************/
-.introBox {
-    margin: 5%;
-    border: 1px solid #000;
-    color: #363636;
+.introBox .Tit {
+    font-size: 20px;
+    line-height: 66px;
+    background: #1a8ccb;
     text-align: center;
+    color:#fff;
+}
+.introBox {
+    background: #1b98ef;
 }
 .introBox img {
     width: 100%; 
@@ -417,11 +421,7 @@ body.memBody #Footer {
     width: 100%;
     height: 100%;
 }
-.introBox .Tit {
-    font-size: 36px;
-    line-height: 60px;
-    padding-bottom: 15px;
-}
+
 .introBox .subTit {
     font-size: 14px;
     padding-top: 30px;

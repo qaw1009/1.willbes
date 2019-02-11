@@ -2,18 +2,17 @@
 
 @section('content')
 <!-- Container -->
-<div id="Container" class="Container c_both mb20">
+<div id="Container" class="Container c_both mb20">    
     <div class="introBox">
+        <div class="Tit NSK">내 인생의 모든 시험, 윌비스로 합격하다!</div>
         <a href="#none">
-            <img src="{{ img_url('m/intro/intro1.jpg') }}">
+            <img src="{{ img_url('m/intro/m_main_hub01.gif') }}" alt="신광은경찰 온라인">
         </a>
     </div>
     <div class="introBox">
-        <a href="#none">
-            <div class="subTit NSK-Thin">9급 / 7급 / 법원 / 소방 / 기술 / 군무원</div>
-            <div class="Tit NSK-Black"><span class="gosi-color">공무원</span> 온라인</div>
-            <div class="btnGo NSK"><span>바로가기 ></span></div>
-        </div>
+    <a href="#none">
+            <img src="{{ img_url('m/intro/m_main_hub02.gif') }}" alt="공무원 온라인">
+        </a>
     </div>
 </div>
 <!-- End Container -->

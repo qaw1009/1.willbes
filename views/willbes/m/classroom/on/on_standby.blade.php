@@ -30,6 +30,7 @@
                         - 수강시작일을 변경하면 변경된 시작일에 맞춰 종료기간 및 잔여기간이 자동으로 셋팅됩니다.<br/>
                         - 수강시작이 이루어진 강좌는 시작일 변경이 불가능합니다.<br/>
                     </div>
+
                     <div class="willbes-Lec-Selected NG c_both tx-gray">
                         <form name="searchFrm" id="searchFrm" action="{{front_app_url('/classroom/on/list/standby/', 'www')}}">
                             <select id="course_ccd" name="course_ccd" title="process" class="seleProcess width21p">
@@ -55,6 +56,7 @@
                             <a href="{{front_url('/classroom/on/list/standby/')}}"><img src="{{ img_url('m/mypage/icon_reset.png') }}"></a>
                         </div>
                     </div>
+                    
                     <div id="leclist1">
                         <table cellspacing="0" cellpadding="0" width="100%" class="lecTable bdt-m-gray">
                             <tbody>

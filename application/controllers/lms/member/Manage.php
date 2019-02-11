@@ -17,6 +17,13 @@ class Manage extends \app\controllers\BaseController
     protected $_LearnPatternCcd_free = ['615005'];
     protected $_LearnPatternCcd_pkg = ['615003'];
 
+    // CRM 발송 상태 [성공,예약,취소]
+    private $_send_status_ccd = [
+        '0' => '639001',
+        '1' => '639002',
+        '2' => '639003'
+    ];
+
     protected $helpers = array();
 
     public function __construct()

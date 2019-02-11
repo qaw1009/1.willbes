@@ -54,6 +54,7 @@
             </tr>
             <tr>
                 <td colspan="2">
+                    <b>[최초수강기간]</b> {{$lec['LecStartDate']}} ~ {{$lec['LecEndDate']}} ({{$lec['LecExpireDay']}}일)  &nbsp; &nbsp; &nbsp;
                     <b>[수강기간]</b> {{str_replace('-', '.', $lec['LecStartDate'])}}~{{str_replace('-', '.', $lec['RealLecEndDate'])}} ({{$lec['RealLecExpireDay']}}일) &nbsp; &nbsp; &nbsp;
                     <b>[남은수강기간]</b>
                     @if(strtotime($lec['LecEndDate']) < strtotime(date("Y-m-d", time())))
@@ -66,7 +67,7 @@
                         {{ intval(strtotime($lec['RealLecEndDate']) - strtotime($lec['lastPauseEndDate']))/86400 }}일
                     @else
                         {{ intval(strtotime($lec['RealLecEndDate']) - strtotime(date("Y-m-d", time())))/86400 +1 }}일
-                    @endif &nbsp; &nbsp; &nbsp;
+                    @endif &nbsp; &nbsp; &nbsp;<br>
                     <b>[진행상태]</b> {{$lec['wLectureProgressCcdName']}} &nbsp; &nbsp; &nbsp;
                     <b>[배수]</b> {{$lec['MultipleApply'] == '1' ? '무제한' : $lec['MultipleApply'].'배수' }} &nbsp; &nbsp; &nbsp;
                     <b>[진도율]</b> {{$lec['StudyRate']}}%<br>

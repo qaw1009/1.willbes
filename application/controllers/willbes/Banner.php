@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Banner extends \app\controllers\BaseController
 {
-    protected $models = array('bannerF');
+    protected $models = array('bannerF', 'access/accessF');
     protected $helpers = array();
 
     private $_rolling_type = ['665001' => 'bSlider',  '665002' => 'cSlider', '665003' => 'nSlider', '665004' => 'vSlider'
@@ -52,9 +52,6 @@ class Banner extends \app\controllers\BaseController
             'DispRollingTypeCcd' => $data[0]['DispRollingTypeCcd'], 'DispRollingTypeName' => $rolling_type_name,
         ];
 
-        logger('banner1', $data);
-        logger('banner2', $disp_data);
-
         // 랜덤 노출일 경우
         if ($disp_data['DispTypeCcd'] == '664003') {
             shuffle($data);
@@ -65,5 +62,24 @@ class Banner extends \app\controllers\BaseController
             'data' => $data,
             'css_class' => $arr_input['css_class']
         ]);
+    }
+
+    /**
+     * 배너클릭 (접속로그 저장)
+     */
+    public function click()
+    {
+        $banner_idx = $this->_reqG('bidx');
+        $return_url = $this->_reqG('return_url');
+
+        if(empty($banner_idx) === false && empty($return_url) === false) {
+            // 접속로그 저장
+            $this->accessFModel->saveLog('banner', $banner_idx);
+
+            $return_url = '//' . (strpos($return_url, config_item('base_domain')) === false ? $return_url : app_to_env_url($return_url));
+            redirect($return_url);
+        } else {
+            redirect(app_url('/home/index', 'www'));
+        }
     }
 }

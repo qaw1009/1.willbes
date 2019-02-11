@@ -237,11 +237,15 @@ class ManageLectureModel extends WB_Model
         if($isCount === true){
             $query = "SELECT COUNT(*) AS rownums ";
         } else {
-            $query = "SELECT * , ifnull(PauseAdminIdx, '') AS Name 
+            $query = "SELECT L.*
+            , IFNULL(A.wAdminName, '') AS PauseAdminName 
+            , IFNULL(A2.wAdminName, '') AS DelAdminName
               ";
         }
 
-        $query .= " FROM {$this->_table['pause_log']}  
+        $query .= " FROM {$this->_table['pause_log']} AS L
+        LEFT JOIN {$this->_table['admin']} AS A ON A.wAdminIdx = L.PauseAdminIdx
+        LEFT JOIN {$this->_table['admin']} AS A2 ON A2.wAdminIdx = L.DelAdminIdx
          ";
 
         $where = $this->_conn->makeWhere($cond);
@@ -321,19 +325,17 @@ class ManageLectureModel extends WB_Model
         return true;
     }
 
-
     /**
-     * 일시중지 강의 재시작 설정
+     * 일시중지 취소
      * @param $input
      * @return array|bool
      */
-    public function setRestartPause($input)
+    public function cancelPause($input)
     {
         $lecstartdate = element('lecstartdate', $input);
         $realecexpireday = element('realecexpireday', $input);
 
         $today = date("Y-m-d", time());
-        $enddate = date("Y-m-d", strtotime($today.'-1day'));
 
         // 해당 주문 강의의 일시정지 번호를 읽어온다.
         $query = "SELECT * ";
@@ -341,11 +343,7 @@ class ManageLectureModel extends WB_Model
 
         $cond = [
             'EQ' => [
-                'MemIdx' => element('MemIdx', $input),
-                'OrderIdx' => element('OrderIdx', $input),
-                'ProdCode' => element('ProdCode', $input),
-                'ProdCodeSub' => element('ProdCodeSub', $input),
-                'OrderProdIdx' => element('OrderProdIdx', $input),
+                'LphIdx' => element('LphIdx', $input),
                 'IsDel' => 'N'
             ]
         ];
@@ -375,42 +373,15 @@ class ManageLectureModel extends WB_Model
             if( $this->_conn->set('IsDel', 'Y')
                     ->set('DelIp', $this->input->ip_address())
                     ->set('DelDate', 'NOW()', false)
-                    ->set('Memo', $row['Memo'].' / 관리자가 일시정지 해제')
+                    ->set('Memo', $row['Memo'].' / 관리자가 일시정지 취소')
                     ->set('DelAdminIdx', $this->session->userdata('admin_idx'))
                     ->where('LphIdx', $row['LphIdx'])
                     ->update($this->_table['pause_log']) == false){
                 throw new \Exception('업데이트 실패했습니다.');
             }
 
-            // 일시정지 날짜가 오늘이면 새로운 정보를 입력하지 않는다.
-            if($row['PauseStartDate'] < $today){
-                // 날짜 계산
-                $PauseDay = intval((strtotime($enddate)-strtotime($row['PauseStartDate']))/86400) +1;
-
-                // 일시정지 날짜가 오늘 이전이면 새로운 일시정지 정보를 입력한다.
-                $input = [
-                    'MemIdx' => element('MemIdx', $input),
-                    'OrderIdx' => element('OrderIdx', $input),
-                    'OrderProdIdx' => element('OrderProdIdx', $input),
-                    'ProdCode' => element('ProdCode', $input),
-                    'ProdCodeSub' => element('ProdCodeSub', $input),
-                    'PauseStartDate' => $row['PauseStartDate'],
-                    'PauseEndDate' => $enddate,
-                    'PauseDays' => $PauseDay,
-                    'PauseRegIp' => $this->input->ip_address(),
-                    'Memo' => '관리자가 일시중지 해제로 인해 재등록',
-                    'PauseAdminIdx' => $this->session->userdata('admin_idx')
-                ];
-
-                if($this->_conn->set($input)->insert($this->_table['pause_log']) === false){
-                    throw new \Exception('로그기록에 실패했습니다.');
-                }
-            } else {
-                $PauseDay = 0;
-            }
-
-            // 실제 수강일은 이전 수강일 - 취소한 일시정지일 + 일시 정지일
-            $realecexpireday = $realecexpireday - $row['PauseDays'] + $PauseDay;
+            // 실제 수강일은 이전 수강일 - 취소한 일시정지일
+            $realecexpireday = $realecexpireday - $row['PauseDays'];
 
             // 강의 수강기간을 업데이트한다.
             if(empty(element('ProdCodeSub', $input)) === true){

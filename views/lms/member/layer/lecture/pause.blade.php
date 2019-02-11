@@ -66,7 +66,7 @@
                         {{ intval(strtotime($lec['RealLecEndDate']) - strtotime($lec['lastPauseEndDate']))/86400 }}일
                     @else
                         {{ intval(strtotime($lec['RealLecEndDate']) - strtotime(date("Y-m-d", time())))/86400 +1 }}일
-                    @endif<br>
+                    @endif &nbsp; &nbsp; &nbsp;
                     <b>[진행상태]</b> {{$lec['wLectureProgressCcdName']}} &nbsp; &nbsp; &nbsp;
                     <b>[배수]</b> {{$lec['MultipleApply'] == '1' ? '무제한' : $lec['MultipleApply'].'배수' }} &nbsp; &nbsp; &nbsp;
                     <b>[진도율]</b> {{$lec['StudyRate']}}%<br>
@@ -75,20 +75,22 @@
             <tr>
                 <th class="w-tit bg-light-white strong">일시중지 설정</th>
                 <td class="w-data tx-left pl15">
-                    @if(strtotime($lec['LecStartDate']) > strtotime(date("Y-m-d", time())))
-                        <b style="color:red">수강을 시작하지 않은 강의는 일시 중지가 불가능합니다.</b>
-                    @elseif(strtotime($lec['lastPauseStartDate']) <= strtotime(date("Y-m-d", time())) && strtotime($lec['lastPauseEndDate']) >= strtotime(date("Y-m-d", time())))
-                        <b style="color:red">일시중지 중에는 일시중지가 불가능합니다.</br>이전 일시중지내역을 삭제후 다시 설정해야합니다.</b>
-                    @else
-                        <form name="chg_start_form" id="chg_start_form">
-                            {!! csrf_field() !!}
-                            {!! method_field('POST') !!}
-                            <input type="hidden" name="memidx" value="{{$member['MemIdx']}}" />
-                            <input type="hidden" name="orderidx" value="{{$lec['OrderIdx']}}" />
-                            <input type="hidden" name="prodcode" value="{{$lec['ProdCode']}}" />
-                            <input type="hidden" name="prodcodesub" value="{{empty($lec['ProdCodeSub']) == true ? '' : $lec['ProdCodeSub'] }}" />
-                            <input type="hidden" name="orderprodidx" value="{{$lec['OrderProdIdx']}}" />
-                            <input type="hidden" name="prodtype" value="@if($lec['LearnPatternCcd'] == '615001' || $lec['LearnPatternCcd'] == '615002'){{'S'}}@else{{'P'}}@endif" />
+                    <form name="pauseForm" id="pauseForm">
+                        {!! csrf_field() !!}
+                        {!! method_field('POST') !!}
+                        <input type="hidden" name="lphidx" id="lphidx" value="" />
+                        <input type="hidden" name="memidx" value="{{$member['MemIdx']}}" />
+                        <input type="hidden" name="orderidx" value="{{$lec['OrderIdx']}}" />
+                        <input type="hidden" name="prodcode" value="{{$lec['ProdCode']}}" />
+                        <input type="hidden" name="prodcodesub" value="{{empty($lec['ProdCodeSub']) == true ? '' : $lec['ProdCodeSub'] }}" />
+                        <input type="hidden" name="orderprodidx" value="{{$lec['OrderProdIdx']}}" />
+                        <input type="hidden" name="prodtype" value="@if($lec['LearnPatternCcd'] == '615001' || $lec['LearnPatternCcd'] == '615002'){{'S'}}@else{{'P'}}@endif" />
+                        @if(strtotime($lec['LecStartDate']) > strtotime(date("Y-m-d", time())))
+                            <b style="color:red">수강을 시작하지 않은 강의는 일시 중지가 불가능합니다.</b>
+                        @elseif(strtotime($lec['lastPauseEndDate']) >= strtotime(date("Y-m-d", time())))
+                            <b style="color:red">일시중지 중에는 일시중지가 불가능합니다.</br>이전 일시중지내역을 삭제후 다시 설정해야합니다.</b>
+                        @else
+
                             <div class="col-md-11 form-inline">
                                 <div class="input-group mr-10">
                                     <div class="input-group-addon no-border no-bgcolor"></div>
@@ -104,8 +106,8 @@
                                 </div>
                                 <button type="button" class="btn btn-primary btn-search" onclick="fnSetPause();">일시정지적용</button>
                             </div>
-                        </form>
-                    @endif
+                        @endif
+                    </form>
                 </td>
             </tr>
         </table>
@@ -113,20 +115,22 @@
         ● 변경이력
         <table class="table table-striped table-bordered">
             <colgroup>
+                <col width="5%">
+                <col width="25%">
+                <col width="15%">
+                <col width="15%">
+                <col width="15%">
+                <col width="15%">
                 <col width="10%">
-                <col width="20%">
-                <col width="20%">
-                <col width="20%">
-                <col width="15%">
-                <col width="15%">
             </colgroup>
             <thead>
             <tr>
                 <th>회차</th>
-                <th>일지중지</th>
+                <th>일지중지날짜</th>
                 <th>등록일</th>
-                <th>아이피</th>
-                <th>변경자</th>
+                <th>등록자(IP)</th>
+                <th>취소일</th>
+                <th>취소자(IP)</th>
                 <th>취소</th>
             </tr>
             </thead>
@@ -138,13 +142,19 @@
                     <td class="w-num">{{$row['IsDel'] == 'Y' ? '취소' : $i.'차'}}</td>
                     <td class="w-day">{{$row['PauseStartDate']}} ~ {{$row['PauseEndDate']}} ({{$row['PauseDays']}}일)</td>
                     <td class="w-modify-day">{{$row['PauseRegDate']}}</td>
-                    <td></td>
-                    <td class="w-user">{{$row['adminName'] == '' ? '사용자' : '관리자('.$row['adminname'].')' }}</td>
-                    <td>@if($row['IsDel'] == 'Y')
+                    <td class="w-user">{{$row['PauseAdminName'] == '' ? '사용자' : '관리자('.$row['PauseAdminName'].')' }}
+                        ({{$row['PauseRegIp']}})</td>
+                    @if($row['IsDel'] == 'Y')
+                        <td class="w-modify-day">{{$row['DelDate']}}</td>
+                        <td class="w-user">{{$row['DelAdminName'] == '' ? '사용자' : '관리자('.$row['DelAdminName'].')' }}
+                            ({{$row['DelIp']}})</td>
+                        <td></td>
+                    @else
+                        <td class="w-modify-day"></td>
+                        <td class="w-user"></td>
+                        <td><button type="button" class="btn btn-primary btn-search" onclick="fnCancel({{$row['LphIdx']}});">취소</button></td>
+                    @endif
 
-                        @else
-                            일시중지취소
-                        @endif</td>
                 </tr>
             @empty
                 <tr>
@@ -220,6 +230,23 @@
                 data,
                 function(d){
                     alert($('#startdate').val() +' 부터 ' + $('#enddate').val() + '까지 일시중지 되었습니다.');
+                    location.reload();
+                },
+                function(ret, status){
+                    alert(ret.ret_msg);
+                }, true, 'POST', 'html');
+        }
+
+        function fnCancel(lphidx)
+        {
+            $('#lphidx').val(lphidx);
+            url = "{{ site_url("/member/manage/cancelPause/") }}";
+            data = $('#pauseForm').serialize();
+
+            sendAjax(url,
+                data,
+                function(d){
+                    alert('일시중지가 취소되었습니다.');
                     location.reload();
                 },
                 function(ret, status){

@@ -61,6 +61,8 @@
             <a href="{{ site_url('/home/html/mocktest6_2') }}" target="_blank">수험정보 > 모의고사 > 모의고사접수 page 이동</a>
             <a href="{{ site_url('/home/html/cart5') }}" target="_blank">수험정보 > 모의고사 > 모의고사결제 page 이동</a>
             <a href="{{ site_url('/home/html/mocktest6_3') }}" target="_blank">수험정보 > 모의고사 > 이의제기/정오표 page 이동</a>
+            <br><br>
+            <a href="{{ site_url('/home/html/acad_sub_main') }}" target="_blank">학원안내</a>
         </div>
     </li>
     <li>

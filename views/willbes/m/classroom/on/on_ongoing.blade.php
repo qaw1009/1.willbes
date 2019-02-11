@@ -21,31 +21,7 @@
                 <li><a href="#leclist3" onclick="fnSetMoreTable();">무료강좌 <span>{{count($freeList)}}</span></a><span class="row-line">|</span></li>
                 <li><a href="#leclist4" onclick="fnSetMoreTable();">관리자부여 <span>{{count($adminList['lec'])+count($adminList['pkg'])}}</span></a></li>
             </ul>
-            <form name="searchFrm" id="searchFrm" action="{{front_url('/classroom/on/list/ongoing/')}}" onsubmit="">
-                <div class="willbes-Lec-Selected NG c_both tx-gray">
-                    <select id="course_ccd" name="course_ccd" title="process" class="seleProcess width21p">
-                        <option selected="selected" value="">과정</option>
-                        @foreach($course_arr as $row )
-                            <option value="{{$row['CourseIdx']}}" @if(isset($input_arr['course_ccd']) && $input_arr['course_ccd'] == $row['CourseIdx']) selected="selected" @endif  >{{$row['CourseName']}}</option>
-                        @endforeach
-                    </select>
-                    <select id="subject_ccd" name="subject_ccd" title="lec" class="seleLec width21p ml1p">
-                        <option selected="selected" value="">과목</option>
-                        @foreach($subject_arr as $row )
-                            <option value="{{$row['SubjectIdx']}}" @if(isset($input_arr['subject_ccd']) && $input_arr['subject_ccd'] == $row['SubjectIdx']) selected="selected" @endif >{{$row['SubjectName']}}</option>
-                        @endforeach
-                    </select>
-                    <select id="prof_ccd" name="prof_ccd" title="Prof" class="seleProf width45p ml1p">
-                        <option selected="selected" value="">교수님</option>
-                        @foreach($prof_arr as $row )
-                            <option value="{{$row['wProfIdx']}}" @if(isset($input_arr['prof_ccd']) && $input_arr['prof_ccd'] == $row['wProfIdx']) selected="selected" @endif >{{$row['wProfName']}}</option>
-                        @endforeach
-                    </select>
-                    <div class="resetBtn width10p ml1p">
-                        <a href="{{front_url('/classroom/on/list/ongoing/')}}"><img src="{{ img_url('m/mypage/icon_reset.png') }}"></a>
-                    </div>
-                </div>
-            </form>
+            
             <div class="tabBox lineBox lecListBox">
                 <div id="leclist1" class="tabContent">
                     <div class="willbes-Txt NGR c_both mt20 @if(get_cookie('moreInfo') == 'off') on @endif">
@@ -61,6 +37,35 @@
                         - 수강연장은 수강종료일 전까지만 신청이 가능하며 5일 단위(5일,10일,15일등)로 신청할 수 있습니다.<br/>
                         -->
                     </div>
+
+                    <div class="willbes-Lec-Selected NG c_both tx-gray">
+                        <form name="searchFrm" id="searchFrm" action="{{front_url('/classroom/on/list/ongoing/')}}" onsubmit="">
+                            <div class="willbes-Lec-Selected NG c_both tx-gray">
+                                <select id="course_ccd" name="course_ccd" title="process" class="seleProcess width21p">
+                                    <option selected="selected" value="">과정</option>
+                                    @foreach($course_arr as $row )
+                                        <option value="{{$row['CourseIdx']}}" @if(isset($input_arr['course_ccd']) && $input_arr['course_ccd'] == $row['CourseIdx']) selected="selected" @endif  >{{$row['CourseName']}}</option>
+                                    @endforeach
+                                </select>
+                                <select id="subject_ccd" name="subject_ccd" title="lec" class="seleLec width21p ml1p">
+                                    <option selected="selected" value="">과목</option>
+                                    @foreach($subject_arr as $row )
+                                        <option value="{{$row['SubjectIdx']}}" @if(isset($input_arr['subject_ccd']) && $input_arr['subject_ccd'] == $row['SubjectIdx']) selected="selected" @endif >{{$row['SubjectName']}}</option>
+                                    @endforeach
+                                </select>
+                                <select id="prof_ccd" name="prof_ccd" title="Prof" class="seleProf width45p ml1p">
+                                    <option selected="selected" value="">교수님</option>
+                                    @foreach($prof_arr as $row )
+                                        <option value="{{$row['wProfIdx']}}" @if(isset($input_arr['prof_ccd']) && $input_arr['prof_ccd'] == $row['wProfIdx']) selected="selected" @endif >{{$row['wProfName']}}</option>
+                                    @endforeach
+                                </select>
+                                <div class="resetBtn width10p ml1p">
+                                    <a href="{{front_url('/classroom/on/list/ongoing/')}}"><img src="{{ img_url('m/mypage/icon_reset.png') }}"></a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
                     <table cellspacing="0" cellpadding="0" width="100%" class="lecTable bdt-m-gray">
                         <tbody>
                         @forelse( $lecList as $row )

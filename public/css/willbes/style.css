@@ -1924,9 +1924,11 @@ table.auTable tr td {
     padding: 0 10px;
     vertical-align: baseline;
 }
-.Depth .depth:last-child strong {
+.Depth .depth strong:last-child {
     color: #2784d2;
 }
+
+
 
 /* subContainer : Lnb */
 .Lnb {

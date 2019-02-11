@@ -179,7 +179,7 @@
             @else
                 <table class="table table-bordered modal-table">
                     <tr>
-                        <td class="tx-center">- 등록된 데이터가 없습니다. -</td>
+                        <td class="tx-center">- 그룹을 등록해주세요. -</td>
                     </tr>
                 </table>
             @endif

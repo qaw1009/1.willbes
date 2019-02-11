@@ -937,7 +937,122 @@ class Manage extends \app\controllers\BaseController
 
     public function setPause()
     {
+        $orderidx = $this->_req('orderidx');
+        $prodcode = $this->_req('prodcode');
+        $prodcodesub = $this->_req('prodcodesub');
+        $prodtype = $this->_req('prodtype');
+        $memidx = $this->_req("memidx");
+        $enddate = $this->_req("enddate");
+        $startdate = $this->_req("startdate");
 
+        $today = date("Y-m-d", time());
+
+        if(empty($enddate) === true){
+            return $this->json_error('일시중지 종료일이 잘못된 날짜 입니다.');
+        }
+
+        if(strtotime($enddate) == false){
+            return $this->json_error('일시중지 종료일이 잘못된 날짜 입니다.');
+        }
+
+        $cond_arr = [
+            'EQ' => [
+                'MemIdx' => $memidx, // 사용자
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub
+            ]
+        ];
+
+        if($prodtype === 'S'){
+            $leclist = $this->manageLectureModel->getLecture(false, $cond_arr);
+
+        } else if($prodtype === 'P') {
+            $leclist = $this->manageLectureModel->getPackage($cond_arr);
+
+        } else {
+            return $this->json_error('신청강좌정보를 찾을수 없습니다.');
+        }
+
+        if(count($leclist) == 1){
+            $lec = $leclist[0];
+        } else {
+            return $this->json_error('신청강좌정보를 찾을수 없습니다.');
+        }
+
+        if($lec['IsRebuy'] > 0 || $lec['RebuyCount'] > 0){
+            return $this->json_error('수강연장 강의는 일시중지가 불가능합니다.');
+        }
+
+        // 날짜 계산
+        $PauseDay = intval((strtotime($enddate)-strtotime($startdate))/86400) +1;
+
+        if( $this->manageLectureModel->setPause([
+                'MemIdx' => $memidx,
+                'OrderIdx' => $orderidx,
+                'OrderProdIdx' => $lec['OrderProdIdx'],
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub,
+                'lecstartdate' => $lec['LecStartDate'],
+                'realecexpireday' => $lec['LecExpireDay'] + $PauseDay + $lec['PauseSum'] + $lec['ExtenSum'],
+                'pausestartdate' => $startdate,
+                'pauseenddate' => $enddate,
+                'pauseday' => $PauseDay
+            ]) == true){
+            return $this->json_result(true,'일시중지 성공');
+        } else {
+            return $this->json_error('일시중지중 에러발생');
+        }
+    }
+
+    public function cancelPause()
+    {
+        $orderidx = $this->_req('orderidx');
+        $prodcode = $this->_req('prodcode');
+        $prodcodesub = $this->_req('prodcodesub');
+        $prodtype = $this->_req('prodtype');
+        $memidx = $this->session->userdata('memidx');
+        $lphidx = $this->_req('lphidx');
+
+        $cond_arr = [
+            'EQ' => [
+                'MemIdx' => $memidx,
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub
+            ]
+        ];
+
+        if($prodtype === 'S'){
+            $leclist = $this->manageLectureModel->getLecture(false, $cond_arr);
+
+        } else if($prodtype === 'P') {
+            $leclist = $this->manageLectureModel->getPackage($cond_arr);
+
+        } else {
+            return $this->json_error('신청강좌정보를 찾을수 없습니다.');
+        }
+
+        if(count($leclist) == 1){
+            $lec = $leclist[0];
+        } else {
+            return $this->json_error('신청강좌정보를 찾을수 없습니다.');
+        }
+
+        if($this->manageLectureModel->cancelPause([
+                'MemIdx' => $memidx,
+                'OrderIdx' => $orderidx,
+                'OrderProdIdx' => $lec['OrderProdIdx'],
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub,
+                'lecstartdate' => $lec['LecStartDate'],
+                'realecexpireday' => $lec['RealLecExpireDay'],
+                'LphIdx' => $lphidx
+            ]) == true){
+            return $this->json_result(true, '일시정지가 취소되었습니다.');
+        } else {
+            return $this->json_error('일시정지 취소에 실패했습니다.');
+        }
     }
 
     /**
@@ -1504,6 +1619,10 @@ class Manage extends \app\controllers\BaseController
     }
 
 
+    /**
+     * 강좌 첨부파일 다운로드
+     * @param array $params
+     */
     public function download($params = [])
     {
         // 강좌정보 읽어오기
@@ -1513,13 +1632,11 @@ class Manage extends \app\controllers\BaseController
         $unitidx = $params[3];
 
         // 커리큘럼 읽어오기
-        $curriculum = $this->classroomFModel->getCurriculum([
+        $curriculum = $this->manageLectureModel->getCurriculum([
             'EQ' => [
-                'MemIdx' => $this->session->userdata('mem_idx'),
-                'OrderIdx' => $orderidx,
                 'ProdCode' => $prodcode,
                 'ProdCodeSub' => $prodcodesub,
-                'wLecIdx' => $lec['wLecIdx'],
+                'wLecIdx' => $lecidx,
                 'wUnitIdx' => $unitidx
             ]
         ]);
@@ -1536,18 +1653,6 @@ class Manage extends \app\controllers\BaseController
         if(is_file(public_to_upload_path($filepath)) == false){
             show_alert('파일이 존재하지 않습니다.', 'back');
         }
-
-        // 파일 다운로드 로그남기기
-        $this->classroomFModel->storeDownloadLog(
-            [
-                'MemIdx' => $this->session->userdata('mem_idx'),
-                'OrderIdx' => $orderidx,
-                'ProdCode' => $prodcode,
-                'ProdCodeSub' => $prodcodesub,
-                'wLecIdx' => $lecidx,
-                'wUnitIdx' => $unitidx
-            ]
-        );
 
         // 실제로 파일 다운로드 처리
         public_download($filepath, $filename);

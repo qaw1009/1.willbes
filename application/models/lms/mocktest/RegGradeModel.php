@@ -1105,7 +1105,7 @@ class RegGradeModel extends WB_Model
         $obder_by = " GROUP BY A.MpIdx ORDER BY OrderNum";
 
         $where = " ";
-        echo "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
+        //echo "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
         $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
         $data = $query->result_array();
         $MpIdxSet = array();

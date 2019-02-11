@@ -238,8 +238,7 @@
 
                 uri_param = 'prodcode=' + prodcode + '&memidx=' + memidx;
 
-
-                var _url = '{{ site_url() }}' + 'mocktest/statisticsPrivate/winStatTotal?' + uri_param
+                var _url = '{{ site_url() }}' + 'mocktest/statisticsPrivate/winStatTotal?' + uri_param;
                 win = window.open(_url, 'mockPopup', 'width=980, height=845, scrollbars=yes, resizable=yes');
                 win.focus();
 

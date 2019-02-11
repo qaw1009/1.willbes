@@ -156,22 +156,33 @@ class StatisticsPrivate extends \app\controllers\BaseController
         $dataAdjust = $this->regGradeModel->gradeCall($prodcode, 'adjust');
         $dataDetail = $this->regGradeModel->gradeDetailCall($prodcode);
 
-        $tempnum = 1;
-        $tempMpIdx = 0;
+        $Rank = 1;
+        $minusRank = 1;
+        $tempPoint = 0;
         foreach($dataDetail as $key => $val){
             $MemIdx = $val['MemIdx'];
             $mpidx = $val['MpIdx'];
-            if($tempMpIdx != $mpidx) $tempnum = 1;
+            $OrgPoint = $val['OrgPoint'];
+
+            if ($tempPoint == $OrgPoint) {
+                $rRank = $Rank - $minusRank;
+                $minusRank++;
+            } else {
+                $rRank = $Rank;
+                $minusRank = 1;
+            }
+
             $dataDetail[$MemIdx][$mpidx]['grade'] = $val['OrgPoint'];
             $dataDetail[$MemIdx][$mpidx]['gradeA'] = $val['AdjustPoint'];
             $dataDetail[$MemIdx][$mpidx]['avg'] = $val['ORGSUM'] ? round($val['ORGSUM'] / $val['COUNT'],2) : 0;
             $dataDetail[$MemIdx][$mpidx]['avgA'] = $val['ADSUM'] ? round($val['ADSUM'] / $val['COUNT'],2) : 0;
             $dataDetail[$MemIdx][$mpidx]['max'] = round($val['ORGMAX'],2);
             $dataDetail[$MemIdx][$mpidx]['maxA'] = round($val['ADMAX'],2);
-            $dataDetail[$MemIdx][$mpidx]['orank'] = $tempnum."/".$val['COUNT'];
+            $dataDetail[$MemIdx][$mpidx]['orank'] = $rRank."/".$val['COUNT'];
             $dataDetail[$MemIdx][$mpidx]['arank'] = $val['Rank']."/".$val['COUNT'];
-            $tempMpIdx = $val['MpIdx'];
-            $tempnum++;
+
+            $tempPoint = $val['OrgPoint'];
+            $Rank++;
         }
 
         $orgTotal = 0;
@@ -193,18 +204,35 @@ class StatisticsPrivate extends \app\controllers\BaseController
         $adTotal = 0;
         $tcnt = 0;
         $memArr = array();
+        $Rank = 1;
+        $minusRank = 1;
+        $tempPoint = 0;
         foreach($dataAdjust as $key => $val){
             $MemIdx = $val['MemIdx'];
             $tcnt   = $val['COUNT'];
+            $ADPoint = $val['AD'];
+
+            if ($tempPoint == $ADPoint) {
+                $rRank = $Rank - $minusRank;
+                $minusRank++;
+            } else {
+                $rRank = $Rank;
+                $minusRank = 1;
+            }
+
             $dataAdjust[$MemIdx]['grade'] = round($val['AD'],2);
             $dataAdjust[$MemIdx]['avg'] = round($val['AD'] / $val['KCNT'] , 2);
             $adTotal = $adTotal + $val['AD'];
-            $dataAdjust[$MemIdx]['rank'] = ($key+1).'/'.$val['COUNT'];
-            $dataAdjust[$MemIdx]['rankS'] = ($key+1);
+            $dataAdjust[$MemIdx]['rank'] =  $rRank.'/'.$val['COUNT'];
+            $dataAdjust[$MemIdx]['rankS'] = $rRank;
             $dataAdjust[$MemIdx]['tpct'] = round(100 - ((($key+1) / $val['COUNT']) * 100 - (100 / $val['COUNT'])),2);
             $dataAdjust[$MemIdx]['admax'] = $val['ADMAX'];
             //응시멤버
             $memArr[] = $MemIdx;
+
+            $tempPoint = $val['AD'];
+            $Rank++;
+
         }
         if($adTotal) $dataAdjust['tavg'] = $adTotal ? round($adTotal / $orgtnum, 2) : 0;
         if($adTotal) $dataAdjust['tsum'] = $adTotal ? round($adTotal / $tcnt, 2) : 0;

@@ -1212,6 +1212,7 @@ class RegGradeModel extends WB_Model
      */
     public function gradeCall($ProdCode, $mode)
     {
+        //등수 추출을 위해 두개로 분리
         if ($mode == 'org') {
             $column = "
                 MemIdx, SUM(OrgPoint) AS ORG,
@@ -1262,7 +1263,7 @@ class RegGradeModel extends WB_Model
 
             $where = " WHERE ProdCode = " . $ProdCode;
         }
-
+        //echo "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
         $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
         return $query->result_array();
 

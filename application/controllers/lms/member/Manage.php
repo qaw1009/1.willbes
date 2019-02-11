@@ -4,7 +4,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Manage extends \app\controllers\BaseController
 {
     protected $models = array('member/manageMember','sys/code', 'pay/orderList','service/couponRegist','service/point',
-        'board/board', 'crm/tm/tm', 'member/manageCs', 'member/manageBlackConsumer', 'member/manageLecture');
+        'board/board', 'crm/tm/tm', 'member/manageCs', 'member/manageBlackConsumer', 'member/manageLecture',
+        'crm/send/sms', 'crm/send/message', 'crm/send/mail'
+    );
 
     // 결제루트코드 온라인/학원방문/0원/무료/제휴사/온라인0원
     protected $_payroute_normal_ccd = ['670001','670002','670006'];
@@ -1736,30 +1738,151 @@ class Manage extends \app\controllers\BaseController
         $this->json_result($result, '저장 되었습니다.', $result);
     }
 
-    public function ajaxCRM()
+    /**
+     * CRM 관리 : SMS Tab
+     */
+    public function ajaxSms()
     {
         $memIdx = $this->_req('memIdx');
 
         $this->load->view('member/layer/crm/sms', [
-            'bm_idx' => '48',
             'memIdx' => $memIdx,
-            '_crm_type' => 'sms'
+            '_crm_type' => 'sms',
+            'arr_send_status_ccd_vals' => $this->_send_status_ccd
         ]);
     }
 
-    public function ajaxSms()
+    /**
+     * CRM 관리 : SMS Ajax
+     * @return CI_Output
+     */
+    public function ajaxSmsDataTable()
     {
+        $list = [];
+        $memIdx = $this->_reqP('search_member_idx');
 
+        $arr_condition = [
+            'RAW' => [
+                'a.MemIdx' => (empty($memIdx) === true) ? '\'\'' : $memIdx,
+            ],
+            'EQ' => [
+                'b.IsStatus' => 'Y'
+            ],
+            'ORG' => [
+                'LKB' => [
+                    'b.Content' => $this->_reqP('search_value')
+                ]
+            ]
+        ];
+
+        $count = $this->smsModel->listSmsForMember(true, $arr_condition);
+        if ($count > 0) {
+            $list = $this->smsModel->listSmsForMember(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['SendIdx' => 'desc']);
+        }
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list
+        ]);
     }
 
+    /**
+     * CRM 관리 : Message Tab
+     */
     public function ajaxMessage()
     {
+        $memIdx = $this->_req('memIdx');
 
+        $this->load->view('member/layer/crm/message', [
+            'memIdx' => $memIdx,
+            '_crm_type' => 'message',
+            'arr_send_status_ccd_vals' => $this->_send_status_ccd
+        ]);
     }
 
+    /**
+     * CRM 관리 : Message Ajax
+     * @return CI_Output
+     */
+    public function ajaxMessageDataTable()
+    {
+        $list = [];
+        $memIdx = $this->_req('search_member_idx');
+
+        $arr_condition = [
+            'RAW' => [
+                'a.MemIdx' => (empty($memIdx) === true) ? '\'\'' : $memIdx,
+            ],
+            'EQ' => [
+                'b.IsStatus' => 'Y'
+            ],
+            'ORG' => [
+                'LKB' => [
+                    'b.Content' => $this->_reqP('search_value')
+                ]
+            ]
+        ];
+
+        $count = $this->messageModel->listMessageForMember(true, $arr_condition);
+        if ($count > 0) {
+            $list = $this->messageModel->listMessageForMember(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['SendIdx' => 'desc']);
+        }
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list
+        ]);
+    }
+
+    /**
+     * CRM 관리 : Mail Tab
+     */
     public function ajaxMail()
     {
+        $memIdx = $this->_req('memIdx');
 
+        $this->load->view('member/layer/crm/mail', [
+            'memIdx' => $memIdx,
+            '_crm_type' => 'mail',
+            'arr_send_status_ccd_vals' => $this->_send_status_ccd
+        ]);
+    }
+
+    /**
+     * CRM 관리 : Mail Ajax
+     * @return CI_Output
+     */
+    public function ajaxMailDataTable()
+    {
+        $list = [];
+        $memIdx = $this->_req('search_member_idx');
+
+        $arr_condition = [
+            'RAW' => [
+                'a.MemIdx' => (empty($memIdx) === true) ? '\'\'' : $memIdx,
+            ],
+            'EQ' => [
+                'b.IsStatus' => 'Y'
+            ],
+            'ORG' => [
+                'LKB' => [
+                    'b.Content' => $this->_reqP('search_value')
+                ]
+            ]
+        ];
+
+        $count = $this->mailModel->listMailForMember(true, $arr_condition);
+        if ($count > 0) {
+            $list = $this->mailModel->listMailForMember(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['SendIdx' => 'desc']);
+        }
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list
+        ]);
     }
 
     /**

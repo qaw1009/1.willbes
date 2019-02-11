@@ -1,6 +1,6 @@
 @include('lms.member.layer.crm.sub_tab_partial')
 
-<form class="form-horizontal" id="search_form_sms" name="search_form_sms" method="POST" onsubmit="return false;">
+<form class="form-horizontal" id="search_form_mail" name="search_form_mail" method="POST" onsubmit="return false;">
     {!! csrf_field() !!}
     <input type="hidden" name="search_member_idx" value="{{$memIdx}}" />
     <div class="x_panel mt-5">
@@ -23,15 +23,14 @@
 
 <div class="x_panel mt-10">
     <div class="x_content">
-        <table id="list_ajax_table_sms" class="table table-striped table-bordered">
+        <table id="list_ajax_table_mail" class="table table-striped table-bordered">
             <thead>
             <tr class="bg-odd">
                 <th>NO</th>
                 <th>사이트</th>
                 <th>메세지성격</th>
-                <th>메세지종류</th>
-                <th>내용</th>
-                <th>발신번호</th>
+                <th>광고성유무</th>
+                <th>제목</th>
                 <th>발신인</th>
                 <th>발송일</th>
                 <th>발송상태</th>
@@ -44,8 +43,8 @@
 </div>
 <script type="text/javascript">
     var $datatable;
-    var $search_form = $('#search_form_sms');
-    var $list_table = $('#list_ajax_table_sms');
+    var $search_form = $('#search_form_mail');
+    var $list_table = $('#list_ajax_table_mail');
 
     $(document).ready(function() {
         // 전체포인트현황 목록
@@ -53,7 +52,7 @@
             serverSide: true,
             buttons: [],
             ajax: {
-                'url' : '{{ site_url('/member/manage/ajaxSmsDataTable/') }}',
+                'url' : '{{ site_url('/member/manage/ajaxMailDataTable/') }}',
                 'type' : 'POST',
                 'data' : function(data) {
                     return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
@@ -66,11 +65,10 @@
                     }},
                 {'data' : 'SiteName'},
                 {'data' : 'SendPatternCcdName'},
-                {'data' : 'SendTypeCcdName'},
-                {'data' : 'Content', 'render' : function(data, type, row, meta){
+                {'data' : 'AdvertisePatternCcdName'},
+                {'data' : 'Title', 'render' : function(data, type, row, meta){
                         return '<a href="javascript:void(0);" class="btn-send-detail-read mr-20" data-idx="' + row.SendIdx + '" data-member-idx="' + row.MemIdx + '"><u>' + data + '</u></a>';
                     }},
-                {'data' : 'CsTel'},
                 {'data' : 'wAdminName'},
                 {'data' : 'SendDatm'},
                 {'data' : 'SendStatusCcdName', 'render' : function(data, type, row, meta){
@@ -88,7 +86,7 @@
         // 발송 상세 정보
         $list_table.on('click', '.btn-send-detail-read', function() {
             $('.btn-send-detail-read').setLayer({
-                "url" : "{{ site_url('crm/sms/listSendDetailModal/') }}" + $(this).data('idx') + '/?member_idx=' + $(this).data('member-idx'),
+                "url" : "{{ site_url('crm/mail/listSendDetailModal/') }}" + $(this).data('idx') + '/?member_idx=' + $(this).data('member-idx'),
                 width : "1200"
             });
         });

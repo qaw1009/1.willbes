@@ -83,13 +83,14 @@
                 var $list_modal_table = $('#_list_modal_ajax_table');
                 var send_type = '{{$send_type}}';
                 var send_idx = '{{$send_idx}}';
+                var member_idx = '{{$member_idx}}';
 
                 $(document).ready(function() {
                     // 페이징 번호에 맞게 일부 데이터 조회
                     $datatable_modal = $list_modal_table.DataTable({
                         serverSide: true,
                         ajax: {
-                            "url" : "{{ site_url('crm/mail/listSendDetailModalAjax/') }}" + send_idx,
+                            "url" : "{{ site_url('crm/mail/listSendDetailModalAjax/') }}" + send_idx + "/?member_idx=" + member_idx,
                             'type' : 'POST',
                             'data' : function(data) {
                                 return $.extend(arrToJson($search_form_modal.serializeArray()), { 'start' : data.start, 'length' : data.length});

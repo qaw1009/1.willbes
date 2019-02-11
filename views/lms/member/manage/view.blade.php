@@ -110,7 +110,7 @@
         <li role="presentation"><a role="tab" href="#none" data-toggle="tab" onclick="fnLoad('ajaxCounsel');"><strong>상담/메모관리</strong></a></li>
         <li role="presentation"><a role="tab" href="#none" data-toggle="tab" onclick="fnLoad('ajaxCoupon');"><strong>쿠폰관리</strong></a></li>
         <li role="presentation"><a role="tab" href="#none" data-toggle="tab" onclick="fnLoad('ajaxPointLecture');"><strong>포인트관리</strong></a></li>
-        <li role="presentation"><a role="tab" href="#none" data-toggle="tab" onclick="fnLoad('ajaxCRM');"><strong>CRM관리</strong></a></li>
+        <li role="presentation"><a role="tab" href="#none" data-toggle="tab" onclick="fnLoad('ajaxSms');"><strong>CRM관리</strong></a></li>
     </ul>
     <div id="tab-content"> </div>
     <script type="text/javascript">

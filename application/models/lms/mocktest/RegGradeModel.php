@@ -1097,7 +1097,7 @@ class RegGradeModel extends WB_Model
         $obder_by = " GROUP BY A.MpIdx";
 
         $where = " ";
-        //echo "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
+        echo "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
         $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
         $data = $query->result_array();
         $MpIdxSet = array();
@@ -1302,10 +1302,10 @@ class RegGradeModel extends WB_Model
                 JOIN {$this->_table['mockGrades']} AS MG ON MR.MemIdx = MG.MemIdx AND RP.MpIdx = MG.MpIdx
         ";
 
-        $obder_by = " ORDER BY MockType, OrderNum ";
+        $obder_by = " ORDER BY MockType, OrderNum, MG.MpIdx, AdjustPoint DESC";
 
         $where = " WHERE MR.ProdCode = " . $ProdCode;
-
+        //echo "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
         $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
         return $query->result_array();
 

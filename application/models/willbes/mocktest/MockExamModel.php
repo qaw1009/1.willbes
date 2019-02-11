@@ -992,7 +992,7 @@ class MockExamModel extends WB_Model
                 JOIN {$this->_table['mockGrades']} AS MG ON MR.MemIdx = MG.MemIdx AND RP.MpIdx = MG.MpIdx
         ";
 
-        $obder_by = " ORDER BY MockType, OrderNum ";
+        $obder_by = " ORDER BY MockType, OrderNum, MG.MpIdx, AdjustPoint DESC ";
 
         $where = " WHERE MR.ProdCode = ".$ProdCode;
 

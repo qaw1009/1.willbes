@@ -159,6 +159,7 @@ class StatisticsPrivate extends \app\controllers\BaseController
         $Rank = 1;
         $minusRank = 1;
         $tempPoint = 0;
+        $tempMp = '';
         foreach($dataDetail as $key => $val){
             $MemIdx = $val['MemIdx'];
             $mpidx = $val['MpIdx'];
@@ -172,16 +173,22 @@ class StatisticsPrivate extends \app\controllers\BaseController
                 $minusRank = 1;
             }
 
+            if($tempMp != $mpidx){
+                $Rank = 1;
+                $minusRank = 1;
+            }
+
             $dataDetail[$MemIdx][$mpidx]['grade'] = $val['OrgPoint'];
             $dataDetail[$MemIdx][$mpidx]['gradeA'] = $val['AdjustPoint'];
             $dataDetail[$MemIdx][$mpidx]['avg'] = $val['ORGSUM'] ? round($val['ORGSUM'] / $val['COUNT'],2) : 0;
             $dataDetail[$MemIdx][$mpidx]['avgA'] = $val['ADSUM'] ? round($val['ADSUM'] / $val['COUNT'],2) : 0;
             $dataDetail[$MemIdx][$mpidx]['max'] = round($val['ORGMAX'],2);
             $dataDetail[$MemIdx][$mpidx]['maxA'] = round($val['ADMAX'],2);
-            $dataDetail[$MemIdx][$mpidx]['orank'] = $rRank."/".$val['COUNT'];
-            $dataDetail[$MemIdx][$mpidx]['arank'] = $val['Rank']."/".$val['COUNT'];
+            $dataDetail[$MemIdx][$mpidx]['orank'] = $val['Rank']."/".$val['COUNT'];
+            $dataDetail[$MemIdx][$mpidx]['arank'] = $rRank."/".$val['COUNT'];
 
             $tempPoint = $val['OrgPoint'];
+            $tempMp = $mpidx;
             $Rank++;
         }
 
@@ -207,6 +214,7 @@ class StatisticsPrivate extends \app\controllers\BaseController
         $Rank = 1;
         $minusRank = 1;
         $tempPoint = 0;
+
         foreach($dataAdjust as $key => $val){
             $MemIdx = $val['MemIdx'];
             $tcnt   = $val['COUNT'];

@@ -47,7 +47,7 @@
             <input type="hidden" name="prodcode" value="{{$lec['ProdCode']}}" />
             <input type="hidden" name="prodcodesub" value="{{empty($lec['ProdCodeSub']) == true ? '' : $lec['ProdCodeSub'] }}" />
             <input type="hidden" name="orderprodidx" value="{{$lec['OrderProdIdx']}}" />
-            <input type="hidden" name="prodtype" value="@if($lec['LearnPatternCcd'] == '615001' || $lec['LearnPatternCcd'] == '615002'){{'S'}}@else{{'P'}}@endif" />
+            <input type="hidden" name="prodtype" value="@if($lec['LearnPatternCcd'] == '615003' || $lec['LearnPatternCcd'] == '615004'){{'P'}}@else{{'S'}}@endif" />
             <input type="hidden" name="extentype" value="D" />
             <table class="table table-striped table-bordered">
                 @if( $lec['LearnPatternCcd'] == '615002'
@@ -58,10 +58,13 @@
                         <td>{{$lec['ProdName']}}</td>
                     </tr>
                 @endif
-                <tr>
-                    <th>강좌명</th>
-                    <td>{{$lec['subProdName']}}</td>
-                </tr>
+                @if( $lec['LearnPatternCcd'] == '615001'
+                   || $lec['LearnPatternCcd'] == '615002' )
+                    <tr>
+                        <th>강좌명</th>
+                        <td>{{$lec['subProdName']}}</td>
+                    </tr>
+                @endif
                 <tr>
                     <td colspan="2">
                         <b>[최초수강기간]</b> {{$lec['LecStartDate']}} ~ {{$lec['LecEndDate']}} ({{$lec['LecExpireDay']}}일)  &nbsp; &nbsp; &nbsp;
@@ -78,9 +81,12 @@
                         @else
                             {{ intval(strtotime($lec['RealLecEndDate']) - strtotime(date("Y-m-d", time())))/86400 +1 }}일
                         @endif &nbsp; &nbsp; &nbsp;<br>
-                        <b>[진행상태]</b> {{$lec['wLectureProgressCcdName']}} &nbsp; &nbsp; &nbsp;
-                        <b>[배수]</b> {{$lec['MultipleApply'] == '1' ? '무제한' : $lec['MultipleApply'].'배수' }} &nbsp; &nbsp; &nbsp;
-                        <b>[진도율]</b> {{$lec['StudyRate']}}%<br>
+                        @if($lec['LearnPatternCcd'] == '615003' || $lec['LearnPatternCcd'] == '615004')
+                        @else
+                            <b>[진행상태]</b> {{$lec['wLectureProgressCcdName']}} &nbsp; &nbsp; &nbsp;
+                            <b>[배수]</b> {{$lec['MultipleApply'] == '1' ? '무제한' : $lec['MultipleApply'].'배수' }} &nbsp; &nbsp; &nbsp;
+                            <b>[진도율]</b> {{$lec['StudyRate']}}%<br>
+                        @endif
                     </td>
                 </tr>
                 <tr>

@@ -726,7 +726,7 @@ class Manage extends \app\controllers\BaseController
             $leclist = $this->manageLectureModel->getLecture(false, $cond_arr);
 
         } else if($prodtype === 'P') {
-            $leclist = $this->manageLectureModel->getPackage($cond_arr);
+            $leclist = $this->manageLectureModel->getPackage(false, $cond_arr);
 
         } else {
             show_alert('신청강좌정보를 찾을수 없습니다.', 'close');
@@ -804,19 +804,10 @@ class Manage extends \app\controllers\BaseController
         ];
 
         if($prodtype === 'S'){
-            $leclist = $this->manageLectureModel->getLecture(false,array_merge($cond_arr, [
-                'IN' => [
-                    'LearnPatternCcd' => $this->_LearnPatternCcd_dan, // 단과, 사용자
-                    'PayRouteCcd' => $this->_payroute_normal_ccd // 온, 방
-                ]
-            ]));
+            $leclist = $this->manageLectureModel->getLecture(false, $cond_arr);
 
         } else if($prodtype === 'P') {
-            $leclist = $this->manageLectureModel->getPackage(array_merge($cond_arr, [
-                'IN' => [
-                    'PayRouteCcd' => $this->_payroute_normal_ccd // 온, 방
-                ]
-            ]));
+            $leclist = $this->manageLectureModel->getPackage(false, $cond_arr);
 
         } else {
             return $this->json_error('신청강좌정보를 찾을수 없습니다.');
@@ -886,7 +877,7 @@ class Manage extends \app\controllers\BaseController
             $leclist = $this->manageLectureModel->getLecture(false, $cond_arr);
 
         } else if($prodtype === 'P') {
-            $leclist = $this->manageLectureModel->getPackage($cond_arr);
+            $leclist = $this->manageLectureModel->getPackage(false, $cond_arr);
 
         } else {
             show_alert('신청강좌정보를 찾을수 없습니다.', 'close');
@@ -953,7 +944,7 @@ class Manage extends \app\controllers\BaseController
             $leclist = $this->manageLectureModel->getLecture(false, $cond_arr);
 
         } else if($prodtype === 'P') {
-            $leclist = $this->manageLectureModel->getPackage($cond_arr);
+            $leclist = $this->manageLectureModel->getPackage(false, $cond_arr);
 
         } else {
             return $this->json_error('신청강좌정보를 찾을수 없습니다.');
@@ -1009,7 +1000,7 @@ class Manage extends \app\controllers\BaseController
             $leclist = $this->manageLectureModel->getLecture(false, $cond_arr);
 
         } else if($prodtype === 'P') {
-            $leclist = $this->manageLectureModel->getPackage($cond_arr);
+            $leclist = $this->manageLectureModel->getPackage(false, $cond_arr);
 
         } else {
             show_alert('신청강좌정보를 찾을수 없습니다.', 'close');
@@ -1095,7 +1086,7 @@ class Manage extends \app\controllers\BaseController
             $leclist = $this->manageLectureModel->getLecture(false, $cond_arr);
 
         } else if($prodtype === 'P') {
-            $leclist = $this->manageLectureModel->getPackage($cond_arr);
+            $leclist = $this->manageLectureModel->getPackage(false, $cond_arr);
 
         } else {
             return $this->json_error('신청강좌정보를 찾을수 없습니다.');
@@ -1158,7 +1149,7 @@ class Manage extends \app\controllers\BaseController
             $leclist = $this->manageLectureModel->getLecture(false, $cond_arr);
 
         } else if($prodtype === 'P') {
-            $leclist = $this->manageLectureModel->getPackage($cond_arr);
+            $leclist = $this->manageLectureModel->getPackage(false, $cond_arr);
 
         } else {
             return $this->json_error('신청강좌정보를 찾을수 없습니다.');
@@ -1207,12 +1198,85 @@ class Manage extends \app\controllers\BaseController
             ]
         ]);
 
-        $userpkg = [];
+        logger("단과",null,'debug');
 
-        $pkg = [];
+        $userpkg = $this->manageLectureModel->getPackage(false, [
+            'EQ' => [
+                'MemIdx' => $memIdx,
+                'LearnPatternCcd' => '615002'
+            ],
+            'ORG' => [
+                'LKB' => [
+                    'ProdName' => $search_value,
+                    'subProdName' => $search_value
+                ]
+            ]
+        ]);
+        logger("사용자",null,'debug');
+        foreach($userpkg as $idx => $row){
+            $pkgsublist =  $this->manageLectureModel->getLecture(false, [
+                'EQ' => [
+                    'MemIdx' => $row['MemIdx'],
+                    'OrderIdx' => $row['OrderIdx'],
+                    'ProdCode' => $row['ProdCode']
+                ]
+            ]);
 
-        $pass = [];
+            $userpkg[$idx]['subleclist'] = $pkgsublist;
+        }
+        logger("사용자상세",null,'debug');
 
+        $pkg = $this->manageLectureModel->getPackage(false, [
+            'EQ' => [
+                'MemIdx' => $memIdx,
+                'LearnPatternCcd' => '615003'
+            ],
+            'ORG' => [
+                'LKB' => [
+                    'ProdName' => $search_value,
+                    'subProdName' => $search_value
+                ]
+            ]
+        ]);
+        logger("패키지",null,'debug');
+        foreach($pkg as $idx => $row){
+            $pkgsublist =  $this->manageLectureModel->getLecture(false, [
+                'EQ' => [
+                    'MemIdx' => $row['MemIdx'],
+                    'OrderIdx' => $row['OrderIdx'],
+                    'ProdCode' => $row['ProdCode']
+                ]
+            ]);
+
+            $pkg[$idx]['subleclist'] = $pkgsublist;
+        }
+        logger("패키지상세",null,'debug');
+
+        $pass = $this->manageLectureModel->getPackage(false, [
+            'EQ' => [
+                'MemIdx' => $memIdx,
+                'LearnPatternCcd' => '615004'
+            ],
+            'ORG' => [
+                'LKB' => [
+                    'ProdName' => $search_value,
+                    'subProdName' => $search_value
+                ]
+            ]
+        ]);
+        logger("기간제",null,'debug');
+        foreach($pass as $idx => $row){
+            $pkgsublist =  $this->manageLectureModel->getLecture(false, [
+                'EQ' => [
+                    'MemIdx' => $row['MemIdx'],
+                    'OrderIdx' => $row['OrderIdx'],
+                    'ProdCode' => $row['ProdCode']
+                ]
+            ]);
+
+            $pass[$idx]['subleclist'] = $pkgsublist;
+        }
+        logger("기간제 상세",null,'debug');
         $free = $this->manageLectureModel->getLecture(false, [
             'EQ' => [
                 'MemIdx' => $memIdx,
@@ -1225,15 +1289,10 @@ class Manage extends \app\controllers\BaseController
                 ]
             ]
         ]);;
+        logger("무료",null,'debug');
 
-        $admin = [];
 
-        $offdan = $this->manageLectureModel->getLecture(false, [
-            'EQ' => [
-                'MemIdx' => $memIdx,
-                'LearnPatternCcd' => '615001'
-            ]
-        ], true);
+        $offdan = [];
 
         $offpkg = [];
 
@@ -1245,7 +1304,6 @@ class Manage extends \app\controllers\BaseController
             'pkg' => $pkg,
             'pass' => $pass,
             'free' => $free,
-            'admin' =>$admin,
             'offdan' => $offdan,
             'offpkg' => $offpkg
         ]);

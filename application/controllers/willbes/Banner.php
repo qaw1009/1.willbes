@@ -35,15 +35,17 @@ class Banner extends \app\controllers\BaseController
 
         // 롤링타입코드명
         $rolling_type_name = element($data[0]['DispRollingTypeCcd'], $this->_rolling_type, '');
-            
-        if (APP_DEVICE == 'pc') {
-            if (strpos($rolling_type_name, 'Slider') === false) {
-                return '';
+
+        if (empty($rolling_type_name) === false) {
+            if (APP_DEVICE == 'pc') {
+                if (strpos($rolling_type_name, 'Slider') === false) {
+                    return '';
+                }
+            } else {
+                if (strpos($rolling_type_name, 'Slider') > -1) {
+                    return '';
+                }
             }
-        } else {
-            if (strpos($rolling_type_name, 'Slider') > -1) {
-                return '';
-            }            
         }
 
         // 노출섹션 정보 추출

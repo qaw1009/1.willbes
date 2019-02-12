@@ -164,6 +164,7 @@
             $('#time').html(hour + ":" + min + ":" + secc);
         });
 
+        //
         function goStep2(){
             url = "{{ site_url("/classroom/MockExam/startAjax") }}";
             data = $('#regi_form').serialize();

@@ -371,7 +371,7 @@ class MockExam extends \app\controllers\FrontController
 
     /**
      * 시험시작
-     * @return object|string
+     * @return object|string 
      */
     public function startAjax()
     {

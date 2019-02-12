@@ -173,7 +173,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property ManageCsModel $manageCsModel                                   Member Manage Cs Model Class
  * @property ManageBlackConsumerModel $manageBlackConsumerModel             Member Manage BlackConsumer Model Class
  * @property CsModel $csModel                                               Manage Cs Model Class
- * @property SearchMockTest $searchMockTestModel                                  Search MockTest Model Class
+
 
  ***************** MockTest *********************
  * @property MockCommonModel $mockCommonModel                              MockTest MockCommon Model Class
@@ -185,6 +185,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property RegGoodsModel $regGoodsModel                                        MockTest RegGoods Model Class
  * @property RegGroupModel $regGroupModel                                       MockTest RegGroup Model Class
  * @property StatsExamModel $statsExamModel                                        MockTest StatsExam Model Class
+ * @property SearchMockTestModel $searchMockTestModel                   Search MockTest Model Class
  *
  ***************** FRONT ***********************
  * @property BaseProductFModel $baseProductFModel                            Product Base Model Class

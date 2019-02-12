@@ -2340,10 +2340,13 @@ table.auTable tr td {
 .sliderUp .bx-wrapper {
     background: none;
 }
+.sliderUp div {
+    width: 100% !important;
+}
 
 /* sliderVertical : 위로 슬라이드(교수 리스트 수강후기) vSlider */
 .vSlider .bx-wrapper {
-    background: none;
+    background: noee;
 }
 
 /* subContainer : Content : Lec-Line */
@@ -5411,12 +5414,13 @@ table.finTable .row-line {
 /* subContainer : Prof : willbes-NoticeWrap */
 .willbes-NoticeWrap {
     float: left;
-    width: 100%;
+    width: 100%;    
 }
 
 /* subContainer : Prof : listTable 공통 */
 .willbes-listTable {
     float: left;
+    padding-top: 30px;
 }
 .will-Tit {
     font-size: 16px;
@@ -5575,24 +5579,27 @@ ul li.profList .willbes-Layer-ProfileBox {
 
 /* subContainer : Prof : willbes-Prof-Profile */
 .willbes-Prof-Profile {
-    background: #e5e5e5 url("../../img/willbes/prof/bg_prof.jpg") no-repeat 0 0;
+    background: url("../../img/willbes/prof/bg_prof.jpg") no-repeat 0 0;
     width: 940px;
-    height: 316px;
+    height: 461px;
 }
 .willbes-Prof-Profile .prof-brief-btn {
     position: absolute;
-    top: 0;
-    right: 20px;
+    top: 14px;
+    right: 0;
     float: right;
 }
 .willbes-Prof-Profile .prof-brief-btn li {
     float: left;
-    background: #7d7e85;
+    background: #0d74ae;
     width: 60px;
-    height: 60px;
+    height: 30px;
     text-align: center;
     margin-left: 2px;
-    line-height: 15px;
+    line-height: 30px;
+}
+.willbes-Prof-Profile .prof-brief-btn li:hover {
+    background: #333;
 }
 .willbes-Prof-Profile .prof-brief-btn li a {
     display: block;
@@ -5608,8 +5615,8 @@ ul li.profList .willbes-Layer-ProfileBox {
 }
 .willbes-Prof-Profile .ProfImg {
     float: left;
-    width: 400px;
-    height: 316px;
+    width: 348px;
+    height: 461px;
 }
 .willbes-Prof-Profile .ProfImg img {
     position: absolute;
@@ -5619,10 +5626,18 @@ ul li.profList .willbes-Layer-ProfileBox {
     margin: 0 auto;
 }
 .willbes-Prof-Profile .prof-profile {
-    float: left;
-    width: 540px;
-    height: 316px;
+    float: right;
+    width: 576px;
+    height: 461px;
     letter-spacing: 0;
+}
+.willbes-Prof-Profile .prof-profile .Name {
+    font-size: 28px;
+    top: 0px;
+    left: 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    width: 100%;
 }
 .willbes-Prof-Profile .prof-profile .Obj {
     font-size: 16px;
@@ -5631,27 +5646,45 @@ ul li.profList .willbes-Layer-ProfileBox {
     top: 60px;
     left: 0;
 }
-.willbes-Prof-Profile .prof-profile .Name {
-    font-size: 22px;
-    line-height: 60px;
-    top: 115px;
-    left: 0;
+
+.willbes-Prof-Profile .prof-profile .Name span {
+    vertical-align: baseline;
+    font-size: 19px;
 }
 .willbes-Prof-Profile .prof-profile .Name .Sbj {
     font-size: 28px;
-    margin-right: 15px;
+    margin-right: 10px;
 }
 .willbes-Prof-Profile .prof-profile .Name strong {
-    font-size: 52px;
+    font-size: 28px;
 }
-.willbes-Prof-Profile .prof-profile .Name span {
-    vertical-align: baseline;
+
+.willbes-Prof-Profile .prof-banner01 {
+    position: absolute;
+    top: 130px;
+    left: 0;
+    height: 206px;
 }
+.willbes-Prof-Profile .prof-banner01 li {
+    display: inline;
+    float: left;
+}
+.willbes-Prof-Profile .prof-banner01 li:first-child {
+    background: url("../../img/willbes/prof/viewSample02_bg.jpg") no-repeat 0 0;
+    width: 370px;
+    height: 206px;
+    margin-right: 14px;
+}
+.willbes-Prof-Profile .prof-banner01 li iframe {
+    width: 370px;
+    height: 206px;
+}
+
 .willbes-Prof-Profile .sliderBest {
     position: absolute;
-    top: 196px;
+    top: 360px;
     left: 0;
-    width: 520px;
+    width: 576px;
     height: 120px;
 }
 
@@ -5660,8 +5693,8 @@ ul li.profList .willbes-Layer-ProfileBox {
     display: none;
     background: #fff;
     position: absolute;
-    top: 60px;
-    right: 144px;
+    top: 50px;
+    right: 0;
     z-index: 110;
     width: 510px;
     height: 620px;
@@ -5702,8 +5735,8 @@ ul li.profList .willbes-Layer-ProfileBox {
     display: none;
     background: #fff;
     position: absolute;
-    top: 60px;
-    right: 20px;
+    top: 50px;
+    right: 0px;
     z-index: 110;
     width: 890px;
     height: 620px;
@@ -5741,7 +5774,7 @@ ul li.profList .willbes-Layer-ProfileBox {
     display: none;
     background: #fff;
     position: absolute;
-    top: 24px;
+    top: 54px;
     right: 0;
     z-index: 110;
     width: 890px;
@@ -5888,7 +5921,7 @@ ul li.profList .willbes-Layer-ProfileBox {
 
 /* subContainer : Prof : sliderBest */
 .sliderBest .best-tit {
-    background: #e5e5e5 url("../../img/willbes/prof/icon_best.gif") no-repeat 0 0;
+    background: url("../../img/willbes/prof/icon_best.gif") no-repeat 0 0;
     font-size: 14px;
     line-height: 28px;
     padding: 0 0 2px 28px;
@@ -5901,7 +5934,11 @@ ul li.profList .willbes-Layer-ProfileBox {
     height: 120px !important;
 }
 .sliderBest .sliderControls {
-    width: 520px;
+    width: 576px;
+    height: 120px;
+}
+.sliderBest .sliderControlsHover {
+    width: 576px;
     height: 120px;
 }
 .sliderBest .bx-wrapper .bx-controls {
@@ -5910,30 +5947,67 @@ ul li.profList .willbes-Layer-ProfileBox {
 }
 
 /* sliderControls : 좌우 버튼(교수 상세 페이지) => cSlider  */
-.cSlider .bx-wrapper {
+.cSliderH .bx-wrapper {
     background: none;
 }
-.cSlider .bx-wrapper .bx-prev {
+.cSliderH .bx-wrapper .bx-prev {
     background: url("../../img/willbes/prof/btn_prev_white.png") no-repeat 0 0;
 }
-.cSlider .bx-wrapper .bx-next {
+.cSliderH .bx-wrapper .bx-next {
     background: url("../../img/willbes/prof/btn_next_white.png") no-repeat 0 0;
     left: 20px;
 }
-.cSlider .bx-wrapper .bx-controls {
+.cSliderH .bx-wrapper .bx-controls {
     position: absolute;
     width: 40px;
     height: 20px;
     z-index: 1;
 }
-.cSlider .bx-wrapper .bx-controls-direction {
+.cSliderH .bx-wrapper .bx-controls-direction {
     width: 40px;
     height: 20px; 
 }
-.cSlider .bx-wrapper .bx-controls-direction a {
+.cSliderH .bx-wrapper .bx-controls-direction a {
     width: 20px;
     height: 20px;
 }
+
+/* sliderWillbesBnr : 좌우 버튼(교수 상세 > 교수홈) */
+.sliderWillbesBnr {
+    width: 940x;
+    height: auto;
+}
+.sliderWillbesBnr .bx-wrapper .bx-controls-direction {
+    width: 100%;
+    height: 45px;
+    position: absolute;
+    top: 50%;
+    margin-top: -23px;
+}
+.sliderWillbesBnr .bx-wrapper .bx-controls-direction a {
+    width: 30px;
+    height: 46px;
+}
+.sliderWillbesBnr .bx-wrapper .bx-controls-direction a.disabled {
+    display: block;
+    opacity: 0.3;
+}
+.sliderWillbesBnr .bx-wrapper .bx-prev {
+    background: url("../../img/willbes/prof/btn_arrow01.png") no-repeat 0 0;
+    left: 26px;
+    right: inherit;
+}
+.sliderWillbesBnr .bx-wrapper .bx-next {
+    background: url("../../img/willbes/prof/btn_arrow01.png") no-repeat 100% 0;
+    left: inherit;
+    right: 26px;
+}
+.sliderWillbesBnr .bx-wrapper .bx-default-pager {
+    display:none;
+}
+
+
+
 .sliderBest .lec-profile {
     width: 520px;
     height: 65px;
@@ -5986,6 +6060,9 @@ ul li.profList .willbes-Layer-ProfileBox {
 }
 .tabWrap.tabDepthProf_6 li {
     width: 16.66666666%;
+}
+.tabWrap.tabDepthProf_7 li {
+    width: 14.285714285%;
 }
 .tabWrap.tabDepthProf li a {
     display: block;

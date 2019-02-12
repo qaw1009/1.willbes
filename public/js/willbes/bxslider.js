@@ -67,6 +67,20 @@ $(function() {
     });
 });
 
+// Slider Controls Script (마우스오버)
+$(function() {
+    $('.sliderControlsHover').bxSlider({
+        auto: true,
+        controls: true,
+        pause: 3000,
+        pager: false,
+        autoHover: true,
+        onSliderLoad: function(){
+            $(".cSliderH").css("visibility", "visible").animate({opacity:1}); 
+        }  
+    });
+});
+
 // Slider Controls Script (수동)
 $(function() {
     $('.sliderControlsTM').bxSlider({
@@ -213,6 +227,7 @@ $(function(){
  * @param type
  * @param pause_sec
  */
+
 function slider(ele_id, type, pause_sec) {
     var pasue_msec = pause_sec * 1000;
     // slider option
@@ -233,6 +248,9 @@ function slider(ele_id, type, pause_sec) {
         case 'cSliderTM' :
                 option = { auto: false, controls: true, pause: pasue_msec, pager: false };
             break;
+        case 'cSliderH' :
+            option = { auto: true, controls: true, pause: pasue_msec, pager: false, autoHover: true,};
+        break;
     }
 
     $('#' + ele_id).bxSlider(option);

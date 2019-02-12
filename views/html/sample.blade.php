@@ -16,10 +16,11 @@
     <li>
         <div>
             <a href="{{ site_url('/home/html/main') }}" target="_blank">통합메인</a>
-            <a href="{{ site_url('/home/html/main_cop_online') }}" target="_blank">경찰메인(온라인)</a>
-            <a href="{{ site_url('/home/html/main_cop_acad') }}" target="_blank">경찰메인(학원)</a>
-            <a href="{{ site_url('/home/html/main_gosi_online') }}" target="_blank">공무원메인(온라인)</a>
-            <a href="{{ site_url('/home/html/main_gosi_acad') }}" target="_blank">공무원메인(학원)</a>
+            <a href="{{ site_url('/home/html/main_cop_online') }}" target="_blank">경찰 메인(온라인)</a>
+            <a href="{{ site_url('/home/html/main_cop_acad') }}" target="_blank">경찰 메인(학원)</a>
+            <a href="{{ site_url('/home/html/acad_sub_main') }}" target="_blank">경찰 학원안내</a>
+            <a href="{{ site_url('/home/html/main_gosi_online') }}" target="_blank">공무원 메인(온라인)</a>
+            <a href="{{ site_url('/home/html/main_gosi_acad') }}" target="_blank">공무원 메인(학원)</a>
             <br><br>
             <a href="{{ site_url('/home/html/memjoin') }}" target="_blank">로그인 page 이동</a>
             <a href="{{ site_url('/home/html/memsearch') }}" target="_blank">아이디찾기 page 이동</a>
@@ -62,7 +63,7 @@
             <a href="{{ site_url('/home/html/cart5') }}" target="_blank">수험정보 > 모의고사 > 모의고사결제 page 이동</a>
             <a href="{{ site_url('/home/html/mocktest6_3') }}" target="_blank">수험정보 > 모의고사 > 이의제기/정오표 page 이동</a>
             <br><br>
-            <a href="{{ site_url('/home/html/acad_sub_main') }}" target="_blank">학원안내</a>
+            
         </div>
     </li>
     <li>

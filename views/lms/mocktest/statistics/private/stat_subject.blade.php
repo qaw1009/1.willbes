@@ -132,7 +132,7 @@
                                         <td colspan="2" ><span id="k{{ $key }}">{{ $row['pRank'] }}</span>/{{ $row['CNT'] }}</td>
                                     @endforeach
                                 @endif
-                                <td id="kr"></td>
+                                <td id="kr">{{ $sumRank }}/{{ $row['CNT'] }}</td>
                             </tr>
                             <tr>
                                 <th>백분위</th>
@@ -144,7 +144,7 @@
                                         <td colspan="2"><span id="b{{ $key }}">{{ round($row['tpct'],2) }}</span> %</td>
                                     @endforeach
                                 @endif
-                                <td id="br"></td>
+                                <td id="br">{{ $per }} %</td>
                             </tr>
                             <tr>
                                 <th>최고점</th>
@@ -202,7 +202,7 @@
         var tcnt = '{{ $row['CNT'] }}';
 
         $(document).ready(function() {
-            var pnum = 0; ptotal = 0; knum = 0; ktotal = 0; bnum = 0; btotal = 0; mnum = 0; mtotal = 0; snum = 0; stotal = 0; znum = 0; ztotal = 0;
+            var pnum = 0; ptotal = 0; mnum = 0; mtotal = 0; snum = 0; stotal = 0; znum = 0; ztotal = 0;
 
             var cnt = 0;
             for(var j=0; j < MpIdxSet.length; j++){
@@ -210,10 +210,6 @@
                 ptotal += pnum;
                 mnum = parseFloat($('#m'+MpIdxSet[j]).html());
                 mtotal += mnum;
-                bnum = parseFloat($('#b'+MpIdxSet[j]).html());
-                btotal += bnum;
-                knum = parseFloat($('#k'+MpIdxSet[j]).html());
-                ktotal += knum;
                 snum = parseFloat($('#s'+MpIdxSet[j]).html());
                 stotal += snum;
                 znum = parseFloat($('#z'+MpIdxSet[j]).html());
@@ -226,8 +222,6 @@
             $('#mr').html((mtotal / cnt).toFixed(2));
             $('#sr').html((stotal / cnt).toFixed(2));
             $('#zr').html((ztotal / cnt).toFixed(2));
-            $('#br').html((btotal / cnt) + ' %');
-            $('#kr').html(Math.floor((ktotal / cnt)) + '/' + tcnt);
 
             // 모달창 오픈
             $('.act-move').on('click', function() {

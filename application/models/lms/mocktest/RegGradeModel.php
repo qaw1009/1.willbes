@@ -1109,6 +1109,7 @@ class RegGradeModel extends WB_Model
         $data = $query->result_array();
         $MpIdxSet = array();
         $rdata = array();
+        $tcnt = '';
         foreach ($data as $key => $val) {
             $mpidx = $val['MpIdx'];
             $MockType = $arrMockType[$mpidx];
@@ -1132,12 +1133,54 @@ class RegGradeModel extends WB_Model
             $rdata[$ProdCode][$MockType][$mpidx]['SubjectName'] = $subjectName;
 
             $MpIdxSet[] = $mpidx;
+            $tcnt = $val['CNT'];
         }
 
         $dataTotal['rdata'] = $rdata;
         $dataTotal['MpIdxSet'] = array_unique($MpIdxSet);
-
+        $dataTotal['CNT'] = $tcnt;
         return $dataTotal;
+    }
+
+    /**
+     * 모의고사 개인성적 전체과목합의 등수
+     * @param $prodcode $MemIdx
+     * @return mixed
+     */
+    public function subjectAllAvg($ProdCode, $MemIdx)
+    {
+        $column = "
+                SumRank
+            ";
+
+        $from = "
+            FROM
+            (
+                SELECT A.MemIdx, SUMPOINT, @rownum := @rownum + 1 AS SumRank FROM (
+                    SELECT 
+                                MR.MemIdx,
+                                SUM(AdjustPoint) as SUMPOINT
+                            FROM
+                                    lms_product_mock AS PM
+                                    JOIN lms_mock_register AS MR ON PM.ProdCode = MR.ProdCode AND MR.IsStatus = 'Y' 
+                                    JOIN lms_mock_register_r_paper AS RP ON PM.ProdCode = RP.ProdCode AND MR.MrIdx = RP.MrIdx 
+                                    JOIN lms_product_mock_r_paper AS MP ON RP.MpIdx = MP.MpIdx AND RP.ProdCode = MP.ProdCode AND MP.IsStatus = 'Y'
+                                    JOIN lms_mock_grades AS MG ON MR.MemIdx = MG.MemIdx AND RP.MpIdx = MG.MpIdx
+                    WHERE MR.ProdCode = ".$ProdCode." 
+                    GROUP BY MemIdx
+                    ORDER BY SUM(AdjustPoint) DESC  
+                ) AS A,
+                (SELECT @rownum := 0) as tmp
+            ) AS B 
+            ";
+
+        $obder_by = " ";
+
+        $where = " WHERE MemIdx = ".$MemIdx;
+        //echo "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
+        $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+        $res = $query->row_array();
+        return $res['SumRank'];
     }
 
     /**

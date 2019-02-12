@@ -120,16 +120,24 @@ class StatisticsPrivate extends \app\controllers\BaseController
         $privateExamInfo = $this->regGradeModel->privateExamInfo($prodcode, $memidx);
 
         $listArr = $this->regGradeModel->subjectDetailPrivate($prodcode, $memidx);
+        //전체과목평균
+        $sumRank = $this->regGradeModel->subjectAllAvg($prodcode, $memidx);
+
+
 
         $MpIdxSet = $listArr['MpIdxSet'];
         $list = $listArr['rdata'];
+        $CNT = $listArr['CNT'];
+        $per = round(100 - ((($sumRank) / $CNT) * 100 - (100 / $CNT)), 2);
 
         $this->load->view('mocktest/statistics/private/stat_subject', [
             'privateExamInfo' => $privateExamInfo,
             'list' => $list,
             'MpIdxSet' => $MpIdxSet,
             'prodcode' => $prodcode,
-            'memidx' => $memidx
+            'memidx' => $memidx,
+            'sumRank' => $sumRank,
+            'per' => $per
         ]);
     }
 

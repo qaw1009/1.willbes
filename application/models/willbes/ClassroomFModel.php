@@ -102,8 +102,7 @@ class ClassroomFModel extends WB_Model
         if($isCount == true){
             $query = "SELECT COUNT(*) AS rownums ";
         } else {
-            $query = "SELECT *,
-            TO_DAYS(RealLecEndDate) - TO_DAYS(NOW()) +1 AS remainDays
+            $query = "SELECT straight_join *, TO_DAYS(RealLecEndDate) - TO_DAYS(NOW()) +1 AS remainDays
             ";
         }
 
@@ -130,8 +129,7 @@ class ClassroomFModel extends WB_Model
         if($isCount == true){
             $query = "SELECT COUNT(*) ";
         } else {
-            $query = "SELECT *,
-                TO_DAYS(RealLecEndDate) - TO_DAYS(NOW()) +1 AS remainDays
+            $query = "SELECT straight_join *, TO_DAYS(RealLecEndDate) - TO_DAYS(NOW()) +1 AS remainDays
             ";
         }
 

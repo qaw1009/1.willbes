@@ -25,6 +25,13 @@
                             @endforeach
                         </select>
 
+                        <select class="form-control" id="search_campus_ccd" name="search_campus_ccd">
+                            <option value="">캠퍼스</option>
+                            @foreach($arr_campus as $row)
+                                <option value="{{ $row['CampusCcd'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CampusName'] }}</option>
+                            @endforeach
+                        </select>
+
                         <select class="form-control mr-10" id="search_banner_disp_idx" name="search_banner_disp_idx" title="노출섹션">
                             <option value="">노출섹션</option>
                             @foreach($arr_disp_data as $row)
@@ -112,6 +119,7 @@
 
             // site-code에 매핑되는 select box 자동 변경
             $search_form.find('select[name="search_cate_code"]').chained("#search_site_code");
+            $search_form.find('select[name="search_campus_ccd"]').chained("#search_site_code");
             $search_form.find('select[name="search_banner_disp_idx"]').chained("#search_cate_code");
 
             // 페이징 번호에 맞게 일부 데이터 조회

@@ -34,11 +34,12 @@ class BannerRegistModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
             $column = '
-            A.BIdx, A.SiteCode, A.CateCode, A.BdIdx, A.BannerName, A.DispStartDatm, A.DispEndDatm,
+            A.BIdx, A.SiteCode, A.CateCode, A.CampusCcd, A.BdIdx, A.BannerName, A.DispStartDatm, A.DispEndDatm,
             A.BannerFullPath, A.BannerImgName, A.BannerImgRealName, A.OrderNum,
             A.IsUse, A.RegAdminIdx, A.RegDatm, A.UpdAdminIdx, A.UpdDatm,
             B.SiteName, IFNULL(E.CateName,"전체카테고리") AS CateName, F.DispName,
-            C.wAdminName AS RegAdminName, D.wAdminName AS UpdAdminName
+            C.wAdminName AS RegAdminName, D.wAdminName AS UpdAdminName,
+            fn_ccd_name(A.CampusCcd) AS CampusCcdName
             ';
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
@@ -136,6 +137,7 @@ class BannerRegistModel extends WB_Model
             $data = [
                 'SiteCode' => element('site_code', $input),
                 'CateCode' => $cate_code,
+                'CampusCcd' => element('campus_ccd', $input),
                 'BdIdx' => $banner_disp_idx,
                 'BannerName' => element('banner_name', $input),
                 'DispStartDatm' => $disp_start_datm,

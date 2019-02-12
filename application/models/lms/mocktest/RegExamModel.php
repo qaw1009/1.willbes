@@ -200,9 +200,21 @@ class RegExamModel extends WB_Model
 
             // 파일 업로드
             $uploadSubPath = $this->upload_path_mock . $nowIdx;
+
             $isSave = $this->uploadFileSave($uploadSubPath, $names);
             if($isSave !== true) {
                 throw new Exception('파일 저장에 실패했습니다.');
+            }
+
+            // 데이터 수정
+            $addData = [
+                'FilePath' => PUBLICURL . 'uploads/' . $uploadSubPath . "/"
+            ];
+
+            $this->_conn->set($addData)->where(['MpIdx' => $nowIdx])->update($this->_table['mockExamBase']);
+
+            if (!$this->_conn->affected_rows()) {
+                throw new Exception('수정에 실패했습니다.');
             }
 
             $this->_conn->trans_commit();
@@ -227,6 +239,8 @@ class RegExamModel extends WB_Model
         try {
             $this->_conn->trans_begin();
 
+            $uploadSubPath = $this->upload_path_mock . $this->input->post('idx');
+
             // 기존데이터 첨부파일 이름 추출
             $fileBackup = array();
             $beforeDB = $this->_conn->select('RealQuestionFile, RealExplanFile')
@@ -240,7 +254,7 @@ class RegExamModel extends WB_Model
                 'PapaerName' => $this->input->post('PapaerName', true),
                 'Year' => $this->input->post('Year'),
                 'RotationNo' => $this->input->post('RotationNo'),
-
+                'FilePath' => PUBLICURL . 'uploads/' . $uploadSubPath . "/",
                 'IsUse' => $this->input->post('IsUse'),
                 'UpdDate' => date("Y-m-d H:i:s"),
                 'UpdAdminIdx' => $this->session->userdata('admin_idx'),
@@ -271,7 +285,7 @@ class RegExamModel extends WB_Model
 
             // 파일 업로드 (업로드파일이 있으면)
             if($fileBackup) {
-                $uploadSubPath = $this->upload_path_mock . $this->input->post('idx');
+
                 $isSave = $this->uploadFileSave($uploadSubPath, $names, $fileBackup);
                 if ($isSave !== true) {
                     throw new Exception('파일 저장에 실패했습니다.');
@@ -522,7 +536,7 @@ class RegExamModel extends WB_Model
                             'MalIdx' => $_POST['MalIdx'][$k],
                             'QuestionNO' => $_POST['QuestionNO'][$k],
                             'QuestionOption' => $_POST['QuestionOption'][$k],
-
+                            'FilePath' => PUBLICURL . 'uploads/' . $this->upload_path_mock . $this->input->post('idx') . $this->upload_path_mockQ,
                             'RightAnswer' => $_POST['RightAnswer'][$k],
                             'RightAnswerRate' => 0,
                             'Scoring' => $_POST['Scoring'][$k],
@@ -569,7 +583,7 @@ class RegExamModel extends WB_Model
                             'MalIdx' => $_POST['MalIdx'][$k],
                             'QuestionNO' => $_POST['QuestionNO'][$k],
                             'QuestionOption' => $_POST['QuestionOption'][$k],
-
+                            'FilePath' => PUBLICURL . 'uploads/' . $this->upload_path_mock . $this->input->post('idx') . $this->upload_path_mockQ,
                             'RightAnswer' => $_POST['RightAnswer'][$k],
                             'Scoring' => $_POST['Scoring'][$k],
                             'Difficulty' => $_POST['Difficulty'][$k],

@@ -237,8 +237,6 @@ class MockExam extends \app\controllers\FrontController
         }
 
         //문항이미지경로
-        $img_path = PUBLICURL."uploads/willbes/mocktest/".$s_mpidx."/question/";
-        $total_img_path = PUBLICURL."uploads/willbes/mocktest/".$s_mpidx."/";
 
         $this->load->view('/classroom/mock/exam/winpopup_step2', [
             'productInfo'    => $productInfo,
@@ -250,9 +248,7 @@ class MockExam extends \app\controllers\FrontController
             'sList'          => $sList,
             'pMpIdx'         => $pMpIdx,
             'sMpIdx'         => $sMpIdx,
-            'img_path'       => $img_path,
             's_mpidx'        => $s_mpidx,
-            'total_img_path' => $total_img_path,
             'RemainSec'      => $RemainSec,
             'tMpIdx'         => $tMpIdx,
             'MrIdx'          => $subject_list[0]['MrIdx'],
@@ -371,7 +367,7 @@ class MockExam extends \app\controllers\FrontController
 
     /**
      * 시험시작
-     * @return object|string 
+     * @return object|string
      */
     public function startAjax()
     {

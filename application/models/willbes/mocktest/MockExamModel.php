@@ -318,6 +318,7 @@ class MockExamModel extends WB_Model
             (SELECT SubjectName FROM {$this->_table['subject']} WHERE SubjectIdx = RP.SubjectIdx) AS SubjectName,
             MP.RealQuestionFile AS fileQ,
             MP.RealExplanFile AS fileA,
+            MP.FilePath AS PFilePath,
             MP.MpIdx  
         ";
 
@@ -331,7 +332,6 @@ class MockExamModel extends WB_Model
         $obder_by = " ORDER BY SubjectIdx";
 
         $where = " WHERE MR.MemIdx = ".$this->session->userdata('mem_idx')." AND MR.ProdCode = ".$prodcode. " AND MR.IsStatus = 'Y'";
-        //return 'select ' . $column . $from . $where . $obder_by;
         $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
         return $query->result_array();
 
@@ -347,7 +347,9 @@ class MockExamModel extends WB_Model
         $column = "
             MQ.MqIdx,
             AnswerNum, 
-            QuestionNO, 
+            QuestionNO,
+            MQ.FilePath AS QFilePath,
+            MP.FilePath AS PFilePath,
             MP.RealQuestionFile AS filetotal,
             MQ.RealQuestionFile AS file,
             MT.Answer
@@ -1096,6 +1098,7 @@ class MockExamModel extends WB_Model
             MP.RealQuestionFile AS filetotal,
             MQ.RealQuestionFile AS file,
             MQ.RealExplanFile,
+            MQ.FilePath AS QFilePath,
             MQ.MalIdx,
             AP.IsWrong,
             (SELECT SubjectName FROM lms_product_subject WHERE SubjectIdx = RP.SubjectIdx) AS SubjectName,

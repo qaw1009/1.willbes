@@ -50,7 +50,7 @@
                     @foreach($question_list as $key => $row)
                     <li id="que{{ $key + 1 }}" name="que{{ $key + 1 }}">
                         <a>{{ $key + 1 }}.</a>
-                        <span class="que"><img src="{{ $img_path }}{{ $row['file'] }}"></span>
+                        <span class="que"><img src="{{ $row['QFilePath'] }}{{ $row['file'] }}"></span>
                     </li>
                     @endforeach
                     <!-- 문제이미지 -->
@@ -136,7 +136,7 @@
                         </tbody>
                     </table>
                     <div class="btnAgR btnl c_both NGEB">
-                        <a class="f_left btntxtBlack" href="{{ $total_img_path }}{{ $row['filetotal'] }}" target="_blank">문제 다운로드</a>
+                        <a class="f_left btntxtBlack" href="{{ $row['PFilePath'] }}{{ $row['filetotal'] }}" target="_blank">문제 다운로드</a>
                         <!-- 다음과목 -->
                         @foreach($tMpIdx as $key => $row)
                             @if(count($tMpIdx) == $key + 1)

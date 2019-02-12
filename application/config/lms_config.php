@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 // 업로드 하위 디렉토리
-$config['upload_prefix_dir'] = 'willbes';
+$config['upload_prefix_dir'] = 'lms';
 
 $config['lms'] = array(
     'site_name' => 'LMS',

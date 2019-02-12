@@ -354,15 +354,11 @@ class MockResult extends \app\controllers\FrontController
 
         $answerNote = $this->mockExamModel->answerNoteCall($prodcode, $mpidx, $MalIdxSet);
 
-        //문항이미지경로
-        $img_path = PUBLICURL."uploads/willbes/mocktest/".$mpidx."/question/";
-
         $this->load->view('/classroom/mock/result/wrong_answer_note', [
             'productInfo' => $productInfo,
             'arr_input' => $arr_input,
             'pList' => $pList,
             'prodcode' => $prodcode,
-            'img_path' => $img_path,
             'answerNote' => $answerNote,
             'MalArr' => $MalArr
         ]);

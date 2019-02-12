@@ -116,7 +116,7 @@
                             <input type="file" name="QuestionFile">
                             @if($method == 'PUT' && !empty($data['QuestionFile']))
                                 <div class="file-wrap" style="cursor:pointer">
-                                    <a href="{{ $upImgUrl.$data['RealQuestionFile'] }}" target="_blank" class="blue underline-link">{{ $data['QuestionFile'] }}</a>
+                                    <a href="{{ $data['FilePath'].$data['RealQuestionFile'] }}" target="_blank" class="blue underline-link">{{ $data['QuestionFile'] }}</a>
                                     {{--<span class="act-fileDel" data-file-idx="{{$data['MpIdx']}}" data-file-type="base" data-file-name="QuestionFile"><i class="fa fa-times red"></i></span>--}}
                                 </div>
                             @endif
@@ -128,7 +128,7 @@
                             <input type="file" name="ExplanFile">
                             @if($method == 'PUT' && !empty($data['ExplanFile']))
                                 <div class="file-wrap" style="cursor:pointer">
-                                    <a href="{{ $upImgUrl.$data['RealExplanFile'] }}" target="_blank" class="blue underline-link">{{ $data['ExplanFile'] }}</a>
+                                    <a href="{{ $data['FilePath'].$data['RealExplanFile'] }}" target="_blank" class="blue underline-link">{{ $data['ExplanFile'] }}</a>
                                     {{--<span class="act-fileDel" data-file-idx="{{$data['MpIdx']}}" data-file-type="base" data-file-name="ExplanFile"><i class="fa fa-times red"></i></span>--}}
                                 </div>
                             @endif
@@ -284,7 +284,7 @@
                                     <input type="hidden" name="callRealQuestionFile[]" value="">
                                     @if(!empty($row['QuestionFile']))
                                         <div class="file-wrap" style="cursor:pointer">
-                                            <span class="blue underline-link img-tooltip" data-title="<img src='{{ $upImgUrlQ.$row['RealQuestionFile'] }}'>">{{ $row['QuestionFile'] }}</span>
+                                            <span class="blue underline-link img-tooltip" data-title="<img src='{{ $row['FilePath'].$row['RealQuestionFile'] }}'>">{{ $row['QuestionFile'] }}</span>
                                         </div>
                                     @endif
                                 </td>
@@ -294,7 +294,7 @@
                                     <input type="hidden" name="callRealExplanFile[]" value="">
                                     @if(!empty($row['ExplanFile']))
                                         <div class="file-wrap" style="cursor:pointer">
-                                            <span class="blue underline-link img-tooltip" data-title="<img src='{{ $upImgUrlQ.$row['RealExplanFile'] }}'>">{{ $row['ExplanFile'] }}</span>
+                                            <span class="blue underline-link img-tooltip" data-title="<img src='{{ $row['FilePath'].$row['RealExplanFile'] }}'>">{{ $row['ExplanFile'] }}</span>
                                         </div>
                                     @endif
                                 </td>

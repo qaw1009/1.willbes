@@ -112,7 +112,7 @@
                                 <!-- 해설 -->
                                 <li style="display:@if(element('QUESTIONYN', $arr_input) == 'Q') none; @endif">
                                     <a name="que4" class="no">{{ $key + 1 }}.</a>
-                                    <span class="que"><img src="{{ $img_path }}{{ $row['RealExplanFile'] }}"></span>
+                                    <span class="que"><img src="{{ $row['QFilePath'] }}{{ $row['RealExplanFile'] }}"></span>
                                 </li>
                                 @endif
 
@@ -121,7 +121,7 @@
                         @else
                             <li>
                                 <a name="que4" class="no">{{ $key + 1 }}.</a>
-                                <span class="que"><img src="{{ $img_path }}{{ $row['file'] }}"></span>
+                                <span class="que"><img src="{{ $row['QFilePath'] }}{{ $row['file'] }}"></span>
                                 <div class="btnAgR">
                                     <a href="javascript:noteAdd({{ $row['MqIdx'] }})" class="btnM1 btnlineBlue">노트에 바로추가 +</a>
                                     <a href="#none" class="btnM2 btnGray">메모</a>

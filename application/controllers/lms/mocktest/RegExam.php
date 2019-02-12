@@ -159,7 +159,7 @@ class RegExam extends \app\controllers\BaseController
             $this->json_error('데이터 조회에 실패했습니다.');
             return;
         }
-
+        
         $this->load->view('mocktest/reg/exam/create', [
             'siteCodeDef' => $data['SiteCode'],
             'method' => 'PUT',

@@ -193,8 +193,8 @@
 
                         for(var i=0; i < d.data.length; i++){
                             str += "<tr><td class='Top'>"+d.data[i].SubjectName+"</td>\n" +
-                                       "<td><a class=\"downBtn\" href=\"{{ $total_img_path }}\\"+d.data[i].MpIdx+"\\"+d.data[i].fileQ+"\" target='_blank'>다운로드</a></td>\n" +
-                                       "<td><a class=\"downBtn\" href=\"{{ $total_img_path }}\\"+d.data[i].MpIdx+"\\"+d.data[i].fileA+"\" target='_blank'>다운로드</a></td>\n" +
+                                       "<td><a class=\"downBtn\" href=\""+d.data[i].PFilePath+d.data[i].fileQ+"\" target='_blank'>다운로드</a></td>\n" +
+                                       "<td><a class=\"downBtn\" href=\""+d.data[i].PFilePath+d.data[i].fileA+"\" target='_blank'>다운로드</a></td>\n" +
                                    "</tr>";
                             document.getElementById('EXAMPASS').style.display = "block";
                         }

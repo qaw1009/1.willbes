@@ -246,7 +246,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="prof_curriculum">커리큘럼 <span class="required">*</span>
+                    <label class="control-label col-md-2" for="prof_curriculum">커리큘럼
                     </label>
                     <div class="col-md-9 item">
                         <textarea id="prof_curriculum" name="prof_curriculum" class="form-control" rows="7" title="커리큘럼" placeholder="">{{ $data['ProfCurriculum'] }}</textarea>
@@ -399,10 +399,10 @@
                     alert('카테고리 선택 필드는 필수입니다.');
                     return false;
                 }
-                if (getEditorTextLength($editor_curriculum) < 1) {
+                {{--if (getEditorTextLength($editor_curriculum) < 1) {
                     alert('커리큘럼 필드는 필수입니다.');
                     return false;
-                }
+                }--}}
                 return true;
             }
 

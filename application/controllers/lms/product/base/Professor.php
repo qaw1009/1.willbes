@@ -106,7 +106,7 @@ class Professor extends \app\controllers\BaseController
             ['field' => 'prof_nickname', 'label' => '교수닉네임', 'rules' => 'trim|required'],
             ['field' => 'is_use', 'label' => '노출여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => 'subject_mapping_code[]', 'label' => '카테고리 정보', 'rules' => 'trim|required'],
-            ['field' => 'prof_curriculum', 'label' => '커리큘럼', 'rules' => 'trim|required'],
+            //['field' => 'prof_curriculum', 'label' => '커리큘럼', 'rules' => 'trim|required'],
         ];
 
         if (empty($this->_reqP('idx')) === true) {

@@ -64,6 +64,10 @@
                             <option value="N">온라인</option>
                             <option value="Y">학원</option>
                         </select>
+                        <div class="f_left ml15 mt10">
+                            <input type="checkbox" id="is_book" name="is_book" value="Y" class="" @if(element('is_book', $arr_input) == 'Y') checked="checked" @endif/>
+                            <label for="is_book">교재주문</label>
+                        </div>
                     </div>
                     <div class="LeclistTable orderTable">
                         <table cellspacing="0" cellpadding="0" class="listTable cartTable upper-gray bdt-gray tx-gray">
@@ -119,8 +123,8 @@
 
             initSearch();
 
-            // 과정, 구분 변경시 검색
-            $search_form.on('change', 'select[name="site_group"], select[name="is_pass"]', function () {
+            // 과정, 구분, 교재주문 선택시 검색
+            $search_form.on('change', 'select[name="site_group"], select[name="is_pass"], input[name="is_book"]', function () {
                 $search_form.submit();
             });
         });

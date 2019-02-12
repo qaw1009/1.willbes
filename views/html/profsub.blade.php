@@ -275,21 +275,21 @@
                 <div class="tabBox">
                     <div id="Proftab1" class="tabLink">
                         <div class="willbes-NoticeWrap p_re mb15 c_both">
-                            <div class="willbes-listTable willbes-newLec widthAuto460 mr20">
+                            <div class="willbes-listTable widthAuto460 mr20">
                                 <div class="will-Tit NG">공지사항 <a class="f_right" href="#none"><img src="{{ img_url('prof/icon_add.png') }}" alt="더보기"></a></div>
                                 <ul class="List-Table GM tx-gray">
                                     <li><a href="#none">2018 정채영국어[현대] 문학 종결자 문학 집중강의 (5-6월)</a></li>
                                     <li><a href="#none">2018 [지방직/서울시] 정채영 국어 [문학집중강의] 137작품을...</a></li>
                                 </ul>
                             </div>
-                            <div class="willbes-listTable willbes-newLec widthAuto460">
+                            <div class="willbes-listTable widthAuto460">
                                 <div class="will-Tit NG">학습자료실 <a class="f_right" href="#none"><img src="{{ img_url('prof/icon_add.png') }}" alt="더보기"></a></div>
                                 <ul class="List-Table GM tx-gray">
                                     <li><a href="#none">2018 정채영국어[현대] 문학 종결자 문학 집중강의 (5-6월)</a></li>
                                     <li><a href="#none">2018 [지방직/서울시] 정채영 국어 [문학집중강의] 137작품을...</a></li>
                                 </ul>
                             </div>
-                            <div class="willbes-listTable willbes-newLec widthAuto460 mr20">
+                            <div class="willbes-listTable widthAuto460 mr20">
                                 <div class="will-Tit NG">신규강좌 <img style="vertical-align: top;" src="{{ img_url('prof/icon_new.gif') }}"></div>
                                 <ul class="List-Table GM tx-gray">
                                     <li><a href="#none">2018 정채영국어[현대] 문학 종결자 문학 집중강의 (5-6월)</a></li>
@@ -621,7 +621,6 @@
                                         </div> 
                                     </div>
                                     <!-- willbes-Leclist -->
-
                                 </div>
 
                                 <!-- Write -->
@@ -727,8 +726,8 @@
                         </div>
                         <!-- willbes-NoticeWrap -->
 
-                        <div class="willbes-Bnr mt50">
-                            <img src="{{ img_url('prof/bnrB01.jpg') }}" alt="배너명">
+                        <div class="c_both pt30">
+                            <a href="#none"><img src="{{ img_url('prof/bnrB01.jpg') }}" alt="배너명"></a>
                         </div>
                         <!-- willbes-Bnr -->
 

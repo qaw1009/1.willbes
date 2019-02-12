@@ -5416,11 +5416,15 @@ table.finTable .row-line {
     float: left;
     width: 100%;    
 }
-
+.willbes-NoticeWrap:after {
+    content: '';
+    display: block;
+    clear: both;
+}
 /* subContainer : Prof : listTable 공통 */
 .willbes-listTable {
     float: left;
-    padding-top: 30px;
+    margin-top: 30px;
 }
 .will-Tit {
     font-size: 16px;

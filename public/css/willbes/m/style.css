@@ -1285,6 +1285,7 @@ body.memBody #Footer {
     font-size: 12px;
     text-align: center;
     line-height: 32px;
+    letter-spacing: -1px;
 }
 .lecTable .w-start ul.one {
     width: 25%;

@@ -122,7 +122,7 @@
                             @foreach($freelectype_ccd as $key => $val)
                                 <input type="radio" name="FreeLecTypeCcd" id="FreeLecTypeCcd{{$loop->index}}" value="{{$key}}" class="flat" required="required" @if($loop->index == 1 || $data['FreeLecTypeCcd']==$key) checked="checked"@endif> {{$val}}&nbsp;&nbsp;
                             @endforeach
-                            &nbsp;&nbsp;[비밀번호] <input type="password" name="FreeLecPasswd" id="FreeLecPasswd" value="{{$data['FreeLecPasswd']}}" class="form-control" title="보강동영상 비밀번호" maxlength="8" >
+                            &nbsp;&nbsp;[비밀번호] <input type="text" name="FreeLecPasswd" id="FreeLecPasswd" value="{{$data['FreeLecPasswd']}}" class="form-control" title="보강동영상 비밀번호" maxlength="8" >
                         </div>
                     </div>
                 </div>

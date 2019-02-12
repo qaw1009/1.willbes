@@ -208,7 +208,7 @@
                             <p class="form-control-static">{{ $data['ProdNames'] or '' }}</p>
                         @else
                             <button type="button" id="btn_mock_exam_search" class="btn btn-sm btn-primary">모의고사검색</button>
-                            <span id="selected_mock_exam" class="pl-10"></span>
+                            <span id="selected_mocktest" class="pl-10"></span>
                         @endif
                     </div>
                 </div>
@@ -362,7 +362,7 @@
             });
 
             // 카테고리 검색 or 상품 검색
-            $('#btn_category_search, #btn_product_search').on('click', function(event) {
+            $('#btn_category_search, #btn_product_search, #btn_mock_exam_search').on('click', function(event) {
                 var btn_id = event.target.getAttribute('id');
                 var site_code = $regi_form.find('select[name="site_code"]').val();
                 if (!site_code) {
@@ -390,6 +390,12 @@
                             'width' : 1200
                         });
                     }
+                } else if (btn_id === 'btn_mock_exam_search') {
+                    //모의고사 검색
+                    $('#btn_mock_exam_search').setLayer({
+                        'url' : '{{ site_url('/common/searchMockTest/') }}?site_code=' + site_code + '&return_type=inline&target_id=selected_mocktest&target_field=prod_code',
+                        'width' : 1200
+                    });
                 }
             });
 

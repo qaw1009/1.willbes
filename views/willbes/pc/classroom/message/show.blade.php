@@ -41,8 +41,7 @@
                     </tr>
                     <tr>
                         <td class="w-list w-content" colspan="3">
-                            <textarea rows="5" style="margin: 0px; width: 394px; height: 250px;">{{$data['Content']}}</textarea>
-                            {{--{!! nl2br($data['Content']) !!}--}}
+                            {!! nl2br($data['Content']) !!}
                         </td>
                     </tr>
                     </tbody>

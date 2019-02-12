@@ -5,7 +5,11 @@
     float: left;
     width: 1120px;
     height: 380px;
-    overflow: hidden;
+    overflow: hidden;    
+}
+.GA .VisualBox #MainRollingSlider {
+    visibility:hidden;
+    opacity:0;
 }
 .GA .VisualBox .MaintabList {
     position: absolute;
@@ -43,6 +47,7 @@
 .GA .VisualBox .MaintabList ul li a:hover,
 .GA .VisualBox .MaintabList ul li a.active { background:#FFF; color:#251c1c}
 
+
 .GA .VisualsubBox {
     clear: both;
     float: left;
@@ -58,14 +63,17 @@
 .GA .VisualsubBox ul li:first-child {
     margin-left: 0;
 }
-
+.GA .VisualsubBox .bSlider {
+    visibility: hidden;
+    opacity:0;
+}
 /* slider : 페이징 버튼 => bSlider */
-.GA .bSlider .bx-wrapper .bx-pager.bx-default-pager a {
+.GA .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a {
     background: #b7b7b7;
 }
-.GA .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
-.GA .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
-.GA .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
+.GA .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.GA .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a.active,
+.GA .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a:focus {
     background: #ba560e;
 }
 

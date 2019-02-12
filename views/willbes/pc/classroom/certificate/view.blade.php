@@ -1,11 +1,7 @@
 @extends('willbes.pc.layouts.master_popup')
 
 @section('content')
-    <div class="popupContainer mg-zero">
-        <div id="CERTIFIPASS" class="willbes-Layer-PassBox willbes-Layer-PassBox740 abs" style="display:block !important;">
-            <a class="closeBtn" href="#none" onclick="self.close();">
-                <img src="{{ img_url('sub/close.png') }}">
-            </a>
+        <div id="CERTIFIPASS" class="willbes-Layer-PassBox willbes-Layer-PassBox740 abs mb20" style="display:block !important; top:20px">
             <div class="Layer-Tit tx-dark-black NG">수강확인증 출력</div>
             <div class="PASSZONE-List widthAutoFull">
                 <div class="PASSZONE-Lec-Section">
@@ -123,5 +119,5 @@
             <!-- PASSZONE-List -->
         </div>
         <!-- willbes-Layer-PassBox : 수강시작일 변경 -->
-    </div>
+
 @stop

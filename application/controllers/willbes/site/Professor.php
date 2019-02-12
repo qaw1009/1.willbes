@@ -374,7 +374,7 @@ class Professor extends \app\controllers\FrontController
     {
         $frame_path = '/prof/notice/index';
         $frame_params = 's_cate_code='.$this->_def_cate_code.'&prof_idx='.$prof_idx.'&subject_idx='.element('subject_idx',$arr_input);
-        $frame_params .= '&view_type=frame';
+        $frame_params .= '&view_type=prof';
 
         $data = [
             'frame_path' => $frame_path,
@@ -394,7 +394,7 @@ class Professor extends \app\controllers\FrontController
     {
         $frame_path = '/prof/qna/index';
         $frame_params = 's_cate_code='.$this->_def_cate_code.'&prof_idx='.$prof_idx.'&subject_idx='.element('subject_idx',$arr_input);
-        $frame_params .= '&view_type=frame';
+        $frame_params .= '&view_type=prof';
 
         $data = [
             'frame_path' => $frame_path,
@@ -414,7 +414,7 @@ class Professor extends \app\controllers\FrontController
     {
         $frame_path = '/prof/material/index';
         $frame_params = 's_cate_code='.$this->_def_cate_code.'&prof_idx='.$prof_idx.'&subject_idx='.element('subject_idx',$arr_input);
-        $frame_params .= '&view_type=frame';
+        $frame_params .= '&view_type=prof';
 
         $data = [
             'frame_path' => $frame_path,
@@ -434,7 +434,7 @@ class Professor extends \app\controllers\FrontController
     {
         $frame_path = '/prof/tpass/index';
         $frame_params = 's_cate_code='.$this->_def_cate_code.'&prof_idx='.$prof_idx.'&subject_idx='.element('subject_idx',$arr_input);
-        $frame_params .= '&view_type=frame';
+        $frame_params .= '&view_type=prof';
 
         $data = [
             'frame_path' => $frame_path,

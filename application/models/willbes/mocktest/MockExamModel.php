@@ -497,7 +497,7 @@ class MockExamModel extends WB_Model
         $obder_by = " ORDER BY RemainSec";
 
         $where = " WHERE MrIdx = ".$mridx;
-        //echo "<pre>".'select '. $column . $from . $where . $obder_by."</pre>";
+        echo "<pre>".'select '. $column . $from . $where . $obder_by."</pre>";
         $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
         return $query->row_array()['RemainSec'];
     }

@@ -264,7 +264,8 @@ class Mail extends \app\controllers\BaseController
         $column = 'Title, Content, SendAttachFilePath, SendAttachFileName, SendAttachRealFileName';
         $arr_condition = [
             'EQ' => [
-                'SendIdx' => $send_idx
+                'a.SendIdx' => $send_idx,
+                'b.MemIdx' => $this->_reqG('member_idx')
             ]
         ];
         $data = $this->mailModel->findMail($column, $arr_condition);
@@ -276,6 +277,7 @@ class Mail extends \app\controllers\BaseController
         $this->load->view("crm/mail/list_send_detail_modal", [
             'send_type' => $this->_send_type,
             'send_idx' => $send_idx,
+            'member_idx' => $this->_reqG('member_idx'),
             'data' => $data
         ]);
     }
@@ -294,7 +296,8 @@ class Mail extends \app\controllers\BaseController
             $arr_condition = [
                 'EQ' => [
                     'SEND.SendIdx' => $params[0],
-                    'SEND.MailRcvStatus' => $this->_reqP('search_sms_is_agree')
+                    'SEND.MailRcvStatus' => $this->_reqP('search_sms_is_agree'),
+                    'Mem.MemIdx' => $this->_reqG('member_idx'),
                 ],
                 'ORG' => [
                     'LKB' => [

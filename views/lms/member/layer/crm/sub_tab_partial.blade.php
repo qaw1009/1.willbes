@@ -2,9 +2,9 @@
 <div class="row">
     <div class="col-md-12">
         <ul class="nav nav-tabs bar_tabs mb-0" role="tablist">
-            <li role="presentation" id="tab_counsel"><a href="javascript:crmLoad('ajaxSms');">SMS관리</a></li>
-            <li role="presentation" id="tab_cs"><a href="javascript:crmLoad('ajaxMessage');">쪽지관리</a></li>
-            <li role="presentation" id="tab_tm"><a href="javascript:crmLoad('ajaxMail');">메일관리</a></li>
+            <li role="presentation" id="tab_sms"><a href="javascript:crmLoad('ajaxSms');">SMS관리</a></li>
+            <li role="presentation" id="tab_message"><a href="javascript:crmLoad('ajaxMessage');">쪽지관리</a></li>
+            <li role="presentation" id="tab_mail"><a href="javascript:crmLoad('ajaxMail');">메일관리</a></li>
         </ul>
     </div>
 </div>
@@ -16,7 +16,7 @@
     });
 
     function crmLoad(cmd) {
-        /*$url = '{{site_url('member/manage/')}}' + cmd;
+        $url = '{{site_url('member/manage/')}}' + cmd;
         $data = 'memIdx={{$memIdx}}';
 
         sendAjax($url,
@@ -26,6 +26,6 @@
             },
             function(req, status, err){
                 showError(req, status);
-            }, false, 'GET', 'html');*/
+            }, false, 'GET', 'html');
     }
 </script>

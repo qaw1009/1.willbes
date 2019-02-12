@@ -120,7 +120,8 @@ class Sms extends \app\controllers\BaseController
         $column = 'Content';
         $arr_condition = [
             'EQ' => [
-                'SendIdx' => $send_idx
+                'a.SendIdx' => $send_idx,
+                'b.MemIdx' => $this->_reqG('member_idx')
             ]
         ];
         $data = $this->smsModel->findSms($column, $arr_condition);
@@ -132,6 +133,7 @@ class Sms extends \app\controllers\BaseController
         $this->load->view("crm/sms/list_send_detail_modal", [
             'send_type' => $this->_send_type,
             'send_idx' => $send_idx,
+            'member_idx' => $this->_reqG('member_idx'),
             'data' => $data
         ]);
     }
@@ -150,7 +152,8 @@ class Sms extends \app\controllers\BaseController
             $arr_condition = [
                 'EQ' => [
                     'SEND.SendIdx' => $params[0],
-                    'SEND.SmsRcvStatus' => $this->_reqP('search_sms_is_agree')
+                    'SEND.SmsRcvStatus' => $this->_reqP('search_sms_is_agree'),
+                    'Mem.MemIdx' => $this->_reqG('member_idx'),
                 ],
                 'ORG' => [
                     'LKB' => [

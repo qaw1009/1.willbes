@@ -4,7 +4,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Manage extends \app\controllers\BaseController
 {
     protected $models = array('member/manageMember','sys/code', 'pay/orderList','service/couponRegist','service/point',
-        'board/board', 'crm/tm/tm', 'member/manageCs', 'member/manageBlackConsumer', 'member/manageLecture');
+        'board/board', 'crm/tm/tm', 'member/manageCs', 'member/manageBlackConsumer', 'member/manageLecture',
+        'crm/send/sms', 'crm/send/message', 'crm/send/mail'
+    );
 
     // 결제루트코드 온라인/학원방문/0원/무료/제휴사/온라인0원
     protected $_payroute_normal_ccd = ['670001','670002','670006'];
@@ -14,6 +16,13 @@ class Manage extends \app\controllers\BaseController
     protected $_LearnPatternCcd_dan = ['615001','615002'];
     protected $_LearnPatternCcd_free = ['615005'];
     protected $_LearnPatternCcd_pkg = ['615003'];
+
+    // CRM 발송 상태 [성공,예약,취소]
+    private $_send_status_ccd = [
+        '0' => '639001',
+        '1' => '639002',
+        '2' => '639003'
+    ];
 
     protected $helpers = array();
 
@@ -726,7 +735,7 @@ class Manage extends \app\controllers\BaseController
             $leclist = $this->manageLectureModel->getLecture(false, $cond_arr);
 
         } else if($prodtype === 'P') {
-            $leclist = $this->manageLectureModel->getPackage($cond_arr);
+            $leclist = $this->manageLectureModel->getPackage(false, $cond_arr);
 
         } else {
             show_alert('신청강좌정보를 찾을수 없습니다.', 'close');
@@ -804,19 +813,10 @@ class Manage extends \app\controllers\BaseController
         ];
 
         if($prodtype === 'S'){
-            $leclist = $this->manageLectureModel->getLecture(false,array_merge($cond_arr, [
-                'IN' => [
-                    'LearnPatternCcd' => $this->_LearnPatternCcd_dan, // 단과, 사용자
-                    'PayRouteCcd' => $this->_payroute_normal_ccd // 온, 방
-                ]
-            ]));
+            $leclist = $this->manageLectureModel->getLecture(false, $cond_arr);
 
         } else if($prodtype === 'P') {
-            $leclist = $this->manageLectureModel->getPackage(array_merge($cond_arr, [
-                'IN' => [
-                    'PayRouteCcd' => $this->_payroute_normal_ccd // 온, 방
-                ]
-            ]));
+            $leclist = $this->manageLectureModel->getPackage(false, $cond_arr);
 
         } else {
             return $this->json_error('신청강좌정보를 찾을수 없습니다.');
@@ -886,7 +886,7 @@ class Manage extends \app\controllers\BaseController
             $leclist = $this->manageLectureModel->getLecture(false, $cond_arr);
 
         } else if($prodtype === 'P') {
-            $leclist = $this->manageLectureModel->getPackage($cond_arr);
+            $leclist = $this->manageLectureModel->getPackage(false, $cond_arr);
 
         } else {
             show_alert('신청강좌정보를 찾을수 없습니다.', 'close');
@@ -953,7 +953,7 @@ class Manage extends \app\controllers\BaseController
             $leclist = $this->manageLectureModel->getLecture(false, $cond_arr);
 
         } else if($prodtype === 'P') {
-            $leclist = $this->manageLectureModel->getPackage($cond_arr);
+            $leclist = $this->manageLectureModel->getPackage(false, $cond_arr);
 
         } else {
             return $this->json_error('신청강좌정보를 찾을수 없습니다.');
@@ -1009,7 +1009,7 @@ class Manage extends \app\controllers\BaseController
             $leclist = $this->manageLectureModel->getLecture(false, $cond_arr);
 
         } else if($prodtype === 'P') {
-            $leclist = $this->manageLectureModel->getPackage($cond_arr);
+            $leclist = $this->manageLectureModel->getPackage(false, $cond_arr);
 
         } else {
             show_alert('신청강좌정보를 찾을수 없습니다.', 'close');
@@ -1095,7 +1095,7 @@ class Manage extends \app\controllers\BaseController
             $leclist = $this->manageLectureModel->getLecture(false, $cond_arr);
 
         } else if($prodtype === 'P') {
-            $leclist = $this->manageLectureModel->getPackage($cond_arr);
+            $leclist = $this->manageLectureModel->getPackage(false, $cond_arr);
 
         } else {
             return $this->json_error('신청강좌정보를 찾을수 없습니다.');
@@ -1158,7 +1158,7 @@ class Manage extends \app\controllers\BaseController
             $leclist = $this->manageLectureModel->getLecture(false, $cond_arr);
 
         } else if($prodtype === 'P') {
-            $leclist = $this->manageLectureModel->getPackage($cond_arr);
+            $leclist = $this->manageLectureModel->getPackage(false, $cond_arr);
 
         } else {
             return $this->json_error('신청강좌정보를 찾을수 없습니다.');
@@ -1207,12 +1207,85 @@ class Manage extends \app\controllers\BaseController
             ]
         ]);
 
-        $userpkg = [];
+        logger("단과",null,'debug');
 
-        $pkg = [];
+        $userpkg = $this->manageLectureModel->getPackage(false, [
+            'EQ' => [
+                'MemIdx' => $memIdx,
+                'LearnPatternCcd' => '615002'
+            ],
+            'ORG' => [
+                'LKB' => [
+                    'ProdName' => $search_value,
+                    'subProdName' => $search_value
+                ]
+            ]
+        ]);
+        logger("사용자",null,'debug');
+        foreach($userpkg as $idx => $row){
+            $pkgsublist =  $this->manageLectureModel->getLecture(false, [
+                'EQ' => [
+                    'MemIdx' => $row['MemIdx'],
+                    'OrderIdx' => $row['OrderIdx'],
+                    'ProdCode' => $row['ProdCode']
+                ]
+            ]);
 
-        $pass = [];
+            $userpkg[$idx]['subleclist'] = $pkgsublist;
+        }
+        logger("사용자상세",null,'debug');
 
+        $pkg = $this->manageLectureModel->getPackage(false, [
+            'EQ' => [
+                'MemIdx' => $memIdx,
+                'LearnPatternCcd' => '615003'
+            ],
+            'ORG' => [
+                'LKB' => [
+                    'ProdName' => $search_value,
+                    'subProdName' => $search_value
+                ]
+            ]
+        ]);
+        logger("패키지",null,'debug');
+        foreach($pkg as $idx => $row){
+            $pkgsublist =  $this->manageLectureModel->getLecture(false, [
+                'EQ' => [
+                    'MemIdx' => $row['MemIdx'],
+                    'OrderIdx' => $row['OrderIdx'],
+                    'ProdCode' => $row['ProdCode']
+                ]
+            ]);
+
+            $pkg[$idx]['subleclist'] = $pkgsublist;
+        }
+        logger("패키지상세",null,'debug');
+
+        $pass = $this->manageLectureModel->getPackage(false, [
+            'EQ' => [
+                'MemIdx' => $memIdx,
+                'LearnPatternCcd' => '615004'
+            ],
+            'ORG' => [
+                'LKB' => [
+                    'ProdName' => $search_value,
+                    'subProdName' => $search_value
+                ]
+            ]
+        ]);
+        logger("기간제",null,'debug');
+        foreach($pass as $idx => $row){
+            $pkgsublist =  $this->manageLectureModel->getLecture(false, [
+                'EQ' => [
+                    'MemIdx' => $row['MemIdx'],
+                    'OrderIdx' => $row['OrderIdx'],
+                    'ProdCode' => $row['ProdCode']
+                ]
+            ]);
+
+            $pass[$idx]['subleclist'] = $pkgsublist;
+        }
+        logger("기간제 상세",null,'debug');
         $free = $this->manageLectureModel->getLecture(false, [
             'EQ' => [
                 'MemIdx' => $memIdx,
@@ -1225,15 +1298,10 @@ class Manage extends \app\controllers\BaseController
                 ]
             ]
         ]);;
+        logger("무료",null,'debug');
 
-        $admin = [];
 
-        $offdan = $this->manageLectureModel->getLecture(false, [
-            'EQ' => [
-                'MemIdx' => $memIdx,
-                'LearnPatternCcd' => '615001'
-            ]
-        ], true);
+        $offdan = [];
 
         $offpkg = [];
 
@@ -1245,7 +1313,6 @@ class Manage extends \app\controllers\BaseController
             'pkg' => $pkg,
             'pass' => $pass,
             'free' => $free,
-            'admin' =>$admin,
             'offdan' => $offdan,
             'offpkg' => $offpkg
         ]);
@@ -1678,30 +1745,151 @@ class Manage extends \app\controllers\BaseController
         $this->json_result($result, '저장 되었습니다.', $result);
     }
 
-    public function ajaxCRM()
+    /**
+     * CRM 관리 : SMS Tab
+     */
+    public function ajaxSms()
     {
         $memIdx = $this->_req('memIdx');
 
         $this->load->view('member/layer/crm/sms', [
-            'bm_idx' => '48',
             'memIdx' => $memIdx,
-            '_crm_type' => 'sms'
+            '_crm_type' => 'sms',
+            'arr_send_status_ccd_vals' => $this->_send_status_ccd
         ]);
     }
 
-    public function ajaxSms()
+    /**
+     * CRM 관리 : SMS Ajax
+     * @return CI_Output
+     */
+    public function ajaxSmsDataTable()
     {
+        $list = [];
+        $memIdx = $this->_reqP('search_member_idx');
 
+        $arr_condition = [
+            'RAW' => [
+                'a.MemIdx' => (empty($memIdx) === true) ? '\'\'' : $memIdx,
+            ],
+            'EQ' => [
+                'b.IsStatus' => 'Y'
+            ],
+            'ORG' => [
+                'LKB' => [
+                    'b.Content' => $this->_reqP('search_value')
+                ]
+            ]
+        ];
+
+        $count = $this->smsModel->listSmsForMember(true, $arr_condition);
+        if ($count > 0) {
+            $list = $this->smsModel->listSmsForMember(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['SendIdx' => 'desc']);
+        }
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list
+        ]);
     }
 
+    /**
+     * CRM 관리 : Message Tab
+     */
     public function ajaxMessage()
     {
+        $memIdx = $this->_req('memIdx');
 
+        $this->load->view('member/layer/crm/message', [
+            'memIdx' => $memIdx,
+            '_crm_type' => 'message',
+            'arr_send_status_ccd_vals' => $this->_send_status_ccd
+        ]);
     }
 
+    /**
+     * CRM 관리 : Message Ajax
+     * @return CI_Output
+     */
+    public function ajaxMessageDataTable()
+    {
+        $list = [];
+        $memIdx = $this->_req('search_member_idx');
+
+        $arr_condition = [
+            'RAW' => [
+                'a.MemIdx' => (empty($memIdx) === true) ? '\'\'' : $memIdx,
+            ],
+            'EQ' => [
+                'b.IsStatus' => 'Y'
+            ],
+            'ORG' => [
+                'LKB' => [
+                    'b.Content' => $this->_reqP('search_value')
+                ]
+            ]
+        ];
+
+        $count = $this->messageModel->listMessageForMember(true, $arr_condition);
+        if ($count > 0) {
+            $list = $this->messageModel->listMessageForMember(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['SendIdx' => 'desc']);
+        }
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list
+        ]);
+    }
+
+    /**
+     * CRM 관리 : Mail Tab
+     */
     public function ajaxMail()
     {
+        $memIdx = $this->_req('memIdx');
 
+        $this->load->view('member/layer/crm/mail', [
+            'memIdx' => $memIdx,
+            '_crm_type' => 'mail',
+            'arr_send_status_ccd_vals' => $this->_send_status_ccd
+        ]);
+    }
+
+    /**
+     * CRM 관리 : Mail Ajax
+     * @return CI_Output
+     */
+    public function ajaxMailDataTable()
+    {
+        $list = [];
+        $memIdx = $this->_req('search_member_idx');
+
+        $arr_condition = [
+            'RAW' => [
+                'a.MemIdx' => (empty($memIdx) === true) ? '\'\'' : $memIdx,
+            ],
+            'EQ' => [
+                'b.IsStatus' => 'Y'
+            ],
+            'ORG' => [
+                'LKB' => [
+                    'b.Content' => $this->_reqP('search_value')
+                ]
+            ]
+        ];
+
+        $count = $this->mailModel->listMailForMember(true, $arr_condition);
+        if ($count > 0) {
+            $list = $this->mailModel->listMailForMember(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['SendIdx' => 'desc']);
+        }
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list
+        ]);
     }
 
     /**

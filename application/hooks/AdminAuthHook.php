@@ -27,10 +27,9 @@ class AdminAuthHook
         '/lcms/auth/regist/update',
         '/lcms/logs/viewer/',
         '/sys/adminSettings/',
-        '/service/coupon/issue/listAjax',
         '/pay/order/listAjax',
+        '/service/coupon/issue/listAjax',
         '/service/point/allStatus/listAjax',
-        '/sample/'
     ];
 
     public function __construct()
@@ -89,7 +88,8 @@ class AdminAuthHook
             }
 
             if ($currents === false) {
-                show_error('메뉴 권한이 없습니다.', _HTTP_NO_PERMISSION, '메뉴 권한 없음');
+                //show_error('메뉴 권한이 없습니다.', _HTTP_NO_PERMISSION, '메뉴 권한 없음');
+                show_alert('메뉴 권한이 없습니다.', 'back');
             }
 
             // 3. 관리자별 환경설정 정보 조회

@@ -41,17 +41,20 @@
         ● 강좌정보
         <table class="table table-striped table-bordered">
             @if( $lec['LearnPatternCcd'] == '615002'
-            || $lec['LearnPatternCcd'] == '615003'
-            || $lec['LearnPatternCcd'] == '615004' )
+                || $lec['LearnPatternCcd'] == '615003'
+                || $lec['LearnPatternCcd'] == '615004' )
                 <tr>
                     <th>패키지명</th>
                     <td>{{$lec['ProdName']}}</td>
                 </tr>
             @endif
-            <tr>
-                <th>강좌명</th>
-                <td>{{$lec['subProdName']}}</td>
-            </tr>
+            @if( $lec['LearnPatternCcd'] == '615001'
+               || $lec['LearnPatternCcd'] == '615002' )
+                <tr>
+                    <th>강좌명</th>
+                    <td>{{$lec['subProdName']}}</td>
+                </tr>
+            @endif
             <tr>
                 <td colspan="2">
                     <b>[수강기간]</b> {{str_replace('-', '.', $lec['LecStartDate'])}}~{{str_replace('-', '.', $lec['RealLecEndDate'])}} ({{$lec['RealLecExpireDay']}}일) &nbsp; &nbsp; &nbsp;
@@ -67,9 +70,12 @@
                     @else
                         {{ intval(strtotime($lec['RealLecEndDate']) - strtotime(date("Y-m-d", time())))/86400 +1 }}일
                     @endif<br>
-                    <b>[진행상태]</b> {{$lec['wLectureProgressCcdName']}} &nbsp; &nbsp; &nbsp;
-                    <b>[배수]</b> {{$lec['MultipleApply'] == '1' ? '무제한' : $lec['MultipleApply'].'배수' }} &nbsp; &nbsp; &nbsp;
-                    <b>[진도율]</b> {{$lec['StudyRate']}}%<br>
+                    @if($lec['LearnPatternCcd'] == '615003' || $lec['LearnPatternCcd'] == '615004')
+                    @else
+                        <b>[진행상태]</b> {{$lec['wLectureProgressCcdName']}} &nbsp; &nbsp; &nbsp;
+                        <b>[배수]</b> {{$lec['MultipleApply'] == '1' ? '무제한' : $lec['MultipleApply'].'배수' }} &nbsp; &nbsp; &nbsp;
+                        <b>[진도율]</b> {{$lec['StudyRate']}}%<br>
+                    @endif
                 </td>
             </tr>
             <tr>
@@ -83,7 +89,7 @@
                         <input type="hidden" name="prodcode" value="{{$lec['ProdCode']}}" />
                         <input type="hidden" name="prodcodesub" value="{{empty($lec['ProdCodeSub']) == true ? '' : $lec['ProdCodeSub'] }}" />
                         <input type="hidden" name="orderprodidx" value="{{$lec['OrderProdIdx']}}" />
-                        <input type="hidden" name="prodtype" value="@if($lec['LearnPatternCcd'] == '615001' || $lec['LearnPatternCcd'] == '615002'){{'S'}}@else{{'P'}}@endif" />
+                        <input type="hidden" name="prodtype" value="@if($lec['LearnPatternCcd'] == '615003' || $lec['LearnPatternCcd'] == '615004'){{'P'}}@else{{'S'}}@endif" />
                         <div class="col-md-11 form-inline">
                             <div class="input-group mr-10">
                                 <div class="input-group-addon no-border no-bgcolor"></div>

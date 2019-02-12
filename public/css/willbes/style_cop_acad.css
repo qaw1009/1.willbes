@@ -373,3 +373,62 @@
     text-align: center;
     border: 1px solid #0c5dc0;
 }
+
+/*sub 메인*/
+.PA .subSection01 {
+    clear: both;
+    width: 940px;
+    height: 304px;
+    overflow: hidden;
+}
+
+.PA .subSection02 {
+    clear: both;
+    width: 940px !important;
+    height: 105px;
+    overflow: hidden;
+}
+.PA .subSection02 ul li {
+    float: left;
+    width: 468px !important;
+    margin-left: 4px;
+}
+.PA .subSection02 ul li:first-child {
+    margin-left: 0;
+}
+
+/* sub Main Container : Notice : noticeTabs */
+.PA .noticeTabs.acad {
+    width: 100%;
+    margin-top: 50px;
+}
+
+#notice3 .add {
+    float: right;
+    width: 40%;
+}
+#notice3 .add ul {
+    border-top:1px solid #959595;
+    border-bottom:1px solid #959595;
+
+}
+#notice3 .add ul li span {
+    display: block;
+    width: 80px;
+    height: 39px;
+    line-height: 39px;
+    text-align: center;
+    background: #f9f9f9;
+    float: left;
+    margin-right:5px;
+}
+#notice3 .add ul li {
+    border-bottom:1px solid #efefef !important;
+    margin-bottom:1px;
+    height: 40px;
+    line-height: 40px;
+    letter-spacing: normal;
+}
+#notice3 .add ul li:last-child {
+    border:0 !important;
+}

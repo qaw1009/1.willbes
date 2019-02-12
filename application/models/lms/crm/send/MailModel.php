@@ -210,7 +210,8 @@ class MailModel extends WB_Model
      */
     public function findMail($column, $arr_condition){
         $from = "
-            FROM $this->_table
+            FROM $this->_table AS a
+            LEFT JOIN $this->_table_r_send_receive AS b ON a.SendIdx = b.SendIdx
         ";
 
         $where = $this->_conn->makeWhere($arr_condition);
@@ -252,6 +253,43 @@ class MailModel extends WB_Model
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
 
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    public function listMailForMember($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    {
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $column = '
+                b.SendIdx, b.SendGroupTypeCcd, b.SiteCode, b.SendPatternCcd, b.SendTypeCcd, b.SendOptionCcd, b.SendStatusCcd, b.AdvertisePatternCcd,
+                b.CsTel, b.SendMail, b.SendAttachFilePath, b.SendAttachFileName, b.SendAttachRealFileName, b.Title, b.Content, b.AdvertiseAgreeContent,
+                b.SendDatm, b.IsUse, b.IsStatus, b.RegDatm, b.RegAdminIdx, b.RegIp, b.UpdDatm, b.UpdAdminIdx,
+                a.EmailSendIdx, a.MemIdx, a.Receive_MailEnc, a.Receive_Name, a.MailRcvStatus,
+                fn_ccd_name(b.SendStatusCcd) AS SendStatusCcdName,
+                fn_ccd_name(b.SendPatternCcd) AS SendPatternCcdName,
+                fn_ccd_name(b.SendTypeCcd) AS SendTypeCcdName,
+                fn_ccd_name(b.AdvertisePatternCcd) AS AdvertisePatternCcdName,
+                LS.SiteName, ADMIN.wAdminName
+            ';
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $from = "
+            FROM {$this->_table_r_send_receive} as a
+            INNER JOIN {$this->_table} AS b ON a.SendIdx = b.SendIdx
+            INNER JOIN {$this->_table_member} AS c ON a.MemIdx = c.MemIdx
+            LEFT OUTER JOIN {$this->_table_sys_site} as LS ON b.SiteCode = LS.SiteCode
+            LEFT OUTER JOIN {$this->_table_sys_admin} as ADMIN ON b.RegAdminIdx = ADMIN.wAdminIdx AND ADMIN.wIsStatus='Y'
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 

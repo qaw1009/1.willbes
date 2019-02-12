@@ -35,7 +35,7 @@ class ManageLectureModel extends WB_Model
         if($is_count == true){
             $query = "SELECT COUNT(*) AS rownums ";
         } else {
-            $query = "SELECT *, TO_DAYS(RealLecEndDate) - TO_DAYS(NOW()) +1 AS remainDays
+            $query = "SELECT straight_join *, TO_DAYS(RealLecEndDate) - TO_DAYS(NOW()) +1 AS remainDays
             ";
         }
 
@@ -59,13 +59,12 @@ class ManageLectureModel extends WB_Model
      * @param bool $isCount
      * @return array
      */
-    public function getPackage($cond = [], $order = [], $isCount = false)
+    public function getPackage($isCount, $cond)
     {
         if($isCount == true){
             $query = "SELECT COUNT(*) ";
         } else {
-            $query = "SELECT *,
-                TO_DAYS(RealLecEndDate) - TO_DAYS(NOW()) +1 AS remainDays
+            $query = "SELECT straight_join *, TO_DAYS(RealLecEndDate) - TO_DAYS(NOW()) +1 AS remainDays
             ";
         }
 
@@ -73,7 +72,7 @@ class ManageLectureModel extends WB_Model
 
         $where = $this->_conn->makeWhere($cond);
         $query .= $where->getMakeWhere(false);
-        $query .= $this->_conn->makeOrderBy($order)->getMakeOrderBy();
+        $query .= " ORDER BY OrderIdx DESC ";
         $result = $this->_conn->query($query);
 
         return empty($result) === true ? [] : $result->result_array();

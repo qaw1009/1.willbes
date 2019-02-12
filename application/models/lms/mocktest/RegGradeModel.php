@@ -810,6 +810,7 @@ class RegGradeModel extends WB_Model
         $obder_by = " GROUP BY MpIdx ORDER BY MockType, OrderNum";
 
         $where = " WHERE PM.`ProdCode` = '" . $ProdCode . "' AND MP.IsStatus = 'Y' ";
+        //echo "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
         $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
 
         $resMp = $query->result_array();
@@ -833,7 +834,7 @@ class RegGradeModel extends WB_Model
                 JOIN {$this->_table['sysCode']} AS CD ON TakeMockPart = Ccd AND CD.IsStatus='Y' AND CD.IsUse='Y'
                 ";
 
-        $obder_by = " GROUP BY TakeMockPart";
+        $obder_by = " GROUP BY TakeMockPart ORDER BY OrderNum";
 
         $where = " ";
         $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
@@ -894,12 +895,15 @@ class RegGradeModel extends WB_Model
                             OrgPoint,
                             AdjustPoint,
                             StandardDeviation,
-			                MR.MrIdx
+			                MR.MrIdx,
+			                MR.IsStatus,
+			                OrderNum
                         FROM
                             {$this->_table['mockExamBase']} AS MP
                             JOIN {$this->_table['mockGrades']} AS MG ON MG.MpIdx = MP.MpIdx AND MP.IsUse = 'Y' AND ProdCode = '" . $ProdCode . "'
                             JOIN {$this->_table['mockRegister']} AS MR ON MR.MrIdx = MG.MrIdx AND MG.ProdCode = MR.ProdCode AND MR.IsStatus = 'Y'  
                             JOIN {$this->_table['mockRegisterR']} AS RP ON MG.ProdCode = RP.ProdCode AND MR.MrIdx = RP.MrIdx 
+                            JOIN {$this->_table['mockProductExam']} AS MM ON MP.MpIdx = MM.MpIdx AND MR.ProdCode = MM.ProdCode AND MP.IsStatus = 'Y' 
                         WHERE
                         MP.MpIdx IN (
                                 $MpIdxIn
@@ -911,10 +915,10 @@ class RegGradeModel extends WB_Model
                     ) AS A 
                 ";
 
-            $obder_by = " GROUP BY A.MpIdx";
+            $obder_by = " GROUP BY A.MpIdx ORDER BY OrderNum";
 
             $where = " ";
-
+            //echo "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
             $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
             $data = $query->result_array();
             foreach ($data as $key => $val) {
@@ -1078,12 +1082,15 @@ class RegGradeModel extends WB_Model
                         OrgPoint,
                         AdjustPoint,
                         StandardDeviation,
-                        MR.MrIdx
+                        MR.MrIdx,
+			            MR.IsStatus,
+			            OrderNum
                     FROM
                         {$this->_table['mockExamBase']} AS MP
                         JOIN {$this->_table['mockGrades']} AS MG ON MG.MpIdx = MP.MpIdx AND MP.IsUse = 'Y' AND ProdCode = '" . $ProdCode . "'
                         JOIN {$this->_table['mockRegister']} AS MR ON MR.MrIdx = MG.MrIdx AND MG.ProdCode = MR.ProdCode AND MR.IsStatus = 'Y'  
                         JOIN {$this->_table['mockRegisterR']} AS RP ON MG.ProdCode = RP.ProdCode AND MR.MrIdx = RP.MrIdx 
+                        JOIN {$this->_table['mockProductExam']} AS MM ON MP.MpIdx = MM.MpIdx AND MR.ProdCode = MM.ProdCode AND MP.IsStatus = 'Y' 
                     WHERE
                     MP.MpIdx IN (
                             $MpIdxIn
@@ -1094,10 +1101,10 @@ class RegGradeModel extends WB_Model
                 ) AS A 
             ";
 
-        $obder_by = " GROUP BY A.MpIdx";
+        $obder_by = " GROUP BY A.MpIdx ORDER BY OrderNum";
 
         $where = " ";
-        echo "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
+        //echo "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
         $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
         $data = $query->result_array();
         $MpIdxSet = array();
@@ -1212,7 +1219,6 @@ class RegGradeModel extends WB_Model
      */
     public function gradeCall($ProdCode, $mode)
     {
-        //등수 추출을 위해 두개로 분리
         if ($mode == 'org') {
             $column = "
                 MemIdx, SUM(OrgPoint) AS ORG,
@@ -1263,7 +1269,6 @@ class RegGradeModel extends WB_Model
 
             $where = " WHERE ProdCode = " . $ProdCode;
         }
-        //echo "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
         $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
         return $query->result_array();
 
@@ -1302,7 +1307,7 @@ class RegGradeModel extends WB_Model
                 JOIN {$this->_table['mockGrades']} AS MG ON MR.MemIdx = MG.MemIdx AND RP.MpIdx = MG.MpIdx
         ";
 
-        $obder_by = " ORDER BY MockType, OrderNum, MG.MpIdx, AdjustPoint DESC";
+        $obder_by = " ORDER BY MockType, OrderNum, AdjustPoint DESC  ";
 
         $where = " WHERE MR.ProdCode = " . $ProdCode;
         //echo "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";

@@ -7,10 +7,7 @@
     height: 380px;
     overflow: hidden;    
 }
-.GA .VisualBox #MainRollingSlider {
-    visibility:hidden;
-    opacity:0;
-}
+
 .GA .VisualBox .MaintabList {
     position: absolute;
     bottom: 34px;
@@ -40,6 +37,10 @@
 }
 .GA .VisualBox .MaintabList ul li a {
     display: block;
+    width: 100%;
+    height: 100%;
+}
+.GA .VisualBox .MaintabSlider li img {
     width: 100%;
     height: 100%;
 }

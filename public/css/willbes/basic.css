@@ -166,7 +166,8 @@ html {
 	color: inherit;
   }
   button {
-	overflow: visible;
+  overflow: visible;
+  border:0;
   }
   button,
   select {

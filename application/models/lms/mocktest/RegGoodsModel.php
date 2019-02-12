@@ -35,6 +35,8 @@ class RegGoodsModel extends WB_Model
         'mockRegisterR' => 'lms_mock_register_r_paper',
         'mockAnswerPaper' => 'lms_mock_answerpaper',
         'mockLog' => 'lms_mock_log',
+        'order_product' => 'lms_order_product',
+        'order' => 'lms_order'
     ];
 
 
@@ -217,23 +219,55 @@ class RegGoodsModel extends WB_Model
         if($conditionAdd) $condition = array_merge_recursive($condition, $conditionAdd);
 
         $offset_limit = (is_numeric($limit) && is_numeric($offset)) ? "LIMIT $offset, $limit" : "";
-
-
         $select = "
             SELECT MP.*, A.wAdminName, PD.ProdName, PD.SaleStartDatm, PD.SaleEndDatm, PD.IsUse, PD.IsCoupon, PS.SalePrice, PS.RealSalePrice,          
             C1.CateName, C1.IsUse AS IsUseCate
             ,SC1.CcdName As AcceptStatusCcd_Name,
-            (SELECT COUNT(MemIdx) FROM {$this->_table['mockRegister']} WHERE IsStatus = 'Y' AND IsTake = 'Y' AND ProdCode = MP.ProdCode AND TakeForm = (SELECT Ccd FROM {$this->_table['sysCode']} Where CcdName = 'online')) AS OnlineCnt,
-	        (SELECT COUNT(MemIdx) FROM {$this->_table['mockRegister']} WHERE IsStatus = 'Y' AND IsTake = 'Y' AND ProdCode = MP.ProdCode AND TakeForm = (SELECT Ccd FROM {$this->_table['sysCode']} Where CcdName = 'off(학원)')) AS OfflineCnt,
-	        (SELECT COUNT(MemIdx) FROM {$this->_table['mockRegister']} WHERE IsStatus = 'Y' AND ProdCode = MP.ProdCode AND TakeForm = (SELECT Ccd FROM {$this->_table['sysCode']} Where CcdName = 'online')) AS OnlineRegCnt,
-	        (SELECT COUNT(MemIdx) FROM {$this->_table['mockRegister']} WHERE IsStatus = 'Y' AND ProdCode = MP.ProdCode AND TakeForm = (SELECT Ccd FROM {$this->_table['sysCode']} Where CcdName = 'off(학원)')) AS OfflineRegCnt
+            (
+            	SELECT COUNT(mr1.MemIdx) 
+            	FROM 
+            		{$this->_table['mockRegister']} mr1
+            		join {$this->_table['order_product']} op1 on mr1.OrderProdIdx = op1.OrderProdIdx
+            		join {$this->_table['order']} o1 on op1.OrderIdx = o1.OrderIdx
+            		join {$this->_table['sysCode']} sc1 on mr1.TakeForm = sc1.Ccd
+            	WHERE mr1.IsStatus = 'Y' AND mr1.IsTake = 'Y' AND mr1.ProdCode = MP.ProdCode AND mr1.TakeForm = '690001' and op1.PayStatusCcd='676001'
+            ) AS OnlineCnt,
+	        (
+	        	SELECT COUNT(mr2.MemIdx) 
+	        	FROM 
+	        		{$this->_table['mockRegister']} mr2
+            		join {$this->_table['order_product']} op2 on mr2.OrderProdIdx = op2.OrderProdIdx
+            		join {$this->_table['order']} o2 on op2.OrderIdx = o2.OrderIdx 
+            		join {$this->_table['sysCode']} sc2 on mr2.TakeForm = sc2.Ccd
+            	WHERE mr2.IsStatus = 'Y' AND mr2.IsTake = 'Y' AND mr2.ProdCode = MP.ProdCode AND mr2.TakeForm = '690002' and op2.PayStatusCcd='676001'
+			) AS OfflineCnt,
+			(
+            	SELECT COUNT(mr3.MemIdx) 
+            	FROM 
+            		{$this->_table['mockRegister']} mr3
+            		join {$this->_table['order_product']} op3 on mr3.OrderProdIdx = op3.OrderProdIdx
+            		join {$this->_table['order']} o3 on op3.OrderIdx = o3.OrderIdx
+            		join {$this->_table['sysCode']} sc3 on mr3.TakeForm = sc3.Ccd
+            	WHERE mr3.IsStatus = 'Y' AND mr3.ProdCode = MP.ProdCode AND mr3.TakeForm = '690001' and op3.PayStatusCcd='676001'
+            ) AS OnlineRegCnt,
+	        (
+	        	SELECT COUNT(mr4.MemIdx) 
+	        	FROM 
+	        		{$this->_table['mockRegister']} mr4
+            		join {$this->_table['order_product']} op4 on mr4.OrderProdIdx = op4.OrderProdIdx
+            		join {$this->_table['order']} o4 on op4.OrderIdx = o4.OrderIdx 
+            		join {$this->_table['sysCode']} sc4 on mr4.TakeForm = sc4.Ccd
+            	WHERE mr4.IsStatus = 'Y' AND mr4.ProdCode = MP.ProdCode AND mr4.TakeForm = '690002' and op4.PayStatusCcd='676001'
+			) AS OfflineRegCnt
+			
         ";
+
         $from = "
             FROM {$this->_table['mockProduct']} AS MP
             JOIN {$this->_table['Product']} AS PD ON MP.ProdCode = PD.ProdCode 
             JOIN {$this->_table['ProductCate']} AS PC ON MP.ProdCode = PC.ProdCode AND PC.IsStatus = 'Y'
             JOIN {$this->_table['category']} AS C1 ON PC.CateCode = C1.CateCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y'
-            JOIN {$this->_table['ProductSale']} AS PS ON MP.ProdCode = PS.ProdCode AND PS.IsStatus = 'Y'
+            JOIN {$this->_table['ProductSale']} AS PS ON MP.ProdCode = PS.ProdCode AND PS.IsStatus = 'Y' and PS.SaleTypeCcd='613001'
             LEFT JOIN {$this->_table['admin']} AS A ON MP.RegAdminIdx = A.wAdminIdx
             LEFT OUTER JOIN {$this->_table['sysCode']} AS SC1 ON MP.AcceptStatusCcd = SC1.Ccd
         ";
@@ -244,6 +278,7 @@ class RegGoodsModel extends WB_Model
 
         $data = $this->_conn->query($select . $from . $where . $order . $offset_limit)->result_array();
         $count = $this->_conn->query($selectCount . $from . $where)->row()->cnt;
+
 
 
         // 직렬이름 추출

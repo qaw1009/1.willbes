@@ -774,7 +774,7 @@
 
                                                 <div class="willbes-Lec-Profdata tx-dark-black">
                                                     <ul>
-                                                        <li class="ProfImg"><img src="{{ img_url('sample/prof1.png') }}"> </li>
+                                                        <li class="ProfImg"><img src="{{ img_url('prof/viewSample03.png') }}" alt="교수명"> </li>
                                                         <li class="ProfDetail">
                                                             <div class="Obj">
                                                                 공무원 국어종결자<br/>정채영 국어
@@ -1635,7 +1635,7 @@
                         <div class="willbes-Lec NG c_both">
                             <div class="willbes-Lec-Profdata tx-dark-black">
                                 <ul>
-                                    <li class="ProfImg"><img src="{{ img_url('sample/prof2.png') }}"></li>
+                                    <li class="ProfImg"><img src="{{ img_url('prof/viewSample03.png') }}" alt="교수명"></li>
                                     <li class="ProfDetail">
                                         <div class="Obj">
                                             국어강의의 뉴 패러다임!<br/>듣기만 해도 암기되는 강의

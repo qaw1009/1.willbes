@@ -1,5 +1,27 @@
 <div>
-    <div>
-        <img src="{{ img_url('cop/banner/onTopBnar_190123C_01.gif') }}" alt="배너명">
+    <div class="topBanner">
+        <a id="show_topBanner" href="javascript:showOrHidefigure(0);"><img src="{{ img_url('cop/banner/onTopBnar_190123C_01.gif') }}" alt="배너명"></a>
+    </div>
+
+    <div id="topBannerWarp" style="display:none">
+        <div class="myToggle">
+            <div id="frame">
+                <div id="bannerList">
+                    <a href="http://willbescop.net/event/movie/event.html?event_cd=On_190123_c" target="_blank"><img src="{{ img_url('cop/banner/onTopBnar_190123C_02.png') }}" alt="신광은 경찰팀 적중" /></a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+<script type='text/javascript'>
+    function showOrHidefigure(id_dummy) {
+        var div = document.getElementById('topBannerWarp');
+        var button = document.getElementById('show_topBanner');
+        if (div.style.display == "block") {
+            div.style.display = "none";
+        } else {
+            div.style.display = "block";
+        }
+    }
+</script>

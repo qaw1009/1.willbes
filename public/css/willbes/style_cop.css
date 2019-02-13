@@ -1,5 +1,16 @@
 /*********************************************     Main Container : Cop     *********************************************/
 /* Main Container : Cop */
+
+/* top bar banner */
+.topBannerOne { background:#e7e7e7; width:100%; text-align:center} 	
+	.topBanner {display:block; background:#e7e7e7; width:100%; text-align:center}
+	.topBanner p {width:100%; max-width:1120px; margin:0 auto}
+	.topBanner p img {width:100%}
+	
+	#topBannerWarp { position:absolute; top:70px; width:100%; min-width:1210px; background:url("../../img/willbes/cop/banner/onTopBnar_190123C_02_bg.jpg") no-repeat center top; z-index:102}
+		.myToggle {width:1120px; height:732px ;margin:0 auto}
+
+
 .cop .tx-color {
     color: #1087ef;
 }
@@ -23,7 +34,7 @@
 /* Main Container : QuickMenu : Cop */
 .MainQuickMenu {
     position: fixed;
-    top: 60px;
+    top: 80px;
     right: 20px;
     width: 100px;
     height: auto;

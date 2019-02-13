@@ -24,6 +24,10 @@ function fnPlayer($OrderIdx, $ProdCode, $subProdCode, $lecIdx, $unitIdx, $quilit
     popupOpen(app_url('/Player/?o='+$OrderIdx+'&p='+$ProdCode+'&sp='+$subProdCode+'&l='+$lecIdx+'&u='+$unitIdx+'&q='+$quility, 'www'), 'Player', '1000', '600', null, null, 'no', 'no');
 }
 
+function fnPlayerBookmark($OrderIdx, $ProdCode, $subProdCode, $lecIdx, $unitIdx, $quility, $t){
+    popupOpen(app_url('/Player/?o='+$OrderIdx+'&p='+$ProdCode+'&sp='+$subProdCode+'&l='+$lecIdx+'&u='+$unitIdx+'&q='+$quility+'&t='+$t, 'www'), 'Player', '1000', '600', null, null, 'no', 'no');
+}
+
 /**
  * 모바일웹 모바일 플레이어
  */

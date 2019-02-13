@@ -73,7 +73,8 @@ class PlayerFModel extends WB_Model
         $cond = [
             'EQ' => [
                 'MemIdx' => $this->session->userdata('mem_idx'),
-                'prodCode' => element('sp', $input),
+                'ProdCode' => element('p', $input),
+                'ProdCodeSub' => element('sp', $input),
                 'wLecIdx' =>  element('l', $input),
                 'wUnitIdx' =>  element('u', $input)
             ]
@@ -93,6 +94,7 @@ class PlayerFModel extends WB_Model
         $input = [
             'MemIdx' => $this->session->userdata('mem_idx'),
             'ProdCode' => element('p', $input),
+            'ProdCodeSub' => element('sp', $input),
             'wLecIdx' => element('l', $input),
             'wUnitIdx' => element('u', $input),
             'Time' => element('bmtime', $input),

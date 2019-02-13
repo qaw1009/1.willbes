@@ -20,7 +20,7 @@
                 <li><a href="{{front_app_url('/member/sleep/', 'www')}}">휴면회원 해제</a></li>
             </ul>
             <ul class="tabWrap tabLoginDepth2 tabs-Certi">
-                <li id="tab1"><a href="#pwd_certi1"><div>휴대폰 인증</div></a></li>
+                <li id="tab1"><a href="#pwd_certi1" class="on"><div>휴대폰 인증</div></a></li>
                 <li id="tab2"><a href="#pwd_certi2"><div>E-mail 인증</div></a></li>
                 <li id="tab3"><a href="#pwd_certi3"><div>아이핀 인증</div></a></li>
             </ul>

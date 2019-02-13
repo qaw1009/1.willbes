@@ -71,7 +71,7 @@
                     최초 인증된 ID는 '통합 ID'로 사용됩니다.
                 </div>
                 <ul class="tabWrap tabs-Certi">
-                    <li id="tab1"><a href="#convert1"><div>휴대폰 인증</div></a></li>
+                    <li id="tab1"><a href="#convert1" class="on"><div>휴대폰 인증</div></a></li>
                     <li id="tab2"><a href="#convert2"><div>E-mail 인증</div></a></li>
                     <li id="tab3"><a href="#convert3"><div>아이핀 인증</div></a></li>
                 </ul>

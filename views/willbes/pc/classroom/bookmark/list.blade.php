@@ -67,9 +67,9 @@
                 <div class="DetailWrap c_both">
                     <ul class="tabWrap tabDepthPass">
                         <li><a href="#Mypagetab1" class="on">단강좌 ({{count($lecList)}})</a></li>
+                        <li><a href="#Mypagetab4">무한패스 ({{count($passList)}})</a></li>
                         <li><a href="#Mypagetab2">패키지강좌 ({{count($pkgList)}})</a></li>
                         <li><a href="#Mypagetab3">무료강좌 ({{count($freeList)}})</a></li>
-                        <li><a href="#Mypagetab4">기간제패키지 ({{count($passList)}})</a></li>
                     </ul>
                     <div class="tabBox">
                         <div id="Mypagetab1" class="tabLink">

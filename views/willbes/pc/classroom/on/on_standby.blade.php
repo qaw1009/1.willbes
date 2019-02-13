@@ -135,7 +135,7 @@
                                                     <dt>잔여기간 : <span class="tx-blue">{{$row['remainDays']}}일</span>({{str_replace('-', '.', $row['LecStartDate'])}}~{{str_replace('-', '.', $row['RealLecEndDate'])}})</dt>
                                                     <dt><span class="row-line">|</span></dt>
                                                     <dt>수강시작일 : <span class="tx-black">{{$row['LecStartDate']}}</span></dt>
-                                                    <dt class="MoreBtn"><a href="javascript:;" onclick="fnOpenSub('{{$row['OrderIdx']}}-{{$row['ProdCode']}}');">강좌 열기 ▼</a></dt>
+                                                    <dt class="MoreBtn"><a href="javascript:;">강좌 열기 ▼</a></dt>
                                                 </dl>
                                             </td>
                                             <td class="w-answer">
@@ -149,7 +149,7 @@
                                         </tr>
                                         </tbody>
                                     </table>
-                                    <table cellspacing="0" cellpadding="0" class="packInfoTable lecTable" id="sub-{{$row['OrderIdx']}}-{{$row['ProdCode']}}">
+                                    <table cellspacing="0" cellpadding="0" class="packInfoTable lecTable">
                                         <colgroup>
                                             <col style="width: 120px;">
                                             <col style="width: 820px;">

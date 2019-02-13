@@ -118,8 +118,9 @@
                             </div>
                         </div>
                         <div id="Mypagetab2" class="tabLink">
-                            <div class="willbes-Lec-Table willbes-Package-Table pt20 NG d_block">
-                                @forelse( $pkgList as $row )
+
+                            @forelse( $pkgList as $row )
+                                <div class="willbes-Lec-Table willbes-Package-Table pt20 NG d_block">
                                     <table cellspacing="0" cellpadding="0" class="packTable lecTable bdt-dark-gray">
                                         <colgroup>
                                             <col style="width: 820px;">
@@ -135,7 +136,7 @@
                                                     <dt>수강기간 : {{str_replace('-', '.', $row['LecStartDate'])}}~{{str_replace('-', '.', $row['RealLecEndDate'])}}</dt>
                                                     <dt><span class="row-line">|</span></dt>
                                                     <dt>최종학습일 : <span class="tx-black">{{ $row['lastStudyDate'] == '' ? '학습이력없음' : $row['lastStudyDate'] }}</span></dt>
-                                                    <dt class="MoreBtn"><a href="javascript:;" onclick="fnOpenSub('{{$row['OrderIdx']}}-{{$row['ProdCode']}}');">강좌 열기 ▼</a></dt>
+                                                    <dt class="MoreBtn"><a href="javascript:;">강좌 열기 ▼</a></dt>
                                                 </dl>
                                             </td>
                                             <td class="w-answer">
@@ -143,13 +144,13 @@
                                                     <span class="bBox whiteBox NSK">재수강불가</span>
                                                 @else
                                                     <span class="bBox whiteBox NSK">재수강불가</span>
-                                                    <!-- <a href="javascript:;" onclick="fnRetake('','{{$row['OrderIdx']}}','{{$row['ProdCode']}}','');"><span class="bBox blueBox NSK">재수강신청</span></a> -->
+                                                <!-- <a href="javascript:;" onclick="fnRetake('','{{$row['OrderIdx']}}','{{$row['ProdCode']}}','');"><span class="bBox blueBox NSK">재수강신청</span></a> -->
                                                 @endif
                                             </td>
                                         </tr>
                                         </tbody>
                                     </table>
-                                    <table cellspacing="0" cellpadding="0" class="packInfoTable lecTable" id="sub-{{$row['OrderIdx']}}-{{$row['ProdCode']}}">
+                                    <table cellspacing="0" cellpadding="0" class="packInfoTable lecTable">
                                         <colgroup>
                                             <col style="width: 120px;">
                                             <col style="width: 700px;">
@@ -187,7 +188,9 @@
                                         @endforeach
                                         </tbody>
                                     </table>
-                                @empty
+                                </div>
+                            @empty
+                                <div class="willbes-Lec-Table willbes-Package-Table pt20 NG d_block">
                                     <table cellspacing="0" cellpadding="0" class="packTable lecTable bdt-dark-gray">
                                         <colgroup>
                                             <col style="width: 820px;">
@@ -199,8 +202,8 @@
                                         </tr>
                                         </tbody>
                                     </table>
-                                @endforelse
-                            </div>
+                                </div>
+                            @endforelse
                         </div>
                     </div>
                 </div>
@@ -210,8 +213,8 @@
         {!! banner('내강의실_우측날개', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
     </div>
     <form name="retakeForm" id="retakeForm" method="POST" action="">
-    {!! csrf_field() !!}
-    {!! method_field('POST') !!}
+        {!! csrf_field() !!}
+        {!! method_field('POST') !!}
         <input type="hidden" name="sale_pattern" value="retake" />
         <input type="hidden" name="target_order_idx" id="retake_orderidx" value="" />
         <input type="hidden" name="target_prod_code" id="retake_prodcode" value="" />

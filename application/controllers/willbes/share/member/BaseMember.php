@@ -97,7 +97,13 @@ class BaseMember extends \app\controllers\FrontController
             $this->session->set_tempdata('sms_name', $name, 180);
             $this->session->set_tempdata('sms_id', $id, 180);
 
-            return $this->json_result(true,"인증번호를 발송하였습니다. {$code}",
+            $this->load->library('sendsms');
+
+            if($this->sendsms->send(date("Y/m/d H:i:s"), $phone, '윌비스 본인확인 번호입니다. ['.$code.']를 입력해주십시요.', '1544-5006') === false){
+                return $this->json_error('메세지 발송에 실패했습니다.\n다시한번 시도해 주십시요.');
+            }
+
+            return $this->json_result(true,"인증번호를 발송하였습니다.",
                 null, [
                     'limit_date' => $limit_date
                 ]);

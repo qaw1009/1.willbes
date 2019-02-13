@@ -32,6 +32,7 @@ class Player extends \app\controllers\FrontController
         $prodcodesub = $this->_req('sp');
         $unitidx = $this->_req('u');
         $quility = $this->_req('q');
+        $time = $this->_req('t');
 
         $today = date("Y-m-d", time());
         $ispause = 'N';
@@ -248,6 +249,8 @@ class Player extends \app\controllers\FrontController
 
         $isintro = false;
 
+        $startposition = (empty($time) == false) ? $time : $data['LastPosition'];
+
         return $this->load->view('/player/normal', [
             'data' => [
                 'orderidx' => $orderidx,
@@ -259,7 +262,7 @@ class Player extends \app\controllers\FrontController
                 'quility' => $quility,
                 'isIntro' => $isintro,
                 'ratio' => $ratio,
-                'startPosition' => $data['LastPosition'],
+                'startPosition' => $startposition,
                 'pretitle' => $data['wUnitNum'].'회 '.$data['wUnitLectureNum'].'강',
                 'title' => $data['wUnitName'],
                 'url' => $url,
@@ -617,7 +620,7 @@ class Player extends \app\controllers\FrontController
 
         if(empty($data) == false) {
             foreach ($data AS $idx => $row) {
-                $data[$idx]['ConvertTime'] = gmdate('H:i:s', $row['Time']);;
+                $data[$idx]['ConvertTime'] = gmdate('H:i:s', $row['Time']);
             }
         }
 

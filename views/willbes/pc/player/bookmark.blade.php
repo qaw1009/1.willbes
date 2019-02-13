@@ -20,7 +20,8 @@
                             <ul>
                                 <li>
                                     <input type="hidden" id="o" name="o" value="{{$input['o']}}" />
-                                    <input type="hidden" id="p" name="p" value="{{$input['sp']}}" />
+                                    <input type="hidden" id="p" name="p" value="{{$input['p']}}" />
+                                    <input type="hidden" id="sp" name="sp" value="{{$input['sp']}}" />
                                     <input type="hidden" id="l" name="l" value="{{$input['l']}}" />
                                     <input type="hidden" id="u" name="u" value="{{$input['u']}}"  />
                                     <input type="hidden" id="bmtime" name="bmtime" value="" />

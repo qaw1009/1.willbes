@@ -7,8 +7,8 @@
     <link href="/public/css/willbes/basic.css?ver={{time()}}" rel="stylesheet">
     <link href="/public/css/willbes/style.css?ver={{time()}}" rel="stylesheet">
 </head>
-<body>
-<div class=".page willbes-Layer-PassBox willbes-Layer-PassBox740 abs mb20" style="display:block !important; top:20px">
+<body style="overflow-x:hidden;">
+<div class="willbes-Layer-PassBox willbes-Layer-PassBox740 abs mb20" style="display:block !important; position:relative; top:20px; left:20px;">
     <div class="Layer-Tit tx-dark-black NG">수강확인증 출력</div>
     <div class="PASSZONE-List widthAutoFull">
         <div class="PASSZONE-Lec-Section">

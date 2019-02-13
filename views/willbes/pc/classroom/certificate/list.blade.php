@@ -298,7 +298,7 @@
         function fnView(o,p,ps,t)
         {
             popupOpen('{{front_url('/classroom/certificate/view')}}?o='+o+'&p='+p+'&ps='+ps+'&t='+t,'Certificate'
-                ,800,600,null,null,'yes','yes');
+                ,800,700,null,null,'yes','yes');
         }
 
         function fnOpenSub(id)

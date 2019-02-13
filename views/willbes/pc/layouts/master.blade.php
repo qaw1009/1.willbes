@@ -4,6 +4,9 @@
     <!-- Gnb -->
     @include('willbes.pc.layouts.gnb')
 
+    <!-- cop online top banner-->
+    @include('willbes.pc.layouts.cop_topBnr')
+
     <!-- topnav -->
     @include('willbes.pc.layouts.topnav')
     

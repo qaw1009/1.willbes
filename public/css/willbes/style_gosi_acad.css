@@ -64,10 +64,7 @@
 .GA .VisualsubBox ul li:first-child {
     margin-left: 0;
 }
-.GA .VisualsubBox .bSlider {
-    visibility: hidden;
-    opacity:0;
-}
+
 /* slider : 페이징 버튼 => bSlider */
 .GA .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a {
     background: #b7b7b7;
@@ -102,7 +99,6 @@
     width: 216px;
 	height: 207px !important;
     margin-left: 10px;
-	background: #330;
 }
 .GA .Section .ProfBox li:first-child {
     margin-left: 0;
@@ -115,6 +111,7 @@
 }
 
 /* slider : 페이징 버튼 => bSlider */
+
 .GA .ProfBox .bSlider .bx-wrapper .bx-pager.bx-default-pager a {
     background: #fff;
     width: 9px;

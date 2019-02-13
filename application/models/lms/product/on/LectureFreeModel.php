@@ -222,6 +222,10 @@ class LectureFreeModel extends CommonLectureModel
             $lecture_data = array_merge($input_lecture,[
                 //'LearnPatternCcd'=>element('LearnPatternCcd',$input)
             ]);
+            if (empty(element('FreeLecPasswd', $input)) === false) {
+                $this->_conn->set('FreeLecPasswd', 'fn_enc("' . element('FreeLecPasswd', $input) . '")', false);
+            }
+
             if ($this->_conn->set($lecture_data)->where('ProdCode', $prodcode)->update($this->_table['lecture']) === false) {
                 throw new \Exception('강좌 정보 수정에 실패했습니다.');
             }

@@ -87,6 +87,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property RestClient $restclient                         REST Client Class
  * @property Caching $caching                              Application Caching Driver Class
  * @property Pg $pg                                            Pg Driver Class
+ * @property SendSms $sendsms                               Send Sms Class
  ***************** MY MODELS *****************
  * @property SampleModel $sampleModel                       Sample Model Class
  ***************** WBS ***********************

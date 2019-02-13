@@ -238,7 +238,7 @@
                     if (this_site_code == '') {
                         cs_tel = '';
                     } else {
-                        cs_tel = $arr_site_csTel[this_site_code].replace('-','');
+                        cs_tel = $arr_site_csTel[this_site_code];
                     }
                     $('#cs_tel').val(cs_tel);
                 });

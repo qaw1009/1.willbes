@@ -24,7 +24,7 @@
                     <tr>
                         <th colspan="1">모의고사카테고리 <span class="required">*</span></th>
                         <td colspan="3">
-                            <button type="button" class="btn btn-sm btn-primary act-searchCate" {{($method == 'PUT' && $isDeny) ? 'disabled' : ''}}>카테고리검색</button>
+                            <button type="button" class="btn btn-sm btn-primary act-searchCate" >카테고리검색</button>
                             <span id="selected_category">
                                 @if($method == 'PUT')
                                     @foreach($moCate_name as $code => $name)
@@ -278,7 +278,7 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <input type="file" name="QuestionFile[]" style="width:180px">
+                                    <input type="file" name="QuestionFile[]" style="width:180px" multiple>
                                     <input type="hidden" name="callIdx[]" value="">
                                     <input type="hidden" name="callQuestionFile[]" value="">
                                     <input type="hidden" name="callRealQuestionFile[]" value="">
@@ -289,7 +289,7 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <input type="file" name="ExplanFile[]" style="width:180px">
+                                    <input type="file" name="ExplanFile[]" style="width:180px" multiple>
                                     <input type="hidden" name="callExplanFile[]" value="">
                                     <input type="hidden" name="callRealExplanFile[]" value="">
                                     @if(!empty($row['ExplanFile']))

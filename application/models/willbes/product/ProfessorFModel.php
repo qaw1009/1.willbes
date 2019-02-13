@@ -87,7 +87,7 @@ class ProfessorFModel extends WB_Model
      * @param $cate_code
      * @param $subject_idx
      * @param $limit_cnt
-     * @return array
+     * @return mixed
      */
     public function findProfessorStudyCommentData($prof_idx, $site_code, $cate_code, $subject_idx, $limit_cnt)
     {

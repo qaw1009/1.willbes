@@ -143,38 +143,27 @@ class Professor extends \app\controllers\FrontController
         // 교수 참조 정보
         $data['ProfReferData'] = $data['ProfReferData'] == 'N' ? [] : json_decode($data['ProfReferData'], true);
 
-        // 수강후기 조회
-        $data['StudyCommentData'] = $this->professorFModel->findProfessorStudyCommentData($prof_idx, $this->_site_code, $this->_def_cate_code, element('subject_idx',$arr_input), 3);
-
-        // 상품정보 조회
-        // 상품조회 기본조건
-        $arr_condition = ['EQ' => ['ProfIdx' => $prof_idx, 'SiteCode' => $this->_site_code, 'SubjectIdx' => element('subject_idx',$arr_input)],
+        // 베스트강좌 상품 조회
+        $arr_condition = [
+            'EQ' => ['ProfIdx' => $prof_idx, 'SiteCode' => $this->_site_code, 'SubjectIdx' => element('subject_idx', $arr_input), 'IsBest' => 'Y'],
             'LKR' => ['CateCode' => $this->_def_cate_code]
         ];
-        $order_by = ['ProdCode' => 'desc'];
 
-        // 베스트강좌 조회
-        $products['best'] = $this->lectureFModel->listSalesProduct($learn_pattern, false
-            , array_merge_recursive($arr_condition, ['EQ' => ['IsBest' => 'Y']]), 4, 0, $order_by);
-
-        $products['best'] = array_map(function ($arr) {
+        $best_product = $this->lectureFModel->listSalesProduct($learn_pattern, false, $arr_condition, 4, 0, ['ProdCode' => 'desc']);
+        $best_product = array_map(function ($arr) {
             $arr['ProdPriceData'] = json_decode($arr['ProdPriceData'], true);
             $arr['LectureSampleData'] = empty($arr['LectureSampleData']) === false ? json_decode($arr['LectureSampleData'], true) : [];
             return $arr;
-        }, $products['best']);
-
-        // 신규강좌 조회
-        $products['new'] = $this->lectureFModel->listSalesProduct($learn_pattern, false
-            , array_merge_recursive($arr_condition, ['EQ' => ['IsNew' => 'Y']]), 2, 0, $order_by);
+        }, $best_product);
 
         // 선택된 탭에 맞는 정보 조회
         $is_tab_select = isset($arr_input['tab']);
-        $arr_input['tab'] = element('tab', $arr_input, 'open_lecture');
+        $arr_input['tab'] = element('tab', $arr_input, 'home');
         $tab_data = $this->{'_tab_' . $arr_input['tab']}($prof_idx, $data['wProfIdx'], $arr_input);
 
         // 게시판 사용 유무에 탭 버튼 개수 설정
         $temp_UseBoardJson = array($data['IsNoticeBoard'], $data['IsQnaBoard'], $data['IsDataBoard'], $data['IsTpassBoard']);
-        $tabUseCount = 2;
+        $tabUseCount = 3;
         foreach ($temp_UseBoardJson as $key => $val) {
             if ($val == 'Y') {
                 $tabUseCount += 1;
@@ -188,10 +177,48 @@ class Professor extends \app\controllers\FrontController
             'def_cate_code' => $this->_def_cate_code,
             'prof_idx' => $prof_idx,
             'data' => $data,
-            'products' => $products,
+            'best_product' => $best_product,
             'tab_data' => $tab_data,
             'is_tab_select' => $is_tab_select
         ]);
+    }
+
+    /**
+     * 교수님홈 탭
+     * @param int $prof_idx [교수식별자]
+     * @param int $wprof_idx [WBS 교수식별자]
+     * @param array $arr_input
+     * @return array
+     */
+    private function _tab_home($prof_idx, $wprof_idx, $arr_input = [])
+    {
+        // 학습형태
+        $learn_pattern = $this->_is_pass_site === true ? 'off_lecture' : 'on_lecture';
+
+        // 공지사항 조회
+        
+        // 학습자료실 조회
+        
+        // 신규강좌 조회
+        $arr_condition = [
+            'EQ' => ['ProfIdx' => $prof_idx, 'SiteCode' => $this->_site_code, 'SubjectIdx' => element('subject_idx', $arr_input), 'IsNew' => 'Y'],
+            'LKR' => ['CateCode' => $this->_def_cate_code]
+        ];
+
+        $data['new_product'] = $this->lectureFModel->listSalesProduct($learn_pattern, false, $arr_condition, 2, 0, ['ProdCode' => 'desc']);
+
+        // 수강후기 조회
+        $data['study_comment'] = $this->professorFModel->findProfessorStudyCommentData($prof_idx, $this->_site_code, $this->_def_cate_code, element('subject_idx', $arr_input), 3);
+        if ($data['study_comment'] != 'N') {
+            $data['study_comment'] = json_decode($data['study_comment'], true);
+        } else {
+            $data['study_comment'] = [];
+        }
+
+        return [
+            'new_product' => element('new_product', $data, []),
+            'study_comment' => element('study_comment', $data, []),
+        ];
     }
 
     /**

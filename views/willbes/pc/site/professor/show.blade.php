@@ -24,25 +24,23 @@
         <!-- willbes-Prof-Profile -->
         <div class="willbes-Prof-Profile p_re mb40 NG tx-black">
             <div class="ProfImg p_re">
-                <img src="{{ $data['ProfReferData']['prof_detail_img'] or '' }}">
+                <img src="{{ $data['ProfReferData']['prof_detail_img'] or '' }}" alt="{{ $data['wProfName'] }}">
             </div>
             <div class="prof-profile p_re">
+                <div class="Name"><span class="Sbj tx-blue">{{ rawurldecode($arr_input['subject_name']) }}</span><strong>{{ $data['wProfName'] }}</strong><span class="NGR">교수님</span></div>
                 <ul class="prof-brief-btn">
                     <li>
                         <a href="#none" onclick="openWin('LayerProfile'); openWin('Profile');">
-                            <img src="{{ img_url('prof/icon_profile.png') }}">
                             <div class="NSK">프로필</div>
                         </a>
                     </li>
                     <li>
                         <a href="#none" onclick="{{ empty($data['ProfReferData']['sample_url1']) === false ? 'fnPlayerProf(\'' . $prof_idx . '\', \'S1\');' : 'alert(\'등록된 맛보기 동영상이 없습니다.\');' }}">
-                            <img src="{{ img_url('prof/icon_sample.png') }}">
                             <div class="NSK">맛보기</div>
                         </a>
                     </li>
                     <li>
                         <a href="#none" onclick="openWin('LayerCurriculum'); openWin('Curriculum');">
-                            <img src="{{ img_url('prof/icon_curri.png') }}">
                             <div class="NSK">커리큘럼</div>
                         </a>
                     </li>
@@ -50,11 +48,20 @@
                 <div class="Obj NGR">
                     {!! $data['ProfSlogan'] !!}
                 </div>
-                <div class="Name"><span class="Sbj tx-blue">{{ rawurldecode($arr_input['subject_name']) }}</span><strong>{{ $data['wProfName'] }}</strong><span class="NGR">교수님</span></div>
-                <div class="sliderBest cSlider">
+
+                <ul class="prof-banner01">
+                    <li>
+                        <iframe src="https://www.youtube.com/embed/sVr6LYsbzek?rel=0" frameborder="0" allowfullscreen=""></iframe>
+                    </li>
+                    <li>
+                        <a href="#none"><img src="{{ img_url('prof/bnrA01.jpg') }}" alt="배너명"></a>
+                    </li>
+                </ul>
+
+                <div class="sliderBest cSliderH">
                     <div class="best-tit">이 시기 BEST 강좌</div>
-                    <div class="sliderControls">
-                        @foreach($products['best'] as $idx => $row)
+                    <div class="sliderControlsHover">
+                        @foreach($best_product as $idx => $row)
                             <div class="lec-profile p_re">
                                 <div class="w-tit">
                                     <a href="{{ $__cfg['IsPassSite'] === false ? front_url('/lecture/show/cate/' . $def_cate_code . '/pattern/only/prod-code/' . $row['ProdCode']) : front_url('/offLecture/index#' . $row['ProdCode']) }}">{{ $row['ProdName'] }}</a>
@@ -68,18 +75,28 @@
                                         <dt><span class="row-line">|</span></dt>
                                         <dt><span class="tx-blue">{{ $row['wUnitLectureCnt'] }}</span>강</dt>
                                     @else
-                                        <dt><span class="tx-blue">{{ date('m/d', strtotime($row['StudyStartDate'])) }} ~ {{ date('m/d', strtotime($row['StudyEndDate'])) }}</dt>
+                                        <dt><span class="tx-blue">{{ date('m/d', strtotime($row['StudyStartDate'])) }} ~ {{ date('m/d', strtotime($row['StudyEndDate'])) }}</span></dt>
                                         <dt><span class="row-line">|</span></dt>
                                         <dt><span class="tx-blue">{{ $row['Amount'] }}</span>회차</dt>
                                     @endif
                                     <dt><span class="row-line">|</span></dt>
                                     <dt><span class="tx-blue">{{ number_format($row['ProdPriceData'][0]['RealSalePrice'], 0) }}</span>원</dt>
                                     <dt class="w-notice p_re">
-                                        <div class="w-sp one">
-                                            @if(empty($row['LectureSampleData']) === false)
-                                                <a href="javascript:fnPlayerSample('{{$row['ProdCode']}}','{{$row['LectureSampleData'][0]['wUnitIdx']}}','HD');">맛보기</a>
-                                            @endif
-                                        </div>
+                                        @if(empty($row['LectureSampleData']) === false)
+                                            <ul class="w-sp">
+                                                <li><a href="#none" onclick="openWin('lec_sample_{{ $row['ProdCode'] }}')">맛보기{{ empty($row['LectureSampleData']) ? '' : count($row['LectureSampleData']) }}</a></li>
+                                            </ul>
+                                            <div id="lec_sample_{{ $row['ProdCode'] }}" class="viewBox" style="top: 0; left: 63px;">
+                                                <a class="closeBtn" href="#none" onclick="closeWin('lec_sample_{{ $row['ProdCode'] }}')"><img src="{{ img_url('cart/close.png') }}"></a>
+                                                @foreach($row['LectureSampleData'] as $sample_idx => $sample_row)
+                                                    <dl class="NSK">
+                                                        <dt class="Tit NG">맛보기{{ $sample_idx + 1 }}</dt>
+                                                        @if(empty($sample_row['wHD']) === false) <dt class="tBox t1 black"><a href="javascript:fnPlayerSample('{{$row['ProdCode']}}','{{$sample_row['wUnitIdx']}}','HD');">HIGH</a></dt> @endif
+                                                        @if(empty($sample_row['wSD']) === false) <dt class="tBox t2 gray"><a href="javascript:fnPlayerSample('{{$row['ProdCode']}}','{{$sample_row['wUnitIdx']}}','SD');">LOW</a></dt> @endif
+                                                    </dl>
+                                                @endforeach
+                                            </div>
+                                        @endif
                                     </dt>
                                 </dl>
                             </div>
@@ -87,7 +104,7 @@
                     </div>
                 </div>
             </div>
-            <!-- // willbes-Layer-ProfileBox -->
+            <!-- willbes-Layer-ProfileBox -->
             <div id="Profile" class="willbes-Layer-ProfileBox">
                 <a class="closeBtn" href="#none" onclick="closeWin('LayerProfile'); closeWin('Profile')">
                     <img src="{{ img_url('prof/close.png') }}">
@@ -112,7 +129,7 @@
                     <img src="{{ img_url('prof/close.png') }}">
                 </a>
                 <div class="Layer-Tit NG tx-dark-black"><span class="tx-blue">{{ $data['wProfName'] }}</span> 교수님 커리큘럼</div>
-                <div class="Layer-Txt tx-gray">
+                <div class="Layer-Cont">
                     {!! $data['ProfCurriculum'] !!}
                 </div>
             </div>
@@ -120,42 +137,13 @@
             <!-- // willbes-Layer-CurriBox -->
         </div>
         <!-- // willbes-Prof-Profile -->
-        <!-- willbes-NoticeWrap -->
-        <div class="willbes-NoticeWrap p_re mb15 c_both">
-            <div class="willbes-listTable willbes-newLec widthAuto460 mr20">
-                <div class="will-Tit NG">신규강좌 <img style="vertical-align: top;" src="{{ img_url('prof/icon_new.gif') }}"></div>
-                <ul class="List-Table GM tx-gray">
-                    @foreach($products['new'] as $idx => $row)
-                        <li><a href="{{ $__cfg['IsPassSite'] === false ? front_url('/lecture/show/cate/' . $def_cate_code . '/pattern/only/prod-code/' . $row['ProdCode']) : front_url('/offLecture/index#' . $row['ProdCode']) }}">{{ $row['ProdName'] }}</a></li>
-                    @endforeach
-                </ul>
-            </div>
-            <div class="willbes-listTable willbes-reply widthAuto460">
-                {{--<div class="will-Tit NG">수강후기<a href="#none" class="f_right" onclick="openWin('WrapReply')"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>--}}
-                <div class="will-Tit NG">수강후기<a href="#none" class="f_right btn-study" data-board-idx=""><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
-                <ul class="List-Table GM tx-gray">
-                    @if($data['StudyCommentData'] != 'N')
-                        @foreach(json_decode($data['StudyCommentData'], true) as $idx => $row)
-                            <li><img src="{{ img_url('sub/star' . $row['LecScore']. '.gif') }}"><a href="#none" class="btn-study" data-board-idx="{{$row['BoardIdx']}}">{{ hpSubString($row['Title'],0,25,'...') }}</a></li>
-                        @endforeach
-                    @endif
-                </ul>
-            </div>
 
-            <div id="WrapReply"></div>
-            <!-- willbes-Layer-ReplyBox -->
-        </div>
-        <!-- // willbes-NoticeWrap -->
-        <!-- willbes-Bnr -->
-        <div class="willbes-Bnr mb15">
-            {!! banner('교수진소개_서브_중단', '', $__cfg['SiteCode'], '0') !!}
-        </div>
-        <!-- // willbes-Bnr -->
         <!-- willbes-Prof-Tabs -->
         <div class="willbes-Prof-Tabs">
             <div class="ProfDetailWrap">
                 <a name="tabLink"></a>
                 <ul class="tabWrap tabDepthProf tabDepthProf_{{$data['tabUseCount']}}">
+                    <li><a href="#none" id="hover_home" onclick="goUrl('tab', 'home');">교수님 홈</a></li>
                     <li><a href="#none" id="hover_open_lecture" onclick="goUrl('tab', 'open_lecture');">개설강좌</a></li>
                     @if($data['IsNoticeBoard'] == 'Y')<li><a href="#none" id="hover_notice" onclick="goUrl('tab', 'notice');">공지사항</a></li>@endif
                     @if($data['IsQnaBoard'] == 'Y')<li><a href="#none" id="hover_qna" onclick="goUrl('tab', 'qna');">학습Q&A</a></li>@endif

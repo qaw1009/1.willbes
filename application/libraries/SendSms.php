@@ -43,22 +43,22 @@ class SendSms
     }
 
     /**
-     * @param $send_date [발송일 : 예약 발송일 경우 전송할 날짜 입력]
      * @param $send_phone [발송번호 : 배열 or 특정번호]
      * @param $send_msg [발송메시지]
      * @param $send_call_center [콜백번호]
+     * @param $send_date [발송일 : 예약 발송일 경우 전송할 날짜 입력]
      * @param $send_title [발송제목 : MMS 경우에 한함]
      * @return array|bool
      */
-    public function send($send_date, $send_phone, $send_msg, $send_call_center, $send_title = '윌비스 안내 메세지')
+    public function send($send_phone, $send_msg, $send_call_center, $send_date = null, $send_title = '윌비스 안내 메세지')
     {
         try {
             $result = 0;
-            if (empty($send_date) === true || empty($send_phone) === true || empty($send_msg) === true || empty($send_call_center) === true) {
+            if (empty($send_phone) === true || empty($send_msg) === true || empty($send_call_center) === true) {
                 throw new \Exception('필수 데이터 누락.');
             }
 
-            list($table, $data) = $this->_send_data($send_date, $send_phone, $send_msg, $send_call_center, $send_title);
+            list($table, $data) = $this->_send_data($send_phone, $send_msg, $send_call_center, $send_date, $send_title);
             if($data) $result = $this->_conn->insert_batch($table, $data);
             if ($result <= 0) {
                 throw new \Exception('발송 실패');
@@ -71,20 +71,26 @@ class SendSms
 
     /**
      * 발송데이터 셋팅
-     * @param $send_date
      * @param $send_phone
      * @param $send_msg
      * @param $send_call_center
+     * @param $send_date
      * @param $send_title
      * @return array
      */
-    private function _send_data($send_date, $send_phone, $send_msg, $send_call_center, $send_title)
+    private function _send_data($send_phone, $send_msg, $send_call_center, $send_date, $send_title)
     {
         $this_table = '';
         $data = [];
         $set_send_phone = $send_phone;
         if (is_array($send_phone) === false) {
             $set_send_phone = array($send_phone);
+        }
+
+        if (empty($send_date) === true) {
+            $set_send_date = date('Y-m-d H:i:s');
+        } else {
+            $set_send_date = $send_date;
         }
 
         if (mb_strlen($send_title) <= $this->_title_max_length) {
@@ -97,7 +103,7 @@ class SendSms
                         'PHONE' => $val,
                         'CALLBACK' => $send_call_center,
                         'STATUS' => '0',
-                        'REQDATE' => $send_date,
+                        'REQDATE' => $set_send_date,
                         'MSG' => $send_msg,
                         'EXPIRETIME' => '0',
                         'TYPE' => '0'
@@ -107,7 +113,7 @@ class SendSms
                 $this_table = $this->_table['sms'];
                 foreach ($set_send_phone as $key => $val) {
                     $data[] = [
-                        'TR_SENDDATE' => $send_date,
+                        'TR_SENDDATE' => $set_send_date,
                         'TR_SENDSTAT' => '0',
                         'TR_MSGTYPE' => '0',
                         'TR_PHONE' => $val,

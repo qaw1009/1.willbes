@@ -3454,7 +3454,94 @@ table.classTable tr td.w-data {
     margin: -3px 10px 0;
 }
 
+/* subContainer : Content : 2nd Tabs 공통 */
+.tabWrap {
+    height: 34px;
+    border-bottom: 1px solid #959595;
+}
+.tabWrap li {
+    float: left;
+    width: 140px;
+    height: 34px;
+}
+.tabWrap li a {
+    display: block;
+    width: 100%;
+    height: 33px;
+    line-height: 32px;
+    background: #f9f9f9;
+    font-size: 12px;
+    color: #959595;
+    text-align: center;
+    letter-spacing: 0;
+    border-top: 1px solid #e1e1e1;
+    border-right: 1px solid #e1e1e1;
+}
+.tabWrap li:first-child a {
+    border-left: 1px solid #e1e1e1;
+} 
+.tabWrap li a.on {
+    position: relative;
+    z-index: 2;
+    background: #fff;
+    height: 34px;
+    line-height: 32px;
+    font-weight: 600;
+    color: #686868;
+    border-top: 1px solid #959595;
+    border-left: 1px solid #959595;
+    border-right: 1px solid #959595;
+}
+.tabBox .book-TxtBox {
+    height: 150px;
+    line-height: 24px;
+    padding: 15px 0 15px 5px;
+    border-bottom: 1px solid #edeeef;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.tabBox .caution-txt {
+    padding: 15px 20px;
+    margin-left: 5px;
+}
 
+.tabShow {
+    height: 34px;
+    border-bottom: 1px solid #959595;
+}
+.tabShow li {
+    float: left;
+    width: 140px;
+    height: 34px;
+}
+.tabShow li a {
+    display: block;
+    width: 100%;
+    height: 33px;
+    line-height: 32px;
+    background: #f9f9f9;
+    font-size: 12px;
+    color: #959595;
+    text-align: center;
+    letter-spacing: 0;
+    border-top: 1px solid #e1e1e1;
+    border-right: 1px solid #e1e1e1;
+}
+.tabShow li:first-child a {
+    border-left: 1px solid #e1e1e1;
+} 
+.tabShow li a.on {
+    position: relative;
+    z-index: 2;
+    background: #fff;
+    height: 34px;
+    line-height: 32px;
+    font-weight: 600;
+    color: #686868;
+    border-top: 1px solid #959595;
+    border-left: 1px solid #959595;
+    border-right: 1px solid #959595;
+}
 
 /* subContainer : Content : 강의목차 : LeclistTable */
 .LeclistTable {

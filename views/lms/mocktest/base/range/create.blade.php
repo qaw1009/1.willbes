@@ -126,7 +126,6 @@
                             <td class="text-center form-inline"><input type="text" class="form-control" style="width:45px" name="orderNum[]" value=""></td>
                             <td class="text-center">
                                 <select class="form-control" name="isUse[]">
-                                    <option value="">사용여부</option>
                                     <option value="Y">사용</option>
                                     <option value="N">미사용</option>
                                 </select>
@@ -252,6 +251,7 @@
 
                 cList.find('tr').each(function (index) {
                     $(this).find('td:eq(0)').text(++index);
+                    $(this).find('td:eq(2)').html("<input type='text' class='form-control' style='width:45px' name='orderNum[]' value='"+ index +"'>");
                 });
             });
 

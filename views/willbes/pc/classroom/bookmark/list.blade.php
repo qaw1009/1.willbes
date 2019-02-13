@@ -246,74 +246,85 @@
                             </div>
                         </div>
                         <div id="Mypagetab4" class="tabLink">
-                            <div class="willbes-Lec-Table pt20 NG d_block">
-                                <table cellspacing="0" cellpadding="0" class="lecTable bdt-dark-gray">
-                                    <colgroup>
-                                        <col style="width: 120px;">
-                                        <col style="width: 700px;">
-                                        <col style="width: 120px;">
-                                    </colgroup>
-                                    <tbody>
-                                    <tr>
-                                        <td class="w-percent">진도율<br/>
-                                            <span class="tx-blue">77%</span>
-                                        </td>
-                                        <td class="w-data tx-left pl10">
-                                            <dl class="w-info">
-                                                <dt>
-                                                    영어<span class="row-line">|</span>
-                                                    한덕현교수님
-                                                    <span class="NSK ml15 nBox n2">진행중</span>
-                                                </dt>
-                                            </dl><br/>
-                                            <div class="w-tit">
-                                                <a href="#none"><span class="tx-red">[0원결제]</span> 2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
-                                            </div>
-                                            <dl class="w-info tx-gray">
-                                                <dt>강의수 : <span class="tx-black">12강</span></dt>
-                                                <dt><span class="row-line">|</span></dt>
-                                                <dt>잔여기간 : <span class="tx-blue">50일</span>(2018.04.02~2018.11.20)</dt>
-                                                <dt><span class="row-line">|</span></dt>
-                                                <dt>최종학습일 : <span class="tx-black">2018.10.20</span></dt>
-                                            </dl>
-                                        </td>
-                                        <td class="w-answer">
-                                            <a href="#none"><span class="bBox blueBox NSK">북마크 확인</span></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-percent">진도율<br/>
-                                            <span class="tx-blue">55%</span>
-                                        </td>
-                                        <td class="w-data tx-left pl10">
-                                            <dl class="w-info">
-                                                <dt>
-                                                    영어<span class="row-line">|</span>
-                                                    한덕현교수님
-                                                    <span class="NSK ml15 nBox n2">진행중</span>
-                                                </dt>
-                                            </dl><br/>
-                                            <div class="w-tit">
-                                                <a href="#none"><span class="tx-red">[제휴사결제]</span> 2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
-                                            </div>
-                                            <dl class="w-info tx-gray">
-                                                <dt>강의수 : <span class="tx-black">24강</span></dt>
-                                                <dt><span class="row-line">|</span></dt>
-                                                <dt>잔여기간 : <span class="tx-blue">50일</span>(2018.04.02~2018.11.20)</dt>
-                                                <dt><span class="row-line">|</span></dt>
-                                                <dt>최종학습일 : <span class="tx-black">2018.10.20</span></dt>
-                                            </dl>
-                                        </td>
-                                        <td class="w-answer">
-                                            <a href="#none"><span class="bBox blueBox NSK">북마크 확인</span></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="3" class="tx-center">즐겨찾기 강좌 정보가 없습니다.</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                            @forelse( $passList as $row )
+                                <div class="willbes-Lec-Table willbes-Package-Table pt20 NG d_block">
+                                    <table cellspacing="0" cellpadding="0" class="packTable lecTable bdt-dark-gray">
+                                        <colgroup>
+                                            <col style="width: 820px;">
+                                            <col style="width: 120px;">
+                                        </colgroup>
+                                        <tbody>
+                                        <tr class="bg-light-blue">
+                                            <td class="w-data tx-left pl30">
+                                                <div class="w-tit">
+                                                    {{$row['ProdName']}}
+                                                </div>
+                                                <dl class="w-info tx-gray">
+                                                    <dt>잔여기간 : <span class="tx-blue">{{$row['remainDays']}}일</span>({{str_replace('-', '.', $row['LecStartDate'])}}~{{str_replace('-', '.', $row['RealLecEndDate'])}})</dt>
+                                                    <dt><span class="row-line">|</span></dt>
+                                                    <dt>최종학습일 : <span class="tx-black">{{ $row['lastStudyDate'] == '' ? '학습이력없음' : $row['lastStudyDate'] }}</span></dt>
+                                                    <dt class="MoreBtn"><a href="#none">강좌 열기 ▼</a></dt>
+                                                </dl>
+                                            </td>
+                                            <td class="w-answer">
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <table cellspacing="0" cellpadding="0" class="packInfoTable lecTable">
+                                        <colgroup>
+                                            <col style="width: 120px;">
+                                            <col style="width: 700px;">
+                                            <col style="width: 120px;">
+                                        </colgroup>
+                                        <tbody>
+                                        @foreach( $row['subleclist'] as $subrow )
+                                            <tr>
+                                                <td class="w-percent">진도율<br/>
+                                                    <span class="tx-blue">{{$subrow['StudyRate']}}%</span>
+                                                </td>
+                                                <td class="w-data tx-left pl10">
+                                                    <dl class="w-info">
+                                                        <dt>
+                                                            {{$subrow['SubjectName']}}<span class="row-line">|</span>
+                                                            {{$subrow['wProfName']}}교수님
+                                                            <span class="NSK ml15 nBox n{{ substr($subrow['wLectureProgressCcd'], -1)+1 }}">{{$subrow['wLectureProgressCcdName']}}</span>
+                                                        </dt>
+                                                    </dl><br/>
+                                                    <div class="w-tit">
+                                                        <a href="{{ site_url('/classroom/on/view/ongoing/') }}?o={{$subrow['OrderIdx']}}&p={{$subrow['ProdCode']}}&ps={{$subrow['ProdCodeSub']}}">{{$subrow['subProdName']}}</a>
+                                                    </div>
+                                                    <dl class="w-info tx-gray">
+                                                        <dt>강의수 : <span class="tx-black">{{$subrow['wUnitLectureCnt']}}강</span></dt>
+                                                        <dt><span class="row-line">|</span></dt>
+                                                        <dt>잔여기간 : <span class="tx-blue">{{$subrow['remainDays']}}일</span>({{str_replace('-', '.', $subrow['LecStartDate'])}}~{{str_replace('-', '.', $subrow['RealLecEndDate'])}})</dt>
+                                                        <dt><span class="row-line">|</span></dt>
+                                                        <dt>최종학습일 : <span class="tx-black">{{ $subrow['lastStudyDate'] == '' ? '학습이력없음' : $subrow['lastStudyDate'] }}</span></dt>
+                                                    </dl>
+                                                </td>
+                                                <td class="w-answer">
+                                                    <a href="{{front_url('/classroom/bookmark/view/')}}?o={{$subrow['OrderIdx']}}&p={{$subrow['ProdCode']}}&ps={{$subrow['ProdCodeSub']}}"><span class="bBox blueBox NSK">북마크 확인</span></a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            @empty
+                                <div class="willbes-Lec-Table willbes-Package-Table pt20 NG d_block">
+                                    <table cellspacing="0" cellpadding="0" class="packTable lecTable bdt-dark-gray">
+                                        <colgroup>
+                                            <col style="width: 820px;">
+                                            <col style="width: 120px;">
+                                        </colgroup>
+                                        <tbody>
+                                        <tr>
+                                            <td colspan="2" class="tx-center">수강중인 패키지강좌가 없습니다.</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            @endforelse
                         </div>
                     </div>
                 </div>

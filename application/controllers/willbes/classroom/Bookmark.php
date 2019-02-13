@@ -122,12 +122,12 @@ class Bookmark extends \app\controllers\FrontController
         // 결제방식 : 온라인결제, 학원방문결제
         $passlist = $this->classroomFModel->getPackageBookmark(array_merge($cond_arr, [
             'IN' => [
-                'LearnPatternCcd' => $this->_LearnPatternCcd_pkg,
+                'LearnPatternCcd' => $this->_LearnPatternCcd_pass,
                 'PayRouteCcd' => array_merge($this->_payroute_normal_ccd, $this->_payroute_admin_ccd)
             ]
         ]), $orderby);
         foreach($passlist as $idx => $row){
-            $pkgsublist =  $this->classroomFModel->getLecture([
+            $pkgsublist =  $this->classroomFModel->getLectureBookmark([
                 'EQ' => [
                     'MemIdx' => $row['MemIdx'],
                     'OrderIdx' => $row['OrderIdx'],

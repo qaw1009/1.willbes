@@ -3723,7 +3723,7 @@ form .LeclistTable .evtTable tr td a.w-del {
     vertical-align: baseline;
 }
 .LecViewTable .w-txt img { 
-    max-width:900px;
+    max-width:900px !important;
 }
 .LecViewTable .w-txt .scrollBox {
     padding: 15px 25px;

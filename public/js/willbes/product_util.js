@@ -41,7 +41,14 @@ function cartNDirectPay($regi_form, $is_direct_pay, $is_redirect) {
     }
     $regi_form.find('input[name="is_direct_pay"]').val($is_direct_pay);
 
+    // url 설정
     var url = frontUrl('/cart/store');
+    if ($regi_form.find('input[name="cart_type"]').val().indexOf('off') === 0) {
+        url = siteUrl('/pass/cart/store');
+    } else if ($regi_form.find('input[name="cart_type"]').val().indexOf('on') === 0 || $regi_form.find('input[name="cart_type"]').val() === 'book') {
+        url = siteUrl('/cart/store');
+    }
+
     ajaxSubmit($regi_form, url, function(ret) {
         if(ret.ret_cd) {
             $result = true;

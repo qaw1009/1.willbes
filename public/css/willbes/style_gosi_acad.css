@@ -5,8 +5,9 @@
     float: left;
     width: 1120px;
     height: 380px;
-    overflow: hidden;
+    overflow: hidden;    
 }
+
 .GA .VisualBox .MaintabList {
     position: absolute;
     bottom: 34px;
@@ -39,9 +40,14 @@
     width: 100%;
     height: 100%;
 }
+.GA .VisualBox .MaintabSlider li img {
+    width: 100%;
+    height: 100%;
+}
 
 .GA .VisualBox .MaintabList ul li a:hover,
 .GA .VisualBox .MaintabList ul li a.active { background:#FFF; color:#251c1c}
+
 
 .GA .VisualsubBox {
     clear: both;
@@ -60,12 +66,12 @@
 }
 
 /* slider : 페이징 버튼 => bSlider */
-.GA .bSlider .bx-wrapper .bx-pager.bx-default-pager a {
+.GA .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a {
     background: #b7b7b7;
 }
-.GA .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
-.GA .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
-.GA .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
+.GA .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.GA .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a.active,
+.GA .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a:focus {
     background: #ba560e;
 }
 
@@ -93,7 +99,6 @@
     width: 216px;
 	height: 207px !important;
     margin-left: 10px;
-	background: #330;
 }
 .GA .Section .ProfBox li:first-child {
     margin-left: 0;
@@ -106,6 +111,7 @@
 }
 
 /* slider : 페이징 버튼 => bSlider */
+
 .GA .ProfBox .bSlider .bx-wrapper .bx-pager.bx-default-pager a {
     background: #fff;
     width: 9px;

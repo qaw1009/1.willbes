@@ -235,7 +235,7 @@
 
             <div class="willbes-Lec-Profdata tx-dark-black">
                 <ul>
-                    <li class="ProfImg"><img src="{{ img_url('sample/prof1.png') }}"></li>
+                    <li class="ProfImg"><img src="{{ img_url('prof/viewSample03.png') }}" alt="교수명"></li>
                     <li class="ProfDetail">
                         <div class="Obj">
                             공무원 국어종결자<br/>정채영 국어
@@ -259,7 +259,119 @@
             <div class="willbes-Lec-Line">-</div>
             <!-- willbes-Lec-Line -->
 
+            <div class="willbes-Lec-Table">        
+                <table cellspacing="0" cellpadding="0" class="lecTable">
+                    <colgroup>
+                        <col style="width: 75px;">
+                        <col style="width: 85px;">
+                        <col style="width: 490px;">
+                        <col style="width: 290px;">
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td class="w-list">문제풀이</td>
+                            <td class="w-name">국어<br/><span class="tx-blue">정채영</span></td>
+                            <td class="w-data tx-left pl25">
+                                <div class="w-tit">
+                                    <a href="{{ site_url('/home/html/listsub') }}">2018 [지방직/서울시] 정채영 국어 [문학집중강의]137작품을 알려주마!(4-6월)</a>
+                                </div>
+                                <dl class="w-info">
+                                    <dt class="mr20">
+                                        <a href="#ch1" onclick="openLink('ch1','hover1'); openWin('InfoForm')">
+                                            <strong>강좌상세정보</strong>
+                                        </a>
+                                    </dt>
+                                    <dt>강의수 : <span class="tx-blue">70강</span></dt>
+                                    <dt><span class="row-line">|</span></dt>
+                                    <dt>수강기간 : <span class="tx-blue">50일</span></dt>
+                                    <dt class="NSK ml15">
+                                        <span class="nBox n1">2배수</span>
+                                        <span class="nBox n2">진행중</span>
+                                        <span class="nBox n3">예정</span>
+                                        <span class="nBox n4">완강</span>
+                                    </dt>
+                                </dl><br/>
+                                <div class="tx-red">※ 바로결제만 가능한 상품입니다.</div>
+                            </td>
+                            <td class="w-notice p_re">
+                                <div class="w-sp100">
+                                    보강동영상 비밀번호 입력
+                                    <div>
+                                        <input type="text" id="" name="" placeholder="****" maxlength="10">
+                                        <button type="submit" onclick="">
+                                            <span>검색</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div id="viewBox" class="viewBox">
+                                    <a class="closeBtn" href="#none" onclick="closeWin('viewBox')"><img src="{{ img_url('cart/close.png') }}"></a>
+                                </div>
+                                <div class="MoreBtn"><a href="#none">교재정보 보기 ▼</a></div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- lecTable -->
+
+                <table cellspacing="0" cellpadding="0" class="lecInfoTable">
+                    <colgroup>
+                        <col style="width: 75px;">
+                        <col style="width: 865px;">
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>
+                                <div class="w-sub">
+                                    <span class="w-obj tx-blue tx11">수강생 교재</span> 
+                                    <span class="w-subtit">2018 정채영국어마무리시리즈[문학편]_137작품을알려주마(제2판)</span>
+                                    <span class="chk buybtn p_re">
+                                        <label>[판매중]</label>
+                                        <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
+                                    </span>
+                                    <span class="priceWrap">
+                                        <span class="price tx-blue">30,000원</span>
+                                        <span class="discount">(↓10%)</span>
+                                    </span>
+                                </div>
+                                <div class="w-sub">
+                                    <span class="w-obj tx-blue tx11">주교재</span> 
+                                    <span class="w-subtit">정채영 국어 마무리 시리즈(핵심정리편) 70테마로 끝내주마!(제2판)</span>
+                                    <span class="chk">
+                                        <label class="soldout">[품절]</label>
+                                        <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk" disabled>
+                                    </span>
+                                    <span class="priceWrap">
+                                        <span class="price tx-blue">20,000원</span>
+                                        <span class="discount">(↓10%)</span>
+                                    </span>
+                                </div>
+                                <div class="w-sub">
+                                    <span class="w-obj tx-blue tx11">부교재</span> 
+                                    <span class="w-subtit">2018 정채영 국어 마무리 시리즈(a적중문제편) 19문제만 찍어주마!(전정2판)</span>
+                                    <span class="chk">
+                                        <label class="press">[출간예정]</label>
+                                        <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk" disabled>
+                                    </span>
+                                    <span class="priceWrap">
+                                        <span class="price tx-blue">0원</span>
+                                    </span>
+                                </div>
+                                <div class="w-sub  tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>
+                                <div class="w-sub">
+                                    <a href="#ch2" onclick="openLink('ch2','hover2'); openWin('InfoForm')"><strong>교재상세정보</strong></a> 
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- lecInfoTable -->
+            </div>
+            <!-- willbes-Lec-Table -->
+
             <div class="willbes-Lec-Table">
+                
+            
                 <table cellspacing="0" cellpadding="0" class="lecTable">
                     <colgroup>
                         <col style="width: 75px;">
@@ -468,7 +580,7 @@
         <div class="willbes-Lec NG c_both">
             <div class="willbes-Lec-Profdata tx-dark-black">
                 <ul>
-                    <li class="ProfImg"><img src="{{ img_url('sample/prof2.png') }}"></li>
+                    <li class="ProfImg"><img src="{{ img_url('prof/viewSample03.png') }}" alt="교수명"></li>
                     <li class="ProfDetail">
                         <div class="Obj">
                             국어강의의 뉴 패러다임!<br/>듣기만 해도 암기되는 강의

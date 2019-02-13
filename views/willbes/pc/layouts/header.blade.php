@@ -28,8 +28,8 @@
     <!-- jQuery -->
     <script src="/public/vendor/jquery/v.2.2.3/jquery.min.js"></script>
     <script src="/public/vendor/jquery/form/jquery.form.js"></script>
+    <!-- Chart -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script src="https://www.google.com/uds/?file=visualization&v=1&packages=corechart" type="text/javascript"></script>
     <link href="https://www.google.com/uds/api/visualization/1.0/40ff64b1d9d6b3213524485974f36cc0/ui+ko.css" type="text/css" rel="stylesheet">

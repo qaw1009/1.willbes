@@ -29,17 +29,17 @@ class MockExam extends \app\controllers\FrontController
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
         $get_params = http_build_query($arr_input);
 
-        $s_IsStatus = element('s_IsStatus',$arr_input);
+        $s_IsTake = element('s_IsTake',$arr_input);
         $s_keyword = element('s_keyword',$arr_input);
 
-        $get_page_params = 's_IsStatus='.$s_IsStatus;
+        $get_page_params = 's_IsTake='.$s_IsTake;
         $get_page_params .= 's_keyword='.$s_keyword;
 
         $arr_condition = [
             'EQ' => [
                 //'MP.IsStatus' => 'Y',
                 'MR.MemIdx'   => $_SESSION['mem_idx'],
-                'MR.IsStatus' => $s_IsStatus
+                'MR.IsTake' => $s_IsTake
             ],
             'ORG' => [
                 'LKB' => [

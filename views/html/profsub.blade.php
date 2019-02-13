@@ -731,7 +731,7 @@
                         </div>
                         <!-- willbes-Bnr -->
 
-                        <div class="sliderWillbesBnr mt40">
+                        <div class="sliderWillbesBnr cSliderTM mt40">
                             <div class="sliderControlsTM">
                                 <div><img src="{{ img_url('prof/bnrC01.jpg') }}" alt="이미지명"></div>
                                 <div><img src="{{ img_url('prof/bnrC02.jpg') }}" alt="이미지명"></div>

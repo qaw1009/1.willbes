@@ -55,7 +55,7 @@
     </div>
     <div class="Section MainVisual mt20 mb30">
         <div class="widthAuto">
-            <div class="VisualBox p_re">
+            <div class="VisualBox p_re bSlider">
                 <div id="MainRollingDiv" class="MaintabList three">
                     <ul class="Maintab">
                         <li><a data-slide-index="0" href="javascript:void(0);" class="active">9급 PASS</a></li>

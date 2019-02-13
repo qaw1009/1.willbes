@@ -1119,7 +1119,7 @@ class MockExamModel extends WB_Model
 
         $obder_by = " ORDER BY QuestionNO ";
 
-        $where = "WHERE AP.MpIdx = ".$MpIdx;
+        $where = "  WHERE AP.MpIdx = ".$MpIdx;
 
         if($MalIdxSet) $where .= " AND MQ.MalIdx in (".$MalIdxSet.")";
 

@@ -396,8 +396,8 @@
                 <table cellspacing="0" cellpadding="0" class="listTable under-gray tx-gray">
                     <colgroup>
                         <col style="width: 100px;">
-                        <col style="width: 480px;">
-                        <col style="width: 150px;">
+                        <col>
+                        <col style="width: 200px;">
                         <col style="width: 80px;">
                         <col style="width: 130px;">
                     </colgroup>
@@ -426,6 +426,7 @@
                             <td class="w-no">2강</td>
                             <td class="w-list tx-left pl20">2강 03월 05일 : 모의고사 2회</td>
                             <td class="w-free">
+                            <span class="tBox NSK t3 white"><a href="">WIDE</a></span>
                                 <span class="tBox NSK t1 black"><a href="">HIGH</a></span>
                                 <span class="tBox NSK t2 gray"><a href="">LOW</a></span>
                             </td>

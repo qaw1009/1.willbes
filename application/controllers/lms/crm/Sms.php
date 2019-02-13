@@ -329,7 +329,7 @@ class Sms extends \app\controllers\BaseController
         $rules = [
             ['field' => 'site_code', 'label' => '운영사이트', 'rules' => 'trim|required'],
             ['field' => 'send_pattern_ccd', 'label' => '발송성격', 'rules' => 'trim|required'],
-            ['field' => 'cs_tel', 'label' => '발신번호', 'rules' => 'trim|required|integer'],
+            ['field' => 'cs_tel', 'label' => '발신번호', 'rules' => 'trim|required'],
             ['field' => 'send_content', 'label' => '내용', 'rules' => 'trim|required'],
             ['field' => 'send_option_ccd', 'label' => '발송옵션', 'rules' => 'trim|required|integer'],
             ['field' => 'send_datm_day', 'label' => '날짜', 'rules' => 'callback_validateRequiredIf[send_option_ccd,N]']

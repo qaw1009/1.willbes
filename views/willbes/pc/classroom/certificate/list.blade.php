@@ -8,7 +8,6 @@
             @include('willbes.pc.layouts.partial.site_route_path')
         </div>
         <div class="Content p_re">
-
             <div class="willbes-Mypage-ONLINEZONE c_both">
                 <div id="info1" class="willbes-Cart-Txt willbes-Mypage-Txt NG p_re">
                     <span class="MoreBtn"><a href="#none">유의사항안내 @if(get_cookie('moreInfo') == 'off')보기 ▼@else닫기 ▲@endif</a></span>
@@ -209,7 +208,7 @@
                                                     </dl>
                                                 </td>
                                                 <td class="w-answer">
-                                                    <a href="javascript:;" onclick="fnView('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}','S');"><span class="bBox blueBox NSK">수강확인증</span></a>
+                                                    <a href="javascript:;" onclick="fnView('{{$subrow['OrderIdx']}}','{{$subrow['ProdCode']}}','{{$subrow['ProdCodeSub']}}','S');"><span class="bBox blueBox NSK">수강확인증</span></a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -300,6 +299,12 @@
         {
             popupOpen('{{front_url('/classroom/certificate/view')}}?o='+o+'&p='+p+'&ps='+ps+'&t='+t,'Certificate'
                 ,800,600,null,null,'yes','yes');
+        }
+
+        function fnOpenSub(id)
+        {
+            $('.packInfoTable').hide();
+            $('#sub-'+id).show();
         }
     </script>
 @stop

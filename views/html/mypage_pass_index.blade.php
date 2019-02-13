@@ -141,7 +141,7 @@
                             <li>수신된 쪽지가 없습니다.</li>
                         </ul>
                     </div>
-                    <div class="willbes-listTable MyInfoBoxList widthAutoFull">
+                    <div class="willbes-listTable MyInfoBoxList widthAutoFull mg0">
                         <div class="will-Tit NG">나의 학습 기기 (무한PASS) <a class="f_right" href="#none"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
                         <ul class="List-Table GM myTablet tx-gray">
                             <!-- 리스트 -->

@@ -172,16 +172,14 @@ class SmsModel extends WB_Model
                 throw new \Exception('상세 정보 등록에 실패했습니다.');
             }
 
-            /**
-             * 즉시 발송 시작 (솔루션 호출 구문 시작)
-             * TODO : 솔루션 도입 시 해당 기능 추가
-            */
-            if ($formData['send_option_ccd'] == $_send_option_ccd[0]) {
-
-            }
-
             // 임시테이블 삭제
             $this->dropTampTable($this->_table_temp);
+
+            /** 즉시 발송 시작 [솔루션 호출] */
+            $result = $this->_smsSend($inputData, $get_send_data);
+            if ($result === false) {
+                throw new \Exception('문자 발송 실패 입니다.');
+            }
 
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
@@ -331,6 +329,27 @@ class SmsModel extends WB_Model
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    /**
+     * SMS 발송
+     * @param $inputData
+     * @param $arr_send_data
+     * @return bool
+     */
+    private function _smsSend($inputData, $arr_send_data)
+    {
+        $send_date = $inputData['SendDatm'];
+        $arr_send_phone = $arr_send_data;
+        $send_msg = $inputData['Content'];
+        $send_call_center = $inputData['CsTel'];
+
+        $this->load->library('sendsms');
+        if ($this->sendsms->send($arr_send_phone, $send_msg, $send_call_center, $send_date) !== true) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     /**

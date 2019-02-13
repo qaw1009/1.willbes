@@ -542,6 +542,11 @@ class CartFModel extends BaseOrderFModel
             return '판매 중인 상품만 주문 가능합니다.';
         }
 
+        // 사이트코드 체크
+        if ($site_code != $data['SiteCode']) {
+            return '사이트 정보가 일치하지 않습니다.';
+        }
+
         if ($learn_pattern == 'book') {
             // 수강생 교재 체크
             $check_result = $this->checkStudentBook($site_code, $prod_code);

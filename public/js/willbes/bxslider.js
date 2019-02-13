@@ -248,9 +248,6 @@ function slider(ele_id, type, pause_sec) {
         case 'cSliderTM' :
                 option = { auto: false, controls: true, pause: pasue_msec, pager: false };
             break;
-        case 'cSliderH' :
-            option = { auto: true, controls: true, pause: pasue_msec, pager: false, autoHover: true,};
-        break;
     }
 
     $('#' + ele_id).bxSlider(option);

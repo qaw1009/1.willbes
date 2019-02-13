@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Certificate extends \app\controllers\FrontController
 {
-    protected $models = array('classroomF');
+    protected $models = array('classroomF','memberF');
     protected $helpers = array();
     protected $auth_controller = true;
     protected $auth_methods = array();
@@ -23,9 +23,13 @@ class Certificate extends \app\controllers\FrontController
         parent::__construct();
     }
 
+    /**
+     * 수강중인 강의 목록
+     * @return object|string
+     */
     public function list()
     {
-// 검색
+        // 검색
         $input_arr = $this->_reqG(null);
         $today = date("Y-m-d", time());
 
@@ -137,9 +141,52 @@ class Certificate extends \app\controllers\FrontController
 
     }
 
+    
+    /**
+     * 수강확인증 출력
+     * @return object|string
+     */
     public function view()
     {
-        return $this->load->view('/classroom/certificate/view', ['data' => []]);
+        $orderidx = $this->_req('o');
+        $prodcode = $this->_req('p');
+        $prodcodesub = $this->_req('ps');
+        $type = $this->_req('t');
+
+        $cond = [
+            'EQ' => [
+                'MemIdx' => $this->session->userdata('mem_idx'),
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub
+            ]
+        ];
+
+        if($type == 'P'){
+            $data = $this->classroomFModel->getPackage($cond);
+        } elseif($type = 'S'){
+            $data = $this->classroomFModel->getLecture($cond);
+        } else {
+            show_alert('수강정보가 없습니다.');
+        }
+
+        if(count($data) != 1){
+            show_alert('수강정보가 없습니다.');
+        }
+
+        $lec = $data[0];
+
+        $member = $this->memberFModel->getMember(false, [
+            'EQ' => [
+                'Mem.MemIdx' => $this->session->userdata('mem_idx')
+            ]
+        ]);
+
+        return $this->load->view('/classroom/certificate/view', [
+            'lec' => $lec,
+            'member' => $member,
+            'type' => $type
+        ]);
     }
 
 }

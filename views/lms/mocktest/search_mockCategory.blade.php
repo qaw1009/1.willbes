@@ -44,7 +44,7 @@
                     <thead class="bg-white-gray">
                     <tr>
                         <th class="text-center">
-                            {{--@if(!$isSingle)<input type="checkbox" id="_is_all" class="flat" value="Y">@endif--}}
+                            <input type="checkbox" id="_is_all" class="flat" value="Y">
                         </th>
                         <th>카테고리 정보</th>
                         <th class="text-center">사용여부</th>
@@ -90,7 +90,7 @@
                                     var inputType = (isSingle) ? 'radio' : 'checkbox';
                                     var disable = (!isReg && row.IsExist > 0 && !checked) ? 'disabled' : '';
 
-                                    return '<input type="'+inputType+'" id="_cate_code_' + code + '" name="_cate_code" class="flat" value="' + code + '" data-row-idx="' + meta.row + '" ' + checked + disable + '>';
+                                    return '<input type="'+inputType+'" id="_cate_code_' + code + '" name="_cate_code" class="flat" value="' + code + '" data-row-idx="' + meta.row + '"' + checked + disable + '><input type="hidden" id="t'+ meta.row + '" value="' + code + '/' + disable + '" />';
                             }},
                             {'data' : 'CateRouteName'},
                             {'data' : 'IsUse', 'class': 'text-center', 'render' : function(data, type, row, meta) {
@@ -103,9 +103,34 @@
 
                     // 전체선택
                     $datatable.on('ifChanged', '#_is_all', function() {
+
                         var $_cate_code = $('[name="_cate_code"]');
-                        if ($(this).prop('checked') === true) $_cate_code.iCheck('check');
-                        else $_cate_code.iCheck('uncheck');
+
+                        if ($(this).prop('checked') === true){
+                            for(var i = 0; i < $_cate_code.length; i++){
+                                var res = $('#t'+i).val();
+                                var Arrres = res.split('/');
+
+                                if(Arrres[1] != 'disabled'){
+                                    $('#_cate_code_'+Arrres[0]).parent().addClass('checked');
+                                    $('#_cate_code_'+Arrres[0]).attr('checked',true);
+                                    ckall(Arrres[0], 't');
+                                }
+                            }
+                            //$_cate_code.iCheck('check');
+                        }else{
+                            for(var i = 0; i < $_cate_code.length; i++){
+                                var res = $('#t'+i).val();
+                                var Arrres = res.split('/');
+
+                                if(Arrres[1] != 'disabled'){
+                                    $('#_cate_code_'+Arrres[0]).parent().removeClass('checked');
+                                    $('#_cate_code_'+Arrres[0]).attr('checked',false);
+                                    ckall(Arrres[0], 'f');
+                                }
+                            }
+                            //$_cate_code.iCheck('uncheck');
+                        }
                     });
 
                     // 카테고리 선택
@@ -202,6 +227,32 @@
                         $('[name="sc_fi"]').val('');
                         $('#_btn_search').trigger('click');
                     });
+
+                    var ckall = function (codenum, tf) {
+                        var that = $('#_cate_code_'+codenum);
+                        var row = $datatable.row(that.data('row-idx')).data();
+                        var code = that.val();
+                        var route_name = '';
+
+                        if(isSingle) { $selected_category.empty(); $ori_selected_data = {}; }
+
+                        if (tf === 't') {
+                            if(!$ori_selected_data.hasOwnProperty(code)) {
+                                route_name = row.CateRouteName;
+                                route_name = route_name.substr(route_name.indexOf(' > ') + 3);
+                                $selected_category.append('<li id="_selected_category_' + code + '" data-cate-code="' + code + '" class="col-xs-4 pb-5">' + route_name + ' <a href="#none" class="_selected-category-delete"><i class="fa fa-times red"></i></a></li>');
+
+                                $ori_selected_data[code] = route_name;
+                            }
+                        } else {
+                            $selected_category.find('#_selected_category_' + code).remove();
+                            delete $ori_selected_data[code];
+                        }
+
+                        @if(in_array(ENVIRONMENT, ['local','development'])) console.log($ori_selected_data); @endif
+
+                        if(isSingle && Object.keys($ori_selected_data).length) $('#_btn_apply').trigger('click');
+                    }
                 });
             </script>
         @stop

@@ -127,7 +127,7 @@ class MockExamModel extends WB_Model
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
 
-        //echo "<pre>".'select ' . $column . $from . $where . $order_by_offset_limit."</pre>";
+        echo "<pre>".'select ' . $column . $from . $where . $order_by_offset_limit."</pre>";
 
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
 

@@ -53,6 +53,8 @@
             </ul>
         </h3>
     </div>
+
+    <!--
     <div id="newTopDday" class="newTopDday">
         <div class="widthAuto">
             <div id="ddaytime">
@@ -81,11 +83,101 @@
             </div>
         </div>
     </div>
+    -->
+
     <div class="Section MainVisual">
-        <div class="widthAuto">
-            <img src="{{ img_url('cop/visual/visual_190108.jpg') }}">
+        <div class="widthAuto">            
+            <iframe src="https://www.youtube.com/embed/sVr6LYsbzek?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>            
+            <img src="{{ img_url('cop/visual/visual_190213.jpg') }}" alt="전국 4,000명 동시수강">            
         </div>
     </div>
+
+    <div class="Section youtubeWrap">
+        <div class="widthAuto">          
+            <img src="{{ img_url('cop/visual/visual_tit01.jpg') }}" alt="수험생에게 도움이 되는 특별한 영상!" usemap="#Mapvisual_tit01" border="0">
+            <map name="Mapvisual_tit01" id="Mapvisual_tit01">
+                <area shape="rect" coords="1097,0,1120,23" href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank"/>
+            </map>    
+        </div>
+
+        <div class="widthAuto mt80">
+            <div class="youtubetabWrap">
+                <ul class="youtubetab">
+                    <li>
+                        <a href="#tab1" class="active">
+                            왜 신광은 경찰학원을 선택해야 하나요?
+                            <span>신광은경찰TV</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#tab2">
+                            연강시스템이란 무엇인가요?
+                            <span>신광은경찰TV</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#tab3">
+                            신의법칙! 2주만에 1회독?
+                            <span>신광은경찰TV</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#tab4">
+                            스타강사가 들려주는 시험 꿀팁!
+                            <span>신광은경찰TV</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div id="tab1" class="youtubeBox">
+                <iframe src="https://www.youtube.com/embed/sVr6LYsbzek?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
+            </div>
+            <div id="tab2" class="youtubeBox">
+                <iframe src="https://www.youtube.com/embed/SHbzPnFtkxk?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
+            </div>
+            <div id="tab3" class="youtubeBox">
+                <iframe src="https://www.youtube.com/embed/GTrlrvc-k7o?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
+            </div>
+            <div id="tab4" class="youtubeBox">
+                <iframe src="https://www.youtube.com/embed/SK6plcTEYYk?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
+            </div>
+        </div>
+    </div>
+    <!-- youtubeWrap //-->
+
+    <script type="text/javascript">        
+			var tab1_url = "https://www.youtube.com/embed/sVr6LYsbzek?rel=0&modestbranding=1&showinfo=0";
+			var tab2_url = "https://www.youtube.com/embed/SHbzPnFtkxk?rel=0&modestbranding=1&showinfo=0";
+            var tab3_url = "https://www.youtube.com/embed/GTrlrvc-k7o?rel=0&modestbranding=1&showinfo=0";
+            var tab4_url = "https://www.youtube.com/embed/SK6plcTEYYk?rel=0&modestbranding=1&showinfo=0";
+
+			$(function() {
+			$(".youtubeBox").hide(); 
+			$(".youtubeBox:first").show();
+			$(".youtubetab li a").click(function(){ 
+					var activeTab = $(this).attr("href"); 
+					var html_str = "";
+					if(activeTab == "#tab1"){
+						html_str = "<iframe src='"+tab1_url+"' frameborder='0' allowfullscreen></iframe>";
+					}else if(activeTab == "#tab2"){
+						html_str = "<iframe src='"+tab2_url+"' frameborder='0' allowfullscreen></iframe>";
+					}else if(activeTab == "#tab3"){
+						html_str = "<iframe src='"+tab3_url+"' frameborder='0' allowfullscreen></iframe>";                   
+                    }else if(activeTab == "#tab4"){
+						html_str = "<iframe src='"+tab3_url+"' frameborder='0' allowfullscreen></iframe>";
+					}
+					$(".youtubetab a").removeClass("active"); 
+					$(this).addClass("active"); 
+					$(".youtubeBox").hide(); 
+					$(".youtubeBox").html(''); 
+					$(activeTab).html(html_str);
+					$(activeTab).fadeIn(); 
+					return false; 
+					});
+				});
+		
+    </script>
+
     <div class="Section Flipped">
         <div class="widthAuto">
             <ul class="inner">

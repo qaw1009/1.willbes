@@ -158,7 +158,7 @@
 
                 <ul class="prof-banner01">
                     <li>
-                        <iframe src="https://www.youtube.com/embed/sVr6LYsbzek?rel=0" frameborder="0" allowfullscreen=""></iframe>
+                        <iframe src="https://www.youtube.com/embed/sVr6LYsbzek?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
                     </li>
                     <li class="bSlider">
                         <div class="slider">

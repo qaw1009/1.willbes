@@ -3,10 +3,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Player extends \app\controllers\FrontController
 {
-    protected $models = array('classroomF', 'playerF', 'product/productF', 'product/professorF');
+    protected $models = array('classroomF', 'playerF', 'product/productF', 'product/professorF', '_lms/sys/code');
     protected $helpers = array();
     protected $auth_controller = false;
     protected $auth_methods = array('index');
+
+    private $_groupCcd = [
+        'consult_ccd' => '702',   //유형 그룹 코드 = 상담유형
+    ];
 
     protected $_profReferDataName = [
         'OT' => 'ot_url',
@@ -442,7 +446,7 @@ class Player extends \app\controllers\FrontController
         $prodcodesub = $this->_req('sp');
 
         if(empty($orderidx) === true || empty($prodcode) === true || empty($prodcodesub) === true){
-            show_alert('강좌정보가 없습니다.111', 'back');
+            show_alert('강좌정보가 없습니다.', 'back');
         }
 
         $lec = $this->classroomFModel->getLecture([
@@ -498,7 +502,6 @@ class Player extends \app\controllers\FrontController
         $lec['ProfReferData'] = json_decode($lec['ProfReferData'], true);
         $lec['isstart'] = $isstart;
         $lec['ispause'] = $ispause;
-        $lec['SiteUrl'] = app_to_env_url($this->getSiteCacheItem($lec['SiteCode'], 'SiteUrl'));
 
         // 회차 열어준경우 IN 생성
         if(empty($lec['wUnitIdxs']) == true){
@@ -591,22 +594,86 @@ class Player extends \app\controllers\FrontController
     function info()
     {
         $input = $this->_reqG(null);
-        $data = [];
+
+        $today = date("Y-m-d", time());
+        $ispause = 'N';
+        $isstart = 'Y';
+
+        // 강좌정보 읽어오기
+        $orderidx = $this->_req('o');
+        $prodcode = $this->_req('p');
+        $prodcodesub = $this->_req('sp');
+
+        if(empty($orderidx) === true || empty($prodcode) === true || empty($prodcodesub) === true){
+            show_alert('강좌정보가 없습니다.', 'back');
+        }
+
+        $lec = $this->classroomFModel->getLecture([
+            'EQ' => [
+                'MemIdx' => $this->session->userdata('mem_idx'),
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub
+            ],
+            'GTE' => [
+                'RealLecEndDate' => $today
+            ]
+        ]);
+
+        if(empty($lec) === true){
+            show_alert('강좌정보가 없습니다.', 'back');
+        }
+
+        $lec = $lec[0];
 
         $this->load->view('/player/info', [
             'input' => $input,
-            'data' => $data
+            'lec' => $lec
         ]);
     }
 
     function qna()
     {
         $input = $this->_reqG(null);
-        $data = [];
+
+        $today = date("Y-m-d", time());
+        $ispause = 'N';
+        $isstart = 'Y';
+
+        // 강좌정보 읽어오기
+        $orderidx = $this->_req('o');
+        $prodcode = $this->_req('p');
+        $prodcodesub = $this->_req('sp');
+
+        if(empty($orderidx) === true || empty($prodcode) === true || empty($prodcodesub) === true){
+            show_alert('강좌정보가 없습니다.', 'back');
+        }
+
+        $lec = $this->classroomFModel->getLecture([
+            'EQ' => [
+                'MemIdx' => $this->session->userdata('mem_idx'),
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub
+            ],
+            'GTE' => [
+                'RealLecEndDate' => $today
+            ]
+        ]);
+
+        if(empty($lec) === true){
+            show_alert('강좌정보가 없습니다.', 'back');
+        }
+
+        $lec = $lec[0];
+
+        //상담유형
+        $arr_base['consult_type'] = $this->codeModel->getCcd($this->_groupCcd['consult_ccd']);
 
         $this->load->view('/player/qna',[
             'input' => $input,
-            'data' => $data
+            'lec' => $lec,
+            'arr_base' => $arr_base
         ]);
     }
 
@@ -616,6 +683,38 @@ class Player extends \app\controllers\FrontController
     public function listBookmark()
     {
         $input = $this->_reqG(null);
+
+        $today = date("Y-m-d", time());
+        $ispause = 'N';
+        $isstart = 'Y';
+
+        // 강좌정보 읽어오기
+        $orderidx = $this->_req('o');
+        $prodcode = $this->_req('p');
+        $prodcodesub = $this->_req('sp');
+
+        if(empty($orderidx) === true || empty($prodcode) === true || empty($prodcodesub) === true){
+            show_alert('강좌정보가 없습니다.', 'back');
+        }
+
+        $lec = $this->classroomFModel->getLecture([
+            'EQ' => [
+                'MemIdx' => $this->session->userdata('mem_idx'),
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub
+            ],
+            'GTE' => [
+                'RealLecEndDate' => $today
+            ]
+        ]);
+
+        if(empty($lec) === true){
+            show_alert('강좌정보가 없습니다.', 'back');
+        }
+
+        $lec = $lec[0];
+
         $data = $this->playerFModel->getBookmark($input);
 
         if(empty($data) == false) {
@@ -626,7 +725,8 @@ class Player extends \app\controllers\FrontController
 
         $this->load->view('/player/bookmark',[
             'input' => $input,
-            'data' => $data
+            'data' => $data,
+            'lec' => $lec
         ]);
     }
 

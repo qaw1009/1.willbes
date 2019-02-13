@@ -3717,10 +3717,13 @@ form .LeclistTable .evtTable tr td a.w-del {
     margin-right: 70px;
 }
 .LecViewTable .w-txt {
-    padding: 15px 25px;
+    padding: 15px 20px;
     height: 350px;
     line-height: 20px !important;
     vertical-align: baseline;
+}
+.LecViewTable .w-txt img { 
+    max-width:900px;
 }
 .LecViewTable .w-txt .scrollBox {
     padding: 15px 25px;

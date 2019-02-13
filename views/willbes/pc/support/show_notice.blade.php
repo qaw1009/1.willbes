@@ -43,7 +43,7 @@
                                     <tbody>
                                     @if(empty($data['AttachData']) === false)
                                     <tr>
-                                        <td class="w-file tx-left pl20" colspan="4">
+                                        <td class="w-file tx-left pl20" colspan="3">
                                             @foreach($data['AttachData'] as $row)
                                                 <a href="{{front_url($default_path.'/notice/download?path=').urlencode($row['FilePath'].$row['FileName']).'&fname='.urlencode($row['RealName']).'&board_idx='.$board_idx }}" target="_blank">
                                                     <img src="{{ img_url('prof/icon_file.gif') }}"> {{$row['RealName']}}</a>
@@ -52,8 +52,8 @@
                                     </tr>
                                     @endif
                                     <tr>
-                                        <td class="w-txt tx-left" colspan="7">
-                                            {!! $data['Content'] !!}
+                                        <td class="w-txt tx-left" colspan="3">
+                                            {!! $data['Content'] !!}                                            
                                         </td>
                                     </tr>
                                     </tbody>

@@ -6562,6 +6562,9 @@ ul li.profList .willbes-Layer-ProfileBox {
     font-size: 22px;
     font-weight: 600;
 }
+.callBox ul li .time {
+    font-size: 14px;
+}
 .callBox ul li a.bnr_go {
     margin-left: 10px;
 }

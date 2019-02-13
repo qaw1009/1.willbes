@@ -106,21 +106,23 @@
                         <div class="callBox NG">
                             <ul>
                                 <li>
-                                    <span class="tit">윌비스 공무원</span>
+                                    <span class="tit">온라인 문의</span>
                                     <span class="num tx-light-blue">1544-5006</span>
-                                    <a class="bnr_go" href="#none"><img src="{{ img_url('cs/icon_go.png') }}"></a>
+                                    <!--a class="bnr_go" href="#none"><img src="{{ img_url('cs/icon_go.png') }}"></a-->
                                     <span class="row-line">|</span>
                                 </li>
                                 <li>
-                                    <span class="tit">신광은 경찰</span>
-                                    <span class="num tx-light-blue">1544-5006</span>
-                                    <a class="bnr_go" href="#none"><img src="{{ img_url('cs/icon_go.png') }}"></a>
+                                    <span class="tit">교재 문의</span>
+                                    <span class="num tx-light-blue">1544-4944</span>
+                                    <!--a class="bnr_go" href="#none"><img src="{{ img_url('cs/icon_go.png') }}"></a-->
                                     <span class="row-line">|</span>
                                 </li>
                                 <li>
-                                    <span class="tit">윌비스 임용</span>
-                                    <span class="num tx-light-blue">1544-3169</span>
-                                    <a class="bnr_go" href="#none"><img src="{{ img_url('cs/icon_go.png') }}"></a>
+                                    <span class="tit">운영시간</span>
+                                    <span class="time tx-light-blue">
+                                        평일 9:00 ~ 18:00
+                                        주말/공휴일 휴무 
+                                    </span>                                    
                                 </li>
                             </ul>
                         </div>
@@ -190,7 +192,7 @@
                                                     일요일 9:00~20:00
                                                 </td>
                                             </tr>
-                                            <tr>
+                                            <!--tr>
                                                 <td class="w-site">임용</td>
                                                 <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
                                                 <td class="w-call">1544-3169</td>
@@ -198,7 +200,7 @@
                                                     월~토 9:00~22:00<br/>
                                                     일요일/공휴일 휴무
                                                 </td>
-                                            </tr>
+                                            </tr-->
                                         </tbody>
                                     </table>
                                 </div>

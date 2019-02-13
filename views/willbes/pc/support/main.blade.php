@@ -67,15 +67,15 @@
                             <div class="callBox NG">
                                 <ul>
                                     <li>
-                                        <span class="tit">윌비스 공무원</span>
+                                        <span class="tit">온라인 문의</span>
                                         <span class="num tx-light-blue">1544-5006</span>
-                                        <a class="bnr_go" href="#none"><img src="{{ img_url('cs/icon_go.png') }}"></a>
+                                        <!--a class="bnr_go" href="#none"><img src="{{ img_url('cs/icon_go.png') }}"></a-->
                                         <span class="row-line">|</span>
                                     </li>
                                     <li>
-                                        <span class="tit">신광은 경찰</span>
-                                        <span class="num tx-light-blue">1544-5006</span>
-                                        <a class="bnr_go" href="#none"><img src="{{ img_url('cs/icon_go.png') }}"></a>
+                                        <span class="tit">교재 문의</span>
+                                        <span class="num tx-light-blue">1544-4944</span>
+                                        <!--a class="bnr_go" href="#none"><img src="{{ img_url('cs/icon_go.png') }}"></a-->
                                         <span class="row-line">|</span>
                                     </li>
                                     <li>

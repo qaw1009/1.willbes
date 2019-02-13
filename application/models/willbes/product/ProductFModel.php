@@ -35,6 +35,9 @@ class ProductFModel extends WB_Model
     // 수강생 교재 공통코드
     public $_student_book_ccd = '610003';
 
+    // 무료강좌타입 공통코드 > 일반, 보강동영상
+    public $_free_lec_type_ccd = ['normal' => '652001', 'bogang' => '652002'];
+
     // 상품 판매상태 > 판매가능, 판매예정
     public $_sale_status_ccds = ['available' => '618001', 'expected' => '618002'];
 
@@ -72,6 +75,11 @@ class ProductFModel extends WB_Model
                         $column .= ', CateCode, IsBest, IsNew, IsCoupon, IsCart, IsFreebiesTrans, IsDeliveryInfo, StudyPeriod, MultipleApply, StudyStartDate
                             , SubjectIdx, SubjectName, CourseIdx, CourseName, OrderNumCourse, SchoolYear, ProfIdx, wProfIdx, wProfName, ProfSlogan, wLecIdx, wUnitLectureCnt
                             , wLectureProgressCcd, wLectureProgressCcdName, LecSaleType, LectureSampleData, ProdBookData, ProdBookMemo, ProfReferData, ProdPriceData';
+                        
+                        // 온라인 무료강좌 컬럼 추가 (무료강좌타입, 보강동영상 비밀번호)
+                        if ($learn_pattern == 'on_free_lecture') {
+                            $column .= ', FreeLecTypeCcd, FreeLecPasswd';
+                        }
                     break;
                 
                 // 학원 단과

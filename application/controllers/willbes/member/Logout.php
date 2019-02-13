@@ -15,7 +15,6 @@ class Logout extends BaseMember
      */
     public function index()
     {
-
         $login_key = $this->session->userdata('login_key');
 
         $this->session->set_userdata('mem_idx', '');
@@ -25,6 +24,7 @@ class Logout extends BaseMember
         $this->session->set_userdata('mem_phone', '');
         $this->session->set_userdata('login_key', '');
         $this->session->set_userdata('is_login', false);
+        $this->session->set_userdata('free_bogang_prod_codes', '');
 
         // 로그아웃시에 로그를 남김
         $this->memberFModel->setMemberLogout($login_key);

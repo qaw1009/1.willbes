@@ -46,8 +46,8 @@
                             @foreach($data['LectureSampleData'] as $sample_idx => $sample_row)
                                 <dl class="NSK">
                                     <dt class="Tit NG">맛보기{{ $sample_idx + 1 }}</dt>
-                                    @if(empty($sample_row['wHD']) === false || empty($sample_row['wWD']) === false) <dt class="tBox t1 black"><a href="javascript:fnPlayerSample('{{$data['ProdCode']}}','{{$sample_row['wUnitIdx']}}','HD');" >HIGH</a></dt> @endif
-                                    @if(empty($sample_row['wSD']) === false) <dt class="tBox t2 gray"><a href="javascript:fnPlayerSample('{{$data['ProdCode']}}','{{$sample_row['wUnitIdx']}}','SD');" >LOW</a></dt> @endif
+                                    @if(empty($sample_row['wHD']) === false) <dt class="tBox t1 black"><a href="javascript:fnPlayerSample('{{$data['ProdCode']}}','{{$sample_row['wUnitIdx']}}','HD');">HIGH</a></dt> @endif
+                                    @if(empty($sample_row['wSD']) === false) <dt class="tBox t2 gray"><a href="javascript:fnPlayerSample('{{$data['ProdCode']}}','{{$sample_row['wUnitIdx']}}','SD');">LOW</a></dt> @endif
                                 </dl>
                             @endforeach
                         </div>
@@ -63,6 +63,8 @@
         </div>
         <!-- willbes-Prof-Detail -->
 
+    @if($pattern == 'only' || ($pattern == 'free' && $data['FreeLecTypeCcd'] == '652001'))
+        {{-- 단강좌, 일반 무료강좌일 경우만 노출 --}}
         <div class="willbes-Lec mb170 NG c_both">
             <div class="willbes-Buy-Table p_re mt20">
                 <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
@@ -183,11 +185,11 @@
                 <!-- willbes-Lec-buyBtn -->
             </div>
             <!-- willbes-Buy-Table -->
-
         </div>
         <!-- willbes-Lec -->
+    @endif
 
-        <div id="Sticky" class="sticky-Wrap">
+        <div id="Sticky" class="sticky-Wrap mt20">
             <div class="sticky-Grid sticky-menu NG">
                 <ul>
                     <li><a href="#none" onclick="movePos('#Class');">강좌정보 ▼</a></li>
@@ -298,8 +300,8 @@
                 <table cellspacing="0" cellpadding="0" class="listTable under-gray tx-gray">
                     <colgroup>
                         <col style="width: 100px;">
-                        <col style="width: 480px;">
-                        <col style="width: 150px;">
+                        <col>
+                        <col style="width: 200px;">
                         <col style="width: 80px;">
                         <col style="width: 130px;">
                     </colgroup>
@@ -319,8 +321,9 @@
                         <td class="w-list tx-left pl20">{{ $row['wUnitName'] }}</td>
                         <td class="w-free">
                             @if (in_array($row['wUnitIdx'], $data['LectureSampleUnitIdxs']) === true)
-                                @if(empty($row['wHD']) === false || empty($row['wWD']) === false) <span class="tBox NSK t1 black"><a href="{{ $row['wWD'] or $row['wHD'] }}">HIGH</a></span> @endif
-                                @if(empty($row['wSD']) === false) <span class="tBox NSK t2 gray"><a href="{{ $row['wSD'] }}">LOW</a></span> @endif
+                                @if(empty($row['wWD']) === false) <span class="tBox NSK t3 white"><a href="javascript:fnPlayerSample('{{$data['ProdCode']}}','{{$row['wUnitIdx']}}','WD');">WIDE</a></span> @endif
+                                @if(empty($row['wHD']) === false) <span class="tBox NSK t1 black"><a href="javascript:fnPlayerSample('{{$data['ProdCode']}}','{{$row['wUnitIdx']}}','HD');">HIGH</a></span> @endif
+                                @if(empty($row['wSD']) === false) <span class="tBox NSK t2 gray"><a href="javascript:fnPlayerSample('{{$data['ProdCode']}}','{{$row['wUnitIdx']}}','SD');">LOW</a></span> @endif
                             @endif
                         </td>
                         <td class="w-file">

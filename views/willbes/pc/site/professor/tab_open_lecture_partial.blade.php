@@ -69,8 +69,7 @@
                                             <col style="width: 75px;">
                                             <col style="width: 85px;">
                                             <col style="width: 490px;">
-                                            <col style="width: 110px;">
-                                            <col style="width: 180px;">
+                                            <col style="width: 290px;">
                                         </colgroup>
                                         <tbody>
                                         <tr>
@@ -78,7 +77,7 @@
                                             <td class="w-name">{{ $row['SubjectName'] }}<br/><span class="tx-blue">{{ $row['wProfName'] }}</span></td>
                                             <td class="w-data tx-left pl25">
                                                 <div class="w-tit">
-                                                    <a href="{{ site_url('/lecture/show/cate/' . substr($row['CateCode'], 0, 4) . '/pattern/' . $pattern . '/prod-code/' . $row['ProdCode']) }}" class="prod-name">{{ $row['ProdName'] }}</a>
+                                                    <a href="#none" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 4) }}', 'only');" class="prod-name">{{ $row['ProdName'] }}</a>
                                                 </div>
                                                 <dl class="w-info">
                                                     <dt class="mr20">
@@ -106,7 +105,7 @@
                                                         @foreach($row['LectureSampleData'] as $sample_idx => $sample_row)
                                                             <dl class="NSK">
                                                                 <dt class="Tit NG">맛보기{{ $sample_idx + 1 }}</dt>
-                                                                @if(empty($sample_row['wHD']) === false || empty($sample_row['wWD']) === false) <dt class="tBox t1 black"><a href="javascript:fnPlayerSample('{{$row['ProdCode']}}','{{$sample_row['wUnitIdx']}}','HD');">HIGH</a></dt> @endif
+                                                                @if(empty($sample_row['wHD']) === false) <dt class="tBox t1 black"><a href="javascript:fnPlayerSample('{{$row['ProdCode']}}','{{$sample_row['wUnitIdx']}}','HD');">HIGH</a></dt> @endif
                                                                 @if(empty($sample_row['wSD']) === false) <dt class="tBox t2 gray"><a href="javascript:fnPlayerSample('{{$row['ProdCode']}}','{{$sample_row['wUnitIdx']}}','SD');">LOW</a></dt> @endif
                                                             </dl>
                                                         @endforeach
@@ -435,11 +434,11 @@
                                         <td class="w-list">{{$row['CourseName']}}</td>
                                         <td class="w-data tx-left pl15">
                                             <div class="w-tit w-acad-tit">
-                                                <a href="{{ front_url('/offpackage/show/').'prod-code/'.$row['ProdCode'] }}">{{$row['ProdName']}}</a>
+                                                <a href="{{ site_url('/' . config_item('app_pass_site_prefix') . '/offPackage/show/prod-code/' . $row['ProdCode']) }}">{{$row['ProdName']}}</a>
                                             </div>
                                             <dl class="w-info acad">
                                                 <dt>
-                                                    <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', '', '{{ site_url('/OffPackage') }}')">
+                                                    <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', '', '{{ site_url('/' . config_item('app_pass_site_prefix') . '/offPackage') }}', '', 'InfoFormOffPack')">
                                                         <strong class="open-info-modal">종합반 상세정보</strong>
                                                     </a>
                                                 </dt>
@@ -470,6 +469,8 @@
                     @endforeach
                     </div>
                 </div>
+                <div id="InfoFormOffPack" class="willbes-Layer-Box d2"></div>
+                <!-- willbes-Layer-Box -->
             </div>
         </div>
         <!-- 학원강좌 -->

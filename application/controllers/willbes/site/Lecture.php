@@ -128,7 +128,7 @@ class Lecture extends \app\controllers\FrontController
     /**
      * 강좌상세정보 조회 (ajax)
      * @param array $params
-     * @return CI_Output
+     * @return mixed
      */
     public function info($params = [])
     {
@@ -141,7 +141,7 @@ class Lecture extends \app\controllers\FrontController
         $data['contents'] = $this->lectureFModel->findProductContents($prod_code);
         $data['salebooks'] = $this->lectureFModel->findProductSaleBooks($prod_code);
 
-        $this->load->view('site/lecture/info_modal', [
+        return $this->load->view('site/lecture/info_modal', [
             'ele_id' => $this->_req('ele_id'),
             'data' => $data
         ]);
@@ -154,7 +154,7 @@ class Lecture extends \app\controllers\FrontController
     public function show($params = [])
     {
         $prod_code = element('prod-code', $params);
-        if (empty($prod_code)) {
+        if (empty($prod_code) === true) {
             show_alert('필수 파라미터 오류입니다.', 'back');
         }
 
@@ -163,7 +163,14 @@ class Lecture extends \app\controllers\FrontController
         if (empty($data) === true) {
             show_alert('데이터 조회에 실패했습니다.', 'back');
         }
-        
+
+        // 보강동영상일 경우 비밀번호 확인완료 세션 체크
+        if ($this->_learn_pattern == 'on_free_lecture' && $data['FreeLecTypeCcd'] == $this->lectureFModel->_free_lec_type_ccd['bogang']) {
+            if (in_array($prod_code, (array) $this->session->userdata('free_bogang_prod_codes')) === false) {
+                show_alert('접근 권한이 없습니다.', 'back');
+            }
+        }
+
         // 상품 데이터 가공
         $data['ProdPriceData'] = json_decode($data['ProdPriceData'], true);
         $data['ProdBookData'] = json_decode($data['ProdBookData'], true);
@@ -186,5 +193,44 @@ class Lecture extends \app\controllers\FrontController
             'pattern_name' => element(element('pattern', $params, 'only'), $this->_pattern_name, '단강좌'),
             'data' => $data
         ]);
-    }    
+    }
+
+    /**
+     * 보강동영상 비밀번호 체크
+     * @param array $params
+     * @return CI_Output
+     */
+    public function checkFreeLecPasswd($params = [])
+    {
+        $prod_code = element('prod-code', $params);
+        $free_lec_passwd = trim($this->_reqP('free_lec_passwd'));
+        
+        // 필수 파라미터 체크
+        if (empty($prod_code) === true || empty($free_lec_passwd) === true) {
+            return $this->json_error('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
+        }
+
+        // 상품 조회
+        $data = $this->lectureFModel->findProductByProdCode('on_free_lecture', $prod_code, ', fn_dec(FreeLecPasswd) as FreeLecPasswdDec');
+        if (empty($data) === true) {
+            return $this->json_error('데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
+        }
+
+        // 보강동영상 여부 확인
+        if ($data['FreeLecTypeCcd'] != $this->lectureFModel->_free_lec_type_ccd['bogang']) {
+            return $this->json_error('해당 무료강좌는 보강동영상이 아닙니다.', _HTTP_NOT_FOUND);
+        }
+
+        // 비밀번호 비교
+        if ($data['FreeLecPasswdDec'] != $free_lec_passwd) {
+            return $this->json_error('비밀번호가 일치하지 않습니다.', _HTTP_NO_PERMISSION);
+        }
+
+        // 보강동영상 비밀번호 확인완료 세션 생성
+        $sess_free_bogang_prod_codes = (array) $this->session->userdata('free_bogang_prod_codes');
+        array_push($sess_free_bogang_prod_codes, $prod_code);
+        $this->session->set_userdata('free_bogang_prod_codes', array_unique(array_filter($sess_free_bogang_prod_codes)));
+
+        return $this->json_result(true, '', []);
+    }
 }

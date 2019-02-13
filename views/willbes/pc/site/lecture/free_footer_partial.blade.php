@@ -136,4 +136,32 @@
             return $result;
         }
     });
+
+    /**
+     * 상세 페이지 이동
+     */
+    function goShow(prod_code, cate_code, pattern) {
+        var $free_lec_passwd = $regi_form.find('input[id="free_lec_passwd_' + prod_code + '"]');
+        if ($free_lec_passwd.length > 0) {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+
+            if ($free_lec_passwd.val() === '') {
+                alert('보강동영상 비밀번호를 입력해 주세요.');
+                $free_lec_passwd.focus();
+                return;
+            }
+
+            var url = frontUrl('/lecture/checkFreeLecPasswd/prod-code/' + prod_code);
+            var data = $.extend(arrToJson($regi_form.find('input[type="hidden"]').serializeArray()), {
+                'free_lec_passwd': $free_lec_passwd.val()
+            });
+            sendAjax(url, data, function (ret) {
+                if (ret.ret_cd) {
+                    location.href = '{{ site_url('/lecture/show') }}/cate/' + cate_code + '/pattern/' + pattern + '/prod-code/' + prod_code;
+                }
+            }, showAlertError, false, 'POST');
+        } else {
+            location.href = '{{ site_url('/lecture/show') }}/cate/' + cate_code + '/pattern/' + pattern + '/prod-code/' + prod_code;
+        }
+    }
 </script>

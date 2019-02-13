@@ -80,7 +80,7 @@ class BannerRegistModel extends WB_Model
     public function findBannerForModify($arr_condition)
     {
         $column = "
-            A.BIdx, A.SiteCode, A.CateCode, A.BdIdx, A.BannerName, A.DispStartDatm, A.DispEndDatm,
+            A.BIdx, A.SiteCode, A.CateCode, A.CampusCcd, A.BdIdx, A.BannerName, A.DispStartDatm, A.DispEndDatm,
             DATE_FORMAT(A.DispStartDatm, '%Y-%m-%d') AS DispStartDay, DATE_FORMAT(A.DispStartDatm, '%H') AS DispStartHour,
             DATE_FORMAT(A.DispEndDatm, '%Y-%m-%d') AS DispEndDay, DATE_FORMAT(A.DispEndDatm, '%H') AS DispEndHour,
             A.BannerFullPath, A.BannerImgName, A.BannerImgRealName, A.LinkType, A.LinkUrl, A.OrderNum, A.Desc, A.IsUse, A.RegAdminIdx, A.RegDatm, A.UpdAdminIdx, A.UpdDatm,
@@ -220,6 +220,7 @@ class BannerRegistModel extends WB_Model
             $data = [
                 'BdIdx' => $banner_disp_idx,
                 'BannerName' => element('banner_name', $input),
+                'CampusCcd' => element('campus_ccd', $input),
                 'DispStartDatm' => $disp_start_datm,
                 'DispEndDatm' => $disp_end_datm,
                 'LinkType' => element('link_type', $input),

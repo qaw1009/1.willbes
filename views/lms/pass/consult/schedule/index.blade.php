@@ -4,7 +4,7 @@
     <h5>- 학원방문상담 예약일정을 등록하고 관리하는 페이지입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
-        {!! html_def_site_tabs('', 'tabs_site_code', 'tab', true, [], false, $offLineSite_list) !!}
+        {!! html_def_site_tabs('', 'tabs_site_code', 'tab', false, [], false, $offLineSite_list) !!}
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">

@@ -16,9 +16,8 @@ class Regist extends \app\controllers\BaseController
      */
     public function index()
     {
-        /*$test_result = $this->readingRoomModel->refundReadingRoom('200137', '105');
-        print_r($test_result);
-        exit;*/
+        //캠퍼스'Y'상태 사이트 코드 조회
+        $offLineSite_list = $this->siteModel->getOffLineSiteArray();
 
         $mang_type = $this->_req('mang_type');
 
@@ -26,6 +25,7 @@ class Regist extends \app\controllers\BaseController
         $arr_campus = $this->siteModel->getSiteCampusArray('');
 
         $this->load->view("pass/reading_room/regist/index", [
+            'offLineSite_list' => $offLineSite_list,
             'mang_title' => $this->readingRoomModel->arr_mang_title[$mang_type],
             'prod_type' => $this->readingRoomModel->arr_prod_type[$mang_type],
             'default_query_string' => '&mang_type='.$mang_type,
@@ -90,6 +90,9 @@ class Regist extends \app\controllers\BaseController
         $data = null;
         $lr_idx = '';
 
+        //캠퍼스'Y'상태 사이트 코드 조회
+        $offLineSite_list = $this->siteModel->getOffLineSiteArray();
+
         //고객센터 전화번호 조회
         $site_csTel = json_encode($this->siteModel->getSiteArray(false,'CsTel'));
 
@@ -115,6 +118,7 @@ class Regist extends \app\controllers\BaseController
 
         $this->load->view("pass/reading_room/regist/create", [
             'method' => $method,
+            'offLineSite_list' => $offLineSite_list,
             'lr_idx' => $lr_idx,
             'mang_type' => $mang_type,
             'mang_title' => $this->readingRoomModel->arr_mang_title[$mang_type],

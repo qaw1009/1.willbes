@@ -81,13 +81,13 @@
                                         <input type="text" name="wBookPage[]" id="wBookPage{{$loop->index}}" class="form-control" title="북페이지" value="{{ $row['wBookPage'] }}" style="width: 50px"> P
                                     </td>
                                     <td>
-                                        [와이드] <input type="text" name="wWD[]" id="wWD{{$loop->index}}" class="form-control" title="와이드" value="{{ $row['wWD'] }}" style="width: 300px">
+                                        [와이드] <input type="text" name="wWD[]" id="wWD{{$loop->index}}" class="form-control" required="required" title="와이드" value="{{ $row['wWD'] }}" style="width: 300px">
                                         <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodView('WD','{{$loop->index}}')">보기</button>
                                         <BR>
-                                        [고화질] <input type="text" name="wHD[]" id="wHD{{$loop->index}}" class="form-control" required="required" title="고화질" value="{{ $row['wHD'] }}" style="width: 300px">
+                                        [고화질] <input type="text" name="wHD[]" id="wHD{{$loop->index}}" class="form-control" title="고화질" value="{{ $row['wHD'] }}" style="width: 300px">
                                         <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodView('HD','{{$loop->index}}')">보기</button>
                                         <BR>
-                                        [일반화질] <input type="text" name="wSD[]" id="wSD{{$loop->index}}" class="form-control" required="required" title="저화질" value="{{ $row['wSD'] }}" style="width: 300px">
+                                        [일반화질] <input type="text" name="wSD[]" id="wSD{{$loop->index}}" class="form-control"  title="저화질" value="{{ $row['wSD'] }}" style="width: 300px">
                                         <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodView('SD','{{$loop->index}}')">보기</button>
                                     </td>
                                     <td>
@@ -137,13 +137,13 @@
                                         <input type="text" name="wBookPage[]" id="wBookPage{{$i}}" class="form-control" title="북페이지" value="" style="width: 50px"> P
                                     </td>
                                     <td>
-                                        [와이드] <input type="text" name="wWD[]" id="wWD{{$i}}" class="form-control" title="와이드" value="" style="width: 300px">
+                                        [와이드] <input type="text" name="wWD[]" id="wWD{{$i}}" class="form-control" required="required"  title="와이드" value="" style="width: 300px">
                                         <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodView('WD','{{$i}}')">보기</button>
                                         <BR>
-                                        [고화질] <input type="text" name="wHD[]" id="wHD{{$i}}" class="form-control" required="required" title="고화질" value="" style="width: 300px">
+                                        [고화질] <input type="text" name="wHD[]" id="wHD{{$i}}" class="form-control"  title="고화질" value="" style="width: 300px">
                                         <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodView('HD','{{$i}}')">보기</button>
                                         <BR>
-                                        [일반화질] <input type="text" name="wSD[]" id="wSD{{$i}}" class="form-control" required="required" title="일반화질" value="" style="width: 300px">
+                                        [일반화질] <input type="text" name="wSD[]" id="wSD{{$i}}" class="form-control" title="일반화질" value="" style="width: 300px">
                                         <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodView('SD','{{$i}}')">보기</button>
                                     </td>
                                     <td>
@@ -179,12 +179,12 @@
             <script type="text/javascript">
 
                 var $regi_form = $('#_regi_form');
-                var $datatable;
+                var $datatable_modal;
                 var $list_table = $('#list_table');
 
                 $(document).ready(function() {
 
-                    $datatable = $list_table.DataTable({
+                    $datatable_modal = $list_table.DataTable({
                         responsive: false,
                         serverSide: false,
                         ajax : false,
@@ -219,13 +219,13 @@
                                 +'<input type="text" name="wBookPage[]" id="wBookPage'+seq+'" class="form-control" title="북페이지" value="" style="width: 50px"> P'
                                 +'</td>'
                                 +'<td>'
-                                +'[와이드] <input type="text" name="wWD[]" id="wWD'+seq+'" class="form-control" title="와이드" value="" style="width: 300px">'
+                                +'[와이드] <input type="text" name="wWD[]" id="wWD'+seq+'" class="form-control" title="와이드" required="required" value="" style="width: 300px">'
                                 +'<button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodView(\'WD\',\''+seq+'\')">보기</button>'
                                 +'<BR>'
-                                +'[고화질] <input type="text" name="wHD[]" id="wHD'+seq+'" class="form-control" required="required" title="고화질" value="" style="width: 300px">'
+                                +'[고화질] <input type="text" name="wHD[]" id="wHD'+seq+'" class="form-control" title="고화질" value="" style="width: 300px">'
                                 +'<button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodView(\'HD\',\''+seq+'\')">보기</button>'
                                 +'<BR>'
-                                +'[일반화질] <input type="text" name="wSD[]" id="wSD'+seq+'" class="form-control" required="required" title="일반화질" value="" style="width: 300px">'
+                                +'[일반화질] <input type="text" name="wSD[]" id="wSD'+seq+'" class="form-control" title="일반화질" value="" style="width: 300px">'
                                 +'<button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodView(\'SD\',\''+seq+'\')">보기</button>'
                                 +'</td>'
                                 +'<td>'
@@ -259,8 +259,9 @@
                         ajaxSubmit($regi_form, _url, function(ret) {
                             if(ret.ret_cd) {
                                 notifyAlert('success', '알림', ret.ret_msg);
-                                $("#pop_modal").modal('toggle');
-                                location.reload();
+                                //$("#pop_modal").modal('toggle');
+                                //location.reload();
+                                $datatable.draw();
                             }
                         }, showValidateError, null, false, 'alert');
                     });
@@ -291,10 +292,10 @@
                             if (ret.ret_cd) {
                                 notifyAlert('success', '알림', ret.ret_msg);
                                 $("#pop_modal").modal('toggle');
-                                location.reload();
+                                //location.reload();
+                                $datatable.draw();
                             }
                         }, showError, false, 'POST');
-
 
                     }
                 }

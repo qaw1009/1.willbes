@@ -62,9 +62,14 @@ class UnitModel extends WB_Model
                 $wUnitName = element('wUnitName', $input);
                 $wRuntime = element('wRuntime', $input);
                 $wBookPage = element('wBookPage', $input);
+
+                $wWD = element('wWD', $input);
                 $wHD = element('wHD', $input);
                 $wSD = element('wSD', $input);
-                $wWD = element('wWD', $input);
+
+                //echo var_dump($wWD);exit;
+
+
                 $wShootingDate = element('wShootingDate', $input);
                 $wProfIdx = element('wProfIdx', $input);
                 $wContentSizeCcd = element('wContentSizeCcd', $input);
@@ -99,6 +104,18 @@ class UnitModel extends WB_Model
 
                 for($i=0;$i<count($seq);$i++) {
 
+                    if(empty($wHD[$i])) {
+                        $wHD_Chg = str_replace("_1.mp4", "_2.mp4",$wWD[$i]);
+                    } else {
+                        $wHD_Chg =  $wHD[$i];
+                    }
+
+                    if(empty($wSD[$i])) {
+                        $wSD_Chg = str_replace("_1.mp4", "_3.mp4",$wWD[$i]);
+                    } else {
+                        $wSD_Chg =  $wSD[$i];
+                    }
+
                         // 기본항목
                         $input_data = [
                             'wUnitNum' => $wUnitNum[$i]
@@ -106,9 +123,11 @@ class UnitModel extends WB_Model
                             ,'wUnitName' => $wUnitName[$i]
                             ,'wRuntime' => $wRuntime[$i]
                             ,'wBookPage' => $wBookPage[$i]
-                            ,'wHD' => $wHD[$i]
-                            ,'wSD' => $wSD[$i]
+
                             ,'wWD' => $wWD[$i]
+                            ,'wHD' => $wHD_Chg
+                            ,'wSD' => $wSD_Chg
+
                             ,'wShootingDate' => $wShootingDate[$i]
                             ,'wProfIdx' => $wProfIdx[$i]
                             ,'wContentTypeCcd' => '106001'         //강의유형 : 임의로 고정

@@ -41,13 +41,13 @@
                                         </div>
                                         <div class="Name">{{ $data['wProfName'] }} 교수님</div>
                                     </li>
-                                    @if($data['StudyCommentData'] != 'N')
+                                    @if(empty($tab_data['study_comment']) === false)
                                         <li class="Reply tx-blue">
                                             <strong>수강후기</strong>
                                             <div class="sliderUp vSlider">
                                                 <div class="sliderVertical roll-Reply tx-dark-black">
-                                                    @foreach(json_decode($data['StudyCommentData'], true) as $idx => $row)
-                                                        <div>{{ $row['Title'] }}</div>
+                                                    @foreach($tab_data['study_comment'] as $idx => $row)
+                                                        <div>{{ hpSubString($row['Title'], 0, 25, '...') }}</div>
                                                     @endforeach
                                                 </div>
                                             </div>

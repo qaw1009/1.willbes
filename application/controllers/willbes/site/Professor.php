@@ -208,12 +208,8 @@ class Professor extends \app\controllers\FrontController
         $data['new_product'] = $this->lectureFModel->listSalesProduct($learn_pattern, false, $arr_condition, 2, 0, ['ProdCode' => 'desc']);
 
         // 수강후기 조회
-        $data['study_comment'] = $this->professorFModel->findProfessorStudyCommentData($prof_idx, $this->_site_code, $this->_def_cate_code, element('subject_idx', $arr_input), 3);
-        if ($data['study_comment'] != 'N') {
-            $data['study_comment'] = json_decode($data['study_comment'], true);
-        } else {
-            $data['study_comment'] = [];
-        }
+        $data['study_comment'] = $this->professorFModel->findProfessorStudyCommentData($prof_idx, $this->_site_code, $this->_def_cate_code, element('subject_idx', $arr_input), 2);
+        $data['study_comment'] = $data['study_comment'] != 'N' ? json_decode($data['study_comment'], true) : [];
 
         return [
             'new_product' => element('new_product', $data, []),
@@ -260,6 +256,10 @@ class Professor extends \app\controllers\FrontController
             $data['off_pack_lecture'] = $this->_getOffLectureData('off_pack_lecture', $arr_site_code['off'], $arr_prof_idx['off'], $arr_input);
         }
 
+        // 수강후기 조회
+        $data['study_comment'] = $this->professorFModel->findProfessorStudyCommentData($prof_idx, $this->_site_code, $this->_def_cate_code, element('subject_idx', $arr_input), 3);
+        $data['study_comment'] = $data['study_comment'] != 'N' ? json_decode($data['study_comment'], true) : [];
+
         return [
             'on_course' => element('on_course', $data, []),
             'on_lecture' => element('on_lecture', $data, []),
@@ -267,6 +267,7 @@ class Professor extends \app\controllers\FrontController
             'on_pack_choice' => element('on_pack_choice', $data, []),
             'off_lecture' => element('off_lecture', $data, []),
             'off_pack_lecture' => element('off_pack_lecture', $data, []),
+            'study_comment' => element('study_comment', $data, []),
         ];
     }
 

@@ -25,7 +25,7 @@
         <div class="will-Tit NG">수강후기<a href="#none" class="f_right btn-study" data-board-idx=""><img src="{{ img_url('prof/icon_add.png') }}" alt="더보기"></a></div>
         <ul class="List-Table GM tx-gray">
             @foreach($tab_data['study_comment'] as $idx => $row)
-                <li><img src="{{ img_url('sub/star' . $row['LecScore']. '.gif') }}"><a href="#none" class="btn-study" data-board-idx="{{$row['BoardIdx']}}">{{ hpSubString($row['Title'],0,25,'...') }}</a></li>
+                <li><img src="{{ img_url('sub/star' . $row['LecScore']. '.gif') }}"><a href="#none" class="btn-study" data-board-idx="{{$row['BoardIdx']}}">{{ hpSubString($row['Title'], 0, 25, '...') }}</a></li>
             @endforeach
         </ul>
     </div>

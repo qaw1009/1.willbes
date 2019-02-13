@@ -52,7 +52,7 @@
     <div class="Layer-Tit tx-dark-black NG">수강확인증 출력</div>
     <div class="PASSZONE-List widthAutoFull">
         <div class="PASSZONE-Lec-Section">
-            <div class="Search-Result strong mt40 mb15 tx-gray">· 수강확인증</div>
+            <div class="Search-Result strong mt40 mb15 tx-gray">· 수강확인증 <a class="aBox waitBox tx-sky-blue NSK f_right" style="margin-top: -5px;" href="#none" onclick="fnPrint(this);">인쇄하기</a></div>
             <div class="LeclistTable bdt-gray">
                 <table cellspacing="0" cellpadding="0" class="listTable userMemoTable certifiTable under-gray tx-gray">
                     <colgroup>
@@ -167,7 +167,6 @@
     </div>
     <!-- PASSZONE-List -->
 </div>
-<a class="aBox waitBox tx-sky-blue NSK f_right" style="margin-top: -5px;" href="#none" onclick="fnPrint(this);">인쇄하기</a>
 <script type="text/javascript">
     function fnPrint(obj)
     {

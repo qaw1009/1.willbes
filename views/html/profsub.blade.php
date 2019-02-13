@@ -160,8 +160,11 @@
                     <li>
                         <iframe src="https://www.youtube.com/embed/sVr6LYsbzek?rel=0" frameborder="0" allowfullscreen=""></iframe>
                     </li>
-                    <li>
-                        <a href="#none"><img src="{{ img_url('prof/bnrA01.jpg') }}" alt="배너명"></a>
+                    <li class="bSlider">
+                        <div class="slider">
+                            <div><a href="#none"><img src="{{ img_url('prof/bnrA01.jpg') }}" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="{{ img_url('prof/bnrA02.jpg') }}" alt="배너명"></a></div>
+                        </div>
                     </li>
                 </ul>
                 
@@ -730,8 +733,11 @@
                         </div>
                         <!-- willbes-NoticeWrap -->
 
-                        <div class="c_both pt30">
-                            <a href="#none"><img src="{{ img_url('prof/bnrB01.jpg') }}" alt="배너명"></a>
+                        <div class="prof-banner02 bSlider">
+                            <div class="slider">
+                                <div><a href="#none"><img src="{{ img_url('prof/bnrB01.jpg') }}" alt="배너명"></a></div>
+                                <div><a href="#none"><img src="{{ img_url('prof/bnrB02.jpg') }}" alt="배너명"></a></div>
+                            </div>
                         </div>
                         <!-- willbes-Bnr -->
 

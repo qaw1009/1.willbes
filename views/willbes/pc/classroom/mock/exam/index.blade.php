@@ -36,10 +36,10 @@
 
                     <div class="willbes-LecreplyList tx-gray c_both mt-zero">
                     <span class="willbes-Lec-Search willbes-SelectBox mb20 GM f_left">
-                        <select id="s_IsStatus" name="s_IsStatus" title="all" class="seleAll mr10 h30 f_left"  onchange="goUrl('s_IsStatus', document.getElementById('s_IsStatus').value);">
-                            <option value="" {{ element('s_IsStatus', $arr_input) == '' ? 'selected':''}}>응시상태</option>
-                            <option value="N" {{ element('s_IsStatus', $arr_input) == 'N' ? 'selected':''}}>미응시</option>
-                            <option value="Y" {{ element('s_IsStatus', $arr_input) == 'Y' ? 'selected':''}}>응시완료</option>
+                        <select id="s_IsStatus" name="s_IsTake" title="all" class="seleAll mr10 h30 f_left"  onchange="goUrl('s_IsTake', document.getElementById('s_IsTake').value);">
+                            <option value="" {{ element('s_IsTake', $arr_input) == '' ? 'selected':''}}>응시상태</option>
+                            <option value="N" {{ element('s_IsTake', $arr_input) == 'N' ? 'selected':''}}>미응시</option>
+                            <option value="Y" {{ element('s_IsTake', $arr_input) == 'Y' ? 'selected':''}}>응시완료</option>
                         </select>
                     </span>
 
@@ -92,7 +92,7 @@
                                         <td class="w-list">
                                             {{hpSubString($row['ProdName'],0,40,'...')}}
                                         </td>
-                                        <td class="w-state">@if($row['TakeStartDatm'] == 'Y') 응시 @else 미응시 @endif</td>
+                                        <td class="w-state">@if($row['MrIsStatus'] == 'Y') 응시 @else 미응시 @endif</td>
                                         <td class="w-dday">
                                             @if(empty($row['IsDate']) === false) {{ $row['IsDate'] }} @else @endif
                                         </td>

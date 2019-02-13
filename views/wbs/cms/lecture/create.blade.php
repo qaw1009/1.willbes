@@ -305,7 +305,7 @@
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
-                        location.replace('{{ site_url('/cms/lecture/index') }}' + getQueryString());
+                        location.replace('{{ site_url('/cms/lecture/create/') }}'+ret.ret_data +'/'+ getQueryString());
                     }
                 }, showValidateError, null, false, 'alert');
             });

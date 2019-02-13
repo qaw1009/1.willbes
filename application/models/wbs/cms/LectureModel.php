@@ -167,7 +167,8 @@ class LectureModel extends WB_Model
 			$this->_conn->trans_rollback();
 			return error_result($e);
 		}
-		return true;
+		//return true;
+        return ['ret_cd' => true, 'ret_data' => $lec_idx];
 	}
 
     /**
@@ -226,7 +227,7 @@ class LectureModel extends WB_Model
             return error_result($e);
         }
 
-        return true;
+        return ['ret_cd' => true, 'ret_data' => $lec_idx];
     }
 
 

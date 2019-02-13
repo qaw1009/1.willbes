@@ -156,7 +156,7 @@ class Lecture extends \app\controllers\BaseController
 
 		$result = $this->lectureModel->{$method.'Lecture'}($this->_reqP(null,false));
 
-		$this->json_result($result,'저장 되었습니다.',$result);
+		$this->json_result($result['ret_cd'],'저장 되었습니다.',$result['ret_data'],$result['ret_data']);
 	}
 
     /**

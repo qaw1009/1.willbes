@@ -44,7 +44,7 @@
                     <thead class="bg-white-gray">
                     <tr>
                         <th class="text-center">
-                            <input type="checkbox" id="_is_all" class="flat" value="Y">
+                            @if(!$isSingle)<input type="checkbox" id="_is_all" class="flat" value="Y"> @endif
                         </th>
                         <th>카테고리 정보</th>
                         <th class="text-center">사용여부</th>

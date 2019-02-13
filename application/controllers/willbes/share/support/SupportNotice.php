@@ -48,7 +48,6 @@ class SupportNotice extends BaseSupport
                 'b.BmIdx' => $this->_bm_idx
                 ,'b.IsUse' => 'Y'
                 ,'b.SiteCode' => $this->_site_code
-                ,'b.CampusCcd' => $s_campus
                 ,'b.ProfIdx' => $prof_idx
                 ,'b.SubjectIdx' => $subject_idx
             ],
@@ -62,6 +61,10 @@ class SupportNotice extends BaseSupport
                 ]
             ]
         ];
+
+        if (empty($s_campus) === false) {
+            $arr_condition = array_merge_recursive($arr_condition, ['RAW' => ['(b.CampusCcd = ' => '"605999" or b.CampusCcd = "'.$s_campus.'")']]);
+        }
 
         $column = 'b.BoardIdx,b.CampusCcd,b.TypeCcd,b.IsBest,b.AreaCcd
                        ,b.Title,b.Content, (b.ReadCnt + b.SettingReadCnt) as TotalReadCnt

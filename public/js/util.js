@@ -386,6 +386,16 @@ function setMailDomain(select, target, data) {
 }
 
 /**
+ * 사이트 URL 생성 (site_url 함수와 동일한 역할 수행)
+ * @param uri
+ * @returns {string}
+ */
+function siteUrl(uri) {
+    var url = location.protocol + '//' + location.host;
+    return url + uri;
+}
+
+/**
  * 관리자 메뉴 (사이드바) 강제 Active
  * @param menu_link
  */

@@ -1122,7 +1122,7 @@ class MockExamModel extends WB_Model
         $where = "  WHERE AP.MpIdx = ".$MpIdx;
 
         if($MalIdxSet) $where .= " AND MQ.MalIdx in (".$MalIdxSet.")";
-
+        echo "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
         $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
         return $query->result_array();
 

@@ -1924,7 +1924,7 @@ table.auTable tr td {
     padding: 0 10px;
     vertical-align: baseline;
 }
-.Depth .depth strong:last-child {
+.Depth .depth:last-child strong {
     color: #2784d2;
 }
 
@@ -1979,6 +1979,9 @@ table.auTable tr td {
     display: block;
     font-size: 13px;
     color: #3a3a3a;
+}
+.Lnb .lnb-List .lnb-List-Depth dl dt a.active {
+    color: #2784d2;
 }
 
 /* subContainer : Content */

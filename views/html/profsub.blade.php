@@ -65,9 +65,13 @@
     </div>
     <div class="Depth">
         <img src="{{ img_url('sub/icon_home.gif') }}"> 
-        <span class="1depth">
+        <span class="depth">
             <span class="depth-Arrow">></span><strong>교수진소개</strong>
+        </span>
+        <span class="depth">
             <span class="depth-Arrow">></span><strong>국어</strong>
+        </span>
+        <span class="depth">
             <span class="depth-Arrow">></span><strong>정채영 교수님</strong>
         </span>
     </div>
@@ -79,7 +83,7 @@
             </div>
             <div class="lnb-List-Depth">
                 <dl>
-                    <dt><a href="#none">정채영</a></dt>
+                    <dt><a href="#none" class="active">정채영</a></dt>
                     <dt><a href="#none">기미진</a></dt>
                     <dt><a href="#none">김세령</a></dt>
                     <dt><a href="#none">오대혁</a></dt>

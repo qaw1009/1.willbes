@@ -14,7 +14,7 @@
                     <a href="#none">교수진소개</a>
                 </li>
                 <li class="dropdown">
-                    <a href="#none">종합반</a>
+                    <a href="#none">PASS</a>
                     <div class="drop-Box list-drop-Box">
                         <ul>
                             <li class="Tit">PASS</li>
@@ -25,7 +25,7 @@
                     </div>
                 </li>
                 <li class="dropdown">
-                    <a href="#none">단과</a>
+                    <a href="#none">패키지</a>
                     <div class="drop-Box list-drop-Box">
                         <ul>
                         <li class="Tit">패키지</li>
@@ -36,19 +36,16 @@
                     </div>
                 </li>
                 <li>
+                    <a href="#none">단강좌</a>
+                </li>
+                <li>
+                    <a href="#none">무료강좌</a>
+                </li>
+                <li>
                     <a href="#none">수험정보</a>
                 </li>
                 <li>
-                    <a href="#none">상담실</a>
-                </li>
-                <li>
-                    <a href="#none">학원안내</a>
-                </li>
-                <li>
                     <a href="#none">이벤트</a>
-                </li>
-                <li>
-                    <a href="#none">전국캠퍼스</a>
                 </li>
                 <li class="Acad">
                     <a href="#none">신광은경찰 온라인 <span class="arrow-Btn">></span></a>

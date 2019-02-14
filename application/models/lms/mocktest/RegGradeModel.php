@@ -694,7 +694,6 @@ class RegGradeModel extends WB_Model
                     $obder_by = " GROUP BY MemIdx  ORDER BY OrgPoint DESC";
 
                     $where = "WHERE MP.MpIdx = " . $vmp;
-                    //echo "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
                     $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
 
                     $result = $query->result_array();
@@ -727,19 +726,31 @@ class RegGradeModel extends WB_Model
                             $pcnt = $arrMP[$vmp]['CNT'];
 
                             //표준편차
-                            $tempRes = round(sqrt($sumAVG / ($pcnt - 1)), 2);
+                            if($sumAVG != 0 && $pcnt != 1){
+                                $tempRes = round(sqrt($sumAVG / ($pcnt - 1)), 2);
+                            } else {
+                                $tempRes = 0;
+                            }
 
                             //조정점수
-                            $AdjustPoint = round((($g_num - $wonAVG) / $tempRes) * 10 + 50, 2);
-
+                            if($g_num - $wonAVG != 0 && $tempRes != 0){
+                                $AdjustPoint = round((($g_num - $wonAVG) / $tempRes) * 10 + 50, 2);
+                            } else {
+                                $AdjustPoint = 50;
+                            }
                         } else {
                             // 원점수평균 = 선택과목 점수총합 / 응시자수
                             $sumAVG = $arrMP[$vmp]['SUMAVG'];
 
                             // 응시자수
                             $pcnt = $arrMP[$vmp]['CNT'];
+
                             //표준편차
-                            $tempRes = round(sqrt($sumAVG / ($pcnt - 1)), 2);
+                            if($sumAVG != 0 && $pcnt != 1){
+                                $tempRes = round(sqrt($sumAVG / ($pcnt - 1)), 2);
+                            } else {
+                                $tempRes = 0;
+                            }
 
                             //필수과목일경우 가산점만 반영한다.
                             $AdjustPoint = round($val['Res'], 2);

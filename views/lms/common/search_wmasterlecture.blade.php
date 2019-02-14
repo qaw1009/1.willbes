@@ -48,7 +48,6 @@
                         @endforeach
                     </select>
                     <select class="form-control" id="search_is_use" name="search_is_use" style="width:110px;">
-                        <option value="">사용여부</option>
                         <option value="Y">사용</option>
                         <option value="N">미사용</option>
                     </select>

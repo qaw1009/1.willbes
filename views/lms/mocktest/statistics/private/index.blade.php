@@ -155,7 +155,9 @@
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                         }},
-                    {'data' : 'MemName', 'class': 'text-center'},
+                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                            return '<span class="">' + row.MemName + '(' + row.MemId + ')</span>';
+                        }},
                     {'data' : 'Phone', 'class': 'text-center'},
                     {'data' : 'TakeNumber', 'class': 'text-center'},
                     {'data' : 'TakeFormType', 'class': 'text-center'},

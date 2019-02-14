@@ -39,7 +39,7 @@ function fnMobile($info_url, $license)
     StarPlayerApp.ios_version = "1.0.0";
     StarPlayerApp.referer = window.location.href;
     StarPlayerApp.android_referer_return = "false";
-    StarPlayerApp.debug = "false";
+    StarPlayerApp.debug = "true";
     StarPlayerApp.pmp = "false";
 
     checkInstalled2();

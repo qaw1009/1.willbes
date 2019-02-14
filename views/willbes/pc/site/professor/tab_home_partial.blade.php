@@ -36,8 +36,11 @@
 <!-- willbes-NoticeWrap -->
 
 <!-- willbes-Bnr -->
-<div class="c_both pt30">
-    <a href="#none"><img src="{{ img_url('prof/bnrB01.jpg') }}" alt="배너명"></a>
+<div class="prof-banner02 bSlider">
+    <div class="slider">
+        <div><a href="#none"><img src="{{ img_url('prof/bnrB01.jpg') }}" alt="배너명"></a></div>
+        <div><a href="#none"><img src="{{ img_url('prof/bnrB02.jpg') }}" alt="배너명"></a></div>
+    </div>
 </div>
 <!-- // willbes-Bnr -->
 

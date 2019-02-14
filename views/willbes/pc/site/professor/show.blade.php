@@ -51,10 +51,13 @@
 
                 <ul class="prof-banner01">
                     <li>
-                        <iframe src="https://www.youtube.com/embed/sVr6LYsbzek?rel=0" frameborder="0" allowfullscreen=""></iframe>
+                        <iframe src="https://www.youtube.com/embed/sVr6LYsbzek?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
                     </li>
-                    <li>
-                        <a href="#none"><img src="{{ img_url('prof/bnrA01.jpg') }}" alt="배너명"></a>
+                    <li class="bSlider">
+                        <div class="slider">
+                            <div><a href="#none"><img src="{{ img_url('prof/bnrA01.jpg') }}" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="{{ img_url('prof/bnrA02.jpg') }}" alt="배너명"></a></div>
+                        </div>
                     </li>
                 </ul>
 

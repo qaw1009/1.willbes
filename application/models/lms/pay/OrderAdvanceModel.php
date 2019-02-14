@@ -15,6 +15,7 @@ class OrderAdvanceModel extends BaseOrderModel
 
     /**
      * 온라인강좌 선수금 조회
+     * TODO : lms_my_lecture > IX_lms_My_Lecture_LecEndDate (LecEndDate) 인덱스 삭제 또는 명칭 변경 불가 (인덱스 강제적용)
      * @param string $base_date [기준일자]
      * @param bool|string $is_count [조회구분, true : 카운트, false : 목록, excel : 엑셀다운로드]
      * @param array $arr_condition
@@ -210,6 +211,7 @@ class OrderAdvanceModel extends BaseOrderModel
 
     /**
      * 학원강좌 선수금 조회
+     * TODO : lms_my_lecture > IX_lms_My_Lecture_LecEndDate (LecEndDate) 인덱스 삭제 또는 명칭 변경 불가 (인덱스 강제적용)
      * @param string $base_date [기준일자]
      * @param bool|string $is_count [조회구분, true : 카운트, false : 목록, excel : 엑셀다운로드]
      * @param array $arr_condition

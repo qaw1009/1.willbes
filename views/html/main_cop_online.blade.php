@@ -379,13 +379,56 @@
                 <div class="small NSK-Thin">여러분의 꿈과 목표를 위해,</div>
                 <div class="big NSK-Black"><span class="cop-color">오늘도 최선을 다하는</span> 윌비스 신광은 경찰팀</div>
             </div>
-            <ul class="ProfBox ProfCopBox mt60 mb100">
-                <li><a href="https://cop.dev.willbes.net/professor/show/cate/3001/prof-idx/50082/?subject_idx=10028&subject_name=%ED%98%95%EC%82%AC%EC%86%8C%EC%86%A1%EB%B2%95" target="_blank"><img src="{{ img_url('cop/prof/prof_190101.png') }}"></a></li>
-                <li><a href="https://cop.dev.willbes.net/professor/show/cate/3001/prof-idx/50083/?subject_idx=10030&subject_name=%EA%B2%BD%EC%B0%B0%ED%95%99%EA%B0%9C%EB%A1%A0" target="_blank"><img src="{{ img_url('cop/prof/prof_190102.png') }}"></a></li>
-                <li><a href="https://cop.dev.willbes.net/professor/show/cate/3001/prof-idx/50087/?subject_idx=10032&subject_name=%ED%98%95%EB%B2%95" target="_blank"><img src="{{ img_url('cop/prof/prof_190103.png') }}"></a></li>
-                <li><a href="https://cop.dev.willbes.net/professor/show/cate/3001/prof-idx/50088/?subject_idx=10008&subject_name=%EC%98%81%EC%96%B4" target="_blank"><img src="{{ img_url('cop/prof/prof_190104.png') }}"></a></li>
-                <li><a href="https://cop.dev.willbes.net/professor/show/cate/3001/prof-idx/50089/?subject_idx=10011&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC" target="_blank"><img src="{{ img_url('cop/prof/prof_190105.png') }}"></a></li>
-                <li><a href="https://cop.dev.willbes.net/professor/show/cate/3001/prof-idx/50090/?subject_idx=10011&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC" target="_blank"><img src="{{ img_url('cop/prof/prof_190106.png') }}"></a></li>
+            <ul class="ProfCopBox mt60 mb100">
+                <li>
+                    <img src="{{ img_url('cop/prof/prof_ske.jpg') }}" alt="신광은">
+                    <ul class="ProfBtns">
+                        <li><a href="#none">▶</a></li>
+                        <li><a href="#none" target="_blank">교수소개</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <img src="{{ img_url('cop/prof/prof_jjh.jpg') }}" alt="장정훈">
+                    <ul class="ProfBtns">
+                        <li><a href="#none">▶</a></li>
+                        <li><a href="#none" target="_blank">교수소개</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <img src="{{ img_url('cop/prof/prof_kwu.jpg') }}" alt="김원욱">
+                    <ul class="ProfBtns">
+                        <li><a href="#none">▶</a></li>
+                        <li><a href="#none" target="_blank">교수소개</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <img src="{{ img_url('cop/prof/prof_hsm.jpg') }}" alt="하승민">
+                    <ul class="ProfBtns">
+                        <li><a href="#none">▶</a></li>
+                        <li><a href="#none" target="_blank">교수소개</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <img src="{{ img_url('cop/prof/prof_otj.jpg') }}" alt="오태진">
+                    <ul class="ProfBtns">
+                        <li><a href="#none">▶</a></li>
+                        <li><a href="#none" target="_blank">교수소개</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <img src="{{ img_url('cop/prof/prof_wyc.jpg') }}" alt="원유철">
+                    <ul class="ProfBtns">
+                        <li><a href="#none">▶</a></li>
+                        <li><a href="#none" target="_blank">교수소개</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <img src="{{ img_url('cop/prof/prof_khj.jpg') }}" alt="김현정">
+                    <ul class="ProfBtns">
+                        <li><a href="#none">▶</a></li>
+                        <li><a href="#none" target="_blank">교수소개</a></li>
+                    </ul>
+                </li>
                 <!--
                 <li class="p_re">         
                     <div class="cSlider copSlider AbsControls">

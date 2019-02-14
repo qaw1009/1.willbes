@@ -944,6 +944,10 @@ class Player extends \app\controllers\FrontController
             $PlayType = 'S';
         }
 
+        if(empty($wUnitIdx) == true){
+            $this->StarplayerResult(true, '수강할 회차 정보가 없습니다.');
+        }
+
         // 수강가능인지 체크
         $lec = $this->classroomFModel->getLecture([
             'EQ' => [
@@ -1041,7 +1045,7 @@ class Player extends \app\controllers\FrontController
 
         // 커리큘럼 읽어오기
         $data = $this->classroomFModel->getCurriculum($cond_arr);
-logger($cond_arr);
+logger($wUnitIdx);
         if(empty($data) == true){
             $this->StarplayerResult(true,'강의 정보가 없습니다.');
         }

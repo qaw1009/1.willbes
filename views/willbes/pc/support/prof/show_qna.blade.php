@@ -55,7 +55,8 @@
             </tbody>
         </table>
 
-        @if($data['RegType'] == 0)
+        {{--@if($data['RegType'] == 0)--}}
+        @if($data['RegType'] == 0 && $data['ReplyStatusCcd'] == $reply_type_complete)
         <!-- 답변 -->
             <table cellspacing="0" cellpadding="0" class="listTable upper-gray bdb-gray tx-gray">
                 <colgroup>

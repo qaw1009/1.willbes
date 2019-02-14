@@ -200,7 +200,7 @@ Class PackageUser extends \app\controllers\BaseController
 
         $result = $this->packageUserModel->_prodCopy($prodcode,'packageuser');
         //var_dump($result);exit;
-        $this->json_result($result,'저장 되었습니다.',$result);
+        $this->json_result($result,'복사 되었습니다.',$result);
     }
 
 }

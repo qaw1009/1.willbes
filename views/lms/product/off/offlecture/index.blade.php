@@ -296,18 +296,21 @@
                     return false;
                 }
 
-                var data = {
-                    '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
-                    '_method' : 'PUT',
-                    'prodCode' : $('input:radio[name="copyProdCode"]:checked').val()
-                };
+                if(confirm("해당 강좌를 복사하시겠습니까?")) {
+                    var data = {
+                        '{{ csrf_token_name() }}': $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                        '_method': 'PUT',
+                        'prodCode': $('input:radio[name="copyProdCode"]:checked').val()
+                    };
 
-                sendAjax('{{ site_url('/product/off/offLecture/copy') }}', data, function(ret) {
-                    if (ret.ret_cd) {
-                        notifyAlert('success', '알림', ret.ret_msg);
-                        $datatable.draw();
-                    }
-                }, showError, false, 'POST');
+                    sendAjax('{{ site_url('/product/off/offLecture/copy') }}', data, function (ret) {
+                        if (ret.ret_cd) {
+                            //notifyAlert('success', '알림', ret.ret_msg);
+                            alert(ret.ret_msg);
+                            $datatable.draw();
+                        }
+                    }, showError, false, 'POST');
+                }
 
             });
 

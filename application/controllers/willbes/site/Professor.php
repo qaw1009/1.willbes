@@ -143,6 +143,9 @@ class Professor extends \app\controllers\FrontController
         // 교수 참조 정보
         $data['ProfReferData'] = $data['ProfReferData'] == 'N' ? [] : json_decode($data['ProfReferData'], true);
 
+        // 교수 배너 정보
+        $data['ProfBnrData'] = $this->professorFModel->listProfessorBanner($prof_idx);
+
         // 베스트강좌 상품 조회
         $arr_condition = [
             'EQ' => ['ProfIdx' => $prof_idx, 'SiteCode' => $this->_site_code, 'SubjectIdx' => element('subject_idx', $arr_input), 'IsBest' => 'Y'],
@@ -383,12 +386,19 @@ class Professor extends \app\controllers\FrontController
         // 온라인, 학원 교수식별자 조회 (온라인 : on => 50004, 학원 : off => 50079)
         $arr_prof_idx = $this->professorFModel->getProfIdxBySiteGroupCode($wprof_idx, $site_group_code);
 
-        $data = [];
+        $data['on_free_lecture'] = [];
         if (empty($arr_prof_idx['on']) === false) {
-            $data = $this->_getOnLectureData('on_free_lecture', $arr_site_code['on'], $arr_prof_idx['on'], $arr_input);
+            $data['on_free_lecture'] = $this->_getOnLectureData('on_free_lecture', $arr_site_code['on'], $arr_prof_idx['on'], $arr_input);
         }
 
-        return $data;
+        // 수강후기 조회
+        $data['study_comment'] = $this->professorFModel->findProfessorStudyCommentData($prof_idx, $this->_site_code, $this->_def_cate_code, element('subject_idx', $arr_input), 3);
+        $data['study_comment'] = $data['study_comment'] != 'N' ? json_decode($data['study_comment'], true) : [];
+
+        return [
+            'on_free_lecture' => element('on_free_lecture', $data, []),
+            'study_comment' => element('study_comment', $data, []),
+        ];
     }
 
     /**

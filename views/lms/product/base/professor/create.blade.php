@@ -267,11 +267,18 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="prof_index_img">교수영역 이미지
+                    <label class="control-label col-md-2" for="yt_url">대표영상 (유튜브)
+                    </label>
+                    <div class="col-md-5">
+                        <input type="text" id="yt_url" name="yt_url" class="form-control optional" pattern="url" title="대표영상" value="{{ $data['yt_url'] or '' }}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="prof_index_img">교수영역 이미지 (jpg, png)
                     </label>
                     <div class="col-md-9">
                         <div class="row">
-                            <div class="control-label col-md-2">교수 인덱스 (00X00, jpg, png)
+                            <div class="control-label col-md-2">교수 인덱스 (227X227)
                             </div>
                             <div class="col-md-5">
                                 <input type="file" id="prof_index_img" name="prof_index_img" class="form-control" title="교수 인덱스 이미지"/>
@@ -283,7 +290,7 @@
                             </div>
                         </div>
                         <div class="row mt-5">
-                            <div class="control-label col-md-2">교수 상세 (00X00, jpg, png)
+                            <div class="control-label col-md-2">교수 상세 (348X461)
                             </div>
                             <div class="col-md-5">
                                 <input type="file" id="prof_detail_img" name="prof_detail_img" class="form-control" title="교수 상세 이미지"/>
@@ -295,7 +302,7 @@
                             </div>
                         </div>
                         <div class="row mt-5">
-                            <div class="control-label col-md-2">강좌 리스트 (00X00, jpg, png)
+                            <div class="control-label col-md-2">강좌 리스트 (104X104)
                             </div>
                             <div class="col-md-5">
                                 <input type="file" id="lec_list_img" name="lec_list_img" class="form-control" title="강좌 리스트 이미지"/>
@@ -307,7 +314,7 @@
                             </div>
                         </div>
                         <div class="row mt-5">
-                            <div class="control-label col-md-2">강좌 상세 (00X00, jpg, png)
+                            <div class="control-label col-md-2">강좌 상세 (280X290)
                             </div>
                             <div class="col-md-5">
                                 <input type="file" id="lec_detail_img" name="lec_detail_img" class="form-control" title="강좌 상세 이미지"/>
@@ -319,10 +326,10 @@
                             </div>
                         </div>
                         <div class="row mt-5">
-                            <div class="control-label col-md-2">수강후기 (00X00, jpg, png)
+                            <div class="control-label col-md-2">온에어 (175X208)
                             </div>
                             <div class="col-md-5">
-                                <input type="file" id="lec_review_img" name="lec_review_img" class="form-control" title="수강후기 이미지"/>
+                                <input type="file" id="lec_review_img" name="lec_review_img" class="form-control" title="온에어 이미지"/>
                             </div>
                             <div class="col-md-5 pl-0">
                                 @if(empty($data['lec_review_img']) === false)
@@ -330,6 +337,103 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="row mt-5">
+                            <div class="control-label col-md-2">내강의실 상세 (145X152)
+                            </div>
+                            <div class="col-md-5">
+                                <input type="file" id="class_detail_img" name="class_detail_img" class="form-control" title="내강의실 상세 이미지"/>
+                            </div>
+                            <div class="col-md-5 pl-0">
+                                @if(empty($data['class_detail_img']) === false)
+                                    <p class="form-control-static"><a href="{{ $data['class_detail_img'] }}" rel="popup-image">{{ str_last_pos_after($data['class_detail_img'], '/') }}</a> <a href="#none" class="img-delete" data-img-type="class_detail_img"><i class="fa fa-times red"></i></a></p>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">교수영역 이벤트 배너<br/>(188X206, jpg, png)
+                    </label>
+                    <div class="col-md-9">
+                        <p class="form-control-static bold"># 배너 2개 이상 등록 시 자동 롤링됨</p>
+                        @for($i = 1; $i <= 3; $i++)
+                            <div class="row">
+                                <div class="control-label col-md-2">배너 이미지{{$i}}
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="file" id="bnr_img_01_{{$i}}" name="bnr_img_01_{{$i}}" class="form-control" title="이벤트 배너 이미지{{$i}}"/>
+                                </div>
+                                <div class="col-md-5 pl-0">
+                                    @if(empty($data['Bnr']['01'][$i]['BnrImgName']) === false)
+                                        <p class="form-control-static"><a href="{{ $data['Bnr']['01'][$i]['BnrImgPath'] . $data['Bnr']['01'][$i]['BnrImgName'] }}" rel="popup-image">{{ $data['Bnr']['01'][$i]['BnrImgName'] }}</a> <a href="#none" class="img-delete" data-img-type="bnr_img_01_{{$i}}"><i class="fa fa-times red"></i></a></p>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="control-label col-md-2">링크 주소{{$i}}
+                                </div>
+                                <div class="col-md-10 mt-5">
+                                    <select class="form-control col-md-1 mr-5 mb-10" id="link_type_01_{{$i}}" name="link_type_01_{{$i}}" title="이벤트 배너 링크방식{{$i}}">
+                                        <option value="self" @if(array_get($data['Bnr'], '01.' . $i . '.LinkType') == 'self') selected="selected" @endif>본창</option>
+                                        <option value="blank" @if(array_get($data['Bnr'], '01.' . $i . '.LinkType') == 'blank') selected="selected" @endif>새창</option>
+                                    </select>
+                                    <input type="text" id="link_url_01_{{$i}}" name="link_url_01_{{$i}}" value="{{ $data['Bnr']['01'][$i]['LinkUrl'] or '' }}" class="form-control col-md-5 optional" pattern="url" title="이벤트 배너 링크 주소{{$i}}">
+                                </div>
+                            </div>
+                        @endfor
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">교수홈 띠 배너<br/>(940X91, jpg, png)
+                    </label>
+                    <div class="col-md-9">
+                        <p class="form-control-static bold"># 배너 2개 이상 등록 시 자동 롤링됨</p>
+                        @for($i = 1; $i <= 3; $i++)
+                            <div class="row">
+                                <div class="control-label col-md-2">배너 이미지{{$i}}
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="file" id="bnr_img_02_{{$i}}" name="bnr_img_02_{{$i}}" class="form-control" title="띠 배너 이미지{{$i}}"/>
+                                </div>
+                                <div class="col-md-5 pl-0">
+                                    @if(empty($data['Bnr']['02'][$i]['BnrImgName']) === false)
+                                        <p class="form-control-static"><a href="{{ $data['Bnr']['02'][$i]['BnrImgPath'] . $data['Bnr']['02'][$i]['BnrImgName'] }}" rel="popup-image">{{ $data['Bnr']['02'][$i]['BnrImgName'] }}</a> <a href="#none" class="img-delete" data-img-type="bnr_img_02_{{$i}}"><i class="fa fa-times red"></i></a></p>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="control-label col-md-2">링크 주소{{$i}}
+                                </div>
+                                <div class="col-md-10 mt-5">
+                                    <select class="form-control col-md-1 mr-5 mb-10" id="link_type_02_{{$i}}" name="link_type_02_{{$i}}" title="띠 배너 링크방식{{$i}}">
+                                        <option value="self" @if(array_get($data['Bnr'], '02.' . $i . '.LinkType') == 'self') selected="selected" @endif>본창</option>
+                                        <option value="blank" @if(array_get($data['Bnr'], '02.' . $i . '.LinkType') == 'blank') selected="selected" @endif>새창</option>
+                                    </select>
+                                    <input type="text" id="link_url_02_{{$i}}" name="link_url_02_{{$i}}" value="{{ $data['Bnr']['02'][$i]['LinkUrl'] or '' }}" class="form-control col-md-5 optional" pattern="url" title="띠 배너 링크 주소{{$i}}">
+                                </div>
+                            </div>
+                        @endfor
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">교수홈 홍보 배너<br/>(940X467, jpg, png)
+                    </label>
+                    <div class="col-md-9">
+                        <p class="form-control-static bold"># 배너 2개 이상 등록 시 자동 롤링됨</p>
+                        @for($i = 1; $i <= 3; $i++)
+                            <div class="row mb-5">
+                                <div class="control-label col-md-2">배너 이미지{{$i}}
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="file" id="bnr_img_03_{{$i}}" name="bnr_img_03_{{$i}}" class="form-control" title="홍보 배너 이미지{{$i}}"/>
+                                </div>
+                                <div class="col-md-5 pl-0">
+                                    @if(empty($data['Bnr']['03'][$i]['BnrImgName']) === false)
+                                        <p class="form-control-static"><a href="{{ $data['Bnr']['03'][$i]['BnrImgPath'] . $data['Bnr']['03'][$i]['BnrImgName'] }}" rel="popup-image">{{ $data['Bnr']['03'][$i]['BnrImgName'] }}</a> <a href="#none" class="img-delete" data-img-type="bnr_img_03_{{$i}}"><i class="fa fa-times red"></i></a></p>
+                                    @endif
+                                </div>
+                            </div>
+                        @endfor
                     </div>
                 </div>
                 <div class="form-group">

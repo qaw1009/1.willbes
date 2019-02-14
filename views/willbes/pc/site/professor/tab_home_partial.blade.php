@@ -35,21 +35,26 @@
 </div>
 <!-- willbes-NoticeWrap -->
 
-<!-- willbes-Bnr -->
-<div class="prof-banner02 bSlider c_both">
-    <div class="slider">
-        <div><a href="#none"><img src="{{ img_url('prof/bnrB01.jpg') }}" alt="배너명"></a></div>
-        <div><a href="#none"><img src="{{ img_url('prof/bnrB02.jpg') }}" alt="배너명"></a></div>
+@if(isset($data['ProfBnrData']['02']) === true && empty($data['ProfBnrData']['02']) === false)
+    <!-- willbes-Bnr -->
+    <div class="prof-banner02 bSlider c_both">
+        <div class="slider">
+            @foreach($data['ProfBnrData']['02'] as $bnr_num => $bnr_row)
+                <div><a href="{{ empty($bnr_row['LinkUrl']) === false ? $bnr_row['LinkUrl'] : '#none' }}" target="_{{ $bnr_row['LinkType'] }}"><img src="{{ $bnr_row['BnrImgPath'] . $bnr_row['BnrImgName'] }}" alt=""></a></div>
+            @endforeach
+        </div>
     </div>
-</div>
-<!-- // willbes-Bnr -->
+    <!-- // willbes-Bnr -->
+@endif
 
-<!-- willbes-Bnr2 -->
-<div class="sliderWillbesBnr cSliderTM mt40">
-    <div class="sliderControlsTM">
-        <div><img src="{{ img_url('prof/bnrC01.jpg') }}" alt="이미지명"></div>
-        <div><img src="{{ img_url('prof/bnrC02.jpg') }}" alt="이미지명"></div>
-        <div><img src="{{ img_url('prof/bnrC03.jpg') }}" alt="이미지명"></div>
+@if(isset($data['ProfBnrData']['03']) === true && empty($data['ProfBnrData']['03']) === false)
+    <!-- willbes-Bnr2 -->
+    <div class="sliderWillbesBnr cSliderTM mt40">
+        <div class="sliderControlsTM">
+            @foreach($data['ProfBnrData']['03'] as $bnr_num => $bnr_row)
+                <div><a href="{{ empty($bnr_row['LinkUrl']) === false ? $bnr_row['LinkUrl'] : '#none' }}" target="_{{ $bnr_row['LinkType'] }}"><img src="{{ $bnr_row['BnrImgPath'] . $bnr_row['BnrImgName'] }}" alt=""></a></div>
+            @endforeach
+        </div>
     </div>
-</div>
-<!-- // willbes-Bnr2 -->
+    <!-- // willbes-Bnr2 -->
+@endif

@@ -50,15 +50,20 @@
                 </div>
 
                 <ul class="prof-banner01">
-                    <li>
-                        <iframe src="https://www.youtube.com/embed/sVr6LYsbzek?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
-                    </li>
-                    <li class="bSlider">
-                        <div class="slider">
-                            <div><a href="#none"><img src="{{ img_url('prof/bnrA01.jpg') }}" alt="배너명"></a></div>
-                            <div><a href="#none"><img src="{{ img_url('prof/bnrA02.jpg') }}" alt="배너명"></a></div>
-                        </div>
-                    </li>
+                    @if(isset($data['ProfReferData']['yt_url']) === true && empty($data['ProfReferData']['yt_url']) === false)
+                        <li>
+                            <iframe src="{{ $data['ProfReferData']['yt_url'] }}" frameborder="0" allowfullscreen=""></iframe>
+                        </li>
+                    @endif
+                    @if(isset($data['ProfBnrData']['01']) === true && empty($data['ProfBnrData']['01']) === false)
+                        <li class="bSlider">
+                            <div class="slider">
+                                @foreach($data['ProfBnrData']['01'] as $bnr_num => $bnr_row)
+                                    <div><a href="{{ empty($bnr_row['LinkUrl']) === false ? $bnr_row['LinkUrl'] : '#none' }}" target="_{{ $bnr_row['LinkType'] }}"><img src="{{ $bnr_row['BnrImgPath'] . $bnr_row['BnrImgName'] }}" alt=""></a></div>
+                                @endforeach
+                            </div>
+                        </li>
+                    @endif
                 </ul>
 
                 <div class="sliderBest cSliderH">
@@ -148,11 +153,11 @@
                 <ul class="tabWrap tabDepthProf tabDepthProf_{{$data['tabUseCount']}}">
                     <li><a href="#none" id="hover_home" onclick="goUrl('tab', 'home');">교수님 홈</a></li>
                     <li><a href="#none" id="hover_open_lecture" onclick="goUrl('tab', 'open_lecture');">개설강좌</a></li>
+                    <li><a href="#none" id="hover_free_lecture" onclick="goUrl('tab', 'free_lecture');">무료강좌</a></li>
                     @if($data['IsNoticeBoard'] == 'Y')<li><a href="#none" id="hover_notice" onclick="goUrl('tab', 'notice');">공지사항</a></li>@endif
                     @if($data['IsQnaBoard'] == 'Y')<li><a href="#none" id="hover_qna" onclick="goUrl('tab', 'qna');">학습Q&A</a></li>@endif
                     @if($data['IsDataBoard'] == 'Y')<li><a href="#none" id="hover_material" onclick="goUrl('tab', 'material');">학습자료실</a></li>@endif
                     @if($data['IsTpassBoard'] == 'Y')<li><a href="#none" id="hover_tpass" onclick="goUrl('tab', 'tpass');">T-pass 자료실</a></li>@endif
-                    <li><a href="#none" id="hover_free_lecture" onclick="goUrl('tab', 'free_lecture');">무료강좌</a></li>
                 </ul>
                 <div class="tabBox">
                     <div id="{{ $arr_input['tab'] }}" class="tabLink">

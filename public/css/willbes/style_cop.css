@@ -228,14 +228,54 @@
 }
 
 /* Main Container : Prof : Cop */
-.Section .ProfCopBox li {
+.Section .ProfCopBox > li {
+    position: relative;
+    display: inline;
     float: left;
-    width: 185px;
-    height: 327px;
-    margin-left: 2px;
+    width: 159px;
+    height: 280px;
+    margin-left: 1px;
 }
-.Section .ProfCopBox li:first-child {
+.Section .ProfCopBox > li:first-child {
     margin-left: 0;
+}
+.Section .ProfCopBox .ProfBtns {
+    position: absolute;
+    width: 159px;
+    bottom: 0;
+    left: 0;    
+    z-index: 1;
+}
+.Section .ProfCopBox .ProfBtns li {    
+    display: inline;
+    float: left;
+    width: 50%;   
+    height: 40px;
+    height: 40px;          
+}
+.Section .ProfCopBox .ProfBtns li a {    
+    display: block;
+    line-height: 40px;    
+    color:#fff;
+    text-align: center;
+    margin-left: 1px; 
+    background: rgba(0,0,0,.5); 
+}
+.Section .ProfCopBox .ProfBtns li:first-child a {
+    margin-left: 0;
+}
+.Section .ProfCopBox .ProfBtns li a:hover {
+    background:#0c5dc0;
+    font-size: 14px;
+}
+.Section .ProfCopBox .ProfBtns li span {
+    padding-left:10px;
+}
+.Section .ProfCopBox .ProfBtns:after,
+.Section .ProfCopBox:after {
+    content: '';
+    display: block;
+    clear: both;
 }
 
 /* Main Container : Prof : cSlider : Cop */

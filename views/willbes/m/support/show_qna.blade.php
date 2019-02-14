@@ -52,7 +52,7 @@
                 </td>
             </tr>
 
-            @if($data['RegType'] == 0)
+            @if($data['RegType'] == 0 && $data['ReplyStatusCcd'] == $reply_type_complete)
                 <!-- 답변 -->
                 <tr class="list bg-light-gray">
                     <td class="w-data tx-left">

@@ -115,9 +115,7 @@
     <!-- Write -->
     <div id="AddModify" class="Layer-Cont" style="display: {{$style_display['show']}}">
         <ul class="replyInfo tx-gray NG">
-            <li>· 수강생에 한해 강좌당 1회 작성이 가능합니다.</li>
             <li>· 수강 종료 강좌는 수강이 종료된 날로부터 30일 이내에만 후기 등록이 가능합니다.</li>
-            <li>· 수강후기 작성 시 포인트 500P가 지급됩니다. (월 최대 2,000p 지급가능)</li>
             <li>· 강좌와 무관한 내용, 의미없는 문자 나열, 비방이나 욕설이 있을 시 삭제될 수 있습니다.</li>
         </ul>
         <form id="_ajax_reg_form" name="_ajax_reg_form" method="POST" onsubmit="return false;" novalidate>

@@ -84,6 +84,7 @@ function onPlayStateChange(state)
     switch (state) {
         case PlayState.PLAYING:
             player.setVisible(true);
+            fnCheckPID();
             break;
         case PlayState.PAUSED:
             break;
@@ -91,7 +92,6 @@ function onPlayStateChange(state)
             player.setVisible(false);
             break;
         case PlayState.BUFFERING_STARTED:
-            fnCheckPID();
             break;
     }
 }

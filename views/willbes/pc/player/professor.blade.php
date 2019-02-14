@@ -43,6 +43,6 @@
             fnStartPlayer(config, media);
         });
 
-        function fnCheckPID(){}
+        function fnCheckPID(){ /* DUMMY */ }
     </script>
 @stop

@@ -839,18 +839,78 @@ class Player extends \app\controllers\FrontController
      */
     public function checkDevicePC()
     {
-        $orderidx = $this->_req('o');
-        $prodcode = $this->_req('p');
-        $orderprodidx = $this->_req('op');
-        $prodcodesub = $this->_req('sp');
+        $MemIdx = $this->_req('m');
+        $OrderIdx = $this->_req('o');
+        $ProdCode = $this->_req('p');
+        $OrderProdIdx = $this->_req('op');
+        $ProdCodeSub = $this->_req('sp');
+        $device_id = $this->_req('di');
+
+        $device_model = '';
+        $os_version = '';
+        $app_version = '';
+
+        $today = date("Y-m-d", time());
 
         // 해당강의가 기기제한 강의인지 체크
+        $lec = $this->classroomFModel->getLecture([
+            'EQ' => [
+                'MemIdx' => $MemIdx,
+                'OrderIdx' => $OrderIdx,
+                'ProdCode' => $ProdCode,
+                'ProdCodeSub' => $ProdCodeSub
+            ],
+            'GTE' => [
+                'RealLecEndDate' => $today
+            ]
+        ]);
 
-        // 기기제한 강의라면 디바이스 등록
+        if(empty($lec) === true){
+            return $this->json_error('강좌 정보가 없습니다.');
+        }
 
-        // 디바이스 등록에 실패하면 스톱
+        $lec = $lec[0];
 
-        echo 'OK';
+        // 기간제 패키지 이면 기기체크하기
+        if($lec['LearnPatternCcd'] == '615004'){
+            // 등록된 디바이스 인지 체크
+            $count = $this->playerFModel->getDevice([ 'EQ' => [
+                'MemIdx' => $MemIdx,
+                'DeviceId' => $device_id,
+                'IsUse' => 'Y'
+            ]]);
+
+            if($count == 1){
+                // 이미 등록된 디바이스
+                return $this->json_result(true,'이미등록된 디바이스');
+            }
+
+            // 총 등록된 디바이스 갯수
+            $count = $this->playerFModel->getDevice([ 'EQ' => [
+                'MemIdx' => $MemIdx,
+                'IsUse' => 'Y'
+            ]]);
+
+            // 등록기기댓수 초과
+            if($count >= $lec['DeviceLimitCount']){
+                return $this->json_error('수강가능한 등록기기 댓수가 초과 되었습니다.');
+            }
+
+            // 기기등록 시도
+            if($this->playerFModel->storeDevice([
+                    'DeviceType' => 'P',
+                    'MemIdx' => $MemIdx,
+                    'DeviceModel' => $device_model,
+                    'DeviceId' => $device_id,
+                    'Os' => $os_version,
+                    'App' => $app_version
+                ]) == false){
+                // 기기등록 실패
+                return $this->json_error('수강기기 등록에 실패했습니다.');
+            }
+        }
+
+        return $this->json_result(true, '재생이 가능합니다.');
     }
 
 
@@ -1447,6 +1507,7 @@ class Player extends \app\controllers\FrontController
                 // 기간제 패키지 이면 기기체크하기
                 if($lec['LearnPatternCcd'] == '615004'){
                     $this->checkDeviceMobile([
+                        'DeviceType' => 'M',
                         'MemIdx' => $lec['MemIdx'],
                         'DeviceModel' => $device_model,
                         'DeviceId' => $device_id,
@@ -1551,6 +1612,7 @@ class Player extends \app\controllers\FrontController
                 // 기간제 패키지 이면 기기체크하기
                 if($lec['LearnPatternCcd'] == '615004'){
                     $this->checkDeviceMobile([
+                        'DeviceType' => 'M',
                         'MemIdx' => $lec['MemIdx'],
                         'DeviceModel' => $device_model,
                         'DeviceId' => $device_id,

@@ -385,9 +385,7 @@ class PlayerFModel extends WB_Model
     function storeDevice($input)
     {
         try{
-            if($this->_conn->set(array_merge($input,[
-                'DeviceType' => 'M'
-                ]))->insert($this->_table['device']) === false) {
+            if($this->_conn->set($input)->insert($this->_table['device']) === false) {
                 throw new \Exception('기기등록에 실패했습니다.');
             }
 

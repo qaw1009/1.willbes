@@ -92,53 +92,52 @@
                             </tbody>
                         </table>
 
-                        @if($board_data['RegType'] == 0)
-                            <!-- 답변 -->
-                            <table cellspacing="0" cellpadding="0" class="listTable upper-gray bdb-gray tx-gray">
-                                <colgroup>
-                                    <col style="width: 90px;">
-                                    <col style="width: 690px;">
-                                    <col style="width: 160px;">
-                                </colgroup>
-                                <thead>
-                                <tr>
-                                    <td class="w-answer">
-                                        {{--<img src="{{ img_url('prof/icon_answer.gif') }}">--}}
-                                        @if($board_data['ReplyStatusCcd'] == '621004')
-                                            <span class="aBox answerBox NSK">답변완료</span>
-                                        @else
-                                            <span class="aBox waitBox NSK">답변대기</span>
-                                        @endif
-                                    </td>
-                                    <td>&nbsp;<span class="row-line">|</span></td>
-                                    <td class="w-date">{{$board_data['ReplyRegDatm']}}</td>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td class="w-file tx-left pl20" colspan="3">
-                                        @if(empty($board_data['AttachData']) === false)
-                                            @foreach($board_data['AttachData'] as $row)
-                                                @if($row['FileType'] == 1)
-                                                    <a href="{{front_url('/mockTest/boardFileDownload?path=').urlencode($row['FilePath'].$row['FileName']).'&fname='.urlencode($row['RealName']).'&board_idx='.$board_idx }}" target="_blank">
-                                                        <img src="{{ img_url('prof/icon_file.gif') }}"> {{$row['RealName']}}</a>
-                                                @endif
-                                            @endforeach
-                                        @endif
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="w-txt answer tx-left" colspan="3">
-                                        @if($board_data['ReplyStatusCcd'] == '621004')
-                                            {!! $board_data['ReplyContent'] !!}
-                                        @endif
-                                    </td>
-                                </tr>
+                    @if($board_data['RegType'] == 0 && $board_data['ReplyStatusCcd'] == $reply_type_complete)
+                        <!-- 답변 -->
+                        <table cellspacing="0" cellpadding="0" class="listTable upper-gray bdb-gray tx-gray">
+                            <colgroup>
+                                <col style="width: 90px;">
+                                <col style="width: 690px;">
+                                <col style="width: 160px;">
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <td class="w-answer">
+                                    {{--<img src="{{ img_url('prof/icon_answer.gif') }}">--}}
+                                    @if($board_data['ReplyStatusCcd'] == '621004')
+                                        <span class="aBox answerBox NSK">답변완료</span>
+                                    @else
+                                        <span class="aBox waitBox NSK">답변대기</span>
+                                    @endif
+                                </td>
+                                <td>&nbsp;<span class="row-line">|</span></td>
+                                <td class="w-date">{{$board_data['ReplyRegDatm']}}</td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td class="w-file tx-left pl20" colspan="3">
+                                    @if(empty($board_data['AttachData']) === false)
+                                        @foreach($board_data['AttachData'] as $row)
+                                            @if($row['FileType'] == 1)
+                                                <a href="{{front_url('/mockTest/boardFileDownload?path=').urlencode($row['FilePath'].$row['FileName']).'&fname='.urlencode($row['RealName']).'&board_idx='.$board_idx }}" target="_blank">
+                                                    <img src="{{ img_url('prof/icon_file.gif') }}"> {{$row['RealName']}}</a>
+                                            @endif
+                                        @endforeach
+                                    @endif
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-txt answer tx-left" colspan="3">
+                                    @if($board_data['ReplyStatusCcd'] == '621004')
+                                        {!! $board_data['ReplyContent'] !!}
+                                    @endif
+                                </td>
+                            </tr>
 
-                                </tbody>
-                            </table>
-                        @endif
-
+                            </tbody>
+                        </table>
+                    @endif
                         <div class="search-Btn mt20 h36 p_re">
                             @if($board_data['RegType'] == 0 && $board_data['RegMemIdx'] == sess_data('mem_idx') && $board_data['ReplyStatusCcd'] != $reply_type_complete)
                                 <div class="btnAuto90 h36 mem-Btn bg-white bd-dark-gray f_left" id="btn_del">

@@ -64,52 +64,52 @@
                                 </tbody>
                             </table>
 
-                        @if($data['RegType'] == 0)
+                        @if($data['RegType'] == 0 && $data['ReplyStatusCcd'] == $reply_type_complete)
                             <!-- 답변 -->
-                                <table cellspacing="0" cellpadding="0" class="listTable upper-gray bdb-gray tx-gray">
-                                    <colgroup>
-                                        <col style="width: 120px;">
-                                        <col style="width: 690px;">
-                                        <col style="width: 160px;">
-                                    </colgroup>
-                                    <thead>
-                                    <tr>
-                                        <td class="w-answer">
-                                            <img src="{{ img_url('prof/icon_answer.gif') }}">
-                                        </td>
-                                        <td class="w-acad tx-left">
-                                            @if($data['ReplyStatusCcd'] == '621004')
-                                                <span class="aBox answerBox NSK">답변완료</span>
-                                            @else
-                                                <span class="aBox waitBox NSK">답변대기</span>
-                                            @endif
-                                        </td>
-                                        <td class="w-date">{{$data['ReplyRegDatm']}}</td>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td class="w-file tx-left pl20" colspan="4">
-                                            @if(empty($data['AttachData']) === false)
-                                                @foreach($data['AttachData'] as $row)
-                                                    @if($row['FileType'] == 1)
-                                                        <a href="{{front_url($default_path.'/download?path=').urlencode($row['FilePath'].$row['FileName']).'&fname='.urlencode($row['RealName']).'&board_idx='.$board_idx }}"  target="_blank">
-                                                            <img src="{{ img_url('prof/icon_file.gif') }}"> {{$row['RealName']}}</a>
-                                                    @endif
-                                                @endforeach
-                                            @endif
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-txt answer tx-left" colspan="4">
-                                            @if($data['ReplyStatusCcd'] == '621004')
-                                                {!! $data['ReplyContent'] !!}
-                                            @endif
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            @endif
+                            <table cellspacing="0" cellpadding="0" class="listTable upper-gray bdb-gray tx-gray">
+                                <colgroup>
+                                    <col style="width: 120px;">
+                                    <col style="width: 690px;">
+                                    <col style="width: 160px;">
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <td class="w-answer">
+                                        <img src="{{ img_url('prof/icon_answer.gif') }}">
+                                    </td>
+                                    <td class="w-acad tx-left">
+                                        @if($data['ReplyStatusCcd'] == '621004')
+                                            <span class="aBox answerBox NSK">답변완료</span>
+                                        @else
+                                            <span class="aBox waitBox NSK">답변대기</span>
+                                        @endif
+                                    </td>
+                                    <td class="w-date">{{$data['ReplyRegDatm']}}</td>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td class="w-file tx-left pl20" colspan="4">
+                                        @if(empty($data['AttachData']) === false)
+                                            @foreach($data['AttachData'] as $row)
+                                                @if($row['FileType'] == 1)
+                                                    <a href="{{front_url($default_path.'/download?path=').urlencode($row['FilePath'].$row['FileName']).'&fname='.urlencode($row['RealName']).'&board_idx='.$board_idx }}"  target="_blank">
+                                                        <img src="{{ img_url('prof/icon_file.gif') }}"> {{$row['RealName']}}</a>
+                                                @endif
+                                            @endforeach
+                                        @endif
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="w-txt answer tx-left" colspan="4">
+                                        @if($data['ReplyStatusCcd'] == '621004')
+                                            {!! $data['ReplyContent'] !!}
+                                        @endif
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        @endif
                             <div class="search-Btn mt20 h36 p_re">
                                 @if($data['RegType'] == 0 && $data['RegMemIdx'] == sess_data('mem_idx') && $data['ReplyStatusCcd'] != $reply_type_complete)
                                     <div class="btnAuto90 h36 mem-Btn bg-white bd-dark-gray f_left" id="btn_del">

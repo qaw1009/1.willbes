@@ -1566,6 +1566,10 @@ class OrderFModel extends BaseOrderFModel
                 throw new \Exception('이미 결제완료 처리된 주문내역 입니다.', _HTTP_BAD_REQUEST);
             }
 
+            if (empty($order_row['VBankCancelDatm']) === false) {
+                throw new \Exception('이미 취소 처리된 주문내역입니다.', _HTTP_BAD_REQUEST);
+            }
+
             if ($order_row['RealPayPrice'] != $deposit_results['total_pay_price']) {
                 throw new \Exception('결제금액 정보가 올바르지 않습니다.', _HTTP_BAD_REQUEST);
             }

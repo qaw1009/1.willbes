@@ -578,7 +578,7 @@ class On extends \app\controllers\FrontController
         $lec['ProfReferData'] = json_decode($lec['ProfReferData'], true);
         $lec['isstart'] = $isstart;
         $lec['ispause'] = $ispause;
-        $lec['SiteUrl'] = app_to_env_url($this->getSiteCacheItem($lec['SiteCode'], 'SiteUrl'));
+        //$lec['SiteUrl'] = app_to_env_url($this->getSiteCacheItem($lec['SiteCode'], 'SiteUrl'));
 
         // 회차 열어준경우 IN 생성
         if(empty($lec['wUnitIdxs']) == true){
@@ -1199,7 +1199,7 @@ class On extends \app\controllers\FrontController
 
         $lec['ExtenLimit'] = round($lec['StudyPeriod'] / 2);
         $lec['ExtenPrice'] = floor($lec['ExtenPrice'] / $lec['StudyPeriod']);
-        $lec['SiteUrl'] = app_to_env_url($this->getSiteCacheItem($lec['SiteCode'], 'SiteUrl'));
+        //$lec['SiteUrl'] = app_to_env_url($this->getSiteCacheItem($lec['SiteCode'], 'SiteUrl'));
 
         if ($lec['IsRebuy'] > 0) {
             $cond_arr = [

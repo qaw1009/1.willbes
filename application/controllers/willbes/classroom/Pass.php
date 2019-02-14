@@ -106,7 +106,7 @@ class Pass extends \app\controllers\FrontController
         // 해당패키지의 서브강좌
         if(empty($passinfo) == false ){
             $passinfo = $passinfo[0];
-            $passinfo['SiteUrl'] = app_to_env_url($this->getSiteCacheItem($passinfo['SiteCode'], 'SiteUrl'));
+            //$passinfo['SiteUrl'] = app_to_env_url($this->getSiteCacheItem($passinfo['SiteCode'], 'SiteUrl'));
 
             // 셀렉트박스 구해오기
             $cond_arr = [
@@ -317,7 +317,7 @@ class Pass extends \app\controllers\FrontController
         $lec['ProfReferData'] = json_decode($lec['ProfReferData'], true);
         $lec['isstart'] = $isstart;
         $lec['ispause'] = $ispause;
-        $lec['SiteUrl'] = app_to_env_url($this->getSiteCacheItem($lec['SiteCode'], 'SiteUrl'));
+        //$lec['SiteUrl'] = app_to_env_url($this->getSiteCacheItem($lec['SiteCode'], 'SiteUrl'));
 
         // 커리큘럼 읽어오기
         $curriculum = $this->classroomFModel->getCurriculum([

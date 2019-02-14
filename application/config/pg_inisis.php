@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 $config = [
-    'mode' => 'test',
+    'mode' => 'real',
     'test' => [
         'mid' => 'INIpayTest',
         'signkey' => 'SU5JTElURV9UUklQTEVERVNfS0VZU1RS',

@@ -912,7 +912,7 @@ class CommonLectureModel extends WB_Model
             $select_column= str_replace('ProdCode','\''.$prodcode_new.'\' as ProdCode',$insert_column);
             $select_column= str_replace('RegAdminIdx','\''.$admin_idx.'\' as RegAdminIdx',$select_column);
             $select_column= str_replace('RegIp','\''.$reg_ip.'\' as RegIp',$select_column);
-            $select_column= str_replace('ProdName','concat(\'[복사]\',ProdName)',$select_column);
+            //$select_column= str_replace('ProdName','concat(\'[복사]\',ProdName)',$select_column);
             $select_column= str_replace('IsUse','\'N\' As IsUse',$select_column);
 
             $query = 'insert into '.$this->_table['product'].' ('. $insert_column .')SELECT '.$select_column.' FROM '.$this->_table['product'].' where ProdCode='.$prodcode;

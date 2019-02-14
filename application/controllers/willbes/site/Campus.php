@@ -26,7 +26,7 @@ class Campus extends \app\controllers\FrontController
 
         $is_tab_select = isset($arr_input['tab']);
         $arr_input['tab'] = element('tab', $arr_input, 'notice');
-        $tab_data = $this->{'_tab_' . $arr_input['tab']}($campus_code, $arr_input);
+        $tab_data = $this->{'_tab_' . $arr_input['tab']}($campus_code);
 
         $this->load->view('site/campus/show', [
             'arr_input' => $arr_input,
@@ -36,7 +36,12 @@ class Campus extends \app\controllers\FrontController
         ]);
     }
 
-    private function _tab_notice($campus_code, $arr_input)
+    /**
+     * 공지사항 탭
+     * @param $campus_code
+     * @return array
+     */
+    private function _tab_notice($campus_code)
     {
         $frame_path = '/frame/notice/index';
         $frame_params = 's_campus='.$campus_code;
@@ -49,8 +54,21 @@ class Campus extends \app\controllers\FrontController
         return $data;
     }
 
-    private function _tab_counsel()
+    /**
+     * 1:1 상담 탭
+     * @param $campus_code
+     * @return array
+     */
+    private function _tab_qna($campus_code)
     {
+        $frame_path = '/frame/qna/index';
+        $frame_params = 's_campus='.$campus_code;
+        $frame_params .= '&view_type=frame';
 
+        $data = [
+            'frame_path' => $frame_path,
+            'frame_params' => $frame_params
+        ];
+        return $data;
     }
 }

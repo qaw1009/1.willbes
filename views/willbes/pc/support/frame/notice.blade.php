@@ -12,17 +12,8 @@
         <div class="willbes-Leclist c_both">
             <div class="willbes-Lec-Selected tx-gray mt0">
                 <div class="f_left">
-                    @if(empty($arr_base['category']) === false)
-                        <select id="s_cate_code" name="s_cate_code" title="카테고리" class="seleCategory" onchange="goUrl('s_cate_code',this.value)" {{--@if($__cfg['SiteCode'] != config_item('app_intg_site_code')) disabled @endif--}}>
-                            <option value="">카테고리</option>
-                            @foreach($arr_base['category'] as $row)
-                                <option value="{{$row['CateCode']}}" class="{{$row['SiteCode']}}" @if(element('s_cate_code', $arr_input) == $row['CateCode'])selected="selected"@endif>{{$row['CateName']}}</option>
-                            @endforeach
-                        </select>
-                    @endif
-
                     @if(empty($arr_base['campus']) === false)
-                        <select id="s_campus" name="s_campus" title="campus" class="seleCampus" onchange="goUrl('s_campus',this.value)">
+                        <select id="s_campus" name="s_campus" title="campus" class="seleCampus" onchange="goUrl('s_campus',this.value)" @if($__cfg['SiteCode'] != config_item('app_intg_site_code')) disabled @endif>
                             <option value="">캠퍼스</option>
                             @foreach($arr_base['campus'] as $row)
                                 <option value="{{$row['CampusCcd']}}" @if(element('s_campus',$arr_input) == $row['CampusCcd']) selected @endif>{{$row['CcdName']}}</option>
@@ -89,14 +80,11 @@
                 </table>
             </div>
         </div>
-
         <div class="row">
             <div class="col-xs-12">
                 {!! $paging['pagination'] !!}
             </div>
         </div>
-
-
     </div>
 </div>
 @stop

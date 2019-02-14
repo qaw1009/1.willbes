@@ -38,6 +38,7 @@ class SupportQna extends BaseSupport
 
         $s_site_code = element('s_site_code',$arr_input);
         $s_cate_code = element('s_cate_code',$arr_input);
+        $s_campus = element('s_campus',$arr_input);
         $s_consult_type = element('s_consult_type',$arr_input);
         $s_keyword = element('s_keyword',$arr_input);
         $prof_idx = element('prof_idx',$arr_input);
@@ -47,6 +48,7 @@ class SupportQna extends BaseSupport
         $view_type = element('view_type',$arr_input);
         $get_page_params = 's_keyword='.urlencode($s_keyword);
         $get_page_params .= '&s_site_code='.$s_site_code.'&s_cate_code='.$s_cate_code.'&s_consult_type='.$s_consult_type;
+        $get_page_params .= '&s_campus='.$s_campus;
         $get_page_params .= '&prof_idx='.$prof_idx.'&subject_idx='.$subject_idx.'&view_type='.$view_type;
         $get_page_params .= '&s_is_display='.$s_is_display.'&s_is_my_contents='.$s_is_my_contents;
 
@@ -166,6 +168,7 @@ class SupportQna extends BaseSupport
         $board_idx = element('board_idx',$arr_input);
         $s_site_code = element('s_site_code',$arr_input);
         $s_cate_code = element('s_cate_code',$arr_input);
+        $s_campus = element('s_campus',$arr_input);
         $s_consult_type = element('s_consult_type',$arr_input);
         $s_keyword = element('s_keyword',$arr_input);
         $prof_idx = element('prof_idx',$arr_input);
@@ -177,6 +180,7 @@ class SupportQna extends BaseSupport
 
         $get_params = 's_keyword='.urlencode($s_keyword);
         $get_params .= '&s_site_code='.$s_site_code.'&s_cate_code='.$s_cate_code.'&s_consult_type='.$s_consult_type;
+        $get_params .= '&s_campus='.$s_campus;
         $get_params .= '&prof_idx='.$prof_idx.'&subject_idx='.$subject_idx.'&view_type='.$view_type;
         $get_params .= '&s_is_display='.$s_is_display.'&s_is_my_contents='.$s_is_my_contents;
         $get_params .= '&page='.$page;
@@ -260,6 +264,7 @@ class SupportQna extends BaseSupport
         $board_idx = element('board_idx',$arr_input);
         $s_site_code = element('s_site_code',$arr_input);
         $s_cate_code = element('s_cate_code',$arr_input);
+        $s_campus = element('s_campus',$arr_input);
         $s_consult_type = element('s_consult_type',$arr_input);
         $s_keyword = element('s_keyword',$arr_input);
         $prof_idx = element('prof_idx',$arr_input);
@@ -271,6 +276,7 @@ class SupportQna extends BaseSupport
 
         $get_params = 's_keyword='.urlencode($s_keyword);
         $get_params .= '&s_site_code='.$s_site_code.'&s_cate_code='.$s_cate_code.'&s_consult_type='.$s_consult_type;
+        $get_params .= '&s_campus='.$s_campus;
         $get_params .= '&prof_idx='.$prof_idx.'&subject_idx='.$subject_idx.'&view_type='.$view_type;
         $get_params .= '&s_is_display='.$s_is_display.'&s_is_my_contents='.$s_is_my_contents;
         $get_params .= '&page='.$page;
@@ -421,6 +427,7 @@ class SupportQna extends BaseSupport
         $board_idx = element('board_idx',$arr_input);
         $s_site_code = element('s_site_code',$arr_input);
         $s_cate_code = element('s_cate_code',$arr_input);
+        $s_campus = element('s_campus',$arr_input);
         $s_consult_type = element('s_consult_type',$arr_input);
         $s_keyword = element('s_keyword',$arr_input);
         $prof_idx = element('prof_idx',$arr_input);
@@ -431,6 +438,7 @@ class SupportQna extends BaseSupport
         $page = element('page',$arr_input);
         $get_params = 's_keyword='.urlencode($s_keyword);
         $get_params .= '&s_site_code='.$s_site_code.'&s_cate_code='.$s_cate_code.'&s_consult_type='.$s_consult_type;
+        $get_params .= '&s_campus='.$s_campus;
         $get_params .= '&prof_idx='.$prof_idx.'&subject_idx='.$subject_idx.'&view_type='.$view_type;
         $get_params .= '&s_is_display='.$s_is_display.'&s_is_my_contents='.$s_is_my_contents;
         $get_params .= '&page='.$page;

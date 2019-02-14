@@ -46,7 +46,7 @@
                 <a name="tabLink"></a>
                 <ul class="tabWrap noticeWrap_acad three NSK">
                     <li><a href="#none" id="hover_notice" onclick="goUrl('tab', 'notice');">공지사항</a></li>
-                    <li><a href="#none" id="hover_counsel" onclick="goUrl('tab', 'counsel');">1:1상담</a></li>
+                    <li><a href="#none" id="hover_qna" onclick="goUrl('tab', 'qna');">1:1상담</a></li>
                     <li><a href="#none" id="hover_map" onclick="goUrl('tab', 'map');">오시는 길</a></li>
                 </ul>
                 <div class="tabBox noticeBox_acad">
@@ -56,6 +56,8 @@
                 </div>
             </div>
         </div>
+
+        {!! banner('전국캠퍼스_우측날개', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
     </div>
 
     <script type="text/javascript">

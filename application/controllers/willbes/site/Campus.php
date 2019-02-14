@@ -71,4 +71,9 @@ class Campus extends \app\controllers\FrontController
         ];
         return $data;
     }
+
+    private function _tab_map()
+    {
+
+    }
 }

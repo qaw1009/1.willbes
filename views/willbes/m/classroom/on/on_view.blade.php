@@ -82,7 +82,7 @@
                                 <tbody>
                                 @forelse($curriculum as $row)
                                     <tr>
-                                        <td class="w-chk"><input type="checkbox" id="wUnitIdx" name="u[]" value="{{$row['wUnitIdx']}}" class="goods_chk unitchk" @if($row['timeover'] == 'Y')disabled="diabbled"@endif></td>
+                                        <td class="w-chk"><input type="checkbox" id="wUnitIdx" name="u" value="{{$row['wUnitIdx']}}" class="goods_chk unitchk" @if($row['timeover'] == 'Y')disabled="diabbled"@endif></td>
                                         <td class="w-data tx-left">
                                             <div class="w-tit mb10">{{$row['wUnitNum']}}회 {{$row['wUnitLectureNum']}}강 {{$row['wUnitName']}}</div>
                                             <dl class="w-info tx-gray mb10">

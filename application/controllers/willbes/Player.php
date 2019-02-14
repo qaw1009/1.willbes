@@ -1045,7 +1045,7 @@ class Player extends \app\controllers\FrontController
 
         // 커리큘럼 읽어오기
         $data = $this->classroomFModel->getCurriculum($cond_arr);
-logger($wUnitIdx);
+
         if(empty($data) == true){
             $this->StarplayerResult(true,'강의 정보가 없습니다.');
         }
@@ -1171,9 +1171,8 @@ logger($wUnitIdx);
             }
             $XMLString .= "</content>";
         }
-
         $XMLString .= "</axis-app>";
-        logger('M:'.$XMLString);
+
         echo $this->crypto->encrypt($XMLString);
     }
 

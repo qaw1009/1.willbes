@@ -203,8 +203,11 @@
 
                     // 검색 초기화
                     $('#searchInit').on('click', function () {
-                        $search_form_modal.find('[name^=search_]').each(function () {
+                        $search_form_modal.find('[name^=search_]:not(#search_is_use)').each(function () {
                             $(this).val('');
+                        });
+                        $search_form_modal.find('[name=search_is_use]').each(function () {
+                            $(this).val('Y');
                         });
                         $search_form_modal.find('#_btn_search').trigger('click');
                         $datatable_modal.draw();

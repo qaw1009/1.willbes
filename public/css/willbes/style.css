@@ -1735,12 +1735,13 @@ table.auTable tr td {
     background: #f6f6f6;
     width: 720px;
     padding: 30px 0 0 50px;
+    letter-spacing: normal;
 }
 .willbesNumber ul li {
-    margin-left: 50px;
+    margin-left: 100px;
 }
 .willbesNumber ul li:first-child {
-    margin-left: 0;
+    margin-left: 50px;
 }
 .willbesNumber .nTit {
     font-size: 17px;

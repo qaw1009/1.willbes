@@ -66,6 +66,11 @@
     padding-top: 10px;
     letter-spacing: 0;
 }
+.QuickSlider .sliderNum {
+    width: 100px;
+    height: 167px;
+    overflow: hidden;
+}
 .QuickSlider .bx-wrapper .bx-prev {
     background: url("../../img/willbes/cop/btn_quick_prev.jpg") no-repeat 0 0;
     left: 0;
@@ -106,6 +111,38 @@
 .Section.MainVisual .widthAuto {
     position: relative;
 }
+.smallTit {
+    border-top:1px solid #b8b8b8;
+    font-size: 22px;
+    color:#363636;    
+    position: relative;
+}
+.smallTit p {
+    position: absolute;
+    top:-15px;
+    text-align: center;
+    width: 100%;
+}
+.smallTit span {
+    padding:0 20px;
+    font-weight: 600;
+    background: #fff;
+}
+.smallTit strong {
+    color:#0c5dc0;
+}
+
+.smallTit a {
+    position: absolute;
+    width: 23px;
+    top:-12px;
+    right:0;    
+    z-index: 1;
+}
+.smallTit2 span {
+    background:#f7f7f7;
+}
+
 .Section.MainVisual iframe {
     position: absolute;    
     width: 270px;
@@ -253,23 +290,41 @@
 /* Main Container : flipped : Cop */
 .Flipped {background: url("../../img/willbes/cop/flipped/flipped_bg.jpg") repeat-x center 40px; background-size: 100%; padding-bottom: 90px;}
 .Flipped ul.inner {height:370px}
-.Flipped ul.inner li {position: relative; float:left; width:280px; height:100%; margin-left:20px}
+.Flipped ul.inner li {position: relative; float:left; width:280px; height:100%; margin-left:20px; overflow: hidden;}
 .Flipped ul.inner li:first-child {width:520px; margin-left:0}
-.Flipped ul.inner a {position:relative; display:block; width:100%; height:100%; perspective:3500px}
-.Flipped ul.inner a span {display:inline-block}
+.Flipped ul.inner a {position:relative; display:block; width:100%; height:100%; /*perspective:3500px*/}
+.Flipped ul.inner a img {margin-top:0; animation:down 0.5s forwards;-webkit-animation:down 0.5s forwards}
+    @keyframes down{
+	from{margin-top:-370px}
+	to{margin-top:0}
+	}
+	@-webkit-keyframes down{
+	from{margin-top:-370px}
+	to{margin-top:0}
+    }
+.Flipped ul.inner a:hover img {animation:up 0.5s forwards;-webkit-animation:up 0.5s forwards}
+    @keyframes up{
+	from{margin-top:0}
+	to{margin-top:-370px}
+	}
+	@-webkit-keyframes up{
+	from{margin-top:0}
+	to{margin-top:-370px}
+    }    
+/*.Flipped ul.inner a span {display:inline-block}
 .Flipped .wrap_ban {position: absolute; top: 0; left: 0; right: 0;}
-.Flipped .wrap_ban.front {visibility:visible; opacity:1}
-.Flipped .wrap_ban.back {visibility:hidden; opacity:0}
+.Flipped .wrap_ban.front {visibility:visible; opacity:1; }    
+.Flipped .wrap_ban.back {visibility:hidden; opacity:0;}
 .Flipped li .f-tit {font-size:16px; font-weight: 600; line-height: 50px;}
 .Flipped li .tit1 {color: #0c5dc0}
 .Flipped li .tit2 {color: #fd6c38}
 .Flipped li .tit3 {color: #d8ab36}
-.Flipped li:hover .wrap_ban.front {visibility:hidden; opacity:0}
+.Flipped li:hover .wrap_ban.front {visibility:hidden; opacity:0;}
 .Flipped li:hover .wrap_ban.back {visibility:visible; opacity:1}
 .Flipped li.flipped .wrap_ban.front {visibility:hidden; opacity:0}
-.Flipped li.flipped .wrap_ban.back {visibility:visible; opacity:1}
+.Flipped li.flipped .wrap_ban.back {visibility:visible; opacity:1}*/
 
-/* Main Container : curriculumBox : Cop */
+/* Main Container : curriculumBox : Cop 
 .cswRollingSlider {
     line-height: 20px;
     padding-top: 20px;
@@ -357,6 +412,30 @@
 .active .curriculumBox .Tit {
     padding-top: 31px;
 }
+*/
+
+/* Main Container cop : 3STEP curriculum */
+.curriculumTit {
+    position: relative;
+}
+.curriculumTit a {
+    position: absolute;
+    background: #0c5dc0;
+    padding: 8px 0;
+    width: 180px;
+    color:#fff;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    border-bottom: 7px solid #054088;
+    bottom:78px;
+    left:50%;
+    margin-left: -90px;
+    z-index: 1;
+}
+.curriculumTit a:hover {
+    border-bottom:0;
+}
 .curriculumTxt {
     font-size: 22px;
     color: #363636;
@@ -383,6 +462,102 @@
 }
 .curriculumTxt span.btn a:hover {
     background:#333
+}
+.CurriStepBox {
+    padding:100px 0 50px;
+    background: #fff url("../../img/willbes/cop/visual/visual_tit02_stit.png") no-repeat 37px 144px; 
+}
+.CurriStepBox .CurriStep {
+    margin-left:248px;
+}
+.CurriStepBox .CurriStep > li {
+    display: inline;
+    float:left;
+    min-height: 272px;
+}
+.CurriStepBox .CurriStep > li:nth-child(even) {
+    background: url("../../img/willbes/cop/visual/icon_arrow.png") no-repeat center center; 
+    width: 30px;
+}
+.curriculumBox {
+    position: relative;
+    float: left;
+    background: #f7f7f7;
+    width: 260px;
+    min-height: 272px;
+    font-family: "NotoSansCJKkr-Thin", "Noto Sans KR", "sans-serif";
+    border: 1px solid #e7e7e7;
+    color: #868686;
+    text-align: center;
+    letter-spacing: 0;
+}
+.curriculumBox span {
+    position: absolute;
+    width: 136px;
+    top: -60px;
+    left: 50%;
+    margin-left:-68px;
+}
+.curriculumBox .Tit {
+    font-family: "NotoSansCJKkr-Black", "Noto Sans KR", "sans-serif";
+    font-size: 26px;
+    padding-top: 30px;
+}
+.curriculumBox .subTit {
+    font-size: 19px;
+    padding: 10px 0 20px;
+}
+.curriculumBox .info {
+    width: 200px;
+    margin: 30px auto;
+    font-weight: 600;
+    text-align: left;
+    line-height: 24px;
+}
+.curriculumBox .info li {
+    font-size: 14px;
+    list-style: disc;
+    margin-left: 15px;
+}
+.CurriStepBox .CurriStep > li.active .curriculumBox,
+.CurriStepBox .CurriStep > li:hover .curriculumBox {
+    background: #fff;
+    border: 10px solid #0c5dc0;
+    color: #0c5dc0;
+    box-shadow: -20px 20px 20px rgba(0,0,0,.2);
+}
+.CurriStepBox .CurriStep > li.active .curriculumBox .Tit,
+.CurriStepBox .CurriStep > li:hover .curriculumBox .Tit {
+    padding-top: 20px;
+    background: #0c5dc0;
+    color:#fff;
+}
+.CurriStepBox .CurriStep > li.active .curriculumBox .subTit,
+.CurriStepBox .CurriStep > li:hover .curriculumBox .subTit {
+    background: #0c5dc0;
+    color:#fff;
+}
+.CurriStepBox .CurriStep:after {
+    content:'';
+    display: block;
+    clear: both;
+}
+
+/* Main Container : on : 학원 핫이슈 */
+.HotIssue li {
+    display: inline;
+    float: left;
+    margin-right:4px;
+}
+.HotIssue li:last-child {
+    margin: 0;
+}
+.HotIssue li.nSlider {
+    display: inline;
+}
+.sliderHotIssue {
+    float: right;
+    width: 353px;
 }
 
 /* Main Container : pass : cSlider : sliderPassList : Cop */

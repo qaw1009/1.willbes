@@ -113,9 +113,9 @@ class RegExamModel extends WB_Model
             // lms_mock_paper 복사
             $sql = "
                 INSERT INTO {$this->_table['mockExamBase']}
-                    (SiteCode, FilePath, MrcIdx, ProfIdx, PapaerName, Year, RotationNo, QuestionOption, AnswerNum, TotalScore, 
+                    (SiteCode, MrcIdx, ProfIdx, PapaerName, Year, RotationNo, QuestionOption, AnswerNum, TotalScore, 
                      QuestionFile, RealQuestionFile, ExplanFile, RealExplanFile, IsUse, RegIp, RegAdminIdx, RegDate)
-                SELECT SiteCode, FilePath, MrcIdx, ProfIdx, CONCAT('복사-', PapaerName), Year, RotationNo, QuestionOption, AnswerNum, TotalScore,
+                SELECT SiteCode, MrcIdx, ProfIdx, CONCAT('복사-', PapaerName), Year, RotationNo, QuestionOption, AnswerNum, TotalScore,
                        QuestionFile, RealQuestionFile, ExplanFile, RealExplanFile, 'N', ?, ?, ?
                 FROM {$this->_table['mockExamBase']}
                 WHERE MpIdx = ? AND IsStatus = 'Y'";
@@ -123,17 +123,41 @@ class RegExamModel extends WB_Model
 
             $nowIdx = $this->_conn->insert_id();
 
+            $uploadSubPath = $this->upload_path_mock . $nowIdx;
+
+            // 데이터 수정
+            $addData = [
+                'FilePath' => PUBLICURL . 'uploads/' . $uploadSubPath . "/"
+            ];
+
+            $this->_conn->set($addData)->where(['MpIdx' => $nowIdx])->update($this->_table['mockExamBase']);
+
+            if (!$this->_conn->affected_rows()) {
+                throw new Exception('수정에 실패했습니다.');
+            }
+
             // lms_mock_questions 복사
             $sql = "
                 INSERT INTO {$this->_table['mockExamQuestion']}
-                    (MpIdx, MalIdx, QuestionNO, FilePath, QuestionOption, QuestionFile, RealQuestionFile, ExplanFile, RealExplanFile,
+                    (MpIdx, MalIdx, QuestionNO, QuestionOption, QuestionFile, RealQuestionFile, ExplanFile, RealExplanFile,
                      RightAnswer, Scoring, Difficulty, RegIp, RegAdminIdx, RegDatm)
-                SELECT ?, MalIdx, QuestionNO, FilePath, QuestionOption, QuestionFile, RealQuestionFile, ExplanFile, RealExplanFile,
+                SELECT ?, MalIdx, QuestionNO, QuestionOption, QuestionFile, RealQuestionFile, ExplanFile, RealExplanFile,
                        RightAnswer, Scoring, Difficulty, ?, ?, ?
                 FROM {$this->_table['mockExamQuestion']}
                 WHERE MpIdx = ? AND IsStatus = 'Y'";
             $this->_conn->query($sql, array($nowIdx, $RegIp, $RegAdminIdx, $RegDatm, $idx));
 
+
+            // 데이터 수정
+            $addData = [
+                'FilePath' => PUBLICURL . 'uploads/' . $this->upload_path_mock . $nowIdx . $this->upload_path_mockQ,
+            ];
+
+            $this->_conn->set($addData)->where(['MpIdx' => $nowIdx])->update($this->_table['mockExamQuestion']);
+
+            if (!$this->_conn->affected_rows()) {
+                throw new Exception('수정에 실패했습니다.');
+            }
 
             // 파일 복사
             $src = $this->upload_path . $this->upload_path_mock . $idx . '/';

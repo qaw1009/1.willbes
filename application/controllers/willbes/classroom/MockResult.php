@@ -129,18 +129,18 @@ class MockResult extends \app\controllers\FrontController
         foreach($dataDetail as $key => $val){
             $MemIdx = $val['MemIdx'];
             $mpidx = $val['MpIdx'];
-            $OrgPoint = $val['OrgPoint'];
+            $AdjustPoint = $val['AdjustPoint'];
 
-            if ($tempPoint == $OrgPoint) {
+            if($tempMp != $mpidx){
+                $Rank = 1;
+                $minusRank = 1;
+            }
+
+            if ($tempPoint == $AdjustPoint) {
                 $rRank = $Rank - $minusRank;
                 $minusRank++;
             } else {
                 $rRank = $Rank;
-                $minusRank = 1;
-            }
-
-            if($tempMp != $mpidx){
-                $Rank = 1;
                 $minusRank = 1;
             }
 
@@ -153,8 +153,8 @@ class MockResult extends \app\controllers\FrontController
             $dataDetail[$MemIdx][$mpidx]['orank'] = $val['Rank']."/".$val['COUNT'];
             $dataDetail[$MemIdx][$mpidx]['arank'] = $rRank."/".$val['COUNT'];
 
-            $tempPoint = $val['OrgPoint'];
-            $tempMp = $mpidx;
+            $tempPoint = $val['AdjustPoint'];
+            $tempMp = $val['MpIdx'];
             $Rank++;
         }
 

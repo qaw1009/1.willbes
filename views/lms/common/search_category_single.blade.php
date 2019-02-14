@@ -14,7 +14,7 @@
 
 @section('layer_content')
     <div class="form-group form-group-sm mb-0">
-        <p class="form-control-static"><span class="required">*</span> 검색한 카테고리 정보를 선택해 주세요. (다중 선택 불가능합니다.)</p>
+        <p class="form-control-static"><span class="required">*</span> 검색한 카테고리 정보를 선택해 주세요. (다중 선택 불가능하며, 미사용 카테고리는 검색되지 않습니다.)</p>
     </div>
     <div class="form-group pt-10 pb-5">
         <label class="control-label col-md-2 pt-5" for="search_value">통합검색

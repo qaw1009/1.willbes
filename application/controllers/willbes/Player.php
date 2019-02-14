@@ -1164,8 +1164,10 @@ class Player extends \app\controllers\FrontController
             $XMLString .= "<content>";
             $XMLString .= "<id><![CDATA[".$id."]]></id>";
             $XMLString .= "<url><![CDATA[".$url."]]></url>";
-            $XMLString .= "<title><![CDATA[".rawurlencode(clean_string($title))."]]></title>";
-            $XMLString .= "<category><![CDATA[".rawurlencode(clean_string($lec['subProdName']))."]]></category>";
+            //$XMLString .= "<title><![CDATA[".rawurlencode(clean_string($title))."]]></title>";
+            //$XMLString .= "<category><![CDATA[".rawurlencode(clean_string($lec['subProdName']))."]]></category>";
+            $XMLString .= "<title><![CDATA[title title]]></title>";
+            $XMLString .= "<category><![CDATA[category]]></category>";
             if($type == 'download'){
                 $XMLString .= "<limit-date><![CDATA[".str_replace('-', '', $enddate)."235959]]></limit-date>";
             }

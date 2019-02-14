@@ -1041,7 +1041,7 @@ class Player extends \app\controllers\FrontController
 
         // 커리큘럼 읽어오기
         $data = $this->classroomFModel->getCurriculum($cond_arr);
-
+logger($cond_arr);
         if(empty($data) == true){
             $this->StarplayerResult(true,'강의 정보가 없습니다.');
         }
@@ -1160,10 +1160,8 @@ class Player extends \app\controllers\FrontController
             $XMLString .= "<content>";
             $XMLString .= "<id><![CDATA[".$id."]]></id>";
             $XMLString .= "<url><![CDATA[".$url."]]></url>";
-            // $XMLString .= "<title><![CDATA[".clean_string($title)."]]></title>";
-            // $XMLString .= "<category><![CDATA[".clean_string($lec['subProdName'])."]]></category>";
-            $XMLString .= "<title><![CDATA[".clean_string('타이틀')."]]></title>";
-            $XMLString .= "<category><![CDATA[".clean_string('강좌명')."]]></category>";
+            $XMLString .= "<title><![CDATA[".clean_string($title)."]]></title>";
+            $XMLString .= "<category><![CDATA[".clean_string($lec['subProdName'])."]]></category>";
             if($type == 'download'){
                 $XMLString .= "<limit-date><![CDATA[".str_replace('-', '', $enddate)."235959]]></limit-date>";
             }

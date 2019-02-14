@@ -258,9 +258,11 @@
                         var _url = '{{ site_url('/cms/lecture/storeUnit') }}';
                         ajaxSubmit($regi_form, _url, function(ret) {
                             if(ret.ret_cd) {
-                                notifyAlert('success', '알림', ret.ret_msg);
+                                //notifyAlert('success', '알림', ret.ret_msg);
                                 //$("#pop_modal").modal('toggle');
-                                //location.reload();
+                                alert("저장되었습니다.");
+                                var _replace_url = '{{ site_url('cms/lecture/createUnitModal/').$lecidx.'/'.$selected_prof_idx }}';
+                                replaceModal(_replace_url,'');
                                 $datatable.draw();
                             }
                         }, showValidateError, null, false, 'alert');
@@ -290,9 +292,11 @@
 
                         sendAjax('{{ site_url('/cms/lecture/storeUnit') }}', data, function(ret) {
                             if (ret.ret_cd) {
-                                notifyAlert('success', '알림', ret.ret_msg);
-                                $("#pop_modal").modal('toggle');
-                                //location.reload();
+                                //notifyAlert('success', '알림', ret.ret_msg);
+                                //$("#pop_modal").modal('toggle');
+                                alert("삭제되었습니다.");
+                                var _replace_url = '{{ site_url('cms/lecture/createUnitModal/').$lecidx.'/'.$selected_prof_idx }}';
+                                replaceModal(_replace_url,'');
                                 $datatable.draw();
                             }
                         }, showError, false, 'POST');

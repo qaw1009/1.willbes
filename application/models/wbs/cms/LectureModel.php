@@ -33,7 +33,10 @@ class LectureModel extends WB_Model
                             ,E.wCcdName as wProgressCcd_Name
                             ,F.wAdminName As wRegAdminName
                             ,(select Count(*) from wbs_cms_lecture_unit where wLecIdx=A.wlecIdx and wIsStatus=\'Y\') as wUnitCnt
-                            ,H.profName_string,H.profIdx_string ';
+                            ,H.profName_string,H.profIdx_string 
+                            ,IFNULL(Y.wLecIdx_Original,\'\') as wLecIdx_Original
+                            ';
+
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
@@ -47,7 +50,8 @@ class LectureModel extends WB_Model
                         join wbs_sys_code E on A.wProgressCcd = E.wCcd and E.wIsStatus="Y"
                         left outer join wbs_sys_admin F on A.wRegAdminIdx = F.wAdminIdx and F.wIsStatus="Y"
                         join wbs.vw_role_cp_list G on A.wCpIdx=G.wCpIdx 
-                        left outer join vw_lecture_r_professor_concat H on A.wLecIdx = H.wLecIdx 
+                        left outer join vw_lecture_r_professor_concat H on A.wLecIdx = H.wLecIdx
+                        left outer join wbs_cms_lecture_copy_log Y on A.wLecIdx = Y.wLecIdx 
                     where A.wIsStatus="Y"
                     ';
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
@@ -362,6 +366,124 @@ class LectureModel extends WB_Model
         ];
         return $input_data;
     }
+
+    /**
+     * 마스터강의 복사
+     * @param $wlecidx
+     * @return array|bool
+     */
+    public function lectureCopy($wlecidx)
+    {
+
+        $this->_conn->trans_begin();
+
+        try {
+
+            $admin_idx = $this->session->userdata('admin_idx');
+            $reg_ip = $this->input->ip_address();
+
+            $select = " * From wbs_cms_lecture";
+
+            $where =$this->_conn->makeWhere([
+                'EQ'=>['wLecIdx'=>$wlecidx,'wIsStatus'=>'Y']
+            ]);
+            $where = $where->getMakeWhere(false);
+
+            //원본 강좌 정보
+            $ori_data = $this->_conn->query('select ' .$select .$where)->row_array();
+            $ori_wAttachPah = $ori_data['wAttachPath'];
+
+            // 마스터강의 복사
+            $insert_column = 'wLecName, wCpIdx, wContentCcd, wShootingCcd, wProgressCcd, wMakeYM, wMediaUrl
+                                    , wAttachFileReal, wAttachFile, wKeyword, wIsUse, wRegAdminIdx, wRegIp';
+
+            //$select_column= str_replace('wLecName','concat(\'[복사]\',wLecName)',$insert_column);
+            $select_column = $insert_column;
+            $select_column= str_replace('wRegAdminIdx','\''.$admin_idx.'\' as wRegAdminIdx',$select_column);
+            $select_column= str_replace('wRegIp','\''.$reg_ip.'\' as wRegIp',$select_column);
+
+            $query = 'insert into wbs_cms_lecture ('. $insert_column .') SELECT '.$select_column.' FROM wbs_cms_lecture where wLecIdx='.$wlecidx;
+
+            if($this->_conn->query($query) === false) {
+                throw new \Exception('마스터강의 복사에 실패했습니다.');
+            };
+
+            //신규 마스터강의 식별자
+            $new_wlecidx = $this->_conn->insert_id();
+
+            //신규 경로
+            $this->load->library('upload');
+            $new_filePath =  $this->upload->_upload_url.config_item('upload_prefix_dir').'/lecture/'.date("Y").'/'.$new_wlecidx.'/';
+
+            $update_data = [
+                'wAttachPath' => $new_filePath 
+            ];
+
+            if ($this->_conn->set($update_data)->where('wLecIdx',$new_wlecidx)->update('wbs_cms_lecture') === false) {
+                throw new \Exception('마스터강의 복사(파일 경로 생성)에 실패했습니다.');
+            }
+
+            //echo $this->_conn->last_query();
+
+            //마스터강의 교수정보
+            $insert_column = "wLecIdx, wProfIdx, wOrderNum, wRegAdminIdx ";
+
+            $select_column = $insert_column;
+            $select_column= str_replace('wLecIdx','\''.$new_wlecidx.'\' as wLecIdx',$select_column);
+            $select_column= str_replace('wRegAdminIdx','\''.$admin_idx.'\' as wRegAdminIdx',$select_column);
+
+            $query = 'insert into wbs_cms_lecture_r_professor ('. $insert_column .') SELECT '.$select_column.' FROM wbs_cms_lecture_r_professor where wIsStatus=\'Y\' And wLecIdx='.$wlecidx;
+            
+            if($this->_conn->query($query) === false) {
+                throw new \Exception('마스터강의 복사(교수정보)에 실패했습니다.');
+            };
+
+
+            //마스터강의 회차정보
+            $insert_column = " wLecIdx, wUnitName, wUnitNum, wUnitLectureNum, wContentTypeCcd, wContentSizeCcd, wHD, wSD, wWD
+                                , wUnitAttachFileReal, wUnitAttachFile, wRuntime, wBookPage, wShootingDate, wProfIdx, wOrderNum, wIsUse, wRegAdminIdx, wRegIp";
+
+            $select_column = $insert_column;
+            $select_column= str_replace('wLecIdx','\''.$new_wlecidx.'\' as wLecIdx',$select_column);
+            $select_column= str_replace('wRegAdminIdx','\''.$admin_idx.'\' as wRegAdminIdx',$select_column);
+            $select_column= str_replace('wRegIp','\''.$reg_ip.'\' as wRegIp',$select_column);
+
+            $query = 'insert into wbs_cms_lecture_unit ('. $insert_column .') SELECT '.$select_column.' FROM wbs_cms_lecture_unit where wIsStatus=\'Y\' And wLecIdx='.$wlecidx;
+
+            if($this->_conn->query($query) === false) {
+                throw new \Exception('마스터강의 복사(교수정보)에 실패했습니다.');
+            };
+
+            //복사 로그 저장
+            $copy_data = [
+                'wLecIdx' => $new_wlecidx
+                ,'wLecIdx_Original' => $wlecidx
+                ,'wRegAdminIdx' =>$admin_idx
+            ];
+            if($this->_conn->set($copy_data)->insert('wbs_cms_lecture_copy_log') === false) {
+                throw new \Exception('복사 이력 저장에 실패했습니다.');
+            }
+
+            // 파일 복사
+            $original = str_replace($this->upload->_upload_url.config_item('upload_prefix_dir') ,$this->upload->_upload_path.config_item('upload_prefix_dir'),$ori_wAttachPah);
+            $target = str_replace($this->upload->_upload_url.config_item('upload_prefix_dir') ,$this->upload->_upload_path.config_item('upload_prefix_dir'),$new_filePath);
+
+            if(is_dir($original)) {
+                exec("cp -rf $original $target");
+            }
+
+            //$this->_conn->trans_rollback();
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+
+
 
 }
 

@@ -168,6 +168,27 @@ class Lecture extends \app\controllers\BaseController
         public_download($fileinfo[0], $fileinfo[1]);
     }
 
+
+    public function copy()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'wlecidx', 'label' => '마스터강의코드', 'rules' => 'trim|required']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $wlecidx = $this->_req('wlecidx');
+
+        $result = $this->lectureModel->lectureCopy($wlecidx);
+
+        $this->json_result($result,'복사 되었습니다.',$result);
+    }
+
+
+
     /**
      * 마스터강의 회차 등록 폼
      * @param array $params

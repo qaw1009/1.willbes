@@ -60,6 +60,7 @@
             <table id="list_ajax_table" class="table table-striped table-bordered">
                 <thead>
                 <tr>
+                    <th>복사<br>선택</th>
                     <th>No</th>
                     <th>CP사</th>
                     <th>콘텐츠유형 </th>
@@ -70,6 +71,7 @@
                     <th>사용여부 </th>
                     <th>등록자</th>
                     <th>등록일</th>
+                    <th>복사</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -88,7 +90,8 @@
                 serverSide: true,
                 
                 buttons: [
-                    { text: '<i class="fa fa-pencil mr-5"></i> 마스터강의등록', className: 'btn-sm btn-primary border-radius-reset',action : function(e, dt, node, config) {
+                    { text: '<i class="fa fa-copy mr-5"></i> 마스터강의복사', className: 'btn-sm btn-success border-radius-reset mr-15 btn-copy'},
+                    { text: '<i class="fa fa-pencil mr-5"></i> 마스터강의등록', className: 'btn-sm btn-primary border-radius-reset mr-15',action : function(e, dt, node, config) {
                             location.href = '{{ site_url('/cms/lecture/create') }}';
                         }
                     }
@@ -103,6 +106,9 @@
                 }
                 ,
                 columns: [
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            return '<input type="radio" class="flat"  name="copyLecIdx" value="'+row.wLecIdx+'">';
+                        }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             // 리스트 번호
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
@@ -121,7 +127,10 @@
                             return (data == 'Y') ? '사용' : '<span class="red">미사용</span>';
                         }},
                     {'data' : 'wRegAdminName'},
-                    {'data' : 'wRegDatm'}
+                    {'data' : 'wRegDatm'},
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            return (row.wLecIdx_Original !== '') ? '<span class="red">Y</span>' : '';
+                        }},//복사여부
                 ]
 
             });
@@ -138,6 +147,34 @@
                     ,width : "1500"
                 });
             });
+
+
+            //강의복사
+            $('.btn-copy').on('click',function(){
+                if ($('input:radio[name="copyLecIdx"]').is(':checked') === false) {
+                    alert('복사할 마스터강의를 선택해 주세요.');
+                    return false;
+                }
+
+                if(confirm("해당 마스터강의를 복사하시겠습니까?")) {
+
+                    var data = {
+                        '{{ csrf_token_name() }}': $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                        '_method': 'PUT',
+                        'wlecidx': $('input:radio[name="copyLecIdx"]:checked').val()
+                    };
+                    sendAjax('{{ site_url('/cms/lecture/copy') }}', data, function (ret) {
+                        if (ret.ret_cd) {
+                            //notifyAlert('success', '알림', ret.ret_msg);
+                            alert(ret.ret_msg);
+                            $datatable.draw();
+                        }
+                    }, showError, false, 'POST');
+
+                }
+
+            });
+
 
         });
     </script>

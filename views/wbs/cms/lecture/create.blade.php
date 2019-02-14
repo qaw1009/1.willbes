@@ -24,7 +24,7 @@
                         <select name="CpIdx" id="CpIdx" required="required" class="form-control" title="cp사" style="width: 200px">
                             <option value="">선택</option>
                         @foreach($cp_list as $row)
-                            <option value="{{ $row['wCpIdx']}}" @if($row['wCpIdx'] == $data['wCpIdx']) selected="selected"@endif>{{ $row['wCpName']}}</option>
+                            <option value="{{ $row['wCpIdx']}}" @if($row['wCpIdx'] == $data['wCpIdx'] || ($method == 'POST' && $row['wCpIdx']==='105') ) selected="selected"@endif>{{ $row['wCpName']}}</option>
                         @endforeach
                         </select>
                     

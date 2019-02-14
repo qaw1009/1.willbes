@@ -67,8 +67,14 @@ class AdminAuthHook
                 show_alert('운영자 권한이 없습니다.', site_url('/lcms/auth/login'), false);
             }
 
-            if (SUB_DOMAIN == 'lms' && $role['Role']['RoleIdx'] == $this->_lms_prof_role_idx) {
-                show_alert('운영자 권한이 없습니다.', 'back');
+            if (SUB_DOMAIN == 'lms') {
+                if ($role['Role']['RoleIdx'] == $this->_lms_prof_role_idx) {
+                    show_alert('운영자 권한이 없습니다.', 'back');
+                }
+
+                if (empty($role['Site']) === true) {
+                    show_alert('사이트 권한이 없습니다.', site_url('/lcms/auth/login'), false);
+                }
             }
 
             // 관리자 권한 정보 설정

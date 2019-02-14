@@ -109,8 +109,8 @@ class Login extends \app\controllers\BaseController
                 $is_cert = true;
                 $log_ccd_name = 'CERT_FIRST_REQ';
             } elseif ($row['wLastLoginIp'] != $this->input->ip_address()) {
-                // 스테이징, 실서버일 경우만 체크 ==> TODO : 서버 환경별 실행
-                if (ENVIRONMENT == 'testing' || ENVIRONMENT == 'production') {
+                // 로컬서버가 아닐 경우 체크 ==> TODO : 서버 환경별 실행
+                if (ENVIRONMENT != 'local') {
                     $is_cert = true;
                     $log_ccd_name = 'CERT_IP_REQ';
                 }
@@ -199,7 +199,8 @@ class Login extends \app\controllers\BaseController
 
         if ($type == 'sms') {
             $to = $row['wAdminPhone1'] . '-' . $row['wAdminPhone2'] . '-' . $row['wAdminPhone3'];
-            $cert_phone = $this->_reqP('cert_phone1') . '-' . $this->_reqP('cert_phone2') . '-' . $this->_reqP('cert_phone3');
+            /*$cert_phone = $this->_reqP('cert_phone1') . '-' . $this->_reqP('cert_phone2') . '-' . $this->_reqP('cert_phone3');*/
+            $cert_phone = $this->_reqP('cert_phone');
 
             if ($to != $cert_phone) {
                 $is_match = false;
@@ -263,6 +264,15 @@ class Login extends \app\controllers\BaseController
      */
     private function _sendSmsAuthNumber($to, $auth_number)
     {
+        try {
+            $this->load->library('sendsms');
+            // 070-4006-7122 최진영차장 직통 번호
+            if($this->sendsms->send($to, '윌비스 본인 인증 번호입니다. ['.$auth_number.']를 입력해 주십시요.', '070-4006-7122') === false){
+                throw new \Exception('메세지 발송에 실패했습니다.\n다시 한번 시도해 주십시요.');
+            }
+        } catch (\Exception $e) {
+            return false;
+        }
         return true;
     }
 

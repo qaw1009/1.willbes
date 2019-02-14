@@ -1166,8 +1166,8 @@ logger('xml 시작');
             $XMLString .= "<content>";
             $XMLString .= "<id><![CDATA[".$id."]]></id>";
             $XMLString .= "<url><![CDATA[".$url."]]></url>";
-            $XMLString .= "<title><![CDATA[".rawurlencode(clean_string($title))."]]></title>";
-            $XMLString .= "<category><![CDATA[".rawurlencode(clean_string($lec['subProdName']))."]]></category>";
+            $XMLString .= "<title><![CDATA[".clean_string($title)."]]></title>";
+            $XMLString .= "<category><![CDATA[".clean_string($lec['subProdName'])."]]></category>";
             if($type == 'download'){
                 $XMLString .= "<limit-date><![CDATA[".str_replace('-', '', $enddate)."235959]]></limit-date>";
             }

@@ -113,9 +113,9 @@ class RegExamModel extends WB_Model
             // lms_mock_paper 복사
             $sql = "
                 INSERT INTO {$this->_table['mockExamBase']}
-                    (SiteCode, MrcIdx, ProfIdx, PapaerName, Year, RotationNo, QuestionOption, AnswerNum, TotalScore, 
+                    (SiteCode, FilePath, MrcIdx, ProfIdx, PapaerName, Year, RotationNo, QuestionOption, AnswerNum, TotalScore, 
                      QuestionFile, RealQuestionFile, ExplanFile, RealExplanFile, IsUse, RegIp, RegAdminIdx, RegDate)
-                SELECT SiteCode, MrcIdx, ProfIdx, CONCAT('복사-', PapaerName), Year, RotationNo, QuestionOption, AnswerNum, TotalScore,
+                SELECT SiteCode, FilePath, MrcIdx, ProfIdx, CONCAT('복사-', PapaerName), Year, RotationNo, QuestionOption, AnswerNum, TotalScore,
                        QuestionFile, RealQuestionFile, ExplanFile, RealExplanFile, 'N', ?, ?, ?
                 FROM {$this->_table['mockExamBase']}
                 WHERE MpIdx = ? AND IsStatus = 'Y'";
@@ -126,9 +126,9 @@ class RegExamModel extends WB_Model
             // lms_mock_questions 복사
             $sql = "
                 INSERT INTO {$this->_table['mockExamQuestion']}
-                    (MpIdx, MalIdx, QuestionNO, QuestionOption, QuestionFile, RealQuestionFile, ExplanFile, RealExplanFile,
+                    (MpIdx, MalIdx, QuestionNO, FilePath, QuestionOption, QuestionFile, RealQuestionFile, ExplanFile, RealExplanFile,
                      RightAnswer, Scoring, Difficulty, RegIp, RegAdminIdx, RegDatm)
-                SELECT ?, MalIdx, QuestionNO, QuestionOption, QuestionFile, RealQuestionFile, ExplanFile, RealExplanFile,
+                SELECT ?, MalIdx, QuestionNO, FilePath, QuestionOption, QuestionFile, RealQuestionFile, ExplanFile, RealExplanFile,
                        RightAnswer, Scoring, Difficulty, ?, ?, ?
                 FROM {$this->_table['mockExamQuestion']}
                 WHERE MpIdx = ? AND IsStatus = 'Y'";

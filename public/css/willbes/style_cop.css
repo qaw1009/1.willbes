@@ -471,9 +471,28 @@
     margin-left:248px;
 }
 .CurriStepBox .CurriStep > li {
+    position: relative;
     display: inline;
     float:left;
     min-height: 272px;
+}
+.CurriStepBox .CurriStep > li a {    
+    position: absolute;
+    width: 70px;
+    bottom: 30px;
+    left: 50%;
+    margin-left:-35px;
+    padding:3px 0;
+    border:1px solid #000;
+    color:#000;
+    background: #fff;
+    text-align: center;
+    z-index: 1;
+}
+.CurriStepBox .CurriStep > li a:hover {
+    border:1px solid #0c5dc0;
+    color:#fff;
+    background: #0c5dc0;
 }
 .CurriStepBox .CurriStep > li:nth-child(even) {
     background: url("../../img/willbes/cop/visual/icon_arrow.png") no-repeat center center; 
@@ -509,7 +528,7 @@
 }
 .curriculumBox .info {
     width: 200px;
-    margin: 30px auto;
+    margin: 20px auto;
     font-weight: 600;
     text-align: left;
     line-height: 24px;

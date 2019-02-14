@@ -327,45 +327,42 @@
 
             <div class="widthAuto CurriStepBox">
                 <ul class="CurriStep">
-                    <li class="active">
-                        <a href="#none">
-                            <div class="curriculumBox">
-                                <span><img src="{{ img_url('cop/icon_bubble.gif') }}" alt="2019대비 진행중"> </span>
-                                <div class="Tit">기본과정</div>
-                                <div class="subTit">집중연강식 진행</div>
-                                <ul class="info">
-                                    <li>영어 매달 초 개강</li>
-                                    <li>2주마다  형소법  →  경찰학<br/>→  한국사  →  형법 진행</li>
-                                </ul> 
-                            </div>
-                        </a>
+                    <li class="active">                        
+                        <div class="curriculumBox">
+                            <span><img src="{{ img_url('cop/icon_bubble.gif') }}" alt="2019대비 진행중"> </span>
+                            <div class="Tit">기본과정</div>
+                            <div class="subTit">집중연강식 진행</div>
+                            <ul class="info">
+                                <li>영어 매달 초 개강</li>
+                                <li>2주마다  형소법  →  경찰학<br/>→  한국사  →  형법 진행</li>
+                            </ul>                            
+                        </div>
+                        <a href="#none">OT보기 &gt;</a>                      
                     </li>
                     <li>&nbsp;</li>
                     <li>
-                        <a href="#none">
-                            <div class="curriculumBox">
-                                <div class="Tit">심화과정</div>
-                                <div class="subTit">프리미엄 심화과정</div>
-                                <ul class="info">
-                                    <li>이론 재정리</li>
-                                    <li>10주 과정</li>
-                                </ul>
-                            </div>
-                        </a>
+                        <div class="curriculumBox">
+                            <div class="Tit">심화과정</div>
+                            <div class="subTit">프리미엄 심화과정</div>
+                            <ul class="info">
+                                <li>이론 재정리</li>
+                                <li>10주 과정</li>
+                            </ul>
+                        </div>
+                        <a href="#none">OT보기 &gt;</a> 
                     </li>
                     <li>&nbsp;</li>
                     <li>
-                        <a href="#none">
-                            <div class="curriculumBox">
-                                <div class="Tit">3개월 필합 풀패키지</div>
-                                <div class="subTit">핵심요약/진도별 정리</div>
-                                <ul class="info">
-                                    <li>5주 단권화</li>
-                                    <li>5주 동형모의고사</li>
-                                    <li>FINAL 실전 모의고사</li>
-                                </ul>
-                            </div>
-                        </a>
+                        <div class="curriculumBox">
+                            <div class="Tit">3개월 필합 풀패키지</div>
+                            <div class="subTit">핵심요약/진도별 정리</div>
+                            <ul class="info">
+                                <li>5주 단권화</li>
+                                <li>5주 동형모의고사</li>
+                                <li>FINAL 실전 모의고사</li>
+                            </ul>
+                        </div>
+                        <a href="#none">OT보기 &gt;</a> 
                     </li>
                 </ul>
                 <div class="curriculumTxt">

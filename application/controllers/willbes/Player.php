@@ -929,7 +929,7 @@ class Player extends \app\controllers\FrontController
         $wUnitIdx = $this->_req("u");
         $Quility = $this->_req("q");
         $type = $this->_req("st");
-
+logger($wUnitIdx);
         $ispause = 'N';
         $isstart = 'Y';
         $timeover = 'N';
@@ -1015,6 +1015,7 @@ class Player extends \app\controllers\FrontController
         }
 
         if(is_array($wUnitIdx) == true){
+            logger('in array');
             $cond_arr = [
                 'EQ' => [
                     'MemIdx' => $MemIdx,
@@ -1028,6 +1029,7 @@ class Player extends \app\controllers\FrontController
                 ]
             ];
         } else {
+            logger('is one');
             $cond_arr = [
                 'EQ' => [
                     'MemIdx' => $MemIdx,
@@ -1049,7 +1051,7 @@ class Player extends \app\controllers\FrontController
         if(empty($data) == true){
             $this->StarplayerResult(true,'강의 정보가 없습니다.');
         }
-
+logger('xml 시작');
         $XMLString  = "<?xml version='1.0' encoding='UTF-8' ?>";
         $XMLString .= "<axis-app>";
         $XMLString .= "<security>true</security>"; // 보안설정
@@ -1158,16 +1160,14 @@ class Player extends \app\controllers\FrontController
             $url = $this->clearUrl($row['wMediaUrl'].'/'.$filename);
             $title = $row['wUnitNum'].'회 '.$row['wUnitLectureNum'].'강 '.$row['wUnitName'];
             $id = "^{$MemId}^{$MemIdx}^{$OrderIdx}^{$lec['OrderProdIdx']}^{$ProdCode}^{$ProdCodeSub}^{$row['wUnitIdx']}^{$logidx}^";
-            $category = $lec['SubjectName'].'/'.$lec['CourseName'];
+            // $category = $lec['SubjectName'].'/'.$lec['CourseName'];
             $enddate = $lec['RealLecEndDate'];
 
             $XMLString .= "<content>";
             $XMLString .= "<id><![CDATA[".$id."]]></id>";
             $XMLString .= "<url><![CDATA[".$url."]]></url>";
-            //$XMLString .= "<title><![CDATA[".rawurlencode(clean_string($title))."]]></title>";
-            //$XMLString .= "<category><![CDATA[".rawurlencode(clean_string($lec['subProdName']))."]]></category>";
-            $XMLString .= "<title><![CDATA[11111]]></title>";
-            $XMLString .= "<category><![CDATA[2222222]]></category>";
+            $XMLString .= "<title><![CDATA[".rawurlencode(clean_string($title))."]]></title>";
+            $XMLString .= "<category><![CDATA[".rawurlencode(clean_string($lec['subProdName']))."]]></category>";
             if($type == 'download'){
                 $XMLString .= "<limit-date><![CDATA[".str_replace('-', '', $enddate)."235959]]></limit-date>";
             }

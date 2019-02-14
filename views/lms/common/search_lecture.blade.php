@@ -37,7 +37,43 @@
                     <p class="form-control-static">명칭, 코드 검색 가능</p>
                 </div>
                 <div class="col-md-2 text-right pr-5">
+                </div>
+            </div>
+            <div class="form-group pt-10 pb-5">
+                <label class="control-label col-md-2 pt-5" for="search_professor">강사검색</label>
+                <div class="col-md-3">
+                    <input type="text" class="form-control input-sm" id="search_professor" name="search_professor">
+                </div>
+                <div class="col-md-1"><label class="control-label pt-5">조건</label></div>
+                <div class="col-md-6 form-inline">
+                    <select class="form-control" id="search_course_idx" name="search_course_idx">
+                        <option value="">과정</option>
+                        @foreach($arr_course as $row)
+                            <option value="{{ $row['CourseIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CourseName'] }}</option>
+                        @endforeach
+                    </select>
+                    <select class="form-control" id="search_subject_idx" name="search_subject_idx">
+                        <option value="">과목</option>
+                        @foreach($arr_subject as $row)
+                            <option value="{{ $row['SubjectIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['SubjectName'] }}</option>
+                        @endforeach
+                    </select>
+
+                    <select class="form-control" id="search_sales_ccd" name="search_sales_ccd">
+                        <option value="">판매여부</option>
+                        @foreach($Sales_ccd as $key=>$val)
+                            <option value="{{ $key }}">{{ $val }}</option>
+                        @endforeach
+                    </select>
+
+                    <select class="form-control" id="search_is_use" name="search_is_use">
+                        <option value="Y">사용</option>
+                        <option value="N">미사용</option>
+                    </select>
+                </div>
+                <div class="col-md-12 text-right pr-5 mt-15 mb-10">
                     <button type="submit" class="btn btn-primary btn-sm btn-search mr-0" id="_btn_search">검 색</button>
+                    <button type="button" class="btn btn-default btn-search" id="searchInit">초기화</button>
                 </div>
             </div>
     @endif
@@ -163,6 +199,15 @@
                         } else {
                             $('input[name="checkIdx"]').iCheck('uncheck');
                         }
+                    });
+
+                    // 검색 초기화
+                    $('#searchInit').on('click', function () {
+                        $search_form_modal.find('[name^=search_]').each(function () {
+                            $(this).val('');
+                        });
+                        $search_form_modal.find('#_btn_search').trigger('click');
+                        $datatable_modal.draw();
                     });
 
 

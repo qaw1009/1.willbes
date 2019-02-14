@@ -1169,7 +1169,7 @@ class Player extends \app\controllers\FrontController
         }
 
         $XMLString .= "</axis-app>";
-
+        logger('M:'$XMLString);
         echo $this->crypto->encrypt($XMLString);
     }
 
@@ -1438,6 +1438,8 @@ class Player extends \app\controllers\FrontController
                 ];
             }
         }
+
+        logger('A:',$rtnData);
 
         return $this->json_result(true,'성공',null, $rtnData);
     }
@@ -1992,6 +1994,7 @@ class Player extends \app\controllers\FrontController
 
         $this->playerFModel->storeDeviceLog($data);
     }
+
 
     /**
      * 스타플레이어 리턴 xml 생성

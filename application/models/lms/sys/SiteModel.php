@@ -101,6 +101,10 @@ class SiteModel extends WB_Model
      */
     public function getSiteCampusArray($site_code)
     {
+        $arr_auth_campus_ccds = get_auth_all_campus_ccds();
+        if (empty($arr_auth_campus_ccds) === true) {
+            return [];
+        }
         $column = "SC.SiteCode, SC.CampusCcd, C.CcdName as CampusName";
         $from = "
             FROM {$this->_table['site_r_campus']} AS SC
@@ -126,7 +130,6 @@ class SiteModel extends WB_Model
 
         // 캠퍼스 권한
         $where_campus = "";
-        $arr_auth_campus_ccds = get_auth_all_campus_ccds();
         $where_campus = $this->_conn->group_start();
         foreach ($arr_auth_campus_ccds as $set_site_ccd => $set_campus_ccd) {
             $where_campus->or_group_start();

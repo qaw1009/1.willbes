@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 $config = [
-    'mode' => 'test',
+    'mode' => 'real',
     'test' => [
         'mid' => 'INIpayTest',
         'signkey' => 'SU5JTElURV9UUklQTEVERVNfS0VZU1RS',
@@ -21,7 +21,21 @@ $config = [
         'script_src' => 'https://stgstdpay.inicis.com/stdjs/INIStdPay.js'
     ],
     'real' => [
-
+        'mid' => '',
+        'signkey' => 'azZidWxyK2w2NStsd3dJcHlIZDh1dz09',
+        'adminkey' => '1111',
+        'version' => '1.0',
+        'currency' => 'WON',
+        'language' => 'ko',
+        'charset' => 'UTF-8',
+        'format' => 'JSON',
+        'view_type' => 'overlay',
+        'close_method' => 'close',
+        'popup_method' => 'popup',
+        'return_method' => 'returns',
+        'card_nointerest' => '',
+        'card_quotabase' => '',
+        'script_src' => 'https://stdpay.inicis.com/stdjs/INIStdPay.js'
     ],
     'view_path' => [
         'request' => 'pg/inisis/request_form'

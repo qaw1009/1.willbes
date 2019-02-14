@@ -344,7 +344,7 @@ class SmsModel extends WB_Model
         $send_msg = $inputData['Content'];
         $send_call_center = $inputData['CsTel'];
 
-        $this->load->library('sendsms');
+        $this->load->library('sendSms');
         if ($this->sendsms->send($arr_send_phone, $send_msg, $send_call_center, $send_date) !== true) {
             return false;
         } else {

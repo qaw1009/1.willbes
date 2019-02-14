@@ -147,50 +147,57 @@
 
 
                     function drawVisualization2() {
-                        var others = 10;
-                        var my_avg1 = 20;
+                        var others = {!! json_encode($dataSet) !!};
+                        var my_avg1 = {{ $dataOrg[$mem_idx]['avg'] }};
 
-                        if(0 <= others && others <= 5)  var val2_5 = others;
-                        if(5 < others && others <= 10)  var val2_10 = others;
-                        if(10 < others && others <= 15) var val2_15 = others;
-                        if(15 < others && others <= 20) var val2_20 = others;
-                        if(20 < others && others <= 25) var val2_25 = others;
-                        if(25 < others && others <= 30) var val2_30 = others;
-                        if(30 < others && others <= 35) var val2_35 = others;
-                        if(35 < others && others <= 40) var val2_40 = others;
-                        if(40 < others && others <= 45) var val2_45 = others;
-                        if(45 < others && others <= 50) var val2_50 = others;
-                        if(50 < others && others <= 55) var val2_55 = others;
-                        if(55 < others && others <= 60) var val2_60 = others;
-                        if(60 < others && others <= 65) var val2_65 = others;
-                        if(65 < others && others <= 70) var val2_70 = others;
-                        if(70 < others && others <= 75) var val2_75 = others;
-                        if(75 < others && others <= 80) var val2_80 = others;
-                        if(80 < others && others <= 85) var val2_85 = others;
-                        if(85 < others && others <= 90) var val2_90 = others;
-                        if(90 < others && others <= 95) var val2_95 = others;
-                        if(95 < others && others <= 100) var val2_100 = others;
+                        var val2_5 = 0; val2_10 = 0; val2_15 = 0; val2_20 = 0; val2_25 = 0; val2_30 = 0; val2_35 = 0; val2_40 = 0; val2_45 = 0; val2_50 = 0; val2_55 = 0; val2_60 = 0; val2_65 = 0; val2_70 = 0; val2_75 = 0; val2_80 = 0; val2_85 = 0; val2_90 = 0; val2_95 = 0; val2_100 = 0;
+                        var g_my_val5 = 0; g_my_val10 = 0; g_my_val15 = 0; g_my_val20 = 0; g_my_val25 = 0; g_my_val30 = 0; g_my_val35 = 0; g_my_val40 = 0; g_my_val45 = 0; g_my_val50 = 0; g_my_val55 = 0; g_my_val60 = 0; g_my_val65 = 0; g_my_val70 = 0; g_my_val75 = 0; g_my_val80 = 0; g_my_val85 = 0; g_my_val90 = 0; g_my_val95 = 0; g_my_val100 = 0;
 
-                        if(0 <= my_avg1 && my_avg1 <= 5)  var g_my_val5 = my_avg1;
-                        if(5 <  my_avg1 && my_avg1 <= 10)  var g_my_val10 = my_avg1;
-                        if(10 < my_avg1 && my_avg1 <= 15) var g_my_val15 = my_avg1;
-                        if(15 < my_avg1 && my_avg1 <= 20) var g_my_val20 = my_avg1;
-                        if(20 < my_avg1 && my_avg1 <= 25) var g_my_val25 = my_avg1;
-                        if(25 < my_avg1 && my_avg1 <= 30) var g_my_val30 = my_avg1;
-                        if(30 < my_avg1 && my_avg1 <= 35) var g_my_val35 = my_avg1;
-                        if(35 < my_avg1 && my_avg1 <= 40) var g_my_val40 = my_avg1;
-                        if(40 < my_avg1 && my_avg1 <= 45) var g_my_val45 = my_avg1;
-                        if(45 < my_avg1 && my_avg1 <= 50) var g_my_val50 = my_avg1;
-                        if(50 < my_avg1 && my_avg1 <= 55) var g_my_val55 = my_avg1;
-                        if(55 < my_avg1 && my_avg1 <= 60) var g_my_val60 = my_avg1;
-                        if(60 < my_avg1 && my_avg1 <= 65) var g_my_val65 = my_avg1;
-                        if(65 < my_avg1 && my_avg1 <= 70) var g_my_val70 = my_avg1;
-                        if(70 < my_avg1 && my_avg1 <= 75) var g_my_val75 = my_avg1;
-                        if(75 < my_avg1 && my_avg1 <= 80) var g_my_val80 = my_avg1;
-                        if(80 < my_avg1 && my_avg1 <= 85) var g_my_val85 = my_avg1;
-                        if(85 < my_avg1 && my_avg1 <= 90) var g_my_val90 = my_avg1;
-                        if(90 < my_avg1 && my_avg1 <= 95) var g_my_val95 = my_avg1;
-                        if(95 < my_avg1 && my_avg1 <= 100) var g_my_val100 = my_avg1;
+                        for(j=0; j < others.length; j++) {
+                            num = parseInt(others[j]);
+                            //alert(num);
+                            if (0 <= num && num <= 5) val2_5++;
+                            if (5 < num && num <= 10) val2_10++;
+                            if (10 < num && num <= 15) val2_15++;
+                            if (15 < num && num <= 20) val2_20++;
+                            if (20 < num && num <= 25) val2_25++;
+                            if (25 < num && num <= 30) val2_30++;
+                            if (30 < num && num <= 35) val2_35++;
+                            if (35 < num && num <= 40) val2_40++;
+                            if (40 < num && num <= 45) val2_45++;
+                            if (45 < num && num <= 50) val2_50++;
+                            if (50 < num && num <= 55) val2_55++;
+                            if (55 < num && num <= 60) val2_60++;
+                            if (60 < num && num <= 65) val2_65++;
+                            if (65 < num && num <= 70) val2_70++;
+                            if (70 < num && num <= 75) val2_75++;
+                            if (75 < num && num <= 80) val2_80++;
+                            if (80 < num && num <= 85) val2_85++;
+                            if (85 < num && num <= 90) val2_90++;
+                            if (90 < num && num <= 95) val2_95++;
+                            if (95 < num && num <= 100) val2_100++;
+                        }
+
+                        if(0 <= my_avg1 && my_avg1 <= 5)  g_my_val5 = my_avg1;
+                        if(5 <  my_avg1 && my_avg1 <= 10)  g_my_val10 = my_avg1;
+                        if(10 < my_avg1 && my_avg1 <= 15) g_my_val15 = my_avg1;
+                        if(15 < my_avg1 && my_avg1 <= 20) g_my_val20 = my_avg1;
+                        if(20 < my_avg1 && my_avg1 <= 25) g_my_val25 = my_avg1;
+                        if(25 < my_avg1 && my_avg1 <= 30) g_my_val30 = my_avg1;
+                        if(30 < my_avg1 && my_avg1 <= 35) g_my_val35 = my_avg1;
+                        if(35 < my_avg1 && my_avg1 <= 40) g_my_val40 = my_avg1;
+                        if(40 < my_avg1 && my_avg1 <= 45) g_my_val45 = my_avg1;
+                        if(45 < my_avg1 && my_avg1 <= 50) g_my_val50 = my_avg1;
+                        if(50 < my_avg1 && my_avg1 <= 55) g_my_val55 = my_avg1;
+                        if(55 < my_avg1 && my_avg1 <= 60) g_my_val60 = my_avg1;
+                        if(60 < my_avg1 && my_avg1 <= 65) g_my_val65 = my_avg1;
+                        if(65 < my_avg1 && my_avg1 <= 70) g_my_val70 = my_avg1;
+                        if(70 < my_avg1 && my_avg1 <= 75) g_my_val75 = my_avg1;
+                        if(75 < my_avg1 && my_avg1 <= 80) g_my_val80 = my_avg1;
+                        if(80 < my_avg1 && my_avg1 <= 85) g_my_val85 = my_avg1;
+                        if(85 < my_avg1 && my_avg1 <= 90) g_my_val90 = my_avg1;
+                        if(90 < my_avg1 && my_avg1 <= 95) g_my_val95 = my_avg1;
+                        if(95 < my_avg1 && my_avg1 <= 100) g_my_val100 = my_avg1;
 
                         // Some raw data (not necessarily accurate)
                         var data = google.visualization.arrayToDataTable([

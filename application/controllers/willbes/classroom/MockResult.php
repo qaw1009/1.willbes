@@ -171,6 +171,7 @@ class MockResult extends \app\controllers\FrontController
                 $orgtnum = $val['COUNT'] * $val['KCNT'];
                 $dataOrg[$memidx]['rank'] = ($key+1).'/'.$val['COUNT'];
                 $dataOrg[$memidx]['tpct'] = round(100 - ((($key+1) / $val['COUNT']) * 100 - (100 / $val['COUNT'])),2);
+                $dataSet[] = round($val['ORG'] / $val['KCNT'] , 2);
             }
         }
 
@@ -240,7 +241,8 @@ class MockResult extends \app\controllers\FrontController
             'dataDetail' => $dataDetail,
             'memArr' => $memArr,
             'prodcode' => $prodcode,
-            'mem_idx' => $_SESSION['mem_idx']
+            'mem_idx' => $_SESSION['mem_idx'],
+            'dataSet' => $dataSet
         ]);
     }
 

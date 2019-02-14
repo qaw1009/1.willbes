@@ -1324,6 +1324,7 @@ class RegGradeModel extends WB_Model
 
             $where = " WHERE ProdCode = " . $ProdCode;
         }
+        
         $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
         return $query->result_array();
 

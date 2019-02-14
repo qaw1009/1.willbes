@@ -212,6 +212,7 @@ class StatisticsPrivate extends \app\controllers\BaseController
                 $orgtnum = $val['COUNT'] * $val['KCNT'];
                 $dataOrg[$MemIdx]['rank'] = ($key+1).'/'.$val['COUNT'];
                 $dataOrg[$MemIdx]['tpct'] = round(100 - ((($key+1) / $val['COUNT']) * 100 - (100 / $val['COUNT'])),2);
+                $dataSet[] = round($val['ORG'] / $val['KCNT'] , 2);
             }
         }
 
@@ -294,7 +295,8 @@ class StatisticsPrivate extends \app\controllers\BaseController
             'dataDetail' => $dataDetail,
             'memArr' => $memArr,
             'prodcode' => $prodcode,
-            'mem_idx' => $memidx
+            'mem_idx' => $memidx,
+            'dataSet' => $dataSet
         ]);
     }
 

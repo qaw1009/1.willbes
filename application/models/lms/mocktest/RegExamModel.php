@@ -56,7 +56,7 @@ class RegExamModel extends WB_Model
 
 
         $column = "
-            EB.*, A.wAdminName, MB.CateCode, MB.Ccd, MS.SubjectType,
+            EB.*, A.wAdminName, MB.CateCode, MB.Ccd, MS.SubjectType, EB.FilePath,
             CONCAT(C1.CateName, ' > ', SC.CcdName) AS CateRouteName, SJ.SubjectName, PMS.wProfName,
             (SELECT COUNT(MemIdx) 
               FROM lms_mock_register AS MR

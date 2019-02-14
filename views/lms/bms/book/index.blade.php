@@ -12,17 +12,17 @@
                     <div class="col-md-11 form-inline">
                         {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
                         <select class="form-control mr-10" id="search_lg_cate_code" name="search_lg_cate_code">
-                            <option value="">대분류</option>
+                            <option value="">카테고리</option>
                             @foreach($arr_lg_category as $row)
                                 <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CateName'] }}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_md_cate_code" name="search_md_cate_code">
+{{--                        <select class="form-control mr-10" id="search_md_cate_code" name="search_md_cate_code">
                             <option value="">중분류</option>
                             @foreach($arr_md_category as $row)
                                 <option value="{{ $row['CateCode'] }}" class="{{ $row['ParentCateCode'] }}">{{ $row['CateName'] }}</option>
                             @endforeach
-                        </select>
+                        </select>--}}
                         <select class="form-control mr-10" id="search_subject_idx" name="search_subject_idx">
                             <option value="">과목</option>
                             @foreach($arr_subject as $row)
@@ -81,8 +81,8 @@
                 <tr>
                     <th>No</th>
                     <th>운영사이트</th>
-                    <th>대분류</th>
-                    <th>중분류</th>
+                    <th>카테고리</th>
+                    {{--<th>중분류</th>--}}
                     <th>과목/교수정보</th>
                     <th>교재코드</th>
                     <th>교재명</th>
@@ -133,7 +133,7 @@
                     }},
                     {'data' : 'SiteName'},
                     {'data' : 'BCateName'},
-                    {'data' : 'MCateName'},
+                    /*{'data' : 'MCateName'},*/
                     {'data' : 'ProfSubjectNames', 'render' : function(data, type, row, meta) {
                         return data !== null ? data.replace(/,/g, '<br/>') : '';
                     }},

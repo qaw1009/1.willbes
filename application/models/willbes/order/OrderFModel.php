@@ -1551,7 +1551,7 @@ class OrderFModel extends BaseOrderFModel
         try {
             // 주문정보 조회
             $order_row = $this->orderListFModel->findOrder([
-                'EQ' => ['O.OrderNo' => $order_no, 'O.PgTid' => $deposit_results['tid'], 'O.PgMid' => $deposit_results['mid']]
+                'EQ' => ['O.OrderNo' => $order_no, 'O.PgMid' => $deposit_results['mid']]
             ]);
 
             if (empty($order_row) === true) {

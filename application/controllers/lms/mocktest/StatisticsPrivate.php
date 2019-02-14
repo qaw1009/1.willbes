@@ -212,7 +212,7 @@ class StatisticsPrivate extends \app\controllers\BaseController
                 $orgtnum = $val['COUNT'] * $val['KCNT'];
                 $dataOrg[$MemIdx]['rank'] = ($key+1).'/'.$val['COUNT'];
                 $dataOrg[$MemIdx]['tpct'] = round(100 - ((($key+1) / $val['COUNT']) * 100 - (100 / $val['COUNT'])),2);
-                $dataSet[] = round($val['ORG'] / $val['KCNT'] , 2);
+
             }
         }
 
@@ -247,6 +247,8 @@ class StatisticsPrivate extends \app\controllers\BaseController
             $dataAdjust[$MemIdx]['admax'] = $val['ADMAX'];
             //응시멤버
             $memArr[] = $MemIdx;
+
+            $dataSet[] = round($val['AD'] / $val['KCNT'] , 2);
 
             $tempPoint = $val['AD'];
             $Rank++;

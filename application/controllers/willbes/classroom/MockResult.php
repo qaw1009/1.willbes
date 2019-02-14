@@ -171,7 +171,6 @@ class MockResult extends \app\controllers\FrontController
                 $orgtnum = $val['COUNT'] * $val['KCNT'];
                 $dataOrg[$memidx]['rank'] = ($key+1).'/'.$val['COUNT'];
                 $dataOrg[$memidx]['tpct'] = round(100 - ((($key+1) / $val['COUNT']) * 100 - (100 / $val['COUNT'])),2);
-                $dataSet[] = round($val['ORG'] / $val['KCNT'] , 2);
             }
         }
 
@@ -193,6 +192,8 @@ class MockResult extends \app\controllers\FrontController
             $dataAdjust[$memidx]['admax'] = $val['ADMAX'];
             //응시멤버
             $memArr[] = $memidx;
+
+            $dataSet[] = round($val['AD'] / $val['KCNT'] , 2);
         }
         if($adTotal) $dataAdjust['tavg'] = $adTotal ? round($adTotal / $orgtnum, 2) : 0;
         if($adTotal) $dataAdjust['tsum'] = $adTotal ? round($adTotal / $tcnt, 2) : 0;

@@ -148,7 +148,7 @@
 
                     function drawVisualization2() {
                         var others = {!! json_encode($dataSet) !!};
-                        var my_avg1 = {{ $dataOrg[$mem_idx]['avg'] }};
+                        var my_avg1 = {{ $dataAdjust[$mem_idx]['avg'] }};
 
                         var val2_5 = 0; val2_10 = 0; val2_15 = 0; val2_20 = 0; val2_25 = 0; val2_30 = 0; val2_35 = 0; val2_40 = 0; val2_45 = 0; val2_50 = 0; val2_55 = 0; val2_60 = 0; val2_65 = 0; val2_70 = 0; val2_75 = 0; val2_80 = 0; val2_85 = 0; val2_90 = 0; val2_95 = 0; val2_100 = 0;
                         var g_my_val5 = 0; g_my_val10 = 0; g_my_val15 = 0; g_my_val20 = 0; g_my_val25 = 0; g_my_val30 = 0; g_my_val35 = 0; g_my_val40 = 0; g_my_val45 = 0; g_my_val50 = 0; g_my_val55 = 0; g_my_val60 = 0; g_my_val65 = 0; g_my_val70 = 0; g_my_val75 = 0; g_my_val80 = 0; g_my_val85 = 0; g_my_val90 = 0; g_my_val95 = 0; g_my_val100 = 0;

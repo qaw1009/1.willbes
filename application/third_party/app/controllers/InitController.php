@@ -33,7 +33,7 @@ trait InitController
         $target_name = str_first_pos_before($target_field, ',');
         $target_values = explode(',', str_first_pos_after($target_field, ','));
 
-        if (in_array($this->_reqP($target_name), $target_values) === true && empty($val) === true) {
+        if (in_array($this->_reqP($target_name), $target_values) === true && empty($val) === true && strlen($val) < 1) {
             $this->form_validation->set_message(__FUNCTION__, '{field}은(는) 필수입니다.');
             return false;
         }

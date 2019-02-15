@@ -131,11 +131,11 @@ class ZeroPay extends BaseOrder
     public function excel()
     {
         $headers = ['주문번호', '운영사이트', '회원명', '회원아이디', '회원휴대폰번호', '결제완료일', '상품구분', '상품명', '회차수', '결제상태', '환불완료일', '환불완료자'
-            , '수강시작일', '수강기간', '부여사유'];
+            , '수강시작일', '수강기간', '부여사유유형', '기타사유'];
         $column = 'OrderNo, SiteName, MemName, MemId, MemPhone, CompleteDatm, ProdTypeCcdName, ProdName
             , if(json_value(MyLecData, "$[0].wUnitIdxs") != "", fn_str_count(concat(json_value(MyLecData, "$[0].wUnitIdxs"), ","), ","), "") as wUnitCnt
             , PayStatusCcdName, RefundDatm, RefundAdminName
-            , json_value(MyLecData, "$[0].LecStartDate") as LecStartDate, json_value(MyLecData, "$[0].LecExpireDay") as LecExpireDay, AdminRegReason';
+            , json_value(MyLecData, "$[0].LecStartDate") as LecStartDate, json_value(MyLecData, "$[0].LecExpireDay") as LecExpireDay, AdminReasonCcdName, AdminEtcReason';
 
         $arr_condition = $this->_getListConditions();
         $list = $this->orderListModel->listExcelAllOrder($column, $arr_condition, $this->_getListOrderBy(), $this->_list_add_join);
@@ -157,11 +157,12 @@ class ZeroPay extends BaseOrder
         $arr_prod_type_target_name = $this->codeModel->getCcd($this->_group_ccd['ProdType'], '', ['IN' => ['Ccd' => array_values($arr_prod_type_target_ccd)]]);
 
         // 지역번호, 휴대폰번호 공통코드 조회
-        $codes = $this->codeModel->getCcdInArray([$this->_tel1_ccd, $this->_phone1_ccd]);
+        $codes = $this->codeModel->getCcdInArray([$this->_tel1_ccd, $this->_phone1_ccd, $this->_group_ccd['AdminReason']]);
 
         return $this->load->view('pay/zero_pay/create', [
             'arr_prod_type_target_ccd' => $arr_prod_type_target_ccd,
             'arr_prod_type_target_name' => $arr_prod_type_target_name,
+            'arr_admin_reason_ccd' => $codes[$this->_group_ccd['AdminReason']],
             'arr_tel1_ccd' => $codes[$this->_tel1_ccd],
             'arr_phone1_ccd' => $codes[$this->_phone1_ccd]
         ]);
@@ -181,7 +182,8 @@ class ZeroPay extends BaseOrder
             ['field' => 'prod_code[]', 'label' => '상품식별자', 'rules' => 'trim|required'],
             ['field' => 'lec_start_date', 'label' => '수강시작일', 'rules' => 'callback_validateRequiredIf[prod_type,on_lecture]'],
             ['field' => 'lec_expire_day', 'label' => '수강제공기간', 'rules' => 'callback_validateRequiredIf[prod_type,on_lecture]'],
-            ['field' => 'admin_reg_reason', 'label' => '등록사유', 'rules' => 'trim|required'],
+            ['field' => 'admin_reason_ccd', 'label' => '부여사유유형', 'rules' => 'trim|required'],
+            ['field' => 'admin_etc_reason', 'label' => '기타부여사유', 'rules' => 'trim|callback_validateRequiredIf[admin_reason_ccd,' . $this->_group_ccd['AdminReason'] . '999]'],
             ['field' => 'mem_idx[]', 'label' => '회원 선택', 'rules' => 'trim|required'],
             ['field' => 'receiver', 'label' => '받는사람 이름', 'rules' => 'trim|callback_validateRequiredIf[prod_type,book]'],
             ['field' => 'zipcode', 'label' => '받는사람 우편번호', 'rules' => 'trim|integer|callback_validateRequiredIf[prod_type,book]'],

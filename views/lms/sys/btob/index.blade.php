@@ -49,6 +49,7 @@
                         <th>등록자</th>
                         <th>등록일</th>
                         <th>IP등록</th>
+                        <th>사용자</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -67,6 +68,7 @@
                             <td>{{ $row['RegAdminName'] }}</td>
                             <td>{{ $row['RegDatm'] }}</td>
                             <td><button type="button" class="btn btn-primary btn_ip" id="btn_ip" data-idx="{{$row['BtobIdx']}}">등록</button></td>
+                            <td><button type="button" class="btn btn-primary btn_list" id="btn_list" data-idx="{{$row['BtobIdx']}}">사용자목록</button></td>
                         </tr>
                     @endforeach
                     </tbody>
@@ -113,6 +115,14 @@
                 });
             });
 
+            $('.btn_list').click(function(){
+                var uri_param = $(this).data('idx');
+                $('.btn_list').setLayer({
+                    'url' : '{{ site_url('/sys/btob/btobInfo/listCpMember/') }}' + uri_param,
+                    'width' : 1000
+                    ,'modal_id' : 'modal_cp_member'
+                });
+            });
         });
 
         // datatable searching

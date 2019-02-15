@@ -183,8 +183,8 @@ class MockResult extends \app\controllers\FrontController
                 $dataOrg[$memidx]['avg'] = $Point;
                 $orgTotal = $orgTotal + $val['ORG'];
                 $orgtnum = $val['COUNT'] * $val['KCNT'];
-                $dataOrg[$memidx]['rank'] = ($key+1).'/'.$val['COUNT'];
-                $dataOrg[$memidx]['tpct'] = round(100 - ((($key+1) / $val['COUNT']) * 100 - (100 / $val['COUNT'])),2);
+                $dataOrg[$memidx]['rank'] = $rRank.'/'.$val['COUNT'];
+                $dataOrg[$memidx]['tpct'] = round(100 - (($rRank / $val['COUNT']) * 100 - (100 / $val['COUNT'])),2);
 
                 $tempPoint = $Point;
                 $Rank++;

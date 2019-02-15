@@ -22,7 +22,7 @@ class CertApplyModel extends WB_Model
      * @param array $order_by
      * @return mixed
      */
-    public function listApply($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    public function listApply($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [], $arr_condition_add = null)
     {
         if ($is_count === true) {
             $column = 'count(*) AS numrows';
@@ -66,10 +66,16 @@ class CertApplyModel extends WB_Model
                     where SA.IsStatus=\'Y\' and A.IsStatus=\'Y\'
         ';
 
+       //echo var_dump($arr_condition);
+
         // 사이트 권한 추가
         $arr_condition['IN']['A.SiteCode'] = get_auth_site_codes();
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(true);
+
+        if(empty($arr_condition_add) === false) {
+            $where .= ' and '.$arr_condition_add;
+        }
 
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);

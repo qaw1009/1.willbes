@@ -52,7 +52,7 @@
                             <option value="N">취소</option>
                         </select>
 
-                        <select class="form-control" id="search_is_use" name="search_is_use">
+                        <select class="form-control" id="search_order" name="search_order">
                             <option value="">구매여부</option>
                             <option value="Y">Y</option>
                             <option value="N">N</option>

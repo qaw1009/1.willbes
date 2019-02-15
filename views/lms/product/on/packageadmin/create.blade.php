@@ -375,9 +375,11 @@
 
                 <div class="form-group">
                     <label class="control-label col-md-2">강사료정산정보 <br>
-                        @if($method==='POST' || empty($data_division))
+                        {{--@if($method==='POST' || empty($data_division))--}}
+                        <p>
                         <button type="button" class="btn-sm btn-success border-radius-reset mr-15" id="searchProfessor">불러오기</button>
-                        @endif
+                        </p>
+                        {{--@endif--}}
 
                     </label>
                     <div class="col-md-10 form-inline item">
@@ -409,27 +411,34 @@
                             @php
                                 $rateRemain = '';
                                 $rateRemainProfIdx = '';
+                                $rateSum = 0;
                             @endphp
-                            @foreach($data_division as $row)
-                                @php
-                                    if(empty($data_division) !== true) {
-                                        if($row['IsSingular']==='Y') {
-                                            $rateRemain = $row['SingularValue'];
-                                            $rateRemainProfIdx = $row['ProfIdx'].'-'.$row['ProdCodeSub'];
+
+                            @if(empty($data_division) === false)
+
+                                @foreach($data_division as $row)
+                                    @php
+                                        if(empty($data_division) !== true) {
+                                            if($row['IsSingular']==='Y') {
+                                                $rateRemain = $row['SingularValue'];
+                                                $rateRemainProfIdx = $row['ProfIdx'].'-'.$row['ProdCodeSub'];
+                                            }
                                         }
-                                    }
-                                @endphp
-                                <tr id="{{$loop->index - 1}}">
-                                    <input name="ProfIdx[]" id="ProfIdx_{{$row['ProfIdx']}}-{{$row['ProdCodeSub']}}" type="hidden" value="{{$row['ProfIdx']}}">
-                                    <input name="ProdCodeDiv[]" id="ProdCodeDiv_{{$row['ProfIdx']}}-{{$row['ProdCodeSub']}}" type="hidden" value="{{$row['ProdCodeSub']}}">
-                                    <td>[{{$row['wProfName']}}] {{$row['ProdNameSub']}}</td>
-                                    <td><input name="TotalPrice[]" class="form-control" id="TotalPrice_{{$row['ProfIdx']}}-{{$row['ProdCodeSub']}}" type="text" size="10" readonly="" value="{{$row['TotalPrice']}}"> 원</td>
-                                    <td><input name="ProdDivisionPrice[]" title="안분가격" class="form-control" id="ProdDivisionPrice_{{$row['ProfIdx']}}-{{$row['ProdCodeSub']}}" required="required" onkeyup="rateCheck('{{$row['ProfIdx']}}-{{$row['ProdCodeSub']}}')" type="text" size="10" value="{{$row['ProdDivisionPrice']}}" {{--@if($method==='PUT') readonly @endif--}}> 원</td>
-                                    <td><input name="ProdDivisionRate[]" title="안분율" class="form-control" id="ProdDivisionRate_{{$row['ProfIdx']}}-{{$row['ProdCodeSub']}}" required="required" type="text" size="10" readonly="" value="{{$row['ProdDivisionRate']}}"></td>
-                                    <td><input name="ProdCalcRate[]" title="정산율" class="form-control" id="ProdCalcRate_{{$row['ProfIdx']}}-{{$row['ProdCodeSub']}}" required="required" type="text" size="5" value="{{$row['ProdCalcRate']}}"> %</td>
-                                    <td><input name="IsSingular" title="단수적용" id="IsSingular_{{$row['ProfIdx']}}-{{$row['ProdCodeSub']}}" required="required" onclick="singularCheck('{{$row['ProfIdx']}}-{{$row['ProdCodeSub']}}')" type="radio" value="{{$row['ProfIdx']}}" @if($row['IsSingular']==='Y') checked="checked" @endif {{--@if($method==='PUT') disabled @endif--}}></td>
-                                </tr>
-                            @endforeach
+                                        $rateSum = $rateSum + floatval($row['ProdDivisionRate']);
+                                    @endphp
+                                    <tr id="{{$loop->index - 1}}">
+                                        <input name="ProfIdx[]" id="ProfIdx_{{$row['ProfIdx']}}-{{$row['ProdCodeSub']}}" type="hidden" value="{{$row['ProfIdx']}}">
+                                        <input name="ProdCodeDiv[]" id="ProdCodeDiv_{{$row['ProfIdx']}}-{{$row['ProdCodeSub']}}" type="hidden" value="{{$row['ProdCodeSub']}}">
+                                        <td>[{{$row['wProfName']}}] {{$row['ProdNameSub']}}</td>
+                                        <td><input name="TotalPrice[]" class="form-control" id="TotalPrice_{{$row['ProfIdx']}}-{{$row['ProdCodeSub']}}" type="text" size="10" readonly="" value="{{$row['TotalPrice']}}"> 원</td>
+                                        <td><input name="ProdDivisionPrice[]" title="안분가격" class="form-control" id="ProdDivisionPrice_{{$row['ProfIdx']}}-{{$row['ProdCodeSub']}}" required="required" onkeyup="rateCheck('{{$row['ProfIdx']}}-{{$row['ProdCodeSub']}}')" type="text" size="10" value="{{$row['ProdDivisionPrice']}}" {{--@if($method==='PUT') readonly @endif--}}> 원</td>
+                                        <td><input name="ProdDivisionRate[]" title="안분율" class="form-control" id="ProdDivisionRate_{{$row['ProfIdx']}}-{{$row['ProdCodeSub']}}" required="required" type="text" size="10" readonly="" value="{{$row['ProdDivisionRate']}}"></td>
+                                        <td><input name="ProdCalcRate[]" title="정산율" class="form-control" id="ProdCalcRate_{{$row['ProfIdx']}}-{{$row['ProdCodeSub']}}" required="required" type="text" size="5" value="{{$row['ProdCalcRate']}}"> %</td>
+                                        <td><input name="IsSingular" title="단수적용" id="IsSingular_{{$row['ProfIdx']}}-{{$row['ProdCodeSub']}}" required="required" onclick="singularCheck('{{$row['ProfIdx']}}-{{$row['ProdCodeSub']}}')" type="radio" value="{{$row['ProfIdx']}}" @if($row['IsSingular']==='Y') checked="checked" @endif {{--@if($method==='PUT') disabled @endif--}}></td>
+                                    </tr>
+                                @endforeach
+                                    <tr><td colspan="3"></td><td><span id="rateSum">{{{$rateSum}}}</span></td><td colspan="2"></td></tr>
+                            @endif
                             </table>
                         </div>
                         <div class="item inline-block">

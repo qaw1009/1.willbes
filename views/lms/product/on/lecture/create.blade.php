@@ -434,29 +434,37 @@
                             @php
                                 $rateRemain = 0;
                                 $rateRemainProfIdx = '';
+                                $rateSum = 0;
                             @endphp
-                            @foreach($data_division as $row)
-                                @php
-                                    if(empty($data_division) !== true) {
-                                        if($row['IsSingular']==='Y') {
-                                            $rateRemain = $row['SingularValue'];
-                                            $rateRemainProfIdx = $row['ProfIdx'];
+
+                            @if(empty($data_division) === false)
+
+                                @foreach($data_division as $row)
+                                    @php
+                                        if(empty($data_division) !== true) {
+                                            if($row['IsSingular']==='Y') {
+                                                $rateRemain = $row['SingularValue'];
+                                                $rateRemainProfIdx = $row['ProfIdx'];
+                                            }
                                         }
-                                    }
-                                @endphp
-                                <tr id="{{$loop->index - 1}}">
-                                    <td>
-                                        <input name="ProfIdx[]" id="ProfIdx_{{$row['ProfIdx']}}" type="hidden" value="{{$row['ProfIdx']}}">
-                                        <input name="IsReprProf" id="IsReprProf_{{$row['ProfIdx']}}" type="radio" value="{{$row['ProfIdx']}}" @if($row['IsReprProf']==='Y')checked="checked"@endif>
-                                    </td>
-                                    <td>{{$row['wProfName']}}</td>
-                                    <td><input name="TotalPrice[]" class="form-control" id="TotalPrice_{{$row['ProfIdx']}}" type="text" size="10" readonly="" value="{{$row['TotalPrice']}}"> 원</td>
-                                    <td><input name="ProdDivisionPrice[]" title="안분가격" class="form-control" id="ProdDivisionPrice_{{$row['ProfIdx']}}" required="required" onkeyup="rateCheck('{{$row['ProfIdx']}}')" type="text" size="10" value="{{$row['ProdDivisionPrice']}}" {{--@if($method==='PUT') readonly @endif--}}> 원</td>
-                                    <td><input name="ProdDivisionRate[]" title="안분율" class="form-control" id="ProdDivisionRate_{{$row['ProfIdx']}}" required="required" type="text" size="10" readonly="" value="{{$row['ProdDivisionRate']}}"></td>
-                                    <td><input name="ProdCalcRate[]" title="정산율" class="form-control" id="ProdCalcRate_{{$row['ProfIdx']}}" required="required" type="text" size="5" value="{{$row['ProdCalcRate']}}"> %</td>
-                                    <td><input name="IsSingular" title="단수적용" id="IsSingular_{{$row['ProfIdx']}}" required="required" onclick="singularCheck('{{$row['ProfIdx']}}')" type="radio" value="{{$row['ProfIdx']}}" @if($row['IsSingular']==='Y') checked="checked" @endif {{--@if($method==='PUT') disabled @endif--}}></td>
-                                </tr>
-                            @endforeach
+                                        $rateSum = $rateSum + floatval($row['ProdDivisionRate']);
+                                    @endphp
+                                    <tr id="{{$loop->index - 1}}">
+                                        <td>
+                                            <input name="ProfIdx[]" id="ProfIdx_{{$row['ProfIdx']}}" type="hidden" value="{{$row['ProfIdx']}}">
+                                            <input name="IsReprProf" id="IsReprProf_{{$row['ProfIdx']}}" type="radio" value="{{$row['ProfIdx']}}" @if($row['IsReprProf']==='Y')checked="checked"@endif>
+                                        </td>
+                                        <td>{{$row['wProfName']}}</td>
+                                        <td><input name="TotalPrice[]" class="form-control" id="TotalPrice_{{$row['ProfIdx']}}" type="text" size="10" readonly="" value="{{$row['TotalPrice']}}"> 원</td>
+                                        <td><input name="ProdDivisionPrice[]" title="안분가격" class="form-control" id="ProdDivisionPrice_{{$row['ProfIdx']}}" required="required" onkeyup="rateCheck('{{$row['ProfIdx']}}')" type="text" size="10" value="{{$row['ProdDivisionPrice']}}" {{--@if($method==='PUT') readonly @endif--}}> 원</td>
+                                        <td><input name="ProdDivisionRate[]" title="안분율" class="form-control" id="ProdDivisionRate_{{$row['ProfIdx']}}" required="required" type="text" size="10" readonly="" value="{{$row['ProdDivisionRate']}}"></td>
+                                        <td><input name="ProdCalcRate[]" title="정산율" class="form-control" id="ProdCalcRate_{{$row['ProfIdx']}}" required="required" type="text" size="5" value="{{$row['ProdCalcRate']}}"> %</td>
+                                        <td><input name="IsSingular" title="단수적용" id="IsSingular_{{$row['ProfIdx']}}" required="required" onclick="singularCheck('{{$row['ProfIdx']}}')" type="radio" value="{{$row['ProfIdx']}}" @if($row['IsSingular']==='Y') checked="checked" @endif {{--@if($method==='PUT') disabled @endif--}}></td>
+                                    </tr>
+                                @endforeach
+                                    <tr><td colspan="4"></td><td><span id="rateSum">{{{$rateSum}}}</span></td><td colspan="2"></td></tr>
+                            @endif
+
                             </table>
                         </div>
                         <div class="item inline-block">

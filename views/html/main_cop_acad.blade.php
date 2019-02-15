@@ -126,50 +126,50 @@
                 <li>
                     <img src="{{ img_url('cop_acad/prof/prof_ske.jpg') }}" alt="형사소송법/수사 신광은">
                     <div class="caProfBtsn">
-                        <div><a href="#none">기본이론</a></div>
-                        <div><a href="#none">심화이론</a></div>
+                        <div><a href="#none">문풀1단계<span>3.7 개강</span></a></div>
+                        <div><a href="#none">기본형소법<span>3.21 개강</span></a></div>
                     </div>
                 </li>
                 <li>
                     <img src="{{ img_url('cop_acad/prof/prof_jjh.jpg') }}" alt="경찰학개론 장정훈">
                     <div class="caProfBtsn">
-                        <div><a href="#none">기본이론</a></div>
-                        <div><a href="#none">심화이론</a></div>
+                        <div><a href="#none">문풀1단계<span>3.7 개강</span></a></div>
+                        <div><a href="#none">무료특강</a></div>
                     </div>
                 </li>
                 <li>
                     <img src="{{ img_url('cop_acad/prof/prof_kwu.jpg') }}" alt="형법 김원욱">
                     <div class="caProfBtsn">
-                        <div><a href="#none">기본이론</a></div>
-                        <div><a href="#none">심화이론</a></div>
+                        <div><a href="#none">기본형법<span>3.7 개강</span></a></div>
+                        <div><a href="#none">심화강좌</a></div>
                     </div>
                 </li>
                 <li>
                     <img src="{{ img_url('cop_acad/prof/prof_hsm.jpg') }}" alt="경찰영어 하승민">
                     <div class="caProfBtsn">
-                        <div><a href="#none">기본이론</a></div>
-                        <div><a href="#none">심화이론</a></div>
+                        <div><a href="#none">문풀1단계<span>3.2 개강</span></a></div>
+                        <div><a href="#none">심화강좌</a></div>
                     </div>
                 </li>
                 <li>
                     <img src="{{ img_url('cop_acad/prof/prof_otj.jpg') }}" alt="한국사 오태진">
                     <div class="caProfBtsn">
-                        <div><a href="#none">기본이론</a></div>
-                        <div><a href="#none">심화이론(원기총)</a></div>
+                        <div><a href="#none">기본한국사<span>2.25 개강</span></a></div>
+                        <div><a href="#none">문풀1단계<span>3.13 개강</span></a></div>
                     </div>
                 </li>
                 <li>
                     <img src="{{ img_url('cop_acad/prof/prof_wyc.jpg') }}" alt="한국사 원유철">
                     <div class="caProfBtsn">
-                        <div><a href="#none">기본이론</a></div>
-                        <div><a href="#none">문법 심화이론</a></div>
+                        <div><a href="#none">기본한국사<span>2.25 개강</span></a></div>
+                        <div><a href="#none">심화강좌</a></div>
                     </div>
                 </li>
                 <li>
                     <img src="{{ img_url('cop_acad/prof/prof_khj.jpg') }}" alt="기초영어 김현정">
                     <div class="caProfBtsn">
-                        <div><a href="#none">기본이론</a></div>
-                        <div><a href="#none">심화이론(원기총)</a></div>
+                        <div><a href="#none">지옥탈출<span>3.11 개강</span></a></div>
+                        <div><a href="#none">아침특강</a></div>
                     </div>
                 </li>
                 <li>

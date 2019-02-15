@@ -87,7 +87,7 @@
 
     <div class="Section MainVisual">
         <div class="widthAuto">            
-            <iframe src="https://www.youtube.com/embed/sVr6LYsbzek?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>            
+            <iframe src="https://www.youtube.com/embed/lrZxQV21DE8?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>            
             <img src="{{ img_url('cop/visual/visual_190213.jpg') }}" alt="전국 4,000명 동시수강">            
         </div>
     </div>
@@ -128,24 +128,24 @@
                 </ul>
             </div>
             <div id="tab1" class="youtubeBox">
-                <iframe src="https://www.youtube.com/embed/sVr6LYsbzek?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
+                <iframe src="https://www.youtube.com/embed/GlE9EGMDF98?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
             </div>
             <div id="tab2" class="youtubeBox">
-                <iframe src="https://www.youtube.com/embed/SHbzPnFtkxk?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
+                <iframe src="https://www.youtube.com/embed/re8w_IFAPS4?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
             </div>
             <div id="tab3" class="youtubeBox">
-                <iframe src="https://www.youtube.com/embed/GTrlrvc-k7o?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
+                <iframe src="https://www.youtube.com/embed/VEmBnYu8tcc?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
             </div>
             <div id="tab4" class="youtubeBox">
-                <iframe src="https://www.youtube.com/embed/SK6plcTEYYk?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
+                <iframe src="https://www.youtube.com/embed/lrZxQV21DE8?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
             </div>
         </div>
     </div>
     <script type="text/javascript">        
-			var tab1_url = "https://www.youtube.com/embed/sVr6LYsbzek?rel=0&modestbranding=1&showinfo=0";
-			var tab2_url = "https://www.youtube.com/embed/SHbzPnFtkxk?rel=0&modestbranding=1&showinfo=0";
-            var tab3_url = "https://www.youtube.com/embed/GTrlrvc-k7o?rel=0&modestbranding=1&showinfo=0";
-            var tab4_url = "https://www.youtube.com/embed/SK6plcTEYYk?rel=0&modestbranding=1&showinfo=0";
+			var tab1_url = "https://www.youtube.com/embed/GlE9EGMDF98?rel=0&modestbranding=1&showinfo=0";
+			var tab2_url = "https://www.youtube.com/embed/re8w_IFAPS4?rel=0&modestbranding=1&showinfo=0";
+            var tab3_url = "https://www.youtube.com/embed/VEmBnYu8tcc?rel=0&modestbranding=1&showinfo=0";
+            var tab4_url = "https://www.youtube.com/embed/lrZxQV21DE8?rel=0&modestbranding=1&showinfo=0";
 
 			$(function() {
 			$(".youtubeBox").hide(); 
@@ -160,7 +160,7 @@
 					}else if(activeTab == "#tab3"){
 						html_str = "<iframe src='"+tab3_url+"' frameborder='0' allowfullscreen></iframe>";                   
                     }else if(activeTab == "#tab4"){
-						html_str = "<iframe src='"+tab3_url+"' frameborder='0' allowfullscreen></iframe>";
+						html_str = "<iframe src='"+tab4_url+"' frameborder='0' allowfullscreen></iframe>";
 					}
 					$(".youtubetab a").removeClass("active"); 
 					$(this).addClass("active"); 

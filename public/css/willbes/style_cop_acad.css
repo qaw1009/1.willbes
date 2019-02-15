@@ -96,7 +96,7 @@
     position: relative;
     display: inline;
     float: left;
-    height: 327px;
+    height: 297px;
     margin-right: 12px;
     margin-bottom: 12px;
     background: url("../../img/willbes/cop_acad/prof/prof_temp.jpg") no-repeat 0 0;
@@ -107,9 +107,31 @@
 }
 .caProfBox .caProfBtsn {
     position: absolute;
-    bottom:44px;
-    left:37px;
+    top:170px;
+    left:30px;
     font-size: 14px;
+}
+.caProfBox .caProfBtsn a {
+    display: block;
+    font-size: 16px;
+    background: url("../../img/willbes/cop_acad/icon_arrow.png") no-repeat 95% 7px;
+    padding:5px 30px 5px 5px;
+    margin-left:-5px;
+    margin-bottom: 5px
+}
+.caProfBox .caProfBtsn span {
+    display: block;
+    font-size: 13px;
+    color:#fd6f31;
+    margin-top: 4px;
+}
+.caProfBox .caProfBtsn a:hover {
+    color:#fff !important;
+    background: #0c5dc0 url("../../img/willbes/cop_acad/icon_arrow.png") no-repeat 95% 7px;
+    border-radius: 0 5px 0 5px;
+}
+.caProfBox .caProfBtsn a:hover span {
+    color:#fff;
 }
 .caProfBox:after {
     content: '';
@@ -460,7 +482,7 @@
     text-align: center;
     background: #f9f9f9;
     float: left;
-    margin-right:5px;
+    margin-right:8px;
 }
 #notice3 .mapWrap .add ul li {
     border-top:1px solid #959595 !important;

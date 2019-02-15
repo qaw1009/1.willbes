@@ -182,7 +182,9 @@
                         return data != null ? data + '<br/>(' + row.LecExpireDay + '일)' : '';
                     }},
                     {'data' : 'AdminReasonCcdName'},
-                    {'data' : 'AdminEtcReason'}
+                    {'data' : 'AdminEtcReason', 'render' : function(data, type, row, meta) {
+                        return data != null ? data.substr(0, 20) : '';
+                    }}
                 ]
             });
 

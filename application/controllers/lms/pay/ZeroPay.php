@@ -183,7 +183,7 @@ class ZeroPay extends BaseOrder
             ['field' => 'lec_start_date', 'label' => '수강시작일', 'rules' => 'callback_validateRequiredIf[prod_type,on_lecture]'],
             ['field' => 'lec_expire_day', 'label' => '수강제공기간', 'rules' => 'callback_validateRequiredIf[prod_type,on_lecture]'],
             ['field' => 'admin_reason_ccd', 'label' => '부여사유유형', 'rules' => 'trim|required'],
-            ['field' => 'admin_etc_reason', 'label' => '기타부여사유', 'rules' => 'trim|callback_validateRequiredIf[admin_reason_ccd,' . $this->_group_ccd['AdminReason'] . '999]'],
+            ['field' => 'admin_etc_reason', 'label' => '상세부여사유', 'rules' => 'trim|required'],
             ['field' => 'mem_idx[]', 'label' => '회원 선택', 'rules' => 'trim|required'],
             ['field' => 'receiver', 'label' => '받는사람 이름', 'rules' => 'trim|callback_validateRequiredIf[prod_type,book]'],
             ['field' => 'zipcode', 'label' => '받는사람 우편번호', 'rules' => 'trim|integer|callback_validateRequiredIf[prod_type,book]'],

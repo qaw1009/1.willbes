@@ -466,11 +466,11 @@
                             @endif
                             <tr>
                                 <th class="bg-odd">부여사유유형</th>
-                                <td class="bg-white-only">{{ $data['order']['AdminReasonCcdName'] }}
-                                    @if(ends_with($data['order']['AdminReasonCcd'], '999') === true)
-                                        ({{ $data['order']['AdminEtcReason'] }})
-                                    @endif
-                                </td>
+                                <td class="bg-white-only">{{ $data['order']['AdminReasonCcdName'] }}</td>
+                            </tr>
+                            <tr>
+                                <th class="bg-odd">상세부여사유</th>
+                                <td class="bg-white-only">{{ $data['order']['AdminEtcReason'] }}</td>
                             </tr>
                             <tr>
                                 <th class="bg-odd">부여자</th>

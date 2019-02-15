@@ -144,6 +144,9 @@ class Payment extends \app\controllers\FrontController
             ]);
 
             if ($result['ret_cd'] === true) {
+                // 결제완료 SMS 발송
+                $this->orderFModel->sendOrderSms($result['ret_data']);
+
                 // 결제완료 페이지 이동
                 return $this->json_result(true, '', [], ['ret_url' => front_url('/order/complete?order_no=' . $result['ret_data'])]);
             } else {
@@ -171,6 +174,9 @@ class Payment extends \app\controllers\FrontController
         $this->save_log_queries();
 
         if ($result['ret_cd'] === true) {
+            // 결제완료 SMS 발송
+            $this->orderFModel->sendOrderSms($result['ret_data']);
+
             // 결제완료 페이지 이동
             redirect(front_url('/order/complete?order_no=' . $result['ret_data']));
         } else {

@@ -1678,4 +1678,34 @@ class OrderFModel extends BaseOrderFModel
 
         return true;
     }
+
+    /**
+     * 결제완료, 가상계좌신청완료 SMS 발송
+     * @param $order_no
+     */
+    public function sendOrderSms($order_no)
+    {
+        $sess_mem_idx = $this->session->userdata('mem_idx');
+        $sess_mem_name = $this->session->userdata('mem_name');
+        $sess_mem_phone = $this->session->userdata('mem_phone');
+        $callback_number = '1544-5006';
+
+        if (empty($order_no) === false && empty($sess_mem_idx) === false && empty($sess_mem_phone) === false) {
+            // 주문정보 조회
+            $data = $this->orderListFModel->findOrderByOrderNo($order_no, $sess_mem_idx);
+
+            if (empty($data) === false) {
+                $this->load->library('sendSms');
+
+                if ($data['IsVBank'] == 'Y') {
+                    $sms_msg = '[윌비스] 가상계좌 ' . config_item('vbank_account_name') . ' ' . str_replace('은행', '', $data['VBankName']);
+                    $sms_msg .= ' ' . $data['VBankAccountNo'] . ' (' . date('n/j', strtotime($data['VBankExpireDatm'])) . '까지 유효)';
+                } else {
+                    $sms_msg = '[윌비스] ' . $sess_mem_name . '님 결제완료되셨습니다. [주문번호 ' . $order_no . ']';
+                }
+
+                $this->sendsms->send($sess_mem_phone, $sms_msg, $callback_number);
+            }
+        }
+    }
 }

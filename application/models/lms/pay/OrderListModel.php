@@ -40,14 +40,14 @@ class OrderListModel extends BaseOrderModel
                             else "O"    # 주문완료(계좌신청)
                         end, NULL			
                       ) as VBankStatus                    
-                    , O.IsEscrow, O.IsDelivery, O.IsVisitPay, O.AdminRegReason, O.RegAdminIdx, if(O.RegAdminIdx is not null, fn_admin_name(O.RegAdminIdx), null) as RegAdminName
+                    , O.IsEscrow, O.IsDelivery, O.IsVisitPay, O.AdminReasonCcd, O.AdminEtcReason, O.RegAdminIdx, if(O.RegAdminIdx is not null, fn_admin_name(O.RegAdminIdx), null) as RegAdminName
                     , O.CompleteDatm, O.OrderDatm
                     , OP.SalePatternCcd, OP.PayStatusCcd, OP.OrderPrice, OP.RealPayPrice, OP.CardPayPrice, OP.CashPayPrice, OP.DiscPrice
                     , if(OP.DiscRate > 0, concat(OP.DiscRate, if(OP.DiscType = "R", "%", "원")), "") as DiscRate, OP.DiscReason
                     , OP.UsePoint, OP.SavePoint, OP.IsUseCoupon, OP.UserCouponIdx, OP.UpdDatm 
                     , P.ProdTypeCcd, PL.LearnPatternCcd, P.ProdName, if(OP.SalePatternCcd != "' . $this->_sale_pattern_ccd['normal'] . '", CSP.CcdName, "") as SalePatternCcdName                                        
                     , CPG.CcdEtc as PgDriver, CPC.CcdName as PayChannelCcdName, CPR.CcdName as PayRouteCcdName, CPM.CcdName as PayMethodCcdName, CVB.CcdName as VBankCcdName
-                    , CPT.CcdName as ProdTypeCcdName, CLP.CcdName as LearnPatternCcdName, CPS.CcdName as PayStatusCcdName';
+                    , CAR.CcdName as AdminReasonCcdName, CPT.CcdName as ProdTypeCcdName, CLP.CcdName as LearnPatternCcdName, CPS.CcdName as PayStatusCcdName';
 
                 $in_column .= $this->_getAddListQuery('column', $arr_add_join);
                 $column = '*, (tRealPayPrice - cast(tRefundPrice as int)) as tRemainPrice';
@@ -88,13 +88,13 @@ class OrderListModel extends BaseOrderModel
             , O.UseLecPoint as tUseLecPoint, O.UseBookPoint as tUseBookPoint                 
             , concat(O.VBankAccountNo, " ") as VBankAccountNo # 엑셀파일에서 텍스트 형태로 표기하기 위해 공백 삽입
             , O.VBankDepositName, O.VBankExpireDatm, O.VBankCancelDatm, if(O.VBankAccountNo is not null, O.OrderDatm, "") as VBankOrderDatm
-            , O.AdminRegReason, O.CompleteDatm, O.OrderDatm
+            , O.AdminEtcReason, O.CompleteDatm, O.OrderDatm
             , OP.RealPayPrice, OP.IsUseCoupon, if(OP.DiscRate > 0, concat(OP.DiscRate, if(OP.DiscType = "R", "%", "원")), "") as DiscRate
             , OP.UpdDatm                       
             , concat("[", ifnull(CLP.CcdName, CPT.CcdName), "] ", P.ProdName, if(OP.SalePatternCcd != "' . $this->_sale_pattern_ccd['normal'] . '", concat(" (", CSP.CcdName, ")"), "")) as ProdName                       
             , P.ProdName as OnlyProdName                                    
             , CPC.CcdName as PayChannelCcdName, CPR.CcdName as PayRouteCcdName, CPM.CcdName as PayMethodCcdName, CVB.CcdName as VBankCcdName
-            , CPT.CcdName as ProdTypeCcdName, CPS.CcdName as PayStatusCcdName';
+            , CAR.CcdName as AdminReasonCcdName, CPT.CcdName as ProdTypeCcdName, CPS.CcdName as PayStatusCcdName';
         $in_column .= $this->_getAddListQuery('excel_column', $arr_add_join);
 
         $from = $from = $this->_getListFrom($arr_add_join);
@@ -140,23 +140,25 @@ class OrderListModel extends BaseOrderModel
         if ($is_all_from === true) {
             $from .= '                                
                 left join ' . $this->_table['code'] . ' as CPG
-                    on O.PgCcd = CPG.Ccd and CPG.IsStatus = "Y"                    
+                    on O.PgCcd = CPG.Ccd and CPG.IsStatus = "Y" and CPG.GroupCcd = "' . $this->_group_ccd['Pg']. '"                   
                 left join ' . $this->_table['code'] . ' as CPC
-                    on O.PayChannelCcd = CPC.Ccd and CPC.IsStatus = "Y"
+                    on O.PayChannelCcd = CPC.Ccd and CPC.IsStatus = "Y" and CPC.GroupCcd = "' . $this->_group_ccd['PayChannel']. '"
                 left join ' . $this->_table['code'] . ' as CPR
-                    on O.PayRouteCcd = CPR.Ccd and CPR.IsStatus = "Y"
+                    on O.PayRouteCcd = CPR.Ccd and CPR.IsStatus = "Y" and CPR.GroupCcd = "' . $this->_group_ccd['PayRoute']. '"
                 left join ' . $this->_table['code'] . ' as CPM
-                    on O.PayMethodCcd = CPM.Ccd and CPM.IsStatus = "Y"
+                    on O.PayMethodCcd = CPM.Ccd and CPM.IsStatus = "Y" and CPM.GroupCcd = "' . $this->_group_ccd['PayMethod']. '"
                 left join ' . $this->_table['code'] . ' as CVB
-                    on O.VBankCcd = CVB.Ccd and CVB.IsStatus = "Y"         
+                    on O.VBankCcd = CVB.Ccd and CVB.IsStatus = "Y" and CVB.GroupCcd = "' . $this->_group_ccd['Bank']. '"         
+                left join ' . $this->_table['code'] . ' as CAR
+                    on O.AdminReasonCcd = CAR.Ccd and CAR.IsStatus = "Y" and CAR.GroupCcd = "' . $this->_group_ccd['AdminReason']. '"                    
                 left join ' . $this->_table['code'] . ' as CPS
-                    on OP.PayStatusCcd = CPS.Ccd and CPS.IsStatus = "Y"
+                    on OP.PayStatusCcd = CPS.Ccd and CPS.IsStatus = "Y" and CPS.GroupCcd = "' . $this->_group_ccd['PayStatus']. '"
                 left join ' . $this->_table['code'] . ' as CSP
-                    on OP.SalePatternCcd = CSP.Ccd and CSP.IsStatus = "Y"                                                      	
+                    on OP.SalePatternCcd = CSP.Ccd and CSP.IsStatus = "Y" and CSP.GroupCcd = "' . $this->_group_ccd['SalePattern']. '"                                                      	
                 left join ' . $this->_table['code'] . ' as CPT
-                    on P.ProdTypeCcd = CPT.Ccd and CPT.IsStatus = "Y"
+                    on P.ProdTypeCcd = CPT.Ccd and CPT.IsStatus = "Y" and CPT.GroupCcd = "' . $this->_group_ccd['ProdType']. '"
                 left join ' . $this->_table['code'] . ' as CLP
-                    on PL.LearnPatternCcd = CLP.Ccd and CLP.IsStatus = "Y"';
+                    on PL.LearnPatternCcd = CLP.Ccd and CLP.IsStatus = "Y" and CLP.GroupCcd = "' . $this->_group_ccd['LearnPattern']. '"';
         }
 
         return $from . $this->_getAddListQuery('from', $arr_add_join, $is_all_from);
@@ -227,7 +229,7 @@ class OrderListModel extends BaseOrderModel
                 if ($is_all_from === true) {
                     $from .= '                        
                         left join ' . $this->_table['code'] . ' as CDS
-                            on OPD.DeliveryStatusCcd = CDS.Ccd and CDS.IsStatus = "Y"
+                            on OPD.DeliveryStatusCcd = CDS.Ccd and CDS.IsStatus = "Y" and CDS.GroupCcd = "' . $this->_group_ccd['DeliveryStatus']. '"
                         left join ' . $this->_table['admin'] . ' as AIR
                             on OPD.InvoiceRegAdminIdx = AIR.wAdminIdx and AIR.wIsStatus = "Y"
                         left join ' . $this->_table['admin'] . ' as AIU
@@ -335,7 +337,7 @@ class OrderListModel extends BaseOrderModel
                     end), NULL			
                   ) as VBankStatus
                 , O.IsEscrow, O.IsDelivery, O.IsVisitPay, O.CompleteDatm, O.OrderDatm
-                , if(O.PgCcd != "", (select CcdEtc from ' . $this->_table['code'] . ' where Ccd = O.PgCcd), "") as PgDriver               
+                , if(O.PgCcd != "", (select CcdEtc from ' . $this->_table['code'] . ' where Ccd = O.PgCcd and GroupCcd = "' . $this->_group_ccd['Pg'] . '"), "") as PgDriver               
             ';
         }
 
@@ -386,9 +388,9 @@ class OrderListModel extends BaseOrderModel
                 left join ' . $this->_table['product_lecture'] . ' as PL
                     on OP.ProdCode = PL.ProdCode
                 left join ' . $this->_table['code'] . ' as CPT
-                    on P.ProdTypeCcd = CPT.Ccd and CPT.IsStatus = "Y"
+                    on P.ProdTypeCcd = CPT.Ccd and CPT.IsStatus = "Y" and CPT.GroupCcd = "' . $this->_group_ccd['ProdType']. '"
                 left join ' . $this->_table['code'] . ' as CLP
-                    on PL.LearnPatternCcd = CLP.Ccd and CLP.IsStatus = "Y"';
+                    on PL.LearnPatternCcd = CLP.Ccd and CLP.IsStatus = "Y" and CLP.GroupCcd = "' . $this->_group_ccd['LearnPattern']. '"';
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);

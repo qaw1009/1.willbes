@@ -22,7 +22,7 @@ class ZeroPay extends BaseOrder
     public function index()
     {
         // 사용하는 코드값 조회
-        $arr_target_group_ccd = array_filter_keys($this->_group_ccd, ['ProdType', 'LearnPattern', 'PayStatus', 'DeliveryStatus']);
+        $arr_target_group_ccd = array_filter_keys($this->_group_ccd, ['ProdType', 'LearnPattern', 'PayStatus', 'DeliveryStatus', 'AdminReason']);
         $codes = $this->codeModel->getCcdInArray(array_values($arr_target_group_ccd));
 
         // 결제상태 공통코드에서 0원결제용 코드만 필터링
@@ -33,6 +33,7 @@ class ZeroPay extends BaseOrder
             'arr_learn_pattern_ccd' => $codes[$this->_group_ccd['LearnPattern']],
             'arr_pay_status_ccd' => $arr_pay_status_ccd,
             'arr_delivery_status_ccd' => $codes[$this->_group_ccd['DeliveryStatus']],
+            'arr_admin_reason_ccd' => $codes[$this->_group_ccd['AdminReason']],
             '_pay_status_ccd' => $this->orderListModel->_pay_status_ccd
         ]);
     }
@@ -79,6 +80,7 @@ class ZeroPay extends BaseOrder
             'EQ' => [
                 'O.PayRouteCcd' => $this->orderListModel->_pay_route_ccd['zero'],
                 'O.SiteCode' => $this->_reqP('search_site_code'),
+                'O.AdminReasonCcd' => $this->_reqP('search_admin_reason_ccd'),
                 'P.ProdTypeCcd' => $this->_reqP('search_prod_type_ccd'),
                 'PL.LearnPatternCcd' => $this->_reqP('search_learn_pattern_ccd'),
                 'OP.PayStatusCcd' => $this->_reqP('search_pay_status_ccd'),

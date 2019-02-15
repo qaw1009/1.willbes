@@ -46,9 +46,9 @@ class BaseOrderModel extends WB_Model
         'admin' => 'wbs_sys_admin'
     ];
 
-    // 공통그룹코드 => 결제채널, 결제루트, 결제방법, 상품구분, 학습형태, 판매형태, 결제상태, 배송상태, 결제은행, 결제카드
-    public $_group_ccd = ['PayChannel' => '669', 'PayRoute' => '670', 'PayMethod' => '604', 'ProdType' => '636', 'LearnPattern' => '615', 'SalePattern' => '694', 'PayStatus' => '676'
-        , 'DeliveryStatus' => '677', 'Bank' => '678', 'Card' => '697'
+    // 공통그룹코드 => 결제채널, 결제루트, 결제방법, PG사, 상품구분, 학습형태, 판매형태, 결제상태, 배송상태, 결제은행, 결제카드, 관리자등록사유
+    public $_group_ccd = ['PayChannel' => '669', 'PayRoute' => '670', 'PayMethod' => '604', 'Pg' => '603', 'ProdType' => '636', 'LearnPattern' => '615', 'SalePattern' => '694'
+        , 'PayStatus' => '676', 'DeliveryStatus' => '677', 'Bank' => '678', 'Card' => '697', 'AdminReason' => '705'
     ];
 
     // 상품타입 공통코드 (온라인강좌, 학원강좌, 교재, 사은품, 배송료, 추가 배송료, 독서실, 사물함, 예치금, 모의고사)

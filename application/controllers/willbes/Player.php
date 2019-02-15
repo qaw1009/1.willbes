@@ -367,6 +367,95 @@ class Player extends \app\controllers\FrontController
         ]);
     }
 
+    /**
+     * 샘플강의 보기
+     * @param array $params
+     */
+    public function Free($params = [])
+    {
+        if(empty($params[0]) === true || empty($params[1]) === true || empty($params[2]) === true ){
+            show_alert('파라미터가 잘못 되었습니다.1', 'close');
+        }
+
+        $prodcode = $params[0];
+        $unitidx = $params[1];
+        $quility = $params[2];
+
+        if($this->session->userdata('is_login') !== true){
+            show_alert('로그인해야 이용이 가능합니다.','close');
+        }
+
+        $MemId = $this->session->userdata('mem_id');
+
+        if(empty($quility) === true){
+            $quility = 'WD';
+        }
+
+        $data = $this->playerFModel->getLectureFree($prodcode, $unitidx);
+
+        if(empty($data) === true){
+            show_alert('샘플강좌가 없습니다.', 'close');
+        }
+
+        switch($quility){
+            case 'WD':
+                $filename = $data['wWD'];
+                $ratio = 21; // 초 와이드는 고정
+                break;
+
+            case 'HD':
+                $filename = $data['wHD'];
+                $ratio = $data['wRatio']; // 고화질은 설정한 비율
+                break;
+
+            case 'SD':
+                $filename = $data['wSD'];
+                $ratio = $data['wRatio']; // 저화질도 설정한 비율
+                break;
+
+            default:
+                $filename = $data['wWD'];
+                $ratio = 21; // 초 와이드는 고정
+                break;
+        }
+
+        // 동영상 경로가 없을때 다른 경로로 재생
+        if(empty($filename) === true){
+            $filename = $data['wWD'];
+            $ratio = 21;
+        }
+        if(empty($filename) === true){
+            $filename = $data['wHD'];
+            $ratio = $data['wRatio'];
+        }
+        if(empty($filename) === true){
+            $filename = $data['wSD'];
+            $ratio = $data['wRatio'];
+        }
+
+        // 모든 경로가 존재 없을때
+        if(empty($filename) === true){
+            show_alert('샘플파일이 없습니다.', 'close');
+        }
+
+        $url = $this->clearUrl($data['wMediaUrl'].'/'.$filename);
+
+        $this->load->view('/player/sample', [
+            'data' => [
+                'pretitle' => $data['wUnitNum'].'회 '.$data['wUnitLectureNum'].'강',
+                'title' => $data['wUnitName'],
+                'quility' => 'WD',
+                'startPosition' => 0,
+                'ratio' => 21,
+                'isIntro' => false,
+                'ratio' => $ratio,
+                'startPosition' => 0,
+                'url' => $url,
+                'memid' => $MemId
+            ]
+        ]);
+    }
+
 
     /**
      * 강사 샘플보기

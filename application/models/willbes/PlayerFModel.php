@@ -64,6 +64,49 @@ class PlayerFModel extends WB_Model
         return empty($rows) === true ? [] : $rows->row_array();
     }
 
+
+    /**
+     * 무료 보강
+     * @param $ProdCode
+     * @param $UnitIdx
+     * @return array
+     */
+    public function getLectureFree($ProdCode, $UnitIdx)
+    {
+        if (empty($ProdCode) === true || empty($UnitIdx) === true) {
+            return [];
+        }
+
+        $column = '
+            ML.wMediaUrl,
+            U.wSD, U.wHD, U.wWD, U.wUnitNum, U.wUnitLectureNum, U.wUnitName,
+            IFNULL(C.wCcdValue, 16) AS wRatio
+            ';
+
+        $cond = [
+            'EQ' => [
+                'L.ProdCode' => $ProdCode,
+                'L.FreeLecTypeCcd' => '652002',
+                'U.wUnitIdx' => $UnitIdx
+            ]
+        ];
+
+        $from = " FROM
+            {$this->_table['lecture']} AS L
+            INNER JOIN {$this->_table['mstlec']} AS ML ON L.wLecIdx = ML.wLecIdx
+            INNER JOIN {$this->_table['unit']} AS U ON ML.wLecIdx = U.wLecIdx
+            LEFT JOIN {$this->_table['wbs_code']} AS C ON U.wContentSizeCcd = C.wCcd 
+        ";
+
+        $where = $this->_conn->makeWhere($cond);
+        $where = $where->getMakeWhere(false);
+
+        $rows = $this->_conn->query('SELECT ' . $column . $from . $where);
+        return empty($rows) === true ? [] : $rows->row_array();
+    }
+
+
+
     /**
      * 북마크관리
      */

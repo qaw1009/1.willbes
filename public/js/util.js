@@ -5,7 +5,17 @@
  * @param $quility
  */
 function fnPlayerSample($prodCode, $unitIdx, $quility){
-    popupOpen(app_url('/Player/Sample/'+$prodCode+'/'+$unitIdx+'/'+$quility, 'www'), 'samplePlayer', '1000', '600', null, null, 'no', 'no');
+    popupOpen(app_url('/Player/Sample/'+$prodCode+'/'+$unitIdx+'/'+$quility, 'www'), 'Player', '1000', '600', null, null, 'no', 'no');
+}
+
+/**
+ * 샘플강좌 플레이어
+ * @param $prodCode
+ * @param $unitIdx
+ * @param $quility
+ */
+function fnPlayerFree($prodCode, $unitIdx, $quility){
+    popupOpen(app_url('/Player/Free/'+$prodCode+'/'+$unitIdx+'/'+$quility, 'www'), 'Player', '1000', '600', null, null, 'no', 'no');
 }
 
 /**
@@ -14,7 +24,7 @@ function fnPlayerSample($prodCode, $unitIdx, $quility){
  * @param $viewType ( OT | WS | S1 | S2 | S3 )
  */
 function fnPlayerProf($ProfessorCode, $viewType){
-    popupOpen(app_url('/Player/Professor/'+$ProfessorCode+'/'+$viewType+"/_", 'www'), 'profPlayer', '1000', '600', null, null, 'no', 'no');
+    popupOpen(app_url('/Player/Professor/'+$ProfessorCode+'/'+$viewType+"/_", 'www'), 'Player', '1000', '600', null, null, 'no', 'no');
 }
 
 /**

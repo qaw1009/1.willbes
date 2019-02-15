@@ -88,8 +88,6 @@ class Professor extends \app\controllers\BaseController
 
             // 교수배너 데이터 조회
             $data['Bnr'] = $this->professorModel->listProfessorBanner($idx);
-
-            dd($data['Bnr']);
         }
 
         $this->load->view('product/base/professor/create', [

@@ -178,7 +178,7 @@
 
             <script type="text/javascript">
 
-                var $regi_form = $('#_regi_form');
+                var $regi_form_modal = $('#_regi_form');
                 var $datatable_modal;
                 var $list_table = $('#list_table');
 
@@ -254,9 +254,9 @@
                     });
 
                     // ajax submit
-                    $regi_form.submit(function() {
+                    $regi_form_modal.submit(function() {
                         var _url = '{{ site_url('/cms/lecture/storeUnit') }}';
-                        ajaxSubmit($regi_form, _url, function(ret) {
+                        ajaxSubmit($regi_form_modal, _url, function(ret) {
                             if(ret.ret_cd) {
                                 //notifyAlert('success', '알림', ret.ret_msg);
                                 //$("#pop_modal").modal('toggle');
@@ -267,6 +267,12 @@
                             }
                         }, showValidateError, null, false, 'alert');
                     });
+
+                    $("#btn_modal_close").click(function(){
+                        @if(empty($selected_prof_idx) == false)
+                        location.replace('{{ site_url('/cms/lecture/create/').$lecidx }}' + getQueryString());
+                        @endif
+                    })
                 });
 
                 function rowDelete(delSeq){
@@ -274,17 +280,16 @@
                     //alert(nowRowCnt + ' - ' + delSeq);
                     if(nowRowCnt>0) {
                         var selectwUnitIdx = $("input[id='wUnitIdx"+delSeq+"']").val();
-                        $regi_form.append('<input name="delwUnitIdx[]" type="hidden" value="'+selectwUnitIdx+'">');
+                        $regi_form_modal.append('<input name="delwUnitIdx[]" type="hidden" value="'+selectwUnitIdx+'">');
                         $("#trID"+delSeq).remove();
                     }
                 }
-
 
                 function attachFileDelete(strwUnitIdx) {
                     if(confirm('첨부파일을 삭제하시겠습니까?')) {
 
                         var data = {
-                            '{{ csrf_token_name() }}' : $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                            '{{ csrf_token_name() }}' : $regi_form_modal.find('input[name="{{ csrf_token_name() }}"]').val(),
                             'method' : 'POST',
                             'LecIdx' : $('#LecIdx').val(),
                             'wUnitIdx' : strwUnitIdx
@@ -309,7 +314,6 @@
                     $url = $('#MediaUrl').val() + '/' + $('#w'+type+idx).val();
                     popupOpen(app_url('/cms/lecture/player/?lecidx={{$lecidx}}&url='+$url+'&ratio='+$('#wContentSizeCcd'+idx).val() , 'wbs'), 'wbsPlayer', '1000', '600', null, null, 'no', 'no');
                 }
-
             </script>
         @stop
 

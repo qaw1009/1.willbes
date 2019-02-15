@@ -299,11 +299,10 @@
         var $list_table = $('#list_ajax_table');
 
         $(document).ready(function() {
-
             // ajax submit
             $regi_form.submit(function() {
-                var _url = '{{ site_url('/cms/lecture/store') }}';
 
+                var _url = '{{ site_url('/cms/lecture/store') }}';
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
@@ -315,7 +314,6 @@
             $('#btn_list').click(function() {
                 location.replace('{{ site_url('/cms/lecture/index') }}' + getQueryString());
             });
-
 
             $datatable = $list_table.DataTable({
                 serverSide: false,

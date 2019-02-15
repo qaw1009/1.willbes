@@ -163,18 +163,11 @@ class Lecture extends \app\controllers\BaseController
      * 마스터강의 첨부파일 다운로드
      * @param array $fileinfo
      */
-    public function download($fileinfo=[])
-    {
-        public_download($fileinfo[0], $fileinfo[1]);
-    }
-
-    public function download2()
+    public function download()
     {
         $filename = urldecode($this->_req('filename', false));
         $filename_ori = urldecode($this->_req('filename_ori',false));
-        //$filename_ori = iconv('UTF-8', 'EUC-KR', $this->_req('filename_ori'));
-        //echo $filename.'    ---    '.$filename_ori;exit;
-        public_download($filename,$filename_ori);
+        public_download($filename, $filename_ori);
     }
 
 

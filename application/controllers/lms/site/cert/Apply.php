@@ -125,10 +125,11 @@ class Apply extends \app\controllers\BaseController
     }
 
 
-    public function download($fileinfo=[])
+    public function download()
     {
-        public_download($fileinfo[0], $fileinfo[1]);
+        $filename = urldecode($this->_req('filename', false));
+        $filename_ori = urldecode($this->_req('filename_ori',false));
+        public_download($filename, $filename_ori);
     }
-
 }
 

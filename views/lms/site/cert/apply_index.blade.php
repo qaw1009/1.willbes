@@ -176,7 +176,7 @@
                             return '<a href="javascript:;" class="btn-info btn-sm btn-primary border-radius-reset" data-idx="'+ data.CaIdx+ '">확인</a>';
                         }},
                     {'data' : null, 'render' : function(data,type,row,meta) {
-                            return '<a class="btn-attachFile glyphicon glyphicon-file" href="{{site_url('/site/cert/apply/download/')}}'+encodeURIComponent(data.AttachFilePath+data.AttachFileName)+'/'+ encodeURIComponent(data.AttachFileReal) +'" ></a>';
+                            return data.AttachFileName !='' ? '<a class="btn-attachFile glyphicon glyphicon-file" href="{{site_url('/site/cert/apply/download/')}}?filename='+encodeURIComponent(data.AttachFilePath+data.AttachFileName)+'&filename_ori='+ encodeURIComponent(data.AttachFileReal) +'" target="_blank"></a>' : '';
                         }},
                     {'data' : 'RegDatm'},
                     {'data' : 'ApprovalAdmin_Name'},
@@ -202,11 +202,12 @@
                                 return '';
                             }
                         }},
-
-                    {'data' : 'OrderStatus', 'name' : 'OrderStatus'},
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            return (data.OrderStatus != null) ? 'Y' : '<span class="red">N</span>';
+                        }},
                     {'data' : 'OrderDatm' , 'name' : 'OrderDatm'},
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            return data.ExtendStatus+ (data.ExtendStatus=='Y' ? '<Br>'+data.ExtendDatm : '');
+                            return data.ExtendStatus;//data.ExtendStatus+ (data.ExtendStatus=='Y' ? '<Br>'+data.ExtendDatm : '');
                         },'name' : 'Extend'}
                 ]
             });

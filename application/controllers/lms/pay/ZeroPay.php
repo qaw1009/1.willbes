@@ -150,7 +150,7 @@ class ZeroPay extends BaseOrder
     public function create()
     {
         // 등록할 상품구분 공통코드 조회
-        $arr_prod_type_target_key = ['on_lecture', 'off_lecture', 'book', 'mock_exam'];
+        $arr_prod_type_target_key = ['on_lecture', 'off_lecture', 'book'];
         $arr_prod_type_target_ccd = array_filter_keys($this->orderListModel->_prod_type_ccd, $arr_prod_type_target_key);
         $arr_prod_type_target_name = $this->codeModel->getCcd($this->_group_ccd['ProdType'], '', ['IN' => ['Ccd' => array_values($arr_prod_type_target_ccd)]]);
 

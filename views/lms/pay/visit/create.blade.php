@@ -379,7 +379,7 @@
 
                 $('#btn_product_search').setLayer({
                     'url' : '{{ site_url('/common/searchLectureAll/') }}?site_code=' + site_code + '&prod_type=off&return_type=inline&target_id=selected_product&target_field=prod_code'
-                        + '&prod_tabs=off,book,reading_room,locker,mock_exam&hide_tabs=off_pack_lecture&is_event=Y',
+                        + '&prod_tabs=off,book,reading_room,locker&hide_tabs=off_pack_lecture&is_event=Y',
                     'width' : 1200
                 });
             });

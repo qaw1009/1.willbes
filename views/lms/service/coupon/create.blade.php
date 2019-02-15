@@ -200,18 +200,6 @@
                         @endif
                     </div>
                 </div>
-                <div id="apply_mock_exam" class="form-group form-apply-input hide">
-                    <label class="control-label col-md-2">모의고사
-                    </label>
-                    <div class="col-md-9 form-inline">
-                        @if($method == 'PUT')
-                            <p class="form-control-static">{{ $data['ProdNames'] or '' }}</p>
-                        @else
-                            <button type="button" id="btn_mock_exam_search" class="btn btn-sm btn-primary">모의고사검색</button>
-                            <span id="selected_mocktest" class="pl-10"></span>
-                        @endif
-                    </div>
-                </div>
                 <div class="form-group">
                     <label class="control-label col-md-2" for="disc_rate">할인율 <span class="required">*</span>
                     </label>
@@ -389,13 +377,13 @@
                             'url' : '{{ site_url('/common/searchLectureAll/') }}?site_code=' + site_code + '&prod_type='+prod_type+'&return_type=inline&target_id=selected_product&target_field=prod_code',
                             'width' : 1200
                         });
+                    } else if(prod_type === 'mock_exam') {
+                        //모의고사 검색
+                        $('#btn_product_search').setLayer({
+                            'url' : '{{ site_url('/common/searchMockTest/') }}?site_code=' + site_code + '&prod_type='+prod_type+'&return_type=inline&target_id=selected_product&target_field=prod_code',
+                            'width' : 1200
+                        });
                     }
-                } else if (btn_id === 'btn_mock_exam_search') {
-                    //모의고사 검색
-                    $('#btn_mock_exam_search').setLayer({
-                        'url' : '{{ site_url('/common/searchMockTest/') }}?site_code=' + site_code + '&return_type=inline&target_id=selected_mocktest&target_field=prod_code',
-                        'width' : 1200
-                    });
                 }
             });
 
@@ -467,6 +455,9 @@
                 $('.form-apply-input').removeClass('show').addClass('hide');
                 $('.form-range-input').removeClass('show').addClass('hide');
 
+                // 기존 적용된 특정상품 선택결과 초기화
+                $('#selected_product').html('');
+
                 // 카테고리
                 if($(this).val() === '645006') {
                     {{-- 배송료는 카테고리 선택 불가 --}}
@@ -502,7 +493,7 @@
 
                 if (arr_set[1] === 'mock_exam') {
                     // 모의고사
-                    $('#apply_mock_exam').removeClass('hide').addClass('show');
+                    $('#apply_product').removeClass('hide').addClass('show');
 
                     if (evt.type === 'ifChanged') {
                         // 특정상품 선택

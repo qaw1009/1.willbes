@@ -39,7 +39,7 @@
                         @endif
 
                         @if(in_array('book', $prod_tabs) === true)
-                            <li class="active"><a href="#none" onclick="prodListChange('book', '');"><strong>교재</strong></a></li>
+                            <li><a href="#none" onclick="prodListChange('book', '');"><strong>교재</strong></a></li>
                         @endif
 
                         @if(in_array('reading_room', $prod_tabs) === true)
@@ -51,7 +51,7 @@
                         @endif
 
                         @if(in_array('mock_exam', $prod_tabs) === true)
-                            <li><a href="#none" onclick="prodListChange('mock_exam', '');"><strong>모의고사</strong></a></li>
+                            <li class="active"><a href="#none" onclick="prodListChange('mock_exam', '');"><strong>모의고사</strong></a></li>
                         @endif
                     </ul>
                 </div>

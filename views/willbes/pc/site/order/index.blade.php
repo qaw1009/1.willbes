@@ -652,8 +652,8 @@
                 $regi_form.find('.total-pay-price').html(addComma(total_pay_price));
 
                 // 적립포인트 계산
-                if (point_disc_price > 0) {
-                    // 포인트를 사용한 경우 적립포인트 없음
+                if (point_disc_price > 0 || total_coupon_disc_price > 0) {
+                    // 포인트, 쿠폰을 사용한 경우 적립포인트 없음
                     $regi_form.find('#total_save_point').html('0');
                 } else {
                     var cart_data = {}, cart_idx, real_pay_price, total_save_point = 0;

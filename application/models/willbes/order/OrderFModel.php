@@ -100,8 +100,8 @@ class OrderFModel extends BaseOrderFModel
                 $arr_user_coupon_idx[$row['CartIdx']] = $row['UserCouponIdx'];
             }
 
-            // 적립 포인트 (학원강좌, 배송료 상품일 경우 포인트 적립 불가)
-            if (($make_type == 'pay' && $use_point > 0) || $row['IsPoint'] != 'Y') {
+            // 적립 포인트 (학원강좌, 배송료 상품일 경우 포인트 적립 불가, 포인트/쿠폰을 사용한 경우 포인트 적립 불가)
+            if (($make_type == 'pay' && ($use_point > 0 || $row['CouponDiscPrice'] > 0)) || $row['IsPoint'] != 'Y') {
                 $row['RealSavePoint'] = 0;
             } else {
                 $row['RealSavePoint'] = $row['PointSaveType'] == 'R' ? (int) ($row['RealPayPrice'] * ($row['PointSavePrice'] / 100)) : $row['PointSavePrice'];

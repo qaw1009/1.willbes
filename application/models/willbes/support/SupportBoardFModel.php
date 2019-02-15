@@ -90,6 +90,43 @@ class SupportBoardFModel extends BaseSupportFModel
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 
+    public function listBoardForProf($is_count, $site_code, $prof_idx, $arr_condition=[], $column = null, $limit = null, $offset = null, $order_by = [])
+    {
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $from = "
+            FROM {$this->_table['board']}
+            INNER JOIN (
+                SELECT SiteGroupCode
+                FROM {$this->_table['site']}
+                WHERE SiteCode = '{$site_code}'
+            ) AS s ON b.SiteGroupCode = s.SiteGroupCode
+            
+            INNER JOIN (
+                SELECT ProfIdx
+                FROM {$this->_table['lms_professor']}
+                WHERE wProfIdx = (
+                    SELECT wProfIdx
+                    FROM {$this->_table['lms_professor']}
+                    WHERE ProfIdx = '{$prof_idx}'
+                )
+            ) AS p ON b.ProfIdx = p.ProfIdx
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
     /**
      * 사이트 그룹에 속한 게시글 조회
      * @param $site_code
@@ -116,6 +153,44 @@ class SupportBoardFModel extends BaseSupportFModel
                 FROM {$this->_table['site']}
                 WHERE SiteCode = '{$site_code}'
             ) AS s ON b.SiteGroupCode = s.SiteGroupCode
+            LEFT JOIN lms_product AS p ON b.ProdCode = p.ProdCode
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+        $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+
+        return $this->_conn->query('select '.$column .$from .$where . $order_by_offset_limit)->row_array();
+    }
+
+    public function findBoardForProf($site_code, $prof_idx, $board_idx, $arr_condition=[], $column='*', $limit = null, $offset = null, $order_by = [])
+    {
+        $arr_condition = array_merge_recursive($arr_condition,[
+            'EQ' => [
+                'b.BoardIdx' => $board_idx,
+            ]
+        ]);
+
+        $from = "
+            FROM {$this->_table['board']}
+            INNER JOIN (
+                SELECT SiteGroupCode
+                FROM {$this->_table['site']}
+                WHERE SiteCode = '{$site_code}'
+            ) AS s ON b.SiteGroupCode = s.SiteGroupCode
+            
+            INNER JOIN (
+                SELECT ProfIdx
+                FROM {$this->_table['lms_professor']}
+                WHERE wProfIdx = (
+                    SELECT wProfIdx
+                    FROM {$this->_table['lms_professor']}
+                    WHERE ProfIdx = '{$prof_idx}'
+                )
+            ) AS p ON b.ProfIdx = p.ProfIdx
+            
             LEFT JOIN lms_product AS p ON b.ProdCode = p.ProdCode
         ";
 

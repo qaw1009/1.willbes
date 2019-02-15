@@ -88,6 +88,42 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 
+    public function listBoardForProf($is_count, $site_code, $prof_idx, $arr_condition=[], $column = null, $limit = null, $offset = null, $order_by = [])
+    {
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $from = "
+            FROM {$this->_table['twoway_board']}
+            INNER JOIN (
+                SELECT SiteGroupCode
+                FROM {$this->_table['site']}
+                WHERE SiteCode = '{$site_code}'
+            ) AS s ON b.SiteGroupCode = s.SiteGroupCode
+            
+            INNER JOIN (
+                SELECT ProfIdx
+                FROM {$this->_table['lms_professor']}
+                WHERE wProfIdx = (
+                    SELECT wProfIdx
+                    FROM {$this->_table['lms_professor']}
+                    WHERE ProfIdx = '{$prof_idx}'
+                )
+            ) AS p ON b.ProfIdx = p.ProfIdx
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
     /**
      * 사이트 그룹에 속한 게시글 조회
      * @param $site_code

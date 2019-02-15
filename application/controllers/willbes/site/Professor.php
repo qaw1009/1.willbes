@@ -205,17 +205,15 @@ class Professor extends \app\controllers\FrontController
         $arr_condition = [
             'EQ' => [
                 'b.IsUse' => 'Y'
-                ,'b.ProfIdx' => $prof_idx
-                ,'SubjectIdx' => element('subject_idx', $arr_input)
             ]
         ];
         // 공지사항 조회
         $arr_condition = array_merge_recursive($arr_condition, ['EQ' => ['b.BmIdx' => '63']]);
-        $data['notice'] = $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $arr_condition, 'b.BoardIdx, b.Title', 2, 0, ['b.IsBest'=>'Desc','b.BoardIdx'=>'Desc']);
+        $data['notice'] = $this->supportBoardFModel->listBoardForProf(false, $this->_site_code, $prof_idx, $arr_condition, 'b.BoardIdx, b.Title', 2, 0, ['b.IsBest'=>'Desc','b.BoardIdx'=>'Desc']);
         
         // 학습자료실 조회
         $arr_condition = array_replace_recursive($arr_condition, ['EQ' => ['b.BmIdx' => '69']]);
-        $data['material'] = $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $arr_condition, 'b.BoardIdx, b.Title', 2, 0, ['b.IsBest'=>'Desc','b.BoardIdx'=>'Desc']);
+        $data['material'] = $this->supportBoardFModel->listBoardForProf(false, $this->_site_code, $prof_idx, $arr_condition, 'b.BoardIdx, b.Title', 2, 0, ['b.IsBest'=>'Desc','b.BoardIdx'=>'Desc']);
         
         // 신규강좌 조회
         $arr_condition = [

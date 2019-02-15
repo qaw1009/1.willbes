@@ -20,7 +20,7 @@
                 visible: true,
                 auto_progressive_download: true,
                 dualMonitor: true,
-                watermarkText: "{{$data['memid']}}",
+                watermarkText: "{{$data['memid'] == "ANOMYNOUS" ? $data['ip'] : $data['memid']}}",
                 watermarkTextColor: "#308ECE92",
                 watermarkTextSize: "2%",
                 watermarkHorzAlign: WatermarkAlign.RANDOM,
@@ -43,6 +43,6 @@
             fnStartPlayer(config, media);
         });
 
-        function fnCheckPID(){ /* DUMMY */}
+        function fnCheckPID(){ /* DUMMY */ }
     </script>
 @stop

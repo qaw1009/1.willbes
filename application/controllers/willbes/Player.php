@@ -272,7 +272,8 @@ class Player extends \app\controllers\FrontController
                 'url' => $url,
                 'memid' => $MemId,
                 'memidx' => $this->session->userdata('mem_idx'),
-                'logidx' => $logidx
+                'logidx' => $logidx,
+                'ip' => $this->input->ip_address()
             ]
         ]);
     }
@@ -362,7 +363,8 @@ class Player extends \app\controllers\FrontController
                 'ratio' => $ratio,
                 'startPosition' => 0,
                 'url' => $url,
-                'memid' => $MemId
+                'memid' => $MemId,
+                'ip' => $this->input->ip_address()
             ]
         ]);
     }
@@ -451,7 +453,8 @@ class Player extends \app\controllers\FrontController
                 'ratio' => $ratio,
                 'startPosition' => 0,
                 'url' => $url,
-                'memid' => $MemId
+                'memid' => $MemId,
+                'ip' => $this->input->ip_address()
             ]
         ]);
     }
@@ -512,7 +515,8 @@ class Player extends \app\controllers\FrontController
                 'isIntro' => false,
                 'startPosition' => 0,
                 'url' => $url,
-                'memid' => $MemId
+                'memid' => $MemId,
+                'ip' => $this->input->ip_address()
             ]
         ]);
     }

@@ -72,8 +72,12 @@ class Campus extends \app\controllers\FrontController
         return $data;
     }
 
-    private function _tab_map()
+    private function _tab_map($campus_code)
     {
+        $data = [
+            'campus_code' => $campus_code
+        ];
 
+        return $data;
     }
 }

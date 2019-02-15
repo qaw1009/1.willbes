@@ -102,12 +102,10 @@ class MemberFModel extends WB_Model
     {
         $query = " SELECT M.MemIdx, B.BtobIdx ";
         $query .= " FROM {$this->_table['member']} AS M
-            LEFT JOIN {$this->_table['btob_member']} AS BM ON M.MemIdx = BM.MemIdx
-            LEFT JOIN {$this->_table['btob']} AS B ON BM.BtobIdx = B.BtobIdx
-            WHERE BM.IsStatus = 'Y' AND B.IsStatus = 'Y' AND B.IsUse = 'Y'
-        ";
-
-        $query .= ' AND M.MemIdx='.$MemIdx;
+            LEFT JOIN {$this->_table['btob_member']} AS BM ON M.MemIdx = BM.MemIdx AND BM.IsStatus = 'Y' 
+            LEFT JOIN {$this->_table['btob']} AS B ON BM.BtobIdx = B.BtobIdx AND B.IsStatus = 'Y' AND B.IsUse = 'Y'
+            WHERE M.MemIdx='{$MemIdx}'
+            ";
 
         $rows = $this->_conn->query($query);
 
@@ -126,12 +124,9 @@ class MemberFModel extends WB_Model
 
         $query = " SELECT B.BtobIdx, IP.ApprovalIp ";
         $query .= " FROM {$this->_table['btob']} AS B
-            LEFT JOIN {$this->_table['btob_ip']} AS IP ON B.BtobIdx = IP.BtobIdx
-            WHERE B.IsStatus = 'Y' AND B.IsUse = 'Y' AND IP.IsStatus = 'Y'
-        ";
-
-        $query .= " AND B.BtobIdx=".$btobidx;
-        $query .= " AND IP.ApprovalIp='".$ip."' ";
+            LEFT JOIN {$this->_table['btob_ip']} AS IP ON B.BtobIdx = IP.BtobIdx AND IP.IsStatus = 'Y' AND IP.ApprovalIp='{$ip}' 
+            WHERE B.IsStatus = 'Y' AND B.IsUse = 'Y' AND B.BtobIdx='{$btobidx}'
+            ";
 
         $rows = $this->_conn->query($query);
 

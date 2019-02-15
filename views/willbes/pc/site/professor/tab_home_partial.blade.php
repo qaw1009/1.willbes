@@ -2,17 +2,25 @@
     <div class="willbes-listTable widthAuto460 mr20">
         <div class="will-Tit NG">공지사항 <a class="f_right" href="{{front_url('/professor/show/cate/'.$def_cate_code.'/prof-idx/'.$prof_idx.'/?subject_idx='.element('subject_idx', $arr_input).'&subject_name='.element('subject_name', $arr_input).'&tab=notice')}}"><img src="{{ img_url('prof/icon_add.png') }}" alt="더보기"></a></div>
         <ul class="List-Table GM tx-gray">
-            @foreach($tab_data['notice'] as $idx => $row)
-                <li><a href="{{front_url('/professor/show/cate/'.$def_cate_code.'/prof-idx/'.$prof_idx.'/?subject_idx='.element('subject_idx', $arr_input).'&subject_name='.element('subject_name', $arr_input).'&board_idx='.$row['BoardIdx'].'&tab=notice')}}">{{ $row['Title'] }}</a></li>
-            @endforeach
+            @if (empty($tab_data['notice']) === true)
+                <li>등록된 내용이 없습니다.</li>
+            @else
+                @foreach($tab_data['notice'] as $idx => $row)
+                    <li><a href="{{front_url('/professor/show/cate/'.$def_cate_code.'/prof-idx/'.$prof_idx.'/?subject_idx='.element('subject_idx', $arr_input).'&subject_name='.element('subject_name', $arr_input).'&board_idx='.$row['BoardIdx'].'&tab=notice')}}">{{ $row['Title'] }}</a></li>
+                @endforeach
+            @endif
         </ul>
     </div>
     <div class="willbes-listTable widthAuto460">
         <div class="will-Tit NG">학습자료실 <a class="f_right" href="{{front_url('/professor/show/cate/'.$def_cate_code.'/prof-idx/'.$prof_idx.'/?subject_idx='.element('subject_idx', $arr_input).'&subject_name='.element('subject_name', $arr_input).'&tab=material')}}"><img src="{{ img_url('prof/icon_add.png') }}" alt="더보기"></a></div>
         <ul class="List-Table GM tx-gray">
-            @foreach($tab_data['material'] as $idx => $row)
-                <li><a href="{{front_url('/professor/show/cate/'.$def_cate_code.'/prof-idx/'.$prof_idx.'/?subject_idx='.element('subject_idx', $arr_input).'&subject_name='.element('subject_name', $arr_input).'&board_idx='.$row['BoardIdx'].'&tab=material')}}">{{ $row['Title'] }}</a></li>
-            @endforeach
+            @if (empty($tab_data['material']) === true)
+                <li>등록된 내용이 없습니다.</li>
+            @else
+                @foreach($tab_data['material'] as $idx => $row)
+                    <li><a href="{{front_url('/professor/show/cate/'.$def_cate_code.'/prof-idx/'.$prof_idx.'/?subject_idx='.element('subject_idx', $arr_input).'&subject_name='.element('subject_name', $arr_input).'&board_idx='.$row['BoardIdx'].'&tab=material')}}">{{ $row['Title'] }}</a></li>
+                @endforeach
+            @endif
         </ul>
     </div>
     <div class="willbes-listTable widthAuto460 mr20">

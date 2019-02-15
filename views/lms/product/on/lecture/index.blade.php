@@ -235,7 +235,9 @@
                     {'data' : 'IsBest', 'render' : function(data, type, row, meta) {
                             return '<input type="checkbox" class="flat" name="is_best" value="Y" data-idx="'+ row.ProdCode +'" data-origin-is-best="' + data + '" ' + ((data === 'Y') ? ' checked="checked"' : '') + '>';
                         }},
-                    {'data' : 'MultipleApply'},//배수
+                    {'data' : 'MultipleApply', 'render' : function(data, type, row, meta) {
+                            return (data === '1') ? '배수제한없음' : data;
+                        }},//배수
                     {'data' : 'SaleStatusCcd_Name', 'render' : function(data, type, row, meta) {
                             return (data !== '판매불가') ? data : '<span class="red">'+data+'</span>';
                         }},//판매여부

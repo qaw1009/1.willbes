@@ -155,7 +155,9 @@
                             return addComma(row.RealSalePrice)+'원<BR><strike>'+addComma(row.SalePrice)+'원</strike>';
                         }},
 
-                    {'data' : 'MultipleApply'},//배수
+                    {'data' : 'MultipleApply', 'render' : function(data, type, row, meta) {
+                            return (data === '1') ? '배수제한없음' : data;
+                        }},//배수
                     {'data' : 'SaleStatusCcd_Name', 'render' : function(data, type, row, meta) {
                             return (data !== '판매불가') ? data : '<span class="red">'+data+'</span>';
                         }},//판매여부

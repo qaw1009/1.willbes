@@ -943,9 +943,10 @@ class OrderFModel extends BaseOrderFModel
      * 자동지급 쿠폰 등록
      * @param int $order_prod_idx [주문상품식별자]
      * @param int $prod_code [상품코드]
+     * @param string $mem_idx [회원식별자]
      * @return bool|string
      */
-    public function addAutoMemberCoupon($order_prod_idx, $prod_code)
+    public function addAutoMemberCoupon($order_prod_idx, $prod_code, $mem_idx = '')
     {
         try {
             // 자동지급 쿠폰 조회
@@ -960,7 +961,7 @@ class OrderFModel extends BaseOrderFModel
 
             foreach ($rows as $row) {
                 // 쿠폰등록
-                $result = $this->couponFModel->addMemberCoupon('coupon', $row['AutoCouponIdx'], false, 'order', $order_prod_idx);
+                $result = $this->couponFModel->addMemberCoupon('coupon', $row['AutoCouponIdx'], false, 'order', $order_prod_idx, $mem_idx);
                 if ($result['ret_cd'] !== true) {
                     throw new \Exception($result['ret_msg']);
                 }
@@ -1573,9 +1574,10 @@ class OrderFModel extends BaseOrderFModel
             if ($order_row['RealPayPrice'] != $deposit_results['total_pay_price']) {
                 throw new \Exception('결제금액 정보가 올바르지 않습니다.', _HTTP_BAD_REQUEST);
             }
-
-            // 주문 식별자
-            $order_idx = $order_row['OrderIdx'];
+            
+            // 주문정보
+            $order_idx = $order_row['OrderIdx'];    // 주문 식별자
+            $mem_idx = $order_row['MemIdx'];    // 회원 식별자
 
             // 주문정보 완료일시 업데이트
             $is_update = $this->_conn->set('CompleteDatm', $deposit_results['deposit_datm'])
@@ -1598,7 +1600,7 @@ class OrderFModel extends BaseOrderFModel
                 if ($order_prod_row['SavePoint'] > 0) {
                     $point_type = $order_prod_row['OrderProdType'] == 'book' ? 'book' : 'lecture';
 
-                    $is_point_save = $this->pointFModel->addOrderSavePoint($point_type, $order_prod_row['SavePoint'], $order_prod_row['SiteCode'], $order_idx, $order_prod_row['OrderProdIdx']);
+                    $is_point_save = $this->pointFModel->addOrderSavePoint($point_type, $order_prod_row['SavePoint'], $order_prod_row['SiteCode'], $order_idx, $order_prod_row['OrderProdIdx'], $mem_idx);
                     if ($is_point_save !== true) {
                         throw new \Exception($is_point_save);
                     }
@@ -1606,7 +1608,7 @@ class OrderFModel extends BaseOrderFModel
 
                 // 자동지급 쿠폰 데이터 등록 (온라인 강좌, 학원 강좌일 경우만 실행)
                 if ($order_prod_row['ProdTypeCcd'] == $this->_prod_type_ccd['on_lecture'] || $order_prod_row['ProdTypeCcd'] == $this->_prod_type_ccd['off_lecture']) {
-                    $is_add_auto_coupon = $this->addAutoMemberCoupon($order_prod_row['OrderProdIdx'], $order_prod_row['ProdCode']);
+                    $is_add_auto_coupon = $this->addAutoMemberCoupon($order_prod_row['OrderProdIdx'], $order_prod_row['ProdCode'], $mem_idx);
                     if ($is_add_auto_coupon !== true) {
                         throw new \Exception($is_add_auto_coupon);
                     }

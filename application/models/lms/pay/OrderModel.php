@@ -404,9 +404,9 @@ class OrderModel extends BaseOrderModel
                     }
                 }
 
-                $row = $this->salesProductModel->findSalesProductByProdCode($learn_pattern, $prod_code, $column);
+                $row = $this->salesProductModel->findSalesProductByProdCode($learn_pattern, $prod_code, $column, false);
                 if (empty($row) === true) {
-                    throw new \Exception('판매 중인 상품만 주문하실 수 있습니다.', _HTTP_NOT_FOUND);
+                    throw new \Exception('상품정보 조회에 실패했습니다.', _HTTP_NOT_FOUND);
                 }
 
                 $row['OrderProdType'] = $learn_pattern;     // 주문상품타입
@@ -492,7 +492,8 @@ class OrderModel extends BaseOrderModel
                     'IsCashReceipt' => 'N',
                     'IsDelivery' => ($is_delivery_info === true ? 'Y' : 'N'),
                     'IsVisitPay' => 'N',
-                    'AdminRegReason' => element('admin_reg_reason', $input),
+                    'AdminReasonCcd' => element('admin_reason_ccd', $input),
+                    'AdminEtcReason' => element('admin_etc_reason', $input),
                     'RegAdminIdx' => $sess_admin_idx,
                     'OrderIp' => $reg_ip
                 ];

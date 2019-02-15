@@ -34,9 +34,10 @@ class SalesProductModel extends BaseOrderModel
      * @param null|int $limit
      * @param null|int $offset
      * @param array $order_by
+     * @param bool $is_sales_check [판매가능 체크 여부]
      * @return array|int
      */
-    public function listSalesProduct($learn_pattern, $is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    public function listSalesProduct($learn_pattern, $is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [], $is_sales_check = true)
     {
         $column = 'ProdCode, SiteCode, ProdName, IsSalesAble, RegDatm';
         $arr_default_condition = [
@@ -111,6 +112,11 @@ class SalesProductModel extends BaseOrderModel
             $column = $is_count;
         }
 
+        // 판매여부 상관없이 조회
+        if ($is_sales_check === false) {
+            $arr_default_condition = [];
+        }
+
         return $this->_conn->getListResult($this->_table[$learn_pattern], $column, array_merge_recursive($arr_default_condition, $arr_condition), $limit, $offset, $order_by);
     }
 
@@ -119,12 +125,13 @@ class SalesProductModel extends BaseOrderModel
      * @param string $learn_pattern
      * @param int $prod_code
      * @param bool|string $column
+     * @param bool $is_sales_check [판매가능 체크 여부]
      * @return mixed
      */
-    public function findSalesProductByProdCode($learn_pattern, $prod_code, $column = false)
+    public function findSalesProductByProdCode($learn_pattern, $prod_code, $column = false, $is_sales_check = true)
     {
         $arr_condition = ['EQ' => ['ProdCode' => $prod_code]];
-        $data = $this->listSalesProduct($learn_pattern, $column, $arr_condition);
+        $data = $this->listSalesProduct($learn_pattern, $column, $arr_condition, null, null, [], $is_sales_check);
 
         return element('0', $data, []);
     }

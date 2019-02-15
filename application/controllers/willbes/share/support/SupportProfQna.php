@@ -76,8 +76,8 @@ class SupportProfQna extends BaseSupport
                 'BmIdx' => $this->_bm_idx,
                 'IsUse' => 'Y',
                 'TypeCcd' => $s_consult_type,
-                'ProfIdx' => $prof_idx,
-                'SubjectIdx' => $subject_idx
+                /*'ProfIdx' => $prof_idx,
+                'SubjectIdx' => $subject_idx*/
             ],
             'ORG' => [
                 'LKB' => [
@@ -127,10 +127,10 @@ class SupportProfQna extends BaseSupport
         } else {
             $paging_count = $this->_paging_count_m;
         }
-        $total_rows = $this->supportBoardTwoWayFModel->listBoardForSiteGroup(true, $this->_site_code, $arr_condition);
+        $total_rows = $this->supportBoardTwoWayFModel->listBoardForProf(true, $this->_site_code, $prof_idx, $arr_condition);
         $paging = $this->pagination($this->_default_path.'/index/?'.$get_page_params,$total_rows,$this->_paging_limit,$paging_count,true);
         if ($total_rows > 0) {
-            $list = $this->supportBoardTwoWayFModel->listBoardForSiteGroup(false, $this->_site_code,$arr_condition,$column,$paging['limit'],$paging['offset'],$order_by);
+            $list = $this->supportBoardTwoWayFModel->listBoardForProf(false, $this->_site_code, $prof_idx,$arr_condition,$column,$paging['limit'],$paging['offset'],$order_by);
             foreach ($list as $idx => $row) {
                 $list[$idx]['AttachData'] = json_decode($row['AttachData'],true);       //첨부파일
             }

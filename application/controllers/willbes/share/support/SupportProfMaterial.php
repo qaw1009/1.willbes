@@ -41,8 +41,8 @@ class SupportProfMaterial extends BaseSupport
                 /*'b.SiteCode' => $this->_site_code*/
                 'b.BmIdx' => $this->_bm_idx
                 ,'b.IsUse' => 'Y'
-                ,'b.ProfIdx' => $prof_idx
-                ,'b.SubjectIdx' => $subject_idx
+                /*,'b.ProfIdx' => $prof_idx
+                ,'b.SubjectIdx' => $subject_idx*/
             ],
             'ORG' => [
                 'LKB' => [
@@ -63,12 +63,12 @@ class SupportProfMaterial extends BaseSupport
 
         $order_by = ['b.IsBest'=>'Desc','b.BoardIdx'=>'Desc'];
 
-        $total_rows = $this->supportBoardFModel->listBoardForSiteGroup(true, $this->_site_code, $arr_condition);
+        $total_rows = $this->supportBoardFModel->listBoardForProf(true, $this->_site_code, $prof_idx, $arr_condition);
 
         $paging = $this->pagination($this->_default_path.'/material/index/?'.$get_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
 
         if ($total_rows > 0) {
-            $list = $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $arr_condition, $column, $paging['limit'], $paging['offset'], $order_by);
+            $list = $this->supportBoardFModel->listBoardForProf(false, $this->_site_code, $prof_idx, $arr_condition, $column, $paging['limit'], $paging['offset'], $order_by);
             foreach ($list as $idx => $row) {
                 $list[$idx]['AttachData'] = json_decode($row['AttachData'],true);       //첨부파일
             }
@@ -118,7 +118,7 @@ class SupportProfMaterial extends BaseSupport
                        ,p.ProdName
                        ';
 
-        $data = $this->supportBoardFModel->findBoardForSiteGroup($this->_site_code, $board_idx, $arr_condition, $column);
+        $data = $this->supportBoardFModel->findBoardForProf($this->_site_code, $prof_idx, $board_idx, $arr_condition, $column);
         if (empty($data)) {
             show_alert('게시글이 존재하지 않습니다.', 'back');
         }
@@ -141,8 +141,8 @@ class SupportProfMaterial extends BaseSupport
                 'b.IsBest' => '0'
                 ,'b.BmIdx' => $this->_bm_idx
                 ,'b.IsUse' => 'Y'
-                ,'b.ProfIdx' => $prof_idx
-                ,'b.SubjectIdx' => $subject_idx
+                /*,'b.ProfIdx' => $prof_idx
+                ,'b.SubjectIdx' => $subject_idx*/
             ],
             'ORG' => [
                 'LKB' => [
@@ -169,8 +169,8 @@ class SupportProfMaterial extends BaseSupport
         ]);
         $next_order_by = ['b.BoardIdx'=>'Asc'];
 
-        $pre_data = $this->supportBoardFModel->findBoardForSiteGroup($this->_site_code, false, $pre_arr_condition, $column,1,null, $pre_order_by);
-        $next_data = $this->supportBoardFModel->findBoardForSiteGroup($this->_site_code, false, $next_arr_condition, $column,1,null, $next_order_by);
+        $pre_data = $this->supportBoardFModel->findBoardForProf($this->_site_code, $prof_idx, false, $pre_arr_condition, $column,1,null, $pre_order_by);
+        $next_data = $this->supportBoardFModel->findBoardForProf($this->_site_code, $prof_idx, false, $next_arr_condition, $column,1,null, $next_order_by);
 
         $this->load->view('support/'.$view_type.'/show_material',[
                 'default_path' => $this->_default_path,

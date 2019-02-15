@@ -9,6 +9,9 @@
 .cop_acad .Menu .menu-List li.Acad a .arrow-Btn {
     background: url("../../img/willbes/sub/icon_arrow.gif") no-repeat 0 0;
 }
+.cop_acad .Section2 {
+    background: #f7f7f7;
+}
 
 /* Main Container : MainVisual : Cop Acad */
 .MainVisual:after {
@@ -44,16 +47,25 @@
     vertical-align: baseline;
 }
 
-/* Main Container : nSlider : Cop Acad */
+/* Main Container : 학원소식... : Cop Acad */
 .sliderSuccess {
     float: left;
-    width: 449px;
-    margin-right: 20px;
+    width: 356px;    
+    margin-right: 18px;
+}
+.sliderSuccessPlay {
+    width: 356px;
+    height: 200px;
+    background: #000;
+}
+.sliderSuccess iframe {
+    width: 356px;
+    height: 200px;
 }
 .sliderInfo {
     float: left;
-    width: 353px;
-    margin-right: 30px;
+    width: 356x;
+    margin-right: 32px;
 }
 .sliderInfo ul li {
     margin-top: 4px;
@@ -139,6 +151,83 @@
     clear: both;
 }
 
+/* Main Container : 특별관리반 : Cop Acad */
+.specialClass li {
+    display: inline;
+    float: left;
+    margin-right: 12px;
+}
+.specialClass li:last-child {
+    margin: 0;
+}
+.specialClass:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+/* Main Container : 합격커리큘럼 : Cop Acad */
+.passCurriWrap {
+    position:absolute;
+    top:351px;
+    left:36px;
+    z-index: 1;
+}
+.passCurriWrap ul {
+    position: relative;
+}
+.passCurriWrap li {
+    position: absolute;
+    z-index: 1;
+}
+.passCurriWrap li img.out {display: block}
+.passCurriWrap li img.over {display: none}
+.passCurriWrap li:hover img.over {display: block;}
+.passCurriWrap li.curriStep1:hover img.over {    
+    margin-top:-41px;
+    margin-left:-46px;
+}
+.passCurriWrap li.curriStep2 {
+    top: 39px;
+    left: 170px;
+}
+.passCurriWrap li.curriStep2:hover img.over {    
+    margin-top:-41px;
+    margin-left:-37px;
+}
+.passCurriWrap li.curriStep3 {
+    top: 80px;
+    left: 340px;
+}
+.passCurriWrap li.curriStep3:hover img.over {    
+    margin-top:-134px;
+    margin-left:0;
+}
+.passCurriWrap li.curriStep4 {
+    top: 120px;
+    left: 340px;
+}
+.passCurriWrap li.curriStep4:hover img.over {    
+    margin-top:-41px;
+    margin-left:-3px;
+}
+.passCurriWrap li.curriStep5 {
+    top: 160px;
+    left: 709px;
+}
+.passCurriWrap li.curriStep5:hover img.over {    
+    margin-top:-108px;
+    margin-left:0;
+}
+.passCurriWrap li.curriStep6 {
+    top: 200px;
+    left: 879px;
+}
+.passCurriWrap li.curriStep6:hover img.over {    
+    margin-top:-101px;
+    margin-left:-6px;
+}
+
 /* Main Container : acad_infoBox : Cop Acad */
 .acad_infoBox {
     float: left;
@@ -220,7 +309,7 @@
 /* Main Container : Notice : noticeTabs */
 .noticeTabs.acad {
     float: right;
-    width: 268px;
+    width: 358px;
     margin-top: 27px;
 }
 .tabWrap.noticeWrap_acad {
@@ -278,12 +367,14 @@
 }
 .tabBox.noticeBox_acad .List-Table li a {
     display: inline-block;
-    width: 100%;
+    width: 92%;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
 }
-
+.tabBox.noticeBox_acad .List-Table li a img {
+    margin-right: 5px;
+}
 /* Main Container : campus : Cop Acad */
 .tabWrap.noticeWrap_campus {
     height: 60px;
@@ -367,11 +458,11 @@
 }
 .campus_info dl dt {
     border-top: 1px solid #e3e3e3;
-    padding-top: 25px;
+    padding: 25px 0;
 }
 .campus_info dl dt:first-child {
     border-top: none;
-    padding-top: 0;
+    padding: 0;
 }
 .campus_info .c-tit {
     font-size: 16px;
@@ -412,6 +503,9 @@
     position: absolute;
     left: 0;
     bottom: 0;
+}
+.campus_info .btn2 {
+    top:440px;
 }
 .campus_info .btn a {
     display: inline-block; 

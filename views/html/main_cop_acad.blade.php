@@ -119,7 +119,7 @@
         </div>
     </div>
 
-    <div class="Section Section3 mb50">
+    <div class="Section mb50">
         <div class="widthAuto">
             <div class="will-acadTit">교수별 <span class="tx-color">빠른강좌</span> 찾기</div>
             <ul class="caProfBox">
@@ -201,113 +201,91 @@
             </ul>
         </div>
     </div>
+    <!-- 교수별 빠른강좌 //-->
 
 
-    <div class="Section Section1 mb50">
+    <div class="Section mb50">
         <div class="widthAuto">
-            <div class="sliderPick pick">
-                <div class="will-acadTit">윌비스 <span class="tx-color">신광은경찰</span> 학원 Hot Pick</div>
-                <div class="pickBox pick1">
-                    <a href="http://www.willbescop.net/gosi/event.html?event_cd=Off_180828_g&topMenuType=F" target="_blank"><img src="{{ img_url('cop_acad/event/evt_190101.jpg') }}"></a>
-                    <!--
-                    <div class="bSlider acad">
-                        <div class="slider">
-                            <div><a href="#none"><img src="{{ img_url('cop_acad/event/evt_190101.jpg') }}"></a></div>
-                            <div><a href="#none"><img src="{{ img_url('cop_acad/event/evt_190102.jpg') }}"></a></div>
-                        </div>
-                     </div>
-                    -->
-                </div>
-                <div class="pickBox pick2">
-                    <a href="http://www.willbescop.net/movie/event.html?event_cd=On_181228_p&topMenuType=O" target="_blank"><img src="{{ img_url('cop_acad/event/evt_190102.jpg') }}"></a>
-                    <!--
-                    <div class="bSlider acad">
-                        <div class="slider">
-                            <div><a href="#none"><img src="{{ img_url('cop_acad/event/evt_190101.jpg') }}"></a></div>
-                            <div><a href="#none"><img src="{{ img_url('cop_acad/event/evt_190102.jpg') }}"></a></div>
-                        </div>
-                     </div>
-                    -->
-                </div>
-            </div>
-            <div class="sliderEvt pick">
-                <div class="will-acadTit">실력을 <span class="tx-color">변화시키는</span> 명품특강</div>
-                <ul>
-                    <li><a href="http://www.willbescop.net/event/movie/event.html?event_cd=On_181220_j&topMenuType=O#tab01" target="_blank"><img src="{{ img_url('cop_acad/event/evt_190103.jpg') }}"></a></li>
-                    <li>
-                        <div class="bSlider acad">
-                            <div class="sliderTM">
-                                <div><a href="https://cop.dev.willbes.net/pass/offinfo/boardInfo/show/78?board_idx=1363&"><img src="{{ img_url('cop_acad/event/evt_190104.jpg') }}"></a></div>
-                                <div><a href="https://cop.dev.willbes.net/pass/offinfo/boardInfo/show/78?board_idx=1363&"><img src="{{ img_url('cop_acad/event/evt_190104.jpg') }}"></a></div>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <ul class="acad_infoBox">
-                <li class="w-infoBox1">
-                    <a href="https://cop.dev.willbes.net/pass/consultManagement/index"><span>1:1 심층상담</span></a>
-                </li>
-                <li class="w-infoBox2">
-                    <a href="https://cop.dev.willbes.net/pass/offinfo/boardInfo/index/82"><span>강의실배정표</span></a>
-                </li>
-                <li class="w-infoBox3">
-                    <a href="#none"><span>방문접수</span></a>
-                </li>
-                <li class="w-infoBox4">
-                    <a href="#none"><span>모의고사접수</span></a>
-                </li>
-                <li class="w-infoBox5">
-                    <a href="#none"><span>학원갤러리</span></a>
-                </li>
+            <div class="will-acadTit">윌비스 <span class="tx-color">신광은경찰학원</span> 특별관리반</div>
+            <ul class="specialClass">   
+                <li><a href="#none"><img src="{{ img_url('cop_acad/banner/bnr_A01.jpg') }}" alt="스파르타"></a></li>
+                <li><a href="#none"><img src="{{ img_url('cop_acad/banner/bnr_A02.jpg') }}" alt="영어지옥 탈출반"></a></li>
+                <li><a href="#none"><img src="{{ img_url('cop_acad/banner/bnr_A03.jpg') }}" alt="통합생활 관리반"></a></li>
+                <li><a href="#none"><img src="{{ img_url('cop_acad/banner/bnr_A04.jpg') }}" alt="특별체력 관리반"></a></li>
             </ul>
         </div>
     </div>
 
+    <div class="Section Section2 mb50">
+        <div class="widthAuto p_re">
+            <img src="{{ img_url('cop_acad/visual/visual_curri_bg.jpg') }}" alt="신광은경찰 합격커리큘럼">
+            <div class="passCurriWrap">
+                <ul>
+                    <li class="curriStep1">
+                        <img src="{{ img_url('cop_acad/visual/visual_curriM01.png') }}" alt="집중 연강식 진행" class="out">
+                        <img src="{{ img_url('cop_acad/visual/visual_curriM01_on.png') }}" alt="집중 연강식 진행" class="over">
+                    </li>
+                    <li class="curriStep2">
+                        <img src="{{ img_url('cop_acad/visual/visual_curriM02.png') }}" alt="프리미엄 심화과정" class="out">
+                        <img src="{{ img_url('cop_acad/visual/visual_curriM02_on.png') }}" alt="프리미엄 심화과정" class="over">
+                    </li>
+                    <li class="curriStep3">
+                        <img src="{{ img_url('cop_acad/visual/visual_curriM03.png') }}" alt="핵심요약/진도별 정리" class="out">
+                        <img src="{{ img_url('cop_acad/visual/visual_curriM03_on.png') }}" alt="핵심요약/진도별 정리" class="over">
+                    </li>
+                    <li class="curriStep4">
+                        <img src="{{ img_url('cop_acad/visual/visual_curriM04.png') }}" alt="집중 약점 보안" class="out">
+                        <img src="{{ img_url('cop_acad/visual/visual_curriM04_on.png') }}" alt="집중 약점 보안" class="over">
+                    </li>
+                    <li class="curriStep5">
+                        <img src="{{ img_url('cop_acad/visual/visual_curriM05.png') }}" alt="실전력 극대화" class="out">
+                        <img src="{{ img_url('cop_acad/visual/visual_curriM05_on.png') }}" alt="실전력 극대화" class="over">
+                    </li>
+                    <li class="curriStep6">
+                        <img src="{{ img_url('cop_acad/visual/visual_curriM06.png') }}" alt="집단+개별면접대비" class="out">
+                        <img src="{{ img_url('cop_acad/visual/visual_curriM06_on.png') }}" alt="집단+개별면접대비" class="over">
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- 합격커리큘럼 //-->
+
     {{-- on air include --}}
     @include('willbes.pc.site.main_partial.on_air')
 
-    <div class="Section Section2 mb10">
+    <div class="Section mt40">
         <div class="widthAuto">
             <div class="sliderSuccess">
-                <div class="will-acadTit">합격으로 증명된 윌비스 <span class="tx-color">신광은경찰</span></div>
-                <a href="http://www.willbescop.net/movie/event.html?event_cd=Off_181129_p&topMenuType=F" target="_blank"><img src="{{ img_url('cop_acad/event/info_190101.jpg') }}"></a>
-                <!--
-                <div class="bSlider acad blue">
-                    <div class="slider">
-                        <div><a href="#none"><img src="{{ img_url('cop_acad/event/info_190101.jpg') }}"></a></div>
-                        <div><a href="#none"><img src="{{ img_url('cop_acad/event/info_190101.jpg') }}"></a></div>
-                    </div>
+                <div class="will-acadTit"><span class="tx-color">신광은경찰</span> 학원소식</div>
+                <div class="sliderSuccessPlay">
+                    <iframe src="https://www.youtube.com/embed/lrZxQV21DE8?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
                 </div>
-                -->
-            </div>
+                </div>
             <div class="sliderInfo">
-                <div class="will-acadTit"><span class="tx-color">학원</span> 소식</div>
-                <ul>
-                    <li><a href="https://chamsooristudyclub.modoo.at/" target="_blank"><img src="{{ img_url('cop_acad/event/info_190102.jpg') }}"></a></li>
-                    <li><a href="https://cop.dev.willbes.net/pass/support/notice/show?board_idx=1361&"><img src="{{ img_url('cop_acad/event/info_190103.jpg') }}"></a></li>
-                </ul>
+                <div class="will-acadTit"><span class="tx-color">왜</span> 노량진 실강인가?</div>
+                <a href="#none" target="_blank"><img src="{{ img_url('cop_acad/banner/bnr_B01.jpg') }}" alt="노량진24시"></a>
             </div>
             <div class="noticeTabs acad">
                 <ul class="tabWrap noticeWrap_acad two">
-                    <li><a href="#notice1" class="on">시험공고</a></li>
+                    <li><a href="#notice1" class="on">공지사항</a></li>
                     <li><a href="#notice2" class="">수험뉴스</a></li>
                 </ul>
                 <div class="tabBox noticeBox_acad">
                     <div id="notice1" class="tabContent p_re">
-                        <a href="#none" class="f_right btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}"></a>
+                        <a href="#none" class="f_right btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}" alt="더보기"></a>
                         <ul class="List-Table">
-                            <li><a href="#none">공지사항 제목이 출력됩니다. 공지사항 제목이 출력됩니다.</a></li>
-                            <li><a href="#none">3월 31일(금) 새벽시스템점검안내 안내안내안내 새벽시스템점검안내 안내안내안내</a></li>
+                            <li><a href="#none"><img src="{{ img_url('cop/icon_hot.png') }}" alt="HOT"> 공지사항 제목이 출력됩니다. 공지사항 제목이 출력됩니다.</a></li>
+                            <li><a href="#none"><img src="{{ img_url('cop/icon_hot.png') }}" alt="HOT"> 3월 31일(금) 새벽시스템점검안내 안내안내안내 새벽시스템점검안내 안내안내안내</a></li>
                             <li><a href="#none">설연휴학원고객센터운영안내 고객센터운영안내</a></li>
                             <li><a href="#none">추석교재배송및고객센터휴무안내 고객센터운영안내</a></li>
                             <li><a href="#none">추석교재배송및고객센터휴무안내 고객센터운영안내</a></li>
                         </ul>
                     </div>
                     <div id="notice2" class="tabContent p_re">
-                        <a href="#none" class="f_right btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}"></a>
+                        <a href="#none" class="f_right btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}" alt="더보기"></a>
                         <ul class="List-Table">
-                            <li><a href="#none">공지사항 제목이 출력됩니다.</a></li>
+                            <li><a href="#none"><img src="{{ img_url('cop/icon_hot.png') }}" alt="HOT"> 공지사항 제목이 출력됩니다.</a></li>
                             <li><a href="#none">3월 31일(금) 새벽시스템점검안내222</a></li>
                             <li><a href="#none">설연휴학원고객센터운영안내22</a></li>
                             <li><a href="#none">추석교재배송및고객센터휴무안내22</a></li>
@@ -318,7 +296,8 @@
             </div>
         </div>
     </div>
-    <div class="Section Bnr mt10 mb60">
+
+    <div class="Section Bnr mt50">
         <div class="widthAuto">
             <div class="willbes-Bnr">
                 <ul>
@@ -328,7 +307,7 @@
         </div>
     </div>
     
-    <div class="Section Section4 mb50">
+    <div class="Section Section4 mb50 mt30">
         <div class="widthAuto">
             <div class="will-acadTit">윌비스 <span class="tx-color">신광은경찰</span> 캠퍼스</div>
             <div class="noticeTabs campus c_both">
@@ -346,14 +325,14 @@
                 <div class="tabBox noticeBox_campus">
                     <div id="campus1" class="tabContent">
                         <div class="map_img">
-                            <img src="{{ img_url('cop_acad/map/map1.jpg') }}">
+                            <img src="{{ img_url('cop_acad/map/map_cop_origin.jpg') }}" alt="노량진">
                         </div>
                         <div class="campus_info">
                             <dl>
                                 <dt>
                                     <div class="c-tit">
                                         <span class="tx-color">노량진</span> 캠퍼스 공지사항
-                                        <a href="https://cop.dev.willbes.net/pass/support/notice/index" class="btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}"></a>
+                                        <a href="https://cop.dev.willbes.net/pass/support/notice/index" class="btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}" alt="더보기"></a>
                                     </div>
                                     <div class="c-info p_re">
                                         <ul class="List-Table">
@@ -386,7 +365,7 @@
                     </div>
                     <div id="campus2" class="tabContent">
                         <div class="map_img">
-                            <img src="{{ img_url('cop_acad/map/map1.jpg') }}">
+                            <img src="{{ img_url('cop_acad/map/map_cop_sl.jpg') }}" alt="신림">
                         </div>
                         <div class="campus_info">
                             <dl>
@@ -426,7 +405,7 @@
                     </div>
                     <div id="campus3" class="tabContent">
                         <div class="map_img">
-                            <img src="{{ img_url('cop_acad/map/map1.jpg') }}">
+                            <img src="{{ img_url('cop_acad/map/map_cop_ic.jpg') }}" alt="인천">
                         </div>
                         <div class="campus_info">
                             <dl>
@@ -466,7 +445,7 @@
                     </div>
                     <div id="campus4" class="tabContent">
                         <div class="map_img">
-                            <img src="{{ img_url('cop_acad/map/map1.jpg') }}">
+                            <img src="{{ img_url('cop_acad/map/map_cop_dg.jpg') }}" alt="대구">
                         </div>
                         <div class="campus_info">
                             <dl>
@@ -506,7 +485,7 @@
                     </div>
                     <div id="campus5" class="tabContent">
                         <div class="map_img">
-                            <img src="{{ img_url('cop_acad/map/map1.jpg') }}">
+                            <img src="{{ img_url('cop_acad/map/map_cop_bs.jpg') }}" alt="부산">
                         </div>
                         <div class="campus_info">
                             <dl>
@@ -546,7 +525,7 @@
                     </div>
                     <div id="campus6" class="tabContent">
                         <div class="map_img">
-                            <img src="{{ img_url('cop_acad/map/map1.jpg') }}">
+                            <img src="{{ img_url('cop_acad/map/map_cop_kj.jpg') }}" alt="광주">
                         </div>
                         <div class="campus_info">
                             <dl>
@@ -586,7 +565,7 @@
                     </div>
                     <div id="campus7" class="tabContent">
                         <div class="map_img">
-                            <img src="{{ img_url('cop_acad/map/map1.jpg') }}">
+                            <img src="{{ img_url('cop_acad/map/map_cop_jj.jpg') }}" alt="제주">
                         </div>
                         <div class="campus_info">
                             <dl>
@@ -625,48 +604,72 @@
                         </div>
                     </div>
                     <div id="campus8" class="tabContent">
-                        <div class="map_img">
-                            <img src="{{ img_url('cop_acad/map/map1.jpg') }}">
+                        <div>
+                            <div class="map_img">
+                                <img src="{{ img_url('cop_acad/map/map_cop_jbjj.jpg') }}" alt="전북 전주">                       
+                            </div>
+                            <div class="campus_info">
+                                <dl>
+                                    <dt>
+                                        <div class="c-tit">
+                                            <span class="tx-color">노량진</span> 캠퍼스 공지사항
+                                            <a href="https://cop.dev.willbes.net/pass/support/notice/index" class="btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}"></a>
+                                        </div>
+                                        <div class="c-info p_re">
+                                            <ul class="List-Table">
+                                                <li><a href="#none">[공지] 경찰3차 과목별 만점자를 소개합니다</a></li>
+                                                <li><a href="#none">하승민 영어 2018년 3차 시험 적중!</a></li>
+                                            </ul>
+                                        </div>
+                                    </dt>
+                                    <dt>
+                                        <div class="c-tit"><span class="tx-color">노량진</span> 캠퍼스 오시는 길</div>
+                                        <div class="c-info">
+                                            <div class="address">
+                                                <span class="a-tit">주소</span>
+                                                <span>
+                                                    서울시동작구만양로105 2층<br/>
+                                                    (서울시동작구노량진동116-2 2층)
+                                                </span>
+                                            </div>
+                                            <div class="tel">
+                                                <span class="a-tit">연락처</span>
+                                                <span class="tx-color">1544-0336</span>
+                                            </div>
+                                        </div>
+                                    </dt>
+                                    <dt>
+                                        <div class="c-tit"><span class="tx-color">노량진</span> 캠퍼스 오시는 길</div>
+                                        <div class="c-info">
+                                            <div class="address">
+                                                <span class="a-tit">주소</span>
+                                                <span>
+                                                    서울시동작구만양로105 2층<br/>
+                                                    (서울시동작구노량진동116-2 2층)
+                                                </span>
+                                            </div>
+                                            <div class="tel">
+                                                <span class="a-tit">연락처</span>
+                                                <span class="tx-color">1544-0336</span>
+                                            </div>
+                                        </div>
+                                    </dt>
+                                </dl>
+                                <div class="btn btn2 NSK-Black">
+                                    <a href="https://cop.dev.willbes.net/pass/support/qna/index">1:1 상담신청</a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="campus_info">
-                            <dl>
-                                <dt>
-                                    <div class="c-tit">
-                                        <span class="tx-color">노량진</span> 캠퍼스 공지사항
-                                        <a href="https://cop.dev.willbes.net/pass/support/notice/index" class="btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}"></a>
-                                    </div>
-                                    <div class="c-info p_re">
-                                        <ul class="List-Table">
-                                            <li><a href="#none">[공지] 경찰3차 과목별 만점자를 소개합니다</a></li>
-                                            <li><a href="#none">하승민 영어 2018년 3차 시험 적중!</a></li>
-                                        </ul>
-                                    </div>
-                                </dt>
-                                <dt>
-                                    <div class="c-tit"><span class="tx-color">노량진</span> 캠퍼스 오시는 길</div>
-                                    <div class="c-info">
-                                        <div class="address">
-                                            <span class="a-tit">주소</span>
-                                            <span>
-                                                서울시동작구만양로105 2층<br/>
-                                                (서울시동작구노량진동116-2 2층)
-                                            </span>
-                                        </div>
-                                        <div class="tel">
-                                            <span class="a-tit">연락처</span>
-                                            <span class="tx-color">1544-0336</span>
-                                        </div>
-                                    </div>
-                                </dt>
-                            </dl>
-                            <div class="btn NSK-Black">
-                                <a href="https://cop.dev.willbes.net/pass/support/qna/index">1:1 상담신청</a>
+
+                        <div class="c_both pt30">
+                            <div class="map_img">
+                                <img src="{{ img_url('cop_acad/map/map_cop_jbis.jpg') }}" alt="전북 익산">                       
                             </div>
                         </div>
                     </div>
                     <div id="campus9" class="tabContent">
                         <div class="map_img">
-                            <img src="{{ img_url('cop_acad/map/map1.jpg') }}">
+                            <img src="{{ img_url('cop_acad/map/map_cop_jinj.jpg') }}" alt="진주">
                         </div>
                         <div class="campus_info">
                             <dl>

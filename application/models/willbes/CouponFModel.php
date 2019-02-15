@@ -354,16 +354,22 @@ class CouponFModel extends WB_Model
      * @param bool $is_pin [핀번호 여부, false : 쿠폰식별자를 사용하여 쿠폰 조회, 기 발급여부 체크]
      * @param string $issue_type [쿠폰발급구분]
      * @param int|null $issue_order_prod_idx [발급주문상품식별자]
+     * @param string $mem_idx [회원식별자]
      * @return array
      */
-    public function addMemberCoupon($coupon_type, $coupon_no, $is_pin = false, $issue_type = 'auto', $issue_order_prod_idx = null)
+    public function addMemberCoupon($coupon_type, $coupon_no, $is_pin = false, $issue_type = 'auto', $issue_order_prod_idx = null, $mem_idx = '')
     {
         try {
             $sess_mem_idx = $this->session->userdata('mem_idx');    // 회원 식별자 세션
+            $mem_idx = empty($mem_idx) === false ? $mem_idx : $sess_mem_idx;
             $find_method = $is_pin === true ? 'Pin' : 'Idx';
             $today = date('Y-m-d');
             $reg_ip = $this->input->ip_address();
             $issue_type_ccd = element($issue_type, $this->_coupon_issue_type_ccd, $this->_coupon_issue_type_ccd['auto']);
+
+            if (empty($mem_idx) === true) {
+                throw new \Exception('회원 식별자가 없습니다.');
+            }
 
             // 쿠폰정보 조회
             $row = $this->{'findCouponBy' . $find_method}($coupon_no);
@@ -388,7 +394,7 @@ class CouponFModel extends WB_Model
                     $chk_condition = ['EQ' => ['CouponPin' => $row['CouponPin'], 'ValidStatus' => 'Y']];
                 } else {
                     // 오프라인 > 공통핀
-                    $chk_condition = ['EQ' => ['CouponIdx' => $row['CouponIdx'], 'MemIdx' => $sess_mem_idx, 'ValidStatus' => 'Y']];
+                    $chk_condition = ['EQ' => ['CouponIdx' => $row['CouponIdx'], 'MemIdx' => $mem_idx, 'ValidStatus' => 'Y']];
                 }
 
                 $chk_row = $this->_conn->getFindResult($this->_table['coupon_detail'], 'CdIdx', $chk_condition);
@@ -401,13 +407,13 @@ class CouponFModel extends WB_Model
             $data = [
                 'CouponPin' => $row['CouponPin'],
                 'CouponIdx' => $row['CouponIdx'],
-                'MemIdx' => $sess_mem_idx,
+                'MemIdx' => $mem_idx,
                 'IssueOrderProdIdx' => $issue_order_prod_idx,
                 'IssueTypeCcd' => $issue_type_ccd,
                 'ValidStatus' => 'Y',
                 'ExpireDatm' => $row['ExpireDatm'],
                 'IssueUserType' => 'M',
-                'IssueUserIdx' => $sess_mem_idx,
+                'IssueUserIdx' => $mem_idx,
                 'IssueIp' => $reg_ip
             ];
 

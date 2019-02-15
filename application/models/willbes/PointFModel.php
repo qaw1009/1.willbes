@@ -208,11 +208,13 @@ class PointFModel extends WB_Model
      * @param int $site_code [사이트코드]
      * @param int $order_idx [주문식별자]
      * @param int $order_prod_idx [주문상품식별자]
+     * @param string $mem_idx [회원식별자]
      * @return array|bool
      */
-    public function addOrderSavePoint($point_type, $save_point, $site_code, $order_idx, $order_prod_idx)
+    public function addOrderSavePoint($point_type, $save_point, $site_code, $order_idx, $order_prod_idx, $mem_idx = '')
     {
         $input = [
+            'mem_idx' => $mem_idx,
             'site_code' => $site_code,
             'order_idx' => $order_idx,
             'order_prod_idx' => $order_prod_idx,
@@ -234,11 +236,17 @@ class PointFModel extends WB_Model
     {
         try {
             $sess_mem_idx = $this->session->userdata('mem_idx');    // 회원 식별자 세션
+            $mem_idx = element('mem_idx', $input);  // 회원 식별자 파라미터
+            $mem_idx = empty($mem_idx) === false ? $mem_idx : $sess_mem_idx;
             $valid_days = element('valid_days', $input, 365);   // 기본값 1년
+
+            if (empty($mem_idx) === true) {
+                throw new \Exception('회원 식별자가 없습니다.');
+            }
 
             $data = [
                 'PointType' => $point_type,
-                'MemIdx' => $sess_mem_idx,
+                'MemIdx' => $mem_idx,
                 'SiteCode' => element('site_code', $input),
                 'OrderIdx' => element('order_idx', $input, 0),
                 'OrderProdIdx' => element('order_prod_idx', $input, 0),

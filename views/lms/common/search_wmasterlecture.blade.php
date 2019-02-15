@@ -138,7 +138,7 @@
                         var $masterInfo = '[촬영형태] '+row.wShootingCcd_Name+' &nbsp;&nbsp; [진행상태] '+row.wProgressCcd_Name+''
                                                 + ' &nbsp;&nbsp; [제작월] '+row.wMakeYM;
                         if(!(row.wAttachFile == null) && (row.wAttachFile != '')) {
-                            $attach_link = "{{site_url('/product/on/lecture/download/')}}"+encodeURIComponent(row.wAttachPath+row.wAttachFile)+"/"+encodeURIComponent(row.wAttachFileReal);
+                            $attach_link = "{{site_url('/product/on/lecture/download/')}}?filename="+encodeURIComponent(row.wAttachPath+row.wAttachFile)+"&filename_ori="+encodeURIComponent(row.wAttachFileReal);
                             $masterInfo = $masterInfo +' &nbsp;&nbsp; [첨부자료] <a href=' + $attach_link + ' target="_blank">' + row.wAttachFileReal +'</a>';
                         }
 

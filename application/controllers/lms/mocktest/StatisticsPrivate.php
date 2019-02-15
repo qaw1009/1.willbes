@@ -121,9 +121,27 @@ class StatisticsPrivate extends \app\controllers\BaseController
 
         $listArr = $this->regGradeModel->subjectDetailPrivate($prodcode, $memidx);
         //전체과목평균
-        $sumRank = $this->regGradeModel->subjectAllAvg($prodcode, $memidx);
+        $res = $this->regGradeModel->subjectAllAvg($prodcode, $memidx);
 
+        $Rank = 1;
+        $minusRank = 1;
+        $tempPoint = 0;
+        $sumRank = '';
+        foreach ($res as $key => $val){
+            $AdjustPoint = $val['SUMPOINT'];
+            if ($tempPoint == $AdjustPoint) {
+                $rRank = $Rank - $minusRank;
+                $minusRank++;
+            } else {
+                $rRank = $Rank;
+                $minusRank = 1;
+            }
 
+            $tempPoint = $val['SUMPOINT'];
+            $Rank++;
+
+            if($val['MemIdx'] == $memidx) $sumRank = $rRank;
+        }
 
         $MpIdxSet = $listArr['MpIdxSet'];
         $list = $listArr['rdata'];
@@ -201,18 +219,32 @@ class StatisticsPrivate extends \app\controllers\BaseController
             $Rank++;
         }
 
-        $orgTotal = 0;
-        $orgtnum = 0;
         if($dataOrg){
+            $orgTotal = 0;
+            $orgtnum = 0;
+            $Rank = 1;
+            $minusRank = 1;
+            $tempPoint = 0;
             foreach($dataOrg as $key => $val){
+
+                $Point = round($val['ORG'] / $val['KCNT'] , 2);
+                if ($tempPoint == $Point) {
+                    $rRank = $Rank - $minusRank;
+                    $minusRank++;
+                } else {
+                    $rRank = $Rank;
+                    $minusRank = 1;
+                }
+
                 $MemIdx = $val['MemIdx'];
                 $dataOrg[$MemIdx]['grade'] = $val['ORG'];
-                $dataOrg[$MemIdx]['avg'] = round($val['ORG'] / $val['KCNT'] , 2);
+                $dataOrg[$MemIdx]['avg'] = $Point;
                 $orgTotal = $orgTotal + $val['ORG'];
                 $orgtnum = $val['COUNT'] * $val['KCNT'];
-                $dataOrg[$MemIdx]['rank'] = ($key+1).'/'.$val['COUNT'];
-                $dataOrg[$MemIdx]['tpct'] = round(100 - ((($key+1) / $val['COUNT']) * 100 - (100 / $val['COUNT'])),2);
-
+                $dataOrg[$MemIdx]['rank'] = $rRank.'/'.$val['COUNT'];
+                $dataOrg[$MemIdx]['tpct'] = round(100 - (($rRank / $val['COUNT']) * 100 - (100 / $val['COUNT'])),2);
+                $tempPoint = $Point;
+                $Rank++;
             }
         }
 
@@ -243,7 +275,8 @@ class StatisticsPrivate extends \app\controllers\BaseController
             $adTotal = $adTotal + $val['AD'];
             $dataAdjust[$MemIdx]['rank'] =  $rRank.'/'.$val['COUNT'];
             $dataAdjust[$MemIdx]['rankS'] = $rRank;
-            $dataAdjust[$MemIdx]['tpct'] = round(100 - ((($key+1) / $val['COUNT']) * 100 - (100 / $val['COUNT'])),2);
+
+            $dataAdjust[$MemIdx]['tpct'] = round(100 - (($rRank / $val['COUNT']) * 100 - (100 / $val['COUNT'])),2);
             $dataAdjust[$MemIdx]['admax'] = $val['ADMAX'];
             //응시멤버
             $memArr[] = $MemIdx;
@@ -254,6 +287,7 @@ class StatisticsPrivate extends \app\controllers\BaseController
             $Rank++;
 
         }
+
         if($adTotal) $dataAdjust['tavg'] = $adTotal ? round($adTotal / $orgtnum, 2) : 0;
         if($adTotal) $dataAdjust['tsum'] = $adTotal ? round($adTotal / $tcnt, 2) : 0;
         //종합분석(끝)

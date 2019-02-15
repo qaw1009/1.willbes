@@ -1159,40 +1159,32 @@ class RegGradeModel extends WB_Model
      * @param $prodcode $MemIdx
      * @return mixed
      */
-    public function subjectAllAvg($ProdCode, $MemIdx)
+    public function subjectAllAvg($ProdCode)
     {
         $column = "
-                SumRank
+                MR.MemIdx,
+                SUM(AdjustPoint) as SUMPOINT
             ";
 
         $from = "
-            FROM
-            (
-                SELECT A.MemIdx, SUMPOINT, @rownum := @rownum + 1 AS SumRank FROM (
-                    SELECT 
-                                MR.MemIdx,
-                                SUM(AdjustPoint) as SUMPOINT
-                            FROM
-                                    lms_product_mock AS PM
-                                    JOIN lms_mock_register AS MR ON PM.ProdCode = MR.ProdCode AND MR.IsStatus = 'Y' 
-                                    JOIN lms_mock_register_r_paper AS RP ON PM.ProdCode = RP.ProdCode AND MR.MrIdx = RP.MrIdx 
-                                    JOIN lms_product_mock_r_paper AS MP ON RP.MpIdx = MP.MpIdx AND RP.ProdCode = MP.ProdCode AND MP.IsStatus = 'Y'
-                                    JOIN lms_mock_grades AS MG ON MR.MemIdx = MG.MemIdx AND RP.MpIdx = MG.MpIdx
-                    WHERE MR.ProdCode = ".$ProdCode." 
-                    GROUP BY MemIdx
-                    ORDER BY SUM(AdjustPoint) DESC  
-                ) AS A,
-                (SELECT @rownum := 0) as tmp
-            ) AS B 
+                FROM
+                                lms_product_mock AS PM
+                                JOIN lms_mock_register AS MR ON PM.ProdCode = MR.ProdCode AND MR.IsStatus = 'Y' 
+                                JOIN lms_mock_register_r_paper AS RP ON PM.ProdCode = RP.ProdCode AND MR.MrIdx = RP.MrIdx 
+                                JOIN lms_product_mock_r_paper AS MP ON RP.MpIdx = MP.MpIdx AND RP.ProdCode = MP.ProdCode AND MP.IsStatus = 'Y'
+                                JOIN lms_mock_grades AS MG ON MR.MemIdx = MG.MemIdx AND RP.MpIdx = MG.MpIdx
+                WHERE MR.ProdCode = ".$ProdCode." 
+                GROUP BY MemIdx
+                ORDER BY SUM(AdjustPoint) DESC, MemIdx  
             ";
 
         $obder_by = " ";
 
-        $where = " WHERE MemIdx = ".$MemIdx;
+        $where = " ";
         //echo "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
         $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
-        $res = $query->row_array();
-        return $res['SumRank'];
+        $res = $query->result_array();
+        return $res;
     }
 
     /**
@@ -1320,11 +1312,12 @@ class RegGradeModel extends WB_Model
             ";
 
             $obder_by = " GROUP BY MemIdx 
-		                  ORDER BY AD DESC ";
+		                  ORDER BY AD DESC, MemIdx";
 
             $where = " WHERE ProdCode = " . $ProdCode;
         }
 
+        //echo '<pre>select ' . $column . $from . $where . $obder_by.'</pre>';
         $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
         return $query->result_array();
 

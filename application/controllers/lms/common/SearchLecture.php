@@ -25,6 +25,7 @@ class SearchLecture extends \app\controllers\BaseController
             ,'arr_subject' => $this->subjectModel->getSubjectArray()
             ,'arr_course' => $this->courseModel->getCourseArray()
             ,'Sales_ccd' => $codes['618']
+            ,'cate_code' => $this->_req('cate_code')
         ]);
     }
 
@@ -42,7 +43,8 @@ class SearchLecture extends \app\controllers\BaseController
                 'A.SaleStatusCcd' =>$this->_reqP('search_sales_ccd'),
                 'A.IsUse' =>$this->_reqP('search_is_use'),
                 'B.SubjectIdx' => $this->_reqP('search_subject_idx'),
-                'B.CourseIdx' => $this->_reqP('search_course_idx')
+                'B.CourseIdx' => $this->_reqP('search_course_idx'),
+                'C.CateCode' => $this->_reqP('cate_code')
             ]
         ];
 

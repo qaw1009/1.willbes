@@ -933,8 +933,11 @@
             $('#essLecAdd,#selLecAdd').on('click', function(e) {
                 var id = e.target.getAttribute('id');
                 if($("#site_code").val() == "") {alert("운영사이트를 선택해 주세요.");$("#site_code").focus();return;}
+                if($("#CampusCcd").val() == "") {alert("캠퍼스를 선택해 주세요.");$("#CampusCcd").focus();return;}
                 $('#'+id).setLayer({
                     'url' : '{{ site_url('common/searchOffLecture/')}}'+'?site_code='+$("#site_code").val()+'&LearnPatternCcd=615006&locationid='+id+'&ProdCode='+$('#ProdCode').val()
+                    +'&cate_code='+$('#cate_code').val()
+                    +'&CampusCcd='+$('#CampusCcd').val()
                     ,'width' : 1200
                 })
             });

@@ -16,6 +16,10 @@
         <input type="hidden" name="ProdCode" value="{{ $ProdCode }}"/>
         <input type="hidden" name="locationid" value="{{ $locationid }}"/>
         <input type="hidden" name="wLecIdx" value="{{ $wLecIdx }}"/>
+        <input type="hidden" name="cate_code" value="{{ $cate_code }}"/>
+        <input type="hidden" name="CampusCcd" value="{{ $CampusCcd }}"/>
+
+
 
         @endsection
 
@@ -140,7 +144,6 @@
                             {'data' : null, 'render' : function(data, type, row, meta) {
                                     return '['+row.ProdCode+ '] ' + row.ProdName + '';
                                 }},//단강좌명
-
                             {'data' : null, 'render' : function(data, type, row, meta) {
                                     return addComma(row.RealSalePrice)+'원<BR><strike>'+addComma(row.SalePrice)+'원</strike>';
                                 }},
@@ -148,22 +151,18 @@
                             {'data' : null, 'render' : function(data, type, row, meta) {
                                     return row.StudyStartDate +' ~ '+row.StudyEndDate
                                 }},
-
                             {'data' : 'IsLecOpen', 'render' : function(data, type, row, meta) {
                                     return  ((data === 'Y') ? ' 개설 ' : ' <span class="red">폐강</span> ');
                                 }},
-
                             {'data' : null, 'render' : function(data, type, row, meta) {
                                     return row.SaleStartDatm +' ~ '+row.SaleEndDatm
                                 }},
                             {'data' : 'AcceptStatusCcd_Name', 'render' : function(data, type, row, meta) {
                                     return  ((data === '접수마감') ? ' <span class="red">'+data+'</span>' : data);
                                 }},
-
                             {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                                     return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
                                 }},//사용여부
-
                             {'data' : 'wAdminName'},//등록자
                             {'data' : 'RegDatm'}//등록일
                         ]

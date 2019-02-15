@@ -16,6 +16,7 @@
         <input type="hidden" name="ProdCode" value="{{ $ProdCode }}"/>
         <input type="hidden" name="locationid" value="{{ $locationid }}"/>
         <input type="hidden" name="wLecIdx" value="{{ $wLecIdx }}"/>
+        <input type="hidden" name="cate_code" value="{{ $cate_code }}"/>
 
         @endsection
 

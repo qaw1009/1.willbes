@@ -1108,7 +1108,7 @@
                 if($('input:radio[name="PackTypeCcd"]:checked').val() == '648001' && id=='selLecAdd') {alert("일반형 패키지의 경우 선택과목을 선택할 수 없습니다.");return;}
 
                 $('#'+id).setLayer({
-                    'url' : '{{ site_url('common/searchLecture/')}}'+'?site_code='+$("#site_code").val()+'&LearnPatternCcd=615001&locationid='+id+'&ProdCode='+$('#ProdCode').val()
+                    'url' : '{{ site_url('common/searchLecture/')}}'+'?site_code='+$("#site_code").val()+'&LearnPatternCcd=615001&locationid='+id+'&ProdCode='+$('#ProdCode').val()+'&cate_code='+$('#cate_code').val()
                     ,'width' : 1200
                 })
             });

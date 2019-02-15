@@ -168,6 +168,16 @@ class Lecture extends \app\controllers\BaseController
         public_download($fileinfo[0], $fileinfo[1]);
     }
 
+    public function download2()
+    {
+        $filename = urldecode($this->_req('filename', false));
+        $filename_ori = urldecode($this->_req('filename_ori', false));
+
+        //echo $filename.'    ---    '.$filename_ori;exit;
+
+        public_download($filename, $filename_ori);
+    }
+
 
     public function copy()
     {

@@ -161,7 +161,9 @@
                             @if(empty($data['wAttachFile']) === false)
                             <br>
                             <p class="form-control-static ml-10 mr-10">
-                                [ <a href="{{site_url('/cms/lecture/download/').urlencode($data['wAttachPath'].$data['wAttachFile']).'/'.urlencode($data['wAttachFileReal']) }}" target="_blank">
+                                [
+                                <a href="{{site_url('/cms/lecture/download2/').'?filename='.urlencode($data['wAttachPath'].$data['wAttachFile']).'&filename_ori='.urlencode($data['wAttachFileReal']) }}" target="_blank">
+                                <!--a href="{{site_url('/cms/lecture/download/').urlencode($data['wAttachPath'].$data['wAttachFile']).'/'.urlencode($data['wAttachFileReal']) }}" target="_blank"//-->
                                     {{ $data['wAttachFileReal'] }}</a> ]
                             </p>
                             <div class="checkbox">

@@ -7,11 +7,27 @@
         <h3>
             <ul class="menu-Tit">
                 <li class="Tit">경찰<span class="row-line">|</span></li>
-                <li class="subTit">경찰학원</li>
+                <li class="subTit">경찰학원</li>                
             </ul>
             <ul class="menu-List">
-                <li>
+                <li class="dropdown">
                     <a href="#none">교수진소개</a>
+                    <div class="drop-Box list-drop-Box">
+                        <ul>
+                            <li class="Tit">형사소송법</li>
+                            <li><a href="#none">신광은</a></li>
+                            <li class="Tit">경찰학개론</li>
+                            <li><a href="#none">장정훈</a></li>
+                            <li class="Tit">형법</li>
+                            <li><a href="#none">김원욱</a></li>
+                            <li class="Tit">영어</li>
+                            <li><a href="#none">하승민</a></li>
+                            <li><a href="#none">김현정</a></li>
+                            <li class="Tit">한국사</li>
+                            <li><a href="#none">오태진</a></li>
+                            <li><a href="#none">원유철</a></li>
+                        </ul>
+                    </div>
                 </li>
                 <li class="dropdown">
                     <a href="#none">종합반</a>
@@ -47,8 +63,21 @@
                 <li>
                     <a href="#none">이벤트</a>
                 </li>
-                <li>
+                <li class="dropdown">
                     <a href="#none">전국캠퍼스</a>
+                    <div class="drop-Box list-drop-Box">
+                        <ul>
+                            <li class="Tit">전국캠퍼스</li>
+                            <li><a href="#none">신림</a></li>
+                            <li><a href="#none">인천</a></li>
+                            <li><a href="#none">대구</a></li>
+                            <li><a href="#none">부산</a></li>
+                            <li><a href="#none">광주</a></li>
+                            <li><a href="#none">제주</a></li>
+                            <li><a href="#none">전북</a></li>
+                            <li><a href="#none">전주</a></li>
+                        </ul>
+                    </div>
                 </li>
                 <li class="Acad">
                     <a href="#none">신광은경찰 온라인 <span class="arrow-Btn">></span></a>
@@ -60,50 +89,120 @@
         <div class="widthAuto">
             <div class="willbes-Bnr">
                 <ul>
-                    <li><a href="#none"><img src="{{ img_url('cop_acad/banner/bnr_190111.jpg') }}"></a></li>
+                    <li><a href="#none"><img src="{{ img_url('cop_acad/visual/visual_secA01.jpg') }}" alt="적중은역시신광은경찰팀"></a></li>
                 </ul>
             </div>
         </div>
     </div>
-    <div class="Section MainVisual MainVisual_acad mb30">
+
+    <div class="Section MainVisual MainVisual_acad mb50">
         <div class="widthAuto">
             <ul>
-                <li class="VisualBox_acad">
-                    <a href="http://www.willbescop.net/event/movie/event.html?event_cd=Off_basic&EventReply=Y&topMenuType=F#main" target="_blank"><img src="{{ img_url('cop_acad/visual/visual_190111.jpg') }}"></a>
-                    <!--
-                    <div class="bSlider acad">
-                        <div class="slider">
-                            <div><a href="#none"><img src="{{ img_url('cop_acad/visual/visual_190111.jpg') }}"></a></div>
-                            <div><img src="{{ img_url('cop_acad/visual/visual_190111.jpg') }}"></div>
-                        </div>
-                    </div>
-                    -->
+                <li class="VisualsubBox_acad">
+                    <a href="#none"><img src="{{ img_url('cop_acad/visual/visual_secB01.jpg') }}" alt="기본이론종합반"></a>
                 </li>
                 <li class="VisualsubBox_acad">
-                    <a href="http://www.willbescop.net/gosi/event.html?event_cd=Off_pass_4month&topMenuType=F" target="_blank"><img src="{{ img_url('cop_acad/visual/visualsub_190110.jpg') }}"></a>
-                    <!--
-                    <div class="bSlider acad">
-                        <div class="slider">
-                            <div><a href="#none"><img src="{{ img_url('cop_acad/visual/visualsub_190110.jpg') }}"></a></div>
-                            <div><img src="{{ img_url('cop_acad/visual/visualsub_190111.jpg') }}"></div>
-                        </div>
-                    </div>
-                    -->
+                    <a href="#none"><img src="{{ img_url('cop_acad/visual/visual_secB02.jpg') }}" alt="superpass"></a>
                 </li>
                 <li class="VisualsubBox_acad">
-                    <a href="https://cop.dev.willbes.net/pass/offinfo/boardInfo/show/78?board_idx=1360&" target="_blank"><img src="{{ img_url('cop_acad/visual/visualsub_190111.jpg') }}"></a>
-                    <!--
+                    <a href="#none"><img src="{{ img_url('cop_acad/visual/visual_secB03.jpg') }}" alt="문제풀이패키지"></a>
+                </li>
+                <li class="VisualsubBox_acad">                    
                     <div class="bSlider acad">
                         <div class="bSlider slider">
-                            <div><a href="#none"><img src="{{ img_url('cop_acad/visual/visualsub_190111.jpg') }}"></a></div>
-                            <div><img src="{{ img_url('cop_acad/visual/visualsub_190110.jpg') }}"></div>
+                            <div><a href="#none"><img src="{{ img_url('cop_acad/visual/visual_secB04_01.jpg') }}" alt="합격전략설명회"></a></div>
+                            <div><a href="#none"><img src="{{ img_url('cop_acad/visual/visual_secB04_02.jpg') }}" alt="황세웅면접캠프"></a></div>
                         </div>
                     </div>
-                    -->
                 </li>
             </ul>
         </div>
     </div>
+
+    <div class="Section Section3 mb50">
+        <div class="widthAuto">
+            <div class="will-acadTit">교수별 <span class="tx-color">빠른강좌</span> 찾기</div>
+            <ul class="caProfBox">
+                <li>
+                    <img src="{{ img_url('cop_acad/prof/prof_ske.jpg') }}" alt="형사소송법/수사 신광은">
+                    <div class="caProfBtsn">
+                        <div><a href="#none">기본이론</a></div>
+                        <div><a href="#none">심화이론</a></div>
+                    </div>
+                </li>
+                <li>
+                    <img src="{{ img_url('cop_acad/prof/prof_jjh.jpg') }}" alt="경찰학개론 장정훈">
+                    <div class="caProfBtsn">
+                        <div><a href="#none">기본이론</a></div>
+                        <div><a href="#none">심화이론</a></div>
+                    </div>
+                </li>
+                <li>
+                    <img src="{{ img_url('cop_acad/prof/prof_kwu.jpg') }}" alt="형법 김원욱">
+                    <div class="caProfBtsn">
+                        <div><a href="#none">기본이론</a></div>
+                        <div><a href="#none">심화이론</a></div>
+                    </div>
+                </li>
+                <li>
+                    <img src="{{ img_url('cop_acad/prof/prof_hsm.jpg') }}" alt="경찰영어 하승민">
+                    <div class="caProfBtsn">
+                        <div><a href="#none">기본이론</a></div>
+                        <div><a href="#none">심화이론</a></div>
+                    </div>
+                </li>
+                <li>
+                    <img src="{{ img_url('cop_acad/prof/prof_otj.jpg') }}" alt="한국사 오태진">
+                    <div class="caProfBtsn">
+                        <div><a href="#none">기본이론</a></div>
+                        <div><a href="#none">심화이론(원기총)</a></div>
+                    </div>
+                </li>
+                <li>
+                    <img src="{{ img_url('cop_acad/prof/prof_wyc.jpg') }}" alt="한국사 원유철">
+                    <div class="caProfBtsn">
+                        <div><a href="#none">기본이론</a></div>
+                        <div><a href="#none">문법 심화이론</a></div>
+                    </div>
+                </li>
+                <li>
+                    <img src="{{ img_url('cop_acad/prof/prof_khj.jpg') }}" alt="기초영어 김현정">
+                    <div class="caProfBtsn">
+                        <div><a href="#none">기본이론</a></div>
+                        <div><a href="#none">심화이론(원기총)</a></div>
+                    </div>
+                </li>
+                <li>
+                    <img src="{{ img_url('cop_acad/prof/prof_hsw.jpg') }}" alt="면접 황세웅">
+                    <div class="caProfBtsn">
+                        <div><a href="#none">면접캠프</a></div>
+                        <div><a href="#none">면접 스파르타</a></div>
+                    </div>
+                </li>
+
+                <!--
+                <li class="p_re">         
+                    <div class="cSlider graySlider AbsControls">
+                        <div class="sliderControls">
+                            <div><a href="#none"><img src="{{ img_url('cop/prof/prof_180918.png') }}"></a></div>
+                            <div><a href="#none"><img src="{{ img_url('cop/prof/prof_180914.png') }}"></a></div>
+                        </div>
+                    </div>
+                </li>
+                <li class="p_re">         
+                    <div class="cSlider graySlider AbsControls">
+                        <div class="sliderControls">
+                            <div><a href="#none"><img src="{{ img_url('cop/prof/prof_180919.png') }}"></a></div>
+                            <div><a href="#none"><img src="{{ img_url('cop/prof/prof_180916.png') }}"></a></div>
+                        </div>
+                    </div>
+                </li>
+                -->
+            </ul>
+        </div>
+    </div>
+
+
     <div class="Section Section1 mb50">
         <div class="widthAuto">
             <div class="sliderPick pick">
@@ -228,37 +327,7 @@
             </div>
         </div>
     </div>
-    <div class="Section Section3 mb80">
-        <div class="widthAuto">
-            <div class="will-acadTit">윌비스 <span class="tx-color">신광은경찰</span> 학원 강사진</div>
-            <ul class="ProfBox">
-                <li><a href="https://cop.dev.willbes.net/pass/professor/show/prof-idx/50100/?cate_code=3006&subject_idx=10066&subject_name=%ED%98%95%EC%82%AC%EC%86%8C%EC%86%A1%EB%B2%95"><img src="{{ img_url('cop_acad/prof/prof_190101.png') }}"></a></li>
-                <li><a href="https://cop.dev.willbes.net/pass/professor/show/prof-idx/50101/?cate_code=3006&subject_idx=10068&subject_name=%EA%B2%BD%EC%B0%B0%ED%95%99%EA%B0%9C%EB%A1%A0"><img src="{{ img_url('cop_acad/prof/prof_190102.png') }}"></a></li>
-                <li><a href="https://cop.dev.willbes.net/pass/professor/show/prof-idx/50102/?cate_code=3006&subject_idx=10070&subject_name=%ED%98%95%EB%B2%95"><img src="{{ img_url('cop_acad/prof/prof_190103.png') }}"></a></li>
-                <li><a href="https://cop.dev.willbes.net/pass/professor/show/prof-idx/50103/?cate_code=3006&subject_idx=10072&subject_name=%EC%98%81%EC%96%B4"><img src="{{ img_url('cop_acad/prof/prof_190104.png') }}"></a></li>
-                <li><a href="https://cop.dev.willbes.net/pass/professor/show/prof-idx/50105/?cate_code=3006&subject_idx=10074&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC"><img src="{{ img_url('cop_acad/prof/prof_190105.png') }}"></a></li>
-                <li><a href="https://cop.dev.willbes.net/pass/professor/show/prof-idx/50104/?cate_code=3006&subject_idx=10074&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC"><img src="{{ img_url('cop_acad/prof/prof_190106.png') }}"></a></li>
-                <!--
-                <li class="p_re">         
-                    <div class="cSlider graySlider AbsControls">
-                        <div class="sliderControls">
-                            <div><a href="#none"><img src="{{ img_url('cop/prof/prof_180918.png') }}"></a></div>
-                            <div><a href="#none"><img src="{{ img_url('cop/prof/prof_180914.png') }}"></a></div>
-                        </div>
-                    </div>
-                </li>
-                <li class="p_re">         
-                    <div class="cSlider graySlider AbsControls">
-                        <div class="sliderControls">
-                            <div><a href="#none"><img src="{{ img_url('cop/prof/prof_180919.png') }}"></a></div>
-                            <div><a href="#none"><img src="{{ img_url('cop/prof/prof_180916.png') }}"></a></div>
-                        </div>
-                    </div>
-                </li>
-                -->
-            </ul>
-        </div>
-    </div>
+    
     <div class="Section Section4 mb50">
         <div class="widthAuto">
             <div class="will-acadTit">윌비스 <span class="tx-color">신광은경찰</span> 캠퍼스</div>

@@ -103,25 +103,25 @@
                 <ul class="youtubetab">
                     <li>
                         <a href="#tab1" class="active">
-                            왜 신광은 경찰학원을 선택해야 하나요?
+                            2018년 2차 최종합격생 인터뷰
                             <span>신광은경찰TV</span>
                         </a>
                     </li>
                     <li>
                         <a href="#tab2">
-                            연강시스템이란 무엇인가요?
+                            신의 법칙! 주만에 1회독?
                             <span>신광은경찰TV</span>
                         </a>
                     </li>
                     <li>
                         <a href="#tab3">
-                            신의법칙! 2주만에 1회독?
+                            스타강사가 들려주는 시험 꿀팁!
                             <span>신광은경찰TV</span>
                         </a>
                     </li>
                     <li>
                         <a href="#tab4">
-                            스타강사가 들려주는 시험 꿀팁!
+                            중경입교식! 그 현장을 가다!
                             <span>신광은경찰TV</span>
                         </a>
                     </li>

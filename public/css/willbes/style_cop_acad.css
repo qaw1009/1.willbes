@@ -18,7 +18,7 @@
 }
 .MainVisual_acad ul li {
     float: left;
-    margin-left: 6px;
+    margin-left: 11px;
 }
 .MainVisual_acad ul li:first-child {
     margin-left: 0;
@@ -28,8 +28,9 @@
     height: 274px;
 }
 .VisualsubBox_acad {
-    width: 246px;
+    width: 271px;
     height: 274px;
+    overflow: hidden;
 }
 
 /* Main Container : Tit : Cop Acad */
@@ -88,6 +89,32 @@
     top: 12px;
     text-align: right; 
     padding-top: 0; 
+}
+
+/* Main Container : acad_infoBox : Cop Acad */
+.caProfBox li {
+    position: relative;
+    display: inline;
+    float: left;
+    height: 327px;
+    margin-right: 12px;
+    margin-bottom: 12px;
+    background: url("../../img/willbes/cop_acad/prof/prof_temp.jpg") no-repeat 0 0;
+}
+.caProfBox li:nth-child(4),
+.caProfBox li:last-child {
+    margin-right:0;
+}
+.caProfBox .caProfBtsn {
+    position: absolute;
+    bottom:44px;
+    left:37px;
+    font-size: 14px;
+}
+.caProfBox:after {
+    content: '';
+    display: block;
+    clear: both;
 }
 
 /* Main Container : acad_infoBox : Cop Acad */
@@ -403,33 +430,56 @@
     margin-top: 50px;
 }
 
-#notice3 .add {
+#notice3 .mapWrap {
+    margin-top: 40px;
+    background: #606060;
+}
+#notice3 .mapWrap .mapImg {
+    position: relative;
+    float: left;
+    width: 534px;
+    height: 250px;
+    overflow: hidden;
+    margin-bottom: 40px;
+}
+#notice3 .mapWrap .mapImg img {
+    position: absolute;
+    top:-39px;
+    left:-82px;
+}
+#notice3 .mapWrap .add {
     float: right;
     width: 40%;
+    font-size: 13px;
 }
-#notice3 .add ul {
-    border-top:1px solid #959595;
-    border-bottom:1px solid #959595;
-
-}
-#notice3 .add ul li span {
-    display: block;
-    width: 80px;
-    height: 39px;
-    line-height: 39px;
+#notice3 .mapWrap .add ul li span {
+    display: inline-block;
+    width: 70px;
+    height: 38px;
+    line-height: 38px;
     text-align: center;
     background: #f9f9f9;
     float: left;
     margin-right:5px;
 }
-#notice3 .add ul li {
+#notice3 .mapWrap .add ul li {
+    border-top:1px solid #959595 !important;
     border-bottom:1px solid #efefef !important;
     margin-bottom:1px;
     height: 40px;
     line-height: 40px;
     letter-spacing: normal;
 }
-#notice3 .add ul li:last-child {
+#notice3 .mapWrap .add ul li.mapTit {
+    font-size: 16px;
     border:0 !important;
 }
-
+#notice3 .mapWrap .add ul li:last-child {
+    border-top:0 !important;
+    border-bottom:1px solid #959595 !important;
+}
+#notice3 .mapWrap:after {
+    conternt:'';
+    display: block;
+    clear: both;
+}

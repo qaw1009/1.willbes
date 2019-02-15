@@ -12,7 +12,11 @@ class MemberFModel extends WB_Model
         'device' => 'lms_member_device',
         'code' => 'lms_sys_code',
         'admin' => 'wbs_sys_admin',
-        'authmail' => 'lms_member_certifiedmail'
+        'authmail' => 'lms_member_certifiedmail',
+        'btob' => 'lms_btob',
+        'btob_ip' => 'lms_btob_ip',
+        'btob_log' => 'lms_btob_access_log',
+        'btob_member' => 'lms_btob_r_member'
     ];
 
     protected $_mailSendTypeCcd = [
@@ -86,6 +90,52 @@ class MemberFModel extends WB_Model
         $rows = $this->_conn->query('SELECT ' . $column . $from . $where);
 
         return ($is_count === true) ? $rows->row(0)->rownums : $rows->row_array();
+    }
+
+
+    /**
+     * BtoB 회원인지 확인
+     * @param $MemIdx
+     * @return array
+     */
+    public function getBtobMember($MemIdx)
+    {
+        $query = " SELECT M.MemIdx, B.BtobIdx ";
+        $query .= " FROM {$this->_table['member']} AS M
+            LEFT JOIN {$this->_table['btob_member']} AS BM ON M.MemIdx = BM.MemIdx
+            LEFT JOIN {$this->_table['btob']} AS B ON BM.BtobIdx = B.BtobIdx
+            WHERE BM.IsStatus = 'Y' AND B.IsStatus = 'Y' AND B.IsUse = 'Y'
+        ";
+
+        $query .= ' AND M.MemIdx='.$MemIdx;
+
+        $rows = $this->_conn->query($query);
+
+        return ($rows == false) ? [] : $rows->row_array();
+    }
+
+
+    /**
+     * 해당 BtroB 에서 허용한 IP 인지 확인
+     * @param $btobidx
+     * @return array
+     */
+    public function btobIpCheck($btobidx)
+    {
+        $ip = $this->input->ip_address();
+
+        $query = " SELECT B.BtobIdx, IP.ApprovalIp ";
+        $query .= " FROM {$this->_table['btob']} AS B
+            LEFT JOIN {$this->_table['btob_ip']} AS IP ON B.BtobIdx = IP.BtobIdx
+            WHERE B.IsStatus = 'Y' AND B.IsUse = 'Y' AND IP.IsStatus = 'Y'
+        ";
+
+        $query .= " AND B.BtobIdx=".$btobidx;
+        $query .= " AND IP.ApprovalIp='".$ip."' ";
+
+        $rows = $this->_conn->query($query);
+
+        return ($rows == false) ? [] : $rows->row_array();
     }
 
 

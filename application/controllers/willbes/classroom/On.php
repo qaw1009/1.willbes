@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class On extends \app\controllers\FrontController
 {
-    protected $models = array('classroomF' , 'order/orderListF');
+    protected $models = array('classroomF' , 'order/orderListF', 'memberF');
     protected $helpers = array('download','file');
     protected $auth_controller = true;
     protected $auth_methods = array();
@@ -578,7 +578,7 @@ class On extends \app\controllers\FrontController
         $lec['ProfReferData'] = json_decode($lec['ProfReferData'], true);
         $lec['isstart'] = $isstart;
         $lec['ispause'] = $ispause;
-        //$lec['SiteUrl'] = app_to_env_url($this->getSiteCacheItem($lec['SiteCode'], 'SiteUrl'));
+        $lec['SiteUrl'] = app_to_env_url($this->getSiteCacheItem($lec['SiteCode'], 'SiteUrl'));
 
         // 회차 열어준경우 IN 생성
         if(empty($lec['wUnitIdxs']) == true){
@@ -664,6 +664,30 @@ class On extends \app\controllers\FrontController
                     $curriculum[$idx]['remaintime'] = round(($limittime - $studytime)/60).'분';
                 }
             }
+        }
+
+        // 사용자 가 BtoB 회원인지 체크
+        $btob = $this->memberFModel->getBtobMember($this->session->userdata('mem_idx'));
+
+        if(empty($btob) == false) {
+            // BtoB 회원
+            $lec['isBtob'] = 'Y';
+
+            // 수강가능한 아이피인지 체크
+            $btob_ip = $this->memberFModel->btobIpCheck($btob['BtobIdx']);
+
+            if (empty($btob_ip) == true) {
+                // 아이피 목록 없음
+                $lec['enableIp'] = 'N';
+            } elseif ($btob_ip['ApprovalIp'] == $this->input->ip_address()) {
+                // 모델에서 확인했지만 다시한번
+                $lec['enableIp'] = 'Y';
+            } else {
+                $lec['enableIp'] = 'N';
+            }
+        } else {
+            $lec['isBtob'] = 'N';
+            $lec['enableIp'] = 'Y';
         }
 
         return $this->load->view('/classroom/on/on_view', [
@@ -1199,7 +1223,7 @@ class On extends \app\controllers\FrontController
 
         $lec['ExtenLimit'] = round($lec['StudyPeriod'] / 2);
         $lec['ExtenPrice'] = floor($lec['ExtenPrice'] / $lec['StudyPeriod']);
-        //$lec['SiteUrl'] = app_to_env_url($this->getSiteCacheItem($lec['SiteCode'], 'SiteUrl'));
+        $lec['SiteUrl'] = app_to_env_url($this->getSiteCacheItem($lec['SiteCode'], 'SiteUrl'));
 
         if ($lec['IsRebuy'] > 0) {
             $cond_arr = [

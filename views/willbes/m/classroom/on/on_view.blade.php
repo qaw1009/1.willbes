@@ -91,18 +91,22 @@
                                                 <dt>잔여시간 : <span class="tx-blue">{{$row['remaintime']}}</span></dt>
                                             </dl>
                                             <ul class="w-free NGEB">
-                                                @if($row['isstart'] == 'Y' && $row['ispause'] == 'N')
-                                                    @if($row['timeover'] == 'N')
-                                                        @if($row['wWD'] != '')<li class="btn_black_line"><a href="javascript:;" onclick='fnMobile("https:{{site_url('/Player/getMobile/')}}?m={{$lec['MemIdx']}}&id={{sess_data('mem_id')}}&o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&sp={{$row['ProdCodeSub']}}&l={{$row['wLecIdx']}}&u={{$row['wUnitIdx']}}&q=WD&st=S", "{{config_item('starplayer_license')}}");' >WIDE</a></li>@endif
-                                                        @if($row['wHD'] != '')<li class="btn_blue"><a href="javascript:;" onclick='fnMobile("https:{{site_url('/Player/getMobile/')}}?m={{$lec['MemIdx']}}&id={{sess_data('mem_id')}}&o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&sp={{$row['ProdCodeSub']}}&l={{$row['wLecIdx']}}&u={{$row['wUnitIdx']}}&q=HD&st=S", "{{config_item('starplayer_license')}}");' >HIGH</a></li>@endif
-                                                        @if($row['wSD'] != '')<li class="btn_gray"><a href="javascript:;" onclick='fnMobile("https:{{site_url('/Player/getMobile/')}}?m={{$lec['MemIdx']}}&id={{sess_data('mem_id')}}&o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&sp={{$row['ProdCodeSub']}}&l={{$row['wLecIdx']}}&u={{$row['wUnitIdx']}}&q=SD&st=S", "{{config_item('starplayer_license')}}");' >LOW</a></li>@endif
-                                                    @else
-                                                        <li class="btn_black_line"><a>시간초과</a></li>
-                                                    @endif
-                                                @elseif($row['ispause'] == 'Y')
-                                                    <li class="btn_black_line"><a>일시중지</a></li>
+                                                @if($lec['isBtob'] == 'Y' /* && $lec['enableIp'] == 'N' BoB 는 모바일 에서는 수강불가*/)
+                                                    <li class="btn_black_line"><a>수강불가</a></li>
                                                 @else
-                                                    <li class="btn_black_line"><a>수강대기</a></li>
+                                                    @if($row['isstart'] == 'Y' && $row['ispause'] == 'N')
+                                                        @if($row['timeover'] == 'N')
+                                                            @if($row['wWD'] != '')<li class="btn_black_line"><a href="javascript:;" onclick='fnMobile("https:{{site_url('/Player/getMobile/')}}?m={{$lec['MemIdx']}}&id={{sess_data('mem_id')}}&o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&sp={{$row['ProdCodeSub']}}&l={{$row['wLecIdx']}}&u={{$row['wUnitIdx']}}&q=WD&st=S", "{{config_item('starplayer_license')}}");' >WIDE</a></li>@endif
+                                                            @if($row['wHD'] != '')<li class="btn_blue"><a href="javascript:;" onclick='fnMobile("https:{{site_url('/Player/getMobile/')}}?m={{$lec['MemIdx']}}&id={{sess_data('mem_id')}}&o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&sp={{$row['ProdCodeSub']}}&l={{$row['wLecIdx']}}&u={{$row['wUnitIdx']}}&q=HD&st=S", "{{config_item('starplayer_license')}}");' >HIGH</a></li>@endif
+                                                            @if($row['wSD'] != '')<li class="btn_gray"><a href="javascript:;" onclick='fnMobile("https:{{site_url('/Player/getMobile/')}}?m={{$lec['MemIdx']}}&id={{sess_data('mem_id')}}&o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&sp={{$row['ProdCodeSub']}}&l={{$row['wLecIdx']}}&u={{$row['wUnitIdx']}}&q=SD&st=S", "{{config_item('starplayer_license')}}");' >LOW</a></li>@endif
+                                                        @else
+                                                            <li class="btn_black_line"><a>시간초과</a></li>
+                                                        @endif
+                                                    @elseif($row['ispause'] == 'Y')
+                                                        <li class="btn_black_line"><a>일시중지</a></li>
+                                                    @else
+                                                        <li class="btn_black_line"><a>수강대기</a></li>
+                                                    @endif
                                                 @endif
                                                 <li class="w-data">
                                                     @if(empty($row['wUnitAttachFile']) == false)

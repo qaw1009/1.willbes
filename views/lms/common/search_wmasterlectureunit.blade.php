@@ -131,7 +131,7 @@
                         if (addCnt == 0) {
                             alert("회차를 선택해 주세요.");return;
                         }
-                        if (!confirm('해당 회차를 맛보기로 적용하시겠습니까?')) {
+                        if (!confirm('해당 회차를 적용하시겠습니까?')) {
                             return;
                         }
 

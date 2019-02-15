@@ -174,6 +174,9 @@ class Professor extends \app\controllers\FrontController
         }
         $data['tabUseCount'] = $tabUseCount;
 
+        // 게시판식별자 초기화
+        unset($arr_input['board_idx']);
+        
         $this->load->view('site/professor/show', [
             'arr_input' => $arr_input,
             'arr_subject2professors' => $arr_subject2professor,
@@ -198,9 +201,21 @@ class Professor extends \app\controllers\FrontController
         // 학습형태
         $learn_pattern = $this->_is_pass_site === true ? 'off_lecture' : 'on_lecture';
 
+        // 게시판 기본 조건
+        $arr_condition = [
+            'EQ' => [
+                'b.IsUse' => 'Y'
+                ,'b.ProfIdx' => $prof_idx
+                ,'SubjectIdx' => element('subject_idx', $arr_input)
+            ]
+        ];
         // 공지사항 조회
+        $arr_condition = array_merge_recursive($arr_condition, ['EQ' => ['b.BmIdx' => '63']]);
+        $data['notice'] = $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $arr_condition, 'b.BoardIdx, b.Title', 2, 0, ['b.IsBest'=>'Desc','b.BoardIdx'=>'Desc']);
         
         // 학습자료실 조회
+        $arr_condition = array_replace_recursive($arr_condition, ['EQ' => ['b.BmIdx' => '69']]);
+        $data['material'] = $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $arr_condition, 'b.BoardIdx, b.Title', 2, 0, ['b.IsBest'=>'Desc','b.BoardIdx'=>'Desc']);
         
         // 신규강좌 조회
         $arr_condition = [
@@ -215,6 +230,8 @@ class Professor extends \app\controllers\FrontController
         $data['study_comment'] = $data['study_comment'] != 'N' ? json_decode($data['study_comment'], true) : [];
 
         return [
+            'notice' => element('notice', $data, []),
+            'material' => element('material', $data, []),
             'new_product' => element('new_product', $data, []),
             'study_comment' => element('study_comment', $data, []),
         ];
@@ -410,10 +427,16 @@ class Professor extends \app\controllers\FrontController
      */
     private function _tab_notice($prof_idx, $wprof_idx, $arr_input)
     {
-        $frame_path = '/prof/notice/index';
         $frame_params = 's_cate_code='.$this->_def_cate_code.'&prof_idx='.$prof_idx.'&subject_idx='.element('subject_idx',$arr_input);
-        $frame_params .= '&view_type=prof';
 
+        // iframe list, show 분기 처리
+        if (empty(element('board_idx', $arr_input)) === false) {
+            $frame_path = '/prof/notice/show';
+            $frame_params .= '&view_type=prof'.'&board_idx='.element('board_idx', $arr_input);
+        } else {
+            $frame_path = '/prof/notice/index';
+        }
+        $frame_params .= '&view_type=prof';
         $data = [
             'frame_path' => $frame_path,
             'frame_params' => $frame_params
@@ -450,10 +473,16 @@ class Professor extends \app\controllers\FrontController
      */
     private function _tab_material($prof_idx, $wprof_idx, $arr_input)
     {
-        $frame_path = '/prof/material/index';
         $frame_params = 's_cate_code='.$this->_def_cate_code.'&prof_idx='.$prof_idx.'&subject_idx='.element('subject_idx',$arr_input);
-        $frame_params .= '&view_type=prof';
 
+        // iframe list, show 분기 처리
+        if (empty(element('board_idx', $arr_input)) === false) {
+            $frame_path = '/prof/material/show';
+            $frame_params .= '&view_type=prof'.'&board_idx='.element('board_idx', $arr_input);
+        } else {
+            $frame_path = '/prof/material/index';
+        }
+        $frame_params .= '&view_type=prof';
         $data = [
             'frame_path' => $frame_path,
             'frame_params' => $frame_params

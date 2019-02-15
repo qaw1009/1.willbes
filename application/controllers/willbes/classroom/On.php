@@ -668,7 +668,6 @@ class On extends \app\controllers\FrontController
 
         // 사용자 가 BtoB 회원인지 체크
         $btob = $this->memberFModel->getBtobMember($this->session->userdata('mem_idx'));
-        var_dump($btob);
         if(empty($btob['BtobIdx']) == false) {
             // BtoB 회원
             $lec['isBtob'] = 'Y';
@@ -685,8 +684,6 @@ class On extends \app\controllers\FrontController
             } else {
                 $lec['enableIp'] = 'N';
             }
-
-            var_dump($btob_ip);
         } else {
             $lec['isBtob'] = 'N';
             $lec['enableIp'] = 'Y';

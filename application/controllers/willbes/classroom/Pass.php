@@ -393,15 +393,14 @@ class Pass extends \app\controllers\FrontController
 
         // 사용자 가 BtoB 회원인지 체크
         $btob = $this->memberFModel->getBtobMember($this->session->userdata('mem_idx'));
-
-        if(empty($btob) == false) {
+        if(empty($btob['BtobIdx']) == false) {
             // BtoB 회원
             $lec['isBtob'] = 'Y';
 
             // 수강가능한 아이피인지 체크
             $btob_ip = $this->memberFModel->btobIpCheck($btob['BtobIdx']);
 
-            if (empty($btob_ip) == true) {
+            if (empty($btob_ip['ApprovalIp']) == true) {
                 // 아이피 목록 없음
                 $lec['enableIp'] = 'N';
             } elseif ($btob_ip['ApprovalIp'] == $this->input->ip_address()) {

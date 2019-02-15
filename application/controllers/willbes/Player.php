@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Player extends \app\controllers\FrontController
 {
-    protected $models = array('classroomF', 'playerF', 'product/productF', 'product/professorF', '_lms/sys/code');
+    protected $models = array('classroomF', 'playerF', 'product/productF', 'product/professorF', '_lms/sys/code', 'memberF');
     protected $helpers = array();
     protected $auth_controller = false;
     protected $auth_methods = array('index');
@@ -47,6 +47,21 @@ class Player extends \app\controllers\FrontController
             $MemId = $this->session->userdata('mem_id');
         } else {
             show_alert("로그인해야 수강이 가능합니다.", 'close');
+        }
+
+        // 사용자 가 BtoB 회원인지 체크
+        $btob = $this->memberFModel->getBtobMember($this->session->userdata('mem_idx'));
+        if(empty($btob['BtobIdx']) == false) {
+            // BtoB 회원 수강가능한 아이피인지 체크
+            $btob_ip = $this->memberFModel->btobIpCheck($btob['BtobIdx']);
+
+            if (empty($btob_ip['ApprovalIp']) == true) {
+                // 아이피 목록 없음
+                show_alert("수강이 불가능한 장소입니다.", 'close');
+            } elseif ($btob_ip['ApprovalIp'] != $this->input->ip_address()) {
+                // 아이피가 있을때 다시 한번 아이피 확인 불일치
+                show_alert("수강이 불가능한 장소입니다.", 'close');
+            }
         }
 
         if(empty($orderidx) === true || empty($prodcode) === true || empty($prodcodesub) === true){

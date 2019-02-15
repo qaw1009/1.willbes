@@ -171,11 +171,10 @@ class Lecture extends \app\controllers\BaseController
     public function download2()
     {
         $filename = urldecode($this->_req('filename', false));
-        $filename_ori = urldecode($this->_req('filename_ori', false));
-
+        $filename_ori = urldecode($this->_req('filename_ori',false));
+        //$filename_ori = iconv('UTF-8', 'EUC-KR', $this->_req('filename_ori'));
         //echo $filename.'    ---    '.$filename_ori;exit;
-
-        public_download($filename, $filename_ori);
+        public_download($filename,$filename_ori);
     }
 
 

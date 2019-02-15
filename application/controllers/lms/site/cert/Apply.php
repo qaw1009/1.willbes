@@ -46,6 +46,18 @@ class Apply extends \app\controllers\BaseController
             ],
         ];
 
+        $arr_condition_add = null;
+
+        if($this->_reqP('search_order') === 'Y') {
+            $arr_condition = array_merge_recursive($arr_condition, [
+                'EQ' => [
+                    'op.PayStatusCcd' => '676001'
+                ]
+            ]);
+        } else if($this->_reqP('search_order') === 'N') {
+            $arr_condition_add = ' op.PayStatusCcd is null ';
+        }
+
         if(empty($search_value) === false) {
             $arr_condition = array_merge_recursive($arr_condition, [
                 'ORG' => [
@@ -72,10 +84,10 @@ class Apply extends \app\controllers\BaseController
 
 
         $list = [];
-        $count = $this->certApplyModel->listApply(true, $arr_condition);
+        $count = $this->certApplyModel->listApply(true, $arr_condition,null,null,[],$arr_condition_add);
 
         if ($count > 0) {
-            $list = $this->certApplyModel->listApply(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['SA.CaIdx' => 'desc']);
+            $list = $this->certApplyModel->listApply(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['SA.CaIdx' => 'desc'], $arr_condition_add);
         }
 
 
@@ -101,7 +113,7 @@ class Apply extends \app\controllers\BaseController
             ]
         ];
 
-        $data = $this->certApplyModel->listApply(false, $arr_condition, null, null, []);
+        $data = $this->certApplyModel->listApply(false, $arr_condition, null, null, [],null);
         $data = $data[0];
 
         $this->load->view('site/cert/apply_info_modal',[

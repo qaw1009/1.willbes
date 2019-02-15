@@ -25,7 +25,7 @@ class OrderListFModel extends BaseOrderFModel
             $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $column = 'O.OrderIdx, O.OrderNo, O.SiteCode, O.ReprProdName, O.PayRouteCcd, CPR.CcdName as PayRouteCcdName
+            $column = 'O.OrderIdx, O.OrderNo, O.MemIdx, O.SiteCode, O.ReprProdName, O.PayRouteCcd, CPR.CcdName as PayRouteCcdName
                 , O.PayMethodCcd, CPM.CcdName as PayMethodCcdName, O.PgCcd, O.PgMid, O.PgTid
                 , O.RealPayPrice, O.OrderPrice, O.OrderProdPrice, O.DiscPrice, O.UseLecPoint, O.UseBookPoint, (O.UseLecPoint + O.UseBookPoint) as UsePoint
                 , O.SaveLecPoint, O.SaveBookPoint, O.DeliveryPrice, O.DeliveryAddPrice, O.IsDelivery, O.CompleteDatm, O.OrderDatm

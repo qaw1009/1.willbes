@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends \app\controllers\FrontController
 {
-    protected $models = array('onAirF','support/supportBoardF');
+    protected $models = array('product/productF', 'onAirF', 'support/supportBoardF');
     protected $helpers = array();
     protected $auth_controller = false;
     protected $auth_methods = array();
@@ -22,10 +22,7 @@ class Home extends \app\controllers\FrontController
         $arr_campus = [];
 
         // view file name
-        if ($this->_is_mobile === true || $this->_is_app === true) {
-            // 모바일, APP
-            $_view_path = $this->_site_code;
-        } else {
+        if (APP_DEVICE == 'pc') {
             // PC
             if ($this->_is_pass_site === true) {
                 $_view_path = $this->_site_code;
@@ -40,6 +37,9 @@ class Home extends \app\controllers\FrontController
             } else {
                 $_view_path = $this->_site_code . '_' . $cate_code;
             }
+        } else {
+            // 모바일, APP
+            $_view_path = $this->_site_code;
         }
 
         // get data
@@ -58,6 +58,11 @@ class Home extends \app\controllers\FrontController
      */
     private function _getSite2001Data($cate_code = '', $arr_campus = [])
     {
+        if (APP_DEVICE == 'pc') {
+            $data['best_product'] = $this->_product('on_lecture', 4, $cate_code, 'Best');
+            $data['new_product'] = $this->_product('on_lecture', 4, $cate_code, 'New');
+        }
+
         $data['notice'] = $this->_boardNotice(4);
         $data['exam_announcement'] = $this->_boardExamAnnouncement(4);
         $data['exam_news'] = $this->_boardExamNews(4);
@@ -65,25 +70,91 @@ class Home extends \app\controllers\FrontController
         return $data;
     }
 
+    /**
+     * 학원경찰 데이터 조회
+     * @param string $cate_code
+     * @param array $arr_campus
+     * @return mixed
+     */
     private function _getSite2002Data($cate_code = '', $arr_campus = [])
     {
-        $data['notice'] = $this->_boardNotice(5);
-        $data['exam_announcement'] = $this->_boardExamAnnouncement(5);
-        $data['onAir'] = $this->_onAir();
+        $data = [];
+
+        if (APP_DEVICE == 'pc') {
+            $data['notice'] = $this->_boardNotice(5);
+            $data['exam_announcement'] = $this->_boardExamAnnouncement(5);
+            $data['onAir'] = $this->_onAir();
+        }
 
         return $data;
     }
 
+    /**
+     * 온라인공무원 데이터 조회
+     * @param string $cate_code
+     * @param array $arr_campus
+     * @return mixed
+     */
     private function _getSite2003Data($cate_code = '', $arr_campus = [])
     {
+        if (APP_DEVICE == 'pc') {
+            $data['best_product'] = $this->_product('on_lecture', 2, $cate_code, 'Best');
+            $data['new_product'] = $this->_product('on_lecture', 2, $cate_code, 'New');
+        }
 
+        $data['notice'] = $this->_boardNotice(4);
+        $data['exam_announcement'] = $this->_boardExamAnnouncement(4);
+        $data['exam_news'] = $this->_boardExamNews(4);
+
+        return $data;
     }
 
+    /**
+     * 학원공무원 데이터 조회
+     * @param string $cate_code
+     * @param array $arr_campus
+     * @return mixed
+     */
     private function _getSite2004Data($cate_code = '', $arr_campus = [])
     {
+        $data = [];
 
+        if (APP_DEVICE == 'pc') {
+            $data['notice'] = $this->_boardNotice(5);
+            $data['exam_announcement'] = $this->_boardExamAnnouncement(5);
+            $data['exam_news'] = $this->_boardExamNews(5);
+        }
+
+        return $data;
     }
 
+    /**
+     * 상품 조회
+     * @param $learn_pattern
+     * @param int $limit_cnt
+     * @param string $cate_code
+     * @param string $is_best_new
+     * @return array|int
+     */
+    private function _product($learn_pattern, $limit_cnt = 5, $cate_code = '', $is_best_new = '')
+    {
+        $add_column = '';
+        $arr_condition = [
+            'EQ' => ['SiteCode' => $this->_site_code],
+            'LKR' => ['CateCode' => $cate_code]
+        ];
+
+        if (empty($is_best_new) === false) {
+            $arr_condition['EQ']['Is' . ucfirst($is_best_new)] = 'Y';
+        }
+
+        if ($learn_pattern == 'on_lecture') {
+            $add_column = ', ifnull(JSON_VALUE(ProfReferData, "$.lec_list_img"), "") as ProfLecListImg';
+        }
+
+        return $this->productFModel->listSalesProduct($learn_pattern, false, $arr_condition, $limit_cnt, 0, ['ProdCode' => 'desc'], $add_column);
+    }
+    
     /**
      * OnAir 조회
      * @return array

@@ -19,61 +19,71 @@ class Home extends \app\controllers\FrontController
      */
     public function index()
     {
-        // 앱일경우 토큰을 얻어서
+        $data = [];
+
+        // APP 토큰 체크
         if($this->_is_app === true){
-            $token = $this->_req('token');
-
-            if(empty($token) == false){
-                // 토큰이 있으면
-                $this->load->library('Jwt');
-
-                if($this->jwt->verify($token) == true){
-                    // 토큰이 정상일때
-                    $tokenArr = $this->jwt->getClaims($token);
-
-                    if($this->session->userdata('is_login') == true && $this->session->userdata('mem_idx') == $tokenArr['USER_IDX']){
-                        // 이미 로그인중이고 토큰데이타와 동일하면 그냥 내강의실로
-                        //logger('이미 로그인중이고 토큰데이타와 동일하면 그냥 내강의실로');
-                        redirect(front_url('/classroom/on/list/ongoing'));
-                    }
-                    //logger('token:'.$token);
-                    //logger('토큰로그인준비');
-                    $data = $this->memberFModel->getMember(false, [ 'EQ' => ['Mem.MemIdx' => $tokenArr['USER_IDX'] ]]);
-                    //logger('사용자정보구해옴');
-
-                    // 넘어온 토큰데이타로 로그인처리
-                    if($this->memberFModel->storeMemberLogin($data, 'TOKEN') == true){
-                        // 로그인성공
-                        //logger('토큰로그인 성공');
-                        redirect(front_url('/classroom/on/list/ongoing'));
-                    } else {
-                        // 로그인 실패시 세션 파괴
-                        //logger('로그인 실패 세션 파괴');
-                        $this->session->sess_destroy();
-                    }
-                    
-                } else {
-                    // 토큰값이 정상이 아닐때 세션 파괴
-                    //logger('토큰 정상아님 세션 파괴');
-                    $this->session->sess_destroy();
-                }
-                
-            } else {
-                // 토큰이 없으면 세션 파괴
-                //logger('토큰값이 안넘어 왔기 때문에 세션 파괴');
-                $this->session->sess_destroy();
-            }
-
-            // 기본 내강의실로 이동
-            redirect(front_url('/classroom/on/list/ongoing'));
+            $this->_checkAppToken();
         }
 
-        // 시험일정 조회 (디데이)
-        $data['dday'] = $this->dDayFModel->getDDays();
+        if (APP_DEVICE == 'pc') {
+            // 시험일정 조회 (디데이)
+            $data['dday'] = $this->dDayFModel->getDDays();
+        }
 
         return $this->load->view('main', [
             'data' => $data
         ]);
+    }
+
+    /**
+     * APP 토큰 체크
+     */
+    private function _checkAppToken()
+    {
+        $token = $this->_req('token');
+
+        if(empty($token) == false){
+            // 토큰이 있으면
+            $this->load->library('Jwt');
+
+            if($this->jwt->verify($token) == true){
+                // 토큰이 정상일때
+                $tokenArr = $this->jwt->getClaims($token);
+
+                if($this->session->userdata('is_login') == true && $this->session->userdata('mem_idx') == $tokenArr['USER_IDX']){
+                    // 이미 로그인중이고 토큰데이타와 동일하면 그냥 내강의실로
+                    //logger('이미 로그인중이고 토큰데이타와 동일하면 그냥 내강의실로');
+                    redirect(front_url('/classroom/on/list/ongoing'));
+                }
+                //logger('token:'.$token);
+                //logger('토큰로그인준비');
+                $data = $this->memberFModel->getMember(false, [ 'EQ' => ['Mem.MemIdx' => $tokenArr['USER_IDX'] ]]);
+                //logger('사용자정보구해옴');
+
+                // 넘어온 토큰데이타로 로그인처리
+                if($this->memberFModel->storeMemberLogin($data, 'TOKEN') == true){
+                    // 로그인성공
+                    //logger('토큰로그인 성공');
+                    redirect(front_url('/classroom/on/list/ongoing'));
+                } else {
+                    // 로그인 실패시 세션 파괴
+                    //logger('로그인 실패 세션 파괴');
+                    $this->session->sess_destroy();
+                }
+            } else {
+                // 토큰값이 정상이 아닐때 세션 파괴
+                //logger('토큰 정상아님 세션 파괴');
+                $this->session->sess_destroy();
+            }
+        } else {
+            // 토큰이 없으면 세션 파괴
+            //logger('토큰값이 안넘어 왔기 때문에 세션 파괴');
+            $this->session->sess_destroy();
+        }
+
+        // 기본 내강의실로 이동
+        redirect(front_url('/classroom/on/list/ongoing'));
     }
 
     /**

@@ -1,6 +1,12 @@
-@extends('lcms.layouts.master_single')
+@extends('lcms.layouts.master_popup')
 
-@section('content')
+@section('popup_title')
+@stop
+
+@section('popup_header')
+@endsection
+
+@section('popup_content')
     <div class="col-md-12 text-left">
         <div class="right_col" role="main" style="min-height: 658px;">
             <div class="col-md-12 row">
@@ -138,9 +144,12 @@
             // `d` is the original data object for the row
             return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
                 '<tr>'+
-                '<td>'+ d.Content +'</td>'+
+                '<td style="width:100%;word-break:break-all;">'+ d.Content +'</td>'+
                 '</tr>'+
                 '</table>';
         }
     </script>
 @stop
+
+@section('popup_footer')
+@endsection

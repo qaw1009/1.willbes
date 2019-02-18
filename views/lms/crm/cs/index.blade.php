@@ -148,7 +148,7 @@
             // `d` is the original data object for the row
             return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
                 '<tr>'+
-                '<td>'+ d.Content +'</td>'+
+                '<td style="word-break:break-all;">'+ d.Content +'</td>'+
                 '</tr>'+
                 '</table>';
         }

@@ -460,6 +460,36 @@ class OrderListModel extends BaseOrderModel
     }
 
     /**
+     * 주문상품 배송정보, 배송지 정보 조회
+     * @param int $order_prod_idx
+     * @return mixed
+     */
+    public function findOrderProductDeliveryInfo($order_prod_idx)
+    {
+        $column = 'OP.OrderProdIdx, OP.OrderIdx, OP.MemIdx, OP.PayStatusCcd, OP.OrderPrice, OP.RealPayPrice
+            , OPD.OrderProdDeliveryIdx, OPD.DeliveryCompCcd, OPD.DeliveryStatusCcd, OPD.InvoiceNo
+            , ODA.Receiver, fn_dec(ODA.ReceiverPhoneEnc) as ReceiverPhone, ODA.ZipCode, ODA.Addr1, fn_dec(ODA.Addr2Enc) as Addr2, ODA.DeliveryMemo
+            , CDC.CcdName as DeliveryCompCcdName, CDS.CcdName as DeliveryStatusCcdName';
+        $from = '
+            from ' . $this->_table['order_product'] . ' as OP
+                inner join ' . $this->_table['order_product_delivery_info'] . ' as OPD
+                    on OP.OrderProdIdx = OPD.OrderProdIdx
+                inner join ' . $this->_table['order_delivery_address'] . ' as ODA
+                    on OP.OrderIdx = ODA.OrderIdx
+                left join ' . $this->_table['code'] . ' as CDC
+                    on OPD.DeliveryCompCcd = CDC.Ccd and CDC.GroupCcd = "' . $this->_group_ccd['DeliveryComp'] . '" and CDC.IsStatus = "Y"
+                left join ' . $this->_table['code'] . ' as CDS
+                    on OPD.DeliveryStatusCcd = CDS.Ccd and CDS.GroupCcd = "' . $this->_group_ccd['DeliveryStatus'] . '" and CDS.IsStatus = "Y"		
+            where OP.OrderProdIdx = ?        
+        ';
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from, [$order_prod_idx]);
+
+        return $query->row_array();
+    }
+
+    /**
      * 학원수강증 출력 데이터 조회
      * @param int $order_idx [주문식별자]
      * @param int $order_prod_idx [주문상품식별자]

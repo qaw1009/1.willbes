@@ -12,6 +12,7 @@
                 @foreach($arr_input as $key => $val)
                     <input type="hidden" name="{{ $key }}" value="{{ $val }}"/>
                 @endforeach
+            </form>
 
             <div class="willbes-CScenter c_both">
                 <div class="Act2">
@@ -104,7 +105,6 @@
                     </div>
                 </div>
             </div>
-            </form>
             <!-- willbes-CScenter -->
         </div>
         {!! banner('고객센터_우측날개', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}

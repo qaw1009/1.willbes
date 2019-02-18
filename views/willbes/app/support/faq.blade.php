@@ -7,6 +7,7 @@
     @foreach($arr_input as $key => $val)
         <input type="hidden" name="{{ $key }}" value="{{ $val }}"/>
     @endforeach
+    </form>
 
     <div class="willbes-Tit NGEB p_re">
         <button type="button" class="goback" onclick="history.back(-1); return false;">
@@ -77,7 +78,6 @@
         </a>
     </div>
     <!-- Topbtn -->
-    </form>
 </div>
 <!-- End Container -->
 @stop

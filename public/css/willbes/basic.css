@@ -307,6 +307,9 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+caption {
+  display: none;
+}
 select {
   border: 1px solid #d4d4d4;
 }

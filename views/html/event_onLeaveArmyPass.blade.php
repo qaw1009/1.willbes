@@ -16,7 +16,7 @@
         margin-top:0 !important;
         padding:0 !important;
     }	
-	.rLnb {position:fixed; width:170px; top:200px; right:10px; z-index:1;
+	.rLnb {position:absolute; width:170px; top:20px; right:10px; z-index:1;
 	}
     .rLnb ul {padding:6px 12px; background:#fff; border:3px solid #2f2f2f; margin-bottom:10px;
         -webkit-box-shadow: 10px 10px 20px 0px rgba(0,0,0,0.21);
@@ -34,7 +34,8 @@
         padding:20px 0;
         background:#fff;   
         border:3px solid #2f2f2f;  
-    }
+	}
+	.rLnb_sectionFixed {position:fixed; top:20px}
 	
 	.LAeventA01 {
         position:relative;
@@ -58,6 +59,8 @@
 	.LAeventA03 {width:100%; text-align:center; background:#252525}
 	
 	#skybanner {position:fixed;top:200px;right:10px; width:210px; text-align:right; z-index:1000;}
+
+	
 </style>
 
 <!-- Container -->
@@ -114,14 +117,14 @@
             <ul>
                 <li><a href="http://www.willbesgosi.net/event/arm_event.html?event_cd=On_leaveArmy_pass&topMenuType=O&EVENT_NO=53" target="_blank">윌비스PASS<br>과정안내</a></li>
                 <li><a href="http://www.willbesgosi.net/event/arm_event.html?event_cd=On_leaveArmy02_2018&topMenuType=O&EVENT_NO=53" target="_blank">윌비스PASS<br>신청하기</a></li>
-                <li><a href="javascript:openArmConfirm();" class="menu1" target="_blank">전역(예정)간부<br>가입인증</a></li>    
+                <li><a href="#none" class="menu1" target="_blank">전역(예정)간부<br>가입인증</a></li>    
             </ul>
             <ul>
                 <li><a href="http://www.willbesgosi.net/event/arm_event.html?event_cd=On_leaveArmy00&topMenuType=O&EVENT_NO=710" class="menu1" target="_blank">인증센터</a></li>
                 <li><a href="http://www.willbesgosi.net/event/movie/event.html?topMenuType=F&event_cd=Off_leaveArmy_f" class="menu2" target="_blank">소방공무원 단독반</a></li>
                 <li><a href="http://www.willbesgosi.net/event/movie/event.html?topMenuType=F&event_cd=Off_leaveArmy_a" class="menu3" target="_blank">군무원 단독반</a></li>
                 <li><a href="http://www.willbesgosi.net/event/movie/event.html?topMenuType=F&event_cd=Off_leaveArmy_ic" class="menu4" target="_blank">공무원 단독반</a></li>
-                <li><a href="/event/arm_event.html?event_cd=On_leaveArmy_pass&topMenuType=O&EVENT_NO=710" class="menu5">윌비스 PSASS</a></li>
+                <li><a href="http://www.willbesgosi.net/event/arm_event.html?event_cd=On_leaveArmy_pass&topMenuType=O&EVENT_NO=710" class="menu5">윌비스 PSASS</a></li>
             </ul>
             <div>
         	    <img src="http://file3.willbes.net/new_gosi/2018/01/leaveArmyPass_bn1.jpg" alt=""/>
@@ -147,8 +150,8 @@
             <img src="http://file3.willbes.net/new_gosi/2018/01/leaveArmyPass02_2.jpg" alt=""/>
             <img src="http://file3.willbes.net/new_gosi/2018/01/leaveArmyPass02_3.jpg" alt="" usemap="#Map180124"/>
             <map name="Map" id="Map180124">
-              <area shape="rect" coords="168,530,374,570" href="javascript:openArmConfirm();" />
-              <area shape="rect" coords="611,531,816,569" href="/event/arm_event.html?event_cd=On_leaveArmy02_2018&topMenuType=O&EVENT_NO=710" />
+              <area shape="rect" coords="168,530,374,570" href="#none" />
+              <area shape="rect" coords="611,531,816,569" href="http://www.willbesgosi.net/event/arm_event.html?event_cd=On_leaveArmy02_2018&topMenuType=O&EVENT_NO=710" />
             </map>
         </div>
         <div class="LAeventA03">
@@ -156,10 +159,28 @@
         </div>
     </div>
 <!-- End Container -->
-<script type="text/javascript">
-function openArmConfirm(){
-	 var url = '<c:url value="/user/memberConfirmArmyPop.html?EVENT_NO=710"/>' ;
-	  window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=600,height=700');
-}
+
+<script>
+          $( document ).ready( function() {
+            var jbOffset = $( '.rLnb' ).offset();
+            $( window ).scroll( function() {
+              if ( $( document ).scrollTop() > jbOffset.top ) {
+                $( '.rLnb' ).addClass( 'rLnb_sectionFixed' );
+              }
+              else {
+                $( '.rLnb' ).removeClass( 'rLnb_sectionFixed' );
+              }
+            });
+          } );
+    	</script>
+        
+<script src="/public/js/willbes/jquery.nav"></script>c
+<script>
+    $(document).ready(function() {
+    	$('.rLnb').onePageNav({
+    		currentClass: 'hvr-shutter-out-horizontal_active'
+    	});
+    });
 </script>
+
 @stop

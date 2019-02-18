@@ -22,6 +22,7 @@
         <div class="tabBox">
             <div id="join1">
                 <div class="widthAuto460">
+                    <div>· 휴대폰</div>
                     <div class="inputBox p_re">
                         <input type="text" id="USER_ID" name="USER_ID" class="iptId" placeholder="이름" maxlength="30">
                     </div>

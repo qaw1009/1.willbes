@@ -85,7 +85,8 @@
                                         <span class="tit">운영시간</span>
                                         <span class="time tx-light-blue">
                                             평일 9:00 ~ 18:00
-                                            주말/공휴일 휴무 
+                                            주말/공휴일 휴무<br>
+                                            (점심시간 12시~13시)
                                         </span>
                                     </li>
                                 </ul>
@@ -267,7 +268,7 @@
                         </div>
                     </div>
                     <div class="ActIndex ActIndex4 mt50">
-                        <div class="willbes-listTable willbes-info willbes-notice widthAuto360 f_left mr30">
+                        <div class="willbes-listTable willbes-info willbes-notice widthAuto360 f_left mr30 mt0">
                             <div class="will-Tit NSK"><span class="tx-light-blue">공지</span>사항 <a class="f_right" href="{{front_url('/support/notice')}}"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
                             <ul class="List-Table GM tx-gray mt10">
                                 @foreach($list_notice as $row)
@@ -279,7 +280,7 @@
                             </ul>
                         </div>
                         <div class="widthAuto550 f_left">
-                            <div class="willbes-listTable willbes-program mr30 widthAuto360">
+                            <div class="willbes-listTable willbes-program mr30 widthAuto360 mt0">
                                 <div class="will-Tit NG"><span class="tx-light-blue">학습</span> 프로그램 <a class="f_right" href="{{front_url('/support/program/index')}}"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
                                 <dl class="List-Table NG tx-gray">
                                     @foreach($program_ccd as $row)
@@ -292,7 +293,7 @@
                                     @endforeach
                                 </dl>
                             </div>
-                            <a href="{{front_url('/support/mobile/index')}}"><img src="{{ img_url('cs/bnr_mobile_n.jpg') }}"></a>
+                            <a href="{{front_url('/support/mobile/index')}}" class="bnr_mobile"><img src="{{ img_url('cs/bnr_mobile_n.jpg') }}"></a>
                         </div>
                     </div>
                 </div>

@@ -121,7 +121,8 @@
                                     <span class="tit">운영시간</span>
                                     <span class="time tx-light-blue">
                                         평일 9:00 ~ 18:00
-                                        주말/공휴일 휴무 
+                                        주말/공휴일 휴무 <br>
+                                        (점심시간 12시~13시)
                                     </span>                                    
                                 </li>
                             </ul>
@@ -164,8 +165,8 @@
                                                 <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
                                                 <td class="w-call">1544-5006</td>
                                                 <td class="w-time tx-left pl25">
-                                                    평일 9:00~18:00 | 토요일 9:00~13:00<br/>
-                                                    일요일/공휴일 휴무
+                                                    평일 : 9시~18:00  (점심시간 12시~13시)<br/>
+                                                    주말/공휴일 휴무
                                                 </td>
                                             </tr>
                                             <tr>
@@ -180,7 +181,7 @@
                                                 <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
                                                 <td class="w-call">1544-5006</td>
                                                 <td class="w-time tx-left pl25">
-                                                    평일 9:00~18:00<br/>
+                                                    평일 9:00~18:00 (점심시간 12시~13시)<br/>
                                                     주말/공휴일 휴무
                                                 </td>
                                             </tr>
@@ -727,7 +728,7 @@
                     </div>
                 </div>
                 <div class="ActIndex ActIndex4 mt50">
-                    <div class="willbes-listTable willbes-info willbes-notice widthAuto360 f_left mr30">
+                    <div class="willbes-listTable willbes-info willbes-notice widthAuto360 f_left mr30 mt0">
                         <div class="will-Tit NSK"><span class="tx-light-blue">공지</span>사항 <a class="f_right" href="#none"><img src="/public/img/willbes/prof/icon_add.png"></a></div>
                         <ul class="List-Table GM tx-gray mt10">
                             <li><a href="#none">3월 무이자카드안내</a><span class="date">2018-04-01</span></li>
@@ -737,8 +738,8 @@
                         </ul>
                     </div>
                     <div class="widthAuto550 f_left">
-                        <div class="willbes-listTable willbes-program mr30 widthAuto360">
-                            <div class="will-Tit NG"><span class="tx-light-blue">학습</span> 프로그램 <a class="f_right" href="#none"><img src="/public/img/willbes/prof/icon_add.png"></a></div>
+                        <div class="willbes-listTable willbes-program mr30 widthAuto360 mt0">
+                            <div class="will-Tit NSK mt0"><span class="tx-light-blue">학습</span> 프로그램 <a class="f_right" href="#none"><img src="/public/img/willbes/prof/icon_add.png"></a></div>
                             <dl class="List-Table NG tx-gray">
                                 <dt>
                                     <a href="#none">

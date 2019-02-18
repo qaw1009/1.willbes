@@ -140,9 +140,9 @@
                     </label>
                     <div class="col-md-5">
                         <div class="checkbox">
-                            <input type="checkbox" id="use_board1" name="use_board[]" class="flat" value="{{ $arr_bm_idx['notice'] }}" @if($data['IsNoticeBoard'] == 'Y') checked="checked" @endif/> <label for="use_board1" class="input-label">공지사항</label>
+                            <input type="checkbox" id="use_board1" name="use_board[]" class="flat" value="{{ $arr_bm_idx['notice'] }}" @if($data['IsNoticeBoard'] == 'Y' || $method=="POST") checked="checked" @endif/> <label for="use_board1" class="input-label">공지사항</label>
                             <input type="checkbox" id="use_board2" name="use_board[]" class="flat" value="{{ $arr_bm_idx['qna'] }}" @if($data['IsQnaBoard'] == 'Y') checked="checked" @endif/> <label for="use_board2" class="input-label">학습Q&A</label>
-                            <input type="checkbox" id="use_board3" name="use_board[]" class="flat" value="{{ $arr_bm_idx['data'] }}" @if($data['IsDataBoard'] == 'Y') checked="checked" @endif/> <label for="use_board3" class="input-label">학습자료실</label>
+                            <input type="checkbox" id="use_board3" name="use_board[]" class="flat" value="{{ $arr_bm_idx['data'] }}" @if($data['IsDataBoard'] == 'Y' || $method=="POST") checked="checked" @endif/> <label for="use_board3" class="input-label">학습자료실</label>
                             <input type="checkbox" id="use_board4" name="use_board[]" class="flat" value="{{ $arr_bm_idx['tpass'] }}" @if($data['IsTpassBoard'] == 'Y') checked="checked" @endif/> <label for="use_board4" class="input-label">T-pass자료실</label>
                             <input type="checkbox" id="use_board5" name="use_board[]" class="flat" value="{{ $arr_bm_idx['assignment'] }}" @if($data['IsAssignmentBoard'] == 'Y') checked="checked" @endif/> <label for="use_board5" class="input-label">참삭게시판</label>
                         </div>
@@ -171,6 +171,8 @@
                         </div>
                     </div>
                 </div>
+
+
                 {{-- 강사료 정산 계약정보 --}}
                 @foreach($arr_calc_target as $on_off_type => $rows)
                     <div class="form-group">
@@ -201,8 +203,8 @@
                                                     <tbody class="form-group form-group-sm form-inline">
                                                     @php $_prefix_first_key = $on_off_type . '.' . $key . '.0'; @endphp
                                                     <tr>
-                                                        <td class="no-border-bottom"><input type="number" name="calc_rate[]" class="form-control" title="정산율" value="{{ array_get($data['CalcRate'], $_prefix_first_key . '.CalcRate') }}" style="width: 80px"/> %</td>
-                                                        <td><input type="number" name="contrib_rate[]" class="form-control" title="기여도" value="{{ array_get($data['CalcRate'], $_prefix_first_key . '.ContribRate') }}" style="width: 80px"/> %</td>
+                                                        <td class="no-border-bottom"><input type="number" name="calc_rate[]" class="form-control" title="정산율" value="@if($method==="POST")@if($on_off_type == 'on'){{30}}@else{{50}}@endif @else{{ array_get($data['CalcRate'], $_prefix_first_key . '.CalcRate') }}@endif" style="width: 80px"/> %</td>
+                                                        <td><input type="number" name="contrib_rate[]" class="form-control" title="기여도" value="@if($method==="POST"){{0}}@else{{ array_get($data['CalcRate'], $_prefix_first_key . '.ContribRate') }}@endif" style="width: 80px"/> %</td>
                                                         <td><input type="text" name="apply_start_date[]" class="form-control datepicker" title="계약기간 시작일" value="{{ array_get($data['CalcRate'], $_prefix_first_key . '.ApplyStartDate', '2000-01-01') }}" style="width: 100px">
                                                             ~ <input type="text"name="apply_end_date[]" class="form-control datepicker" title="계약기간 종료일" value="{{ array_get($data['CalcRate'], $_prefix_first_key . '.ApplyEndDate', '2030-12-31') }}" style="width: 100px">
                                                         </td>
@@ -239,10 +241,10 @@
                     </div>
                 @endforeach
                 <div class="form-group">
-                    <label class="control-label col-md-2">슬로건 <span class="required">*</span>
+                    <label class="control-label col-md-2">슬로건
                     </label>
                     <div class="col-md-9 item">
-                        <textarea id="prof_slogan" name="prof_slogan" class="form-control" rows="3" required="required" title="슬로건" placeholder="">{{ $data['ProfSlogan'] }}</textarea>
+                        <textarea id="prof_slogan" name="prof_slogan" class="form-control" rows="3" title="슬로건" placeholder="">{{ $data['ProfSlogan'] }}</textarea>
                     </div>
                 </div>
                 <div class="form-group">

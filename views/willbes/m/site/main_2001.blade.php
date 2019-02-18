@@ -98,29 +98,44 @@
             <div class="tabBox buttonBox noticeBox">
                 <div id="notice1" class="tabContent">
                     <ul class="List-Table">
-                        <li><a href="#none">공지사항 제목이 출력됩니다.</a><span class="date">2018-04-01</span></li>
-                        <li><a href="#none">3월 31일(금) 새벽시스템점검안내 안내안내안내</a><span class="date">2018-04-01</span></li>
-                        <li><a href="#none">설연휴학원고객센터운영안내</a><span class="date">2018-03-06</span></li>
-                        <li><a href="#none">추석교재배송및고객센터휴무안내</a><span class="date">2018-03-06</span></li>
-                        <li><a href="#none">추석교재배송및고객센터휴무안내</a><span class="date">2018-03-06</span></li>
+                        @if(empty($data['notice']) === true)
+                            <li><span>등록된 내용이 없습니다.</span></li>
+                        @else
+                            @foreach($data['notice'] as $row)
+                                <li>
+                                    <a href="#none">{{$row['Title']}}</a>
+                                    <span class="date">{{$row['RegDatm']}}</span>
+                                </li>
+                            @endforeach
+                        @endif
                     </ul>
                 </div>
                 <div id="notice2" class="tabContent" style="display: none;">
                     <ul class="List-Table">
-                        <li><a href="#none">공지사항 제목이 출력됩니다.</a><span class="date">2018-04-01</span></li>
-                        <li><a href="#none">3월 31일(금) 새벽시스템점검안내222</a><span class="date">2018-04-01</span></li>
-                        <li><a href="#none">설연휴학원고객센터운영안내22</a><span class="date">2018-03-06</span></li>
-                        <li><a href="#none">추석교재배송및고객센터휴무안내22</a><span class="date">2018-03-06</span></li>
-                        <li><a href="#none">추석교재배송및고객센터휴무안내22</a><span class="date">2018-03-06</span></li>
+                        @if(empty($data['exam_announcement']) === true)
+                            <li><span>등록된 내용이 없습니다.</span></li>
+                        @else
+                            @foreach($data['exam_announcement'] as $row)
+                                <li>
+                                    <a href="#none">{{$row['Title']}}</a>
+                                    <span class="date">{{$row['RegDatm']}}</span>
+                                </li>
+                            @endforeach
+                        @endif
                     </ul>
                 </div>
                 <div id="notice3" class="tabContent" style="display: none;">
                     <ul class="List-Table">
-                        <li><a href="#none">공지사항 제목이 출력됩니다.333</a><span class="date">2018-04-01</span></li>
-                        <li><a href="#none">3월 31일(금) 새벽시스템점검안내33</a><span class="date">2018-04-01</span></li>
-                        <li><a href="#none">설연휴학원고객센터운영안내33</a><span class="date">2018-03-06</span></li>
-                        <li><a href="#none">추석교재배송및고객센터휴무안내33</a><span class="date">2018-03-06</span></li>
-                        <li><a href="#none">추석교재배송및고객센터휴무안내33</a><span class="date">2018-03-06</span></li>
+                        @if(empty($data['exam_news']) === true)
+                            <li><span>등록된 내용이 없습니다.</span></li>
+                        @else
+                            @foreach($data['exam_news'] as $row)
+                                <li>
+                                    <a href="#none">{{$row['Title']}}</a>
+                                    <span class="date">{{$row['RegDatm']}}</span>
+                                </li>
+                            @endforeach
+                        @endif
                     </ul>
                 </div>
             </div>

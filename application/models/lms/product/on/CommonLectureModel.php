@@ -174,7 +174,8 @@ class CommonLectureModel extends WB_Model
                                         left outer join lms_product_subject Bb on B.SubjectIdx = Bb.SubjectIdx and Bb.IsStatus=\'Y\'
                                         left outer join lms_sys_code Bc on B.LearnPatternCcd = Bc.Ccd and Bc.IsStatus=\'Y\'
                                         left outer join lms_sys_code Bd on B.LecTypeCcd = Bd.Ccd
-                                        join wbs_cms_lecture_combine_lite Be on B.wLecIdx = Be.wLecIdx and Be.cp_wAdminIdx='. $this->session->userdata('admin_idx') .'
+                                        #join wbs_cms_lecture_combine_lite Be on B.wLecIdx = Be.wLecIdx and Be.cp_wAdminIdx='. $this->session->userdata('admin_idx') .'
+                                        join wbs_cms_lecture_basics Be on B.wLecIdx = Be.wLecIdx
                                     join lms_product_r_category C on A.ProdCode = C.ProdCode and C.IsStatus=\'Y\'
                                         join lms_sys_category Ca on C.CateCode = Ca.CateCode  and Ca.IsStatus=\'Y\'
                                         left outer join lms_sys_category Cb on Ca.ParentCateCode = Cb.CateCode
@@ -262,7 +263,8 @@ class CommonLectureModel extends WB_Model
                                 left outer join lms_sys_code Bd on B.LecTypeCcd = Bd.Ccd
                                 left outer join lms_sys_code Bg on B.CampusCcd = Bg.Ccd
                                 left outer join lms_sys_code Bh on B.AcceptStatusCcd = Bh.Ccd
-                                join wbs_cms_lecture_combine_lite Be on B.wLecIdx = Be.wLecIdx and Be.cp_wAdminIdx='. $this->session->userdata('admin_idx') .'
+                                #join wbs_cms_lecture_combine_lite Be on B.wLecIdx = Be.wLecIdx and Be.cp_wAdminIdx='. $this->session->userdata('admin_idx') .'
+                                join wbs_cms_lecture_basics Be on B.wLecIdx = Be.wLecIdx 
                             join lms_product_r_category C on A.ProdCode = C.ProdCode and C.IsStatus=\'Y\'
                                 join lms_sys_category Ca on C.CateCode = Ca.CateCode  and Ca.IsStatus=\'Y\'
                                 left outer join lms_sys_category Cb on Ca.ParentCateCode = Cb.CateCode

@@ -1,4 +1,4 @@
-<div class="willbes-NoticeWrap p_re mb15 c_both">
+<div class="willbes-NoticeWrap p_re mt30 mb15 c_both">
     <div class="willbes-listTable widthAuto460 mr20">
         <div class="will-Tit NG">공지사항 <a class="f_right" href="{{front_url('/professor/show/cate/'.$def_cate_code.'/prof-idx/'.$prof_idx.'/?subject_idx='.element('subject_idx', $arr_input).'&subject_name='.element('subject_name', $arr_input).'&tab=notice')}}"><img src="{{ img_url('prof/icon_add.png') }}" alt="더보기"></a></div>
         <ul class="List-Table GM tx-gray">
@@ -23,7 +23,7 @@
             @endif
         </ul>
     </div>
-    <div class="willbes-listTable widthAuto460 mr20">
+    <div class="willbes-listTable widthAuto460 mt30 mr20">
         <div class="will-Tit NG">신규강좌 <img style="vertical-align: top;" src="{{ img_url('prof/icon_new.gif') }}"></div>
         <ul class="List-Table GM tx-gray">
             @foreach($tab_data['new_product'] as $idx => $row)
@@ -31,7 +31,7 @@
             @endforeach
         </ul>
     </div>
-    <div class="willbes-listTable willbes-reply widthAuto460">
+    <div class="willbes-listTable willbes-reply mt30 widthAuto460">
         <div class="will-Tit NG">수강후기<a href="#none" class="f_right btn-study" data-board-idx=""><img src="{{ img_url('prof/icon_add.png') }}" alt="더보기"></a></div>
         <ul class="List-Table GM tx-gray">
             @foreach($tab_data['study_comment'] as $idx => $row)

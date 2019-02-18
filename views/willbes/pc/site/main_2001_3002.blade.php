@@ -551,98 +551,14 @@
     </div>
     <div class="Section Section7 mb50">
         <div class="widthAuto">
-            <div class="CScenterBox">
-                <dl>
-                    <dt class="willbesCenter">
-                        <div class="centerTit">신광은 경찰 사이트에 물어보세요!</div>
-                        <ul>
-                            <li>
-                                <a href="{{ front_url('/support/faq/index') }}">
-                                    <img src="{{ img_url('cop/icon_cecenter1.png') }}">
-                                    <div class="nTxt">자주하는<br/>질문</div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ front_url('/support/mobile/index') }}">
-                                    <img src="{{ img_url('cop/icon_cecenter2.png') }}">
-                                    <div class="nTxt">모바일<br/>서비스</div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ front_url('/support/qna/index') }}">
-                                    <img src="{{ img_url('cop/icon_cecenter3.png') }}">
-                                    <div class="nTxt">동영상<br/>상담실</div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ front_url('/support/remote/index') }}">
-                                    <img src="{{ img_url('cop/icon_cecenter4.png') }}">
-                                    <div class="nTxt">1:1<br/>고객지원</div>
-                                </a>
-                            </li>
-                        </ul>
-                    </dt>
-                    <dt class="willbesNumber">
-                        <ul>
-                            <li>
-                                <div class="nTit">온라인 수강문의</div>
-                                <div class="nNumber tx-color">1544-5006 <span>▶</span> 1</div>
-                                <div class="nTxt">
-                                    [운영시간]<br/>
-                                    평일: 09시~ 18시 (점심시간12시~13시)<br/>
-                                    공휴일/일요일휴무<br/>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="nTit">교재문의</div>
-                                <div class="nNumber tx-color">1544-4944</div>
-                                <div class="nTxt">
-                                    [운영시간]<br/>
-                                    평일: 09시~ 17시 (점심시간12시~13시)<br/>
-                                    공휴일/일요일휴무<br/>
-                                </div>
-                            </li>
-                            {{--<li>
-                                <div class="nTit">학원 고객센터</div>
-                                <div class="nNumber tx-color">1544-0336</div>
-                                <div class="nTxt">
-                                    [전화/방문상담 운영시간]<br/>
-                                    월-토: 09시~ 22시<br/>
-                                    일요일: 09시~ 20시<br/>
-                                </div>
-                            </li>--}}
-                        </ul>
-                    </dt>
-                </dl>
-            </div>
-
+            {{-- cscenter --}}
+            @include('willbes.pc.site.main_partial.cscenter_' . $__cfg['SiteCode'])
         </div>
     </div>
     <div id="QuickMenu" class="MainQuickMenu">
-        <ul>
-            <li>
-                <div class="QuickDdayBox">
-                    <div class="q_tit">3차 필기시험</div>
-                    <div class="q_day">2018.12.12</div>
-                    <div class="q_dday NSK-Blac">D-5</div>
-                </div>
-            </li>
-            <li>
-                <div class="QuickSlider">
-                    <div class="sliderNum">
-                        <div><a href="http://www.willbescop.net/event/movie/event.html?event_cd=On_170911_popup" target="_blank"><img src="{{ img_url('cop/quick/quick_190108.jpg') }}" alt="배너명"></a></div>
-                        <div><a href="http://www.willbescop.net/event/arm_event.html?event_cd=On_leaveArmy02_2018&topMenuType=O&EVENT_NO=53" target="_blank"><img src="{{ img_url('cop/quick/quick_190109.jpg') }}" alt="배너명"></a></div>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <a href="http://www.willbescop.net/movie/event.html?event_cd=Off_181129_p&topMenuType=F" target="_blank"><img src="{{ img_url('cop/quick/quick_190110.jpg') }}" alt="배너명"></a>
-            </li>
-            <li>
-                <a href="http://pf.kakao.com/_qAxoYC" target="_blank"><img src="{{ img_url('cop/quick/quick_talk.jpg') }}" alt="배너명"></a>
-            </li>
-        </ul>
+        {{-- quick menu --}}
+        @include('willbes.pc.site.main_partial.quick_menu_' . $__cfg['SiteCode'])
     </div>
-    {!! popup('657001', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
 </div>
+{!! popup('657001', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
 @stop

@@ -36,7 +36,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#none">
+                            <a href="http://ssam.willbes.net" target="_blank">
                                 <div class="wTit">
                                     <img src="{{ img_url('main/icon_willbes3.png') }}"> 교원임용
                                 </div>
@@ -47,7 +47,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#none">
+                            <a href="http://www.hanlimgosi.co.kr" target="_blank">
                                 <div class="wTit">
                                     <img src="{{ img_url('main/icon_willbes4.png') }}"> 고등고시
                                 </div>
@@ -60,7 +60,7 @@
                     </ul>
                     <ul>
                         <li>
-                            <a href="#none">
+                            <a href="http://www.namucpa.com" target="_blank">
                                 <div class="wTit">
                                     <img src="{{ img_url('main/icon_willbes5.png') }}"> 전문자격증
                                 </div>
@@ -71,7 +71,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#none">
+                            <a href="http://cert.willbes.net" target="_blank">
                                 <div class="wTit">
                                     <img src="{{ img_url('main/icon_willbes6.png') }}"> 자격증
                                 </div>
@@ -82,7 +82,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#none">
+                            <a href="http://www.willpass.co.kr" target="_blank">
                                 <div class="wTit">
                                     <img src="{{ img_url('main/icon_willbes7.png') }}"> 취업
                                 </div>
@@ -93,7 +93,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#none">
+                            <a href="http://lang.willbes.net" target="_blank">
                                 <div class="wTit">
                                     <img src="{{ img_url('main/icon_willbes8.png') }}"> 어학
                                 </div>

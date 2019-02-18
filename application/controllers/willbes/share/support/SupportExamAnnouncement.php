@@ -168,13 +168,13 @@ class SupportExamAnnouncement extends BaseSupport
             ]
         ];
 
-        if ($this->_site_code != config_item('app_intg_site_code')) {
+        /*if ($this->_site_code != config_item('app_intg_site_code')) {
             $arr_condition_base = array_merge_recursive($arr_condition_base, [
                 'LKB' => [
                     'Category_String' => $this->_cate_code
                 ]
             ]);
-        }
+        }*/
 
         $pre_arr_condition = array_merge($arr_condition_base,[
             'ORG1' => [

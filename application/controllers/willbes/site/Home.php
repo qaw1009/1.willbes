@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends \app\controllers\FrontController
 {
-    protected $models = array('onAirF');
+    protected $models = array('onAirF','support/supportBoardF');
     protected $helpers = array();
     protected $auth_controller = false;
     protected $auth_methods = array();
@@ -35,7 +35,7 @@ class Home extends \app\controllers\FrontController
      */
     private function _getOnLineData()
     {
-        $data['notice'] = $this->_notice();
+        $data['board'] = $this->_board();
         return $data;
     }
 
@@ -46,7 +46,7 @@ class Home extends \app\controllers\FrontController
     private function _getOffLineData()
     {
         $data['onAir'] = $this->_onAir();
-        $data['notice'] = $this->_notice();
+        $data['board'] = $this->_board();
         return $data;
     }
 
@@ -64,9 +64,30 @@ class Home extends \app\controllers\FrontController
      * 게시판
      * @return array
      */
-    private function _notice()
+    private function _board()
     {
-        $data = [];
+        $column = 'b.BoardIdx, b.Title, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
+        $order_by = ['b.IsBest'=>'Desc','b.BoardIdx'=>'Desc'];
+        $arr_condition = [
+            'EQ' => [
+                'b.IsUse' => 'Y'
+            ]
+            /*'LKB' => [
+                'Category_String' => $this->_cate_code
+            ]*/
+        ];
+
+        //공지사항
+        $arr_condition_notice['EQ'] = array_merge($arr_condition['EQ'], ['b.BmIdx' => 45, 'b.SiteCode' => $this->_site_code]);
+        $data['notice']['data'] = $this->supportBoardFModel->listBoard(false, $arr_condition_notice, $column,5,0, $order_by);
+
+        //시험공고
+        $arr_condition_announcement['EQ'] = array_merge($arr_condition['EQ'], ['b.BmIdx' => 54]);
+        $data['exam_announcement']['data'] = $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $arr_condition_announcement, $column,5,0, $order_by);
+
+        //수험뉴스
+        $arr_condition_news['EQ'] = array_merge($arr_condition['EQ'], ['b.BmIdx' => 57]);
+        $data['exam_news']['data'] = $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $arr_condition_news, $column,5,0, $order_by);
         return $data;
     }
 }

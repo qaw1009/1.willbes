@@ -80,7 +80,7 @@
                                     <td class="w-date">{{$row['AreaCcd_Name']}}</td>
 
                                     <td class="w-list tx-left pl20">
-                                        <a href="{{front_url($default_path.'/examAnnouncement/show?board_idx='.$row['BoardIdx'].'&'.$get_params)}}">
+                                        <a href="{{front_url($default_path.'/examAnnouncement/show/cate/'.$__cfg['CateCode'].'?board_idx='.$row['BoardIdx'].'&'.$get_params)}}">
                                             @if($row['IsBest'] == '1')<strong>@endif{{hpSubString($row['Title'],0,40,'...')}}@if($row['IsBest'] == '1')</strong>@endif
                                         </a>
                                     </td>

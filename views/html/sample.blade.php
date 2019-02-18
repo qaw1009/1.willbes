@@ -50,6 +50,10 @@
             <a href="{{ site_url('/home/html/event_end') }}" target="_blank">이벤트 > 마감된 이벤트 page 이동</a>
             <a href="{{ site_url('/home/html/event_end_read') }}" target="_blank">이벤트 > 마감된 이벤트 상세 page 이동</a>
             <br><br>
+            <a href="{{ site_url('/home/html/event_onLeaveArmyPass') }}" target="_blank">전역군인인증</a>
+            <a href="{{ site_url('/home/html/event_onLeaveArmyPassConfirmPop') }}" target="_blank">전역군인인증 팝업</a>
+            <br><br>
+            <a href="{{ site_url('/home/html/event_end_read') }}" target="_blank">이벤트 > 마감된 이벤트 상세 page 이동</a>
             <a href="{{ site_url('/home/html/mocktest1') }}" target="_blank">수험정보 > 시험공고 page 이동</a>
             <a href="{{ site_url('/home/html/mocktest2') }}" target="_blank">수험정보 > 수험뉴스 page 이동</a>
             <a href="{{ site_url('/home/html/mocktest3') }}" target="_blank">수험정보 > 기출문제 page 이동</a>

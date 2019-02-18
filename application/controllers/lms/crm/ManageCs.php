@@ -15,7 +15,7 @@ class ManageCs extends \app\controllers\BaseController
 
     public function index()
     {
-        $arr_base['issue_division_ccd'] = $this->codeModel->getCcd($this->_groupCcd);
+        $arr_base['cs_kind_ccd'] = $this->codeModel->getCcd($this->_groupCcd);
 
         $this->load->view("crm/cs/index", [
             'arr_base' => $arr_base
@@ -26,7 +26,7 @@ class ManageCs extends \app\controllers\BaseController
     {
         $arr_condition = [
             'EQ' => [
-                'CS.IssueDivisionCcd' => $this->_reqP('search_issue_division_ccd'),
+                'CS.CsKindCcd' => $this->_reqP('search_cs_kind_ccd'),
                 'CS.IsStatus' => 'Y',
             ],
             'ORG' => [
@@ -62,7 +62,7 @@ class ManageCs extends \app\controllers\BaseController
      */
     public function noAuthList()
     {
-        $arr_base['issue_division_ccd'] = $this->codeModel->getCcd($this->_groupCcd);
+        $arr_base['cs_kind_ccd'] = $this->codeModel->getCcd($this->_groupCcd);
 
         $this->load->view("crm/cs/noauth_index", [
             'arr_base' => $arr_base
@@ -77,7 +77,7 @@ class ManageCs extends \app\controllers\BaseController
     {
         $arr_condition = [
             'EQ' => [
-                'CS.IssueDivisionCcd' => $this->_reqP('search_issue_division_ccd'),
+                'CS.CsKindCcd' => $this->_reqP('search_cs_kind_ccd'),
                 'CS.IsUse' => 'Y',
                 'CS.IsStatus' => 'Y',
             ],
@@ -119,12 +119,12 @@ class ManageCs extends \app\controllers\BaseController
         $data = null;
         $ctm_idx = null;
 
-        $arr_base['issue_division_ccd'] = $this->codeModel->getCcd($this->_groupCcd);
+        $arr_base['cs_kind_ccd'] = $this->codeModel->getCcd($this->_groupCcd);
 
         if (empty($params[0]) === false) {
             $column = '
-                CS.CtmIdx, CS.IssueDivisionCcd, CS.Title, CS.Content, CS.ReadCnt, CS.IsBest, CS.IsUse, CS.IsStatus, CS.RegDatm, CS.RegAdminIdx, CS.RegIp, CS.UpdDatm, CS.UpdAdminIdx,
-                fn_ccd_name(CS.IssueDivisionCcd) AS IssueDivisionCcdName, ADMIN.wAdminName AS RegAdminName, ADMIN2.wAdminName AS UpdAdminName
+                CS.CtmIdx, CS.CsKindCcd, CS.Title, CS.Content, CS.ReadCnt, CS.IsBest, CS.IsUse, CS.IsStatus, CS.RegDatm, CS.RegAdminIdx, CS.RegIp, CS.UpdDatm, CS.UpdAdminIdx,
+                fn_ccd_name(CS.CsKindCcd) AS CsKindCcdName, ADMIN.wAdminName AS RegAdminName, ADMIN2.wAdminName AS UpdAdminName
             ';
             $method = 'PUT';
             $ctm_idx = $params[0];
@@ -158,7 +158,7 @@ class ManageCs extends \app\controllers\BaseController
         $idx = '';
 
         $rules = [
-            ['field' => 'issue_division_ccd', 'label' => '응대유형', 'rules' => 'trim|required|integer'],
+            ['field' => 'cs_kind_ccd', 'label' => '응대유형', 'rules' => 'trim|required|integer'],
             ['field' => 'title', 'label' => '제목', 'rules' => 'trim|required|max_length[50]'],
             ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => 'board_content', 'label' => '내용', 'rules' => 'trim|required'],
@@ -201,7 +201,7 @@ class ManageCs extends \app\controllers\BaseController
 
     private function _setInputData($input){
         $input_data = [
-            'IssueDivisionCcd' => element('issue_division_ccd', $input),
+            'CsKindCcd' => element('cs_kind_ccd', $input),
             'Title' => element('title', $input),
             'IsBest' => (element('is_best', $input) == '1') ? '1' : '0',
             'Content' => element('board_content', $input),

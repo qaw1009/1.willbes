@@ -28,8 +28,8 @@ class CsModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
             $column = '
-                CS.CtmIdx, CS.IssueDivisionCcd, CS.Title, CS.Content, CS.ReadCnt, CS.IsBest, CS.IsUse, CS.IsStatus, CS.RegDatm, CS.RegAdminIdx, CS.RegIp, CS.UpdDatm, CS.UpdAdminIdx,
-                fn_ccd_name(CS.IssueDivisionCcd) AS IssueDivisionCcdName, ADMIN.wAdminName
+                CS.CtmIdx, CS.CsKindCcd, CS.Title, CS.Content, CS.ReadCnt, CS.IsBest, CS.IsUse, CS.IsStatus, CS.RegDatm, CS.RegAdminIdx, CS.RegIp, CS.UpdDatm, CS.UpdAdminIdx,
+                fn_ccd_name(CS.CsKindCcd) AS CsKindCcdName, ADMIN.wAdminName
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();

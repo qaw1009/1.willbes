@@ -13,9 +13,9 @@
                         <div class="form-group">
                             <label class="control-label col-md-1" for="search_send_pattern_ccd">조건</label>
                             <div class="col-md-11 form-inline">
-                                <select class="form-control" id="search_issue_division_ccd" name="search_issue_division_ccd">
+                                <select class="form-control" id="search_cs_kind_ccd" name="search_cs_kind_ccd">
                                     <option value="">유형검색</option>
-                                    @foreach($arr_base['issue_division_ccd'] as $key => $val)
+                                    @foreach($arr_base['cs_kind_ccd'] as $key => $val)
                                         <option value="{{ $key }}">{{ $val }}</option>
                                     @endforeach
                                 </select>
@@ -98,7 +98,7 @@
                                 return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                             }
                         }},
-                    {'data' : 'IssueDivisionCcdName'},
+                    {'data' : 'CsKindCcdName'},
                     {'className' : 'details-control', 'orderable' : false, 'data' : 'Title', 'render' : function(data, type, row, meta) {
                             return '<u class="bold" style="cursor: pointer">'+data+'</u>';
                         }}

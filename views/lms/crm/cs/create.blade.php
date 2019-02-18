@@ -49,10 +49,10 @@
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="is_best">응대유형<span class="required">*</span></label></label>
                     <div class="col-md-4 form-inline item">
-                        <select class="form-control" id="issue_division_ccd" name="issue_division_ccd" required="required" title="응대유형">
+                        <select class="form-control" id="cs_kind_ccd" name="cs_kind_ccd" required="required" title="응대유형">
                             <option value="">유형선택</option>
-                            @foreach($arr_base['issue_division_ccd'] as $key => $val)
-                                <option value="{{ $key }}" @if($key == $data['IssueDivisionCcd'])selected="selected"@endif>{{ $val }}</option>
+                            @foreach($arr_base['cs_kind_ccd'] as $key => $val)
+                                <option value="{{ $key }}" @if($key == $data['CsKindCcd'])selected="selected"@endif>{{ $val }}</option>
                             @endforeach
                         </select>
                     </div>

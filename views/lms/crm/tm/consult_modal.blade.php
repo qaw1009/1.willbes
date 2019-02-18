@@ -124,8 +124,8 @@
                     </div>
                 </form>
             </div>
-
-            <br>
+            {{--cs 상담관리 기획 없는 상태--}}
+            <!--br>
             <div class="row">
                 <div class="col-md-12">
                     <p><strong>· CS상담관리 (회원 정보 개발 후)</strong></p>
@@ -150,8 +150,7 @@
                         </tbody>
                     </table>
                 </div>
-            </div>
-
+            </div//-->
 
             <br>
             <form class="form-horizontal" id="_coupon_search_form" name="_coupon_search_form" method="POST" onsubmit="return false;">
@@ -191,9 +190,7 @@
                 var $_coupon_list_table = $('#coupon_list_ajax_table');
                 var $_coupon_search_form = $('#_coupon_search_form');
 
-
                 $(document).ready(function() {
-
 
                     // 페이징 번호에 맞게 일부 데이터 조회
                     $datatable_modal = $list_table_modal.DataTable({
@@ -255,13 +252,12 @@
                     });
 
 
-
                     // 쿠폰발급 목록
                     $datatable_coupon = $_coupon_list_table.DataTable({
                         serverSide: true,
                         buttons: [
-                            {  text: '<i class="fa fa-undo mr-5"></i> 발급회수', className: 'btn-sm btn-default border-radius-reset mr-15' },
-                            {  text: '<i class="fa fa-undo mr-5"></i> 쿠폰발급', className: 'btn-sm btn-success border-radius-reset mr-15 btn-make' },
+                            {  text: '<i class="fa fa-undo mr-5"></i> 발급회수', className: 'btn-sm btn-default border-radius-reset mr-15 btn-coupon-return' },
+                            {  text: '<i class="fa fa-undo mr-5"></i> 쿠폰발급', className: 'btn-sm btn-success border-radius-reset mr-15 btn-coupon-make' },
                         ],
                         ajax: {
                             'url' : '{{ site_url('/service/coupon/issue/listAjax') }}',
@@ -320,6 +316,19 @@
                             modal_id : "message_modal"
                         });
                     });
+
+
+
+
+                    $('.btn-coupon-return').on('click',function(){
+                        alert("발급회수");
+                    });
+
+                    $('.btn-coupon-make').on('click',function(){
+                        alert("발급생성");
+                    });
+
+
 
                 });
             </script>

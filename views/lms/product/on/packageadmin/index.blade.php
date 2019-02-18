@@ -106,9 +106,11 @@
                     <th width="5%">배수</th>
                     <th width="5%">판매여부</th>
                     <th width="5%">사용여부</th>
+                    <!--
                     <th width="5%">장바구니</th>
                     <th width="5%">입금대기</th>
                     <th width="5%">결제완료</th>
+                    //-->
                     <th width="5%">등록자</th>
                     <th  width="8%">등록일</th>
                     <th>복사</th>
@@ -185,10 +187,11 @@
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                             return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
                         }},//사용여부
-
+                    /*
                     {'data' : 'CartCnt'},//장바구니
                     {'data' : 'PayIngCnt'},//입금대기
                     {'data' : 'PayEndCnt'},//결제완료
+                    */
                     {'data' : 'wAdminName'},//등록자
                     {'data' : 'RegDatm'},//등록일
                     {'data' : null, 'render' : function(data, type, row, meta) {

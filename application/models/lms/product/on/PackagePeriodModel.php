@@ -33,9 +33,12 @@ class PackagePeriodModel extends CommonLectureModel
                             ,C.CateCode
                             ,Ca.CateName, Cb.CateName as CateName_Parent
                             ,D.SalePrice, D.SaleRate, D.RealSalePrice
-                            ,fn_product_count_cart(A.ProdCode) as CartCnt
-                            ,fn_product_count_order(A.ProdCode,\'676002\') as PayIngCnt
-                            ,fn_product_count_order(A.ProdCode,\'676001\') as PayEndCnt
+                            #,fn_product_count_cart(A.ProdCode) as CartCnt
+                            #,fn_product_count_order(A.ProdCode,\'676002\') as PayIngCnt
+                            #,fn_product_count_order(A.ProdCode,\'676001\') as PayEndCnt
+                            ,0 as CartCnt       #장바구니테이블 스캔으로 인해 쿼리속도 저하
+                            ,0 as PayIngCnt    #주문테이블 스캔으로 인해 쿼리속도 저하
+                            ,0 as PayEndCnt    #주문테이블 스캔으로 인해 쿼리속도 저하
                             ,IFNULL(Y.ProdCode_Original,\'\') as ProdCode_Original
                             ,Z.wAdminName
             ';

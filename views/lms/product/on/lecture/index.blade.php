@@ -164,9 +164,11 @@
                     <th>판매여부</th>
                     <th>사용여부</th>
                     <th>정산입력</th>
+                    <!--  쿼리속도 저하로 인해 제거
                     <th>장바구니</th>
                     <th>입금대기</th>
                     <th>결제완료</th>
+                    //-->
                     <th>등록자</th>
                     <th>등록일</th>
                     <th>복사</th>
@@ -247,9 +249,11 @@
                     {'data' : 'DivisionCount','render' : function(data, type, row, meta) {
                             return (data !== '0') ? '입력' : '<span class="red">미입력</span>';
                         }},//정산입력
+                    /*  쿼리속도 저하로 인해 제거
                     {'data' : 'CartCnt'},//장바구니
                     {'data' : 'PayIngCnt'},//입금대기
                     {'data' : 'PayEndCnt'},//결제완료
+                    */
                     {'data' : 'wAdminName'},//등록자
                     {'data' : 'RegDatm'},//등록일
                     {'data' : null, 'render' : function(data, type, row, meta) {

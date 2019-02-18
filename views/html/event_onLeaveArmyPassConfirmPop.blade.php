@@ -2,6 +2,17 @@
 
 @section('content')
 <!-- Container -->
+<style type="text/css">
+.laj_sec input[type=text]  {
+    background: #fff;
+    height: 25px;
+    border: 1px solid #d4d4d4;
+    line-height: 25px;
+}
+.attach > li {
+    margin-bottom:5px;
+}
+</style>
 
 <div class="willbes-Layer-PassBox willbes-Layer-PassBox740 leaveArmyJoin NGR">
     <div class="laj_top">
@@ -41,27 +52,29 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td><input id="ARM_NM" name="ARM_NM" type="text" class="ipt ipt3"></td>
-                            <td><input id="ARM_DIV" name="ARM_DIV" type="text" class="ipt ipt3"></td>                      
-                            <td><input id="ARM_RANK" name="ARM_RANK" type="text" class="ipt ipt3"></td>
-                            <td><input id="ARM_NO" name="ARM_NO" type="text" class="ipt ipt3"></td>
+                            <td><input id="ARM_NM" name="ARM_NM" type="text"></td>
+                            <td><input id="ARM_DIV" name="ARM_DIV" type="text"></td>                      
+                            <td><input id="ARM_RANK" name="ARM_RANK" type="text"></td>
+                            <td><input id="ARM_NO" name="ARM_NO" type="text"></td>
                         </tr>
-                        <td class="w-file answer tx-left pl-zero" colspan="4">
-                            인증파일업로드
-                            <ul class="attach mb20">
-                                <li>
-                                    <div class="filetype">
-                                        <input type="text" class="file-text" />
-                                        <span class="file-btn bg-heavy-gray NSK">찾아보기</span>
-                                        <span class="file-select"><input type="file" class="input-file" size="3" id="attachfile" name="attachfile" ></span>
-                                        <input class="file-reset NSK" type="button" value="X" />
-                                    </div>
-                                </li>
-                                <li>2MB까지 업로드 가능하며, 이미지파일 (jpg,png등) 또는 PDF파일 형태로 첨부</li>
-                                <li>전역(예정)군인 인증 파일 : 병적증명서(군복무확인서), 전역증, 군인신분증 등</li>                                
-                                <li class="lastli">상기 인증 내용이 다를 경우, 구매한 상품은 취소 및 환불 처리 됩니다.</li>
-                            </ul>
-                        </td>
+                        <tr>
+                            <td class="w-file answer tx-left pl-zero" colspan="4">
+                                인증파일업로드
+                                <ul class="attach mb20">
+                                    <li>
+                                        <div class="filetype">
+                                            <input type="text" class="file-text" />
+                                            <span class="file-btn bg-heavy-gray NSK">찾아보기</span>
+                                            <span class="file-select"><input type="file" class="input-file" size="3" id="attachfile" name="attachfile" ></span>
+                                            <input class="file-reset NSK" type="button" value="X" />
+                                        </div>
+                                    </li>
+                                    <li>2MB까지 업로드 가능하며, 이미지파일 (jpg,png등) 또는 PDF파일 형태로 첨부</li>
+                                    <li>전역(예정)군인 인증 파일 : 병적증명서(군복무확인서), 전역증, 군인신분증 등</li>                                
+                                    <li class="lastli">상기 인증 내용이 다를 경우, 구매한 상품은 취소 및 환불 처리 됩니다.</li>
+                                </ul>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>

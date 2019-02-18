@@ -1787,6 +1787,10 @@ table.auTable tr td {
 }
 
 /* subContainer : Menu */
+.Menu {
+    width: 1120px;
+    margin: 0 auto;
+}
 .Menu h3 {
     height: 40px;
     margin-top: 32px;
@@ -1918,6 +1922,8 @@ table.auTable tr td {
 
 /* subContainer : Depth */
 .Depth {
+    width: 1120px;
+    margin:0 auto;
     padding-top: 25px;
     padding-bottom: 30px;
     letter-spacing: 0;
@@ -2028,6 +2034,7 @@ table.auTable tr td {
     font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif";
     font-size: 13px;
 }
+
 
 /* subContainer : Content : curriWrap */
 .curriWrap .curriTabs {

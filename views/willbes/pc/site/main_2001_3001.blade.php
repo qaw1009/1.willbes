@@ -801,7 +801,7 @@
                 </div>
             </div>
             {{-- board include --}}
-            @include('willbes.pc.site.main_partial.board')
+            @include('willbes.pc.site.main_partial.board_' . $__cfg['SiteCode'])
         </div>
     </div>
     <div class="Section Section7 mb50">

@@ -13,41 +13,75 @@ class Home extends \app\controllers\FrontController
         parent::__construct();
     }
 
+    /**
+     * 사이트 메인
+     */
     public function index()
     {
-        // 온라인, 학원 분기처리
-        if ($this->_is_pass_site === true) {
-            $_view_path = 'pass_';
-            $arr_base = $this->_getOffLineData();
+        $cate_code = get_var($this->_cate_code, config_app('DefCateCode'));
+        $arr_campus = [];
+
+        // view file name
+        if ($this->_is_mobile === true || $this->_is_app === true) {
+            // 모바일, APP
+            $_view_path = $this->_site_code;
         } else {
-            $_view_path = 'main_';
-            $arr_base = $this->_getOnLineData();
+            // PC
+            if ($this->_is_pass_site === true) {
+                $_view_path = $this->_site_code;
+
+                // 캠퍼스 코드
+                if (config_app('CampusCcdArr') != 'N') {
+                    $arr_campus = array_map(function($var) {
+                        $tmp_arr = explode(':', $var);
+                        return ['CampusCcd' => $tmp_arr[0], 'CampusCcdName' => $tmp_arr[1]];
+                    }, explode(',', config_app('CampusCcdArr')));
+                }
+            } else {
+                $_view_path = $this->_site_code . '_' . $cate_code;
+            }
         }
 
-        $this->load->view('site/'. $_view_path . SUB_DOMAIN, [
-            'arr_base' => $arr_base,
+        // get data
+        $data = $this->{'_getSite' . $this->_site_code . 'Data'}($cate_code, $arr_campus);
+
+        $this->load->view('site/main_'. $_view_path, [
+            'data' => $data
         ]);
     }
 
     /**
-     * 메인에 사용할 데이터 셋팅 [온라인]
+     * 온라인경찰 데이터 조회
+     * @param string $cate_code
+     * @param array $arr_campus
      * @return mixed
      */
-    private function _getOnLineData()
+    private function _getSite2001Data($cate_code = '', $arr_campus = [])
     {
-        $data['board'] = $this->_board();
+        $data['notice'] = $this->_boardNotice(4);
+        $data['exam_announcement'] = $this->_boardExamAnnouncement(4);
+        $data['exam_news'] = $this->_boardExamNews(4);
+
         return $data;
     }
 
-    /**
-     * 메인에 사용할 데이터 셋팅 [학원]
-     * @return mixed
-     */
-    private function _getOffLineData()
+    private function _getSite2002Data($cate_code = '', $arr_campus = [])
     {
+        $data['notice'] = $this->_boardNotice(5);
+        $data['exam_announcement'] = $this->_boardExamAnnouncement(5);
         $data['onAir'] = $this->_onAir();
-        $data['board'] = $this->_board();
+
         return $data;
+    }
+
+    private function _getSite2003Data($cate_code = '', $arr_campus = [])
+    {
+
+    }
+
+    private function _getSite2004Data($cate_code = '', $arr_campus = [])
+    {
+
     }
 
     /**
@@ -56,38 +90,54 @@ class Home extends \app\controllers\FrontController
      */
     private function _onAir()
     {
-        $data = $this->onAirFModel->getLiveOnAir($this->_site_code, '');
-        return $data;
+        return $this->onAirFModel->getLiveOnAir($this->_site_code, '');
     }
 
     /**
-     * 게시판
-     * @return array
+     * 공지사항 조회
+     * @param int $limit_cnt [조회건수]
+     * @param string $cate_code
+     * @param array $arr_campus
+     * @return array|int
      */
-    private function _board()
+    private function _boardNotice($limit_cnt = 5, $cate_code = '', $arr_campus = [])
     {
         $column = 'b.BoardIdx, b.Title, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
-        $order_by = ['b.IsBest'=>'Desc','b.BoardIdx'=>'Desc'];
-        $arr_condition = [
-            'EQ' => [
-                'b.IsUse' => 'Y'
-            ]
-            /*'LKB' => [
-                'Category_String' => $this->_cate_code
-            ]*/
-        ];
+        $order_by = ['b.IsBest' => 'Desc', 'b.BoardIdx' => 'Desc'];
+        $arr_condition = ['EQ' => ['b.BmIdx' => 45, 'b.SiteCode' => $this->_site_code, 'b.IsUse' => 'Y']];
 
-        //공지사항
-        $arr_condition_notice['EQ'] = array_merge($arr_condition['EQ'], ['b.BmIdx' => 45, 'b.SiteCode' => $this->_site_code]);
-        $data['notice']['data'] = $this->supportBoardFModel->listBoard(false, $arr_condition_notice, $column,5,0, $order_by);
+        return $this->supportBoardFModel->listBoard(false, $arr_condition, $column, $limit_cnt, 0, $order_by);
+    }
 
-        //시험공고
-        $arr_condition_announcement['EQ'] = array_merge($arr_condition['EQ'], ['b.BmIdx' => 54]);
-        $data['exam_announcement']['data'] = $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $arr_condition_announcement, $column,5,0, $order_by);
+    /**
+     * 시험공고 조회
+     * @param int $limit_cnt [조회건수]
+     * @param string $cate_code
+     * @param array $arr_campus
+     * @return array|int
+     */
+    private function _boardExamAnnouncement($limit_cnt = 5, $cate_code = '', $arr_campus = [])
+    {
+        $column = 'b.BoardIdx, b.Title, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
+        $order_by = ['b.IsBest' => 'Desc', 'b.BoardIdx' => 'Desc'];
+        $arr_condition = ['EQ' => ['b.BmIdx' => 54, 'b.IsUse' => 'Y']];
 
-        //수험뉴스
-        $arr_condition_news['EQ'] = array_merge($arr_condition['EQ'], ['b.BmIdx' => 57]);
-        $data['exam_news']['data'] = $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $arr_condition_news, $column,5,0, $order_by);
-        return $data;
+        return $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $arr_condition, $column, $limit_cnt, 0, $order_by);
+    }
+
+    /**
+     * 수험뉴스 조회
+     * @param int $limit_cnt [조회건수]
+     * @param string $cate_code
+     * @param array $arr_campus
+     * @return array|int
+     */
+    private function _boardExamNews($limit_cnt = 5, $cate_code = '', $arr_campus = [])
+    {
+        $column = 'b.BoardIdx, b.Title, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
+        $order_by = ['b.IsBest' => 'Desc', 'b.BoardIdx' => 'Desc'];
+        $arr_condition = ['EQ' => ['b.BmIdx' => 57, 'b.IsUse' => 'Y']];
+
+        return $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $arr_condition, $column, $limit_cnt, 0, $order_by);
     }
 }

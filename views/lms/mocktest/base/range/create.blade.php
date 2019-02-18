@@ -24,7 +24,7 @@
                     <tr>
                         <th colspan="1">모의고사카테고리 <span class="required">*</span></th>
                         <td colspan="3">
-                            <button type="button" class="btn btn-sm btn-primary act-searchCate" {{($method == 'PUT' && !$isCopy) ? 'disabled' : ''}}>카테고리검색</button>
+                            <button type="button" class="btn btn-sm btn-primary act-searchCate">카테고리검색</button>
                             <div id="selected_category" class="row">
                                 @if($method == 'PUT')
                                     @if($isCopy) {{-- 복사 후 첫 이동, 카테고리 변경 가능하게 --}}

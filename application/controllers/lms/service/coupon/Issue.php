@@ -20,8 +20,13 @@ class Issue extends \app\controllers\BaseController
      */
     public function index()
     {
+        $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+
+        $memidx = element('memidx',$arr_input);
+
         $this->load->view('service/coupon/issue_index', [
-            'arr_issue_type_ccd' => $this->codeModel->getCcd($this->_ccd['IssueType'])
+            'arr_issue_type_ccd' => $this->codeModel->getCcd($this->_ccd['IssueType']),
+            'memidx' => $memidx
         ]);
     }
 
@@ -35,6 +40,7 @@ class Issue extends \app\controllers\BaseController
         $arr_condition = $this->_getListConditions();
 
         $list_type = element(0, $params);
+
         $list = [];
         $count = $this->couponIssueModel->listAllCouponDetail(true, $arr_condition, null, null, [], $list_type);
 
@@ -83,6 +89,7 @@ class Issue extends \app\controllers\BaseController
                 'LKB' => [
                     'MemName' => $this->_reqP('search_member_value'),
                     'MemId' => $this->_reqP('search_member_value'),
+                    'MemIdx' => $this->_reqP('search_member_value'),
                     'IssueUserName' => $this->_reqP('search_member_value'),
                     'IssueUserId' => $this->_reqP('search_member_value'),
                 ],

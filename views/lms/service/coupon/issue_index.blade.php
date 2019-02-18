@@ -11,10 +11,10 @@
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_member_value">회원검색</label>
                     <div class="col-md-3">
-                        <input type="text" class="form-control" id="search_member_value" name="search_member_value">
+                        <input type="text" class="form-control" id="search_member_value" name="search_member_value" value="{{ $memidx }}">
                     </div>
                     <div class="col-md-8">
-                        <p class="form-control-static">이름, 아이디, 휴대폰번호 검색 가능 (관리자명, 아이디 검색 가능)</p>
+                        <p class="form-control-static">이름, 아이디, 회원인덱스, 휴대폰번호 검색 가능 (관리자명, 아이디 검색 가능)</p>
                     </div>
                 </div>
                 <div class="form-group">

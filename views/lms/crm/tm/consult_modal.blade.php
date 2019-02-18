@@ -321,11 +321,15 @@
 
 
                     $('.btn-coupon-return').on('click',function(){
-                        alert("발급회수");
+                        var target_idx = $('#MemIdx').val();
+                        var _link = "{{ site_url('/service/coupon/issue/') }}"+'?memidx='+target_idx;
+                        var obj = window.open(_link,'coupondel','');
+                        obj.focus();
                     });
 
                     $('.btn-coupon-make').on('click',function(){
-                        alert("발급생성");
+                        var obj = window.open("{{ site_url('/service/coupon/regist/') }}",'couponadd','');
+                        obj.focus();
                     });
 
 

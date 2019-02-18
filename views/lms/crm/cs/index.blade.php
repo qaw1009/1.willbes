@@ -61,7 +61,6 @@
                     <th>등록자</th>
                     <th>등록일</th>
                     <th>사용</th>
-                    <th>조회수</th>
                     <th>수정</th>
                 </tr>
                 </thead>
@@ -115,7 +114,6 @@
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                             return (data == 'Y') ? '사용' : '<p class="red">미사용</p>';
                         }},
-                    {'data' : 'ReadCnt'},
                     {'data' : 'CtmIdx', 'render' : function(data, type, row, meta) {
                             return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.CtmIdx + '"><u>수정</u></a>';
                         }},

@@ -348,6 +348,18 @@ class Join extends BaseMember
             $data = $this->memberFModel->getMemberForLogin($input['MemId'], $input['MemPassword'], false);
             $result = $this->memberFModel->storeMemberLogin($data);
 
+            // 회원가입 축하 상품을 추가
+            $this->pointFModel->addSavePoint('lecture', 2000, [
+                'site_code' => $SiteCode,
+                'etc_reason' => '가입축하포인트',
+                'reason_type' => 'join'
+            ]); // 강좌포인트 2000
+            $this->pointFModel->addSavePoint('book', 1000, [
+                'site_code' => $SiteCode,
+                'etc_reason' => '가입축하포인트',
+                'reason_type' => 'join'
+            ]); // 교재포인트 2000
+
             redirect('/member/join/success');
         } else {
             // 실패시 오류 메세지 출력

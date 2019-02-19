@@ -96,7 +96,7 @@
 <script>
     ratio = {{empty($data['ratio']) == true ? '16' : $data['ratio']}};
     startPosition = {{empty($data['startPosition']) == true ? '0' : $data['startPosition']}};
-    video_container_width = @if($data['quility'] == 'WD'){{'1000'}}@elseif($data['quility'] == 'HD'){{'1000'}}@else{{'700'}}@endif;
+    video_container_width = @if($data['quility'] == 'WD'){{'1280'}}@elseif($data['quility'] == 'HD'){{'960'}}@else{{'642'}}@endif;
 </script>
 @yield('script')
 </body>

@@ -50,22 +50,22 @@ class OffLectureModel extends CommonLectureModel
         $from = '
                     from
                         lms_product A
-                            left outer join lms_sys_code Aa on A.SaleStatusCcd = Aa.Ccd and Aa.IsStatus=\'Y\'
-                            left outer join lms_site Ab on A.SiteCode = Ab.SiteCode
-                            join lms_sys_code Ac on A.ProdTypeCcd = Ac.Ccd and Ac.IsStatus=\'Y\'
+                        join lms_sys_code Aa on A.SaleStatusCcd = Aa.Ccd and Aa.IsStatus=\'Y\'
+                        join lms_site Ab on A.SiteCode = Ab.SiteCode
+                        join lms_sys_code Ac on A.ProdTypeCcd = Ac.Ccd and Ac.IsStatus=\'Y\'
                         join lms_product_lecture B on A.ProdCode = B.ProdCode
-                            left outer join lms_product_course Ba on B.CourseIdx = Ba.CourseIdx and Ba.IsStatus=\'Y\'
-                            left outer join lms_product_subject Bb on B.SubjectIdx = Bb.SubjectIdx and Bb.IsStatus=\'Y\'
-                            left outer join lms_sys_code Bc on B.LearnPatternCcd = Bc.Ccd and Bc.IsStatus=\'Y\'
-                            left outer join lms_sys_code Bd on B.StudyPatternCcd = Bd.Ccd and Bd.IsStatus=\'Y\'
-                            left outer join lms_sys_code Be on B.StudyApplyCcd = Be.Ccd and Be.IsStatus=\'Y\'
-                            left outer join lms_sys_code Bg on B.CampusCcd = Bg.Ccd
-                            left outer join lms_sys_code Bh on B.AcceptStatusCcd = Bh.Ccd
+                        left outer join lms_product_course Ba on B.CourseIdx = Ba.CourseIdx and Ba.IsStatus=\'Y\'
+                        left outer join lms_product_subject Bb on B.SubjectIdx = Bb.SubjectIdx and Bb.IsStatus=\'Y\'
+                        join lms_sys_code Bc on B.LearnPatternCcd = Bc.Ccd and Bc.IsStatus=\'Y\'
+                        left outer join lms_sys_code Bd on B.StudyPatternCcd = Bd.Ccd and Bd.IsStatus=\'Y\'
+                        left outer join lms_sys_code Be on B.StudyApplyCcd = Be.Ccd and Be.IsStatus=\'Y\'
+                        left outer join lms_sys_code Bg on B.CampusCcd = Bg.Ccd
+                        left outer join lms_sys_code Bh on B.AcceptStatusCcd = Bh.Ccd
                         join lms_product_r_category C on A.ProdCode = C.ProdCode and C.IsStatus=\'Y\'
-                            join lms_sys_category Ca on C.CateCode = Ca.CateCode  and Ca.IsStatus=\'Y\'
-                            left outer join lms_sys_category Cb on Ca.ParentCateCode = Cb.CateCode
+                        join lms_sys_category Ca on C.CateCode = Ca.CateCode  and Ca.IsStatus=\'Y\'
+                        left outer join lms_sys_category Cb on Ca.ParentCateCode = Cb.CateCode
                         left outer join lms_product_sale D on A.ProdCode = D.ProdCode and D.SaleTypeCcd=\'613001\' and D.IsStatus=\'Y\'	#Pc+모바일 판매가만 추출
-                        left outer join vw_product_r_professor_concat E on A.ProdCode = E.ProdCode
+                        join vw_product_r_professor_concat_repr E on A.ProdCode = E.ProdCode
                         left outer join (select ProdCode, count(*) as DivisionCount from lms_product_division where IsStatus=\'Y\' group by ProdCode) as F on A.ProdCode = F.ProdCode
                         left outer join lms_product_copy_log Y on A.ProdCode = Y.ProdCode
                         left outer join wbs_sys_admin Z on A.RegAdminIdx = Z.wAdminIdx

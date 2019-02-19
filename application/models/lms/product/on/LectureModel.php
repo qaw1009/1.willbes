@@ -42,7 +42,7 @@ class LectureModel extends CommonLectureModel
                     ,0 as CartCnt       #장바구니테이블 스캔으로 인해 쿼리속도 저하    19.02.18 최진영 차장님 협의
                     ,0 as PayIngCnt    #주문테이블 스캔으로 인해 쿼리속도 저하
                     ,0 as PayEndCnt    #주문테이블 스캔으로 인해 쿼리속도 저하
-                    #,fn_product_professor_name(A.ProdCode) as ProfName_Arr	//검색때문에 vw_product_r_professor_concat 사용
+                    #,fn_product_professor_name(A.ProdCode) as ProfName_Arr	//검색때문에 vw_product_r_professor_concat_repr 사용
                     ,IFNULL(Y.ProdCode_Original,\'\') as ProdCode_Original
                     ,Z.wAdminName
             ';
@@ -53,7 +53,7 @@ class LectureModel extends CommonLectureModel
         $from = '
                     from
                         lms_product A
-                            left outer join lms_sys_code Aa on A.SaleStatusCcd = Aa.Ccd and Aa.IsStatus=\'Y\'
+                            join lms_sys_code Aa on A.SaleStatusCcd = Aa.Ccd and Aa.IsStatus=\'Y\'
                             join lms_site Ab on A.SiteCode = Ab.SiteCode
                             join lms_sys_code Ac on A.ProdTypeCcd = Ac.Ccd and Ac.IsStatus=\'Y\'
                             join lms_product_lecture B on A.ProdCode = B.ProdCode
@@ -67,7 +67,7 @@ class LectureModel extends CommonLectureModel
                             join lms_sys_category Ca on C.CateCode = Ca.CateCode  and Ca.IsStatus=\'Y\'
                             left outer join lms_sys_category Cb on Ca.ParentCateCode = Cb.CateCode
                             left outer join lms_product_sale D on A.ProdCode = D.ProdCode and D.SaleTypeCcd=\'613001\' and D.IsStatus=\'Y\'	#Pc+모바일 판매가만 추출
-                            left outer join vw_product_r_professor_concat E on A.ProdCode = E.ProdCode
+                            join vw_product_r_professor_concat_repr E ON A.ProdCode = E.ProdCode 
                             left outer join (select ProdCode, count(*) as DivisionCount from lms_product_division where IsStatus=\'Y\' group by ProdCode) as F on A.ProdCode = F.ProdCode
                             left outer join lms_product_copy_log Y on A.ProdCode = Y.ProdCode
                             join wbs_sys_admin Z on A.RegAdminIdx = Z.wAdminIdx

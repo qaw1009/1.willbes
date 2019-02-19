@@ -52,14 +52,14 @@
             <a href="{{ site_url('/home/html/event_end_read') }}" target="_blank">이벤트 > 마감된 이벤트 상세 page 이동</a>
             <br><br>
             <a href="{{ site_url('/home/html/event_onLeaveArmyPass') }}" target="_blank">전역군인인증 온라인 intro</a>
-            <a href="{{ site_url('/home/html/event_onLeaveArmyPassConfirmPop') }}" target="_blank">전역군인인증 팝업(사이즈 740x700)</a>
+            <a href="{{ site_url('/home/html/event_onLeaveArmyPassConfirmPop') }}" target="_blank">전역군인인증 온라인 팝업(사이즈 740x700)</a>
             <a href="{{ site_url('/home/html/event_onLeaveArmyPassLec') }}" target="_blank">전역군인인증 온라인 강의</a>
-            <a href="{{ site_url('/home/html/event_onMOU') }}" target="_blank">교육 콘텐츠 제공 업무제공 체결(MOU) 팝업(사이즈 850x700)</a>            
-            <a href="{{ site_url('/home/html/event_onCopPromotionPass') }}" target="_blank">경찰 승진 PASS</a>
-            <a href="{{ site_url('/home/html/event_onCopPromotionPassPop') }}" target="_blank">경찰 승진 PASS 인증 팝업(사이즈 740x700)</a>
-            <a href="{{ site_url('/home/html/event_onCopZeroPass') }}" target="_blank">평생 0원 PASS</a>
+            <a href="{{ site_url('/home/html/event_onMOU') }}" target="_blank">온라인 교육 콘텐츠 제공 업무제공 체결(MOU) 팝업(사이즈 850x700)</a>            
+            <a href="{{ site_url('/home/html/event_onCopPromotionPass') }}" target="_blank">경찰 온라인 승진 PASS</a>
+            <a href="{{ site_url('/home/html/event_onCopPromotionPassPop') }}" target="_blank">경찰 온라인 승진 PASS 인증 팝업(사이즈 740x700)</a>
+            <a href="{{ site_url('/home/html/event_onCopZeroPass') }}" target="_blank">경찰 온라인 평생 0원 PASS</a>
             <a href="{{ site_url('/home/html/event_onCopReboundPop') }}" target="_blank">타 학원 수강생 인증 팝업(사이즈 740x700)</a>
-            <a href="{{ site_url('/home/html/event_onCopSampleQuestions') }}" target="_blank">기출문제(이모티콘 댓글)</a>
+            <a href="{{ site_url('/home/html/event_onCopSampleQuestions') }}" target="_blank">경찰 온라인 기출문제(이모티콘 댓글)</a>
             <a href="{{ site_url('/home/html/event_onGosiFirePass') }}" target="_blank">공무원 온라인 소방 PASS</a>
             <a href="{{ site_url('/home/html/event_onGosiNinePass') }}" target="_blank">공무원 온라인 9급 PASS</a>
 

@@ -57,7 +57,7 @@ class Lecture extends \app\controllers\FrontController
 
         // 상품 검색조건 추가
         $arr_search_text = explode(':', base64_decode(element('search_text', $arr_input)), 2);  // 검색어
-        $arr_condition = array_merge($arr_condition, [
+        $arr_condition = array_merge_recursive($arr_condition, [
             'EQ' => [
                 'CourseIdx' => element('course_idx', $arr_input),
                 'SubjectIdx' => element('subject_idx', $arr_input),

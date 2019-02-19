@@ -190,7 +190,8 @@ html {
 	border: 0;
   }
   input {
-	line-height: normal;
+  line-height: normal;
+  vertical-align:middle;
   }
   input[type="checkbox"],
   input[type="radio"],

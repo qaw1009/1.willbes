@@ -303,6 +303,7 @@
                     <div id="campus1" class="tabContent">
                         <div class="map_img">
                             <img src="{{ img_url('gosi_acad/map/mapSeoul.jpg') }}" alt="노량진">
+                            <span class="origin">노량진(본원)</span>
                         </div>
                         <div class="campus_info">
                             <dl>
@@ -341,9 +342,12 @@
                             </div>
                         </div>
                     </div>
+                    <!-- 노량진 //-->
+
                     <div id="campus2" class="tabContent">
                         <div class="map_img">
                             <img src="{{ img_url('gosi_acad/map/mapIC.jpg') }}" alt="인천">
+                            <span>인 천</span>
                         </div>
                         <div class="campus_info">
                             <dl>
@@ -365,13 +369,12 @@
                                         <div class="address">
                                             <span class="a-tit">주소</span>
                                             <span>
-                                                서울시동작구만양로105 2층<br/>
-                                                (서울시동작구노량진동116-2 2층)
+                                                인천 부평구 광장로 26 서연빌딩 4층 
                                             </span>
                                         </div>
                                         <div class="tel">
                                             <span class="a-tit">연락처</span>
-                                            <span class="tx-color">1544-0336</span>
+                                            <span class="tx-color">1544-1661</span>
                                         </div>
                                     </div>
                                 </dt>
@@ -381,9 +384,12 @@
                             </div>
                         </div>
                     </div>
+                    <!-- 인천 //-->
+
                     <div id="campus3" class="tabContent">
                         <div class="map_img">
                             <img src="{{ img_url('gosi_acad/map/mapDG.jpg') }}" alt="대구">
+                            <span>대 구</span>
                         </div>
                         <div class="campus_info">
                             <dl>
@@ -405,13 +411,13 @@
                                         <div class="address">
                                             <span class="a-tit">주소</span>
                                             <span>
-                                                서울시동작구만양로105 2층<br/>
-                                                (서울시동작구노량진동116-2 2층)
+                                                대구 중구 중앙대로 412 CGV 2층 <br/>
+                                                (남일동)
                                             </span>
                                         </div>
                                         <div class="tel">
                                             <span class="a-tit">연락처</span>
-                                            <span class="tx-color">1544-0336</span>
+                                            <span class="tx-color">1522-6112</span>
                                         </div>
                                     </div>
                                 </dt>
@@ -421,9 +427,12 @@
                             </div>
                         </div>
                     </div>
+                    <!-- 대구 //-->
+
                     <div id="campus4" class="tabContent">
                         <div class="map_img">
                             <img src="{{ img_url('gosi_acad/map/mapBS.jpg') }}" alt="부산">
+                            <span>부 산</span>
                         </div>
                         <div class="campus_info">
                             <dl>
@@ -445,13 +454,12 @@
                                         <div class="address">
                                             <span class="a-tit">주소</span>
                                             <span>
-                                                서울시동작구만양로105 2층<br/>
-                                                (서울시동작구노량진동116-2 2층)
+                                                부산 부산진구 부전동 223-8
                                             </span>
                                         </div>
                                         <div class="tel">
                                             <span class="a-tit">연락처</span>
-                                            <span class="tx-color">1544-0336</span>
+                                            <span class="tx-color">1522-8112</span>
                                         </div>
                                     </div>
                                 </dt>
@@ -461,9 +469,12 @@
                             </div>
                         </div>
                     </div>
+                    <!-- 부산 //-->
+
                     <div id="campus5" class="tabContent">
                         <div class="map_img">
                             <img src="{{ img_url('gosi_acad/map/mapKJ.jpg') }}" alt="광주">
+                            <span>광 주</span>
                         </div>
                         <div class="campus_info">
                             <dl>
@@ -485,13 +496,12 @@
                                         <div class="address">
                                             <span class="a-tit">주소</span>
                                             <span>
-                                                서울시동작구만양로105 2층<br/>
-                                                (서울시동작구노량진동116-2 2층)
+                                                광주 북구 호동로 6-11
                                             </span>
                                         </div>
                                         <div class="tel">
                                             <span class="a-tit">연락처</span>
-                                            <span class="tx-color">1544-0336</span>
+                                            <span class="tx-color">062-514-4560</span>
                                         </div>
                                     </div>
                                 </dt>
@@ -501,6 +511,7 @@
                             </div>
                         </div>
                     </div>
+                    <!-- 광주 //-->
                 </div>
             </div>
         </div>

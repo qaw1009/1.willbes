@@ -97,13 +97,17 @@ class ClassroomFModel extends WB_Model
      * @param array $cond_arr
      * @return array
      */
-    public function getLecture($cond = [], $order = [], $isCount = false, $isoff = false)
+    public function getLecture($cond = [], $order = [], $isCount = false, $isoff = false, $limit = null, $offset = null)
     {
         if($isCount == true){
             $query = "SELECT COUNT(*) AS rownums ";
+            $order_by_offset_limit = '';
+
         } else {
-            $query = "SELECT straight_join *, TO_DAYS(RealLecEndDate) - TO_DAYS(NOW()) +1 AS remainDays
+            $query = "SELECT *, TO_DAYS(RealLecEndDate) - TO_DAYS(NOW()) +1 AS remainDays
             ";
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
 
         if($isoff == true){
@@ -115,8 +119,8 @@ class ClassroomFModel extends WB_Model
 
         $where = $this->_conn->makeWhere($cond);
         $query .= $where->getMakeWhere(false);
-        $query .= $this->_conn->makeOrderBy($order)->getMakeOrderBy();
-        $result = $this->_conn->query($query);
+
+        $result = $this->_conn->query($query.$order_by_offset_limit);
         return ($isCount == true) ? $result->row(0)->rownums : $result->result_array();
     }
 
@@ -127,9 +131,9 @@ class ClassroomFModel extends WB_Model
     public function getPackage($cond = [], $order = [], $isCount = false)
     {
         if($isCount == true){
-            $query = "SELECT COUNT(*) ";
+            $query = "SELECT COUNT(*) AS rownums  ";
         } else {
-            $query = "SELECT straight_join *, TO_DAYS(RealLecEndDate) - TO_DAYS(NOW()) +1 AS remainDays
+            $query = "SELECT *, TO_DAYS(RealLecEndDate) - TO_DAYS(NOW()) +1 AS remainDays
             ";
         }
 
@@ -140,7 +144,7 @@ class ClassroomFModel extends WB_Model
         $query .= $this->_conn->makeOrderBy($order)->getMakeOrderBy();
         $result = $this->_conn->query($query);
 
-        return empty($result) === true ? [] : $result->result_array();
+        return ($isCount === true) ? $result->row(0)->rownums : $result->result_array();
     }
 
 
@@ -177,7 +181,7 @@ class ClassroomFModel extends WB_Model
     public function getLectureBookmark($cond = [], $order = [])
     {
         $query = "SELECT MST.* FROM ( 
-            SELECT straight_join L.*
+            SELECT L.*
             , TO_DAYS(L.RealLecEndDate) - TO_DAYS(NOW()) +1 AS remainDays
             , (SELECT COUNT(*) FROM {$this->_table['bookmark']} AS B WHERE B.MemIdx = L.MemIdx AND B.ProdCode = L.ProdCode AND B.ProdCodeSub = L.ProdCodeSub ) AS bookmark 
             ";
@@ -200,7 +204,7 @@ class ClassroomFModel extends WB_Model
     public function getPackageBookmark($cond = [], $order = [])
     {
         $query = "SELECT MST.* FROM (
-            SELECT straight_join *
+            SELECT L.*
             , TO_DAYS(RealLecEndDate) - TO_DAYS(NOW()) +1 AS remainDays
             , (SELECT COUNT(*) FROM {$this->_table['bookmark']} AS B WHERE B.MemIdx = L.MemIdx AND B.ProdCode = L.ProdCode) AS bookmark
             ";

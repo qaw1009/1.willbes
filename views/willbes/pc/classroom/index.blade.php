@@ -20,9 +20,9 @@
                                 <div class="Tit tx-light-blue NSK">온라인강좌<br/>현황</div>
                                 <div class="TableInfo">
                                     <dl>
-                                        <dt><div class="subTit">무한PASS</div><div><a class="tx-blue" href="#none">10</a>개</div></dt>
-                                        <dt><div class="subTit">수강중</div><div><a class="tx-blue" href="#none">5</a>개</div></dt>
-                                        <dt><div class="subTit">수강대기</div><div><a class="tx-blue" href="#none">10</a>개</div></dt>
+                                        <dt><div class="subTit">무한PASS</div><div><a class="tx-blue" href="{{front_url('/classroom/pass/index')}}">{{$data['pass_cnt']}}</a>개</div></dt>
+                                        <dt><div class="subTit">수강중</div><div><a class="tx-blue" href="{{front_url('/classroom/on/list/ongoing')}}">{{$data['ing_cnt']}}</a>개</div></dt>
+                                        <dt><div class="subTit">수강대기</div><div><a class="tx-blue" href="{{front_url('/classroom/on/list/standby')}}">{{$data['standby_cnt']}}</a>개</div></dt>
                                     </dl>
                                 </div>
                             </li>
@@ -30,7 +30,7 @@
                                 <div class="Tit tx-light-blue NSK">학원강좌<br/>현황</div>
                                 <div class="TableInfo">
                                     <dl>
-                                        <dt><div class="subTit">수강신청</div><div><a class="tx-blue" href="#none">5</a>개</div></dt>
+                                        <dt><div class="subTit">수강신청</div><div><a class="tx-blue" href="{{front_url('/classroom/off/list/ongoing')}}">{{$data['off_cnt']}}</a>개</div></dt>
                                     </dl>
                                 </div>
                             </li>
@@ -38,8 +38,8 @@
                                 <div class="Tit tx-light-blue NSK">포인트<br/>현황</div>
                                 <div class="TableInfo">
                                     <dl>
-                                        <dt><div class="subTit">강좌</div><div><a class="tx-blue" href="#none">410,000</a>P</div></dt>
-                                        <dt><div class="subTit">교재</div><div><a class="tx-blue" href="#none">130,000</a>P</div></dt>
+                                        <dt><div class="subTit">강좌</div><div><a class="tx-blue" href="{{front_url('/classroom/point/index?tab=lecture&stab=save')}}">{{number_format($data['lecture_point'],0)}}</a>P</div></dt>
+                                        <dt><div class="subTit">교재</div><div><a class="tx-blue" href="{{front_url('/classroom/point/index?tab=book&stab=save')}}">{{number_format($data['book_point'],0)}}</a>P</div></dt>
                                     </dl>
                                 </div>
                             </li>
@@ -47,7 +47,7 @@
                                 <div class="Tit tx-light-blue NSK">쿠폰<br/>현황</div>
                                 <div class="TableInfo">
                                     <dl>
-                                        <dt><div class="subTit">쿠폰</div><div><a class="tx-blue" href="#none">5</a>장</div></dt>
+                                        <dt><div class="subTit">쿠폰</div><div><a class="tx-blue" href="{{front_url('/classroom/coupon/index')}}">{{$data['coupon_cnt']}}</a>장</div></dt>
                                     </dl>
                                 </div>
                             </li>
@@ -64,13 +64,16 @@
                         <div class="willbes-listTable MyInfoBoxList widthAutoFull">
                             <div class="will-Tit NG">나의 학습 기기 (무한PASS) <a class="f_right" href="#none"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
                             <ul class="List-Table GM myTablet tx-gray">
-                                <!-- 리스트 -->
-                                <li>PC 1대 <span class="tx-bright-gray">(2018.00.00 등록)</span></li>
-                                <li>모바일 1대 <span class="tx-bright-gray">(2018.00.00 등록)</span></li>
-                                <!-- 기기없음
-                                <li>등록된 기기가 없습니다.</li>
-                                <li><span class="tx-bright-gray">( ID당 2개만 등록가능 )</span></li>
-                                -->
+                                @forelse($data['device_list'] as $row)
+                                    @if($row['DeviceType'] == 'P')
+                                        <li>PC <span class="tx-bright-gray">({{str_replace('-','.',$row['RegDatm'])}} 등록)</span></li>
+                                    @else
+                                        <li>모바일 <span class="tx-bright-gray">({{str_replace('-','.',$row['RegDatm'])}} 등록)</span></li>
+                                    @endif
+                                @empty
+                                    <li>등록된 기기가 없습니다.</li>
+                                    <li><span class="tx-bright-gray">( ID당 2개만 등록가능 )</span></li>
+                                @endforelse
                             </ul>
                         </div>
 
@@ -95,93 +98,51 @@
                                         <col style="width: 675px;">
                                     </colgroup>
                                     <tbody>
+                                    @forelse($data['ing_list'] as $row)
                                         <tr>
-                                            <td class="w-list NGEB"><a href="#none"><img src="{{ img_url('mypage/icon_name1.png') }}"></a></td>
+                                            <td class="w-list NGEB">
+                                                @if($row['LearnPatternCcd'] == '615004')
+                                                    <a href="{{ site_url('/classroom/on/view/ongoing/') }}?o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&ps={{$row['ProdCodeSub']}}"><img src="{{ img_url('mypage/icon_name1.png') }}"></a>
+                                                @elseif($row['LearnPatternCcd'] == '615003')
+                                                    <a href="{{ site_url('/classroom/on/view/ongoing/') }}?o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&ps={{$row['ProdCodeSub']}}"><img src="{{ img_url('mypage/icon_name2.png') }}"></a>
+                                                @else
+                                                    <a href="{{ site_url('/classroom/on/view/ongoing/') }}?o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&ps={{$row['ProdCodeSub']}}"><img src="{{ img_url('mypage/icon_name3.png') }}"></a>
+                                                @endif
+
+                                            </td>
                                             <td class="w-percent">
                                                 <div class="round">
                                                     진도율<br/>
-                                                    <span class="tx-blue">77%</span>
+                                                    <span class="tx-blue">{{$row['StudyRate']}}%</span>
                                                 </div>
                                             </td>
                                             <td class="w-data tx-left pl25">
                                                 <dl class="w-info">
                                                     <dt>
                                                         경찰<span class="row-line">|</span>
-                                                        영어<span class="row-line">|</span>
-                                                        한덕현교수님
-                                                        <span class="NSK ml15 nBox n2">진행중</span>
+                                                        {{$row['SubjectName']}}<span class="row-line">|</span>
+                                                        {{$row['wProfName']}}교수님
+                                                        <span class="NSK ml15 nBox n{{ substr($row['wLectureProgressCcd'], -1)+1 }}">{{$row['wLectureProgressCcdName']}}</span>
                                                     </dt>
                                                 </dl><br/>
                                                 <div class="w-tit">
-                                                    <a href="{{ site_url('/home/html/mypage_pass1') }}">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
+                                                    @if($row['LearnPatternCcd'] == '615004')
+                                                        <a href="{{ site_url('/classroom/pass/view/ongoing/') }}?o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&ps={{$row['ProdCodeSub']}}">{{$row['subProdName']}}</a>
+                                                    @else
+                                                        <a href="{{ site_url('/classroom/on/view/ongoing/') }}?o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&ps={{$row['ProdCodeSub']}}">{{$row['subProdName']}}</a>
+                                                    @endif
                                                 </div>
                                                 <dl class="w-info tx-gray">
-                                                    <dt>강의수 : <span class="tx-black">12강</span></dt>
+                                                    <dt>강의수 : <span class="tx-black">{{$row['wUnitLectureCnt']}}강</span></dt>
                                                     <dt><span class="row-line">|</span></dt>
-                                                    <dt>잔여기간 : <span class="tx-blue">50일</span>(2018.04.02~2018.11.20)</dt>
+                                                    <dt>잔여기간 : <span class="tx-blue">{{$row['remainDays']}}일</span>({{str_replace('-', '.', $row['LecStartDate'])}}~{{str_replace('-', '.', $row['RealLecEndDate'])}})</dt>
                                                     <dt><span class="row-line">|</span></dt>
-                                                    <dt>최종학습일 : <span class="tx-black">2018.10.20</span></dt>
+                                                    <dt>최종학습일 : <span class="tx-black">{{ $row['lastStudyDate'] == '' ? '학습이력없음' : $row['lastStudyDate'] }}</span></dt>
                                                 </dl>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td class="w-list NGEB"><a href="#none"><img src="{{ img_url('mypage/icon_name2.png') }}"></a></td>
-                                            <td class="w-percent">
-                                                <div class="round">
-                                                    진도율<br/>
-                                                    <span class="tx-blue">5%</span>
-                                                </div>
-                                            </td>
-                                            <td class="w-data tx-left pl25">
-                                                <dl class="w-info">
-                                                    <dt>
-                                                        공무원<span class="row-line">|</span>
-                                                        수학<span class="row-line">|</span>
-                                                        한덕현교수님
-                                                        <span class="NSK ml15 nBox n2">진행중</span>
-                                                    </dt>
-                                                </dl><br/>
-                                                <div class="w-tit">
-                                                    <a href="#none">[재수강] 2018(교육행정대비) 한덕현 제니스 영어 실전 동형모의고사(4-5월)</a>
-                                                </div>
-                                                <dl class="w-info tx-gray">
-                                                    <dt>강의수 : <span class="tx-black">12강</span></dt>
-                                                    <dt><span class="row-line">|</span></dt>
-                                                    <dt>잔여기간 : <span class="tx-blue">50일</span>(2018.04.02~2018.11.20)</dt>
-                                                    <dt><span class="row-line">|</span></dt>
-                                                    <dt>최종학습일 : <span class="tx-black">2018.10.20</span></dt>
-                                                </dl>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="w-list NGEB"><a href="#none"><img src="{{ img_url('mypage/icon_name3.png') }}"></a></td>
-                                            <td class="w-percent">
-                                                <div class="round">
-                                                    진도율<br/>
-                                                    <span class="tx-blue">9%</span>
-                                                </div>
-                                            </td>
-                                            <td class="w-data tx-left pl25">
-                                                <dl class="w-info">
-                                                    <dt>
-                                                        공무원<span class="row-line">|</span>
-                                                        수학<span class="row-line">|</span>
-                                                        한덕현교수님
-                                                        <span class="NSK ml15 nBox n4">완강</span>
-                                                    </dt>
-                                                </dl><br/>
-                                                <div class="w-tit">
-                                                    <a href="#none">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
-                                                </div>
-                                                <dl class="w-info tx-gray">
-                                                    <dt>강의수 : <span class="tx-black">12강</span></dt>
-                                                    <dt><span class="row-line">|</span></dt>
-                                                    <dt>잔여기간 : <span class="tx-blue">50일</span>(2018.04.02~2018.11.20)</dt>
-                                                    <dt><span class="row-line">|</span></dt>
-                                                    <dt>최종학습일 : <span class="tx-black">2018.10.20</span></dt>
-                                                </dl>
-                                            </td>
-                                        </tr>
+                                    @empty
+                                    @endforelse
                                     </tbody>
                                 </table>
                                 <!-- lecTable -->
@@ -222,22 +183,6 @@
                     </div>
                 </div>
                 <!-- Mypage_PASS_Index -->
-
-    <!--
-                <script src="/public/js/willbes/player.js"></script>
-                <a href="#none" onclick='fnPlayerProf("50004", "OT");'>OT</a><br>
-                <a href="#none" onclick='fnPlayerProf("50004", "WS");'>샘플</a><br>
-                <a href="#none" onclick='fnPlayerProf("50004", "S1");'>샘플1</a><br>
-                <a href="#none" onclick='fnPlayerProf("50004", "S2");'>샘플2</a><br>
-                <a href="#none" onclick='fnPlayerProf("50004", "S3");'>샘플3</a><br>
-                <br>
-                <a href="#none" onclick='fnPlayerSample("200006", "1111344", "SD");'>SD강의 샘플</a><br>
-                <a href="#none" onclick='fnPlayerSample("200006", "1111344", "HD");'>HD강의 샘플</a><br>
-                <a href="#none" onclick='fnPlayerSample("200006", "1111344", "WD");'>WD강의 샘플</a><br>
-                <br>
-                <a href="#none" onclick='fnPlayer("200006", "1111344", "WD");'>강의보기</a><br>
-    -->
-
             </div>
         </div>
     </div>

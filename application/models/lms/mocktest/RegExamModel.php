@@ -163,9 +163,6 @@ class RegExamModel extends WB_Model
             $src = $this->upload_path . $this->upload_path_mock . $idx;
             $dest = $this->upload_path . $this->upload_path_mock . $nowIdx;
 
-            logger($src);
-            logger($dest);
-
             exec("cp -rf $src $dest");
             if(is_dir($dest) === false) {
                 throw new Exception('파일 저장에 실패했습니다.');

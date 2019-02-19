@@ -49,14 +49,17 @@
             <a href="{{ site_url('/home/html/event_ing_read') }}" target="_blank">이벤트 > 진행중인 이벤트 상세 page 이동</a>
             <a href="{{ site_url('/home/html/event_end') }}" target="_blank">이벤트 > 마감된 이벤트 page 이동</a>
             <a href="{{ site_url('/home/html/event_end_read') }}" target="_blank">이벤트 > 마감된 이벤트 상세 page 이동</a>
+            <a href="{{ site_url('/home/html/event_end_read') }}" target="_blank">이벤트 > 마감된 이벤트 상세 page 이동</a>
             <br><br>
             <a href="{{ site_url('/home/html/event_onLeaveArmyPass') }}" target="_blank">전역군인인증 intro</a>
-            <a href="{{ site_url('/home/html/event_onLeaveArmyPassConfirmPop') }}" target="_blank">전역군인인증 팝업</a>
+            <a href="{{ site_url('/home/html/event_onLeaveArmyPassConfirmPop') }}" target="_blank">전역군인인증 팝업(사이즈 740x700)</a>
             <a href="{{ site_url('/home/html/event_onLeaveArmyPassCop') }}" target="_blank">전역군인인증-경찰직</a>
-            <a href="{{ site_url('/home/html/event_onMOU') }}" target="_blank">교육 콘텐츠 제공 업무제공 체결(MOU) 팝업</a>
-            <a href="{{ site_url('/home/html/event_onCopReboundPop') }}" target="_blank">타 학원 수강생 인증 팝업</a>
-            <br><br>
-            <a href="{{ site_url('/home/html/event_end_read') }}" target="_blank">이벤트 > 마감된 이벤트 상세 page 이동</a>
+            <a href="{{ site_url('/home/html/event_onMOU') }}" target="_blank">교육 콘텐츠 제공 업무제공 체결(MOU) 팝업(사이즈 850x700)</a>
+            <a href="{{ site_url('/home/html/event_onCopReboundPop') }}" target="_blank">타 학원 수강생 인증 팝업(사이즈 740x700)</a>
+            <a href="{{ site_url('/home/html/event_onCopPromotionPass') }}" target="_blank">경찰 승진PASS</a>
+            <a href="{{ site_url('/home/html/event_onCopPromotionPassPop') }}" target="_blank">경찰 승진PASS 인증 팝업(사이즈 740x700)</a>
+
+            <br><br>            
             <a href="{{ site_url('/home/html/mocktest1') }}" target="_blank">수험정보 > 시험공고 page 이동</a>
             <a href="{{ site_url('/home/html/mocktest2') }}" target="_blank">수험정보 > 수험뉴스 page 이동</a>
             <a href="{{ site_url('/home/html/mocktest3') }}" target="_blank">수험정보 > 기출문제 page 이동</a>

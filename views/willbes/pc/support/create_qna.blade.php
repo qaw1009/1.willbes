@@ -47,7 +47,7 @@
                                 <select id="s_campus" name="s_campus" title="캠퍼스" class="seleCampus" style="width: 250px;">
                                     <option value="">캠퍼스 선택</option>
                                     @foreach($arr_base['campus'] as $row)
-                                        <option value="{{$row['CampusCcd']}}" class="{{$row['SiteCode']}}" @if($data['CampusCcd'] == $row['CampusCcd'])selected="selected"@endif>{{$row['CcdName']}}</option>
+                                        <option value="{{$row['CampusCcd']}}" class="{{$row['SiteCode']}}" @if($data['CampusCcd'] == $row['CampusCcd'] || element('s_campus',$arr_input) == $row['CampusCcd'])selected="selected"@endif>{{$row['CcdName']}}</option>
                                     @endforeach
                                 </select>
 

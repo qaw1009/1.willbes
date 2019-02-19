@@ -81,9 +81,14 @@ class Home extends \app\controllers\FrontController
         $data = [];
 
         if (APP_DEVICE == 'pc') {
+            $arr_campus = array_replace_recursive($arr_campus, $this->_getCampusInfo());
+            $data['arr_campus'] = $arr_campus;
             $data['notice'] = $this->_boardNotice(5);
-            $data['exam_announcement'] = $this->_boardExamAnnouncement(5);
+            $data['exam_news'] = $this->_boardExamNews(5);
             $data['onAir'] = $this->_onAir();
+            foreach ($arr_campus as $row) {
+                $data['notice_campus'][$row['CampusCcd']] = $this->_boardNotice(2, '', [$row['CampusCcd']]);
+            }
         }
 
         return $data;
@@ -173,9 +178,9 @@ class Home extends \app\controllers\FrontController
      */
     private function _boardNotice($limit_cnt = 5, $cate_code = '', $arr_campus = [])
     {
-        $column = 'b.BoardIdx, b.Title, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
+        $column = 'b.BoardIdx, b.Title, b.IsBest, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
         $order_by = ['b.IsBest' => 'Desc', 'b.BoardIdx' => 'Desc'];
-        $arr_condition = ['EQ' => ['b.BmIdx' => 45, 'b.SiteCode' => $this->_site_code, 'b.IsUse' => 'Y']];
+        $arr_condition = ['EQ' => ['b.BmIdx' => 45, 'b.SiteCode' => $this->_site_code, 'b.IsUse' => 'Y'], 'IN' => ['b.CampusCcd' => $arr_campus]];
 
         return $this->supportBoardFModel->listBoard(false, $arr_condition, $column, $limit_cnt, 0, $order_by);
     }
@@ -205,10 +210,38 @@ class Home extends \app\controllers\FrontController
      */
     private function _boardExamNews($limit_cnt = 5, $cate_code = '', $arr_campus = [])
     {
-        $column = 'b.BoardIdx, b.Title, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
+        $column = 'b.BoardIdx, b.Title, b.IsBest, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
         $order_by = ['b.IsBest' => 'Desc', 'b.BoardIdx' => 'Desc'];
         $arr_condition = ['EQ' => ['b.BmIdx' => 57, 'b.IsUse' => 'Y']];
 
         return $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $arr_condition, $column, $limit_cnt, 0, $order_by);
+    }
+
+    /**
+     * 캠퍼스별 기타 정보 설정
+     * 캠퍼스 배열에 맞게 배열 셋팅
+     * @return array
+     */
+    private function _getCampusInfo()
+    {
+        switch ($this->_site_code) {
+            case "2002":
+                $temp_campus = [
+                    '0' => ['MapPath' => img_url('cop_acad/map/map_cop_origin.jpg'),'Addr' => '서울시동작구만양로105 2층<br/>(서울시동작구노량진동116-2 2층)','Tel' => '1544-0336'],
+                    '1' => ['MapPath' => img_url('cop_acad/map/map_cop_sl.jpg'),'Addr' => '서울 관악구 신림로 23길 16 4층','Tel' => '1544-4006'],
+                    '2' => ['MapPath' => img_url('cop_acad/map/map_cop_bs.jpg'),'Addr' => '부산 진구 부정동 223-8','Tel' => '1522-8112'],
+                    '3' => ['MapPath' => img_url('cop_acad/map/map_cop_dg.jpg'),'Addr' => '대구 중구 중앙대로 412(남일동) CGV 2층','Tel' => '1522-6112'],
+                    '4' => ['MapPath' => img_url('cop_acad/map/map_cop_ic.jpg'),'Addr' => '인천 부평구 부평동 534-28 중보빌딩 10층','Tel' => '1544-1661'],
+                    '5' => ['MapPath' => img_url('cop_acad/map/map_cop_kj.jpg'),'Addr' => '광주 북구 호동로 6-11','Tel' => '062-722-8140'],
+                    '6' => ['MapPath' => img_url('cop_acad/map/map_cop_jbjj.jpg'),'Addr' => '','Tel' => ''],
+                    '7' => ['MapPath' => img_url('cop_acad/map/map_cop_jinj.jpg'),'Addr' => '경남 진주시 칠암동 490-8 엠코아빌딩 4층','Tel' => '055-755-7771'],
+                    '8' => ['MapPath' => img_url('cop_acad/map/map_cop_jj.jpg'),'Addr' => '제주도 제주시 동광로 56 3층','Tel' => '064-722-8140']
+                ];
+                break;
+            default:
+                $temp_campus = [];
+        }
+
+        return $temp_campus;
     }
 }

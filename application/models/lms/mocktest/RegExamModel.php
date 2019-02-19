@@ -160,8 +160,8 @@ class RegExamModel extends WB_Model
             }
 
             // 파일 복사
-            $src = $this->upload_path . $this->upload_path_mock . $idx;
-            $dest = $this->upload_path . $this->upload_path_mock . $nowIdx;
+            $src = $this->upload_path . $this->upload_path_mock . $idx . "/";
+            $dest = $this->upload_path . $this->upload_path_mock . $nowIdx . "/";
 
             exec("cp -rf $src $dest");
             if(is_dir($dest) === false) {

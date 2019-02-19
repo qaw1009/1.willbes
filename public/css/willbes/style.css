@@ -1741,10 +1741,10 @@ table.auTable tr td {
     letter-spacing: normal;
 }
 .willbesNumber ul li {
-    margin-left: 100px;
+    margin-left: 50px;
 }
 .willbesNumber ul li:first-child {
-    margin-left: 50px;
+    margin-left: 0;
 }
 .willbesNumber .nTit {
     font-size: 17px;

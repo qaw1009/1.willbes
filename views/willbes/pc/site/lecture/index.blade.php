@@ -168,7 +168,7 @@
                                 </div>
                                 <div class="Name">{{ str_first_pos_before($prof_name, '::') }} 교수님</div>
                             </li>
-                            @if($data['professor_study_comments'][$subject_idx][$prof_idx] != 'N')
+                            @if(isset($data['professor_study_comments'][$subject_idx][$prof_idx]) === true && $data['professor_study_comments'][$subject_idx][$prof_idx] != 'N')
                                 <li class="Reply tx-blue">
                                     <strong>수강후기</strong>
                                     <div class="sliderUp vSlider">

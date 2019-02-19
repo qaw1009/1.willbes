@@ -9761,6 +9761,7 @@ table.acadlecInfoPackageTable tr.Top td {
     display: inline-block;
     margin: 0 7px;
     line-height: 18px;
+    vertical-align: middle;
 }
 .Paging ul li a {
     font-size: 12px;

@@ -320,7 +320,7 @@
                         <td class="w-no">{{ $row['wUnitNum'] }}회차 {{ $row['wUnitLectureNum'] }}강</td>
                         <td class="w-list tx-left pl20">{{ $row['wUnitName'] }}</td>
                         <td class="w-free">
-                            @if($data['FreeLecTypeCcd'] == '652002')
+                            @if($pattern == 'free' && $data['FreeLecTypeCcd'] == '652002')
                                 @if(empty($row['wWD']) === false) <span class="tBox NSK t3 white"><a href="javascript:fnPlayerFree('{{$data['ProdCode']}}','{{$row['wUnitIdx']}}','WD');">WIDE</a></span> @endif
                                 @if(empty($row['wHD']) === false) <span class="tBox NSK t1 black"><a href="javascript:fnPlayerFree('{{$data['ProdCode']}}','{{$row['wUnitIdx']}}','HD');">HIGH</a></span> @endif
                                 @if(empty($row['wSD']) === false) <span class="tBox NSK t2 gray"><a href="javascript:fnPlayerFree('{{$data['ProdCode']}}','{{$row['wUnitIdx']}}','SD');">LOW</a></span> @endif

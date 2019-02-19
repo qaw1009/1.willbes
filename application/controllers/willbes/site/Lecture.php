@@ -40,7 +40,10 @@ class Lecture extends \app\controllers\FrontController
 
         // 과목이 선택된 경우 해당 교수 조회
         if (empty(element('subject_idx', $arr_input)) === false) {
-            $arr_base['professor'] = $this->baseProductFModel->listProfessorSubjectMapping($this->_site_code, null, $this->_cate_code, element('subject_idx', $arr_input));
+            $arr_professor = $this->baseProductFModel->listProfessorSubjectMapping($this->_site_code, ['StudyCommentData'], $this->_cate_code, element('subject_idx', $arr_input));
+            $arr_base['professor'] = $arr_professor;
+        } else {
+            $arr_professor = $this->baseProductFModel->listProfessorSubjectMapping($this->_site_code, ['StudyCommentData'], $this->_cate_code);
         }
 
         // 상품 기본조회 조건
@@ -70,11 +73,11 @@ class Lecture extends \app\controllers\FrontController
             ]
         ]);
 
-        // 수강후기 게시판 자료 추가
-        $add_column = ', ifnull(fn_professor_study_comment_data(ProfIdx, SiteCode, CateCode, SubjectIdx, 3), "N") as StudyCommentData';
+        // 수강후기 게시판 자료 추가 => 수강후기 데이터 조회 변경 (상품정보 => 교수정보)
+        //$add_column = ', ifnull(fn_professor_study_comment_data(ProfIdx, SiteCode, CateCode, SubjectIdx, 3), "N") as StudyCommentData';
 
         // 상품 조회
-        $list = $this->lectureFModel->listSalesProduct($this->_learn_pattern, false, $arr_condition, null, null, ['ProdCode' => 'desc'], $add_column);
+        $list = $this->lectureFModel->listSalesProduct($this->_learn_pattern, false, $arr_condition, null, null, ['ProdCode' => 'desc']);
 
         // 상품조회 결과 배열 초기화
         $selected_subjects = [];
@@ -89,10 +92,13 @@ class Lecture extends \app\controllers\FrontController
 
             // 상품조회 결과에 존재하는 교수 정보
             $selected_professor_names = array_data_pluck($list, ['wProfName', 'ProfSlogan'], ['SubjectIdx', 'ProfIdx']);    // 교수명, 슬로건
-            $selected_professor_study_comments = array_data_pluck($list, 'StudyCommentData', ['SubjectIdx', 'ProfIdx']);    // 수강후기
             $selected_professor_refers = array_map(function ($val) {
                 return json_decode($val, true);
             }, array_pluck($list, 'ProfReferData', 'ProfIdx'));
+
+            // 수강후기 데이터 조회 변경 (상품정보 => 교수정보)
+            //$selected_professor_study_comments = array_data_pluck($list, 'StudyCommentData', ['SubjectIdx', 'ProfIdx']);    // 수강후기
+            $selected_professor_study_comments = array_data_pluck($arr_professor, 'StudyCommentData', ['SubjectIdx', 'ProfIdx']);    // 수강후기
 
             // 상품 조회결과 재정의
             foreach ($list as $idx => $row) {

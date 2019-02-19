@@ -319,6 +319,9 @@
                 // 카테고리 검색 초기화
                 $regi_form.find('input[name="cate_code"]').val('');
                 $('#selected_category').html('');
+
+                // 과목/교수 검색 초기화
+                $('#selected_prof_subject').html('');
             });
 
             // 카테고리 검색

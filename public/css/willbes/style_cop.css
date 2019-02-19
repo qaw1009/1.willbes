@@ -1003,6 +1003,13 @@
     float: right;
 }
 
+.cop .willbesNumber ul li {
+    margin-left: 100px;
+}
+.cop .willbesNumber ul li:first-child {
+    margin-left: 50px;
+}
+
 /* Guide Container : Cop */
 /*수험가이드*/
 .tabWrap.tab_cop_Guide {

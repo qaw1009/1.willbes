@@ -322,6 +322,7 @@
                     <li><a href="#campus8" class="">전북</a><span class="row-line">|</span></li>
                     <li><a href="#campus9" class="">진주</a></li>
                 </ul>
+
                 <div class="tabBox noticeBox_campus">
                     <div id="campus1" class="tabContent">
                         <div class="map_img">
@@ -616,6 +617,8 @@
                             </div>
                         </div>
                     </div>
+                    <!-- 제주//-->
+
                     <div id="campus8" class="tabContent">
                         <div>
                             <div class="map_img">
@@ -722,9 +725,23 @@
                             </div>
                         </div>
                     </div>
+                    <!-- 진주//-->
                 </div>
+                <!-- noticeBox_campus //-->
             </div>
         </div>
+    </div>
+    <!-- 캠퍼스//-->
+
+    <div id="QuickMenu" class="MainQuickMenu">
+        <ul>
+            <li><a href="#none">이달의 개강안내</a></li>
+            <li><a href="#none">강의 시간표</a></li>
+            <li><a href="#none">강의실 배정표</a></li>
+            <li><a href="#none">학원 오시는 길</a></li>
+            <li><a href="#none">1:1 방문상담</a></li>
+            <li><a href="#none">학원 갤러리</a></li>
+        </ul>
     </div>
 </div>
 <!-- End Container -->

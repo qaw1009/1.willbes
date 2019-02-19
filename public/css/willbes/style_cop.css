@@ -34,10 +34,11 @@
 /* Main Container : QuickMenu : Cop */
 .MainQuickMenu {
     position: fixed;
-    top: 90px;
+    top: 110px;
     right: 20px;
     width: 100px;
     height: auto;
+    z-index: 999;
 }
 .MainQuickMenu ul li {
     background: #fff;
@@ -149,7 +150,7 @@
     height: 152px;
     top: 72px;
     right: 0;
-    z-index: 100;
+    z-index: 1;
 }
 .youtubeWrap {    
     height:530px;

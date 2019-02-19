@@ -538,6 +538,58 @@
     border: 1px solid #0c5dc0;
 }
 
+/* Main Container : QuickMenu : Cop */
+.cop_acad .MainQuickMenu {
+    position: fixed;
+    top: 110px;
+    right: 20px;
+    width: 164px;
+    height: auto;
+    background: #ececec;
+    z-index: 999;
+}
+.cop_acad .MainQuickMenu ul {
+    margin:0 8px;
+}
+.cop_acad .MainQuickMenu li {
+    border-top:1px solid #f6f6f6;
+    border-bottom:1px solid #d4d4d4;
+    height: 40px;
+    line-height: 40px;
+    background: url("../../img/willbes/cop_acad/icon_arrow02.png") no-repeat 95% center;
+    margin: 0;
+}
+.cop_acad .MainQuickMenu li:first-child {
+    border-top:0;
+}
+.cop_acad .MainQuickMenu li:last-child {
+    border-bottom:0;
+}
+.cop_acad .MainQuickMenu li a {
+    display: block; padding-left:30px;
+}
+.cop_acad .MainQuickMenu li a:hover {
+    color:#00acec;
+}
+.cop_acad .MainQuickMenu li:nth-child(1) a {
+    background: url("../../img/willbes/cop_acad/icon_rq01.png") no-repeat 3px center;
+}
+.cop_acad .MainQuickMenu li:nth-child(2) a {
+    background: url("../../img/willbes/cop_acad/icon_rq02.png") no-repeat 3px center;
+}
+.cop_acad .MainQuickMenu li:nth-child(3) a {
+    background: url("../../img/willbes/cop_acad/icon_rq03.png") no-repeat 3px center;
+}
+.cop_acad .MainQuickMenu li:nth-child(4) a {
+    background: url("../../img/willbes/cop_acad/icon_rq04.png") no-repeat 3px center;
+}
+.cop_acad .MainQuickMenu li:nth-child(5) a {
+    background: url("../../img/willbes/cop_acad/icon_rq05.png") no-repeat 3px center;
+}
+.cop_acad .MainQuickMenu li:nth-child(6) a {
+    background: url("../../img/willbes/cop_acad/icon_rq06.png") no-repeat 3px center;
+}
+
 /*sub 메인*/
 .PA .subSection01 {
     clear: both;

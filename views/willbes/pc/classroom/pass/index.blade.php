@@ -21,10 +21,10 @@
                         <div class="will-Tit-Zone">
                             <div class="will-Tit NG f_left">· 무한PASS선택</div>
                             <span class="willbes-Lec-Selected GM tx-gray" style="float: inherit">
-                                <select id="sitecode" name="sitecode" title="process" class="seleProcess">
+                                <select id="sitegroupcode" name="sitegroupcode" title="process" class="seleProcess">
                                     <option value="">과정</option>
-                                    @foreach($sitelist as $row )
-                                        <option value="{{$row['SiteCode']}}" @if(isset($input_arr['sitecode']) && $input_arr['sitecode'] == $row['SiteCode']) selected="selected" @endif>{{$row['SiteName']}}</option>
+                                    @foreach($sitegroup_arr as $row )
+                                        <option value="{{$row['SiteGroupCode']}}" @if(isset($input_arr['sitegroupcode']) && $input_arr['sitegroupcode'] == $row['SiteGroupCode']) selected="selected" @endif>{{$row['SiteGroupName']}}</option>
                                     @endforeach
                                 </select>
                                 <select id="passidx" name="passidx" class="seleName" >

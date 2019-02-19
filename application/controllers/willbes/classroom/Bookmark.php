@@ -50,6 +50,7 @@ class Bookmark extends \app\controllers\FrontController
         ];
 
         // 셀렉트박스용 데이타
+        $sitegroup_arr = $this->classroomFModel->getSiteGroupList($cond_arr);
         $course_arr = $this->classroomFModel->getCourseList($cond_arr);
         $subject_arr = $this->classroomFModel->getSubjectList( $cond_arr);
         $prof_arr = $this->classroomFModel->getProfList($cond_arr);
@@ -147,6 +148,7 @@ class Bookmark extends \app\controllers\FrontController
         ]), $orderby);
 
         return $this->load->view('/classroom/bookmark/list', [
+            'sitegroup_arr' => $sitegroup_arr,
             'course_arr' => $course_arr,
             'subject_arr' => $subject_arr,
             'prof_arr' => $prof_arr,

@@ -56,7 +56,18 @@ class ClassroomFModel extends WB_Model
      */
     public function getSiteList($cond = [], $isoff = false)
     {
-        $columns = " SiteCode ";
+        $columns = " SiteCode, SiteName ";
+        return $this->getSelectList($columns, $cond, $isoff);
+    }
+
+
+    /**
+     * 사이트그룹리스트
+     * @return array
+     */
+    public function getSiteGroupList($cond = [], $isoff = false)
+    {
+        $columns = " SiteGroupCode, SiteGroupName ";
         return $this->getSelectList($columns, $cond, $isoff);
     }
 

@@ -79,6 +79,7 @@ class On extends \app\controllers\FrontController
         ];
 
         // 셀렉트박스용 데이타
+        $sitegroup_arr = $this->classroomFModel->getSiteGroupList($cond_arr);
         $course_arr = $this->classroomFModel->getCourseList($cond_arr);
         $subject_arr = $this->classroomFModel->getSubjectList( $cond_arr);
         $prof_arr = $this->classroomFModel->getProfList($cond_arr);
@@ -137,6 +138,7 @@ class On extends \app\controllers\FrontController
         }
 
         return $this->load->view('/classroom/on/on_standby', [
+            'sitegroup_arr' => $sitegroup_arr,
             'course_arr' => $course_arr,
             'subject_arr' => $subject_arr,
             'prof_arr' => $prof_arr,
@@ -178,6 +180,7 @@ class On extends \app\controllers\FrontController
         ];
 
         // 셀렉트박스용 데이타
+        $sitegroup_arr = $this->classroomFModel->getSiteGroupList($cond_arr);
         $course_arr = $this->classroomFModel->getCourseList($cond_arr);
         $subject_arr = $this->classroomFModel->getSubjectList( $cond_arr);
         $prof_arr = $this->classroomFModel->getProfList($cond_arr);
@@ -287,6 +290,7 @@ class On extends \app\controllers\FrontController
         $adminlist = [ 'lec' => $adminlistLec, 'pkg' => $adminlistPkg ];
 
         return $this->load->view('/classroom/on/on_ongoing', [
+            'sitegroup_arr' => $sitegroup_arr,
             'course_arr' => $course_arr,
             'subject_arr' => $subject_arr,
             'prof_arr' => $prof_arr,
@@ -326,6 +330,7 @@ class On extends \app\controllers\FrontController
         ];
 
         // 셀렉트박스용 데이타
+        $sitegroup_arr = $this->classroomFModel->getSiteGroupList($cond_arr);
         $course_arr = $this->classroomFModel->getCourseList($cond_arr);
         $subject_arr = $this->classroomFModel->getSubjectList( $cond_arr);
         $prof_arr = $this->classroomFModel->getProfList($cond_arr);
@@ -390,6 +395,7 @@ class On extends \app\controllers\FrontController
         }
 
         return $this->load->view('/classroom/on/on_pause', [
+            'sitegroup_arr' => $sitegroup_arr,
             'course_arr' => $course_arr,
             'subject_arr' => $subject_arr,
             'prof_arr' => $prof_arr,
@@ -426,6 +432,7 @@ class On extends \app\controllers\FrontController
         ];
 
         // 셀렉트박스용 데이타
+        $sitegroup_arr = $this->classroomFModel->getSiteGroupList($cond_arr);
         $course_arr = $this->classroomFModel->getCourseList($cond_arr);
         $subject_arr = $this->classroomFModel->getSubjectList( $cond_arr);
         $prof_arr = $this->classroomFModel->getProfList($cond_arr);
@@ -494,6 +501,7 @@ class On extends \app\controllers\FrontController
         }
 
         return $this->load->view('/classroom/on/on_end', [
+            'sitegroup_arr' => $sitegroup_arr,
             'course_arr' => $course_arr,
             'subject_arr' => $subject_arr,
             'prof_arr' => $prof_arr,
@@ -1398,16 +1406,6 @@ class On extends \app\controllers\FrontController
             'booklist' => $booklist,
             'SiteUrl' => app_to_env_url($this->getSiteCacheItem($SiteCode, 'SiteUrl'))
         ]);
-    }
-
-    public function bookmark()
-    {
-
-    }
-
-    public function Certificate()
-    {
-
     }
 
 }

@@ -23,7 +23,7 @@ class Pass extends \app\controllers\FrontController
     public function index($params = [])
     {
         $passidx = $this->_req("prodcode");
-        $sitecode = $this->_req("sitecode");
+        $sitegroupcode = $this->_req("sitegroupcode");
 
         $input_arr = $this->_reqG(null);
         $today = date("Y-m-d", time());
@@ -53,16 +53,20 @@ class Pass extends \app\controllers\FrontController
             ]
         ];
 
+        $sitegroup_arr = $this->classroomFModel->getSiteGroupList($cond_arr);
+
+        /*
         $sitelist = $this->classroomFModel->getSiteList($cond_arr);
         foreach($sitelist AS $idx => $row){
             $sitelist[$idx]['SiteName'] = $this->getSiteCacheItem($row['SiteCode'], 'SiteGroupName');
         }
+        */
 
         // 실제 리스트용
         $cond_arr = [
             'EQ' => [
                 'MemIdx' => $this->session->userdata('mem_idx'), // 사용자번호
-                'SiteCode' => $sitecode // 해당사이트의 강좌만
+                'SiteGroupCode' => $sitegroupcode // 해당사이트의 강좌만
             ],
             'LTE' => [
                 'LecStartDate' => $today // 시작일 <= 오늘
@@ -229,11 +233,11 @@ class Pass extends \app\controllers\FrontController
         }
 
         return $this->load->view('/classroom/pass/index', [
+            'sitegroup_arr' => $sitegroup_arr,
             'course_arr' => $course_arr,
             'subject_arr' => $subject_arr,
             'prof_arr' => $prof_arr,
             'input_arr' => $input_arr,
-            'sitelist' => $sitelist,
             'passlist' => $passlist,
             'passinfo' => $passinfo,
             'leclist_like' => $leclist_like,

@@ -71,53 +71,7 @@
             width:280px;
             z-index:1;            
         }
-        .skybanner_sectionFixed {position:fixed; top:20px}
-
-        /*이모티콘 댓글*/
-        .characterSt2 {width:960px; margin:0 auto 50px}
-		.characterSt2 .characterSt2Img {margin-bottom:20px; border-top:1px solid #ccc; border-bottom:1px solid #ccc}
-		.characterSt2 .characterSt2Img li {display:inline; float:left; width:16.366666%; text-align:center; cursor:pointer;border-right:1px solid #ccc}
-		.characterSt2 .characterSt2Img li input {vertical-align:middle}
-		.characterSt2 .characterSt2Img li.active {background:#cde7f5}
-		.characterSt2 .characterSt2Img li p {height:40px; line-height:40px; color:#333; background:#eee; font-size:14px; font-weight:bold}
-		.characterSt2 .characterSt2Img li p span {color:#ee2365}
-		.characterSt2 .characterSt2Img li:last-child {border-right:0; width:160px;}
-		.characterSt2 .characterSt2Img:after {content:""; display:block; clear:both}
-		
-	    .replySt3 {width:980px; margin:0 auto}	
-		.replySt3 .textarBx {margin-bottom:10px; background:#e8e6d9; padding:20px}
-        .replySt3 .textarBx div {float:left; width:85.5%}
-        .replySt3 .textarBx textarea {width:100%; height:85px;}
-		.replySt3 .textarBx div input {height:36px; width:97%; line-height:36px; vertical-align:middle; border:2px solid #707070; margin-bottom:5px; padding-left:2%}
-		.replySt3 .textarBx button {float:right; width:14%; height:85px; line-height:85px; text-align:center; background:#69654b; border-radius:4px; color:#fff}
-		.replySt3 .textarBx:after {content:""; display:block; clear:both}
-		.replySt3 p {color:#69654b}
-		
-		.replySt3List {width:980px; margin:20px auto 50px}
-		.replySt3List li > span {display:block; float:left; width:120px; text-align:center}
-		.replySt3List li img {width:100px}
-		.replySt3List li .crtReply {float:left; margin:10px 0}
-		.replySt3List li .crtReply p {margin-bottom:5px}
-		.replySt3List li .crtReply strong {color:#1087ef}
-		.replySt3List li .crtReply > span {font-size:11px !important; color:#999; font-weight:normal !important}
-		.replySt3List li .crtReply p a {float:right; margin-top:-5px; padding:0 4px; height:20px; line-height:20px; color:#666; border:1px solid #666; font-size:11px !important}
-		
-		.replySt3List li .crtReply div {width:860px; background:#eee; border-radius:10px; padding:20px; line-height:1.4; position:relative; margin:0 auto; margin-bottom:5px}	
-		.replySt3List li .crtReply div span a {display:block; margin-bottom:5px; color:#cf9243; font-weight:bold}			
-		.replySt3List li .crtReply div em {
-            position:absolute;
-            background:transparent;
-            width:8px;height:0;
-            top:20px;
-            left:0;
-            margin-left:-8px;
-            border-top: 8px solid transparent;
-            border-right: 8px solid #eee;
-            border-bottom: 8px solid transparent;
-            z-index:999;
-        }								
-		.replySt3List li:after {content:""; display:block; clear:both}
-		.rolling {width:1210px; margin:0 auto; text-align:center}
+        .skybanner_sectionFixed {position:fixed; top:20px}        
     </style>
     
     <div id="Container" class="subContainer widthAuto c_both ">
@@ -359,7 +313,7 @@
         </div>   
         
         <!--  이모티콘 댓글 -->
-        @include('html.event_replyEmoticon')
+        @include('html.event_incReplyEmoticon')
     </div>
     <!-- End Container -->
 

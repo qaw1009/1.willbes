@@ -54,10 +54,11 @@
             <a href="{{ site_url('/home/html/event_onLeaveArmyPass') }}" target="_blank">전역군인인증 intro</a>
             <a href="{{ site_url('/home/html/event_onLeaveArmyPassConfirmPop') }}" target="_blank">전역군인인증 팝업(사이즈 740x700)</a>
             <a href="{{ site_url('/home/html/event_onLeaveArmyPassCop') }}" target="_blank">전역군인인증-경찰직</a>
-            <a href="{{ site_url('/home/html/event_onMOU') }}" target="_blank">교육 콘텐츠 제공 업무제공 체결(MOU) 팝업(사이즈 850x700)</a>
+            <a href="{{ site_url('/home/html/event_onMOU') }}" target="_blank">교육 콘텐츠 제공 업무제공 체결(MOU) 팝업(사이즈 850x700)</a>            
+            <a href="{{ site_url('/home/html/event_onCopPromotionPass') }}" target="_blank">경찰 승진 PASS</a>
+            <a href="{{ site_url('/home/html/event_onCopPromotionPassPop') }}" target="_blank">경찰 승진 PASS 인증 팝업(사이즈 740x700)</a>
+            <a href="{{ site_url('/home/html/event_onCopZeroPass') }}" target="_blank">평생 0원 PASS</a>
             <a href="{{ site_url('/home/html/event_onCopReboundPop') }}" target="_blank">타 학원 수강생 인증 팝업(사이즈 740x700)</a>
-            <a href="{{ site_url('/home/html/event_onCopPromotionPass') }}" target="_blank">경찰 승진PASS</a>
-            <a href="{{ site_url('/home/html/event_onCopPromotionPassPop') }}" target="_blank">경찰 승진PASS 인증 팝업(사이즈 740x700)</a>
 
             <br><br>            
             <a href="{{ site_url('/home/html/mocktest1') }}" target="_blank">수험정보 > 시험공고 page 이동</a>

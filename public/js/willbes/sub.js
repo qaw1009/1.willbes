@@ -405,8 +405,8 @@ $('*[id*=Sticky]:visible').ready(function() {
     }
 });
 
-
-// 타이머
+/*
+// 타이머 이벤트 페이지와 겹쳐서 주석처리
 var DdayDiff = { //타이머를 설정합니다.
     inDays: function(dd1, dd2) {
         var tt2 = dd2.getTime();
@@ -472,6 +472,7 @@ function daycountDown() {
 }
 daycountDown();
 // End 타이머
+*/
 
 // image flipped
 $(document).ready(function(){

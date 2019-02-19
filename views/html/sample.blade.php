@@ -60,8 +60,8 @@
             <a href="{{ site_url('/home/html/event_onCopZeroPass') }}" target="_blank">평생 0원 PASS</a>
             <a href="{{ site_url('/home/html/event_onCopReboundPop') }}" target="_blank">타 학원 수강생 인증 팝업(사이즈 740x700)</a>
             <a href="{{ site_url('/home/html/event_onCopSampleQuestions') }}" target="_blank">기출문제(이모티콘 댓글)</a>
-            <a href="{{ site_url('/home/html/event_onGosiFirePass') }}" target="_blank">소방 PASS</a>
-            <a href="{{ site_url('/home/html/event_onGosiSemuPass') }}" target="_blank">세무 PASS</a>
+            <a href="{{ site_url('/home/html/event_onGosiFirePass') }}" target="_blank">공무원 온라인 소방 PASS</a>
+            <a href="{{ site_url('/home/html/event_onGosiNinePass') }}" target="_blank">공무원 온라인 9급 PASS</a>
 
             <br><br>            
             <a href="{{ site_url('/home/html/mocktest1') }}" target="_blank">수험정보 > 시험공고 page 이동</a>

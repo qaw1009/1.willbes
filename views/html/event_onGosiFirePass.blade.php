@@ -91,53 +91,7 @@
         }        
     </style>
     
-    <div id="Container" class="subContainer widthAuto c_both ">
-        <div class="Menu NSK c_both">
-            <h3>
-                <ul class="menu-Tit">
-                    <li class="Tit">경찰<span class="row-line">|</span></li>
-                    <li class="subTit">경찰학원</li>
-                </ul>
-                <ul class="menu-List">
-                    <li>
-                        <a href="#none">교수진소개</a>
-                    </li>
-                    <li>
-                        <a href="#none">종합반</a>
-                    </li>
-                    <li>
-                        <a href="#none">단과</a>
-                    </li>
-                    <li>
-                        <a href="#none">수험정보</a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="{{ site_url('/home/html/acad_info1') }}">학원안내</a>
-                        <div class="drop-Box list-drop-Box">
-                            <ul>
-                                <li class="Tit">학원안내</li>
-                                <li><a href="{{ site_url('/home/html/acad_info1_1') }}">학원강의정보</a></li>
-                                <li><a href="{{ site_url('/home/html/acad_info2') }}">모의고사성적공지</a></li>
-                                <li><a href="{{ site_url('/home/html/acad_info3') }}">학원갤러리</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="#none">학원소개</a>
-                    </li>
-                    <li class="Acad">
-                        <a href="#none">신광은경찰 온라인 <span class="arrow-Btn">></span></a>
-                    </li>
-                </ul>
-            </h3>
-        </div>
-        <div class="Depth">
-            <img src="{{ img_url('sub/icon_home.gif') }}"> 
-            <span class="1depth"><span class="depth-Arrow">></span><strong>학원안내</strong></span>
-            <span class="1depth"><span class="depth-Arrow">></span><strong>학원강의정보</strong></span>
-        </div>
-    </div>
-    <!-- 고정 메뉴 //-->
+    @include('html.event_incOnTnb')
 
     <div class="p_re evtContent" id="evtContainer">
         <div class="skybanner">
@@ -150,7 +104,7 @@
                 <table width="1100px;" height="90px" border="0" cellpadding=0 cellspacing=0>
                     <tr>
                         <td style="text-align:center;"><img src="http://file3.willbes.net/new_gosi/2019/01/EV190115_c0_1.jpg" alt=""  /></td>                        
-                        <td width="150"align="center" class="time_txt">마감까지 <br /><span>남은 시간은</span></td>
+                        <td width="150" align="center" class="time_txt">마감까지 <br /><span>남은 시간은</span></td>
                         <td width="62" height="101" align="center"   ><img id="d1" src="http://file.willbes.net/new_image/0.png" border="0" class="t_img" /></td>
                         <td width="62" height="101"  align="center"  ><img id="d2" src="http://file.willbes.net/new_image/0.png" border="0" class="t_img" /></td>
                         <td width="60" height="101" align="center" class="time_txt">day</td>
@@ -306,38 +260,38 @@
 		}
 			
 		function countDown() {
-		//event_day = new Date(2016,4,6,23,59,59);
-		// 한달 전 날짜로 셋팅 
-		event_day = new Date(2019,1,19,23,59,59);
-		now = new Date();
+            //event_day = new Date(2016,4,6,23,59,59);
+            // 한달 전 날짜로 셋팅 
+            event_day = new Date(2019,1,19,23,59,59);
+            now = new Date();
 
-		var Monthleft = event_day.getMonth() - now.getMonth();
-		var Dateleft = DateDiff.inDays(now, event_day);
-		var Hourleft = event_day.getHours() - now.getHours();
-		var Minuteleft = event_day.getMinutes() - now.getMinutes();
-		var Secondleft = event_day.getSeconds() - now.getSeconds();
+            var Monthleft = event_day.getMonth() - now.getMonth();
+            var Dateleft = DateDiff.inDays(now, event_day);
+            var Hourleft = event_day.getHours() - now.getHours();
+            var Minuteleft = event_day.getMinutes() - now.getMinutes();
+            var Secondleft = event_day.getSeconds() - now.getSeconds();
 
-		//alert(Monthleft+"-"+Dateleft+"-"+Hourleft+"-"+Minuteleft+"-"+Secondleft)
+            //alert(Monthleft+"-"+Dateleft+"-"+Hourleft+"-"+Minuteleft+"-"+Secondleft)
 
-		if((event_day.getTime() - now.getTime()) > 0) {
-			$("#d1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Dateleft/10) + ".png");
-			$("#d2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Dateleft%10) + ".png");
+            if((event_day.getTime() - now.getTime()) > 0) {
+                $("#d1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Dateleft/10) + ".png");
+                $("#d2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Dateleft%10) + ".png");
 
-			$("#h1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Hourleft/10) + ".png");
-			$("#h2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Hourleft%10) + ".png");
+                $("#h1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Hourleft/10) + ".png");
+                $("#h2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Hourleft%10) + ".png");
 
-			$("#m1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Minuteleft/10) + ".png");
-			$("#m2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Minuteleft%10) + ".png");
+                $("#m1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Minuteleft/10) + ".png");
+                $("#m2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Minuteleft%10) + ".png");
 
-			$("#s1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Secondleft/10) + ".png");
-			$("#s2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Secondleft%10) + ".png");
-		}
-		else{
-		}
+                $("#s1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Secondleft/10) + ".png");
+                $("#s2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Secondleft%10) + ".png");
+            }
+            else{
+            }
 
-		setTimeout(countDown, 1000);
-	}
-	countDown();
+            setTimeout(countDown, 1000);
+        }
+        countDown();
         
         $(function(e){
             var targetOffset= $("#evtContainer").offset().top;

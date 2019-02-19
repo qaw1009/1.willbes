@@ -1,4 +1,8 @@
 /*********************************************     Main Container : Gosi     *********************************************/
+.gosi .Depth .depth:last-child strong {
+    color: #ba560e;
+}
+
 /* Main Container : MainVisual */
 .MainVisual:after {
     content: "";
@@ -99,7 +103,19 @@
     color: #ba560e;
 }
 
-
+/* Main Container : QuickMenu : Gosi */
+.gosi .QuickDdayBox .q_dday {
+    font-size: 24px;
+    font-weight: 600;
+    color: #ba560e;
+    padding-top: 10px;
+    letter-spacing: 0;
+}
+.gosi .QuickSlider .sliderNum {
+    width: 100px;
+    height: 192px;
+    overflow: hidden;
+}
 
 /* Guide Container : Gosi */
 /*수험가이드*/

@@ -195,6 +195,7 @@
             <div class="LAeventB03img">
                 <img src="http://file3.willbes.net/new_gosi/2018/01/leaveArmyPass02_5.jpg" alt="자격증 교육과정의 경우, 일부 혜택 제외"/>
             </div>
+
             <!--경찰-->
             <div class="FreepassLec NG">
             	<h3>경찰직</h3>
@@ -255,18 +256,86 @@
                             <td><a href="#none"><img src="http://file3.willbes.net/new_gosi/2017/01/leaveArmyB_btn1.jpg" alt="가입인증하기"/></a></td>
                         </tr>             
                     </table>
+                </div>                
+            </div>
+            <!--FreepassLec//-->  
+            
+            <!--일반행정직-->
+            <div class="FreepassLec NG">
+            	<h3>일반행정직</h3>
+                <div class="fpLecinfo">
+					<p>
+                    경찰 공무원 합격의 메카!<br />
+                    수강생 수가 입증한 부동의 1위! 신광은 경찰팀<br />
+                    노량진 수험가를 지배하는 강의로 합격을 예약하세요!     
+                    </p>
+                    <table>
+                        <col width="20%" />
+                        <col width="*" />
+                        <col width="25%" /> 
+                        <tr>
+                            <th>교재 미포함<br />
+                                구매가격</th>
+                            <td>
+                                <ul class="price">
+                                    <li class="liSty1">990,000원</li>
+                                    <li class="liSty2">본인부담 : 198,000원
+                                    <div>(* 취업역량교육비/바우처 792,000원 지원)</div> 
+                                    </li>
+                                </ul>
+                            </td>
+                            <td><a href="#none"><img src="http://file3.willbes.net/new_gosi/2017/01/leaveArmyB_btn2.jpg" alt="결제하기"/></a></td>
+                        </tr>
+                        <tr>
+                            <th>교재 포함<br />
+                                구매가격<br />
+                                (기본이론서)</th>
+                            <td>
+                                <ul class="price">
+                                    <li class="liSty1">1,190,000원</li>
+                                    <li class="liSty2">본인부담 : 238,000원
+                                    <div>(* 취업역량교육비/바우처 952,000원 지원)</div> 
+                                    </li>
+                                </ul>
+                            </td>
+                            <td><a href="#none"><img src="http://file3.willbes.net/new_gosi/2017/01/leaveArmyB_btn2.jpg" alt="결제하기"/></a></td>
+                        </tr>
+                        <tr>
+                            <th>교재 미포함<br />
+                            구매가격</th>
+                            <td class="before">
+                                가입/인증 완료 시<br />
+                                윌비스 PASS 금액이 공개됩니다.
+                            </td>
+                            <td><a href="#none"><img src="http://file3.willbes.net/new_gosi/2017/01/leaveArmyB_btn1.jpg" alt="가입인증하기"/></a></td>
+                            </tr>
+                            <tr>
+                            <th>교재 포함<br />
+                                구매가격<br />
+                                (기본이론서)</th>
+                            <td class="before">
+                                가입/인증 완료 시<br />
+                                윌비스 PASS 금액이 공개됩니다.
+                            </td>
+                            <td><a href="#none"><img src="http://file3.willbes.net/new_gosi/2017/01/leaveArmyB_btn1.jpg" alt="가입인증하기"/></a></td>
+                        </tr>             
+                    </table>
                 </div>
                 <!--fpLecinfo//-->
+                
                 <div class="golink">
-                	<img src="http://file3.willbes.net/new_gosi/2017/01/leaveArmyB05.png" alt="혹시, 원하시는 교육과정을 찾지 못하셨나요?"/>
+                    <img src="http://file3.willbes.net/new_gosi/2017/01/leaveArmyB05.png" alt="혹시, 원하시는 교육과정을 찾지 못하셨나요?"/>
                     <ul>
-                    	<li class="liSty1"><img src="http://file3.willbes.net/new_gosi/2017/01/leaveArmyB05_t1.png" alt="교육과정바로가기"/></li>
+                        <li class="liSty1"><img src="http://file3.willbes.net/new_gosi/2017/01/leaveArmyB05_t1.png" alt="교육과정바로가기"/></li>
                         <li><a target="_blank" href="http://www.willbesgosi.net/event/arm_event.html?event_cd=On_leaveArmy02_2018&topMenuType=O&EVENT_NO=710"><img src="http://file3.willbes.net/new_gosi/2017/01/leaveArmyB05_t2.png" alt="공무원"/></a></li>
                         <li><a target="_blank" href="http://www.willbescop.net/event/arm_event.html?event_cd=On_leaveArmy02_2018&topMenuType=O&EVENT_NO=53"><img src="http://file3.willbes.net/new_gosi/2017/01/leaveArmyB05_t3.png" alt="경찰"/></a></li>
                     </ul>
                 </div>
             </div>
-            <!--FreepassLec//-->        
+            <!--FreepassLec//--> 
+
+            
+
         </div>
         <!-- LAeventB03 //-->
 

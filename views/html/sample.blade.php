@@ -53,7 +53,7 @@
             <br><br>
             <a href="{{ site_url('/home/html/event_onLeaveArmyPass') }}" target="_blank">전역군인인증 온라인 intro</a>
             <a href="{{ site_url('/home/html/event_onLeaveArmyPassConfirmPop') }}" target="_blank">전역군인인증 팝업(사이즈 740x700)</a>
-            <a href="{{ site_url('/home/html/event_onLeaveArmyPassCop') }}" target="_blank">전역군인인증-경찰직</a>
+            <a href="{{ site_url('/home/html/event_onLeaveArmyPassLec') }}" target="_blank">전역군인인증 온라인 강의</a>
             <a href="{{ site_url('/home/html/event_onMOU') }}" target="_blank">교육 콘텐츠 제공 업무제공 체결(MOU) 팝업(사이즈 850x700)</a>            
             <a href="{{ site_url('/home/html/event_onCopPromotionPass') }}" target="_blank">경찰 승진 PASS</a>
             <a href="{{ site_url('/home/html/event_onCopPromotionPassPop') }}" target="_blank">경찰 승진 PASS 인증 팝업(사이즈 740x700)</a>

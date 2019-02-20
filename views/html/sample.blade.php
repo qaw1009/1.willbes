@@ -54,7 +54,7 @@
             <a href="{{ site_url('/home/html/event_onLeaveArmyPass') }}" target="_blank">전역군인인증 온라인 intro</a>
             <a href="{{ site_url('/home/html/event_onLeaveArmyPassConfirmPop') }}" target="_blank">전역군인인증 온라인 팝업(사이즈 740x700)</a>
             <a href="{{ site_url('/home/html/event_onLeaveArmyPassLec') }}" target="_blank">전역군인인증 온라인 강의</a>
-            <a href="{{ site_url('/home/html/event_onMOU') }}" target="_blank">온라인 교육 콘텐츠 제공 업무제공 체결(MOU) 팝업(사이즈 850x700)</a>            
+            <a href="{{ site_url('/home/html/event_onMouPop') }}" target="_blank">온라인 교육 콘텐츠 제공 업무제공 체결(MOU) 팝업(사이즈 850x700)</a>            
             <a href="{{ site_url('/home/html/event_onCopPromotionPass') }}" target="_blank">경찰 온라인 승진 PASS</a>
             <a href="{{ site_url('/home/html/event_onCopPromotionPassPop') }}" target="_blank">경찰 온라인 승진 PASS 인증 팝업(사이즈 740x700)</a>
             <a href="{{ site_url('/home/html/event_onCopZeroPass') }}" target="_blank">경찰 온라인 평생 0원 PASS</a>
@@ -64,6 +64,7 @@
             <a href="{{ site_url('/home/html/event_onGosiNinePass') }}" target="_blank">공무원 온라인 9급 PASS</a>
             <a href="{{ site_url('/home/html/event_onGosiSevenPass') }}" target="_blank">공무원 온라인 7급 PASS</a>
             <a href="{{ site_url('/home/html/event_onGosiSevenForeignPass') }}" target="_blank">공무원 온라인 7급 외무영사직 PASS</a>
+            <a href="{{ site_url('/home/html/event_onGosiKdjPass') }}" target="_blank">공무원 온라인 김동진 법원팀 PASS</a>
 
             <br><br>            
             <a href="{{ site_url('/home/html/mocktest1') }}" target="_blank">수험정보 > 시험공고 page 이동</a>

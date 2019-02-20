@@ -4,6 +4,7 @@
     ul {padding:0; margin:0}
     ul li {padding:0; margin:0; list-style:none; width:20%; display:inline; float:left}
     ul li div {border-right:1px solid #ccc; padding:0 15px; font-size:12px}
+    ul li div p {border-bottom:1px dashed #999; font-weight:bold; padding-bottom:5px}
     ul li div a {display:block; margin-bottom:7px}
     ul:after {content:""; display:block; clear:both}
 </style>
@@ -53,26 +54,30 @@
             <a href="{{ site_url('/home/html/event_onLeaveArmyPass') }}" target="_blank">전역군인인증 온라인 intro</a>
             <a href="{{ site_url('/home/html/event_onLeaveArmyPassConfirmPop') }}" target="_blank">전역군인인증 온라인 팝업(사이즈 740x700)</a>
             <a href="{{ site_url('/home/html/event_onLeaveArmyPassLec') }}" target="_blank">전역군인인증 온라인 강의</a>
-            <a href="{{ site_url('/home/html/event_onMouPop') }}" target="_blank">온라인 교육 콘텐츠 제공 업무제공 체결(MOU) 팝업(사이즈 850x700)</a>            
-            <a href="{{ site_url('/home/html/event_onCopPromotionPass') }}" target="_blank">경찰 온라인 승진 PASS</a>
-            <a href="{{ site_url('/home/html/event_onCopPromotionPassPop') }}" target="_blank">경찰 온라인 승진 PASS 인증 팝업(사이즈 740x700)</a>
-            <a href="{{ site_url('/home/html/event_onCopZeroPass') }}" target="_blank">경찰 온라인 평생 0원 PASS</a>
+            <a href="{{ site_url('/home/html/event_onMouPop') }}" target="_blank">온라인 교육 콘텐츠 제공 업무제공 체결(MOU) 팝업(사이즈 850x700)</a>   
             <a href="{{ site_url('/home/html/event_onCopReboundPop') }}" target="_blank">타 학원 수강생 인증 팝업(사이즈 740x700)</a>
-            <a href="{{ site_url('/home/html/event_onCopSampleQuestions') }}" target="_blank">경찰 온라인 기출문제(이모티콘 댓글)</a>
-            <a href="{{ site_url('/home/html/event_onGosiFirePass') }}" target="_blank">공무원 온라인 소방 PASS</a>
-            <a href="{{ site_url('/home/html/event_onGosiNinePass') }}" target="_blank">공무원 온라인 9급 PASS</a>
-            <a href="{{ site_url('/home/html/event_onGosiSevenPass') }}" target="_blank">공무원 온라인 7급 PASS</a>
-            <a href="{{ site_url('/home/html/event_onGosiSevenForeignPass') }}" target="_blank">공무원 온라인 7급 외무영사직 PASS</a>
-            <a href="{{ site_url('/home/html/event_onGosiKdjPass') }}" target="_blank">공무원 온라인 김동진 법원팀 PASS</a>
-            <a href="{{ site_url('/home/html/event_onGosiArmyCivilianPass') }}" target="_blank">공무원 온라인 군무원 PASS</a>
-            <a href="{{ site_url('/home/html/event_onGosiHdh') }}" target="_blank">공무원 온라인 한덕현 영어</a>
-            <a href="{{ site_url('/home/html/event_onGosiHdhReading') }}" target="_blank">공무원 온라인 한덕현 영어 독해첨삭지도반</a>
-            <a href="{{ site_url('/home/html/event_onGosiHdhReadinPop') }}" target="_blank">공무원 온라인 한덕현 영어 독해첨삭지도반 신청팝업</a>
-            <a href="{{ site_url('/home/html/event_onGosiJswPkg') }}" target="_blank">공무원 온라인 장사원 패키지 20% 할인</a>
+            <p>경찰 온라인 ▼</p>       
+            <a href="{{ site_url('/home/html/event_onCopPromotionPass') }}" target="_blank">승진 PASS</a>
+            <a href="{{ site_url('/home/html/event_onCopPromotionPassPop') }}" target="_blank">PASS 인증 팝업(사이즈 740x700)</a>
+            <a href="{{ site_url('/home/html/event_onCopZeroPass') }}" target="_blank">평생 0원 PASS</a>            
+            <a href="{{ site_url('/home/html/event_onCopSampleQuestions') }}" target="_blank">기출문제(이모티콘 댓글)</a>
+            <p>공무원 온라인 ▼</p>
+            <a href="{{ site_url('/home/html/event_onGosiFirePass') }}" target="_blank">소방 PASS</a>
+            <a href="{{ site_url('/home/html/event_onGosiNinePass') }}" target="_blank">9급 PASS</a>
+            <a href="{{ site_url('/home/html/event_onGosiSevenPass') }}" target="_blank">7급 PASS</a>
+            <a href="{{ site_url('/home/html/event_onGosiSevenForeignPass') }}" target="_blank">7급 외무영사직 PASS</a>
+            <a href="{{ site_url('/home/html/event_onGosiKdjPass') }}" target="_blank">김동진 법원팀 PASS</a>
+            <a href="{{ site_url('/home/html/event_onGosiArmyCivilianPass') }}" target="_blank">군무원 PASS</a>
+            <a href="{{ site_url('/home/html/event_onGosiHdh') }}" target="_blank">한덕현 영어</a>
+            <a href="{{ site_url('/home/html/event_onGosiHdhReading') }}" target="_blank">한덕현 영어 독해첨삭지도반</a>
+            <a href="{{ site_url('/home/html/event_onGosiHdhReadinPop') }}" target="_blank">한덕현 영어 독해첨삭지도반 신청팝업</a>
+            <a href="{{ site_url('/home/html/event_onGosiJswPkg') }}" target="_blank">장사원 패키지 20% 할인</a>
             <a href="{{ site_url('/home/html/event_onGosiKsjWordPkg') }}" target="_blank">김신주 영어 어휘패키지</a>
             <a href="{{ site_url('/home/html/event_onGosiKsjPkg') }}" target="_blank">김신주 매직아이 영어 문법/어휘/독해 패키지</a>
             <a href="{{ site_url('/home/html/event_onGosiCwyPkg') }}" target="_blank">최우영 전기/통신직 이론패키지 최대 30% 할인</a>
-
+            <a href="{{ site_url('/home/html/event_onGosiJshPkg') }}" target="_blank">전수환 경영학 종합패키지</a>
+            <a href="{{ site_url('/home/html/event_onGosiKysPkg') }}" target="_blank">김윤수 탐구한국사 기본이론 패키지</a>
+            <a href="{{ site_url('/home/html/event_onGosiKmjTPass') }}" target="_blank">기미진 국어 T-PASS</a>
             <br><br>            
             <a href="{{ site_url('/home/html/mocktest1') }}" target="_blank">수험정보 > 시험공고 page 이동</a>
             <a href="{{ site_url('/home/html/mocktest2') }}" target="_blank">수험정보 > 수험뉴스 page 이동</a>

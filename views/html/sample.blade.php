@@ -3,8 +3,11 @@
     h1 {font-size:24px; font-weight:bold; height:60px; line-height:60px; border-bottom:4px double #000}
     ul {padding:0; margin:0}
     ul li {padding:0; margin:0; list-style:none; width:20%; display:inline; float:left}
-    ul li div {border-right:1px solid #ccc; padding:0 15px; font-size:12px}
-    ul li div p {border-bottom:1px dashed #999; font-weight:bold; padding-bottom:5px}
+    ul li div {
+        border-right:1px solid #ccc; padding:0 15px; font-size:11px; 
+        font-family: "NanumGothic-Regular", "Nanum Gothic", "나눔고딕", "sans-serif", "굴림", "Gulim", "돋움", "Dotum", "Helvetica", "Apple SD Gothic Neo", "sans-serif";
+    }
+    ul li div p {border-bottom:1px dashed #999; font-size:12px; font-weight:bold; padding-bottom:5px}
     ul li div a {display:block; margin-bottom:7px}
     ul:after {content:""; display:block; clear:both}
 </style>
@@ -78,7 +81,13 @@
             <a href="{{ site_url('/home/html/event_onGosiJshPkg') }}" target="_blank">전수환 경영학 종합패키지</a>
             <a href="{{ site_url('/home/html/event_onGosiKysPkg') }}" target="_blank">김윤수 탐구한국사 기본이론 패키지</a>
             <a href="{{ site_url('/home/html/event_onGosiKmjTPass') }}" target="_blank">기미진 국어 T-PASS</a>
-            <br><br>            
+            <a href="{{ site_url('/home/html/event_onGosiPmjTPass') }}" target="_blank">박민주 한국사 T-PASS</a>
+            <a href="{{ site_url('/home/html/event_onGosiMbiTPass') }}" target="_blank">문병일 사회 T-PASS</a>  
+            <a href="{{ site_url('/home/html/event_onGosiHnkTPass') }}" target="_blank">황남기 헌법/행정법 T-PASS</a>                        
+        </div>
+    </li>
+    <li>
+        <div>
             <a href="{{ site_url('/home/html/mocktest1') }}" target="_blank">수험정보 > 시험공고 page 이동</a>
             <a href="{{ site_url('/home/html/mocktest2') }}" target="_blank">수험정보 > 수험뉴스 page 이동</a>
             <a href="{{ site_url('/home/html/mocktest3') }}" target="_blank">수험정보 > 기출문제 page 이동</a>
@@ -91,11 +100,7 @@
             <a href="{{ site_url('/home/html/mocktest6_2') }}" target="_blank">수험정보 > 모의고사 > 모의고사접수 page 이동</a>
             <a href="{{ site_url('/home/html/cart5') }}" target="_blank">수험정보 > 모의고사 > 모의고사결제 page 이동</a>
             <a href="{{ site_url('/home/html/mocktest6_3') }}" target="_blank">수험정보 > 모의고사 > 이의제기/정오표 page 이동</a>
-            <br><br>            
-        </div>
-    </li>
-    <li>
-        <div>
+            <br><br>     
             <a href="{{ site_url('/home/html/counsel1') }}" target="_blank">상담실 > 일반상담 page 이동</a>
             <a href="{{ site_url('/home/html/counsel2') }}" target="_blank">상담실 > 인적성/면접상담 page 이동</a>
             <a href="{{ site_url('/home/html/counsel3_1') }}" target="_blank">상담실 > 심층상담예약 > 상담일자 page 이동</a>
@@ -126,6 +131,7 @@
             <a href="{{ site_url('/home/html/mypage_pass_index') }}" target="_blank">내강의실 > 무한PASS존 Index page 이동</a>
             <a href="{{ site_url('/home/html/mypage_pass1') }}" target="_blank">내강의실 > 무한PASS존 page 이동</a>
             <a href="{{ site_url('/home/html/mypage_pass2') }}" target="_blank">내강의실 > 무한PASS존 > 수강중인 강좌 page 이동</a>
+            <br><br>
             <a href="{{ site_url('/home/html/mypage_edit1') }}" target="_blank">내강의실 > 온라인강좌 > 첨삭강좌 page 이동</a>
             <a href="{{ site_url('/home/html/mypage_online1') }}" target="_blank">내강의실 > 온라인강좌 > 수강대기강좌 page 이동</a>
             <a href="{{ site_url('/home/html/mypage_online2') }}" target="_blank">내강의실 > 온라인강좌 > 수강중강좌 page 이동</a>
@@ -134,27 +140,32 @@
             <a href="{{ site_url('/home/html/mypage_online5') }}" target="_blank">내강의실 > 온라인강좌 > 북마크 page 이동</a>
             <a href="{{ site_url('/home/html/mypage_online6') }}" target="_blank">내강의실 > 온라인강좌 > 북마크상세 page 이동</a>
             <a href="{{ site_url('/home/html/mypage_online7') }}" target="_blank">내강의실 > 온라인강좌 > 수강확인증출력 page 이동</a>
+            <br><br>
             <a href="{{ site_url('/home/html/mypage_acad1') }}" target="_blank">내강의실 > 학원강좌 > 수강신청강좌 page 이동</a>
             <a href="{{ site_url('/home/html/mypage_acad2') }}" target="_blank">내강의실 > 학원강좌 > 수강종료강좌 page 이동</a>
+            <br><br>
             <a href="{{ site_url('/home/html/mypage_event') }}" target="_blank">내강의실 > 특강&이벤트 신청현황 page 이동</a>
+            <br><br>
             <a href="{{ site_url('/home/html/mypage_test1') }}" target="_blank">내강의실 > 모의고사관리 > 접수현황 page 이동</a>
             <a href="{{ site_url('/home/html/mypage_test2') }}" target="_blank">내강의실 > 모의고사관리 > 온라인모의고사 응시 page 이동</a>
             <a href="{{ site_url('/home/html/mypage_test3') }}" target="_blank">내강의실 > 모의고사관리 > 성적결과 page 이동</a>
+            <br><br>
             <a href="{{ site_url('/home/html/mypage_payment1') }}" target="_blank">내강의실 > 결제관리 > 주문/배송조회 page 이동</a>
             <a href="{{ site_url('/home/html/mypage_payment2_1') }}" target="_blank">내강의실 > 결제관리 > 주문/배송조회(신용카드) page 이동</a>
             <a href="{{ site_url('/home/html/mypage_payment2_2') }}" target="_blank">내강의실 > 결제관리 > 주문/배송조회(입금대기) page 이동</a>
-        </div>
-    </li>
-    <li>
-        <div>
             <a href="{{ site_url('/home/html/mypage_payment3') }}" target="_blank">내강의실 > 결제관리 > 포인트관리 page 이동</a>
             <a href="{{ site_url('/home/html/mypage_payment4') }}" target="_blank">내강의실 > 결제관리 > 쿠폰/수강권관리 page 이동</a>
+            <br><br>
             <a href="{{ site_url('/home/html/mypage_support1') }}" target="_blank">내강의실 > 학습지원관리 > 쪽지관리 page 이동</a>
             <a href="{{ site_url('/home/html/mypage_support2') }}" target="_blank">내강의실 > 학습지원관리 > 알림관리 page 이동</a>
             <a href="{{ site_url('/home/html/mypage_support3') }}" target="_blank">내강의실 > 학습지원관리 > 상담내역 page 이동</a>
+            <br><br>
             <a href="{{ site_url('/home/html/mypage_userinfo1') }}" target="_blank">내강의실 > 회원정보 > 개인정보관리 page 이동</a>
             <a href="{{ site_url('/home/html/mypage_userinfo2') }}" target="_blank">내강의실 > 회원정보 > 비밀번호변경 page 이동</a>
-            <br><br>
+        </div>
+    </li>
+    <li>
+        <div>            
             <a href="{{ site_url('/home/html/cscenter_index') }}" target="_blank">고객센터 Index page 이동</a>
             <a href="{{ site_url('/home/html/cscenter1') }}" target="_blank">고객센터 > 자주하는 질문 page 이동</a>
             <a href="{{ site_url('/home/html/cscenter2') }}" target="_blank">고객센터 > 공지사항 page 이동</a>

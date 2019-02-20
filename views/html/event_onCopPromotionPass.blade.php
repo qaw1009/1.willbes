@@ -4,6 +4,7 @@
     <!-- Container -->
     <style type="text/css">
         body{width:100%; min-width:1240px; margin:auto;}
+        .Depth {display:none}
         .subContainer {
             min-height: auto !important;
             margin-bottom:0 !important;
@@ -12,10 +13,10 @@
             width:100% !important;
             min-width:1210px !important;
             background:#ccc;
-            margin-top:0 !important;
+            margin-top:20px !important;
             padding:0 !important;
             background:#fff;
-        }	
+        }
 
         .wb_top {width:100%; text-align:center; background:#686d76 url(http://file3.willbes.net/new_cop/2019/01/EV190123_p1_bg.jpg) no-repeat center; min-width:1210px;}
         .wb_cts01 {width:100%; text-align:center; background:#1a1a1a url(http://file3.willbes.net/new_cop/2019/01/EV190123_p2_bg.jpg) repeat; min-width:1210px;}

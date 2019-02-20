@@ -3,16 +3,19 @@
 @section('content')
     <!-- Container -->
     <style type="text/css">
-        body{width:100%; min-width:1240px; margin:auto; background:none}
+        body{width:100%; min-width:1240px; margin:auto;}
+        .Depth {display:none}
         .subContainer {
             min-height: auto !important;
             margin-bottom:0 !important;
         }
         .evtContent {
             width:100% !important;
-            min-width:1210px !important; 
-            margin-top:0 !important;
+            min-width:1210px !important;
+            background:#ccc;
+            margin-top:20px !important;
             padding:0 !important;
+            background:#fff;
         }	
         .rLnb {position:absolute; width:170px; top:20px; right:10px; z-index:1;
         }

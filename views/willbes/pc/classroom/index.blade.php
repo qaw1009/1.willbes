@@ -152,32 +152,53 @@
                     </div>
                     <div class="ActIndex ActIndex2 mt50">
                         <div class="willbes-listTable willbes-info willbes-info widthAuto445 f_left">
-                            <div class="will-Tit NSK">나의 <span class="tx-light-blue">상담내역</span> <a class="f_right" href="#none"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
+                            <div class="will-Tit NSK">나의 <span class="tx-light-blue">상담내역</span>
+                                <a class="f_right" href="{{front_url('/classroom/qna/index?tab=counsel')}}"><img src="{{ img_url('prof/icon_add.png') }}"></a>
+                            </div>
                             <ul class="List-Table GM tx-gray">
-                                <li><a href="#none">등록기기 초기화</a><span class="aBox answerBox  NSK">답변완료</span><span class="date">2018-04-01</span></li>
-                                <li><a href="#none">수강시작일 00/00으로 변경해주...</a><span class="aBox waitBox  NSK">답변대기</span><span class="date">2018-04-01</span></li>
-                                <li><a href="#none">교재문의입니다.</a><span class="aBox answerBox  NSK">답변완료</span><span class="date">2018-03-06</span></li>
-                                <li>등록된 상담 내용이 없습니다.</li>
+                                @if(empty($data['counsel']) === true)
+                                    <li>등록된 상담 내용이 없습니다.</li>
+                                @else
+                                    @foreach($data['counsel'] as $row)
+                                        <li>
+                                            <a href="{{front_url('/classroom/qna/show?board_idx='.$row['BoardIdx'].'&tab=counsel')}}">{{$row['Title']}}</a>
+                                            <span class="aBox {{($row['ReplyStatusCcd'] == '621004') ? 'answerBox' : 'waitBox'}} NSK">{{($row['ReplyStatusCcd'] == '621004') ? '답변완료' : '답변대기'}}</span>
+                                            <span class="date">{{$row['RegDatm']}}</span>
+                                        </li>
+                                    @endforeach
+                                @endif
                             </ul>
                         </div>
                         <div class="willbes-listTable willbes-info willbes-info widthAuto445 f_left ml50">
-                            <div class="will-Tit NSK">나의 <span class="tx-light-blue">학습Q&A</span> <a class="f_right" href="#none"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
+                            <div class="will-Tit NSK">나의 <span class="tx-light-blue">학습Q&A</span>
+                                <a class="f_right" href="{{front_url('/classroom/profQna/index?tab=professor')}}"><img src="{{ img_url('prof/icon_add.png') }}"></a>
+                            </div>
                             <ul class="List-Table GM tx-gray">
-                                <li><a href="#none">등록기기 초기화</a><span class="aBox answerBox  NSK">답변완료</span><span class="date">2018-04-01</span></li>
-                                <li><a href="#none">수강시작일 00/00으로 변경해주...</a><span class="aBox waitBox  NSK">답변대기</span><span class="date">2018-04-01</span></li>
-                                <li><a href="#none">교재문의입니다.</a><span class="aBox answerBox  NSK">답변완료</span><span class="date">2018-03-06</span></li>
-                                <li>등록된 학습 Q&A 내용이 없습니다.</li>
+                                @if(empty($data['qna']) === true)
+                                    <li>등록된 학습 Q&A 내용이 없습니다.</li>
+                                @else
+                                    @foreach($data['qna'] as $row)
+                                        <li>
+                                            <a href="{{front_url('/classroom/profQna/show?board_idx='.$row['BoardIdx'].'&prof_idx='.$row['ProfIdx'].'&subject_idx='.$row['SubjectIdx'])}}">{{$row['Title']}}</a>
+                                            <span class="aBox {{($row['ReplyStatusCcd'] == '621004') ? 'answerBox' : 'waitBox'}} NSK">{{($row['ReplyStatusCcd'] == '621004') ? '답변완료' : '답변대기'}}</span>
+                                            <span class="date">{{$row['RegDatm']}}</span>
+                                        </li>
+                                    @endforeach
+                                @endif
                             </ul>
                         </div>
                     </div>
                     <div class="ActIndex ActIndex3 mt50">
                         <div class="willbes-listTable willbes-info willbes-info860 widthAuto940 f_left">
-                            <div class="will-Tit NSK">공지<span class="tx-light-blue">사항</span> <a class="f_right" href="#none"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
+                            <div class="will-Tit NSK">공지<span class="tx-light-blue">사항</span> <a class="f_right" href="{{front_url('/support/notice/index')}}"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
                             <ul class="List-Table GM tx-gray">
-                                <li><a href="#none">3월 무이자카드안내</a><span class="date">2018-04-01</span></li>
-                                <li><a href="#none">3월 31일(금) 새벽시스템점검안내</a><span class="date">2018-04-01</span></li>
-                                <li><a href="#none">설연휴학원고객센터운영안내</a><span class="date">2018-03-06</span></li>
-                                <li>등록된 공지 내용이 없습니다.</li>
+                                @if(empty($data['notice']) === true)
+                                    <li>등록된 공지 내용이 없습니다.</li>
+                                @else
+                                    @foreach($data['notice'] as $row)
+                                        <li><a href="{{front_url('/support/notice/show?board_idx='.$row['BoardIdx'])}}">{{$row['Title']}}</a><span class="date">{{$row['RegDatm']}}</span></li>
+                                    @endforeach
+                                @endif
                             </ul>
                         </div>
                     </div>

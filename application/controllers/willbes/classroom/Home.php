@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends \app\controllers\FrontController
 {
-    protected $models = array('classroomF', 'pointF', 'couponF');
+    protected $models = array('classroomF', 'pointF', 'couponF', 'support/supportBoardF', 'support/supportBoardTwoWayF');
     protected $helpers = array();
     protected $auth_controller = true;
     protected $auth_methods = array();
@@ -111,6 +111,23 @@ class Home extends \app\controllers\FrontController
             ]
         ]);
 
+        // 나의 상담내역
+        $order_by = ['b.IsBest' => 'Desc', 'b.BoardIdx' => 'Desc'];
+        $arr_condition = ['EQ' => ['b.BmIdx' => 48, 'b.RegMemIdx' => $memidx,'b.IsUse' => 'Y']];
+        $column = 'b.BoardIdx, b.Title, b.ReplyStatusCcd, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
+        $data['counsel'] = $this->supportBoardTwoWayFModel->listBoard(false, $arr_condition, $column, 4, 0, $order_by);
+
+        // 나의 학습Q&A
+        $order_by = ['b.IsBest' => 'Desc', 'b.BoardIdx' => 'Desc'];
+        $arr_condition = ['EQ' => ['b.BmIdx' => 66, 'b.RegMemIdx' => $memidx,'b.IsUse' => 'Y']];
+        $column = 'b.BoardIdx, b.Title, b.ReplyStatusCcd, b.ProfIdx, b.SubjectIdx, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
+        $data['qna'] = $this->supportBoardTwoWayFModel->listBoard(false, $arr_condition, $column, 4, 0, $order_by);
+
+        // 공지사항
+        $order_by = ['b.IsBest' => 'Desc', 'b.BoardIdx' => 'Desc'];
+        $arr_condition = ['EQ' => ['b.BmIdx' => 45,'b.SiteCode' => $this->_site_code,'b.IsUse' => 'Y']];
+        $column = 'b.BoardIdx, b.Title, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
+        $data['notice'] = $this->supportBoardFModel->listBoard(false, $arr_condition, $column, 4, 0, $order_by);
 
         // 등록된 학습기기
         $this->load->view('/classroom/index', [

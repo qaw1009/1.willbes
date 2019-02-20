@@ -63,6 +63,7 @@
             <a href="{{ site_url('/home/html/event_onGosiFirePass') }}" target="_blank">공무원 온라인 소방 PASS</a>
             <a href="{{ site_url('/home/html/event_onGosiNinePass') }}" target="_blank">공무원 온라인 9급 PASS</a>
             <a href="{{ site_url('/home/html/event_onGosiSevenPass') }}" target="_blank">공무원 온라인 7급 PASS</a>
+            <a href="{{ site_url('/home/html/event_onGosiSevenForeignPass') }}" target="_blank">공무원 온라인 7급 외무영사직 PASS</a>
 
             <br><br>            
             <a href="{{ site_url('/home/html/mocktest1') }}" target="_blank">수험정보 > 시험공고 page 이동</a>

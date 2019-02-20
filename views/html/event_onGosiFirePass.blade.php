@@ -300,190 +300,190 @@
 	    });    
     </script>
 
-<script type="text/javascript">
-//천단위 콤마 찍기
-function addThousandSeparatorCommas(num) {
-    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-}
+    <script type="text/javascript">
+    //천단위 콤마 찍기
+    function addThousandSeparatorCommas(num) {
+        return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    }
 
-function fn_cal(chk){
-	var i_sum = 0;
-	var y_sum = 0;
-	var j_sum = 0;
-	var curSum = "";
+    function fn_cal(chk){
+        var i_sum = 0;
+        var y_sum = 0;
+        var j_sum = 0;
+        var curSum = "";
 
-	if($("input[name='y_pkg']:checked").size() > 1){
-		alert("패스과정은 하나만 선택해주십시요.");
-		for (i=0;i<2;i++){
-			y_pkg[i].checked = false;
-		}
-	}
+        if($("input[name='y_pkg']:checked").size() > 1){
+            alert("패스과정은 하나만 선택해주십시요.");
+            for (i=0;i<2;i++){
+                y_pkg[i].checked = false;
+            }
+        }
 
-	if($(y_pkg[0]).is(":checked")){
-		y_sum = 430000;
-	} else if($(y_pkg[1]).is(":checked")){
-		y_sum = 350000;
-	}
-	
-	if($(j_pkg).is(":checked")){
-		j_sum = 80000;
-	}
-	
-	i_sum = y_sum + j_sum;
-	i_sum = addThousandSeparatorCommas(i_sum);
-	var curSum = ""+i_sum+"";
+        if($(y_pkg[0]).is(":checked")){
+            y_sum = 430000;
+        } else if($(y_pkg[1]).is(":checked")){
+            y_sum = 350000;
+        }
+        
+        if($(j_pkg).is(":checked")){
+            j_sum = 80000;
+        }
+        
+        i_sum = y_sum + j_sum;
+        i_sum = addThousandSeparatorCommas(i_sum);
+        var curSum = ""+i_sum+"";
 
-	$("#sum_y").html(curSum);
-}
+        $("#sum_y").html(curSum);
+    }
 
-//장바구니
-function fn_y_cart(leccode){
+    //장바구니
+    function fn_y_cart(leccode){
 
-	var cmd = "slist";
-	var leccode_essarr = "";
-	var leccode_selarr = "";
-	var money_vod = "";
-	
-	if (leccode == "Y201800032"){
-		leccode_essarr = "D201800715,D201800385,D201800387,D201800636,D201800585,D201800844,D201800749,D201800755,D201800848,D201800990,D201900005";
-		money_vod = 430000;
-	}else if(leccode == "Y201800033"){
-		leccode_essarr = "D201800447,D201800715,D201800301,D201800585,D201800846,D201800844,D201800389,D201800391";
-		money_vod = 350000;
-	}
-	
-	var kindType = "Y";
-	var movieType = 4;
-	var rscId = "";
-	var rscType = "";
-	var leccodeChk = "";
-	var gift_book = "N";
-	
-		var param = "CMD="+cmd;
-		param += "&LECCODE=" + leccode;
-		param += "&LECCODE_ESSARR=" + leccode_essarr;
-		param += "&LECCODE_SELARR=" + leccode_selarr;
-		param += "&KIND_TYPE=" + kindType;
-		param += "&MOVIE_TYPE=" + movieType;
-		param += "&RSC_ID=" + rscId;
-		param += "&RSC_TYPE=" + rscType;
-		param += "&LECPRICE=" + money_vod;
-		param += "&LECCODE_CHK=" + leccodeChk;
-		param += "&GIFT_BOOK=" + gift_book;
+        var cmd = "slist";
+        var leccode_essarr = "";
+        var leccode_selarr = "";
+        var money_vod = "";
+        
+        if (leccode == "Y201800032"){
+            leccode_essarr = "D201800715,D201800385,D201800387,D201800636,D201800585,D201800844,D201800749,D201800755,D201800848,D201800990,D201900005";
+            money_vod = 430000;
+        }else if(leccode == "Y201800033"){
+            leccode_essarr = "D201800447,D201800715,D201800301,D201800585,D201800846,D201800844,D201800389,D201800391";
+            money_vod = 350000;
+        }
+        
+        var kindType = "Y";
+        var movieType = 4;
+        var rscId = "";
+        var rscType = "";
+        var leccodeChk = "";
+        var gift_book = "N";
+        
+            var param = "CMD="+cmd;
+            param += "&LECCODE=" + leccode;
+            param += "&LECCODE_ESSARR=" + leccode_essarr;
+            param += "&LECCODE_SELARR=" + leccode_selarr;
+            param += "&KIND_TYPE=" + kindType;
+            param += "&MOVIE_TYPE=" + movieType;
+            param += "&RSC_ID=" + rscId;
+            param += "&RSC_TYPE=" + rscType;
+            param += "&LECPRICE=" + money_vod;
+            param += "&LECCODE_CHK=" + leccodeChk;
+            param += "&GIFT_BOOK=" + gift_book;
 
-		$.ajax({
-			type: "GET",
-			url : '<c:url value="/lecture/cartSaveMovieSLecture.json"/>?'+ param,
-			dataType: "json",
-			async : false,
-			success: function(res) {
-				if(res.returnMsg=="loginFail"){
-					alert("로그인을 하신 후 이용하여 주시기 바랍니다.");
-				}else if(res.returnMsg=="accessFail"){
-					alert("잘못된 접근입니다");
-				}else if(res.returnMsg=="existCart"){
-					alert("이미 패스 과정이 장바구니에 담겼습니다" + res.returnList);
-				}else if(res.returnMsg=="yearexistCart"){
-					alert("이미 수강중인 패스가 있습니다." + res.returnList);
-					return;
-				}else if(res.returnMsg=="cartSuccess"){
-//					alert("장바구니에 담겼습니다");
-				}
-			},error: function(){
-				alert("장바구니 담기 실패!");
-				return;
-			}
-		});
-}
+            $.ajax({
+                type: "GET",
+                url : '<c:url value="/lecture/cartSaveMovieSLecture.json"/>?'+ param,
+                dataType: "json",
+                async : false,
+                success: function(res) {
+                    if(res.returnMsg=="loginFail"){
+                        alert("로그인을 하신 후 이용하여 주시기 바랍니다.");
+                    }else if(res.returnMsg=="accessFail"){
+                        alert("잘못된 접근입니다");
+                    }else if(res.returnMsg=="existCart"){
+                        alert("이미 패스 과정이 장바구니에 담겼습니다" + res.returnList);
+                    }else if(res.returnMsg=="yearexistCart"){
+                        alert("이미 수강중인 패스가 있습니다." + res.returnList);
+                        return;
+                    }else if(res.returnMsg=="cartSuccess"){
+    //					alert("장바구니에 담겼습니다");
+                    }
+                },error: function(){
+                    alert("장바구니 담기 실패!");
+                    return;
+                }
+            });
+    }
 
-//장바구니
-function fn_p_cart(leccode){
+    //장바구니
+    function fn_p_cart(leccode){
 
-		var cmd = "slist";
-		var j_leccode = "";
-		var leccode_essarr = "D201900067,	D201900066,D201900065,D201900064,D201900063";
-		var leccode_selarr = "";
-		var money_vod = 80000;
-	
-		var kindType = "J";
-		var movieType = 4;
-		var rscId = "";
-		var rscType = "";
-		var leccodeChk = "";
-		var gift_book = "N";			
-		
-		j_leccode = "P201900002";
+            var cmd = "slist";
+            var j_leccode = "";
+            var leccode_essarr = "D201900067,	D201900066,D201900065,D201900064,D201900063";
+            var leccode_selarr = "";
+            var money_vod = 80000;
+        
+            var kindType = "J";
+            var movieType = 4;
+            var rscId = "";
+            var rscType = "";
+            var leccodeChk = "";
+            var gift_book = "N";			
+            
+            j_leccode = "P201900002";
 
-			var param = "CMD="+cmd;
-			param += "&LECCODE=" + j_leccode;
-			param += "&LECCODE_ESSARR=" + leccode_essarr;
-			param += "&LECCODE_SELARR=" + leccode_selarr;
-			param += "&KIND_TYPE=" + kindType;
-			param += "&MOVIE_TYPE=" + movieType;
-			param += "&RSC_ID=" + rscId;
-			param += "&RSC_TYPE=" + rscType;
-			param += "&LECPRICE=" + money_vod;
-			param += "&LECCODE_CHK=" + leccodeChk;
+                var param = "CMD="+cmd;
+                param += "&LECCODE=" + j_leccode;
+                param += "&LECCODE_ESSARR=" + leccode_essarr;
+                param += "&LECCODE_SELARR=" + leccode_selarr;
+                param += "&KIND_TYPE=" + kindType;
+                param += "&MOVIE_TYPE=" + movieType;
+                param += "&RSC_ID=" + rscId;
+                param += "&RSC_TYPE=" + rscType;
+                param += "&LECPRICE=" + money_vod;
+                param += "&LECCODE_CHK=" + leccodeChk;
 
-			$.ajax({
-				type: "GET",
-				url : '<c:url value="/lecture/cartSaveMovieSLecture.json"/>?'+ param,
-				dataType: "json",
-				async : false,
-				success: function(res) {
-					if(res.returnMsg=="loginFail"){
-						alert("로그인을 하신 후 이용하여 주시기 바랍니다.");
-					}else if(res.returnMsg=="accessFail"){
-						alert("잘못된 접근입니다");
-					}else if(res.returnMsg=="existCart"){
-						alert("이미 체력패키지 과정이 장바구니에 담겼습니다" + res.returnList);
-					}else if(res.returnMsg=="cartSuccess"){
-						//alert("장바구니에 담겼습니다");
-					}
-				},error: function(){
-					alert("장바구니 담기 실패!");
-					return;
-				}
-			});
-}
+                $.ajax({
+                    type: "GET",
+                    url : '<c:url value="/lecture/cartSaveMovieSLecture.json"/>?'+ param,
+                    dataType: "json",
+                    async : false,
+                    success: function(res) {
+                        if(res.returnMsg=="loginFail"){
+                            alert("로그인을 하신 후 이용하여 주시기 바랍니다.");
+                        }else if(res.returnMsg=="accessFail"){
+                            alert("잘못된 접근입니다");
+                        }else if(res.returnMsg=="existCart"){
+                            alert("이미 체력패키지 과정이 장바구니에 담겼습니다" + res.returnList);
+                        }else if(res.returnMsg=="cartSuccess"){
+                            //alert("장바구니에 담겼습니다");
+                        }
+                    },error: function(){
+                        alert("장바구니 담기 실패!");
+                        return;
+                    }
+                });
+    }
 
-function fn_cart(){
-	<c:if test="${empty userInfo}">
-		alert("로그인을 하신 후 이용하여 주시기 바랍니다.");
-		return;
-	</c:if>
-	
-	if(!$(is_chk).is(":checked")){
-		alert("이용안내를 확인하시고 이용동의서에 체크해주시기 바랍니다.");
-		return;
-	}
+    function fn_cart(){
+        <c:if test="${empty userInfo}">
+            alert("로그인을 하신 후 이용하여 주시기 바랍니다.");
+            return;
+        </c:if>
+        
+        if(!$(is_chk).is(":checked")){
+            alert("이용안내를 확인하시고 이용동의서에 체크해주시기 바랍니다.");
+            return;
+        }
 
-	if($("input[name='y_pkg']:checked").size() < 1){
-		alert("소방PASS는 필수로 선택하셔야 됩니다.");
-		return;
-	}
+        if($("input[name='y_pkg']:checked").size() < 1){
+            alert("소방PASS는 필수로 선택하셔야 됩니다.");
+            return;
+        }
 
-	var leccode = "";
-	var chk = "";
-	
-	if(confirm('선택한 항목을 장바구니에 담으시겠습니까?')){
-		if($(y_pkg[0]).is(":checked")){
-			leccode = "Y201800032";
-			chk = "1";
-		} else if($(y_pkg[1]).is(":checked")){
-			leccode = "Y201800033";
-			chk = "2";
-		}
-		
-		fn_y_cart(leccode);
-		
-		if($(j_pkg).is(":checked")){
-			fn_p_cart(leccode);
-		}
-		alert("장바구니에 담겼습니다");
-		location.replace("/cart/movie.html?topMenuType=O&topMenuGnb=OM_009&topMenu=MAIN&menuID=OM_009_005_002");
-	}
-}
-</script>
+        var leccode = "";
+        var chk = "";
+        
+        if(confirm('선택한 항목을 장바구니에 담으시겠습니까?')){
+            if($(y_pkg[0]).is(":checked")){
+                leccode = "Y201800032";
+                chk = "1";
+            } else if($(y_pkg[1]).is(":checked")){
+                leccode = "Y201800033";
+                chk = "2";
+            }
+            
+            fn_y_cart(leccode);
+            
+            if($(j_pkg).is(":checked")){
+                fn_p_cart(leccode);
+            }
+            alert("장바구니에 담겼습니다");
+            location.replace("/cart/movie.html?topMenuType=O&topMenuGnb=OM_009&topMenu=MAIN&menuID=OM_009_005_002");
+        }
+    }
+    </script>
 
 @stop

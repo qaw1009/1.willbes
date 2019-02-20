@@ -63,9 +63,10 @@ class CommonLectureModel extends WB_Model
         $arr_condition['IN']['A.SiteCode'] = get_auth_site_codes();
         $arr_condition['EQ']['A.ProdCode'] = $prodcode;
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
+        echo 'select ' .$column .$from .$where;exit;
 
         $result = $this->_conn->query('select ' .$column .$from .$where)->row_array();
-        echo $this->_conn->last_query();
+       // echo $this->_conn->last_query();
         return $result;
     }
 

@@ -28,7 +28,9 @@
             .replySt3List li .crtReply strong {color:#1087ef}
             .replySt3List li .crtReply > span {font-size:11px !important; color:#999; font-weight:normal !important}
             .replySt3List li .crtReply p a {float:right; margin-top:-5px; padding:0 4px; height:20px; line-height:20px; color:#666; border:1px solid #666; font-size:11px !important}
-            
+            .replySt3List li .crtReply p a:hover {
+                color:#fff; background:#666;
+            }
             .replySt3List li .crtReply div {width:860px; background:#eee; border-radius:10px; padding:20px; line-height:1.4; position:relative; margin:0 auto; margin-bottom:5px}	
             .replySt3List li .crtReply div span a {display:block; margin-bottom:5px; color:#cf9243; font-weight:bold}			
             .replySt3List li .crtReply div em {
@@ -92,7 +94,7 @@
                             <img src="http://file3.willbes.net/new_cop/character/17.png" alt=""/>
                         </span>
                         <div class="crtReply">
-                            <p>유수*</p>
+                            <p>유수* <a href="#none">삭제</a></p>
                             <div>                                    	
                                 <span><a href="" target="_blank"></a></span>
                                 형법 점수 확올랐네..

@@ -28,6 +28,8 @@ class BoardModel extends WB_Model
     public function __construct()
     {
         parent::__construct('lms');
+        $this->load->config('upload');
+        $this->upload_path = $this->config->item('upload_path');
     }
 
     /**
@@ -429,6 +431,94 @@ class BoardModel extends WB_Model
                 }
             } else {
                 throw new \Exception('게시물 복사에 실패했습니다.');
+            }
+
+            //첨부파일DB복사
+            $insert_column = '
+                BoardIdx, BaIdx, RegType, AttachFileType, AttachFilePath, AttachFileName, AttachRealFileName, AttachFileSize, IsStatus, RegDatm, RegMemIdx, RegAdminIdx, RegIp, UpdDatm, UpdMemIdx, UpdAdminIdx
+            ';
+            $select_column =
+                $insert_board_idx.', BaIdx, RegType, AttachFileType, AttachFilePath, AttachFileName, AttachRealFileName, AttachFileSize, IsStatus, RegDatm, RegMemIdx, RegAdminIdx, RegIp, UpdDatm, UpdMemIdx, UpdAdminIdx
+            ';
+
+            $query = "insert into {$this->_table_attach} ({$insert_column})
+                select {$select_column} from {$this->_table_attach}
+                where BoardIdx = {$board_idx}";
+            //echo "<pre>$query</pre>";
+            $result = $this->_conn->query($query);
+            if ($result === false) {
+                throw new Exception('첨부파일 DB입력에 실패했습니다.');
+            }
+            //기존파일경로
+            $column = "
+                AttachFilePath
+            ";
+
+            $from = "
+                FROM
+                    {$this->_table_attach}
+            ";
+
+            $obder_by = " 
+                 ORDER BY RegDatm DESC
+				 LIMIT 1";
+
+            $where = " WHERE BoardIdx = " . $board_idx;
+
+            $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+
+            $resPath = $query->row_array();
+
+            //BMIDX추출
+            $column = "
+                BmIdx
+            ";
+
+            $from = "
+                FROM
+                    {$this->_table}
+            ";
+
+            $obder_by = " ";
+
+            $where = " WHERE BoardIdx = " . $insert_board_idx;
+
+            $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+
+            $resBmIdx = $query->row_array();
+
+            //기존첨부파일이 있으면
+            if($resPath['AttachFilePath']){
+                // 기존파일경로
+
+                $loadPath = $resPath['AttachFilePath'];
+                $src = str_replace('/public/uploads/', $this->upload_path ,$loadPath);
+                // 복사될 파일경로
+                $mkdest = $this->upload_path . config_item('upload_prefix_dir') . '/board/' . $resBmIdx['BmIdx'] . '/';
+                $dest = $this->upload_path . config_item('upload_prefix_dir') . '/board/' . $resBmIdx['BmIdx'] . '/' . date('Ymd') . $insert_board_idx . "/";
+
+                if(is_dir($mkdest) === false){
+                    if (mkdir($mkdest, 0707, true) === false) {
+                        throw new \Exception(sprintf('디렉토리 생성에 실패했습니다. (%s)', $mkdest));
+                    }
+                }
+
+                exec("cp -rf $src $dest");
+
+                if(is_dir($dest) === false) {
+                    throw new Exception('파일 저장에 실패했습니다.');
+                }
+
+                // 파일 복사후 파일경로 업데이트
+                $addData = [
+                    'AttachFilePath' => '/public/uploads/' . config_item('upload_prefix_dir') . '/board/' . $resBmIdx['BmIdx'] . '/' . date('Ymd') . $insert_board_idx . "/"
+                ];
+
+                $this->_conn->set($addData)->where('BoardIdx', $insert_board_idx);
+                if ($this->_conn->update($this->_table_attach) === false) {
+                    throw new \Exception('데이터 수정에 실패했습니다.');
+                }
+
             }
 
             $this->_conn->trans_commit();

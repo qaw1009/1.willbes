@@ -46,7 +46,6 @@
             <a href="{{ site_url('/home/html/event_ing_read') }}" target="_blank">이벤트 > 진행중인 이벤트 상세 page 이동</a>
             <a href="{{ site_url('/home/html/event_end') }}" target="_blank">이벤트 > 마감된 이벤트 page 이동</a>
             <a href="{{ site_url('/home/html/event_end_read') }}" target="_blank">이벤트 > 마감된 이벤트 상세 page 이동</a>
-            <a href="{{ site_url('/home/html/event_end_read') }}" target="_blank">이벤트 > 마감된 이벤트 상세 page 이동</a>
         </div>
     </li>
     <li>
@@ -66,6 +65,9 @@
             <a href="{{ site_url('/home/html/event_onGosiSevenForeignPass') }}" target="_blank">공무원 온라인 7급 외무영사직 PASS</a>
             <a href="{{ site_url('/home/html/event_onGosiKdjPass') }}" target="_blank">공무원 온라인 김동진 법원팀 PASS</a>
             <a href="{{ site_url('/home/html/event_onGosiArmyCivilianPass') }}" target="_blank">공무원 온라인 군무원 PASS</a>
+            <a href="{{ site_url('/home/html/event_onGosiHdh') }}" target="_blank">공무원 온라인 한덕현 영어</a>
+            <a href="{{ site_url('/home/html/event_onGosiHdhReading') }}" target="_blank">공무원 온라인 한덕현 영어 독해첨삭지도반</a>
+            <a href="{{ site_url('/home/html/event_onGosiHdhReadinPop') }}" target="_blank">공무원 온라인 한덕현 영어 독해첨삭지도반 신청팝업</a>
             <br><br>            
             <a href="{{ site_url('/home/html/mocktest1') }}" target="_blank">수험정보 > 시험공고 page 이동</a>
             <a href="{{ site_url('/home/html/mocktest2') }}" target="_blank">수험정보 > 수험뉴스 page 이동</a>

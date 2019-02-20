@@ -45,7 +45,7 @@
                 <div class="col-md-3">
                     <input type="text" class="form-control input-sm" id="search_professor" name="search_professor">
                 </div>
-                <div class="col-md-1"><label class="control-label pt-5">조건</label></div>
+                <div class="col-md-1"><label class="control-label pt-5 pl-30">조건</label></div>
                 <div class="col-md-6 form-inline">
                     <select class="form-control" id="search_course_idx" name="search_course_idx">
                         <option value="">과정</option>
@@ -72,10 +72,10 @@
                         <option value="N">미사용</option>
                     </select>
                 </div>
-                <div class="col-md-12 text-right pr-5 mt-15 mb-10">
-                    <button type="submit" class="btn btn-primary btn-sm btn-search mr-0" id="_btn_search">검 색</button>
-                    <button type="button" class="btn btn-default btn-search" id="searchInit">초기화</button>
-                </div>
+            </div>
+            <div class="col-md-12 text-right pr-5 mt-10 mb-20">
+                <button type="submit" class="btn btn-primary btn-sm btn-search mr-0" id="_btn_search">검 색</button>
+                <button type="button" class="btn btn-default btn-search" id="searchInit">초기화</button>
             </div>
     @endif
             <div class="row mt-20 mb-20">

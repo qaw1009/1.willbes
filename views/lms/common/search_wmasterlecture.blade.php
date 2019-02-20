@@ -22,13 +22,12 @@
 
                 <label class="control-label col-md-2 pt-5">강사검색
                 </label>
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <input type="text" class="form-control input-sm" id="search_prof" name="search_prof">
                 </div>
-                <label class="control-label col-md-2 pt-5">조건
+                <label class="control-label col-md-1 pt-5 pl-30">조건
                 </label>
                 <div class="col-md-6 form-inline">
-
                     <select class="form-control" id="search_cp" name="search_cp" style="width:150px;">
                         <option value="">CP사</option>
                         @foreach($cp_list as $row)
@@ -52,10 +51,9 @@
                         <option value="N">미사용</option>
                     </select>
                 </div>
-
             </div>
 
-            <div class="col-md-12 text-right pr-5">
+            <div class="col-md-12 text-right pr-5 mt-10">
                 <button type="submit" class="btn btn-primary btn-sm btn-search mr-0" id="_btn_search">검 색</button>
                 <button type="button" class="btn btn-default btn-sm btn-search mr-0" id="_btn_reset">초기화</button>
             </div>

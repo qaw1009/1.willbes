@@ -17,7 +17,7 @@
                                 <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CateName'] }}</option>
                             @endforeach
                         </select>
-{{--                        <select class="form-control mr-10" id="search_md_cate_code" name="search_md_cate_code">
+                        {{--<select class="form-control mr-10" id="search_md_cate_code" name="search_md_cate_code">
                             <option value="">중분류</option>
                             @foreach($arr_md_category as $row)
                                 <option value="{{ $row['CateCode'] }}" class="{{ $row['ParentCateCode'] }}">{{ $row['CateName'] }}</option>
@@ -79,7 +79,7 @@
             <table id="list_ajax_table" class="table table-striped table-bordered">
                 <thead>
                 <tr>
-                    <th>No</th>
+                    <th>복사선택</th>
                     <th>운영사이트</th>
                     <th>카테고리</th>
                     {{--<th>중분류</th>--}}
@@ -115,7 +115,8 @@
                 serverSide: true,
                 buttons: [
                     { text: '<i class="fa fa-pencil mr-5"></i> 신규/추천 적용', className: 'btn-sm btn-success border-radius-reset mr-15 btn-new-best-modify' },
-                    { text: '<i class="fa fa-pencil mr-5"></i> 교재 등록', className: 'btn-sm btn-primary border-radius-reset', action: function(e, dt, node, config) {
+                    { text: '<i class="fa fa-files-o mr-5"></i> 교재복사', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-copy' },
+                    { text: '<i class="fa fa-pencil mr-5"></i> 교재등록', className: 'btn-sm btn-primary border-radius-reset', action: function(e, dt, node, config) {
                         location.href = '{{ site_url('/bms/book/create') }}' + dtParamsToQueryString($datatable);
                     }}
                 ],
@@ -127,9 +128,8 @@
                     }
                 },
                 columns: [
-                    {'data' : null, 'render' : function(data, type, row, meta) {
-                        // 리스트 번호
-                        return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
+                    {'data' : 'ProdCode', 'render' : function(data, type, row, meta) {
+                        return '<input type="radio" name="prod_code" class="flat" value="' + data + '">';
                     }},
                     {'data' : 'SiteName'},
                     {'data' : 'BCateName'},
@@ -165,6 +165,17 @@
                     {'data' : 'RegAdminName'},
                     {'data' : 'RegDatm'}
                 ]
+            });
+
+            // 교재복사 버튼 클릭
+            $('.btn-copy').on('click', function() {
+                var prod_code = $list_table.find('input[name="prod_code"]:checked').val();
+                if (typeof prod_code === 'undefined') {
+                    alert('복사할 교재를 선택해 주세요.');
+                    return;
+                }
+
+                location.href = '{{ site_url('/bms/book/create') }}/' + prod_code + '/copy' + dtParamsToQueryString($datatable);
             });
 
             // 과목, 교수 자동 변경

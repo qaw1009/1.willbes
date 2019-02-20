@@ -42,7 +42,7 @@
                     • 맛보기 회차를 선택해 주세요.
                 </div>
                 <div class="col-md-9 text-right">
-                    <button class="btn btn-sm btn-primary btn-select" type="button" id="btn-select">적용</button>
+                    <button class="btn btn-sm btn-primary btn-select mb-0" type="button" id="btn-select">적용</button>
                 </div>
             </div>
 

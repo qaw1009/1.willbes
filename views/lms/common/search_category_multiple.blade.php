@@ -30,7 +30,7 @@
             </div>
         </div>
     </div>
-    <div class="form-group pt-10 pb-5">
+    <div class="form-group pt-10 pb-5 bdt-line">
         <label class="control-label col-md-2 pt-5" for="search_value">통합검색
         </label>
         <div class="col-md-4">

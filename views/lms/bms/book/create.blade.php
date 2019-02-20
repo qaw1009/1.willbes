@@ -36,7 +36,7 @@
                             <p class="form-control-static">{{ $data['CateRouteName'] }}</p>
                         @else
                             <button type="button" id="btn_category_search" class="btn btn-sm btn-primary">카테고리검색</button>
-                            <span id="selected_category" class="pl-10"></span>
+                            <span id="selected_category" class="pl-10">{{ $data['CateRouteName'] }}</span>
                         @endif
                     </div>
                 </div>
@@ -48,7 +48,7 @@
                             <p class="form-control-static">{{ $data['wBookName'] }} [{{ $data['wBookIdx'] }}]</p>
                         @else
                             <button type="button" id="btn_book_search" class="btn btn-sm btn-primary">교재검색</button>
-                            <span id="selected_book" class="pl-10"></span>
+                            <span id="selected_book" class="pl-10">@if(empty($data['wBookIdx']) === false){{ $data['wBookName'] }} [{{ $data['wBookIdx'] }}]@endif</span>
                         @endif
                     </div>
                 </div>
@@ -328,9 +328,12 @@
             $('#btn_category_search').on('click', function() {
                 var site_code = $regi_form.find('select[name="site_code"]').val();
                 if (!site_code) {
-                    alert('운영사이트를 먼저 선택해 주십시오.')
+                    alert('운영사이트를 먼저 선택해 주십시오.');
                     return;
                 }
+
+                // 과목/교수 검색 초기화
+                $('#selected_prof_subject').html('');
 
                 $('#btn_category_search').setLayer({
                     'url' : '{{ site_url('/common/searchCategory/index/single/site_code/') }}' + site_code,

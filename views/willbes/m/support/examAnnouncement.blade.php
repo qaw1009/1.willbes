@@ -61,6 +61,8 @@
                                 </a>
                             </div>
                             <dl class="w-info tx-gray">
+                                <dt>{{$row['TypeCcd_Name']}}<span class="row-line">|</span></dt>
+                                <dt>{{$row['AreaCcd_Name']}}<span class="row-line">|</span></dt>
                                 <dt>{{$row['RegDatm']}}<span class="row-line">|</span></dt>
                                 <dt>조회수 : <span class="tx-blue">{{$row['TotalReadCnt']}}</span></dt>
                             </dl>

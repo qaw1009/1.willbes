@@ -69,6 +69,10 @@
             <a href="{{ site_url('/home/html/event_onGosiHdhReading') }}" target="_blank">공무원 온라인 한덕현 영어 독해첨삭지도반</a>
             <a href="{{ site_url('/home/html/event_onGosiHdhReadinPop') }}" target="_blank">공무원 온라인 한덕현 영어 독해첨삭지도반 신청팝업</a>
             <a href="{{ site_url('/home/html/event_onGosiJswPkg') }}" target="_blank">공무원 온라인 장사원 패키지 20% 할인</a>
+            <a href="{{ site_url('/home/html/event_onGosiKsjWordPkg') }}" target="_blank">김신주 영어 어휘패키지</a>
+            <a href="{{ site_url('/home/html/event_onGosiKsjPkg') }}" target="_blank">김신주 매직아이 영어 문법/어휘/독해 패키지</a>
+            <a href="{{ site_url('/home/html/event_onGosiCwyPkg') }}" target="_blank">최우영 전기/통신직 이론패키지 최대 30% 할인</a>
+
             <br><br>            
             <a href="{{ site_url('/home/html/mocktest1') }}" target="_blank">수험정보 > 시험공고 page 이동</a>
             <a href="{{ site_url('/home/html/mocktest2') }}" target="_blank">수험정보 > 수험뉴스 page 이동</a>

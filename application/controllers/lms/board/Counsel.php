@@ -73,7 +73,7 @@ class Counsel extends BaseBoard
                 'ReplyStatusCcd' => $this->_Ccd['reply']['unAnswered']
             ]
         ];
-        $arr_unAnswered = $this->_getUnAnserArray($arr_condition);
+        $arr_unAnswered = $this->_getUnAnswerArray($arr_condition);
         $this->load->view("board/{$this->board_name}/index", [
             'bm_idx' => $this->bm_idx,
             'arr_search_data' => $arr_search_data['arr_search_data'],

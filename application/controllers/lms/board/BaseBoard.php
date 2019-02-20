@@ -278,9 +278,9 @@ class BaseBoard extends \app\controllers\BaseController
      * @param $arr_condition
      * @return array|bool
      */
-    protected function _getUnAnserArray($arr_condition)
+    protected function _getUnAnswerArray($arr_condition)
     {
-        return $this->boardModel->getUnAnserArray($arr_condition);
+        return $this->boardModel->getUnAnswerArray($arr_condition);
     }
 
     /**

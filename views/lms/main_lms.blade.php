@@ -35,22 +35,20 @@
                         <thead>
                             <tr>
                                 <th style="width: 25%;">구분</th>
-                                <th>미답변현황</th>
+                                <th>미답변 현황</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>경찰</td>
-                                <td>온라인 <a href="#none" class="blue"><u>3건</u></a> | 학원 <a href="#none" class="blue"><u>2건</u></a></td>
-                            </tr>
-                            <tr>
-                                <td>경찰</td>
-                                <td>온라인 <a href="#none" class="blue"><u>3건</u></a> | 학원 <a href="#none" class="blue"><u>2건</u></a></td>
-                            </tr>
-                            <tr>
-                                <td>경찰</td>
-                                <td>온라인 <a href="#none" class="blue"><u>3건</u></a> | 학원 <a href="#none" class="blue"><u>2건</u></a></td>
-                            </tr>
+                            @foreach($unAnswered_data as $data)
+                                <tr>
+                                    <td>{{$data['SiteGroupName']}}</td>
+                                    <td>
+                                        @foreach($data['info'] as $key => $val)
+                                            {{$key}} <a href="{{ site_url("/board/counsel/") }}?bm_idx=48" class="blue"><u>{{$val}}건</u></a> @if ($loop->last === false) | @endif
+                                        @endforeach
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

@@ -1910,11 +1910,11 @@ class Manage extends \app\controllers\BaseController
 
         //상담게시판 미답변
         $arr_condition = array_replace_recursive($arr_condition, ['EQ' => ['BmIdx' => '48']]);
-        $arr_unAnswered = $this->boardModel->getUnAnserArray($arr_condition);
+        $arr_unAnswered = $this->boardModel->getUnAnswerArray($arr_condition);
 
         //교수학습Q&A 미답변
         $arr_condition = array_replace_recursive($arr_condition, ['EQ' => ['BmIdx' => '66']]);
-        $arr_unAnswered_prof = $this->boardModel->getUnAnserArray($arr_condition);
+        $arr_unAnswered_prof = $this->boardModel->getUnAnswerArray($arr_condition);
 
         //TM상담관리 수
         $arr_condition = ['EQ' => ['B.MemIdx' => $memIdx]];

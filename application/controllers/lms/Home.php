@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends \app\controllers\BaseController
 {
-    protected $models = array('sys/wCode', 'sys/loginLog', 'pay/orderList');
+    protected $models = array('sys/wCode', 'sys/loginLog', 'pay/orderList', 'board/board');
     protected $helpers = array();
 
     public function __construct()
@@ -53,10 +53,18 @@ class Home extends \app\controllers\BaseController
             $refund_data = $this->orderListModel->getOrderRefundReqCntPerSite($today, $today);
         }
 
+        $set_unAnswered = [];
+        $result_unAnswered = $this->boardModel->getCounselUnAnswerForMainArray();
+        foreach ($result_unAnswered as $row) {
+            $set_unAnswered[$row['SiteGroupCode']]['SiteGroupName'] = $row['SiteGroupName'];
+            $set_unAnswered[$row['SiteGroupCode']]['info'][$row['SiteOnOffName']] = $row['CounselCnt'];
+        }
+
         $this->load->view('main_' . SUB_DOMAIN, [
             'last_login_ip' => $this->input->ip_address(),
             'data' => $list,
-            'refund_data' => $refund_data
+            'refund_data' => $refund_data,
+            'unAnswered_data' => $set_unAnswered
         ]);
     }
 }

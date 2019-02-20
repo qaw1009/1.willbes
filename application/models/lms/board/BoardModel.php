@@ -955,7 +955,7 @@ class BoardModel extends WB_Model
      * @param $arr_condition
      * @return array|bool
      */
-    public function getUnAnserArray($arr_condition)
+    public function getUnAnswerArray($arr_condition)
     {
         if (empty($arr_condition)) {
             return false;
@@ -1318,6 +1318,51 @@ class BoardModel extends WB_Model
             return error_result($e);
         }
         return true;
+    }
+
+    /**
+     * 사이트별 1:1문의 게시판 미답변 현황 [메인페이지]
+     */
+    public function getCounselUnAnswerForMainArray()
+    {
+        $column = 'a.SiteGroupCode, g.SiteGroupName, a.SiteCode, a.IsCampus, a.IsCampus, IF(a.IsCampus = "N", "온라인", "학원") AS SiteOnOffName, IFNULL(b.CounselCnt, 0) AS CounselCnt';
+
+        $arr_condition_sub = [
+            'EQ' => [
+                'BmIdx' => '48',
+                'RegType' => '0',
+                'ReplyStatusCcd' => '621001',
+                'IsUse' => 'Y',
+                'IsStatus' => 'Y',
+            ]
+        ];
+        $where_sub = $this->_conn->makeWhere($arr_condition_sub);
+        $where_sub = $where_sub->getMakeWhere(false);
+
+        $arr_condition = [
+            'NOT' => ['a.SiteCode' => config_item('app_intg_site_code')],
+            'IN' => ['a.SiteCode' => get_auth_site_codes()],
+            'EQ' => ['a.IsUse' => 'Y']
+        ];
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $from = "
+            FROM {$this->_table_sys_site} AS a
+            INNER JOIN lms_site_group AS g ON a.SiteGroupCode = g.SiteGroupCode
+            LEFT JOIN 
+            (
+                SELECT SiteCode, COUNT(*) AS CounselCnt
+                FROM {$this->_table}
+                {$where_sub}
+                GROUP BY SiteCode
+            ) AS b ON a.SiteCode = b.SiteCode
+        ";
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where);
+
+        return $query->result_array();
     }
 
     /**

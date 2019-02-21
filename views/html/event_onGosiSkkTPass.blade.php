@@ -55,7 +55,7 @@
             <div>
                 <!-- a href="javascript:alert('마감되었습니다.');" /-->    
                 <a href="#event">                    
-                    <img src="http://file3.willbes.net/new_gosi/2018/07/EV180723_c12.png" alt="한권으로 공부하는 회계학" >
+                    <img src="http://file3.willbes.net/new_gosi/2018/07/EV180723_c12.png" alt="성기건 영어 T-PASS" >
                 </a>
             </div>
 		</div>

@@ -57,8 +57,15 @@
                         <div class="willbes-listTable MyInfoBoxList widthAutoFull">
                             <div class="will-Tit NG">최근 받은 쪽지 <a class="f_right" href="#none"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
                             <ul class="List-Table GM tx-gray">
-                                <li><a href="#none">쪽지 제목이 노출됩니다.<img src="{{ img_url('mypage/icon_N.png') }}"></a></li>
-                                <li>수신된 쪽지가 없습니다.</li>
+                                @forelse($data['msg_list'] as $row)
+                                    <li>
+                                        <a href="#none" class="btn-crm-view" data-send-Idx="{{$row['SendIdx']}}">
+                                            {{hpSubString($row['Content'],0,40,'...')}}{!!($row['IsReceive'] == 'Y') ? '' : '<img src="'.img_url('mypage/icon_N.png').'">'!!}
+                                        </a>
+                                    </li>
+                                @empty
+                                    <li>수신된 쪽지가 없습니다.</li>
+                                @endforelse
                             </ul>
                         </div>
                         <div class="willbes-listTable MyInfoBoxList widthAutoFull">
@@ -207,5 +214,21 @@
             </div>
         </div>
     </div>
+    <div id="MEMOPASS"></div>
     <!-- End Container -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.btn-crm-view').click(function () {
+                var ele_id = 'MEMOPASS';
+                var data = {
+                    'ele_id' : ele_id,
+                    'show_onoff' : 'off',
+                    'send_idx' : $(this).data('send-Idx')
+                };
+                sendAjax('{{ site_url('/classroom/message/show') }}', data, function(ret) {
+                    $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');
+                }, showAlertError, false, 'GET', 'html');
+            });
+        });
+    </script>
 @stop

@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends \app\controllers\FrontController
 {
-    protected $models = array('classroomF', 'pointF', 'couponF', 'support/supportBoardF', 'support/supportBoardTwoWayF');
+    protected $models = array('classroomF', 'pointF', 'couponF', 'support/supportBoardF', 'support/supportBoardTwoWayF', 'crm/messageF');
     protected $helpers = array();
     protected $auth_controller = true;
     protected $auth_methods = array();
@@ -128,6 +128,10 @@ class Home extends \app\controllers\FrontController
         $arr_condition = ['EQ' => ['b.BmIdx' => 45,'b.SiteCode' => $this->_site_code,'b.IsUse' => 'Y']];
         $column = 'b.BoardIdx, b.Title, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
         $data['notice'] = $this->supportBoardFModel->listBoard(false, $arr_condition, $column, 4, 0, $order_by);
+
+        // 쪽지
+        $data['msg_list'] = $this->messageFModel->listMessage(false, [], $memidx,
+            2, null, ['a.SendIdx' => 'DESC']);
 
         // 등록된 학습기기
         $this->load->view('/classroom/index', [

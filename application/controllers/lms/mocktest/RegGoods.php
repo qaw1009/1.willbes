@@ -170,12 +170,6 @@ class RegGoods extends \app\controllers\BaseController
         $codes = $this->codeModel->getCcdInArray([$this->applyType, $this->applyArea1, $this->applyArea2, $this->addPoint,$this->acceptStatus]);
         $csTel = $this->siteModel->getSiteArray(false, 'CsTel');
 
-        $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
-
-        $mode = element('mode',$arr_input);
-
-        if(!$mode) $mode = 'single';
-
         $cateD2Json = array();
         foreach ($cateD2 as $it) {
             $cateD2Json[ $it['ParentCateCode'] ][ $it['CateCode'] ] = $it['CateName'];
@@ -205,38 +199,6 @@ class RegGoods extends \app\controllers\BaseController
             'sData' => $sData,
             'cateD2_sel' => json_encode($data['MockPart']),
             'adminName' => $this->mockCommonModel->getAdminNames(),
-            'prodidx' => $param[0],
-            'mode' => $mode
-        ]);
-    }
-
-    public function multiFake($param = [])
-    {
-        $cateD1 = $this->categoryModel->getCategoryArray('', '', '', 1);
-        $cateD2 = $this->mockCommonModel->getMockKind();
-        $codes = $this->codeModel->getCcdInArray([$this->applyType, $this->applyArea1, $this->applyArea2, $this->addPoint,$this->acceptStatus]);
-        $csTel = $this->siteModel->getSiteArray(false, 'CsTel');
-
-        $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
-
-        $q = element('q',$arr_input);
-
-
-        $cateD2Json = array();
-        foreach ($cateD2 as $it) {
-            $cateD2Json[ $it['ParentCateCode'] ][ $it['CateCode'] ] = $it['CateName'];
-        }
-
-
-        list($data, $sData) = $this->regGoodsModel->getGoods($param[0]);
-        if (!$data) {
-            $this->json_error('데이터 조회에 실패했습니다.');
-            return;
-        }
-
-        $this->load->view('mocktest/reg/goods/multiFake', [
-            'prodcode' => $param[0],
-            'q' => $q
         ]);
     }
 
@@ -247,22 +209,6 @@ class RegGoods extends \app\controllers\BaseController
         $this->regGoodsModel->saveFake($condition);
     }
 
-    function fakeInsert2(){
-        $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
-
-        $idx = element('idx',$arr_input);
-        $TakeFormsCcd = element('TakeFormsCcd',$arr_input);
-        $MpIdx1 = element('MpIdx1',$arr_input);
-        $MpIdx2 = element('MpIdx2',$arr_input);
-        $SMpIdx1 = element('SMpIdx1',$arr_input);
-        $SMpIdx2 = element('SMpIdx2',$arr_input);
-        $AddPointCcds = element('AddPointCcds',$arr_input);
-        $people = element('people',$arr_input);
-        $cate = element('cate',$arr_input);
-        $mode = element('mode',$arr_input);
-
-        $this->regGoodsModel->saveFake2($idx,$TakeFormsCcd,$MpIdx1,$MpIdx2,$SMpIdx1,$SMpIdx2,$AddPointCcds,$people,$cate,$mode);
-    }
 
     /**
      * 등록

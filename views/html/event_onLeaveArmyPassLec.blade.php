@@ -17,26 +17,8 @@
             padding:0 !important;
             background:#fff;
         }	
-        .rLnb {position:absolute; width:170px; top:20px; right:10px; z-index:1;
-        }
-        .rLnb ul {padding:6px 12px; background:#fff; border:3px solid #2f2f2f; margin-bottom:10px;
-            -webkit-box-shadow: 10px 10px 20px 0px rgba(0,0,0,0.21);
-            -moz-box-shadow: 10px 10px 20px 0px rgba(0,0,0,0.21);
-            box-shadow: 10px 10px 20px 0px rgba(0,0,0,0.21);
-        }
-        .rLnb li {background:url(http://file3.willbes.net/new_gosi/2018/01/leaveArmylnb_arrow.jpg) no-repeat 100% center}
-        .rLnb a {border-bottom:1px solid #bfbfbf; display:block; padding:10px 0; line-height:1.4;}
-        .rLnb a:hover {border-bottom:1px solid #000;
-            font-weight: 600;
-        }
-        .rLnb li:last-child a {border:0}
-        .rLnb div {
-            text-align:center;
-            padding:20px 0;
-            background:#fff;   
-            border:3px solid #2f2f2f;  
-        }
-        .rLnb_sectionFixed {position:fixed; top:20px}
+        
+        
         
         .LAeventA01 {
             position:relative;

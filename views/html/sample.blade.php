@@ -12,9 +12,7 @@
     ul:after {content:""; display:block; clear:both}
 </style>
 
-<h1><a href="{{ site_url('/') }}" target="_blank">통합 메인 페이지 이동</a></h1>
-
-<h3>HTML 퍼블리싱 페이지</h3>  
+<h1><a href="{{ site_url('/') }}" target="_blank">통합 메인 페이지 이동 - HTML 퍼블리싱 페이지</a></h1>
 
 <ul>
     <li>
@@ -50,15 +48,17 @@
             <a href="{{ site_url('/home/html/event_ing_read') }}" target="_blank">이벤트 > 진행중인 이벤트 상세 page 이동</a>
             <a href="{{ site_url('/home/html/event_end') }}" target="_blank">이벤트 > 마감된 이벤트 page 이동</a>
             <a href="{{ site_url('/home/html/event_end_read') }}" target="_blank">이벤트 > 마감된 이벤트 상세 page 이동</a>
-        </div>
-    </li>
-    <li>
-        <div>           
-            <a href="{{ site_url('/home/html/event_onLeaveArmyPass') }}" target="_blank">전역군인인증 온라인 intro</a>
+            <br><br>
+            <a href="{{ site_url('/home/html/event_onLeaveArmyPassIntro') }}" target="_blank">전역군인인증 통합</a>
+            <a href="{{ site_url('/home/html/event_onLeaveArmyPass') }}" target="_blank">전역군인인증 온라인 메인</a>
             <a href="{{ site_url('/home/html/event_onLeaveArmyPassConfirmPop') }}" target="_blank">전역군인인증 온라인 팝업(사이즈 740x700)</a>
             <a href="{{ site_url('/home/html/event_onLeaveArmyPassLec') }}" target="_blank">전역군인인증 온라인 강의</a>
             <a href="{{ site_url('/home/html/event_onMouPop') }}" target="_blank">온라인 교육 콘텐츠 제공 업무제공 체결(MOU) 팝업(사이즈 850x700)</a>   
             <a href="{{ site_url('/home/html/event_onCopReboundPop') }}" target="_blank">타 학원 수강생 인증 팝업(사이즈 740x700)</a>
+        </div>
+    </li>
+    <li>
+        <div>       
             <p>경찰 온라인 ▼</p>       
             <a href="{{ site_url('/home/html/event_onCopPromotionPass') }}" target="_blank">승진 PASS</a>
             <a href="{{ site_url('/home/html/event_onCopPromotionPassPop') }}" target="_blank">PASS 인증 팝업(사이즈 740x700)</a>
@@ -91,6 +91,7 @@
             <a href="{{ site_url('/home/html/event_onGosiStartPkg') }}" target="_blank">윌비스 기초입문 풀패키지 0원</a>
             <a href="{{ site_url('/home/html/event_onGosiAtoZ') }}" target="_blank">공무원의 A to Z</a>
             <a href="{{ site_url('/home/html/event_onGosiPassNote') }}" target="_blank">N수생의 합격노트</a>
+            <a href="{{ site_url('/home/html/event_onGosiKyPkg') }}" target="_blank">김영 영어 패키지</a>
         </div>
     </li>
     <li>

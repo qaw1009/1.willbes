@@ -87,6 +87,10 @@
             <a href="{{ site_url('/home/html/event_onGosiSkkTPass') }}" target="_blank">성기건 영어 T-PASS</a>
             <a href="{{ site_url('/home/html/event_onGosiLsgTPass') }}" target="_blank">이상구 국제법/국제정치학 T-PASS</a>
             <a href="{{ site_url('/home/html/event_onGosiKdgTPass') }}" target="_blank">김덕관 행정학 T-PASS</a>
+            <a href="{{ site_url('/home/html/event_onGosiWelcome') }}" target="_blank">2019 윌비스 웰컴팩 - 2월</a>
+            <a href="{{ site_url('/home/html/event_onGosiStartPkg') }}" target="_blank">윌비스 기초입문 풀패키지 0원</a>
+            <a href="{{ site_url('/home/html/event_onGosiAtoZ') }}" target="_blank">공무원의 A to Z</a>
+            <a href="{{ site_url('/home/html/event_onGosiPassNote') }}" target="_blank">N수생의 합격노트</a>
         </div>
     </li>
     <li>

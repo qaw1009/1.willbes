@@ -130,8 +130,8 @@ class RegGoods extends \app\controllers\BaseController
 
 
     /**
- * 등록폼
- */
+     * 등록폼
+     */
     public function create()
     {
         $cateD1 = $this->categoryModel->getCategoryArray('', '', '', 1);
@@ -170,6 +170,12 @@ class RegGoods extends \app\controllers\BaseController
         $codes = $this->codeModel->getCcdInArray([$this->applyType, $this->applyArea1, $this->applyArea2, $this->addPoint,$this->acceptStatus]);
         $csTel = $this->siteModel->getSiteArray(false, 'CsTel');
 
+        $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+
+        $mode = element('mode',$arr_input);
+
+        if(!$mode) $mode = 'single';
+
         $cateD2Json = array();
         foreach ($cateD2 as $it) {
             $cateD2Json[ $it['ParentCateCode'] ][ $it['CateCode'] ] = $it['CateName'];
@@ -199,6 +205,8 @@ class RegGoods extends \app\controllers\BaseController
             'sData' => $sData,
             'cateD2_sel' => json_encode($data['MockPart']),
             'adminName' => $this->mockCommonModel->getAdminNames(),
+            'prodidx' => $param[0],
+            'mode' => $mode
         ]);
     }
 
@@ -209,6 +217,22 @@ class RegGoods extends \app\controllers\BaseController
         $this->regGoodsModel->saveFake($condition);
     }
 
+    function fakeInsert2(){
+        $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+
+        $idx = element('idx',$arr_input);
+        $TakeFormsCcd = element('TakeFormsCcd',$arr_input);
+        $MpIdx1 = element('MpIdx1',$arr_input);
+        $MpIdx2 = element('MpIdx2',$arr_input);
+        $SMpIdx1 = element('SMpIdx1',$arr_input);
+        $SMpIdx2 = element('SMpIdx2',$arr_input);
+        $AddPointCcds = element('AddPointCcds',$arr_input);
+        $people = element('people',$arr_input);
+        $cate = element('cate',$arr_input);
+        $mode = element('mode',$arr_input);
+
+        $this->regGoodsModel->saveFake2($idx,$TakeFormsCcd,$MpIdx1,$MpIdx2,$SMpIdx1,$SMpIdx2,$AddPointCcds,$people,$cate,$mode);
+    }
 
     /**
      * 등록
@@ -553,8 +577,8 @@ class RegGoods extends \app\controllers\BaseController
         $suType = $this->input->get('suType');
 
         if ( empty($siteCodeDef) || !preg_match('/^[0-9]+$/', $siteCodeDef) ||
-             empty($cateD1Def) || !preg_match('/^[0-9]+$/', $cateD1Def) ||
-             empty($suType) || !preg_match('/^(E|S)$/', $suType) ) {
+            empty($cateD1Def) || !preg_match('/^[0-9]+$/', $cateD1Def) ||
+            empty($suType) || !preg_match('/^(E|S)$/', $suType) ) {
             return false;
         }
 

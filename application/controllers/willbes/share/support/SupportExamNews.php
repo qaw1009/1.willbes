@@ -113,12 +113,12 @@ class SupportExamNews extends BaseSupport
                        ,b.SubjectName,b.CourseName,b.AttachData,DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm
                        ';
         $data = $this->supportBoardFModel->findBoardForSiteGroup($this->_site_code, $board_idx, $arr_condition, $column);
-        // 첨부파일 이미지일 경우 해당 배열에 담기
-        $data['Content'] = $this->_getBoardForContent($data['Content'], $data['AttachData']);
 
         if (empty($data)) {
             show_alert('게시글이 존재하지 않습니다.', 'back');
         }
+        // 첨부파일 이미지일 경우 해당 배열에 담기
+        $data['Content'] = $this->_getBoardForContent($data['Content'], $data['AttachData']);
         $data['AttachData'] = json_decode($data['AttachData'],true);       //첨부파일
 
         $result = $this->supportBoardFModel->modifyBoardRead($board_idx);
@@ -126,7 +126,6 @@ class SupportExamNews extends BaseSupport
             show_alert('게시글 조회시 오류가 발생되었습니다.', 'back');
         }
         #-------------------------------- 게시글 조회
-
 
         #--------------------------------  이전글, 다음글 조회 : 베스트/핫 일경우 무시하고 BoardIdx 로 비교 , 리스트에서 핫/베스트 글을 찍고 들어왔을경우 이전글/다음글 미노출
         $s_keyword = element('s_keyword',$arr_input);

@@ -233,16 +233,15 @@ class SupportQna extends BaseSupport
             if (empty($data)) {
                 show_alert('게시글이 존재하지 않습니다.', 'back');
             }
-            $data['AttachData'] = json_decode($data['AttachData'],true);       //첨부파일
-
             if ($data['RegType'] == '0' && $data['IsPublic'] == 'N' && $data['RegMemIdx'] != $this->session->userdata('mem_idx')) {
                 show_alert('잘못된 접근 입니다.', 'back');
             }
-
             $result = $this->supportBoardTwoWayFModel->modifyBoardRead($board_idx);
             if($result !== true) {
                 show_alert('게시글 조회시 오류가 발생되었습니다.', 'back');
             }
+
+            $data['AttachData'] = json_decode($data['AttachData'],true);       //첨부파일
         }
 
         $this->load->view('support/'.$view_type.'/create_qna', [

@@ -66,8 +66,6 @@ class BookModel extends WB_Model
                     on B.wBookIdx = VWB.wBookIdx
                 inner join ' . $this->_table['product_sale'] . ' as PS
                     on P.ProdCode = PS.ProdCode                    
-                inner join ' . $this->_table['site'] . ' as S
-                    on P.SiteCode = S.SiteCode
                 left join ' . $this->_table['product_r_category'] . ' as BC
                     on P.ProdCode = BC.ProdCode and BC.IsStatus = "Y"                                                                        
                 left join ' . $this->_table['category'] . ' as C
@@ -76,6 +74,8 @@ class BookModel extends WB_Model
                     on C.ParentCateCode = PC.CateCode and PC.IsStatus = "Y"
                 left join ' . $this->_table['vw_product_book_r_prof_subject'] . ' as BPS
                     on P.ProdCode = BPS.ProdCode
+                inner join ' . $this->_table['site'] . ' as S
+                    on P.SiteCode = S.SiteCode                    
                 left join ' . $this->_table['admin'] . ' as A
                     on P.RegAdminIdx = A.wAdminIdx and A.wIsStatus = "Y"
             where P.IsStatus = "Y"                
@@ -84,6 +84,8 @@ class BookModel extends WB_Model
                 and S.IsStatus = "Y" 
         ';
 
+        // 상품타입 추가
+        $arr_condition['EQ']['P.ProdTypeCcd'] = $this->_prod_type_ccd;
         // 사이트 권한 추가
         $arr_condition['IN']['P.SiteCode'] = get_auth_site_codes();
         $where = $this->_conn->makeWhere($arr_condition);

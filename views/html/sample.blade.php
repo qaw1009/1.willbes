@@ -83,7 +83,9 @@
             <a href="{{ site_url('/home/html/event_onGosiKmjTPass') }}" target="_blank">기미진 국어 T-PASS</a>
             <a href="{{ site_url('/home/html/event_onGosiPmjTPass') }}" target="_blank">박민주 한국사 T-PASS</a>
             <a href="{{ site_url('/home/html/event_onGosiMbiTPass') }}" target="_blank">문병일 사회 T-PASS</a>  
-            <a href="{{ site_url('/home/html/event_onGosiHnkTPass') }}" target="_blank">황남기 헌법/행정법 T-PASS</a>                        
+            <a href="{{ site_url('/home/html/event_onGosiHnkTPass') }}" target="_blank">황남기 헌법/행정법 T-PASS</a>  
+            <a href="{{ site_url('/home/html/event_onGosiSkkTPass') }}" target="_blank">성기건 영어 T-PASS</a>
+            <a href="{{ site_url('/home/html/event_onGosiLsgTPass') }}" target="_blank">이상구 국제법/국제정치학 T-PASS</a>                        
         </div>
     </li>
     <li>

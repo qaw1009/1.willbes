@@ -785,9 +785,10 @@ class MockExamModel extends WB_Model
 
             $ProdCode = element('ProdCode', $formData);
             $MrIdx = element('MrIdx', $formData);
+            $MemIdx = $this->session->userdata('mem_idx');
 
             //삭제후 입력
-            $where = ['MemIdx' => $this->session->userdata('mem_idx'), 'ProdCode' => $ProdCode, 'MrIdx' => $MrIdx];
+            $where = ['MemIdx' => $MemIdx, 'ProdCode' => $ProdCode, 'MrIdx' => $MrIdx];
 
             try {
                 if($this->_conn->delete($this->_table['mockAnswerPaper'], $where) === false){
@@ -797,52 +798,27 @@ class MockExamModel extends WB_Model
                 return error_result($e);
             }
 
-            $column = "
-                MA.MpIdx, QuestionNO, Answer, RightAnswer, MrIdx, LogIdx, MQ.MqIdx
+            $insert_column = "
+                MemIdx, MrIdx, ProdCode, MpIdx, MqIdx, LogIdx, Answer, IsWrong, RegDatm
             ";
-
-            $from = "
+            $select_column = "
+                '".$MemIdx."', '".$MrIdx."', '".$ProdCode."', MA.MpIdx, MQ.MqIdx, LogIdx, Answer, if(Answer = RightAnswer, 'Y', 'N') AS IsWrong, MA.RegDatm
+            ";
+            $query = "
+                INSERT INTO {$this->_table['mockAnswerPaper']} ({$insert_column})
+                SELECT 
+                    {$select_column} 
                 FROM 
                     {$this->_table['mockAnswerTemp']} AS MA
                     JOIN {$this->_table['mockExamQuestion']} AS MQ ON MA.MqIdx = MQ.MqIdx AND MQ.IsStatus = 'Y' AND MQ.IsStatus = 'Y'
+                WHERE 
+                    MemIdx = ".$MemIdx."
+                    AND ProdCode = ".$ProdCode."
+                    AND MrIdx = ".$MrIdx." ORDER BY MpIdx
             ";
 
-            $arr_condition = [
-                'EQ' => [
-                    'MemIdx'   => $this->session->userdata('mem_idx'),
-                    'ProdCode' => $ProdCode,
-                    'MrIdx' => $MrIdx
-                ]
-            ];
+            $this->_conn->query($query);
 
-            $where = $this->_conn->makeWhere($arr_condition);
-            $where = $where->getMakeWhere(false);
-            $obder_by = " ORDER BY MpIdx";
-            //echo "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
-            $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
-            //입력문항과 정답문항
-            $result = $query->result_array();
-
-            foreach ($result as $key => $val){
-
-                if($val['Answer'] == $val['RightAnswer']) $IsWrong = 'Y';
-                else                                      $IsWrong = 'N';
-                    // 데이터 입력
-                $data = [
-                    'MemIdx' => $this->session->userdata('mem_idx'),
-                    'MrIdx'  => $MrIdx,
-                    'ProdCode'=> $ProdCode,
-                    'LogIdx' => $val['LogIdx'],
-                    'MpIdx' => $val['MpIdx'],
-                    'MqIdx' => $val['MqIdx'],
-                    'Answer' => $val['Answer'],
-                    'IsWrong' => $IsWrong
-                ];
-
-                if ($this->_conn->set($data)->set('RegDatm', 'NOW()', false)->insert($this->_table['mockAnswerPaper']) === false) {
-                    throw new \Exception('정답저장에 실패했습니다.');
-                }
-            }
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();

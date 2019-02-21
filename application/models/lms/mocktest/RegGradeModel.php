@@ -190,7 +190,6 @@ class RegGradeModel extends WB_Model
         $where = " WHERE PD.IsStatus = 'Y' ";
         $where .= $this->_conn->makeWhere($condition)->getMakeWhere(true) . "\n";
         $order = " ORDER BY MP.ProdCode DESC ";
-
         $data = $this->_conn->query('SELECT ' . $column . $from . $where . $order . $offset_limit)->result_array();
         $count = $this->_conn->query($selectCount . $from . $where)->row()->cnt;
 

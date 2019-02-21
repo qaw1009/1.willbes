@@ -196,13 +196,16 @@
                     {'data' : 'OnlineCnt', 'class': 'text-center'},
                     {'data' : 'OfflineCnt', 'class': 'text-center'},
                     {'data' : 'AcceptStatusCcd_Name', 'class': 'text-center'},
+
                     {'data' : 'TakeType', 'class': 'text-center', 'render' : function(data, type, row, meta) {
                         return (data === 'A') ? '상시' : '기간제한';
                     }},
                     {'data' : 'IsUse', 'class': 'text-center', 'render' : function(data, type, row, meta) {
                         return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
                     }},
-                    {'data' : 'wAdminName', 'class': 'text-center'},
+                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                            return '<span class="blue underline-link act-multifake"><input type="hidden" class="flat" name="prod" value="'+ row.ProdCode + '">' + row.wAdminName + '</span>';
+                        }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             return '<span class="blue underline-link act-fake"><input type="hidden" class="flat" name="prod" value="'+ row.ProdCode + '">' + row.RegDatm + '</span>';
                         }}
@@ -220,6 +223,13 @@
                 var query = dtParamsToQueryString($datatable);
 
                 location.href = '{{ site_url('/mocktest/regGoods/fakeCreate/') }}' + $(this).closest('tr').find('[name=prod]').val() + query;
+            });
+
+            // 다중짝퉁데이터 생성으로 이동
+            $list_form.on('click', '.act-multifake', function () {
+                var query = dtParamsToQueryString($datatable);
+
+                location.href = '{{ site_url('/mocktest/regGoods/multiFake/') }}' + $(this).closest('tr').find('[name=prod]').val() + query;
             });
 
             // 복사

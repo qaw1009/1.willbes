@@ -12,6 +12,8 @@
                 {!! method_field($method) !!}
                 <input type="hidden" name="idx" value="{{ ($method == 'PUT') ? $data['ProdCode'] : '' }}">
                 <input type="hidden" name="Info" value="">
+                <input type="hidden" name="mode" value="{{ $mode }}">
+                <input type="hidden" name="prodidx" value="{{ $prodidx }}">
 
                 <table class="table table-bordered modal-table">
                     <tr>
@@ -78,7 +80,6 @@
                         <th colspan="1">가산점 <span class="required">*</span></th>
                         <td colspan="3">
                             <SELECT class="form-control" name="AddPointCcds">
-                                <option value="0">해당없음</option>
                                 <option value="5">5%</option>
                                 <option value="10">10%</option>
                             </SELECT>
@@ -303,9 +304,9 @@
                                     <tbody>
                                     <select name="SMpIdx1" class="form-control">
                                         @if($method == 'PUT')
-                                            @foreach($sData as $row)
+                                            @foreach($sData as $key => $row)
                                                 @continue($row['MockType'] == 'E')
-                                                <option value="{{ $row['MpIdx'] }}">{{ $row['SubjectName'] }}[{{ $row['MpIdx'] }}]</td>
+                                                <option value="{{ $row['MpIdx'] }}" @if($key == 1) selected @endif>{{ $row['SubjectName'] }}[{{ $row['MpIdx'] }}]</td>
                                             @endforeach
                                         @endif
                                     </select>
@@ -325,9 +326,9 @@
                                     <tbody>
                                     <select name="SMpIdx2" class="form-control">
                                         @if($method == 'PUT')
-                                            @foreach($sData as $row)
+                                            @foreach($sData as $key => $row)
                                                 @continue($row['MockType'] == 'E')
-                                                <option value="{{ $row['MpIdx'] }}">{{ $row['SubjectName'] }}[{{ $row['MpIdx'] }}]</td>
+                                                <option value="{{ $row['MpIdx'] }}" @if($key == 3) selected @endif>{{ $row['SubjectName'] }}[{{ $row['MpIdx'] }}]</td>
                                             @endforeach
                                         @endif
                                     </select>
@@ -405,7 +406,7 @@
                     </tr>
                     <tr>
                         <th class="red">랜덤 입력회원수</th>
-                        <td colspan="3"><input type="text" name="people" value="5"/></td>
+                        <td colspan="3"><input type="text" name="people" value="1"/></td>
                     </tr>
                 </table>
                 <div class="form-group text-center">
@@ -419,7 +420,7 @@
     <script type="text/javascript">
         var $regi_form = $('#regi_form');
         var suAddField;
-
+        var mode = '{{ $mode }}';
 
         // 등록,수정
         function fakeSave() {
@@ -665,6 +666,10 @@
                     $('[name=SendTel]').val(csTel[src_site.val()]);
                 }
                 if(csTelChk === false) csTelChk = true;
+            }
+
+            if(mode == 'multi'){
+                fakeSave();
             }
         });
     </script>

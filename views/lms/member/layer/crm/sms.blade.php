@@ -70,7 +70,7 @@
                 {'data' : 'Content', 'render' : function(data, type, row, meta){
                         return '<a href="javascript:void(0);" class="btn-send-detail-read mr-20" data-idx="' + row.SendIdx + '" data-member-idx="' + row.MemIdx + '"><u>' + data + '</u></a>';
                     }},
-                {'data' : 'CsTel'},
+                {'data' : 'CsTelCcdName'},
                 {'data' : 'wAdminName'},
                 {'data' : 'SendDatm'},
                 {'data' : 'SendStatusCcdName', 'render' : function(data, type, row, meta){

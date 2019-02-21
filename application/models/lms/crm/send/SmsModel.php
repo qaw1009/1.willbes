@@ -23,10 +23,11 @@ class SmsModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
             $column = '
-                SMS.SendIdx, SMS.SiteCode, SMS.SendPatternCcd, SMS.SendTypeCcd, SMS.SendOptionCcd, SMS.SendStatusCcd, SMS.CsTel,
+                SMS.SendIdx, SMS.SiteCode, SMS.SendPatternCcd, SMS.SendTypeCcd, SMS.SendOptionCcd, SMS.SendStatusCcd, SMS.CsTelCcd,
                 CONCAT(LEFT(SMS.Content, 20), IF (CHAR_LENGTH(SMS.Content) > 20, " ...", "") ) as Content,
                 SMS.SendDatm, SMS.RegDatm, SMS.RegAdminIdx,
-                LS.SiteName, ADMIN.wAdminName
+                LS.SiteName, ADMIN.wAdminName,
+                fn_ccd_name(SMS.CsTelCcd) AS CsTelCcdName
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -302,14 +303,15 @@ class SmsModel extends WB_Model
         } else {
             $column = '
                 b.SendIdx, b.SendGroupTypeCcd, b.SiteCode, b.SendPatternCcd, b.SendTypeCcd, b.SendOptionCcd, b.SendStatusCcd, b.AdvertisePatternCcd,
-                b.CsTel, b.SendMail, b.SendAttachFilePath, b.SendAttachFileName, b.SendAttachRealFileName, b.Title, b.Content, b.AdvertiseAgreeContent,
+                b.CsTelCcd, b.SendMail, b.SendAttachFilePath, b.SendAttachFileName, b.SendAttachRealFileName, b.Title, b.Content, b.AdvertiseAgreeContent,
                 b.SendDatm, b.IsUse, b.IsStatus, b.RegDatm, b.RegAdminIdx, b.RegIp, b.UpdDatm, b.UpdAdminIdx,
                 a.SmsSendIdx, a.MemIdx, a.Receive_PhoneEnc, a.Receive_Name, a.SmsRcvStatus,
                 fn_ccd_name(b.SendStatusCcd) AS SendStatusCcdName,
                 fn_ccd_name(b.SendPatternCcd) AS SendPatternCcdName,
                 fn_ccd_name(b.SendTypeCcd) AS SendTypeCcdName,
                 c.MemName, fn_dec(a.Receive_PhoneEnc) AS Receive_Phone,
-                LS.SiteName, ADMIN.wAdminName
+                LS.SiteName, ADMIN.wAdminName,
+                fn_ccd_name(b.CsTelCcd) AS CsTelCcdName
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -340,9 +342,13 @@ class SmsModel extends WB_Model
     private function _smsSend($inputData, $arr_send_data)
     {
         $send_date = $inputData['SendDatm'];
-        $arr_send_phone = $arr_send_data;
         $send_msg = $inputData['Content'];
-        $send_call_center = $inputData['CsTel'];
+
+        $arr_condition = ['EQ' => ['Ccd' => $inputData['CsTelCcd']]];
+        $arr_ccd_data = $this->codeModel->listAllCode($arr_condition)[0];
+
+        $send_call_center = $arr_ccd_data['CcdValue'];
+        $arr_send_phone = $arr_send_data;
 
         $this->load->library('sendSms');
         if ($this->sendsms->send($arr_send_phone, $send_msg, $send_call_center, $send_date) !== true) {
@@ -371,7 +377,7 @@ class SmsModel extends WB_Model
             'SendTypeCcd' => (mb_strlen(element('send_content', $formData),'euc-kr') <= 80) ? $_send_text_length_ccd[0] : $_send_text_length_ccd[1],     //LMS
             'SendOptionCcd' => element('send_option_ccd', $formData),
             'SendStatusCcd' => (element('send_option_ccd', $formData) == $_send_option_ccd['0']) ? $_send_status_ccd['0'] : $_send_status_ccd['1'],
-            'CsTel' => element('cs_tel', $formData),
+            'CsTelCcd' => element('cs_tel_ccd', $formData),
             'Title' => '',
             'Content' => element('send_content', $formData)
         ];

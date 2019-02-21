@@ -39,6 +39,7 @@ class Sms extends \app\controllers\BaseController
         'SendTypeCcd' => '638',     //메세지종류 (SMS, LMS)
         'SendStatusCcd' => '639',   //발송상태 (성공,예약,취소)
         'SendOptionCcd' => '640',   //발송옵션 (즉시발송, 예약발송)
+        'SmsSendCallBackNum' => '706'   //SMS 발송번호
     ];
 
     public function __construct()
@@ -182,13 +183,10 @@ class Sms extends \app\controllers\BaseController
      */
     public function createSendModal()
     {
-        $arr_codes = $this->codeModel->getCcdInArray([$this->_groupCcd['SendPatternCcd'], $this->_groupCcd['SendOptionCcd']]);
+        $arr_codes = $this->codeModel->getCcdInArray([$this->_groupCcd['SendPatternCcd'], $this->_groupCcd['SendOptionCcd'], $this->_groupCcd['SmsSendCallBackNum']]);
         $method = 'POST';
         $set_row_count = '12';
         $list_send_member = null;
-
-        //고객센터 전화번호 조회
-        $site_csTel = json_encode($this->siteModel->getSiteArray(false,'CsTel'));
 
         $target_id = $this->_req('target_id');
         $target_idx = $this->_req('target_idx');
@@ -207,28 +205,13 @@ class Sms extends \app\controllers\BaseController
                 ]
             ];
             $list_send_member = $this->manageMemberModel->listSendMemberInfo($arr_condition);
-
-            //전송할 휴대폰번호가 폼데이터에 있을 경우 넘어온 휴대폰 번호로 대체
-            /*if (empty($target_phone) === false) {
-                $set_send_member_phone = explode(',', $target_phone);
-
-                foreach ($list_send_member as $key => $row) {
-                    if (empty($set_send_member_phone[$key]) === false && empty($set_send_member_id[$key]) === false && $list_send_member[$key]['MemId'] == $set_send_member_id[$key]) {
-                        $list_send_member[$key]['Phone'] = $set_send_member_phone[$key];
-                    }
-
-                    if (empty($set_send_member_phone[$key]) === false && empty($set_send_member_idx[$key]) === false && $list_send_member[$key]['MemIdx'] == $set_send_member_idx[$key]) {
-                        $list_send_member[$key]['Phone'] = $set_send_member_phone[$key];
-                    }
-                }
-            }*/
         }
 
         $this->load->view("crm/sms/create_modal", [
             'method' => $method,
-            'site_csTel' => $site_csTel,
             'arr_send_pattern_ccd' => $arr_codes[$this->_groupCcd['SendPatternCcd']],
             'arr_send_option_ccd' => $arr_codes[$this->_groupCcd['SendOptionCcd']],
+            'arr_send_callback_ccd' => $arr_codes[$this->_groupCcd['SmsSendCallBackNum']],
             'set_row_count' => $set_row_count,
             'list_send_member' => $list_send_member,
             'js_action' => $js_action
@@ -329,7 +312,7 @@ class Sms extends \app\controllers\BaseController
         $rules = [
             ['field' => 'site_code', 'label' => '운영사이트', 'rules' => 'trim|required'],
             ['field' => 'send_pattern_ccd', 'label' => '발송성격', 'rules' => 'trim|required'],
-            ['field' => 'cs_tel', 'label' => '발신번호', 'rules' => 'trim|required'],
+            ['field' => 'cs_tel_ccd', 'label' => '발신번호', 'rules' => 'trim|required'],
             ['field' => 'send_content', 'label' => '내용', 'rules' => 'trim|required'],
             ['field' => 'send_option_ccd', 'label' => '발송옵션', 'rules' => 'trim|required|integer'],
             ['field' => 'send_datm_day', 'label' => '날짜', 'rules' => 'callback_validateRequiredIf[send_option_ccd,N]']

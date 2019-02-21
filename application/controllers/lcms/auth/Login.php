@@ -269,7 +269,6 @@ class Login extends \app\controllers\BaseController
     {
         try {
             $this->load->library('sendSms');
-            // 070-4006-7122 최진영차장 직통 번호
             if($this->sendsms->send($to, '윌비스 본인 인증 번호입니다. ['.$auth_number.']를 입력해 주십시요.', '1544-5006') === false){
                 throw new \Exception('메세지 발송에 실패했습니다.\n다시 한번 시도해 주십시요.');
             }

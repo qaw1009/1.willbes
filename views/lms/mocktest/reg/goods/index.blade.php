@@ -203,9 +203,8 @@
                         return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
                     }},
                     {'data' : 'wAdminName', 'class': 'text-center'},
-                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return '<span class="blue underline-link act-fake"><input type="hidden" class="flat" name="prod" value="'+ row.ProdCode + '">' + row.RegDatm + '</span>';
-                        }}
+                    {'data' : 'RegDatm', 'class': 'text-center'}
+                   
                 ]
             });
 

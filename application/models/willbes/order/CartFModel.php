@@ -414,7 +414,13 @@ class CartFModel extends BaseOrderFModel
                     }
 
                     $prod_row = element('0', $prod_rows);
-                    $prod_row['ProdPriceData'] = element('0', json_decode($prod_row['ProdPriceData'], true));
+
+                    // 판매가격 정보 확인
+                    $prod_row['ProdPriceData'] = json_decode($prod_row['ProdPriceData'], true);
+                    if (empty($prod_row['ProdPriceData']) === true || isset($prod_row['ProdPriceData'][0]['SaleTypeCcd']) === false) {
+                        throw new \Exception('배송료 가격 정보가 없습니다.', _HTTP_NOT_FOUND);
+                    }
+                    $prod_row['ProdPriceData'] = element('0', $prod_row['ProdPriceData']);
 
                     // 장바구니 등록
                     $data = [

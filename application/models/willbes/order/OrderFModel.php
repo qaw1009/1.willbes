@@ -993,7 +993,13 @@ class OrderFModel extends BaseOrderFModel
             }
 
             $prod_row = element('0', $prod_rows);
-            $prod_row['ProdPriceData'] = element('0', json_decode($prod_row['ProdPriceData'], true));
+
+            // 판매가격 정보 확인
+            $prod_row['ProdPriceData'] = json_decode($prod_row['ProdPriceData'], true);
+            if (empty($prod_row['ProdPriceData']) === true || isset($prod_row['ProdPriceData'][0]['SaleTypeCcd']) === false) {
+                throw new \Exception('추가 배송료 가격 정보가 없습니다.', _HTTP_NOT_FOUND);
+            }
+            $prod_row['ProdPriceData'] = element('0', $prod_row['ProdPriceData']);
 
             if ($delivery_add_price != $prod_row['ProdPriceData']['RealSalePrice']) {
                 throw new \Exception('추가 배송료 금액이 일치하지 않습니다.');
@@ -1456,8 +1462,15 @@ class OrderFModel extends BaseOrderFModel
                 // 상품코드서브
                 $prod_code_sub = $learn_pattern == 'adminpack_lecture' ? $chk_data['ProdCodeSub'] : '';
 
-                // 가격정보
-                $prod_price_data = element('0', json_decode($chk_data['ProdPriceData'], true));
+                // 판매가격 정보 조회 및 확인
+                $prod_price_data_query = $this->_conn->query('select ifnull(fn_product_saleprice_data(?), "N") as ProdPriceData', [$prod_row['ProdCode']]);
+                $prod_price_data = $prod_price_data_query->row(0)->ProdPriceData;
+                
+                $prod_price_data = json_decode($prod_price_data, true);
+                if (empty($prod_price_data) === true || isset($prod_price_data[0]['SaleTypeCcd']) === false) {
+                    throw new \Exception('판매가격 정보가 없습니다.', _HTTP_NOT_FOUND);
+                }
+                $prod_price_data = element('0', $prod_price_data);
 
                 // 주문상품 데이터 가공
                 $order_prod_data[] = [

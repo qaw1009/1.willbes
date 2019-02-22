@@ -393,7 +393,7 @@ class OrderModel extends BaseOrderModel
 
                 // 상품정보 조회
                 $learn_pattern = $this->getLearnPattern($prod_type, $learn_pattern_ccd);
-                $column = 'ProdCode, SiteCode, ProdName, ProdPriceData';
+                $column = 'ProdCode, SiteCode, ProdName';
 
                 // 기간제패키지 제외한 패키지 상품일 경우 서브강좌 조회, 기간제패키지일 경우 패키지타입공통코드 조회
                 if (strpos($learn_pattern, 'pack_') !== false) {
@@ -437,9 +437,12 @@ class OrderModel extends BaseOrderModel
                 $row['UserStudyStartDate'] = element('lec_start_date', $input);
                 $row['UserStudyPeriod'] = element('lec_expire_day', $input);
 
-                // 판매가격정보 설정
+                // 판매가격 정보 조회 및 확인
+                $prod_price_data_query = $this->_conn->query('select ifnull(fn_product_saleprice_data(?), "N") as ProdPriceData', [$prod_code]);
+                $row['ProdPriceData'] = $prod_price_data_query->row(0)->ProdPriceData;
+
                 $arr_prod_price_data = json_decode($row['ProdPriceData'], true);
-                if (empty($arr_prod_price_data) === true || isset($arr_prod_price_data[0]['RealSalePrice']) === false) {
+                if (empty($arr_prod_price_data) === true || isset($arr_prod_price_data[0]['SaleTypeCcd']) === false) {
                     throw new \Exception('판매가격 정보가 없습니다.', _HTTP_NOT_FOUND);
                 }
                 $row['SaleTypeCcd'] = $arr_prod_price_data[0]['SaleTypeCcd'];
@@ -703,8 +706,12 @@ class OrderModel extends BaseOrderModel
                 throw new \Exception('배송료 상품이 존재하지 않습니다.', _HTTP_NOT_FOUND);
             }
 
-            // 판매가격 정보
-            $prod_price_data = element('0', json_decode($row['ProdPriceData'], true));
+            // 판매가격 정보 확인
+            $prod_price_data = json_decode($row['ProdPriceData'], true);
+            if (empty($prod_price_data) === true || isset($prod_price_data[0]['SaleTypeCcd']) === false) {
+                throw new \Exception('판매가격 정보가 없습니다.', _HTTP_NOT_FOUND);
+            }
+            $prod_price_data = element('0', $prod_price_data);
 
             is_null($card_pay_price) === true && $card_pay_price = $prod_price_data['RealSalePrice'];
             is_null($cash_pay_price) === true && $cash_pay_price = 0;
@@ -1077,7 +1084,7 @@ class OrderModel extends BaseOrderModel
                 }
 
                 // 상품정보 조회
-                $column = 'ProdCode, SiteCode, ProdName, ProdPriceData';
+                $column = 'ProdCode, SiteCode, ProdName';
                 $row = $this->salesProductModel->findSalesProductByProdCode($learn_pattern, $prod_code, $column);
                 if (empty($row) === true) {
                     throw new \Exception('판매 중인 상품만 주문하실 수 있습니다.', _HTTP_NOT_FOUND);
@@ -1089,9 +1096,12 @@ class OrderModel extends BaseOrderModel
                 $row['SalePatternCcd'] = $this->_sale_pattern_ccd['normal'];
                 $row['PayStatusCcd'] = $this->_pay_status_ccd['paid'];
 
-                // 판매가격정보 설정
+                // 판매가격 정보 조회 및 확인
+                $prod_price_data_query = $this->_conn->query('select ifnull(fn_product_saleprice_data(?), "N") as ProdPriceData', [$prod_code]);
+                $row['ProdPriceData'] = $prod_price_data_query->row(0)->ProdPriceData;
+
                 $arr_prod_price_data = json_decode($row['ProdPriceData'], true);
-                if (empty($arr_prod_price_data) === true || isset($arr_prod_price_data[0]['RealSalePrice']) === false) {
+                if (empty($arr_prod_price_data) === true || isset($arr_prod_price_data[0]['SaleTypeCcd']) === false) {
                     throw new \Exception('판매가격 정보가 없습니다.', _HTTP_NOT_FOUND);
                 }
                 $row['SaleTypeCcd'] = $arr_prod_price_data[0]['SaleTypeCcd'];

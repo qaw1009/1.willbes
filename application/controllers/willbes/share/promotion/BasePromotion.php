@@ -27,7 +27,7 @@ class BasePromotion extends \app\controllers\FrontController
 
         // 접근 로그 저장
         if ($test_type != 1) {
-            $this->eventFModel->saveLogPromotion($this->_site_code, $promotion_code);
+            $this->eventFModel->saveLogPromotion($this->_site_code, $this->_cate_code, $promotion_code);
         }
         $view_file = 'willbes/pc/promotion/'.$this->_site_code.'/'.$promotion_code;
         $this->load->view($view_file, [],false);

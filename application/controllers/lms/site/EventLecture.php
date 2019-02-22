@@ -377,7 +377,8 @@ class EventLecture extends \app\controllers\BaseController
             'file_data' => $file_data,
             'data_register_LM' => $data_register_LM,
             'wAdmin_info' => $wAdmin_info,
-            'ms_datas' => $ms_datas
+            'ms_datas' => $ms_datas,
+            'arr_cate_code' => $arr_cate_code
         ]);
     }
 

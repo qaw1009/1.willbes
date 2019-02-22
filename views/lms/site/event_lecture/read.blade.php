@@ -58,8 +58,10 @@
                 <label class="control-label col-md-1-1">프로모션 경로</label>
                 {{--<div class="form-control-static col-md-10">{{$data['Link']}}</div>--}}
                 <div class="form-control-static col-md-10">
-                    <p>관리자 확인용 : {{$data['SiteUrl'].'/promotion/index/code/'.$data['PromotionCode'].'?type=1'}}</p>
-                    <p>실제 경로 : {{$data['SiteUrl'].'/promotion/index/code/'.$data['PromotionCode']}}</p>
+                    @foreach($arr_cate_code as $key => $val)
+                        <p><b>[{{$val}}]</b> 관리자 확인용 : {{$data['SiteUrl'].'/promotion/index/cate/'.$key.'/code/'.$data['PromotionCode'].'?type=1'}}</p>
+                        <p><b>[{{$val}}]</b> 실제 경로 : {{$data['SiteUrl'].'/promotion/index/cate/'.$key.'/code/'.$data['PromotionCode']}}</p><br>
+                    @endforeach
                 </div>
             </div>
             <div class="form-group">

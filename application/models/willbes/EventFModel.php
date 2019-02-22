@@ -584,24 +584,24 @@ class EventFModel extends WB_Model
     {
         $test_type = $type;
         $column = '
-            ElIdx, EventName, PromotionCode, RegisterEndDate
+            a.ElIdx, a.EventName, a.PromotionCode, a.RegisterEndDate
         ';
         $from = "
-            FROM {$this->_table['event_lecture']}
+            FROM {$this->_table['event_lecture']} AS a
         ";
 
         // 1일 경우 미리보기용으로 간주
         if ($test_type == 1) {
-            $arr_condition = ['EQ'=>['PromotionCode' => $promotion_code]];
+            $arr_condition = ['EQ'=>['a.PromotionCode' => $promotion_code]];
         } else {
             $arr_condition = [
                 'EQ'=>[
-                    'PromotionCode' => $promotion_code,
-                    'IsUse' => 'Y',
-                    'IsStatus' => 'Y'
+                    'a.PromotionCode' => $promotion_code,
+                    'a.IsUse' => 'Y',
+                    'a.IsStatus' => 'Y'
                 ],
                 /*'GTE' => [
-                    'RegisterEndDate' => date('Y-m-d H:i') . ':00'
+                    'a.RegisterEndDate' => date('Y-m-d H:i') . ':00'
                 ]*/
             ];
         }
@@ -615,10 +615,11 @@ class EventFModel extends WB_Model
     /**
      * 프로모션 접속 로그
      * @param $site_code
+     * @param $cate_code
      * @param null $idx
      * @return array|bool
      */
-    public function saveLogPromotion($site_code, $idx = null)
+    public function saveLogPromotion($site_code, $cate_code, $idx = null)
     {
         $refer_info = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : null ;
         $refer_domain = parse_url($refer_info, PHP_URL_HOST);
@@ -626,6 +627,7 @@ class EventFModel extends WB_Model
 
         $input_data = [
             'SiteCode' => $site_code,
+            'CateCode' => $cate_code,
             'PromotionCode' => $idx,
             'MemIdx' => (empty($this->session->userdata('mem_idx')) ? null : $this->session->userdata('mem_idx')),
             'ReferDomain' => (empty($refer_domain) ? null : $refer_domain ),

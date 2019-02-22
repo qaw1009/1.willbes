@@ -29,7 +29,7 @@
             </div>
             <div class="form-group">
                 <label class="control-label col-md-1-1">신청유형</label>
-                <div class="form-control-static col-md-4">{{$data['RequstTypeName']}}</div>
+                <div class="form-control-static col-md-4">{{$data['RequestTypeName']}}</div>
                 <label class="control-label col-md-1-1 d-line">특강구분</label>
                 <div class="form-control-static col-md-4 ml-12-dot">
                     {{$data['SubjectName']}} {{$data['ProfNickName']}}

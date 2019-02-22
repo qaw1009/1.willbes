@@ -23,15 +23,14 @@
                     <div class="form-inline col-md-4 item">
                         {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', '', false) !!}
                     </div>
-                    <label class="control-label col-md-1-1 d-line" for="campus_ccd">캠퍼스</label>
-                    <div class="col-md-4 form-inline ml-12-dot item">
-                        <select class="form-control" id="campus_ccd" name="campus_ccd" title="캠퍼스">
-                            <option value="">캠퍼스</option>
-                            @php $temp='0'; @endphp
-                            @foreach($arr_campus as $row)
-                                <option value="{{ $row['CampusCcd'] }}" class="{{ $row['SiteCode'] }}" @if($method == 'PUT' && ($row['CampusCcd'] == $data['CampusCcd'])) selected="selected" @endif>{{ $row['CampusName'] }}</option>
-                            @endforeach
-                        </select>
+                    <label class="control-label col-md-1-1 d-line" for="promotion_code">프로모션코드</label>
+                    <div class="col-md-4 form-inline ml-12-dot">
+                        @if($promotion_modify_type === true && $method == 'PUT')
+                            <input type="text" class="form-control" name="promotion_code" id="promotion_code" value="{{$data['PromotionCode']}}">
+                        @else
+                            {{$data['PromotionCode']}}
+                        @endif
+                            <p class="form-control-static"> # 등록 시 자동 생성</p>
                     </div>
                 </div>
                 <div class="form-group">
@@ -53,11 +52,25 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="control-label col-md-1-1">캠퍼스
+                    </label>
+                    <div class="col-md-10 form-inline">
+                        <select class="form-control" id="campus_ccd" name="campus_ccd" title="캠퍼스">
+                            <option value="">캠퍼스</option>
+                            @php $temp='0'; @endphp
+                            @foreach($arr_campus as $row)
+                                <option value="{{ $row['CampusCcd'] }}" class="{{ $row['SiteCode'] }}" @if($method == 'PUT' && ($row['CampusCcd'] == $data['CampusCcd'])) selected="selected" @endif>{{ $row['CampusName'] }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <label class="control-label col-md-1-1">신청유형 <span class="required">*</span></label>
                     <div class="col-md-4 item form-inline">
                         <div class="radio">
-                            @foreach($arr_requst_types as $key => $val)
-                                <input type="radio" class="flat" id="requst_type_{{$key}}" name="requst_type" value="{{$key}}" title="{{$val}}" required="required" @if($loop->first || $data['RequstType']==$key)checked="checked"@endif> <label for="requst_type_{{$key}}" class="input-label">{{$val}}</label>
+                            @foreach($arr_request_types as $key => $val)
+                                <input type="radio" class="flat" id="request_type_{{$key}}" name="request_type" value="{{$key}}" title="{{$val}}" required="required" @if($loop->first || $data['RequestType']==$key)checked="checked"@endif> <label for="request_type_{{$key}}" class="input-label">{{$val}}</label>
                             @endforeach
                         </div>
                     </div>
@@ -192,14 +205,14 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1">내용 <span class="required">*</span></label>
+                    <label class="control-label col-md-1-1">내용</label>
                     <div class="col-md-10 item form-inline form-content-input hide" id="content_file">
                         <div class="title">
                             <div class="filetype">
                                 <input type="text" class="form-control file-text" disabled="">
                                 <button class="btn btn-primary mb-0" type="button">파일 선택</button>
                                 <span class="file-select file-btn">
-                                    <input type="file" id="attach_file_C" name="attach_file[]" @if($method == 'POST')required="required"@endif class="form-control input-file" title="내용 이미지">
+                                    <input type="file" id="attach_file_C" name="attach_file[]" class="form-control input-file" title="내용 이미지">
                                 </span>
                                 <input class="file-reset btn-danger btn" type="button" value="X" />
                             </div>
@@ -238,14 +251,14 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="attach_file_S">리스트썸네일<span class="required">*</span></label>
+                    <label class="control-label col-md-1-1" for="attach_file_S">리스트썸네일</label>
                     <div class="col-md-10 item form-inline">
                         <div class="title">
                             <div class="filetype">
                                 <input type="text" class="form-control file-text" disabled="">
                                 <button class="btn btn-primary mb-0" type="button">파일 선택</button>
                                 <span class="file-select file-btn">
-                                <input type="file" id="attach_file_S" name="attach_file[]" @if($method == 'POST')required="required"@endif class="form-control input-file" title="리스트썸네일">
+                                <input type="file" id="attach_file_S" name="attach_file[]" class="form-control input-file" title="리스트썸네일">
                                 </span>
                                 <input class="file-reset btn-danger btn" type="button" value="X" />
                             </div>
@@ -280,8 +293,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1">관리옵션<span class="required">*</span></label>
-                    <div class="col-md-10 form-inline item">
+                    <label class="control-label col-md-1-1">관리옵션</label>
+                    <div class="col-md-10 form-inline">
                         <div class="checkbox">
                             @foreach($arr_options as $key => $val)
                                 <input type="checkbox" id="option_ccds_{{$key}}" name="option_ccds[]" class="flat optoin-ccds" title="관리옵션" value="{{$key}}" data-code="{{$key}}"

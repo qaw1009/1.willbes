@@ -83,7 +83,7 @@
                                 </dl><br/>
                                 <div class="w-tit">
                                     <a href="{{front_url($arr_base['view_url'].'?event_idx='.$row['ElIdx'].'&'.$get_params)}}">
-                                        <strong><span class="tx-light-blue">[{{$row['RequstTypeName']}}]</span> {{hpSubString($row['EventName'],0,40,'...')}}</strong>
+                                        <strong><span class="tx-light-blue">[{{$row['RequestTypeName']}}]</span> {{hpSubString($row['EventName'],0,40,'...')}}</strong>
                                     </a>
                                 </div>
                                 <dl class="w-info tx-gray">

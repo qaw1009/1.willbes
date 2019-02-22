@@ -68,12 +68,12 @@ class EventFModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
             $column = '
-            A.ElIdx, A.SiteCode, A.CampusCcd, A.BIdx, A.IsBest, A.TakeType, A.RequstType, A.EventName,
+            A.ElIdx, A.SiteCode, A.CampusCcd, A.BIdx, A.IsBest, A.TakeType, A.RequestType, A.EventName,
             A.RegisterStartDate, A.RegisterEndDate, DATE_FORMAT(A.RegisterStartDate, \'%Y-%m-%d\') AS RegisterStartDay, DATE_FORMAT(A.RegisterEndDate, \'%Y-%m-%d\') AS RegisterEndDay,
             A.OptionCcds, A.ReadCnt, A.IsRegister, A.IsUse, A.RegDatm,
             G.SiteName, J.CcdName AS CampusName, D.CateCode,
             K.FileFullPath, K.FileName, IFNULL(H.CCount,\'0\') AS CommentCount,
-            CASE A.RequstType WHEN 1 THEN \'설명회\' WHEN 2 THEN \'특강\' WHEN 3 THEN \'이벤트\' WHEN 4 THEN \'합격수기\' END AS RequstTypeName,
+            CASE A.RequestType WHEN 1 THEN \'설명회\' WHEN 2 THEN \'특강\' WHEN 3 THEN \'이벤트\' WHEN 4 THEN \'합격수기\' END AS RequestTypeName,
             CASE A.IsRegister WHEN \'Y\' THEN \'접수중\' WHEN 2 THEN \'마감\' END AS IsRegisterName,
             CASE A.TakeType WHEN 1 THEN \'회원\' WHEN 2 THEN \'회원+비회원\' END AS TakeTypeName
             ';
@@ -104,6 +104,8 @@ class EventFModel extends WB_Model
             LEFT OUTER JOIN {$this->_table['sys_code']} AS J ON A.CampusCcd = J.Ccd
         ";
 
+        $default_arr_condition = ['NOT' => ['a.RequestType' => '5']];
+        $arr_condition = array_merge_recursive($arr_condition, $default_arr_condition);
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
 
@@ -114,13 +116,13 @@ class EventFModel extends WB_Model
     public function findEvent($arr_condition)
     {
         $column = '
-            A.ElIdx, A.SiteCode, A.CampusCcd, A.BIdx, A.IsBest, A.TakeType, A.RequstType, A.EventName, A.PopupTitle, A.ContentType, A.Content, A.CommentUseArea, A.LimitType,
+            A.ElIdx, A.SiteCode, A.CampusCcd, A.BIdx, A.IsBest, A.TakeType, A.RequestType, A.EventName, A.PopupTitle, A.ContentType, A.Content, A.CommentUseArea, A.LimitType,
             A.RegisterStartDate, A.RegisterEndDate, DATE_FORMAT(A.RegisterStartDate, \'%Y-%m-%d\') AS RegisterStartDay, DATE_FORMAT(A.RegisterEndDate, \'%Y-%m-%d\') AS RegisterEndDay,
             A.OptionCcds, A.ReadCnt, A.IsRegister, A.IsUse, A.RegDatm, DATE_FORMAT(A.RegDatm, \'%Y-%m-%d\') AS RegDay,
             A.SendTel, A.SmsContent,
             G.SiteName, J.CcdName AS CampusName,
             IFNULL(H.CCount,\'0\') AS CommentCount,
-            CASE A.RequstType WHEN 1 THEN \'설명회\' WHEN 2 THEN \'특강\' WHEN 3 THEN \'이벤트\' WHEN 4 THEN \'합격수기\' END AS RequstTypeName,
+            CASE A.RequestType WHEN 1 THEN \'설명회\' WHEN 2 THEN \'특강\' WHEN 3 THEN \'이벤트\' WHEN 4 THEN \'합격수기\' END AS RequestTypeName,
             CASE A.IsRegister WHEN \'Y\' THEN \'접수중\' WHEN 2 THEN \'마감\' END AS IsRegisterName,
             CASE A.TakeType WHEN 1 THEN \'회원\' WHEN 2 THEN \'회원+비회원\' END AS TakeTypeName,
             P.SubjectName, R.wProfName
@@ -139,6 +141,8 @@ class EventFModel extends WB_Model
             LEFT JOIN {$this->_table['pms_professor']} as R ON Q.wProfIdx = R.wProfIdx
         ";
 
+        $default_arr_condition = ['NOT' => ['A.RequestType' => '5']];
+        $arr_condition = array_merge_recursive($arr_condition, $default_arr_condition);
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
 
@@ -533,7 +537,7 @@ class EventFModel extends WB_Model
             FROM (
                 SELECT STRAIGHT_JOIN
                     c.ElIdx, c.CampusCcd, fn_ccd_name(c.CampusCcd) AS CampusName, f.SiteGroupName, IF(e.IsCampus = 'Y', '학원', '온라인') AS OnOffTypeName,
-                    c.EventName, CASE c.RequstType WHEN 1 THEN '설명회' WHEN 2 THEN '특강' WHEN 3 THEN '이벤트' END AS RequstTypeName,
+                    c.EventName, CASE c.RequestType WHEN 1 THEN '설명회' WHEN 2 THEN '특강' WHEN 3 THEN '이벤트' END AS RequestTypeName,
                     DATE_FORMAT(c.RegisterStartDate, '%Y-%m-%d') AS RegisterStartDate,
 	                DATE_FORMAT(c.RegisterEndDate, '%Y-%m-%d') AS RegisterEndDate,
                     d.FileFullPath, d.FileName,

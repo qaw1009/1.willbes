@@ -114,7 +114,7 @@
                                         </dt>
                                     </dl><br/>
                                     <div class="w-tit">
-                                        <strong><span class="tx-light-blue">[{{$row['RequstTypeName']}}]</span> {{$row['EventName']}}</strong>
+                                        <strong><span class="tx-light-blue">[{{$row['RequestTypeName']}}]</span> {{$row['EventName']}}</strong>
                                     </div>
                                     <dl class="w-info tx-gray">
                                         <dt>접수기간 : {{$row['RegisterStartDate']}}~{{$row['RegisterEndDate']}}</dt>

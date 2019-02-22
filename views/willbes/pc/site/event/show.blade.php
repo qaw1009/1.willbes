@@ -24,7 +24,7 @@
                             <col style="width: 150px;">
                         </colgroup>
                         <thead>
-                        <tr><th colspan="7" class="w-list tx-left pl20"><span class="w-select tx-blue">[{{$data['RequstTypeName']}}]</span> <strong>{{$data['EventName']}}</strong></th></tr>
+                        <tr><th colspan="7" class="w-list tx-left pl20"><span class="w-select tx-blue">[{{$data['RequestTypeName']}}]</span> <strong>{{$data['EventName']}}</strong></th></tr>
                         <tr>
                             @if(empty($data['CampusName']) === false)<td class="w-type">{{$data['CampusName']}}<span class="row-line">|</span></td>@endif
                             @if(empty($data['SubjectName']) === false)<td class="w-type">{{$data['SubjectName']}}<span class="row-line">|</span></td>@endif

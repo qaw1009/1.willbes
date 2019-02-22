@@ -25,7 +25,8 @@ class EventLectureModel extends WB_Model
     public $_groupCcd = [
         'option' => '660',
         'SerialCcd' => '666',
-        'CandidateAreaCcd' => '631'
+        'CandidateAreaCcd' => '631',
+        'SmsSendCallBackNum' => '706'   //SMS 발송번호
     ];
 
     // 이벤트 접수 관리(정원제한), 댓글기능, 자동문자, 바로신청팝업
@@ -37,7 +38,7 @@ class EventLectureModel extends WB_Model
     ];
 
     // 신청유형
-    public $_requst_type_names = ['1' => '설명회','2' => '특강','3' => '이벤트','4'=>'합격수기'];
+    public $_request_type_names = ['1' => '설명회','2' => '특강','3' => '이벤트','4'=>'합격수기','5'=>'프로모션'];
     public $_option_rules = ['1','2','3'];
 
     // 참여구분
@@ -91,11 +92,11 @@ class EventLectureModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
             $column = '
-            A.ElIdx, A.SiteCode, A.CampusCcd, A.BIdx, A.IsBest, A.RequstType, A.EventName, A.RegisterStartDate, A.RegisterEndDate, A.OptionCcds,
+            A.ElIdx, A.SiteCode, A.CampusCcd, A.PromotionCode, A.BIdx, A.IsBest, A.RequestType, A.EventName, A.RegisterStartDate, A.RegisterEndDate, A.OptionCcds,
             A.ReadCnt, A.IsRegister, A.IsCopy, A.IsUse, A.RegDatm,
             G.SiteName, J.CcdName AS CampusName, D.CateCode, E.wAdminName AS RegAdminName, F.wAdminName AS UpdAdminName,
             K.FileFullPath, K.FileName, IFNULL(H.CCount,\'0\') AS CommentCount,
-            CASE RequstType WHEN 1 THEN \'설명회\' WHEN 2 THEN \'특강\' WHEN 3 THEN \'이벤트\' WHEN 4 THEN \'합격수기\' END AS RequstTypeName,
+            CASE RequestType WHEN 1 THEN \'설명회\' WHEN 2 THEN \'특강\' WHEN 3 THEN \'이벤트\' WHEN 4 THEN \'합격수기\' WHEN 5 THEN \'프로모션\' END AS RequestTypeName,
             CASE IsRegister WHEN \'Y\' THEN \'접수중\' WHEN \'N\' THEN \'마감\' END AS IsRegisterName,
             L.BannerName, L.BannerFullPath, L.BannerImgName, L.BannerImgRealName
             ';
@@ -170,6 +171,9 @@ class EventLectureModel extends WB_Model
                 }
             }
 
+            // 프로모션코드 셋팅
+            $promotionCode = $this->_setPromotionCode();
+
             $set_option_ccd = count($option_ccds) > 0 ? implode(',', $option_ccds) : '';
             $set_comment_use_area = '';
             if (empty($comment_use_area) === false) {
@@ -191,8 +195,9 @@ class EventLectureModel extends WB_Model
             $data = [
                 'SiteCode' => element('site_code', $input),
                 'CampusCcd' => element('campus_ccd', $input),
-                'RequstType' => element('requst_type', $input),
+                'RequestType' => element('request_type', $input),
                 'TakeType' => element('take_type', $input),
+                'PromotionCode' => $promotionCode,
                 'BIdx' => element('banner_idx', $input),
                 'SubjectIdx' => element('subject_idx', $input),
                 'ProfIdx' => element('prof_idx', $input),
@@ -274,14 +279,17 @@ class EventLectureModel extends WB_Model
             // 기존 접수관리 데이터 조회
             $arr_event_register = $this->listEventForRegister($el_idx);
 
+            // 프로모션코드 셋팅
+            $promotionCode = $this->_setPromotionCode();
+
             // 데이터 복사 실행
             $insert_column = '
-                SiteCode, CampusCcd, BIdx, IsBest, RequstType, TakeType, SubjectIdx, ProfIdx, RegisterStartDate, RegisterEndDate, IsRegister, IsCopy, IsUse, IsStatus, EventName,
+                SiteCode, CampusCcd, PromotionCode, BIdx, IsBest, RequestType, TakeType, SubjectIdx, ProfIdx, RegisterStartDate, RegisterEndDate, IsRegister, IsCopy, IsUse, IsStatus, EventName,
                 ContentType, Content, OptionCcds, LimitType, SelectType, SendTel, SmsContent, PopupTitle, CommentUseArea, Link, ReadCnt, AdjuReadCnt,
                 RegAdminIdx, RegIp
             ';
             $select_column = '
-                SiteCode, CampusCcd, BIdx, IsBest, RequstType, TakeType, SubjectIdx, ProfIdx, RegisterStartDate, RegisterEndDate, IsRegister, "Y", "N", IsStatus,
+                SiteCode, CampusCcd, '.$promotionCode.', BIdx, IsBest, RequestType, TakeType, SubjectIdx, ProfIdx, RegisterStartDate, RegisterEndDate, IsRegister, "Y", "N", IsStatus,
                 CONCAT("복사본-", IF(LEFT(EventName,4)="복사본-", REPLACE(EventName, LEFT(EventName,4), ""), EventName)) AS EventName,
                 ContentType, Content, OptionCcds, LimitType, SelectType, SendTel, SmsContent, PopupTitle, CommentUseArea, Link, ReadCnt, AdjuReadCnt,
                 REPLACE(RegAdminIdx, RegAdminIdx, "'.$admin_idx.'") AS RegAdminIdx,
@@ -390,8 +398,9 @@ class EventLectureModel extends WB_Model
             $data = [
                 'SiteCode' => element('site_code', $input),
                 'CampusCcd' => element('campus_ccd', $input),
-                'RequstType' => element('requst_type', $input),
+                'RequestType' => element('request_type', $input),
                 'TakeType' => element('take_type', $input),
+                'PromotionCode' => element('promotion_code', $input),
                 'BIdx' => element('banner_idx', $input),
                 'IsBest' => element('is_best', $input, 0),
                 'SubjectIdx' => element('subject_idx', $input),
@@ -469,7 +478,7 @@ class EventLectureModel extends WB_Model
     public function findEventForModify($arr_condition)
     {
         $column = "
-            A.ElIdx, A.SiteCode, A.CampusCcd, A.RequstType, A.TakeType, A.SubjectIdx, A.ProfIdx, A.IsBest, A.BIdx, F.BannerName,
+            A.ElIdx, A.SiteCode, A.CampusCcd, A.RequestType, A.TakeType, A.SubjectIdx, A.ProfIdx, A.IsBest, A.PromotionCode, A.BIdx, F.BannerName,
             A.RegisterStartDate, A.RegisterEndDate, A.IsRegister, A.IsUse, A.IsStatus, A.EventName,
             DATE_FORMAT(A.RegisterStartDate, '%Y-%m-%d') AS RegisterStartDay, DATE_FORMAT(A.RegisterStartDate, '%H') AS RegisterStartHour, DATE_FORMAT(A.RegisterStartDate, '%i') AS RegisterStartMin,
             DATE_FORMAT(A.RegisterEndDate, '%Y-%m-%d') AS RegisterEndDay, DATE_FORMAT(A.RegisterEndDate, '%H') AS RegisterEndHour, DATE_FORMAT(A.RegisterEndDate, '%i') AS RegisterEndMin,
@@ -1340,5 +1349,11 @@ class EventLectureModel extends WB_Model
             return false;
         }
         return true;
+    }
+
+    private function _setPromotionCode()
+    {
+        $row = $this->_conn->getFindResult($this->_table['event_lecture'], 'ifnull(max(PromotionCode) + 1, 1) as PromotionCode');
+        return $row['PromotionCode'];
     }
 }

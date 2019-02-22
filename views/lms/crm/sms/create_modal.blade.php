@@ -52,8 +52,6 @@
                                     <option value="{{ $key }}">{{ $val }}</option>
                                 @endforeach
                             </select>
-
-                            {{--<input type="text" id="cs_tel" name="cs_tel" required="required" class="form-control" title="발신번호" value="">--}}
                         </div>
                     </div>
                     <div class="form-group">

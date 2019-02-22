@@ -30,7 +30,8 @@ class EventLecture extends \app\controllers\BaseController
         $this->load->view("site/event_lecture/index", [
             'arr_campus' => $arr_campus,
             'arr_category' => $arr_category,
-            'send_option_ccd' => $this->eventLectureModel->_event_lecture_option_ccds[2]
+            'send_option_ccd' => $this->eventLectureModel->_event_lecture_option_ccds[2],
+            'arr_request_types' => $this->eventLectureModel->_request_type_names,
         ]);
     }
 
@@ -158,11 +159,12 @@ class EventLecture extends \app\controllers\BaseController
             'arr_subject' => $arr_subject,
             'arr_professor' => $arr_professor,
             'site_csTel' => $site_csTel,
-            'arr_requst_types' => $this->eventLectureModel->_requst_type_names,
+            'arr_request_types' => $this->eventLectureModel->_request_type_names,
             'arr_take_types' => $this->eventLectureModel->_take_type_names,
             'arr_is_registers' => $this->eventLectureModel->_is_register_names,
             'file_data' => $file_data,
-            'list_event_register' => $list_event_register
+            'list_event_register' => $list_event_register,
+            'promotion_modify_type' => (ENVIRONMENT === 'production') ? false : true
         ]);
     }
 
@@ -180,21 +182,23 @@ class EventLecture extends \app\controllers\BaseController
             ['field' => 'site_code', 'label' => '운영사이트', 'rules' => 'trim|required|integer'],
             ['field' => 'cate_code[]', 'label' => '카테고리', 'rules' => 'trim|required'],
             ['field' => 'campus_ccd', 'label' => '캠퍼스', 'rules' => 'trim|integer|callback_validateRequiredIf[site_code,' . implode(',', array_keys($offLineSite_list)) . ']'],
-            ['field' => 'requst_type', 'label' => '신청유형', 'rules' => 'trim|required|integer'],
+            ['field' => 'request_type', 'label' => '신청유형', 'rules' => 'trim|required|integer'],
             ['field' => 'register_start_datm', 'label' => '접수기간시작일자', 'rules' => 'trim|required'],
             ['field' => 'register_end_datm', 'label' => '접수기간종료일자', 'rules' => 'trim|required'],
             ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => 'event_name', 'label' => '제목', 'rules' => 'trim|required|max_length[100]'],
             ['field' => 'content_type', 'label' => '내용옵션', 'rules' => 'trim|required|in_list[I,E]'],
-            ['field' => 'option_ccds[]', 'label' => '관리옵션', 'rules' => 'callback_validateRequiredIf[requst_type,'.implode(',', $this->eventLectureModel->_option_rules).']'],
+            ['field' => 'option_ccds[]', 'label' => '관리옵션', 'rules' => 'callback_validateRequiredIf[request_type,'.implode(',', $this->eventLectureModel->_option_rules).']'],
         ];
 
         //상태 값에 따른 rules 적용
+        $request_type = $this->_reqP('request_type');       //신청유형
         $content_type = $this->_reqP('content_type');       //내용타입
         $option_ccds = $this->_reqP('option_ccds[]');       //관리옵션
         $limit_type = $this->_reqP('limit_type');           //정원제한타입
 
-        if ((empty($option_ccds) === false) && count($option_ccds) > 0) {
+        //프로모션 제외
+        if (($this->eventLectureModel->_request_type_names[$request_type] != '프로모션') && (empty($option_ccds) === false) && count($option_ccds) > 0) {
             foreach ($option_ccds as $key => $val) {
                 switch ($val) {
                     case $this->eventLectureModel->_event_lecture_option_ccds[0] :
@@ -236,30 +240,33 @@ class EventLecture extends \app\controllers\BaseController
             }
         }
 
-        // 등록,수정 조건 분기 처리
-        if (empty($this->_reqP('el_idx')) === true) {
-            if ($content_type == 'I' && empty($_FILES['attach_file']['size'][0]) === true) {
-                $rules = array_merge($rules, [
-                    ['field' => "attach_file_C", 'label' => '이미지내용', 'rules' => "callback_validateFileRequired[attach_file_C]"]
-                ]);
-            } else if ($content_type == 'E') {
-                $rules = array_merge($rules, [
-                    ['field' => 'content', 'label' => '내용', 'rules' => 'trim|required']
-                ]);
-            }
+        // 프로모션 제외
+        if ($this->eventLectureModel->_request_type_names[$request_type] != '프로모션') {
+            // 등록,수정 조건 분기 처리, 프로모션 제외
+            if (empty($this->_reqP('el_idx')) === true) {
+                if ($content_type == 'I' && empty($_FILES['attach_file']['size'][0]) === true) {
+                    $rules = array_merge($rules, [
+                        ['field' => "attach_file_C", 'label' => '이미지내용', 'rules' => "callback_validateFileRequired[attach_file_C]"]
+                    ]);
+                } else if ($content_type == 'E') {
+                    $rules = array_merge($rules, [
+                        ['field' => 'content', 'label' => '내용', 'rules' => 'trim|required']
+                    ]);
+                }
 
-            if (empty($_FILES['attach_file']['size'][2]) === true) {
-                $rules = array_merge($rules, [
-                    ['field' => "attach_file_S", 'label' => '리스트썸네일', 'rules' => "callback_validateFileRequired[attach_file_S]"]
-                ]);
-            }
+                if (empty($_FILES['attach_file']['size'][2]) === true) {
+                    $rules = array_merge($rules, [
+                        ['field' => "attach_file_S", 'label' => '리스트썸네일', 'rules' => "callback_validateFileRequired[attach_file_S]"]
+                    ]);
+                }
 
-        } else {
-            $method = 'modify';
-            if ($content_type == 'E') {
-                $rules = array_merge($rules, [
-                    ['field' => 'content', 'label' => '내용', 'rules' => 'trim|required']
-                ]);
+            } else {
+                $method = 'modify';
+                if ($content_type == 'E') {
+                    $rules = array_merge($rules, [
+                        ['field' => 'content', 'label' => '내용', 'rules' => 'trim|required']
+                    ]);
+                }
             }
         }
 
@@ -326,7 +333,7 @@ class EventLecture extends \app\controllers\BaseController
         }
 
         // 신청유형
-        $data['RequstTypeName'] = (empty($this->eventLectureModel->_requst_type_names[$data['RequstType']]) === true) ? '' : $this->eventLectureModel->_requst_type_names[$data['RequstType']];
+        $data['RequestTypeName'] = (empty($this->eventLectureModel->_request_type_names[$data['RequestType']]) === true) ? '' : $this->eventLectureModel->_request_type_names[$data['RequestType']];
 
         // 참여구분
         $data['TakeTypeName'] = (empty($this->eventLectureModel->_take_type_names[$data['TakeType']]) === true) ? '' : $this->eventLectureModel->_take_type_names[$data['TakeType']];

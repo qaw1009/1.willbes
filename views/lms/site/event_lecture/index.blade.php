@@ -24,6 +24,13 @@
                             @endforeach
                         </select>
 
+                        <select class="form-control" id="search_request_type" name="search_request_type">
+                            <option value="">신청유형</option>
+                            @foreach($arr_request_types as $key => $val)
+                                <option value="{{ $key }}">{{ $val }}</option>
+                            @endforeach
+                        </select>
+
                         <select class="form-control" id="search_is_use" name="search_is_use">
                             <option value="">사용여부</option>
                             <option value="Y">사용</option>
@@ -79,6 +86,7 @@
                     <th>카테고리</th>
                     <th>썸네일</th>
                     <th>신청유형</th>
+                    <th>프로모션코드</th>
                     <th>제목</th>
                     <th>신청기간</th>
                     <th>자동문자</th>
@@ -153,7 +161,8 @@
                             return "<img class='img_"+row.ElIdx+"' src='"+img_url+"'>";
                         }},
 
-                    {'data' : 'RequstTypeName'},
+                    {'data' : 'RequestTypeName'},
+                    {'data' : 'PromotionCode'},
                     {'data' : 'EventName', 'render' : function(data, type, row, meta) {
                             return '<a href="javascript:void(0);" class="btn-read" data-idx="' + row.ElIdx + '"><u class="blue">' + data + '</u></a>';
                         }},

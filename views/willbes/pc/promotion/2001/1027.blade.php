@@ -1,10 +1,12 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
+    @include('willbes.pc.layouts.partial.site_menu')
+
     <!-- Container -->
     <style type="text/css">
         body{width:100%; min-width:1240px; margin:auto;}
-        .Depth {display:none}
+        /*.Depth {display:none}*/
         .subContainer {
             min-height: auto !important;
             margin-bottom:0 !important;

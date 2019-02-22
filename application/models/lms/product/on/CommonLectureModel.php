@@ -25,7 +25,8 @@ class CommonLectureModel extends WB_Model
         'product_subject' => 'lms_product_subject',
         'vw_product_r_professor_concat' => 'vw_product_r_professor_concat',
         'copylog' => 'lms_product_copy_log',
-        'subproduct' =>'lms_Product_R_Product'          //구매교재,자동지급강좌,자동지급사은품 공통저장
+        'subproduct' =>'lms_Product_R_Product',          //구매교재,자동지급강좌,자동지급사은품 공통저장
+        'product_json' => 'lms_product_json_data'
     ];
 
     public function __construct()
@@ -816,6 +817,26 @@ class CommonLectureModel extends WB_Model
         return true;
     }
 
+    /**
+     * 상품연관 데이터 json 형태로 테이블 저장 : 테이블 - lms_product_json_data, 프로시져 - sp_product_json_data_insert
+     * @param $prodcode
+     * @return string
+     */
+    public function _setProdJsonData($prodcode)
+    {
+        try {
+            $query = $this->_conn->query('call sp_product_json_data_insert(?)', [$prodcode]);
+            $result = $query->row(0)->ReturnMsg;
+
+            if ($result != 'Success') {
+                throw new \Exception('JSON 데이터 등록에 실패했습니다.');
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+        return true;
+    }
+
 
     //수강기간등록 (학원 단과반)
     public function _setLectureDate($input=[],$prodcode)
@@ -888,7 +909,8 @@ class CommonLectureModel extends WB_Model
         return true;
     }
 
-    /**
+
+     /**
      * 강좌복사
      * @param $prodcode
      * @return array|bool
@@ -1100,6 +1122,16 @@ class CommonLectureModel extends WB_Model
             };
 
 
+            // json 데이터 복사
+            $insert_column = 'ProdCode, ProdPriceData, ProdBookData, LectureSampleData';
+            $select_column= str_replace('ProdCode','\''.$prodcode_new.'\' as ProdCode',$insert_column);
+
+            $query = 'insert into '.$this->_table['product_json'].'('.$insert_column.') Select '.$select_column.' FROM '.$this->_table['product_json'].' where ProdCode='.$prodcode;
+            if($this->_conn->query($query) === false) {
+                throw new \Exception('JSON 데이터 복사에 실패했습니다.');
+            };
+
+
             //복사 로그 저장
             $copy_data = [
                 'ProdCode' => $prodcode_new
@@ -1111,7 +1143,7 @@ class CommonLectureModel extends WB_Model
             }
 
             //echo $this->_conn->last_query();
-            //$this->_conn->trans_rollback();
+            //$this->_conn->trans_rollback();w
             $this->_conn->trans_commit();
 
         } catch (\Exception $e) {

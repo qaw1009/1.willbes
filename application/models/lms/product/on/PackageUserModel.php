@@ -163,6 +163,12 @@ class PackageUserModel extends CommonLectureModel
             }
             /*----------------          연결강좌 등록        ---------------*/
 
+            /*----------------          Json 데이터 등록        ---------------*/
+            if($this->_setProdJsonData($prodcode) !== true) {
+                throw new \Exception('JSON 데이터 등록에 실패했습니다.');
+            }
+            /*----------------          Json 데이터 등록        ---------------*/
+
             $this->_conn->trans_commit();
             //$this->_conn->trans_rollback();
 
@@ -257,6 +263,12 @@ class PackageUserModel extends CommonLectureModel
                 throw new \Exception('연결강좌 등록에 실패했습니다.');
             }
             /*----------------          연결강좌 등록        ---------------*/
+
+            /*----------------          Json 데이터 등록        ---------------*/
+            if($this->_setProdJsonData($prodcode) !== true) {
+                throw new \Exception('JSON 데이터 등록에 실패했습니다.');
+            }
+            /*----------------          Json 데이터 등록        ---------------*/
 
             //$this->_conn->trans_rollback();
             $this->_conn->trans_commit();

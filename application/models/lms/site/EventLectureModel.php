@@ -1353,7 +1353,7 @@ class EventLectureModel extends WB_Model
 
     private function _setPromotionCode()
     {
-        $row = $this->_conn->getFindResult($this->_table['event_lecture'], 'ifnull(max(PromotionCode) + 1, 1) as PromotionCode');
+        $row = $this->_conn->getFindResult($this->_table['event_lecture'], 'ifnull(max(PromotionCode) + 1, 1001) as PromotionCode');
         return $row['PromotionCode'];
     }
 }

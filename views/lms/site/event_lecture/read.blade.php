@@ -20,12 +20,19 @@
             <div class="form-group">
                 <label class="control-label col-md-1-1">운영사이트</label>
                 <div class="form-control-static col-md-4">{{$data['SiteName']}}</div>
-                <label class="control-label col-md-1-1 d-line">캠퍼스</label>
-                <div class="form-control-static col-md-4 ml-12-dot">{{$data['CampusName']}}</div>
             </div>
             <div class="form-group">
                 <label class="control-label col-md-1-1">카테고리 정보</label>
                 <div class="form-control-static col-md-10">{{$data['CateNames']}}</div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-1-1">캠퍼스</label>
+                <div class="form-control-static col-md-4">{{$data['CampusName']}}</div>
+                <label class="control-label col-md-1-1 d-line">프로모션코드</label>
+                <div class="form-control-static col-md-4 ml-12-dot">
+                    {{$data['PromotionCode']}}
+                </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-md-1-1">신청유형</label>

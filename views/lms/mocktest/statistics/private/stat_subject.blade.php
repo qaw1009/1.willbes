@@ -7,7 +7,7 @@
             <div>
                 <div class="pull-left x_title mb-5"><h2>모의고사정보</h2></div>
                 <div class="pull-right text-right form-inline mb-5">
-                    <button class="btn btn-sm btn-primary act-move" data-idx="{{ $prodcode }}" data-mem="{{ $memidx }}">상세성적확인</button>
+                    <button class="btn btn-sm btn-primary act-move" data-idx="{{ $prodcode }}" data-mem="{{ $mridx }}">상세성적확인</button>
                 </div>
             </div>
             @if(empty($privateExamInfo) === false)
@@ -132,7 +132,7 @@
                                         <td colspan="2" ><span id="k{{ $key }}">{{ $row['pRank'] }}</span>/{{ $row['CNT'] }}</td>
                                     @endforeach
                                 @endif
-                                <td id="kr">{{ $sumRank }}/{{ $row['CNT'] }}</td>
+                                <td id="kr">{{ $sumRank }}</td>
                             </tr>
                             <tr>
                                 <th>백분위</th>
@@ -228,9 +228,9 @@
 
                 var uri_param;
                 var prodcode = $(this).data('idx');
-                var memidx = $(this).data('mem');
+                var mridx = $(this).data('mem');
 
-                uri_param = 'prodcode=' + prodcode + '&memidx=' + memidx;
+                uri_param = 'prodcode=' + prodcode + '&mridx=' + mridx;
 
                 var _url = '{{ site_url() }}' + 'mocktest/statisticsPrivate/winStatTotal?' + uri_param;
                 win = window.open(_url, 'mockPopupL', 'width=980, height=845, scrollbars=yes, resizable=yes');

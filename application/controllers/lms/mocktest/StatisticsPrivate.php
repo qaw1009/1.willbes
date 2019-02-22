@@ -115,45 +115,26 @@ class StatisticsPrivate extends \app\controllers\BaseController
     public function statSubject($param = [])
     {
         $prodcode = $param[0];
-        $memidx = $param[1];
+        $mridx = $param[1];
 
-        $privateExamInfo = $this->regGradeModel->privateExamInfo($prodcode, $memidx);
+        $privateExamInfo = $this->regGradeModel->privateExamInfo($prodcode, $mridx);
 
-        $listArr = $this->regGradeModel->subjectDetailPrivate($prodcode, $memidx);
+        $listArr = $this->regGradeModel->subjectDetailPrivate($prodcode, $mridx);
         //전체과목평균
-        $res = $this->regGradeModel->subjectAllAvg($prodcode, $memidx);
-
-        $Rank = 1;
-        $minusRank = 1;
-        $tempPoint = 0;
-        $sumRank = '';
-        foreach ($res as $key => $val){
-            $AdjustPoint = $val['SUMPOINT'];
-            if ($tempPoint == $AdjustPoint) {
-                $rRank = $Rank - $minusRank;
-                $minusRank++;
-            } else {
-                $rRank = $Rank;
-                $minusRank = 1;
-            }
-
-            $tempPoint = $val['SUMPOINT'];
-            $Rank++;
-
-            if($val['MemIdx'] == $memidx) $sumRank = $rRank;
-        }
+        $sumRank = $this->regGradeModel->subjectAllAvg($prodcode, $mridx);
+        $arrSumRank = explode("/",$sumRank);
 
         $MpIdxSet = $listArr['MpIdxSet'];
         $list = $listArr['rdata'];
         $CNT = $listArr['CNT'];
-        $per = round(100 - ((($sumRank) / $CNT) * 100 - (100 / $CNT)), 2);
+        $per = round(100 - ((($arrSumRank[0]) / $CNT) * 100 - (100 / $CNT)), 2);
 
         $this->load->view('mocktest/statistics/private/stat_subject', [
             'privateExamInfo' => $privateExamInfo,
             'list' => $list,
             'MpIdxSet' => $MpIdxSet,
             'prodcode' => $prodcode,
-            'memidx' => $memidx,
+            'mridx' => $mridx,
             'sumRank' => $sumRank,
             'per' => $per
         ]);
@@ -166,11 +147,11 @@ class StatisticsPrivate extends \app\controllers\BaseController
     public function winStatTotal()
     {
         $prodcode = $this->input->get('prodcode');
-        $memidx = $this->input->get('memidx');
+        $mridx = $this->input->get('mridx');
 
         $arr_condition = [
             'EQ' => [
-                'MR.MemIdx' => $memidx,
+                'MR.MrIdx' => $mridx,
                 'MR.ProdCode' => $prodcode
             ]
         ];
@@ -178,9 +159,9 @@ class StatisticsPrivate extends \app\controllers\BaseController
         $subject_list = $this->regGradeModel->subjectCall($arr_condition);
         $productInfo = $this->regGradeModel->productInfoV2($arr_condition);
         //종합분석
-        $dataOrg    = $this->regGradeModel->gradeCall($prodcode, 'org');
-        $dataAdjust = $this->regGradeModel->gradeCall($prodcode, 'adjust');
-        $dataDetail = $this->regGradeModel->gradeDetailCall($prodcode);
+        $dataOrg    = $this->regGradeModel->gradeCall($prodcode, 'org', $mridx);
+        $dataAdjust = $this->regGradeModel->gradeCall($prodcode, 'adjust', $mridx);
+        $dataDetail = $this->regGradeModel->gradeDetailCall($prodcode, $mridx);
 
         $Rank = 1;
         $minusRank = 1;
@@ -188,7 +169,6 @@ class StatisticsPrivate extends \app\controllers\BaseController
         $tempMp = '';
 
         foreach($dataDetail as $key => $val){
-            $MemIdx = $val['MemIdx'];
             $mpidx = $val['MpIdx'];
             $AdjustPoint = $val['AdjustPoint'];
 
@@ -205,14 +185,14 @@ class StatisticsPrivate extends \app\controllers\BaseController
                 $minusRank = 1;
             }
 
-            $dataDetail[$MemIdx][$mpidx]['grade'] = $val['OrgPoint'];
-            $dataDetail[$MemIdx][$mpidx]['gradeA'] = $val['AdjustPoint'];
-            $dataDetail[$MemIdx][$mpidx]['avg'] = $val['ORGSUM'] ? round($val['ORGSUM'] / $val['COUNT'],2) : 0;
-            $dataDetail[$MemIdx][$mpidx]['avgA'] = $val['ADSUM'] ? round($val['ADSUM'] / $val['COUNT'],2) : 0;
-            $dataDetail[$MemIdx][$mpidx]['max'] = round($val['ORGMAX'],2);
-            $dataDetail[$MemIdx][$mpidx]['maxA'] = round($val['ADMAX'],2);
-            $dataDetail[$MemIdx][$mpidx]['orank'] = $val['Rank']."/".$val['COUNT'];
-            $dataDetail[$MemIdx][$mpidx]['arank'] = $rRank."/".$val['COUNT'];
+            $dataDetail[$mpidx]['grade'] = $val['OrgPoint'];
+            $dataDetail[$mpidx]['gradeA'] = $val['AdjustPoint'];
+            $dataDetail[$mpidx]['avg'] = $val['ORGSUM'] ? round($val['ORGSUM'] / $val['COUNT'],2) : 0;
+            $dataDetail[$mpidx]['avgA'] = $val['ADSUM'] ? round($val['ADSUM'] / $val['COUNT'],2) : 0;
+            $dataDetail[$mpidx]['max'] = round($val['ORGMAX'],2);
+            $dataDetail[$mpidx]['maxA'] = round($val['ADMAX'],2);
+            $dataDetail[$mpidx]['orank'] = $val['Rank']."/".$val['COUNT'];
+            $dataDetail[$mpidx]['arank'] = $rRank."/".$val['COUNT'];
 
             $tempPoint = $val['AdjustPoint'];
             $tempMp = $val['MpIdx'];
@@ -220,76 +200,31 @@ class StatisticsPrivate extends \app\controllers\BaseController
         }
 
         if($dataOrg){
-            $orgTotal = 0;
-            $orgtnum = 0;
-            $Rank = 1;
-            $minusRank = 1;
-            $tempPoint = 0;
-            foreach($dataOrg as $key => $val){
-
-                $Point = round($val['ORG'] / $val['KCNT'] , 2);
-                if ($tempPoint == $Point) {
-                    $rRank = $Rank - $minusRank;
-                    $minusRank++;
-                } else {
-                    $rRank = $Rank;
-                    $minusRank = 1;
-                }
-
-                $MemIdx = $val['MemIdx'];
-                $dataOrg[$MemIdx]['grade'] = $val['ORG'];
-                $dataOrg[$MemIdx]['avg'] = $Point;
-                $orgTotal = $orgTotal + $val['ORG'];
-                $orgtnum = $val['COUNT'] * $val['KCNT'];
-                $dataOrg[$MemIdx]['rank'] = $rRank.'/'.$val['COUNT'];
-                $dataOrg[$MemIdx]['tpct'] = round(100 - (($rRank / $val['COUNT']) * 100 - (100 / $val['COUNT'])),2);
-                $tempPoint = $Point;
-                $Rank++;
-            }
+            $Point = round($dataOrg['ORG'] / $dataOrg['KCNT'] , 2);
+            $OrgRank = $dataOrg['OrgRank'];
+            $arrOrgRank = explode('/',$OrgRank);
+            $dataOrg['grade'] = $dataOrg['ORG'];
+            $dataOrg['avg'] = $Point;
+            $dataOrg['rank'] = $OrgRank;
+            $dataOrg['tpct'] = round(100 - (( $arrOrgRank[0] / $dataOrg['COUNT']) * 100 - (100 / $dataOrg['COUNT'])),2);
+            $dataOrg['tavg'] = $dataOrg['tavg'];
+            $dataOrg['tsum'] = $dataOrg['tsum'];
         }
 
-        if($orgTotal) $dataOrg['tavg'] = $orgTotal ? round($orgTotal / $orgtnum, 2) : 0;
+        $ADRank = $dataAdjust['ADRank'];
+        $arrADRank = explode('/',$ADRank);
 
-        $adTotal = 0;
-        $tcnt = 0;
-        $memArr = array();
-        $Rank = 1;
-        $minusRank = 1;
-        $tempPoint = 0;
+        $dataAdjust['grade'] = round($dataAdjust['AD'],2);
+        $dataAdjust['avg'] = round($dataAdjust['AD'] / $dataAdjust['KCNT'] , 2);
+        $dataAdjust['rank'] =  $ADRank;
+        $dataAdjust['rankS'] = $arrADRank[0];
+        $dataAdjust['tavg'] = $dataAdjust['tavg'];
+        $dataAdjust['tsum'] = $dataAdjust['tsum'];
+        $dataAdjust['tpct'] = round(100 - (($arrADRank[0] / $dataAdjust['COUNT']) * 100 - (100 / $dataAdjust['COUNT'])),2);
+        $dataAdjust['admax'] = $dataAdjust['ADMAX'];
 
-        foreach($dataAdjust as $key => $val){
-            $MemIdx = $val['MemIdx'];
-            $tcnt   = $val['COUNT'];
-            $ADPoint = $val['AD'];
+        $dataSet[] = round($dataAdjust['AD'] / $dataAdjust['KCNT'] , 2);
 
-            if ($tempPoint == $ADPoint) {
-                $rRank = $Rank - $minusRank;
-                $minusRank++;
-            } else {
-                $rRank = $Rank;
-                $minusRank = 1;
-            }
-
-            $dataAdjust[$MemIdx]['grade'] = round($val['AD'],2);
-            $dataAdjust[$MemIdx]['avg'] = round($val['AD'] / $val['KCNT'] , 2);
-            $adTotal = $adTotal + $val['AD'];
-            $dataAdjust[$MemIdx]['rank'] =  $rRank.'/'.$val['COUNT'];
-            $dataAdjust[$MemIdx]['rankS'] = $rRank;
-
-            $dataAdjust[$MemIdx]['tpct'] = round(100 - (($rRank / $val['COUNT']) * 100 - (100 / $val['COUNT'])),2);
-            $dataAdjust[$MemIdx]['admax'] = $val['ADMAX'];
-            //응시멤버
-            $memArr[] = $MemIdx;
-
-            $dataSet[] = round($val['AD'] / $val['KCNT'] , 2);
-
-            $tempPoint = $val['AD'];
-            $Rank++;
-
-        }
-
-        if($adTotal) $dataAdjust['tavg'] = $adTotal ? round($adTotal / $orgtnum, 2) : 0;
-        if($adTotal) $dataAdjust['tsum'] = $adTotal ? round($adTotal / $tcnt, 2) : 0;
         //종합분석(끝)
 
         // 필수/선택과목 컬럼수 & 이름
@@ -320,7 +255,6 @@ class StatisticsPrivate extends \app\controllers\BaseController
             'productInfo' => $productInfo,
             'dataOrgAll'     => $dataOrg,
             'dataOrg'     => $dataOrg,
-            'dataAdjustAll' => $dataAdjust,
             'dataAdjust' => $dataAdjust,
             'pList' => $pList,
             'sList' => $sList,
@@ -329,9 +263,8 @@ class StatisticsPrivate extends \app\controllers\BaseController
             'pCnt' => $pCnt,
             'sCnt' => $sCnt,
             'dataDetail' => $dataDetail,
-            'memArr' => $memArr,
             'prodcode' => $prodcode,
-            'mem_idx' => $memidx,
+            'mridx' => $mridx,
             'dataSet' => $dataSet
         ]);
     }
@@ -343,11 +276,11 @@ class StatisticsPrivate extends \app\controllers\BaseController
     public function winStatSubject()
     {
         $prodcode = $this->input->get('prodcode');
-        $memidx = $this->input->get('memidx');
+        $mridx = $this->input->get('mridx');
 
         $arr_condition = [
             'EQ' => [
-                'MR.MemIdx' => $memidx,
+                'MR.MrIdx' => $mridx,
                 'MR.ProdCode' => $prodcode
             ]
         ];
@@ -356,8 +289,8 @@ class StatisticsPrivate extends \app\controllers\BaseController
         $productInfo = $this->regGradeModel->productInfoV2($arr_condition);
 
         //과목별 문항분석 쿼리(mode = 1) , 영역 및 학습요소(mode = 2)
-        $dataSubject = $this->regGradeModel->gradeSubjectDetailCall($prodcode, $memidx, 1);
-        $dataSubject2 = $this->regGradeModel->gradeSubjectDetailCall($prodcode, $memidx, 2);
+        $dataSubject = $this->regGradeModel->gradeSubjectDetailCall($prodcode, $mridx, 1);
+        $dataSubject2 = $this->regGradeModel->gradeSubjectDetailCall($prodcode, $mridx, 2);
 
         // 문항별분석
         foreach($dataSubject as $key => $val){

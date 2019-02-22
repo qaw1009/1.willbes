@@ -13,7 +13,7 @@
                 <div class="col-md-11">
                     <ul class="nav nav-pills" role="tablist">
                         <li role="presentation" class="active"><a href="#none">전체 성적 분석</a></li>
-                        <li role="presentation" class="act-move"><a href="javascript:gotab('{{ $prodcode }}','{{ $mem_idx }}');">과목별 문항분석</a></li>
+                        <li role="presentation" class="act-move"><a href="javascript:gotab('{{ $prodcode }}','{{ $mridx }}');">과목별 문항분석</a></li>
                     </ul>
                 </div>
                 <div class="col-md-1 form-inline">
@@ -71,28 +71,28 @@
                         <tbody>
                             <tr>
                                 <td>총점</td>
-                                <td>@if($dataOrg) {{ $dataOrg[$mem_idx]['grade'] }} @endif</td>
-                                <td>@if($dataAdjust) {{ $dataAdjust[$mem_idx]['grade'] }} @endif</td>
+                                <td>@if($dataOrg) {{ $dataOrg['grade'] }} @endif</td>
+                                <td>@if($dataAdjust) {{ $dataAdjust['grade'] }} @endif</td>
                             </tr>
                             <tr>
                                 <td>평균</td>
-                                <td>@if($dataOrg) {{ $dataOrg[$mem_idx]['avg'] }} @endif</td>
-                                <td>@if($dataAdjust) {{ $dataAdjust[$mem_idx]['avg'] }} @endif</td>
+                                <td>@if($dataOrg) {{ $dataOrg['avg'] }} @endif</td>
+                                <td>@if($dataAdjust) {{ $dataAdjust['avg'] }} @endif</td>
                             </tr>
                             <tr>
                                 <td>전체평균</td>
-                                <td>@if($dataOrg) {{ $dataOrgAll['tavg'] }} @endif</td>
-                                <td>@if($dataAdjust) {{ $dataAdjustAll['tavg'] }} @endif</td>
+                                <td>@if($dataOrg) {{ round($dataOrgAll['tavg'],2) }} @endif</td>
+                                <td>@if($dataAdjust) {{ round($dataAdjust['tavg'],2) }} @endif</td>
                             </tr>
                             <tr>
                                 <td>석차</td>
-                                <td>@if($dataOrg) {{ $dataOrg[$mem_idx]['rank'] }} @endif</td>
-                                <td>@if($dataAdjust) {{ $dataAdjust[$mem_idx]['rank'] }} @endif</td>
+                                <td>@if($dataOrg) {{ $dataOrg['rank'] }} @endif</td>
+                                <td>@if($dataAdjust) {{ $dataAdjust['rank'] }} @endif</td>
                             </tr>
                             <tr>
                                 <td>상위수준</td>
-                                <td>@if($dataOrg) {{  $dataOrg[$mem_idx]['tpct'] }}% @endif</td>
-                                <td>@if($dataAdjust) {{ $dataAdjust[$mem_idx]['tpct'] }}% @endif</td>
+                                <td>@if($dataOrg) {{  $dataOrg['tpct'] }}% @endif</td>
+                                <td>@if($dataAdjust) {{ $dataAdjust['tpct'] }}% @endif</td>
                             </tr>
                         </tbody>
                     </table>
@@ -102,9 +102,9 @@
 
                     <script type="text/javascript">
 
-                        var tot_avg1 = parseInt("{{ $dataAdjustAll['tsum'] }}");
-                        var top_avg1 = parseInt("{{ $dataAdjust[$mem_idx]['admax'] }}");
-                        var my_avg1 = parseInt("{{ $dataAdjust[$mem_idx]['grade'] }}");
+                        var tot_avg1 = parseInt("{{ $dataAdjust['tsum'] }}");
+                        var top_avg1 = parseInt("{{ $dataAdjust['admax'] }}");
+                        var my_avg1 = parseInt("{{ $dataAdjust['grade'] }}");
                         google.charts.load('visualization', {'packages': ['corechart'], 'callback': drawVisualization});
 
                         function drawVisualization() {
@@ -132,7 +132,7 @@
             <div class="form-group border-dark">
                 <div class="col-md-12">
                 @if($dataOrg)
-                    <p class="h5 border-dark-blue"><strong>{{ $productInfo['MemName'] }}</strong>님의 점수는 평균 <strong>{{ $dataAdjust[$mem_idx]['avg'] }}점</strong>으로, 전체 <strong>{{ $dataAdjustAll[0]['COUNT'] }}명</strong>에서 <strong>{{ $dataAdjust[$mem_idx]['rankS'] }}위</strong>이며 상위 수준 <strong>{{ $dataAdjust[$mem_idx]['tpct'] }} %</strong>입니다.</p>
+                    <p class="h5 border-dark-blue"><strong>{{ $productInfo['MemName'] }}</strong>님의 점수는 평균 <strong>{{ $dataAdjust['avg'] }}점</strong>으로, 전체 <strong>{{ $dataAdjust['COUNT'] }}명</strong>에서 <strong>{{ $dataAdjust['rankS'] }}위</strong>이며 상위 수준 <strong>{{ $dataAdjust['tpct'] }} %</strong>입니다.</p>
                 @endif
                 </div>
             </div>
@@ -147,7 +147,7 @@
 
                             function drawVisualization2() {
                                 var others = {!! json_encode($dataSet) !!};
-                                var my_avg1 = {{ $dataAdjust[$mem_idx]['avg'] }};
+                                var my_avg1 = {{ $dataAdjust['avg'] }};
 
                                 var val2_5 = 0; val2_10 = 0; val2_15 = 0; val2_20 = 0; val2_25 = 0; val2_30 = 0; val2_35 = 0; val2_40 = 0; val2_45 = 0; val2_50 = 0; val2_55 = 0; val2_60 = 0; val2_65 = 0; val2_70 = 0; val2_75 = 0; val2_80 = 0; val2_85 = 0; val2_90 = 0; val2_95 = 0; val2_100 = 0;
                                 var g_my_val5 = 0; g_my_val10 = 0; g_my_val15 = 0; g_my_val20 = 0; g_my_val25 = 0; g_my_val30 = 0; g_my_val35 = 0; g_my_val40 = 0; g_my_val45 = 0; g_my_val50 = 0; g_my_val55 = 0; g_my_val60 = 0; g_my_val65 = 0; g_my_val70 = 0; g_my_val75 = 0; g_my_val80 = 0; g_my_val85 = 0; g_my_val90 = 0; g_my_val95 = 0; g_my_val100 = 0;
@@ -273,41 +273,41 @@
 
                             <th>본인 </th>
                             @foreach($pList2 as $key => $row)
-                                <td>{{ $dataDetail[$mem_idx][$key]['grade'] }}</td>
+                                <td>{{ $dataDetail[$key]['grade'] }}</td>
                             @endforeach
                             @foreach($sList2 as $key => $row)
-                                <td>{{ $dataDetail[$mem_idx][$key]['grade'] }}</td>
-                                <td>{{ $dataDetail[$mem_idx][$key]['gradeA'] }}</td>
+                                <td>{{ $dataDetail[$key]['grade'] }}</td>
+                                <td>{{ $dataDetail[$key]['gradeA'] }}</td>
                             @endforeach
                         </tr>
                         <tr>
                             <th>전체</th>
                             @foreach($pList2 as $key => $row)
-                                <td>{{ $dataDetail[$mem_idx][$key]['avg'] }}</td>
+                                <td>{{ $dataDetail[$key]['avg'] }}</td>
                             @endforeach
                             @foreach($sList2 as $key => $row)
-                                <td>{{ $dataDetail[$mem_idx][$key]['avg'] }}</td>
-                                <td>{{ $dataDetail[$mem_idx][$key]['avgA'] }}</td>
+                                <td>{{ $dataDetail[$key]['avg'] }}</td>
+                                <td>{{ $dataDetail[$key]['avgA'] }}</td>
                             @endforeach
                         </tr>
                         <tr>
                             <th>최고</th>
                             @foreach($pList2 as $key => $row)
-                                <td>{{ $dataDetail[$mem_idx][$key]['max'] }}</td>
+                                <td>{{ $dataDetail[$key]['max'] }}</td>
                             @endforeach
                             @foreach($sList2 as $key => $row)
-                                <td>{{ $dataDetail[$mem_idx][$key]['max'] }}</td>
-                                <td>{{ $dataDetail[$mem_idx][$key]['maxA'] }}</td>
+                                <td>{{ $dataDetail[$key]['max'] }}</td>
+                                <td>{{ $dataDetail[$key]['maxA'] }}</td>
                             @endforeach
                         </tr>
                         <tr>
                             <th>과목석차</th>
                             @foreach($pList2 as $key => $row)
-                                <td>{{ $dataDetail[$mem_idx][$key]['orank'] }}</td>
+                                <td>{{ $dataDetail[$key]['orank'] }}</td>
                             @endforeach
                             @foreach($sList2 as $key => $row)
-                                <td>{{ $dataDetail[$mem_idx][$key]['orank'] }}</td>
-                                <td>{{ $dataDetail[$mem_idx][$key]['arank'] }}</td>
+                                <td>{{ $dataDetail[$key]['orank'] }}</td>
+                                <td>{{ $dataDetail[$key]['arank'] }}</td>
                             @endforeach
                         </tr>
                         </tbody>
@@ -337,9 +337,9 @@
                                 google.charts.load("current", {packages:["corechart"]});
                                 google.charts.setOnLoadCallback(drawChart);
                                 function drawChart() {
-                                    var my_avg =  parseInt("{{ $dataDetail[$mem_idx][$key]['grade'] }}");
-                                    var tot_avg = parseInt("{{ $dataDetail[$mem_idx][$key]['avg'] }}");
-                                    var top_avg = parseInt("{{ $dataDetail[$mem_idx][$key]['max'] }}");
+                                    var my_avg =  parseInt("{{ $dataDetail[$key]['grade'] }}");
+                                    var tot_avg = parseInt("{{ $dataDetail[$key]['avg'] }}");
+                                    var top_avg = parseInt("{{ $dataDetail[$key]['max'] }}");
 
                                     var data = google.visualization.arrayToDataTable([
                                         ["Element", "점수", { role: "style" } ],
@@ -370,9 +370,9 @@
                                 google.charts.load("current", {packages:["corechart"]});
                                 google.charts.setOnLoadCallback(drawChart2);
                                 function drawChart2() {
-                                    var my_avg =  parseInt("{{ $dataDetail[$mem_idx][$key]['grade'] }}");
-                                    var tot_avg = parseInt("{{ $dataDetail[$mem_idx][$key]['avg'] }}");
-                                    var top_avg = parseInt("{{ $dataDetail[$mem_idx][$key]['max'] }}");
+                                    var my_avg =  parseInt("{{ $dataDetail[$key]['grade'] }}");
+                                    var tot_avg = parseInt("{{ $dataDetail[$key]['avg'] }}");
+                                    var top_avg = parseInt("{{ $dataDetail[$key]['max'] }}");
 
                                     var data = google.visualization.arrayToDataTable([
                                         ["Element", "점수", { role: "style" } ],
@@ -398,9 +398,9 @@
                 </div>
             </div>
     <script>
-        function gotab(prodcode, memidx){
+        function gotab(prodcode, mridx){
             var uri_param;
-            uri_param = 'prodcode=' + prodcode + '&memidx=' + memidx;
+            uri_param = 'prodcode=' + prodcode + '&mridx=' + mridx;
 
             var _url = '{{ site_url() }}' + 'mocktest/statisticsPrivate/winStatSubject?' + uri_param;
             location.href=_url;

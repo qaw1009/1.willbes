@@ -4,7 +4,7 @@
 
 
 <style type="text/css">
-    body{width:100%; min-width:1240px; margin:auto;}
+    body{width:100%; min-width:1210px; margin:auto;}
     .Depth {display:none}
     .subContainer {
         min-height: auto !important;
@@ -18,98 +18,12 @@
         padding:0 !important;
         background:#fff;
     }	
-	.rLnb {position:fixed; width:170px; top:200px; right:10px; z-index:1;
-	}
-    .rLnb ul {padding:6px 12px; background:#fff; border:3px solid #2f2f2f; margin-bottom:10px;
-        -webkit-box-shadow: 10px 10px 20px 0px rgba(0,0,0,0.21);
-	    -moz-box-shadow: 10px 10px 20px 0px rgba(0,0,0,0.21);
-        box-shadow: 10px 10px 20px 0px rgba(0,0,0,0.21);
-    }
-	.rLnb li {background:url(http://file3.willbes.net/new_gosi/2018/01/leaveArmylnb_arrow.jpg) no-repeat 100% center}
-	.rLnb a {border-bottom:1px solid #bfbfbf; display:block; padding:10px 0; line-height:1.4;}
-    .rLnb a:hover {border-bottom:1px solid #000;
-        font-weight: 600;
-    }
-    .rLnb li:last-child a {border:0}
-    .rLnb div {
-        text-align:center;
-        padding:20px 0;
-        background:#fff;   
-        border:3px solid #2f2f2f;  
-    }
-	
-	.LAeventA01 {
-        position:relative;
-        width:100%; 
-        text-align:center; 
-        background:url(http://file3.willbes.net/new_gosi/2018/01/leaveArmyPass01_bg.jpg) no-repeat center top; 
-        background-size:auto;         
-    }
-	.LAeventA01 .main_img {position:absolute; width:980px; top:474px; left:50%; margin-left:-490px; z-index:10; opacity:0;filter:alpha(opacity=0);-webkit-animation-duration: 1s;animation-duration: 1s;-webkit-animation-fill-mode: both;animation-fill-mode: both}
+    .evtCtnsBox {width:100%; text-align:center; min-width:1210px;}	
 
-	.LAeventA01 .flipInX {
-	  -webkit-backface-visibility: visible !important;
-	  backface-visibility: visible !important;
-	  -webkit-animation-name: flipInX;
-	  animation-name: flipInX;
-	}
-	
-	.LAeventA02 {width:100%; text-align:center; background:#ececec; padding-bottom:120px}
-	.LAeventA02 div {width:904px; margin:0 auto; text-align:center}
-	.LAeventA02 a {margin-bottom:10px; margin-right:10px; display:inline-block}
-	.LAeventA03 {width:100%; text-align:center; background:#252525}
-	
-	#skybanner {position:fixed;top:200px;right:10px; width:210px; text-align:right; z-index:1000;}
+
 </style>
 
-<!-- Container -->
-<div id="Container" class="subContainer widthAuto c_both ">
-    <div class="Menu NSK c_both">
-        <h3>
-            <ul class="menu-Tit">
-                <li class="Tit">경찰<span class="row-line">|</span></li>
-                <li class="subTit">경찰학원</li>
-            </ul>
-            <ul class="menu-List">
-                <li>
-                    <a href="#none">교수진소개</a>
-                </li>
-                <li>
-                    <a href="#none">종합반</a>
-                </li>
-                <li>
-                    <a href="#none">단과</a>
-                </li>
-                <li>
-                    <a href="#none">수험정보</a>
-                </li>
-                <li class="dropdown">
-                    <a href="{{ site_url('/home/html/acad_info1') }}">학원안내</a>
-                    <div class="drop-Box list-drop-Box">
-                        <ul>
-                            <li class="Tit">학원안내</li>
-                            <li><a href="{{ site_url('/home/html/acad_info1_1') }}">학원강의정보</a></li>
-                            <li><a href="{{ site_url('/home/html/acad_info2') }}">모의고사성적공지</a></li>
-                            <li><a href="{{ site_url('/home/html/acad_info3') }}">학원갤러리</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <a href="#none">학원소개</a>
-                </li>
-                <li class="Acad">
-                    <a href="#none">신광은경찰 온라인 <span class="arrow-Btn">></span></a>
-                </li>
-            </ul>
-        </h3>
-    </div>
-    <div class="Depth">
-        <img src="{{ img_url('sub/icon_home.gif') }}"> 
-        <span class="1depth"><span class="depth-Arrow">></span><strong>학원안내</strong></span>
-        <span class="1depth"><span class="depth-Arrow">></span><strong>학원강의정보</strong></span>
-    </div>
-</div>
-<!-- 고정 메뉴 //-->
+@include('html.event_incOnTnb')
 
     <div class="p_re evtContent">
         <div class="rLnb">
@@ -158,10 +72,13 @@
         </div>
     </div>
 <!-- End Container -->
-<script type="text/javascript">
-function openArmConfirm(){
-	 var url = '<c:url value="/user/memberConfirmArmyPop.html?EVENT_NO=710"/>' ;
-	  window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=600,height=700');
-}
-</script>
+
+
+    <script>
+        $(function(e){
+            var targetOffset= $("#evtContainer").offset().top;
+            $('html, body').animate({scrollTop: targetOffset}, 700);
+            /*e.preventDefault(); */   
+	    });
+    </script>
 @stop

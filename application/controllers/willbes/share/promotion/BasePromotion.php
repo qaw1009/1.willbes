@@ -19,9 +19,9 @@ class BasePromotion extends \app\controllers\FrontController
 
         $test_type = (int)element('type', $this->_reqG(null), '0');
         $promotion_code = (int)$params['code'];
-        $result = $this->eventFModel->findEventForPromotion($promotion_code, $test_type);
+        $data = $this->eventFModel->findEventForPromotion($promotion_code, $test_type);
 
-        if (empty($result) === true) {
+        if (empty($data) === true) {
             show_alert('조회에 실패했습니다.', 'back');
         }
 
@@ -29,7 +29,13 @@ class BasePromotion extends \app\controllers\FrontController
         if ($test_type != 1) {
             $this->eventFModel->saveLogPromotion($this->_site_code, $this->_cate_code, $promotion_code);
         }
+
+        // 댓글사용영역 데이터 가공처리
+        $data['data_comment_use_area'] = array_flip(explode(',', $data['CommentUseArea']));
+
         $view_file = 'willbes/pc/promotion/'.$this->_site_code.'/'.$promotion_code;
-        $this->load->view($view_file, [],false);
+        $this->load->view($view_file, [
+            'data' => $data
+        ],false);
     }
 }

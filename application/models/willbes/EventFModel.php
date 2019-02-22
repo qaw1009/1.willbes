@@ -584,7 +584,7 @@ class EventFModel extends WB_Model
     {
         $test_type = $type;
         $column = '
-            a.ElIdx, a.EventName, a.PromotionCode, a.RegisterEndDate
+            a.ElIdx, a.EventName, a.PromotionCode, a.RegisterEndDate, a.CommentUseArea
         ';
         $from = "
             FROM {$this->_table['event_lecture']} AS a
@@ -595,8 +595,9 @@ class EventFModel extends WB_Model
             $arr_condition = ['EQ'=>['a.PromotionCode' => $promotion_code]];
         } else {
             $arr_condition = [
-                'EQ'=>[
+                'EQ' => [
                     'a.PromotionCode' => $promotion_code,
+                    'a.RequestType' => '5',
                     'a.IsUse' => 'Y',
                     'a.IsStatus' => 'Y'
                 ],

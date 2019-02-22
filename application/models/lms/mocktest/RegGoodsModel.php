@@ -69,8 +69,6 @@ class RegGoodsModel extends WB_Model
         $people = $condition['people'];
         $cate = $condition['cate'];
 
-        $mode = $condition['mode'];
-
         $MpIdx = array_unique ($MpIdx);
 
         for($i =0; $i < COUNT($MpIdx); $i++){
@@ -196,37 +194,20 @@ class RegGoodsModel extends WB_Model
                         $IsWrong = 'N';
                     }
 
-                    if($mode == 'single'){
+                    $data3 = [
+                        'MemIdx' => $MemIdx,
+                        'MrIdx'  => $MrIdx,
+                        'ProdCode'=> $idx,
+                        'MpIdx' => $key2,
+                        'MqIdx' => $val3['MqIdx'],
+                        'LogIdx' => $LogIdx,
+                        'Answer' => $Answer,
+                        'IsWrong' => $IsWrong
+                    ];
+                    //var_dump($data3);
 
-                        $data3 = [
-                            'MemIdx' => $MemIdx,
-                            'MrIdx'  => $MrIdx,
-                            'ProdCode'=> $idx,
-                            'MpIdx' => $key2,
-                            'MqIdx' => $val3['MqIdx'],
-                            'LogIdx' => $LogIdx,
-                            'Answer' => $Answer,
-                            'IsWrong' => $IsWrong
-                        ];
-                        //var_dump($data3);
-
-                        if ($this->_conn->set($data3)->set('RegDatm', 'NOW()', false)->insert($this->_table['mockAnswerPaper']) === false) {
-                            throw new \Exception('임시저장에 실패했습니다.');
-                        }
-                    }else{
-                        $data3 = [
-                            'MemIdx' => $MemIdx,
-                            'MrIdx'  => $MrIdx,
-                            'ProdCode'=> $idx,
-                            'MpIdx' => $key2,
-                            'MqIdx' => $val3['MqIdx'],
-                            'LogIdx' => $LogIdx,
-                            'Answer' => $Answer
-                        ];
-
-                        if ($this->_conn->set($data3)->set('RegDatm', 'NOW()', false)->insert($this->_table['mockAnswerTemp']) === false) {
-                            throw new \Exception('임시저장에 실패했습니다.');
-                        }
+                    if ($this->_conn->set($data3)->set('RegDatm', 'NOW()', false)->insert($this->_table['mockAnswerPaper']) === false) {
+                        throw new \Exception('임시저장에 실패했습니다.');
                     }
 
                 }
@@ -237,11 +218,9 @@ class RegGoodsModel extends WB_Model
 
         }
 
-        if($mode == 'single') {
-            echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!정상입력되었습니다.!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
-        }else{
-            $this->examSend($mProdIdx, $mMrIdx, $mMemIdx);
-        }
+
+        echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!정상입력되었습니다.!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
+
 
     }
 
@@ -252,193 +231,189 @@ class RegGoodsModel extends WB_Model
      * @throws Exception
      */
     function saveFake2($idx,$TakeFormsCcd,$MpIdx1,$MpIdx2,$SMpIdx1,$SMpIdx2,$AddPointCcds,$people,$cate,$mode){
-        $arrMPSet = array();
+        $retry=0;
+        $notdone=TRUE;
+        while( $notdone && $retry < 3 ) {
+            try {
+                $this->_conn->trans_begin();
+                $arrMPSet = array();
 
-        $idx = $idx;
-        $TakeFormsCcd = $TakeFormsCcd;
-        $AddPointCcds = $AddPointCcds;
-        $cate = $cate;
-        $mode = $mode;
-        $MpIdx[] = $MpIdx1;
-        $MpIdx[] = $MpIdx2;
-        $MpIdx[] = $SMpIdx1;
-        $MpIdx[] = $SMpIdx2;
-        $people = $people;
-        $mProdIdx = $idx;
+                $idx = $idx;
+                $TakeFormsCcd = $TakeFormsCcd;
+                $AddPointCcds = $AddPointCcds;
+                $cate = $cate;
+                $mode = $mode;
+                $MpIdx[] = $MpIdx1;
+                $MpIdx[] = $MpIdx2;
+                $MpIdx[] = $SMpIdx1;
+                $MpIdx[] = $SMpIdx2;
+                $people = $people;
+                $mProdIdx = $idx;
 
-        $MpIdx = array_unique ($MpIdx);
-
-        for($i =0; $i < COUNT($MpIdx); $i++){
-            $cuMP = $MpIdx[$i];
-            $column = "
-                MpIdx, SubjectIdx
-            ";
-
-            $from = "
-                FROM 
-                lms_Mock_Paper AS MP 
-                JOIN lms_Mock_R_Category AS MR ON MP.MrcIdx = MR.MrcIdx
-                JOIN lms_mock_r_subject AS MS ON MR.MrsIdx = MS.MrsIdx
-            ";
-
-            $obder_by = " ";
-
-            $where = " WHERE MpIdx = ".$cuMP;
-
-            $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+                $MpIdx = array_unique($MpIdx);
 
 
-            $data = $query->row_array();
-            $arrMPSet[$cuMP] = $data['SubjectIdx'];
-        }
+                for ($i = 0; $i < COUNT($MpIdx); $i++) {
+                    $cuMP = $MpIdx[$i];
+                    $column = "
+                    MpIdx, SubjectIdx
+                ";
 
-        $column = "
-            MemId, MemIdx
-        ";
+                    $from = "
+                    FROM 
+                    lms_Mock_Paper AS MP 
+                    JOIN lms_Mock_R_Category AS MR ON MP.MrcIdx = MR.MrcIdx
+                    JOIN lms_mock_r_subject AS MS ON MR.MrsIdx = MS.MrsIdx
+                ";
 
-        $from = "
-            FROM lms_member    
-        ";
+                    $obder_by = " ";
 
-        $obder_by = " ORDER BY RAND() LIMIT ".$people;
+                    $where = " WHERE MpIdx = " . $cuMP;
 
-        $where = " ";
-        $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+                    $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
 
 
-        $res = $query->result_array();
-
-        $mMemIdx = $res[0]['MemIdx'];
-        $mMrIdx = '';
-
-        foreach($res AS $key => $val){
-            // 데이터 입력
-
-            $MemIdx = $val['MemIdx'];
-            $data1 = [
-                'ProdCode' => $idx,
-                'MemIdx'  => $MemIdx,
-                'OrderProdIdx'=> '1',
-                'TakeNumber' => '1000000'+$key,
-                'TakeMockPart' => $cate,
-                'TakeForm' => $TakeFormsCcd,
-                'TakeArea' => '999',
-                'AddPoint' => $AddPointCcds,
-                'IsStatus' => 'Y',
-                'IsTicketPrint' => 'N',
-                'IsDisplay' => 'Y',
-                'IsTake' => 'Y'
-            ];
-            //var_dump($data1);
-
-            if ($this->_conn->set($data1)->insert($this->_table['mockRegister']) === false) {
-                throw new \Exception('임시저장에 실패했습니다.');
-            }
-
-            $MrIdx = $this->_conn->insert_id();
-            $mMrIdx = $MrIdx;
-
-            foreach($arrMPSet AS $key2 => $val2){
-
-                $data2 = [
-                    'MrIdx' => $MrIdx,
-                    'ProdCode'=> $idx,
-                    'MpIdx' => $key2,
-                    'SubjectIdx' => $val2,
-                ];
-
-                //var_dump($data2);
-
-                if ($this->_conn->set($data2)->insert($this->_table['mockRegisterR']) === false) {
-                    throw new \Exception('임시저장에 실패했습니다.');
+                    $data = $query->row_array();
+                    $arrMPSet[$cuMP] = $data['SubjectIdx'];
                 }
-
-
-                $data22 = [
-                    'LogType' => 'S',
-                    'RegIp'  => '000',
-                    'RemainSec'=> '99999',
-                    'MrIdx' => $MrIdx,
-                ];
-
-                if ($this->_conn->set($data22)->set('RegDatm', 'NOW()', false)->insert($this->_table['mockLog']) === false) {
-                    throw new \Exception('임시저장에 실패했습니다.');
-                }
-
-
-                $LogIdx = $this->_conn->insert_id();
 
                 $column = "
-                    MQ.MqIdx, 
-                    QuestionNO,
-                    RightAnswer
-                ";
+                MemId, MemIdx
+            ";
 
                 $from = "
-                    FROM
-                        {$this->_table['mockExamBase']} AS MP
-                        JOIN {$this->_table['mockExamQuestion']} AS MQ ON MQ.MpIdx = MP.MpIdx AND MP.IsUse = 'Y' AND MQ.IsStatus = 'Y'
-                ";
+                FROM lms_member    
+            ";
 
-                $obder_by = " ORDER BY QuestionNO ";
+                $obder_by = " ORDER BY RAND() LIMIT " . $people;
 
-                $where = "WHERE MP.MpIdx = ".$key2;
-                //echo "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
-
+                $where = " ";
                 $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
-                $res2 = $query->result_array();
-                foreach ($res2 AS $key3 => $val3){
-                    $Answer =rand(1,5);
-                    if($val3['RightAnswer'] == $Answer){
-                        $IsWrong = 'Y';
-                    }else{
-                        $IsWrong = 'N';
+
+
+                $res = $query->result_array();
+
+                $mMemIdx = $res[0]['MemIdx'];
+                $mMrIdx = '';
+
+                foreach ($res AS $key => $val) {
+                    // 데이터 입력
+
+                    $MemIdx = $val['MemIdx'];
+                    $data1 = [
+                        'ProdCode' => $idx,
+                        'MemIdx' => $MemIdx,
+                        'OrderProdIdx' => '1',
+                        'TakeNumber' => '1000000' + $key,
+                        'TakeMockPart' => $cate,
+                        'TakeForm' => $TakeFormsCcd,
+                        'TakeArea' => '999',
+                        'AddPoint' => $AddPointCcds,
+                        'IsStatus' => 'Y',
+                        'IsTicketPrint' => 'N',
+                        'IsDisplay' => 'Y',
+                        'IsTake' => 'Y'
+                    ];
+                    //var_dump($data1);
+
+                    if ($this->_conn->set($data1)->insert($this->_table['mockRegister']) === false) {
+                        throw new \Exception('임시저장에 실패했습니다.');
                     }
 
-                    if($mode == 'single'){
+                    $MrIdx = $this->_conn->insert_id();
+                    $mMrIdx = $MrIdx;
 
-                        $data3 = [
-                            'MemIdx' => $MemIdx,
-                            'MrIdx'  => $MrIdx,
-                            'ProdCode'=> $idx,
+                    foreach ($arrMPSet AS $key2 => $val2) {
+
+                        $data2 = [
+                            'MrIdx' => $MrIdx,
+                            'ProdCode' => $idx,
                             'MpIdx' => $key2,
-                            'MqIdx' => $val3['MqIdx'],
-                            'LogIdx' => $LogIdx,
-                            'Answer' => $Answer,
-                            'IsWrong' => $IsWrong
+                            'SubjectIdx' => $val2,
                         ];
-                        //var_dump($data3);
 
-                        if ($this->_conn->set($data3)->set('RegDatm', 'NOW()', false)->insert($this->_table['mockAnswerPaper']) === false) {
+                        //var_dump($data2);
+
+                        if ($this->_conn->set($data2)->insert($this->_table['mockRegisterR']) === false) {
                             throw new \Exception('임시저장에 실패했습니다.');
                         }
-                    }else{
-                        $data3 = [
-                            'MemIdx' => $MemIdx,
-                            'MrIdx'  => $MrIdx,
-                            'ProdCode'=> $idx,
-                            'MpIdx' => $key2,
-                            'MqIdx' => $val3['MqIdx'],
-                            'LogIdx' => $LogIdx,
-                            'Answer' => $Answer
+
+
+                        $data22 = [
+                            'LogType' => 'S',
+                            'RegIp' => '000',
+                            'RemainSec' => '99999',
+                            'MrIdx' => $MrIdx,
                         ];
 
-                        if ($this->_conn->set($data3)->set('RegDatm', 'NOW()', false)->insert($this->_table['mockAnswerTemp']) === false) {
+                        if ($this->_conn->set($data22)->set('RegDatm', 'NOW()', false)->insert($this->_table['mockLog']) === false) {
                             throw new \Exception('임시저장에 실패했습니다.');
+                        }
+
+
+                        $LogIdx = $this->_conn->insert_id();
+
+                        $column = "
+                        MQ.MqIdx, 
+                        QuestionNO,
+                        RightAnswer
+                    ";
+
+                        $from = "
+                        FROM
+                            {$this->_table['mockExamBase']} AS MP
+                            JOIN {$this->_table['mockExamQuestion']} AS MQ ON MQ.MpIdx = MP.MpIdx AND MP.IsUse = 'Y' AND MQ.IsStatus = 'Y'
+                    ";
+
+                        $obder_by = " ORDER BY QuestionNO ";
+
+                        $where = "WHERE MP.MpIdx = " . $key2;
+                        //echo "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
+
+                        $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+                        $res2 = $query->result_array();
+                        foreach ($res2 AS $key3 => $val3) {
+                            $Answer = rand(1, 5);
+                            if ($val3['RightAnswer'] == $Answer) {
+                                $IsWrong = 'Y';
+                            } else {
+                                $IsWrong = 'N';
+                            }
+
+
+                            $data3 = [
+                                'MemIdx' => $MemIdx,
+                                'MrIdx' => $MrIdx,
+                                'ProdCode' => $idx,
+                                'MpIdx' => $key2,
+                                'MqIdx' => $val3['MqIdx'],
+                                'LogIdx' => $LogIdx,
+                                'Answer' => $Answer
+                            ];
+
+                            if ($this->_conn->set($data3)->set('RegDatm', 'NOW()', false)->insert($this->_table['mockAnswerTemp']) === false) {
+                                throw new \Exception('임시저장에 실패했습니다.');
+                            }
+
+
                         }
 
                     }
 
                 }
 
+                $this->examSend($mProdIdx, $mMrIdx, $mMemIdx);
+                $notdone=FALSE;
+                $this->_conn->trans_commit();
+            } catch (\Exception $e) {
+                $this->_conn->trans_rollback();
+                $retry++;
+                //return error_result($e);
             }
-
         }
 
-        if($mode == 'single') {
-            echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!정상입력되었습니다.!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
-        }else{
-            $this->examSend($mProdIdx, $mMrIdx, $mMemIdx);
+        if( $retry == 3) {
+            throw new Exception("Try later, sorry, too much guys other there, or it's not your day.");
         }
 
     }
@@ -450,30 +425,33 @@ class RegGoodsModel extends WB_Model
      */
     public function examSend($ProdCode, $MrIdx, $MemIdx)
     {
-        try {
-            $this->_conn->trans_begin();
-
-            //$ProdCode = element('ProdCode', $formData);
-            //$MrIdx = element('MrIdx', $formData);
-
-            //삭제후 입력
-            $where = ['MemIdx' => $MemIdx, 'ProdCode' => $ProdCode, 'MrIdx' => $MrIdx];
-
+        $retry=0;
+        $notdone=TRUE;
+        while( $notdone && $retry < 3 ) {
             try {
-                if($this->_conn->delete($this->_table['mockAnswerPaper'], $where) === false){
-                    throw new \Exception('삭제에 실패했습니다.');
-                }
-            } catch (\Exception $e) {
-                return error_result($e);
-            }
+                $this->_conn->trans_begin();
 
-            $insert_column = "
+                //$ProdCode = element('ProdCode', $formData);
+                //$MrIdx = element('MrIdx', $formData);
+
+                //삭제후 입력
+                $where = ['MemIdx' => $MemIdx, 'ProdCode' => $ProdCode, 'MrIdx' => $MrIdx];
+
+                try {
+                    if ($this->_conn->delete($this->_table['mockAnswerPaper'], $where) === false) {
+                        throw new \Exception('삭제에 실패했습니다.');
+                    }
+                } catch (\Exception $e) {
+                    return error_result($e);
+                }
+
+                $insert_column = "
                 MemIdx, MrIdx, ProdCode, MpIdx, MqIdx, LogIdx, Answer, IsWrong, RegDatm
             ";
-            $select_column = "
-                '".$MemIdx."', '".$MrIdx."', '".$ProdCode."', MA.MpIdx, MQ.MqIdx, LogIdx, Answer, if(Answer = RightAnswer, 'Y', 'N') AS IsWrong, MA.RegDatm
+                $select_column = "
+                '" . $MemIdx . "', '" . $MrIdx . "', '" . $ProdCode . "', MA.MpIdx, MQ.MqIdx, LogIdx, Answer, if(Answer = RightAnswer, 'Y', 'N') AS IsWrong, MA.RegDatm
             ";
-            $query = "
+                $query = "
                 INSERT INTO {$this->_table['mockAnswerPaper']} ({$insert_column})
                 SELECT 
                     {$select_column} 
@@ -481,16 +459,22 @@ class RegGoodsModel extends WB_Model
                     {$this->_table['mockAnswerTemp']} AS MA
                     JOIN {$this->_table['mockExamQuestion']} AS MQ ON MA.MqIdx = MQ.MqIdx AND MQ.IsStatus = 'Y' AND MQ.IsStatus = 'Y'
                 WHERE 
-                    MemIdx = ".$MemIdx."
-                    AND ProdCode = ".$ProdCode."
-                    AND MrIdx = ".$MrIdx." ORDER BY MpIdx
+                    MemIdx = " . $MemIdx . "
+                    AND ProdCode = " . $ProdCode . "
+                    AND MrIdx = " . $MrIdx . " ORDER BY MpIdx
             ";
-            $this->_conn->query($query);
+                $this->_conn->query($query);
+                $notdone=FALSE;
+                $this->_conn->trans_commit();
+            } catch (\Exception $e) {
+                $this->_conn->trans_rollback();
+                $retry++;
+                //return error_result($e);
+            }
+        }
 
-            $this->_conn->trans_commit();
-        } catch (\Exception $e) {
-            $this->_conn->trans_rollback();
-            return error_result($e);
+        if($retry == 3) {
+            throw new Exception("Try later, sorry, too much guys other there, or it's not your day.");
         }
 
         echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!정상입력되었습니다2.!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";

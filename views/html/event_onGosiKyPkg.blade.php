@@ -3,7 +3,7 @@
 @section('content')
     <!-- Container -->
     <style type="text/css">
-        body{width:100%; min-width:1240px; margin:auto;}
+        body{width:100%; min-width:1210px; margin:auto;}
         .Depth {display:none}
         .subContainer {
             min-height: auto !important;

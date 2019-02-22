@@ -297,9 +297,8 @@ class BookModel extends WB_Model
 
             // 판매가격 JSON 데이터 등록
             $query = $this->_conn->query('call sp_product_json_data_insert(?)', [$row['ProdCode']]);
-            $result = $query->row(0)->ReturnMsg;
-
-            if ($result != 'Success') {
+            $sp_result = $query->row(0)->ReturnMsg;
+            if ($sp_result != 'Success') {
                 throw new \Exception('판매가격 JSON 데이터 등록에 실패했습니다.');
             }
 

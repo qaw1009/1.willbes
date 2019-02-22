@@ -1,10 +1,9 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
+    @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
     <style type="text/css">
-        body{width:100%; min-width:1240px; margin:auto;}
-        .Depth {display:none}
         .subContainer {
             min-height: auto !important;
             margin-bottom:0 !important;
@@ -16,20 +15,22 @@
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
-        }   
-        .evtCtnsBox {width:100%; text-align:center; min-width:1210px}        
+        }	
+        .evtCtnsBox {width:100%; text-align:center; min-width:1210px;}
 
-        .wb_top {width:100%; min-width:1210px; text-align:center; background:#dbc6b3 url(http://file3.willbes.net/new_gosi/2018/01/EV180110_c2_bg.jpg) no-repeat center top; margin-top:20px}
+        /************************************************************/      
+
+        .wb_top {background:#dbc6b3 url(http://file3.willbes.net/new_gosi/2018/01/EV180110_c2_bg.jpg) no-repeat center top}
         
         .m_title {display: block; position:absolute; top:550px; left:50%; margin-left:-605px; z-index:9000}        
         
-        .wb_cts01 {  width:100%; text-align:center; min-width:1210px; background:#dbc6b3 url(http://file3.willbes.net/new_gosi/2018/01/EV180110_c1_bg.jpg) no-repeat center top; margin-top:20px}	
+        .wb_cts01 {background:#dbc6b3 url(http://file3.willbes.net/new_gosi/2018/01/EV180110_c1_bg.jpg) no-repeat center top}	
         .wb_cts01 div { position:relative; width:1210px; margin:0 auto}
         .wb_cts01 div .why {position: absolute; top:550px; left:50%; width:1210px; margin-left:-605px; z-index:100}
 
-        .wb_cts02 {width:100%; min-width:1210px; text-align:center; background:#fff url(http://file3.willbes.net/new_gosi/2018/01/EV180110_c3_bg.jpg) no-repeat center top}
+        .wb_cts02 {background:#fff url(http://file3.willbes.net/new_gosi/2018/01/EV180110_c3_bg.jpg) no-repeat center top}
 
-        .wb_cts03 { width:100%; text-align:center; min-width:1210px; padding-bottom:50px; background:#edf1f4 ;}
+        .wb_cts03 {padding-bottom:50px; background:#edf1f4;}
         .wb_cts04 ul {width:100%; margin:0 auto; max-width:980px}
         
 		.menuWarp {position:relative; width:980px; height:730px; margin:0 auto} /**/
@@ -47,9 +48,8 @@
         }
         .skybanner_sectionFixed {position:fixed; top:20px}
   
-    </style>
-    
-    @include('html.event_incOnTnb')
+    </style>   
+
 
     <div class="p_re evtContent NSK" id="evtContainer">        
         <div class="skybanner">
@@ -65,25 +65,24 @@
             </div>
 		</div>
         
-        <div class="wb_cts01" >
+        <div class="evtCtnsBox wb_cts01" >
       		<div>
                 <img src="http://file3.willbes.net/new_gosi/2018/01/EV180110_c1_2.jpg" usemap="#Map171218_c2" border="0"  >
                 <map name="Map171218_c2" >
-                    <area shape="rect" coords="158,18,585,103"  href="#" target="_blank" onFocus="this.blur();" alt="초시생을 위한 합격비법"/>
-                    <!--area shape="rect" coords="677,22,1055,93" href="javascript:alert('*** Coming Soon! ***');"  onfocus="this.blur();"  alt="Coming Soon!" /-->
-                    <area shape="rect" coords="677,22,1055,93" href="/event/movie/event.html?event_cd=On_180322_y&topMenuType=O"  onfocus="this.blur();"  alt="N수생의 합격노트" />
+                    <area shape="rect" coords="158,18,585,103"  href="#none" onfocus="this.blur();" alt="초시생을 위한 합격비법"/>
+                    <area shape="rect" coords="677,22,1055,93" href="event_onGosiPassNote" target="_blank" onfocus="this.blur();" alt="N수생의 합격노트" />
                 </map>
                 <div class="why"><img src="http://file3.willbes.net/new_gosi/2018/01/EV180110_top.gif" alt=""/></div>
                 <img src="http://file3.willbes.net/new_gosi/2018/01/EV180110_c2.jpg"  >
       		</div>
 	    </div><!--wb_cts01//-->
 
-        <div class="wb_cts02" >
+        <div class="evtCtnsBox wb_cts02">
             <ul>
                 <li><img src="http://file3.willbes.net/new_gosi/2018/01/EV180110_c3.jpg" alt="과락률 50%, 70점 미만 86.6%!"  /></li>
                 <li id="Q1">
                     <img src="http://file3.willbes.net/new_gosi/2018/01/EV180110_c4.jpg" alt="공무원에는 어떤 직렬이 있나요?" usemap="#Map180110_c2" border="0" />
-                    <map name="Map180110_c2" >
+                    <map name="Map180110_c2">
                         <area shape="rect" coords="111,433,241,484" href="/boardExamInfoOn/board_list.html?topMenuType=O&topMenuGnb=OM_005&topMenu=001&menuID=OM_005_001&BOARDTYPE=1&INCTYPE=list&BOARD_MNG_SEQ=NOTICE_008" target="_blank"   onfocus="this.blur();"/>
                     </map>
                 <li id="Q2"><img src="http://file3.willbes.net/new_gosi/2018/01/EV180110_c5.jpg" alt="Q2. 시험은 어떤 식으로 치러지나요?" />
@@ -94,7 +93,7 @@
             </ul>
         </div><!--wb_cts02//-->  
   
-        <div class="wb_cts03" >
+        <div class="evtCtnsBox wb_cts03">
   			<img src="http://file3.willbes.net/new_gosi/2018/01/EV180110_c9.jpg" alt="윌비스와 함께 자랑스러운 대한민국의 공무원이 되어주세요!"  />
             <div class="menuWarp">
                 <div class="PeMenu">

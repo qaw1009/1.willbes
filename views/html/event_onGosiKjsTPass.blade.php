@@ -1,10 +1,9 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
+    @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
     <style type="text/css">
-        body{width:100%; min-width:1210px; margin:auto;}
-        .Depth {display:none}
         .subContainer {
             min-height: auto !important;
             margin-bottom:0 !important;
@@ -48,8 +47,6 @@
 
     </style>
     
-    @include('html.event_incOnTnb')
-
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="evtCtnsBox wb_top">            
             <img src="http://file3.willbes.net/new_gosi/2018/11/EV181113_c1.png" alt="윌비스 행정학의 대세 김덕관 행정학 T-PASS " usemap="#Map18113_c1" border="0"  />

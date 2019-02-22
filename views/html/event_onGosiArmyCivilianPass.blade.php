@@ -1,10 +1,9 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
+    @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
     <style type="text/css">
-        body{width:100%; min-width:1240px; margin:auto;}
-        .Depth {display:none}
         .subContainer {
             min-height: auto !important;
             margin-bottom:0 !important;
@@ -17,9 +16,12 @@
             padding:0 !important;
             background:#fff;
         }	
+        .evtCtnsBox {width:100%; text-align:center; min-width:1210px;}
 
-        .wb_cts01 {width:100%; text-align:center;  min-width:1210px; background:url(http://file3.willbes.net/new_gosi/2018/10/EV181031Y_01_bg.jpg) no-repeat center top}			
-        .wb_cts02 {width:100%; min-width:1210px; text-align:center; background:#33feb4}	
+        /************************************************************/
+
+        .wb_cts01 {background:url(http://file3.willbes.net/new_gosi/2018/10/EV181031Y_01_bg.jpg) no-repeat center top}			
+        .wb_cts02 {background:#33feb4}	
             .tabWrapArmy {width:887px; margin:0 auto; box-shadow:0 5px 5px rgba(0,0,0,.2); margin-bottom:10px}
             .tabmenuT {width:200px; float:left}
             .tabmenuT li a {display:block; height:48px; line-height:48px; text-align:center; background:#27262c; border-bottom:1px solid #ebebeb; color:#fff}
@@ -29,7 +31,7 @@
             .tabmenuT .tabCts {float:left}
             .tabmenuT:after {content:""; display:block; clear:both}
 
-        .wb_cts03 {width:100%; text-align:center; min-width:1210px; background:#232228; position:relative}
+        .wb_cts03 {background:#232228; position:relative}
         
         /* 수강테이블*/
         .tbl_lec {width:980px; margin:0 auto 100px}
@@ -46,10 +48,8 @@
         a.button01:hover{border:1px solid #000;background:#fff; color:#000 !important; font-size:12px;  border-radius:6px}    
     </style>
     
-    @include('html.event_incOnTnb')
-
     <div class="p_re evtContent NSK" id="evtContainer">
-        <div class="wb_cts01">
+        <div class="evtCtnsBox wb_cts01">
             <img src="http://file3.willbes.net/new_gosi/2018/10/EV181031Y_01.jpg" alt="윌비스 군무원 PASS 시즌5" usemap="#Map180831" border="0">
             <map name="Map180831" id="Map180831">
             <area shape="rect" coords="571,1699,731,1738" href="http://www.willbesgosi.net/yearpackagelecture/yearpackagelectureDetail.html?topMenu=007&topMenuName=&topMenuType=O&searchCategoryCode=007&searchLeccode=Y201700036&leftMenuLType=M0001&lecKType=Y" alt="59만원" />
@@ -57,7 +57,7 @@
             </map>
         </div><!--wb_cts01//-->  
 
-        <div class="wb_cts02" id="wb01">
+        <div class="evtCtnsBox wb_cts02" id="wb01">
             <img src="http://file3.willbes.net/new_gosi/2018/10/EV181031Y_02_1.jpg" alt="수강생 전용해톅, 전문교수진">
             <div class="tabWrapArmy">
                 <ul class="tabmenuT">
@@ -103,7 +103,7 @@
         </div><!--wb_cts02//-->
   
   
-	<div class="wb_cts03">
+	<div class="evtCtnsBox wb_cts03">
 		<img src="http://file3.willbes.net/new_gosi/2018/10/EV181031Y_03.jpg" alt="" usemap="#Map180831B" border="0"  />
         <map name="Map180831B" id="Map180831B">
           <area shape="rect" coords="571,651,730,691" href="http://www.willbesgosi.net/yearpackagelecture/yearpackagelectureDetail.html?topMenu=007&topMenuName=&topMenuType=O&searchCategoryCode=007&searchLeccode=Y201700036&leftMenuLType=M0001&lecKType=Y" alt="49만원" />

@@ -1,10 +1,9 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
+    @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
     <style type="text/css">
-        body{width:100%; min-width:1240px; margin:auto;}
-        .Depth {display:none}
         .subContainer {
             min-height: auto !important;
             margin-bottom:0 !important;
@@ -16,8 +15,10 @@
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
-        }   
-        .evtCtnsBox {width:100%; text-align:center; min-width:1210px}        
+        }	
+        .evtCtnsBox {width:100%; text-align:center; min-width:1210px;}
+
+        /************************************************************/	       
 
         .wb_mp4 {width:100%; text-align:center; margin:0 auto; background:#000; min-width:1210px;}
             .layer {width:100%;height:1070px; -ms-overflow:hidden;}
@@ -35,8 +36,6 @@
         .wb_07 {background:#fff}  
     </style>
     
-    @include('html.event_incOnTnb')
-
     <div class="p_re evtContent NSK" id="evtContainer">        
         <div class="wb_mp4" id="main">
             <div class="layer">

@@ -1,10 +1,9 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
+    @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
     <style type="text/css">
-        body{width:100%; min-width:1240px; margin:auto;}
-        .Depth {display:none}
         .subContainer {
             min-height: auto !important;
             margin-bottom:0 !important;
@@ -17,33 +16,37 @@
             padding:0 !important;
             background:#fff;
         }	
+        .evtCtnsBox {width:100%; text-align:center; min-width:1210px;}
 
-        .wb_top {width:100%; min-width:1210px; text-align:center;  font-family:'Noto Sans KR', Arial, Sans-serif; font-size:15px; color:#ebebeb; background:#171717 url(http://file3.willbes.net/new_gosi/2019/01/EV190130_01_bg.png) no-repeat center top;  position:relative;}
-        
-        .wb_cts01 {width:100%; min-width:1210px; text-align:center;  background:#e1ded9;}        
+        /************************************************************/
 
-        .wb_cts02 {width:100%; min-width:1210px; text-align:center;  background:#171717; font-family:'Noto Sans KR', Arial, Sans-serif; font-size:15px; color:#232228;}	        
+        .wb_top {font-size:15px; color:#ebebeb; background:#171717 url(http://file3.willbes.net/new_gosi/2019/01/EV190130_01_bg.png) no-repeat center top;  position:relative;}
         
-        .wb_cts03 {width:100%; min-width:1210px; text-align:center;  background:#e1ded9;}
+        .wb_cts01 {background:#e1ded9;}        
+
+        .wb_cts02 {background:#171717; font-family:'Noto Sans KR', Arial, Sans-serif; font-size:15px; color:#232228;}	        
+        
+        .wb_cts03 {background:#e1ded9;}
 
         .check {width:980px; margin:0 auto; background:#171717; padding:20px 0px 50px 10px; letter-spacing:3; color:#fff;}
         .check label {cursor:pointer}
         .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
         .check a {display:inline-block; padding:12px 20px 10px 20px;color:#27262c; background:#e3c0a2; margin-left:50px; border-radius:20px}
         
-        .time{width:100%; min-width:1210px; text-align:center; background:#000;}
-        .time_date {text-align:center; padding:20px 115px}
-        .time_date table {width:980px; margin:0 auto}
-        .time_txt {font-family: 'NanumGothic', '나눔고딕','NanumGothicWeb', '맑은 고딕', 'Malgun Gothic', Dotum; font-size:28px; color:#f2f2f2; letter-spacing: -1px; font-weight:bold}
-        .time p {text-alig:center}	
+        /*타이머*/
+        .time{background:#e1e1e1;}
+        .time_date {max-width:1120px; text-align:center;  margin: 0 auto;}
+        .time_date .t_img {width:80%;}		
+        .time_txt {font-family: 'NanumGothic', '나눔고딕','NanumGothicWeb', '맑은 고딕', 'Malgun Gothic', Dotum; font-size:22px; color:#171717; letter-spacing: -1px; font-weight:bold;}
+        .time_txt span {color:#b61216;}	
+        .time p {text-align:center; padding-top:20px} 	
 
         /*하단퀵*/
         #nav {display:block; position:fixed;  bottom:0%;  width:100%; min-width:1210px;  text-align:center; background: url(http://file3.willbes.net/new_gosi/2019/02/EV190211_sky_bg.png) repeat-x; z-index:10;}
 
    
     </style>
-    
-    @include('html.event_incOnTnb')
+
 
     <div class="p_re evtContent" id="evtContainer">
         <div id="nav">
@@ -54,7 +57,31 @@
             </map>
         </div>
 
-        <div class="wb_top" id="main">
+        <!-- 타이머 -->    
+        <div class="evtCtnsBox time">
+            <div class="time_date" id="newTopDday">			
+                <table width="1100px;" height="90px" border="0" cellpadding=0 cellspacing=0>
+                    <tr>
+                        <td style="text-align:center;"><img src="http://file3.willbes.net/new_gosi/2019/01/EV190115_c0_1.jpg" alt=""  /></td>                        
+                        <td width="150" align="center" class="time_txt">마감까지 <br /><span>남은 시간은</span></td>
+                        <td width="62" height="101" align="center"><img id="dd1" src="http://file.willbes.net/new_image/0.png" class="t_img" /></td>
+                        <td width="62" height="101" align="center"><img id="dd2" src="http://file.willbes.net/new_image/0.png" class="t_img" /></td>
+                        <td width="60" height="101" align="center" class="time_txt">day</td>
+                        <td width="62" height="101" align="center"><img id="hh1" src="http://file.willbes.net/new_image/0.png" class="t_img"/></td>
+                        <td width="62" height="101" align="center"><img id="hh2" src="http://file.willbes.net/new_image/0.png" class="t_img"/></td>
+                        <td width="20" height="101" align="center" class="time_txt">:</td>
+                        <td width="62" height="101" align="center"><img id="mm1" src="http://file.willbes.net/new_image/0.png" class="t_img"/></td>
+                        <td width="62" height="101" align="center"><img id="mm2" src="http://file.willbes.net/new_image/0.png" class="t_img"/></td>
+                        <td width="20" height="101" align="center">:</td>
+                        <td width="62" height="101" align="center"><img id="ss1" src="http://file.willbes.net/new_image/0.png" class="t_img"/></td>
+                        <td width="62" height="101" align="center"><img id="ss2" src="http://file.willbes.net/new_image/0.png" class="t_img"/></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <!-- 타이머 //-->
+
+        <div class="evtCtnsBox wb_top" id="main">
             <img src="http://file3.willbes.net/new_gosi/2019/02/EV190211_01.png" alt="윌비스 7급 PASS" usemap="#Map_180702_lec" border="0" />
                 <map name="Map_180702_lec">
                 <area shape="rect" coords="530,1090,695,1152" href="javascript:go_PassLecture(3);" alt="6개월수강신청"  onfocus="this.blur();">
@@ -67,39 +94,15 @@
             </label>
             <a href="#tab1">이용안내확인하기 ↓</a></div>
         </div>
-        <!--WB_top//-->
+        <!--WB_top//-->       
 
-        <!--타이머-->
-        <div class="time">
-            <div class="time_date">
-                <table>
-                    <tr>
-                    <td class="time_txt">마감까지</td>
-                    <td width="72"><img id="d1" src="http://file.willbes.net/new_image/0.png" border="0" /></td>
-                    <td width="72"><img id="d2" src="http://file.willbes.net/new_image/0.png" border="0" /></td>
-                    <td width="70" class="time_txt">day</td>
-                    <td width="72"><img id="h1" src="http://file.willbes.net/new_image/0.png" border="0" /></td>
-                    <td width="72"><img id="h2" src="http://file.willbes.net/new_image/0.png" border="0" /></td>
-                    <td width="15" class="time_txt">:</td>
-                    <td width="72"><img id="m1" src="http://file.willbes.net/new_image/0.png" border="0" /></td>
-                    <td width="72"><img id="m2" src="http://file.willbes.net/new_image/0.png" border="0" /></td>
-                    <td width="15" class="time_txt">:</td>
-                    <td width="72"><img id="s1" src="http://file.willbes.net/new_image/0.png" border="0" /></td>
-                    <td width="72"><img id="s2" src="http://file.willbes.net/new_image/0.png" border="0" /></td>
-                    <td align="center" class="time_txt">남았습니다.</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-        <!--time//-->
-
-        <div class="wb_cts01" >
+        <div class="evtCtnsBox wb_cts01" >
             <img src="http://file3.willbes.net/new_gosi/2018/09/EV180914_02.png"  alt="윌비스의 7급 커리큘럼"  />
         </div>
         <!--wb_cts01//-->
       
       
-        <div class="wb_cts02" id="event">
+        <div class="evtCtnsBox wb_cts02" id="event">
             <img src="http://file3.willbes.net/new_gosi/2019/02/EV190211_03.png"  alt="윌비스 2019 윌비스 7급 PASS" usemap="#Map_190211_lecgo" border="0"/>
                 <map name="Map_190211_lecgo">
                 <area shape="rect" coords="534,596,696,658" href="javascript:go_PassLecture(5);" alt="6개월수강신청" onfocus="this.blur();">
@@ -115,7 +118,7 @@
         </div>   
         <!--wb_cts02//-->   
 
-        <div class="wb_cts03" id="tab1">
+        <div class="evtCtnsBox wb_cts03" id="tab1">
             <img src="http://file3.willbes.net/new_gosi/2018/09/EV180914_04.png"  alt="윌비스 2019 7급 PASS 이용안내" />
         </div> 
         <!--wb_cts03//--> 
@@ -124,69 +127,70 @@
     <!-- End Container -->
 
     <script>       
-        <!--타이머-->
-		var DateDiff = { //타이머를 설정합니다.
-			inDays: function(d1, d2) {
-				var t2 = d2.getTime();
-				var t1 = d1.getTime();
-
-				return parseInt((t2-t1)/(24*3600*1000));
-			},
-
-			inWeeks: function(d1, d2) {
-				var t2 = d2.getTime();
-				var t1 = d1.getTime();
-
-				return parseInt((t2-t1)/(24*3600*1000*7));
-			},
-
-			inMonths: function(d1, d2) {
-				var d1Y = d1.getFullYear();
-				var d2Y = d2.getFullYear();
-				var d1M = d1.getMonth();
-				var d2M = d2.getMonth();
-
-				return (d2M+12*d2Y)-(d1M+12*d1Y);
-			},
-
-			inYears: function(d1, d2) {
-				return d2.getFullYear()-d1.getFullYear();
-			}
-		}
-			
-		function countDown() {
-            //event_day = new Date(2016,4,6,23,59,59);
-            // 한달 전 날짜로 셋팅 
-            event_day = new Date(2019,1,19,23,59,59);
-            now = new Date();
-
-            var Monthleft = event_day.getMonth() - now.getMonth();
-            var Dateleft = DateDiff.inDays(now, event_day);
-            var Hourleft = event_day.getHours() - now.getHours();
-            var Minuteleft = event_day.getMinutes() - now.getMinutes();
-            var Secondleft = event_day.getSeconds() - now.getSeconds();
-
-            //alert(Monthleft+"-"+Dateleft+"-"+Hourleft+"-"+Minuteleft+"-"+Secondleft)
-
-            if((event_day.getTime() - now.getTime()) > 0) {
-                $("#d1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Dateleft/10) + ".png");
-                $("#d2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Dateleft%10) + ".png");
-
-                $("#h1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Hourleft/10) + ".png");
-                $("#h2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Hourleft%10) + ".png");
-
-                $("#m1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Minuteleft/10) + ".png");
-                $("#m2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Minuteleft%10) + ".png");
-
-                $("#s1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Secondleft/10) + ".png");
-                $("#s2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Secondleft%10) + ".png");
+        /*타이머*/
+        var DdayDiff = { //타이머를 설정합니다.
+                inDays: function(dd1, dd2) {
+                    var tt2 = dd2.getTime();
+                    var tt1 = dd1.getTime();
+        
+                    return Math.floor((tt2-tt1) / (1000 * 60 * 60 * 24));
+                },
+        
+                inWeeks: function(dd1, dd2) {
+                    var tt2 = dd2.getTime();
+                    var tt1 = dd1.getTime();
+        
+                    return parseInt((tt2-tt1)/(24*3600*1000*7));
+                },
+        
+                inMonths: function(dd1, dd2) {
+                    var dd1Y = dd1.getFullYear();
+                    var dd2Y = dd2.getFullYear();
+                    var dd1M = dd1.getMonth();
+                    var dd2M = dd2.getMonth();
+        
+                    return (dd2M+12*dd2Y)-(dd1M+12*dd1Y);
+                },
+        
+                inYears: function(dd1, dd2) {
+                    return dd2.getFullYear()-dd1.getFullYear();
+                }
             }
-            else{
+        
+            function daycountDown() {
+                // 한달 전 날짜로 셋팅 
+                event_day = new Date(2019,1,28,23,59,59);
+                now = new Date();
+                var timeGap = new Date(0, 0, 0, 0, 0, 0, (event_day - now)); 
+                
+                var Monthleft = event_day.getMonth() - now.getMonth();
+                var Dateleft = DdayDiff.inDays(now, event_day);
+                var Hourleft = timeGap.getHours();
+                var Minuteleft = timeGap.getMinutes(); 
+                var Secondleft = timeGap.getSeconds();
+        
+                //alert(Monthleft+"-"+Dateleft+"-"+Hourleft+"-"+Minuteleft+"-"+Secondleft)
+        
+                if((event_day.getTime() - now.getTime()) > 0) {
+                    $("#dd1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Dateleft/10) + ".png");
+                    $("#dd2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Dateleft%10) + ".png");
+        
+                    $("#hh1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Hourleft/10) + ".png");
+                    $("#hh2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Hourleft%10) + ".png");
+        
+                    $("#mm1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Minuteleft/10) + ".png");
+                    $("#mm2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Minuteleft%10) + ".png");
+        
+                    $("#ss1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Secondleft/10) + ".png");
+                    $("#ss2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Secondleft%10) + ".png");
+                    setTimeout(daycountDown, 1000);
+                }
+                else{
+                    $("#newTopDday").hide();
+                }
+        
             }
-
-            setTimeout(countDown, 1000);
-        }
-        countDown();
+            daycountDown();
 
         $(function(e){
             var targetOffset= $("#evtContainer").offset().top;

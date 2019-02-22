@@ -1,10 +1,9 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
+    @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
     <style type="text/css">
-        body{width:100%; min-width:1240px; margin:auto;}
-        .Depth {display:none}
         .subContainer {
             min-height: auto !important;
             margin-bottom:0 !important;
@@ -16,8 +15,10 @@
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
-        }   
+        }	
         .evtCtnsBox {width:100%; text-align:center; min-width:1210px;}
+
+        /************************************************************/
 
         .wb_top {width:100%; min-width:1210px; text-align:center; background:#222 url(http://file3.willbes.net/new_gosi/2018/09/EV180921_1_bg.png) no-repeat center top; position:relative; }
 
@@ -46,11 +47,9 @@
             from{margin-top:0}
             60%{margin-top:-30px}
             to{margin-top:0}
-        }
-  
-    </style>
+        }  
+    </style>   
     
-    @include('html.event_incOnTnb')
 
     <div class="p_re evtContent NSK" id="evtContainer">        
         <div class="evtCtnsBox wb_top" >

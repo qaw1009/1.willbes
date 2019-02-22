@@ -1,10 +1,9 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
+    @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
     <style type="text/css">
-        body{width:100%; min-width:1240px; margin:auto;}
-        .Depth {display:none}
         .subContainer {
             min-height: auto !important;
             margin-bottom:0 !important;
@@ -17,31 +16,35 @@
             padding:0 !important;
             background:#fff;
         }	
+        .evtCtnsBox {width:100%; text-align:center; min-width:1210px;}
+
+        /************************************************************/
 
         /*타이머*/
-        .time{ width:100%; text-align:center; min-width:1210px; background:#e8e7e7;  padding:6px 0 0 20px;} 
-        .time_date {max-width:1210px; text-align:center;  margin: 0 auto;}
-        .time_date .t_img { width:80%; }		
-        .time_txt {font-family: 'NanumGothic', '나눔고딕','NanumGothicWeb', '맑은 고딕', 'Malgun Gothic', Dotum; font-size:23px; color:#000; letter-spacing: -1px; font-weight:bold;}
-        .time p {text-align:center; padding-top:25px;}	
+        .time{background:#e1e1e1;}
+        .time_date {max-width:1120px; text-align:center;  margin: 0 auto;}
+        .time_date .t_img {width:80%;}		
+        .time_txt {font-family: 'NanumGothic', '나눔고딕','NanumGothicWeb', '맑은 고딕', 'Malgun Gothic', Dotum; font-size:22px; color:#171717; letter-spacing: -1px; font-weight:bold;}
+        .time_txt span {color:#b61216;}	
+        .time p {text-align:center; padding-top:20px}  
         
         
-        .wb_top {width:100%; min-width:1210px; text-align:center; background:#a12932 url(http://file3.willbes.net/new_gosi/2018/12/EV181220_c1_bg.jpg) no-repeat center top;}
-        .wb_cts01 {width:100%; text-align:center;  min-width:1210px; background:#fff;} 
+        .wb_top {background:#a12932 url(http://file3.willbes.net/new_gosi/2018/12/EV181220_c1_bg.jpg) no-repeat center top;}
+        .wb_cts01 {background:#fff;} 
 
-        .wb_cts02 {width:100%; text-align:center; background:#fff url(http://file3.willbes.net/new_gosi/2018/12/EV181220_c7_bg.jpg) no-repeat center top;}	
+        .wb_cts02 {background:#fff url(http://file3.willbes.net/new_gosi/2018/12/EV181220_c7_bg.jpg) no-repeat center top;}	
         .wb_cts02 .mv_bg {position:relative; width:1210px; height:553px; margin:0 auto; background:#fff url(http://file3.willbes.net/new_gosi/2018/12/EV181220_c8_bg.jpg) no-repeat center top;}
         .wb_cts02 .mv_bg ul {position:absolute; width:954px; top:19px; left:50%; margin-left:-477px}	
         .wb_cts02 .mv_bg li {display:inline; float:left;}
         .wb_cts02 .mv_bg ul:after {content:""; display:block; clear:both}  
 
-        .wb_cts03 {width:100%; text-align:center;  min-width:1210px; background:#b5172c; border:#F00 1px solid;}	
+        .wb_cts03 {background:#b5172c; border:#F00 1px solid;}	
         .wb_cts03 .check {width:980px; margin:0 auto; background:#b5172c; padding:15px 0px 120px 20px; letter-spacing:3; font-weight:bold; color:#f8eff0; cursor:pointer}
         .wb_cts03 .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px}
         .wb_cts03 .check a {display:inline-block; padding:12px 20px 10px 20px; color:#b5172c; background:#fff; margin-left:50px; border-radius:20px}
         
-        .wb_cts04 {width:100%; text-align:center;  min-width:1210px; background:#e5dac9;}        
-        .wb_cts05 {width:100%; text-align:center;  min-width:1210px; background:#fff;}
+        .wb_cts04 {background:#e5dac9;}        
+        .wb_cts05 {background:#fff;}
         
         .skybanner {
             position:fixed;
@@ -63,9 +66,8 @@
             to{margin-top:0}
         } 
    
-    </style>
-    
-    @include('html.event_incOnTnb')
+    </style>    
+  
 
     <div class="p_re evtContent" id="evtContainer">
         <div class="skybanner">
@@ -73,28 +75,28 @@
 		</div>
         
         <!-- 타이머 -->    
-        <div class="time" >
-            <div class="time_date">			
-                <table width="1100px;" height="110px" border="0" cellpadding=0 cellspacing=0>
+        <div class="evtCtnsBox time">
+            <div class="time_date" id="newTopDday">			
+                <table width="1100px;" height="90px" border="0" cellpadding=0 cellspacing=0>
                     <tr>
-                        <td style="text-align:center;"><img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_c0.jpg" alt=""  /></td>                        
-                        <td width="150" align="center" class="time_txt">마감까지 <br />남은 시간은</td>
-                        <td width="62" height="101" align="center"   ><img id="d1" src="http://file.willbes.net/new_image/0.png" border="0" class="t_img" /></td>
-                        <td width="62" height="101"  align="center"  ><img id="d2" src="http://file.willbes.net/new_image/0.png" border="0" class="t_img" /></td>
+                        <td style="text-align:center;"><img src="http://file3.willbes.net/new_gosi/2019/01/EV190115_c0_1.jpg" alt=""  /></td>                        
+                        <td width="150" align="center" class="time_txt">마감까지 <br /><span>남은 시간은</span></td>
+                        <td width="62" height="101" align="center"><img id="dd1" src="http://file.willbes.net/new_image/0.png" class="t_img" /></td>
+                        <td width="62" height="101" align="center"><img id="dd2" src="http://file.willbes.net/new_image/0.png" class="t_img" /></td>
                         <td width="60" height="101" align="center" class="time_txt">day</td>
-                        <td width="62" height="101" align="center"  ><img id="h1" src="http://file.willbes.net/new_image/0.png" border="0" class="t_img"/></td>
-                        <td width="62" height="101" align="center"  ><img id="h2" src="http://file.willbes.net/new_image/0.png" border="0" class="t_img"/></td>
+                        <td width="62" height="101" align="center"><img id="hh1" src="http://file.willbes.net/new_image/0.png" class="t_img"/></td>
+                        <td width="62" height="101" align="center"><img id="hh2" src="http://file.willbes.net/new_image/0.png" class="t_img"/></td>
                         <td width="20" height="101" align="center" class="time_txt">:</td>
-                        <td width="62" height="101" align="center" ><img id="m1" src="http://file.willbes.net/new_image/0.png" border="0" class="t_img"/></td>
-                        <td width="62" height="101" align="center" ><img id="m2" src="http://file.willbes.net/new_image/0.png" border="0" class="t_img"/></td>
-                        <td width="20" height="101" align="center" >:</td>
-                        <td width="62" height="101" align="center"  ><img id="s1" src="http://file.willbes.net/new_image/0.png" border="0" class="t_img"/></td>
-                        <td width="62" height="101" align="center"  ><img id="s2" src="http://file.willbes.net/new_image/0.png" border="0" class="t_img"/></td>
+                        <td width="62" height="101" align="center"><img id="mm1" src="http://file.willbes.net/new_image/0.png" class="t_img"/></td>
+                        <td width="62" height="101" align="center"><img id="mm2" src="http://file.willbes.net/new_image/0.png" class="t_img"/></td>
+                        <td width="20" height="101" align="center">:</td>
+                        <td width="62" height="101" align="center"><img id="ss1" src="http://file.willbes.net/new_image/0.png" class="t_img"/></td>
+                        <td width="62" height="101" align="center"><img id="ss2" src="http://file.willbes.net/new_image/0.png" class="t_img"/></td>
                     </tr>
                 </table>
             </div>
         </div>
-        <!-- 타이머 -->
+        <!-- 타이머 //-->
 
         <div class="wb_top" >
       		<img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_c1.png" alt="윌비스9급PASS X 세무PASS와 만나다!"  /><br>
@@ -152,69 +154,70 @@
     </div>
     <!-- End Container -->
     <script>       
-        <!--타이머-->
-		var DateDiff = { //타이머를 설정합니다.
-			inDays: function(d1, d2) {
-				var t2 = d2.getTime();
-				var t1 = d1.getTime();
-
-				return parseInt((t2-t1)/(24*3600*1000));
-			},
-
-			inWeeks: function(d1, d2) {
-				var t2 = d2.getTime();
-				var t1 = d1.getTime();
-
-				return parseInt((t2-t1)/(24*3600*1000*7));
-			},
-
-			inMonths: function(d1, d2) {
-				var d1Y = d1.getFullYear();
-				var d2Y = d2.getFullYear();
-				var d1M = d1.getMonth();
-				var d2M = d2.getMonth();
-
-				return (d2M+12*d2Y)-(d1M+12*d1Y);
-			},
-
-			inYears: function(d1, d2) {
-				return d2.getFullYear()-d1.getFullYear();
-			}
-		}
-			
-		function countDown() {
-            //event_day = new Date(2016,4,6,23,59,59);
-            // 한달 전 날짜로 셋팅 
-            event_day = new Date(2019,1,19,23,59,59);
-            now = new Date();
-
-            var Monthleft = event_day.getMonth() - now.getMonth();
-            var Dateleft = DateDiff.inDays(now, event_day);
-            var Hourleft = event_day.getHours() - now.getHours();
-            var Minuteleft = event_day.getMinutes() - now.getMinutes();
-            var Secondleft = event_day.getSeconds() - now.getSeconds();
-
-            //alert(Monthleft+"-"+Dateleft+"-"+Hourleft+"-"+Minuteleft+"-"+Secondleft)
-
-            if((event_day.getTime() - now.getTime()) > 0) {
-                $("#d1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Dateleft/10) + ".png");
-                $("#d2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Dateleft%10) + ".png");
-
-                $("#h1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Hourleft/10) + ".png");
-                $("#h2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Hourleft%10) + ".png");
-
-                $("#m1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Minuteleft/10) + ".png");
-                $("#m2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Minuteleft%10) + ".png");
-
-                $("#s1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Secondleft/10) + ".png");
-                $("#s2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Secondleft%10) + ".png");
+        /*타이머*/
+        var DdayDiff = { //타이머를 설정합니다.
+                inDays: function(dd1, dd2) {
+                    var tt2 = dd2.getTime();
+                    var tt1 = dd1.getTime();
+        
+                    return Math.floor((tt2-tt1) / (1000 * 60 * 60 * 24));
+                },
+        
+                inWeeks: function(dd1, dd2) {
+                    var tt2 = dd2.getTime();
+                    var tt1 = dd1.getTime();
+        
+                    return parseInt((tt2-tt1)/(24*3600*1000*7));
+                },
+        
+                inMonths: function(dd1, dd2) {
+                    var dd1Y = dd1.getFullYear();
+                    var dd2Y = dd2.getFullYear();
+                    var dd1M = dd1.getMonth();
+                    var dd2M = dd2.getMonth();
+        
+                    return (dd2M+12*dd2Y)-(dd1M+12*dd1Y);
+                },
+        
+                inYears: function(dd1, dd2) {
+                    return dd2.getFullYear()-dd1.getFullYear();
+                }
             }
-            else{
+        
+            function daycountDown() {
+                // 한달 전 날짜로 셋팅 
+                event_day = new Date(2019,1,28,23,59,59);
+                now = new Date();
+                var timeGap = new Date(0, 0, 0, 0, 0, 0, (event_day - now)); 
+                
+                var Monthleft = event_day.getMonth() - now.getMonth();
+                var Dateleft = DdayDiff.inDays(now, event_day);
+                var Hourleft = timeGap.getHours();
+                var Minuteleft = timeGap.getMinutes(); 
+                var Secondleft = timeGap.getSeconds();
+        
+                //alert(Monthleft+"-"+Dateleft+"-"+Hourleft+"-"+Minuteleft+"-"+Secondleft)
+        
+                if((event_day.getTime() - now.getTime()) > 0) {
+                    $("#dd1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Dateleft/10) + ".png");
+                    $("#dd2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Dateleft%10) + ".png");
+        
+                    $("#hh1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Hourleft/10) + ".png");
+                    $("#hh2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Hourleft%10) + ".png");
+        
+                    $("#mm1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Minuteleft/10) + ".png");
+                    $("#mm2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Minuteleft%10) + ".png");
+        
+                    $("#ss1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Secondleft/10) + ".png");
+                    $("#ss2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Secondleft%10) + ".png");
+                    setTimeout(daycountDown, 1000);
+                }
+                else{
+                    $("#newTopDday").hide();
+                }
+        
             }
-
-            setTimeout(countDown, 1000);
-        }
-        countDown();
+            daycountDown();
 
         $(function(e){
             var targetOffset= $("#evtContainer").offset().top;

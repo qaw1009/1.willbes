@@ -1,10 +1,9 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
+    @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
     <style type="text/css">
-        body{width:100%; min-width:1240px; margin:auto;}
-        .Depth {display:none}
         .subContainer {
             min-height: auto !important;
             margin-bottom:0 !important;
@@ -17,7 +16,9 @@
             padding:0 !important;
             background:#fff;
         }	
-        
+        .evtCtnsBox {width:100%; text-align:center; min-width:1210px;}
+
+        /************************************************************/
         
         
         .LAeventA01 {
@@ -117,8 +118,6 @@
         .b-close {position:absolute; right:15px; top:5px; display:inline-block; cursor:pointer}
     </style>
 
-
-    @include('html.event_incOnTnb')
 
     <div class="p_re evtContent" id="evtContainer">       
         @include('html.event_onLeaveArmyPassRlnb')        

@@ -1,10 +1,9 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
+    @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
     <style type="text/css">
-        body{width:100%; min-width:1240px; margin:auto;}
-        .Depth {display:none}
         .subContainer {
             min-height: auto !important;
             margin-bottom:0 !important;
@@ -17,13 +16,16 @@
             padding:0 !important;
             background:#fff;
         }	
+        .evtCtnsBox {width:100%; text-align:center; min-width:1210px;}
 
-        .wb_cts01 {width:100%; min-width:1210px; text-align:center; background:#26347d url(http://file3.willbes.net/new_gosi/2018/06/EV180627_01_bg.png) center top  no-repeat;  margin-top:20px;}
-        .wb_cts02 {width:100%; min-width:1210px; text-align:center; background:#f8f8f8}
-        .wb_cts03 {width:100%; min-width:1210px; text-align:center; background:#333b95 url(http://file3.willbes.net/new_gosi/2018/06/EV180627_03_bg.png) center top  repeat-y;}	
-        .wb_cts04 {width:100%; min-width:1210px; text-align:center; background:#f8f8f8}
-        .wb_cts05 {width:100%; min-width:1210px; text-align:center; background:#f8f8f8}
-        .wb_cts06 {width:100%; min-width:1210px; text-align:center; background:#242424}
+        /************************************************************/
+
+        .wb_cts01 {background:#26347d url(http://file3.willbes.net/new_gosi/2018/06/EV180627_01_bg.png) center top  no-repeat;  margin-top:20px;}
+        .wb_cts02 {background:#f8f8f8}
+        .wb_cts03 {background:#333b95 url(http://file3.willbes.net/new_gosi/2018/06/EV180627_03_bg.png) center top  repeat-y;}	
+        .wb_cts04 {background:#f8f8f8}
+        .wb_cts05 {background:#f8f8f8}
+        .wb_cts06 {background:#242424}
 
         /* 슬라이드배너 */
         .bannerImg1 {position:relative; width:1210px; max-width:1210px; margin:0 auto; z-index:1000;}
@@ -52,16 +54,15 @@
             60%{margin-top:-30px}
             to{margin-top:0}
         }  
-    </style>
-    
-    @include('html.event_incOnTnb')
+    </style>    
+
 
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner">
 			<div><a href="http://www.willbesgosi.net/event/movie/event.html?event_cd=On_170405_c" target="_blank"><img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_c_sky2.png" alt="환승이벤트" ></a></div>
 		</div> 
 
-        <div class="wb_cts01">
+        <div class="evtCtnsBox wb_cts01">
             <img src="http://file3.willbes.net/new_gosi/2018/06/EV180627_01.png" alt="" /> 
             <div class="bannerImg1">
                 <ul id="slidesImg1">
@@ -75,7 +76,7 @@
         </div>
         <!--wb_cts01//-->
 
-        <div class="wb_cts02"  id="evt01">
+        <div class="evtCtnsBox wb_cts02"  id="evt01">
             <img src="http://file3.willbes.net/new_gosi/2019/01/EV190110_2.png" alt="갓덕현 2019대비신규강좌" usemap="#Map_lec_han" border="0">
             <map name="Map_lec_han">
                 <area shape="rect" coords="791,786,1038,847" href="http://www.willbesgosi.net/lecture/movieLectureDetail.html?topMenu=001&topMenuType=O&searchSubjectCode=1002&searchLeccode=D201800894&leftMenuLType=M0003&lecKType=D" target="_blank">
@@ -88,7 +89,7 @@
         </div>
         <!--wb_cts02//-->
 
-        <div class="wb_cts03" id="live">
+        <div class="evtCtnsBox wb_cts03" id="live">
             <img src="http://file3.willbes.net/new_gosi/2018/06/EV180627_03.png" alt="" usemap="#Map_180412_lecplay"  border="0" />
             <map name="Map_180412_lecplay">
                 <area shape="rect" coords="896,690,1141,802" href="https://www.youtube.com/channel/UCPmdjTx3UUKCFt40KtRRdUQ" target="_blank" alt="한덕현유튜브">
@@ -97,12 +98,12 @@
         </div>
         <!--wb_cts03//-->
 
-        <div class="wb_cts04" >
+        <div class="evtCtnsBox wb_cts04" >
             <img src="http://file3.willbes.net/new_gosi/2019/01/EV190110_4.png" alt="" />
         </div>
         <!--wb_cts04//-->
 
-        <div class="wb_cts06" >
+        <div class="evtCtnsBox wb_cts06" >
             <img src="http://file3.willbes.net/new_gosi/2019/01/EV190110_5.png" alt="학습비법패키지수강신청" usemap="#Map180412_lec2" border="0" />
                 <map name="Map180412_lec2">
                 <area shape="rect" coords="920,663,1101,711" href="http://www.willbesgosi.net/lecture/movieLectureDetail.html?topMenu=001&topMenuType=O&searchSubjectCode=&searchLeccode=D201800176&leftMenuLType=M0002&lecKType=D" target="_blank" />
@@ -149,6 +150,6 @@
             $('html, body').animate({scrollTop: targetOffset}, 700);
             /*e.preventDefault(); */   
 	    });
-    </script>   
+    </script>  
 
 @stop

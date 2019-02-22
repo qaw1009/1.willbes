@@ -1,10 +1,9 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
+    @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
     <style type="text/css">
-        body{width:100%; min-width:1240px; margin:auto;}
-        .Depth {display:none}
         .subContainer {
             min-height: auto !important;
             margin-bottom:0 !important;
@@ -17,8 +16,11 @@
             padding:0 !important;
             background:#fff;
         }	
+        .evtCtnsBox {width:100%; text-align:center; min-width:1210px;}
 
-        .wb_pop {width:100%; min-width:1210px; text-align:center; background:#020000 url(http://file3.willbes.net/new_cop/2018/03/180327_EV01_bg2.jpg) no-repeat center top}	
+        /************************************************************/	
+
+        .wb_pop {background:#020000 url(http://file3.willbes.net/new_cop/2018/03/180327_EV01_bg2.jpg) no-repeat center top}	
         .wb_pop .wb_popWrap {width:1210px; margin:0 auto; position:relative}
         .wb_pop .wb_popWrap div {position:absolute; width:980px; top:230px; left:50%; margin-left:-490px; z-index:1; animation:rotation 0.5s linear;-webkit-animation:rotation 0.5s linear}
         
@@ -48,13 +50,13 @@
             }
         }
         
-        .wb_pop2 {width:100%; min-width:1210px; text-align:center; background:#252525 url(http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190207_01_bg.jpg) no-repeat center top}
+        .wb_pop2 {background:#252525 url(http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190207_01_bg.jpg) no-repeat center top}
         .wb_pop2 .wb_popWrap2 {width:1210px; margin:0 auto; position:relative}
         .wb_pop2 .wb_popWrap2 div {position:absolute; width:980px; top:230px; left:50%; margin-left:-490px; z-index:1}
         
-        .wb_pop3 {width:100%; min-width:1210px; text-align:center; background:#1e1e1e url(http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20181214_02_bg.jpg) no-repeat center top}
+        .wb_pop3 {background:#1e1e1e url(http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20181214_02_bg.jpg) no-repeat center top}
         
-        .wb_top {width:100%; text-align:center; background:#282828; min-width:1210px; padding-bottom:120px}
+        .wb_top {background:#282828; padding-bottom:120px}
         .wb_top .passLecBuy {position:relative; width:1210px; margin:0 auto}
         .wb_top .passLecBuy ul {position:absolute; bottom:340px; left:128px; z-index:10}
         .wb_top .passLecBuy li {display:inline; float:left; text-align:left; line-height:30px; font-size:16px; color:#000; padding-left:30px}
@@ -85,18 +87,15 @@
         .wb_top .passLecbtn li a {background:#000; color:#fff; display:block}
         .wb_top .passLecbtn li a:hover {background:#06C}
         .wb_top .passLecbtn span {margin-left:50px}
-        .wb_top .passLecbtn ul:after {content:""; display:block; clear:both}	
+        .wb_top .passLecbtn ul:after {content:""; display:block; clear:both}
 
-
-        .wb_new {width:100%; text-align:center; background:#baadff; min-width:1210px; height:200px}
-        .wb_cts01 {width:100%; text-align:center; background:#fff;min-width:1210px}	
-        .wb_cts02 {width:100%; text-align:center; background:#252424 url(http://file3.willbes.net/new_cop/2018/02/EV180201_p3_bg.jpg) no-repeat center top; min-width:1210px}		
-        .wb_cts03 {width:100%; text-align:center; background:#eee;min-width:1210px}		
-        .wb_cts04 {width:100%; text-align:center; background:#f3f3f3; min-width:1210px}		
-        .wb_cts05 {width:100%; text-align:center; background:#eee; min-width:1210px}
-        .wb_cts06 {width:100%; text-align:center; background:#c4c4c4; min-width:1210px}
-
-        #skybanner {position:fixed;top:200px;right:10px;z-index:999}
+        .wb_new {background:#baadff; height:200px}
+        .wb_cts01 {background:#fff;}	
+        .wb_cts02 {background:#252424 url(http://file3.willbes.net/new_cop/2018/02/EV180201_p3_bg.jpg) no-repeat center top;}		
+        .wb_cts03 {background:#eee;}		
+        .wb_cts04 {background:#f3f3f3;}		
+        .wb_cts05 {background:#eee;}
+        .wb_cts06 {background:#c4c4c4;}   
 
         /*업다운 애니메이션*/
         .m_img1 {animation:upDown 1s infinite;-webkit-animation:upDown 1s infinite}
@@ -151,18 +150,18 @@
         .passMsg .bx-pager{display:none}
 
         /*타이머*/
-        #newTopDday * {font-family:'Noto Sans KR', Arial, Sans-serif; font-size:24px}
-        #newTopDday { clear:both; background:#f5f5f5; width:100%; padding:10px 0 25px}
-        #newTopDday ul {width:1210px; margin:0 auto}
-        #newTopDday ul li {display:inline; float:left; margin-right:5px; text-align:center; height:60px; padding-top:10px !important; font-weight:600; color:#000}
-        #newTopDday ul li strong {line-height:70px}
-        #newTopDday ul li img {width:50px}
-        #newTopDday ul li:first-child {line-height:none; text-align:right; padding-right:20px; width:28%}
-        #newTopDday ul li:first-child span {font-size:12px; color:#999;margin-top:4px;}
-        #newTopDday ul li:last-child {line-height:none;  text-align:left; padding-left:20px; width:24%}
-        #newTopDday ul li:last-child a {display:inline-block; font-size:14px; padding:4px 20px; background:#999; color:#FFF; text-align:center; border-radius:20px}
-        #newTopDday ul li:last-child a:hover {background:#666}
-        #newTopDday ul:after {content:""; display:block; clear:both}
+        .newTopDday * {font-family:'Noto Sans KR', Arial, Sans-serif; font-size:24px}
+        .newTopDday { clear:both; background:#f5f5f5; width:100%; padding:10px 0 25px}
+        .newTopDday ul {width:1210px; margin:0 auto}
+        .newTopDday ul li {display:inline; float:left; margin-right:5px; text-align:center; height:60px; padding-top:10px !important; font-weight:600; color:#000}
+        .newTopDday ul li strong {line-height:70px}
+        .newTopDday ul li img {width:50px}
+        .newTopDday ul li:first-child {line-height:none; text-align:right; padding-right:20px; width:28%}
+        .newTopDday ul li:first-child span {font-size:12px; color:#999;margin-top:4px;}
+        .newTopDday ul li:last-child {line-height:none;  text-align:left; padding-left:20px; width:24%}
+        .newTopDday ul li:last-child a {display:inline-block; font-size:14px; padding:4px 20px; background:#999; color:#FFF; text-align:center; border-radius:20px}
+        .newTopDday ul li:last-child a:hover {background:#666}
+        .newTopDday ul:after {content:""; display:block; clear:both}
         
         /*레이어팝업*/
         .Pstyle {
@@ -193,8 +192,7 @@
         }
         .skybanner_sectionFixed {position:fixed; top:20px}
     </style>
-    
-    @include('html.event_incOnTnb')
+
 
     <div class="p_re evtContent NSK" id="evtContainer">
         <!--div class="skybanner">
@@ -230,7 +228,7 @@
         </div>
         <!--타이머//-->
         
-		<div class="wb_pop2" id="main">
+		<div class="evtCtnsBox wb_pop2" id="main">
             <img src="http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190207_01.png"  alt="평생0원 PASS 마감" usemap="#rebound"/>
             <map name="rebound" id="rebound">
             <area shape="rect" coords="300,837,475,884" href="event_onCopReboundPop" target="_blank" alt="수강생인증"/>
@@ -238,11 +236,11 @@
             </map>
         </div>
 
-        <div class="wb_pop3">
+        <div class="evtCtnsBox wb_pop3">
             <img src="http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20181214_02.png"  alt="열공지원" />
         </div>
         
-        <div class="wb_top" id="pass">
+        <div class="evtCtnsBox wb_top" id="pass">
             <div class="passLecBuy">
                 <ul>
                     <li>
@@ -321,24 +319,24 @@
         </div>  
         <!-- wb_top//-->
 
-        <div class="wb_cts03">
+        <div class="evtCtnsBox wb_cts03">
             <img src="http://file3.willbes.net/new_cop/2018/03/180327_EV05.jpg"  alt="신광은경찰팀 교수진" />
         </div>
 
         
-        <div class="wb_cts02">
+        <div class="evtCtnsBox wb_cts02">
             <img src="http://file3.willbes.net/new_cop/2018/03/180327_EV04.jpg"  alt="영향력있는 언론이 먼저 찾는 윌비스 신광은경찰팀" />
         </div>
             
-        <div class="wb_cts01">
+        <div class="evtCtnsBox wb_cts01">
             <img src="http://file3.willbes.net/new_cop/2018/03/180327_EV03.jpg"  alt="맞춤커리큘럼" />
         </div>
             
-        <div class="wb_cts04">
+        <div class="evtCtnsBox wb_cts04">
             <img src="http://file3.willbes.net/new_cop/2018/03/180327_EV06.jpg"  alt="밀착관리 단계별 합격 프로그램" />
         </div>
 
-        <div class="wb_cts05">
+        <div class="evtCtnsBox wb_cts05">
             <img src="http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190104_08_re1.jpg"  alt="왕초보영어탑재" /><br />
             <img src="http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190104_08_re2.jpg"  alt="경찰체력" usemap="#Map190117B" border="0" />
                 <map name="Map190117B" id="Map190117B">
@@ -675,7 +673,7 @@
         
             function daycountDown() {
                 // 한달 전 날짜로 셋팅 
-                event_day = new Date(2019,1,20,23,59,59);
+                event_day = new Date(2019,2,21,23,59,59);
                 now = new Date();
                 var timeGap = new Date(0, 0, 0, 0, 0, 0, (event_day - now)); 
                 

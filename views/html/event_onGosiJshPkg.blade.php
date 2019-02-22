@@ -1,10 +1,9 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
+    @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
     <style type="text/css">
-        body{width:100%; min-width:1240px; margin:auto;}
-        .Depth {display:none}
         .subContainer {
             min-height: auto !important;
             margin-bottom:0 !important;
@@ -17,16 +16,12 @@
             padding:0 !important;
             background:#fff;
         }	
+        .evtCtnsBox {width:100%; text-align:center; min-width:1210px;}
 
-        .WB_con01 {width:100%; min-width:1210px; text-align:center; background:url(http://file3.willbes.net/new_gosi/2018/10/EV181024Y_01_bg.jpg) no-repeat center top; margin-top:20px}
+        /************************************************************/
+
+        .WB_con01 {background:url(http://file3.willbes.net/new_gosi/2018/10/EV181024Y_01_bg.jpg) no-repeat center top; margin-top:20px}
 		.WB_con01 div {position:relative; width:1210px; margin:0 auto}
-		
-		
-		/*
-		.slideOutRight {
-		  -webkit-animation-name: slideOutRight;
-		  animation-name: slideOutRight;
-		}*/
 		
 		.WB_con01 div span {position:absolute}
 		.WB_con01 div span.t1 {top:220px; left:71px; width:187px; height:202px; z-index:10; 
@@ -71,11 +66,11 @@
 		  }
         }
         
-		.WB_con02 {width:100%; min-width:1210px; text-align:center; background:#eee; padding-bottom:80px}
-		.WB_con03 {width:100%; min-width:1210px; text-align:center; background:url(http://file3.willbes.net/new_gosi/2018/10/EV181024Y_03_bg.jpg) no-repeat center top;}
-		.WB_con04 {width:100%; min-width:1210px; text-align:center; background:#eee}
-		.WB_con05 {width:100%; min-width:1210px; text-align:center; background:#ee4f5e}	
-		.WB_info {width:100%; min-width:1210px; text-align:center; background:#292b33}	
+		.WB_con02 {background:#eee; padding-bottom:80px}
+		.WB_con03 {background:url(http://file3.willbes.net/new_gosi/2018/10/EV181024Y_03_bg.jpg) no-repeat center top;}
+		.WB_con04 {background:#eee}
+		.WB_con05 {background:#ee4f5e}	
+		.WB_info {background:#292b33}	
 	
 		/* 슬라이드배너 */
 		.bannerImg2 {position:relative; width:926px; margin:0 auto}		
@@ -83,14 +78,13 @@
         .bannerImg2 p {position:absolute; top:50%; width:51px; z-index:100}
 		.bannerImg2 p a {cursor:pointer}
 		.bannerImg2 p.leftBtn2 {left:-60px; top:45%; width:44px; height:44px}
-		.bannerImg2 p.rightBtn2 {right:-60px; top:45%; width:44px; height:44px}       
+		.bannerImg2 p.rightBtn2 {right:-60px; top:45%; width:44px; height:44px}      
 		 
-    </style>
-    
-    @include('html.event_incOnTnb')
+    </style>   
+
 
     <div class="p_re evtContent NSK" id="evtContainer">        
-        <div class="WB_con01">
+        <div class="evtCtnsBox WB_con01">
             <div>
                 <img src="http://file3.willbes.net/new_gosi/2018/10/EV181024Y_01.jpg" alt="전수환 경영학 기본강의+문제풀이"  />
                 <span class="t1"><img src="http://file3.willbes.net/new_gosi/2018/10/EV181024Y_01_t1.png" alt="경"  /></span>
@@ -100,7 +94,7 @@
         </div>
         <!--//WB_con01-->
     
-        <div class="WB_con02">
+        <div class="evtCtnsBox WB_con02">
             <img src="http://file3.willbes.net/new_gosi/2018/10/EV181024Y_02.jpg" alt="수강평"  />
             <div class="bannerImg2">
                 <ul id="slidesImg2">
@@ -117,17 +111,17 @@
         </div>
         <!--WB_con02//-->
     
-        <div class="WB_con03" >
+        <div class="evtCtnsBox WB_con03" >
             <img src="http://file3.willbes.net/new_gosi/2018/10/EV181024Y_03.jpg" alt="경영학 마스터 전수환"/>
         </div>
         <!--WB_con03//-->
     
-        <div class="WB_con04" >
+        <div class="evtCtnsBox WB_con04" >
             <img src="http://file3.willbes.net/new_gosi/2018/10/EV181024Y_04.jpg" alt="경영학 교재소개"/>
         </div>
         <!--WB_con04//-->
         
-        <div class="WB_con05" >
+        <div class="evtCtnsBox WB_con05" >
             <img src="http://file3.willbes.net/new_gosi/2018/10/EV181024Y_05_1.jpg" alt="경영학 종합 패키지" usemap="#Map181024" border="0" />
             <map name="Map181024" id="Map181024">
                 <area shape="rect" coords="860,747,1093,832" href="/packagelecture/packagelectureDetail.html?currentPage=1&pageRow=9999&topMenu=007&topMenuName=&topMenuType=O&searchCategoryCode=007&leftMenuLType=M0001&lecKType=P&searchLeccode=P201800100" target="_blank" alt="2019 경영학 패키지">
@@ -137,7 +131,7 @@
         </div>
         <!--WB_con05//-->
         
-        <div class="WB_info">
+        <div class="evtCtnsBox WB_info">
             <img src="http://file3.willbes.net/new_gosi/2018/10/EV181024Y_06.jpg" alt=""/>
         </div>
         <!--WB_info//-->  

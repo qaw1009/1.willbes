@@ -1,10 +1,9 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
+    @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
     <style type="text/css">
-        body{width:100%; min-width:1210px; margin:auto;}
-        .Depth {display:none}
         .subContainer {
             min-height: auto !important;
             margin-bottom:0 !important;
@@ -21,7 +20,7 @@
 
         /************************************************************/
 
-        .wb_cts01 {width:100%; text-align:center; background:#330d0a url(http://file3.willbes.net/new_gosi/2019/01/EV190131_01_1_bg.png) no-repeat center top; margin-top:20px; min-width:1210px}	
+        .wb_cts01 {background:#330d0a url(http://file3.willbes.net/new_gosi/2019/01/EV190131_01_1_bg.png) no-repeat center top; margin-top:20px}	
         .wb_cts01 .wb_popWrap {width:1210px; margin:0 auto; position:relative}
 
         .wb_cts01 .giveaway {position:absolute; width:740px; left:50%; margin-left:-390px; animation:only 2s infinite; z-index:11}
@@ -121,8 +120,6 @@
 
     </style>
     
-    @include('html.event_incOnTnb')
-
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner">
             <img src="http://file3.willbes.net/new_gosi/2019/01/EV190131_sky.png" alt="" />    

@@ -1,10 +1,9 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
+    @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
     <style type="text/css">
-        body{width:100%; min-width:1240px; margin:auto;}
-        .Depth {display:none}
         .subContainer {
             min-height: auto !important;
             margin-bottom:0 !important;
@@ -16,12 +15,15 @@
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
-        }
+        }	
+        .evtCtnsBox {width:100%; text-align:center; min-width:1210px;}
 
-        .wb_top {width:100%; text-align:center; background:#686d76 url(http://file3.willbes.net/new_cop/2019/01/EV190123_p1_bg.jpg) no-repeat center; min-width:1210px;}
-        .wb_cts01 {width:100%; text-align:center; background:#1a1a1a url(http://file3.willbes.net/new_cop/2019/01/EV190123_p2_bg.jpg) repeat; min-width:1210px;}
-        .wb_cts02 {width:100%; text-align:center; background:#7d7d7d; padding:100px 0;min-width:1210px;}
-        .wb_cts03 {width:100%; text-align:center; background:#fff; padding-bottom:100px;min-width:1210px;}	
+        /************************************************************/
+
+        .wb_top {background:#686d76 url(http://file3.willbes.net/new_cop/2019/01/EV190123_p1_bg.jpg) no-repeat center;}
+        .wb_cts01 {background:#1a1a1a url(http://file3.willbes.net/new_cop/2019/01/EV190123_p2_bg.jpg) repeat;}
+        .wb_cts02 {background:#7d7d7d; padding:100px 0}
+        .wb_cts03 {background:#fff; padding-bottom:100px;}	
         .wb_cts03 ul{width:100%; margin:0 auto; max-width:980px}
         .wb_cts03 div {width:932px; margin:0 auto; background:#fff; border:24px solid #f4f4f4; padding:20px 0}
         .wb_cts03 table {width:95%; margin:0 auto}
@@ -30,7 +32,7 @@
         .wb_cts03 div tr:hover td {color:#000}
         .wb_cts03 div a:hover {background:#c83438; color:#fff}
 
-        .wb_cts04 {width:100%; text-align:center; background:#ececec; min-width:1210px;}
+        .wb_cts04 {background:#ececec;}
 
         /* 슬라이드배너 */
         .slide_con {position:relative; width:980px; margin:0 auto}	
@@ -73,16 +75,14 @@
         }
         .skybanner_sectionFixed {position:fixed; top:20px}
     </style>
-    
-    @include('html.event_incOnTnb')
 
-    <div class="p_re evtContent" id="evtContainer">
+    <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner">
 			<div><a href="event_onCopPromotionPassPop" target="_blank"><img src="http://file3.willbes.net/new_cop/2019/01/EV190123_p_sky1.png" alt="현직경찰 인증하기"></a></div>
 			<div><a href="#go"><img src="http://file3.willbes.net/new_cop/2019/01/EV190123_p_sky2_new.png" alt="프리패스 구매하기"></a></div>
 		</div>
 
-        <div class="wb_top" id="main">
+        <div class="evtCtnsBox wb_top" id="main">
 			<img src="http://file3.willbes.net/new_cop/2019/01/EV190123_p1.png"  alt="메인" />
 		</div>
         
@@ -90,7 +90,7 @@
 			<img src="http://file3.willbes.net/new_cop/2019/01/EV190123_p2.png"  alt="실수강생 4,000명" />
 		</div> 
         
-        <div class="wb_cts02">
+        <div class="evtCtnsBox wb_cts02">
             <div class="slide_con">
                 <ul id="slidesImg3">
                     <li><img src="http://file3.willbes.net/new_cop/2019/01/EV190123_p3_1.jpg" alt="1" /></li>
@@ -103,7 +103,7 @@
             </div>
 		</div>  
 
-        <div class="wb_cts03 NSK" id="go">
+        <div class="evtCtnsBox wb_cts03 NSK" id="go">
 			<img src="http://file3.willbes.net/new_cop/2019/01/EV190123_p4_1.png"  alt="계급별"/>
             <div>
                 <table cellspacing="0" cellpadding="0">
@@ -158,7 +158,7 @@
             </div>
         </div>
 
-        <div class="wb_cts04">
+        <div class="evtCtnsBox wb_cts04">
 			<img src="http://file3.willbes.net/new_cop/2019/01/EV190123_p5.png"  alt="인증방법"  />
 		</div>
 
@@ -280,5 +280,4 @@
             });
         });       
     </script>
-
 @stop

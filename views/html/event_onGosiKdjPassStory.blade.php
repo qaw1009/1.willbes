@@ -1,10 +1,9 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
+    @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
     <style type="text/css">
-        body{width:100%; min-width:1210px; margin:auto;}
-        .Depth {display:none}
         .subContainer {
             min-height: auto !important;
             margin-bottom:0 !important;
@@ -47,9 +46,8 @@
         }
         
 
-    </style>
-    
-    @include('html.event_incOnTnb')
+    </style>   
+
 
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="evtCtnsBox wb_top" id="main">
@@ -173,8 +171,12 @@
                 controls:false,
                 speed:800,
                 auto:true,
-                randomStart:true 
+                randomStart:true,
+                onSliderLoad: function(){
+                    $(".offSlider").css("visibility", "visible").animate({opacity:1}); 
+                } 
             };
+            
 
             var sliders = new Array();
             $($sliderClass).each(function(i, slider) {

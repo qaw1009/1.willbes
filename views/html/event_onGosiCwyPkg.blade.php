@@ -1,10 +1,9 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
+    @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
     <style type="text/css">
-        body{width:100%; min-width:1240px; margin:auto;}
-        .Depth {display:none}
         .subContainer {
             min-height: auto !important;
             margin-bottom:0 !important;
@@ -17,12 +16,15 @@
             padding:0 !important;
             background:#fff;
         }	
+        .evtCtnsBox {width:100%; text-align:center; min-width:1210px;}
 
-        .wb_top {width:100%; min-width:1210px; text-align:center; background:#fef053 url(http://file3.willbes.net/new_gosi/2018/10/EV181005_c1_bg.jpg) no-repeat center top; position:relative;  }
+        /************************************************************/
+
+        .wb_top {background:#fef053 url(http://file3.willbes.net/new_gosi/2018/10/EV181005_c1_bg.jpg) no-repeat center top; position:relative;  }
      
-        .wb_cts01{width:100%;  background:#ffffff; min-width:1210px; text-align:center;}
+        .wb_cts01{background:#fff;}
         /* 탭 */
-        .tabContaier{width:100%; min-width:1210px; text-align:center; padding-top:20px; padding-bottom:120px;}
+        .tabContaier{padding-top:20px; padding-bottom:120px;}
         .tabContaier ul {width:980px; text-align:center; margin:0 auto}		
         .tabContaier li {display:inline; float:left; margin-bottom:20px;}	
         .tabContaier a img.off {display:block}
@@ -31,9 +33,9 @@
         .tabContaier a.active img.on {display:block}   
         .tabContentsEvt iframe {width:876px; height:480px;}
         
-        .wb_cts02 {width:100%; text-align:center; min-width:1210px;  background:#ffd84f;}       
+        .wb_cts02 {background:#ffd84f;}       
         
-        .wb_cts03 { width:100%; text-align:center; min-width:1210px;  background:#ffd84f;}
+        .wb_cts03 {background:#ffd84f;}
 
         .PeMenu {width:1210px; margin:0 auto 0; padding-top:100px}
         .PeMenu li { display:inline; float:left}
@@ -76,14 +78,14 @@
             </div>
         </div>
         
-        <div class="wb_top" >
+        <div class="evtCtnsBox wb_top" >
       		<img src="http://file3.willbes.net/new_gosi/2018/10/EV181005_c1.png" alt=" 윌비스 차원이 다른 전기/통신 기술직의 대가 최우영교수 " usemap="#Map20181005_c1" border="0"  />
             <map name="Map20181005_c1" >
                 <area shape="rect" coords="259,626,388,743" href="#event" onfocus="this.blur();"/>
             </map>                 
 	    </div><!--WB_top//-->
 
-        <div class="wb_cts01">
+        <div class="evtCtnsBox wb_cts01">
 			<p id="evt01" class="PlatF"><img src="http://file3.willbes.net/new_gosi/2018/10/EV181005_c2.jpg" alt="기술직 수험생의 이유있는 선택 최우영교수"  >
 			<p id="evt02" class="PlatF"><img src="http://file3.willbes.net/new_gosi/2018/10/EV181005_c3.jpg" alt="난해한 부분의 핵심포인트를 짚어주는 고득점 합격 필수 강의 최우영교수" ></p>
 		    <div class="tabContaier"  >
@@ -124,7 +126,7 @@
         </div>
         <!--WB_top01//-->
 
-        <div class="wb_cts02" id="event01">
+        <div class="evtCtnsBox wb_cts02" id="event01">
         	<div class="PeMenu" >
             	<ul>
                 	<li>
@@ -149,7 +151,7 @@
         </div>
         <!--wb_cts02//-->       
         
-  		<div class="wb_cts03" id="event02">     
+  		<div class="evtCtnsBox wb_cts03" id="event02">     
         	<div class="PeMenu">
             	<ul>
                 	<li>

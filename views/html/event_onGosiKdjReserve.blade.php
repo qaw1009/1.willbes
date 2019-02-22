@@ -1,10 +1,9 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
+    @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
     <style type="text/css">
-        body{width:100%; min-width:1210px; margin:auto;}
-        .Depth {display:none}
         .subContainer {
             min-height: auto !important;
             margin-bottom:0 !important;
@@ -19,6 +18,8 @@
         }	
         .evtCtnsBox {width:100%; text-align:center; min-width:1210px;}
 
+        /************************************************************/
+        
         .WB_con01 {background:#1d1940 url("http://file3.willbes.net/new_gosi/2019/01/EV190108_1_bg.png") center top no-repeat}
         .WB_con02 {background:#fff;}	
         .WB_con03 {background:#fd8062;}	
@@ -27,8 +28,6 @@
         .WB_con06 {background:#fd8062; padding-bottom:150px;}
     </style>
     
-    @include('html.event_incOnTnb')
-
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="evtCtnsBox WB_con01">
             <img src="http://file3.willbes.net/new_gosi/2019/01/EV190108_1.png" alt="2020 김동진 법원팀 예비순환"/>

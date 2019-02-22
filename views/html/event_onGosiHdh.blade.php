@@ -20,16 +20,16 @@
 
         /************************************************************/
 
-        .wb_cts01 {background:#26347d url(http://file3.willbes.net/new_gosi/2018/06/EV180627_01_bg.png) center top  no-repeat;  margin-top:20px;}
+        .wb_cts01 {background:#26347d url(http://file3.willbes.net/new_gosi/2018/06/EV180627_01_bg.png) center top  no-repeat}
         .wb_cts02 {background:#f8f8f8}
-        .wb_cts03 {background:#333b95 url(http://file3.willbes.net/new_gosi/2018/06/EV180627_03_bg.png) center top  repeat-y;}	
+        .wb_cts03 {background:#333b95 url(http://file3.willbes.net/new_gosi/2018/06/EV180627_03_bg.png) center top  repeat-y}	
         .wb_cts04 {background:#f8f8f8}
         .wb_cts05 {background:#f8f8f8}
         .wb_cts06 {background:#242424}
 
         /* 슬라이드배너 */
-        .bannerImg1 {position:relative; width:1210px; max-width:1210px; margin:0 auto; z-index:1000;}
-        .bannerImg1 p {position:absolute; top:150px; width:65px; z-index:1000}
+        .bannerImg1 {position:relative; width:1210px; margin:0 auto;}
+        .bannerImg1 p {position:absolute; top:150px; width:65px; z-index:100}
         .bannerImg1 img {width:100%;}
         .bannerImg1 p a {cursor:pointer}
         .bannerImg1 p.left_arr {left:2%; width:65px; height:65px;}

@@ -22,11 +22,11 @@
         <div>
             <ul>
                 <li><a href="{{ site_url('/home/html/main') }}" target="_blank">통합메인</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/main_cop_online') }}" target="_blank">경찰 메인(온라인</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/main_cop_acad') }}" target="_blank">경찰 메인(학원</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/acad_sub_main') }}" target="_blank">경찰 학원안내</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/main_gosi_online') }}" target="_blank">공무원 메인(온라인</a></li>
-                <li><a href="{{ site_url('/home/html/main_gosi_acad') }}" target="_blank">공무원 메인(학원</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/main_cop_online') }}" target="_blank">경찰 온라인 메인</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/main_cop_acad') }}" target="_blank">경찰 학원 메인</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/acad_sub_main') }}" target="_blank">경찰 캠퍼스 안내</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/main_gosi_online') }}" target="_blank">공무원 온라인 메인</a></li>
+                <li><a href="{{ site_url('/home/html/main_gosi_acad') }}" target="_blank">공무원 학원 메인</a></li>
                 <li class="c_both"></li>
                 <li class="w50"><a href="{{ site_url('/home/html/memjoin') }}" target="_blank">로그인 page 이동</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/memsearch') }}" target="_blank">아이디찾기 page 이동</a></li>
@@ -107,6 +107,8 @@
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiTech') }}" target="_blank">윌비스 기술직 TOP 라인업</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiNoncom') }}" target="_blank">부사관 PASS</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiNoncomPop') }}" target="_blank">부사관 PASS 유튜브 팝업</a></li>
+                <li><p>공무원 학원 ▼</p></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offGosiArmyQuestion') }}" target="_blank">군무원 이론요약&단원별 문제풀이</a></li>
         </div>
     </li>
     <li>

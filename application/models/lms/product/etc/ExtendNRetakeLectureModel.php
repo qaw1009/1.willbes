@@ -84,6 +84,14 @@ class ExtendNRetakeLectureModel extends CommonLectureModel
                     if($this->_setPrice($data, $row['ProdCode']) !== true) {
                         throw new \Exception($this->_prod_type_name[$prod_type] . ' 상품 가격 등록에 실패했습니다.');
                     }
+
+                    // 상품가격 JSON 데이터 등록
+                    $query = $this->_conn->query('call sp_product_json_data_insert(?)', [$row['ProdCode']]);
+                    $result = $query->row(0)->ReturnMsg;
+
+                    if ($result != 'Success') {
+                        throw new \Exception('상품가격 JSON 데이터 등록에 실패했습니다.');
+                    }
                 }
             }
 

@@ -295,6 +295,14 @@ class BookModel extends WB_Model
                 throw new \Exception('판매가격 정보 등록에 실패했습니다.');
             }
 
+            // 판매가격 JSON 데이터 등록
+            $query = $this->_conn->query('call sp_product_json_data_insert(?)', [$row['ProdCode']]);
+            $result = $query->row(0)->ReturnMsg;
+
+            if ($result != 'Success') {
+                throw new \Exception('판매가격 JSON 데이터 등록에 실패했습니다.');
+            }
+
             // 카테고리 정보 등록
             $is_book_category = $this->_replaceBookCategory($row['ProdCode'], [element('cate_code', $input)]);
             if ($is_book_category !== true) {
@@ -476,6 +484,14 @@ class BookModel extends WB_Model
 
             if ($this->_conn->set($data)->insert($this->_table['product_sale']) === false) {
                 throw new \Exception('판매가격 정보 등록에 실패했습니다.');
+            }
+
+            // 판매가격 JSON 데이터 등록
+            $query = $this->_conn->query('call sp_product_json_data_insert(?)', [$prod_code]);
+            $result = $query->row(0)->ReturnMsg;
+
+            if ($result != 'Success') {
+                throw new \Exception('판매가격 JSON 데이터 등록에 실패했습니다.');
             }
         } catch (\Exception $e) {
             return $e->getMessage();

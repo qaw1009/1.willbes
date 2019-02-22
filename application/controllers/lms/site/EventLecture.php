@@ -776,7 +776,8 @@ class EventLecture extends \app\controllers\BaseController
                 'A.IsStatus' => 'Y',
                 'A.SiteCode' => $this->_reqP('search_site_code'),
                 'A.CampusCcd' => $this->_reqP('search_campus_ccd'),
-                'A.IsUse' => $this->_reqP('search_is_use')
+                'A.IsUse' => $this->_reqP('search_is_use'),
+                'A.RequestType' => $this->_reqP('search_request_type')
             ],
             'ORG1' => [
                 'LKB' => [

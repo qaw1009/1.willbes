@@ -144,7 +144,7 @@ class Event extends \app\controllers\FrontController
 
         //이벤트 기본정보 조회
         $data = $this->eventFModel->findEvent($arr_condition);
-        if (count($data) < 1) {
+        if (empty($data) === true) {
             show_alert('데이터 조회에 실패했습니다.', front_url($page_url), false);
         }
         $data['data_option_ccd'] = array_flip(explode(',', $data['OptionCcds']));   // 관리옵션 데이터 가공처리

@@ -463,6 +463,9 @@
                     </div>
                 </div>
 
+                {{--
+                TODO : 해당 프로모션 링크 값에 대한 처리 방안 결정 필요.
+                --}}
                 <div class="form-group">
                     <label class="control-label col-md-1-1">프로모션 링크</label>
                     <div class="form-inline col-md-10">

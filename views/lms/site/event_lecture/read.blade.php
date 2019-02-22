@@ -55,8 +55,12 @@
                 <div class="form-control-static col-md-4 ml-12-dot">{{ ($data['IsUse'] == 'Y') ? '사용' : '미사용' }}</div>
             </div>
             <div class="form-group">
-                <label class="control-label col-md-1-1">프로모션 링크</label>
-                <div class="form-control-static col-md-10">{{$data['Link']}}</div>
+                <label class="control-label col-md-1-1">프로모션 경로</label>
+                {{--<div class="form-control-static col-md-10">{{$data['Link']}}</div>--}}
+                <div class="form-control-static col-md-10">
+                    <p>관리자 확인용 : {{$data['SiteUrl'].'/promotion/index/code/'.$data['PromotionCode'].'?type=1'}}</p>
+                    <p>실제 경로 : {{$data['SiteUrl'].'/promotion/index/code/'.$data['PromotionCode']}}</p>
+                </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-md-1-1">첨부</label>

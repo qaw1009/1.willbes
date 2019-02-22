@@ -22,7 +22,8 @@ class EventFModel extends WB_Model
         'crm_send_r_receive_sms' => 'lms_crm_send_r_receive_sms',
         'product_subject' => 'lms_product_subject',
         'professor' => 'lms_professor',
-        'pms_professor' => 'wbs_pms_professor'
+        'pms_professor' => 'wbs_pms_professor',
+        'lms_event_promotion_log' => 'lms_event_promotion_log'
     ];
     public $_request_type = [
         '1' => '설명회',
@@ -571,6 +572,104 @@ class EventFModel extends WB_Model
         $where = $where->getMakeWhere(false);
 
         return $this->_conn->query('select '. $column . $from . $where . ' limit 1')->row_array();
+    }
+
+    /**
+     * 프로모션 조회
+     * @param $promotion_code
+     * @param $type [1:프로모션 확인용 파라미터]
+     * @return mixed
+     */
+    public function findEventForPromotion($promotion_code, $type)
+    {
+        $test_type = $type;
+        $column = '
+            ElIdx, EventName, PromotionCode, RegisterEndDate
+        ';
+        $from = "
+            FROM {$this->_table['event_lecture']}
+        ";
+
+        // 1일 경우 미리보기용으로 간주
+        if ($test_type == 1) {
+            $arr_condition = ['EQ'=>['PromotionCode' => $promotion_code]];
+        } else {
+            $arr_condition = [
+                'EQ'=>[
+                    'PromotionCode' => $promotion_code,
+                    'IsUse' => 'Y',
+                    'IsStatus' => 'Y'
+                ],
+                /*'GTE' => [
+                    'RegisterEndDate' => date('Y-m-d H:i') . ':00'
+                ]*/
+            ];
+        }
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        return $this->_conn->query('select '. $column . $from . $where . ' limit 1')->row_array();
+    }
+
+    /**
+     * 프로모션 접속 로그
+     * @param $site_code
+     * @param null $idx
+     * @return array|bool
+     */
+    public function saveLogPromotion($site_code, $idx = null)
+    {
+        $refer_info = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : null ;
+        $refer_domain = parse_url($refer_info, PHP_URL_HOST);
+        $this->__userAgent($agent_short, $agent, $platform);
+
+        $input_data = [
+            'SiteCode' => $site_code,
+            'PromotionCode' => $idx,
+            'MemIdx' => (empty($this->session->userdata('mem_idx')) ? null : $this->session->userdata('mem_idx')),
+            'ReferDomain' => (empty($refer_domain) ? null : $refer_domain ),
+            'ReferPath' => (empty($refer_info) ? null : $refer_info ),
+            'ReferQuery' => urldecode($_SERVER['QUERY_STRING']),
+            'UserPlatform' =>$platform,
+            'UserAgent' =>substr($agent,0,199),
+            'RegIp' =>$this->input->ip_address()
+        ];
+
+        try {
+            if ($this->_conn->set($input_data)->insert($this->_table['lms_event_promotion_log']) === false) {
+                //echo $this->_conn->last_query();
+                throw new \Exception('저장에 실패했습니다.');
+            }
+        } catch (\Exception $e) {
+            return error_result($e);
+        }
+
+        return true;
+    }
+    private function __userAgent(&$agent_short, &$agent, &$platform)
+    {
+        $this->load->library('user_agent');
+
+        if ($this->agent->is_browser())
+        {
+            $agent_short = $this->agent->browser().' '.$this->agent->version();
+        }
+        elseif ($this->agent->is_robot())
+        {
+            $agent_short = $this->agent->robot();
+        }
+        elseif ($this->agent->is_mobile())
+        {
+            $agent_short = $this->agent->mobile();
+        }
+        else
+        {
+            $agent_short = 'Unidentified User Agent';
+        }
+
+        $agent = $this->agent->agent_string();
+        $platform = $this->agent->platform();
     }
 
     /**

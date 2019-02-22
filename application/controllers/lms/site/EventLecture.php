@@ -320,12 +320,7 @@ class EventLecture extends \app\controllers\BaseController
         $el_idx = $params[0];
         $file_data = null;
 
-        $arr_condition = ([
-            'EQ'=>[
-                'A.ElIdx' => $el_idx,
-                'A.IsStatus' => 'Y'
-            ]
-        ]);
+        $arr_condition = (['EQ'=>['A.ElIdx' => $el_idx,'A.IsStatus' => 'Y']]);
         $data = $this->eventLectureModel->findEventForModify($arr_condition);
 
         if (count($data) < 1) {

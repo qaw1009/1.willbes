@@ -486,7 +486,8 @@ class EventLectureModel extends WB_Model
             A.SendTel, A.SmsContent, A.PopupTitle, A.CommentUseArea, A.Link, A.ReadCnt, A.AdjuReadCnt,
             A.RegDatm, A.RegAdminIdx, A.RegIp, A.UpdDatm, A.UpdAdminIdx, C.wAdminName AS RegAdminName, D.wAdminName AS UpdAdminName,
             B.SiteName, E.CcdName AS CampusName,
-            G.SubjectName, H.ProfNickName
+            G.SubjectName, H.ProfNickName,
+            B.SiteUrl
             ";
 
         $from = "

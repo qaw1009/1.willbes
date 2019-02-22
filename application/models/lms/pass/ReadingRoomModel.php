@@ -246,6 +246,11 @@ class ReadingRoomModel extends BaseReadingRoomModel
                 throw new \Exception('예치금 상품 등록에 실패했습니다.');
             }
 
+            // 판매가격, 예치금가격 JSON 데이터 등록
+            if ($this->readingRoomModel->_addProdJsonData() !== true) {
+                throw new \Exception('판매가격 또는 예치금가격 JSON 데이터 등록에 실패했습니다.');
+            }
+
             // SMS 발송
             if($this->_setSms($input) !== true) {
                 throw new \Exception('SMS 등록에 실패했습니다.');

@@ -93,6 +93,7 @@
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiSkkTPass') }}" target="_blank">성기건 영어 T-PASS</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiLsgTPass') }}" target="_blank">이상구 국제법/국제정치학 T-PASS</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiKdgTPass') }}" target="_blank">김덕관 행정학 T-PASS</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onGosiKjsTPass') }}" target="_blank">김종상 소방학/관계법규 T-PASS</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiWelcome') }}" target="_blank">2019 윌비스 웰컴팩 - 2월</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiStartPkg') }}" target="_blank">윌비스 기초입문 풀패키지 0원</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiAtoZ') }}" target="_blank">공무원의 A to Z</a></li>
@@ -102,6 +103,9 @@
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiKdjPkg2019') }}" target="_blank">2019 김동진법원팀 순환별 패키지</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiKdjReserve') }}" target="_blank">2020 김동진법원팀 예비순환</a></li>
                 <li><a href="{{ site_url('/home/html/event_onGosiKdjPassStory') }}" target="_blank">2019 김동진법원팀 동행 1기 합격스토리</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onGosiJason') }}" target="_blank">제이슨의 소방체력 정복하기</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onGosiTech') }}" target="_blank">윌비스 기술직 TOP 라인업</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onGosiNoncom') }}" target="_blank">윌비스 ARMY 부사관PASS</a></li>
         </div>
     </li>
     <li>

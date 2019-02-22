@@ -74,7 +74,7 @@
         .skybanner_sectionFixed {position:fixed; top:20px}
     </style>
     
-    @include('html.event_incOnTnb')
+    
 
     <div class="p_re evtContent" id="evtContainer">
         <div class="skybanner">

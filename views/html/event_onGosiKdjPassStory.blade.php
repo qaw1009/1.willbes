@@ -45,21 +45,6 @@
             width:100%;           
             z-index: 1;
         }
-        .slide_con .bx-wrapper .bx-controls-direction {
-        }
-        .slide_con .bx-wrapper .bx-controls-direction a {
-            width:62px;
-            height:62px;
-        }
-        .slide_con .bx-wrapper .bx-controls-direction a.bx-prev {
-            left:0;
-            background:url(http://file3.willbes.net/new_gosi/2017/04/EV_arr_l.png) no-repeat center top;
-        }
-        .slide_con .bx-wrapper .bx-controls-direction a.bx-next {
-            right:0;
-            background:url(http://file3.willbes.net/new_gosi/2017/04/EV_arr_r.png) no-repeat center top;
-        }
-        
         
 
     </style>

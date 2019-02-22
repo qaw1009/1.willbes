@@ -1,10 +1,9 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
+    @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
     <style type="text/css">
-        body{width:100%; min-width:1210px; margin:auto;}
-        .Depth {display:none}
         .subContainer {
             min-height: auto !important;
             margin-bottom:0 !important;
@@ -34,8 +33,6 @@
         .wb_cts03 {background:#ecc7a9}
         .wb_cts04 {background:#30313c}
         .wb_cts05 {background:#e4240b; padding:50px 0}	
-
-
     </style>
     
 

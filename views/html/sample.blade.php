@@ -105,7 +105,8 @@
                 <li><a href="{{ site_url('/home/html/event_onGosiKdjPassStory') }}" target="_blank">2019 김동진법원팀 동행 1기 합격스토리</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiJason') }}" target="_blank">제이슨의 소방체력 정복하기</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiTech') }}" target="_blank">윌비스 기술직 TOP 라인업</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_onGosiNoncom') }}" target="_blank">윌비스 ARMY 부사관PASS</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onGosiNoncom') }}" target="_blank">부사관 PASS</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onGosiNoncomPop') }}" target="_blank">부사관 PASS 유튜브 팝업</a></li>
         </div>
     </li>
     <li>

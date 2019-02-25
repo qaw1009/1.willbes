@@ -2,7 +2,6 @@
 
 @section('content')
 <!-- Container -->
-
 <div id="Container" class="Container gosi NSK c_both">
     <div class="Menu widthAuto NSK c_both">
         <h3>
@@ -54,13 +53,8 @@
             </ul>
         </h3>
     </div>
-    
-    <div class="Section MainVisual mt30">
+    <div class="Section MainVisual mt20 mb30">
         <div class="widthAuto">
-            <a href="#none"><img src="{{ img_url('gosi/banner/bnr_bar01.jpg') }}" alt="배너명"></a>
-        </div>
-        
-        <div class="widthAuto mt30">
             <div class="VisualBox p_re bSlider">
                 <div id="MainRollingDiv" class="MaintabList three">
                     <ul class="Maintab">
@@ -73,169 +67,189 @@
                     <div class="bx-wrapper">
                         <div class="bx-viewport">
                             <ul class="MaintabSlider">
-                                <li><a href="#none" target="_blank"><img src="{{ img_url('gosi/visual/visual_190225_01.jpg') }}" alt="배너명"></a></li>
-                                <li><a href="#none" target="_blank"><img src="{{ img_url('gosi/visual/visual_190225_02.jpg') }}" alt="배너명"></a></li>
-                                <li><a href="#none" target="_blank"><img src="{{ img_url('gosi/visual/visual_190225_03.jpg') }}" alt="배너명"></a></li>
+                                <li><a href="http://www.willbesgosi.net/event/movie/event.html?event_cd=On_180703_c" target="_blank"><img src="{{ img_url('gosi/visual/visual_180914.jpg') }}" alt="배너명"></a></li>
+                                <li><a href="http://www.willbesgosi.net/event/movie/event.html?event_cd=On_180627_g" target="_blank"><img src="{{ img_url('gosi/visual/visual_180915.jpg') }}" alt="배너명"></a></li>
+                                <li><a href="http://www.willbesgosi.net/event/movie/event.html?event_cd=On_180906_c#event" target="_blank"><img src="{{ img_url('gosi/visual/visual_180916.jpg') }}" alt="배너명"></a></li>
                             </ul>
                         </div>
                     </div> 
                 </div>
             </div>
             <div class="VisualsubBox">
-                <div class="bSlider">
-                    <div class="sliderStopAuto">
-                        <div><a href="#none"><img src="{{ img_url('gosi/visual/visual_r190225_01.jpg') }}" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="{{ img_url('gosi/visual/visual_r190225_02.jpg') }}" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="{{ img_url('gosi/visual/visual_r190225_03.jpg') }}" alt="배너명"></a></div>
-                    </div>
-                </div>
+                <ul>
+                    <li><a href="http://www.willbesgosi.net/event/movie/event.html?event_cd=On_180820_c" target="_blank"><img src="{{ img_url('gosi/visual/visualsub_180914.jpg') }}"></a></li>
+                    <li><a href="http://www.willbesgosi.net/event/movie/event.html?event_cd=On_180901_L" target="_blank"><img src="{{ img_url('gosi/visual/visualsub_180915.jpg') }}"></a></li>
+                    <!--
+                    <li>
+                        <div class="bSlider">
+                            <div class="slider">
+                                <div><a href="#none"><img src="{{ img_url('gosi/visual/visualsub_180915.jpg') }}"></a></div>
+                                <div><img src="{{ img_url('gosi/visual/visualsub_180916.jpg') }}"></div>
+                                <div><img src="{{ img_url('gosi/visual/visualsub_180915.jpg') }}"></div>
+                                <div><img src="{{ img_url('gosi/visual/visualsub_180916.jpg') }}"></div>
+                            </div>
+                        </div>
+                    </li>
+                    -->
+                </ul>
+            </div>
+            <div class="VisualList c_both mt20">
+                <ul>
+                    <li><a href="http://www.willbesgosi.net/event/movie/event.html?event_cd=On_180831_g" target="_blank"><img src="{{ img_url('gosi/banner/bnr_180917.jpg') }}"></a></li>
+                    <li><a href="http://www.willbesgosi.net/event/movie/event.html?event_cd=On_170405_c" target="_blank"><img src="{{ img_url('gosi/banner/bnr_180918.jpg') }}"></a></li>
+                    <li><a href="http://www.willbesgosi.net/event/movie/event.html?event_cd=On_161116_c" target="_blank"><img src="{{ img_url('gosi/banner/bnr_180919.jpg') }}"></a></li>
+                    <li><a href="http://www.willbesgosi.net/event/movie/event.html?event_cd=On_180831_g2" target="_blank"><img src="{{ img_url('gosi/banner/bnr_180920.jpg') }}"></a></li>
+                </ul>
             </div>
         </div>
     </div>
-    <div class="Section">
+    <div class="Section Section1 mb50">
         <div class="widthAuto">
-            <div><img src="{{ img_url('gosi/visual/visual_tit01.jpg') }}" alt="더! 강력, 더! 완벽해진 윌비스 교수진"></div>
+            <div class="will-Tit">윌비스 <span class="tx-color">공무원</span> 강사진</div>
             <ul class="ProfBox">
-                <li><a href="https://gosi.dev.willbes.net/professor/show/cate/3010/prof-idx/50080/?subject_idx=10014&subject_name=%EA%B5%AD%EC%96%B4" target="_blank"><img src="{{ img_url('gosi/prof/prof_190225_01.jpg') }}" alt="배너명"></a></li>
-                <li><a href="https://gosi.dev.willbes.net/professor/show/cate/3010/prof-idx/50081/?subject_idx=10017&subject_name=%EC%98%81%EC%96%B4" target="_blank"><img src="{{ img_url('gosi/prof/prof_190225_02.jpg') }}" alt="배너명"></a></li>
-                <li><a href="#none"><img src="{{ img_url('gosi/prof/prof_190225_03.jpg') }}" alt="배너명"></a></li>
-                <li><a href="#none"><img src="{{ img_url('gosi/prof/prof_190225_04.jpg') }}" alt="배너명"></a></li>
-                <li><a href="#none"><img src="{{ img_url('gosi/prof/prof_190225_05.jpg') }}" alt="배너명"></a></li>
+                <li><a href="https://gosi.dev.willbes.net/professor/show/cate/3010/prof-idx/50080/?subject_idx=10014&subject_name=%EA%B5%AD%EC%96%B4" target="_blank"><img src="{{ img_url('gosi/prof/prof_180914.png') }}"></a></li>
+                <li><a href="https://gosi.dev.willbes.net/professor/show/cate/3010/prof-idx/50081/?subject_idx=10017&subject_name=%EC%98%81%EC%96%B4" target="_blank"><img src="{{ img_url('gosi/prof/prof_180915.png') }}"></a></li>
+                <li><a href="#none"><img src="{{ img_url('gosi/prof/prof_180916.png') }}"></a></li>
+                <li><a href="#none"><img src="{{ img_url('gosi/prof/prof_180917.png') }}"></a></li>
+                <li><a href="#none"><img src="{{ img_url('gosi/prof/prof_180918.png') }}"></a></li>
+                <li><a href="#none"><img src="{{ img_url('gosi/prof/prof_180919.png') }}"></a></li>
             </ul>
         </div>
     </div>
-
-    <div class="Section Section3 mt110">
+    <div class="Section Section2 mb50">
         <div class="widthAuto">
-            <div><img src="{{ img_url('gosi/visual/visual_tit02.jpg') }}" alt="추천강좌/이벤트/최신소식"></div>
-            <ul class="SpecialBox">
-                <li><a href="#none"><img src="{{ img_url('gosi/banner/bnr_t01.jpg') }}" alt="배너명"></a></li>
-                <li><a href="#none"><img src="{{ img_url('gosi/banner/bnr_t02.jpg') }}" alt="배너명"></a></li>
-                <li><a href="#none"><img src="{{ img_url('gosi/banner/bnr_t03.jpg') }}" alt="배너명"></a></li>
-                <li><a href="#none"><img src="{{ img_url('gosi/banner/bnr_t04.jpg') }}" alt="배너명"></a></li>
-                <li><a href="#none"><img src="{{ img_url('gosi/banner/bnr_t05.jpg') }}" alt="배너명"></a></li>
-                <li><a href="#none"><img src="{{ img_url('gosi/banner/bnr_t06.jpg') }}" alt="배너명"></a></li>
-                <li><a href="#none"><img src="{{ img_url('gosi/banner/bnr_t07.jpg') }}" alt="배너명"></a></li>
-                <li><a href="#none"><img src="{{ img_url('gosi/banner/bnr_t08.jpg') }}" alt="배너명"></a></li>
-                <li><a href="#none"><img src="{{ img_url('gosi/banner/bnr_t09.jpg') }}" alt="배너명"></a></li>
-                <li><a href="#none"><img src="{{ img_url('gosi/banner/bnr_t10.jpg') }}" alt="배너명"></a></li>
-            </ul>
+            <div class="will-Tit">윌비스 <span class="tx-color">공무원</span> Hot Pick</div>
+            <div class="willbes-Bnr">
+                <ul>
+                    <li><a href="http://www.willbesgosi.net/event/movie/event.html?event_cd=On_180129_k" target="_blank"><img src="{{ img_url('gosi/banner/bnr_180914.jpg') }}"></a></li>
+                    <li><a href="http://www.willbesgosi.net/event/movie/event.html?event_cd=On_180622_c" target="_blank"><img src="{{ img_url('gosi/banner/bnr_180915.jpg') }}"></a></li>
+                </ul>
+            </div>
         </div>
     </div>
-
-    <div class="Section mt90">
+    <div class="Section Section3 mb50">
         <div class="widthAuto">
-            <div class="willbesLec">
-                <div class="smallTit mb30">          
-                    <p><span>합격 콘텐츠를 한 눈에! <strong>윌비스 강좌</strong></span></p>            
-                </div>
-
-                <div class="bestLectBx">
-                    <div class="will-listTit">BEST 강좌</div>
-                    
-                    <div id="RollingDiv">
-                        <ul class="prof-subject">
-                            <li><a data-slide-index="0" href="javascript:void(0);" class="active">국어</a></li>
-                            <li><a data-slide-index="1" href="javascript:void(0);" class="">영어</a></li>
-                            <li><a data-slide-index="2" href="javascript:void(0);" class="">한국사</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div id="RollingSlider" class="prof-professors">
-                        <div class="bx-wrapper">
-                            <div class="bx-viewport">
-                                <div class="proftabSlider">
-                                    <div class="prof-slider">
-                                        <ul>                        
-                                            <li>
-                                                <img src="{{ img_url('gosi/prof/mainBest01.jpg') }}" alt="" class="photo"/>
-                                                <span class="txt1">영어</span>
-                                                <span class="txt2">한덕현</span>
-                                                <span class="txt3">2019 한덕현 영어 새벽실전모의고사 </span>
-                                                <a href="#none">맛보기강좌 ></a>
-                                            </li>  
-                                            <li>
-                                                <img src="{{ img_url('gosi/prof/mainBest01.jpg') }}" alt="" class="photo"/>
-                                                <span class="txt1">영어2</span>
-                                                <span class="txt2">한덕현</span>
-                                                <span class="txt3">2019 한덕현 영어 새벽실전모의고사 </span>
-                                                <a href="#none">맛보기강좌 ></a>
-                                            </li>                          
-                                        </ul>   
+            <div class="will-Tit bd-none">시험대비 <span class="tx-color">합격특강</span></div>
+            <div class="SpecialBox">
+                <dl>
+                    <dt class="oneLec p_re">
+                        <div class="bSlider blueSlider AbsControls">
+                            <div class="slider">
+                                <div>
+                                    <img src="{{ img_url('gosi/lecture/lec_180917.jpg') }}">
+                                    <div class="infoBox">
+                                        <div class="infoTit">[찍기특강]</div>
+                                        <div class="infoTxt">
+                                            2019 기미진기특한국어기출특강(9-10월)<br/>
+                                            8강 / 20일 / 업데이트 완료<br/>
+                                            <ul>
+                                                <li><a href="#none">강의맛보기</a></li>
+                                                <li><a href="#none">자세히보기</a></li>
+                                            </ul>
+                                        </div>
                                     </div>
-                                    <div class="prof-slider">
-                                        <ul>                     
-                                            <li>
-                                                <img src="{{ img_url('gosi/prof/mainBest01.jpg') }}" alt="" class="photo"/>
-                                                <span class="txt1">영어A</span>
-                                                <span class="txt2">한덕현</span>
-                                                <span class="txt3">2019 한덕현 영어 새벽실전모의고사 </span>
-                                                <a href="#none">맛보기강좌 ></a>
-                                            </li>                          
-                                        </ul>   
-                                    </div>
-                                    <div class="prof-slider">
-                                        <ul>                     
-                                            <li>
-                                                <img src="{{ img_url('gosi/prof/mainBest01.jpg') }}" alt="" class="photo"/>
-                                                <span class="txt1">영어c</span>
-                                                <span class="txt2">한덕현</span>
-                                                <span class="txt3">2019 한덕현 영어 새벽실전모의고사 </span>
-                                                <a href="#none">맛보기강좌 ></a>
-                                            </li>                          
-                                        </ul>   
+                                </div>
+                                <div>
+                                    <img src="{{ img_url('gosi/lecture/lec_180918.jpg') }}">
+                                    <div class="infoBox">
+                                        <div class="infoTit">[찍기특강]</div>
+                                        <div class="infoTxt">
+                                            2018년 3차대비 신광은 형사소송법 파이널 찍기특강<br/>
+                                            8강 / 20일 / 업데이트 완료<br/>
+                                            <ul>
+                                                <li><a href="#none">강의맛보기</a></li>
+                                                <li><a href="#none">자세히보기</a></li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div> 
-                    </div>
-                    <!--ul class="prof-subject">                        
-                        <li><a href='#none'>국어</a></li>                        
-                        <li ><a href='#none'>영어</a></li>                        
-                        <li ><a href='#none'>한국사</a></li>                        
-                        <li ><a href='#none'>헌법</a></li>                        
-                        <li ><a href='#none'>행정법</a></li>                        
-                        <li ><a href='#none'>행정학</a></li>                        
-                        <li ><a href='#none'>사회</a></li>                        
-                        <li ><a href='#none'>세법</a></li>                        
-                        <li ><a href='#none'>회계학</a></li>                        
-                        <li ><a href='#none'>경제학</a></li>                        
-                        <li ><a href='#none'>국제법</a></li>                        
-                        <li ><a href='#none'>전자공학</a></li>                        
-                        <li ><a href='#none'>무선공학</a></li>                        
-                        <li ><a href='#none'>통신이론</a></li>                        
-                        <li ><a href='#none'>전기이론</a></li>                        
-                        <li ><a href='#none'>전기기기</a></li>                        
-                        <li ><a href='#none'>소방학개론</a></li>                        
-                        <li ><a href='#none'>소방관계법규</a></li>                        
-                        <li ><a href='#none'>한국사검정능력시험</a></li>                        
-                    </ul>
-
-                    <div id="prof-professors" class="prof-professors">
-                        <ul class="prof-slider">                        
-                            <li>
-                                <img src="{{ img_url('gosi/prof/mainBest01.jpg') }}" alt="" class="photo"/>
-                                <span class="txt1">영어</span>
-                                <span class="txt2">한덕현</span>
-                                <span class="txt3">2019 한덕현 영어 새벽실전모의고사 </span>
-                                <a href="#none">맛보기강좌 ></a>
-                            </li>  
-                            <li>
-                                <img src="{{ img_url('gosi/prof/mainBest01.jpg') }}" alt="" class="photo"/>
-                                <span class="txt1">영어2</span>
-                                <span class="txt2">한덕현</span>
-                                <span class="txt3">2019 한덕현 영어 새벽실전모의고사 </span>
-                                <a href="#none">맛보기강좌 ></a>
-                            </li>                          
+                        </div>
+                    </dt>
+                    <dt class="oneLec p_re">
+                        <div class="bSlider blueSlider AbsControls">
+                            <div class="slider">
+                                <div>
+                                    <img src="{{ img_url('gosi/lecture/lec_180918.jpg') }}">
+                                    <div class="infoBox">
+                                        <div class="infoTit">[찍기특강]</div>
+                                        <div class="infoTxt">
+                                            2019 한덕현영어필살기출비법특강(9-10월)<br/>
+                                            8강 / 20일 / 업데이트 완료<br/>
+                                            <ul>
+                                                <li><a href="#none">강의맛보기</a></li>
+                                                <li><a href="#none">자세히보기</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <img src="{{ img_url('gosi/lecture/lec_180917.jpg') }}">
+                                    <div class="infoBox">
+                                        <div class="infoTit">[찍기특강]</div>
+                                        <div class="infoTxt">
+                                            2018년 3차대비 신광은 형사소송법 파이널 찍기특강<br/>
+                                            8강 / 20일 / 업데이트 완료<br/>
+                                            <ul>
+                                                <li><a href="#none">강의맛보기</a></li>
+                                                <li><a href="#none">자세히보기</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </dt>
+                    <dt class="twoLec p_re">
+                        <ul>
+                            <li class="p_re">            
+                                <a href="#none">
+                                    <div class="infoTxt">
+                                        2019 김영 영어<br/>
+                                        <span class="tx-bright-brown">기출문제 특강</span>(9-10월)<br/>
+                                        <span class="w-date">2018.9.28 개강 / 50일</span><br/>
+                                    </div>
+                                    <div class="imgBox">
+                                        <img src="{{ img_url('sample/prof6.jpg') }}">
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="p_re">
+                                <div class="bSlider blueSlider AbsControls Left">
+                                    <div class="slider">
+                                        <div>
+                                            <a href="#none">
+                                                <div class="infoTxt">
+                                                    2019 박민주 <span class="tx-bright-brown">민주 한국사</span><br/>
+                                                    <span class="tx-bright-brown">기본+심회</span>(9-10월)<br/>
+                                                    <span class="w-date">2018.9.28 개강 / 20일</span><br/>
+                                                </div>
+                                                <div class="imgBox">
+                                                    <img src="{{ img_url('sample/prof7.jpg') }}">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div>
+                                            <a href="#none">
+                                                <div class="infoTxt">
+                                                    2018년 3차대비 <span class="tx-bright-brown">3단계 Final</span><br/>
+                                                    <span class="tx-bright-brown">실전모의고사</span>(史 오태진)<br/>
+                                                    <span class="w-date">2018.9.28 개강 / 20일</span><br/>
+                                                </div>
+                                                <div class="imgBox">
+                                                    <img src="{{ img_url('sample/prof6.jpg') }}">
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
                         </ul>
-                    </div--> 
-
-                </div>
-
+                    </dt>
+                </dl>
             </div>
-        <div>
+        </div>
     </div>
-<!--
     <div class="Section Section4 mb50">
         <div class="widthAuto">
             <dl class="NoticeBox two">
@@ -618,7 +632,6 @@
             </li>
         </ul>
     </div>
--->
 </div>
 <!-- End Container -->
 @stop

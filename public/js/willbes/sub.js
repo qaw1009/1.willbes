@@ -62,6 +62,13 @@ $(function() {
     });
 });
 
+// 강의 > 수강신청 안내 버튼 Script
+$(function() {    
+    $('#requestInfo.willbes-Layer-requestInfo a').click(function() {
+        $('.InfoBtn a').removeClass('on').attr("onclick","openWin('requestInfo')");
+    });
+});
+
 // 유의사항안내보기 버튼 Script
 $(function() {
     $('.willbes-Cart-Txt .MoreBtn a').click(function() {

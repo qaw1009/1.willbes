@@ -22,7 +22,7 @@ class MessageModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
             $column = '
-                MSG.SendIdx, MSG.SiteCode, MSG.SendPatternCcd, MSG.SendTypeCcd, MSG.SendOptionCcd, MSG.SendStatusCcd, MSG.CsTel,
+                MSG.SendIdx, MSG.SiteCode, MSG.SendPatternCcd, MSG.SendTypeCcd, MSG.SendOptionCcd, MSG.SendStatusCcd, MSG.CsTelCcd,
                 CONCAT(LEFT(MSG.Content, 20), IF (CHAR_LENGTH(MSG.Content) > 20, " ...", "") ) as Content,
                 MSG.SendDatm, MSG.RegDatm, MSG.RegAdminIdx,
                 LS.SiteName, ADMIN.wAdminName
@@ -236,7 +236,7 @@ class MessageModel extends WB_Model
         } else {
             $column = '
                 b.SendIdx, b.SendGroupTypeCcd, b.SiteCode, b.SendPatternCcd, b.SendTypeCcd, b.SendOptionCcd, b.SendStatusCcd, b.AdvertisePatternCcd,
-                b.CsTel, b.SendMail, b.SendAttachFilePath, b.SendAttachFileName, b.SendAttachRealFileName, b.Title, b.Content, b.AdvertiseAgreeContent,
+                b.CsTelCcd, b.SendMail, b.SendAttachFilePath, b.SendAttachFileName, b.SendAttachRealFileName, b.Title, b.Content, b.AdvertiseAgreeContent,
                 b.SendDatm, b.IsUse, b.IsStatus, b.RegDatm, b.RegAdminIdx, b.RegIp, b.UpdDatm, b.UpdAdminIdx,
                 a.MessageSendIdx, a.MemIdx, a.Receive_MemId, a.IsReceive, a.RcvDatm, a.DelDatm,
                 fn_ccd_name(b.SendStatusCcd) AS SendStatusCcdName,

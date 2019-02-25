@@ -1,9 +1,6 @@
 @extends('willbes.pc.layouts.master_no_sitdbar')
 
 @section('content')
-    <link href="/public/css/willbes/basic.css?ver={{time()}}" rel="stylesheet">
-    <link href="/public/css/willbes/style.css?ver={{time()}}" rel="stylesheet">
-
 <style type="text/css" xmlns="http://www.w3.org/1999/html">
     /*이모티콘 댓글*/
     .reEmo {}

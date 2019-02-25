@@ -123,7 +123,7 @@
         <input type="hidden" id='prodcode' name="prodcode" value="{{ $prodcode }}" />
     </form>
     <script>
-        function gotab(prodcode, memidx){
+        function gotab(prodcode, mridx){
             var uri_param;
             uri_param = 'prodcode=' + prodcode + '&mridx=' + mridx;
 

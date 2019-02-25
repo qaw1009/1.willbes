@@ -50,12 +50,23 @@
     }
     .replySt3List li:after {content:""; display:block; clear:both}
     .rolling {width:1210px; margin:0 auto; text-align:center}
+
+    .emoticon_1 {background-image: url(http://file3.willbes.net/new_cop/character/01.png); width:120px; height: 150px; !important;}
+    .emoticon_2 {background-image: url(http://file3.willbes.net/new_cop/character/20.png); width:120px; height: 150px; !important;}
+    .emoticon_3 {background-image: url(http://file3.willbes.net/new_cop/character/17.png); width:120px; height: 150px; !important;}
+    .emoticon_4 {background-image: url(http://file3.willbes.net/new_cop/character/18.png); width:120px; height: 150px; !important;}
+    .emoticon_5 {background-image: url(http://file3.willbes.net/new_cop/character/13.png); width:120px; height: 150px; !important;}
+    .emoticon_6 {background-image: url(http://file3.willbes.net/new_cop/character/14.png); width:120px; height: 150px; !important;}
 </style>
 
 <div class="reEmo">
     <form id="regi_form_comment" name="regi_form_comment" method="POST" onsubmit="return false;" novalidate>
         {!! csrf_field() !!}
         {!! method_field($method) !!}
+        @foreach($arr_base['set_params '] as $key => $val)
+            <input type="hidden" name="{{$key}}" value="{{$val}}"/>
+        @endforeach
+
         <div class="characterSt2">
             <ul class="characterSt2Img">
                 <li>
@@ -64,31 +75,30 @@
                 </li>
                 <li>
                     <img src="http://file3.willbes.net/new_cop/character/20.png" alt="" />
-                    <p><label><input type="radio" name="sns_icon" value="20" /> 만점의 <span>향기~~</span></label></p>
+                    <p><label><input type="radio" name="sns_icon" value="2" /> 만점의 <span>향기~~</span></label></p>
                 </li>
                 <li>
                     <img src="http://file3.willbes.net/new_cop/character/17.png" alt="" />
-                    <p><label><input type="radio" name="sns_icon" value="17" /> 만점<span>맨!~</span></label></p>
+                    <p><label><input type="radio" name="sns_icon" value="3" /> 만점<span>맨!~</span></label></p>
                 </li>
                 <li>
                     <img src="http://file3.willbes.net/new_cop/character/18.png" alt="" />
-                    <p><label><input type="radio" name="sns_icon" value="18" /> 히든 <span>만점러~</span></label></p>
+                    <p><label><input type="radio" name="sns_icon" value="4" /> 히든 <span>만점러~</span></label></p>
                 </li>
                 <li>
                     <img src="http://file3.willbes.net/new_cop/character/13.png" alt="" />
-                    <p><label><input type="radio" name="sns_icon" value="13" /> 불타는 <span>만점러!</span></label></p>
+                    <p><label><input type="radio" name="sns_icon" value="5" /> 불타는 <span>만점러!</span></label></p>
                 </li>
                 <li>
                     <img src="http://file3.willbes.net/new_cop/character/14.png" alt="" />
-                    <p><label><input type="radio" name="sns_icon" value="14" /> 만점의 <span>워너원~</span></label></p>
+                    <p><label><input type="radio" name="sns_icon" value="6" /> 만점의 <span>워너원~</span></label></p>
                 </li>
             </ul>
         </div>
 
         <div class="replySt3">
             <div class="textarBx">
-                {{--<div><textarea name="SNS_TXT" id="SNS_TXT" cols="30" rows="3" placeholder="댓글을 입력해주세요."/></textarea></div>--}}
-                <div><textarea id="event_comment" name="event_comment" cols="30" rows="5" title="댓글" placeholder="댓글을 입력해주세요."></textarea></div>
+                <div><textarea id="event_comment" name="event_comment" cols="30" rows="3" title="댓글" placeholder="댓글을 입력해주세요."></textarea></div>
                 <button type="button" id="btn_submit_comment">글쓰기</button>
             </div>
             <p> * 지나친 도배, 욕설, 주제와 상관없는 글은 예고 없이 관리자에 의해 삭제될 수 있습니다. </p>
@@ -97,99 +107,37 @@
 
     <div class="replySt3List">
         <ul>
-            <li>
-                <span class="crtImg">
-                    <img src="http://file3.willbes.net/new_cop/character/17.png" alt=""/>
-                </span>
-                <div class="crtReply">
-                    <p>유수* <a href="#none">삭제</a></p>
-                    <div>
-                        <span><a href="" target="_blank"></a></span>
-                        형법 점수 확올랐네..
-                        <em>&nbsp;</em>
+            @foreach($list as $row)
+                <li>
+                    <span class="crtImg emoticon_{{$row['EmoticonNo']}}">
+                        {{--<img src="http://file3.willbes.net/new_cop/character/17.png" alt=""/>--}}
+                    </span>
+                    <div class="crtReply">
+                        <p>유수*
+                            @if(sess_data('mem_idx') === $row['MemIdx'])
+                                <a class="btn-comment-del" data-comment-idx="{{$row['Idx']}}" href="#none">삭제</a>
+                            @endif
+                        </p>
+                        <div>
+                            <span><a href="" target="_blank"></a></span>
+                            {!!nl2br($row['Content'])!!}
+                            <em>&nbsp;</em>
+                        </div>
+                        <span>{{$row['RegDatm']}}</span>
                     </div>
-                    <span>2018-12-29 00:50:51</span>
-                </div>
-            </li>
-
-            <li>
-                <span class="crtImg">
-                    <img src="http://file3.willbes.net/new_cop/character/17.png" alt=""/>
-                </span>
-                <div class="crtReply">
-                    <p>유수*</p>
-                    <div>
-                        <span><a href="" target="_blank"></a></span>
-                        형법 점수 확올랐네..
-                        <em>&nbsp;</em>
-                    </div>
-                    <span>2018-12-29 00:50:51</span>
-                </div>
-            </li>
-            <li>
-                <span class="crtImg">
-                    <img src="http://file3.willbes.net/new_cop/character/17.png" alt=""/>
-                </span>
-                <div class="crtReply">
-                    <p>유수*</p>
-                    <div>
-                        <span><a href="" target="_blank"></a></span>
-                        형법 점수 확올랐네..
-                        <em>&nbsp;</em>
-                    </div>
-                    <span>2018-12-29 00:50:51</span>
-                </div>
-            </li>
-            <li>
-                <span class="crtImg">
-                    <img src="http://file3.willbes.net/new_cop/character/17.png" alt=""/>
-                </span>
-                <div class="crtReply">
-                    <p>유수*</p>
-                    <div>
-                        <span><a href="" target="_blank"></a></span>
-                        형법 점수 확올랐네..
-                        <em>&nbsp;</em>
-                    </div>
-                    <span>2018-12-29 00:50:51</span>
-                </div>
-            </li>
-            <li>
-                <span class="crtImg">
-                    <img src="http://file3.willbes.net/new_cop/character/17.png" alt=""/>
-                </span>
-                <div class="crtReply">
-                    <p>유수*</p>
-                    <div>
-                        <span><a href="" target="_blank"></a></span>
-                        형법 점수 확올랐네..
-                        <em>&nbsp;</em>
-                    </div>
-                    <span>2018-12-29 00:50:51</span>
-                </div>
-            </li>
+                </li>
+                @php $paging['rownum']-- @endphp
+            @endforeach
         </ul>
     </div>
 
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="Paging">
-                <ul>
-                    <li class="Prev"><a href="#none"><img src="/public/img/willbes/paging/paging_prev.png"></a></li>
-                    <li><a class="on" href="#none">1</a><span class="row-line">|</span></li>
-                    <li><a href="#none"><a href="#none">2</a></a><span class="row-line">|</span></li>
-                    <li class="Next"><a href="#none"><img src="/public/img/willbes/paging/paging_next.png"></a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
+    {!! $paging['pagination'] !!}
 </div>
 
 
 <script type="text/javascript">
 var $regi_form_comment = $('#regi_form_comment');
 $(document).ready(function() {
-    console.log({{$arr_base['comment_create_type']}});
     $('#btn_submit_comment').click(function() {
         @if($arr_base['comment_create_type'] == '1')
         comment_submit();
@@ -208,7 +156,7 @@ $(document).ready(function() {
             '{{ csrf_token_name() }}' : $regi_form_comment.find('input[name="{{ csrf_token_name() }}"]').val(),
             '_method' : 'PUT'
         };
-        sendAjax('{{ front_url('/event/commentDel/') }}' + comment_idx, data, function(ret) {
+        sendAjax('{{ front_url('/promotion/commentDel/') }}' + comment_idx, data, function(ret) {
             if (ret.ret_cd) {
                 location.reload();
             }
@@ -217,7 +165,7 @@ $(document).ready(function() {
 });
 
 function comment_submit() {
-    var _url = '{!! front_url('/event/commentStore') !!}';
+    var _url = '{!! front_url('/promotion/commentStore') !!}';
     if (!confirm('등록하시겠습니까?')) { return true; }
     ajaxSubmit($regi_form_comment, _url, function(ret) {
         if(ret.ret_cd) {
@@ -227,6 +175,11 @@ function comment_submit() {
 }
 
 function addValidate() {
+    if ($('input:radio[name="sns_icon"]').is(':checked') === false) {
+        alert('이모티콘을 선택해 주세요.');
+        return false;
+    }
+
     if ($('#event_comment').val() == '') {
         alert('댓글을 입력해 주세요.');
         return false;

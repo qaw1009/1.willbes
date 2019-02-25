@@ -314,12 +314,16 @@
         </div>
 
         <!--  이모티콘 댓글 -->
-        @include('html.event_incReplyEmoticon')
+        {{--@include('html.event_incReplyEmoticon')--}}
+        @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
+            <div class="reEmo">
+            @include('willbes.pc.promotion.show_comment_list_partial')
+        @endif
     </div>
     <!-- End Container -->
 
 
-    <script src="/public/js/willbes/jquery.nav"></script>
+    <script src="/public/js/willbes/jquery.nav.js"></script>
     <script>
         /*tab*/
         $(document).ready(function(){
@@ -365,11 +369,11 @@
             });
         } );
 
-        $(document).ready(function() {
+        /*$(document).ready(function() {
             $('.skybanner').onePageNav({
                 currentClass: 'hvr-shutter-out-horizontal_active'
             });
-        });
+        });*/
     </script>
 
 @stop

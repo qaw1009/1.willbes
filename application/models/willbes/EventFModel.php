@@ -584,22 +584,22 @@ class EventFModel extends WB_Model
     {
         $test_type = $type;
         $column = '
-            a.ElIdx, a.EventName, a.PromotionCode, a.RegisterEndDate, a.CommentUseArea
+            ElIdx, OptionCcds, EventName, PromotionCode, RegisterEndDate, CommentUseArea
         ';
         $from = "
-            FROM {$this->_table['event_lecture']} AS a
+            FROM {$this->_table['event_lecture']}
         ";
 
         // 1일 경우 미리보기용으로 간주
         if ($test_type == 1) {
-            $arr_condition = ['EQ'=>['a.PromotionCode' => $promotion_code]];
+            $arr_condition = ['EQ'=>['PromotionCode' => $promotion_code]];
         } else {
             $arr_condition = [
                 'EQ' => [
-                    'a.PromotionCode' => $promotion_code,
-                    'a.RequestType' => '5',
-                    'a.IsUse' => 'Y',
-                    'a.IsStatus' => 'Y'
+                    'PromotionCode' => $promotion_code,
+                    'RequestType' => '5',
+                    'IsUse' => 'Y',
+                    'IsStatus' => 'Y'
                 ],
                 /*'GTE' => [
                     'a.RegisterEndDate' => date('Y-m-d H:i') . ':00'

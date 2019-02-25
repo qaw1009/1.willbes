@@ -114,10 +114,8 @@
                                 <th>제목</th>
                                 <th>등록자</th>
                                 <th>등록일</th>
-                                <th>HOT</th>
                                 <th>사용</th>
                                 <th>조회수</th>
-                                <th>수정</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -176,7 +174,6 @@
                             {'data' : 'SubjectName'},
                             {'data' : 'CourseName'},
                             {'data' : 'ProfNickName'},
-
                             {'data' : 'Title', 'render' : function(data, type, row, meta) {
                                     var bm_idx = '{{$bm_idx}}';
                                     var site_code = '{{$site_code}}';
@@ -184,21 +181,10 @@
                                 }},
                             {'data' : 'wAdminName'},
                             {'data' : 'RegDatm'},
-
-                            {'data' : 'IsBest', 'render' : function(data, type, row, meta) {
-                                    //return (data == 'Y') ? '사용' : '<p class="red">미사용</p>';
-                                    var chk = '';
-                                    if (data == 'Y') { chk = 'checked=checked'; } else { chk = ''; }
-                                    return '<input type="checkbox" name="is_best" value="Y" class="flat is-best" data-is-best-idx="' + row.BoardIdx + '" '+chk+'/>';
-                                }},
-
                             {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                                     return (data == 'Y') ? '사용' : '<p class="red">미사용</p>';
                                 }},
-                            {'data' : 'ReadCnt'},
-                            {'data' : 'BoardIdx', 'render' : function(data, type, row, meta) {
-                                    return '<a href="javascript:void(0);" class="btn-modify" data-idx="' + row.BoardIdx + '"><u>수정</u></a>';
-                                }},
+                            {'data' : 'ReadCnt'}
                         ],
                     });
 

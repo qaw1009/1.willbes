@@ -53,7 +53,7 @@
                     </div>
                     <label class="control-label col-md-1" for="search_modal_start_date">등록일</label>
                     <div class="col-md-5 form-inline">
-                        <div class="input-group">
+                        <div class="input-group mb-0">
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
@@ -67,13 +67,13 @@
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div class="row">
                     <div class="col-xs-12 text-right form-inline">
-                        <div class="checkbox">
+                        <div class="checkbox mt-10">
                             <input type="checkbox" name="search_modal_chk_hot_display" value="1" class="flat hot-display" id="hot_display"/> <label for="hot_display">HOT 숨기기</label>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-search-modal ml-10" id="btn_search_modal"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
-                        <button type="button" class="btn btn-default ml-30 mr-30" id="_btn_reset_modal">검색초기화</button>
+                        <button type="submit" class="btn btn-primary btn-search-modal ml-10" id="btn_search_modal">검 색</button>
+                        <button type="button" class="btn btn-default" id="_btn_reset_modal">초기화</button>
                     </div>
                 </div>
 

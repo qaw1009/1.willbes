@@ -130,8 +130,8 @@
                                                     <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
                                                     <td class="w-call">1544-5006</td>
                                                     <td class="w-time tx-left pl25">
-                                                        평일 9:00~18:00 | 토요일 9:00~13:00<br/>
-                                                        일요일/공휴일 휴무
+                                                        평일 9:00~18:00 (점심시간 12시~13시)<br/>
+                                                        주말/공휴일 휴무
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -146,7 +146,7 @@
                                                     <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
                                                     <td class="w-call">1544-5006</td>
                                                     <td class="w-time tx-left pl25">
-                                                        평일 9:00~18:00<br/>
+                                                        평일 9:00~18:00 (점심시간 12시~13시)<br/>
                                                         주말/공휴일 휴무
                                                     </td>
                                                 </tr>

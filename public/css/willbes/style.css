@@ -3564,6 +3564,9 @@ table.classTable tr td.w-data {
     line-height: 40px !important;
     letter-spacing: 0;
 }
+.LeclistTable .csTable tr td {
+    line-height: 1.4 !important;
+}
 .LeclistTable .listTable thead tr th {
     background: #f9f9f9;
     font-weight: 600;

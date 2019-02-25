@@ -63,7 +63,7 @@
                     </div>
                     <label class="control-label col-lg-offset-2 col-md-1" for="search_start_date">등록일</label>
                     <div class="col-md-5 form-inline">
-                        <div class="input-group">
+                        <div class="input-group mb-0">
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
@@ -79,14 +79,12 @@
             </div>
         </div>
         <div class="row">
-            <div class="form-group">
-                <div class="col-xs-4">
-                    <button class="btn btn-info ml-20" type="button" id="btn_search_setting">기본화면셋팅</button>
-                </div>
-                <div class="col-xs-8 text-right form-inline">
-                    <button type="submit" class="btn btn-primary btn-search ml-10" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
-                    <button class="btn btn-default ml-30 mr-30" type="button" id="_btn_reset">검색초기화</button>
-                </div>
+            <div class="col-xs-2">
+                <button class="btn btn-info" type="button" id="btn_search_setting">기본화면셋팅</button>
+            </div>
+            <div class="col-xs-8 text-center">
+                <button type="submit" class="btn btn-primary btn-search" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
+                <button class="btn btn-default btn-search" type="button" id="btn_reset">초기화</button>
             </div>
         </div>
     </form>

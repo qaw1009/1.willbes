@@ -31,6 +31,8 @@ class RegGoodsModel extends WB_Model
         'ProductCate' => 'lms_Product_R_Category',
         'ProductSale' => 'lms_Product_Sale',
         'ProductSMS' => 'lms_Product_Sms',
+        'ProductJson' => 'lms_product_json_data',
+
         'mockRegister' => 'lms_mock_register',
         'mockRegisterR' => 'lms_mock_register_r_paper',
 
@@ -38,7 +40,9 @@ class RegGoodsModel extends WB_Model
         'mockAnswerPaper' => 'lms_mock_answerpaper',
         'mockLog' => 'lms_mock_log',
         'order_product' => 'lms_order_product',
-        'order' => 'lms_order'
+        'order' => 'lms_order',
+
+        'copylog' => 'lms_product_copy_log'
     ];
 
 
@@ -601,11 +605,11 @@ class RegGoodsModel extends WB_Model
                 INSERT INTO {$this->_table['Product']}
                     (ProdCode, SiteCode, ProdName, ProdTypeCcd, SaleStartDatm, SaleEndDatm, SaleStatusCcd, PointApplyCcd, IsSms, IsUse, IsCoupon, IsCart,
                      RegIp, RegAdminIdx, RegDatm)
-                SELECT ?, SiteCode, CONCAT('복사-', ProdName), ProdTypeCcd, SaleStartDatm, SaleEndDatm, SaleStatusCcd, PointApplyCcd, IsSms, 'N', IsCoupon, IsCart, ?, ?, ?
+                SELECT ?, SiteCode, CONCAT(ProdName), ProdTypeCcd, SaleStartDatm, SaleEndDatm, SaleStatusCcd, PointApplyCcd, IsSms, 'N', IsCoupon, IsCart, ?, ?, ?
                 FROM {$this->_table['Product']}
                 WHERE ProdCode = ? AND IsStatus = 'Y'";
             $this->_conn->query($sql, array($prodcode, $RegIp, $RegAdminIdx, $RegDatm, $idx));
-            //echo $this->_conn->last_query().'<BR><BR><BR>';
+            //echo $this->_conn->last_query().'<BR><BR><BR>';exit;
 
 
             // lms_Product_R_Category 복사
@@ -660,6 +664,26 @@ class RegGoodsModel extends WB_Model
                 WHERE ProdCode = ? AND IsStatus = 'Y'";
             $this->_conn->query($sql, array($prodcode, $RegIp, $RegAdminIdx, $RegDatm, $idx));
             //echo $this->_conn->last_query().'<BR><BR><BR>';
+
+            // json 데이터 복사
+            $sql = "
+                INSERT INTO {$this->_table['ProductJson']}
+                    (ProdCode, ProdPriceData, ProdBookData, LectureSampleData)
+                SELECT ?, ProdPriceData, ProdBookData, LectureSampleData
+                FROM {$this->_table['ProductJson']}
+                WHERE ProdCode = ? ";
+            $this->_conn->query($sql, array($prodcode, $idx));
+            //echo $this->_conn->last_query().'<BR><BR><BR>';
+
+            //복사 로그 저장
+            $copy_data = [
+                'ProdCode' => $prodcode
+                ,'ProdCode_Original' => $idx
+                ,'RegAdminIdx' =>$RegAdminIdx
+            ];
+            if($this->_conn->set($copy_data)->insert($this->_table['copylog']) === false) {
+                throw new \Exception('복사 이력 저장에 실패했습니다.');
+            }
 
             $this->_conn->trans_complete();
             if ($this->_conn->trans_status() === false) {
@@ -791,6 +815,13 @@ class RegGoodsModel extends WB_Model
                 if($dataSubject) $this->_conn->insert_batch($this->_table['mockProductExam'], $dataSubject);
             }
 
+            // 상품연관 데이터 json 형태로 테이블 저장
+            $query = $this->_conn->query('call sp_product_json_data_insert(?)', [$prodcode]);
+            $result = $query->row(0)->ReturnMsg;
+
+            if ($result != 'Success') {
+                throw new \Exception('JSON 데이터 등록에 실패했습니다.');
+            }
 
             $this->_conn->trans_complete();
             if ($this->_conn->trans_status() === false) {
@@ -885,6 +916,15 @@ class RegGoodsModel extends WB_Model
 
             // lms_Product_Mock_R_Paper 저장
             $this->updateSubject($date);
+
+
+            // 상품연관 데이터 json 형태로 테이블 저장
+            $query = $this->_conn->query('call sp_product_json_data_insert(?)', [$this->input->post('idx')]);
+            $result = $query->row(0)->ReturnMsg;
+
+            if ($result != 'Success') {
+                throw new \Exception('JSON 데이터 등록에 실패했습니다.');
+            }
 
 
             $this->_conn->trans_complete();

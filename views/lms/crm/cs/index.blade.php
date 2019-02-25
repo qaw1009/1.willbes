@@ -23,9 +23,9 @@
                     <div class="col-md-3">
                         <input type="text" class="form-control" id="search_value" name="search_value">
                     </div>
-                    <label class="control-label col-md-1" for="search_start_date">등록일</label>
-                    <div class="col-md-5 form-inline">
-                        <div class="input-group">
+                    <label class="control-label col-md-1 col-md-offset-1" for="search_start_date">등록일</label>
+                    <div class="col-md-4 form-inline">
+                        <div class="input-group mb-0">
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
@@ -41,11 +41,9 @@
             </div>
         </div>
         <div class="row">
-            <div class="form-group">
-                <div class="col-xs-12 text-center">
-                    <button type="submit" class="btn btn-primary btn-search" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
-                    <button type="button" class="btn btn-default btn-search" id="btn_reset">초기화</button>
-                </div>
+            <div class="col-xs-12 text-center">
+                <button type="submit" class="btn btn-primary btn-search" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
+                <button type="button" class="btn btn-default btn-search" id="btn_reset">초기화</button>
             </div>
         </div>
     </form>

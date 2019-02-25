@@ -3,12 +3,12 @@
     <h5>- 운영사이트별 회원을 검색하고 TM 담당자들에게 회원을 배정하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="regi_form" name="regi_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
-        <Br>
-        <div class="form-group">
-            <div class="col-md-2 form-inline">
+
+        <div class="row mt-20">
+            <div class="col-md-2">
                 <p>• TM 회원검색</p>
             </div>
-            <div class="col-md-10 form-inline" align="right">
+            <div class="col-md-10 form-inline text-right">
                 <button type="button" class="btn btn-default" id="btn_info" onclick="openWin('in_pop_modal')">TM 운영정책</button>
             </div>
         </div>
@@ -36,9 +36,9 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-12 text-right">
+            <div class="col-xs-12 text-center">
                 <button type="button" class="btn btn-primary btn-search" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
-                <button type="button" class="btn btn-default mr-20" id="btn_reset">검색초기화</button>
+                <button type="button" class="btn btn-default btn-search" id="btn_reset">초기화</button>
             </div>
         </div>
 
@@ -70,9 +70,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group text-center">
-                    <button type="button" class="btn btn-success mr-10" id="btn_assign">회원배정</button>
-                    <button class="btn btn-primary" type="button" id="btn_list">배정이력</button>
+                <div class="row mt-20">
+                    <div class="col-xs-12 text-center">
+                        <button type="button" class="btn btn-success mr-10" id="btn_assign">회원배정</button>
+                        <button class="btn btn-primary" type="button" id="btn_list">배정이력</button>
+                    </div>
                 </div>
             </div>
         </div>

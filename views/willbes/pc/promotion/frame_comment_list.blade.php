@@ -4,9 +4,9 @@
 <style type="text/css" xmlns="http://www.w3.org/1999/html">
     /*이모티콘 댓글*/
     .reEmo {}
-    .characterSt2 {width:960px; margin:0 auto 50px}
+    .characterSt2 {width:980px; margin:0 auto 50px}
     .characterSt2 .characterSt2Img {margin-bottom:20px; border-top:1px solid #ccc; border-bottom:1px solid #ccc}
-    .characterSt2 .characterSt2Img li {display:inline; float:left; width:16.366666%; text-align:center; cursor:pointer;border-right:1px solid #ccc}
+    .characterSt2 .characterSt2Img li {display:inline; float:left; width:16.666666%; text-align:center; cursor:pointer;border-right:1px solid #ccc}
     .characterSt2 .characterSt2Img li input {vertical-align:middle}
     .characterSt2 .characterSt2Img li.active {background:#cde7f5}
     .characterSt2 .characterSt2Img li p {height:40px; line-height:40px; color:#333; background:#eee; font-size:14px; font-weight:bold}
@@ -24,8 +24,7 @@
     .replySt3 p {color:#69654b}
 
     .replySt3List {width:980px; margin:20px auto 50px}
-    .replySt3List li > span {display:block; float:left; width:120px; text-align:center}
-    .replySt3List li img {width:100px}
+    .replySt3List li span.crtImg {display:block; float:left; width:120px; text-align:center; height:108px; background-size:100%; background-position:center center}
     .replySt3List li .crtReply {float:left; margin:10px 0}
     .replySt3List li .crtReply p {margin-bottom:5px}
     .replySt3List li .crtReply strong {color:#1087ef}
@@ -51,12 +50,12 @@
     .replySt3List li:after {content:""; display:block; clear:both}
     .rolling {width:1210px; margin:0 auto; text-align:center}
 
-    .emoticon_1 {background-image: url(http://file3.willbes.net/new_cop/character/01.png); width:120px; height: 150px; !important;}
-    .emoticon_2 {background-image: url(http://file3.willbes.net/new_cop/character/20.png); width:120px; height: 150px; !important;}
-    .emoticon_3 {background-image: url(http://file3.willbes.net/new_cop/character/17.png); width:120px; height: 150px; !important;}
-    .emoticon_4 {background-image: url(http://file3.willbes.net/new_cop/character/18.png); width:120px; height: 150px; !important;}
-    .emoticon_5 {background-image: url(http://file3.willbes.net/new_cop/character/13.png); width:120px; height: 150px; !important;}
-    .emoticon_6 {background-image: url(http://file3.willbes.net/new_cop/character/14.png); width:120px; height: 150px; !important;}
+    .emoticon_1 {background-image: url(http://file3.willbes.net/new_cop/character/01.png)}
+    .emoticon_2 {background-image: url(http://file3.willbes.net/new_cop/character/20.png)}
+    .emoticon_3 {background-image: url(http://file3.willbes.net/new_cop/character/17.png)}
+    .emoticon_4 {background-image: url(http://file3.willbes.net/new_cop/character/18.png)}
+    .emoticon_5 {background-image: url(http://file3.willbes.net/new_cop/character/13.png)}
+    .emoticon_6 {background-image: url(http://file3.willbes.net/new_cop/character/14.png)}
 </style>
 
 <div class="reEmo">

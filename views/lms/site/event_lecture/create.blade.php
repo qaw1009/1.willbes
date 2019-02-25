@@ -140,57 +140,50 @@
                         <div class="input-group mb-0">
                             <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
                             <input type="text" class="form-control datepicker" id="register_start_datm" name="register_start_datm" value="{{$data['RegisterStartDay']}}">
-                            <div class="input-group-btn">
-                                <select class="form-control ml-5" id="register_start_hour" name="register_start_hour">
-                                    @php
-                                        for($i=0; $i<=23; $i++) {
-                                            $str = (strlen($i) <= 1) ? '0' : '';
-                                            $selected = ($i == $data['RegisterStartHour']) ? "selected='selected'" : "";
-                                            echo "<option value='{$i}' {$selected}>{$str}{$i}</option>";
-                                        }
-                                    @endphp
-                                </select>
-                            </div>
-                            <div class="col-md-1"><p class="form-control-static">:</p></div>
-                            <div class="input-group-btn">
-                                <select class="form-control ml-5" id="register_start_min" name="register_start_min">
-                                    @php
-                                        for($i=0; $i<=59; $i++) {
-                                            $str = (strlen($i) <= 1) ? '0' : '';
-                                            $selected = ($i == $data['RegisterStartMin']) ? "selected='selected'" : "";
-                                            echo "<option value='{$i}' {$selected}>{$str}{$i}</option>";
-                                        }
-                                    @endphp
-                                </select>
-                            </div>
-
-                            <div class="input-group-addon no-border no-bgcolor">~</div>
+                        </div>
+                        <select class="form-control ml-5" id="register_start_hour" name="register_start_hour">
+                            @php
+                                for($i=0; $i<=23; $i++) {
+                                    $str = (strlen($i) <= 1) ? '0' : '';
+                                    $selected = ($i == $data['RegisterStartHour']) ? "selected='selected'" : "";
+                                    echo "<option value='{$i}' {$selected}>{$str}{$i}</option>";
+                                }
+                            @endphp
+                        </select>
+                        <span>:</span>
+                        <select class="form-control" id="register_start_min" name="register_start_min">
+                            @php
+                                for($i=0; $i<=59; $i++) {
+                                    $str = (strlen($i) <= 1) ? '0' : '';
+                                    $selected = ($i == $data['RegisterStartMin']) ? "selected='selected'" : "";
+                                    echo "<option value='{$i}' {$selected}>{$str}{$i}</option>";
+                                }
+                            @endphp
+                        </select>
+                        <span class="pl-5 pr-5">~</span>
+                        <div class="input-group mb-0">
                             <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
                             <input type="text" class="form-control datepicker" id="register_end_datm" name="register_end_datm" value="{{$data['RegisterEndDay']}}">
-                            <div class="input-group-btn">
-                                <select class="form-control ml-5" id="register_end_hour" name="register_end_hour">
-                                    @php
-                                        for($i=0; $i<=23; $i++) {
-                                            $str = (strlen($i) <= 1) ? '0' : '';
-                                            $selected = ($i == $data['RegisterEndHour']) ? "selected='selected'" : "";
-                                            echo "<option value='{$i}' {$selected}>{$str}{$i}</option>";
-                                        }
-                                    @endphp
-                                </select>
-                            </div>
-                            <div class="col-md-1"><p class="form-control-static">:</p></div>
-                            <div class="input-group-btn">
-                                <select class="form-control ml-5" id="register_end_min" name="register_end_min">
-                                    @php
-                                        for($i=0; $i<=59; $i++) {
-                                            $str = (strlen($i) <= 1) ? '0' : '';
-                                            $selected = ($i == $data['RegisterEndMin']) ? "selected='selected'" : "";
-                                            echo "<option value='{$i}' {$selected}>{$str}{$i}</option>";
-                                        }
-                                    @endphp
-                                </select>
-                            </div>
                         </div>
+                        <select class="form-control ml-5" id="register_end_hour" name="register_end_hour">
+                            @php
+                                for($i=0; $i<=23; $i++) {
+                                    $str = (strlen($i) <= 1) ? '0' : '';
+                                    $selected = ($i == $data['RegisterEndHour']) ? "selected='selected'" : "";
+                                    echo "<option value='{$i}' {$selected}>{$str}{$i}</option>";
+                                }
+                            @endphp
+                        </select>
+                        <span>:</span>
+                        <select class="form-control" id="register_end_min" name="register_end_min">
+                            @php
+                                for($i=0; $i<=59; $i++) {
+                                    $str = (strlen($i) <= 1) ? '0' : '';
+                                    $selected = ($i == $data['RegisterEndMin']) ? "selected='selected'" : "";
+                                    echo "<option value='{$i}' {$selected}>{$str}{$i}</option>";
+                                }
+                            @endphp
+                        </select>
                     </div>
                 </div>
 

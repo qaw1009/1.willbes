@@ -2233,11 +2233,13 @@ table.auTable tr td {
 .willbes-Lec-Search .inputBox button.whiteBox span {
     color: #707070;
 }
+.InfoBtnOff,
 .InfoBtn {
     float: right;
     width: 110px;
     height: 30px;
 }
+.InfoBtnOff a,
 .InfoBtn a {
     background: #fff;
     display: block;
@@ -2250,6 +2252,7 @@ table.auTable tr td {
     border: 1px solid #c9c9c9;
     line-height: 28px;
 }
+.InfoBtnOff a span,
 .InfoBtn a span {
     font-size: 10px;
     display: inline-block;
@@ -3554,7 +3557,6 @@ table.classTable tr td.w-data {
 }
 
 /* subContainer : Content : 강의 > 수강신청 안내 : requestInfo */
-
 .willbes-Layer-requestInfo {
     display: none;
     background: #fff;
@@ -3628,6 +3630,8 @@ table.classTable tr td.w-data {
 .willbes-Layer-requestInfo .nBox.n4 {
     background: #333
 }
+
+
 
 
 /* subContainer : Content : 강의목차 : LeclistTable */

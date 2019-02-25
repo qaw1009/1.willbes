@@ -151,7 +151,7 @@
                 </button>
             </div>
 
-            <div class="InfoBtnOff"><a href="pass/offinfo/boardInfo/index">강의시간표 안내 <span>▶</span></a></div>
+            <div class="InfoBtnOff"><a href="/pass/offinfo/boardInfo/index">강의시간표 안내 <span>▶</span></a></div>
             <div class="InfoBtn mr10"><a href="#none" onclick="openWin('requestInfo')">학원수강 안내 <span>▶</span></a></div>
 
             <div id="requestInfo" class="willbes-Layer-requestInfo">
@@ -190,23 +190,23 @@
                                     <td class="tx-left">신규강좌 개설되었으나 아직 수강신청을 받지 않는 강좌</td>
                                 </tr>
                                 <tr>
-                                    <th><span class="nBox n3">온라인접수</span></th>
+                                    <th><span class="acadBox n2">온라인접수</span></th>
                                     <td class="tx-left">온라인에서만 수강신청 및 결제가 가능한 강좌</td>
                                 </tr>
                                 <tr>
-                                    <th><span class="nBox n4">방문접수</span></th>
+                                    <th><span class="acadBox n1">방문접수</span></th>
                                     <td class="tx-left">학원에 방문해야만 수강신청 및 결제가 가능한 강좌</td>
                                 </tr>
                                 <tr>
-                                    <th><span class="nBox n4">방문+온라인</span></th>
+                                    <th><span class="acadBox n3">방문+온라인</span></th>
                                     <td class="tx-left">온라인에서 수강신청 및 결제, 학원방문 후 수강신청 및 결제가 모두 가능한 강좌</td>
                                 </tr>
                                 <tr>
-                                    <th><span class="nBox n4">라이브</span></th>
+                                    <th><span class="tx-blue">라이브</span></th>
                                     <td class="tx-left">실시간으로 송출되는 영상으로 수강할 수 있는 강좌 (영상반)</td>
                                 </tr>
                                 <tr>
-                                    <th><span class="nBox n4">실강</span></th>
+                                    <th><span class="tx-blue">실강</span></th>
                                     <td class="tx-left">교수님이 수업하는 강의실에서 직접 수강할 수 있는 강좌</td>
                                 </tr>
                                 <tr>

@@ -175,28 +175,35 @@
                                     if (85 < num && num <= 90) val2_90++;
                                     if (90 < num && num <= 95) val2_95++;
                                     if (95 < num && num <= 100) val2_100++;
-                                }
 
-                                if(0 <= my_avg1 && my_avg1 <= 5)  g_my_val5 = my_avg1;
-                                if(5 <  my_avg1 && my_avg1 <= 10)  g_my_val10 = my_avg1;
-                                if(10 < my_avg1 && my_avg1 <= 15) g_my_val15 = my_avg1;
-                                if(15 < my_avg1 && my_avg1 <= 20) g_my_val20 = my_avg1;
-                                if(20 < my_avg1 && my_avg1 <= 25) g_my_val25 = my_avg1;
-                                if(25 < my_avg1 && my_avg1 <= 30) g_my_val30 = my_avg1;
-                                if(30 < my_avg1 && my_avg1 <= 35) g_my_val35 = my_avg1;
-                                if(35 < my_avg1 && my_avg1 <= 40) g_my_val40 = my_avg1;
-                                if(40 < my_avg1 && my_avg1 <= 45) g_my_val45 = my_avg1;
-                                if(45 < my_avg1 && my_avg1 <= 50) g_my_val50 = my_avg1;
-                                if(50 < my_avg1 && my_avg1 <= 55) g_my_val55 = my_avg1;
-                                if(55 < my_avg1 && my_avg1 <= 60) g_my_val60 = my_avg1;
-                                if(60 < my_avg1 && my_avg1 <= 65) g_my_val65 = my_avg1;
-                                if(65 < my_avg1 && my_avg1 <= 70) g_my_val70 = my_avg1;
-                                if(70 < my_avg1 && my_avg1 <= 75) g_my_val75 = my_avg1;
-                                if(75 < my_avg1 && my_avg1 <= 80) g_my_val80 = my_avg1;
-                                if(80 < my_avg1 && my_avg1 <= 85) g_my_val85 = my_avg1;
-                                if(85 < my_avg1 && my_avg1 <= 90) g_my_val90 = my_avg1;
-                                if(90 < my_avg1 && my_avg1 <= 95) g_my_val95 = my_avg1;
-                                if(95 < my_avg1 && my_avg1 <= 100) g_my_val100 = my_avg1;
+                                    if(j + 1 == others.length){
+                                        //그래프가 안이뻐서 이쁘게하는 노가다
+                                        var tempArray = [val2_5, val2_10, val2_15, val2_20, val2_25, val2_30, val2_35, val2_40, val2_45, val2_50, val2_55, val2_60, val2_70, val2_75, val2_80, val2_85, val2_90, val2_95, val2_100];
+                                        var top = 0;
+                                        top = Math.max.apply(null, tempArray);
+
+                                        if(0 <= my_avg1 && my_avg1 <= 5)  g_my_val5 = top;
+                                        if(5 <  my_avg1 && my_avg1 <= 10)  g_my_val10 = top;
+                                        if(10 < my_avg1 && my_avg1 <= 15) g_my_val15 = top;
+                                        if(15 < my_avg1 && my_avg1 <= 20) g_my_val20 = top;
+                                        if(20 < my_avg1 && my_avg1 <= 25) g_my_val25 = top;
+                                        if(25 < my_avg1 && my_avg1 <= 30) g_my_val30 = top;
+                                        if(30 < my_avg1 && my_avg1 <= 35) g_my_val35 = top;
+                                        if(35 < my_avg1 && my_avg1 <= 40) g_my_val40 = top;
+                                        if(40 < my_avg1 && my_avg1 <= 45) g_my_val45 = top;
+                                        if(45 < my_avg1 && my_avg1 <= 50) g_my_val50 = top;
+                                        if(50 < my_avg1 && my_avg1 <= 55) g_my_val55 = top;
+                                        if(55 < my_avg1 && my_avg1 <= 60) g_my_val60 = top;
+                                        if(60 < my_avg1 && my_avg1 <= 65) g_my_val65 = top;
+                                        if(65 < my_avg1 && my_avg1 <= 70) g_my_val70 = top;
+                                        if(70 < my_avg1 && my_avg1 <= 75) g_my_val75 = top;
+                                        if(75 < my_avg1 && my_avg1 <= 80) g_my_val80 = top;
+                                        if(80 < my_avg1 && my_avg1 <= 85) g_my_val85 = top;
+                                        if(85 < my_avg1 && my_avg1 <= 90) g_my_val90 = top;
+                                        if(90 < my_avg1 && my_avg1 <= 95) g_my_val95 = top;
+                                        if(95 < my_avg1 && my_avg1 <= 100) g_my_val100 = top;
+                                    }
+                                }
 
                                 // Some raw data (not necessarily accurate)
                                 var data = google.visualization.arrayToDataTable([

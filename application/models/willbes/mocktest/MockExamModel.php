@@ -1017,6 +1017,30 @@ class MockExamModel extends WB_Model
     }
 
     /**
+     * 응시자 평균점수 분포표용 데이터셋
+     * @param $ProdCode
+     * @return AVG
+     */
+    public function adjustPointData($prodcode){
+
+        $column = "
+            (ROUND(SUM(AdjustPoint) / COUNT(*),2)) AS AVG
+        ";
+
+        $from = "
+            FROM
+                {$this->_table['mockGrades']}
+        ";
+
+        $obder_by = " GROUP BY MrIdx";
+
+        $where = " WHERE ProdCode = " . $prodcode;
+        //echo "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
+        $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+        return $query->result_array();
+    }
+
+    /**
      * 과목별 문항분석 쿼리(mode = 1) , 영역 및 학습요소(mode = 2)
      * @param array $MpIdx $ProdCode
      * @return mixed

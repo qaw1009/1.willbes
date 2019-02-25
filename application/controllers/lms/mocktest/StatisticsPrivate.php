@@ -223,7 +223,12 @@ class StatisticsPrivate extends \app\controllers\BaseController
         $dataAdjust['tpct'] = round(100 - (($arrADRank[0] / $dataAdjust['COUNT']) * 100 - (100 / $dataAdjust['COUNT'])),2);
         $dataAdjust['admax'] = $dataAdjust['ADMAX'];
 
-        $dataSet[] = round($dataAdjust['AD'] / $dataAdjust['KCNT'] , 2);
+        //응시자 평균점수 분포표용
+        $dataGraph = $this->regGradeModel->adjustPointData($prodcode);
+
+        foreach ($dataGraph as $key => $val){
+            $dataSet[] = $val['AVG'];
+        }
 
         //종합분석(끝)
 

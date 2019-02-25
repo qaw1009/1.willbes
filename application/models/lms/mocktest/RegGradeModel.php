@@ -99,7 +99,7 @@ class RegGradeModel extends WB_Model
         $where .= $this->_conn->makeWhere($condition)->getMakeWhere(true) . "\n";
         $order = "ORDER BY MP.ProdCode DESC\n";
 
-
+        //echo "<pre>".'SELECT ' . $column . $from . $where . $order . $offset_limit."</pre>";
         $data = $this->_conn->query('SELECT ' . $column . $from . $where . $order . $offset_limit)->result_array();
         $count = $this->_conn->query($selectCount . $from . $where)->row()->cnt;
 
@@ -1394,6 +1394,30 @@ class RegGradeModel extends WB_Model
         $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
         return $query->result_array();
 
+    }
+
+    /**
+     * 응시자 평균점수 분포표용 데이터셋
+     * @param $ProdCode
+     * @return AVG
+     */
+    public function adjustPointData($prodcode){
+
+        $column = "
+            (ROUND(SUM(AdjustPoint) / COUNT(*),2)) AS AVG
+        ";
+
+        $from = "
+            FROM
+                {$this->_table['mockGrades']}
+        ";
+
+        $obder_by = " GROUP BY MrIdx";
+
+        $where = " WHERE ProdCode = " . $prodcode;
+        //echo "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
+        $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+        return $query->result_array();
     }
 
     /**

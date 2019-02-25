@@ -78,10 +78,10 @@
         </div>
         <table cellspacing="0" cellpadding="0" class="sheetTb2 mgB4">
             <colgroup>
-                <col style="width: 120px;"/>
+                <col style="width: 170px;"/>
                 <col style="width: 65px;"/>
                 <col style="width: 95px;"/>
-                <col width="*">
+                <col style="width: 240px;">
                 <col width="*">
             </colgroup>
             <thead>

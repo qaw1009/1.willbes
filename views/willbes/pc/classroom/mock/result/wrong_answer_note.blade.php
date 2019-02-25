@@ -98,7 +98,7 @@
                             @if($row['MwaIdx'])
                                 <li>
                                     <a name="que4" class="no">{{ $key + 1 }}.</a>
-                                    <span class="que"><img src="{{ $img_path }}{{ $row['file'] }}"></span>
+                                    <span class="que"><img src="{{ $row['QFilePath'] }}{{ $row['file'] }}"></span>
                                     <div class="btnAgR">
                                         <a href="javascript:noteDelete({{ $row['MqIdx'] }})" class="btnM1 btnlineBlue">문항 삭제 +</a>
                                         <a href="#none" class="btnM2 btnGray">메모</a>

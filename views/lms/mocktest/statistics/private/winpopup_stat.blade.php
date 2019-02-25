@@ -83,10 +83,10 @@
                 <h5 class="bold">{{ $row['MP'] }}</span> 영역 및 학습요소</h5>
                 <table id="list_ajax_table_model" class="table table-striped table-bordered">
                     <colgroup>
-                        <col style="width: 120px;"/>
+                        <col style="width: 170px;"/>
                         <col style="width: 65px;"/>
                         <col style="width: 95px;"/>
-                        <col style="width: 550px;">
+                        <col style="width: 340px;">
                         <col width="*">
                     </colgroup>
                     <thead>

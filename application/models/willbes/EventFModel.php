@@ -384,6 +384,7 @@ class EventFModel extends WB_Model
                 'MemName' => $this->session->userdata('mem_name'),
                 'CommentType' => 'U',
                 'Comment' => $requestData['event_comment'],
+                'EmoticonNo' => element('sns_icon', $requestData),
                 'RegIp' => $this->input->ip_address()
             ];
 
@@ -650,6 +651,40 @@ class EventFModel extends WB_Model
 
         return true;
     }
+
+    /**
+     * 프로모션 댓글 리스트
+     * @param $is_count
+     * @param $arr_condition
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
+     */
+    public function listEventForCommentPromotion($is_count, $arr_condition, $limit = null, $offset = null, $order_by = [])
+    {
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $column = 'a.CIdx AS Idx, a.MemIdx, IFNULL(a.MemIdx, \'\'), a.MemName, a.Comment AS Content, a.EmoticonNo, a.RegDatm, DATE_FORMAT(a.RegDatm, \'%Y-%m-%d\') AS RegDay, \'2\' AS RegType';
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $from = "
+            FROM {$this->_table['event_comment']} AS a
+            INNER JOIN {$this->_table['event_lecture']} AS b ON a.ElIdx = b.ElIdx
+            INNER JOIN {$this->_table['event_r_category']} AS c ON a.ElIdx = c.ElIdx AND c.IsStatus = 'Y'
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
     private function __userAgent(&$agent_short, &$agent, &$platform)
     {
         $this->load->library('user_agent');

@@ -61,7 +61,6 @@ class BasePromotion extends \app\controllers\FrontController
         $list = [];
         $method = 'POST';
         $arr_input = array_merge($this->_reqG(null));
-        $get_params = http_build_query($arr_input);
         $get_page_params = 'cate_code=' . element('cate_code', $arr_input) . '&event_idx=' . element('event_idx', $arr_input) . '&pattern=' . element('pattern', $arr_input);
         $onoff_type = element('pattern', $arr_input);
 
@@ -77,8 +76,11 @@ class BasePromotion extends \app\controllers\FrontController
         $arr_base['page_url'] = '/promotion/frameCommentList';
         $arr_base['comment_create_type'] = $comment_create_type;
 
-        $arr_condition_notice = [];
-        $arr_condition_event_comment = [
+        $arr_base['set_params '] = [
+            'event_idx' => element('event_idx', $arr_input)
+        ];
+
+        $arr_condition = [
             'EQ' => [
                 'a.ElIdx' => element('event_idx', $arr_input),
                 'a.IsStatus' => 'Y',
@@ -87,11 +89,11 @@ class BasePromotion extends \app\controllers\FrontController
             ]
         ];
 
-        $total_rows = $this->eventFModel->listEventForComment(true, $arr_condition_notice, $arr_condition_event_comment);
+        $total_rows = $this->eventFModel->listEventForCommentPromotion(true, $arr_condition);
         $paging = $this->pagination($arr_base['page_url'].'?' . $get_page_params, $total_rows, $this->_paging_limit, $this->_paging_count, true);
 
         if ($total_rows > 0) {
-            $list = $this->eventFModel->listEventForComment(false, $arr_condition_notice, $arr_condition_event_comment, $paging['limit'], $paging['offset']);
+            $list = $this->eventFModel->listEventForCommentPromotion(false, $arr_condition, $paging['limit'], $paging['offset'], ['A.ElIdx' => 'DESC']);
         }
 
         $view_file = 'willbes/pc/promotion/frame_comment_list';
@@ -102,5 +104,44 @@ class BasePromotion extends \app\controllers\FrontController
             'paging' => $paging,
             'method' => $method
         ],false);
+    }
+
+    public function commentStore()
+    {
+        $rules = [
+            ['field' => 'event_idx', 'label' => '이벤트식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'event_comment', 'label' => '댓글', 'rules' => 'trim|required']
+        ];
+
+        if (empty($this->session->userdata('mem_idx')) === true) {
+            $this->json_error('로그인 후 이용해주세요.');
+            return;
+        }
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->eventFModel->addEventComment($this->_reqP(null, false));
+        $this->json_result($result, '등록되었습니다.', $result);
+    }
+
+    public function commentDel($params = [])
+    {
+        $comment_idx = $params[0];
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        if (empty($comment_idx) === true) {
+            $result = false;
+        } else {
+            $result = $this->eventFModel->delEventComment($comment_idx);
+        }
+        $this->json_result($result, '삭제되었습니다.', $result);
     }
 }

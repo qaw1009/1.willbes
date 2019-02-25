@@ -114,7 +114,7 @@ class EventFModel extends WB_Model
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 
-    public function findEvent($arr_condition)
+    public function findEvent($arr_condition, $add_type = null)
     {
         $column = '
             A.ElIdx, A.SiteCode, A.CampusCcd, A.BIdx, A.IsBest, A.TakeType, A.RequestType, A.EventName, A.PopupTitle, A.ContentType, A.Content, A.CommentUseArea, A.LimitType,
@@ -142,7 +142,10 @@ class EventFModel extends WB_Model
             LEFT JOIN {$this->_table['pms_professor']} as R ON Q.wProfIdx = R.wProfIdx
         ";
 
-        $default_arr_condition = ['NOT' => ['A.RequestType' => '5']];
+        $default_arr_condition = [];
+        if ($add_type != 'promotion') {
+            $default_arr_condition = ['NOT' => ['A.RequestType' => '5']];
+        }
         $arr_condition = array_merge_recursive($arr_condition, $default_arr_condition);
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
@@ -372,12 +375,31 @@ class EventFModel extends WB_Model
     /**
      * 댓글 등록 처리
      * @param array $requestData
+     * @param string $add_type
      * @return array|bool
      */
-    public function addEventComment($requestData = [])
+    public function addEventComment($requestData = [], $add_type = null)
     {
         $this->_conn->trans_begin();
         try {
+            $arr_condition = [
+                'EQ'=>[
+                    'A.ElIdx' => element('event_idx', $requestData),
+                    'A.IsStatus' => 'Y'
+                ],
+                'GTE' => [
+                    'A.RegisterEndDate' => date('Y-m-d H:i') . ':00'
+                ]
+            ];
+            $event_data = $this->findEvent($arr_condition, $add_type);
+            if (count($event_data) < 1) {
+                throw new \Exception('조회된 이벤트 정보가 없습니다.');
+            }
+
+            if ($event_data['TakeType'] == '1' && empty($this->session->userdata('mem_idx')) === true) {
+                throw new \Exception('로그인 후 이용해주세요.');
+            }
+
             $inputData = [
                 'ElIdx' => $requestData['event_idx'],
                 'MemIdx' => $this->session->userdata('mem_idx'),

@@ -264,7 +264,7 @@ class MailModel extends WB_Model
         } else {
             $column = '
                 b.SendIdx, b.SendGroupTypeCcd, b.SiteCode, b.SendPatternCcd, b.SendTypeCcd, b.SendOptionCcd, b.SendStatusCcd, b.AdvertisePatternCcd,
-                b.CsTel, b.SendMail, b.SendAttachFilePath, b.SendAttachFileName, b.SendAttachRealFileName, b.Title, b.Content, b.AdvertiseAgreeContent,
+                b.CsTelCcd, b.SendMail, b.SendAttachFilePath, b.SendAttachFileName, b.SendAttachRealFileName, b.Title, b.Content, b.AdvertiseAgreeContent,
                 b.SendDatm, b.IsUse, b.IsStatus, b.RegDatm, b.RegAdminIdx, b.RegIp, b.UpdDatm, b.UpdAdminIdx,
                 a.EmailSendIdx, a.MemIdx, a.Receive_MailEnc, a.Receive_Name, a.MailRcvStatus,
                 fn_ccd_name(b.SendStatusCcd) AS SendStatusCcdName,

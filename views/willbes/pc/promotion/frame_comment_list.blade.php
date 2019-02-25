@@ -112,7 +112,7 @@
                         {{--<img src="http://file3.willbes.net/new_cop/character/17.png" alt=""/>--}}
                     </span>
                     <div class="crtReply">
-                        <p>유수*
+                        <p>{!! $row['MemIdx'] == sess_data('mem_idx') ? $row['MemName'] : hpSubString($row['MemName'],0,2,'*') !!}
                             @if(sess_data('mem_idx') === $row['MemIdx'])
                                 <a class="btn-comment-del" data-comment-idx="{{$row['Idx']}}" href="#none">삭제</a>
                             @endif

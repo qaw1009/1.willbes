@@ -237,10 +237,11 @@ class MockResult extends \app\controllers\FrontController
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
 
         $prodcode = element('prodcode',$arr_input);
+        $mridx = element('mridx',$arr_input);
 
         $arr_condition = [
             'EQ' => [
-                'MR.MemIdx' => $_SESSION['mem_idx'],
+                'MR.MrIdx' => $mridx,
                 'MR.ProdCode' => $prodcode
             ]
         ];
@@ -286,7 +287,8 @@ class MockResult extends \app\controllers\FrontController
             'dataSubjectV2' => $dataSubjectV2,
             'memName'  => $_SESSION['mem_name'],
             'pList' => $pList,
-            'prodcode' => $prodcode
+            'prodcode' => $prodcode,
+            'mridx' => $mridx
         ]);
     }
 

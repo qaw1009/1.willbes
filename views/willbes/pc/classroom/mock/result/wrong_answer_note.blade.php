@@ -22,6 +22,7 @@
         <form class="form-horizontal" id="url_form" name="url_form" method="POST" onsubmit="return false;">
             {!! csrf_field() !!}
             <input type="hidden" id='prodcode' name="prodcode" value="{{ $prodcode }}" />
+            <input type="hidden" id='mridx' name="mridx" value="{{ $mridx }}" />
             <input type="hidden" id="wrongYn" name="wrongYn" value="N" />
             <input type="hidden" id='umpidx' name="mpidx" />
         </form>

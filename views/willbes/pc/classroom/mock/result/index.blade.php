@@ -89,14 +89,14 @@
                                             {{ round($row['TCNT'] / $row['KCNT'], 2) }}
                                         </td>
                                         @if(substr($row['GradeOpenDatm'],0,10) <= date('Y-m-d') && substr($row['GradeOpenDatm'],0,10) != '0000-00-00' && $row['TCNT'] > 0)
-                                            <td class="w-report tx-red"><a href="javascript:popwin({{ $row['ProdCode'] }}, 1)">[성적확인]</a></td>
+                                            <td class="w-report tx-red"><a href="javascript:popwin({{ $row['ProdCode'] }}, 1, {{ $row['MrIdx'] }})">[성적확인]</a></td>
                                         @else
                                         <td class="w-report">집계중</td>
                                         @endif
                                         <td class="w-file on tx-blue">
                                             @if(substr($row['GradeOpenDatm'],0,10) <= date('Y-m-d') && substr($row['GradeOpenDatm'],0,10) != '0000-00-00' && $row['TCNT'] > 0)
                                                 <a href="javascript:selQaFileAjax({{ $row['ProdCode'] }});">[문제/해설]</a><br>
-                                                <a href="javascript:popwin({{ $row['ProdCode'] }}, 2)">[오답노트]</a>
+                                                <a href="javascript:popwin({{ $row['ProdCode'] }}, 2, {{ $row['MrIdx'] }})">[오답노트]</a>
                                             @else
                                             @endif
                                         </td>
@@ -159,19 +159,19 @@
         <!-- End Container -->
         <script>
             var win = '';
-            function popwin(prodcode, mode){
+            function popwin(prodcode, mode, mridx){
                 var _url = '';
                 if(mode == 1){
-                    _url = '{{ front_url('/classroom/MockResult/winStatTotal?prodcode=') }}' + prodcode;
+                    _url = '{{ front_url('/classroom/MockResult/winStatTotal?prodcode=') }}' + prodcode + '&mridx=' + mridx;
                 }else{
-                    _url = '{{ front_url('/classroom/MockResult/winAnswerNote?prodcode=') }}' + prodcode;
+                    _url = '{{ front_url('/classroom/MockResult/winAnswerNote?prodcode=') }}' + prodcode + '&mridx=' + mridx;
                 }
                 if (win == '') {
-                    win = window.open(_url, 'mockPopupStat', 'width=980, height=845, scrollbars=yes, resizable=yes');
+                    win = window.open(_url, 'mockPopupStat', 'width=1024, height=845, scrollbars=yes, resizable=yes');
                     win.focus();
                 }else{
                     if(win.closed){
-                        win = window.open(_url, 'mockPopupStat', 'width=980, height=845, scrollbars=yes, resizable=yes');
+                        win = window.open(_url, 'mockPopupStat', 'width=1024, height=845, scrollbars=yes, resizable=yes');
                         win.focus();
                     } else {
                         //alert('팝업떠있음');

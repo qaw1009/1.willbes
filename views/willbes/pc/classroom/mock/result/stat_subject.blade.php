@@ -58,7 +58,7 @@
             <tr>
                 <td>정답률</td>
                 @foreach($dataSubject[$key]['QAVR'] as $key2 => $row2)
-                    <td>{{ $row2 }}</td>
+                    <td>{{ $row2 }}%</td>
                 @endforeach
             </tr>
             <tr>
@@ -113,6 +113,7 @@
     <form class="form-horizontal" id="url_form" name="url_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         <input type="hidden" id='prodcode' name="prodcode" value="{{ $prodcode }}" />
+        <input type="hidden" id='mridx' name="mridx" value="{{ $mridx }}" />
     </form>
 </div>
 <!-- End Popup -->

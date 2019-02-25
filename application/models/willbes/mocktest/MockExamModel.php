@@ -882,46 +882,36 @@ class MockExamModel extends WB_Model
      * @param array $MpIdx $ProdCode
      * @return mixed
      */
-    public function gradeCall($ProdCode, $mode){
+    public function gradeCall($ProdCode, $mode, $mridx){
 
-        if($mode == 'org'){
+        if ($mode == 'org') {
             $column = "
                 MemIdx, SUM(OrgPoint) AS ORG,
                 (
                     SELECT COUNT(*) FROM (
-                        SELECT ProdCode, COUNT(*) FROM {$this->_table['mockGrades']} WHERE ProdCode = ".$ProdCode." GROUP BY MemIdx
+                        SELECT ProdCode, COUNT(*) FROM {$this->_table['mockGrades']} WHERE ProdCode = " . $ProdCode . " GROUP BY MrIdx
                     ) AS A
                 ) AS COUNT,
                 (
-                    SELECT COUNT(*) FROM lms_mock_grades WHERE ProdCode = ".$ProdCode." GROUP BY MemIdx LIMIT 1
-                ) AS KCNT
-            ";
-
-            $from = "
-                FROM
-                    lms_mock_grades AS MG
-            ";
-
-            $obder_by = " GROUP BY MemIdx 
-		                  ORDER BY ORG DESC ";
-
-            $where = " WHERE ProdCode = ".$ProdCode;
-        }else{
-            $column = "
-                MemIdx, SUM(AdjustPoint) AS AD,
-                (
-                    SELECT COUNT(*) FROM (
-                        SELECT ProdCode, COUNT(*) FROM {$this->_table['mockGrades']} WHERE ProdCode = ".$ProdCode." GROUP BY MemIdx
-                    ) AS A
-                ) AS COUNT,
-                (
-                    SELECT COUNT(*) FROM {$this->_table['mockGrades']} WHERE ProdCode = ".$ProdCode." GROUP BY MemIdx LIMIT 1
+                    SELECT COUNT(*) FROM {$this->_table['mockGrades']} WHERE ProdCode = " . $ProdCode . " GROUP BY MrIdx LIMIT 1
                 ) AS KCNT,
-                (
-                    SELECT MAX(ad) FROM(
-                        SELECT SUM(AdjustPoint) AS ad FROM {$this->_table['mockGrades']} WHERE ProdCode = ".$ProdCode." GROUP BY MemIdx
+                ((
+                	SELECT SUM(OrgPoint) FROM {$this->_table['mockGrades']} WHERE ProdCode = " . $ProdCode . "
+                )/((
+                    SELECT COUNT(*) FROM {$this->_table['mockGrades']} WHERE ProdCode = " . $ProdCode . " GROUP BY MrIdx LIMIT 1
+                ) * (
+                    SELECT COUNT(*) FROM (
+                        SELECT ProdCode, COUNT(*) FROM {$this->_table['mockGrades']} WHERE ProdCode = " . $ProdCode . " GROUP BY MrIdx
                     ) AS A
-                ) AS ADMAX
+                ))) AS tavg,
+                ((
+                	SELECT SUM(OrgPoint) FROM {$this->_table['mockGrades']} WHERE ProdCode = " . $ProdCode . "
+                )/(
+                    SELECT COUNT(*) FROM (
+                        SELECT ProdCode, COUNT(*) FROM {$this->_table['mockGrades']} WHERE ProdCode = " . $ProdCode . " GROUP BY MrIdx
+                    ) AS A
+                )) AS tsum,
+                fn_org_pointsum_rank('".$ProdCode."','".$mridx."') AS OrgRank
             ";
 
             $from = "
@@ -929,14 +919,59 @@ class MockExamModel extends WB_Model
                     {$this->_table['mockGrades']} AS MG
             ";
 
-            $obder_by = " GROUP BY MemIdx 
-		                  ORDER BY AD DESC ";
+            $obder_by = " GROUP BY MrIdx 
+		                  ORDER BY ORG DESC ";
 
-            $where = " WHERE ProdCode = ".$ProdCode;
+            $where = " WHERE ProdCode = " . $ProdCode . " AND MrIdx=" . $mridx;
+        } else {
+            $column = "
+                MemIdx, SUM(AdjustPoint) AS AD,
+                (
+                    SELECT COUNT(*) FROM (
+                        SELECT ProdCode, COUNT(*) FROM {$this->_table['mockGrades']} WHERE ProdCode = " . $ProdCode . " GROUP BY MrIdx
+                    ) AS A
+                ) AS COUNT,
+                (
+                    SELECT COUNT(*) FROM {$this->_table['mockGrades']} WHERE ProdCode = " . $ProdCode . " GROUP BY MrIdx LIMIT 1
+                ) AS KCNT,
+                (
+                    SELECT MAX(ad) FROM(
+                        SELECT SUM(AdjustPoint) AS ad FROM {$this->_table['mockGrades']} WHERE ProdCode = " . $ProdCode . " GROUP BY MrIdx
+                    ) AS A
+                ) AS ADMAX,
+                ((
+                	SELECT SUM(AdjustPoint) FROM {$this->_table['mockGrades']} WHERE ProdCode = " . $ProdCode . "
+                )/((
+                    SELECT COUNT(*) FROM {$this->_table['mockGrades']} WHERE ProdCode = " . $ProdCode . " GROUP BY MrIdx LIMIT 1
+                ) * (
+                    SELECT COUNT(*) FROM (
+                        SELECT ProdCode, COUNT(*) FROM {$this->_table['mockGrades']} WHERE ProdCode = " . $ProdCode . " GROUP BY MrIdx
+                    ) AS A
+                ))) AS tavg,
+                ((
+                	SELECT SUM(AdjustPoint) FROM {$this->_table['mockGrades']} WHERE ProdCode = " . $ProdCode . "
+                )/(
+                    SELECT COUNT(*) FROM (
+                        SELECT ProdCode, COUNT(*) FROM {$this->_table['mockGrades']} WHERE ProdCode = " . $ProdCode . " GROUP BY MrIdx
+                    ) AS A
+                )) AS tsum,
+                fn_adjust_pointsum_rank('".$ProdCode."','".$mridx."') AS ADRank
+            ";
+
+            $from = "
+                FROM
+                    {$this->_table['mockGrades']} AS MG
+            ";
+
+            $obder_by = " GROUP BY MrIdx 
+		                  ORDER BY AD DESC, MemIdx";
+
+            $where = " WHERE ProdCode = " . $ProdCode . " AND MrIdx=" . $mridx;
         }
-        //echo "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
+
+        //echo '<pre>select ' . $column . $from . $where . $obder_by.'</pre>';
         $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
-        return $query->result_array();
+        return $query->row_array();
 
     }
 
@@ -945,13 +980,13 @@ class MockExamModel extends WB_Model
      * @param array $MpIdx $ProdCode
      * @return mixed
      */
-    public function gradeDetailCall($ProdCode){
+    public function gradeDetailCall($ProdCode, $MrIdx){
 
         $column = "
             MR.MemIdx,
             (
                 SELECT COUNT(*) FROM (
-                    SELECT ProdCode, COUNT(*) FROM {$this->_table['mockGrades']} GROUP BY MemIdx
+                    SELECT ProdCode, COUNT(*) FROM {$this->_table['mockGrades']} GROUP BY MrIdx
                 ) AS A
                 WHERE ProdCode = MR.ProdCode	
             ) AS COUNT,
@@ -969,13 +1004,12 @@ class MockExamModel extends WB_Model
                 JOIN {$this->_table['mockRegister']} AS MR ON PM.ProdCode = MR.ProdCode AND MR.IsStatus = 'Y' 
                 JOIN {$this->_table['mockRegisterR']} AS RP ON PM.ProdCode = RP.ProdCode AND MR.MrIdx = RP.MrIdx 
                 JOIN {$this->_table['mockProductExam']} AS MP ON RP.MpIdx = MP.MpIdx AND RP.ProdCode = MP.ProdCode AND MP.IsStatus = 'Y'
-                JOIN {$this->_table['mockGrades']} AS MG ON MR.MemIdx = MG.MemIdx AND RP.MpIdx = MG.MpIdx
+                JOIN {$this->_table['mockGrades']} AS MG ON MR.MrIdx = MG.MrIdx AND RP.MpIdx = MG.MpIdx
         ";
 
-        $obder_by = " ORDER BY MockType, OrderNum, MG.MpIdx, AdjustPoint DESC ";
+        $obder_by = " ORDER BY MockType, OrderNum, AdjustPoint DESC  ";
 
-        $where = " WHERE MR.ProdCode = ".$ProdCode;
-
+        $where = " WHERE MR.ProdCode = " . $ProdCode . " AND MR.MrIdx=" . $MrIdx;
         //echo "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
         $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
         return $query->result_array();

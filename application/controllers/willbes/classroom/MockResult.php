@@ -96,18 +96,20 @@ class MockResult extends \app\controllers\FrontController
     }
 
     /**
-     * 온라인 모의고사 리스트페이지
+     * 온라인 성적확인 팝업
      * @return object|string
      */
     public function winStatTotal()
     {
+
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
 
         $prodcode = element('prodcode',$arr_input);
+        $mridx = element('mridx',$arr_input);
 
         $arr_condition = [
             'EQ' => [
-                'MR.MemIdx' => $_SESSION['mem_idx'],
+                'MR.MrIdx' => $mridx,
                 'MR.ProdCode' => $prodcode
             ]
         ];
@@ -115,19 +117,16 @@ class MockResult extends \app\controllers\FrontController
         $subject_list = $this->mockExamModel->subjectCall($arr_condition);
         $productInfo = $this->mockExamModel->productInfo($arr_condition);
         //종합분석
-        $dataOrg    = $this->mockExamModel->gradeCall($prodcode, 'org');
-        $dataAdjust = $this->mockExamModel->gradeCall($prodcode, 'adjust');
-        $dataDetail = $this->mockExamModel->gradeDetailCall($prodcode);
-
-        //var_dump($dataDetail);
-
+        $dataOrg    = $this->mockExamModel->gradeCall($prodcode, 'org', $mridx);
+        $dataAdjust = $this->mockExamModel->gradeCall($prodcode, 'adjust', $mridx);
+        $dataDetail = $this->mockExamModel->gradeDetailCall($prodcode, $mridx);
 
         $Rank = 1;
         $minusRank = 1;
         $tempPoint = 0;
         $tempMp = '';
+
         foreach($dataDetail as $key => $val){
-            $MemIdx = $val['MemIdx'];
             $mpidx = $val['MpIdx'];
             $AdjustPoint = $val['AdjustPoint'];
 
@@ -144,98 +143,45 @@ class MockResult extends \app\controllers\FrontController
                 $minusRank = 1;
             }
 
-            $dataDetail[$MemIdx][$mpidx]['grade'] = $val['OrgPoint'];
-            $dataDetail[$MemIdx][$mpidx]['gradeA'] = $val['AdjustPoint'];
-            $dataDetail[$MemIdx][$mpidx]['avg'] = $val['ORGSUM'] ? round($val['ORGSUM'] / $val['COUNT'],2) : 0;
-            $dataDetail[$MemIdx][$mpidx]['avgA'] = $val['ADSUM'] ? round($val['ADSUM'] / $val['COUNT'],2) : 0;
-            $dataDetail[$MemIdx][$mpidx]['max'] = round($val['ORGMAX'],2);
-            $dataDetail[$MemIdx][$mpidx]['maxA'] = round($val['ADMAX'],2);
-            $dataDetail[$MemIdx][$mpidx]['orank'] = $val['Rank']."/".$val['COUNT'];
-            $dataDetail[$MemIdx][$mpidx]['arank'] = $rRank."/".$val['COUNT'];
+            $dataDetail[$mpidx]['grade'] = $val['OrgPoint'];
+            $dataDetail[$mpidx]['gradeA'] = $val['AdjustPoint'];
+            $dataDetail[$mpidx]['avg'] = $val['ORGSUM'] ? round($val['ORGSUM'] / $val['COUNT'],2) : 0;
+            $dataDetail[$mpidx]['avgA'] = $val['ADSUM'] ? round($val['ADSUM'] / $val['COUNT'],2) : 0;
+            $dataDetail[$mpidx]['max'] = round($val['ORGMAX'],2);
+            $dataDetail[$mpidx]['maxA'] = round($val['ADMAX'],2);
+            $dataDetail[$mpidx]['orank'] = $val['Rank']."/".$val['COUNT'];
+            $dataDetail[$mpidx]['arank'] = $rRank."/".$val['COUNT'];
 
             $tempPoint = $val['AdjustPoint'];
             $tempMp = $val['MpIdx'];
             $Rank++;
         }
 
-        //var_dump($dataDetail);
-
-
         if($dataOrg){
-            $orgTotal = 0;
-            $orgtnum = 0;
-            $Rank = 1;
-            $minusRank = 1;
-            $tempPoint = 0;
-            foreach($dataOrg as $key => $val){
-
-                $Point = round($val['ORG'] / $val['KCNT'] , 2);
-                if ($tempPoint == $Point) {
-                    $rRank = $Rank - $minusRank;
-                    $minusRank++;
-                } else {
-                    $rRank = $Rank;
-                    $minusRank = 1;
-                }
-
-                $memidx = $val['MemIdx'];
-                $dataOrg[$memidx]['grade'] = $val['ORG'];
-                $dataOrg[$memidx]['avg'] = $Point;
-                $orgTotal = $orgTotal + $val['ORG'];
-                $orgtnum = $val['COUNT'] * $val['KCNT'];
-                $dataOrg[$memidx]['rank'] = $rRank.'/'.$val['COUNT'];
-                $dataOrg[$memidx]['tpct'] = round(100 - (($rRank / $val['COUNT']) * 100 - (100 / $val['COUNT'])),2);
-
-                $tempPoint = $Point;
-                $Rank++;
-            }
+            $Point = round($dataOrg['ORG'] / $dataOrg['KCNT'] , 2);
+            $OrgRank = $dataOrg['OrgRank'];
+            $arrOrgRank = explode('/',$OrgRank);
+            $dataOrg['grade'] = $dataOrg['ORG'];
+            $dataOrg['avg'] = $Point;
+            $dataOrg['rank'] = $OrgRank;
+            $dataOrg['tpct'] = round(100 - (( $arrOrgRank[0] / $dataOrg['COUNT']) * 100 - (100 / $dataOrg['COUNT'])),2);
+            $dataOrg['tavg'] = $dataOrg['tavg'];
+            $dataOrg['tsum'] = $dataOrg['tsum'];
         }
 
+        $ADRank = $dataAdjust['ADRank'];
+        $arrADRank = explode('/',$ADRank);
 
-        if($orgTotal) $dataOrg['tavg'] = $orgTotal ? round($orgTotal / $orgtnum, 2) : 0;
+        $dataAdjust['grade'] = round($dataAdjust['AD'],2);
+        $dataAdjust['avg'] = round($dataAdjust['AD'] / $dataAdjust['KCNT'] , 2);
+        $dataAdjust['rank'] =  $ADRank;
+        $dataAdjust['rankS'] = $arrADRank[0];
+        $dataAdjust['tavg'] = $dataAdjust['tavg'];
+        $dataAdjust['tsum'] = $dataAdjust['tsum'];
+        $dataAdjust['tpct'] = round(100 - (($arrADRank[0] / $dataAdjust['COUNT']) * 100 - (100 / $dataAdjust['COUNT'])),2);
+        $dataAdjust['admax'] = $dataAdjust['ADMAX'];
 
-        $adTotal = 0;
-        $tcnt = 0;
-        $memArr = array();
-        $Rank = 1;
-        $minusRank = 1;
-        $tempPoint = 0;
-
-        foreach($dataAdjust as $key => $val){
-            $MemIdx = $val['MemIdx'];
-            $tcnt   = $val['COUNT'];
-            $ADPoint = $val['AD'];
-
-            if ($tempPoint == $ADPoint) {
-                $rRank = $Rank - $minusRank;
-                $minusRank++;
-            } else {
-                $rRank = $Rank;
-                $minusRank = 1;
-            }
-
-            $dataAdjust[$MemIdx]['grade'] = round($val['AD'],2);
-            $dataAdjust[$MemIdx]['avg'] = round($val['AD'] / $val['KCNT'] , 2);
-            $adTotal = $adTotal + $val['AD'];
-            $dataAdjust[$MemIdx]['rank'] =  $rRank.'/'.$val['COUNT'];
-            $dataAdjust[$MemIdx]['rankS'] = $rRank;
-
-            $dataAdjust[$MemIdx]['tpct'] = round(100 - (($rRank / $val['COUNT']) * 100 - (100 / $val['COUNT'])),2);
-            $dataAdjust[$MemIdx]['admax'] = $val['ADMAX'];
-            //응시멤버
-            $memArr[] = $MemIdx;
-
-            $dataSet[] = round($val['AD'] / $val['KCNT'] , 2);
-
-            $tempPoint = $val['AD'];
-            $Rank++;
-
-        }
-
-        if($adTotal) $dataAdjust['tavg'] = $adTotal ? round($adTotal / $orgtnum, 2) : 0;
-        if($adTotal) $dataAdjust['tsum'] = $adTotal ? round($adTotal / $tcnt, 2) : 0;
-        //var_dump($dataOrg);
-        //var_dump($dataAdjust);
+        $dataSet[] = round($dataAdjust['AD'] / $dataAdjust['KCNT'] , 2);
 
         //종합분석(끝)
 
@@ -247,7 +193,7 @@ class MockResult extends \app\controllers\FrontController
         $pList = array();
         $pList2 = array();
         $tMpIdx = array();
-        //var_dump($subject_list);
+
         foreach ($subject_list as $key => $val){
             if($val['MockType'] == 'E'){
                 $pCnt++;
@@ -267,9 +213,7 @@ class MockResult extends \app\controllers\FrontController
             'productInfo' => $productInfo,
             'dataOrgAll'     => $dataOrg,
             'dataOrg'     => $dataOrg,
-            'dataAdjustAll' => $dataAdjust,
             'dataAdjust' => $dataAdjust,
-            'memName'  => $_SESSION['mem_name'],
             'pList' => $pList,
             'sList' => $sList,
             'pList2' => $pList2,
@@ -277,10 +221,10 @@ class MockResult extends \app\controllers\FrontController
             'pCnt' => $pCnt,
             'sCnt' => $sCnt,
             'dataDetail' => $dataDetail,
-            'memArr' => $memArr,
             'prodcode' => $prodcode,
-            'mem_idx' => $_SESSION['mem_idx'],
-            'dataSet' => $dataSet
+            'mridx' => $mridx,
+            'dataSet' => $dataSet,
+            'memName'  => $_SESSION['mem_name']
         ]);
     }
 
@@ -357,6 +301,7 @@ class MockResult extends \app\controllers\FrontController
         $prodcode = element('prodcode',$arr_input);
         $mpidx = element('mpidx',$arr_input);
         $MalIdx = element('MalIdx',$arr_input);
+        $mridx = element('mridx',$arr_input);
 
         $MalArr = array();
         if(empty($MalIdx) === false){
@@ -368,7 +313,7 @@ class MockResult extends \app\controllers\FrontController
 
         $arr_condition = [
             'EQ' => [
-                'MR.MemIdx' => $_SESSION['mem_idx'],
+                'MR.MrIdx' => $mridx,
                 'MR.ProdCode' => $prodcode
             ]
         ];
@@ -400,7 +345,8 @@ class MockResult extends \app\controllers\FrontController
             'pList' => $pList,
             'prodcode' => $prodcode,
             'answerNote' => $answerNote,
-            'MalArr' => $MalArr
+            'MalArr' => $MalArr,
+            'mridx' => $mridx
         ]);
     }
 

@@ -109,6 +109,9 @@
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiNoncomPop') }}" target="_blank">부사관 PASS 유튜브 팝업</a></li>
                 <li><p>공무원 학원 ▼</p></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_offGosiArmyQuestion') }}" target="_blank">군무원 이론요약&단원별 문제풀이</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offGosiFianlTest') }}" target="_blank">시.확.찢 FINAL 모의고사</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offGosi106dayLast') }}" target="_blank">9급 106일 마무리반</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offGosi106dayLast') }}" target="_blank">7급 170일 마무리반</a></li>
         </div>
     </li>
     <li>

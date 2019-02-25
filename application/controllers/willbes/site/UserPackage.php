@@ -21,7 +21,6 @@ class UserPackage extends \app\controllers\FrontController
      */
     public function show($params = [])
     {
-
         $lidx = element('lidx', $params);
         $prod_code = element('prod-code',$params);
 
@@ -42,8 +41,12 @@ class UserPackage extends \app\controllers\FrontController
             show_alert('상품정보가 존재하지 않습니다.', '/');
         }
 
-
+        // 판매가격 정보 확인
         $data['PackSaleData'] = json_decode($data['PackSaleData'], true);
+        if (empty($data['PackSaleData']) === true) {
+            show_alert('판매가격 정보가 없습니다.', 'back');
+        }
+
         $data_sublist = $this->packageFModel->subListProduct($this->_learn_pattern,$prod_code,[],null,null,$order_by);   //패키지 하위 강좌 목록
         $selected_subjects = array_pluck($data_sublist, 'SubjectName', 'SubjectIdx');
 

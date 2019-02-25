@@ -105,7 +105,6 @@ class Package extends \app\controllers\FrontController
      */
     public function show($params = [])
     {
-
         $pack = element('pack', $params);
         $prod_code = element('prod-code',$params);
 
@@ -138,7 +137,12 @@ class Package extends \app\controllers\FrontController
         }
 
         $data['contents'] = $this->packageFModel->findProductContents($prod_code); //상품 컨텐츠 추출
+
+        // 판매가격 정보 확인
         $data['ProdPriceData'] = json_decode($data['ProdPriceData'], true); //상품 가격 정보 치환
+        if (empty($data['ProdPriceData']) === true) {
+            show_alert('판매가격 정보가 없습니다.', 'back');
+        }
 
         $data_sublist = $this->packageFModel->subListProduct($this->_learn_pattern,$prod_code,[],null,null,$order_by);   //패키지 하위 강좌 목록
 

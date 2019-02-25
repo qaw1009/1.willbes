@@ -146,7 +146,11 @@ class OffPackage extends \app\controllers\FrontController
             show_alert('데이터 조회에 실패했습니다.', 'back');
         }
 
+        // 판매가격 정보 확인
         $data['ProdPriceData'] = json_decode($data['ProdPriceData'], true); //상품 가격 정보 치환
+        if (empty($data['ProdPriceData']) === true) {
+            show_alert('판매가격 정보가 없습니다.', 'back');
+        }
 
         $data_sublist = $this->packageFModel->subListProduct($this->_learn_pattern,$prod_code,[],null,null,[]);   //패키지 하위 강좌 목록
 

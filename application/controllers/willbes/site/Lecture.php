@@ -177,8 +177,13 @@ class Lecture extends \app\controllers\FrontController
             }
         }
 
-        // 상품 데이터 가공
+        // 판매가격 정보 확인
         $data['ProdPriceData'] = json_decode($data['ProdPriceData'], true);
+        if (empty($data['ProdPriceData']) === true) {
+            show_alert('판매가격 정보가 없습니다.', 'back');
+        }
+
+        // 상품 데이터 가공
         $data['ProdBookData'] = json_decode($data['ProdBookData'], true);
         $data['LectureSampleData'] = json_decode($data['LectureSampleData'], true);
         $data['LectureSampleUnitIdxs'] = is_null($data['LectureSampleData']) === true ? [] : array_pluck($data['LectureSampleData'], 'wUnitIdx');

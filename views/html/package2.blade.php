@@ -125,7 +125,7 @@
         </div>
         <!-- willbes-Bnr -->
 
-        <div class="willbes-Lec-Search mb15">
+        <div class="willbes-Lec-Search p_re mb15">
             <div class="inputBox p_re">
                 <div class="selectBox">
                     <select id="select" name="select" title="직접입력" class="">
@@ -141,7 +141,7 @@
                     <span>검색</span>
                 </button>
             </div>
-            
+
             <div class="InfoBtn"><a href="#none" onclick="openWin('requestInfo')">수강신청안내 <span>▶</span></a></div>
             <div id="requestInfo" class="willbes-Layer-requestInfo">
                 <a class="closeBtn" href="#none" onclick="closeWin('requestInfo')">
@@ -155,7 +155,7 @@
                                 <strong>도서구입비 소득공제 시행에 따른 분리결제 적용 안내</strong><br>
                                 - 소득공제 대상 상품(교재)와 비대상 상품 (강의)을 함께 주문하실 수 없습니다. <br>
                                 (소득공제를 위한 가맹점 분리로 인해 2회 결제 진행)<br>
-                                - 반드시 강의와 교재를 각각 결제해주시기 바랍니다. (강좌상품 선구매 후 교재 구매 가능)
+                                - 반드시 <span class="tx-red">강의와 교재를 각각 결제</span>해주시기 바랍니다. (강좌상품 선구매 후 교재 구매 가능)
                             </li>
                             <li>
                                 <strong>아이콘 안내</strong><br>

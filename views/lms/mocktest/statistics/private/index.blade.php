@@ -164,7 +164,7 @@
                     {'data' : 'MockYear', 'class': 'text-center'},
                     {'data' : 'MockRotationNo', 'class': 'text-center'},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return '<span class="blue underline-link act-edit"><input type="hidden" name="prod" value="' + row.ProdCode + '" />[' + row.ProdCode + '] ' + row.ProdName + '</span>';
+                            return '<span class="blue underline-link act-edit"><input type="hidden" name="target" value="' + row.ProdCode + '" />[' + row.ProdCode + '] ' + row.ProdName + '</span>';
                         }},
                     {'data' : 'CateName', 'class': 'text-center'},
                     {'data' : 'TakeMockPartName', 'class': 'text-center'},
@@ -187,7 +187,7 @@
             // 수정으로 이동
             $list_form.on('click', '.act-edit', function () {
                 var query = dtParamsToQueryString($datatable);
-                location.href = '{{ site_url('/mocktest/regGoods/edit/') }}' + $(this).closest('tr').find('[name=prod]').val() + query;
+                location.href = '{{ site_url('/mocktest/regGoods/edit/') }}' + $(this).closest('tr').find('[name=target]').val() + query;
             });
 
             // 엑셀다운로드

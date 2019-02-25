@@ -328,7 +328,7 @@ class StatisticsPrivate extends \app\controllers\BaseController
             'dataSubjectV2' => $dataSubjectV2,
             'pList' => $pList,
             'prodcode' => $prodcode,
-            'mem_idx' => $memidx
+            'mridx' => $mridx
         ]);
     }
 

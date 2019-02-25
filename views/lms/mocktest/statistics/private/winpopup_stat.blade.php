@@ -14,7 +14,7 @@
         <div class="form-group mt-20">
             <div class="col-md-11">
                 <ul class="nav nav-pills" role="tablist">
-                    <li role="presentation" class="act-move"><a href="javascript:gotab('{{ $prodcode }}','{{ $mem_idx }}');">전체 성적 분석</a></li>
+                    <li role="presentation" class="act-move"><a href="javascript:gotab('{{ $prodcode }}','{{ $mridx }}');">전체 성적 분석</a></li>
                     <li role="presentation" class="active"><a href="#">과목별 문항분석</a></li>
                 </ul>
             </div>
@@ -65,7 +65,7 @@
                     <tr>
                         <td>정답률</td>
                         @foreach($dataSubject[$key]['QAVR'] as $key2 => $row2)
-                            <td>{{ $row2 }}</td>
+                            <td>{{ $row2 }}%</td>
                         @endforeach
                     </tr>
                     <tr>
@@ -125,7 +125,7 @@
     <script>
         function gotab(prodcode, memidx){
             var uri_param;
-            uri_param = 'prodcode=' + prodcode + '&memidx=' + memidx;
+            uri_param = 'prodcode=' + prodcode + '&mridx=' + mridx;
 
             var _url = '{{ site_url() }}' + 'mocktest/statisticsPrivate/winStatTotal?' + uri_param;
             location.href=_url;

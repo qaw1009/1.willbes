@@ -128,20 +128,21 @@
                                             @endforeach
                                         </div>
                                     @endif
-
-                                    @foreach($row['ProdPriceData'] as $price_idx => $price_row)
-                                        @if( $price_row['SaleTypeCcd'] == $sale_type_ccd )
-                                        <div class="priceWrap chk buybtn p_re">
-                                            <span class="chkBox"><input type="checkbox" name="prod_code_sub[]" value="{{ $row['ProdCode'] }}"
-                                                                        id="{{$row['ProdCode']}}" data-price="{{$price_row['RealSalePrice']}}"
-                                                                        data-prod-code="{{ $row['ProdCode'] }}" data-parent-prod-code="{{ $row['ProdCode'] }}" data-group-prod-code="{{ $row['ProdCode'] }}"
-                                                                        class="chk_products chk_only_{{ $row['ProdCode'] }}" onclick="checkOnly('.chk_only_{{ $row['ProdCode'] }}', this.value);"/></span>
-                                            <!--span class="select">[{{ $price_row['SaleTypeCcdName'] }}]</span//-->
-                                            <span class="price tx-blue">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>
-                                            <span class="discount">(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</span>
-                                        </div>
-                                        @endif
-                                    @endforeach
+                                    @if(empty($row['ProdPriceData']) === false)
+                                        @foreach($row['ProdPriceData'] as $price_idx => $price_row)
+                                            @if( $price_row['SaleTypeCcd'] == $sale_type_ccd )
+                                            <div class="priceWrap chk buybtn p_re">
+                                                <span class="chkBox"><input type="checkbox" name="prod_code_sub[]" value="{{ $row['ProdCode'] }}"
+                                                                            id="{{$row['ProdCode']}}" data-price="{{$price_row['RealSalePrice']}}"
+                                                                            data-prod-code="{{ $row['ProdCode'] }}" data-parent-prod-code="{{ $row['ProdCode'] }}" data-group-prod-code="{{ $row['ProdCode'] }}"
+                                                                            class="chk_products chk_only_{{ $row['ProdCode'] }}" onclick="checkOnly('.chk_only_{{ $row['ProdCode'] }}', this.value);"/></span>
+                                                <!--span class="select">[{{ $price_row['SaleTypeCcdName'] }}]</span//-->
+                                                <span class="price tx-blue">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>
+                                                <span class="discount">(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</span>
+                                            </div>
+                                            @endif
+                                        @endforeach
+                                    @endif
                                     <div class="MoreBtn"><a href="#none">교재정보 보기 ▼</a></div>
                                 </td>
                             </tr>

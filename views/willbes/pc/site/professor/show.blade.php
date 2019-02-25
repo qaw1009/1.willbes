@@ -88,7 +88,7 @@
                                         <dt><span class="tx-blue">{{ $row['Amount'] }}</span>회차</dt>
                                     @endif
                                     <dt><span class="row-line">|</span></dt>
-                                    <dt><span class="tx-blue">{{ number_format($row['ProdPriceData'][0]['RealSalePrice'], 0) }}</span>원</dt>
+                                    <dt>@if(empty($row['ProdPriceData']) === false)<span class="tx-blue">{{ number_format($row['ProdPriceData'][0]['RealSalePrice'], 0) }}</span>원@endif</dt>
                                     <dt class="w-notice p_re">
                                         @if(empty($row['LectureSampleData']) === false)
                                             <ul class="w-sp">

@@ -33,8 +33,8 @@
                         <div class="willbes-Lec-Tit NG tx-black">
                             주문상품정보
                             <ul>
-                                <li class="subBtn NSK"><a href="#none">포인트 현황 ></a></li>
-                                <li class="subBtn NSK"><a href="#none">쿠폰 현황 ></a></li>
+                                <li class="subBtn NSK"><a href="{{ app_url('/classroom/point/index', 'www') }}" target="_blank">포인트 현황 ></a></li>
+                                <li class="subBtn NSK"><a href="{{ app_url('/classroom/coupon/index', 'www') }}" target="_blank">쿠폰 현황 ></a></li>
                             </ul>
                         </div>
                         <table cellspacing="0" cellpadding="0" class="listTable buyTable under-gray tx-gray">

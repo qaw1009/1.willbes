@@ -3,7 +3,7 @@
 @section('content')
     <h5>- 윌비스 사용자 운영 사이트 메뉴를 생성하는 메뉴입니다.</h5>
     <form class="form-horizontal searching" id="search_form" name="search_form" method="POST" onsubmit="return false;">
-        {!! html_site_tabs('tabs_site_code', 'tab', true, [], true) !!}
+        {!! html_site_tabs('tabs_site_code', 'tab', false, [], true) !!}
         <input type="hidden" id="search_site_code" name="search_site_code" value=""/>
         <div class="x_panel">
             <div class="x_content">
@@ -103,6 +103,13 @@
                     { text: '<i class="fa fa-pencil mr-5"></i> 최상위 메뉴 등록', className: 'btn-sm btn-primary border-radius-reset btn-regist' }
                 ]
             });
+
+            // 초기 페이지 접근시 첫번째 탭 클릭 처리 (전체탭 제거)
+            if ($search_form.find('input[name="search_site_code"]').val() === '') {
+                setTimeout(function() {
+                    $('#tabs_site_code li:eq(0) > a').trigger('click');
+                }, 0);
+            }
 
             // 순서 변경
             $('.btn-reorder').on('click', function() {

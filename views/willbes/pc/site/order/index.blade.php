@@ -171,8 +171,8 @@
                         </div>
                         <div class="p-info tx-gray c_both">
                             • {{ $results['point_type_name'] }} 포인트는 <span class="tx-light-blue">{{ number_format(config_item('use_min_point')) }}P</span> 부터
-                            <span class="tx-light-blue">{{ config_item('use_point_unit') }}P</span> 단위로 사용 가능하며,
-                            주문금액의 <span class="tx-light-blue">{{ config_item('use_max_point_rate') }}%</span>까지만 사용 가능합니다.
+                            <span class="tx-light-blue">{{ config_item('use_point_unit') }}P</span> 단위로 <!--사용 가능하며,
+                            주문금액의 <span class="tx-light-blue">{{ config_item('use_max_point_rate') }}%</span>까지만--> 사용 가능합니다.
                         </div>
                     @endif
                 </div>

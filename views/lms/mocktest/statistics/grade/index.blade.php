@@ -170,7 +170,7 @@
                     {'data' : 'MockYear', 'class': 'text-center'},
                     {'data' : 'MockRotationNo', 'class': 'text-center'},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return '<span class="blue underline-link act-edit">[' + row.ProdCode + '] ' + row.ProdName + '</span>';
+                            return '<span class="blue underline-link act-edit"><input type="hidden" name="target" value="' + row.ProdCode + '" />[' + row.ProdCode + '] ' + row.ProdName + '</span>';
                         }},
 
                     {'data' : 'TakePart_on', 'class': 'text-center', 'render' : function(data, type, row, meta) {

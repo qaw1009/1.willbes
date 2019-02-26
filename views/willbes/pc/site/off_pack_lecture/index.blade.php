@@ -79,7 +79,7 @@
             </div>
             <!-- willbes-Bnr -->
 
-            <div class="willbes-Lec-Search">
+            <div class="willbes-Lec-Search p_re">
                 <div class="inputBox p_re">
                     @php $arr_search_text = explode(':', base64_decode(element('search_text', $arr_input)), 2) @endphp
                     <div class="selectBox">

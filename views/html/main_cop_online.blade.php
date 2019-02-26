@@ -140,39 +140,8 @@
                 <iframe src="https://www.youtube.com/embed/lrZxQV21DE8?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
             </div>
         </div>
-    </div>
-    <script type="text/javascript">        
-			var tab1_url = "https://www.youtube.com/embed/GlE9EGMDF98?rel=0&modestbranding=1&showinfo=0";
-			var tab2_url = "https://www.youtube.com/embed/re8w_IFAPS4?rel=0&modestbranding=1&showinfo=0";
-            var tab3_url = "https://www.youtube.com/embed/VEmBnYu8tcc?rel=0&modestbranding=1&showinfo=0";
-            var tab4_url = "https://www.youtube.com/embed/lrZxQV21DE8?rel=0&modestbranding=1&showinfo=0";
-
-			$(function() {
-			$(".youtubeBox").hide(); 
-			$(".youtubeBox:first").show();
-			$(".youtubetab li a").click(function(){ 
-					var activeTab = $(this).attr("href"); 
-					var html_str = "";
-					if(activeTab == "#tab1"){
-						html_str = "<iframe src='"+tab1_url+"' frameborder='0' allowfullscreen></iframe>";
-					}else if(activeTab == "#tab2"){
-						html_str = "<iframe src='"+tab2_url+"' frameborder='0' allowfullscreen></iframe>";
-					}else if(activeTab == "#tab3"){
-						html_str = "<iframe src='"+tab3_url+"' frameborder='0' allowfullscreen></iframe>";                   
-                    }else if(activeTab == "#tab4"){
-						html_str = "<iframe src='"+tab4_url+"' frameborder='0' allowfullscreen></iframe>";
-					}
-					$(".youtubetab a").removeClass("active"); 
-					$(this).addClass("active"); 
-					$(".youtubeBox").hide(); 
-					$(".youtubeBox").html(''); 
-					$(activeTab).html(html_str);
-					$(activeTab).fadeIn(); 
-					return false; 
-					});
-				});		
-    </script>
-    <!-- youtubeWrap //-->
+    </div> 
+    <!-- youtubeWrap //-->   
 
     <div class="Section Flipped">
         <div class="widthAuto">
@@ -1008,4 +977,37 @@
     </div>
 </div>
 <!-- End Container -->
+
+<script type="text/javascript">        
+        var tab1_url = "https://www.youtube.com/embed/GlE9EGMDF98?rel=0&modestbranding=1&showinfo=0";
+        var tab2_url = "https://www.youtube.com/embed/re8w_IFAPS4?rel=0&modestbranding=1&showinfo=0";
+        var tab3_url = "https://www.youtube.com/embed/VEmBnYu8tcc?rel=0&modestbranding=1&showinfo=0";
+        var tab4_url = "https://www.youtube.com/embed/lrZxQV21DE8?rel=0&modestbranding=1&showinfo=0";
+
+        $(function() {
+        $(".youtubeBox").hide(); 
+        $(".youtubeBox:first").show();
+        $(".youtubetab li a").click(function(){ 
+                var activeTab = $(this).attr("href"); 
+                var html_str = "";
+                if(activeTab == "#tab1"){
+                    html_str = "<iframe src='"+tab1_url+"' frameborder='0' allowfullscreen></iframe>";
+                }else if(activeTab == "#tab2"){
+                    html_str = "<iframe src='"+tab2_url+"' frameborder='0' allowfullscreen></iframe>";
+                }else if(activeTab == "#tab3"){
+                    html_str = "<iframe src='"+tab3_url+"' frameborder='0' allowfullscreen></iframe>";                   
+                }else if(activeTab == "#tab4"){
+                    html_str = "<iframe src='"+tab4_url+"' frameborder='0' allowfullscreen></iframe>";
+                }
+                $(".youtubetab a").removeClass("active"); 
+                $(this).addClass("active"); 
+                $(".youtubeBox").hide(); 
+                $(".youtubeBox").html(''); 
+                $(activeTab).html(html_str);
+                $(activeTab).fadeIn(); 
+                return false; 
+                });
+            });		
+</script>
+
 @stop

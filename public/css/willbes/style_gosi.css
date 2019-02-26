@@ -107,9 +107,10 @@
 /**/
 .gosi .Section .willbesLec {
     width:614px;
+    float:left;
 }
 .gosi .smallTit {
-    border-top:1px solid #b8b8b8;
+    border-top:1px solid #000;
     font-size: 22px;
     color:#363636;    
     position: relative;
@@ -120,6 +121,7 @@
     text-align:left;
     width: 100%;
 }
+.gosi .smallTit p a {vertical-align: top; margin-left: 10px}
 .gosi .smallTit span {
     font-weight: 600;
     background: #fff;
@@ -134,79 +136,194 @@
     color:#181818;
 }
 
-.bestLectBx {position: relative;}
+/*메인 과목별 베스트 강의*/
+.bestLectBx {position:relative;}
 .bestLectBx .prof-subject {
-    background: #ececec;  
-    width: 100%;
-    height: 30px;
+    position:absolute;
+    top:0;
+    left:30px !important; 
+    background:#fff;
     overflow: hidden;
 }
 .bestLectBx .prof-subject li {
-    display: inline; float: left;
+    display: inline; float: left; margin:0;
 }
-
-.bestLectBx .bx-wrapper{left:0}
-.prof-subject li{text-align:center;}
-.prof-subject li a{
-    display:block;
-    overflow:hidden;
-    width:75px;
+.bestLectBx .prof-subject li a {
+    display:block;    
+    width:78px;
     height:30px;
-    white-space:nowrap;
-    text-overflow:ellipsis;
-    vertical-align:middle;
     line-height:30px;
     text-align:center;
-    font-size: 14px;
+    font-size:12px; 
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    vertical-align:middle; 
+    background:#ececec;  
+    overflow: hidden;    
 }
-.prof-subject li a:hover, 
-.prof-subject li a.active{color:#c7763c;}
-.prof-subjec:after {
+.bestLectBx .prof-subject li span {float:left; color:#c8c8c8}
+.bestLectBx .prof-subject li a:hover, 
+.bestLectBx .prof-subject li a.active{color:#c7763c;}
+.bestLectBx .prof-subjec:after {content:""; display: block; clear:both;}
+
+.bestLectBx .prof-professors {clear:both; margin-top:40px;}
+.bestLectBx .prof-slider {width:614px; height:120px; overflow:hidden;}
+.bestLectBx .prof-slider li {position:relative; display:inline; float:left; height:120px; width:50%}
+.bestLectBx .prof-slider li img {position:absolute; width:120px; height:120px}
+.bestLectBx .prof-slider li span {position:absolute; left:138px; width:150px}
+.bestLectBx .prof-slider li span.txt1 {top:0; color:#3a3a3a; font-size:17px}
+.bestLectBx .prof-slider li span.txt2 {top:22px; color:#ba560e; font-size:22px; font-weight:bold;}
+.bestLectBx .prof-slider li span.txt3 {top:50px; color:#666; font-size: 14px; line-height: 1.4}
+.bestLectBx .prof-slider li > a {position:absolute; left:138px; bottom:0; border:1px solid #c9c9c9; display: inline; padding:3px 5px; color:#898989}
+.bestLectBx .prof-slider:after {
     content:""; display: block; clear:both;
 }
-.bestLectBx .bx-controls-direction a.bx-prev{left:0}
-.bestLectBx .bx-controls-direction a.bx-next{right:0}
-.prof-professors .bx-wrapper{left:0;}
-.prof-professors .bx-viewport{margin:0}
-.prof-professors .bx-controls{display:none}
-.bestLectBx .bx-controls-direction {
+
+.bestLectBx .bx-wrapper .bx-viewport {
+    z-index: 10;
+}
+.bestLectBx .bx-wrapper .bx-controls-direction {
     width: 100%;
-    height: 45px;
+    height: 30px;
     position: absolute;
-    top: 50%;
-    margin-top: -22px;
+    top:0;
 }
-.bestLectBx .bx-controls-direction a {
-    width: 35px;
-    height: 45px;
+.bestLectBx .bx-wrapper .bx-controls-direction a {
+    width: 30px;
+    height: 30px;
 }
-.bestLectBx .bx-controls-direction a.disabled {
+.bestLectBx .bx-wrapper .bx-controls-direction a.disabled {
     display: block;
     opacity: 0.5;
 }
-.bestLectBx .bx-prev {
-    background: url("../../img/willbes/gosi/guide/guide_prev.png") no-repeat 0 0;
-    left: -45px;
+.bestLectBx .bx-wrapper .bx-prev {
+    background:#ececec url("../../img/willbes/gosi/btn_prev.png") no-repeat center center;
+    left: 0;
     right: inherit;
 }
-.bestLectBx .bx-next {
-    background: url("../../img/willbes/gosi/guide/guide_next.png") no-repeat 0 0;
+.bestLectBx .bx-wrapper .bx-next {
+    background:#ececec url("../../img/willbes/gosi/btn_next.png") no-repeat center center;
     left: inherit;
-    right: -45px;
+    right: 0;
 }
 
-.prof-professors {clear:both; margin-top:40px;}
-.prof-slider {width:614px; height:120px; overflow:hidden;}
-.prof-slider li {position:relative; display:inline; float:left; height:120px; width:50%}
-.prof-slider li img {position:absolute; width:120px; height:120px}
-.prof-slider li span {position:absolute; left:138px; width:150px}
-.prof-slider li span.txt1 {top:0; color:#3a3a3a; font-size:17px}
-.prof-slider li span.txt2 {top:22px; color:#ba560e; font-size:22px; font-weight:bold;}
-.prof-slider li span.txt3 {top:50px; color:#666; font-size: 14px; line-height: 1.4}
-.prof-slider li > a {position:absolute; left:138px; bottom:0; border:1px solid #c9c9c9; display: inline; padding:3px 5px; color:#898989}
-.prof-slider:after {
-    content:""; display: block; clear:both;
+/*메인 무료특강*/
+.freeLectBx li {display: inline; float:left; margin-right:4px; line-height: 1.4; font-size: 13px}
+.freeLectBx li:last-child {margin:0}
+.freeLectBx li p {color:#ba560e; font-size: 15px; font-weight: 500; margin-top: 15px}
+.freeLectBx:after {content:''; display: block; clear:both}
+
+/*메인 윌비스 소식*/
+.gosi .Section .willbesNews {float: right; width: 465px;}
+
+/* Main Container : Notice : noticeTabs */
+.gosi .tabWrap.noticeWrap {
+    height: 16px;
+    border: none;
 }
+.gosi .tabWrap.noticeWrap li {
+    float: left;
+    width: auto;
+    height: 16px;
+    margin-right: 10px;
+}
+.gosi .tabWrap.noticeWrap li a {
+    display: block;
+    width: 100%;
+    height: 19px;
+    line-height: 19px;
+    font-size: 17px;
+    color: #c5c5c5;
+    text-align: center;
+    letter-spacing: 0;
+    border:none !important;
+    border-right:1px solid #999 !important;
+    padding-right: 10px;
+}
+.gosi .tabWrap.noticeWrap li a.on {
+    height: 19px;
+    line-height: 19px;
+    font-weight: 600;
+    color: #ba560e;
+    border:none !important;
+    border-right:1px solid #999 !important;
+}
+.gosi .tabWrap.noticeWrap li:last-child a.on,
+.gosi .tabWrap.noticeWrap li:last-child a {
+    border-right:none !important;
+}
+.gosi .tabBox.noticeBox a.btn-add {
+    position: absolute;
+    top: -16px;
+    right: 0;
+}
+.gosi .tabBox.noticeBox .List-Table li {
+    position: relative;
+    font-size: 13px;
+    color: #3a3a3a;
+    height: 37px;
+    line-height: 37px;
+    border-bottom: 1px solid #e3e3e3;
+}
+.gosi .tabBox.noticeBox .List-Table li a {
+    display: inline-block;
+    width: 80%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    letter-spacing: 0;
+}
+.gosi .tabBox.noticeBox .List-Table li a span {
+    background: #ba560e;
+    color:#fff;
+    padding: 0 10px;
+    border-radius: 10px;
+    margin-right: 5px;
+}
+
+/*메인 수강후기*/
+.lecReviewBx .sliderNumRv {position: relative; overflow: hidden; font-size:14px} 
+.lecReviewBx .sliderNumRv .lecReview {float:left; display: block; width:373px !important; min-height: 135px !important; border-right:1px solid #d6d6d6; margin-top: 20px; line-height: 1.3}
+.lecReviewBx .sliderNumRv .lecReview img {margin-left:25px}
+.lecReviewBx .sliderNumRv .lecReview ul {position: absolute; top:0; left:150px; width: 200px}
+.lecReviewBx .sliderNumRv .lecReview li {margin-bottom: 5px; color:#3a3a3a}
+.lecReviewBx .sliderNumRv .lecReview li:first-child {color:#c7763c; font-size:16px; font-weight: 600}
+.lecReviewBx .sliderNumRv .lecReview li:nth-child(2) {font-weight: 600}
+.lecReviewBx .sliderNumRv:after {content:''; display: block; clear:both}
+
+.lecReviewBx.nSlider .bx-wrapper .bx-prev {
+    background: url("../../img/willbes/prof/btn_prev.png") no-repeat 0 0;
+}
+.lecReviewBx.nSlider .bx-wrapper .bx-next {
+    background: url("../../img/willbes/prof/btn_next.png") no-repeat 0 0;
+    left: 20px;
+}
+.lecReviewBx.nSlider .bx-wrapper .bx-controls-direction {
+    position: absolute;
+    top: -20px;
+    right: 0;
+    width: 40px;
+    height: 20px;
+    background: #fff;
+}
+.lecReviewBx.nSlider .bx-wrapper .bx-controls-direction a {
+    width: 20px;
+    height: 20px;
+}
+.lecReviewBx.nSlider .bx-wrapper .bx-pager {
+    width: auto;
+    position: absolute;
+    top: -15px;
+    right: 50px;
+    bottom: 0;
+    font-size: 12px;
+    font-weight: 300;
+    color: #888;
+    margin: 0;
+    padding: 0;
+    letter-spacing: 0;
+}
+
 
 /* Main Container : Gosi */
 .gosi .tx-color {

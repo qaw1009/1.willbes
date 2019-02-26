@@ -69,8 +69,6 @@ $(function() {
     });
 });
 
-
-
 // 유의사항안내보기 버튼 Script
 $(function() {
     $('.willbes-Cart-Txt .MoreBtn a').click(function() {

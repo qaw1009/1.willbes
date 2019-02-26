@@ -112,35 +112,35 @@
 .Section.MainVisual .widthAuto {
     position: relative;
 }
-.smallTit {
+.cop .smallTit {
     border-top:1px solid #b8b8b8;
     font-size: 22px;
     color:#363636;    
     position: relative;
 }
-.smallTit p {
+.cop .smallTit p {
     position: absolute;
     top:-15px;
     text-align: center;
     width: 100%;
 }
-.smallTit span {
+.cop .smallTit span {
     padding:0 20px;
     font-weight: 600;
     background: #fff;
 }
-.smallTit strong {
+.cop .smallTit strong {
     color:#0c5dc0;
 }
 
-.smallTit a {
+.cop .smallTit a {
     position: absolute;
     width: 23px;
     top:-12px;
     right:0;    
     z-index: 1;
 }
-.smallTit2 span {
+.cop .smallTit2 span {
     background:#f7f7f7;
 }
 

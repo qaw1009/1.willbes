@@ -1618,7 +1618,7 @@ table.auTable tr td {
     color: #898989;
     text-align: center;
     letter-spacing: 0;
-    border: none;
+    /*border: none;*/
     padding-right: 10px;
 }
 .tabWrap.noticeWrap li:first-child a {
@@ -1632,7 +1632,7 @@ table.auTable tr td {
     line-height: 16px;
     font-weight: 600;
     color: #009ef5;
-    border: none;
+    /*border: none;*/
 }
 .tabWrap.noticeWrap .row-line {
     float: right;
@@ -1737,10 +1737,11 @@ table.auTable tr td {
     background: #f6f6f6;
     width: 720px;
     padding: 30px 0 0 50px;
-    letter-spacing: normal;
+    letter-spacing: normal;    
 }
 .willbesNumber ul li {
     margin-left: 50px;
+    vertical-align: top;
 }
 .willbesNumber ul li:first-child {
     margin-left: 0;

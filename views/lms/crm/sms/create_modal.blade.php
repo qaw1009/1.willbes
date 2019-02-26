@@ -64,11 +64,8 @@
                         <label class="control-label col-md-4" for=""></label>
                         <div class="col-md-8 text-right form-inline">
                             <input type="text" readonly="readonly" class="form-control border-red red" id="content_byte" value="0" style="width: 50px;"> <span class="red">byte</span>
+                            (55byte 이상일 경우 MMS로 전환됩니다.)
                         </div>
-                    </div>
-                    <div class="form-group form-group-sm">
-                        <label class="control-label col-md-4" for=""></label>
-                        <div class="col-md-8">(80byte 초과 시 LMS로 전환됩니다.)</div>
                     </div>
                 </div>
             </div>

@@ -146,7 +146,7 @@
                                 {!! html_callback_num_select($arr_send_callback_ccd, $data['SendTel'], 'cs_tel', 'cs_tel', '', '발신번호', '') !!}
                             </div>
                             <div class="col-md-4 red text-right">
-                                <span class="content_byte" id="content_byte">0</span> Byte <span style="color: #73879C">(80byte 초과 시 LMS 문자로 전환됩니다.)</span>
+                                <span class="content_byte" id="content_byte">0</span> Byte <span style="color: #73879C">(55byte 이상일 경우 MMS로 전환됩니다.)</span>
                             </div>
                         </div>
                     </div>

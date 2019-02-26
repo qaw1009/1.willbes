@@ -62,6 +62,15 @@ $(function() {
     });
 });
 
+// 강의 > 온라인 수강신청, 학원강좌 수강신청 안내 버튼 Script
+$(function() {    
+    $('#requestInfo a').click(function() {
+        $('.InfoBtn a').removeClass('on').attr("onclick","openWin('requestInfo')");
+    });
+});
+
+
+
 // 유의사항안내보기 버튼 Script
 $(function() {
     $('.willbes-Cart-Txt .MoreBtn a').click(function() {

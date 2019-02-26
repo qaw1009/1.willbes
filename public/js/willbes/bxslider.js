@@ -1,5 +1,15 @@
 // Slider Script
 $(function() {
+    $('.sliderStopAuto').bxSlider({
+        auto: true,
+        autoControls: true,
+        stopAutoOnClick: true,
+        pager: false,
+        controls: false,
+    });
+});
+
+$(function() {
     $('.slider').bxSlider({
         auto: true,
         controls: false,
@@ -130,6 +140,23 @@ $(function(){
         }
     });
 });
+
+$(function(){ 
+    $(".proftabSlider").bxSlider({
+        mode:'fade',
+        speed:400,
+        pause:2000,
+        auto : false,	
+        autoHover: true,						
+        pagerCustom: '#RollingDiv',
+        controls:true, 
+        onSliderLoad: function(){
+            $("#RollingSlider").css("visibility", "visible").animate({opacity:1}); 
+        }
+    });
+});
+
+
 
 
 // CurriSwipe Script

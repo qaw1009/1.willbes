@@ -54,37 +54,6 @@
         </h3>
     </div>
 
-    <!--
-    <div id="newTopDday" class="newTopDday">
-        <div class="widthAuto">
-            <div id="ddaytime">
-                <ul>
-                    <li class="txt toptxt">
-                        <div class="small">3차 추가채용</div>
-                        <div class="big"><span class="cop-color">최종</span> 합격예측서비스</div>
-                    </li>
-                    <li><img id="dd1" src="{{ img_url('cop/number/0.png') }}"></li>
-                    <li><img id="dd2" src="{{ img_url('cop/number/0.png') }}"></li>
-                    <li><strong>일</strong></li>
-                    <li><img id="hh1" src="{{ img_url('cop/number/0.png') }}"></li>
-                    <li><img id="hh2" src="{{ img_url('cop/number/0.png') }}"></li>
-                    <li><strong>시간</strong></li>
-                    <li><img id="mm1" src="{{ img_url('cop/number/0.png') }}"></li>
-                    <li><img id="mm2" src="{{ img_url('cop/number/0.png') }}"></li>
-                    <li><strong>분</strong></li>
-                    <li><img id="ss1" src="{{ img_url('cop/number/0.png') }}"></li>
-                    <li><img id="ss2" src="{{ img_url('cop/number/0.png') }}"></li>
-                    <li><strong>초</strong></li>
-                    <li class="txt lasttxt">
-                        <div class="big"><span class="cop-color">3월 29일(금) 발표</span></div>
-                        <div class="btn"><a href="http://www.willbescop.net/movie/event.html?event_cd=On_181228_p&topMenuType=O" target="_blank">최종합격예측 참여 &gt;</a></div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    -->
-
     <div class="Section MainVisual">
         <div class="widthAuto">            
             <iframe src="https://www.youtube.com/embed/lrZxQV21DE8?rel=0&modestbranding=1&showinfo=0&&wmode=transparent" frameborder="0" allowfullscreen=""></iframe>            
@@ -148,38 +117,17 @@
             <ul class="inner">
                 <li class="l1">
                     <a href="http://www.willbescop.net/movie/event.html?event_cd=On_180327_yp" target="_blank">
-                        <img src="{{ img_url('cop/flipped/flipped01.jpg') }}" alt="평생0원PASS">    
-                        <!--div class="f-tit tit1 NSK"># 평생0원PASS</div>
-                        <span class="wrap_ban front">
-                            <img src="{{ img_url('cop/flipped/flipped_front_190101.png') }}">
-                        </span>
-                        <span class="wrap_ban back">
-                            <img src="{{ img_url('cop/flipped/flipped_back_190101.png') }}">
-                        </span-->
+                        <img src="{{ img_url('cop/flipped/flipped01.jpg') }}" alt="평생0원PASS"> 
                     </a>
                 </li>
                 <li class="l2">
                     <a href="http://www.willbescop.net/event/movie/event.html?event_cd=On_170831_p&topMenuType=O#main" target="_blank">
                         <img src="{{ img_url('cop/flipped/flipped02.jpg') }}" alt="2019 대비 기본이론<">
-                        <!--div class="f-tit tit2 NSK"># 2019 대비 기본이론</div>
-                        <span class="wrap_ban front">
-                            <img src="{{ img_url('cop/flipped/flipped_front_190102.png') }}">
-                        </span>
-                        <span class="wrap_ban back">
-                            <img src="{{ img_url('cop/flipped/flipped_back_190102.png') }}">
-                        </span-->
                     </a>
                 </li>
                 <li class="l3">
                     <a href="http://www.willbescop.net/movie/event.html?event_cd=On_premium&topMenuType=O" target="_blank">
                         <img src="{{ img_url('cop/flipped/flipped03.jpg') }}" alt="2019 대비 심화이론/기출">
-                        <!--div class="f-tit tit3 NSK"># 2019 대비 심화이론/기출</div>
-                        <span class="wrap_ban front">
-                            <img src="{{ img_url('cop/flipped/flipped_front_190103.png') }}">
-                        </span>
-                        <span class="wrap_ban back">
-                            <img src="{{ img_url('cop/flipped/flipped_back_190103.png') }}">
-                        </span-->
                     </a>
                 </li>
             </ul>
@@ -191,104 +139,7 @@
         </div>
     </div>
 
-    <div class="Section Section2 pb110">
-        <!--
-        <div class="widthAuto">            
-            <div class="will-big-Tit">
-                <div class="small NSK-Thin">더욱 더 완벽하고 강력하게 무장한 신광은경찰팀</div>
-                <div class="big NSK-Black"><span class="cop-color">빈틈없는</span> 커리큘럼<span class="small NSK-Thin">으로 합격을 약속합니다.</span></div>
-            </div>
-
-            <div class="">
-                <div class="cswRollingSlider">
-                    <ul class="rollingTabs cswRolling">
-                        <li id="curritab1"><img src="{{ img_url('cop//icon_bubble.gif') }}"><a data-slide-index="0" href="#curri1" class="active-slide">●<br/>기본과정</a></li>
-                        <li id="curritab2"><a data-slide-index="1" href="#curri2">●<br/>심화과정</a></li>
-                        <li id="curritab3"><a data-slide-index="2" href="#curri3">●<br/>3개월필합풀패키지</a></li>
-                        <li id="curritab4"><a data-slide-index="3" href="#curri4">●<br/>특강</a></li>
-                        <li id="curritab5"><a data-slide-index="4" href="#curri5">●<br/>모의고사/실용글쓰기</a></li>
-                        <li id="curritab6"><a data-slide-index="5" href="#curri6">●<br/>인·적성/면접</a></li>
-                    </ul>
-                </div>
-                <div class="cswSlider sliderCurriList mt40">
-                    <ul class="CurriSwipe cswRolling">
-                        <li id="curri1">
-                            <a href="#curritab1" data-slide-index="0">
-                                <div class="curriculumBox">
-                                    <div class="Tit">기본과정</div>
-                                    <div class="subTit">집중연강식 진행</div>
-                                    <ul class="info">
-                                        <li>· 영어 매달 초 개강</li>
-                                        <li>· 2주마다  형소법  →  경찰학<br/>→  한국사  →  형법 진행</li>
-                                    </ul> 
-                                </div>
-                            </a>
-                        </li>
-                        <li id="curri2">
-                            <a href="#curritab2" data-slide-index="1">
-                                <div class="curriculumBox">
-                                    <div class="Tit">심화과정</div>
-                                    <div class="subTit">프리미엄 심화과정</div>
-                                    <ul class="info">
-                                        <li>· 이론 재정리</li>
-                                        <li>· 10주 과정</li>
-                                    </ul>
-                                </div>
-                            </a>
-                        </li>
-                        <li id="curri3">
-                            <a href="#curritab3" data-slide-index="2">
-                                <div class="curriculumBox">
-                                    <div class="Tit">3개월 필합 풀패키지</div>
-                                    <div class="subTit">핵심요약/진도별 정리</div>
-                                    <ul class="info">
-                                        <li>· 5주 단권화</li>
-                                        <li>· 5주 동형모의고사</li>
-                                        <li>· FINAL 실전 모의고사</li>
-                                    </ul>
-                                </div>
-                            </a>
-                        </li>
-                        <li id="curri4">
-                            <a href="#curritab4" data-slide-index="3">
-                                <div class="curriculumBox">
-                                    <div class="Tit">특강</div>
-                                    <div class="subTit">집중약점 보완</div>
-                                    <ul class="info">
-                                        <li>· 과목별 찍기특강</li>
-                                    </ul>
-                                </div>
-                            </a>
-                        </li>
-                        <li id="curri5">
-                            <a href="#curritab5" data-slide-index="4">
-                                <div class="curriculumBox">
-                                    <div class="Tit">모의고사/실용글쓰기</div>
-                                    <div class="subTit">실전력 극대화</div>
-                                    <ul class="info">
-                                        <li>· 전국 모의고사<br/>&nbsp;&nbsp; (문제풀이기간 제외)</li>
-                                        <li>· 실용글쓰기</li>
-                                    </ul>
-                                </div>
-                            </a>
-                        </li>
-                        <li id="curri6">
-                            <a href="#curritab6" data-slide-index="5">
-                                <div class="curriculumBox">
-                                    <div class="Tit">인·적성/면접</div>
-                                    <div class="subTit">집단+개별면접대비</div>
-                                    <ul class="info">
-                                        <li>· 2달 완성</li>
-                                        <li>· 인·적성/면접특강</li>
-                                    </ul>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                </div>                
-            </div>
-            -->
-            
+    <div class="Section Section2 pb110">            
             <div class="widthAuto curriculumTit">                
                 <img src="{{ img_url('cop/visual/visual_tit02.jpg') }}" alt="신의법칙 퍼펙트 커리큘럼">
                 <a href="#none">신의법칙 자세히 보기 &gt;</a>                
@@ -398,24 +249,6 @@
                         <li><a href="#none" target="_blank">교수소개</a></li>
                     </ul>
                 </li>
-                <!--
-                <li class="p_re">         
-                    <div class="cSlider copSlider AbsControls">
-                        <div class="sliderControls">
-                            <div><a href="#none"><img src="{{ img_url('cop/prof/prof_190101.png') }}"></a></div>
-                            <div><a href="#none"><img src="{{ img_url('cop/prof/prof_190107.png') }}"></a></div>
-                        </div>
-                    </div>
-                </li>
-                <li class="p_re">         
-                    <div class="cSlider copSlider AbsControls">
-                        <div class="sliderControls">
-                            <div><a href="#none"><img src="{{ img_url('cop/prof/prof_190102.png') }}"></a></div>
-                            <div><a href="#none"><img src="{{ img_url('cop/prof/prof_190108.png') }}"></a></div>
-                        </div>
-                    </div>
-                </li>
-                -->
             </ul>
         </div>
     </div>
@@ -934,15 +767,6 @@
                                     공휴일/일요일휴무<br/>
                                 </div>
                             </li>
-                            <!--li>
-                                <div class="nTit">학원 고객센터</div>
-                                <div class="nNumber tx-color">1544-0336</div>
-                                <div class="nTxt">
-                                    [전화/방문상담 운영시간]<br/>
-                                    월-토: 09시~ 22시<br/>
-                                    일요일: 09시~ 20시<br/>
-                                </div>
-                            </li-->
                         </ul>
                     </dt>
                 </dl>

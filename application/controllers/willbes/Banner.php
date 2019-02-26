@@ -5,6 +5,8 @@ class Banner extends \app\controllers\BaseController
 {
     protected $models = array('bannerF', 'access/accessF');
     protected $helpers = array();
+    protected $sess_controller = false;  // 세션 사용안함
+    protected $sess_methods = array('click');   // 세션 사용 메소드
 
     private $_rolling_type = ['665001' => 'bSlider',  '665002' => 'cSlider', '665003' => 'nSlider', '665004' => 'vSlider'
         , '665005' => '', '665006' => 'swiper-container-arrow', '665007' => 'swiper-container-page'

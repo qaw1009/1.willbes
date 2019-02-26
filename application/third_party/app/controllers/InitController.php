@@ -9,12 +9,21 @@ trait InitController
     protected $models = array();
     // use helpers
     protected $helpers = array();
+    // 컨트롤러 세션 사용 여부
+    protected $sess_controller = true;
+    // 세션 사용 컨트롤러 메소드 배열
+    protected $sess_methods = array();
 
     /**
      * 컨트롤러 로드시 자동 실행
      */
     private function _init()
     {
+        // 세션 라이브러리 로드
+        if ($this->sess_controller === true || in_array($this->router->method, $this->sess_methods) === true) {
+            $this->load->library('session');
+        }
+
         // 모델 자동 로드
         $this->load->loadModels($this->models);
 

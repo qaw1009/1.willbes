@@ -254,17 +254,14 @@
     </div>
 
     <div class="Section NSK mt90">
-        <div class="widthAuto">            
+        <div class="widthAuto">
             <div class="smallTit mb30">          
                 <p><span>솔직한 <strong>수강후기</strong><a href="#none"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a></span></p>                                
             </div>
             <div class="lecReviewBx nSlider">
                 <div class="sliderNumRv">
                     <div class="lecReview">
-                        <div class="imgBox cover">
-                            <img class="coverImg" src="{{ img_url('cop/prof_cover.png') }}">
-                            <img src="{{ img_url('gosi/prof/mainReviews02.png') }}">
-                        </div>
+                        <img src="{{ img_url('gosi/prof/mainReviews01.png') }}" alt="강사명">
                         <ul>
                             <li>[작물생리학] 장사원</li>
                             <li>2019 장사원 재배학 기출 문제풀이 (1월)</li>
@@ -272,10 +269,7 @@
                         </ul>
                     </div>
                     <div class="lecReview">
-                        <div class="imgBox cover">
-                            <img class="coverImg" src="{{ img_url('cop/prof_cover.png') }}">
-                            <img src="{{ img_url('gosi/prof/mainReviews02.png') }}">
-                        </div>
+                        <img src="{{ img_url('gosi/prof/mainReviews02.png') }}" alt="강사명">
                         <ul>
                             <li>[작물생리학] 장사원</li>
                             <li>2019 장사원 재배학 기출 문제풀이 (1월)</li>
@@ -283,10 +277,7 @@
                         </ul>
                     </div>
                     <div class="lecReview">
-                        <div class="imgBox cover">
-                            <img class="coverImg" src="{{ img_url('cop/prof_cover.png') }}">
-                            <img src="{{ img_url('gosi/prof/mainReviews02.png') }}">
-                        </div>
+                        <img src="{{ img_url('gosi/prof/mainReviews01.png') }}" alt="강사명">
                         <ul>
                             <li>[작물생리학] 장사원</li>
                             <li>2019 장사원 재배학 기출 문제풀이 (1월)</li>
@@ -294,10 +285,7 @@
                         </ul>
                     </div>
                     <div class="lecReview">
-                        <div class="imgBox cover">
-                            <img class="coverImg" src="{{ img_url('cop/prof_cover.png') }}">
-                            <img src="{{ img_url('gosi/prof/mainReviews02.png') }}">
-                        </div>
+                        <img src="{{ img_url('gosi/prof/mainReviews01.png') }}" alt="강사명">
                         <ul>
                             <li>[작물생리학] 장사원</li>
                             <li>2019 장사원 재배학 기출 문제풀이 (1월)</li>
@@ -305,10 +293,7 @@
                         </ul>
                     </div>
                     <div class="lecReview">
-                        <div class="imgBox cover">
-                            <img class="coverImg" src="{{ img_url('cop/prof_cover.png') }}">
-                            <img src="{{ img_url('gosi/prof/mainReviews02.png') }}">
-                        </div>
+                        <img src="{{ img_url('gosi/prof/mainReviews02.png') }}" alt="강사명">
                         <ul>
                             <li>[작물생리학] 장사원</li>
                             <li>2019 장사원 재배학 기출 문제풀이 (1월)</li>
@@ -316,10 +301,7 @@
                         </ul>
                     </div>
                     <div class="lecReview">
-                        <div class="imgBox cover">
-                            <img class="coverImg" src="{{ img_url('cop/prof_cover.png') }}">
-                            <img src="{{ img_url('gosi/prof/mainReviews02.png') }}">
-                        </div>
+                        <img src="{{ img_url('gosi/prof/mainReviews01.png') }}" alt="강사명">
                         <ul>
                             <li>[작물생리학] 장사원</li>
                             <li>2019 장사원 재배학 기출 문제풀이 (1월)</li>
@@ -328,7 +310,6 @@
                     </div>
                 </div>
             </div>
-            
         </div>
     </div>
     <!-- 수강후기 //-->
@@ -431,6 +412,8 @@
         moveSlides:3,        
         minSlides:3,
         maxSlides:3,
+        adaptiveHeight: true,
+        infiniteLoop: true,
         onSliderLoad: function(){
             $(".nSlider").css("visibility", "visible").animate({opacity:1}); 
         }  

@@ -22,7 +22,7 @@
 
         .wb_cts01 {background:url("http://file3.willbes.net/new_gosi/2019/01/EV190111Y_ksj_01_bg.jpg") no-repeat center top}
         .wb_cts01 div {position:relative}
-        .wb_cts01 div span {position:absolute; width:319px; top:1030px; left:319px; z-index:10}
+        .wb_cts01 div span {position:absolute; width:319px; top:1030px; left:50%; margin-left:-285px; z-index:10}
 
         .wb_cts02 {background:url("http://file3.willbes.net/new_gosi/2019/01/EV190111Y_ksj_02_bg.jpg") no-repeat center top}
         .wb_cts03 {background:#212931}	

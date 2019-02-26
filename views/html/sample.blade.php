@@ -11,6 +11,7 @@
     ul li li.w50 {display:inline; float:left; width:50%;}    
     ul li p {border-bottom:1px dashed #999; font-size:12px; font-weight:bold; padding-bottom:5px}
     ul li a {display:block; line-height:1.8}
+    ul li a span {color:red; font-weight:bold}
     ul:after {content:""; display:block; clear:both}
     .c_both {content:""; display:block; clear:both; height:20px;}
 </style>
@@ -23,6 +24,7 @@
             <ul>
                 <li><a href="{{ site_url('/home/html/main') }}" target="_blank">통합메인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_cop_online') }}" target="_blank">경찰 온라인 메인</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/main_cop_adm_online') }}" target="_blank">경행경채 온라인 메인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_cop_acad') }}" target="_blank">경찰 학원 메인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/acad_sub_main') }}" target="_blank">경찰 캠퍼스 안내</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_gosi_online') }}" target="_blank">공무원 온라인 메인</a></li>
@@ -66,20 +68,20 @@
         <div>       
             <ul>
                 <li><p>경찰 온라인 ▼</p></li>       
-                <li class="w50"><a href="{{ site_url('/home/html/event_onCopPromotionPass') }}" target="_blank">승진 PASS</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_onCopZeroPass') }}" target="_blank">평생 0원 PASS</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_onCopPromotionPassPop') }}" target="_blank">PASS 인증 팝업_size 740x700</a></li>                        
-                <li class="w50"><a href="{{ site_url('/home/html/event_onCopSampleQuestions') }}" target="_blank">기출문제 이모티콘 댓글</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onCopPromotionPass') }}" target="_blank">승진 PASS <span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onCopZeroPass') }}" target="_blank">평생 0원 PASS <span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onCopPromotionPassPop') }}" target="_blank">PASS 인증 팝업_size 740x700 <span>*</span></a></li>                        
+                <li class="w50"><a href="{{ site_url('/home/html/event_onCopSampleQuestions') }}" target="_blank">기출문제 이모티콘 댓글 <span>*</span></a></li>
                 <li><p>공무원 온라인 ▼</p></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_onGosiFirePass') }}" target="_blank">소방 PASS</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_onGosiNinePass') }}" target="_blank">9급 PASS</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_onGosiSevenPass') }}" target="_blank">7급 PASS</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_onGosiSevenForeignPass') }}" target="_blank">7급 외무영사직 PASS</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_onGosiKdjPass') }}" target="_blank">김동진 법원팀 PASS</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onGosiFirePass') }}" target="_blank">소방 PASS <span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onGosiNinePass') }}" target="_blank">9급 PASS <span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onGosiSevenPass') }}" target="_blank">7급 PASS <span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onGosiSevenForeignPass') }}" target="_blank">7급 외무영사직 PASS <span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onGosiKdjPass') }}" target="_blank">김동진 법원팀 PASS <span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiArmyCivilianPass') }}" target="_blank">군무원 PASS</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiHdh') }}" target="_blank">한덕현 영어</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiHdhReading') }}" target="_blank">한덕현 영어 독해첨삭지도반</a></li>
-                <li><a href="{{ site_url('/home/html/event_onGosiHdhReadinPop') }}" target="_blank">한덕현 영어 독해첨삭지도반 신청팝업</a></li>
+                <li><a href="{{ site_url('/home/html/event_onGosiHdhReadinPop') }}" target="_blank">한덕현 영어 독해첨삭지도반 신청팝업<span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiJswPkg') }}" target="_blank">장사원 패키지 20% 할인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiKsjWordPkg') }}" target="_blank">김신주 영어 어휘패키지</a></li>
                 <li><a href="{{ site_url('/home/html/event_onGosiKsjPkg') }}" target="_blank">김신주 매직아이 영어 문법/어휘/독해 패키지</a></li>
@@ -104,9 +106,9 @@
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiKdjReserve') }}" target="_blank">2020 김동진법원팀 예비순환</a></li>
                 <li><a href="{{ site_url('/home/html/event_onGosiKdjPassStory') }}" target="_blank">2019 김동진법원팀 동행 1기 합격스토리</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiJason') }}" target="_blank">제이슨의 소방체력 정복하기</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_onGosiTech') }}" target="_blank">윌비스 기술직 TOP 라인업</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_onGosiNoncom') }}" target="_blank">부사관 PASS</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_onGosiNoncomPop') }}" target="_blank">부사관 PASS 유튜브 팝업</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onGosiTech') }}" target="_blank">윌비스 기술직 TOP 라인업 <span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onGosiNoncom') }}" target="_blank">부사관 PASS <span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onGosiNoncomPop') }}" target="_blank">부사관 PASS 유튜브 팝업 <span>*</span></a></li>
                 <li><p>공무원 학원 ▼</p></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_offGosiArmyQuestion') }}" target="_blank">군무원 이론요약&단원별 문제풀이</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_offGosiFianlTest') }}" target="_blank">시.확.찢 FINAL 모의고사</a></li>

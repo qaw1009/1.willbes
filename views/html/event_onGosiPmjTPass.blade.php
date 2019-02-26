@@ -67,7 +67,7 @@
             <img src="http://file3.willbes.net/new_gosi/2018/08/EV180802_c3.jpg" alt="윌비스 공무원 한국사의 대명사, 바로 민주국사입니다." />	
         </div><!--wb_cts01//-->      
   
-        <div class="wb_cts02" >
+        <div class="evtCtnsBox wb_cts02" >
             <img src="http://file3.willbes.net/new_gosi/2018/08/EV180802_c4.jpg" alt="윌비스 수강생들이 인정한 名品 한국사 강의!" />
         </div><!--wb_cts02//-->     
 

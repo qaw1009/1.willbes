@@ -67,36 +67,36 @@
 			<img src="http://file3.willbes.net/new_gosi/2018/05/EV180528_c3.jpg" />
 			<ul class="BnRTab">
 				<li> 
-					<a href="#tab2">
+					<a href="#tab1">
 						<img src="http://file3.willbes.net/new_gosi/2018/05/EV180528_tap01.jpg" class="off" alt=""/>
 						<img src="http://file3.willbes.net/new_gosi/2018/05/EV180528_tap01on.jpg" class="on"  />
 					</a>
 				</li>
 				<li> 
-					<a href="#tab3">
+					<a href="#tab2">
 						<img src="http://file3.willbes.net/new_gosi/2018/05/EV180528_tap02.jpg" class="off"  />
 						<img src="http://file3.willbes.net/new_gosi/2018/05/EV180528_tap02on.jpg" class="on"  alt=""/>
 					</a>
 				</li>
 				<li> 
-					<a href="#tab4">
+					<a href="#tab3">
 						<img src="http://file3.willbes.net/new_gosi/2018/05/EV180528_tap03.jpg" class="off"  />
 						<img src="http://file3.willbes.net/new_gosi/2018/05/EV180528_tap03on.jpg" class="on"  alt=""/>
 					</a>
 				</li>
 			</ul>              
-            <div id="tab2">
+            <div id="tab1">
                 <div class="slide_con" class="offWrap">
-                    <ul id="slidesImg1" class="offSlider">
+                    <ul class="offSlider">
                         <li><img src="http://file3.willbes.net/new_gosi/2018/05/EV180528_c4_1.jpg" /></li>
                         <li><img src="http://file3.willbes.net/new_gosi/2018/05/EV180528_c4_2.jpg" /></li>
                     </ul>
                 </div>
             </div>     
 	 
-            <div id="tab3">
+            <div id="tab2">
                 <div class="slide_con" class="offWrap">
-                    <ul id="slidesImg2" class="offSlider">
+                    <ul class="offSlider">
                         <li><img src="http://file3.willbes.net/new_gosi/2018/05/EV180528_c5_1.jpg"/></li>
                         <li><img src="http://file3.willbes.net/new_gosi/2018/05/EV180528_c5_2.jpg"/></li>
                         <li><img src="http://file3.willbes.net/new_gosi/2018/05/EV180528_c5_3.jpg"/></li>
@@ -104,7 +104,7 @@
                 </div>
             </div>                
                   
-            <div id="tab4">
+            <div id="tab3">
 				<img src="http://file3.willbes.net/new_gosi/2018/05/EV180528_c6.jpg" />
 			</div>	
 	    </div><!--wb_cts02//-->     

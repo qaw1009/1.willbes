@@ -98,21 +98,21 @@
         </div>
         <!-- 타이머 //-->
 
-        <div class="wb_top" >
+        <div class="evtCtnsBox wb_top" >
       		<img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_c1.png" alt="윌비스9급PASS X 세무PASS와 만나다!"  /><br>
             <img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_c2.gif" alt="11-12월 기출문제풀이 커리큘럼 업데이트 중"  /><br>
             <img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_c3.png" alt=""  />
 	    </div><!--WB_top//-->
       
       
-        <div class="wb_cts01" >
+        <div class="evtCtnsBox wb_cts01" >
             <img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_c4.gif" alt="어떤 고민일지라도 윌비스9급PASS가 진리!" /><br>
             <img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_c5.gif" alt="" /><br>
             <img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_c6.jpg" alt="" />
         </div><!--wb_cts01//-->
       
       
-	    <div class="wb_cts02" >
+	    <div class="evtCtnsBox wb_cts02" >
       		<img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_c7.jpg" alt="전문 교수진과 함께라면 흔들림 없는 실력 완성!" />          
             <div class="mv_bg">
                 <ul>
@@ -130,7 +130,7 @@
             <img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_c9.jpg" alt="" />	
         </div><!--wb_cts02//-->
 
-        <div class="wb_cts03" >
+        <div class="evtCtnsBox wb_cts03" >
             <img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_c10.jpg" alt=" " usemap="#Map181220_c1" border="0" />
             <map name="Map181220_c1" >
                 <area shape="rect" coords="832,611,975,697" href="javascript:go_PassLecture(1);"   onfocus="this.blur();" />
@@ -139,7 +139,7 @@
             <div class="check" id="chkInfo"><label><input name="ischk" type="checkbox" value="Y" /> 페이지 하단 윌비스 9급 PASS 이용안내를 모두 확인하였고, 이에 동의합니다. </label><a href="#tab1">이용안내확인하기 ↓</a></div>
         </div><!--wb_cts03//-->
       
-        <div class="wb_cts04" id="event">
+        <div class="evtCtnsBox wb_cts04" id="event">
             <img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_c11.jpg" alt=" " usemap="#Map181220_c2" border="0" />
             <map name="Map181220_c2" >
                 <area shape="rect" coords="369,819,845,916" href="https://www.local.willbes.net/home/html/event_onCopReboundPop" target="_blank" alt="타 사이트 수강 인증하기" />
@@ -147,7 +147,7 @@
             </map>	
         </div><!--wb_cts04//-->
 
-        <div class="wb_cts05" id="tab1">
+        <div class="evtCtnsBox wb_cts05" id="tab1">
 		    <img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_c12.jpg" alt=" 윌비스 9급 PASS 이용안내" />	
         </div><!--wb_cts05//-->
         

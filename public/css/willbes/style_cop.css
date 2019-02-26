@@ -956,6 +956,7 @@
 .Section .nNoticeBox .infoBox {
     font-size: 13px;
     letter-spacing: 0;
+    margin-right: 15px;
 }
 .Section .nNoticeBox .infoBox .infoTit {
     color: #0c5dc0;

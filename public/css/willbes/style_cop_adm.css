@@ -1,0 +1,225 @@
+/*********************************************     Main Container : Cop_adm     *********************************************/
+/* Main Container : Cop_adm */
+.adm .tx-color {
+    color: #008b6c;
+}
+.Section2 { background: #f7f7f7}
+
+/* Main Container : Tit : Cop_adm */
+.adm .smallTit {
+    border-top:1px solid #b8b8b8;
+    font-size: 22px;
+    color:#363636;    
+    position: relative;
+}
+.adm .smallTit p {
+    position: absolute;
+    top:-15px;
+    text-align: center;
+    width: 100%;
+}
+.adm .smallTit span {
+    padding:0 20px;
+    font-weight: 600;
+    background: #fff;
+}
+.adm .smallTit strong {
+    color:#008b6c;
+}
+
+.adm .smallTit a {
+    position: absolute;
+    width: 23px;
+    top:-12px;
+    right:0;    
+    z-index: 1;
+}
+.adm .smallTit2 span {
+    background:#f7f7f7;
+}
+
+.adm .Section.MainVisual iframe {
+    position: absolute;    
+    width: 270px;
+    height: 152px;
+    top: 72px;
+    right: 0;
+    z-index: 1;
+}
+.adm .youtubeWrap {    
+    height:530px;
+    padding:0 0 80px;
+}
+.adm .youtubetabWrap {
+    float: right;
+    background: url("../../img/willbes/cop_adm/visual/youtubetab_bg.png") no-repeat 0 0;
+    width: 549px;
+    height: 339px;
+}
+.adm .youtubetabWrap ul {
+    padding:20px 40px 40px 80px;
+}
+.adm .youtubetab li {
+    display: blcok;
+    border-bottom:1px solid #e2e2e2;
+}
+.adm .youtubetab li:last-child {
+    border:0;
+}
+.adm .youtubetab li a {
+    display: block;
+    padding:15px 0;
+    font-size: 16px;
+    line-height: 1.4;
+}
+.adm .youtubetab li a span {
+    display: block;
+    font-size: 13px;
+}
+.adm .youtubetab li a.active,
+.adm .youtubetab li a:hover {
+    color: #008b6c;
+    font-weight: 600;
+}
+.adm .youtubeBox {
+    float: left;
+    margin-top:10px;
+    background: #000;
+    width: 560px;
+    height: 315px;
+    overflow: hidden;
+}
+.adm .youtubeBox iframe {
+    width: 560px;
+    height: 315px;
+}
+.adm .Section .will-big-Tit .cop-color {
+    color: #008b6c;
+}
+
+/* Main Container : Prof : Cop_adm */
+.adm .Section .ProfCopBox > li {
+    position: relative;
+    display: inline;
+    float: left;
+    width: 379px;
+    height: 190px;
+    margin-left: 5px;
+}
+.adm .Section .ProfCopBox > li:first-child {
+    margin-left: 0;
+}
+.adm .Section .ProfCopBox > li:last-child {
+    width: 353px;
+    margin-left: 4px;
+}
+
+/* Main Container : pass : cSlider : sliderPassList : Cop_adm */
+.adm .cSlider.sliderPassList .bx-wrapper .bx-prev {
+    background: url("../../img/willbes/cop_adm/btn_prev_on.png") no-repeat 0 0;
+    left: -40px;
+}
+.adm .cSlider.sliderPassList .bx-wrapper .bx-next {
+    background: url("../../img/willbes/cop_adm/btn_next_on.png") no-repeat 0 0;
+    right: -40px;
+    left: inherit;
+}
+.adm .cSlider.sliderPassList .bx-wrapper .bx-prev.disabled {
+    background: url("../../img/willbes/cop_adm/btn_prev_off.png") no-repeat 0 0;
+    display: block;
+}
+.adm .cSlider.sliderPassList .bx-wrapper .bx-next.disabled {
+    background: url("../../img/willbes/cop_adm/btn_next_off.png") no-repeat 0 0;
+    display: block;
+}
+
+/* Main Container Cop_adm : 3STEP curriculum */
+.adm .curriculumTit a {
+    position: absolute;
+    background: #008b6c;
+    padding: 8px 0;
+    width: 180px;
+    color:#fff;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    border-bottom: 7px solid #006951;
+    bottom:78px;
+    left:50%;
+    margin-left: -90px;
+    z-index: 1;
+}
+.adm .curriculumTit a:hover {
+    border-bottom:0;
+}
+.adm .curriculumTxt span.btn a {
+    float: left;
+    font-size:16px; 
+    padding:8px 21px; 
+    background:#008b6c; 
+    color:#fff; 
+    text-align:center;
+    line-height: 16px;
+    border-radius: 20px
+}
+
+.adm .CurriStepBox {
+    padding:100px 0 50px;
+    background: #fff url("../../img/willbes/cop_adm/visual/visual_tit02_stit.png") no-repeat 37px 144px; 
+}
+
+.adm .CurriStepBox .CurriStep > li a:hover {
+    border:1px solid #008b6c;
+    color:#fff;
+    background: #008b6c;
+}
+.adm .CurriStepBox .CurriStep > li:nth-child(even) {
+    background: url("../../img/willbes/cop_adm/visual/icon_arrow.png") no-repeat center center; 
+    width: 30px;
+}
+
+.adm .CurriStepBox .CurriStep > li.active .curriculumBox,
+.adm .CurriStepBox .CurriStep > li:hover .curriculumBox {
+    background: #fff;
+    border: 10px solid #008b6c;
+    color: #008b6c;
+    box-shadow: -20px 20px 20px rgba(0,0,0,.2);
+}
+.adm .CurriStepBox .CurriStep > li.active .curriculumBox .Tit,
+.adm .CurriStepBox .CurriStep > li:hover .curriculumBox .Tit {
+    padding-top: 20px;
+    background: #008b6c;
+    color:#fff;
+}
+.adm .CurriStepBox .CurriStep > li.active .curriculumBox .subTit,
+.adm .CurriStepBox .CurriStep > li:hover .curriculumBox .subTit {
+    background: #008b6c;
+    color:#fff;
+}
+
+
+/* Main Container : SpecialLecBox */
+.adm .Section .SpecialLecBox .infoTit .btn .btn-sbj a {
+    background: #008b6c;
+}
+.adm .Section .SpecialLecBox .infoList .List-Table li a span {
+    float: left;
+    width: 130px;
+    color: #008b6c;
+    text-align: center;
+}
+
+
+/* Main Container : Notice : Cop_adm */
+.adm .Section .nNoticeBox .infoBox .infoTit {
+    color: #008b6c;
+    line-height: 20px;
+    font-weight: 600;
+}
+
+.adm .willbesNumber ul li {
+    margin-left: 100px;
+}
+.adm .willbesNumber ul li:first-child {
+    margin-left: 50px;
+}

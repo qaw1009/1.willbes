@@ -128,14 +128,16 @@ class SearchWMasterLectureModel extends WB_Model
                         lms_product A
                         join lms_product_lecture B on A.ProdCode = B.ProdCode
                         join wbs_cms_lecture_combine C on B.wLecIdx = C.wLecIdx and C.cp_wAdminIdx='. $this->session->userdata('admin_idx') .'
-                        join lms_professor D on INSTR(C.profIdx_string,D.wProfIdx) and D.IsStatus=\'Y\'
+                        join lms_professor D on INSTR(C.profIdx_string,D.wProfIdx) and D.IsStatus=\'Y\' 
                         join wbs_pms_professor E on D.wProfIdx = E.wProfIdx and E.wIsStatus=\'Y\'
                         join lms_professor_calculate_rate F on D.ProfIdx = F.ProfIdx and F.IsStatus=\'Y\' ';
 
         $where = $this->_conn->makeWhere([
-            'EQ' => ['A.Sitecode'=>$sitecode
+            'EQ' => [
+                'A.Sitecode'=>$sitecode
                 ,'A.IsStatus'=>'Y'
                 ,'F.LearnPatternCcd'=>$learnpatternccd
+                ,'D.Sitecode'=>$sitecode
             ]
             ,'IN' => ['A.ProdCode' => $prodcode]
         ]);

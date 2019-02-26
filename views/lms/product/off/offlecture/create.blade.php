@@ -386,6 +386,7 @@
                             @php
                                 $rateRemain = '';
                                 $rateRemainProfIdx = '';
+                                $rateSum = 0;
                             @endphp
                             @foreach($data_division as $row)
                                 @php
@@ -395,6 +396,7 @@
                                             $rateRemainProfIdx = $row['ProfIdx'];
                                         }
                                     }
+                                    $rateSum = $rateSum + floatval($row['ProdDivisionRate']);
                                 @endphp
                                 <tr id="{{$loop->index - 1}}">
                                     <td>
@@ -409,6 +411,7 @@
                                     <td><input name="IsSingular" title="단수적용" id="IsSingular_{{$row['ProfIdx']}}" required="required" onclick="singularCheck('{{$row['ProfIdx']}}')" type="radio" value="{{$row['ProfIdx']}}" @if($row['IsSingular']==='Y') checked="checked" @endif {{--@if($method==='PUT') disabled @endif--}}></td>
                                 </tr>
                             @endforeach
+                                <tr><td colspan="3"></td><td><span id="rateSum">{{{$rateSum}}}</span></td><td colspan="2"></td></tr>
                             </table>
                         </div>
                         <div class="item inline-block">
@@ -968,7 +971,6 @@
                 return true;
             }
 
-
             $('#btn_list').click(function() {
                 location.replace('{{ site_url('/product/off/offLecture/') }}' + getQueryString());
             });
@@ -1273,8 +1275,6 @@
         }
 
 
-
-
         function setLecDate_modify() {
             if($("#StudyStartDate").val() == "") {alert("개강일을 선택해 주세요.");$("#StudyStartDate").focus();return;}
             if($('#Amount').val() == '') {alert('회차를 입력해 주세요.'); $('#Amount').focus();return;}
@@ -1404,7 +1404,7 @@
         }
 
         @if($method === "PUT" && !empty($data_lecturedate))
-            setLecDate_modify()
+            setLecDate_modify();
         @endif
 
     </script>

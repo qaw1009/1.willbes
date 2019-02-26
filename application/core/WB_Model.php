@@ -37,12 +37,17 @@ class WB_Model extends CI_Model
         $_CI =& get_instance();
 
         foreach ($databases as $database) {
-            // 동일한 이름의 DB가 연결되어 있다면 다시 연결하지 않고 기존 연결정보를 설정
-            if (isset($_CI->{$database}) === false || is_object($_CI->{$database}) === false || empty($_CI->{$database}->conn_id) === true) {
-                $_CI->{$database} = $this->load->database($database, true);
-            }
+            if (isset($_CI->db) === true && is_object($_CI->db) === true && empty($_CI->db->conn_id) === false && $_CI->db->database == $database) {
+                // 기 연결된 디폴트 커넥션 DB명이 연결하려는 DB명과 일치한다면 디폴트 커넥션 사용
+                $this->{$database} = $_CI->db;
+            } else {
+                // 동일한 이름의 DB 커넥션이 있다면 기존 연결된 커넥션 사용
+                if (isset($_CI->{$database}) === false || is_object($_CI->{$database}) === false || empty($_CI->{$database}->conn_id) === true) {
+                    $_CI->{$database} = $this->load->database($database, true);
+                }
 
-            $this->{$database} = $_CI->{$database};
+                $this->{$database} = $_CI->{$database};
+            }
         }
     }
 

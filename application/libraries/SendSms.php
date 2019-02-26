@@ -3,11 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class SendSms
 {
-    protected $_CI;
+    private $_CI;
     /**
      * @var \CI_DB_query_builder
      */
-    protected $_db;
+    private $_db;
 
     private $_title_max_length = '40';
     private $_msg_max_length = '54';    //발송메세지 바이트 최대 길이

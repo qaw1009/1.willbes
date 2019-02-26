@@ -994,6 +994,11 @@
 
                 if($('input:radio[name="PackTypeCcd"]:checked').val() == '648002') {
 
+                    if ($("#PackSelCount").val() == "") {
+                        alert('선택과목 선택개수 입력하여 주십시오.');
+                        $('#PackSelCount').focus();
+                        return;
+                    }
                     if ($("input[name='selLecAddCheck[]']").length == 0) {
                         alert('선택과목강좌구성을 선택하여 주십시오.');
                         $('#selLecAdd').focus();

@@ -971,7 +971,6 @@
                 return true;
             }
 
-
             $('#btn_list').click(function() {
                 location.replace('{{ site_url('/product/off/offLecture/') }}' + getQueryString());
             });
@@ -1276,8 +1275,6 @@
         }
 
 
-
-
         function setLecDate_modify() {
             if($("#StudyStartDate").val() == "") {alert("개강일을 선택해 주세요.");$("#StudyStartDate").focus();return;}
             if($('#Amount').val() == '') {alert('회차를 입력해 주세요.'); $('#Amount').focus();return;}
@@ -1407,7 +1404,7 @@
         }
 
         @if($method === "PUT" && !empty($data_lecturedate))
-            setLecDate_modify()
+            setLecDate_modify();
         @endif
 
     </script>

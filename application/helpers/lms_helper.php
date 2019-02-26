@@ -169,4 +169,40 @@ if (!function_exists('html_def_site_tabs')) {
 
         return $return_html;
     }
+
+    if (!function_exists('html_callback_num_select')) {
+        /**
+         * 발신번호 select box HTML 리턴
+         * Ccd에 매핑된 발신번호 값(CcdValue) 가공처리
+         * @param array $arr_send_callback_ccd  [발신번호 공통코드 배열 값]
+         * @param string $value [selected 값]
+         * @param string $ele_id [select box id]
+         * @param string $ele_name [select box name]
+         * @param string $class [select box에 추가되는 css class]
+         * @param string $title [select box title]
+         * @param string $required [select box required value]
+         * @param string $disabled [select box disabled value]
+         * @return string [select box HTML]
+         */
+        function html_callback_num_select($arr_send_callback_ccd = [], $value = '', $ele_id = 'send_tel', $ele_name = 'send_tel', $class = '', $title = '발신번호', $required = 'required', $disabled = '')
+        {
+            $return_html = '<select class="form-control ' . $class . '" id="' . $ele_id . '" name="' . $ele_name . '" title="' . $title . '"';
+            empty($required) === false && $return_html .= ' required="' . $required . '"';
+            empty($disabled) === false && $return_html .= ' disabled="' . $disabled . '"';
+            $return_html .= '>' . PHP_EOL;
+            $return_html .= '<option value="">발송번호선택</option>' . PHP_EOL;
+
+            if (is_array($arr_send_callback_ccd) === true && empty($arr_send_callback_ccd) === false) {
+                foreach ($arr_send_callback_ccd as $key => $val) {
+                    $arr_temp_val = explode(':', $val);
+                    $selected = ($arr_temp_val[1] == $value) ? 'selected = "selected"' : '';
+                    $return_html .= "<option value='{$arr_temp_val[1]}' {$selected}>{$arr_temp_val[0]} ({$arr_temp_val[1]})</option>";
+                }
+            }
+
+            $return_html .= '</select>' . PHP_EOL;
+
+            return $return_html;
+        }
+    }
 }

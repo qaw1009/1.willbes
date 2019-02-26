@@ -414,7 +414,7 @@
                                 <div class="row">
                                     <label class="control-label col-md-1">발신번호</label>
                                     <div class="col-md-5 form-inline">
-                                        <input type="text" id="send_tel" name="send_tel" class="form-control" value="{{$data['SendTel']}}" title="발신번호">
+                                        {!! html_callback_num_select($arr_send_callback_ccd, $data['SendTel'], 'send_tel', 'send_tel', '', '발신번호', '') !!}
                                     </div>
                                     <div class="col-md-5">
                                         <p class="form-control-static">• 접수 완료 시 아래의 문구가 자동 발송됩니다.</p>
@@ -676,19 +676,6 @@
                         location.reload();
                     }
                 }, showError, false, 'POST');
-            });
-
-            // 고객센터 전화번호
-            $regi_form.on('change', 'select[name="site_code"]', function() {
-                var $arr_site_csTel = {!! $site_csTel !!};
-                var cs_tel = '';
-                var this_site_code = $(this).val();
-                if (this_site_code == '') {
-                    cs_tel = '';
-                } else {
-                    cs_tel = $arr_site_csTel[this_site_code].replace('-','');
-                }
-                $('#send_tel').val(cs_tel);
             });
 
             //목록

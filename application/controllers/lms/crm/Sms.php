@@ -183,7 +183,11 @@ class Sms extends \app\controllers\BaseController
      */
     public function createSendModal()
     {
-        $arr_codes = $this->codeModel->getCcdInArray([$this->_groupCcd['SendPatternCcd'], $this->_groupCcd['SendOptionCcd'], $this->_groupCcd['SmsSendCallBackNum']]);
+        $arr_codes = $this->codeModel->getCcdInArray([$this->_groupCcd['SendPatternCcd'], $this->_groupCcd['SendOptionCcd']]);
+        
+        //발신번호조회
+        $arr_send_callback_ccd = $this->codeModel->getCcd($this->_groupCcd['SmsSendCallBackNum'], 'CcdValue');
+
         $method = 'POST';
         $set_row_count = '12';
         $list_send_member = null;
@@ -211,7 +215,7 @@ class Sms extends \app\controllers\BaseController
             'method' => $method,
             'arr_send_pattern_ccd' => $arr_codes[$this->_groupCcd['SendPatternCcd']],
             'arr_send_option_ccd' => $arr_codes[$this->_groupCcd['SendOptionCcd']],
-            'arr_send_callback_ccd' => $arr_codes[$this->_groupCcd['SmsSendCallBackNum']],
+            'arr_send_callback_ccd' => $arr_send_callback_ccd,
             'set_row_count' => $set_row_count,
             'list_send_member' => $list_send_member,
             'js_action' => $js_action

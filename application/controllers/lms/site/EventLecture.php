@@ -106,7 +106,9 @@ class EventLecture extends \app\controllers\BaseController
         $arr_professor = $this->professorModel->getProfessorArray();
 
         //고객센터 전화번호 조회
-        $site_csTel = json_encode($this->siteModel->getSiteArray(false,'CsTel'));
+        /*$site_csTel = json_encode($this->siteModel->getSiteArray(false,'CsTel'));*/
+        //발신번호조회
+        $arr_send_callback_ccd = $this->codeModel->getCcd($this->_groupCcd['SmsSendCallBackNum'], 'CcdValue');
 
         if (empty($params[0]) === false) {
             $method = 'PUT';
@@ -158,7 +160,8 @@ class EventLecture extends \app\controllers\BaseController
             'arr_campus' => $arr_campus,
             'arr_subject' => $arr_subject,
             'arr_professor' => $arr_professor,
-            'site_csTel' => $site_csTel,
+            /*'site_csTel' => $site_csTel,*/
+            'arr_send_callback_ccd' => $arr_send_callback_ccd,
             'arr_request_types' => $this->eventLectureModel->_request_type_names,
             'arr_take_types' => $this->eventLectureModel->_take_type_names,
             'arr_is_registers' => $this->eventLectureModel->_is_register_names,

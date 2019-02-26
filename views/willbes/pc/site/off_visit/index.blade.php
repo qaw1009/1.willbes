@@ -151,7 +151,7 @@
                             </button>
                         </div>
 
-                        <div class="InfoBtn"><a href="#none" onclick="openWin('requestInfo')">수강신청안내 <span>▶</span></a></div>
+                        <div class="InfoBtn"><a href="#none" onclick="openWin('requestInfo')">방문결제안내 <span>▶</span></a></div>
                         <div id="requestInfo" class="willbes-Layer-requestInfo">
                             <a class="closeBtn" href="#none" onclick="closeWin('requestInfo')">
                                 <img src="{{ img_url('prof/close.png') }}">

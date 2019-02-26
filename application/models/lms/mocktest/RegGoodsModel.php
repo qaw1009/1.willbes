@@ -45,6 +45,13 @@ class RegGoodsModel extends WB_Model
         'copylog' => 'lms_product_copy_log'
     ];
 
+    public $_groupCcd = [
+        'option' => '660',
+        'SerialCcd' => '666',
+        'CandidateAreaCcd' => '631',
+        'SmsSendCallBackNum' => '706'   //SMS 발송번호
+    ];
+
 
     public function __construct()
     {
@@ -763,7 +770,7 @@ class RegGoodsModel extends WB_Model
             // lms_Product_Sms 저장
             $data = array(
                 'ProdCode'    => $prodcode,
-                'SendTel'     => str_replace('-', '', $this->input->post('SendTel')),
+                'SendTel'     => $this->input->post('SendTel'),
                 'Memo'        => $this->input->post('Memo', true),
                 'RegIp'       => $this->input->ip_address(),
                 'RegDatm'     => $date,
@@ -882,7 +889,7 @@ class RegGoodsModel extends WB_Model
 
             // lms_Product_Sms 저장
             $data = array(
-                'SendTel'     => str_replace('-', '', $this->input->post('SendTel')),
+                'SendTel'     => $this->input->post('SendTel'),
                 'Memo'        => $this->input->post('Memo', true),
                 'UpdDatm'     => $date,
                 'UpdAdminIdx' => $this->session->userdata('admin_idx'),

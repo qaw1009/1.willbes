@@ -14,6 +14,8 @@ class RegGoods extends \app\controllers\BaseController
     protected $models = array('sys/site', 'sys/code', 'sys/category', 'product/base/subject', 'common/searchProfessor', 'mocktest/mockCommon', 'mocktest/regGoods');
     protected $helpers = array();
 
+    protected $_groupCcd = [];
+
     protected $applyType;
     protected $applyArea1;
     protected $applyArea2;
@@ -21,7 +23,6 @@ class RegGoods extends \app\controllers\BaseController
     protected $applyType_on;
     protected $applyType_off;
     protected $acceptStatus;
-
 
     public function __construct()
     {
@@ -34,6 +35,9 @@ class RegGoods extends \app\controllers\BaseController
         $this->applyType_on = $this->config->item('sysCode_applyType_on', 'mock');
         $this->applyType_off = $this->config->item('sysCode_applyType_off', 'mock');
         $this->acceptStatus = $this->config->item('sysCode_acceptStatus', 'mock');
+
+        // 공통코드 셋팅
+        $this->_groupCcd = $this->regGoodsModel->_groupCcd;
     }
 
     /**
@@ -144,6 +148,9 @@ class RegGoods extends \app\controllers\BaseController
             $cateD2Json[ $it['ParentCateCode'] ][ $it['CateCode'] ] = $it['CateName'];
         }
 
+        //발신번호조회
+        $arr_send_callback_ccd = $this->codeModel->getCcd($this->_groupCcd['SmsSendCallBackNum'], 'CcdValue');
+
         $this->load->view('mocktest/reg/goods/create', [
             'method' => 'POST',
             'siteCodeDef' => '',
@@ -157,6 +164,7 @@ class RegGoods extends \app\controllers\BaseController
             'cateD2_sel' => json_encode(array()),
             'applyType_on' => $this->applyType_on,
             'accept_ccd' => $codes[$this->acceptStatus],
+            'arr_send_callback_ccd' => $arr_send_callback_ccd
         ]);
     }
 
@@ -395,6 +403,9 @@ class RegGoods extends \app\controllers\BaseController
             return;
         }
 
+        //발신번호조회
+        $arr_send_callback_ccd = $this->codeModel->getCcd($this->_groupCcd['SmsSendCallBackNum'], 'CcdValue');
+
         $this->load->view('mocktest/reg/goods/create', [
             'method' => 'PUT',
             'siteCodeDef' => $data['SiteCode'],
@@ -412,6 +423,7 @@ class RegGoods extends \app\controllers\BaseController
             'sData' => $sData,
             'cateD2_sel' => json_encode($data['MockPart']),
             'adminName' => $this->mockCommonModel->getAdminNames(),
+            'arr_send_callback_ccd' => $arr_send_callback_ccd
         ]);
     }
 

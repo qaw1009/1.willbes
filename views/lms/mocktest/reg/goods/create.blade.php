@@ -350,7 +350,15 @@
                             </div>
                             <textarea id="SmsMemo" name="Memo" class="form-control" style="width: 60%; height: 100px;">@if($method == 'PUT'){{ $data['Memo'] }}@endif</textarea>
                             <div class="mt-10">
-                                [발신번호] <input type="text" name="SendTel" id="SendTel" value="@if($method == 'PUT'){{ $data['SendTel'] }}@endif" size="12" class="form-control" maxlength="20">
+                                [발신번호]
+                                <?php
+                                    if($method == 'PUT'){
+                                        $SendTel = $data['SendTel'];
+                                    } else {
+                                        $SendTel = '';
+                                    }
+                                ?>
+                                {!! html_callback_num_select($arr_send_callback_ccd, $SendTel , 'SendTel', 'SendTel', '', '발신번호', '') !!}
                                 <input class="form-control border-red red" id="content_byte" style="width: 50px;" type="text" readonly="readonly" value="0">
                                 <span class="red">byte</span>
                                 (80byte 초과 시 LMS 문자로 전환됩니다.)

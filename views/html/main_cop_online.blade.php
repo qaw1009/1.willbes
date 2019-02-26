@@ -713,8 +713,7 @@
                                         <div class="infoBox">
                                             <div class="infoTit">경찰영어 하승민</div>
                                             <div class="infoTxt">
-                                                2019 하승민 영어 기본이론<br/>
-                                                (18년 11월)<br/>
+                                                2019 하승민 영어 기본이론 (18년 11월)<br/>
                                                 <span class="small">56강 /80일 / 업데이트 완료</span><br/>
                                             </div>
                                         </div>
@@ -729,8 +728,7 @@
                                         <div class="infoBox">
                                             <div class="infoTit">경찰학개론 장정훈</div>
                                             <div class="infoTxt">
-                                                2018 장정훈 경찰학개론<br/>
-                                                기본이론 (18년 4월)<br/>
+                                                2018 장정훈 경찰학개론 기본이론 (18년 4월)<br/>
                                                 <span class="small">56강 / 80일 / 업데이트 완료</span><br/>
                                             </div>
                                         </div>
@@ -747,8 +745,7 @@
                                         <div class="infoBox">
                                             <div class="infoTit">한국사 오태진</div>
                                             <div class="infoTxt">
-                                                2018년 1차대비 오태진<br/>
-                                                한국사 Final 실전모의고사...<br/>
+                                                2018년 1차대비 오태진 한국사 Final 실전모의고사...<br/>
                                                 <span class="small">56강 / 80일 / 업데이트 완료</span><br/>
                                             </div>
                                         </div>
@@ -763,8 +760,7 @@
                                         <div class="infoBox">
                                             <div class="infoTit">한국사 원유철</div>
                                             <div class="infoTxt">
-                                                2019 원유철 한국사 기본이론<br/>
-                                                (근현대사) (18년 9월)<br/>
+                                                2019 원유철 한국사 기본이론 (근현대사) (18년 9월)<br/>
                                                 <span class="small">56강 / 80일 / 업데이트 완료</span><br/>
                                             </div>
                                         </div>
@@ -788,7 +784,7 @@
                                         <div class="infoBox">
                                             <div class="infoTit">한국사 오태진</div>
                                             <div class="infoTxt">
-                                                2018년 1차대비 오태진<br/>
+                                                2018년 1차대비 오태진
                                                 한국사 Final 실전모의고사...<br/>
                                                 <span class="small">56강 / 80일 / 업데이트 완료</span><br/>
                                             </div>
@@ -804,7 +800,7 @@
                                         <div class="infoBox">
                                             <div class="infoTit">한국사 원유철</div>
                                             <div class="infoTxt">
-                                                2019 원유철 한국사 기본이론<br/>
+                                                2019 원유철 한국사 기본이론
                                                 (근현대사) (18년 9월)<br/>
                                                 <span class="small">56강 / 80일 / 업데이트 완료</span><br/>
                                             </div>

@@ -411,7 +411,7 @@
                                     <td><input name="IsSingular" title="단수적용" id="IsSingular_{{$row['ProfIdx']}}" required="required" onclick="singularCheck('{{$row['ProfIdx']}}')" type="radio" value="{{$row['ProfIdx']}}" @if($row['IsSingular']==='Y') checked="checked" @endif {{--@if($method==='PUT') disabled @endif--}}></td>
                                 </tr>
                             @endforeach
-                                <tr><td colspan="3"></td><td><span id="rateSum">{{{$rateSum}}}</span></td><td colspan="2"></td></tr>
+                                <tr><td colspan="4"></td><td><span id="rateSum">{{{$rateSum}}}</span></td><td colspan="2"></td></tr>
                             </table>
                         </div>
                         <div class="item inline-block">

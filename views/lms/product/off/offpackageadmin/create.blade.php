@@ -416,6 +416,7 @@
                                 @php
                                     $rateRemain = '';
                                     $rateRemainProfIdx = '';
+                                    $rateSum = 0;
                                 @endphp
                                 @foreach($data_division as $row)
                                     @php
@@ -425,6 +426,7 @@
                                                 $rateRemainProfIdx = $row['ProfIdx'].'-'.$row['ProdCodeSub'];
                                             }
                                         }
+                                        $rateSum = $rateSum + floatval($row['ProdDivisionRate']);
                                     @endphp
                                     <tr id="{{$loop->index - 1}}">
                                         <input name="ProfIdx[]" id="ProfIdx_{{$row['ProfIdx']}}-{{$row['ProdCodeSub']}}" type="hidden" value="{{$row['ProfIdx']}}">
@@ -436,14 +438,8 @@
                                         <td><input name="ProdCalcRate[]" title="정산율" class="form-control" id="ProdCalcRate_{{$row['ProfIdx']}}-{{$row['ProdCodeSub']}}" required="required" type="text" size="5" value="{{$row['ProdCalcRate']}}"> %</td>
                                         <td><input name="IsSingular" title="단수적용" id="IsSingular_{{$row['ProfIdx']}}-{{$row['ProdCodeSub']}}" required="required" onclick="singularCheck('{{$row['ProfIdx']}}-{{$row['ProdCodeSub']}}')" type="radio" value="{{$row['ProfIdx']}}" @if($row['IsSingular']==='Y') checked="checked" @endif {{--@if($method==='PUT') disabled @endif--}}></td>
                                     </tr>
-                                    @if($loop->last)
-                                        <tr>
-                                            <td colspan='3'></td>
-                                            <td><span id='rateSum'>1</span></td>
-                                            <td colspan='2'></td>
-                                        </tr>
-                                    @endif
                                 @endforeach
+                                    <tr><td colspan="3"></td><td><span id="rateSum">{{{$rateSum}}}</span></td><td colspan="2"></td></tr>
                             </table>
                         </div>
                         <div class="item inline-block">
@@ -995,8 +991,14 @@
                 if( $("input[name='essLecAddCheck[]']").length == 0) {
                     alert('필수과목강좌구성을 선택하여 주십시오.');$('#essLecAdd').focus();return;
                 }
-                if( $("input[name='selLecAddCheck[]']").length == 0) {
-                    alert('선택과목강좌구성을 선택하여 주십시오.');$('#selLecAdd').focus();return;
+
+                if($('input:radio[name="PackTypeCcd"]:checked').val() == '648002') {
+
+                    if ($("input[name='selLecAddCheck[]']").length == 0) {
+                        alert('선택과목강좌구성을 선택하여 주십시오.');
+                        $('#selLecAdd').focus();
+                        return;
+                    }
                 }
 
                 return true;

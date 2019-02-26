@@ -142,10 +142,11 @@
                         <div class="row form-inline">
                             <div class="col-md-8">
                                 <span class="mr-5">[발신번호]</span>
-                                <input type="text" class="form-control" id="cs_tel" name="cs_tel" title="발신번호" value="{{ $data['SendTel'] }}">
+                                {{--<input type="text" class="form-control" id="cs_tel" name="cs_tel" title="발신번호" value="{{ $data['SendTel'] }}">--}}
+                                {!! html_callback_num_select($arr_send_callback_ccd, $data['SendTel'], 'cs_tel', 'cs_tel', '', '발신번호', '') !!}
                             </div>
                             <div class="col-md-4 red text-right">
-                                <span class="content_byte">0</span> Byte <span style="color: #73879C">(80byte 초과 시 LMS 문자로 전환됩니다.)</span>
+                                <span class="content_byte" id="content_byte">0</span> Byte <span style="color: #73879C">(80byte 초과 시 LMS 문자로 전환됩니다.)</span>
                             </div>
                         </div>
                     </div>
@@ -219,22 +220,8 @@
             });
 
             // 바이트 수
-            $('#sms_content').on('change keyup input', function() {
-                var content_byte = fn_chk_byte($(this).val());
-                $('.content_byte').text(content_byte);
-            });
-
-            // 고객센터 전화번호
-            $regi_form.on('change', 'select[name="site_code"]', function() {
-                var $arr_site_csTel = {!! $site_csTel !!};
-                var cs_tel = '';
-                var this_site_code = $(this).val();
-                if (this_site_code == '') {
-                    cs_tel = '';
-                } else {
-                    cs_tel = $arr_site_csTel[this_site_code].replace('-','');
-                }
-                $('#cs_tel').val(cs_tel);
+            $('#sms_memo').on('change keyup input', function() {
+                $('#content_byte').text(fn_chk_byte($(this).val()));
             });
 
             //목록

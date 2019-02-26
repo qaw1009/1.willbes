@@ -5,6 +5,9 @@ class Regist extends \app\controllers\BaseController
 {
     protected $models = array('sys/site', 'sys/code', 'pass/readingRoom');
     protected $helpers = array();
+    protected $_groupCcd = [
+        'SmsSendCallBackNum' => '706'   //SMS 발송번호
+    ];
 
     public function __construct()
     {
@@ -93,8 +96,8 @@ class Regist extends \app\controllers\BaseController
         //캠퍼스'Y'상태 사이트 코드 조회
         $offLineSite_list = $this->siteModel->getOffLineSiteArray();
 
-        //고객센터 전화번호 조회
-        $site_csTel = json_encode($this->siteModel->getSiteArray(false,'CsTel'));
+        //발신번호조회
+        $arr_send_callback_ccd = $this->codeModel->getCcd($this->_groupCcd['SmsSendCallBackNum'], 'CcdValue');
 
         //캠퍼스 조회
         $arr_campus = $this->siteModel->getSiteCampusArray('');
@@ -124,7 +127,7 @@ class Regist extends \app\controllers\BaseController
             'mang_title' => $this->readingRoomModel->arr_mang_title[$mang_type],
             'default_query_string' => '&mang_type='.$mang_type,
             'arr_campus' => $arr_campus,
-            'site_csTel' => $site_csTel,
+            'arr_send_callback_ccd' => $arr_send_callback_ccd,
             'data' => $data
         ]);
     }

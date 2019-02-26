@@ -105,8 +105,6 @@ class EventLecture extends \app\controllers\BaseController
         //교수조회
         $arr_professor = $this->professorModel->getProfessorArray();
 
-        //고객센터 전화번호 조회
-        /*$site_csTel = json_encode($this->siteModel->getSiteArray(false,'CsTel'));*/
         //발신번호조회
         $arr_send_callback_ccd = $this->codeModel->getCcd($this->_groupCcd['SmsSendCallBackNum'], 'CcdValue');
 

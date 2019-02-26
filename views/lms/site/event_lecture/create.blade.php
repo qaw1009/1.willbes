@@ -426,6 +426,14 @@
                                         <textarea id="sms_content" name="sms_content" class="form-control" rows="6" title="내용" placeholder="">{{$data['SmsContent']}}</textarea>
                                     </div>
                                 </div>
+                                <div class="row mt-10">
+                                    <label class="control-label col-md-1"></label>
+                                    <div class="col-md-11">
+                                    <input class="form-inline red" id="content_byte" style="width: 50px;" type="text" readonly="readonly" value="0">
+                                    <span class="red">byte</span>
+                                    (55byte 이상일 경우 MMS로 전환됩니다.)
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -694,6 +702,11 @@
                         location.replace('{{ site_url("/site/eventLecture/") }}' + getQueryString());
                     }
                 }, showValidateError, addValidate, false, 'alert');
+            });
+
+            // 바이트 수
+            $('#sms_content').on('change keyup input', function() {
+                $('#content_byte').val(fn_chk_byte($(this).val()));
             });
         });
 

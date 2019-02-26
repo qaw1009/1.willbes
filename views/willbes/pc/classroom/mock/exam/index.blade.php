@@ -131,12 +131,12 @@
             function popwin(prodcode, mridx){
                 if (win == '') {
                     var _url = '{{ front_url('/classroom/MockExam/winpopupstep1?prodcode=') }}' + prodcode + '&mridx=' + mridx;
-                    win = window.open(_url, 'mockPopup', 'width=980, height=845, scrollbars=yes, resizable=yes');
+                    win = window.open(_url, 'mockPopup', 'width=1200, height=845, scrollbars=yes, resizable=yes');
                     win.focus();
                 }else{
                     if(win.closed){
                         var _url = '{{ front_url('/classroom/MockExam/winpopupstep1?prodcode=') }}' + prodcode+ '&mridx=' + mridx;
-                        win = window.open(_url, 'mockPopup', 'width=980, height=845, scrollbars=yes, resizable=yes');
+                        win = window.open(_url, 'mockPopup', 'width=1200, height=845, scrollbars=yes, resizable=yes');
                         win.focus();
                     } else {
                         //alert('팝업떠있음');

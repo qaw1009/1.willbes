@@ -347,6 +347,9 @@
                 // 카테고리 검색 초기화
                 $regi_form.find('input[name="cate_code"]').val('');
                 $('#selected_category').html('');
+
+                // 특정상품 선택결과 초기화
+                $('#selected_product').html('');
             });
 
             // 카테고리 검색 or 상품 검색
@@ -456,7 +459,9 @@
                 $('.form-range-input').removeClass('show').addClass('hide');
 
                 // 기존 적용된 특정상품 선택결과 초기화
-                $('#selected_product').html('');
+                if (evt.type === 'ifChanged') {
+                    $('#selected_product').html('');
+                }
 
                 // 카테고리
                 if($(this).val() === '645006') {

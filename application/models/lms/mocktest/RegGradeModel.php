@@ -127,7 +127,7 @@ class RegGradeModel extends WB_Model
 
 
     /**
-     * 메인리스트
+     * 개인별성적통계 리스트
      */
     public function privateList($conditionAdd = '', $limit = '', $offset = '')
     {
@@ -137,40 +137,20 @@ class RegGradeModel extends WB_Model
         $offset_limit = (is_numeric($limit) && is_numeric($offset)) ? "LIMIT $offset, $limit" : "";
 
         $column = "
-            MR.MemIdx, MP.*, A.wAdminName, MR.IsTake AS MrIsStatus, MR.MrIdx, MR.TakeNumber, MR.TakeArea,
-            (SELECT MemName FROM {$this->_table['member']} WHERE MemIdx = MR.MemIdx) AS MemName,
-            (SELECT MemId FROM {$this->_table['member']} WHERE MemIdx = MR.MemIdx) AS MemId,
-            fn_ccd_name(MR.TakeForm) AS TakeFormType,
-            fn_ccd_name(MR.TakeArea) AS TakeAreaName,
-            (SELECT CONCAT(Phone1,'-',fn_dec(Phone2Enc),'-',phone3) FROM {$this->_table['member']} WHERE MemIdx = MR.MemIdx) AS Phone,
-            (SELECT ROUND(SUM(AdjustPoint),2) FROM {$this->_table['mockGrades']} WHERE MrIdx = MR.MrIdx AND ProdCode = PD.Prodcode) AS AdjustSum,
-            (SELECT RegDatm FROM {$this->_table['mockLog']} WHERE MrIdx = MR.MrIdx ORDER BY RegDatm LIMIT 1) AS ExamRegDatm,
-            (
-                SELECT 
-                    GROUP_CONCAT(SubjectName) 
-                FROM {$this->_table['mockRegisterR']} AS RP
-                     JOIN {$this->_table['subject']} AS PS ON RP.SubjectIdx = PS.SubjectIdx
-                WHERE 
-                    RP.SubjectIdx IN (SELECT GROUP_CONCAT(SubjectIdx) FROM {$this->_table['mockRegisterR']} WHERE ProdCode = MR.ProdCode AND MrIdx = MR.MrIdx GROUP BY MpIdx)
-                    AND MrIdx = MR.MrIdx
-            ) AS SubjectName,
-            (SELECT SiteGroupName FROM {$this->_table['siteGroup']} WHERE SiteGroupCode = (SELECT SiteGroupCode FROM lms_site WHERE SiteCode = PD.SiteCode)) AS SiteName,
-            (SELECT RegDatm FROM {$this->_table['mockAnswerPaper']} WHERE MemIdx = MR.MemIdx AND MrIdx = MR.MrIdx ORDER BY RegDatm DESC LIMIT 1) AS IsDate,
-            fn_ccd_name(MR.TakeMockPart) AS TakeMockPartName,
-            (SELECT 
-                SUM(IF(MA.IsWrong = 'Y', Scoring, '0')) AS Res 
-            FROM
-                lms_mock_paper AS MP
-                JOIN {$this->_table['mockExamQuestion']} AS MQ ON MQ.MpIdx = MP.MpIdx AND MP.IsUse = 'Y'
-                JOIN {$this->_table['mockAnswerPaper']} AS MA ON MQ.MqIdx = MA.MqIdx 
-                JOIN {$this->_table['mockRegister']} AS MMR ON MMR.MrIdx = MA.MrIdx
-            WHERE 
-                MA.MemIdx = MR.MemIdx AND MMR.ProdCode = MR.ProdCode
-            ) AS TCNT,
-            (SELECT COUNT(*) FROM {$this->_table['mockRegisterR']} WHERE MrIdx = MR.MrIdx AND ProdCode = MR.ProdCode) AS KCNT,
-            (SELECT RegDatm FROM {$this->_table['mockAnswerPaper']} WHERE MemIdx = MR.MemIdx AND ProdCode = MR.ProdCode ORDER BY RegDatm DESC LIMIT 1) Wdate,
-            PD.ProdName, PD.SaleStartDatm, PD.SaleEndDatm, PS.SalePrice, PS.RealSalePrice,          
-            C1.CateName, C1.IsUse AS IsUseCate, IsDisplay, GradeOpenDatm
+            MR.MrIdx,
+            MR.ProdCode,
+            MockYear,
+            MR.TakeNumber,
+            MockRotationNo,
+            C1.CateName,
+            PD.ProdName,
+	    	MemName,
+            CONCAT(Phone1,'-',fn_dec(Phone2Enc),'-',phone3) AS Phone,   
+            MR.TakeForm,
+            MR.TakeMockPart,
+            MR.TakeArea,
+            ROUND(SUM(AdjustPoint),2) AS AdjustSum,
+            MR.RegDatm AS ExamRegDatm
         ";
         $from = "
             FROM 
@@ -180,40 +160,119 @@ class RegGradeModel extends WB_Model
                 JOIN {$this->_table['category']} AS C1 ON PC.CateCode = C1.CateCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y'
                 JOIN {$this->_table['ProductSale']} AS PS ON MP.ProdCode = PS.ProdCode AND PS.IsStatus = 'Y'
                 JOIN {$this->_table['mockRegister']} AS MR ON MP.ProdCode = MR.ProdCode AND MR.IsStatus = 'Y' 
+                
+                JOIN {$this->_table['member']} AS MB ON MR.MemIdx = MB.MemIdx
+             	LEFT OUTER JOIN {$this->_table['mockGrades']} AS GD ON GD.MemIdx = MR.MemIdx AND GD.MrIdx = MR.MrIdx
+                
                 LEFT JOIN {$this->_table['admin']} AS A ON MP.RegAdminIdx = A.wAdminIdx
                 LEFT OUTER JOIN {$this->_table['sysCode']} AS SC1 ON MP.AcceptStatusCcd = SC1.Ccd
                 LEFT JOIN {$this->_table['mockGroupR']} AS GR ON MP.ProdCode = GR.ProdCode AND GR.IsStatus = 'Y'
                 LEFT JOIN {$this->_table['mockGroup']} AS MG ON GR.MgIdx = MG.MgIdx AND MG.IsStatus = 'Y' AND MG.IsUse = 'Y'
                 
         ";
-        $selectCount = "SELECT COUNT(*) AS cnt";
+        $selectCount = "SELECT COUNT(ProdCode) AS cnt FROM (SELECT MR.ProdCode ";
         $where = " WHERE PD.IsStatus = 'Y' ";
         $where .= $this->_conn->makeWhere($condition)->getMakeWhere(true) . "\n";
+        $group = " GROUP BY MR.MrIdx ";
         $order = " ORDER BY MP.ProdCode DESC ";
         //echo "<pre>".'SELECT ' . $column . $from . $where . $order . $offset_limit."</pre>";
-        $data = $this->_conn->query('SELECT ' . $column . $from . $where . $order . $offset_limit)->result_array();
-        $count = $this->_conn->query($selectCount . $from . $where)->row()->cnt;
+        $data = $this->_conn->query('SELECT ' . $column . $from . $where . $group . $order . $offset_limit)->result_array();
+
+        $count = $this->_conn->query($selectCount . $from . $where . $group .") AS A")->row()->cnt;
 
         // 직렬이름 추출
-        $mockKindCode = $this->config->item('sysCode_kind', 'mock'); // 직렬 운영코드값
-        $codes = $this->codeModel->getCcdInArray([$mockKindCode]);
+        $mockTypeCode = $this->config->item('sysCode_applyType', 'mock'); // 직렬 운영코드값
+        $codes1 = $this->codeModel->getCcdInArray([$mockTypeCode]);
 
-        // 데이터정리
-        $applyType_on = $this->config->item('sysCode_applyType_on', 'mock');   // 응시형태(online)
-        $applyType_off = $this->config->item('sysCode_applyType_off', 'mock'); // 응시형태(offline)
+        $mockKindCode = $this->config->item('sysCode_kind', 'mock'); // 직렬 운영코드값
+        $codes2 = $this->codeModel->getCcdInArray([$mockKindCode]);
+
+        $mockAreaCode1 = $this->config->item('sysCode_applyArea1', 'mock'); // 직렬 운영코드값
+        $codes3 = $this->codeModel->getCcdInArray([$mockAreaCode1]);
+
+        $kmNameSet = $this->subjectStringCall();
 
         foreach ($data as &$it) {
-            $takeFormsCcds = explode(',', $it['TakeFormsCcd']);
-            $it['TakePart_on'] = (in_array($applyType_on, $takeFormsCcds)) ? 'Y' : 'N';
-            $it['TakePart_off'] = (in_array($applyType_off, $takeFormsCcds)) ? 'Y' : 'N';
+            $prodcode = $it['ProdCode'];
+            // 온오프
+            $takeForm = $it['TakeForm'];
+            // 일반행정/검찰직/세무직 등
+            $takeMockPart = $it['TakeMockPart'];
+            //응시지역
+            $takeArea = $it['TakeArea'];
 
-            $mockPart = explode(',', $it['MockPart']);
-            foreach ($mockPart as $mp) {
-                if (!empty($codes[$mockKindCode][$mp])) $it['MockPartName'][] = $codes[$mockKindCode][$mp];
+            if (!empty($codes1[$mockTypeCode][$takeForm])){
+                $it['TakeFormType'][] = $codes1[$mockTypeCode][$takeForm];
+            } else {
+                $it['TakeFormType'][] = '';
             }
+            if (!empty($codes2[$mockKindCode][$takeMockPart])){
+                $it['TakeMockPartName'][] = $codes2[$mockKindCode][$takeMockPart];
+            }  else {
+                $it['TakeMockPartName'][] = '';
+            }
+            if (!empty($codes3[$mockAreaCode1][$takeArea])){
+                $it['TakeAreaName'][] = $codes3[$mockAreaCode1][$takeArea];
+            } else {
+                $it['TakeAreaName'][] = '';
+            }
+            $it['SubjectName'][] = $kmNameSet[$prodcode];
+
         }
 
         return array($data, $count);
+    }
+
+    /**
+     * 과목명 배열호출
+     */
+    public function subjectStringCall(){
+        $column = "
+            ProdCode
+        ";
+
+        $from = "
+            FROM
+                {$this->_table['mockProduct']} 
+        ";
+
+        $obder_by = " ";
+        $where = " ";
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+        $prodRes = $query->result_array();
+        $kmNameSet = array();
+        foreach ($prodRes as $val){
+            $prodCode = $val['ProdCode'];
+            $column = "
+                GROUP_CONCAT(SubjectName) AS SubjectName
+            ";
+
+            $from = "
+                FROM
+                    {$this->_table['subject']} 
+            ";
+
+            $obder_by = " ";
+            $where = " 
+                WHERE 
+                   SubjectIdx IN (
+                        SELECT SubjectIdx FROM (
+                        SELECT 
+                                subjectIdx 
+                            FROM {$this->_table['mockRegisterR']} 
+                            WHERE 
+                                ProdCode = ".$prodCode."
+                            GROUP BY MpIdx
+                        ) AS A	
+                    )
+            ";
+
+            $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+            $subjectName = $query->row_array();
+            $kmNameSet[$prodCode] = $subjectName['SubjectName'];
+        }
+        return $kmNameSet;
     }
 
     /**
@@ -226,27 +285,19 @@ class RegGradeModel extends WB_Model
         if ($conditionAdd) $condition = array_merge_recursive($condition, $conditionAdd);
 
         $column = "
-            (SELECT MemName FROM {$this->_table['member']} WHERE MemIdx = MR.MemIdx) AS MemName,
-            (SELECT CONCAT(Phone1,'-',fn_dec(Phone2Enc),'-',phone3) FROM {$this->_table['member']} WHERE MemIdx = MR.MemIdx) AS Phone,
+	    	MemName,
+            CONCAT(Phone1,'-',fn_dec(Phone2Enc),'-',phone3) AS Phone,   
             MR.TakeNumber,
-            fn_ccd_name(MR.TakeForm) AS TakeFormType,
             MockYear,
             MockRotationNo,
             CONCAT('[',PD.ProdCode,']',PD.ProdName) AS ProdName,
             C1.CateName,
-            fn_ccd_name(MR.TakeMockPart) AS TakeMockPartName,
-            (
-                SELECT 
-                    GROUP_CONCAT(SubjectName) 
-                FROM {$this->_table['mockRegisterR']} AS RP
-                     JOIN {$this->_table['subject']} AS PS ON RP.SubjectIdx = PS.SubjectIdx
-                WHERE 
-                     RP.SubjectIdx IN (SELECT GROUP_CONCAT(SubjectIdx) FROM {$this->_table['mockRegisterR']} WHERE ProdCode = MR.ProdCode AND MrIdx = MR.MrIdx GROUP BY MpIdx)
-                     AND MrIdx = MR.MrIdx
-            ) AS SubjectName,
-            fn_ccd_name(MR.TakeArea) AS TakeAreaName,
-            (SELECT ROUND(SUM(AdjustPoint),2) FROM {$this->_table['mockGrades']} WHERE MrIdx = MR.MrIdx AND ProdCode = PD.Prodcode) AS AdjustSum,
-            (SELECT RegDatm FROM {$this->_table['mockLog']} WHERE MrIdx = MR.MrIdx ORDER BY RegDatm LIMIT 1) AS ExamRegDatm
+            ROUND(SUM(AdjustPoint),2) AS AdjustSum,
+            MR.TakeForm,
+            MR.TakeMockPart,
+            MR.TakeArea,
+            MR.ProdCode,
+            MR.RegDatm AS ExamRegDatm
         ";
         $from = "
             FROM 
@@ -256,6 +307,10 @@ class RegGradeModel extends WB_Model
                 JOIN {$this->_table['category']} AS C1 ON PC.CateCode = C1.CateCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y'
                 JOIN {$this->_table['ProductSale']} AS PS ON MP.ProdCode = PS.ProdCode AND PS.IsStatus = 'Y'
                 JOIN {$this->_table['mockRegister']} AS MR ON MP.ProdCode = MR.ProdCode AND MR.IsStatus = 'Y' 
+                
+                JOIN {$this->_table['member']} AS MB ON MR.MemIdx = MB.MemIdx
+             	LEFT OUTER JOIN {$this->_table['mockGrades']} AS GD ON GD.MemIdx = MR.MemIdx AND GD.MrIdx = MR.MrIdx
+                
                 LEFT JOIN {$this->_table['admin']} AS A ON MP.RegAdminIdx = A.wAdminIdx
                 LEFT OUTER JOIN {$this->_table['sysCode']} AS SC1 ON MP.AcceptStatusCcd = SC1.Ccd
                 LEFT JOIN {$this->_table['mockGroupR']} AS GR ON MP.ProdCode = GR.ProdCode AND GR.IsStatus = 'Y'
@@ -265,20 +320,67 @@ class RegGradeModel extends WB_Model
 
         $where = " WHERE PD.IsStatus = 'Y' ";
         $where .= $this->_conn->makeWhere($condition)->getMakeWhere(true) . "\n";
-        $order = " ORDER BY MP.ProdCode DESC ";
+        $order = " GROUP BY MR.MrIdx ORDER BY MP.ProdCode DESC ";
 
-        $sql = "Select @SEQ := @SEQ+1 as NO,mm.*
-                    From  (SELECT @SEQ := 0) A,
-                    (
+        $sql = "
                       SELECT 
                         $column     
                         $from  
                         $where 
-                        $order              
-                    ) mm Order by @SEQ DESC
+                        $order         
         ";
+
+        //echo "<pre>$sql </pre>";
         $data = $this->_conn->query($sql)->result_array();
-        return $data;
+
+        // 직렬이름 추출
+        $mockTypeCode = $this->config->item('sysCode_applyType', 'mock'); // 직렬 운영코드값
+        $codes1 = $this->codeModel->getCcdInArray([$mockTypeCode]);
+
+        $mockKindCode = $this->config->item('sysCode_kind', 'mock'); // 직렬 운영코드값
+        $codes2 = $this->codeModel->getCcdInArray([$mockKindCode]);
+
+        $mockAreaCode1 = $this->config->item('sysCode_applyArea1', 'mock'); // 직렬 운영코드값
+        $codes3 = $this->codeModel->getCcdInArray([$mockAreaCode1]);
+        $kmNameSet = $this->subjectStringCall();
+
+        $data2 = array();
+        foreach ($data as $key => &$it) {
+            $prodcode = $it['ProdCode'];
+            // 온오프
+            $takeForm = $it['TakeForm'];
+            // 일반행정/검찰직/세무직 등
+            $takeMockPart = $it['TakeMockPart'];
+            //응시지역
+            $takeArea = $it['TakeArea'];
+
+            $data2[$key]['MemName'] = $it['MemName'];
+            $data2[$key]['Phone'] = $it['Phone'];
+            $data2[$key]['TakeNumber'] = $it['TakeNumber'];
+
+            if (!empty($codes1[$mockTypeCode][$takeForm]))     $data2[$key]['TakeFormType'] = $codes1[$mockTypeCode][$takeForm];
+
+            $data2[$key]['MockYear'] = $it['MockYear'];
+            $data2[$key]['MockRotationNo'] = $it['MockRotationNo'];
+            $data2[$key]['ProdName'] = $it['ProdName'];
+            $data2[$key]['CateName'] = $it['CateName'];
+
+            if (!empty($codes2[$mockKindCode][$takeMockPart])) $data2[$key]['TakeMockPartName'] = $codes2[$mockKindCode][$takeMockPart];
+
+            $data2[$key]['SubjectName'] = $kmNameSet[$prodcode];
+
+            if (!empty($codes3[$mockAreaCode1][$takeArea])){
+                $data2[$key]['TakeAreaName'] = $codes3[$mockAreaCode1][$takeArea];
+            } else {
+                $data2[$key]['TakeAreaName'] = '';
+            }
+
+            $data2[$key]['AdjustSum'] = $it['AdjustSum'];
+            $data2[$key]['ExamRegDatm'] = $it['ExamRegDatm'];
+
+        }
+
+        return $data2;
     }
 
     /**

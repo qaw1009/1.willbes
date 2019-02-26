@@ -13,7 +13,7 @@ class StatisticsPrivate extends \app\controllers\BaseController
 {
     protected $models = array('sys/site', 'sys/code', 'sys/category', 'product/base/subject', 'common/searchProfessor', 'mocktest/mockCommon', 'mocktest/regGrade');
     protected $helpers = array();
-
+    protected $_memory_limit_size = '512M';     // 엑셀파일 다운로드 메모리 제한 설정값
 
     public function __construct()
     {
@@ -91,13 +91,19 @@ class StatisticsPrivate extends \app\controllers\BaseController
         ];
 
         if($excel === 'Y') {
+            set_time_limit(0);
+            ini_set('memory_limit', $this->_memory_limit_size);
 
             $data  = $this->regGradeModel->privateListExcel($condition);
+            // export excel
+            $file_name = '개인별성적통계_'.date('Ymd');
 
-            $headers = ['NO', '회원명', '연락처', '응시번호', '응시형태', '연도', '회차', '모의고사명', '카테고리', '직렬', '과목', '응시지역', '총점', '등록일'];
+            $headers = ['회원명', '연락처', '응시번호', '응시형태', '연도', '회차', '모의고사명', '카테고리', '직렬', '과목', '응시지역', '총점', '등록일'];
 
             $this->load->library('excel');
-            $this->excel->exportExcel('개인별성적통계('.date("Y-m-d").')', $data, $headers);
+            if ($this->excel->exportHugeExcel($file_name, $data, $headers) !== true) {
+                show_alert('엑셀파일 생성 중 오류가 발생하였습니다.', 'back');
+            }
         } else {
             list($data, $count) = $this->regGradeModel->privateList($condition, $this->input->post('length'), $this->input->post('start'));
 

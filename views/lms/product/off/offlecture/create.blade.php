@@ -353,7 +353,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2">강사료정산정보 <br>
                         {{--@if($method==='POST' || empty($data_division))--}}
-                        <button type="button" class="btn-sm btn-success border-radius-reset mr-15" id="searchProfessor">불러오기</button>
+                        <button type="button" class="btn-sm btn-success border-radius-reset" id="searchProfessor">불러오기</button>
                         {{--@endif--}}
                     </label>
                     <div class="col-md-10 form-inline item">

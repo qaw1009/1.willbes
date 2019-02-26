@@ -283,8 +283,9 @@
                                                     </span>
                                                     <span class="discount">(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</span>
                                                 </div>
-                                            @endforeach
+                                            @endforeach                                        
                                         @endif
+                                        <div class="visitBuy"><a href="#none">방문결제</a></div>  
                                     </td>
                                 </tr>
                             </tbody>

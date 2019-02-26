@@ -275,8 +275,9 @@
                                     <span class="price tx-blue">
                                         <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
                                         80,000원</span>
-                                    <span class="discount">(↓20%)</span>
-                                </div>
+                                    <span class="discount">(↓20%)</span>                                    
+                                </div> 
+                                <div class="visitBuy"><a href="#none">방문결제</a></div>                          
                             </td>
                         </tr>
                     </tbody>

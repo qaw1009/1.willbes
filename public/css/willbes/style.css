@@ -2619,13 +2619,14 @@ table.lecTable tr td .priceWrap {
     clear: both;
     float: right;
     position: relative;
-    top: 5px;
+    top: 10px;
     right: 0;
     width: 240px;
     margin-right: 0;
     height: 18px;
-    text-align: left;
+    text-align: left;    
 } 
+
 table.lecTable tr td .priceWrap .chkBox {
     display: inline-block;
     line-height: 8px;
@@ -2652,8 +2653,19 @@ table.lecTable tr td .priceWrap .discount {
     width: 70px;
     color: #464646;
 }
+table.lecTable tr td .visitBuy {clear: both; padding-top:15px}
+table.lecTable tr td .visitBuy a {    
+    display:block;
+    width: 60px;
+    margin:0 auto;
+    font-size: 11px;
+    padding:3px 0;
+    color: #1a8ccc;
+    text-align: center;
+    border:1px solid #1a8ccc;    
+}
 table.lecTable tr td .MoreBtn {
-    position: absolute;
+    position:absolute;
     bottom: 5px;
     right: 25px;
     font-size: 11px;
@@ -9548,6 +9560,7 @@ table.acadlecInfoPackageTable tr.Top td {
     line-height: 15px;
     padding: 0 7px;
     margin-right: 70px;
+    margin-top:0;
 }
 .w-notice .acadInfo.n1 {
     background: #46a1dc;

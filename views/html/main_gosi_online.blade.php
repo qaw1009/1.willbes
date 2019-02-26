@@ -60,7 +60,7 @@
             <a href="#none"><img src="{{ img_url('gosi/banner/bnr_bar01.jpg') }}" alt="배너명"></a>
         </div>
         
-        <div class="widthAuto mt30">
+        <div class="widthAuto NSK mt30">
             <div class="VisualBox p_re bSlider">
                 <div id="MainRollingDiv" class="MaintabList three">
                     <ul class="Maintab">

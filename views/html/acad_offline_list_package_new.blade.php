@@ -79,7 +79,7 @@
         </div>
         <!-- curriWrap -->
         <div class="Content widthAuto810 p_re">
-            <div class="willbes-Lec-Search mb15">
+            <div class="willbes-Lec-Search p_re mb15">
                 <div class="inputBox p_re">
                     <div class="selectBox">
                         <select id="select" name="select" title="강좌명" class="">

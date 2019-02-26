@@ -307,7 +307,6 @@
                     $("#teacherDivision tbody").remove();
                     $("#lecList tbody").remove();
                     sitecode_chained($(this).val());    //과정.과목 재조정
-                    smsTel_chained($(this).val());   //전화번호 재조정
                     */
                     location.reload();
                 } else {

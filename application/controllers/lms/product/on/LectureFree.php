@@ -124,9 +124,7 @@ Class LectureFree extends \app\controllers\BaseController
         $codes = $this->codeModel->getCcdInArray(['609','610','613','616','617','618','652']);
         $courseList = $this->courseModel->listCourse([], null, null, ['PC.SiteCode' => 'asc','PC.OrderNum' => 'asc' ]);
         $subjectList = $this->subjectModel->listSubject([], null, null, ['PS.SiteCode' => 'asc','PS.OrderNum' => 'asc' ]);
-        $siteList = $this->siteModel->getSiteArray(false,'CsTel');
-
-        //var_dump($siteList);
+        $arr_send_callback_ccd = $this->codeModel->getCcd(706, 'CcdValue');  // 발신번호조회
 
         $prodcode = null;
         $data = null;
@@ -169,8 +167,8 @@ Class LectureFree extends \app\controllers\BaseController
             ,'sales_ccd'=>$codes['618'] //판매상태
             ,'courseList'=>$courseList      //과정
             ,'subjectList'=>$subjectList    //과목
-            ,'siteList' =>$siteList         //사이트목록
             ,'prodcode' => $prodcode
+            ,'arr_send_callback_ccd'=>$arr_send_callback_ccd
             ,'data'=>$data
             ,'data_sample'=>$data_sample
             ,'data_division'=>$data_division

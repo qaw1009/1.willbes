@@ -142,7 +142,6 @@
                         <div class="row form-inline">
                             <div class="col-md-8">
                                 <span class="mr-5">[발신번호]</span>
-                                {{--<input type="text" class="form-control" id="cs_tel" name="cs_tel" title="발신번호" value="{{ $data['SendTel'] }}">--}}
                                 {!! html_callback_num_select($arr_send_callback_ccd, $data['SendTel'], 'cs_tel', 'cs_tel', '', '발신번호', '') !!}
                             </div>
                             <div class="col-md-4 red text-right">

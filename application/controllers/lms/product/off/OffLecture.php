@@ -136,7 +136,7 @@ Class OffLecture extends \app\controllers\BaseController
         $codes = $this->codeModel->getCcdInArray(['653','654','613','675']);
         $courseList = $this->courseModel->listCourse([], null, null, ['PC.SiteCode' => 'asc','PC.OrderNum' => 'asc' ]);
         $subjectList = $this->subjectModel->listSubject([], null, null, ['PS.SiteCode' => 'asc','PS.OrderNum' => 'asc' ]);
-        $siteList = $this->siteModel->getSiteArray(false,'CsTel');
+        $arr_send_callback_ccd = $this->codeModel->getCcd(706, 'CcdValue');  // 발신번호조회
         //캠퍼스
         $campusList = $this->siteModel->getSiteCampusArray('');
 
@@ -184,9 +184,9 @@ Class OffLecture extends \app\controllers\BaseController
             ,'accept_ccd' => $codes['675'] //접수상태
             ,'courseList'=>$courseList      //과정
             ,'subjectList'=>$subjectList    //과목
-            ,'siteList' =>$siteList           //사이트목록
             ,'campusList' =>$campusList     //캠퍼스목록
             ,'prodcode' => $prodcode
+            ,'arr_send_callback_ccd'=>$arr_send_callback_ccd
             ,'data'=>$data
             ,'data_sale'=>$data_sale
             ,'data_division'=>$data_division

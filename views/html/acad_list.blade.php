@@ -174,7 +174,7 @@
                                 <strong>학원강좌 수강신청 안내</strong><br>
                                 - 학원에서 직접 수강할 수 있는 강좌입니다. (온라인>내강의실에서 수강 불가)  <br>
                                 - 학원강좌는 장바구니 담기 없이 바로결제만 가능합니다.<br>
-                                - <span class="tx_rad">수강신청 후 정정신청이 불가능</span>합니다. 강의 구성을 꼼꼼히 살핀 후 수강신청해 주세요.
+                                - <span class="tx-red">수강신청 후 정정신청이 불가능</span>합니다. 강의 구성을 꼼꼼히 살핀 후 수강신청해 주세요.
                             </li>
                             <li>
                                 <strong>아이콘 안내</strong><br>
@@ -190,11 +190,11 @@
                             </colgroup>
                             <tbody>
                                 <tr>
-                                    <td><span class="nBox n1">접수중</span></td>
+                                    <td><span class="acadBox n4">접수중</span></td>
                                     <td class="tx-left">강좌가 개설되었으며 현재 수강신청을 받고 있는 강좌</td>
                                 </tr>
                                 <tr>
-                                    <th><span class="nBox n2">접수예정</span></th>
+                                    <th><span class="acadBox n5">접수예정</span></th>
                                     <td class="tx-left">신규강좌 개설되었으나 아직 수강신청을 받지 않는 강좌</td>
                                 </tr>
                                 <tr>

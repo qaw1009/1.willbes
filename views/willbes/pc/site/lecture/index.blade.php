@@ -168,7 +168,7 @@
                             </colgroup>
                             <tbody>
                                 <tr>
-                                    <td><span class="nBox n1">2배수</span></td>
+                                    <td><span class="nBox n4">완강</span></td>
                                     <td class="tx-left">모든 강의 제작 및 업데이트가 완료된 강좌</td>
                                 </tr>
                                 <tr>
@@ -180,7 +180,7 @@
                                     <td class="tx-left">신규강좌 업데이트가 예정중인 강좌</td>
                                 </tr>
                                 <tr>
-                                    <th><span class="nBox n4">2배수</span></th>
+                                    <th><span class="nBox n1">2배수</span></th>
                                     <td class="tx-left">공유 방지를 위해 전체강의시간/개별강의시간의 2배까지 수강이 가능한 강좌</td>
                                 </tr>
                                 <tr>

@@ -3566,9 +3566,9 @@ table.classTable tr td.w-data {
     right: 0;
     z-index: 110;
     width: 700px;
-    height: 610px;
+    height: auto;
     border: 1px solid #2f2f2f;
-    padding: 20px 25px 30px;
+    padding: 20px 25px 50px;
 }
 .willbes-Layer-requestInfo .closeBtn {
     position: absolute;
@@ -3611,12 +3611,12 @@ table.classTable tr td.w-data {
 }
 .willbes-Layer-requestInfo .nBox {
     display: inline-block;
-    width: 37px;
-    height: 17px;
+    width: 76px;    
+    height: 20px;
     font-size: 12px;
     color: #fff;
     text-align: center;
-    line-height: 19px;
+    line-height: 20px;
     margin: 0 1px;
 }
 .willbes-Layer-requestInfo .nBox.n1 {
@@ -3634,12 +3634,11 @@ table.classTable tr td.w-data {
 .willbes-Layer-requestInfo .acadBox {
     display: inline-block;
     font-size: 12px;
-    font-weight: 600;
     color: #000;
     text-align: center;
     line-height: 20px;
     border: 1px solid #000;
-    padding: 0 4px;
+    width: 76px;
 }
 .willbes-Layer-requestInfo .acadBox.n1 {
     color: #1345b6;
@@ -3652,6 +3651,16 @@ table.classTable tr td.w-data {
 .willbes-Layer-requestInfo .acadBox.n3 {
     color: #9c3eb4;
     border-color: #9c3eb4;
+}
+.willbes-Layer-requestInfo .acadBox.n4 {
+    color: #fff;
+    background: #fe0000;
+    border: 1px solid #fe0000;
+}
+.willbes-Layer-requestInfo .acadBox.n5 {
+    color: #fff;
+    background: #46a1dc;
+    border: 1px solid #46a1dc;
 }
 
 

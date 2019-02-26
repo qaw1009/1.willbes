@@ -182,11 +182,11 @@
                             </colgroup>
                             <tbody>
                                 <tr>
-                                    <td><span class="nBox n1">접수중</span></td>
+                                    <td><span class="acadBox n4">접수중</span></td>
                                     <td class="tx-left">강좌가 개설되었으며 현재 수강신청을 받고 있는 강좌</td>
                                 </tr>
                                 <tr>
-                                    <th><span class="nBox n2">접수예정</span></th>
+                                    <th><span class="acadBox n5">접수예정</span></th>
                                     <td class="tx-left">신규강좌 개설되었으나 아직 수강신청을 받지 않는 강좌</td>
                                 </tr>
                                 <tr>

@@ -849,7 +849,7 @@ class MockExamModel extends WB_Model
                 'IsTake' => 'Y'
             ];
 
-            $this->_conn->set($data)->where(['MemIdx' => $this->session->userdata('mem_idx'), 'ProdCode' => $ProdCode, 'MrIdx' => $MrIdx]);
+            $this->_conn->set($data)->set('RegDatm', 'NOW()', false)->where(['MemIdx' => $this->session->userdata('mem_idx'), 'ProdCode' => $ProdCode, 'MrIdx' => $MrIdx]);
 
             if ($this->_conn->update($this->_table['mockRegister']) === false) {
                 throw new \Exception('상태수정에 실패했습니다.');

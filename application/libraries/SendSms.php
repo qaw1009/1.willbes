@@ -3,7 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class SendSms
 {
-    private $_conn;
+    protected $_CI;
+    /**
+     * @var \CI_DB_query_builder
+     */
+    protected $_db;
+
     private $_title_max_length = '40';
     private $_msg_max_length = '54';    //발송메세지 바이트 최대 길이
     private $_table = [
@@ -11,35 +16,15 @@ class SendSms
         'mms' => 'MMS_MSG'
     ];
 
-    public function __construct($_conn_id = 'dreamline')
+    public function __construct($database = 'dreamline')
     {
-        $database = $_conn_id;
-
-        // DB Connection 로드
-        $this->_loadDatabase($database);
-
-        // default connection 설정
-        $this->setDefaultConnection($database);
+        $this->_CI = &get_instance();
+        $this->_db = $this->_CI->load->database($database, true);
     }
 
-    /**
-     * DB Connection 로드
-     * @param $database
-     */
-    private function _loadDatabase($database)
+    public function __destruct()
     {
-        $_CI =& get_instance();
-        $_CI->{$database} = $_CI->load->database($database, true);
-        $this->{$database} = $_CI->{$database};
-    }
-
-    /**
-     * 디폴트 커넥션 설정
-     * @param null|string $conn_id
-     */
-    public function setDefaultConnection($conn_id = null)
-    {
-        (is_null($conn_id) === false) && $this->_conn = $this->{$conn_id};
+        $this->_db->close();
     }
 
     /**
@@ -59,7 +44,7 @@ class SendSms
             }
 
             list($table, $data) = $this->_send_data($send_phone, $send_msg, $send_call_center, $send_date, $send_title);
-            if($data) $result = $this->_conn->insert_batch($table, $data);
+            if($data) $result = $this->_db->insert_batch($table, $data);
             if ($result <= 0) {
                 throw new \Exception('발송 실패');
             }

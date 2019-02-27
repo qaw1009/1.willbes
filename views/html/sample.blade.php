@@ -70,11 +70,13 @@
     <li>
         <div>       
             <ul>
-                <li><p>경찰 온라인 ▼</p></li>       
+                <li><p>경찰 온라인 ▼</p></li>    
                 <li class="w50"><a href="{{ site_url('/home/html/event_onCopPromotionPass') }}" target="_blank">승진 PASS <span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onCopZeroPass') }}" target="_blank">평생 0원 PASS <span>*</span></a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_onCopPromotionPassPop') }}" target="_blank">PASS 인증 팝업_size 740x700 <span>*</span></a></li>                        
+                <li class="w50"><a href="{{ site_url('/home/html/event_onCopPromotionPassPop') }}" target="_blank">PASS 인증 팝업 size 740x700 <span>*</span></a></li>                        
                 <li class="w50"><a href="{{ site_url('/home/html/event_onCopSampleQuestions') }}" target="_blank">기출문제 이모티콘 댓글 <span>*</span></a></li>
+                <li><a href="{{ site_url('/home/html/event_onCop181228_p') }}" target="_blank">최종합격예측서비스 <span>*</span></a></li>
+                <li><a href="{{ site_url('/home/html/event_onCop181228_p_pop2') }}" target="_blank">최종합격예측서비스 실시간 참여인원 팝업 size 500x850 <span>*</span></a></li>
                 <li><p>공무원 온라인 ▼</p></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiFirePass') }}" target="_blank">소방 PASS <span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiNinePass') }}" target="_blank">9급 PASS <span>*</span></a></li>
@@ -112,11 +114,15 @@
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiTech') }}" target="_blank">윌비스 기술직 TOP 라인업 <span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiNoncom') }}" target="_blank">부사관 PASS <span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiNoncomPop') }}" target="_blank">부사관 PASS 유튜브 팝업 <span>*</span></a></li>
-                <li><p>공무원 학원 ▼</p></li>
+                <li><p>공무원 학원 ▼</p></li>                
                 <li class="w50"><a href="{{ site_url('/home/html/event_offGosiArmyQuestion') }}" target="_blank">군무원 이론요약&단원별 문제풀이</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_offGosiFianlTest') }}" target="_blank">시.확.찢 FINAL 모의고사</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_offGosi106dayLast') }}" target="_blank">9급 106일 마무리반</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_offGosi106dayLast') }}" target="_blank">7급 170일 마무리반</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offGosi_180426_02') }}" target="_blank">기숙형 통합생활관리반 <span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offGosi_180426_01') }}" target="_blank">자습형 강한학습관리반 <span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offGosi_181123_g') }}" target="_blank">아침실전모의고사</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offGosi_190128_L') }}" target="_blank">불꽃소방관리반 프로모션 <span>*</span></a></li>
         </div>
     </li>
     <li>

@@ -138,7 +138,7 @@
                             <!-- 해설 -->
                             <li style="display:@if(element('QUESTIONYN', $arr_input) == 'Q') none; @endif">
                                 <a name="que4" class="no">{{ $key + 1 }}.</a>
-                                <span class="que"><img src="{{ $img_path }}{{ $row['RealExplanFile'] }}"></span>
+                                <span class="que"><img src="{{ $row['QFilePath'] }}{{ $row['RealExplanFile'] }}"></span>
                             </li>
                             @endif
                         @endif

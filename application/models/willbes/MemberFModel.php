@@ -623,6 +623,8 @@ class MemberFModel extends WB_Model
             // 추가정보 입력                     
             $data = [
                 'MemIdx' => $MemIdx,
+                'MailRcvStatus' => (element('MailRcvStatus', $input) == 'Y' ? 'Y' : 'N'),
+                'SmsRcvStatus' => (element('SmsRcvStatus', $input) == 'Y' ? 'Y' : 'N'),
                 'ZipCode' => element('ZipCode', $input),
                 'Addr1' => element('Addr1', $input),
                 'TrustStatus' => $TrustStatus
@@ -631,6 +633,8 @@ class MemberFModel extends WB_Model
             // lms_member_otherinfo 저장
             if($this->_conn->set($data)->
                 set('TrustStatusDatm', 'NOW()', false)->
+                set('MailRcvDatm', 'NOW()', false)->
+                set('SmsRcvDatm', 'NOW()', false)->
                 set('Addr2Enc',"fn_enc('".element('Addr2', $input)."')",false)->
                 insert($this->_table['info']) === false){
                 throw new \Exception('부가정보 입력에 실패했습니다.');

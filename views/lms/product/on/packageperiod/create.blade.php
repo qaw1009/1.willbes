@@ -71,19 +71,26 @@
                         </div>
                     </div>
                 </div>
-
+            @php
+                /* 분류가 필요없다하여... 제거
                 <div class="form-group">
                     <label class="control-label col-md-2" >패키지분류 <span class="required">*</span>
                     </label>
                     <div class="col-md-10 form-inline item">
                         <div class="item inline-block">
+
                             @foreach($packcate_ccd as $key => $val)
                                 <input type="radio" name="PackCateCcd" id="PackCateCcd{{$loop->index}}" value="{{$key}}" class="flat" required="required" @if($data['PackCateCcd']==$key) checked="checked"@endif title="패키지분류"> {{$val}}&nbsp;&nbsp;
                             @endforeach
                             <input type="text" name="PackCateEtcMemo" id="PackCateEtcMemo"  class="form-control"  style="width: 200px" value="{{$data['PackCateEtcMemo']}}">
+
                         </div>
                     </div>
                 </div>
+                */
+            @endphp
+                {{--히든필드로 전송 : "종합" 으로 고정--}}
+                <input type="hidden" name="PackCateCcd" value="649004"><input type="hidden" name="PackCateEtcMemo" value="">
 
                 <div class="form-group">
                     <label class="control-label col-md-2" for="ProdName">패키지명 <span class="required">*</span>

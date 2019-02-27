@@ -420,8 +420,10 @@
         </div>
     </div>
 
-    <div class="Section Section4 pt100 pb90">
+    <div class="Section Section4">
         <div class="widthAuto">  
+        <img src="{{ img_url('cop/visual/visual_03.jpg') }}" alt="합격수기">
+            <!--
             <div class="widthAuto smallTit smallTit2">          
                 <p><span>진짜 살아있는 정보를 알 수 있는 <strong>합격수기!</strong></span></p>            
             </div>          
@@ -578,6 +580,7 @@
                     </div>
                 </div>
             </div>
+            -->
         </div>
     </div>
 

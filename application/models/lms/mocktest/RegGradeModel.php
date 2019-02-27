@@ -137,6 +137,7 @@ class RegGradeModel extends WB_Model
         $offset_limit = (is_numeric($limit) && is_numeric($offset)) ? "LIMIT $offset, $limit" : "";
 
         $column = "
+            MB.MemId,
             MR.MrIdx,
             MR.ProdCode,
             MockYear,
@@ -287,6 +288,7 @@ class RegGradeModel extends WB_Model
         if ($conditionAdd) $condition = array_merge_recursive($condition, $conditionAdd);
 
         $column = "
+            MB.MemId,
 	    	MemName,
             CONCAT(Phone1,'-',fn_dec(Phone2Enc),'-',phone3) AS Phone,   
             MR.TakeNumber,

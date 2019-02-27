@@ -1,0 +1,220 @@
+/*********************************************     Main Container : Cop_sea     *********************************************/
+/* Main Container : Cop_sea */
+.sea .tx-color {
+    color: #0c5dc0;
+}
+.Section2 { background: #f7f7f7}
+
+/* Main Container : Tit : Cop_sea */
+.sea .smallTit {
+    border-top:1px solid #b8b8b8;
+    font-size: 22px;
+    color:#363636;    
+    position: relative;
+}
+.sea .smallTit p {
+    position: absolute;
+    top:-15px;
+    text-align: center;
+    width: 100%;
+}
+.sea .smallTit span {
+    padding:0 20px;
+    font-weight: 600;
+    background: #fff;
+}
+.sea .smallTit strong {
+    color:#0c5dc0;
+}
+
+.sea .smallTit a {
+    position: absolute;
+    width: 23px;
+    top:-12px;
+    right:0;    
+    z-index: 1;
+}
+.sea .smallTit2 span {
+    background:#f7f7f7;
+}
+.sea .Section .will-big-Tit .cop-color {
+    color: #0c5dc0;
+}
+
+.sea .Section .bnrSec01 div {
+    float: left;
+    width: 756px;
+    height: 292px;
+}
+.sea .Section .bnrSec01 ul {
+    float: right;
+}
+.sea .Section .bnrSec01:after {
+    content:'';
+    display: block;
+    clear:both;
+}
+
+/**/
+.sea .Profinfo {
+    position: relative;
+}
+.sea .Profinfo li {
+    display: inline;
+    float: left;
+    margin-right:2px;
+}
+.sea .Profinfo li:last-child {
+    margin:0;
+}
+.sea .Profinfo ul:after {
+    content:'';
+    display: block;
+    clear:both;
+}
+.sea .Profinfo span {
+    position: absolute;
+    width: 100px;
+    top:720px;
+    left:60px;
+    z-index: 1;
+}
+.sea .Profinfo span a {
+    display: block;
+    text-align: center;
+    background: #fff;
+    color:#0c5dc0;
+    font-size: 14px;
+    font-weight: 600;
+    padding:10px 0 12px;
+    border-radius: 0 20px 20px;
+    border:2px solid #0c5dc0;
+}
+.sea .Profinfo span a:hover {
+    background: #0c5dc0;
+    color:#fff;
+}
+.sea .Profinfo span.btn02 {
+    left:863px;
+}
+
+/**/
+.sea .proPAss li {
+    display: inline;
+    float: left;
+}
+.sea .proPAss li:last-child {
+    margin-left:6px;
+}
+.sea .proPAss:after {
+    content:'';
+    display: block;
+    clear:both;
+}
+
+/**/
+.sea .mou li {
+    display: inline;
+    float: left;
+    margin-left:6px;
+}
+.sea .mou li:first-child {
+    margin:0;
+}
+.sea .mou ul:after {
+    content:'';
+    display: block;
+    clear:both;
+}
+.sea .mou .bx-wrapper .bx-viewport {
+    z-index: 10;
+}
+.sea .mou .bx-wrapper .bx-controls-direction {
+    width: 100%;
+    height: 65px;
+    position: absolute;
+    top:50%;
+    margin-top: -32px;
+}
+.sea .mou .bx-wrapper .bx-controls-direction a {
+    width: 64px;
+    height: 65px;
+}
+.sea .mou .bx-wrapper .bx-controls-direction a.disabled {
+    display: block;
+    opacity: 0.5;
+}
+.sea .mou .bx-wrapper .bx-prev {
+    background:url("../../img/willbes/cop_sea/btn_prev01.png") no-repeat center center;
+    left: -26px;
+    right: inherit;
+}
+.sea .mou .bx-wrapper .bx-next {
+    background:url("../../img/willbes/cop_sea/btn_next01.png") no-repeat center center;
+    left: inherit;
+    right: -34px;
+}
+
+/* Main Container : Prof : Cop_sea */
+.sea .Section .ProfCopBox > li {
+    position: relative;
+    display: inline;
+    float: left;
+    width: 220px;
+    height: 327px;
+    margin-left: 5px;
+}
+.sea .Section .ProfCopBox > li:first-child {
+    margin-left: 0;
+}
+.sea .Section .ProfCopBox .ProfBtns {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;    
+    z-index: 1;
+}
+
+/* Main Container : pass : cSlider : sliderPassList : Cop_sea */
+.sea .cSlider.sliderPassList .bx-wrapper .bx-prev {
+    background: url("../../img/willbes/cop_sea/btn_prev_on.png") no-repeat 0 0;
+    left: -40px;
+}
+.sea .cSlider.sliderPassList .bx-wrapper .bx-next {
+    background: url("../../img/willbes/cop_sea/btn_next_on.png") no-repeat 0 0;
+    right: -40px;
+    left: inherit;
+}
+.sea .cSlider.sliderPassList .bx-wrapper .bx-prev.disabled {
+    background: url("../../img/willbes/cop_sea/btn_prev_off.png") no-repeat 0 0;
+    display: block;
+}
+.sea .cSlider.sliderPassList .bx-wrapper .bx-next.disabled {
+    background: url("../../img/willbes/cop_sea/btn_next_off.png") no-repeat 0 0;
+    display: block;
+}
+
+/* Main Container : SpecialLecBox */
+.sea .Section .SpecialLecBox .infoTit .btn .btn-sbj a {
+    background: #0c5dc0;
+}
+.sea .Section .SpecialLecBox .infoList .List-Table li a span {
+    float: left;
+    width: 130px;
+    color: #0c5dc0;
+    text-align: center;
+}
+
+/* Main Container : Notice : Cop_sea */
+.sea .Section .nNoticeBox .infoBox .infoTit {
+    color: #0c5dc0;
+    line-height: 20px;
+    font-weight: 600;
+}
+
+.sea .willbesNumber ul li {
+    margin-left: 100px;
+}
+.sea .willbesNumber ul li:first-child {
+    margin-left: 50px;
+}

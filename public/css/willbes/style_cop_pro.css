@@ -190,71 +190,6 @@
     display: block;
 }
 
-/* Main Container Cop_pro : 3STEP curriculum */
-.pro .curriculumTit a {
-    position: absolute;
-    background: #0c5dc0;
-    padding: 8px 0;
-    width: 180px;
-    color:#fff;
-    font-size: 16px;
-    font-weight: 600;
-    text-align: center;
-    border-bottom: 7px solid #006951;
-    bottom:78px;
-    left:50%;
-    margin-left: -90px;
-    z-index: 1;
-}
-.pro .curriculumTit a:hover {
-    border-bottom:0;
-}
-.pro .curriculumTxt span.btn a {
-    float: left;
-    font-size:16px; 
-    padding:8px 21px; 
-    background:#0c5dc0; 
-    color:#fff; 
-    text-align:center;
-    line-height: 16px;
-    border-radius: 20px
-}
-
-.pro .CurriStepBox {
-    padding:100px 0 50px;
-    background: #fff url("../../img/willbes/Cop_pro/visual/visual_tit02_stit.png") no-repeat 37px 144px; 
-}
-
-.pro .CurriStepBox .CurriStep > li a:hover {
-    border:1px solid #0c5dc0;
-    color:#fff;
-    background: #0c5dc0;
-}
-.pro .CurriStepBox .CurriStep > li:nth-child(even) {
-    background: url("../../img/willbes/Cop_pro/visual/icon_arrow.png") no-repeat center center; 
-    width: 30px;
-}
-
-.pro .CurriStepBox .CurriStep > li.active .curriculumBox,
-.pro .CurriStepBox .CurriStep > li:hover .curriculumBox {
-    background: #fff;
-    border: 10px solid #0c5dc0;
-    color: #0c5dc0;
-    box-shadow: -20px 20px 20px rgba(0,0,0,.2);
-}
-.pro .CurriStepBox .CurriStep > li.active .curriculumBox .Tit,
-.pro .CurriStepBox .CurriStep > li:hover .curriculumBox .Tit {
-    padding-top: 20px;
-    background: #0c5dc0;
-    color:#fff;
-}
-.pro .CurriStepBox .CurriStep > li.active .curriculumBox .subTit,
-.pro .CurriStepBox .CurriStep > li:hover .curriculumBox .subTit {
-    background: #0c5dc0;
-    color:#fff;
-}
-
-
 /* Main Container : SpecialLecBox */
 .pro .Section .SpecialLecBox .infoTit .btn .btn-sbj a {
     background: #0c5dc0;
@@ -265,7 +200,6 @@
     color: #0c5dc0;
     text-align: center;
 }
-
 
 /* Main Container : Notice : Cop_pro */
 .pro .Section .nNoticeBox .infoBox .infoTit {

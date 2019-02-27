@@ -4,8 +4,46 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class MockInfoFModel extends WB_Model
 {
     protected $_table = [
-        'mock_product' => 'vw_product_mocktest as pm',
-        'board' => 'lms_board'
+        'mock_product' => 'vw_product_mocktest',
+        'board' => 'lms_board',
+        'cart' => 'lms_cart',
+
+        'mockExamQuestion' => 'lms_mock_questions',
+        'mockSubject' => 'lms_mock_r_subject',
+        'mockAreaCate' => 'lms_mock_r_category',
+        'mockArea' => 'lms_mock_area',
+        'mockAreaList' => 'lms_mock_area_list',
+        'mockBase' => 'lms_mock',
+        'category' => 'lms_sys_category',
+        'sysCode' => 'lms_sys_code',
+        'subject' => 'lms_product_subject',
+        'professor' => 'lms_professor',
+        'pms_professor' => 'wbs_pms_professor',
+        'site' => 'lms_site',
+
+        'mockPrint' => 'lms_mock_register_print_log',
+        'member' => 'lms_Member',
+        'order' => 'lms_order',
+        'orderProduct' => 'lms_Order_Product',
+        'mockExamBase' => 'lms_mock_paper',
+
+
+        'mockProduct' => 'lms_product_mock',
+        'mockProductExam' => 'lms_product_mock_r_paper',
+        'mockRegisterR' => 'lms_mock_register_r_paper',
+        'Product' => 'lms_Product',
+        'ProductCate' => 'lms_product_r_category',
+        'ProductSale' => 'lms_Product_Sale',
+        'ProductSMS' => 'lms_Product_Sms',
+        'mockRegister' => 'lms_mock_register',
+
+        'mockAnswerTemp' => 'lms_mock_answertemp',
+        'mockAnswerPaper' => 'lms_mock_answerpaper',
+        'mockLog' => 'lms_mock_log',
+        'mockGrades' => 'lms_mock_grades',
+        'answerNote' => 'lms_mock_wronganswernote',
+        'mockGroupRProduct' => 'lms_mock_group_r_product',
+        'mockGroup' => 'lms_mock_group'
     ];
 
     public function __construct()
@@ -26,28 +64,28 @@ class MockInfoFModel extends WB_Model
             if(empty($add_column) == false) {
                 $column = $add_column . ',';
             }
-            $column .= '    pm.*
+            $column .= "    pm.*
                         , (
                             select
                                 count(*)
                             from
-                                lms_order_product op 
-                                join lms_order o on op.OrderIdx = o.OrderIdx
-                            where op.PayStatusCcd=\'676001\' and ProdCode = pm.ProdCode 
+                                {$this->_table['orderProduct']} op 
+                                join {$this->_table['order']} o on op.OrderIdx = o.OrderIdx
+                            where op.PayStatusCcd='676001' and ProdCode = pm.ProdCode 
                         ) as AllPayCnt
-            ';
+            ";
             //본인 결제한 내역 추출
             if(empty($this->session->userdata('mem_idx'))) {
-                $column .= ', \'0\' as OrderProdIdx ';
+                $column .= ", '0' as OrderProdIdx ";
             } else {
-                $column .= ', (
+                $column .= ", (
                             select
                                 IFNULL(max(OrderProdIdx),0)
                             from
-                                lms_order_product op 
-                                join lms_order o on op.OrderIdx = o.OrderIdx
-                            where op.PayStatusCcd=\'676001\' and ProdCode = pm.ProdCode and op.MemIdx = \''.$this->session->userdata('mem_idx').'\'
-                        ) as OrderProdIdx' ;
+                                {$this->_table['orderProduct']} op 
+                                join {$this->_table['order']} o on op.OrderIdx = o.OrderIdx
+                            where op.PayStatusCcd='676001' and ProdCode = pm.ProdCode and op.MemIdx = '".$this->session->userdata('mem_idx')."'
+                        ) as OrderProdIdx" ;
             }
 
         }
@@ -67,16 +105,16 @@ class MockInfoFModel extends WB_Model
 
         $select = 'Select b.MpIdx,b.MockType,mp.PapaerName,sj.SubjectIdx,sj.SubjectName';
 
-        $from ='
+        $from ="
                     from
-                        vw_product_mocktest A
-                        join lms_product_mock_r_paper b on A.ProdCode = b.ProdCode and b.IsStatus=\'Y\'
-                        join lms_mock_paper mp on b.MpIdx = mp.MpIdx and mp.IsStatus=\'Y\' and mp.IsUse=\'Y\'
-                        join lms_mock_r_category mrc on mp.MrcIdx = mrc.MrcIdx and mrc.IsStatus=\'Y\'
-                        join lms_mock_r_subject mrs on mrc.MrsIdx = mrs.MrsIdx and mrs.IsStatus=\'Y\'
-                        JOIN lms_product_subject AS SJ ON mrs.SubjectIdx = SJ.SubjectIdx AND SJ.IsStatus = \'Y\'
-                        ';
-        $where = ' where A.IsUse =\'Y\' ';
+                        {$this->_table['mock_product']} A
+                        join {$this->_table['mockProductExam']} b on A.ProdCode = b.ProdCode and b.IsStatus='Y'
+                        join {$this->_table['mockExamBase']} mp on b.MpIdx = mp.MpIdx and mp.IsStatus='Y' and mp.IsUse='Y'
+                        join {$this->_table['mockAreaCate']} mrc on mp.MrcIdx = mrc.MrcIdx and mrc.IsStatus='Y'
+                        join {$this->_table['mockSubject']} mrs on mrc.MrsIdx = mrs.MrsIdx and mrs.IsStatus='Y'
+                        JOIN {$this->_table['subject']} AS SJ ON mrs.SubjectIdx = SJ.SubjectIdx AND SJ.IsStatus = 'Y'
+                        ";
+        $where = " where A.IsUse ='Y' ";
         //$where .= $this->_conn->makeWhere(['A.ProdCode' => $prod_code, 'b.MockType'=>$mock_type])->getMakeWhere(true);
         $where .= $this->_conn->makeWhere(['EQ' => ['A.ProdCode'=>$prod_code, 'b.MockType' => $mock_type]])->getMakeWhere(true);
         $result = $this->_conn->query($select. $from. $where)->result_array();
@@ -91,13 +129,13 @@ class MockInfoFModel extends WB_Model
      */
     public function listMockTestMockPart($prod_code)
     {
-        $select = 'Select straight_join b.Ccd,b.CcdName ';
+        $select = "Select straight_join b.Ccd,b.CcdName ";
 
-        $from = '
+        $from = "
                     from 
-                        vw_product_mocktest a 
-                        join lms_sys_code b on find_in_set(b.Ccd, a.MockPart)';
-        $where = ' where b.IsUse=\'Y\' ';
+                        {$this->_table['mock_product']} a 
+                        join {$this->_table['sysCode']} b on find_in_set(b.Ccd, a.MockPart)";
+        $where = " where b.IsUse='Y' ";
         
         $where .= $this->_conn->makeWhere(['EQ'=>['A.ProdCode' => $prod_code]])->getMakeWhere(true);
         
@@ -119,15 +157,15 @@ class MockInfoFModel extends WB_Model
 
         $select = 'Select * ';
 
-        $from = 'from 
+        $from = "from 
                     (
                         select 
                         straight_join
                             b.Ccd,b.CcdName
                         from 
-                            vw_product_mocktest a 
-                            join lms_sys_code b on find_in_set(b.Ccd, a.TakeAreas1CCds)
-                        where a.ProdCode =\''.$prod_code.'\' 
+                            {$this->_table['mock_product']} a 
+                            join {$this->_table['sysCode']} b on find_in_set(b.Ccd, a.TakeAreas1CCds)
+                        where a.ProdCode ='".$prod_code."' 
                         
                         union all
                         
@@ -135,10 +173,10 @@ class MockInfoFModel extends WB_Model
                         straight_join
                             b.Ccd,b.CcdName
                         from 
-                            vw_product_mocktest a 
-                            join lms_sys_code b on find_in_set(b.Ccd, a.TakeAreas2CCds)
-                        where a.ProdCode =\''.$prod_code.'\' 
-                    ) mm ';
+                            {$this->_table['mock_product']} a 
+                            join {$this->_table['sysCode']} b on find_in_set(b.Ccd, a.TakeAreas2CCds)
+                        where a.ProdCode ='".$prod_code."' 
+                    ) mm ";
 
         $result = $this->_conn->query($select. $from)->result_array();
         return $result;
@@ -151,17 +189,17 @@ class MockInfoFModel extends WB_Model
      */
     public function listMockTestAddPoint($prod_code)
     {
-        $select = 'Select straight_join b.Ccd,b.CcdName,b.CcdValue ';
+        $select = "Select straight_join b.Ccd,b.CcdName,b.CcdValue ";
 
-        $from = '
+        $from = "
                     from 
-                        vw_product_mocktest a 
-                        join lms_sys_code b on find_in_set(b.Ccd, a.AddPointCcds)';
-        $where = ' where b.IsUse=\'Y\' ';
+                        {$this->_table['mock_product']} a 
+                        join {$this->_table['sysCode']} b on find_in_set(b.Ccd, a.AddPointCcds)";
+        $where = " where b.IsUse='Y' ";
 
         $where .= $this->_conn->makeWhere(['EQ'=>['A.ProdCode' => $prod_code]])->getMakeWhere(true);
 
-        $order_by = 'order by b.OrderNum';
+        $order_by = "order by b.OrderNum";
  
         $result = $this->_conn->query($select. $from. $where. $order_by)->result_array();
 
@@ -176,13 +214,13 @@ class MockInfoFModel extends WB_Model
      */
     public function findCartByCartIdx($cart_idx)
     {
-        $select = 'Select * ';
+        $select = "Select * ";
 
-        $from = '
+        $from = "
                     from 
-                        lms_cart c
-                    ';
-        $where = ' where c.IsStatus=\'Y\' ';
+                        {$this->_table['cart']} c
+                    ";
+        $where = " where c.IsStatus='Y' ";
 
         $where .= $this->_conn->makeWhere(['EQ'=>['c.CartIdx' => $cart_idx]])->getMakeWhere(true);
 
@@ -199,35 +237,35 @@ class MockInfoFModel extends WB_Model
     public function findRegistByOrderProdIdx($order_prod_idx)
     {
 
-        $select = '
+        $select = "
                         select 
                             op.ProdCode,op.RealPayPrice,op.IsUseCoupon,op.PayStatusCcd
                             ,sc1.CcdName as PayStatusCcd_Name 
                             ,o.OrderIdx,o.CompleteDatm
                             ,sc2.CcdName as PayRouteCcd_Name
                             ,sc3.CcdName as PayMethodCcd_Name
-                            ,mr.MrIdx,mr.TakeMockPart,mr.TakeForm,mr.TakeArea,Ifnull(mr.AddPoint,\'0\') as AddPoint,mr.IsStatus,mr.TakeNumber
+                            ,mr.MrIdx,mr.TakeMockPart,mr.TakeForm,mr.TakeArea,Ifnull(mr.AddPoint,'0') as AddPoint,mr.IsStatus,mr.TakeNumber
                             ,sc4.CcdName as TakeMockPart_Name
                             ,sc5.CcdName as TakeArea_Name
                             ,sc6.CcdName as TakeForm_Name
                             ,pm.ProdName,pm.CateName,pm.TakeStartDatm,pm.TakeEndDatm
-        ';
+        ";
 
-        $from = '
+        $from = "
                     from
-                        lms_order_product op 
-                        join lms_order o on op.OrderIdx = o.OrderIdx
-                        join lms_sys_code sc1 on op.PayStatusCcd = sc1.Ccd
-                        join lms_sys_code sc2 on o.PayRouteCcd = sc2.Ccd
-                        join lms_sys_code sc3 on o.PayMethodCcd = sc3.Ccd
-                        join lms_mock_register mr on op.OrderProdIdx = mr.OrderProdIdx
-                        join lms_sys_code sc4 on mr.TakeMockPart = sc4.Ccd
-                        left outer join lms_sys_code sc5 on mr.TakeArea = sc5.Ccd
-                        join lms_sys_code sc6 on mr.TakeForm = sc6.Ccd
-                        join vw_product_mocktest pm on mr.ProdCode = pm.ProdCode';
+                        {$this->_table['orderProduct']} op 
+                        join {$this->_table['order']} o on op.OrderIdx = o.OrderIdx
+                        join {$this->_table['sysCode']} sc1 on op.PayStatusCcd = sc1.Ccd
+                        join {$this->_table['sysCode']} sc2 on o.PayRouteCcd = sc2.Ccd
+                        join {$this->_table['sysCode']} sc3 on o.PayMethodCcd = sc3.Ccd
+                        join {$this->_table['mockRegister']} mr on op.OrderProdIdx = mr.OrderProdIdx
+                        join {$this->_table['sysCode']} sc4 on mr.TakeMockPart = sc4.Ccd
+                        left outer join {$this->_table['sysCode']} sc5 on mr.TakeArea = sc5.Ccd
+                        join {$this->_table['sysCode']} sc6 on mr.TakeForm = sc6.Ccd
+                        join {$this->_table['mock_product']} pm on mr.ProdCode = pm.ProdCode";
 
-        $where = '
-                    where op.MemIdx=\''.$this->session->userdata('mem_idx').'\' ';
+        $where = "
+                    where op.MemIdx=".$this->session->userdata('mem_idx');
 
         $where .= $this->_conn->makeWhere(['EQ'=>['op.OrderProdIdx' => $order_prod_idx]])->getMakeWhere(true);
 
@@ -244,19 +282,19 @@ class MockInfoFModel extends WB_Model
      */
     public function findRegistSubject($order_prod_idx)
     {
-            $select = 'select
+            $select = "select
                             pmp.MockType
-                            ,group_concat(ps.SubjectName,\'\') as subject_names ';
-            $from = ' from
-                            lms_mock_register mr
-                            join lms_mock_register_r_paper mrp on mr.MrIdx = mrp.MrIdx 
-                            join lms_product_mock_r_paper pmp on mrp.ProdCode = pmp.ProdCode and mrp.MpIdx = pmp.MpIdx 
-                            join lms_product_subject ps on mrp.SubjectIdx = ps.SubjectIdx ';
-            $where = ' where 1=1 ';//pmp.MockType='E'
+                            ,group_concat(ps.SubjectName,'') as subject_names ";
+            $from = " from
+                            {$this->_table['mockRegister']} mr
+                            join {$this->_table['mockRegisterR']} mrp on mr.MrIdx = mrp.MrIdx 
+                            join {$this->_table['mockProductExam']} pmp on mrp.ProdCode = pmp.ProdCode and mrp.MpIdx = pmp.MpIdx 
+                            join {$this->_table['subject']} ps on mrp.SubjectIdx = ps.SubjectIdx ";
+            $where = " where 1=1 ";//pmp.MockType='E'
 
-            $group_by = 'group by pmp.MockType';
+            $group_by = "group by pmp.MockType";
 
-            $order = ' order by mrp.MrrpIdx';
+            $order = " order by mrp.MrrpIdx";
 
             $where .= $this->_conn->makeWhere(['EQ'=>['mr.OrderProdIdx' => $order_prod_idx]])->getMakeWhere(true);
 
@@ -285,15 +323,15 @@ class MockInfoFModel extends WB_Model
         }
 
         $from = "
-            FROM {$this->_table['mock_product']}
-            LEFT JOIN (
+            FROM {$this->_table['mock_product']} AS pm
+            JOIN (
                 SELECT ProdCode, COUNT(*) AS cnt
                 FROM {$this->_table['board']}
                 WHERE BmIdx = '95' AND RegType = '0' AND IsStatus = 'Y'
                 GROUP BY ProdCode
             ) AS BD1 ON BD1.ProdCode = pm.ProdCode
             
-            LEFT JOIN (
+            JOIN (
                 SELECT ProdCode, COUNT(*) AS cnt
                 FROM {$this->_table['board']}
                 WHERE BmIdx = '96' AND IsStatus = 'Y'
@@ -316,20 +354,20 @@ class MockInfoFModel extends WB_Model
      */
     public function findMockTestForBoard($arr_condition=[])
     {
-        $column = '
+        $column = "
                 pm.*, IFNULL(BD1.cnt, 0) AS qnaTotalCnt, IFNULL(BD2.cnt, 0) AS noticeCnt
-            ';
+            ";
 
         $from = "
-            FROM {$this->_table['mock_product']}
-            LEFT JOIN (
+            FROM {$this->_table['mock_product']} as pm
+            JOIN (
                 SELECT ProdCode, COUNT(*) AS cnt
                 FROM {$this->_table['board']}
                 WHERE BmIdx = '95' AND RegType = '0' AND IsStatus = 'Y'
                 GROUP BY ProdCode
             ) AS BD1 ON BD1.ProdCode = pm.ProdCode
             
-            LEFT JOIN (
+            JOIN (
                 SELECT ProdCode, COUNT(*) AS cnt
                 FROM {$this->_table['board']}
                 WHERE BmIdx = '96' AND IsStatus = 'Y'
@@ -352,18 +390,18 @@ class MockInfoFModel extends WB_Model
             ';
 
         $from = "
-            FROM {$this->_table['mock_product']}
-            INNER JOIN lms_mock_register mr ON pm.ProdCode = mr.ProdCode
-            INNER JOIN lms_order_product op ON op.OrderProdIdx = mr.OrderProdIdx
-            INNER JOIN lms_order o on op.OrderIdx = o.OrderIdx
-            LEFT JOIN (
+            FROM {$this->_table['mock_product']} as pm
+            INNER JOIN {$this->_table['mockRegister']} mr ON pm.ProdCode = mr.ProdCode
+            INNER JOIN {$this->_table['orderProduct']} op ON op.OrderProdIdx = mr.OrderProdIdx
+            INNER JOIN {$this->_table['order']} o on op.OrderIdx = o.OrderIdx
+            JOIN (
                 SELECT ProdCode, COUNT(*) AS cnt
                 FROM {$this->_table['board']}
                 WHERE BmIdx = '95' AND RegType = '0' AND IsStatus = 'Y'
                 GROUP BY ProdCode
             ) AS BD1 ON BD1.ProdCode = pm.ProdCode
             
-            LEFT JOIN (
+            JOIN (
                 SELECT ProdCode, COUNT(*) AS cnt
                 FROM {$this->_table['board']}
                 WHERE BmIdx = '96' AND IsStatus = 'Y'

@@ -271,4 +271,33 @@ class OrderListFModel extends BaseOrderFModel
 
         return $query->result_array();
     }
+
+    /**
+     * 주문상품 SMS 발송 메시지 조회
+     * @param int $order_no [주문번호 or 주문식별자]
+     * @param int $mem_idx [회원식별자]
+     * @param string $idx_name [주문조회 조회 컬럼명, (OrderNo, OrderIdx)]
+     * @return mixed
+     */
+    public function getOrderProductAutoSmsMsg($order_no, $mem_idx, $idx_name = 'OrderNo')
+    {
+        $column = 'PSM.SendTel as SendSmsTel, PSM.Memo as SendSmsMsg';
+        $from = '
+            from ' . $this->_table['order_product'] . ' as OP
+                inner join ' . $this->_table['order'] . ' as O
+                    on OP.OrderIdx = O.OrderIdx
+                left join ' . $this->_table['product'] . ' as P
+                    on OP.ProdCode = P.ProdCode and P.IsStatus = "Y"
+                left join ' . $this->_table['product_sms'] . ' as PSM
+                    on OP.ProdCode = PSM.ProdCode and PSM.IsStatus = "Y"
+            where O.' . $idx_name . ' = ?
+                and O.MemIdx = ? 
+                and P.IsSms = "Y"                                                       
+        ';
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from, [$order_no, $mem_idx]);
+
+        return $query->result_array();
+    }
 }

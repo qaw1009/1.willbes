@@ -5,7 +5,7 @@
  * @param $is_redirect
  */
 function cartNDirectPay($regi_form, $is_direct_pay, $is_redirect) {
-    addCartNDirectPay($regi_form, $is_direct_pay, $is_redirect, '');
+    return addCartNDirectPay($regi_form, $is_direct_pay, $is_redirect, '');
 }
 
 /**

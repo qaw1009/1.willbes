@@ -1,44 +1,44 @@
-/*********************************************     Main Container : Cop_pro     *********************************************/
-/* Main Container : Cop_pro */
-.pro .tx-color {
+/*********************************************     Main Container : Cop_sea     *********************************************/
+/* Main Container : Cop_sea */
+.sea .tx-color {
     color: #0c5dc0;
 }
 .Section2 { background: #f7f7f7}
 
-/* Main Container : Tit : Cop_pro */
-.pro .smallTit {
+/* Main Container : Tit : Cop_sea */
+.sea .smallTit {
     border-top:1px solid #b8b8b8;
     font-size: 22px;
     color:#363636;    
     position: relative;
 }
-.pro .smallTit p {
+.sea .smallTit p {
     position: absolute;
     top:-15px;
     text-align: center;
     width: 100%;
 }
-.pro .smallTit span {
+.sea .smallTit span {
     padding:0 20px;
     font-weight: 600;
     background: #fff;
 }
-.pro .smallTit strong {
+.sea .smallTit strong {
     color:#0c5dc0;
 }
 
-.pro .smallTit a {
+.sea .smallTit a {
     position: absolute;
     width: 23px;
     top:-12px;
     right:0;    
     z-index: 1;
 }
-.pro .smallTit2 span {
+.sea .smallTit2 span {
     background:#f7f7f7;
 }
 
-.pro .Section.MainVisual iframe {
+.sea .Section.MainVisual iframe {
     position: absolute;    
     width: 270px;
     height: 152px;
@@ -47,35 +47,35 @@
     z-index: 1;
 }
 
-.pro .Section .will-big-Tit .cop-color {
+.sea .Section .will-big-Tit .cop-color {
     color: #0c5dc0;
 }
 
 /**/
-.pro .Profinfo {
+.sea .Profinfo {
     position: relative;
 }
-.pro .Profinfo li {
+.sea .Profinfo li {
     display: inline;
     float: left;
     margin-right:2px;
 }
-.pro .Profinfo li:last-child {
+.sea .Profinfo li:last-child {
     margin:0;
 }
-.pro .Profinfo ul:after {
+.sea .Profinfo ul:after {
     content:'';
     display: block;
     clear:both;
 }
-.pro .Profinfo span {
+.sea .Profinfo span {
     position: absolute;
     width: 100px;
     top:720px;
     left:60px;
     z-index: 1;
 }
-.pro .Profinfo span a {
+.sea .Profinfo span a {
     display: block;
     text-align: center;
     background: #fff;
@@ -86,73 +86,73 @@
     border-radius: 0 20px 20px;
     border:2px solid #0c5dc0;
 }
-.pro .Profinfo span a:hover {
+.sea .Profinfo span a:hover {
     background: #0c5dc0;
     color:#fff;
 }
-.pro .Profinfo span.btn02 {
+.sea .Profinfo span.btn02 {
     left:863px;
 }
 
 /**/
-.pro .proPAss li {
+.sea .proPAss li {
     display: inline;
     float: left;
 }
-.pro .proPAss li:last-child {
+.sea .proPAss li:last-child {
     margin-left:6px;
 }
-.pro .proPAss:after {
+.sea .proPAss:after {
     content:'';
     display: block;
     clear:both;
 }
 
 /**/
-.pro .mou li {
+.sea .mou li {
     display: inline;
     float: left;
     margin-left:6px;
 }
-.pro .mou li:first-child {
+.sea .mou li:first-child {
     margin:0;
 }
-.pro .mou ul:after {
+.sea .mou ul:after {
     content:'';
     display: block;
     clear:both;
 }
-.pro .mou .bx-wrapper .bx-viewport {
+.sea .mou .bx-wrapper .bx-viewport {
     z-index: 10;
 }
-.pro .mou .bx-wrapper .bx-controls-direction {
+.sea .mou .bx-wrapper .bx-controls-direction {
     width: 100%;
     height: 65px;
     position: absolute;
     top:50%;
     margin-top: -32px;
 }
-.pro .mou .bx-wrapper .bx-controls-direction a {
+.sea .mou .bx-wrapper .bx-controls-direction a {
     width: 64px;
     height: 65px;
 }
-.pro .mou .bx-wrapper .bx-controls-direction a.disabled {
+.sea .mou .bx-wrapper .bx-controls-direction a.disabled {
     display: block;
     opacity: 0.5;
 }
-.pro .mou .bx-wrapper .bx-prev {
-    background:url("../../img/willbes/cop_pro/btn_prev01.png") no-repeat center center;
+.sea .mou .bx-wrapper .bx-prev {
+    background:url("../../img/willbes/cop_sea/btn_prev01.png") no-repeat center center;
     left: -26px;
     right: inherit;
 }
-.pro .mou .bx-wrapper .bx-next {
-    background:url("../../img/willbes/cop_pro/btn_next01.png") no-repeat center center;
+.sea .mou .bx-wrapper .bx-next {
+    background:url("../../img/willbes/cop_sea/btn_next01.png") no-repeat center center;
     left: inherit;
     right: -34px;
 }
 
-/* Main Container : Prof : Cop_pro */
-.pro .Section .ProfCopBox > li {
+/* Main Container : Prof : Cop_sea */
+.sea .Section .ProfCopBox > li {
     position: relative;
     display: inline;
     float: left;
@@ -160,10 +160,10 @@
     height: 327px;
     margin-left: 5px;
 }
-.pro .Section .ProfCopBox > li:first-child {
+.sea .Section .ProfCopBox > li:first-child {
     margin-left: 0;
 }
-.pro .Section .ProfCopBox .ProfBtns {
+.sea .Section .ProfCopBox .ProfBtns {
     position: absolute;
     width: 100%;
     bottom: 0;
@@ -171,46 +171,46 @@
     z-index: 1;
 }
 
-/* Main Container : pass : cSlider : sliderPassList : Cop_pro */
-.pro .cSlider.sliderPassList .bx-wrapper .bx-prev {
-    background: url("../../img/willbes/Cop_pro/btn_prev_on.png") no-repeat 0 0;
+/* Main Container : pass : cSlider : sliderPassList : Cop_sea */
+.sea .cSlider.sliderPassList .bx-wrapper .bx-prev {
+    background: url("../../img/willbes/cop_sea/btn_prev_on.png") no-repeat 0 0;
     left: -40px;
 }
-.pro .cSlider.sliderPassList .bx-wrapper .bx-next {
-    background: url("../../img/willbes/Cop_pro/btn_next_on.png") no-repeat 0 0;
+.sea .cSlider.sliderPassList .bx-wrapper .bx-next {
+    background: url("../../img/willbes/cop_sea/btn_next_on.png") no-repeat 0 0;
     right: -40px;
     left: inherit;
 }
-.pro .cSlider.sliderPassList .bx-wrapper .bx-prev.disabled {
-    background: url("../../img/willbes/Cop_pro/btn_prev_off.png") no-repeat 0 0;
+.sea .cSlider.sliderPassList .bx-wrapper .bx-prev.disabled {
+    background: url("../../img/willbes/cop_sea/btn_prev_off.png") no-repeat 0 0;
     display: block;
 }
-.pro .cSlider.sliderPassList .bx-wrapper .bx-next.disabled {
-    background: url("../../img/willbes/Cop_pro/btn_next_off.png") no-repeat 0 0;
+.sea .cSlider.sliderPassList .bx-wrapper .bx-next.disabled {
+    background: url("../../img/willbes/cop_sea/btn_next_off.png") no-repeat 0 0;
     display: block;
 }
 
 /* Main Container : SpecialLecBox */
-.pro .Section .SpecialLecBox .infoTit .btn .btn-sbj a {
+.sea .Section .SpecialLecBox .infoTit .btn .btn-sbj a {
     background: #0c5dc0;
 }
-.pro .Section .SpecialLecBox .infoList .List-Table li a span {
+.sea .Section .SpecialLecBox .infoList .List-Table li a span {
     float: left;
     width: 130px;
     color: #0c5dc0;
     text-align: center;
 }
 
-/* Main Container : Notice : Cop_pro */
-.pro .Section .nNoticeBox .infoBox .infoTit {
+/* Main Container : Notice : Cop_sea */
+.sea .Section .nNoticeBox .infoBox .infoTit {
     color: #0c5dc0;
     line-height: 20px;
     font-weight: 600;
 }
 
-.pro .willbesNumber ul li {
+.sea .willbesNumber ul li {
     margin-left: 100px;
 }
-.pro .willbesNumber ul li:first-child {
+.sea .willbesNumber ul li:first-child {
     margin-left: 50px;
 }

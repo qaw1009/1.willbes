@@ -3,7 +3,11 @@
 @section('content')
     <!-- Container -->
     <div id="Container" class="subContainer widthAuto c_both">
-        @include('willbes.pc.layouts.partial.site_tab_menu')
+        @if (empty($__cfg['TabMenu']) === true)
+            @include('willbes.pc.layouts.partial.site_menu')
+        @else
+            @include('willbes.pc.layouts.partial.site_tab_menu')
+        @endif
         <div class="Depth">
             @include('willbes.pc.layouts.partial.site_route_path')
         </div>
@@ -107,7 +111,7 @@
             </div>
             <!-- willbes-CScenter -->
         </div>
-        {!! banner('고객센터_우측날개', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
+        {!! banner('고객센터_우측퀵', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
     </div>
     <!-- End Container -->
 @stop

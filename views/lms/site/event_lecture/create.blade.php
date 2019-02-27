@@ -23,15 +23,14 @@
                     <div class="form-inline col-md-4 item">
                         {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', '', false) !!}
                     </div>
-                    <label class="control-label col-md-1-1 d-line" for="campus_ccd">캠퍼스</label>
-                    <div class="col-md-4 form-inline ml-12-dot item">
-                        <select class="form-control" id="campus_ccd" name="campus_ccd" title="캠퍼스">
-                            <option value="">캠퍼스</option>
-                            @php $temp='0'; @endphp
-                            @foreach($arr_campus as $row)
-                                <option value="{{ $row['CampusCcd'] }}" class="{{ $row['SiteCode'] }}" @if($method == 'PUT' && ($row['CampusCcd'] == $data['CampusCcd'])) selected="selected" @endif>{{ $row['CampusName'] }}</option>
-                            @endforeach
-                        </select>
+                    <label class="control-label col-md-1-1 d-line" for="promotion_code">프로모션코드</label>
+                    <div class="col-md-4 form-inline ml-12-dot">
+                        @if($promotion_modify_type === true && $method == 'PUT')
+                            <input type="text" class="form-control" name="promotion_code" id="promotion_code" value="{{$data['PromotionCode']}}">
+                        @else
+                            {{$data['PromotionCode']}}
+                        @endif
+                            <p class="form-control-static"> # 등록 시 자동 생성</p>
                     </div>
                 </div>
                 <div class="form-group">
@@ -53,11 +52,25 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="control-label col-md-1-1">캠퍼스
+                    </label>
+                    <div class="col-md-10 form-inline">
+                        <select class="form-control" id="campus_ccd" name="campus_ccd" title="캠퍼스">
+                            <option value="">캠퍼스</option>
+                            @php $temp='0'; @endphp
+                            @foreach($arr_campus as $row)
+                                <option value="{{ $row['CampusCcd'] }}" class="{{ $row['SiteCode'] }}" @if($method == 'PUT' && ($row['CampusCcd'] == $data['CampusCcd'])) selected="selected" @endif>{{ $row['CampusName'] }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <label class="control-label col-md-1-1">신청유형 <span class="required">*</span></label>
                     <div class="col-md-4 item form-inline">
                         <div class="radio">
-                            @foreach($arr_requst_types as $key => $val)
-                                <input type="radio" class="flat" id="requst_type_{{$key}}" name="requst_type" value="{{$key}}" title="{{$val}}" required="required" @if($loop->first || $data['RequstType']==$key)checked="checked"@endif> <label for="requst_type_{{$key}}" class="input-label">{{$val}}</label>
+                            @foreach($arr_request_types as $key => $val)
+                                <input type="radio" class="flat" id="request_type_{{$key}}" name="request_type" value="{{$key}}" title="{{$val}}" required="required" @if($loop->first || $data['RequestType']==$key)checked="checked"@endif> <label for="request_type_{{$key}}" class="input-label">{{$val}}</label>
                             @endforeach
                         </div>
                     </div>
@@ -127,57 +140,50 @@
                         <div class="input-group mb-0">
                             <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
                             <input type="text" class="form-control datepicker" id="register_start_datm" name="register_start_datm" value="{{$data['RegisterStartDay']}}">
-                            <div class="input-group-btn">
-                                <select class="form-control ml-5" id="register_start_hour" name="register_start_hour">
-                                    @php
-                                        for($i=0; $i<=23; $i++) {
-                                            $str = (strlen($i) <= 1) ? '0' : '';
-                                            $selected = ($i == $data['RegisterStartHour']) ? "selected='selected'" : "";
-                                            echo "<option value='{$i}' {$selected}>{$str}{$i}</option>";
-                                        }
-                                    @endphp
-                                </select>
-                            </div>
-                            <div class="col-md-1"><p class="form-control-static">:</p></div>
-                            <div class="input-group-btn">
-                                <select class="form-control ml-5" id="register_start_min" name="register_start_min">
-                                    @php
-                                        for($i=0; $i<=59; $i++) {
-                                            $str = (strlen($i) <= 1) ? '0' : '';
-                                            $selected = ($i == $data['RegisterStartMin']) ? "selected='selected'" : "";
-                                            echo "<option value='{$i}' {$selected}>{$str}{$i}</option>";
-                                        }
-                                    @endphp
-                                </select>
-                            </div>
-
-                            <div class="input-group-addon no-border no-bgcolor">~</div>
+                        </div>
+                        <select class="form-control ml-5" id="register_start_hour" name="register_start_hour">
+                            @php
+                                for($i=0; $i<=23; $i++) {
+                                    $str = (strlen($i) <= 1) ? '0' : '';
+                                    $selected = ($i == $data['RegisterStartHour']) ? "selected='selected'" : "";
+                                    echo "<option value='{$i}' {$selected}>{$str}{$i}</option>";
+                                }
+                            @endphp
+                        </select>
+                        <span>:</span>
+                        <select class="form-control" id="register_start_min" name="register_start_min">
+                            @php
+                                for($i=0; $i<=59; $i++) {
+                                    $str = (strlen($i) <= 1) ? '0' : '';
+                                    $selected = ($i == $data['RegisterStartMin']) ? "selected='selected'" : "";
+                                    echo "<option value='{$i}' {$selected}>{$str}{$i}</option>";
+                                }
+                            @endphp
+                        </select>
+                        <span class="pl-5 pr-5">~</span>
+                        <div class="input-group mb-0">
                             <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
                             <input type="text" class="form-control datepicker" id="register_end_datm" name="register_end_datm" value="{{$data['RegisterEndDay']}}">
-                            <div class="input-group-btn">
-                                <select class="form-control ml-5" id="register_end_hour" name="register_end_hour">
-                                    @php
-                                        for($i=0; $i<=23; $i++) {
-                                            $str = (strlen($i) <= 1) ? '0' : '';
-                                            $selected = ($i == $data['RegisterEndHour']) ? "selected='selected'" : "";
-                                            echo "<option value='{$i}' {$selected}>{$str}{$i}</option>";
-                                        }
-                                    @endphp
-                                </select>
-                            </div>
-                            <div class="col-md-1"><p class="form-control-static">:</p></div>
-                            <div class="input-group-btn">
-                                <select class="form-control ml-5" id="register_end_min" name="register_end_min">
-                                    @php
-                                        for($i=0; $i<=59; $i++) {
-                                            $str = (strlen($i) <= 1) ? '0' : '';
-                                            $selected = ($i == $data['RegisterEndMin']) ? "selected='selected'" : "";
-                                            echo "<option value='{$i}' {$selected}>{$str}{$i}</option>";
-                                        }
-                                    @endphp
-                                </select>
-                            </div>
                         </div>
+                        <select class="form-control ml-5" id="register_end_hour" name="register_end_hour">
+                            @php
+                                for($i=0; $i<=23; $i++) {
+                                    $str = (strlen($i) <= 1) ? '0' : '';
+                                    $selected = ($i == $data['RegisterEndHour']) ? "selected='selected'" : "";
+                                    echo "<option value='{$i}' {$selected}>{$str}{$i}</option>";
+                                }
+                            @endphp
+                        </select>
+                        <span>:</span>
+                        <select class="form-control" id="register_end_min" name="register_end_min">
+                            @php
+                                for($i=0; $i<=59; $i++) {
+                                    $str = (strlen($i) <= 1) ? '0' : '';
+                                    $selected = ($i == $data['RegisterEndMin']) ? "selected='selected'" : "";
+                                    echo "<option value='{$i}' {$selected}>{$str}{$i}</option>";
+                                }
+                            @endphp
+                        </select>
                     </div>
                 </div>
 
@@ -192,14 +198,14 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1">내용 <span class="required">*</span></label>
+                    <label class="control-label col-md-1-1">내용</label>
                     <div class="col-md-10 item form-inline form-content-input hide" id="content_file">
                         <div class="title">
                             <div class="filetype">
                                 <input type="text" class="form-control file-text" disabled="">
                                 <button class="btn btn-primary mb-0" type="button">파일 선택</button>
                                 <span class="file-select file-btn">
-                                    <input type="file" id="attach_file_C" name="attach_file[]" @if($method == 'POST')required="required"@endif class="form-control input-file" title="내용 이미지">
+                                    <input type="file" id="attach_file_C" name="attach_file[]" class="form-control input-file" title="내용 이미지">
                                 </span>
                                 <input class="file-reset btn-danger btn" type="button" value="X" />
                             </div>
@@ -238,14 +244,14 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="attach_file_S">리스트썸네일<span class="required">*</span></label>
+                    <label class="control-label col-md-1-1" for="attach_file_S">리스트썸네일</label>
                     <div class="col-md-10 item form-inline">
                         <div class="title">
                             <div class="filetype">
                                 <input type="text" class="form-control file-text" disabled="">
                                 <button class="btn btn-primary mb-0" type="button">파일 선택</button>
                                 <span class="file-select file-btn">
-                                <input type="file" id="attach_file_S" name="attach_file[]" @if($method == 'POST')required="required"@endif class="form-control input-file" title="리스트썸네일">
+                                <input type="file" id="attach_file_S" name="attach_file[]" class="form-control input-file" title="리스트썸네일">
                                 </span>
                                 <input class="file-reset btn-danger btn" type="button" value="X" />
                             </div>
@@ -280,8 +286,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1">관리옵션<span class="required">*</span></label>
-                    <div class="col-md-10 form-inline item">
+                    <label class="control-label col-md-1-1">관리옵션</label>
+                    <div class="col-md-10 form-inline">
                         <div class="checkbox">
                             @foreach($arr_options as $key => $val)
                                 <input type="checkbox" id="option_ccds_{{$key}}" name="option_ccds[]" class="flat optoin-ccds" title="관리옵션" value="{{$key}}" data-code="{{$key}}"
@@ -408,7 +414,7 @@
                                 <div class="row">
                                     <label class="control-label col-md-1">발신번호</label>
                                     <div class="col-md-5 form-inline">
-                                        <input type="text" id="send_tel" name="send_tel" class="form-control" value="{{$data['SendTel']}}" title="발신번호">
+                                        {!! html_callback_num_select($arr_send_callback_ccd, $data['SendTel'], 'send_tel', 'send_tel', '', '발신번호', '') !!}
                                     </div>
                                     <div class="col-md-5">
                                         <p class="form-control-static">• 접수 완료 시 아래의 문구가 자동 발송됩니다.</p>
@@ -418,6 +424,14 @@
                                     <label class="control-label col-md-1">내용</label>
                                     <div class="col-md-11">
                                         <textarea id="sms_content" name="sms_content" class="form-control" rows="6" title="내용" placeholder="">{{$data['SmsContent']}}</textarea>
+                                    </div>
+                                </div>
+                                <div class="row mt-10">
+                                    <label class="control-label col-md-1"></label>
+                                    <div class="col-md-11">
+                                    <input class="form-inline red" id="content_byte" style="width: 50px;" type="text" readonly="readonly" value="0">
+                                    <span class="red">byte</span>
+                                    (55byte 이상일 경우 MMS로 전환됩니다.)
                                     </div>
                                 </div>
                             </div>
@@ -450,6 +464,9 @@
                     </div>
                 </div>
 
+                {{--
+                TODO : 해당 프로모션 링크 값에 대한 처리 방안 결정 필요.
+                --}}
                 <div class="form-group">
                     <label class="control-label col-md-1-1">프로모션 링크</label>
                     <div class="form-inline col-md-10">
@@ -544,6 +561,25 @@
                 that.parent().remove();
             });
 
+            // 파일삭제
+            $regi_form.on('click', '.file-delete', function() {
+                var _url = '{{ site_url("/site/eventLecture/destroyFile") }}' + getQueryString();
+                var data = {
+                    '{{ csrf_token_name() }}' : $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                    '_method' : 'DELETE',
+                    'attach_idx' : $(this).data('attach-idx')
+                };
+                if (!confirm('정말로 삭제하시겠습니까?')) {
+                    return;
+                }
+                sendAjax(_url, data, function(ret) {
+                    if (ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                        location.reload();
+                    }
+                }, showError, false, 'POST');
+            });
+
             //내용옵션 선택
             $regi_form.on('ifChanged ifCreated', 'input[name="content_type"]:checked', function() {
                 var set_val = $(this).data('input');
@@ -618,8 +654,10 @@
                 add_lists += '<td><a href="#none" class="btn-lecture-delete" data-lecture-temp-idx="'+temp_idx+'"><i class="fa fa-times fa-lg red"></i></a></td>';
                 add_lists += '<tr>';
                 $('#table_lecture > tbody:last').append(add_lists);
-
                 temp_idx = temp_idx + 1;
+
+                $('#temp_person_limit').val('');
+                $('#temp_lecture_name').val('');
             });
 
             // 특강 tr 삭제, hidden 데이터 삭제
@@ -648,19 +686,6 @@
                 }, showError, false, 'POST');
             });
 
-            // 고객센터 전화번호
-            $regi_form.on('change', 'select[name="site_code"]', function() {
-                var $arr_site_csTel = {!! $site_csTel !!};
-                var cs_tel = '';
-                var this_site_code = $(this).val();
-                if (this_site_code == '') {
-                    cs_tel = '';
-                } else {
-                    cs_tel = $arr_site_csTel[this_site_code].replace('-','');
-                }
-                $('#send_tel').val(cs_tel);
-            });
-
             //목록
             $('#btn_list').click(function() {
                 location.href='{{ site_url("/site/eventLecture") }}/' + getQueryString();
@@ -677,6 +702,11 @@
                         location.replace('{{ site_url("/site/eventLecture/") }}' + getQueryString());
                     }
                 }, showValidateError, addValidate, false, 'alert');
+            });
+
+            // 바이트 수
+            $('#sms_content').on('change keyup input', function() {
+                $('#content_byte').val(fn_chk_byte($(this).val()));
             });
         });
 

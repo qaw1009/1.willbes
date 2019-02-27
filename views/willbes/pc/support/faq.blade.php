@@ -14,15 +14,12 @@
                 @endforeach
 
             <div class="willbes-CScenter c_both">
-                <div class="willbes-Lec-Tit NG bd-none tx-black c_both pt-zero">
-                    · 자주하는 질문
-                    <div class="willbes-Lec-Search GM f_right">
-                        <div class="inputBox p_re">
-                            <input type="text" id="s_keyword" name="s_keyword" maxlength="30" value="{{ element('s_keyword', $arr_input) }}" class="labelSearch" placeholder="제목 또는 내용을 입력해 주세요">
-                            <button type="submit" onclick="goUrl('s_keyword', document.getElementById('s_keyword').value);" class="search-Btn">
-                                <span>검색</span>
-                            </button>
-                        </div>
+                <div class="willbes-Lec-Search GM mg0">
+                    <div class="inputBox p_re f_left">
+                        <input type="text" id="s_keyword" name="s_keyword" maxlength="30" value="{{ element('s_keyword', $arr_input) }}" class="labelSearch" placeholder="제목 또는 내용을 입력해 주세요">
+                        <button type="submit" onclick="goUrl('s_keyword', document.getElementById('s_keyword').value);" class="search-Btn">
+                            <span>검색</span>
+                        </button>
                     </div>
                 </div>
                 <div class="Act1 mt30">
@@ -39,11 +36,10 @@
                                     <div class="subBox @if($s_faq == $row['Ccd']) on @endif">
                                         <dl>
                                             @foreach($row['subFaqData'] as $sub)
-                                                <dt><a href="{{front_url('/support/faq/index?s_faq='.$row['Ccd']).'&s_sub_faq='.$sub['Ccd']}}">{{$sub['CcdName']}}</a>
-                                                @if($loop->last == false)
-                                                <span class="row-line">|</span>
-                                                @endif
-                                            </dt>
+                                                <dt>
+                                                    <button type="button" onclick="javascript:goSubmit('{{$row['Ccd']}}', '{{$sub['Ccd']}}')" @if( (element('s_sub_faq', $arr_input) == $sub['Ccd']) || (empty(element('s_sub_faq', $arr_input)) === true && $loop->first == true) )style="color: #0a8cc2" @endif>{{$sub['CcdName']}}</button>
+                                                    @if($loop->last == false)<span class="row-line">|</span>@endif
+                                                </dt>
                                             @endforeach
                                         </dl>
                                     </div>
@@ -110,4 +106,10 @@
         {!! banner('고객센터_우측날개', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
     </div>
     <!-- End Container -->
+    <script type="text/javascript">
+        function goSubmit(param1, param2) {
+            var url = "{{front_url('/support/faq/index')}}";
+            location.href = url+"?s_faq="+param1+"&s_sub_faq="+param2;
+        }
+    </script>
 @stop

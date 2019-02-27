@@ -110,7 +110,7 @@ class CategoryModel extends WB_Model
                 left join ' . $this->_table['admin'] . ' as A
                     on C.RegAdminIdx = A.wAdminIdx and A.wIsStatus = "Y"
             where S.IsUse = "Y" and S.IsStatus = "Y"
-                and C.IsStatus = "Y"             
+                and C.IsStatus = "Y" and C.IsUse = "Y"              
         ';
 
         $where = $this->_conn->makeWhere($arr_condition);

@@ -71,7 +71,7 @@
                         <th colspan="1">가산점 <span class="required">*</span></th>
                         <td colspan="3">
                             @foreach($addPoint as $k => $v)
-                                <input type="checkbox" class="flat" name="AddPointTypes[]" value="{{$k}}" @if($method == 'PUT' && in_array($k, $data['AddPointTypes'])) checked @endif> <span class="flat-text mr-20">{{$v}}</span>
+                                <input type="checkbox" class="flat" name="AddPointCcds[]" value="{{$k}}" @if($method == 'PUT' && in_array($k, $data['AddPointCcds'])) checked @endif> <span class="flat-text mr-20">{{$v}}</span>
                             @endforeach
                         </td>
                     </tr>
@@ -109,9 +109,8 @@
                         <th colspan="1">판매가 <span class="required">*</span></th>
                         <td colspan="3" class="form-inline">
                             <span class="blue">[정상가]</span> <input type="text" class="form-control" name="SalePrice" value="@if($method == 'PUT'){{ $data['SalePrice'] }}@endif" style="width:100px;"> 원
-                            <span class="blue ml-20">[할인]</span> <input type="text" class="form-control" name="SaleRate" value="@if($method == 'PUT'){{ $data['SaleRate'] }}@endif" style="width:100px;">
+                            <span class="blue ml-20">[할인]</span> <input type="text" class="form-control" name="SaleRate" @if($method == 'PUT')value="{{ $data['SaleRate'] }}" @else value="0" @endif" style="width:100px;">
                             <select name="SaleDiscType" class="form-control">
-                                <option value="">선택</option>
                                 <option value="R" @if($method == 'PUT' && $data['SaleDiscType'] == 'R') selected @endif>%</option>
                                 <option value="P" @if($method == 'PUT' && $data['SaleDiscType'] == 'P') selected @endif>-</option>
                             </select>
@@ -121,7 +120,7 @@
                     <tr>
                         <th colspan="1">접수기간 <span class="required">*</span></th>
                         <td colspan="3" class="form-inline">
-                            <input type="text" class="form-control datepicker" style="width:100px;" name="SaleStartDatm_d" value="@if($method == 'PUT'){{ substr($data['SaleStartDatm'], 0, 10) }}@endif" readonly>
+                            <input type="text" class="form-control datepicker" style="width:100px;" name="SaleStartDatm_d" value="@if($method == 'PUT'){{ substr($data['SaleStartDatm'], 0, 10) }}@else{{date('Y-m-d')}}@endif" readonly>
                             <select name="SaleStartDatm_h" class="form-control">
                                 <!--option value="">선택</option//-->
                                 @foreach(range(0, 23) as $i)
@@ -137,7 +136,7 @@
                                 @endforeach
                             </select> 분
                             <span class="ml-10 mr-10"> ~ </span>
-                            <input type="text" class="form-control datepicker" style="width:100px;" name="SaleEndDatm_d" value="@if($method == 'PUT'){{ substr($data['SaleEndDatm'], 0, 10) }}@endif" readonly>
+                            <input type="text" class="form-control datepicker" style="width:100px;" name="SaleEndDatm_d" value="@if($method == 'PUT'){{ substr($data['SaleEndDatm'], 0, 10) }}@else{{date('Y-m-d')}}@endif" readonly>
                             <select name="SaleEndDatm_h" class="form-control">
                                 <!--option value="">선택</option//-->
                                 @foreach(range(0, 23) as $i)
@@ -166,7 +165,7 @@
                         <td colspan="3">
                             @foreach($accept_ccd as $key=>$val)
                                 @if($key != '675001' ) {{--접수예정 제외--}}
-                                <input type="radio" name="AcceptStatusCcd" class="flat" value="{{$key}}" @if( $data['AcceptStatusCcd'] == $key) checked="checked" @endif required title="접수상태"> <span class="flat-text mr-10">{{$val}}</span>
+                                <input type="radio" name="AcceptStatusCcd" class="flat" value="{{$key}}" @if($method == 'PUT'){{ ($data['AcceptStatusCcd'] == $key) ? ' checked="checked" ' : '' }} @endif title="접수상태" required="required" title="접수상태"> <span class="flat-text mr-10">{{$val}}</span>
                                 @endif
                             @endforeach
                         </td>
@@ -205,11 +204,12 @@
                                     <option value="{{$v}}" @if($method==='PUT' && substr($data['TakeEndDatm'], 14, 2) == $v) selected @endif>{{$v}}</option>
                                 @endforeach
                             </select> 분
-                            <!--
+                            {{--
                             <span class="ml-20 mr-20"> | </span>
                             <input type="radio" name="TakeType" class="flat" value="A" @if($method == 'POST' || ($method == 'PUT' && $data['TakeType'] == 'A')) checked="checked" @endif> <span class="flat-text mr-10">상시</span>
                             <input type="radio" name="TakeType" class="flat" value="L" @if($method == 'PUT' && $data['TakeType'] == 'L') checked="checked" @endif> <span class="flat-text mr-20">기간제한</span>
-                            //-->
+                            --}}
+
                         </td>
                     </tr>
                     <tr>
@@ -328,6 +328,18 @@
                             </div>
                         </td>
                     </tr>
+
+                    <tr>
+                        <th colspan="1">쿠폰사용결제 <span class="required">*</span></th>
+                        <td colspan="3" class="form-inline">
+                            <div class="radio">
+                                <input type="radio" name="IsCoupon" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['IsCoupon']=='Y')checked="checked"@endif/> 가능
+                                &nbsp;
+                                <input type="radio" name="IsCoupon" class="flat" value="N" @if($method == 'PUT' && $data['IsCoupon']=='N')checked="checked"@endif/> 불가능
+                            </div>
+                        </td>
+                    </tr>
+
                     <tr>
                         <th colspan="1">자동문자(결제완료)</th>
                         <td colspan="3" class="form-inline">
@@ -338,7 +350,15 @@
                             </div>
                             <textarea id="SmsMemo" name="Memo" class="form-control" style="width: 60%; height: 100px;">@if($method == 'PUT'){{ $data['Memo'] }}@endif</textarea>
                             <div class="mt-10">
-                                [발신번호] <input type="text" name="SendTel" id="SendTel" value="@if($method == 'PUT'){{ $data['SendTel'] }}@endif" size="12" class="form-control" maxlength="20">
+                                [발신번호]
+                                <?php
+                                    if($method == 'PUT'){
+                                        $SendTel = $data['SendTel'];
+                                    } else {
+                                        $SendTel = '';
+                                    }
+                                ?>
+                                {!! html_callback_num_select($arr_send_callback_ccd, $SendTel , 'SendTel', 'SendTel', '', '발신번호', '') !!}
                                 <input class="form-control border-red red" id="content_byte" style="width: 50px;" type="text" readonly="readonly" value="0">
                                 <span class="red">byte</span>
                                 (80byte 초과 시 LMS 문자로 전환됩니다.)

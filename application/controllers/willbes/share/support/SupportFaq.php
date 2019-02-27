@@ -44,6 +44,9 @@ class SupportFaq extends BaseSupport
         if (empty($s_faq) === false) {
             $faq_sub_ccd = $this->codeModel->getCcd($s_faq);
         }
+        if (empty($faq_sub_ccd) === false && empty($s_sub_faq) === true) {
+            $s_sub_faq = array_keys($faq_sub_ccd)[0];
+        }
 
         $arr_condition = [
             'EQ' => [
@@ -61,12 +64,19 @@ class SupportFaq extends BaseSupport
             ]
         ];
 
+        if ($this->_site_code != config_item('app_intg_site_code')) {
+            $arr_condition = array_merge_recursive($arr_condition, [
+                'LKB' => [
+                    'Category_String' => $this->_cate_code
+                ]
+            ]);
+        }
+
         $column = 'b.BoardIdx,b.CampusCcd,b.FaqGroupTypeCcd,b.FaqTypeCcd,b.TypeCcd,b.IsBest,b.AreaCcd
                        ,b.Title,b.Content, (b.ReadCnt + b.SettingReadCnt) as TotalReadCnt
                        ,b.IsCampus,b.CampusCcd_Name,b.FaqGroupTypeCcd_Name, b.FaqTypeCcd_Name, b.TypeCcd_Name,b.AreaCcd_Name
                        ,b.AttachData';
         $order_by = ['b.IsBest'=>'Desc','b.BoardIdx'=>'Desc'];
-
 
         if (APP_DEVICE == 'pc') {
             $paging_count = $this->_paging_count;
@@ -77,6 +87,10 @@ class SupportFaq extends BaseSupport
         $paging = $this->pagination('/support/faq/index/?s_faq='.$s_faq.'&s_sub_faq='.$s_sub_faq.'&s_keyword='.$s_keyword,$total_rows,$this->_paging_limit,$paging_count,true);
         if ($total_rows > 0) {
             $list = $this->supportBoardFModel->listBoard(false,$arr_condition,$column,$paging['limit'],$paging['offset'],$order_by);
+            foreach ($list as $key => $row) {
+                // 첨부파일 이미지일 경우 해당 배열에 담기
+                $list[$key]['Content'] = $this->_getBoardForContent($row['Content'], $row['AttachData']);
+            }
         }
 
         $this->load->view('support/faq', [

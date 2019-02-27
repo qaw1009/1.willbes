@@ -136,7 +136,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>1</td>
+                            <td><img class="q_img" src="{{ img_url('mypage/icon_question_orange.png') }}"> 1</td>
                             <td><input type="radio" id="ANSWERNUMBER1" name="ANSWERNUMBER1" value="1"></td>
                             <td><input type="radio" id="ANSWERNUMBER1" name="ANSWERNUMBER1" value="2"></td>
                             <td><input type="radio" id="ANSWERNUMBER1" name="ANSWERNUMBER1" value="3"></td>
@@ -145,7 +145,7 @@
                             <td class="btnAgR btnc"><a href="#que1" class="qv btnlineGray">문제보기 ></a></td>  
                         </tr>
                         <tr>
-                            <td>2</td>
+                            <td><img class="q_img" src="{{ img_url('mypage/icon_question_orange.png') }}"> 2</td>
                             <td><input type="radio" id="ANSWERNUMBER2" name="ANSWERNUMBER2" value="1"></td>
                             <td><input type="radio" id="ANSWERNUMBER2" name="ANSWERNUMBER2" value="2"></td>
                             <td><input type="radio" id="ANSWERNUMBER2" name="ANSWERNUMBER2" value="3"></td>
@@ -154,7 +154,7 @@
                             <td class="btnAgR btnc"><a href="#que2" class="qv btnlineGray">문제보기 ></a></td>
                         </tr>
                         <tr>
-                            <td>3</td>
+                            <td><img class="q_img" src="{{ img_url('mypage/icon_question_orange.png') }}"> 3</td>
                             <td><input type="radio" id="ANSWERNUMBER3" name="ANSWERNUMBER3" value="1"></td>
                             <td><input type="radio" id="ANSWERNUMBER3" name="ANSWERNUMBER3" value="2"></td>
                             <td><input type="radio" id="ANSWERNUMBER3" name="ANSWERNUMBER3" value="3"></td>

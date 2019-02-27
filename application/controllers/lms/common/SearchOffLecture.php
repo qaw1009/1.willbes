@@ -20,6 +20,8 @@ class SearchOffLecture extends \app\controllers\BaseController
             ,'ProdCode' => $this->_req('ProdCode')
             ,'locationid' => $this->_req('locationid')
             ,'wLecIdx' =>  $this->_req('wLecIdx')
+            ,'cate_code' => $this->_req('cate_code')
+            ,'CampusCcd' => $this->_req('CampusCcd')
         ]);
     }
 
@@ -34,6 +36,8 @@ class SearchOffLecture extends \app\controllers\BaseController
             'EQ' => [
                 'B.LearnPatternCcd' => $this->_reqP('LearnPatternCcd'),
                 'A.SiteCode' => $this->_reqP('site_code'),
+                'C.CateCode' => $this->_reqP('cate_code'),
+                'B.CampusCcd' => $this->_reqP('CampusCcd')
             ]
         ];
 

@@ -5,8 +5,8 @@
 @stop
 
 @section('layer_header')
-    {{--<form class="form-horizontal form-label-left" id="_regi_form" name="_regi_form" method="POST" onsubmit="return false;" novalidate>--}}
-    <form class="form-horizontal form-label-left" id="_regi_form" name="_regi_form" method="POST" action="{{ site_url("/pass/readingRoom/issue/storeSeatChange") }}?{!! $default_query_string !!}" novalidate>
+    <form class="form-horizontal form-label-left" id="_regi_form" name="_regi_form" method="POST" onsubmit="return false;" novalidate>
+    {{--<form class="form-horizontal form-label-left" id="_regi_form" name="_regi_form" method="POST" action="{{ site_url("/pass/readingRoom/issue/storeSeatChange") }}?{!! $default_query_string !!}" novalidate>--}}
         {!! csrf_field() !!}
         {!! method_field($method) !!}
         <input type="hidden" name="now_order_idx" value="{{ $data['NowOrderIdx'] }}"/>
@@ -18,55 +18,56 @@
                 <label class="control-label col-md-1-1">운영사이트
                 </label>
                 <div class="col-md-4">
-                    <p class="form-control-static">{{$data['SiteName']}}</p>
+                    {{$data['SiteName']}}
                 </div>
                 <label class="control-label col-md-1-1">캠퍼스
                 </label>
                 <div class="col-md-4">
-                    <p class="form-control-static">{{$data['CampusName']}}</p>
+                    {{$data['CampusName']}}
                 </div>
             </div>
             <div class="form-group form-group-sm">
                 <label class="control-label col-md-1-1">주문번호
                 </label>
                 <div class="col-md-4">
-                    <p class="form-control-static">{{$data['OrderNo']}}</p>
+                    {{$data['OrderNo']}}
                 </div>
                 <label class="control-label col-md-1-1">결제금액(결제상태)
                 </label>
                 <div class="col-md-4">
-                    <p class="form-control-static">{{$data['RealPayPrice']}}원 ({{$data['PayStatusName']}})</p>
+                    {{$data['RealPayPrice']}}원 ({{$data['PayStatusName']}})
                 </div>
             </div>
             <div class="form-group form-group-sm">
                 <label class="control-label col-md-1-1">회원명(아이디)
                 </label>
                 <div class="col-md-4">
-                    <p class="form-control-static">{{$data['MemName']}} ({{$data['MemId']}})</p>
+                    {{$data['MemName']}} ({{$data['MemId']}})
                 </div>
                 <label class="control-label col-md-1-1">연락처
                 </label>
                 <div class="col-md-4">
-                    <p class="form-control-static">{{$data['MemPhone']}}</p>
+                    {{$data['MemPhone']}}
                 </div>
             </div>
             <div class="form-group form-group-sm">
                 <label class="control-label col-md-1-1">독서실명(예치금)
                 </label>
                 <div class="col-md-4">
-                    <p class="form-control-static">{{$data['ReprProdName']}} <span class="blue">[예치금]</span> {{number_format($data['SubRealPayPrice'])}}원</p>
+                    {{$data['ReprProdName']}} <span class="blue">[예치금]</span> {{number_format($data['SubRealPayPrice'])}}원
                 </div>
                 <label class="control-label col-md-1-1">좌석번호
                 </label>
                 <div class="col-md-4">
-                    <p class="form-control-static">{{$data['SerialNumber']}}</p>
+                    {{$data['SerialNumber']}}
                 </div>
             </div>
             <div class="form-group form-group-sm">
                 <label class="control-label col-md-1-1">좌석상태
                 </label>
                 <div class="col-md-10 form-inline">
-                    <p class="form-control-static">{{$arr_seat_status[$data['SeatStatusCcd']]}}</p>
+                    {{$arr_seat_status[$data['SeatStatusCcd']]}}
+                    <input type="hidden" name="rdr_seat_status" value="{{$data['SeatStatusCcd']}}">
                     {{--<div class="radio">
                         @foreach($arr_seat_status as $key => $val)
                             <input type="radio" id="rdr_seat_status_{{$key}}" name="rdr_seat_status" class="flat" value="{{$key}}" title="좌석상태" @if($data['SeatStatusCcd'] == $key)checked="checked"@endif/>
@@ -96,11 +97,10 @@
                 <label class="control-label col-md-1-1">예치금여부
                 </label>
                 <div class="col-md-2 form-inline">
-                    <p class="form-control-static">
-                        반환!
-                    </p><button type="button" class="btn btn-sm btn-dark">예치금 반환</button>
+                    {{$data['SubRefundTypeName']}}
+                    <a href="{{ site_url('/pay/order/show/'.$data['OrderIdx']) }}" class="btn btn-sm btn-dark" target="_blank">예치금 반환</a>
                 </div>
-                <div class="col-md-6 form-inline">
+                <div class="col-md-8 form-inline">
                     <p class="form-control-static bg-orange">• 결제/환불 정보에 따라 자동 셋팅되며 수정불가 ([LMS] 결제관리 > 환불관리에서 예치금 반환 처리 </p>
                 </div>
             </div>
@@ -290,7 +290,7 @@
                     'now_seat_num' : '{{$data['SerialNumber']}}'
                 };
 
-                if (!confirm('퇴실 시 좌석 정보가 리셋됩니다. 퇴실처리 하시겠습니까?’')) {
+                if (!confirm('퇴실 시 좌석 정보가 \'미사용\'으로 변경되어 환불이 불가합니다.\n퇴실처리 하시겠습니까?’')) {
                     return;
                 }
 
@@ -312,12 +312,12 @@
                     return false;
                 }
 
-                /*ajaxSubmit($_regi_form, _url, function(ret) {
+                ajaxSubmit($_regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
-
+                        $("#pop_modal").modal('toggle');
                     }
-                }, showValidateError, addValidate, false, 'alert');*/
+                }, showValidateError, addValidate, false, 'alert');
             });
 
         });

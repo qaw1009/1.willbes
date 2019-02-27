@@ -50,7 +50,7 @@ class Cart extends \app\controllers\FrontController
         $results['delivery_price']['on_lecture'] = $this->cartFModel->getLectureDeliveryPrice(array_pluck(array_get($results, 'list.on_lecture', []), 'IsFreebiesTrans'));
 
         // 교재 배송료
-        $results['delivery_price']['book'] = $this->cartFModel->getBookDeliveryPrice(array_get($results, 'price.book', 0));
+        $results['delivery_price']['book'] = isset($results['count']['book']) === true ? $this->cartFModel->getBookDeliveryPrice(array_get($results, 'price.book', 0)) : 0;
 
         $this->load->view('site/cart/index', [
             'arr_input' => $arr_input,
@@ -138,7 +138,7 @@ class Cart extends \app\controllers\FrontController
         $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
             ['field' => 'cart_idx[]', 'label' => '장바구니 식별자', 'rules' => 'trim|required'],
-            ['field' => 'cart_type', 'label' => '장바구니 구분', 'rules' => 'trim|required|in_list[on_lecture,off_lecture,book]'],
+            ['field' => 'cart_type', 'label' => '장바구니 구분', 'rules' => 'trim|required|in_list[on_lecture,off_lecture,book,mock_exam]'],
         ];
 
         if ($this->validate($rules) === false) {
@@ -252,8 +252,21 @@ class Cart extends \app\controllers\FrontController
         }
 
         // 기간제선택형패키지 과목/교수 정보
-        if (empty($arr_subject_prof_idx) === false) {
+        if ($learn_pattern == 'periodpack_lecture' && empty($arr_subject_prof_idx) === false) {
             $post_data['subject_prof_idx'] = (array) $arr_subject_prof_idx;
+            $post_data = json_encode($post_data);
+        }
+
+        // 모의고사상품 선택정보
+        if ($learn_pattern == 'mock_exam') {
+            $post_data['mock_exam'] = [
+                'take_form' => $this->_reqP('TakeForm'),
+                'take_area' => $this->_reqP('TakeArea'),
+                'take_part' => $this->_reqP('TakeMockPart'),
+                'subject_ess' => $this->_reqP('subject_ess'),
+                'subject_sub' => $this->_reqP('subject_sub'),
+                'add_point' => $this->_reqP('AddPoint')
+            ];
             $post_data = json_encode($post_data);
         }
 

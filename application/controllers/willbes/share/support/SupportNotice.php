@@ -79,10 +79,6 @@ class SupportNotice extends BaseSupport
         $total_rows = $this->supportBoardFModel->listBoard(true, $arr_condition);
         $paging = $this->pagination($this->_default_path.'/notice/index/?'.$get_page_params,$total_rows,$this->_paging_limit,$paging_count,true);
 
-
-        /*$path = front_url($this->_default_path.'/notice/index/?'.$get_page_params);
-        $paging = $this->pagination($path,$total_rows,$this->_paging_limit,$paging_count,true);*/
-
         if ($total_rows > 0) {
             $list = $this->supportBoardFModel->listBoard(false,$arr_condition,$column,$paging['limit'],$paging['offset'],$order_by);
             foreach ($list as $idx => $row) {
@@ -136,18 +132,18 @@ class SupportNotice extends BaseSupport
                        ';
 
         $data = $this->supportBoardFModel->findBoard($board_idx,$arr_condition,$column);
-
         if (empty($data)) {
             show_alert('게시글이 존재하지 않습니다.', 'back');
         }
-        $data['AttachData'] = json_decode($data['AttachData'],true);       //첨부파일
-
         $result = $this->supportBoardFModel->modifyBoardRead($board_idx);
         if($result !== true) {
             show_alert('게시글 조회시 오류가 발생되었습니다.', 'back');
         }
-        #-------------------------------- 게시글 조회
 
+        // 첨부파일 이미지일 경우 해당 배열에 담기
+        $data['Content'] = $this->_getBoardForContent($data['Content'], $data['AttachData']);
+        $data['AttachData'] = json_decode($data['AttachData'],true);       //첨부파일
+        #-------------------------------- 게시글 조회
 
         #--------------------------------  이전글, 다음글 조회 : 베스트/핫 일경우 무시하고 BoardIdx 로 비교 , 리스트에서 핫/베스트 글을 찍고 들어왔을경우 이전글/다음글 미노출
         $s_campus = element('s_campus',$arr_input);

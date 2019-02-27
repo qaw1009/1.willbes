@@ -33,7 +33,8 @@ class LectureFreeModel extends CommonLectureModel
                             ,C.CateCode
                             ,Ca.CateName, Cb.CateName as CateName_Parent
                             ,E.ProfIdx_String,E.wProfName_String
-                            ,fn_product_order_count(A.ProdCode,\'\') as PayEndCnt
+                            ,fn_product_count_order(A.ProdCode,\'676001\') as PayEndCnt
+                            ,IFNULL(Y.ProdCode_Original,\'\') as ProdCode_Original
                             ,Z.wAdminName
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
@@ -44,21 +45,22 @@ class LectureFreeModel extends CommonLectureModel
                     from
                     
                         lms_product A
-                            left outer join lms_sys_code Aa on A.SaleStatusCcd = Aa.Ccd and Aa.IsStatus=\'Y\'
-                            left outer join lms_site Ab on A.SiteCode = Ab.SiteCode
-                            join lms_sys_code Ac on A.ProdTypeCcd = Ac.Ccd and Ac.IsStatus=\'Y\'
+                        join lms_sys_code Aa on A.SaleStatusCcd = Aa.Ccd and Aa.IsStatus=\'Y\'
+                        join lms_site Ab on A.SiteCode = Ab.SiteCode
+                        join lms_sys_code Ac on A.ProdTypeCcd = Ac.Ccd and Ac.IsStatus=\'Y\'
                         join lms_product_lecture B on A.ProdCode = B.ProdCode
                             left outer join lms_product_course Ba on B.CourseIdx = Ba.CourseIdx and Ba.IsStatus=\'Y\'
                             left outer join lms_product_subject Bb on B.SubjectIdx = Bb.SubjectIdx and Bb.IsStatus=\'Y\'
                             left outer join lms_sys_code Bc on B.LearnPatternCcd = Bc.Ccd and Bc.IsStatus=\'Y\'
                             left outer join lms_sys_code Bd on B.FreeLecTypeCcd = Bd.Ccd and Bd.IsStatus=\'Y\'
-                            join wbs_cms_lecture_combine_lite Be on B.wLecIdx = Be.wLecIdx and Be.cp_wAdminIdx='. $this->session->userdata('admin_idx') .'
+                            join wbs_cms_lecture_basics Be on B.wLecIdx = Be.wLecIdx 
                         join lms_product_r_category C on A.ProdCode = C.ProdCode and C.IsStatus=\'Y\'
                             join lms_sys_category Ca on C.CateCode = Ca.CateCode  and Ca.IsStatus=\'Y\'
                             left outer join lms_sys_category Cb on Ca.ParentCateCode = Cb.CateCode
-                        left outer join vw_product_r_professor_concat E on A.ProdCode = E.ProdCode
-                            left outer join wbs_sys_admin Z on A.RegAdminIdx = Z.wAdminIdx
-                        where A.IsStatus=\'Y\'
+                        left outer join vw_product_r_professor_concat_repr E on A.ProdCode = E.ProdCode
+                        left outer join lms_product_copy_log Y on A.ProdCode = Y.ProdCode
+                        left outer join wbs_sys_admin Z on A.RegAdminIdx = Z.wAdminIdx
+                     where A.IsStatus=\'Y\'
                     
         ';
 
@@ -69,7 +71,7 @@ class LectureFreeModel extends CommonLectureModel
 
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
-        //echo 'select ' . $column . $from . $where . $order_by_offset_limit;        exit;
+        //echo 'select ' . $column . $from . $where . $order_by_offset_limit;
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 
@@ -179,6 +181,13 @@ class LectureFreeModel extends CommonLectureModel
             }
             /*----------------          연결강좌 등록        ---------------*/
 
+
+            /*----------------          Json 데이터 등록        ---------------*/
+            if($this->_setProdJsonData($prodcode) !== true) {
+                throw new \Exception('JSON 데이터 등록에 실패했습니다.');
+            }
+            /*----------------          Json 데이터 등록        ---------------*/
+
             $this->_conn->trans_commit();
             //$this->_conn->trans_rollback();
 
@@ -220,6 +229,10 @@ class LectureFreeModel extends CommonLectureModel
             $lecture_data = array_merge($input_lecture,[
                 //'LearnPatternCcd'=>element('LearnPatternCcd',$input)
             ]);
+            if (empty(element('FreeLecPasswd', $input)) === false) {
+                $this->_conn->set('FreeLecPasswd', 'fn_enc("' . element('FreeLecPasswd', $input) . '")', false);
+            }
+
             if ($this->_conn->set($lecture_data)->where('ProdCode', $prodcode)->update($this->_table['lecture']) === false) {
                 throw new \Exception('강좌 정보 수정에 실패했습니다.');
             }
@@ -273,6 +286,12 @@ class LectureFreeModel extends CommonLectureModel
                 throw new \Exception('교재 등록에 실패했습니다.');
             }
             /*----------------          교재등록        ---------------*/
+
+            /*----------------          Json 데이터 등록        ---------------*/
+            if($this->_setProdJsonData($prodcode) !== true) {
+                throw new \Exception('JSON 데이터 등록에 실패했습니다.');
+            }
+            /*----------------          Json 데이터 등록        ---------------*/
 
             //$this->_conn->trans_rollback();
             $this->_conn->trans_commit();

@@ -26,8 +26,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1">카테고리정보<span class="required">*</span></label>
-                    <div class="col-md-4 form-inline">
+                    <label class="control-label col-md-1-1" for="banner_disp_idx">노출섹션<span class="required">*</span></label>
+                    <div class="form-inline col-md-10 item">
                         <select class="form-control mr-10" id="cate_code" name="cate_code" title="카테고리">
                             <option value="">카테고리</option>
                             @foreach($arr_cate_code as $row)
@@ -35,13 +35,25 @@
                             @endforeach
                         </select>
                     </div>
+                </div>
 
-                    <label class="control-label col-md-1-1 d-line" for="banner_disp_idx">노출섹션<span class="required">*</span></label>
-                    <div class="form-inline col-md-4 ml-12-dot item">
+                <div class="form-group">
+                    <label class="control-label col-md-1-1">카테고리정보<span class="required">*</span></label>
+                    <div class="col-md-4 form-inline item">
                         <select class="form-control mr-10" id="banner_disp_idx" name="banner_disp_idx" required="required" title="노출섹션">
                             <option value="">노출섹션</option>
                             @foreach($arr_disp_data as $row)
                                 <option value="{{$row['BdIdx']}}" class="{{ $row['SiteCode'] }}_{{ $row['CateCode'] }}" @if($row['BdIdx'] == $data['BdIdx'])selected="selected"@endif>{{$row['DispName']}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <label class="control-label col-md-1-1 d-line" for="campus_ccd">캠퍼스</label>
+                    <div class="col-md-4 form-inline item ml-12-dot">
+                        <select class="form-control" id="campus_ccd" name="campus_ccd" required="required" title="캠퍼스">
+                            <option value="">캠퍼스</option>
+                            @foreach($arr_campus as $row)
+                                <option value="{{ $row['CampusCcd'] }}" class="{{ $row['SiteCode'] }}" @if($method == 'PUT' && ($row['CampusCcd'] == $data['CampusCcd'])) selected="selected" @endif>{{ $row['CampusName'] }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -118,16 +130,14 @@
                                 <input type="file" id="attach_img" name="attach_img" @if($method == 'POST')required="required"@endif class="form-control input-file" title="배너 이미지">
                                 </span>
                             </div>
+                            @if($method == 'PUT')
+                                <div class="mt-5">
+                                    <img src="{{$data['BannerFullPath']}}{{$data['BannerImgName']}}">
+                                    <div class="mt-5 bold">{{$data['BannerImgRealName']}}</div>
+                                </div>
+                            @endif
                         </div>
                     </div>
-                    @if($method == 'PUT')
-                    <div class="col-md-9 col-lg-offset-2 item form-inline mt-5">
-                        <img src="{{$data['BannerFullPath']}}{{$data['BannerImgName']}}">
-                    </div>
-                    <div class="col-md-9 col-lg-offset-2 item form-inline mt-5">
-                        <b>{{$data['BannerImgRealName']}}</b>
-                    </div>
-                    @endif
                 </div>
 
                 <div class="form-group">
@@ -188,6 +198,7 @@
         var $regi_form = $('#regi_form');
         $(document).ready(function() {
             // site-code에 매핑되는 select box 자동 변경
+            $regi_form.find('select[name="campus_ccd"]').chained("#site_code");
             $regi_form.find('select[name="cate_code"]').chained("#site_code");
             $regi_form.find('select[name="banner_disp_idx"]').chained("#cate_code");
 

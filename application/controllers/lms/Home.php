@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends \app\controllers\BaseController
 {
-    protected $models = array('sys/wCode', 'sys/loginLog');
+    protected $models = array('sys/wCode', 'sys/loginLog', 'pay/orderList', 'board/board');
     protected $helpers = array();
 
     public function __construct()
@@ -28,10 +28,12 @@ class Home extends \app\controllers\BaseController
      */
     public function main()
     {
-        // 오늘 로그인 로그 조회
+        $today = date('Y-m-d');
+
+        // 금일 로그인 로그 조회
         $arr_condition = [
             'EQ' => ['wAdminId' => $this->session->userdata('admin_id'), 'ConnSubDomain' => SUB_DOMAIN],
-            'BDT' => ['LoginDatm' => [date('Y-m-d'), date('Y-m-d')]]
+            'BDT' => ['LoginDatm' => [$today, $today]]
         ];
 
         $list = $this->loginLogModel->listTopLoginLog($arr_condition, 15);
@@ -45,9 +47,24 @@ class Home extends \app\controllers\BaseController
             ], true);
         }
 
+        // 사이트별 금일 주문환불처리 건수 조회
+        $refund_data = [];
+        if (SUB_DOMAIN == 'lms') {
+            $refund_data = $this->orderListModel->getOrderRefundReqCntPerSite($today, $today);
+        }
+
+        $set_unAnswered = [];
+        $result_unAnswered = $this->boardModel->getCounselUnAnswerForMainArray();
+        foreach ($result_unAnswered as $row) {
+            $set_unAnswered[$row['SiteGroupCode']]['SiteGroupName'] = $row['SiteGroupName'];
+            $set_unAnswered[$row['SiteGroupCode']]['info'][$row['SiteOnOffName']] = $row['CounselCnt'];
+        }
+
         $this->load->view('main_' . SUB_DOMAIN, [
             'last_login_ip' => $this->input->ip_address(),
-            'data' => $list
+            'data' => $list,
+            'refund_data' => $refund_data,
+            'unAnswered_data' => $set_unAnswered
         ]);
     }
 }

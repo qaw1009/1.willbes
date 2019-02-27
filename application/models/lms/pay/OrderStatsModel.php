@@ -112,9 +112,9 @@ class OrderStatsModel extends BaseOrderModel
                     left join ' . $this->_table['subject'] . ' as PSU
                         on PL.SubjectIdx = PSU.SubjectIdx and PSU.IsStatus = "Y"
                     left join ' . $this->_table['product_professor_concat'] . ' as VPP
-                        on SU.ProdCode = VPP.ProdCode	
-                    left join ' . $this->_table['cms_lecture_combine_lite'] . ' as VCL
-                        on PL.wLecIdx = VCL.wLecIdx and VCL.cp_wAdminIdx = ' . $this->session->userdata('admin_idx') . '
+                        on SU.ProdCode = VPP.ProdCode
+                    left join ' . $this->_table['cms_lecture_basics'] . ' as VCL
+                        on PL.wLecIdx = VCL.wLecIdx                        	
                     left join ' . $this->_table['code'] . ' as CLT
                         on PL.LecTypeCcd = CLT.Ccd and CLT.IsStatus = "Y"';
                 $column .= ', PL.SchoolYear, CLT.CcdName as LecTypeCcdName, PCO.CourseName, PSU.SubjectName, VPP.wProfName_String

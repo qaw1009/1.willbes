@@ -50,8 +50,7 @@
     <div class="Content p_re">
 
         <div class="willbes-CScenter c_both">
-            <div class="willbes-Lec-Tit NG bd-none tx-black c_both pt-zero">· 모바일 서비스안내</div>
-            <div class="Act5 mt30">
+            <div class="Act5">
                 <img src="{{ img_url('cs/willbes_m_guide.jpg') }}"> 
                 <div class="w-Guide mt40">
                     <div class="willbes-m-guide NGEB">

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-require APPPATH . 'controllers/lms/board//BaseBoard.php';
+require APPPATH . 'controllers/lms/board/BaseBoard.php';
 
 class Tpass extends BaseBoard
 {
@@ -88,7 +88,7 @@ class Tpass extends BaseBoard
         $count = $this->professorModel->listProfessorSubjectMappingForBoard(true, $arr_condition, $this->bm_idx);
 
         if ($count > 0) {
-            $list = $this->professorModel->listProfessorSubjectMappingForBoard(false, $arr_condition, $this->bm_idx);
+            $list = $this->professorModel->listProfessorSubjectMappingForBoard(false, $arr_condition, $this->bm_idx, '', $this->_reqP('length'), $this->_reqP('start'));
         }
 
         return $this->response([
@@ -634,6 +634,8 @@ class Tpass extends BaseBoard
             'attach_file_type' => $this->_attach_reg_type['default']
         ];
         $data = $this->boardModel->findBoardForModify($this->board_name, $column, $arr_condition, $arr_condition_file);
+        // 첨부파일 이미지일 경우 해당 배열에 담기
+        $data['Content'] = $this->_getBoardForContent($data['Content'], $data['AttachFilePath'], $data['AttachFileName']);
 
         if (count($data) < 1) {
             show_error('데이터 조회에 실패했습니다.');

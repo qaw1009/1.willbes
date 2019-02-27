@@ -5,6 +5,7 @@ class Popup extends \app\controllers\BaseController
 {
     protected $models = array('popupF');
     protected $helpers = array();
+    protected $sess_controller = false;  // 세션 사용안함
 
     public function __construct()
     {

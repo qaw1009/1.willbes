@@ -66,14 +66,68 @@
             </div>
             <!-- willbes-Bnr -->
 
-            <div class="willbes-Lec-Search mb60">
+            <div class="willbes-Lec-Search p_re mb60">
                 <div class="inputBox p_re">
                     <input type="text" id="prod_name" name="prod_name" maxlength="30" value="{{ element('prod_name', $arr_input) }}" placeholder="강의명">
                     <button type="submit" onclick="goUrl('prod_name', document.getElementById('prod_name').value);" class="search-Btn">
                         <span>검색</span>
                     </button>
                 </div>
-                <div class="InfoBtn"><a href="#none">수강신청안내 <span>▶</span></a></div>
+                
+                <div class="InfoBtn"><a href="#none" onclick="openWin('requestInfo')">수강신청안내 <span>▶</span></a></div>
+                <div id="requestInfo" class="willbes-Layer-requestInfo">
+                    <a class="closeBtn" href="#none" onclick="closeWin('requestInfo')">
+                        <img src="{{ img_url('prof/close.png') }}">
+                    </a>
+                    <div class="Layer-Tit NG tx-dark-black">수강신청 <span class="tx-blue">안내</span></div>
+                    <div class="Layer-Cont">
+                        <div class="Layer-SubTit tx-gray">
+                            <ul>
+                                <li>
+                                    <strong>도서구입비 소득공제 시행에 따른 분리결제 적용 안내</strong><br>
+                                    - 소득공제 대상 상품(교재)와 비대상 상품 (강의)을 함께 주문하실 수 없습니다. <br>
+                                    (소득공제를 위한 가맹점 분리로 인해 2회 결제 진행)<br>
+                                    - 반드시 <span class="tx-red">강의와 교재를 각각 결제</span>해주시기 바랍니다. (강좌상품 선구매 후 교재 구매 가능)
+                                </li>
+                                <li>
+                                    <strong>아이콘 안내</strong><br>
+                                    - 강좌리스트에 보여지고 있는 아이콘에 대한 설명입니다. 참고하시어 수강신청해 주세요.
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="LeclistTable">
+                            <table cellspacing="0" cellpadding="0" class="listTable csTable under-gray upper-black tx-gray">
+                                <colgroup>
+                                    <col style="width: 130px;">
+                                    <col style="width: auto;">
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <td><span class="nBox n4">완강</span></td>
+                                        <td class="tx-left">모든 강의 제작 및 업데이트가 완료된 강좌</td>
+                                    </tr>
+                                    <tr>
+                                        <th><span class="nBox n2">진행중</span></th>
+                                        <td class="tx-left">강의 업데이트가 진행중인 강좌</td>
+                                    </tr>
+                                    <tr>
+                                        <th><span class="nBox n3">예정</span></th>
+                                        <td class="tx-left">신규강좌 업데이트가 예정중인 강좌</td>
+                                    </tr>
+                                    <tr>
+                                        <th><span class="nBox n1">2배수</span></th>
+                                        <td class="tx-left">공유 방지를 위해 전체강의시간/개별강의시간의 2배까지 수강이 가능한 강좌</td>
+                                    </tr>
+                                    <tr>
+                                        <th><img src="{{ img_url('sub/icon_detail.gif') }}"></th>
+                                        <td class="tx-left">돋보기 아이콘 클릭 시 해당 강좌의 상세정보 팝업 노출</td>    
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- requestInfo //-->
             </div>
             <!-- willbes-Lec-Search -->
 
@@ -103,7 +157,7 @@
                                 <dl class="w-info">
                                     <dt class="mr20">
                                         <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', '', '{{ site_url() }}package')">
-                                            <strong>패키지상세정보</strong>
+                                            <strong class="open-info-modal">패키지상세정보</strong>
                                         </a>
                                     </dt>
                                     <dt>개강일 : <span class="tx-blue">{{$row['StudyStartDateYM']}}</span></dt>

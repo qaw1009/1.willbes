@@ -18,7 +18,7 @@ class RegGroupModel extends WB_Model
         'productCate' => 'lms_Product_R_Category',
 
         'mockGroup' => 'lms_Mock_Group',
-        'mockGroupR' => 'lms_Mock_R_Group',
+        'mockGroupR' => 'lms_Mock_Group_R_Product',
     ];
 
     public function __construct()
@@ -43,7 +43,7 @@ class RegGroupModel extends WB_Model
         $from = "
             FROM {$this->_table['mockGroup']} AS MG
             JOIN {$this->_table['site']} AS S ON MG.SiteGroupCode = S.SiteGroupCode
-            LEFT JOIN {$this->_table['admin']} AS A ON MG.RegAdminIdx = A.wAdminIdx
+            JOIN {$this->_table['admin']} AS A ON MG.RegAdminIdx = A.wAdminIdx
         ";
         $selectCount = "SELECT COUNT(*) AS cnt";
         $where = "WHERE MG.IsStatus = 'Y'";
@@ -65,11 +65,18 @@ class RegGroupModel extends WB_Model
         try {
             $this->_conn->trans_start();
 
+            if(empty($this->input->post('GradeOpenDatm_d', true)) == false) {
+                $GradeOpenDatm =   $this->input->post('GradeOpenDatm_d') .' '. $this->input->post('GradeOpenDatm_h') .':'. $this->input->post('GradeOpenDatm_m') .':00';
+            } else {
+                $GradeOpenDatm = null;
+            }
+
             // lms_Mock_Group
             $data = array(
                 'SiteGroupCode' => $_POST['SiteGroupCode'][0],
                 'GroupName' => $this->input->post('GroupName', true),
-                'IsDup' => $this->input->post('IsDup'),
+                //'IsDup' => $this->input->post('IsDup'),
+                'GradeOpenDatm' => $GradeOpenDatm,
                 'GroupDesc' => $this->input->post('GroupDesc', true),
                 'IsUse' => $this->input->post('IsUse'),
                 'RegIp' => $this->input->ip_address(),
@@ -113,11 +120,17 @@ class RegGroupModel extends WB_Model
         try {
             $this->_conn->trans_start();
 
+            if(empty($this->input->post('GradeOpenDatm_d', true)) == false) {
+                $GradeOpenDatm =   $this->input->post('GradeOpenDatm_d') .' '. $this->input->post('GradeOpenDatm_h') .':'. $this->input->post('GradeOpenDatm_m') .':00';
+            } else {
+                $GradeOpenDatm = null;
+            }
+
             // lms_Mock_Group
             $data = array(
                 'SiteGroupCode' => $_POST['SiteGroupCode'][0],
                 'GroupName' => $this->input->post('GroupName', true),
-                'IsDup' => $this->input->post('IsDup'),
+                'GradeOpenDatm' => $GradeOpenDatm,
                 'GroupDesc' => $this->input->post('GroupDesc', true),
                 'IsUse' => $this->input->post('IsUse'),
                 'UpdDatm' => date("Y-m-d H:i:s"),
@@ -198,7 +211,7 @@ class RegGroupModel extends WB_Model
         $sql = "
             SELECT MGR.MrgIdx, MP.*, PD.ProdName, S.SiteName, C1.CateName
             FROM {$this->_table['mockGroupR']} AS MGR
-            JOIN {$this->_table['mockProduct']} AS MP ON MGR.ProdCode = MP.ProdCode AND MP.IsStatus = 'Y'
+            JOIN {$this->_table['mockProduct']} AS MP ON MGR.ProdCode = MP.ProdCode
             JOIN {$this->_table['product']} AS PD ON MP.ProdCode = PD.ProdCode AND PD.IsStatus = 'Y'
             JOIN {$this->_table['productCate']} AS PC ON MP.ProdCode = PC.ProdCode AND PC.IsStatus = 'Y'
             JOIN {$this->_table['site']} AS S ON PD.SiteCode = S.SiteCode AND S.IsStatus = 'Y'
@@ -206,7 +219,10 @@ class RegGroupModel extends WB_Model
             WHERE MGR.IsStatus = 'Y' AND MGR.MgIdx = '$idx'
             ORDER BY MGR.MrgIdx ASC
         ";
+        //echo $sql;
         $mData = $this->_conn->query($sql)->result_array();
+
+
 
         // 직렬이름 추출
         $mockKindCode = $this->config->item('sysCode_kind', 'mock'); // 직렬 운영코드값
@@ -245,18 +261,25 @@ class RegGroupModel extends WB_Model
 
         $select = "
             SELECT MP.*, PD.ProdName, S.SiteName, S.SiteGroupCode, C1.CateName
+            ,IFNULL(MGP.MgIdx,0) as MgIdx
         ";
         $from = "
-            FROM {$this->_table['mockProduct']} AS MP
+            FROM 
+            
+            {$this->_table['product']} AS P
+            JOIN {$this->_table['mockProduct']} AS MP ON P.ProdCode = MP.ProdCode
             JOIN {$this->_table['product']} AS PD ON MP.ProdCode = PD.ProdCode AND PD.IsStatus = 'Y' AND PD.IsUse = 'Y'
             JOIN {$this->_table['productCate']} AS PC ON MP.ProdCode = PC.ProdCode AND PC.IsStatus = 'Y'
             JOIN {$this->_table['site']} AS S ON PD.SiteCode = S.SiteCode AND S.IsStatus = 'Y' AND S.IsUse = 'Y'
             JOIN {$this->_table['category']} AS C1 ON PC.CateCode = C1.CateCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y' AND C1.IsUse = 'Y'
+            LEFT OUTER JOIN {$this->_table['mockGroupR']} AS MGP ON P.ProdCode = MGP.ProdCode AND MGP.IsStatus = 'Y'
         ";
         $selectCount = "SELECT COUNT(*) AS cnt";
-        $where = "WHERE MP.IsStatus = 'Y' AND MP.IsUse = 'Y' AND MP.TakePart IS NOT NULL";
+        $where = "WHERE P.IsStatus = 'Y' AND P.IsUse = 'Y' AND MP.TakePart IS NOT NULL";
         $where .= $this->_conn->makeWhere($condition)->getMakeWhere(true)."\n";
         $order = "ORDER BY MP.ProdCode DESC\n";
+
+        //echo $select . $from . $where . $order . $offset_limit;
 
         $data = $this->_conn->query($select . $from . $where . $order . $offset_limit)->result_array();
         $count = $this->_conn->query($selectCount . $from . $where)->row()->cnt;

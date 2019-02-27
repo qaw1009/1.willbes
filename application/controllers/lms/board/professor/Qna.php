@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-require APPPATH . 'controllers/lms/board//BaseBoard.php';
+require APPPATH . 'controllers/lms/board/BaseBoard.php';
 
 class Qna extends BaseBoard
 {
@@ -28,7 +28,7 @@ class Qna extends BaseBoard
     private $_groupCcd = [
         'voc' => '620',
         'reply' => '621',       //답변상태
-        'type_group_ccd' => '622' //유형 그룹 코드 = 질문유형
+        'type_group_ccd' => '702' //유형 그룹 코드 = 질문유형
     ];
 
     public function __construct()
@@ -96,7 +96,7 @@ class Qna extends BaseBoard
         $count = $this->professorModel->listProfessorSubjectMappingForBoard(true, $arr_condition, $this->bm_idx, $this->_Ccd['reply']['unAnswered']);
 
         if ($count > 0) {
-            $list = $this->professorModel->listProfessorSubjectMappingForBoard(false, $arr_condition, $this->bm_idx, $this->_Ccd['reply']['unAnswered']);
+            $list = $this->professorModel->listProfessorSubjectMappingForBoard(false, $arr_condition, $this->bm_idx, $this->_Ccd['reply']['unAnswered'], $this->_reqP('length'), $this->_reqP('start'));
         }
 
         return $this->response([
@@ -135,9 +135,6 @@ class Qna extends BaseBoard
         //상담유형
         $arr_type_group_ccd = $this->_getCcdArray($this->_groupCcd['type_group_ccd']);
 
-        //답변상태
-        $arr_reply = $this->_getCcdArray($this->_groupCcd['reply']);
-
         //과목
         $arr_subject = $this->professorModel->getProfessorSubjectArray($prof_idx);
 
@@ -147,7 +144,6 @@ class Qna extends BaseBoard
             'ret_search_site_code' => $arr_search_data['ret_search_site_code'],
             'arr_ccd_reply' => $this->_Ccd['reply'],
             'arr_type_group_ccd' => $arr_type_group_ccd,
-            'arr_reply' => $arr_reply,
             'arr_lg_category' => element('LG', $arr_category, []),
             'arr_md_category' => element('MD', $arr_category, []),
             'arr_subject' => $arr_subject,
@@ -192,6 +188,10 @@ class Qna extends BaseBoard
                 ]
             ]
         ];
+
+        if ($this->_reqP('search_chk_reply_display') == 1) {
+            $arr_condition['EQ'] = array_merge($arr_condition['EQ'], ['LB.ReplyStatusCcd' => '621001']);
+        }
 
         if ($this->_reqP('search_chk_hot_display') == 1) {
             $arr_condition['EQ'] = array_merge($arr_condition['EQ'], ['LB.IsBest' => '0']);
@@ -414,6 +414,8 @@ class Qna extends BaseBoard
             'attach_file_type' => $this->_attach_reg_type['default']
         ];
         $data = $this->boardModel->findBoardForModify($this->board_name, $column, $arr_condition, $arr_condition_file);
+        // 첨부파일 이미지일 경우 해당 배열에 담기
+        $data['Content'] = $this->_getBoardForContent($data['Content'], $data['AttachFilePath'], $data['AttachFileName']);
 
         if (count($data) < 1) {
             show_error('데이터 조회에 실패했습니다.');
@@ -593,6 +595,9 @@ class Qna extends BaseBoard
             'attach_file_type' => $this->_attach_reg_type['default']
         ];
         $data = $this->boardModel->findBoardForModify($this->board_name, $column, $arr_condition, $arr_condition_file);
+        // 첨부파일 이미지일 경우 해당 배열에 담기
+        $data['Content'] = $this->_getBoardForContent($data['Content'], $data['AttachFilePath'], $data['AttachFileName']);
+        $data['ReplyContent'] = $this->_getBoardForContent($data['ReplyContent'], $data['reply_AttachFilePath'], $data['reply_AttachFileName']);
 
         if (count($data) < 1) {
             show_error('데이터 조회에 실패했습니다.');

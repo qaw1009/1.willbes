@@ -7,6 +7,8 @@ class SortMappingModel extends WB_Model
         'site' => 'lms_site',
         'code' => 'lms_sys_code',
         'category' => 'lms_sys_category',
+        'course' => 'lms_product_course',
+        'course_r_category' => 'lms_product_course_r_category',
         'subject' => 'lms_product_subject',
         'subject_r_category' => 'lms_product_subject_r_category',
         'subject_r_category_r_code' => 'lms_product_subject_r_category_r_code',
@@ -26,8 +28,9 @@ class SortMappingModel extends WB_Model
     public function listSortMapping($arr_condition = [])
     {
         $column = 'U.*, A.wAdminName as LastRegAdminName
-            , (select count(*) from ' . $this->_table['subject_r_category'] . ' where SiteCode = U.SiteCode and CateCode = U.BCateCode) as CateSubjectCnt
-            , (select count(*) from ' . $this->_table['subject_r_category_r_code'] . ' where SiteCode = U.SiteCode and CateCode = U.BCateCode) as ComplexSubjectCnt
+            , (select count(0) from ' . $this->_table['course_r_category'] . ' where SiteCode = U.SiteCode and CateCode = U.BCateCode) as CateCourseCnt
+            , (select count(0) from ' . $this->_table['subject_r_category'] . ' where SiteCode = U.SiteCode and CateCode = U.BCateCode) as CateSubjectCnt
+            , (select count(0) from ' . $this->_table['subject_r_category_r_code'] . ' where SiteCode = U.SiteCode and CateCode = U.BCateCode) as ComplexSubjectCnt
         ';
         $from = '
             from (
@@ -69,6 +72,37 @@ class SortMappingModel extends WB_Model
     }
 
     /**
+     * 소트맵핑 과정 연결 데이터 조회
+     * @param $site_code
+     * @param $cate_code
+     * @return mixed
+     */
+    public function listCourseMapping($site_code, $cate_code)
+    {
+        $column = 'PCO.CourseIdx, PCO.CourseName, ifnull(PCC.CourseIdx, "") as RCourseIdx';
+        $from = '
+            from ' . $this->_table['site'] . ' as S
+                inner join ' . $this->_table['category'] . ' as C
+                    on S.SiteCode = C.SiteCode
+                inner join ' . $this->_table['course'] . ' as PCO
+                    on S.SiteCode = PCO.SiteCode
+                left join ' . $this->_table['course_r_category'] . ' as PCC
+                    on S.SiteCode = PCC.SiteCode and C.CateCode = PCC.CateCode and PCO.CourseIdx = PCC.CourseIdx and PCC.IsStatus = "Y"            
+        ';
+        $where = '
+            where S.SiteCode = ? and S.IsStatus = "Y"
+                and C.CateCode = ? and C.IsStatus = "Y"
+                and PCO.IsUse = "Y" and PCO.IsStatus = "Y"            
+        ';
+        $order_by = ' order by PCO.CourseIdx asc';
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by, [$site_code, $cate_code]);
+
+        return $query->result_array();
+    }
+
+    /**
      * 소트맵핑 과목 연결 데이터 조회
      * @param $conn_type
      * @param $site_code
@@ -83,7 +117,7 @@ class SortMappingModel extends WB_Model
         $_binds = [$site_code, $cate_code];
 
         // 복합연결일 경우
-        if ($conn_type != 'category') {
+        if ($conn_type == 'complex') {
             $_table_key .= '_r_code';
             $_and_condition = ' and PSC.ChildCcd = ?';
             $_binds = [$child_ccd, $site_code, $cate_code];
@@ -97,7 +131,7 @@ class SortMappingModel extends WB_Model
                 inner join ' . $this->_table['subject'] . ' as PS
                     on S.SiteCode = PS.SiteCode
                 left join ' . $this->_table[$_table_key] . ' as PSC
-                        on S.SiteCode = PSC.SiteCode and C.CateCode = PSC.CateCode and PS.SubjectIdx = PSC.SubjectIdx' . $_and_condition . ' and PSC.IsStatus = "Y"            
+                    on S.SiteCode = PSC.SiteCode and C.CateCode = PSC.CateCode and PS.SubjectIdx = PSC.SubjectIdx' . $_and_condition . ' and PSC.IsStatus = "Y"            
         ';
         $where = '
             where S.SiteCode = ? and S.IsStatus = "Y"
@@ -242,13 +276,22 @@ class SortMappingModel extends WB_Model
      */
     private function _replaceSubjectMapping($conn_type, $arr_subject_idx, $site_code, $cate_code, $child_ccd = '')
     {
-        $_table_key = 'subject_r_category';
         $_arr_condition = ['SiteCode' => $site_code, 'CateCode' => $cate_code, 'IsStatus' => 'Y'];
 
-        // 복합연결일 경우
-        if ($conn_type != 'category') {
-            $_table_key .= '_r_code';
-            $_arr_condition['ChildCcd'] = $child_ccd;
+        if ($conn_type == 'course') {
+            $_table_key = 'course_r_category';
+            $_key_column = 'CourseIdx';
+            $_title = '과정';
+        } else {
+            $_table_key = 'subject_r_category';
+            $_key_column = 'SubjectIdx';
+            $_title = '과목';
+
+            // 복합연결일 경우
+            if ($conn_type == 'complex') {
+                $_table_key .= '_r_code';
+                $_arr_condition['ChildCcd'] = $child_ccd;
+            }
         }
 
         try {
@@ -257,9 +300,9 @@ class SortMappingModel extends WB_Model
             $admin_idx = $this->session->userdata('admin_idx');
 
             // 기존 설정된 과목 연결 데이터 조회
-            $data = $this->_conn->getListResult($_table, 'SubjectIdx', ['EQ' => $_arr_condition]);
+            $data = $this->_conn->getListResult($_table, $_key_column, ['EQ' => $_arr_condition]);
             if (count($data) > 0) {
-                $data = array_pluck($data, 'SubjectIdx');
+                $data = array_pluck($data, $_key_column);
 
                 // 기존 등록된 과목 연결 데이터 삭제 처리 (전달된 과목 식별자 중에 기 등록된 과목 식별자가 없다면 삭제 처리)
                 $arr_delete_subject_idx = array_diff($data, $arr_subject_idx);
@@ -267,16 +310,16 @@ class SortMappingModel extends WB_Model
                     $upd_query = $this->_conn->set([
                         'IsStatus' => 'N',
                         'UpdAdminIdx' => $admin_idx
-                    ])->where('SiteCode', $site_code)->where('CateCode', $cate_code)->where_in('SubjectIdx', $arr_delete_subject_idx);
+                    ])->where('SiteCode', $site_code)->where('CateCode', $cate_code)->where_in($_key_column, $arr_delete_subject_idx);
 
                     // 복합연결일 경우
-                    if ($conn_type != 'category') {
+                    if ($conn_type == 'complex') {
                         $upd_query = $upd_query->where('ChildCcd', $child_ccd);
                     }
 
                     $is_update = $upd_query->update($_table);
                     if ($is_update === false) {
-                        throw new \Exception('기 설정된 과목 연결 데이터 수정에 실패했습니다.');
+                        throw new \Exception('기 설정된 ' . $_title . ' 연결 데이터 수정에 실패했습니다.');
                     }
                 }
             }
@@ -287,19 +330,19 @@ class SortMappingModel extends WB_Model
                 $ins_query = $this->_conn->set([
                     'SiteCode' => $site_code,
                     'CateCode' => $cate_code,
-                    'SubjectIdx' => $subject_idx,
+                    $_key_column => $subject_idx,
                     'RegAdminIdx' => $admin_idx,
                     'RegIp' => $this->input->ip_address()
                 ]);
 
                 // 복합연결일 경우
-                if ($conn_type != 'category') {
+                if ($conn_type == 'complex') {
                     $ins_query = $ins_query->set('ChildCcd', $child_ccd);
                 }
 
                 $is_insert = $ins_query->insert($_table);
                 if ($is_insert === false) {
-                    throw new \Exception('과목 연결 데이터 등록에 실패했습니다.');
+                    throw new \Exception($_title . ' 연결 데이터 등록에 실패했습니다.');
                 }
             }
         } catch (\Exception $e) {

@@ -39,13 +39,14 @@
             </div>
         </div>
         <div class="row">
-            <div class="form-group">
-                @foreach($boardInfo as $key => $val)
-                    <div class="col-xs-1"><button class="btn btn-info btn_board" type="button" data-bm-idx="{{$key}}">{{$val}}</button></div>
-                @endforeach
-                <div class="col-xs-10 text-right form-inline">
-                    <button type="submit" class="btn btn-primary btn-search" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
-                </div>
+            <div class="col-xs-2 live">
+            @foreach($boardInfo as $key => $val)
+                <button class="btn btn-info btn_board" type="button" data-bm-idx="{{$key}}">{{$val}}</button>
+            @endforeach
+            </div>
+            <div class="col-xs-8 text-center">
+                <button type="submit" class="btn btn-primary btn-search" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
+                <button type="button" class="btn btn-default btn-search" id="btn_reset">초기화</button>
             </div>
         </div>
     </form>
@@ -147,6 +148,11 @@
                         $params[$(this).data('idx')] = $(this).val();
                     }
                 });
+
+                if (Object.keys($params).length < 1) {
+                    alert('변경된 내용이 없습니다.');
+                    return;
+                }
 
                 var data = {
                     '{{ csrf_token_name() }}' : $list_form.find('input[name="{{ csrf_token_name() }}"]').val(),

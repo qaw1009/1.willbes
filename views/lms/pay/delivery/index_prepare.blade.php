@@ -105,18 +105,18 @@
             <table id="list_ajax_table" class="table table-striped table-bordered">
                 <thead>
                 <tr>
-                    <th rowspan="2" class="pb-30">선택</th>
-                    <th rowspan="2" class="pb-30">No</th>
-                    <th rowspan="2" class="rowspan pb-30">주문번호</th>
-                    <th rowspan="2" class="rowspan pb-30">회원정보</th>
-                    <th rowspan="2" class="rowspan pb-30">결제완료일</th>
-                    <th rowspan="2" class="pb-30">상품명</th>
-                    <th rowspan="2" class="pb-30">결제금액</th>
-                    <th rowspan="2" class="rowspan pb-30">배송료</th>
-                    <th rowspan="2" class="pb-30">결제상태</th>
-                    <th rowspan="2" class="pb-30">환불완료일</th>
-                    <th rowspan="2" class="rowspan pb-30">수령인정보</th>
-                    <th rowspan="2" class="rowspan pb-30">배송지</th>
+                    <th rowspan="2" class="valign-middle">선택</th>
+                    <th rowspan="2" class="valign-middle">No</th>
+                    <th rowspan="2" class="rowspan valign-middle">주문번호</th>
+                    <th rowspan="2" class="rowspan valign-middle">회원정보</th>
+                    <th rowspan="2" class="rowspan valign-middle">결제완료일</th>
+                    <th rowspan="2" class="valign-middle">상품명</th>
+                    <th rowspan="2" class="valign-middle">결제금액</th>
+                    <th rowspan="2" class="rowspan valign-middle">배송료</th>
+                    <th rowspan="2" class="valign-middle">결제상태</th>
+                    <th rowspan="2" class="valign-middle">환불완료일</th>
+                    <th rowspan="2" class="rowspan valign-middle">수령인정보</th>
+                    <th rowspan="2" class="rowspan valign-middle">배송지</th>
                     <th colspan="3" class="">송장정보</th>
                 </tr>
                 <tr>
@@ -285,6 +285,11 @@
 
                 if (is_check === false) {
                     alert('송장번호를 입력해 주세요.');
+                    return;
+                }
+
+                if (Object.keys($params).length < 1) {
+                    alert('송장번호를 수정할 주문을 선택해 주세요.');
                     return;
                 }
 

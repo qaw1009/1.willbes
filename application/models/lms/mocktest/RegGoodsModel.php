@@ -31,12 +31,466 @@ class RegGoodsModel extends WB_Model
         'ProductCate' => 'lms_Product_R_Category',
         'ProductSale' => 'lms_Product_Sale',
         'ProductSMS' => 'lms_Product_Sms',
+        'ProductJson' => 'lms_product_json_data',
+
+        'mockRegister' => 'lms_mock_register',
+        'mockRegisterR' => 'lms_mock_register_r_paper',
+
+        'mockAnswerTemp' => 'lms_mock_answertemp',
+        'mockAnswerPaper' => 'lms_mock_answerpaper',
+        'mockLog' => 'lms_mock_log',
+        'order_product' => 'lms_order_product',
+        'order' => 'lms_order',
+
+        'copylog' => 'lms_product_copy_log'
+    ];
+
+    public $_groupCcd = [
+        'option' => '660',
+        'SerialCcd' => '666',
+        'CandidateAreaCcd' => '631',
+        'SmsSendCallBackNum' => '706'   //SMS 발송번호
     ];
 
 
     public function __construct()
     {
         parent::__construct('lms');
+    }
+
+    /***********
+     * 테스트용 랜덤성적입력
+     * @param $condition
+     * @throws Exception
+     */
+    function saveFake($condition){
+        var_dump($condition);
+        //exit;
+
+        $arrMPSet = array();
+
+        $idx = $condition['idx'];
+        $TakeFormsCcd = $condition['TakeFormsCcd'];
+        $MpIdx = $condition['MpIdx'];
+
+        $MpIdx[] = $condition['SMpIdx1'];
+        $MpIdx[] = $condition['SMpIdx2'];
+
+        $AddPointCcds = $condition['AddPointCcds'];
+        $people = $condition['people'];
+        $cate = $condition['cate'];
+
+        $MpIdx = array_unique ($MpIdx);
+
+        for($i =0; $i < COUNT($MpIdx); $i++){
+            $cuMP = $MpIdx[$i];
+            $column = "
+                MpIdx, SubjectIdx
+            ";
+
+            $from = "
+                FROM 
+                lms_Mock_Paper AS MP 
+                JOIN lms_Mock_R_Category AS MR ON MP.MrcIdx = MR.MrcIdx
+                JOIN lms_mock_r_subject AS MS ON MR.MrsIdx = MS.MrsIdx
+            ";
+
+            $obder_by = " ";
+
+            $where = " WHERE MpIdx = ".$cuMP;
+
+            $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+            $data = $query->row_array();
+            $arrMPSet[$cuMP] = $data['SubjectIdx'];
+        }
+
+        $column = "
+            MemId, MemIdx
+        ";
+
+        $from = "
+            FROM lms_member    
+        ";
+
+        $obder_by = " ORDER BY RAND() LIMIT ".$people;
+
+        $where = " ";
+        $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+        $res = $query->result_array();
+
+        $mMemIdx = $res[0]['MemIdx'];
+        $mMrIdx = '';
+        $mProdIdx = $idx;
+
+        //var_dump($arrMPSet);
+
+        foreach($res AS $key => $val){
+            // 데이터 입력
+
+            $MemIdx = $val['MemIdx'];
+            $data1 = [
+                'ProdCode' => $idx,
+                'MemIdx'  => $MemIdx,
+                'OrderProdIdx'=> '1',
+                'TakeNumber' => '1000000'+$key,
+                'TakeMockPart' => $cate,
+                'TakeForm' => $TakeFormsCcd,
+                'TakeArea' => '999',
+                'AddPoint' => $AddPointCcds,
+                'IsStatus' => 'Y',
+                'IsTicketPrint' => 'N',
+                'IsDisplay' => 'Y',
+                'IsTake' => 'Y'
+            ];
+            //var_dump($data1);
+
+            if ($this->_conn->set($data1)->insert($this->_table['mockRegister']) === false) {
+                throw new \Exception('임시저장에 실패했습니다.');
+            }
+
+            $MrIdx = $this->_conn->insert_id();
+            $mMrIdx = $MrIdx;
+
+            foreach($arrMPSet AS $key2 => $val2){
+
+                $data2 = [
+                    'MrIdx' => $MrIdx,
+                    'ProdCode'=> $idx,
+                    'MpIdx' => $key2,
+                    'SubjectIdx' => $val2,
+                ];
+
+                //var_dump($data2);
+
+                if ($this->_conn->set($data2)->insert($this->_table['mockRegisterR']) === false) {
+                    throw new \Exception('임시저장에 실패했습니다.');
+                }
+
+                $data22 = [
+                    'LogType' => 'S',
+                    'RegIp'  => '000',
+                    'RemainSec'=> '99999',
+                    'MrIdx' => $MrIdx,
+                ];
+
+                if ($this->_conn->set($data22)->set('RegDatm', 'NOW()', false)->insert($this->_table['mockLog']) === false) {
+                    throw new \Exception('임시저장에 실패했습니다.');
+                }
+
+                $LogIdx = $this->_conn->insert_id();
+
+                $column = "
+                    MQ.MqIdx, 
+                    QuestionNO,
+                    RightAnswer
+                ";
+
+                $from = "
+                    FROM
+                        {$this->_table['mockExamBase']} AS MP
+                        JOIN {$this->_table['mockExamQuestion']} AS MQ ON MQ.MpIdx = MP.MpIdx AND MP.IsUse = 'Y' AND MQ.IsStatus = 'Y'
+                ";
+
+                $obder_by = " ORDER BY QuestionNO ";
+
+                $where = "WHERE MP.MpIdx = ".$key2;
+                //echo "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
+                $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+                $res2 = $query->result_array();
+                foreach ($res2 AS $key3 => $val3){
+                    $Answer =rand(1,5);
+                    if($val3['RightAnswer'] == $Answer){
+                        $IsWrong = 'Y';
+                    }else{
+                        $IsWrong = 'N';
+                    }
+
+                    $data3 = [
+                        'MemIdx' => $MemIdx,
+                        'MrIdx'  => $MrIdx,
+                        'ProdCode'=> $idx,
+                        'MpIdx' => $key2,
+                        'MqIdx' => $val3['MqIdx'],
+                        'LogIdx' => $LogIdx,
+                        'Answer' => $Answer,
+                        'IsWrong' => $IsWrong
+                    ];
+                    //var_dump($data3);
+
+                    if ($this->_conn->set($data3)->set('RegDatm', 'NOW()', false)->insert($this->_table['mockAnswerPaper']) === false) {
+                        throw new \Exception('임시저장에 실패했습니다.');
+                    }
+
+                }
+
+            }
+
+
+
+        }
+
+
+        echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!정상입력되었습니다.!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
+
+
+    }
+
+
+    /***********
+     * 테스트용 랜덤성적입력
+     * @param $condition
+     * @throws Exception
+     */
+    function saveFake2($idx,$TakeFormsCcd,$MpIdx1,$MpIdx2,$SMpIdx1,$SMpIdx2,$AddPointCcds,$people,$cate,$mode){
+        $retry=0;
+        $notdone=TRUE;
+        while( $notdone && $retry < 3 ) {
+            try {
+                $this->_conn->trans_begin();
+                $arrMPSet = array();
+
+                $idx = $idx;
+                $TakeFormsCcd = $TakeFormsCcd;
+                $AddPointCcds = $AddPointCcds;
+                $cate = $cate;
+                $mode = $mode;
+                $MpIdx[] = $MpIdx1;
+                $MpIdx[] = $MpIdx2;
+                $MpIdx[] = $SMpIdx1;
+                $MpIdx[] = $SMpIdx2;
+                $people = $people;
+                $mProdIdx = $idx;
+
+                $MpIdx = array_unique($MpIdx);
+
+
+                for ($i = 0; $i < COUNT($MpIdx); $i++) {
+                    $cuMP = $MpIdx[$i];
+                    $column = "
+                    MpIdx, SubjectIdx
+                ";
+
+                    $from = "
+                    FROM 
+                    lms_Mock_Paper AS MP 
+                    JOIN lms_Mock_R_Category AS MR ON MP.MrcIdx = MR.MrcIdx
+                    JOIN lms_mock_r_subject AS MS ON MR.MrsIdx = MS.MrsIdx
+                ";
+
+                    $obder_by = " ";
+
+                    $where = " WHERE MpIdx = " . $cuMP;
+
+                    $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+
+
+                    $data = $query->row_array();
+                    $arrMPSet[$cuMP] = $data['SubjectIdx'];
+                }
+
+                $column = "
+                MemId, MemIdx
+            ";
+
+                $from = "
+                FROM lms_member    
+            ";
+
+                $obder_by = " ORDER BY RAND() LIMIT " . $people;
+
+                $where = " ";
+                $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+
+
+                $res = $query->result_array();
+
+                $mMemIdx = $res[0]['MemIdx'];
+                $mMrIdx = '';
+
+                foreach ($res AS $key => $val) {
+                    // 데이터 입력
+
+                    $MemIdx = $val['MemIdx'];
+                    $data1 = [
+                        'ProdCode' => $idx,
+                        'MemIdx' => $MemIdx,
+                        'OrderProdIdx' => '1',
+                        'TakeNumber' => '1000000' + $key,
+                        'TakeMockPart' => $cate,
+                        'TakeForm' => $TakeFormsCcd,
+                        'TakeArea' => '999',
+                        'AddPoint' => $AddPointCcds,
+                        'IsStatus' => 'Y',
+                        'IsTicketPrint' => 'N',
+                        'IsDisplay' => 'Y',
+                        'IsTake' => 'Y'
+                    ];
+                    //var_dump($data1);
+
+                    if ($this->_conn->set($data1)->insert($this->_table['mockRegister']) === false) {
+                        throw new \Exception('임시저장에 실패했습니다.');
+                    }
+
+                    $MrIdx = $this->_conn->insert_id();
+                    $mMrIdx = $MrIdx;
+
+                    foreach ($arrMPSet AS $key2 => $val2) {
+
+                        $data2 = [
+                            'MrIdx' => $MrIdx,
+                            'ProdCode' => $idx,
+                            'MpIdx' => $key2,
+                            'SubjectIdx' => $val2,
+                        ];
+
+                        //var_dump($data2);
+
+                        if ($this->_conn->set($data2)->insert($this->_table['mockRegisterR']) === false) {
+                            throw new \Exception('임시저장에 실패했습니다.');
+                        }
+
+
+                        $data22 = [
+                            'LogType' => 'S',
+                            'RegIp' => '000',
+                            'RemainSec' => '99999',
+                            'MrIdx' => $MrIdx,
+                        ];
+
+                        if ($this->_conn->set($data22)->set('RegDatm', 'NOW()', false)->insert($this->_table['mockLog']) === false) {
+                            throw new \Exception('임시저장에 실패했습니다.');
+                        }
+
+
+                        $LogIdx = $this->_conn->insert_id();
+
+                        $column = "
+                        MQ.MqIdx, 
+                        QuestionNO,
+                        RightAnswer
+                    ";
+
+                        $from = "
+                        FROM
+                            {$this->_table['mockExamBase']} AS MP
+                            JOIN {$this->_table['mockExamQuestion']} AS MQ ON MQ.MpIdx = MP.MpIdx AND MP.IsUse = 'Y' AND MQ.IsStatus = 'Y'
+                    ";
+
+                        $obder_by = " ORDER BY QuestionNO ";
+
+                        $where = "WHERE MP.MpIdx = " . $key2;
+                        //echo "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
+
+                        $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+                        $res2 = $query->result_array();
+                        foreach ($res2 AS $key3 => $val3) {
+                            $Answer = rand(1, 5);
+                            if ($val3['RightAnswer'] == $Answer) {
+                                $IsWrong = 'Y';
+                            } else {
+                                $IsWrong = 'N';
+                            }
+
+
+                            $data3 = [
+                                'MemIdx' => $MemIdx,
+                                'MrIdx' => $MrIdx,
+                                'ProdCode' => $idx,
+                                'MpIdx' => $key2,
+                                'MqIdx' => $val3['MqIdx'],
+                                'LogIdx' => $LogIdx,
+                                'Answer' => $Answer
+                            ];
+
+                            if ($this->_conn->set($data3)->set('RegDatm', 'NOW()', false)->insert($this->_table['mockAnswerTemp']) === false) {
+                                throw new \Exception('임시저장에 실패했습니다.');
+                            }
+
+
+                        }
+
+                    }
+
+                }
+
+                $this->examSend($mProdIdx, $mMrIdx, $mMemIdx);
+                $notdone=FALSE;
+                $this->_conn->trans_commit();
+            } catch (\Exception $e) {
+                $this->_conn->trans_rollback();
+                $retry++;
+                //return error_result($e);
+            }
+        }
+
+        if( $retry == 3) {
+            throw new Exception("Try later, sorry, too much guys other there, or it's not your day.");
+        }
+
+    }
+
+    /**
+     * 정답제출
+     * @param array $formData
+     * @return mixed
+     */
+    public function examSend($ProdCode, $MrIdx, $MemIdx)
+    {
+        $retry=0;
+        $notdone=TRUE;
+        while( $notdone && $retry < 3 ) {
+            try {
+                $this->_conn->trans_begin();
+
+                //$ProdCode = element('ProdCode', $formData);
+                //$MrIdx = element('MrIdx', $formData);
+
+                //삭제후 입력
+                $where = ['MemIdx' => $MemIdx, 'ProdCode' => $ProdCode, 'MrIdx' => $MrIdx];
+
+                try {
+                    if ($this->_conn->delete($this->_table['mockAnswerPaper'], $where) === false) {
+                        throw new \Exception('삭제에 실패했습니다.');
+                    }
+                } catch (\Exception $e) {
+                    return error_result($e);
+                }
+
+                $insert_column = "
+                MemIdx, MrIdx, ProdCode, MpIdx, MqIdx, LogIdx, Answer, IsWrong, RegDatm
+            ";
+                $select_column = "
+                '" . $MemIdx . "', '" . $MrIdx . "', '" . $ProdCode . "', MA.MpIdx, MQ.MqIdx, LogIdx, Answer, if(Answer = RightAnswer, 'Y', 'N') AS IsWrong, MA.RegDatm
+            ";
+                $query = "
+                INSERT INTO {$this->_table['mockAnswerPaper']} ({$insert_column})
+                SELECT 
+                    {$select_column} 
+                FROM 
+                    {$this->_table['mockAnswerTemp']} AS MA
+                    JOIN {$this->_table['mockExamQuestion']} AS MQ ON MA.MqIdx = MQ.MqIdx AND MQ.IsStatus = 'Y' AND MQ.IsStatus = 'Y'
+                WHERE 
+                    MemIdx = " . $MemIdx . "
+                    AND ProdCode = " . $ProdCode . "
+                    AND MrIdx = " . $MrIdx . " ORDER BY MpIdx
+            ";
+                $this->_conn->query($query);
+                $notdone=FALSE;
+                $this->_conn->trans_commit();
+            } catch (\Exception $e) {
+                $this->_conn->trans_rollback();
+                $retry++;
+                //return error_result($e);
+            }
+        }
+
+        if($retry == 3) {
+            throw new Exception("Try later, sorry, too much guys other there, or it's not your day.");
+        }
+
+        echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!정상입력되었습니다2.!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
+        return true;
+
     }
 
     /**
@@ -48,19 +502,55 @@ class RegGoodsModel extends WB_Model
         if($conditionAdd) $condition = array_merge_recursive($condition, $conditionAdd);
 
         $offset_limit = (is_numeric($limit) && is_numeric($offset)) ? "LIMIT $offset, $limit" : "";
-
-
         $select = "
-            SELECT MP.*, A.wAdminName, PD.ProdName, PD.SaleStartDatm, PD.SaleEndDatm, PD.IsUse, PS.SalePrice, PS.RealSalePrice,          
+            SELECT MP.*, A.wAdminName, PD.ProdName, PD.SaleStartDatm, PD.SaleEndDatm, PD.IsUse, PD.IsCoupon, PS.SalePrice, PS.RealSalePrice,          
             C1.CateName, C1.IsUse AS IsUseCate
-            ,SC1.CcdName As AcceptStatusCcd_Name
+            ,SC1.CcdName As AcceptStatusCcd_Name,
+            (
+            	SELECT COUNT(mr1.MemIdx) 
+            	FROM 
+            		{$this->_table['mockRegister']} mr1
+            		join {$this->_table['order_product']} op1 on mr1.OrderProdIdx = op1.OrderProdIdx
+            		join {$this->_table['order']} o1 on op1.OrderIdx = o1.OrderIdx
+            		join {$this->_table['sysCode']} sc1 on mr1.TakeForm = sc1.Ccd
+            	WHERE mr1.IsStatus = 'Y' AND mr1.IsTake = 'Y' AND mr1.ProdCode = MP.ProdCode AND mr1.TakeForm = '690001' and op1.PayStatusCcd='676001'
+            ) AS OnlineCnt,
+	        (
+	        	SELECT COUNT(mr2.MemIdx) 
+	        	FROM 
+	        		{$this->_table['mockRegister']} mr2
+            		join {$this->_table['order_product']} op2 on mr2.OrderProdIdx = op2.OrderProdIdx
+            		join {$this->_table['order']} o2 on op2.OrderIdx = o2.OrderIdx 
+            		join {$this->_table['sysCode']} sc2 on mr2.TakeForm = sc2.Ccd
+            	WHERE mr2.IsStatus = 'Y' AND mr2.IsTake = 'Y' AND mr2.ProdCode = MP.ProdCode AND mr2.TakeForm = '690002' and op2.PayStatusCcd='676001'
+			) AS OfflineCnt,
+			(
+            	SELECT COUNT(mr3.MemIdx) 
+            	FROM 
+            		{$this->_table['mockRegister']} mr3
+            		join {$this->_table['order_product']} op3 on mr3.OrderProdIdx = op3.OrderProdIdx
+            		join {$this->_table['order']} o3 on op3.OrderIdx = o3.OrderIdx
+            		join {$this->_table['sysCode']} sc3 on mr3.TakeForm = sc3.Ccd
+            	WHERE mr3.IsStatus = 'Y' AND mr3.ProdCode = MP.ProdCode AND mr3.TakeForm = '690001' and op3.PayStatusCcd='676001'
+            ) AS OnlineRegCnt,
+	        (
+	        	SELECT COUNT(mr4.MemIdx) 
+	        	FROM 
+	        		{$this->_table['mockRegister']} mr4
+            		join {$this->_table['order_product']} op4 on mr4.OrderProdIdx = op4.OrderProdIdx
+            		join {$this->_table['order']} o4 on op4.OrderIdx = o4.OrderIdx 
+            		join {$this->_table['sysCode']} sc4 on mr4.TakeForm = sc4.Ccd
+            	WHERE mr4.IsStatus = 'Y' AND mr4.ProdCode = MP.ProdCode AND mr4.TakeForm = '690002' and op4.PayStatusCcd='676001'
+			) AS OfflineRegCnt
+			
         ";
+
         $from = "
             FROM {$this->_table['mockProduct']} AS MP
             JOIN {$this->_table['Product']} AS PD ON MP.ProdCode = PD.ProdCode 
             JOIN {$this->_table['ProductCate']} AS PC ON MP.ProdCode = PC.ProdCode AND PC.IsStatus = 'Y'
             JOIN {$this->_table['category']} AS C1 ON PC.CateCode = C1.CateCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y'
-            JOIN {$this->_table['ProductSale']} AS PS ON MP.ProdCode = PS.ProdCode AND PS.IsStatus = 'Y'
+            JOIN {$this->_table['ProductSale']} AS PS ON MP.ProdCode = PS.ProdCode AND PS.IsStatus = 'Y' and PS.SaleTypeCcd='613001'
             LEFT JOIN {$this->_table['admin']} AS A ON MP.RegAdminIdx = A.wAdminIdx
             LEFT OUTER JOIN {$this->_table['sysCode']} AS SC1 ON MP.AcceptStatusCcd = SC1.Ccd
         ";
@@ -69,10 +559,9 @@ class RegGoodsModel extends WB_Model
         $where .= $this->_conn->makeWhere($condition)->getMakeWhere(true)."\n";
         $order = "ORDER BY MP.ProdCode DESC\n";
 
-        //echo $select . $from . $where . $order . $offset_limit;
-
         $data = $this->_conn->query($select . $from . $where . $order . $offset_limit)->result_array();
         $count = $this->_conn->query($selectCount . $from . $where)->row()->cnt;
+
 
 
         // 직렬이름 추출
@@ -121,12 +610,13 @@ class RegGoodsModel extends WB_Model
             // lms_Product 복사
             $sql = "
                 INSERT INTO {$this->_table['Product']}
-                    (ProdCode, SiteCode, ProdName, ProdTypeCcd, SaleStartDatm, SaleEndDatm, SaleStatusCcd, PointApplyCcd, IsSms, IsUse,
+                    (ProdCode, SiteCode, ProdName, ProdTypeCcd, SaleStartDatm, SaleEndDatm, SaleStatusCcd, PointApplyCcd, IsSms, IsUse, IsCoupon, IsCart,
                      RegIp, RegAdminIdx, RegDatm)
-                SELECT ?, SiteCode, CONCAT('복사-', ProdName), ProdTypeCcd, SaleStartDatm, SaleEndDatm, SaleStatusCcd, PointApplyCcd, IsSms, 'N', ?, ?, ?
+                SELECT ?, SiteCode, CONCAT(ProdName), ProdTypeCcd, SaleStartDatm, SaleEndDatm, SaleStatusCcd, PointApplyCcd, IsSms, 'N', IsCoupon, IsCart, ?, ?, ?
                 FROM {$this->_table['Product']}
                 WHERE ProdCode = ? AND IsStatus = 'Y'";
             $this->_conn->query($sql, array($prodcode, $RegIp, $RegAdminIdx, $RegDatm, $idx));
+            //echo $this->_conn->last_query().'<BR><BR><BR>';exit;
 
 
             // lms_Product_R_Category 복사
@@ -137,7 +627,7 @@ class RegGoodsModel extends WB_Model
                 FROM {$this->_table['ProductCate']}
                 WHERE ProdCode = ? AND IsStatus = 'Y'";
             $this->_conn->query($sql, array($prodcode, $RegIp, $RegAdminIdx, $RegDatm, $idx));
-
+            //echo $this->_conn->last_query().'<BR><BR><BR>';
 
             // lms_Product_Sale 복사
             $sql = "
@@ -147,7 +637,7 @@ class RegGoodsModel extends WB_Model
                 FROM {$this->_table['ProductSale']}
                 WHERE ProdCode = ? AND IsStatus = 'Y'";
             $this->_conn->query($sql, array($prodcode, $RegIp, $RegAdminIdx, $RegDatm, $idx));
-
+            //echo $this->_conn->last_query().'<BR><BR><BR>';
 
             // lms_Product_Sms 복사
             $sql = "
@@ -157,20 +647,20 @@ class RegGoodsModel extends WB_Model
                 FROM {$this->_table['ProductSMS']}
                 WHERE ProdCode = ? AND IsStatus = 'Y'";
             $this->_conn->query($sql, array($prodcode, $RegIp, $RegAdminIdx, $RegDatm, $idx));
-
+            //echo $this->_conn->last_query().'<BR><BR><BR>';
 
             // lms_Product_Mock 복사
             $sql = "
                 INSERT INTO {$this->_table['mockProduct']}
-                    (ProdCode, TakePart, MockPart, TakeFormsCcd, TakeAreas1CCds, TakeAreas2Ccds, AddPointTypes, MockYear, MockRotationNo,
+                    (ProdCode, TakePart, MockPart, TakeFormsCcd, TakeAreas1CCds, TakeAreas2Ccds, AddPointCcds, MockYear, MockRotationNo,
                      ClosingPerson, AcceptStatusCcd, TakeStartDatm, TakeEndDatm, TakeTime, 
                      RegIp, RegAdminIdx, RegDatm)
-                SELECT ?, TakePart, MockPart, TakeFormsCcd, TakeAreas1CCds, TakeAreas2Ccds, AddPointTypes, MockYear, MockRotationNo,
+                SELECT ?, TakePart, MockPart, TakeFormsCcd, TakeAreas1CCds, TakeAreas2Ccds, AddPointCcds, MockYear, MockRotationNo,
                        ClosingPerson, AcceptStatusCcd, TakeStartDatm, TakeEndDatm, TakeTime, ?, ?, ?
                 FROM {$this->_table['mockProduct']}
-                WHERE ProdCode = ? AND IsStatus = 'Y'";
+                WHERE ProdCode = ? ";
             $this->_conn->query($sql, array($prodcode, $RegIp, $RegAdminIdx, $RegDatm, $idx));
-
+            //echo $this->_conn->last_query().'<BR><BR><BR>';
 
             // lms_Product_Mock_R_Paper 복사
             $sql = "
@@ -180,7 +670,27 @@ class RegGoodsModel extends WB_Model
                 FROM {$this->_table['mockProductExam']}
                 WHERE ProdCode = ? AND IsStatus = 'Y'";
             $this->_conn->query($sql, array($prodcode, $RegIp, $RegAdminIdx, $RegDatm, $idx));
+            //echo $this->_conn->last_query().'<BR><BR><BR>';
 
+            // json 데이터 복사
+            $sql = "
+                INSERT INTO {$this->_table['ProductJson']}
+                    (ProdCode, ProdPriceData, ProdBookData, LectureSampleData)
+                SELECT ?, ProdPriceData, ProdBookData, LectureSampleData
+                FROM {$this->_table['ProductJson']}
+                WHERE ProdCode = ? ";
+            $this->_conn->query($sql, array($prodcode, $idx));
+            //echo $this->_conn->last_query().'<BR><BR><BR>';
+
+            //복사 로그 저장
+            $copy_data = [
+                'ProdCode' => $prodcode
+                ,'ProdCode_Original' => $idx
+                ,'RegAdminIdx' =>$RegAdminIdx
+            ];
+            if($this->_conn->set($copy_data)->insert($this->_table['copylog']) === false) {
+                throw new \Exception('복사 이력 저장에 실패했습니다.');
+            }
 
             $this->_conn->trans_complete();
             if ($this->_conn->trans_status() === false) {
@@ -225,6 +735,7 @@ class RegGoodsModel extends WB_Model
                 'PointApplyCcd' => $this->config->item('sysCode_PointApplyCcd', 'mock'),
                 'IsSms'         => $this->input->post('IsSms'),
                 'IsUse'         => $this->input->post('IsUse'),
+                'IsCoupon'       => $this->input->post('IsCoupon'),
                 'IsCart'         => 'N',
                 'RegIp'         => $this->input->ip_address(),
                 'RegDatm'       => $date,
@@ -259,7 +770,7 @@ class RegGoodsModel extends WB_Model
             // lms_Product_Sms 저장
             $data = array(
                 'ProdCode'    => $prodcode,
-                'SendTel'     => str_replace('-', '', $this->input->post('SendTel')),
+                'SendTel'     => $this->input->post('SendTel'),
                 'Memo'        => $this->input->post('Memo', true),
                 'RegIp'       => $this->input->ip_address(),
                 'RegDatm'     => $date,
@@ -273,10 +784,11 @@ class RegGoodsModel extends WB_Model
                 'ProdCode'       => $prodcode,
                 'TakePart'       => $this->input->post('TakePart'),
                 'MockPart'       => implode(',', $this->input->post('cateD2')),
-                'TakeFormsCcd'  => implode(',', $this->input->post('TakeFormsCcd')),
+                //'TakeFormsCcd'  => implode(',', $this->input->post('TakeFormsCcd')),
+                'TakeFormsCcd'  =>  $this->input->post('TakeFormsCcd'),
                 'TakeAreas1CCds' => empty($this->input->post('TakeAreas1CCds')) ? '': implode(',', $this->input->post('TakeAreas1CCds')),
                 'TakeAreas2Ccds'  => empty($this->input->post('TakeAreas2Ccds')) ? '' : implode(',', $this->input->post('TakeAreas2Ccds')),
-                'AddPointTypes'   => implode(',', $this->input->post('AddPointTypes')),
+                'AddPointCcds'   => implode(',', $this->input->post('AddPointCcds')),
                 'MockYear'       => $this->input->post('MockYear'),
                 'MockRotationNo' => $this->input->post('MockRotationNo'),
                 'ClosingPerson'  => empty($this->input->post('ClosingPerson')) ? '' : $this->input->post('ClosingPerson'),
@@ -310,6 +822,13 @@ class RegGoodsModel extends WB_Model
                 if($dataSubject) $this->_conn->insert_batch($this->_table['mockProductExam'], $dataSubject);
             }
 
+            // 상품연관 데이터 json 형태로 테이블 저장
+            $query = $this->_conn->query('call sp_product_json_data_insert(?)', [$prodcode]);
+            $result = $query->row(0)->ReturnMsg;
+
+            if ($result != 'Success') {
+                throw new \Exception('JSON 데이터 등록에 실패했습니다.');
+            }
 
             $this->_conn->trans_complete();
             if ($this->_conn->trans_status() === false) {
@@ -341,6 +860,7 @@ class RegGoodsModel extends WB_Model
                 'SaleEndDatm'   => $SaleEndDatm,
                 'IsSms'         => $this->input->post('IsSms'), // 문자사용여부
                 'IsUse'         => $this->input->post('IsUse'),
+                'IsCoupon'         => $this->input->post('IsCoupon'),
                 'UpdDatm'       => $date,
                 'UpdAdminIdx'   => $this->session->userdata('admin_idx'),
             );
@@ -369,7 +889,7 @@ class RegGoodsModel extends WB_Model
 
             // lms_Product_Sms 저장
             $data = array(
-                'SendTel'     => str_replace('-', '', $this->input->post('SendTel')),
+                'SendTel'     => $this->input->post('SendTel'),
                 'Memo'        => $this->input->post('Memo', true),
                 'UpdDatm'     => $date,
                 'UpdAdminIdx' => $this->session->userdata('admin_idx'),
@@ -384,7 +904,7 @@ class RegGoodsModel extends WB_Model
                 'TakeFormsCcd'  =>  $this->input->post('TakeFormsCcd'),
                 'TakeAreas1CCds' => empty($this->input->post('TakeAreas1CCds')) ? '': implode(',', $this->input->post('TakeAreas1CCds')),
                 'TakeAreas2Ccds'  => empty($this->input->post('TakeAreas2Ccds')) ? '' : implode(',', $this->input->post('TakeAreas2Ccds')),
-                'AddPointTypes'   => implode(',', $this->input->post('AddPointTypes')),
+                'AddPointCcds'   => implode(',', $this->input->post('AddPointCcds')),
                 'MockYear'       => $this->input->post('MockYear'),
                 'MockRotationNo' => $this->input->post('MockRotationNo'),
                 'ClosingPerson'  => empty($this->input->post('ClosingPerson')) ? '' : $this->input->post('ClosingPerson'),
@@ -403,6 +923,15 @@ class RegGoodsModel extends WB_Model
 
             // lms_Product_Mock_R_Paper 저장
             $this->updateSubject($date);
+
+
+            // 상품연관 데이터 json 형태로 테이블 저장
+            $query = $this->_conn->query('call sp_product_json_data_insert(?)', [$this->input->post('idx')]);
+            $result = $query->row(0)->ReturnMsg;
+
+            if ($result != 'Success') {
+                throw new \Exception('JSON 데이터 등록에 실패했습니다.');
+            }
 
 
             $this->_conn->trans_complete();
@@ -479,7 +1008,7 @@ class RegGoodsModel extends WB_Model
         // 기본정보
         $sql = "
             SELECT MP.*,
-                   PD.SiteCode, PD.ProdName, PD.SaleStartDatm, PD.SaleEndDatm, PD.IsSms, PD.IsUse, PC.CateCode,
+                   PD.SiteCode, PD.ProdName, PD.SaleStartDatm, PD.SaleEndDatm, PD.IsSms, PD.IsUse, PC.CateCode,PD.IsCoupon, 
                    PS.SalePrice, PS.SaleRate, PS.SaleDiscType, PS.RealSalePrice,
                    SMS.SendTel, SMS.Memo
             FROM {$this->_table['mockProduct']} AS MP
@@ -495,7 +1024,7 @@ class RegGoodsModel extends WB_Model
         $data['TakeFormsCcd'] = explode(',', $data['TakeFormsCcd']);
         $data['TakeAreas1CCds'] = explode(',', $data['TakeAreas1CCds']);
         $data['TakeAreas2Ccds'] = explode(',', $data['TakeAreas2Ccds']);
-        $data['AddPointTypes'] = explode(',', $data['AddPointTypes']);
+        $data['AddPointCcds'] = explode(',', $data['AddPointCcds']);
 
 
         // 과목정보
@@ -516,6 +1045,8 @@ class RegGoodsModel extends WB_Model
 
         return array($data, $sData);
     }
+
+
 
 
     /**

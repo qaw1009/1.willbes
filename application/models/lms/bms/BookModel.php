@@ -66,8 +66,6 @@ class BookModel extends WB_Model
                     on B.wBookIdx = VWB.wBookIdx
                 inner join ' . $this->_table['product_sale'] . ' as PS
                     on P.ProdCode = PS.ProdCode                    
-                inner join ' . $this->_table['site'] . ' as S
-                    on P.SiteCode = S.SiteCode
                 left join ' . $this->_table['product_r_category'] . ' as BC
                     on P.ProdCode = BC.ProdCode and BC.IsStatus = "Y"                                                                        
                 left join ' . $this->_table['category'] . ' as C
@@ -76,6 +74,8 @@ class BookModel extends WB_Model
                     on C.ParentCateCode = PC.CateCode and PC.IsStatus = "Y"
                 left join ' . $this->_table['vw_product_book_r_prof_subject'] . ' as BPS
                     on P.ProdCode = BPS.ProdCode
+                inner join ' . $this->_table['site'] . ' as S
+                    on P.SiteCode = S.SiteCode                    
                 left join ' . $this->_table['admin'] . ' as A
                     on P.RegAdminIdx = A.wAdminIdx and A.wIsStatus = "Y"
             where P.IsStatus = "Y"                
@@ -84,6 +84,8 @@ class BookModel extends WB_Model
                 and S.IsStatus = "Y" 
         ';
 
+        // 상품타입 추가
+        $arr_condition['EQ']['P.ProdTypeCcd'] = $this->_prod_type_ccd;
         // 사이트 권한 추가
         $arr_condition['IN']['P.SiteCode'] = get_auth_site_codes();
         $where = $this->_conn->makeWhere($arr_condition);
@@ -293,6 +295,13 @@ class BookModel extends WB_Model
                 throw new \Exception('판매가격 정보 등록에 실패했습니다.');
             }
 
+            // 판매가격 JSON 데이터 등록
+            $query = $this->_conn->query('call sp_product_json_data_insert(?)', [$row['ProdCode']]);
+            $sp_result = $query->row(0)->ReturnMsg;
+            if ($sp_result != 'Success') {
+                throw new \Exception('판매가격 JSON 데이터 등록에 실패했습니다.');
+            }
+
             // 카테고리 정보 등록
             $is_book_category = $this->_replaceBookCategory($row['ProdCode'], [element('cate_code', $input)]);
             if ($is_book_category !== true) {
@@ -366,6 +375,12 @@ class BookModel extends WB_Model
                 throw new \Exception('판매가격 정보 수정에 실패했습니다.');
             }
 
+            // 카테고리 정보 등록
+            $is_book_category = $this->_replaceBookCategory($row['ProdCode'], [element('cate_code', $input)]);
+            if ($is_book_category !== true) {
+                throw new \Exception($is_book_category);
+            }
+
             // 과목/교수 정보 수정
             $is_book_prof_subject = $this->_replaceBookProfessorSubject($prod_code, element('prof_subject_idx', $input));
             if ($is_book_prof_subject !== true) {
@@ -425,6 +440,28 @@ class BookModel extends WB_Model
         $admin_idx = $this->session->userdata('admin_idx');
 
         try {
+            // 이전 판매가격 정보 조회
+            $row = $this->_conn->getFindResult($this->_table['product_sale'], 'SalePrice, SaleRate, SaleDiscType, RealSalePrice', [
+                'EQ' => ['ProdCode' => $prod_code, 'IsStatus' => 'Y']
+            ]);
+
+            if (empty($row) === true) {
+                throw new \Exception('이전 판매가격 정보 조회에 실패했습니다.', _HTTP_NOT_FOUND);
+            }
+
+            // 입력값 변수 설정
+            $sale_price = element('org_price', $input);
+            $sale_rate = element('dc_amt', $input, 0);
+            $sale_disc_type = element('dc_type', $input, 'R');
+            $real_sale_price = element('sale_price', $input);
+
+            // 입력값 비교 (데이터가 같을 경우 등록안함)
+            $ori_val = $row['SalePrice'] . '::' . $row['SaleRate'] . '::' . $row['SaleDiscType'] . '::' . $row['RealSalePrice'];
+            $new_val = $sale_price . '::' . $sale_rate . '::' . $sale_disc_type . '::' . $real_sale_price;
+            if (strcmp($ori_val, $new_val) == 0) {
+                return true;
+            }
+
             // 이전 판매가격 정보 삭제 처리
             $this->_conn->set('IsStatus', 'N')->set('UpdAdminIdx', $admin_idx);
             $this->_conn->where('ProdCode', $prod_code)->where('IsStatus', 'Y');
@@ -436,16 +473,23 @@ class BookModel extends WB_Model
             $data = [
                 'ProdCode' => $prod_code,
                 'SaleTypeCcd' => $this->_sale_type_ccd,
-                'SalePrice' => element('org_price', $input),
-                'SaleRate' => element('dc_amt', $input, 0),
-                'SaleDiscType' => element('dc_type', $input, 'R'),
-                'RealSalePrice' => element('sale_price', $input),
+                'SalePrice' => $sale_price,
+                'SaleRate' => $sale_rate,
+                'SaleDiscType' => $sale_disc_type,
+                'RealSalePrice' => $real_sale_price,
                 'RegAdminIdx' => $admin_idx,
                 'RegIp' => $this->input->ip_address()
             ];
 
             if ($this->_conn->set($data)->insert($this->_table['product_sale']) === false) {
                 throw new \Exception('판매가격 정보 등록에 실패했습니다.');
+            }
+
+            // 판매가격 JSON 데이터 등록
+            $query = $this->_conn->query('call sp_product_json_data_insert(?)', [$prod_code]);
+            $sp_result = $query->row(0)->ReturnMsg;
+            if ($sp_result != 'Success') {
+                throw new \Exception('판매가격 JSON 데이터 등록에 실패했습니다.');
             }
         } catch (\Exception $e) {
             return $e->getMessage();

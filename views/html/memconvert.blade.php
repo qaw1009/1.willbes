@@ -11,14 +11,13 @@
     <!-- 통합 서비스 안내 -->
     <div class="Member mem-Convert widthAuto690">
         <div class="user-Txt tx-black">
-            윌비스공무원(www.willbesgosi.net), 신광은경찰(www.willbescop.net),<br/>
-            윌비스임용(ssam.willbes.net)이<br/>
+            윌비스공무원(www.willbesgosi.net), 신광은경찰(www.willbescop.net)이<br/>
             더 좋은 서비스 제공을 위해 '윌비스' 라는 이름으로 새롭게 통합되었습니다.<br/>
             기존 수강 강좌 및 혜택을 유지하기 위해 윌비스 통합회원으로 전환이 필요하며,<br/>
             <div class="tx-red">전환을 신청하지 않을 시 서비스 이용이 불가능합니다.</div>
         </div>
         <div class="info-Txt tx-black">
-            통합회원 전환 시 전원 특별 혜택 증정은 물론,<br/>
+            통합회원 전환 시<br/>
             <strong>하나의 ID로 윌비스의 전체 서비스를 이용</strong>하실 수 있습니다.
         </div>
         <div class="convert-chkBox mt30">

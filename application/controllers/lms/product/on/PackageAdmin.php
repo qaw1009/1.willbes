@@ -101,7 +101,7 @@ Class PackageAdmin extends \app\controllers\BaseController
 
         $codes = $this->codeModel->getCcdInArray(['609','611','612','613','616','617','618','648','649','696']);
         $courseList = $this->courseModel->listCourse([], null, null, ['PC.SiteCode' => 'asc','PC.OrderNum' => 'asc' ]);
-        $siteList = $this->siteModel->getSiteArray(false,'CsTel');
+        $arr_send_callback_ccd = $this->codeModel->getCcd(706, 'CcdValue');  // 발신번호조회
 
         //var_dump($siteList);
 
@@ -153,8 +153,8 @@ Class PackageAdmin extends \app\controllers\BaseController
             ,'packcate_ccd'=>$codes['649'] //패키지분류
             ,'extcorp_ccd'=>$codes['696'] //외부수강업체코드
             ,'courseList'=>$courseList      //과정
-            ,'siteList' =>$siteList         //사이트목록
             ,'prodcode' => $prodcode
+            ,'arr_send_callback_ccd'=>$arr_send_callback_ccd
             ,'data'=>$data
             ,'data_sale'=>$data_sale
             ,'data_division'=>$data_division
@@ -235,7 +235,7 @@ Class PackageAdmin extends \app\controllers\BaseController
 
         $result = $this->packageAdminModel->_prodCopy($prodcode,'packageadmin');
         //var_dump($result);exit;
-        $this->json_result($result,'저장 되었습니다.',$result);
+        $this->json_result($result,'복사 되었습니다.',$result);
     }
 
     /**

@@ -30,6 +30,8 @@ class NiceAuth
      * @Param $sReturnType
      * @return Array
      */
+
+    /*
     public function cpEnc($sReturnType)
     {
         $sRtnCode = 0;
@@ -82,13 +84,15 @@ class NiceAuth
             'rtnMsg' => $sRtnMsg,
             'encData' => $sEncData
         ];
-    }
+    } */
 
     /*
      * 간편 본인인증 복호화
      * @Param $sEncData
      * @return Array
      */
+
+    /*
     public function cpDec($sEncData)
     {
         $sRtnCode = 0;
@@ -175,7 +179,7 @@ class NiceAuth
             'mobileno' => $mobileno,
             'mobileco' => $mobileco
         ];
-    }
+    } */
 
     /*
      * 아이핀 암호화 암수
@@ -248,12 +252,17 @@ class NiceAuth
                 $sRtnMsg = "NICE평가정보에서 발급한 개발정보가 정확한지 확인해 보세요.";
 
             } else {
-                $strResultCode = $this->GetValue($sDecData, 'RESULT_CODE');			// 결과코드
+                $arrData = explode("^", $sDecData);
+                $iCount = count($arrData);
+
+                //$strResultCode = $this->GetValue($sDecData, 'RESULT_CODE');			// 결과코드
+                $strResultCode = $arrData[0];
 
                 if ($strResultCode == 1) {
                     //$strCPRequest	    = $this->GetValue($sDecData, 'CPREQUESTNO');			// CP 요청번호
                     $sRtnCode           = 1;
                     $sRtnMsg            = "사용자 인증 성공";
+                    /*
                     $strVno      		= $this->GetValue($sDecData, 'VNUMBER');	// 가상주민번호 (13자리이며, 숫자 또는 문자 포함)
                     $strUserName		= $this->GetValue($sDecData, 'UTF8_NAME');	// 이름
                     $strDupInfo			= $this->GetValue($sDecData, 'DUPINFO');	// 중복가입 확인값 (64Byte 고유값)
@@ -261,6 +270,14 @@ class NiceAuth
                     $strGender			= $this->GetValue($sDecData, 'GENDERCODE');	// 성별 코드 (개발 가이드 참조)
                     $strBirthDate		= $this->GetValue($sDecData, 'BIRTHDATE');	// 생년월일 (YYYYMMDD)
                     $strNationalInfo	= $this->GetValue($sDecData, 'NATIONALINFO');	// 내/외국인 정보 (개발 가이드 참조)
+                    */
+                    $strVno      		= $arrData[1];	// 가상주민번호 (13자리이며, 숫자 또는 문자 포함)
+                    $strUserName		= $arrData[2];	// 이름
+                    $strDupInfo			= $arrData[3];	// 중복가입 확인값 (64Byte 고유값)
+                    $strAgeInfo			= $arrData[4];	// 연령대 코드 (개발 가이드 참조)
+                    $strGender			= $arrData[5];	// 성별 코드 (개발 가이드 참조)
+                    $strBirthDate		= $arrData[6];	// 생년월일 (YYYYMMDD)
+                    $strNationalInfo	= $arrData[7];	// 내/외국인 정보 (개발 가이드 참조)
 
                 } else {
                     $sRtnCode = -1;

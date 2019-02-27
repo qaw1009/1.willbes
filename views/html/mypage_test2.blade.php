@@ -94,9 +94,6 @@
     <div class="Content p_re">
 
         <div class="willbes-Mypage-TESTZONE c_both">
-            <div class="willbes-Prof-Subject willbes-Mypage-Tit NG">
-                · 온라인모의고사 응시
-            </div>
             <div class="willbes-Cart-Txt willbes-Mypage-Txt NG p_re">
                 <span class="MoreBtn"><a href="#none">유의사항안내 닫기 ▲</a></span>
                 <table cellspacing="0" cellpadding="0" class="txtTable tx-black">
@@ -106,7 +103,8 @@
                                 - 온라인 응시기간 및 지정된 시간에만 응시가 가능하오니 시험기간을 엄수해 주세요.<br/>
                                 - 임의로 시험을 중단하거나 임시저장만 한 상태에서 시험 종료 시, 시험결과를 확인할 수 없습니다.<br/>
                                 - 모의고사 응시 창에서 응시 후, 답안지는 모두 체크하셔야 답안 제출이 가능합니다.<br/>
-                                &nbsp; (답안을 제출해야만 성적결과를 확인할 수 있습니다.)
+                                - 시험시간이 종료되기 전 답안을 제출해 주세요. 답안을 제출하지 않을 경우 시험 결과를 확인할 수 없습니다.<br/>
+                                &nbsp; (시험시간 종료 시 답안 제출 불가)<br/>
                             </td>
                         </tr>
                     </tbody>

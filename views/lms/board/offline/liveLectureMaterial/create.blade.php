@@ -114,7 +114,7 @@
 
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="title">제목<span class="required">*</span></label>
-                    <div class="form-inline col-md-10 item">
+                    <div class="col-md-10 item">
                         <input type="text" id="title" name="title" required="required" class="form-control" maxlength="46" title="제목" value="{{ $data['Title'] }}" placeholder="제목 입니다.">
                     </div>
                 </div>

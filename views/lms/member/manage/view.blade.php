@@ -107,10 +107,10 @@
     <ul class="tabs-site-code nav nav-tabs bar_tabs mt-30" role="tablist">
         <li role="presentation"><a role="tab" href="#none" data-toggle="tab" onclick="fnLoad('ajaxLecture');"><strong>수강정보관리</strong></a></li>
         <li role="presentation"><a role="tab" href="#none" data-toggle="tab" onclick="fnLoad('ajaxPay');"><strong>결제정보관리</strong></a></li>
-        <li role="presentation"><a role="tab" href="#none" data-toggle="tab" onclick="fnLoad('lecture');"><strong>상담/메모관리</strong></a></li>
-        <li role="presentation"><a role="tab" href="#none" data-toggle="tab" onclick="fnLoad('lecture');"><strong>쿠폰관리</strong></a></li>
-        <li role="presentation"><a role="tab" href="#none" data-toggle="tab" onclick="fnLoad('lecture');"><strong>포인트관리</strong></a></li>
-        <li role="presentation"><a role="tab" href="#none" data-toggle="tab" onclick="fnLoad('lecture');"><strong>CRM관리</strong></a></li>
+        <li role="presentation"><a role="tab" href="#none" data-toggle="tab" onclick="fnLoad('ajaxCounsel');"><strong>상담/메모관리</strong></a></li>
+        <li role="presentation"><a role="tab" href="#none" data-toggle="tab" onclick="fnLoad('ajaxCoupon');"><strong>쿠폰관리</strong></a></li>
+        <li role="presentation"><a role="tab" href="#none" data-toggle="tab" onclick="fnLoad('ajaxPointLecture');"><strong>포인트관리</strong></a></li>
+        <li role="presentation"><a role="tab" href="#none" data-toggle="tab" onclick="fnLoad('ajaxSms');"><strong>CRM관리</strong></a></li>
     </ul>
     <div id="tab-content"> </div>
     <script type="text/javascript">
@@ -164,6 +164,22 @@
 
             $('#btn_list').click(function() {
                 location.replace('{{ site_url('/member/manage/') }}' + getQueryString());
+            });
+
+            $('#btn_pwd_reset').click(function() {
+               if(window.confirm('해당 회원의 비밀번호를 초기화 하시겠습니까?\n초기화할 경우 1111 로 자동변경 됩니다.')){
+                   $url = '{{site_url('member/manage/resetPwd')}}';
+                   $data = 'memIdx={{$data['MemIdx']}}';
+
+                   sendAjax($url,
+                       $data,
+                       function(d){
+                           alert('비밀번호가 1111 로 초기화 되었습니다.');
+                       },
+                       function(req, status, err){
+                           showError(req, status);
+                       }, false, 'GET', 'json');
+               }
             });
         });
 

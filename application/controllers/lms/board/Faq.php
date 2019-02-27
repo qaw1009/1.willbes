@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-require APPPATH . 'controllers/lms/board//BaseBoard.php';
+require APPPATH . 'controllers/lms/board/BaseBoard.php';
 
 class Faq extends BaseBoard
 {
@@ -304,6 +304,8 @@ class Faq extends BaseBoard
             'attach_file_type' => $this->_attach_reg_type['default']
         ];
         $data = $this->boardModel->findBoardForModify($this->board_name, $column, $arr_condition, $arr_condition_file);
+        // 첨부파일 이미지일 경우 해당 배열에 담기
+        $data['Content'] = $this->_getBoardForContent($data['Content'], $data['AttachFilePath'], $data['AttachFileName']);
 
         if (count($data) < 1) {
             show_error('데이터 조회에 실패했습니다.');
@@ -315,8 +317,6 @@ class Faq extends BaseBoard
         $data_PN = $this->_findBoardPrevious_Next($this->bm_idx, $board_idx, $data['IsBest'], $data['RegType'], $search_datas);
         $board_previous = $data_PN['next'];     //다음글
         $board_next = $data_PN['previous'];     //이전글
-
-
 
         $site_code = $data['SiteCode'];
         $arr_cate_code = explode(',', $data['CateCode']);

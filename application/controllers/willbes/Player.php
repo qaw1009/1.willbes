@@ -3,10 +3,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Player extends \app\controllers\FrontController
 {
-    protected $models = array('classroomF', 'playerF', 'product/productF', 'product/professorF');
+    protected $models = array('classroomF', 'playerF', 'product/productF', 'product/professorF', '_lms/sys/code', 'memberF');
     protected $helpers = array();
     protected $auth_controller = false;
     protected $auth_methods = array('index');
+
+    private $_groupCcd = [
+        'consult_ccd' => '702',   //유형 그룹 코드 = 상담유형
+    ];
 
     protected $_profReferDataName = [
         'OT' => 'ot_url',
@@ -32,6 +36,7 @@ class Player extends \app\controllers\FrontController
         $prodcodesub = $this->_req('sp');
         $unitidx = $this->_req('u');
         $quility = $this->_req('q');
+        $time = $this->_req('t');
 
         $today = date("Y-m-d", time());
         $ispause = 'N';
@@ -42,6 +47,21 @@ class Player extends \app\controllers\FrontController
             $MemId = $this->session->userdata('mem_id');
         } else {
             show_alert("로그인해야 수강이 가능합니다.", 'close');
+        }
+
+        // 사용자 가 BtoB 회원인지 체크
+        $btob = $this->memberFModel->getBtobMember($this->session->userdata('mem_idx'));
+        if(empty($btob['BtobIdx']) == false) {
+            // BtoB 회원 수강가능한 아이피인지 체크
+            $btob_ip = $this->memberFModel->btobIpCheck($btob['BtobIdx']);
+
+            if (empty($btob_ip['ApprovalIp']) == true) {
+                // 아이피 목록 없음
+                show_alert("수강이 불가능한 장소입니다.", 'close');
+            } elseif ($btob_ip['ApprovalIp'] != $this->input->ip_address()) {
+                // 아이피가 있을때 다시 한번 아이피 확인 불일치
+                show_alert("수강이 불가능한 장소입니다.", 'close');
+            }
         }
 
         if(empty($orderidx) === true || empty($prodcode) === true || empty($prodcodesub) === true){
@@ -248,6 +268,8 @@ class Player extends \app\controllers\FrontController
 
         $isintro = false;
 
+        $startposition = (empty($time) == false) ? $time : $data['LastPosition'];
+
         return $this->load->view('/player/normal', [
             'data' => [
                 'orderidx' => $orderidx,
@@ -259,13 +281,14 @@ class Player extends \app\controllers\FrontController
                 'quility' => $quility,
                 'isIntro' => $isintro,
                 'ratio' => $ratio,
-                'startPosition' => $data['LastPosition'],
+                'startPosition' => $startposition,
                 'pretitle' => $data['wUnitNum'].'회 '.$data['wUnitLectureNum'].'강',
                 'title' => $data['wUnitName'],
                 'url' => $url,
                 'memid' => $MemId,
                 'memidx' => $this->session->userdata('mem_idx'),
-                'logidx' => $logidx
+                'logidx' => $logidx,
+                'ip' => $this->input->ip_address()
             ]
         ]);
     }
@@ -346,11 +369,107 @@ class Player extends \app\controllers\FrontController
 
         $this->load->view('/player/sample', [
             'data' => [
+                'pretitle' => $data['wUnitNum'].'회 '.$data['wUnitLectureNum'].'강',
+                'title' => $data['wUnitName'],
+                'quility' => 'WD',
+                'startPosition' => 0,
+                'ratio' => 21,
                 'isIntro' => false,
                 'ratio' => $ratio,
                 'startPosition' => 0,
                 'url' => $url,
-                'memid' => $MemId
+                'memid' => $MemId,
+                'ip' => $this->input->ip_address()
+            ]
+        ]);
+    }
+
+    /**
+     * 샘플강의 보기
+     * @param array $params
+     */
+    public function Free($params = [])
+    {
+        if(empty($params[0]) === true || empty($params[1]) === true || empty($params[2]) === true ){
+            show_alert('파라미터가 잘못 되었습니다.1', 'close');
+        }
+
+        $prodcode = $params[0];
+        $unitidx = $params[1];
+        $quility = $params[2];
+
+        if($this->session->userdata('is_login') !== true){
+            show_alert('로그인해야 이용이 가능합니다.','close');
+        }
+
+        $MemId = $this->session->userdata('mem_id');
+
+        if(empty($quility) === true){
+            $quility = 'WD';
+        }
+
+        $data = $this->playerFModel->getLectureFree($prodcode, $unitidx);
+
+        if(empty($data) === true){
+            show_alert('샘플강좌가 없습니다.', 'close');
+        }
+
+        switch($quility){
+            case 'WD':
+                $filename = $data['wWD'];
+                $ratio = 21; // 초 와이드는 고정
+                break;
+
+            case 'HD':
+                $filename = $data['wHD'];
+                $ratio = $data['wRatio']; // 고화질은 설정한 비율
+                break;
+
+            case 'SD':
+                $filename = $data['wSD'];
+                $ratio = $data['wRatio']; // 저화질도 설정한 비율
+                break;
+
+            default:
+                $filename = $data['wWD'];
+                $ratio = 21; // 초 와이드는 고정
+                break;
+        }
+
+        // 동영상 경로가 없을때 다른 경로로 재생
+        if(empty($filename) === true){
+            $filename = $data['wWD'];
+            $ratio = 21;
+        }
+        if(empty($filename) === true){
+            $filename = $data['wHD'];
+            $ratio = $data['wRatio'];
+        }
+        if(empty($filename) === true){
+            $filename = $data['wSD'];
+            $ratio = $data['wRatio'];
+        }
+
+        // 모든 경로가 존재 없을때
+        if(empty($filename) === true){
+            show_alert('샘플파일이 없습니다.', 'close');
+        }
+
+        $url = $this->clearUrl($data['wMediaUrl'].'/'.$filename);
+
+        $this->load->view('/player/sample', [
+            'data' => [
+                'pretitle' => $data['wUnitNum'].'회 '.$data['wUnitLectureNum'].'강',
+                'title' => $data['wUnitName'],
+                'quility' => 'WD',
+                'startPosition' => 0,
+                'ratio' => 21,
+                'isIntro' => false,
+                'ratio' => $ratio,
+                'startPosition' => 0,
+                'url' => $url,
+                'memid' => $MemId,
+                'ip' => $this->input->ip_address()
             ]
         ]);
     }
@@ -403,11 +522,16 @@ class Player extends \app\controllers\FrontController
 
         $this->load->view('/player/professor', [
             'data' => [
+                'title' => '맛보기강의 입니다.',
+                'pretitle' => $data['wProfName'].'교수님',
+                'quility' => 'WD',
+                'startPosition' => 0,
+                'ratio' => 21,
                 'isIntro' => false,
-                'ratio' => 12,
                 'startPosition' => 0,
                 'url' => $url,
-                'memid' => $MemId
+                'memid' => $MemId,
+                'ip' => $this->input->ip_address()
             ]
         ]);
     }
@@ -430,7 +554,7 @@ class Player extends \app\controllers\FrontController
         $prodcodesub = $this->_req('sp');
 
         if(empty($orderidx) === true || empty($prodcode) === true || empty($prodcodesub) === true){
-            show_alert('강좌정보가 없습니다.111', 'back');
+            show_alert('강좌정보가 없습니다.', 'back');
         }
 
         $lec = $this->classroomFModel->getLecture([
@@ -486,7 +610,6 @@ class Player extends \app\controllers\FrontController
         $lec['ProfReferData'] = json_decode($lec['ProfReferData'], true);
         $lec['isstart'] = $isstart;
         $lec['ispause'] = $ispause;
-        $lec['SiteUrl'] = app_to_env_url($this->getSiteCacheItem($lec['SiteCode'], 'SiteUrl'));
 
         // 회차 열어준경우 IN 생성
         if(empty($lec['wUnitIdxs']) == true){
@@ -579,22 +702,86 @@ class Player extends \app\controllers\FrontController
     function info()
     {
         $input = $this->_reqG(null);
-        $data = [];
+
+        $today = date("Y-m-d", time());
+        $ispause = 'N';
+        $isstart = 'Y';
+
+        // 강좌정보 읽어오기
+        $orderidx = $this->_req('o');
+        $prodcode = $this->_req('p');
+        $prodcodesub = $this->_req('sp');
+
+        if(empty($orderidx) === true || empty($prodcode) === true || empty($prodcodesub) === true){
+            show_alert('강좌정보가 없습니다.', 'back');
+        }
+
+        $lec = $this->classroomFModel->getLecture([
+            'EQ' => [
+                'MemIdx' => $this->session->userdata('mem_idx'),
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub
+            ],
+            'GTE' => [
+                'RealLecEndDate' => $today
+            ]
+        ]);
+
+        if(empty($lec) === true){
+            show_alert('강좌정보가 없습니다.', 'back');
+        }
+
+        $lec = $lec[0];
 
         $this->load->view('/player/info', [
             'input' => $input,
-            'data' => $data
+            'lec' => $lec
         ]);
     }
 
     function qna()
     {
         $input = $this->_reqG(null);
-        $data = [];
+
+        $today = date("Y-m-d", time());
+        $ispause = 'N';
+        $isstart = 'Y';
+
+        // 강좌정보 읽어오기
+        $orderidx = $this->_req('o');
+        $prodcode = $this->_req('p');
+        $prodcodesub = $this->_req('sp');
+
+        if(empty($orderidx) === true || empty($prodcode) === true || empty($prodcodesub) === true){
+            show_alert('강좌정보가 없습니다.', 'back');
+        }
+
+        $lec = $this->classroomFModel->getLecture([
+            'EQ' => [
+                'MemIdx' => $this->session->userdata('mem_idx'),
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub
+            ],
+            'GTE' => [
+                'RealLecEndDate' => $today
+            ]
+        ]);
+
+        if(empty($lec) === true){
+            show_alert('강좌정보가 없습니다.', 'back');
+        }
+
+        $lec = $lec[0];
+
+        //상담유형
+        $arr_base['consult_type'] = $this->codeModel->getCcd($this->_groupCcd['consult_ccd']);
 
         $this->load->view('/player/qna',[
             'input' => $input,
-            'data' => $data
+            'lec' => $lec,
+            'arr_base' => $arr_base
         ]);
     }
 
@@ -604,17 +791,50 @@ class Player extends \app\controllers\FrontController
     public function listBookmark()
     {
         $input = $this->_reqG(null);
+
+        $today = date("Y-m-d", time());
+        $ispause = 'N';
+        $isstart = 'Y';
+
+        // 강좌정보 읽어오기
+        $orderidx = $this->_req('o');
+        $prodcode = $this->_req('p');
+        $prodcodesub = $this->_req('sp');
+
+        if(empty($orderidx) === true || empty($prodcode) === true || empty($prodcodesub) === true){
+            show_alert('강좌정보가 없습니다.', 'back');
+        }
+
+        $lec = $this->classroomFModel->getLecture([
+            'EQ' => [
+                'MemIdx' => $this->session->userdata('mem_idx'),
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub
+            ],
+            'GTE' => [
+                'RealLecEndDate' => $today
+            ]
+        ]);
+
+        if(empty($lec) === true){
+            show_alert('강좌정보가 없습니다.', 'back');
+        }
+
+        $lec = $lec[0];
+
         $data = $this->playerFModel->getBookmark($input);
 
         if(empty($data) == false) {
             foreach ($data AS $idx => $row) {
-                $data[$idx]['ConvertTime'] = gmdate('H:i:s', $row['Time']);;
+                $data[$idx]['ConvertTime'] = gmdate('H:i:s', $row['Time']);
             }
         }
 
         $this->load->view('/player/bookmark',[
             'input' => $input,
-            'data' => $data
+            'data' => $data,
+            'lec' => $lec
         ]);
     }
 
@@ -727,18 +947,78 @@ class Player extends \app\controllers\FrontController
      */
     public function checkDevicePC()
     {
-        $orderidx = $this->_req('o');
-        $prodcode = $this->_req('p');
-        $orderprodidx = $this->_req('op');
-        $prodcodesub = $this->_req('sp');
+        $MemIdx = $this->_req('m');
+        $OrderIdx = $this->_req('o');
+        $ProdCode = $this->_req('p');
+        $OrderProdIdx = $this->_req('op');
+        $ProdCodeSub = $this->_req('sp');
+        $device_id = $this->_req('di');
+
+        $device_model = '';
+        $os_version = '';
+        $app_version = '';
+
+        $today = date("Y-m-d", time());
 
         // 해당강의가 기기제한 강의인지 체크
+        $lec = $this->classroomFModel->getLecture([
+            'EQ' => [
+                'MemIdx' => $MemIdx,
+                'OrderIdx' => $OrderIdx,
+                'ProdCode' => $ProdCode,
+                'ProdCodeSub' => $ProdCodeSub
+            ],
+            'GTE' => [
+                'RealLecEndDate' => $today
+            ]
+        ]);
 
-        // 기기제한 강의라면 디바이스 등록
+        if(empty($lec) === true){
+            return $this->json_error('강좌 정보가 없습니다.');
+        }
 
-        // 디바이스 등록에 실패하면 스톱
+        $lec = $lec[0];
 
-        echo 'OK';
+        // 기간제 패키지 이면 기기체크하기
+        if($lec['LearnPatternCcd'] == '615004'){
+            // 등록된 디바이스 인지 체크
+            $count = $this->playerFModel->getDevice([ 'EQ' => [
+                'MemIdx' => $MemIdx,
+                'DeviceId' => $device_id,
+                'IsUse' => 'Y'
+            ]]);
+
+            if($count == 1){
+                // 이미 등록된 디바이스
+                return $this->json_result(true,'이미등록된 디바이스');
+            }
+
+            // 총 등록된 디바이스 갯수
+            $count = $this->playerFModel->getDevice([ 'EQ' => [
+                'MemIdx' => $MemIdx,
+                'IsUse' => 'Y'
+            ]]);
+
+            // 등록기기댓수 초과
+            if($count >= $lec['DeviceLimitCount']){
+                return $this->json_error('수강가능한 등록기기 댓수가 초과 되었습니다.');
+            }
+
+            // 기기등록 시도
+            if($this->playerFModel->storeDevice([
+                    'DeviceType' => 'P',
+                    'MemIdx' => $MemIdx,
+                    'DeviceModel' => $device_model,
+                    'DeviceId' => $device_id,
+                    'Os' => $os_version,
+                    'App' => $app_version
+                ]) == false){
+                // 기기등록 실패
+                return $this->json_error('수강기기 등록에 실패했습니다.');
+            }
+        }
+
+        return $this->json_result(true, '재생이 가능합니다.');
     }
 
 
@@ -757,7 +1037,7 @@ class Player extends \app\controllers\FrontController
         $wUnitIdx = $this->_req("u");
         $Quility = $this->_req("q");
         $type = $this->_req("st");
-
+logger($wUnitIdx);
         $ispause = 'N';
         $isstart = 'Y';
         $timeover = 'N';
@@ -770,6 +1050,10 @@ class Player extends \app\controllers\FrontController
         } else {
             $type = "streaming";
             $PlayType = 'S';
+        }
+
+        if(empty($wUnitIdx) == true){
+            $this->StarplayerResult(true, '수강할 회차 정보가 없습니다.');
         }
 
         // 수강가능인지 체크
@@ -839,6 +1123,7 @@ class Player extends \app\controllers\FrontController
         }
 
         if(is_array($wUnitIdx) == true){
+            logger('in array');
             $cond_arr = [
                 'EQ' => [
                     'MemIdx' => $MemIdx,
@@ -852,6 +1137,7 @@ class Player extends \app\controllers\FrontController
                 ]
             ];
         } else {
+            logger('is one');
             $cond_arr = [
                 'EQ' => [
                     'MemIdx' => $MemIdx,
@@ -873,7 +1159,7 @@ class Player extends \app\controllers\FrontController
         if(empty($data) == true){
             $this->StarplayerResult(true,'강의 정보가 없습니다.');
         }
-
+logger('xml 시작');
         $XMLString  = "<?xml version='1.0' encoding='UTF-8' ?>";
         $XMLString .= "<axis-app>";
         $XMLString .= "<security>true</security>"; // 보안설정
@@ -982,7 +1268,7 @@ class Player extends \app\controllers\FrontController
             $url = $this->clearUrl($row['wMediaUrl'].'/'.$filename);
             $title = $row['wUnitNum'].'회 '.$row['wUnitLectureNum'].'강 '.$row['wUnitName'];
             $id = "^{$MemId}^{$MemIdx}^{$OrderIdx}^{$lec['OrderProdIdx']}^{$ProdCode}^{$ProdCodeSub}^{$row['wUnitIdx']}^{$logidx}^";
-            $category = $lec['SubjectName'].'/'.$lec['CourseName'];
+            // $category = $lec['SubjectName'].'/'.$lec['CourseName'];
             $enddate = $lec['RealLecEndDate'];
 
             $XMLString .= "<content>";
@@ -995,9 +1281,8 @@ class Player extends \app\controllers\FrontController
             }
             $XMLString .= "</content>";
         }
-
         $XMLString .= "</axis-app>";
-
+        logger($XMLString);
         echo $this->crypto->encrypt($XMLString);
     }
 
@@ -1241,15 +1526,17 @@ class Player extends \app\controllers\FrontController
 
             if($type == 'download'){
                 $rtnData = array_merge($rtnData, [
-                    'category' => $category,
-                    'thumbnail' => '',
-                    'url' => $url,
-                    'cc' => '',
-                    'title' => base64_encode(rawurlencode($title)),
-                    'desc' => '',
-                    'teacher' => $lec['wProfName'],
-                    'expiry_date' => $enddate,
-                    'content_id' => $id
+                    $key => [
+                        'category' => base64_encode(rawurlencode($category)),
+                        'thumbnail' => '',
+                        'url' => $url,
+                        'cc' => '',
+                        'title' => base64_encode(rawurlencode($title)),
+                        'desc' => base64_encode(rawurlencode('')),
+                        'teacher' => base64_encode(rawurlencode($lec['wProfName'])),
+                        'expiry_date' => $enddate,
+                        'content_id' => $id
+                    ]
                 ]);
 
             } else {
@@ -1264,6 +1551,8 @@ class Player extends \app\controllers\FrontController
                 ];
             }
         }
+
+        logger('A:',$rtnData);
 
         return $this->json_result(true,'성공',null, $rtnData);
     }
@@ -1333,6 +1622,7 @@ class Player extends \app\controllers\FrontController
                 // 기간제 패키지 이면 기기체크하기
                 if($lec['LearnPatternCcd'] == '615004'){
                     $this->checkDeviceMobile([
+                        'DeviceType' => 'M',
                         'MemIdx' => $lec['MemIdx'],
                         'DeviceModel' => $device_model,
                         'DeviceId' => $device_id,
@@ -1393,7 +1683,6 @@ class Player extends \app\controllers\FrontController
 
     /**
      * 스타플레이어 E 하이브리드 앱 수강기록 업데이트
-     *
      */
     function StarplayerEntAPI()
     {
@@ -1401,7 +1690,10 @@ class Player extends \app\controllers\FrontController
 
         $event = $this->_req('event');
         $user_id = $this->_req('user_id');
+        $os = $this->_req('os');
+        $os_version = $this->_req('os_version');
         $device_id = $this->_req('device_id');
+        $device_model = $this->_req('device_model');
         $content_url = $this->_req('content_url');
         $content_id = $this->_req('content_id');
         $actual_playback_duration = $this->_req('actual_playback_duration'); // 1분
@@ -1413,6 +1705,7 @@ class Player extends \app\controllers\FrontController
         $rating = $this->_req('rating');
         $token = $this->_req('token');
         $play_type = $this->_req('play_type');
+        $app_version = ' ';
 
         // API 접근 로그남기기
         $params = '';
@@ -1434,10 +1727,11 @@ class Player extends \app\controllers\FrontController
                 // 기간제 패키지 이면 기기체크하기
                 if($lec['LearnPatternCcd'] == '615004'){
                     $this->checkDeviceMobile([
+                        'DeviceType' => 'M',
                         'MemIdx' => $lec['MemIdx'],
                         'DeviceModel' => $device_model,
                         'DeviceId' => $device_id,
-                        'Os' => $os_version,
+                        'Os' => $os.' '.$os_version,
                         'App' => $app_version
                     ], $lec['DeviceLimitCount'], true);
                 }
@@ -1813,6 +2107,7 @@ class Player extends \app\controllers\FrontController
 
         $this->playerFModel->storeDeviceLog($data);
     }
+
 
     /**
      * 스타플레이어 리턴 xml 생성

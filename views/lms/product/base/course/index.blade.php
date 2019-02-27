@@ -29,6 +29,7 @@
         <div class="row">
             <div class="col-xs-12 text-center">
                 <button type="submit" class="btn btn-primary btn-search" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
+                <button type="button" class="btn btn-default btn-search" id="btn_reset">초기화</button>
             </div>
         </div>
     </form>
@@ -60,7 +61,7 @@
                             <span class="hide">{{ $row['IsUse'] }}</span>
                         </td>
                         <td>
-                            <input type="text" name="order_num" class="form-control input-sm" value="{{ $row['OrderNum'] }}" data-origin-order-num="{{ $row['OrderNum'] }}" data-idx="{{ $row['CourseIdx'] }}" style="width: 50px;" />
+                            <input type="text" name="order_num" class="form-control input-sm" value="{{ $row['OrderNum'] }}" data-origin-order-num="{{ $row['OrderNum'] }}" data-idx="{{ $row['CourseIdx'] }}" readonly="readonly" style="width: 50px;" />
                         </td>
                         <td>{{ $row['RegAdminName'] }}</td>
                         <td>{{ $row['RegDatm'] }}</td>
@@ -84,9 +85,20 @@
                 paging: false,
                 searching: true,
                 buttons: [
-                    { text: '<i class="fa fa-sort-numeric-asc mr-5"></i> 정렬변경', className: 'btn-sm btn-success border-radius-reset mr-15 btn-reorder' },
+                    { text: '<i class="fa fa-sort-numeric-asc mr-5"></i> 정렬변경', className: 'btn-sm btn-success border-radius-reset mr-15 btn-reorder hide' },
                     { text: '<i class="fa fa-pencil mr-5"></i> 과정 등록', className: 'btn-sm btn-primary border-radius-reset btn-regist' }
                 ]
+            });
+
+            // 사이트탭별 정렬변경 버튼, 정렬순서 필드 설정 변경
+            $datatable.on('draw', function() {
+                if ($search_form.find('input[name="search_site_code"]').val() !== '') {
+                    $('.btn-reorder').removeClass('hide');
+                    $list_form.find('input[name="order_num"]').prop('readonly', false);
+                } else {
+                    $('.btn-reorder').addClass('hide');
+                    $list_form.find('input[name="order_num"]').prop('readonly', true);
+                }
             });
 
             // 순서 변경
@@ -103,6 +115,11 @@
                         $params[$(this).data('idx')] = $(this).val();
                     }
                 });
+
+                if (Object.keys($params).length < 1) {
+                    alert('변경된 내용이 없습니다.');
+                    return;
+                }
 
                 var data = {
                     '{{ csrf_token_name() }}' : $list_form.find('input[name="{{ csrf_token_name() }}"]').val(),

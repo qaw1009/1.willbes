@@ -74,7 +74,7 @@
         });
 
         function register_submit() {
-            var _url = '{!! site_url('/event/registerStore') !!}';
+            var _url = '{!! front_url('/event/registerStore') !!}';
             if (!confirm('저장하시겠습니까?')) { return true; }
             ajaxSubmit($regi_form_register, _url, function(ret) {
                 if(ret.ret_cd) {

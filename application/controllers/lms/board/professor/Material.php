@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-require APPPATH . 'controllers/lms/board//BaseBoard.php';
+require APPPATH . 'controllers/lms/board/BaseBoard.php';
 
 class Material extends BaseBoard
 {
@@ -93,7 +93,7 @@ class Material extends BaseBoard
         $count = $this->professorModel->listProfessorSubjectMappingForBoard(true, $arr_condition, $this->bm_idx);
 
         if ($count > 0) {
-            $list = $this->professorModel->listProfessorSubjectMappingForBoard(false, $arr_condition, $this->bm_idx);
+            $list = $this->professorModel->listProfessorSubjectMappingForBoard(false, $arr_condition, $this->bm_idx, '', $this->_reqP('length'), $this->_reqP('start'));
         }
 
         return $this->response([
@@ -351,8 +351,8 @@ class Material extends BaseBoard
             ['field' => 'cate_code[]', 'label' => '카테고리', 'rules' => 'trim|required'],
             ['field' => 'subject_idx', 'label' => '과목', 'rules' => 'trim|required|integer'],
             ['field' => 'type_ccd', 'label' => '자료유형', 'rules' => 'trim|required|integer'],
-            ['field' => 'prod_type_ccd', 'label' => '강좌적용구분', 'rules' => 'trim|required'],
-            ['field' => 'prod_code[]', 'label' => '강좌명', 'rules' => 'trim|required'],
+            ['field' => 'prod_type_ccd', 'label' => '강좌적용구분', 'rules' => 'callback_validateRequiredIf[type_ccd,632002]'],
+            ['field' => 'prod_code[]', 'label' => '강좌명', 'rules' => 'callback_validateRequiredIf[type_ccd,632002]'],
             ['field' => 'title', 'label' => '제목', 'rules' => 'trim|required|max_length[50]'],
             ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => 'board_content', 'label' => '내용', 'rules' => 'trim|required']
@@ -413,6 +413,8 @@ class Material extends BaseBoard
             'attach_file_type' => $this->_attach_reg_type['default']
         ];
         $data = $this->boardModel->findBoardForModify($this->board_name, $column, $arr_condition, $arr_condition_file);
+        // 첨부파일 이미지일 경우 해당 배열에 담기
+        $data['Content'] = $this->_getBoardForContent($data['Content'], $data['AttachFilePath'], $data['AttachFileName']);
 
         if (count($data) < 1) {
             show_error('데이터 조회에 실패했습니다.');

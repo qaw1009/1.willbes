@@ -52,6 +52,8 @@ readme.rst
 !/storage/cache/views/index.html
 /storage/logs/*
 !/storage/logs/index.html
+!/storage/logs/cron/index.html
+!/storage/logs/pg/inisis/index.html
 /storage/sessions/*
 !/storage/sessions/index.html
 /storage/uploads
@@ -59,5 +61,6 @@ readme.rst
 !/storage/cli/index.html
 !/storage/cli/task/index.html
 /public/uploads
-#application/config/database.php
+/application/config/database.php
+/application/config/memcached.php
 /_erd/.metadata/*

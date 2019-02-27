@@ -246,12 +246,11 @@ class BaseBoard extends \app\controllers\BaseController
     /**
      * 게시판 Best 적용
      * @param array $params
-     * @param array $before_params
      * @return array|bool
      */
-    protected function _boardIsBest($params = [], $before_params = [])
+    protected function _boardIsBest($params = [])
     {
-        return $this->boardModel->boardIsBest($params, $before_params);
+        return $this->boardModel->boardIsBest($params);
     }
 
     /**
@@ -279,9 +278,9 @@ class BaseBoard extends \app\controllers\BaseController
      * @param $arr_condition
      * @return array|bool
      */
-    protected function _getUnAnserArray($arr_condition)
+    protected function _getUnAnswerArray($arr_condition)
     {
-        return $this->boardModel->getUnAnserArray($arr_condition);
+        return $this->boardModel->getUnAnswerArray($arr_condition);
     }
 
     /**
@@ -357,5 +356,27 @@ class BaseBoard extends \app\controllers\BaseController
         $file_name = $this->_reqG('fname');
 
         public_download($file_path, $file_name);
+    }
+
+    /**
+     * 게시판 내용 재가공 처리
+     * @param $content
+     * @param $file_path
+     * @param $file_name
+     * @param $cnt
+     * @return string
+     */
+    protected function _getBoardForContent($content, $file_path, $file_name, $cnt = 2)
+    {
+        $arr_file_path = explode(',', $file_path);
+        $arr_file_name = explode(',', $file_name);
+
+        $tmp_images = '';
+        for ($i=0; $i<$cnt; $i++) {
+            if (empty($arr_file_path[$i]) === false) {
+                $tmp_images .= make_image_tag($arr_file_path[$i] . $arr_file_name[$i]);
+            }
+        }
+        return $tmp_images . $content;
     }
 }

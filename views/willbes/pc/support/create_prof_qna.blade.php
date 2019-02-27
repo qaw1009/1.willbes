@@ -48,12 +48,11 @@
                             <tr>
                                 <td class="w-tit bg-light-white tx-left strong pl30">수강정보</td>
                                 <td class="w-selected full tx-left pl30" colspan="3">
-                                    <select id="study_prod_code" name="study_prod_code" title="수강정보" class="seleLecA">
-                                        <option value="">질문 강좌를 선택하세요.</option>
-                                        <option value="200025" @if($data['ProdCode']=='200025')selected="selected"@endif>[복사]뿜뿜 모모랜드</option>
-                                        <option value="200020" @if($data['ProdCode']=='200020')selected="selected"@endif>뿜뿜 모모랜드</option>
-                                        <option value="200019" @if($data['ProdCode']=='200019')selected="selected"@endif>[복사]강의 복사 정보 확인</option>
-                                        <option value="200018" @if($data['ProdCode']=='200018')selected="selected"@endif>강의 복사 정보 확인</option>
+                                    <select id="study_prod_code" name="study_prod_code" title="강좌를 선택해 주세요.">
+                                        <option value="">강좌를 선택해 주세요.</option>
+                                        @foreach($arr_base['on_my_lecture'] as $key => $val)
+                                            <option value="{{$key}}">{{$val}}</option>
+                                        @endforeach
                                     </select>
                                 </td>
                             </tr>

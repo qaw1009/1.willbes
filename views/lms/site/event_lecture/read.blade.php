@@ -20,18 +20,27 @@
             <div class="form-group">
                 <label class="control-label col-md-1-1">운영사이트</label>
                 <div class="form-control-static col-md-4">{{$data['SiteName']}}</div>
-                <label class="control-label col-md-1-1 d-line">캠퍼스</label>
-                <div class="form-control-static col-md-4 ml-12-dot">{{$data['CampusName']}}</div>
             </div>
             <div class="form-group">
                 <label class="control-label col-md-1-1">카테고리 정보</label>
                 <div class="form-control-static col-md-10">{{$data['CateNames']}}</div>
             </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-1-1">캠퍼스</label>
+                <div class="form-control-static col-md-4">{{$data['CampusName']}}</div>
+                <label class="control-label col-md-1-1 d-line">프로모션코드</label>
+                <div class="form-control-static col-md-4 ml-12-dot">
+                    {{$data['PromotionCode']}}
+                </div>
+            </div>
             <div class="form-group">
                 <label class="control-label col-md-1-1">신청유형</label>
-                <div class="form-control-static col-md-4">{{$data['RequstTypeName']}}</div>
-                <label class="control-label col-md-1-1 d-line">진행일시</label>
-                <div class="form-control-static col-md-4 ml-12-dot">진행일시</div>
+                <div class="form-control-static col-md-4">{{$data['RequestTypeName']}}</div>
+                <label class="control-label col-md-1-1 d-line">특강구분</label>
+                <div class="form-control-static col-md-4 ml-12-dot">
+                    {{$data['SubjectName']}} {{$data['ProfNickName']}}
+                </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-md-1-1">참여구분</label>
@@ -46,8 +55,14 @@
                 <div class="form-control-static col-md-4 ml-12-dot">{{ ($data['IsUse'] == 'Y') ? '사용' : '미사용' }}</div>
             </div>
             <div class="form-group">
-                <label class="control-label col-md-1-1">프로모션 링크</label>
-                <div class="form-control-static col-md-10">{{$data['Link']}}</div>
+                <label class="control-label col-md-1-1">프로모션 경로</label>
+                {{--<div class="form-control-static col-md-10">{{$data['Link']}}</div>--}}
+                <div class="form-control-static col-md-10">
+                    @foreach($arr_cate_code as $key => $val)
+                        <p><b>[{{$val}}]</b> 관리자 확인용 : {{$data['SiteUrl'].'/promotion/index/cate/'.$key.'/code/'.$data['PromotionCode'].'?type=1'}}</p>
+                        <p><b>[{{$val}}]</b> 실제 경로 : {{$data['SiteUrl'].'/promotion/index/cate/'.$key.'/code/'.$data['PromotionCode']}}</p><br>
+                    @endforeach
+                </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-md-1-1">첨부</label>

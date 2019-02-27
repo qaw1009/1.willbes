@@ -149,11 +149,145 @@ class BtobInfo extends \app\controllers\BaseController
     }
 
 
+    /**
+     *  IP 삭제
+     * @return CI_Output
+     */
     public function deleteIp()
     {
         $result = $this->btobModel->deleteIp($this->_reqP(null));
 
         return $this->json_result($result, '', $result);
+
+    }
+
+
+    /**
+     *  제휴사로 등록된 회원목록 팝업
+     * @param array $params
+     */
+    public function listCpMember($params = [])
+    {
+        $method='POST';
+        $btobidx = $params[0];
+
+        $this->load->view('sys/btob/member_list_modal',[
+            'method' => $method
+            ,'btobidx' => $btobidx
+        ]);
+    }
+
+
+    /**
+     * 제휴사로 등록된 회원목록
+     * @return CI_Output
+     */
+    public function ajaxCpMember()
+    {
+
+        $isStatus = $this->_req('istatus') === 'N' ? '' : 'Y';
+
+        $arr_condition = [
+            'EQ' => [
+                'B.BtobIdx' => $this->_reqP('btobidx'),
+                'R.IsStatus' => $isStatus
+            ]
+        ];
+        $order_by =  ['R.bmIdx' => 'desc'];
+
+        $list = [];
+        $count = $this->btobModel->listCpMember(true,$arr_condition);
+
+        if($count > 0) {
+            $list = $this->btobModel->listCpMember(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), $order_by);
+        }
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list
+        ]);
+    }
+
+
+    /**
+     *  제휴사 회원 삭제
+     * @return CI_Output
+     */    
+    public function deleteCpMember()
+    {
+        $btobidx = $this->_req('btobidx');
+        $bmidx = $this->_req('bmidx');
+
+        $count = $this->btobModel->listCpMember(true, [
+            'EQ' => [
+                'B.BtobIdx' => $btobidx,
+                'R.bmIdx' => $bmidx,
+                'R.IsStatus' => 'Y'
+            ]
+        ]);
+
+        if($count != 1){
+            return $this->json_error('등록된 회원이 아닙니다.');
+        }
+
+        if($this->btobModel->deleteCpMember([
+                'BtobIdx' => $btobidx,
+                'BmIdx' => $bmidx
+            ]) === false)
+        {
+            return $this->json_error('제휴사 회원 삭제에 실패했습니다.\'');
+        }
+
+        return $this->json_result(true, '제휴사 회원을 삭제되었습니다.');
+    }
+
+
+    /**
+     * 제휴사 회원 추가
+     * @return CI_Output
+     */
+    public function addCpMember()
+    {
+        $btobidx = $this->_req('btobidx');
+        $memidx = $this->_req('mem_idx');
+
+        if(empty($memidx) === true || empty($btobidx) === true){
+            return $this->json_error('등록정보가 잘못되었습니다.');
+        }
+
+        $count = $this->btobModel->listCpMember(true, [
+            'EQ' => [
+                'B.BtobIdx' => $btobidx,
+                'M.MemIdx' => $memidx,
+                'R.IsStatus' => 'Y'
+            ]
+        ]);
+
+        if($count > 0){
+            return $this->json_error('이미 등록된 회원입니다.');
+        }
+
+        $count = $this->btobModel->listCpMember(true, [
+            'EQ' => [
+                'M.MemIdx' => $memidx,
+                'R.IsStatus' => 'Y'
+            ]
+        ]);
+
+        if($count > 0){
+            return $this->json_error('다른 제휴사로 등록되어있는 회원입니다.');
+        }
+
+        if($this->btobModel->addCpMember([
+                'BtobIdx' => $btobidx,
+                'MemIdx' => $memidx
+            ]) === false)
+        {
+            return $this->json_error('등록에 실패했습니다.');
+        }
+
+        return $this->json_result(true, '등록되었습니다.');
 
     }
 }

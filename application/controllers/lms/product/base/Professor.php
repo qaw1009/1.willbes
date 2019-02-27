@@ -85,6 +85,9 @@ class Professor extends \app\controllers\BaseController
 
             // 강사료 정산 데이터 조회
             $data['CalcRate'] = $this->professorModel->listProfessorCalcRate($idx);
+
+            // 교수배너 데이터 조회
+            $data['Bnr'] = $this->professorModel->listProfessorBanner($idx);
         }
 
         $this->load->view('product/base/professor/create', [
@@ -106,7 +109,7 @@ class Professor extends \app\controllers\BaseController
             ['field' => 'prof_nickname', 'label' => '교수닉네임', 'rules' => 'trim|required'],
             ['field' => 'is_use', 'label' => '노출여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => 'subject_mapping_code[]', 'label' => '카테고리 정보', 'rules' => 'trim|required'],
-            ['field' => 'prof_curriculum', 'label' => '커리큘럼', 'rules' => 'trim|required'],
+            //['field' => 'prof_curriculum', 'label' => '커리큘럼', 'rules' => 'trim|required'],
         ];
 
         if (empty($this->_reqP('idx')) === true) {
@@ -128,17 +131,18 @@ class Professor extends \app\controllers\BaseController
 
         $result = $this->professorModel->{$method . 'Professor'}($this->_reqP(null, false));
 
+        /* 사용안함
         // 교수 + 과목 연결 캐쉬 저장
         if ($result === true) {
             $this->load->driver('caching');
             $this->caching->site_subject_professor->save();
-        }
+        }*/
 
         $this->json_result($result, '저장 되었습니다.', $result);
     }
 
     /**
-     * 교수영역 이미지 삭제
+     * 교수영역/배너 이미지 삭제
      */
     public function destroyImg()
     {
@@ -152,7 +156,11 @@ class Professor extends \app\controllers\BaseController
             return;
         }
 
-        $result = $this->professorModel->removeImg($this->_reqP('img_type'), $this->_reqP('idx'));
+        if (starts_with($this->_reqP('img_type'), 'bnr_img_') === true) {
+            $result = $this->professorModel->removeBannerImg($this->_reqP('img_type'), $this->_reqP('idx'));
+        } else {
+            $result = $this->professorModel->removeImg($this->_reqP('img_type'), $this->_reqP('idx'));
+        }
 
         $this->json_result($result, '저장 되었습니다.', $result);
     }    

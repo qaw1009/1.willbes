@@ -4,7 +4,7 @@
     <h5>- 학원방문상담 신청자들의 접수/취소 내역을 관리하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
-        {!! html_def_site_tabs('', 'tabs_site_code', 'tab', true, [], false, $offLineSite_list) !!}
+        {!! html_def_site_tabs('', 'tabs_site_code', 'tab', false, [], false, $offLineSite_list) !!}
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">
@@ -56,9 +56,9 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-12 text-right">
+            <div class="col-xs-12 text-center">
                 <button type="submit" class="btn btn-primary btn-search" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
-                <button type="button" class="btn btn-default mr-20" id="_btn_reset">검색초기화</button>
+                <button type="button" class="btn btn-default btn-search" id="btn_reset">초기화</button>
             </div>
         </div>
     </form>
@@ -107,8 +107,8 @@
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 buttons: [
-                    { text: '<i class="fa fa-send mr-10"></i> 쪽지발송', className: 'btn-sm btn-info border-radius-reset btn-message' },
-                    { text: '<i class="fa fa-send mr-10"></i> SMS발송', className: 'btn-sm btn-info border-radius-reset ml-15 btn-sms' },
+                    { text: '<i class="fa fa-comment-o mr-5"></i> 쪽지발송', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-message' },
+                    { text: '<i class="fa fa-mobile mr-5"></i> SMS발송', className: 'btn-sm btn-primary border-radius-reset btn-sms' },
                 ],
                 ajax: {
                     'url' : '{{ site_url("/pass/consult/member/listAjax?") }}',

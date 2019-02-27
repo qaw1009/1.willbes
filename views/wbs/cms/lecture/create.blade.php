@@ -24,7 +24,7 @@
                         <select name="CpIdx" id="CpIdx" required="required" class="form-control" title="cp사" style="width: 200px">
                             <option value="">선택</option>
                         @foreach($cp_list as $row)
-                            <option value="{{ $row['wCpIdx']}}" @if($row['wCpIdx'] == $data['wCpIdx']) selected="selected"@endif>{{ $row['wCpName']}}</option>
+                            <option value="{{ $row['wCpIdx']}}" @if($row['wCpIdx'] == $data['wCpIdx'] || ($method == 'POST' && $row['wCpIdx']==='105') ) selected="selected"@endif>{{ $row['wCpName']}}</option>
                         @endforeach
                         </select>
                     
@@ -161,8 +161,9 @@
                             @if(empty($data['wAttachFile']) === false)
                             <br>
                             <p class="form-control-static ml-10 mr-10">
-                                [ <a href="{{site_url('/cms/lecture/download/').urlencode($data['wAttachPath'].$data['wAttachFile']).'/'.urlencode($data['wAttachFileReal']) }}" target="_blank">
-                                    {{ $data['wAttachFileReal'] }}</a> ]
+                                [
+                                <a href="{{site_url('/cms/lecture/download/').'?filename='.urlencode($data['wAttachPath'].$data['wAttachFile']).'&filename_ori='.urlencode($data['wAttachFileReal']) }}" target="_blank">
+                                {{ $data['wAttachFileReal'] }}</a> ]
                             </p>
                             <div class="checkbox">
                                 <input type="checkbox" name="attach_delete" value="Y" class="flat"/> <span class="red">삭제</span>
@@ -199,7 +200,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2">등록자
                     </label>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <p class="form-control-static">{{ $data['wAdminName'] }}</p>
                     </div>
                     <label class="control-label col-md-2">등록일
@@ -211,7 +212,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2">최종 수정자
                     </label>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <p class="form-control-static">{{ $data['wUpdAdminName'] }}</p>
                     </div>
                     <label class="control-label col-md-2">최종 수정일
@@ -256,21 +257,22 @@
                                     @if(empty($row['wUnitAttachFile']) === false)
                                         <br>
                                         <p class="form-control-static ml-10 mr-10">
-                                            [ <a href="{{site_url('/cms/lecture/download/').urlencode($data['wAttachPath'].$row['wUnitAttachFile']).'/'.urlencode($row['wUnitAttachFileReal'])}}" target="_blank">{{ $row['wUnitAttachFileReal'] }}</a> ]
+                                            [ <a href="{{site_url('/cms/lecture/download/').'?filename='.urlencode($data['wAttachPath'].$row['wUnitAttachFile']).'&filename_ori='.urlencode($row['wUnitAttachFileReal'])}}" target="_blank">{{ $row['wUnitAttachFileReal'] }}</a> ]
+
                                         </p>
                                     @endif
                                 </td>
                                 <td>
-                                    {{ $row['wRuntime']  }}
+                                    {{ $row['wRuntime']  }} 분
                                     <BR>
-                                    {{ $row['wBookPage']  }}
+                                    {{ $row['wBookPage']  }} P
                                 </td>
                                 <td>
-                                    [고화질] {{ $row['wHD'] }}
+                                    <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodViewUnit('WD',{{$row['wUnitIdx']}})">와이드</button> {{ $row['wWD'] }}
+                                    <BR>
+                                    <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodViewUnit('HD',{{$row['wUnitIdx']}})">고화질</button> {{ $row['wHD'] }}
                                     <br>
-                                    [일반화질] {{ $row['wSD'] }}
-                                    <br>
-                                    [와이드] {{ $row['wWD'] }}
+                                    <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodViewUnit('SD',{{$row['wUnitIdx']}})">일반화질</button> {{ $row['wSD'] }}
                                 </td>
                                 <td>{{$row['wCcdName']}}</td>
                                 <td>
@@ -278,8 +280,8 @@
                                     <Br>
                                     {{ $row['wProfName'] }}
                                 </td>
-                                <td>{{ $row['wRegDatm'] }}</td>
                                 <td>{{ $row['wAdminName'] }}</td>
+                                <td>{{ $row['wRegDatm'] }}</td>
                             </tr>
                         @endforeach
                         </tbody>
@@ -297,15 +299,14 @@
         var $list_table = $('#list_ajax_table');
 
         $(document).ready(function() {
-
             // ajax submit
             $regi_form.submit(function() {
-                var _url = '{{ site_url('/cms/lecture/store') }}';
 
+                var _url = '{{ site_url('/cms/lecture/store') }}';
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
-                        location.replace('{{ site_url('/cms/lecture/index') }}' + getQueryString());
+                        location.replace('{{ site_url('/cms/lecture/create/') }}'+ret.ret_data +'/'+ getQueryString());
                     }
                 }, showValidateError, null, false, 'alert');
             });
@@ -313,7 +314,6 @@
             $('#btn_list').click(function() {
                 location.replace('{{ site_url('/cms/lecture/index') }}' + getQueryString());
             });
-
 
             $datatable = $list_table.DataTable({
                 serverSide: false,
@@ -328,10 +328,14 @@
             $('.btn-unitregist').click(function() {
 
                 $('.btn-unitregist').setLayer({
-                    "url" : "{{ site_url('cms/lecture/createUnitModal/') }}"+ $('#LecIdx').val()
-                    ,width : "1800"
+                    "url" : "{{ site_url('cms/lecture/createUnitModal/') }}"+ $('#LecIdx').val() +"/"+$("#ProfIdx1").val()
+                    ,width : "1600"
                 });
             });
         });
+
+        function vodViewUnit(quility, idx) {
+            popupOpen(app_url('/cms/lecture/player/?lecidx={{$lecidx}}&unitidx='+idx+'&quility=' + quility , 'wbs'), 'wbsPlayer', '1000', '600', null, null, 'no', 'no');
+        }
     </script>
 @stop

@@ -77,7 +77,7 @@
 
                         columns: [
                             {'data' : null, 'render' : function(data, type, row, meta) {
-                                    var seq = meta.row + meta.settings._iDisplayStart;
+                                    var seq = meta.row;
                                     var codeInfo= row.CouponIdx+'@$'+row.ApplyTypeCcdName+'@$'+row.CouponName+'@$'+addComma(row.DiscRate)+((row.DiscType === 'R') ? '%' : '원')
                                                         +'@$'+row.ValidDay+'@$'+row.IssueValid+'@$';
                                     return '<input type="checkbox" id="checkIdx' + seq + '" name="checkIdx" class="flat" value="' + codeInfo + '" />';

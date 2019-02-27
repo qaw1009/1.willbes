@@ -33,8 +33,8 @@
                         <div class="willbes-Lec-Tit NG tx-black">
                             주문상품정보
                             <ul>
-                                <li class="subBtn NSK"><a href="#none">포인트 현황 ></a></li>
-                                <li class="subBtn NSK"><a href="#none">쿠폰 현황 ></a></li>
+                                <li class="subBtn NSK"><a href="{{ app_url('/classroom/point/index', 'www') }}" target="_blank">포인트 현황 ></a></li>
+                                <li class="subBtn NSK"><a href="{{ app_url('/classroom/coupon/index', 'www') }}" target="_blank">쿠폰 현황 ></a></li>
                             </ul>
                         </div>
                         <table cellspacing="0" cellpadding="0" class="listTable buyTable under-gray tx-gray">
@@ -60,6 +60,10 @@
                                                 <input type="hidden" name="coupon_detail_idx[{{ $row['CartIdx'] }}]" value="" data-cart-idx="{{ $row['CartIdx'] }}" data-coupon-disc-price="0" class="chk_price chk_coupon"/>
                                                 @if($row['IsCoupon'] == 'Y')
                                                     <span class="tBox NSK t1 black"><a href="#none" class="btn-coupon-apply" data-cart-idx="{{ $row['CartIdx'] }}">쿠폰적용</a></span>
+                                                @endif
+                                                @if($row['CartProdType'] == 'mock_exam')
+                                                    {{-- 모의고사 응시정보 --}}
+                                                    <span class="pBox p4 ml5"><a href="#none" class="btn-mock-exam-info" data-cart-idx="{{ $row['CartIdx'] }}">응시정보</a></span>
                                                 @endif
                                             </dt>
                                             <dt>
@@ -167,8 +171,8 @@
                         </div>
                         <div class="p-info tx-gray c_both">
                             • {{ $results['point_type_name'] }} 포인트는 <span class="tx-light-blue">{{ number_format(config_item('use_min_point')) }}P</span> 부터
-                            <span class="tx-light-blue">{{ config_item('use_point_unit') }}P</span> 단위로 사용 가능하며,
-                            주문금액의 <span class="tx-light-blue">{{ config_item('use_max_point_rate') }}%</span>까지만 사용 가능합니다.
+                            <span class="tx-light-blue">{{ config_item('use_point_unit') }}P</span> 단위로 <!--사용 가능하며,
+                            주문금액의 <span class="tx-light-blue">{{ config_item('use_max_point_rate') }}%</span>까지만--> 사용 가능합니다.
                         </div>
                     @endif
                 </div>
@@ -248,14 +252,14 @@
                                     <td class="w-tit bg-light-white tx-left pl20">휴대폰번호<span class="tx-light-blue">(*)</span></td>
                                     <td class="w-info tx-left pl20">
                                         <div class="item multi">
-                                            <select id="receiver_phone1" name="receiver_phone1" title="휴대폰번호1" class="selePhone">
+                                            <select id="receiver_phone1" name="receiver_phone1" title="휴대폰번호1" required="required" class="selePhone">
                                                 <option value="">선택</option>
                                                 @foreach($arr_phone1_ccd as $key => $val)
                                                     <option value="{{ $key }}">{{ $val }}</option>
                                                 @endforeach
                                             </select> -
-                                            <input type="text" id="receiver_phone2" name="receiver_phone2" title="휴대폰번호2" class="iptCellhone1 phone" maxlength="4"> -
-                                            <input type="text" id="receiver_phone3" name="receiver_phone3" title="휴대폰번소3" class="iptCellhone2 phone" maxlength="4">
+                                            <input type="text" id="receiver_phone2" name="receiver_phone2" title="휴대폰번호2" required="required" class="iptCellhone1 phone" maxlength="4"> -
+                                            <input type="text" id="receiver_phone3" name="receiver_phone3" title="휴대폰번소3" required="required" class="iptCellhone2 phone" maxlength="4">
                                             <input type="hidden" id="receiver_phone" name="receiver_phone" title="휴대폰번호" required="required" pattern="phone"/>
                                         </div>
                                     </td>
@@ -324,8 +328,8 @@
                                     <dl>
                                         <dt>
                                             <ul class="item">
-                                                @foreach(explode(',', $__cfg['PayMethodCcdArr']) as $idx => $val)
-                                                    <li><input type="radio" name="pay_method_ccd" value="{{ str_first_pos_before($val, ':') }}" data-pay-method-name="{{ str_first_pos_after($val, ':') }}" @if($idx == 0) title="결제수단" required="required" checked="checked" @endif/><label>{{ str_first_pos_after($val, ':') }}</label></li>
+                                                @foreach($arr_pay_method_ccd as $key => $val)
+                                                    <li><input type="radio" name="pay_method_ccd" value="{{ $key }}" data-pay-method-name="{{ $val }}" @if($loop->index == 1) title="결제수단" required="required" checked="checked" @endif/><label>{{ $val }}</label></li>
                                                 @endforeach
                                             </ul>
                                         </dt>
@@ -467,9 +471,11 @@
             <!-- willbes-Layer-CartBox : Coupon -->
             <div id="MyAddress" class="willbes-Layer-Black"></div>
             <!-- willbes-Layer-CartBox : 나의 배송 주소록 -->
+            <div id="MockExam" class="willbes-Layer-PassBox willbes-Layer-PassBox740 abs"></div>
+            <!-- willbes-Layer-CartBox : 모의고사 응시정보 -->
         </div>
         <div class="Quick-Bnr ml20 mt85">
-            <img src="{{ img_url('sample/banner_180605.jpg') }}">
+            {!! banner('강좌상품_우측날개', '', $__cfg['SiteCode'], '0') !!}
         </div>
     </div>
     <!-- End Container -->
@@ -506,6 +512,17 @@
 
                 // 강좌종료일 설정
                 $regi_form.find('input[name="study_end_date[' + cart_idx + ']"]').val(moment(selected_date).add(study_days - 1, 'days').format('YYYY-MM-DD'));
+            });
+
+            // 모의고사 응시정보 버튼 클릭
+            $regi_form.on('click', '.btn-mock-exam-info', function() {
+                var cart_idx = $(this).data('cart-idx');
+                var ele_id = 'MockExam';
+                var data = { 'ele_id' : ele_id };
+
+                sendAjax('{{ front_url('/mockTest/apply_cart_modal/') }}' + cart_idx, data, function(ret) {
+                    $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');
+                }, showAlertError, false, 'GET', 'html');
             });
 
             // 쿠폰적용 버튼 클릭
@@ -635,8 +652,8 @@
                 $regi_form.find('.total-pay-price').html(addComma(total_pay_price));
 
                 // 적립포인트 계산
-                if (point_disc_price > 0) {
-                    // 포인트를 사용한 경우 적립포인트 없음
+                if (point_disc_price > 0 || total_coupon_disc_price > 0) {
+                    // 포인트, 쿠폰을 사용한 경우 적립포인트 없음
                     $regi_form.find('#total_save_point').html('0');
                 } else {
                     var cart_data = {}, cart_idx, real_pay_price, total_save_point = 0;

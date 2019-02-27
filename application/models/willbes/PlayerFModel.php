@@ -37,7 +37,7 @@ class PlayerFModel extends WB_Model
 
         $column = '
             ML.wMediaUrl,
-            U.wSD, U.wHD, U.wWD,
+            U.wSD, U.wHD, U.wWD, U.wUnitNum, U.wUnitLectureNum, U.wUnitName,
             IFNULL(C.wCcdValue, 16) AS wRatio
             ';
 
@@ -60,9 +60,52 @@ class PlayerFModel extends WB_Model
         $where = $this->_conn->makeWhere($cond);
         $where = $where->getMakeWhere(false);
 
-        $rows = $this->_conn->query('SELECT STRAIGHT_JOIN ' . $column . $from . $where);
+        $rows = $this->_conn->query('SELECT ' . $column . $from . $where);
         return empty($rows) === true ? [] : $rows->row_array();
     }
+
+
+    /**
+     * 무료 보강
+     * @param $ProdCode
+     * @param $UnitIdx
+     * @return array
+     */
+    public function getLectureFree($ProdCode, $UnitIdx)
+    {
+        if (empty($ProdCode) === true || empty($UnitIdx) === true) {
+            return [];
+        }
+
+        $column = '
+            ML.wMediaUrl,
+            U.wSD, U.wHD, U.wWD, U.wUnitNum, U.wUnitLectureNum, U.wUnitName,
+            IFNULL(C.wCcdValue, 16) AS wRatio
+            ';
+
+        $cond = [
+            'EQ' => [
+                'L.ProdCode' => $ProdCode,
+                'L.FreeLecTypeCcd' => '652002',
+                'U.wUnitIdx' => $UnitIdx
+            ]
+        ];
+
+        $from = " FROM
+            {$this->_table['lecture']} AS L
+            INNER JOIN {$this->_table['mstlec']} AS ML ON L.wLecIdx = ML.wLecIdx
+            INNER JOIN {$this->_table['unit']} AS U ON ML.wLecIdx = U.wLecIdx
+            LEFT JOIN {$this->_table['wbs_code']} AS C ON U.wContentSizeCcd = C.wCcd 
+        ";
+
+        $where = $this->_conn->makeWhere($cond);
+        $where = $where->getMakeWhere(false);
+
+        $rows = $this->_conn->query('SELECT ' . $column . $from . $where);
+        return empty($rows) === true ? [] : $rows->row_array();
+    }
+
+
 
     /**
      * 북마크관리
@@ -73,7 +116,8 @@ class PlayerFModel extends WB_Model
         $cond = [
             'EQ' => [
                 'MemIdx' => $this->session->userdata('mem_idx'),
-                'prodCode' => element('sp', $input),
+                'ProdCode' => element('p', $input),
+                'ProdCodeSub' => element('sp', $input),
                 'wLecIdx' =>  element('l', $input),
                 'wUnitIdx' =>  element('u', $input)
             ]
@@ -93,6 +137,7 @@ class PlayerFModel extends WB_Model
         $input = [
             'MemIdx' => $this->session->userdata('mem_idx'),
             'ProdCode' => element('p', $input),
+            'ProdCodeSub' => element('sp', $input),
             'wLecIdx' => element('l', $input),
             'wUnitIdx' => element('u', $input),
             'Time' => element('bmtime', $input),
@@ -296,7 +341,7 @@ class PlayerFModel extends WB_Model
     function getStudyLog($cond)
     {
         // 회차 시간을 구한다.
-        $query = "SELECT STRAIGHT_JOIN * ";
+        $query = "SELECT * ";
         $query .= " FROM {$this->_table['lec_unit']} ";
         $where = $this->_conn->makeWhere($cond);
         $query .= $where->getMakeWhere(false);
@@ -383,9 +428,7 @@ class PlayerFModel extends WB_Model
     function storeDevice($input)
     {
         try{
-            if($this->_conn->set(array_merge($input,[
-                'DeviceType' => 'M'
-                ]))->insert($this->_table['device']) === false) {
+            if($this->_conn->set($input)->insert($this->_table['device']) === false) {
                 throw new \Exception('기기등록에 실패했습니다.');
             }
 

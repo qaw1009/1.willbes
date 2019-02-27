@@ -31,9 +31,9 @@
                             <th class="tx-gray">과목선택</th>
                             <td colspan="8">
                                 <ul class="curriSelect">
-                                    <li><a href="#none" id="subject_all" onclick="ajaxProfInfo('{{element('cate_code', $arr_input)}}', 'all');" class="subject-list">전체</a></li>
+                                    <li><a href="#none" id="subject_all" onclick="ajaxProfInfo('{{element('cate_code', $arr_input)}}', 'all', true);" class="subject-list">전체</a></li>
                                     @foreach($arr_base['subject'] as $idx => $row)
-                                        <li><a href="#none" id="subject_{{$row['SubjectIdx']}}" class="subject-list" onclick="ajaxProfInfo('{{element('cate_code', $arr_input)}}', '{{$row['SubjectIdx']}}');">{{$row['SubjectName']}}</a></li>
+                                        <li><a href="#none" id="subject_{{$row['SubjectIdx']}}" class="subject-list" onclick="ajaxProfInfo('{{element('cate_code', $arr_input)}}', '{{$row['SubjectIdx']}}', true);">{{$row['SubjectName']}}</a></li>
                                     @endforeach
                                 </ul>
                             </td>
@@ -115,9 +115,7 @@
     <!-- Write -->
     <div id="AddModify" class="Layer-Cont" style="display: {{$style_display['show']}}">
         <ul class="replyInfo tx-gray NG">
-            <li>· 수강생에 한해 강좌당 1회 작성이 가능합니다.</li>
             <li>· 수강 종료 강좌는 수강이 종료된 날로부터 30일 이내에만 후기 등록이 가능합니다.</li>
-            <li>· 수강후기 작성 시 포인트 500P가 지급됩니다. (월 최대 2,000p 지급가능)</li>
             <li>· 강좌와 무관한 내용, 의미없는 문자 나열, 비방이나 욕설이 있을 시 삭제될 수 있습니다.</li>
         </ul>
         <form id="_ajax_reg_form" name="_ajax_reg_form" method="POST" onsubmit="return false;" novalidate>
@@ -221,7 +219,6 @@
     var $_ajax_reg_form = $('#_ajax_reg_form');
     var $mem_id = '{{sess_data('mem_id')}}';
 
-    // star rating Script //
     $(document).ready(function(){
         var is_login = '{{sess_data('is_login')}}';
         $_ajax_reg_form.find('select[name="study_prof_idx"]').chained("#study_subject_idx");
@@ -312,16 +309,16 @@
         //수강후기 등록
         $_ajax_reg_form.on('click', '#btn_submit', function() {
             @if(sess_data('is_login') != true)
-                alert('로그인 후 이용해 주세요.');
-            @else
-                var url = '{{ front_url('/support/studyComment/store') }}';
-                ajaxSubmit($_ajax_reg_form, url, function(ret) {
-                    if(ret.ret_cd) {
-                        alert(ret.ret_msg);
-                        closeWin('AddModify'),openWin('AddList');
-                        callAjax(1);
-                    }
-                }, showValidateError, null, false, 'alert');
+            alert('로그인 후 이용해 주세요.');
+                    @else
+            var url = '{{ front_url('/support/studyComment/store') }}';
+            ajaxSubmit($_ajax_reg_form, url, function(ret) {
+                if(ret.ret_cd) {
+                    alert(ret.ret_msg);
+                    closeWin('AddModify'),openWin('AddList');
+                    callAjax(1);
+                }
+            }, showValidateError, null, false, 'alert');
             @endif
         });
 
@@ -348,7 +345,7 @@
             'page' : page,
             'orderby' : orderby
         };
-        console.log(data);
+
         sendAjax(_url, data, function(ret) {
             var set_table_style;
             var param_board_idx = "{{ element('board_idx', $arr_input) }}";
@@ -432,13 +429,6 @@
         }, showError, false, 'GET');
     }
 
-    //list,page, page href 함수 일괄 호출
-    function callAjax(num) {
-        listAjax(num);    //list data load
-        ajaxPaging(num);  //page data load
-        applyPagination();
-    }
-
     //href 리턴 false, list,page ajax 호출
     function applyPagination() {
         $("div.Paging a").on("click", function() {
@@ -448,8 +438,22 @@
         });
     }
 
+    function nl2br(str){
+        return str.replace(/\n/g, "<br />");
+    }
+
+    function callAjax(num) {
+        listAjax(num);    //list data load
+        ajaxPaging(num);  //page data load
+        applyPagination();
+    }
+
+    function starCount(count) {
+        $('#start_count').val(count);
+    }
+
     //교수목록조회
-    function ajaxProfInfo(cate_code, subject_idx, ajax_call_type = true) {
+    function ajaxProfInfo(cate_code, subject_idx, ajax_call_type) {
         $('#search_subject_idx').val(subject_idx);
         $('.subject-list').attr('class','subject-list off');
         $('#subject_'+subject_idx).attr('class','subject-list on');
@@ -480,9 +484,9 @@
                         add_data += '<li>';
                         add_data += '<a href="#none" id="prof_'+k+'" data-prof-idx="'+k+'" class="prof-list">' + v + '</a>';
                         add_data += '</li>';
-                        $('#prof_list').html(add_data);
                     });
                     add_data += '<ul>';
+                    $('#prof_list').html(add_data);
                 }
             }
         }, showError, false, 'POST');
@@ -490,13 +494,5 @@
         if (ajax_call_type == true) {
             callAjax(1);
         }
-    }
-
-    function starCount(count) {
-        $('#start_count').val(count);
-    }
-
-    function nl2br(str){
-        return str.replace(/\n/g, "<br />");
     }
 </script>

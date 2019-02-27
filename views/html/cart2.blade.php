@@ -257,7 +257,7 @@
                 </dl>
             </div>
             <div class="p-info tx-gray c_both pb-zero">
-                • 강좌 포인트는 <span class="tx-light-blue">6,000p</span>부터<span class="tx-light-blue">1p</span> 단위로 사용 가능하며, 주문금액의 <span class="tx-light-blue">80%</span>까지만 사용 가능합니다.
+                • 강좌 포인트는 <span class="tx-light-blue">6,000p</span>부터<span class="tx-light-blue">1p</span> 단위로 사용 가능합니다.
             </div>
         </div>
         <!-- willbes-Cart-Price -->

@@ -32,7 +32,7 @@
     FormValidator.prototype = {
         // Validation error texts
         texts : {
-            invalid : '유효한 형식의 값이 아닙니다.',   // inupt is not as expected
+            invalid : ':attribute 필드는 유효한 형식의 값이 아닙니다.',   // inupt is not as expected
             short : ':min 자릿수 이상여야 합니다.',   // input is too short
             long : ':max 자릿수 이하여야 합니다.',    // input is too long
             checked : ':attribute 필드는 필수입니다.',  // must be checked
@@ -177,7 +177,7 @@
                     for( var i = 0; i < regexs.length; i++ ){
                         testResult = this.testByRegex(data.value, regexs[i]);
                         if( testResult !== true ){
-                            return testResult;
+                            return testResult.replace(':attribute', field.title);
                         }
                     }
                 }                
@@ -276,7 +276,7 @@
 
                 if( data.pattern ){
                     if( data.pattern == 'alphanumeric' && !this.settings.regex.alphanumeric.test(data.value) )
-                        return this.texts.invalid;
+                        return this.texts.invalid.replace(':attribute', field.title);
                 }
 
                 return true;
@@ -774,7 +774,7 @@
 
             if( result.valid === false ){
                 if( !silent ){
-                    alert(testResult || this.texts.invalid);
+                    alert(testResult.replace(':attribute', '해당') || this.texts.invalid.replace(':attribute', '해당'));
                 }
             }
 

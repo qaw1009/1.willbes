@@ -177,7 +177,9 @@ class Regist extends \app\controllers\BaseController
             if ($data['ApplyRangeType'] == 'P') {
                 $arr_prod_code = $this->couponRegistModel->listCouponProduct($idx);
                 $data['ProdCodes'] = $arr_prod_code;
-                $data['ProdNames'] = implode(', ', array_values($arr_prod_code));
+                $data['ProdNames'] = implode(', ', array_map(function($key, $val) {
+                    return '[' . $key . '] ' . $val;
+                }, array_keys($arr_prod_code), $arr_prod_code));
             }
 
             if (isset($params[1]) === true && $params[1] == 'copy') {
@@ -254,9 +256,14 @@ class Regist extends \app\controllers\BaseController
             return $this->json_error('대비학년도, 과정, 과목, 교수 중 하나 이상의 필드를 입력해 주십시오.');
         }
 
+        // 수강권일 경우 1개의 상품만 등록 가능
+        if ($this->_reqP('coupon_type_ccd') == $this->couponRegistModel->_coupon_type_ccd['voucher'] && count($this->_reqP('prod_code')) !== 1) {
+            return $this->json_error('수강권일 경우 1개의 상품만 선택 가능합니다.');
+        }
+
         $result = $this->couponRegistModel->{$method . 'Coupon'}($this->_reqP(null, false));
 
-        $this->json_result($result, '저장 되었습니다.', $result);
+        return $this->json_result($result, '저장 되었습니다.', $result);
     }
 
     /**

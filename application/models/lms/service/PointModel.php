@@ -52,7 +52,7 @@ class PointModel extends WB_Model
             $column = $is_count;
         }
 
-        $is_join = strpos($list_type, '_only') === false;
+        $is_join = strpos($list_type, '_only') === false;   // save_only, use_only = false (합계조회), 그 외 true (목록)
         $list_type = str_first_pos_before($list_type, '_');     // all, save, use
 
         // inner where 조건

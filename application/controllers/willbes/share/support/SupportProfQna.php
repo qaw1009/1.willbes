@@ -17,7 +17,7 @@ class SupportProfQna extends BaseSupport
     protected $_paging_count_m = 5;
     protected $_reg_type = 0;    //등록타입
     private $_groupCcd = [
-        'consult_ccd' => '622',   //유형 그룹 코드 = 상담유형
+        'consult_ccd' => '702',   //유형 그룹 코드 = 상담유형
         'reply_status_ccd_complete' => '621004'  //답변등록상태 (답변완료)
     ];
 
@@ -76,8 +76,8 @@ class SupportProfQna extends BaseSupport
                 'BmIdx' => $this->_bm_idx,
                 'IsUse' => 'Y',
                 'TypeCcd' => $s_consult_type,
-                'ProfIdx' => $prof_idx,
-                'SubjectIdx' => $subject_idx
+                /*'ProfIdx' => $prof_idx,
+                'SubjectIdx' => $subject_idx*/
             ],
             'ORG' => [
                 'LKB' => [
@@ -85,9 +85,9 @@ class SupportProfQna extends BaseSupport
                     'Content' => $s_keyword
                 ]
             ],
-            'LKB' => [
+            /*'LKB' => [
                 'Category_String'=>$s_cate_code
-            ],
+            ],*/
         ];
 
         // 공지숨기기
@@ -127,10 +127,10 @@ class SupportProfQna extends BaseSupport
         } else {
             $paging_count = $this->_paging_count_m;
         }
-        $total_rows = $this->supportBoardTwoWayFModel->listBoardForSiteGroup(true, $this->_site_code, $arr_condition);
+        $total_rows = $this->supportBoardTwoWayFModel->listBoardForProf(true, $this->_site_code, $prof_idx, $arr_condition);
         $paging = $this->pagination($this->_default_path.'/index/?'.$get_page_params,$total_rows,$this->_paging_limit,$paging_count,true);
         if ($total_rows > 0) {
-            $list = $this->supportBoardTwoWayFModel->listBoardForSiteGroup(false, $this->_site_code,$arr_condition,$column,$paging['limit'],$paging['offset'],$order_by);
+            $list = $this->supportBoardTwoWayFModel->listBoardForProf(false, $this->_site_code, $prof_idx,$arr_condition,$column,$paging['limit'],$paging['offset'],$order_by);
             foreach ($list as $idx => $row) {
                 $list[$idx]['AttachData'] = json_decode($row['AttachData'],true);       //첨부파일
             }
@@ -186,6 +186,16 @@ class SupportProfQna extends BaseSupport
         //상담유형
         $arr_base['consult_type'] = $this->codeModel->getCcd($this->_groupCcd['consult_ccd']);
 
+        // 수강중인 강좌 목록 [단강좌 AND 수강이력 AND 강좌종료일 + 30 데이터]
+        $arr_condition = [
+            'RAW' => [
+                'MemIdx = ' => empty($this->session->userdata('mem_idx')) === true ? '\'\'' : $this->session->userdata('mem_idx'),
+                'RealLecEndDate >= ' => 'DATE_FORMAT(DATE_ADD(NOW(), INTERVAL +30 DAY),\'%Y-%m-%d\')',
+                'lastStudyDate != ' => '\'\''
+            ]
+        ];
+        $arr_base['on_my_lecture'] = $this->supportBoardTwoWayFModel->getOnMyLectureArray($arr_condition);
+
         $method = 'POST';
         $data = null;
 
@@ -214,20 +224,18 @@ class SupportProfQna extends BaseSupport
         ';
 
             $data = $this->supportBoardTwoWayFModel->findBoard($board_idx,$arr_condition,$column);
-
             if (empty($data)) {
                 show_alert('게시글이 존재하지 않습니다.', 'back');
             }
-            $data['AttachData'] = json_decode($data['AttachData'],true);       //첨부파일
-
             if ($data['RegType'] == '0' && $data['IsPublic'] == 'N' && $data['RegMemIdx'] != $this->session->userdata('mem_idx')) {
                 show_alert('잘못된 접근 입니다.', 'back');
             }
-
             $result = $this->supportBoardTwoWayFModel->modifyBoardRead($board_idx);
             if($result !== true) {
                 show_alert('게시글 조회시 오류가 발생되었습니다.', 'back');
             }
+
+            $data['AttachData'] = json_decode($data['AttachData'],true);       //첨부파일
         }
 
         $this->load->view('support/'.$view_type.'/create_qna', [
@@ -305,6 +313,10 @@ class SupportProfQna extends BaseSupport
             show_alert('게시글 조회시 오류가 발생되었습니다.', 'back');
         }
 
+        // 첨부파일 이미지일 경우 해당 배열에 담기
+        $data['Content'] = $this->_getBoardForContent($data['Content'], $data['AttachData']);
+        $data['ReplyContent'] = $this->_getBoardForContent($data['ReplyContent'], $data['AttachData'], 1);
+
         $data['AttachData'] = json_decode($data['AttachData'],true);       //첨부파일
         $this->load->view('support/'.$view_type.'/show_qna',[
                 'default_path' => $this->_default_path,
@@ -323,11 +335,14 @@ class SupportProfQna extends BaseSupport
     public function store()
     {
         $idx = '';
-
-        if ($this->_reqP('_method') == 'PUT') {
-            $s_site_code = $this->_reqP('put_site_code');
+        if ($this->_site_code == config_item('app_intg_site_code')) {
+            if ($this->_reqP('_method') == 'POST') {
+                $s_site_code = $this->_reqP('s_site_code');
+            } else {
+                $s_site_code = $this->_reqP('put_site_code');
+            }
         } else {
-            $s_site_code = $this->_reqP('s_site_code');
+            $s_site_code = $this->_reqP('put_site_code');
         }
 
         //캠퍼스 사용 유/무 조회

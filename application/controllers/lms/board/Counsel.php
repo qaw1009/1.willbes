@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-require APPPATH . 'controllers/lms/board//BaseBoard.php';
+require APPPATH . 'controllers/lms/board/BaseBoard.php';
 
 class Counsel extends BaseBoard
 {
@@ -73,7 +73,7 @@ class Counsel extends BaseBoard
                 'ReplyStatusCcd' => $this->_Ccd['reply']['unAnswered']
             ]
         ];
-        $arr_unAnswered = $this->_getUnAnserArray($arr_condition);
+        $arr_unAnswered = $this->_getUnAnswerArray($arr_condition);
         $this->load->view("board/{$this->board_name}/index", [
             'bm_idx' => $this->bm_idx,
             'arr_search_data' => $arr_search_data['arr_search_data'],
@@ -321,6 +321,8 @@ class Counsel extends BaseBoard
             'attach_file_type' => $this->_attach_reg_type['default']
         ];
         $data = $this->boardModel->findBoardForModify($this->board_name, $column, $arr_condition, $arr_condition_file);
+        // 첨부파일 이미지일 경우 해당 배열에 담기
+        $data['Content'] = $this->_getBoardForContent($data['Content'], $data['AttachFilePath'], $data['AttachFileName']);
 
         if (count($data) < 1) {
             show_error('데이터 조회에 실패했습니다.');
@@ -529,6 +531,9 @@ class Counsel extends BaseBoard
             'attach_file_type' => $this->_attach_reg_type['default']
         ];
         $data = $this->boardModel->findBoardForModify($this->board_name, $column, $arr_condition, $arr_condition_file);
+        // 첨부파일 이미지일 경우 해당 배열에 담기
+        $data['Content'] = $this->_getBoardForContent($data['Content'], $data['AttachFilePath'], $data['AttachFileName']);
+        $data['ReplyContent'] = $this->_getBoardForContent($data['ReplyContent'], $data['reply_AttachFilePath'], $data['reply_AttachFileName']);
 
         if (count($data) < 1) {
             show_error('데이터 조회에 실패했습니다.');

@@ -150,6 +150,7 @@
                     'url' : '{{ site_url('/mocktest/regExam/list') }}',
                     'type' : 'POST',
                     'data' : function(data) {
+                        console.log(data);
                         return $.extend(arrToJson($search_form.serializeArray()), {'start' : data.start, 'length' : data.length});
                     }
                 },
@@ -181,14 +182,14 @@
                     }},
                     {'data' : 'AnswerNum', 'class': 'text-center'},
                     {'data' : 'ListCnt', 'class': 'text-center'},
-                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) { return 0; }},
-                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) { return 0; }},
+                    {'data' : 'OnlineCnt', 'class': 'text-center'},
+                    {'data' : 'OfflineCnt', 'class': 'text-center'},
                     {'data' : 'IsUse', 'class': 'text-center', 'render' : function(data, type, row, meta) {
                         return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
                     }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
                         upImgUrl = '{{$upImgUrl}}' + row.MpIdx + '/';
-                        return '<a href="'+ upImgUrl + row.RealQuestionFile+'" target="_blank" class="blue underline_link">'+row.QuestionFile+'</span>';
+                        return '<a href="'+ row.FilePath + row.RealQuestionFile+'" target="_blank" class="blue underline_link">'+row.QuestionFile+'</span>';
                     }},
                     {'data' : 'wAdminName', 'class': 'text-center'},
                     {'data' : 'RegDate', 'class': 'text-center'}

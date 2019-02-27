@@ -62,6 +62,7 @@ Class Lecture extends \app\controllers\BaseController
                 'A.IsNew' =>$this->_reqP('search_new'),
                 'A.IsBest' =>$this->_reqP('search_best'),
                 'A.SaleStatusCcd' =>$this->_reqP('search_sales_ccd'),
+                'Be.wIsUse'=>$this->_reqP('search_w_is_use'),
             ],
             'LKR' => [
                 'C.CateCode' => $this->_reqP('search_lg_cate_code'),
@@ -137,9 +138,7 @@ Class Lecture extends \app\controllers\BaseController
         $codes = $this->codeModel->getCcdInArray(['607','609','610','611','612','613','616','617','618','696']); // 강좌유형,강좌제공방식,교재제공구분,수강배수적용구분,강좌제공구분,수강기간설정구분,VOD구분,판매상태
         $courseList = $this->courseModel->listCourse([], null, null, ['PC.SiteCode' => 'asc','PC.OrderNum' => 'asc' ]);
         $subjectList = $this->subjectModel->listSubject([], null, null, ['PS.SiteCode' => 'asc','PS.OrderNum' => 'asc' ]);
-        $siteList = $this->siteModel->getSiteArray(false,'CsTel');
-
-        //var_dump($siteList);
+        $arr_send_callback_ccd = $this->codeModel->getCcd(706, 'CcdValue');  // 발신번호조회
 
         $prodcode = null;
         $data = null;
@@ -194,8 +193,8 @@ Class Lecture extends \app\controllers\BaseController
             ,'extcorp_ccd'=>$codes['696'] //외부수강업체코드
             ,'courseList'=>$courseList      //과정
             ,'subjectList'=>$subjectList    //과목
-            ,'siteList' =>$siteList         //사이트목록
             ,'prodcode' => $prodcode
+            ,'arr_send_callback_ccd'=>$arr_send_callback_ccd
             ,'data'=>$data
             ,'data_sample'=>$data_sample
             ,'data_sale'=>$data_sale
@@ -213,12 +212,14 @@ Class Lecture extends \app\controllers\BaseController
 
     /**
      * 마스터강의 첨부파일 다운로드
-     * @param array $fileinfo
-     */
-    public function download($fileinfo=[])
+    */
+    public function download()
     {
-        public_download($fileinfo[0],$fileinfo[1]);
+        $filename = urldecode($this->_req('filename', false));
+        $filename_ori = urldecode($this->_req('filename_ori',false));
+        public_download($filename, $filename_ori);
     }
+
 
     /**
      * 처리 프로세스
@@ -298,7 +299,7 @@ Class Lecture extends \app\controllers\BaseController
 
         $result = $this->lectureModel->_prodCopy($prodcode);
         //var_dump($result);exit;
-        $this->json_result($result,'저장 되었습니다.',$result);
+        $this->json_result($result,'복사 되었습니다.',$result);
     }
 
     /**

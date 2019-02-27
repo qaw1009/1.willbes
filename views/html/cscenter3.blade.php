@@ -50,40 +50,41 @@
     <div class="Content p_re">
 
         <div class="willbes-CScenter c_both">
-            <div class="willbes-Lec-Tit NG bd-none tx-black c_both pt-zero">
-                · 1:1 상담
-                <div class="willbes-Lec-Search GM f_right" style="margin: 0;">
-                    <div class="inputBox p_re">
-                        <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="제목 또는 내용을 입력해 주세요" maxlength="30">
-                        <button type="submit" onclick="" class="search-Btn">
-                            <span>검색</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="Act3 mt30">
+            <div class="Act3">
                 <!-- List -->
                 <div class="willbes-Leclist c_both">
                     <div class="willbes-Lec-Selected tx-gray">
-                        <select id="process" name="process" title="process" class="seleProcess">
-                            <option selected="selected">과정</option>
-                            <option value="헌법">헌법</option>
-                            <option value="스파르타반">스파르타반</option>
-                            <option value="공직선거법">공직선거법</option>
-                        </select>
-                        <select id="div" name="div" title="div" class="seleDiv">
-                            <option selected="selected">구분</option>
-                            <option value="기타">기타</option>
-                            <option value="강좌내용">강좌내용</option>
-                            <option value="학습상담">학습상담</option>
-                        </select>
-                        <select id="A" name="A" title="A" class="seleLecA">
-                            <option selected="selected">상담유형</option>
-                            <option value="기타">기타</option>
-                            <option value="강좌내용">강좌내용</option>
-                            <option value="학습상담">학습상담</option>
-                        </select>
-                        <div class="subBtn blue NSK f_right"><a href="#none">문의하기 ></a></div>
+                        <div class="f_left">
+                            <select id="process" name="process" title="process" class="seleProcess">
+                                <option selected="selected">과정</option>
+                                <option value="헌법">헌법</option>
+                                <option value="스파르타반">스파르타반</option>
+                                <option value="공직선거법">공직선거법</option>
+                            </select>
+                            <select id="div" name="div" title="div" class="seleDiv">
+                                <option selected="selected">구분</option>
+                                <option value="기타">기타</option>
+                                <option value="강좌내용">강좌내용</option>
+                                <option value="학습상담">학습상담</option>
+                            </select>
+                            <select id="A" name="A" title="A" class="seleLecA">
+                                <option selected="selected">상담유형</option>
+                                <option value="기타">기타</option>
+                                <option value="강좌내용">강좌내용</option>
+                                <option value="학습상담">학습상담</option>
+                            </select>
+                        </div>
+                        <div class="willbes-Lec-Search GM f_left mg0">
+                            <div class="inputBox p_re">
+                                <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="제목 또는 내용을 입력해 주세요" maxlength="30">
+                                <button type="submit" onclick="" class="search-Btn">
+                                    <span>검색</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="f_right">
+                            <div class="subBtn blue NSK f_right"><a href="#none">문의하기 ></a></div>
+                        </div>
                     </div>
                     <div class="LeclistTable">
                         <table cellspacing="0" cellpadding="0" class="listTable qnaTable upper-gray upper-black bdb-gray tx-gray">

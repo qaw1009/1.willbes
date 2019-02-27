@@ -1,10 +1,22 @@
 /**
  * 장바구니 저장 및 바로결제
  * @param $regi_form
-  * @param $is_direct_pay
+ * @param $is_direct_pay
  * @param $is_redirect
  */
 function cartNDirectPay($regi_form, $is_direct_pay, $is_redirect) {
+    return addCartNDirectPay($regi_form, $is_direct_pay, $is_redirect, '');
+}
+
+/**
+ * 장바구니 저장 및 바로결제 ($app_url 인자 추가)
+ * @param $regi_form
+ * @param $is_direct_pay
+ * @param $is_redirect
+ * @param $app_url
+ */
+function addCartNDirectPay($regi_form, $is_direct_pay, $is_redirect, $app_url)
+{
     // 초기값 설정
     $is_direct_pay = $is_direct_pay || 'N';
     $is_redirect = $is_redirect || 'Y';
@@ -41,7 +53,19 @@ function cartNDirectPay($regi_form, $is_direct_pay, $is_redirect) {
     }
     $regi_form.find('input[name="is_direct_pay"]').val($is_direct_pay);
 
-    var url = frontUrl('/cart/store');
+    // url 설정
+    var url = '';
+    if ($app_url !== '') {
+        url = $app_url + '/cart/store';
+    } else {
+        url = frontUrl('/cart/store');
+        if ($regi_form.find('input[name="cart_type"]').val().indexOf('off') === 0) {
+            url = siteUrl('/pass/cart/store');
+        } else if ($regi_form.find('input[name="cart_type"]').val().indexOf('on') === 0 || $regi_form.find('input[name="cart_type"]').val() === 'book') {
+            url = siteUrl('/cart/store');
+        }
+    }
+
     ajaxSubmit($regi_form, url, function(ret) {
         if(ret.ret_cd) {
             $result = true;
@@ -86,10 +110,10 @@ function alertDirectPay($regi_form) {
  */
 function checkOffLecture($regi_form, $is_direct_pay) {
     if ($is_direct_pay === 'Y' && $regi_form.find('.chk_products[data-study-apply-ccd="654001"]:checked').length > 0) {
-        alert('방문 접수 전용상품은 바로 결제 하실 수 없습니다.1');
+        alert('방문 접수 전용상품은 바로 결제 하실 수 없습니다.');
         return false;
     } else if ($is_direct_pay === 'N' && $regi_form.find('.chk_products[data-study-apply-ccd="654002"]:checked').length > 0) {
-        alert('온라인 접수 전용상품은 방문 접수 하실 수 없습니다.1');
+        alert('온라인 접수 전용상품은 방문 접수 하실 수 없습니다.');
         return false;
     }
 
@@ -129,11 +153,17 @@ function goCartPage($tab_id) {
  */
 function showBuyLayer($type, $chk_obj, $target_id) {
     var $target_layer = $('#' + $target_id);
+    var top_bn_height = $('#topBannerLayer').height();
 
     if($chk_obj.is(':checked')) {
         //var top = $chk_obj.offset().top;
         //var left = $chk_obj.offset().left - 52;
         var top = $chk_obj.offset().top - 180;
+        if (top_bn_height !== null && typeof top_bn_height !== 'undefined') {
+            // top banner height 적용
+            top = top - top_bn_height;
+        }
+
         var right = 242;
         if ($type === 'on') {
             if ($chk_obj.hasClass('chk_books') === true) {

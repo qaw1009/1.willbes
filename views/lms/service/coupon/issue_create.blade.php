@@ -154,7 +154,7 @@
                                     <option value="N">만료</option>
                                     <option value="C">취소</option>
                                 </select>
-                                <div class="checkbox">
+                                <div class="checkbox ml-10">
                                     <input type="checkbox" id="search_is_retire" name="search_is_retire" class="flat" value="Y"/> <label for="search_is_retire" class="input-label">발급회수쿠폰</label>
                                 </div>
                             </div>

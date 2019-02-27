@@ -71,41 +71,36 @@
         </span>
     </div>
     <div class="Content p_re">
-
-        <div class="willbes-Mocktest INFOZONE c_both">
-            <div class="willbes-Lec-Tit NG bd-none tx-black c_both pt-zero">
-                · 기출문제
-                <div class="willbes-Lec-Search GM f_right" style="margin: 0;">
-                    <div class="inputBox p_re">
-                        <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="제목 또는 내용을 입력해 주세요" maxlength="30">
-                        <button type="submit" onclick="" class="search-Btn">
-                            <span>검색</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="willbes-Leclist c_both mt30">
+        <div class="willbes-Leclist c_both">
 
             <!-- List -->
             <div class="willbes-Leclist c_both">
-                <div class="willbes-Lec-Selected tx-gray">
-                    <select id="area" name="area" title="지역" class="seleArea">
-                        <option selected="selected">지역</option>
-                        <option value="경기도">경기도</option>
-                        <option value="경상북도">경상북도</option>
-                    </select>
-                    <select id="year" name="year" title="연도" class="seleYear">
-                        <option selected="selected">연도</option>
-                        <option value="2017">2017</option>
-                        <option value="2016">2016</option>
-                    </select>
-                    <select id="subject" name="subject" title="과목" class="seleSubject">
-                        <option selected="selected">과목</option>
-                        <option value="국어">국어</option>
-                        <option value="형사소송법">형사소송법</option>
-                    </select>
+                <div class="willbes-Lec-Selected tx-gray mt0">
+                    <div class="f_left">
+                        <select id="area" name="area" title="지역" class="seleArea">
+                            <option selected="selected">지역</option>
+                            <option value="경기도">경기도</option>
+                            <option value="경상북도">경상북도</option>
+                        </select>
+                        <select id="year" name="year" title="연도" class="seleYear">
+                            <option selected="selected">연도</option>
+                            <option value="2017">2017</option>
+                            <option value="2016">2016</option>
+                        </select>
+                        <select id="subject" name="subject" title="과목" class="seleSubject">
+                            <option selected="selected">과목</option>
+                            <option value="국어">국어</option>
+                            <option value="형사소송법">형사소송법</option>
+                        </select>
+                    </div>
+                    <div class="willbes-Lec-Search GM f_left mg0">
+                        <div class="inputBox p_re">
+                            <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="제목 또는 내용을 입력해 주세요" maxlength="30">
+                            <button type="submit" onclick="" class="search-Btn">
+                                <span>검색</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
                 <div class="LeclistTable">
                     <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black bdb-gray tx-gray">

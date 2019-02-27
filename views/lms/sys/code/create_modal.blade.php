@@ -23,20 +23,20 @@
             <div class="col-md-4">
                 <input type="text" class="form-control" name="CcdName" id="CcdName" title="그룹유형명" value="{{ $data['CcdName'] }}">
             </div>
-            <label class="control-label col-md-2" for="">그룹유형코드 <span class="required">*</span></label>
-            <div class="col-md-4">
-                <p class="form-control-static"> {{ $data['wCcd'] or '등록시 자동 생성'}} </p>
+            <label class="control-label col-md-2" for="">그룹유형코드</label>
+            <div class="col-md-4 form-control-static">
+                {{ $data['wCcd'] or '등록시 자동 생성'}}
             </div>
         </div>
     @elseif($makeType==="sub")
         <div class="form-group form-group-sm item">
             <label class="control-label col-md-2" for="GroupName">그룹유형명 <span class="required">*</span></label>
-            <div class="col-md-4">
-                <p class="form-control-static">{{$parent_data['CcdName']}}</p>
+            <div class="col-md-4 form-control-static">
+                {{$parent_data['CcdName']}}
             </div>
-            <label class="control-label col-md-2" for="">그룹유형코드 <span class="required">*</span></label>
-            <div class="col-md-4">
-                <p class="form-control-static">{{$groupCcd}}</p>
+            <label class="control-label col-md-2" for="">그룹유형코드</label>
+            <div class="col-md-4 form-control-static">
+                {{$groupCcd}}
             </div>
         </div>
         <div class="form-group form-group-sm item">
@@ -44,9 +44,9 @@
             <div class="col-md-4">
                 <input type="text" id="CcdName" name="CcdName" required="required" class="form-control" title="세부항목명" value="{{ $data['CcdName'] }}">
             </div>
-            <label class="control-label col-md-2" for="">세부항목코드 <span class="required">*</span></label>
-            <div class="col-md-4">
-                <p class="form-control-static">{{ $data['Ccd'] or '등록시 자동 생성'}}</p>
+            <label class="control-label col-md-2" for="">세부항목코드</label>
+            <div class="col-md-4 form-control-static">
+                {{ $data['Ccd'] or '등록시 자동 생성'}}
             </div>
         </div>
         <div class="form-group form-group-sm item">
@@ -77,8 +77,8 @@
             <div class="col-md-1">
                 <input type="text" id="OrderNum" name="OrderNum"  class="form-control" title="노출순서" value="{{ $data['OrderNum'] or $parent_data['NextOrderNum'] }}" style="width: 40px">
             </div>
-            <div class="col-md-3">
-                <p class="form-control-static">미입력 시 마지막 DP</p>
+            <div class="col-md-3 form-control-static">
+                미입력 시 마지막 DP
             </div>
         </div>
     @endif
@@ -86,22 +86,22 @@
     @if($method==="PUT")
         <div class="form-group form-group-sm item">
             <label class="control-label col-md-2" for="">등록자 </label>
-            <div class="col-md-4">
-                <p class="form-control-static">{{ $data['wAdminName'] }}</p>
+            <div class="col-md-4 form-control-static">
+                {{ $data['wAdminName'] }}
             </div>
             <label class="control-label col-md-2" for="">등록일</label>
-            <div class="col-md-4">
-                <p class="form-control-static"> {{ $data['RegDatm'] }}</p>
+            <div class="col-md-4 form-control-static">
+                {{ $data['RegDatm'] }}
             </div>
         </div>
         <div class="form-group form-group-sm item">
             <label class="control-label col-md-2">최종수정자</label>
-            <div class="col-md-4">
-                <p class="form-control-static"> {{ $data['wUpdAdminName'] }}</p>
+            <div class="col-md-4 form-control-static">
+                {{ $data['wUpdAdminName'] }}
             </div>
             <label class="control-label col-md-2">최종수정일</label>
-            <div class="col-md-4">
-                <p class="form-control-static"> {{ $data['UpdDatm'] }}</p>
+            <div class="col-md-4 form-control-static">
+                {{ $data['UpdDatm'] }}
             </div>
         </div>
     @endif

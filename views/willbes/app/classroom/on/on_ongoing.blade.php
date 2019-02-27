@@ -23,12 +23,20 @@
             </ul>
             <form name="searchFrm" id="searchFrm" action="{{front_url('/classroom/on/list/ongoing/')}}" onsubmit="">
                 <div class="willbes-Lec-Selected NG c_both tx-gray">
+                    <select id="sitegroup_ccd" name="sitegroup_ccd" title="process" class="seleProcess width21p">
+                        <option selected="selected" value="">과정</option>
+                        @foreach($sitegroup_arr as $row )
+                            <option value="{{$row['SiteGroupCode']}}" @if(isset($input_arr['sitegroup_ccd']) && $input_arr['sitegroup_ccd'] == $row['SiteGroupCode']) selected="selected" @endif  >{{$row['SiteGroupName']}}</option>
+                        @endforeach
+                    </select>
+                <!--
                     <select id="course_ccd" name="course_ccd" title="process" class="seleProcess width21p">
                         <option selected="selected" value="">과정</option>
                         @foreach($course_arr as $row )
-                            <option value="{{$row['CourseIdx']}}" @if(isset($input_arr['course_ccd']) && $input_arr['course_ccd'] == $row['CourseIdx']) selected="selected" @endif  >{{$row['CourseName']}}</option>
+                    <option value="{{$row['CourseIdx']}}" @if(isset($input_arr['course_ccd']) && $input_arr['course_ccd'] == $row['CourseIdx']) selected="selected" @endif  >{{$row['CourseName']}}</option>
                         @endforeach
-                    </select>
+                        </select>
+-->
                     <select id="subject_ccd" name="subject_ccd" title="lec" class="seleLec width21p ml1p">
                         <option selected="selected" value="">과목</option>
                         @foreach($subject_arr as $row )
@@ -279,56 +287,54 @@
                         @endforelse
                         </tbody>
                     </table>
-                    <div id="admintab2" css="admintab" style="display:none;">
+                    <div id="admintab2" class="willbes-Open-Table admintab"  style="display:none;">
                         @forelse( $adminList['pkg'] as $row )
-                            <div class="willbes-Open-Table">
-                                <table cellspacing="0" cellpadding="0" width="100%" class="lecTable bdt-m-gray">
-                                    <tbody>
-                                    <tr class="bg-light-blue">
+                            <table cellspacing="0" cellpadding="0" width="100%" class="lecTable bdt-m-gray">
+                                <tbody>
+                                <tr class="bg-light-blue">
+                                    <td class="w-data tx-left pb-zero">
+                                        <div class="w-tit">
+                                            <span class="tx-red">[{{$row['PayRouteCcdName']}}]</span> {{$row['ProdName']}}
+                                        </div>
+                                        <dl class="w-info tx-gray">
+                                            <dt>잔여기간 : <span class="tx-blue">{{$row['remainDays']}}</span>일 ({{str_replace('-', '.', $row['LecStartDate'])}}~{{str_replace('-', '.', $row['RealLecEndDate'])}})</dt>
+                                        </dl>
+                                        <div class="w-start tx-gray">
+                                            <div class="MoreBtn f_right tx-right">
+                                                <a href="#none"><img src="{{ img_url('m/mypage/icon_arrow_on.png') }}"></a>
+                                            </div>
+                                        </div>
+                                        <div class="w-line">-</div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <table cellspacing="0" cellpadding="0" width="100%" class="lecTable openTable">
+                                <tbody>
+                                @foreach( $row['subleclist'] as $subrow )
+                                    <tr>
                                         <td class="w-data tx-left pb-zero">
+                                            <dl class="w-info">
+                                                <dt>
+                                                    {{$subrow['SubjectName']}}<span class="row-line">|</span>{{$subrow['wProfName']}}교수님
+                                                    <span class="NSK ml10 nBox n{{ substr($subrow['wLectureProgressCcd'], -1)+1 }}">{{$subrow['wLectureProgressCcdName']}}</span>
+                                                </dt>
+                                            </dl>
                                             <div class="w-tit">
-                                                <span class="tx-red">[{{$row['PayRouteCcdName']}}]</span> {{$row['ProdName']}}
+                                                <a href="{{ front_url('/classroom/on/view/ongoing/') }}?o={{$subrow['OrderIdx']}}&p={{$subrow['ProdCode']}}&ps={{$subrow['ProdCodeSub']}}">{{$subrow['subProdName']}}</a>
                                             </div>
                                             <dl class="w-info tx-gray">
-                                                <dt>잔여기간 : <span class="tx-blue">{{$row['remainDays']}}</span>일 ({{str_replace('-', '.', $row['LecStartDate'])}}~{{str_replace('-', '.', $row['RealLecEndDate'])}})</dt>
+                                                <dt>강의수 : <span class="tx-black">{{$subrow['wUnitLectureCnt']}}강</span><span class="row-line">|</span></dt>
+                                                <dt>진도율 : <span class="tx-blue">{{$subrow['StudyRate']}}%%</span><span class="row-line">|</span></dt>
+                                                <dt>잔여기간 : <span class="tx-blue">{{$subrow['remainDays']}}</span>일<span class="row-line">|</span></dt>
+                                                <dt>최종학습일 : <span class="tx-black">{{ $subrow['lastStudyDate'] == '' ? '학습이력없음' : $subrow['lastStudyDate'] }}</span></dt>
                                             </dl>
-                                            <div class="w-start tx-gray">
-                                                <div class="MoreBtn f_right tx-right">
-                                                    <a href="#none"><img src="{{ img_url('m/mypage/icon_arrow_on.png') }}"></a>
-                                                </div>
-                                            </div>
-                                            <div class="w-line">-</div>
+                                            <div class="w-line mt20">-</div>
                                         </td>
                                     </tr>
-                                    </tbody>
-                                </table>
-                                <table cellspacing="0" cellpadding="0" width="100%" class="lecTable openTable">
-                                    <tbody>
-                                    @foreach( $row['subleclist'] as $subrow )
-                                        <tr>
-                                            <td class="w-data tx-left pb-zero">
-                                                <dl class="w-info">
-                                                    <dt>
-                                                        {{$subrow['SubjectName']}}<span class="row-line">|</span>{{$subrow['wProfName']}}교수님
-                                                        <span class="NSK ml10 nBox n{{ substr($subrow['wLectureProgressCcd'], -1)+1 }}">{{$subrow['wLectureProgressCcdName']}}</span>
-                                                    </dt>
-                                                </dl>
-                                                <div class="w-tit">
-                                                    <a href="{{ front_url('/classroom/on/view/ongoing/') }}?o={{$subrow['OrderIdx']}}&p={{$subrow['ProdCode']}}&ps={{$subrow['ProdCodeSub']}}">{{$subrow['subProdName']}}</a>
-                                                </div>
-                                                <dl class="w-info tx-gray">
-                                                    <dt>강의수 : <span class="tx-black">{{$subrow['wUnitLectureCnt']}}강</span><span class="row-line">|</span></dt>
-                                                    <dt>진도율 : <span class="tx-blue">{{$subrow['StudyRate']}}%%</span><span class="row-line">|</span></dt>
-                                                    <dt>잔여기간 : <span class="tx-blue">{{$subrow['remainDays']}}</span>일<span class="row-line">|</span></dt>
-                                                    <dt>최종학습일 : <span class="tx-black">{{ $subrow['lastStudyDate'] == '' ? '학습이력없음' : $subrow['lastStudyDate'] }}</span></dt>
-                                                </dl>
-                                                <div class="w-line mt20">-</div>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
+                                @endforeach
+                                </tbody>
+                            </table>
                         @empty
                             <table cellspacing="0" cellpadding="0" width="100%" class="lecTable bdt-m-gray">
                                 <tbody>
@@ -362,7 +368,7 @@
     </form>
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#course_ccd,#subject_ccd,#prof_ccd,#orderby').on('change', function (){
+            $('#course_ccd,#subject_ccd,#prof_ccd,#orderby,#sitegroup_ccd').on('change', function (){
                 $('#searchFrm').submit();
             });
 

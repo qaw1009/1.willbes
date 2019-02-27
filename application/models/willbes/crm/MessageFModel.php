@@ -37,7 +37,7 @@ class MessageFModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
             $column = 'a.SendIdx, a.SendGroupTypeCcd, a.SiteCode, a.SendPatternCcd, a.SendTypeCcd, a.SendOptionCcd, a.SendStatusCcd, a.AdvertisePatternCcd,
-            a.CsTel, a.SendMail, a.SendAttachFilePath, a.SendAttachFileName, a.SendAttachRealFileName,
+            a.CsTelCcd, a.SendMail, a.SendAttachFilePath, a.SendAttachFileName, a.SendAttachRealFileName,
             a.Title, a.Content, a.AdvertiseAgreeContent, a.SendDatm, a.IsUse, a.IsStatus, a.RegDatm, a.RegDate, a.RcvDatm, a.RegAdminIdx, a.IsReceive,
             g.SiteName AS SiteName, g.IsCampus AS IsCampus, h.SiteGroupName AS SiteGroupName,
             IF(g.IsCampus=\'Y\',\'offline\',\'online\') AS CampusType,
@@ -53,7 +53,7 @@ class MessageFModel extends WB_Model
             FROM (
                 SELECT 
                     temp_a.SendIdx, temp_a.SendGroupTypeCcd, temp_a.SiteCode, temp_a.SendPatternCcd, temp_a.SendTypeCcd, temp_a.SendOptionCcd, temp_a.SendStatusCcd, temp_a.AdvertisePatternCcd,
-                    temp_a.CsTel, temp_a.SendMail, temp_a.SendAttachFilePath, temp_a.SendAttachFileName, temp_a.SendAttachRealFileName,
+                    temp_a.CsTelCcd, temp_a.SendMail, temp_a.SendAttachFilePath, temp_a.SendAttachFileName, temp_a.SendAttachRealFileName,
                     temp_a.Title, temp_a.Content, temp_a.AdvertiseAgreeContent, temp_a.SendDatm, temp_a.IsUse, temp_a.IsStatus,
                     RegDatm, DATE_FORMAT(temp_a.RegDatm, \"%Y-%m-%d\") AS RegDate, RcvDatm,
                     temp_a.RegAdminIdx, temp_b.IsReceive

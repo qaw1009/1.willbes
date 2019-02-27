@@ -29,6 +29,7 @@
                     <label class="control-label col-md-1-1">카테고리정보 <span class="required">*</span>
                     </label>
                     <div class="col-md-10 form-inline">
+                        <input type="checkbox" class="flat" id="_is_all" value="Y"><span class="bold mr-10">전체</span>
                         @foreach($arr_prof_info['arr_prof_cate_code'] as $key => $val)
                             <input type="checkbox" class="flat" name="cate_code[]" value="{{$val}}" @if(empty($data['CateCodes'][$val]) === false)checked="checked"@endif>{{$arr_prof_info['arr_prof_cate_name'][$key]}}
                         @endforeach
@@ -56,8 +57,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="subject_idx">강좌적용구분<span class="required">*</span></label>
-                    <div class="col-md-4 item">
+                    <label class="control-label col-md-1-1" for="subject_idx">강좌적용구분</label>
+                    <div class="col-md-4">
                         <div class="radio">
                             @foreach($arr_prodType_ccd as $key => $arr)
                                 <input type="radio" id="prod_type_ccd_{{ $loop->index }}" name="prod_type_ccd" data-input="{{ $arr[1] }}" class="flat" value="{{ $key }}" @if($loop->index === 1) required="required" title="쿠폰적용구분" @endif @if($data['ProdApplyTypeCcd'] == $key || ($method == 'POST' && $loop->index === 1))checked="checked"@endif/> <label for="prod_type_ccd_{{ $loop->index }}" class="input-label">{{ $arr[0] }}</label>
@@ -67,7 +68,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="subject_idx">강좌명<span class="required">*</span></label>
+                    <label class="control-label col-md-1-1" for="subject_idx">강좌명</label>
                     <div class="col-md-10">
                         <button type="button" id="btn_product_search" class="btn btn-sm btn-primary">상품검색</button>
                         <span id="selected_product" class="pl-10">
@@ -80,15 +81,6 @@
                             </span>
                     </div>
                 </div>
-
-                {{--<div class="form-group">
-                    <label class="control-label col-md-1-1" for="prod_code">강좌명<span class="required">*</span></label>
-                    <div class="form-inline col-md-10 item">
-                        <button type="button" id="btn_lec_search" class="btn btn-sm btn-primary" style="cursor: pointer;">강좌검색</button>
-                        <span id="selected_prod_code" class="pl-10"></span>
-                        <p class="form-control-static">• 명칭, 코드 검색 가능</p>
-                    </div>
-                </div>--}}
 
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="is_best">HOT</label>
@@ -191,6 +183,16 @@
                 $('#selected_product').html('');
             });
 
+            // 전체선택
+            $regi_form.on('ifChanged', '#_is_all', function() {
+                var $_cate_code = $('input[name="cate_code[]"]');
+                if ($(this).prop('checked') === true) {
+                    $_cate_code.iCheck('check');
+                } else {
+                    $_cate_code.iCheck('uncheck');
+                }
+            });
+
             // 카테고리 검색 or 상품 검색
             $('#btn_category_search, #btn_product_search').on('click', function(event) {
                 var btn_id = event.target.getAttribute('id');
@@ -276,12 +278,14 @@
                 return false;
             }
 
-            if($regi_form.find('input[name="prod_code[]"]').length < 1) {
-                alert('강좌명 선택 필드는 필수입니다.');
-                return false;
-            } else if($regi_form.find('input[name="prod_code[]"]').length > 1) {
-                alert('강좌명 선택 필드는 1개만 선택 가능합니다.');
-                return false;
+            if ($regi_form.find('select[name="type_ccd"]').val() == '632002') {
+                if ($regi_form.find('input[name="prod_code[]"]').length < 1) {
+                    alert('강좌명 선택 필드는 필수입니다.');
+                    return false;
+                } else if ($regi_form.find('input[name="prod_code[]"]').length > 1) {
+                    alert('강좌명 선택 필드는 1개만 선택 가능합니다.');
+                    return false;
+                }
             }
             return true;
         }

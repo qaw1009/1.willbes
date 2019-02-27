@@ -4,10 +4,26 @@
     @endforeach
 </form>
 <div class="willbes-Lec-Tit NG bd-none tx-black pt-zero">· 심층상담예약</div>
-<div class="counsel_infoBox tx-black GM mt40">
-    <img src="{{ img_url('counsel/willbes_counsel.jpg') }}">
+
+<div id="RESERVEPASS"></div>
+
+<div class="willbes-counsel_step step mt40 NG c_both">
+    <ul>
+        <li @if($arr_base['depth'] == 1) class="active" @endif><div class="num">01</div>상담일자/시간선택</li>
+        <li class="arrow"><img src="{{ img_url('counsel/icon_arrow_step.png') }}"></li>
+        <li @if($arr_base['depth'] == 2) class="active" @endif><div class="num">02</div>사전정보입력</li>
+        <li class="arrow"><img src="{{ img_url('counsel/icon_arrow_step.png') }}"></li>
+        <li @if($arr_base['depth'] == 3) class="active" @endif><div class="num">03</div>상담예약확인</li>
+    </ul>
+    <div class="info-Box info-Box{{$arr_base['depth']}} NG">
+        <dl>
+            <dt>{!! $arr_base['comment'] !!}</dt>
+        </dl>
+    </div>
+</div>
+<div class="counsel_infoBox tx-black GM mb50">
     <div class="LeclistTable">
-        <table cellspacing="0" cellpadding="0" class="listTable bdt-gray bdb-gray tx-gray">
+        <table cellspacing="0" cellpadding="0" class="listTable bdb-gray tx-gray">
             <colgroup>
                 <col style="width: 125px;">
                 <col style="width: 660px;">
@@ -32,23 +48,6 @@
             </tr>
             </tbody>
         </table>
-    </div>
-</div>
-
-<div id="RESERVEPASS"></div>
-
-<div class="willbes-counsel_step step mt60 mb50 NG c_both">
-    <ul>
-        <li @if($arr_base['depth'] == 1) class="active" @endif><div class="num">01</div>상담일자/시간선택</li>
-        <li class="arrow"><img src="{{ img_url('counsel/icon_arrow_step.png') }}"></li>
-        <li @if($arr_base['depth'] == 2) class="active" @endif><div class="num">02</div>사전정보입력</li>
-        <li class="arrow"><img src="{{ img_url('counsel/icon_arrow_step.png') }}"></li>
-        <li @if($arr_base['depth'] == 3) class="active" @endif><div class="num">03</div>상담예약확인</li>
-    </ul>
-    <div class="info-Box info-Box{{$arr_base['depth']}} NG">
-        <dl>
-            <dt>{!! $arr_base['comment'] !!}</dt>
-        </dl>
     </div>
 </div>
 

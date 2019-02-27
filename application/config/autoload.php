@@ -59,9 +59,9 @@ $autoload['packages'] = array();
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
 $autoload['libraries'] = array();
-if (is_cli() === false && in_array(APP_NAME, ['api']) === false) {
+/*if (is_cli() === false && in_array(APP_NAME, ['api']) === false) {
     $autoload['libraries'][] = 'session';
-}
+}*/
 
 /*
 | -------------------------------------------------------------------

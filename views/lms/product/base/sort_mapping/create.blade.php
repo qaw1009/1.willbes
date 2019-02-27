@@ -1,7 +1,7 @@
 @extends('lcms.layouts.master_modal')
 
 @section('layer_title')
-    과목 연결
+    {{ $title }} 연결
 @stop
 
 @section('layer_header')
@@ -20,7 +20,7 @@
         </label>
         <div class="col-md-10 form-inline">
             <p class="form-control-static">{{ str_last_pos_before($cate_route_name, ' > ') }} > <span class="blue">{{ str_last_pos_after($cate_route_name, ' > ') }}</span></p>
-            @if(count($arr_series) > 0)
+            @if(empty($arr_series) === false)
                 <select class="form-control input-sm ml-10" id="child_ccd" name="child_ccd" required="required" title="하위 구분">
                 @foreach($arr_series as $key => $val)
                     <option value="{{ $key }}" @if($key == $params['_child_ccd']) selected="selected" @endif>{{ $val }}</option>
@@ -30,13 +30,13 @@
         </div>
     </div>
     <div class="x_title mt-20 mb-0">
-        <span class="required">*</span> 과목을 선택해 주세요. (다중 선택 가능합니다.)
+        <span class="required">*</span> {{ $title }}을 선택해 주세요. (다중 선택 가능합니다.)
     </div>
     <div class="form-group form-group-sm">
         @foreach($arr_subject_idx as $row)
             <div class="col-xs-3 checkbox">
-                <input type="checkbox" id="subject_idx_{{ $loop->index }}" name="subject_idx[]" class="flat" value="{{ $row['SubjectIdx'] }}" @if($row['SubjectIdx'] == $row['RSubjectIdx']) checked="checked" @endif @if($loop->index == 1) required="required" title="과목" @endif/>
-                <label for="subject_idx_{{ $loop->index }}" class="input-label">{{ $row['SubjectName'] }}</label>
+                <input type="checkbox" id="subject_idx_{{ $loop->index }}" name="subject_idx[]" class="flat" value="{{ $row[$col_key . 'Idx'] }}" @if($row[$col_key . 'Idx'] == $row['R' . $col_key . 'Idx']) checked="checked" @endif @if($loop->index == 1) required="required" title="{{ $title }}" @endif/>
+                <label for="subject_idx_{{ $loop->index }}" class="input-label">{{ $row[$col_key . 'Name'] }}</label>
             </div>
         @endforeach
     </div>
@@ -47,7 +47,7 @@
             // 기본 URI 파라미터
             var uri_param = $regi_form.find('input[name="_conn_type"]').val() + '/' + $regi_form.find('input[name="_site_code"]').val() + '/' + $regi_form.find('input[name="_cate_code"]').val();
 
-            // 과목 등록
+            // 과정/과목 등록
             $regi_form.submit(function() {
                 var _url = '{{ site_url('/product/base/sortMapping/store/') }}';
 

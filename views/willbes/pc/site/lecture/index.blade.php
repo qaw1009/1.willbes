@@ -116,8 +116,14 @@
         </div>
         <!-- willbes-Bnr -->
 
-        <div class="willbes-Lec-Search">
+        <div class="willbes-Lec-Search p_re">
             <div class="inputBox p_re">
+                <div class="selectBox">
+                    <select id="search_order" name="search_order" class="" onchange="goUrl('search_order', this.value);">
+                        <option value="regist" @if(element('search_order', $arr_input) == 'regist') selected="selected" @endif>최근등록순</option>
+                        <option value="course" @if(element('search_order', $arr_input) == 'course') selected="selected" @endif>과정순</option>
+                    </select>
+                </div>
                 @php $arr_search_text = explode(':', base64_decode(element('search_text', $arr_input)), 2) @endphp
                 <div class="selectBox">
                     <select id="search_keyword" name="search_keyword" title="직접입력" class="">
@@ -132,7 +138,61 @@
                     <span>검색</span>
                 </button>
             </div>
-            <div class="InfoBtn"><a href="#none">수강신청안내 <span>▶</span></a></div>
+
+            <div class="InfoBtn"><a href="#none" onclick="openWin('requestInfo')">수강신청안내 <span>▶</span></a></div>
+            <div id="requestInfo" class="willbes-Layer-requestInfo">
+                <a class="closeBtn" href="#none" onclick="closeWin('requestInfo')">
+                    <img src="{{ img_url('prof/close.png') }}">
+                </a>
+                <div class="Layer-Tit NG tx-dark-black">수강신청 <span class="tx-blue">안내</span></div>
+                <div class="Layer-Cont">
+                    <div class="Layer-SubTit tx-gray">
+                        <ul>
+                            <li>
+                                <strong>도서구입비 소득공제 시행에 따른 분리결제 적용 안내</strong><br>
+                                - 소득공제 대상 상품(교재)와 비대상 상품 (강의)을 함께 주문하실 수 없습니다. <br>
+                                (소득공제를 위한 가맹점 분리로 인해 2회 결제 진행)<br>
+                                - 반드시 <span class="tx-red">강의와 교재를 각각 결제</span>해주시기 바랍니다. (강좌상품 선구매 후 교재 구매 가능)
+                            </li>
+                            <li>
+                                <strong>아이콘 안내</strong><br>
+                                - 강좌리스트에 보여지고 있는 아이콘에 대한 설명입니다. 참고하시어 수강신청해 주세요.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="LeclistTable">
+                        <table cellspacing="0" cellpadding="0" class="listTable csTable under-gray upper-black tx-gray">
+                            <colgroup>
+                                <col style="width: 130px;">
+                                <col style="width: auto;">
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <td><span class="nBox n4">완강</span></td>
+                                    <td class="tx-left">모든 강의 제작 및 업데이트가 완료된 강좌</td>
+                                </tr>
+                                <tr>
+                                    <th><span class="nBox n2">진행중</span></th>
+                                    <td class="tx-left">강의 업데이트가 진행중인 강좌</td>
+                                </tr>
+                                <tr>
+                                    <th><span class="nBox n3">예정</span></th>
+                                    <td class="tx-left">신규강좌 업데이트가 예정중인 강좌</td>
+                                </tr>
+                                <tr>
+                                    <th><span class="nBox n1">2배수</span></th>
+                                    <td class="tx-left">공유 방지를 위해 전체강의시간/개별강의시간의 2배까지 수강이 가능한 강좌</td>
+                                </tr>
+                                <tr>
+                                    <th><img src="{{ img_url('sub/icon_detail.gif') }}"></th>
+                                    <td class="tx-left">돋보기 아이콘 클릭 시 해당 강좌의 상세정보 팝업 노출</td>    
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- requestInfo //-->
         </div>
         <!-- willbes-Lec-Search -->
 
@@ -146,7 +206,10 @@
         {{-- 과목별 상품 리스트 --}}
         @foreach($data['subjects'] as $subject_idx => $subject_name)
             <div class="willbes-Lec NG c_both mt20">
-                <div class="willbes-Lec-Subject tx-dark-black">· {{ $subject_name }}<span class="MoreBtn"><a href="#none">교재정보 <span>전체보기 ▼</span></a></span></div>
+                <div class="willbes-Lec-Subject tx-dark-black">
+                    · {{ $subject_name }}
+                    <span class="MoreBtn"><a href="#none">교재정보 <span>전체보기 ▼</span></a></span>
+                </div>
                 <!-- willbes-Lec-Subject -->
                 {{-- 교수명 타이틀 loop --}}
                 @foreach($data['professor_names'][$subject_idx] as $prof_idx => $prof_name)
@@ -159,7 +222,7 @@
                                 </div>
                                 <div class="Name">{{ str_first_pos_before($prof_name, '::') }} 교수님</div>
                             </li>
-                            @if($data['professor_study_comments'][$subject_idx][$prof_idx] != 'N')
+                            @if(isset($data['professor_study_comments'][$subject_idx][$prof_idx]) === true && $data['professor_study_comments'][$subject_idx][$prof_idx] != 'N')
                                 <li class="Reply tx-blue">
                                     <strong>수강후기</strong>
                                     <div class="sliderUp vSlider">
@@ -179,6 +242,11 @@
                     <!-- willbes-Lec-Line -->
 
                     {{-- 교수별 상품 리스트 loop --}}
+                    @if(element('search_order', $arr_input) == 'course')
+                        {{-- 정렬방식이 과정순일 경우 배열키 (OrderNumCourse + ProdCode) 순으로 재정렬 --}}
+                       @php ksort($data['list'][$subject_idx][$prof_idx]); @endphp
+                    @endif
+
                     @foreach($data['list'][$subject_idx][$prof_idx] as $idx => $row)
                         <div id="lec_table_{{ $row['ProdCode'] }}" class="willbes-Lec-Table">
                             <table cellspacing="0" cellpadding="0" class="lecTable">
@@ -186,8 +254,7 @@
                                     <col style="width: 75px;">
                                     <col style="width: 85px;">
                                     <col style="width: 490px;">
-                                    <col style="width: 110px;">
-                                    <col style="width: 180px;">
+                                    <col style="width: 290px;">
                                 </colgroup>
                                 <tbody>
                                 <tr>
@@ -195,12 +262,12 @@
                                     <td class="w-name">{{ $row['SubjectName'] }}<br/><span class="tx-blue">{{ $row['wProfName'] }}</span></td>
                                     <td class="w-data tx-left pl25">
                                         <div class="w-tit">
-                                            <a href="{{ site_url('/lecture/show/cate/' . $__cfg['CateCode'] . '/pattern/' . $pattern . '/prod-code/' . $row['ProdCode']) }}" class="prod-name">{{ $row['ProdName'] }}</a>
+                                            <a href="#none" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 4) }}', '{{ $pattern }}');" class="prod-name">{{ $row['ProdName'] }}</a>
                                         </div>
                                         <dl class="w-info">
                                             <dt class="mr20">
-                                                <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', 'hover1','{{ site_url() }}lecture', 'pattern/{{ $pattern }}/')">
-                                                    <strong>강좌상세정보</strong>
+                                                <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', 'hover1', '{{ site_url() }}lecture', 'pattern/{{ $pattern }}/')">
+                                                    <strong class="open-info-modal">강좌상세정보</strong>
                                                 </a>
                                             </dt>
                                             <dt>강의수 : <span class="unit-lecture-cnt tx-blue" data-info="{{ $row['wUnitLectureCnt'] }}">{{ $row['wUnitLectureCnt'] }}강</span></dt>
@@ -216,31 +283,43 @@
                                         @endif
                                     </td>
                                     <td class="w-notice p_re">
-                                        @if( empty($row['LectureSampleData']) === false)
-                                        <div class="w-sp one"><a href="#none" onclick="openWin('lec_sample_{{ $row['ProdCode'] }}')">맛보기{{ empty($row['LectureSampleData']) ? '' : count($row['LectureSampleData'])   }}</a></div>
-                                        <div id="lec_sample_{{ $row['ProdCode'] }}" class="viewBox">
-                                            <a class="closeBtn" href="#none" onclick="closeWin('lec_sample_{{ $row['ProdCode'] }}')"><img src="{{ img_url('cart/close.png') }}"></a>
-                                            @foreach($row['LectureSampleData'] as $sample_idx => $sample_row)
-                                                <dl class="NSK">
-                                                    <dt class="Tit NG">맛보기{{ $sample_idx + 1 }}</dt>
-                                                    @if(empty($sample_row['wHD']) === false || empty($sample_row['wWD']) === false) <dt class="tBox t1 black"><a href="{{ $sample_row['wWD'] or $sample_row['wHD'] }}">HIGH</a></dt> @endif
-                                                    @if(empty($sample_row['wSD']) === false) <dt class="tBox t2 gray"><a href="{{ $sample_row['wSD'] }}">LOW</a></dt> @endif
-                                                </dl>
-                                            @endforeach
-                                        </div>
-                                        @endif
-                                        @foreach($row['ProdPriceData'] as $price_idx => $price_row)
-                                            <div class="priceWrap chk buybtn p_re">
-                                                @if($row['IsCart'] == 'Y' || $pattern == 'free')
-                                                    <span class="chkBox"><input type="checkbox" name="prod_code[]" value="{{ $row['ProdCode'] . ':' . $price_row['SaleTypeCcd'] . ':' . $row['ProdCode'] }}" data-prod-code="{{ $row['ProdCode'] }}" data-parent-prod-code="{{ $row['ProdCode'] }}" data-group-prod-code="{{ $row['ProdCode'] }}" class="chk_products chk_only_{{ $row['ProdCode'] }}" onchange="checkOnly('.chk_only_{{ $row['ProdCode'] }}', this.value);" @if($row['IsSalesAble'] == 'N') disabled="disabled" @endif/></span>
-                                                @else
-                                                    <span class="chkBox" style="width: 14px;"></span>
-                                                @endif
-                                                <span class="select">[{{ $price_row['SaleTypeCcdName'] }}]</span>
-                                                <span class="price tx-blue">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>
-                                                <span class="discount">(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</span>
+                                        @if($pattern == 'free' && $row['FreeLecTypeCcd'] == '652002')
+                                            <div class="w-sp100">
+                                                보강동영상 비밀번호 입력
+                                                <div>
+                                                    <input type="password" id="free_lec_passwd_{{ $row['ProdCode'] }}" name="free_lec_passwd" placeholder="****" maxlength="20">
+                                                    <button type="button" name="btn_check_free_passwd" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 4) }}', '{{ $pattern }}');"><span>검색</span></button>
+                                                </div>
                                             </div>
-                                        @endforeach
+                                        @else
+                                            @if(empty($row['LectureSampleData']) === false)
+                                                <div class="w-sp one"><a href="#none" onclick="openWin('lec_sample_{{ $row['ProdCode'] }}')">맛보기{{ empty($row['LectureSampleData']) ? '' : count($row['LectureSampleData']) }}</a></div>
+                                                <div id="lec_sample_{{ $row['ProdCode'] }}" class="viewBox">
+                                                    <a class="closeBtn" href="#none" onclick="closeWin('lec_sample_{{ $row['ProdCode'] }}')"><img src="{{ img_url('cart/close.png') }}"></a>
+                                                    @foreach($row['LectureSampleData'] as $sample_idx => $sample_row)
+                                                        <dl class="NSK">
+                                                            <dt class="Tit NG">맛보기{{ $sample_idx + 1 }}</dt>
+                                                            @if(empty($sample_row['wHD']) === false) <dt class="tBox t1 black"><a href="javascript:fnPlayerSample('{{$row['ProdCode']}}','{{$sample_row['wUnitIdx']}}','HD');">HIGH</a></dt> @endif
+                                                            @if(empty($sample_row['wSD']) === false) <dt class="tBox t2 gray"><a href="javascript:fnPlayerSample('{{$row['ProdCode']}}','{{$sample_row['wUnitIdx']}}','SD');">LOW</a></dt> @endif
+                                                        </dl>
+                                                    @endforeach
+                                                </div>
+                                            @endif
+                                            @if(empty($row['ProdPriceData']) === false)
+                                                @foreach($row['ProdPriceData'] as $price_idx => $price_row)
+                                                    <div class="priceWrap chk buybtn p_re">
+                                                        @if($row['IsCart'] == 'Y' || $pattern == 'free')
+                                                            <span class="chkBox"><input type="checkbox" name="prod_code[]" value="{{ $row['ProdCode'] . ':' . $price_row['SaleTypeCcd'] . ':' . $row['ProdCode'] }}" data-prod-code="{{ $row['ProdCode'] }}" data-parent-prod-code="{{ $row['ProdCode'] }}" data-group-prod-code="{{ $row['ProdCode'] }}" class="chk_products chk_only_{{ $row['ProdCode'] }}" onchange="checkOnly('.chk_only_{{ $row['ProdCode'] }}', this.value);" @if($row['IsSalesAble'] == 'N') disabled="disabled" @endif/></span>
+                                                        @else
+                                                            <span class="chkBox" style="width: 14px;"></span>
+                                                        @endif
+                                                        <span class="select">[{{ $price_row['SaleTypeCcdName'] }}]</span>
+                                                        <span class="price tx-blue">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>
+                                                        <span class="discount">(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</span>
+                                                    </div>
+                                                @endforeach
+                                            @endif
+                                        @endif
                                         <div class="MoreBtn"><a href="#none">교재정보 보기 ▼</a></div>
                                     </td>
                                 </tr>
@@ -280,7 +359,9 @@
                                                 <div class="w-sub tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>
                                             @endif
                                                 <div class="w-sub">
-                                                    <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', 'hover2','{{ site_url() }}lecture', 'pattern/{{ $pattern }}/')"><strong>교재상세정보</strong></a>
+                                                    <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', 'hover2','{{ site_url() }}lecture', 'pattern/{{ $pattern }}/')">
+                                                        <strong class="open-info-modal">교재상세정보</strong>
+                                                    </a>
                                                 </div>
                                                 <div class="prod-book-memo d_none">{{ $row['ProdBookMemo'] }}</div>
                                         @else

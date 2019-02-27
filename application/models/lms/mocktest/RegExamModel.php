@@ -23,6 +23,8 @@ class RegExamModel extends WB_Model
         'subject' => 'lms_product_subject',
         'professor' => 'lms_professor',
         'pms_professor' => 'wbs_pms_professor',
+        'mockRegisterR' => 'lms_mock_register_r_paper',
+        'mockRegister' => 'lms_mock_register',
     ];
 
     public $upload_path;            // 업로드 기본경로
@@ -53,39 +55,46 @@ class RegExamModel extends WB_Model
         $offset_limit = (is_numeric($limit) && is_numeric($offset)) ? "LIMIT $offset, $limit" : "";
 
 
-        $select = "
-            SELECT EB.*, A.wAdminName, MB.CateCode, MB.Ccd, MS.SubjectType,
-                   CONCAT(C1.CateName, ' > ', SC.CcdName) AS CateRouteName, SJ.SubjectName, PMS.wProfName,
-                   (SELECT COUNT(*) FROM {$this->_table['mockExamQuestion']} AS EQ WHERE EB.MpIdx = EQ.MpIdx AND EQ.IsStatus = 'Y') AS ListCnt,
-                   IF(MB.Isuse = 'N' OR C1.IsUse = 'N' OR SC.IsUse = 'N', 'N', 'Y') AS IsUseCate,
-                   IF(MS.Isuse = 'N' OR SJ.IsUse = 'N', 'N', 'Y') AS IsUseSubject,
-                   IF(P.Isuse = 'N' OR PMS.wIsUse = 'N', 'N', 'Y') AS IsUseProfessor
+        $column = "
+            EB.*, A.wAdminName, MB.CateCode, MB.Ccd, MS.SubjectType, EB.FilePath,
+            CONCAT(C1.CateName, ' > ', SC.CcdName) AS CateRouteName, SJ.SubjectName, PMS.wProfName,
+            (SELECT COUNT(MemIdx) 
+              FROM lms_mock_register AS MR
+                   JOIN lms_mock_register_r_paper AS RR ON MR.MrIdx = RR.MrIdx
+              WHERE IsStatus = 'Y' AND IsTake = 'Y' AND MpIdx = EB.MpIdx AND TakeForm = (SELECT Ccd FROM lms_sys_code Where CcdName = 'online')) AS OnlineCnt,
+            (SELECT COUNT(MemIdx) 
+              FROM lms_mock_register AS MR
+                   JOIN lms_mock_register_r_paper AS RR ON MR.MrIdx = RR.MrIdx 
+              WHERE IsStatus = 'Y' AND IsTake = 'Y' AND MpIdx = EB.MpIdx AND TakeForm = (SELECT Ccd FROM lms_sys_code Where CcdName = 'off(학원)')) AS OfflineCnt,
+            (SELECT COUNT(*) FROM {$this->_table['mockExamQuestion']} AS EQ WHERE EB.MpIdx = EQ.MpIdx AND EQ.IsStatus = 'Y') AS ListCnt,
+            IF(MB.Isuse = 'N' OR C1.IsUse = 'N' OR SC.IsUse = 'N', 'N', 'Y') AS IsUseCate,
+            IF(MS.Isuse = 'N' OR SJ.IsUse = 'N', 'N', 'Y') AS IsUseSubject,
+            IF(P.Isuse = 'N' OR PMS.wIsUse = 'N', 'N', 'Y') AS IsUseProfessor
         ";
         $from = "
-            FROM {$this->_table['mockExamBase']} AS EB
-            JOIN {$this->_table['mockAreaCate']} AS MC ON EB.MrcIdx = MC.MrcIdx AND MC.IsStatus = 'Y'
-            JOIN {$this->_table['mockSubject']} AS MS ON MC.MrsIdx = MS.MrsIdx AND MS.IsStatus = 'Y'
-            JOIN {$this->_table['subject']} AS SJ ON MS.SubjectIdx = SJ.SubjectIdx AND SJ.IsStatus = 'Y'
-            JOIN {$this->_table['mockBase']} AS MB ON MS.MmIdx = MB.MmIdx AND MB.IsStatus = 'Y'
-            JOIN {$this->_table['category']} AS C1 ON MB.CateCode = C1.CateCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y'
-            JOIN {$this->_table['sysCode']} AS SC ON MB.Ccd = SC.Ccd AND SC.IsStatus = 'Y'
-            JOIN {$this->_table['professor']} AS P ON EB.ProfIdx = P.ProfIdx AND P.IsStatus = 'Y'
-            JOIN {$this->_table['pms_professor']} AS PMS ON P.wProfIdx = PMS.wProfIdx AND PMS.wIsStatus = 'Y'
-            LEFT JOIN {$this->_table['admin']} AS A ON EB.RegAdminIdx = A.wAdminIdx
+            FROM 
+                {$this->_table['mockExamBase']} AS EB
+                JOIN {$this->_table['mockAreaCate']} AS MC ON EB.MrcIdx = MC.MrcIdx AND MC.IsStatus = 'Y'
+                JOIN {$this->_table['mockSubject']} AS MS ON MC.MrsIdx = MS.MrsIdx AND MS.IsStatus = 'Y'
+                JOIN {$this->_table['subject']} AS SJ ON MS.SubjectIdx = SJ.SubjectIdx AND SJ.IsStatus = 'Y'
+                JOIN {$this->_table['mockBase']} AS MB ON MS.MmIdx = MB.MmIdx AND MB.IsStatus = 'Y'
+                JOIN {$this->_table['category']} AS C1 ON MB.CateCode = C1.CateCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y'
+                JOIN {$this->_table['sysCode']} AS SC ON MB.Ccd = SC.Ccd AND SC.IsStatus = 'Y'
+                JOIN {$this->_table['professor']} AS P ON EB.ProfIdx = P.ProfIdx AND P.IsStatus = 'Y'
+                JOIN {$this->_table['pms_professor']} AS PMS ON P.wProfIdx = PMS.wProfIdx AND PMS.wIsStatus = 'Y'
+                LEFT JOIN {$this->_table['admin']} AS A ON EB.RegAdminIdx = A.wAdminIdx
         ";
         $selectCount = "SELECT COUNT(*) AS cnt";
         $where = "WHERE EB.IsStatus = 'Y'";
         $where .= $this->_conn->makeWhere($condition)->getMakeWhere(true)."\n";
         $order = "ORDER BY EB.MpIdx DESC\n";
-
-        $data = $this->_conn->query($select . $from . $where . $order . $offset_limit)->result_array();
+        $data = $this->_conn->query('SELECT '.$column . $from . $where . $order . $offset_limit)->result_array();
         $count = $this->_conn->query($selectCount . $from . $where)->row()->cnt;
 
         // TODO 응시현황 추가
 
         return array($data, $count);
     }
-
 
     /**
      * 데이터 복사
@@ -114,6 +123,19 @@ class RegExamModel extends WB_Model
 
             $nowIdx = $this->_conn->insert_id();
 
+            $uploadSubPath = $this->upload_path_mock . $nowIdx;
+
+            // 데이터 수정
+            $addData = [
+                'FilePath' => PUBLICURL . 'uploads/' . $uploadSubPath . "/"
+            ];
+
+            $this->_conn->set($addData)->where(['MpIdx' => $nowIdx])->update($this->_table['mockExamBase']);
+
+            if (!$this->_conn->affected_rows()) {
+                throw new Exception('수정에 실패했습니다.');
+            }
+
             // lms_mock_questions 복사
             $sql = "
                 INSERT INTO {$this->_table['mockExamQuestion']}
@@ -126,9 +148,20 @@ class RegExamModel extends WB_Model
             $this->_conn->query($sql, array($nowIdx, $RegIp, $RegAdminIdx, $RegDatm, $idx));
 
 
+            // 데이터 수정
+            $addData = [
+                'FilePath' => PUBLICURL . 'uploads/' . $this->upload_path_mock . $nowIdx . $this->upload_path_mockQ,
+            ];
+
+            $this->_conn->set($addData)->where(['MpIdx' => $nowIdx])->update($this->_table['mockExamQuestion']);
+
+            if (!$this->_conn->affected_rows()) {
+                throw new Exception('수정에 실패했습니다.');
+            }
+
             // 파일 복사
-            $src = $this->upload_path . $this->upload_path_mock . $idx . '/';
-            $dest = $this->upload_path . $this->upload_path_mock . $nowIdx . '/';
+            $src = $this->upload_path . $this->upload_path_mock . $idx . "/";
+            $dest = $this->upload_path . $this->upload_path_mock . $nowIdx . "/";
 
             exec("cp -rf $src $dest");
             if(is_dir($dest) === false) {
@@ -191,9 +224,21 @@ class RegExamModel extends WB_Model
 
             // 파일 업로드
             $uploadSubPath = $this->upload_path_mock . $nowIdx;
+
             $isSave = $this->uploadFileSave($uploadSubPath, $names);
             if($isSave !== true) {
                 throw new Exception('파일 저장에 실패했습니다.');
+            }
+
+            // 데이터 수정
+            $addData = [
+                'FilePath' => PUBLICURL . 'uploads/' . $uploadSubPath . "/"
+            ];
+
+            $this->_conn->set($addData)->where(['MpIdx' => $nowIdx])->update($this->_table['mockExamBase']);
+
+            if (!$this->_conn->affected_rows()) {
+                throw new Exception('수정에 실패했습니다.');
             }
 
             $this->_conn->trans_commit();
@@ -218,6 +263,8 @@ class RegExamModel extends WB_Model
         try {
             $this->_conn->trans_begin();
 
+            $uploadSubPath = $this->upload_path_mock . $this->input->post('idx');
+
             // 기존데이터 첨부파일 이름 추출
             $fileBackup = array();
             $beforeDB = $this->_conn->select('RealQuestionFile, RealExplanFile')
@@ -231,7 +278,7 @@ class RegExamModel extends WB_Model
                 'PapaerName' => $this->input->post('PapaerName', true),
                 'Year' => $this->input->post('Year'),
                 'RotationNo' => $this->input->post('RotationNo'),
-
+                'FilePath' => PUBLICURL . 'uploads/' . $uploadSubPath . "/",
                 'IsUse' => $this->input->post('IsUse'),
                 'UpdDate' => date("Y-m-d H:i:s"),
                 'UpdAdminIdx' => $this->session->userdata('admin_idx'),
@@ -262,7 +309,7 @@ class RegExamModel extends WB_Model
 
             // 파일 업로드 (업로드파일이 있으면)
             if($fileBackup) {
-                $uploadSubPath = $this->upload_path_mock . $this->input->post('idx');
+
                 $isSave = $this->uploadFileSave($uploadSubPath, $names, $fileBackup);
                 if ($isSave !== true) {
                     throw new Exception('파일 저장에 실패했습니다.');
@@ -513,7 +560,7 @@ class RegExamModel extends WB_Model
                             'MalIdx' => $_POST['MalIdx'][$k],
                             'QuestionNO' => $_POST['QuestionNO'][$k],
                             'QuestionOption' => $_POST['QuestionOption'][$k],
-
+                            'FilePath' => PUBLICURL . 'uploads/' . $this->upload_path_mock . $this->input->post('idx') . $this->upload_path_mockQ,
                             'RightAnswer' => $_POST['RightAnswer'][$k],
                             'RightAnswerRate' => 0,
                             'Scoring' => $_POST['Scoring'][$k],
@@ -560,7 +607,7 @@ class RegExamModel extends WB_Model
                             'MalIdx' => $_POST['MalIdx'][$k],
                             'QuestionNO' => $_POST['QuestionNO'][$k],
                             'QuestionOption' => $_POST['QuestionOption'][$k],
-
+                            'FilePath' => PUBLICURL . 'uploads/' . $this->upload_path_mock . $this->input->post('idx') . $this->upload_path_mockQ,
                             'RightAnswer' => $_POST['RightAnswer'][$k],
                             'Scoring' => $_POST['Scoring'][$k],
                             'Difficulty' => $_POST['Difficulty'][$k],

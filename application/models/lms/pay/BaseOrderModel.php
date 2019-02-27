@@ -18,6 +18,7 @@ class BaseOrderModel extends WB_Model
         'order_memo' => 'lms_order_memo',
         'product' => 'lms_product',
         'product_lecture' => 'lms_product_lecture',
+        'product_lecture_date' => 'lms_product_lecture_date',
         'product_book' => 'lms_product_book',
         'product_book_professor_subject_concat' => 'vw_product_book_r_professor_subject_concat',
         'product_r_category' => 'lms_product_r_category',
@@ -26,11 +27,16 @@ class BaseOrderModel extends WB_Model
         'product_r_product' => 'lms_product_r_product',
         'product_r_autocoupon' => 'lms_product_r_autocoupon',
         'product_professor_concat' => 'vw_product_r_professor_concat',
-        'cms_lecture_combine_lite' => 'wbs_cms_lecture_combine_lite',
+        'professor' => 'lms_professor',
+        'professor_calculate_rate' => 'lms_professor_calculate_rate',
+        'pms_professor' => 'wbs_pms_professor',
         'bms_book' => 'wbs_bms_book',
         'bms_book_combine' => 'wbs_bms_book_combine',
         'my_lecture' => 'lms_my_lecture',
         'lecture_studyinfo' => 'lms_lecture_studyinfo',
+        'lecture_extend' => 'lms_lecture_extend',
+        'lecture_pause_history' => 'lms_lecture_pause_history',
+        'cms_lecture_basics' => 'wbs_cms_lecture_basics',
         'member' => 'lms_member',
         'member_info' => 'lms_member_otherinfo',
         'category' => 'lms_sys_category',
@@ -40,9 +46,9 @@ class BaseOrderModel extends WB_Model
         'admin' => 'wbs_sys_admin'
     ];
 
-    // 공통그룹코드 => 결제채널, 결제루트, 결제방법, 상품구분, 학습형태, 판매형태, 결제상태, 배송상태, 결제은행, 결제카드
-    public $_group_ccd = ['PayChannel' => '669', 'PayRoute' => '670', 'PayMethod' => '604', 'ProdType' => '636', 'LearnPattern' => '615', 'SalePattern' => '694', 'PayStatus' => '676'
-        , 'DeliveryStatus' => '677', 'Bank' => '678', 'Card' => '697'
+    // 공통그룹코드 => 결제채널, 결제루트, 결제방법, PG사, 상품구분, 학습형태, 판매형태, 결제상태, 배송상태, 택배사, 결제은행, 결제카드, 관리자부여사유
+    public $_group_ccd = ['PayChannel' => '669', 'PayRoute' => '670', 'PayMethod' => '604', 'Pg' => '603', 'ProdType' => '636', 'LearnPattern' => '615', 'SalePattern' => '694'
+        , 'PayStatus' => '676', 'DeliveryStatus' => '677', 'DeliveryComp' => '606', 'Bank' => '678', 'Card' => '697', 'AdminReason' => '705'
     ];
 
     // 상품타입 공통코드 (온라인강좌, 학원강좌, 교재, 사은품, 배송료, 추가 배송료, 독서실, 사물함, 예치금, 모의고사)

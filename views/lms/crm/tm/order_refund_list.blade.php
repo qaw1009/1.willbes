@@ -3,7 +3,15 @@
     <h5>- TM을 진행한 회원들의 환불 내역을 확인하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
-
+        <div class="row mt-20">
+            <div class="col-md-2">
+                <p>• TM 환불내역</p>
+            </div>
+            <div class="col-md-10 form-inline text-right">
+                <button type="button" class="btn btn-default" id="btn_info" onclick="openWin('in_pop_modal')">TM 운영정책</button>
+            </div>
+        </div>
+        @include('lms.crm.tm.tm_policy_partial')
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">
@@ -22,11 +30,11 @@
                     <label class="control-label col-md-1" for="search_value">회원검색</label>
                     <div class="col-md-4 form-inline">
                         <input type="text" class="form-control input-sm" id="search_value" name="search_value" style="width:200px">
-                        <p class="form-control-static">아이디, 이름, 연락처 검색 가능</p>
+                        <p class="form-control-static ml-20"># 아이디, 이름, 연락처 검색 가능</p>
                     </div>
                     <label class="control-label col-md-1">기간검색</label>
                     <div class="col-md-4 form-inline">
-                        <select name="DateType" id="DateType" class="form-control" >
+                        <select name="DateType" id="DateType" class="form-control">
                             <option value="opr.RefundDatm">환불완료일</option>
                             <option value="o.CompleteDatm">결제완료일</option>
                             <option value="tc1.AssignDatm">배정일</option>
@@ -38,9 +46,9 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-12 text-right">
+            <div class="col-xs-12 text-center">
                 <button type="submit" class="btn btn-primary btn-search" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
-                <button type="button" class="btn btn-default mr-20" id="_btn_reset">검색초기화</button>
+                <button type="button" class="btn btn-default btn-search" id="btn_reset">초기화</button>
             </div>
         </div>
     </form>

@@ -291,8 +291,8 @@ class CertModel extends WB_Model
                             join lms_sys_code C on A.CertTypeCcd = C.Ccd and C.IsStatus=\'Y\'
                             join lms_sys_code D on A.CertConditionCcd = D.Ccd and D.IsStatus=\'Y\'
                             join lms_site E on A.SiteCode=E.SiteCode and E.IsStatus=\'Y\'
-                            left outer join wbs_sys_admin F on A.RegAdminIdx = F.wRegAdminIdx
-                            left outer join wbs_sys_admin F2 on A.UpdAdminIdx = F2.wRegAdminIdx
+                            left outer join wbs_sys_admin F on A.RegAdminIdx = F.wAdminIdx
+                            left outer join wbs_sys_admin F2 on A.UpdAdminIdx = F2.wAdminIdx
                             
                             left outer join
                             (

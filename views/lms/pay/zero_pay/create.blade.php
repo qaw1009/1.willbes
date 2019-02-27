@@ -81,10 +81,22 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-1">등록사유 <span class="required">*</span>
+                            <label class="control-label col-md-1">부여사유유형 <span class="required">*</span>
                             </label>
-                            <div class="col-md-9 item">
-                                <input type="text" id="admin_reg_reason" name="admin_reg_reason" class="form-control" title="등록사유" required="required" value="">
+                            <div class="col-md-9 form-inline item">
+                                <select class="form-control" id="admin_reason_ccd" name="admin_reason_ccd" required="required" title="부여사유유형">
+                                    <option value="">선택</option>
+                                    @foreach($arr_admin_reason_ccd as $key => $val)
+                                        <option value="{{ $key }}">{{ $val }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-1">상세부여사유 <span class="required">*</span>
+                            </label>
+                            <div class="col-md-5 item">
+                                <input type="text" id="admin_etc_reason" name="admin_etc_reason" class="form-control" required="required" title="상세부여사유" value="" maxlength="100">
                             </div>
                         </div>
                     </div>
@@ -350,7 +362,7 @@
                 if (prod_type === 'book') {
                     // 교재 검색
                     $('#btn_product_search').setLayer({
-                        'url' : '{{ site_url('/common/searchBook/') }}?site_code=' + site_code + '&return_type=inline&target_id=selected_product&target_field=prod_code',
+                        'url' : '{{ site_url('/common/searchBook/') }}?site_code=' + site_code + '&return_type=inline&target_id=selected_product&target_field=prod_code&is_event=Y',
                         'width' : 1200
                     });
                 } else {
@@ -358,12 +370,20 @@
                     prod_type = prod_type.replace('_lecture', '');
 
                     $('#btn_product_search').setLayer({
-                        'url' : '{{ site_url('/common/searchLectureAll/') }}?site_code=' + site_code + '&prod_type='+prod_type+'&return_type=inline&target_id=selected_product&target_field=prod_code',
+                        'url' : '{{ site_url('/common/searchLectureAll/') }}?site_code=' + site_code + '&prod_type='+prod_type+'&return_type=inline&target_id=selected_product&target_field=prod_code&is_event=Y',
                         'width' : 1200
                     });
                 }
 
                 $('#selected_product').html('');    // 기 선택 상품 초기화
+            });
+
+            // 상품선택 결과 이벤트 (1건만 선택 가능)
+            $regi_form.on('change', '#selected_product', function() {
+                if ($(this).find('input[name="prod_code[]"]').length > 1) {
+                    alert('등록할 상품을 1건만 선택해 주세요.');
+                    $(this).html('');
+                }
             });
 
             // 회차 검색

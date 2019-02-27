@@ -20,10 +20,13 @@ class ConsultManagement extends \app\controllers\FrontController
         $arr_base['comment'] = $this->_depth_comment($arr_base['depth']);
         $arr_base['site_code'] = $this->_site_code;
         // 캠퍼스 조회
-        $arr_base['campus'] = array_map(function($var) {
-            $tmp_arr = explode(':', $var);
-            return ['CampusCcd' => $tmp_arr[0], 'CampusCcdName' => $tmp_arr[1]];
-        }, explode(',', config_app('CampusCcdArr')));
+        $arr_base['campus'] = [];
+        if (config_app('CampusCcdArr') != 'N') {
+            $arr_base['campus'] = array_map(function ($var) {
+                $tmp_arr = explode(':', $var);
+                return ['CampusCcd' => $tmp_arr[0], 'CampusCcdName' => $tmp_arr[1]];
+            }, explode(',', config_app('CampusCcdArr')));
+        }
 
         $this->load->view('site/consult_management/index', [
             'arr_input' => $arr_input,
@@ -125,10 +128,13 @@ class ConsultManagement extends \app\controllers\FrontController
         $arr_base['memo'] = $this->_default_memo();
 
         $arr_base['site_code'] = $this->_site_code;
-        $arr_base['campus'] = array_map(function($var) {
-            $tmp_arr = explode(':', $var);
-            return ['CampusCcd' => $tmp_arr[0], 'CampusCcdName' => $tmp_arr[1]];
-        }, explode(',', config_app('CampusCcdArr')));
+        $arr_base['campus'] = [];
+        if (config_app('CampusCcdArr') != 'N') {
+            $arr_base['campus'] = array_map(function ($var) {
+                $tmp_arr = explode(':', $var);
+                return ['CampusCcd' => $tmp_arr[0], 'CampusCcdName' => $tmp_arr[1]];
+            }, explode(',', config_app('CampusCcdArr')));
+        }
 
         $this->load->view('site/consult_management/create', [
             'arr_input' => $arr_input,
@@ -169,10 +175,13 @@ class ConsultManagement extends \app\controllers\FrontController
         $arr_input['s_campus'] = $this->_reqG('s_campus');
 
         // 캠퍼스 조회
-        $arr_base['campus'] = array_map(function($var) {
-            $tmp_arr = explode(':', $var);
-            return ['CampusCcd' => $tmp_arr[0], 'CampusCcdName' => $tmp_arr[1]];
-        }, explode(',', config_app('CampusCcdArr')));
+        $arr_base['campus'] = [];
+        if (config_app('CampusCcdArr') != 'N') {
+            $arr_base['campus'] = array_map(function ($var) {
+                $tmp_arr = explode(':', $var);
+                return ['CampusCcd' => $tmp_arr[0], 'CampusCcdName' => $tmp_arr[1]];
+            }, explode(',', config_app('CampusCcdArr')));
+        }
 
         if (empty(element('s_campus', $arr_input)) === true || empty(element('cst_idx', $arr_input)) === true) {
             show_alert('필수 파라미터 오류입니다.', 'back');

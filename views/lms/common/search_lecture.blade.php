@@ -16,6 +16,7 @@
         <input type="hidden" name="ProdCode" value="{{ $ProdCode }}"/>
         <input type="hidden" name="locationid" value="{{ $locationid }}"/>
         <input type="hidden" name="wLecIdx" value="{{ $wLecIdx }}"/>
+        <input type="hidden" name="cate_code" value="{{ $cate_code }}"/>
 
         @endsection
 
@@ -37,8 +38,44 @@
                     <p class="form-control-static">명칭, 코드 검색 가능</p>
                 </div>
                 <div class="col-md-2 text-right pr-5">
-                    <button type="submit" class="btn btn-primary btn-sm btn-search mr-0" id="_btn_search">검 색</button>
                 </div>
+            </div>
+            <div class="form-group pt-10 pb-5">
+                <label class="control-label col-md-2 pt-5" for="search_professor">강사검색</label>
+                <div class="col-md-3">
+                    <input type="text" class="form-control input-sm" id="search_professor" name="search_professor">
+                </div>
+                <div class="col-md-1"><label class="control-label pt-5 pl-30">조건</label></div>
+                <div class="col-md-6 form-inline">
+                    <select class="form-control" id="search_course_idx" name="search_course_idx">
+                        <option value="">과정</option>
+                        @foreach($arr_course as $row)
+                            <option value="{{ $row['CourseIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CourseName'] }}</option>
+                        @endforeach
+                    </select>
+                    <select class="form-control" id="search_subject_idx" name="search_subject_idx">
+                        <option value="">과목</option>
+                        @foreach($arr_subject as $row)
+                            <option value="{{ $row['SubjectIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['SubjectName'] }}</option>
+                        @endforeach
+                    </select>
+
+                    <select class="form-control" id="search_sales_ccd" name="search_sales_ccd">
+                        <option value="">판매여부</option>
+                        @foreach($Sales_ccd as $key=>$val)
+                            <option value="{{ $key }}">{{ $val }}</option>
+                        @endforeach
+                    </select>
+
+                    <select class="form-control" id="search_is_use" name="search_is_use">
+                        <option value="Y">사용</option>
+                        <option value="N">미사용</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-12 text-right pr-5 mt-10 mb-20">
+                <button type="submit" class="btn btn-primary btn-sm btn-search mr-0" id="_btn_search">검 색</button>
+                <button type="button" class="btn btn-default btn-search" id="searchInit">초기화</button>
             </div>
     @endif
             <div class="row mt-20 mb-20">
@@ -104,7 +141,9 @@
                         columns: [
                             @if(empty($wLecIdx) === true)
                             {'data' : null, 'render' : function(data, type, row, meta) {
-                                    var seq = meta.row + meta.settings._iDisplayStart;
+                                    //console.log(meta);
+                                    //var seq = meta.row + meta.settings._iDisplayStart;
+                                    var seq = meta.row;     //무조건 0 부터 시작 하단에서 걸림 ( for (i=0;i<allCnt;i++)	 {	//노출된 갯수에서 선택한 것만 적용되게끔... )
                                     var codeInfo= row.ProdCode+'@$'
                                         +row.CateName+'@$'
                                         +row.CourseName+'@$'
@@ -163,6 +202,18 @@
                         }
                     });
 
+                    // 검색 초기화
+                    $('#searchInit').on('click', function () {
+                        $search_form_modal.find('[name^=search_]:not(#search_is_use)').each(function () {
+                            $(this).val('');
+                        });
+                        $search_form_modal.find('[name=search_is_use]').each(function () {
+                            $(this).val('Y');
+                        });
+                        $search_form_modal.find('#_btn_search').trigger('click');
+                        $datatable_modal.draw();
+                    });
+
 
                     // 적용 버튼
                     //$('#_btn_apply').on('click', function() {
@@ -176,6 +227,12 @@
                         var nowRowCnt = ($parent_regi_form.find("#"+$parent_location+" tr")).length - 1;
                         var seq = nowRowCnt+1;
 
+                        /*
+                        console.log($parent_location);
+                        console.log(nowRowCnt);
+                        console.log(seq);
+                        */
+
                         for (i=0;i<allCnt;i++)	 {	//노출된 갯수에서 선택한 것만 적용되게끔...
                             //##
                             if ( $("input:checkbox[id='checkIdx"+i+"']").is(":checked") == true  ) {
@@ -184,6 +241,7 @@
                                 temp_data_arr = temp_data.split("@$");
 
                                 $(document).find("#"+$parent_location).append(
+
                                     "<tr id='"+$parent_location_tr+seq+"' name='"+ $parent_location_tr +"'>"
                                     +"		<input type='hidden'  name='"+$parent_element+"[]' id='"+$parent_element+seq+"' value='"+temp_data_arr[0]+"'>"
                                         @if($locationid === 'essLecAdd' || $locationid === 'selLecAdd' )

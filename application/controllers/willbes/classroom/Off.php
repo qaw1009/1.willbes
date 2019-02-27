@@ -63,6 +63,7 @@ class Off extends \app\controllers\FrontController
         ];
 
         // 셀렉트박스용 데이타
+        $sitegroup_arr = $this->classroomFModel->getSiteGroupList($cond_arr);
         $course_arr = $this->classroomFModel->getCourseList($cond_arr, true);
         $subject_arr = $this->classroomFModel->getSubjectList( $cond_arr, true);
         $prof_arr = $this->classroomFModel->getProfList($cond_arr, true);
@@ -104,6 +105,7 @@ class Off extends \app\controllers\FrontController
         $leclist = $this->classroomFModel->getLecture($cond_arr, $orderby,false, true);
 
         return $this->load->view('/classroom/off/off_ongoing', [
+            'sitegroup_arr' => $sitegroup_arr,
             'course_arr' => $course_arr,
             'subject_arr' => $subject_arr,
             'prof_arr' => $prof_arr,
@@ -136,6 +138,7 @@ class Off extends \app\controllers\FrontController
         ];
 
         // 셀렉트박스용 데이타
+        $sitegroup_arr = $this->classroomFModel->getSiteGroupList($cond_arr);
         $course_arr = $this->classroomFModel->getCourseList($cond_arr, true);
         $subject_arr = $this->classroomFModel->getSubjectList( $cond_arr, true);
         $prof_arr = $this->classroomFModel->getProfList($cond_arr, true);
@@ -182,6 +185,7 @@ class Off extends \app\controllers\FrontController
 
 
         return $this->load->view('/classroom/off/off_end', [
+            'sitegroup_arr' => $sitegroup_arr,
             'course_arr' => $course_arr,
             'subject_arr' => $subject_arr,
             'prof_arr' => $prof_arr,

@@ -22,6 +22,12 @@ class WB_Model extends CI_Model
         $this->setDefaultConnection(element(0, $databases));
     }
 
+    public function __destruct()
+    {
+        // db close
+        $this->_conn->close();
+    }
+
     /**
      * DB Connection 로드
      * @param $databases
@@ -31,8 +37,8 @@ class WB_Model extends CI_Model
         $_CI =& get_instance();
 
         foreach ($databases as $database) {
-            // 동일한 이름의 DB가 연결되어 있다면 다시 연결하지 않고 기존 연결정보를 설정
-            if (isset($_CI->{$database}) === false || is_object($_CI->{$database}) === false || empty($_CI->{$database}) === true) {
+            // 동일한 이름의 DB 커넥션이 있다면 기존 연결된 커넥션 사용
+            if (isset($_CI->{$database}) === false || is_object($_CI->{$database}) === false || empty($_CI->{$database}->conn_id) === true) {
                 $_CI->{$database} = $this->load->database($database, true);
             }
 

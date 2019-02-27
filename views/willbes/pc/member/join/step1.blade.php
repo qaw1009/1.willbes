@@ -15,9 +15,9 @@
                 <li>약관동의/정보입력</li>
                 <li>회원가입완료</li>
             </ul>
-            <ul class="tabWrap tabLoginDepth1 tabs half c_both">
-                <li><a href="#join1">휴대폰 인증</a></li>
-                <li><a href="#join2">E-mail 인증</a></li>
+            <ul class="tabWrap tabLoginDepth1 tabs full c_both">
+                <li><a class="on" href="#join1">휴대폰 인증</a></li>
+                <!--li><a href="#join2">E-mail 인증</a></li-->
             </ul>
             <div class="tabBox">
                 <form name="phone_form" id="phone_form" method="post" onsubmit=" return false;">
@@ -51,6 +51,8 @@
                         </div>
                     </div>
                 </form>
+                
+                <!--
                 <form name="mail_form" id="mail_form" method="post" onsubmit=" return false;">
                     {!! csrf_field() !!}
                     <div id="join2">
@@ -58,7 +60,7 @@
                             <div class="inputBox p_re item">
                                 <input type="text" name="var_name" class="iptId" placeholder="이름" maxlength="30" required="required" title="이름">
                             </div>
-                            <!-- <div class="tx-red mb30" style="display: block;">입력하신 정보와 일치하는 아이디가 없습니다.</div> -->
+                            /*<div class="tx-red mb30" style="display: block;">입력하신 정보와 일치하는 아이디가 없습니다.</div>*/ 
                             <div class="inputBox p_re item">
                                 <input type="text" id="mail_id" name="mail_id" class="iptEmail01" placeholder="아이디" maxlength="30" required="required" title="이메일아이디"> @
                                 <input type="text" id="mail_domain" name="mail_domain" class="iptEmail02" maxlength="30" required="required" placeholder="메일주소" title="이메일주소">
@@ -77,6 +79,7 @@
                         <div class="notice-Txt tx-gray mt40">* 입력하신 메일로 발송된 인증메일의 인증링크를 유효시간 30분 안에 클릭해 주세요.</div>
                     </div>
                 </form>
+                -->
             </div>
         </div>
         <!-- End 통합회원가입 : 본인인증 -->

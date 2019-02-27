@@ -3,7 +3,7 @@
 @section('content')
     <h5>- 윌비스 사용자 운영 사이트 메뉴를 생성하는 메뉴입니다.</h5>
     <form class="form-horizontal searching" id="search_form" name="search_form" method="POST" onsubmit="return false;">
-        {!! html_site_tabs('tabs_site_code', 'tab', true, [], true) !!}
+        {!! html_site_tabs('tabs_site_code', 'tab', false, [], true) !!}
         <input type="hidden" id="search_site_code" name="search_site_code" value=""/>
         <div class="x_panel">
             <div class="x_content">
@@ -104,6 +104,13 @@
                 ]
             });
 
+            // 초기 페이지 접근시 첫번째 탭 클릭 처리 (전체탭 제거)
+            if ($search_form.find('input[name="search_site_code"]').val() === '') {
+                setTimeout(function() {
+                    $('#tabs_site_code li:eq(0) > a').trigger('click');
+                }, 0);
+            }
+
             // 순서 변경
             $('.btn-reorder').on('click', function() {
                 if (!confirm('변경된 순서를 적용하시겠습니까?')) {
@@ -118,6 +125,11 @@
                         $params[$(this).data('idx')] = $(this).val();
                     }
                 });
+
+                if (Object.keys($params).length < 1) {
+                    alert('변경된 내용이 없습니다.');
+                    return;
+                }
 
                 var data = {
                     '{{ csrf_token_name() }}' : $list_form.find('input[name="{{ csrf_token_name() }}"]').val(),

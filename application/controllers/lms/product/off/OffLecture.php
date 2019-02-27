@@ -16,6 +16,10 @@ Class OffLecture extends \app\controllers\BaseController
 
     public function index()
     {
+        /* 학원사이트 탭 만 노출하기 위한 함수*/
+        $arr_code['arr_site_code'] = $this->siteModel->getOffLineSiteArray('');
+        $def_site_code = key($arr_code['arr_site_code']);
+
         //공통코드
         $codes = $this->codeModel->getCcdInArray(['653','654','675']);
 
@@ -39,6 +43,8 @@ Class OffLecture extends \app\controllers\BaseController
             'studyapply_ccd' => $codes['654'],
             'accept_ccd' => $codes['675'],
             'campusList' => $campusList,
+            'def_site_code' => $def_site_code,
+            'arr_site_code' => $arr_code['arr_site_code']
         ]);
     }
 
@@ -110,10 +116,12 @@ Class OffLecture extends \app\controllers\BaseController
             $list = $this->offLectureModel->listLecture(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.ProdCode' => 'desc']);
         }
 
+
         return $this->response([
             'recordsTotal' => $count,
             'recordsFiltered' => $count,
-            'data' => $list
+            'data' => $list,
+
         ]);
     }
 
@@ -128,7 +136,7 @@ Class OffLecture extends \app\controllers\BaseController
         $codes = $this->codeModel->getCcdInArray(['653','654','613','675']);
         $courseList = $this->courseModel->listCourse([], null, null, ['PC.SiteCode' => 'asc','PC.OrderNum' => 'asc' ]);
         $subjectList = $this->subjectModel->listSubject([], null, null, ['PS.SiteCode' => 'asc','PS.OrderNum' => 'asc' ]);
-        $siteList = $this->siteModel->getSiteArray(false,'CsTel');
+        $arr_send_callback_ccd = $this->codeModel->getCcd(706, 'CcdValue');  // 발신번호조회
         //캠퍼스
         $campusList = $this->siteModel->getSiteCampusArray('');
 
@@ -176,9 +184,9 @@ Class OffLecture extends \app\controllers\BaseController
             ,'accept_ccd' => $codes['675'] //접수상태
             ,'courseList'=>$courseList      //과정
             ,'subjectList'=>$subjectList    //과목
-            ,'siteList' =>$siteList           //사이트목록
             ,'campusList' =>$campusList     //캠퍼스목록
             ,'prodcode' => $prodcode
+            ,'arr_send_callback_ccd'=>$arr_send_callback_ccd
             ,'data'=>$data
             ,'data_sale'=>$data_sale
             ,'data_division'=>$data_division
@@ -263,7 +271,7 @@ Class OffLecture extends \app\controllers\BaseController
 
         $result = $this->offLectureModel->_prodCopy($prodcode);
         //var_dump($result);exit;
-        $this->json_result($result,'저장 되었습니다.',$result);
+        $this->json_result($result,'복사 되었습니다.',$result);
     }
 
 

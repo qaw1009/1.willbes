@@ -39,10 +39,10 @@
                 <div class="form-group">
                     <label class="control-label col-md-2" for="site_name">사이트명 <span class="required">*</span>
                     </label>
-                    <div class="col-md-4 item">
+                    <div class="col-md-3 item">
                         <input type="text" id="site_name" name="site_name" required="required" class="form-control" title="사이트명" value="{{ $data['SiteName'] }}">
                     </div>
-                    <label class="control-label col-md-2">사이트 코드
+                    <label class="control-label col-md-2 col-md-offset-1">사이트 코드
                     </label>
                     <div class="col-md-3">
                         <p class="form-control-static">@if($method == 'PUT') {{ $data['SiteCode'] }} @else # 등록 시 자동 생성 @endif</p>
@@ -284,7 +284,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2">등록자
                     </label>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <p class="form-control-static">{{ $data['RegAdminName'] }}</p>
                     </div>
                     <label class="control-label col-md-2">등록일
@@ -296,7 +296,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2">최종 수정자
                     </label>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <p class="form-control-static">{{ $data['UpdAdminName'] }}</p>
                     </div>
                     <label class="control-label col-md-2">최종 수정일

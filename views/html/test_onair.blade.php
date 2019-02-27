@@ -95,7 +95,7 @@
                             <a id="stoggleBtn"><p id="stoggleBtnNm">닫기 ▼</p></a>
                             <!-- <a id="stoggleBtn">닫기 ▲</a> -->
                         </span>
-                        <span class="state"><img src="{{ img_url('sample/onair.png') }}" alt="방송중"></span>
+                        <span class="state">윌비스 <span class="tx-color">신광은경찰</span> 학원 <img src="{{ img_url('onair/onair.png') }}" alt="방송중"></span>
                         <ul id="scroll" style="position: relative; overflow: hidden;">
                             <li>111현재 전국캠퍼스에 신광은 경찰팀의 라이브 강의가 실시간 송출 되고 있습니다.</li>
                             <li>222현재 전국캠퍼스에 신광은 경찰팀의 라이브 강의가 실시간 송출 되고 있습니다.</li>
@@ -133,8 +133,8 @@
                                 <div class="onAirBtn">
                                     <ul>
                                         <li><a class="sample" href="#none">60초맛보기</a></li>
-                                        <li><a href="#none"><img src="{{ img_url('sample/onair_btn1.gif') }}" alt="강의시간표"></a></li>
-                                        <li><a href="#none"><img src="{{ img_url('sample/onair_btn2.gif') }}" alt="학원수강"></a></li>
+                                        <li><a href="#none"><img src="{{ img_url('onair/onair_btn1.gif') }}" alt="강의시간표"></a></li>
+                                        <li><a href="#none"><img src="{{ img_url('onair/onair_btn2.gif') }}" alt="학원수강"></a></li>
                                     </ul>
                                 </div>
                             </div><!--onAirLecBox//-->
@@ -160,8 +160,8 @@
                                 <div class="onAirBtn">
                                     <ul>
                                         <li><a class="sample" href="#none">60초맛보기</a></li>
-                                        <li><a href="#none"><img src="{{ img_url('sample/onair_btn1.gif') }}" alt="강의시간표"></a></li>
-                                        <li><a href="#none"><img src="{{ img_url('sample/onair_btn2.gif') }}" alt="학원수강"></a></li>
+                                        <li><a href="#none"><img src="{{ img_url('onair/onair_btn1.gif') }}" alt="강의시간표"></a></li>
+                                        <li><a href="#none"><img src="{{ img_url('onair/onair_btn2.gif') }}" alt="학원수강"></a></li>
                                     </ul>
                                 </div>
                             </div><!--onAirLecBox//-->
@@ -172,13 +172,13 @@
 
                 <div class="offAir">
                     <div class="offAirBar">
-                        <span class="state"><img src="{{ img_url('sample/onair_off.png') }}" alt="방송중이아닙니다."></span>
+                        <span class="state">윌비스 <span class="tx-color">신광은경찰</span> 학원 <img src="{{ img_url('onair/onair_off.png') }}" alt="방송중이아닙니다."></span>
                         <ul>
                             <li>현재 진행중인 라이브 강의가 없습니다.</li>
                         </ul>
                         <span class="offAirBarBtn">
-                            <a href="#none"><img src="{{ img_url('sample/onair_btn1.gif') }}" alt="강의시간표"></a>
-                            <a href="#none"><img src="{{ img_url('sample/onair_btn2.gif') }}" alt="학원수강"></a>
+                            <a href="#none"><img src="{{ img_url('onair/onair_btn1.gif') }}" alt="강의시간표"></a>
+                            <a href="#none"><img src="{{ img_url('onair/onair_btn2.gif') }}" alt="학원수강"></a>
                         </span>
                     </div><!--offAirBar//-->
                 </div><!--offAir//-->

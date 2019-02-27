@@ -123,7 +123,7 @@
                 },
                 columns: [
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                        var seq = meta.row + meta.settings._iDisplayStart;
+                        var seq = meta.row;
                         var codeInfo= row.ProdCode+'@$'+row.ProdName+'@$'+addComma(row.SalePrice)+'원@$'+addComma(row.RealSalePrice)+'원@$'+row.wSaleCcdName;
                         var checked = ($ori_selected_data.hasOwnProperty(row.ProdCode) === true) ? ' checked="checked"' : '';
 

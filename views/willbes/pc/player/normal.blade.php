@@ -57,25 +57,15 @@
             var url = "/player/checkDevicePC/";
             var data = "o={{$data['orderidx']}}&op={{$data['orderprodidx']}}&p={{$data['prodcode']}}&m={{$data['memidx']}}&di=" + player.getPID();
 
-            $.ajax({
-                type: "GET",
-                url: url,
-                data: data,
-                cache: false,
-                dataType: "text",
-                error: function (request, status, error) {
+            sendAjax(url,
+                data,
+                function(ret){ /* 정상 기기 */ },
+                function(ret, status){
                     player.stop();
-                    alert("인터넷오류로 강의가 중단되었습니다.");
-                },
-                success: function (response) {
-                    if(response == "STOP") {
-                        player.stop();
-                        alert("등록되지않은 기기입니다.");
-                        self.close();
-                    }
-                }
-            });
+                    alert(ret.ret_msg);
+                }, false, 'GET', 'json');
         }
+
 
         function fnSendLog()
         {

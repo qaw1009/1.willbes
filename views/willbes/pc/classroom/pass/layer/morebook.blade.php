@@ -58,13 +58,11 @@ var book_data = [];
         </tbody>
     </table>
 @endforelse
-<script>
-
-
+<script type="text/javascript">
     function fnDelBook(obj, price)
     {
         $(obj).parent().parent().remove();
-        fnUpdateBookPirce();
+        fnUpdateBookPrice();
     }
 
     function fnBookAdd(obj, price)
@@ -72,10 +70,10 @@ var book_data = [];
         if($(obj).is(":checked")){
             $('#book-order-table > tbody:last').append(book_data[$(obj).val()]);
         }
-        fnUpdateBookPirce();
+        fnUpdateBookPrice();
     }
 
-    function fnUpdateBookPirce()
+    function fnUpdateBookPrice()
     {
         var price = 0;
         var trans = 0;

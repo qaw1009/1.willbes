@@ -71,14 +71,7 @@
         </span>
     </div>
     <div class="Content p_re">
-
-        <div class="willbes-Eventzone EVTZONE c_both">
-            <div class="willbes-Lec-Tit NG bd-none tx-black c_both pt-zero">
-                · 마감된 이벤트
-            </div>
-        </div>
-
-        <div class="willbes-Leclist c_both mt30">
+        <div class="willbes-Leclist c_both">
 
             <!-- View -->
             <div class="willbes-Leclist c_both">

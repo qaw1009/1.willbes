@@ -4,14 +4,14 @@
     <h5>- 학원 단과반 상품 정보를 관리하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
-        {!! html_site_tabs('tabs_site_code') !!}
+        {!! html_def_site_tabs($def_site_code, 'tabs_site_code', 'tab', false, [], false, $arr_site_code) !!}
         <div class="x_panel">
             <div class="x_content">
 
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_value">강좌기본정보</label>
                     <div class="col-md-11 form-inline">
-                        {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
+                        {!! html_site_select($def_site_code, 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
                         <select class="form-control mr-10" id="search_campus_code" name="search_campus_code">
                             <option value="">캠퍼스</option>
                             @foreach($campusList as $row)
@@ -159,14 +159,18 @@
                     <th>교수</th>
                     <th>단과반명</th>
                     <th>판매가</th>
+                    <th>신규</th>
+                    <th>추천</th>
                     <th>정원</th>
                     <th>개강~종강일</th>
                     <th>개설여부</th>
                     <th>접수기간</th>
                     <th>접수상태</th>
                     <th>사용여부</th>
+                    <th>정산입력</th>
                     <th>등록자</th>
                     <th>등록일</th>
+                    <th>복사</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -185,9 +189,9 @@
                 serverSide: true,
 
                 buttons: [
-
-                    /*{ text: '<i class="fa fa-pencil mr-5"></i> 개설여부/접수상태 적용', className: 'btn-sm btn-success border-radius-reset mr-15 btn-new-best-modify'}*/
-                    { text: '<i class="fa fa-sort-numeric-asc mr-5"></i> 정렬변경', className: 'btn-sm btn-success border-radius-reset mr-15 btn-order'}
+                    { text: '<i class="fa fa-pencil mr-5"></i> 신규/추천 적용', className: 'btn-sm btn-success border-radius-reset mr-15 btn-new-best-modify'}
+                    /*{ text: '<i class="fa fa-pencil mr-5"></i> 개설여부/접수상태 적용', className: 'btn-sm btn-success border-radius-reset mr-15 btn-new-best-modify'}
+                    { text: '<i class="fa fa-sort-numeric-asc mr-5"></i> 정렬변경', className: 'btn-sm btn-success border-radius-reset mr-15 btn-order'}*/
                     ,{ text: '<i class="fa fa-copy mr-5"></i> 단과반복사', className: 'btn-sm btn-success border-radius-reset mr-15 btn-copy'}
                     ,{ text: '<i class="fa fa-pencil mr-5"></i> 단과반등록', className: 'btn-sm btn-primary border-radius-reset btn-reorder',action : function(e, dt, node, config) {
                             location.href = '{{ site_url('product/off/offLecture/create') }}';
@@ -226,6 +230,13 @@
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return addComma(row.RealSalePrice)+'원<BR><strike>'+addComma(row.SalePrice)+'원</strike>';
                         }},
+                    {'data' : 'IsNew', 'render' : function(data, type, row, meta) {
+                            return '<input type="checkbox" class="flat" name="is_new" value="Y" data-idx="'+ row.ProdCode +'" data-origin-is-new="' + data + '" ' + ((data === 'Y') ? ' checked="checked"' : '') + '>';
+                        }},
+
+                    {'data' : 'IsBest', 'render' : function(data, type, row, meta) {
+                            return '<input type="checkbox" class="flat" name="is_best" value="Y" data-idx="'+ row.ProdCode +'" data-origin-is-best="' + data + '" ' + ((data === 'Y') ? ' checked="checked"' : '') + '>';
+                        }},
                     {'data' : 'FixNumber'},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return row.StudyStartDate +' ~ '+row.StudyEndDate
@@ -257,9 +268,14 @@
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                             return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
                         }},//사용여부
-
+                    {'data' : 'DivisionCount','render' : function(data, type, row, meta) {
+                            return (data !== '0') ? '입력' : '<span class="red">미입력</span>';
+                        }},//정산입력
                     {'data' : 'wAdminName'},//등록자
-                    {'data' : 'RegDatm'}//등록일
+                    {'data' : 'RegDatm'},//등록일
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            return (row.ProdCode_Original !== '') ? '<span class="red">Y</span>' : '';
+                        }},//복사여부
                 ]
 
             });
@@ -280,18 +296,21 @@
                     return false;
                 }
 
-                var data = {
-                    '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
-                    '_method' : 'PUT',
-                    'prodCode' : $('input:radio[name="copyProdCode"]:checked').val()
-                };
+                if(confirm("해당 강좌를 복사하시겠습니까?")) {
+                    var data = {
+                        '{{ csrf_token_name() }}': $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                        '_method': 'PUT',
+                        'prodCode': $('input:radio[name="copyProdCode"]:checked').val()
+                    };
 
-                sendAjax('{{ site_url('/product/off/offLecture/copy') }}', data, function(ret) {
-                    if (ret.ret_cd) {
-                        notifyAlert('success', '알림', ret.ret_msg);
-                        $datatable.draw();
-                    }
-                }, showError, false, 'POST');
+                    sendAjax('{{ site_url('/product/off/offLecture/copy') }}', data, function (ret) {
+                        if (ret.ret_cd) {
+                            //notifyAlert('success', '알림', ret.ret_msg);
+                            alert(ret.ret_msg);
+                            $datatable.draw();
+                        }
+                    }, showError, false, 'POST');
+                }
 
             });
 
@@ -326,6 +345,48 @@
                     'AcceptStatusCcd' : $(this).val()
                 };
                 sendAjax('{{ site_url('/product/off/offLecture/reoption') }}', data, function(ret) {
+                    if (ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                        $datatable.draw();
+                    }
+                }, showError, false, 'POST');
+            });
+
+
+            // 신규, 추천 상태 변경
+            $('.btn-new-best-modify').on('click', function() {
+                if (!confirm('신규/추천 상태를 적용하시겠습니까?')) {
+                    return;
+                }
+
+                var $is_new = $list_table.find('input[name="is_new"]');
+                var $is_best = $list_table.find('input[name="is_best"]');
+                var $params = {};
+                var origin_val, this_val, this_new_val, this_best_val;
+
+                $is_new.each(function(idx) {
+                    // 신규 또는 추천 값이 변하는 경우에만 파라미터 설정
+                    this_new_val = $(this).filter(':checked').val() || 'N';
+                    this_best_val = $is_best.eq(idx).filter(':checked').val() || 'N';
+                    this_val = this_new_val + ':' + this_best_val;
+                    origin_val = $(this).data('origin-is-new') + ':' + $is_best.eq(idx).data('origin-is-best');
+                    if (this_val !== origin_val) {
+                        $params[$(this).data('idx')] = { 'IsNew' : this_new_val, 'IsBest' : this_best_val };
+                    }
+                });
+
+                if (Object.keys($params).length < 1) {
+                    alert('변경된 내용이 없습니다.');
+                    return;
+                }
+
+                var data = {
+                    '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                    '_method' : 'PUT',
+                    'params' : JSON.stringify($params)
+                };
+
+                sendAjax('{{ site_url('/product/on/lecture/redata') }}', data, function(ret) {
                     if (ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
                         $datatable.draw();

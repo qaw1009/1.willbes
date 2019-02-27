@@ -8,6 +8,7 @@ class BaseProductFModel extends WB_Model
         'code' => 'lms_sys_code',
         'category' => 'lms_sys_category',
         'course' => 'lms_product_course',
+        'course_r_category' => 'lms_product_course_r_category',
         'subject' => 'lms_product_subject',
         'subject_r_category' => 'lms_product_subject_r_category',
         'subject_r_category_r_code' => 'lms_product_subject_r_category_r_code',
@@ -23,7 +24,7 @@ class BaseProductFModel extends WB_Model
 
     /**
      * 과정 데이터 조회
-     * @param $site_code
+     * @param int $site_code
      * @return array
      */
     public function listCourse($site_code)
@@ -39,6 +40,67 @@ class BaseProductFModel extends WB_Model
         return $this->_conn->getJoinListResult($this->_table['course'] . ' as PC', 'inner', $this->_table['site'] . ' as S', 'PC.SiteCode = S.SiteCode'
             , $column, $arr_condition, null, null, ['PC.OrderNum' => 'asc']
         );
+    }
+
+    /**
+     * 과목 데이터 조회
+     * @param int $site_code
+     * @param array $arr_subject_idx
+     * @return array|int
+     */
+    public function listSubject($site_code, $arr_subject_idx = [])
+    {
+        $column = 'PS.SubjectIdx, PS.SubjectName';
+        $arr_condition = [
+            'EQ' => [
+                'PS.SiteCode' => $site_code, 'PS.IsStatus' => 'Y',
+                'S.IsUse' => 'Y', 'S.IsStatus' => 'Y',
+            ],
+            'IN' => [
+                'PS.SubjectIdx' => (array) $arr_subject_idx
+            ]
+        ];
+
+        if (empty($arr_subject_idx) === true) {
+            $arr_condition['EQ']['PS.IsUse'] = 'Y';
+        }
+
+        return $this->_conn->getJoinListResult($this->_table['subject'] . ' as PS', 'inner', $this->_table['site'] . ' as S', 'PS.SiteCode = S.SiteCode'
+            , $column, $arr_condition, null, null, ['PS.OrderNum' => 'asc']
+        );
+    }
+
+    /**
+     * 카테고리별 과정 데이터 조회
+     * @param string $site_code
+     * @param null|string $cate_code
+     * @return mixed
+     */
+    public function listCourseCategoryMapping($site_code, $cate_code = null)
+    {
+        $column = 'PCC.CateCode, PCC.CourseIdx, PCO.CourseName';
+        $from = '
+            from ' . $this->_table['course_r_category'] . ' as PCC 
+                inner join ' . $this->_table['site'] . ' as S
+                    on PCC.SiteCode = S.SiteCode
+                inner join ' . $this->_table['category'] . ' as SC
+                    on PCC.CateCode = SC.CateCode
+                inner join ' . $this->_table['course'] . ' as PCO
+                    on PCC.CourseIdx = PCO.CourseIdx
+            where PCC.SiteCode = ? and PCC.IsStatus = "Y"
+                and S.IsUse = "Y" and S.IsStatus = "Y"
+                and SC.IsUse = "Y" and SC.IsStatus = "Y"
+                and PCO.IsUse = "Y" and PCO.IsStatus = "Y"            
+        ';
+
+        $where = $this->_conn->makeWhere(['EQ' => ['PCC.CateCode' => $cate_code]]);
+        $where = $where->getMakeWhere(true);
+        $order_by = ' order by SC.OrderNum asc, PCO.OrderNum asc, PCC.CcIdx asc';
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by, [$site_code]);
+
+        return $query->result_array();
     }
 
     /**
@@ -162,7 +224,8 @@ class BaseProductFModel extends WB_Model
             $arr_define_column = [
                 'ProfReferData' => 'ifnull(fn_professor_refer_data(P.ProfIdx), "N") as ProfReferData',
                 'IsNew' => 'if(datediff(NOW(), P.RegDatm) > 30, "N", "Y") as IsNew',
-                'ProfEventData' => 'ifnull(fn_professor_event_data(P.ProfIdx, P.SiteCode, PSC.CateCode, PSC.SubjectIdx, 1), "N") as ProfEventData'
+                'ProfEventData' => 'ifnull(fn_professor_event_data(P.ProfIdx, P.SiteCode, PSC.CateCode, PSC.SubjectIdx, 1), "N") as ProfEventData',
+                'StudyCommentData' => 'ifnull(fn_professor_study_comment_data(P.ProfIdx, P.SiteCode, PSC.CateCode, PSC.SubjectIdx, 3), "N") as StudyCommentData'
             ];
 
             $arr_make_column = [];

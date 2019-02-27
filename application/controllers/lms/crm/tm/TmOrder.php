@@ -120,7 +120,7 @@ class TmOrder extends \app\controllers\BaseController
 
         $list = $this->tmModel->listOrderExcel($arr_condition, $order_by);
 
-        $headers = ['NO', '회원명', '회원아이디', '주문번호', '사이트', '결제완료일', '상품명', '결제금액', '결제상태', 'TM담당자', '배정일', '최종상담일'];
+        $headers = ['회원명', '회원아이디', '주문번호', '사이트', '결제완료일', '상품명', '상품금액', '결제금액', '결제상태', 'TM담당자', '배정일', '최종상담일'];
         // export excel
         $this->load->library('excel');
         $this->excel->exportExcel('TM결제내역('.date("Y-m-d").')', $list, $headers);

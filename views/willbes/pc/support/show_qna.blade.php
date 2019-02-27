@@ -18,24 +18,27 @@
         @endforeach
 
         <div class="willbes-Leclist c_both">
-            <div class="willbes-Lec-Tit NG bd-none tx-black c_both pt-zero">
-                · 1:1상담
-            </div>
-
-            <div class="Act3 mt30">
+            <div class="Act3">
                 <div class="LecViewTable">
-                    <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black tx-gray">
+                    <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black bdb-gray tx-gray">
                         <colgroup>
+                            <col style="width: 145px;">
                             <col style="width: 645px;">
                             <col style="width: 135px;">
                             <col style="width: 160px;">
                         </colgroup>
                         <thead>
-                        <tr><th colspan="3" class="w-list tx-left pl20"><strong>{{$data['Title']}}</strong></th></tr>
+                        <tr><th colspan="4" class="w-list tx-left pl20"><strong>{{$data['Title']}}</strong></th></tr>
                         <tr>
                             <td class="w-acad tx-left pl20">
                                 <span class="oBox onlineBox NSK">{{$data['SiteGroupName']}}</span>
                                 @if(empty($data['CampusCcd_Name']) === false)<span class="oBox nyBox NSK">{{$data['CampusCcd_Name']}}</span>@endif
+                                <span class="row-line">|</span>
+                            </td>
+                            <td class="w-acad tx-left pl20">
+                                @foreach($arr_base['category'] as $row)
+                                    @if($data['Category_String'] == $row['CateCode']){{$row['CateName']}}@endif
+                                @endforeach
                                 <span class="row-line">|</span>
                             </td>
                             <td class="w-write">
@@ -47,7 +50,7 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td class="w-file tx-left pl20" colspan="3">
+                            <td class="w-file tx-left pl20" colspan="4">
                                 @if(empty($data['AttachData']) === false)
                                     @foreach($data['AttachData'] as $row)
                                         @if($row['FileType'] == 0)
@@ -59,7 +62,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="w-txt answer tx-left" colspan="3">
+                            <td class="w-txt answer tx-left" colspan="4">
                                 @if($data['RegType'] == 1)
                                     {!! $data['Content'] !!}
                                 @else
@@ -70,7 +73,7 @@
                         </tbody>
                     </table>
 
-                    @if($data['RegType'] == 0)
+                    @if($data['RegType'] == 0 && $data['ReplyStatusCcd'] == $reply_type_complete)
                         <!-- 답변 -->
                         <table cellspacing="0" cellpadding="0" class="listTable upper-gray bdb-gray tx-gray">
                             <colgroup>
@@ -95,7 +98,7 @@
                             </thead>
                             <tbody>
                             <tr>
-                                <td class="w-file tx-left pl20" colspan="3">
+                                <td class="w-file tx-left pl20" colspan="4">
                                     @if(empty($data['AttachData']) === false)
                                         @foreach($data['AttachData'] as $row)
                                             @if($row['FileType'] == 1)
@@ -107,7 +110,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="w-txt answer tx-left" colspan="3">
+                                <td class="w-txt answer tx-left" colspan="4">
                                     @if($data['ReplyStatusCcd'] == '621004')
                                         {!! $data['ReplyContent'] !!}
                                     @endif
@@ -134,7 +137,7 @@
         </div>
         </form>
     </div>
-    {!! banner('고객센터_우측날개', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
+    {!! banner('상담실_우측', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
 </div>
 
 <script type="text/javascript">

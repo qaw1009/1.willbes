@@ -22,7 +22,7 @@
                     <div class="col-md-3">
                         <p class="form-control-static">{{ $data['wAdminName'] }} ({{ substr($data['wAdminId'], 0, strlen($data['wAdminId'])-3) }}***)</p>
                     </div>
-                    <label class="control-label col-md-2">소속 / 직급
+                    <label class="control-label col-md-2 col-md-offset-1">소속 / 직급
                     </label>
                     <div class="col-md-4">
                         <p class="form-control-static">{{ $data['wAdminDeptCcdName'] }} / {{ $data['wAdminPositionCcdName'] }}</p>
@@ -34,7 +34,7 @@
                     <div class="col-md-3">
                         <p class="form-control-static">{{ $data['wAdminPhone1'] }}-{{ $data['wAdminPhone2'] }}-{{ $data['wAdminPhone3'] }}</p>
                     </div>
-                    <label class="control-label col-md-2">E-mail
+                    <label class="control-label col-md-2 col-md-offset-1">E-mail
                     </label>
                     <div class="col-md-4">
                         <p class="form-control-static">{{ $data['wAdminMail'] }}</p>
@@ -51,7 +51,7 @@
                             @endforeach
                         </select>
                     </div>
-                    <label class="control-label col-md-2">사용여부
+                    <label class="control-label col-md-2 col-md-offset-1">사용여부
                     </label>
                     <div class="col-md-4">
                         <p class="form-control-static">@if($data['wIsUse']=='Y')사용@else<span class="red">미사용</span>@endif</p>
@@ -101,7 +101,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2">등록자
                     </label>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <p class="form-control-static">{{ $data['wRegAdminName'] }}</p>
                     </div>
                     <label class="control-label col-md-2">등록일
@@ -113,7 +113,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2">최종 수정자
                     </label>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <p class="form-control-static">{{ $data['wUpdAdminName'] }}</p>
                     </div>
                     <label class="control-label col-md-2">최종 수정일

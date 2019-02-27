@@ -325,7 +325,7 @@ class ConsultFModel extends WB_Model
         $from = "
             FROM {$this->_table['consult_schedule']} AS a
             INNER JOIN {$this->_table['consult_schedule_time']} AS b ON a.CsIdx = b.CsIdx AND b.IsUse = 'Y' AND b.IsStatus = 'Y'
-            INNER JOIN {$this->_table['consult_schedule_member']} AS c ON b.CstIdx = c.CstIdx AND c.MemIdx = '5000005'
+            INNER JOIN {$this->_table['consult_schedule_member']} AS c ON b.CstIdx = c.CstIdx AND c.MemIdx = '{$mem_idx}'
             
             LEFT JOIN (
                 SELECT b.CsmIdx, GROUP_CONCAT(fn_ccd_name(b.CcdValue)) AS CcdName

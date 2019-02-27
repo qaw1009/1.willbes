@@ -191,10 +191,10 @@
                     {'data' : 'TakePart_off', 'class': 'text-center', 'render' : function(data, type, row, meta) {
                         return (data === 'Y') ? 'Y' : '<span class="red">N</span>';
                     }},
-                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) { return 0; }},
-                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) { return 0; }},
-                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) { return 0; }},
-                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) { return 0; }},
+                    {'data' : 'OnlineRegCnt', 'class': 'text-center'},
+                    {'data' : 'OfflineRegCnt', 'class': 'text-center'},
+                    {'data' : 'OnlineCnt', 'class': 'text-center'},
+                    {'data' : 'OfflineCnt', 'class': 'text-center'},
                     {'data' : 'AcceptStatusCcd_Name', 'class': 'text-center'},
                     {'data' : 'TakeType', 'class': 'text-center', 'render' : function(data, type, row, meta) {
                         return (data === 'A') ? '상시' : '기간제한';
@@ -204,6 +204,7 @@
                     }},
                     {'data' : 'wAdminName', 'class': 'text-center'},
                     {'data' : 'RegDatm', 'class': 'text-center'}
+                   
                 ]
             });
 
@@ -211,6 +212,13 @@
             $list_form.on('click', '.act-edit', function () {
                 var query = dtParamsToQueryString($datatable);
                 location.href = '{{ site_url('/mocktest/regGoods/edit/') }}' + $(this).closest('tr').find('[name=target]').val() + query;
+            });
+
+            // 짝퉁데이터 생성으로 이동
+            $list_form.on('click', '.act-fake', function () {
+                var query = dtParamsToQueryString($datatable);
+
+                location.href = '{{ site_url('/mocktest/regGoods/fakeCreate/') }}' + $(this).closest('tr').find('[name=prod]').val() + query;
             });
 
             // 복사

@@ -11,21 +11,19 @@ class ProfessorModel extends WB_Model
         'professor' => 'lms_professor',
         'pms_professor' => 'wbs_pms_professor',
         'professor_reference' => 'lms_professor_reference',
+        'professor_banner' => 'lms_professor_banner',
         'professor_r_subject_r_category' => 'lms_professor_r_subject_r_category',
         'professor_calculate_rate' => 'lms_professor_calculate_rate',
         'admin' => 'wbs_sys_admin',
         'board' => 'lms_board'
     ];
     private $_refer_type = [
-        'string' => ['ot_url', 'wsample_url', 'sample_url1', 'sample_url2', 'sample_url3', 'cafe_url'],
-        'attach' => ['prof_index_img', 'prof_detail_img', 'lec_list_img', 'lec_detail_img', 'lec_review_img']
+        'string' => ['ot_url', 'wsample_url', 'sample_url1', 'sample_url2', 'sample_url3', 'cafe_url', 'yt_url'],
+        'attach' => ['prof_index_img', 'prof_detail_img', 'lec_list_img', 'lec_detail_img', 'lec_review_img', 'class_detail_img']
     ];
-    private $_ccd = [
-        'LearnPattern' => '615'
-    ];
-    public $_bm_idx = [
-        'notice' => 63, 'qna' => 66, 'data' => 69, 'tpass' => '87', 'assignment' => '88'
-    ];
+    private $_bnr_type = ['01' => 3, '02' => 3, '03' => 3];     // 배너타입별 이미지 갯수
+    private $_ccd = ['LearnPattern' => '615', 'ProdType' => '636'];
+    public $_bm_idx = ['notice' => 63, 'qna' => 66, 'data' => 69, 'tpass' => '87', 'assignment' => '88'];
 
     public function __construct()
     {
@@ -147,10 +145,11 @@ class ProfessorModel extends WB_Model
      * @param $reply_status_ccd
      * @return mixed
      */
-    public function listProfessorSubjectMappingForBoard($is_count, $arr_condition, $bm_idx, $reply_status_ccd = null)
+    public function listProfessorSubjectMappingForBoard($is_count, $arr_condition, $bm_idx, $reply_status_ccd = null, $limit = null, $offset = null)
     {
         if ($is_count === true) {
             $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
         } else {
             $column = '
                 P.ProfIdx, P.wProfIdx, P.SiteCode, P.SiteName, P.ProfNickName, P.UseBoardJson, PrSC.CateCode
@@ -160,6 +159,8 @@ class ProfessorModel extends WB_Model
                     ,IFNULL(C.BoardProfCount,0) AS BoardProfCount
                 ';
             }
+
+            $order_by_offset_limit = $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
         $from = '
             FROM (
@@ -202,7 +203,7 @@ class ProfessorModel extends WB_Model
         $where = $set_where.$where;
 
         // 쿼리 실행
-        $query = $this->_conn->query('select ' . $column . $from . $where);
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
@@ -288,15 +289,19 @@ class ProfessorModel extends WB_Model
     }
 
     /**
-     * 교수 강사료 정산률 등록 대상 조회
+     * 교수 강사료 정산률 등록 대상 조회 (모의고사상품 추가)
      * @return array
      */
     public function listProfessorCalcRateTarget()
     {
         $results = [];
-        $list = $this->_conn->getListResult($this->_table['code'], 'Ccd, CcdName, json_value(CcdEtc, "$.type") as OnOffType', [
-            'EQ' => ['GroupCcd' => $this->_ccd['LearnPattern'], 'json_value(CcdEtc, "$.is_calc")' => 'Y', 'IsUse' => 'Y', 'IsStatus' => 'Y']
-        ]);
+        $arr_condition = [
+            'EQ' => ['IsUse' => 'Y', 'IsStatus' => 'Y'],
+            'IN' => ['GroupCcd' => array_values($this->_ccd)],
+            'ORG' => ['EQ' => ['json_value(CcdEtc, "$.is_calc")' => 'Y', 'Ccd' => '636010']]
+        ];
+
+        $list = $this->_conn->getListResult($this->_table['code'], 'Ccd, CcdName, ifnull(json_value(CcdEtc, "$.type"), "mock_exam") as OnOffType', $arr_condition);
 
         foreach ($list as $row) {
             $results[$row['OnOffType']][$row['Ccd']] = $row['CcdName'];
@@ -306,7 +311,7 @@ class ProfessorModel extends WB_Model
     }
 
     /**
-     * 교수 강사료 정산률 데이터 조회
+     * 교수 강사료 정산률 데이터 조회 (모의고사상품 추가)
      * @param $prof_idx
      * @return array
      */
@@ -316,13 +321,16 @@ class ProfessorModel extends WB_Model
         $column = '
             PCR.ProfCalcIdx, PCR.LearnPatternCcd, left(PCR.ApplyStartDatm, 10) as ApplyStartDate, left(PCR.ApplyEndDatm, 10) as ApplyEndDate
                 , PCR.CalcRate, PCR.ContribRate, PCR.CalcMemo
-                , json_value(C.CcdEtc, "$.type") as OnOffType            
+                , ifnull(json_value(C.CcdEtc, "$.type"), "mock_exam") as OnOffType            
         ';
+        $arr_condition = [
+            'EQ' => ['PCR.ProfIdx' => $prof_idx, 'PCR.IsStatus' => 'Y', 'C.IsUse' => 'Y', 'C.IsStatus' => 'Y'],
+            'IN' => ['C.GroupCcd' => array_values($this->_ccd)],
+        ];
         
         $list = $this->_conn->getJoinListResult($this->_table['professor_calculate_rate'] . ' as PCR', 'inner', $this->_table['code'] . ' as C'
             , 'PCR.LearnPatternCcd = C.Ccd'
-            , $column, ['EQ' => ['PCR.ProfIdx' => $prof_idx, 'PCR.IsStatus' => 'Y', 'C.GroupCcd' => $this->_ccd['LearnPattern'], 'C.IsUse' => 'Y', 'C.IsStatus' => 'Y']]
-            , null, null, ['PCR.ProfCalcIdx', 'asc']
+            , $column, $arr_condition, null, null, ['PCR.ProfCalcIdx', 'asc']
         );
 
         foreach ($list as $row) {
@@ -330,6 +338,25 @@ class ProfessorModel extends WB_Model
         }
 
         return $results;        
+    }
+
+    /**
+     * 교수 배너 조회
+     * @param int $prof_idx
+     * @return array
+     */
+    public function listProfessorBanner($prof_idx)
+    {
+        $results = [];
+        $data = $this->_conn->getListResult($this->_table['professor_banner'], 'BnrIdx, BnrType, BnrNum, BnrImgPath, BnrImgName, LinkType, LinkUrl', [
+            'EQ' => ['ProfIdx' => $prof_idx, 'IsStatus' => 'Y'],
+        ]);
+
+        foreach ($data as $idx => $row) {
+            $results[$row['BnrType']][$row['BnrNum']] = $row;
+        }
+
+        return $results;
     }
 
     /**
@@ -495,6 +522,12 @@ class ProfessorModel extends WB_Model
                 throw new \Exception($is_calc_rate);
             }
 
+            // 교수배너 이미지 업로드
+            $is_bnr_upload = $this->_attachProfessorBannerImg($input, [], $prof_idx);
+            if ($is_bnr_upload !== true) {
+                throw new \Exception($is_bnr_upload);
+            }
+
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();
@@ -565,6 +598,13 @@ class ProfessorModel extends WB_Model
                 throw new \Exception($is_calc_rate);
             }
 
+            // 교수배너 이미지 업로드
+            $bnr_data = $this->listProfessorBanner($prof_idx);  // 교수배너 정보 조회
+            $is_bnr_upload = $this->_attachProfessorBannerImg($input, $bnr_data, $prof_idx);
+            if ($is_bnr_upload !== true) {
+                throw new \Exception($is_bnr_upload);
+            }
+
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();
@@ -596,7 +636,7 @@ class ProfessorModel extends WB_Model
      * @param $prof_idx
      * @return bool|string
      */
-    private function _replaceProfessorRefer($input = [], $arr_string_refer = [], $prof_idx)
+    private function _replaceProfessorRefer($input, $arr_string_refer, $prof_idx)
     {
         try {
             $admin_idx = $this->session->userdata('admin_idx');
@@ -645,7 +685,7 @@ class ProfessorModel extends WB_Model
      * @param $prof_idx
      * @return bool|string
      */
-    private function _replaceProfessorCalcRate($input = [], $arr_del_prof_calc_idx = [], $prof_idx)
+    private function _replaceProfessorCalcRate($input, $arr_del_prof_calc_idx, $prof_idx)
     {
         try {
             $admin_idx = $this->session->userdata('admin_idx');
@@ -790,6 +830,107 @@ class ProfessorModel extends WB_Model
     }
 
     /**
+     * 교수 배너 이미지 업로드 및 데이터 저장
+     * @param array $input [폼 참조 데이터 배열]
+     * @param array $arr_bnr_data [기 등록된 배너 데이터 배열]
+     * @param int $prof_idx [교수식별자]
+     * @return bool|string
+     */
+    private function _attachProfessorBannerImg($input, $arr_bnr_data, $prof_idx)
+    {
+        try {
+            $this->load->library('upload');
+            $upload_sub_dir = config_item('upload_prefix_dir') . '/professor/' . $prof_idx;
+            $bak_uploaded_files = [];
+            $admin_idx = $this->session->userdata('admin_idx');
+            $reg_ip = $this->input->ip_address();
+
+            // 텍스트 input, 업로드 파일 input, 업로드 파일명
+            $string_inputs = [];
+            $attach_img_inputs = [];
+            $attach_img_names = [];
+
+            foreach ($this->_bnr_type as $type => $cnt) {
+                for($i = 1; $i <= $cnt; $i++) {
+                    $attach_img_postfix = empty(array_get($arr_bnr_data, $type . '.' . $i)) === false ? '_' . time() : '';
+                    $attach_img_inputs[] = 'bnr_img_' . $type . '_' . $i;
+                    $attach_img_names[] = 'bnr_img_' . $type . '_' . $i . '_' . $prof_idx . $attach_img_postfix;
+                    $string_inputs[$type . '.' . $i] = [
+                        'link_type' => array_get($input, 'link_type_' . $type . '_' . $i, 'self'),
+                        'link_url' => array_get($input, 'link_url_' . $type . '_' . $i),
+                    ];
+                }
+            }
+
+            // 이미지 업로드
+            $uploaded = $this->upload->uploadFile('img', $attach_img_inputs, $attach_img_names, $upload_sub_dir, 'overwrite:false');
+            if (is_array($uploaded) === false) {
+                throw new \Exception($uploaded);
+            }
+
+            $uploaded_idx = 0;
+            foreach ($string_inputs as $key => $arr_input) {
+                if (empty(array_get($arr_bnr_data, $key)) === false) {
+                    // 배너 식별자
+                    $bnr_idx = array_get($arr_bnr_data, $key . '.BnrIdx');
+
+                    if (empty($bnr_idx) === false) {
+                        $data = [
+                            'LinkType' => element('link_type', $arr_input),
+                            'LinkUrl' => element('link_url', $arr_input),
+                            'UpdAdminIdx' => $admin_idx
+                        ];
+
+                        if (empty($uploaded[$uploaded_idx]) === false) {
+                            $data = array_merge($data, [
+                                'BnrImgPath' => $this->upload->_upload_url . $upload_sub_dir . '/',
+                                'BnrImgName' => $uploaded[$uploaded_idx]['file_name'],
+                            ]);
+
+                            // 기존 업로드된 첨부 이미지 정보
+                            $bak_uploaded_files[] = array_get($arr_bnr_data, $key . '.BnrImgPath') . array_get($arr_bnr_data, $key . '.BnrImgName');
+                        }
+
+                        if ($this->_conn->set($data)->where('BnrIdx', $bnr_idx)->where('ProfIdx', $prof_idx)->update($this->_table['professor_banner']) === false) {
+                            throw new \Exception('교수 배너 수정에 실패했습니다.');
+                        }
+                    }
+                } else {
+                    if (empty($uploaded[$uploaded_idx]) === false) {
+                        $data = [
+                            'ProfIdx' => $prof_idx,
+                            'BnrType' => str_first_pos_before($key, '.'),
+                            'BnrNum' => str_first_pos_after($key, '.'),
+                            'BnrImgPath' => $this->upload->_upload_url . $upload_sub_dir . '/',
+                            'BnrImgName' => $uploaded[$uploaded_idx]['file_name'],
+                            'LinkType' => element('link_type', $arr_input),
+                            'LinkUrl' => element('link_url', $arr_input),
+                            'RegAdminIdx' => $admin_idx,
+                            'RegIp' => $reg_ip
+                        ];
+
+                        if ($this->_conn->set($data)->insert($this->_table['professor_banner']) === false) {
+                            throw new \Exception('교수 배너 등록에 실패했습니다.');
+                        }
+                    }
+                }
+
+                $uploaded_idx++;
+            }
+
+            // 수정된 첨부 이미지 백업
+            $is_bak_uploaded_file = $this->upload->bakUploadedFile(array_unique($bak_uploaded_files), true);
+            if ($is_bak_uploaded_file !== true) {
+                throw new \Exception($is_bak_uploaded_file);
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return true;
+    }
+
+    /**
      * 교수 카테고리 과목 연결 데이터 저장
      * @param $arr_subject_mapping_code
      * @param $prof_idx
@@ -849,8 +990,8 @@ class ProfessorModel extends WB_Model
 
     /**
      * 교수영역 이미지 삭제
-     * @param $img_type
-     * @param $prof_idx
+     * @param string $img_type [교수영역 이미지 input명]
+     * @param int $prof_idx [교수식별자]
      * @return array|bool
      */
     public function removeImg($img_type, $prof_idx)
@@ -877,6 +1018,51 @@ class ProfessorModel extends WB_Model
             // 데이터 수정
             $is_update = $this->_conn->set('IsStatus', 'N')->set('UpdAdminIdx', $this->session->userdata('admin_idx'))
                 ->where('ReferIdx', $row['ReferIdx'])->update($this->_table['professor_reference']);
+            if ($is_update === false) {
+                throw new \Exception('데이터 수정에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+    /**
+     * 교수배너 이미지 삭제
+     * @param string $img_type [배너타입_배너순번, bnr_img_{bnr_type}_{bnr_num}]
+     * @param int $prof_idx [교수식별자]
+     * @return array|bool
+     */
+    public function removeBannerImg($img_type, $prof_idx)
+    {
+        $this->_conn->trans_begin();
+
+        try {
+            $bnr_keys = explode('_', str_first_pos_after($img_type, 'bnr_img_'));
+
+            // 데이터 조회
+            $row = $this->_conn->getFindResult($this->_table['professor_banner'], 'BnrIdx, BnrImgPath, BnrImgName', [
+                'EQ' => ['ProfIdx' => $prof_idx, 'BnrType' => $bnr_keys[0], 'BnrNum' => $bnr_keys[1], 'IsStatus' => 'Y']
+            ]);
+            if (empty($row) === true) {
+                throw new \Exception('데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
+            }
+
+            // 이미지 백업
+            $this->load->library('upload');
+            $bak_uploaded_file = $row['BnrImgPath'] . $row['BnrImgName'];
+            $is_bak_uploaded_file = $this->upload->bakUploadedFile($bak_uploaded_file, true);
+            if ($is_bak_uploaded_file !== true) {
+                throw new \Exception($is_bak_uploaded_file);
+            }
+
+            // 데이터 수정
+            $is_update = $this->_conn->set('IsStatus', 'N')->set('UpdAdminIdx', $this->session->userdata('admin_idx'))
+                ->where('BnrIdx', $row['BnrIdx'])->update($this->_table['professor_banner']);
             if ($is_update === false) {
                 throw new \Exception('데이터 수정에 실패했습니다.');
             }

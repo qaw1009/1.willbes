@@ -53,7 +53,7 @@
                     <div class="col-md-3 item">
                         <input type="text" id="coupon_name" name="coupon_name" class="form-control" title="쿠폰명" required="required" value="{{ $data['CouponName'] }}">
                     </div>
-                    <label class="control-label col-md-2">쿠폰코드
+                    <label class="control-label col-md-2 col-md-offset-1">쿠폰코드
                     </label>
                     <div class="col-md-4">
                         <p class="form-control-static">@if($method == 'PUT'){{ $data['CouponIdx'] }}@else # 등록 시 자동 생성 @endif</p>
@@ -62,7 +62,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2" for="deploy_type_1">쿠폰배포루트 <span class="required">*</span>
                     </label>
-                    <div class="col-md-3 item">
+                    <div class="col-md-4 item">
                         <div class="radio">
                             <input type="radio" id="deploy_type_1" name="deploy_type" class="flat" value="N" title="쿠폰배포루트" required="required" @if($method == 'POST' || $data['DeployType'] == 'N')checked="checked"@endif/> <label for="deploy_type_1" class="input-label">온라인</label>
                             <input type="radio" id="deploy_type_2" name="deploy_type" class="flat" value="F" @if($data['DeployType'] == 'F')checked="checked"@endif/> <label for="deploy_type_2" class="input-label">오프라인</label>
@@ -81,7 +81,7 @@
                 <div id="pin_off" class="form-group hide">
                     <label class="control-label col-md-2" for="pin_type_1">쿠폰핀번호유형 <span class="required">*</span>
                     </label>
-                    <div class="col-md-3 item">
+                    <div class="col-md-4 item">
                         <div class="radio">
                             <input type="radio" id="pin_type_1" name="pin_type" class="flat" value="S" required="required_if:deploy_type,F" title="쿠폰핀번호유형" @if($method == 'POST' || $data['PinType'] == 'S')checked="checked"@endif/> <label for="pin_type_1" class="input-label">공통핀번호</label>
                             <input type="radio" id="pin_type_2" name="pin_type" class="flat" value="R" @if($data['PinType'] == 'R')checked="checked"@endif/> <label for="pin_type_2" class="input-label">랜덤핀번호</label>
@@ -190,7 +190,7 @@
                             <span id="selected_product" class="pl-10">
                                 @if(isset($data['ProdCodes']) === true)
                                     @foreach($data['ProdCodes'] as $prod_code => $prod_name)
-                                        <span class="pr-10">{{ $prod_name }}
+                                        <span class="pr-10">[{{ $prod_code }}] {{ $prod_name }}
                                             <a href="#none" data-prod-code="{{ $prod_code }}" class="selected-product-delete"><i class="fa fa-times red"></i></a>
                                             <input type="hidden" name="prod_code[]" value="{{ $prod_code }}"/>
                                         </span>
@@ -200,22 +200,10 @@
                         @endif
                     </div>
                 </div>
-                <div id="apply_mock_exam" class="form-group form-apply-input hide">
-                    <label class="control-label col-md-2">모의고사
-                    </label>
-                    <div class="col-md-9 form-inline">
-                        @if($method == 'PUT')
-                            <p class="form-control-static">{{ $data['ApplyProdName'] }}</p>
-                        @else
-                            <button type="button" id="btn_mock_exam_search" class="btn btn-sm btn-primary">모의고사검색</button>
-                            <span id="selected_mock_exam" class="pl-10"></span>
-                        @endif
-                    </div>
-                </div>
                 <div class="form-group">
                     <label class="control-label col-md-2" for="disc_rate">할인율 <span class="required">*</span>
                     </label>
-                    <div class="col-md-3 form-inline item">
+                    <div class="col-md-4 form-inline item">
                         <input type="number" id="disc_rate" name="disc_rate" class="form-control" required="required" title="할인율" value="{{ $data['DiscRate'] }}" style="width: 140px;">
                         <select class="form-control" id="disc_type" name="disc_type">
                             <option value="R" @if('R' == $data['DiscType']) selected="selected" @endif>%</option>
@@ -231,7 +219,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2" for="issue_start_date">유효기간 <span class="required">*</span>
                     </label>
-                    <div class="col-md-3 form-inline">
+                    <div class="col-md-4 form-inline">
                         <div class="input-group mb-0 item">
                             <input type="text" class="form-control datepicker" id="issue_start_date" name="issue_start_date" required="required" title="유효시작일자" value="{{ $data['IssueStartDate'] or date('Y-m-d') }}">
                             <div class="input-group-addon no-border no-bgcolor">~</div>
@@ -266,7 +254,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2">등록자
                     </label>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <p class="form-control-static">@if($method == 'PUT'){{ $data['RegAdminName'] }}@endif</p>
                     </div>
                     <label class="control-label col-md-2">등록일
@@ -278,7 +266,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2">최종 수정자
                     </label>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <p class="form-control-static">@if($method == 'PUT'){{ $data['UpdAdminName'] }}@endif</p>
                     </div>
                     <label class="control-label col-md-2">최종 수정일
@@ -313,6 +301,11 @@
                 }
                 if($regi_form.find('input[name="apply_range_type"]:checked').val() === 'P' && $regi_form.find('input[name="prod_code[]"]').length < 1) {
                     alert('상품 선택 필드는 필수입니다.');
+                    return false;
+                }
+                {{-- 수강권일 경우 1개의 상품만 등록 가능 --}}
+                if($regi_form.find('input[name="coupon_type_ccd"]:checked').val() === '644002' && $regi_form.find('input[name="prod_code[]"]').length !== 1) {
+                    alert('수강권일 경우 1개의 상품만 선택 가능합니다.');
                     return false;
                 }
                 @endif
@@ -354,10 +347,13 @@
                 // 카테고리 검색 초기화
                 $regi_form.find('input[name="cate_code"]').val('');
                 $('#selected_category').html('');
+
+                // 특정상품 선택결과 초기화
+                $('#selected_product').html('');
             });
 
             // 카테고리 검색 or 상품 검색
-            $('#btn_category_search, #btn_product_search').on('click', function(event) {
+            $('#btn_category_search, #btn_product_search, #btn_mock_exam_search').on('click', function(event) {
                 var btn_id = event.target.getAttribute('id');
                 var site_code = $regi_form.find('select[name="site_code"]').val();
                 if (!site_code) {
@@ -384,6 +380,12 @@
                             'url' : '{{ site_url('/common/searchLectureAll/') }}?site_code=' + site_code + '&prod_type='+prod_type+'&return_type=inline&target_id=selected_product&target_field=prod_code',
                             'width' : 1200
                         });
+                    } else if(prod_type === 'mock_exam') {
+                        //모의고사 검색
+                        $('#btn_product_search').setLayer({
+                            'url' : '{{ site_url('/common/searchMockTest/') }}?site_code=' + site_code + '&prod_type='+prod_type+'&return_type=inline&target_id=selected_product&target_field=prod_code',
+                            'width' : 1200
+                        });
                     }
                 }
             });
@@ -395,13 +397,29 @@
             });
 
             // 쿠폰유형 선택
-            $regi_form.on('ifChanged ifCreated', 'input[name="coupon_type_ccd"]:checked', function() {
+            $regi_form.on('ifChanged ifCreated', 'input[name="coupon_type_ccd"]:checked', function(evt) {
                 if ($(this).val() === '644002') {
                     // 수강권 선택
+                    if (evt.type === 'ifChanged') {
+                        $regi_form.find('input[name="deploy_type"][value="F"]').iCheck('check');
+                        $regi_form.find('input[name="apply_range_type"][value="P"]').iCheck('check');
+                    }
+
+                    $regi_form.find('input[name="deploy_type"][value="N"]').iCheck('disable');
+                    $regi_form.find('input[name="apply_type_ccd"]').not('[value="645001"]').iCheck('disable');
+                    $regi_form.find('input[name="apply_range_type"]').not('[value="P"]').iCheck('disable');
                     $regi_form.find('input[name="disc_rate"]').prop('readonly', 'readonly');
                     $regi_form.find('select[name="disc_type"] option[value="P"]').hide();
                     $regi_form.find('input[name="disc_rate"]').val('100');
                 } else {
+                    if (evt.type === 'ifChanged') {
+                        $regi_form.find('input[name="deploy_type"][value="N"]').iCheck('enable');
+                        $regi_form.find('input[name="deploy_type"][value="N"]').iCheck('check');
+                        $regi_form.find('input[name="apply_type_ccd"]').iCheck('enable');
+                        $regi_form.find('input[name="apply_range_type"]').iCheck('enable');
+                        $regi_form.find('input[name="apply_range_type"][value="A"]').iCheck('check');
+                    }
+
                     $regi_form.find('input[name="disc_rate"]').prop('readonly', '');
                     $regi_form.find('select[name="disc_type"] option[value="P"]').show();
                     $regi_form.find('input[name="disc_rate"]').val($regi_form.find('input[name="disc_rate"]').prop('defaultValue'));
@@ -440,6 +458,11 @@
                 $('.form-apply-input').removeClass('show').addClass('hide');
                 $('.form-range-input').removeClass('show').addClass('hide');
 
+                // 기존 적용된 특정상품 선택결과 초기화
+                if (evt.type === 'ifChanged') {
+                    $('#selected_product').html('');
+                }
+
                 // 카테고리
                 if($(this).val() === '645006') {
                     {{-- 배송료는 카테고리 선택 불가 --}}
@@ -457,6 +480,13 @@
                 }
 
                 // 적용범위
+                if (arr_set[1] === 'no') {
+                    if (evt.type === 'ifChanged') {
+                        // 전체선택
+                        $regi_form.find('input[name="apply_range_type"][value="A"]').iCheck('uncheck').iCheck('check');
+                    }
+                }
+
                 if (arr_set[1] === 'range') {
                     $('#apply_range').removeClass('hide').addClass('show');
 
@@ -465,8 +495,16 @@
                         $regi_form.find('input[name="apply_range_type"]:checked').iCheck('uncheck').iCheck('check');
                     }
                 }
-                // 모의고사
-                arr_set[1] === 'mock_exam' && $('#apply_mock_exam').removeClass('hide').addClass('show');
+
+                if (arr_set[1] === 'mock_exam') {
+                    // 모의고사
+                    $('#apply_product').removeClass('hide').addClass('show');
+
+                    if (evt.type === 'ifChanged') {
+                        // 특정상품 선택
+                        $regi_form.find('input[name="apply_range_type"][value="P"]').prop('checked', true).iCheck('update');
+                    }
+                }
             });
 
             // 적용범위 선택

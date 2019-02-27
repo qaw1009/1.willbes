@@ -36,9 +36,9 @@
                             <div class="inputBox p_re">
                                 <input type="text" id="MemName" name="MemName" class="iptName" readonly value="{{$memName}}">
                                 <ul class="chkBox-Sex">
-                                    <li class="radio-Btn sexchk p_re">
+                                    <li class="radio-Btn sexchk p_re checked">
                                         <label for="Sex" class="labelName" style="display: block;">남성</label>
-                                        <input type="radio" id="SexM" name="Sex" class="chkSex" value="M" title="성별">
+                                        <input type="radio" id="SexM" name="Sex" class="chkSex" value="M" title="성별" checked="checked">
                                     </li>
                                     <li class="radio-Btn sexchk p_re">
                                         <label for="Sex" class="labelName" style="display: block;">여성</label>
@@ -65,6 +65,12 @@
                                 <input type="text" id="Phone" name="Phone" class="iptPhone" placeholder='"-" 제외하고 숫자만 입력' maxlength="13" @if ( $jointype == '655002' ) value="{{$phone}}" readonly @endif title="핸드폰번호" />
                             </div>
                             <div class="tx-red mt10 err_msg" style="display: block;"></div>
+                            <div class="tx-red mt10" style="display: block;">
+                                <input name="SmsRcvStatus" type="checkbox" value="Y" id="SmsRcvStatus" />
+                                <label for="SmsRcvStatus">
+                                    윌비스의 신규상품 안내 및 광고성 정보 SMS 수신에 동의합니다.
+                                </label>
+                            </div>
                         </td>
                     </tr>
                     <tr>
@@ -89,7 +95,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="combine-Tit">비밀번호</td>
+                        <td class="combine-Tit">비밀번호확인</td>
                         <td>
                             <div class="inputBox p_re">
                                 <input type="password" id="MemPassword_chk" name="MemPassword_chk" class="iptPwd" placeholder="비밀번호 확인" maxlength="20" title="비밀번호 확인" />
@@ -113,7 +119,7 @@
                     <tr>
                         <td class="combine-Tit">이메일</td>
                         <td>
-                            <div class="inputBox">
+                            <div class="inputBox p_re">
                                 <dl>
                                     <dt class="mbox1 p_re">
                                         <input type="text" id="MailId" name="MailId" class="iptEmail01" placeholder="이메일" maxlength="30" @if ( $jointype == '655003' ) value="{{$MailId}}" readonly @endif>
@@ -131,13 +137,19 @@
                                     </dt>
                                 </dl>
                             </div>
+                            <div class="tx-red mbox-txt mt10" style="display: block;">
+                                <input name="MailRcvStatus" type="checkbox" value="Y" id="MailRcvStatus" />
+                                <label for="MailRcvStatus">
+                                    윌비스의 신규상품 안내 및 광고성 정보 이메일 수신에 동의합니다.
+                                </label>
+                            </div>
                         </td>
                     </tr>
                     <tr>
                         <td class="combine-Tit">우편번호</td>
                         <td>
                             <div class="inputBox p_re">
-                                <input type="text" id="ZipCode" name="ZipCode" class="iptEmail01" placeholder="우편번호" maxlength="5" readonly>
+                                <input type="text" id="ZipCode" name="ZipCode" class="iptEmail01" xstyle="width: 100%" placeholder="우편번호" maxlength="5" readonly>
                                 <button type="button" id="btn_zipcode" class="mem-Btn combine-Btn mb10 bg-dark-blue bd-dark-blue">
                                     <span>우편번호 찾기</span>
                                 </button>
@@ -403,7 +415,7 @@
                                         <li>(삭제)</li>
                                         <!--li>수강시작 후 일시정지, 또는 수강변경을 하였을 경우</li>
                                         <li>수강 진도율이 30% 이상 진행된 경우</li>
-                                        <!--li>종합반으로 수강신청을 한 경우</li>
+                                        <li>종합반으로 수강신청을 한 경우</li>
                                         <li>재수강 및 수강연장으로 강의를 신청한 경우</li-->
                                     </ol>
                                     <p class="mbt5">
@@ -706,6 +718,10 @@
         var confirm_id = false;
 
         $(document).ready(function() {
+            $("#MemId").val('');
+            $("#MemPassword").val('');
+            $("#MemPassword_chk").val('');
+
             $join_form.validate({
                 onkeyup : false,
                 rules : {
@@ -764,10 +780,10 @@
                     },
                     MemId : {
                         required : "아이디를 입력해주십시요.",
-                        minlength : "아이디는 4~20자의 영어소문자, 숫자, -,_만 사용 가능합니다.1",
-                        maxlength : "아이디는 4~20자의 영어소문자, 숫자, -,_만 사용 가능합니다.2",
-                        id_char : "아이디는 4~20자의 영어소문자, 숫자, -,_만 사용 가능합니다.3",
-                        id_chk : "사용 불가능한 아이디입니다."
+                        minlength : "아이디는 4~20자의 영어소문자, 숫자 만 사용 가능합니다.",
+                        maxlength : "아이디는 4~20자의 영어소문자, 숫자 만 사용 가능합니다.",
+                        id_char : "아이디는 4~20자의 영어소문자, 숫자 만 사용 가능합니다.",
+                        id_chk : "이미 가입된 아이디입니다. (아이디는 4~20자의 영어소문자, 숫자 만 사용 가능합니다.)"
                     },
                     MemPassword : {
                         required : "비밀번호를 입력해주십시요.",
@@ -808,7 +824,7 @@
             });
 
             $.validator.addMethod("id_char", function(value, element) {
-                var p = /^[0-9a-z\-\_]{4,20}$/;
+                var p = /^[0-9a-z]{4,20}$/;
                 if(p.test(value)) {return true;}
                 else {return false;}
             });

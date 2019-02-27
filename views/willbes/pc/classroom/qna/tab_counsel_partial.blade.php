@@ -9,7 +9,7 @@
     </div>
     <div class="willbes-Mypage-SUPPORT-list mt35 c_both">
         <div class="willbes-LecreplyList tx-gray c_both mt-zero">
-            <span class="willbes-Lec-Search willbes-SelectBox mb20 GM f_right">
+            <div class="willbes-Lec-Search willbes-SelectBox mb20 GM f_left">
                 <select id="s_site_code" name="s_site_code" title="과정" class="seleProcess mr10 h30 f_left" onchange="goUrl('s_site_code',this.value)" @if($__cfg['SiteCode'] != config_item('app_intg_site_code')) disabled @endif>
                     <option value="">과정</option>
                     @foreach($arr_base['site_list'] as $key => $val)
@@ -36,7 +36,7 @@
                         </button>
                     </div>
                 </div>
-            </span>
+            </div>
         </div>
         <div class="LeclistTable pointTable">
             <table cellspacing="0" cellpadding="0" class="listTable cartTable under-gray bdt-gray tx-gray">

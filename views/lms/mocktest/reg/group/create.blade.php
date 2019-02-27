@@ -17,7 +17,7 @@
                     <tr>
                         <th style="width:15%">모의고사 그룹명 <span class="required">*</span></th>
                         <td style="width:35%">
-                            <input type="text" class="form-control" name="GroupName" value="@if($method == 'PUT'){{ $data['GroupName'] }}@endif">
+                            <input type="text" class="form-control" name="GroupName" required="required" title="모의고사 그룹명" value="@if($method == 'PUT'){{ $data['GroupName'] }}@endif">
                         </td>
                         <th style="width:15%">모의고사 그룹코드</th>
                         <td style="width:35%">@if($method == 'PUT'){{ $data['MgIdx'] }}@endif</td>
@@ -87,14 +87,29 @@
                         </td>
                     </tr>
                     <tr>
-                        <th>중복응시여부 <span class="required">*</span></th>
-                        <td>
-                            <input type="radio" name="IsDup" class="flat" value="Y" @if(($method == 'POST' || $method == 'PUT' && $data['IsDup'] == 'Y')) checked="checked" @endif> <span class="flat-text mr-20">사용</span>
-                            <input type="radio" name="IsDup" class="flat" value="N" @if($method == 'PUT' && $data['IsDup'] == 'N') checked="checked" @endif> <span class="flat-text">미사용</span>
-                            <span style="position: relative; top: 2px; left: 8px;">[그룹핑된 모의고사간 교차 응시여부]</span>
+                        <th>성적오픈일 <span class="required">*</span></th>
+                        <td colspan="3" class="form-inline">
+
+                            <input type="text" class="form-control datepicker" style="width:100px;" name="GradeOpenDatm_d" value="@if($method == 'PUT'){{ substr($data['GradeOpenDatm'], 0, 10) }}@endif" readonly required="required" title="성적오픈일">
+                            <select name="GradeOpenDatm_h" class="form-control">
+                                @foreach(range(0, 23) as $i)
+                                    @php $v = sprintf("%02d", $i); @endphp
+                                    <option value="{{$v}}" @if($method==='PUT' && substr($data['GradeOpenDatm'], 11, 2) == $v) selected @endif>{{$v}}</option>
+                                @endforeach
+                            </select> 시
+                            <select name="GradeOpenDatm_m" class="form-control">
+                                @foreach(range(0, 59) as $i)
+                                    @php $v = sprintf("%02d", $i); @endphp
+                                    <option value="{{$v}}" @if($method==='PUT' && substr($data['GradeOpenDatm'], 14, 2) == $v) selected @endif>{{$v}}</option>
+                                @endforeach
+                            </select> 분
+
+                            <span style="position: relative; top: 2px; left: 8px;">[프론트] 통합내강의실 > 모의고사관리 > 성적결과의 성적표 노출일자 설정</span>
                         </td>
+                    </tr>
+                    <tr>
                         <th>사용여부 <span class="required">*</span></th>
-                        <td>
+                        <td colspan="3">
                             <input type="radio" name="IsUse" class="flat" value="Y" @if($method == 'POST' || ($method == 'PUT' && $data['IsUse'] == 'Y')) checked="checked" @endif> <span class="flat-text mr-20">사용</span>
                             <input type="radio" name="IsUse" class="flat" value="N" @if($method == 'PUT' && $data['IsUse'] == 'N') checked="checked" @endif> <span class="flat-text">미사용</span>
                         </td>
@@ -135,7 +150,7 @@
             $('#act-searchGoods').on('click', function() {
                 $('#act-searchGoods').setLayer({
                     'url': '{{ site_url() }}' + 'mocktest/regGroup/searchGoods',
-                    'width': 1000
+                    'width': 1200
                 });
             });
 

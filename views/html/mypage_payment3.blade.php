@@ -94,9 +94,6 @@
     <div class="Content p_re">
 
         <div class="willbes-Mypage-PAYMENTZONE c_both">
-            <div class="willbes-Prof-Subject willbes-Mypage-Tit NG">
-                · 포인트관리
-            </div>
             <div class="willbes-Cart-Txt willbes-Mypage-Txt NG p_re">
                 <span class="MoreBtn"><a href="#none">유의사항안내 닫기 ▲</a></span>
                 <table cellspacing="0" cellpadding="0" class="txtTable tx-black">
@@ -181,7 +178,7 @@
                                                 <span>검색</span>
                                             </button>
                                         </div>
-                                        <div class="willbes-Lec-Search willbes-SelectBox mb20 GM f_right">
+                                        <div class="willbes-Lec-Search willbes-SelectBox mb20 GM f_left">
                                             <select id="process" name="process" title="process" class="seleProcess f_left">
                                                 <option selected="selected">과정</option>
                                                 <option value="헌법">헌법</option>
@@ -315,7 +312,7 @@
                                                 <span>검색</span>
                                             </button>
                                         </div>
-                                        <div class="willbes-Lec-Search willbes-SelectBox mb20 GM f_right">
+                                        <div class="willbes-Lec-Search willbes-SelectBox mb20 GM f_left">
                                             <select id="process" name="process" title="process" class="seleProcess f_left">
                                                 <option selected="selected">과정</option>
                                                 <option value="헌법">헌법</option>
@@ -446,7 +443,7 @@
                         </table>
                         <div class="useDetailWrap mt25">
                             <ul class="tabWrap tabDepthPass">
-                                <li><a href="#use3">적립내역</a></li>
+                                <li><a href="#use3" class="on">적립내역</a></li>
                                 <li><a href="#use4">사용내역</a></li>
                             </ul>
                             <div class="tabBox mt20">
@@ -470,7 +467,7 @@
                                                 <span>검색</span>
                                             </button>
                                         </div>
-                                        <div class="willbes-Lec-Search willbes-SelectBox mb20 GM f_right">
+                                        <div class="willbes-Lec-Search willbes-SelectBox mb20 GM f_left">
                                             <select id="process" name="process" title="process" class="seleProcess f_left">
                                                 <option selected="selected">과정</option>
                                                 <option value="헌법">헌법</option>
@@ -604,7 +601,7 @@
                                                 <span>검색</span>
                                             </button>
                                         </div>
-                                        <div class="willbes-Lec-Search willbes-SelectBox mb20 GM f_right">
+                                        <div class="willbes-Lec-Search willbes-SelectBox mb20 GM f_left">
                                             <select id="process" name="process" title="process" class="seleProcess f_left">
                                                 <option selected="selected">과정</option>
                                                 <option value="헌법">헌법</option>

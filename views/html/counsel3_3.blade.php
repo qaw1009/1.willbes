@@ -85,10 +85,27 @@
 
         <div class="willbes-Counsel c_both">
             <div class="willbes-Lec-Tit NG bd-none tx-black pt-zero">· 심층상담예약</div>
-            <div class="counsel_infoBox tx-black GM mt40">
-                <img src="{{ img_url('counsel/willbes_counsel.jpg') }}">
+            <div class="willbes-counsel_step step mt40 NG c_both">
+                <ul>
+                    <li><div class="num">01</div>상담일자/시간선택</li>
+                    <li class="arrow"><img src="{{ img_url('counsel/icon_arrow_step.png') }}"></li>
+                    <li><div class="num">02</div>사전정보입력</li>
+                    <li class="arrow"><img src="{{ img_url('counsel/icon_arrow_step.png') }}"></li>
+                    <li class="active"><div class="num">03</div>상담예약완료</li>
+                </ul>
+                <div class="info-Box info-Box3 NG">
+                    <dl>
+                        <dt>
+                            · 상담 예약이 완료되었습니다. 예약사항을 다시 한 번 확인해 주세요.<br/>
+                            · <span class="tx-blue">상담예약일시를 변경하시려면 예약 취소를 하시고 1단계 상담일자/시간선택 부터 다시 신청하셔야 합니다</span>.<br/>
+                            · 예약하신 날짜 및 시간에 도착하지 않으실 경우 상담이 취소될 수 있습니다.<br/>
+                        </dt>
+                    </dl>
+                </div>
+            </div>
+            <div class="counsel_infoBox tx-black GM mb50">
                 <div class="LeclistTable">
-                    <table cellspacing="0" cellpadding="0" class="listTable bdt-gray bdb-gray tx-gray">
+                    <table cellspacing="0" cellpadding="0" class="listTable bdb-gray tx-gray">
                         <colgroup>
                             <col style="width: 125px;">
                             <col style="width: 660px;">
@@ -113,25 +130,6 @@
                             </tr>
                         </tbody>
                     </table>
-                </div>
-            </div>
-    
-            <div class="willbes-counsel_step step mt60 mb50 NG c_both">
-                <ul>
-                    <li><div class="num">01</div>상담일자/시간선택</li>
-                    <li class="arrow"><img src="{{ img_url('counsel/icon_arrow_step.png') }}"></li>
-                    <li><div class="num">02</div>사전정보입력</li>
-                    <li class="arrow"><img src="{{ img_url('counsel/icon_arrow_step.png') }}"></li>
-                    <li class="active"><div class="num">03</div>상담예약완료</li>
-                </ul>
-                <div class="info-Box info-Box3 NG">
-                    <dl>
-                        <dt>
-                            · 상담 예약이 완료되었습니다. 예약사항을 다시 한 번 확인해 주세요.<br/>
-                            · <span class="tx-blue">상담예약일시를 변경하시려면 예약 취소를 하시고 1단계 상담일자/시간선택 부터 다시 신청하셔야 합니다</span>.<br/>
-                            · 예약하신 날짜 및 시간에 도착하지 않으실 경우 상담이 취소될 수 있습니다.<br/>
-                        </dt>
-                    </dl>
                 </div>
             </div>
             <div class="willbes-User-Info p_re pb30">
@@ -213,7 +211,6 @@
                     </ul>
                 </div>
             </div>
-
 
             <div id="RESERVEPASS" class="willbes-Layer-PassBox willbes-Layer-PassBox740 h800 abs">
                 <a class="closeBtn" href="#none" onclick="closeWin('RESERVEPASS')">

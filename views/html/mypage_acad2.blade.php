@@ -92,14 +92,6 @@
         </span>
     </div>
     <div class="Content p_re">
-
-        <div class="willbes-Mypage-ACADZONE c_both">
-            <div class="willbes-Prof-Subject willbes-Mypage-Tit NG">
-                · 수강종료강좌
-            </div>
-        </div>
-        <!-- willbes-Mypage-ACADZONE -->
-
         <div class="willbes-Leclist c_both">
             <div class="willbes-Lec-Selected willbes-Mypage-Selected willbes-Mypage-Selected-Search tx-gray">
                 <span class="w-data">

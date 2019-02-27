@@ -162,8 +162,7 @@
 
                 columns: [
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                        var seq = meta.row + meta.settings._iDisplayStart;
-
+                        var seq = meta.row;
                         return '<input type="checkbox" id="checkIdx' + seq + '" name="checkIdx" class="flat" value="' + row.ProdCode + '" data-row-idx="' + meta.row + '"/>';
                     }},
                     {'data' : null, 'render' : function(data, type, row, meta) {

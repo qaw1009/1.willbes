@@ -4,6 +4,9 @@
     <!-- Gnb -->
     @include('html.layouts.gnb')
 
+    <!-- cop online top banner-->
+    @include('html.layouts.cop_topBnr')
+
     <!-- topnav -->
     @include('html.layouts.topnav')
     

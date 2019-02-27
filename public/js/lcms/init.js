@@ -20,7 +20,7 @@ $.extend(true, $.fn.dataTable.defaults, {
         },
         "sInfo": "총 _TOTAL_개의 항목 중 _START_ ~ _END_ 표시",
         "sLengthMenu": "_MENU_ 개의 항목 표시",
-        "sProcessing": "로딩 중 ...",
+        "sProcessing": "로딩 중 ... <i class='fa fa-spin fa-refresh'></i>",
         "sEmptyTable": "조회된 데이터가 없습니다.",
         "sZeroRecords": "일치하는 데이터가 없습니다.",
         "sInfoFiltered": "",
@@ -57,18 +57,22 @@ $.extend(true, $.fn.dataTable.defaults, {
         //{ targets: '_all', render: $.fn.dataTable.render.text() }
     ],
     ajax: {
-        complete: function(){
+        complete: function() {
             //$(".right_col").css("height", $(document).height());
+            var scroll_obj = $('.modal').length > 0 ? '.modal' : 'html, body';
+            $(scroll_obj).animate({
+                scrollTop: 0
+            }, 300);
         },
-        error: function(xmlHttpRequest, textStatus, errorThrown){
-            if(xmlHttpRequest.readyState === 0 || xmlHttpRequest.status === 0){
+        error: function(xmlHttpRequest, textStatus, errorThrown) {
+            if(xmlHttpRequest.readyState === 0 || xmlHttpRequest.status === 0) {
                 return;
-            }
-            else{
-                if(xmlHttpRequest.status === 401)
+            } else {
+                if(xmlHttpRequest.status === 401) {
                     notifyAlert("error", "권한 없음", "리스트 조회 권한이 없습니다. [" + xmlHttpRequest.status + "]");
-                else
+                } else {
                     notifyAlert("error", "알림", "리스트 조회를 실패하였습니다. [" + xmlHttpRequest.status + "]");
+                }
             }
         }
     }

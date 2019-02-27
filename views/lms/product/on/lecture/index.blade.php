@@ -88,6 +88,12 @@
                             <option value="Y">사용</option>
                             <option value="N">미사용</option>
                         </select>
+
+                        <select class="form-control" id="search_is_use" name="search_w_is_use">
+                            <option value="">사용여부(w)</option>
+                            <option value="Y">사용</option>
+                            <option value="N">미사용</option>
+                        </select>
                         &nbsp;
                         <select class="form-control" id="search_calc" name="search_calc">
                             <option value="">정산입력여부</option>
@@ -158,11 +164,14 @@
                     <th>판매여부</th>
                     <th>사용여부</th>
                     <th>정산입력</th>
+                    <!--  쿼리속도 저하로 인해 제거
                     <th>장바구니</th>
                     <th>입금대기</th>
                     <th>결제완료</th>
+                    //-->
                     <th>등록자</th>
                     <th>등록일</th>
+                    <th>복사</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -183,7 +192,7 @@
                 buttons: [
 
                     { text: '<i class="fa fa-pencil mr-5"></i> 신규/추천 적용', className: 'btn-sm btn-success border-radius-reset mr-15 btn-new-best-modify'}
-                    ,{ text: '<i class="fa fa-sort-numeric-asc mr-5"></i> 정렬변경', className: 'btn-sm btn-success border-radius-reset mr-15 btn-order'}
+                    /*,{ text: '<i class="fa fa-sort-numeric-asc mr-5"></i> 정렬변경', className: 'btn-sm btn-success border-radius-reset mr-15 btn-order'}*/
                     ,{ text: '<i class="fa fa-copy mr-5"></i> 단강좌복사', className: 'btn-sm btn-success border-radius-reset mr-15 btn-copy'}
                     ,{ text: '<i class="fa fa-pencil mr-5"></i> 단강좌등록', className: 'btn-sm btn-primary border-radius-reset btn-reorder',action : function(e, dt, node, config) {
                             location.href = '{{ site_url('product/on/lecture/create') }}';
@@ -228,7 +237,9 @@
                     {'data' : 'IsBest', 'render' : function(data, type, row, meta) {
                             return '<input type="checkbox" class="flat" name="is_best" value="Y" data-idx="'+ row.ProdCode +'" data-origin-is-best="' + data + '" ' + ((data === 'Y') ? ' checked="checked"' : '') + '>';
                         }},
-                    {'data' : 'MultipleApply'},//배수
+                    {'data' : 'MultipleApply', 'render' : function(data, type, row, meta) {
+                            return (data === '1') ? '배수제한없음' : data;
+                        }},//배수
                     {'data' : 'SaleStatusCcd_Name', 'render' : function(data, type, row, meta) {
                             return (data !== '판매불가') ? data : '<span class="red">'+data+'</span>';
                         }},//판매여부
@@ -236,13 +247,19 @@
                             return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
                         }},//사용여부
                     {'data' : 'DivisionCount','render' : function(data, type, row, meta) {
-                            return (data !== '0') ? '입력' : '<span class="red">미사용</span>';
+                            return (data !== '0') ? '입력' : '<span class="red">미입력</span>';
                         }},//정산입력
+                    /*  쿼리속도 저하로 인해 제거
                     {'data' : 'CartCnt'},//장바구니
                     {'data' : 'PayIngCnt'},//입금대기
                     {'data' : 'PayEndCnt'},//결제완료
+                    */
                     {'data' : 'wAdminName'},//등록자
-                    {'data' : 'RegDatm'}//등록일
+                    {'data' : 'RegDatm'},//등록일
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            return (row.ProdCode_Original !== '') ? '<span class="red">Y</span>' : '';
+                        }},//복사여부
+
                 ]
 
             });
@@ -264,18 +281,21 @@
                     return false;
                 }
 
-                var data = {
-                    '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
-                    '_method' : 'PUT',
-                    'prodCode' : $('input:radio[name="copyProdCode"]:checked').val()
-                };
+                if(confirm("해당 강좌를 복사하시겠습니까?")) {
 
-                sendAjax('{{ site_url('/product/on/lecture/copy') }}', data, function(ret) {
-                    if (ret.ret_cd) {
-                        notifyAlert('success', '알림', ret.ret_msg);
-                        $datatable.draw();
-                    }
-                }, showError, false, 'POST');
+                    var data = {
+                        '{{ csrf_token_name() }}': $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                        '_method': 'PUT',
+                        'prodCode': $('input:radio[name="copyProdCode"]:checked').val()
+                    };
+                    sendAjax('{{ site_url('/product/on/lecture/copy') }}', data, function (ret) {
+                        if (ret.ret_cd) {
+                            //notifyAlert('success', '알림', ret.ret_msg);
+                            alert(ret.ret_msg);
+                            $datatable.draw();
+                        }
+                    }, showError, false, 'POST');
+                }
 
             });
 

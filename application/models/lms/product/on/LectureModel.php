@@ -35,11 +35,15 @@ class LectureModel extends CommonLectureModel
                     ,Ca.CateName, Cb.CateName as CateName_Parent
                     ,D.SalePrice, D.SaleRate, D.RealSalePrice
                     ,E.ProfIdx_String,E.wProfName_String
-                    ,F.DivisionCount
-                    ,fn_product_cart_count(A.ProdCode) as CartCnt
-                    ,fn_product_order_count(A.ProdCode,\'\') as PayIngCnt
-                    ,fn_product_order_count(A.ProdCode,\'\') as PayEndCnt
-                    #,fn_product_professor_name(A.ProdCode) as ProfName_Arr	//검색때문에 vw_product_r_professor_concat 사용
+                    ,IFNULL(F.DivisionCount,0) AS DivisionCount
+                    #,fn_product_count_cart(A.ProdCode) as CartCnt
+                    #,fn_product_count_order(A.ProdCode,\'676002\') as PayIngCnt
+                    #,fn_product_count_order(A.ProdCode,\'676001\') as PayEndCnt
+                    ,0 as CartCnt       #장바구니테이블 스캔으로 인해 쿼리속도 저하    19.02.18 최진영 차장님 협의
+                    ,0 as PayIngCnt    #주문테이블 스캔으로 인해 쿼리속도 저하
+                    ,0 as PayEndCnt    #주문테이블 스캔으로 인해 쿼리속도 저하
+                    #,fn_product_professor_name(A.ProdCode) as ProfName_Arr	//검색때문에 vw_product_r_professor_concat_repr 사용
+                    ,IFNULL(Y.ProdCode_Original,\'\') as ProdCode_Original
                     ,Z.wAdminName
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
@@ -49,23 +53,24 @@ class LectureModel extends CommonLectureModel
         $from = '
                     from
                         lms_product A
-                            left outer join lms_sys_code Aa on A.SaleStatusCcd = Aa.Ccd and Aa.IsStatus=\'Y\'
-                            left outer join lms_site Ab on A.SiteCode = Ab.SiteCode
+                            join lms_sys_code Aa on A.SaleStatusCcd = Aa.Ccd and Aa.IsStatus=\'Y\'
+                            join lms_site Ab on A.SiteCode = Ab.SiteCode
                             join lms_sys_code Ac on A.ProdTypeCcd = Ac.Ccd and Ac.IsStatus=\'Y\'
-                        join lms_product_lecture B on A.ProdCode = B.ProdCode
+                            join lms_product_lecture B on A.ProdCode = B.ProdCode
                             left outer join lms_product_course Ba on B.CourseIdx = Ba.CourseIdx and Ba.IsStatus=\'Y\'
                             left outer join lms_product_subject Bb on B.SubjectIdx = Bb.SubjectIdx and Bb.IsStatus=\'Y\'
-                            left outer join lms_sys_code Bc on B.LearnPatternCcd = Bc.Ccd and Bc.IsStatus=\'Y\'
-                            left outer join lms_sys_code Bd on B.LecTypeCcd = Bd.Ccd and Bd.IsStatus=\'Y\'
+                            join lms_sys_code Bc on B.LearnPatternCcd = Bc.Ccd and Bc.IsStatus=\'Y\'
+                            join lms_sys_code Bd on B.LecTypeCcd = Bd.Ccd and Bd.IsStatus=\'Y\'
                             left outer join lms_sys_code Bf on B.FreeLecTypeCcd = Bf.Ccd and Bf.IsStatus=\'Y\'
-                            join wbs_cms_lecture_combine_lite Be on B.wLecIdx = Be.wLecIdx and Be.cp_wAdminIdx='. $this->session->userdata('admin_idx') .'
-                        join lms_product_r_category C on A.ProdCode = C.ProdCode and C.IsStatus=\'Y\'
+                            join wbs_cms_lecture_basics Be on B.wLecIdx = Be.wLecIdx
+                            join lms_product_r_category C on A.ProdCode = C.ProdCode and C.IsStatus=\'Y\'
                             join lms_sys_category Ca on C.CateCode = Ca.CateCode  and Ca.IsStatus=\'Y\'
                             left outer join lms_sys_category Cb on Ca.ParentCateCode = Cb.CateCode
-                        left outer join lms_product_sale D on A.ProdCode = D.ProdCode and D.SaleTypeCcd=\'613001\' and D.IsStatus=\'Y\'	#Pc+모바일 판매가만 추출
-                        left outer join vw_product_r_professor_concat E on A.ProdCode = E.ProdCode
-                        left outer join (select ProdCode, count(*) as DivisionCount from lms_product_division where IsStatus=\'Y\' group by ProdCode) as F on A.ProdCode = F.ProdCode
-                        left outer join wbs_sys_admin Z on A.RegAdminIdx = Z.wAdminIdx
+                            left outer join lms_product_sale D on A.ProdCode = D.ProdCode and D.SaleTypeCcd=\'613001\' and D.IsStatus=\'Y\'	#Pc+모바일 판매가만 추출
+                            join vw_product_r_professor_concat_repr E ON A.ProdCode = E.ProdCode 
+                            left outer join (select ProdCode, count(*) as DivisionCount from lms_product_division where IsStatus=\'Y\' group by ProdCode) as F on A.ProdCode = F.ProdCode
+                            left outer join lms_product_copy_log Y on A.ProdCode = Y.ProdCode
+                            join wbs_sys_admin Z on A.RegAdminIdx = Z.wAdminIdx
                      where A.IsStatus=\'Y\'
         ';
 
@@ -199,6 +204,13 @@ class LectureModel extends CommonLectureModel
             }
             /*----------------          연결강좌 등록        ---------------*/
 
+            /*----------------          Json 데이터 등록        ---------------*/
+            if($this->_setProdJsonData($prodcode) !== true) {
+                throw new \Exception('JSON 데이터 등록에 실패했습니다.');
+            }
+            /*----------------          Json 데이터 등록        ---------------*/
+
+
             $this->_conn->trans_commit();
             //$this->_conn->trans_rollback();
 
@@ -311,6 +323,12 @@ class LectureModel extends CommonLectureModel
                 throw new \Exception('자동지급쿠폰 등록에 실패했습니다.');
             }
             /*----------------          자동지급쿠폰 등록        ---------------*/
+
+            /*----------------          Json 데이터 등록        ---------------*/
+            if($this->_setProdJsonData($prodcode) !== true) {
+                throw new \Exception('JSON 데이터 등록에 실패했습니다.');
+            }
+            /*----------------          Json 데이터 등록        ---------------*/
 
             //$this->_conn->trans_rollback();
             $this->_conn->trans_commit();

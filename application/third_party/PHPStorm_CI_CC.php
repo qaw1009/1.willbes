@@ -71,8 +71,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property CI_Xmlrpc $xmlrpc                              XML-RPC request handler class
  * @property CI_Xmlrpcs $xmlrpcs                           XML-RPC server class
  * @property CI_Zip $zip                                        Zip Compression Class
- * @property Excel $excel                                  Loads framework components.
- * @property Jwt $jwt                                      Loads Libraries JWT
+ * @property Excel $excel                                      Loads framework components.
+ * @property Jwt $jwt                                           Loads Libraries JWT
+ * @property LogViewer $logviewer                          CodeIgniter Log Viewer
  ***************** DEPRECATED LIBRARIES *****************
  * @property CI_Jquery $jquery                              Jquery Class
  * @property CI_Encrypt $encrypt                          Provides two-way keyed encoding using Mcrypt
@@ -86,6 +87,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property RestClient $restclient                         REST Client Class
  * @property Caching $caching                              Application Caching Driver Class
  * @property Pg $pg                                            Pg Driver Class
+ * @property SendSms $sendsms                               Send Sms Class
  ***************** MY MODELS *****************
  * @property SampleModel $sampleModel                       Sample Model Class
  ***************** WBS ***********************
@@ -119,6 +121,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property BoardModel $boardModel                                                Board Model Class
  * @property BoardAssignmentModel $boardAssignmentModel                            Board For Assignment Model Class
  * @property BoardTpassModel $boardTpassModel                                      Board Tpass For Member Model Class
+ * @property BoardMockModel $boardMockModel                                        Board Mock Model Class
  * @property WCpModel $wCpModel                                                    WCp Model Class
  * @property SearchWMasterLectureModel $searchWMasterLectureModel  Search MasterLecture Model Class
  * @property SmsModel $smsModel                                                     Search Sms Model Class
@@ -126,6 +129,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property MailModel $mailModel                                                      Search Mail Model Class
  * @property FreebieModel $freebieModel                                             Freebie Model Class
  * @property ManageMemberModel $manageMemberModel                       Manage Member Model Class
+ * @property ManageLectureModel $manageLectureModel                       Manage Lecture Model Class
  * @property CouponRegistModel $couponRegistModel                            Coupon Regist Model Class
  * @property CouponIssueModel $couponIssueModel                              Coupon Issue Model Class
  * @property CouponPinModel $couponPinModel                                     Coupon Pin Model Class
@@ -167,6 +171,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property SalesProductModel $salesProductModel                              Sales Product Model Class
  * @property TmModel $tmModel                                                         Tm Model Class
  * @property StudentModel $studentModel                                           Student Model Class
+ * @property ManageCsModel $manageCsModel                                   Member Manage Cs Model Class
+ * @property ManageBlackConsumerModel $manageBlackConsumerModel             Member Manage BlackConsumer Model Class
+ * @property CsModel $csModel                                               Manage Cs Model Class
+
 
  ***************** MockTest *********************
  * @property MockCommonModel $mockCommonModel                              MockTest MockCommon Model Class
@@ -178,6 +186,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property RegGoodsModel $regGoodsModel                                        MockTest RegGoods Model Class
  * @property RegGroupModel $regGroupModel                                       MockTest RegGroup Model Class
  * @property StatsExamModel $statsExamModel                                        MockTest StatsExam Model Class
+ * @property SearchMockTestModel $searchMockTestModel                   Search MockTest Model Class
  *
  ***************** FRONT ***********************
  * @property BaseProductFModel $baseProductFModel                            Product Base Model Class
@@ -210,6 +219,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property ConsultFModel $consultFModel                                          Consult Model Class
  * @property OnAirFModel $onAirFModel                                                OnAir Model Class
  * @property DDayFModel $dDayFModel                                                D-Day Model Class
+ * @property MockInfoFModel $mockInfoFModel                                      MockTest Info  Model Class
+ * @property MockExamModel $mockExamModel                                         MockExam Class
+ * @property RegGradeModel $regGradeModel                                         RegGrade Class
+ *
  */
 class PHPStorm_CI_CC
 {

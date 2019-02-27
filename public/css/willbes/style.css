@@ -1,7 +1,20 @@
+/* CSS : import */
+@import url("style_main.css");
+@import url("style_cop.css");
+@import url("style_cop_acad.css");
+@import url("style_cop_adm.css");
+@import url("style_cop_pro.css");
+@import url("style_cop_sea.css");
+@import url("style_gosi.css");
+@import url("style_gosi_acad.css");
+@import url("style_gpgosi.css");
+
+
+
 /* Login Form : 공통 */
 .mem-Tit {
     text-align: center;
-    padding: 65px 0 100px;
+    padding: 65px 0;
 }
 .mem-Tit span {
     font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "Malgun Gothic", "맑은 고딕";
@@ -100,6 +113,9 @@
 }
 .Member .tabs.half li {
     width: 50%;
+}
+.Member .tabs.full li {
+    width: 100%;
 }
 .Member .tabs li a {
     background: none;
@@ -640,7 +656,7 @@ table.auTable tr td {
     border-right: 1px solid #aeaeae;
     color: #383838;
     letter-spacing: -1px;
-    z-index: 102;
+    z-index: 999;
 }
 #Gnb .toggle-Btn {
     position: absolute;
@@ -696,6 +712,9 @@ table.auTable tr td {
     border-top: 1px solid #ececec;
     padding-top: 15px;
     margin: 15px 10px 0;
+}
+#Gnb .topView h4 ul li.dropdown {
+    position: relative;
 }
 #Gnb .sns-Btn {
     text-align: center;
@@ -760,7 +779,14 @@ table.auTable tr td {
 .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active {
     width: 30px;
 }
-
+.bSlider.acad .bx-wrapper .bx-pager {
+    float: right;
+    width: auto;
+    right: 8px;
+    top: 12px;
+    text-align: right; 
+    padding-top: 0; 
+}
 .sliderGNB {
     width: 120px;
     height: 188px;
@@ -815,7 +841,9 @@ table.auTable tr td {
     display: block;
     padding-left: 50px;
 }
-
+.Gnb-md .gnb-List .gnb-List-Depth dl dt.GA a {
+    color: #2784d2;
+}
 .Gnb-md .gnb-List-Sub li {
     background: #f6f6f6;
     float: left;
@@ -989,19 +1017,30 @@ table.auTable tr td {
 .dropdown:hover .left-drop-Box {
     opacity: 1;
     visibility: visible;
+    width: 380px;
+    height: auto;
+}
+.dropdown.active .left-drop-Box .sliderView {
+    width: 242px;
+    height: 103px;
+    margin: 14px;
 }
 .left-drop-Box {
     position: absolute;
-    top: 10px;
+    top: -5px;
     left: 149px;
     background: #fff;
-    width: 380px;
     border: 1px solid #acacac;
     box-shadow: 5px 5px 25px #e1e1e1;
     opacity: 0;
     visibility: hidden;
+    width: 0;
+    height: 0;
 }
-
+.left-drop-Box .sliderView {
+    height: 0;
+    margin: 0;
+}
 .left-drop-Box:after,
 .left-drop-Box:before {
     content: '';
@@ -1042,6 +1081,7 @@ table.auTable tr td {
 .left-drop-Box ul li a {
     display: block;
     font-size: 14px;
+    font-weight: 300 !important;
     padding-left: 15px;
 }
 
@@ -1239,6 +1279,7 @@ table.auTable tr td {
 
 
 /*********************************************     MAIN PAGE     *********************************************/
+/* 공통파일 */
 
 /* Main Container */
 #Container {
@@ -1280,6 +1321,20 @@ table.auTable tr td {
     line-height: 36px;
     margin-bottom: 20px;
 }
+.Section .will-Tit span {
+    vertical-align: baseline;
+}
+.Section .will-nTit {
+    font-size: 16px;
+    font-weight: 600;
+    color: #363636;
+    border-bottom: 1px solid #000;
+    line-height: 24px;
+    margin-bottom: 18px;
+}
+.Section .will-nTit span {
+    vertical-align: baseline;
+}
 .Section .will-subTit {
     float: right;
     font-size: 13px;
@@ -1289,83 +1344,26 @@ table.auTable tr td {
     font-size: 10px;
 }
 .Section .will-listTit {
-    font-size: 14px;
+    font-size: 17px;
     font-weight: 600;
     color: #464646;
-    line-height: 16px;
     margin-bottom: 25px;
 }
+.Section .will-nlistTit {
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+    line-height: 45px;
+    border-bottom: 2px solid #000;
+}
+.Section .will-nlistTit a.btn-add {
+    margin-left: 5px;
+}
+.Section .will-nlistTit a.btn-add img {
+    margin-top: -4px;
+}
 
-/* Main Container : MainVisual */
-.MainVisual:after {
-    content: "";
-    display: block;
-    clear: both;
-}
-.MainVisual .will-Tit {
-    border-bottom: 0;
-    margin-top:0;
-    padding-top: 35px;
-}
-.VisualBox {
-    float: left;
-    width: 740px;
-    height: 268px;
-    overflow: hidden;
-}
-.VisualBox .MaintabList {
-    position: absolute;
-    bottom: 8px;
-    left: 0;
-    right: 0;
-    z-index: 99;
-    text-align: center;
-}
-.VisualBox .MaintabList ul li {
-    background: #38434d;
-    display: inline-block; 
-    height: 28px;
-    font-size: 14px;
-    color: #fff;
-    line-height: 26px;
-    border: 1px solid #fff;
-    margin: 0 -2px;
-}
-.VisualBox .MaintabList.three ul li {
-    width: 209px;
-}
-.VisualBox .MaintabList.four ul li {
-    width: 156px;
-}
-.VisualBox .MaintabList ul li a {
-    display: block;
-    width: 100%;
-    height: 100%;
-}
-.VisualsubBox {
-    float: right;
-    width: 380px;
-    height: 268px;
-    overflow: hidden;
-}
-.VisualList {
-    float: left;
-    width: 100%;
-    border-top: 1px solid #ebebeb;
-    border-bottom: 1px solid #ebebeb;
-}
-.VisualList:after {
-    content: "";
-    display: block;
-    clear: both;
-}
-.VisualList ul li {
-    float: left;
-    border-right: 1px solid #ebebeb;
-}
-.VisualList ul li:first-child {
-    border-left: 1px solid #ebebeb;
-}
+
 
 /* Main Container : Bnr */
 .Section .willbes-Bnr {
@@ -1389,15 +1387,21 @@ table.auTable tr td {
     margin-left: 0;
 }
 
+.Section .ProfBox:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
 /* Main Container : Prof : cSlider : graySlider 회색버전 */
 .cSlider.graySlider .bx-wrapper {
     background: none;
 }
 .cSlider.graySlider .bx-wrapper .bx-prev {
-    background: url("../../img/willbes/cop/btn_prof_prev.jpg") no-repeat 0 0;
+    background: url("../../img/willbes/gosi/btn_prof_prev.jpg") no-repeat 0 0;
 }
 .cSlider.graySlider .bx-wrapper .bx-next {
-    background: url("../../img/willbes/cop/btn_prof_next.jpg") no-repeat 0 0;
+    background: url("../../img/willbes/gosi/btn_prof_next.jpg") no-repeat 0 0;
     left: 14px;
 }
 .cSlider.graySlider .bx-wrapper .bx-controls {
@@ -1617,7 +1621,7 @@ table.auTable tr td {
     color: #898989;
     text-align: center;
     letter-spacing: 0;
-    border: none;
+    /*border: none;*/
     padding-right: 10px;
 }
 .tabWrap.noticeWrap li:first-child a {
@@ -1631,7 +1635,7 @@ table.auTable tr td {
     line-height: 16px;
     font-weight: 600;
     color: #009ef5;
-    border: none;
+    /*border: none;*/
 }
 .tabWrap.noticeWrap .row-line {
     float: right;
@@ -1736,9 +1740,11 @@ table.auTable tr td {
     background: #f6f6f6;
     width: 720px;
     padding: 30px 0 0 50px;
+    letter-spacing: normal;    
 }
 .willbesNumber ul li {
     margin-left: 50px;
+    vertical-align: top;
 }
 .willbesNumber ul li:first-child {
     margin-left: 0;
@@ -1764,992 +1770,6 @@ table.auTable tr td {
 
 
 
-/*********************************************     Main Container : Main     *********************************************/
-
-/* Main Container : Main */
-.main .tx-color {
-    color: #009ef5;
-}
-
-/* Main Container : Act1 */
-.main .Act1 .ProcessBox ul li {
-    float: left;
-    width: 274px;
-    height: 116px;
-    color: #383838;
-    border: 1px solid #eaeaea;
-    margin-top: 8px;
-    margin-left: 8px; 
-}
-.main .Act1 .ProcessBox ul:first-child li {
-    margin-top: 0;
-}
-.main .Act1 .ProcessBox ul li:first-child {
-    margin-left: 0;
-}
-.main .Act1 .ProcessBox ul li .wTit {
-    font-size: 16px;
-    line-height: 20px;
-    margin-bottom: 10px;
-}
-.main .Act1 .ProcessBox ul li .wTit img {
-    float: left;
-    margin-right: 5px;
-}
-.main .Act1 .ProcessBox ul li .wTxt {
-    font-size: 13px;
-    line-height: 19px;
-}
-
-.main .Act1 .ProcessBox ul li a {
-    display: block;
-    width: 100%;
-    height: 100%;
-    padding: 25px 0 0 35px;
-}
-
-/* Main Container : Act2 */
-.main .Act2 .sliderDayList {
-    background: #f6f6f6;
-    height: 150px;
-    padding: 35px 50px;
-}
-.main .Act2 span {
-    display: inline-block;
-}
-.main .Act2 .dDayBox {
-    float: left;
-    width: 25%;
-    height: 80px;
-    overflow: hidden;
-    padding: 20px 0 20px 40px;
-    border-left: 1px solid #e2e2e2;
-}
-.main .Act2 .dDayBox:first-child {
-    border-left: none;
-}
-.main .Act2 .dTit {
-    font-size: 14px;
-    color: #464646;
-    line-height: 20px;
-    text-align: left;
-}
-.main .Act2 .dTit .w-date {
-    font-size: 12px;
-}
-.main .Act2 .dDay {
-    font-size: 27px;
-    font-weight: 600;
-    padding: 0 25px;
-}
-.main .Act2 .line {
-    background: #e2e2e2;
-    text-indent: -9999px;
-}
-
-/* Main Container : Act2 : cSlider : sliderDayList  */
-.cSlider.sliderDayList .bx-wrapper .bx-prev {
-    background: url("../../img/willbes/main/main_btn_prev.png") no-repeat 0 0;
-    left: -25px;
-}
-.cSlider.sliderDayList .bx-wrapper .bx-next {
-    background: url("../../img/willbes/main/main_btn_next.png") no-repeat 0 0;
-    right: -25px;
-    left: inherit;
-}
-.cSlider.sliderDayList .bx-wrapper .bx-viewport {
-    z-index: 10;
-}
-.cSlider.sliderDayList .bx-wrapper .bx-controls {
-    position: absolute;
-    top: 50%;
-    margin-top: -21px;
-    width: 100%;
-    height: 42px;
-    z-index: 1;
-}
-.cSlider.sliderDayList .bx-wrapper .bx-controls-direction {
-    width: 100%;
-    height: 42px;
-}
-.cSlider.sliderDayList .bx-wrapper .bx-controls-direction a {
-    width: 22px;
-    height: 42px;
-}
-
-/* Main Container : Act3 */
-.main .Act3 dl dt.BestLec {
-    float: left;
-    width: 560px;
-}
-.main .Act3 dl dt.passInterview {
-    float: left;
-    width: 530px;
-    margin-left: 30px;
-}
-.main .Act3 .List-Table {
-    padding: 0;
-    margin-top: -5px;
-}
-.main .Act3 .List-Table li {
-    line-height: 30px;
-}
-.main .Act3 .List-Table a {
-    width: 100%;
-}
-.main .Act3 .List-Table span {
-    display: inline-block;
-}
-.main .Act3 .List-Table .w-sbj {
-    width: 60px;
-    text-align: center;
-}
-.main .Act3 .List-Table .w-prof {
-    width: 100px;
-    text-align: center;
-}
-.main .Act3 .List-Table .w-tit {
-    width: 225px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-}
-.main .Act3 .List-Table .w-user {
-    width: 90px;
-    text-align: center;
-}
-.main .Act3 .List-Table .w-star {
-    width: 85px;
-    text-align: center;
-}
-
-.videoTabs {
-    border: 1px solid #464646;
-}
-.videoTabs:after {
-    content: "";
-    display: block;
-    clear: both;
-}
-.videoBox {
-    float: left;
-}
-.tabWrap.videoWrap {
-    height: 203px;
-    border: none;
-}
-.tabWrap.videoWrap li {
-    float: left;
-    width: 168px;
-    height: 68px;
-    border-top: 1px solid #464646;
-}
-.tabWrap.videoWrap li:first-child {
-    border-top: none;
-    height: 67px;
-}
-.tabWrap.videoWrap li a {
-    display: block;
-    width: 100%;
-    height: 100%;
-    line-height: 17px;
-    background: #949494;
-    font-size: 13px;
-    font-weight: 600;
-    color: #464646;
-    text-align: center;
-    letter-spacing: 0;
-    border: none;
-    padding: 17px 0;
-}
-.tabWrap.videoWrap li:first-child a {
-    border: none;
-} 
-.tabWrap.videoWrap li a.on {
-    position: relative;
-    z-index: 2;
-    background: #e2e2e2;
-    height: 100%;
-    line-height: 17px;
-    font-weight: 600;
-    color: #464646;
-    border: none;
-}
-
-/* Main Container : Act4 */
-.main .Act4 dl dt.WhyWillbes {
-    float: left;
-    width: 560px;
-}
-.main .Act4 dl dt.NowWillbes {
-    float: left;
-    width: 530px;
-    margin-left: 30px;
-}
-.main .Act4 .List-Table {
-    padding: 0;
-    margin-top: -5px;
-}
-.main .Act4 .List-Table li {
-    line-height: 30px;
-}
-.main .Act4 .List-Table a {
-    width: 100%;
-}
-.main .Act4 .List-Table span {
-    display: inline-block;
-}
-.main .Act4 .List-Table .w-sbj {
-    width: 60px;
-    text-align: center;
-}
-.main .Act4 .List-Table .w-tit {
-    width: 390px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-}
-.main .Act4 .List-Table .w-date {
-    width: 80px;
-    text-align: center;
-}
-
-/* Main Container : Act5 */
-.main .Act5 dl dt.acadList {
-    float: left;
-    width: 800px;
-}
-.main .Act5 dl dt.acadList table tr {
-    display: inline-block;
-    width: 800px;
-    margin-top: 10px;   
-}
-.main .Act5 dl dt.acadList table tr:first-child {
-    margin-top: 0;
-}
-.main .Act5 dl dt.acadList table tr th {
-    background: #1b1b1b;
-    width: 125px;
-    height: 30px;
-    font-size: 15px;
-    color: #fff;
-    line-height: 30px;
-    text-align: center;
-}
-.main .Act5 dl dt.acadList table tr td a {
-    display: inline-block;
-    font-size: 15px;
-    line-height: 15px;
-    padding: 0 10px;
-    border-left: 1px solid #1b1b1b;
-}
-.main .Act5 dl dt.acadList table tr td a:first-child {
-    border-left: none;
-    margin-left: 10px;
-}
-.main .Act5 dl dt.imgBox {
-    float: left;
-    width: 320px;
-}
-.main .Act5 dl dt.imgBox ul li {
-    margin-top: 2px;
-}
-.main .Act5 dl dt.imgBox ul li:first-child {
-    margin-top: 0;
-}
-
-/* Main Container : Act6 */
-.main .Act6 .CScenterBox {
-    background: #f6f6f6;
-    height: 120px;
-    padding: 15px 0;
-}
-.main .Act6 tr td {
-    text-align: center;
-    padding: 5px 0;
-}
-.main .Act6 .mTit {
-    font-size: 26px;
-    color: #464646;
-}
-.main .Act6 .nTit {
-    font-size: 17px;
-    color: #464646;
-}
-.main .Act6 .nNumber {
-    font-size: 32px;
-    font-weight: 600;
-    line-height: 40px;
-    margin-left: 10px;
-}
-.main .Act6 .nTxt {
-    font-family: "굴림", "Gulim", "돋움", "Dotum", "Helvetica", "Apple SD Gothic Neo", "sans-serif";
-    font-size: 12px;
-    color: #888;
-    line-height: 18px;
-    text-align: left;
-}
-.main .Act6 .nInfo {
-    font-size: 14px;
-    color: #464646;
-    line-height: 20px;
-}
-.main .Act6 .nInfo span {
-    display: inline-block;
-    margin-left: 10px;
-}
-.main .Act6 .line {
-    background: #e2e2e2;
-    text-indent: -9999px;
-}
-
-/* Main Container : Bnr */
-.Bnr dl dt {
-    float: left;
-    width: 556px;
-    margin-left: 8px;
-}
-.Bnr dl dt:first-child {
-    margin-left: 0;
-}
-.main .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
-.main .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
-.main .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
-    background: #ffda38;
-}
-.main .bSlider .bx-wrapper .bx-pager.bx-default-pager a {
-    background: #acacac;
-}
-.main .bSlider .bx-wrapper .bx-pager {
-    bottom: inherit;
-    top: 8px;
-    padding-top: 0;
-}
-
-
-
-/*********************************************     Main Container : Cop     *********************************************/
-/* Main Container : Cop */
-.cop .tx-color {
-    color: #1087ef;
-}
-.cop .Menu .menu-List li.Acad a {
-    background: url("../../img/willbes/sub/icon_acad.gif") no-repeat 0 0;
-    color: #2784d2;
-}
-.cop .Menu .menu-List li.Acad a .arrow-Btn {
-    background: url("../../img/willbes/sub/icon_arrow.gif") no-repeat 0 0;
-}
-.cop .Section3 {
-    background: #f0f0f0;
-    padding: 40px 0;
-}
-
-/* Guide Container : Cop */
-/*수험가이드*/
-.tabWrap.tab_cop_Guide {
-    height: 58px;
-    border-bottom: none;
-}
-.tabWrap.tab_cop_Guide li {
-    width: 25%;
-    height: 58px;
-}
-.tabWrap.tab_cop_Guide li a {
-    background: #0a162c;
-}
-.tabWrap.tab_cop_Guide li a.on {
-    background: #0064e5;
-}
-.tabWrap.tab_cop_Guide li a,
-.tabWrap.tab_cop_Guide li a.on {
-    font-size: 17px;
-    color: #fff;
-    font-weight: 600;
-    line-height: 56px;
-    height: 58px;
-    border: none;
-    border-left: 1px solid #727272;
-}
-.tabWrap.tab_cop_Guide li:first-child a,
-.tabWrap.tab_cop_Guide li:first-child a.on {
-    border-left: none;
-}
-
-.w-cop-Guide {letter-spacing: 0}
-.w-cop-Guide .examInfoGu2 .hTy4 {background: url("../../img/willbes/cop/guide/left_arrow.png") no-repeat 0 center; font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"; margin: 30px 0 10px; font-size:16px; font-weight:bold; color: #24446a; line-height: 30px; padding-left: 25px;}
-
-.examInfoGu1, 
-.examInfoGu1_1, 
-.examInfoGu2,
-.examInfoGu3,
-.examInfoGu4 {color: #555; border: 1px solid #d0d0d0; padding: 0 50px; line-height:1.5}
-.examInfoGu1 .hTy4 {font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"; margin: 30px 0 10px; font-size:16px; font-weight:bold; color: #0064e5; line-height: 30px; border-bottom: 1px solid #cbcbcb}
-.examInfoGu1 .mgB2 {padding-bottom: 40px;}
-
-.examInfoGu1_1 .hTy4 {font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"; margin: 35px 0 10px; font-size:16px; font-weight:bold; color: #000; line-height: 30px;}
-.examInfoGu1_1 .mgB1_1 {float: left; margin-right: 25px; font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"; font-size: 13px; font-weight: 600; color: #666;}
-.examInfoGu1_1 .mgB1 {float: right; margin-top: 20px; font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"; color: #0064e5; padding-bottom: 35px;}
-.examInfoGu1_1 .mgB1 a {border-bottom: 1px solid #0064e5}
-.examInfoGu1_1 .hColor1 {color: #c00}
-.examInfoGu1_1 .mgB2.list {margin-bottom: 15px}
-.examInfoGu1_1 .mgB2 li {margin-top: 15px}
-.examInfoGu1_1 .mgB2 li strong {color: #0064e5;}
-
-.examInfoGu2 {padding-bottom: 50px}
-
-.examInfoGu2 .mgB1 {margin-bottom: 10px}
-.examInfoGu2 .ps {border-top: 1px solid #8696a9; padding: 20px}
-.examInfoGu2 h5 {font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"; font-size:16px;font-weight:bold; color: #694b23; border: 1px solid #c6b9ab; margin: 0 10px 15px; padding: 8px 25px; box-shadow: 2px 2px 0 #e1e1e1;}
-.examInfoGu2 .collage{margin-bottom:30px}
-.examInfoGu2 .collage ul{margin:0 35px 30px}
-.examInfoGu2 .stlist li{margin-bottom:20px}
-
-.toggleCont .toggleContList {margin-top: 5px}
-.toggleCont .tTitle {font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"; padding-left: 20px; border-top:1px solid #5c6068; border-bottom:1px solid #5c6068; height: 40px; font-size:14px; font-weight:bold; color: #fff; line-height: 38px; cursor:pointer; background: #6c7380 url("../../img/willbes/cop/guide/toggle_arrow.png") no-repeat 800px center;}
-.toggleCont .toggleContList.show .tTitle {background: #6c7380 url("../../img/willbes/cop/guide/toggle_arrow_up.png") no-repeat 800px center;}
-.toggleCont .tContWp{display:none;padding:20px 10px 20px;}
-.toggleCont .tContWp h6{margin-bottom:10px;padding-left:17px;font-size:12px;font-weight:bold;background: url("../../img/willbes/cop/guide/ico_hty2.gif") no-repeat 0 1px}
-.toggleCont .tContWp .tit1{padding-left:16px;background: url("../../img/willbes/cop/guide/dot_cirb.png") no-repeat 3px 4px;font-weight:bold}
-.toggleCont .tContWp .inner_txt{margin-bottom:20px;padding:0 20px}
-.toggleCont .tContWp .inner_txt .tit1{margin-bottom:5px;padding-left:10px;background-position:0 4px}
-.toggleCont .tContWp .inner_txt .tit2{margin-bottom:5px}
-.toggleCont .tContWp .plistSq3, .toggleCont .tContWp .listSq3 li{background: url("../../img/willbes/cop/guide/dot_bar3.gif") no-repeat 1px 6px}
-
-.toggleCont .toggleContList.last .tContWp {padding-bottom: 5px;}
-.toggleCont .toggleContList.last .tContWp .inner_txt.last_txt {margin-bottom: 0;}
-
-.ps {padding:10px 20px;background:#f4f4f4}
-.ps strong {color:#666}
-
-.listSq3 li{margin-bottom:5px;padding-left:8px;background: url("../../img/willbes/cop/guide/dot_sq4.gif") no-repeat 0 7px}
-
-.agC {text-align:center !important}
-.agM {margin: 0 auto}
-.mgB1{margin-bottom:10px !important}
-.basicTb{width:100%;border-left:1px solid #dbdbdb;border-top:1px solid #dbdbdb}
-.basicTb th,
-.basicTb td{border-right:1px solid #dbdbdb;border-bottom:1px solid #dbdbdb}
-.basicTb th{padding:7px 0;text-align:center}
-.basicTb td{padding:7px}
-.basicTb thead th{background:#efefef}
-
-.tabWrap.tab_cop_success_Guide {
-    height: 67px;
-    border: 1px solid #24446a;
-}
-.tabWrap.tab_cop_success_Guide li {
-    width: 50%;
-    height: 65px;
-}
-.tabWrap.tab_cop_success_Guide li a {
-    background: #fff;
-    color: #24446a;
-}
-.tabWrap.tab_cop_success_Guide li a.on {
-    background: #24446a;
-    color: #fff;
-}
-.tabWrap.tab_cop_success_Guide li a,
-.tabWrap.tab_cop_success_Guide li a.on {
-    font-size: 20px;
-    font-weight: 600;
-    line-height: 63px;
-    height: 65px;
-    border: none;
-}
-.tabWrap.tab_cop_success_Guide a.on:before {
-    content: '';
-    display: block;
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    top: 66px;
-    left: 50%;
-    margin-left: -5px;
-    border-color: #24446a transparent transparent;
-    border-width: 10px;
-}
-.tabWrap.tab_cop_scuuess_list_Guide {
-    float: left;
-    height: 35px;
-    border-bottom: none;
-    clear: both;
-}
-.tabWrap.tab_cop_scuuess_list_Guide li {
-    height: 35px;
-}
-.tabWrap.tab_cop_scuuess_list_Guide li a {
-    color: #24446a;
-}
-.tabWrap.tab_cop_scuuess_list_Guide li a.on {
-    color: #8f724d;
-}
-.tabWrap.tab_cop_scuuess_list_Guide li a,
-.tabWrap.tab_cop_scuuess_list_Guide li a.on {
-    background: none;
-    font-size: 15px;
-    font-weight: 600;
-    line-height: 33px;
-    height: 35px;
-    border: none;
-}
-.tabWrap.tab_cop_scuuess_list_Guide li:first-child a,
-.tabWrap.tab_cop_scuuess_list_Guide li:first-child a.on {
-    border: none;
-}
-.tabWrap.tab_cop_scuuess_list_Guide .row-line {
-    float: right;
-    background: #b7b7b7;
-    width: 1px;
-    height: 16px;
-    margin: 11px 0;
-}
-
-/* 실시간방송 */
-.passLive {margin-bottom:20px}
-    .onAir {background:#eaeaea}
-        .onAirBar {position:relative; background: url("../../img/willbes/sample/onair_bar_bg.gif") no-repeat 0 0; height:40px}
-        .onAirBar span.state {float:left; display:block; line-height:40px; margin-left:20px}
-        .onAirBar span.state img {vertical-align:middle}
-        .onAirBar span.onAirBarBtn {position:absolute; width:100px; top:0; right:10px; display:block; line-height:40px; margin-right:10px; width:50px; text-align:right; z-index:999}
-        .onAirBar span.onAirBarBtn a {display:block; color:#fff; cursor:pointer}
-        .onAirBar ul {position:absolute; top:0; width:660px; left:180px; z-index:2; overflow:hidden; height:40px}
-        .onAirBar li {line-height:40px; font-weight:bold; color:#fff}
-        .onAirCt {position:relative; background:#ececec; padding:0 0 14px}
-            .onAirTabs.tabWrap {background:#FFF; border:none;height:40px}
-            .onAirTabs.tabWrap li {display:inline; float:left;height: 40px}
-            .onAirTabs.tabWrap a {display:block; padding:0 15px; height:40px; line-height:40px; font-weight:bold; color:#c4c3c3; border:none !important;}
-            .onAirTabs.tabWrap a:hover,
-            .onAirTabs.tabWrap a.on {background:#ececec; color:#f42412;z-index:auto; border:none;height:40px;line-height:40px}
-            .onAirTabs.tabWrap:after {content:""; display:block; clear:both}
-            
-            .onAirTabInto {position:absolute; top:15px; right:0; text-align:right}
-            
-            .onAirLec {margin:14px 0 0 132px}
-            .onAirLec li {display:inline; float:left; width:320px}
-            .onAirLec li img {width:320px; height:180px}
-            .onAirLec li.li01 {width:160px; padding:15px 20px; line-height:1.5; background:#fff; min-height:150px}
-            .onAirLec li p.ptxt1 {color:#4d4d4d}
-            .onAirLec li p.ptxt2 {color:#f42412; font-weight:bold; margin-bottom:15px}
-            .onAirLec li p.ptxt3 {color:#acacac}
-            .onAirLec:after {content:""; display:block; clear:both}
-            .onAirProf {position:absolute; top:25px; left:0; width:175px; height:208px; overflow:hidden; z-index:1}
-            .onAirBtn {position:absolute; top:190px; left:70px; width:230px; overflow:hidden; z-index:2}
-            .onAirBtn li {display:inline; float:left; margin-right:1px}
-            .onAirBtn li a.sample {background: #515151; width: 77px; height: 21px; line-height: 19px; display: block; font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "sans-serif"; font-size: 11px; color: #fff; text-align: center;}
-
-    .onAirBar:after {content:""; display:block; clear:both}
-    
-    .offAir {}
-        .offAirBar {position:relative; background:#aeaeae; height:40px}
-        .offAirBar span.state {float:left; display:block; line-height:40px; margin-left:20px}		
-        .offAirBar span.offAirBarBtn {float:right; isplay:block; color:#fff; line-height:40px; margin-right:10px}
-        .offAirBar span img	{vertical-align:middle}
-        .offAirBar ul {position:absolute; width:660px; left:180px; z-index:2; overflow:hidden; height:40px}
-        .offAirBar li {line-height:40px; font-weight:bold; color:#fff}
-
-
-
-/*********************************************     Main Container : Gosi     *********************************************/
-/* Main Container : Gosi */
-.gosi .tx-color {
-    color: #8c6239;
-}
-.gosi .Menu .menu-List li.Acad a {
-    background: url("../../img/willbes/gosi/icon_acad.gif") no-repeat 0 0;
-    color: #8c6239;
-}
-.gosi .Menu .menu-List li.Acad a .arrow-Btn {
-    background: url("../../img/willbes/gosi/icon_arrow.gif") no-repeat 0 0;
-}
-.gosi .Section3 {
-    background: #f0f0f0;
-    padding: 40px 0;
-}
-.gosi .List-Table li a img,
-.gosi .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
-.gosi .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
-.gosi .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
-    background: #8c6239;
-}
-.gosi .Section .SpecialBox dt .infoBox .infoTit,
-.gosi .Section .NoticeBox dt .infoBox .infoTit,
-.gosi .tabWrap.noticeWrap li a.on {
-    color: #8c6239;
-}
-
-/* Guide Container : Gosi */
-/*수험가이드*/
-.tabShow.tab_gosi_Guide {
-    background: #026f61;
-    height: 62px;
-    border-bottom: none;
-}
-.tabShow.tab_gosi_Guide li {
-    width: 12.5%;
-    height: 62px;
-    padding: 0 8px;
-}
-.tabShow.tab_gosi_Guide li a.two,
-.tabShow.tab_gosi_Guide li a.on.two {
-    line-height: 17px;
-}
-.tabShow.tab_gosi_Guide li a.two span {
-    padding-top: 15px;
-    display: inline-block;
-}
-.tabShow.tab_gosi_Guide li a.on.two span {
-    line-height: 17px;
-    padding-top: 10px;
-}
-.tabShow.tab_gosi_Guide li a.on span {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    background: #fff;
-    color: #026f61;
-    display: inline-block;
-    height: 54px;
-    line-height: 52px;
-    border-top: 1px solid #026f61;
-    border-left: 1px solid #026f61;
-    border-right: 1px solid #026f61;
-}
-.tabShow.tab_gosi_Guide li a,
-.tabShow.tab_gosi_Guide li a.on {
-    background: #026f61;
-    color: #fff;
-    line-height: 58px;
-    font-size: 14px;
-    font-weight: 300;
-    height: 62px;
-    border: none;
-}
-.tabShow.tab_gosi_Guide li:first-child a,
-.tabShow.tab_gosi_Guide li:first-child a.on {
-    border: none;
-}
-
-.w-gosi-Guide {letter-spacing: 0}
-.w-gosi-Guide .examInfoGu2 .hTy4 {background: url("../../img/willbes/gosi/guide/left_arrow.png") no-repeat 0 center; font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"; margin: 30px 0 10px; font-size:16px; font-weight:bold; color: #24606a; line-height: 30px; padding-left: 25px;}
-
-.examInfoGu3 {padding: 35px 45px 55px}
-.examInfoGu3 .hTy {font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"}
-.examInfoGu3 .hTy.txt-gray {font-size: 14px; font-weight:bold; color: #555; line-height: 18px}
-.examInfoGu3 .hTy.txt-red {font-size: 14px; font-weight:bold; color: #d52b2b; line-height: 18px}
-.examInfoGu3 .hTy4 {width: 786px; margin: 0 auto 20px; font-size:16px; font-weight:bold; color: #026f61; line-height: 30px}
-
-.examInfoGu3 .hTy5 {width: 786px; margin: 0 auto 15px}
-.examInfoGu3 .hTy5 span {font-size: 13px}
-
-.examInfoGu3 .hTy6.center {margin: 15px 60px 0; font-size:13px}
-.examInfoGu3 .hTy6.right {margin: 0 0 5px; text-align: right;}
-.examInfoGu3 .hTy6.right span {font-size: 13px}
-.examInfoGu3 .hTy6.left span {margin: 5px 0 0; text-align: left; font-size: 12px}
-
-.sliderGuide .bx-wrapper .bx-viewport {
-    z-index: 10;
-}
-.sliderGuide .bx-wrapper .bx-controls-direction {
-    width: 100%;
-    height: 45px;
-    position: absolute;
-    top: 50%;
-    margin-top: -22px;
-}
-.sliderGuide .bx-wrapper .bx-controls-direction a {
-    width: 35px;
-    height: 45px;
-}
-.sliderGuide .bx-wrapper .bx-controls-direction a.disabled {
-    display: block;
-    opacity: 0.5;
-}
-.sliderGuide .bx-wrapper .bx-prev {
-    background: url("../../img/willbes/gosi/guide/guide_prev.png") no-repeat 0 0;
-    left: -45px;
-    right: inherit;
-}
-.sliderGuide .bx-wrapper .bx-next {
-    background: url("../../img/willbes/gosi/guide/guide_next.png") no-repeat 0 0;
-    left: inherit;
-    right: -45px;
-}
-.sliderGuide .bx-wrapper .bx-pager {
-    font-size: 12px;
-    font-weight: 300;
-    padding: 0;
-    bottom: -40px;
-}
-
-.guide_slider {
-    width: 848px !important;
-}
-.basicWd {
-    width:786px;
-    margin: 0 auto;
-}
-.basicWd1 tr td {
-    padding: 20px;
-}
-.basicWd .txtL ul li {margin-bottom:5px;padding-left:8px;background: url("../../img/willbes/cop/guide/dot_sq3.gif") no-repeat 0 6px}
-
-.mgBox {
-    background: #f0f0f0;
-    border: 1px solid #dbdbdb;
-    padding: 25px 30px;
-    width: 786px;
-    margin: 20px auto 0;
-}
-.mgBox-none {
-    background: none;
-    border: none;
-}
-.mgBox .tt {
-    background: url("../../img/willbes/gosi/guide/right_arrow.png") no-repeat 0 6px;
-    font-size: 16px;
-    font-weight: 600;
-    color: #232323;
-    padding-left: 12px;
-    margin-bottom: 10px;
-}
-.mgBox .st {
-    margin-bottom: 5px;
-}
-.mgBox .ttx {
-    font-size: 13px;
-    font-weight: 600;
-    color: #4d4d4d;
-}
-.mgBox ul li {
-    margin-top: 15px;
-    padding-left: 10px;
-    background: url("../../img/willbes/cop/guide/dot_sq3.gif") no-repeat 0 7px;
-}
-.mgBox dl dt {
-    background: url("../../img/willbes/cop/guide/dot_sq3.gif") no-repeat 0 7px;
-    padding-left: 10px;
-}
-.mgBox ul li:first-child {
-    margin-top: 0;
-}
-.mgBox_no {
-    border: 1px solid #dbdbdb;
-    padding: 40px 60px;
-    width: 786px;
-    margin: 20px auto 0;
-}
-.mgBox span {
-    vertical-align: baseline;
-}
-ul.dot li {
-    margin-top: 15px;
-    padding-left: 10px;
-    background: url("../../img/willbes/cop/guide/dot_sq3.gif") no-repeat 0 7px;
-}
-
-.tableBox tr th {
-    font-size: 21px;
-    font-weight: 600;
-    color: #243553;
-    border-right: 1px solid #bfbfbf;
-}
-.tableBox tr td {
-    font-size: 14px;
-    text-align: center;
-    border-top: 1px solid #bfbfbf;
-    border-right: 1px solid #bfbfbf;
-    border-bottom: 1px solid #bfbfbf;
-    padding: 25px 0;
-}
-.tableBox tr.hh td {
-    border: none;
-    height: 25px;
-}
-
-.tabWrap.tab_gosi_success_Guide {
-    height: 67px;
-    border: 1px solid #24606a;
-}
-.tabWrap.tab_gosi_success_Guide li {
-    width: 50%;
-    height: 65px;
-}
-.tabWrap.tab_gosi_success_Guide li a {
-    background: #fff;
-    color: #24606a;
-}
-.tabWrap.tab_gosi_success_Guide li a.on {
-    background: #24606a;
-    color: #fff;
-}
-.tabWrap.tab_gosi_success_Guide li a,
-.tabWrap.tab_gosi_success_Guide li a.on {
-    font-size: 20px;
-    font-weight: 600;
-    line-height: 63px;
-    height: 65px;
-    border: none;
-}
-.tabWrap.tab_gosi_success_Guide a.on:before {
-    content: '';
-    display: block;
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    top: 66px;
-    left: 50%;
-    margin-left: -5px;
-    border-color: #24606a transparent transparent;
-    border-width: 10px;
-}
-.tabWrap.tab_gosi_scuuess_list_Guide {
-    float: left;
-    height: 35px;
-    border-bottom: none;
-    clear: both;
-}
-.tabWrap.tab_gosi_scuuess_list_Guide li {
-    height: 35px;
-}
-.tabWrap.tab_gosi_scuuess_list_Guide li a {
-    color: #24606a;
-}
-.tabWrap.tab_gosi_scuuess_list_Guide li a.on {
-    color: #8f724d;
-}
-.tabWrap.tab_gosi_scuuess_list_Guide li a,
-.tabWrap.tab_gosi_scuuess_list_Guide li a.on {
-    background: none;
-    font-size: 15px;
-    font-weight: 600;
-    line-height: 33px;
-    height: 35px;
-    border: none;
-}
-.tabWrap.tab_gosi_scuuess_list_Guide li:first-child a,
-.tabWrap.tab_gosi_scuuess_list_Guide li:first-child a.on {
-    border: none;
-}
-.tabWrap.tab_gosi_scuuess_list_Guide .row-line {
-    float: right;
-    background: #b7b7b7;
-    width: 1px;
-    height: 16px;
-    margin: 11px 0;
-}
-
-
-/*********************************************     Main Container : GPGosi     *********************************************/
-/* Main Container : GPGosi */
-.gpgosi .tx-color {
-    color: #8c6239;
-}
-.gpgosi .Menu .menu-List li.Acad a {
-    background: url("../../img/willbes/gosi/icon_acad.gif") no-repeat 0 0;
-    color: #8c6239;
-}
-.gpgosi .Menu .menu-List li.Acad a .arrow-Btn {
-    background: url("../../img/willbes/gosi/icon_arrow.gif") no-repeat 0 0;
-}
-.gpgosi .Section3 {
-    background: #f0f0f0;
-    padding: 40px 0;
-}
-.gpgosi .List-Table li a img,
-.gpgosi .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
-.gpgosi .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
-.gpgosi .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
-    background: #8c6239;
-}
-.gpgosi .Section .SpecialBox dt .infoBox .infoTit,
-.gpgosi .Section .NoticeBox dt .infoBox .infoTit,
-.gpgosi .tabWrap.noticeWrap li a.on {
-    color: #8c6239;
-}
-
-/* Guide Container : GPGosi */
-/*수험가이드*/
-.tabShow.tab_gpgosi_Guide {
-    background: #374931;
-    height: 58px;
-    border-bottom: none;
-}
-.tabShow.tab_gpgosi_Guide li {
-    width: 25%;
-    height: 58px;
-}
-.tabShow.tab_gpgosi_Guide li a.two,
-.tabShow.tab_gpgosi_Guide li a.on.two {
-    line-height: 17px;
-}
-.tabShow.tab_gpgosi_Guide li a.two span {
-    padding-top: 15px;
-    display: inline-block;
-}
-.tabShow.tab_gpgosi_Guide li a.on.two span {
-    line-height: 17px;
-    padding-top: 10px;
-}
-.tabShow.tab_gpgosi_Guide li a.on span {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    background: #fff;
-    color: #253321;
-    display: inline-block;
-    height: 58px;
-    line-height: 56px;
-    border-top: 1px solid #374931;
-    border-left: 1px solid #374931;
-    border-right: 1px solid #374931;
-}
-.tabShow.tab_gpgosi_Guide li a,
-.tabShow.tab_gpgosi_Guide li a.on {
-    background: #374931;
-    color: #fff;
-    line-height: 56px;
-    font-size: 17px;
-    height: 58px;
-    border: none;
-}
-.tabShow.tab_gpgosi_Guide li:first-child a,
-.tabShow.tab_gpgosi_Guide li:first-child a.on {
-    border: none;
-}
-
-.w-gpgosi-Guide {letter-spacing: 0}
-
-.examInfoGu4 {padding: 30px 45px 45px}
-.examInfoGu4 .hTy {font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"}
-.examInfoGu4 .hTy4 {font-size:16px; font-weight:bold; color: #3e4831; line-height: 30px; border-bottom: 1px solid #cbcbcb;}
-
-/*가이드 텍스트 및 테이블 Css*/
-.gd_txt {text-align:left; margin:auto;  font-size:13px; color:#666; letter-spacing:-1px; line-height:40px; overflow:auto}
-.gd_txt h2 {font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"; border-top: 1px solid #5c6068; border-bottom: 1px solid #5c6068; background: #73806c; height: 40px; font-size:15px; font-weight:bold; color:#fff; clear:both; padding-left: 10px; margin-top:40px; line-height: 38px; letter-spacing:0}
-.gd_txt ul {margin:15px 0 0;}
-.gd_txt ul li:first-child {padding-top: 0;}
-.gd_txt ul li {font-family: "굴림", "Gulim", "돋움", "Dotum", "Helvetica", "Apple SD Gothic Neo", "sans-serif"; font-size: 12px; font-weight:300; line-height:21px; color: #555; padding: 20px 12px 0; letter-spacing: 0;}
-.gd_txt ul li span {vertical-align: baseline;}
-.gd_txt_c {width:100%; max-width:780px; text-align:center;}
-.gd_txt_big {font-size:48px; color:#38442a; font-weight:800; letter-spacing:-6px; font-family:Nanum Gothic, "맑은 고딕",Malgun Gothic,"돋움",Dotum,Arial;}
-.gd_txt_small {font-size:24px; color:#588338;  font-weight:400; letter-spacing:-4px; padding-top:20px; font-family:Nanum Gothic, "맑은 고딕",Malgun Gothic,"돋움",Dotum,Arial;}
-.gd_table {font-family: "굴림", "Gulim", "돋움", "Dotum", "Helvetica", "Apple SD Gothic Neo", "sans-serif"; width:760px; margin:auto; border-left:1px solid #ccc; background-color:#fff;border-top:1px solid #ccc;}
-.gd_table th {padding:7px 0; color:#222; text-align:center; background:#eceff1; border-right:1px solid #ccc;border-bottom:1px solid #ccc;}
-.gd_table td {padding:7px 0; text-align:center; border-bottom:1px solid #ccc; border-right:1px solid #ccc; letter-spacing:0px; color:#585858; font-size:12px; line-height:18px;}
-.gd_table .td_13 {background: #efefef}
-.gd_table .td_14 {background: #f9f9f9}
-.gd_table td.txtL {text-align:left; padding-left: 15px;}
-.gd_txt12 {font-size:12px; color:#d8482d}
-.gd_txt13 {font-size:13px; color:#9b402f}
-    
-
-
 /*********************************************     CONTAINER PAGE     *********************************************/
 
 /* subContainer */
@@ -2770,6 +1790,10 @@ ul.dot li {
 }
 
 /* subContainer : Menu */
+.Menu {
+    width: 1120px;
+    margin: 0 auto;
+}
 .Menu h3 {
     height: 40px;
     margin-top: 32px;
@@ -2802,23 +1826,23 @@ ul.dot li {
     float: left;
     font-size: 16px;
     font-weight: 600;
-    margin-left: 50px;
+    margin-left: 48px;
 }
 .Menu .menu-List li a {
     color: #363636;
 }
 .Menu .menu-List li.Acad a {
     background: url("../../img/willbes/sub/icon_acad.gif") no-repeat 0 0;
-    font-size: 14px;
-    color: #2784d2;
-    padding-left: 30px; 
+    font-size: 16px;
+    color: #0c5dc0;
+    padding-left: 26px; 
 }
 .Menu .menu-List li.Acad a .arrow-Btn {
     background: url("../../img/willbes/sub/icon_arrow.gif") no-repeat 0 0;
     float: right;
     width: 4px;
     height: 8px;
-    margin: 17px 5px 0;
+    margin: 15px 5px 0;
 }
 
 .Menu .menu-List-Center {
@@ -2901,6 +1925,8 @@ ul.dot li {
 
 /* subContainer : Depth */
 .Depth {
+    width: 1120px;
+    margin:0 auto;
     padding-top: 25px;
     padding-bottom: 30px;
     letter-spacing: 0;
@@ -2911,6 +1937,11 @@ ul.dot li {
     padding: 0 10px;
     vertical-align: baseline;
 }
+.Depth .depth:last-child strong {
+    color: #2784d2;
+}
+
+
 
 /* subContainer : Lnb */
 .Lnb {
@@ -2962,6 +1993,9 @@ ul.dot li {
     font-size: 13px;
     color: #3a3a3a;
 }
+.Lnb .lnb-List .lnb-List-Depth dl dt a.active {
+    color: #2784d2;
+}
 
 /* subContainer : Content */
 .Content {
@@ -3003,6 +2037,7 @@ ul.dot li {
     font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif";
     font-size: 13px;
 }
+
 
 /* subContainer : Content : curriWrap */
 .curriWrap .curriTabs {
@@ -3104,6 +2139,7 @@ ul.dot li {
 }
 .curriWrap tr td a {
     display: inline-block;
+    font-weight: 600;
     width: 100%;
     font-size: 11px;
     color: #999;
@@ -3111,8 +2147,7 @@ ul.dot li {
     line-height: 20px; 
 }
 .curriWrap tr td a:hover,
-.curriWrap tr td a.on {
-    font-weight: 600;
+.curriWrap tr td a.on {    
     color: #0d74ae;
     border: 1px solid #0d74ae;
 }
@@ -3202,11 +2237,13 @@ ul.dot li {
 .willbes-Lec-Search .inputBox button.whiteBox span {
     color: #707070;
 }
+.InfoBtnOff,
 .InfoBtn {
     float: right;
     width: 110px;
     height: 30px;
 }
+.InfoBtnOff a,
 .InfoBtn a {
     background: #fff;
     display: block;
@@ -3219,6 +2256,7 @@ ul.dot li {
     border: 1px solid #c9c9c9;
     line-height: 28px;
 }
+.InfoBtnOff a span,
 .InfoBtn a span {
     font-size: 10px;
     display: inline-block;
@@ -3251,6 +2289,22 @@ ul.dot li {
 }
 .willbes-Lec-Subject .MoreBtn span {
     vertical-align: baseline;
+}
+.willbes-Lec-Subject .selectBoxForm {
+    float: right;
+}
+.willbes-Lec-Subject .selectBoxForm .MoreBtn {
+    float: left;
+}
+.willbes-Lec-Subject .selectBoxForm .selectBox {
+    width: 100px;
+    height: 30px;
+    font-size: 12px;
+    font-weight: 300;
+}
+.willbes-Lec-Subject .selectBoxForm .selectBox select {
+    width: 100px;
+    height: 30px;
 }
 
 /* subContainer : Content : Lec-Profdata */
@@ -3306,10 +2360,13 @@ ul.dot li {
 .sliderUp .bx-wrapper {
     background: none;
 }
+.sliderUp div {
+    width: 100% !important;
+}
 
 /* sliderVertical : 위로 슬라이드(교수 리스트 수강후기) vSlider */
 .vSlider .bx-wrapper {
-    background: none;
+    background: noee;
 }
 
 /* subContainer : Content : Lec-Line */
@@ -3565,13 +2622,14 @@ table.lecTable tr td .priceWrap {
     clear: both;
     float: right;
     position: relative;
-    top: 5px;
+    top: 10px;
     right: 0;
     width: 240px;
     margin-right: 0;
     height: 18px;
-    text-align: left;
+    text-align: left;    
 } 
+
 table.lecTable tr td .priceWrap .chkBox {
     display: inline-block;
     line-height: 8px;
@@ -3598,8 +2656,19 @@ table.lecTable tr td .priceWrap .discount {
     width: 70px;
     color: #464646;
 }
+table.lecTable tr td .visitBuy {clear: both; padding-top:15px}
+table.lecTable tr td .visitBuy a {    
+    display:block;
+    width: 60px;
+    margin:0 auto;
+    font-size: 11px;
+    padding:3px 0;
+    color: #1a8ccc;
+    text-align: center;
+    border:1px solid #1a8ccc;    
+}
 table.lecTable tr td .MoreBtn {
-    position: absolute;
+    position:absolute;
     bottom: 5px;
     right: 25px;
     font-size: 11px;
@@ -3673,11 +2742,34 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
     z-index: 10;  
 }
 
+.w-sp100 {
+    width: 100%;
+    margin: 0 26px 10px;
+}
+.w-sp100 div {
+    margin-top: 5px;
+} 
+.w-sp100 input {    
+    width: 100px;
+    font-size: 12px;
+    padding: 5px;
+    border: 1px solid #d4d4d4;
+}
+.w-sp100 button {
+    background: #0e79af;
+    width: 50px;
+    padding: 5px;
+    margin: 0;
+}
+.w-sp100 button span {
+    font-size: 12px;
+}
+
 /* subContainer : Content : viewBox */
 .viewBox {
     display: none;
     position: absolute;
-    top: 48px;
+    top: 54px;
     right: 26px;
     z-index: 10;
     background: #fff;
@@ -4480,6 +3572,115 @@ table.classTable tr td.w-data {
     border-right: 1px solid #959595;
 }
 
+/* subContainer : Content : 강의 > 수강신청 안내 : requestInfo */
+.willbes-Layer-requestInfo {
+    display: none;
+    background: #fff;
+    position: absolute;
+    top: 29px;
+    right: 0;
+    z-index: 110;
+    width: 700px;
+    height: auto;
+    border: 1px solid #2f2f2f;
+    padding: 20px 25px 50px;
+}
+.willbes-Layer-requestInfo .closeBtn {
+    position: absolute;
+    top: -1px;
+    right: -1px;
+}
+.willbes-Layer-requestInfo .Layer-Tit {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0;
+    padding: 20px 0 25px;
+    border-bottom: 2px solid #000;
+}
+.willbes-Layer-requestInfo .Layer-Tit span {
+    vertical-align: baseline;
+}
+.willbes-Layer-requestInfo .Layer-SubTit {
+    font-size: 12px;
+    padding: 20px 0;
+} 
+.willbes-Layer-requestInfo .Layer-SubTit li {
+    list-style: disc;
+    line-height: 1.4;
+    margin-bottom:10px;
+    margin-left:15px;
+}
+.willbes-Layer-requestInfo .Layer-SubTit li:last-child {
+    margin-bottom:0;
+}
+.willbes-Layer-requestInfo table {
+    border-top:1px solid #000;
+}
+.willbes-Layer-requestInfo table tr td {
+    font-size: 12px;
+    font-weight: 300;
+}
+.willbes-Layer-requestInfo table tr td {
+    line-height: 20px !important;
+    padding: 13px 0;
+}
+.willbes-Layer-requestInfo .nBox {
+    display: inline-block;
+    width: 76px;    
+    height: 20px;
+    font-size: 12px;
+    color: #fff;
+    text-align: center;
+    line-height: 20px;
+    margin: 0 1px;
+}
+.willbes-Layer-requestInfo .nBox.n1 {
+    background: #f14078;
+}
+.willbes-Layer-requestInfo .nBox.n2 {
+    background: #21abc8;
+}
+.willbes-Layer-requestInfo .nBox.n3 {
+    background: #1087ef;
+}
+.willbes-Layer-requestInfo .nBox.n4 {
+    background: #333
+}
+.willbes-Layer-requestInfo .acadBox {
+    display: inline-block;
+    font-size: 12px;
+    color: #000;
+    text-align: center;
+    line-height: 20px;
+    border: 1px solid #000;
+    width: 76px;
+}
+.willbes-Layer-requestInfo .acadBox.n1 {
+    color: #1345b6;
+    border-color: #1345b6;
+}
+.willbes-Layer-requestInfo .acadBox.n2 {
+    color: #0a8cc2;
+    border-color: #0a8cc2;
+}
+.willbes-Layer-requestInfo .acadBox.n3 {
+    color: #9c3eb4;
+    border-color: #9c3eb4;
+}
+.willbes-Layer-requestInfo .acadBox.n4 {
+    color: #fff;
+    background: #fe0000;
+    border: 1px solid #fe0000;
+}
+.willbes-Layer-requestInfo .acadBox.n5 {
+    color: #fff;
+    background: #46a1dc;
+    border: 1px solid #46a1dc;
+}
+
+
+
+
 /* subContainer : Content : 강의목차 : LeclistTable */
 .LeclistTable {
     clear: both;
@@ -4487,8 +3688,11 @@ table.classTable tr td.w-data {
 .LeclistTable .listTable tr th,
 .LeclistTable .listTable tr td {
     text-align: center;
-    line-height: 40px;
+    line-height: 40px !important;
     letter-spacing: 0;
+}
+.LeclistTable .csTable tr td {
+    line-height: 1.4 !important;
 }
 .LeclistTable .listTable thead tr th {
     background: #f9f9f9;
@@ -4552,16 +3756,19 @@ table.classTable tr td.w-data {
 
 /* subContainer : Content : 강의목차 : LeclistTable : evtTable */
 .LeclistTable .evtTable thead tr td {
-    background: #f9f9f9;
+    background: #f9f9f9 !important;
     border-top: 1px solid #edeeef;
+}
+.LeclistTable .evtTable thead tr th {
+    background: #f9f9f9 !important;
 }
 .LeclistTable .evtTable thead tr:first-child td {
     border-top: 1px solid #959595;
 }
 .LeclistTable .evtTable tr th textarea {
     float: left;
-    width: 800px;
-    height: 80px;
+    width: 800px !important;
+    height: 80px !important;
     font-weight: 300;
     border: 1px solid #d4d4d4;
     resize: none;
@@ -4570,8 +3777,8 @@ table.classTable tr td.w-data {
     line-height: 16px;
 }
 .LeclistTable .evtTable tr th button {
-    height: 80px;
-    line-height: 78px;
+    height: 80px !important;
+    line-height: 78px !important;
 }
 .LeclistTable .evtTable tr td {
     line-height: 16px;
@@ -4654,10 +3861,13 @@ form .LeclistTable .evtTable tr td a.w-del {
     margin-right: 70px;
 }
 .LecViewTable .w-txt {
-    padding: 15px 25px;
+    padding: 15px 20px;
     height: 350px;
     line-height: 20px !important;
     vertical-align: baseline;
+}
+.LecViewTable .w-txt img { 
+    max-width:900px !important;
 }
 .LecViewTable .w-txt .scrollBox {
     padding: 15px 25px;
@@ -4747,9 +3957,9 @@ form .LeclistTable .evtTable tr td a.w-del {
 }
 .filetype .file-text {
     background: #fff;
-    float: left;
+    float:left;
     position: relative;
-    width: 570px;
+    width: 400px;
     height: 25px;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -4757,7 +3967,7 @@ form .LeclistTable .evtTable tr td a.w-del {
     margin: 0;
     border: 1px solid #d4d4d4;
     line-height: 25px;
-    z-index: 10;
+    z-index: 1;
 }
 .filetype .file-select {
     position: absolute;
@@ -4766,12 +3976,14 @@ form .LeclistTable .evtTable tr td a.w-del {
     width: 100%;
     height: 25px;
     overflow: hidden;
+    z-index: 2;
 }
 .filetype .file-select .input-file {
     width: 100%;
     height: 100%;
     filter: alpha(opacity=0);
     opacity: 0;
+
 }
 .filetype .file-reset {
     position: relative;
@@ -4787,7 +3999,7 @@ form .LeclistTable .evtTable tr td a.w-del {
     cursor: pointer;
     margin-left: 3px;
     border: none;
-    outline: none;
+    outline: none;    
 }
 .filetype .file-btn {
     display: inline-block;
@@ -6375,11 +5587,17 @@ table.finTable .row-line {
 .willbes-NoticeWrap {
     float: left;
     width: 100%;
+    padding-bottom:20px;
 }
-
+.willbes-NoticeWrap:after {
+    content: '';
+    display: block;
+    clear: both;
+}
 /* subContainer : Prof : listTable 공통 */
 .willbes-listTable {
     float: left;
+    /*margin-top: 30px;*/
 }
 .will-Tit {
     font-size: 16px;
@@ -6538,27 +5756,32 @@ ul li.profList .willbes-Layer-ProfileBox {
 
 /* subContainer : Prof : willbes-Prof-Profile */
 .willbes-Prof-Profile {
-    background: #e5e5e5 url("../../img/willbes/prof/bg_prof.jpg") no-repeat 0 0;
+    background: url("../../img/willbes/prof/bg_prof.jpg") no-repeat 0 0;
     width: 940px;
-    height: 316px;
+    height: 461px;
 }
 .willbes-Prof-Profile .prof-brief-btn {
     position: absolute;
-    top: 0;
-    right: 20px;
+    top: 14px;
+    right: 0;
     float: right;
 }
 .willbes-Prof-Profile .prof-brief-btn li {
     float: left;
-    background: #7d7e85;
+    background: #0d74ae;
     width: 60px;
-    height: 60px;
+    height: 30px;
     text-align: center;
     margin-left: 2px;
-    line-height: 15px;
+    line-height: 30px;
+}
+.willbes-Prof-Profile .prof-brief-btn li:hover {
+    background: #333;
 }
 .willbes-Prof-Profile .prof-brief-btn li a {
     display: block;
+    width: 100%;
+    height: 100%;
 }
 .willbes-Prof-Profile .prof-brief-btn li img {
     padding-top: 10px;
@@ -6569,8 +5792,8 @@ ul li.profList .willbes-Layer-ProfileBox {
 }
 .willbes-Prof-Profile .ProfImg {
     float: left;
-    width: 400px;
-    height: 316px;
+    width: 348px;
+    height: 461px;
 }
 .willbes-Prof-Profile .ProfImg img {
     position: absolute;
@@ -6580,10 +5803,18 @@ ul li.profList .willbes-Layer-ProfileBox {
     margin: 0 auto;
 }
 .willbes-Prof-Profile .prof-profile {
-    float: left;
-    width: 540px;
-    height: 316px;
+    float: right;
+    width: 576px;
+    height: 461px;
     letter-spacing: 0;
+}
+.willbes-Prof-Profile .prof-profile .Name {
+    font-size: 28px;
+    top: 0px;
+    left: 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    width: 100%;
 }
 .willbes-Prof-Profile .prof-profile .Obj {
     font-size: 16px;
@@ -6592,28 +5823,65 @@ ul li.profList .willbes-Layer-ProfileBox {
     top: 60px;
     left: 0;
 }
-.willbes-Prof-Profile .prof-profile .Name {
-    font-size: 22px;
-    line-height: 60px;
-    top: 115px;
-    left: 0;
+
+.willbes-Prof-Profile .prof-profile .Name span {
+    vertical-align: baseline;
+    font-size: 19px;
 }
 .willbes-Prof-Profile .prof-profile .Name .Sbj {
     font-size: 28px;
-    margin-right: 15px;
+    margin-right: 10px;
 }
 .willbes-Prof-Profile .prof-profile .Name strong {
-    font-size: 52px;
+    font-size: 28px;
 }
-.willbes-Prof-Profile .prof-profile .Name span {
-    vertical-align: baseline;
+
+.willbes-Prof-Profile .prof-banner01 {
+    position: absolute;
+    top: 130px;
+    left: 0;
+    height: 206px;
 }
+.willbes-Prof-Profile .prof-banner01 li {
+    display: inline;
+    float: left;    
+}
+.willbes-Prof-Profile .prof-banner01 li:first-child {
+    background: url("../../img/willbes/prof/viewSample02_bg.jpg") no-repeat 0 0;
+    width: 370px;
+    height: 206px;  
+    margin-right:14px;  
+}
+.willbes-Prof-Profile .prof-banner01 li iframe {
+    width: 370px;
+    height: 206px;
+}
+.willbes-Prof-Profile .prof-banner01 li:last-child {
+    position: relative;
+    width: 188px;
+    height: 206px;
+    overflow: hidden;
+}
+.willbes-Prof-Profile .prof-banner01:after {
+    content: '';
+    display: block;
+    clear: both;
+} 
+
+.willbes-Prof-Profile .prof-banner02 {
+    clear: both;
+    overflow: hidden;
+    width: 940px;
+    height: 90px;
+}
+
 .willbes-Prof-Profile .sliderBest {
     position: absolute;
-    top: 196px;
+    top: 360px;
     left: 0;
-    width: 520px;
-    height: 120px;
+    width: 576px;
+    height: 90px;
+    /*overflow: hidden;*/
 }
 
 /* subContainer : Prof : willbes-Layer-ProfileBox */
@@ -6621,8 +5889,8 @@ ul li.profList .willbes-Layer-ProfileBox {
     display: none;
     background: #fff;
     position: absolute;
-    top: 60px;
-    right: 144px;
+    top: 50px;
+    right: 0;
     z-index: 110;
     width: 510px;
     height: 620px;
@@ -6663,10 +5931,10 @@ ul li.profList .willbes-Layer-ProfileBox {
     display: none;
     background: #fff;
     position: absolute;
-    top: 60px;
-    right: 20px;
+    top: 50px;
+    right: 0px;
     z-index: 110;
-    width: 740px;
+    width: 890px;
     height: 620px;
     border: 1px solid #2f2f2f;
     padding: 20px 25px 30px;
@@ -6691,7 +5959,6 @@ ul li.profList .willbes-Layer-ProfileBox {
     padding: 30px 0 20px;
 } 
 .willbes-Layer-CurriBox .Layer-Txt {
-    height: 183px;
     padding: 20px;
     line-height: 24px;
     border: 1px solid #e2e2e2;
@@ -6703,7 +5970,7 @@ ul li.profList .willbes-Layer-ProfileBox {
     display: none;
     background: #fff;
     position: absolute;
-    top: 24px;
+    top: 54px;
     right: 0;
     z-index: 110;
     width: 890px;
@@ -6850,7 +6117,7 @@ ul li.profList .willbes-Layer-ProfileBox {
 
 /* subContainer : Prof : sliderBest */
 .sliderBest .best-tit {
-    background: #e5e5e5 url("../../img/willbes/prof/icon_best.gif") no-repeat 0 0;
+    background: url("../../img/willbes/prof/icon_best.gif") no-repeat 0 0;
     font-size: 14px;
     line-height: 28px;
     padding: 0 0 2px 28px;
@@ -6863,7 +6130,11 @@ ul li.profList .willbes-Layer-ProfileBox {
     height: 120px !important;
 }
 .sliderBest .sliderControls {
-    width: 520px;
+    width: 576px;
+    height: 120px;
+}
+.sliderBest .sliderControlsHover {
+    width: 576px;
     height: 120px;
 }
 .sliderBest .bx-wrapper .bx-controls {
@@ -6872,30 +6143,67 @@ ul li.profList .willbes-Layer-ProfileBox {
 }
 
 /* sliderControls : 좌우 버튼(교수 상세 페이지) => cSlider  */
-.cSlider .bx-wrapper {
+.cSliderH .bx-wrapper {
     background: none;
 }
-.cSlider .bx-wrapper .bx-prev {
+.cSliderH .bx-wrapper .bx-prev {
     background: url("../../img/willbes/prof/btn_prev_white.png") no-repeat 0 0;
 }
-.cSlider .bx-wrapper .bx-next {
+.cSliderH .bx-wrapper .bx-next {
     background: url("../../img/willbes/prof/btn_next_white.png") no-repeat 0 0;
     left: 20px;
 }
-.cSlider .bx-wrapper .bx-controls {
+.cSliderH .bx-wrapper .bx-controls {
     position: absolute;
     width: 40px;
     height: 20px;
     z-index: 1;
 }
-.cSlider .bx-wrapper .bx-controls-direction {
+.cSliderH .bx-wrapper .bx-controls-direction {
     width: 40px;
     height: 20px; 
 }
-.cSlider .bx-wrapper .bx-controls-direction a {
+.cSliderH .bx-wrapper .bx-controls-direction a {
     width: 20px;
     height: 20px;
 }
+
+/* sliderWillbesBnr : 좌우 버튼(교수 상세 > 교수홈) */
+.sliderWillbesBnr {
+    width: 940x;
+    height: auto;
+}
+.sliderWillbesBnr .bx-wrapper .bx-controls-direction {
+    width: 100%;
+    height: 45px;
+    position: absolute;
+    top: 50%;
+    margin-top: -23px;
+}
+.sliderWillbesBnr .bx-wrapper .bx-controls-direction a {
+    width: 30px;
+    height: 46px;
+}
+.sliderWillbesBnr .bx-wrapper .bx-controls-direction a.disabled {
+    display: block;
+    opacity: 0.3;
+}
+.sliderWillbesBnr .bx-wrapper .bx-prev {
+    background: url("../../img/willbes/prof/btn_arrow01.png") no-repeat 0 0;
+    left: 26px;
+    right: inherit;
+}
+.sliderWillbesBnr .bx-wrapper .bx-next {
+    background: url("../../img/willbes/prof/btn_arrow01.png") no-repeat 100% 0;
+    left: inherit;
+    right: 26px;
+}
+.sliderWillbesBnr .bx-wrapper .bx-default-pager {
+    display:none;
+}
+
+
+
 .sliderBest .lec-profile {
     width: 520px;
     height: 65px;
@@ -6948,6 +6256,9 @@ ul li.profList .willbes-Layer-ProfileBox {
 }
 .tabWrap.tabDepthProf_6 li {
     width: 16.66666666%;
+}
+.tabWrap.tabDepthProf_7 li {
+    width: 14.285714285%;
 }
 .tabWrap.tabDepthProf li a {
     display: block;
@@ -7121,6 +6432,9 @@ ul li.profList .willbes-Layer-ProfileBox {
 .onlineBox {
     background: #0d74ae;
 }
+.allBox {
+    background: #000;
+}
 .nyBox {
     background: #703eb4;
 }
@@ -7165,8 +6479,8 @@ ul li.profList .willbes-Layer-ProfileBox {
     margin: 10px 0 20px;
 }
 .willbes-Lec-Selected select {
-    width: 140px;
-    height: 27px;
+    width: 110px;
+    height: 30px;
     margin-right: 8px;
 }
 
@@ -7289,249 +6603,262 @@ ul li.profList .willbes-Layer-ProfileBox {
 
 
 /*********************************************     CSCENTER PAGE     *********************************************/
-
-/* subContainer : Cs : 인덱스 */
-.tabWrap.tabCsDepth1,
-.tabWrapIndex {
-    height:50px;
-    border-bottom: none;
-}
-.tabWrap.tabCsDepth1 li,
-.tabWrapIndex li {
-    float: left;
-    width: 14.38571428571429%;
-    height: 50px;
-    margin-right: -1px;
-}
-.tabWrap.tabCsDepth1 li a,
-.tabWrapIndex li a {
-    position: relative;
+/* subContainer : Cs : CScenterIndex : 공통 */
+.ActIndex:after {
+    content: '';
+    clear: both;
     display: block;
-    width: 100%;
-    height: 100%;
-    line-height: 48px;
-    background: #fff;
-    font-size: 14px;
+}
+.ActIndex .will-Tit {
+    font-size: 19px;
     font-weight: 600;
-    color: #383838;
+}
+
+/* subContainer : Cs : CScenterIndex : MainVisual */
+.ActIndex.MainVisual {
+    background: #fbfbfb;
+    border-bottom: 1px solid #e5e5e5;
+    margin-top: 30px;
+}
+.ActIndex.MainVisual .will-main-Tit {
+    float: left;
+    padding-top: 70px;
+    padding-bottom: 82px;
+    font-size: 27px;
+    font-weight: 300;
+    line-height: 40px;
+}
+.ActIndex.MainVisual .will-main-Tit .tx-light-blue {
+    font-size: 43px;
+    font-weight: 600;
+}
+.ActIndex.MainVisual .will-main-Tit .NSK-Thin {
+    font-size: 12px;
+    color: #1f1f1f;
+    line-height: 14px;
+    padding-top: 20px;
+}
+
+.ActIndex.MainVisual .centerList {
+    float: right;
+    padding-top: 70px;
     text-align: center;
-    letter-spacing: 0;
-    border: 1px solid #ccc;
 }
-.tabWrap.tabCsDepth1 li:first-child a,
-.tabWrapIndex li:first-child a {
-    border-left: 1px solid #ccc;
+.ActIndex.MainVisual .centerList ul li {
+    display: inline-block;
 }
-.tabWrap.tabCsDepth1 li a.on,
-.tabWrapIndex li a:hover {
-    z-index: 2;
-    background: #fff;
-    color: #0d74ae;
-    border: 1px solid #0d74ae;
+.ActIndex.MainVisual .centerList ul li.arrow {
+    margin: 0 15px;
 }
-.willbes-CScenter .willbes-Lec-Search {
-    margin: 7px 0;
+.ActIndex.MainVisual .centerList ul li .nStep {
+    font-size: 10px;
+    color: #898989;
+    text-align: left;
+    margin-left: 5px;
+}
+.ActIndex.MainVisual .centerList ul li .nTxt {
+    font-size: 13px;
+    color: #555;
+    line-height: 15px;
 }
 
 /* subContainer : Cs : CScenterIndex : ActIndex1 */
-.CScenterIndex .ActIndex1 {
-    height: 250px;
+.will-Tit .center-Btn {
+    float: right;
 }
-.CSpartner .centerList {
-    background: #f1f1f1;
-    height: 225px;
-    text-align: center;
-    border: 1px solid #ebebeb;
-}
-.CSpartner .centerList ul {
-    border-bottom: 1px solid #dddbdb;
-    margin: 0 40px;
-    padding: 32px 0;
-}
-.CSpartner .centerList ul li {
-    display: inline-block;
-}
-.CSpartner .centerList ul li.arrow {
-    margin: 0 15px;
-}
-.CSpartner .centerList ul li .nTxt {
-    font-size: 14px;
-    color: #555;
-}
-.CSpartner .centerList .Txt {
-    font-size: 14px;
-    color: #1f1f1f;
-    padding: 20px 0;
-}
-.callTable {
-    text-align: center;
-}
-.callTable tr td {
-    font-size: 14px;
-    color: #3a3a3a;
-    height: 60px;
-}
-.callTable tr td.tx-light-blue {
-    font-size: 22px;
-}
-.callBox {
-    height: 225px;
-}
-.callBox .center-Btn {
-    margin-top: 9px;
-}
-.callBox .center-Btn a {
+.will-Tit .center-Btn a {
     display: block;
     width: 100%;
     height: 100%;
     font-size: 13px;
-    color: #fff;
     text-align: center;
-    line-height: 34px;
+    line-height: 22px;
+}
+.callBox ul {
+    border: 1px solid #e5e5e5;
+    height: 66px;
+    margin-top: 10px;
+}
+.callBox ul li {
+    position: relative;
+    float: left;
+    width: 33.33333333%;
+    padding: 20px 0;
+    /*line-height: 62px;*/
+    line-height: 1.3;
+    text-align: center;
+}
+.callBox ul li .row-line {
+    position: absolute;
+    top: 12px;
+    right: 0;
+    background: #e4e4e4;
+    width: 1px;
+    height: 40px;
+}
+.callBox ul li .tit {
+    font-size: 14px;
+    font-weight: 600;
+    color: #3a3a3a;
+    margin: 0 10px;
+}
+.callBox ul li .num {
+    font-size: 22px;
+    font-weight: 600;
+}
+.callBox ul li .time {
+    font-size: 14px;   
+}
+.callBox ul li a.bnr_go {
+    margin-left: 10px;
 }
 
 /* subContainer : Cs : CScenterIndex : ActIndex2 */
-.LeclistTable .csCenterTable tbody tr.replyTxt th,
-.LeclistTable .csCenterTable tbody tr.replyTxt td {
-    line-height: 24px;
-    padding: 15px 0;
+.csCenterSearch .SearchBox {
+    border-top: 1px solid #acacac;
+    border-left: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    margin-bottom: 1px;
+    margin-top: 10px;
 }
-.csCenterTable tr.SearchBox {
-    border-top: 2px solid #000;
+.csCenterSearch .SearchBox:after {
+    content: '';
+    clear: both;
+    display: block;
 }
-.csCenterTable ul {
+.csCenterSearch .SearchBox span {
+    display: inline-block;
+} 
+.csCenterSearch .SearchBox .sTit {
+    font-size: 22px;
+    margin: 0 40px;
+    line-height: 90px;
+}
+.csCenterSearch .SearchBox .sTit span {
+    vertical-align: baseline;    
+}
+.csCenterSearch .SearchBox .sTitsub {
+    font-size: 12px;
+    color: #555;
+    line-height: 16px;
+    padding: 29px 35px;
+}
+.csCenterSearch .SearchBox .searchBoxForm {
+    float: right;
+    margin: 25px 25px 25px 0;  
+}
+.csCenterSearch .SearchBox select {
+    background: #f4f4f5;
+    width: 110px;
+    height: 40px;
+    padding-bottom: 1px;
+    border: 4px solid #636363;
+    border-right: none;
+    outline: none;
+}
+.csCenterSearch .willbes-Lec-Search {
+    float: right;
+    height: 40px;  
+}
+.csCenterSearch .willbes-Lec-Search .inputBox {
+    background: #f4f4f5;
+    width: 310px;
+    height: 40px;
+    border: 4px solid #636363;
+    border-left: 1px solid #636363;
+}
+.csCenterSearch .willbes-Lec-Search .inputBox input {
+    background: #f4f4f5;
+    width: 220px;
+    height: 32px;
+    border: none;
+    outline: none;
+}
+.csCenterSearch .willbes-Lec-Search .inputBox button {
+    float: right;
+}
+
+.csCenterSearch ul {
     text-align: center;
-    height: 50px;
-    border-bottom: 2px solid #b5b5b5;
+    height: 55px;
+    border-bottom: none;
 }
-.csCenterTable ul li {
+.csCenterSearch ul li {
     display: inline-block;
     margin: 0 45px;
-    line-height: 50px;
+    line-height: 55px;
     width: auto;
-    height: 50px;
+    height: 55px;
     float: inherit;
 }
-.csCenterTable ul li:first-child a {
+.csCenterSearch ul li:first-child a {
     border: none;
 }
-.csCenterTable ul li a {
+.csCenterSearch ul li a {
     background: none;
     border: none;
     height: auto;
-    line-height: 48px;
+    line-height: 55px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #707070;
 }
-
-.csCenterTable ul li a.on {
+.csCenterSearch ul li a.on {
     background: none;
     height: auto;
     border: none;
-    line-height: 48px;
-    color: #323232;
+    line-height: 55px;
+    color: #0d74ae;
 }
 
-.csCenterTable .replyList .arrow-Btn {
+.csCenterSearch tbody tr.replyTxt th,
+.csCenterSearch tbody tr.replyTxt td {
+    line-height: 24px;
+}
+.csCenterSearch .replyList .arrow-Btn {
     background: url("../../img/willbes/cs/icon_arrow.gif") no-repeat 0 -18px;
     float: right;
     width: 11px;
     height: 9px;
     margin: 15px;
 }
-.csCenterTable .replyList.hover .arrow-Btn {
+.csCenterSearch .replyList.hover .arrow-Btn {
     background: url("../../img/willbes/cs/icon_arrow.gif") no-repeat 0 0;
-}
-.csCenterTable .SearchBox td {
-    padding: 30px 0;
-}
-.csCenterTable .SearchBox span {
-    display: inline-block;
-} 
-.csCenterTable .SearchBox .sTit {
-    font-size: 17px;
-    margin: 0 15px;
-}
-.csCenterTable .willbes-Lec-Search .inputBox {
-    width: 570px;
-}
-.csCenterTable .willbes-Lec-Search .inputBox input {
-    width: 490px;
-}
-.csCenterTable .SearchBox select {
-    widtH: 90px;
-    height: 30px;
-    padding-bottom: 1px;
 }
 
 /* subContainer : Cs : CScenterIndex : ActIndex3 */
-.willbes-firstinfo {
-    font-weight: 600;
-    height: 110px;
-    border-top: 1px solid #dedede;
-    border-bottom: 3px solid #ccc;
-}
-.willbes-firstinfo ul li.Tit {
-    position: relative;
-    width: 210px;
-    height: 106px;
-    font-size: 24px;
-    color: #3f3f3e;
-    line-height: 32px;
-    padding: 22px;
-    border-right: 1px solid #dedede;
-}
-.willbes-firstinfo ul li.Tit:after,
-.willbes-firstinfo ul li.Tit:before {
-    content: '';
-    display: block;
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-style: solid;
-}
-.willbes-firstinfo ul li.Tit:before {
-    top: 50%;
-    right: -18px;
-    margin-top: -9px;
-    border-color: transparent transparent transparent #dedede;
-    border-width: 9px;
-}
-.willbes-firstinfo ul li.Tit:after {
-    top: 50%;
-    right: -16px;
-    margin-top: -9px;
-    border-color: transparent transparent transparent #fff;
-    border-width: 9px;
-}
-.willbes-firstinfo ul li.Tit span {
-    vertical-align: baseline;
-}
-.willbes-firstinfo ul li.Tit span.NGR {
-    font-weight: 300;
-    color: #323232;
+.willbes-firstinfo ul {
+    border: 1px solid #e5e5e5;
+    height: 86px;
+    margin-top: 15px;
 }
 .willbes-firstinfo ul li {
+    position: relative;
     float: left;
-    width: 145px;
-    height: 146px;
+    width: 20%;
+    height: 84px;
 }
 .willbes-firstinfo ul li .row-line {
-    float: right;
+    position: absolute;
+    top: 20px;
+    right: 0;
     background: #e4e4e4;
     width: 1px;
-    height: 65px;
-    margin: 20px 0;
+    height: 44px;
 }
 .willbes-firstinfo ul li a {
     float: left;
     display: block;
-    width: 142px;
+    width: 100%;
     height: 100%;
     font-size: 13px;
+    color: #3a3a3a;
     text-align: center;
-    margin: 0 1px;
+    line-height: 84px;
 }
-.willbes-firstinfo ul li a img {
-    padding-top: 15px;
+.willbes-firstinfo ul li a span {
+    margin: 0 5px;
 }
 
 /* subContainer : Cs : CScenterIndex : ActIndex3 : willbes-Layer-CScenterBox */
@@ -7539,7 +6866,7 @@ ul li.profList .willbes-Layer-ProfileBox {
     display: none;
     background: #fff;
     position: absolute;
-    top: 85px;
+    top: 29px;
     right: 0;
     z-index: 110;
     width: 700px;
@@ -7577,31 +6904,13 @@ ul li.profList .willbes-Layer-ProfileBox {
 }
 
 /* subContainer : Cs : CScenterIndex : ActIndex4 */
-.CScenterIndex .ActIndex4 {
-    height: 202px;
-}
-.willbes-program {
-    float: left;
-    height: 202px;
-    border-bottom: 1px solid #e2e2e2;
-}
-.willbes-program dl dt {
-    float: left;
-    width: 25%;
-    text-align: center;
-    margin: 39px 0;
-}
-.willbes-program dl dt div {
-    height:30px;
-    line-height: 15px;
-    margin-bottom: 10px;
-}
-.willbes-info {
-    height: 202px;
-}
 .willbes-info .List-Table li {
     line-height: 44px;
     height: 44px;
+}
+.willbes-info.willbes-notice .List-Table li {
+    line-height: 29px;
+    height: 29px;
 }
 .willbes-info .List-Table li a {
     float: left;
@@ -7613,6 +6922,33 @@ ul li.profList .willbes-Layer-ProfileBox {
 .willbes-info .List-Table li .date {
     float: right;
     color: #959595;
+}
+
+.willbes-program dl dt {
+    float: left;
+    width: 84px;
+    text-align: center;
+    margin-top: 25px;
+    margin-left: 8px;
+}
+.willbes-program dl dt:first-child {
+    margin-left: 0;
+}
+.willbes-program dl dt a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 5px solid #eaeaea;
+    padding: 10px;
+}
+.willbes-program dl dt div {
+    font-size: 11px;
+    color: #3a3a3a;
+    margin-bottom: 10px;
+}
+.bnr_mobile {
+    display: block;
+    margin-top: -4px;
 }
 
 /* subContainer : Cs : CScenter1 : Act1 : 자주하는 질문 */
@@ -7905,116 +7241,162 @@ ul li.profList .willbes-Layer-ProfileBox {
 
 
 /*********************************************     MYPAGE     *********************************************/
-
-/* subContainer : Mypage : 무한PASS존 : Mypage_PASS_Index : ActIndex1 */
-.Mypage_PASS_Index .ActIndex1 {
-    height: 270px;
-    border-bottom: 1px solid #959595;
+/* subContainer : Mypage : 무한PASS존 : Mypage_PASS_Index : MyInfo */
+.ActIndex.MyInfo {
+    background: #fbfbfb;
+    border-bottom: 1px solid #e5e5e5;
+    margin-top:30px;
 }
-.MyInfoBox {
-    float: left;
-    width: 575px;
-    padding: 10px 0 5px 0;
+.ActIndex.MyInfo .will-Tit {
+    margin-top:-30px;
 }
-.MyInfoBox ul li {
+.MyLecInfoBox {
     float: left;
-    width: 277px;
+    background: #fff;
+    width: 635px;
+    margin: 30px 0 35px;
+    padding: 10px;
+    border: 1px solid #e5e5e5;
+}
+.MyLecInfoBox ul li {
+    float: left;
+    width: 390px;
     height: 110px;
-    border: 1px solid #d7d7d7;
-    box-shadow: 0 2px 0 #e5e5e5;
-    margin: 0 10px 5px 0;
     text-align: center;
+    padding-left: 20px;
+    padding-top: 20px;
 }
-.MyInfoBox ul li .Tit {
+.MyLecInfoBox ul li.sm {
     float: left;
-    width: 100px;
-    height: 108px;
-    font-size: 16px;
-    color: #fff;
-    text-align: left;
-    line-height: 18px;
-    padding: 25px 0 0 15px;
-    background-image: url("../../img/willbes/mypage/icon_arrow.png");
-    background-position: 65px 85px;
-    background-repeat: no-repeat; 
+    width: 223px;
+    height: 110px;
+    text-align: center;
+    padding-left: 30px;
+    border-left: 1px solid #e5e5e5;
 }
-.MyInfoBox .TableInfo {
-    float: right;
-    margin: 20px 30px;
+.MyLecInfoBox ul li.line {
+    border-bottom: 1px solid #e5e5e5;
+    padding-top: 10px;
 }
-.MyInfoBox table.myTable {
+.MyLecInfoBox ul li .Tit {
+    background: #f6f6f6;
+    float: left;
+    width: 88px;
+    height: 88px;
+    border-radius: 88px;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 19px;
+    padding: 26px 0;
+}
+.MyLecInfoBox .TableInfo {
+    margin-top: 20px;
+}
+.MyLecInfoBox .TableInfo dl dt {
+    display: inline-block;
+    margin: 0 15px;
+}
+.MyLecInfoBox .TableInfo dl dt .subTit {
+    font-size: 14px;
+}
+.MyLecInfoBox .TableInfo dl dt div {
+    font-size: 17px;
+    line-height: 20px;
+} 
+.MyLecInfoBox .TableInfo dl dt div a {
+    border-bottom: 1px solid #0d74ae;
+
+}
+.MyLecInfoBox table.myTable {
     width: 115px;
     height: 68px;
     font-size: 13px;
 }
-.MyInfoBox table.myTable td.subTit {
-    text-align: left;
-}
-.MyInfoBox table.myTable td {
-    text-align: right;
-}
 
-.willbes-myinfo {
-    float: left;
-    width: 365px;
+.MyInfoBox {
+    float: right;
+    width: 285px;
     height: 245px;
-    border-left: 1px solid #959595;
+    margin-top: 0;
 }
-.willbes-myinfoList .will-Tit {
+.MyInfoBoxList .will-Tit {
+    background: #fff;
     font-size: 14px;
-    border-bottom: 1px solid #eaeaea;
-    height: 35px;
-    line-height: 35px;
+    color: #323232;
+    border: 1px solid #e5e5e5;
+    height: 34px;
+    line-height: 32px;
     padding: 0 0 0 15px;
+    margin-top: 0 !important;
 }
-.willbes-myinfoList .List-Table {
-    padding-left: 20px;
-    margin: 13px 0;
+.MyInfoBoxList .will-Tit a {
+    display: block;
+    width: 20px;
+    height: 20px;
+    margin: 6px;
+}
+.MyInfoBoxList .will-Tit a img {
+    float: left;
+}
+.MyInfoBoxList .List-Table {
+    padding-left: 15px;
+    margin: 13px 0 22px;
     letter-spacing: 0;
 }
-.willbes-myinfoList .List-Table li {
+.MyInfoBoxList .List-Table li {
     border-bottom: none;
-    height: 30px;
-    line-height: 30px;
-}
-.willbes-myinfoList .List-Table li a {
-    width: auto;
-}
-.willbes-myinfoList .List-Table li a img {
-    margin: -4px 0 0 5px;
-}
-.willbes-myinfoList .List-Table.myTablet {
-    background: url("../../img/willbes/mypage/icon_pc.png") no-repeat 0 4px;
-    padding: 18px 0 18px 110px;
-    margin: 0;
-}
-.willbes-myinfoList .List-Table.myTablet li {
     height: 25px;
     line-height: 25px;
 }
-/* subContainer : Mypage : 무한PASS존 : Mypage_PASS_Index : ActIndex2 */
-.Mypage_PASS_Index .ActIndex2 table.lecTable tr td.w-list {
-    background: #f9f9f9;
-    font-size: 14px;
-    line-height: 18px;
-    padding: 0;
+.MyInfoBoxList .List-Table li a {
+    width: auto;
 }
-.Mypage_PASS_Index .ActIndex2 table.lecTable tr td.w-list a {
+.MyInfoBoxList .List-Table li a img {
+    margin: -4px 0 0 5px;
+}
+.MyInfoBoxList .List-Table.myTablet {
+    background: url("../../img/willbes/mypage/icon_pc_n.png") no-repeat 0 4px;
+    padding: 18px 0 18px 110px;
+    margin: 0;
+}
+.MyInfoBoxList .List-Table.myTablet li {
+    height: 25px;
+    line-height: 25px;
+}
+
+/* subContainer : Mypage : 무한PASS존 : Mypage_PASS_Index : ActIndex1 */
+.Mypage_PASS_Index .ActIndex1 table.lecTable tr td {
+    padding: 10px 0;
+}
+.Mypage_PASS_Index .ActIndex1 table.lecTable tr td.w-list {
+    padding-left: 15px;
+}
+.Mypage_PASS_Index .ActIndex1 table.lecTable tr td.w-list a {
     display: block; 
     padding: 0
 }
-/* subContainer : Mypage : 무한PASS존 : Mypage_PASS_Index : ActIndex3 */
-.Mypage_PASS_Index .ActIndex3 {
-    height: 202px;
+.Mypage_PASS_Index .ActIndex1 table.lecTable tr td.w-percent .round {
+    background: #f6f6f6;
+    width: 78px;
+    height: 78px;
+    border-radius: 78px;
+    margin: 0 auto;
+    font-size: 12px;
+    color: #3a3a3a;
+    line-height: 18px;
+    padding-top: 18px;
 }
+.Mypage_PASS_Index .ActIndex1 table.lecTable tr td.w-percent .round .tx-blue {
+    font-size: 20px;
+}
+
+/* subContainer : Mypage : 무한PASS존 : Mypage_PASS_Index : ActIndex2 */
 .willbes-info .List-Table .aBox {
     float: right;
     margin: 11px 5px 11px 20px;
 }
-/* subContainer : Mypage : 무한PASS존 : Mypage_PASS_Index : ActIndex4 */
-.Mypage_PASS_Index .ActIndex4 {
-    height: 202px;
-}
+
+/* subContainer : Mypage : 무한PASS존 : Mypage_PASS_Index : ActIndex3 */
 .willbes-info860 .List-Table li a {
     width: 870px;
 }
@@ -9274,6 +8656,10 @@ table.testTable tr td.w-date {
     color: #666; 
     text-align: center;
 }
+.ExamBox .answerTb tr td .q_img {
+    width: 18px;
+    margin-top: -2px;
+}
 .ExamBox .answerTb tr th {
     background: #d4d4d4;
     height: 30px;
@@ -9282,6 +8668,7 @@ table.testTable tr td.w-date {
 }
 .ExamBox .answerTb tr td {
     height: 28px;
+    line-height: 26px;
 }
 .ExamBox .answerTb tr.nth {
     background: #f4f4f4;
@@ -10049,6 +9436,9 @@ table.userInfoTable .w-selec-Area label {
 /*********************************************     ACADEMY     *********************************************/
 
 /* subContainer : Content : Lec-Table */
+table.acadlecTable {
+    clear: both;
+}
 table.acadlecTable .w-schedule {
     line-height: 30px;
 }
@@ -10067,6 +9457,7 @@ table.acadlecInfoTable {
     background: #f9f9f9;
     height: 240px;
     overflow-x: auto;
+    clear: both;
 }
 table.acadlecTable tr.w-info td span.MoreBtn {
     display: inline-block;
@@ -10172,6 +9563,7 @@ table.acadlecInfoPackageTable tr.Top td {
     line-height: 15px;
     padding: 0 7px;
     margin-right: 70px;
+    margin-top:0;
 }
 .w-notice .acadInfo.n1 {
     background: #46a1dc;
@@ -10234,7 +9626,7 @@ table.acadlecInfoPackageTable tr.Top td {
     overflow: hidden;
     border: 1px solid #ccc;
     max-width: 687px;
-    height: 177px;
+    height: 117px;
 }
 .w-thumb .thumb_slide_wrap ul {
     float: left;
@@ -10246,7 +9638,7 @@ table.acadlecInfoPackageTable tr.Top td {
 .w-thumb .thumb_slide_wrap ul li {
     float: left;
     width: 165px;
-    height: 165px;
+    height: 105px;
     background: #ddd;
     margin-left: 5px;
     margin-top: 5px;
@@ -10256,6 +9648,9 @@ table.acadlecInfoPackageTable tr.Top td {
 }
 .w-thumb .thumb_txt {
     float: left;
+}
+.w-thumb .thumb_txt .w-tit {
+    font-size: 14px;
 }
 .w-thumb .thumb_num_short {
     position: absolute;
@@ -10497,6 +9892,7 @@ table.acadlecInfoPackageTable tr.Top td {
     display: inline-block;
     margin: 0 7px;
     line-height: 18px;
+    vertical-align: middle;
 }
 .Paging ul li a {
     font-size: 12px;
@@ -10969,8 +10365,6 @@ table.acadlecInfoPackageTable tr.Top td {
     text-align: left;
 }
 
-
-
 /* Certification */
 .CertiBox {
     width: 900px;
@@ -11062,23 +10456,42 @@ table.acadlecInfoPackageTable tr.Top td {
     padding: 4px 8px;
 }
 
-
-
-
-
-
 /* subContainer : Content : Quick-Bnr */
+.Quick-Top {
+    position: absolute;
+    top: -30px;
+    right: 0;
+}
 .Quick-Bnr {
     float: left;
 }
 
+/* 제대군인인증팝업 */
+.leaveArmyJoin {padding-bottom:30px; overflow-y:scroll; width:740px; height: 700px;}
+.leaveArmyJoin .laj_top h3 {background:#000 url(http://www.willbescop.net/assets/img/common/pop_armytit1.png) no-repeat center center; height:60px; font-size:0}
+.leaveArmyJoin .laj_top h3.survery {background:#26759d url(http://www.willbescop.net/assets/img/common/pop_armytit2.png) no-repeat center center; height:60px; font-size:0}
+.leaveArmyJoin .laj_top div {text-align:center; padding:20px 0; border-bottom:1px dashed #CCCCCC}
+.leaveArmyJoin .laj_top ul {background:#636363; font-size:95%; color:#fff; padding:20px 0 20px 25px}
+.leaveArmyJoin .laj_top li {margin-bottom:10px; margin-left:20px; list-style-type:disc}
+.leaveArmyJoin .laj_top span {color:#ede1c1}
 
+.leaveArmyJoin .laj_tab {background:#b7b7b7; padding:10px 0 10px 25px; margin-bottom:20px; letter-spacing:-1px}
+.leaveArmyJoin .laj_tab strong {margin-right:10px; float:left; height:30px; line-height:30px}
+.leaveArmyJoin .laj_tab a {display:inline-block; float:left; padding:0 8px; height:26px; line-height:26px; border:1px solid #636363; border-radius:5px; font-weight:bold; background:#b7b7b7; color:#636363; margin-right:4px}
+.leaveArmyJoin .laj_tab a.active,
+.leaveArmyJoin .laj_tab a:hover {background:#fff; color:#000}
+.leaveArmyJoin .laj_tab:after {content:""; display:block; clear:both}
 
+.leaveArmyJoin .laj_sec {margin:0 0 30px; border-bottom:1px dashed #d7d7d7; padding:20px 0}
+.leaveArmyJoin .laj_sec h4 {border-left:3px solid #F30; margin-bottom:15px; font-size:16px; font-weight:bold; padding-left:10px; color:#222}
+.leaveArmyJoin .laj_sec td {padding:5px 0}
+.leaveArmyJoin .laj_sec li {line-height:1.5}
+.leaveArmyJoin .route {line-height:2}
 
-
-
-
-
+.leaveArmyJoin .laj_btns {text-align:center; margin-top: 30px}
+.leaveArmyJoin .laj_btns a {display:inline-block; margin:0 3px; color:#fff; background:#000 url(http://www.willbescop.net/assets/assets/img/common/arrow_02.png) no-repeat 85% center; font-size:140%; height:36px; line-height:36px; border:1px solid #000; padding:0 30px; font-weight:bold; font-family:'NanumBarunGothic', 'Malgun Gothic', Arial,Sans-serif}
+.leaveArmyJoin .laj_btns a.btnA {background:#707070 url(http://www.willbescop.net/assets/img/common/arrow_02.png) no-repeat 85% center; border:1px solid #707070}
+.leaveArmyJoin .laj_btns a:hover {color:#000; background:#fff; height:36px; line-height:36px; border:1px solid #000}
 
 
 /* Only IE Hack */
@@ -11086,26 +10499,11 @@ table.acadlecInfoPackageTable tr.Top td {
 #SettingForm .chkBox-Save strong {
     letter-spacing: -2px \0;
 }
+
 /* IE10 and IE11 */
 @media screen and (-ms-black-contrast:active), (-ms-black-contrast:none) {
     #SettingForm .chkBox-Save strong {letter-spacing: -2px;}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 @media only screen and (max-width: 768px) {
 
@@ -11271,7 +10669,6 @@ table.acadlecInfoPackageTable tr.Top td {
     table.combineTable .inputBox button.combine-Btn {
         width: 100%;
         height: 38px;
-        margin: 0 !important;
     }
     table.combineTable ul.chkBox-Sex {
         float: inherit;
@@ -11299,6 +10696,16 @@ table.acadlecInfoPackageTable tr.Top td {
     }
     table.combineTable dl dt.mbox1 input {
         width: 100% !important;
+    }
+    table.combineTable dl dt.mbox2 {
+        width: 40%;
+        height: 100%;
+        float: right;
+    }
+    table.combineTable dl dt.mbox-sele {
+        width: 100%;
+        height: 100%;
+        float: right;
     }
     table.combineTable dl dt.mbox-dot {
         line-height: 38px;
@@ -11332,6 +10739,10 @@ table.acadlecInfoPackageTable tr.Top td {
     .agree-Chk ul li .agree-Tit a {
         width: 80%;
         padding: 17px 0;
+    }
+    .agree-Chk ul li .agree-Tit a .tx12 {
+        display: block;
+        margin: 5px 0 0 40px;
     }
 
     /* Login Form : 통합회원가입 : 회원가입완료 */

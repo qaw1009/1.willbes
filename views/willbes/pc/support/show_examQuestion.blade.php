@@ -14,10 +14,7 @@
                 @endforeach
 
                 <div class="willbes-CScenter c_both">
-                    <div class="willbes-Lec-Tit NG bd-none tx-black c_both pt-zero">
-                        · 기출문제
-                    </div>
-                    <div class="Act2 mt30">
+                    <div class="Act2">
                         <!-- List -->
                         <div class="willbes-Leclist c_both">
                             <div class="LecViewTable">
@@ -65,7 +62,7 @@
                                 </table>
                                 <div class="search-Btn mt20 mb20 h36 p_re">
                                     <div class="btnAuto90 h36 mem-Btn bg-purple-gray bd-dark-gray f_right">
-                                        <a href="{{front_url($default_path.'/examQuestion/index?'.$get_params)}}">목록</a>
+                                        <a href="{{front_url($default_path.'/examQuestion/index/cate/'.$__cfg['CateCode'].'?'.$get_params)}}">목록</a>
                                     </div>
                                 </div>
 
@@ -81,7 +78,7 @@
                                             <td class="w-prev bg-light-gray"><strong>이전글</strong></td>
                                             <td class="tx-left pl20">
                                                 @if(empty($pre_data) === false)
-                                                    <a href="{{front_url($default_path.'/examQuestion/show?board_idx='.$pre_data['BoardIdx'].'&'.$get_params)}}">{{$pre_data['Title']}}</a><span class="row-line">|</span>
+                                                    <a href="{{front_url($default_path.'/examQuestion/show/cate/'.$__cfg['CateCode'].'?board_idx='.$pre_data['BoardIdx'].'&'.$get_params)}}">{{$pre_data['Title']}}</a><span class="row-line">|</span>
                                                 @else
                                                     이전글이 없습니다.
                                                 @endif
@@ -92,7 +89,7 @@
                                             <td class="w-next bg-light-gray"><strong>다음글</strong></td>
                                             <td class="tx-left pl20">
                                                 @if(empty($next_data) === false)
-                                                    <a href="{{front_url($default_path.'/examQuestion/show?board_idx='.$next_data['BoardIdx'].'&'.$get_params)}}">{{$next_data['Title']}}</a><span class="row-line">|</span>
+                                                    <a href="{{front_url($default_path.'/examQuestion/show/cate/'.$__cfg['CateCode'].'?board_idx='.$next_data['BoardIdx'].'&'.$get_params)}}">{{$next_data['Title']}}</a><span class="row-line">|</span>
                                                 @else
                                                     다음글이 없습니다.
                                                 @endif
@@ -109,7 +106,7 @@
             </form>
             <!-- willbes-CScenter -->
         </div>
-        {!! banner('고객센터_우측날개', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
+        {!! banner('수험정보_우측', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
     </div>
     <!-- End Container -->
 

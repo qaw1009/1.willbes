@@ -62,6 +62,7 @@ class CartFModel extends BaseOrderFModel
                 , case P.ProdTypeCcd when "' . $this->_prod_type_ccd['book'] . '" then "book" 
                     when "' . $this->_prod_type_ccd['on_lecture'] . '" then "on_lecture"
                     when "' . $this->_prod_type_ccd['off_lecture'] . '" then "off_lecture"
+                    when "' . $this->_prod_type_ccd['mock_exam'] . '" then "mock_exam"
                     else "etc"
                   end as CartType
                 , case when PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['on_lecture'] . '" then "on_lecture" 
@@ -69,6 +70,7 @@ class CartFModel extends BaseOrderFModel
                          when PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['off_lecture'] . '" then "off_lecture"
                          when PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['off_pack_lecture'] . '" then "off_pack_lecture"
                          when P.ProdTypeCcd = "' . $this->_prod_type_ccd['book'] . '" then "book"
+                         when P.ProdTypeCcd = "' . $this->_prod_type_ccd['mock_exam'] . '" then "mock_exam"
                          when P.ProdTypeCcd = "' . $this->_prod_type_ccd['delivery_price'] . '" then "delivery_price"
                          when P.ProdTypeCcd = "' . $this->_prod_type_ccd['delivery_add_price'] . '" then "delivery_add_price"
                          else "etc" 
@@ -261,7 +263,7 @@ class CartFModel extends BaseOrderFModel
                 }
 
                 $prod_sub_code = '';
-                if (empty($input['prod_code_sub']) === false) {
+                if (empty(element('prod_code_sub', $input)) === false) {
                     // 서브 강좌가 있는 경우 (운영자 선택형 패키지, 사용자 패키지)
                     $prod_sub_code = implode(',', element('prod_code_sub', $input, []));
                 }
@@ -412,7 +414,13 @@ class CartFModel extends BaseOrderFModel
                     }
 
                     $prod_row = element('0', $prod_rows);
-                    $prod_row['ProdPriceData'] = element('0', json_decode($prod_row['ProdPriceData'], true));
+
+                    // 판매가격 정보 확인
+                    $prod_row['ProdPriceData'] = json_decode($prod_row['ProdPriceData'], true);
+                    if (empty($prod_row['ProdPriceData']) === true || isset($prod_row['ProdPriceData'][0]['SaleTypeCcd']) === false) {
+                        throw new \Exception('배송료 가격 정보가 없습니다.', _HTTP_NOT_FOUND);
+                    }
+                    $prod_row['ProdPriceData'] = element('0', $prod_row['ProdPriceData']);
 
                     // 장바구니 등록
                     $data = [
@@ -540,11 +548,27 @@ class CartFModel extends BaseOrderFModel
             return '판매 중인 상품만 주문 가능합니다.';
         }
 
+        // 사이트코드 체크
+        if ($site_code != $data['SiteCode']) {
+            return '사이트 정보가 일치하지 않습니다.';
+        }
+
         if ($learn_pattern == 'book') {
             // 수강생 교재 체크
             $check_result = $this->checkStudentBook($site_code, $prod_code);
             if ($check_result !== true) {
                 return $check_result;
+            }
+        } elseif ($learn_pattern == 'mock_exam') {
+            // 응시형태가 학원일 경우 정원 체크
+            if ($data['TakeFormsCcd'] == '690002') {
+                $mock_paid_cnt = $this->orderListFModel->listOrderProduct(true, [
+                    'EQ' => ['OP.ProdCode' => $prod_code, 'OP.PayStatusCcd' => $this->_pay_status_ccd['paid']]
+                ]);
+
+                if ($mock_paid_cnt >= $data['ClosingPerson']) {
+                    return '접수가 마감되었습니다.';
+                }
             }
         } else {
             // 학원강좌일 경우

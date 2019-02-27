@@ -39,6 +39,8 @@ class OffLectureModel extends CommonLectureModel
                             ,Ca.CateName, Cb.CateName as CateName_Parent
                             ,D.SalePrice, D.SaleRate, D.RealSalePrice
                             ,E.ProfIdx_String,E.wProfName_String
+                            ,IFNULL(F.DivisionCount,0) AS DivisionCount
+                            ,IFNULL(Y.ProdCode_Original,\'\') as ProdCode_Original
                             ,Z.wAdminName
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
@@ -48,23 +50,26 @@ class OffLectureModel extends CommonLectureModel
         $from = '
                     from
                         lms_product A
-                            left outer join lms_sys_code Aa on A.SaleStatusCcd = Aa.Ccd and Aa.IsStatus=\'Y\'
-                            left outer join lms_site Ab on A.SiteCode = Ab.SiteCode
-                            join lms_sys_code Ac on A.ProdTypeCcd = Ac.Ccd and Ac.IsStatus=\'Y\'
+                        join lms_sys_code Aa on A.SaleStatusCcd = Aa.Ccd and Aa.IsStatus=\'Y\'
+                        join lms_site Ab on A.SiteCode = Ab.SiteCode
+                        join lms_sys_code Ac on A.ProdTypeCcd = Ac.Ccd and Ac.IsStatus=\'Y\'
                         join lms_product_lecture B on A.ProdCode = B.ProdCode
-                            left outer join lms_product_course Ba on B.CourseIdx = Ba.CourseIdx and Ba.IsStatus=\'Y\'
-                            left outer join lms_product_subject Bb on B.SubjectIdx = Bb.SubjectIdx and Bb.IsStatus=\'Y\'
-                            left outer join lms_sys_code Bc on B.LearnPatternCcd = Bc.Ccd and Bc.IsStatus=\'Y\'
-                            left outer join lms_sys_code Bd on B.StudyPatternCcd = Bd.Ccd and Bd.IsStatus=\'Y\'
-                            left outer join lms_sys_code Be on B.StudyApplyCcd = Be.Ccd and Be.IsStatus=\'Y\'
-                            left outer join lms_sys_code Bg on B.CampusCcd = Bg.Ccd
-                            left outer join lms_sys_code Bh on B.AcceptStatusCcd = Bh.Ccd
+                        left outer join lms_product_course Ba on B.CourseIdx = Ba.CourseIdx and Ba.IsStatus=\'Y\'
+                        left outer join lms_product_subject Bb on B.SubjectIdx = Bb.SubjectIdx and Bb.IsStatus=\'Y\'
+                        join lms_sys_code Bc on B.LearnPatternCcd = Bc.Ccd and Bc.IsStatus=\'Y\'
+                        left outer join lms_sys_code Bd on B.StudyPatternCcd = Bd.Ccd and Bd.IsStatus=\'Y\'
+                        left outer join lms_sys_code Be on B.StudyApplyCcd = Be.Ccd and Be.IsStatus=\'Y\'
+                        left outer join lms_sys_code Bg on B.CampusCcd = Bg.Ccd
+                        left outer join lms_sys_code Bh on B.AcceptStatusCcd = Bh.Ccd
                         join lms_product_r_category C on A.ProdCode = C.ProdCode and C.IsStatus=\'Y\'
-                            join lms_sys_category Ca on C.CateCode = Ca.CateCode  and Ca.IsStatus=\'Y\'
-                            left outer join lms_sys_category Cb on Ca.ParentCateCode = Cb.CateCode
+                        join lms_sys_category Ca on C.CateCode = Ca.CateCode  and Ca.IsStatus=\'Y\'
+                        left outer join lms_sys_category Cb on Ca.ParentCateCode = Cb.CateCode
                         left outer join lms_product_sale D on A.ProdCode = D.ProdCode and D.SaleTypeCcd=\'613001\' and D.IsStatus=\'Y\'	#Pc+모바일 판매가만 추출
-                        join vw_product_r_professor_concat E on A.ProdCode = E.ProdCode
+                        join vw_product_r_professor_concat_repr E on A.ProdCode = E.ProdCode
+                        left outer join (select ProdCode, count(*) as DivisionCount from lms_product_division where IsStatus=\'Y\' group by ProdCode) as F on A.ProdCode = F.ProdCode
+                        left outer join lms_product_copy_log Y on A.ProdCode = Y.ProdCode
                         left outer join wbs_sys_admin Z on A.RegAdminIdx = Z.wAdminIdx
+                        join lms_sys_admin_r_site_campus X on (A.SiteCode = X.SiteCode and B.CampusCcd = X.CampusCcd) and X.IsStatus=\'Y\' and X.wAdminIdx='.$this->session->userdata('admin_idx').'
                     where A.IsStatus=\'Y\'
         ';
 
@@ -193,6 +198,11 @@ class OffLectureModel extends CommonLectureModel
             }
             /*----------------          수강기간 등록        ---------------*/
 
+            /*----------------          Json 데이터 등록        ---------------*/
+            if($this->_setProdJsonData($prodcode) !== true) {
+                throw new \Exception('JSON 데이터 등록에 실패했습니다.');
+            }
+            /*----------------          Json 데이터 등록        ---------------*/
 
             $this->_conn->trans_commit();
             //$this->_conn->trans_rollback();
@@ -306,6 +316,11 @@ class OffLectureModel extends CommonLectureModel
             }
             /*----------------          수강기간 등록        ---------------*/
 
+            /*----------------          Json 데이터 등록        ---------------*/
+            if($this->_setProdJsonData($prodcode) !== true) {
+                throw new \Exception('JSON 데이터 등록에 실패했습니다.');
+            }
+            /*----------------          Json 데이터 등록        ---------------*/
 
             //$this->_conn->trans_rollback();
             $this->_conn->trans_commit();

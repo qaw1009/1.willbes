@@ -119,7 +119,7 @@
             <!-- List -->
             <div class="willbes-Leclist mt60 c_both">
                 <div class="willbes-Lec-Selected tx-gray">
-                    <div class="willbes-Lec-Search GM f_right" style="margin: 0;">
+                    <div class="willbes-Lec-Search GM f_left" style="margin: 0;">
                         <div class="inputBox p_re">
                             <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="제목 또는 내용을 입력해 주세요" maxlength="30">
                             <button type="submit" onclick="" class="search-Btn">

@@ -18,5 +18,5 @@ $config['prevent_duplicate_login'] = false;
 // 쿼리 로그 사용 여부
 $config['sql_log_queries'] = true;
 $config['sql_log_slow_queries'] = true;
-$config['sql_log_slow_min_exec_second'] = 3;
+$config['sql_log_slow_min_exec_second'] = 1;
 $config['sql_log_path'] = config_item('log_path') . 'sql/';

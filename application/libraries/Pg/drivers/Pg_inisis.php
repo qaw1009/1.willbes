@@ -336,7 +336,7 @@ class Pg_inisis extends CI_Driver
             $this->_parent->saveFileLog('부분취소 요청 시작');
             $this->_parent->saveFileLog('부분취소 요청 데이터', $params);
 
-            $_repay_type = $is_vbank == 'N' ? 'repay' : 'repayvacct';
+            $_repay_type = $is_vbank == 'N' ? 'repay' : 'vacctrepay';
             $_mid = element('mid', $params);
             $_tid = element('tid', $params);
             $_total_remain_pay_price = element('total_remain_pay_price', $params);    // 전체남은금액 (총실결제금액 - 총환불금액)
@@ -391,7 +391,7 @@ class Pg_inisis extends CI_Driver
                 $inipay->SetField('refundbankcode', $_refund_bank_code);    // 환불은행코드
                 $inipay->SetField('refundacctnum', $_refund_account_no);     // 환불계좌번호 (숫자만 입력)
                 $inipay->SetField('refundacctname', $_refund_deposit_name);    // 환불계좌 예금주명
-                $inipay->SetField('refundfirmflag', '');                                // 펌뱅킹 사용여부 (사용 : 1, 사용안함 : 값없음)
+                $inipay->SetField('refundflgremit', '');                                // 펌뱅킹 사용여부 (사용 : 1, 사용안함 : 값없음)
             } else {
                 $inipay->SetField('tax', $_tax);
                 $inipay->SetField('taxfree', $_taxfree);
@@ -625,13 +625,18 @@ class Pg_inisis extends CI_Driver
                 $returns['dtm_trans'] = date('Y-m-d H:i:s');
             }
 
+            // 입금은행명, 입금자명 인코딩 변환
+            $returns['nm_inputbank'] = iconv('EUC-KR', 'UTF-8', $returns['nm_inputbank']);
+            $returns['nm_input'] = iconv('EUC-KR', 'UTF-8', $returns['nm_input']);
+
+            // 전달 결과 파일로그 저장
             $this->_parent->saveFileLog('가상계좌 입금통보 결과 데이터', $returns, 'debug', $log_type);
 
             // 전달 결과 저장
             $log_idx = $this->_saveLog($returns, $log_type);
 
-            // 스테이징, 실서버일 경우만 체크 ==> TODO : 서버 환경별 실행
-            if (ENVIRONMENT == 'testing' || ENVIRONMENT == 'production') {
+            // 로컬서버가 아닐 경우 체크 ==> TODO : 서버 환경별 실행
+            if (ENVIRONMENT != 'local') {
                 // PG사 연동 IP 체크
                 if (in_array($returns['reg_ip'], $this->_config['allow_vbank_ip']) === false) {
                     throw new \Exception('ERR_IP');

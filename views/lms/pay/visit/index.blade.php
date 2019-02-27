@@ -4,7 +4,7 @@
     <h5>- 학원에 방문한 수강생의 학원강좌 결제를 진행하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
-        {!! html_site_tabs('tabs_site_code') !!}
+        {!! html_site_tabs('tabs_site_code', 'tab', true, [], false, $arr_site_code) !!}
         <input type="hidden" id="search_site_code" name="search_site_code" value=""/>
         <div class="x_panel">
             <div class="x_content">
@@ -97,12 +97,12 @@
             <table id="list_ajax_table" class="table table-bordered">
                 <thead>
                 <tr class="bg-odd">
-                    <th rowspan="2" class="rowspan pb-30">선택</th>
-                    <th rowspan="2" class="pb-30">No</th>
-                    <th rowspan="2" class="rowspan pb-30">주문번호</th>
-                    <th rowspan="2" class="rowspan pb-30">회원정보</th>
-                    <th rowspan="2" class="rowspan pb-30">결제수단</th>
-                    <th rowspan="2" class="rowspan pb-20">결제완료일<br/>(접수신청일)</th>
+                    <th rowspan="2" class="rowspan valign-middle">선택</th>
+                    <th rowspan="2" class="valign-middle">No</th>
+                    <th rowspan="2" class="rowspan valign-middle">주문번호</th>
+                    <th rowspan="2" class="rowspan valign-middle">회원정보</th>
+                    <th rowspan="2" class="rowspan valign-middle">결제수단</th>
+                    <th rowspan="2" class="rowspan valign-middle">결제완료일<br/>(접수신청일)</th>
                     <th colspan="6">상품구분별정보</th>
                 </tr>
                 <tr class="bg-odd">
@@ -212,15 +212,8 @@
 
             // 수강증 출력 버튼 클릭
             $list_table.on('click', '.btn-print', function() {
-                $('.btn-print').setLayer({
-                    'url' : '{{ site_url('/pay/visit/print') }}',
-                    'width' : 1200,
-                    'add_param_type' : 'param',
-                    'add_param' : [
-                        { 'id' : 'order_idx', 'name' : '주문식별자', 'value' : $(this).data('order-idx'), 'required' : true },
-                        { 'id' : 'order_prod_idx', 'name' : '주문상품식별자', 'value' : $(this).data('order-prod-idx'), 'required' : true }
-                    ]
-                });
+                var url = '{{ site_url('/common/printCert/') }}?prod_type=off_lecture&order_idx=' + $(this).data('order-idx') + '&order_prod_idx=' + $(this).data('order-prod-idx');
+                popupOpen(url, '_cert_print', 620, 350);
             });
 
             // 엑셀다운로드 버튼 클릭

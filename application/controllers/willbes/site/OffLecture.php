@@ -44,16 +44,20 @@ class OffLecture extends \app\controllers\FrontController
         $arr_base['category'] = $this->categoryFModel->listSiteCategory($this->_site_code);
 
         // 캠퍼스 조회
-        $arr_base['campus'] = array_map(function($var) {
-            $tmp_arr = explode(':', $var);
-            return ['CampusCcd' => $tmp_arr[0], 'CampusCcdName' => $tmp_arr[1]];
-        }, explode(',', config_app('CampusCcdArr')));
-
-        // 과정 조회
-        $arr_base['course'] = $this->baseProductFModel->listCourse($this->_site_code);
-
-        // 과목 조회
+        $arr_base['campus'] = [];
+        if (config_app('CampusCcdArr') != 'N') {
+            $arr_base['campus'] = array_map(function($var) {
+                $tmp_arr = explode(':', $var);
+                return ['CampusCcd' => $tmp_arr[0], 'CampusCcdName' => $tmp_arr[1]];
+            }, explode(',', config_app('CampusCcdArr')));
+        }
+        
+        // 카테고리가 있을 경우에만 조회
         if (empty($cate_code) === false) {
+            // 과정 조회
+            $arr_base['course'] = $this->baseProductFModel->listCourseCategoryMapping($this->_site_code, $cate_code);
+            
+            // 과목 조회    
             if (config_app('SiteGroupCode') == '1002') {
                 // 사이트그룹이 공무원일 경우 카테고별 직렬, 직렬별 과목 조회
                 $arr_base['series'] = $this->baseProductFModel->listSeriesCategoryMapping($this->_site_code, $cate_code);
@@ -89,16 +93,22 @@ class OffLecture extends \app\controllers\FrontController
             'IN' => ['StudyApplyCcd' => $_study_apply_ccds] // 접수방식
         ];
 
+        // 상품조회
         $list = $this->lectureFModel->listSalesProduct($this->_learn_pattern, false, $arr_condition, null, null, ['ProdCode' => 'desc']);
 
-        // 상품조회 결과에 존재하는 과목 정보
-        $selected_subjects = array_pluck($list, 'SubjectName', 'SubjectIdx');
-
-        // 상품 조회결과 재정의
+        // 상품조회 결과 배열 초기화
+        $selected_subjects = [];
         $selected_list = [];
-        foreach ($list as $idx => $row) {
-            $row['ProdPriceData'] = json_decode($row['ProdPriceData'], true);
-            $selected_list[$row['SubjectIdx']][] = $row;
+
+        if (empty($list) === false) {
+            // 상품조회 결과에 존재하는 과목 정보
+            $selected_subjects = array_pluck($this->baseProductFModel->listSubject($this->_site_code, array_unique(array_pluck($list, 'SubjectIdx'))), 'SubjectName', 'SubjectIdx');
+
+            // 상품 조회결과 재정의
+            foreach ($list as $idx => $row) {
+                $row['ProdPriceData'] = json_decode($row['ProdPriceData'], true);
+                $selected_list[$row['SubjectIdx']][] = $row;
+            }
         }
 
         $this->load->view($_view_page, [

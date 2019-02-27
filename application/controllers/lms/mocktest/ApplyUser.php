@@ -35,11 +35,19 @@ class ApplyUser extends \app\controllers\BaseController
         $applyAreaTmp2 = array_map(function($v) { return '[지역2] '. $v; }, $codes[$applyArea2]);
         $applyArea = $applyAreaTmp1 + $applyAreaTmp2;
 
+        /*모의고사별 접수현황 메뉴에서 검색조건 달고 페이지 접근*/
+        $search_PayStatusCcd = $this->_req('search_PayStatusCcd');
+        $search_IsTake = $this->_req('search_IsTake');
+        $search_fi = $this->_req('search_fi', true);
+
         $this->load->view('mocktest/apply/user/index', [
             'siteCodeDef' => $siteCode[0],
             'paymentStatus' => $codes[$paymentStatus],
             'applyType' => $codes[$applyType],
             'applyArea' => $applyArea,
+            'search_PayStatusCcd'=>$search_PayStatusCcd,
+            'search_IsTake'=>$search_IsTake,
+            'search_fi'=>$search_fi,
         ]);
     }
 
@@ -47,8 +55,14 @@ class ApplyUser extends \app\controllers\BaseController
     /**
      * 리스트
      */
-    public function list()
+    public function list($params=[])
     {
+        if(empty($params) == false) {
+            $excel = $params[0];
+        } else {
+            $excel = '';
+        }
+
         $rules = [
             ['field' => 'search_site_code', 'label' => '사이트', 'rules' => 'trim|is_natural_no_zero'],
             ['field' => 'search_PayStatusCcd', 'label' => '결제상태', 'rules' => 'trim|is_natural_no_zero'],
@@ -64,29 +78,74 @@ class ApplyUser extends \app\controllers\BaseController
 
         $condition = [
             'EQ' => [
-                'O.SiteCode' => $this->input->post('search_site_code'),
-                'OP.PayStatusCcd' => $this->input->post('search_PayStatusCcd'),
-                'MAP.TakeForm' => $this->input->post('search_TakeForm'),
-                'MAP.TakeArea' => $this->input->post('search_TakeArea'),
-                'MAP.IsStatus' => $this->input->post('search_IsStatus'),
-                'MAP.IsTicketPrint' => $this->input->post('search_IsTicketPrint'),
+                'O.SiteCode' => $this->_req('search_site_code'),
+                'OP.PayStatusCcd' => $this->_req('search_PayStatusCcd'),
+                'MR.TakeForm' => $this->_req('search_TakeForm'),
+                'MR.TakeArea' => $this->_req('search_TakeArea'),
+                'MR.IsTake' => $this->_req('search_IsTake'),
             ],
             'ORG' => [
                 'LKB' => [
-                    'U.MemName' => $this->input->post('search_fi', true),
-                    'U.MemId' => $this->input->post('search_fi', true),
-                    'U.Phone3' => $this->input->post('search_fi', true),
-                    'PD.ProdName' => $this->input->post('search_fi', true),
-                    'MAP.ProdCode' => $this->input->post('search_fi', true),
+                    'U.MemName' => $this->_req('search_fi', true),
+                    'U.MemId' => $this->_req('search_fi', true),
+                    'U.Phone3' => $this->_req('search_fi', true),
+                    'PD.ProdName' => $this->_req('search_fi', true),
+                    'MR.ProdCode' => $this->_req('search_fi', true),
+                    'MR.TakeNumber' => $this->_req('search_fi', true),
+                    'O.OrderNo' => $this->_req('search_fi', true),
                 ]
             ],
         ];
-        list($data, $count) = $this->applyUserModel->mainList($condition, $this->input->post('length'), $this->input->post('start'));
 
-        return $this->response([
-            'recordsTotal' => $count,
-            'recordsFiltered' => $count,
-            'data' => $data,
-        ]);
+        if($excel === 'Y') {
+
+            $data  = $this->applyUserModel->mockRegistListExcel($condition);
+
+            $headers = ['NO','주문번호', '회원명', '회원아이디', '결제완료일', '결제금액', '결제상태', '상품명', '연도', '회차', '응시형태', '응시번호', '카테고리', '직렬', '과목', '응시지역', '응시여부'];
+
+            $this->load->library('excel');
+            $this->excel->exportExcel('모의고사-개별접수현황('.date("Y-m-d").')', $data, $headers);
+
+        } else {
+
+            list($data, $count) = $this->applyUserModel->mockRegistList($condition, $this->input->post('length'), $this->input->post('start'),'');
+            return $this->response([
+                'recordsTotal' => $count,
+                'recordsFiltered' => $count,
+                'data' => $data,
+            ]);
+        }
+
     }
+
+
+    /**
+     * 출력이력 추출
+     * @param array $params
+     * @return CI_Output
+     */
+    public function PrintLog($params=[])
+    {
+        if(empty($params)) {
+            return $this->json_error('신청코드가 존재하지 않습니다.');
+        }
+
+        $mr_idx = $params[0];
+
+        $arr_condition = [
+            'EQ' => [
+                'MR.MrIdx' => $mr_idx
+            ]
+        ];
+        $data = $this->applyUserModel->mockRegistList($arr_condition,'','','Y');
+
+        $log = $this->applyUserModel->ticketPrintLog($mr_idx);
+
+        $this->load->view('mocktest/apply/user/print_log_modal',[
+                'data' => $data,
+                'log' => $log
+            ]
+        );
+    }
+
 }

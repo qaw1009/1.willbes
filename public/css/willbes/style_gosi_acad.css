@@ -1,0 +1,341 @@
+/*********************************************     Main Container : Gosi Acad     *********************************************/
+/* Main Container : Gosi Acad */
+.GA .VisualBox {
+    clear: both;
+    float: left;
+    width: 1120px;
+    height: 380px;
+    overflow: hidden;    
+}
+
+.GA .VisualBox .MaintabList {
+    position: absolute;
+    bottom: 34px;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    text-align: center;
+}
+.GA .VisualBox .MaintabList ul li {
+    background: #251c1c;
+    display: inline-block; 
+    height: 28px;
+    font-size: 14px;
+    color: #fff;
+    line-height: 26px;
+    border: 1px solid #fff;
+    margin: 0 -2px;
+}
+.GA .VisualBox .MaintabList.three ul li {
+    width: 209px;
+}
+.GA .VisualBox .MaintabList.four ul li {
+    width: 156px;
+}
+.GA .VisualBox .MaintabList.five ul li {
+    width: 188px;
+}
+.GA .VisualBox .MaintabList ul li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.GA .VisualBox .MaintabSlider li img {
+    width: 100%;
+    height: 100%;
+}
+
+.GA .VisualBox .MaintabList ul li a:hover,
+.GA .VisualBox .MaintabList ul li a.active { background:#FFF; color:#251c1c}
+
+
+.GA .VisualsubBox {
+    clear: both;
+    float: left;
+    width: 1120px;
+    height: 160px;
+    overflow: hidden;
+}
+.GA .VisualsubBox ul li {
+    float: left;
+    width: 370px;
+    margin-left: 5px;
+}
+.GA .VisualsubBox ul li:first-child {
+    margin-left: 0;
+}
+
+/* slider : 페이징 버튼 => bSlider */
+.GA .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a {
+    background: #b7b7b7;
+}
+.GA .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.GA .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a.active,
+.GA .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #ba560e;
+}
+
+
+.GA .Section2 {
+    background: #f7f7f7;
+}
+.GA .Section .gosi-acadTit {
+    font-size: 33px;
+    color: #363636;
+    line-height: 1;
+}
+.GA .Section .gosi-acadTit strong {
+    vertical-align: baseline;
+	color:#c19653;
+} 
+.GA .Section .gosi-acadTit span {
+    color:#000;
+	vertical-align: baseline;
+}
+
+/* Main Container : Prof */
+.GA .Section .ProfBox li {
+    float: left;
+    width: 216px;
+	height: 207px !important;
+    margin-left: 10px;
+}
+.GA .Section .ProfBox li:first-child {
+    margin-left: 0;
+}
+
+.GA .Section .ProfBox:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+/* slider : 페이징 버튼 => bSlider */
+
+.GA .ProfBox .bSlider .bx-wrapper .bx-pager.bx-default-pager a {
+    background: #fff;
+    width: 9px;
+    height: 9px;
+}
+.GA .ProfBox .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.GA .ProfBox .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
+.GA .ProfBox .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #313131;
+}
+
+/* Main Container : Notice : noticeTabs */
+.GA .noticeTabs.acad {
+    float: left;
+    width: 668px;
+    margin-top: 27px;
+}
+.GA .tabWrap.noticeWrap_acad {
+    height: 34px;
+    border:0;
+}
+.GA .tabWrap.noticeWrap_acad li {
+    float: left;
+    width: 100px;
+    height: 22px;
+    margin-right: -1px;
+}
+.GA .tabWrap.noticeWrap_acad li a {
+    display: block;
+    width: 100%;
+    height: 22px;
+    line-height: 22px;
+    background: none;
+    font-size: 18px;
+    color: #7c7c7c;
+    text-align: center;
+    letter-spacing: 0;
+    border:0;
+    border-right: 1px solid #e1e1e1;
+}
+.GA .tabWrap.noticeWrap_acad li:last-child a {
+    border:0;
+}
+.GA .tabWrap.noticeWrap_acad li a.on {
+    position: relative;
+    z-index: 2;
+    background: #fff;
+    height: 22px;
+    line-height: 22px;
+    color: #ba560e;
+}
+.GA .tabBox.noticeBox_acad a.btn-add {
+    position: absolute;
+    top: -30px;
+    right: 0;
+}
+.GA .tabBox.noticeBox_acad .List-Table {
+    padding:0;
+    border-top:1px solid #000;
+    border-bottom:1px solid #000;
+}
+.GA .tabBox.noticeBox_acad .List-Table li {
+    font-size: 13px;
+    color: #3a3a3a;
+    height: 37px;
+    line-height: 37px;
+    border-top: 1px solid #e3e3e3;
+}
+.GA .tabBox.noticeBox_acad .List-Table li:first-child {
+    border-top: none;
+}
+.GA .tabBox.noticeBox_acad .List-Table li a {
+    display: inline-block;
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    letter-spacing: 0;
+}
+.GA .tabBox.noticeBox_acad .List-Table li a span {
+    background: #ba560e;
+    color:#fff;
+    padding: 0 10px;
+    border-radius: 10px;
+    margin-right: 5px;
+}
+
+.GA .sliderEvt {
+    float: right;
+    width: 420px;
+}
+
+/* Main Container : acad_infoBox : gosi Acad */
+.GA .acad_infoBox li a.on,
+.GA .acad_infoBox li a:hover {
+    color: #ba560e;
+}
+.GA .acad_infoBox li.w-infoBox1 a {
+    background: url("../../img/willbes/gosi_acad/icon_info1.png") no-repeat 30px center;
+}
+.GA .acad_infoBox li.w-infoBox2 a {
+    background: url("../../img/willbes/gosi_acad/icon_info2.png") no-repeat 30px center;
+}
+.GA .acad_infoBox li.w-infoBox3 a {
+    background: url("../../img/willbes/gosi_acad/icon_info3.png") no-repeat 30px center;
+}
+.GA .acad_infoBox li.w-infoBox4 a {
+    background: url("../../img/willbes/gosi_acad/icon_info4.png") no-repeat 30px center;
+}
+.GA .acad_infoBox li.w-infoBox5 a {
+    background: url("../../img/willbes/gosi_acad/icon_info5.png") no-repeat 30px center;
+}
+
+.GA .acad_infoBox li.w-infoBox1 a.on,
+.GA .acad_infoBox li.w-infoBox1 a:hover {
+    background: url("../../img/willbes/gosi_acad/icon_info1_on.png") no-repeat 30px center;
+}
+.GA .acad_infoBox li.w-infoBox2 a.on,
+.GA .acad_infoBox li.w-infoBox2 a:hover {
+    background: url("../../img/willbes/gosi_acad/icon_info2_on.png") no-repeat 30px center;
+}
+.GA .acad_infoBox li.w-infoBox3 a.on,
+.GA .acad_infoBox li.w-infoBox3 a:hover {
+    background: url("../../img/willbes/gosi_acad/icon_info3_on.png") no-repeat 30px center;
+}
+.GA .acad_infoBox li.w-infoBox4 a.on,
+.GA .acad_infoBox li.w-infoBox4 a:hover {
+    background: url("../../img/willbes/gosi_acad/icon_info4_on.png") no-repeat 30px center;
+}
+.GA .acad_infoBox li.w-infoBox5 a.on,
+.GA .acad_infoBox li.w-infoBox5 a:hover {
+    background: url("../../img/willbes/gosi_acad/icon_info5_on.png") no-repeat 30px center;
+}
+
+/* Main Container : nSlider : gosi Acad */
+.GA .sliderSuccess {
+    float: left;
+    width: 668px;
+    margin-right: 0;
+    position: relative;
+}
+.GA .sliderSuccess a.btn-add {
+    position: absolute;
+    top: 20px;
+    right: 0;
+}
+.GA .sliderSuccess ul {
+    border-top:1px solid #000;
+    border-bottom:1px solid #000;
+    padding:6px 0;
+}
+.GA .sliderSuccess li {
+    display: inline; 
+    float: left; 
+    width: 50%; 
+    position: relative;
+}
+.GA .sliderSuccess li div {
+    position:absolute;
+    font-size: 14px;
+    top:2px;
+    left: 180px;   
+    z-index: 1;
+}
+.GA .sliderSuccess li div p {
+    line-height: 1.4;
+    margin: 4px 0;
+}
+.GA .sliderSuccess li strong {
+    color:#ba560e;
+}
+.GA .sliderSuccess li span {
+    font-size: 12px;
+}
+.GA .sliderSuccess li img {    
+    width: 155px;
+    height: 100px;
+    margin: 0 10px    
+}
+.GA .sliderSuccess ul:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.GA .sliderInfo {
+    float: right;
+    width: 420px;
+    margin-right: 0;
+}
+
+/* Main Container : campus : Cop Acad */
+.GA .tabWrap.noticeWrap_campus li a.on {
+    color: #ba560e;
+}
+.GA .campus_info {
+    position: relative;
+    float: right;
+    width: 350px;
+    height: 328px;
+}
+.GA .campus_info .btn {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+.GA .campus_info .btn a {
+    display: inline-block; 
+    font-size: 17px; 
+    font-weight: bold;
+    height: 40px;
+    line-height: 40px;
+    padding: 0;
+    width: 168px;
+    margin-right: 5px;
+    color: #ba560e;
+    text-align: center;
+    border: 1px solid #ba560e;    
+}
+.GA .campus_info .btn a:last-child {
+    background: #f9e000;
+    color:#381e1f;
+    border: 1px solid #f9e000;
+}
+.GA .campus_info .btn a img {
+    vertical-align: middle;
+}

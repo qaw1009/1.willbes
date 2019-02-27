@@ -15,13 +15,14 @@
             <li>약관동의/정보입력</li>
             <li>회원가입완료</li>
         </ul>
-        <ul class="tabWrap tabLoginDepth1 tabs half c_both">
+        <ul class="tabWrap tabLoginDepth1 tabs full c_both">
             <li><a href="#join1" class="on">휴대폰 인증</a></li>
-            <li><a href="#join2">E-mail 인증</a></li>
+            <!--li><a href="#join2">E-mail 인증</a></li-->
         </ul>
         <div class="tabBox">
             <div id="join1">
                 <div class="widthAuto460">
+                    <div>· 휴대폰</div>
                     <div class="inputBox p_re">
                         <input type="text" id="USER_ID" name="USER_ID" class="iptId" placeholder="이름" maxlength="30">
                     </div>
@@ -48,6 +49,7 @@
                 </div>
                 <div class="notice-Txt tx-gray mt40"></div>
             </div>
+            <!--
             <div id="join2">
                 <div class="widthAuto460">
                     <div class="inputBox p_re">
@@ -64,6 +66,7 @@
                         </select>
                     </div>
                 </div>
+                
                 <div class="search-Btn btnAuto120 mt70 h36">
                     <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
                         <span>확인</span>
@@ -71,6 +74,7 @@
                 </div>
                 <div class="notice-Txt tx-gray mt40">* 입력하신 메일로 발송된 인증메일의 인증링크를 유효시간 30분 안에 클릭해 주세요.</div>
             </div>
+            -->
         </div>
     </div>
     <!-- End 통합회원가입 : 본인인증 -->
@@ -135,7 +139,12 @@
                         <div class="inputBox p_re">
                             <input type="text" id="USER_PHONE" name="USER_PHONE" class="iptPhone" placeholder='"-" 제외하고 숫자만 입력' maxlength="30">
                         </div>
-                        <div class="tx-red mt10" style="display: block;">* 유효성메시지노출</div>
+                        <div class="tx-red mt10" style="display: block;">                            
+                            <input name="" type="checkbox" value="" id="aaa" />
+                            <label for="aaa">
+                            윌비스의 신규상품 안내 및 광고성 정보 SMS 수신에 동의합니다.
+                            </label>
+                        </div>
                     </td>
                 </tr>
                 <tr>
@@ -193,7 +202,12 @@
                                 </dt>
                             </dl>
                         </div>
-                        <div class="tx-red mbox-txt mt10" style="display: block;">* 유효성메시지노출</div>
+                        <div class="tx-red mbox-txt mt10" style="display: block;">
+                            <input name="" type="checkbox" value="" id="bbb" />
+                            <label for="bbb">
+                            윌비스의 신규상품 안내 및 광고성 정보 이메일 수신에 동의합니다.
+                            </label>
+                        </div>
                     </td>
                 </tr>
                 <tr>

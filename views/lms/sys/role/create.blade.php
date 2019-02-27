@@ -22,7 +22,7 @@
                     <div class="col-md-3 item">
                         <input type="text" id="role_name" name="role_name" required="required" class="form-control" title="권한유형명" value="{{ $data['RoleName'] }}">
                     </div>
-                    <label class="control-label col-md-2">권한유형코드
+                    <label class="control-label col-md-2 col-md-offset-1">권한유형코드
                     </label>
                     <div class="col-md-4">
                         <p class="form-control-static">@if($method == 'PUT'){{ $data['RoleIdx'] }}@else # 등록 시 자동 생성 @endif</p>
@@ -48,7 +48,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2">등록자
                     </label>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <p class="form-control-static">{{ $data['RegAdminName'] }}</p>
                     </div>
                     <label class="control-label col-md-2">등록일
@@ -60,7 +60,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2">최종 수정자
                     </label>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <p class="form-control-static">{{ $data['UpdAdminName'] }}</p>
                     </div>
                     <label class="control-label col-md-2">최종 수정일

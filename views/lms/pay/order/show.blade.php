@@ -97,15 +97,16 @@
                     <table id="list_order_detail_table" class="table table-striped table-bordered">
                         <thead>
                         <tr>
-                            <th rowspan="2" class="pb-20">상품구분</th>
-                            <th rowspan="2" class="pb-20">상품명</th>
-                            <th rowspan="2" class="pb-20">배송상태</th>
+                            <th rowspan="2" class="valign-middle">상품구분</th>
+                            <th rowspan="2" class="valign-middle">상품코드</th>
+                            <th rowspan="2" class="valign-middle">상품명</th>
+                            <th rowspan="2" class="valign-middle">배송상태</th>
                             <th colspan="2">결제금액</th>
                             <th colspan="2">할인정보</th>
                             <th colspan="2">미수금정보</th>
-                            <th rowspan="2" class="pb-20">결제상태</th>
-                            <th rowspan="2" class="pb-20">송장번호</th>
-                            <th rowspan="2" class="pb-20">할인사유</th>
+                            <th rowspan="2" class="valign-middle">결제상태</th>
+                            <th rowspan="2" class="valign-middle">송장번호</th>
+                            <th rowspan="2" class="valign-middle">할인사유</th>
                         </tr>
                         <tr>
                             <th>카드</th>
@@ -122,7 +123,12 @@
                                     <td>{{ $order_prod_row['ProdTypeCcdName'] }}
                                         {!! empty($order_prod_row['SalePatternCcdName']) === false ? '<br/>(' . $order_prod_row['SalePatternCcdName'] . ')' : '' !!}
                                     </td>
-                                    <td><div class="blue inline-block">[{{ $order_prod_row['LearnPatternCcdName'] or $order_prod_row['ProdTypeCcdName'] }}]</div> {{ $order_prod_row['ProdName'] }}</td>
+                                    <td>{{ $order_prod_row['ProdCode'] }}</td>
+                                    <td><div class="blue inline-block">[{{ $order_prod_row['LearnPatternCcdName'] or $order_prod_row['ProdTypeCcdName'] }}]</div> {{ $order_prod_row['ProdName'] }}
+                                        @if(empty($order_prod_row['OrderSubProdList']) === false)
+                                            <button name="btn_sub_product" class="btn btn-xs btn-success ml-5 mb-0" data-toggle="popover" data-html="true" data-content="{!! $order_prod_row['OrderSubProdList'] !!}">선택강좌</button>
+                                        @endif
+                                    </td>
                                     <td>{!! empty($order_prod_row['DeliveryStatusCcd']) === false ? $order_prod_row['DeliveryStatusCcdName'] . '<br/>' . substr($order_prod_row['DeliverySendDatm'], 0, 10) : '' !!}</td>
                                     <td>{{ number_format($order_prod_row['CardPayPrice']) }}</td>
                                     <td>{{ number_format($order_prod_row['CashPayPrice']) }}</td>
@@ -138,7 +144,7 @@
                         </tbody>
                         <tfoot>
                         <tr>
-                            <td colspan="12" class="text-center bg-info">
+                            <td colspan="13" class="text-center bg-info">
                                 <strong>[총 실결제금액] <span class="blue">{{ number_format($data['order']['tRealPayPrice']) }}</span>
                                     (사용 포인트 : {{ number_format($data['order']['tUseLecPoint']) }} | 교재 {{ number_format($data['order']['tUseBookPoint']) }})
                                     <span class="red pl-20">[총 환불금액] {{ number_format($data['order']['tRefundPrice']) }}</span>
@@ -162,11 +168,11 @@
                             <table id="list_refund_proc_table" class="table table-striped table-bordered">
                                 <thead>
                                 <tr>
-                                    <th rowspan="2" class="pb-20">선택</th>
-                                    <th rowspan="2" class="pb-20">상품구분</th>
-                                    <th rowspan="2" class="pb-20">상품명</th>
+                                    <th rowspan="2" class="valign-middle">선택</th>
+                                    <th rowspan="2" class="valign-middle">상품구분</th>
+                                    <th rowspan="2" class="valign-middle">상품명</th>
                                     <th colspan="2">결제금액</th>
-                                    <th rowspan="2" class="pb-20">결제상태</th>
+                                    <th rowspan="2" class="valign-middle">결제상태</th>
                                     <th colspan="7">환불정보</th>
                                 </tr>
                                 <tr>
@@ -334,10 +340,10 @@
                             <table id="list_refund_list_table" class="table table-striped table-bordered">
                                 <thead>
                                 <tr>
-                                    <th rowspan="2" class="pb-20">상품구분</th>
-                                    <th rowspan="2" class="pb-20">상품명</th>
+                                    <th rowspan="2" class="valign-middle">상품구분</th>
+                                    <th rowspan="2" class="valign-middle">상품명</th>
                                     <th colspan="2">결제금액</th>
-                                    <th rowspan="2" class="pb-20">결제상태</th>
+                                    <th rowspan="2" class="valign-middle">결제상태</th>
                                     <th colspan="6">환불정보</th>
                                 </tr>
                                 <tr>
@@ -459,8 +465,12 @@
                             </tr>
                             @endif
                             <tr>
-                                <th class="bg-odd">부여사유</th>
-                                <td class="bg-white-only">{{ $data['order']['AdminRegReason'] }}</td>
+                                <th class="bg-odd">부여사유유형</th>
+                                <td class="bg-white-only">{{ $data['order']['AdminReasonCcdName'] }}</td>
+                            </tr>
+                            <tr>
+                                <th class="bg-odd">상세부여사유</th>
+                                <td class="bg-white-only">{{ $data['order']['AdminEtcReason'] }}</td>
                             </tr>
                             <tr>
                                 <th class="bg-odd">부여자</th>

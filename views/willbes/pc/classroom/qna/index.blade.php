@@ -9,11 +9,6 @@
     </div>
 
     <div class="Content p_re">
-        <div class="willbes-Mypage-SUPPORTZONE c_both">
-            <div class="willbes-Prof-Subject willbes-Mypage-Tit NG">
-                · 상담내역
-            </div>
-        </div>
         <div class="willbes-Mypage-Tabs mt40">
             <form id="url_form" name="url_form" method="GET">
                 @foreach($arr_input as $key => $val)

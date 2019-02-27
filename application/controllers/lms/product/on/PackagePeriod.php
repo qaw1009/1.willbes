@@ -98,7 +98,7 @@ Class PackagePeriod extends \app\controllers\BaseController
         $method = 'POST';
 
         $codes = $this->codeModel->getCcdInArray(['609','611','612','613','616','617','618','648','649','650','651']);
-        $siteList = $this->siteModel->getSiteArray(false,'CsTel');
+        $arr_send_callback_ccd = $this->codeModel->getCcd(706, 'CcdValue');  // 발신번호조회
 
         $prodcode = null;
         $data = null;
@@ -146,8 +146,8 @@ Class PackagePeriod extends \app\controllers\BaseController
             ,'packcate_ccd'=>$codes['649'] //패키지분류
             ,'packperiod_ccd'=>$codes['650'] //기간제 패키지 수강기간
             ,'packautostudyexten_ccd'=>$codes['651'] //기간제패키지 자동수강연장
-            ,'siteList' =>$siteList         //사이트목록
             ,'prodcode' => $prodcode
+            ,'arr_send_callback_ccd'=>$arr_send_callback_ccd
             ,'data'=>$data
             ,'data_sale'=>$data_sale
             ,'data_memo'=>$data_memo
@@ -227,7 +227,7 @@ Class PackagePeriod extends \app\controllers\BaseController
 
         $result = $this->packagePeriodModel->_prodCopy($prodcode,'packagePeriod');
         //var_dump($result);exit;
-        $this->json_result($result,'저장 되었습니다.',$result);
+        $this->json_result($result,'복사 되었습니다.',$result);
     }
 
 }

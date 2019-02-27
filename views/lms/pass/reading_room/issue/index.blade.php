@@ -4,7 +4,7 @@
     <h5>- {{$mang_title}} 주문 내역을 확인하고, 좌석배정/변경하거나 연장하는 메뉴입니다. (좌석 신규배정 및 변경/연장배정 가능)</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
-        {!! html_site_tabs('tabs_site_code', 'tab', true, [], false, []) !!}
+        {!! html_def_site_tabs('', 'tabs_site_code', 'tab', false, [], false, $offLineSite_list) !!}
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">
@@ -91,9 +91,12 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-12 text-right">
+            <div class="col-xs-6 col-xs-offset-3 text-center">
                 <button type="submit" class="btn btn-primary btn-search" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
-                <button type="button" class="btn btn-default" id="_btn_reset">검색초기화</button>
+                <button type="button" class="btn btn-default btn-search" id="btn_reset">초기화</button>
+            </div>
+            <div class="col-xs-3 text-right bold mb-10">
+                * 연장 가능 기간 : 대여종료일 7일 전 ~ 대여종료일 7일 후
             </div>
         </div>
     </form>

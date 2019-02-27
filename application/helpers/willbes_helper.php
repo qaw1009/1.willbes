@@ -15,7 +15,7 @@ if (!function_exists('banner')) {
         empty($site_code) === true && $site_code = config_app('SiteCode');
         empty($cate_code) === true && strlen($cate_code) < 1 && $cate_code = config_app('CateCode');
 
-        return '<script src="' . app_url('/banner/show/?site_code=' . $site_code . '&cate_code=' . $cate_code . '&section=' . rawurlencode($section) . '&css_class=' . rawurlencode($css_class), 'www') . '"></script>';
+        return '<script src="' . front_app_url('/banner/show/?site_code=' . $site_code . '&cate_code=' . $cate_code . '&section=' . rawurlencode($section) . '&css_class=' . rawurlencode($css_class), 'www') . '"></script>';
     }
 }
 
@@ -33,6 +33,32 @@ if (!function_exists('popup')) {
         empty($cate_code) === true && strlen($cate_code) < 1 && $cate_code = config_app('CateCode');
 
         return '<script src="' . app_url('/popup/show/?site_code=' . $site_code . '&cate_code=' . $cate_code . '&section=' . $section, 'www') . '"></script>';
+    }
+}
+
+if (!function_exists('login_check_inner_script')) {
+    /**
+     * javascript 내 로그인 여부 적용
+     * @param string $msg  - 경고 메세지
+     * @param string $move - 로그인 페이지로 이동여부 : Y 이동
+     */
+    function login_check_inner_script($msg='', $move='')
+    {
+        if (sess_data('is_login') !== true) {
+            $output = '';
+            if (empty($msg) === false) {
+                $output .= 'alert("' . $msg . '");' . PHP_EOL;
+            }
+
+            if ($move === 'Y') {
+                $output .= 'location.href = "' . app_url('/member/login/?rtnUrl=' . rawurlencode('//' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']), 'www') . '";' . PHP_EOL;
+            }
+
+            if(empty($msg) === false || empty($move) === false) {
+                $output .= 'return;';
+            }
+            echo($output);
+        }
     }
 }
 

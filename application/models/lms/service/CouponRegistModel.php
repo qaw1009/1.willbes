@@ -252,7 +252,11 @@ class CouponRegistModel extends WB_Model
             $pin_issue_cnt = ($deploy_type == 'F') ? element('pin_issue_cnt', $input) : 0;
             $apply_type_ccd = element('apply_type_ccd', $input);
             $lec_type_ccd = (in_array($apply_type_ccd, $this->_apply_type_to_lec_ccds) === true) ? implode(',', element('lec_type_ccd', $input)) : '';
-            $apply_range_type = (in_array($apply_type_ccd, $this->_apply_type_to_range_ccds) === true) ? element('apply_range_type', $input) : 'A';
+            if (in_array($apply_type_ccd, $this->_apply_type_to_range_ccds) === true) {
+                $apply_range_type = element('apply_range_type', $input, 'A');
+            } else {
+                $apply_range_type = $apply_type_ccd === $this->_apply_type_to_mock_ccd ? 'P' : 'A';
+            }
             $apply_school_year = ($apply_range_type == 'I') ? element('apply_school_year', $input) : '';
             $apply_subject_idx = ($apply_range_type == 'I') ? element('apply_subject_idx', $input) : '';
             $apply_course_idx = ($apply_range_type == 'I') ? element('apply_course_idx', $input) : '';

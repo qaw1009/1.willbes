@@ -91,9 +91,9 @@ class SupportProfTpass extends BaseSupport
                     ,'b.Content' => $s_keyword
                 ]
             ],
-            'LKB' => [
+            /*'LKB' => [
                 'Category_String'=>$s_cate_code
-            ]
+            ]*/
         ];
 
         $column = 'b.BoardIdx,b.CampusCcd,b.TypeCcd,b.IsBest,b.AreaCcd
@@ -194,16 +194,17 @@ class SupportProfTpass extends BaseSupport
                        ';
 
         $data = $this->supportBoardFModel->findBoardForTpass($this->_site_code, $board_idx, $arr_condition_board, $arr_condition_pkg, $arr_condition_auth, $column, 1, null);
-
         if (empty($data)) {
             show_alert('게시글이 존재하지 않습니다.', 'back');
         }
-        $data['AttachData'] = json_decode($data['AttachData'],true);       //첨부파일
-
         $result = $this->supportBoardFModel->modifyBoardRead($board_idx);
         if($result !== true) {
             show_alert('게시글 조회시 오류가 발생되었습니다.', 'back');
         }
+
+        // 첨부파일 이미지일 경우 해당 배열에 담기
+        $data['Content'] = $this->_getBoardForContent($data['Content'], $data['AttachData']);
+        $data['AttachData'] = json_decode($data['AttachData'],true);       //첨부파일
 
         $arr_condition_base = [
             'EQ' => [

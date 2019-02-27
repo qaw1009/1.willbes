@@ -20,11 +20,11 @@ class StudentModel extends WB_Model
     public function getListLecture($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         if ($is_count === true) {
-            $column = ' STRAIGHT_JOIN count(*) AS numrows';
+            $column = '  count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
 
-            $column = " STRAIGHT_JOIN
+            $column = " 
                      A.ProdCode, A.ProdName, A.IsNew, A.IsBest, A.IsUse, A.RegDatm
                     ,Aa.CcdName as SaleStatusCcd_Name,A.SiteCode,Ab.SiteName
                     ,Ac.CcdName as ProdTypeCcd_Name
@@ -74,7 +74,7 @@ class StudentModel extends WB_Model
                             left outer join lms_product_subject Bb on B.SubjectIdx = Bb.SubjectIdx and Bb.IsStatus='Y'
                             left outer join lms_sys_code Bc on B.LearnPatternCcd = Bc.Ccd and Bc.IsStatus='Y'
                             left outer join lms_sys_code Bd on B.LecTypeCcd = Bd.Ccd and Bd.IsStatus='Y'
-                            left outer join wbs_cms_lecture_combine_lite Be on B.wLecIdx = Be.wLecIdx and Be.cp_wAdminIdx='{$this->session->userdata('admin_idx')}'
+                            left outer join wbs_cms_lecture_basics Be on B.wLecIdx = Be.wLecIdx
                             left outer join lms_sys_code Bf on B.FreeLecTypeCcd = Bf.Ccd and Bf.IsStatus='Y'
                             left outer join lms_sys_code Bg on B.PackTypeCcd = Bg.Ccd and Bg.IsStatus='Y'
                             left outer join lms_sys_code Bh on B.FreeLecTypeCcd = Bh.Ccd and Bh.IsStatus='Y'
@@ -116,11 +116,11 @@ class StudentModel extends WB_Model
     public function getStudentList($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         if ($is_count === true) {
-            $column = ' STRAIGHT_JOIN count(*) AS numrows';
+            $column = '  count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
 
-            $column = " STRAIGHT_JOIN M.MemIdx, M.MemName, M.MemId, fn_dec(M.PhoneEnc) as Phone, fn_dec(M.MailEnc) as Mail
+            $column = "  M.MemIdx, M.MemName, M.MemId, fn_dec(M.PhoneEnc) as Phone, fn_dec(M.MailEnc) as Mail
                 ,OP.SalePatternCcd, OPa.CcdName as SalePatternCcd_Name, OP.RealPayPrice as Price
                 ,O.OrderIdx, O.payRouteCcd, Oa.CcdName as PayRouteCcd_Name, O.PayMethodCcd, Ob.CcdName as PayMethodCcd_Name
                 ,O.CompleteDatm as PayDate, ifnull(A.wAdminName, '') as AdminName
@@ -163,7 +163,7 @@ class StudentModel extends WB_Model
     public function getStudentExcelList($column, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
 
-        $in_column = " STRAIGHT_JOIN M.MemIdx, M.MemName, M.MemId, fn_dec(M.PhoneEnc) as Phone, fn_dec(M.MailEnc) as Mail
+        $in_column = "  M.MemIdx, M.MemName, M.MemId, fn_dec(M.PhoneEnc) as Phone, fn_dec(M.MailEnc) as Mail
             ,OP.SalePatternCcd, OPa.CcdName as SalePatternCcd_Name, OP.RealPayPrice as Price
             ,O.OrderIdx, O.payRouteCcd, Oa.CcdName as PayRouteCcd_Name, O.PayMethodCcd, Ob.CcdName as PayMethodCcd_Name
             ,O.CompleteDatm as PayDate, A.wAdminName as AdminName

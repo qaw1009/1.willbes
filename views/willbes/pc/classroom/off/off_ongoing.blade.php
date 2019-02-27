@@ -8,23 +8,23 @@
             @include('willbes.pc.layouts.partial.site_route_path')
         </div>
         <div class="Content p_re">
-
-            <div class="willbes-Mypage-ACADZONE c_both">
-                <div class="willbes-Prof-Subject willbes-Mypage-Tit NG">
-                    · 수강신청강좌
-                </div>
-            </div>
-            <!-- willbes-Mypage-ACADZONE -->
-
             <div class="willbes-Leclist c_both">
                 <form name="searchFrm" id="searchFrm" action="{{app_url('/classroom/off/list/ongoing/', 'www')}}" onsubmit="">
                     <div class="willbes-Lec-Selected willbes-Mypage-Selected tx-gray">
+                        <select id="sitegroup_ccd" name="sitegroup_ccd" title="process" class="seleProcess">
+                            <option selected="selected" value="">과정</option>
+                            @foreach($sitegroup_arr as $row )
+                                <option value="{{$row['SiteGroupCode']}}" @if(isset($input_arr['sitegroup_ccd']) && $input_arr['sitegroup_ccd'] == $row['SiteGroupCode']) selected="selected" @endif  >{{$row['SiteGroupName']}}</option>
+                            @endforeach
+                        </select>
+                        <!--
                         <select id="course_ccd" name="course_ccd" title="process" class="seleProcess">
                             <option selected="selected" value="">과정</option>
                             @foreach($course_arr as $row )
                                 <option value="{{$row['CourseIdx']}}" @if(isset($input_arr['course_ccd']) && $input_arr['course_ccd'] == $row['CourseIdx']) selected="selected" @endif  >{{$row['CourseName']}}</option>
                             @endforeach
                         </select>
+                        -->
                         <select id="subject_ccd" name="subject_ccd" title="lec" class="seleLec">
                             <option selected="selected" value="">과목</option>
                             @foreach($subject_arr as $row )
@@ -103,7 +103,7 @@
     <!-- End Container -->
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#course_ccd,#subject_ccd,#prof_ccd,#orderby').on('change', function (){
+            $('#course_ccd,#subject_ccd,#prof_ccd,#orderby,#sitegroup_ccd').on('change', function (){
                 $('#searchFrm').submit();
             });
 

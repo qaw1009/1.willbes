@@ -8,14 +8,6 @@
             @include('willbes.pc.layouts.partial.site_route_path')
         </div>
         <div class="Content p_re">
-
-            <div class="willbes-Mypage-ACADZONE c_both">
-                <div class="willbes-Prof-Subject willbes-Mypage-Tit NG">
-                    · 수강종료강좌
-                </div>
-            </div>
-            <!-- willbes-Mypage-ACADZONE -->
-
             <div class="willbes-Leclist c_both">
                 <form name="searchFrm" id="searchFrm" action="{{app_url('/classroom/off/list/end/', 'www')}}" onsubmit="">
                     <div class="willbes-Lec-Selected willbes-Mypage-Selected willbes-Mypage-Selected-Search tx-gray">
@@ -33,12 +25,20 @@
                             </ul>
                         </span>
                         <div class="willbes-Lec-Search GM f_right">
+                            <select id="sitegroup_ccd" name="sitegroup_ccd" title="process" class="seleProcess f_left">
+                                <option selected="selected" value="">과정</option>
+                                @foreach($sitegroup_arr as $row )
+                                    <option value="{{$row['SiteGroupCode']}}" @if(isset($input_arr['sitegroup_ccd']) && $input_arr['sitegroup_ccd'] == $row['SiteGroupCode']) selected="selected" @endif  >{{$row['SiteGroupName']}}</option>
+                                @endforeach
+                            </select>
+                            <!--
                             <select id="course_ccd" name="course_ccd" title="process" class="seleProcess f_left">
                                 <option selected="selected" value="">과정</option>
                                 @foreach($course_arr as $row )
                                     <option value="{{$row['CourseIdx']}}" @if(isset($input_arr['course_ccd']) && $input_arr['course_ccd'] == $row['CourseIdx']) selected="selected" @endif  >{{$row['CourseName']}}</option>
                                 @endforeach
                             </select>
+                            -->
                             <div class="inputBox p_re">
                                 <input type="text" id="search_text" name="search_text" class="labelSearch" value="@if(isset($input_arr['search_text'])){{$input_arr['search_text']}}@endif" placeholder="강좌명을 검색해 주세요" maxlength="30"  style="width: 220px;">
                                 <button type="submit" onclick="" class="search-Btn">
@@ -91,7 +91,7 @@
     <!-- End Container -->
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#course_ccd').on('change', function (){
+            $('#sitegroup_ccd').on('change', function (){
                 $('#searchFrm').submit();
             });
 

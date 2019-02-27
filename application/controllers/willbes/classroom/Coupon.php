@@ -70,7 +70,7 @@ class Coupon extends \app\controllers\FrontController
      * 쿠폰 조회 조건 리턴
      * @param array $arr_input [입력 값]
      * @param string $coupon_type [쿠폰유형, 할인권 : coupon, 수강권 : voucher]
-     * @param string|null $valid_type [쿠폰구분, 보유쿠폰 : available, 사용/만료쿠폰 : used)
+     * @param string|null $valid_type [쿠폰구분, 보유쿠폰 : available, 사용/만료쿠폰 : used, 소멸예정 : expiring)
      * @return array
      */
     private function _getConditionOrderBy($arr_input, $coupon_type, $valid_type = null)
@@ -107,7 +107,7 @@ class Coupon extends \app\controllers\FrontController
             $arr_condition = array_merge_recursive($arr_condition, [
                 'EQ' => [
                     'CD.ValidStatus' => 'Y',
-                    'CD.IsUse' => 'N'
+                    'CD.IsUse' => ($coupon_type == 'coupon' ? 'N' : 'Y')    // 수강권일 경우 등록과 동시에 사용처리됨
                 ],
                 'RAW' => [
                     'NOW() between ' => 'CD.IssueDatm and CD.ExpireDatm'
@@ -136,6 +136,7 @@ class Coupon extends \app\controllers\FrontController
     {
         $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
+            ['field' => 'coupon_type', 'label' => '쿠폰타입', 'rules' => 'trim|required|in_list[coupon,voucher]'],
             ['field' => 'coupon_no', 'label' => '쿠폰번호', 'rules' => 'trim|required']
         ];
 
@@ -143,7 +144,7 @@ class Coupon extends \app\controllers\FrontController
             return;
         }
 
-        $result = $this->couponFModel->addMemberCouponByPin($this->_reqP('coupon_no'));
+        $result = $this->couponFModel->addMemberCouponByPin($this->_reqP('coupon_type'), $this->_reqP('coupon_no'));
 
         $this->json_result($result, '쿠폰이 등록되었습니다.', $result);
     }

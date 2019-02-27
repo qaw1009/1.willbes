@@ -3,7 +3,7 @@
         <h3>
             <ul class="menu-Tit">
                 <li class="Tit">{{ $__cfg['SiteMenu']['ActiveMenu']['UrlRouteNames'][0] }}<span class="row-line">|</span></li>
-                <li class="subTit">{{ $__cfg['SiteMenu']['ActiveMenu']['UrlRouteNames'][1] }}</li>
+                <li class="subTit"><a href="{{ ($__cfg['IsPassSite'] === true) ? front_url('/home/index') : front_url('/home/index/cate/'.$__cfg['CateCode']) }}">{{ $__cfg['SiteMenu']['ActiveMenu']['UrlRouteNames'][1] }}</a></li>
             </ul>
             <ul class="menu-List">
                 @foreach($__cfg['SiteMenu']['TreeMenu'] as $menu_idx => $menu_row)

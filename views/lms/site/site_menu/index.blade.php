@@ -45,7 +45,7 @@
                         <th>메뉴코드</th>
                         <th>메뉴구분</th>
                         <th class="searching">메뉴경로 (하위메뉴 등록)</th>
-                        <th class="searching">메뉴명 (메뉴 수정)</th>
+                        <th class="searching" style="width: 220px;">메뉴명 (메뉴 수정)</th>
                         <th>URL</th>
                         <th class="searching_is_use">사용여부</th>
                         <th>등록자</th>
@@ -65,10 +65,11 @@
                             <td>{{ $row['MenuIdx'] }}</td>
                             <td>{{ $row['MenuTypeName'] }}</td>
                             <td>
-                                <a href="#none" class="btn-regist" data-idx="{{ $row['MenuIdx'] }}" data-menu-depth="{{ $row['MenuDepth'] + 1 }}"><u>{{ str_replace('>', ' > ', $row['MenuRouteName']) }}</u></a></td>
+                                <a href="#none" class="btn-regist" data-idx="{{ $row['MenuIdx'] }}" data-menu-depth="{{ $row['MenuDepth'] + 1 }}"><u>{{ str_replace('>', ' > ', $row['MenuRouteName']) }}</u></a>
+                            </td>
                             <td>
                                 @if($row['MenuDepth'] > 1)
-                                    <i class="fa fa-reply fa-rotate-180 red" style="margin-left: {{ ($row['MenuDepth'] - 1) * 15 }}px;"></i>
+                                    <i class="fa fa-hand-o-right red bold" style="margin-left: {{ ($row['MenuDepth'] - 1) * 20 }}px;"></i>
                                 @endif
                                 <a href="#none" class="btn-modify" data-idx="{{ $row['MenuIdx'] }}"><u>{{ $row['MenuName'] }}</u></a>
                             </td>

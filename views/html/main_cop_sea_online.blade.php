@@ -54,10 +54,15 @@
         </h3>
     </div>
 
-    <div class="Section MainVisual">
-        <div class="widthAuto">            
-            <iframe src="https://www.youtube.com/embed/lrZxQV21DE8?rel=0&modestbranding=1&showinfo=0&&wmode=transparent" frameborder="0" allowfullscreen=""></iframe>            
-            <img src="{{ img_url('cop/visual/visual_190213.jpg') }}" alt="전국 4,000명 동시수강">            
+    <div class="Section">
+        <div class="widthAuto bnrSec01">   
+            <div>      
+                <a href="#"><img src="{{ img_url('cop_sea/banner/bnr_756_01.jpg') }}" alt="기본이론"></a>
+            </div>
+            <ul>
+                <li><a href="#"><img src="{{ img_url('cop_sea/banner/bnr_360_01.jpg') }}" alt="정태정 핵심이론"></a></li>
+                <li><a href="#"><img src="{{ img_url('cop_sea/banner/bnr_360_02.jpg') }}" alt="공득인 핵심이론"></a></li>
+            </ul>         
         </div>
     </div>
 

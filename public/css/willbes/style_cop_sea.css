@@ -37,18 +37,22 @@
 .sea .smallTit2 span {
     background:#f7f7f7;
 }
-
-.sea .Section.MainVisual iframe {
-    position: absolute;    
-    width: 270px;
-    height: 152px;
-    top: 72px;
-    right: 0;
-    z-index: 1;
-}
-
 .sea .Section .will-big-Tit .cop-color {
     color: #0c5dc0;
+}
+
+.sea .Section .bnrSec01 div {
+    float: left;
+    width: 756px;
+    height: 292px;
+}
+.sea .Section .bnrSec01 ul {
+    float: right;
+}
+.sea .Section .bnrSec01:after {
+    content:'';
+    display: block;
+    clear:both;
 }
 
 /**/

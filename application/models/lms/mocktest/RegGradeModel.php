@@ -177,7 +177,7 @@ class RegGradeModel extends WB_Model
         $where = " WHERE PD.IsStatus = 'Y' ";
         $where .= $this->_conn->makeWhere($condition)->getMakeWhere(true) . "\n";
         $group = " GROUP BY MR.MrIdx ";
-        $order = " ORDER BY MP.ProdCode DESC ";
+        $order = " ORDER BY MP.ProdCode DESC, MR.RegDatm DESC ";
         //echo "<pre>".'SELECT ' . $column . $from . $where . $group . $order . $offset_limit."</pre>";
         $data = $this->_conn->query('SELECT ' . $column . $from . $where . $group . $order . $offset_limit)->result_array();
 
@@ -326,7 +326,7 @@ class RegGradeModel extends WB_Model
 
         $where = " WHERE PD.IsStatus = 'Y' ";
         $where .= $this->_conn->makeWhere($condition)->getMakeWhere(true) . "\n";
-        $order = " GROUP BY MR.MrIdx ORDER BY MP.ProdCode DESC ";
+        $order = " GROUP BY MR.MrIdx ORDER BY MP.ProdCode DESC, MR.RegDatm DESC ";
 
         $sql = "
                       SELECT 

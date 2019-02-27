@@ -418,11 +418,12 @@ class CommonLectureModel extends WB_Model
 
             for($i=0;$i<count($SaleTypeCcd);$i++) {
                 //if(empty($SalePrice[$i]) !== true) {  // 값이 0 일 경우 저장 안됨
+
                 if(get_var($SalePrice[$i]) !== '') {
                     $data = [
                         'ProdCode' => $prodcode
                         ,'SaleTypeCcd' => $SaleTypeCcd[$i]
-                        ,'SalePriceIsUse' => ($SalePriceIsUse[$i] === 'Y' ? 'Y' : 'N')
+                        ,'SalePriceIsUse' => ($SalePriceIsUse[$i] == 'Y' ? 'Y' : 'N')
                         ,'SalePrice' => $SalePrice[$i]
                         ,'SaleRate' => $SaleRate[$i]
                         ,'SaleDiscType' => $SaleDiscType[$i]

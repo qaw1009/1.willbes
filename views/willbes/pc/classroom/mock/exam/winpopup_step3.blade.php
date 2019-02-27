@@ -137,9 +137,8 @@
             }, showValidateError, null, false, 'alert');
         }
 
-        //닫아버린다고 종료면 안될것 같아주석
         $(window).on('beforeunload ',function() {
-            //examEndAjax();
+            examEndAjax();
         });
 
         function examEndAjax(){

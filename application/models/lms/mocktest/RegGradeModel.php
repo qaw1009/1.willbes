@@ -149,7 +149,7 @@ class RegGradeModel extends WB_Model
             MR.TakeForm,
             MR.TakeMockPart,
             MR.TakeArea,
-            ROUND(SUM(AdjustPoint),2) AS AdjustSum,
+            ROUND((SUM(AdjustPoint)/(SELECT COUNT(*) FROM {$this->_table['mockRegisterR']} WHERE ProdCode = MR.ProdCode AND MrIdx = MR.MrIdx)),2) AS AdjustSum,
             MR.RegDatm AS ExamRegDatm
         ";
         $from = "
@@ -294,7 +294,7 @@ class RegGradeModel extends WB_Model
             MockRotationNo,
             CONCAT('[',PD.ProdCode,']',PD.ProdName) AS ProdName,
             C1.CateName,
-            ROUND(SUM(AdjustPoint),2) AS AdjustSum,
+            ROUND((SUM(AdjustPoint)/(SELECT COUNT(*) FROM {$this->_table['mockRegisterR']} WHERE ProdCode = MR.ProdCode AND MrIdx = MR.MrIdx)),2) AS AdjustSum,
             MR.TakeForm,
             MR.TakeMockPart,
             MR.TakeArea,

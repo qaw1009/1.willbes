@@ -114,8 +114,9 @@
 
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="link_url">링크주소<span class="required">*</span></label>
-                    <div class="col-md-10">
-                        <input type="text" id="link_url" name="link_url" class="form-control" maxlength="100" title="링크주소" value="{{ $data['LinkUrl'] }}" required="required" placeholder="링크주소 입니다.">
+                    <div class="col-md-10 form-inline">
+                        <input type="text" id="link_url" name="link_url" class="form-control" maxlength="100" title="링크주소" value="{{ $data['LinkUrl'] }}" required="required" placeholder="링크주소 입니다." style="width: 40%">
+                        &nbsp;&nbsp;&nbsp;&nbsp;• Ex) 프로토콜 미입력(Http,Https), 실제 서비스 도메인으로 입력
                     </div>
                 </div>
 

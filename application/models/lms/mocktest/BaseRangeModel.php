@@ -32,8 +32,8 @@ class BaseRangeModel extends WB_Model
             SELECT MB.*, A.wAdminName, GROUP_CONCAT(MC.MrsIdx) AS moCateKey,
             (SELECT COUNT(*) FROM {$this->_table['mockAreaList']} AS ML WHERE MB.MaIdx = ML.MaIdx AND ML.IsStatus = 'Y') AS ListCnt
             FROM {$this->_table['mockArea']} AS MB
-            JOIN {$this->_table['mockAreaCate']} AS MC ON MB.MaIdx = MC.MaIdx AND MC.IsStatus = 'Y'
-            JOIN {$this->_table['admin']} AS A ON MB.RegAdminIdx = A.wAdminIdx
+            LEFT JOIN {$this->_table['mockAreaCate']} AS MC ON MB.MaIdx = MC.MaIdx AND MC.IsStatus = 'Y'
+            LEFT JOIN {$this->_table['admin']} AS A ON MB.RegAdminIdx = A.wAdminIdx
             WHERE MB.IsStatus = 'Y'
             GROUP BY MB.MaIdx
             ORDER BY MB.MaIdx ASC

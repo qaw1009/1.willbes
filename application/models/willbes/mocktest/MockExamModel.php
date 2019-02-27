@@ -79,9 +79,9 @@ class MockExamModel extends WB_Model
                 JOIN {$this->_table['category']} AS C1 ON PC.CateCode = C1.CateCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y'
                 JOIN {$this->_table['ProductSale']} AS PS ON MP.ProdCode = PS.ProdCode AND PS.IsStatus = 'Y'
                 JOIN {$this->_table['mockRegister']} AS MR ON MP.ProdCode = MR.ProdCode AND MR.IsStatus = 'Y' AND TakeFormsCcd = '690001' -- 온라인응시자
-                JOIN {$this->_table['admin']} AS A ON MP.RegAdminIdx = A.wAdminIdx
-                JOIN {$this->_table['mockGroupRProduct']} AS GR ON MP.ProdCode = GR.ProdCode AND GR.IsStatus = 'Y'
-                JOIN {$this->_table['mockGroup']} AS MG ON GR.MgIdx = MG.MgIdx AND MG.IsStatus = 'Y' AND MG.IsUse = 'Y'
+                LEFT JOIN {$this->_table['admin']} AS A ON MP.RegAdminIdx = A.wAdminIdx
+                LEFT JOIN {$this->_table['mockGroupRProduct']} AS GR ON MP.ProdCode = GR.ProdCode AND GR.IsStatus = 'Y'
+                LEFT JOIN {$this->_table['mockGroup']} AS MG ON GR.MgIdx = MG.MgIdx AND MG.IsStatus = 'Y' AND MG.IsUse = 'Y'
         ";
 
         $where = $this->_conn->makeWhere($arr_condition);
@@ -119,9 +119,9 @@ class MockExamModel extends WB_Model
                 JOIN {$this->_table['category']} AS C1 ON PC.CateCode = C1.CateCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y'
                 JOIN {$this->_table['ProductSale']} AS PS ON MP.ProdCode = PS.ProdCode AND PS.IsStatus = 'Y'
                 JOIN {$this->_table['mockRegister']} AS MR ON MP.ProdCode = MR.ProdCode AND MR.IsStatus = 'Y' 
-                JOIN {$this->_table['admin']} AS A ON MP.RegAdminIdx = A.wAdminIdx
-                JOIN {$this->_table['mockGroupRProduct']} AS GR ON MP.ProdCode = GR.ProdCode AND GR.IsStatus = 'Y'
-                JOIN {$this->_table['mockGroup']} AS MG ON GR.MgIdx = MG.MgIdx AND MG.IsStatus = 'Y' AND MG.IsUse = 'Y'
+                LEFT JOIN {$this->_table['admin']} AS A ON MP.RegAdminIdx = A.wAdminIdx
+                LEFT JOIN {$this->_table['mockGroupRProduct']} AS GR ON MP.ProdCode = GR.ProdCode AND GR.IsStatus = 'Y'
+                LEFT JOIN {$this->_table['mockGroup']} AS MG ON GR.MgIdx = MG.MgIdx AND MG.IsStatus = 'Y' AND MG.IsUse = 'Y'
         ";
 
         $where = $this->_conn->makeWhere($arr_condition);
@@ -425,7 +425,7 @@ class MockExamModel extends WB_Model
             JOIN {$this->_table['category']} AS C1 ON PC.CateCode = C1.CateCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y'
             JOIN {$this->_table['ProductSale']} AS PS ON MP.ProdCode = PS.ProdCode AND PS.IsStatus = 'Y'
             JOIN {$this->_table['mockRegister']} AS MR ON MP.ProdCode = MR.ProdCode AND MR.IsStatus = 'Y'
-            JOIN {$this->_table['admin']} AS A ON MP.RegAdminIdx = A.wAdminIdx
+            LEFT JOIN {$this->_table['admin']} AS A ON MP.RegAdminIdx = A.wAdminIdx
         ";
 
         $obder_by = " ORDER BY `MP`.`ProdCode` DESC";

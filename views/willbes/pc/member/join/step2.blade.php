@@ -65,6 +65,12 @@
                                 <input type="text" id="Phone" name="Phone" class="iptPhone" placeholder='"-" 제외하고 숫자만 입력' maxlength="13" @if ( $jointype == '655002' ) value="{{$phone}}" readonly @endif title="핸드폰번호" />
                             </div>
                             <div class="tx-red mt10 err_msg" style="display: block;"></div>
+                            <div class="tx-red mt10" style="display: block;">
+                                <input name="SmsRcvStatus" type="checkbox" value="Y" id="SmsRcvStatus" />
+                                <label for="SmsRcvStatus">
+                                    윌비스의 신규상품 안내 및 광고성 정보 SMS 수신에 동의합니다.
+                                </label>
+                            </div>
                         </td>
                     </tr>
                     <tr>
@@ -130,6 +136,12 @@
                                         </select>
                                     </dt>
                                 </dl>
+                            </div>
+                            <div class="tx-red mbox-txt mt10" style="display: block;">
+                                <input name="MailRcvStatus" type="checkbox" value="Y" id="MailRcvStatus" />
+                                <label for="MailRcvStatus">
+                                    윌비스의 신규상품 안내 및 광고성 정보 이메일 수신에 동의합니다.
+                                </label>
                             </div>
                         </td>
                     </tr>
@@ -403,7 +415,7 @@
                                         <li>(삭제)</li>
                                         <!--li>수강시작 후 일시정지, 또는 수강변경을 하였을 경우</li>
                                         <li>수강 진도율이 30% 이상 진행된 경우</li>
-                                        <!--li>종합반으로 수강신청을 한 경우</li>
+                                        <li>종합반으로 수강신청을 한 경우</li>
                                         <li>재수강 및 수강연장으로 강의를 신청한 경우</li-->
                                     </ol>
                                     <p class="mbt5">

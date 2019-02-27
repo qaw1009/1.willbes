@@ -109,7 +109,7 @@
                     </li>
                     <li>
                         <a href="#tab2">
-                            신의 법칙! 주만에 1회독?
+                            신의 법칙! 2주만에 1회독?
                             <span>신광은경찰TV</span>
                         </a>
                     </li>
@@ -420,8 +420,10 @@
         </div>
     </div>
 
-    <div class="Section Section4 pt100 pb90">
+    <div class="Section Section4">
         <div class="widthAuto">  
+        <img src="{{ img_url('cop/visual/visual_03.jpg') }}" alt="합격수기">
+            <!--
             <div class="widthAuto smallTit smallTit2">          
                 <p><span>진짜 살아있는 정보를 알 수 있는 <strong>합격수기!</strong></span></p>            
             </div>          
@@ -578,6 +580,7 @@
                     </div>
                 </div>
             </div>
+            -->
         </div>
     </div>
 
@@ -877,7 +880,7 @@
             </div>
         </div>
     </div>
-    <div class="Section Section7 mb50">
+    <div class="Section Section7 mb100">
         <div class="widthAuto">
             <div class="CScenterBox">
                 <dl>

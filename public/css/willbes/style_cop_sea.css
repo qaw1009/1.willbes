@@ -1,7 +1,7 @@
 /*********************************************     Main Container : Cop_sea     *********************************************/
 /* Main Container : Cop_sea */
 .sea .tx-color {
-    color: #0c5dc0;
+    color: #9177d4;
 }
 .Section2 { background: #f7f7f7}
 
@@ -24,7 +24,7 @@
     background: #fff;
 }
 .sea .smallTit strong {
-    color:#0c5dc0;
+    color:#9177d4;
 }
 
 .sea .smallTit a {
@@ -37,62 +37,90 @@
 .sea .smallTit2 span {
     background:#f7f7f7;
 }
-
-.sea .Section.MainVisual iframe {
-    position: absolute;    
-    width: 270px;
-    height: 152px;
-    top: 72px;
-    right: 0;
-    z-index: 1;
-}
-
 .sea .Section .will-big-Tit .cop-color {
-    color: #0c5dc0;
+    color: #9177d4;
 }
 
 /**/
-.sea .Profinfo {
-    position: relative;
-}
-.sea .Profinfo li {
-    display: inline;
+.sea .Section .bnrSec01 div {
     float: left;
-    margin-right:2px;
+    width: 756px;
+    height: 292px;
 }
-.sea .Profinfo li:last-child {
-    margin:0;
+.sea .Section .bnrSec01 ul {
+    float: right;
 }
-.sea .Profinfo ul:after {
+.sea .Section .bnrSec01 ul li {
+    margin-bottom:4px;
+}
+.sea .Section .bnrSec01 ul li:last-child {
+    margin:0
+}
+.sea .Section .bnrSec01:after {
     content:'';
     display: block;
     clear:both;
 }
-.sea .Profinfo span {
+
+/**/
+.sea .Section .bnrSec02 div {
+    margin-bottom:10px
+}
+.sea .Section .bnrSec02 div:last-child {
+    margin:0
+}
+
+/* Main Container : Prof : Cop_sea */
+.sea .Section .ProfCopBox > li {
+    position: relative;
+    display: inline;
+    float: left;
+    width: 159px;
+    height: 280px;
+    margin-left: 1px;
+}
+.sea .Section .ProfCopBox > li:first-child {
+    margin-left: 0;
+}
+.sea .Section .ProfCopBox .ProfBtns {
     position: absolute;
-    width: 100px;
-    top:720px;
-    left:60px;
+    width: 159px;
+    bottom: 0;
+    left: 0;    
     z-index: 1;
 }
-.sea .Profinfo span a {
+.sea .Section .ProfCopBox .ProfBtns li {    
+    display: inline;
+    float: left;
+    width: 50%;   
+    height: 40px;
+    height: 40px;          
+}
+.sea .Section .ProfCopBox .ProfBtns li a {    
     display: block;
-    text-align: center;
-    background: #fff;
-    color:#0c5dc0;
-    font-size: 14px;
-    font-weight: 600;
-    padding:10px 0 12px;
-    border-radius: 0 20px 20px;
-    border:2px solid #0c5dc0;
-}
-.sea .Profinfo span a:hover {
-    background: #0c5dc0;
+    line-height: 40px;    
     color:#fff;
+    text-align: center;
+    margin-left: 1px; 
+    background: rgba(0,0,0,.5); 
 }
-.sea .Profinfo span.btn02 {
-    left:863px;
+.sea .Section .ProfCopBox .ProfBtns li:first-child a {
+    margin-left: 0;
 }
+.sea .Section .ProfCopBox .ProfBtns li a:hover {
+    background:#9177d4;
+    font-size: 14px;
+}
+.sea .Section .ProfCopBox .ProfBtns li span {
+    padding-left:10px;
+}
+.sea .Section .ProfCopBox .ProfBtns:after,
+.sea .Section .ProfCopBox:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
 
 /**/
 .sea .proPAss li {
@@ -151,26 +179,6 @@
     right: -34px;
 }
 
-/* Main Container : Prof : Cop_sea */
-.sea .Section .ProfCopBox > li {
-    position: relative;
-    display: inline;
-    float: left;
-    width: 220px;
-    height: 327px;
-    margin-left: 5px;
-}
-.sea .Section .ProfCopBox > li:first-child {
-    margin-left: 0;
-}
-.sea .Section .ProfCopBox .ProfBtns {
-    position: absolute;
-    width: 100%;
-    bottom: 0;
-    left: 0;    
-    z-index: 1;
-}
-
 /* Main Container : pass : cSlider : sliderPassList : Cop_sea */
 .sea .cSlider.sliderPassList .bx-wrapper .bx-prev {
     background: url("../../img/willbes/cop_sea/btn_prev_on.png") no-repeat 0 0;
@@ -192,18 +200,18 @@
 
 /* Main Container : SpecialLecBox */
 .sea .Section .SpecialLecBox .infoTit .btn .btn-sbj a {
-    background: #0c5dc0;
+    background: #9177d4;
 }
 .sea .Section .SpecialLecBox .infoList .List-Table li a span {
     float: left;
     width: 130px;
-    color: #0c5dc0;
+    color: #9177d4;
     text-align: center;
 }
 
 /* Main Container : Notice : Cop_sea */
 .sea .Section .nNoticeBox .infoBox .infoTit {
-    color: #0c5dc0;
+    color: #9177d4;
     line-height: 20px;
     font-weight: 600;
 }

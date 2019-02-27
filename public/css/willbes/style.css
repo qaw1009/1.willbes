@@ -4,6 +4,8 @@
 @import url("style_cop_acad.css");
 @import url("style_cop_adm.css");
 @import url("style_cop_pro.css");
+@import url("style_cop_sea.css");
+@import url("style_cop_sea_special.css");
 @import url("style_gosi.css");
 @import url("style_gosi_acad.css");
 @import url("style_gpgosi.css");
@@ -13,7 +15,7 @@
 /* Login Form : 공통 */
 .mem-Tit {
     text-align: center;
-    padding: 65px 0 100px;
+    padding: 65px 0;
 }
 .mem-Tit span {
     font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "Malgun Gothic", "맑은 고딕";

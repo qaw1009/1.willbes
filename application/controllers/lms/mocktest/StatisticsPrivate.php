@@ -171,27 +171,8 @@ class StatisticsPrivate extends \app\controllers\BaseController
         $dataAdjust = $this->regGradeModel->gradeCall($prodcode, 'adjust', $mridx);
         $dataDetail = $this->regGradeModel->gradeDetailCall($prodcode, $mridx);
 
-        $Rank = 1;
-        $minusRank = 1;
-        $tempPoint = 0;
-        $tempMp = '';
-
         foreach($dataDetail as $key => $val){
             $mpidx = $val['MpIdx'];
-            $AdjustPoint = $val['AdjustPoint'];
-
-            if($tempMp != $mpidx){
-                $Rank = 1;
-                $minusRank = 1;
-            }
-
-            if ($tempPoint == $AdjustPoint) {
-                $rRank = $Rank - $minusRank;
-                $minusRank++;
-            } else {
-                $rRank = $Rank;
-                $minusRank = 1;
-            }
 
             $dataDetailV[$mpidx]['grade'] = $val['OrgPoint'];
             $dataDetailV[$mpidx]['gradeA'] = $val['AdjustPoint'];
@@ -200,11 +181,7 @@ class StatisticsPrivate extends \app\controllers\BaseController
             $dataDetailV[$mpidx]['max'] = round($val['ORGMAX'],2);
             $dataDetailV[$mpidx]['maxA'] = round($val['ADMAX'],2);
             $dataDetailV[$mpidx]['orank'] = $val['Rank']."/".$val['COUNT'];
-            $dataDetailV[$mpidx]['arank'] = $rRank."/".$val['COUNT'];
-
-            $tempPoint = $val['AdjustPoint'];
-            $tempMp = $val['MpIdx'];
-            $Rank++;
+            $dataDetailV[$mpidx]['arank'] = $val['Rank']."/".$val['COUNT'];
         }
 
         if($dataOrg){

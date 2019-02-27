@@ -360,14 +360,14 @@ class MockInfoFModel extends WB_Model
 
         $from = "
             FROM {$this->_table['mock_product']} as pm
-            JOIN (
+            LEFT JOIN (
                 SELECT ProdCode, COUNT(*) AS cnt
                 FROM {$this->_table['board']}
                 WHERE BmIdx = '95' AND RegType = '0' AND IsStatus = 'Y'
                 GROUP BY ProdCode
             ) AS BD1 ON BD1.ProdCode = pm.ProdCode
             
-            JOIN (
+            LEFT JOIN (
                 SELECT ProdCode, COUNT(*) AS cnt
                 FROM {$this->_table['board']}
                 WHERE BmIdx = '96' AND IsStatus = 'Y'
@@ -394,14 +394,14 @@ class MockInfoFModel extends WB_Model
             INNER JOIN {$this->_table['mockRegister']} mr ON pm.ProdCode = mr.ProdCode
             INNER JOIN {$this->_table['orderProduct']} op ON op.OrderProdIdx = mr.OrderProdIdx
             INNER JOIN {$this->_table['order']} o on op.OrderIdx = o.OrderIdx
-            JOIN (
+            LEFT JOIN (
                 SELECT ProdCode, COUNT(*) AS cnt
                 FROM {$this->_table['board']}
                 WHERE BmIdx = '95' AND RegType = '0' AND IsStatus = 'Y'
                 GROUP BY ProdCode
             ) AS BD1 ON BD1.ProdCode = pm.ProdCode
             
-            JOIN (
+            LEFT JOIN (
                 SELECT ProdCode, COUNT(*) AS cnt
                 FROM {$this->_table['board']}
                 WHERE BmIdx = '96' AND IsStatus = 'Y'

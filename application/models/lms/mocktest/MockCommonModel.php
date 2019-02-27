@@ -96,7 +96,7 @@ class MockCommonModel extends WB_Model
                 JOIN {$this->_table['site']} AS S ON MB.SiteCode = S.SiteCode AND S.IsStatus = 'Y' AND S.IsUse = 'Y'
                 JOIN {$this->_table['category']} AS C1 ON MB.CateCode = C1.CateCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y' AND C1.IsUse = 'Y'
                 JOIN {$this->_table['sysCode']} AS SC ON MB.Ccd = SC.Ccd AND SC.IsStatus = 'Y' AND SC.IsUse = 'Y'
-                JOIN {$this->_table['admin']} AS A ON MS.RegAdminIdx = A.wAdminIdx
+                LEFT JOIN {$this->_table['admin']} AS A ON MS.RegAdminIdx = A.wAdminIdx
             ";
         }
         else {  // 모의고사등록 > 과목별문제등록 카테고리검색인 경우 (기본정보 > 문제영역관리에 등록된 카테고리만 로딩)
@@ -113,7 +113,7 @@ class MockCommonModel extends WB_Model
                 JOIN {$this->_table['sysCode']} AS SC ON MB.Ccd = SC.Ccd AND SC.IsStatus = 'Y' AND SC.IsUse = 'Y'
                 JOIN {$this->_table['mockCate']} AS MC ON MS.MrsIdx = MC.MrsIdx AND MC.IsStatus = 'Y'
                 JOIN {$this->_table['mockArea']} AS MA ON MC.MaIdx = MA.MaIdx AND MA.IsStatus = 'Y' AND MA.IsUse = 'Y'
-                JOIN {$this->_table['admin']} AS A ON MS.RegAdminIdx = A.wAdminIdx
+                LEFT JOIN {$this->_table['admin']} AS A ON MS.RegAdminIdx = A.wAdminIdx
             ";
         }
         $selectCount = "SELECT COUNT(*) AS cnt";
@@ -153,7 +153,7 @@ class MockCommonModel extends WB_Model
                 JOIN {$this->_table['site']} AS S ON MB.SiteCode = S.SiteCode AND S.IsStatus = 'Y'
                 JOIN {$this->_table['category']} AS C1 ON MB.CateCode = C1.CateCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y'
                 JOIN {$this->_table['sysCode']} AS SC ON MB.Ccd = SC.Ccd AND SC.IsStatus = 'Y'
-                JOIN {$this->_table['admin']} AS A ON MS.RegAdminIdx = A.wAdminIdx
+                LEFT JOIN {$this->_table['admin']} AS A ON MS.RegAdminIdx = A.wAdminIdx
             ";
         }
         else { // 모의고사등록 > 과목별문제등록 카테고리검색인 경우 (기본정보 > 문제영역관리에 등록된 카테고리만 로딩)
@@ -171,7 +171,7 @@ class MockCommonModel extends WB_Model
                 JOIN {$this->_table['sysCode']} AS SC ON MB.Ccd = SC.Ccd AND SC.IsStatus = 'Y'
                 JOIN {$this->_table['mockCate']} AS MC ON MS.MrsIdx = MC.MrsIdx AND MC.IsStatus = 'Y'
                 JOIN {$this->_table['mockArea']} AS MA ON MC.MaIdx = MA.MaIdx AND MA.IsStatus = 'Y'
-                JOIN {$this->_table['admin']} AS A ON MS.RegAdminIdx = A.wAdminIdx
+                LEFT JOIN {$this->_table['admin']} AS A ON MS.RegAdminIdx = A.wAdminIdx
             ";
         }
         $selectCount = "SELECT COUNT(*) AS cnt";

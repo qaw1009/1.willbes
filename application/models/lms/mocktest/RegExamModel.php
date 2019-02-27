@@ -82,7 +82,7 @@ class RegExamModel extends WB_Model
                 JOIN {$this->_table['sysCode']} AS SC ON MB.Ccd = SC.Ccd AND SC.IsStatus = 'Y'
                 JOIN {$this->_table['professor']} AS P ON EB.ProfIdx = P.ProfIdx AND P.IsStatus = 'Y'
                 JOIN {$this->_table['pms_professor']} AS PMS ON P.wProfIdx = PMS.wProfIdx AND PMS.wIsStatus = 'Y'
-                JOIN {$this->_table['admin']} AS A ON EB.RegAdminIdx = A.wAdminIdx
+                LEFT JOIN {$this->_table['admin']} AS A ON EB.RegAdminIdx = A.wAdminIdx
         ";
         $selectCount = "SELECT COUNT(*) AS cnt";
         $where = "WHERE EB.IsStatus = 'Y'";
@@ -735,7 +735,7 @@ class RegExamModel extends WB_Model
             FROM {$this->_table['mockExamBase']} AS EB
             JOIN {$this->_table['mockExamQuestion']} AS EQ ON EB.MpIdx = EQ.MpIdx AND EQ.IsStatus = 'Y'
             JOIN {$this->_table['mockAreaList']} AS MA ON EQ.MalIdx = MA.MalIdx AND MA.IsStatus = 'Y' AND MA.IsUse = 'Y'
-            JOIN {$this->_table['admin']} AS A ON EQ.RegAdminIdx = A.wAdminIdx
+            LEFT JOIN {$this->_table['admin']} AS A ON EQ.RegAdminIdx = A.wAdminIdx
             WHERE EB.IsStatus = 'Y'
         ";
         $sql .= $this->_conn->makeWhere($condition)->getMakeWhere(true);

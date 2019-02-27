@@ -43,7 +43,7 @@ class RegGroupModel extends WB_Model
         $from = "
             FROM {$this->_table['mockGroup']} AS MG
             JOIN {$this->_table['site']} AS S ON MG.SiteGroupCode = S.SiteGroupCode
-            LEFT JOIN {$this->_table['admin']} AS A ON MG.RegAdminIdx = A.wAdminIdx
+            JOIN {$this->_table['admin']} AS A ON MG.RegAdminIdx = A.wAdminIdx
         ";
         $selectCount = "SELECT COUNT(*) AS cnt";
         $where = "WHERE MG.IsStatus = 'Y'";

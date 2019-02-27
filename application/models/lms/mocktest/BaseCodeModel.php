@@ -39,7 +39,7 @@ class BaseCodeModel extends WB_Model
             JOIN {$this->_table['category']} AS C1 ON S.SiteCode = C1.SiteCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y'
             RIGHT JOIN {$this->_table['mockBase']} AS M ON M.CateCode = C1.CateCode AND M.IsStatus = 'Y'
             JOIN {$this->_table['sysCode']} AS SC ON M.Ccd = SC.Ccd AND SC.IsStatus = 'Y'
-            LEFT JOIN {$this->_table['admin']} AS A ON M.RegAdminIdx = A.wAdminIdx
+            JOIN {$this->_table['admin']} AS A ON M.RegAdminIdx = A.wAdminIdx
             WHERE S.IsStatus = 'Y' AND S.SiteCode IN $in
             ORDER BY C1.SiteCode ASC, C1.OrderNum ASC, SC.OrderNum ASC";
 
@@ -166,7 +166,7 @@ class BaseCodeModel extends WB_Model
         $sql = "
             SELECT S.SiteCode AS sSiteCode, S.SubjectIdx AS sSubjectIdx, S.SubjectName AS sSubjectName, S.IsUse AS sIsUse, MS.*
             FROM {$this->_table['subject']} AS S
-            LEFT JOIN {$this->_table['mockSubject']} AS MS ON S.SubjectIdx = MS.SubjectIdx AND MS.MmIdx = ? AND MS.SubjectType = ? AND MS.IsStatus = 'Y'
+            JOIN {$this->_table['mockSubject']} AS MS ON S.SubjectIdx = MS.SubjectIdx AND MS.MmIdx = ? AND MS.SubjectType = ? AND MS.IsStatus = 'Y'
             WHERE S.SiteCode = ? AND S.IsStatus = 'Y' AND (S.IsUse = 'Y' OR MS.IsUse = 'Y')
             ORDER BY S.SiteCode ASC, S.OrderNum ASC
         ";

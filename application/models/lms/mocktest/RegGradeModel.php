@@ -91,7 +91,7 @@ class RegGradeModel extends WB_Model
             JOIN {$this->_table['ProductCate']} AS PC ON MP.ProdCode = PC.ProdCode AND PC.IsStatus = 'Y'
             JOIN {$this->_table['category']} AS C1 ON PC.CateCode = C1.CateCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y'
             JOIN {$this->_table['ProductSale']} AS PS ON MP.ProdCode = PS.ProdCode AND PS.IsStatus = 'Y'
-            LEFT JOIN {$this->_table['admin']} AS A ON MP.RegAdminIdx = A.wAdminIdx
+            JOIN {$this->_table['admin']} AS A ON MP.RegAdminIdx = A.wAdminIdx
             LEFT OUTER JOIN {$this->_table['sysCode']} AS SC1 ON MP.AcceptStatusCcd = SC1.Ccd
         ";
         $selectCount = "SELECT COUNT(*) AS cnt";
@@ -167,10 +167,10 @@ class RegGradeModel extends WB_Model
                 JOIN {$this->_table['member']} AS MB ON MR.MemIdx = MB.MemIdx
              	LEFT OUTER JOIN {$this->_table['mockGrades']} AS GD ON GD.MemIdx = MR.MemIdx AND GD.MrIdx = MR.MrIdx
                 
-                LEFT JOIN {$this->_table['admin']} AS A ON MP.RegAdminIdx = A.wAdminIdx
+                JOIN {$this->_table['admin']} AS A ON MP.RegAdminIdx = A.wAdminIdx
                 LEFT OUTER JOIN {$this->_table['sysCode']} AS SC1 ON MP.AcceptStatusCcd = SC1.Ccd
-                LEFT JOIN {$this->_table['mockGroupR']} AS GR ON MP.ProdCode = GR.ProdCode AND GR.IsStatus = 'Y'
-                LEFT JOIN {$this->_table['mockGroup']} AS MG ON GR.MgIdx = MG.MgIdx AND MG.IsStatus = 'Y' AND MG.IsUse = 'Y'
+                JOIN {$this->_table['mockGroupR']} AS GR ON MP.ProdCode = GR.ProdCode AND GR.IsStatus = 'Y'
+                JOIN {$this->_table['mockGroup']} AS MG ON GR.MgIdx = MG.MgIdx AND MG.IsStatus = 'Y' AND MG.IsUse = 'Y'
                 
         ";
         $selectCount = "SELECT COUNT(ProdCode) AS cnt FROM (SELECT MR.ProdCode ";
@@ -317,10 +317,10 @@ class RegGradeModel extends WB_Model
                 JOIN {$this->_table['member']} AS MB ON MR.MemIdx = MB.MemIdx
              	LEFT OUTER JOIN {$this->_table['mockGrades']} AS GD ON GD.MemIdx = MR.MemIdx AND GD.MrIdx = MR.MrIdx
                 
-                LEFT JOIN {$this->_table['admin']} AS A ON MP.RegAdminIdx = A.wAdminIdx
+                JOIN {$this->_table['admin']} AS A ON MP.RegAdminIdx = A.wAdminIdx
                 LEFT OUTER JOIN {$this->_table['sysCode']} AS SC1 ON MP.AcceptStatusCcd = SC1.Ccd
-                LEFT JOIN {$this->_table['mockGroupR']} AS GR ON MP.ProdCode = GR.ProdCode AND GR.IsStatus = 'Y'
-                LEFT JOIN {$this->_table['mockGroup']} AS MG ON GR.MgIdx = MG.MgIdx AND MG.IsStatus = 'Y' AND MG.IsUse = 'Y'
+                JOIN {$this->_table['mockGroupR']} AS GR ON MP.ProdCode = GR.ProdCode AND GR.IsStatus = 'Y'
+                JOIN {$this->_table['mockGroup']} AS MG ON GR.MgIdx = MG.MgIdx AND MG.IsStatus = 'Y' AND MG.IsUse = 'Y'
                 
         ";
 
@@ -454,7 +454,7 @@ class RegGradeModel extends WB_Model
                 JOIN {$this->_table['ProductSale']} AS PS ON MP.ProdCode = PS.ProdCode AND PS.IsStatus = 'Y'
                 JOIN {$this->_table['mockRegister']} AS MR ON MP.ProdCode = MR.ProdCode AND MR.IsStatus = 'Y'
                 JOIN {$this->_table['member']} AS M ON MR.MemIdx = M.MemIdx
-                LEFT JOIN {$this->_table['admin']} AS A ON MP.RegAdminIdx = A.wAdminIdx
+                JOIN {$this->_table['admin']} AS A ON MP.RegAdminIdx = A.wAdminIdx
         ";
 
         $obder_by = " ORDER BY `MP`.`ProdCode` DESC";
@@ -520,10 +520,10 @@ class RegGradeModel extends WB_Model
                 JOIN {$this->_table['category']} AS C1 ON PC.CateCode = C1.CateCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y'
                 JOIN {$this->_table['ProductSale']} AS PS ON MP.ProdCode = PS.ProdCode AND PS.IsStatus = 'Y'
                 JOIN {$this->_table['mockRegister']} AS MR ON MP.ProdCode = MR.ProdCode AND MR.IsStatus = 'Y' 
-                LEFT JOIN {$this->_table['admin']} AS A ON MP.RegAdminIdx = A.wAdminIdx
+                JOIN {$this->_table['admin']} AS A ON MP.RegAdminIdx = A.wAdminIdx
                 LEFT OUTER JOIN {$this->_table['sysCode']} AS SC1 ON MP.AcceptStatusCcd = SC1.Ccd
-                LEFT JOIN {$this->_table['mockGroupR']} AS GR ON MP.ProdCode = GR.ProdCode AND GR.IsStatus = 'Y'
-                LEFT JOIN {$this->_table['mockGroup']} AS MG ON GR.MgIdx = MG.MgIdx AND MG.IsStatus = 'Y' AND MG.IsUse = 'Y'
+                JOIN {$this->_table['mockGroupR']} AS GR ON MP.ProdCode = GR.ProdCode AND GR.IsStatus = 'Y'
+                JOIN {$this->_table['mockGroup']} AS MG ON GR.MgIdx = MG.MgIdx AND MG.IsStatus = 'Y' AND MG.IsUse = 'Y'
                 
         ";
 

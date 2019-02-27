@@ -53,7 +53,7 @@ class SupportNotice extends BaseSupport
                 ,'b.SubjectIdx' => $subject_idx
             ],
             'LKB' => [
-                'Category_String'=>$s_cate_code
+                'Category_String' => (empty($s_cate_code) === true) ? $this->_cate_code : $s_cate_code
             ],
             'ORG' => [
                 'LKB' => [

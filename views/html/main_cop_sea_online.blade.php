@@ -81,49 +81,49 @@
             </div>
             <ul class="ProfCopBox mt60 mb100">
                 <li>
-                    <img src="{{ img_url('cop/prof/prof_ske.jpg') }}" alt="신광은">
+                    <img src="{{ img_url('cop_sea/prof/prof_ske.jpg') }}" alt="신광은">
                     <ul class="ProfBtns">
                         <li><a href="#none">▶</a></li>
                         <li><a href="#none" target="_blank">교수소개</a></li>
                     </ul>
                 </li>
                 <li>
-                    <img src="{{ img_url('cop/prof/prof_jjh.jpg') }}" alt="장정훈">
+                    <img src="{{ img_url('cop_sea/prof/prof_kwu.jpg') }}" alt="김원욱">
+                    <ul class="ProfBtns">
+                        <li><a href="#none">▶</a></li>
+                        <li><a href="#none" target="_blank">교수소개</a></li>
+                    </ul>
+                </li>            
+                <li>
+                    <img src="{{ img_url('cop_sea/prof/prof_hsm.jpg') }}" alt="하승민">
                     <ul class="ProfBtns">
                         <li><a href="#none">▶</a></li>
                         <li><a href="#none" target="_blank">교수소개</a></li>
                     </ul>
                 </li>
                 <li>
-                    <img src="{{ img_url('cop/prof/prof_kwu.jpg') }}" alt="김원욱">
+                    <img src="{{ img_url('cop_sea/prof/prof_otj.jpg') }}" alt="오태진">
                     <ul class="ProfBtns">
                         <li><a href="#none">▶</a></li>
                         <li><a href="#none" target="_blank">교수소개</a></li>
                     </ul>
                 </li>
                 <li>
-                    <img src="{{ img_url('cop/prof/prof_hsm.jpg') }}" alt="하승민">
+                    <img src="{{ img_url('cop_sea/prof/prof_wuc.jpg') }}" alt="원유철">
                     <ul class="ProfBtns">
                         <li><a href="#none">▶</a></li>
                         <li><a href="#none" target="_blank">교수소개</a></li>
                     </ul>
                 </li>
                 <li>
-                    <img src="{{ img_url('cop/prof/prof_otj.jpg') }}" alt="오태진">
+                    <img src="{{ img_url('cop_sea/prof/prof_jtj.jpg') }}" alt="정태정">
                     <ul class="ProfBtns">
                         <li><a href="#none">▶</a></li>
                         <li><a href="#none" target="_blank">교수소개</a></li>
                     </ul>
                 </li>
                 <li>
-                    <img src="{{ img_url('cop/prof/prof_wyc.jpg') }}" alt="원유철">
-                    <ul class="ProfBtns">
-                        <li><a href="#none">▶</a></li>
-                        <li><a href="#none" target="_blank">교수소개</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <img src="{{ img_url('cop/prof/prof_khj.jpg') }}" alt="김현정">
+                    <img src="{{ img_url('cop_sea/prof/prof_gdi.jpg') }}" alt="공득인">
                     <ul class="ProfBtns">
                         <li><a href="#none">▶</a></li>
                         <li><a href="#none" target="_blank">교수소개</a></li>
@@ -133,85 +133,45 @@
         </div>
     </div>
 
-    <div class="Section">
-        <div class="widthAuto Profinfo">          
-            <img src="{{ img_url('cop_pro/visual/visual_190227_01.jpg') }}" alt="전문화된 교수진">
-            <span class="btn01"><a href="#none">자세히보기 &gt;</a></span>
-            <span class="btn02"><a href="#none">자세히보기 &gt;</a></span>
-            <ul>
-                <li><a href="#none"><img src="{{ img_url('cop_pro/banner/bnr_372_01.jpg') }}" alt="경찰행정학 이성호"></a></li>
-                <li><a href="#none"><img src="{{ img_url('cop_pro/banner/bnr_372_02.jpg') }}" alt="경찰실무 송광호"></a></li>
-                <li><a href="#none"><img src="{{ img_url('cop_pro/banner/bnr_372_03.jpg') }}" alt="실무종합 조용석"></a></li>
-            </ul>           
-        </div>
-    </div> 
-
-    <div class="Section mt90">
-        <div class="widthAuto">           
-            <div class="will-nTit bd-none">승진대비 <span class="tx-color">계급&amp;직렬</span> 승진 PASS</div>
-            <ul class="proPAss">
-                <li><a href="#none"><img src="{{ img_url('cop_pro/banner/bnr_557_01.jpg') }}" alt="계급별 12개월 PASS"></a></li>
-                <li><a href="#none"><img src="{{ img_url('cop_pro/banner/bnr_557_02.jpg') }}" alt="교수별 12개월 PASS"></a></li>
-            </ul>            
-        </div>
-    </div>
-
-    <div class="Section mt90">
-        <div class="widthAuto">           
-            <div class="will-nTit bd-none">윌비스 <span class="tx-color">신광은경찰</span> MOU 협약식</div>
-            <div class="mou">
-                <ul>
-                    <li><img src="{{ img_url('cop_pro/visual/visual_556_01.jpg') }}" alt="MOU 협약식"></li>
-                    <li><img src="{{ img_url('cop_pro/visual/visual_556_02.jpg') }}" alt="MOU 협약식"></li>
-                    <li><img src="{{ img_url('cop_pro/visual/visual_556_03.jpg') }}" alt="MOU 협약식"></li>
-                    <li><img src="{{ img_url('cop_pro/visual/visual_556_04.jpg') }}" alt="MOU 협약식"></li>
-                </ul> 
-            <div>           
-        </div>
-    </div>
-
-    <div class="Section Section3 mt90">
+    <div class="Section Section3 mt100 pb90">        
         <div class="widthAuto">
-            <div class="will-nTit bd-none">승진합격을 위한 윌비스 <span class="tx-color">경찰승진</span> 교수님</div>
-            <ul class="ProfCopBox mt20 mb100">
-                <li>
-                    <img src="{{ img_url('cop_pro/prof/prof_ske.jpg') }}" alt="신광은">
-                    <ul class="ProfBtns">
-                        <li><a href="#none">▶</a></li>
-                        <li><a href="#none" target="_blank">교수소개</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <img src="{{ img_url('cop_pro/prof/prof_kwu.jpg') }}" alt="김원욱">
-                    <ul class="ProfBtns">
-                        <li><a href="#none">▶</a></li>
-                        <li><a href="#none" target="_blank">교수소개</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <img src="{{ img_url('cop_pro/prof/prof_jys.jpg') }}" alt="조용석">
-                    <ul class="ProfBtns">
-                        <li><a href="#none">▶</a></li>
-                        <li><a href="#none" target="_blank">교수소개</a></li>
-                    </ul>
-                </li>                
-                <li>
-                    <img src="{{ img_url('cop_pro/prof/prof_skh.jpg') }}" alt="송광호">
-                    <ul class="ProfBtns">
-                        <li><a href="#none">▶</a></li>
-                        <li><a href="#none" target="_blank">교수소개</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <img src="{{ img_url('cop_pro/prof/prof_lsh.jpg') }}" alt="이성호">
-                    <ul class="ProfBtns">
-                        <li><a href="#none">▶</a></li>
-                        <li><a href="#none" target="_blank">교수소개</a></li>
-                    </ul>
-                </li>
-            </ul>
+            <div class="widthAuto smallTit">          
+                <p><span>기출문제와 강의를 한 곳에 <strong>기출강의!</strong></span></p>            
+            </div>
+            <div class="will-big-Tit pt100">
+                <div class="small NSK-Thin">출제경향이 매번 반복되는 경찰공무원 시험.</div>
+                <div class="big NSK-Black"><span class="cop-color">날카롭게 분석된</span> 기출강의<span class="small NSK-Thin">로 마무리해야합니다.</span></div>
+            </div>
+            <div class="SpecialLecBox mt60">
+                <dl>
+                    <dt class="nLec p_re">
+                        <div class="infoBox">
+                            <div class="infoTit">
+                                <div class="small NSK-Thin">해양경찰</div>
+                                <div class="big NSK-Black">
+                                    최근 5개년<br/>
+                                    기출문제
+                                </div>
+                                <div class="btn">
+                                    <div class="btn-sbj"><a href="http://www.willbescop.net/movie/event.html?event_cd=On_181126_y&topMenuType=O" target="_blank">+ &nbsp; 문제 더 보기</a></div>
+                                    <div class="btn-lec mt5"><a href="https://cop.dev.willbes.net/lecture/index/cate/3001/pattern/free?course_idx=20032" target="_blank">+ &nbsp; 강의 더 보기</a></div>
+                                </div>
+                            </div>
+                            <div class="infoList">
+                                <ul class="List-Table">
+                                    <li><a href="#none"><span>[2018년 2차]</span>경찰공무원(일반/101단/경행) 채용시험 기출</a><span class="btn-more"><a href="https://cop.dev.willbes.net/support/examQuestion/show?board_idx=1286&" target="_blank">바로가기 ></a></span></li>
+                                    <li><a href="#none"><span>[2018년 1차]</span>경찰공무원(일반/101단/전의경) 채용시험 기출</a><span class="btn-more"><a href="https://cop.dev.willbes.net/support/examQuestion/show?board_idx=1286&" target="_blank">바로가기 ></a></span></li>
+                                    <li><a href="#none"><span>[2018년 2차]</span>경찰공무원(일반/101단/경행) 채용시험 기출</a><span class="btn-more"><a href="https://cop.dev.willbes.net/support/examQuestion/show?board_idx=1286&" target="_blank">바로가기 ></a></span></li>
+                                    <li><a href="#none"><span>[2018년 1차]</span>경찰공무원(일반/101단/경행) 채용시험 기출</a><span class="btn-more"><a href="https://cop.dev.willbes.net/support/examQuestion/show?board_idx=1286&" target="_blank">바로가기 ></a></span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </dt>
+                </dl>
+            </div>
         </div>
-    </div>    
+    </div>
+    <!-- 기출강의// -->    
 
     <div class="Section Section6 mb50">
         <div class="widthAuto">
@@ -395,7 +355,7 @@
         </div>
     </div>
 
-    <div class="Section Section7 mb50">
+    <div class="Section Section7 mb100">
         <div class="widthAuto">
             <div class="CScenterBox">
                 <dl>
@@ -482,19 +442,5 @@
     </div>
 </div>
 <!-- End Container -->
-
-<script type="text/javascript">
-    $(function(){ 
-        $('.mou ul').bxSlider({ 
-            speed:800,  
-            responsive:true,
-            infiniteLoop:true,
-            pager:false,
-            slideWidth:556,
-            minSlides:1,
-            maxSlides:2,
-        });
-    });
-</script>
 
 @stop

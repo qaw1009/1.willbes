@@ -35,6 +35,12 @@
                             <option value="{{ $key }}">{{ $val }}</option>
                         @endforeach
                         </select>
+                        <select class="form-control mr-10" id="search_admin_reason_ccd" name="search_admin_reason_ccd">
+                            <option value="">부여사유유형</option>
+                        @foreach($arr_admin_reason_ccd as $key => $val)
+                            <option value="{{ $key }}">{{ $val }}</option>
+                        @endforeach
+                        </select>
                     </div>
                 </div>
                 <div class="form-group">
@@ -108,7 +114,8 @@
                     <th class="">회차수</th>
                     <th class="rowspan">결제상태</th>
                     <th class="">수강시작일 (수강기간)</th>
-                    <th class="">부여사유</th>
+                    <th class="">부여사유유형</th>
+                    <th class="">상세부여사유</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -174,7 +181,10 @@
                     {'data' : 'LecStartDate', 'render' : function(data, type, row, meta) {
                         return data != null ? data + '<br/>(' + row.LecExpireDay + '일)' : '';
                     }},
-                    {'data' : 'AdminRegReason'}
+                    {'data' : 'AdminReasonCcdName'},
+                    {'data' : 'AdminEtcReason', 'render' : function(data, type, row, meta) {
+                        return data != null ? data.substr(0, 20) : '';
+                    }}
                 ]
             });
 

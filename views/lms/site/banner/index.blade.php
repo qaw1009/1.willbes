@@ -25,6 +25,13 @@
                             @endforeach
                         </select>
 
+                        <select class="form-control" id="search_campus_ccd" name="search_campus_ccd">
+                            <option value="">캠퍼스</option>
+                            @foreach($arr_campus as $row)
+                                <option value="{{ $row['CampusCcd'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CampusName'] }}</option>
+                            @endforeach
+                        </select>
+
                         <select class="form-control mr-10" id="search_banner_disp_idx" name="search_banner_disp_idx" title="노출섹션">
                             <option value="">노출섹션</option>
                             @foreach($arr_disp_data as $row)
@@ -70,9 +77,9 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-12 text-right">
+            <div class="col-xs-12 text-center">
                 <button type="submit" class="btn btn-primary btn-search" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
-                <button type="button" class="btn btn-default" id="_btn_reset">검색초기화</button>
+                <button type="button" class="btn btn-default btn-search" id="btn_reset">초기화</button>
             </div>
         </div>
     </form>
@@ -112,6 +119,7 @@
 
             // site-code에 매핑되는 select box 자동 변경
             $search_form.find('select[name="search_cate_code"]').chained("#search_site_code");
+            $search_form.find('select[name="search_campus_ccd"]').chained("#search_site_code");
             $search_form.find('select[name="search_banner_disp_idx"]').chained("#search_cate_code");
 
             // 페이징 번호에 맞게 일부 데이터 조회

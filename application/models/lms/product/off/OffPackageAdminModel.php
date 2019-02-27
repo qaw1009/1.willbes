@@ -37,6 +37,7 @@ class OffPackageAdminModel extends CommonLectureModel
                     ,C.CateCode
                     ,Ca.CateName, Cb.CateName as CateName_Parent
                     ,D.SalePrice, D.SaleRate, D.RealSalePrice
+                    ,IFNULL(Y.ProdCode_Original,\'\') as ProdCode_Original
                     ,Z.wAdminName
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
@@ -60,7 +61,9 @@ class OffPackageAdminModel extends CommonLectureModel
                             join lms_sys_category Ca on C.CateCode = Ca.CateCode  and Ca.IsStatus=\'Y\'
                             left outer join lms_sys_category Cb on Ca.ParentCateCode = Cb.CateCode
                         left outer join lms_product_sale D on A.ProdCode = D.ProdCode and D.SaleTypeCcd=\'613001\' and D.IsStatus=\'Y\'	#Pc+모바일 판매가만 추출
+                        left outer join lms_product_copy_log Y on A.ProdCode = Y.ProdCode
                         left outer join wbs_sys_admin Z on A.RegAdminIdx = Z.wAdminIdx
+                        join lms_sys_admin_r_site_campus X on (A.SiteCode = X.SiteCode and B.CampusCcd = X.CampusCcd) and X.IsStatus=\'Y\' and X.wAdminIdx='.$this->session->userdata('admin_idx').'
                      where A.IsStatus=\'Y\'
         ';
 
@@ -182,6 +185,12 @@ class OffPackageAdminModel extends CommonLectureModel
             }
             /*----------------          연결강좌 등록        ---------------*/
 
+            /*----------------          Json 데이터 등록        ---------------*/
+            if($this->_setProdJsonData($prodcode) !== true) {
+                throw new \Exception('JSON 데이터 등록에 실패했습니다.');
+            }
+            /*----------------          Json 데이터 등록        ---------------*/
+
             $this->_conn->trans_commit();
             //$this->_conn->trans_rollback();
 
@@ -288,6 +297,12 @@ class OffPackageAdminModel extends CommonLectureModel
                 throw new \Exception('연결강좌 등록에 실패했습니다.');
             }
             /*----------------          연결강좌 등록        ---------------*/
+
+            /*----------------          Json 데이터 등록        ---------------*/
+            if($this->_setProdJsonData($prodcode) !== true) {
+                throw new \Exception('JSON 데이터 등록에 실패했습니다.');
+            }
+            /*----------------          Json 데이터 등록        ---------------*/
 
             //$this->_conn->trans_rollback();
             $this->_conn->trans_commit();

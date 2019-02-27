@@ -82,13 +82,29 @@
         </span>
     </div>
     <div class="Content p_re">
-
         <div class="willbes-Counsel c_both">
             <div class="willbes-Lec-Tit NG bd-none tx-black pt-zero">· 심층상담예약</div>
-            <div class="counsel_infoBox tx-black GM mt40">
-                <img src="{{ img_url('counsel/willbes_counsel.jpg') }}">
+            <div class="willbes-counsel_step step mt40 NG c_both">
+                <ul>
+                    <li><div class="num">01</div>상담일자/시간선택</li>
+                    <li class="arrow"><img src="{{ img_url('counsel/icon_arrow_step.png') }}"></li>
+                    <li class="active"><div class="num">02</div>사전정보입력</li>
+                    <li class="arrow"><img src="{{ img_url('counsel/icon_arrow_step.png') }}"></li>
+                    <li><div class="num">03</div>상담예약완료</li>
+                </ul>
+                <div class="info-Box info-Box2 NG">
+                    <dl>
+                        <dt>
+                            · 원활한 상담 예약을 위해 사전정보 사항을 정확히 입력해 주세요. (<span class="tx-red">(*)</span>필수항목)<br/>
+                            · <span class="tx-blue">상세정보의 시험별, 과목별 점수를 기입해 주시면 수 년 간의 통계 및 패턴분석을 통한 심층 상담을 받으실 수 있습니다.</span><br/>
+                            · 시험 미응시자인 경우에는 시험 점수 대신 궁금하신 사항을 구체적으로 기입해 주세요.<br/>
+                        </dt>
+                    </dl>
+                </div>
+            </div>
+            <div class="counsel_infoBox tx-black GM mb50">
                 <div class="LeclistTable">
-                    <table cellspacing="0" cellpadding="0" class="listTable bdt-gray bdb-gray tx-gray">
+                    <table cellspacing="0" cellpadding="0" class="listTable bdb-gray tx-gray">
                         <colgroup>
                             <col style="width: 125px;">
                             <col style="width: 660px;">
@@ -113,25 +129,6 @@
                             </tr>
                         </tbody>
                     </table>
-                </div>
-            </div>
- 
-            <div class="willbes-counsel_step step mt60 mb50 NG c_both">
-                <ul>
-                    <li><div class="num">01</div>상담일자/시간선택</li>
-                    <li class="arrow"><img src="{{ img_url('counsel/icon_arrow_step.png') }}"></li>
-                    <li class="active"><div class="num">02</div>사전정보입력</li>
-                    <li class="arrow"><img src="{{ img_url('counsel/icon_arrow_step.png') }}"></li>
-                    <li><div class="num">03</div>상담예약완료</li>
-                </ul>
-                <div class="info-Box info-Box2 NG">
-                    <dl>
-                        <dt>
-                            · 원활한 상담 예약을 위해 사전정보 사항을 정확히 입력해 주세요. (<span class="tx-red">(*)</span>필수항목)<br/>
-                            · <span class="tx-blue">상세정보의 시험별, 과목별 점수를 기입해 주시면 수 년 간의 통계 및 패턴분석을 통한 심층 상담을 받으실 수 있습니다.</span><br/>
-                            · 시험 미응시자인 경우에는 시험 점수 대신 궁금하신 사항을 구체적으로 기입해 주세요.<br/>
-                        </dt>
-                    </dl>
                 </div>
             </div>
             <div class="willbes-User-Info p_re pb30">
@@ -287,10 +284,8 @@
                     </ul>
                 </div>
             </div>
-
         </div>
         <!-- willbes-Counsel -->
-
     </div>
     <div class="Quick-Bnr ml20">
         <img src="{{ img_url('sample/banner_180605.jpg') }}">     

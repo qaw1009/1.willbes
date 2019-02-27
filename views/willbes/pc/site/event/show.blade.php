@@ -9,28 +9,26 @@
         @include('willbes.pc.layouts.partial.site_route_path')
     </div>
     <div class="Content p_re">
-        <div class="willbes-Eventzone EVTZONE c_both">
-            <div class="willbes-Lec-Tit NG bd-none tx-black c_both pt-zero">
-                {{($arr_base['onoff_type'] == 'ongoing') ? '· 진행중인 이벤트' : '· 마감된 이벤트'}}
-            </div>
-        </div>
-
-        <div class="willbes-Leclist c_both mt30 pb60">
+        <div class="willbes-Leclist c_both pb60">
             <!-- View -->
             <div class="willbes-Leclist c_both">
                 <div class="LecViewTable">
                     <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black bdb-gray tx-gray">
                         <colgroup>
                             @if(empty($data['CampusName']) === false)<col style="width: 65px;">@endif
+                            @if(empty($data['SubjectName']) === false)<col style="width: 100px;">@endif
+                            @if(empty($data['wProfName']) === false)<col style="width: 65px;">@endif
                             <col style="width: 110px;">
                             <col style="width: 465px;">
                             <col style="width: 150px;">
                             <col style="width: 150px;">
                         </colgroup>
                         <thead>
-                        <tr><th colspan="5" class="w-list tx-left pl20"><span class="w-select tx-blue">[{{$data['RequstTypeName']}}]</span> <strong>{{$data['EventName']}}</strong></th></tr>
+                        <tr><th colspan="7" class="w-list tx-left pl20"><span class="w-select tx-blue">[{{$data['RequestTypeName']}}]</span> <strong>{{$data['EventName']}}</strong></th></tr>
                         <tr>
                             @if(empty($data['CampusName']) === false)<td class="w-type">{{$data['CampusName']}}<span class="row-line">|</span></td>@endif
+                            @if(empty($data['SubjectName']) === false)<td class="w-type">{{$data['SubjectName']}}<span class="row-line">|</span></td>@endif
+                            @if(empty($data['wProfName']) === false)<td class="w-type">{{$data['wProfName']}}<span class="row-line">|</span></td>@endif
                             <td class="w-area tx-left pl20">{{$data['TakeTypeName']}}<span class="row-line">|</span></td>
                             <td class="w-area tx-left pl20">[접수기간] {{$data['RegisterStartDay']}} ~ {{$data['RegisterEndDay']}}<span class="row-line">|</span></td>
                             <td class="w-date">{{$data['RegDay']}}<span class="row-line">|</span></td>
@@ -39,17 +37,17 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td class="w-file tx-left pl20" colspan="5">
-                                @if(empty($data['UploadFileRealName']) === false)
-                                    <a href="{{site_url('/event/download?path=').urlencode($data['UploadFileFullPath'].$data['UploadFileName']).'&fname='.urlencode($data['UploadFileRealName']).'&event_idx='.element('event_idx', $arr_input) }}" target="_blank">
-                                    <img src="{{ img_url('prof/icon_file.gif') }}"> {{$data['UploadFileRealName']}}</a>
+                            <td class="w-file tx-left pl20" colspan="7">
+                                @if(empty($arr_base['file_F']) === false)
+                                    <a href="{{front_url('/event/download?path=').urlencode($arr_base['file_F']['FileFullPath'].$arr_base['file_F']['FileName']).'&fname='.urlencode($arr_base['file_F']['FileRealName']).'&event_idx='.element('event_idx', $arr_input) }}" target="_blank">
+                                        <img src="{{ img_url('prof/icon_file.gif') }}"> {{$arr_base['file_F']['FileRealName']}}</a>
                                 @endif
                             </td>
                         </tr>
                         <tr>
-                            <td class="w-txt tx-left" colspan="5">
+                            <td class="w-txt tx-left" colspan="7">
                                 @if($data['ContentType'] == $arr_base['content_type']['image'])
-                                    <img src="{{$data['FileFullPath'] . $data['FileName']}}">
+                                    <img src="{{$arr_base['file_C']['FileFullPath'] . $arr_base['file_C']['FileName']}}">
                                 @else
                                     {!! $data['Content'] !!}
                                 @endif
@@ -84,14 +82,14 @@
     TODO : 배너섹션 등록 후 설정 필요
     -->
     <div class="Quick-Bnr ml20">
-        {!! banner('이벤트_바로신청팝업', '', $__cfg['SiteCode'], '0') !!}
+        {!! banner('이벤트_우측', '', $__cfg['SiteCode'], '0') !!}
     </div>
 </div>
 
 <script type="text/javascript">
     $(document).ready(function() {
         $('#btn_list').click(function() {
-            location.href = '{!! site_url($arr_base['page_url']) !!}';
+            location.href = '{!! front_url($arr_base['page_url']) !!}';
         });
     });
 </script>

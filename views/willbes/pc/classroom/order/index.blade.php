@@ -9,9 +9,6 @@
         </div>
         <div class="Content p_re">
             <div class="willbes-Mypage-PAYMENTZONE c_both">
-                <div class="willbes-Prof-Subject willbes-Mypage-Tit NG">
-                    · 주문/배송조회
-                </div>
                 <div class="willbes-Cart-Txt willbes-Mypage-Txt NG p_re">
                     <span class="MoreBtn"><a href="#none">유의사항안내 닫기 ▲</a></span>
                     <table cellspacing="0" cellpadding="0" class="txtTable tx-black">
@@ -55,7 +52,7 @@
                             <span>검색</span>
                         </button>
                     </div>
-                    <div class="willbes-Lec-Search willbes-SelectBox mb20 GM f_right">
+                    <div class="willbes-Lec-Search willbes-SelectBox mb20 GM f_left">
                         <select id="site_group" name="site_group" title="과정" class="seleProcess f_left">
                             <option value="">과정</option>
                             @foreach($arr_site_group as $key => $val)
@@ -67,6 +64,10 @@
                             <option value="N">온라인</option>
                             <option value="Y">학원</option>
                         </select>
+                        <div class="f_left ml15 mt10">
+                            <input type="checkbox" id="is_book" name="is_book" value="Y" class="" @if(element('is_book', $arr_input) == 'Y') checked="checked" @endif/>
+                            <label for="is_book">교재주문</label>
+                        </div>
                     </div>
                     <div class="LeclistTable orderTable">
                         <table cellspacing="0" cellpadding="0" class="listTable cartTable upper-gray bdt-gray tx-gray">
@@ -122,8 +123,8 @@
 
             initSearch();
 
-            // 과정, 구분 변경시 검색
-            $search_form.on('change', 'select[name="site_group"], select[name="is_pass"]', function () {
+            // 과정, 구분, 교재주문 선택시 검색
+            $search_form.on('change', 'select[name="site_group"], select[name="is_pass"], input[name="is_book"]', function () {
                 $search_form.submit();
             });
         });

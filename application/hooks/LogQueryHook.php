@@ -80,6 +80,14 @@ class LogQueryHook
     {
         $this->_CI->load->helper('file');
 
+        // create sql log directory
+        if (is_dir(config_item('sql_log_path')) === false) {
+            if (mkdir(config_item('sql_log_path'), 0707) === false) {
+                log_message('error', 'Unable to create query the log directory');
+            }
+        }
+
+        // write sql log file
         foreach($log_data as $name => $data) {
             if(empty($data) === false) {
                 $sql_log_path = config_item('sql_log_path') . $name . '-log-' . date('Y-m-d') . '.sql';

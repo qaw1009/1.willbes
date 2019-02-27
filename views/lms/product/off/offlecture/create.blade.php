@@ -90,7 +90,7 @@
                                     &nbsp;[진행상태] {{$data['wProgressCcd_Name']}} &nbsp;&nbsp;
                                     &nbsp;[제작월] {{$data['wMakeYM']}} &nbsp;&nbsp;
                                     @if($data['wAttachFile'])
-                                        &nbsp;[첨부자료] <a href='{{ site_url('/product/on/lecture/download/').urlencode($data['wAttachPath'].$data['wAttachFile']).'/'.urlencode($data['wAttachFileReal']) }}' target="_blank">{{$data['wAttachFileReal']}}</a>
+                                        &nbsp;[첨부자료]<a href='{{ site_url('/product/on/lecture/download/').'?filename='.urlencode($data['wAttachPath'].$data['wAttachFile']).'&filename_ori='.urlencode($data['wAttachFileReal']) }}' target="_blank">{{$data['wAttachFileReal']}}</a>
                                     @endif
                                 @endif
 
@@ -186,7 +186,7 @@
                         <div class="radio">
                             @foreach($studypattern_ccd as $key => $val)
                                 @if($key != '653003')
-                                <input type="radio" name="StudyPatternCcd" id="StudyPatternCcd{{$loop->index}}" value="{{$key}}" class="flat" required="required" @if($loop->index == 1 || $data['StudyPatternCcd']==$key) checked="checked"@endif> {{$val}}&nbsp;&nbsp;
+                                <input type="radio" name="StudyPatternCcd" id="StudyPatternCcd{{$loop->index}}" value="{{$key}}" class="flat" required="required" @if(($method == 'POST' && $loop->index == 1) || $data['StudyPatternCcd']==$key) checked="checked"@endif> {{$val}}&nbsp;&nbsp;
                                 @endif
                             @endforeach
                         </div>
@@ -199,7 +199,7 @@
                     <div class="col-md-4 form-inline">
                         <div class="radio">
                         @foreach($studyapply_ccd as $key => $val)
-                            <input type="radio" name="StudyApplyCcd" id="StudyApplyCcd{{$loop->index}}" value="{{$key}}" class="flat" required="required" @if($loop->index == 3 || $data['StudyApplyCcd']==$key) checked="checked"@endif> {{$val}}&nbsp;&nbsp;
+                            <input type="radio" name="StudyApplyCcd" id="StudyApplyCcd{{$loop->index}}" value="{{$key}}" class="flat" required="required" @if(($method == 'POST' && $loop->index == 3) || $data['StudyApplyCcd']==$key) checked="checked"@endif> {{$val}}&nbsp;&nbsp;
                         @endforeach
                         </div>
                     </div>
@@ -340,7 +340,7 @@
                                                 <option value="R" @if($SaleDiscType == 'R') selected="selected"@endif>%</option>
                                                 <option value="P" @if($SaleDiscType == 'p') selected="selected"@endif>-</option>
                                             </select>&nbsp;
-                                            <input type="number" name="SaleRate[]" id="SaleRate_{{$key}}"  value="{{$SaleRate}}" maxlength="8" class="form-control" onkeyup="priceCheck('{{$key}}')" @if($key=="613001")required="required"@endif title="할인" style="width:70px;">
+                                            <input type="number" name="SaleRate[]" id="SaleRate_{{$key}}"  value="@if($method=="POST"){{0}}@else{{$SaleRate}}@endif" maxlength="8" class="form-control" onkeyup="priceCheck('{{$key}}')" @if($key=="613001")required="required"@endif title="할인" style="width:70px;">
                                             [판매가] <input type="number" name="RealSalePrice[]" id="RealSalePrice_{{$key}}"  value="{{$RealSalePrice}}" readonly class="form-control" @if($key=="613001")required="required"@endif title="판매가" style="width:100px;"> 원
                                         </tr>
                                     @endif
@@ -353,7 +353,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2">강사료정산정보 <br>
                         {{--@if($method==='POST' || empty($data_division))--}}
-                        <button type="button" class="btn-sm btn-success border-radius-reset mr-15" id="searchProfessor">불러오기</button>
+                        <button type="button" class="btn-sm btn-success border-radius-reset" id="searchProfessor">불러오기</button>
                         {{--@endif--}}
                     </label>
                     <div class="col-md-10 form-inline item">
@@ -386,6 +386,7 @@
                             @php
                                 $rateRemain = '';
                                 $rateRemainProfIdx = '';
+                                $rateSum = 0;
                             @endphp
                             @foreach($data_division as $row)
                                 @php
@@ -395,6 +396,7 @@
                                             $rateRemainProfIdx = $row['ProfIdx'];
                                         }
                                     }
+                                    $rateSum = $rateSum + floatval($row['ProdDivisionRate']);
                                 @endphp
                                 <tr id="{{$loop->index - 1}}">
                                     <td>
@@ -409,6 +411,7 @@
                                     <td><input name="IsSingular" title="단수적용" id="IsSingular_{{$row['ProfIdx']}}" required="required" onclick="singularCheck('{{$row['ProfIdx']}}')" type="radio" value="{{$row['ProfIdx']}}" @if($row['IsSingular']==='Y') checked="checked" @endif {{--@if($method==='PUT') disabled @endif--}}></td>
                                 </tr>
                             @endforeach
+                                <tr><td colspan="4"></td><td><span id="rateSum">{{{$rateSum}}}</span></td><td colspan="2"></td></tr>
                             </table>
                         </div>
                         <div class="item inline-block">
@@ -680,12 +683,11 @@
                         <textarea id="SmsMemo" name="SmsMemo" class="form-control" rows="5" cols="100" title="문자 발송" placeholder="">{{$data_sms['Memo']}}</textarea>
                         </p>
                         <div class="text">
-                            [발신번호] <input type="text" name="SendTel" id="SendTel" value="{{$data_sms['SendTel']}}" size="12" class="form-control" maxlength="20">
+                            [발신번호] {!! html_callback_num_select($arr_send_callback_ccd, $data_sms['SendTel'], 'SendTel', 'SendTel', '', '발신번호', '') !!}
                             &nbsp;&nbsp;&nbsp;
-
                             <input class="form-control border-red red" id="content_byte" style="width: 50px;" type="text" readonly="readonly" value="0">
                             <span class="red">byte</span>
-                             (80byte 초과 시 LMS 문자로 전환됩니다.)
+                            (55byte 이상일 경우 MMS로 전환됩니다.)
                         </div>
                     </div>
                 </div>
@@ -770,7 +772,6 @@
                 //alert(prev_val)
                 if (prev_val == "") {
                     $('#site_code').blur();
-                    smsTel_chained($(this).val());  //전화번호 재조정
                     return;
                 }
                 $(this).blur();
@@ -781,7 +782,6 @@
                     $("#teacherDivision tbody").remove();
                     $("#lecList tbody").remove();
                     sitecode_chained($(this).val());    //과정.과목 재조정
-                    smsTel_chained($(this).val());   //전화번호 재조정
                     */
                     location.reload();
 
@@ -889,9 +889,6 @@
                 }, showError, false, 'POST');
             });
 
-
-
-
             //단강좌검색
             $('#lecAdd').on('click', function(e) {
                 var id = e.target.getAttribute('id');
@@ -973,8 +970,6 @@
                 }
                 return true;
             }
-
-
 
             $('#btn_list').click(function() {
                 location.replace('{{ site_url('/product/off/offLecture/') }}' + getQueryString());
@@ -1118,17 +1113,6 @@
             $("#CourseIdx").chained(site_code);
             $("#SubjectIdx").chained(site_code);
             $("#CampusCcd").chained(site_code);
-        }
-
-
-        function smsTel_chained(site_code) {
-            var obj = {
-                @foreach($siteList as $key=>$val)
-                {{$key}}: '{{$val}}'@if($loop->last == false),@endif
-                @endforeach
-            }
-            //alert(obj[site_code]);
-            $('#SendTel').val(obj[site_code].replace('-',''));
         }
 
         @if($method==='PUT')
@@ -1291,8 +1275,6 @@
         }
 
 
-
-
         function setLecDate_modify() {
             if($("#StudyStartDate").val() == "") {alert("개강일을 선택해 주세요.");$("#StudyStartDate").focus();return;}
             if($('#Amount').val() == '') {alert('회차를 입력해 주세요.'); $('#Amount').focus();return;}
@@ -1422,7 +1404,7 @@
         }
 
         @if($method === "PUT" && !empty($data_lecturedate))
-            setLecDate_modify()
+            setLecDate_modify();
         @endif
 
     </script>

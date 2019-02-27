@@ -399,32 +399,6 @@ if (!function_exists('show_alert')) {
     }
 }
 
-if (!function_exists('login_check_inner_script')) {
-    /**
-     * javascript 내 로그인 여부 적용
-     * @param string $msg  - 경고 메세지
-     * @param string $move - 로그인 페이지로 이동여부 : Y 이동
-     */
-    function login_check_inner_script($msg='', $move='')
-    {
-        if (sess_data('is_login') !== true) {
-            $output = '';
-            if (empty($msg) === false) {
-                $output .= 'alert("' . $msg . '");' . PHP_EOL;
-            }
-
-            if ($move === 'Y') {
-                $output .= 'location.href = "' . app_url('/member/login/?rtnUrl=' . rawurlencode('//' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']), 'www') . '";' . PHP_EOL;
-            }
-
-            if(empty($msg) === false || empty($move) === false) {
-                $output .= 'return;';
-            }
-            echo($output);
-        }
-    }
-}
-
 if (!function_exists('starts_with')) {
     /**
      * haystack(대상 문자열)이 needles(찾을 문자열 배열)로 시작하는지 여부 체크
@@ -495,6 +469,23 @@ if (!function_exists('str_last_pos_after')) {
     }
 }
 
+if (!function_exists('str_mb_pad')) {
+    /**
+     * 문자열을 지정한 글자수가 되도록 다른 문자열을 채움 (str_pad 함수는 바이트 길이만큼 채움)
+     * @param $str
+     * @param $pad_length
+     * @param $pad_string
+     * @param $pad_type
+     * @return string
+     */
+    function str_mb_pad($str, $pad_length, $pad_string = ' ', $pad_type = STR_PAD_RIGHT)
+    {
+        $pad_length = $pad_length + strlen($str) - mb_strlen($str);
+
+        return str_pad($str, $pad_length, $pad_string, $pad_type);
+    }
+}
+
 if (!function_exists('value')) {
     /**
      * 인자값이 Closure 일 경우 Closure 결과값이 리턴
@@ -516,5 +507,24 @@ if(!function_exists( 'clean_string')) {
     function clean_string($value)
     {
         return preg_replace("/[#\&\+\-%@=\/\\\:;,\.'\"\^`~\_|\!\?\*$#<>()\[\]\{\}]/i", "", $value);
+    }
+}
+
+if (!function_exists('make_image_tag')) {
+    /**
+     * 게시판에 등록된 첨부파일이 이미지일 경우 이미지 태그 생성
+     * @param $path
+     * @return string
+     */
+    function make_image_tag($path = '')
+    {
+        $data = '';
+        if (empty($path) === false) {
+            $_img = public_to_upload_path($path);
+            if (empty(@getimagesize($_img) === false)) {
+                $data = '<p style="margin-bottom: 20px;"><img src="' . $path . '"></p>';
+            }
+        }
+        return $data;
     }
 }

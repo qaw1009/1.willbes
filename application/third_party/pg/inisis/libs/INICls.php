@@ -132,7 +132,7 @@ class INILog {
         $this->handle = fopen($logfile, "a+");
         if (!$this->handle)
             return false;
-        $this->WriteLog(INFO, "START " . PROGRAM . " " . $this->type . " (V" . VERSION . "-" . BUILDDATE . ")(OS:" . php_uname('s') . php_uname('r') . ",PHP:" . phpversion() . ")");
+        $this->WriteLog(INFO, "START " . PROGRAM . " " . $this->type . " (" . VERSION . "-" . BUILDDATE . ")(OS:" . php_uname('s') . php_uname('r') . ",PHP:" . phpversion() . ")");
         return true;
     }
 
@@ -211,7 +211,7 @@ class INIData {
     var $m_FlgSign;
     var $m_Cmd;
     var $m_Body;
-    //Xml Data 
+    //Xml Data
     var $m_Xml = array();
     var $m_REQUEST = array();
     var $m_REQUEST2 = array(); //User Defined Entity
@@ -274,8 +274,8 @@ class INIData {
         }
         $this->m_sPayMethod = $this->m_REQUEST["paymethod"];
 
-        $this->m_TXVersion = sprintf("%-4.4s", VERSION) .
-                sprintf("B%-6.6s", BUILDDATE) .
+        $this->m_TXVersion = sprintf("%-6.6s", VERSION) .
+                sprintf("B%-8.8s", BUILDDATE) .
                 sprintf("%-5.5s", $this->m_Type) .
                 sprintf("%-10.10s", php_uname('s')) .
                 sprintf("%-3.3s", "PHP") . //modulescript
@@ -396,7 +396,7 @@ class INIData {
                 return false;
             }
 
-            //가상계좌 부분환불 로직에서는 계조번호,은행코드,계좌주명이 필수 
+            //가상계좌 부분환불 로직에서는 계조번호,은행코드,계좌주명이 필수
             if ($this->m_Type == TYPE_VACCTREPAY) {
                 if (trim($this->m_REQUEST["refundacctnum"]) == "") {
                     $this->m_ErrCode = NULL_FIELD_REFUNDACCTNUM;
@@ -488,7 +488,7 @@ class INIData {
         //make XML
         $xml = new XML();
         if ($this->m_Type == TYPE_FORMPAY) {
-            
+
         } else if ($this->m_Type == TYPE_RECEIPT) {
             $PI = $xml->add_node("", PAYMENTINFO);
             $PM = $xml->add_node($PI, PAYMENT);
@@ -515,12 +515,12 @@ class INIData {
             $CD = $xml->add_node($CI, TX_CANCELTID, $this->m_REQUEST["tid"]);
             $CD = $xml->add_node($CI, TX_CANCELMSG, $this->m_REQUEST["cancelmsg"], array("urlencode" => "1"));
             $CD = $xml->add_node($CI, TX_CANCELREASON, $this->m_REQUEST["cancelcode"]);
-            
+
             //휴대폰 익월환불 추가
             $CD = $xml->add_node($CI, TX_REFUNDACCTNUM, $this->m_REQUEST["racctnum"]);
             $CD = $xml->add_node($CI, TX_REFUNDBANKCODE, $this->m_REQUEST["rbankcode"]);
             $CD = $xml->add_node($CI, TX_REFUNDACCTNAME, $this->m_REQUEST["racctname"], array("urlencode" => "1"));
-            
+
             $this->AddUserDefinedEntity(CANCELINFO, "", $xml, $CI);
         } else if ($this->m_Type == TYPE_REPAY) {
             //PartCancelInfo(ROOT)
@@ -604,6 +604,9 @@ class INIData {
             $CD = $xml->add_node($CI, TX_REFUNDACCTNUM, $this->m_REQUEST["racctnum"]);
             $CD = $xml->add_node($CI, TX_REFUNDBANKCODE, $this->m_REQUEST["rbankcode"]);
             $CD = $xml->add_node($CI, TX_REFUNDACCTNAME, $this->m_REQUEST["racctname"], array("urlencode" => "1"));
+            $CD = $xml->add_node($CI, TX_REFUNDFLGREMIT, $this->m_REQUEST["refundflgremit"]);
+
+
             $this->AddUserDefinedEntity(CANCELINFO, "", $xml, $CI);
         } else if ($this->m_Type == TYPE_INQUIRY) {
             $CI = $xml->add_node("", INQUIRYINFO);
@@ -699,7 +702,7 @@ class INIData {
             $tGoodCnt = ($this->m_REQUEST["goodscnt"] != null && (int) $this->m_REQUEST["goodscnt"] > 0 ) ? $this->m_REQUEST["goodscnt"] : 1;
 
             $GI = $xml->add_node($root, GOODSINFO);
-            //장바구니 기능 추가(2010.04.13) 
+            //장바구니 기능 추가(2010.04.13)
             //==TX_GOOSCNT는  $tGoodCnt로 부터 입력
             //$GP = $xml->add_node($GI,		TX_GOOSCNT, 		"1"															);
             $GP = $xml->add_node($GI, TX_GOOSCNT, $tGoodCnt);

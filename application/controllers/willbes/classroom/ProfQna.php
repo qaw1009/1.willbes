@@ -15,7 +15,7 @@ class ProfQna extends SupportQna
     protected $_paging_count = 10;
     protected $_reg_type = 0;    //등록타입
     private $_groupCcd = [
-        'consult_ccd' => '622',   //유형 그룹 코드 = 상담유형
+        'consult_ccd' => '702',   //유형 그룹 코드 = 상담유형
         'reply_status_ccd_not_complete' => '621001',    //답변등록상태 (미답변)
         'reply_status_ccd_complete' => '621004'         //답변등록상태 (답변완료)
     ];
@@ -251,16 +251,15 @@ class ProfQna extends SupportQna
             if (empty($data)) {
                 show_alert('게시글이 존재하지 않습니다.', 'back');
             }
-            $data['AttachData'] = json_decode($data['AttachData'],true);       //첨부파일
-
             if ($data['RegType'] == '0' && $data['IsPublic'] == 'N' && $data['RegMemIdx'] != $this->session->userdata('mem_idx')) {
                 show_alert('잘못된 접근 입니다.', 'back');
             }
-
             $result = $this->supportBoardTwoWayFModel->modifyBoardRead($board_idx);
             if($result !== true) {
                 show_alert('게시글 조회시 오류가 발생되었습니다.', 'back');
             }
+
+            $data['AttachData'] = json_decode($data['AttachData'],true);       //첨부파일
         }
 
         $this->load->view('support/create_prof_qna', [

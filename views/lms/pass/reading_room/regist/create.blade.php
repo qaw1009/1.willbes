@@ -21,7 +21,8 @@
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="site_code">운영사이트<span class="required">*</span></label>
                     <div class="form-inline col-md-4 item">
-                        {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', (($method == 'PUT') ? 'disabled' : '')) !!}
+                        {{--{!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', (($method == 'PUT') ? 'disabled' : '')) !!}--}}
+                        {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', (($method == 'PUT') ? 'disabled' : ''), false, $offLineSite_list) !!}
                     </div>
                     <label class="control-label col-md-1-1 d-line" for="campus_ccd">캠퍼스</label>
                     <div class="col-md-4 ml-12-dot item form-inline">
@@ -98,7 +99,7 @@
                         <span class="mr-20"></span>
 
                         <span class="blue mr-10">[할인율]</span>
-                        <input type="number" class="form-control" id="sale_rate" name="sale_rate" required="required" title="할인율" value="{{ $data['main_SaleRate'] }}" style="width: 140px;">
+                        <input type="number" class="form-control" id="sale_rate" name="sale_rate" required="required" title="할인율" value="{{ ($method == 'POST') ? '0' : $data['main_SaleRate'] }}" style="width: 140px;">
                         <select name="sale_disc_type" id="sale_disc_type" class="form-control">
                             <option value="R" @if($data['main_SaleDiscType'] == 'R')selected="selected"@endif>%</option>
                             <option value="P" @if($data['main_SaleDiscType'] == 'L')selected="selected"@endif>원</option>
@@ -141,10 +142,10 @@
                         <div class="row form-inline">
                             <div class="col-md-8">
                                 <span class="mr-5">[발신번호]</span>
-                                <input type="text" class="form-control" id="cs_tel" name="cs_tel" title="발신번호" value="{{ $data['SendTel'] }}">
+                                {!! html_callback_num_select($arr_send_callback_ccd, $data['SendTel'], 'cs_tel', 'cs_tel', '', '발신번호', '') !!}
                             </div>
                             <div class="col-md-4 red text-right">
-                                <span class="content_byte">0</span> Byte <span style="color: #73879C">(80byte 초과 시 LMS 문자로 전환됩니다.)</span>
+                                <span class="content_byte" id="content_byte">0</span> Byte <span style="color: #73879C">(55byte 이상일 경우 MMS로 전환됩니다.)</span>
                             </div>
                         </div>
                     </div>
@@ -218,22 +219,8 @@
             });
 
             // 바이트 수
-            $('#sms_content').on('change keyup input', function() {
-                var content_byte = fn_chk_byte($(this).val());
-                $('.content_byte').text(content_byte);
-            });
-
-            // 고객센터 전화번호
-            $regi_form.on('change', 'select[name="site_code"]', function() {
-                var $arr_site_csTel = {!! $site_csTel !!};
-                var cs_tel = '';
-                var this_site_code = $(this).val();
-                if (this_site_code == '') {
-                    cs_tel = '';
-                } else {
-                    cs_tel = $arr_site_csTel[this_site_code].replace('-','');
-                }
-                $('#cs_tel').val(cs_tel);
+            $('#sms_memo').on('change keyup input', function() {
+                $('#content_byte').text(fn_chk_byte($(this).val()));
             });
 
             //목록

@@ -3,7 +3,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class BtobModel extends WB_Model
 {
-    private $_table = 'lms_btob';
+    private $_table = [
+        'site' => 'lms_site',
+        'btob' => 'lms_btob',
+        'ip' => 'lms_btob_ip',
+        'log' => 'lms_btob_access_log',
+        'btob_member' => 'lms_btob_r_member',
+        'member' => 'lms_member',
+        'meminfo' => 'lms_member_otherinfo',
+        'admin' => 'wbs_sys_admin'
+    ];
 
     public function __construct()
     {
@@ -34,7 +43,7 @@ class BtobModel extends WB_Model
         }
 
         $from = '
-                    from '.$this->_table.' A
+                    from '.$this->_table['btob'].' A
 	                        left outer join wbs_sys_admin D on A.RegAdminIdx = D.wAdminIdx and D.wIsStatus=\'Y\' 
                     where A.IsStatus=\'Y\' ';
 
@@ -59,7 +68,7 @@ class BtobModel extends WB_Model
                         ,C.wAdminName as RegAdminName 
                         ,D.wAdminName as UpdAdminName ';
         $from = '
-                    from '.$this->_table.' A
+                    from '.$this->_table['btob'].' A
                         left outer join wbs_sys_admin C on A.RegAdminIdx = C.wAdminIdx and C.wIsStatus=\'Y\' 
                         left outer join wbs_sys_admin D on A.UpdAdminIdx = D.wAdminIdx and D.wIsStatus=\'Y\'
                     where A.IsStatus=\'Y\' ';
@@ -94,7 +103,7 @@ class BtobModel extends WB_Model
                 ->set('Phone2Enc',  'fn_enc("' . element('Phone2', $input) . '")',false)
                 ->set('EmailEnc',  'fn_enc("' . element('Email', $input) . '")',false);
 
-            if($this->_conn->insert($this->_table) === false) {
+            if($this->_conn->insert($this->_table['btob']) === false) {
                 throw new \Exception('제휴사 등록에 실패했습니다.');
             };
 
@@ -129,7 +138,7 @@ class BtobModel extends WB_Model
                 ->set('Phone2Enc',  'fn_enc("' . element('Phone2', $input) . '")',false)
                 ->set('EmailEnc',  'fn_enc("' . element('Email', $input) . '")',false);
 
-            if ($this->_conn->where('BtobIdx', $btobidx)->update($this->_table) === false) {
+            if ($this->_conn->where('BtobIdx', $btobidx)->update($this->_table['btob']) === false) {
                 throw new \Exception('정보 수정에 실패했습니다.');
             }
 
@@ -186,7 +195,7 @@ class BtobModel extends WB_Model
                 , 'RegAdminIdx' => $this->session->userdata('admin_idx')
             ];
 
-            if ($this->_conn->set($input_data)->insert('lms_btob_ip') === false) {
+            if ($this->_conn->set($input_data)->insert($this->_table['ip']) === false) {
                 throw new \Exception('IP 등록에 실패했습니다.');
             }
 
@@ -219,7 +228,7 @@ class BtobModel extends WB_Model
                 'BiIdx' => $biIdx
             ]);
 
-            if ($this->_conn->update('lms_btob_ip') === false) {
+            if ($this->_conn->update($this->_table['ip']) === false) {
                 throw new \Exception('IP 삭제에 실패했습니다.');
             }
 
@@ -252,7 +261,7 @@ class BtobModel extends WB_Model
         }
 
         $from = '
-                    from lms_btob_ip A
+                    from '.$this->_table['ip'].' A
 	                        left outer join wbs_sys_admin B on A.RegAdminIdx = B.wAdminIdx
                     where A.IsStatus=\'Y\' ';
 
@@ -288,9 +297,9 @@ class BtobModel extends WB_Model
 
         $from = '
                     from
-                        lms_btob_access_log A
-                        join lms_btob B on A.BtobIdx = B.BtobIdx
-                        join lms_site C on A.SiteCode = C.SiteCode 
+                        '.$this->_table['log'].' A
+                        join '.$this->_table['btob'].' B on A.BtobIdx = B.BtobIdx
+                        join '.$this->_table['site'].' C on A.SiteCode = C.SiteCode 
                     where B.IsStatus=\'Y\'
                     ';
 
@@ -301,6 +310,99 @@ class BtobModel extends WB_Model
         //echo $this->_conn->last_query();
         return ($is_count === true) ? $result->row(0)->numrows : $result->result_array();
 
+    }
+
+
+    /**
+     *  CP 사용자 목록
+     * @param $is_count
+     * @param array $arr_condition
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
+     */
+    public function listCpMember($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    {
+        if ($is_count === true) {
+            $column = 'COUNT(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $column = ' B.BtobIdx,
+                R.*,
+                A.wAdminName AS AdminName,
+                A2.wAdminName AS delAdminName,
+                M.MemName, M.MemId, fn_dec(M.PhoneEnc) AS Phone
+             ';
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $from = " FROM {$this->_table['btob']} AS B
+                    JOIN {$this->_table['btob_member']} AS R ON B.BtobIdx = R.BtobIdx
+                    JOIN {$this->_table['member']} AS M ON R.MemIdx = M.MemIdx
+                    JOIN {$this->_table['meminfo']} AS I ON M.MemIdx = I.Memidx
+                    LEFT JOIN {$this->_table['admin']} AS A ON R.RegAdminIdx = A.wAdminIdx
+                    LEFT JOIN {$this->_table['admin']} AS A2 ON R.UpdAdminIdx = A2.wAdminIdx
+                    ";
+
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
+
+        $result = $this->_conn->query('SELECT '. $column .$from .$where. $order_by_offset_limit);
+
+        return ($is_count === true) ? $result->row(0)->numrows : $result->result_array();
+    }
+
+    public function deleteCpMember($input)
+    {
+        try {
+            $btobidx = element('BtobIdx', $input);
+            $bmidx = element('BmIdx', $input);
+
+            $input_data = [
+                'IsStatus' => 'N',
+                'UpdAdminIdx' => $this->session->userdata('admin_idx')
+            ];
+
+            if ($this->_conn->
+                set('UpdDatm', 'NOW()', false)->
+                set($input_data)->
+                where([
+                'BtobIdx' => $btobidx,
+                'BmIdx' => $bmidx
+                ])->update($this->_table['btob_member']) === false) {
+                throw new \Exception('제휴사 회원 삭제에 실패했습니다.');
+            }
+
+        } catch (\Exception $e) {
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+    public function addCpMember($input)
+    {
+        try {
+            //테이블 입력
+            $input_data = [
+                'BtobIdx' => element('BtobIdx', $input),
+                'MemIdx' => element('MemIdx', $input),
+                'RegAdminIdx' => $this->session->userdata('admin_idx')
+            ];
+
+            if ($this->_conn->
+                set('RegDatm', 'NOW()', false)->
+                set($input_data)->
+                insert($this->_table['btob_member']) === false) {
+                throw new \Exception('회원등록에 실패했습니다.');
+            }
+
+        } catch (\Exception $e) {
+            return error_result($e);
+        }
+
+        return true;
     }
 
 }

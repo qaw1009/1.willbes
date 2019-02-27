@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-require APPPATH . 'controllers/lms/board//BaseBoard.php';
+require APPPATH . 'controllers/lms/board/BaseBoard.php';
 
 class Gallery extends BaseBoard
 {
@@ -221,7 +221,7 @@ class Gallery extends BaseBoard
             'data' => $data,
             'board_idx' => $board_idx,
             'arr_reg_type' => $this->_reg_type,
-            'attach_file_cnt' => (count($data['arr_attach_file_idx']) < 1) ? $this->boardModel->_attach_img_cnt : count($data['arr_attach_file_idx'])
+            'attach_file_cnt' => (empty($data['arr_attach_file_idx']) === true) ? $this->boardModel->_attach_img_cnt : count($data['arr_attach_file_idx'])
         ]);
     }
 

@@ -51,7 +51,9 @@
                                     <a href="{{ app_url('/classroom/order/index', 'www') }}">주문/배송조회</a>
                                 </li>
                                 <li>
-                                    <a href="#none">새쪽지 <span class="num-New">99+</span></a>
+                                    <a href="{{ app_url('/classroom/message/index', 'www') }}">새쪽지 <!--
+                                    <span class="num-New">99+</span>
+                                    //--></a>
                                 </li>
                             </ul>
                         </div>

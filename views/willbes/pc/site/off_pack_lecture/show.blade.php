@@ -78,6 +78,11 @@
                     <input type="hidden" name="sale_status_ccd" id="sale_status_ccd" value="{{$data['SaleStatusCcd']}}">
                     <div class="willbes-Lec-buyBtn">
                         <ul>
+                            <li class="btnAuto180 h36">
+                                <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
+                                    <span>방문결제</span>
+                                </button>
+                            </li>     
                             @if(strpos("654002,654003", $data['StudyApplyCcd']) !== false)
                             <li class="btnAuto180 h36">
                                 <button type="submit" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y" class="mem-Btn bg-white bd-dark-blue">
@@ -177,8 +182,11 @@
                                         </colgroup>
                                         <tbody>
                                         <tr>
+                                            @php
+                                                $prof_img = json_decode($sub_row['ProfReferData'],true)
+                                            @endphp
                                             <td class="w-chk"><input type="checkbox" id="prod_code_sub_{{$sub_row['ProdCode']}}" name="prod_code_sub[]" value="{{$sub_row['ProdCode']}}" class="essSubGroup-{{$sub_row['SubGroupName']}}" onclick="checkOnly('.essSubGroup-{{$sub_row['SubGroupName']}}', this.value);"></td>
-                                            <td class="w-img"><img src="{{$sub_row['ProfReferData']['lec_list_img'] or '' }}"></td>
+                                            <td class="w-img"><img src="{{$prof_img['lec_list_img'] or  ''}}"></td>
                                             <td class="w-data tx-left pl25">
                                                 <dl class="w-info">
                                                     <dt class="w-name">{{$sub_row['wProfName']}}</dt>
@@ -260,8 +268,11 @@
                                         </colgroup>
                                         <tbody>
                                         <tr>
+                                            @php
+                                                $prof_img = json_decode($sub_row['ProfReferData'],true)
+                                            @endphp
                                             <td class="w-chk"><input type="checkbox" id="prod_code_sub_{{$sub_row['ProdCode']}}" name="prod_code_sub[]" value="{{$sub_row['ProdCode']}}" class="choSubGroup"></td>
-                                            <td class="w-img"><img src="{{$sub_row['ProfReferData']['lec_list_img'] or '' }}"></td>
+                                            <td class="w-img"><img src="{{$prof_img['lec_list_img'] or  ''}}"></td>
                                             <td class="w-data tx-left pl25">
                                                 <dl class="w-info">
                                                     <dt class="w-name">{{$sub_row['wProfName']}}</dt>

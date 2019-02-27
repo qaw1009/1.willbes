@@ -1,31 +1,33 @@
 @extends('willbes.pc.layouts.master_no_sitdbar')
 
 @section('content')
-    <div class="willbes-Prof-Subject pl-zero NG tx-dark-black">
-        · 공지사항
-    </div>
-    <div class="willbes-CScenter c_both">
+    <div class="willbes-CScenter c_both mt40">
         <div class="Act2">
-            <!-- List -->
-            <div class="willbes-Leclist c_both">
+            <form id="url_form" name="url_form" method="GET">
+                @foreach($arr_input as $key => $val)
+                    <input type="hidden" name="{{ $key }}" value="{{ $val }}"/>
+                @endforeach
+            </form>
+
+            <div class="willbes-Leclist c_both mt40">
                 <div class="LecViewTable">
                     <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black bdb-gray tx-gray">
                         <colgroup>
-                            <col style="width: 65px;">
-                            <col style="width: 575px;">
+                            <col style="width: 640px;">
                             <col style="width: 150px;">
                             <col style="width: 150px;">
                         </colgroup>
                         <thead>
                         <tr>
-                            <th colspan="4" class="w-list tx-left  pl20">
-                                @if($data['IsBest'] == '1')<img src="{{ img_url('prof/icon_HOT.gif') }}" style="marign-right: 5px;">@endif
-                                <strong>{{$data['Title']}}</strong>
+                            <th colspan="3" class="w-list tx-left pl20">
+                                @if($data['IsBest'] == '1')<img src="{{ img_url('prof/icon_HOT.gif') }}" style="marign-right: 5px;">@endif <strong>{{$data['Title']}}</strong>
                             </th>
                         </tr>
                         <tr>
-                            <td class="w-acad pl20"><span class="oBox campus_{{$data['CampusCcd']}} NSK">{{$data['CampusCcd_Name']}}</span></td>
-                            <td class="w-lec tx-left pl20"></td>
+                            <td class="w-acad tx-left pl20">
+                                {{$data['Category_NameString']}}
+                                <span class="w-lec pl20"><span class="oBox campus_{{$data['CampusCcd']}} NSK">{{$data['CampusCcd_Name']}}</span></span>
+                            </td>
                             <td class="w-date">{{$data['RegDatm']}}<span class="row-line">|</span></td>
                             <td class="w-click"><strong>조회수</strong> {{$data['TotalReadCnt']}}</td>
                         </tr>
@@ -33,7 +35,7 @@
                         <tbody>
                         @if(empty($data['AttachData']) === false)
                             <tr>
-                                <td class="w-file tx-left pl20" colspan="4">
+                                <td class="w-file tx-left pl20" colspan="3">
                                     @foreach($data['AttachData'] as $row)
                                         <a href="{{front_url($default_path.'/notice/download?path=').urlencode($row['FilePath'].$row['FileName']).'&fname='.urlencode($row['RealName']).'&board_idx='.$board_idx }}" target="_blank">
                                             <img src="{{ img_url('prof/icon_file.gif') }}"> {{$row['RealName']}}</a>
@@ -48,7 +50,7 @@
                         </tr>
                         </tbody>
                     </table>
-                    <div class="search-Btn mt20 mb20 h36 p_re">
+                    <div class="search-Btn btnAuto90 h36 mt20 mb30 f_right">
                         <div class="btnAuto90 h36 mem-Btn bg-purple-gray bd-dark-gray f_right">
                             <a href="{{front_url($default_path.'/notice/index?'.$get_params)}}">목록</a>
                         </div>

@@ -24,7 +24,7 @@ class BannerDispModel extends WB_Model
         } else {
             $column = '
             A.BdIdx, A.SiteCode, A.CateCode, A.DispName, A.DispTypeCcd, A.DispRollingTypeCcd, A.DispRollingTime, A.IsUse, A.IsStatus, A.RegDatm, A.RegAdminIdx,
-            B.SiteName, IFNULL(C.CateName,"전체카테고리") AS CateName, D.CcdName,
+            B.SiteName, IFNULL(C.CateName,"전체카테고리") AS CateName, D.CcdName as DispTypeCcdName, G.CcdName as DispRollingTypeCcdName,
             E.wAdminName AS RegAdminName, F.wAdminName AS UpdAdminName
             ';
 
@@ -117,7 +117,7 @@ class BannerDispModel extends WB_Model
             $arr_condition['EQ']['CateCode'] = element('cate_code', $input, 0);
 
             $row = $this->findBannerDisp('BdIdx', $arr_condition);
-            if (count($row) > 0) {
+            if (empty($row) === false) {
                 throw new \Exception('중복된 노출섹션명이 있습니다.');
             }
 
@@ -171,7 +171,7 @@ class BannerDispModel extends WB_Model
             $arr_condition['EQ']['CateCode'] = element('cate_code', $input, 0);
             $arr_condition['NOT']['BdIdx'] = $bd_idx;
             $row = $this->findBannerDisp('BdIdx', $arr_condition);
-            if (count($row) > 0) {
+            if (empty($row) === false) {
                 throw new \Exception('중복된 노출섹션명이 있습니다.');
             }
 

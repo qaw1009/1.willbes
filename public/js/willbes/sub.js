@@ -62,6 +62,13 @@ $(function() {
     });
 });
 
+// 강의 > 온라인 수강신청, 학원강좌 수강신청 안내 버튼 Script
+$(function() {    
+    $('#requestInfo a').click(function() {
+        $('.InfoBtn a').removeClass('on').attr("onclick","openWin('requestInfo')");
+    });
+});
+
 // 유의사항안내보기 버튼 Script
 $(function() {
     $('.willbes-Cart-Txt .MoreBtn a').click(function() {
@@ -109,6 +116,21 @@ $(function() {
             $lec_info_table.hide().css('display','none');
             $(this).text('강좌 열기 ▼');
         }
+    });
+});
+
+// 즐겨찾는 고객센터 버튼 Script
+$(function() {
+    $('.ActIndex1 .center-Btn a').click(function() {
+        if ($(this).hasClass('on')) {
+            $(this).removeClass('on').text('서비스별 고객센터 전체보기 ▼').attr("onclick","openWin('CScenter')");
+        } else {
+            $(this).addClass('on').text('서비스별 고객센터 전체보기 ▲').attr("onclick","closeWin('CScenter')");
+        }
+    });
+    $('#CScenter.willbes-Layer-CScenterBox a').click(function() {
+        $('.ActIndex1 .center-Btn a').removeClass('on').text('서비스별 고객센터 전체보기 ▼').attr("onclick","openWin('CScenter')");
+
     });
 });
 
@@ -218,8 +240,7 @@ $(function() {
 
 // 레이어 팝업 위치 Script
 $(function() {
-    $('.w-info dt strong').click(function() {
-
+    $('.w-info dt strong, .open-info-modal').click(function() {
         var $target_layer = $('.willbes-Layer-Box');
 
         if($target_layer.css('display','')) {
@@ -234,7 +255,6 @@ $(function() {
         } else {
             $(this).parents('.willbes-Lec-Table').find('.willbes-Layer-Box').css('display','none').hide();
         }
-
     });
 });
 
@@ -390,4 +410,91 @@ $('*[id*=Sticky]:visible').ready(function() {
             }
         });
     }
+});
+
+/*
+// 타이머 이벤트 페이지와 겹쳐서 주석처리
+var DdayDiff = { //타이머를 설정합니다.
+    inDays: function(dd1, dd2) {
+        var tt2 = dd2.getTime();
+        var tt1 = dd1.getTime();
+
+        return Math.floor((tt2-tt1) / (1000 * 60 * 60 * 24));
+    },
+
+    inWeeks: function(dd1, dd2) {
+        var tt2 = dd2.getTime();
+        var tt1 = dd1.getTime();
+
+        return parseInt((tt2-tt1)/(24*3600*1000*7));
+    },
+
+    inMonths: function(dd1, dd2) {
+        var dd1Y = dd1.getFullYear();
+        var dd2Y = dd2.getFullYear();
+        var dd1M = dd1.getMonth();
+        var dd2M = dd2.getMonth();
+
+        return (dd2M+12*dd2Y)-(dd1M+12*dd1Y);
+    },
+
+    inYears: function(dd1, dd2) {
+        return dd2.getFullYear()-dd1.getFullYear();
+    }
+}
+
+function daycountDown() {
+    //event_day = new Date(2016,4,6,23,59,59);
+    // 한달 전 날짜로 셋팅 
+    event_day = new Date(2019,2,15,16,59,59);
+    now = new Date();
+    var timeGap = new Date(0, 0, 0, 0, 0, 0, (event_day - now)); 
+    
+    var Monthleft = event_day.getMonth() - now.getMonth();
+    var Dateleft = DdayDiff.inDays(now, event_day);
+    var Hourleft = timeGap.getHours();
+    var Minuteleft = timeGap.getMinutes(); 
+    var Secondleft = timeGap.getSeconds();
+
+    //alert(Monthleft+"-"+Dateleft+"-"+Hourleft+"-"+Minuteleft+"-"+Secondleft)
+
+    if((event_day.getTime() - now.getTime()) > 0) {
+        $("#dd1").attr("src", "/public/img/willbes/cop/number/" + parseInt(Dateleft/10) + ".png");
+        $("#dd2").attr("src", "/public/img/willbes/cop/number/" + parseInt(Dateleft%10) + ".png");
+
+        $("#hh1").attr("src", "/public/img/willbes/cop/number/" + parseInt(Hourleft/10) + ".png");
+        $("#hh2").attr("src", "/public/img/willbes/cop/number/" + parseInt(Hourleft%10) + ".png");
+
+        $("#mm1").attr("src", "/public/img/willbes/cop/number/" + parseInt(Minuteleft/10) + ".png");
+        $("#mm2").attr("src", "/public/img/willbes/cop/number/" + parseInt(Minuteleft%10) + ".png");
+
+        $("#ss1").attr("src", "/public/img/willbes/cop/number/" + parseInt(Secondleft/10) + ".png");
+        $("#ss2").attr("src", "/public/img/willbes/cop/number/" + parseInt(Secondleft%10) + ".png");
+        setTimeout(daycountDown, 1000);
+    }
+    else{
+        $("#newTopDday").hide();
+    }
+
+}
+daycountDown();
+// End 타이머
+*/
+
+// image flipped
+$(document).ready(function(){
+    $(".Flipped ul li a").mouseenter(function(){
+        var $img_hover = $(this).parents('li');
+
+        setTimeout(function(){
+            $img_hover.addClass("flipped");
+        }, 150);
+    });
+    $(".Flipped ul li a").mouseleave(function(){
+        var $img_hover = $(this).parents('li');
+
+        setTimeout(function(){
+            $img_hover.removeClass("flipped");
+        }, 150);
+    });
 });

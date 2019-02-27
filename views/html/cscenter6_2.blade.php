@@ -51,8 +51,7 @@
     <div class="Content p_re">
 
         <div class="willbes-CScenter c_both">
-            <div class="willbes-Lec-Tit NG bd-none tx-black pt-zero">· 학습 프로그램 설치</div>
-            <div class="Act6 mt30">
+            <div class="Act6">
                 <div class="willbes-Leclist c_both">
                     <div class="DownloadTable NG">
                         <table cellspacing="0" cellpadding="0" class="listTable upper-gray bdt-gray bdb-gray tx-gray fc-bd-none">

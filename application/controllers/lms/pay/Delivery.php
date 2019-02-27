@@ -90,8 +90,10 @@ class Delivery extends BaseOrder
                 ]
             ],
             'ORG2' => [
-                'LKR' => [
+                'EQ' => [
+                    'O.OrderIdx' => $this->_reqP('search_prod_value'),
                     'O.OrderNo' => $this->_reqP('search_prod_value'),
+                    'P.ProdCode' => $this->_reqP('search_prod_value'),
                     'OPD.InvoiceNo' => $this->_reqP('search_prod_value')
                 ],
                 'LKB' => [
@@ -210,7 +212,7 @@ class Delivery extends BaseOrder
     public function sampleDownload()
     {
         $this->load->helper('download');
-        $file_path = STORAGEPATH . 'sample/' . config_item('upload_prefix_dir') . '/sample_invoice.xlsx';
+        $file_path = STORAGEPATH . 'resources/sample/sample_invoice.xlsx';
         force_download($file_path, null);
     }
 

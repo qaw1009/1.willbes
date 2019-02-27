@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class BaseMember extends \app\controllers\FrontController
 {
-    protected $models = array('_lms/sys/code', '_lms/sys/site', 'memberF');
+    protected $models = array('_lms/sys/code', '_lms/sys/site', 'memberF', 'pointF');
     protected $helpers = array();
     protected $auth_controller = false;
     protected $auth_methods = array();
@@ -77,10 +77,10 @@ class BaseMember extends \app\controllers\FrontController
 
         } else {
             // 전화번호 패턴 체크
-            $pattern = "^01(?:0|1|[6-9])(?:\d{3}|\d{4})\d{4}$^";
+            $pattern = "^((01[1|6|7|8|9])[1-9]+[0-9]{6,7})|(010[1-9][0-9]{7})$^";
             if(!preg_match($pattern, $phone)){
                 // 전화번호 패턴 오류
-                return $this->json_error("전화번호를 정확하게 입력해주십시요.");
+                return $this->json_error("정상적인 휴대폰번호가 아닙니다.");
             }
         }
 
@@ -97,7 +97,13 @@ class BaseMember extends \app\controllers\FrontController
             $this->session->set_tempdata('sms_name', $name, 180);
             $this->session->set_tempdata('sms_id', $id, 180);
 
-            return $this->json_result(true,"인증번호를 발송하였습니다. {$code}",
+            $this->load->library('sendSms');
+
+            if($this->sendsms->send($phone, '윌비스 본인확인 번호입니다. ['.$code.']를 입력해주십시요.', '1544-5006') === false){
+                return $this->json_error('메세지 발송에 실패했습니다.\n다시한번 시도해 주십시요.');
+            }
+
+            return $this->json_result(true,"인증번호를 발송하였습니다.",
                 null, [
                     'limit_date' => $limit_date
                 ]);

@@ -109,11 +109,21 @@ class Login extends BaseMember
             if($data['IsChange'] != 'Y') {
                 // 아이디가 통합상태가 아니면
                 $this->session->set_userdata('combine_id', $data['MemId']);
-                redirect('/member/combine/');
+                if($this->_is_app == true){
+                    show_alert('아이디 통합회원 전환이 필요합니다.\n통합회원 전환은 PC에서 가능합니다.', 'back');
+                } else {
+                    redirect('/member/combine/');
+                }
             }
 
             // 실제 로그인처리하기 로그인 처리및 로그저장
-            $result = $this->memberFModel->storeMemberLogin($data);
+            if($this->_is_app == true){
+                $loginType = 'APP';
+            } else {
+                $loginType = 'NORMAL';
+            }
+
+            $result = $this->memberFModel->storeMemberLogin($data, $loginType);
 
             if($result === true){
                 // 아이디 저장 쿠키 생성/삭제
@@ -141,7 +151,7 @@ class Login extends BaseMember
                 }
 
             } else {
-                show_alert('로그인에 실패했습니다. 다시시도해 주십시요.', front_app_url("/member/loogin/", "www")."/?rtnUrl=".rawurlencode($rtnUrl), false);
+                show_alert('로그인에 실패했습니다. 다시시도해 주십시요.', front_app_url("/member/login/", "www")."/?rtnUrl=".rawurlencode($rtnUrl), false);
             }
         }
     }

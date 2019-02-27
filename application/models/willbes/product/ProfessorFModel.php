@@ -5,6 +5,7 @@ class ProfessorFModel extends WB_Model
 {
     private $_table = [
         'professor' => 'lms_professor',
+        'professor_banner' => 'lms_professor_banner',
         'pms_professor' => 'wbs_pms_professor',
         'site' => 'lms_site',
         'site_group' => 'lms_site_group'
@@ -65,6 +66,25 @@ class ProfessorFModel extends WB_Model
     }
 
     /**
+     * 교수 배너 조회
+     * @param int $prof_idx
+     * @return array
+     */
+    public function listProfessorBanner($prof_idx)
+    {
+        $results = [];
+        $data = $this->_conn->getListResult($this->_table['professor_banner'], 'BnrIdx, BnrType, BnrNum, BnrImgPath, BnrImgName, LinkType, LinkUrl', [
+            'EQ' => ['ProfIdx' => $prof_idx, 'IsStatus' => 'Y'],
+        ]);
+
+        foreach ($data as $idx => $row) {
+            $results[$row['BnrType']][$row['BnrNum']] = $row;
+        }
+
+        return $results;
+    }
+
+    /**
      * 단일교수 조회
      * @param $prof_idx
      * @param bool $is_refer
@@ -87,7 +107,7 @@ class ProfessorFModel extends WB_Model
      * @param $cate_code
      * @param $subject_idx
      * @param $limit_cnt
-     * @return array
+     * @return mixed
      */
     public function findProfessorStudyCommentData($prof_idx, $site_code, $cate_code, $subject_idx, $limit_cnt)
     {

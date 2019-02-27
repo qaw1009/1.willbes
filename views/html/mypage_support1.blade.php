@@ -92,14 +92,6 @@
         </span>
     </div>
     <div class="Content p_re">
-
-        <div class="willbes-Mypage-SUPPORTZONE c_both">
-            <div class="willbes-Prof-Subject willbes-Mypage-Tit NG">
-                · 쪽지관리
-            </div>
-        </div>
-        <!-- willbes-Mypage-SUPPORTZONE -->
-
         <div class="willbes-Leclist c_both">
             <div class="willbes-LecreplyList tx-gray c_both mt-zero">
                 <span class="willbes-Lec-Search willbes-SelectBox mb20 GM f_left">
@@ -120,7 +112,7 @@
                         <option value="학원">학원</option>
                     </select>
                 </span>
-                <span class="willbes-Lec-Search willbes-SelectBox mb20 GM f_right">
+                <span class="willbes-Lec-Search willbes-SelectBox mb20 GM f_left">
                     <div class="inputBox p_re">
                         <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="강좌명을 검색해 주세요" maxlength="30">
                         <button type="submit" onclick="" class="search-Btn">

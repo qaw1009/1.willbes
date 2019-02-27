@@ -35,6 +35,7 @@
         <div class="row">
             <div class="col-xs-12 text-center">
                 <button type="submit" class="btn btn-primary btn-search" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
+                <button type="button" class="btn btn-default btn-search" id="btn_reset">초기화</button>
             </div>
         </div>
     </form>
@@ -43,17 +44,17 @@
             <table id="list_ajax_table" class="table table-striped table-bordered">
                 <thead>
                 <tr>
-                    <th rowspan="2" class="pb-30">No</th>
-                    <th rowspan="2" class="pb-30">운영사이트</th>
-                    <th rowspan="2" class="pb-30">교수코드</th>
-                    <th rowspan="2" class="pb-30">교수아이디</th>
-                    <th rowspan="2" class="pb-30">교수명</th>
-                    <th rowspan="2" class="pb-20">카테고리정보<br/>(대표카테고리만 표기)</th>
-                    <th colspan="5" style="border-width: 1px; border-left: 0; border-bottom: 0;">게시판운영여부</th>
-                    <th rowspan="2" class="pb-30">사용여부</th>
-                    <th rowspan="2" class="pb-30">사용여부(W)</th>
-                    <th rowspan="2" class="pb-30">등록자</th>
-                    <th rowspan="2" class="pb-30">등록일</th>
+                    <th rowspan="2" class="valign-middle">No</th>
+                    <th rowspan="2" class="valign-middle">운영사이트</th>
+                    <th rowspan="2" class="valign-middle">교수코드</th>
+                    <th rowspan="2" class="valign-middle">교수아이디</th>
+                    <th rowspan="2" class="valign-middle">교수명</th>
+                    <th rowspan="2" class="valign-middle">카테고리정보<br/>(대표카테고리만 표기)</th>
+                    <th colspan="5">게시판운영여부</th>
+                    <th rowspan="2" class="valign-middle">사용여부</th>
+                    <th rowspan="2" class="valign-middle">사용여부(W)</th>
+                    <th rowspan="2" class="valign-middle">등록자</th>
+                    <th rowspan="2" class="valign-middle">등록일</th>
                 </tr>
                 <tr>
                     <th>공지</th>
@@ -78,7 +79,7 @@
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 buttons: [
-                    { text: '<i class="fa fa-sort-numeric-asc mr-5"></i> 정렬변경', className: 'btn-sm btn-success border-radius-reset mr-15 btn-reorder' },
+                    /*{ text: '<i class="fa fa-sort-numeric-asc mr-5"></i> 정렬변경', className: 'btn-sm btn-success border-radius-reset mr-15 btn-reorder' },*/
                     { text: '<i class="fa fa-pencil mr-5"></i> 교수 등록', className: 'btn-sm btn-primary border-radius-reset', action: function(e, dt, node, config) {
                         location.href = '{{ site_url('/product/base/professor/create') }}' + dtParamsToQueryString($datatable);
                     }}

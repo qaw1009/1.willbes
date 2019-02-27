@@ -17,13 +17,16 @@ class EventLectureModel extends WB_Model
         'member' => 'lms_member',
         'member_otherinfo' => 'lms_member_otherinfo',
         'banner' => 'lms_banner',
-        'admin' => 'wbs_sys_admin'
+        'admin' => 'wbs_sys_admin',
+        'product_subject' => 'lms_product_subject',
+        'professor' => 'lms_professor'
     ];
 
     public $_groupCcd = [
         'option' => '660',
         'SerialCcd' => '666',
-        'CandidateAreaCcd' => '631'
+        'CandidateAreaCcd' => '631',
+        'SmsSendCallBackNum' => '706'   //SMS 발송번호
     ];
 
     // 이벤트 접수 관리(정원제한), 댓글기능, 자동문자, 바로신청팝업
@@ -35,7 +38,7 @@ class EventLectureModel extends WB_Model
     ];
 
     // 신청유형
-    public $_requst_type_names = ['1' => '설명회','2' => '특강','3' => '이벤트','4'=>'합격수기'];
+    public $_request_type_names = ['1' => '설명회','2' => '특강','3' => '이벤트','4'=>'합격수기','5'=>'프로모션'];
     public $_option_rules = ['1','2','3'];
 
     // 참여구분
@@ -89,11 +92,11 @@ class EventLectureModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
             $column = '
-            A.ElIdx, A.SiteCode, A.CampusCcd, A.BIdx, A.IsBest, A.RequstType, A.EventName, A.RegisterStartDate, A.RegisterEndDate, A.OptionCcds,
-            A.ReadCnt, A.IsRegister, A.IsUse, A.RegDatm,
+            A.ElIdx, A.SiteCode, A.CampusCcd, A.PromotionCode, A.BIdx, A.IsBest, A.RequestType, A.EventName, A.RegisterStartDate, A.RegisterEndDate, A.OptionCcds,
+            A.ReadCnt, A.IsRegister, A.IsCopy, A.IsUse, A.RegDatm,
             G.SiteName, J.CcdName AS CampusName, D.CateCode, E.wAdminName AS RegAdminName, F.wAdminName AS UpdAdminName,
             K.FileFullPath, K.FileName, IFNULL(H.CCount,\'0\') AS CommentCount,
-            CASE RequstType WHEN 1 THEN \'설명회\' WHEN 2 THEN \'특강\' WHEN 3 THEN \'이벤트\' WHEN 4 THEN \'합격수기\' END AS RequstTypeName,
+            CASE RequestType WHEN 1 THEN \'설명회\' WHEN 2 THEN \'특강\' WHEN 3 THEN \'이벤트\' WHEN 4 THEN \'합격수기\' WHEN 5 THEN \'프로모션\' END AS RequestTypeName,
             CASE IsRegister WHEN \'Y\' THEN \'접수중\' WHEN \'N\' THEN \'마감\' END AS IsRegisterName,
             L.BannerName, L.BannerFullPath, L.BannerImgName, L.BannerImgRealName
             ';
@@ -168,6 +171,9 @@ class EventLectureModel extends WB_Model
                 }
             }
 
+            // 프로모션코드 셋팅
+            $promotionCode = $this->_setPromotionCode();
+
             $set_option_ccd = count($option_ccds) > 0 ? implode(',', $option_ccds) : '';
             $set_comment_use_area = '';
             if (empty($comment_use_area) === false) {
@@ -189,8 +195,9 @@ class EventLectureModel extends WB_Model
             $data = [
                 'SiteCode' => element('site_code', $input),
                 'CampusCcd' => element('campus_ccd', $input),
-                'RequstType' => element('requst_type', $input),
+                'RequestType' => element('request_type', $input),
                 'TakeType' => element('take_type', $input),
+                'PromotionCode' => $promotionCode,
                 'BIdx' => element('banner_idx', $input),
                 'SubjectIdx' => element('subject_idx', $input),
                 'ProfIdx' => element('prof_idx', $input),
@@ -272,14 +279,17 @@ class EventLectureModel extends WB_Model
             // 기존 접수관리 데이터 조회
             $arr_event_register = $this->listEventForRegister($el_idx);
 
+            // 프로모션코드 셋팅
+            $promotionCode = $this->_setPromotionCode();
+
             // 데이터 복사 실행
             $insert_column = '
-                SiteCode, CampusCcd, BIdx, IsBest, RequstType, TakeType, SubjectIdx, ProfIdx, RegisterStartDate, RegisterEndDate, IsRegister, IsUse, IsStatus, EventName,
+                SiteCode, CampusCcd, PromotionCode, BIdx, IsBest, RequestType, TakeType, SubjectIdx, ProfIdx, RegisterStartDate, RegisterEndDate, IsRegister, IsCopy, IsUse, IsStatus, EventName,
                 ContentType, Content, OptionCcds, LimitType, SelectType, SendTel, SmsContent, PopupTitle, CommentUseArea, Link, ReadCnt, AdjuReadCnt,
                 RegAdminIdx, RegIp
             ';
             $select_column = '
-                SiteCode, CampusCcd, BIdx, IsBest, RequstType, TakeType, SubjectIdx, ProfIdx, RegisterStartDate, RegisterEndDate, IsRegister, "N", IsStatus,
+                SiteCode, CampusCcd, '.$promotionCode.', BIdx, IsBest, RequestType, TakeType, SubjectIdx, ProfIdx, RegisterStartDate, RegisterEndDate, IsRegister, "Y", "N", IsStatus,
                 CONCAT("복사본-", IF(LEFT(EventName,4)="복사본-", REPLACE(EventName, LEFT(EventName,4), ""), EventName)) AS EventName,
                 ContentType, Content, OptionCcds, LimitType, SelectType, SendTel, SmsContent, PopupTitle, CommentUseArea, Link, ReadCnt, AdjuReadCnt,
                 REPLACE(RegAdminIdx, RegAdminIdx, "'.$admin_idx.'") AS RegAdminIdx,
@@ -388,8 +398,9 @@ class EventLectureModel extends WB_Model
             $data = [
                 'SiteCode' => element('site_code', $input),
                 'CampusCcd' => element('campus_ccd', $input),
-                'RequstType' => element('requst_type', $input),
+                'RequestType' => element('request_type', $input),
                 'TakeType' => element('take_type', $input),
+                'PromotionCode' => element('promotion_code', $input),
                 'BIdx' => element('banner_idx', $input),
                 'IsBest' => element('is_best', $input, 0),
                 'SubjectIdx' => element('subject_idx', $input),
@@ -438,8 +449,6 @@ class EventLectureModel extends WB_Model
                     }
                 }
             }
-
-
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();
@@ -469,14 +478,16 @@ class EventLectureModel extends WB_Model
     public function findEventForModify($arr_condition)
     {
         $column = "
-            A.ElIdx, A.SiteCode, A.CampusCcd, A.RequstType, A.TakeType, A.SubjectIdx, A.ProfIdx, A.IsBest, A.BIdx, F.BannerName,
+            A.ElIdx, A.SiteCode, A.CampusCcd, A.RequestType, A.TakeType, A.SubjectIdx, A.ProfIdx, A.IsBest, A.PromotionCode, A.BIdx, F.BannerName,
             A.RegisterStartDate, A.RegisterEndDate, A.IsRegister, A.IsUse, A.IsStatus, A.EventName,
             DATE_FORMAT(A.RegisterStartDate, '%Y-%m-%d') AS RegisterStartDay, DATE_FORMAT(A.RegisterStartDate, '%H') AS RegisterStartHour, DATE_FORMAT(A.RegisterStartDate, '%i') AS RegisterStartMin,
             DATE_FORMAT(A.RegisterEndDate, '%Y-%m-%d') AS RegisterEndDay, DATE_FORMAT(A.RegisterEndDate, '%H') AS RegisterEndHour, DATE_FORMAT(A.RegisterEndDate, '%i') AS RegisterEndMin,
             A.ContentType, A.Content, A.OptionCcds, A.LimitType, A.SelectType,
             A.SendTel, A.SmsContent, A.PopupTitle, A.CommentUseArea, A.Link, A.ReadCnt, A.AdjuReadCnt,
             A.RegDatm, A.RegAdminIdx, A.RegIp, A.UpdDatm, A.UpdAdminIdx, C.wAdminName AS RegAdminName, D.wAdminName AS UpdAdminName,
-            B.SiteName, E.CcdName AS CampusName
+            B.SiteName, E.CcdName AS CampusName,
+            G.SubjectName, H.ProfNickName,
+            B.SiteUrl
             ";
 
         $from = "
@@ -486,6 +497,8 @@ class EventLectureModel extends WB_Model
             LEFT OUTER JOIN {$this->_table['admin']} AS D ON A.UpdAdminIdx = D.wAdminIdx AND D.wIsStatus='Y'
             LEFT OUTER JOIN {$this->_table['sys_code']} AS E ON A.CampusCcd = E.Ccd AND E.IsStatus='Y'
             LEFT OUTER JOIN {$this->_table['banner']} as F ON A.BIdx = F.BIdx AND F.LinkType = 'layer'
+            LEFT OUTER JOIN {$this->_table['product_subject']} as G ON A.SubjectIdx = G.SubjectIdx
+            LEFT OUTER JOIN {$this->_table['professor']} as H ON A.ProfIdx = H.ProfIdx
         ";
 
         $where = $this->_conn->makeWhere($arr_condition);
@@ -864,6 +877,44 @@ class EventLectureModel extends WB_Model
     }
 
     /**
+     * 파일삭제
+     */
+    public function removeFile($attach_idx)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $arr_data = $this->_findBoardAttach($attach_idx)[0];
+            if (empty($arr_data) === true) {
+                throw new \Exception('삭제할 데이터가 없습니다.');
+            }
+
+            $file_path = $arr_data['FileFullPath'].$arr_data['FileName'];
+            $this->load->helper('file');
+            $real_file_path = public_to_upload_path($file_path);
+            /*if (@unlink($real_file_path) === false) {
+                throw new \Exception('이미지 삭제에 실패했습니다.');
+            }*/
+
+            $data = [
+                'IsUse' => 'N',
+                'UpdAdminIdx' => $this->session->userdata('admin_idx'),
+                'UpdDatm' => date('Y-m-d H:i:s')
+            ];
+            $this->_conn->set($data)->where('EfIdx', $attach_idx);
+
+            if($this->_conn->update($this->_table['event_file'])=== false) {
+                throw new \Exception('데이터 수정에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
      * 파일저장
      * @param $el_idx
      * @param $cnt
@@ -1143,7 +1194,13 @@ class EventLectureModel extends WB_Model
         try {
             $el_attach_data = $_FILES['attach_file']['size'];
             $arr_event_attach = $this->_getEventAttachArray($el_idx);
-            $arr_event_attach_keys = array_keys($arr_event_attach);
+            $event_attach_data = [];
+            foreach ($arr_event_attach as $row) {
+                $event_attach_data[$row['num']] = [
+                    'EfIdx' => $row['EfIdx'],
+                    'FileInfo' => $row['FileInfo']
+                ];
+            }
 
             $this->load->library('upload');
             $this->load->library('image_lib');
@@ -1166,7 +1223,7 @@ class EventLectureModel extends WB_Model
                         }
                     }
 
-                    if (empty($arr_event_attach_keys[$key]) === true) {
+                    if (empty($event_attach_data[$key]) === true) {
                         //ins
                         $set_attach_data['ElIdx'] = $el_idx;
                         $set_attach_data['FileName'] = $uploaded[$key]['orig_name'];
@@ -1182,10 +1239,10 @@ class EventLectureModel extends WB_Model
                     } else {
                         //up, 기존 파일 삭제
                         $this->load->helper('file');
-                        $real_img_path = public_to_upload_path($arr_event_attach[$arr_event_attach_keys[$key]]);
+                        $real_img_path = public_to_upload_path($event_attach_data[$key]['FileInfo']);
 
                         if (@unlink($real_img_path) === false) {
-                            throw new \Exception('이미지 삭제에 실패했습니다.');
+                            /*throw new \Exception('이미지 삭제에 실패했습니다.');*/
                         }
 
                         $set_attach_data['FileFullPath'] = $this->upload->_upload_url . $upload_dir . '/';
@@ -1193,7 +1250,7 @@ class EventLectureModel extends WB_Model
                         $set_attach_data['FileRealName'] = $uploaded[$key]['client_name'];
 
                         $whereData = [
-                            'EfIdx' => $arr_event_attach_keys[$key]
+                            'EfIdx' => $event_attach_data[$key]['EfIdx']
                         ];
 
                         if ($this->_updateEventAttach($set_attach_data, $whereData) === false) {
@@ -1216,17 +1273,58 @@ class EventLectureModel extends WB_Model
      */
     private function _getEventAttachArray($el_idx)
     {
-        $arr_condition = [
-            'EQ' => [
-                'IsUse' => 'Y',
-                'ElIdx' => $el_idx
-            ]
-        ];
-        $data = $this->_conn->getListResult($this->_table['event_file'], 'EfIdx, CONCAT(FileFullPath, FileName) AS FileInfo', $arr_condition, null, null, [
-            'EfIdx' => 'asc'
-        ]);
+        $query = "
+            SELECT a.*
+            FROM (
+                SELECT '0' AS num, EfIdx, CONCAT(FileFullPath, FileName) AS FileInfo
+                FROM {$this->_table['event_file']}
+                WHERE IsUse = 'Y' AND ElIdx = '{$el_idx}' AND FileType = 'C' ORDER BY EfIdx DESC LIMIT 1
+            ) AS a
+            
+            UNION ALL
+            
+            SELECT b.*
+            FROM (
+                SELECT '1' AS num, EfIdx, CONCAT(FileFullPath, FileName) AS FileInfo
+                FROM {$this->_table['event_file']}
+                WHERE IsUse = 'Y' AND ElIdx = '{$el_idx}' AND FileType = 'F' ORDER BY EfIdx DESC LIMIT 1
+            ) AS b
+            
+            UNION ALL
+            
+            SELECT c.*
+            FROM (
+                SELECT '2' AS num, EfIdx, CONCAT(FileFullPath, FileName) AS FileInfo
+                FROM {$this->_table['event_file']}
+                WHERE IsUse = 'Y' AND ElIdx = '{$el_idx}' AND FileType = 'S' ORDER BY EfIdx DESC LIMIT 1
+            ) AS c
+            
+            UNION ALL
+            
+            SELECT d.*
+            FROM (
+                SELECT '3' AS num, EfIdx, CONCAT(FileFullPath, FileName) AS FileInfo
+                FROM {$this->_table['event_file']}
+                WHERE IsUse = 'Y' AND ElIdx = '{$el_idx}' AND FileType = 'I' ORDER BY EfIdx DESC LIMIT 1
+            ) AS d
+        ";
 
-        $data = array_pluck($data, 'FileInfo', 'EfIdx');
+        $data = $this->_conn->query($query)->result_array();
+        return $data;
+    }
+
+    /**
+     * 파일 식별자 기준 파일 목록 조회
+     * @param $attach_idx
+     * @return array|int
+     */
+    private function _findBoardAttach($attach_idx)
+    {
+        $column = 'EfIdx, ElIdx, FileFullPath, FileName';
+        $arr_condition = ['EQ' => ['IsUse' => 'Y', 'EfIdx' => $attach_idx]];
+        $data = $this->_conn->getListResult($this->_table['event_file'], $column, $arr_condition, null, null, [
+            'EfIdx' => 'DESC'
+        ]);
 
         return $data;
     }
@@ -1252,5 +1350,11 @@ class EventLectureModel extends WB_Model
             return false;
         }
         return true;
+    }
+
+    private function _setPromotionCode()
+    {
+        $row = $this->_conn->getFindResult($this->_table['event_lecture'], 'ifnull(max(PromotionCode) + 1, 1001) as PromotionCode');
+        return $row['PromotionCode'];
     }
 }

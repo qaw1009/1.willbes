@@ -52,14 +52,13 @@ class Event extends \app\controllers\FrontController
             $page_url = '/event/list/cate/'.$params['cate'].'/pattern/'.$onoff_type;
             $view_url = '/event/show/cate/'.$params['cate'].'/pattern/'.$onoff_type;
         } else {
-            $pass_val = '/' . config_item('app_pass_site_prefix');
             $onoff_type = $params[0];
-            $page_url = $pass_val.'/event/list/'.$onoff_type;
-            $view_url = $pass_val.'/event/show/'.$onoff_type;
+            $page_url = '/event/list/'.$onoff_type;
+            $view_url = '/event/show/'.$onoff_type;
         }
 
         if (empty($onoff_type) === true) {
-            redirect($page_url);
+            show_alert('잘못된 접근 입니다.', '/');
         }
         $this->setDefaultData($onoff_type, $page_url, $view_url);
 
@@ -73,7 +72,7 @@ class Event extends \app\controllers\FrontController
                 break;
 
             default:
-                redirect($page_url);
+                show_alert('잘못된 접근 입니다.', '/');
                 break;
         }
     }
@@ -95,19 +94,17 @@ class Event extends \app\controllers\FrontController
 
         //학원,온라인 경로 셋팅
         if (empty($this->_is_pass_site) === true) {
-            $pass_val = '';
             $onoff_type = $params['pattern'];
             $page_url = '/event/list/cate/'.$params['cate'].'/pattern/'.$onoff_type;
             $frame_params = 'cate_code='.$params['cate'].'&event_idx='.element('event_idx', $arr_input).'&pattern='.$onoff_type;
         } else {
-            $pass_val = '/' . config_item('app_pass_site_prefix');
             $onoff_type = $params[0];
-            $page_url = $pass_val.'/event/list/'.$onoff_type;
+            $page_url = '/event/list/'.$onoff_type;
             $frame_params = 'cate_code=&event_idx='.element('event_idx', $arr_input).'&pattern='.$onoff_type;
         }
 
         if (empty($onoff_type) === true) {
-            redirect($page_url);
+            show_alert('잘못된 접근 입니다.', '/');
         }
 
         $default_condition = [
@@ -141,17 +138,37 @@ class Event extends \app\controllers\FrontController
                 break;
 
             default:
-                redirect($pass_val . '/event/list/ongoing');
+                show_alert('잘못된 접근 입니다.', '/');
                 break;
         }
 
         //이벤트 기본정보 조회
         $data = $this->eventFModel->findEvent($arr_condition);
-        if (count($data) < 1) {
-            show_alert('데이터 조회에 실패했습니다.', site_url($page_url), false);
+        if (empty($data) === true) {
+            show_alert('데이터 조회에 실패했습니다.', front_url($page_url), false);
         }
         $data['data_option_ccd'] = array_flip(explode(',', $data['OptionCcds']));   // 관리옵션 데이터 가공처리
         $data['data_comment_use_area'] = array_flip(explode(',', $data['CommentUseArea']));   // 댓글사용영역 데이터 가공처리
+
+        //이벤트 파일 기본 검색 조건
+        $arr_condition_file = [
+            'EQ' => [
+                'ElIdx' => element('event_idx', $arr_input),
+                'IsUse' => 'Y'
+            ]
+        ];
+
+        //이벤트 내용관련 파일
+        $arr_condition_file_C = array_merge_recursive($arr_condition_file,[
+            'EQ' => [ 'FileType' => 'C' ]
+        ]);
+        $arr_base['file_C'] = $this->eventFModel->findAttachData($arr_condition_file_C);
+
+        //이벤트 첨부파일
+        $arr_condition_file_F = array_merge_recursive($arr_condition_file,[
+            'EQ' => [ 'FileType' => 'F' ]
+        ]);
+        $arr_base['file_F'] = $this->eventFModel->findAttachData($arr_condition_file_F);
 
         //이벤트 신청리스트 조회
         $arr_register_data = $this->eventFModel->listEventForRegister($default_condition);
@@ -161,7 +178,6 @@ class Event extends \app\controllers\FrontController
 
         $arr_base['page_url'] = $page_url;
         $arr_base['onoff_type'] = $onoff_type;
-        $arr_base['default_path'] = $pass_val;
         $arr_base['content_type'] = $this->eventFModel->_content_type;
         $arr_base['option_ccd'] = $this->eventFModel->_ccd['option'];
         $arr_base['register_limit_type'] = $this->eventFModel->_register_limit_type;
@@ -190,12 +206,6 @@ class Event extends \app\controllers\FrontController
         $get_page_params = 'cate_code=' . element('cate_code', $arr_input) . '&event_idx=' . element('event_idx', $arr_input) . '&pattern=' . element('pattern', $arr_input);
         $onoff_type = element('pattern', $arr_input);
 
-        if (empty($this->_is_pass_site) === true) {
-            $pass_val = '';
-        } else {
-            $pass_val = '/' . config_item('app_pass_site_prefix');
-        }
-
         $comment_create_type = '1';
         if ($onoff_type == 'ongoing') {
             if ($this->session->userdata('is_login') === false) {
@@ -205,7 +215,7 @@ class Event extends \app\controllers\FrontController
             $comment_create_type = '3';
         }
 
-        $arr_base['page_url'] = $pass_val.'/event/frameCommentList';
+        $arr_base['page_url'] = '/event/frameCommentList';
         $arr_base['comment_create_type'] = $comment_create_type;
 
         $arr_condition_notice = [
@@ -561,7 +571,6 @@ class Event extends \app\controllers\FrontController
                         //비로그인 상태
                         $return_type = '2';
                     } else {
-                        echo 'bbb';
                         //로그인상태
                         $m_count = $this->eventFModel->getMemberForRegisterCount(element('event_idx', $arr_input), ['EQ' => ['a.MemIdx' => $this->session->userdata('mem_idx')]]);
                         if ($m_count < $register_count) {

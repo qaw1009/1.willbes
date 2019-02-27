@@ -14,18 +14,15 @@
             @endforeach
         </form>
         <div class="willbes-CScenter c_both">
-            <div class="willbes-Lec-Tit NG bd-none tx-black c_both pt-zero">
-                · 수험뉴스
-                <div class="willbes-Lec-Search GM f_right">
-                    <div class="inputBox p_re">
-                        <input type="text" id="s_keyword" name="s_keyword" maxlength="30" value="{{ element('s_keyword', $arr_input) }}" class="labelSearch" placeholder="제목 또는 내용을 입력해 주세요">
-                        <button type="button" onclick="goUrl('s_keyword', document.getElementById('s_keyword').value)" class="search-Btn">
-                            <span>검색</span>
-                        </button>
-                    </div>
+            <div class="willbes-Lec-Search GM mt0 mb20">
+                <div class="inputBox p_re f_left">
+                    <input type="text" id="s_keyword" name="s_keyword" maxlength="30" value="{{ element('s_keyword', $arr_input) }}" class="labelSearch" placeholder="제목 또는 내용을 입력해 주세요">
+                    <button type="button" onclick="goUrl('s_keyword', document.getElementById('s_keyword').value)" class="search-Btn">
+                        <span>검색</span>
+                    </button>
                 </div>
             </div>
-            <div class="Act2 mt30">
+            <div class="Act2">
                 <!-- List -->
                 <div class="willbes-Leclist c_both">
                     <div class="LeclistTable">
@@ -57,7 +54,7 @@
                                 <tr>
                                     <td class="w-no">@if($row['IsBest'] == '1')<img src="{{ img_url('prof/icon_HOT.gif') }}">@else{{$paging['rownum']}}@endif</td>
                                     <td class="w-list tx-left pl20">
-                                        <a href="{{front_url($default_path.'/examNews/show?board_idx='.$row['BoardIdx'].'&'.$get_params)}}">
+                                        <a href="{{front_url($default_path.'/examNews/show/cate/'.$__cfg['CateCode'].'?board_idx='.$row['BoardIdx'].'&'.$get_params)}}">
                                             @if($row['IsBest'] == '1')<strong>@endif{{hpSubString($row['Title'],0,40,'...')}}@if($row['IsBest'] == '1')</strong>@endif
                                         </a>
                                     </td>
@@ -85,7 +82,7 @@
         </div>
         <!-- willbes-CScenter -->
     </div>
-    {!! banner('고객센터_우측날개', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
+    {!! banner('수험정보_우측', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
 </div>
 <!-- End Container -->
 @stop

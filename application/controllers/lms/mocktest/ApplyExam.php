@@ -43,51 +43,63 @@ class ApplyExam extends \app\controllers\BaseController
     /**
      * 리스트
      */
-    public function list()
+    public function list($params=[])
     {
+
+        if(empty($params) == false) {
+            $excel = $params[0];
+        } else {
+            $excel = '';
+        }
+
         $rules = [
             ['field' => 'search_site_code', 'label' => '사이트', 'rules' => 'trim|is_natural_no_zero'],
             ['field' => 'search_year', 'label' => '연도', 'rules' => 'trim|is_natural_no_zero'],
             ['field' => 'search_round', 'label' => '회차', 'rules' => 'trim|is_natural_no_zero'],
             ['field' => 'search_takeArea', 'label' => '응시지역', 'rules' => 'trim|is_natural_no_zero'],
-            ['field' => 'search_startDate', 'label' => '기간시작일', 'rules' => 'trim|alpha_dash'],
-            ['field' => 'search_endDate', 'label' => '기간종료일', 'rules' => 'trim|alpha_dash'],
             ['field' => 'search_fi', 'label' => '검색', 'rules' => 'trim'],
             ['field' => 'length', 'label' => 'Length', 'rules' => 'trim|numeric'],
             ['field' => 'start', 'label' => 'Start', 'rules' => 'trim|numeric'],
         ];
         if ($this->validate($rules) === false) return;
 
-        $search_startDate = $search_endDate = null;
-        if($this->input->post('search_startDate') && $this->input->post('search_endDate')) {
-            $search_startDate = $this->input->post('search_startDate').'00:00:00';
-            $search_endDate = $this->input->post('search_startDate').'23:59:59';
-        }
-
         $condition = [
             'EQ' => [
-                'PD.SiteCode' => $this->input->post('search_site_code'),
-                'MP.MockYear' => $this->input->post('search_year'),
-                'MP.MockRotationNo' => $this->input->post('search_round'),
-                'MAP.TakeArea' => $this->input->post('search_TakeArea'),
+                'p.SiteCode' => $this->input->post('search_site_code'),
+                'pm.MockYear' => $this->input->post('search_year'),
+                'pm.MockRotationNo' => $this->input->post('search_round'),
+                'mr.TakeArea' => $this->input->post('search_TakeArea'),
             ],
             'BET' => [
-                'PD.SaleStartDatm' => [$search_startDate, $search_endDate]
             ],
             'ORG' => [
                 'LKB' => [
-                    'PD.ProdName' => $this->input->post('search_fi', true),
-                    'MAP.ProdCode' => $this->input->post('search_fi', true),
+                    'p.ProdName' => $this->input->post('search_fi', true),
+                    'p.ProdCode' => $this->input->post('search_fi', true),
                 ]
             ],
         ];
-        list($data, $count) = $this->applyExamModel->mainList($condition, $this->input->post('length'), $this->input->post('start'));
 
-        return $this->response([
-            'recordsTotal' => $count,
-            'recordsFiltered' => $count,
-            'data' => $data,
-        ]);
+
+        if($excel === 'Y') {
+
+            $data  = $this->applyExamModel->mockListExcel($condition);
+
+            $headers = ['연도', '회차', '모의고사명', '응시형태', 'off 마감인원', '응시지역', '결제완료', '환불완료', '응시인원'];
+
+            $this->load->library('excel');
+            $this->excel->exportExcel('모의고사-모의고사별접수현황('.date("Y-m-d").')', $data, $headers);
+
+        } else {
+
+            list($data, $count) = $this->applyExamModel->mockList($condition, $this->input->post('length'), $this->input->post('start'));
+            return $this->response([
+                'recordsTotal' => $count,
+                'recordsFiltered' => $count,
+                'data' => $data,
+            ]);
+
+        }
     }
 
 }

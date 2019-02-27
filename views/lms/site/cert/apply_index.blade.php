@@ -52,7 +52,7 @@
                             <option value="N">취소</option>
                         </select>
 
-                        <select class="form-control" id="search_is_use" name="search_is_use">
+                        <select class="form-control" id="search_order" name="search_order">
                             <option value="">구매여부</option>
                             <option value="Y">Y</option>
                             <option value="N">N</option>
@@ -83,9 +83,9 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-12 text-right">
+            <div class="col-xs-12 text-center">
                 <button type="submit" class="btn btn-primary btn-search" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
-                <button type="button" class="btn btn-default mr-20" id="_btn_reset">검색초기화</button>
+                <button type="button" class="btn btn-default btn-search" id="btn_reset">초기화</button>
             </div>
         </div>
     </form>
@@ -176,7 +176,7 @@
                             return '<a href="javascript:;" class="btn-info btn-sm btn-primary border-radius-reset" data-idx="'+ data.CaIdx+ '">확인</a>';
                         }},
                     {'data' : null, 'render' : function(data,type,row,meta) {
-                            return '<a class="btn-attachFile glyphicon glyphicon-file" href="{{site_url('/site/cert/apply/download/')}}'+encodeURIComponent(data.AttachFilePath+data.AttachFileName)+'/'+ encodeURIComponent(data.AttachFileReal) +'" ></a>';
+                            return data.AttachFileName !='' ? '<a class="btn-attachFile glyphicon glyphicon-file" href="{{site_url('/site/cert/apply/download/')}}?filename='+encodeURIComponent(data.AttachFilePath+data.AttachFileName)+'&filename_ori='+ encodeURIComponent(data.AttachFileReal) +'" target="_blank"></a>' : '';
                         }},
                     {'data' : 'RegDatm'},
                     {'data' : 'ApprovalAdmin_Name'},
@@ -202,11 +202,12 @@
                                 return '';
                             }
                         }},
-
-                    {'data' : 'OrderStatus', 'name' : 'OrderStatus'},
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            return (data.OrderStatus != null) ? 'Y' : '<span class="red">N</span>';
+                        }},
                     {'data' : 'OrderDatm' , 'name' : 'OrderDatm'},
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            return data.ExtendStatus+ (data.ExtendStatus=='Y' ? '<Br>'+data.ExtendDatm : '');
+                            return data.ExtendStatus;//data.ExtendStatus+ (data.ExtendStatus=='Y' ? '<Br>'+data.ExtendDatm : '');
                         },'name' : 'Extend'}
                 ]
             });

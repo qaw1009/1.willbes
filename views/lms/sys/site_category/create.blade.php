@@ -30,8 +30,8 @@
             </div>
             <label class="control-label col-md-2" for="">운영 사이트 코드
             </label>
-            <div class="col-md-4">
-                <p id="selected_site_code" class="form-control-static">{{ $site_code }}</p>
+            <div class="col-md-4 form-control-static">
+                <p id="selected_site_code">{{ $site_code }}</p>
             </div>
         </div>
         {{-- 중분류 등록 --}}
@@ -48,16 +48,16 @@
                 </div>
                 <label class="control-label col-md-2">대분류 코드
                 </label>
-                <div class="col-md-4">
-                    <p id="selected_group_cate_code" class="form-control-static">{{ $group_cate_code }}</p>
+                <div class="col-md-4 form-control-static">
+                    <p id="selected_group_cate_code">{{ $group_cate_code }}</p>
                 </div>
             </div>
         @endif
         <div class="form-group form-group-sm">
             <label class="control-label col-md-2">카테고리 정보
             </label>
-            <div class="col-md-10">
-                <p id="cate_route_name" class="form-control-static pl-0"></p>
+            <div class="col-md-10 form-control-static">
+                <p id="cate_route_name" class="pl-0"></p>
             </div>
         </div>
         <div class="form-group form-group-sm">
@@ -68,8 +68,8 @@
             </div>
             <label class="control-label col-md-2">분류코드
             </label>
-            <div class="col-md-4">
-                <p class="form-control-static">@if($method == 'PUT'){{ $data['CateCode'] }}@else # 등록 시 자동 생성 @endif</p>
+            <div class="col-md-4 form-control-static">
+                @if($method == 'PUT'){{ $data['CateCode'] }}@else # 등록 시 자동 생성 @endif
             </div>
         </div>
         <div class="form-group form-group-sm">
@@ -86,32 +86,32 @@
             <div class="col-md-1">
                 <input type="text" name="order_num" class="form-control" value="{{ $data['OrderNum'] }}" style="width: 60px;" />
             </div>
-            <div class="col-md-3">
-                <p class="form-control-static"># 미 입력시 마지막 DP</p>
+            <div class="col-md-3 form-control-static">
+                # 미 입력시 마지막 DP
             </div>
         </div>
         <div class="form-group form-group-sm">
             <label class="control-label col-md-2">등록자
             </label>
-            <div class="col-md-4">
-                <p class="form-control-static">{{ $data['RegAdminName'] }}</p>
+            <div class="col-md-4 form-control-static">
+                {{ $data['RegAdminName'] }}
             </div>
             <label class="control-label col-md-2">등록일
             </label>
-            <div class="col-md-4">
-                <p class="form-control-static">{{ $data['RegDatm'] }}</p>
+            <div class="col-md-4 form-control-static">
+                {{ $data['RegDatm'] }}
             </div>
         </div>
         <div class="form-group form-group-sm">
             <label class="control-label col-md-2">최종 수정자
             </label>
-            <div class="col-md-4">
-                <p class="form-control-static">{{ $data['UpdAdminName'] }}</p>
+            <div class="col-md-4 form-control-static">
+                {{ $data['UpdAdminName'] }}
             </div>
             <label class="control-label col-md-2">최종 수정일
             </label>
-            <div class="col-md-4">
-                <p class="form-control-static">{{ $data['UpdDatm'] }}</p>
+            <div class="col-md-4 form-control-static">
+                {{ $data['UpdDatm'] }}
             </div>
         </div>
         <script type="text/javascript">
@@ -127,7 +127,7 @@
                     var route = $regi_form.find('select[name="site_code"] option:selected').text();
                     $('#selected_site_code').html($regi_form.find('select[name="site_code"]').val());
 
-                    if ($regi_form.find('select[name="group_cate_code"] option:selected').text() != '') {
+                    if ($regi_form.find('select[name="group_cate_code"] option:selected').text() !== '') {
                         route += ' > ' + $regi_form.find('select[name="group_cate_code"] option:selected').text();
                         $('#selected_group_cate_code').html($regi_form.find('select[name="group_cate_code"]').val());
                     }

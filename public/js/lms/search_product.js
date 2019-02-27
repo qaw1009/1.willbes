@@ -13,6 +13,8 @@ function prodListChange(prod_type, learn_pattern_ccd) {
         url = '/common/searchReadingRoom/';
     } else if (prod_type === 'locker') {
         url = '/common/searchLockerRoom/';
+    } else if (prod_type === 'mock_exam') {
+        url = '/common/searchMockTest/';
     } else {
         url = '/common/searchLectureAll/';
     }

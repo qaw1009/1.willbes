@@ -1,5 +1,5 @@
 <div class="col-md-12 top_col">
-    <div class="row main_top_header @if(SUB_DOMAIN == 'wbs')wbs @else(SUB_DOMAIN == 'lms')lms @endif">
+    <div class="row main_top_header {{ APP_NAME }}">
         <div class="col-md-12 mt-10">
             <div class="col-md-4 logo">
                 <img src="/public/img/logo.png" class="ml-15 mr-20"/>
@@ -97,6 +97,10 @@
                 </li>
                 @if(isset($__menu['GNB']) === true)
                     @foreach($__menu['GNB'] as $bmenu)
+                        @php
+                            $css_right_menu = $loop->count > 15 && $loop->remaining <= 2 ? 'right-menu' : '';
+                        @endphp
+
                         @if(isset($bmenu['Children']) === true)
                             <li role="presentation" class="dropdown">
                                 <a id="{{ $bmenu['TreeNum'] }}" href="#">
@@ -107,7 +111,7 @@
                                         @if(isset($mmenu['Children']) === true)
                                             <li role="presentation" class="dropdown-submenu">
                                                 <a id="{{ $mmenu['TreeNum'] }}" href="#">{{ $mmenu['MenuName'] }}</a>
-                                                <ul class="dropdown-menu animated fadeIn">
+                                                <ul class="dropdown-menu animated fadeIn {{ $css_right_menu }}">
                                                     @foreach($mmenu['Children'] as $sidx => $smenu)
                                                         <li role="presentation"><a tabindex="-1" href="{{ site_url($smenu['MenuUrl']) }}" class="{{ isset($__menu['CURRENT']['MenuIdx']) && $sidx == $__menu['CURRENT']['MenuIdx'] ? 'current' : '' }}">{{ $smenu['MenuName'] }}</a></li>
                                                     @endforeach

@@ -211,4 +211,20 @@ class CodeModel extends WB_Model
 
         return true;
     }
+
+    /**
+     * 특정코드의 정보를 얻어온다.
+     * @param $wCcd
+     * @return array|int
+     */
+    public function getCode($wCcd)
+    {
+        $data = $this->_conn->getListResult($this->_table, 'wCcd, wCcdName, wCcdValue', [
+            'EQ' => ['wCcd' => $wCcd, 'wIsUse' => 'Y', 'wIsStatus' => 'Y']
+        ], 1, null, [
+            'wOrderNum' => 'asc'
+        ]);
+
+        return $data;
+    }
 }

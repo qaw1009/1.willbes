@@ -1,0 +1,216 @@
+/*********************************************     Main Container : Cop_pro     *********************************************/
+/* Main Container : Cop_pro */
+.pro .tx-color {
+    color: #0c5dc0;
+}
+.Section2 { background: #f7f7f7}
+
+/* Main Container : Tit : Cop_pro */
+.pro .smallTit {
+    border-top:1px solid #b8b8b8;
+    font-size: 22px;
+    color:#363636;    
+    position: relative;
+}
+.pro .smallTit p {
+    position: absolute;
+    top:-15px;
+    text-align: center;
+    width: 100%;
+}
+.pro .smallTit span {
+    padding:0 20px;
+    font-weight: 600;
+    background: #fff;
+}
+.pro .smallTit strong {
+    color:#0c5dc0;
+}
+
+.pro .smallTit a {
+    position: absolute;
+    width: 23px;
+    top:-12px;
+    right:0;    
+    z-index: 1;
+}
+.pro .smallTit2 span {
+    background:#f7f7f7;
+}
+
+.pro .Section.MainVisual iframe {
+    position: absolute;    
+    width: 270px;
+    height: 152px;
+    top: 72px;
+    right: 0;
+    z-index: 1;
+}
+
+.pro .Section .will-big-Tit .cop-color {
+    color: #0c5dc0;
+}
+
+/**/
+.pro .Profinfo {
+    position: relative;
+}
+.pro .Profinfo li {
+    display: inline;
+    float: left;
+    margin-right:2px;
+}
+.pro .Profinfo li:last-child {
+    margin:0;
+}
+.pro .Profinfo ul:after {
+    content:'';
+    display: block;
+    clear:both;
+}
+.pro .Profinfo span {
+    position: absolute;
+    width: 100px;
+    top:720px;
+    left:60px;
+    z-index: 1;
+}
+.pro .Profinfo span a {
+    display: block;
+    text-align: center;
+    background: #fff;
+    color:#0c5dc0;
+    font-size: 14px;
+    font-weight: 600;
+    padding:10px 0 12px;
+    border-radius: 0 20px 20px;
+    border:2px solid #0c5dc0;
+}
+.pro .Profinfo span a:hover {
+    background: #0c5dc0;
+    color:#fff;
+}
+.pro .Profinfo span.btn02 {
+    left:863px;
+}
+
+/**/
+.pro .proPAss li {
+    display: inline;
+    float: left;
+}
+.pro .proPAss li:last-child {
+    margin-left:6px;
+}
+.pro .proPAss:after {
+    content:'';
+    display: block;
+    clear:both;
+}
+
+/**/
+.pro .mou li {
+    display: inline;
+    float: left;
+    margin-left:6px;
+}
+.pro .mou li:first-child {
+    margin:0;
+}
+.pro .mou ul:after {
+    content:'';
+    display: block;
+    clear:both;
+}
+.pro .mou .bx-wrapper .bx-viewport {
+    z-index: 10;
+}
+.pro .mou .bx-wrapper .bx-controls-direction {
+    width: 100%;
+    height: 65px;
+    position: absolute;
+    top:50%;
+    margin-top: -32px;
+}
+.pro .mou .bx-wrapper .bx-controls-direction a {
+    width: 64px;
+    height: 65px;
+}
+.pro .mou .bx-wrapper .bx-controls-direction a.disabled {
+    display: block;
+    opacity: 0.5;
+}
+.pro .mou .bx-wrapper .bx-prev {
+    background:url("../../img/willbes/cop_pro/btn_prev01.png") no-repeat center center;
+    left: -26px;
+    right: inherit;
+}
+.pro .mou .bx-wrapper .bx-next {
+    background:url("../../img/willbes/cop_pro/btn_next01.png") no-repeat center center;
+    left: inherit;
+    right: -34px;
+}
+
+/* Main Container : Prof : Cop_pro */
+.pro .Section .ProfCopBox > li {
+    position: relative;
+    display: inline;
+    float: left;
+    width: 220px;
+    height: 327px;
+    margin-left: 5px;
+}
+.pro .Section .ProfCopBox > li:first-child {
+    margin-left: 0;
+}
+.pro .Section .ProfCopBox .ProfBtns {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;    
+    z-index: 1;
+}
+
+/* Main Container : pass : cSlider : sliderPassList : Cop_pro */
+.pro .cSlider.sliderPassList .bx-wrapper .bx-prev {
+    background: url("../../img/willbes/Cop_pro/btn_prev_on.png") no-repeat 0 0;
+    left: -40px;
+}
+.pro .cSlider.sliderPassList .bx-wrapper .bx-next {
+    background: url("../../img/willbes/Cop_pro/btn_next_on.png") no-repeat 0 0;
+    right: -40px;
+    left: inherit;
+}
+.pro .cSlider.sliderPassList .bx-wrapper .bx-prev.disabled {
+    background: url("../../img/willbes/Cop_pro/btn_prev_off.png") no-repeat 0 0;
+    display: block;
+}
+.pro .cSlider.sliderPassList .bx-wrapper .bx-next.disabled {
+    background: url("../../img/willbes/Cop_pro/btn_next_off.png") no-repeat 0 0;
+    display: block;
+}
+
+/* Main Container : SpecialLecBox */
+.pro .Section .SpecialLecBox .infoTit .btn .btn-sbj a {
+    background: #0c5dc0;
+}
+.pro .Section .SpecialLecBox .infoList .List-Table li a span {
+    float: left;
+    width: 130px;
+    color: #0c5dc0;
+    text-align: center;
+}
+
+/* Main Container : Notice : Cop_pro */
+.pro .Section .nNoticeBox .infoBox .infoTit {
+    color: #0c5dc0;
+    line-height: 20px;
+    font-weight: 600;
+}
+
+.pro .willbesNumber ul li {
+    margin-left: 100px;
+}
+.pro .willbesNumber ul li:first-child {
+    margin-left: 50px;
+}

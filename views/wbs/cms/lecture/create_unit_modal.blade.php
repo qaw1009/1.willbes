@@ -15,22 +15,19 @@
         @endsection
 
         @section('layer_content')
-            <div class="x_title text-right">
-                <span class="required">*</span> 표시된 항목은 필수 입력 항목입니다.
-            </div>
-
-            <div class="form-group form-group-sm no-border-bottom">
-                <div class="x_title text-left">
-                    마스터강의기본정보
+            <div class="x_title">
+                <div class="pull-left">
+                    <div class="inline-block bold">마스터강의기본정보</div>
                     · {{ $data['wCpName'] }} > {{ $data['wContentCcdName'] }} > {{ $data['wLecName'] }} > {{ $data['profName_string'] }}
                 </div>
+                <div class="text-right">
+                    <span class="required">*</span> 표시된 항목은 필수 입력 항목입니다.
+                </div>
             </div>
-
             {!! form_errors() !!}
-
             <div class="form-group form-group-sm no-border-bottom">
                 <div class="">
-                    <div class="item form-inline">
+                    <div class="col-md-3 item form-inline">
                         <select name='rowNum' id='rowNum' class="form-control" title="갯수" style="width: 50px">
                             @for($i=1; $i<=10; $i++)
                                 <option value="{{$i}}" @if($i===3)selected="selected"@endif>{{$i}}</option>
@@ -38,6 +35,11 @@
                         </select>
                         <button class="btn btn-sm btn-primary" type="button" id="btn-add">필드추가</button>
                     </div>
+                    <div class="col-md-9 item form-inline text-right ">
+                        <button class="btn btn-success btn-sm mr-10" type="submit">저장</button>
+                        <button class="btn btn-default btn-sm btn_modal_close" id="btn_modal_close_top" type="button">닫기</button>
+                    </div>
+
                     <table id="list_table" class="table table-striped table-bordered" style="width:100%;">
                         <thead>
                         <tr>
@@ -48,8 +50,8 @@
                             <th>영상경로<span class="required">*</span></th>
                             <th>영상비율<span class="required">*</span></th>
                             <th>촬영일/교수<span class="required">*</span></th>
-                            <th>등록일</th>
                             <th>등록자</th>
+                            <th>등록일</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -67,13 +69,13 @@
                                         <button class="btn btn-sm btn-danger btn-delete" type="button" onclick="rowDelete('{{$loop->index}}')">삭제</button>
                                     </td>
                                     <td>
-                                        <input type="text" name="wUnitName[]" id="wUnitName{{$loop->index}}" required="required"  class="form-control" title="영상제목" value="{{ $row['wUnitName'] }}" style="width: 230px">
+                                        <input type="text" name="wUnitName[]" id="wUnitName{{$loop->index}}"  class="form-control" title="영상제목" value="{{ $row['wUnitName'] }}" style="width: 230px">
                                         <BR>
                                         <input type="file" name="wUnitAttachFile[]" id="wUnitAttachFile{{$loop->index}}" class="form-control" title="첨부자료">
                                         @if(empty($row['wUnitAttachFile']) !== true)
                                             <br>
                                             <p class="form-control-static ml-10 mr-10">
-                                                [ <a href="{{site_url('/cms/lecture/download/').urlencode($data['wAttachPath'].$row['wUnitAttachFile']).'/'.urlencode($row['wUnitAttachFileReal']) }}" target="_blank">{{ $row['wUnitAttachFileReal'] }}</a> ]
+                                                [ <a href="{{site_url('/cms/lecture/download/').'?filename='.urlencode($data['wAttachPath'].$row['wUnitAttachFile']).'&filename_ori='.urlencode($row['wUnitAttachFileReal']) }}" >{{ $row['wUnitAttachFileReal'] }}</a> ]
                                                 &nbsp;&nbsp;&nbsp;<a href="javascript:;" onclick="attachFileDelete('{{$row['wUnitIdx'] }}')"><span class="red">[X]</span></a>
                                             </p>
                                         @endif
@@ -84,14 +86,14 @@
                                         <input type="text" name="wBookPage[]" id="wBookPage{{$loop->index}}" class="form-control" title="북페이지" value="{{ $row['wBookPage'] }}" style="width: 50px"> P
                                     </td>
                                     <td>
-                                        [고화질] <input type="text" name="wHD[]" id="wHD{{$loop->index}}" class="form-control" required="required" title="고화질" value="{{ $row['wHD'] }}" style="width: 400px">
+                                        [와이드] <input type="text" name="wWD[]" id="wWD{{$loop->index}}" class="form-control"  title="와이드" value="{{ $row['wWD'] }}" style="width: 300px">
+                                        <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodView('WD','{{$loop->index}}')">보기</button>
+                                        <BR>
+                                        [고화질] <input type="text" name="wHD[]" id="wHD{{$loop->index}}" class="form-control" title="고화질" value="{{ $row['wHD'] }}" style="width: 300px">
                                         <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodView('HD','{{$loop->index}}')">보기</button>
                                         <BR>
-                                        [일반화질] <input type="text" name="wSD[]" id="wSD{{$loop->index}}" class="form-control" required="required" title="저화질" value="{{ $row['wSD'] }}" style="width: 400px">
+                                        [일반화질] <input type="text" name="wSD[]" id="wSD{{$loop->index}}" class="form-control"  title="저화질" value="{{ $row['wSD'] }}" style="width: 300px">
                                         <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodView('SD','{{$loop->index}}')">보기</button>
-                                        <BR>
-                                        [와이드] <input type="text" name="wWD[]" id="wWD{{$loop->index}}" class="form-control" title="와이드" value="{{ $row['wWD'] }}" style="width: 400px">
-                                        <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodView('WD','{{$loop->index}}')">보기</button>
                                     </td>
                                     <td>
                                         <select name="wContentSizeCcd[]" id="wContentSizeCcd{{$loop->index}}" class="form-control" title="화면비율" >
@@ -111,8 +113,8 @@
                                         </select>
 
                                     </td>
-                                    <td>{{ $row['wRegDatm'] }}</td>
                                     <td>{{ $row['wAdminName'] }}</td>
+                                    <td>{{ $row['wRegDatm'] }}</td>
                                 </tr>
                             @endforeach
 
@@ -130,7 +132,7 @@
                                         <button class="btn btn-sm btn-danger btn-delete" type="button" onclick="rowDelete('{{$i}}')">삭제</button>
                                     </td>
                                     <td>
-                                        <input type="text" name="wUnitName[]" id="wUnitName{{$i}}" required="required"  class="form-control" title="영상제목" value="" style="width: 230px">
+                                        <input type="text" name="wUnitName[]" id="wUnitName{{$i}}"  class="form-control" title="영상제목" value="" style="width: 230px">
                                         <BR>
                                         <input type="file" name="wUnitAttachFile[]" id="wUnitAttachFile{{$i}}" class="form-control" title="첨부자료">
                                     </td>
@@ -140,14 +142,14 @@
                                         <input type="text" name="wBookPage[]" id="wBookPage{{$i}}" class="form-control" title="북페이지" value="" style="width: 50px"> P
                                     </td>
                                     <td>
-                                        [고화질] <input type="text" name="wHD[]" id="wHD{{$i}}" class="form-control" required="required" title="고화질" value="" style="width: 400px">
+                                        [와이드] <input type="text" name="wWD[]" id="wWD{{$i}}" class="form-control"  title="와이드" value="" style="width: 300px">
+                                        <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodView('WD','{{$i}}')">보기</button>
+                                        <BR>
+                                        [고화질] <input type="text" name="wHD[]" id="wHD{{$i}}" class="form-control"  title="고화질" value="" style="width: 300px">
                                         <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodView('HD','{{$i}}')">보기</button>
                                         <BR>
-                                        [일반화질] <input type="text" name="wSD[]" id="wSD{{$i}}" class="form-control" required="required" title="일반화질" value="" style="width: 400px">
+                                        [일반화질] <input type="text" name="wSD[]" id="wSD{{$i}}" class="form-control" title="일반화질" value="" style="width: 300px">
                                         <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodView('SD','{{$i}}')">보기</button>
-                                        <BR>
-                                        [와이드] <input type="text" name="wWD[]" id="wWD{{$i}}" class="form-control" title="와이드" value="" style="width: 400px">
-                                        <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodView('WD','{{$i}}')">보기</button>
                                     </td>
                                     <td>
                                         <select name="wContentSizeCcd[]" id="wContentSizeCcd{{$i}}" class="form-control" title="화면비율" >
@@ -157,12 +159,12 @@
                                         </select>
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control datepicker"  name="wShootingDate[]" id="wShootingDate{{$i}}" required="required" title="촬영일" value="" style="width: 90px" readonly>
+                                        <input type="text" class="form-control datepicker"  name="wShootingDate[]" id="wShootingDate{{$i}}" required="required" title="촬영일" value="{{date('Y-m-d')}}" style="width: 90px" readonly>
                                         <Br>
                                         <select name="wProfIdx[]" id="wProfIdx{{$i}}" required="required" class="form-control" title="교수">
                                             <option value="">교수</option>
                                             @foreach($prof_list as $prof_row)
-                                                <option value="{{$prof_row['wProfIdx']}}">{{$prof_row['wProfName']}} [ {{ $prof_row['wProfIdx'] }} ]</option>
+                                                <option value="{{$prof_row['wProfIdx']}}" @if($selected_prof_idx == $prof_row['wProfIdx'])selected @endif>{{$prof_row['wProfName']}} [ {{ $prof_row['wProfIdx'] }} ]</option>
                                             @endforeach
                                         </select>
                                     </td>
@@ -181,20 +183,19 @@
 
             <script type="text/javascript">
 
-                var $regi_form = $('#_regi_form');
-                var $datatable;
+                var $regi_form_modal = $('#_regi_form');
+                var $datatable_modal;
                 var $list_table = $('#list_table');
 
                 $(document).ready(function() {
 
-                    $datatable = $list_table.DataTable({
+                    $datatable_modal = $list_table.DataTable({
                         responsive: false,
                         serverSide: false,
                         ajax : false,
                         paging: false,
                         searching: false
                     });
-
 
                     $('#btn-add').click(function() {
                         var addCnt = $("#rowNum").val();		//추가할 갯수
@@ -213,7 +214,7 @@
                                 +'<button class="btn btn-sm btn-danger btn-delete" type="button" onclick="rowDelete(\''+seq+'\')">삭제</button>'
                                 +'</td>'
                                 +'<td>'
-                                +'<input type="text" name="wUnitName[]" id="wUnitName'+seq+'" required="required"  class="form-control" title="영상제목" value="" style="width: 230px">'
+                                +'<input type="text" name="wUnitName[]" id="wUnitName'+seq+'" class="form-control" title="영상제목" value="" style="width: 230px">'
                                 +'<BR>'
                                 +'<input type="file" name="wUnitAttachFile[]" id="wUnitAttachFile'+seq+'" class="form-control" title="첨부자료">'
                                 +'</td>'
@@ -223,14 +224,14 @@
                                 +'<input type="text" name="wBookPage[]" id="wBookPage'+seq+'" class="form-control" title="북페이지" value="" style="width: 50px"> P'
                                 +'</td>'
                                 +'<td>'
-                                +'[고화질] <input type="text" name="wHD[]" id="wHD'+seq+'" class="form-control" required="required" title="고화질" value="" style="width: 400px">'
+                                +'[와이드] <input type="text" name="wWD[]" id="wWD'+seq+'" class="form-control" title="와이드" value="" style="width: 300px">'
+                                +'<button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodView(\'WD\',\''+seq+'\')">보기</button>'
+                                +'<BR>'
+                                +'[고화질] <input type="text" name="wHD[]" id="wHD'+seq+'" class="form-control" title="고화질" value="" style="width: 300px">'
                                 +'<button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodView(\'HD\',\''+seq+'\')">보기</button>'
                                 +'<BR>'
-                                +'[일반화질] <input type="text" name="wSD[]" id="wSD'+seq+'" class="form-control" required="required" title="일반화질" value="" style="width: 400px">'
+                                +'[일반화질] <input type="text" name="wSD[]" id="wSD'+seq+'" class="form-control" title="일반화질" value="" style="width: 300px">'
                                 +'<button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodView(\'SD\',\''+seq+'\')">보기</button>'
-                                +'<BR>'
-                                +'[와이드] <input type="text" name="wWD[]" id="wWD'+seq+'" class="form-control" title="와이드" value="" style="width: 400px">'
-                                +'<button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodView(\'WD\',\''+seq+'\')">보기</button>'
                                 +'</td>'
                                 +'<td>'
                                 +'<select name="wContentSizeCcd[]" id="wContentSizeCcd'+seq+'" class="form-control" title="화면비율" >'
@@ -240,12 +241,12 @@
                                 +'</select>'
                                 +'</td>'
                                 +'<td>'
-                                +'<input type="text" class="form-control datepicker" name="wShootingDate[]" id="wShootingDate'+seq+'" required="required" title="촬영일" value="" style="width: 90px" readonly>'
+                                +'<input type="text" class="form-control datepicker" name="wShootingDate[]" id="wShootingDate'+seq+'" required="required" title="촬영일" value="{{date('Y-m-d')}}" style="width: 90px" readonly>'
                                 +'<Br>'
                                 +'<select name="wProfIdx[]" id="wProfIdx" required="required" class="form-control" title="교수">'
                                 +'<option value="">교수</option>'
                                     @foreach($prof_list as $prof_row)
-                                +'  <option value="{{$prof_row['wProfIdx']}}">{{$prof_row['wProfName']}} [ {{ $prof_row['wProfIdx'] }} ]</option>'
+                                +'  <option value="{{$prof_row['wProfIdx']}}"  @if($selected_prof_idx == $prof_row['wProfIdx'])selected @endif>{{$prof_row['wProfName']}} [ {{ $prof_row['wProfIdx'] }} ]</option>'
                                     @endforeach
                                 +'    </select>'
                                 +'   </td>'
@@ -258,34 +259,45 @@
                     });
 
                     // ajax submit
-                    $regi_form.submit(function() {
+                    $regi_form_modal.submit(function() {
                         var _url = '{{ site_url('/cms/lecture/storeUnit') }}';
-                        ajaxSubmit($regi_form, _url, function(ret) {
+                        ajaxSubmit($regi_form_modal, _url, function(ret) {
                             if(ret.ret_cd) {
-                                notifyAlert('success', '알림', ret.ret_msg);
-                                $("#pop_modal").modal('toggle');
-                                location.reload();
+                                //notifyAlert('success', '알림', ret.ret_msg);
+                                //$("#pop_modal").modal('toggle');
+                                alert("저장되었습니다.");
+                                var _replace_url = '{{ site_url('cms/lecture/createUnitModal/').$lecidx.'/'.$selected_prof_idx }}';
+                                replaceModal(_replace_url,'');
+                                $datatable.draw();
                             }
                         }, showValidateError, null, false, 'alert');
                     });
+
+                    $("#btn_modal_close,#btn_modal_close_top").click(function(){
+                        @if(empty($selected_prof_idx) == false)
+                        location.replace('{{ site_url('/cms/lecture/create/').$lecidx }}' + getQueryString());
+                        @endif
+                    })
                 });
 
                 function rowDelete(delSeq){
+                    if(confirm("삭제하시겠습니까?") != true) {
+                        return;
+                    }
                     var nowRowCnt = ($("#list_table tr").length - 1); //tr 갯수 추출 : 타이틀부분 제외를 위해 -1
                     //alert(nowRowCnt + ' - ' + delSeq);
                     if(nowRowCnt>0) {
                         var selectwUnitIdx = $("input[id='wUnitIdx"+delSeq+"']").val();
-                        $regi_form.append('<input name="delwUnitIdx[]" type="hidden" value="'+selectwUnitIdx+'">');
+                        $regi_form_modal.append('<input name="delwUnitIdx[]" type="hidden" value="'+selectwUnitIdx+'">');
                         $("#trID"+delSeq).remove();
                     }
                 }
-
 
                 function attachFileDelete(strwUnitIdx) {
                     if(confirm('첨부파일을 삭제하시겠습니까?')) {
 
                         var data = {
-                            '{{ csrf_token_name() }}' : $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                            '{{ csrf_token_name() }}' : $regi_form_modal.find('input[name="{{ csrf_token_name() }}"]').val(),
                             'method' : 'POST',
                             'LecIdx' : $('#LecIdx').val(),
                             'wUnitIdx' : strwUnitIdx
@@ -293,22 +305,23 @@
 
                         sendAjax('{{ site_url('/cms/lecture/storeUnit') }}', data, function(ret) {
                             if (ret.ret_cd) {
-                                notifyAlert('success', '알림', ret.ret_msg);
-                                $("#pop_modal").modal('toggle');
-                                location.reload();
+                                //notifyAlert('success', '알림', ret.ret_msg);
+                                //$("#pop_modal").modal('toggle');
+                                alert("삭제되었습니다.");
+                                var _replace_url = '{{ site_url('cms/lecture/createUnitModal/').$lecidx.'/'.$selected_prof_idx }}';
+                                replaceModal(_replace_url,'');
+                                $datatable.draw();
                             }
                         }, showError, false, 'POST');
-
 
                     }
                 }
 
-
-                /*동영상 플레이어 개발 후 추가 개발 진행*/
-                function vodView(strUrl) {
-                    return;
+                function vodView(type, idx) {
+                    // 데이타를 저장하지 않고도 확인하기 위해 현제 입력한 URL 을 정보로 강의를 플레이합니다.
+                    $url = $('#MediaUrl').val() + '/' + $('#w'+type+idx).val();
+                    popupOpen(app_url('/cms/lecture/player/?lecidx={{$lecidx}}&url='+$url+'&ratio='+$('#wContentSizeCcd'+idx).val() , 'wbs'), 'wbsPlayer', '1000', '600', null, null, 'no', 'no');
                 }
-
             </script>
         @stop
 

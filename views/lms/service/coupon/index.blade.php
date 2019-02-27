@@ -106,23 +106,23 @@
             <table id="list_ajax_table" class="table table-striped table-bordered">
                 <thead>
                 <tr>
-                    <th>복사선택</th>
-                    <th>운영사이트</th>
-                    <th>카테고리</th>
-                    <th>쿠폰명</th>
-                    <th>배포루트</th>
-                    <th>쿠폰유형</th>
+                    <th>복사<br/>선택</th>
+                    <th class="valign-middle">운영사이트</th>
+                    <th class="valign-middle">카테고리</th>
+                    <th class="valign-middle">쿠폰명</th>
+                    <th class="valign-middle">배포루트</th>
+                    <th class="valign-middle">쿠폰유형</th>
                     <th>핀번호유형<br/>(발급개수)</th>
-                    <th>적용구분</th>
-                    <th>적용상세구분</th>
-                    <th>적용범위</th>
+                    <th class="valign-middle">적용구분</th>
+                    <th class="valign-middle">적용상세구분</th>
+                    <th class="valign-middle">적용범위</th>
                     <th>사용기간<br/>(유효기간)</th>
-                    <th>유효여부</th>
+                    <th class="valign-middle">유효여부</th>
                     <th>할인율<br/>(할인금액)</th>
                     <th>쿠폰발급<br/>(<span class="red">사용</span>/발급)</th>
-                    <th>발급여부</th>
-                    <th>등록자</th>
-                    <th>등록일</th>
+                    <th class="valign-middle">발급여부</th>
+                    <th class="valign-middle">등록자</th>
+                    <th class="valign-middle">등록일</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -206,7 +206,7 @@
                     return;
                 }
 
-                location.replace('{{ site_url('/service/coupon/regist/create') }}/' + coupon_idx + '/copy' + dtParamsToQueryString($datatable));
+                location.href = '{{ site_url('/service/coupon/regist/create') }}/' + coupon_idx + '/copy' + dtParamsToQueryString($datatable);
             });
 
             // 엑셀다운로드 버튼 클릭

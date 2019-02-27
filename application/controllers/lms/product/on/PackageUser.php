@@ -98,7 +98,7 @@ Class PackageUser extends \app\controllers\BaseController
         $method = 'POST';
 
         $codes = $this->codeModel->getCcdInArray(['611','612','618']); // 수강배수,수강배수적용구분,판매상태
-        $siteList = $this->siteModel->getSiteArray(false,'CsTel');
+        $arr_send_callback_ccd = $this->codeModel->getCcd(706, 'CcdValue');  // 발신번호조회
 
         $prodcode = null;
         $data = null;
@@ -133,8 +133,8 @@ Class PackageUser extends \app\controllers\BaseController
             ,'multiplelimit_ccd'=>$codes['611'] //수강배수
             ,'multipleapply_ccd'=>$codes['612'] //수강배수적용구분
             ,'sales_ccd'=>$codes['618'] //판매상태
-            ,'siteList' =>$siteList         //사이트목록
             ,'prodcode' => $prodcode
+            ,'arr_send_callback_ccd' =>$arr_send_callback_ccd
             ,'data'=>$data
             ,'data_memo'=>$data_memo
             ,'data_sms'=>$data_sms
@@ -200,7 +200,7 @@ Class PackageUser extends \app\controllers\BaseController
 
         $result = $this->packageUserModel->_prodCopy($prodcode,'packageuser');
         //var_dump($result);exit;
-        $this->json_result($result,'저장 되었습니다.',$result);
+        $this->json_result($result,'복사 되었습니다.',$result);
     }
 
 }

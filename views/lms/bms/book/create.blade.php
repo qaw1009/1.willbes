@@ -32,11 +32,11 @@
                     <label class="control-label col-md-2">카테고리정보 <span class="required">*</span>
                     </label>
                     <div class="col-md-9 form-inline">
-                        @if($method == 'PUT')
+                        @if($method == 'PUT' && empty($data['CateCode']) === false)
                             <p class="form-control-static">{{ $data['CateRouteName'] }}</p>
                         @else
                             <button type="button" id="btn_category_search" class="btn btn-sm btn-primary">카테고리검색</button>
-                            <span id="selected_category" class="pl-10"></span>
+                            <span id="selected_category" class="pl-10">{{ $data['CateRouteName'] }}</span>
                         @endif
                     </div>
                 </div>
@@ -48,7 +48,7 @@
                             <p class="form-control-static">{{ $data['wBookName'] }} [{{ $data['wBookIdx'] }}]</p>
                         @else
                             <button type="button" id="btn_book_search" class="btn btn-sm btn-primary">교재검색</button>
-                            <span id="selected_book" class="pl-10"></span>
+                            <span id="selected_book" class="pl-10">@if(empty($data['wBookIdx']) === false){{ $data['wBookName'] }} [{{ $data['wBookIdx'] }}]@endif</span>
                         @endif
                     </div>
                 </div>
@@ -123,7 +123,7 @@
                     <div class="col-md-3 item">
                         <input type="text" id="book_name" name="book_name" class="form-control" title="교재명" required="required" value="{{ $data['ProdName'] }}">
                     </div>
-                    <label class="control-label col-md-2">교재코드
+                    <label class="control-label col-md-2 col-md-offset-1">교재코드
                     </label>
                     <div class="col-md-4">
                         <p class="form-control-static">@if($method == 'PUT'){{ $data['ProdCode'] }}@else # 등록 시 자동 생성 @endif</p>
@@ -132,7 +132,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2" for="disp_type_ccd">노출위치 <span class="required">*</span>
                     </label>
-                    <div class="col-md-3 item">
+                    <div class="col-md-4 item">
                         <div class="radio">
                             @foreach($arr_disp_type_ccd as $key => $val)
                                 <input type="radio" id="disp_type_ccd_{{ $loop->index }}" name="disp_type_ccd" class="flat" value="{{ $key }}" @if($loop->index === 1) required="required" title="노출위치" @endif @if($data['DispTypeCcd'] == $key || ($method == 'POST' && $loop->index === 1))checked="checked"@endif/> <label for="disp_type_ccd_{{ $loop->index }}" class="input-label">{{ $val }}</label>
@@ -173,7 +173,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2" for="is_coupon_y">쿠폰적용 <span class="required">*</span>
                     </label>
-                    <div class="col-md-3 item">
+                    <div class="col-md-4 item">
                         <div class="radio">
                             <input type="radio" id="is_coupon_y" name="is_coupon" class="flat" value="Y" required="required" title="쿠폰적용여부" @if($method == 'POST' || $data['IsCoupon'] == 'Y')checked="checked"@endif/> <label for="is_coupon_y" class="input-label">가능</label>
                             <input type="radio" id="is_coupon_n" name="is_coupon" class="flat" value="N" @if($data['IsCoupon'] == 'N')checked="checked"@endif/> <label for="is_coupon_n" class="input-label">불가능</label>
@@ -224,7 +224,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2" for="is_use">사용여부 <span class="required">*</span>
                     </label>
-                    <div class="col-md-3 item">
+                    <div class="col-md-4 item">
                         <div class="radio">
                             <input type="radio" id="is_use_y" name="is_use" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['IsUse'] == 'Y')checked="checked"@endif/> <label for="is_use_y" class="input-label">사용</label>
                             <input type="radio" id="is_use_n" name="is_use" class="flat" value="N" @if($data['IsUse'] == 'N')checked="checked"@endif/> <label for="is_use_n" class="input-label">미사용</label>
@@ -243,7 +243,7 @@
                     @if($method == 'PUT')
                     <label class="control-label col-md-2">사용여부(W)
                     </label>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <p class="form-control-static">@if($data['wIsUse'] == 'Y') 사용 @else <span class="red">미사용</span> @endif</p>
                     </div>
                     @endif
@@ -256,7 +256,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2">등록자
                     </label>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <p class="form-control-static">{{ $data['RegAdminName'] }}</p>
                     </div>
                     <label class="control-label col-md-2">등록일
@@ -268,7 +268,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2">최종 수정자
                     </label>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <p class="form-control-static">{{ $data['UpdAdminName'] }}</p>
                     </div>
                     <label class="control-label col-md-2">최종 수정일
@@ -306,6 +306,11 @@
                     alert('과목/교수 정보 필드는 필수입니다.');
                     return false;
                 }
+                if ($regi_form.find('input[name="sale_price"]').val() < 0) {
+                    alert('판매가를 0원 이상으로 입력해 주세요.');
+                    $regi_form.find('input[name="dc_amt"]').focus();
+                    return false;
+                }
                 return true;
             }
 
@@ -314,15 +319,21 @@
                 // 카테고리 검색 초기화
                 $regi_form.find('input[name="cate_code"]').val('');
                 $('#selected_category').html('');
+
+                // 과목/교수 검색 초기화
+                $('#selected_prof_subject').html('');
             });
 
             // 카테고리 검색
             $('#btn_category_search').on('click', function() {
                 var site_code = $regi_form.find('select[name="site_code"]').val();
                 if (!site_code) {
-                    alert('운영사이트를 먼저 선택해 주십시오.')
+                    alert('운영사이트를 먼저 선택해 주십시오.');
                     return;
                 }
+
+                // 과목/교수 검색 초기화
+                $('#selected_prof_subject').html('');
 
                 $('#btn_category_search').setLayer({
                     'url' : '{{ site_url('/common/searchCategory/index/single/site_code/') }}' + site_code,
@@ -421,10 +432,18 @@
                     sale_price = org_price - dc_amt;
                 }
 
+                if (sale_price < 0) {
+                    alert('판매가를 0원 이상으로 입력해 주세요.');
+                    return;
+                }
+
                 if (sale_price < 1) {
                     // 판매금액이 0원일 경우 무료 체크
                     $regi_form.find('input[id="is_free_n"]').prop('checked', false).iCheck('update');
                     $regi_form.find('input[id="is_free_y"]').prop('checked', true).iCheck('update');
+                } else {
+                    $regi_form.find('input[id="is_free_n"]').prop('checked', true).iCheck('update');
+                    $regi_form.find('input[id="is_free_y"]').prop('checked', false).iCheck('update');
                 }
 
                 $regi_form.find('input[name="sale_price"]').val(sale_price);

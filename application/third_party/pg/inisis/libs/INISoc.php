@@ -52,7 +52,7 @@ class INISocket {
     function DNSLookUP() {
         $starttime = GetMicroTime();
         $ip = @gethostbyname($this->host);
-        if ($ip) {
+        if ($ip == PG_IP || $ip == KSPG_IP) {
             $this->ip = $ip;
         } else {
             $this->error("Hostname " . $this->host . " could not be resolved");
@@ -67,7 +67,7 @@ class INISocket {
     }
 
     function open() {
-        //Connect timeout Trickkkkkkkkk ##2. NONBLOCKING NEED , less CPU clocking!!^^ 
+        //Connect timeout Trickkkkkkkkk ##2. NONBLOCKING NEED , less CPU clocking!!^^
         //modified by ddaemiri, 2007.08.30
 
         socket_set_nonblock($this->hnd);

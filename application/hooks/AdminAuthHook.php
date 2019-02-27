@@ -11,6 +11,9 @@ class AdminAuthHook
         '/lcms/auth/regist/create',
         '/lcms/auth/regist/idCheck',
         '/lcms/auth/regist/store',
+        '/crm/manageCs/noAuthList',
+        '/crm/manageCs/noAuthListAjax',
+        '/crm/manageCs/updateReadCnt',
     ];
 
     // LMS 교수관리자 역할식별자
@@ -22,8 +25,11 @@ class AdminAuthHook
         '/common/',
         '/lcms/auth/regist/edit',
         '/lcms/auth/regist/update',
-        '/sys/adminSettings',
-        '/sample/',
+        '/lcms/logs/viewer/',
+        '/sys/adminSettings/',
+        '/pay/order/listAjax',
+        '/service/coupon/issue/listAjax',
+        '/service/point/allStatus/listAjax',
     ];
 
     public function __construct()
@@ -61,8 +67,14 @@ class AdminAuthHook
                 show_alert('운영자 권한이 없습니다.', site_url('/lcms/auth/login'), false);
             }
 
-            if (SUB_DOMAIN == 'lms' && $role['Role']['RoleIdx'] == $this->_lms_prof_role_idx) {
-                show_alert('운영자 권한이 없습니다.', 'back');
+            if (SUB_DOMAIN == 'lms') {
+                if ($role['Role']['RoleIdx'] == $this->_lms_prof_role_idx) {
+                    show_alert('운영자 권한이 없습니다.', 'back');
+                }
+
+                if (empty($role['Site']) === true) {
+                    show_alert('사이트 권한이 없습니다.', site_url('/lcms/auth/login'), false);
+                }
             }
 
             // 관리자 권한 정보 설정
@@ -82,7 +94,8 @@ class AdminAuthHook
             }
 
             if ($currents === false) {
-                show_error('메뉴 권한이 없습니다.', _HTTP_NO_PERMISSION, '메뉴 권한 없음');
+                //show_error('메뉴 권한이 없습니다.', _HTTP_NO_PERMISSION, '메뉴 권한 없음');
+                show_alert('메뉴 권한이 없습니다.', 'back');
             }
 
             // 3. 관리자별 환경설정 정보 조회

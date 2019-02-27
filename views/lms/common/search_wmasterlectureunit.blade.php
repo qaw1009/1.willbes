@@ -26,7 +26,7 @@
                     <tr>
                         <td>{{$data_lecture['wCpName']}}</td>
                         <td>{{$data_lecture['wContentCcd_Name']}}</td>
-                        <td>{{$data_lecture['wLecName']}} {{$data_lecture['wLecIdx']}}</td>
+                        <td>{{$data_lecture['wLecName']}} [{{$data_lecture['wLecIdx']}}]</td>
                         <td>{{$data_lecture['profName_string']}}</td>
                         <td>{{$data_lecture['wUnitCnt']}}</td>
                         <td>{{$data_lecture['wProgressCcd_Name']}}</td>
@@ -42,7 +42,7 @@
                     • 맛보기 회차를 선택해 주세요.
                 </div>
                 <div class="col-md-9 text-right">
-                    <button class="btn btn-sm btn-primary btn-select" type="button" id="btn-select">적용</button>
+                    <button class="btn btn-sm btn-primary btn-select mb-0" type="button" id="btn-select">적용</button>
                 </div>
             </div>
 
@@ -77,7 +77,7 @@
                                 @if(empty($row['wUnitAttachFile']) === false)
                                     <br>
                                     <p class="form-control-static ml-10 mr-10">
-                                       [ <a href="{{site_url('/product/on/lecture/download/').urlencode($data_lecture['wAttachPath'].$row['wUnitAttachFile']).'/'.urlencode($row['wUnitAttachFileReal']) }}" target="_blank">{{ $row['wUnitAttachFileReal'] }}</a> ]
+                                       [ <a href="{{site_url('/product/on/lecture/download/').'?filename='.urlencode($data_lecture['wAttachPath'].$row['wUnitAttachFile']).'&filename_ori='.urlencode($row['wUnitAttachFileReal']) }}" target="_blank">{{ $row['wUnitAttachFileReal'] }}</a> ]
                                     </p>
                                 @endif
                             </td>
@@ -87,11 +87,11 @@
                                 {{ $row['wBookPage']  }}
                             </td>
                             <td>
+                                [와이드] {{ $row['wWD'] }}
+                                <br>
                                 [고화질] {{ $row['wHD'] }}
                                 <br>
                                 [일반화질] {{ $row['wSD'] }}
-                                <br>
-                                [와이드] {{ $row['wWD'] }}
                             </td>
                             <td>
                                 {{ $row['wShootingDate'] }}
@@ -131,7 +131,7 @@
                         if (addCnt == 0) {
                             alert("회차를 선택해 주세요.");return;
                         }
-                        if (!confirm('해당 회차를 맛보기로 적용하시겠습니까?')) {
+                        if (!confirm('해당 회차를 적용하시겠습니까?')) {
                             return;
                         }
 

@@ -111,6 +111,11 @@ class Book extends \app\controllers\BaseController
 
             // 과목/교수 연결 데이터 조회
             $data['ProfSubject'] = $this->bookModel->listBookProfessorSubject($idx);
+
+            if (isset($params[1]) === true && $params[1] == 'copy') {
+                $method = 'POST';
+                $idx = null;
+            }
         }
 
         $arr_course = $this->courseModel->getCourseArray();

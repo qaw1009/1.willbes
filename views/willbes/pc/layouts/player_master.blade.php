@@ -17,16 +17,16 @@
         <div class="viewList">
             <span class="Tit NGR"><span class="NG" id="title">{{$data['pretitle']}}</span> : {{$data['title']}}</span>
             <ul class="btnList">
-                <li><a class="iconBtn btnUP" href="javascript:;" onclick="fnSetTop(this);">버튼 위로</a></li>
-                <li><a class="iconBtn btnBookMark" href="#none">버튼 즐겨찾기</a></li>
-                <li><a class="iconBtn btnSetting" href="#none" onclick="openWin('settingPOP')">버튼 단축키</a></li>
-                <li><span class="btnFAQ"><a href="#none">동영상 FAQ</a></span></li>
+                <!--- <li><a class="iconBtn btnUP" href="javascript:;" onclick="fnSetTop(this);">버튼 위로</a></li>
+                <li><a class="iconBtn btnBookMark" href="#none">버튼 즐겨찾기</a></li> -->
+                <li><a class="iconBtn btnSetting" href="javascript:;" onclick="fnSettingPOP();">버튼 단축키</a></li>
+                <li><span class="btnFAQ"><a href="javascript:;" onclick="fnViewFAQ();" target="_blank">동영상 FAQ</a></span></li>
             </ul>
         </div>
         <div id="settingPOP" class="settingPOP" style="right:-264px;">
             <img src="{{ img_url('player/player_key.png') }}" usemap="#player_key" style="border: 0;">
             <map name="player_key">
-                <area shape="rect" coords="234,1,262,32" href="#none" onclick="closeWin('settingPOP')" target="" alt="" onfocus="blur();" />
+                <area shape="rect" coords="234,1,262,32" href="javascript:;" onclick="fnSettingPOP();" onfocus="blur();" />
             </map>
         </div>
         <div id="video-container" style="width:690px;height:400px;"></div>
@@ -83,7 +83,11 @@
     <iframe id="subframe" frameborder="0" scrolling="no" width="400px" height="500px" src=""></iframe>
 </div>
 <script src="/public/vendor/jquery/v.2.2.3/jquery.min.js"></script>
+<!--
+<script src="/public/vendor/jquery/bxslider/jquery.bxslider.min.js"></script>
 <script src="/public/js/willbes/app.js?token={{time()}}"></script>
+-->
+<script src="/public/js/util.js?token={{time()}}"></script>
 <script type="text/javascript" src="/public/vendor/starplayer/js/starplayer_config.js?token={{time()}}"></script>
 <script type="text/javascript" src="/public/vendor/starplayer/js/starplayer.js?token={{time()}}"></script>
 <script type="text/javascript" src="/public/vendor/starplayer/js/starplayer_ui.js?token={{time()}}"></script>
@@ -92,7 +96,7 @@
 <script>
     ratio = {{empty($data['ratio']) == true ? '16' : $data['ratio']}};
     startPosition = {{empty($data['startPosition']) == true ? '0' : $data['startPosition']}};
-    video_container_width = @if($data['quility'] == 'WD'){{'1000'}}@elseif($data['quility'] == 'HD'){{'700'}}@else{{'500'}}@endif;
+    video_container_width = @if($data['quility'] == 'WD'){{'1280'}}@elseif($data['quility'] == 'HD'){{'960'}}@else{{'642'}}@endif;
 </script>
 @yield('script')
 </body>

@@ -147,7 +147,7 @@ class ReadingRoomModel extends BaseReadingRoomModel
                 fn_ccd_name(a.CampusCcd) AS CampusName,
                 fn_ccd_name(op.PayStatusCcd) AS PayStatusName,
                 e.wAdminName AS RegAdminName, c.RegDatm AS SeatRegDatm,
-                IF(d.RefundIdx IS NULL,\'미반환\',\'반환\') AS SubRefundType,
+                IF(d.RefundIdx IS NULL,\'미반환\',\'반환\') AS SubRefundTypeName,
                 d.RealPayPrice AS SubRealPayPrice
             ';
         $from = "
@@ -162,13 +162,13 @@ class ReadingRoomModel extends BaseReadingRoomModel
             INNER JOIN {$this->_table['readingRoom']} AS a ON op.ProdCode = a.ProdCode AND a.MangType = 'R' AND a.IsStatus = 'Y'
             INNER JOIN {$this->_table['readingRoom_mst']} AS c ON b.OrderIdx = c.NowOrderIdx
             
-            INNER JOIN (
-                SELECT STRAIGHT_JOIN op.OrderProdIdx, op.ProdCode, op.PayStatusCcd, op.RealPayPrice, opr.RefundIdx, opr.RefundPrice
+            LEFT JOIN (
+                SELECT STRAIGHT_JOIN op.OrderIdx, op.ProdCode, op.PayStatusCcd, opr.RefundIdx, opr.RefundPrice, op.RealPayPrice
                 FROM lms_product AS p
                 INNER JOIN {$this->_table['lms_order_product']} AS op ON p.ProdCode = op.ProdCode
-                LEFT JOIN {$this->_table['lms_order_product_refund']} AS opr ON op.OrderProdIdx = opr.OrderProdIdx
+                INNER JOIN {$this->_table['lms_order_product_refund']} AS opr ON op.OrderProdIdx = opr.OrderProdIdx
                 WHERE p.ProdTypeCcd = '{$this->_sub_product_type_ccd}'
-            ) AS d ON a.SubProdCode = d.ProdCode
+            ) AS d ON a.SubProdCode = d.ProdCode AND c.NowOrderIdx = d.OrderIdx
             
             INNER JOIN {$this->_table['lms_site']} AS f ON b.SiteCode = f.SiteCode AND f.IsStatus = 'Y'
             INNER JOIN {$this->_table['wbs_sys_admin']} AS e ON c.RegAdminIdx = e.wAdminIdx AND e.wIsStatus='Y'
@@ -244,6 +244,11 @@ class ReadingRoomModel extends BaseReadingRoomModel
             // 연관상품(예치금) 등록
             if ($this->readingRoomModel->_setSubProduct($input) !== true) {
                 throw new \Exception('예치금 상품 등록에 실패했습니다.');
+            }
+
+            // 판매가격, 예치금가격 JSON 데이터 등록
+            if ($this->readingRoomModel->_addProdJsonData() !== true) {
+                throw new \Exception('판매가격 또는 예치금가격 JSON 데이터 등록에 실패했습니다.');
             }
 
             // SMS 발송
@@ -565,27 +570,27 @@ class ReadingRoomModel extends BaseReadingRoomModel
             INNER JOIN {$this->_table['lms_order_product']} AS op ON b.OrderIdx = op.OrderIdx
             INNER JOIN {$this->_table['lms_member']} AS m ON b.MemIdx = m.MemIdx
             INNER JOIN {$this->_table['readingRoom']} AS a ON op.ProdCode = a.ProdCode AND a.MangType = '{$mang_type}' AND a.IsStatus = 'Y'
-            INNER JOIN {$this->_table['readingRoom_useDetail']} AS c ON b.OrderIdx = c.NowOrderIdx
+            INNER JOIN {$this->_table['readingRoom_useDetail']} AS c ON b.OrderIdx = c.NowOrderIdx AND a.LrIdx = c.LrIdx
             INNER JOIN {$this->_table['wbs_sys_admin']} AS e ON c.RegAdminIdx = e.wAdminIdx AND e.wIsStatus='Y'
-            
-            INNER JOIN (
-                SELECT STRAIGHT_JOIN op.OrderProdIdx, op.ProdCode, op.PayStatusCcd, opr.RefundIdx, opr.RefundPrice
-                FROM lms_product AS p
-                INNER JOIN {$this->_table['lms_order_product']} AS op ON p.ProdCode = op.ProdCode
-                LEFT JOIN {$this->_table['lms_order_product_refund']} AS opr ON op.OrderProdIdx = opr.OrderProdIdx
-                WHERE p.ProdTypeCcd = '{$this->_sub_product_type_ccd}'
-            ) AS d ON a.SubProdCode = d.ProdCode
             
             LEFT JOIN (
                 SELECT STRAIGHT_JOIN
-                    LrIdx, MasterOrderIdx, NowOrderIdx, SerialNumber, UseEndDate,
-                    IF ((TIMESTAMPDIFF(DAY, DATE_FORMAT(NOW(),'%Y-%m-%d'), UseEndDate) >= 0 && TIMESTAMPDIFF(DAY, DATE_FORMAT(NOW(),'%Y-%m-%d'), UseEndDate) <= 7) ||
-                            (TIMESTAMPDIFF(DAY, DATE_FORMAT(NOW(),'%Y-%m-%d'), UseEndDate) <= 0 && TIMESTAMPDIFF(DAY, DATE_FORMAT(NOW(),'%Y-%m-%d'), UseEndDate) >= -7), 'Y','N'
+                    a.LrIdx, a.MasterOrderIdx, a.NowOrderIdx, a.SerialNumber, a.UseEndDate,
+                    IF ((TIMESTAMPDIFF(DAY, DATE_FORMAT(NOW(),'%Y-%m-%d'), a.UseEndDate) >= 0 && TIMESTAMPDIFF(DAY, DATE_FORMAT(NOW(),'%Y-%m-%d'), a.UseEndDate) <= 7) ||
+                            (TIMESTAMPDIFF(DAY, DATE_FORMAT(NOW(),'%Y-%m-%d'), a.UseEndDate) <= 0 && TIMESTAMPDIFF(DAY, DATE_FORMAT(NOW(),'%Y-%m-%d'), a.UseEndDate) >= -7), 'Y','N'
                     ) AS ExtensionType
-                    FROM {$this->_table['readingRoom_mst']}
+                    FROM {$this->_table['readingRoom_mst']} as a
+                    INNER JOIN {$this->_table['readingRoom']} AS b ON a.LrIdx = b.LrIdx AND b.MangType = '{$mang_type}' AND b.IsStatus = 'Y'
                     WHERE StatusCcd = '{$this->_arr_reading_room_status_ccd['Y']}'
-            ) AS f ON
-            f.LrIdx = a.LrIdx AND f.SerialNumber = c.NowMIdx AND f.UseEndDate = c.UseEndDate
+            ) AS f ON f.LrIdx = a.LrIdx AND f.SerialNumber = c.NowMIdx AND f.UseEndDate = c.UseEndDate
+            
+            LEFT JOIN (
+                SELECT STRAIGHT_JOIN op.OrderIdx, op.ProdCode, op.PayStatusCcd, opr.RefundIdx, opr.RefundPrice
+                FROM lms_product AS p
+                INNER JOIN {$this->_table['lms_order_product']} AS op ON p.ProdCode = op.ProdCode
+                INNER JOIN {$this->_table['lms_order_product_refund']} AS opr ON op.OrderProdIdx = opr.OrderProdIdx
+                WHERE p.ProdTypeCcd = '{$this->_sub_product_type_ccd}'
+            ) AS d ON a.SubProdCode = d.ProdCode AND c.NowOrderIdx = d.OrderIdx
         ";
 
         //사이트 권한
@@ -738,46 +743,40 @@ class ReadingRoomModel extends BaseReadingRoomModel
      * 독서실/사물함 환불
      * @param $prod_code
      * @param $now_order_idx
-     * @return array|bool
+     * @return bool
      */
     public function refundReadingRoom($prod_code, $now_order_idx)
     {
-        $this->_conn->trans_begin();
-        try {
-            //환불대상데이터 조회
-            $target_data = $this->_findReadingRoomForTargetRefund($prod_code, $now_order_idx);
-            if (empty($target_data) === true) {
-                throw new \Exception('환불대상 상품이 없습니다.');
-            }
-
-            //환불로 인한 좌석 상태 수정
-            $arr_update_condition = [
-                'LrIdx' => $target_data['LrIdx'],
-                'NowOrderIdx' => $now_order_idx
-            ];
-            $arr_target_data = [
-                'StatusCcd' => $this->_arr_reading_room_status_ccd['N'],
-            ];
-            if ($this->updateReadingRoomMst($arr_update_condition, $arr_target_data, 'Y') !== true) {
-                throw new \Exception('좌석 상태 수정에 실패했습니다.1');
-            }
-
-            //환불로 인한 회원의 좌석 상태 수정
-            $arr_update_condition = [
-                'LrIdx' => $target_data['LrIdx'],
-                'NowOrderIdx' => $now_order_idx,
-            ];
-            $arr_target_data = [
-                'StatusCcd' => $this->_arr_reading_room_seat_status_ccd['out'],
-            ];
-            if ($this->updateSeatDetail($arr_update_condition, $arr_target_data) !== true) {
-                throw new \Exception('회원 좌석 상태 수정에 실패했습니다.2');
-            }
-            $this->_conn->trans_commit();
-        } catch (\Exception $e) {
-            $this->_conn->trans_rollback();
-            return error_result($e);
+        //환불대상데이터 조회
+        $target_data = $this->_findReadingRoomForTargetRefund($prod_code, $now_order_idx);
+        if (empty($target_data) === true) {
+            return '환불대상 상품 없습니다.';
         }
+
+        //환불로 인한 좌석 상태 수정
+        $arr_update_condition = [
+            'LrIdx' => $target_data['LrIdx'],
+            'NowOrderIdx' => $now_order_idx
+        ];
+        $arr_target_data = [
+            'StatusCcd' => $this->_arr_reading_room_status_ccd['N'],
+        ];
+        if ($this->updateReadingRoomMst($arr_update_condition, $arr_target_data, 'Y') !== true) {
+            return '좌석 상태 수정에 실패했습니다.';
+        }
+
+        //환불로 인한 회원의 좌석 상태 수정
+        $arr_update_condition = [
+            'LrIdx' => $target_data['LrIdx'],
+            'NowOrderIdx' => $now_order_idx,
+        ];
+        $arr_target_data = [
+            'StatusCcd' => $this->_arr_reading_room_seat_status_ccd['out'],
+        ];
+        if ($this->updateSeatDetail($arr_update_condition, $arr_target_data) !== true) {
+            return '회원좌석 상태 수정에 실패했습니다.';
+        }
+
         return true;
     }
 

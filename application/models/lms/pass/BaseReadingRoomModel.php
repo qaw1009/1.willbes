@@ -428,6 +428,31 @@ class BaseReadingRoomModel extends WB_Model
         return true;
     }
 
+    protected function _addProdJsonData()
+    {
+        try {
+            $prod_code = $this->_getProdCode();
+            $sub_prod_code = $this->_getSubProdCode();
+
+            // 판매가격 JSON 데이터 등록
+            $query = $this->_conn->query('call sp_product_json_data_insert(?)', [$prod_code]);
+            $result = $query->row(0)->ReturnMsg;
+            if ($result != 'Success') {
+                throw new \Exception('판매가격 JSON 데이터 등록에 실패했습니다.');
+            }
+
+            // 판매가격 JSON 데이터 등록
+            $query = $this->_conn->query('call sp_product_json_data_insert(?)', [$sub_prod_code]);
+            $result = $query->row(0)->ReturnMsg;
+            if ($result != 'Success') {
+                throw new \Exception('예치금가격 JSON 데이터 등록에 실패했습니다.');
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+        return true;
+    }
+
     /**
      * SMS 발송 정보
      * @param array $input

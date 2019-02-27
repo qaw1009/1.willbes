@@ -19,6 +19,9 @@ class Visit extends BaseOrder
      */
     public function index()
     {
+        // 학원사이트 코드 조회
+        $arr_site_code = $this->siteModel->getOffLineSiteArray('');
+
         // 사용하는 코드값 조회
         $arr_target_group_ccd = array_filter_keys($this->_group_ccd, ['PayMethod', 'ProdType', 'LearnPattern', 'PayStatus']);
         $codes = $this->codeModel->getCcdInArray(array_values($arr_target_group_ccd));
@@ -27,9 +30,10 @@ class Visit extends BaseOrder
         $arr_pay_status_ccd = array_filter_keys($codes[$this->_group_ccd['PayStatus']], array_filter_keys($this->orderListModel->_pay_status_ccd, ['receipt_wait', 'paid', 'refund']));
 
         // 결제방법 공통코드에서 방문결제용 코드만 필터링
-        $arr_pay_method_ccd = array_filter_keys($codes[$this->_group_ccd['PayMethod']], array_filter_keys($this->orderListModel->_pay_method_ccd, ['visit_card', 'visit_cash', 'visit_card_cash']));
+        $arr_pay_method_ccd = array_filter_keys($codes[$this->_group_ccd['PayMethod']], array_filter_keys($this->orderListModel->_pay_method_ccd, ['willbes_bank', 'visit_card', 'visit_cash', 'visit_card_cash']));
 
         $this->load->view('pay/visit/index', [
+            'arr_site_code' => $arr_site_code,
             'arr_pay_method_ccd' => $arr_pay_method_ccd,
             'arr_prod_type_ccd' => $codes[$this->_group_ccd['ProdType']],
             'arr_learn_pattern_ccd' => $codes[$this->_group_ccd['LearnPattern']],
@@ -96,8 +100,10 @@ class Visit extends BaseOrder
                     ]
                 ],
                 'ORG2' => [
-                    'LKR' => [
-                        'O.OrderNo' => $this->_reqP('search_prod_value')
+                    'EQ' => [
+                        'O.OrderIdx' => $this->_reqP('search_prod_value'),
+                        'O.OrderNo' => $this->_reqP('search_prod_value'),
+                        'P.ProdCode' => $this->_reqP('search_prod_value')
                     ],
                     'LKB' => [
                         'P.ProdName' => $this->_reqP('search_prod_value')
@@ -182,7 +188,7 @@ class Visit extends BaseOrder
                 $arr_condition = ['EQ' => ['O.OrderIdx' => $target_order_idx, 'OP.ProdCode' => $target_prod_code, 'OP.PayStatusCcd' => $this->orderListModel->_pay_status_ccd['paid']]];
                 $column = 'O.OrderNo, O.MemIdx, O.SiteCode, OP.ProdCode, P.ProdName, P.ProdTypeCcd, PL.LearnPatternCcd, CPT.CcdName as ProdTypeCcdName';
                 $column .= ', CLP.CcdName as LearnPatternCcdName, fn_product_saletype_price(OP.ProdCode, OP.SaleTypeCcd, "SalePrice") as SalePrice';
-                $data['order_prod'] = $this->orderListModel->findOrderProduct($arr_condition, $column, 1);
+                $data['order_prod'] = $this->orderListModel->findOrderProduct($arr_condition, $column, 1, 0);
                 if (empty($data['order_prod']) === true) {
                     show_error('데이터 조회에 실패했습니다.');
                 }
@@ -259,33 +265,5 @@ class Visit extends BaseOrder
         $result = $this->orderModel->{'procVisitOrder' . $method}($this->_reqP(null, false));
 
         return $this->json_result($result, '수강 등록 되었습니다.', $result);
-    }
-
-    /**
-     * 수강증 출력
-     * @return mixed
-     */
-    public function print()
-    {
-        $order_idx = $this->_reqG('order_idx');
-        $order_prod_idx = $this->_reqG('order_prod_idx');
-
-        if (empty($order_idx) === true || empty($order_prod_idx) === true) {
-            return $this->json_error('필수 파라미터 오류입니다.', _HTTP_VALIDATION_ERROR);
-        }
-
-        $arr_condition = ['EQ' => ['O.OrderIdx' => $order_idx, 'OP.OrderProdIdx' => $order_prod_idx, 'OP.PayStatusCcd' => $this->orderListModel->_pay_status_ccd['paid']]];
-        $data = $this->orderListModel->listAllOrder(false, $arr_condition, null, null, [], ['my_lecture']);
-
-        if (empty($data) === true) {
-            return $this->json_error('데이터 조회에 실패했습니다.');
-        }
-
-        $data = element('0', $data);
-        $data['MyLecData'] = element('0', json_decode($data['MyLecData'], true), []);
-
-        return $this->load->view('pay/visit/print', [
-            'data' => $data
-        ]);
     }
 }

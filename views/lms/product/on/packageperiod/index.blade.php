@@ -92,11 +92,14 @@
                     <th width="5%">배수</th>
                     <th width="5%">판매여부</th>
                     <th width="5%">사용여부</th>
+                    <!--
                     <th width="5%">장바구니</th>
                     <th width="5%">입금대기</th>
                     <th width="5%">결제완료</th>
+                    //-->
                     <th width="5%">등록자</th>
                     <th  width="8%">등록일</th>
+                    <th>복사</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -154,19 +157,25 @@
                             return addComma(row.RealSalePrice)+'원<BR><strike>'+addComma(row.SalePrice)+'원</strike>';
                         }},
 
-                    {'data' : 'MultipleApply'},//배수
+                    {'data' : 'MultipleApply', 'render' : function(data, type, row, meta) {
+                            return (data === '1') ? '배수제한없음' : data;
+                        }},//배수
                     {'data' : 'SaleStatusCcd_Name', 'render' : function(data, type, row, meta) {
                             return (data !== '판매불가') ? data : '<span class="red">'+data+'</span>';
                         }},//판매여부
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                             return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
                         }},//사용여부
-
+                    /*
                     {'data' : 'CartCnt'},//장바구니
                     {'data' : 'PayIngCnt'},//입금대기
                     {'data' : 'PayEndCnt'},//결제완료
+                    */
                     {'data' : 'wAdminName'},//등록자
-                    {'data' : 'RegDatm'}//등록일
+                    {'data' : 'RegDatm'},//등록일
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            return (row.ProdCode_Original !== '') ? '<span class="red">Y</span>' : '';
+                        }},//복사여부
                 ]
 
             });
@@ -184,18 +193,21 @@
                     return false;
                 }
 
-                var data = {
-                    '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
-                    '_method' : 'PUT',
-                    'prodCode' : $('input:radio[name="copyProdCode"]:checked').val()
-                };
+                if(confirm("해당 강좌를 복사하시겠습니까?")) {
+                    var data = {
+                        '{{ csrf_token_name() }}': $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                        '_method': 'PUT',
+                        'prodCode': $('input:radio[name="copyProdCode"]:checked').val()
+                    };
 
-                sendAjax('{{ site_url('/product/on/packagePeriod/copy') }}', data, function(ret) {
-                    if (ret.ret_cd) {
-                        notifyAlert('success', '알림', ret.ret_msg);
-                        $datatable.draw();
-                    }
-                }, showError, false, 'POST');
+                    sendAjax('{{ site_url('/product/on/packagePeriod/copy') }}', data, function (ret) {
+                        if (ret.ret_cd) {
+                            //notifyAlert('success', '알림', ret.ret_msg);
+                            alert(ret.ret_msg);
+                            $datatable.draw();
+                        }
+                    }, showError, false, 'POST');
+                }
 
             });
 

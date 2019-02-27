@@ -15,10 +15,8 @@
         @endsection
 
         @section('layer_content')
-            <div class="form-group form-group-sm">
-                <div class="x_title text-right">
-                    <span class="required">*</span> 표시된 항목은 필수 입력 항목입니다.
-                </div>
+            <div class="x_title text-right">
+                <span class="required">*</span> 표시된 항목은 필수 입력 항목입니다.
             </div>
             {!! form_errors() !!}
             <div class="form-group form-group-sm">
@@ -44,26 +42,20 @@
                 </div>
                 <label class="control-label col-md-2" for="">사은품 코드
                 </label>
-                <div class="col-md-4">
-                    <p class="form-control-static">@if($method == 'PUT'){{ $data['ProdCode'] }}@else # 등록 시 자동 생성 @endif</p>
+                <div class="col-md-4 form-control-static">
+                    @if($method == 'PUT'){{ $data['ProdCode'] }}@else # 등록 시 자동 생성 @endif
                 </div>
             </div>
             <div class="form-group form-group-sm">
                 <label class="control-label col-md-2" for="RefundSetPrice">환불책정가 <span class="required">*</span>
                 </label>
-                <div class="col-md-2">
-                    <input type="number" id="RefundSetPrice" name="RefundSetPrice" required="required" class="form-control" style='width:120px;' title="환불책정가" value="{{ $data['RefundSetPrice'] }}">
-                </div>
-                <div class="col-md-2">
-                    <p class="form-control-static">원</p>
+                <div class="col-md-4 form-inline">
+                    <input type="number" id="RefundSetPrice" name="RefundSetPrice" required="required" class="form-control" style='width:120px;' title="환불책정가" value="{{ $data['RefundSetPrice'] }}"> 원
                 </div>
                 <label class="control-label col-md-2" for="Stock">재고 <span class="required">*</span>
                 </label>
-                <div class="col-md-2">
-                    <input type="number" id="Stock" name="Stock" required="required" class="form-control" style='width:60px;' title="재고" value="{{ $data['Stock'] }}">
-                </div>
-                <div class="col-md-2">
-                    <p class="form-control-static">개</p>
+                <div class="col-md-4 form-inline">
+                    <input type="number" id="Stock" name="Stock" required="required" class="form-control" style='width:60px;' title="재고" value="{{ $data['Stock'] }}"> 개
                 </div>
             </div>
             <div class="form-group form-group-sm">
@@ -87,25 +79,25 @@
             <div class="form-group form-group-sm">
                 <label class="control-label col-md-2">등록자
                 </label>
-                <div class="col-md-4">
-                    <p class="form-control-static">{{ $data['RegAdminName'] }}</p>
+                <div class="col-md-4 form-control-static">
+                    {{ $data['RegAdminName'] }}
                 </div>
                 <label class="control-label col-md-2">등록일
                 </label>
-                <div class="col-md-4">
-                    <p class="form-control-static">{{ $data['RegDatm'] }}</p>
+                <div class="col-md-4 form-control-static">
+                    {{ $data['RegDatm'] }}
                 </div>
             </div>
             <div class="form-group form-group-sm">
                 <label class="control-label col-md-2">최종 수정자
                 </label>
-                <div class="col-md-4">
-                    <p class="form-control-static">{{ $data['UpdAdminName'] }}</p>
+                <div class="col-md-4 form-control-static">
+                    {{ $data['UpdAdminName'] }}
                 </div>
                 <label class="control-label col-md-2">최종 수정일
                 </label>
-                <div class="col-md-4">
-                    <p class="form-control-static">{{ $data['UpdDatm'] }}</p>
+                <div class="col-md-4 form-control-static">
+                    {{ $data['UpdDatm'] }}
                 </div>
             </div>
         @endif

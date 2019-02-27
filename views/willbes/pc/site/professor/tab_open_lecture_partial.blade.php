@@ -41,13 +41,13 @@
                                         </div>
                                         <div class="Name">{{ $data['wProfName'] }} 교수님</div>
                                     </li>
-                                    @if($data['StudyCommentData'] != 'N')
+                                    @if(empty($tab_data['study_comment']) === false)
                                         <li class="Reply tx-blue">
                                             <strong>수강후기</strong>
                                             <div class="sliderUp vSlider">
                                                 <div class="sliderVertical roll-Reply tx-dark-black">
-                                                    @foreach(json_decode($data['StudyCommentData'], true) as $idx => $row)
-                                                        <div>{{ $row['Title'] }}</div>
+                                                    @foreach($tab_data['study_comment'] as $idx => $row)
+                                                        <div>{{ hpSubString($row['Title'], 0, 25, '...') }}</div>
                                                     @endforeach
                                                 </div>
                                             </div>
@@ -69,8 +69,7 @@
                                             <col style="width: 75px;">
                                             <col style="width: 85px;">
                                             <col style="width: 490px;">
-                                            <col style="width: 110px;">
-                                            <col style="width: 180px;">
+                                            <col style="width: 290px;">
                                         </colgroup>
                                         <tbody>
                                         <tr>
@@ -78,12 +77,12 @@
                                             <td class="w-name">{{ $row['SubjectName'] }}<br/><span class="tx-blue">{{ $row['wProfName'] }}</span></td>
                                             <td class="w-data tx-left pl25">
                                                 <div class="w-tit">
-                                                    <a href="{{ site_url('/lecture/show/cate/' . substr($row['CateCode'], 0, 4) . '/pattern/' . $pattern . '/prod-code/' . $row['ProdCode']) }}" class="prod-name">{{ $row['ProdName'] }}</a>
+                                                    <a href="#none" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 4) }}', 'only');" class="prod-name">{{ $row['ProdName'] }}</a>
                                                 </div>
                                                 <dl class="w-info">
                                                     <dt class="mr20">
                                                         <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', 'hover1','{{ site_url('/lecture') }}', 'pattern/{{ $pattern }}/')">
-                                                            <strong>강좌상세정보</strong>
+                                                            <strong class="open-info-modal">강좌상세정보</strong>
                                                         </a>
                                                     </dt>
                                                     <dt>강의수 : <span class="unit-lecture-cnt tx-blue" data-info="{{ $row['wUnitLectureCnt'] }}">{{ $row['wUnitLectureCnt'] }}강</span></dt>
@@ -106,24 +105,26 @@
                                                         @foreach($row['LectureSampleData'] as $sample_idx => $sample_row)
                                                             <dl class="NSK">
                                                                 <dt class="Tit NG">맛보기{{ $sample_idx + 1 }}</dt>
-                                                                @if(empty($sample_row['wHD']) === false || empty($sample_row['wWD']) === false) <dt class="tBox t1 black"><a href="{{ $sample_row['wWD'] or $sample_row['wHD'] }}">HIGH</a></dt> @endif
-                                                                @if(empty($sample_row['wSD']) === false) <dt class="tBox t2 gray"><a href="{{ $sample_row['wSD'] }}">LOW</a></dt> @endif
+                                                                @if(empty($sample_row['wHD']) === false) <dt class="tBox t1 black"><a href="javascript:fnPlayerSample('{{$row['ProdCode']}}','{{$sample_row['wUnitIdx']}}','HD');">HIGH</a></dt> @endif
+                                                                @if(empty($sample_row['wSD']) === false) <dt class="tBox t2 gray"><a href="javascript:fnPlayerSample('{{$row['ProdCode']}}','{{$sample_row['wUnitIdx']}}','SD');">LOW</a></dt> @endif
                                                             </dl>
                                                         @endforeach
                                                     </div>
                                                 @endif
-                                                @foreach($row['ProdPriceData'] as $price_idx => $price_row)
-                                                    <div class="priceWrap chk buybtn p_re">
-                                                        @if($row['IsCart'] == 'Y' || $pattern == 'free')
-                                                            <span class="chkBox"><input type="checkbox" name="prod_code[]" value="{{ $row['ProdCode'] . ':' . $price_row['SaleTypeCcd'] . ':' . $row['ProdCode'] }}" data-prod-code="{{ $row['ProdCode'] }}" data-parent-prod-code="{{ $row['ProdCode'] }}" data-group-prod-code="{{ $row['ProdCode'] }}" class="chk_products chk_only_{{ $row['ProdCode'] }}" onchange="checkOnly('.chk_only_{{ $row['ProdCode'] }}', this.value);" @if($row['IsSalesAble'] == 'N') disabled="disabled" @endif/></span>
-                                                        @else
-                                                            <span class="chkBox" style="width: 14px;"></span>
-                                                        @endif
-                                                        <span class="select">[{{ $price_row['SaleTypeCcdName'] }}]</span>
-                                                        <span class="price tx-blue">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>
-                                                        <span class="discount">(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</span>
-                                                    </div>
-                                                @endforeach
+                                                @if(empty($row['ProdPriceData']) === false)
+                                                    @foreach($row['ProdPriceData'] as $price_idx => $price_row)
+                                                        <div class="priceWrap chk buybtn p_re">
+                                                            @if($row['IsCart'] == 'Y' || $pattern == 'free')
+                                                                <span class="chkBox"><input type="checkbox" name="prod_code[]" value="{{ $row['ProdCode'] . ':' . $price_row['SaleTypeCcd'] . ':' . $row['ProdCode'] }}" data-prod-code="{{ $row['ProdCode'] }}" data-parent-prod-code="{{ $row['ProdCode'] }}" data-group-prod-code="{{ $row['ProdCode'] }}" class="chk_products chk_only_{{ $row['ProdCode'] }}" onchange="checkOnly('.chk_only_{{ $row['ProdCode'] }}', this.value);" @if($row['IsSalesAble'] == 'N') disabled="disabled" @endif/></span>
+                                                            @else
+                                                                <span class="chkBox" style="width: 14px;"></span>
+                                                            @endif
+                                                            <span class="select">[{{ $price_row['SaleTypeCcdName'] }}]</span>
+                                                            <span class="price tx-blue">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>
+                                                            <span class="discount">(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</span>
+                                                        </div>
+                                                    @endforeach
+                                                @endif
                                                 <div class="MoreBtn"><a href="#none">교재정보 보기 ▼</a></div>
                                             </td>
                                         </tr>
@@ -163,7 +164,9 @@
                                                         <div class="w-sub tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>
                                                     @endif
                                                     <div class="w-sub">
-                                                        <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', 'hover2','{{ site_url('/lecture') }}', 'pattern/{{ $pattern }}/')"><strong>교재상세정보</strong></a>
+                                                        <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', 'hover2','{{ site_url('/lecture') }}', 'pattern/{{ $pattern }}/')">
+                                                            <strong class="open-info-modal">교재상세정보</strong>
+                                                        </a>
                                                     </div>
                                                     <div class="prod-book-memo d_none">{{ $row['ProdBookMemo'] }}</div>
                                                 @else
@@ -214,7 +217,7 @@
                                             <dl class="w-info">
                                                 <dt class="mr20">
                                                     <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', '', '{{ site_url('/package') }}', '', 'InfoFormPack')">
-                                                        <strong>패키지상세정보</strong>
+                                                        <strong class="open-info-modal">패키지상세정보</strong>
                                                     </a>
                                                 </dt>
                                                 <dt>개강일 : <span class="tx-blue">{{$row['StudyStartDate']}}</span></dt>
@@ -276,7 +279,7 @@
                                             <dl class="w-info">
                                                 <dt class="mr20">
                                                     <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', '', '{{ site_url('/package') }}', '', 'InfoFormPack')">
-                                                        <strong>패키지상세정보</strong>
+                                                        <strong class="open-info-modal">패키지상세정보</strong>
                                                     </a>
                                                 </dt>
                                                 <dt>개강일 : <span class="tx-blue">{{$row['StudyStartDate']}}</span></dt>
@@ -374,14 +377,17 @@
                                             </td>
                                             <td class="w-notice p_re">
                                                 <div class="acadInfo NSK n{{ substr($row['AcceptStatusCcd'], -1) }}">{{ $row['AcceptStatusCcdName'] }}</div>
-                                                @foreach($row['ProdPriceData'] as $price_idx => $price_row)
-                                                    <div class="priceWrap chk buybtn p_re">
-                                                <span class="price tx-blue">
-                                                    <span class="chkBox"><input type="checkbox" name="prod_code[]" value="{{ $row['ProdCode'] . ':' . $price_row['SaleTypeCcd'] . ':' . $row['ProdCode'] }}" data-prod-code="{{ $row['ProdCode'] }}" data-study-apply-ccd="{{ $row['StudyApplyCcd'] }}" class="chk_products" @if($row['IsSalesAble'] == 'N') disabled="disabled" @endif/></span>
-                                                    {{ number_format($price_row['RealSalePrice'], 0) }}원</span>
-                                                        <span class="discount">(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</span>
-                                                    </div>
-                                                @endforeach
+                                                @if(empty($row['ProdPriceData']) === false)
+                                                    @foreach($row['ProdPriceData'] as $price_idx => $price_row)
+                                                        <div class="priceWrap chk buybtn p_re">
+                                                            <span class="price tx-blue">
+                                                                <span class="chkBox"><input type="checkbox" name="prod_code[]" value="{{ $row['ProdCode'] . ':' . $price_row['SaleTypeCcd'] . ':' . $row['ProdCode'] }}" data-prod-code="{{ $row['ProdCode'] }}" data-study-apply-ccd="{{ $row['StudyApplyCcd'] }}" class="chk_products" @if($row['IsSalesAble'] == 'N') disabled="disabled" @endif/></span>
+                                                                {{ number_format($price_row['RealSalePrice'], 0) }}원
+                                                            </span>
+                                                            <span class="discount">(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</span>
+                                                        </div>
+                                                    @endforeach
+                                                @endif
                                             </td>
                                         </tr>
                                         </tbody>
@@ -433,12 +439,12 @@
                                         <td class="w-list">{{$row['CourseName']}}</td>
                                         <td class="w-data tx-left pl15">
                                             <div class="w-tit w-acad-tit">
-                                                <a href="{{ front_url('/offpackage/show/').'prod-code/'.$row['ProdCode'] }}">{{$row['ProdName']}}</a>
+                                                <a href="{{ site_url('/' . config_item('app_pass_site_prefix') . '/offPackage/show/prod-code/' . $row['ProdCode']) }}">{{$row['ProdName']}}</a>
                                             </div>
                                             <dl class="w-info acad">
                                                 <dt>
-                                                    <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', '', '{{ site_url('/OffPackage') }}')">
-                                                        <strong>종합반 상세정보</strong>
+                                                    <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', '', '{{ site_url('/' . config_item('app_pass_site_prefix') . '/offPackage') }}', '', 'InfoFormOffPack')">
+                                                        <strong class="open-info-modal">종합반 상세정보</strong>
                                                     </a>
                                                 </dt>
                                                 <dt><span class="row-line">|</span></dt>
@@ -452,12 +458,14 @@
                                         </td>
                                         <td class="w-notice p_re">
                                             <div class="acadInfo NSK n{{ substr($row['AcceptStatusCcd'], -1) }}">{{$row['AcceptStatusCcdName']}}</div>
-                                            @foreach($row['ProdPriceData'] as $price_idx => $price_row)
-                                                <div class="priceWrap chk buybtn p_re">
-                                                    <span class="price tx-blue">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>
-                                                    <span class="discount">(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</span>
-                                                </div>
-                                            @endforeach
+                                            @if(empty($row['ProdPriceData']) === false)
+                                                @foreach($row['ProdPriceData'] as $price_idx => $price_row)
+                                                    <div class="priceWrap chk buybtn p_re">
+                                                        <span class="price tx-blue">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>
+                                                        <span class="discount">(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</span>
+                                                    </div>
+                                                @endforeach
+                                            @endif
                                         </td>
                                     </tr>
                                     </tbody>
@@ -468,6 +476,8 @@
                     @endforeach
                     </div>
                 </div>
+                <div id="InfoFormOffPack" class="willbes-Layer-Box d2"></div>
+                <!-- willbes-Layer-Box -->
             </div>
         </div>
         <!-- 학원강좌 -->

@@ -3,11 +3,11 @@
 @section('script')
     <script type="text/javascript">
         $(document).ready(function (){
-            getScreenSize();
+            SubFrameTag_width = 0;
+
             setScreenReSizeVal();
             screenResize();
             fnDefense();
-            $("#subframe").prop('src', '/player/info');
 
             config = {
                 userId: "{{$data['memid']}}",
@@ -20,7 +20,7 @@
                 visible: true,
                 auto_progressive_download: true,
                 dualMonitor: true,
-                watermarkText: "{{$data['memid']}}",
+                watermarkText: "{{$data['memid'] == "ANOMYNOUS" ? $data['ip'] : $data['memid']}}",
                 watermarkTextColor: "#308ECE92",
                 watermarkTextSize: "2%",
                 watermarkHorzAlign: WatermarkAlign.RANDOM,
@@ -40,9 +40,9 @@
                 startTime: 0
             };
 
-            fnStartPlayer();
-
-            realPlayerTime = new Speedplaytime(player);
+            fnStartPlayer(config, media);
         });
+
+        function fnCheckPID(){ /* DUMMY */ }
     </script>
 @stop

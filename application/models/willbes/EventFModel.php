@@ -20,6 +20,10 @@ class EventFModel extends WB_Model
         'sys_code' => 'lms_sys_code',
         'crm_send' => 'lms_crm_send',
         'crm_send_r_receive_sms' => 'lms_crm_send_r_receive_sms',
+        'product_subject' => 'lms_product_subject',
+        'professor' => 'lms_professor',
+        'pms_professor' => 'wbs_pms_professor',
+        'lms_event_promotion_log' => 'lms_event_promotion_log'
     ];
     public $_request_type = [
         '1' => '설명회',
@@ -65,12 +69,12 @@ class EventFModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
             $column = '
-            A.ElIdx, A.SiteCode, A.CampusCcd, A.BIdx, A.IsBest, A.TakeType, A.RequstType, A.EventName,
+            A.ElIdx, A.SiteCode, A.CampusCcd, A.BIdx, A.IsBest, A.TakeType, A.RequestType, A.EventName,
             A.RegisterStartDate, A.RegisterEndDate, DATE_FORMAT(A.RegisterStartDate, \'%Y-%m-%d\') AS RegisterStartDay, DATE_FORMAT(A.RegisterEndDate, \'%Y-%m-%d\') AS RegisterEndDay,
             A.OptionCcds, A.ReadCnt, A.IsRegister, A.IsUse, A.RegDatm,
             G.SiteName, J.CcdName AS CampusName, D.CateCode,
             K.FileFullPath, K.FileName, IFNULL(H.CCount,\'0\') AS CommentCount,
-            CASE A.RequstType WHEN 1 THEN \'설명회\' WHEN 2 THEN \'특강\' WHEN 3 THEN \'이벤트\' END AS RequstTypeName,
+            CASE A.RequestType WHEN 1 THEN \'설명회\' WHEN 2 THEN \'특강\' WHEN 3 THEN \'이벤트\' WHEN 4 THEN \'합격수기\' END AS RequestTypeName,
             CASE A.IsRegister WHEN \'Y\' THEN \'접수중\' WHEN 2 THEN \'마감\' END AS IsRegisterName,
             CASE A.TakeType WHEN 1 THEN \'회원\' WHEN 2 THEN \'회원+비회원\' END AS TakeTypeName
             ';
@@ -101,6 +105,8 @@ class EventFModel extends WB_Model
             LEFT OUTER JOIN {$this->_table['sys_code']} AS J ON A.CampusCcd = J.Ccd
         ";
 
+        $default_arr_condition = ['NOT' => ['a.RequestType' => '5']];
+        $arr_condition = array_merge_recursive($arr_condition, $default_arr_condition);
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
 
@@ -108,20 +114,19 @@ class EventFModel extends WB_Model
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 
-    public function findEvent($arr_condition)
+    public function findEvent($arr_condition, $add_type = null)
     {
         $column = '
-            A.ElIdx, A.SiteCode, A.CampusCcd, A.BIdx, A.IsBest, A.TakeType, A.RequstType, A.EventName, A.PopupTitle, A.ContentType, A.Content, A.CommentUseArea, A.LimitType,
+            A.ElIdx, A.SiteCode, A.CampusCcd, A.BIdx, A.IsBest, A.TakeType, A.RequestType, A.EventName, A.PopupTitle, A.ContentType, A.Content, A.CommentUseArea, A.LimitType,
             A.RegisterStartDate, A.RegisterEndDate, DATE_FORMAT(A.RegisterStartDate, \'%Y-%m-%d\') AS RegisterStartDay, DATE_FORMAT(A.RegisterEndDate, \'%Y-%m-%d\') AS RegisterEndDay,
             A.OptionCcds, A.ReadCnt, A.IsRegister, A.IsUse, A.RegDatm, DATE_FORMAT(A.RegDatm, \'%Y-%m-%d\') AS RegDay,
             A.SendTel, A.SmsContent,
             G.SiteName, J.CcdName AS CampusName,
-            K.FileFullPath, K.FileName,
-            L.FileFullPath AS UploadFileFullPath, L.FileName AS UploadFileName, L.FileRealName as UploadFileRealName,
             IFNULL(H.CCount,\'0\') AS CommentCount,
-            CASE A.RequstType WHEN 1 THEN \'설명회\' WHEN 2 THEN \'특강\' WHEN 3 THEN \'이벤트\' END AS RequstTypeName,
+            CASE A.RequestType WHEN 1 THEN \'설명회\' WHEN 2 THEN \'특강\' WHEN 3 THEN \'이벤트\' WHEN 4 THEN \'합격수기\' END AS RequestTypeName,
             CASE A.IsRegister WHEN \'Y\' THEN \'접수중\' WHEN 2 THEN \'마감\' END AS IsRegisterName,
-            CASE A.TakeType WHEN 1 THEN \'회원\' WHEN 2 THEN \'회원+비회원\' END AS TakeTypeName
+            CASE A.TakeType WHEN 1 THEN \'회원\' WHEN 2 THEN \'회원+비회원\' END AS TakeTypeName,
+            P.SubjectName, R.wProfName
             ';
 
         $from = "
@@ -130,12 +135,18 @@ class EventFModel extends WB_Model
                 SELECT CIdx, ElIdx, COUNT(CIdx) AS CCount
                 FROM {$this->_table['event_comment']}
             ) AS H ON H.ElIdx = A.ElIdx
-            LEFT JOIN {$this->_table['event_file']} AS K ON A.ElIdx = K.ElIdx AND K.IsUse = 'Y' AND K.FileType = 'C'
-            LEFT JOIN {$this->_table['event_file']} AS L ON A.ElIdx = L.ElIdx AND L.IsUse = 'Y' AND L.FileType = 'F'
             INNER JOIN {$this->_table['site']} AS G ON A.SiteCode = G.SiteCode
             LEFT OUTER JOIN {$this->_table['sys_code']} AS J ON A.CampusCcd = J.Ccd
+            LEFT OUTER JOIN {$this->_table['product_subject']} as P ON A.SubjectIdx = P.SubjectIdx
+            LEFT OUTER JOIN {$this->_table['professor']} as Q ON A.ProfIdx = Q.ProfIdx
+            LEFT JOIN {$this->_table['pms_professor']} as R ON Q.wProfIdx = R.wProfIdx
         ";
 
+        $default_arr_condition = [];
+        if ($add_type != 'promotion') {
+            $default_arr_condition = ['NOT' => ['A.RequestType' => '5']];
+        }
+        $arr_condition = array_merge_recursive($arr_condition, $default_arr_condition);
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
 
@@ -364,18 +375,38 @@ class EventFModel extends WB_Model
     /**
      * 댓글 등록 처리
      * @param array $requestData
+     * @param string $add_type
      * @return array|bool
      */
-    public function addEventComment($requestData = [])
+    public function addEventComment($requestData = [], $add_type = null)
     {
         $this->_conn->trans_begin();
         try {
+            $arr_condition = [
+                'EQ'=>[
+                    'A.ElIdx' => element('event_idx', $requestData),
+                    'A.IsStatus' => 'Y'
+                ],
+                'GTE' => [
+                    'A.RegisterEndDate' => date('Y-m-d H:i') . ':00'
+                ]
+            ];
+            $event_data = $this->findEvent($arr_condition, $add_type);
+            if (count($event_data) < 1) {
+                throw new \Exception('조회된 이벤트 정보가 없습니다.');
+            }
+
+            if ($event_data['TakeType'] == '1' && empty($this->session->userdata('mem_idx')) === true) {
+                throw new \Exception('로그인 후 이용해주세요.');
+            }
+
             $inputData = [
                 'ElIdx' => $requestData['event_idx'],
                 'MemIdx' => $this->session->userdata('mem_idx'),
                 'MemName' => $this->session->userdata('mem_name'),
                 'CommentType' => 'U',
                 'Comment' => $requestData['event_comment'],
+                'EmoticonNo' => element('sns_icon', $requestData),
                 'RegIp' => $this->input->ip_address()
             ];
 
@@ -530,7 +561,7 @@ class EventFModel extends WB_Model
             FROM (
                 SELECT STRAIGHT_JOIN
                     c.ElIdx, c.CampusCcd, fn_ccd_name(c.CampusCcd) AS CampusName, f.SiteGroupName, IF(e.IsCampus = 'Y', '학원', '온라인') AS OnOffTypeName,
-                    c.EventName, CASE c.RequstType WHEN 1 THEN '설명회' WHEN 2 THEN '특강' WHEN 3 THEN '이벤트' END AS RequstTypeName,
+                    c.EventName, CASE c.RequestType WHEN 1 THEN '설명회' WHEN 2 THEN '특강' WHEN 3 THEN '이벤트' END AS RequestTypeName,
                     DATE_FORMAT(c.RegisterStartDate, '%Y-%m-%d') AS RegisterStartDate,
 	                DATE_FORMAT(c.RegisterEndDate, '%Y-%m-%d') AS RegisterEndDate,
                     d.FileFullPath, d.FileName,
@@ -549,6 +580,156 @@ class EventFModel extends WB_Model
 
         $query = $this->_conn->query('select STRAIGHT_JOIN ' . $column . $from . $order_by_offset_limit);
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    public function findAttachData($arr_condition)
+    {
+        $column = '
+            EfIdx, ElIdx, FileName, FileRealName, FileFullPath, FileType
+        ';
+        $from = "
+            FROM {$this->_table['event_file']}
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        return $this->_conn->query('select '. $column . $from . $where . ' limit 1')->row_array();
+    }
+
+    /**
+     * 프로모션 조회
+     * @param $promotion_code
+     * @param $type [1:프로모션 확인용 파라미터]
+     * @return mixed
+     */
+    public function findEventForPromotion($promotion_code, $type)
+    {
+        $test_type = $type;
+        $column = '
+            ElIdx, OptionCcds, EventName, PromotionCode, RegisterEndDate, CommentUseArea
+        ';
+        $from = "
+            FROM {$this->_table['event_lecture']}
+        ";
+
+        // 1일 경우 미리보기용으로 간주
+        if ($test_type == 1) {
+            $arr_condition = ['EQ'=>['PromotionCode' => $promotion_code]];
+        } else {
+            $arr_condition = [
+                'EQ' => [
+                    'PromotionCode' => $promotion_code,
+                    'RequestType' => '5',
+                    'IsUse' => 'Y',
+                    'IsStatus' => 'Y'
+                ],
+                /*'GTE' => [
+                    'a.RegisterEndDate' => date('Y-m-d H:i') . ':00'
+                ]*/
+            ];
+        }
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        return $this->_conn->query('select '. $column . $from . $where . ' limit 1')->row_array();
+    }
+
+    /**
+     * 프로모션 접속 로그
+     * @param $site_code
+     * @param $cate_code
+     * @param null $idx
+     * @return array|bool
+     */
+    public function saveLogPromotion($site_code, $cate_code, $idx = null)
+    {
+        $refer_info = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : null ;
+        $refer_domain = parse_url($refer_info, PHP_URL_HOST);
+        $this->__userAgent($agent_short, $agent, $platform);
+
+        $input_data = [
+            'SiteCode' => $site_code,
+            'CateCode' => $cate_code,
+            'PromotionCode' => $idx,
+            'MemIdx' => (empty($this->session->userdata('mem_idx')) ? null : $this->session->userdata('mem_idx')),
+            'ReferDomain' => (empty($refer_domain) ? null : $refer_domain ),
+            'ReferPath' => (empty($refer_info) ? null : $refer_info ),
+            'ReferQuery' => urldecode($_SERVER['QUERY_STRING']),
+            'UserPlatform' =>$platform,
+            'UserAgent' =>substr($agent,0,199),
+            'RegIp' =>$this->input->ip_address()
+        ];
+
+        try {
+            if ($this->_conn->set($input_data)->insert($this->_table['lms_event_promotion_log']) === false) {
+                //echo $this->_conn->last_query();
+                throw new \Exception('저장에 실패했습니다.');
+            }
+        } catch (\Exception $e) {
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+    /**
+     * 프로모션 댓글 리스트
+     * @param $is_count
+     * @param $arr_condition
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
+     */
+    public function listEventForCommentPromotion($is_count, $arr_condition, $limit = null, $offset = null, $order_by = [])
+    {
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $column = 'a.CIdx AS Idx, a.MemIdx, IFNULL(a.MemIdx, \'\'), a.MemName, a.Comment AS Content, a.EmoticonNo, a.RegDatm, DATE_FORMAT(a.RegDatm, \'%Y-%m-%d\') AS RegDay, \'2\' AS RegType';
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $from = "
+            FROM {$this->_table['event_comment']} AS a
+            INNER JOIN {$this->_table['event_lecture']} AS b ON a.ElIdx = b.ElIdx
+            INNER JOIN {$this->_table['event_r_category']} AS c ON a.ElIdx = c.ElIdx AND c.IsStatus = 'Y'
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    private function __userAgent(&$agent_short, &$agent, &$platform)
+    {
+        $this->load->library('user_agent');
+
+        if ($this->agent->is_browser())
+        {
+            $agent_short = $this->agent->browser().' '.$this->agent->version();
+        }
+        elseif ($this->agent->is_robot())
+        {
+            $agent_short = $this->agent->robot();
+        }
+        elseif ($this->agent->is_mobile())
+        {
+            $agent_short = $this->agent->mobile();
+        }
+        else
+        {
+            $agent_short = 'Unidentified User Agent';
+        }
+
+        $agent = $this->agent->agent_string();
+        $platform = $this->agent->platform();
     }
 
     /**

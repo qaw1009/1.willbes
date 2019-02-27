@@ -93,8 +93,10 @@ class Book extends BaseOrder
                 ]
             ],
             'ORG2' => [
-                'LKR' => [
-                    'O.OrderNo' => $this->_reqP('search_prod_value')
+                'EQ' => [
+                    'O.OrderIdx' => $this->_reqP('search_prod_value'),
+                    'O.OrderNo' => $this->_reqP('search_prod_value'),
+                    'P.ProdCode' => $this->_reqP('search_prod_value')
                 ],
                 'LKB' => [
                     'P.ProdName' => $this->_reqP('search_prod_value')

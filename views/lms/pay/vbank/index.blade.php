@@ -105,14 +105,14 @@
             <table id="list_ajax_table" class="table table-bordered">
                 <thead>
                 <tr class="bg-odd">
-                    <th rowspan="2" class="rowspan pb-30">선택</th>
-                    <th rowspan="2" class="pb-30">No</th>
-                    <th rowspan="2" class="rowspan pb-30">주문번호</th>
-                    <th rowspan="2" class="rowspan pb-30">회원정보</th>
-                    <th rowspan="2" class="rowspan pb-30">결제채널</th>
-                    <th rowspan="2" class="rowspan pb-20">가상계좌신청일<br/>(가상계좌취소(만료)일)</th>
-                    <th rowspan="2" class="rowspan pb-30">가상계좌정보</th>
-                    <th rowspan="2" class="rowspan pb-30">가상계좌취소</th>
+                    <th rowspan="2" class="rowspan valign-middle">선택</th>
+                    <th rowspan="2" class="valign-middle">No</th>
+                    <th rowspan="2" class="rowspan valign-middle">주문번호</th>
+                    <th rowspan="2" class="rowspan valign-middle">회원정보</th>
+                    <th rowspan="2" class="rowspan valign-middle">결제채널</th>
+                    <th rowspan="2" class="rowspan valign-middle">가상계좌신청일<br/>(가상계좌취소(만료)일)</th>
+                    <th rowspan="2" class="rowspan valign-middle">가상계좌정보</th>
+                    <th rowspan="2" class="rowspan valign-middle">가상계좌취소</th>
                     <th colspan="5">상품구분별정보</th>
                 </tr>
                 <tr class="bg-odd">

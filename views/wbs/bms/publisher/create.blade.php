@@ -24,8 +24,8 @@
         </div>
         <label class="control-label col-md-2" for="">출판사 코드
         </label>
-        <div class="col-md-4">
-            <p class="form-control-static">@if($method == 'PUT'){{ $data['wPublIdx'] }}@else # 등록 시 자동 생성 @endif</p>
+        <div class="col-md-4 form-control-static">
+            @if($method == 'PUT'){{ $data['wPublIdx'] }}@else # 등록 시 자동 생성 @endif
         </div>
     </div>
     <div class="form-group form-group-sm">
@@ -34,8 +34,8 @@
         <div class="col-md-2 item">
             <input type="text" id="publ_manager" name="publ_manager" class="form-control" title="담당자명" value="{{ $data['wPublManager'] }}">
         </div>
-        <div class="col-md-8">
-            <p class="form-control-static"># 출판사 담당자명 입력</p>
+        <div class="col-md-8 form-control-static">
+            # 출판사 담당자명 입력
         </div>
     </div>
     <div class="form-group form-group-sm">
@@ -84,25 +84,25 @@
     <div class="form-group form-group-sm">
         <label class="control-label col-md-2">등록자
         </label>
-        <div class="col-md-4">
-            <p class="form-control-static">{{ $data['wRegAdminName'] }}</p>
+        <div class="col-md-4 form-control-static">
+            {{ $data['wRegAdminName'] }}
         </div>
         <label class="control-label col-md-2">등록일
         </label>
-        <div class="col-md-4">
-            <p class="form-control-static">{{ $data['wRegDatm'] }}</p>
+        <div class="col-md-4 form-control-static">
+            {{ $data['wRegDatm'] }}
         </div>
     </div>
     <div class="form-group form-group-sm">
         <label class="control-label col-md-2">최종 수정자
         </label>
-        <div class="col-md-4">
-            <p class="form-control-static">{{ $data['wUpdAdminName'] }}</p>
+        <div class="col-md-4 form-control-static">
+            {{ $data['wUpdAdminName'] }}
         </div>
         <label class="control-label col-md-2">최종 수정일
         </label>
-        <div class="col-md-4">
-            <p class="form-control-static">{{ $data['wUpdDatm'] }}</p>
+        <div class="col-md-4 form-control-static">
+            {{ $data['wUpdDatm'] }}
         </div>
     </div>
     <script type="text/javascript">

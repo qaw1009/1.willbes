@@ -21,6 +21,7 @@ class Order extends \app\controllers\FrontController
     {
         // input parameter
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+        $sess_mem_idx = $this->session->userdata('mem_idx');
 
         // 디폴트 주문일자
         if (isset($arr_input['search_start_date']) === false) {
@@ -34,13 +35,22 @@ class Order extends \app\controllers\FrontController
         // 검색조건
         $arr_condition = [
             'EQ' => [
-                'O.MemIdx' => $this->session->userdata('mem_idx'),
+                'O.MemIdx' => $sess_mem_idx,
                 'S.SiteGroupCode' => element('site_group', $arr_input),
                 'S.IsCampus' => element('is_pass', $arr_input)
             ],
             'NOT' => ['O.PayRouteCcd' => $this->orderListFModel->_pay_route_ccd['free']],   // 무료결제만 제외
             'BDT' => ['O.OrderDatm' => [element('search_start_date', $arr_input), element('search_end_date', $arr_input)]]
         ];
+
+        // 교재주문만 조회
+        if (element('is_book', $arr_input) == 'Y') {
+            $raw_query = /** @lang text */ 'select 1 from ' . $this->orderListFModel->_table['order_product'] . ' as WOP
+                    inner join ' . $this->orderListFModel->_table['product'] . ' as WP
+                        on WOP.ProdCode = WP.ProdCode
+                where WOP.OrderIdx = O.OrderIdx and WOP.MemIdx = "' . $sess_mem_idx . '" and WP.ProdTypeCcd = "' . $this->orderListFModel->_prod_type_ccd['book'] . '"';
+            $arr_condition['RAW']['EXISTS ('] = $raw_query . ')';
+        }
 
         $list = [];
         $count = $this->orderListFModel->listOrder(true, $arr_condition);

@@ -12,6 +12,7 @@ class ProductFModel extends WB_Model
         'off_lecture' => 'vw_product_off_lecture',
         'off_pack_lecture' => 'vw_product_off_pack_lecture',
         'book' => 'vw_product_book',
+        'mock_exam' => 'vw_product_mocktest',
         'delivery_price' => 'vw_product_delivery_price',
         'delivery_add_price' => 'vw_product_delivery_add_price',
         'product' => 'lms_product',
@@ -33,6 +34,9 @@ class ProductFModel extends WB_Model
 
     // 수강생 교재 공통코드
     public $_student_book_ccd = '610003';
+
+    // 무료강좌타입 공통코드 > 일반, 보강동영상
+    public $_free_lec_type_ccd = ['normal' => '652001', 'bogang' => '652002'];
 
     // 상품 판매상태 > 판매가능, 판매예정
     public $_sale_status_ccds = ['available' => '618001', 'expected' => '618002'];
@@ -69,8 +73,13 @@ class ProductFModel extends WB_Model
                 case 'on_lecture' :
                 case 'on_free_lecture' :
                         $column .= ', CateCode, IsBest, IsNew, IsCoupon, IsCart, IsFreebiesTrans, IsDeliveryInfo, StudyPeriod, MultipleApply, StudyStartDate
-                            , SubjectIdx, SubjectName, CourseIdx, CourseName, SchoolYear, ProfIdx, wProfIdx, wProfName, ProfSlogan, wLecIdx, wUnitLectureCnt
+                            , SubjectIdx, SubjectName, CourseIdx, CourseName, OrderNumCourse, SchoolYear, ProfIdx, wProfIdx, wProfName, ProfSlogan, wLecIdx, wUnitLectureCnt
                             , wLectureProgressCcd, wLectureProgressCcdName, LecSaleType, LectureSampleData, ProdBookData, ProdBookMemo, ProfReferData, ProdPriceData';
+                        
+                        // 온라인 무료강좌 컬럼 추가 (무료강좌타입, 보강동영상 비밀번호)
+                        if ($learn_pattern == 'on_free_lecture') {
+                            $column .= ', FreeLecTypeCcd, FreeLecPasswd';
+                        }
                     break;
                 
                 // 학원 단과
@@ -111,6 +120,11 @@ class ProductFModel extends WB_Model
                 case 'book' :
                         $column .= ', CateCode, wSaleCcd, wIsUse, IsBest, IsNew, IsCoupon, IsCart, IsFreebiesTrans, IsDeliveryInfo, SchoolYear, CourseIdx, CourseName
                             , SubjectIdx, ProfIdx, ProdPriceData';
+                    break;
+
+                // 모의고사
+                case 'mock_exam' :
+                        $column .= ', CateCode, IsCoupon, IsCart, IsFreebiesTrans, IsDeliveryInfo, TakeFormsCcd, AcceptStatusCcd, ClosingPerson, ProdPriceData';
                     break;
 
                 // 배송료 상품
@@ -201,23 +215,30 @@ class ProductFModel extends WB_Model
                     'EQ' => ['LecSaleType' => 'N', 'wIsUse' => 'Y']   // 일반강의, 마스터강의 사용여부
                 ]);
                 break;
-            //학원 단과
+            // 학원 단과
             case 'off_lecture' :
                 $arr_condition = array_merge_recursive($arr_condition, [
                     'EQ' => ['LecSaleType' => 'N', 'wIsUse' => 'Y', 'IsLecOpen' => 'Y'],   // 일반강의, 마스터강의 사용여부, 강의개설여부
                     'IN' => ['AcceptStatusCcd' => array_values($this->_accept_status_ccds)]   //접수예정, 접수중
                 ]);
                 break;
-            //학원 종합반
+            // 학원 종합반
             case 'off_pack_lecture' :
                 $arr_condition = array_merge_recursive($arr_condition, [
                     'EQ' => ['LecSaleType' => 'N', 'IsLecOpen' => 'Y'],   // 일반강의, 강의개설여부
                     'IN' => ['AcceptStatusCcd' => array_values($this->_accept_status_ccds)]   //접수예정, 접수중
                 ]);
                 break;
+            // 교재
             case 'book' :
                 $arr_condition = array_merge_recursive($arr_condition, [
                     'EQ' => ['wSaleCcd' => $this->_available_sale_status_ccd['book'], 'wIsUse' => 'Y']   // WBS 교재 판매상태 (판매중), 사용여부
+                ]);
+                break;
+            // 모의고사
+            case 'mock_exam' :
+                $arr_condition = array_merge_recursive($arr_condition, [
+                    'EQ' => ['AcceptStatusCcd' => $this->_accept_status_ccds['available']]   // 접수중
                 ]);
                 break;
         }
@@ -234,7 +255,7 @@ class ProductFModel extends WB_Model
     {
         $multiple_lec_time_ccd = '612002';  // 배수제한타입 > 전체 강의시간에 배수 적용
         $column = 'P.ProdCode, P.ProdTypeCcd, PL.LearnPatternCcd, ifnull(PL.IsLecStart, "N") as IsLecStart, PL.StudyStartDate, PL.StudyEndDate
-            , ifnull(PL.StudyPeriod, if(PL.StudyStartDate is not null and PL.StudyEndDate is not null, datediff(PL.StudyEndDate, PL.StudyStartDate), 0)) as StudyPeriod            
+            , ifnull(PL.StudyPeriod, if(PL.StudyStartDate is not null and PL.StudyEndDate is not null, datediff(PL.StudyEndDate, PL.StudyStartDate) + 1, 0)) as StudyPeriod            
         	, PL.MultipleTypeCcd, PL.MultipleApply, ifnull(PL.AllLecTime, 0) as AllLecTime
         	, if(PL.MultipleTypeCcd = "' . $multiple_lec_time_ccd . '", convert(PL.AllLecTime * 60 * PL.MultipleApply, int), 0) as MultipleAllLecSec
 	        , PL.IsPackLecStartType';

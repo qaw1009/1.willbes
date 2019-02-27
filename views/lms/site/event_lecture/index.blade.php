@@ -24,6 +24,13 @@
                             @endforeach
                         </select>
 
+                        <select class="form-control" id="search_request_type" name="search_request_type">
+                            <option value="">신청유형</option>
+                            @foreach($arr_request_types as $key => $val)
+                                <option value="{{ $key }}">{{ $val }}</option>
+                            @endforeach
+                        </select>
+
                         <select class="form-control" id="search_is_use" name="search_is_use">
                             <option value="">사용여부</option>
                             <option value="Y">사용</option>
@@ -61,9 +68,9 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-12 text-right">
+            <div class="col-xs-12 text-center">
                 <button type="submit" class="btn btn-primary btn-search" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
-                <button type="button" class="btn btn-default mr-20" id="_btn_reset">검색초기화</button>
+                <button type="button" class="btn btn-default btn-search" id="btn_reset">초기화</button>
             </div>
         </div>
     </form>
@@ -79,6 +86,7 @@
                     <th>카테고리</th>
                     <th>썸네일</th>
                     <th>신청유형</th>
+                    <th>프로모션코드</th>
                     <th>제목</th>
                     <th>신청기간</th>
                     <th>자동문자</th>
@@ -87,6 +95,7 @@
                     <th>조회수</th>
                     <th>접수상태</th>
                     <th>배너명</th>
+                    <th>복사여부</th>
                     <th>사용여부</th>
                     <th>등록자</th>
                     <th>등록일</th>
@@ -152,7 +161,8 @@
                             return "<img class='img_"+row.ElIdx+"' src='"+img_url+"'>";
                         }},
 
-                    {'data' : 'RequstTypeName'},
+                    {'data' : 'RequestTypeName'},
+                    {'data' : 'PromotionCode'},
                     {'data' : 'EventName', 'render' : function(data, type, row, meta) {
                             return '<a href="javascript:void(0);" class="btn-read" data-idx="' + row.ElIdx + '"><u class="blue">' + data + '</u></a>';
                         }},
@@ -175,8 +185,11 @@
                     {'data' : 'ReadCnt'},
                     {'data' : 'IsRegisterName'},
                     {'data' : 'BannerName'},
+                    {'data' : 'IsCopy', 'render' : function(data, type, row, meta) {
+                            return (data === 'N') ? '미복사' : '<p class="red">복사</p>';
+                        }},
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
-                            return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
+                            return (data === 'Y') ? '사용' : '<p class="red">미사용</p>';
                         }},
                     {'data' : 'RegAdminName'},
                     {'data' : 'RegDatm'},

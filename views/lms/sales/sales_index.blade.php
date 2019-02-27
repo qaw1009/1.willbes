@@ -58,9 +58,9 @@
                     <div class="col-md-11 form-inline">
                         <div id="layer_cate_code">
                             @foreach($arr_category as $idx => $row)
-                                <div class="checkbox mr-10 search_cate_code {{ $row['SiteCode'] }}">
-                                    <input type="checkbox" id="search_cate_code_{{ $loop->index }}" name="search_cate_code" class="flat {{ $row['SiteCode'] }}" value="{{ $row['CateCode'] }}"/>
-                                    <label for="search_cate_code_{{ $loop->index }}" class="input-label">{{ $row['CateName'] }}</label>
+                                <div class="checkbox mr-10 search_chk_cate_code {{ $row['SiteCode'] }}">
+                                    <input type="checkbox" id="search_chk_cate_code_{{ $loop->index }}" name="search_chk_cate_code" class="flat {{ $row['SiteCode'] }}" value="{{ $row['CateCode'] }}"/>
+                                    <label for="search_chk_cate_code_{{ $loop->index }}" class="input-label">{{ $row['CateName'] }}</label>
                                 </div>
                             @endforeach
                         </div>
@@ -71,8 +71,8 @@
                     <div class="col-md-11 form-inline">
                         <div class="checkbox">
                             @foreach($arr_prod_type_ccd as $key => $val)
-                                <input type="checkbox" id="search_prod_type_ccd_{{ $loop->index }}" name="search_prod_type_ccd" class="flat" value="{{ $key }}"/>
-                                <label for="search_prod_type_ccd_{{ $loop->index }}" class="input-label">{{ $val }}</label>
+                                <input type="checkbox" id="search_chk_prod_type_ccd_{{ $loop->index }}" name="search_chk_prod_type_ccd" class="flat" value="{{ $key }}"/>
+                                <label for="search_chk_prod_type_ccd_{{ $loop->index }}" class="input-label">{{ $val }}</label>
                             @endforeach
                         </div>
                     </div>
@@ -84,8 +84,8 @@
                         <div class="col-md-11 form-inline">
                             <div class="checkbox">
                                 @foreach($arr_learn_pattern_ccd as $key => $val)
-                                    <input type="checkbox" id="search_learn_pattern_ccd_{{ $loop->index }}" name="search_learn_pattern_ccd" class="flat" value="{{ $key }}"/>
-                                    <label for="search_learn_pattern_ccd_{{ $loop->index }}" class="input-label">{{ $val }}</label>
+                                    <input type="checkbox" id="search_chk_learn_pattern_ccd_{{ $loop->index }}" name="search_chk_learn_pattern_ccd" class="flat" value="{{ $key }}"/>
+                                    <label for="search_chk_learn_pattern_ccd_{{ $loop->index }}" class="input-label">{{ $val }}</label>
                                 @endforeach
                             </div>
                         </div>
@@ -95,8 +95,8 @@
                         <div class="col-md-11 form-inline">
                             <div class="checkbox">
                                 @foreach($arr_sale_pattern_ccd as $key => $val)
-                                    <input type="checkbox" id="search_sale_pattern_ccd_{{ $loop->index }}" name="search_sale_pattern_ccd" class="flat" value="{{ $key }}"/>
-                                    <label for="search_sale_pattern_ccd_{{ $loop->index }}" class="input-label">{{ $val }}</label>
+                                    <input type="checkbox" id="search_chk_sale_pattern_ccd_{{ $loop->index }}" name="search_chk_sale_pattern_ccd" class="flat" value="{{ $key }}"/>
+                                    <label for="search_chk_sale_pattern_ccd_{{ $loop->index }}" class="input-label">{{ $val }}</label>
                                 @endforeach
                             </div>
                         </div>
@@ -263,12 +263,12 @@
 
                 if (site_code !== '') {
                     // display
-                    $layer.find('.search_cate_code').css('display', 'none');
-                    $layer.find('.search_cate_code').filter('.' + site_code).css('display', '');
+                    $layer.find('.search_chk_cate_code').css('display', 'none');
+                    $layer.find('.search_chk_cate_code').filter('.' + site_code).css('display', '');
 
                     // checkbox disabled
-                    $layer.find('input[name="search_cate_code"]').iCheck('disable');
-                    $layer.find('input[name="search_cate_code"]').filter('.' + site_code).iCheck('enable');
+                    $layer.find('input[name="search_chk_cate_code"]').iCheck('disable');
+                    $layer.find('input[name="search_chk_cate_code"]').filter('.' + site_code).iCheck('enable');
                 }
             };
 

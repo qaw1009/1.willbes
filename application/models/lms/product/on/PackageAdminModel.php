@@ -32,9 +32,13 @@ class PackageAdminModel extends CommonLectureModel
                     ,C.CateCode
                     ,Ca.CateName, Cb.CateName as CateName_Parent
                     ,D.SalePrice, D.SaleRate, D.RealSalePrice
-                    ,fn_product_cart_count(A.ProdCode) as CartCnt
-                    ,fn_product_order_count(A.ProdCode,\'\') as PayIngCnt
-                    ,fn_product_order_count(A.ProdCode,\'\') as PayEndCnt
+                    #,fn_product_count_cart(A.ProdCode) as CartCnt
+                    #,fn_product_count_order(A.ProdCode,\'676002\') as PayIngCnt
+                    #,fn_product_count_order(A.ProdCode,\'676001\') as PayEndCnt
+                    ,0 as CartCnt       #장바구니테이블 스캔으로 인해 쿼리속도 저하
+                    ,0 as PayIngCnt    #주문테이블 스캔으로 인해 쿼리속도 저하
+                    ,0 as PayEndCnt    #주문테이블 스캔으로 인해 쿼리속도 저하
+                    ,IFNULL(Y.ProdCode_Original,\'\') as ProdCode_Original
                     ,Z.wAdminName
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
@@ -53,7 +57,8 @@ class PackageAdminModel extends CommonLectureModel
                         join lms_product_r_category C on A.ProdCode = C.ProdCode and C.IsStatus=\'Y\'
                             join lms_sys_category Ca on C.CateCode = Ca.CateCode  and Ca.IsStatus=\'Y\'
                             left outer join lms_sys_category Cb on Ca.ParentCateCode = Cb.CateCode
-                        left outer join lms_product_sale D on A.ProdCode = D.ProdCode and D.SaleTypeCcd=\'613001\' and D.IsStatus=\'Y\'	
+                        left outer join lms_product_sale D on A.ProdCode = D.ProdCode and D.SaleTypeCcd=\'613001\' and D.IsStatus=\'Y\'
+                        left outer join lms_product_copy_log Y on A.ProdCode = Y.ProdCode	
                         left outer join wbs_sys_admin Z on A.RegAdminIdx = Z.wAdminIdx
                      where A.IsStatus=\'Y\'
         ';
@@ -65,7 +70,7 @@ class PackageAdminModel extends CommonLectureModel
 
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
-        //echo 'select ' . $column . $from . $where . $order_by_offset_limit;        exit;
+        //echo 'select ' . $column . $from . $where . $order_by_offset_limit;
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 
@@ -97,9 +102,10 @@ class PackageAdminModel extends CommonLectureModel
                     ,C.CateCode
                     ,Ca.CateName, Cb.CateName as CateName_Parent
                     ,D.SalePrice, D.SaleRate, D.RealSalePrice
-                    ,fn_product_cart_count(A.ProdCode) as CartCnt
-                    ,fn_product_order_count(A.ProdCode,\'\') as PayIngCnt
-                    ,fn_product_order_count(A.ProdCode,\'\') as PayEndCnt
+                    ,fn_product_count_cart(A.ProdCode) as CartCnt
+                    ,fn_product_count_order(A.ProdCode,\'676002\') as PayIngCnt
+                    ,fn_product_count_order(A.ProdCode,\'676001\') as PayEndCnt
+                    ,IFNULL(Y.ProdCode_Original,\'\') as ProdCode_Original
                     ,Z.wAdminName
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
@@ -125,7 +131,8 @@ class PackageAdminModel extends CommonLectureModel
                         join lms_product_r_category C on A.ProdCode = C.ProdCode and C.IsStatus=\'Y\'
                         join lms_sys_category Ca on C.CateCode = Ca.CateCode  and Ca.IsStatus=\'Y\'
                         left outer join lms_sys_category Cb on Ca.ParentCateCode = Cb.CateCode
-                        left outer join lms_product_sale D on A.ProdCode = D.ProdCode and D.SaleTypeCcd=\'613001\' and D.IsStatus=\'Y\'	
+                        left outer join lms_product_sale D on A.ProdCode = D.ProdCode and D.SaleTypeCcd=\'613001\' and D.IsStatus=\'Y\'
+                        left outer join lms_product_copy_log Y on A.ProdCode = Y.ProdCode	
                         left outer join wbs_sys_admin Z on A.RegAdminIdx = Z.wAdminIdx
                      where A.IsStatus=\'Y\'
         ';
@@ -248,6 +255,12 @@ class PackageAdminModel extends CommonLectureModel
             }
             /*----------------          연결강좌 등록        ---------------*/
 
+            /*----------------          Json 데이터 등록        ---------------*/
+            if($this->_setProdJsonData($prodcode) !== true) {
+                throw new \Exception('JSON 데이터 등록에 실패했습니다.');
+            }
+            /*----------------          Json 데이터 등록        ---------------*/
+
             $this->_conn->trans_commit();
             //$this->_conn->trans_rollback();
 
@@ -354,6 +367,12 @@ class PackageAdminModel extends CommonLectureModel
                 throw new \Exception('연결강좌 등록에 실패했습니다.');
             }
             /*----------------          연결강좌 등록        ---------------*/
+
+            /*----------------          Json 데이터 등록        ---------------*/
+            if($this->_setProdJsonData($prodcode) !== true) {
+                throw new \Exception('JSON 데이터 등록에 실패했습니다.');
+            }
+            /*----------------          Json 데이터 등록        ---------------*/
 
             //$this->_conn->trans_rollback();
             $this->_conn->trans_commit();

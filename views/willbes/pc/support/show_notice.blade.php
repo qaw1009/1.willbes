@@ -14,10 +14,7 @@
                 @endforeach
 
                 <div class="willbes-CScenter c_both">
-                    <div class="willbes-Lec-Tit NG bd-none tx-black c_both pt-zero">
-                        · 공지사항
-                    </div>
-                    <div class="Act2 mt30">
+                    <div class="Act2">
                         <!-- List -->
                         <div class="willbes-Leclist c_both">
                             <div class="LecViewTable">
@@ -46,7 +43,7 @@
                                     <tbody>
                                     @if(empty($data['AttachData']) === false)
                                     <tr>
-                                        <td class="w-file tx-left pl20" colspan="4">
+                                        <td class="w-file tx-left pl20" colspan="3">
                                             @foreach($data['AttachData'] as $row)
                                                 <a href="{{front_url($default_path.'/notice/download?path=').urlencode($row['FilePath'].$row['FileName']).'&fname='.urlencode($row['RealName']).'&board_idx='.$board_idx }}" target="_blank">
                                                     <img src="{{ img_url('prof/icon_file.gif') }}"> {{$row['RealName']}}</a>
@@ -55,8 +52,8 @@
                                     </tr>
                                     @endif
                                     <tr>
-                                        <td class="w-txt tx-left" colspan="7">
-                                            {!! $data['Content'] !!}
+                                        <td class="w-txt tx-left" colspan="3">
+                                            {!! $data['Content'] !!}                                            
                                         </td>
                                     </tr>
                                     </tbody>

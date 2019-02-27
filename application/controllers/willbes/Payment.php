@@ -30,7 +30,7 @@ class Payment extends \app\controllers\FrontController
         // 주문요청 폼 데이터 유효성 검증
         $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
-            ['field' => 'cart_type', 'label' => '장바구니구분', 'rules' => 'trim|required|in_list[on_lecture,off_lecture,book]'],
+            ['field' => 'cart_type', 'label' => '장바구니구분', 'rules' => 'trim|required|in_list[on_lecture,off_lecture,book,mock_exam]'],
             ['field' => 'cart_idx[]', 'label' => '장바구니식별자', 'rules' => 'trim|required'],
             //['field' => 'pay_method_ccd', 'label' => '결제수단', 'rules' => 'trim|required|integer'],     // PG결제와 0원결제 혼용
             ['field' => 'agree1', 'label' => '유의사항안내 동의여부', 'rules' => 'trim|required|in_list[Y]'],
@@ -144,6 +144,9 @@ class Payment extends \app\controllers\FrontController
             ]);
 
             if ($result['ret_cd'] === true) {
+                // 결제완료 SMS 발송
+                $this->orderFModel->sendOrderSms($result['ret_data']);
+
                 // 결제완료 페이지 이동
                 return $this->json_result(true, '', [], ['ret_url' => front_url('/order/complete?order_no=' . $result['ret_data'])]);
             } else {
@@ -171,6 +174,9 @@ class Payment extends \app\controllers\FrontController
         $this->save_log_queries();
 
         if ($result['ret_cd'] === true) {
+            // 결제완료 SMS 발송
+            $this->orderFModel->sendOrderSms($result['ret_data']);
+
             // 결제완료 페이지 이동
             redirect(front_url('/order/complete?order_no=' . $result['ret_data']));
         } else {

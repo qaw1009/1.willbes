@@ -25,7 +25,7 @@ class OrderListFModel extends BaseOrderFModel
             $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $column = 'O.OrderIdx, O.OrderNo, O.SiteCode, O.ReprProdName, O.PayRouteCcd, CPR.CcdName as PayRouteCcdName
+            $column = 'O.OrderIdx, O.OrderNo, O.MemIdx, O.SiteCode, O.ReprProdName, O.PayRouteCcd, CPR.CcdName as PayRouteCcdName
                 , O.PayMethodCcd, CPM.CcdName as PayMethodCcdName, O.PgCcd, O.PgMid, O.PgTid
                 , O.RealPayPrice, O.OrderPrice, O.OrderProdPrice, O.DiscPrice, O.UseLecPoint, O.UseBookPoint, (O.UseLecPoint + O.UseBookPoint) as UsePoint
                 , O.SaveLecPoint, O.SaveBookPoint, O.DeliveryPrice, O.DeliveryAddPrice, O.IsDelivery, O.CompleteDatm, O.OrderDatm
@@ -128,6 +128,7 @@ class OrderListFModel extends BaseOrderFModel
                      when PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['off_lecture'] . '" then "off_lecture"
                      when PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['off_pack_lecture'] . '" then "off_pack_lecture"
                      when P.ProdTypeCcd = "' . $this->_prod_type_ccd['book'] . '" then "book"
+                     when P.ProdTypeCcd = "' . $this->_prod_type_ccd['mock_exam'] . '" then "mock_exam"
                      when P.ProdTypeCcd = "' . $this->_prod_type_ccd['delivery_price'] . '" then "delivery_price"
                      when P.ProdTypeCcd = "' . $this->_prod_type_ccd['delivery_add_price'] . '" then "delivery_add_price"
                      when P.ProdTypeCcd = "' . $this->_prod_type_ccd['freebie'] . '" then "freebie"
@@ -267,6 +268,35 @@ class OrderListFModel extends BaseOrderFModel
 
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where, [$sess_mem_idx, $sess_mem_idx]);
+
+        return $query->result_array();
+    }
+
+    /**
+     * 주문상품 SMS 발송 메시지 조회
+     * @param int $order_no [주문번호 or 주문식별자]
+     * @param int $mem_idx [회원식별자]
+     * @param string $idx_name [주문조회 조회 컬럼명, (OrderNo, OrderIdx)]
+     * @return mixed
+     */
+    public function getOrderProductAutoSmsMsg($order_no, $mem_idx, $idx_name = 'OrderNo')
+    {
+        $column = 'PSM.SendTel as SendSmsTel, PSM.Memo as SendSmsMsg';
+        $from = '
+            from ' . $this->_table['order_product'] . ' as OP
+                inner join ' . $this->_table['order'] . ' as O
+                    on OP.OrderIdx = O.OrderIdx
+                left join ' . $this->_table['product'] . ' as P
+                    on OP.ProdCode = P.ProdCode and P.IsStatus = "Y"
+                left join ' . $this->_table['product_sms'] . ' as PSM
+                    on OP.ProdCode = PSM.ProdCode and PSM.IsStatus = "Y"
+            where O.' . $idx_name . ' = ?
+                and O.MemIdx = ? 
+                and P.IsSms = "Y"                                                       
+        ';
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from, [$order_no, $mem_idx]);
 
         return $query->result_array();
     }

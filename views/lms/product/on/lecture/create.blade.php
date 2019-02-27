@@ -18,8 +18,6 @@
     }
 @endphp
 
-
-
     <h5>- 온라인 단강좌 상품 정보를 관리하는 메뉴입니다.</h5>
     <div class="x_panel">
         <div class="x_title">
@@ -84,7 +82,7 @@
                                     &nbsp;[진행상태] {{$data['wProgressCcd_Name']}} &nbsp;&nbsp;
                                     &nbsp;[제작월] {{$data['wMakeYM']}} &nbsp;&nbsp;
                                     @if($data['wAttachFile'])
-                                        &nbsp;[첨부자료] <a href='{{ site_url('/product/on/lecture/download/').urlencode($data['wAttachPath'].$data['wAttachFile']).'/'.urlencode($data['wAttachFileReal']) }}' target="_blank">{{$data['wAttachFileReal']}}</a>
+                                        &nbsp;[첨부자료] <a href='{{ site_url('/product/on/lecture/download/').'?filename='.urlencode($data['wAttachPath'].$data['wAttachFile']).'&filename_ori='.urlencode($data['wAttachFileReal']) }}' target="_blank">{{$data['wAttachFileReal']}}</a>
                                     @endif
                                 @endif
 
@@ -386,7 +384,7 @@
                                                 <option value="R" @if($SaleDiscType == 'R') selected="selected"@endif>%</option>
                                                 <option value="P" @if($SaleDiscType == 'p') selected="selected"@endif>-</option>
                                             </select>&nbsp;
-                                            <input type="number" name="SaleRate[]" id="SaleRate_{{$key}}"  value="{{$SaleRate}}" maxlength="8" class="form-control" onkeyup="priceCheck('{{$key}}')" @if($key=="613001")required="required"@endif title="할인">
+                                            <input type="number" name="SaleRate[]" id="SaleRate_{{$key}}"  value="@if($method=="POST"){{0}}@else{{$SaleRate}}@endif" maxlength="8" class="form-control" onkeyup="priceCheck('{{$key}}')" @if($key=="613001")required="required"@endif title="할인">
                                         </td>
                                         <td><input type="number" name="RealSalePrice[]" id="RealSalePrice_{{$key}}"  value="{{$RealSalePrice}}" readonly class="form-control" @if($key=="613001")required="required"@endif title="판매가"> 원</td>
                                     </tr>
@@ -434,31 +432,39 @@
                                 <input type='hidden' name='rateRemain' id='rateRemain' value='0'>  <!--단수적용을 위한 나머지 값//-->
                                 <input type='hidden' name='rateRemainProfIdx' id='rateRemainProfIdx' value=''> <!--단수적용 교수 코드 : 스크립트 용//-->
                             @php
-                                $rateRemain = '';
+                                $rateRemain = 0;
                                 $rateRemainProfIdx = '';
+                                $rateSum = 0;
                             @endphp
-                            @foreach($data_division as $row)
-                                @php
-                                    if(empty($data_division) !== true) {
-                                        if($row['IsSingular']==='Y') {
-                                            $rateRemain = $row['SingularValue'];
-                                            $rateRemainProfIdx = $row['ProfIdx'];
+
+                            @if(empty($data_division) === false)
+
+                                @foreach($data_division as $row)
+                                    @php
+                                        if(empty($data_division) !== true) {
+                                            if($row['IsSingular']==='Y') {
+                                                $rateRemain = $row['SingularValue'];
+                                                $rateRemainProfIdx = $row['ProfIdx'];
+                                            }
                                         }
-                                    }
-                                @endphp
-                                <tr id="{{$loop->index - 1}}">
-                                    <td>
-                                        <input name="ProfIdx[]" id="ProfIdx_{{$row['ProfIdx']}}" type="hidden" value="{{$row['ProfIdx']}}">
-                                        <input name="IsReprProf" id="IsReprProf_{{$row['ProfIdx']}}" type="radio" value="{{$row['ProfIdx']}}" @if($row['IsReprProf']==='Y')checked="checked"@endif>
-                                    </td>
-                                    <td>{{$row['wProfName']}}</td>
-                                    <td><input name="TotalPrice[]" class="form-control" id="TotalPrice_{{$row['ProfIdx']}}" type="text" size="10" readonly="" value="{{$row['TotalPrice']}}"> 원</td>
-                                    <td><input name="ProdDivisionPrice[]" title="안분가격" class="form-control" id="ProdDivisionPrice_{{$row['ProfIdx']}}" required="required" onkeyup="rateCheck('{{$row['ProfIdx']}}')" type="text" size="10" value="{{$row['ProdDivisionPrice']}}" {{--@if($method==='PUT') readonly @endif--}}> 원</td>
-                                    <td><input name="ProdDivisionRate[]" title="안분율" class="form-control" id="ProdDivisionRate_{{$row['ProfIdx']}}" required="required" type="text" size="10" readonly="" value="{{$row['ProdDivisionRate']}}"></td>
-                                    <td><input name="ProdCalcRate[]" title="정산율" class="form-control" id="ProdCalcRate_{{$row['ProfIdx']}}" required="required" type="text" size="5" value="{{$row['ProdCalcRate']}}"> %</td>
-                                    <td><input name="IsSingular" title="단수적용" id="IsSingular_{{$row['ProfIdx']}}" required="required" onclick="singularCheck('{{$row['ProfIdx']}}')" type="radio" value="{{$row['ProfIdx']}}" @if($row['IsSingular']==='Y') checked="checked" @endif {{--@if($method==='PUT') disabled @endif--}}></td>
-                                </tr>
-                            @endforeach
+                                        $rateSum = $rateSum + floatval($row['ProdDivisionRate']);
+                                    @endphp
+                                    <tr id="{{$loop->index - 1}}">
+                                        <td>
+                                            <input name="ProfIdx[]" id="ProfIdx_{{$row['ProfIdx']}}" type="hidden" value="{{$row['ProfIdx']}}">
+                                            <input name="IsReprProf" id="IsReprProf_{{$row['ProfIdx']}}" type="radio" value="{{$row['ProfIdx']}}" @if($row['IsReprProf']==='Y')checked="checked"@endif>
+                                        </td>
+                                        <td>{{$row['wProfName']}}</td>
+                                        <td><input name="TotalPrice[]" class="form-control" id="TotalPrice_{{$row['ProfIdx']}}" type="text" size="10" readonly="" value="{{$row['TotalPrice']}}"> 원</td>
+                                        <td><input name="ProdDivisionPrice[]" title="안분가격" class="form-control" id="ProdDivisionPrice_{{$row['ProfIdx']}}" required="required" onkeyup="rateCheck('{{$row['ProfIdx']}}')" type="text" size="10" value="{{$row['ProdDivisionPrice']}}" {{--@if($method==='PUT') readonly @endif--}}> 원</td>
+                                        <td><input name="ProdDivisionRate[]" title="안분율" class="form-control" id="ProdDivisionRate_{{$row['ProfIdx']}}" required="required" type="text" size="10" readonly="" value="{{$row['ProdDivisionRate']}}"></td>
+                                        <td><input name="ProdCalcRate[]" title="정산율" class="form-control" id="ProdCalcRate_{{$row['ProfIdx']}}" required="required" type="text" size="5" value="{{$row['ProdCalcRate']}}"> %</td>
+                                        <td><input name="IsSingular" title="단수적용" id="IsSingular_{{$row['ProfIdx']}}" required="required" onclick="singularCheck('{{$row['ProfIdx']}}')" type="radio" value="{{$row['ProfIdx']}}" @if($row['IsSingular']==='Y') checked="checked" @endif {{--@if($method==='PUT') disabled @endif--}}></td>
+                                    </tr>
+                                @endforeach
+                                    <tr><td colspan="4"></td><td><span id="rateSum">{{{$rateSum}}}</span></td><td colspan="2"></td></tr>
+                            @endif
+
                             </table>
                         </div>
                         <div class="item inline-block">
@@ -515,7 +521,7 @@
                         <input type="hidden" name="PointApplyCcd" id="PointApplyCcd" value="635001">
                         <input type="radio" name="IsPoint" class="flat" value="Y" required="required" title="결제포인트적립" @if($method == 'POST' || $data['IsPoint']=='Y')checked="checked"@endif/> 가능
                         [
-                        <input type='number' name='PointSavePrice' value='{{$data['PointSavePrice']}}' title="결제포인트적립" class="form-control" size="2" required="required" >
+                        <input type='number' name='PointSavePrice' value='@if($method==="POST"){{1}}@else{{$data['PointSavePrice']}}@endif' title="결제포인트적립" class="form-control" size="2" required="required" >
                         <select name="PointSaveType" id="PointSaveType" class="form-control">
                             <option value="R" @if($data['PointSaveType'] == 'R')selected="selected"@endif>%</option>
                             <option value="P" @if($data['PointSaveType'] == 'P')selected="selected"@endif>원</option>
@@ -591,9 +597,9 @@
                     <div class="col-md-10 form-inline">
                         <input type="radio" name="IsRetake" class="flat" value="Y" required="required" title="재수강신청" @if($method == 'POST' || $data['IsRetake']=='Y')checked="checked"@endif/> 가능
                         &nbsp;&nbsp;
-                        [할인율] <input type="number" name="RetakeSaleRate" id="RetakeSaleRate" value="@if($method == 'POST'){{0}}@else{{$data['RetakeSaleRate']}}@endif" class="form-control" size="2"> %
+                        [할인율] <input type="number" name="RetakeSaleRate" id="RetakeSaleRate" value="@if($method == 'POST'){{20}}@else{{$data['RetakeSaleRate']}}@endif" class="form-control" size="2"> %
                         &nbsp;&nbsp;
-                        [신청가능기간] 수강종료 후 <input type='number' name='RetakePeriod' value='{{$data['RetakePeriod']}} ' class="form-control" size="2"> 일까지 ]
+                        [신청가능기간] 수강종료 후 <input type='number' name='RetakePeriod' value='@if($method == 'POST'){{30}}@else{{$data['RetakePeriod']}}@endif' class="form-control" size="2"> 일까지 ]
                         &nbsp;&nbsp;
                         <input type="radio" name="IsRetake" class="flat" value="N" @if($data['IsRetake']=='N')checked="checked"@endif/> 불가능
                     </div>
@@ -622,9 +628,9 @@
                     </label>
                     <div class="col-md-4 form-inline item" >
                         <div class="radio">
-                            <input type="radio" name="IsEdit" class="flat" value="Y" title="첨삭사용여부" @if($method == 'POST' || $data['IsEdit']=='Y')checked="checked"@endif/> 가능
-   &nbsp;&nbsp;                         &nbsp;
-                            <input type="radio" name="IsEdit" class="flat" value="N" title="첨삭사용여부" @if($data['IsEdit']=='N')checked="checked"@endif/> 불가능
+                            <input type="radio" name="IsEdit" class="flat" value="Y" title="첨삭사용여부" @if($data['IsEdit']=='Y')checked="checked"@endif/> 가능
+                           &nbsp;
+                            <input type="radio" name="IsEdit" class="flat" value="N" title="첨삭사용여부" @if($method == 'POST' || $data['IsEdit']=='N')checked="checked"@endif/> 불가능
                         </div>
                     </div>
                     <label class="control-label col-md-2" for="IsCart">장바구니담기<br>가능여부 <span class="required">*</span>
@@ -632,7 +638,7 @@
                     <div class="col-md-4 form-inline item" >
                         <div class="checkbox">
                             <input type="radio" name="IsCart" class="flat" value="Y" required="required" title="장바구니담기" @if($method == 'POST' || $data['IsCart']=='Y')checked="checked"@endif/> 가능
-                            &nbsp;&nbsp;
+                            &nbsp;
                             <input type="radio" name="IsCart" class="flat" value="N" @if($data['IsCart']=='N')checked="checked"@endif/> 불가능
                         </div>
                     </div>
@@ -643,9 +649,9 @@
                     </label>
                     <div class="col-md-6 form-inline item" >
                         <div class="radio">
-                            <input type="radio" name="IsRefund" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['IsRefund']=='Y')checked="checked"@endif/> 가능
-                            &nbsp;&nbsp;
-                            <input type="radio" name="IsRefund" class="flat" value="N" @if($data['IsRefund']=='N')checked="checked"@endif/> 불가능
+                            <input type="radio" name="IsRefund" class="flat" value="Y" required="required" title="환불신청" @if($data['IsRefund']=='Y')checked="checked"@endif/> 가능
+                            &nbsp;
+                            <input type="radio" name="IsRefund" class="flat" value="N" @if($method == 'POST' || $data['IsRefund']=='N')checked="checked"@endif/> 불가능
                             &nbsp;&nbsp;&nbsp;&nbsp;• 내강의실에서 사용자가 직접 환불신청 가능한지 여부
                         </div>
                     </div>
@@ -960,12 +966,11 @@
                         <textarea id="SmsMemo" name="SmsMemo" class="form-control" rows="5" cols="100" title="문자 발송" placeholder="">{{$data_sms['Memo']}}</textarea>
                         </p>
                         <div class="text">
-                            [발신번호] <input type="text" name="SendTel" id="SendTel" value="{{$data_sms['SendTel']}}" size="12" class="form-control" maxlength="20">
+                            [발신번호] {!! html_callback_num_select($arr_send_callback_ccd, $data_sms['SendTel'], 'SendTel', 'SendTel', '', '발신번호', '') !!}
                             &nbsp;&nbsp;&nbsp;
-
                             <input class="form-control border-red red" id="content_byte" style="width: 50px;" type="text" readonly="readonly" value="0">
                             <span class="red">byte</span>
-                             (80byte 초과 시 LMS 문자로 전환됩니다.)
+                            (55byte 이상일 경우 MMS로 전환됩니다.)
                         </div>
                     </div>
                 </div>
@@ -1081,7 +1086,6 @@
                 //alert(prev_val)
                 if (prev_val == "") {
                     $('#site_code').blur();
-                    smsTel_chained($(this).val());  //전화번호 재조정
                     return;
                 }
                 $(this).blur();
@@ -1092,11 +1096,8 @@
                     $("#teacherDivision tbody").remove();
                     $("#lecList tbody").remove();
                     sitecode_chained($(this).val());    //과정.과목 재조정
-                    smsTel_chained($(this).val());   //전화번호 재조정
                     */
                     location.reload();
-
-
 
                 } else {
                     $(this).val(prev_val);
@@ -1207,7 +1208,7 @@
 
                             $("#teacherDivision tbody").remove();   //기등록 내용 초기화
 
-                            $("#teacherDivision").append("<tbody>")
+                            $("#teacherDivision").append("<tbody>");
                             for(var i in data_array) {
                                 //console.log(data_array[i].wProfName + ' / ' + data_array[i].ProfIdx);
                                 if(i==0) {
@@ -1242,7 +1243,6 @@
                             $("#rateRemainProfIdx").val(''); //선택교수 초기화
                             $("#rateRemain").val('');//남는안분값 초기화
 
-                            radioclass();   //강제로 라디오버튼에 클래스를 먹이는데... 적용이 안됨.
                         } else {
                             alert("등록된 교수정보가 존재하지 않습니다.");
                         }
@@ -1309,8 +1309,6 @@
             @endif
 
 
-
-
             // ajax submit
             $regi_form.submit(function() {
 
@@ -1338,17 +1336,11 @@
             }
 
 
-
-
             $('#btn_list').click(function() {
                 location.replace('{{ site_url('/product/on/lecture/') }}' + getQueryString());
             });
         });
 
-        //강제로 클래스 먹임... 근데 안먹힘
-        function radioclass() {
-            $("input[name=mainFlag]").attr({"class":"flat"});
-        }
         function rowDelete(strRow) {
             $('#'+strRow).remove();
         }
@@ -1483,17 +1475,6 @@
             //과정, 과목 변경
             $("#CourseIdx").chained(site_code);
             $("#SubjectIdx").chained(site_code);
-        }
-
-
-        function smsTel_chained(site_code) {
-            var obj = {
-                @foreach($siteList as $key=>$val)
-                {{$key}}: '{{$val}}'@if($loop->last == false),@endif
-                @endforeach
-            }
-            //alert(obj[site_code]);
-            $('#SendTel').val(obj[site_code].replace('-',''));
         }
 
         @if($method==='PUT')

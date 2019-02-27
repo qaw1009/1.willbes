@@ -41,8 +41,8 @@ class SupportProfMaterial extends BaseSupport
                 /*'b.SiteCode' => $this->_site_code*/
                 'b.BmIdx' => $this->_bm_idx
                 ,'b.IsUse' => 'Y'
-                ,'b.ProfIdx' => $prof_idx
-                ,'b.SubjectIdx' => $subject_idx
+                /*,'b.ProfIdx' => $prof_idx
+                ,'b.SubjectIdx' => $subject_idx*/
             ],
             'ORG' => [
                 'LKB' => [
@@ -50,9 +50,9 @@ class SupportProfMaterial extends BaseSupport
                     ,'b.Content' => $s_keyword
                 ]
             ],
-            'LKB' => [
+            /*'LKB' => [
                 'Category_String'=>$s_cate_code
-            ],
+            ],*/
         ];
 
         $column = 'b.BoardIdx,b.CampusCcd,b.TypeCcd,b.IsBest,b.AreaCcd
@@ -63,12 +63,12 @@ class SupportProfMaterial extends BaseSupport
 
         $order_by = ['b.IsBest'=>'Desc','b.BoardIdx'=>'Desc'];
 
-        $total_rows = $this->supportBoardFModel->listBoardForSiteGroup(true, $this->_site_code, $arr_condition);
+        $total_rows = $this->supportBoardFModel->listBoardForProf(true, $this->_site_code, $prof_idx, $arr_condition);
 
         $paging = $this->pagination($this->_default_path.'/material/index/?'.$get_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
 
         if ($total_rows > 0) {
-            $list = $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $arr_condition, $column, $paging['limit'], $paging['offset'], $order_by);
+            $list = $this->supportBoardFModel->listBoardForProf(false, $this->_site_code, $prof_idx, $arr_condition, $column, $paging['limit'], $paging['offset'], $order_by);
             foreach ($list as $idx => $row) {
                 $list[$idx]['AttachData'] = json_decode($row['AttachData'],true);       //첨부파일
             }
@@ -115,21 +115,22 @@ class SupportProfMaterial extends BaseSupport
                        ,b.Title,b.Content, (b.ReadCnt + b.SettingReadCnt) as TotalReadCnt
                        ,b.CampusCcd_Name, b.TypeCcd_Name,b.AreaCcd_Name
                        ,b.SubjectName,b.CourseName,b.AttachData,DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm
+                       ,p.ProdName
                        ';
 
-        $data = $this->supportBoardFModel->findBoardForSiteGroup($this->_site_code, $board_idx, $arr_condition, $column);
-
+        $data = $this->supportBoardFModel->findBoardForProf($this->_site_code, $prof_idx, $board_idx, $arr_condition, $column);
         if (empty($data)) {
             show_alert('게시글이 존재하지 않습니다.', 'back');
         }
-        $data['AttachData'] = json_decode($data['AttachData'],true);       //첨부파일
-
         $result = $this->supportBoardFModel->modifyBoardRead($board_idx);
         if($result !== true) {
             show_alert('게시글 조회시 오류가 발생되었습니다.', 'back');
         }
-        #-------------------------------- 게시글 조회
 
+        // 첨부파일 이미지일 경우 해당 배열에 담기
+        $data['Content'] = $this->_getBoardForContent($data['Content'], $data['AttachData']);
+        $data['AttachData'] = json_decode($data['AttachData'],true);       //첨부파일
+        #-------------------------------- 게시글 조회
 
         #--------------------------------  이전글, 다음글 조회 : 베스트/핫 일경우 무시하고 BoardIdx 로 비교 , 리스트에서 핫/베스트 글을 찍고 들어왔을경우 이전글/다음글 미노출
         $arr_condition_base = [
@@ -138,8 +139,8 @@ class SupportProfMaterial extends BaseSupport
                 'b.IsBest' => '0'
                 ,'b.BmIdx' => $this->_bm_idx
                 ,'b.IsUse' => 'Y'
-                ,'b.ProfIdx' => $prof_idx
-                ,'b.SubjectIdx' => $subject_idx
+                /*,'b.ProfIdx' => $prof_idx
+                ,'b.SubjectIdx' => $subject_idx*/
             ],
             'ORG' => [
                 'LKB' => [
@@ -166,8 +167,8 @@ class SupportProfMaterial extends BaseSupport
         ]);
         $next_order_by = ['b.BoardIdx'=>'Asc'];
 
-        $pre_data = $this->supportBoardFModel->findBoardForSiteGroup($this->_site_code, false, $pre_arr_condition, $column,1,null, $pre_order_by);
-        $next_data = $this->supportBoardFModel->findBoardForSiteGroup($this->_site_code, false, $next_arr_condition, $column,1,null, $next_order_by);
+        $pre_data = $this->supportBoardFModel->findBoardForProf($this->_site_code, $prof_idx, false, $pre_arr_condition, $column,1,null, $pre_order_by);
+        $next_data = $this->supportBoardFModel->findBoardForProf($this->_site_code, $prof_idx, false, $next_arr_condition, $column,1,null, $next_order_by);
 
         $this->load->view('support/'.$view_type.'/show_material',[
                 'default_path' => $this->_default_path,

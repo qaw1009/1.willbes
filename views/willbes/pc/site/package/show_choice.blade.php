@@ -185,7 +185,7 @@
                                                 <dl class="w-info">
                                                     <dt class="mr20">
                                                         <a href="#none" onclick="productInfoModal('{{ $sub_row['ProdCode'] }}', 'hover1','{{ site_url() }}lecture')">
-                                                            <strong>강좌상세정보</strong>
+                                                            <strong class="open-info-modal">강좌상세정보</strong>
                                                         </a>
                                                     </dt>
                                                     <dt>강의수 : <span class="tx-blue">{{ $sub_row['wUnitLectureCnt'] }}강</span></dt>
@@ -216,8 +216,8 @@
                                                         @foreach($sub_row['LectureSampleData'] as $sample_idx => $sample_row)
                                                             <dl class="NSK">
                                                                 <dt class="Tit NG">맛보기{{ $sample_idx + 1 }}</dt>
-                                                                @if(empty($sample_row['wHD']) === false || empty($sample_row['wWD']) === false) <dt class="tBox t1 black"><a href="{{ $sample_row['wWD'] or $sample_row['wHD'] }}">HIGH</a></dt> @endif
-                                                                @if(empty($sample_row['wSD']) === false) <dt class="tBox t2 gray"><a href="{{ $sample_row['wSD'] }}">LOW</a></dt> @endif
+                                                                @if(empty($sample_row['wHD']) === false) <dt class="tBox t1 black"><a href="javascript:fnPlayerSample('{{$sub_row['ProdCode']}}','{{$sample_row['wUnitIdx']}}','HD');">HIGH</a></dt> @endif
+                                                                @if(empty($sample_row['wSD']) === false) <dt class="tBox t2 gray"><a href="javascript:fnPlayerSample('{{$sub_row['ProdCode']}}','{{$sample_row['wUnitIdx']}}','SD');">LOW</a></dt> @endif
                                                             </dl>
                                                         @endforeach
                                                     </div>
@@ -324,7 +324,7 @@
                                                 <dl class="w-info">
                                                     <dt class="mr20">
                                                         <a href="#none" onclick="productInfoModal('{{ $sub_row['ProdCode'] }}', 'hover1','{{ site_url() }}lecture')">
-                                                            <strong>강좌상세정보</strong>
+                                                            <strong class="open-info-modal">강좌상세정보</strong>
                                                         </a>
                                                     </dt>
                                                     <dt>강의수 : <span class="tx-blue">{{ $sub_row['wUnitLectureCnt'] }}강</span></dt>
@@ -352,8 +352,8 @@
                                                         @foreach($sub_row['LectureSampleData'] as $sample_idx => $sample_row)
                                                             <dl class="NSK">
                                                                 <dt class="Tit NG">맛보기{{ $sample_idx + 1 }}</dt>
-                                                                @if(empty($sample_row['wHD']) === false || empty($sample_row['wWD']) === false) <dt class="tBox t1 black"><a href="{{ $sample_row['wWD'] or $sample_row['wHD'] }}">HIGH</a></dt> @endif
-                                                                @if(empty($sample_row['wSD']) === false) <dt class="tBox t2 gray"><a href="{{ $sample_row['wSD'] }}">LOW</a></dt> @endif
+                                                                @if(empty($sample_row['wHD']) === false) <dt class="tBox t1 black"><a href="javascript:fnPlayerSample('{{$sub_row['ProdCode']}}','{{$sample_row['wUnitIdx']}}','HD');">HIGH</a></dt> @endif
+                                                                @if(empty($sample_row['wSD']) === false) <dt class="tBox t2 gray"><a href="javascript:fnPlayerSample('{{$sub_row['ProdCode']}}','{{$sample_row['wUnitIdx']}}','SD');">LOW</a></dt> @endif
                                                             </dl>
                                                         @endforeach
                                                     </div>

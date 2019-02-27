@@ -16,6 +16,10 @@
         <input type="hidden" name="ProdCode" value="{{ $ProdCode }}"/>
         <input type="hidden" name="locationid" value="{{ $locationid }}"/>
         <input type="hidden" name="wLecIdx" value="{{ $wLecIdx }}"/>
+        <input type="hidden" name="cate_code" value="{{ $cate_code }}"/>
+        <input type="hidden" name="CampusCcd" value="{{ $CampusCcd }}"/>
+
+
 
         @endsection
 
@@ -107,7 +111,8 @@
                         columns: [
                                 @if(empty($wLecIdx) === true)
                             {'data' : null, 'render' : function(data, type, row, meta) {
-                                    var seq = meta.row + meta.settings._iDisplayStart;
+                                    //var seq = meta.row + meta.settings._iDisplayStart;
+                                    var seq = meta.row;     //무조건 0 부터 시작 하단에서 걸림 ( for (i=0;i<allCnt;i++)	 {	//노출된 갯수에서 선택한 것만 적용되게끔... )
                                     var codeInfo= row.ProdCode+'@$'         //0
                                         +row.CateName+'@$'                      //1
                                         +row.CourseName+'@$'                    //2
@@ -139,7 +144,6 @@
                             {'data' : null, 'render' : function(data, type, row, meta) {
                                     return '['+row.ProdCode+ '] ' + row.ProdName + '';
                                 }},//단강좌명
-
                             {'data' : null, 'render' : function(data, type, row, meta) {
                                     return addComma(row.RealSalePrice)+'원<BR><strike>'+addComma(row.SalePrice)+'원</strike>';
                                 }},
@@ -147,22 +151,18 @@
                             {'data' : null, 'render' : function(data, type, row, meta) {
                                     return row.StudyStartDate +' ~ '+row.StudyEndDate
                                 }},
-
                             {'data' : 'IsLecOpen', 'render' : function(data, type, row, meta) {
                                     return  ((data === 'Y') ? ' 개설 ' : ' <span class="red">폐강</span> ');
                                 }},
-
                             {'data' : null, 'render' : function(data, type, row, meta) {
                                     return row.SaleStartDatm +' ~ '+row.SaleEndDatm
                                 }},
                             {'data' : 'AcceptStatusCcd_Name', 'render' : function(data, type, row, meta) {
                                     return  ((data === '접수마감') ? ' <span class="red">'+data+'</span>' : data);
                                 }},
-
                             {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                                     return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
                                 }},//사용여부
-
                             {'data' : 'wAdminName'},//등록자
                             {'data' : 'RegDatm'}//등록일
                         ]

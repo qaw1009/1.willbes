@@ -11,7 +11,9 @@ class CertApplyModel extends WB_Model
         parent::__construct('lms');
     }
 
+
     /**
+     * todo - 기간연장 정보 추출 필요 (19.02.15)
      * 신청현황 목록
      * @param $is_count
      * @param array $arr_condition
@@ -20,7 +22,7 @@ class CertApplyModel extends WB_Model
      * @param array $order_by
      * @return mixed
      */
-    public function listApply($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    public function listApply($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [], $arr_condition_add = null)
     {
         if ($is_count === true) {
             $column = 'count(*) AS numrows';
@@ -38,8 +40,8 @@ class CertApplyModel extends WB_Model
                             ,Ifnull(F2.SmsRcvStatus,\'\') as SmsRcvStatus
                             ,G.wAdminName as ApprovalAdmin_Name
                             ,H.wAdminName as CancelAdmin_Name
-                            ,\'\' as OrderStatus
-                            ,\'\' as OrderDatm
+                            ,op.PayStatusCcd as OrderStatus
+                            ,o.CompleteDatm as OrderDatm
                             ,\'\' as ExtendStatus
                             ,\'\' as ExtendDatm
             ';
@@ -59,17 +61,25 @@ class CertApplyModel extends WB_Model
                         join lms_member_otherinfo F2 on F.MemIdx = F2.MemIdx
                         left outer join wbs_sys_admin G on SA.ApprovalAdminIdx = G.wAdminIdx
 	                    left outer join wbs_sys_admin H on SA.CancelAdminIdx = H.wAdminIdx
+	                    left outer join lms_order_product op on op.CaIdx = SA.CaIdx
+	                    left outer join lms_order o on op.OrderIdx = o.OrderIdx
                     where SA.IsStatus=\'Y\' and A.IsStatus=\'Y\'
         ';
+
+       //echo var_dump($arr_condition);
 
         // 사이트 권한 추가
         $arr_condition['IN']['A.SiteCode'] = get_auth_site_codes();
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(true);
 
+        if(empty($arr_condition_add) === false) {
+            $where .= ' and '.$arr_condition_add;
+        }
+
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
-        //echo 'select ' . $column . $from . $where . $order_by_offset_limit;        exit;
+        //echo 'select ' . $column . $from . $where . $order_by_offset_limit;
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
 
     }

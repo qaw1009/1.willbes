@@ -265,7 +265,7 @@
                         <input type="hidden" name="PointApplyCcd" id="PointApplyCcd" value="635001">
                         <input type="radio" name="IsPoint" class="flat" value="Y" required="required" title="결제포인트적립" @if($method == 'POST' || $data['IsPoint']=='Y')checked="checked"@endif/> 가능
                         [
-                        <input type='number' name='PointSavePrice' value='{{$data['PointSavePrice']}}' title="결제포인트적립" class="form-control" style="width: 80px"  required="required" >
+                        <input type='number' name='PointSavePrice' value='@if($method==="POST"){{1}}@else{{$data['PointSavePrice']}}@endif' title="결제포인트적립" class="form-control" style="width: 80px"  required="required" >
                         <select name="PointSaveType" id="PointSaveType" class="form-control">
                             <option value="R" @if($data['PointSaveType'] == 'R')selected="selected"@endif>%</option>
                             <option value="P" @if($data['PointSaveType'] == 'P')selected="selected"@endif>원</option>
@@ -586,12 +586,11 @@
                             <textarea id="SmsMemo" name="SmsMemo" class="form-control" rows="5" cols="100" title="문자 발송" placeholder="">{{$data_sms['Memo']}}</textarea>
                         </p>
                         <div class="text">
-                            [발신번호] <input type="text" name="SendTel" id="SendTel" value="{{$data_sms['SendTel']}}" size="12" class="form-control" maxlength="20">
+                            [발신번호] {!! html_callback_num_select($arr_send_callback_ccd, $data_sms['SendTel'], 'SendTel', 'SendTel', '', '발신번호', '') !!}
                             &nbsp;&nbsp;&nbsp;
-
                             <input class="form-control border-red red" id="content_byte" style="width: 50px;" type="text" readonly="readonly" value="0">
                             <span class="red">byte</span>
-                            (80byte 초과 시 LMS 문자로 전환됩니다.)
+                            (55byte 이상일 경우 MMS로 전환됩니다.)
                         </div>
                     </div>
                 </div>
@@ -672,7 +671,6 @@
                 //alert(prev_val)
                 if (prev_val == "") {
                     $('#site_code').blur();
-                    smsTel_chained($(this).val());  //전화번호 재조정
                     return;
                 }
                 $(this).blur();
@@ -683,7 +681,6 @@
                     $("#teacherDivision tbody").remove();
                     $("#lecList tbody").remove();
                     sitecode_chained($(this).val());    //과정.과목 재조정
-                    smsTel_chained($(this).val());   //전화번호 재조정
                     */
                     location.reload();
 
@@ -707,7 +704,7 @@
                 var id = e.target.getAttribute('id');
                 if($("#site_code").val() == "") {alert("운영사이트를 선택해 주세요.");$("#site_code").focus();return;}
                 $('#'+id).setLayer({
-                    'url' : '{{ site_url('common/searchLecture/')}}'+'?site_code='+$("#site_code").val()+'&LearnPatternCcd=615001&locationid='+id+'&ProdCode='+$('#ProdCode').val()
+                    'url' : '{{ site_url('common/searchLecture/')}}'+'?site_code='+$("#site_code").val()+'&LearnPatternCcd=615001&locationid='+id+'&ProdCode='+$('#ProdCode').val()+'&cate_code='+$('#cate_code').val()
                     ,'width' : 1200
                 })
             });
@@ -826,17 +823,6 @@
         function rowDelete(strRow) {
             $('#'+strRow).remove();
         }
-
-        function smsTel_chained(site_code) {
-            var obj = {
-            @foreach($siteList as $key=>$val)
-            {{$key}}: '{{$val}}'@if($loop->last == false),@endif
-            @endforeach
-            }
-            //alert(obj[site_code]);
-            $('#SendTel').val(obj[site_code].replace('-',''));
-        }
-
     </script>
 
 @stop

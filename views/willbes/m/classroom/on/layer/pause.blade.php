@@ -14,7 +14,7 @@
             </div>
         </div>
 
-        <div class="willbes-Txt NGR c_both mt30 mb50">
+        <div class="willbes-Txt NGR c_both mt30 mb20">
             <div class="willbes-Txt-Tit NG">· 일시정지 신청 <div class="MoreBtn underline"><a href="#none">닫기 ▲</a></div></div>
             - 일시정지는 강좌별로 <span class="tx-red">최대 3회까지 가능</span>합니다.<br/>
             - 1회 일시정지기간은 수강잔여일을 초과할 수 없습니다.<br/>
@@ -77,7 +77,7 @@
             </tr>
             </tbody>
         </table>
-        <div class="AddlecMore">
+        <div class="AddlecMore" style="border-bottom: 1px solid #ccc;">
             @if($lec['PauseCount'] >= $lec['PauseNum'])
 
             @elseif($lec['PauseRemain'] <= 0)

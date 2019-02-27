@@ -32,9 +32,9 @@
 /**
  * Class for accessing XML data through the XPath language.
  *
- * This class offers methods for accessing the nodes of a XML document using 
- * the XPath language. You can add or remove nodes, set or modify their 
- * content and their attributes. No additional PHP extensions like DOM XML 
+ * This class offers methods for accessing the nodes of a XML document using
+ * the XPath language. You can add or remove nodes, set or modify their
+ * content and their attributes. No additional PHP extensions like DOM XML
  * or something similar are required to use these features.
  *
  * @link      http://www.phpxml.org/ Latest release of this class
@@ -207,6 +207,17 @@ class XML {
      * @see       handle_start_element(), handle_end_element(),
      *            handle_character_data()
      */
+    function remove_ctrl($string) {
+    	for ($i = 0; $i < strlen($string); $i++) {
+    		$chr = $string{$i};
+    		$ord = ord($chr);
+    		if ($ord < 10)
+    			$string{$i} = " ";
+    		else
+    			$string{$i} = $chr;
+    	}
+    	return trim($string);
+    }
     //modify by ddaemiri, 2007.05.28
     //load_file -> load_xml로 파일 및 string 으로 모두 입력받을 수 있음.
     function load_xml($file, $str) {
@@ -216,7 +227,7 @@ class XML {
             if ($str == "")
                 $content = implode("", file($file));
             else
-                $content = $str;
+                $content = $this->remove_ctrl($str);
 
             // Check whether content has been read.
             if (!empty($content)) {
@@ -283,7 +294,7 @@ class XML {
      * @see       load_xml(), evaluate(), get_content()
      */
     //modify by ddaemiri, 2007.05.28
-    //get_file -> get_xml 로 함수이름 변경. 
+    //get_file -> get_xml 로 함수이름 변경.
     function get_xml($highlight = array(), $root = "", $level = 0) {
 
         // Create a string to save the generated XML data.
@@ -1273,7 +1284,7 @@ class XML {
                 }
 
                 // Perform an axis action.
-		$contexts = call_user_func(array($this, $method), $axis, $context);
+                $contexts = call_user_func(array($this, $method), $axis, $context);
 
                 // Check whether there are predicates.
                 if (count($axis["predicate"]) > 0) {
@@ -1310,7 +1321,7 @@ class XML {
      * @param     string $node Full path to the document node on which the
      *            function should be evaluated.
      * @return    mixed This method returns the result of the evaluation of
-     *            the function. Depending on the function the type of the 
+     *            the function. Depending on the function the type of the
      *            return value can be different.
      * @see       evaluate()
      */
@@ -1331,7 +1342,7 @@ class XML {
         }
 
         // Return the result of the function.
-	return call_user_func(array($this, $method), $axis, $context);
+        return call_user_func(array($this, $method), $axis, $context);
     }
 
     /**
@@ -1436,7 +1447,7 @@ class XML {
             }
         }
 
-        // Check whether an operator was found.        
+        // Check whether an operator was found.
         if ($position > 0) {
             // Get the left and the right part of the expression.
             $left = substr($predicate, 0, $position);
@@ -1586,7 +1597,7 @@ class XML {
      * Checks whether a node matches predicates.
      *
      * This method checks whether a list of nodes passed to this method match
-     * a given list of predicates. 
+     * a given list of predicates.
      *
      * @access    private
      * @author    Michael P. Mehl <mpm@phpxml.org>
@@ -1762,7 +1773,7 @@ class XML {
      * @param     array $axis Array containing information about the axis.
      * @param     string $context Node from which starting the axis should
      *            be processed.
-     * @return    array This method returns an array containing all nodes 
+     * @return    array This method returns an array containing all nodes
      *            that were found during the evaluation of the given axis.
      * @see       evaluate()
      */
@@ -1782,7 +1793,7 @@ class XML {
                     // Create the path of the child.
                     $child = $context . "/" . $child_name . "[" . $i . "]";
 
-                    // Check whether 
+                    // Check whether
                     if ($this->check_node_test($child, $axis["node-test"])) {
                         // Add the child to the node-set.
                         $nodes[] = $child;
@@ -1805,7 +1816,7 @@ class XML {
      * @param     array $axis Array containing information about the axis.
      * @param     string $context Node from which starting the axis should
      *            be processed.
-     * @return    array This method returns an array containing all nodes 
+     * @return    array This method returns an array containing all nodes
      *            that were found during the evaluation of the given axis.
      * @see       evaluate()
      */
@@ -1833,7 +1844,7 @@ class XML {
      * @param     array $axis Array containing information about the axis.
      * @param     string $context Node from which starting the axis should
      *            be processed.
-     * @return    array This method returns an array containing all nodes 
+     * @return    array This method returns an array containing all nodes
      *            that were found during the evaluation of the given axis.
      * @see       evaluate()
      */
@@ -1871,7 +1882,7 @@ class XML {
      * @param     array $axis Array containing information about the axis.
      * @param     string $context Node from which starting the axis should
      *            be processed.
-     * @return    array This method returns an array containing all nodes 
+     * @return    array This method returns an array containing all nodes
      *            that were found during the evaluation of the given axis.
      * @see       evaluate()
      */
@@ -1899,7 +1910,7 @@ class XML {
      * @param     array $axis Array containing information about the axis.
      * @param     string $context Node from which starting the axis should
      *            be processed.
-     * @return    array This method returns an array containing all nodes 
+     * @return    array This method returns an array containing all nodes
      *            that were found during the evaluation of the given axis.
      * @see       evaluate()
      */
@@ -1945,7 +1956,7 @@ class XML {
      * @param     array $axis Array containing information about the axis.
      * @param     string $context Node from which starting the axis should
      *            be processed.
-     * @return    array This method returns an array containing all nodes 
+     * @return    array This method returns an array containing all nodes
      *            that were found during the evaluation of the given axis.
      * @see       evaluate()
      */
@@ -1982,7 +1993,7 @@ class XML {
      * @param     array $axis Array containing information about the axis.
      * @param     string $context Node from which starting the axis should
      *            be processed.
-     * @return    array This method returns an array containing all nodes 
+     * @return    array This method returns an array containing all nodes
      *            that were found during the evaluation of the given axis.
      * @see       evaluate()
      */
@@ -2010,7 +2021,7 @@ class XML {
      * @param     array $axis Array containing information about the axis.
      * @param     string $context Node from which starting the axis should
      *            be processed.
-     * @return    array This method returns an array containing all nodes 
+     * @return    array This method returns an array containing all nodes
      *            that were found during the evaluation of the given axis.
      * @see       evaluate()
      */
@@ -2059,7 +2070,7 @@ class XML {
      * @param     array $axis Array containing information about the axis.
      * @param     string $context Node from which starting the axis should
      *            be processed.
-     * @return    array This method returns an array containing all nodes 
+     * @return    array This method returns an array containing all nodes
      *            that were found during the evaluation of the given axis.
      * @see       evaluate()
      */
@@ -2108,7 +2119,7 @@ class XML {
      * @param     array $axis Array containing information about the axis.
      * @param     string $context Node from which starting the axis should
      *            be processed.
-     * @return    array This method returns an array containing all nodes 
+     * @return    array This method returns an array containing all nodes
      *            that were found during the evaluation of the given axis.
      * @see       evaluate()
      */
@@ -2158,7 +2169,7 @@ class XML {
      * @param     array $axis Array containing information about the axis.
      * @param     string $context Node from which starting the axis should
      *            be processed.
-     * @return    array This method returns an array containing all nodes 
+     * @return    array This method returns an array containing all nodes
      *            that were found during the evaluation of the given axis.
      * @see       evaluate()
      */
@@ -2208,7 +2219,7 @@ class XML {
      * @param     array $axis Array containing information about the axis.
      * @param     string $context Node from which starting the axis should
      *            be processed.
-     * @return    array This method returns an array containing all nodes 
+     * @return    array This method returns an array containing all nodes
      *            that were found during the evaluation of the given axis.
      * @see       evaluate()
      */
@@ -2234,7 +2245,7 @@ class XML {
      * @param     array $axis Array containing information about the axis.
      * @param     string $context Node from which starting the axis should
      *            be processed.
-     * @return    array This method returns an array containing all nodes 
+     * @return    array This method returns an array containing all nodes
      *            that were found during the evaluation of the given axis.
      * @see       evaluate()
      */
@@ -2261,7 +2272,7 @@ class XML {
      *            should be processed.
      * @param     string $arguments String containing the arguments that were
      *            passed to the function.
-     * @return    mixed Depending on the type of function being processed this 
+     * @return    mixed Depending on the type of function being processed this
      *            method returns different types.
      * @see       evaluate()
      */
@@ -2286,7 +2297,7 @@ class XML {
      *            should be processed.
      * @param     string $arguments String containing the arguments that were
      *            passed to the function.
-     * @return    mixed Depending on the type of function being processed this 
+     * @return    mixed Depending on the type of function being processed this
      *            method returns different types.
      * @see       evaluate()
      */
@@ -2306,7 +2317,7 @@ class XML {
      *            should be processed.
      * @param     string $arguments String containing the arguments that were
      *            passed to the function.
-     * @return    mixed Depending on the type of function being processed this 
+     * @return    mixed Depending on the type of function being processed this
      *            method returns different types.
      * @see       evaluate()
      */
@@ -2327,7 +2338,7 @@ class XML {
      *            should be processed.
      * @param     string $arguments String containing the arguments that were
      *            passed to the function.
-     * @return    mixed Depending on the type of function being processed this 
+     * @return    mixed Depending on the type of function being processed this
      *            method returns different types.
      * @see       evaluate()
      */
@@ -2338,7 +2349,7 @@ class XML {
         // Now split the arguments.
         $arguments = explode(" ", $arguments);
 
-        // Check whether 
+        // Check whether
         // Create a list of nodes.
         $nodes = array();
 
@@ -2366,7 +2377,7 @@ class XML {
      *            should be processed.
      * @param     string $arguments String containing the arguments that were
      *            passed to the function.
-     * @return    mixed Depending on the type of function being processed this 
+     * @return    mixed Depending on the type of function being processed this
      *            method returns different types.
      * @see       evaluate()
      */
@@ -2386,7 +2397,7 @@ class XML {
      *            should be processed.
      * @param     string $arguments String containing the arguments that were
      *            passed to the function.
-     * @return    mixed Depending on the type of function being processed this 
+     * @return    mixed Depending on the type of function being processed this
      *            method returns different types.
      * @see       evaluate()
      */
@@ -2438,7 +2449,7 @@ class XML {
      *            should be processed.
      * @param     string $arguments String containing the arguments that were
      *            passed to the function.
-     * @return    mixed Depending on the type of function being processed this 
+     * @return    mixed Depending on the type of function being processed this
      *            method returns different types.
      * @see       evaluate()
      */
@@ -2473,7 +2484,7 @@ class XML {
      *            should be processed.
      * @param     string $arguments String containing the arguments that were
      *            passed to the function.
-     * @return    mixed Depending on the type of function being processed this 
+     * @return    mixed Depending on the type of function being processed this
      *            method returns different types.
      * @see       evaluate()
      */
@@ -2509,7 +2520,7 @@ class XML {
      *            should be processed.
      * @param     string $arguments String containing the arguments that were
      *            passed to the function.
-     * @return    mixed Depending on the type of function being processed this 
+     * @return    mixed Depending on the type of function being processed this
      *            method returns different types.
      * @see       evaluate()
      */
@@ -2545,7 +2556,7 @@ class XML {
      *            should be processed.
      * @param     string $arguments String containing the arguments that were
      *            passed to the function.
-     * @return    mixed Depending on the type of function being processed this 
+     * @return    mixed Depending on the type of function being processed this
      *            method returns different types.
      * @see       evaluate()
      */
@@ -2573,7 +2584,7 @@ class XML {
      *            should be processed.
      * @param     string $arguments String containing the arguments that were
      *            passed to the function.
-     * @return    mixed Depending on the type of function being processed this 
+     * @return    mixed Depending on the type of function being processed this
      *            method returns different types.
      * @see       evaluate()
      */
@@ -2601,7 +2612,7 @@ class XML {
      *            should be processed.
      * @param     string $arguments String containing the arguments that were
      *            passed to the function.
-     * @return    mixed Depending on the type of function being processed this 
+     * @return    mixed Depending on the type of function being processed this
      *            method returns different types.
      * @see       evaluate()
      */
@@ -2639,7 +2650,7 @@ class XML {
      *            should be processed.
      * @param     string $arguments String containing the arguments that were
      *            passed to the function.
-     * @return    mixed Depending on the type of function being processed this 
+     * @return    mixed Depending on the type of function being processed this
      *            method returns different types.
      * @see       evaluate()
      */
@@ -2665,7 +2676,7 @@ class XML {
      *            should be processed.
      * @param     string $arguments String containing the arguments that were
      *            passed to the function.
-     * @return    mixed Depending on the type of function being processed this 
+     * @return    mixed Depending on the type of function being processed this
      *            method returns different types.
      * @see       evaluate()
      */
@@ -2697,7 +2708,7 @@ class XML {
      *            should be processed.
      * @param     string $arguments String containing the arguments that were
      *            passed to the function.
-     * @return    mixed Depending on the type of function being processed this 
+     * @return    mixed Depending on the type of function being processed this
      *            method returns different types.
      * @see       evaluate()
      */
@@ -2749,7 +2760,7 @@ class XML {
      *            should be processed.
      * @param     string $arguments String containing the arguments that were
      *            passed to the function.
-     * @return    mixed Depending on the type of function being processed this 
+     * @return    mixed Depending on the type of function being processed this
      *            method returns different types.
      * @see       evaluate()
      */
@@ -2772,7 +2783,7 @@ class XML {
      *            should be processed.
      * @param     string $arguments String containing the arguments that were
      *            passed to the function.
-     * @return    mixed Depending on the type of function being processed this 
+     * @return    mixed Depending on the type of function being processed this
      *            method returns different types.
      * @see       evaluate()
      */
@@ -2792,7 +2803,7 @@ class XML {
      *            should be processed.
      * @param     string $arguments String containing the arguments that were
      *            passed to the function.
-     * @return    mixed Depending on the type of function being processed this 
+     * @return    mixed Depending on the type of function being processed this
      *            method returns different types.
      * @see       evaluate()
      */
@@ -2812,7 +2823,7 @@ class XML {
      *            should be processed.
      * @param     string $arguments String containing the arguments that were
      *            passed to the function.
-     * @return    mixed Depending on the type of function being processed this 
+     * @return    mixed Depending on the type of function being processed this
      *            method returns different types.
      * @see       evaluate()
      */
@@ -2873,7 +2884,7 @@ class XML {
      *            should be processed.
      * @param     string $arguments String containing the arguments that were
      *            passed to the function.
-     * @return    mixed Depending on the type of function being processed this 
+     * @return    mixed Depending on the type of function being processed this
      *            method returns different types.
      * @see       evaluate()
      */
@@ -2908,7 +2919,7 @@ class XML {
      *            should be processed.
      * @param     string $arguments String containing the arguments that were
      *            passed to the function.
-     * @return    mixed Depending on the type of function being processed this 
+     * @return    mixed Depending on the type of function being processed this
      *            method returns different types.
      * @see       evaluate()
      */
@@ -2946,7 +2957,7 @@ class XML {
      *            should be processed.
      * @param     string $arguments String containing the arguments that were
      *            passed to the function.
-     * @return    mixed Depending on the type of function being processed this 
+     * @return    mixed Depending on the type of function being processed this
      *            method returns different types.
      * @see       evaluate()
      */
@@ -2972,7 +2983,7 @@ class XML {
      *            should be processed.
      * @param     string $arguments String containing the arguments that were
      *            passed to the function.
-     * @return    mixed Depending on the type of function being processed this 
+     * @return    mixed Depending on the type of function being processed this
      *            method returns different types.
      * @see       evaluate()
      */
@@ -2998,7 +3009,7 @@ class XML {
      *            should be processed.
      * @param     string $arguments String containing the arguments that were
      *            passed to the function.
-     * @return    mixed Depending on the type of function being processed this 
+     * @return    mixed Depending on the type of function being processed this
      *            method returns different types.
      * @see       evaluate()
      */
@@ -3024,7 +3035,7 @@ class XML {
      *            should be processed.
      * @param     string $arguments String containing the arguments that were
      *            passed to the function.
-     * @return    mixed Depending on the type of function being processed this 
+     * @return    mixed Depending on the type of function being processed this
      *            method returns different types.
      * @see       evaluate()
      */
@@ -3092,21 +3103,9 @@ class XML {
             // Read all arguments.
             $arguments = func_get_args();
 
-            // Create a new string for the inserting command.
-            $command = "\$message = sprintf(\$message, ";
-
-            // Run through the array of arguments.
-            for ($i = 1; $i < sizeof($arguments); $i++) {
-                // Add the number of the argument to the command.
-                $command .= "\$arguments[" . $i . "], ";
-            }
-
-            // Replace the last separator.
-            //$command = eregi_replace(", $", ");", $command);
-            $command = preg_replace("/, $/i", ");", $command);
-
-            // Execute the command.
-            eval($command);
+            //보안 이슈로 eval 함수 제거 20161011 jhkim
+          	array_shift($arguments);
+            $message = vsprintf($message, $arguments);
         }
 
         // Display the error message.

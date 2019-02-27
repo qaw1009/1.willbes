@@ -16,7 +16,9 @@ class ClassroomFModel extends WB_Model
         'down_log' => 'lms_lecture_data_download_log',
         'order_product' => 'lms_order_product',
         'booklist' => 'vw_product_salebook',
-        'on_lecture' => 'vw_product_on_lecture'
+        'on_lecture' => 'vw_product_on_lecture',
+        'device' => 'lms_member_device',
+        'bookmark' => 'lms_my_lecture_bookmark'
     ];
 
     public function __construct()
@@ -32,7 +34,7 @@ class ClassroomFModel extends WB_Model
      */
     private function getSelectList($columns, $cond, $isoff = false)
     {
-        $query = "SELECT STRAIGHT_JOIN DISTINCT ".$columns;
+        $query = "SELECT DISTINCT ".$columns;
         if($isoff == true){
             $query .= " FROM {$this->_table['myofflecture']}"; // WHERE LearnPatternCcd IN ('615001','615002','615003','615005') ";
         } else {
@@ -54,7 +56,18 @@ class ClassroomFModel extends WB_Model
      */
     public function getSiteList($cond = [], $isoff = false)
     {
-        $columns = " SiteCode ";
+        $columns = " SiteCode, SiteName ";
+        return $this->getSelectList($columns, $cond, $isoff);
+    }
+
+
+    /**
+     * 사이트그룹리스트
+     * @return array
+     */
+    public function getSiteGroupList($cond = [], $isoff = false)
+    {
+        $columns = " SiteGroupCode, SiteGroupName ";
         return $this->getSelectList($columns, $cond, $isoff);
     }
 
@@ -88,7 +101,6 @@ class ClassroomFModel extends WB_Model
     {
         $columns = " wProfIdx, wProfName ";
         return $this->getSelectList($columns, $cond, $isoff);
-
     }
 
 
@@ -96,14 +108,17 @@ class ClassroomFModel extends WB_Model
      * @param array $cond_arr
      * @return array
      */
-    public function getLecture($cond = [], $order = [], $isCount = false, $isoff = false)
+    public function getLecture($cond = [], $order = [], $isCount = false, $isoff = false, $limit = null, $offset = null)
     {
         if($isCount == true){
-            $query = "SELECT STRAIGHT_JOIN COUNT(*) AS rownums ";
+            $query = "SELECT COUNT(*) AS rownums ";
+            $order_by_offset_limit = '';
+
         } else {
-            $query = "SELECT STRAIGHT_JOIN *,
-            TO_DAYS(RealLecEndDate) - TO_DAYS(NOW()) +1 AS remainDays
+            $query = "SELECT *, TO_DAYS(RealLecEndDate) - TO_DAYS(NOW()) +1 AS remainDays
             ";
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
 
         if($isoff == true){
@@ -115,8 +130,8 @@ class ClassroomFModel extends WB_Model
 
         $where = $this->_conn->makeWhere($cond);
         $query .= $where->getMakeWhere(false);
-        $query .= $this->_conn->makeOrderBy($order)->getMakeOrderBy();
-        $result = $this->_conn->query($query);
+
+        $result = $this->_conn->query($query.$order_by_offset_limit);
         return ($isCount == true) ? $result->row(0)->rownums : $result->result_array();
     }
 
@@ -127,10 +142,9 @@ class ClassroomFModel extends WB_Model
     public function getPackage($cond = [], $order = [], $isCount = false)
     {
         if($isCount == true){
-            $query = "SELECT STRAIGHT_JOIN COUNT(*) ";
+            $query = "SELECT COUNT(*) AS rownums  ";
         } else {
-            $query = "SELECT STRAIGHT_JOIN *,
-                TO_DAYS(RealLecEndDate) - TO_DAYS(NOW()) +1 AS remainDays
+            $query = "SELECT *, TO_DAYS(RealLecEndDate) - TO_DAYS(NOW()) +1 AS remainDays
             ";
         }
 
@@ -141,7 +155,7 @@ class ClassroomFModel extends WB_Model
         $query .= $this->_conn->makeOrderBy($order)->getMakeOrderBy();
         $result = $this->_conn->query($query);
 
-        return empty($result) === true ? [] : $result->result_array();
+        return ($isCount === true) ? $result->row(0)->rownums : $result->result_array();
     }
 
 
@@ -169,6 +183,112 @@ class ClassroomFModel extends WB_Model
         $result = $this->_conn->query($query);
 
         return ($isCount === true) ? $result->row(0)->rownums : $result->result_array();
+    }
+
+    /** 단과강의리스트
+     * @param array $cond_arr
+     * @return array
+     */
+    public function getLectureBookmark($cond = [], $order = [])
+    {
+        $query = "SELECT MST.* FROM ( 
+            SELECT L.*
+            , TO_DAYS(L.RealLecEndDate) - TO_DAYS(NOW()) +1 AS remainDays
+            , (SELECT COUNT(*) FROM {$this->_table['bookmark']} AS B WHERE B.MemIdx = L.MemIdx AND B.ProdCode = L.ProdCode AND B.ProdCodeSub = L.ProdCodeSub ) AS bookmark 
+            ";
+
+        $query .= " FROM {$this->_table['mylecture']} AS L ";
+
+        $where = $this->_conn->makeWhere($cond);
+        $query .= $where->getMakeWhere(false);
+        $query .= $this->_conn->makeOrderBy($order)->getMakeOrderBy();
+        $query .= " ) AS MST WHERE MST.bookmark > 0 ";
+        $result = $this->_conn->query($query);
+
+        return $result->result_array();
+    }
+
+
+    /**
+     * 패키지 강좌 리스트
+     */
+    public function getPackageBookmark($cond = [], $order = [])
+    {
+        $query = "SELECT MST.* FROM (
+            SELECT L.*
+            , TO_DAYS(RealLecEndDate) - TO_DAYS(NOW()) +1 AS remainDays
+            , (SELECT COUNT(*) FROM {$this->_table['bookmark']} AS B WHERE B.MemIdx = L.MemIdx AND B.ProdCode = L.ProdCode) AS bookmark
+            ";
+
+        $query .= " FROM {$this->_table['mylecture_pkg']} AS L ";
+
+        $where = $this->_conn->makeWhere($cond);
+        $query .= $where->getMakeWhere(false);
+        $query .= $this->_conn->makeOrderBy($order)->getMakeOrderBy();
+        $query .= " ) AS MST WHERE MST.bookmark > 0 ";
+        $result = $this->_conn->query($query);
+
+        return empty($result) === true ? [] : $result->result_array();
+    }
+
+
+    /**
+     *  강의 커리뮬럼
+     * @param $wLecIdx
+     * @param bool $isCount
+     * @return mixed
+     */
+    public function getCurriculumBookmark($cond = [])
+    {
+        $query = "SELECT STRAIGHT_JOIN * ";
+
+        $query .= " FROM {$this->_table['lec_unit']} AS U
+         JOIN {$this->_table['bookmark']} AS B ON U.ProdCode = B.ProdCode AND  U.ProdCodeSub = B.ProdCodeSub AND U.wLecIdx = B.wLecIdx AND U.wUnitIdx = B.wUnitIdx
+         ";
+
+        $where = $this->_conn->makeWhere($cond);
+        $query .= $where->getMakeWhere(false);
+
+        $query .= " ORDER BY U.wOrderNum ASC, B.RegDatm ASC ";
+
+        $result = $this->_conn->query($query);
+
+        return $result->result_array();
+    }
+
+
+    /**
+     * 북마크 삭제
+     * @param $cond
+     * @return bool
+     */
+    public function deleteBookmark($cond)
+    {
+        if($this->_conn->
+            makeWhere($cond)->
+            delete($this->_table['bookmark']) == false){
+            return false;
+        }
+        return true;        
+    }
+
+
+    /**
+     * 북마크 내용 업데이트
+     * @param $cond
+     * @param $data
+     * @return bool
+     */
+    public function updateBookmark($cond, $data)
+    {
+        if($this->_conn->
+            set('Title', element('memo', $data))->
+            makeWhere($cond)->
+            update($this->_table['bookmark']) == false){
+            return false;
+        }
+        
+        return true;
     }
 
 
@@ -549,9 +669,9 @@ class ClassroomFModel extends WB_Model
     public function getRebuyLog($cond, $isCount = false)
     {
         if($isCount === true){
-            $query = "SELECT STRAIGHT_JOIN COUNT(*) AS rownums ";
+            $query = "SELECT COUNT(*) AS rownums ";
         } else {
-            $query = "SELECT STRAIGHT_JOIN * ";
+            $query = "SELECT * ";
         }
 
         $query .= " FROM {$this->_table['mylecture']} ";
@@ -648,7 +768,7 @@ class ClassroomFModel extends WB_Model
      */
     public function getBooklist($cond)
     {
-        $query = "SELECT STRAIGHT_JOIN * FROM {$this->_table['booklist']} ";
+        $query = "SELECT * FROM {$this->_table['booklist']} ";
         $where = $this->_conn->makeWhere($cond);
         $query .= $where->getMakeWhere(false);
         $query .= " ORDER BY BookProvisionCcd ASC ";
@@ -689,7 +809,61 @@ class ClassroomFModel extends WB_Model
 
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
 
-        return $this->_conn->query('SELECT STRAIGHT_JOIN '. $column. $from. $where)->result_array();
+        return $this->_conn->query('SELECT '. $column. $from. $where)->result_array();
+    }
+
+    /**
+     *  등록된 디바이스 목록
+     * @param $cond
+     * @param bool $isCount
+     * @return mixed
+     */
+    public function getMyDevice($isCount, $cond, $limit = 5, $offset = 0)
+    {
+        if($isCount === true){
+            $query = "SELECT COUNT(*) AS rownums ";
+            $limitoffset = '';
+
+        } else {
+            $query = "SELECT * , ifnull(DelAdminIdx, '') AS DelName ";
+            $limitoffset = $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $query .= " FROM {$this->_table['device']} ";
+
+        $where = $this->_conn->makeWhere($cond);
+        $query .= $where->getMakeWhere(false);
+        $query .= " ORDER BY MdIdx DESC ";
+        $query .= $limitoffset;
+
+        $result = $this->_conn->query($query);
+
+        return ($isCount === true) ? $result->row(0)->rownums : $result->result_array();
+    }
+
+    /**
+     *  등록된 디바이스 사용자 삭제
+     * @param $mdidx
+     * @param $memidx
+     * @return bool
+     */
+    public function delMyDevice($mdidx, $memidx)
+    {
+        try {
+            if($this->_conn->
+                set('IsUse', 'N')->
+                set('DelDatm', 'NOW()', false)->
+                where('MdIdx', $mdidx)->
+                where('MemIdx', $memidx)->
+                update($this->_table['device']) == false){
+                throw new \Exception('업데이트 실패했습니다.');
+            }
+
+        } catch (\Exception $e) {
+            return false;
+        }
+
+        return true;
     }
 
 }

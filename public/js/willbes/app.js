@@ -1,5 +1,9 @@
 // GNB 버튼 Script
 $(function() {
+    if (typeof ($.fn.bxSlider) === 'undefined') {
+        return;
+    }
+
     var selector = $('#Gnb .sliderGNB .slider').length > 0 ? '#Gnb .sliderGNB .slider' : '#Gnb .sliderView .slider';
     var option = {
         auto: true,
@@ -31,6 +35,17 @@ $(function() {
         }
     });
 });
+
+// GNB dropdown Script
+$(function() {
+    $('.topView ul li.dropdown').mouseover(function(){
+        $(this).addClass('active');
+    })
+    $('.topView ul li.dropdown').mouseleave(function(){
+        $(this).removeClass('active');
+    });
+});
+
 
 // GNB 아코디언 메뉴 Script
 $(function() {

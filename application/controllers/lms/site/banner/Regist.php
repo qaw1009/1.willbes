@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Regist extends \app\controllers\BaseController
 {
-    protected $models = array('site/bannerRegist', 'site/bannerDisp', 'sys/code', 'sys/category');
+    protected $models = array('site/bannerRegist', 'site/bannerDisp', 'sys/code', 'sys/category', 'sys/site');
     protected $helpers = array();
 
     public function __construct()
@@ -19,12 +19,16 @@ class Regist extends \app\controllers\BaseController
         //카테고리 조회
         $category_data = $this->_getCategoryArray();
 
+        //캠퍼스 조회
+        $arr_campus = $this->siteModel->getSiteCampusArray('');
+
         // 노출섹션 데이터 조회
         $arr_disp_data = $this->bannerDispModel->getBannerDispList('BdIdx, SiteCode, CateCode, DispName, DispTypeCcd, DispRollingTime');
 
         $this->load->view('site/banner/index',[
             'arr_cate_code' => $category_data,
-            'arr_disp_data' => $arr_disp_data
+            'arr_disp_data' => $arr_disp_data,
+            'arr_campus' => $arr_campus
         ]);
     }
 
@@ -64,6 +68,9 @@ class Regist extends \app\controllers\BaseController
         //카테고리 조회
         $category_data = $this->_getCategoryArray();
 
+        //캠퍼스 조회
+        $arr_campus = $this->siteModel->getSiteCampusArray('');
+
         // 노출섹션 데이터 조회
         $arr_disp_data = $this->bannerDispModel->getBannerDispList('BdIdx, SiteCode, CateCode, DispName, DispTypeCcd, DispRollingTime');
 
@@ -88,7 +95,8 @@ class Regist extends \app\controllers\BaseController
             'data' => $data,
             'b_idx' => $b_idx,
             'arr_cate_code' => $category_data,
-            'arr_disp_data' => $arr_disp_data
+            'arr_disp_data' => $arr_disp_data,
+            'arr_campus' => $arr_campus
         ]);
     }
 
@@ -97,6 +105,9 @@ class Regist extends \app\controllers\BaseController
      */
     public function store()
     {
+        //캠퍼스 Y 값 조회
+        $offLineSite_list = $this->siteModel->getOffLineSiteArray();
+
         $rules = [
             ['field' => 'banner_disp_idx', 'label' => '노출섹션', 'rules' => 'trim|required'],
             ['field' => 'banner_name', 'label' => '배너명', 'rules' => 'trim|required'],
@@ -109,7 +120,8 @@ class Regist extends \app\controllers\BaseController
             $rules = array_merge($rules, [
                 ['field' => 'site_code', 'label' => '운영 사이트', 'rules' => 'trim|required|integer'],
                 ['field' => 'cate_code', 'label' => '카테고리정보', 'rules' => 'trim|required'],
-                ['field' => 'attach_img', 'label' => '배너이미지', 'rules' => 'callback_validateFileRequired[attach_img]']
+                ['field' => 'attach_img', 'label' => '배너이미지', 'rules' => 'callback_validateFileRequired[attach_img]'],
+                ['field' => 'campus_ccd', 'label' => '캠퍼스', 'rules' => 'trim|integer|callback_validateRequiredIf[site_code,' . implode(',', array_keys($offLineSite_list)) . ']'],
             ]);
         } else {
             $method = 'modify';

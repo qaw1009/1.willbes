@@ -38,6 +38,7 @@ class SupportQna extends BaseSupport
 
         $s_site_code = element('s_site_code',$arr_input);
         $s_cate_code = element('s_cate_code',$arr_input);
+        $s_campus = element('s_campus',$arr_input);
         $s_consult_type = element('s_consult_type',$arr_input);
         $s_keyword = element('s_keyword',$arr_input);
         $prof_idx = element('prof_idx',$arr_input);
@@ -47,6 +48,7 @@ class SupportQna extends BaseSupport
         $view_type = element('view_type',$arr_input);
         $get_page_params = 's_keyword='.urlencode($s_keyword);
         $get_page_params .= '&s_site_code='.$s_site_code.'&s_cate_code='.$s_cate_code.'&s_consult_type='.$s_consult_type;
+        $get_page_params .= '&s_campus='.$s_campus;
         $get_page_params .= '&prof_idx='.$prof_idx.'&subject_idx='.$subject_idx.'&view_type='.$view_type;
         $get_page_params .= '&s_is_display='.$s_is_display.'&s_is_my_contents='.$s_is_my_contents;
 
@@ -166,6 +168,7 @@ class SupportQna extends BaseSupport
         $board_idx = element('board_idx',$arr_input);
         $s_site_code = element('s_site_code',$arr_input);
         $s_cate_code = element('s_cate_code',$arr_input);
+        $s_campus = element('s_campus',$arr_input);
         $s_consult_type = element('s_consult_type',$arr_input);
         $s_keyword = element('s_keyword',$arr_input);
         $prof_idx = element('prof_idx',$arr_input);
@@ -177,6 +180,7 @@ class SupportQna extends BaseSupport
 
         $get_params = 's_keyword='.urlencode($s_keyword);
         $get_params .= '&s_site_code='.$s_site_code.'&s_cate_code='.$s_cate_code.'&s_consult_type='.$s_consult_type;
+        $get_params .= '&s_campus='.$s_campus;
         $get_params .= '&prof_idx='.$prof_idx.'&subject_idx='.$subject_idx.'&view_type='.$view_type;
         $get_params .= '&s_is_display='.$s_is_display.'&s_is_my_contents='.$s_is_my_contents;
         $get_params .= '&page='.$page;
@@ -229,16 +233,15 @@ class SupportQna extends BaseSupport
             if (empty($data)) {
                 show_alert('게시글이 존재하지 않습니다.', 'back');
             }
-            $data['AttachData'] = json_decode($data['AttachData'],true);       //첨부파일
-
             if ($data['RegType'] == '0' && $data['IsPublic'] == 'N' && $data['RegMemIdx'] != $this->session->userdata('mem_idx')) {
                 show_alert('잘못된 접근 입니다.', 'back');
             }
-
             $result = $this->supportBoardTwoWayFModel->modifyBoardRead($board_idx);
             if($result !== true) {
                 show_alert('게시글 조회시 오류가 발생되었습니다.', 'back');
             }
+
+            $data['AttachData'] = json_decode($data['AttachData'],true);       //첨부파일
         }
 
         $this->load->view('support/'.$view_type.'/create_qna', [
@@ -260,6 +263,7 @@ class SupportQna extends BaseSupport
         $board_idx = element('board_idx',$arr_input);
         $s_site_code = element('s_site_code',$arr_input);
         $s_cate_code = element('s_cate_code',$arr_input);
+        $s_campus = element('s_campus',$arr_input);
         $s_consult_type = element('s_consult_type',$arr_input);
         $s_keyword = element('s_keyword',$arr_input);
         $prof_idx = element('prof_idx',$arr_input);
@@ -271,6 +275,7 @@ class SupportQna extends BaseSupport
 
         $get_params = 's_keyword='.urlencode($s_keyword);
         $get_params .= '&s_site_code='.$s_site_code.'&s_cate_code='.$s_cate_code.'&s_consult_type='.$s_consult_type;
+        $get_params .= '&s_campus='.$s_campus;
         $get_params .= '&prof_idx='.$prof_idx.'&subject_idx='.$subject_idx.'&view_type='.$view_type;
         $get_params .= '&s_is_display='.$s_is_display.'&s_is_my_contents='.$s_is_my_contents;
         $get_params .= '&page='.$page;
@@ -298,7 +303,7 @@ class SupportQna extends BaseSupport
             , VocCcd_Name, MdCateCode_Name, SubJectName
             , IF(RegType=1, \'\', RegMemName) AS RegName
             , IF(IsCampus=\'Y\',\'offline\',\'online\') AS CampusType
-            , IF(IsCampus=\'Y\',\'학원\',\'온라인\') AS CampusType_Name, SiteGroupName        
+            , IF(IsCampus=\'Y\',\'학원\',\'온라인\') AS CampusType_Name, SiteGroupName, Category_String
             , AttachData
         ';
 
@@ -306,6 +311,9 @@ class SupportQna extends BaseSupport
         if (empty($data)) {
             show_alert('게시글이 존재하지 않습니다.', 'back');
         }
+        // 첨부파일 이미지일 경우 해당 배열에 담기
+        $data['Content'] = $this->_getBoardForContent($data['Content'], $data['AttachData']);
+        $data['ReplyContent'] = $this->_getBoardForContent($data['ReplyContent'], $data['AttachData'], 1);
 
         if ($data['RegType'] == '0' && $data['IsPublic'] == 'N' && $data['RegMemIdx'] != $this->session->userdata('mem_idx')) {
             show_alert('잘못된 접근 입니다.', 'back');
@@ -316,9 +324,13 @@ class SupportQna extends BaseSupport
             show_alert('게시글 조회시 오류가 발생되었습니다.', 'back');
         }
 
+        // 카테고리 조회
+        $arr_base['category'] = $this->categoryFModel->listSiteCategory(null);
+
         $data['AttachData'] = json_decode($data['AttachData'],true);       //첨부파일
         $this->load->view('support/'.$view_type.'/show_qna',[
                 'default_path' => $this->_default_path,
+                'arr_base' => $arr_base,
                 'arr_input' => $arr_input,
                 'get_params' => $get_params,
                 'data' => $data,
@@ -335,7 +347,11 @@ class SupportQna extends BaseSupport
     {
         $idx = '';
         if ($this->_site_code == config_item('app_intg_site_code')) {
-            $s_site_code = $this->_reqP('s_site_code');
+            if ($this->_reqP('_method') == 'POST') {
+                $s_site_code = $this->_reqP('s_site_code');
+            } else {
+                $s_site_code = $this->_reqP('put_site_code');
+            }
         } else {
             $s_site_code = $this->_reqP('put_site_code');
         }
@@ -410,6 +426,7 @@ class SupportQna extends BaseSupport
         $board_idx = element('board_idx',$arr_input);
         $s_site_code = element('s_site_code',$arr_input);
         $s_cate_code = element('s_cate_code',$arr_input);
+        $s_campus = element('s_campus',$arr_input);
         $s_consult_type = element('s_consult_type',$arr_input);
         $s_keyword = element('s_keyword',$arr_input);
         $prof_idx = element('prof_idx',$arr_input);
@@ -420,6 +437,7 @@ class SupportQna extends BaseSupport
         $page = element('page',$arr_input);
         $get_params = 's_keyword='.urlencode($s_keyword);
         $get_params .= '&s_site_code='.$s_site_code.'&s_cate_code='.$s_cate_code.'&s_consult_type='.$s_consult_type;
+        $get_params .= '&s_campus='.$s_campus;
         $get_params .= '&prof_idx='.$prof_idx.'&subject_idx='.$subject_idx.'&view_type='.$view_type;
         $get_params .= '&s_is_display='.$s_is_display.'&s_is_my_contents='.$s_is_my_contents;
         $get_params .= '&page='.$page;
@@ -431,6 +449,24 @@ class SupportQna extends BaseSupport
         }
 
         show_alert('삭제되었습니다.', front_url($this->_default_path.'/index?'.$get_params));
+    }
+
+    /**
+     * 파일 삭제
+     */
+    public function destroyFile()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]'],
+            ['field' => 'attach_idx', 'label' => '식별자', 'rules' => 'trim|required|integer'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->supportBoardTwoWayFModel->removeFile($this->_reqP('attach_idx'));
+        $this->json_result($result, '삭제 되었습니다.', $result);
     }
 
     /**

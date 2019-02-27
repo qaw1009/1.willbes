@@ -84,6 +84,7 @@ function onPlayStateChange(state)
     switch (state) {
         case PlayState.PLAYING:
             player.setVisible(true);
+            fnCheckPID();
             break;
         case PlayState.PAUSED:
             break;
@@ -91,7 +92,6 @@ function onPlayStateChange(state)
             player.setVisible(false);
             break;
         case PlayState.BUFFERING_STARTED:
-            fnCheckPID();
             break;
     }
 }
@@ -194,11 +194,13 @@ function fnStartPlayer(config, media)
     initScriptUI(player);
 }
 
+
 function fnSetTop(obj)
 {
     if(player.getTopmost() == true){
         player.setTopmost(false);
         $(obj).removeClass('on');
+
     } else if(player.getTopmost() == false){
         player.setTopmost(true);
         $(obj).addClass('on');
@@ -207,6 +209,17 @@ function fnSetTop(obj)
     player.setTopmost(true);
 
     alert(player.getTopmost());
+}
+
+
+function fnSettingPOP()
+{
+    $('#settingPOP').toggle();
+}
+
+function fnViewFAQ()
+{
+
 }
 
 //document.onmousedown = click;

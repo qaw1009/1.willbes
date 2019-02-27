@@ -23,10 +23,11 @@ class SmsModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
             $column = '
-                SMS.SendIdx, SMS.SiteCode, SMS.SendPatternCcd, SMS.SendTypeCcd, SMS.SendOptionCcd, SMS.SendStatusCcd, SMS.CsTel,
+                SMS.SendIdx, SMS.SiteCode, SMS.SendPatternCcd, SMS.SendTypeCcd, SMS.SendOptionCcd, SMS.SendStatusCcd, SMS.CsTelCcd,
                 CONCAT(LEFT(SMS.Content, 20), IF (CHAR_LENGTH(SMS.Content) > 20, " ...", "") ) as Content,
                 SMS.SendDatm, SMS.RegDatm, SMS.RegAdminIdx,
-                LS.SiteName, ADMIN.wAdminName
+                LS.SiteName, ADMIN.wAdminName,
+                fn_ccd_name(SMS.CsTelCcd) AS CsTelCcdName
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -55,7 +56,8 @@ class SmsModel extends WB_Model
      */
     public function findSms($column, $arr_condition){
         $from = "
-            FROM $this->_table
+            FROM $this->_table AS a
+            LEFT JOIN $this->_table_r_send_receive AS b ON a.SendIdx = b.SendIdx
         ";
 
         $where = $this->_conn->makeWhere($arr_condition);
@@ -171,16 +173,14 @@ class SmsModel extends WB_Model
                 throw new \Exception('상세 정보 등록에 실패했습니다.');
             }
 
-            /**
-             * 즉시 발송 시작 (솔루션 호출 구문 시작)
-             * TODO : 솔루션 도입 시 해당 기능 추가
-            */
-            if ($formData['send_option_ccd'] == $_send_option_ccd[0]) {
-
-            }
-
             // 임시테이블 삭제
             $this->dropTampTable($this->_table_temp);
+
+            /** 즉시 발송 시작 [솔루션 호출] */
+            $result = $this->_smsSend($inputData, $get_send_data);
+            if ($result === false) {
+                throw new \Exception('문자 발송 실패 입니다.');
+            }
 
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
@@ -295,6 +295,69 @@ class SmsModel extends WB_Model
         return array($result, $err_data, $return);
     }
 
+    public function listSmsForMember($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    {
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $column = '
+                b.SendIdx, b.SendGroupTypeCcd, b.SiteCode, b.SendPatternCcd, b.SendTypeCcd, b.SendOptionCcd, b.SendStatusCcd, b.AdvertisePatternCcd,
+                b.CsTelCcd, b.SendMail, b.SendAttachFilePath, b.SendAttachFileName, b.SendAttachRealFileName, b.Title, b.Content, b.AdvertiseAgreeContent,
+                b.SendDatm, b.IsUse, b.IsStatus, b.RegDatm, b.RegAdminIdx, b.RegIp, b.UpdDatm, b.UpdAdminIdx,
+                a.SmsSendIdx, a.MemIdx, a.Receive_PhoneEnc, a.Receive_Name, a.SmsRcvStatus,
+                fn_ccd_name(b.SendStatusCcd) AS SendStatusCcdName,
+                fn_ccd_name(b.SendPatternCcd) AS SendPatternCcdName,
+                fn_ccd_name(b.SendTypeCcd) AS SendTypeCcdName,
+                c.MemName, fn_dec(a.Receive_PhoneEnc) AS Receive_Phone,
+                LS.SiteName, ADMIN.wAdminName,
+                fn_ccd_name(b.CsTelCcd) AS CsTelCcdName
+            ';
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $from = "
+            FROM {$this->_table_r_send_receive} as a
+            INNER JOIN {$this->_table} AS b ON a.SendIdx = b.SendIdx
+            INNER JOIN {$this->_table_member} AS c ON a.MemIdx = c.MemIdx
+            LEFT OUTER JOIN {$this->_table_sys_site} as LS ON b.SiteCode = LS.SiteCode
+            LEFT OUTER JOIN {$this->_table_sys_admin} as ADMIN ON b.RegAdminIdx = ADMIN.wAdminIdx AND ADMIN.wIsStatus='Y'
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    /**
+     * SMS 발송
+     * @param $inputData
+     * @param $arr_send_data
+     * @return bool
+     */
+    private function _smsSend($inputData, $arr_send_data)
+    {
+        $send_date = $inputData['SendDatm'];
+        $send_msg = $inputData['Content'];
+
+        $arr_condition = ['EQ' => ['Ccd' => $inputData['CsTelCcd']]];
+        $arr_ccd_data = $this->codeModel->listAllCode($arr_condition)[0];
+
+        $send_call_center = $arr_ccd_data['CcdValue'];
+        $arr_send_phone = $arr_send_data;
+
+        $this->load->library('sendSms');
+        if ($this->sendsms->send($arr_send_phone, $send_msg, $send_call_center, $send_date) !== true) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     /**
      * input date 셋팅
      * @param $formData
@@ -314,7 +377,7 @@ class SmsModel extends WB_Model
             'SendTypeCcd' => (mb_strlen(element('send_content', $formData),'euc-kr') <= 80) ? $_send_text_length_ccd[0] : $_send_text_length_ccd[1],     //LMS
             'SendOptionCcd' => element('send_option_ccd', $formData),
             'SendStatusCcd' => (element('send_option_ccd', $formData) == $_send_option_ccd['0']) ? $_send_status_ccd['0'] : $_send_status_ccd['1'],
-            'CsTel' => element('cs_tel', $formData),
+            'CsTelCcd' => element('cs_tel_ccd', $formData),
             'Title' => '',
             'Content' => element('send_content', $formData)
         ];

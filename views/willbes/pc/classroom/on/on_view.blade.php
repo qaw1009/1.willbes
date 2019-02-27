@@ -10,9 +10,6 @@
         <div class="Content p_re">
 
             <div class="willbes-Mypage-PASSZONE c_both">
-                <div class="willbes-Prof-Subject willbes-Mypage-Tit NG">
-                    · 수강중인 강좌
-                </div>
                 <div class="willbes-Prof-Mypage NG tx-black">
                     <div class="prof-profile p_re">
                         <div class="Name">
@@ -22,7 +19,7 @@
                         <div class="ProfImg">
                             <img src="{{ $lec['ProfReferData']['lec_list_img'] or '' }}">
                         </div>
-                        <div class="prof-home subBtn NSK"><a target="_blank" href="//{{$lec['SiteUrl']}}/professor/show/cate/{{$lec['CateCode']}}/prof-idx/{{$lec['ProfIdx']}}/?subject_idx={{$lec['SubjectIdx']}}&subject_name={{rawurlencode($lec['SubjectName'])}}"><img src="/public/img/willbes/sub/icon_profhome.gif" style="margin-top: -4px; margin-right: 4px">교수홈</a></div>
+                        <div class="prof-home subBtn NSK"><a target="_blank" href="//{{app_to_env_url($lec['SiteUrl'])}}/professor/show/cate/{{$lec['CateCode']}}/prof-idx/{{$lec['ProfIdx']}}/?subject_idx={{$lec['SubjectIdx']}}&subject_name={{rawurlencode($lec['SubjectName'])}}"><img src="/public/img/willbes/sub/icon_profhome.gif" style="margin-top: -4px; margin-right: 4px">교수홈</a></div>
                     </div>
                     <div class="lec-profile p_re">
                         <div class="w-tit">{{$lec['subProdName']}}</div>
@@ -132,18 +129,22 @@
                                     @endif
                                 </td>
                                 <td class="w-free mypage">
-                                    @if($row['isstart'] == 'Y' && $row['ispause'] == 'N')
-                                        @if($row['timeover'] == 'N')
-                                            @if($row['wWD'] != '')<div class="tBox NSK t3 white"><a href="javascript:;" onclick='fnPlayer("{{$row['OrderIdx']}}","{{$row['ProdCode']}}","{{$row['ProdCodeSub']}}","{{$row['wLecIdx']}}","{{$row['wUnitIdx']}}","WD");' >WIDE</a></div>@endif
-                                            @if($row['wHD'] != '')<div class="tBox NSK t1 black"><a href="javascript:;" onclick='fnPlayer("{{$row['OrderIdx']}}","{{$row['ProdCode']}}","{{$row['ProdCodeSub']}}","{{$row['wLecIdx']}}","{{$row['wUnitIdx']}}","HD");' >HIGH</a></div>@endif
-                                            @if($row['wSD'] != '')<div class="tBox NSK t2 gray"><a href="javascript:;" onclick='fnPlayer("{{$row['OrderIdx']}}","{{$row['ProdCode']}}","{{$row['ProdCodeSub']}}","{{$row['wLecIdx']}}","{{$row['wUnitIdx']}}","SD");' >LOW</a></div>@endif
-                                        @else
-                                            <div class="tBox NSK t1 black"><a>시간초과</a></div>
-                                        @endif
-                                    @elseif($row['ispause'] == 'Y')
-                                        <div class="tBox NSK t1 black"><a>일시중지</a></div>
+                                    @if($lec['isBtob'] == 'Y' && $lec['enableIp'] == 'N')
+                                        <div class="tBox NSK t1 black"><a>수강불가</a></div>
                                     @else
-                                        <div class="tBox NSK t1 black"><a>수강대기</a></div>
+                                        @if($row['isstart'] == 'Y' && $row['ispause'] == 'N')
+                                            @if($row['timeover'] == 'N')
+                                                @if($row['wWD'] != '')<div class="tBox NSK t3 white"><a href="javascript:;" onclick='fnPlayer("{{$row['OrderIdx']}}","{{$row['ProdCode']}}","{{$row['ProdCodeSub']}}","{{$row['wLecIdx']}}","{{$row['wUnitIdx']}}","WD");' >WIDE</a></div>@endif
+                                                @if($row['wHD'] != '')<div class="tBox NSK t1 black"><a href="javascript:;" onclick='fnPlayer("{{$row['OrderIdx']}}","{{$row['ProdCode']}}","{{$row['ProdCodeSub']}}","{{$row['wLecIdx']}}","{{$row['wUnitIdx']}}","HD");' >HIGH</a></div>@endif
+                                                @if($row['wSD'] != '')<div class="tBox NSK t2 gray"><a href="javascript:;" onclick='fnPlayer("{{$row['OrderIdx']}}","{{$row['ProdCode']}}","{{$row['ProdCodeSub']}}","{{$row['wLecIdx']}}","{{$row['wUnitIdx']}}","SD");' >LOW</a></div>@endif
+                                            @else
+                                                <div class="tBox NSK t1 black"><a>시간초과</a></div>
+                                            @endif
+                                        @elseif($row['ispause'] == 'Y')
+                                            <div class="tBox NSK t1 black"><a>일시중지</a></div>
+                                        @else
+                                            <div class="tBox NSK t1 black"><a>수강대기</a></div>
+                                        @endif
                                     @endif
                                 </td>
                                 <td class="w-lec-time">{{$row['wRuntime']}}분</td>

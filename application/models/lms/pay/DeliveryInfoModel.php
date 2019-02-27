@@ -15,17 +15,19 @@ class DeliveryInfoModel extends BaseOrderModel
     public function modifyInvoiceNo($is_regist, $idx_column, $params = [])
     {
         $this->_conn->trans_begin();
+        $upd_cnt = 0;
 
         try {
             $sess_admin_idx = $this->session->userdata('admin_idx');
             $column_prefix = 'Invoice' . ($is_regist === true ? 'Reg' : 'Upd');
+            $idx_column = ($idx_column == 'OrderNo' ? 'O.' : 'OP.') . $idx_column;
 
-            if (count($params) < 1) {
+            if (empty($params) === true) {
                 throw new \Exception('필수 파라미터 오류입니다.');
             }
 
             foreach ($params as $order_idx => $invoice_no) {
-                if (empty($order_idx) === false && empty($invoice_no) === false && is_numeric($order_idx) === true && is_numeric($invoice_no)) {
+                if (empty($order_idx) === false && empty($invoice_no) === false && is_numeric($order_idx) === true && is_numeric($invoice_no) === true) {
                     // 수정할 배송정보 셋팅
                     $data = [
                         'InvoiceNo' => trim($invoice_no),
@@ -39,7 +41,7 @@ class DeliveryInfoModel extends BaseOrderModel
 
                     // 주문정보 조회
                     $order_prod_rows = $this->_conn->getJoinListResult($this->_table['order'] . ' as O', 'inner', $this->_table['order_product'] . ' as OP'
-                        , 'O.OrderIdx = OP.OrderIdx', 'OP.OrderProdIdx', ['EQ' => ['OP.' . $idx_column => trim($order_idx)]]
+                        , 'O.OrderIdx = OP.OrderIdx', 'OP.OrderProdIdx', ['EQ' => [$idx_column => trim($order_idx)]]
                     );
 
                     if (empty($order_prod_rows) === false) {
@@ -50,7 +52,13 @@ class DeliveryInfoModel extends BaseOrderModel
                         if ($is_update === false) {
                             throw new \Exception('송장번호 등록에 실패했습니다.');
                         }
+
+                        if ($this->_conn->affected_rows() > 0) {
+                            $upd_cnt++;
+                        }
                     }
+                } else {
+                    throw new \Exception('주문번호와 송장번호는 필수이며 숫자이어야 합니다.');
                 }
             }
 
@@ -60,7 +68,11 @@ class DeliveryInfoModel extends BaseOrderModel
             return error_result($e);
         }
 
-        return true;
+        return $upd_cnt > 0 ? true : [
+            'ret_cd' => false,
+            'ret_msg' => '일치하는 주문번호가 없습니다.',
+            'ret_status' => _HTTP_NOT_FOUND
+        ];
     }
 
     /**
@@ -76,6 +88,7 @@ class DeliveryInfoModel extends BaseOrderModel
         try {
             $sess_admin_idx = $this->session->userdata('admin_idx');
             $delivery_status_ccd = $this->_delivery_status_ccd[$delivery_status];   // 배송상태공통코드
+            $sms_send_invoice_no = [];   // 발송완료 SMS를 발송한 운송장번호 배열
 
             if ($delivery_status == 'complete') {
                 $column_prefix = 'DeliverySend';
@@ -92,10 +105,8 @@ class DeliveryInfoModel extends BaseOrderModel
             }
 
             foreach ($params as $idx => $order_prod_idx) {
-                // 주문상품 조회
-                $order_prod_row = $this->_conn->getFindResult($this->_table['order_product'], 'OrderProdIdx, PayStatusCcd', [
-                    'EQ' => ['OrderProdIdx' => $order_prod_idx]
-                ]);
+                // 주문상품 배송정보 조회
+                $order_prod_row = $this->orderListModel->findOrderProductDeliveryInfo($order_prod_idx);
 
                 if (empty($order_prod_row) === true) {
                     throw new \Exception('주문상품 데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
@@ -108,11 +119,22 @@ class DeliveryInfoModel extends BaseOrderModel
 
                 // 배송상태 수정
                 $data = ['DeliveryStatusCcd' => $delivery_status_ccd, $column_prefix . 'AdminIdx' => $sess_admin_idx];
-                $is_update = $this->_conn->set($data)->set($column_prefix . 'Datm', 'NOW()', false)->where('OrderProdIdx', $order_prod_idx)
+                $is_update = $this->_conn->set($data)->set($column_prefix . 'Datm', 'NOW()', false)
+                    ->where('OrderProdDeliveryIdx', $order_prod_row['OrderProdDeliveryIdx'])
+                    ->where('OrderProdIdx', $order_prod_idx)
                     ->update($this->_table['order_product_delivery_info']);
 
                 if ($is_update === false) {
                     throw new \Exception('배송상태 수정에 실패했습니다.');
+                }
+
+                // 발송완료 SMS 발송
+                if ($delivery_status == 'complete') {
+                    // 이미 발송된 운송장번호가 아닐 경우만 발송
+                    if (in_array($order_prod_row['InvoiceNo'], $sms_send_invoice_no) === false) {
+                        $this->_sendDeliverySendSms($order_prod_row['ReceiverPhone'], $order_prod_row['DeliveryCompCcdName'], $order_prod_row['InvoiceNo']);
+                        $sms_send_invoice_no[] = $order_prod_row['InvoiceNo'];                        
+                    }
                 }
             }
 
@@ -123,5 +145,23 @@ class DeliveryInfoModel extends BaseOrderModel
         }
 
         return true;
+    }
+
+    /**
+     * 발송완료 SMS 발송
+     * @param string $phone [받는사람 휴대폰번호]
+     * @param string $delivery_comp_name [택배사명]
+     * @param string $invoice_no [운송장번호]
+     */
+    private function _sendDeliverySendSms($phone, $delivery_comp_name, $invoice_no)
+    {
+        $callback_number = '1544-5006';
+
+        if (empty($phone) === false && empty($delivery_comp_name) === false && empty($invoice_no) === false) {
+            $this->load->library('sendSms');
+            $sms_msg = '[윌비스] 주문도서가 출고되었습니다. ' . $delivery_comp_name . ' 운송장번호 : ' . $invoice_no;
+
+            $this->sendsms->send($phone, $sms_msg, $callback_number);
+        }
     }
 }

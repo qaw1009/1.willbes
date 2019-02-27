@@ -116,13 +116,15 @@
             <!-- List -->
             <div class="willbes-Leclist mt60 c_both">
                 <div class="willbes-Lec-Selected tx-gray">
-                    <select id="process" name="process" title="process" class="seleProcess">
-                        <option selected="selected">직렬</option>
-                        <option value="남자">남자</option>
-                        <option value="여자">여자</option>
-                        <option value="101단">101단</option>
-                    </select>
-                    <div class="willbes-Lec-Search GM f_right" style="margin: 0;">
+                    <div class="f_left">
+                        <select id="process" name="process" title="process" class="seleProcess">
+                            <option selected="selected">직렬</option>
+                            <option value="남자">남자</option>
+                            <option value="여자">여자</option>
+                            <option value="101단">101단</option>
+                        </select>
+                    </div>
+                    <div class="willbes-Lec-Search GM f_left" style="margin: 0;">
                         <div class="inputBox p_re">
                             <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="제목 또는 내용을 입력해 주세요" maxlength="30">
                             <button type="submit" onclick="" class="search-Btn">

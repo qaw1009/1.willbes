@@ -37,8 +37,8 @@ class Caching_site extends CI_Driver
             'site' => 'lms_site',
             'site_group' => 'lms_site_group',
             'site_r_campus' => 'lms_site_r_campus',
-            'code' => 'lms_sys_code',
-            'tmp_numbers' => 'tmp_numbers'
+            'category' => 'lms_sys_category',
+            'code' => 'lms_sys_code'
         ];
         $_group_ccd = [
             'Pg' => '603',
@@ -51,6 +51,7 @@ class Caching_site extends CI_Driver
             S.SiteCode, S.SiteName, S.SiteGroupCode, SG.SiteGroupName, S.SiteTypeCcd, S.SiteUrl, S.UseDomain, S.PgCcd, S.PgMid, S.PgBookMid, S.PayMethodCcds
                 , S.DeliveryCompCcd, S.DeliveryPrice, S.DeliveryAddPrice, S.DeliveryFreePrice
                 , S.Logo, S.Favicon, S.CsTel, S.HeadTitle, S.MetaKeyword, S.MetaDesc, S.FrontCss, S.FooterInfo
+                , (select CateCode from ' . $_table['category'] . ' where SiteCode = S.SiteCode and CateDepth = 1 and IsUse = "Y" and IsStatus = "Y" order by OrderNum asc limit 1) as DefCateCode
                 , DCC.CcdName as DeliveryCompName
                 , PGC.CcdEtc as PgDriver
                 , if(IsCampus = "Y", (
@@ -60,13 +61,6 @@ class Caching_site extends CI_Driver
                     where RC.SiteCode = S.SiteCode and RC.IsStatus = "Y"
                         and C.GroupCcd = "' . $_group_ccd['Campus'] . '" and C.IsUse = "Y" and C.IsStatus = "Y"
                   ), "N") as CampusCcdArr
-                , (
-                    select GROUP_CONCAT(CONCAT(substring_index(substring_index(S.PayMethodCcds, ",", TN.num), ",", -1), ":", C.CcdName) separator ",")	
-                    from ' . $_table['tmp_numbers'] . ' as TN, ' . $_table['code'] . ' as C
-                    where char_length(S.PayMethodCcds) - char_length(replace(S.PayMethodCcds, ",", "")) >= TN.num - 1
-                        and substring_index(substring_index(S.PayMethodCcds, ",", TN.num), ",", -1) = C.Ccd
-                        and C.GroupCcd = "' . $_group_ccd['PayMethod'] . '" and C.IsUse = "Y" and C.IsStatus = "Y"
-                  ) as PayMethodCcdArr 
                 , substring_index(SiteUrl, ".", 1) as SiteGroupId
                 , substring(replace(substring_index(SiteUrl, "/", 2), substring_index(SiteUrl, "/", 1), ""), 2) as SiteId                                                           
         ';

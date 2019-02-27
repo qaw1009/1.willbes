@@ -16,7 +16,7 @@ class Course extends \app\controllers\BaseController
      */
     public function index()
     {
-        $list = $this->courseModel->listCourse([], null, null, ['PC.CourseIdx' => 'asc']);
+        $list = $this->courseModel->listCourse([], null, null, ['PC.SiteCode' => 'asc', 'PC.OrderNum' => 'asc']);
 
         $this->load->view('product/base/course/index',[
             'data' => $list

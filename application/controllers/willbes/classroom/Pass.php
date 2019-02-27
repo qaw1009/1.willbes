@@ -8,6 +8,8 @@ class Pass extends \app\controllers\FrontController
     protected $auth_controller = true;
     protected $auth_methods = array();
 
+    protected $_LearnPatternCcd_pass = ['615004'];
+
     public function __construct()
     {
         parent::__construct();
@@ -21,7 +23,7 @@ class Pass extends \app\controllers\FrontController
     public function index($params = [])
     {
         $passidx = $this->_req("prodcode");
-        $sitecode = $this->_req("sitecode");
+        $sitegroupcode = $this->_req("sitegroupcode");
 
         $input_arr = $this->_reqG(null);
         $today = date("Y-m-d", time());
@@ -30,7 +32,6 @@ class Pass extends \app\controllers\FrontController
         $cond_arr = [
             'EQ' => [
                 'MemIdx' => $this->session->userdata('mem_idx'), // 사용자번호
-                'LearnPatternCcd' => '615004', // 학습방식 : 기간제패키지
             ],
             'LTE' => [
                 'LecStartDate' => $today // 시작일 <= 오늘
@@ -46,20 +47,26 @@ class Pass extends \app\controllers\FrontController
                     'ProdName' => $this->_req('search_text'), // 강의명 검색 (패키지명)
                     'subProdName' => $this->_req('search_text') // 강의명 검색 (실제 강좌명)
                 ]
+            ],
+            'IN' => [
+                'LearnPatternCcd' => $this->_LearnPatternCcd_pass, // 학습방식 : 기간제패키지
             ]
         ];
 
+        $sitegroup_arr = $this->classroomFModel->getSiteGroupList($cond_arr);
+
+        /*
         $sitelist = $this->classroomFModel->getSiteList($cond_arr);
         foreach($sitelist AS $idx => $row){
             $sitelist[$idx]['SiteName'] = $this->getSiteCacheItem($row['SiteCode'], 'SiteGroupName');
         }
+        */
 
         // 실제 리스트용
         $cond_arr = [
             'EQ' => [
                 'MemIdx' => $this->session->userdata('mem_idx'), // 사용자번호
-                'LearnPatternCcd' => '615004', // 학습방식 : 기간제패키지
-                'SiteCode' => $sitecode // 해당사이트의 강좌만
+                'SiteGroupCode' => $sitegroupcode // 해당사이트의 강좌만
             ],
             'LTE' => [
                 'LecStartDate' => $today // 시작일 <= 오늘
@@ -75,6 +82,9 @@ class Pass extends \app\controllers\FrontController
                     'ProdName' => $this->_req('search_text'), // 강의명 검색 (패키지명)
                     'subProdName' => $this->_req('search_text') // 강의명 검색 (실제 강좌명)
                 ]
+            ],
+            'IN' => [
+                'LearnPatternCcd' => $this->_LearnPatternCcd_pass, // 학습방식 : 기간제패키지
             ]
         ];
 
@@ -100,7 +110,7 @@ class Pass extends \app\controllers\FrontController
         // 해당패키지의 서브강좌
         if(empty($passinfo) == false ){
             $passinfo = $passinfo[0];
-            $passinfo['SiteUrl'] = app_to_env_url($this->getSiteCacheItem($passinfo['SiteCode'], 'SiteUrl'));
+            //$passinfo['SiteUrl'] = app_to_env_url($this->getSiteCacheItem($passinfo['SiteCode'], 'SiteUrl'));
 
             // 셀렉트박스 구해오기
             $cond_arr = [
@@ -223,11 +233,11 @@ class Pass extends \app\controllers\FrontController
         }
 
         return $this->load->view('/classroom/pass/index', [
+            'sitegroup_arr' => $sitegroup_arr,
             'course_arr' => $course_arr,
             'subject_arr' => $subject_arr,
             'prof_arr' => $prof_arr,
             'input_arr' => $input_arr,
-            'sitelist' => $sitelist,
             'passlist' => $passlist,
             'passinfo' => $passinfo,
             'leclist_like' => $leclist_like,
@@ -235,7 +245,6 @@ class Pass extends \app\controllers\FrontController
             'leclist_end' => $leclist_end,
             'leclist_nodisp' => $leclist_nodisp
         ]);
-
     }
 
     /**
@@ -312,7 +321,7 @@ class Pass extends \app\controllers\FrontController
         $lec['ProfReferData'] = json_decode($lec['ProfReferData'], true);
         $lec['isstart'] = $isstart;
         $lec['ispause'] = $ispause;
-        $lec['SiteUrl'] = app_to_env_url($this->getSiteCacheItem($lec['SiteCode'], 'SiteUrl'));
+        //$lec['SiteUrl'] = app_to_env_url($this->getSiteCacheItem($lec['SiteCode'], 'SiteUrl'));
 
         // 커리큘럼 읽어오기
         $curriculum = $this->classroomFModel->getCurriculum([
@@ -384,6 +393,29 @@ class Pass extends \app\controllers\FrontController
                     $curriculum[$idx]['remaintime'] = round(($limittime - $studytime)/60).'분';
                 }
             }
+        }
+
+        // 사용자 가 BtoB 회원인지 체크
+        $btob = $this->memberFModel->getBtobMember($this->session->userdata('mem_idx'));
+        if(empty($btob['BtobIdx']) == false) {
+            // BtoB 회원
+            $lec['isBtob'] = 'Y';
+
+            // 수강가능한 아이피인지 체크
+            $btob_ip = $this->memberFModel->btobIpCheck($btob['BtobIdx']);
+
+            if (empty($btob_ip['ApprovalIp']) == true) {
+                // 아이피 목록 없음
+                $lec['enableIp'] = 'N';
+            } elseif ($btob_ip['ApprovalIp'] == $this->input->ip_address()) {
+                // 모델에서 확인했지만 다시한번
+                $lec['enableIp'] = 'Y';
+            } else {
+                $lec['enableIp'] = 'N';
+            }
+        } else {
+            $lec['isBtob'] = 'N';
+            $lec['enableIp'] = 'Y';
         }
 
         return $this->load->view('/classroom/on/on_view', [
@@ -550,8 +582,134 @@ class Pass extends \app\controllers\FrontController
      */
     public function layerMyDevice()
     {
+        // PC등록수
+        $data['pc_cnt'] = $this->classroomFModel->getMyDevice(true, ['EQ' => [
+            'MemIdx' => $this->session->userdata('mem_idx'),
+            'DeviceType' => 'P',
+            'IsUse' => 'Y'
+        ]]);
+        
+        // 모바일 등록수
+        $data['mobile_cnt'] = $this->classroomFModel->getMyDevice(true, ['EQ' => [
+            'MemIdx' => $this->session->userdata('mem_idx'),
+            'DeviceType' => 'M',
+            'IsUse' => 'Y'
+        ]]);
 
-        return $this->load->view('/classroom/pass/layer/mydevice', []);
+        // 총 초기화 횟수
+        $data['reset_cnt'] = $this->classroomFModel->getMyDevice(true, ['EQ' => [
+            'MemIdx' => $this->session->userdata('mem_idx'),
+            'IsUse' => 'N'
+        ]]);
+        
+        // 사용자 초기화 가능횟수
+        $data['member_reset'] = ($data['reset_cnt'] == 0) ? 1 : 0;
+
+        // 리스트
+        $data['count'] = $this->classroomFModel->getMyDevice(true, [
+            'EQ' => [
+                'MemIdx' => $this->session->userdata('mem_idx')
+            ]
+        ]);
+
+        return $this->load->view('/classroom/pass/layer/mydevice', ['data' => $data]);
+    }
+
+
+    public function ajaxMyDevice()
+    {
+        $pagesize = 5;
+
+        $sdate = $this->_req('sdate');
+        $edate = $this->_req('edate');
+        $page = $this->_req('page');
+        // 총 초기화 횟수
+        $data['reset_cnt'] = $this->classroomFModel->getMyDevice(true, ['EQ' => [
+            'MemIdx' => $this->session->userdata('mem_idx'),
+            'IsUse' => 'N'
+        ]]);
+
+        // 리스트
+        $data['count'] = $this->classroomFModel->getMyDevice(true, [
+            'EQ' => [
+                'MemIdx' => $this->session->userdata('mem_idx')
+            ],
+            'GT' => [
+                'RegDatm' => $sdate
+            ],
+            'LT' => [
+                'RegDatm' => $edate
+            ]
+        ]);
+        if($data['count'] > 0) {
+
+
+            if (is_numeric($page) == false) {
+                $page = 1;
+            } else if ($page < 1) {
+                $page = 1;
+            } elseif ($page > $data['count']) {
+                $page = $data['count'];
+            }
+
+            $offset = ($page - 1) * $pagesize;
+            $data['list'] = $this->classroomFModel->getMyDevice(false, [
+                'EQ' => [
+                    'MemIdx' => $this->session->userdata('mem_idx')
+                ],
+                'GT' => [
+                    'RegDatm' => $sdate
+                ],
+                'LT' => [
+                    'RegDatm' => $edate
+                ]
+            ], $pagesize, $offset);
+
+            $data['page'] = $page;
+            $data['totalpage'] = ceil($data['count'] / $pagesize);
+
+        } else {
+            $data['page'] = 1;
+            $data['totalpage'] = 0;
+            $data['list'] = [];
+        }
+
+        return $this->load->view('/classroom/pass/layer/ajax_mydevice', [
+            'data' => $data
+        ]);
+    }
+
+    public function delMyDevice()
+    {
+        $mdidx = $this->_req('mdidx');
+
+        $list = $this->classroomFModel->getMyDevice(true, [
+            'EQ' => [
+                'MemIdx' => $this->session->userdata('mem_idx'),
+                'Mdidx' => $mdidx
+            ]
+        ]);
+
+        if($list < 1){
+            return $this->json_error('초기화할 기기 정보가 없습니다.');
+        }
+
+        $list = $this->classroomFModel->getMyDevice(true, [
+            'EQ' => [
+                'MemIdx' => $this->session->userdata('mem_idx'),
+                'IsUse' => 'N'
+            ]
+        ]);
+
+        if($list > 0){
+            return $this->json_error('사용자 초기화는 1번만 가능합니다.');
+        }
+
+        if($this->classroomFModel->delMyDevice($mdidx, $this->session->userdata('mem_idx')) == false){
+            return $this->json_error('초기화에 실패했습니다.');
+        }
+
+        return $this->json_result(true, '성공');
     }
 
 
@@ -575,7 +733,6 @@ class Pass extends \app\controllers\FrontController
         $cond_arr = [
             'EQ' => [
                 'MemIdx' => $this->session->userdata('mem_idx'), // 사용자번호
-                'LearnPatternCcd' => '615004', // 학습방식 : 기간제패키지
                 'ProdCode' => $prodcode,
                 'OrderIdx' => $orderidx
             ],
@@ -588,6 +745,9 @@ class Pass extends \app\controllers\FrontController
             'GTE' => [
                 'RealLecEndDate' => $today // 종료일 >= 오늘
             ],
+            'IN' => [
+                'LearnPatternCcd' => $this->_LearnPatternCcd_pass, // 학습방식 : 기간제패키지
+            ]
         ];
 
         // 학습형태 : 기간제패키지
@@ -687,7 +847,6 @@ class Pass extends \app\controllers\FrontController
         $cond_arr = [
             'EQ' => [
                 'MemIdx' => $this->session->userdata('mem_idx'), // 사용자번호
-                'LearnPatternCcd' => '615004', // 학습방식 : 기간제패키지
                 'ProdCode' => $prodcode,
                 'OrderIdx' => $orderidx
             ],
@@ -700,6 +859,9 @@ class Pass extends \app\controllers\FrontController
             'GTE' => [
                 'RealLecEndDate' => $today // 종료일 >= 오늘
             ],
+            'IN' => [
+                'LearnPatternCcd' => $this->_LearnPatternCcd_pass, // 학습방식 : 기간제패키지
+            ]
         ];
 
         // 학습형태 : 기간제패키지
@@ -755,7 +917,6 @@ class Pass extends \app\controllers\FrontController
         $cond_arr = [
             'EQ' => [
                 'MemIdx' => $this->session->userdata('mem_idx'), // 사용자번호
-                'LearnPatternCcd' => '615004', // 학습방식 : 기간제패키지
                 'ProdCode' => $prodcode,
                 'OrderIdx' => $orderidx
             ],
@@ -768,6 +929,9 @@ class Pass extends \app\controllers\FrontController
             'GTE' => [
                 'RealLecEndDate' => $today // 종료일 >= 오늘
             ],
+            'IN' => [
+                'LearnPatternCcd' => $this->_LearnPatternCcd_pass, // 학습방식 : 기간제패키지
+            ]
         ];
 
         // 학습형태 : 기간제패키지

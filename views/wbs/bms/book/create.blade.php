@@ -22,7 +22,7 @@
                     <div class="col-md-3 item">
                         <input type="text" id="book_name" name="book_name" required="required" class="form-control" title="교재명" value="{{ $data['wBookName'] }}">
                     </div>
-                    <label class="control-label col-md-2">교재코드
+                    <label class="control-label col-md-2 col-md-offset-1">교재코드
                     </label>
                     <div class="col-md-4">
                         <p class="form-control-static">@if($method == 'PUT') {{ $data['wBookIdx'] }} @else # 등록 시 자동 생성 @endif</p>
@@ -39,7 +39,7 @@
                             @endforeach
                         </select>
                     </div>
-                    <label class="control-label col-md-2" for="publ_date">출판일 <span class="required">*</span>
+                    <label class="control-label col-md-2 col-md-offset-1" for="publ_date">출판일 <span class="required">*</span>
                     </label>
                     <div class="col-md-4 item form-inline">
                         <div class="input-group">
@@ -70,7 +70,7 @@
                     <div class="col-md-3 item">
                         <input type="number" id="isbn" name="isbn" required="required" class="form-control" title="ISBN" value="{{ $data['wIsbn'] }}">
                     </div>
-                    <label class="control-label col-md-2" for="page_cnt">페이지 <span class="required">*</span>
+                    <label class="control-label col-md-2 col-md-offset-1" for="page_cnt">페이지 <span class="required">*</span>
                     </label>
                     <div class="col-md-2 item form-inline">
                         <input type="number" id="page_cnt" name="page_cnt" required="required" class="form-control" title="페이지" value="{{ $data['wPageCnt'] }}" style="width: 90px"> P
@@ -87,7 +87,7 @@
                             @endforeach
                         </div>
                     </div>
-                    <label class="control-label col-md-2" for="edition_cnt">판/쇄 <span class="required">*</span>
+                    <label class="control-label col-md-2 col-md-offset-1" for="edition_cnt">판/쇄 <span class="required">*</span>
                     </label>
                     <div class="col-md-4 form-inline">
                         <div class="item inline-block mr-20">
@@ -104,7 +104,7 @@
                     <div class="col-md-3 form-inline">
                         <input type="text" id="edition_size" name="edition_size" class="form-control" title="판형" value="{{ $data['wEditionSize'] }}" style="width: 90px"> mm
                     </div>
-                    <label class="control-label col-md-2" for="org_price">정가 <span class="required">*</span>
+                    <label class="control-label col-md-2 col-md-offset-1" for="org_price">정가 <span class="required">*</span>
                     </label>
                     <div class="col-md-2 item form-inline">
                         <input type="number" id="org_price" name="org_price" required="required" class="form-control" title="정가" value="{{ $data['wOrgPrice'] }}" style="width: 90px"> 원
@@ -116,7 +116,7 @@
                     <div class="col-md-3 item">
                         <input type="text" id="keyword" name="keyword" class="form-control" title="키워드" value="{{ $data['wKeyword'] }}">
                     </div>
-                    <label class="control-label col-md-2" for="stock_cnt">재고 <span class="required">*</span>
+                    <label class="control-label col-md-2 col-md-offset-1" for="stock_cnt">재고 <span class="required">*</span>
                     </label>
                     <div class="col-md-3 item">
                         <input type="number" id="stock_cnt" name="stock_cnt" required="required" class="form-control" title="재고" value="{{ $data['wStockCnt'] }}" style="width: 90px">
@@ -133,7 +133,7 @@
                             @endforeach
                         </div>
                     </div>
-                    <label class="control-label col-md-2" for="is_use">사용여부 <span class="required">*</span>
+                    <label class="control-label col-md-2 col-md-offset-1" for="is_use">사용여부 <span class="required">*</span>
                     </label>
                     <div class="col-md-3 item">
                         <div class="radio">
@@ -184,7 +184,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2">등록자
                     </label>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <p class="form-control-static">{{ $data['wRegAdminName'] }}</p>
                     </div>
                     <label class="control-label col-md-2">등록일
@@ -196,7 +196,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2">최종 수정자
                     </label>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <p class="form-control-static">{{ $data['wUpdAdminName'] }}</p>
                     </div>
                     <label class="control-label col-md-2">최종 수정일

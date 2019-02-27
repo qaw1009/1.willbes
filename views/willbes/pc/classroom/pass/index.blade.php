@@ -10,11 +10,10 @@
         <div class="Content p_re">
             <form name="searchFrm1" id="searchFrm1" action="{{app_url('/classroom/pass/index', 'www')}}" onsubmit="">
                 <div class="willbes-Mypage-PASSZONE c_both">
-                    <div class="willbes-Prof-Subject willbes-Mypage-Tit NG">
-                        · 무한PASS존
+                    <div class="c_both f_left widthAutoFull NG mb30">
                         <ul>
-                            @if(empty($passinfo) == false)<li class="InfoBtn"><a href="javascript:;" onclick="fnMyDevice();">등록기기정보 <span>▶</span></a></li>@endif
-                            <li class="InfoBtn"><a href="javascript:;" onclick="openWin('MorePASS')">프리패스이용안내 <span>▶</span></a></li>
+                            <li class="InfoBtn ml10"><a href="javascript:;" onclick="fnMyDevice('');">등록기기정보 <span>▶</span></a></li>
+                            <li class="InfoBtn ml10"><a href="javascript:;" onclick="openWin('MorePASS')">프리패스이용안내 <span>▶</span></a></li>
                         </ul>
                     </div>
                     <div class="willbes-Lec-Table NG d_block">
@@ -22,10 +21,10 @@
                         <div class="will-Tit-Zone">
                             <div class="will-Tit NG f_left">· 무한PASS선택</div>
                             <span class="willbes-Lec-Selected GM tx-gray" style="float: inherit">
-                                <select id="sitecode" name="sitecode" title="process" class="seleProcess">
+                                <select id="sitegroupcode" name="sitegroupcode" title="process" class="seleProcess">
                                     <option value="">과정</option>
-                                    @foreach($sitelist as $row )
-                                        <option value="{{$row['SiteCode']}}" @if(isset($input_arr['sitecode']) && $input_arr['sitecode'] == $row['SiteCode']) selected="selected" @endif>{{$row['SiteName']}}</option>
+                                    @foreach($sitegroup_arr as $row )
+                                        <option value="{{$row['SiteGroupCode']}}" @if(isset($input_arr['sitegroupcode']) && $input_arr['sitegroupcode'] == $row['SiteGroupCode']) selected="selected" @endif>{{$row['SiteGroupName']}}</option>
                                     @endforeach
                                 </select>
                                 <select id="passidx" name="passidx" class="seleName" >
@@ -367,7 +366,7 @@
                 </div>
             </div>
             <!-- willbes-Mypage-Tabs -->
-
+            @if(empty($passinfo) == false)
             <div id="MoreLec" class="willbes-Layer-PassBox willbes-Layer-PassBox900 h1100 abs">
                 <a class="closeBtn" href="#none" onclick="closeWin('MoreLec');">
                     <img src="{{ img_url('sub/close.png') }}">
@@ -528,7 +527,7 @@
 
             </div>
             <!-- willbes-Layer-PassBox : 무한PASS 교재구매 -->
-
+            @endif
             <div id="MyDevice" class="willbes-Layer-PassBox willbes-Layer-PassBox800 h960 abs"></div>
             <!-- willbes-Layer-PassBox : 등록기기정보 -->
 
@@ -623,8 +622,8 @@
             sendAjax(url,
                 data,
                 function(d){
-                    $("#MyDevice").html(d).end();
                     openWin('MyDevice');
+                    $("#MyDevice").html(d).end();
                 },
                 function(ret, status){
                     alert(ret.ret_msg);

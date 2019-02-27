@@ -36,7 +36,6 @@ class OffPackage extends \app\controllers\FrontController
             $_view_page = 'site/off_visit/package_index';
         }
 
-
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
         $cate_code = element('cate_code', $arr_input, $this->_cate_code);
 
@@ -44,13 +43,19 @@ class OffPackage extends \app\controllers\FrontController
         $arr_base['category'] = $this->categoryFModel->listSiteCategory($this->_site_code);
 
         // 캠퍼스 조회
-        $arr_base['campus'] = array_map(function($var) {
-            $tmp_arr = explode(':', $var);
-            return ['CampusCcd' => $tmp_arr[0], 'CampusCcdName' => $tmp_arr[1]];
-        }, explode(',', config_app('CampusCcdArr')));
+        $arr_base['campus'] = [];
+        if (config_app('CampusCcdArr') != 'N') {
+            $arr_base['campus'] = array_map(function ($var) {
+                $tmp_arr = explode(':', $var);
+                return ['CampusCcd' => $tmp_arr[0], 'CampusCcdName' => $tmp_arr[1]];
+            }, explode(',', config_app('CampusCcdArr')));
+        }
 
-        // 과정 조회
-        $arr_base['course'] = $this->baseProductFModel->listCourse($this->_site_code);
+        // 카테고리가 있을 경우에만 조회
+        if (empty($cate_code) === false) {
+            // 과정 조회
+            $arr_base['course'] = $this->baseProductFModel->listCourseCategoryMapping($this->_site_code, $cate_code);
+        }
 
         // 상품 조회
         $arr_search_text = explode(':', base64_decode(element('search_text', $arr_input)), 2);  // 검색어
@@ -141,7 +146,11 @@ class OffPackage extends \app\controllers\FrontController
             show_alert('데이터 조회에 실패했습니다.', 'back');
         }
 
+        // 판매가격 정보 확인
         $data['ProdPriceData'] = json_decode($data['ProdPriceData'], true); //상품 가격 정보 치환
+        if (empty($data['ProdPriceData']) === true) {
+            show_alert('판매가격 정보가 없습니다.', 'back');
+        }
 
         $data_sublist = $this->packageFModel->subListProduct($this->_learn_pattern,$prod_code,[],null,null,[]);   //패키지 하위 강좌 목록
 

@@ -28,6 +28,8 @@ class BoardModel extends WB_Model
     public function __construct()
     {
         parent::__construct('lms');
+        $this->load->config('upload');
+        $this->upload_path = $this->config->item('upload_path');
     }
 
     /**
@@ -72,7 +74,7 @@ class BoardModel extends WB_Model
             LEFT OUTER JOIN (
                 SELECT BoardIdx, AttachFileType, GROUP_CONCAT(AttachFilePath) AS AttachFilePath, GROUP_CONCAT(AttachFileName) AS AttachFileName, GROUP_CONCAT(AttachRealFileName) AS AttachRealFileName
                 FROM {$this->_table_attach}
-                WHERE IsStatus = 'Y'
+                WHERE IsStatus = 'Y' AND RegType = 1
                 GROUP BY BoardIdx
             ) AS LBA ON LB.BoardIdx = LBA.BoardIdx
             LEFT OUTER JOIN {$this->_table_sys_site} as LS ON LB.SiteCode = LS.SiteCode
@@ -84,6 +86,7 @@ class BoardModel extends WB_Model
             case "offlineBoard" :
             case "gallery" :
             case "free" :
+            case "mocktest/notice" :
                 $from = $from."
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.CampusCcd = LSC.Ccd
                 ";
@@ -122,12 +125,20 @@ class BoardModel extends WB_Model
                 ";
                 break;
             case "qna" :
+            case "mocktest/qna" :
                 $from = $from."
                     LEFT OUTER JOIN {$this->_table_product_subject} as PS ON LB.SubjectIdx = PS.SubjectIdx
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC2 ON LB.TypeCcd = LSC2.Ccd
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC3 ON LB.ReplyStatusCcd = LSC3.Ccd
                     LEFT OUTER JOIN {$this->_table_sys_admin} as ADMIN2 ON LB.ReplyAdminIdx = ADMIN2.wAdminIdx
                     LEFT OUTER JOIN {$this->_table_sys_category} as MdSysCate ON LB.MdCateCode = MdSysCate.CateCode AND LB.SiteCode = MdSysCate.SiteCode
+                    LEFT OUTER JOIN {$this->_table_professor} as PROFESSOR ON LB.ProfIdx = PROFESSOR.ProfIdx
+                    LEFT OUTER JOIN (
+                        select BoardIdx, AttachFileType, GROUP_CONCAT(BoardFileIdx) AS AttachFileIdx, GROUP_CONCAT(AttachFilePath) AS AttachFilePath, GROUP_CONCAT(AttachFileName) AS AttachFileName, GROUP_CONCAT(AttachRealFileName) AS AttachRealFileName
+                        from {$this->_table_attach}
+                        where IsStatus = 'Y' and RegType = 0
+                        GROUP BY BoardIdx
+                    ) as LBA_1 ON LB.BoardIdx = LBA_1.BoardIdx
                 ";
                 break;
             case "material" :
@@ -166,6 +177,18 @@ class BoardModel extends WB_Model
         $where_temp = $this->_conn->makeWhere($arr_condition);
         $where_temp = $where_temp->getMakeWhere(false);
 
+        // Q&A일경우 조건 설정
+        $where_qna = '';
+        if ($board_type == 'qna' || $board_type == 'mocktest/qna') {
+            $where_qna = $this->_conn->group_start();
+                $this->_conn->group_start();
+                $where_qna->where('LB.RegType','1')->where('LB.IsStatus', 'Y');
+                $where_qna->group_end();
+                $where_qna->or_where('LB.RegType', '0');
+            $where_qna->group_end();
+            $where_qna = $where_qna->getMakeWhere(true);
+        }
+
         // 캠퍼스 권한
         $arr_auth_campus_ccds = get_auth_all_campus_ccds();
         $where_campus = $this->_conn->group_start();
@@ -184,7 +207,7 @@ class BoardModel extends WB_Model
         $where_campus = $where_campus->getMakeWhere(true);
 
         // 쿼리 실행
-        $where = $where_temp . $where_campus;
+        $where = $where_temp . $where_qna . $where_campus;
         $query = $this->_conn->query('select STRAIGHT_JOIN '. $master_column . $column . $from . $where . $order_by_offset_limit);
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
@@ -410,6 +433,94 @@ class BoardModel extends WB_Model
                 throw new \Exception('게시물 복사에 실패했습니다.');
             }
 
+            //첨부파일DB복사
+            $insert_column = '
+                BoardIdx, BaIdx, RegType, AttachFileType, AttachFilePath, AttachFileName, AttachRealFileName, AttachFileSize, IsStatus, RegDatm, RegMemIdx, RegAdminIdx, RegIp, UpdDatm, UpdMemIdx, UpdAdminIdx
+            ';
+            $select_column =
+                $insert_board_idx.', BaIdx, RegType, AttachFileType, AttachFilePath, AttachFileName, AttachRealFileName, AttachFileSize, IsStatus, RegDatm, RegMemIdx, RegAdminIdx, RegIp, UpdDatm, UpdMemIdx, UpdAdminIdx
+            ';
+
+            $query = "insert into {$this->_table_attach} ({$insert_column})
+                select {$select_column} from {$this->_table_attach}
+                where BoardIdx = {$board_idx}";
+            //echo "<pre>$query</pre>";
+            $result = $this->_conn->query($query);
+            if ($result === false) {
+                throw new Exception('첨부파일 DB입력에 실패했습니다.');
+            }
+            //기존파일경로
+            $column = "
+                AttachFilePath
+            ";
+
+            $from = "
+                FROM
+                    {$this->_table_attach}
+            ";
+
+            $obder_by = " 
+                 ORDER BY RegDatm DESC
+				 LIMIT 1";
+
+            $where = " WHERE BoardIdx = " . $board_idx;
+
+            $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+
+            $resPath = $query->row_array();
+
+            //BMIDX추출
+            $column = "
+                BmIdx
+            ";
+
+            $from = "
+                FROM
+                    {$this->_table}
+            ";
+
+            $obder_by = " ";
+
+            $where = " WHERE BoardIdx = " . $insert_board_idx;
+
+            $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
+
+            $resBmIdx = $query->row_array();
+
+            //기존첨부파일이 있으면
+            if($resPath['AttachFilePath']){
+                // 기존파일경로
+
+                $loadPath = $resPath['AttachFilePath'];
+                $src = str_replace('/public/uploads/', $this->upload_path ,$loadPath);
+                // 복사될 파일경로
+                $mkdest = $this->upload_path . config_item('upload_prefix_dir') . '/board/' . $resBmIdx['BmIdx'] . '/';
+                $dest = $this->upload_path . config_item('upload_prefix_dir') . '/board/' . $resBmIdx['BmIdx'] . '/' . date('Ymd') . $insert_board_idx . "/";
+
+                if(is_dir($mkdest) === false){
+                    if (mkdir($mkdest, 0707, true) === false) {
+                        throw new \Exception(sprintf('디렉토리 생성에 실패했습니다. (%s)', $mkdest));
+                    }
+                }
+
+                exec("cp -rf $src $dest");
+
+                if(is_dir($dest) === false) {
+                    throw new Exception('파일 저장에 실패했습니다.');
+                }
+
+                // 파일 복사후 파일경로 업데이트
+                $addData = [
+                    'AttachFilePath' => '/public/uploads/' . config_item('upload_prefix_dir') . '/board/' . $resBmIdx['BmIdx'] . '/' . date('Ymd') . $insert_board_idx . "/"
+                ];
+
+                $this->_conn->set($addData)->where('BoardIdx', $insert_board_idx);
+                if ($this->_conn->update($this->_table_attach) === false) {
+                    throw new \Exception('데이터 수정에 실패했습니다.');
+                }
+
+            }
+
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();
@@ -466,6 +577,7 @@ class BoardModel extends WB_Model
             case "offlineBoard" :
             case "gallery" :
             case "free" :
+            case "mocktest/notice" :
                 $from = $from."
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC ON LB.CampusCcd = LSC.Ccd
                 ";
@@ -511,6 +623,7 @@ class BoardModel extends WB_Model
                 ";
                 break;
             case "qna" :
+            case "mocktest/qna" :
                 $from = $from."
                     LEFT OUTER JOIN {$this->_table_product_subject} as PS ON LB.SubjectIdx = PS.SubjectIdx
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC2 ON LB.TypeCcd = LSC2.Ccd
@@ -590,7 +703,7 @@ class BoardModel extends WB_Model
         $order_by_offset_limit .= $this->_conn->makeLimitOffset(1, 0)->getMakeLimitOffset();
 
         $query = $this->_conn->query('select '.$column . $from .$where . $order_by_offset_limit);
-        return $query->first_row();
+        return $query->row_array();
     }
 
     /**
@@ -623,7 +736,7 @@ class BoardModel extends WB_Model
         $order_by_offset_limit .= $this->_conn->makeLimitOffset(1, 0)->getMakeLimitOffset();
 
         $query = $this->_conn->query('select '.$column . $from .$where . $order_by_offset_limit);
-        return $query->first_row();
+        return $query->row_array();
     }
 
     public function listBoardCategory($board_idx)
@@ -652,10 +765,9 @@ class BoardModel extends WB_Model
     /**
      * Best 상태 update
      * @param array $params
-     * @param array $before_params
      * @return array|bool
      */
-    public function boardIsBest($params = [], $before_params = [])
+    public function boardIsBest($params = [])
     {
         $this->_conn->trans_begin();
 
@@ -664,28 +776,13 @@ class BoardModel extends WB_Model
                 throw new \Exception('필수 파라미터 오류입니다.');
             }
 
-            $set_data_Y = ['IsBest'=>'1'];
-            $set_data_N = ['IsBest'=>'0'];
-            $str_board_idx_Y = implode(',', array_keys($params));
-            $arr_board_idx_Y = explode(',', $str_board_idx_Y);
+            foreach ($params as $board_idx => $columns) {
+                $this->_conn->set($columns)->set('UpdAdminIdx', $this->session->userdata('admin_idx'))->where('BoardIdx', $board_idx);
 
-            $str_board_idx_N = implode(',', array_keys($before_params));
-            $arr_board_idx_N = explode(',', $str_board_idx_N);
-
-            //배열의 차집합 취득
-            array_values(array_diff($arr_board_idx_Y, $arr_board_idx_N));
-            $arr_board_idx_N = array_values(array_diff($arr_board_idx_N, $arr_board_idx_Y));
-
-            $this->_conn-> set($set_data_Y)->where_in('boardIdx',$arr_board_idx_Y);
-            if($this->_conn->update($this->_table)=== false) {
-                throw new \Exception('데이터 수정에 실패했습니다.');
-            }
-
-            if (count($arr_board_idx_N) > 0) {
-                $this->_conn->set($set_data_N)->where_in('boardIdx', $arr_board_idx_N);
                 if ($this->_conn->update($this->_table) === false) {
-                    throw new \Exception('데이터 수정에 실패했습니다.');
+                    throw new \Exception('게시판 정보 수정에 실패했습니다.');
                 }
+                //echo $this->_conn->last_query();
             }
 
             $this->_conn->trans_commit();
@@ -747,11 +844,18 @@ class BoardModel extends WB_Model
                 throw new \Exception('수정할 정보를 조회하지 못했습니다.');
             }
 
-            $inputData = array_merge($inputData,[
-                'ReplyAdminIdx' => $this->session->userdata('admin_idx'),
-                'ReplyRegDatm' => date('Y-m-d H:i:s'),
-                'ReplyRegIp' => $this->input->ip_address()
-            ]);
+            if ($result['ReplyStatusCcd'] == '621004') {
+                $inputData = array_merge($inputData,[
+                    'ReplyUpdAdminIdx' => $this->session->userdata('admin_idx'),
+                    'ReplyUpdDatm' => date('Y-m-d H:i:s')
+                ]);
+            } else {
+                $inputData = array_merge($inputData,[
+                    'ReplyAdminIdx' => $this->session->userdata('admin_idx'),
+                    'ReplyRegDatm' => date('Y-m-d H:i:s'),
+                    'ReplyRegIp' => $this->input->ip_address()
+                ]);
+            }
 
             $this->_conn->set($inputData)->where('BoardIdx', $board_idx);
             if ($this->_conn->update($this->_table) === false) {
@@ -851,7 +955,7 @@ class BoardModel extends WB_Model
      * @param $arr_condition
      * @return array|bool
      */
-    public function getUnAnserArray($arr_condition)
+    public function getUnAnswerArray($arr_condition)
     {
         if (empty($arr_condition)) {
             return false;
@@ -1217,6 +1321,51 @@ class BoardModel extends WB_Model
     }
 
     /**
+     * 사이트별 1:1문의 게시판 미답변 현황 [메인페이지]
+     */
+    public function getCounselUnAnswerForMainArray()
+    {
+        $column = 'a.SiteGroupCode, g.SiteGroupName, a.SiteCode, a.IsCampus, a.IsCampus, IF(a.IsCampus = "N", "온라인", "학원") AS SiteOnOffName, IFNULL(b.CounselCnt, 0) AS CounselCnt';
+
+        $arr_condition_sub = [
+            'EQ' => [
+                'BmIdx' => '48',
+                'RegType' => '0',
+                'ReplyStatusCcd' => '621001',
+                'IsUse' => 'Y',
+                'IsStatus' => 'Y',
+            ]
+        ];
+        $where_sub = $this->_conn->makeWhere($arr_condition_sub);
+        $where_sub = $where_sub->getMakeWhere(false);
+
+        $arr_condition = [
+            'NOT' => ['a.SiteCode' => config_item('app_intg_site_code')],
+            'IN' => ['a.SiteCode' => get_auth_site_codes()],
+            'EQ' => ['a.IsUse' => 'Y']
+        ];
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $from = "
+            FROM {$this->_table_sys_site} AS a
+            INNER JOIN lms_site_group AS g ON a.SiteGroupCode = g.SiteGroupCode
+            LEFT JOIN 
+            (
+                SELECT SiteCode, COUNT(*) AS CounselCnt
+                FROM {$this->_table}
+                {$where_sub}
+                GROUP BY SiteCode
+            ) AS b ON a.SiteCode = b.SiteCode
+        ";
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where);
+
+        return $query->result_array();
+    }
+
+    /**
      * 파일명 배열 생성
      * @param $board_idx
      * @param string $bm_idx
@@ -1518,7 +1667,7 @@ class BoardModel extends WB_Model
      */
     private function _findBoardDataAll($idx)
     {
-        $column = 'BoardIdx';
+        $column = 'BoardIdx, ReplyStatusCcd';
         $from = "
             FROM {$this->_table}
         ";

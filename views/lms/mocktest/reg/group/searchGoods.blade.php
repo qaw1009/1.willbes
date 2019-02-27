@@ -129,7 +129,7 @@
                                 return (data === 'Y') ? 'Y' : '<span class="red">N</span>';
                             }},
                             {'data' : null, 'class': '', 'render' : function(data, type, row, meta) {
-                                return '<div class="blue underline-link act-sub-apply" data-row-idx="' + meta.row + '">[' + row.ProdCode + '] ' + row.ProdName + '</div>';
+                                return (row.MgIdx != '0') ? '[' + row.ProdCode + '] ' + row.ProdName +  ' [' + row.MgIdx + '] ' :'<div class="blue underline-link act-sub-apply" data-row-idx="' + meta.row + '" data-mg-idx="' + row.MgIdx + '">[' + row.ProdCode + '] ' + row.ProdName + '</div>';
                             }}
                         ]
                     });
@@ -138,6 +138,13 @@
                     $list_table.on('click', '.act-sub-apply', function () {
                         var row = $datatable.row( $(this).data('row-idx')).data();
                         var target = $('#mGoods-wrap table > tbody');
+
+                        var mg_idx = $(this).data('mg-idx')
+
+                        if(mg_idx != '0') {
+                            alert("이미 그룹으로 생성된 모의고사 입니다.");
+                            return;
+                        }
 
                         target.append('<tr data-goods-idx="">' + mAddField + '</tr>');
 

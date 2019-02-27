@@ -25,7 +25,8 @@ class CommonLectureModel extends WB_Model
         'product_subject' => 'lms_product_subject',
         'vw_product_r_professor_concat' => 'vw_product_r_professor_concat',
         'copylog' => 'lms_product_copy_log',
-        'subproduct' =>'lms_Product_R_Product'          //구매교재,자동지급강좌,자동지급사은품 공통저장
+        'subproduct' =>'lms_Product_R_Product',          //구매교재,자동지급강좌,자동지급사은품 공통저장
+        'product_json' => 'lms_product_json_data'
     ];
 
     public function __construct()
@@ -52,8 +53,8 @@ class CommonLectureModel extends WB_Model
                         from
                                 lms_product A
                                 join lms_product_lecture B on A.ProdCode = B.ProdCode
-                                    Left Outer join wbs_cms_lecture_combine Ba on B.wLecIdx = Ba.wLecIdx and Ba.cp_wAdminIdx='. $this->session->userdata('admin_idx') .'
-                                join lms_product_r_category C on A.ProdCode = C.ProdCode
+                                    left outer join wbs_cms_lecture_basics Ba on B.wLecIdx = Ba.wLecIdx 
+                                join lms_product_r_category C on A.ProdCode = C.ProdCode and C.IsStatus=\'Y\'
                                     join vw_category_concat Ca on C.CateCode = Ca.CateCode
                                 left outer join wbs_sys_admin D on A.RegAdminIdx = D.wAdminIdx
 	                            left outer join wbs_sys_admin E on A.UpdAdminIdx = E.wAdminIdx
@@ -174,12 +175,12 @@ class CommonLectureModel extends WB_Model
                                         left outer join lms_product_subject Bb on B.SubjectIdx = Bb.SubjectIdx and Bb.IsStatus=\'Y\'
                                         left outer join lms_sys_code Bc on B.LearnPatternCcd = Bc.Ccd and Bc.IsStatus=\'Y\'
                                         left outer join lms_sys_code Bd on B.LecTypeCcd = Bd.Ccd
-                                        join wbs_cms_lecture_combine_lite Be on B.wLecIdx = Be.wLecIdx and Be.cp_wAdminIdx='. $this->session->userdata('admin_idx') .'
+                                        join wbs_cms_lecture_basics Be on B.wLecIdx = Be.wLecIdx
                                     join lms_product_r_category C on A.ProdCode = C.ProdCode and C.IsStatus=\'Y\'
                                         join lms_sys_category Ca on C.CateCode = Ca.CateCode  and Ca.IsStatus=\'Y\'
                                         left outer join lms_sys_category Cb on Ca.ParentCateCode = Cb.CateCode
                                     left outer join lms_product_sale D on A.ProdCode = D.ProdCode and D.SaleTypeCcd=\'613001\' and D.IsStatus=\'Y\'	#Pc+모바일 판매가만 추출
-                                    join vw_product_r_professor_concat E on A.ProdCode = E.ProdCode
+                                    join vw_product_r_professor_concat_repr E on A.ProdCode = E.ProdCode
                                 where S.IsStatus=\'Y\'  and A.IsStatus=\'Y\' ';
 
                     $order_by = $this->_conn->makeOrderBy(['S.PrpIdx'=>'asc'])->getMakeOrderBy();
@@ -262,12 +263,12 @@ class CommonLectureModel extends WB_Model
                                 left outer join lms_sys_code Bd on B.LecTypeCcd = Bd.Ccd
                                 left outer join lms_sys_code Bg on B.CampusCcd = Bg.Ccd
                                 left outer join lms_sys_code Bh on B.AcceptStatusCcd = Bh.Ccd
-                                join wbs_cms_lecture_combine_lite Be on B.wLecIdx = Be.wLecIdx and Be.cp_wAdminIdx='. $this->session->userdata('admin_idx') .'
+                                join wbs_cms_lecture_basics Be on B.wLecIdx = Be.wLecIdx 
                             join lms_product_r_category C on A.ProdCode = C.ProdCode and C.IsStatus=\'Y\'
                                 join lms_sys_category Ca on C.CateCode = Ca.CateCode  and Ca.IsStatus=\'Y\'
                                 left outer join lms_sys_category Cb on Ca.ParentCateCode = Cb.CateCode
                             left outer join lms_product_sale D on A.ProdCode = D.ProdCode and D.SaleTypeCcd=\'613001\' and D.IsStatus=\'Y\'	#Pc+모바일 판매가만 추출
-                            join vw_product_r_professor_concat E on A.ProdCode = E.ProdCode
+                            join vw_product_r_professor_concat_repr E on A.ProdCode = E.ProdCode
                         where S.IsStatus=\'Y\'  and A.IsStatus=\'Y\' 
             ';
 
@@ -816,6 +817,26 @@ class CommonLectureModel extends WB_Model
         return true;
     }
 
+    /**
+     * 상품연관 데이터 json 형태로 테이블 저장 : 테이블 - lms_product_json_data, 프로시져 - sp_product_json_data_insert
+     * @param $prodcode
+     * @return string
+     */
+    public function _setProdJsonData($prodcode)
+    {
+        try {
+            $query = $this->_conn->query('call sp_product_json_data_insert(?)', [$prodcode]);
+            $result = $query->row(0)->ReturnMsg;
+
+            if ($result != 'Success') {
+                throw new \Exception('JSON 데이터 등록에 실패했습니다.');
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+        return true;
+    }
+
 
     //수강기간등록 (학원 단과반)
     public function _setLectureDate($input=[],$prodcode)
@@ -888,7 +909,8 @@ class CommonLectureModel extends WB_Model
         return true;
     }
 
-    /**
+
+     /**
      * 강좌복사
      * @param $prodcode
      * @return array|bool
@@ -912,7 +934,7 @@ class CommonLectureModel extends WB_Model
             $select_column= str_replace('ProdCode','\''.$prodcode_new.'\' as ProdCode',$insert_column);
             $select_column= str_replace('RegAdminIdx','\''.$admin_idx.'\' as RegAdminIdx',$select_column);
             $select_column= str_replace('RegIp','\''.$reg_ip.'\' as RegIp',$select_column);
-            $select_column= str_replace('ProdName','concat(\'[복사]\',ProdName)',$select_column);
+            //$select_column= str_replace('ProdName','concat(\'[복사]\',ProdName)',$select_column);
             $select_column= str_replace('IsUse','\'N\' As IsUse',$select_column);
 
             $query = 'insert into '.$this->_table['product'].' ('. $insert_column .')SELECT '.$select_column.' FROM '.$this->_table['product'].' where ProdCode='.$prodcode;
@@ -1100,6 +1122,16 @@ class CommonLectureModel extends WB_Model
             };
 
 
+            // json 데이터 복사
+            $insert_column = 'ProdCode, ProdPriceData, ProdBookData, LectureSampleData';
+            $select_column= str_replace('ProdCode','\''.$prodcode_new.'\' as ProdCode',$insert_column);
+
+            $query = 'insert into '.$this->_table['product_json'].'('.$insert_column.') Select '.$select_column.' FROM '.$this->_table['product_json'].' where ProdCode='.$prodcode;
+            if($this->_conn->query($query) === false) {
+                throw new \Exception('JSON 데이터 복사에 실패했습니다.');
+            };
+
+
             //복사 로그 저장
             $copy_data = [
                 'ProdCode' => $prodcode_new
@@ -1111,7 +1143,7 @@ class CommonLectureModel extends WB_Model
             }
 
             //echo $this->_conn->last_query();
-            //$this->_conn->trans_rollback();
+            //$this->_conn->trans_rollback();w
             $this->_conn->trans_commit();
 
         } catch (\Exception $e) {

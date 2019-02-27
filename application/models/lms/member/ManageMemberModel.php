@@ -68,7 +68,7 @@ class ManageMemberModel extends WB_Model
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
 
-        $rows = $this->_conn->query('SELECT STRAIGHT_JOIN ' . $column . $from . $inQuery . $where . $order_by_offset_limit);
+        $rows = $this->_conn->query('SELECT ' . $column . $from . $inQuery . $where . $order_by_offset_limit);
 
         return ($is_count === true) ? $rows->row(0)->rownums : $rows->result_array();
     }
@@ -102,7 +102,7 @@ class ManageMemberModel extends WB_Model
 
         $where = " WHERE Mem.MemIdx = {$memIdx} ";
 
-        $rows = $this->_conn->query('SELECT STRAIGHT_JOIN ' . $column . $from . $where );
+        $rows = $this->_conn->query('SELECT ' . $column . $from . $where );
 
         return $rows->row_array();
     }
@@ -418,5 +418,46 @@ class ManageMemberModel extends WB_Model
         }
 
         return true;
+    }
+    
+    public function resetPWD($memIdx)
+    {
+        $this->_conn->trans_begin();
+
+        try {
+
+            $admin_idx = $this->session->userdata('admin_idx');
+
+            // 회원데이터테이블 이름변경
+            $data = [
+                'MemPassword' => '1111'
+            ];
+
+            if ($this->_conn->set('MemPassword', "fn_hash('1111')", false)->where('MemIdx', $memIdx)->update($this->_table['member']) === false) {
+                throw new \Exception('비밀번호 초기화에 실패했습니다.');
+            }
+
+            // 비밀번호 초기화 로그저장
+            $data = [
+                'MemIdx' => $memIdx,
+                'UpdTypeCcd' => '656003',
+                'UpdMemo' => '비밀번호초기화',
+                'UpdData' => '비밀번호초기화',
+                'UpdAdminIdx' => $admin_idx,
+                'UpdIp' => $this->input->ip_address()
+            ];
+
+            if ($this->_conn->set($data)->insert($this->_table['changeLog']) === false) {
+                throw new \Exception('데이터수정에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+
     }
 }

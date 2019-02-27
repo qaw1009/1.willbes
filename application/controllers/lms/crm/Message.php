@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Message extends \app\controllers\BaseController
 {
     protected $models = array('sys/code', 'sys/site', 'crm/send/message', 'member/manageMember');
-    protected $helpers = array('download');
+    protected $helpers = array();
 
     private $_send_type = 'message';
 
@@ -105,7 +105,8 @@ class Message extends \app\controllers\BaseController
         $column = 'Content';
         $arr_condition = [
             'EQ' => [
-                'SendIdx' => $send_idx
+                'a.SendIdx' => $send_idx,
+                'b.MemIdx' => $this->_reqG('member_idx')
             ]
         ];
         $data = $this->messageModel->findMessage($column, $arr_condition);
@@ -117,6 +118,7 @@ class Message extends \app\controllers\BaseController
         $this->load->view("crm/message/list_send_detail_modal", [
             'send_type' => $this->_send_type,
             'send_idx' => $send_idx,
+            'member_idx' => $this->_reqG('member_idx'),
             'data' => $data
         ]);
     }
@@ -135,7 +137,8 @@ class Message extends \app\controllers\BaseController
             $arr_condition = [
                 'EQ' => [
                     'SEND.SendIdx' => $params[0],
-                    'SEND.SmsRcvStatus' => $this->_reqP('search_sms_is_agree')
+                    'SEND.SmsRcvStatus' => $this->_reqP('search_sms_is_agree'),
+                    'Mem.MemIdx' => $this->_reqG('member_idx'),
                 ],
                 'ORG' => [
                     'LKB' => [
@@ -205,8 +208,9 @@ class Message extends \app\controllers\BaseController
      */
     public function sampleDownload()
     {
-        $fileinfo = '/public/uploads/willbes/_sample_download/sample_message.xlsx';
-        public_download($fileinfo);
+        $this->load->helper('download');
+        $file_path = STORAGEPATH . 'resources/sample/sample_message.xlsx';
+        force_download($file_path, null);
     }
 
     /**

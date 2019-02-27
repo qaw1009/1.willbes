@@ -8,7 +8,7 @@
 
         <div class="x_panel">
             <div class="x_title">
-                <h2>공지게시판 정보</h2>
+                <h2>FAQ게시판 정보</h2>
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">
@@ -120,20 +120,20 @@
         <div class="form-group">
             <label class="control-label col-md-1-1" for="btn_previous" style="margin-top: 7px;">이전글</label>
             <div class="form-control-static col-md-10">
-                @if(count($board_previous) <= 0)
+                @if(empty($board_previous) === true)
                     이전글이 없습니다.
                 @else
-                    <a href='javascript:void(0);' id='btn_previous' data-idx='{{$board_previous->BoardIdx}}'><u>{{$board_previous->Title}}</u></a>
+                    <a href='javascript:void(0);' id='btn_previous' data-idx='{{$board_previous['BoardIdx']}}'><u>{{$board_previous['Title']}}</u></a>
                 @endif
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-md-1-1" for="btn_next" style="margin-top: 7px;">다음글</label>
             <div class="form-control-static col-md-10">
-                @if(count($board_next) <= 0)
+                @if(empty($board_next) === true)
                     다음글이 없습니다.
                 @else
-                    <a href='javascript:void(0);' id='btn_next' data-idx='{{$board_next->BoardIdx}}'><u>{{$board_next->Title}}</u></a>
+                    <a href='javascript:void(0);' id='btn_next' data-idx='{{$board_next['BoardIdx']}}'><u>{{$board_next['Title']}}</u></a>
                 @endif
             </div>
         </div>

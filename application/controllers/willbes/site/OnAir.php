@@ -33,7 +33,7 @@ class OnAir extends \app\controllers\FrontController
         } else {
             $arr_condition = [ 'EQ' => [ 'UserIp' => $this->input->ip_address() ] ];
         }
-        $arr_condition = array_replace_recursive($arr_condition, [
+        $arr_condition = array_merge_recursive($arr_condition, [
             'EQ' => [
                 'OaIdx' => $arrOnAirData['OaIdx'],
                 'PlayDate' => date('Y-m-d')

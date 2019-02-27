@@ -10,9 +10,6 @@
         <div class="Content p_re">
 
             <div class="willbes-Mypage-ONLINEZONE c_both">
-                <div class="willbes-Prof-Subject willbes-Mypage-Tit NG">
-                    · 수강중강좌
-                </div>
                 <div id="info1" class="willbes-Cart-Txt willbes-Mypage-Txt NG p_re">
                     <span class="MoreBtn"><a href="#none">유의사항안내 @if(get_cookie('moreInfo') == 'off')보기 ▼@else닫기 ▲@endif</a></span>
                     <table cellspacing="0" cellpadding="0" class="txtTable tx-black @if(get_cookie('moreInfo') == 'off') off @endif">
@@ -89,12 +86,20 @@
             <div class="willbes-Mypage-Tabs mt40">
                 <form name="searchFrm" id="searchFrm" action="{{app_url('/classroom/on/list/ongoing/', 'www')}}" onsubmit="">
                     <div class="willbes-Lec-Selected willbes-Mypage-Selected tx-gray">
+                        <select id="sitegroup_ccd" name="sitegroup_ccd" title="process" class="seleProcess">
+                            <option selected="selected" value="">과정</option>
+                            @foreach($sitegroup_arr as $row )
+                                <option value="{{$row['SiteGroupCode']}}" @if(isset($input_arr['sitegroup_ccd']) && $input_arr['sitegroup_ccd'] == $row['SiteGroupCode']) selected="selected" @endif  >{{$row['SiteGroupName']}}</option>
+                            @endforeach
+                        </select>
+                        <!--
                         <select id="course_ccd" name="course_ccd" title="process" class="seleProcess">
                             <option selected="selected" value="">과정</option>
                             @foreach($course_arr as $row )
                                 <option value="{{$row['CourseIdx']}}" @if(isset($input_arr['course_ccd']) && $input_arr['course_ccd'] == $row['CourseIdx']) selected="selected" @endif  >{{$row['CourseName']}}</option>
                             @endforeach
                         </select>
+                        -->
                         <select id="subject_ccd" name="subject_ccd" title="lec" class="seleLec">
                             <option selected="selected" value="">과목</option>
                             @foreach($subject_arr as $row )
@@ -379,7 +384,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div id="admintab2" class="willbes-Lec-Table pt20 NG d_block admintab" style="display:none !important;">
+                            <div id="admintab2" class="willbes-Lec-Table pt20 NG admintab" style="display:none !important;">
                             @forelse( $adminList['pkg'] as $row )
                                 <div class="willbes-Lec-Table willbes-Package-Table pt20 NG d_block">
                                     <table cellspacing="0" cellpadding="0" class="packTable lecTable bdt-dark-gray">
@@ -480,7 +485,7 @@
     </form>
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#course_ccd,#subject_ccd,#prof_ccd,#orderby').on('change', function (){
+            $('#course_ccd,#subject_ccd,#prof_ccd,#orderby,#sitegroup_ccd').on('change', function (){
                 $('#searchFrm').submit();
             });
 

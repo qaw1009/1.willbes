@@ -21,6 +21,9 @@ class BaseSupportFModel extends WB_Model
         ,'mylecture_pkg' => 'vw_pkg_mylecture'
         ,'mylecture_on' => 'vw_on_mylecture'
         ,'board_tpass_member_authority' => 'lms_board_tpass_member_authority'
+        ,'lms_order_product' => 'lms_order_product'
+        ,'lms_mock_register' => 'lms_mock_register'
+        ,'lms_professor' => 'lms_professor'
     ];
 
     //등록파일 rule 설정

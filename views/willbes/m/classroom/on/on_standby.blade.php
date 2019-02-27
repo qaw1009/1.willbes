@@ -30,14 +30,23 @@
                         - 수강시작일을 변경하면 변경된 시작일에 맞춰 종료기간 및 잔여기간이 자동으로 셋팅됩니다.<br/>
                         - 수강시작이 이루어진 강좌는 시작일 변경이 불가능합니다.<br/>
                     </div>
+
                     <div class="willbes-Lec-Selected NG c_both tx-gray">
                         <form name="searchFrm" id="searchFrm" action="{{front_app_url('/classroom/on/list/standby/', 'www')}}">
+                            <select id="sitegroup_ccd" name="sitegroup_ccd" title="process" class="seleProcess width21p">
+                                <option selected="selected" value="">과정</option>
+                                @foreach($sitegroup_arr as $row )
+                                    <option value="{{$row['SiteGroupCode']}}" @if(isset($input_arr['sitegroup_ccd']) && $input_arr['sitegroup_ccd'] == $row['SiteGroupCode']) selected="selected" @endif  >{{$row['SiteGroupName']}}</option>
+                                @endforeach
+                            </select>
+                            <!--
                             <select id="course_ccd" name="course_ccd" title="process" class="seleProcess width21p">
                                 <option selected="selected" value="">과정</option>
                                 @foreach($course_arr as $row )
                                     <option value="{{$row['CourseIdx']}}" @if(isset($input_arr['course_ccd']) && $input_arr['course_ccd'] == $row['CourseIdx']) selected="selected" @endif  >{{$row['CourseName']}}</option>
                                 @endforeach
                             </select>
+                            -->
                             <select id="subject_ccd" name="subject_ccd" title="lec" class="seleLec width21p ml1p">
                                 <option selected="selected" value="">과목</option>
                                 @foreach($subject_arr as $row )
@@ -55,6 +64,7 @@
                             <a href="{{front_url('/classroom/on/list/standby/')}}"><img src="{{ img_url('m/mypage/icon_reset.png') }}"></a>
                         </div>
                     </div>
+                    
                     <div id="leclist1">
                         <table cellspacing="0" cellpadding="0" width="100%" class="lecTable bdt-m-gray">
                             <tbody>
@@ -188,7 +198,7 @@
     </form>
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#course_ccd,#subject_ccd,#prof_ccd').on('change', function (){
+            $('#course_ccd,#subject_ccd,#prof_ccd,#sitegroup_ccd').on('change', function (){
                 $('#searchFrm').submit();
             });
 

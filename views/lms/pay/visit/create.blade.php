@@ -214,6 +214,7 @@
                             <div class="col-md-9 form-inline">
                                 <input type="radio" id="pay_method_card" name="pay_method_ccd" class="flat" value="{{ $_pay_method_ccd['visit_card'] }}" title="카드" required="required" disabled="disabled"/> <label class="input-label">카드</label>
                                 <input type="radio" id="pay_method_cash" name="pay_method_ccd" class="flat" value="{{ $_pay_method_ccd['visit_cash'] }}" title="현금" disabled="disabled"/> <label class="input-label">현금</label>
+                                <input type="radio" id="pay_method_willbes_bank" name="pay_method_ccd" class="flat" value="{{ $_pay_method_ccd['willbes_bank'] }}" title="윌비스계좌이체" required="required" disabled="disabled"/> <label class="input-label">윌비스계좌이체</label>
                                 <input type="radio" id="pay_method_card_cash" name="pay_method_ccd" class="flat" value="{{ $_pay_method_ccd['visit_card_cash'] }}" title="카드+현금" disabled="disabled"/> <label class="input-label mr-30">카드+현금</label>
                                 [카드선택]
                                 <select class="form-control input-sm ml-5" name="card_ccd" disabled="disabled" title="카드선택">
@@ -378,7 +379,7 @@
 
                 $('#btn_product_search').setLayer({
                     'url' : '{{ site_url('/common/searchLectureAll/') }}?site_code=' + site_code + '&prod_type=off&return_type=inline&target_id=selected_product&target_field=prod_code'
-                        + '&prod_tabs=off,book,reading_room,locker,mock_exam&hide_tabs=off_pack_lecture&is_event=Y',
+                        + '&prod_tabs=off,book,reading_room,locker&hide_tabs=off_pack_lecture&is_event=Y',
                     'width' : 1200
                 });
             });
@@ -546,6 +547,7 @@
                     if (total_cash_pay_price > 0) {
                         $regi_form.find('[name="card_ccd"]').prop('disabled', true);
                         $regi_form.find('[id="pay_method_cash"]').iCheck('enable').iCheck('check');
+                        $regi_form.find('[id="pay_method_willbes_bank"]').iCheck('enable');
                     }
                 }
             };

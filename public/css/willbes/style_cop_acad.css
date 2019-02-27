@@ -1,0 +1,674 @@
+/*********************************************     Main Container : Cop Acad     *********************************************/       
+.cop_acad .tx-color {
+    color: #0c5dc0;
+}
+.cop_acad .Menu .menu-List li.Acad a {
+    background: url("../../img/willbes/cop_acad/icon_acad.png") no-repeat 0 2px;
+    color: #2784d2;
+}
+.cop_acad .Menu .menu-List li.Acad a .arrow-Btn {
+    background: url("../../img/willbes/sub/icon_arrow.gif") no-repeat 0 0;
+}
+.cop_acad .Section2 {
+    background: #f7f7f7;
+}
+
+/* Main Container : MainVisual : Cop Acad */
+.MainVisual:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.MainVisual_acad ul li {
+    float: left;
+    margin-left: 11px;
+}
+.MainVisual_acad ul li:first-child {
+    margin-left: 0;
+}
+.VisualBox_acad {
+    width: 616px;
+    height: 274px;
+}
+.VisualsubBox_acad {
+    width: 271px;
+    height: 274px;
+    overflow: hidden;
+}
+
+/* Main Container : Tit : Cop Acad */
+.Section .will-acadTit {
+    font-size: 19px;
+    font-weight: 600;
+    color: #363636;
+    line-height: 60px;
+}
+.Section .will-acadTit span {
+    vertical-align: baseline;
+}
+
+/* Main Container : 학원소식... : Cop Acad */
+.sliderSuccess {
+    float: left;
+    width: 356px;    
+    margin-right: 18px;
+}
+.sliderSuccessPlay {
+    width: 356px;
+    height: 200px;
+    background: #000;
+}
+.sliderSuccess iframe {
+    width: 356px;
+    height: 200px;
+}
+.sliderInfo {
+    float: left;
+    width: 356x;
+    margin-right: 32px;
+}
+.sliderInfo ul li {
+    margin-top: 4px;
+}
+.sliderInfo ul li:first-child {
+    margin-top: 0;
+}
+.bSlider.acad.blue .bx-wrapper .bx-pager {
+    float: right;
+    width: auto;
+    right: 8px;
+    bottom: 8px;
+    text-align: right;
+}
+.bSlider.acad.blue .bx-wrapper .bx-pager.bx-default-pager a {
+    background: #d7d7d7;
+    width: 8px;
+    height: 8px;
+    margin: 0 2px;
+}
+.bSlider.acad.blue .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.bSlider.acad.blue .bx-wrapper .bx-pager.bx-default-pager a.active,
+.bSlider.acad.blue .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #0c5dc0;
+}
+.bSlider.acad.blue .bx-wrapper .bx-pager.bx-default-pager a.active {
+    width: 30px;
+}
+.bSlider.acad.blue .bx-wrapper .bx-pager {
+    float: right;
+    width: auto;
+    right: 8px;
+    top: 12px;
+    text-align: right; 
+    padding-top: 0; 
+}
+
+/* Main Container : acad_infoBox : Cop Acad */
+.caProfBox li {
+    position: relative;
+    display: inline;
+    float: left;
+    height: 297px;
+    margin-right: 12px;
+    margin-bottom: 12px;
+    background: url("../../img/willbes/cop_acad/prof/prof_temp.jpg") no-repeat 0 0;
+}
+.caProfBox li:nth-child(4),
+.caProfBox li:last-child {
+    margin-right:0;
+}
+.caProfBox .caProfBtsn {
+    position: absolute;
+    top:170px;
+    left:30px;
+    font-size: 14px;
+}
+.caProfBox .caProfBtsn a {
+    display: block;
+    font-size: 16px;
+    background: url("../../img/willbes/cop_acad/icon_arrow.png") no-repeat 95% 7px;
+    padding:5px 30px 5px 5px;
+    margin-left:-5px;
+    margin-bottom: 5px
+}
+.caProfBox .caProfBtsn span {
+    display: block;
+    font-size: 13px;
+    color:#fd6f31;
+    margin-top: 4px;
+}
+.caProfBox .caProfBtsn a:hover {
+    color:#fff !important;
+    background: #0c5dc0 url("../../img/willbes/cop_acad/icon_arrow.png") no-repeat 95% 7px;
+    border-radius: 0 5px 0 5px;
+}
+.caProfBox .caProfBtsn a:hover span {
+    color:#fff;
+}
+.caProfBox:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+/* Main Container : 특별관리반 : Cop Acad */
+.specialClass li {
+    display: inline;
+    float: left;
+    margin-right: 12px;
+}
+.specialClass li:last-child {
+    margin: 0;
+}
+.specialClass:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+/* Main Container : 합격커리큘럼 : Cop Acad */
+.passCurriWrap {
+    position:absolute;
+    top:351px;
+    left:36px;
+    z-index: 1;
+}
+.passCurriWrap ul {
+    position: relative;
+}
+.passCurriWrap li {
+    position: absolute;
+    z-index: 1;
+}
+.passCurriWrap li img.out {display: block}
+.passCurriWrap li img.over {display: none}
+.passCurriWrap li:hover img.over {display: block;}
+.passCurriWrap li.curriStep1:hover img.over {    
+    margin-top:-41px;
+    margin-left:-46px;
+}
+.passCurriWrap li.curriStep2 {
+    top: 39px;
+    left: 170px;
+}
+.passCurriWrap li.curriStep2:hover img.over {    
+    margin-top:-41px;
+    margin-left:-37px;
+}
+.passCurriWrap li.curriStep3 {
+    top: 80px;
+    left: 340px;
+}
+.passCurriWrap li.curriStep3:hover img.over {    
+    margin-top:-134px;
+    margin-left:0;
+}
+.passCurriWrap li.curriStep4 {
+    top: 120px;
+    left: 340px;
+}
+.passCurriWrap li.curriStep4:hover img.over {    
+    margin-top:-41px;
+    margin-left:-3px;
+}
+.passCurriWrap li.curriStep5 {
+    top: 160px;
+    left: 709px;
+}
+.passCurriWrap li.curriStep5:hover img.over {    
+    margin-top:-108px;
+    margin-left:0;
+}
+.passCurriWrap li.curriStep6 {
+    top: 200px;
+    left: 879px;
+}
+.passCurriWrap li.curriStep6:hover img.over {    
+    margin-top:-101px;
+    margin-left:-6px;
+}
+
+/* Main Container : acad_infoBox : Cop Acad */
+.acad_infoBox {
+    float: left;
+    width: 1120px;
+    border: 10px solid #e7e7e7;
+    clear: both;
+    margin-top: 50px;
+    padding: 10px 0;
+    height: 90px;
+}
+.acad_infoBox li {
+    float: left;
+    width: 20%;
+    height: 50px;
+    border-left: 1px solid #ebebeb;
+}
+.acad_infoBox li a {
+    background-size: 60px !important;
+    float: left;
+    display: block;
+    width: 100%;
+    height: 100%;
+    font-size: 17px;
+    font-weight: 600;
+    text-align: center;
+    color: #606060;
+    text-align: center;
+    line-height: inherit;
+    letter-spacing: 0;
+    border: none;
+}
+.acad_infoBox li a.on,
+.acad_infoBox li a:hover {
+    color: #0c5dc0;
+}
+.acad_infoBox li a span {
+    display: block;
+    text-align: left;
+    padding-top: 15px;
+    padding-left: 100px;
+}
+.acad_infoBox li.w-infoBox1 a {
+    background: url("../../img/willbes/cop_acad/icon_info1.png") no-repeat 30px center;
+}
+.acad_infoBox li.w-infoBox2 a {
+    background: url("../../img/willbes/cop_acad/icon_info2.png") no-repeat 30px center;
+}
+.acad_infoBox li.w-infoBox3 a {
+    background: url("../../img/willbes/cop_acad/icon_info3.png") no-repeat 30px center;
+}
+.acad_infoBox li.w-infoBox4 a {
+    background: url("../../img/willbes/cop_acad/icon_info4.png") no-repeat 30px center;
+}
+.acad_infoBox li.w-infoBox5 a {
+    background: url("../../img/willbes/cop_acad/icon_info5.png") no-repeat 30px center;
+}
+
+.acad_infoBox li.w-infoBox1 a.on,
+.acad_infoBox li.w-infoBox1 a:hover {
+    background: url("../../img/willbes/cop_acad/icon_info1_on.png") no-repeat 30px center;
+}
+.acad_infoBox li.w-infoBox2 a.on,
+.acad_infoBox li.w-infoBox2 a:hover {
+    background: url("../../img/willbes/cop_acad/icon_info2_on.png") no-repeat 30px center;
+}
+.acad_infoBox li.w-infoBox3 a.on,
+.acad_infoBox li.w-infoBox3 a:hover {
+    background: url("../../img/willbes/cop_acad/icon_info3_on.png") no-repeat 30px center;
+}
+.acad_infoBox li.w-infoBox4 a.on,
+.acad_infoBox li.w-infoBox4 a:hover {
+    background: url("../../img/willbes/cop_acad/icon_info4_on.png") no-repeat 30px center;
+}
+.acad_infoBox li.w-infoBox5 a.on,
+.acad_infoBox li.w-infoBox5 a:hover {
+    background: url("../../img/willbes/cop_acad/icon_info5_on.png") no-repeat 30px center;
+}
+
+/* Main Container : Notice : noticeTabs */
+.noticeTabs.acad {
+    float: right;
+    width: 358px;
+    margin-top: 27px;
+}
+.tabWrap.noticeWrap_acad {
+    height: 34px;
+    border-bottom: 1px solid #0c5dc0;
+}
+.tabWrap.noticeWrap_acad li {
+    float: left;
+    width: 100px;
+    height: 34px;
+    margin-right: -1px;
+}
+.tabWrap.noticeWrap_acad li a {
+    display: block;
+    width: 100%;
+    height: 33px;
+    line-height: 33px;
+    background: none;
+    font-size: 14px;
+    color: #7c7c7c;
+    text-align: center;
+    letter-spacing: 0;
+    border-top: 1px solid #e1e1e1;
+    border-left: 1px solid #e1e1e1;
+    border-right: 1px solid #e1e1e1;
+}
+.tabWrap.noticeWrap_acad li a.on {
+    position: relative;
+    z-index: 2;
+    background: #fff;
+    height: 34px;
+    line-height: 33px;
+    color: #0c5dc0;
+    border-top: 1px solid #0c5dc0;
+    border-left: 1px solid #0c5dc0;
+    border-right: 1px solid #0c5dc0;
+}
+.tabBox.noticeBox_acad a.btn-add {
+    position: absolute;
+    top: -30px;
+    right: 0;
+}
+.tabBox.noticeBox_acad .List-Table {
+    padding: 9px 0 0;
+}
+.tabBox.noticeBox_acad .List-Table li {
+    font-size: 13px;
+    color: #3a3a3a;
+    height: 37px;
+    line-height: 37px;
+    border-top: 1px solid #e3e3e3;
+}
+.tabBox.noticeBox_acad .List-Table li:first-child {
+    border-top: none;
+}
+.tabBox.noticeBox_acad .List-Table li a {
+    display: inline-block;
+    width: 92%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.tabBox.noticeBox_acad .List-Table li a img {
+    margin-right: 5px;
+}
+/* Main Container : campus : Cop Acad */
+.tabWrap.noticeWrap_campus {
+    height: 60px;
+    border-bottom: none;
+    border-top: 2px solid #000;
+    clear: both;
+}
+.tabWrap.noticeWrap_campus li {
+    float: left;
+    width: auto;
+    height: 60px;
+    margin: 0 10px;
+}
+.tabWrap.noticeWrap_campus li a {
+    display: block;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    background: none;
+    font-size: 13px;
+    color: #3a3a3a;
+    text-align: center;
+    letter-spacing: 0;
+    border: none;
+    padding-right: 20px;
+}
+.tabWrap.noticeWrap_campus li:first-child a {
+    border-left: none;
+} 
+.tabWrap.noticeWrap_campus li a.on {
+    position: relative;
+    z-index: 2;
+    background: none;
+    height: 60px;
+    line-height: 60px;
+    font-weight: 600;
+    color: #3a3a3a;
+    border: none;
+}
+.tabWrap.noticeWrap_campus .row-line {
+    float: right;
+    background: #b7b7b7;
+    width: 1px;
+    height: 12px;
+    margin: -36px 0 0;
+}
+
+.tabBox.noticeBox_campus {
+    clear: both;
+}
+.tabBox.noticeBox_campus a.btn-add {
+    position: relative;
+    top: -1px;
+    margin-left: 10px;
+}
+.tabBox.noticeBox_campus .List-Table {
+    padding: 10px 0 20px;
+}
+.tabBox.noticeBox_campus .List-Table li {
+    font-size: 14px;
+    color: #3a3a3a;
+    height: 37px;
+    line-height: 37px;
+}
+.tabBox.noticeBox_campus .List-Table li a {
+    display: inline-block;
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.map_img {
+    position: relative;
+    float: left;
+}
+.map_img span {
+    position: absolute;
+    padding:5px;
+    background: #33373a;
+    color:#fff;
+    min-width: 50px;
+    text-align: center;
+    border:1px solid #000;
+    border-radius: 10px;
+    top:51%;
+    left:50%;
+    margin-left: -25px;
+    box-shadow: 2px 2px 2px rgba(0,0,0,.5);
+    z-index: 1;
+}
+.map_img span.origin {
+    min-width: 80px;
+    margin-left: -40px;
+}
+
+.campus_info {
+    position: relative;
+    float: right;
+    width: 350px;
+    height: 328px;
+}
+.campus_info dl dt {
+    border-top: 1px solid #e3e3e3;
+    padding: 25px 0;
+}
+.campus_info dl dt:first-child {
+    border-top: none;
+    padding: 0;
+}
+.campus_info .c-tit {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 30px;
+}
+.campus_info .c-tit span {
+    vertical-align: baseline;
+}
+.campus_info .c-info {
+    font-size: 14px;
+    color: #3a3a3a;
+    line-height: 18px;
+}
+.campus_info .c-info span {
+    float: left;
+    display: table;
+}
+.campus_info .c-info span.a-tit {
+    width: 60px;
+    text-align: left; 
+}
+.campus_info .c-info span.tx-color {
+    font-weight: 600;
+}
+.campus_info .c-info div {
+    clear: both;
+}
+.campus_info .c-info div:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+.campus_info .c-info div.tel {
+    margin-top: 10px;
+}
+.campus_info .btn {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+.campus_info .btn2 {
+    top:440px;
+}
+.campus_info .btn a {
+    display: inline-block; 
+    font-size: 21px; 
+    font-weight: 600;
+    padding: 11px 47px;
+    color: #0c5dc0;
+    text-align: center;
+    border: 1px solid #0c5dc0;
+}
+
+/* Main Container : QuickMenu : Cop */
+.cop_acad .MainQuickMenu {
+    position: fixed;
+    top: 110px;
+    right: 20px;
+    width: 164px;
+    height: auto;
+    background: #ececec;
+    z-index: 999;
+}
+.cop_acad .MainQuickMenu ul {
+    margin:0 8px;
+}
+.cop_acad .MainQuickMenu li {
+    border-top:1px solid #f6f6f6;
+    border-bottom:1px solid #d4d4d4;
+    height: 40px;
+    line-height: 40px;
+    background: url("../../img/willbes/cop_acad/icon_arrow02.png") no-repeat 95% center;
+    margin: 0;
+}
+.cop_acad .MainQuickMenu li:first-child {
+    border-top:0;
+}
+.cop_acad .MainQuickMenu li:last-child {
+    border-bottom:0;
+}
+.cop_acad .MainQuickMenu li a {
+    display: block; padding-left:30px;
+}
+.cop_acad .MainQuickMenu li a:hover {
+    color:#00acec;
+}
+.cop_acad .MainQuickMenu li:nth-child(1) a {
+    background: url("../../img/willbes/cop_acad/icon_rq01.png") no-repeat 3px center;
+}
+.cop_acad .MainQuickMenu li:nth-child(2) a {
+    background: url("../../img/willbes/cop_acad/icon_rq02.png") no-repeat 3px center;
+}
+.cop_acad .MainQuickMenu li:nth-child(3) a {
+    background: url("../../img/willbes/cop_acad/icon_rq03.png") no-repeat 3px center;
+}
+.cop_acad .MainQuickMenu li:nth-child(4) a {
+    background: url("../../img/willbes/cop_acad/icon_rq04.png") no-repeat 3px center;
+}
+.cop_acad .MainQuickMenu li:nth-child(5) a {
+    background: url("../../img/willbes/cop_acad/icon_rq05.png") no-repeat 3px center;
+}
+.cop_acad .MainQuickMenu li:nth-child(6) a {
+    background: url("../../img/willbes/cop_acad/icon_rq06.png") no-repeat 3px center;
+}
+
+/*sub 메인*/
+.PA .subSection01 {
+    clear: both;
+    width: 940px;
+    height: 304px;
+    overflow: hidden;
+}
+
+.PA .subSection02 {
+    clear: both;
+    width: 940px !important;
+    height: 105px;
+    overflow: hidden;
+}
+.PA .subSection02 ul li {
+    float: left;
+    width: 468px !important;
+    margin-left: 4px;
+}
+.PA .subSection02 ul li:first-child {
+    margin-left: 0;
+}
+
+/* sub Main Container : Notice : noticeTabs */
+.PA .noticeTabs.acad {
+    width: 100%;
+    margin-top: 50px;
+}
+
+#notice3 .mapWrap {
+    margin-top: 40px;
+    background: #606060;
+}
+#notice3 .mapWrap .mapImg {
+    position: relative;
+    float: left;
+    width: 534px;
+    height: 250px;
+    overflow: hidden;
+    margin-bottom: 40px;
+}
+#notice3 .mapWrap .mapImg img {
+    position: absolute;
+    top:-39px;
+    left:-82px;
+}
+#notice3 .mapWrap .add {
+    float: right;
+    width: 40%;
+    font-size: 13px;
+}
+#notice3 .mapWrap .add ul li span {
+    display: inline-block;
+    width: 70px;
+    height: 38px;
+    line-height: 38px;
+    text-align: center;
+    background: #f9f9f9;
+    float: left;
+    margin-right:8px;
+}
+#notice3 .mapWrap .add ul li {
+    border-top:1px solid #959595 !important;
+    border-bottom:1px solid #efefef !important;
+    margin-bottom:1px;
+    height: 40px;
+    line-height: 40px;
+    letter-spacing: normal;
+}
+#notice3 .mapWrap .add ul li.mapTit {
+    font-size: 16px;
+    border:0 !important;
+}
+#notice3 .mapWrap .add ul li:last-child {
+    border-top:0 !important;
+    border-bottom:1px solid #959595 !important;
+}
+#notice3 .mapWrap:after {
+    conternt:'';
+    display: block;
+    clear: both;
+}

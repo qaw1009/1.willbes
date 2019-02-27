@@ -24,29 +24,23 @@
                     <tr>
                         <th colspan="1">모의고사카테고리 <span class="required">*</span></th>
                         <td colspan="3">
-                            <button type="button" class="btn btn-sm btn-primary act-searchCate" {{($method == 'PUT' && !$isCopy) ? 'disabled' : ''}}>카테고리검색</button>
+                            <button type="button" class="btn btn-sm btn-primary act-searchCate">카테고리검색</button>
                             <div id="selected_category" class="row">
                                 @if($method == 'PUT')
-                                    @if($isCopy) {{-- 복사 후 첫 이동, 카테고리 변경 가능하게 --}}
-                                        @foreach($moCate_name as $code => $name)
-                                            <div class="col-xs-4 pb-5">
-                                                {{ preg_replace('/^(.*?\s>\s)/', '',$name) }}
-                                                @if(isset($moCate_isUse[$code]) && $moCate_isUse[$code] == 'N') <span class="ml-5 red">(미사용)</span> @endif
-                                                <a href="#none" data-cate-code="{{ $code }}" class="selected-category-delete"><i class="fa fa-times red"></i></a>
-                                                <input type="hidden" name="moLink[]" value="{{ $code }}">
-                                            </div>
-                                        @endforeach
-                                    @else
-                                        @foreach($moCate_name as $code => $name)
-                                            <div class="col-xs-4 pb-5">
-                                                {{ preg_replace('/^(.*?\s>\s)/', '',$name) }}
-                                                @if(isset($moCate_isUse[$code]) && $moCate_isUse[$code] == 'N') <span class="ml-5 red">(미사용)</span> @endif
-                                            </div>
-                                        @endforeach
-                                    @endif
+
+                                    @foreach($moCate_name as $code => $name)
+                                        <div class="col-xs-4 pb-5">
+                                            {{ preg_replace('/^(.*?\s>\s)/', '',$name) }}
+                                            @if(isset($moCate_isUse[$code]) && $moCate_isUse[$code] == 'N') <span class="ml-5 red">(미사용)</span> @endif
+                                            <a href="#none" data-cate-code="{{ $code }}" class="selected-category-delete"><i class="fa fa-times red"></i></a>
+                                            <input type="hidden" name="moLink[]" value="{{ $code }}">
+                                        </div>
+                                    @endforeach
+
                                 @endif
                             </div>
-                            @if($method == 'PUT' && $isCopy)
+
+                            @if($method == 'PUT')
                                 @foreach($moCate_name as $code => $name)
                                     <input type="hidden" name="moLink_be[]" value="{{ $code }}">
                                 @endforeach
@@ -126,7 +120,6 @@
                             <td class="text-center form-inline"><input type="text" class="form-control" style="width:45px" name="orderNum[]" value=""></td>
                             <td class="text-center">
                                 <select class="form-control" name="isUse[]">
-                                    <option value="">사용여부</option>
                                     <option value="Y">사용</option>
                                     <option value="N">미사용</option>
                                 </select>
@@ -252,6 +245,7 @@
 
                 cList.find('tr').each(function (index) {
                     $(this).find('td:eq(0)').text(++index);
+                    $(this).find('td:eq(2)').html("<input type='text' class='form-control' style='width:45px' name='orderNum[]' value='"+ index +"'>");
                 });
             });
 

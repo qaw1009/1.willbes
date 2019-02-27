@@ -71,15 +71,7 @@
         </span>
     </div>
     <div class="Content p_re">
-
-        <div class="willbes-Mocktest INFOZONE c_both">
-            <div class="willbes-Lec-Tit NG bd-none tx-black c_both pt-zero">
-                · 경찰가이드
-            </div>
-        </div>
-
-        <div class="willbes-Leclist c_both mt30">
-            <img src="{{ img_url('cop/guide/guide_visual.jpg') }}">
+        <div class="willbes-Leclist c_both">
             <div class="w-cop-Guide">
                 <div class="willbes-cop-guide GM">
                     <ul class="tabWrap tabcsDepth2 tab_cop_Guide p_re NG">

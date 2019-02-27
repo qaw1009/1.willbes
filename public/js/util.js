@@ -5,7 +5,17 @@
  * @param $quility
  */
 function fnPlayerSample($prodCode, $unitIdx, $quility){
-    popupOpen(app_url('/Player/Sample/'+$prodCode+'/'+$unitIdx+'/'+$quility, 'www'), 'samplePlayer', '1000', '600', null, null, 'no', 'no');
+    popupOpen(app_url('/Player/Sample/'+$prodCode+'/'+$unitIdx+'/'+$quility, 'www'), 'Player', '1000', '600', null, null, 'no', 'no');
+}
+
+/**
+ * 샘플강좌 플레이어
+ * @param $prodCode
+ * @param $unitIdx
+ * @param $quility
+ */
+function fnPlayerFree($prodCode, $unitIdx, $quility){
+    popupOpen(app_url('/Player/Free/'+$prodCode+'/'+$unitIdx+'/'+$quility, 'www'), 'Player', '1000', '600', null, null, 'no', 'no');
 }
 
 /**
@@ -14,14 +24,18 @@ function fnPlayerSample($prodCode, $unitIdx, $quility){
  * @param $viewType ( OT | WS | S1 | S2 | S3 )
  */
 function fnPlayerProf($ProfessorCode, $viewType){
-    popupOpen(app_url('/Player/Professor/'+$ProfessorCode+'/'+$viewType+"/_", 'www'), 'profPlayer', '1000', '600', null, null, 'no', 'no');
+    popupOpen(app_url('/Player/Professor/'+$ProfessorCode+'/'+$viewType+"/_", 'www'), 'Player', '1000', '600', null, null, 'no', 'no');
 }
 
 /**
  * 일반강좌 플레이어
  */
 function fnPlayer($OrderIdx, $ProdCode, $subProdCode, $lecIdx, $unitIdx, $quility){
-    popupOpen(app_url('/Player/?o='+$OrderIdx+'&p='+$ProdCode+'&sp='+$subProdCode+'&l='+$lecIdx+'&u='+$unitIdx+'&q='+$quility, 'www'), 'samplePlayer', '1000', '600', null, null, 'no', 'no');
+    popupOpen(app_url('/Player/?o='+$OrderIdx+'&p='+$ProdCode+'&sp='+$subProdCode+'&l='+$lecIdx+'&u='+$unitIdx+'&q='+$quility, 'www'), 'Player', '1000', '600', null, null, 'no', 'no');
+}
+
+function fnPlayerBookmark($OrderIdx, $ProdCode, $subProdCode, $lecIdx, $unitIdx, $quility, $t){
+    popupOpen(app_url('/Player/?o='+$OrderIdx+'&p='+$ProdCode+'&sp='+$subProdCode+'&l='+$lecIdx+'&u='+$unitIdx+'&q='+$quility+'&t='+$t, 'www'), 'Player', '1000', '600', null, null, 'no', 'no');
 }
 
 /**
@@ -35,7 +49,7 @@ function fnMobile($info_url, $license)
     StarPlayerApp.ios_version = "1.0.0";
     StarPlayerApp.referer = window.location.href;
     StarPlayerApp.android_referer_return = "false";
-    StarPlayerApp.debug = "false";
+    StarPlayerApp.debug = "true";
     StarPlayerApp.pmp = "false";
 
     checkInstalled2();
@@ -43,23 +57,35 @@ function fnMobile($info_url, $license)
 }
 
 /**
- *  앱 스트리밍 플레이어
+ * 앱 스트리밍 플레이어
+ * @param $url
+ * @param $data
  */
 function fnApp($url, $data)
 {
     sendAjax($url, $data,
         function(d){
-            var media = {
-                "url" : 'http://www.axissoft.co.kr/contents/252782_ehd.mp4',
-                "cc" : "",
-                "position" : 0,
-                "tracker" : "",
-                "title" : "[액시스소프트] 이투스 테스트!!",
-                "content_id" : 'test',
-                "subpage" : ""
-            };
+            var media = null;
             media = d.ret_data;
             app.streaming(media);
+        },
+        function(ret, status){
+            alert(ret.ret_msg);
+        }, false, 'GET', 'json');
+}
+
+/**
+ * 앱 멀티 다운로드
+ * @param $url
+ * @param $data
+ */
+function fnAppDown($url, $data)
+{
+    sendAjax($url, $data,
+        function(d){
+            var media = null;
+            media = d.ret_data;
+            app.multiDownload(media);
         },
         function(ret, status){
             alert(ret.ret_msg);
@@ -221,13 +247,18 @@ function dtParamsToQueryString($datatable) {
  * @param url
  * @param params
  * @param method
+ * @param target
  */
-function formCreateSubmit(url, params, method) {
+function formCreateSubmit(url, params, method, target) {
     method = method || 'POST';
 
     var form = document.createElement('form');
     form.setAttribute('method', method);
     form.setAttribute('action', url);
+
+    if (typeof target !== 'undefined') {
+        form.setAttribute('target', target);
+    }
 
     if (params != null) {
         for(var i = 0; i < params.length; i++) {
@@ -369,6 +400,16 @@ function setMailDomain(select, target, data) {
 }
 
 /**
+ * 사이트 URL 생성 (site_url 함수와 동일한 역할 수행)
+ * @param uri
+ * @returns {string}
+ */
+function siteUrl(uri) {
+    var url = location.protocol + '//' + location.host;
+    return url + uri;
+}
+
+/**
  * 관리자 메뉴 (사이드바) 강제 Active
  * @param menu_link
  */
@@ -495,9 +536,8 @@ function resetModal(selector) {
  * @param is_file
  */
 function sendAjax(url, data, callback, error_callback, async, method, data_type, is_file) {
-
     //var target = (event.target) ? $(event.target) : $("button, .btn");
-    var target = (typeof(event) === 'undefined') ? $("button, .btn") : $(event.target);
+    var target = (typeof(event) === 'undefined' || target == null) ? $("button, .btn") : $(event.target);
     target.prop("disabled",true);
 
     if(typeof is_file === 'undefined') is_file = false;

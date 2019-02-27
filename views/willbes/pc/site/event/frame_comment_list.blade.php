@@ -100,7 +100,7 @@ $(document).ready(function() {
             '{{ csrf_token_name() }}' : $regi_form_comment.find('input[name="{{ csrf_token_name() }}"]').val(),
             '_method' : 'PUT'
         };
-        sendAjax('{{ site_url('/event/commentDel/') }}' + comment_idx, data, function(ret) {
+        sendAjax('{{ front_url('/event/commentDel/') }}' + comment_idx, data, function(ret) {
             if (ret.ret_cd) {
                 location.reload();
             }

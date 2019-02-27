@@ -9,9 +9,6 @@
         </div>
         <div class="Content p_re">
             <div class="willbes-Mypage-ONLINEZONE c_both">
-                <div class="willbes-Prof-Subject willbes-Mypage-Tit NG">
-                    · 수강대기강좌
-                </div>
                 <div class="willbes-Cart-Txt willbes-Mypage-Txt NG p_re">
                     <span class="MoreBtn"><a href="#none">유의사항안내 @if(get_cookie('moreInfo') == 'off')보기 ▼@else닫기 ▲@endif</a></span>
                     <table cellspacing="0" cellpadding="0" class="txtTable tx-black @if(get_cookie('moreInfo') == 'off') off @endif">
@@ -36,12 +33,20 @@
             <div class="willbes-Mypage-Tabs mt40">
                 <form name="searchFrm" id="searchFrm" action="{{app_url('/classroom/on/list/standby/', 'www')}}" onsubmit="">
                     <div class="willbes-Lec-Selected willbes-Mypage-Selected tx-gray">
+                        <select id="sitegroup_ccd" name="sitegroup_ccd" title="process" class="seleProcess">
+                            <option selected="selected" value="">과정</option>
+                            @foreach($sitegroup_arr as $row )
+                                <option value="{{$row['SiteGroupCode']}}" @if(isset($input_arr['sitegroup_ccd']) && $input_arr['sitegroup_ccd'] == $row['SiteGroupCode']) selected="selected" @endif  >{{$row['SiteGroupName']}}</option>
+                            @endforeach
+                        </select>
+                        <!--
                         <select id="course_ccd" name="course_ccd" title="process" class="seleProcess">
                             <option selected="selected" value="">과정</option>
                             @foreach($course_arr as $row )
                                 <option value="{{$row['CourseIdx']}}" @if(isset($input_arr['course_ccd']) && $input_arr['course_ccd'] == $row['CourseIdx']) selected="selected" @endif  >{{$row['CourseName']}}</option>
                             @endforeach
                         </select>
+                        -->
                         <select id="subject_ccd" name="subject_ccd" title="lec" class="seleLec">
                             <option selected="selected" value="">과목</option>
                             @foreach($subject_arr as $row )
@@ -138,7 +143,7 @@
                                                     <dt>잔여기간 : <span class="tx-blue">{{$row['remainDays']}}일</span>({{str_replace('-', '.', $row['LecStartDate'])}}~{{str_replace('-', '.', $row['RealLecEndDate'])}})</dt>
                                                     <dt><span class="row-line">|</span></dt>
                                                     <dt>수강시작일 : <span class="tx-black">{{$row['LecStartDate']}}</span></dt>
-                                                    <dt class="MoreBtn"><a href="javascript:;" onclick="fnOpenSub('{{$row['OrderIdx']}}-{{$row['ProdCode']}}');">강좌 열기 ▼</a></dt>
+                                                    <dt class="MoreBtn"><a href="javascript:;">강좌 열기 ▼</a></dt>
                                                 </dl>
                                             </td>
                                             <td class="w-answer">
@@ -152,7 +157,7 @@
                                         </tr>
                                         </tbody>
                                     </table>
-                                    <table cellspacing="0" cellpadding="0" class="packInfoTable lecTable" id="sub-{{$row['OrderIdx']}}-{{$row['ProdCode']}}">
+                                    <table cellspacing="0" cellpadding="0" class="packInfoTable lecTable">
                                         <colgroup>
                                             <col style="width: 120px;">
                                             <col style="width: 820px;">
@@ -226,7 +231,7 @@
     </form>
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#course_ccd,#subject_ccd,#prof_ccd').on('change', function (){
+            $('#course_ccd,#subject_ccd,#prof_ccd,#sitegroup_ccd').on('change', function (){
                 $('#searchFrm').submit();
             });
 

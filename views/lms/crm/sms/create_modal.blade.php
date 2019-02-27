@@ -44,9 +44,14 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-md-4" for="cs_tel">발신번호 <span class="required">*</span></label>
+                        <label class="control-label col-md-4" for="cs_tel_ccd">발신번호 <span class="required">*</span></label>
                         <div class="col-md-8 item">
-                            <input type="text" id="cs_tel" name="cs_tel" required="required" class="form-control" title="발신번호" value="">
+                            <select class="form-control" id="cs_tel_ccd" name="cs_tel_ccd" required="required" title="발신번호">
+                                <option value="">발송번호선택</option>
+                                @foreach($arr_send_callback_ccd as $key => $val)
+                                    <option value="{{ $key }}">{{ $val }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                     <div class="form-group">
@@ -59,11 +64,8 @@
                         <label class="control-label col-md-4" for=""></label>
                         <div class="col-md-8 text-right form-inline">
                             <input type="text" readonly="readonly" class="form-control border-red red" id="content_byte" value="0" style="width: 50px;"> <span class="red">byte</span>
+                            (55byte 이상일 경우 MMS로 전환됩니다.)
                         </div>
-                    </div>
-                    <div class="form-group form-group-sm">
-                        <label class="control-label col-md-4" for=""></label>
-                        <div class="col-md-8">(80byte 초과 시 LMS로 전환됩니다.)</div>
                     </div>
                 </div>
             </div>
@@ -231,17 +233,17 @@
                 });
 
                 // 고객센터 전화번호
-                $modal_regi_form.on('change', 'select[name="site_code"]', function() {
+                /*$modal_regi_form.on('change', 'select[name="site_code"]', function() {
                     var $arr_site_csTel = {!! $site_csTel !!};
                     var cs_tel = '';
                     var this_site_code = $(this).val();
                     if (this_site_code == '') {
                         cs_tel = '';
                     } else {
-                        cs_tel = $arr_site_csTel[this_site_code].replace('-','');
+                        cs_tel = $arr_site_csTel[this_site_code];
                     }
                     $('#cs_tel').val(cs_tel);
-                });
+                });*/
 
                 // 일괄발송 -> 파일 등록 및 Excel Data 셋팅
                 $('#btn_file_upload').click(function (){

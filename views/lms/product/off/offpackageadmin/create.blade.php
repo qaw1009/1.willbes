@@ -156,7 +156,7 @@
                     <div class="col-md-4 form-inline item" >
                         <div class="radio">
                             @foreach($studypattern_ccd as $key => $val)
-                                <input type="radio" name="StudyPatternCcd" id="StudyPatternCcd{{$loop->index}}" value="{{$key}}" class="flat" required="required" @if($loop->index == 1 || $data['StudyPatternCcd']==$key) checked="checked"@endif> {{$val}}&nbsp;&nbsp;
+                                <input type="radio" name="StudyPatternCcd" id="StudyPatternCcd{{$loop->index}}" value="{{$key}}" class="flat" required="required" @if(($method == 'POST' && $loop->index == 1) || $data['StudyPatternCcd']==$key) checked="checked"@endif> {{$val}}&nbsp;&nbsp;
                             @endforeach
                         </div>
                     </div>
@@ -168,7 +168,7 @@
                     <div class="col-md-4 form-inline">
                         <div class="radio">
                             @foreach($studyapply_ccd as $key => $val)
-                                <input type="radio" name="StudyApplyCcd" id="StudyApplyCcd{{$loop->index}}" value="{{$key}}" class="flat" required="required" @if($method==='POST' && $loop->index == 3) checked="checked"  @elseif($data['StudyApplyCcd']==$key) checked="checked"@endif> {{$val}}&nbsp;&nbsp;
+                                <input type="radio" name="StudyApplyCcd" id="StudyApplyCcd{{$loop->index}}" value="{{$key}}" class="flat" required="required" @if(($method == 'POST' && $loop->index == 3) || $data['StudyApplyCcd']==$key) checked="checked"@endif> {{$val}}&nbsp;&nbsp;
                             @endforeach
                         </div>
                     </div>
@@ -416,6 +416,7 @@
                                 @php
                                     $rateRemain = '';
                                     $rateRemainProfIdx = '';
+                                    $rateSum = 0;
                                 @endphp
                                 @foreach($data_division as $row)
                                     @php
@@ -425,6 +426,7 @@
                                                 $rateRemainProfIdx = $row['ProfIdx'].'-'.$row['ProdCodeSub'];
                                             }
                                         }
+                                        $rateSum = $rateSum + floatval($row['ProdDivisionRate']);
                                     @endphp
                                     <tr id="{{$loop->index - 1}}">
                                         <input name="ProfIdx[]" id="ProfIdx_{{$row['ProfIdx']}}-{{$row['ProdCodeSub']}}" type="hidden" value="{{$row['ProfIdx']}}">
@@ -436,14 +438,8 @@
                                         <td><input name="ProdCalcRate[]" title="정산율" class="form-control" id="ProdCalcRate_{{$row['ProfIdx']}}-{{$row['ProdCodeSub']}}" required="required" type="text" size="5" value="{{$row['ProdCalcRate']}}"> %</td>
                                         <td><input name="IsSingular" title="단수적용" id="IsSingular_{{$row['ProfIdx']}}-{{$row['ProdCodeSub']}}" required="required" onclick="singularCheck('{{$row['ProfIdx']}}-{{$row['ProdCodeSub']}}')" type="radio" value="{{$row['ProfIdx']}}" @if($row['IsSingular']==='Y') checked="checked" @endif {{--@if($method==='PUT') disabled @endif--}}></td>
                                     </tr>
-                                    @if($loop->last)
-                                        <tr>
-                                            <td colspan='3'></td>
-                                            <td><span id='rateSum'>1</span></td>
-                                            <td colspan='2'></td>
-                                        </tr>
-                                    @endif
                                 @endforeach
+                                    <tr><td colspan="3"></td><td><span id="rateSum">{{{$rateSum}}}</span></td><td colspan="2"></td></tr>
                             </table>
                         </div>
                         <div class="item inline-block">
@@ -708,12 +704,11 @@
                             <textarea id="SmsMemo" name="SmsMemo" class="form-control" rows="5" cols="100" title="문자 발송" placeholder="">{{$data_sms['Memo']}}</textarea>
                         </p>
                         <div class="text">
-                            [발신번호] <input type="text" name="SendTel" id="SendTel" value="{{$data_sms['SendTel']}}" size="12" class="form-control" maxlength="20">
+                            [발신번호] {!! html_callback_num_select($arr_send_callback_ccd, $data_sms['SendTel'], 'SendTel', 'SendTel', '', '발신번호', '') !!}
                             &nbsp;&nbsp;&nbsp;
-
                             <input class="form-control border-red red" id="content_byte" style="width: 50px;" type="text" readonly="readonly" value="0">
                             <span class="red">byte</span>
-                            (80byte 초과 시 LMS 문자로 전환됩니다.)
+                            (55byte 이상일 경우 MMS로 전환됩니다.)
                         </div>
                     </div>
                 </div>
@@ -804,7 +799,6 @@
                 //alert(prev_val)
                 if (prev_val == "") {
                     $('#site_code').blur();
-                    smsTel_chained($(this).val());  //전화번호 재조정
                     return;
                 }
                 $(this).blur();
@@ -815,7 +809,6 @@
                     $("#teacherDivision tbody").remove();
                     $("#lecList tbody").remove();
                     sitecode_chained($(this).val());    //과정.과목 재조정
-                    smsTel_chained($(this).val());   //전화번호 재조정
                     */
                     location.reload();
 
@@ -933,8 +926,11 @@
             $('#essLecAdd,#selLecAdd').on('click', function(e) {
                 var id = e.target.getAttribute('id');
                 if($("#site_code").val() == "") {alert("운영사이트를 선택해 주세요.");$("#site_code").focus();return;}
+                if($("#CampusCcd").val() == "") {alert("캠퍼스를 선택해 주세요.");$("#CampusCcd").focus();return;}
                 $('#'+id).setLayer({
                     'url' : '{{ site_url('common/searchOffLecture/')}}'+'?site_code='+$("#site_code").val()+'&LearnPatternCcd=615006&locationid='+id+'&ProdCode='+$('#ProdCode').val()
+                    +'&cate_code='+$('#cate_code').val()
+                    +'&CampusCcd='+$('#CampusCcd').val()
                     ,'width' : 1200
                 })
             });
@@ -995,8 +991,19 @@
                 if( $("input[name='essLecAddCheck[]']").length == 0) {
                     alert('필수과목강좌구성을 선택하여 주십시오.');$('#essLecAdd').focus();return;
                 }
-                if( $("input[name='selLecAddCheck[]']").length == 0) {
-                    alert('선택과목강좌구성을 선택하여 주십시오.');$('#selLecAdd').focus();return;
+
+                if($('input:radio[name="PackTypeCcd"]:checked').val() == '648002') {
+
+                    if ($("#PackSelCount").val() == "") {
+                        alert('선택과목 선택개수 입력하여 주십시오.');
+                        $('#PackSelCount').focus();
+                        return;
+                    }
+                    if ($("input[name='selLecAddCheck[]']").length == 0) {
+                        alert('선택과목강좌구성을 선택하여 주십시오.');
+                        $('#selLecAdd').focus();
+                        return;
+                    }
                 }
 
                 return true;
@@ -1143,17 +1150,6 @@
             //과정, 과목 변경
             $("#CourseIdx").chained(site_code);
             $("#CampusCcd").chained(site_code);
-        }
-
-
-        function smsTel_chained(site_code) {
-            var obj = {
-            @foreach($siteList as $key=>$val)
-            {{$key}}: '{{$val}}'@if($loop->last == false),@endif
-            @endforeach
-        }
-            //alert(obj[site_code]);
-            $('#SendTel').val(obj[site_code].replace('-',''));
         }
 
         @if($method==='PUT')

@@ -22,11 +22,14 @@ if (in_array(APP_NAME, ['wbs', 'lms']) === true) {
 }
 
 if (in_array(APP_NAME, ['api']) === false) {
-    // 쿼리빌더를 사용하여 실행한 쿼리 로그 저장 (API는 수동으로 쿼리 로그 저장)
-    $hook['post_system'][] = array(
-        'class' => 'LogQueryHook',
-        'function' => 'logQueries',
-        'filename' => 'LogQueryHook.php',
-        'filepath' => 'hooks'
-    );
+    // 실서버가 아닐 경우만 실행 ==> TODO : 서버 환경별 실행
+    if (ENVIRONMENT !== 'production') {
+        // 쿼리빌더를 사용하여 실행한 쿼리 로그 저장 (API는 수동으로 쿼리 로그 저장)
+        $hook['post_system'][] = array(
+            'class' => 'LogQueryHook',
+            'function' => 'logQueries',
+            'filename' => 'LogQueryHook.php',
+            'filepath' => 'hooks'
+        );
+    }
 }

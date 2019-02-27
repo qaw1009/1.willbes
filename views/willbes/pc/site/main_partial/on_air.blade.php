@@ -1,17 +1,17 @@
-<div class="widthAuto mt40">
+<div class="widthAuto mt50">
     <div class="static clearfix">
         <div class="passLive">
             <div class="onAir">
-                @if(empty($arr_base['onAirData']) === true)
+                @if(empty($data['onAir']) === true)
                     <div class="offAir">
                         <div class="offAirBar">
-                            <span class="state"><img src="{{ img_url('sample/onair_off.png') }}" alt="방송중이아닙니다."></span>
-                            <ul>
+                            <span class="state">윌비스 <span class="tx-color">신광은경찰</span> 학원 <img src="{{ img_url('onair/onair_off.png') }}" alt="방송중이아닙니다."></span>
+                            <ul id="scroll" class="on_air_title" style="position: relative; overflow: hidden;">
                                 <li>현재 진행중인 라이브 강의가 없습니다.</li>
                             </ul>
                             <span class="offAirBarBtn">
-                                <a href="{{front_url('/offinfo/boardInfo/index')}}"><img src="{{ img_url('sample/onair_btn1.gif') }}" alt="강의시간표"></a>
-                                <a href="{{front_url('/offLecture/index')}}"><img src="{{ img_url('sample/onair_btn2.gif') }}" alt="학원수강"></a>
+                                <a href="{{front_url('/offinfo/boardInfo/index')}}"><img src="{{ img_url('onair/onair_btn1.gif') }}" alt="강의시간표"></a>
+                                <a href="{{front_url('/offLecture/index')}}"><img src="{{ img_url('onair/onair_btn2.gif') }}" alt="학원수강"></a>
                             </span>
                         </div>
                     </div>
@@ -21,10 +21,10 @@
                             <a id="stoggleBtn"><p id="stoggleBtnNm">닫기 ▲</p></a>
                             <!-- <a id="stoggleBtn">닫기 ▲</a> -->
                         </span>
-                        <span class="state"><img src="{{ img_url('sample/onair.png') }}" alt="방송중"></span>
+                        <span class="state">윌비스 <span class="tx-color">신광은경찰</span> 학원 <img src="{{ img_url('onair/onair.png') }}" alt="방송중"></span>
                         <ul id="scroll" class="on_air_title" style="position: relative; overflow: hidden;">
                             @php $i=0; @endphp
-                            @foreach($arr_base['onAirData'] as $key => $row)
+                            @foreach($data['onAir'] as $key => $row)
                                 @php
                                     $arr_onAirTitle = explode('|', $row['OnAirTitle']);
                                 @endphp
@@ -38,7 +38,7 @@
 
                     <div class="onAirCt" style="display: block;">
                         <ul class="tabWrap onAirTabs">
-                            @foreach($arr_base['onAirData'] as $key => $row)
+                            @foreach($data['onAir'] as $key => $row)
                                 <li>
                                     <a id="tab_onAirLecBox{{$row['OaIdx']}}" href="#onAirLecBox{{$row['OaIdx']}}" class="tab_onAirLecBox{!! $key == 0 ? ' on' : '' !!}" data-onair-box-id="{{$row['OaIdx']}}">
                                         {{$row['OnAirTabName']}}
@@ -47,10 +47,10 @@
                             @endforeach
                         </ul>
                         <div class="onAirTabInto">
-                            ※ 각 탭을 클릭 하시면 해당 정보를 확인 할 수 있습니다.
+                            ※ 한 과목당 5회까지 맛보기 재생이 가능합니다. (과목별 상이)
                         </div>
                         <div class="tabBox">
-                            @foreach($arr_base['onAirData'] as $key => $row)
+                            @foreach($data['onAir'] as $key => $row)
                                 @php
                                     $arr_onAirTitle = explode('|', $row['OnAirTitle']);
                                 @endphp
@@ -114,8 +114,8 @@
                                     <div class="onAirBtn">
                                         <ul>
                                             <li><a href="javascript:void(0);" class="sample btn-video" data-oa-idx="{{$row['OaIdx']}}" data-login-type="{{$row['LoginType']}}" data-play-count="{{$row['VideoPlayCount']}}">{{$row['VideoPlayTime']}}초맛보기</a></li>
-                                            <li><a href="{{front_url('/offinfo/boardInfo/index')}}"><img src="{{ img_url('sample/onair_btn1.gif') }}" alt="강의시간표"></a></li>
-                                            <li><a href="{{front_url('/offLecture/index')}}"><img src="{{ img_url('sample/onair_btn2.gif') }}" alt="학원수강"></a></li>
+                                            <li><a href="{{front_url('/offinfo/boardInfo/index')}}"><img src="{{ img_url('onair/onair_btn1.gif') }}" alt="강의시간표"></a></li>
+                                            <li><a href="{{front_url('/offLecture/index')}}"><img src="{{ img_url('onair/onair_btn2.gif') }}" alt="학원수강"></a></li>
                                         </ul>
                                     </div>
                                 </div>

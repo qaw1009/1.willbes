@@ -137,6 +137,15 @@ body {
     line-height: 30px !important;
 }
 
+.tx-dark-blue,
+.cop-color {
+    color: #0c5dc0;
+}
+.tx-bright-brown,
+.gosi-color {
+    color: #ba560e;
+}
+
 input {
     color: #333;
     border: 1px solid #d4d4d4;
@@ -389,6 +398,43 @@ body.memBody #Footer {
 }
 .mem-Login .chkBox ul li .labelSave {
     padding-left: 10px;
+}
+
+
+
+/*********************************************     INTRO PAGE     *********************************************/
+.introBox .Tit {
+    font-size: 20px;
+    line-height: 66px;
+    background: #1a8ccb;
+    text-align: center;
+    color:#fff;
+}
+.introBox {
+    background: #1b98ef;
+}
+.introBox img {
+    width: 100%; 
+}
+.introBox img a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.introBox .subTit {
+    font-size: 14px;
+    padding-top: 30px;
+}
+.introBox .btnGo {
+    padding-bottom: 30px;
+}
+.introBox .btnGo span {
+    display: inline-block;
+    font-size: 14px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 8px 30px;
 }
 
 
@@ -1217,7 +1263,7 @@ body.memBody #Footer {
     height: auto !important;
 }
 .lecTable .w-subtxt {
-    width: 50%;
+    width: 45%;
 } 
 .lecTable .w-start {
     font-size: 12px;
@@ -1239,6 +1285,7 @@ body.memBody #Footer {
     font-size: 12px;
     text-align: center;
     line-height: 32px;
+    letter-spacing: -1px;
 }
 .lecTable .w-start ul.one {
     width: 25%;
@@ -1247,7 +1294,7 @@ body.memBody #Footer {
     width: 98%;
 }
 .lecTable .w-start ul.two {
-    width: 50%;
+    width: 55%;
 }
 .lecTable .w-start ul.two li {
     width: 48%;
@@ -1266,10 +1313,12 @@ body.memBody #Footer {
 }
 .lecTable .w-s-date .grid {
     border-top: 1px solid #ccc;
+    padding: 0 20px;
 }
 .lecTable .w-s-date input[type="text"] {
     width: 15%; 
     height: 30px;
+    padding: 0 0.6rem;
 }
 .lecTable .w-line {
     background: #e9e9e9;
@@ -1323,16 +1372,15 @@ body.memBody #Footer {
 }
 .AddlecMore {
     clear: both;
-    background: #1a8ccc;
-    height: 45px;
-    margin: 10px 20px;
 }
 .AddlecMore a {
+    background: #1a8ccc;
     display: block;
     font-size: 14px;
     color: #fff;
     text-align: center;
     line-height: 45px;
+    margin: 10px 20px;
 }
 .AddlecMore a img {
     width: 30px;

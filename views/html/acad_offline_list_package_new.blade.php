@@ -79,7 +79,7 @@
         </div>
         <!-- curriWrap -->
         <div class="Content widthAuto810 p_re">
-            <div class="willbes-Lec-Search mb15">
+            <div class="willbes-Lec-Search p_re mb15">
                 <div class="inputBox p_re">
                     <div class="selectBox">
                         <select id="select" name="select" title="강좌명" class="">
@@ -94,7 +94,63 @@
                         <span>검색</span>
                     </button>
                 </div>
-                <div class="InfoBtn"><a href="#none">방문결제 안내 <span>▶</span></a></div>
+
+                <div class="InfoBtn"><a href="#none" onclick="openWin('requestInfo')">방문결제안내 <span>▶</span></a></div>
+                <div id="requestInfo" class="willbes-Layer-requestInfo">
+                    <a class="closeBtn" href="#none" onclick="closeWin('requestInfo')">
+                        <img src="{{ img_url('prof/close.png') }}">
+                    </a>
+                    <div class="Layer-Tit NG tx-dark-black">방문결제 <span class="tx-blue">안내</span></div>
+                    <div class="Layer-Cont">
+                        <div class="Layer-SubTit tx-gray">
+                            <ul>
+                                <li>
+                                    <strong>학원방문결제 안내</strong><br>
+                                    - 학원에서 직접 수강할 수 있는 강좌입니다. (온라인>내강의실에서 수강 불가)<br>  
+                                    - 학원강좌는 장바구니 담기 없이 바로결제만 가능합니다.<br>
+                                    - <span class="tx-red">수강신청 후 정정신청이 불가능</span>합니다. 강의 구성을 꼼꼼히 살핀 후 수강신청해 주세요.<br>
+                                    - 방문결제 접수완료 시 결제가 진행되지 않은 상태입니다.<br>
+                                    반드시 <span class="tx-red">학원에 방문하시어 결제를 진행</span>하셔야 정상적인 수강이 가능합니다.
+                                </li>
+                                <li>
+                                    <strong>아이콘 안내</strong><br>
+                                    - 강좌리스트에 보여지고 있는 아이콘에 대한 설명입니다. 참고하시어 수강신청해 주세요.
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="LeclistTable">
+                            <table cellspacing="0" cellpadding="0" class="listTable csTable under-gray upper-black tx-gray">
+                                <colgroup>
+                                    <col style="width: 130px;">
+                                    <col style="width: auto;">
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <td><span class="acadBox n4">접수중</span></td>
+                                        <td class="tx-left">강좌가 개설되었으며 현재 수강신청을 받고 있는 강좌</td>
+                                    </tr>
+                                    <tr>
+                                        <th><span class="acadBox n5">접수예정</span></th>
+                                        <td class="tx-left">신규강좌 개설되었으나 아직 수강신청을 받지 않는 강좌</td>
+                                    </tr>
+                                    <tr>
+                                        <th><span class="tx-blue">라이브</span></th>
+                                        <td class="tx-left">실시간으로 송출되는 영상으로 수강할 수 있는 강좌 (영상반)</td>
+                                    </tr>
+                                    <tr>
+                                        <th><span class="tx-blue">실강</span></th>
+                                        <td class="tx-left">교수님이 수업하는 강의실에서 직접 수강할 수 있는 강좌</td>
+                                    </tr>
+                                    <tr>
+                                        <th><img src="{{ img_url('sub/icon_detail.gif') }}"></th>
+                                        <td class="tx-left">돋보기 아이콘 클릭 시 하단으로 해당 강좌의 상세정보 열림</td>    
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- requestInfo //-->
             </div>
             <!-- willbes-Lec-Search -->
 

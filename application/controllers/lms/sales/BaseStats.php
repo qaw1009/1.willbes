@@ -322,7 +322,7 @@ class BaseStats extends \app\controllers\BaseController
      */
     private function _getOrderListOrderBy()
     {
-        return ['OrderIdx' => 'desc', 'OrderProdIdx' => 'asc'];
+        return ['OrderIdx' => 'desc'];
     }
 
     /**

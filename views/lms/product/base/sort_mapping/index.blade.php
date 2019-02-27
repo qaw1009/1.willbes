@@ -25,8 +25,9 @@
                     </div>
                     <div class="col-md-10 col-md-offset-1 mt-10">
                         <div class="checkbox">
-                            <input type="checkbox" id="search_chk_no_category" name="search_chk_no_category" class="flat" value="N"/> <label for="search_chk_no_category" class="input-label">과목연결(<span class="red pull-none ml-0">N</span>) 카테고리만 보기</label>
-                            &nbsp; <input type="checkbox" id="search_chk_no_complex" name="search_chk_no_complex" class="flat" value="N"/> <label for="search_chk_no_complex" class="input-label">복합연결(<span class="red pull-none ml-0">N</span>) 카테고리만 보기</label>
+                            <input type="checkbox" id="search_chk_no_course" name="search_chk_no_course" class="flat" value="N"/> <label for="search_chk_no_course" class="input-label">과정연결(<span class="red pull-none ml-0">N</span>) 카테고리만 보기</label>
+                            <input type="checkbox" id="search_chk_no_subject" name="search_chk_no_subject" class="flat" value="N"/> <label for="search_chk_no_subject" class="input-label">과목연결(<span class="red pull-none ml-0">N</span>) 카테고리만 보기</label>
+                            <input type="checkbox" id="search_chk_no_complex" name="search_chk_no_complex" class="flat" value="N"/> <label for="search_chk_no_complex" class="input-label">복합연결(<span class="red pull-none ml-0">N</span>) 카테고리만 보기</label>
                         </div>
                     </div>
                 </div>
@@ -35,6 +36,7 @@
         <div class="row">
             <div class="col-xs-12 text-center">
                 <button type="submit" class="btn btn-primary btn-search" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
+                <button type="button" class="btn btn-default btn-search" id="btn_reset">초기화</button>
             </div>
         </div>
     </form>
@@ -46,13 +48,14 @@
                     <th rowspan="2" class="searching searching_site_code rowspan pb-30">사이트 [<span class="blue">코드</span>]</th>
                     <th rowspan="2" class="searching searching_is_use rowspan pb-30">대분류 [<span class="blue">코드</span>]</th>
                     <th rowspan="2" class="searching searching_is_use pb-30">중분류 [<span class="blue">코드</span>]</th>
-                    <th colspan="2" style="border-width: 1px; border-left: 0; border-bottom: 0;">소트매핑조건</th>
+                    <th colspan="3">소트매핑조건</th>
                     <th rowspan="2" class="pb-30">등록자</th>
                     <th rowspan="2" class="pb-30">등록일</th>
                 </tr>
                 <tr>
-                    <th class="searching_no_category">과목연결</th>
-                    <th class="searching_no_complex" style="border-right-width: 1px;">복합연결</th>
+                    <th class="searching_no_course">과정연결</th>
+                    <th class="searching_no_subject">과목연결</th>
+                    <th class="searching_no_complex bdr-line">복합연결</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -73,13 +76,18 @@
                             @endif
                         </td>
                         <td>
-                            <button type="button" class="btn btn-sm btn-default btn-conn-category" data-site-code="{{ $row['SiteCode'] }}" data-cate-code="{{ $row['BCateCode'] }}">
-                                연결 (@if($row['CateSubjectCnt'] > 0) Y @else <span class="red no-line-height">N</span> @endif)
+                            <button type="button" class="btn btn-sm btn-default btn-regist" data-conn-type="course" data-conn-uri="create" data-site-code="{{ $row['SiteCode'] }}" data-cate-code="{{ $row['BCateCode'] }}">
+                                연결 ({!! $row['CateCourseCnt'] > 0 ? 'Y' : '<span class="red no-line-height">N</span>' !!})
                             </button>
                         </td>
                         <td>
-                            <button type="button" class="btn btn-sm btn-default btn-list-complex" data-site-code="{{ $row['SiteCode'] }}" data-cate-code="{{ $row['BCateCode'] }}">
-                                연결 (@if($row['ComplexSubjectCnt'] > 0) Y @else <span class="red no-line-height">N</span> @endif)
+                            <button type="button" class="btn btn-sm btn-default btn-regist" data-conn-type="subject" data-conn-uri="create" data-site-code="{{ $row['SiteCode'] }}" data-cate-code="{{ $row['BCateCode'] }}">
+                                연결 ({!! $row['CateSubjectCnt'] > 0 ? 'Y' : '<span class="red no-line-height">N</span>' !!})
+                            </button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-sm btn-default btn-regist" data-conn-type="complex" data-conn-uri="list" data-site-code="{{ $row['SiteCode'] }}" data-cate-code="{{ $row['BCateCode'] }}">
+                                연결 ({!! $row['ComplexSubjectCnt'] > 0 ? 'Y' : '<span class="red no-line-height">N</span>' !!})
                             </button>
                         </td>
                         <td>{{ $row['LastRegAdminName'] }}</td>
@@ -101,16 +109,16 @@
                 ajax: false,
                 paging: false,
                 searching: true,
-                rowsGroup: ['.rowspan'],
+                rowsGroup: ['.rowspan']
             });
 
             // 과목 연결 모달창 오픈
-            $('.btn-conn-category, .btn-list-complex').click(function() {
-                var conn_type = ($(this).prop('class').indexOf('btn-conn-category') > -1) ? 'category' : 'complex';
+            $('.btn-regist').click(function() {
+                var conn_type = $(this).data('conn-type');
                 var uri_param = conn_type + '/' + $(this).data('site-code') + '/' + $(this).data('cate-code');
-                var uri_route = (conn_type === 'category') ? 'create' : 'list';
+                var uri_route = $(this).data('conn-uri');
 
-                $('.btn-conn-category, .btn-list-complex').setLayer({
+                $('.btn-regist').setLayer({
                     'url' : '{{ site_url('/product/base/sortMapping/') }}' + uri_route + '/' + uri_param,
                     'width' : 900
                 });
@@ -119,13 +127,15 @@
 
         // datatable searching
         function datatableSearching() {
-            var no_category = $search_form.find('input[name="search_chk_no_category"]:checked').val() || '';
+            var no_course = $search_form.find('input[name="search_chk_no_course"]:checked').val() || '';
+            var no_subject = $search_form.find('input[name="search_chk_no_subject"]:checked').val() || '';
             var no_complex = $search_form.find('input[name="search_chk_no_complex"]:checked').val() || '';
 
             $datatable
                 .columns('.searching').flatten().search($search_form.find('input[name="search_value"]').val())
                 .column('.searching_is_use').search($search_form.find('select[name="search_is_use"]').val())
-                .column('.searching_no_category').search(no_category)
+                .column('.searching_no_course').search(no_course)
+                .column('.searching_no_subject').search(no_subject)
                 .column('.searching_no_complex').search(no_complex)
                 .column('.searching_site_code').search($search_form.find('input[name="search_site_code"]').val())
                 .draw();

@@ -52,6 +52,10 @@
                             <option value="Y">사용</option>
                             <option value="N">미사용</option>
                         </select>
+
+                        <div class="checkbox ml-30">
+                            <input type="checkbox" name="search_chk_hot_display" value="1" class="flat hot-display" id="hot_display"/> <label for="hot_display">HOT 숨기기</label>
+                        </div>
                     </div>
                 </div>
 
@@ -60,9 +64,9 @@
                     <div class="col-md-3">
                         <input type="text" class="form-control" id="search_value" name="search_value">
                     </div>
-                    <label class="control-label col-md-1" for="search_start_date">등록일</label>
+                    <label class="control-label col-md-1 col-md-offset-2" for="search_start_date">등록일</label>
                     <div class="col-md-5 form-inline">
-                        <div class="input-group">
+                        <div class="input-group mb-0">
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
@@ -78,17 +82,12 @@
             </div>
         </div>
         <div class="row">
-            <div class="form-group">
-                <div class="col-xs-4">
-                    <button class="btn btn-info ml-20" type="button" id="btn_search_setting">기본화면셋팅</button>
-                </div>
-                <div class="col-xs-8 text-right form-inline">
-                    <div class="checkbox">
-                        <input type="checkbox" name="search_chk_hot_display" value="1" class="flat hot-display" id="hot_display"/> <label for="hot_display">HOT 숨기기</label>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-search ml-10" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
-                    <button type="button" class="btn btn-default ml-30 mr-30" id="_btn_reset">검색초기화</button>
-                </div>
+            <div class="col-xs-2">
+                <button class="btn btn-info" type="button" id="btn_search_setting">기본화면셋팅</button>
+            </div>
+            <div class="col-xs-8 text-center">
+                <button type="submit" class="btn btn-primary btn-search" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
+                <button type="button" class="btn btn-default btn-search" id="btn_reset">초기화</button>
             </div>
         </div>
     </form>
@@ -195,7 +194,7 @@
                             //return (data == 'Y') ? '사용' : '<p class="red">미사용</p>';
                             var chk = '';
                             if (data == '1') { chk = 'checked=checked'; $set_is_best[row.BoardIdx] = 1; } else { chk = ''; }
-                            return '<input type="checkbox" name="is_best" value="1" class="flat is-best" data-is-best-idx="' + row.BoardIdx + '" '+chk+'/>';
+                            return '<input type="checkbox" name="is_best" value="1" class="flat is-best" data-is-best-idx="' + row.BoardIdx + '" '+chk+ ' data-origin-is-best = ' + ((data == '1') ? ' "1"' : "0") + '>';
                         }},
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                             return (data == 'Y') ? '사용' : '<p class="red">미사용</p>';
@@ -220,22 +219,33 @@
 
             // Best 적용
             $('.btn-is-best').on('click', function() {
+                if (!confirm('상태를 적용하시겠습니까?')) {
+                    return;
+                }
+
+                var $is_best = $list_table.find('input[name="is_best"]');
+                var origin_val, this_val, this_best_val;
                 var $params = {};
                 var _url = '{{ site_url("/board/offline/{$boardName}/storeIsBest/?") }}' + '{!! $boardDefaultQueryString !!}';
 
-                $('input[name="is_best"]:checked').each(function() {
-                    $params[$(this).data('is-best-idx')] = $(this).val();
+                $is_best.each(function(idx) {
+                    // 신규 또는 추천 값이 변하는 경우에만 파라미터 설정
+                    this_best_val = $(this).filter(':checked').val() || '0';
+                    this_val = this_best_val;
+                    origin_val = $is_best.eq(idx).data('origin-is-best');
+                    if (this_val != origin_val) {
+                        $params[$(this).data('is-best-idx')] = { 'IsBest' : this_best_val };
+                    }
                 });
 
-                if (Object.keys($params).length <= '0') {
-                    alert('HOT 적용할 게시글을 선택해주세요.');
-                    return false;
+                if (Object.keys($params).length < 1) {
+                    alert('변경된 내용이 없습니다.');
+                    return;
                 }
 
                 var data = {
                     '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
                     '_method' : 'PUT',
-                    'before_params' : JSON.stringify($set_is_best),
                     'params' : JSON.stringify($params)
                 };
 

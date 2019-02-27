@@ -50,8 +50,7 @@
     <div class="Content p_re">
 
         <div class="willbes-CScenter c_both">
-            <div class="willbes-Lec-Tit NG bd-none tx-black pt-zero">· 부정사용자 규제</div>
-            <div class="Act7 mt30">
+            <div class="Act7">
                 <div class="announce_infoBox tx-black NGR">
                     윌비스는 <span class="strong tx-light-blue">공정한 사이트 이용</span>환경을 조성하고, 회원님들의 <span class="strong tx-light-blue">개인정보와 컨텐츠의 저작권을 보호</span>하기 위해<br/>
                     ID 공유 등 불법 사용자에 대한 규제를 시행하고 있습니다.<br/>

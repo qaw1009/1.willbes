@@ -4,14 +4,14 @@
     <h5>- 학원 종합반 상품 정보를 관리하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
-        {!! html_site_tabs('tabs_site_code') !!}
+        {!! html_def_site_tabs($def_site_code, 'tabs_site_code', 'tab', false, [], false, $arr_site_code) !!}
         <div class="x_panel">
             <div class="x_content">
 
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_value">강좌기본정보</label>
                     <div class="col-md-11 form-inline">
-                        {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
+                        {!! html_site_select($def_site_code, 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
                         <select class="form-control mr-10" id="search_campus_code" name="search_campus_code">
                             <option value="">캠퍼스</option>
                             @foreach($campusList as $row)
@@ -37,14 +37,6 @@
                                 <option value="{{$i}}">{{$i}}</option>
                             @endfor
                         </select>
-                        &nbsp;<!--
-                        <select class="form-control mr-10" id="search_course_idx" name="search_course_idx">
-                            <option value="">과정</option>
-                            @foreach($arr_course as $row)
-                                <option value="{{ $row['CourseIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CourseName'] }}</option>
-                            @endforeach
-                        </select>
-                        //-->
                     </div>
                 </div>
 
@@ -151,6 +143,7 @@
                     <th>사용여부</th>
                     <th>등록자</th>
                     <th>등록일</th>
+                    <th>복사</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -237,7 +230,10 @@
                         }},//사용여부
 
                     {'data' : 'wAdminName'},//등록자
-                    {'data' : 'RegDatm'}//등록일
+                    {'data' : 'RegDatm'},//등록일
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            return (row.ProdCode_Original !== '') ? '<span class="red">Y</span>' : '';
+                        }},//복사여부
                 ]
 
             });
@@ -255,18 +251,21 @@
                     return false;
                 }
 
-                var data = {
-                    '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
-                    '_method' : 'PUT',
-                    'prodCode' : $('input:radio[name="copyProdCode"]:checked').val()
-                };
+                if(confirm("해당 강좌를 복사하시겠습니까?")) {
+                    var data = {
+                        '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                        '_method' : 'PUT',
+                        'prodCode' : $('input:radio[name="copyProdCode"]:checked').val()
+                    };
 
-                sendAjax('{{ site_url('/product/off/offPackageAdmin/copy') }}', data, function(ret) {
-                    if (ret.ret_cd) {
-                        notifyAlert('success', '알림', ret.ret_msg);
-                        $datatable.draw();
-                    }
-                }, showError, false, 'POST');
+                    sendAjax('{{ site_url('/product/off/offPackageAdmin/copy') }}', data, function(ret) {
+                        if (ret.ret_cd) {
+                            //notifyAlert('success', '알림', ret.ret_msg);
+                            alert(ret.ret_msg);
+                            $datatable.draw();
+                        }
+                    }, showError, false, 'POST');
+                }
 
             });
 

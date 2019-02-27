@@ -1,7 +1,7 @@
 @extends('lcms.layouts.master_single')
 
 @section('content')
-    <div class="row {{ SUB_DOMAIN }}">
+    <div class="row {{ APP_NAME }}">
         <div class="login_header col-md-12 pt-10 pd-zero p_re">
             <div class="col-md-4 logo">
                 <img src="/public/img/logo.png" class="ml-15 mr-20"/>
@@ -34,7 +34,7 @@
                                 <input type="text" name="admin_id" id="admin_id" class="form-control" placeholder="아이디" required="required" title="아이디" value="{{ $saved_admin_id }}" />
                                 <input type="password" name="admin_passwd" id="admin_passwd" class="form-control" placeholder="비밀번호" required="required" title="비밀번호" />
                             </div>
-                            <button type="submit" id="btn_login" class="btn btn-sm btn-default bg">로그인</button>
+                            <button type="submit" id="btn_login" class="btn bg">로그인</button>
                             <div class="checkbox">
                                 <label>
                                     <input type="checkbox" name="is_save_admin_id" class="flat" @if($saved_admin_id != '') checked="checked" @endif value="Y"/> 아이디 저장

@@ -31,7 +31,7 @@
         @endif
         <div class="willbes-NoticeWrap mb60 c_both">
             {!! banner('교수진소개_메인_상단', 'sliderPromotion widthAuto460 f_left mr20', $__cfg['SiteCode'], '0') !!}
-            <div class="willbes-listTable willbes-newLec widthAuto460">
+            <div class="willbes-listTable willbes-newLec widthAuto460 mt0">
                 <div class="will-Tit NG">신규강좌 <img style="vertical-align: top;" src="{{ img_url('prof/icon_new.gif') }}"></div>
                 <ul class="List-Table GM tx-gray">
                     @foreach($arr_base['product'] as $idx => $row)

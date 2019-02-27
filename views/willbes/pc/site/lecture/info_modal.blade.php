@@ -73,7 +73,7 @@
                             </div>
                             <div class="bookBoxWrap">
                                 <ul class="tabWrap tabDepth2">
-                                    <li><a href="#info1{{ $idx }}">교재소개</a></li>
+                                    <li><a href="#info1{{ $idx }}" class="on">교재소개</a></li>
                                     <li><a href="#info2{{ $idx }}">교재목차</a></li>
                                 </ul>
                                 <div class="tabBox">
@@ -81,7 +81,7 @@
                                         <div class="book-TxtBox tx-gray">
                                             {!! $row['wBookDesc'] !!}
                                         </div>
-                                        <div class="caution-txt tx-red">{{ $data['lecture']['ProdBookMemo'] }}</div>
+                                        @if(empty($data['lecture']['ProdBookMemo']) === false)<div class="caution-txt tx-red">{{ $data['lecture']['ProdBookMemo'] }}</div>@endif
                                     </div>
                                     <div id="info2{{ $idx }}" class="tabContent">
                                         <div class="book-TxtBox tx-gray">

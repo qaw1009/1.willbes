@@ -12,7 +12,11 @@ class MemberFModel extends WB_Model
         'device' => 'lms_member_device',
         'code' => 'lms_sys_code',
         'admin' => 'wbs_sys_admin',
-        'authmail' => 'lms_member_certifiedmail'
+        'authmail' => 'lms_member_certifiedmail',
+        'btob' => 'lms_btob',
+        'btob_ip' => 'lms_btob_ip',
+        'btob_log' => 'lms_btob_access_log',
+        'btob_member' => 'lms_btob_r_member'
     ];
 
     protected $_mailSendTypeCcd = [
@@ -83,9 +87,50 @@ class MemberFModel extends WB_Model
         $where = $this->_conn->makeWhere($arr_cond);
         $where = $where->getMakeWhere(false);
 
-        $rows = $this->_conn->query('SELECT STRAIGHT_JOIN ' . $column . $from . $where);
+        $rows = $this->_conn->query('SELECT ' . $column . $from . $where);
 
         return ($is_count === true) ? $rows->row(0)->rownums : $rows->row_array();
+    }
+
+
+    /**
+     * BtoB 회원인지 확인
+     * @param $MemIdx
+     * @return array
+     */
+    public function getBtobMember($MemIdx)
+    {
+        $query = " SELECT M.MemIdx, B.BtobIdx ";
+        $query .= " FROM {$this->_table['member']} AS M
+            LEFT JOIN {$this->_table['btob_member']} AS BM ON M.MemIdx = BM.MemIdx AND BM.IsStatus = 'Y' 
+            LEFT JOIN {$this->_table['btob']} AS B ON BM.BtobIdx = B.BtobIdx AND B.IsStatus = 'Y' AND B.IsUse = 'Y'
+            WHERE M.MemIdx='{$MemIdx}'
+            ";
+
+        $rows = $this->_conn->query($query);
+
+        return ($rows == false) ? [] : $rows->row_array();
+    }
+
+
+    /**
+     * 해당 BtroB 에서 허용한 IP 인지 확인
+     * @param $btobidx
+     * @return array
+     */
+    public function btobIpCheck($btobidx)
+    {
+        $ip = $this->input->ip_address();
+
+        $query = " SELECT B.BtobIdx, IP.ApprovalIp ";
+        $query .= " FROM {$this->_table['btob']} AS B
+            LEFT JOIN {$this->_table['btob_ip']} AS IP ON B.BtobIdx = IP.BtobIdx AND IP.IsStatus = 'Y' AND IP.ApprovalIp='{$ip}' 
+            WHERE B.IsStatus = 'Y' AND B.IsUse = 'Y' AND B.BtobIdx='{$btobidx}'
+            ";
+
+        $rows = $this->_conn->query($query);
+
+        return ($rows == false) ? [] : $rows->row_array();
     }
 
 
@@ -98,10 +143,10 @@ class MemberFModel extends WB_Model
     public function getMemberForLogin($id, $pwd, $is_count = true)
     {
         if($is_count === true){ // 회원 수 검색
-            $query = "SELECT STRAIGHT_JOIN COUNT(*) AS rownums ";
+            $query = "SELECT COUNT(*) AS rownums ";
 
         } else { // 데이터 검색
-            $query = "SELECT STRAIGHT_JOIN 
+            $query = "SELECT  
             Mem.MemIdx, Mem.MemName, Mem.MemId, 
             Mem.IsStatus, Mem.IsDup, Mem.IsChange,
             fn_dec(Mem.MailEnc) AS Mail, fn_dec(Mem.PhoneEnc) AS Phone ";
@@ -128,7 +173,7 @@ class MemberFModel extends WB_Model
      * @param array $data
      * @return bool
      */
-    public function storeMemberLogin($data = [])
+    public function storeMemberLogin($data = [], $loginType = 'NORMAL')
     {
         // 데이타에 문제가 있을경우 오류
         if(empty($data) === true) return false;
@@ -141,7 +186,8 @@ class MemberFModel extends WB_Model
             if($this->_conn->set([
                     'MemIdx' => $data['MemIdx'],
                     'IsLogin' => 'Y',
-                    'LoginIp' => $this->input->ip_address()
+                    'LoginIp' => $this->input->ip_address(),
+                    'LoginType' => $loginType
                 ])->insert($this->_table['loginlog']) === false) {
 
                 throw new \Exception('로그인기록 입력 실패');
@@ -443,7 +489,7 @@ class MemberFModel extends WB_Model
             return false;
         }
 
-        $query = " SELECT STRAIGHT_JOIN COUNT(*) AS rownums
+        $query = " SELECT COUNT(*) AS rownums
             FROM {$this->_table['member']} AS Mem 
             INNER JOIN {$this->_table['info']} AS Info ON Info.MemIdx = Mem.MemIdx
             WHERE Mem.MemIdx = ? 
@@ -577,6 +623,8 @@ class MemberFModel extends WB_Model
             // 추가정보 입력                     
             $data = [
                 'MemIdx' => $MemIdx,
+                'MailRcvStatus' => (element('MailRcvStatus', $input) == 'Y' ? 'Y' : 'N'),
+                'SmsRcvStatus' => (element('SmsRcvStatus', $input) == 'Y' ? 'Y' : 'N'),
                 'ZipCode' => element('ZipCode', $input),
                 'Addr1' => element('Addr1', $input),
                 'TrustStatus' => $TrustStatus
@@ -585,6 +633,8 @@ class MemberFModel extends WB_Model
             // lms_member_otherinfo 저장
             if($this->_conn->set($data)->
                 set('TrustStatusDatm', 'NOW()', false)->
+                set('MailRcvDatm', 'NOW()', false)->
+                set('SmsRcvDatm', 'NOW()', false)->
                 set('Addr2Enc',"fn_enc('".element('Addr2', $input)."')",false)->
                 insert($this->_table['info']) === false){
                 throw new \Exception('부가정보 입력에 실패했습니다.');

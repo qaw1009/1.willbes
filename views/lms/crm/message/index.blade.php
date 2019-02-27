@@ -47,11 +47,9 @@
             </div>
         </div>
         <div class="row">
-            <div class="form-group">
-                <div class="col-xs-12 text-right form-inline">
-                    <button type="submit" class="btn btn-primary btn-search ml-10" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
-                    <button type="button" class="btn btn-default ml-30 mr-30" id="_btn_reset">검색초기화</button>
-                </div>
+            <div class="col-xs-12 text-center">
+                <button type="submit" class="btn btn-primary btn-search" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
+                <button type="button" class="btn btn-default btn-search" id="btn_reset">초기화</button>
             </div>
         </div>
     </form>

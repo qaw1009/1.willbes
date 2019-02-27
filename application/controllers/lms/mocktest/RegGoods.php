@@ -14,6 +14,8 @@ class RegGoods extends \app\controllers\BaseController
     protected $models = array('sys/site', 'sys/code', 'sys/category', 'product/base/subject', 'common/searchProfessor', 'mocktest/mockCommon', 'mocktest/regGoods');
     protected $helpers = array();
 
+    protected $_groupCcd = [];
+
     protected $applyType;
     protected $applyArea1;
     protected $applyArea2;
@@ -21,7 +23,6 @@ class RegGoods extends \app\controllers\BaseController
     protected $applyType_on;
     protected $applyType_off;
     protected $acceptStatus;
-
 
     public function __construct()
     {
@@ -34,6 +35,9 @@ class RegGoods extends \app\controllers\BaseController
         $this->applyType_on = $this->config->item('sysCode_applyType_on', 'mock');
         $this->applyType_off = $this->config->item('sysCode_applyType_off', 'mock');
         $this->acceptStatus = $this->config->item('sysCode_acceptStatus', 'mock');
+
+        // 공통코드 셋팅
+        $this->_groupCcd = $this->regGoodsModel->_groupCcd;
     }
 
     /**
@@ -139,11 +143,13 @@ class RegGoods extends \app\controllers\BaseController
         $codes = $this->codeModel->getCcdInArray([$this->applyType, $this->applyArea1, $this->applyArea2, $this->addPoint, $this->acceptStatus]);
         $csTel = $this->siteModel->getSiteArray(false, 'CsTel');
 
-
         $cateD2Json = array();
         foreach ($cateD2 as $it) {
             $cateD2Json[ $it['ParentCateCode'] ][ $it['CateCode'] ] = $it['CateName'];
         }
+
+        //발신번호조회
+        $arr_send_callback_ccd = $this->codeModel->getCcd($this->_groupCcd['SmsSendCallBackNum'], 'CcdValue');
 
         $this->load->view('mocktest/reg/goods/create', [
             'method' => 'POST',
@@ -158,9 +164,83 @@ class RegGoods extends \app\controllers\BaseController
             'cateD2_sel' => json_encode(array()),
             'applyType_on' => $this->applyType_on,
             'accept_ccd' => $codes[$this->acceptStatus],
+            'arr_send_callback_ccd' => $arr_send_callback_ccd
         ]);
     }
 
+    /**
+     * 등록폼
+     */
+    public function fakeCreate($param = [])
+    {
+        $cateD1 = $this->categoryModel->getCategoryArray('', '', '', 1);
+        $cateD2 = $this->mockCommonModel->getMockKind();
+        $codes = $this->codeModel->getCcdInArray([$this->applyType, $this->applyArea1, $this->applyArea2, $this->addPoint,$this->acceptStatus]);
+        $csTel = $this->siteModel->getSiteArray(false, 'CsTel');
+
+        $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+
+        $mode = element('mode',$arr_input);
+
+        if(!$mode) $mode = 'single';
+
+        $cateD2Json = array();
+        foreach ($cateD2 as $it) {
+            $cateD2Json[ $it['ParentCateCode'] ][ $it['CateCode'] ] = $it['CateName'];
+        }
+
+
+        list($data, $sData) = $this->regGoodsModel->getGoods($param[0]);
+        if (!$data) {
+            $this->json_error('데이터 조회에 실패했습니다.');
+            return;
+        }
+
+        $this->load->view('mocktest/reg/goods/fake', [
+            'method' => 'PUT',
+            'siteCodeDef' => $data['SiteCode'],
+            'cateD1' => $cateD1,
+            'cateD2' => json_encode($cateD2Json),
+            'applyType' => $codes[$this->applyType],
+            'applyArea1' => $codes[$this->applyArea1],
+            'applyArea2' => $codes[$this->applyArea2],
+            'addPoint' => $codes[$this->addPoint],
+            'csTel' => json_encode($csTel),
+            'applyType_on' => $this->applyType_on,
+            'accept_ccd' => $codes[$this->acceptStatus],
+
+            'data' => $data,
+            'sData' => $sData,
+            'cateD2_sel' => json_encode($data['MockPart']),
+            'adminName' => $this->mockCommonModel->getAdminNames(),
+            'prodidx' => $param[0],
+            'mode' => $mode
+        ]);
+    }
+
+    function fakeInsert(){
+        $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+
+        $condition = $arr_input;
+        $this->regGoodsModel->saveFake($condition);
+    }
+
+    function fakeInsert2(){
+        $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+
+        $idx = element('idx',$arr_input);
+        $TakeFormsCcd = element('TakeFormsCcd',$arr_input);
+        $MpIdx1 = element('MpIdx1',$arr_input);
+        $MpIdx2 = element('MpIdx2',$arr_input);
+        $SMpIdx1 = element('SMpIdx1',$arr_input);
+        $SMpIdx2 = element('SMpIdx2',$arr_input);
+        $AddPointCcds = element('AddPointCcds',$arr_input);
+        $people = element('people',$arr_input);
+        $cate = element('cate',$arr_input);
+        $mode = element('mode',$arr_input);
+
+        $this->regGoodsModel->saveFake2($idx,$TakeFormsCcd,$MpIdx1,$MpIdx2,$SMpIdx1,$SMpIdx2,$AddPointCcds,$people,$cate,$mode);
+    }
 
     /**
      * 등록
@@ -176,7 +256,7 @@ class RegGoods extends \app\controllers\BaseController
             ['field' => 'TakeFormsCcd', 'label' => '응시형태', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'TakeAreas1CCds[]', 'label' => 'Off(학원)응시지역1', 'rules' => 'trim|is_natural_no_zero'],
             ['field' => 'TakeAreas2Ccds[]', 'label' => 'Off(학원)응시지역2', 'rules' => 'trim|is_natural_no_zero'],
-            ['field' => 'AddPointTypes[]', 'label' => '가산점', 'rules' => 'trim|required|is_natural'],
+            ['field' => 'AddPointCcds[]', 'label' => '가산점', 'rules' => 'trim|required|is_natural'],
             ['field' => 'MockYear', 'label' => '연도', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'MockRotationNo', 'label' => '회차', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'ProdName', 'label' => '모의고사명', 'rules' => 'trim|required'],
@@ -194,7 +274,7 @@ class RegGoods extends \app\controllers\BaseController
             ['field' => 'SaleEndDatm_m', 'label' => '접수마감(분)', 'rules' => 'trim|required|numeric'],
 
             ['field' => 'ClosingPerson', 'label' => '접수마감인원', 'rules' => 'trim|is_natural_no_zero'],
-            ['field' => 'IsRegister', 'label' => '접수상태', 'rules' => 'trim|required|in_list[Y,N]'],
+            ['field' => 'IsRegister', 'label' => '접수상태', 'rules' => 'trim'],
             //['field' => 'TakeType', 'label' => '응시가능타입', 'rules' => 'trim|required|in_list[A,L]'],
             ['field' => 'TakeStartDatm_d', 'label' => '응시시작일', 'rules' => 'trim'],
             ['field' => 'TakeStartDatm_h', 'label' => '응시시작(시)', 'rules' => 'trim|numeric'],
@@ -252,7 +332,8 @@ class RegGoods extends \app\controllers\BaseController
         }
 
         // 응시형태 OFF 포함인 경우 응시지역, 접수마감인원 필수
-        if( in_array($this->applyType_off, $this->input->post('TakeFormsCcd')) ) {
+        //if( in_array($this->applyType_off, $this->input->post('TakeFormsCcd')) ) {
+        if( $this->applyType_off == $this->input->post('TakeFormsCcd') ) {
             if( !$this->input->post('TakeAreas1CCds') || !$this->input->post('TakeAreas2Ccds') || !$this->input->post('ClosingPerson') ) {
                 $this->json_error('응시형태 OFF(학원)선택시 응시지역, 접수마감인원은 필수입니다.');
                 return;
@@ -275,10 +356,17 @@ class RegGoods extends \app\controllers\BaseController
             if($v == 'E') $orderE[] = $_POST['OrderNum'][$k];
             else if($v == 'S') $orderS[] = $_POST['OrderNum'][$k];
         }
+        /*
         if( count($orderE) == 0 || count($orderS) == 0 ) {
             $this->json_error('과목을 선택해 주세요.');
             return;
         }
+        */
+        if( count($orderE) == 0 ) {     //필수과목만 적용 (선태과목 없을 수 있음)
+            $this->json_error('과목을 선택해 주세요.');
+            return;
+        }
+
         if( count($orderE) != count(array_unique($orderE)) || count($orderE) != count(array_unique($orderE)) ) {
             $this->json_error('과목 정렬번호가 중복되어 있습니다.');
             return;
@@ -315,6 +403,9 @@ class RegGoods extends \app\controllers\BaseController
             return;
         }
 
+        //발신번호조회
+        $arr_send_callback_ccd = $this->codeModel->getCcd($this->_groupCcd['SmsSendCallBackNum'], 'CcdValue');
+
         $this->load->view('mocktest/reg/goods/create', [
             'method' => 'PUT',
             'siteCodeDef' => $data['SiteCode'],
@@ -332,6 +423,7 @@ class RegGoods extends \app\controllers\BaseController
             'sData' => $sData,
             'cateD2_sel' => json_encode($data['MockPart']),
             'adminName' => $this->mockCommonModel->getAdminNames(),
+            'arr_send_callback_ccd' => $arr_send_callback_ccd
         ]);
     }
 
@@ -356,7 +448,7 @@ class RegGoods extends \app\controllers\BaseController
             ['field' => 'TakeFormsCcd[]', 'label' => '응시형태', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'TakeAreas1CCds[]', 'label' => 'Off(학원)응시지역1', 'rules' => 'trim|is_natural_no_zero'],
             ['field' => 'TakeAreas2Ccds[]', 'label' => 'Off(학원)응시지역2', 'rules' => 'trim|is_natural_no_zero'],
-            ['field' => 'AddPointTypes[]', 'label' => '가산점', 'rules' => 'trim|required|is_natural'],
+            ['field' => 'AddPointCcds[]', 'label' => '가산점', 'rules' => 'trim|required|is_natural'],
             ['field' => 'MockYear', 'label' => '연도', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'MockRotationNo', 'label' => '회차', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'ProdName', 'label' => '모의고사명', 'rules' => 'trim|required'],
@@ -461,10 +553,18 @@ class RegGoods extends \app\controllers\BaseController
             if($v == 'E') $orderE[] = $_POST['OrderNum'][$k];
             else if($v == 'S') $orderS[] = $_POST['OrderNum'][$k];
         }
+        /*
         if( count($orderE) == 0 || count($orderS) == 0 ) {
             $this->json_error('과목을 선택해 주세요.');
             return;
         }
+        */
+        if( count($orderE) == 0 ) {     //필수과목만 적용 (선태과목 없을 수 있음)
+            $this->json_error('과목을 선택해 주세요.');
+            return;
+        }
+
+
         if( count($orderE) != count(array_unique($orderE)) || count($orderE) != count(array_unique($orderE)) ) {
             $this->json_error('과목 정렬번호가 중복되어 있습니다.');
             return;
@@ -489,8 +589,8 @@ class RegGoods extends \app\controllers\BaseController
         $suType = $this->input->get('suType');
 
         if ( empty($siteCodeDef) || !preg_match('/^[0-9]+$/', $siteCodeDef) ||
-             empty($cateD1Def) || !preg_match('/^[0-9]+$/', $cateD1Def) ||
-             empty($suType) || !preg_match('/^(E|S)$/', $suType) ) {
+            empty($cateD1Def) || !preg_match('/^[0-9]+$/', $cateD1Def) ||
+            empty($suType) || !preg_match('/^(E|S)$/', $suType) ) {
             return false;
         }
 

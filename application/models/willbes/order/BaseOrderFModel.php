@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class BaseOrderFModel extends WB_Model
 {
-    protected $_table = [
+    public $_table = [
         'site' => 'lms_site',
         'site_group' => 'lms_site_group',
         'cart' => 'lms_cart',
@@ -22,7 +22,10 @@ class BaseOrderFModel extends WB_Model
         'product_division' => 'lms_product_division',
         'product_r_product' => 'lms_product_r_product',
         'product_r_autocoupon' => 'lms_product_r_autocoupon',
+        'product_sms' => 'lms_product_sms',
         'bms_book' => 'wbs_bms_book',
+        'mock_register' => 'lms_mock_register',
+        'mock_register_r_paper' => 'lms_mock_register_r_paper',
         'my_lecture' => 'lms_my_lecture',
         'cert_apply' => 'lms_cert_apply',
         'code' => 'lms_sys_code'
@@ -30,12 +33,12 @@ class BaseOrderFModel extends WB_Model
 
     // 장바구니 상품타입명
     public $_cart_prod_type_name = ['on_lecture' => '강좌', 'off_lecture' => '강좌', 'on_pack_lecture' => '패키지', 'off_pack_lecture' => '패키지', 'book' => '교재',
-        'delivery_price' => '배송', 'delivery_add_price' => '배송', 'freebie' => '사은품'
+        'delivery_price' => '배송', 'delivery_add_price' => '배송', 'freebie' => '사은품', 'mock_exam' => '모의고사'
     ];
 
     // 장바구니 상품타입 순번
     public $_cart_prod_type_idx = ['on_lecture' => '1', 'off_lecture' => '1', 'on_pack_lecture' => '2', 'off_pack_lecture' => '2', 'book' => '3',
-        'delivery_price' => '4', 'delivery_add_price' => '4', 'freebie' => '4'
+        'delivery_price' => '4', 'delivery_add_price' => '4', 'freebie' => '4', 'mock_exam' => '3'
     ];
 
     // 상품타입 공통코드 (온라인강좌, 학원강좌, 교재, 사은품, 배송료, 추가 배송료, 독서실, 사물함, 예치금, 모의고사)
@@ -62,7 +65,7 @@ class BaseOrderFModel extends WB_Model
     public $_available_sale_status_ccd = ['product' => '618001', 'book' => '112001'];
 
     // 포인트 구분명 (장바구니 구분명과 맵핑)
-    public $_point_type_name = ['on_lecture' => '강좌', 'off_lecture' => '강좌', 'book' => '교재'];
+    public $_point_type_name = ['on_lecture' => '강좌', 'off_lecture' => '강좌', 'book' => '교재', 'mock_exam' => '강좌'];
 
     // 결제방법 공통코드
     public $_pay_method_ccd = ['card' => '604001', 'direct_bank' => '604002', 'vbank' => '604003', 'phone' => '604004'];
@@ -110,13 +113,13 @@ class BaseOrderFModel extends WB_Model
     }
 
     /**
-     * 교재상품 배송료 계산
+     * 교재상품 배송료 계산 (무료교재일 경우 배송료 부과)
      * @param $price
      * @return int
      */
     public function getBookDeliveryPrice($price)
     {
-        return $price > 0 && $price < config_app('DeliveryFreePrice', 0) ? config_app('DeliveryPrice', 0) : 0;
+        return $price < config_app('DeliveryFreePrice', 0) ? config_app('DeliveryPrice', 0) : 0;
     }
 
     /**

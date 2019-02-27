@@ -10,9 +10,6 @@
         <div class="Content p_re">
 
             <div class="willbes-Mypage-ONLINEZONE c_both">
-                <div class="willbes-Prof-Subject willbes-Mypage-Tit NG">
-                    · 수강종료강좌
-                </div>
                 <div class="willbes-Cart-Txt willbes-Mypage-Txt NG p_re">
                     <span class="MoreBtn"><a href="#none">유의사항안내 @if(get_cookie('moreInfo') == 'off')보기 ▼@else닫기 ▲@endif</a></span>
                     <table cellspacing="0" cellpadding="0" class="txtTable tx-black @if(get_cookie('moreInfo') == 'off') off @endif">
@@ -106,7 +103,7 @@
                                                 @if($row['IsRetake'] == 'N')
                                                     <span class="bBox whiteBox NSK">재수강불가</span>
                                                 @else
-                                                    <a href="javascript:;" onclick="fnRetake();"><span class="bBox blueBox NSK">재수강신청</span></a>
+                                                    <a href="javascript:;" onclick="fnRetake('{{app_to_env_url($row['SiteUrl'])}}','{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}');"><span class="bBox blueBox NSK">재수강신청</span></a>
                                                 @endif
                                                 <a href="javascript:;" onclick="fnPostscript();"><span class="bBox whiteBox NSK">후기등록</span></a>
                                             </td>
@@ -121,8 +118,9 @@
                             </div>
                         </div>
                         <div id="Mypagetab2" class="tabLink">
-                            <div class="willbes-Lec-Table willbes-Package-Table pt20 NG d_block">
-                                @forelse( $pkgList as $row )
+
+                            @forelse( $pkgList as $row )
+                                <div class="willbes-Lec-Table willbes-Package-Table pt20 NG d_block">
                                     <table cellspacing="0" cellpadding="0" class="packTable lecTable bdt-dark-gray">
                                         <colgroup>
                                             <col style="width: 820px;">
@@ -138,20 +136,21 @@
                                                     <dt>수강기간 : {{str_replace('-', '.', $row['LecStartDate'])}}~{{str_replace('-', '.', $row['RealLecEndDate'])}}</dt>
                                                     <dt><span class="row-line">|</span></dt>
                                                     <dt>최종학습일 : <span class="tx-black">{{ $row['lastStudyDate'] == '' ? '학습이력없음' : $row['lastStudyDate'] }}</span></dt>
-                                                    <dt class="MoreBtn"><a href="javascript:;" onclick="fnOpenSub('{{$row['OrderIdx']}}-{{$row['ProdCode']}}');">강좌 열기 ▼</a></dt>
+                                                    <dt class="MoreBtn"><a href="javascript:;">강좌 열기 ▼</a></dt>
                                                 </dl>
                                             </td>
                                             <td class="w-answer">
                                                 @if($row['IsRetake'] == 'N')
                                                     <span class="bBox whiteBox NSK">재수강불가</span>
                                                 @else
-                                                    <a href="javascript:;" onclick="fnRetake();"><span class="bBox blueBox NSK">재수강신청</span></a>
+                                                    <span class="bBox whiteBox NSK">재수강불가</span>
+                                                <!-- <a href="javascript:;" onclick="fnRetake('','{{$row['OrderIdx']}}','{{$row['ProdCode']}}','');"><span class="bBox blueBox NSK">재수강신청</span></a> -->
                                                 @endif
                                             </td>
                                         </tr>
                                         </tbody>
                                     </table>
-                                    <table cellspacing="0" cellpadding="0" class="packInfoTable lecTable" id="sub-{{$row['OrderIdx']}}-{{$row['ProdCode']}}">
+                                    <table cellspacing="0" cellpadding="0" class="packInfoTable lecTable">
                                         <colgroup>
                                             <col style="width: 120px;">
                                             <col style="width: 700px;">
@@ -183,13 +182,15 @@
                                                     </dl>
                                                 </td>
                                                 <td class="w-answer">
-                                                    <a href=""><span class="bBox whiteBox NSK">후기등록</a>
+                                                    <a href="javascript:;" onclick="fnPostscript();"><span class="bBox whiteBox NSK">후기등록</a>
                                                 </td>
                                             </tr>
                                         @endforeach
                                         </tbody>
                                     </table>
-                                @empty
+                                </div>
+                            @empty
+                                <div class="willbes-Lec-Table willbes-Package-Table pt20 NG d_block">
                                     <table cellspacing="0" cellpadding="0" class="packTable lecTable bdt-dark-gray">
                                         <colgroup>
                                             <col style="width: 820px;">
@@ -201,8 +202,8 @@
                                         </tr>
                                         </tbody>
                                     </table>
-                                @endforelse
-                            </div>
+                                </div>
+                            @endforelse
                         </div>
                     </div>
                 </div>
@@ -211,6 +212,14 @@
         </div>
         {!! banner('내강의실_우측날개', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
     </div>
+    <form name="retakeForm" id="retakeForm" method="POST" action="">
+        {!! csrf_field() !!}
+        {!! method_field('POST') !!}
+        <input type="hidden" name="sale_pattern" value="retake" />
+        <input type="hidden" name="target_order_idx" id="retake_orderidx" value="" />
+        <input type="hidden" name="target_prod_code" id="retake_prodcode" value="" />
+        <input type="hidden" name="target_prod_code_sub" id="retake_prodcodesub" value="" />
+    </form>
     <!-- End Container -->
     <script type="text/javascript">
         $(document).ready(function() {
@@ -226,9 +235,20 @@
             });
         });
 
-        function fnRetake()
+        function fnRetake($site, $o, $p, $ps)
         {
-            alert("재수강");
+            $('#retake_orderidx').val($o);
+            $('#retake_prodcode').val($p);
+            $('#retake_prodcodesub').val($ps);
+
+            if(window.confirm('재수강 신청하시겠습니까?') == true){
+                $('#retakeForm').prop('action', '//'+$site+'/cart/store').submit();
+            }
+        }
+
+        function fnPostscript()
+        {
+
         }
     </script>
 @stop

@@ -89,12 +89,14 @@ class RegGroup extends \app\controllers\BaseController
             ['field' => 'GroupName', 'label' => '모의고사 그룹명', 'rules' => 'trim|required|max_length[20]'],
             ['field' => 'ProdCode[]', 'label' => '모의고사 상품', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'SiteGroupCode[]', 'label' => '사이트그룹코드', 'rules' => 'trim|required|is_natural_no_zero'],
-            ['field' => 'IsDup', 'label' => '중복응시여부', 'rules' => 'trim|required|in_list[Y,N]'],
+            //['field' => 'IsDup', 'label' => '중복응시여부', 'rules' => 'trim|required|in_list[Y,N]'],
+            //['field' => 'GradeOpenDatm_d', 'label' => '성적오픈일', 'rules' => 'trim'],
             ['field' => 'IsUse', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => 'GroupDesc', 'label' => '설명', 'rules' => 'trim|max_length[100]'],
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
         ];
         if ($this->validate($rules) === false) return;
+
 
         if( count(array_unique($_POST['SiteGroupCode'])) !== 1 ) {
             $this->json_error('같은 사이트그룹코드의 모의고사만 등록가능합니다.');
@@ -146,7 +148,7 @@ class RegGroup extends \app\controllers\BaseController
             ['field' => 'GroupName', 'label' => '모의고사 그룹명', 'rules' => 'trim|required|max_length[20]'],
             ['field' => 'ProdCode[]', 'label' => '모의고사 상품', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'SiteGroupCode[]', 'label' => '사이트그룹코드', 'rules' => 'trim|required|is_natural_no_zero'],
-            ['field' => 'IsDup', 'label' => '중복응시여부', 'rules' => 'trim|required|in_list[Y,N]'],
+            //['field' => 'IsDup', 'label' => '중복응시여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => 'IsUse', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => 'GroupDesc', 'label' => '설명', 'rules' => 'trim|max_length[100]'],
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],

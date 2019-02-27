@@ -22,17 +22,15 @@
                     <input type="text" id="cpname" name="cpname" required="required" class="form-control" title="CP사명" value="{{ $data['wCpName'] }}">
                 </div>
                 <label class="control-label col-md-2" for="">CP사코드 <span class="required">*</span></label>
-                <div class="col-md-4">
-                    <p class="form-control-static">{{ $data['wCpIdx'] or '등록시 자동 생성'}}</p>
+                <div class="col-md-4 form-control-static">
+                    {{ $data['wCpIdx'] or '등록시 자동 생성'}}
                 </div>
             </div>
             <div class="form-group form-group-sm item">
                 <label class="control-label col-md-2" for="cpmanagername">담당자명 <span class="required">*</span></label>
-                <div class="col-md-3">
+                <div class="col-md-10 form-inline">
                     <input type="text" id="cpmanagername" name="cpmanagername" required="required" class="form-control" title="담당자명" value="{{ $data['wCpManagerName'] }}" style="width: 100px">
-                </div>
-                <div class="col-md-7">
-                    <p class="form-control-static">• CP사 담당자명 입력</p>
+                    &nbsp; • CP사 담당자명 입력
                 </div>
             </div>
             <div class="form-group form-group-sm item">
@@ -76,22 +74,22 @@
             @if($method==="PUT")
                 <div class="form-group form-group-sm item">
                     <label class="control-label col-md-2" for="">등록자 </label>
-                    <div class="col-md-4">
-                        <p class="form-control-static">{{ $data['wAdminName'] }}</p>
+                    <div class="col-md-4 form-control-static">
+                        {{ $data['wAdminName'] }}
                     </div>
                     <label class="control-label col-md-2" for="">등록일</label>
-                    <div class="col-md-4">
-                        <p class="form-control-static"> {{ $data['wRegDatm'] }}</p>
+                    <div class="col-md-4 form-control-static">
+                        {{ $data['wRegDatm'] }}
                     </div>
                 </div>
                 <div class="form-group form-group-sm item">
                     <label class="control-label col-md-2">최종수정자</label>
-                    <div class="col-md-4">
-                        <p class="form-control-static"> {{ $data['wUpdAdminName'] }}</p>
+                    <div class="col-md-4 form-control-static">
+                        {{ $data['wUpdAdminName'] }}
                     </div>
                     <label class="control-label col-md-2">최종수정일</label>
-                    <div class="col-md-4">
-                        <p class="form-control-static"> {{ $data['wUpdDatm'] }}</p>
+                    <div class="col-md-4 form-control-static">
+                        {{ $data['wUpdDatm'] }}
                     </div>
                 </div>
             @endif

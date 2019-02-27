@@ -107,7 +107,8 @@
 
                 ajaxSubmit($_refund_proc_form, _url, function(ret) {
                     if(ret.ret_cd) {
-                        notifyAlert('success', '알림', ret.ret_msg);
+                        //notifyAlert('success', '알림', ret.ret_msg);
+                        alert(ret.ret_msg);
                         $("#pop_modal").modal('toggle');
                         location.reload();
                     }
@@ -134,6 +135,10 @@
                         }
                     }
                 @endif
+
+                if (!confirm('환불처리 하시겠습니까?')) {
+                    return false;
+                }
 
                 return true;
             }

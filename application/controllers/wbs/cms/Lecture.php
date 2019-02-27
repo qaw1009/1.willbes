@@ -156,17 +156,40 @@ class Lecture extends \app\controllers\BaseController
 
 		$result = $this->lectureModel->{$method.'Lecture'}($this->_reqP(null,false));
 
-		$this->json_result($result,'저장 되었습니다.',$result);
+		$this->json_result($result['ret_cd'],'저장 되었습니다.',$result['ret_data'],$result['ret_data']);
 	}
 
     /**
      * 마스터강의 첨부파일 다운로드
      * @param array $fileinfo
      */
-    public function download($fileinfo=[])
+    public function download()
     {
-        public_download($fileinfo[0], $fileinfo[1]);
+        $filename = urldecode($this->_req('filename', false));
+        $filename_ori = urldecode($this->_req('filename_ori',false));
+        public_download($filename, $filename_ori);
     }
+
+
+    public function copy()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'wlecidx', 'label' => '마스터강의코드', 'rules' => 'trim|required']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $wlecidx = $this->_req('wlecidx');
+
+        $result = $this->lectureModel->lectureCopy($wlecidx);
+
+        $this->json_result($result,'복사 되었습니다.',$result);
+    }
+
+
 
     /**
      * 마스터강의 회차 등록 폼
@@ -178,9 +201,13 @@ class Lecture extends \app\controllers\BaseController
         $method='POST';
         $prof = [];
         $data_unit = [];
+        $selected_prof_idx = '';
 
         if(empty($params[0]) === false) {
             $lecidx = $params[0];
+            if(empty($params[1]) == false) {
+                $selected_prof_idx =  $params[1];
+            }
 
             // 화면비율 코드
             $codes = $this->codeModel->getCcdInArray(['108']);
@@ -201,6 +228,7 @@ class Lecture extends \app\controllers\BaseController
                 ,'prof_list'=> $prof
                 ,'data_unit' => $data_unit
                 ,'codes' => $codes
+                ,'selected_prof_idx' => $selected_prof_idx
             ]);
 
         } else {
@@ -228,6 +256,67 @@ class Lecture extends \app\controllers\BaseController
 
         $result = $this->unitModel->{$method.'Unit'}($this->_req(null,false));
         $this->json_result($result,'저장 되었습니다.',$result);
+    }
+
+    /**
+     *  마스터강의 회차 실행
+     */
+    public function player()
+    {
+        $lecidx = $this->_req("lecidx");
+        $unitidx = $this->_req('unitidx');
+        $quility = $this->_req('quility');
+        $url = $this->_req("url");
+        $ratio = $this->_req("ratio");
+
+        $data = $data = $this->lectureModel->findLectureForModify($lecidx);
+
+        if( empty($unitidx) == true){
+            $ratioArr = $this->codeModel->getCode($ratio);
+            $ratio = $ratioArr[0]['wCcdValue'];
+            $title = 'URL : '.$url;
+
+        } else {
+            $unitdata = $this->unitModel->getUnit($unitidx);
+
+            if(empty($unitdata) == true){
+                show_alert('회차정보가 없습니다.', 'close');
+            }
+
+            $unitdata = $unitdata[0];
+            $ratioArr = $this->codeModel->getCode($unitdata['wContentSizeCcd']);
+            $ratio = $ratioArr[0]['wCcdValue'];
+
+            switch($quility){
+                case 'WD':
+                    $filename = $unitdata['wWD'];
+                    $ratio = 21;
+                    break;
+
+                case 'HD':
+                    $filename = $unitdata['wHD'];
+                    break;
+
+                case 'SD':
+                    $filename = $unitdata['wSD'];
+                    break;
+
+                default:
+                    $filename = $unitdata['wWD'];
+                    break;
+            }
+
+            $url = $data['wMediaUrl'].'/'.$filename;
+            $title = $unitdata['wUnitNum'].'회 '.$unitdata['wUnitLectureNum'].'강 '.$unitdata['wUnitName'];
+        }
+
+
+        $this->load->view('cms/lecture/player', [
+            'title' => $title,
+            'url' => $url,
+            'ratio'=> $ratio,
+            'data' => $data
+        ]);
     }
 
 }

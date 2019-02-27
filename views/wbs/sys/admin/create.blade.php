@@ -22,7 +22,7 @@
                     <div class="col-md-2 item">
                         <input type="text" id="admin_name" name="admin_name" required="required" class="form-control" title="이름" value="{{ $data['wAdminName'] }}">
                     </div>
-                    <label class="control-label col-md-2 col-md-offset-1" for="admin_id">아이디 <span class="required">*</span>
+                    <label class="control-label col-md-2 col-md-offset-2" for="admin_id">아이디 <span class="required">*</span>
                     </label>
                     <div class="col-md-4 item form-inline">
                         @if($method == 'POST')
@@ -47,7 +47,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2" for="admin_phone1">휴대폰번호<span class="required">*</span>
                     </label>
-                    <div class="col-md-3 item multi form-inline">
+                    <div class="col-md-4 item multi form-inline">
                         <select name="admin_phone1" id="admin_phone1" class="form-control" required="required" title="휴대폰번호1">
                             @foreach($phone1_ccd as $key => $val)
                                 <option value="{{ $key }}">{{ $val }}</option>
@@ -97,7 +97,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2" for="is_use">사용여부 <span class="required">*</span>
                     </label>
-                    <div class="col-md-3 item form-inline">
+                    <div class="col-md-4 item form-inline">
                         <div class="radio">
                             <input type="radio" id="is_use_y" name="is_use" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['wIsUse']=='Y')checked="checked"@endif/> <label for="is_use_y" class="input-label">사용</label>
                             <input type="radio" id="is_use_n" name="is_use" class="flat" value="N" @if($data['wIsUse']=='N')checked="checked"@endif/> <label for="is_use_n" class="input-label">미사용</label>
@@ -128,7 +128,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2">등록자
                     </label>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <p class="form-control-static">{{ $data['wRegAdminName'] }}</p>
                     </div>
                     <label class="control-label col-md-2">등록일
@@ -140,7 +140,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2">최종 수정자
                     </label>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <p class="form-control-static">{{ $data['wUpdAdminName'] }}</p>
                     </div>
                     <label class="control-label col-md-2">최종 수정일

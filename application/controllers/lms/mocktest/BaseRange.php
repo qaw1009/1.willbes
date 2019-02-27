@@ -129,7 +129,7 @@ class BaseRange extends \app\controllers\BaseController
     public function storeChapter()
     {
         $rules = [
-            ['field' => 'areaName[]', 'label' => '영역명', 'rules' => 'trim|required|max_length[20]'],
+            ['field' => 'areaName[]', 'label' => '영역명', 'rules' => 'trim|required|max_length[50]'],
             ['field' => 'orderNum[]', 'label' => '정렬', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'isUse[]', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST,PUT]'],

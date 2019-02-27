@@ -112,7 +112,7 @@ class BaseRangeModel extends WB_Model
             $this->_conn->trans_start();
 
             // 복사된 경우 카테고리 변경 (한번만)
-            if($this->input->post('isCopy')) {
+            //if($this->input->post('isCopy')) {
                 $moLink_del = array_diff($this->input->post('moLink_be'), $this->input->post('moLink'));
                 $moLink_add = array_diff($this->input->post('moLink'), $this->input->post('moLink_be'));
 
@@ -131,7 +131,7 @@ class BaseRangeModel extends WB_Model
                     );
                     $this->_conn->insert($this->_table['mockAreaCate'], $data);
                 }
-            }
+            //}
 
             // lms_Mock_Area 데이터 변경
             $data = array(

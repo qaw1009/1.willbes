@@ -116,13 +116,13 @@
                 var $parent_selected_edition_ccd_name = $('#selected_edition_ccd_name');
                 var $parent_selected_print_edtion_cnt = $('#selected_print_edtion_cnt');
                 var $parent_selected_edtion_size = $('#selected_edtion_size');
-                var $parent_org_price = $parent_regi_form.find('input[name="org_price"]');
                 var $parent_selected_wbook_desc = $('#selected_wbook_desc');
                 var $parent_selected_wauthor_desc = $('#selected_wauthor_desc');
                 var $parent_selected_wtable_desc = $('#selected_wtable_desc');
                 var $parent_selected_wstock_cnt = $('#selected_wstock_cnt');
                 var $parent_sale_ccd = $parent_regi_form.find('input[name="sale_ccd"]');
                 var $parent_selected_sale_ccd_name = $('#selected_wsale_ccd_name');
+                var $parent_org_price = $parent_regi_form.find('input[name="org_price"]');
 
                 $parent_regi_form.find('input[name="wbook_idx"]').val(row.wBookIdx);
                 if ($parent_book_name.length > 0) { $parent_book_name.val(row.wBookName); }
@@ -135,13 +135,16 @@
                 if ($parent_selected_edition_ccd_name.length > 0) { $parent_selected_edition_ccd_name.text(row.wEditionCcdName); }
                 if ($parent_selected_print_edtion_cnt.length > 0) { $parent_selected_print_edtion_cnt.text(row.wPrintCnt + '판 ' + row.wEditionCnt + '쇄'); }
                 if ($parent_selected_edtion_size.length > 0) { $parent_selected_edtion_size.text(row.wEditionSize); }
-                if ($parent_org_price.length > 0) { $parent_org_price.val(row.wOrgPrice); }
                 if ($parent_selected_wbook_desc.length > 0) { $parent_selected_wbook_desc.html(row.wBookDesc); }
                 if ($parent_selected_wauthor_desc.length > 0) { $parent_selected_wauthor_desc.html(row.wAuthorDesc); }
                 if ($parent_selected_wtable_desc.length > 0) { $parent_selected_wtable_desc.html(row.wTableDesc); }
                 if ($parent_selected_wstock_cnt.length > 0) { $parent_selected_wstock_cnt.text(addComma(row.wStockCnt)); }
                 if ($parent_sale_ccd.length > 0) { $parent_regi_form.find('input[name="sale_ccd"][value="' + row.wSaleCcd + '"]').prop('checked', true).iCheck('update'); }
                 if ($parent_selected_sale_ccd_name.length > 0) { $parent_selected_sale_ccd_name.html(row.wSaleCcdName); }
+                if ($parent_org_price.length > 0) {
+                    $parent_org_price.val(row.wOrgPrice);
+                    $parent_org_price.trigger('change');    // change 이벤트 발생
+                }
 
                 $("#pop_modal").modal('toggle');
             });

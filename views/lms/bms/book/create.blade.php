@@ -152,22 +152,20 @@
                     <label class="control-label col-md-2" for="sale_price">교재비 <span class="required">*</span>
                     </label>
                     <div class="col-md-9 form-inline">
-                        <p class="form-control-static">
-                            <span class="blue pr-10">[정상가]</span>
-                            <input type="number" id="org_price" name="org_price" class="form-control" title="정상가" value="{{ $data['wOrgPrice'] }}" readonly="readonly" style="width: 120px;"> 원
-                            <span class="blue pl-30 pr-10">[할인적용]</span>
-                            <div class="inline-block item">
-                                <input type="number" id="dc_amt" name="dc_amt" class="form-control" required="required" title="할인량" value="{{ $data['SaleRate'] }}" style="width: 140px;">
-                                <select class="form-control" id="dc_type" name="dc_type">
-                                    <option value="R" @if('R' == $data['SaleDiscType']) selected="selected" @endif>%</option>
-                                    <option value="P" @if('P' == $data['SaleDiscType']) selected="selected" @endif>원</option>
-                                </select>
-                            </div>
-                            <span class="blue pl-30 pr-10">[판매가]</span>
-                            <div class="inline-block item">
-                                <input type="number" id="sale_price" name="sale_price" class="form-control" required="required" title="판매가" value="{{ $data['RealSalePrice'] }}" readonly="readonly" style="width: 140px;"> 원
-                            </div>
-                        </p>
+                        <span class="blue pr-10">[정상가]</span>
+                        <input type="number" id="org_price" name="org_price" class="form-control" title="정상가" value="{{ $data['wOrgPrice'] }}" readonly="readonly" style="width: 120px;"> 원
+                        <span class="blue pl-30 pr-10">[할인적용]</span>
+                        <div class="inline-block item">
+                            <input type="number" id="dc_amt" name="dc_amt" class="form-control" required="required" title="할인량" value="{{ $data['SaleRate'] }}" style="width: 140px;">
+                            <select class="form-control" id="dc_type" name="dc_type">
+                                <option value="R" @if('R' == $data['SaleDiscType']) selected="selected" @endif>%</option>
+                                <option value="P" @if('P' == $data['SaleDiscType']) selected="selected" @endif>원</option>
+                            </select>
+                        </div>
+                        <span class="blue pl-30 pr-10">[판매가]</span>
+                        <div class="inline-block item">
+                            <input type="number" id="sale_price" name="sale_price" class="form-control" required="required" title="판매가" value="{{ $data['RealSalePrice'] }}" readonly="readonly" style="width: 140px;"> 원
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
@@ -311,6 +309,15 @@
                     $regi_form.find('input[name="dc_amt"]').focus();
                     return false;
                 }
+                if ($regi_form.find('input[name="is_free"]:checked').val() === 'Y' && $regi_form.find('input[name="sale_price"]').val() !== '0') {
+                    alert('무료교재의 경우 판매가를 0원으로 입력해 주세요.');
+                    return false;
+                }
+                if ($regi_form.find('input[name="is_free"]:checked').val() === 'N' && $regi_form.find('input[name="sale_price"]').val() < 1) {
+                    alert('유료교재의 경우 판매가를 0원을 초과하여 입력해 주세요.');
+                    return false;
+                }
+
                 return true;
             }
 
@@ -374,7 +381,7 @@
             });
 
             // 무료여부 값에 따른 교재비, 쿠폰, 북포인트 설정
-            $regi_form.on('ifChanged ifCreated', 'input[name="is_free"]:checked', function() {
+            $regi_form.on('ifChanged ifCreated', 'input[name="is_free"]:checked', function(evt) {
                 var $dc_amt = $regi_form.find('input[name="dc_amt"]');
                 var $dc_type = $regi_form.find('select[name="dc_type"]');
                 var $is_coupon = $regi_form.find('input[name="is_coupon"]');
@@ -389,14 +396,17 @@
                     $is_point_saving.filter('#is_point_saving_y').prop('checked', false).iCheck('update');
                     $is_point_saving.filter('#is_point_saving_y').prop('disabled', true).iCheck('update');
                     $is_point_saving.filter('#is_point_saving_n').iCheck('check');
-                    $dc_amt.trigger('change');
+
+                    if (evt.type === 'ifChanged') {
+                        $dc_amt.trigger('change');
+                    }
                 } else {
-                    $dc_amt.val('{{ $data['SaleRate'] or '' }}').prop('readonly', false);
+                    $dc_amt.val('{{ $data['SaleRate'] or '0' }}').prop('readonly', false);
                     $dc_type.val('{{ $data['SaleDiscType'] or 'R' }}').prop('disabled', false);
                     $is_coupon.filter('#is_coupon_y').prop('disabled', false).iCheck('update');
                     $is_point_saving.filter('#is_point_saving_y').prop('disabled', false).iCheck('update');
 
-                    if ($dc_amt.val() !== '' && (($dc_amt.val() !== '100' && $dc_type.val() === 'R') || ($dc_amt.val() !== '0' && $dc_type.val() === 'P'))) {
+                    if (evt.type === 'ifChanged' && $dc_amt.val() !== '' && (($dc_amt.val() !== '100' && $dc_type.val() === 'R') || ($dc_amt.val() !== '0' && $dc_type.val() === 'P'))) {
                         $dc_amt.trigger('change');
                     }
                 }
@@ -418,8 +428,8 @@
             // 판매가 계산
             $regi_form.on('keyup change', 'input[name="org_price"], input[name="dc_amt"], select[name="dc_type"]', function() {
                 var sale_price = 0;
-                var org_price = 0 || parseInt($regi_form.find('input[name="org_price"]').val(), 10);
-                var dc_amt = 0 || parseInt($regi_form.find('input[name="dc_amt"]').val(), 10);
+                var org_price = parseInt($regi_form.find('input[name="org_price"]').val(), 10) || 0;
+                var dc_amt = parseInt($regi_form.find('input[name="dc_amt"]').val(), 10) || 0;
                 var dc_type = $regi_form.find('select[name="dc_type"]').val();
 
                 if (org_price < 1) {

@@ -71,13 +71,15 @@ class StatisticsPrivate extends \app\controllers\BaseController
                 'PC.CateCode' => $this->input->post('search_cateD1'),
                 'MP.MockYear' => $this->input->post('search_year'),
                 'MP.MockRotationNo' => $this->input->post('search_round'),
+                'RP.SubjectIdx' => $this->input->post('search_subject'),
+                'MO.ProfIdx' => $this->input->post('search_professor'),
                 'MP.AcceptStatusCcd' => $this->input->post('search_AcceptStatus'),
                 'MP.TakeType' => $this->input->post('search_TakeType'),
                 'PD.IsUse' => $this->input->post('search_use'),
             ],
             'LKB' => [
-                'MP.MockPart' => $this->input->post('search_cateD2'),
-                'MP.TakeFormsCcd' => $this->input->post('search_TakeFormsCcd'),
+                'MR.TakeMockPart' => $this->input->post('search_cateD2'),
+                'MR.TakeForm' => $this->input->post('search_TakeFormsCcd'),
             ],
             'ORG' => [
                 'LKB' => [

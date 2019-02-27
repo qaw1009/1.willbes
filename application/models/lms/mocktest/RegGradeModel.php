@@ -159,7 +159,9 @@ class RegGradeModel extends WB_Model
                 JOIN {$this->_table['ProductCate']} AS PC ON MP.ProdCode = PC.ProdCode AND PC.IsStatus = 'Y'
                 JOIN {$this->_table['category']} AS C1 ON PC.CateCode = C1.CateCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y'
                 JOIN {$this->_table['ProductSale']} AS PS ON MP.ProdCode = PS.ProdCode AND PS.IsStatus = 'Y'
-                JOIN {$this->_table['mockRegister']} AS MR ON MP.ProdCode = MR.ProdCode AND MR.IsStatus = 'Y' 
+                JOIN {$this->_table['mockRegister']} AS MR ON MP.ProdCode = MR.ProdCode AND MR.IsStatus = 'Y'
+                JOIN {$this->_table['mockRegisterR']} AS RP ON MR.ProdCode = RP.ProdCode AND MR.MrIdx = RP.MrIdx 
+                JOIN {$this->_table['mockExamBase']} AS MO ON RP.MpIdx = MO.MpIdx 
                 
                 JOIN {$this->_table['member']} AS MB ON MR.MemIdx = MB.MemIdx
              	LEFT OUTER JOIN {$this->_table['mockGrades']} AS GD ON GD.MemIdx = MR.MemIdx AND GD.MrIdx = MR.MrIdx
@@ -175,7 +177,7 @@ class RegGradeModel extends WB_Model
         $where .= $this->_conn->makeWhere($condition)->getMakeWhere(true) . "\n";
         $group = " GROUP BY MR.MrIdx ";
         $order = " ORDER BY MP.ProdCode DESC ";
-        //echo "<pre>".'SELECT ' . $column . $from . $where . $order . $offset_limit."</pre>";
+        //echo "<pre>".'SELECT ' . $column . $from . $where . $group . $order . $offset_limit."</pre>";
         $data = $this->_conn->query('SELECT ' . $column . $from . $where . $group . $order . $offset_limit)->result_array();
 
         $count = $this->_conn->query($selectCount . $from . $where . $group .") AS A")->row()->cnt;
@@ -307,6 +309,8 @@ class RegGradeModel extends WB_Model
                 JOIN {$this->_table['category']} AS C1 ON PC.CateCode = C1.CateCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y'
                 JOIN {$this->_table['ProductSale']} AS PS ON MP.ProdCode = PS.ProdCode AND PS.IsStatus = 'Y'
                 JOIN {$this->_table['mockRegister']} AS MR ON MP.ProdCode = MR.ProdCode AND MR.IsStatus = 'Y' 
+                JOIN {$this->_table['mockRegisterR']} AS RP ON MR.ProdCode = RP.ProdCode AND MR.MrIdx = RP.MrIdx 
+                JOIN {$this->_table['mockExamBase']} AS MO ON RP.MpIdx = MO.MpIdx 
                 
                 JOIN {$this->_table['member']} AS MB ON MR.MemIdx = MB.MemIdx
              	LEFT OUTER JOIN {$this->_table['mockGrades']} AS GD ON GD.MemIdx = MR.MemIdx AND GD.MrIdx = MR.MrIdx

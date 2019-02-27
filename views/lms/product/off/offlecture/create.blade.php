@@ -238,7 +238,7 @@
                     <div class="col-md-10 form-inline item">
                         [개강일] <input type="text" name="StudyStartDate" id="StudyStartDate" class="form-control datepicker" title="개강일" value='{{$data['StudyStartDate']}}' style="width:100px;" readonly required="required">
                         [종강일] <input type="text" name="StudyEndDate" id="StudyEndDate" class="form-control datepicker" title="종강일" value='{{$data['StudyEndDate']}}' style="width:100px;"  required="required">
-                        &nbsp;&nbsp;[회차] <input type="text" name="Amount" id="Amount" value="{{$data['Amount']}}" required="required" class="form-control" title="회차"  style="width:60px;" />회
+                        &nbsp;&nbsp;[회차] <input type="text" name="Amount" id="Amount" value="{{$data['Amount']}}" required="required" class="form-control" title="회차"  style="width:40px;" />회
                         &nbsp;&nbsp;[요일]
                                     <input type="checkbox" name="week[]" class="flat" @if($week_arr[0] == "Y") checked="checked" @endif>일
                                     <input type="checkbox" name="week[]" class="flat" @if($week_arr[1] == "Y") checked="checked" @endif>월
@@ -249,6 +249,8 @@
                                     <input type="checkbox" name="week[]" class="flat" @if($week_arr[6] == "Y") checked="checked" @endif>토
                         &nbsp;
                         <button type="button" id="lecDate" onclick="setLecDate();" class="btn btn-sm btn-primary">적용</button>
+
+                        &nbsp;&nbsp;[프론트 출력용 회차] <input type="text" name="AmountDisp" id="AmountDisp" value="{{$data['AmountDisp']}}"  class="form-control" title="회차"  style="width:40px;" />회
                         <input type="hidden" id="week_str" name="week_str" value="">
                     </div>
                 </div>

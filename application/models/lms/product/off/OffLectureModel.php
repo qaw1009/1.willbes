@@ -400,6 +400,7 @@ class OffLectureModel extends CommonLectureModel
                 ,'StudyStartDate'=>element('StudyStartDate',$input)
                 ,'StudyEndDate'=>element('StudyEndDate',$input)
                 ,'Amount'=>element('Amount',$input)
+                ,'AmountDisp'=> element('AmountDisp',$input) !== '' ? element('AmountDisp',$input) : null
 
                 ,'IsLecStart'=>element('IsLecStart',$input,'N')
                 ,'IsPause'=>element('IsPause',$input,'N')

@@ -193,14 +193,14 @@ class StatisticsPrivate extends \app\controllers\BaseController
                 $minusRank = 1;
             }
 
-            $dataDetail[$mpidx]['grade'] = $val['OrgPoint'];
-            $dataDetail[$mpidx]['gradeA'] = $val['AdjustPoint'];
-            $dataDetail[$mpidx]['avg'] = $val['ORGSUM'] ? round($val['ORGSUM'] / $val['COUNT'],2) : 0;
-            $dataDetail[$mpidx]['avgA'] = $val['ADSUM'] ? round($val['ADSUM'] / $val['COUNT'],2) : 0;
-            $dataDetail[$mpidx]['max'] = round($val['ORGMAX'],2);
-            $dataDetail[$mpidx]['maxA'] = round($val['ADMAX'],2);
-            $dataDetail[$mpidx]['orank'] = $val['Rank']."/".$val['COUNT'];
-            $dataDetail[$mpidx]['arank'] = $rRank."/".$val['COUNT'];
+            $dataDetailV[$mpidx]['grade'] = $val['OrgPoint'];
+            $dataDetailV[$mpidx]['gradeA'] = $val['AdjustPoint'];
+            $dataDetailV[$mpidx]['avg'] = $val['ORGSUM'] ? round($val['ORGSUM'] / $val['COUNT'],2) : 0;
+            $dataDetailV[$mpidx]['avgA'] = $val['ADSUM'] ? round($val['ADSUM'] / $val['COUNT'],2) : 0;
+            $dataDetailV[$mpidx]['max'] = round($val['ORGMAX'],2);
+            $dataDetailV[$mpidx]['maxA'] = round($val['ADMAX'],2);
+            $dataDetailV[$mpidx]['orank'] = $val['Rank']."/".$val['COUNT'];
+            $dataDetailV[$mpidx]['arank'] = $rRank."/".$val['COUNT'];
 
             $tempPoint = $val['AdjustPoint'];
             $tempMp = $val['MpIdx'];
@@ -275,7 +275,7 @@ class StatisticsPrivate extends \app\controllers\BaseController
             'sList2' => $sList2,
             'pCnt' => $pCnt,
             'sCnt' => $sCnt,
-            'dataDetail' => $dataDetail,
+            'dataDetail' => $dataDetailV,
             'prodcode' => $prodcode,
             'mridx' => $mridx,
             'dataSet' => $dataSet
@@ -308,11 +308,11 @@ class StatisticsPrivate extends \app\controllers\BaseController
         // 문항별분석
         foreach($dataSubject as $key => $val){
             $mpidx = $val['MpIdx'];
-            $dataSubject[$mpidx]['RightAnswer'][] = $val['RightAnswer'];
-            $dataSubject[$mpidx]['Answer'][] = $val['Answer'];
-            $dataSubject[$mpidx]['IsWrong'][] = $val['IsWrong'];
-            $dataSubject[$mpidx]['QAVR'][] = $val['QAVR'];
-            $dataSubject[$mpidx]['Difficulty'][] = $val['Difficulty'];
+            $dataSubjectV[$mpidx]['RightAnswer'][] = $val['RightAnswer'];
+            $dataSubjectV[$mpidx]['Answer'][] = $val['Answer'];
+            $dataSubjectV[$mpidx]['IsWrong'][] = $val['IsWrong'];
+            $dataSubjectV[$mpidx]['QAVR'][] = $val['QAVR'];
+            $dataSubjectV[$mpidx]['Difficulty'][] = $val['Difficulty'];
         }
 
         foreach ($subject_list as $key => $val){
@@ -337,7 +337,7 @@ class StatisticsPrivate extends \app\controllers\BaseController
 
         $this->load->view('/mocktest/statistics/private/winpopup_stat', [
             'productInfo' => $productInfo,
-            'dataSubject' => $dataSubject,
+            'dataSubject' => $dataSubjectV,
             'dataSubjectV2' => $dataSubjectV2,
             'pList' => $pList,
             'prodcode' => $prodcode,

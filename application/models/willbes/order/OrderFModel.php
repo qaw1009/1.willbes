@@ -1693,7 +1693,7 @@ class OrderFModel extends BaseOrderFModel
     }
 
     /**
-     * 결제완료, 가상계좌신청완료 SMS 발송
+     * 결제완료, 가상계좌신청완료 SMS 발송, 주문상품 자동문자 메시지 발송
      * @param $order_no
      */
     public function sendOrderSms($order_no)
@@ -1716,8 +1716,18 @@ class OrderFModel extends BaseOrderFModel
                 } else {
                     $sms_msg = '[윌비스] ' . $sess_mem_name . '님 결제완료되셨습니다. [주문번호 ' . $order_no . ']';
                 }
-
+                
                 $this->sendsms->send($sess_mem_phone, $sms_msg, $callback_number);
+
+                // 주문상품 자동문자발송 메시지 조회 및 발송
+                $sms_data = $this->orderListFModel->getOrderProductAutoSmsMsg($order_no, $sess_mem_idx);
+                if (empty($sms_data) === false) {
+                    foreach ($sms_data as $sms_row) {
+                        if (empty($sms_row['SendSmsTel']) === false && empty($sms_row['SendSmsMsg']) === false) {
+                            $this->sendsms->send($sess_mem_phone, str_replace(PHP_EOL, ' ', $sms_row['SendSmsMsg']), $sms_row['SendSmsTel']);                   
+                        }
+                    }
+                }
             }
         }
     }

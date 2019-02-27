@@ -42,18 +42,12 @@
 }
 
 /**/
-.seaSp .Section .bnrSec01 div {
+.seaSp .Section .bnrSec01 li {
+    display: inline;
     float: left;
-    width: 756px;
-    height: 292px;
+    margin-right: 8px;    
 }
-.seaSp .Section .bnrSec01 ul {
-    float: right;
-}
-.seaSp .Section .bnrSec01 ul li {
-    margin-bottom:4px;
-}
-.seaSp .Section .bnrSec01 ul li:last-child {
+.seaSp .Section .bnrSec01 li:last-child {
     margin:0
 }
 .seaSp .Section .bnrSec01:after {
@@ -63,11 +57,18 @@
 }
 
 /**/
-.seaSp .Section .bnrSec02 div {
-    margin-bottom:10px
+.seaSp .Section .bnrSec02 li {
+    display: inline;
+    float: left;
+    margin-right: 8px;    
 }
-.seaSp .Section .bnrSec02 div:last-child {
+.seaSp .Section .bnrSec02 li:last-child {
     margin:0
+}
+.seaSp .Section .bnrSec01:after {
+    content:'';
+    display: block;
+    clear:both;
 }
 
 /* Main Container : Prof : Cop_sea_special */
@@ -75,16 +76,16 @@
     position: relative;
     display: inline;
     float: left;
-    width: 159px;
-    height: 280px;
-    margin-left: 1px;
+    width: 274px;
+    height: 257px;
+    margin-left: 8px;
 }
 .seaSp .Section .ProfCopBox > li:first-child {
     margin-left: 0;
 }
 .seaSp .Section .ProfCopBox .ProfBtns {
     position: absolute;
-    width: 159px;
+    width: 100%;
     bottom: 0;
     left: 0;    
     z-index: 1;
@@ -119,83 +120,6 @@
     content: '';
     display: block;
     clear: both;
-}
-
-
-/**/
-.seaSp .proPAss li {
-    display: inline;
-    float: left;
-}
-.seaSp .proPAss li:last-child {
-    margin-left:6px;
-}
-.seaSp .proPAss:after {
-    content:'';
-    display: block;
-    clear:both;
-}
-
-/**/
-.seaSp .mou li {
-    display: inline;
-    float: left;
-    margin-left:6px;
-}
-.seaSp .mou li:first-child {
-    margin:0;
-}
-.seaSp .mou ul:after {
-    content:'';
-    display: block;
-    clear:both;
-}
-.seaSp .mou .bx-wrapper .bx-viewport {
-    z-index: 10;
-}
-.seaSp .mou .bx-wrapper .bx-controls-direction {
-    width: 100%;
-    height: 65px;
-    position: absolute;
-    top:50%;
-    margin-top: -32px;
-}
-.seaSp .mou .bx-wrapper .bx-controls-direction a {
-    width: 64px;
-    height: 65px;
-}
-.seaSp .mou .bx-wrapper .bx-controls-direction a.disabled {
-    display: block;
-    opacity: 0.5;
-}
-.seaSp .mou .bx-wrapper .bx-prev {
-    background:url("../../img/willbes/cop_sea/btn_prev01.png") no-repeat center center;
-    left: -26px;
-    right: inherit;
-}
-.seaSp .mou .bx-wrapper .bx-next {
-    background:url("../../img/willbes/cop_sea/btn_next01.png") no-repeat center center;
-    left: inherit;
-    right: -34px;
-}
-
-/* Main Container : pass : cSlider : sliderPassList : Cop_sea_special */
-.seaSp .cSlider.sliderPassList .bx-wrapper .bx-prev {
-    background: url("../../img/willbes/cop_sea/btn_prev_on.png") no-repeat 0 0;
-    left: -40px;
-}
-.seaSp .cSlider.sliderPassList .bx-wrapper .bx-next {
-    background: url("../../img/willbes/cop_sea/btn_next_on.png") no-repeat 0 0;
-    right: -40px;
-    left: inherit;
-}
-.seaSp .cSlider.sliderPassList .bx-wrapper .bx-prev.disabled {
-    background: url("../../img/willbes/cop_sea/btn_prev_off.png") no-repeat 0 0;
-    display: block;
-}
-.seaSp .cSlider.sliderPassList .bx-wrapper .bx-next.disabled {
-    background: url("../../img/willbes/cop_sea/btn_next_off.png") no-repeat 0 0;
-    display: block;
 }
 
 /* Main Container : SpecialLecBox */

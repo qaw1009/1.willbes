@@ -38,9 +38,10 @@
     background:#f7f7f7;
 }
 .sea .Section .will-big-Tit .cop-color {
-    color: #0c5dc0;
+    color: #9177d4;
 }
 
+/**/
 .sea .Section .bnrSec01 div {
     float: left;
     width: 756px;
@@ -49,10 +50,75 @@
 .sea .Section .bnrSec01 ul {
     float: right;
 }
+.sea .Section .bnrSec01 ul li {
+    margin-bottom:4px;
+}
+.sea .Section .bnrSec01 ul li:last-child {
+    margin:0
+}
 .sea .Section .bnrSec01:after {
     content:'';
     display: block;
     clear:both;
+}
+
+/**/
+.sea .Section .bnrSec02 div {
+    margin-bottom:10px
+}
+.sea .Section .bnrSec02 div:last-child {
+    margin:0
+}
+
+/* Main Container : Prof : Cop_sea */
+.sea .Section .ProfCopBox > li {
+    position: relative;
+    display: inline;
+    float: left;
+    width: 159px;
+    height: 280px;
+    margin-left: 1px;
+}
+.Section .ProfCopBox > li:first-child {
+    margin-left: 0;
+}
+.Section .ProfCopBox .ProfBtns {
+    position: absolute;
+    width: 159px;
+    bottom: 0;
+    left: 0;    
+    z-index: 1;
+}
+.Section .ProfCopBox .ProfBtns li {    
+    display: inline;
+    float: left;
+    width: 50%;   
+    height: 40px;
+    height: 40px;          
+}
+.Section .ProfCopBox .ProfBtns li a {    
+    display: block;
+    line-height: 40px;    
+    color:#fff;
+    text-align: center;
+    margin-left: 1px; 
+    background: rgba(0,0,0,.5); 
+}
+.Section .ProfCopBox .ProfBtns li:first-child a {
+    margin-left: 0;
+}
+.Section .ProfCopBox .ProfBtns li a:hover {
+    background:#0c5dc0;
+    font-size: 14px;
+}
+.Section .ProfCopBox .ProfBtns li span {
+    padding-left:10px;
+}
+.Section .ProfCopBox .ProfBtns:after,
+.Section .ProfCopBox:after {
+    content: '';
+    display: block;
+    clear: both;
 }
 
 /**/

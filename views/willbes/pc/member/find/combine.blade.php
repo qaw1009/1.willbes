@@ -18,7 +18,7 @@
                         <div class="tx-red">전환을 신청하지 않을 시 서비스 이용이 불가능합니다.</div>
                     </div>
                     <div class="info-Txt tx-black">
-                        통합회원 전환 시 전원 특별 혜택 증정은 물론,<br/>
+                        통합회원 전환 시<br/>
                         <strong>하나의 ID로 윌비스의 전체 서비스를 이용</strong>하실 수 있습니다.
                     </div>
                     <div class="convert-chkBox mt30">

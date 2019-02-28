@@ -133,15 +133,18 @@ class SupportExamAnnouncement extends BaseSupport
                        ';
 
         $data = $this->supportBoardFModel->findBoardForSiteGroup($this->_site_code, $board_idx, $arr_condition, $column);
-        // 첨부파일 이미지일 경우 해당 배열에 담기
-        $data['Content'] = $this->_getBoardForContent($data['Content'], $data['AttachData']);
 
-        if (empty($data)) {
+        if (empty($data) === true) {
             show_alert('게시글이 존재하지 않습니다.', 'back');
         }
         $result = $this->supportBoardFModel->modifyBoardRead($board_idx);
         if($result !== true) {
             show_alert('게시글 조회시 오류가 발생되었습니다.', 'back');
+        }
+
+        // 첨부파일 이미지일 경우 해당 배열에 담기
+        if (empty($data['AttachData']) === false && $data['AttachData'] != 'N') {
+            $data['Content'] = $this->_getBoardForContent($data['Content'], $data['AttachData']);
         }
 
         $data['AttachData'] = json_decode($data['AttachData'],true);       //첨부파일

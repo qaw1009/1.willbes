@@ -111,7 +111,7 @@
                 </div>
             </div>
         </div>
-        {!! banner('고객센터_우측날개', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
+        {!! banner('고객센터_우측퀵', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
     </div>
 
     <script type="text/javascript">

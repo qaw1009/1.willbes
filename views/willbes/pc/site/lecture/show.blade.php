@@ -360,9 +360,8 @@
         </div>
         <!-- TopBtn-->
     </div>
-    <div class="Quick-Bnr ml20">
-        {!! banner('강좌상품_우측날개', '', $__cfg['SiteCode'], '0') !!}
-    </div>
+    {!! banner('수강신청_우측퀵', '', $__cfg['SiteCode'], '0') !!}
+
 </div>
 <!-- End Container -->
 {{-- footer script --}}

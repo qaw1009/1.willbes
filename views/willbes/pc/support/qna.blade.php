@@ -130,7 +130,7 @@
         </div>
         <!-- willbes-CScenter -->
     </div>
-    {!! banner('상담실_우측', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
+    {!! banner('고객센터_우측퀵', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
 </div>
 
 <!-- End Container -->

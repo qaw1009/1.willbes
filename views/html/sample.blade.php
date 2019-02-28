@@ -118,11 +118,18 @@
                 <li class="w50"><a href="{{ site_url('/home/html/event_offGosiArmyQuestion') }}" target="_blank">군무원 이론요약&단원별 문제풀이</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_offGosiFianlTest') }}" target="_blank">시.확.찢 FINAL 모의고사</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_offGosi106dayLast') }}" target="_blank">9급 106일 마무리반</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_offGosi106dayLast') }}" target="_blank">7급 170일 마무리반</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_offGosi_180426_02') }}" target="_blank">기숙형 통합생활관리반 <span>*</span></a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_offGosi_180426_01') }}" target="_blank">자습형 강한학습관리반 <span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offGosi106dayLast') }}" target="_blank">7급 170일 마무리반</a></li>                
                 <li class="w50"><a href="{{ site_url('/home/html/event_offGosi_181123_g') }}" target="_blank">아침실전모의고사</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_offGosi_190128_L') }}" target="_blank">불꽃소방관리반 프로모션 <span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offGosi_180426_01') }}" target="_blank">자습형 강한학습관리반 <span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offGosi_180426_02') }}" target="_blank">기숙형 통합생활관리반 <span>*</span></a></li>                
+                <li class="w50"><a href="{{ site_url('/home/html/event_offGosi_180426_03') }}" target="_blank">영어집중형 김신주 합격관리반 </a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offGosi_180829_g') }}" target="_blank">지인추천 이벤트 </a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offGosi_180724_kakao_g') }}" target="_blank">카카오톡 1:1 상담 </a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offGosi_190121_y') }}" target="_blank">3개월 단기완성 순환반 </a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offGosi_180920_y') }}" target="_blank">기미진 국어 개강프로모션 </a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offGosi_190122_1_c') }}" target="_blank">7급 5개월 문제풀이 순환반 </a></li>
+            </ul>
         </div>
     </li>
     <li>

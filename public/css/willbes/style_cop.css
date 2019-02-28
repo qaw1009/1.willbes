@@ -506,8 +506,28 @@
     background:#333
 }
 .CurriStepBox {
+    position: relative;
     padding:100px 0 50px;
     background: #fff url("../../img/willbes/cop/visual/visual_tit02_stit.png") no-repeat 37px 144px; 
+}
+.CurriStepBox .CurriView {
+    position: absolute;
+    top:340px;
+    left:35px;
+    width: 170px;
+    z-index: 1;    
+}
+.CurriStepBox .CurriView a {
+    display: block;
+    padding:8px 0;
+    text-align: center;
+    background: #0c5dc0;
+    color:#fff;
+    font-size: 14px;
+    border-radius: 25px;
+}
+.CurriStepBox .CurriView a:hover {
+    background: #000;
 }
 .CurriStepBox .CurriStep {
     margin-left:248px;

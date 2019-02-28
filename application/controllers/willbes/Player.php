@@ -1037,7 +1037,7 @@ class Player extends \app\controllers\FrontController
         $wUnitIdx = $this->_req("u");
         $Quility = $this->_req("q");
         $type = $this->_req("st");
-logger($wUnitIdx);
+
         $ispause = 'N';
         $isstart = 'Y';
         $timeover = 'N';
@@ -1123,7 +1123,6 @@ logger($wUnitIdx);
         }
 
         if(is_array($wUnitIdx) == true){
-            logger('in array');
             $cond_arr = [
                 'EQ' => [
                     'MemIdx' => $MemIdx,
@@ -1137,7 +1136,6 @@ logger($wUnitIdx);
                 ]
             ];
         } else {
-            logger('is one');
             $cond_arr = [
                 'EQ' => [
                     'MemIdx' => $MemIdx,
@@ -1159,7 +1157,7 @@ logger($wUnitIdx);
         if(empty($data) == true){
             $this->StarplayerResult(true,'강의 정보가 없습니다.');
         }
-logger('xml 시작');
+
         $XMLString  = "<?xml version='1.0' encoding='UTF-8' ?>";
         $XMLString .= "<axis-app>";
         $XMLString .= "<security>true</security>"; // 보안설정
@@ -1282,8 +1280,10 @@ logger('xml 시작');
             $XMLString .= "</content>";
         }
         $XMLString .= "</axis-app>";
-        logger($XMLString);
-        echo $this->crypto->encrypt($XMLString);
+
+        return $this->response($XMLString);
+        //echo $this->crypto->encrypt($XMLString);
+        //exit(0);
     }
 
 

@@ -700,6 +700,68 @@ class Manage extends \app\controllers\BaseController
             ]
         ]);
 
+        // 회차별 수강시간 체크
+        foreach($curriculum AS $idx => $row){
+            if(empty($lec['MultipleApply']) == true){
+                // 무제한
+                $curriculum[$idx]['timeover'] = 'N';
+                $curriculum[$idx]['limittime'] = '무제한';
+                $curriculum[$idx]['remaintime'] = '무제한';
+            }
+            else if($lec['MultipleApply'] == '1'){
+                // 무제한
+                $curriculum[$idx]['timeover'] = 'N';
+                $curriculum[$idx]['limittime'] = '무제한';
+                $curriculum[$idx]['remaintime'] = '무제한';
+
+            } elseif($lec['MultipleTypeCcd'] == '612001') {
+                // 회차별 수강시간 체크
+
+                // 수강시간은 초
+                $studytime = intval($row['RealStudyTime']);
+
+                // 제한시간 분 -> 초
+                if($row['RealExpireTime'] == 0){
+                    $limittime = intval($row['wRuntime']) * intval($lec['MultipleApply']) * 60;
+                } else {
+                    $limittime = intval($row['RealExpireTime']);
+                }
+
+                if($studytime > $limittime){
+                    // 제한시간 초과
+                    $curriculum[$idx]['timeover'] = 'Y';
+                    $curriculum[$idx]['limittime'] = round(intval($limittime) / 60).'분';
+                    $curriculum[$idx]['remaintime'] = '0분';
+
+                } else {
+                    $curriculum[$idx]['timeover'] = 'N';
+                    $curriculum[$idx]['limittime'] = round(intval($limittime) / 60).'분';
+                    $curriculum[$idx]['remaintime'] = round(($limittime - $studytime)/60).'분';
+                }
+
+            } elseif($lec['MultipleTypeCcd'] == '612002') {
+                // 패키치 수강시간 체크
+
+                // 수강시간은 초
+                $studytime = intval($lec['StudyTimeSum']);
+
+                // 제한시간 분 -> 초
+                $limittime = intval($lec['RealExpireTime']) * 60;
+
+                if($studytime > $limittime){
+                    // 제한시간 초과
+                    $curriculum[$idx]['timeover'] = 'Y';
+                    $curriculum[$idx]['limittime'] = round(intval($limittime) / 60).'분';
+                    $curriculum[$idx]['remaintime'] = '0분';
+
+                } else {
+                    $curriculum[$idx]['timeover'] = 'N';
+                    $curriculum[$idx]['limittime'] = round(intval($limittime) / 60).'분';
+                    $curriculum[$idx]['remaintime'] = round(($limittime - $studytime)/60).'분';
+                }
+            }
+        }
+
         $this->load->view('member/layer/lecture/curriculum',[
             'member' => $member,
             'lec' => $lec,
@@ -1975,6 +2037,44 @@ class Manage extends \app\controllers\BaseController
 
         // 실제로 파일 다운로드 처리
         public_download($filepath, $filename);
+    }
+
+
+    public function setRate()
+    {
+        $memidx = $this->_req('memidx');
+        $orderidx = $this->_req('orderidx');
+        $prodcode = $this->_req('prodcode');
+        $prodcodesub = $this->_req('prodcodesub');
+        $rate = $this->_req('rate');
+
+        if(is_numeric($rate) == false){
+            return $this->json_error('진도율은 0~100 사이의 숫자로 입력해주십시요.'.$rate);
+        }
+
+        if($rate < 0) {
+            $rate = 0;
+        } else if($rate > 100) {
+            $rate = 100;
+        }
+
+        if($this->manageLectureModel->setRate([
+                'MemIdx' => $memidx,
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub,
+                'Rate' => $rate
+            ]) == false){
+            return $this->json_error('진도율 변경에 실패했습니다.');
+        }
+
+        return $this->json_result(true, '진도율이 변경되었습니다.');
+    }
+
+
+    public function setViewtime()
+    {
+
     }
 
 }

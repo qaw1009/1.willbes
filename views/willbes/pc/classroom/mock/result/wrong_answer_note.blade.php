@@ -99,9 +99,9 @@
                                 <li>
                                     <a name="que4" class="no">{{ $key + 1 }}.</a>
                                     <span class="que"><img src="{{ $row['QFilePath'] }}{{ $row['file'] }}"></span>
-                                    <div class="btnAgR">
+                                    <div id='btn_area' class="btnAgR">
                                         <a href="javascript:noteDelete({{ $row['MqIdx'] }})" class="btnM1 btnlineBlue">문항 삭제 +</a>
-                                        <a href="#none" class="btnM2 btnGray">메모</a>
+                                        <a href="javascript:openMemo({{ $row['MqIdx'] }})" id='memo{{ $row['MqIdx'] }}' class="btnM2 btnGray">메모</a>
                                     </div>
                                     <div class="agR">
                                         <textarea id="m{{ $row['MqIdx'] }}" name="memo{{ $row['MqIdx'] }}" cols="10" rows="1" class="memoText">{{ $row['Memo'] }}</textarea>
@@ -125,8 +125,8 @@
                                 <span class="que"><img src="{{ $row['QFilePath'] }}{{ $row['file'] }}"></span>
                                 <div id='btn_area' class="btnAgR">
                                     <a href="javascript:noteAdd({{ $row['MqIdx'] }})" class="btnM1 btnlineBlue">노트에 바로추가 +</a>
-                                    <a href="#none" class="btnM2 btnGray">메모</a>
-                                    <a href="javascript:noteAdd({{ $row['MqIdx'] }})" class="btnM3 btnGray">메모저장후추가</a>
+                                    <a href="javascript:openMemo({{ $row['MqIdx'] }})" id='memo{{ $row['MqIdx'] }}' class="btnM2 btnGray">메모</a>
+                                    <a href="javascript:noteAdd({{ $row['MqIdx'] }})" id='add{{ $row['MqIdx'] }}' class="btnM3 btnGray">메모저장후추가</a>
                                 </div>
                                 <div class="agR">
                                     <textarea id="m{{ $row['MqIdx'] }}" name="memo{{ $row['MqIdx'] }}" cols="10" rows="1" class="memoText">{{ $row['Memo'] }}</textarea>
@@ -167,7 +167,19 @@
             }
             $('.exam-paperList').html("<li style='text-align:center; font-weight:bold; width:100%'>" + str +"</li>");
         }
+
+
     });
+
+    function openMemo(num){
+        var $textarea_layer = $('#m'+num);
+        var $btn2_layer = $('#memo'+num);
+        var $btn3_layer = $('#add'+num);
+
+        $btn2_layer.hide();
+        $btn3_layer.css('display','inline-block');
+        $textarea_layer.css('display','inline-block');
+    }
 
     //전체선택/해제
     function checkALL(obj){
@@ -249,18 +261,9 @@
 
     }
 
-    $(function() {
-        $('.btnAgR a.btnM2').click(function() {
+    //$(function() {
 
-            var $textarea_layer = $(this).parents('li').find('textarea');
-            var $btn2_layer = $(this).parents('li').find('a.btnM2');
-            var $btn3_layer = $(this).parents('li').find('a.btnM3');
-
-            $btn2_layer.hide();
-            $btn3_layer.css('display','inline-block');
-            $textarea_layer.css('display','inline-block');
-        });
-    });
+    //});
 
     function goLink(type){
         //값이 세팅되면 시작
@@ -279,11 +282,15 @@
         var initBody;
         window.onbeforeprint = function(){
             initBody = $('#widthFrame').html();
-            $('#btn_area').hide();
+            $('[id*=btn_area]').hide();
+            $('textarea').css('width','100%');
+            $('textarea').attr('rows','5');
             document.body.innerHTML =  $('.exam-paperList').html();
         };
         window.onafterprint = function(){
-            $('#btn_area').show();
+            $('[id*=btn_area]').show();
+            $('textarea').css('width','395px');
+            $('textarea').attr('rows','1');
             document.body.innerHTML = initBody;
         };
         window.print();

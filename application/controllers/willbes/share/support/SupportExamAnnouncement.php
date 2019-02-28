@@ -143,10 +143,7 @@ class SupportExamAnnouncement extends BaseSupport
         }
 
         // 첨부파일 이미지일 경우 해당 배열에 담기
-        if (empty($data['AttachData']) === false && $data['AttachData'] != 'N') {
-            $data['Content'] = $this->_getBoardForContent($data['Content'], $data['AttachData']);
-        }
-
+        $data['Content'] = $this->_getBoardForContent($data['Content'], $data['AttachData']);
         $data['AttachData'] = json_decode($data['AttachData'],true);       //첨부파일
         #-------------------------------- 게시글 조회
 

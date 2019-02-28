@@ -130,7 +130,7 @@
         <!-- curriWrap -->
 
         <div class="willbes-Bnr">
-            {!! banner('단과_중단') !!}
+            {!! banner('수강신청_단과_중단') !!}
         </div>
         <!-- willbes-Bnr -->
 

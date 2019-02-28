@@ -121,7 +121,7 @@ class Find extends BaseMember
                 if($count > 0){
                     // 가입정보가 있을경우
                     $result = $this->memberFModel->getMember(false, $where);
-                    return $this->load->view('member/find/idproc', [
+                    return $this->load->view('member/find/idProc', [
                         'MemId' => $result['MemId'],
                         'MemName' => $result['MemName'],
                         'JoinDate' => $result['JoinDate']
@@ -167,7 +167,7 @@ class Find extends BaseMember
                 if($count > 0){
                     // 가입정보가 있을경우
                     $result = $this->memberFModel->getMember(false, $where);
-                    return $this->load->view('member/find/idproc', [
+                    return $this->load->view('member/find/idProc', [
                         'MemId' => $result['MemId'],
                         'MemName' => $result['MemName'],
                         'JoinDate' => $result['JoinDate']

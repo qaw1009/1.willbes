@@ -136,6 +136,12 @@
 
         <div class="willbes-Lec-Search p_re">
             <div class="inputBox p_re">
+                <div class="selectBox">
+                    <select id="search_order" name="search_order" class="" onchange="goUrl('search_order', this.value);">
+                        <option value="regist" @if(element('search_order', $arr_input) == 'regist') selected="selected" @endif>최근등록순</option>
+                        <option value="course" @if(element('search_order', $arr_input) == 'course') selected="selected" @endif>과정순</option>
+                    </select>
+                </div>
                 @php $arr_search_text = explode(':', base64_decode(element('search_text', $arr_input)), 2) @endphp
                 <div class="selectBox">
                     <select id="search_keyword" name="search_keyword" title="직접입력" class="">
@@ -237,6 +243,12 @@
 
                 <div class="willbes-Lec-Line mt20">-</div>
                 <!-- willbes-Lec-Line -->
+
+                {{-- 상품 리스트 loop --}}
+                @if(element('search_order', $arr_input) == 'course')
+                    {{-- 정렬방식이 과정순일 경우 배열키 (OrderNumCourse + ProdCode) 순으로 재정렬 --}}
+                    @php ksort($data['list'][$subject_idx]); @endphp
+                @endif
 
                 @foreach($data['list'][$subject_idx] as $idx => $row)
                     <a name="{{ $row['ProdCode'] }}"></a>

@@ -238,9 +238,8 @@
             </div>
             <!-- willbes-Delivery-Info-Fin -->
         </div>
-        <div class="Quick-Bnr ml20 mt85">
-            {!! banner('결제_우측퀵', '', $__cfg['SiteCode'], '0') !!}
-        </div>
+        {!! banner('결제_우측퀵', '', $__cfg['SiteCode'], '0') !!}
+
     </div>
     <!-- End Container -->
     <script type="text/javascript">

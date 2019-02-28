@@ -474,9 +474,8 @@
             <div id="MockExam" class="willbes-Layer-PassBox willbes-Layer-PassBox740 abs"></div>
             <!-- willbes-Layer-CartBox : 모의고사 응시정보 -->
         </div>
-        <div class="Quick-Bnr ml20 mt85">
-            {!! banner('결제_우측퀵', '', $__cfg['SiteCode'], '0') !!}
-        </div>
+        {!! banner('결제_우측퀵', '', $__cfg['SiteCode'], '0') !!}
+
     </div>
     <!-- End Container -->
     <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>

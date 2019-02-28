@@ -129,6 +129,9 @@
                 <li class="w50"><a href="{{ site_url('/home/html/event_offGosi_190121_y') }}" target="_blank">3개월 단기완성 순환반 </a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_offGosi_180920_y') }}" target="_blank">기미진 국어 개강프로모션 </a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_offGosi_190122_1_c') }}" target="_blank">7급 5개월 문제풀이 순환반 </a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offGosi_190122_1_g') }}" target="_blank">7급 외무영사직 5개월 문풀 순환반 </a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offGosi_181121_L1') }}" target="_blank">윌비스 불꽃소방팀 <span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offGosi_190110_in_L') }}" target="_blank">윌비스 공무원 면접팀</a></li>
             </ul>
         </div>
     </li>

@@ -260,7 +260,7 @@ class BaseProductFModel extends WB_Model
 
         $where = $this->_conn->makeWhere(['EQ' => ['PSC.CateCode' => $cate_code, 'PSC.SubjectIdx' => $subject_idx]]);
         $where = $where->getMakeWhere(true);
-        $order_by = ' order by SC.OrderNum asc, PS.OrderNum asc, PSC.PcIdx asc';
+        $order_by = ' order by SC.OrderNum asc, PS.OrderNum asc, PSC.OrderNum asc, PSC.PcIdx desc';
 
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by, [$site_code]);

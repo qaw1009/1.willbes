@@ -30,6 +30,7 @@
         <form id="search_form" name="search_form" method="POST" action="{{ site_url('/classroom/MockResult/winAnswerNote') }}">
             {!! csrf_field() !!}
             <input type="hidden" id='prodcode' name="prodcode" value="{{ $prodcode }}" />
+            <input type="hidden" id='mridx' name="mridx" value="{{ $mridx }}" />
             <input type="hidden" name="wrongYn" value="{{ element('wrongYn', $arr_input) }}" />
         <div class="wBx mgT1 mgB1 mt30">
             <table cellspacing="0" cellpadding="0" class="findTb">

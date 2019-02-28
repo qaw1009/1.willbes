@@ -123,7 +123,7 @@
                             <li>
                                 <a name="que4" class="no">{{ $key + 1 }}.</a>
                                 <span class="que"><img src="{{ $row['QFilePath'] }}{{ $row['file'] }}"></span>
-                                <div class="btnAgR">
+                                <div id='btn_area' class="btnAgR">
                                     <a href="javascript:noteAdd({{ $row['MqIdx'] }})" class="btnM1 btnlineBlue">노트에 바로추가 +</a>
                                     <a href="#none" class="btnM2 btnGray">메모</a>
                                     <a href="javascript:noteAdd({{ $row['MqIdx'] }})" class="btnM3 btnGray">메모저장후추가</a>
@@ -279,11 +279,11 @@
         var initBody;
         window.onbeforeprint = function(){
             initBody = $('#widthFrame').html();
-            $('.btnAgR').hide();
+            $('#btn_area').hide();
             document.body.innerHTML =  $('.exam-paperList').html();
         };
         window.onafterprint = function(){
-            $('.btnAgR').show();
+            $('#btn_area').show();
             document.body.innerHTML = initBody;
         };
         window.print();

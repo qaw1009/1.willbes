@@ -171,7 +171,7 @@
                 <input type="hidden" name="learn_pattern" value="{{ $learn_pattern }}"/>  {{-- 학습형태 --}}
 
                 <div class="willbes-Lec NG c_both mt20">
-                    <div class="willbes-Lec-Subject tx-dark-black">· 종합반</div>
+                    <div class="willbes-Lec-Subject tx-dark-black"><!--· 종합반//--></div>
                     <!-- willbes-Lec-Subject -->
 
                     <div class="willbes-Lec-Line mt20">-</div>

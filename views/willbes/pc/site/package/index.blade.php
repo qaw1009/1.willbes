@@ -132,7 +132,7 @@
             <!-- willbes-Lec-Search -->
 
             <div class="willbes-Lec NG c_both">
-                <div class="willbes-Lec-Subject tx-dark-black">{{$title}}</div>
+                <div class="willbes-Lec-Subject tx-dark-black">{{--$title--}}</div>
                 <!-- willbes-Lec-Subject -->
 
                 <div class="willbes-Lec-Line">-</div>

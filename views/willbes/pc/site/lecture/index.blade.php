@@ -185,7 +185,7 @@
                                 </tr>
                                 <tr>
                                     <th><img src="{{ img_url('sub/icon_detail.gif') }}"></th>
-                                    <td class="tx-left">돋보기 아이콘 클릭 시 해당 강좌의 상세정보 팝업 노출</td>    
+                                    <td class="tx-left">돋보기 아이콘 클릭 시 해당 강좌의 상세정보 팝업 노출</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -408,8 +408,7 @@
         {{-- footer script --}}
         @include('willbes.pc.site.lecture.' . $pattern . '_footer_partial')
     </div>
-    {!! banner('수강신청_우측퀵', '', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
-
+    {!! banner('수강신청_우측퀵', 'Quick-Bnr ml20', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
 </div>
 {!! popup('657002') !!}
 <!-- End Container -->

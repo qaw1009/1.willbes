@@ -97,7 +97,7 @@
 
                             @if($row['MwaIdx'])
                                 <li>
-                                    <a name="que4" class="no">{{ $key + 1 }}.</a>
+                                    <a name="que4" class="no">Q{{ $key + 1 }}.</a>
                                     <span class="que"><img src="{{ $row['QFilePath'] }}{{ $row['file'] }}"></span>
                                     <div id='btn_area' class="btnAgR">
                                         <a href="javascript:noteDelete({{ $row['MqIdx'] }})" class="btnM1 btnlineBlue">문항 삭제 +</a>
@@ -112,7 +112,7 @@
                                 @if(element('QUESTIONYN', $arr_input) == 'A')
                                 <!-- 해설 -->
                                 <li style="display:@if(element('QUESTIONYN', $arr_input) == 'Q') none; @endif">
-                                    <a name="que4" class="no">{{ $key + 1 }}.</a>
+                                    <a name="que4" class="no">A{{ $key + 1 }}.</a>
                                     <span class="que"><img src="{{ $row['QFilePath'] }}{{ $row['RealExplanFile'] }}"></span>
                                 </li>
                                 @endif
@@ -121,7 +121,7 @@
 
                         @else
                             <li>
-                                <a name="que4" class="no">{{ $key + 1 }}.</a>
+                                <a name="que4" class="no">Q{{ $key + 1 }}.</a>
                                 <span class="que"><img src="{{ $row['QFilePath'] }}{{ $row['file'] }}"></span>
                                 <div id='btn_area' class="btnAgR">
                                     <a href="javascript:noteAdd({{ $row['MqIdx'] }})" class="btnM1 btnlineBlue">노트에 바로추가 +</a>
@@ -137,7 +137,7 @@
                             @if(element('QUESTIONYN', $arr_input) == 'A')
                             <!-- 해설 -->
                             <li style="display:@if(element('QUESTIONYN', $arr_input) == 'Q') none; @endif">
-                                <a name="que4" class="no">{{ $key + 1 }}.</a>
+                                <a name="que4" class="no">A{{ $key + 1 }}.</a>
                                 <span class="que"><img src="{{ $row['QFilePath'] }}{{ $row['RealExplanFile'] }}"></span>
                             </li>
                             @endif

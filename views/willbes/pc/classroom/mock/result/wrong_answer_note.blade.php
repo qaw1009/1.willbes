@@ -79,7 +79,7 @@
             @else
             <a class="btnBlue" id='myNote' href="javascript:myWrongNote('Y')">나의오답노트</a>
             @endif
-            <a class="btnGray" href="javascript:window.print()">출력하기</a>
+            <a class="btnGray" href="javascript:printPage()">출력하기</a>
         </div>
         <form id="regi_form_add" name="regi_form_add" method="POST" onsubmit="return false;" novalidate>
             {!! csrf_field() !!}
@@ -272,6 +272,20 @@
             document.url_form.action = link;
         }
         document.url_form.submit();
+    }
+
+    //인쇄
+    function printPage(){
+        var initBody;
+        window.onbeforeprint = function(){
+            initBody = $('#widthFrame').html();
+            document.body.innerHTML =  $('.exam-paperList').html();
+        };
+        window.onafterprint = function(){
+            document.body.innerHTML = initBody;
+        };
+        window.print();
+        return false;
     }
 </script>
 

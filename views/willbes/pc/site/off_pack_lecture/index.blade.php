@@ -75,7 +75,7 @@
             <!-- curriWrap -->
 
             <div class="willbes-Bnr">
-                {!! banner('종합반_중단') !!}
+                {!! banner('수강신청_종합반_중단') !!}
             </div>
             <!-- willbes-Bnr -->
 

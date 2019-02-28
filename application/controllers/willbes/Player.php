@@ -1055,7 +1055,7 @@ class Player extends \app\controllers\FrontController
         if(empty($wUnitIdx) == true){
             $this->StarplayerResult(true, '수강할 회차 정보가 없습니다.');
         }
-
+logger($wUnitIdx);
         // 수강가능인지 체크
         $lec = $this->classroomFModel->getLecture([
             'EQ' => [
@@ -1280,9 +1280,8 @@ class Player extends \app\controllers\FrontController
             $XMLString .= "</content>";
         }
         $XMLString .= "</axis-app>";
-        $EncData = $this->crypto->encrypt($XMLString);
-        logger('M:'.$EncData.':');
-        echo $EncData;
+
+        echo $this->crypto->encrypt($XMLString);
         exit(0);
     }
 

@@ -255,7 +255,7 @@
         </div>
     </div>
     <div class="Quick-Bnr ml20 mt85">
-        {!! banner('강좌상품_우측날개', '', $__cfg['SiteCode'], '0') !!}
+        {!! banner('결제_우측퀵', '', $__cfg['SiteCode'], '0') !!}
     </div>
 </div>
 <!-- End Container -->

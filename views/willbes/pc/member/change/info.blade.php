@@ -543,9 +543,7 @@
             <!-- willbes-Layer-PassBox : 회원탈퇴 -->
 
         </div>
-        <div class="Quick-Bnr ml20">
-            <img src="{{ img_url('sample/banner_180605.jpg') }}">
-        </div>
+        {!! banner('내강의실_우측퀵', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
     </div>
     <form name="ajaxForm" id="ajaxForm" method="post" >
         {!! csrf_field() !!}

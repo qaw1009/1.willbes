@@ -435,7 +435,7 @@ class Find extends BaseMember
                         show_alert("비밀번호 변경에 실패했습니다. 다시 시도해주십시요.", '/member/find/pwd/');
                     }
 
-                    redirect('/member/setpwd/');
+                    redirect('/member/find/setpwd/');
                 }
 
                 // 가입정보 없음
@@ -488,7 +488,7 @@ class Find extends BaseMember
                         show_alert("비밀번호 변경에 실패했습니다. 다시 시도해주십시요.", '/member/find/pwd/');
                     }
 
-                    redirect('/member/setpwd/');
+                    redirect('/member/find/setpwd/');
                 }
 
                 // 가입정보 없음
@@ -557,7 +557,7 @@ class Find extends BaseMember
                     // 비밀번호 변경후 인증메일 완료처리
                     $result = $this->memberFModel->updateMailAuth($enc_data);
 
-                    redirect('/member/setpwd/');
+                    redirect('/member/find/setpwd/');
                 }
                 // 가입정보 없음
                 return $this->load->view('member/find/notfind');

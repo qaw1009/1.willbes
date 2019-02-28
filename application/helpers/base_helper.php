@@ -520,6 +520,9 @@ if (!function_exists('make_image_tag')) {
     {
         $data = '';
         if (empty($path) === false) {
+            $_CI =& get_instance();
+            $_CI->load->helper('file');
+            
             $_img = public_to_upload_path($path);
             if (empty(@getimagesize($_img) === false)) {
                 $data = '<p style="margin-bottom: 20px;"><img src="' . $path . '"></p>';

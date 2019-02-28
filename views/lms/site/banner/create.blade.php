@@ -121,6 +121,15 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="control-label col-md-1-1" for="link_url_type_I">외,내부 링크 타입<span class="required">*</span></label>
+                    <div class="col-md-10 form-inline">
+                        <input type="radio" id="link_url_type_I" name="link_url_type" class="flat" value="I" required="required" title="외내부 링크타입" @if($method == 'POST' || $data['LinkUrlType']=='I')checked="checked"@endif/> <label for="link_url_type_I" class="input-label">내부링크</label>
+                        <input type="radio" id="link_url_type_O" name="link_url_type" class="flat" value="O" @if($data['LinkUrlType']=='O')checked="checked"@endif/> <label for="link_url_type_O" class="input-label">외부링크</label>
+                        &nbsp;&nbsp;&nbsp;&nbsp;• Ex) 외부 링크일 경우 Full URL 경로 입력
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <label class="control-label col-md-1-1" for="attach_img">배너이미지<span class="required">*</span></label>
                     <div class="col-md-10 item form-inline">
                         <div class="title">

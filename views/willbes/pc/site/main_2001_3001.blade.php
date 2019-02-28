@@ -148,6 +148,7 @@
         </div>
 
         <div class="widthAuto CurriStepBox">
+            <div class="CurriView"><a href="#none">커리큘럼 자세히보기 &gt;</a></div>
             <ul class="CurriStep">
                 <li class="active">
                     <div class="curriculumBox">

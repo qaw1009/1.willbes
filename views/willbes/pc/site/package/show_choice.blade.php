@@ -449,7 +449,7 @@
                 <!-- willbes-Lec -->
             </form>
         </div>
-        {!! banner('수강신청_우측퀵', '', $__cfg['SiteCode'], '0') !!}
+        {!! banner('수강신청_우측퀵', 'Quick-Bnr ml20', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
 
     </div>
     <!-- willbes-Lec-buyBtn-sm -->

@@ -34,7 +34,8 @@
                         <td class="combine-Tit">이름</td>
                         <td>
                             <div class="inputBox p_re">
-                                <input type="text" id="MemName" name="MemName" class="iptName" readonly value="{{$memName}}">
+                                <input type="text" id="txtMemName" name="txtMemName" class="iptName" disabled value="{{$memName}}">
+                                <input type="hidden" id="MemName" name="MemName" value="{{$memName}}">
                                 <ul class="chkBox-Sex">
                                     <li class="radio-Btn sexchk p_re checked">
                                         <label for="Sex" class="labelName" style="display: block;">남성</label>
@@ -62,7 +63,12 @@
                         <td class="combine-Tit">휴대폰번호</td>
                         <td>
                             <div class="inputBox p_re">
-                                <input type="text" id="Phone" name="Phone" class="iptPhone" placeholder='"-" 제외하고 숫자만 입력' maxlength="13" @if ( $jointype == '655002' ) value="{{$phone}}" readonly @endif title="핸드폰번호" />
+                                @if ( $jointype == '655002' )
+                                    <input type="text" id="txtPhone" name="txtPhone" class="iptPhone" placeholder='"-" 제외하고 숫자만 입력' maxlength="13" value="{{$phone}}" disabled title="핸드폰번호" />
+                                    <input type="hidden" id="Phone" name="Phone" value="{{$phone}}" />
+                                @else
+                                    <input type="text" id="Phone" name="Phone" class="iptPhone" placeholder='"-" 제외하고 숫자만 입력' maxlength="13" title="핸드폰번호" />
+                                @endif
                             </div>
                             <div class="tx-red mt10 err_msg" style="display: block;"></div>
                             <div class="tx-red mt10" style="display: block;">

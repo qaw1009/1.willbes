@@ -108,9 +108,7 @@
 
 
         </div>
-        <div class="Quick-Bnr ml20">
-            <img src="{{ img_url('sample/banner_180605.jpg') }}">
-        </div>
+        {!! banner('수험정보_우측퀵', 'Quick-Bnr ml20', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
     </div>
     <!-- End Container -->
     <script type="text/javascript">

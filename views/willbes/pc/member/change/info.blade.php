@@ -37,16 +37,16 @@
                                 <td class="w-tit">휴대폰번호</td>
                                 <td class="w-info">
                                     <div class="phoneBox">
-                                        <input type="text" id="Phone1" name="Phone1" class="iptCellhone1 phone" readonly value="{{$data['Phone1']}}"> -
-                                        <input type="text" id="Phone2" name="Phone2" class="iptCellhone1 phone" readonly value="{{$data['Phone2']}}"> -
-                                        <input type="text" id="Phone3" name="Phone3" class="iptCellhone2 phone" readonly value="{{$data['Phone3']}}">
+                                        <input type="text" id="Phone1" name="Phone1" class="iptCellhone1 phone" disabled value="{{$data['Phone1']}}"> -
+                                        <input type="text" id="Phone2" name="Phone2" class="iptCellhone1 phone" disabled value="{{$data['Phone2']}}"> -
+                                        <input type="text" id="Phone3" name="Phone3" class="iptCellhone2 phone" disabled value="{{$data['Phone3']}}">
                                     </div>
                                     <button type="button" onclick="openWin('PHONEPASS')" class="mem-Btn combine-Btn bg-blue bd-dark-blue">
                                         <span>변경</span>
                                     </button>
                                     <div class="tx-red mt10" style="line-height:1">                            
                                         <label>    
-                                            <input name="" type="checkbox" value="" id="aaa" />                                        
+                                            <input name="SmsRcvStatus" type="checkbox" value="Y" id="SmsRcvStatus" {{$data['SmsRcvStatus'] == 'Y' ? 'checked' : ''}} />
                                             윌비스의 신규상품 안내 및 광고성 정보 SMS 수신에 동의합니다.
                                         </label>
                                     </div>
@@ -74,7 +74,7 @@
                                     </button>
                                     <div class="tx-red mt10">                            
                                         <label>
-                                            <input name="" type="checkbox" value="" id="bbb" />                                        
+                                            <input name="MailRcvStatus" type="checkbox" value="Y" id="MailRcvStatus" {{$data['MailRcvStatus'] == 'Y' ? 'checked' : ''}} />
                                             윌비스의 신규상품 안내 및 광고성 정보 이메일 수신에 동의합니다.
                                         </label>
                                     </div>
@@ -101,6 +101,7 @@
                             </tbody>
                         </table>
                     </div>
+                    <!--
                     <div class="InfoTable GM">
                         <div class="willbes-UserInfo-Tit NG">* 부가정보<span class="UserInfo-subTit">(부가정보를 입력하시면 맞춤형 수험관리 혜택을 받으실 수 있습니다.)</span></div>
                         <table cellspacing="0" cellpadding="0" class="classTable userInfoTable under-gray bdt-gray tx-gray">
@@ -306,6 +307,7 @@
                             </tbody>
                         </table>
                     </div>
+                    -->
                     <div class="willbes-Lec-buyBtn">
                         <ul>
                             <li class="btnAuto180 h36">

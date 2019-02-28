@@ -192,6 +192,15 @@ class OrderListModel extends BaseOrderModel
                 $excel_column .= ', SC.CateName, ifnull(SPC.CateName, SC.CateName) as LgCateName, if(SPC.CateCode is not null, SC.CateName, "") as MdCateName';
             }
 
+            // 캠퍼스 정보 추가
+            if (in_array('campus', $arr_add_join) === true) {
+                $from .= '
+                    left join ' . $this->_table['code'] . ' as CCA
+                        on PL.CampusCcd = CCA.Ccd and CCA.IsStatus = "Y" and CCA.GroupCcd = "' . $this->_group_ccd['Campus'] . '"';
+                $column .= ', PL.CampusCcd, CCA.CcdName as CampusCcdName';
+                $excel_column .= ', CCA.CcdName as CampusCcdName';
+            }
+
             // 과목 정보 추가
             if (in_array('subject', $arr_add_join) === true) {
                 $from .= '
@@ -376,7 +385,8 @@ class OrderListModel extends BaseOrderModel
                 , OP.SalePatternCcd, OP.PayStatusCcd, OP.OrderPrice, OP.RealPayPrice, OP.CardPayPrice, OP.CashPayPrice, OP.DiscPrice           
                 , OP.DiscRate, OP.DiscType, OP.DiscReason
                 , OP.UsePoint, OP.SavePoint, OP.IsUseCoupon, OP.UserCouponIdx, OP.UpdDatm
-                , P.ProdTypeCcd, P.ProdName, PL.LearnPatternCcd, CPT.CcdName as ProdTypeCcdName, CLP.CcdName as LearnPatternCcdName';
+                , P.ProdTypeCcd, P.ProdName, PL.LearnPatternCcd, PL.CampusCcd
+                , CPT.CcdName as ProdTypeCcdName, CLP.CcdName as LearnPatternCcdName, CCA.CcdName as CampusCcdName';
         }
 
         $from = '
@@ -390,7 +400,9 @@ class OrderListModel extends BaseOrderModel
                 left join ' . $this->_table['code'] . ' as CPT
                     on P.ProdTypeCcd = CPT.Ccd and CPT.IsStatus = "Y" and CPT.GroupCcd = "' . $this->_group_ccd['ProdType']. '"
                 left join ' . $this->_table['code'] . ' as CLP
-                    on PL.LearnPatternCcd = CLP.Ccd and CLP.IsStatus = "Y" and CLP.GroupCcd = "' . $this->_group_ccd['LearnPattern']. '"';
+                    on PL.LearnPatternCcd = CLP.Ccd and CLP.IsStatus = "Y" and CLP.GroupCcd = "' . $this->_group_ccd['LearnPattern']. '"
+                left join ' . $this->_table['code'] . ' as CCA
+                    on PL.CampusCcd = CCA.Ccd and CCA.IsStatus = "Y" and CCA.GroupCcd = "' . $this->_group_ccd['Campus'] . '"';
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);

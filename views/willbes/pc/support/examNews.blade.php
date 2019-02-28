@@ -82,7 +82,7 @@
         </div>
         <!-- willbes-CScenter -->
     </div>
-    {!! banner('수험정보_우측', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
+    {!! banner('수험정보_우측퀵', 'Quick-Bnr ml20', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
 </div>
 <!-- End Container -->
 @stop

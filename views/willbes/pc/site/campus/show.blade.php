@@ -56,8 +56,7 @@
                 </div>
             </div>
         </div>
-
-        {!! banner('전국캠퍼스_우측날개', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
+        {!! banner('전국캠퍼스_우측퀵', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
     </div>
 
     <script type="text/javascript">

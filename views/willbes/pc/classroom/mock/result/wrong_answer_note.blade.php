@@ -279,9 +279,11 @@
         var initBody;
         window.onbeforeprint = function(){
             initBody = $('#widthFrame').html();
+            $('.btnAgR').hide();
             document.body.innerHTML =  $('.exam-paperList').html();
         };
         window.onafterprint = function(){
+            $('.btnAgR').show();
             document.body.innerHTML = initBody;
         };
         window.print();

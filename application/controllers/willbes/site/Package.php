@@ -55,7 +55,13 @@ class Package extends \app\controllers\FrontController
             ]
         ];
 
-        $list = $this->packageFModel->listSalesProduct($this->_learn_pattern,false,$arr_condition,null,null,['ProdCode'=>'desc']);
+        if (element('search_order', $arr_input) == 'course') {
+            $order_by = ['OrderNumCourse'=>'desc'];
+        } else {
+            $order_by = ['ProdCode'=>'desc'];
+        }
+
+        $list = $this->packageFModel->listSalesProduct($this->_learn_pattern,false,$arr_condition,null,null,$order_by);
 
         //$prod_codes = array_pluck($list,'ProdCode');        //추출목록 중 상품코드만 재 추출
         //$contents = $this->packageFModel->findProductContents($prod_codes); //상품 컨텐츠 추출  : info() 로 대체

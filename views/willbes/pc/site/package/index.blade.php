@@ -68,6 +68,12 @@
 
             <div class="willbes-Lec-Search p_re mb60">
                 <div class="inputBox p_re">
+                    <div class="selectBox">
+                        <select id="search_order" name="search_order" class="" onchange="goUrl('search_order', this.value);">
+                            <option value="regist" @if(element('search_order', $arr_input) == 'regist') selected="selected" @endif>최근등록순</option>
+                            <option value="course" @if(element('search_order', $arr_input) == 'course') selected="selected" @endif>과정순</option>
+                        </select>
+                    </div>
                     <input type="text" id="prod_name" name="prod_name" maxlength="30" value="{{ element('prod_name', $arr_input) }}" placeholder="강의명">
                     <button type="submit" onclick="goUrl('prod_name', document.getElementById('prod_name').value);" class="search-Btn">
                         <span>검색</span>

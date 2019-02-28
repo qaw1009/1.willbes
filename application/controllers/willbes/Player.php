@@ -1055,7 +1055,7 @@ class Player extends \app\controllers\FrontController
         if(empty($wUnitIdx) == true){
             $this->StarplayerResult(true, '수강할 회차 정보가 없습니다.');
         }
-logger($wUnitIdx);
+
         // 수강가능인지 체크
         $lec = $this->classroomFModel->getLecture([
             'EQ' => [
@@ -1123,6 +1123,7 @@ logger($wUnitIdx);
         }
 
         if(is_array($wUnitIdx) == true){
+            logger(implode(',', $wUnitIdx));
             $cond_arr = [
                 'EQ' => [
                     'MemIdx' => $MemIdx,
@@ -1136,6 +1137,7 @@ logger($wUnitIdx);
                 ]
             ];
         } else {
+            logger($wUnitIdx);
             $cond_arr = [
                 'EQ' => [
                     'MemIdx' => $MemIdx,

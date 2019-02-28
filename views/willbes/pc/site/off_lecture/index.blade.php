@@ -329,9 +329,8 @@
         {{-- footer script --}}
         @include('willbes.pc.site.off_lecture.only_footer_partial')
     </div>
-    <div class="Quick-Bnr ml20">
-        {!! banner('수강신청_우측퀵', '', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
-    </div>
+    {!! banner('수강신청_우측퀵', '', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
+
 </div>
 {!! popup('657002') !!}
 <!-- End Container -->

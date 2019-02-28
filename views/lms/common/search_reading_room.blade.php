@@ -192,7 +192,7 @@
                 // 독서실 or 사물함
                 var data = ' data-prod-type="' + prod_type + '" data-learn-pattern-ccd=""';
                 data += ' data-prod-name="' + Base64.encode(row.ReadingRoomName) + '" data-sale-price="' + row.main_SalePrice + '" data-real-sale-price="' + row.main_RealSalePrice + '"';
-                data += ' data-prod-type-ccd-name="{{$mang_title}}" data-learn-pattern-ccd-name=""';
+                data += ' data-prod-type-ccd-name="{{$mang_title}}" data-learn-pattern-ccd-name="" data-campus-ccd-name="' + (row.CampusName != null ? row.CampusName : '') + '"';
 
                 var html = '<span class="pr-10">[' + row.ProdCode + '] ' + row.ReadingRoomName;
                 html += '   <a href="#none" data-prod-code="' + row.ProdCode + '" class="selected-product-delete"><i class="fa fa-times red"></i></a>';
@@ -203,7 +203,7 @@
                 if (row.sub_SalePrice > 0) {
                     data = ' data-prod-type="deposit" data-learn-pattern-ccd=""';
                     data += ' data-prod-name="' + Base64.encode(row.ReadingRoomName) + '" data-sale-price="' + row.sub_SalePrice + '" data-real-sale-price="' + row.sub_RealSalePrice + '"';
-                    data += ' data-prod-type-ccd-name="예치금" data-learn-pattern-ccd-name=""';
+                    data += ' data-prod-type-ccd-name="예치금" data-learn-pattern-ccd-name="" data-campus-ccd-name=""';
 
                     html += '<span class="pr-10">[' + row.SubProdCode + '] ' + row.ReadingRoomName;
                     html += '   <a href="#none" data-prod-code="' + row.SubProdCode + '" class="selected-product-delete"><i class="fa fa-times red"></i></a>';

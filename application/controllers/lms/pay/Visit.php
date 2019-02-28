@@ -7,7 +7,7 @@ class Visit extends BaseOrder
 {
     protected $models = array('pay/orderList', 'pay/order', 'pay/salesProduct', 'member/manageMember', 'service/point', 'sys/site', 'sys/code');
     protected $helpers = array();
-    private $_list_add_join = array('refund');
+    private $_list_add_join = array('refund', 'campus');
 
     public function __construct()
     {
@@ -138,10 +138,10 @@ class Visit extends BaseOrder
     public function excel()
     {
         $headers = ['주문번호', '운영사이트', '회원명', '회원아이디', '회원휴대폰번호', '결제수단', '결제완료일', '접수신청일', '총 실결제금액', '총 환불금액', '총 남은금액'
-            , '상품구분', '상품명', '결제금액', '환불금액', '결제상태', '환불완료일', '환불완료자'];
+            , '상품구분', '캠퍼스', '상품명', '결제금액', '환불금액', '결제상태', '환불완료일', '환불완료자'];
 
         $column = 'OrderNo, SiteName, MemName, MemId, MemPhone, PayMethodCcdName, CompleteDatm, OrderDatm, tRealPayPrice, tRefundPrice
-            , (tRealPayPrice - cast(tRefundPrice as int)) as tRemainPrice, ProdTypeCcdName, ProdName, RealPayPrice, RefundPrice, PayStatusCcdName, RefundDatm, RefundAdminName';
+            , (tRealPayPrice - cast(tRefundPrice as int)) as tRemainPrice, ProdTypeCcdName, CampusCcdName, ProdName, RealPayPrice, RefundPrice, PayStatusCcdName, RefundDatm, RefundAdminName';
 
         $arr_condition = $this->_getListConditions();
         $list = $this->orderListModel->listExcelAllOrder($column, $arr_condition, $this->_getListOrderBy(), $this->_list_add_join);
@@ -187,7 +187,7 @@ class Visit extends BaseOrder
             if (empty($target_order_idx) === false && empty($target_prod_code) === false) {
                 $arr_condition = ['EQ' => ['O.OrderIdx' => $target_order_idx, 'OP.ProdCode' => $target_prod_code, 'OP.PayStatusCcd' => $this->orderListModel->_pay_status_ccd['paid']]];
                 $column = 'O.OrderNo, O.MemIdx, O.SiteCode, OP.ProdCode, P.ProdName, P.ProdTypeCcd, PL.LearnPatternCcd, CPT.CcdName as ProdTypeCcdName';
-                $column .= ', CLP.CcdName as LearnPatternCcdName, fn_product_saletype_price(OP.ProdCode, OP.SaleTypeCcd, "SalePrice") as SalePrice';
+                $column .= ', CLP.CcdName as LearnPatternCcdName, CCA.CcdName as CampusCcdName, fn_product_saletype_price(OP.ProdCode, OP.SaleTypeCcd, "SalePrice") as SalePrice';
                 $data['order_prod'] = $this->orderListModel->findOrderProduct($arr_condition, $column, 1, 0);
                 if (empty($data['order_prod']) === true) {
                     show_error('데이터 조회에 실패했습니다.');

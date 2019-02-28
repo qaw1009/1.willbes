@@ -243,8 +243,6 @@ class SiteMenuModel extends WB_Model
                     throw new \Exception($next_order_num);
                 }
 
-                logger('menu next order num => ', $next_order_num);
-
                 $data = array_merge($data, [
                     'SiteCode' => $row['SiteCode'],
                     'GroupMenuIdx' => $row['GroupMenuIdx'],

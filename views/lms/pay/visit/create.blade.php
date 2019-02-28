@@ -75,6 +75,7 @@
                             <table id="list_pay_info_table" class="table table-striped table-bordered">
                                 <thead>
                                 <tr>
+                                    <th>캠퍼스</th>
                                     <th>상품명</th>
                                     <th>주문금액</th>
                                     <th>할인율 [ <input type="checkbox" name="is_all_disc_rate" data-set-field="disc_type:R,disc_rate:0" class="flat" value="Y"> 전체적용 ]</th>
@@ -87,6 +88,7 @@
                                 <tbody>
                                     @foreach($data['order_prod'] as $order_prod_row)
                                         <tr>
+                                            <td>{{ $order_prod_row['CampusCcdName'] }}</td>
                                             <td><div class="blue inline-block">[{{ $order_prod_row['LearnPatternCcdName'] or $order_prod_row['ProdTypeCcdName'] }}]</div> {{ $order_prod_row['ProdName'] }}
                                                 <input type="hidden" name="order_prod_idx[]" value="{{ $order_prod_row['OrderProdIdx'] }}"/>
                                             </td>
@@ -117,7 +119,7 @@
                                 </tbody>
                                 <tfoot>
                                 <tr>
-                                    <td colspan="7" class="form-inline text-right bg-info bold">
+                                    <td colspan="8" class="form-inline text-right bg-info bold">
                                         [총 실결제금액] <input type="number" name="total_real_pay_price" class="form-control input-sm ml-10" title="총 실결제금액" value="{{ $data['order']['tRealPayPrice'] }}" readonly="readonly"> 원
                                     </td>
                                 </tr>
@@ -140,6 +142,7 @@
                             <table id="list_pay_info_table" class="table table-striped table-bordered">
                                 <thead>
                                 <tr>
+                                    <th>캠퍼스</th>
                                     <th>상품명</th>
                                     <th>주문금액</th>
                                     <th>할인율 [ <input type="checkbox" name="is_all_disc_rate" data-set-field="disc_type:R,disc_rate:0" class="flat" value="Y"> 전체적용 ]</th>
@@ -155,6 +158,7 @@
                                         {{-- 독서실, 사물함 연장 --}}
                                         @foreach($data['order_prod'] as $order_prod_row)
                                             <tr>
+                                                <td>{{ $order_prod_row['CampusCcdName'] }}</td>
                                                 <td><div class="blue inline-block">[{{ $order_prod_row['LearnPatternCcdName'] or $order_prod_row['ProdTypeCcdName'] }}]</div> {{ $order_prod_row['ProdName'] }}
                                                     <span class="red">- 연장 (<a href="{{ site_url('/pay/visit/show/') . $order_prod_row['TargetOrderIdx'] }}" class="red" target="_blank">{{ $order_prod_row['OrderNo'] }}</a>)</span>
                                                     <input type="hidden" name="prod_code[]" value="{{ $order_prod_row['ProdCode'] }}:{{ $order_prod_row['ProdType'] }}:{{ $order_prod_row['LearnPatternCcd'] }}"/>
@@ -194,7 +198,7 @@
                                 </tbody>
                                 <tfoot>
                                 <tr>
-                                    <td colspan="8" class="form-inline text-right bg-info bold">
+                                    <td colspan="9" class="form-inline text-right bg-info bold">
                                         [총 실결제금액] <input type="number" name="total_real_pay_price" class="form-control input-sm ml-10" title="총 실결제금액" value="0" readonly="readonly"> 원
                                     </td>
                                 </tr>
@@ -261,6 +265,7 @@
                             <th class="rowspan">결제완료일 (접수신청일)</th>
                             <th class="rowspan">총 실결제금액</th>
                             <th>상품구분</th>
+                            <th>캠퍼스</th>
                             <th>상품명</th>
                             <th>실결제금액</th>
                             <th>결제상태</th>
@@ -402,6 +407,7 @@
 
                     if ($selected_prod_code.hasOwnProperty(code) === false) {
                         html += '<tr>\n' +
+                            '    <td>' + data.campusCcdName + '</td>\n' +
                             '    <td><div class="blue inline-block">[' + (data.learnPatternCcdName !== '' ? data.learnPatternCcdName : data.prodTypeCcdName) + ']</div> ' + Base64.decode(data.prodName) +
                             '    ' + '<input type="hidden" name="prod_code[]" value="' + code + ':' + data.prodType + ':' + data.learnPatternCcd + '"/>' +
                             '    ' + (data.prodType === 'reading_room' || data.prodType === 'locker' ? '<br/><button type="button" name="btn_set_seat" class="btn btn-xs btn-success mt-5 mb-0" data-prod-type="' + data.prodType + '" data-prod-code="' + code + '" data-target-order-idx="">' + data.prodTypeCcdName + '배정</button>' : '') +
@@ -582,6 +588,7 @@
                     {'data' : 'ProdTypeCcdName', 'render' : function(data, type, row, meta) {
                         return data + (row.SalePatternCcdName !== '' ? '<br/>(' + row.SalePatternCcdName + ')' : '');
                     }},
+                    {'data' : 'CampusCcdName'},
                     {'data' : 'ProdName', 'render' : function(data, type, row, meta) {
                         return '<span class="blue no-line-height">[' + (row.LearnPatternCcdName !== null ? row.LearnPatternCcdName : row.ProdTypeCcdName) + ']</span> ' + data;
                     }},

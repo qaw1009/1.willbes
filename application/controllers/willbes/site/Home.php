@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends \app\controllers\FrontController
 {
-    protected $models = array('product/productF', 'onAirF', 'support/supportBoardF');
+    protected $models = array('product/productF', 'onAirF', 'support/supportBoardF', 'bannerF');
     protected $helpers = array();
     protected $auth_controller = false;
     protected $auth_methods = array();
@@ -66,6 +66,7 @@ class Home extends \app\controllers\FrontController
         $data['notice'] = $this->_boardNotice(4);
         $data['exam_announcement'] = $this->_boardExamAnnouncement(4);
         $data['exam_news'] = $this->_boardExamNews(4);
+        $data['main_quick'] = $this->_banner();
 
         return $data;
     }
@@ -243,5 +244,21 @@ class Home extends \app\controllers\FrontController
         }
 
         return $temp_campus;
+    }
+
+    /**
+     * 메인 우측 퀵배너
+     * @return array
+     */
+    private function _banner()
+    {
+        $arr_disp = ['메인_우측퀵_01','메인_우측퀵_02','메인_우측퀵_03'];
+        $result = $this->bannerFModel->findBannersInArray($arr_disp, $this->_site_code, 0);
+
+        $data = [];
+        foreach ($result as $key => $row) {
+            $data[$row['DispName']][] = $result[$key];
+        }
+        return $data;
     }
 }

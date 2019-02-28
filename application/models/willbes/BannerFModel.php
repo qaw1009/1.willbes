@@ -26,12 +26,44 @@ class BannerFModel extends WB_Model
             return [];
         }
 
-        $column = 'B.BIdx, BD.BdIdx, B.BannerName, B.LinkType, B.LinkUrl, B.BannerFullPath, B.BannerImgName, BD.DispTypeCcd, BD.DispRollingTypeCcd, BD.DispRollingTime';
+        $column = 'B.BIdx, BD.BdIdx, B.BannerName, B.LinkType, B.LinkUrl, B.LinkUrlType, B.BannerFullPath, B.BannerImgName, BD.DispTypeCcd, BD.DispRollingTypeCcd, BD.DispRollingTime';
         $arr_condition = [
             'EQ' => [
                 'BD.SiteCode' => $site_code,
                 'BD.CateCode' => $cate_code,
                 'BD.DispName' => $disp_name,
+                'BD.IsUse' => 'Y',
+                'BD.IsStatus' => 'Y',
+                'B.IsUse' => 'Y',
+                'B.IsStatus' => 'Y'
+            ],
+            'RAW' => [
+                'NOW() between ' => 'B.DispStartDatm and B.DispEndDatm'
+            ]
+        ];
+        $order_by = ['B.OrderNum' => 'asc'];
+
+        return $this->_conn->getJoinListResult($this->_table['banner'] . ' as B', 'inner', $this->_table['banner_disp'] . ' as BD', 'B.BdIdx = BD.BdIdx',
+            $column, $arr_condition, null, null, $order_by);
+    }
+
+    /**
+     * 노출섹션명, 사이트코드, 대분류 카테고리 코드에 맞는 배너 조회
+     * @param array $arr_disp_name [노출섹션명]
+     * @param $site_code [사이트코드]
+     * @param int $cate_code [대분류 카테고리 코드, `0`이면 전체카테고리]
+     * @return array|int
+     */
+    public function findBannersInArray($arr_disp_name = [], $site_code, $cate_code = 0)
+    {
+        $column = 'BD.DispName, B.BIdx, BD.BdIdx, B.BannerName, B.LinkType, B.LinkUrl, B.LinkUrlType, B.BannerFullPath, B.BannerImgName, BD.DispTypeCcd, BD.DispRollingTypeCcd, BD.DispRollingTime';
+        $arr_condition = [
+            'IN' => [
+                'BD.DispName' => $arr_disp_name
+            ],
+            'EQ' => [
+                'BD.SiteCode' => $site_code,
+                'BD.CateCode' => $cate_code,
                 'BD.IsUse' => 'Y',
                 'BD.IsStatus' => 'Y',
                 'B.IsUse' => 'Y',

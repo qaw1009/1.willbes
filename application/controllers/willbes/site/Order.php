@@ -64,6 +64,7 @@ class Order extends \app\controllers\FrontController
         $results['point'] = $this->pointFModel->getMemberPoint($cart_type == 'book' ? 'book' : 'lecture');
 
         $this->load->view('site/order/index', [
+            'cart_type' => $cart_type,
             'arr_tel1_ccd' => $codes[$this->_group_ccd['Tel1']],
             'arr_phone1_ccd' => $codes[$this->_group_ccd['Phone1']],
             'arr_pay_method_ccd' => $arr_pay_method_ccd,

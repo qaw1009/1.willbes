@@ -223,7 +223,7 @@ class BaseProductFModel extends WB_Model
             // 이미 정의된 추가 컬럼
             $arr_define_column = [
                 'ProfReferData' => 'ifnull(fn_professor_refer_data(P.ProfIdx), "N") as ProfReferData',
-                'IsNew' => 'if(datediff(NOW(), P.RegDatm) > 30, "N", "Y") as IsNew',
+                'IsNew' => 'if(datediff(NOW(), P.RegDatm) > 1, "N", "Y") as IsNew',
                 'ProfEventData' => 'ifnull(fn_professor_event_data(P.ProfIdx, P.SiteCode, PSC.CateCode, PSC.SubjectIdx, 1), "N") as ProfEventData',
                 'StudyCommentData' => 'ifnull(fn_professor_study_comment_data(P.ProfIdx, P.SiteCode, PSC.CateCode, PSC.SubjectIdx, 3), "N") as StudyCommentData'
             ];

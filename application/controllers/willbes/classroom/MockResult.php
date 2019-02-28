@@ -232,8 +232,8 @@ class MockResult extends \app\controllers\FrontController
         $productInfo = $this->mockExamModel->productInfo($arr_condition);
 
         //과목별 문항분석 쿼리(mode = 1) , 영역 및 학습요소(mode = 2)
-        $dataSubject = $this->mockExamModel->gradeSubjectDetailCall($prodcode, 1);
-        $dataSubject2 = $this->mockExamModel->gradeSubjectDetailCall($prodcode, 2);
+        $dataSubject = $this->mockExamModel->gradeSubjectDetailCall($prodcode, $mridx, 1);
+        $dataSubject2 = $this->mockExamModel->gradeSubjectDetailCall($prodcode, $mridx, 2);
 
         // 문항별분석
         foreach($dataSubject as $key => $val){

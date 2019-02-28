@@ -1280,8 +1280,9 @@ class Player extends \app\controllers\FrontController
             $XMLString .= "</content>";
         }
         $XMLString .= "</axis-app>";
-
-        echo $this->crypto->encrypt($XMLString);
+        $EncData = $this->crypto->encrypt($XMLString);
+        logger('M:'.$EncData.':');
+        echo $EncData;
         exit(0);
     }
 

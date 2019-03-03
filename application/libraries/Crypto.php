@@ -53,7 +53,8 @@ class Crypto
         //echo 'default encrypt : '. $value . '<br />';
         // Encrypt the value.
         //$output = mcrypt_encrypt(MCRYPT_RIJNDAEL_128, $this->key, $value, MCRYPT_MODE_CBC, $this->initialVector) ;
-        $output = openssl_encrypt($value, 'AES-128-CBC', $this->key, OPENSSL_RAW_DATA|OPENSSL_ZERO_PADDING, $this->initialVector);
+        $output = openssl_encrypt($value, 'AES-128-CBC', $this->key, OPENSSL_RAW_DATA, $this->initialVector);
+        //$output = openssl_encrypt($value, 'AES-128-CBC', $this->key, OPENSSL_RAW_DATA|OPENSSL_ZERO_PADDING, $this->initialVector);
         //echo 'xml : '. base64_encode($output) . '<br />';
         // Return a base64 encoded string of the encrypted value.
         return base64_encode($output);
@@ -71,7 +72,8 @@ class Crypto
 
         // Decrypt the value.
         //$output = mcrypt_decrypt(MCRYPT_RIJNDAEL_128, $this->key, $value, MCRYPT_MODE_CBC, $this->initialVector) ;
-        $output = openssl_decrypt($value, 'AES-128-CBC', $this->key, OPENSSL_RAW_DATA|OPENSSL_ZERO_PADDING, $this->initialVector);
+        $output = openssl_decrypt($value, 'AES-128-CBC', $this->key, OPENSSL_RAW_DATA, $this->initialVector);
+        //$output = openssl_decrypt($value, 'AES-128-CBC', $this->key, OPENSSL_RAW_DATA|OPENSSL_ZERO_PADDING, $this->initialVector);
         //echo 'origin : '. self::fromPkcs7($output) . '<br />';
         // Strip padding and return.
         return self::fromPkcs7($output) ;

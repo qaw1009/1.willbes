@@ -60,10 +60,13 @@
                 <li class="c_both"></li>
                 <li><a href="{{ site_url('/home/html/event_onLeaveArmyPassIntro') }}" target="_blank">전역군인인증 통합</a></li>
                 <li><a href="{{ site_url('/home/html/event_onLeaveArmyPass') }}" target="_blank">전역군인인증 온라인 메인</a></li>
-                <li><a href="{{ site_url('/home/html/event_onLeaveArmyPassConfirmPop') }}" target="_blank">전역군인인증 온라인 팝업_size 740x700</a></li>
-                <li><a href="{{ site_url('/home/html/event_onLeaveArmyPassLec') }}" target="_blank">전역군인인증 온라인 강의</a></li>
+                <li><a href="{{ site_url('/home/html/event_onLeaveArmyPassLec') }}" target="_blank">전역군인인증 온라인 강의</a></li>                
+                <li><a href="{{ site_url('/home/html/event_onLeaveArmyPassConfirmPop') }}" target="_blank">전역군인인증 온라인 팝업_size 740x700</a></li>                
                 <li><a href="{{ site_url('/home/html/event_onMouPop') }}" target="_blank">온라인 교육 콘텐츠 제공 업무제공 체결(MOU) 팝업_size 850x700</a></li>   
                 <li><a href="{{ site_url('/home/html/event_onCopReboundPop') }}" target="_blank">타 학원 수강생 인증 팝업_size 740x700</a></li>
+                <li><a href="{{ site_url('/home/html/event_onLeaveArmyPass_incheon') }}" target="_blank">전역간부대상 인천교육과정</a></li>
+                <li><a href="{{ site_url('/home/html/event_onLeaveArmyPass_seoul') }}" target="_blank">전역간부대상 노량진교육과정</a></li>
+                <li><a href="{{ site_url('/home/html/event_onLeaveArmyPass_busan') }}" target="_blank">전역간부대상 서면교육과정</a></li>
             </ul>
         </div>
     </li>

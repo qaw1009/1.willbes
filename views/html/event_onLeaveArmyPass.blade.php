@@ -19,13 +19,42 @@
         .evtCtnsBox {width:100%; text-align:center; min-width:1210px;}
 
         /************************************************************/
-        
-        .LAeventA01 {
-            position:relative;
-            width:100%; 
-            text-align:center; 
-            background:url(../../public/img/willbes/leave_army/la_on_top_bg.jpg) no-repeat center top;         
+
+        .rLnb {
+            position:absolute; width:190px; top:100px; right:10px; z-index:1;
         }
+        .rLnb ul {background:#fff; border:1px solid #2f2f2f; margin-bottom:10px;
+            -webkit-box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.21);
+            -moz-box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.21);
+            box-shadow:5px 5px 10px 0px rgba(0,0,0,0.21);
+        }
+        .rLnb li {}
+        .rLnb li:first-child {
+            background:#cdcdcd;
+            color:#000;
+            text-align:center;
+            padding:12px 0;
+            font-weight:bold;
+            font-size:15px;
+			letter-spacing:-1px			
+        }
+        .rLnb .typeA a {
+            border-bottom:1px solid #bfbfbf; display:block; padding:10px 10px 10px 15px; line-height:1.4; font-weight:bold; 
+            background:url(http://file3.willbes.net/new_gosi/2019/leave_army/leaveArmylnb_arrow.jpg) no-repeat 93% center;}
+        .rLnb .typeA a:hover {
+            font-weight: 600;
+            background:#ebebeb url(http://file3.willbes.net/new_gosi/2019/leave_army/leaveArmylnb_arrow.jpg) no-repeat 93% center;
+        }
+        .rLnb .typeA li:last-child a {border:0}
+        .rLnb .typeB li {            
+            text-align:center;
+            padding:15px 0;
+            line-height: 1.4;
+        }
+        .rLnb .typeB a {display:block; background:#000; color:#fff; border-radius: 20px; padding:8px 0; margin:0 20px}
+        .rLnb_sectionFixed {position:fixed; top:20px}	
+        
+        .LAeventA01 {background:url(http://file3.willbes.net/new_gosi/2019/leave_army/la_on_top_bg.jpg) no-repeat center top; position:relative;}
         /*플립 애니메이션*/
         .LAeventA01 .main_img {position:absolute; width:601px; top:1000px; left:50%; margin-left:-488px; z-index:10; opacity:0;filter:alpha(opacity=0);-webkit-animation-duration: 1s;animation-duration: 1s;-webkit-animation-fill-mode: both;animation-fill-mode: both}
         @@keyframes flipInX {
@@ -77,9 +106,21 @@
     </style>
     
     <div class="p_re evtContent" id="evtContainer">
-        @include('html.event_onLeaveArmyPassRlnb') 
-        
-        <div class="LAeventA01">
+        <div class="rLnb">
+            @include('html.event_onLeaveArmyPassRlnb')
+            <ul class="typeB">
+                <li class="NSK-Black">전역(예정)간부 가입/인증</li> 
+                <!--인증 전-->
+                <li><a href="javascript:openArmConfirm(0);">가입 및 인증하기 &gt;</a></li>   
+                 <!--인증 후-->            
+                <li><strong>홍길동</strong>님은<br /><span>인증완료</span><br />상태입니다.</li>                              	
+            </ul>
+            <div>
+            	<img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_q_bnr02.jpg" alt=""/> 
+            </div>
+        </div>
+
+        <div class="evtCtnsBox LAeventA01">
 		  	<div class="main_img flipInX animated" style="opacity:1;">
                 <img src="{{ img_url('leave_army/la_on_top_txt.png') }}" alt="윌비스 PASS 혜택">  
 			</div>
@@ -98,8 +139,8 @@
             </ul>
             <img src="{{ img_url('leave_army/la_on_02.jpg') }}"  alt="" usemap="#Mappass02"/>
             <map name="Map" id="Mappass02">
-                <area shape="rect" coords="194,1063,398,1102" href="#" />
-                <area shape="rect" coords="714,1063,922,1102" href="#" />
+                <area shape="rect" coords="194,1063,398,1102" href="javascript:openArmConfirm(0);"/>
+                <area shape="rect" coords="714,1063,922,1102" href="https://www.local.willbes.net/home/html/event_onLeaveArmyPassLec" />
             </map>
         </div>
         <div class="LAeventA03">
@@ -107,6 +148,83 @@
         </div>
     </div>
     <!-- End Container -->
+
+    <script type="text/javascript">
+    function openArmConfirm(){
+        var url = 'https://www.local.willbes.net/home/html/event_onLeaveArmyPassConfirmPop' ;
+        window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
+    }
+
+
+    function armLoginCheck() {
+        var url = window.location.pathname+window.location.search;
+        $("#url_path").val(url);
+        $('#armFrm').attr("action","<c:url value='/user/confirmEventLogin'/>");
+        $('#armFrm').submit();
+    }
+
+    function suvreyPop(){
+        if("<c:out value='${userInfo.USER_ID}' />" == ""){
+            alert("로그인 후 이용해주세요.");
+            return;
+        }
+        if(parseInt('${armCount}')<1){
+            alert("먼저 제대군인 인증을 해주세요.");
+            return;
+        }
+        var surveyid = 1;
+        $.ajax({		     
+            type: "POST", 
+            url : '<c:url value="/survey/user_survey_chk"/>?SURVEYID='+surveyid,
+            dataType: "text",  
+            async : false,
+            beforeSubmit: function (data, frm, opt) {
+            },
+            success: function(RES) {
+                if($.trim(RES)=="N"){           
+                    alert("이미 참여하였습니다.");
+                    return;
+                }else if($.trim(RES)=="Y"){
+                    var url = '<c:url value="/survey/view.html?event_cd=On_leaveArmySurveyPop"/>&SURVEYID='+surveyid;
+                    window.open(url,'survey', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=600,height=700');
+                }else{
+                    alert("참여 실패하였습니다.");
+                    return;
+                }
+            },complete: function(){
+            },error: function(){
+                alert("참여 실패하였습니다.");
+                return;
+            }
+        });
+    }
+
+
+
+    $( document ).ready( function() {
+                var jbOffset = $( '.rLnb' ).offset();
+                $( window ).scroll( function() {
+                if ( $( document ).scrollTop() > jbOffset.top ) {
+                    $( '.rLnb' ).addClass( 'rLnb_sectionFixed' );
+                }
+                else {
+                    $( '.rLnb' ).removeClass( 'rLnb_sectionFixed' );
+                }
+                });
+            } );
+
+            $(document).ready(function() {
+                $('.rLnb').onePageNav({
+                    currentClass: 'hvr-shutter-out-horizontal_active'
+                });
+            });
+
+    $(function(e){
+        var targetOffset= $("#gridContainer").offset().top;
+        $('html, body').animate({scrollTop: targetOffset}, 1000);
+        /*e.preventDefault(); */   
+    });
+    </script>
 
     <script src="/public/js/willbes/jquery.nav.js"></script>
     <script>

@@ -8,7 +8,8 @@
             min-height: auto !important;
             margin-bottom:0 !important;
         }
-        .evtContent {
+        .evtContent { 
+            position:relative;            
             width:100% !important;
             min-width:1210px !important;
             background:#ccc;
@@ -31,7 +32,7 @@
         }
         .skybanner_sectionFixed {position:fixed; top:20px}    
 
-        .wb_cts01 {position:relative;overflow:hidden; min-width:1210px; text-align:center; margin-top:20px; background:url("http://file3.willbes.net/new_gosi/2019/01/EV190121Y_01_bg.jpg") center top  no-repeat ; margin-top:20px}
+        .wb_cts01 {position:relative;overflow:hidden; min-width:1210px; text-align:center; margin-top:20px; background:url("http://file3.willbes.net/new_gosi/2019/01/EV190121Y_01_bg.jpg") center top  no-repeat}
         .wb_cts02 {background:#111111 url("http://file3.willbes.net/new_gosi/2019/01/EV190121Y_02_bg.jpg") center top  no-repeat}
         .wb_cts03 {background:#07e9c4}
         .wb_cts04 {background:#f5f5f5}

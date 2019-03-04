@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends \app\controllers\FrontController
 {
-    protected $models = array('product/productF', 'onAirF', 'support/supportBoardF', 'bannerF');
+    protected $models = array('product/productF', 'onAirF', 'support/supportBoardF', 'bannerF', 'dDayF');
     protected $helpers = array();
     protected $auth_controller = false;
     protected $auth_methods = array();
@@ -59,6 +59,7 @@ class Home extends \app\controllers\FrontController
     private function _getSite2001Data($cate_code = '', $arr_campus = [])
     {
         if (APP_DEVICE == 'pc') {
+            $data['dday'] = $this->_dday();
             $data['best_product'] = $this->_product('on_lecture', 4, $cate_code, 'Best');
             $data['new_product'] = $this->_product('on_lecture', 4, $cate_code, 'New');
         }
@@ -259,6 +260,23 @@ class Home extends \app\controllers\FrontController
         foreach ($result as $key => $row) {
             $data[$row['DispName']][] = $result[$key];
         }
+        return $data;
+    }
+
+    /**
+     * 시험일정 조회 (디데이)
+     * @return mixed
+     */
+    private function _dday()
+    {
+        $arr_condition = [
+            'EQ' => [
+                'a.SiteCode' => $this->_site_code,
+                'b.CateCode' => $this->_cate_code
+            ]
+        ];
+
+        $data = $this->dDayFModel->getDDays($arr_condition, '1');
         return $data;
     }
 }

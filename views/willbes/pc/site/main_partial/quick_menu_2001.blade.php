@@ -1,11 +1,13 @@
 <ul>
+    @if(empty($data['dday']) === false)
     <li>
         <div class="QuickDdayBox">
-            <div class="q_tit">3차 필기시험</div>
-            <div class="q_day">2018.12.12</div>
-            <div class="q_dday NSK-Blac">D-5</div>
+            <div class="q_tit">{{$data['dday'][0]['DayTitle']}}</div>
+            <div class="q_day">{{$data['dday'][0]['DayDatm']}}</div>
+            <div class="q_dday NSK-Blac">{{($data['dday'][0]['DDay'] == 0) ? 'D-'.$data['dday'][0]['DDay'] : 'D'.$data['dday'][0]['DDay']}}</div>
         </div>
     </li>
+    @endif
     @if(empty($data['main_quick']['메인_우측퀵_01']) === false)
         <li>
             <div class="QuickSlider">

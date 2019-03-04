@@ -77,6 +77,19 @@
                 <li class="w50"><a href="{{ site_url('/home/html/event_onCopSampleQuestions') }}" target="_blank">기출문제 이모티콘 댓글 <span>*</span></a></li>
                 <li><a href="{{ site_url('/home/html/event_onCop181228_p') }}" target="_blank">최종합격예측서비스 <span>*</span></a></li>
                 <li><a href="{{ site_url('/home/html/event_onCop181228_p_pop2') }}" target="_blank">최종합격예측서비스 실시간 참여인원 팝업 size 500x850 <span>*</span></a></li>
+                <li><p>경찰 학원 ▼</p></li> 
+                <li class="w50"><a href="{{ site_url('/home/html/event_offCop_190211_p') }}" target="_blank">19년 1차대비 2월 전국모의고사</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offCop_basic') }}" target="_blank">2019 집중연강식 기본이론</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offCop_superpass') }}" target="_blank">2019 슈퍼패스</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offCop_sparta') }}" target="_blank">스파르타</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offCop_181220_j') }}" target="_blank">황세웅 경찰면접캠프</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offCop_180828_g') }}" target="_blank">경찰 통합생활관리반</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offCop_190108_dg_L') }}" target="_blank">대구 경찰면접팀</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offCop_180611_01_g') }}" target="_blank">스파르타 올인원 - 공무원 강습반</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offCop_180611_02_g') }}" target="_blank">스파르타 올인원 - 신광은 경찰팀</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offCop_180629_L') }}" target="_blank">스파르타 강한학습관리반</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offCop_180323') }}" target="_blank">실전에 강한 최준면접</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offCop_181112') }}" target="_blank">독한회독</a></li>
                 <li><p>공무원 온라인 ▼</p></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiFirePass') }}" target="_blank">소방 PASS <span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiNinePass') }}" target="_blank">9급 PASS <span>*</span></a></li>

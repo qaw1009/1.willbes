@@ -164,12 +164,10 @@
             if(wrongYn == 'N'){
                 var str = '- 검색된 문항이 없습니다. -';
             } else {
-                var str = '- 등록된 오답노트가 없습니다. -'
+                var str = '- 등록된 오답노트가 없습니다. -';
             }
             $('.exam-paperList').html("<li style='text-align:center; font-weight:bold; width:100%'>" + str +"</li>");
         }
-
-
     });
 
     function openMemo(num){
@@ -261,10 +259,6 @@
             }, true, 'POST', 'json');
 
     }
-
-    //$(function() {
-
-    //});
 
     function goLink(type){
         //값이 세팅되면 시작

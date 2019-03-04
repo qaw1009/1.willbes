@@ -21,11 +21,7 @@
 
         /************************************************************/ 
 
-        .menu {width:100%;  text-align:center; background:#252525;  margin-top:20px; min-width:1210px;}
-        .menu ul {width:100%; margin:0 auto; min-width:1210px;}
-
-        .wb_top {width:100%; text-align:center; background:#141414 url(http://file3.willbes.net/new_cop/2017/01/EV170126_p1_bg_1.jpg) repeat-y top; min-width:1210px}
-        .wb_top ul {width:100%; margin:0 auto; min-width:1210px}	
+        .wb_top {background:#141414 url(http://file3.willbes.net/new_cop/2017/01/EV170126_p1_bg_1.jpg) repeat-y top;}	
         
         /* 슬라이드배너 */
         .slide_con {position:relative; width:900px; margin:0 auto; padding-bottom:60px; padding-top:60px;}
@@ -44,11 +40,10 @@
         .tabContaier a.active img.off {display:none}
         .tabContaier a.active img.on {display:block}
         .tabContents iframe {width:854px; height:480px;}
-
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
-        <div class="wb_top" id="main">
+        <div class="evtCtnsBox wb_top" id="main">
 			<img src="http://file3.willbes.net/new_cop/2017/01/EV170126_p1.png"  alt="1"  />
 				<div style="width:980px;text-align:center;margin:0 auto;"> 				
                     <div class="tabContaier">
@@ -105,13 +100,13 @@
                 </map>				
 				<img src="http://file3.willbes.net/new_cop/2017/01/EV170126_p4_1.png"  alt="4" />
 			</ul>
-		</div><!--wb_cts04//-->              
+		</div>             
         
     </div>
     <!-- End Container -->
 
     <script type="text/javascript">
-        var tab1_url = ""https://www.youtube.com/embed/VLLgwLjqrj4?list=PLBXfMpjrxeIF4IU5m8V4NW9Uw5lSZIpUb?rel=0";
+        var tab1_url = "https://www.youtube.com/embed/VLLgwLjqrj4?list=PLBXfMpjrxeIF4IU5m8V4NW9Uw5lSZIpUb?rel=0";
         var tab2_url = "https://www.youtube.com/embed/iEExOwubOW0?rel=0";
 
 

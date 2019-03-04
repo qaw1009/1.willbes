@@ -91,6 +91,15 @@
                 <li><a href="{{ site_url('/home/html/event_offCop_190107_p') }}" target="_blank">18년 2차 최종합격자 중경입교식, 그 현장을 가다!</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onCop_170802_p') }}" target="_blank">해양경찰특채PASS <span>*</span></a></li>
                 <li><a href="{{ site_url('/home/html/event_onCop_170126_p') }}" target="_blank">영향력있는 언론들이 주목하는 윌비스신광은경찰팀</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190123_c') }}" target="_blank">적중 통합 페이지</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190111_c') }}" target="_blank">18년 3차 신광은 형사소송법 적중</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190118_y') }}" target="_blank">18년 3차 장정훈 경찰학개론 적중</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190102_p') }}" target="_blank">18년 3차 하승민 경찰영어 적중</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190110_o') }}" target="_blank">18년 3차 오태진 한국사 적중</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190111_pp') }}" target="_blank">18년 3차 원유철 한국사 적중</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190111_p') }}" target="_blank">18년 3차 김현정 경찰영어 적중</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190114_p') }}" target="_blank">박우찬 실용글쓰기</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190102_y') }}" target="_blank">경찰체력 정복하기</a></li>
                 <li><p>경찰 학원 ▼</p></li> 
                 <li class="w50"><a href="{{ site_url('/home/html/event_offCop_190211_p') }}" target="_blank">19년 1차대비 2월 전국모의고사</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_offCop_basic') }}" target="_blank">2019 집중연강식 기본이론</a></li>

@@ -130,12 +130,15 @@ class Home extends \app\controllers\FrontController
         $arr_disp = ['메인_빅배너','메인_서브1','메인_서브2','메인_서브3','메인_띠배너','메인_미들1','메인_미들2','메인_미들3','메인_미들4','메인_미들5','메인_이벤트','메인_대표교수','메인_포커스'];
 
         if (APP_DEVICE == 'pc') {
-            $data['notice'] = $this->_boardNotice(5);
+            $arr_campus = array_replace_recursive($arr_campus, $this->_getCampusInfo());
+            $data['arr_campus'] = $arr_campus;
             $data['exam_announcement'] = $this->_boardExamAnnouncement(5);
             $data['exam_news'] = $this->_boardExamNews(5);
             $data['arr_main_banner'] = $this->_banner($arr_disp);
+            foreach ($arr_campus as $row) {
+                $data['notice_campus'][$row['CampusCcd']] = $this->_boardNotice(2, '', [$row['CampusCcd']]);
+            }
         }
-
         return $data;
     }
 
@@ -200,7 +203,7 @@ class Home extends \app\controllers\FrontController
      */
     private function _boardExamAnnouncement($limit_cnt = 5, $cate_code = '', $arr_campus = [])
     {
-        $column = 'b.BoardIdx, b.Title, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
+        $column = 'b.BoardIdx, b.IsBest, b.AreaCcd_Name, b.Title, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
         $order_by = ['b.IsBest' => 'Desc', 'b.BoardIdx' => 'Desc'];
         $arr_condition = ['EQ' => ['b.BmIdx' => 54, 'b.IsUse' => 'Y']];
 

@@ -208,6 +208,8 @@
         });
 
         function scoreMake(mgidx){
+            if(!confirm("조정점수를 반영 하시겠습니까?")) return;
+
             $('#MgIdx').val(mgidx);
 
             var _url = '{{ site_url('/mocktest/statisticsGrade/scoreMakeAjax') }}';
@@ -216,7 +218,6 @@
                     alert(ret.ret_msg);
                 }
             }, showValidateError, null, false, 'alert');
-
         }
 
     </script>

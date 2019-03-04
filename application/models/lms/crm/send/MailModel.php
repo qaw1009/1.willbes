@@ -142,7 +142,7 @@ class MailModel extends WB_Model
 
         try{
             $this->load->library('upload');
-            $upload_sub_dir = config_item('upload_prefix_dir') . '/send/mail/' . date('Ymd');
+            $upload_sub_dir = config_item('upload_prefix_dir') . '/send/mail/' . date('Y') . '/' . date('md');
             $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->_getAttachImgNames(), $upload_sub_dir);
 
             if (empty($uploaded) === true || count($uploaded) <= 0) {
@@ -320,7 +320,7 @@ class MailModel extends WB_Model
             case "2" :
                 $i = 0;
                 $this->load->library('upload');
-                $upload_sub_dir = config_item('upload_prefix_dir') . '/send/mail/' . date('Ymd');
+                $upload_sub_dir = config_item('upload_prefix_dir') . '/send/mail/' . date('Y') . '/' . date('md');
                 $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->_getAttachImgNames(), $upload_sub_dir);
 
                 if (!empty($uploaded) === true || count($uploaded) > 0) {
@@ -359,7 +359,7 @@ class MailModel extends WB_Model
     {
         $mail_attach_path = '';
         $this->load->library('upload');
-        $upload_sub_dir = config_item('upload_prefix_dir') . '/send/mail/' . date('Ymd');
+        $upload_sub_dir = config_item('upload_prefix_dir') . '/send/mail/' . date('Y') . '/' . date('md');
         $uploaded = $this->upload->uploadFile('file', ['send_attach_file'], $this->_getAttachImgNames(), $upload_sub_dir);
 
         $input_data = [

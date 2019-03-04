@@ -242,7 +242,7 @@ class Cart extends \app\controllers\FrontController
         $ret_url = '';
         $post_data = null;
 
-        if (empty($prod_code) === true || empty($is_direct_pay) === true) {
+        if (empty($cart_type) === true || empty($prod_code) === true || empty($is_direct_pay) === true) {
             return '필수 파라미터 오류입니다.';
         }
 

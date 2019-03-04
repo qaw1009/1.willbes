@@ -78,12 +78,14 @@
                     <input type="hidden" name="sale_status_ccd" id="sale_status_ccd" value="{{$data['SaleStatusCcd']}}">
                     <div class="willbes-Lec-buyBtn">
                         <ul>
+                            @if($data['StudyApplyCcd'] != '654002')
                             <li class="btnAuto180 h36">
-                                <button type="submit" onclick="" class="mem-Btn bg-blue bd-dark-blue">
+                                <button type="button" name="btn_visit_pay" data-direct-pay="Y" data-is-redirect="Y" class="mem-Btn bg-blue bd-dark-blue">
                                     <span>방문결제</span>
                                 </button>
-                            </li>     
-                            @if(strpos("654002,654003", $data['StudyApplyCcd']) !== false)
+                            </li>
+                            @endif
+                            @if($data['StudyApplyCcd'] != '654001')
                             <li class="btnAuto180 h36">
                                 <button type="submit" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y" class="mem-Btn bg-white bd-dark-blue">
                                     <span class="tx-light-blue">바로결제</span>
@@ -440,15 +442,29 @@
                     return;
                 }
 
+                if ($(this).prop('name').indexOf('visit') > -1) {
+                    {{-- 방문결제 --}}
+                    $regi_off_form.find('input[name="cart_type"]').val(getCartType($regi_off_form));
 
-                var $is_direct_pay = $(this).data('direct-pay');
-                var $is_redirect = $(this).data('is-redirect');
-                cartNDirectPay($regi_off_form, $is_direct_pay, $is_redirect);
+                    if (confirm('방문접수를 신청하시겠습니까?')) {
+                        var url = '{{ front_url('/order/visit/direct', true) }}';
+                        ajaxSubmit($regi_off_form, url, function(ret) {
+                            if(ret.ret_cd) {
+                                alert(ret.ret_msg);
+                                location.replace(ret.ret_data.ret_url);
+                            }
+                        }, showValidateError, null, false, 'alert');
+                    }
+                } else {
+                    {{-- 바로결제 --}}
+                    var $is_direct_pay = $(this).data('direct-pay');
+                    var $is_redirect = $(this).data('is-redirect');
+                    cartNDirectPay($regi_off_form, $is_direct_pay, $is_redirect);
+                }
             });
 
             setRowspan('row_td');
             setRowspan('row_td2');
-
         });
     </script>
     <!-- End Container -->

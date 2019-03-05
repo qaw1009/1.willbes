@@ -8,13 +8,66 @@
                     @if($loop->last == false)<span class="row-line">|</span>@endif
                 </li>
             @endforeach
-            {{--<li><a href="#campus1" class="on">노량진(본원)</a><span class="row-line">|</span></li>
-            <li><a href="#campus2" class="">인천</a><span class="row-line">|</span></li>
-            <li><a href="#campus3" class="">대구</a><span class="row-line">|</span></li>
-            <li><a href="#campus4" class="">부산</a><span class="row-line">|</span></li>
-            <li><a href="#campus5" class="">광주</a></li>--}}
         </ul>
         <div class="tabBox noticeBox_campus">
+            @foreach($data['arr_campus'] as $row)
+                <div id="campus{{ $loop->index }}" class="tabContent">
+                    <div class="map_img">
+                        <img src="{{$row['MapPath']}}" alt="{{$row['CampusCcdName']}}">
+                        <span class="origin">{{$row['CampusCcdName']}}@if($loop->first == true)(본원)@endif</span>
+                    </div>
+                    <div class="campus_info">
+                        <dl>
+                            <dt>
+                                <div class="c-tit">
+                                    <span class="tx-color">{{$row['CampusCcdName']}}</span> 캠퍼스 공지사항
+                                    <a href="{{front_url('/support/notice/index?s_campus='.$row['CampusCcd'])}}" class="btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}" alt="더보기"></a>
+                                </div>
+                                <div class="c-info p_re">
+                                    <ul class="List-Table">
+                                        @foreach($data['notice_campus'] as $key => $notice_data)
+                                            @if($key == $row['CampusCcd'])
+                                                @if (empty($notice_data) === true)
+                                                    <li>등록된 내용이 없습니다.</li>
+                                                @else
+                                                    @foreach($notice_data as $notice_row)
+                                                        <li>
+                                                            <a href="{{front_url('/support/notice/show?board_idx='.$notice_row['BoardIdx'])}}">
+                                                                {{$notice_row['Title']}}
+                                                            </a>
+                                                        </li>
+                                                    @endforeach
+                                                @endif
+                                            @endif
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </dt>
+                            <dt>
+                                <div class="c-tit"><span class="tx-color">{{$row['CampusCcdName']}}</span> 캠퍼스 오시는 길</div>
+                                <div class="c-info">
+                                    <div class="address">
+                                        <span class="a-tit">주소</span>
+                                        <span>
+                                                {{$row['Addr']}}
+                                            </span>
+                                    </div>
+                                    <div class="tel">
+                                        <span class="a-tit">연락처</span>
+                                        <span class="tx-color">{{$row['Tel']}}</span>
+                                    </div>
+                                </div>
+                            </dt>
+                        </dl>
+                        <div class="btn NSK-Black">
+                            <a href="{{front_url('/support/qna/create?s_campus='.$row['CampusCcd'])}}">1:1 상담신청</a>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+
+        {{--<div class="tabBox noticeBox_campus">
             <div id="campus1" class="tabContent">
                 <div class="map_img">
                     <img src="{{ img_url('gosi_acad/map/mapSeoul.jpg') }}" alt="노량진">
@@ -216,6 +269,6 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>--}}
     </div>
 </div>

@@ -132,6 +132,7 @@ class Home extends \app\controllers\FrontController
         if (APP_DEVICE == 'pc') {
             $arr_campus = array_replace_recursive($arr_campus, $this->_getCampusInfo());
             $data['arr_campus'] = $arr_campus;
+            $data['gallery'] = $this->_gallery();
             $data['exam_announcement'] = $this->_boardExamAnnouncement(5);
             $data['exam_news'] = $this->_boardExamNews(5);
             $data['arr_main_banner'] = $this->_banner($arr_disp);
@@ -247,6 +248,15 @@ class Home extends \app\controllers\FrontController
                     '8' => ['MapPath' => img_url('cop_acad/map/map_cop_jj.jpg'),'Addr' => '제주도 제주시 동광로 56 3층','Tel' => '064-722-8140']
                 ];
                 break;
+            case "2004":
+                $temp_campus = [
+                    '0' => ['MapPath' => img_url('gosi_acad/map/mapSeoul.jpg'),'Addr' => '서울시동작구만양로105 2층<br/>(서울시동작구노량진동116-2 2층)','Tel' => '1544-0336'],
+                    '1' => ['MapPath' => img_url('gosi_acad/map/mapIC.jpg'),'Addr' => '인천 부평구 부평동 534-28 중보빌딩 10층','Tel' => '1544-1661'],
+                    '2' => ['MapPath' => img_url('gosi_acad/map/mapDG.jpg'),'Addr' => '대구 중구 중앙대로 412(남일동) CGV 2층','Tel' => '1522-6112'],
+                    '3' => ['MapPath' => img_url('gosi_acad/map/mapBS.jpg'),'Addr' => '부산 진구 부정동 223-8','Tel' => '1522-8112'],
+                    '4' => ['MapPath' => img_url('gosi_acad/map/mapKJ.jpg'),'Addr' => '광주 북구 호동로 6-11','Tel' => '062-514-4560']
+                ];
+                break;
             default:
                 $temp_campus = [];
         }
@@ -284,6 +294,31 @@ class Home extends \app\controllers\FrontController
         ];
 
         $data = $this->dDayFModel->getDDays($arr_condition, '1');
+        return $data;
+    }
+
+    /**
+     * 갤러리 게시판 데이터 조회
+     * @return array|int
+     */
+    private function _gallery()
+    {
+        $arr_condition = [
+            'EQ' => [
+                'b.BmIdx' => '90'
+                ,'b.IsUse' => 'Y'
+                ,'b.SiteCode' => $this->_site_code
+            ]
+        ];
+        $column = 'b.BoardIdx, b.Title, b.AttachData, b.CampusCcd_Name, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
+        $order_by = ['b.BoardIdx'=>'Desc'];
+        $data = $this->supportBoardFModel->listBoard(false,$arr_condition,$column,2,0,$order_by);
+
+        if (empty($data) === false) {
+            foreach ($data as $idx => $row) {
+                $data[$idx]['AttachData'] = json_decode($row['AttachData'], true);       //첨부파일
+            }
+        }
         return $data;
     }
 }

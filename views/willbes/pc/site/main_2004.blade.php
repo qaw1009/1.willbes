@@ -131,19 +131,19 @@
 
             <ul class="acad_infoBox">
                 <li class="w-infoBox1">
-                    <a href="#none"><span>1:1 학습컨설팅</span></a>
+                    <a href="{{ front_url('/consultManagement/index') }}"><span>1:1 학습컨설팅</span></a>
                 </li>
                 <li class="w-infoBox2">
-                    <a href="#none"><span>학원실강접수</span></a>
+                    <a href="{{ front_url('/OffVisitLecture') }}"><span>학원실강접수</span></a>
                 </li>
                 <li class="w-infoBox3">
-                    <a href="#none"><span>학원개강안내</span></a>
+                    <a href="{{ front_url('/offinfo/boardInfo/index/78') }}"><span>학원개강안내</span></a>
                 </li>
                 <li class="w-infoBox4">
-                    <a href="#none"><span>강의실배정표</span></a>
+                    <a href="{{ front_url('/offinfo/boardInfo/index/82') }}"><span>강의실배정표</span></a>
                 </li>
                 <li class="w-infoBox5">
-                    <a href="#none"><span>모의고사신청</span></a>
+                    <a href="{{ front_url('/mockTest/apply/cate/') }}"><span>모의고사신청</span></a>
                 </li>
             </ul>
         </div>
@@ -165,24 +165,31 @@
         <div class="widthAuto">
             <div class="sliderSuccess">
                 <div class="will-acadTit">학원 <span class="tx-color">갤러리</span></div>
-                <a href="#none" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
+                <a href="{{ front_url('/offinfo/gallery/index') }}" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
                 <ul>
-                    <li>
-                        <img src="{{ img_url('gosi_acad/gallery/gallery01.jpg') }}" alt="배너명">
-                        <div>
-                            <strong>[노량진]</strong>
-                            <p>새벽부터 길게 늘어선 학원수강생의 모습 학원수강생의 모습 학원수강생의 모습</p>
-                            <span>2019-01-15</span>
-                        </div>
-                    </li>
-                    <li>
-                        <img src="{{ img_url('gosi_acad/gallery/gallery02.jpg') }}" alt="배너명">
-                        <div>
-                            <strong>[노량진]</strong>
-                            <p>새벽부터 길게 늘어선 학원수강생의 모습 학원수강생의 모습 학원수강생의 모습</p>
-                            <span>2019-01-15</span>
-                        </div>
-                    </li>
+                    @if(empty($data['gallery']) === true)
+                        <li>
+                            <img src="{{ img_url('gosi_acad/gallery/gallery01.jpg') }}" alt="배너명">
+                            <div>
+                                <strong>[노량진]</strong>
+                                <p>새벽부터 길게 늘어선 학원수강생의 모습 학원수강생의 모습 학원수강생의 모습</p>
+                                <span></span>
+                            </div>
+                        </li>
+                    @else
+                        @foreach($data['gallery'] as $row)
+                            <li>
+                                <a href="{{ front_url('/offinfo/gallery/show/?board_idx='.$row['BoardIdx']) }}">
+                                <img src="{{ $row['AttachData'][0]['FilePath'] . $row['AttachData'][0]['FileName'] }}" alt="{{ $row['CampusCcd_Name'] }}">
+                                <div>
+                                    <strong>[{{ $row['CampusCcd_Name'] }}]</strong>
+                                    <p>{{hpSubString($row['Title'],0,56,'...')}}</p>
+                                    <span>{{$row['RegDatm']}}</span>
+                                </div>
+                                </a>
+                            </li>
+                        @endforeach
+                    @endif
                 </ul>
             </div>
 

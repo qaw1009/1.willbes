@@ -115,6 +115,8 @@
                 <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190225_g') }}" target="_blank">2019 해양경찰 기본이론</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190218_g') }}" target="_blank">영어 지옥 탈출반</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190219_g') }}" target="_blank">경찰영어 아침특강</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190219_c') }}" target="_blank">19 경찰1차대비 실전 문제풀이 패키지 <span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_180504_p') }}" target="_blank">법학경채 PASS</a></li>
                 <li><p>경찰 학원 ▼</p></li> 
                 <li class="w50"><a href="{{ site_url('/home/html/event_offCop_190211_p') }}" target="_blank">19년 1차대비 2월 전국모의고사</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_offCop_basic') }}" target="_blank">2019 집중연강식 기본이론</a></li>

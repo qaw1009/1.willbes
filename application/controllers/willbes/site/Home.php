@@ -90,7 +90,7 @@ class Home extends \app\controllers\FrontController
             $data['notice'] = $this->_boardNotice(5);
             $data['exam_news'] = $this->_boardExamNews(5);
             $data['onAir'] = $this->_onAir();
-            $data['notice_campus'] = $this->_boardNoticeByCampus();
+            $data['notice_campus'] = $this->_boardNoticeByCampus(2);
         }
         return $data;
     }
@@ -133,7 +133,7 @@ class Home extends \app\controllers\FrontController
             $data['exam_announcement'] = $this->_boardExamAnnouncement(5);
             $data['exam_news'] = $this->_boardExamNews(5);
             $data['arr_main_banner'] = $this->_banner($arr_disp);
-            $data['notice_campus'] = $this->_boardNoticeByCampus();
+            $data['notice_campus'] = $this->_boardNoticeByCampus(2);
         }
         return $data;
     }
@@ -232,7 +232,12 @@ class Home extends \app\controllers\FrontController
         return $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $arr_condition, $column, $limit_cnt, 0, $order_by);
     }
 
-    private function _boardNoticeByCampus()
+    /**
+     * 캠퍼스별 공지사항 조회
+     * @param int $limit_cnt
+     * @return array
+     */
+    private function _boardNoticeByCampus($limit_cnt = 2)
     {
         $arr_condition = [
             'EQ' => [
@@ -247,7 +252,7 @@ class Home extends \app\controllers\FrontController
         ];
 
         $selected_list = [];
-        $list = $this->supportBoardFModel->listBoardByCampus($arr_condition);
+        $list = $this->supportBoardFModel->listBoardByCampus($arr_condition, $limit_cnt);
         if (empty($list) === false) {
             foreach ($list as $row) {
                 $selected_list[$row['CampusCcd']][] = $row;

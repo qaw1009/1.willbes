@@ -88,9 +88,9 @@
                                         <td class="w-average">
                                             {{ round($row['TCNT'] / $row['KCNT'], 2) }}
                                         </td>
-                                        @if(substr($row['GradeOpenDatm'],0,10) <= date('Y-m-d'))
+                                        @if(substr($row['GradeOpenDatm'],0,10) <= date('Y-m-d')&&$row['gRegister']!=null)
                                             @if($row['TCNT']!=null)
-                                            <td class="w-report tx-red"><a href="javascript:popwin({{ $row['ProdCode'] }}, 1, {{ $row['MrIdx'] }}, {{ $row['TCNT'] }})">[성적확인]</a></td>
+                                                <td class="w-report tx-red"><a href="javascript:popwin({{ $row['ProdCode'] }}, 1, {{ $row['MrIdx'] }}, {{ $row['TCNT'] }})">[성적확인]</a></td>
                                             @else
                                                 <td>미제출</td>
                                             @endif
@@ -98,7 +98,7 @@
                                         <td class="w-report">집계중</td>
                                         @endif
                                         <td class="w-file on tx-blue">
-                                            @if(substr($row['GradeOpenDatm'],0,10) <= date('Y-m-d'))
+                                            @if(substr($row['GradeOpenDatm'],0,10) <= date('Y-m-d')&&$row['gRegister']!=null)
                                                 <a href="javascript:selQaFileAjax({{ $row['ProdCode'] }});">[문제/해설]</a><br>
                                                 <a href="javascript:popwin({{ $row['ProdCode'] }}, 2, {{ $row['MrIdx'] }}, {{ $row['TCNT'] }})">[오답노트]</a>
                                             @else

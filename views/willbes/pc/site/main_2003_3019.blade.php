@@ -354,6 +354,38 @@
         </div>
     </div>  
 </div>
+
+<script type="text/javascript">
+    $(function(){ 
+        $('.prof-subject').bxSlider({ 
+            speed:800,  
+            responsive:true,
+            infiniteLoop:true,
+            pager:false,
+            slideWidth:78,
+            minSlides:1,
+            maxSlides:8
+        });
+    });
+
+    $(function() {
+    $('.sliderNumRv').bxSlider({
+        speed:1000,
+        auto: true,
+        controls: true,
+        pause: 4000,
+        pager: true,
+        pagerType: 'short',
+        slideWidth:1120,
+        moveSlides:3,        
+        minSlides:3,
+        maxSlides:3,
+        onSliderLoad: function(){
+            $(".nSlider").css("visibility", "visible").animate({opacity:1}); 
+        }  
+    });
+});
+</script>
 {!! popup('657001', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
 <!-- End Container -->
 @stop

@@ -105,21 +105,25 @@
                                     </div>
                                     <div class="c-info p_re">
                                         <ul class="List-Table">
-                                            @foreach($data['notice_campus'] as $key => $notice_data)
-                                                @if($key == $row['CampusCcd'])
-                                                    @if (empty($notice_data) === true)
-                                                        <li>등록된 내용이 없습니다.</li>
-                                                    @else
-                                                        @foreach($notice_data as $notice_row)
-                                                            <li>
-                                                                <a href="{{front_url('/support/notice/show?board_idx='.$notice_row['BoardIdx'])}}">
-                                                                    {{$notice_row['Title']}}
-                                                                </a>
-                                                            </li>
-                                                        @endforeach
+                                            @if(empty($data['notice_campus']) === true)
+                                                <li>등록된 내용이 없습니다.</li>
+                                            @else
+                                                @foreach($data['notice_campus'] as $key => $notice_data)
+                                                    @if($key == $row['CampusCcd'])
+                                                        @if (empty($notice_data) === true)
+                                                            <li>등록된 내용이 없습니다.</li>
+                                                        @else
+                                                            @foreach($notice_data as $notice_row)
+                                                                <li>
+                                                                    <a href="{{front_url('/support/notice/show?board_idx='.$notice_row['BoardIdx'])}}">
+                                                                        {{$notice_row['Title']}}
+                                                                    </a>
+                                                                </li>
+                                                            @endforeach
+                                                        @endif
                                                     @endif
-                                                @endif
-                                            @endforeach
+                                                @endforeach
+                                            @endif
                                         </ul>
                                     </div>
                                 </dt>

@@ -32,8 +32,7 @@ class Crypto
             throw new Exception("A non-string value can not be encrypted.");
         }
 
-        //$output = openssl_encrypt($value, 'AES-128-CBC', $this->key, OPENSSL_RAW_DATA, $this->initialVector);
-        $output = openssl_encrypt($value, 'AES-128-CBC', $this->key, OPENSSL_RAW_DATA|OPENSSL_ZERO_PADDING, $this->initialVector);
+        $output = openssl_encrypt($value, 'AES-128-CBC', $this->key, OPENSSL_RAW_DATA, $this->initialVector);
 
         return base64_encode($output);
     }
@@ -46,8 +45,7 @@ class Crypto
 
         $value = base64_decode($value) ;
 
-        //$output = openssl_decrypt($value, 'AES-128-CBC', $this->key, OPENSSL_RAW_DATA, $this->initialVector);
-        $output = openssl_decrypt($value, 'AES-128-CBC', $this->key, OPENSSL_RAW_DATA|OPENSSL_ZERO_PADDING, $this->initialVector);
+        $output = openssl_decrypt($value, 'AES-128-CBC', $this->key, OPENSSL_RAW_DATA, $this->initialVector);
 
         return $output;
     }

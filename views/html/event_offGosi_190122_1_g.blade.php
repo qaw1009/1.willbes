@@ -409,12 +409,6 @@
                 $( '.skybanner' ).removeClass( 'skybanner_sectionFixed' );
               }
             });
-          } );
-
-        $(function(e){
-            var targetOffset= $("#evtContainer").offset().top;
-            $('html, body').animate({scrollTop: targetOffset}, 800);
-            /*e.preventDefault(); */   
-	    });       
+          } );      
     </script>    
 @stop

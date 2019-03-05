@@ -177,12 +177,6 @@
                 $( '.skybanner' ).removeClass( 'skybanner_sectionFixed' );
               }
             });
-          } );
-
-        $(function(e){
-            var targetOffset= $("#evtContainer").offset().top;
-            $('html, body').animate({scrollTop: targetOffset}, 1000);
-            /*e.preventDefault(); */   
-	    });       
+          } );      
     </script>    
 @stop

@@ -100,6 +100,7 @@
                 <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190111_p') }}" target="_blank">18년 3차 김현정 경찰영어 적중</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190114_p') }}" target="_blank">박우찬 실용글쓰기</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190102_y') }}" target="_blank">경찰체력 정복하기</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190113_p') }}" target="_blank">2019 쌩기초 경찰영어</a></li>
                 <li><p>경찰 학원 ▼</p></li> 
                 <li class="w50"><a href="{{ site_url('/home/html/event_offCop_190211_p') }}" target="_blank">19년 1차대비 2월 전국모의고사</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_offCop_basic') }}" target="_blank">2019 집중연강식 기본이론</a></li>

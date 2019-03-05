@@ -138,12 +138,6 @@ http://www.willbescop.net/teacher/movieTeacherBooklist.html?topMenuGnb=OM_002&to
                 $( '.skybanner' ).removeClass( 'skybanner_sectionFixed' );
               }
             });
-          } );
-
-        $(function(e){
-            var targetOffset= $("#evtContainer").offset().top;
-            $('html, body').animate({scrollTop: targetOffset}, 1000);
-            /*e.preventDefault(); */   
-	    });       
+          } );      
     </script>    
 @stop

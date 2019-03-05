@@ -107,6 +107,7 @@
                 </tr>
                 <tr class="bg-odd">
                     <th>상품구분</th>
+                    <th>캠퍼스</th>
                     <th>상품명</th>
                     <th>결제금액</th>
                     <th>환불금액</th>
@@ -156,7 +157,7 @@
                         var t_html = '<strong>[총 실결제금액] <span class="blue">' + addComma(t_real_pay_price) + '</span>'
                             + '<span class="red pl-20">[총 환불금액] ' + addComma(t_refund_price) + '</span> = [남은금액] ' + addComma(t_remain_price) + '</strong>';
 
-                        return $('<tr class="bg-odd"><td colspan="6"></td><td colspan="6">' + t_html + '</td></tr>');
+                        return $('<tr class="bg-odd"><td colspan="6"></td><td colspan="7">' + t_html + '</td></tr>');
                     },
                     dataSrc : 'OrderIdx'
                 },
@@ -181,6 +182,7 @@
                     {'data' : 'ProdTypeCcdName', 'render' : function(data, type, row, meta) {
                         return data + (row.SalePatternCcdName !== '' ? '<br/>(' + row.SalePatternCcdName + ')' : '');
                     }},
+                    {'data' : 'CampusCcdName'},
                     {'data' : 'ProdName', 'render' : function(data, type, row, meta) {
                         return '<span class="blue no-line-height">[' + (row.LearnPatternCcdName !== null ? row.LearnPatternCcdName : row.ProdTypeCcdName) + ']</span> ' + data;
                     }},

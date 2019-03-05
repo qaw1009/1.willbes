@@ -234,7 +234,8 @@ class OffLectureModel extends CommonLectureModel
             $product_data = array_merge($input_product,[
                 'UpdAdminIdx'=>$this->session->userdata('admin_idx')
             ]);
-            if ($this->_conn->set($product_data)->where('ProdCode', $prodcode)->update($this->_table['product']) === false) {
+
+            if ($this->_conn->set($product_data)->set('UpdDatm', 'NOW()', false)->where('ProdCode', $prodcode)->update($this->_table['product']) === false) {
                 throw new \Exception('상품 정보 수정에 실패했습니다.');
             }
             //echo $this->_conn->last_query();
@@ -400,6 +401,7 @@ class OffLectureModel extends CommonLectureModel
                 ,'StudyStartDate'=>element('StudyStartDate',$input)
                 ,'StudyEndDate'=>element('StudyEndDate',$input)
                 ,'Amount'=>element('Amount',$input)
+                ,'AmountDisp'=> element('AmountDisp',$input) !== '' ? element('AmountDisp',$input) : null
 
                 ,'IsLecStart'=>element('IsLecStart',$input,'N')
                 ,'IsPause'=>element('IsPause',$input,'N')

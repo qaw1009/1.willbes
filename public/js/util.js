@@ -282,13 +282,20 @@ function formCreateSubmit(url, params, method, target) {
  * @returns {string}
  */
 function frontUrl(uri) {
-    var url = location.protocol + '//' + location.host;
-
     if (location.pathname.indexOf('/pass/') === 0) {
-        url += '/pass';
+        uri = '/pass' + uri;
     }
 
-    return url + uri;
+    return siteUrl(uri);
+}
+
+/**
+ * 학원 사이트 URL 생성
+ * @param uri
+ * @returns {string}
+ */
+function frontPassUrl(uri) {
+    return siteUrl('/pass' + uri);
 }
 
 /**

@@ -418,11 +418,12 @@ class CommonLectureModel extends WB_Model
 
             for($i=0;$i<count($SaleTypeCcd);$i++) {
                 //if(empty($SalePrice[$i]) !== true) {  // 값이 0 일 경우 저장 안됨
+
                 if(get_var($SalePrice[$i]) !== '') {
                     $data = [
                         'ProdCode' => $prodcode
                         ,'SaleTypeCcd' => $SaleTypeCcd[$i]
-                        ,'SalePriceIsUse' => ($SalePriceIsUse[$i] === 'Y' ? 'Y' : 'N')
+                        ,'SalePriceIsUse' => ($SalePriceIsUse[$i] == 'Y' ? 'Y' : 'N')
                         ,'SalePrice' => $SalePrice[$i]
                         ,'SaleRate' => $SaleRate[$i]
                         ,'SaleDiscType' => $SaleDiscType[$i]
@@ -949,7 +950,7 @@ class CommonLectureModel extends WB_Model
                     , IsPackLecStartType, IsLecStart,IsPackPauseType, IsPause, PauseNum, IsPackExtenType, IsExten, ExtenNum, IsPackRetakeType,IsRetake, RetakeSaleRate, RetakePeriod, wCpIdx
                     , CpDistribution, IsEdit, IsSelLecCount, SelCount
                     , PackTypeCcd, PackCateCcd, PackCateEtcMemo, PackSelCount,PackAutoStudyExtenCcd,PackAutoStudyPeriod, FreeLecTypeCcd, FreeLecPasswd, CampusCcd, SchoolStartYear, SchoolStartMonth, SchoolStartDatm
-                    , StudyPatternCcd, StudyApplyCcd, FixNumber, IsLecOpen, AcceptStatusCcd, LecPlace,WeekArray,Amount,DeviceLimitCount,IsTpass
+                    , StudyPatternCcd, StudyApplyCcd, FixNumber, IsLecOpen, AcceptStatusCcd, LecPlace,WeekArray,Amount,AmountDisp,DeviceLimitCount,IsTpass
                     , ExternalCorpCcd, ExternalLinkCode ';
 
             $select_column= str_replace('ProdCode','\''.$prodcode_new.'\' as ProdCode',$insert_column);

@@ -5,6 +5,7 @@
 @import url("style_cop_adm.css");
 @import url("style_cop_pro.css");
 @import url("style_cop_sea.css");
+@import url("style_cop_sea_special.css");
 @import url("style_gosi.css");
 @import url("style_gosi_acad.css");
 @import url("style_gpgosi.css");
@@ -9294,7 +9295,8 @@ table.userInfoTable tr td {
 }
 table.userInfoTable .w-info label {
     display: inline-block;
-    margin-top: -8px;
+    margin-top:0;
+    cursor: pointer;
 }
 table.userInfoTable .w-info .w-txt {
     padding: 5px 0 10px;
@@ -9310,7 +9312,7 @@ table.userInfoTable input[type="text"] {
 table.userInfoTable input[type="checkbox"] {
     width: 15px;
     height: 15px;
-    margin: 10px 0 0 10px;
+    margin: 0;
 }
 table.userInfoTable select.phone,
 table.userInfoTable input.phone {

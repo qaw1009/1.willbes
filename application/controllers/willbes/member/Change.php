@@ -132,7 +132,9 @@ class Change extends BaseMember
             'Tel3' => $this->_req('Tel3'),
             'ZipCode' => $this->_req('ZipCode'),
             'Addr1' => $this->_req('Addr1'),
-            'Addr2' => $this->_req('Addr2')
+            'Addr2' => $this->_req('Addr2'),
+            'MailRcvStatus' => ($this->_req('MailRcvStatus') == 'Y' ? 'Y' : 'N'),
+            'SmsRcvStatus' => ($this->_req('SmsRcvStatus') == 'Y' ? 'Y' : 'N')
         ];
 
         if($this->memberFModel->setMember($MemIdx, $data) == false){

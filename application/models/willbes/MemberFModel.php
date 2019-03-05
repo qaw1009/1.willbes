@@ -252,10 +252,10 @@ class MemberFModel extends WB_Model
         }
 
         $updateColumnText = '';
+        $oriData = $this->getMember(false, [ 'EQ' => ['Mem.MemIdx' => $MemIdx]]);
 
         $this->_conn->trans_begin();
         try {
-            $oriData = $this->getMember(false, [ 'EQ' => ['Mem.MemIdx' => $MemIdx]]);
             if(empty($oriData) == true){
                 throw new \Exception('사용자 데이타 조회에 실패했습니다.');
             }
@@ -276,6 +276,10 @@ class MemberFModel extends WB_Model
                 'Tel3' => element('Tel3', $data)
             ];
             if($this->_conn->set($input)->
+                set('SmsRcvStatus', element('SmsRcvStatus', $data))->
+                set('MailRcvStatus', element('MailRcvStatus', $data))->
+                set('MailRcvDatm', 'NOW()', false)->
+                set('SmsRcvDatm', 'NOW()', false)->
                 set('TelEnc',"fn_enc('".element('Tel', $data)."')",false)->
                 set('Tel2Enc',"fn_enc('".element('Tel2', $data)."')",false)->
                 set('Addr2Enc',"fn_enc('".element('Addr2', $data)."')",false)->

@@ -121,40 +121,17 @@ class MockResult extends \app\controllers\FrontController
         $dataAdjust = $this->mockExamModel->gradeCall($prodcode, 'adjust', $mridx);
         $dataDetail = $this->mockExamModel->gradeDetailCall($prodcode, $mridx);
 
-        $Rank = 1;
-        $minusRank = 1;
-        $tempPoint = 0;
-        $tempMp = '';
-
         foreach($dataDetail as $key => $val){
             $mpidx = $val['MpIdx'];
-            $AdjustPoint = $val['AdjustPoint'];
 
-            if($tempMp != $mpidx){
-                $Rank = 1;
-                $minusRank = 1;
-            }
-
-            if ($tempPoint == $AdjustPoint) {
-                $rRank = $Rank - $minusRank;
-                $minusRank++;
-            } else {
-                $rRank = $Rank;
-                $minusRank = 1;
-            }
-
-            $dataDetail[$mpidx]['grade'] = $val['OrgPoint'];
-            $dataDetail[$mpidx]['gradeA'] = $val['AdjustPoint'];
-            $dataDetail[$mpidx]['avg'] = $val['ORGSUM'] ? round($val['ORGSUM'] / $val['COUNT'],2) : 0;
-            $dataDetail[$mpidx]['avgA'] = $val['ADSUM'] ? round($val['ADSUM'] / $val['COUNT'],2) : 0;
-            $dataDetail[$mpidx]['max'] = round($val['ORGMAX'],2);
-            $dataDetail[$mpidx]['maxA'] = round($val['ADMAX'],2);
-            $dataDetail[$mpidx]['orank'] = $val['Rank']."/".$val['COUNT'];
-            $dataDetail[$mpidx]['arank'] = $rRank."/".$val['COUNT'];
-
-            $tempPoint = $val['AdjustPoint'];
-            $tempMp = $val['MpIdx'];
-            $Rank++;
+            $dataDetailV[$mpidx]['grade'] = $val['OrgPoint'];
+            $dataDetailV[$mpidx]['gradeA'] = $val['AdjustPoint'];
+            $dataDetailV[$mpidx]['avg'] = $val['ORGSUM'] ? round($val['ORGSUM'] / $val['COUNT'],2) : 0;
+            $dataDetailV[$mpidx]['avgA'] = $val['ADSUM'] ? round($val['ADSUM'] / $val['COUNT'],2) : 0;
+            $dataDetailV[$mpidx]['max'] = round($val['ORGMAX'],2);
+            $dataDetailV[$mpidx]['maxA'] = round($val['ADMAX'],2);
+            $dataDetailV[$mpidx]['orank'] = $val['Rank']."/".$val['COUNT'];
+            $dataDetailV[$mpidx]['arank'] = $val['Rank']."/".$val['COUNT'];
         }
 
         if($dataOrg){
@@ -225,7 +202,7 @@ class MockResult extends \app\controllers\FrontController
             'sList2' => $sList2,
             'pCnt' => $pCnt,
             'sCnt' => $sCnt,
-            'dataDetail' => $dataDetail,
+            'dataDetail' => $dataDetailV,
             'prodcode' => $prodcode,
             'mridx' => $mridx,
             'dataSet' => $dataSet,
@@ -255,17 +232,17 @@ class MockResult extends \app\controllers\FrontController
         $productInfo = $this->mockExamModel->productInfo($arr_condition);
 
         //과목별 문항분석 쿼리(mode = 1) , 영역 및 학습요소(mode = 2)
-        $dataSubject = $this->mockExamModel->gradeSubjectDetailCall($prodcode, 1);
-        $dataSubject2 = $this->mockExamModel->gradeSubjectDetailCall($prodcode, 2);
+        $dataSubject = $this->mockExamModel->gradeSubjectDetailCall($prodcode, $mridx, 1);
+        $dataSubject2 = $this->mockExamModel->gradeSubjectDetailCall($prodcode, $mridx, 2);
 
         // 문항별분석
         foreach($dataSubject as $key => $val){
             $mpidx = $val['MpIdx'];
-            $dataSubject[$mpidx]['RightAnswer'][] = $val['RightAnswer'];
-            $dataSubject[$mpidx]['Answer'][] = $val['Answer'];
-            $dataSubject[$mpidx]['IsWrong'][] = $val['IsWrong'];
-            $dataSubject[$mpidx]['QAVR'][] = $val['QAVR'];
-            $dataSubject[$mpidx]['Difficulty'][] = $val['Difficulty'];
+            $dataSubjectV[$mpidx]['RightAnswer'][] = $val['RightAnswer'];
+            $dataSubjectV[$mpidx]['Answer'][] = $val['Answer'];
+            $dataSubjectV[$mpidx]['IsWrong'][] = $val['IsWrong'];
+            $dataSubjectV[$mpidx]['QAVR'][] = $val['QAVR'];
+            $dataSubjectV[$mpidx]['Difficulty'][] = $val['Difficulty'];
         }
 
         foreach ($subject_list as $key => $val){
@@ -288,7 +265,7 @@ class MockResult extends \app\controllers\FrontController
         $this->load->view('/classroom/mock/result/stat_subject', [
             'productInfo' => $productInfo,
             'arr_input' => $arr_input,
-            'dataSubject' => $dataSubject,
+            'dataSubject' => $dataSubjectV,
             'dataSubjectV2' => $dataSubjectV2,
             'memName'  => $_SESSION['mem_name'],
             'pList' => $pList,

@@ -223,10 +223,10 @@ class ProfessorModel extends WB_Model
             $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $column = '
-                PSC.PcIdx, PSC.ProfIdx, PF.SiteCode, PSC.CateCode, PSC.SubjectIdx, WP.wProfName, PS.SubjectName
-                    , concat(PSC.ProfIdx, "_", PSC.SubjectIdx) as ProfSubjectIdx, concat(PS.SubjectName, ">", WP.wProfName) as ProfSubjectName
-                    , PSC.RegDatm, PSC.RegAdminIdx, A.wAdminName as RegAdminName
+            $column = 'PSC.PcIdx, PSC.ProfIdx, PF.SiteCode, PSC.CateCode, PSC.SubjectIdx, PSC.OrderNum, WP.wProfId, WP.wProfName, PS.SubjectName
+                , concat(PSC.ProfIdx, "_", PSC.SubjectIdx) as ProfSubjectIdx, concat(PS.SubjectName, ">", WP.wProfName) as ProfSubjectName
+                , concat(if(PC.CateCode is null, "", concat(PC.CateName, ">")), C.CateName) as CateRouteName, S.SiteName
+                , PSC.RegDatm, PSC.RegAdminIdx, A.wAdminName as RegAdminName
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -240,12 +240,20 @@ class ProfessorModel extends WB_Model
                     on PF.wProfIdx = WP.wProfIdx
                 inner join ' . $this->_table['subject'] . ' as PS
                     on PSC.SubjectIdx = PS.SubjectIdx		
+                inner join ' . $this->_table['category'] . ' as C
+                    on PSC.CateCode = C.CateCode
+                left join ' . $this->_table['category'] . ' as PC
+                    on C.ParentCateCode = PC.CateCode and PC.IsStatus = "Y"
+                inner join ' . $this->_table['site'] . ' as S
+                    on PF.SiteCode = S.SiteCode                    
                 left join ' . $this->_table['admin'] . ' as A 	
                     on PSC.RegAdminIdx = A.wAdminIdx and A.wIsStatus = "Y" 
             where PSC.IsStatus = "Y"
                 and PF.IsUse = "Y" and PF.IsStatus = "Y"
                 and WP.wIsUse = "Y" and WP.wIsStatus = "Y"	
-                and PS.IsUse = "Y" and PS.IsStatus = "Y"                               
+                and PS.IsUse = "Y" and PS.IsStatus = "Y"      
+                and C.IsUse = "Y" and C.IsStatus = "Y"
+                and S.IsUse = "Y" and S.IsStatus = "Y"                                         
         ';
 
         $where = $this->_conn->makeWhere($arr_condition);
@@ -983,6 +991,43 @@ class ProfessorModel extends WB_Model
             }
         } catch (\Exception $e) {
             return $e->getMessage();
+        }
+
+        return true;
+    }
+
+    /**
+     * 교수 카테고리 과목 연결 데이터 정렬변경 수정
+     * @param array $params
+     * @return array|bool
+     */
+    public function modifyProfessorSubjectMappingReorder($params = [])
+    {
+        $this->_conn->trans_begin();
+
+        try {
+            if (count($params) < 1) {
+                throw new \Exception('필수 파라미터 오류입니다.');
+            }
+
+            $admin_idx = $this->session->userdata('admin_idx');
+
+            foreach ($params as $subject_mapping_code => $order_num) {
+                $arr_subject_mapping_code = explode('_', $subject_mapping_code);
+
+                $is_update = $this->_conn->set('OrderNum', $order_num)->set('UpdAdminIdx', $admin_idx)
+                    ->where('PcIdx', $arr_subject_mapping_code[0])->where('ProfIdx', $arr_subject_mapping_code[1])
+                    ->update($this->_table['professor_r_subject_r_category']);
+
+                if ($is_update === false) {
+                    throw new \Exception('데이터 수정에 실패했습니다.');
+                }
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
         }
 
         return true;

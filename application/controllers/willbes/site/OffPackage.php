@@ -75,7 +75,13 @@ class OffPackage extends \app\controllers\FrontController
             'IN' => ['StudyApplyCcd' => $_study_apply_ccds] // 접수방식
         ];
 
-        $list= $this->packageFModel->listSalesProduct($this->_learn_pattern,false,$arr_condition,null,null,['ProdCode'=>'desc']);
+        if (element('search_order', $arr_input) == 'course') {
+            $order_by = ['OrderNumCourse'=>'desc'];
+        } else {
+            $order_by = ['ProdCode'=>'desc'];
+        }
+
+        $list= $this->packageFModel->listSalesProduct($this->_learn_pattern,false,$arr_condition,null,null,$order_by);
         //var_dump($list);
 
         foreach ($list as $idx => $row) {

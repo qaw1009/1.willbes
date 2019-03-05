@@ -290,7 +290,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="form-group">
                     <label class="control-label col-md-2">모바일제공구분 <span class="required">*</span>
                     </label>
@@ -306,7 +305,7 @@
                     <div class="col-md-4 form-inline item">
                         <div class="checkbox">
                             @foreach($vodtype_ccd as $key => $val)
-                            <input type="checkbox" name="PlayerTypeCcds[]" value="{{$key}}" required="required" class="flat" @if( ($method == 'POST' && $loop->index == 1) || (strpos($data['PlayerTypeCcds'],trim($key)) !== false)   )checked="checked"@endif> {{$val}}&nbsp;
+                            <input type="checkbox" name="PlayerTypeCcds[]" value="{{$key}}" required="required" class="flat" @if( ($method == 'POST') || (strpos($data['PlayerTypeCcds'],trim($key)) !== false)   )checked="checked"@endif> {{$val}}&nbsp;
                            &nbsp;@endforeach
                         </div>
                     </div>
@@ -376,7 +375,8 @@
                                     @endif
                                     <tr>
                                         <td>
-                                            <input type="checkbox" name="SalePriceIsUse[]" id="SalePriceIsUse_{{$key}}" value="Y" class="flat" @if($SalePriceIsUse==='Y') checked="checked"@endif>
+                                            <input type="checkbox" name="SalePriceIsUse_temp[]" id="SalePriceIsUse_temp_{{$key}}" value="Y" class="flat" @if(($method=="POST" && $loop->index === 1) || $SalePriceIsUse==='Y') checked="checked"@endif>
+                                            <input type="hidden" name="SalePriceIsUse[]" id="SalePriceIsUse_{{$key}}" value=""> {{--실제 가격 사용여부 (체크박스 선택이 안될 경우 값이 전송되지 않는 문제)--}}
                                             {{$val}} <input type="hidden" name="SaleTypeCcd[]" id="SaleTypeCcd_{{$key}}" value="{{$key}}"></td>
                                         <td><input type="number" name="SalePrice[]" id="SalePrice_{{$key}}" value="{{$SalePrice}}"   maxlength="8" class="form-control" onkeyup="priceCheck('{{$key}}')" @if($key=="613001")required="required"@endif title="정상가"> 원</td>
                                         <td>
@@ -1315,6 +1315,15 @@
                 getEditorBodyContent($editor_1);
                 getEditorBodyContent($editor_2);
                 getEditorBodyContent($editor_3);
+
+                {{--체크박스 선택이 안될경우 값이 넘어가지 않아 오류 발생 : 체크여부 값 전송--}}
+                if($regi_form.find('input[name="SalePriceIsUse_temp[]"]').length >= 1) {
+                    for( i=0 ; i<$regi_form.find('input[name="SalePriceIsUse_temp[]"]').length;i++) {
+                        check_is = $("input[name='SalePriceIsUse_temp[]']:eq("+i+")").prop('checked') == true ? 'Y' : 'N';
+                        $("input[name='SalePriceIsUse[]']:eq("+i+")").val(check_is);
+                    }
+                }
+
 
                 var _url = '{{ site_url('/product/on/lecture/store') }}';
                 ajaxSubmit($regi_form, _url, function(ret) {

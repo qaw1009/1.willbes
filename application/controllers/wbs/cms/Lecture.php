@@ -70,7 +70,7 @@ class Lecture extends \app\controllers\BaseController
         $count = $this->lectureModel->listLecture(true,$arr_condition);
 
         if($count > 0) {
-            $list = $this->lectureModel->listLecture(false,$arr_condition,$this->_reqP('length'), $this->_reqP('start'), ['A.wLecIdx' => 'desc']);
+            $list = $this->lectureModel->listLecture(false,$arr_condition,$this->_reqP('length'), $this->_reqP('start'), ['A.wRegDatm' => 'desc']);
         }
         return $this->response([
             'recordsTotal' => $count,

@@ -287,7 +287,7 @@ class BoardModel extends WB_Model
             }
 
             $this->load->library('upload');
-            $upload_sub_dir = config_item('upload_prefix_dir') . '/board/' . $board_data['BmIdx'] . '/' . date('Ymd');
+            $upload_sub_dir = config_item('upload_prefix_dir') . '/board/' . $board_data['BmIdx'] . '/' . date('Y') . '/' . date('md');
 
             $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->_getAttachImgNames($board_idx, $board_data['BmIdx']), $upload_sub_dir);
             if (is_array($uploaded) === false) {
@@ -495,7 +495,7 @@ class BoardModel extends WB_Model
                 $src = str_replace('/public/uploads/', $this->upload_path ,$loadPath);
                 // 복사될 파일경로
                 $mkdest = $this->upload_path . config_item('upload_prefix_dir') . '/board/' . $resBmIdx['BmIdx'] . '/';
-                $dest = $this->upload_path . config_item('upload_prefix_dir') . '/board/' . $resBmIdx['BmIdx'] . '/' . date('Ymd') . $insert_board_idx . "/";
+                $dest = $this->upload_path . config_item('upload_prefix_dir') . '/board/' . $resBmIdx['BmIdx'] . '/' . date('Y') . '/' . date('md') . $insert_board_idx . "/";
 
                 if(is_dir($mkdest) === false){
                     if (mkdir($mkdest, 0707, true) === false) {
@@ -511,7 +511,7 @@ class BoardModel extends WB_Model
 
                 // 파일 복사후 파일경로 업데이트
                 $addData = [
-                    'AttachFilePath' => '/public/uploads/' . config_item('upload_prefix_dir') . '/board/' . $resBmIdx['BmIdx'] . '/' . date('Ymd') . $insert_board_idx . "/"
+                    'AttachFilePath' => '/public/uploads/' . config_item('upload_prefix_dir') . '/board/' . $resBmIdx['BmIdx'] . '/' . date('Y') . '/' . date('md') . $insert_board_idx . "/"
                 ];
 
                 $this->_conn->set($addData)->where('BoardIdx', $insert_board_idx);
@@ -1515,7 +1515,7 @@ class BoardModel extends WB_Model
             $arr_board_attach_keys = array_keys($arr_board_attach);
 
             $this->load->library('upload');
-            $upload_sub_dir = config_item('upload_prefix_dir') . '/board/' . $board_data['BmIdx'] . '/' . date('Ymd');
+            $upload_sub_dir = config_item('upload_prefix_dir') . '/board/' . $board_data['BmIdx'] . '/' . date('Y') . '/' . date('md');
 
             $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->_getAttachImgNames($board_idx, $board_data['BmIdx']), $upload_sub_dir);
 

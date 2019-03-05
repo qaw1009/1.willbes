@@ -60,7 +60,7 @@ function addCartNDirectPay($regi_form, $is_direct_pay, $is_redirect, $app_url)
     } else {
         url = frontUrl('/cart/store');
         if ($regi_form.find('input[name="cart_type"]').val().indexOf('off') === 0) {
-            url = siteUrl('/pass/cart/store');
+            url = frontPassUrl('/cart/store');
         } else if ($regi_form.find('input[name="cart_type"]').val().indexOf('on') === 0 || $regi_form.find('input[name="cart_type"]').val() === 'book') {
             url = siteUrl('/cart/store');
         }

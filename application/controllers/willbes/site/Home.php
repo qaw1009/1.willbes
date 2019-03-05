@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends \app\controllers\FrontController
 {
-    protected $models = array('product/productF', 'onAirF', 'support/supportBoardF');
+    protected $models = array('product/productF', 'onAirF', 'support/supportBoardF', 'bannerF', 'dDayF');
     protected $helpers = array();
     protected $auth_controller = false;
     protected $auth_methods = array();
@@ -58,7 +58,10 @@ class Home extends \app\controllers\FrontController
      */
     private function _getSite2001Data($cate_code = '', $arr_campus = [])
     {
+        $arr_disp = ['메인_우측퀵_01','메인_우측퀵_02','메인_우측퀵_03'];
+
         if (APP_DEVICE == 'pc') {
+            $data['dday'] = $this->_dday();
             $data['best_product'] = $this->_product('on_lecture', 4, $cate_code, 'Best');
             $data['new_product'] = $this->_product('on_lecture', 4, $cate_code, 'New');
         }
@@ -66,6 +69,7 @@ class Home extends \app\controllers\FrontController
         $data['notice'] = $this->_boardNotice(4);
         $data['exam_announcement'] = $this->_boardExamAnnouncement(4);
         $data['exam_news'] = $this->_boardExamNews(4);
+        $data['main_quick'] = $this->_banner($arr_disp);
 
         return $data;
     }
@@ -123,13 +127,18 @@ class Home extends \app\controllers\FrontController
     private function _getSite2004Data($cate_code = '', $arr_campus = [])
     {
         $data = [];
+        $arr_disp = ['메인_빅배너','메인_서브1','메인_서브2','메인_서브3','메인_띠배너','메인_미들1','메인_미들2','메인_미들3','메인_미들4','메인_미들5','메인_이벤트','메인_대표교수','메인_포커스'];
 
         if (APP_DEVICE == 'pc') {
-            $data['notice'] = $this->_boardNotice(5);
+            $arr_campus = array_replace_recursive($arr_campus, $this->_getCampusInfo());
+            $data['arr_campus'] = $arr_campus;
             $data['exam_announcement'] = $this->_boardExamAnnouncement(5);
             $data['exam_news'] = $this->_boardExamNews(5);
+            $data['arr_main_banner'] = $this->_banner($arr_disp);
+            foreach ($arr_campus as $row) {
+                $data['notice_campus'][$row['CampusCcd']] = $this->_boardNotice(2, '', [$row['CampusCcd']]);
+            }
         }
-
         return $data;
     }
 
@@ -194,7 +203,7 @@ class Home extends \app\controllers\FrontController
      */
     private function _boardExamAnnouncement($limit_cnt = 5, $cate_code = '', $arr_campus = [])
     {
-        $column = 'b.BoardIdx, b.Title, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
+        $column = 'b.BoardIdx, b.IsBest, b.AreaCcd_Name, b.Title, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
         $order_by = ['b.IsBest' => 'Desc', 'b.BoardIdx' => 'Desc'];
         $arr_condition = ['EQ' => ['b.BmIdx' => 54, 'b.IsUse' => 'Y']];
 
@@ -243,5 +252,38 @@ class Home extends \app\controllers\FrontController
         }
 
         return $temp_campus;
+    }
+
+    /**
+     * 메인 우측 퀵배너
+     * @param array $arr_disp
+     * @return array
+     */
+    private function _banner($arr_disp = [])
+    {
+        $result = $this->bannerFModel->findBannersInArray($arr_disp, $this->_site_code, 0);
+
+        $data = [];
+        foreach ($result as $key => $row) {
+            $data[$row['DispName']][] = $result[$key];
+        }
+        return $data;
+    }
+
+    /**
+     * 시험일정 조회 (디데이)
+     * @return mixed
+     */
+    private function _dday()
+    {
+        $arr_condition = [
+            'EQ' => [
+                'a.SiteCode' => $this->_site_code,
+                'b.CateCode' => $this->_cate_code
+            ]
+        ];
+
+        $data = $this->dDayFModel->getDDays($arr_condition, '1');
+        return $data;
     }
 }

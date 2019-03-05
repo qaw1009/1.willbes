@@ -348,7 +348,7 @@ class BaseSupportFModel extends WB_Model
             $arr_board_attach_keys = array_keys($arr_board_attach);
 
             $this->load->library('upload');
-            $upload_sub_dir = config_item('upload_prefix_dir') . '/board/' . $board_data['BmIdx'] . '/' . date('Ymd');
+            $upload_sub_dir = config_item('upload_prefix_dir') . '/board/' . $board_data['BmIdx'] . '/' . date('Y') . '/' . date('md');
             $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->getAttachImgNames($board_idx) , $upload_sub_dir
                 ,'allowed_types:'.$this->upload_file_rule['allowed_types'].',overwrite:'.$this->upload_file_rule['overwrite'].',max_size:'.$this->upload_file_rule['max_size']);
 
@@ -415,7 +415,7 @@ class BaseSupportFModel extends WB_Model
             $arr_board_attach_keys = array_keys($arr_board_attach);
 
             $this->load->library('upload');
-            $upload_sub_dir = config_item('upload_prefix_dir') . '/board/88/' . date('Ymd');
+            $upload_sub_dir = config_item('upload_prefix_dir') . '/board/88/' . date('Y') . '/' . date('md');
             $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->getAttachImgNames($ba_idx) , $upload_sub_dir
                 ,'allowed_types:'.$this->upload_file_rule['allowed_types'].',overwrite:'.$this->upload_file_rule['overwrite'].',max_size:'.$this->upload_file_rule['max_size']);
 

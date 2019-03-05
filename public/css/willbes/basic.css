@@ -575,6 +575,9 @@ select[disabled] {
 .mt5 {
   margin-top: 5px !important;
 }
+.mt8 {
+  margin-top: 8px !important;
+}
 .mt10 {
   margin-top: 10px !important;
 }

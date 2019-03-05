@@ -50,16 +50,14 @@ class LectureModel extends WB_Model
                         join wbs_sys_code E on A.wProgressCcd = E.wCcd and E.wIsStatus="Y"
                         left outer join wbs_sys_admin F on A.wRegAdminIdx = F.wAdminIdx and F.wIsStatus="Y"
                         join wbs.vw_role_cp_list G on A.wCpIdx=G.wCpIdx 
-                        left outer join vw_lecture_r_professor_concat H on A.wLecIdx = H.wLecIdx
-                        left outer join wbs_cms_lecture_copy_log Y on A.wLecIdx = Y.wLecIdx 
+                        left outer join wbs_cms_lecture_copy_log Y on A.wLecIdx = Y.wLecIdx
+                        join vw_lecture_r_professor_concat H on A.wLecIdx = H.wLecIdx 
                     where A.wIsStatus="Y"
                     ';
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
         $query = $this->_conn->query('select ' .$column .$from .$where. $order_by_offset_limit);
 
         return ($is_count===true) ? $query->row(0)->numrows : $query->result_array();
-        //echo $this->_conn->last_query();
-
     }
 
     /**

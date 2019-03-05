@@ -268,7 +268,7 @@ class SmsModel extends WB_Model
 
         try{
             $this->load->library('upload');
-            $upload_sub_dir = config_item('upload_prefix_dir') . '/send/sms/' . date('Ymd');
+            $upload_sub_dir = config_item('upload_prefix_dir') . '/send/sms/' . date('Y') . '/' . date('md');
             $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->_getAttachImgNames(), $upload_sub_dir);
 
             if (empty($uploaded) === true || count($uploaded) <= 0) {
@@ -427,7 +427,7 @@ class SmsModel extends WB_Model
             case "2" :
                 $i = 0;
                 $this->load->library('upload');
-                $upload_sub_dir = config_item('upload_prefix_dir') . '/send/sms/' . date('Ymd');
+                $upload_sub_dir = config_item('upload_prefix_dir') . '/send/sms/' . date('Y') . '/' . date('md');
                 $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->_getAttachImgNames(), $upload_sub_dir);
 
                 if (!empty($uploaded) === true || count($uploaded) > 0) {

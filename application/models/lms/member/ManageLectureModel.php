@@ -509,4 +509,21 @@ class ManageLectureModel extends WB_Model
         return true;
 
     }
+
+    public function setRate($input)
+    {
+        try{
+            if($this->_conn->
+                set('StudyRatePrint', element('Rate', $input))->
+                where('OrderIdx', element('OrderIdx', $input))->
+                where('ProdCode', element('ProdCode', $input))->
+                where('ProdCodeSub', element('ProdCodeSub', $input))->
+                update($this->_table['mylec']) === false) {
+                throw new \Exception('업데이트 실패했습니다.');
+            }
+        } catch (\Exception $e) {
+            return false;
+        }
+        return true;
+    }
 }

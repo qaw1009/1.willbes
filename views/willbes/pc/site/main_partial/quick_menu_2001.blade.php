@@ -1,23 +1,58 @@
 <ul>
+    @if(empty($data['dday']) === false)
     <li>
         <div class="QuickDdayBox">
-            <div class="q_tit">3차 필기시험</div>
-            <div class="q_day">2018.12.12</div>
-            <div class="q_dday NSK-Blac">D-5</div>
+            <div class="q_tit">{{$data['dday'][0]['DayTitle']}}</div>
+            <div class="q_day">{{$data['dday'][0]['DayDatm']}}</div>
+            <div class="q_dday NSK-Blac">{{($data['dday'][0]['DDay'] == 0) ? 'D-'.$data['dday'][0]['DDay'] : 'D'.$data['dday'][0]['DDay']}}</div>
         </div>
     </li>
-    <li>
-        <div class="QuickSlider">
-            <div class="sliderNum">
-                <div><a href="http://www.willbescop.net/event/movie/event.html?event_cd=On_170911_popup" target="_blank"><img src="{{ img_url('cop/quick/quick_190108.jpg') }}" alt="배너명"></a></div>
-                <div><a href="http://www.willbescop.net/event/arm_event.html?event_cd=On_leaveArmy02_2018&topMenuType=O&EVENT_NO=53" target="_blank"><img src="{{ img_url('cop/quick/quick_190109.jpg') }}" alt="배너명"></a></div>
+    @endif
+    @if(empty($data['main_quick']['메인_우측퀵_01']) === false)
+        <li>
+            <div class="QuickSlider">
+                <div class="sliderNum">
+                    @foreach($data['main_quick']['메인_우측퀵_01'] as $row)
+                        @php
+                            $link_url = '#none';
+                            if(empty($row['LinkUrl']) === false) {
+                                $link_url = front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www');
+                            }
+                        @endphp
+                        <div><a href="{{ $link_url }}" target="{{ $row['LinkType'] }}"><img src="{{ $row['BannerFullPath'] . $row['BannerImgName'] }}" alt="{{ $row['BannerName'] }}"></a></div>
+                    @endforeach
+                </div>
             </div>
-        </div>
-    </li>
-    <li>
-        <a href="http://www.willbescop.net/movie/event.html?event_cd=Off_181129_p&topMenuType=F" target="_blank"><img src="{{ img_url('cop/quick/quick_190110.jpg') }}" alt="배너명"></a>
-    </li>
-    <li>
-        <a href="http://pf.kakao.com/_qAxoYC" target="_blank"><img src="{{ img_url('cop/quick/quick_talk.jpg') }}" alt="배너명"></a>
-    </li>
+        </li>
+    @endif
+    @if(empty($data['main_quick']['메인_우측퀵_02']) === false)
+        <li>
+            @foreach($data['main_quick']['메인_우측퀵_02'] as $row)
+                @php
+                    $link_url = '#none';
+                    if(empty($row['LinkUrl']) === false) {
+                        $link_url = front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www');
+                    }
+                @endphp
+                <a href="{{ $link_url }}" target="{{ $row['LinkType'] }}">
+                    <img src="{{ $row['BannerFullPath'] . $row['BannerImgName'] }}" alt="{{ $row['BannerName'] }}">
+                </a>
+            @endforeach
+        </li>
+    @endif
+    @if(empty($data['main_quick']['메인_우측퀵_03']) === false)
+        <li>
+            @foreach($data['main_quick']['메인_우측퀵_03'] as $row)
+                @php
+                    $link_url = '#none';
+                    if(empty($row['LinkUrl']) === false) {
+                        $link_url = front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www');
+                    }
+                @endphp
+                <a href="{{ $link_url }}" target="{{ $row['LinkType'] }}">
+                    <img src="{{ $row['BannerFullPath'] . $row['BannerImgName'] }}" alt="{{ $row['BannerName'] }}">
+                </a>
+            @endforeach
+        </li>
+    @endif
 </ul>

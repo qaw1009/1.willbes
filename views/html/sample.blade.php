@@ -27,6 +27,7 @@
                 <li class="w50"><a href="{{ site_url('/home/html/main_cop_adm_online') }}" target="_blank">경행경채 온라인 메인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_cop_pro_online') }}" target="_blank">경찰승진 온라인 메인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_cop_sea_online') }}" target="_blank">해양경찰 온라인 메인</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/main_cop_sea_special_online') }}" target="_blank">해양경찰특채 온라인 메인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_cop_acad') }}" target="_blank">경찰 학원 메인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/acad_sub_main') }}" target="_blank">경찰 캠퍼스 안내</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_gosi_online') }}" target="_blank">공무원 온라인 메인</a></li>
@@ -59,21 +60,60 @@
                 <li class="c_both"></li>
                 <li><a href="{{ site_url('/home/html/event_onLeaveArmyPassIntro') }}" target="_blank">전역군인인증 통합</a></li>
                 <li><a href="{{ site_url('/home/html/event_onLeaveArmyPass') }}" target="_blank">전역군인인증 온라인 메인</a></li>
-                <li><a href="{{ site_url('/home/html/event_onLeaveArmyPassConfirmPop') }}" target="_blank">전역군인인증 온라인 팝업_size 740x700</a></li>
-                <li><a href="{{ site_url('/home/html/event_onLeaveArmyPassLec') }}" target="_blank">전역군인인증 온라인 강의</a></li>
-                <li><a href="{{ site_url('/home/html/event_onMouPop') }}" target="_blank">온라인 교육 콘텐츠 제공 업무제공 체결(MOU) 팝업_size 850x700</a></li>   
-                <li><a href="{{ site_url('/home/html/event_onCopReboundPop') }}" target="_blank">타 학원 수강생 인증 팝업_size 740x700</a></li>
+                <li><a href="{{ site_url('/home/html/event_onLeaveArmyPassLec') }}" target="_blank">전역군인인증 온라인 강의 <span>*</span></a></li>                
+                <li><a href="{{ site_url('/home/html/event_onLeaveArmyPassConfirmPop') }}" target="_blank">전역군인인증 온라인 팝업_size 740x700 <span>*</span></a></li>             
+                <li><a href="{{ site_url('/home/html/event_onCopReboundPop') }}" target="_blank">타 학원 수강생 인증 팝업_size 740x700 <span>*</span></a></li>
+                <li><a href="{{ site_url('/home/html/event_onLeaveArmyPass_incheon') }}" target="_blank">전역간부대상 인천교육과정</a></li>
+                <li><a href="{{ site_url('/home/html/event_onLeaveArmyPass_seoul') }}" target="_blank">전역간부대상 노량진교육과정</a></li>
+                <li><a href="{{ site_url('/home/html/event_onLeaveArmyPass_busan') }}" target="_blank">전역간부대상 서면교육과정</a></li>                
             </ul>
         </div>
     </li>
     <li>
         <div>       
             <ul>
-                <li><p>경찰 온라인 ▼</p></li>       
+                <li><p>경찰 온라인 ▼</p></li>    
                 <li class="w50"><a href="{{ site_url('/home/html/event_onCopPromotionPass') }}" target="_blank">승진 PASS <span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onCopZeroPass') }}" target="_blank">평생 0원 PASS <span>*</span></a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_onCopPromotionPassPop') }}" target="_blank">PASS 인증 팝업_size 740x700 <span>*</span></a></li>                        
+                <li class="w50"><a href="{{ site_url('/home/html/event_onCopPromotionPassPop') }}" target="_blank">PASS 인증 팝업 size 740x700 <span>*</span></a></li>                        
                 <li class="w50"><a href="{{ site_url('/home/html/event_onCopSampleQuestions') }}" target="_blank">기출문제 이모티콘 댓글 <span>*</span></a></li>
+                <li><a href="{{ site_url('/home/html/event_onCop181228_p') }}" target="_blank">최종합격예측서비스 <span>*</span></a></li>
+                <li><a href="{{ site_url('/home/html/event_onCop181228_p_pop1') }}" target="_blank">최종합격예측서비스 나의 위치파악 팝업 size 500x850 <span>*</span></a></li>
+                <li><a href="{{ site_url('/home/html/event_onCop181228_p_pop2') }}" target="_blank">최종합격예측서비스 실시간 참여인원 팝업 size 500x850 <span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_171129_p') }}" target="_blank">0원 입문 특강 </a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_181226_p') }}" target="_blank">윌비스 웰컴팩</a></li>
+                <li><a href="{{ site_url('/home/html/event_onMouPop') }}" target="_blank">온라인 교육 콘텐츠 제공 업무제공 체결(MOU) 팝업_size 850x700 <span>*</span></a></li> 
+                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_180122_c') }}" target="_blank">초시생을 위한 합격비법</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_basic') }}" target="_blank">기본이론</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_premium') }}" target="_blank">프리미엄 심화이론/기출</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_181127_c') }}" target="_blank">N수생의 합격비법</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offCop_181129_p') }}" target="_blank">18년 2차 최종합격자의 밤</a></li>
+                <li><a href="{{ site_url('/home/html/event_offCop_190107_p') }}" target="_blank">18년 2차 최종합격자 중경입교식, 그 현장을 가다!</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_170802_p') }}" target="_blank">해양경찰특채PASS <span>*</span></a></li>
+                <li><a href="{{ site_url('/home/html/event_onCop_170126_p') }}" target="_blank">영향력있는 언론들이 주목하는 윌비스신광은경찰팀</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190123_c') }}" target="_blank">적중 통합 페이지</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190111_c') }}" target="_blank">18년 3차 신광은 형사소송법 적중</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190118_y') }}" target="_blank">18년 3차 장정훈 경찰학개론 적중</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190102_p') }}" target="_blank">18년 3차 하승민 경찰영어 적중</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190110_o') }}" target="_blank">18년 3차 오태진 한국사 적중</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190111_pp') }}" target="_blank">18년 3차 원유철 한국사 적중</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190111_p') }}" target="_blank">18년 3차 김현정 경찰영어 적중</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190114_p') }}" target="_blank">박우찬 실용글쓰기</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190102_y') }}" target="_blank">경찰체력 정복하기</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190113_p') }}" target="_blank">2019 쌩기초 경찰영어</a></li>
+                <li><p>경찰 학원 ▼</p></li> 
+                <li class="w50"><a href="{{ site_url('/home/html/event_offCop_190211_p') }}" target="_blank">19년 1차대비 2월 전국모의고사</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offCop_basic') }}" target="_blank">2019 집중연강식 기본이론</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offCop_superpass') }}" target="_blank">2019 슈퍼패스</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offCop_sparta') }}" target="_blank">스파르타</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offCop_181220_j') }}" target="_blank">황세웅 경찰면접캠프</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offCop_180828_g') }}" target="_blank">경찰 통합생활관리반</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offCop_190108_dg_L') }}" target="_blank">대구 경찰면접팀</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offCop_180611_01_g') }}" target="_blank">스파르타 올인원 - 공무원 강습반</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offCop_180611_02_g') }}" target="_blank">스파르타 올인원 - 신광은 경찰팀</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offCop_180629_L') }}" target="_blank">스파르타 강한학습관리반</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offCop_180323') }}" target="_blank">실전에 강한 최준면접</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offCop_181112') }}" target="_blank">독한회독</a></li>
                 <li><p>공무원 온라인 ▼</p></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiFirePass') }}" target="_blank">소방 PASS <span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiNinePass') }}" target="_blank">9급 PASS <span>*</span></a></li>
@@ -111,11 +151,25 @@
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiTech') }}" target="_blank">윌비스 기술직 TOP 라인업 <span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiNoncom') }}" target="_blank">부사관 PASS <span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiNoncomPop') }}" target="_blank">부사관 PASS 유튜브 팝업 <span>*</span></a></li>
-                <li><p>공무원 학원 ▼</p></li>
+                <li><p>공무원 학원 ▼</p></li>                
                 <li class="w50"><a href="{{ site_url('/home/html/event_offGosiArmyQuestion') }}" target="_blank">군무원 이론요약&단원별 문제풀이</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_offGosiFianlTest') }}" target="_blank">시.확.찢 FINAL 모의고사</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_offGosi106dayLast') }}" target="_blank">9급 106일 마무리반</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_offGosi106dayLast') }}" target="_blank">7급 170일 마무리반</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offGosi106dayLast') }}" target="_blank">7급 170일 마무리반</a></li>                
+                <li class="w50"><a href="{{ site_url('/home/html/event_offGosi_181123_g') }}" target="_blank">아침실전모의고사</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offGosi_190128_L') }}" target="_blank">불꽃소방관리반 프로모션 <span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offGosi_180426_01') }}" target="_blank">자습형 강한학습관리반 <span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offGosi_180426_02') }}" target="_blank">기숙형 통합생활관리반 <span>*</span></a></li>                
+                <li class="w50"><a href="{{ site_url('/home/html/event_offGosi_180426_03') }}" target="_blank">영어집중형 김신주 합격관리반 </a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offGosi_180829_g') }}" target="_blank">지인추천 이벤트 </a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offGosi_180724_kakao_g') }}" target="_blank">카카오톡 1:1 상담 </a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offGosi_190121_y') }}" target="_blank">3개월 단기완성 순환반 </a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offGosi_180920_y') }}" target="_blank">기미진 국어 개강프로모션 </a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offGosi_190122_1_c') }}" target="_blank">7급 5개월 문제풀이 순환반 </a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offGosi_190122_1_g') }}" target="_blank">7급 외무영사직 5개월 문풀 순환반 </a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offGosi_181121_L1') }}" target="_blank">윌비스 불꽃소방팀 <span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offGosi_190110_in_L') }}" target="_blank">윌비스 공무원 면접팀</a></li>
+            </ul>
         </div>
     </li>
     <li>

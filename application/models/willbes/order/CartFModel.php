@@ -244,7 +244,7 @@ class CartFModel extends BaseOrderFModel
 
         try {
             $sess_mem_idx = $this->session->userdata('mem_idx');
-            $gw_idx = $this->session->userdata('gw_idx');
+            $sess_gw_idx = $this->session->userdata('gw_idx');
             $reg_ip = $this->input->ip_address();
             $arr_temp_prod_code = $this->makeProdCodeArray($learn_pattern, element('prod_code', $input, []));
             $arr_prod_code = element('data', $arr_temp_prod_code);
@@ -291,7 +291,7 @@ class CartFModel extends BaseOrderFModel
                     'ExtenDay' => element('extend_day', $input),
                     'PostData' => element('post_data', $input),
                     'CaIdx' => element('ca_idx', $input),
-                    'GwIdx' => $gw_idx,
+                    'GwIdx' => $sess_gw_idx,
                     'RegIp' => $reg_ip
                 ];
 
@@ -325,7 +325,7 @@ class CartFModel extends BaseOrderFModel
      * @param array $input
      * @return string
      */
-    private function _addCart($input = [])
+    public function _addCart($input = [])
     {
         try {
             $mem_idx = element('MemIdx', $input);
@@ -375,7 +375,7 @@ class CartFModel extends BaseOrderFModel
 
         try {
             $sess_mem_idx = $this->session->userdata('mem_idx');
-            $gw_idx = $this->session->userdata('gw_idx');
+            $sess_gw_idx = $this->session->userdata('gw_idx');
             $reg_ip = $this->input->ip_address();
             $is_delivery_info = false;
             $total_prod_order_price = 0;
@@ -433,7 +433,7 @@ class CartFModel extends BaseOrderFModel
                         'SalePatternCcd' => $this->_sale_pattern_ccd['normal'],
                         'IsDirectPay' => 'Y',
                         'IsVisitPay' => 'N',
-                        'GwIdx' => $gw_idx,
+                        'GwIdx' => $sess_gw_idx,
                         'RegIp' => $reg_ip
                     ];
 

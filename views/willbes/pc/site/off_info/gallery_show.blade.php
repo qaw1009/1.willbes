@@ -70,6 +70,6 @@
                 </div>
             </div>
         </div>
-        {!! banner('학원안내_우측', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
+        {!! banner('학원안내_우측퀵', 'Quick-Bnr ml20', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
     </div>
 @stop

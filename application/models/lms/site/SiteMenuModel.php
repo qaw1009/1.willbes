@@ -130,23 +130,35 @@ class SiteMenuModel extends WB_Model
                 return $next_order_num;
             }
 
-            // 다음 순번 조회 (같은 부모를 가진 자식 중 max + 1, 자식이 없다면 부모 + 1)
-            $next_order_num = $this->_conn->getFindResult($this->_table['site_menu'],
-                'ifnull(max(OrderNum), (select OrderNum from ' . $this->_table['site_menu'] . ' where MenuIdx = ' . $this->_conn->escape($parent_menu_idx) . ')) + 1 as NextOrderNum',
-                ['EQ' => ['SiteCode' => $site_code, 'ParentMenuIdx' => $parent_menu_idx]]
-            )['NextOrderNum'];
+            // 다음 순번 조회 (같은 부모를 가진 자식 중 가장 큰 OrderNum 조회)
+            $next_row = element('0', $this->_conn->getListResult($this->_table['site_menu'], 'MenuIdx, OrderNum', [
+                'EQ' => ['SiteCode' => $site_code, 'ParentMenuIdx' => $parent_menu_idx]
+            ], 1, 0, ['OrderNum' => 'desc']));
 
-            // 메뉴 깊이가 큰 것 중 다음 순번보다 크거나 같은 순번이 있다면 그 갯수를 더함
-            $prev_order_cnt = $this->_conn->getFindResult($this->_table['site_menu'],
-                'count(*) as PrevOrderCnt', [
-                    'EQ' => ['SiteCode' => $site_code, 'GroupMenuIdx' => $group_menu_idx],
-                    'GT' => ['MenuDepth' => $menu_depth],
-                    'GTE' => ['OrderNum' => $next_order_num]
-                ]
-            )['PrevOrderCnt'];
+            if (empty($next_row) === true) {
+                // 자식이 없다면 부모 OrderNum 조회
+                $next_row = $this->_conn->getFindResult($this->_table['site_menu'], 'MenuIdx, OrderNum', [
+                    'EQ' => ['MenuIdx' => $parent_menu_idx]
+                ]);
+            }
 
-            if ($prev_order_cnt > 0) {
-                $next_order_num += $prev_order_cnt;
+            // OrderNum + 1
+            $next_order_num = $next_row['OrderNum'] + 1;
+
+            // 다음 순번의 MenuIdx에 자식이 있다면 자식수만큼 OrderNum 더함
+            $next_child_query = /** @lang text */ '
+                select count(@pv := concat(@pv, ",", MenuIdx)) as NextChildCnt
+                from (
+                	select MenuIdx, ParentMenuIdx
+	                from ' . $this->_table['site_menu'] . '
+	                where SiteCode = ? and GroupMenuIdx = ? and MenuDepth > ? and OrderNum >= ?
+                    order by ParentMenuIdx, MenuIdx                                            	                    
+                ) as A, (select @pv := ?) as B
+                where find_in_set(ParentMenuIdx, @pv) > 0';
+            $next_child_cnt = $this->_conn->query($next_child_query, [$site_code, $group_menu_idx, $menu_depth, $next_order_num, $next_row['MenuIdx']])->row(0)->NextChildCnt;
+
+            if ($next_child_cnt > 0) {
+                $next_order_num += $next_child_cnt;
             }
 
             // 다음 순번보다 크거나 같은 순번 +1 업데이트
@@ -239,7 +251,7 @@ class SiteMenuModel extends WB_Model
                     'OrderNum' => $next_order_num,
                 ]);
             }
-            
+
             // 메뉴 등록
             if ($this->_conn->set($data)->insert($this->_table['site_menu']) === false) {
                 throw new \Exception('데이터 저장에 실패했습니다.');

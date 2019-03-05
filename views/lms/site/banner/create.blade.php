@@ -114,8 +114,18 @@
 
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="link_url">링크주소<span class="required">*</span></label>
-                    <div class="col-md-10">
-                        <input type="text" id="link_url" name="link_url" class="form-control" maxlength="100" title="링크주소" value="{{ $data['LinkUrl'] }}" required="required" placeholder="링크주소 입니다.">
+                    <div class="col-md-10 form-inline">
+                        <input type="text" id="link_url" name="link_url" class="form-control" maxlength="100" title="링크주소" value="{{ $data['LinkUrl'] }}" required="required" placeholder="링크주소 입니다." style="width: 40%">
+                        &nbsp;&nbsp;&nbsp;&nbsp;• Ex) 프로토콜 미입력(Http,Https), 실제 서비스 도메인으로 입력
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-1-1" for="link_url_type_I">외,내부 링크 타입<span class="required">*</span></label>
+                    <div class="col-md-10 form-inline">
+                        <input type="radio" id="link_url_type_I" name="link_url_type" class="flat" value="I" required="required" title="외내부 링크타입" @if($method == 'POST' || $data['LinkUrlType']=='I')checked="checked"@endif/> <label for="link_url_type_I" class="input-label">내부링크</label>
+                        <input type="radio" id="link_url_type_O" name="link_url_type" class="flat" value="O" @if($data['LinkUrlType']=='O')checked="checked"@endif/> <label for="link_url_type_O" class="input-label">외부링크</label>
+                        &nbsp;&nbsp;&nbsp;&nbsp;• Ex) 외부 링크일 경우 Full URL 경로 입력
                     </div>
                 </div>
 

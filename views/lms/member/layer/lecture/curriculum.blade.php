@@ -69,7 +69,8 @@
                     @endif &nbsp; &nbsp; &nbsp;
                     <b>[진행상태]</b> {{$lec['wLectureProgressCcdName']}} &nbsp; &nbsp; &nbsp;
                     <b>[배수]</b> {{$lec['MultipleApply'] == '1' ? '무제한' : $lec['MultipleApply'].'배수' }} &nbsp; &nbsp; &nbsp;
-                    <b>[진도율]</b> {{$lec['StudyRate']}}%<br>
+                    <b>[진도율]</b> {{$lec['StudyRate']}}% &nbsp; &nbsp; &nbsp;
+                    <b>[인쇄용진도율]</b> <input type="text" name="txtrate" id="txtrate" value="{{$lec['StudyRatePrint']}}" size="3" maxlength="3" />% <button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="fnSetRate();">변경</button>
                 </td>
             </tr>
         </table>
@@ -77,16 +78,16 @@
         ● 학습이력
         <table class="table table-striped table-bordered">
             <colgroup>
+                <col width="5%">
+                <col width="">
                 <col width="10%">
                 <col width="10%">
+                <col width="5%">
+                <col width="5%">
                 <col width="10%">
                 <col width="10%">
-                <col width="10%">
-                <col width="10%">
-                <col width="10%">
-                <col width="10%">
-                <col width="10%">
-                <col width="10%">
+                <col width="5%">
+                <col width="5%">
             </colgroup>
             <thead>
             <tr>
@@ -94,9 +95,9 @@
                 <th>회차제목</th>
                 <th>강의보기</th>
                 <th>북페이지</th>
-                <th>기본강의시간</th>
-                <th>배수강의시간</th>
-                <th>학습시간/남은시간</th>
+                <th>강의시간</th>
+                <th>배수시간</th>
+                <th>진도시간<br>(배수시간/남은시간)</th>
                 <th>보조자료(다운로드이력)</th>
                 <th>최초수강일</th>
                 <th>최종수강일</th>
@@ -114,8 +115,11 @@
                     </td>
                     <td>{{$row['wBookPage']}} 페이지</td>
                     <td>{{$row['wRuntime']}}분</td>
-                    <td></td>
-                    <td> </td>
+                    <td>{{$row['limittime']}}</td>
+                    <td>
+                        {{floor(intval($row['StudyTime'])/60)}}분<br>
+                        ( {{floor(intval($row['RealStudyTime'])/60)}}분 / {{$row['remaintime']}} )
+                    </td>
                     <td>@if(empty($row['wUnitAttachFile']) == false)
                             <a href="{{app_url('/member/manage/download/'.$row['ProdCode'].'/'.$row['ProdCodeSub'].'/'.$row['wLecIdx'].'/'.$row['wUnitIdx'], 'lms')}}"><img src="{{ img_url('prof/icon_file.gif') }}"></a>
                         @endif</td>
@@ -127,9 +131,36 @@
             </tbody>
         </table>
     </div>
+    <form name="ajax_form" id="ajax_form" method="post">
+        <input type="hidden" name="memidx" value="{{$lec['MemIdx']}}" />
+        <input type="hidden" name="orderidx" value="{{$lec['OrderIdx']}}" />
+        <input type="hidden" name="prodcode" value="{{$lec['ProdCode']}}" />
+        <input type="hidden" name="prodcodesub" value="{{$lec['ProdCodeSub']}}" />
+        <input type="hidden" name="rate" id="rate" value="" />
+    </form>
     <script type="text/javascript">
         function vodViewUnit(quility, idx) {
             popupOpen(app_url('/cms/lecture/player/?lecidx={{$lec['wLecIdx']}}&unitidx='+idx+'&quility=' + quility , 'wbs'), 'wbsPlayer', '1000', '600', null, null, 'no', 'no');
+        }
+
+        function fnSetRate(){
+            $('#rate').val($('#txtrate').val());
+            if(window.confirm('인쇄용 진도율을 '+$('#rate').val()+'%로 변경하시겠습니까?')){
+
+                url = "{{ site_url("/member/manage/setrate/") }}";
+                data = $('#ajax_form').formSerialize();
+
+                sendAjax(url,
+                    data,
+                    function(ret){
+                        alert(ret.ret_msg);
+                        location.reload();
+                    },
+                    function(ret, status){
+                        alert(ret.ret_msg);
+                    }, false, 'GET', 'json');
+
+            }
         }
     </script>
 

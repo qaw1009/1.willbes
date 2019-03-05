@@ -207,7 +207,7 @@
                                             </td>
 
 
-                                            
+
                                             <td class="w-notice p_re">
                                                 @if(empty($sub_row['LectureSampleData']) === false)
                                                     <div class="w-sp one"><a href="#none" onclick="openWin('lec_sample_{{ $sub_row['ProdCode'] }}')">맛보기{{count($sub_row['LectureSampleData'])}}</a></div>
@@ -286,7 +286,7 @@
 
 
                     <!-- pos2 -->
-                    <div id="pos2" class="pt35 mt10"> 
+                    <div id="pos2" class="pt35 mt10">
                         <div class="willbes-Lec-Subject willbes-Lec-Tit-select NG tx-black p_re">
                             <a id="Choose" name="Choose" class="sticky-top" style="top: 10px;"></a>
                             · 선택과목<span class="willbes-Lec-subTit">(선택과목 중 {{$data['PackSelCount']}}개 선택)</span><span class="MoreBtn"><a href="#none">교재정보 전체보기 ▼</a></span>
@@ -449,9 +449,8 @@
                 <!-- willbes-Lec -->
             </form>
         </div>
-        <div class="Quick-Bnr ml20">
-            {!! banner('강좌상품_우측날개', '', $__cfg['SiteCode'], '0') !!}
-        </div>
+        {!! banner('수강신청_우측퀵', 'Quick-Bnr ml20', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
+
     </div>
     <!-- willbes-Lec-buyBtn-sm -->
     <!-- End Container -->

@@ -160,13 +160,6 @@
               }
             });
           } );
-
-        $(document).ready(function() {
-            $('.skybanner').onePageNav({
-                currentClass: 'hvr-shutter-out-horizontal_active'
-            });
-        }); 
-
         $(function(e){
             var targetOffset= $("#evtContainer").offset().top;
             $('html, body').animate({scrollTop: targetOffset}, 700);

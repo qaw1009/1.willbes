@@ -152,7 +152,7 @@ class EventLectureModel extends WB_Model
             $option_ccds = element('option_ccds', $input);
             $comment_use_area = element('comment_use_area', $input);
 
-            if (count($option_ccds) > 0) {
+            if (empty($option_ccds) === false) {
                 foreach ($option_ccds as $key => $val) {
                     switch ($val) {
                         case $this->eventLectureModel->_event_lecture_option_ccds[3] :
@@ -163,7 +163,7 @@ class EventLectureModel extends WB_Model
                                 ]
                             ];
                             $banner_row = $this->findEvent('BIdx', $arr_condition);
-                            if (count($banner_row) > 0) {
+                            if (empty($banner_row) === false) {
                                 throw new \Exception('등록된 배너가 있습니다.', _HTTP_NOT_FOUND);
                             }
                             break;
@@ -174,7 +174,7 @@ class EventLectureModel extends WB_Model
             // 프로모션코드 셋팅
             $promotionCode = $this->_setPromotionCode();
 
-            $set_option_ccd = count($option_ccds) > 0 ? implode(',', $option_ccds) : '';
+            $set_option_ccd = (empty($option_ccds) === false) > 0 ? implode(',', $option_ccds) : '';
             $set_comment_use_area = '';
             if (empty($comment_use_area) === false) {
                 $set_comment_use_area = implode(',', $comment_use_area);
@@ -350,7 +350,7 @@ class EventLectureModel extends WB_Model
             $evnet_category_data = element('cate_code', $input);
             $option_ccds = element('option_ccds', $input);
 
-            if (count($option_ccds) > 0) {
+            if (empty($option_ccds) === false) {
                 foreach ($option_ccds as $key => $val) {
                     switch ($val) {
                         case $this->eventLectureModel->_event_lecture_option_ccds[3] :
@@ -362,7 +362,7 @@ class EventLectureModel extends WB_Model
                                 'NOT' => ['ElIdx' => $el_idx]
                             ];
                             $banner_row = $this->findEvent('BIdx', $arr_condition);
-                            if (count($banner_row) > 0) {
+                            if (empty($banner_row) === false) {
                                 throw new \Exception('등록된 배너가 있습니다.', _HTTP_NOT_FOUND);
                             }
                         break;
@@ -372,12 +372,12 @@ class EventLectureModel extends WB_Model
 
             //정보 조회
             $row = $this->findEvent('ElIdx', ['EQ' => ['ElIdx' => $el_idx]]);
-            if (count($row) < 1) {
+            if (empty($row) === true) {
                 throw new \Exception('데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
             }
 
             $comment_use_area = element('comment_use_area', $input);
-            $set_option_ccd = count($option_ccds) > 0 ? implode(',', $option_ccds) : '';
+            $set_option_ccd = (empty($option_ccds) === false) ? implode(',', $option_ccds) : '';
             $set_comment_use_area = '';
             if (empty($comment_use_area) === false) {
                 $set_comment_use_area = implode(',', $comment_use_area);
@@ -926,14 +926,14 @@ class EventLectureModel extends WB_Model
             $this->load->library('upload');
             $this->load->library('image_lib');
 
-            $upload_dir = config_item('upload_prefix_dir') . '/event/' . date('Ymd');
+            $upload_dir = config_item('upload_prefix_dir') . '/event/' . date('Y') . '/' . date('md');
             $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->_getAttachImgNames($cnt), $upload_dir);
             if (is_array($uploaded) === false) {
                 throw new \Exception($uploaded);
             }
 
             foreach ($uploaded as $idx => $attach_files) {
-                if (count($attach_files) > 0) {
+                if (empty($attach_files) === false) {
 
                     if ($this->_set_attache_type[$idx] == 'S' || $this->_set_attache_type[$idx] == 'I') {
                         // 썸네일 생성
@@ -1204,7 +1204,7 @@ class EventLectureModel extends WB_Model
 
             $this->load->library('upload');
             $this->load->library('image_lib');
-            $upload_dir = config_item('upload_prefix_dir') . '/event/' . date('Ymd');
+            $upload_dir = config_item('upload_prefix_dir') . '/event/' . date('Y') . '/' . date('md');
 
             $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->_getAttachImgNames($cnt), $upload_dir);
             if (is_array($uploaded) === false) {

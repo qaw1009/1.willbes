@@ -519,7 +519,7 @@ class OrderFModel extends BaseOrderFModel
             $is_complete_update = $this->_conn->set('ConnOrderIdx', $order_idx)->set('ExpireDatm', 'NOW()', false)
                 ->where_in('CartIdx', $sess_cart_idx)->where('MemIdx', $sess_mem_idx)
                 ->update($this->_table['cart']);
-            if ($is_complete_update === false) {
+            if ($is_complete_update === false || $this->_conn->affected_rows() < 1) {
                 throw new \Exception('장바구니 주문 식별자 업데이트에 실패했습니다.');
             }
 
@@ -614,7 +614,6 @@ class OrderFModel extends BaseOrderFModel
             $learn_pattern_ccd = element('LearnPatternCcd', $input);    // 학습형태
             $pack_type_ccd = element('PackTypeCcd', $input);    // 패키지구분
             $arr_prod_code_sub = empty(element('ProdCodeSub', $input)) === false ? explode(',', element('ProdCodeSub', $input)) : [];   // 패키지의 서브상품코드 배열
-
             $point_type = $cart_type == 'book' ? 'book' : 'lecture';    // 포인트 구분
             $real_use_point = element('RealUsePoint', $input, 0);   // 사용포인트
             $real_pay_price = element('RealPayPrice', $input) - $real_use_point;    // 실결제금액에서 사용포인트 차감
@@ -636,7 +635,14 @@ class OrderFModel extends BaseOrderFModel
                     throw new \Exception('주문상품 인증신청 정보가 없습니다.', _HTTP_NOT_FOUND);
                 }
             }
-            
+
+            // 주문상품서브 파라미터 체크 (사용자패키지, 운영자패키지, 종합반일 경우만 체크)
+            if (in_array($learn_pattern_ccd, [$this->_learn_pattern_ccd['userpack_lecture'], $this->_learn_pattern_ccd['adminpack_lecture'], $this->_learn_pattern_ccd['off_pack_lecture']]) === true) {
+                if (empty($arr_prod_code_sub) === true) {
+                    throw new \Exception('주문상품서브 정보가 없습니다.');
+                }
+            }
+
             // 주문상품 등록
             $data = [
                 'OrderIdx' => $order_idx,
@@ -963,7 +969,9 @@ class OrderFModel extends BaseOrderFModel
                 // 쿠폰등록
                 $result = $this->couponFModel->addMemberCoupon('coupon', $row['AutoCouponIdx'], false, 'order', $order_prod_idx, $mem_idx);
                 if ($result['ret_cd'] !== true) {
-                    throw new \Exception($result['ret_msg']);
+                    // TODO : 주문결제가 정상적으로 진행되도록 에러 리턴 안함
+                    //throw new \Exception($result['ret_msg']);
+                    logger('OrderFModel > addAutoMemberCoupon ==> ' . $result['ret_msg'] . ' (ProdCode = ' . $prod_code . ')', [], 'error');
                 }
             }
         } catch (\Exception $e) {
@@ -1234,24 +1242,73 @@ class OrderFModel extends BaseOrderFModel
     /**
      * 방문결제 주문 데이터 등록
      * @param int $site_code [사이트코드]
+     * @param array $input [직접방문접수 장바구니 저장 데이터]
      * @return array|bool
      */
-    public function procVisitOrder($site_code)
+    public function procVisitOrder($site_code, $input = [])
     {
         $this->_conn->trans_begin();
 
         try {
             $sess_mem_idx = $this->session->userdata('mem_idx');    // 회원 식별자 세션
             $sess_cart_sess_id = $this->session->userdata($this->_sess_cart_sess_id);   // 학원 방문결제 장바구니 세션 아이디 세션
+            $sess_gw_idx = $this->session->userdata('gw_idx');
             $order_no = $this->makeOrderNo();   // 주문번호 생성
             $cart_type = 'off_lecture';     // 장바구니 타입
             $pay_status_ccd = $this->_pay_status_ccd['receipt_wait'];    // 주문완료 결제상태공통코드 (접수대기)
+            $is_direct_pay = empty($input) === true ? 'N' : 'Y';
+            $is_visit_pay = 'Y';
+            $arr_cart_idx = null;   // 직접방문접수 장바구니 식별자
+            $arr_order_cart_idx = null;     // 주문상품 장바구니 식별자
+            $reg_ip = $this->input->ip_address();
+
+            // 직접방문접수일 경우 장바구니 데이터 저장
+            if ($is_direct_pay == 'Y') {
+                $add_learn_pattern = element('learn_pattern', $input);
+                $arr_add_prod_code = element('data', $this->makeProdCodeArray($add_learn_pattern, element('prod_code', $input, [])), []);
+
+                foreach ($arr_add_prod_code as $add_prod_code => $add_prod_row) {
+                    $add_prod_sub_code = '';
+                    if (empty(element('prod_code_sub', $input)) === false) {
+                        // 서브 강좌가 있는 경우 (종합반)
+                        $add_prod_sub_code = implode(',', element('prod_code_sub', $input, []));
+                    }
+
+                    // 장바구니 저장 데이터
+                    $add_data = [
+                        'MemIdx' => $sess_mem_idx,
+                        'SiteCode' => $site_code,
+                        'ProdCode' => $add_prod_code,
+                        'ProdCodeSub' => $add_prod_sub_code,
+                        'ParentProdCode' => $add_prod_row['ParentProdCode'],
+                        'SaleTypeCcd' => $add_prod_row['SaleTypeCcd'],
+                        'SalePatternCcd' => $this->_sale_pattern_ccd['normal'],
+                        'IsDirectPay' => $is_direct_pay,
+                        'IsVisitPay' => $is_visit_pay,
+                        'GwIdx' => $sess_gw_idx,
+                        'SessId' => $sess_cart_sess_id,
+                        'RegIp' => $reg_ip
+                    ];
+
+                    $add_cart_idx = $this->cartFModel->_addCart($add_data);
+                    if (is_numeric($add_cart_idx) === false) {
+                        throw new \Exception($add_cart_idx);
+                    }
+
+                    // 저장된 장바구니 식별자 저장
+                    $arr_cart_idx[] = $add_cart_idx;
+                }
+
+                if (empty($arr_cart_idx) === true) {
+                    throw new \Exception('등록된 장바구니 데이터가 없습니다.');
+                }
+            }
 
             // 장바구니 조회
-            $cart_rows = $this->cartFModel->listValidCart($sess_mem_idx, $site_code, null, null, null, null, 'Y');
+            $cart_rows = $this->cartFModel->listValidCart($sess_mem_idx, $site_code, null, $arr_cart_idx, null, $is_direct_pay, $is_visit_pay);
 
             // 장바구니 데이터 가공
-            $cart_results = $this->getMakeCartReData('pay', $cart_type, $cart_rows, [], 0, '', 'Y');
+            $cart_results = $this->getMakeCartReData('pay', $cart_type, $cart_rows, [], 0, '', $is_visit_pay);
 
             if (is_array($cart_results) === false) {
                 throw new \Exception($cart_results);
@@ -1285,8 +1342,8 @@ class OrderFModel extends BaseOrderFModel
                 'IsCashReceipt' => 'N',
                 'IsDelivery' => 'N',
                 'IsVisitPay' => 'Y',
-                'GwIdx' => $this->session->userdata('gw_idx'),
-                'OrderIp' => $this->input->ip_address()
+                'GwIdx' => $sess_gw_idx,
+                'OrderIp' => $reg_ip
             ];
 
             if ($this->_conn->set($data)->insert($this->_table['order']) === false) {
@@ -1301,7 +1358,7 @@ class OrderFModel extends BaseOrderFModel
                 // 상품 판매여부 체크
                 $learn_pattern = $this->getLearnPattern($cart_row['ProdTypeCcd'], $cart_row['LearnPatternCcd']);
 
-                $is_prod_check = $this->cartFModel->checkProduct($learn_pattern, $site_code, $cart_row['ProdCode'], $cart_row['ParentProdCode'], 'Y');
+                $is_prod_check = $this->cartFModel->checkProduct($learn_pattern, $site_code, $cart_row['ProdCode'], $cart_row['ParentProdCode'], $is_visit_pay);
                 if ($is_prod_check !== true) {
                     throw new \Exception($is_prod_check);
                 }
@@ -1310,14 +1367,19 @@ class OrderFModel extends BaseOrderFModel
                 if ($is_order_product !== true) {
                     throw new \Exception($is_order_product);
                 }
+
+                // 주문상품 장바구니 식별자
+                $arr_order_cart_idx[] = $cart_row['CartIdx'];
             }
 
             // 주문완료 장바구니 업데이트 (주문식별자, 만료일시 -> 현재시각으로 업데이트)
             $is_complete_update = $this->_conn->set('ConnOrderIdx', $order_idx)->set('ExpireDatm', 'NOW()', false)
-                ->where('SessId', $sess_cart_sess_id)->where('MemIdx', $sess_mem_idx)->where('IsVisitPay', 'Y')
+                ->where('SessId', $sess_cart_sess_id)->where('MemIdx', $sess_mem_idx)->where('IsVisitPay', $is_visit_pay)
                 ->where('ConnOrderIdx is ', 'null', false)
+                ->where('IsDirectPay', $is_direct_pay)->where_in('CartIdx', $arr_order_cart_idx)
                 ->update($this->_table['cart']);
-            if ($is_complete_update === false) {
+
+            if ($is_complete_update === false || $this->_conn->affected_rows() < 1) {
                 throw new \Exception('장바구니 주문 식별자 업데이트에 실패했습니다.');
             }
 

@@ -223,7 +223,7 @@ class BaseProductFModel extends WB_Model
             // 이미 정의된 추가 컬럼
             $arr_define_column = [
                 'ProfReferData' => 'ifnull(fn_professor_refer_data(P.ProfIdx), "N") as ProfReferData',
-                'IsNew' => 'if(datediff(NOW(), P.RegDatm) > 30, "N", "Y") as IsNew',
+                'IsNew' => 'if(datediff(NOW(), P.RegDatm) > 1, "N", "Y") as IsNew',
                 'ProfEventData' => 'ifnull(fn_professor_event_data(P.ProfIdx, P.SiteCode, PSC.CateCode, PSC.SubjectIdx, 1), "N") as ProfEventData',
                 'StudyCommentData' => 'ifnull(fn_professor_study_comment_data(P.ProfIdx, P.SiteCode, PSC.CateCode, PSC.SubjectIdx, 3), "N") as StudyCommentData'
             ];
@@ -260,7 +260,7 @@ class BaseProductFModel extends WB_Model
 
         $where = $this->_conn->makeWhere(['EQ' => ['PSC.CateCode' => $cate_code, 'PSC.SubjectIdx' => $subject_idx]]);
         $where = $where->getMakeWhere(true);
-        $order_by = ' order by SC.OrderNum asc, PS.OrderNum asc, PSC.PcIdx asc';
+        $order_by = ' order by SC.OrderNum asc, PS.OrderNum asc, PSC.OrderNum asc, PSC.PcIdx desc';
 
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by, [$site_code]);

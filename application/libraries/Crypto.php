@@ -3,8 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Crypto
 {
-    const STRENCRYPTER_BLOCK_SIZE = 16;    // 16 bytes
-
     private $key;
     private $initialVector;
 

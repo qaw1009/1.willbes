@@ -67,4 +67,12 @@ class Site extends \app\controllers\BaseController
     {
         $this->site->destroyImg();
     }
+
+    /**
+     * 사이트 정보관리 사이트 정보 캐쉬 수동 저장
+     */
+    public function saveCache()
+    {
+        $this->site->saveCache();
+    }
 }

@@ -100,6 +100,7 @@
                 searching: true,
                 rowsGroup: ['.rowspan'],
                 buttons: [
+                    { text: '<i class="fa fa-floppy-o mr-5"></i> 수동캐시저장', className: 'btn-sm btn-danger border-radius-reset mr-15 btn-save-cache' },
                     { text: '<i class="fa fa-sort-numeric-asc mr-5"></i> 정렬변경', className: 'btn-sm btn-success border-radius-reset mr-15 btn-reorder' },
                     { text: '<i class="fa fa-pencil mr-5"></i> 최상위 메뉴 등록', className: 'btn-sm btn-primary border-radius-reset btn-regist' }
                 ]
@@ -111,6 +112,23 @@
                     $('#tabs_site_code li:eq(0) > a').trigger('click');
                 }, 0);
             }
+
+            // 수동캐시저장 버튼 클릭
+            $('.btn-save-cache').on('click', function() {
+                if (!confirm('수동으로 사이트 메뉴 캐시를 업데이트하시겠습니까?\n(주의요망 : 전체 사이트 메뉴 캐시가 업데이트 됨)')) {
+                    return;
+                }
+
+                var data = {
+                    '{{ csrf_token_name() }}' : $list_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                    '_method' : 'PUT'
+                };
+                sendAjax('{{ site_url('/site/siteMenu/saveCache') }}', data, function(ret) {
+                    if (ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                    }
+                }, showError, false, 'POST');
+            });
 
             // 순서 변경
             $('.btn-reorder').on('click', function() {

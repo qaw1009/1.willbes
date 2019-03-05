@@ -97,11 +97,11 @@
                                             @if(empty($row['IsDate']) === false) {{ $row['IsDate'] }} @else @endif
                                         </td>
                                         <td class="w-btn tx-red">
-                                            @if($row['MrIsStatus'] == 'Y')
-                                                응시마감
-                                            @else
+                                            @if($row['MrIsStatus'] == 'N' && ($row['TakeStartDatm'] < date('Y-m-d H:i:s') && $row['TakeEndDatm'] > date('Y-m-d H:i:s')))
                                                 <a class="bg-blue bd-dark-blue NSK" href="javascript:popwin({{ $row['ProdCode']}},{{ $row['MrIdx'] }})"
-                                                   onclick="">응시하기</a>
+                                                   onclick="">응시하기 </a>
+                                            @else
+                                                응시마감
                                             @endif
                                         </td>
                                     </tr>

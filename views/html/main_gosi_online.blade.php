@@ -92,6 +92,7 @@
             </div>
         </div>
     </div>
+    
     <div class="Section">
         <div class="widthAuto">
             <div><img src="{{ img_url('gosi/visual/visual_tit01.jpg') }}" alt="더! 강력, 더! 완벽해진 윌비스 교수진"></div>

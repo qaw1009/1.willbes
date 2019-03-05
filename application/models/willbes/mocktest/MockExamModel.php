@@ -44,6 +44,7 @@ class MockExamModel extends WB_Model
         'mockAnswerPaper' => 'lms_mock_answerpaper',
         'mockLog' => 'lms_mock_log',
         'mockGrades' => 'lms_mock_grades',
+        'mockGradesLog' => 'lms_mock_grades_log',
         'answerNote' => 'lms_mock_wronganswernote',
         'mockGroupRProduct' => 'lms_mock_group_r_product',
         'mockGroup' => 'lms_mock_group'

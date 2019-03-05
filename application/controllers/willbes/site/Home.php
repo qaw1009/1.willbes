@@ -107,8 +107,8 @@ class Home extends \app\controllers\FrontController
     private function _getSite2003Data($cate_code = '', $arr_campus = [])
     {
         if (APP_DEVICE == 'pc') {
-            $data['best_product'] = $this->_product('on_lecture', 2, $cate_code, 'Best');
-            $data['new_product'] = $this->_product('on_lecture', 2, $cate_code, 'New');
+            // 과목별 2개씩 베스트 상품 조회
+            $data['best_product'] = $this->_productLectureBySubjectIdx('on_lecture', 2, $cate_code, 'Best');
         }
 
         $data['notice'] = $this->_boardNotice(4);
@@ -169,6 +169,48 @@ class Home extends \app\controllers\FrontController
 
         return $this->productFModel->listSalesProduct($learn_pattern, false, $arr_condition, $limit_cnt, 0, ['ProdCode' => 'desc'], $add_column);
     }
+
+    /**
+     * 과목별 {N}개씩 상품 조회 (온라인단강좌, 무료강좌, 학원단과만 해당)
+     * @param $learn_pattern
+     * @param int $limit_cnt
+     * @param string $cate_code
+     * @param string $is_best_new
+     * @return mixed
+     */
+    private function _productLectureBySubjectIdx($learn_pattern, $limit_cnt = 2, $cate_code = '', $is_best_new = '')
+    {
+        $arr_condition = [
+            'EQ' => ['SiteCode' => $this->_site_code],
+            'LKR' => ['CateCode' => $cate_code]
+        ];
+
+        if (empty($is_best_new) === false) {
+            $arr_condition['EQ']['Is' . ucfirst($is_best_new)] = 'Y';
+        }
+
+        // 상품 조회
+        $list = $this->productFModel->listSalesProductLimitBySubjectIdx($learn_pattern, $arr_condition, $limit_cnt);
+
+        // 상품조회 결과 배열 초기화
+        $selected_subjects = [];
+        $selected_list = [];
+
+        if (empty($list) === false) {
+            // 상품조회 결과에 존재하는 과목 정보
+            $selected_subjects = array_pluck($list, 'SubjectName', 'SubjectIdx');
+
+            // 상품 조회결과 재정의
+            foreach ($list as $idx => $row) {
+                $selected_list[$row['SubjectIdx']][] = $row;
+            }
+        }
+
+        return [
+            'subjects' => $selected_subjects,
+            'list' => $selected_list
+        ];
+    }
     
     /**
      * OnAir 조회
@@ -190,9 +232,9 @@ class Home extends \app\controllers\FrontController
     {
         $column = 'b.BoardIdx, b.Title, b.IsBest, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
         $order_by = ['b.IsBest' => 'Desc', 'b.BoardIdx' => 'Desc'];
-        $arr_condition = ['EQ' => ['b.BmIdx' => 45, 'b.SiteCode' => $this->_site_code, 'b.IsUse' => 'Y'], 'LKB' => ['Category_String'=>$this->_cate_code], 'IN' => ['b.CampusCcd' => $arr_campus]];
+        $arr_condition = ['EQ' => ['b.BmIdx' => 45, 'b.IsUse' => 'Y'], 'IN' => ['b.CampusCcd' => $arr_campus]];
 
-        return $this->supportBoardFModel->listBoard(false, $arr_condition, $column, $limit_cnt, 0, $order_by);
+        return $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $arr_condition, $column, $limit_cnt, 0, $order_by);
     }
 
     /**
@@ -206,7 +248,7 @@ class Home extends \app\controllers\FrontController
     {
         $column = 'b.BoardIdx, b.IsBest, b.AreaCcd_Name, b.Title, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
         $order_by = ['b.IsBest' => 'Desc', 'b.BoardIdx' => 'Desc'];
-        $arr_condition = ['EQ' => ['b.BmIdx' => 54, 'b.IsUse' => 'Y'], 'LKB' => ['Category_String'=>$this->_cate_code]];
+        $arr_condition = ['EQ' => ['b.BmIdx' => 54, 'b.IsUse' => 'Y']];
 
         return $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $arr_condition, $column, $limit_cnt, 0, $order_by);
     }
@@ -222,7 +264,7 @@ class Home extends \app\controllers\FrontController
     {
         $column = 'b.BoardIdx, b.Title, b.IsBest, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
         $order_by = ['b.IsBest' => 'Desc', 'b.BoardIdx' => 'Desc'];
-        $arr_condition = ['EQ' => ['b.BmIdx' => 57, 'b.IsUse' => 'Y'], 'LKB' => ['Category_String'=>$this->_cate_code]];
+        $arr_condition = ['EQ' => ['b.BmIdx' => 57, 'b.IsUse' => 'Y']];
 
         return $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $arr_condition, $column, $limit_cnt, 0, $order_by);
     }

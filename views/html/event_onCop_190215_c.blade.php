@@ -96,8 +96,7 @@
     <div class="evtContent NSK" id="evtContainer">
         <div class="skybanner">
             <a href="#event02" ><img src="http://file3.willbes.net/new_cop/2019/02/EV190215_c8.png" alt="신청"></a>
-        </div>
->	
+        </div>	
 
 		<div class="evtCtnsBox wb_top" id="main">
 			<img src="http://file3.willbes.net/new_cop/2019/02/EV190215_c1.jpg"  alt="메인" usemap="#Map190215_c1" border="0" />

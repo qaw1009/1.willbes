@@ -55,16 +55,6 @@ label {vertical-align:middle; margin-right:10px}
                 <td>기본이론 종합반 30% 할인 </td>
                 <td>형법,형사소송법 단과강의 50% 할인 </td>
             </tr>
-            <tr>
-                <th>신림기숙 스파르타경찰학원 </th>
-                <td>6개월 과정 종합반 10%할인 </td>
-                <td>- </td>
-            </tr>
-            <tr>
-                <th>두로경찰간부학원 </th>
-                <td>1년 과정 종합반 40%할인 </td>
-                <td>- </td>
-            </tr>
             </tbody>
         </table>
       	<ul>

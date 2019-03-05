@@ -319,73 +319,15 @@
     <!-- 기출강의// -->
 
     <div class="Section HotIssue pt50 pb50">
-        <div class="widthAuto">
-            <div class="widthAuto smallTit">
-                <p><span>학원 최신 소식을 한 눈에! <strong>학원 Hot Issue</strong></span></p>
-            </div>
-        </div>
-        <ul class="widthAuto mt60">
-            <li><a href="#none"><img src="{{ img_url('cop/banner/bnr_onHiA01.jpg') }}" alt="배너명"></a></li>
-            <li><a href="#none"><img src="{{ img_url('cop/banner/bnr_onHiB01.jpg') }}" alt="배너명"></a></li>
-            <li class="sliderHotIssue nSlider pick">
-                <div class="sliderNum">
-                    <div><img src="{{ img_url('cop/banner/bnr_onHiC01.jpg') }}"></div>
-                    <div><img src="{{ img_url('cop/banner/bnr_onHiC01.jpg') }}"></div>
-                </div>
-            </li>
-        </ul>
+        @include('willbes.pc.site.main_partial.hot_issue_' . $__cfg['SiteCode'] . '_' . $__cfg['CateCode'])
     </div>
     <!-- HotIssue //-->
 
     <div class="Section Bnr mt40 mb70">
-        <div class="widthAuto">
-            <div class="widthAuto smallTit">
-                <p><span>신광은경찰 Hot Pick! <strong>온라인특강/이벤트</strong></span></p>
-            </div>
-            <div class="willbes-Bnr mt60">
-                <ul>
-                    <li><a href="http://www.willbescop.net/movie/event.html?event_cd=On_180604_p&topMenuType=O" target="_blank"><img src="{{ img_url('cop/banner/bnr_190109.jpg') }}"></a></li>
-                </ul>
-            </div>
-        </div>
+        @include('willbes.pc.site.main_partial.event_' . $__cfg['SiteCode'] . '_' . $__cfg['CateCode'])
     </div>
     <div class="Section Section5 mb70">
-        <div class="widthAuto">
-            <div class="sliderPick nSlider pick">
-                <div class="will-nTit bd-none">윌비스 <span class="cop-color">신광은경찰</span> Hot Pick</div>
-                <div class="pickBox pick1">
-                    <a href="#none"><img src="{{ img_url('cop/event/evt_190101.jpg') }}"></a>
-                    {{--<div class="sliderNum">
-                        <div><a href="#none"><img src="{{ img_url('cop/event/evt_190101.jpg') }}"></a></div>
-                        <div><a href="#none"><img src="{{ img_url('cop/event/evt_190102.jpg') }}"></a></div>
-                    </div>--}}
-                </div>
-                <div class="pickBox pick2">
-                    <a href="#none"><img src="{{ img_url('cop/event/evt_190102.jpg') }}"></a>
-                    {{--<div class="sliderNum">
-                        <div><a href="#none"><img src="{{ img_url('cop/event/evt_190101.jpg') }}"></a></div>
-                        <div><a href="#none"><img src="{{ img_url('cop/event/evt_190102.jpg') }}"></a></div>
-                    </div>--}}
-                </div>
-            </div>
-            <div class="sliderEvt nSlider pick">
-                <div class="will-nTit bd-none">윌비스 <span class="cop-color">신광은경찰</span> 특강/이벤트</div>
-                <ul>
-                    <li><a href="http://www.willbescop.net/event/movie/event.html?event_cd=On_181226_p&topMenuType=O" target="_blank"><img src="{{ img_url('cop/event/evt_190103.jpg') }}"></a></li>
-                    <li>
-                        <div class="sliderNum">
-                            <div><img src="{{ img_url('cop/event/evt_190104.jpg') }}"></div>
-                            <div><img src="{{ img_url('cop/event/evt_190105.jpg') }}"></div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            {{--<div class="willbes-Bnr pt4">
-                <ul>
-                    <li><a href="#none"><img src="{{ img_url('cop/banner/bnr_190110.jpg') }}"></a></li>
-                </ul>
-            </div>--}}
-        </div>
+        @include('willbes.pc.site.main_partial.hot_pick_' . $__cfg['SiteCode'] . '_' . $__cfg['CateCode'])
     </div>
     <div class="Section Section6 mb50">
         <div class="widthAuto">

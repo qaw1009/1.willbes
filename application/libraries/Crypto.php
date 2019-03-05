@@ -6,19 +6,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 class Crypto
 {
-    const STRENCRYPTER_BLOCK_SIZE		= 16 ;	// 16 bytes
+    const STRENCRYPTER_BLOCK_SIZE = 16 ;	// 16 bytes
 
     private $key;
     private $initialVector;
-
-    /*
-    function __construct ()
-    {
-        $this->key = md5 ("axissoft", TRUE) ;
-        $this->initialVector = md5 ("starplayer", TRUE) ;
-        //echo 'key : ' . $this->key . ", init : ".$this->initialVector . "<br />";
-    }
-    */
 
     function __construct($params = [])
     {
@@ -27,15 +18,10 @@ class Crypto
         if( !is_string($key) or $key == "" )
             throw new Exception("The key must be a non-empty string.") ;
 
-        //if( !is_string($initialVector) or $initialVector == "" )
-        //	throw new Exception("The initial vector must be a non-empty string.") ;
-
         $vector = "starplayer";
-        // Initialize an encryption key and an initial vector.
+
         $this->key = md5($key,TRUE) ;
         $this->initialVector = md5($vector, TRUE) ;
-
-
     }
 
     public function encrypt($value)
@@ -46,16 +32,11 @@ class Crypto
         if( !is_string($value) )
             throw new Exception("A non-string value can not be encrypted.") ;
 
+        // $value = self::toPkcs7($value) ;
 
-        // Append padding
-        $value = self::toPkcs7($value) ;
+        $output = openssl_encrypt($value, 'AES-128-CBC', $this->key, OPENSSL_RAW_DATA, $this->initialVector);
+        //$output = openssl_encrypt($value, 'AES-128-CBC', $this->key, OPENSSL_RAW_DATA|OPENSSL_ZERO_PADDING, $this->initialVector);
 
-        //echo 'default encrypt : '. $value . '<br />';
-        // Encrypt the value.
-        //$output = mcrypt_encrypt(MCRYPT_RIJNDAEL_128, $this->key, $value, MCRYPT_MODE_CBC, $this->initialVector) ;
-        $output = openssl_encrypt($value, 'AES-128-CBC', $this->key, OPENSSL_RAW_DATA|OPENSSL_ZERO_PADDING, $this->initialVector);
-        //echo 'xml : '. base64_encode($output) . '<br />';
-        // Return a base64 encoded string of the encrypted value.
         return base64_encode($output);
     }
 
@@ -64,17 +45,13 @@ class Crypto
         if( !is_string($value) or $value == "" )
             throw new Exception("The cipher string must be a non-empty string.") ;
 
-        // Decode base64 encoding.
         $value = base64_decode($value) ;
 
-        //echo 'decoded base64 : '. $value . '<br />';
+        $output = openssl_decrypt($value, 'AES-128-CBC', $this->key, OPENSSL_RAW_DATA, $this->initialVector);
+        //$output = openssl_decrypt($value, 'AES-128-CBC', $this->key, OPENSSL_RAW_DATA|OPENSSL_ZERO_PADDING, $this->initialVector);
 
-        // Decrypt the value.
-        //$output = mcrypt_decrypt(MCRYPT_RIJNDAEL_128, $this->key, $value, MCRYPT_MODE_CBC, $this->initialVector) ;
-        $output = openssl_decrypt($value, 'AES-128-CBC', $this->key, OPENSSL_RAW_DATA|OPENSSL_ZERO_PADDING, $this->initialVector);
-        //echo 'origin : '. self::fromPkcs7($output) . '<br />';
-        // Strip padding and return.
-        return self::fromPkcs7($output) ;
+        return $output;
+        // return self::fromPkcs7($output) ;
     }
 
     private static function toPkcs7($value)

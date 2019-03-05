@@ -67,13 +67,13 @@
                             </colgroup>
                             <thead>
                             <tr>
-                                <th>No<span class="row-line">|</span></li></th>
-                                <th>과정<span class="row-line">|</span></li></th>
-                                <th>응시분야<span class="row-line">|</span></li></th>
-                                <th>시험응시일<span class="row-line">|</span></li></th>
-                                <th>모의고사명<span class="row-line">|</span></li></th>
-                                <th>응시상태<span class="row-line">|</span></li></th>
-                                <th>나의응시일<span class="row-line">|</span></li></th>
+                                <th>No<span class="row-line">|</span></th>
+                                <th>과정<span class="row-line">|</span></th>
+                                <th>응시분야<span class="row-line">|</span></th>
+                                <th>시험응시일<span class="row-line">|</span></th>
+                                <th>모의고사명<span class="row-line">|</span></th>
+                                <th>응시상태<span class="row-line">|</span></th>
+                                <th>나의응시일<span class="row-line">|</span></th>
                                 <th>응시하기</th>
                             </tr>
                             </thead>
@@ -133,8 +133,6 @@
             </div>
 
             <!-- willbes-Leclist -->
-
-
         </div>
         {!! banner('내강의실_우측퀵', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
 

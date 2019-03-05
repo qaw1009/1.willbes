@@ -92,7 +92,6 @@ class SupportBoardFModel extends BaseSupportFModel
 
     /**
      * 캠퍼스별 게시판 목록
-     * @param $learn_pattern
      * @param array $arr_condition
      * @param int $limit
      * @return mixed

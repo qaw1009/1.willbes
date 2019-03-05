@@ -111,6 +111,10 @@
                 <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190215_c') }}" target="_blank">1단계 요약문제풀이</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190305_c') }}" target="_blank">노량진 24시</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190226_c') }}" target="_blank">18년 3차 김원욱 형법 적중</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190222_g') }}" target="_blank">하승민 좋은데이 경찰영어</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190225_g') }}" target="_blank">2019 해양경찰 기본이론</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190218_g') }}" target="_blank">영어 지옥 탈출반</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190219_g') }}" target="_blank">경찰영어 아침특강</a></li>
                 <li><p>경찰 학원 ▼</p></li> 
                 <li class="w50"><a href="{{ site_url('/home/html/event_offCop_190211_p') }}" target="_blank">19년 1차대비 2월 전국모의고사</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_offCop_basic') }}" target="_blank">2019 집중연강식 기본이론</a></li>

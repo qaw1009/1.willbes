@@ -232,9 +232,9 @@ class Home extends \app\controllers\FrontController
     {
         $column = 'b.BoardIdx, b.Title, b.IsBest, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
         $order_by = ['b.IsBest' => 'Desc', 'b.BoardIdx' => 'Desc'];
-        $arr_condition = ['EQ' => ['b.BmIdx' => 45, 'b.SiteCode' => $this->_site_code, 'b.IsUse' => 'Y'], 'LKB' => ['Category_String'=>$this->_cate_code], 'IN' => ['b.CampusCcd' => $arr_campus]];
+        $arr_condition = ['EQ' => ['b.BmIdx' => 45, 'b.IsUse' => 'Y'], 'IN' => ['b.CampusCcd' => $arr_campus]];
 
-        return $this->supportBoardFModel->listBoard(false, $arr_condition, $column, $limit_cnt, 0, $order_by);
+        return $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $arr_condition, $column, $limit_cnt, 0, $order_by);
     }
 
     /**
@@ -248,7 +248,7 @@ class Home extends \app\controllers\FrontController
     {
         $column = 'b.BoardIdx, b.IsBest, b.AreaCcd_Name, b.Title, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
         $order_by = ['b.IsBest' => 'Desc', 'b.BoardIdx' => 'Desc'];
-        $arr_condition = ['EQ' => ['b.BmIdx' => 54, 'b.IsUse' => 'Y'], 'LKB' => ['Category_String'=>$this->_cate_code]];
+        $arr_condition = ['EQ' => ['b.BmIdx' => 54, 'b.IsUse' => 'Y']];
 
         return $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $arr_condition, $column, $limit_cnt, 0, $order_by);
     }
@@ -264,7 +264,7 @@ class Home extends \app\controllers\FrontController
     {
         $column = 'b.BoardIdx, b.Title, b.IsBest, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
         $order_by = ['b.IsBest' => 'Desc', 'b.BoardIdx' => 'Desc'];
-        $arr_condition = ['EQ' => ['b.BmIdx' => 57, 'b.IsUse' => 'Y'], 'LKB' => ['Category_String'=>$this->_cate_code]];
+        $arr_condition = ['EQ' => ['b.BmIdx' => 57, 'b.IsUse' => 'Y']];
 
         return $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $arr_condition, $column, $limit_cnt, 0, $order_by);
     }

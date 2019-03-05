@@ -60,7 +60,8 @@
                 <li class="c_both"></li>
                 <li><a href="{{ site_url('/home/html/event_onLeaveArmyPassIntro') }}" target="_blank">전역군인인증 통합</a></li>
                 <li><a href="{{ site_url('/home/html/event_onLeaveArmyPass') }}" target="_blank">전역군인인증 온라인 메인</a></li>
-                <li><a href="{{ site_url('/home/html/event_onLeaveArmyPassLec') }}" target="_blank">전역군인인증 온라인 강의 <span>*</span></a></li>                
+                <li><a href="{{ site_url('/home/html/event_onLeaveArmyPassLec') }}" target="_blank">전역군인인증 공무원 온라인 강의 <span>*</span></a></li> 
+                <li><a href="{{ site_url('/home/html/event_onLeaveArmyPassLecCop') }}" target="_blank">전역군인인증 경찰 온라인 강의 <span>*</span></a></li>               
                 <li><a href="{{ site_url('/home/html/event_onLeaveArmyPassConfirmPop') }}" target="_blank">전역군인인증 온라인 팝업_size 740x700 <span>*</span></a></li>             
                 <li><a href="{{ site_url('/home/html/event_onCopReboundPop') }}" target="_blank">타 학원 수강생 인증 팝업_size 740x700 <span>*</span></a></li>
                 <li><a href="{{ site_url('/home/html/event_onLeaveArmyPass_incheon') }}" target="_blank">전역간부대상 인천교육과정</a></li>

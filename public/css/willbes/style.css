@@ -8,6 +8,7 @@
 @import url("style_cop_sea_special.css");
 @import url("style_gosi.css");
 @import url("style_gosi_acad.css");
+@import url("style_gosi_law.css");
 @import url("style_gpgosi.css");
 
 
@@ -1727,6 +1728,9 @@ table.auTable tr td {
 }
 .willbesCenter ul li {
     margin: 0 20px;
+}
+.willbesCenter ul li a {
+    display: block;
 }
 .willbesCenter ul li .nTxt {
     font-size: 12px;

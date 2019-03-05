@@ -96,23 +96,28 @@
                                         <td class="w-dday">
                                             @if(empty($row['IsDate']) === false) {{ $row['IsDate'] }} @else @endif
                                         </td>
+                                        @if($row['IsTake'] == 'N' && ($row['TakeStartDatm'] < date('Y-m-d H:i:s') && $row['TakeEndDatm'] > date('Y-m-d H:i:s')))
                                         <td class="w-btn tx-red">
-                                            @if($row['IsTake'] == 'N' && ($row['TakeStartDatm'] < date('Y-m-d H:i:s') && $row['TakeEndDatm'] > date('Y-m-d H:i:s')))
-                                                <a class="bg-blue bd-dark-blue NSK" href="javascript:popwin({{ $row['ProdCode']}},{{ $row['MrIdx'] }})"
-                                                   onclick="">응시하기 </a>
+                                            <a class="bg-blue bd-dark-blue NSK" href="javascript:popwin({{ $row['ProdCode']}},{{ $row['MrIdx'] }})"
+                                               onclick="">응시하기 </a>
+                                        </td>
+                                        @else
+                                            @if($row['TakeStartDatm'] > date('Y-m-d H:i:s'))
+                                                <td class="w-btn tx-red">
+                                                    <a class="bg-blue bd-dark-blue NSK" href="javascript:alert('응시기간 내에만 시험 응시가 가능합니다.');" onclick="">응시하기 </a>
+                                                </td>
                                             @else
-                                                @if($row['TakeStartDatm'] > date('Y-m-d H:i:s'))
-                                                    <a class="bg-blue bd-dark-blue NSK" href="javascript:alert('응시기간 내에만 시험 응시가 가능합니다.');"
-                                                       onclick="">응시하기 </a>
-                                                @else
-                                                    @if($row['IsTake'] == 'Y')
+                                                @if($row['IsTake'] == 'Y')
+                                                    <td class="w-btn tx-black">
                                                         응시완료
-                                                    @else
+                                                    </td>
+                                                @else
+                                                    <td class="w-btn tx-red">
                                                         응시마감
-                                                    @endif
+                                                    </td>
                                                 @endif
                                             @endif
-                                        </td>
+                                        @endif
                                     </tr>
                                     @php $paging['rownum']-- @endphp
                                 @endforeach

@@ -59,8 +59,8 @@
                                 <col style="width: 60px;">
                                 <col style="width: 70px;">
                                 <col style="width: 90px;">
-                                <col style="width: 140px;">
-                                <col style="width: 260px;">
+                                <col style="width: 150px;">
+                                <col style="width: 250px;">
                                 <col style="width: 90px;">
                                 <col style="width: 130px;">
                                 <col style="width: 120px;">

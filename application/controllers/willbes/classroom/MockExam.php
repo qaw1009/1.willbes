@@ -50,7 +50,7 @@ class MockExam extends \app\controllers\FrontController
 
         $column = 'MP.*, A.wAdminName, MR.IsTake AS MrIsStatus, MR.MrIdx,
                    (SELECT SiteGroupName FROM lms_site_group WHERE SiteGroupCode = (SELECT SiteGroupCode FROM lms_site WHERE SiteCode = PD.SiteCode)) AS SiteName,
-                   (SELECT RegDatm FROM lms.lms_mock_answerpaper WHERE MemIdx = MR.MemIdx AND MrIdx = MR.MrIdx ORDER BY RegDatm DESC LIMIT 1) AS IsDate,
+                   MR.RegDatm AS IsDate,
                    PD.ProdName, PD.SaleStartDatm, PD.SaleEndDatm, PS.SalePrice, PS.RealSalePrice,          
                    C1.CateName, C1.IsUse AS IsUseCate
                        ';

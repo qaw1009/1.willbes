@@ -92,12 +92,12 @@
                                         <td class="w-list">
                                             {{hpSubString($row['ProdName'],0,40,'...')}}
                                         </td>
-                                        <td class="w-state">@if($row['MrIsStatus'] == 'Y') 응시 @else 미응시 @endif</td>
+                                        <td class="w-state">@if($row['IsTake'] == 'Y') 응시 @else 미응시 @endif</td>
                                         <td class="w-dday">
                                             @if(empty($row['IsDate']) === false) {{ $row['IsDate'] }} @else @endif
                                         </td>
                                         <td class="w-btn tx-red">
-                                            @if($row['MrIsStatus'] == 'N' && ($row['TakeStartDatm'] < date('Y-m-d H:i:s') && $row['TakeEndDatm'] > date('Y-m-d H:i:s')))
+                                            @if($row['IsTake'] == 'N' && ($row['TakeStartDatm'] < date('Y-m-d H:i:s') && $row['TakeEndDatm'] > date('Y-m-d H:i:s')))
                                                 <a class="bg-blue bd-dark-blue NSK" href="javascript:popwin({{ $row['ProdCode']}},{{ $row['MrIdx'] }})"
                                                    onclick="">응시하기 </a>
                                             @else
@@ -105,7 +105,11 @@
                                                     <a class="bg-blue bd-dark-blue NSK" href="javascript:alert('응시기간 내에만 시험 응시가 가능합니다.');"
                                                        onclick="">응시하기 </a>
                                                 @else
-                                                응시마감
+                                                    @if($row['IsTake'] == 'Y')
+                                                        응시완료
+                                                    @else
+                                                        응시마감
+                                                    @endif
                                                 @endif
                                             @endif
                                         </td>

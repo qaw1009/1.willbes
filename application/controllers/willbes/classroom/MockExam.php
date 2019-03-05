@@ -48,7 +48,7 @@ class MockExam extends \app\controllers\FrontController
             ]
         ];
 
-        $column = 'MP.*, A.wAdminName, MR.IsTake AS MrIsStatus, MR.MrIdx,
+        $column = 'MP.*, A.wAdminName, MR.IsTake, MR.MrIdx,
                    (SELECT SiteGroupName FROM lms_site_group WHERE SiteGroupCode = (SELECT SiteGroupCode FROM lms_site WHERE SiteCode = PD.SiteCode)) AS SiteName,
                    MR.RegDatm AS IsDate,
                    PD.ProdName, PD.SaleStartDatm, PD.SaleEndDatm, PS.SalePrice, PS.RealSalePrice,          

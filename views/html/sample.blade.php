@@ -89,7 +89,7 @@
                 <li class="w50"><a href="{{ site_url('/home/html/event_onCop_181127_c') }}" target="_blank">N수생의 합격비법</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_offCop_181129_p') }}" target="_blank">18년 2차 최종합격자의 밤</a></li>
                 <li><a href="{{ site_url('/home/html/event_offCop_190107_p') }}" target="_blank">18년 2차 최종합격자 중경입교식, 그 현장을 가다!</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_170802_p') }}" target="_blank">해양경찰특채PASS <span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_170802_p') }}" target="_blank">해양경찰특채 PASS <span>*</span></a></li>
                 <li><a href="{{ site_url('/home/html/event_onCop_170126_p') }}" target="_blank">영향력있는 언론들이 주목하는 윌비스신광은경찰팀</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190123_c') }}" target="_blank">적중 통합 페이지</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190111_c') }}" target="_blank">18년 3차 신광은 형사소송법 적중</a></li>
@@ -101,6 +101,12 @@
                 <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190114_p') }}" target="_blank">박우찬 실용글쓰기</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190102_y') }}" target="_blank">경찰체력 정복하기</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190113_p') }}" target="_blank">2019 쌩기초 경찰영어</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_180713_y') }}" target="_blank">신광은경찰 합격스토리 대공개</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_181203_L') }}" target="_blank">김원욱 형법 1개년 최기판 무료특강</a></li>
+                <li><a href="{{ site_url('/home/html/event_onCop_181027_p') }}" target="_blank">18년 3차대비 장정훈 경찰학 무료숫자특강</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190208_g') }}" target="_blank">2019 KCG 핵심요약 플러스</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_180125_p') }}" target="_blank">해양경찰학개론 만점골든키 정태정</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_180205_p') }}" target="_blank">윌비스 해양경찰특채 T-PASS <span>*</span></a></li>
                 <li><p>경찰 학원 ▼</p></li> 
                 <li class="w50"><a href="{{ site_url('/home/html/event_offCop_190211_p') }}" target="_blank">19년 1차대비 2월 전국모의고사</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_offCop_basic') }}" target="_blank">2019 집중연강식 기본이론</a></li>

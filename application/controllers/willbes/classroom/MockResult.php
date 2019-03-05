@@ -286,6 +286,10 @@ class MockResult extends \app\controllers\FrontController
         $mpidx = element('mpidx',$arr_input);
         $MalIdx = element('MalIdx',$arr_input);
         $mridx = element('mridx',$arr_input);
+        $submission = element('submission',$arr_input);
+
+        //시험제출 유무 Y면 제출
+        if(empty($submission)) $submission = 'Y';
 
         $MalArr = array();
         if(empty($MalIdx) === false){
@@ -330,7 +334,8 @@ class MockResult extends \app\controllers\FrontController
             'prodcode' => $prodcode,
             'answerNote' => $answerNote,
             'MalArr' => $MalArr,
-            'mridx' => $mridx
+            'mridx' => $mridx,
+            'submission' => $submission
         ]);
     }
 

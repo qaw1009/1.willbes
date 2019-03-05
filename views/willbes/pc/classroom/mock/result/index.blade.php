@@ -89,14 +89,18 @@
                                             {{ round($row['TCNT'] / $row['KCNT'], 2) }}
                                         </td>
                                         @if(substr($row['GradeOpenDatm'],0,10) <= date('Y-m-d'))
-                                            <td class="w-report tx-red"><a href="javascript:popwin({{ $row['ProdCode'] }}, 1, {{ $row['MrIdx'] }})">[성적확인]</a></td>
+                                            @if($row['TCNT']!=null)
+                                            <td class="w-report tx-red"><a href="javascript:popwin({{ $row['ProdCode'] }}, 1, {{ $row['MrIdx'] }}, {{ $row['TCNT'] }})">[성적확인]</a></td>
+                                            @else
+                                                <td>미제출</td>
+                                            @endif
                                         @else
                                         <td class="w-report">집계중</td>
                                         @endif
                                         <td class="w-file on tx-blue">
                                             @if(substr($row['GradeOpenDatm'],0,10) <= date('Y-m-d'))
                                                 <a href="javascript:selQaFileAjax({{ $row['ProdCode'] }});">[문제/해설]</a><br>
-                                                <a href="javascript:popwin({{ $row['ProdCode'] }}, 2, {{ $row['MrIdx'] }})">[오답노트]</a>
+                                                <a href="javascript:popwin({{ $row['ProdCode'] }}, 2, {{ $row['MrIdx'] }}, {{ $row['TCNT'] }})">[오답노트]</a>
                                             @else
                                             @endif
                                         </td>
@@ -158,12 +162,20 @@
         <!-- End Container -->
         <script>
             var win = '';
-            function popwin(prodcode, mode, mridx){
+            //시험제출유무
+            var submissionYN = 'Y';
+            function popwin(prodcode, mode, mridx, tcnt){
+                if(tcnt == undefined){
+                    submissionYN = 'N';
+                } else {
+                    submissionYN = 'Y';
+                }
+
                 var _url = '';
                 if(mode == 1){
                     _url = '{{ front_url('/classroom/MockResult/winStatTotal?prodcode=') }}' + prodcode + '&mridx=' + mridx;
                 }else{
-                    _url = '{{ front_url('/classroom/MockResult/winAnswerNote?prodcode=') }}' + prodcode + '&mridx=' + mridx;
+                    _url = '{{ front_url('/classroom/MockResult/winAnswerNote?prodcode=') }}' + prodcode + '&mridx=' + mridx + '&submission=' + submissionYN;
                 }
                 if (win == '') {
                     win = window.open(_url, 'mockPopupStat', 'width=1024, height=845, scrollbars=yes, resizable=yes');

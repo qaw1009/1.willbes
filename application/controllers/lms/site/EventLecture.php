@@ -241,10 +241,10 @@ class EventLecture extends \app\controllers\BaseController
             }
         }
 
-        // 프로모션 제외
-        if ($this->eventLectureModel->_request_type_names[$request_type] != '프로모션') {
-            // 등록,수정 조건 분기 처리, 프로모션 제외
-            if (empty($this->_reqP('el_idx')) === true) {
+        // 등록,수정 조건 분기 처리, 프로모션 제외
+        if (empty($this->_reqP('el_idx')) === true) {
+            // 프로모션 제외
+            if ($this->eventLectureModel->_request_type_names[$request_type] != '프로모션') {
                 if ($content_type == 'I' && empty($_FILES['attach_file']['size'][0]) === true) {
                     $rules = array_merge($rules, [
                         ['field' => "attach_file_C", 'label' => '이미지내용', 'rules' => "callback_validateFileRequired[attach_file_C]"]
@@ -260,9 +260,12 @@ class EventLecture extends \app\controllers\BaseController
                         ['field' => "attach_file_S", 'label' => '리스트썸네일', 'rules' => "callback_validateFileRequired[attach_file_S]"]
                     ]);
                 }
+            }
+        } else {
+            $method = 'modify';
 
-            } else {
-                $method = 'modify';
+            // 프로모션 제외
+            if ($this->eventLectureModel->_request_type_names[$request_type] != '프로모션') {
                 if ($content_type == 'E') {
                     $rules = array_merge($rules, [
                         ['field' => 'content', 'label' => '내용', 'rules' => 'trim|required']

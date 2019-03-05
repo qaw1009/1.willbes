@@ -29,7 +29,7 @@ class SupportFaq extends BaseSupport
         $s_keyword = element('s_keyword',$arr_input);
 
         //FAQ구분
-        $faq_ccd = $this->supportBoardFModel->listFaqCcd();
+        $faq_ccd = $this->supportBoardFModel->listFaqCcd($this->_site_code);
         foreach ($faq_ccd as $idx => $row) {
             $faq_ccd[$idx]['subFaqData']  = json_decode($row['subFaqData'], true);
         }

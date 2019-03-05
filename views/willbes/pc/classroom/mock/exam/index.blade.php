@@ -101,7 +101,12 @@
                                                 <a class="bg-blue bd-dark-blue NSK" href="javascript:popwin({{ $row['ProdCode']}},{{ $row['MrIdx'] }})"
                                                    onclick="">응시하기 </a>
                                             @else
+                                                @if($row['TakeStartDatm'] > date('Y-m-d H:i:s'))
+                                                    <a class="bg-blue bd-dark-blue NSK" href="javascript:alert('응시기간 내에만 시험 응시가 가능합니다.');"
+                                                       onclick="">응시하기 </a>
+                                                @else
                                                 응시마감
+                                                @endif
                                             @endif
                                         </td>
                                     </tr>

@@ -108,6 +108,7 @@
                 <li class="w50"><a href="{{ site_url('/home/html/event_onCop_180125_p') }}" target="_blank">해양경찰학개론 만점골든키 정태정</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onCop_180205_p') }}" target="_blank">윌비스 해양경찰특채 T-PASS <span>*</span></a></li>
                 <li><a href="{{ site_url('/home/html/event_onCop_181218_c') }}" target="_blank">2019 KCG 해양경찰특채 기출,예상문제풀이</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190215_c') }}" target="_blank">1단계 요약문제풀이</a></li>
                 <li><p>경찰 학원 ▼</p></li> 
                 <li class="w50"><a href="{{ site_url('/home/html/event_offCop_190211_p') }}" target="_blank">19년 1차대비 2월 전국모의고사</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_offCop_basic') }}" target="_blank">2019 집중연강식 기본이론</a></li>

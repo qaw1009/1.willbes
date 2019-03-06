@@ -112,7 +112,7 @@ Class OffPackageAdmin extends \app\controllers\BaseController
         $count = $this->offPackageAdminModel->listLecture(true, $arr_condition);
 
         if ($count > 0) {
-            $list = $this->offPackageAdminModel->listLecture(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.ProdCode' => 'desc']);
+            $list = $this->offPackageAdminModel->listLecture(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.RegDatm' => 'desc']);
         }
 
         return $this->response([

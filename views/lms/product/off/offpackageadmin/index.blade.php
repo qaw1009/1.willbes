@@ -58,7 +58,7 @@
                         </select>
                         &nbsp;
                         <select class="form-control" id="search_packtype_ccd" name="search_packtype_ccd">
-                            <option value="">종합반유형 </option>
+                            <option value="">종합반유형</option>
                             @foreach($packtype_ccd as $key => $val)
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
@@ -140,6 +140,7 @@
                     <th>강좌기본정보</th>
                     <th>수강형태</th>
                     <th>수강신청<BR>구분</th>
+                    <th>종합반유형</th>
                     <th>개강<BR>년/월</th>
                     <th>종합반명</th>
                     <th>판매가</th>
@@ -196,6 +197,7 @@
                         }},
                     {'data' : 'StudyPatternCcd_Name'},
                     {'data' : 'StudyApplyCcd_Name'},
+                    {'data' : 'PackTypeCcd_Name'},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return row.SchoolStartYear+'/'+row.SchoolStartMonth;
                         }},

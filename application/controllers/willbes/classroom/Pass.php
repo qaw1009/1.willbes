@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Pass extends \app\controllers\FrontController
 {
-    protected $models = array('classroomF', 'product/packageF', 'product/lectureF', 'order/orderListF', 'memberF');
+    protected $models = array('classroomF', 'product/packageF', 'product/lectureF', 'order/orderListF', 'memberF', 'bannerF', 'support/supportBoardF');
     protected $helpers = array('download','file');
     protected $auth_controller = true;
     protected $auth_methods = array();
@@ -27,6 +27,12 @@ class Pass extends \app\controllers\FrontController
 
         $input_arr = $this->_reqG(null);
         $today = date("Y-m-d", time());
+
+        // 무한PASS배너
+        $arr_banner = $this->bannerFModel->findBannersInArray(['내강의실_무한PASS배너'], $this->_site_code);
+
+        // 무한PASS공지사항
+        $list_pass_notice = $this->_boardNotice();
 
         // 실제 리스트용
         $cond_arr = [
@@ -234,6 +240,8 @@ class Pass extends \app\controllers\FrontController
 
         return $this->load->view('/classroom/pass/index', [
             'sitegroup_arr' => $sitegroup_arr,
+            'arr_banner' => $arr_banner,
+            'list_pass_notice' => $list_pass_notice,
             'course_arr' => $course_arr,
             'subject_arr' => $subject_arr,
             'prof_arr' => $prof_arr,
@@ -946,5 +954,14 @@ class Pass extends \app\controllers\FrontController
         } else {
             return $this->json_error('변경에 실패했습니다.\n다시 시도해주십시요.');
         }
+    }
+
+    private function _boardNotice($limit_cnt = 5)
+    {
+        $column = 'b.BoardIdx, b.Title, b.IsBest, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
+        $order_by = ['b.IsBest' => 'Desc', 'b.BoardIdx' => 'Desc'];
+        $arr_condition = ['EQ' => ['b.BmIdx' => 99, 'b.IsUse' => 'Y']];
+
+        return $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $arr_condition, $column, $limit_cnt, 0, $order_by);
     }
 }

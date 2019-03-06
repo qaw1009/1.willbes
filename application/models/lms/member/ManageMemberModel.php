@@ -100,7 +100,7 @@ class ManageMemberModel extends WB_Model
 
         $from = "FROM {$this->_table['member']} AS Mem 
             INNER JOIN {$this->_table['info']} AS Info ON Info.MemIdx = Mem.MemIdx
-            INNER JOIN {$this->_table['code']} AS c1 ON Mem.CertifiedInfoTypeCcd = c1.Ccd 
+            LEFT JOIN {$this->_table['code']} AS c1 ON Mem.CertifiedInfoTypeCcd = c1.Ccd 
             ";
 
         $where = " WHERE Mem.MemIdx = {$memIdx} ";

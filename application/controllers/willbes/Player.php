@@ -1037,7 +1037,7 @@ class Player extends \app\controllers\FrontController
         $wUnitIdx = $this->_req("u");
         $Quility = $this->_req("q");
         $type = $this->_req("st");
-logger($_SERVER['QUERY_STRING']);
+
         $ispause = 'N';
         $isstart = 'Y';
         $timeover = 'N';
@@ -1123,7 +1123,6 @@ logger($_SERVER['QUERY_STRING']);
         }
 
         if(is_array($wUnitIdx) == true){
-            logger(implode(',', $wUnitIdx));
             $cond_arr = [
                 'EQ' => [
                     'MemIdx' => $MemIdx,
@@ -1137,7 +1136,6 @@ logger($_SERVER['QUERY_STRING']);
                 ]
             ];
         } else {
-            logger($wUnitIdx);
             $cond_arr = [
                 'EQ' => [
                     'MemIdx' => $MemIdx,

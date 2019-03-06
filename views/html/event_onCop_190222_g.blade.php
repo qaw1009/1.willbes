@@ -71,8 +71,9 @@
         <div class="evtCtnsBox WB_con06"  id="0222_lecgo">
             <img src="http://file3.willbes.net/new_cop/2019/02/EV190222_06.png" alt="#" usemap="#Map_190222_lecgo" border="0" />
             <map name="Map_190222_lecgo">
-                <area shape="rect" coords="92,738,1011,937" href="http://willbescop.net/lecture/passLectureDetail.html?topMenu=081&topMenuName=일반경찰&searchTopCategoryCode=&searchCategoryCode=081&searchSubjectCode=1001&searchLeccode=D201900154&leftMenuLType=&lecKType=&USER_ID=changhong79&hSEARCHTYPE=&hSEARCHTEXT=&learningCD=&topMenuType=F&topMenuGnb=OM_009&SEARCHSERIESCODE=" target="_blank" alt="신청하기">
-            </map>            
+            <area shape="rect" coords="120,860,542,937" href="http://www.willbescop.net/lecture/passLectureDetail.html?topMenu=081&topMenuName=일반경찰&searchTopCategoryCode=&searchCategoryCode=081&searchSubjectCode=1001&searchLeccode=D201900154&leftMenuLType=&lecKType=&USER_ID=changhong79&hSEARCHTYPE=&hSEARCHTEXT=&learningCD=&topMenuType=F&topMenuGnb=OM_009&SEARCHSERIESCODE=" target="_blank" alt="학원신청">
+            <area shape="rect" coords="566,859,1010,937" href="http://www.willbescop.net/lecture/movieLectureDetail.html?topMenu=081&topMenuType=O&searchSubjectCode=1001&searchLeccode=D201900087&leftMenuLType=M0003&lecKType=D" target="_blank" alt="온라인동영상신청">
+            </map>           
         </div>
         <!--//WB_con06-->     
         

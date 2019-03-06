@@ -1037,7 +1037,7 @@ class Player extends \app\controllers\FrontController
         $wUnitIdx = $this->_req("u");
         $Quility = $this->_req("q");
         $type = $this->_req("st");
-dd($wUnitIdx);
+logger($_SERVER['QUERY_STRING']);
         $ispause = 'N';
         $isstart = 'Y';
         $timeover = 'N';
@@ -1553,8 +1553,6 @@ dd($wUnitIdx);
             }
         }
 
-        logger('A:',$rtnData);
-
         return $this->json_result(true,'성공',null, $rtnData);
     }
 
@@ -1600,7 +1598,6 @@ dd($wUnitIdx);
         foreach($input as $key => $value){
             $params .= $key.'='.$value.'&';
         }
-        //logger($params);
 
 
         switch($event){
@@ -1713,7 +1710,6 @@ dd($wUnitIdx);
         foreach($input as $key => $value){
             $params .= $key.'='.$value.'&';
         }
-        //logger($params);
 
         switch($event){
             case 'downloaded':

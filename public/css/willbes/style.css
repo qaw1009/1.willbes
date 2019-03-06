@@ -11,6 +11,7 @@
 @import url("style_gosi_law.css");
 @import url("style_gosi_tech.css");
 @import url("style_gosi_gp.css");
+@import url("style_gosi_noncom.css");
 @import url("style_gpgosi.css");
 
 
@@ -903,6 +904,7 @@ table.auTable tr td {
 }
 #Header .topnavTxt span {
     vertical-align: baseline;
+    color: #1087ef !important;
 }
 #Header .loginDepth {
     float: right;

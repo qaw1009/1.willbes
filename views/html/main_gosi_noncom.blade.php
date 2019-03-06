@@ -3,7 +3,7 @@
 @section('content')
 <!-- Container -->
 
-<div id="Container" class="Container gp c_both">
+<div id="Container" class="Container noncom c_both">
     <div class="Menu widthAuto NSK c_both">
         <h3>
             <ul class="menu-Tit">
@@ -60,9 +60,9 @@
             <div class="VisualsubBox">
                 <div class="bSlider">
                     <div class="sliderStopAutoPager">
-                        <div><a href="#none"><img src="{{ img_url('gpgosi/banner/bnr_1120x380_01.jpg') }}" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="{{ img_url('gpgosi/banner/bnr_1120x380_02.jpg') }}" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="{{ img_url('gpgosi/banner/bnr_1120x380_03.jpg') }}" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="{{ img_url('gosi_noncom/banner/bnr_1120x380_01.jpg') }}" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="{{ img_url('gosi_noncom/banner/bnr_1120x380_02.jpg') }}" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="{{ img_url('gosi_noncom/banner/bnr_1120x380_03.jpg') }}" alt="배너명"></a></div>
                     </div>
                 </div>
             </div>
@@ -70,35 +70,24 @@
     </div>
 
     <div class="Section mt30">
-        <div class="widthAuto">
-            <a href="#none"><img src="{{ img_url('gpgosi/banner/bnr_1120x110.jpg') }}" alt="배너명"></a>
+        <div class="widthAuto bSlider">
+            <ul class="sliderPlay">
+                <li><a href="#none"><img src="{{ img_url('gosi_noncom/banner/bnr_560x110_01.jpg') }}" alt="배너명"></a></li>
+                <li><a href="#none"><img src="{{ img_url('gosi_noncom/banner/bnr_560x110_02.jpg') }}" alt="황세웅면접캠프"></a></li>
+                <li><a href="#none"><img src="{{ img_url('gosi_noncom/banner/bnr_560x110_01.jpg') }}" alt="배너명"></a></li>
+                <li><a href="#none"><img src="{{ img_url('gosi_noncom/banner/bnr_560x110_02.jpg') }}" alt="황세웅면접캠프"></a></li>
+            </ul>
         </div>
     </div>
     
     <div class="Section">
         <div class="widthAuto">
-            <img src="{{ img_url('gpgosi/visual/visual_tit01.jpg') }}" alt="빠른 합격을 위한 윌비스 군무원 추천강좌">            
+            <img src="{{ img_url('gosi_noncom/visual/visual_tit01.jpg') }}" alt="빠른 합격을 위한 윌비스 군무원 추천강좌">            
             <ul class="PBcts">
-                <li><a href="#none"><img src="{{ img_url('gpgosi/visual/visual_prof01.jpg') }}" alt="배너명"></a></li>
-                <li><a href="#none"><img src="{{ img_url('gpgosi/visual/visual_prof02.jpg') }}" alt="배너명"></a></li>
-                <li><a href="#none"><img src="{{ img_url('gpgosi/visual/visual_prof03.jpg') }}" alt="배너명"></a></li>
-                <li><a href="#none"><img src="{{ img_url('gpgosi/visual/visual_prof04.jpg') }}" alt="배너명"></a></li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="Section">
-        <div class="widthAuto">
-            <img src="{{ img_url('gpgosi/visual/visual_tit02.jpg') }}" alt="빠른 합격을 위한 윌비스 군무원 추천강좌">            
-            <ul class="PBctsB">
-                <li><a href="#none"><img src="{{ img_url('gpgosi/banner/bnr_prof_01.jpg') }}" alt="배너명"></a></li>
-                <li><a href="#none"><img src="{{ img_url('gpgosi/banner/bnr_prof_02.jpg') }}" alt="배너명"></a></li>
-                <li><a href="#none"><img src="{{ img_url('gpgosi/banner/bnr_prof_03.jpg') }}" alt="배너명"></a></li>
-                <li><a href="#none"><img src="{{ img_url('gpgosi/banner/bnr_prof_04.jpg') }}" alt="배너명"></a></li>
-                <li><a href="#none"><img src="{{ img_url('gpgosi/banner/bnr_prof_01.jpg') }}" alt="배너명"></a></li>
-                <li><a href="#none"><img src="{{ img_url('gpgosi/banner/bnr_prof_02.jpg') }}" alt="배너명"></a></li>
-                <li><a href="#none"><img src="{{ img_url('gpgosi/banner/bnr_prof_03.jpg') }}" alt="배너명"></a></li>
-                <li><a href="#none"><img src="{{ img_url('gpgosi/banner/bnr_prof_04.jpg') }}" alt="배너명"></a></li>
+                <li><a href="#none"><img src="{{ img_url('gosi_noncom/banner/bnr_prof_01.jpg') }}" alt="배너명"></a></li>
+                <li><a href="#none"><img src="{{ img_url('gosi_noncom/banner/bnr_prof_02.jpg') }}" alt="배너명"></a></li>
+                <li><a href="#none"><img src="{{ img_url('gosi_noncom/banner/bnr_prof_03.jpg') }}" alt="배너명"></a></li>
+                <li><a href="#none"><img src="{{ img_url('gosi_noncom/banner/bnr_prof_04.jpg') }}" alt="배너명"></a></li>
             </ul>
         </div>
     </div>
@@ -240,4 +229,21 @@
 </div>
 <!-- End Container -->
 
+<script type="text/javascript">    
+    $(function() {
+    $('.sliderPlay').bxSlider({
+        auto: true,
+        controls: false,
+        pause: 4000,    
+        moveSlides:2,
+        minSlides:2,
+        maxSlides:2,
+        slideWidth:1120,
+        autoHover: true,
+        onSliderLoad: function(){
+            $(".bSlider").css("visibility", "visible").animate({opacity:1}); 
+        } 
+    });
+});
+</script>
 @stop

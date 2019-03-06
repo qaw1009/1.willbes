@@ -58,23 +58,22 @@ class Home extends \app\controllers\FrontController
      */
     private function _getSite2001Data($cate_code = '', $arr_campus = [])
     {
-        $arr_disp = [
-            '메인_학원배너1', '메인_학원배너2', '메인_학원배너3',
-            '메인_이벤트띠배너', '메인_hotpick1', '메인_hotpick2',
-            '메인_특강이벤트1', '메인_특강이벤트2'
-        ];
+        $s_cate_code = '';  // 디바이스별 카테고리 적용 구분
 
         if (APP_DEVICE == 'pc') {
+            $s_cate_code = $cate_code;
+            $arr_banner_disp = ['메인_학원배너1', '메인_학원배너2', '메인_학원배너3', '메인_이벤트띠배너', '메인_hotpick1', '메인_hotpick2', '메인_특강이벤트1', '메인_특강이벤트2'];
+
             $data['dday'] = $this->_dday();
             $data['best_product'] = $this->_product('on_lecture', 4, $cate_code, 'Best');
             $data['new_product'] = $this->_product('on_lecture', 4, $cate_code, 'New');
-            $data['arr_main_banner'] = $this->_banner($arr_disp, $cate_code);
+            $data['arr_main_banner'] = $this->_banner($arr_banner_disp, $cate_code);
+            $data['arr_main_quick'] = $this->_banner(['메인_우측퀵_01','메인_우측퀵_02','메인_우측퀵_03']);
         }
 
-        $data['notice'] = $this->_boardNotice(4);
-        $data['exam_announcement'] = $this->_boardExamAnnouncement(4);
-        $data['exam_news'] = $this->_boardExamNews(4);
-        $data['main_quick'] = $this->_banner(['메인_우측퀵_01','메인_우측퀵_02','메인_우측퀵_03']);
+        $data['notice'] = $this->_boardNotice(4, $s_cate_code);
+        $data['exam_announcement'] = $this->_boardExamAnnouncement(4, $s_cate_code);
+        $data['exam_news'] = $this->_boardExamNews(4, $s_cate_code);
 
         return $data;
     }
@@ -97,6 +96,7 @@ class Home extends \app\controllers\FrontController
             $data['onAir'] = $this->_onAir();
             $data['notice_campus'] = $this->_boardNoticeByCampus(2);
         }
+
         return $data;
     }
 
@@ -108,14 +108,18 @@ class Home extends \app\controllers\FrontController
      */
     private function _getSite2003Data($cate_code = '', $arr_campus = [])
     {
+        $s_cate_code = '';  // 디바이스별 카테고리 적용 구분
+
         if (APP_DEVICE == 'pc') {
+            $s_cate_code = $cate_code;
+
             // 과목별 2개씩 베스트 상품 조회
             $data['best_product'] = $this->_productLectureBySubjectIdx('on_lecture', 2, $cate_code, 'Best');
         }
 
-        $data['notice'] = $this->_boardNotice(4);
-        $data['exam_announcement'] = $this->_boardExamAnnouncement(4);
-        $data['exam_news'] = $this->_boardExamNews(4);
+        $data['notice'] = $this->_boardNotice(5, $s_cate_code);
+        $data['exam_announcement'] = $this->_boardExamAnnouncement(5, $s_cate_code);
+        $data['exam_news'] = $this->_boardExamNews(5, $s_cate_code);
 
         return $data;
     }
@@ -129,17 +133,19 @@ class Home extends \app\controllers\FrontController
     private function _getSite2004Data($cate_code = '', $arr_campus = [])
     {
         $data = [];
-        $arr_disp = ['메인_빅배너','메인_서브1','메인_서브2','메인_서브3','메인_띠배너','메인_미들1','메인_미들2','메인_미들3','메인_미들4','메인_미들5','메인_이벤트','메인_대표교수','메인_포커스'];
 
         if (APP_DEVICE == 'pc') {
+            $arr_banner_disp = ['메인_빅배너','메인_서브1','메인_서브2','메인_서브3','메인_띠배너','메인_미들1','메인_미들2','메인_미들3','메인_미들4','메인_미들5','메인_이벤트','메인_대표교수','메인_포커스'];
+
             $arr_campus = array_replace_recursive($arr_campus, $this->_getCampusInfo());
             $data['arr_campus'] = $arr_campus;
             $data['gallery'] = $this->_gallery();
             $data['exam_announcement'] = $this->_boardExamAnnouncement(5);
             $data['exam_news'] = $this->_boardExamNews(5);
-            $data['arr_main_banner'] = $this->_banner($arr_disp);
+            $data['arr_main_banner'] = $this->_banner($arr_banner_disp);
             $data['notice_campus'] = $this->_boardNoticeByCampus(2);
         }
+
         return $data;
     }
 
@@ -232,7 +238,7 @@ class Home extends \app\controllers\FrontController
     {
         $column = 'b.BoardIdx, b.Title, b.IsBest, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
         $order_by = ['b.IsBest' => 'Desc', 'b.BoardIdx' => 'Desc'];
-        $arr_condition = ['EQ' => ['b.BmIdx' => 45, 'b.IsUse' => 'Y'], 'IN' => ['b.CampusCcd' => $arr_campus]];
+        $arr_condition = ['EQ' => ['b.BmIdx' => 45, 'b.IsUse' => 'Y'], 'IN' => ['b.CampusCcd' => $arr_campus], 'LKB' => ['b.Category_String' => $cate_code]];
 
         return $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $arr_condition, $column, $limit_cnt, 0, $order_by);
     }
@@ -278,7 +284,7 @@ class Home extends \app\controllers\FrontController
     {
         $column = 'b.BoardIdx, b.IsBest, b.AreaCcd_Name, b.Title, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
         $order_by = ['b.IsBest' => 'Desc', 'b.BoardIdx' => 'Desc'];
-        $arr_condition = ['EQ' => ['b.BmIdx' => 54, 'b.IsUse' => 'Y']];
+        $arr_condition = ['EQ' => ['b.BmIdx' => 54, 'b.IsUse' => 'Y'], 'LKB' => ['b.Category_String' => $cate_code]];
 
         return $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $arr_condition, $column, $limit_cnt, 0, $order_by);
     }
@@ -294,7 +300,7 @@ class Home extends \app\controllers\FrontController
     {
         $column = 'b.BoardIdx, b.Title, b.IsBest, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
         $order_by = ['b.IsBest' => 'Desc', 'b.BoardIdx' => 'Desc'];
-        $arr_condition = ['EQ' => ['b.BmIdx' => 57, 'b.IsUse' => 'Y']];
+        $arr_condition = ['EQ' => ['b.BmIdx' => 57, 'b.IsUse' => 'Y'], 'LKB' => ['b.Category_String' => $cate_code]];
 
         return $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $arr_condition, $column, $limit_cnt, 0, $order_by);
     }

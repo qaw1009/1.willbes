@@ -8,12 +8,12 @@
         </div>
     </li>
     @endif
-    @if(empty($data['main_quick']['메인_우측퀵_01']) === false)
+    @if(empty($data['arr_main_quick']['메인_우측퀵_01']) === false)
         <li>
             <div class="QuickSlider">
                 <div class="sliderNum">
                     @php $link_url = ''; @endphp
-                    @foreach($data['main_quick']['메인_우측퀵_01'] as $row)
+                    @foreach($data['arr_main_quick']['메인_우측퀵_01'] as $row)
                         @if (empty($row['LinkUrl']) === false)
                             @php $link_url = front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www'); @endphp
                         @endif
@@ -23,12 +23,12 @@
             </div>
         </li>
     @endif
-    @if(empty($data['main_quick']['메인_우측퀵_02']) === false)
+    @if(empty($data['arr_main_quick']['메인_우측퀵_02']) === false)
         <li>
             <div class="QuickSlider">
                 <div class="sliderNum">
                     @php $link_url = ''; @endphp
-                    @foreach($data['main_quick']['메인_우측퀵_02'] as $row)
+                    @foreach($data['arr_main_quick']['메인_우측퀵_02'] as $row)
                         @if (empty($row['LinkUrl']) === false)
                             @php $link_url = front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www'); @endphp
                         @endif
@@ -38,12 +38,12 @@
             </div>
         </li>
     @endif
-    @if(empty($data['main_quick']['메인_우측퀵_03']) === false)
+    @if(empty($data['arr_main_quick']['메인_우측퀵_03']) === false)
         <li>
             <div class="QuickSlider">
                 <div class="sliderNum">
                     @php $link_url = ''; @endphp
-                    @foreach($data['main_quick']['메인_우측퀵_03'] as $row)
+                    @foreach($data['arr_main_quick']['메인_우측퀵_03'] as $row)
                         @if (empty($row['LinkUrl']) === false)
                             @php $link_url = front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www'); @endphp
                         @endif

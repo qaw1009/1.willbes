@@ -169,6 +169,8 @@
             $("#quility").val($quility);
 
             $info_url = 'https:{{front_url('/Player/getMobile/')}}?' + $('#downForm').serialize();
+            location.href= $info_url;
+            return;
 
             fnMobile($info_url, '{{config_item('starplayer_license')}}');
         }

@@ -1037,7 +1037,7 @@ class Player extends \app\controllers\FrontController
         $wUnitIdx = $this->_req("u");
         $Quility = $this->_req("q");
         $type = $this->_req("st");
-
+dd($wUnitIdx);
         $ispause = 'N';
         $isstart = 'Y';
         $timeover = 'N';

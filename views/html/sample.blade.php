@@ -32,6 +32,8 @@
                 <li><a href="{{ site_url('/home/html/acad_sub_main') }}" target="_blank">경찰 캠퍼스 안내</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_gosi_online') }}" target="_blank">공무원 온라인 메인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_gosi_law') }}" target="_blank">공무원 법원직 온라인 메인</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/main_gosi_tech') }}" target="_blank">공무원 기술직 온라인 메인</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/main_gosi_gp') }}" target="_blank">공무원 군무원 온라인 메인</a></li>
                 <li><a href="{{ site_url('/home/html/main_gosi_acad') }}" target="_blank">공무원 학원 메인</a></li>
                 <li class="c_both"></li>
                 <li class="w50"><a href="{{ site_url('/home/html/memjoin') }}" target="_blank">로그인 page 이동</a></li>

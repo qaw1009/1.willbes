@@ -45,9 +45,4 @@
             @endif
         </ul>
     </div>
-    {{--<div class="willbes-Bnr pt4">
-        <ul>
-            <li><a href="#none"><img src="{{ img_url('cop/banner/bnr_190110.jpg') }}"></a></li>
-        </ul>
-    </div>--}}
 </div>

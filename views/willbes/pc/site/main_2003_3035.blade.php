@@ -114,7 +114,8 @@
             $content = $($active[0].hash);
 
             $links.not($active).each(function () {
-                $(this.hash).hide()});
+                $(this.hash).hide();
+            });
 
             // Bind the click event handler
             $(this).on('click', 'a', function(e){
@@ -127,8 +128,10 @@
                 $active.addClass('active');
                 $content.show();
 
-                e.preventDefault()})})}
-    );
+                e.preventDefault();
+            });
+        });
+    });
 </script>
 {!! popup('657001', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
 <!-- End Container -->

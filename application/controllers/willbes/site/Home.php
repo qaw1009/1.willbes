@@ -65,9 +65,9 @@ class Home extends \app\controllers\FrontController
             $arr_banner_disp = ['메인_학원배너1', '메인_학원배너2', '메인_학원배너3', '메인_이벤트띠배너', '메인_hotpick1', '메인_hotpick2', '메인_특강이벤트1', '메인_특강이벤트2'];
 
             $data['dday'] = $this->_dday();
-            $data['best_product'] = $this->_product('on_lecture', 4, $cate_code, 'Best');
-            $data['new_product'] = $this->_product('on_lecture', 4, $cate_code, 'New');
-            $data['arr_main_banner'] = $this->_banner($arr_banner_disp, $cate_code);
+            $data['best_product'] = $this->_product('on_lecture', 4, $s_cate_code, 'Best');
+            $data['new_product'] = $this->_product('on_lecture', 4, $s_cate_code, 'New');
+            $data['arr_main_banner'] = $this->_banner($arr_banner_disp, $s_cate_code);
             $data['arr_main_quick'] = $this->_banner(['메인_우측퀵_01','메인_우측퀵_02','메인_우측퀵_03']);
         }
 
@@ -114,7 +114,7 @@ class Home extends \app\controllers\FrontController
             $s_cate_code = $cate_code;
 
             // 과목별 2개씩 베스트 상품 조회
-            $data['best_product'] = $this->_productLectureBySubjectIdx('on_lecture', 2, $cate_code, 'Best');
+            $data['best_product'] = $this->_productLectureBySubjectIdx('on_lecture', 2, $s_cate_code, 'Best');
         }
 
         $data['notice'] = $this->_boardNotice(5, $s_cate_code);

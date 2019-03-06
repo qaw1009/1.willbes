@@ -81,49 +81,9 @@
                 <div class="smallTit mb30">          
                     <p><span>합격 콘텐츠를 한 눈에! <strong>윌비스 강좌</strong></span></p>            
                 </div> 
-                <div class="will-listTit">BEST 강좌</div>                
-                <div class="bestLectBx">                                                  
-                    <ul class="prof-subject">                        
-                        <li><a href='#none'><span>|</span>국어</a></li>                        
-                        <li><a href='#none'><span>|</span>영어</a></li>                        
-                        <li><a href='#none'><span>|</span>한국사</a></li>                        
-                        <li><a href='#none'><span>|</span>헌법</a></li>                        
-                        <li><a href='#none'><span>|</span>행정법</a></li>                        
-                        <li><a href='#none'><span>|</span>행정학</a></li>                        
-                        <li><a href='#none'><span>|</span>사회</a></li>                        
-                        <li><a href='#none'><span>|</span>세법</a></li>                        
-                        <li><a href='#none'><span>|</span>회계학</a></li>                        
-                        <li><a href='#none'><span>|</span>경제학</a></li>                        
-                        <li><a href='#none'><span>|</span>국제법</a></li>                        
-                        <li><a href='#none'><span>|</span>전자공학</a></li>                        
-                        <li><a href='#none'><span>|</span>무선공학</a></li>                        
-                        <li><a href='#none'><span>|</span>통신이론</a></li>                        
-                        <li><a href='#none'><span>|</span>전기이론</a></li>                        
-                        <li><a href='#none'><span>|</span>전기기기</a></li>                        
-                        <li><a href='#none'><span>|</span>소방학개론</a></li>                        
-                        <li><a href='#none'><span>|</span>소방관계법규</a></li>                        
-                        <li><a href='#none'><span>|</span>한국사검정능력시험</a></li>                        
-                    </ul>
 
-                    <div id="prof-professors" class="prof-professors">
-                        <ul class="prof-slider">                        
-                            <li>
-                                <img src="{{ img_url('gosi/prof/mainBest01.jpg') }}" alt="" class="강사명"/>
-                                <span class="txt1">영어</span>
-                                <span class="txt2">한덕현</span>
-                                <span class="txt3">2019 한덕현 영어 새벽실전모의고사 </span>
-                                <a href="#none">맛보기강좌 ></a>
-                            </li>  
-                            <li>
-                                <img src="{{ img_url('gosi/prof/mainBest01.jpg') }}" alt="" class="강사명"/>
-                                <span class="txt1">영어2</span>
-                                <span class="txt2">한덕현</span>
-                                <span class="txt3">2019 한덕현 영어 새벽실전모의고사 </span>
-                                <a href="#none">맛보기강좌 ></a>
-                            </li>                          
-                        </ul>
-                    </div> 
-                </div>
+                {{-- best product include --}}
+                @include('willbes.pc.site.main_partial.lecture_' . $__cfg['SiteCode'])
                 
                 <div class="will-listTit mt45">무료특강</div>
                 <ul class="freeLectBx">
@@ -241,19 +201,7 @@
 </div>
 
 <script type="text/javascript">
-    $(function(){ 
-        $('.prof-subject').bxSlider({ 
-            speed:800,  
-            responsive:true,
-            infiniteLoop:true,
-            pager:false,
-            slideWidth:78,
-            minSlides:1,
-            maxSlides:8
-        });
-    });
-
-    $(function() {
+$(function() {
     $('.sliderNumRv').bxSlider({
         speed:1000,
         auto: true,
@@ -262,12 +210,12 @@
         pager: true,
         pagerType: 'short',
         slideWidth:1120,
-        moveSlides:3,        
+        moveSlides:3,
         minSlides:3,
         maxSlides:3,
         onSliderLoad: function(){
-            $(".nSlider").css("visibility", "visible").animate({opacity:1}); 
-        }  
+            $(".nSlider").css("visibility", "visible").animate({opacity:1});
+        }
     });
 });
 </script>

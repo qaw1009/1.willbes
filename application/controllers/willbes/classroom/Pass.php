@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Pass extends \app\controllers\FrontController
 {
-    protected $models = array('classroomF', 'product/packageF', 'product/lectureF', 'order/orderListF');
+    protected $models = array('classroomF', 'product/packageF', 'product/lectureF', 'order/orderListF', 'memberF');
     protected $helpers = array('download','file');
     protected $auth_controller = true;
     protected $auth_methods = array();

@@ -326,6 +326,7 @@
     <div class="Section Bnr mt40 mb70">
         @include('willbes.pc.site.main_partial.event_' . $__cfg['SiteCode'] . '_' . $__cfg['CateCode'])
     </div>
+
     <div class="Section Section5 mb70">
         @include('willbes.pc.site.main_partial.hot_pick_' . $__cfg['SiteCode'] . '_' . $__cfg['CateCode'])
     </div>

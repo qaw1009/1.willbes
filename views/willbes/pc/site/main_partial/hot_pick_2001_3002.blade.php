@@ -2,19 +2,52 @@
     <div class="sliderPick nSlider pick">
         <div class="will-nTit bd-none">윌비스 <span class="cop-color">신광은경찰</span> Hot Pick</div>
         <div class="pickBox pick1">
-            <a href="#none"><img src="{{ img_url('cop_adm/event/evt_190101.jpg') }}"></a>
+            @if(empty($data['arr_main_banner']['메인_hotpick1']) === false)
+                @php $link_url = ''; $last_banner = end($data['arr_main_banner']['메인_hotpick1']); @endphp
+                @if(empty($row['LinkUrl']) === false)
+                    @php $link_url = front_app_url('/banner/click?banner_idx=' . $last_banner['BIdx'] . '&return_url=' . urlencode($last_banner['LinkUrl']) . '&link_url_type=' . urlencode($last_banner['LinkUrlType']), 'www'); @endphp
+                @endif
+                <a href="{{ $link_url }}" target="_{{ $last_banner['LinkType'] }}"><img src="{{ $last_banner['BannerFullPath'] . $last_banner['BannerImgName'] }}" alt="{{ $last_banner['BannerName'] }}"></a>
+            @endif
         </div>
         <div class="pickBox pick2">
-            <a href="#none"><img src="{{ img_url('cop_adm/event/evt_190102.jpg') }}"></a>
+            @if(empty($data['arr_main_banner']['메인_hotpick2']) === false)
+                @php $link_url = ''; $last_banner = end($data['arr_main_banner']['메인_hotpick2']); @endphp
+                @if(empty($row['LinkUrl']) === false)
+                    @php $link_url = front_app_url('/banner/click?banner_idx=' . $last_banner['BIdx'] . '&return_url=' . urlencode($last_banner['LinkUrl']) . '&link_url_type=' . urlencode($last_banner['LinkUrlType']), 'www'); @endphp
+                @endif
+                <a href="{{ $link_url }}" target="_{{ $last_banner['LinkType'] }}"><img src="{{ $last_banner['BannerFullPath'] . $last_banner['BannerImgName'] }}" alt="{{ $last_banner['BannerName'] }}"></a>
+            @endif
         </div>
     </div>
     <div class="sliderEvt nSlider pick">
         <div class="will-nTit bd-none">윌비스 <span class="cop-color">신광은경찰</span> 특강/이벤트</div>
         <ul>
-            <li><a href="http://www.willbescop.net/event/movie/event.html?event_cd=On_181226_p&topMenuType=O" target="_blank"><img src="{{ img_url('cop_adm/event/evt_190103.jpg') }}"></a></li>
+            @if(empty($data['arr_main_banner']['메인_특강이벤트1']) === false)
+                @php $link_url = ''; $last_banner = end($data['arr_main_banner']['메인_특강이벤트1']); @endphp
+                @if(empty($row['LinkUrl']) === false)
+                    @php $link_url = front_app_url('/banner/click?banner_idx=' . $last_banner['BIdx'] . '&return_url=' . urlencode($last_banner['LinkUrl']) . '&link_url_type=' . urlencode($last_banner['LinkUrlType']), 'www'); @endphp
+                @endif
+                <li><a href="{{ $link_url }}" target="_{{ $last_banner['LinkType'] }}"><img src="{{ $last_banner['BannerFullPath'] . $last_banner['BannerImgName'] }}" alt="{{ $last_banner['BannerName'] }}"></a></li>
+            @endif
             <li>
-                <a href="#none"><img src="{{ img_url('cop_adm/event/evt_190105.jpg') }}" alt="김원욱 형법 1개년 최신기출/판례"></a>
+                @if(empty($data['arr_main_banner']['메인_특강이벤트2']) === false)
+                    <div class="sliderNum">
+                        @php $link_url = ''; @endphp
+                        @foreach($data['arr_main_banner']['메인_특강이벤트2'] as $row)
+                            @if(empty($row['LinkUrl']) === false)
+                                @php $link_url = front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www'); @endphp
+                            @endif
+                            <div><img src="{{ $row['BannerFullPath'] . $row['BannerImgName'] }}" alt="{{ $row['BannerName'] }}"></div>
+                        @endforeach
+                    </div>
+                @endif
             </li>
         </ul>
     </div>
+    {{--<div class="willbes-Bnr pt4">
+        <ul>
+            <li><a href="#none"><img src="{{ img_url('cop/banner/bnr_190110.jpg') }}"></a></li>
+        </ul>
+    </div>--}}
 </div>

@@ -913,7 +913,7 @@ select[disabled] {
   display: none !important;
 }
 .c_both {
-  clear: both;
+  clear: both !important;
 }
 .strong {
   font-weight: 600 !important;

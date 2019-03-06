@@ -6,7 +6,7 @@ class CertApply extends \app\controllers\FrontController
     protected $models = array('cert/certApplyF');
     protected $helpers = array();
     protected $auth_controller = false;
-    protected $auth_methods = array('store','checkCert');
+    protected $auth_methods = array('index','store','checkCert');
 
 
     public function __construct()
@@ -18,17 +18,22 @@ class CertApply extends \app\controllers\FrontController
     {
 
         if(empty($params) === true) {
-            show_alert('인증정보가 존재하지 않습니다.', 'self.close()');
+            show_alert('인증정보가 존재하지 않습니다.', 'close');
         }
 
         //페이지 정보
-        $cert_page = $params[0];
+        $cert_page = element('page',$params);
         //인증회차 정보
-        $cert_idx = $params[1];
+        $cert_idx = element('cert',$params);
 
+        //echo $cert_page.' -'.$cert_idx;exit;
+
+        $cert_data = $this->certApplyFModel->findCertByCertIdx($cert_idx);
+
+        //echo var_dump($cert_data);
 
         $this->load->view('site/cert/cert_'.$cert_page,[
-
+            'cert_data' => $cert_data
         ]);
 
     }

@@ -77,7 +77,7 @@ class CertApplyFModel extends WB_Model
         $where  = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
 
         $query = $this->_conn->query('select '. $column .$from .$where)->row_array();
-        //echo 'select '. $column .$from .$where .$order_by_offset_limit;
+        //echo 'select '. $column .$from .$where;
         //echo var_dump($query);
         return $query;
     }

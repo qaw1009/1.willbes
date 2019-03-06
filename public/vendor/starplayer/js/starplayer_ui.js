@@ -38,6 +38,7 @@ function initScriptUI(player) {
     $(".seekbar_l").bind("mousedown touchstart", function(event) {
         var trackBar = $(this);
         function getTime(event) {
+            //$("#debug").text(trackBar.offset().left);
             var x = getPageX(event) - trackBar.offset().left;
             var time = (x / trackBar.width()) * player.getDuration();
             if (time < 0)
@@ -48,6 +49,7 @@ function initScriptUI(player) {
         }
         function dragMove(event) {
             var time = getTime(event);
+            //$("#debug").text(time);
             updateTime(time);
             event.preventDefault();
         }
@@ -70,6 +72,7 @@ function initScriptUI(player) {
     $(".btn_repeatA").bind("mousedown touchstart", function(event) {
         var trackBar = $(this).parent();
         function getTime(event) {
+            //$("#debug").text(trackBar.offset().left);
             var x = getPageX(event) - trackBar.offset().left - 7;
 
             var time = (x / trackBar.width()) * player.getDuration();
@@ -181,6 +184,12 @@ function initScriptUI(player) {
     player.bindEvent("repeat_change", updateRepeatChange);
     player.bindEvent("volume_change", updateVolumeChange);
     player.bindEvent("repeat_range_change", updateRepeatRangeChange);
+    /*
+    player.bindEvent("updatetime",  function(time) {
+        if (!draggingSeekBar)
+            updateTime(time);
+    });
+    */
 
     function updateOpenState(state) {
         switch (state) {
@@ -254,6 +263,8 @@ function initScriptUI(player) {
             $(".btn_repeatA").hide();
             $(".btn_repeatB").hide();
         }
+
+        // style="left:0%; width:100%;display:none;"
     }
 
     function updateVolumeChange(volume, mute) {
@@ -282,6 +293,19 @@ function initScriptUI(player) {
         }
     }
 
+    /*
+    function updateTime() {
+        setInterval(function() {
+        var time = player.getCurrentPosition();
+        var duration = player.getDuration();
+        var pos = (duration > 0 ? (time / duration) * 100 : 0) + "%";
+        $(".btn_seek").css("left", pos);
+        $(".currentbar").css("width", pos);
+        if (!draggingRepeatBar)
+            $("#text_currentTime").text(formatTime(time));
+        }, 100);
+    }
+    */
     function updateTime2() {
         if (!draggingSeekBar)
             updateTime(player.getCurrentPosition());

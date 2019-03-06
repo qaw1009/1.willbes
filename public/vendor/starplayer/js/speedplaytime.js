@@ -1,5 +1,5 @@
-function Speedplaytime(player)
-{
+function SpeedPlayTime(player) {
+
     var self_ = this;
     var time_ = 0;
     var ticks_;

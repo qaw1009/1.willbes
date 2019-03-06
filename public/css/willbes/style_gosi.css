@@ -375,10 +375,10 @@
 }
 .gosi .Section .SpecialBox li:nth-child(5),
 .gosi .Section .SpecialBox li:last-child {
-    margin-right:0}
+    margin-right:0;
 }
 .gosi .Section .SpecialBox ul:after {
-    content:''; display: block; clear:both}
+    content:''; display: block; clear:both;
 }
 
 /* Main Container : QuickMenu : Gosi */

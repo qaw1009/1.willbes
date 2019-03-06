@@ -166,7 +166,7 @@
     padding:20px 40px 40px 80px;
 }
 .youtubetab li {
-    display: blcok;
+    display: block;
     border-bottom:1px solid #e2e2e2;
 }
 .youtubetab li:last-child {
@@ -252,7 +252,6 @@
     float: left;
     width: 50%;   
     height: 40px;
-    height: 40px;          
 }
 .Section .ProfCopBox .ProfBtns li a {    
     display: block;

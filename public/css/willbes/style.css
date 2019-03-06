@@ -4413,7 +4413,7 @@ form .LeclistTable .evtTable tr td a.w-del {
     padding: 0;
 }
 .LeclistTable table.mockTable tr td {
-    line-height: 16px;
+    line-height: 16px !important;
     padding: 12px 0;
 }
 

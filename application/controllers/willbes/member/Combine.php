@@ -78,14 +78,13 @@ class Combine extends BaseMember
                         'Mem.IsChange' => 'N'
                     ]
                 ];
-
                 // 검색
                 $count = $this->memberFModel->getMember(true, $where);
 
                 if($count > 0){
                     //가입정보가 있을경우
                     $result = $this->memberFModel->getMember(false, $where);
-                    return $this->load->view('member/find/combine/form', [
+                    return $this->load->view('member/find/combineform', [
                         'MemId' => $MemId,
                         'Member' => $result,
                         'enc_data' => $enc_data,

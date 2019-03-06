@@ -58,18 +58,23 @@ class Home extends \app\controllers\FrontController
      */
     private function _getSite2001Data($cate_code = '', $arr_campus = [])
     {
-        $arr_disp = ['메인_우측퀵_01','메인_우측퀵_02','메인_우측퀵_03'];
+        $arr_disp = [
+            '메인_학원배너1', '메인_학원배너2', '메인_학원배너3',
+            '메인_이벤트띠배너', '메인_hotpick1', '메인_hotpick2',
+            '메인_특강이벤트1', '메인_특강이벤트2'
+        ];
 
         if (APP_DEVICE == 'pc') {
             $data['dday'] = $this->_dday();
             $data['best_product'] = $this->_product('on_lecture', 4, $cate_code, 'Best');
             $data['new_product'] = $this->_product('on_lecture', 4, $cate_code, 'New');
+            $data['arr_main_banner'] = $this->_banner($arr_disp, $cate_code);
         }
 
         $data['notice'] = $this->_boardNotice(4);
         $data['exam_announcement'] = $this->_boardExamAnnouncement(4);
         $data['exam_news'] = $this->_boardExamNews(4);
-        $data['main_quick'] = $this->_banner($arr_disp);
+        $data['main_quick'] = $this->_banner(['메인_우측퀵_01','메인_우측퀵_02','메인_우측퀵_03']);
 
         return $data;
     }
@@ -332,13 +337,14 @@ class Home extends \app\controllers\FrontController
     }
 
     /**
-     * 메인 우측 퀵배너
+     * 메인 배너
      * @param array $arr_disp
+     * @param int $cate_code
      * @return array
      */
-    private function _banner($arr_disp = [])
+    private function _banner($arr_disp = [], $cate_code = 0)
     {
-        $result = $this->bannerFModel->findBannersInArray($arr_disp, $this->_site_code, 0);
+        $result = $this->bannerFModel->findBannersInArray($arr_disp, $this->_site_code, $cate_code);
 
         $data = [];
         foreach ($result as $key => $row) {

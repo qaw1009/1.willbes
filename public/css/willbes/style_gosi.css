@@ -55,19 +55,44 @@
     background: #c9c9c9;
     color: #0a0a0a;
 }
+
 .VisualsubBox {
     float: right;
     width: 394px;
     height: 300px;
     overflow: hidden;
 }
-.VisualsubBox .bx-wrapper .bx-controls-auto {
+
+/*
+.gosi .VisualsubBox .bx-wrapper .bx-controls-auto {
     left: 0;
     right: 0;
     bottom: 20px;
     margin: 0;
     z-index: 90;
+  }*/
+
+.gosi .VisualsubBox .bx-wrapper .bx-controls-auto {
+    left:20px;
+    bottom: 20px;
+    margin: 0;
+    width: 50px;
+    z-index: 90;
   }
+.gosi .VisualsubBox .bx-wrapper .bx-pager {
+    float: right;
+    width: auto;
+    left:60px;
+    bottom: 20px;
+    text-align: right;
+}
+.gosi .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a {
+    background: #fff;
+    width: 8px;
+    height: 8px;
+    margin: 0 2px;
+}
+
 .VisualList {
     float: left;
     width: 100%;

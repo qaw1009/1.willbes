@@ -10,6 +10,16 @@ $(function() {
 });
 
 $(function() {
+    $('.sliderStopAutoPager').bxSlider({
+        auto: true,
+        autoControls: true,
+        stopAutoOnClick: true,
+        pager: true,
+        controls: false
+    });
+});
+
+$(function() {
     $('.slider').bxSlider({
         auto: true,
         controls: false,

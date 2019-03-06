@@ -83,7 +83,7 @@
             </div>
             <div class="VisualsubBox">
                 <div class="bSlider">
-                    <div class="sliderStopAuto">
+                    <div class="sliderStopAutoPager">
                         <div><a href="#none"><img src="{{ img_url('gosi/visual/visual_r190225_01.jpg') }}" alt="배너명"></a></div>
                         <div><a href="#none"><img src="{{ img_url('gosi/visual/visual_r190225_02.jpg') }}" alt="배너명"></a></div>
                         <div><a href="#none"><img src="{{ img_url('gosi/visual/visual_r190225_03.jpg') }}" alt="배너명"></a></div>

@@ -81,7 +81,9 @@
                                 <div class="sliderTM">
                                     @php $link_url = ''; @endphp
                                     @foreach($data['arr_main_banner']['메인_미들'.$i] as $row)
-                                        @php $link_url = front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www'); @endphp
+                                        @if(empty($row['LinkUrl']) === false)
+                                            @php $link_url = front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www'); @endphp
+                                        @endif
                                         <div><a href="{{ $link_url }}" target="_{{ $row['LinkType'] }}"><img src="{{ $row['BannerFullPath'] . $row['BannerImgName'] }}" alt="{{ $row['BannerName'] }}"></a></div>
                                     @endforeach
                                 </div>
@@ -106,7 +108,9 @@
                         <div class="sliderTM">
                             @php $link_url = ''; @endphp
                             @foreach($data['arr_main_banner']['메인_이벤트'] as $row)
-                                @php $link_url = front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www'); @endphp
+                                @if(empty($row['LinkUrl']) === false)
+                                    @php $link_url = front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www'); @endphp
+                                @endif
                                 <div><a href="{{ $link_url }}" target="_{{ $row['LinkType'] }}"><img src="{{ $row['BannerFullPath'] . $row['BannerImgName'] }}" alt="{{ $row['BannerName'] }}"></a></div>
                             @endforeach
                         </div>
@@ -176,7 +180,9 @@
                             <div class="sliderTM">
                                 @php $link_url = ''; $last_banner = end($data['arr_main_banner']['메인_포커스']); @endphp
                                 @foreach($data['arr_main_banner']['메인_포커스'] as $row)
-                                    @php $link_url = front_app_url('/banner/click?banner_idx=' . $last_banner['BIdx'] . '&return_url=' . urlencode($last_banner['LinkUrl']) . '&link_url_type=' . urlencode($last_banner['LinkUrlType']), 'www'); @endphp
+                                    @if(empty($row['LinkUrl']) === false)
+                                        @php $link_url = front_app_url('/banner/click?banner_idx=' . $last_banner['BIdx'] . '&return_url=' . urlencode($last_banner['LinkUrl']) . '&link_url_type=' . urlencode($last_banner['LinkUrlType']), 'www'); @endphp
+                                    @endif
                                     <div><a href="{{ $link_url }}" target="_{{ $last_banner['LinkType'] }}"><img src="{{ $last_banner['BannerFullPath'] . $last_banner['BannerImgName'] }}" alt="{{ $last_banner['BannerName'] }}"></a></div>
                                 @endforeach
                             </div>

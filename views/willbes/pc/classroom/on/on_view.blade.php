@@ -97,13 +97,13 @@
                     <table cellspacing="0" cellpadding="0" class="listTable upper-black under-gray tx-gray">
                         <colgroup>
                             <col style="width: 80px;">
-                            <col style="width: 200px;">
+                            <col style="width: 380px;">
                             <col style="width: 90px;">
-                            <col style="width: 90px;">
+                            <col style="width: 50px;">
+                            <col style="width: 80px;">
+                            <col style="width: 70px;">
                             <col style="width: 120px;">
-                            <col style="width: 100px;">
-                            <col style="width: 155px;">
-                            <col style="width: 105px;">
+                            <col style="width: 70px;">
                         </colgroup>
                         <thead>
                         <tr>
@@ -121,7 +121,7 @@
                         @forelse($curriculum as $row)
                             <tr>
                                 <td class="w-no">{{$row['wUnitNum']}}회 {{$row['wUnitLectureNum']}}강</td>
-                                <td class="w-lec">{{$row['wUnitName']}}</td>
+                                <td class="w-lec tx-left">{{$row['wUnitName']}}</td>
                                 <td class="w-page">{{$row['wBookPage']}}</td>
                                 <td class="w-file">
                                     @if(empty($row['wUnitAttachFile']) == false)

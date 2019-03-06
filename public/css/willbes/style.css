@@ -5602,7 +5602,6 @@ table.finTable .row-line {
 /* subContainer : Prof : listTable 공통 */
 .willbes-listTable {
     float: left;
-    /*margin-top: 30px;*/
 }
 .will-Tit {
     font-size: 16px;
@@ -7622,8 +7621,16 @@ ul li.profList .willbes-Layer-ProfileBox {
     line-height: 20px;
 }
 
+
 /* subContainer : Mypage : 무한PASS존 : willbes-Mypage-PASSZONE */
+.willbes-Mypage-PASSZONE .hotissueBn {
+    width: 365px;
+    height: 195px;
+    background: #eee;
+    overflow: hidden;
+}
 .willbes-PASS-Line {
+    clear: both;
     height: 50px;
     line-height: 50px;
     font-size: 14px;

@@ -14,6 +14,27 @@ class CertApply extends \app\controllers\FrontController
         parent::__construct();
     }
 
+    public function index($params=[])
+    {
+
+        if(empty($params) === true) {
+            show_alert('인증정보가 존재하지 않습니다.', 'self.close()');
+        }
+
+        //페이지 정보
+        $cert_page = $params[0];
+        //인증회차 정보
+        $cert_idx = $params[1];
+
+
+        $this->load->view('site/cert/cert_'.$cert_page,[
+
+        ]);
+
+    }
+
+
+
     /**
      * 인증을 위한 테스트 페이지 호출
      */

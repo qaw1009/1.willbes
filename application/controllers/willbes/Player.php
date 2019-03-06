@@ -1123,7 +1123,6 @@ class Player extends \app\controllers\FrontController
         }
 
         if(is_array($wUnitIdx) == true){
-            logger(implode(',', $wUnitIdx));
             $cond_arr = [
                 'EQ' => [
                     'MemIdx' => $MemIdx,
@@ -1137,7 +1136,6 @@ class Player extends \app\controllers\FrontController
                 ]
             ];
         } else {
-            logger($wUnitIdx);
             $cond_arr = [
                 'EQ' => [
                     'MemIdx' => $MemIdx,
@@ -1553,8 +1551,6 @@ class Player extends \app\controllers\FrontController
             }
         }
 
-        logger('A:',$rtnData);
-
         return $this->json_result(true,'성공',null, $rtnData);
     }
 
@@ -1600,7 +1596,6 @@ class Player extends \app\controllers\FrontController
         foreach($input as $key => $value){
             $params .= $key.'='.$value.'&';
         }
-        //logger($params);
 
 
         switch($event){
@@ -1713,7 +1708,6 @@ class Player extends \app\controllers\FrontController
         foreach($input as $key => $value){
             $params .= $key.'='.$value.'&';
         }
-        //logger($params);
 
         switch($event){
             case 'downloaded':

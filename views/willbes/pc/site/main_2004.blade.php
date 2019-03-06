@@ -152,16 +152,7 @@
                 <div class="will-acadTit">학원 <span class="tx-color">갤러리</span></div>
                 <a href="{{ front_url('/offinfo/gallery/index') }}" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
                 <ul>
-                    @if(empty($data['gallery']) === true)
-                        <li>
-                            <img src="{{ img_url('gosi_acad/gallery/gallery01.jpg') }}" alt="배너명">
-                            <div>
-                                <strong>[노량진]</strong>
-                                <p>새벽부터 길게 늘어선 학원수강생의 모습 학원수강생의 모습 학원수강생의 모습</p>
-                                <span></span>
-                            </div>
-                        </li>
-                    @else
+                    @if(empty($data['gallery']) === false)
                         @foreach($data['gallery'] as $row)
                             <li>
                                 <a href="{{ front_url('/offinfo/gallery/show/?board_idx='.$row['BoardIdx']) }}">
@@ -181,11 +172,15 @@
             @if(empty($data['arr_main_banner']['메인_포커스']) === false)
                 <div class="sliderInfo">
                     <div class="will-acadTit">Hot <span class="tx-color">Focus</span></div>
-                    @php $link_url = ''; $last_banner = end($data['arr_main_banner']['메인_포커스']); @endphp
-                    @foreach($data['arr_main_banner']['메인_포커스'] as $row)
-                        @php $link_url = front_app_url('/banner/click?banner_idx=' . $last_banner['BIdx'] . '&return_url=' . urlencode($last_banner['LinkUrl']) . '&link_url_type=' . urlencode($last_banner['LinkUrlType']), 'www'); @endphp
-                        <a href="{{ $link_url }}" target="_{{ $last_banner['LinkType'] }}"><img src="{{ $last_banner['BannerFullPath'] . $last_banner['BannerImgName'] }}" alt="{{ $last_banner['BannerName'] }}"></a>
-                    @endforeach
+                        <div class="bSlider acad">
+                            <div class="sliderTM">
+                                @php $link_url = ''; $last_banner = end($data['arr_main_banner']['메인_포커스']); @endphp
+                                @foreach($data['arr_main_banner']['메인_포커스'] as $row)
+                                    @php $link_url = front_app_url('/banner/click?banner_idx=' . $last_banner['BIdx'] . '&return_url=' . urlencode($last_banner['LinkUrl']) . '&link_url_type=' . urlencode($last_banner['LinkUrlType']), 'www'); @endphp
+                                    <div><a href="{{ $link_url }}" target="_{{ $last_banner['LinkType'] }}"><img src="{{ $last_banner['BannerFullPath'] . $last_banner['BannerImgName'] }}" alt="{{ $last_banner['BannerName'] }}"></a></div>
+                                @endforeach
+                            </div>
+                        </div>
                 </div>
             @endif
         </div>

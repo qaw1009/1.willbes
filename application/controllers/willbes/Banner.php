@@ -64,7 +64,8 @@ class Banner extends \app\controllers\BaseController
         return $this->load->view('common/banner', [
             'disp' => $disp_data,
             'data' => $data,
-            'css_class' => $arr_input['css_class']
+            'css_class' => $arr_input['css_class'],
+            'set_class' => $arr_input['set_class']
         ]);
     }
 

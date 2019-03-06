@@ -18,12 +18,7 @@
 
     @if(empty($__cfg['GNBMenu']['ActiveGroupMenuIdx']) === true)
         <!-- main slider -->
-        <div class="sliderGNB bSlider">
-            <div class="slider">
-                <div><a href="http://www.willbescop.net/movie/event.html?event_cd=On_181228_p&topMenuType=O" target="_blank"><img src="{{ img_url('gnbbanner/2_bn1.gif') }}"></a></div>
-                <div><a href="http://www.willbescop.net/movie/event.html?event_cd=On_190102_y" target="_blank"><img src="{{ img_url('gnbbanner/2_bn2.gif') }}"></a></div>
-            </div>
-        </div>
+        {!! banner('네비게이션_Top', 'sliderGNB', config_item('app_intg_site_code'), '0') !!}
     @else
         <!-- gnb site menu -->
         <div class="topView">
@@ -45,12 +40,7 @@
                                                 <li><a href="{{ $menu_child_row['MenuUrl'] }}" target="_{{ $menu_row['UrlTarget'] }}">{{ $menu_child_row['MenuName'] }}</a></li>
                                             @endforeach
                                         </ul>
-                                        <div class="sliderView bSlider">
-                                            <div class="slider">
-                                                <div><a href="http://www.willbescop.net/event/movie/event.html?event_cd=On_181226_p&topMenuType=O" target="_blank"><img src="{{ img_url('gnbbanner/1_bn1.gif') }}"></a></div>
-                                                <div><a href="http://www.willbescop.net/movie/event.html?event_cd=On_181228_p&topMenuType=O" target="_blank"><img src="{{ img_url('gnbbanner/1_bn2.gif') }}"></a></div>
-                                            </div>
-                                        </div>
+                                        <div class="sliderViewWrap"></div>
                                     </div>
                                 @endif
                             </li>
@@ -81,6 +71,8 @@
                 </ul>
             </h4>
         </div>
+        <!-- main sub menu slider (set html 방식) -->
+        {!! banner('네비게이션_레이어', 'sliderView', config_item('app_intg_site_code'), '0', 'sliderViewWrap') !!}
     @endif
     <!-- gnb menu -->
     <div class="gnb-List">

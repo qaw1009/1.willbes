@@ -3,7 +3,9 @@
 @section('content')
     <!-- Container -->
     <div id="Container" class="Container adm NSK c_both">
+        <!-- site nav -->
         @include('willbes.pc.layouts.partial.site_menu')
+
         <div class="Section MainVisual">
             <div class="widthAuto">
                 <iframe src="https://www.youtube.com/embed/lrZxQV21DE8?rel=0&modestbranding=1&showinfo=0&&wmode=transparent" frameborder="0" allowfullscreen=""></iframe>
@@ -279,5 +281,5 @@
             });
         });
     </script>
-
+    {!! popup('657001', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
 @stop

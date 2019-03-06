@@ -3,7 +3,9 @@
 @section('content')
     <!-- Container -->
     <div id="Container" class="Container seaSp NSK c_both">
+        <!-- site nav -->
         @include('willbes.pc.layouts.partial.site_menu')
+
         <div class="Section mt30">
             <div class="widthAuto bnrSec01">
                 <ul>
@@ -129,4 +131,5 @@
     </div>
     <!-- End Container -->
 
+    {!! popup('657001', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
 @stop

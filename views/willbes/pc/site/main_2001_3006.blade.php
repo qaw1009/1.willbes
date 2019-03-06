@@ -3,7 +3,9 @@
 @section('content')
     <!-- Container -->
     <div id="Container" class="Container pro NSK c_both">
+        <!-- site nav -->
         @include('willbes.pc.layouts.partial.site_menu')
+
         <div class="Section MainVisual">
             <div class="widthAuto">
                 <iframe src="https://www.youtube.com/embed/lrZxQV21DE8?rel=0&modestbranding=1&showinfo=0&&wmode=transparent" frameborder="0" allowfullscreen=""></iframe>
@@ -44,8 +46,6 @@
                         <li><img src="{{ img_url('cop_pro/visual/visual_556_03.jpg') }}" alt="MOU 협약식"></li>
                         <li><img src="{{ img_url('cop_pro/visual/visual_556_04.jpg') }}" alt="MOU 협약식"></li>
                     </ul>
-                    <div>
-                    </div>
                 </div>
 
                 <div class="Section Section3 mt90">
@@ -111,20 +111,22 @@
                     @include('willbes.pc.site.main_partial.quick_menu_' . $__cfg['SiteCode'])
                 </div>
             </div>
-            <!-- End Container -->
+        </div>
+    </div>
+    <!-- End Container -->
 
-            <script type="text/javascript">
-                $(function(){
-                    $('.mou ul').bxSlider({
-                        speed:800,
-                        responsive:true,
-                        infiniteLoop:true,
-                        pager:false,
-                        slideWidth:556,
-                        minSlides:1,
-                        maxSlides:2,
-                    });
-                });
-            </script>
-
+    <script type="text/javascript">
+        $(function(){
+            $('.mou ul').bxSlider({
+                speed:800,
+                responsive:true,
+                infiniteLoop:true,
+                pager:false,
+                slideWidth:556,
+                minSlides:1,
+                maxSlides:2,
+            });
+        });
+    </script>
+    {!! popup('657001', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
 @stop

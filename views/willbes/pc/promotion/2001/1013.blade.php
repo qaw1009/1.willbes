@@ -71,7 +71,7 @@
                     <div class="pngimg-real">
                         <img src="http://file3.willbes.net/new_cop/2019/02/EV190225_p1.png"  alt="메인" usemap="#welcomepack1"  />
                         <map name="welcomepack1" id="welcomepack1">
-                            <area shape="rect" coords="282,949,696,1005" href="/user/memberEntryProvision.html?topMenuType=O" onfocus='this.blur()'  alt="웰컴팩받기" target="_blink">
+                            <area shape="rect" coords="282,949,696,1005" href="/member/join/?ismobile=0&sitecode=2001" onfocus='this.blur()'  alt="웰컴팩받기" target="_blink">
                         </map>
                     </div>
                 </div>
@@ -109,7 +109,7 @@
         <div class="evtCtnsBox wb_04" >
             <img src="http://file3.willbes.net/new_cop/2018/03/EV180302_p5.png"  alt="03"  usemap="#welcomepack2">
             <map name="welcomepack2" id="welcomepack2">
-                <area shape="rect" coords="86,1062,894,1168" href="/user/memberEntryProvision.html?topMenuType=O" onfocus='this.blur()'  alt="웰컴팩받기" target="_blink">
+                <area shape="rect" coords="86,1062,894,1168" href="/member/join/?ismobile=0&sitecode=2001" onfocus='this.blur()'  alt="웰컴팩받기" target="_blink">
             </map>
         </div>
 

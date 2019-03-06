@@ -4,7 +4,9 @@
     $_gnb_img_size = $_gnb_size == 'md' ? '' : '_sm';
     $_gnb_open = $_gnb_size == 'md' ? 'Close' : 'Open';
     $_gnb_text = $_gnb_size == 'md' ? '숨김' : '열기';
-    $_gnb_logo = $_gnb_size == 'md' ? $__cfg['Logo'] : str_replace('.', $_gnb_img_size . '.', $__cfg['Logo']);
+    // 사이트설정 로고 이미지가 아닌 디자인 이미지 경로로 변경 (숨김 버튼 클릭시 이미지 경로가 초기화되기 때문에)
+    //$_gnb_logo = $_gnb_size == 'md' ? $__cfg['Logo'] : str_replace('.', $_gnb_img_size . '.', $__cfg['Logo']);
+    $_gnb_logo = $_gnb_size == 'md' ? img_url('gnb/logo.gif') : img_url('gnb/logo' . $_gnb_img_size . '.gif');
 @endphp
 <div id="Gnb" class="NSK Gnb-{{ $_gnb_size }}">
     <div class="toggle-Btn gnb-{{ $_gnb_open }}">
@@ -13,7 +15,7 @@
         </a>
     </div>
     <div class="logo">
-        <a href="{{ app_url('/', 'www') }}"><img src="{{ $_gnb_logo }}" onerror="this.src='{{ img_url('gnb/logo' . $_gnb_img_size . '.gif') }}'"></a>
+        <a href="{{ app_url('/', 'www') }}"><img src="{{ $_gnb_logo }}"></a>
     </div>
 
     @if(empty($__cfg['GNBMenu']['ActiveGroupMenuIdx']) === true)

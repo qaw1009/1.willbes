@@ -100,6 +100,7 @@
         .LAeventB03 .FreepassLec {width:1034px; margin:0 auto 40px}
         .LAeventB03 .FreepassLec .fpLecinfo {margin:0 auto; background:#FFF; padding:40px; border:1px solid #dedede}
         .LAeventB03 .FreepassLec .fpLecinfo p {line-height:1.5; font-size:120%; padding-bottom:40px}
+	    .LAeventB03 .FreepassLec .fpLecinfo p strong {display:block; font-size:16px; font-weight:bold; color:#ee1c24; margin-top:10px}
         
         .LAeventB03 .FreepassLec .fpLecinfo .tabArmy {margin-bottom:20px}
         .LAeventB03 .FreepassLec .fpLecinfo .tabArmy li {display:inline; float:left; width:12.5%}
@@ -108,7 +109,7 @@
         .LAeventB03 .FreepassLec .fpLecinfo .tabArmy li a.active {background:#fff; color:#000; border:1px solid #666; border-bottom:1px solid #fff}
         .LAeventB03 .FreepassLec .fpLecinfo .tabArmy:after {content:""; display:block; clear:both}
         
-        .LAeventB03 table {border-top:1px solid #b7b7b7; width:100%}
+        .LAeventB03 table {border-top:1px solid #b7b7b7; width:100%; line-height:1.4;}
         .LAeventB03 table tr {border-bottom:1px solid #b7b7b7;}
         .LAeventB03 table th {text-align:center; padding:15px 0; font-weight:bold}
         .LAeventB03 table td {text-align:center; padding:15px 0}
@@ -123,14 +124,14 @@
         .LAeventB03 .price:after {content:""; display:block; clear:both}
         .LAeventB03 .golink {width:1034px; margin:0 auto; border-top:3px solid #353535; border-bottom:3px solid #353535; text-align:center; padding:48px 0; margin-top:80px}
         .LAeventB03 .golink ul {border-left:1px solid #000; width:800px; margin:40px auto 0}
-        .LAeventB03 .golink li {display:inline; float:left; width:33%; border-right:1px solid #000; border-top:1px solid #000; border-bottom:1px solid #000; height:38px; line-height:38px; }
+        .LAeventB03 .golink li {display:inline; float:left; width:33%; font-size:14px; border-right:1px solid #000; border-top:1px solid #000; border-bottom:1px solid #000; height:38px; line-height:38px; }
         .LAeventB03 .golink li.liSty1 {background:#fff; width:33%}
         .LAeventB03 .golink li img {vertical-align:middle}
         .LAeventB03 .golink a {display:block; font-weight:bold}
         .LAeventB03 .golink ul:after {content:""; display:block; clear:both}           
         
         .LAeventB04 {width:100%; background:#252525; padding:70px 0; color:#ccc !important}
-        .LAeventB04 .fpinfo {position:relative; width:1120px; margin:0 auto}
+        .LAeventB04 .fpinfo {position:relative; width:1120px; margin:0 auto; line-height:1.4; font-size:14px}
         .LAeventB04 .fpinfo .fpinfoBtn {position:absolute; top:0; right:0; width:30%; text-align:right}
         .LAeventB04 .fpinfo .fpinfoBtn a {display:inline-block; margin-left:10px; border:1px solid #fff; padding:5px 10px; color:#fff; cursor:pointer}
         .LAeventB04 .fpinfo span {font-weight:bold;color:#fff000}
@@ -177,7 +178,7 @@
 		</div> 
 
         
-        <div class="LAeventB03">
+        <div class="LAeventB03 NSK">
         	<div class="LAeventB03img">
             	<img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_onLec_01.jpg" alt="자격증 교육과정의 경우, 일부 혜택 제외"/>
             </div>
@@ -188,7 +189,7 @@
             </div>
             
             <div class="FreepassLec" id="passLec06">
-            	<h3>경찰직 </h3>
+            	<h3>경찰직 | 윌비스 PASS</h3>
                 <div class="fpLecinfo">
 					<p>
                     2019년 경찰합격을 위한 후회 없는 선택 !<br />
@@ -264,7 +265,7 @@
                 <ul>
                     <li class="liSty1">교육과정바로가기 &gt;</li>
                     <li><a target="_blank" href="#none">공무원 / 소방자격증</a></li>
-                    <li><a target="_blank" href="#none">경찰 / 해양경찰</a></li>
+                    <li><a target="_blank" href="#none">경찰</a></li>
                 </ul>
             </div>
 

@@ -100,6 +100,7 @@
         .LAeventB03 .FreepassLec {width:1034px; margin:0 auto 40px}
         .LAeventB03 .FreepassLec .fpLecinfo {margin:0 auto; background:#FFF; padding:40px; border:1px solid #dedede}
         .LAeventB03 .FreepassLec .fpLecinfo p {line-height:1.5; font-size:120%; padding-bottom:40px}
+	    .LAeventB03 .FreepassLec .fpLecinfo p strong {display:block; font-size:16px; font-weight:bold; color:#ee1c24; margin-top:10px}
         
         .LAeventB03 .FreepassLec .fpLecinfo .tabArmy {margin-bottom:20px}
         .LAeventB03 .FreepassLec .fpLecinfo .tabArmy li {display:inline; float:left; width:12.5%}
@@ -108,7 +109,7 @@
         .LAeventB03 .FreepassLec .fpLecinfo .tabArmy li a.active {background:#fff; color:#000; border:1px solid #666; border-bottom:1px solid #fff}
         .LAeventB03 .FreepassLec .fpLecinfo .tabArmy:after {content:""; display:block; clear:both}
         
-        .LAeventB03 table {border-top:1px solid #b7b7b7; width:100%}
+        .LAeventB03 table {border-top:1px solid #b7b7b7; width:100%; line-height:1.4;}
         .LAeventB03 table tr {border-bottom:1px solid #b7b7b7;}
         .LAeventB03 table th {text-align:center; padding:15px 0; font-weight:bold}
         .LAeventB03 table td {text-align:center; padding:15px 0}
@@ -130,7 +131,7 @@
         .LAeventB03 .golink ul:after {content:""; display:block; clear:both}           
         
         .LAeventB04 {width:100%; background:#252525; padding:70px 0; color:#ccc !important}
-        .LAeventB04 .fpinfo {position:relative; width:1120px; margin:0 auto}
+        .LAeventB04 .fpinfo {position:relative; width:1120px; margin:0 auto; line-height:1.4; font-size:14px}
         .LAeventB04 .fpinfo .fpinfoBtn {position:absolute; top:0; right:0; width:30%; text-align:right}
         .LAeventB04 .fpinfo .fpinfoBtn a {display:inline-block; margin-left:10px; border:1px solid #fff; padding:5px 10px; color:#fff; cursor:pointer}
         .LAeventB04 .fpinfo span {font-weight:bold;color:#fff000}
@@ -177,20 +178,20 @@
 		</div> 
 
         
-        <div class="LAeventB03">
+        <div class="LAeventB03 NSK">
         	<div class="LAeventB03img">
             	<img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_onLec_01.jpg" alt="자격증 교육과정의 경우, 일부 혜택 제외"/>
             </div>
             
             
             <div class="FreepassLec" id="passLec01">
-            	<h3>군무원</h3>
+            	<h3>군무원 | 윌비스 PASS</h3>
                 <div class="fpLecinfo">
 					<p>
                    	2019년도 군무원 5,600명 확대 채용 예정 !<br />
                     오로지 군무원 합격에 최적화된 전담 교수진 &amp; 교재 !<br />
                     업계 최대 직렬 보유 ! 총 15개 직렬 수험준비 가능 !<br />
-                    → 행정, 군수, 수사, 전기, 전자, 통신, 토목, 일반기계, 유도무기, 총포, 전산, 군사정보, 기술정보, 건축, 환경    
+                    <strong>→ 행정, 군수, 수사, 전기, 전자, 통신, 토목, 일반기계, 유도무기, 총포, 전산, 군사정보, 기술정보, 건축, 환경</strong>
                     </p>
                     <ul class="tabArmy">
                     	<li><a href="#tab1">행정직</a></li>
@@ -283,7 +284,7 @@
 	                                </li>
 	                            </ul>
 	                        </td>
-	                        <td><a href="javascript:yearpackageDetail('007','Y201900008')"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a></td>
+	                        <td><a href="javascript:yearpackageDetail('007','Y201900023')"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a></td>
 	                      </tr>
 	                      <tr>
 	                        <th>군수직 교재 포함<br />
@@ -297,7 +298,7 @@
 	                                </li>
 	                            </ul>
 	                        </td>
-	                        <td><a href="javascript:yearpackageDetail('007','Y201900009')"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a></td>
+	                        <td><a href="javascript:yearpackageDetail('007','Y201900022')"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a></td>
 	                      </tr>
 					   </c:when>
 					   <c:otherwise>
@@ -705,7 +706,7 @@
             </div><!--FreepassLec//-->                        
             
             <div class="FreepassLec" id="passLec02">
-            	<h3>소방직</h3>
+            	<h3>소방직 | 윌비스 PASS</h3>
                 <div class="fpLecinfo">
 					<p>
                     2019년도 소방공무원 5,200명 확대 채용 예정 ! <br />
@@ -778,13 +779,13 @@
             </div><!--FreepassLec//-->
             
             <div class="FreepassLec" id="passLec03">
-            	<h3>기술직</h3>
+            	<h3>기술직 | 윌비스 PASS</h3>
                 <div class="fpLecinfo">
 					<p>
                     직렬별 전문가로 구성된 기술직 TOP 교수진 !<br />
                     기술직에 최적화된 빠른 합격 노하우 전수 &amp; 초보부터 전공자까지 모두 이해 가능한 명 강의 !<br />
                     총 7개 직렬 수험준비 가능 !<br />
-					→ 전기, 전자, 통신, 토목, 기계, 보건, 전산
+					<strong>→ 전기, 전자, 통신, 토목, 기계, 보건, 전산</strong>
                     </p>
                     <table>
                       <col width="20%" />
@@ -852,7 +853,7 @@
             </div><!--FreepassLec//-->
             
             <div class="FreepassLec" id="passLec04">
-            	<h3>일반행정직</h3>
+            	<h3>일반행정직 | 윌비스 PASS</h3>
                 <div class="fpLecinfo">
 					<p>
                     2019년도 공무원 3만 3,000명 확대 채용 예정 ! <br />
@@ -925,14 +926,13 @@
             </div><!--FreepassLec//-->  
             
             <div class="FreepassLec" id="passLec05">
-            	<h3>소방자격증 <span>※ 소방자격증의 경우 수강기간 1년 / 10만 포인트 지급</span></h3>
+            	<h3>소방자격증 | 윌비스 PASS<span>※ 소방자격증의 경우 수강기간 1년 / 10만 포인트 지급</span></h3>
                 <div class="fpLecinfo">
 					<p>
-                    윌비스 <strong>×</strong> 대영소방전문학원 !<br />
+                    윌비스× 대영소방전문학원 !<br />
                     소방자격증 스페셜리스트, 김종상 교수의 압도적인 강의력 !<br />
                     김종상 교수와 함께라면 소방자격증 단기간 취득 가능 !<br />
-                    → 중/장기 복무 전역(예정) 간부 필수 취득 자격증
-
+                    <strong>중/장기 복무 전역(예정) 간부 필수 취득 자격증</strong>
                     </p>
                     <table>
                       <col width="20%" />
@@ -953,7 +953,7 @@
 	                                </li>
 	                            </ul>
 	                        </td>
-	                        <td><a href="javascript:yearpackageDetail('001','Y201800012')"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a></td>
+	                        <td><a href="javascript:yearpackageDetail('001','Y201900028')"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a></td>
 	                      </tr>
 	                      <tr>
 	                        <th>소방설비(산업)기사 '기계'<br /> 
@@ -968,7 +968,7 @@
 	                                </li>
 	                            </ul>
 	                        </td>
-	                        <td><a href="javascript:yearpackageDetail('001','Y201800013')"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a></td>
+	                        <td><a href="javascript:yearpackageDetail('001','Y201900029')"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a></td>
 	                      </tr>
 					   </c:when>
 					   <c:otherwise>
@@ -1007,7 +1007,7 @@
                     <ul>
                     	<li class="liSty1">교육과정바로가기 &gt;</li>
                         <li><a target="_blank" href="#none">공무원 / 소방자격증</a></li>
-                        <li><a target="_blank" href="#none">경찰 / 해양경찰</a></li>
+                        <li><a target="_blank" href="#none">경찰</a></li>
                     </ul>
                 </div>
 

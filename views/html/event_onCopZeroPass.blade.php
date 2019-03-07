@@ -229,7 +229,7 @@
         <!--타이머//-->
         
 		<div class="evtCtnsBox wb_pop2" id="main">
-            <img src="http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190227_01.png"  alt="평생0원 PASS 마감" usemap="#rebound"/>
+            <img src="http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190307_01.png"  alt="평생0원 PASS 마감" usemap="#rebound"/>
             <map name="rebound" id="rebound">
             <area shape="rect" coords="300,837,475,884" href="event_onCopReboundPop" target="_blank" alt="수강생인증"/>
             <area shape="rect" coords="500,837,675,884" href="javascript:goDesc('tab3')" alt="이용안내"/>
@@ -272,8 +272,8 @@
                     <input type="checkbox" id="j_pkg" name="j_pkg" value="Y" onClick="fn_cal('j1')"/>
                     <label for="j_pkg">&lt; 경찰체력패키지를 수강하실 경우 체크하세요.</label>
                 </span>
-                <img src="http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190207_03_re1.jpg"  alt="신광은경찰PASS 수강료"/ usemap="#Map190123"><br />
-                <img src="http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190207_03_re2.jpg"  alt="체력" usemap="#Map190117A" border="0"/>
+                <img src="http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190307_03_re1.jpg"  alt="신광은경찰PASS 수강료"/ usemap="#Map190123"><br />
+                <img src="http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190307_03_re2.jpg"  alt="체력" usemap="#Map190117A" border="0"/>
                 <map name="Map190123" id="Map190123">
                 <area shape="rect" coords="220,545,285,564" href="javascript:go_popup()" alt="6개월과목" />
                 <area shape="rect" coords="483,545,546,564" href="javascript:go_popup()" alt="12개월과목" />

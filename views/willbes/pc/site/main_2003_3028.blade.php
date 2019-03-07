@@ -14,35 +14,48 @@
 
         <div class="Section MainVisual">
             <div class="widthAuto NSK mt30">
+                @if(empty($data['arr_main_banner']['메인_서브1']) === false)
                 <div class="VisualBox p_re bSlider">
                     <div id="MainRollingDiv" class="MaintabList three">
                         <ul class="Maintab">
-                            <li><a data-slide-index="0" href="javascript:void(0);" class="active">농업직 장사원</a></li>
-                            <li><a data-slide-index="1" href="javascript:void(0);" class="">통신/전기 최우영</a></li>
-                            <li><a data-slide-index="2" href="javascript:void(0);" class="">기술직 최강 라인업</a></li>
+                            @foreach($data['arr_main_banner']['메인_서브1'] as $row)
+                                <li><a data-slide-index="{{ $loop->index -1 }}" href="javascript:void(0);" class="{{ ($loop->first === true) ? 'active' : '' }}">{{ $row['BannerName'] }}</a></li>
+                            @endforeach
                         </ul>
                     </div>
                     <div id="MainRollingSlider" class="MaintabBox">
                         <div class="bx-wrapper">
                             <div class="bx-viewport">
                                 <ul class="MaintabSlider">
-                                    <li><a href="#none" target="_blank"><img src="{{ img_url('gosi_tech/banner/bnr_714x300_01.jpg') }}" alt="배너명"></a></li>
-                                    <li><a href="#none" target="_blank"><img src="{{ img_url('gosi_tech/banner/bnr_714x300_02.jpg') }}" alt="배너명"></a></li>
-                                    <li><a href="#none" target="_blank"><img src="{{ img_url('gosi_tech/banner/bnr_714x300_03.jpg') }}" alt="배너명"></a></li>
+                                    @php $link_url = '#none'; @endphp
+                                    @foreach($data['arr_main_banner']['메인_서브1'] as $row)
+                                        @if(empty($row['LinkUrl']) === false)
+                                            @php $link_url = front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www'); @endphp
+                                        @endif
+                                        <li><a href="{{ $link_url }}" target="_{{ $row['LinkType'] }}"><img src="{{ $row['BannerFullPath'] . $row['BannerImgName'] }}" alt="{{ $row['BannerName'] }}"></a></li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
+                @endif
+
+                @if(empty($data['arr_main_banner']['메인_서브2']) === false)
                 <div class="VisualsubBox">
                     <div class="bSlider">
                         <div class="sliderStopAutoPager">
-                            <div><a href="#none"><img src="{{ img_url('gosi_tech/banner/bnr_394x300_01.jpg') }}" alt="배너명"></a></div>
-                            <div><a href="#none"><img src="{{ img_url('gosi_tech/banner/bnr_394x300_02.jpg') }}" alt="배너명"></a></div>
-                            <div><a href="#none"><img src="{{ img_url('gosi_tech/banner/bnr_394x300_03.jpg') }}" alt="배너명"></a></div>
+                            @php $link_url = '#none'; @endphp
+                            @foreach($data['arr_main_banner']['메인_서브2'] as $row)
+                                @if(empty($row['LinkUrl']) === false)
+                                    @php $link_url = front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www'); @endphp
+                                @endif
+                                <div><a href="{{ $link_url }}" target="_{{ $row['LinkType'] }}"><img src="{{ $row['BannerFullPath'] . $row['BannerImgName'] }}" alt="{{ $row['BannerName'] }}"></a></div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
+                @endif
             </div>
         </div>
 
@@ -55,19 +68,29 @@
                 <div id="tab01">
                     <img src="{{ img_url('gosi_tech/visual/visual_tit01_01.jpg') }}" alt="지금은 전범위 모의고사로 마무리 할 때!">
                     <ul class="PBcts">
-                        <li><a href="#none"><img src="{{ img_url('gosi_tech/visual/visual_prof01.jpg') }}" alt="배너명"></a></li>
-                        <li><a href="#none"><img src="{{ img_url('gosi_tech/visual/visual_prof01.jpg') }}" alt="배너명"></a></li>
-                        <li><a href="#none"><img src="{{ img_url('gosi_tech/visual/visual_prof01.jpg') }}" alt="배너명"></a></li>
-                        <li><a href="#none"><img src="{{ img_url('gosi_tech/visual/visual_prof01.jpg') }}" alt="배너명"></a></li>
+                        @for($i=1; $i<=4; $i++)
+                            @if(empty($data['arr_main_banner']['메인_미들'.$i]) === false)
+                                @php $link_url = '#none'; $last_banner = end($data['arr_main_banner']['메인_미들'.$i]); @endphp
+                                @if(empty($last_banner['LinkUrl']) === false)
+                                    @php $link_url = front_app_url('/banner/click?banner_idx=' . $last_banner['BIdx'] . '&return_url=' . urlencode($last_banner['LinkUrl']) . '&link_url_type=' . urlencode($last_banner['LinkUrlType']), 'www'); @endphp
+                                @endif
+                                <li><a href="{{ $link_url }}" target="_{{ $last_banner['LinkType'] }}"><img src="{{ $last_banner['BannerFullPath'] . $last_banner['BannerImgName'] }}" alt="{{ $last_banner['BannerName'] }}"></a></li>
+                            @endif
+                        @endfor
                     </ul>
                 </div>
                 <div id="tab02">
                     <img src="{{ img_url('gosi_tech/visual/visual_tit01_02.jpg') }}" alt="지금은 전범위 모의고사로 마무리 할 때!">
                     <ul class="PBcts">
-                        <li><a href="#none"><img src="{{ img_url('gosi_tech/visual/visual_prof01.jpg') }}" alt="배너명"></a></li>
-                        <li><a href="#none"><img src="{{ img_url('gosi_tech/visual/visual_prof01.jpg') }}" alt="배너명"></a></li>
-                        <li><a href="#none"><img src="{{ img_url('gosi_tech/visual/visual_prof01.jpg') }}" alt="배너명"></a></li>
-                        <li><a href="#none"><img src="{{ img_url('gosi_tech/visual/visual_prof01.jpg') }}" alt="배너명"></a></li>
+                        @for($i=4; $i<=8; $i++)
+                            @if(empty($data['arr_main_banner']['메인_미들'.$i]) === false)
+                                @php $link_url = '#none'; $last_banner = end($data['arr_main_banner']['메인_미들'.$i]); @endphp
+                                @if(empty($last_banner['LinkUrl']) === false)
+                                    @php $link_url = front_app_url('/banner/click?banner_idx=' . $last_banner['BIdx'] . '&return_url=' . urlencode($last_banner['LinkUrl']) . '&link_url_type=' . urlencode($last_banner['LinkUrlType']), 'www'); @endphp
+                                @endif
+                                <li><a href="{{ $link_url }}" target="_{{ $last_banner['LinkType'] }}"><img src="{{ $last_banner['BannerFullPath'] . $last_banner['BannerImgName'] }}" alt="{{ $last_banner['BannerName'] }}"></a></li>
+                            @endif
+                        @endfor
                     </ul>
                 </div>
             </div>

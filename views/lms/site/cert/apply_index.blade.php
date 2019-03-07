@@ -108,7 +108,7 @@
                     <th>운영사이트</th>
                     <th>카테고리</th>
                     <th>인증구분</th>
-                    <th width="70">회차</th>
+                    <th>회차</th>
                     <th>응시직렬</th>
                     <th>회원명</th>
                     <th>상세<br>정보</th>
@@ -166,7 +166,7 @@
                     {'data' : 'CateName'},
                     {'data' : 'CertTypeCcd_Name'},
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            return data.No + ' [' + data.CertIdx + ']';
+                            return data.No + ' [' + data.CertIdx +' - ' + data.CertTitle+ ']';
                         }},
                     {'data' : 'TakeKind', 'name' : 'TakeKind'},
                     {'data' : null, 'render' : function(data, type, row, meta) {
@@ -253,9 +253,7 @@
 
 
             //선택 승인/취소
-
             $('.btn-all-cancel , .btn-all-permission').on('click', function() {
-
                 var $branching = '';
                 var $branching_msg = '';
                 if($(this).attr("class").match("btn-all-cancel")) {
@@ -332,8 +330,12 @@
                     }, showValidateError, null, false, 'alert');
 
                 }
-
             });
+
+            $list_table.on('click', '.btn-member', function() {
+                window.open("{{site_url('/member/manage/detail/')}}"+$(this).data('idx'), '_blank');
+            });
+
         });
     </script>
     </form>

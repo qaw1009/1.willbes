@@ -133,6 +133,7 @@ class CertModel extends WB_Model
             'CateCode'=>element('CateCode',$input)
             ,'CertTypeCcd'=>element('CertTypeCcd',$input)
             ,'CertConditionCcd'=>element('CertConditionCcd',$input)
+            ,'CertTitle'=>element('CertTitle',$input)
             ,'No'=>element('No',$input)
             ,'CertStartDate'=>element('CertStartDate',$input)
             ,'CertEndDate'=>element('CertEndDate',$input)

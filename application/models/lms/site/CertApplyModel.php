@@ -31,7 +31,7 @@ class CertApplyModel extends WB_Model
 
             $column = ' STRAIGHT_JOIN
                             SA.*
-                            ,A.SiteCode,A.CateCode,A.CertTypeCcd,A.CertConditionCcd,A.`No`,A.CertStartDate,A.CertEndDate
+                            ,A.SiteCode,A.CateCode,A.CertTypeCcd,A.CertConditionCcd,A.`No`,A.CertStartDate,A.CertEndDate,A.CertTitle
                             ,B.CateName
                             ,C.CcdName as CertTypeCcd_Name
                             ,D.CcdName as CertConditionCcd_Name

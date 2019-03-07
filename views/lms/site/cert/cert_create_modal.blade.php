@@ -49,6 +49,10 @@
                             @endforeach
                         </select>
                     </div>
+                    <label class="control-label col-md-2" for="CertTitle">인증제목 <span class="required">*</span></label>
+                    <div class="col-md-4">
+                        <input type="text" id="CertTitle" name="CertTitle" maxlength="30" value="{{ $data['CertTitle'] }}" title="인증제목"  class="form-control" required="required">
+                    </div>
                 </div>
                 <div class="form-group form-group-sm item">
                     <label class="control-label col-md-2" for="CertConditionCcd">인증조건 <span class="required">*</span></label>

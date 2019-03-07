@@ -98,7 +98,8 @@ class EventLectureModel extends WB_Model
             K.FileFullPath, K.FileName, IFNULL(H.CCount,\'0\') AS CommentCount,
             CASE RequestType WHEN 1 THEN \'설명회\' WHEN 2 THEN \'특강\' WHEN 3 THEN \'이벤트\' WHEN 4 THEN \'합격수기\' WHEN 5 THEN \'프로모션\' END AS RequestTypeName,
             CASE IsRegister WHEN \'Y\' THEN \'접수중\' WHEN \'N\' THEN \'마감\' END AS IsRegisterName,
-            L.BannerName, L.BannerFullPath, L.BannerImgName, L.BannerImgRealName
+            L.BannerName, L.BannerFullPath, L.BannerImgName, L.BannerImgRealName,
+            P.PromotionAttachFilePath, P.PromotionAttachFileName, P.PromotionAttachRealFileName
             ';
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
@@ -128,6 +129,12 @@ class EventLectureModel extends WB_Model
             INNER JOIN {$this->_table['admin']} AS E ON A.RegAdminIdx = E.wAdminIdx AND E.wIsStatus='Y'
             LEFT OUTER JOIN {$this->_table['admin']} AS F ON A.UpdAdminIdx = F.wAdminIdx AND F.wIsStatus='Y'
             LEFT OUTER JOIN {$this->_table['banner']} AS L ON A.BIdx = L.BIdx AND L.LinkType = 'layer'
+            LEFT OUTER JOIN (
+                SELECT ElIdx, GROUP_CONCAT(FileFullPath) AS PromotionAttachFilePath, GROUP_CONCAT(FileName) AS PromotionAttachFileName, GROUP_CONCAT(FileRealName) AS PromotionAttachRealFileName
+                FROM {$this->_table['event_file']}
+                WHERE IsUse = 'Y' AND FileType = 'P'
+                GROUP BY ElIdx
+            ) AS P ON A.ElIdx = P.ElIdx
         ";
 
         $arr_condition['IN']['A.SiteCode'] = get_auth_site_codes();
@@ -248,9 +255,14 @@ class EventLectureModel extends WB_Model
                 }
             }
 
-            //파일저장
+            // 이벤트 파일저장
             if ($this->_addContentAttach($el_idx, count($this->_set_attache_type)) === false) {
                 throw new \Exception('이벤트 파일 등록에 실패했습니다.');
+            }
+
+            // 프로모션 파일저장
+            if ($this->_addContentAttachByPromotion($el_idx, count($this->_set_attache_type)) === false) {
+                throw new \Exception('프로모션 파일 등록에 실패했습니다.');
             }
 
             $this->_conn->trans_commit();
@@ -915,7 +927,7 @@ class EventLectureModel extends WB_Model
     }
 
     /**
-     * 파일저장
+     * 이벤트 파일저장
      * @param $el_idx
      * @param $cnt
      * @return bool
@@ -949,6 +961,48 @@ class EventLectureModel extends WB_Model
                     $set_attach_data['FileFullPath'] = $this->upload->_upload_url . $upload_dir . '/';
                     $set_attach_data['FileRealName'] = $attach_files['client_name'];
                     $set_attach_data['FileType'] = $this->_set_attache_type[$idx];
+
+                    $set_attach_data['RegAdminIdx'] = $this->session->userdata('admin_idx');
+                    $set_attach_data['RegIp'] = $this->input->ip_address();
+
+                    if ($this->_addEventAttach($set_attach_data) === false) {
+                        throw new \Exception('fail');
+                    }
+                }
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * 프로모션 파일저장
+     * @param $el_idx
+     * @param $cnt
+     * @return bool
+     */
+    private function _addContentAttachByPromotion($el_idx, $cnt)
+    {
+        try {
+            $this->load->library('upload');
+            $this->load->library('image_lib');
+
+            $upload_dir = config_item('upload_prefix_dir') . '/promotion/' . date('Y') . '/' . date('md');
+            $uploaded = $this->upload->uploadFile('file', ['attach_file_promotion'], $this->_getAttachImgNames($cnt), $upload_dir);
+            if (is_array($uploaded) === false) {
+                throw new \Exception($uploaded);
+            }
+
+            foreach ($uploaded as $idx => $attach_files) {
+                if (empty($attach_files) === false) {
+                    $set_attach_data['ElIdx'] = $el_idx;
+                    $set_attach_data['FileName'] = $attach_files['orig_name'];
+                    $set_attach_data['FileFullPath'] = $this->upload->_upload_url . $upload_dir . '/';
+                    $set_attach_data['FileRealName'] = $attach_files['client_name'];
+                    $set_attach_data['FileType'] = 'P';
 
                     $set_attach_data['RegAdminIdx'] = $this->session->userdata('admin_idx');
                     $set_attach_data['RegIp'] = $this->input->ip_address();

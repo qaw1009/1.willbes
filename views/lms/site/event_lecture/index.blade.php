@@ -157,8 +157,12 @@
                         }},
 
                     {'data' : 'ElIdx', 'render' : function(data, type, row, meta) {
-                            var img_url = row.FileFullPath + row.FileName + '';
-                            return "<img class='img_"+row.ElIdx+"' src='"+img_url+"'>";
+                            if (row.RequestType == 5) {
+                                return '';
+                            } else {
+                                var img_url = row.FileFullPath + row.FileName + '';
+                                return "<img class='img_"+row.ElIdx+"' src='"+img_url+"'>";
+                            }
                         }},
 
                     {'data' : 'RequestTypeName'},

@@ -46,6 +46,21 @@ class BasePromotion extends \app\controllers\FrontController
         $arr_base['option_ccd'] = $this->eventFModel->_ccd['option'];
         $arr_base['comment_use_area'] = $this->eventFModel->_comment_use_area_type;
 
+        // 프로모션 추가 파라미터 배열처리
+        $arr_promotion_params = [];
+        if (empty($data['PromotionParams']) === false) {
+            $temp_params = explode('&', $data['PromotionParams']);
+
+            if (empty($temp_params) === false) {
+                foreach ($temp_params as $key => $val) {
+                    $arr_temp_params = explode('=', $val);
+                    if (empty($arr_temp_params) === false && count($arr_temp_params) > 1) {
+                        $arr_promotion_params[$arr_temp_params[0]] = $arr_temp_params[1];
+                    }
+                }
+            }
+        }
+
         // 댓글사용영역 데이터 가공처리
         $data['data_option_ccd'] = array_flip(explode(',', $data['OptionCcds']));   // 관리옵션 데이터 가공처리
         $data['data_comment_use_area'] = array_flip(explode(',', $data['CommentUseArea']));   // 댓글사용영역 데이터 가공처리

@@ -600,14 +600,13 @@ class EventFModel extends WB_Model
     /**
      * 프로모션 조회
      * @param $promotion_code
-     * @param $type [1:프로모션 확인용 파라미터]
+     * @param $test_type [1:프로모션 확인용 파라미터]
      * @return mixed
      */
-    public function findEventForPromotion($promotion_code, $type)
+    public function findEventForPromotion($promotion_code, $test_type = '')
     {
-        $test_type = $type;
         $column = '
-            ElIdx, OptionCcds, EventName, PromotionCode, RegisterEndDate, CommentUseArea
+            ElIdx, OptionCcds, EventName, PromotionCode, PromotionParams, RegisterEndDate, CommentUseArea
         ';
         $from = "
             FROM {$this->_table['event_lecture']}

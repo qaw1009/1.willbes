@@ -616,3 +616,12 @@ $(document).ready(function() {
     init_board();
     init_file();
 });
+
+
+function fnViewMember($MemIdx)
+{
+    popupOpen('/member/manage/detail_popup/'+$MemIdx, 'MemberInfo',
+        1200, 800,
+        null, null,
+        'yes', 'no');
+}

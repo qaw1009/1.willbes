@@ -1,6 +1,12 @@
-@extends('lcms.layouts.master')
-@section('content')
-    <h5>- 회원상세정보</h5>
+@extends('lcms.layouts.master_popup')
+@section('popup_title')
+    회원정보보기
+@stop
+@section('add_buttons')
+    &nbsp;
+@stop
+@section('popup_content')
+    <!--
     <form class="form-horizontal form-label-left" id="search_form" name="search_form" method="POST" onsubmit="return false;" novalidate>
         <div class="x_panel">
             <div class="x_content">
@@ -22,18 +28,19 @@
             </div>
         </div>
     </form>
+    -->
     <div class="x_panel mt-10">
         <div class="x_title">
             - 회원정보
         </div>
-        <div class="text-right form-inline">
+        <!-- <div class="text-right form-inline">
             <button type="button" class="btn btn-primary" id="btn_list">목록</button>
             <button type="button" class="btn btn-default" id="btn_pwd_reset">비번초기화</button>
             <button type="button" class="btn btn-default btn-mail" id="btn_mail" data-mem-idx="{{ $data['MemIdx'] }}">메일발송</button>
             <button type="button" class="btn btn-default btn-message" id="btn_message" data-mem-idx="{{ $data['MemIdx'] }}">쪽지발송</button>
             <button type="button" class="btn btn-default btn-sms" id="btn_sms" data-mem-idx="{{ $data['MemIdx'] }}">SMS발송</button>
             <button type="button" class="btn bg-blue btn-auto-login" id="btn_login" data-mem-idx="{{ $data['MemIdx'] }}">자동로그인</button>
-        </div>
+        </div> -->
         <div class="x_content">
             <table class="table table-striped table-bordered text-center">
                 <thead>
@@ -52,7 +59,7 @@
                     <td>{{ $data['MemIdx'] }}</td>
                     <td>{{ $data['JoinDate'] }}</td>
                     <td>{{ $data['BirthDay'] }} ({{ $data['Sex'] == 'M' ? '남' : '여' }})</td>
-                    <td>{{ $data['MemName'] }} <button type="button" class="btn btn-default" id="chgname">이름변경</button></td>
+                    <td>{{ $data['MemName'] }} <!-- <button type="button" class="btn btn-default" id="chgname">이름변경</button> --></td>
                     <td>{{ $data['MemId'] }}</td>
                     <td>{{ $data['CertName'] }}</td>
                 </tr>
@@ -106,7 +113,7 @@
             </table>
         </div>
     </div>
-
+<!--
     <ul class="tabs-site-code nav nav-tabs bar_tabs mt-30" role="tablist">
         <li role="presentation"><a role="tab" href="#none" data-toggle="tab" onclick="fnLoad('ajaxLecture');"><strong>수강정보관리</strong></a></li>
         <li role="presentation"><a role="tab" href="#none" data-toggle="tab" onclick="fnLoad('ajaxPay');"><strong>결제정보관리</strong></a></li>
@@ -115,6 +122,7 @@
         <li role="presentation"><a role="tab" href="#none" data-toggle="tab" onclick="fnLoad('ajaxPointLecture');"><strong>포인트관리</strong></a></li>
         <li role="presentation"><a role="tab" href="#none" data-toggle="tab" onclick="fnLoad('ajaxSms');"><strong>CRM관리</strong></a></li>
     </ul>
+    -->
     <div id="tab-content"> </div>
     <script type="text/javascript">
         $(document).ready(function() {
@@ -170,19 +178,19 @@
             });
 
             $('#btn_pwd_reset').click(function() {
-               if(window.confirm('해당 회원의 비밀번호를 초기화 하시겠습니까?\n초기화할 경우 1111 로 자동변경 됩니다.')){
-                   $url = '{{site_url('member/manage/resetPwd')}}';
-                   $data = 'memIdx={{$data['MemIdx']}}';
+                if(window.confirm('해당 회원의 비밀번호를 초기화 하시겠습니까?\n초기화할 경우 1111 로 자동변경 됩니다.')){
+                    $url = '{{site_url('member/manage/resetPwd')}}';
+                    $data = 'memIdx={{$data['MemIdx']}}';
 
-                   sendAjax($url,
-                       $data,
-                       function(d){
-                           alert('비밀번호가 1111 로 초기화 되었습니다.');
-                       },
-                       function(req, status, err){
-                           showError(req, status);
-                       }, false, 'GET', 'json');
-               }
+                    sendAjax($url,
+                        $data,
+                        function(d){
+                            alert('비밀번호가 1111 로 초기화 되었습니다.');
+                        },
+                        function(req, status, err){
+                            showError(req, status);
+                        }, false, 'GET', 'json');
+                }
             });
         });
 

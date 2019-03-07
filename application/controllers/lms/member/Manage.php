@@ -204,6 +204,38 @@ class Manage extends \app\controllers\BaseController
         ]);
     }
 
+    public function detail_popup($params = [])
+    {
+        $memIdx = null;
+        $viewType = null;
+        $data = [];
+
+        if (empty($params[1]) === false) {
+            $viewType = $params[1];
+        }
+
+        if (empty($params[0]) === false) {
+            $memIdx = $params[0]; //회원번호
+
+            if(is_numeric($memIdx) == true){
+                $data = $this->manageMemberModel->getMember($memIdx);
+            } else {
+                show_alert('파라미터가 정확하기 않습니다.','close');
+            }
+        } else {
+            show_alert('파라미터가 정확하기 않습니다.','close');
+        }
+
+        if(empty($data) == true){
+            show_alert('회원검색에 실패했습니다.','close');
+        }
+
+        $this->load->view('member/manage/view_popup', [
+            'viewtype' => $viewType,
+            'data' => $data
+        ]);
+    }
+
     /**
      * 회원 상세페이지에서 회원검색 레이어팝업
      * @param array $params

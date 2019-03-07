@@ -35,6 +35,11 @@ class Home extends \app\controllers\FrontController
                     }, explode(',', config_app('CampusCcdArr')));
                 }
             } else {
+                if (empty($this->_cate_code) === true) {
+                    // 카테고리코드가 없을 경우 디폴트 카테고리 페이지로 리다이렉트
+                    redirect(site_url('/home/index/' . config_get('uri_segment_keys.cate') . '/' . config_app('DefCateCode')));
+                }
+
                 $_view_path = $this->_site_code . '_' . $cate_code;
             }
         } else {
@@ -238,7 +243,7 @@ class Home extends \app\controllers\FrontController
     {
         $column = 'b.BoardIdx, b.Title, b.IsBest, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
         $order_by = ['b.IsBest' => 'Desc', 'b.BoardIdx' => 'Desc'];
-        $arr_condition = ['EQ' => ['b.BmIdx' => 45, 'b.IsUse' => 'Y'], 'IN' => ['b.CampusCcd' => $arr_campus], 'LKB' => ['b.Category_String' => $cate_code]];
+        $arr_condition = ['EQ' => ['b.BmIdx' => 45, 'b.SiteCode' => $this->_site_code, 'b.IsUse' => 'Y'], 'IN' => ['b.CampusCcd' => $arr_campus], 'LKB' => ['b.Category_String' => $cate_code]];
 
         return $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $arr_condition, $column, $limit_cnt, 0, $order_by);
     }
@@ -284,7 +289,7 @@ class Home extends \app\controllers\FrontController
     {
         $column = 'b.BoardIdx, b.IsBest, b.AreaCcd_Name, b.Title, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
         $order_by = ['b.IsBest' => 'Desc', 'b.BoardIdx' => 'Desc'];
-        $arr_condition = ['EQ' => ['b.BmIdx' => 54, 'b.IsUse' => 'Y'], 'LKB' => ['b.Category_String' => $cate_code]];
+        $arr_condition = ['EQ' => ['b.BmIdx' => 54, 'b.SiteCode' => $this->_site_code, 'b.IsUse' => 'Y'], 'LKB' => ['b.Category_String' => $cate_code]];
 
         return $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $arr_condition, $column, $limit_cnt, 0, $order_by);
     }
@@ -300,7 +305,7 @@ class Home extends \app\controllers\FrontController
     {
         $column = 'b.BoardIdx, b.Title, b.IsBest, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
         $order_by = ['b.IsBest' => 'Desc', 'b.BoardIdx' => 'Desc'];
-        $arr_condition = ['EQ' => ['b.BmIdx' => 57, 'b.IsUse' => 'Y'], 'LKB' => ['b.Category_String' => $cate_code]];
+        $arr_condition = ['EQ' => ['b.BmIdx' => 57, 'b.SiteCode' => $this->_site_code, 'b.IsUse' => 'Y'], 'LKB' => ['b.Category_String' => $cate_code]];
 
         return $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $arr_condition, $column, $limit_cnt, 0, $order_by);
     }

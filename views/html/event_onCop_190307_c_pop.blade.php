@@ -144,7 +144,10 @@
     	</div><!--//termsBx01-->
         <p class="ck"><input type="checkbox" id="accept_cb" value="N" > 윌비스 신광은경찰학원에 개인정보 제공 동의하기(필수)</p>
         <p class="ck"> * 성명 / 연락처 / 지원청 입력 및 수험표 첨부파일을 등록해야만 신청가능합니다.</p>
-        <p class="btn" ><a href="javascript:fn_submit()"><img src="http://file3.willbes.net/new_gosi/com_img/box_request.jpg" alt="신청하기" /></a><a href="javascript:window.close()"><img src="http://file3.willbes.net/new_gosi/com_img/box_cancel.jpg"alt="취소" /></a></p>
+        <p class="btn" >
+			<a href="javascript:fn_submit()"><img src="http://file3.willbes.net/new_gosi/com_img/box_request.jpg" alt="신청하기" /></a>
+			<a href="javascript:window.close()"><img src="http://file3.willbes.net/new_gosi/com_img/box_cancel.jpg"alt="취소" /></a>
+		</p>
 	</form>
 	</div>
 </div>

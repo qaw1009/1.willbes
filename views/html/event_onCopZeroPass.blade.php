@@ -50,7 +50,7 @@
             }
         }
         
-        .wb_pop2 {background:#252525 url(http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190207_01_bg.jpg) no-repeat center top}
+        .wb_pop2 {background:#252525 url(http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190307_01_bg.jpg) no-repeat center top}
         .wb_pop2 .wb_popWrap2 {width:1210px; margin:0 auto; position:relative}
         .wb_pop2 .wb_popWrap2 div {position:absolute; width:980px; top:230px; left:50%; margin-left:-490px; z-index:1}
         
@@ -65,7 +65,7 @@
         .wb_top .passLecBuy li:nth-child(2) {width:232px; padding-left:60px}
         .wb_top .passLecBuy li:nth-child(3) {width:400px; padding-left:140px}		
         .wb_top .passLecBuy li div {margin:30px 0 0 0; font-size:20px; font-weight:bold; background:#000; color:#fff; text-align:center; padding:16px 0; border-radius:0 40px 40px 40px}
-        .wb_top .passLecBuy li:last-child div {background:#7316c2;} /*평생0원PASS가격배경컬러변경*/
+        .wb_top .passLecBuy li:last-child div {background:#008766;} /*평생0원PASS가격배경컬러변경*/
         .wb_top .passLecBuy li:last-child p {font-weight:bold; font-size:20px}
         .wb_top strong {font-family:Verdana, Geneva, sans-serif; font-size:30px}
         .wb_top .passLecBuy ul:after {content:""; display:block; clear:both}

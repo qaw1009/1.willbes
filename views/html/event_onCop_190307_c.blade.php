@@ -23,11 +23,12 @@
 
         .wb_top {background:#1e2530 url(http://file3.willbes.net/new_cop/2019/03/EV190307_c1_bg.jpg) no-repeat center}
         .wb_01 {background:#005ecc;}	
-        .wb_02 {background:#ececec;}
+        .wb_02 {background:#fff;}       
+        
         
     </style>
 
-    <div class="evtContent NSK" id="evtContainer">     
+    <div class="evtContent" id="evtContainer">     
 
         <div class="evtCtnsBox wb_top" id="main">
 			<img src="http://file3.willbes.net/new_cop/2019/03/EV190307_c1.jpg"  alt="메인" /><br>
@@ -46,7 +47,9 @@
    		<div class="evtCtnsBox wb_02">
 			<img src="http://file3.willbes.net/new_cop/2019/03/EV190307_c6.jpg" alt="합격을 응원합니다" /><br>
 			<img src="http://file3.willbes.net/new_cop/2019/03/EV190307_c7.jpg" alt="합격을 응원합니다" />
-		</div>      
+        </div>   
+        
+        @include('html.event_replyNotice')
         
     </div>
     <!-- End Container --> 
@@ -58,9 +61,11 @@
                 return;
             }
             var url = 'event_onCop_190307_c_pop' ;
-            window.open(url,'event', 'scrollbars=yes,toolbar=no,resizable=yes,width=600,height=700,top=50,left=100');
+            window.open(url,'event', 'scrollbars=yes,toolbar=no,resizable=yes,width=600,height=700,top=50,left=100,top=100');
         }
-	</script>   
+    </script>
+    
+    
     
     <script src="/public/js/willbes/jquery.nav.js"></script>
     <script>      
@@ -76,9 +81,9 @@
             });
           } );
 
-        $(function(e){
+       /* $(function(e){
             var targetOffset= $("#evtContainer").offset().top;
             $('html, body').animate({scrollTop: targetOffset}, 700);  
-	    });       
+	    });     */  
     </script>    
 @stop

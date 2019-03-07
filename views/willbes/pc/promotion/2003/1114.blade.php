@@ -214,8 +214,7 @@
                             <col width="20%" />
                             <col width="*" />
                             <col width="25%" />
-                            <c:choose>
-                                <c:when test="${armCount>0}">
+
                                     <!--인증후-->
                                     <tr>
                                         <th>행정직 교재 미포함<br />
@@ -244,8 +243,7 @@
                                         </td>
                                         <td><a href="javascript:yearpackageDetail('007','Y201900007')"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a></td>
                                     </tr>
-                                </c:when>
-                                <c:otherwise>
+
                                     <!--인증전-->
                                     <tr>
                                         <th>행정직 교재 미포함<br />
@@ -266,8 +264,7 @@
                                         </td>
                                         <td><a href="javascript:openArmConfirm(1);"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a></td>
                                     </tr>
-                                </c:otherwise>
-                            </c:choose>
+
                         </table>
                     </div>
 
@@ -276,8 +273,7 @@
                             <col width="20%" />
                             <col width="*" />
                             <col width="25%" />
-                            <c:choose>
-                                <c:when test="${armCount>0}">
+
                                     <!--인증후-->
                                     <tr>
                                         <th>군수직 교재 미포함<br />
@@ -306,8 +302,7 @@
                                         </td>
                                         <td><a href="javascript:yearpackageDetail('007','Y201900009')"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a></td>
                                     </tr>
-                                </c:when>
-                                <c:otherwise>
+
                                     <!--인증전-->
                                     <tr>
                                         <th>군수직 교재 미포함<br />
@@ -328,8 +323,7 @@
                                         </td>
                                         <td><a href="javascript:openArmConfirm(2);"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a></td>
                                     </tr>
-                                </c:otherwise>
-                            </c:choose>
+
                         </table>
                     </div>
 
@@ -338,8 +332,7 @@
                             <col width="20%" />
                             <col width="*" />
                             <col width="25%" />
-                            <c:choose>
-                                <c:when test="${armCount>0}">
+
                                     <!--인증후-->
                                     <tr>
                                         <th>토목직 교재 미포함<br />
@@ -368,8 +361,7 @@
                                         </td>
                                         <td><a href="javascript:yearpackageDetail('007','Y201900011')"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a></td>
                                     </tr>
-                                </c:when>
-                                <c:otherwise>
+
                                     <!--인증전-->
                                     <tr>
                                         <th>토목직 교재 미포함<br />
@@ -390,8 +382,7 @@
                                         </td>
                                         <td><a href="javascript:openArmConfirm(3);"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a></td>
                                     </tr>
-                                </c:otherwise>
-                            </c:choose>
+
                         </table>
                     </div>
 
@@ -400,8 +391,7 @@
                             <col width="20%" />
                             <col width="*" />
                             <col width="25%" />
-                            <c:choose>
-                                <c:when test="${armCount>0}">
+
                                     <!--인증후-->
                                     <tr>
                                         <th>전기직 교재 미포함<br />
@@ -430,8 +420,7 @@
                                         </td>
                                         <td><a href="javascript:yearpackageDetail('007','Y201900013')"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a></td>
                                     </tr>
-                                </c:when>
-                                <c:otherwise>
+
                                     <!--인증전-->
                                     <tr>
                                         <th>전기직 교재 미포함<br />
@@ -452,8 +441,7 @@
                                         </td>
                                         <td><a href="javascript:openArmConfirm(4);"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a></td>
                                     </tr>
-                                </c:otherwise>
-                            </c:choose>
+
                         </table>
                     </div>
 
@@ -462,8 +450,7 @@
                             <col width="20%" />
                             <col width="*" />
                             <col width="25%" />
-                            <c:choose>
-                                <c:when test="${armCount>0}">
+
                                     <!--인증후-->
                                     <tr>
                                         <th>전자직 교재 미포함<br />
@@ -492,8 +479,7 @@
                                         </td>
                                         <td><a href="javascript:yearpackageDetail('007','Y201900015')"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a></td>
                                     </tr>
-                                </c:when>
-                                <c:otherwise>
+
                                     <!--인증전-->
                                     <tr>
                                         <th>전자직 교재 미포함<br />
@@ -514,8 +500,7 @@
                                         </td>
                                         <td><a href="javascript:openArmConfirm(5);"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a></td>
                                     </tr>
-                                </c:otherwise>
-                            </c:choose>
+
                         </table>
                     </div>
 
@@ -524,8 +509,7 @@
                             <col width="20%" />
                             <col width="*" />
                             <col width="25%" />
-                            <c:choose>
-                                <c:when test="${armCount>0}">
+
                                     <!--인증후-->
                                     <tr>
                                         <th>통신직 교재 미포함<br />
@@ -554,8 +538,7 @@
                                         </td>
                                         <td><a href="javascript:yearpackageDetail('007','Y201900017')"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a></td>
                                     </tr>
-                                </c:when>
-                                <c:otherwise>
+
                                     <!--인증전-->
                                     <tr>
                                         <th>통신직 교재 미포함<br />
@@ -576,8 +559,7 @@
                                         </td>
                                         <td><a href="javascript:openArmConfirm(6);"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a></td>
                                     </tr>
-                                </c:otherwise>
-                            </c:choose>
+
                         </table>
                     </div>
 
@@ -586,8 +568,7 @@
                             <col width="20%" />
                             <col width="*" />
                             <col width="25%" />
-                            <c:choose>
-                                <c:when test="${armCount>0}">
+
                                     <!--인증후-->
                                     <tr>
                                         <th>일반기계직 교재 미포함<br />
@@ -616,8 +597,7 @@
                                         </td>
                                         <td><a href="javascript:yearpackageDetail('007','Y201900019')"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a></td>
                                     </tr>
-                                </c:when>
-                                <c:otherwise>
+
                                     <!--인증전-->
                                     <tr>
                                         <th>일반기계직 교재 미포함<br />
@@ -638,8 +618,7 @@
                                         </td>
                                         <td><a href="javascript:openArmConfirm(7);"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a></td>
                                     </tr>
-                                </c:otherwise>
-                            </c:choose>
+
                         </table>
                     </div>
 
@@ -648,8 +627,7 @@
                             <col width="20%" />
                             <col width="*" />
                             <col width="25%" />
-                            <c:choose>
-                                <c:when test="${armCount>0}">
+
                                     <!--인증후-->
                                     <tr>
                                         <th>총포직 교재 미포함<br />
@@ -678,8 +656,7 @@
                                         </td>
                                         <td><a href="javascript:yearpackageDetail('007','Y201900021')"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a></td>
                                     </tr>
-                                </c:when>
-                                <c:otherwise>
+
                                     <!--인증전-->
                                     <tr>
                                         <th>총포직 교재 미포함<br />
@@ -700,8 +677,7 @@
                                         </td>
                                         <td><a href="javascript:openArmConfirm(8);"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a></td>
                                     </tr>
-                                </c:otherwise>
-                            </c:choose>
+
                         </table>
                     </div>
 
@@ -723,8 +699,7 @@
                         <col width="20%" />
                         <col width="*" />
                         <col width="25%" />
-                        <c:choose>
-                            <c:when test="${armCount>0}">
+
                                 <!--인증후-->
                                 <tr>
                                     <th>교재 미포함<br />
@@ -753,8 +728,7 @@
                                     </td>
                                     <td><a href="javascript:yearpackageDetail('006','Y201900026')"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a></td>
                                 </tr>
-                            </c:when>
-                            <c:otherwise>
+
                                 <!--인증전-->
                                 <tr>
                                     <th>교재 미포함<br />
@@ -775,8 +749,7 @@
                                     </td>
                                     <td><a href="javascript:openArmConfirm(9);"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a></td>
                                 </tr>
-                            </c:otherwise>
-                        </c:choose>
+
                     </table>
                     <div class="check">
                         <label><input id="chk3"  name="chk3"  type="checkbox" value="" /> 상품 이용에 따른 유의 사항을 모두 확인하였으며, 이에 동의합니다.</label> <a onclick="go_popup()">이용안내 확인하기</a>
@@ -797,8 +770,7 @@
                         <col width="20%" />
                         <col width="*" />
                         <col width="25%" />
-                        <c:choose>
-                            <c:when test="${armCount>0}">
+
                                 <!--인증후-->
                                 <tr>
                                     <th>교재 미포함<br />
@@ -827,8 +799,7 @@
                                     </td>
                                     <td><a href="javascript:yearpackageDetail('011','Y201900024')"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a></td>
                                 </tr>
-                            </c:when>
-                            <c:otherwise>
+
                                 <!--인증전-->
                                 <tr>
                                     <th>교재 미포함<br />
@@ -849,8 +820,7 @@
                                     </td>
                                     <td><a href="javascript:openArmConfirm(10);"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a></td>
                                 </tr>
-                            </c:otherwise>
-                        </c:choose>
+
                     </table>
                     <div class="check">
                         <label><input id="chk2"  name="chk2" type="checkbox" value="" /> 상품 이용에 따른 유의 사항을 모두 확인하였으며, 이에 동의합니다.</label> <a onclick="go_popup()">이용안내 확인하기</a>
@@ -870,8 +840,7 @@
                         <col width="20%" />
                         <col width="*" />
                         <col width="25%" />
-                        <c:choose>
-                            <c:when test="${armCount>0}">
+
                                 <!--인증후-->
                                 <tr>
                                     <th>교재 미포함<br />
@@ -900,8 +869,7 @@
                                     </td>
                                     <td><a href="javascript:yearpackageDetail('001','Y201800013')"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a></td>
                                 </tr>
-                            </c:when>
-                            <c:otherwise>
+
                                 <!--인증전-->
                                 <tr>
                                     <th>교재 미포함<br />
@@ -922,8 +890,7 @@
                                     </td>
                                     <td><a href="javascript:openArmConfirm(11);"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a></td>
                                 </tr>
-                            </c:otherwise>
-                        </c:choose>
+
                     </table>
                     <div class="check">
                         <label><input id="chk1" name="chk1" type="checkbox" value="" /> 상품 이용에 따른 유의 사항을 모두 확인하였으며, 이에 동의합니다.</label> <a onclick="go_popup()">이용안내 확인하기</a>
@@ -945,8 +912,7 @@
                         <col width="20%" />
                         <col width="*" />
                         <col width="25%" />
-                        <c:choose>
-                            <c:when test="${armCount>0}">
+
                                 <!--인증후-->
                                 <tr>
                                     <th>소방설비(산업)기사 '전기'<br />
@@ -977,8 +943,7 @@
                                     </td>
                                     <td><a href="javascript:yearpackageDetail('001','Y201800013')"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a></td>
                                 </tr>
-                            </c:when>
-                            <c:otherwise>
+
                                 <!--인증전-->
                                 <tr>
                                     <th>교재 미포함<br />
@@ -999,8 +964,7 @@
                                     </td>
                                     <td><a href="javascript:openArmConfirm(12);"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a></td>
                                 </tr>
-                            </c:otherwise>
-                        </c:choose>
+
                     </table>
                     <div class="check">
                         <label><input id="chk1" name="chk1" type="checkbox" value="" /> 상품 이용에 따른 유의 사항을 모두 확인하였으며, 이에 동의합니다.</label> <a onclick="go_popup()">이용안내 확인하기</a>
@@ -1209,12 +1173,7 @@
         function goFileDownload(filePath, fileName) {
             window.open("<c:url value='/download.do'/>?path="+filePath+"&filename="+fileName);
         }
-        function armLoginCheck() {
-            var url = window.location.pathname+window.location.search;
-            $("#url_path").val(url);
-            $('#armFrm').attr("action","<c:url value='/user/confirmEventLogin'/>");
-            $('#armFrm').submit();
-        }
+
 
 
         $(document).ready(function(){

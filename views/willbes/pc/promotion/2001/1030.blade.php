@@ -1,6 +1,7 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
+    @include('willbes.pc.layouts.partial.site_menu')
     <!-- content -->
     <!-- Container -->
     <style type="text/css">
@@ -36,7 +37,7 @@
         .wb_cts01 .wb_popWrap {width:1210px; margin:0 auto; position:relative}
 
         .wb_cts01 .giveaway {position:absolute; width:661px; left:50%; margin-left:-330px; animation:only 2s infinite; z-index:11}
-        @keyframes only{
+        @@keyframes only{
             0%{top:310px}
             50%{top:330px}
             100%{top:310px}

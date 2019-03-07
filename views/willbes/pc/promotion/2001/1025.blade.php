@@ -1,7 +1,7 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
-
+    @include('willbes.pc.layouts.partial.site_menu')
     <!-- content -->
     <!-- Container -->
     <style type="text/css">

@@ -59,8 +59,8 @@
 
         .skybanner {
             position:absolute; 
-            top:400px; 
-            right:10px;
+            top:300px; 
+            right:0;
             z-index:1;            
         }
         .skybanner_sectionFixed {position:fixed; top:20px}

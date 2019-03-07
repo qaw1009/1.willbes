@@ -129,7 +129,7 @@
                 <li class="w50"><a href="{{ site_url('/home/html/event_replyNotice') }}" target="_blank">└ 공지기능 댓글 include <span>*</span></a></li>
                 <li><a href="{{ site_url('/home/html/event_replyNotice_pop') }}" target="_blank">└ 공지기능 댓글 공지글쓰기 팝업 size 800x700 <span>*</span></a></li>
                 <li><a href="{{ site_url('/home/html/event_onCop_190307_c_pop2') }}" target="_blank">└ 경찰면접 역전 꿀팁 대방출 인증하기 size 800x700 <span>*</span></a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190307_y') }}" target="_blank">2단계 동형모의고사 <span>*</span></a></li>
+                
                 <li><p>경찰 학원 ▼</p></li> 
                 <li class="w50"><a href="{{ site_url('/home/html/event_offCop_190211_p') }}" target="_blank">19년 1차대비 2월 전국모의고사</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_offCop_basic') }}" target="_blank">2019 집중연강식 기본이론</a></li>
@@ -143,6 +143,9 @@
                 <li class="w50"><a href="{{ site_url('/home/html/event_offCop_180629_L') }}" target="_blank">스파르타 강한학습관리반</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_offCop_180323') }}" target="_blank">실전에 강한 최준면접</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_offCop_181112') }}" target="_blank">독한회독</a></li>
+                <li>&nbsp;</li>
+                <li>3월 6일 이후 추가분 ▼</li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190307_y') }}" target="_blank">2단계 동형모의고사 <span>*</span></a></li>
                 <li><p>공무원 온라인 ▼</p></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiFirePass') }}" target="_blank">소방 PASS <span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiNinePass') }}" target="_blank">9급 PASS <span>*</span></a></li>

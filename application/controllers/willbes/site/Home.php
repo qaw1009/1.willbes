@@ -67,13 +67,12 @@ class Home extends \app\controllers\FrontController
 
         if (APP_DEVICE == 'pc') {
             $s_cate_code = $cate_code;
-            $arr_banner_disp = ['메인_학원배너1', '메인_학원배너2', '메인_학원배너3', '메인_이벤트띠배너', '메인_hotpick1', '메인_hotpick2', '메인_특강이벤트1', '메인_특강이벤트2'];
 
             $data['dday'] = $this->_dday();
             $data['best_product'] = $this->_product('on_lecture', 4, $s_cate_code, 'Best');
             $data['new_product'] = $this->_product('on_lecture', 4, $s_cate_code, 'New');
-            $data['arr_main_banner'] = $this->_banner($arr_banner_disp, $s_cate_code);
-            $data['arr_main_quick'] = $this->_banner(['메인_우측퀵_01','메인_우측퀵_02','메인_우측퀵_03']);
+            $data['arr_main_banner'] = $this->_banner($s_cate_code);
+            $data['arr_main_quick'] = $this->_banner('0');
         }
 
         $data['notice'] = $this->_boardNotice(4, $s_cate_code);
@@ -140,14 +139,12 @@ class Home extends \app\controllers\FrontController
         $data = [];
 
         if (APP_DEVICE == 'pc') {
-            $arr_banner_disp = ['메인_빅배너','메인_서브1','메인_서브2','메인_서브3','메인_띠배너','메인_미들1','메인_미들2','메인_미들3','메인_미들4','메인_미들5','메인_이벤트','메인_대표교수','메인_포커스'];
-
             $arr_campus = array_replace_recursive($arr_campus, $this->_getCampusInfo());
             $data['arr_campus'] = $arr_campus;
             $data['gallery'] = $this->_gallery();
             $data['exam_announcement'] = $this->_boardExamAnnouncement(5);
             $data['exam_news'] = $this->_boardExamNews(5);
-            $data['arr_main_banner'] = $this->_banner($arr_banner_disp);
+            $data['arr_main_banner'] = $this->_banner('0');
             $data['notice_campus'] = $this->_boardNoticeByCampus(2);
         }
 
@@ -349,19 +346,50 @@ class Home extends \app\controllers\FrontController
 
     /**
      * 메인 배너
-     * @param array $arr_disp
      * @param int $cate_code
      * @return array
      */
-    private function _banner($arr_disp = [], $cate_code = 0)
+    private function _banner($cate_code = 0)
     {
-        $result = $this->bannerFModel->findBanners($arr_disp, $this->_site_code, $cate_code);
+        $arr_banner_disp = $this->_getBannerDispArray($cate_code);  // 사용 배너영역 조회
+        if (empty($arr_banner_disp) === true) {
+            return [];
+        }
+
+        $result = $this->bannerFModel->findBanners($arr_banner_disp, $this->_site_code, $cate_code);
 
         $data = [];
         foreach ($result as $key => $row) {
             $data[$row['DispName']][] = $result[$key];
         }
         return $data;
+    }
+
+    /**
+     * 사이트, 카테고리별 메인 배너 섹션 리턴
+     * @param $cate_code
+     * @return mixed
+     */
+    private function _getBannerDispArray($cate_code = 0)
+    {
+        $arr_banner_disp = [
+            '2001' => [
+                '0' => ['메인_우측퀵_01','메인_우측퀵_02','메인_우측퀵_03'],
+                '3001' => ['메인_학원배너1', '메인_학원배너2', '메인_학원배너3', '메인_이벤트띠배너', '메인_hotpick1', '메인_hotpick2', '메인_특강이벤트1', '메인_특강이벤트2'],
+                '3002' => ['메인_학원배너1', '메인_학원배너2', '메인_학원배너3', '메인_이벤트띠배너', '메인_hotpick1', '메인_hotpick2', '메인_특강이벤트1', '메인_특강이벤트2']
+            ],
+            '2002' => [
+
+            ],
+            '2003' => [
+
+            ],
+            '2004' => [
+                '0' => ['메인_빅배너','메인_서브1','메인_서브2','메인_서브3','메인_띠배너','메인_미들1','메인_미들2','메인_미들3','메인_미들4','메인_미들5','메인_이벤트','메인_대표교수','메인_포커스']
+            ]
+        ];
+
+        return element($cate_code, element($this->_site_code, $arr_banner_disp, []), []);
     }
 
     /**

@@ -70,37 +70,16 @@
                     <li class="l1">
                         <a href="http://www.willbescop.net/movie/event.html?event_cd=On_180327_yp" target="_blank">
                             <img src="{{ img_url('cop/flipped/flipped01.jpg') }}" alt="평생0원PASS">
-                            {{--<div class="f-tit tit1 NSK"># 평생0원PASS</div>
-                            <span class="wrap_ban front">
-                                <img src="{{ img_url('cop/flipped/flipped_front_190101.png') }}">
-                            </span>
-                            <span class="wrap_ban back">
-                                <img src="{{ img_url('cop/flipped/flipped_back_190101.png') }}">
-                            </span>--}}
                         </a>
                     </li>
                     <li class="l2">
                         <a href="http://www.willbescop.net/event/movie/event.html?event_cd=On_170831_p&topMenuType=O#main" target="_blank">
                             <img src="{{ img_url('cop/flipped/flipped02.jpg') }}" alt="2019 대비 기본이론<">
-                            {{--<div class="f-tit tit2 NSK"># 2019 대비 기본이론</div>
-                            <span class="wrap_ban front">
-                                <img src="{{ img_url('cop/flipped/flipped_front_190102.png') }}">
-                            </span>
-                            <span class="wrap_ban back">
-                                <img src="{{ img_url('cop/flipped/flipped_back_190102.png') }}">
-                            </span>--}}
                         </a>
                     </li>
                     <li class="l3">
                         <a href="http://www.willbescop.net/movie/event.html?event_cd=On_premium&topMenuType=O" target="_blank">
                             <img src="{{ img_url('cop/flipped/flipped03.jpg') }}" alt="2019 대비 심화이론/기출">
-                            {{--<div class="f-tit tit3 NSK"># 2019 대비 심화이론/기출</div>
-                            <span class="wrap_ban front">
-                                <img src="{{ img_url('cop/flipped/flipped_front_190103.png') }}">
-                            </span>
-                            <span class="wrap_ban back">
-                                <img src="{{ img_url('cop/flipped/flipped_back_190103.png') }}">
-                            </span>--}}
                         </a>
                     </li>
                 </ul>
@@ -178,67 +157,51 @@
                         <img src="{{ img_url('cop/prof/prof_ske.jpg') }}" alt="신광은">
                         <ul class="ProfBtns">
                             <li><a href="#none" onclick="fnPlayerProf('50547', 'OT');">▶</a></li>
-                            <li><a href="{{ front_url('/professor/show/cate/3001/prof-idx/50547/?subject_idx=1004&subject_name=%ED%98%95%EC%82%AC%EC%86%8C%EC%86%A1%EB%B2%95') }}" target="_blank">교수소개</a></li>
+                            <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50547/?subject_idx=1004&subject_name=%ED%98%95%EC%82%AC%EC%86%8C%EC%86%A1%EB%B2%95') }}" target="_blank">교수소개</a></li>
                         </ul>
                     </li>
                     <li>
                         <img src="{{ img_url('cop/prof/prof_jjh.jpg') }}" alt="장정훈">
                         <ul class="ProfBtns">
                             <li><a href="#none" onclick="fnPlayerProf('50031', 'OT');">▶</a></li>
-                            <li><a href="{{ front_url('/professor/show/cate/3001/prof-idx/50031/?subject_idx=1005&subject_name=%EA%B2%BD%EC%B0%B0%ED%95%99%EA%B0%9C%EB%A1%A0') }}" target="_blank">교수소개</a></li>
+                            <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50031/?subject_idx=1005&subject_name=%EA%B2%BD%EC%B0%B0%ED%95%99%EA%B0%9C%EB%A1%A0') }}" target="_blank">교수소개</a></li>
                         </ul>
                     </li>
                     <li>
                         <img src="{{ img_url('cop/prof/prof_kwu.jpg') }}" alt="김원욱">
                         <ul class="ProfBtns">
                             <li><a href="#none" onclick="fnPlayerProf('50297', 'OT');">▶</a></li>
-                            <li><a href="{{ front_url('/professor/show/cate/3001/prof-idx/50297/?subject_idx=1003&subject_name=%ED%98%95%EB%B2%95') }}" target="_blank">교수소개</a></li>
+                            <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50297/?subject_idx=1003&subject_name=%ED%98%95%EB%B2%95') }}" target="_blank">교수소개</a></li>
                         </ul>
                     </li>
                     <li>
                         <img src="{{ img_url('cop/prof/prof_hsm.jpg') }}" alt="하승민">
                         <ul class="ProfBtns">
                             <li><a href="#none" onclick="fnPlayerProf('50135', 'OT');">▶</a></li>
-                            <li><a href="{{ front_url('/professor/show/cate/3001/prof-idx/50135/?subject_idx=1001&subject_name=%EC%98%81%EC%96%B4') }}" target="_blank">교수소개</a></li>
+                            <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50135/?subject_idx=1001&subject_name=%EC%98%81%EC%96%B4') }}" target="_blank">교수소개</a></li>
                         </ul>
                     </li>
                     <li>
                         <img src="{{ img_url('cop/prof/prof_otj.jpg') }}" alt="오태진">
                         <ul class="ProfBtns">
                             <li><a href="#none" onclick="fnPlayerProf('50131', 'OT');">▶</a></li>
-                            <li><a href="{{ front_url('/professor/show/cate/3001/prof-idx/50131/?subject_idx=1002&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC') }}" target="_blank">교수소개</a></li>
+                            <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50131/?subject_idx=1002&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC') }}" target="_blank">교수소개</a></li>
                         </ul>
                     </li>
                     <li>
                         <img src="{{ img_url('cop/prof/prof_wyc.jpg') }}" alt="원유철">
                         <ul class="ProfBtns">
                             <li><a href="#none" onclick="fnPlayerProf('50641', 'OT');">▶</a></li>
-                            <li><a href="{{ front_url('/professor/show/cate/3001/prof-idx/50641/?subject_idx=1002&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC') }}" target="_blank">교수소개</a></li>
+                            <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50641/?subject_idx=1002&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC') }}" target="_blank">교수소개</a></li>
                         </ul>
                     </li>
                     <li>
                         <img src="{{ img_url('cop/prof/prof_khj.jpg') }}" alt="김현정">
                         <ul class="ProfBtns">
                             <li><a href="#none" onclick="fnPlayerProf('50129', 'OT');">▶</a></li>
-                            <li><a href="{{ front_url('/professor/show/cate/3001/prof-idx/50129/?subject_idx=1010&subject_name=%EC%98%81%EC%96%B4%EC%95%84%EC%B9%A8%ED%8A%B9%EA%B0%95') }}" target="_blank">교수소개</a></li>
+                            <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50129/?subject_idx=1010&subject_name=%EC%98%81%EC%96%B4%EC%95%84%EC%B9%A8%ED%8A%B9%EA%B0%95') }}" target="_blank">교수소개</a></li>
                         </ul>
                     </li>
-                    {{--<li class="p_re">
-                        <div class="cSlider copSlider AbsControls">
-                            <div class="sliderControls">
-                                <div><a href="#none"><img src="{{ img_url('cop/prof/prof_190101.png') }}"></a></div>
-                                <div><a href="#none"><img src="{{ img_url('cop/prof/prof_190107.png') }}"></a></div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="p_re">
-                        <div class="cSlider copSlider AbsControls">
-                            <div class="sliderControls">
-                                <div><a href="#none"><img src="{{ img_url('cop/prof/prof_190102.png') }}"></a></div>
-                                <div><a href="#none"><img src="{{ img_url('cop/prof/prof_190108.png') }}"></a></div>
-                            </div>
-                        </div>
-                    </li>--}}
                 </ul>
             </div>
         </div>
@@ -270,7 +233,7 @@
                                     </div>
                                     <div class="btn">
                                         <div class="btn-sbj"><a href="http://www.willbescop.net/movie/event.html?event_cd=On_181126_y&topMenuType=O" target="_blank">+ &nbsp; 문제 더 보기</a></div>
-                                        <div class="btn-lec mt5"><a href="https://cop.dev.willbes.net/lecture/index/cate/3001/pattern/free?course_idx=20032" target="_blank">+ &nbsp; 강의 더 보기</a></div>
+                                        <div class="btn-lec mt5"><a href="{{ front_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/free?course_idx=1075') }}" target="_blank">+ &nbsp; 강의 더 보기</a></div>
                                     </div>
                                 </div>
                                 <div class="infoList">

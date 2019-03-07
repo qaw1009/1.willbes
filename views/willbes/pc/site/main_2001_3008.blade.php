@@ -40,29 +40,29 @@
                     <li>
                         <img src="{{ img_url('cop_sea_special/prof/prof_gdi.jpg') }}" alt="공득인">
                         <ul class="ProfBtns">
-                            <li><a href="#none">▶</a></li>
-                            <li><a href="#none" target="_blank">교수소개</a></li>
+                            <li><a href="#none" onclick="fnPlayerProf('50301', 'OT');">▶</a></li>
+                            <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50301/?subject_idx=1030&subject_name=%ED%95%B4%EC%82%AC%EB%B2%95%EA%B7%9C') }}" target="_blank">교수소개</a></li>
                         </ul>
                     </li>
                     <li>
                         <img src="{{ img_url('cop_sea_special/prof/prof_jtj.jpg') }}" alt="정태정">
                         <ul class="ProfBtns">
-                            <li><a href="#none">▶</a></li>
-                            <li><a href="#none" target="_blank">교수소개</a></li>
+                            <li><a href="#none" onclick="fnPlayerProf('50655', 'OT');">▶</a></li>
+                            <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50655/?subject_idx=1031&subject_name=%ED%95%B4%EC%96%91%EA%B2%BD%EC%B0%B0%ED%95%99%EA%B0%9C%EB%A1%A0') }}" target="_blank">교수소개</a></li>
                         </ul>
                     </li>
                     <li>
                         <img src="{{ img_url('cop_sea_special/prof/prof_hdh.jpg') }}" alt="황다혜">
                         <ul class="ProfBtns">
-                            <li><a href="#none">▶</a></li>
-                            <li><a href="#none" target="_blank">교수소개</a></li>
+                            <li><a href="#none" onclick="fnPlayerProf('50657', 'OT');">▶</a></li>
+                            <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50657/?subject_idx=1034&subject_name=%EA%B8%B0%EA%B4%80%EC%88%A0') }}" target="_blank">교수소개</a></li>
                         </ul>
                     </li>
                     <li>
                         <img src="{{ img_url('cop_sea_special/prof/prof_ksh.jpg') }}" alt="권소현">
                         <ul class="ProfBtns">
-                            <li><a href="#none">▶</a></li>
-                            <li><a href="#none" target="_blank">교수소개</a></li>
+                            <li><a href="#none" onclick="fnPlayerProf('50485', 'OT');">▶</a></li>
+                            <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50485/?subject_idx=1032&subject_name=%ED%95%B4%EC%82%AC%EC%98%81%EC%96%B4') }}" target="_blank">교수소개</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -90,7 +90,7 @@
                                     </div>
                                     <div class="btn">
                                         <div class="btn-sbj"><a href="http://www.willbescop.net/movie/event.html?event_cd=On_181126_y&topMenuType=O" target="_blank">+ &nbsp; 문제 더 보기</a></div>
-                                        <div class="btn-lec mt5"><a href="https://cop.dev.willbes.net/lecture/index/cate/3001/pattern/free?course_idx=20032" target="_blank">+ &nbsp; 강의 더 보기</a></div>
+                                        <div class="btn-lec mt5"><a href="{{ front_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/free?course_idx=1075') }}" target="_blank">+ &nbsp; 강의 더 보기</a></div>
                                     </div>
                                 </div>
                                 <div class="infoList">

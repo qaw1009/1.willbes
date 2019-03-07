@@ -117,8 +117,8 @@ class Home extends \app\controllers\FrontController
         if (APP_DEVICE == 'pc') {
             $s_cate_code = $cate_code;
 
-            // 과목별 2개씩 베스트 상품 조회
-            $data['best_product'] = $this->_productLectureBySubjectIdx('on_lecture', 2, $s_cate_code, 'Best');
+            $data['best_product'] = $this->_productLectureBySubjectIdx('on_lecture', 2, $s_cate_code, 'Best');  // 과목별 2개씩 베스트 상품 조회
+            $data['arr_main_banner'] = $this->_banner($s_cate_code);
         }
 
         $data['notice'] = $this->_boardNotice(5, $s_cate_code);
@@ -149,6 +149,57 @@ class Home extends \app\controllers\FrontController
         }
 
         return $data;
+    }
+
+    /**
+     * 메인 배너
+     * @param int $cate_code
+     * @return array
+     */
+    private function _banner($cate_code = 0)
+    {
+        $arr_banner_disp = $this->_getBannerDispArray($cate_code);  // 배너영역 조회
+        if (empty($arr_banner_disp) === true) {
+            return [];
+        }
+
+        $result = $this->bannerFModel->findBanners($arr_banner_disp, $this->_site_code, $cate_code);
+
+        $data = [];
+        foreach ($result as $key => $row) {
+            $data[$row['DispName']][] = $result[$key];
+        }
+        return $data;
+    }
+
+    /**
+     * 사이트, 카테고리별 메인 배너 섹션 리턴
+     * @param $cate_code
+     * @return mixed
+     */
+    private function _getBannerDispArray($cate_code = 0)
+    {
+        $arr_banner_disp = [
+            '2001' => [
+                '0' => ['메인_우측퀵_01', '메인_우측퀵_02', '메인_우측퀵_03'],
+                '3001' => ['메인_학원배너1', '메인_학원배너2', '메인_학원배너3', '메인_이벤트띠배너', '메인_hotpick1', '메인_hotpick2', '메인_특강이벤트1', '메인_특강이벤트2'],
+                '3002' => ['메인_학원배너1', '메인_학원배너2', '메인_학원배너3', '메인_이벤트띠배너', '메인_hotpick1', '메인_hotpick2', '메인_특강이벤트1', '메인_특강이벤트2']
+            ],
+            '2002' => [
+
+            ],
+            '2003' => [
+                '3019' => ['메인_서브1', '메인_서브2', '메인_띠배너', '메인_미들1', '메인_미들2', '메인_미들3', '메인_미들4', '메인_미들5'
+                    , '메인_hotpick1', '메인_hotpick2', '메인_hotpick3', '메인_hotpick4','메인_hotpick5', '메인_hotpick6', '메인_hotpick7', '메인_hotpick8', '메인_hotpick9', '메인_hotpick10'
+                    , '메인_무료특강1', '메인_무료특강2'
+                ]
+            ],
+            '2004' => [
+                '0' => ['메인_빅배너', '메인_서브1', '메인_서브2', '메인_서브3', '메인_띠배너', '메인_미들1', '메인_미들2', '메인_미들3', '메인_미들4', '메인_미들5', '메인_이벤트', '메인_대표교수', '메인_포커스']
+            ]
+        ];
+
+        return element($cate_code, element($this->_site_code, $arr_banner_disp, []), []);
     }
 
     /**
@@ -220,15 +271,6 @@ class Home extends \app\controllers\FrontController
         ];
     }
     
-    /**
-     * OnAir 조회
-     * @return array
-     */
-    private function _onAir()
-    {
-        return $this->onAirFModel->getLiveOnAir($this->_site_code, '');
-    }
-
     /**
      * 공지사항 조회
      * @param int $limit_cnt [조회건수]
@@ -308,6 +350,31 @@ class Home extends \app\controllers\FrontController
     }
 
     /**
+     * 갤러리 게시판 데이터 조회
+     * @return array|int
+     */
+    private function _gallery()
+    {
+        $arr_condition = [
+            'EQ' => [
+                'b.BmIdx' => '90'
+                ,'b.IsUse' => 'Y'
+                ,'b.SiteCode' => $this->_site_code
+            ]
+        ];
+        $column = 'b.BoardIdx, b.Title, b.AttachData, b.CampusCcd_Name, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
+        $order_by = ['b.BoardIdx'=>'Desc'];
+        $data = $this->supportBoardFModel->listBoard(false,$arr_condition,$column,2,0,$order_by);
+
+        if (empty($data) === false) {
+            foreach ($data as $idx => $row) {
+                $data[$idx]['AttachData'] = json_decode($row['AttachData'], true);       //첨부파일
+            }
+        }
+        return $data;
+    }
+
+    /**
      * 캠퍼스별 기타 정보 설정
      * 캠퍼스 배열에 맞게 배열 셋팅
      * @return array
@@ -345,54 +412,6 @@ class Home extends \app\controllers\FrontController
     }
 
     /**
-     * 메인 배너
-     * @param int $cate_code
-     * @return array
-     */
-    private function _banner($cate_code = 0)
-    {
-        $arr_banner_disp = $this->_getBannerDispArray($cate_code);  // 사용 배너영역 조회
-        if (empty($arr_banner_disp) === true) {
-            return [];
-        }
-
-        $result = $this->bannerFModel->findBanners($arr_banner_disp, $this->_site_code, $cate_code);
-
-        $data = [];
-        foreach ($result as $key => $row) {
-            $data[$row['DispName']][] = $result[$key];
-        }
-        return $data;
-    }
-
-    /**
-     * 사이트, 카테고리별 메인 배너 섹션 리턴
-     * @param $cate_code
-     * @return mixed
-     */
-    private function _getBannerDispArray($cate_code = 0)
-    {
-        $arr_banner_disp = [
-            '2001' => [
-                '0' => ['메인_우측퀵_01','메인_우측퀵_02','메인_우측퀵_03'],
-                '3001' => ['메인_학원배너1', '메인_학원배너2', '메인_학원배너3', '메인_이벤트띠배너', '메인_hotpick1', '메인_hotpick2', '메인_특강이벤트1', '메인_특강이벤트2'],
-                '3002' => ['메인_학원배너1', '메인_학원배너2', '메인_학원배너3', '메인_이벤트띠배너', '메인_hotpick1', '메인_hotpick2', '메인_특강이벤트1', '메인_특강이벤트2']
-            ],
-            '2002' => [
-
-            ],
-            '2003' => [
-
-            ],
-            '2004' => [
-                '0' => ['메인_빅배너','메인_서브1','메인_서브2','메인_서브3','메인_띠배너','메인_미들1','메인_미들2','메인_미들3','메인_미들4','메인_미들5','메인_이벤트','메인_대표교수','메인_포커스']
-            ]
-        ];
-
-        return element($cate_code, element($this->_site_code, $arr_banner_disp, []), []);
-    }
-
-    /**
      * 시험일정 조회 (디데이)
      * @return mixed
      */
@@ -410,27 +429,11 @@ class Home extends \app\controllers\FrontController
     }
 
     /**
-     * 갤러리 게시판 데이터 조회
-     * @return array|int
+     * OnAir 조회
+     * @return array
      */
-    private function _gallery()
+    private function _onAir()
     {
-        $arr_condition = [
-            'EQ' => [
-                'b.BmIdx' => '90'
-                ,'b.IsUse' => 'Y'
-                ,'b.SiteCode' => $this->_site_code
-            ]
-        ];
-        $column = 'b.BoardIdx, b.Title, b.AttachData, b.CampusCcd_Name, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
-        $order_by = ['b.BoardIdx'=>'Desc'];
-        $data = $this->supportBoardFModel->listBoard(false,$arr_condition,$column,2,0,$order_by);
-
-        if (empty($data) === false) {
-            foreach ($data as $idx => $row) {
-                $data[$idx]['AttachData'] = json_decode($row['AttachData'], true);       //첨부파일
-            }
-        }
-        return $data;
+        return $this->onAirFModel->getLiveOnAir($this->_site_code, '');
     }
 }

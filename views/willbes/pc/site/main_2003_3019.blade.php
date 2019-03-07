@@ -8,39 +8,58 @@
 
         <div class="Section MainVisual mt30">
             <div class="widthAuto">
-                <a href="#none"><img src="{{ img_url('gosi/banner/bnr_bar01.jpg') }}" alt="배너명"></a>
+                @if(empty($data['arr_main_banner']['메인_띠배너']) === false)
+                    @php $link_url = '#none'; $last_banner = end($data['arr_main_banner']['메인_띠배너']); @endphp
+                    @if(empty($last_banner['LinkUrl']) === false)
+                        @php $link_url = front_app_url('/banner/click?banner_idx=' . $last_banner['BIdx'] . '&return_url=' . urlencode($last_banner['LinkUrl']) . '&link_url_type=' . urlencode($last_banner['LinkUrlType']), 'www'); @endphp
+                    @endif
+                    <a href="{{ $link_url }}" target="_{{ $last_banner['LinkType'] }}"><img src="{{ $last_banner['BannerFullPath'] . $last_banner['BannerImgName'] }}" alt="{{ $last_banner['BannerName'] }}"></a>
+                @endif
             </div>
 
             <div class="widthAuto NSK mt30">
+                @if(empty($data['arr_main_banner']['메인_서브1']) === false)
                 <div class="VisualBox p_re bSlider">
                     <div id="MainRollingDiv" class="MaintabList three">
                         <ul class="Maintab">
-                            <li><a data-slide-index="0" href="javascript:void(0);" class="active">9급 PASS</a></li>
-                            <li><a data-slide-index="1" href="javascript:void(0);" class="">제니스 영어</a></li>
-                            <li><a data-slide-index="2" href="javascript:void(0);" class="">영어완성 PACK</a></li>
+                            @foreach($data['arr_main_banner']['메인_서브1'] as $row)
+                                <li><a data-slide-index="{{ $loop->index -1 }}" href="javascript:void(0);" class="{{ ($loop->first === true) ? 'active' : '' }}">{{ $row['BannerName'] }}</a></li>
+                            @endforeach
                         </ul>
                     </div>
                     <div id="MainRollingSlider" class="MaintabBox">
                         <div class="bx-wrapper">
                             <div class="bx-viewport">
                                 <ul class="MaintabSlider">
-                                    <li><a href="#none" target="_blank"><img src="{{ img_url('gosi/visual/visual_190225_01.jpg') }}" alt="배너명"></a></li>
-                                    <li><a href="#none" target="_blank"><img src="{{ img_url('gosi/visual/visual_190225_02.jpg') }}" alt="배너명"></a></li>
-                                    <li><a href="#none" target="_blank"><img src="{{ img_url('gosi/visual/visual_190225_03.jpg') }}" alt="배너명"></a></li>
+                                    @php $link_url = '#none'; @endphp
+                                    @foreach($data['arr_main_banner']['메인_서브1'] as $row)
+                                        @if(empty($row['LinkUrl']) === false)
+                                            @php $link_url = front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www'); @endphp
+                                        @endif
+                                        <li><a href="{{ $link_url }}" target="_{{ $row['LinkType'] }}"><img src="{{ $row['BannerFullPath'] . $row['BannerImgName'] }}" alt="{{ $row['BannerName'] }}"></a></li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
+                @endif
+
+                @if(empty($data['arr_main_banner']['메인_서브2']) === false)
                 <div class="VisualsubBox">
                     <div class="bSlider">
                         <div class="sliderStopAutoPager">
-                            <div><a href="#none"><img src="{{ img_url('gosi/visual/visual_r190225_01.jpg') }}" alt="배너명"></a></div>
-                            <div><a href="#none"><img src="{{ img_url('gosi/visual/visual_r190225_02.jpg') }}" alt="배너명"></a></div>
-                            <div><a href="#none"><img src="{{ img_url('gosi/visual/visual_r190225_03.jpg') }}" alt="배너명"></a></div>
+                            @php $link_url = '#none'; @endphp
+                            @foreach($data['arr_main_banner']['메인_서브2'] as $row)
+                                @if(empty($row['LinkUrl']) === false)
+                                    @php $link_url = front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www'); @endphp
+                                @endif
+                                <div><a href="{{ $link_url }}" target="_{{ $row['LinkType'] }}"><img src="{{ $row['BannerFullPath'] . $row['BannerImgName'] }}" alt="{{ $row['BannerName'] }}"></a></div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
+                @endif
             </div>
         </div>
 
@@ -48,11 +67,15 @@
             <div class="widthAuto">
                 <div><img src="{{ img_url('gosi/visual/visual_tit01.jpg') }}" alt="더! 강력, 더! 완벽해진 윌비스 교수진"></div>
                 <ul class="ProfBox">
-                    <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50241/?subject_idx=1107&subject_name=%EA%B5%AD%EC%96%B4') }}"><img src="{{ img_url('gosi/prof/prof_190225_01.jpg') }}" alt="배너명"></a></li>
-                    <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50499/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4') }}"><img src="{{ img_url('gosi/prof/prof_190225_02.jpg') }}" alt="배너명"></a></li>
-                    <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50273/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4') }}"><img src="{{ img_url('gosi/prof/prof_190225_03.jpg') }}" alt="배너명"></a></li>
-                    <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50441/?subject_idx=1109&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC') }}"><img src="{{ img_url('gosi/prof/prof_190225_04.jpg') }}" alt="배너명"></a></li>
-                    <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50499/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4') }}"><img src="{{ img_url('gosi/prof/prof_190225_05.jpg') }}" alt="배너명"></a></li>
+                    @for($i=1; $i<=5; $i++)
+                        @if(empty($data['arr_main_banner']['메인_미들'.$i]) === false)
+                            @php $link_url = '#none'; $last_banner = end($data['arr_main_banner']['메인_미들'.$i]); @endphp
+                            @if(empty($last_banner['LinkUrl']) === false)
+                                @php $link_url = front_app_url('/banner/click?banner_idx=' . $last_banner['BIdx'] . '&return_url=' . urlencode($last_banner['LinkUrl']) . '&link_url_type=' . urlencode($last_banner['LinkUrlType']), 'www'); @endphp
+                            @endif
+                            <li><a href="{{ $link_url }}" target="_{{ $last_banner['LinkType'] }}"><img src="{{ $last_banner['BannerFullPath'] . $last_banner['BannerImgName'] }}" alt="{{ $last_banner['BannerName'] }}"></a></li>
+                        @endif
+                    @endfor
                 </ul>
             </div>
         </div>
@@ -61,16 +84,15 @@
             <div class="widthAuto">
                 <div><img src="{{ img_url('gosi/visual/visual_tit02.jpg') }}" alt="추천강좌/이벤트/최신소식"></div>
                 <ul class="SpecialBox">
-                    <li><a href="#none"><img src="{{ img_url('gosi/banner/bnr_t01.jpg') }}" alt="배너명"></a></li>
-                    <li><a href="#none"><img src="{{ img_url('gosi/banner/bnr_t02.jpg') }}" alt="배너명"></a></li>
-                    <li><a href="#none"><img src="{{ img_url('gosi/banner/bnr_t03.jpg') }}" alt="배너명"></a></li>
-                    <li><a href="#none"><img src="{{ img_url('gosi/banner/bnr_t04.jpg') }}" alt="배너명"></a></li>
-                    <li><a href="#none"><img src="{{ img_url('gosi/banner/bnr_t05.jpg') }}" alt="배너명"></a></li>
-                    <li><a href="#none"><img src="{{ img_url('gosi/banner/bnr_t06.jpg') }}" alt="배너명"></a></li>
-                    <li><a href="#none"><img src="{{ img_url('gosi/banner/bnr_t07.jpg') }}" alt="배너명"></a></li>
-                    <li><a href="#none"><img src="{{ img_url('gosi/banner/bnr_t08.jpg') }}" alt="배너명"></a></li>
-                    <li><a href="#none"><img src="{{ img_url('gosi/banner/bnr_t09.jpg') }}" alt="배너명"></a></li>
-                    <li><a href="#none"><img src="{{ img_url('gosi/banner/bnr_t10.jpg') }}" alt="배너명"></a></li>
+                    @for($i=1; $i<=10; $i++)
+                        @if(empty($data['arr_main_banner']['메인_hotpick'.$i]) === false)
+                            @php $link_url = '#none'; $last_banner = end($data['arr_main_banner']['메인_hotpick'.$i]); @endphp
+                            @if(empty($last_banner['LinkUrl']) === false)
+                                @php $link_url = front_app_url('/banner/click?banner_idx=' . $last_banner['BIdx'] . '&return_url=' . urlencode($last_banner['LinkUrl']) . '&link_url_type=' . urlencode($last_banner['LinkUrlType']), 'www'); @endphp
+                            @endif
+                            <li><a href="{{ $link_url }}" target="_{{ $last_banner['LinkType'] }}"><img src="{{ $last_banner['BannerFullPath'] . $last_banner['BannerImgName'] }}" alt="{{ $last_banner['BannerName'] }}"></a></li>
+                        @endif
+                    @endfor
                 </ul>
             </div>
         </div>
@@ -87,16 +109,19 @@
 
                     <div class="will-listTit mt45">무료특강</div>
                     <ul class="freeLectBx">
-                        <li>
-                            <img src="{{ img_url('gosi/banner/bnr_free01.jpg') }}" alt="" class="배너명"/>
-                            <p>기초입문특강</p>
-                            국어,영어,한국사 기초입문 풀패키지
-                        </li>
-                        <li>
-                            <img src="{{ img_url('gosi/banner/bnr_free02.jpg') }}" alt="" class="배너명"/>
-                            <p>기초문제 해설특강</p>
-                            출제경향 완벽대비
-                        </li>
+                        @for($i=1; $i<=2; $i++)
+                            @if(empty($data['arr_main_banner']['메인_무료특강'.$i]) === false)
+                                @php $link_url = '#none'; $last_banner = end($data['arr_main_banner']['메인_무료특강'.$i]); @endphp
+                                @if(empty($last_banner['LinkUrl']) === false)
+                                    @php $link_url = front_app_url('/banner/click?banner_idx=' . $last_banner['BIdx'] . '&return_url=' . urlencode($last_banner['LinkUrl']) . '&link_url_type=' . urlencode($last_banner['LinkUrlType']), 'www'); @endphp
+                                @endif
+                                <li>
+                                    <a href="{{ $link_url }}" target="_{{ $last_banner['LinkType'] }}"><img src="{{ $last_banner['BannerFullPath'] . $last_banner['BannerImgName'] }}" alt="{{ $last_banner['BannerName'] }}"></a>
+                                    <p>{{ $last_banner['BannerName'] }}</p>
+                                    {{ $last_banner['Desc'] }}
+                                </li>
+                            @endif
+                        @endfor
                     </ul>
                 </div>
                 <!-- willbesLec//-->
@@ -122,7 +147,7 @@
                         <div class="lecReview">
                             <div class="imgBox cover">
                                 <img class="coverImg" src="{{ img_url('cop/prof_cover.png') }}">
-                                <img src="{{ img_url('gosi/prof/mainReviews02.png') }}">
+                                <img src="{{ img_url('gosi/prof/tea_list_1_kmj_104x104.png') }}">
                             </div>
                             <ul>
                                 <li>[작물생리학] 장사원</li>
@@ -133,7 +158,7 @@
                         <div class="lecReview">
                             <div class="imgBox cover">
                                 <img class="coverImg" src="{{ img_url('cop/prof_cover.png') }}">
-                                <img src="{{ img_url('gosi/prof/mainReviews02.png') }}">
+                                <img src="{{ img_url('gosi/prof/tea_list_1_kmj_104x104.png') }}">
                             </div>
                             <ul>
                                 <li>[작물생리학] 장사원</li>
@@ -144,7 +169,7 @@
                         <div class="lecReview">
                             <div class="imgBox cover">
                                 <img class="coverImg" src="{{ img_url('cop/prof_cover.png') }}">
-                                <img src="{{ img_url('gosi/prof/mainReviews02.png') }}">
+                                <img src="{{ img_url('gosi/prof/tea_list_1_kmj_104x104.png') }}">
                             </div>
                             <ul>
                                 <li>[작물생리학] 장사원</li>
@@ -155,7 +180,7 @@
                         <div class="lecReview">
                             <div class="imgBox cover">
                                 <img class="coverImg" src="{{ img_url('cop/prof_cover.png') }}">
-                                <img src="{{ img_url('gosi/prof/mainReviews02.png') }}">
+                                <img src="{{ img_url('gosi/prof/tea_list_1_kmj_104x104.png') }}">
                             </div>
                             <ul>
                                 <li>[작물생리학] 장사원</li>
@@ -166,7 +191,7 @@
                         <div class="lecReview">
                             <div class="imgBox cover">
                                 <img class="coverImg" src="{{ img_url('cop/prof_cover.png') }}">
-                                <img src="{{ img_url('gosi/prof/mainReviews02.png') }}">
+                                <img src="{{ img_url('gosi/prof/tea_list_1_kmj_104x104.png') }}">
                             </div>
                             <ul>
                                 <li>[작물생리학] 장사원</li>
@@ -177,7 +202,7 @@
                         <div class="lecReview">
                             <div class="imgBox cover">
                                 <img class="coverImg" src="{{ img_url('cop/prof_cover.png') }}">
-                                <img src="{{ img_url('gosi/prof/mainReviews02.png') }}">
+                                <img src="{{ img_url('gosi/prof/tea_list_1_kmj_104x104.png') }}">
                             </div>
                             <ul>
                                 <li>[작물생리학] 장사원</li>
@@ -187,7 +212,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
         <!-- 수강후기 //-->

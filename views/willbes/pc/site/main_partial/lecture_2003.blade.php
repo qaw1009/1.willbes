@@ -12,7 +12,7 @@
             <ul id="tab_prof_subject_{{ $subject_idx }}" class="prof-slider">
             @foreach($rows as $row)
                 <li>
-                    <img src="{{ $row['ProfLecListImg'] }}" alt="" class="{{ $row['wProfName'] }}"/>
+                    <div><img src="{{ $row['ProfLecListImg'] }}" alt="{{ $row['wProfName'] }}" class=""/></div>
                     <span class="txt1">{{ $row['SubjectName'] }}</span>
                     <span class="txt2">{{ $row['wProfName'] }}</span>
                     <span class="txt3">{{ hpSubString($row['ProdName'], 0, 32, '...') }}</span>

@@ -2,7 +2,6 @@
 
 @section('content')
     @include('willbes.pc.layouts.partial.site_menu')
-
     <!-- content -->
     <!-- Container -->
     <style type="text/css">
@@ -11,6 +10,7 @@
             margin-bottom:0 !important;
         }
         .evtContent {
+            position:relative;
             width:100% !important;
             min-width:1210px !important;
             background:#ccc;
@@ -23,7 +23,7 @@
         /************************************************************/
 
         .rLnb {
-            position:absolute; width:190px; top:100px; right:10px; z-index:1;
+            position:absolute; width:190px; top:240px; right:10px; z-index:1;
         }
         .rLnb ul {background:#fff; border:1px solid #2f2f2f; margin-bottom:10px;
             -webkit-box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.21);
@@ -42,10 +42,10 @@
         }
         .rLnb .typeA a {
             border-bottom:1px solid #bfbfbf; display:block; padding:10px 10px 10px 15px; line-height:1.4; font-weight:bold;
-            background:url(http://file3.willbes.net/new_gosi/2019/leave_army/leaveArmylnb_arrow.jpg) no-repeat 93% center;}
+            background:url(http://file3.willbes.net/new_gosi/2018/01/leaveArmylnb_arrow.jpg) no-repeat 93% center;        }
         .rLnb .typeA a:hover {
             font-weight: 600;
-            background:#ebebeb url(http://file3.willbes.net/new_gosi/2019/leave_army/leaveArmylnb_arrow.jpg) no-repeat 93% center;
+            background:#ebebeb url(http://file3.willbes.net/new_gosi/2018/01/leaveArmylnb_arrow.jpg) no-repeat 93% center;
         }
         .rLnb .typeA li:last-child a {border:0}
         .rLnb .typeB li {
@@ -56,14 +56,10 @@
         .rLnb .typeB a {display:block; background:#000; color:#fff; border-radius: 20px; padding:8px 0; margin:0 20px}
         .rLnb_sectionFixed {position:fixed; top:20px}
 
-        .LAeventZ01 {
-            background:url(http://file3.willbes.net/new_gosi/2019/leave_army/la_00_top_bg.jpg) no-repeat center top;
-            margin-top:10px;
-            position:relative
-        }
+        .LAeventZ01 {width:100%; text-align:center; background:#111 url(http://file3.willbes.net/new_gosi/2019/leave_army/la_incheon_top_bg.jpg) no-repeat center top; background-size:auto; margin-top:20px; position:relative}
 
         /*플립 애니메이션*/
-        .LAeventZ01 .main_img {position:absolute; width:601px; top:534px; left:50%; margin-left:-300px; z-index:10; opacity:0;filter:alpha(opacity=0);-webkit-animation-duration: 1s;animation-duration: 1s;-webkit-animation-fill-mode: both;animation-fill-mode: both}
+        .LAeventZ01 .main_img {position:absolute; width:1120px; top:150px; left:50%; margin-left:-560px; z-index:10; opacity:0;filter:alpha(opacity=0);-webkit-animation-duration: 1s;animation-duration: 1s;-webkit-animation-fill-mode: both;animation-fill-mode: both}
         @@keyframes flipInX {
              from {
                  -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 20deg);
@@ -100,29 +96,32 @@
             animation-name: flipInX;
         }
 
-        .LAeventZ02 {background:#ececec;}
+        .LAeventZ02 {width:100%; text-align:center; background:#ececec; position:relative}
     </style>
 
 
 
     <div class="p_re evtContent" id="evtContainer">
+        <div class="rLnb">
+            <ul class="typeA">
+                <li class="NSK-Black">서비스 바로가기</li>
+                <li><a href="/promotion/index/cate/3001/code/1118" class="menu1" target="_blank">인증센터</a></li>
+                <li><a href="/promotion/index/cate/3001/code/1123" class="menu2" target="_blank">서울 노량진 교육과정</a></li>
+                <li><a href="/promotion/index/cate/3001/code/1122" class="menu3" target="_blank">인천 부평 교육과정</a></li>
+                <li><a href="/promotion/index/cate/3001/code/1124" class="menu4" target="_blank">부산 서면 교육과정</a></li>
+                <li><a href="/promotion/index/cate/3001/code/1121" class="menu5">윌비스 PASS</a></li>
+            </ul>        </div>
 
-        <div class="evtCtnsBox LAeventZ01">
+        <div class="LAeventZ01">
             <div class="main_img flipInX animated" style="opacity:1;">
-                <img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_00_top_txt.png" alt="전역(예정)간부인증센터">
+                <img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_incheon_top_txt.png" alt="">
             </div>
-            <img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_00_top.jpg" alt="2년연속공식지정 국방부.보훈처 전문교육기관"/>
-        </div>
-        <div class="evtCtnsBox LAeventZ02">
-            <img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_00_01.jpg" alt="학원실강/온라인동영상 교육과정" usemap="#Map180123" border="0"/>
-            <map name="Map180123" id="Map180123">
-                <area shape="rect" coords="67,835,197,864" href="/promotion/index/cate/3001/code/1123" alt="학원실강 서울 노량진"/>
-                <area shape="rect" coords="215,835,346,864" href="/promotion/index/cate/3001/code/1122" alt="학원실강 인천 부평"/>
-                <area shape="rect" coords="365,835,494,864" href="/promotion/index/cate/3001/code/1124" alt="학원실강 부산 서면"/>
-                <area shape="rect" coords="776,835,905,864" href="/promotion/index/cate/3001/code/1118" alt="온라인 교육과정"/>
-            </map>
+            <img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_incheon_top.jpg" alt=""/>
         </div>
 
+        <div class="LAeventZ02">
+            <img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_incheon_01.jpg" alt=""/>
+        </div>
     </div>
     <!-- End Container -->
 
@@ -152,6 +151,5 @@
             });
         });
     </script>
-
 
 @stop

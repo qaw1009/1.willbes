@@ -39,7 +39,7 @@ class SiteMenuModel extends WB_Model
     {
         $column = '
             M.MenuIdx, M.SiteCode, M.MenuType, M.MenuName, M.ParentMenuIdx, M.GroupMenuIdx, M.MenuDepth, M.MenuUrl, M.MenuEtc, M.GroupOrderNum, M.OrderNum, M.IsUse, M.RegDatm, M.RegAdminIdx
-                , fn_site_menu_connect_by_type(M.MenuIdx, "name") as MenuRouteName, S.SiteName, A.wAdminName as RegAdminName
+                , fn_site_menu_connect_by_type(M.MenuIdx, "name") as MenuRouteName, S.SiteName, A.wAdminName as RegAdminName, left(MenuType, 1) as MenuTypeOrder
         ';
         $from = '
             from ' . $this->_table['site_menu'] . ' as M 
@@ -52,7 +52,7 @@ class SiteMenuModel extends WB_Model
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(true);
-        $order_by_offset_limit = $this->_conn->makeOrderBy(['S.OrderNum' => 'asc', 'M.GroupOrderNum' => 'asc', 'M.OrderNum' => 'asc'])->getMakeOrderBy();
+        $order_by_offset_limit = $this->_conn->makeOrderBy(['S.OrderNum' => 'asc', 'MenuTypeOrder' => 'asc', 'M.GroupOrderNum' => 'asc', 'M.OrderNum' => 'asc'])->getMakeOrderBy();
 
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);

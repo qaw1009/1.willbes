@@ -355,7 +355,7 @@ class Home extends \app\controllers\FrontController
      */
     private function _banner($arr_disp = [], $cate_code = 0)
     {
-        $result = $this->bannerFModel->findBannersInArray($arr_disp, $this->_site_code, $cate_code);
+        $result = $this->bannerFModel->findBanners($arr_disp, $this->_site_code, $cate_code);
 
         $data = [];
         foreach ($result as $key => $row) {

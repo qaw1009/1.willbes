@@ -29,7 +29,7 @@ class Pass extends \app\controllers\FrontController
         $today = date("Y-m-d", time());
 
         // 무한PASS배너
-        $arr_banner = $this->bannerFModel->findBannersInArray(['내강의실_무한PASS배너'], $this->_site_code);
+        $arr_banner = $this->bannerFModel->findBanners(['내강의실_무한PASS배너'], $this->_site_code);
 
         // 무한PASS공지사항
         $list_pass_notice = $this->_boardNotice();

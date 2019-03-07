@@ -48,19 +48,11 @@
             <div class="widthAuto">
                 <div><img src="{{ img_url('gosi/visual/visual_tit01.jpg') }}" alt="더! 강력, 더! 완벽해진 윌비스 교수진"></div>
                 <ul class="ProfBox">
-<<<<<<< HEAD
-                    <li><a href="https://pass.dev.willbes.net/professor/show/cate/3010/prof-idx/50080/?subject_idx=10014&subject_name=%EA%B5%AD%EC%96%B4" target="_blank"><img src="{{ img_url('gosi/prof/prof_190225_01.jpg') }}" alt="배너명"></a></li>
-                    <li><a href="https://pass.dev.willbes.net/professor/show/cate/3010/prof-idx/50081/?subject_idx=10017&subject_name=%EC%98%81%EC%96%B4" target="_blank"><img src="{{ img_url('gosi/prof/prof_190225_02.jpg') }}" alt="배너명"></a></li>
-                    <li><a href="#none"><img src="{{ img_url('gosi/prof/prof_190225_03.jpg') }}" alt="배너명"></a></li>
-                    <li><a href="#none"><img src="{{ img_url('gosi/prof/prof_190225_04.jpg') }}" alt="배너명"></a></li>
-                    <li><a href="#none"><img src="{{ img_url('gosi/prof/prof_190225_05.jpg') }}" alt="배너명"></a></li>
-=======
                     <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50241/?subject_idx=1107&subject_name=%EA%B5%AD%EC%96%B4') }}"><img src="{{ img_url('gosi/prof/prof_190225_01.jpg') }}" alt="배너명"></a></li>
                     <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50499/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4') }}"><img src="{{ img_url('gosi/prof/prof_190225_02.jpg') }}" alt="배너명"></a></li>
                     <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50273/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4') }}"><img src="{{ img_url('gosi/prof/prof_190225_03.jpg') }}" alt="배너명"></a></li>
                     <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50441/?subject_idx=1109&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC') }}"><img src="{{ img_url('gosi/prof/prof_190225_04.jpg') }}" alt="배너명"></a></li>
                     <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50499/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4') }}"><img src="{{ img_url('gosi/prof/prof_190225_05.jpg') }}" alt="배너명"></a></li>
->>>>>>> c296ddf1f64467ad31caf0495350fb773968ca2f
                 </ul>
             </div>
         </div>

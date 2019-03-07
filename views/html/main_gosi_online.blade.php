@@ -157,14 +157,14 @@
                     <div id="prof-professors" class="prof-professors">
                         <ul class="prof-slider">                        
                             <li>
-                                <img src="{{ img_url('gosi/prof/mainBest01.jpg') }}" alt="" class="강사명"/>
+                                <div><img src="{{ img_url('gosi/prof/tea_myroom_1_kmj_145x152.png') }}" alt="" class="강사명"/></div>
                                 <span class="txt1">영어</span>
                                 <span class="txt2">한덕현</span>
                                 <span class="txt3">2019 한덕현 영어 새벽실전모의고사 </span>
                                 <a href="#none">맛보기강좌 ></a>
                             </li>  
                             <li>
-                                <img src="{{ img_url('gosi/prof/mainBest01.jpg') }}" alt="" class="강사명"/>
+                                <div><img src="{{ img_url('gosi/prof/tea_myroom_1_kmj_145x152.png') }}" alt="" class="강사명"/></div>
                                 <span class="txt1">영어2</span>
                                 <span class="txt2">한덕현</span>
                                 <span class="txt3">2019 한덕현 영어 새벽실전모의고사 </span>
@@ -264,7 +264,7 @@
                     <div class="lecReview">
                         <div class="imgBox cover">
                             <img class="coverImg" src="{{ img_url('cop/prof_cover.png') }}">
-                            <img src="{{ img_url('gosi/prof/mainReviews02.png') }}">
+                            <img src="{{ img_url('gosi/prof/tea_list_1_kmj_104x104.png') }}">
                         </div>
                         <ul>
                             <li>[작물생리학] 장사원</li>
@@ -275,7 +275,7 @@
                     <div class="lecReview">
                         <div class="imgBox cover">
                             <img class="coverImg" src="{{ img_url('cop/prof_cover.png') }}">
-                            <img src="{{ img_url('gosi/prof/mainReviews02.png') }}">
+                            <img src="{{ img_url('gosi/prof/tea_list_1_kmj_104x104.png') }}">
                         </div>
                         <ul>
                             <li>[작물생리학] 장사원</li>
@@ -286,7 +286,7 @@
                     <div class="lecReview">
                         <div class="imgBox cover">
                             <img class="coverImg" src="{{ img_url('cop/prof_cover.png') }}">
-                            <img src="{{ img_url('gosi/prof/mainReviews02.png') }}">
+                            <img src="{{ img_url('gosi/prof/tea_list_1_kmj_104x104.png') }}">
                         </div>
                         <ul>
                             <li>[작물생리학] 장사원</li>
@@ -297,7 +297,7 @@
                     <div class="lecReview">
                         <div class="imgBox cover">
                             <img class="coverImg" src="{{ img_url('cop/prof_cover.png') }}">
-                            <img src="{{ img_url('gosi/prof/mainReviews02.png') }}">
+                            <img src="{{ img_url('gosi/prof/tea_list_1_kmj_104x104.png') }}">
                         </div>
                         <ul>
                             <li>[작물생리학] 장사원</li>
@@ -308,7 +308,7 @@
                     <div class="lecReview">
                         <div class="imgBox cover">
                             <img class="coverImg" src="{{ img_url('cop/prof_cover.png') }}">
-                            <img src="{{ img_url('gosi/prof/mainReviews02.png') }}">
+                            <img src="{{ img_url('gosi/prof/tea_list_1_kmj_104x104.png') }}">
                         </div>
                         <ul>
                             <li>[작물생리학] 장사원</li>
@@ -319,7 +319,7 @@
                     <div class="lecReview">
                         <div class="imgBox cover">
                             <img class="coverImg" src="{{ img_url('cop/prof_cover.png') }}">
-                            <img src="{{ img_url('gosi/prof/mainReviews02.png') }}">
+                            <img src="{{ img_url('gosi/prof/tea_list_1_kmj_104x104.png') }}">
                         </div>
                         <ul>
                             <li>[작물생리학] 장사원</li>

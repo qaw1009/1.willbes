@@ -194,7 +194,8 @@
 .bestLectBx .prof-professors {clear:both; margin-top:40px;}
 .bestLectBx .prof-slider {width:614px; height:120px; overflow:hidden;}
 .bestLectBx .prof-slider li {position:relative; display:inline; float:left; height:120px; width:50%}
-.bestLectBx .prof-slider li img {position:absolute; width:120px; height:120px}
+.bestLectBx .prof-slider li div {position:absolute; width:120px; height:120px; overflow: hidden; background:#ececec}
+.bestLectBx .prof-slider li img {width:120px}
 .bestLectBx .prof-slider li span {position:absolute; left:138px; width:150px}
 .bestLectBx .prof-slider li span.txt1 {top:0; color:#3a3a3a; font-size:17px}
 .bestLectBx .prof-slider li span.txt2 {top:22px; color:#ba560e; font-size:22px; font-weight:bold;}
@@ -314,6 +315,7 @@
     float: left;
     width: 82px;
     margin: 0 15px 0 25px;
+    background:#e1e1e1;
 }
 .lecReviewBx .sliderNumRv .imgBox img {
     width: 100%;

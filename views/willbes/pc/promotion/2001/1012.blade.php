@@ -37,8 +37,6 @@
         .free2 {background:#2b3541;}
         .free3 {background:#f5f5f5;}
         .free4 {background:#fff;}
-
-
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
@@ -75,26 +73,26 @@
     <!-- End Container -->
 
     <script src="/public/js/willbes/jquery.nav.js"></script>
-            <script>
-                <script>
-                $(function(e){
-                    var targetOffset= $("#evtContainer").offset().top;
-                    $('html, body').animate({scrollTop: targetOffset}, 700);
-                    /*e.preventDefault(); */
-                });
+            
+    <script>
+        $(function(e){
+            var targetOffset= $("#evtContainer").offset().top;
+            $('html, body').animate({scrollTop: targetOffset}, 700);
+            /*e.preventDefault(); */
+        });
 
-                $( document ).ready( function() {
-                    var jbOffset = $( '.skybanner' ).offset();
-                    $( window ).scroll( function() {
-                        if ( $( document ).scrollTop() > jbOffset.top ) {
-                            $( '.skybanner' ).addClass( 'skybanner_sectionFixed' );
-                        }
-                        else {
-                            $( '.skybanner' ).removeClass( 'skybanner_sectionFixed' );
-                        }
-                    });
-                } );
-            </script>
+        $( document ).ready( function() {
+            var jbOffset = $( '.skybanner' ).offset();
+            $( window ).scroll( function() {
+                if ( $( document ).scrollTop() > jbOffset.top ) {
+                    $( '.skybanner' ).addClass( 'skybanner_sectionFixed' );
+                }
+                else {
+                    $( '.skybanner' ).removeClass( 'skybanner_sectionFixed' );
+                }
+            });
+        } );
+    </script>
 
 
 @stop

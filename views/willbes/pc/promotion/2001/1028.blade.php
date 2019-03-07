@@ -47,8 +47,8 @@
         <div class="evtCtnsBox wb_cts03" >
             <img src="http://file3.willbes.net/new_cop/2019/01/EV190111_p4.png"  alt="3"  usemap="#p2" />
             <map name="p2" id="p2">
-                <area shape="rect" coords="291,831,577,893" href="http://www.willbescop.net/teacher/movieTeacherDetail.html?topMenuType=O&topMenuGnb=OM_002&topMenu=081&topMenuName=일반경찰&menuID=&searchUserId=wc_015&searchSubjectNm=영어 아침특강&searchSubjectCode=1010" onfocus='this.blur()'  target="_blank" alt="온라인강의 신청">
-                <area shape="rect" coords="635,831,917,893" href="http://www.willbescop.net/teacher/passTeacherDetail.html?topMenuType=F&topMenuGnb=FM_002&topMenu=081&topMenuName=일반경찰&menuID=&searchUserId=wc_015&searchSubjectNm=영어 아침특강&searchSubjectCode=1010" onfocus='this.blur()' target="_blank" alt="학원강의 신청">
+                <area shape="rect" coords="291,831,577,893" href="/lecture/index/cate/3001/pattern/only" onfocus='this.blur()'  target="_blank" alt="온라인강의 신청">
+                <area shape="rect" coords="635,831,917,893" href="/pass/offLecture/index" onfocus='this.blur()' target="_blank" alt="학원강의 신청">
             </map>
         </div>
 

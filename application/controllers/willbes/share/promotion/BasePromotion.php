@@ -3,8 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class BasePromotion extends \app\controllers\FrontController
 {
-    protected $models = array('eventF');
-    protected $helpers = array();
+    protected $models = array('eventF','downloadF');
+    protected $helpers = array('download');
     protected $_paging_limit = 5;
     protected $_paging_count = 10;
 
@@ -143,5 +143,15 @@ class BasePromotion extends \app\controllers\FrontController
             $result = $this->eventFModel->delEventComment($comment_idx);
         }
         $this->json_result($result, '삭제되었습니다.', $result);
+    }
+
+    public function download()
+    {
+        $file_path = $this->_reqG('path');
+        $file_name = $this->_reqG('fname');
+
+        public_download($file_path, $file_name);
+
+        show_alert('등록된 파일을 찾지 못했습니다.','close','');
     }
 }

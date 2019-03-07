@@ -74,8 +74,6 @@
         .skybanner_sectionFixed {position:fixed; top:20px}
     </style>
     
-    @include('html.event_incOnTnb')
-
     <div class="p_re evtContent" id="evtContainer">
         <div class="skybanner">
 			<div><a href="event_onCopPromotionPassPop" target="_blank"><img src="http://file3.willbes.net/new_cop/2019/01/EV190123_p_sky1.png" alt="현직경찰 인증하기"></a></div>

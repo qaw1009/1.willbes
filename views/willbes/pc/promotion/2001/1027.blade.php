@@ -82,10 +82,8 @@ http://www.willbescop.net/teacher/movieTeacherBooklist.html?topMenuGnb=OM_002&to
         <div class="evtCtnsBox wb_cts04" >
             <img src="http://file3.willbes.net/new_cop/2018/04/EV180911_pp6.png"  alt="커리큘럼 & 강의신청" usemap="#p1"  />
             <map name="p1" id="p1">
-                <area shape="rect" coords="179,970,453,1028" href="http://www.willbescop.net/teacher/movieTeacherDetail.html?&topMenuType=O&topMenuGnb=OM_002&topMenu=081&menuID=&searchUserId=wc_005
-" onfocus='this.blur()'  alt="온라인강의 신청">
-                <area shape="rect" coords="522,971,795,1027" href="http://www.willbescop.net/teacher/passTeacherDetail.html?topMenuType=F&topMenuGnb=FM_002&topMenu=081&topMenuName=일반경찰&menuID=&searchUserId=wc_005&searchSubjectNm=한국사&searchSubjectCode=1002
-" onfocus='this.blur()'  alt="학원강의 신청">
+                <area shape="rect" coords="179,970,453,1028" href="/lecture/index/cate/3001/pattern/only" onfocus='this.blur()'  alt="온라인강의 신청">
+                <area shape="rect" coords="522,971,795,1027" href="/pass/offLecture/index" onfocus='this.blur()'  alt="학원강의 신청">
             </map>
         </div>
 

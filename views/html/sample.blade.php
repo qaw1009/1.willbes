@@ -128,7 +128,7 @@
                 <li><a href="{{ site_url('/home/html/event_onCop_190307_c_pop') }}" target="_blank">└ 필기합격 인증하기 팝업 size 600x700 <span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_replyNotice') }}" target="_blank">└ 공지기능 댓글 include <span>*</span></a></li>
                 <li><a href="{{ site_url('/home/html/event_replyNotice_pop') }}" target="_blank">└ 공지기능 댓글 공지글쓰기 팝업 size 800x700 <span>*</span></a></li>
-                <li><a href="{{ site_url('/home/html/event_onCop_190307_c_pop2') }}" target="_blank">└ 형법/형소법 슈퍼피니쉬 특강 무료신청 팝업 size 800x700 <span>*</span></a></li>
+                <li><a href="{{ site_url('/home/html/event_onCop_190307_c_pop2') }}" target="_blank">└ 경찰면접 역전 꿀팁 대방출 인증하기 size 800x700 <span>*</span></a></li>
                 <li><p>경찰 학원 ▼</p></li> 
                 <li class="w50"><a href="{{ site_url('/home/html/event_offCop_190211_p') }}" target="_blank">19년 1차대비 2월 전국모의고사</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_offCop_basic') }}" target="_blank">2019 집중연강식 기본이론</a></li>

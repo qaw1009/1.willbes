@@ -3,9 +3,11 @@
 @section('content')
 <!-- Container -->
 <style type="text/css">
-    .eventPop * {font-size:12px; color:#333; line-height:1.5}
-    .eventPop {width:530px; margin:0 auto} 
-    .eventPopS1 span {margin-right:10px}
+    .eventPop {font-size:12px; color:#333; line-height:1.5}
+	.eventPop {width:530px; margin:0 auto} 
+	.eventPop h3 {font-size:18px; font-weight:bold; border-bottom:2px solid #000; text-align:center; padding-bottom:15px; color:#000;}
+	.eventPopS1 {margin-top:1em}	
+	.eventPopS1 span {margin-right:10px}
 
     .eventPopS2 {margin-top:1em}
     .eventPopS2 span {margin-right:10px}
@@ -36,7 +38,7 @@
     <input type="hidden" name="PHONENUM" id="PHONENUM" value="" />
     <input type="hidden" name="MESSAGE" id="MESSAGE" value="" />
     <div class="eventPop">
-        <h3><img src="http://file3.willbes.net/new_cop/2017/03/EV170310_p_pop_title.gif"  alt="특강무료신청" /></h3>
+		<h3>경찰면접 역전 꿀팁 대방출 인증하기</h3>
         <div class="eventPopS1">
             <span>직렬</span>
             <select  name="test_subject" id="test_subject"style="width:120px" onchange="fn_area(this.value);">
@@ -53,14 +55,16 @@
             <input type="text" name="textfield" id="textfield" style="width:120px">
         </div>
         <div class="eventPopS2">
+			<!--
             <p><span>첨부파일등록</span><input type="file" name="ATTACH_FILE" id="ATTACH_FILE"></p>
             <p>
                 * 파일의 크기는 2MB까지 업로드 가능<br>
                 * 이미지파일 (jpg, png등) 또는 PDF 파일 첨부
-            </p>
+			</p>
+			-->
             <p>
                 * 확인이 어려운 증빙서류를 첨부하거나, 부정한 방법으로 참여했을 경우, 별도 통보 없이 제공된 혜택은 즉시 회수됩니다.<br>
-                * 신청 후 <strong>내 강의실 > 이용중인 패키지</strong>에서 강의를 즉시 수강할 수 있습니다.
+                * 3차 필기합격생만 적용 및 인증됩니다. 
             </p>
         </div>
         <div class="eventPopS3">

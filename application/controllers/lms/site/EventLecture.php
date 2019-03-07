@@ -793,9 +793,8 @@ class EventLecture extends \app\controllers\BaseController
                 'A.RequestType' => $this->_reqP('search_request_type')
             ],
             'ORG1' => [
-                'LKB' => [
-                    'A.EventName' => $this->_reqP('search_value')
-                ]
+                'LKB' => ['A.EventName' => $this->_reqP('search_value')],
+                'LKR' => ['A.PromotionCode' => $this->_reqP('search_value')]
             ]
         ];
 

@@ -61,8 +61,8 @@
                 <input type="text" class="form-control file-text" disabled="">
                 <button class="btn btn-primary mb-0" type="button">파일 선택</button>
                 <span class="file-select file-btn">
-                                    <input type="file" id="attach_file_C" name="attach_file[]" class="form-control input-file" title="내용 이미지">
-                                </span>
+                    <input type="file" id="attach_file_C" name="attach_file[]" class="form-control input-file" title="내용 이미지">
+                </span>
                 <input class="file-reset btn-danger btn" type="button" value="X" />
             </div>
             @if(empty($file_data['C']) === false)
@@ -86,8 +86,8 @@
                 <input type="text" class="form-control file-text" disabled="">
                 <button class="btn btn-primary mb-0" type="button">파일 선택</button>
                 <span class="file-select file-btn">
-                                    <input type="file" id="attach_file_F" name="attach_file[]" class="form-control input-file" title="첨부파일">
-                                </span>
+                    <input type="file" id="attach_file_F" name="attach_file[]" class="form-control input-file" title="첨부파일">
+                </span>
                 <input class="file-reset btn-danger btn" type="button" value="X" />
             </div>
             @if(empty($file_data['F']) === false)
@@ -107,8 +107,8 @@
                 <input type="text" class="form-control file-text" disabled="">
                 <button class="btn btn-primary mb-0" type="button">파일 선택</button>
                 <span class="file-select file-btn">
-                                <input type="file" id="attach_file_S" name="attach_file[]" class="form-control input-file" title="리스트썸네일">
-                                </span>
+                    <input type="file" id="attach_file_S" name="attach_file[]" class="form-control input-file" title="리스트썸네일">
+                </span>
                 <input class="file-reset btn-danger btn" type="button" value="X" />
             </div>
             @if(empty($file_data['S']) === false)
@@ -128,8 +128,8 @@
                 <input type="text" class="form-control file-text" disabled="">
                 <button class="btn btn-primary mb-0" type="button">파일 선택</button>
                 <span class="file-select file-btn">
-                                    <input type="file" id="attach_file_I" name="attach_file[]" class="form-control input-file" title="첨부파일">
-                                </span>
+                    <input type="file" id="attach_file_I" name="attach_file[]" class="form-control input-file" title="첨부파일">
+                </span>
                 <input class="file-reset btn-danger btn" type="button" value="X" />
             </div>
             @if(empty($file_data['I']) === false)

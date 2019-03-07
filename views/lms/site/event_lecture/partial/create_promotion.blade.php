@@ -1,4 +1,11 @@
 <div class="form-group">
+    <label class="control-label col-md-1-1" for="promotion_params">추가 파라미터(GET방식) </label>
+    <div class="col-md-10 form-inline">
+        <input type="text" id="promotion_params" name="promotion_params" class="form-control" value="{{ $data['PromotionParams'] }}" title="프로모션 파라미터" style="width: 40%;">
+        &nbsp;&nbsp;&nbsp;&nbsp;• Ex) param=1&amp;param=2&amp;param=3&amp;param=4
+    </div>
+</div>
+<div class="form-group">
     <label class="control-label col-md-1-1" for="attach_file_promotion">
         첨부파일<br><button type="button" class="btn btn-dark btn-sm btn-add-file">첨부필드추가</button>
     </label>

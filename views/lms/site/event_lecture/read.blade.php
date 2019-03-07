@@ -45,6 +45,11 @@
 
             <div class="promotion">
                 <div class="form-group">
+                    <label class="control-label col-md-1-1">추가 파라미터(GET방식) </label>
+                    <div class="form-control-static col-md-10">{{ $data['PromotionParams'] }}</div>
+                </div>
+
+                <div class="form-group">
                     <label class="control-label col-md-1-1">프로모션 경로</label>
                     {{--<div class="form-control-static col-md-10">{{$data['Link']}}</div>--}}
                     <div class="form-control-static col-md-10">
@@ -105,8 +110,10 @@
                             @if ($data['ContentType'] == 'E')
                                 {!! $data['Content'] !!}
                             @else
-                                <img src='{{$file_data['C']['file_path']}}'>
-                                <p>{{$file_data['C']['file_real_name']}}</p>
+                                @if (empty($file_data['C']) === false)
+                                    <img src='{{$file_data['C']['file_path']}}'>
+                                    <p>{{$file_data['C']['file_real_name']}}</p>
+                                @endif
                             @endif
                         @endif
                     </div>

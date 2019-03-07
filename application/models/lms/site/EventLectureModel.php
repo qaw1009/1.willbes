@@ -205,6 +205,7 @@ class EventLectureModel extends WB_Model
                 'RequestType' => element('request_type', $input),
                 'TakeType' => element('take_type', $input),
                 'PromotionCode' => $promotionCode,
+                'PromotionParams' => element('promotion_params', $input),
                 'BIdx' => element('banner_idx', $input),
                 'SubjectIdx' => element('subject_idx', $input),
                 'ProfIdx' => element('prof_idx', $input),
@@ -298,12 +299,12 @@ class EventLectureModel extends WB_Model
 
             // 데이터 복사 실행
             $insert_column = '
-                SiteCode, CampusCcd, PromotionCode, BIdx, IsBest, RequestType, TakeType, SubjectIdx, ProfIdx, RegisterStartDate, RegisterEndDate, IsRegister, IsCopy, IsUse, IsStatus, EventName,
+                SiteCode, CampusCcd, PromotionCode, PromotionParams, BIdx, IsBest, RequestType, TakeType, SubjectIdx, ProfIdx, RegisterStartDate, RegisterEndDate, IsRegister, IsCopy, IsUse, IsStatus, EventName,
                 ContentType, Content, OptionCcds, LimitType, SelectType, SendTel, SmsContent, PopupTitle, CommentUseArea, Link, ReadCnt, AdjuReadCnt,
                 RegAdminIdx, RegIp
             ';
             $select_column = '
-                SiteCode, CampusCcd, '.$promotionCode.', BIdx, IsBest, RequestType, TakeType, SubjectIdx, ProfIdx, RegisterStartDate, RegisterEndDate, IsRegister, "Y", "N", IsStatus,
+                SiteCode, CampusCcd, '.$promotionCode.', PromotionParams, BIdx, IsBest, RequestType, TakeType, SubjectIdx, ProfIdx, RegisterStartDate, RegisterEndDate, IsRegister, "Y", "N", IsStatus,
                 CONCAT("복사본-", IF(LEFT(EventName,4)="복사본-", REPLACE(EventName, LEFT(EventName,4), ""), EventName)) AS EventName,
                 ContentType, Content, OptionCcds, LimitType, SelectType, SendTel, SmsContent, PopupTitle, CommentUseArea, Link, ReadCnt, AdjuReadCnt,
                 REPLACE(RegAdminIdx, RegAdminIdx, "'.$admin_idx.'") AS RegAdminIdx,
@@ -415,6 +416,7 @@ class EventLectureModel extends WB_Model
                 'RequestType' => element('request_type', $input),
                 'TakeType' => element('take_type', $input),
                 'PromotionCode' => element('promotion_code', $input),
+                'PromotionParams' => element('promotion_params', $input),
                 'BIdx' => element('banner_idx', $input),
                 'IsBest' => element('is_best', $input, 0),
                 'SubjectIdx' => element('subject_idx', $input),
@@ -497,7 +499,7 @@ class EventLectureModel extends WB_Model
     public function findEventForModify($arr_condition)
     {
         $column = "
-            A.ElIdx, A.SiteCode, A.CampusCcd, A.RequestType, A.TakeType, A.SubjectIdx, A.ProfIdx, A.IsBest, A.PromotionCode, A.BIdx, F.BannerName,
+            A.ElIdx, A.SiteCode, A.CampusCcd, A.RequestType, A.TakeType, A.SubjectIdx, A.ProfIdx, A.IsBest, A.PromotionCode, A.PromotionParams, A.BIdx, F.BannerName,
             A.RegisterStartDate, A.RegisterEndDate, A.IsRegister, A.IsUse, A.IsStatus, A.EventName,
             DATE_FORMAT(A.RegisterStartDate, '%Y-%m-%d') AS RegisterStartDay, DATE_FORMAT(A.RegisterStartDate, '%H') AS RegisterStartHour, DATE_FORMAT(A.RegisterStartDate, '%i') AS RegisterStartMin,
             DATE_FORMAT(A.RegisterEndDate, '%Y-%m-%d') AS RegisterEndDay, DATE_FORMAT(A.RegisterEndDate, '%H') AS RegisterEndHour, DATE_FORMAT(A.RegisterEndDate, '%i') AS RegisterEndMin,

@@ -256,6 +256,8 @@ class EventLectureModel extends WB_Model
             }
 
             // 이벤트 파일저장
+            $this->load->library('upload');
+            $this->load->library('image_lib');
             if ($this->_addContentAttach($el_idx, count($this->_set_attache_type)) === false) {
                 throw new \Exception('이벤트 파일 등록에 실패했습니다.');
             }
@@ -451,6 +453,11 @@ class EventLectureModel extends WB_Model
             $is_attach = $this->_modifyEventAttach($el_idx, count($this->_set_attache_type));
             if ($is_attach === false) {
                 throw new \Exception($is_attach);
+            }
+
+            // 프로모션 파일 등록
+            if ($this->_addContentAttachByPromotion($el_idx, count($this->_set_attache_type)) === false) {
+                throw new \Exception('프로모션 파일 등록에 실패했습니다.');
             }
 
             // 신청자 정보가 없을 때 수정가능. 이벤트 접수 관리(정원제한), 기존 데이터 삭제 후 저장
@@ -935,8 +942,8 @@ class EventLectureModel extends WB_Model
     private function _addContentAttach($el_idx, $cnt)
     {
         try {
-            $this->load->library('upload');
-            $this->load->library('image_lib');
+            /*$this->load->library('upload');
+            $this->load->library('image_lib');*/
 
             $upload_dir = config_item('upload_prefix_dir') . '/event/' . date('Y') . '/' . date('md');
             $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->_getAttachImgNames($cnt), $upload_dir);
@@ -987,8 +994,8 @@ class EventLectureModel extends WB_Model
     private function _addContentAttachByPromotion($el_idx, $cnt)
     {
         try {
-            $this->load->library('upload');
-            $this->load->library('image_lib');
+            /*$this->load->library('upload');
+            $this->load->library('image_lib');*/
 
             $upload_dir = config_item('upload_prefix_dir') . '/promotion/' . date('Y') . '/' . date('md');
             $uploaded = $this->upload->uploadFile('file', ['attach_file_promotion'], $this->_getAttachImgNames($cnt), $upload_dir);

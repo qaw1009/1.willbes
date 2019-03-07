@@ -60,7 +60,7 @@
                 <tr class="{{$row['IsBest'] == '1' ? 'bg-light-blue' : ''}}">
                     <td class="w-data tx-left">
                         <div class="w-tit">
-                            <a href="{{front_url($default_path.'/notice/show?board_idx='.$row['BoardIdx'].'&'.$get_params)}}">
+                            <a href="{{front_url($default_path.'/show?board_idx='.$row['BoardIdx'].'&'.$get_params)}}">
                                 {{hpSubString($row['Title'],0,40,'...')}}
                             </a>
                         </div>

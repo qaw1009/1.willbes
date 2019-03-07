@@ -1792,16 +1792,13 @@ table.auTable tr td {
     display: block;
     clear: both;
 }
-.subContainer::after {
-    content: "";
-    display: block;
-    clear: both;
-}
+
 
 /* subContainer : Menu */
 .Menu {
     width: 1120px;
     margin: 0 auto;
+    letter-spacing: -1px;
 }
 .Menu h3 {
     height: 40px;

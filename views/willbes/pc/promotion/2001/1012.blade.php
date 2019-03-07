@@ -39,6 +39,7 @@
         .free3 {background:#f5f5f5;}
         .free4 {background:#fff;}
     </style>
+<div id="Container" class="Container cop NSK c_both">
 
     <div class="evtContent NSK" id="evtContainer">
         <div class="skybanner" >
@@ -73,8 +74,9 @@
     </div>
     <!-- End Container -->
 
-    <script src="/public/js/willbes/jquery.nav.js"></script>
-            
+</div>
+
+    <script src="/public/js/willbes/jquery.nav.js"></script>            
     <script>
         $(function(e){
             var targetOffset= $("#evtContainer").offset().top;

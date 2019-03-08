@@ -65,10 +65,10 @@ class Manage extends \app\controllers\BaseController
                 ]
             ],
             'EQ' => [
-                'Mem.IsChange' => $this->_reqP('IsChange'), // 회원통합 여부
-                'Info.SmsRcvStatus' => $this->_reqP('SmsRcv'), // sms 수신여부
-                'Info.MailRcvStatus' => $this->_reqP('MailRcv'), // 메일 수신여부
-                'Mem.IsBlackList' => $this->_reqp('IsBlackList') // 블랙리스트 여부
+                'Mem.IsChange' => $this->_req('IsChange'), // 회원통합 여부
+                'Info.SmsRcvStatus' => $this->_req('SmsRcv'), // sms 수신여부
+                'Info.MailRcvStatus' => $this->_req('MailRcv'), // 메일 수신여부
+                'Mem.IsBlackList' => $this->_req('IsBlackList') // 블랙리스트 여부
             ]
         ];
 
@@ -78,9 +78,9 @@ class Manage extends \app\controllers\BaseController
         ];
 
         // 날짜검색 쿼리생성
-        $search_condition = $this->_reqP('search_condition');
-        $search_sdate = $this->_reqP('search_start_date');
-        $search_edate = $this->_reqP('search_end_date');
+        $search_condition = $this->_req('search_condition');
+        $search_sdate = $this->_req('search_start_date');
+        $search_edate = $this->_req('search_end_date');
         if($search_sdate != '' && $search_edate != ''){
             switch($search_condition){
                 case 'joindate':
@@ -127,7 +127,7 @@ class Manage extends \app\controllers\BaseController
         }
 
         // 탈퇴회원쿼리
-        if($this->_reqP('IsOut') == 'Y' && $search_condition != 'outdate'){
+        if($this->_req('IsOut') == 'Y' && $search_condition != 'outdate'){
             $inQuery .= "
                     AND Mem.IsStatus = 'N'
                     AND Mem.MemIdx IN (
@@ -136,21 +136,21 @@ class Manage extends \app\controllers\BaseController
         }
 
         // 비번 6개월이상 미변경 회원
-        if($this->_reqP('NoChangePwd') == 'Y'){
+        if($this->_req('NoChangePwd') == 'Y'){
             $arr_condition += [
                 'LTE' => ['Mem.LastPassModyDatm' => date("Y-m-d H:m:s", strtotime("-6 month"))]
             ];
         }
 
         // 휴면회원 1년이상 미로그인 회원
-        if($this->_reqP('IsSleep') == 'Y'){
+        if($this->_req('IsSleep') == 'Y'){
             $arr_condition += [
                 'LTE' => ['Mem.LastLoginDatm' => date("Y-m-d H:m:s", strtotime("-12 month"))]
             ];
         }
 
         // 기기등록회원
-        if($this->_reqP('IsRegDevice') == 'Y' ){
+        if($this->_req('IsRegDevice') == 'Y' ){
             $inQuery .= "
                     AND Mem.MemIdx IN (
                         SELECT memIdx FROM lms_member_device 
@@ -159,12 +159,12 @@ class Manage extends \app\controllers\BaseController
 
         // 갯수 구해오기
         $count = $this->manageMemberModel->list(true, $arr_condition,
-            $this->_reqP('length'), $this->_reqP('start'), $orderby, $inQuery);
+            $this->_req('length'), $this->_req('start'), $orderby, $inQuery);
 
         // 갯수가 1개 이상일 경우 데이타 구해오기
         if($count > 0){
             $list = $this->manageMemberModel->list(false, $arr_condition,
-                $this->_reqP('length'), $this->_reqP('start'), $orderby, $inQuery);
+                $this->_req('length'), $this->_req('start'), $orderby, $inQuery);
         }
 
         return $this->response([

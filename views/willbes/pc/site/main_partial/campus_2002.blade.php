@@ -1,4 +1,5 @@
 <div class="widthAuto">
+    <a name="map_campus"></a>
     <div class="will-acadTit">윌비스 <span class="tx-color">신광은경찰</span> 캠퍼스</div>
     <div class="noticeTabs campus c_both">
         <ul class="tabWrap noticeWrap_campus">

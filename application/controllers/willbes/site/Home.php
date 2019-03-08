@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends \app\controllers\FrontController
 {
-    protected $models = array('product/productF', 'onAirF', 'support/supportBoardF', 'bannerF', 'dDayF');
+    protected $models = array('product/productF', 'support/supportBoardF', 'support/supportBoardTwoWayF', 'bannerF', 'dDayF', 'onAirF');
     protected $helpers = array();
     protected $auth_controller = false;
     protected $auth_methods = array();
@@ -98,6 +98,7 @@ class Home extends \app\controllers\FrontController
             $data['notice'] = $this->_boardNotice(5);
             $data['exam_news'] = $this->_boardExamNews(5);
             $data['onAir'] = $this->_onAir();
+            $data['arr_main_banner'] = $this->_banner('0');
             $data['notice_campus'] = $this->_boardNoticeByCampus(2);
         }
 
@@ -119,6 +120,11 @@ class Home extends \app\controllers\FrontController
 
             $data['best_product'] = $this->_productLectureBySubjectIdx('on_lecture', 2, $s_cate_code, 'Best');  // 과목별 2개씩 베스트 상품 조회
             $data['arr_main_banner'] = $this->_banner($s_cate_code);
+
+            // 9급공무원 카테고리에서만 노출
+            if ($s_cate_code == '3019') {
+                $data['study_comment'] = $this->_boardStudyComment(6, $s_cate_code);
+            }
         }
 
         $data['notice'] = $this->_boardNotice(5, $s_cate_code);
@@ -186,7 +192,7 @@ class Home extends \app\controllers\FrontController
                 '3002' => ['메인_학원배너1', '메인_학원배너2', '메인_학원배너3', '메인_이벤트띠배너', '메인_hotpick1', '메인_hotpick2', '메인_특강이벤트1', '메인_특강이벤트2']
             ],
             '2002' => [
-
+                '0' => ['메인_상품배너1', '메인_상품배너2', '메인_상품배너3', '메인_상품배너4', '메인_특별관리반1', '메인_특별관리반2', '메인_특별관리반3', '메인_특별관리반4']
             ],
             '2003' => [
                 '3019' => ['메인_서브1', '메인_서브2', '메인_띠배너', '메인_미들1', '메인_미들2', '메인_미들3', '메인_미들4', '메인_미들5'
@@ -289,7 +295,7 @@ class Home extends \app\controllers\FrontController
     {
         $column = 'b.BoardIdx, b.Title, b.IsBest, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
         $order_by = ['b.IsBest' => 'Desc', 'b.BoardIdx' => 'Desc'];
-        $arr_condition = ['EQ' => ['b.BmIdx' => 45, 'b.SiteCode' => $this->_site_code, 'b.IsUse' => 'Y'], 'IN' => ['b.CampusCcd' => $arr_campus], 'LKB' => ['b.Category_String' => $cate_code]];
+        $arr_condition = ['EQ' => ['b.BmIdx' => 45, 'b.IsUse' => 'Y'], 'IN' => ['b.CampusCcd' => $arr_campus], 'LKB' => ['b.Category_String' => $cate_code]];
 
         return $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $arr_condition, $column, $limit_cnt, 0, $order_by);
     }
@@ -335,7 +341,7 @@ class Home extends \app\controllers\FrontController
     {
         $column = 'b.BoardIdx, b.IsBest, b.AreaCcd_Name, b.Title, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
         $order_by = ['b.IsBest' => 'Desc', 'b.BoardIdx' => 'Desc'];
-        $arr_condition = ['EQ' => ['b.BmIdx' => 54, 'b.SiteCode' => $this->_site_code, 'b.IsUse' => 'Y'], 'LKB' => ['b.Category_String' => $cate_code]];
+        $arr_condition = ['EQ' => ['b.BmIdx' => 54, 'b.IsUse' => 'Y'], 'LKB' => ['b.Category_String' => $cate_code]];
 
         return $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $arr_condition, $column, $limit_cnt, 0, $order_by);
     }
@@ -351,9 +357,26 @@ class Home extends \app\controllers\FrontController
     {
         $column = 'b.BoardIdx, b.Title, b.IsBest, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
         $order_by = ['b.IsBest' => 'Desc', 'b.BoardIdx' => 'Desc'];
-        $arr_condition = ['EQ' => ['b.BmIdx' => 57, 'b.SiteCode' => $this->_site_code, 'b.IsUse' => 'Y'], 'LKB' => ['b.Category_String' => $cate_code]];
+        $arr_condition = ['EQ' => ['b.BmIdx' => 57, 'b.IsUse' => 'Y'], 'LKB' => ['b.Category_String' => $cate_code]];
 
         return $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $arr_condition, $column, $limit_cnt, 0, $order_by);
+    }
+
+    /**
+     * 수강후기 조회
+     * @param int $limit_cnt
+     * @param string $cate_code
+     * @param array $arr_campus
+     * @return array|int
+     */
+    private function _boardStudyComment($limit_cnt = 6, $cate_code = '', $arr_campus = [])
+    {
+        $column = 'b.BoardIdx, b.Title, b.IsBest, b.SubjectName, b.ProfName, b.ProdName, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm
+            , fn_professor_refer_value(b.ProfIdx, "lec_list_img") as ProfLecListImg';
+        $order_by = ['b.IsBest' => 'Desc', 'b.BoardIdx' => 'Desc'];
+        $arr_condition = ['EQ' => ['b.BmIdx' => 85, 'b.SiteCode' => $this->_site_code, 'b.IsUse' => 'Y'], 'LKB' => ['b.Category_String' => $cate_code]];
+
+        return $this->supportBoardTwoWayFModel->listBoard(false, $arr_condition, $column, $limit_cnt, 0, $order_by);
     }
 
     /**

@@ -99,6 +99,14 @@
 
         <div class="Section NSK mt90">
             <div class="widthAuto">
+                {{-- study comment include --}}
+                @include('willbes.pc.site.main_partial.study_comment_' . $__cfg['SiteCode'])
+            </div>
+        </div>
+        <!-- 수강후기 //-->
+
+        <div class="Section NSK mt90">
+            <div class="widthAuto">
                 <div class="willbesLec">
                     <div class="smallTit mb30">
                         <p><span>합격 콘텐츠를 한 눈에! <strong>윌비스 강좌</strong></span></p>
@@ -136,85 +144,6 @@
                 <!--willbesNews //-->
             </div>
         </div>
-
-        <div class="Section NSK mt90">
-            <div class="widthAuto">
-                <div class="smallTit mb30">
-                    <p><span>솔직한 <strong>수강후기</strong><a href="#none"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a></span></p>
-                </div>
-                <div class="lecReviewBx nSlider">
-                    <div class="sliderNumRv">
-                        <div class="lecReview">
-                            <div class="imgBox cover">
-                                <img class="coverImg" src="{{ img_url('cop/prof_cover.png') }}">
-                                <img src="{{ img_url('gosi/prof/tea_list_1_kmj_104x104.png') }}">
-                            </div>
-                            <ul>
-                                <li>[작물생리학] 장사원</li>
-                                <li>2019 장사원 재배학 기출 문제풀이 (1월)</li>
-                                <li>쏙쏙 이해가 잘되요 쏙쏙 이해가 잘되요쏙쏙 이해가 잘되요</li>
-                            </ul>
-                        </div>
-                        <div class="lecReview">
-                            <div class="imgBox cover">
-                                <img class="coverImg" src="{{ img_url('cop/prof_cover.png') }}">
-                                <img src="{{ img_url('gosi/prof/tea_list_1_kmj_104x104.png') }}">
-                            </div>
-                            <ul>
-                                <li>[작물생리학] 장사원</li>
-                                <li>2019 장사원 재배학 기출 문제풀이 (1월)</li>
-                                <li>쏙쏙 이해가 잘되요 쏙쏙 이해가 잘되요쏙쏙 이해가 잘되요</li>
-                            </ul>
-                        </div>
-                        <div class="lecReview">
-                            <div class="imgBox cover">
-                                <img class="coverImg" src="{{ img_url('cop/prof_cover.png') }}">
-                                <img src="{{ img_url('gosi/prof/tea_list_1_kmj_104x104.png') }}">
-                            </div>
-                            <ul>
-                                <li>[작물생리학] 장사원</li>
-                                <li>2019 장사원 재배학 기출 문제풀이 (1월)</li>
-                                <li>쏙쏙 이해가 잘되요 쏙쏙 이해가 잘되요쏙쏙 이해가 잘되요</li>
-                            </ul>
-                        </div>
-                        <div class="lecReview">
-                            <div class="imgBox cover">
-                                <img class="coverImg" src="{{ img_url('cop/prof_cover.png') }}">
-                                <img src="{{ img_url('gosi/prof/tea_list_1_kmj_104x104.png') }}">
-                            </div>
-                            <ul>
-                                <li>[작물생리학] 장사원</li>
-                                <li>2019 장사원 재배학 기출 문제풀이 (1월)</li>
-                                <li>쏙쏙 이해가 잘되요 쏙쏙 이해가 잘되요쏙쏙 이해가 잘되요</li>
-                            </ul>
-                        </div>
-                        <div class="lecReview">
-                            <div class="imgBox cover">
-                                <img class="coverImg" src="{{ img_url('cop/prof_cover.png') }}">
-                                <img src="{{ img_url('gosi/prof/tea_list_1_kmj_104x104.png') }}">
-                            </div>
-                            <ul>
-                                <li>[작물생리학] 장사원</li>
-                                <li>2019 장사원 재배학 기출 문제풀이 (1월)</li>
-                                <li>쏙쏙 이해가 잘되요 쏙쏙 이해가 잘되요쏙쏙 이해가 잘되요</li>
-                            </ul>
-                        </div>
-                        <div class="lecReview">
-                            <div class="imgBox cover">
-                                <img class="coverImg" src="{{ img_url('cop/prof_cover.png') }}">
-                                <img src="{{ img_url('gosi/prof/tea_list_1_kmj_104x104.png') }}">
-                            </div>
-                            <ul>
-                                <li>[작물생리학] 장사원</li>
-                                <li>2019 장사원 재배학 기출 문제풀이 (1월)</li>
-                                <li>쏙쏙 이해가 잘되요 쏙쏙 이해가 잘되요쏙쏙 이해가 잘되요</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- 수강후기 //-->
 
         <div class="Section NSK mt90 mb90">
             <div class="widthAuto">

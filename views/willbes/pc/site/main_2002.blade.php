@@ -17,23 +17,33 @@
         <div class="Section MainVisual MainVisual_acad mb50">
             <div class="widthAuto">
                 <ul>
-                    <li class="VisualsubBox_acad">
-                        <a href="#none"><img src="{{ img_url('cop_acad/visual/visual_secB01.jpg') }}" alt="기본이론종합반"></a>
-                    </li>
-                    <li class="VisualsubBox_acad">
-                        <a href="#none"><img src="{{ img_url('cop_acad/visual/visual_secB02.jpg') }}" alt="superpass"></a>
-                    </li>
-                    <li class="VisualsubBox_acad">
-                        <a href="#none"><img src="{{ img_url('cop_acad/visual/visual_secB03.jpg') }}" alt="문제풀이패키지"></a>
-                    </li>
+                    @for($i=1; $i<=3; $i++)
+                        @if(empty($data['arr_main_banner']['메인_상품배너'.$i]) === false)
+                            @php $link_url = ''; $last_banner = end($data['arr_main_banner']['메인_상품배너'.$i]); @endphp
+                            @if(empty($last_banner['LinkUrl']) === false)
+                                @php $link_url = front_app_url('/banner/click?banner_idx=' . $last_banner['BIdx'] . '&return_url=' . urlencode($last_banner['LinkUrl']) . '&link_url_type=' . urlencode($last_banner['LinkUrlType']), 'www'); @endphp
+                            @endif
+                            <li class="VisualsubBox_acad">
+                                <a href="{{ $link_url }}" target="_{{ $last_banner['LinkType'] }}"><img src="{{ $last_banner['BannerFullPath'] . $last_banner['BannerImgName'] }}" alt="{{ $last_banner['BannerName'] }}"></a>
+                            </li>
+                        @endif
+                    @endfor
+
+                    @if(empty($data['arr_main_banner']['메인_상품배너4']) === false)
                     <li class="VisualsubBox_acad">
                         <div class="bSlider acad">
                             <div class="bSlider slider">
-                                <div><a href="#none"><img src="{{ img_url('cop_acad/visual/visual_secB04_01.jpg') }}" alt="합격전략설명회"></a></div>
-                                <div><a href="#none"><img src="{{ img_url('cop_acad/visual/visual_secB04_02.jpg') }}" alt="황세웅면접캠프"></a></div>
+                                @php $link_url = ''; @endphp
+                                @foreach($data['arr_main_banner']['메인_상품배너4'] as $row)
+                                    @if(empty($row['LinkUrl']) === false)
+                                        @php $link_url = front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www'); @endphp
+                                    @endif
+                                    <div><a href="{{ $link_url }}" target="_{{ $row['LinkType'] }}"><img src="{{ $row['BannerFullPath'] . $row['BannerImgName'] }}" alt="{{ $row['BannerName'] }}"></a></div>
+                                @endforeach
                             </div>
                         </div>
                     </li>
+                    @endif
                 </ul>
             </div>
         </div>
@@ -98,25 +108,6 @@
                             <div><a href="#none">면접 스파르타</a></div>
                         </div>
                     </li>
-
-                <!--
-                    <li class="p_re">
-                        <div class="cSlider graySlider AbsControls">
-                            <div class="sliderControls">
-                                <div><a href="#none"><img src="{{ img_url('cop/prof/prof_180918.png') }}"></a></div>
-                                <div><a href="#none"><img src="{{ img_url('cop/prof/prof_180914.png') }}"></a></div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="p_re">
-                        <div class="cSlider graySlider AbsControls">
-                            <div class="sliderControls">
-                                <div><a href="#none"><img src="{{ img_url('cop/prof/prof_180919.png') }}"></a></div>
-                                <div><a href="#none"><img src="{{ img_url('cop/prof/prof_180916.png') }}"></a></div>
-                            </div>
-                        </div>
-                    </li>
-                    -->
                 </ul>
             </div>
         </div>
@@ -127,10 +118,15 @@
             <div class="widthAuto">
                 <div class="will-acadTit">윌비스 <span class="tx-color">신광은경찰학원</span> 특별관리반</div>
                 <ul class="specialClass">
-                    <li><a href="#none"><img src="{{ img_url('cop_acad/banner/bnr_A01.jpg') }}" alt="스파르타"></a></li>
-                    <li><a href="#none"><img src="{{ img_url('cop_acad/banner/bnr_A02.jpg') }}" alt="영어지옥 탈출반"></a></li>
-                    <li><a href="#none"><img src="{{ img_url('cop_acad/banner/bnr_A03.jpg') }}" alt="통합생활 관리반"></a></li>
-                    <li><a href="#none"><img src="{{ img_url('cop_acad/banner/bnr_A04.jpg') }}" alt="특별체력 관리반"></a></li>
+                    @for($i=1; $i<=4; $i++)
+                        @if(empty($data['arr_main_banner']['메인_특별관리반'.$i]) === false)
+                            @php $link_url = ''; $last_banner = end($data['arr_main_banner']['메인_특별관리반'.$i]); @endphp
+                            @if(empty($last_banner['LinkUrl']) === false)
+                                @php $link_url = front_app_url('/banner/click?banner_idx=' . $last_banner['BIdx'] . '&return_url=' . urlencode($last_banner['LinkUrl']) . '&link_url_type=' . urlencode($last_banner['LinkUrlType']), 'www'); @endphp
+                            @endif
+                            <li><a href="{{ $link_url }}" target="_{{ $last_banner['LinkType'] }}"><img src="{{ $last_banner['BannerFullPath'] . $last_banner['BannerImgName'] }}" alt="{{ $last_banner['BannerName'] }}"></a></li>
+                        @endif
+                    @endfor
                 </ul>
             </div>
         </div>
@@ -201,6 +197,11 @@
 
         <div class="Section Section4 mb50 mt30">
             @include('willbes.pc.site.main_partial.campus_' . $__cfg['SiteCode'])
+        </div>
+
+        <div id="QuickMenu" class="MainQuickMenu">
+            {{-- quick menu --}}
+            @include('willbes.pc.site.main_partial.quick_menu_' . $__cfg['SiteCode'])
         </div>
     </div>
     <!-- End Container -->

@@ -6,6 +6,25 @@
     <meta charset="utf-8">
     <link href="/public/css/willbes/basic.css?ver={{time()}}" rel="stylesheet">
     <link href="/public/css/willbes/style.css?ver={{time()}}" rel="stylesheet">
+    <style type="text/css">
+        @@page {
+            size: A4 landscape;
+            margin: 0;
+            /*size: landscape;*/
+        }
+        @@media print {
+            .page {
+                margin: 0;
+                border: initial;
+                border-radius: initial;
+                width: initial;
+                min-height: initial;
+                box-shadow: initial;
+                background: initial;
+                page-break-after: always;
+            }
+        }
+    </style>
 </head>
 <body style="overflow-x:hidden;">
 <div class="willbes-Layer-PassBox willbes-Layer-PassBox740 abs mb20" style="display:block !important; position:relative; top:20px; left:20px;">

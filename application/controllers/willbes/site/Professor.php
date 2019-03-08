@@ -72,7 +72,7 @@ class Professor extends \app\controllers\FrontController
         foreach ($arr_professor as $idx => $row) {
             if (empty($subject_idx) === true || $subject_idx == $row['SubjectIdx']) {
                 $row['ProfReferData'] = $row['ProfReferData'] == 'N' ? [] : json_decode($row['ProfReferData'], true);
-                $row['ProfEventData'] = $row['ProfEventData'] == 'N' ? [] : json_decode($row['ProfEventData'], true);
+                $row['ProfEventData'] = $row['ProfEventData'] == 'N' ? [] : element('0', json_decode($row['ProfEventData'], true));
 
                 $selected_subjects[$row['SubjectIdx']] = $row['SubjectName'];
                 $selected_list[$row['SubjectIdx']][] = $row;

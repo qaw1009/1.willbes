@@ -21,6 +21,14 @@
 
         /************************************************************/
 
+        .skybanner {
+            position:absolute; 
+            top:300px; 
+            right:0;
+            z-index:1;            
+        }
+        .skybanner_sectionFixed {position:fixed; top:20px}
+
         .wb_top {background:#000422 url(http://file3.willbes.net/new_cop/2019/03/EV190306Y_01_bg.jpg) repeat-y center top; margin-top:20px}	
         .wb_01 {background:#eaeaea; padding-bottom:100px}
         .wb_02 {background:#384186; padding-bottom:100px}
@@ -28,10 +36,7 @@
         .wb_04 {background:#fff}	
         .wb_04 {background:#fff}
         .wb_05 {background:#eaeaea}
-        .wb_06 {background:#ef67bc; padding-bottom:50px; margin-bottom:100px}		
-
-
-
+        .wb_06 {background:#ef67bc; padding-bottom:50px; margin-bottom:100px}
 
         .wb_07 {background:#fff; padding-bottom:120px; width:1210px; margin:0 auto; text-align:center;}
         .wb_07_c {border:10px solid #dedede; font-size:14px; margin:50px; padding-bottom:50px}
@@ -46,9 +51,7 @@
         .wb_07 .st01 {font-weight:bold; text-align:center;} 	
         .wb_07 .st02 {color:#272727; padding-left:0px;}	
         .wb_07 .st03 {font-weight:bold; color:#F30;}	
-        .wb_07 .st04 {text-align:center;}	
-
-  
+        .wb_07 .st04 {text-align:center;}  
         
         /* 슬라이드배너 */
         .slide_con {position:relative; width:900px; margin:0 auto}	
@@ -57,13 +60,8 @@
         .slide_con p.leftBtn {left:-40px; top:46%; width:80px; height:80px;}
         .slide_con p.rightBtn {right:-40px;top:46%; width:80px; height:80px;}	
 
-        .skybanner {
-            position:absolute; 
-            top:300px; 
-            right:0;
-            z-index:1;            
-        }
-        .skybanner_sectionFixed {position:fixed; top:20px}
+        
+
         
         
     </style>
@@ -85,11 +83,6 @@
             <ul>
                 <li><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_02.jpg"  alt="#"/></li>
                 <li><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_02_youtube_s.jpg"  alt="신광은"/></li>
-                <!--li><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_02_youtube_j.jpg"  alt="장정훈"/></li>
-                <li><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_02_youtube_k.jpg"  alt="김원욱"/></li>
-                <li><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_02_youtube_w.jpg"  alt="원유철"/></li>
-                <li><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_02_youtube_o.jpg"  alt="오태진"/></li>
-                <li><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_02_youtube_h.jpg"  alt="하승민"/></li-->
             </ul>
         </div>
         
@@ -128,9 +121,9 @@
             </map>
         </div>
 
-        <div class="evtCtnsBox wb_07">홍보용 url 댓글 자리</div>
+        @include('html.event_replyUrl')
 
-        <div class="evtCtnsBox wb_07">
+        <div class="evtCtnsBox wb_07 NSK">
             <img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_07.jpg"  alt="#"  id="lec_go" />
             <div class="wb_07_c">
                 <table>
@@ -228,9 +221,9 @@
             });
           } );
 
-        $(function(e){
+       /* $(function(e){
             var targetOffset= $("#evtContainer").offset().top;
             $('html, body').animate({scrollTop: targetOffset}, 700);  
-	    });
+	    });*/
     </script>    
 @stop

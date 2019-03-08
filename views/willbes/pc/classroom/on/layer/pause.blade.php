@@ -174,7 +174,7 @@
             data,
             function(d){
                 alert($('#startdate').val() +' 부터 ' + $('#enddate').val() + '까지 일시중지 되었습니다.');
-                location.reload();
+                document.location.replace('{{front_url('/classroom/on/list/pause/')}}');
             },
             function(ret, status){
                 alert(ret.ret_msg);

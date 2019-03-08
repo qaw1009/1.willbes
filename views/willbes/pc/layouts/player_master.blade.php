@@ -20,7 +20,7 @@
                 <!--- <li><a class="iconBtn btnUP" href="javascript:;" onclick="fnSetTop(this);">버튼 위로</a></li>
                 <li><a class="iconBtn btnBookMark" href="#none">버튼 즐겨찾기</a></li> -->
                 <li><a class="iconBtn btnSetting" href="javascript:;" onclick="fnSettingPOP();">버튼 단축키</a></li>
-                <li><span class="btnFAQ"><a href="javascript:;" onclick="fnViewFAQ();" target="_blank">동영상 FAQ</a></span></li>
+                <li><span class="btnFAQ"><a href="{{front_url('/support/faq/index')}}" target="_blank">동영상 FAQ</a></span></li>
             </ul>
         </div>
         <div id="settingPOP" class="settingPOP" style="right:-264px;">

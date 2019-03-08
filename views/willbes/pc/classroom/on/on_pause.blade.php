@@ -246,7 +246,7 @@
                 data,
                 function(d){
                     alert('일시정지가 해제되었습니다.\n수강중인 강의에서 수강해주십시요.');
-                    location.reload();
+                    document.location.replace('{{front_url('/classroom/on/list/ongoing/')}}');
                 },
                 function(ret, status){
                     alert(ret.ret_msg);

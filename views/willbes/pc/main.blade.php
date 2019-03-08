@@ -14,7 +14,7 @@
                 <div class="ProcessBox">
                     <ul>
                         <li>
-                            <a href="{{ app_url('/home/index/cate/3010', 'pass') }}" target="_blank">
+                            <a href="{{ app_url('/home/index/cate/3019', 'pass') }}" target="_blank">
                                 <div class="wTit">
                                     <img src="{{ img_url('main/icon_willbes1.png') }}"> 공무원
                                 </div>

@@ -94,24 +94,10 @@
 
     <script src="/public/js/willbes/jquery.nav.js"></script>
     <script>
-        $(function(e){
-            var targetOffset= $("#evtContainer").offset().top;
+        $(function(e) {
+            var targetOffset = $("#evtContainer").offset().top;
             $('html, body').animate({scrollTop: targetOffset}, 700);
             /*e.preventDefault(); */
         });
-
-        $( document ).ready( function() {
-            var jbOffset = $( '.skybanner' ).offset();
-            $( window ).scroll( function() {
-                if ( $( document ).scrollTop() > jbOffset.top ) {
-                    $( '.skybanner' ).addClass( 'skybanner_sectionFixed' );
-                }
-                else {
-                    $( '.skybanner' ).removeClass( 'skybanner_sectionFixed' );
-                }
-            });
-        } );
     </script>
-
-
 @stop

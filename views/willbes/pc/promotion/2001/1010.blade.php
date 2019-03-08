@@ -4,8 +4,6 @@
     @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
     <style type="text/css">
-        body{width:100%; min-width:1240px; margin:auto;}
-        .Depth {display:none}
         .subContainer {
             min-height: auto !important;
             margin-bottom:0 !important;
@@ -18,8 +16,11 @@
             padding:0 !important;
             background:#fff;
         }
+        .evtCtnsBox {width:100%; text-align:center; min-width:1210px;}
 
-        .wb_cts01 {width:100%; text-align:center; background:url(http://file3.willbes.net/new_cop/2018/11/EV1811226Y_01_bg.jpg) no-repeat center top; min-width:1210px}
+        /************************************************************/
+
+        .wb_cts01 {background:url(http://file3.willbes.net/new_cop/2018/11/EV1811226Y_01_bg.jpg) no-repeat center top}
         .wb_cts01 .wb_popWrap {width:1210px; margin:0 auto; position:relative}
 
         .wb_cts01 .giveaway {position:absolute; width:550px; left:50%; margin-left:50px; animation:only 2s infinite; z-index:11}
@@ -29,7 +30,7 @@
              100%{top:120px}
          }
 
-        .wb_cts02 {width:100%; text-align:center; background:#f4f4f4; min-width:1210px; padding-bottom:100px; position:relative}
+        .wb_cts02 {background:#f4f4f4; padding-bottom:100px; position:relative}
         .wb_cts02 div {width:900px; margin:auto;}
         .wb_cts02 .tabWrap { margin:0; padding:0}
         .wb_cts02 .tabWrap li {display:inline; float:left; width:33.33333%;}
@@ -64,7 +65,7 @@
         .wb_cts02 .evtTabCts li a:hover {background:#fff; color:#00cc66 !important}
         .wb_cts02 .evtTabCts ul:after {content:""; display:block; clear:both}
 
-        .wb_cts03  {width:100%; text-align:center; background:#274a35; min-width:1210px; margin-bottom:80px}
+        .wb_cts03  {background:#274a35; margin-bottom:80px}
 
         .skybanner {
             position:absolute;
@@ -76,60 +77,12 @@
         .skybanner_sectionFixed {position:fixed; top:20px}
     </style>
 
-    <div id="Container" class="subContainer widthAuto c_both ">
-        <div class="Menu NSK c_both">
-            <h3>
-                <ul class="menu-Tit">
-                    <li class="Tit">경찰<span class="row-line">|</span></li>
-                    <li class="subTit">경찰학원</li>
-                </ul>
-                <ul class="menu-List">
-                    <li>
-                        <a href="#none">교수진소개</a>
-                    </li>
-                    <li>
-                        <a href="#none">종합반</a>
-                    </li>
-                    <li>
-                        <a href="#none">단과</a>
-                    </li>
-                    <li>
-                        <a href="#none">수험정보</a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="{{ site_url('/home/html/acad_info1') }}">학원안내</a>
-                        <div class="drop-Box list-drop-Box">
-                            <ul>
-                                <li class="Tit">학원안내</li>
-                                <li><a href="{{ site_url('/home/html/acad_info1_1') }}">학원강의정보</a></li>
-                                <li><a href="{{ site_url('/home/html/acad_info2') }}">모의고사성적공지</a></li>
-                                <li><a href="{{ site_url('/home/html/acad_info3') }}">학원갤러리</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="#none">학원소개</a>
-                    </li>
-                    <li class="Acad">
-                        <a href="#none">신광은경찰 온라인 <span class="arrow-Btn">></span></a>
-                    </li>
-                </ul>
-            </h3>
-        </div>
-        <div class="Depth">
-            <img src="{{ img_url('sub/icon_home.gif') }}">
-            <span class="1depth"><span class="depth-Arrow">></span><strong>학원안내</strong></span>
-            <span class="1depth"><span class="depth-Arrow">></span><strong>학원강의정보</strong></span>
-        </div>
-    </div>
-    <!-- 고정 메뉴 //-->
-
-    <div class="p_re evtContent" id="evtContainer">
+    <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner">
             <div><a href="http://www.willbescop.net/event/movie/event.html?event_cd=On_171129_p&topMenuType=O#main" target="_blank"><img src="http://file3.willbes.net/new_cop/2017/11/EV171129_p_sky.png" alt="0원 입문특강" /></a></div>
         </div>
 
-        <div class="wb_cts01" >
+        <div class="evtCtnsBox wb_cts01" >
             <div class="wb_popWrap">
                 <img src="http://file3.willbes.net/new_cop/2018/11/EV1811226Y_01.jpg" alt="" />
 
@@ -139,7 +92,7 @@
             </div>
         </div>
 
-        <div class="wb_cts02 NSK" >
+        <div class="evtCtnsBox wb_cts02" >
             <img src="http://file3.willbes.net/new_cop/2018/11/EV1811226Y_02.jpg" alt="" />
             <img src="http://file3.willbes.net/new_cop/2018/11/EV1811226Y_04.gif" alt="" usemap="#Map181127_c" border="0" />
             <map name="Map181127_c" >
@@ -310,21 +263,17 @@
             </div>
         </div>
 
-        <div class="wb_cts03">
+        <div class="evtCtnsBox wb_cts03">
             <img src="http://file3.willbes.net/new_cop/2018/11/EV1811226Y_03.jpg"  alt="" />
         </div>
 
         <!--  이모티콘 댓글 -->
-        {{--@include('html.event_incReplyEmoticon')--}}
-        @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-            <div class="reEmo">
-            @include('willbes.pc.promotion.show_comment_list_partial')
-        @endif
+        @include('html.event_incReplyEmoticon')
     </div>
     <!-- End Container -->
 
 
-    <script src="/public/js/willbes/jquery.nav.js"></script>
+    <script src="/public/js/willbes/jquery.nav"></script>
     <script>
         /*tab*/
         $(document).ready(function(){
@@ -357,6 +306,18 @@
             $('html, body').animate({scrollTop: targetOffset}, 1000);
             /*e.preventDefault(); */
         });
+
+        $( document ).ready( function() {
+            var jbOffset = $( '.skybanner' ).offset();
+            $( window ).scroll( function() {
+                if ( $( document ).scrollTop() > jbOffset.top ) {
+                    $( '.skybanner' ).addClass( 'skybanner_sectionFixed' );
+                }
+                else {
+                    $( '.skybanner' ).removeClass( 'skybanner_sectionFixed' );
+                }
+            });
+        } );
     </script>
 
 @stop

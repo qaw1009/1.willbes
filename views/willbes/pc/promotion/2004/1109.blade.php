@@ -370,81 +370,6 @@
 
     </div>
     <!-- End Container -->
-
-    <script type="text/javascript">
-        //<![CDATA[
-        var sp = StarPlayerApp;
-        sp.license = "57C52A1F-AC21-4146-A5AC-2960BABEEA0E";
-        sp.version = "1.0.0";
-        sp.debug = "false";
-        var app = function(info_url) {
-            sp.executeApp(info_url);
-        }
-        //]]>
-
-        // 새로운 영상 플레이어
-        function fn_AllStartPlayer(brno, lno, mno, uid, flag, player_choice, mode){
-            //alert("mode="+mode);
-// 			<c:if test="${empty userInfo}">
-// 				alert("로그인을 하신 후 이용하여 주시기 바랍니다.");
-// 				return;
-// 			</c:if>
-            if(uid==null||uid==''){
-                uid = "ANONYMOUS";
-            }
-            var w = '960';  //가로
-            var h = '500'; //세로
-
-            if(mode == 'WIDE'){
-                if(player_choice == 1){
-                    //alert(1);
-                    w = '1575';  //가로1178
-                    h = '678'; //세로
-                } else if(player_choice == 2){
-                    //alert(2);
-                    w = '1530';  //가로960 + 570
-                    h = '540'; //세로
-                } else if(player_choice == 3){
-                    //alert(3);
-                    w = '916';  //가로960
-                    h = '405'; //세로
-                } else {
-                    //alert(4);
-                    w = '960';  //가로
-                    h = '500'; //세로
-                }
-            } else {
-                //alert(5);
-                w = '960';  //가로
-                h = '500'; //세로
-            }
-
-            var scroll = 'no'; //옵션
-            var name = "StarPlayer";
-            var LeftPosition = (screen.width) ? (screen.width-w)/2 : 0;
-            var TopPosition = (screen.height) ? (screen.height-h)/2 : 0;
-            var settings = 'height='+h+',width='+w+',top='+TopPosition+',left='+LeftPosition+',scrollbars='+scroll+',resizable=no';
-            var url = "<c:url value='/movieLectureInfo/starPlayer.pop2' />?BRIDGE_LECCODE="+brno+"&LECCODE="+lno+"&MOVIE_NO="+mno+"&USER_ID="+uid+"&SAMPLE=Y"+"&FLAG="+flag+"&PLAYER_CHOICE="+player_choice;
-            //alert(url);
-            //고화질 플레이어
-            try {
-                if(pop.name){//저화질 플레이어 팝업이 열려 있는 상태
-                    //alert('저화질 플레이어 닫기');
-                    pop.close();//저화질 플레이어 닫기
-                    pop = null;
-                }
-            }catch (exception) {}
-            //저화질 플레이어
-            try {
-                if(pop.name){//저화질 플레이어 팝업이 열려 있는 상태
-                    mp4pop =  window.open(url,name,settings);
-                }
-            }catch(e){
-                mp4pop =  window.open(url,name,settings);
-            }
-        }
-    </script>
-
     <script type="text/javascript">
         $(document).ready(function(){
             $(".tabContents7").hide();
@@ -512,17 +437,7 @@
             /*e.preventDefault(); */
         });
 
-        $( document ).ready( function() {
-            var jbOffset = $( '.skybanner' ).offset();
-            $( window ).scroll( function() {
-                if ( $( document ).scrollTop() > jbOffset.top ) {
-                    $( '.skybanner' ).addClass( 'skybanner_sectionFixed' );
-                }
-                else {
-                    $( '.skybanner' ).removeClass( 'skybanner_sectionFixed' );
-                }
-            });
-        } );
+
 
     </script>
 @stop

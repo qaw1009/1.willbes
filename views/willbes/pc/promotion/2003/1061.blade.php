@@ -256,37 +256,6 @@
             location.href = lUrl;
         }
 
-
-        function doEvent() {
-            if("<c:out value='${userInfo.USER_ID}' />" == ""){
-                alert("로그인을 해주세요.");
-                return;
-            }
-
-            $.ajax({
-                type: "POST",
-                url : '<c:url value="/event/reboundEvent_Check.do"/>?EVENT_NO=995',
-                dataType: "text",
-                async : false,
-                success: function(RES) {
-                    if($.trim(RES)=="N"){
-                        alert("이미 인증한 계정입니다.");
-                        return;
-                    }else if($.trim(RES)=="R" || $.trim(RES)=="RN"){
-                        if(confirm("기존 등록된 정보는 삭제되고 다시 등록합니다.\n새로 등록 하시겠습니까?")){
-                            var url = '<c:url value="/event/movie/event.html?event_cd=On_181220_c1_popup"/>' ;
-                            window.open(url,'event', 'top=100,scrollbars=no,toolbar=no,resizable=yes,width=600,height=720');
-                        }
-                    }else{
-                        var url = '<c:url value="/event/movie/event.html?event_cd=On_181220_c1_popup"/>' ;
-                        window.open(url,'event', 'top=100,scrollbars=no,toolbar=no,resizable=yes,width=600,height=720');
-                    }
-                },error: function(){
-                    alert("인증실패");
-                    return;
-                }
-            });
-        }
     </script>
 
 @stop

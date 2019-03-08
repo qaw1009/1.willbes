@@ -198,32 +198,6 @@
             }
         });
     }
-
-
-
-    $( document ).ready( function() {
-                var jbOffset = $( '.rLnb' ).offset();
-                $( window ).scroll( function() {
-                if ( $( document ).scrollTop() > jbOffset.top ) {
-                    $( '.rLnb' ).addClass( 'rLnb_sectionFixed' );
-                }
-                else {
-                    $( '.rLnb' ).removeClass( 'rLnb_sectionFixed' );
-                }
-                });
-            } );
-
-            $(document).ready(function() {
-                $('.rLnb').onePageNav({
-                    currentClass: 'hvr-shutter-out-horizontal_active'
-                });
-            });
-
-    $(function(e){
-        var targetOffset= $("#gridContainer").offset().top;
-        $('html, body').animate({scrollTop: targetOffset}, 1000);
-        /*e.preventDefault(); */   
-    });
     </script>
 
     <script src="/public/js/willbes/jquery.nav.js"></script>

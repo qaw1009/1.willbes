@@ -421,77 +421,76 @@
     </div>
     <!-- End Container -->     
     
-
-    <script type="text/javascript">
-	
-	function go_popup() {       		
-				
-		var targetOffset= $(".LAeventB04").offset().top;
-		$('html, body').animate({scrollTop: targetOffset}, 1000);		
-		//setTimeout(go_pop(), 2000);
-		
-	};
-	function go_pop(){
-		$('#popup').bPopup();
-	}
-	
-	function go_popup1() {       
-		$('#popup1').bPopup();            
-	};
-	function go_popup2() {       
-		$('#popup2').bPopup();            
-	};	
-	function openArmConfirm(num){
-		
-		if(num != 0){
-			if (!$("input:checkbox[id='chk"+num+"']").is(":checked")) {				
-			       alert("이용안내의 동의 하셔야 신청이 가능합니다.");
-			       $("input[name$='agreement']")[0].focus();
-			       return;
-			   }	
-		}				
-		
-		 var url = 'https://www.local.willbes.net/home/html/event_onLeaveArmyPassConfirmPop' ;
-		  window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
-	}
-	function yearpackageDetail(catecode,leccode){
-		location.href="<c:url value='/yearpackagelecture/yearpackagelectureDetail.html'/>?topMenu="+catecode+"&topMenuName=&topMenuType=O&searchCategoryCode="+catecode+"&searchLeccode="+leccode+"&leftMenuLType=M0001&lecKType=Y"
-	}
-	function goFileDownload(filePath, fileName) {
-	    window.open("<c:url value='/download.do'/>?path="+filePath+"&filename="+fileName);
-	}
-	function armLoginCheck() {
-		var url = window.location.pathname+window.location.search;
-		$("#url_path").val(url);
-		$('#armFrm').attr("action","<c:url value='/user/confirmEventLogin'/>");
-		$('#armFrm').submit();
-	}
-	
-	
-	$(document).ready(function(){
-        $('.tabArmy').each(function(){
-            var $active, $content, $links = $(this).find('a');
-            $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
-            $active.addClass('active');
+    <script src="/public/js/willbes/jquery.bpopup.min.js"></script>
+    <script type="text/javascript">	
+        function go_popup() {       		
+                    
+            var targetOffset= $(".LAeventB04").offset().top;
+            $('html, body').animate({scrollTop: targetOffset}, 1000);		
+            //setTimeout(go_pop(), 2000);
+            
+        };
+        function go_pop(){
+            $('#popup').bPopup();
+        }
         
-            $content = $($active[0].hash);
+        function go_popup1() {       
+            $('#popup1').bPopup();            
+        };
+        function go_popup2() {       
+            $('#popup2').bPopup();            
+        };	
+        function openArmConfirm(num){
+            
+            if(num != 0){
+                if (!$("input:checkbox[id='chk"+num+"']").is(":checked")) {				
+                    alert("이용안내의 동의 하셔야 신청이 가능합니다.");
+                    $("input[name$='agreement']")[0].focus();
+                    return;
+                }	
+            }				
+            
+            var url = 'https://www.local.willbes.net/home/html/event_onLeaveArmyPassConfirmPop' ;
+            window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
+        }
+        function yearpackageDetail(catecode,leccode){
+            location.href="<c:url value='/yearpackagelecture/yearpackagelectureDetail.html'/>?topMenu="+catecode+"&topMenuName=&topMenuType=O&searchCategoryCode="+catecode+"&searchLeccode="+leccode+"&leftMenuLType=M0001&lecKType=Y"
+        }
+        function goFileDownload(filePath, fileName) {
+            window.open("<c:url value='/download.do'/>?path="+filePath+"&filename="+fileName);
+        }
+        function armLoginCheck() {
+            var url = window.location.pathname+window.location.search;
+            $("#url_path").val(url);
+            $('#armFrm').attr("action","<c:url value='/user/confirmEventLogin'/>");
+            $('#armFrm').submit();
+        }
         
-            $links.not($active).each(function () {
-            $(this.hash).hide()});
         
-            // Bind the click event handler
-            $(this).on('click', 'a', function(e){
-            $active.removeClass('active');
-            $content.hide();
-        
-            $active = $(this);
-            $content = $(this.hash);
-        
-            $active.addClass('active');
-            $content.show();
-        
-            e.preventDefault()})})}
-        );
+        $(document).ready(function(){
+            $('.tabArmy').each(function(){
+                var $active, $content, $links = $(this).find('a');
+                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+                $active.addClass('active');
+            
+                $content = $($active[0].hash);
+            
+                $links.not($active).each(function () {
+                $(this.hash).hide()});
+            
+                // Bind the click event handler
+                $(this).on('click', 'a', function(e){
+                $active.removeClass('active');
+                $content.hide();
+            
+                $active = $(this);
+                $content = $(this.hash);
+            
+                $active.addClass('active');
+                $content.show();
+            
+                e.preventDefault()})})}
+            );
 	</script>
     
     <script src="/public/js/willbes/jquery.nav.js"></script>    
@@ -512,13 +511,9 @@
                 currentClass: 'hvr-shutter-out-horizontal_active'
             });
         });
-
-    </script>
-    
-    <script src="/public/js/willbes/jquery.bpopup.min.js"></script>
-    <script>       
+      
         $(function(e){
-            var targetOffset= $("#gridContainer").offset().top;
+            var targetOffset= $("#evtContainer").offset().top;
             $('html, body').animate({scrollTop: targetOffset}, 1000);
             /*e.preventDefault(); */   
         });

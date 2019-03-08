@@ -139,7 +139,7 @@
                             <tr>
                                 <td class="w-lectit tx-left" colspan="2">
                                     <span class="w-obj NSK"><div class="pBox p2">패키지</div></span>
-                                    <span class="MoreBtn"><a href="#Info">패키지정보 보기 ▼</a></span>
+                                    <!--span class="MoreBtn"><a href="#Info">패키지정보 보기 ▼</a></span-->
                                 </td>
                             </tr>
                             <tr>

@@ -208,7 +208,7 @@ abstract class FrontController extends BaseController
                         if ($this->_is_pass_site === false && empty($this->_cate_code) === false) {
                             // 온라인 사이트일 경우 카테고리 > 메인 페이지를 기준으로 조회
                             $_not_match_route_val = '//' . parse_url(current_url(), PHP_URL_HOST) . '/home/index/' . config_get('uri_segment_keys.cate') . '/' . $this->_cate_code;
-                            $_not_match_route_idx = str_first_pos_after(array_search($_not_match_route_val, $menu_urls), '.');
+                            $_not_match_route_idx = str_first_pos_after(array_search($_not_match_route_val, array_slice($menu_urls, 1)), '.');
                             $_active_menu = array_get($_tree_menu, $_not_match_route_idx);
                         }
 

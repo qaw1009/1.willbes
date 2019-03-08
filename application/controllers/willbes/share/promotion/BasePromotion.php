@@ -23,7 +23,7 @@ class BasePromotion extends \app\controllers\FrontController
         $promotion_code = (int)$params['code'];
 
         //인증식별자
-        $cert_idx = element('cert', $this->_reqG(null), '');
+        //$cert_idx = element('cert', $this->_reqG(null), '');
 
         $data = $this->eventFModel->findEventForPromotion($promotion_code, $test_type);
 
@@ -67,14 +67,15 @@ class BasePromotion extends \app\controllers\FrontController
 
         // 인증여부 추출
         $apply_result = null;
-        if(empty($cert_idx) !== true && empty($this->session->userdata('mem_idx')) !== true) {
-            $apply_result = $this->certApplyFModel->findApplyByCertIdx($cert_idx)['CaIdx'];
+        //인증 파람값이 존재한다면
+        if(empty($arr_promotion_params['cert']) === false && empty($this->session->userdata('mem_idx')) === false) {
+            $apply_result = $this->certApplyFModel->findApplyByCertIdx($arr_promotion_params['cert'])['CaIdx'];
         }
+
         $view_file = 'willbes/pc/promotion/'.$this->_site_code.'/'.$promotion_code;
         $this->load->view($view_file, [
             'arr_base' => $arr_base,
             'data' => $data,
-            'cert' => $cert_idx,
             'cert_apply'=>$apply_result,
             'arr_promotion_params' => $arr_promotion_params
         ],false);

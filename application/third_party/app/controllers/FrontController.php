@@ -205,7 +205,16 @@ abstract class FrontController extends BaseController
                         }
                     } else {
                         // 일치하는 사이트 메뉴가 없을 경우 디폴트 메뉴정보 설정
-                        $_active_menu = current(current($_tree_menu)['Children']);
+                        if ($this->_is_pass_site === false && empty($this->_cate_code) === false) {
+                            // 온라인 사이트일 경우 카테고리 > 메인 페이지를 기준으로 조회
+                            $_not_match_route_val = '//' . parse_url(current_url(), PHP_URL_HOST) . '/home/index/' . config_get('uri_segment_keys.cate') . '/' . $this->_cate_code;
+                            $_not_match_route_idx = str_first_pos_after(array_search($_not_match_route_val, $menu_urls), '.');
+                            $_active_menu = array_get($_tree_menu, $_not_match_route_idx);
+                        }
+
+                        if (empty($_active_menu) === true) {
+                            $_active_menu = current(current($_tree_menu)['Children']);
+                        }
                         $_tree_menu = $_active_menu['Children'];
                     }
                 }

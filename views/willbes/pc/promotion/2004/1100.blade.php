@@ -276,83 +276,6 @@
     <script type="text/javascript" src="http://www.willbesgosi.net/resources/libs/jquery-timepicker/jquery.ui.timepicker.js"></script>
     <script type="text/javascript" src="/public/js/willbes/jquery.bpopup.min.js"></script>
     <script type="text/javascript">
-        $(function(){
-            $.datepicker.regional['ko'] = {
-                closeText: '닫기',
-                prevText: '이전',
-                nextText: '다음',
-                currentText: '오늘',
-                monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
-                monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
-                dayNames: ['일','월','화','수','목','금','토'],
-                dayNamesShort: ['일','월','화','수','목','금','토'],
-                dayNamesMin: ['일','월','화','수','목','금','토'],
-                dateFormat: 'yymmdd',
-                firstDay: 0,
-                showMonthAfterYear: true,
-                changeYear: true,
-                yearSuffix: '년 ',
-                autoSize: false};
-            $.datepicker.setDefaults($.datepicker.regional['ko']);
-
-            setDateFickerImageUrl("http://file3.willbes.net/new_gosi/2018/04/icon_calendar.png");
-// 			$('img.ui-datepicker-trigger').attr('style','cursor:pointer;');
-            initDatePicker("REQ_DATE");
-
-        <c:if test="${not empty userInfo}">
-                $.ajax({
-                    type: "POST",
-                    url : '/event/event_result_info',
-                    data: $("#eventForm").serialize(),
-                    cache: false,
-                    dataType: "json",
-                    success: function(res) {
-                        if(res.returnMsg=="Y"){
-                            if(res.eventResultInfo != null){
-                                $("#USER_NAME").val(res.eventResultInfo.USER_NAME);
-                                $("#PHONE_NO").val(res.eventResultInfo.PHONE_NO);
-                                $('input:radio[name=CATEGORY_INFO]').attr('checked', false);
-                                $('input:radio[name="CATEGORY_INFO"][value="'+res.eventResultInfo.CATEGORY_INFO+'"]').attr('checked', 'checked');
-                                var eventStr = res.eventResultInfo.EVENT_TXT.replace(/시/gi, "").replace(/ /g, '');;
-                                if(eventStr.indexOf('/') > -1){
-                                    eventArr = eventStr.split('/');
-                                    $("#REQ_DATE").val(eventArr[0]);
-                                    $("#REQ_HOUR").val(eventArr[1]).attr("selected", "selected");
-                                }
-                            }
-                        }
-                    },error: function(){
-                    }
-                });
-        </c:if>
-
-        });
-
-        var dateFickerImageUrl = '';
-
-        function setDateFickerImageUrl(url) {
-            dateFickerImageUrl = url;
-        }
-        /**
-         * 기간설정 dateFicker one
-         * @@param id
-         */
-        function initDatePicker(id) {
-            var receiptDates = $("#"+id).datepicker({
-                showMonthAfterYear: true,
-                changeMonth: true,
-                numberOfMonths: 1,
-                showOn: "button",
-                dateFormat: "yymmdd",
-                buttonImageOnly: true,
-                buttonImage: dateFickerImageUrl
-            });
-        }
-    </script>
-
-
-
-    <script type="text/javascript">
         $(document).ready(function() {
             var slidesImg1 = $("#slidesImg1").bxSlider({
                 mode:'fade',
@@ -404,6 +327,11 @@
                 slidesImg2.goToNextSlide();
             });
         });
+
+        /*신규*/
+        function go_popup() {
+            return '';
+        }
     </script>
 
     <script src="/public/js/willbes/jquery.nav.js"></script>

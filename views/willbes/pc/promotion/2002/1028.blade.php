@@ -357,24 +357,6 @@
             $('html, body').animate({scrollTop: targetOffset}, 1000);
             /*e.preventDefault(); */
         });
-
-        $( document ).ready( function() {
-            var jbOffset = $( '.skybanner' ).offset();
-            $( window ).scroll( function() {
-                if ( $( document ).scrollTop() > jbOffset.top ) {
-                    $( '.skybanner' ).addClass( 'skybanner_sectionFixed' );
-                }
-                else {
-                    $( '.skybanner' ).removeClass( 'skybanner_sectionFixed' );
-                }
-            });
-        } );
-
-        /*$(document).ready(function() {
-            $('.skybanner').onePageNav({
-                currentClass: 'hvr-shutter-out-horizontal_active'
-            });
-        });*/
     </script>
 
 @stop

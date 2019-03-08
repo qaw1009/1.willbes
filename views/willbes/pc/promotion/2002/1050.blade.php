@@ -83,7 +83,6 @@
     </div>
     <!-- End Container -->
 
-
     <script>
         $(function(e){
             var targetOffset= $("#evtContainer").offset().top;

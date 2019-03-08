@@ -115,7 +115,7 @@
                 <li><a href="/promotion/index/cate/3001/code/1116" class="menu2" target="_blank">서울 노량진 교육과정</a></li>
                 <li><a href="/promotion/index/cate/3001/code/1115" class="menu3" target="_blank">인천 부평 교육과정</a></li>
                 <li><a href="/promotion/index/cate/3001/code/1117" class="menu4" target="_blank">부산 서면 교육과정</a></li>
-                <li><a href="/promotion/index/cate/3001/code/1114" class="menu5">윌비스 PASS</a></li>
+                <li><a href="/promotion/index/cate/3001/code/1113" class="menu5">윌비스 PASS</a></li>
             </ul>            <ul class="typeB">
                 <li class="NSK-Black">전역(예정)간부 가입/인증</li>
                 @if(empty($cert_apply))
@@ -149,7 +149,7 @@
             <img src="/public/img/willbes/leave_army/la_on_02.jpg"  alt="" usemap="#Mappass02"/>
             <map name="Map" id="Mappass02">
                 <area shape="rect" coords="194,1063,398,1102" href="javascript:certOpen();"/>
-                <area shape="rect" coords="714,1063,922,1102" href="/promotion/index/cate/3001/code/1114" />
+                <area shape="rect" coords="714,1063,922,1102" href="/promotion/index/cate/3001/code/1113" />
             </map>
         </div>
         <div class="LAeventA03">

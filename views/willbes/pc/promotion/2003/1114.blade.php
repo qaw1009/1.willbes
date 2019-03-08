@@ -162,7 +162,7 @@
                 <li><a href="/promotion/index/cate/3001/code/1116" class="menu2" target="_blank">서울 노량진 교육과정</a></li>
                 <li><a href="/promotion/index/cate/3001/code/1115" class="menu3" target="_blank">인천 부평 교육과정</a></li>
                 <li><a href="/promotion/index/cate/3001/code/1117" class="menu4" target="_blank">부산 서면 교육과정</a></li>
-                <li><a href="/promotion/index/cate/3001/code/1114" class="menu5">윌비스 PASS</a></li>
+                <li><a href="/promotion/index/cate/3001/code/1113" class="menu5">윌비스 PASS</a></li>
             </ul>
 
             <ul class="typeB">

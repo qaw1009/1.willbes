@@ -2,7 +2,6 @@
 
 @section('content')
     @include('willbes.pc.layouts.partial.site_menu')
-    <!-- content -->
     <!-- Container -->
     <style type="text/css">
         .subContainer {
@@ -58,33 +57,33 @@
         .LAeventA01 {background:url(http://file3.willbes.net/new_gosi/2019/leave_army/la_on_top_bg.jpg) no-repeat center top; position:relative;}
         .LAeventA01 .main_img {position:absolute; width:601px; top:1000px; left:50%; margin-left:-488px; z-index:10; opacity:0;filter:alpha(opacity=0);-webkit-animation-duration: 1s;animation-duration: 1s;-webkit-animation-fill-mode: both;animation-fill-mode: both}
         @@keyframes flipInX {
-            from {
-                -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 20deg);
-                transform: perspective(400px) rotate3d(1, 0, 0, 20deg);
-                -webkit-animation-timing-function: ease-in;
-                animation-timing-function: ease-in;
-                opacity: 0;
-            }
-            40% {
-                -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
-                transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
-                -webkit-animation-timing-function: ease-in;
-                animation-timing-function: ease-in;
-            }
-            60% {
-                -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
-                transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
-                opacity: 1;
-            }
-            80% {
-                -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
-                transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
-            }
-            to {
-                -webkit-transform: perspective(400px);
-                transform: perspective(400px);
-            }
-        }
+             from {
+                 -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 20deg);
+                 transform: perspective(400px) rotate3d(1, 0, 0, 20deg);
+                 -webkit-animation-timing-function: ease-in;
+                 animation-timing-function: ease-in;
+                 opacity: 0;
+             }
+             40% {
+                 -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+                 transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+                 -webkit-animation-timing-function: ease-in;
+                 animation-timing-function: ease-in;
+             }
+             60% {
+                 -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+                 transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+                 opacity: 1;
+             }
+             80% {
+                 -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+                 transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+             }
+             to {
+                 -webkit-transform: perspective(400px);
+                 transform: perspective(400px);
+             }
+         }
         .LAeventA01 .flipInX {
             -webkit-backface-visibility: visible !important;
             backface-visibility: visible !important;
@@ -155,7 +154,6 @@
         .b-close {position:absolute; right:15px; top:5px; display:inline-block; cursor:pointer}
     </style>
 
-
     <div class="p_re evtContent" id="evtContainer">
         <div class="rLnb">
             <ul class="typeA">
@@ -164,13 +162,16 @@
                 <li><a href="/promotion/index/cate/3001/code/1116" class="menu2" target="_blank">서울 노량진 교육과정</a></li>
                 <li><a href="/promotion/index/cate/3001/code/1115" class="menu3" target="_blank">인천 부평 교육과정</a></li>
                 <li><a href="/promotion/index/cate/3001/code/1117" class="menu4" target="_blank">부산 서면 교육과정</a></li>
-                <li><a href="/promotion/index/cate/3001/code/1114" class="menu5">윌비스 PASS</a></li>
-            </ul>            <ul class="typeB">
+                <li><a href="/promotion/index/cate/3001/code/1113" class="menu5">윌비스 PASS</a></li>
+            </ul>
+
+            <ul class="typeB">
                 <li class="NSK-Black">전역(예정)간부 가입/인증</li>
-                <!--인증 전-->
-                <li><a href="javascript:openArmConfirm(0);">가입 및 인증하기 &gt;</a></li>
-                <!--인증 후-->
-                <li><strong>홍길동</strong>님은<br /><span>인증완료</span><br />상태입니다.</li>
+                @if(empty($cert_apply))
+                    <li><a href="javascript:certOpen();">가입 및 인증하기 &gt;</a></li>
+                @else
+                    <li><strong>{{sess_data('mem_name')}}</strong>님은<br /><span>인증완료</span><br />상태입니다.</li>
+                @endif
             </ul>
             <div>
                 <img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_q_bnr02.jpg" alt=""/>
@@ -185,20 +186,20 @@
         </div>
 
 
-        <div class="LAeventB03 NSK">
+        <div class="LAeventB03">
             <div class="LAeventB03img">
                 <img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_onLec_01.jpg" alt="자격증 교육과정의 경우, 일부 혜택 제외"/>
             </div>
 
 
             <div class="FreepassLec" id="passLec01">
-                <h3>군무원 | 윌비스 PASS</h3>
+                <h3>군무원</h3>
                 <div class="fpLecinfo">
                     <p>
                         2019년도 군무원 5,600명 확대 채용 예정 !<br />
                         오로지 군무원 합격에 최적화된 전담 교수진 &amp; 교재 !<br />
                         업계 최대 직렬 보유 ! 총 15개 직렬 수험준비 가능 !<br />
-                        <strong>→ 행정, 군수, 수사, 전기, 전자, 통신, 토목, 일반기계, 유도무기, 총포, 전산, 군사정보, 기술정보, 건축, 환경</strong>
+                        → 행정, 군수, 수사, 전기, 전자, 통신, 토목, 일반기계, 유도무기, 총포, 전산, 군사정보, 기술정보, 건축, 환경
                     </p>
                     <ul class="tabArmy">
                         <li><a href="#tab1">행정직</a></li>
@@ -215,60 +216,59 @@
                             <col width="20%" />
                             <col width="*" />
                             <col width="25%" />
-                            <c:choose>
-                                <c:when test="${armCount>0}">
-                                    <!--인증후-->
-                                    <tr>
-                                        <th>행정직 교재 미포함<br />
-                                            구매가격</th>
-                                        <td>
-                                            <ul class="price">
-                                                <li class="liSty1">990,000원</li>
-                                                <li class="liSty2">본인부담 : 198,000원
-                                                    <div>(* 직업능력개발 교육비 792,000원 지원)</div>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                        <td><a href="javascript:yearpackageDetail('007','Y201900006')"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a></td>
-                                    </tr>
-                                    <tr>
-                                        <th>행정직 교재 포함<br />
-                                            구매가격<br />
-                                            (기본이론서)</th>
-                                        <td>
-                                            <ul class="price">
-                                                <li class="liSty1">1,190,000원</li>
-                                                <li class="liSty2">본인부담 : 238,000원
-                                                    <div>(* 직업능력개발 교육비 952,000원 지원)</div>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                        <td><a href="javascript:yearpackageDetail('007','Y201900007')"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a></td>
-                                    </tr>
-                                </c:when>
-                                <c:otherwise>
-                                    <!--인증전-->
-                                    <tr>
-                                        <th>행정직 교재 미포함<br />
-                                            구매가격</th>
-                                        <td class="before">
-                                            가입/인증 완료 시<br />
-                                            윌비스 PASS 금액이 공개됩니다.
-                                        </td>
-                                        <td><a href="javascript:openArmConfirm(1);"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a></td>
-                                    </tr>
-                                    <tr>
-                                        <th>행정직 교재 포함<br />
-                                            구매가격<br />
-                                            (기본이론서)</th>
-                                        <td class="before">
-                                            가입/인증 완료 시<br />
-                                            윌비스 PASS 금액이 공개됩니다.
-                                        </td>
-                                        <td><a href="javascript:openArmConfirm(1);"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a></td>
-                                    </tr>
-                                </c:otherwise>
-                            </c:choose>
+                            <tr>
+                                <th>행정직 교재 미포함<br />
+                                    구매가격</th>
+                                @if(empty($cert_apply))
+                                    <td class="before">
+                                        가입/인증 완료 시<br />윌비스 PASS 금액이 공개됩니다.
+                                    </td>
+                                @else
+                                    <td>
+                                        <ul class="price">
+                                            <li class="liSty1">990,000원</li>
+                                            <li class="liSty2">본인부담 : 198,000원
+                                                <div>(* 직업능력개발 교육비 792,000원 지원)</div>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                @endif
+                                <td>
+                                    @if(empty($cert_apply))
+                                        <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
+                                    @else
+                                        <a href="javascript:go_product('',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                    @endif
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>행정직 교재 포함<br />
+                                    구매가격<br />
+                                    (기본이론서)</th>
+
+                                @if(empty($cert_apply))
+                                    <td class="before">
+                                        가입/인증 완료 시<br />윌비스 PASS 금액이 공개됩니다.
+                                    </td>
+                                @else
+                                    <td>
+                                        <ul class="price">
+                                            <li class="liSty1">1,190,000원</li>
+                                            <li class="liSty2">본인부담 : 238,000원
+                                                <div>(* 직업능력개발 교육비 952,000원 지원)</div>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                @endif
+
+                                <td>
+                                    @if(empty($cert_apply))
+                                        <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
+                                    @else
+                                        <a href="javascript:go_product('',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                    @endif
+                                </td>
+                            </tr>
                         </table>
                     </div>
 
@@ -277,60 +277,63 @@
                             <col width="20%" />
                             <col width="*" />
                             <col width="25%" />
-                            <c:choose>
-                                <c:when test="${armCount>0}">
-                                    <!--인증후-->
-                                    <tr>
-                                        <th>군수직 교재 미포함<br />
-                                            구매가격</th>
-                                        <td>
-                                            <ul class="price">
-                                                <li class="liSty1">990,000원</li>
-                                                <li class="liSty2">본인부담 : 198,000원
-                                                    <div>(* 직업능력개발 교육비 792,000원 지원)</div>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                        <td><a href="javascript:yearpackageDetail('007','Y201900023')"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a></td>
-                                    </tr>
-                                    <tr>
-                                        <th>군수직 교재 포함<br />
-                                            구매가격<br />
-                                            (기본이론서)</th>
-                                        <td>
-                                            <ul class="price">
-                                                <li class="liSty1">1,190,000원</li>
-                                                <li class="liSty2">본인부담 : 238,000원
-                                                    <div>(* 직업능력개발 교육비 952,000원 지원)</div>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                        <td><a href="javascript:yearpackageDetail('007','Y201900022')"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a></td>
-                                    </tr>
-                                </c:when>
-                                <c:otherwise>
-                                    <!--인증전-->
-                                    <tr>
-                                        <th>군수직 교재 미포함<br />
-                                            구매가격</th>
-                                        <td class="before">
-                                            가입/인증 완료 시<br />
-                                            윌비스 PASS 금액이 공개됩니다.
-                                        </td>
-                                        <td><a href="javascript:openArmConfirm(2);"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a></td>
-                                    </tr>
-                                    <tr>
-                                        <th>군수직 교재 포함<br />
-                                            구매가격<br />
-                                            (기본이론서)</th>
-                                        <td class="before">
-                                            가입/인증 완료 시<br />
-                                            윌비스 PASS 금액이 공개됩니다.
-                                        </td>
-                                        <td><a href="javascript:openArmConfirm(2);"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a></td>
-                                    </tr>
-                                </c:otherwise>
-                            </c:choose>
+
+                            <!--인증후-->
+                            <tr>
+                                <th>군수직 교재 미포함<br />
+                                    구매가격</th>
+
+                                @if(empty($cert_apply))
+                                    <td class="before">
+                                        가입/인증 완료 시<br />윌비스 PASS 금액이 공개됩니다.
+                                    </td>
+                                @else
+                                    <td>
+                                        <ul class="price">
+                                            <li class="liSty1">990,000원</li>
+                                            <li class="liSty2">본인부담 : 198,000원
+                                                <div>(* 직업능력개발 교육비 792,000원 지원)</div>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                @endif
+
+                                <td>
+                                    @if(empty($cert_apply))
+                                        <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
+                                    @else
+                                        <a href="javascript:go_product('',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                    @endif
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>군수직 교재 포함<br />
+                                    구매가격<br />
+                                    (기본이론서)</th>
+
+                                @if(empty($cert_apply))
+                                    <td class="before">
+                                        가입/인증 완료 시<br />윌비스 PASS 금액이 공개됩니다.
+                                    </td>
+                                @else
+                                    <td>
+                                        <ul class="price">
+                                            <li class="liSty1">1,190,000원</li>
+                                            <li class="liSty2">본인부담 : 238,000원
+                                                <div>(* 직업능력개발 교육비 952,000원 지원)</div>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                @endif
+                                <td>
+                                    @if(empty($cert_apply))
+                                        <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
+                                    @else
+                                        <a href="javascript:go_product('',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                    @endif
+                                </td>
+                            </tr>
+
                         </table>
                     </div>
 
@@ -339,60 +342,64 @@
                             <col width="20%" />
                             <col width="*" />
                             <col width="25%" />
-                            <c:choose>
-                                <c:when test="${armCount>0}">
-                                    <!--인증후-->
-                                    <tr>
-                                        <th>토목직 교재 미포함<br />
-                                            구매가격</th>
-                                        <td>
-                                            <ul class="price">
-                                                <li class="liSty1">990,000원</li>
-                                                <li class="liSty2">본인부담 : 198,000원
-                                                    <div>(* 직업능력개발 교육비 792,000원 지원)</div>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                        <td><a href="javascript:yearpackageDetail('007','Y201900010')"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a></td>
-                                    </tr>
-                                    <tr>
-                                        <th>토목직 교재 포함<br />
-                                            구매가격<br />
-                                            (기본이론서)</th>
-                                        <td>
-                                            <ul class="price">
-                                                <li class="liSty1">1,190,000원</li>
-                                                <li class="liSty2">본인부담 : 238,000원
-                                                    <div>(* 직업능력개발 교육비 952,000원 지원)</div>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                        <td><a href="javascript:yearpackageDetail('007','Y201900011')"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a></td>
-                                    </tr>
-                                </c:when>
-                                <c:otherwise>
-                                    <!--인증전-->
-                                    <tr>
-                                        <th>토목직 교재 미포함<br />
-                                            구매가격</th>
-                                        <td class="before">
-                                            가입/인증 완료 시<br />
-                                            윌비스 PASS 금액이 공개됩니다.
-                                        </td>
-                                        <td><a href="javascript:openArmConfirm(3);"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a></td>
-                                    </tr>
-                                    <tr>
-                                        <th>토목직 교재 포함<br />
-                                            구매가격<br />
-                                            (기본이론서)</th>
-                                        <td class="before">
-                                            가입/인증 완료 시<br />
-                                            윌비스 PASS 금액이 공개됩니다.
-                                        </td>
-                                        <td><a href="javascript:openArmConfirm(3);"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a></td>
-                                    </tr>
-                                </c:otherwise>
-                            </c:choose>
+
+                            <!--인증후-->
+                            <tr>
+                                <th>토목직 교재 미포함<br />
+                                    구매가격</th>
+
+                                @if(empty($cert_apply))
+                                    <td class="before">
+                                        가입/인증 완료 시<br />윌비스 PASS 금액이 공개됩니다.
+                                    </td>
+                                @else
+                                    <td>
+                                        <ul class="price">
+                                            <li class="liSty1">990,000원</li>
+                                            <li class="liSty2">본인부담 : 198,000원
+                                                <div>(* 직업능력개발 교육비 792,000원 지원)</div>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                @endif
+
+                                <td>
+                                    @if(empty($cert_apply))
+                                        <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
+                                    @else
+                                        <a href="javascript:go_product('',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                    @endif
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>토목직 교재 포함<br />
+                                    구매가격<br />
+                                    (기본이론서)</th>
+
+                                @if(empty($cert_apply))
+                                    <td class="before">
+                                        가입/인증 완료 시<br />윌비스 PASS 금액이 공개됩니다.
+                                    </td>
+                                @else
+                                    <td>
+                                        <ul class="price">
+                                            <li class="liSty1">1,190,000원</li>
+                                            <li class="liSty2">본인부담 : 238,000원
+                                                <div>(* 직업능력개발 교육비 952,000원 지원)</div>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                @endif
+
+                                <td>
+                                    @if(empty($cert_apply))
+                                        <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
+                                    @else
+                                        <a href="javascript:go_product('',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                    @endif
+                                </td>
+                            </tr>
+
                         </table>
                     </div>
 
@@ -401,60 +408,64 @@
                             <col width="20%" />
                             <col width="*" />
                             <col width="25%" />
-                            <c:choose>
-                                <c:when test="${armCount>0}">
-                                    <!--인증후-->
-                                    <tr>
-                                        <th>전기직 교재 미포함<br />
-                                            구매가격</th>
-                                        <td>
-                                            <ul class="price">
-                                                <li class="liSty1">990,000원</li>
-                                                <li class="liSty2">본인부담 : 198,000원
-                                                    <div>(* 직업능력개발 교육비 792,000원 지원)</div>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                        <td><a href="javascript:yearpackageDetail('007','Y201900012')"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a></td>
-                                    </tr>
-                                    <tr>
-                                        <th>전기직 교재 포함<br />
-                                            구매가격<br />
-                                            (기본이론서)</th>
-                                        <td>
-                                            <ul class="price">
-                                                <li class="liSty1">1,190,000원</li>
-                                                <li class="liSty2">본인부담 : 238,000원
-                                                    <div>(* 직업능력개발 교육비 952,000원 지원)</div>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                        <td><a href="javascript:yearpackageDetail('007','Y201900013')"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a></td>
-                                    </tr>
-                                </c:when>
-                                <c:otherwise>
-                                    <!--인증전-->
-                                    <tr>
-                                        <th>전기직 교재 미포함<br />
-                                            구매가격</th>
-                                        <td class="before">
-                                            가입/인증 완료 시<br />
-                                            윌비스 PASS 금액이 공개됩니다.
-                                        </td>
-                                        <td><a href="javascript:openArmConfirm(4);"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a></td>
-                                    </tr>
-                                    <tr>
-                                        <th>전기직 교재 포함<br />
-                                            구매가격<br />
-                                            (기본이론서)</th>
-                                        <td class="before">
-                                            가입/인증 완료 시<br />
-                                            윌비스 PASS 금액이 공개됩니다.
-                                        </td>
-                                        <td><a href="javascript:openArmConfirm(4);"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a></td>
-                                    </tr>
-                                </c:otherwise>
-                            </c:choose>
+
+                            <!--인증후-->
+                            <tr>
+                                <th>전기직 교재 미포함<br />
+                                    구매가격</th>
+
+                                @if(empty($cert_apply))
+                                    <td class="before">
+                                        가입/인증 완료 시<br />윌비스 PASS 금액이 공개됩니다.
+                                    </td>
+                                @else
+                                    <td>
+                                        <ul class="price">
+                                            <li class="liSty1">990,000원</li>
+                                            <li class="liSty2">본인부담 : 198,000원
+                                                <div>(* 직업능력개발 교육비 792,000원 지원)</div>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                @endif
+
+                                <td>
+                                    @if(empty($cert_apply))
+                                        <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
+                                    @else
+                                        <a href="javascript:go_product('',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                    @endif
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>전기직 교재 포함<br />
+                                    구매가격<br />
+                                    (기본이론서)</th>
+
+                                @if(empty($cert_apply))
+                                    <td class="before">
+                                        가입/인증 완료 시<br />윌비스 PASS 금액이 공개됩니다.
+                                    </td>
+                                @else
+                                    <td>
+                                        <ul class="price">
+                                            <li class="liSty1">1,190,000원</li>
+                                            <li class="liSty2">본인부담 : 238,000원
+                                                <div>(* 직업능력개발 교육비 952,000원 지원)</div>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                @endif
+
+                                <td>
+                                    @if(empty($cert_apply))
+                                        <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
+                                    @else
+                                        <a href="javascript:go_product('',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                    @endif
+                                </td>
+                            </tr>
+
                         </table>
                     </div>
 
@@ -463,60 +474,63 @@
                             <col width="20%" />
                             <col width="*" />
                             <col width="25%" />
-                            <c:choose>
-                                <c:when test="${armCount>0}">
-                                    <!--인증후-->
-                                    <tr>
-                                        <th>전자직 교재 미포함<br />
-                                            구매가격</th>
-                                        <td>
-                                            <ul class="price">
-                                                <li class="liSty1">990,000원</li>
-                                                <li class="liSty2">본인부담 : 198,000원
-                                                    <div>(* 직업능력개발 교육비 792,000원 지원)</div>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                        <td><a href="javascript:yearpackageDetail('007','Y201900014')"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a></td>
-                                    </tr>
-                                    <tr>
-                                        <th>전자직 교재 포함<br />
-                                            구매가격<br />
-                                            (기본이론서)</th>
-                                        <td>
-                                            <ul class="price">
-                                                <li class="liSty1">1,190,000원</li>
-                                                <li class="liSty2">본인부담 : 238,000원
-                                                    <div>(* 직업능력개발 교육비 952,000원 지원)</div>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                        <td><a href="javascript:yearpackageDetail('007','Y201900015')"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a></td>
-                                    </tr>
-                                </c:when>
-                                <c:otherwise>
-                                    <!--인증전-->
-                                    <tr>
-                                        <th>전자직 교재 미포함<br />
-                                            구매가격</th>
-                                        <td class="before">
-                                            가입/인증 완료 시<br />
-                                            윌비스 PASS 금액이 공개됩니다.
-                                        </td>
-                                        <td><a href="javascript:openArmConfirm(5);"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a></td>
-                                    </tr>
-                                    <tr>
-                                        <th>전자직 교재 포함<br />
-                                            구매가격<br />
-                                            (기본이론서)</th>
-                                        <td class="before">
-                                            가입/인증 완료 시<br />
-                                            윌비스 PASS 금액이 공개됩니다.
-                                        </td>
-                                        <td><a href="javascript:openArmConfirm(5);"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a></td>
-                                    </tr>
-                                </c:otherwise>
-                            </c:choose>
+
+                            <!--인증후-->
+                            <tr>
+                                <th>전자직 교재 미포함<br />
+                                    구매가격</th>
+
+                                @if(empty($cert_apply))
+                                    <td class="before">
+                                        가입/인증 완료 시<br />윌비스 PASS 금액이 공개됩니다.
+                                    </td>
+                                @else
+                                    <td>
+                                        <ul class="price">
+                                            <li class="liSty1">990,000원</li>
+                                            <li class="liSty2">본인부담 : 198,000원
+                                                <div>(* 직업능력개발 교육비 792,000원 지원)</div>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                @endif
+
+                                <td>
+                                    @if(empty($cert_apply))
+                                        <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
+                                    @else
+                                        <a href="javascript:go_product('',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                    @endif
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>전자직 교재 포함<br />
+                                    구매가격<br />
+                                    (기본이론서)</th>
+
+                                @if(empty($cert_apply))
+                                    <td class="before">
+                                        가입/인증 완료 시<br />윌비스 PASS 금액이 공개됩니다.
+                                    </td>
+                                @else
+                                    <td>
+                                        <ul class="price">
+                                            <li class="liSty1">1,190,000원</li>
+                                            <li class="liSty2">본인부담 : 238,000원
+                                                <div>(* 직업능력개발 교육비 952,000원 지원)</div>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                @endif
+                                <td>
+                                    @if(empty($cert_apply))
+                                        <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
+                                    @else
+                                        <a href="javascript:go_product('',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                    @endif
+                                </td>
+                            </tr>
+
                         </table>
                     </div>
 
@@ -525,60 +539,63 @@
                             <col width="20%" />
                             <col width="*" />
                             <col width="25%" />
-                            <c:choose>
-                                <c:when test="${armCount>0}">
-                                    <!--인증후-->
-                                    <tr>
-                                        <th>통신직 교재 미포함<br />
-                                            구매가격</th>
-                                        <td>
-                                            <ul class="price">
-                                                <li class="liSty1">990,000원</li>
-                                                <li class="liSty2">본인부담 : 198,000원
-                                                    <div>(* 직업능력개발 교육비 792,000원 지원)</div>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                        <td><a href="javascript:yearpackageDetail('007','Y201900016')"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a></td>
-                                    </tr>
-                                    <tr>
-                                        <th>통신직 교재 포함<br />
-                                            구매가격<br />
-                                            (기본이론서)</th>
-                                        <td>
-                                            <ul class="price">
-                                                <li class="liSty1">1,190,000원</li>
-                                                <li class="liSty2">본인부담 : 238,000원
-                                                    <div>(* 직업능력개발 교육비 952,000원 지원)</div>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                        <td><a href="javascript:yearpackageDetail('007','Y201900017')"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a></td>
-                                    </tr>
-                                </c:when>
-                                <c:otherwise>
-                                    <!--인증전-->
-                                    <tr>
-                                        <th>통신직 교재 미포함<br />
-                                            구매가격</th>
-                                        <td class="before">
-                                            가입/인증 완료 시<br />
-                                            윌비스 PASS 금액이 공개됩니다.
-                                        </td>
-                                        <td><a href="javascript:openArmConfirm(6);"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a></td>
-                                    </tr>
-                                    <tr>
-                                        <th>통신직 교재 포함<br />
-                                            구매가격<br />
-                                            (기본이론서)</th>
-                                        <td class="before">
-                                            가입/인증 완료 시<br />
-                                            윌비스 PASS 금액이 공개됩니다.
-                                        </td>
-                                        <td><a href="javascript:openArmConfirm(6);"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a></td>
-                                    </tr>
-                                </c:otherwise>
-                            </c:choose>
+                            <!--인증후-->
+                            <tr>
+                                <th>통신직 교재 미포함<br />
+                                    구매가격</th>
+
+                                @if(empty($cert_apply))
+                                    <td class="before">
+                                        가입/인증 완료 시<br />윌비스 PASS 금액이 공개됩니다.
+                                    </td>
+                                @else
+                                    <td>
+                                        <ul class="price">
+                                            <li class="liSty1">990,000원</li>
+                                            <li class="liSty2">본인부담 : 198,000원
+                                                <div>(* 직업능력개발 교육비 792,000원 지원)</div>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                @endif
+
+                                <td>
+                                    @if(empty($cert_apply))
+                                        <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
+                                    @else
+                                        <a href="javascript:go_product('',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                    @endif
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>통신직 교재 포함<br />
+                                    구매가격<br />
+                                    (기본이론서)</th>
+
+                                @if(empty($cert_apply))
+                                    <td class="before">
+                                        가입/인증 완료 시<br />윌비스 PASS 금액이 공개됩니다.
+                                    </td>
+                                @else
+                                    <td>
+                                        <ul class="price">
+                                            <li class="liSty1">1,190,000원</li>
+                                            <li class="liSty2">본인부담 : 238,000원
+                                                <div>(* 직업능력개발 교육비 952,000원 지원)</div>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                @endif
+
+                                <td>
+                                    @if(empty($cert_apply))
+                                        <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
+                                    @else
+                                        <a href="javascript:go_product('',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                    @endif
+                                </td>
+                            </tr>
+
                         </table>
                     </div>
 
@@ -587,60 +604,63 @@
                             <col width="20%" />
                             <col width="*" />
                             <col width="25%" />
-                            <c:choose>
-                                <c:when test="${armCount>0}">
-                                    <!--인증후-->
-                                    <tr>
-                                        <th>일반기계직 교재 미포함<br />
-                                            구매가격</th>
-                                        <td>
-                                            <ul class="price">
-                                                <li class="liSty1">990,000원</li>
-                                                <li class="liSty2">본인부담 : 198,000원
-                                                    <div>(* 직업능력개발 교육비 792,000원 지원)</div>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                        <td><a href="javascript:yearpackageDetail('007','Y201900018')"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a></td>
-                                    </tr>
-                                    <tr>
-                                        <th>일반기계직 교재 포함<br />
-                                            구매가격<br />
-                                            (기본이론서)</th>
-                                        <td>
-                                            <ul class="price">
-                                                <li class="liSty1">1,190,000원</li>
-                                                <li class="liSty2">본인부담 : 238,000원
-                                                    <div>(* 직업능력개발 교육비 952,000원 지원)</div>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                        <td><a href="javascript:yearpackageDetail('007','Y201900019')"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a></td>
-                                    </tr>
-                                </c:when>
-                                <c:otherwise>
-                                    <!--인증전-->
-                                    <tr>
-                                        <th>일반기계직 교재 미포함<br />
-                                            구매가격</th>
-                                        <td class="before">
-                                            가입/인증 완료 시<br />
-                                            윌비스 PASS 금액이 공개됩니다.
-                                        </td>
-                                        <td><a href="javascript:openArmConfirm(7);"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a></td>
-                                    </tr>
-                                    <tr>
-                                        <th>일반기계직 교재 포함<br />
-                                            구매가격<br />
-                                            (기본이론서)</th>
-                                        <td class="before">
-                                            가입/인증 완료 시<br />
-                                            윌비스 PASS 금액이 공개됩니다.
-                                        </td>
-                                        <td><a href="javascript:openArmConfirm(7);"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a></td>
-                                    </tr>
-                                </c:otherwise>
-                            </c:choose>
+
+                            <!--인증후-->
+                            <tr>
+                                <th>일반기계직 교재 미포함<br />
+                                    구매가격</th>
+
+                                @if(empty($cert_apply))
+                                    <td class="before">
+                                        가입/인증 완료 시<br />윌비스 PASS 금액이 공개됩니다.
+                                    </td>
+                                @else
+                                    <td>
+                                        <ul class="price">
+                                            <li class="liSty1">990,000원</li>
+                                            <li class="liSty2">본인부담 : 198,000원
+                                                <div>(* 직업능력개발 교육비 792,000원 지원)</div>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                @endif
+                                <td>
+                                    @if(empty($cert_apply))
+                                        <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
+                                    @else
+                                        <a href="javascript:go_product('',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                    @endif
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>일반기계직 교재 포함<br />
+                                    구매가격<br />
+                                    (기본이론서)</th>
+
+                                @if(empty($cert_apply))
+                                    <td class="before">
+                                        가입/인증 완료 시<br />윌비스 PASS 금액이 공개됩니다.
+                                    </td>
+                                @else
+                                    <td>
+                                        <ul class="price">
+                                            <li class="liSty1">1,190,000원</li>
+                                            <li class="liSty2">본인부담 : 238,000원
+                                                <div>(* 직업능력개발 교육비 952,000원 지원)</div>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                @endif
+
+                                <td>
+                                    @if(empty($cert_apply))
+                                        <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
+                                    @else
+                                        <a href="javascript:go_product('',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                    @endif
+                                </td>
+                            </tr>
+
                         </table>
                     </div>
 
@@ -649,71 +669,75 @@
                             <col width="20%" />
                             <col width="*" />
                             <col width="25%" />
-                            <c:choose>
-                                <c:when test="${armCount>0}">
-                                    <!--인증후-->
-                                    <tr>
-                                        <th>총포직 교재 미포함<br />
-                                            구매가격</th>
-                                        <td>
-                                            <ul class="price">
-                                                <li class="liSty1">990,000원</li>
-                                                <li class="liSty2">본인부담 : 198,000원
-                                                    <div>(* 직업능력개발 교육비 792,000원 지원)</div>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                        <td><a href="javascript:yearpackageDetail('007','Y201900020')"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a></td>
-                                    </tr>
-                                    <tr>
-                                        <th>총포직 교재 포함<br />
-                                            구매가격<br />
-                                            (기본이론서)</th>
-                                        <td>
-                                            <ul class="price">
-                                                <li class="liSty1">1,190,000원</li>
-                                                <li class="liSty2">본인부담 : 238,000원
-                                                    <div>(* 직업능력개발 교육비 952,000원 지원)</div>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                        <td><a href="javascript:yearpackageDetail('007','Y201900021')"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a></td>
-                                    </tr>
-                                </c:when>
-                                <c:otherwise>
-                                    <!--인증전-->
-                                    <tr>
-                                        <th>총포직 교재 미포함<br />
-                                            구매가격</th>
-                                        <td class="before">
-                                            가입/인증 완료 시<br />
-                                            윌비스 PASS 금액이 공개됩니다.
-                                        </td>
-                                        <td><a href="javascript:openArmConfirm(8);"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a></td>
-                                    </tr>
-                                    <tr>
-                                        <th>총포직 교재 포함<br />
-                                            구매가격<br />
-                                            (기본이론서)</th>
-                                        <td class="before">
-                                            가입/인증 완료 시<br />
-                                            윌비스 PASS 금액이 공개됩니다.
-                                        </td>
-                                        <td><a href="javascript:openArmConfirm(8);"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a></td>
-                                    </tr>
-                                </c:otherwise>
-                            </c:choose>
+
+                            <!--인증후-->
+                            <tr>
+                                <th>총포직 교재 미포함<br />
+                                    구매가격</th>
+
+                                @if(empty($cert_apply))
+                                    <td class="before">
+                                        가입/인증 완료 시<br />윌비스 PASS 금액이 공개됩니다.
+                                    </td>
+                                @else
+                                    <td>
+                                        <ul class="price">
+                                            <li class="liSty1">990,000원</li>
+                                            <li class="liSty2">본인부담 : 198,000원
+                                                <div>(* 직업능력개발 교육비 792,000원 지원)</div>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                @endif
+
+                                <td>
+                                    @if(empty($cert_apply))
+                                        <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
+                                    @else
+                                        <a href="javascript:go_product('',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                    @endif
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>총포직 교재 포함<br />
+                                    구매가격<br />
+                                    (기본이론서)</th>
+
+                                @if(empty($cert_apply))
+                                    <td class="before">
+                                        가입/인증 완료 시<br />윌비스 PASS 금액이 공개됩니다.
+                                    </td>
+                                @else
+                                    <td>
+                                        <ul class="price">
+                                            <li class="liSty1">1,190,000원</li>
+                                            <li class="liSty2">본인부담 : 238,000원
+                                                <div>(* 직업능력개발 교육비 952,000원 지원)</div>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                @endif
+
+                                <td>
+                                    @if(empty($cert_apply))
+                                        <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
+                                    @else
+                                        <a href="javascript:go_product('',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                    @endif
+                                </td>
+                            </tr>
+
                         </table>
                     </div>
 
                     <div class="check">
-                        <label><input id="chk4" name="chk4"  type="checkbox" value="" /> 상품 이용에 따른 유의 사항을 모두 확인하였으며, 이에 동의합니다.</label> <a onclick="go_popup()">이용안내 확인하기</a>
+                        <label><input id="chk0" name="chk0"  type="checkbox" value="" /> 상품 이용에 따른 유의 사항을 모두 확인하였으며, 이에 동의합니다.</label> <a onclick="go_popup()">이용안내 확인하기</a>
                     </div>
                 </div><!--fpLecinfo//-->
             </div><!--FreepassLec//-->
 
             <div class="FreepassLec" id="passLec02">
-                <h3>소방직 | 윌비스 PASS</h3>
+                <h3>소방직</h3>
                 <div class="fpLecinfo">
                     <p>
                         2019년도 소방공무원 5,200명 확대 채용 예정 ! <br />
@@ -724,134 +748,141 @@
                         <col width="20%" />
                         <col width="*" />
                         <col width="25%" />
-                        <c:choose>
-                            <c:when test="${armCount>0}">
-                                <!--인증후-->
-                                <tr>
-                                    <th>교재 미포함<br />
-                                        구매가격</th>
-                                    <td>
-                                        <ul class="price">
-                                            <li class="liSty1">890,000원</li>
-                                            <li class="liSty2">본인부담 : 178,000원
-                                                <div>(* 직업능력개발 교육비 712,000원 지원)</div>
-                                            </li>
-                                        </ul>
-                                    </td>
-                                    <td><a href="javascript:yearpackageDetail('006','Y201900027')"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a></td>
-                                </tr>
-                                <tr>
-                                    <th>교재 포함<br />
-                                        구매가격<br />
-                                        (기본이론서)</th>
-                                    <td>
-                                        <ul class="price">
-                                            <li class="liSty1">1,090,000원</li>
-                                            <li class="liSty2">본인부담 : 218,000원
-                                                <div>(* 직업능력개발 교육비 872,000원 지원)</div>
-                                            </li>
-                                        </ul>
-                                    </td>
-                                    <td><a href="javascript:yearpackageDetail('006','Y201900026')"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a></td>
-                                </tr>
-                            </c:when>
-                            <c:otherwise>
-                                <!--인증전-->
-                                <tr>
-                                    <th>교재 미포함<br />
-                                        구매가격</th>
-                                    <td class="before">
-                                        가입/인증 완료 시<br />
-                                        윌비스 PASS 금액이 공개됩니다.
-                                    </td>
-                                    <td><a href="javascript:openArmConfirm(9);"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a></td>
-                                </tr>
-                                <tr>
-                                    <th>교재 포함<br />
-                                        구매가격<br />
-                                        (기본이론서)</th>
-                                    <td class="before">
-                                        가입/인증 완료 시<br />
-                                        윌비스 PASS 금액이 공개됩니다.
-                                    </td>
-                                    <td><a href="javascript:openArmConfirm(9);"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a></td>
-                                </tr>
-                            </c:otherwise>
-                        </c:choose>
+
+                        <!--인증후-->
+                        <tr>
+                            <th>교재 미포함<br />
+                                구매가격</th>
+
+                            @if(empty($cert_apply))
+                                <td class="before">
+                                    가입/인증 완료 시<br />윌비스 PASS 금액이 공개됩니다.
+                                </td>
+                            @else
+                                <td>
+                                    <ul class="price">
+                                        <li class="liSty1">890,000원</li>
+                                        <li class="liSty2">본인부담 : 178,000원
+                                            <div>(* 직업능력개발 교육비 712,000원 지원)</div>
+                                        </li>
+                                    </ul>
+                                </td>
+                            @endif
+
+                            <td>
+                                @if(empty($cert_apply))
+                                    <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
+                                @else
+                                    <a href="javascript:go_product('',1)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>교재 포함<br />
+                                구매가격<br />
+                                (기본이론서)</th>
+
+                            @if(empty($cert_apply))
+                                <td class="before">
+                                    가입/인증 완료 시<br />윌비스 PASS 금액이 공개됩니다.
+                                </td>
+                            @else
+                                <td>
+                                    <ul class="price">
+                                        <li class="liSty1">1,090,000원</li>
+                                        <li class="liSty2">본인부담 : 218,000원
+                                            <div>(* 직업능력개발 교육비 872,000원 지원)</div>
+                                        </li>
+                                    </ul>
+                                </td>
+                            @endif
+
+                            <td>
+                                @if(empty($cert_apply))
+                                    <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
+                                @else
+                                    <a href="javascript:go_product('',1)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                @endif
+                            </td>
+                        </tr>
+
                     </table>
                     <div class="check">
-                        <label><input id="chk3"  name="chk3"  type="checkbox" value="" /> 상품 이용에 따른 유의 사항을 모두 확인하였으며, 이에 동의합니다.</label> <a onclick="go_popup()">이용안내 확인하기</a>
+                        <label><input id="chk1"  name="chk1"  type="checkbox" value="" /> 상품 이용에 따른 유의 사항을 모두 확인하였으며, 이에 동의합니다.</label> <a onclick="go_popup()">이용안내 확인하기</a>
                     </div>
                 </div><!--fpLecinfo//-->
             </div><!--FreepassLec//-->
 
             <div class="FreepassLec" id="passLec03">
-                <h3>기술직 | 윌비스 PASS</h3>
+                <h3>기술직</h3>
                 <div class="fpLecinfo">
                     <p>
                         직렬별 전문가로 구성된 기술직 TOP 교수진 !<br />
                         기술직에 최적화된 빠른 합격 노하우 전수 &amp; 초보부터 전공자까지 모두 이해 가능한 명 강의 !<br />
                         총 7개 직렬 수험준비 가능 !<br />
-                        <strong>→ 전기, 전자, 통신, 토목, 기계, 보건, 전산</strong>
+                        → 전기, 전자, 통신, 토목, 기계, 보건, 전산
                     </p>
                     <table>
                         <col width="20%" />
                         <col width="*" />
                         <col width="25%" />
-                        <c:choose>
-                            <c:when test="${armCount>0}">
-                                <!--인증후-->
-                                <tr>
-                                    <th>교재 미포함<br />
-                                        구매가격</th>
-                                    <td>
-                                        <ul class="price">
-                                            <li class="liSty1">990,000원</li>
-                                            <li class="liSty2">본인부담 : 198,000원
-                                                <div>(* 직업능력개발 교육비 792,000원 지원)</div>
-                                            </li>
-                                        </ul>
-                                    </td>
-                                    <td><a href="javascript:yearpackageDetail('011','Y201900025')"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a></td>
-                                </tr>
-                                <tr>
-                                    <th>교재 포함<br />
-                                        구매가격<br />
-                                        (기본이론서)</th>
-                                    <td>
-                                        <ul class="price">
-                                            <li class="liSty1">1,190,000원</li>
-                                            <li class="liSty2">본인부담 : 238,000원
-                                                <div>(* 직업능력개발 교육비 952,000원 지원)</div>
-                                            </li>
-                                        </ul>
-                                    </td>
-                                    <td><a href="javascript:yearpackageDetail('011','Y201900024')"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a></td>
-                                </tr>
-                            </c:when>
-                            <c:otherwise>
-                                <!--인증전-->
-                                <tr>
-                                    <th>교재 미포함<br />
-                                        구매가격</th>
-                                    <td class="before">
-                                        가입/인증 완료 시<br />
-                                        윌비스 PASS 금액이 공개됩니다.
-                                    </td>
-                                    <td><a href="javascript:openArmConfirm(10);"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a></td>
-                                </tr>
-                                <tr>
-                                    <th>교재 포함<br />
-                                        구매가격<br />
-                                        (기본이론서)</th>
-                                    <td class="before">
-                                        가입/인증 완료 시<br />
-                                        윌비스 PASS 금액이 공개됩니다.
-                                    </td>
-                                    <td><a href="javascript:openArmConfirm(10);"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a></td>
-                                </tr>
-                            </c:otherwise>
-                        </c:choose>
+
+                        <!--인증후-->
+                        <tr>
+                            <th>교재 미포함<br />
+                                구매가격</th>
+
+                            @if(empty($cert_apply))
+                                <td class="before">
+                                    가입/인증 완료 시<br />윌비스 PASS 금액이 공개됩니다.
+                                </td>
+                            @else
+                                <td>
+                                    <ul class="price">
+                                        <li class="liSty1">990,000원</li>
+                                        <li class="liSty2">본인부담 : 198,000원
+                                            <div>(* 직업능력개발 교육비 792,000원 지원)</div>
+                                        </li>
+                                    </ul>
+                                </td>
+                            @endif
+
+                            <td>
+                                @if(empty($cert_apply))
+                                    <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
+                                @else
+                                    <a href="javascript:go_product('',2)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>교재 포함<br />
+                                구매가격<br />
+                                (기본이론서)</th>
+
+                            @if(empty($cert_apply))
+                                <td class="before">
+                                    가입/인증 완료 시<br />윌비스 PASS 금액이 공개됩니다.
+                                </td>
+                            @else
+                                <td>
+                                    <ul class="price">
+                                        <li class="liSty1">1,190,000원</li>
+                                        <li class="liSty2">본인부담 : 238,000원
+                                            <div>(* 직업능력개발 교육비 952,000원 지원)</div>
+                                        </li>
+                                    </ul>
+                                </td>
+                            @endif
+
+                            <td>
+                                @if(empty($cert_apply))
+                                    <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
+                                @else
+                                    <a href="javascript:go_product('',2)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                @endif
+                            </td>
+                        </tr>
                     </table>
                     <div class="check">
                         <label><input id="chk2"  name="chk2" type="checkbox" value="" /> 상품 이용에 따른 유의 사항을 모두 확인하였으며, 이에 동의합니다.</label> <a onclick="go_popup()">이용안내 확인하기</a>
@@ -860,7 +891,7 @@
             </div><!--FreepassLec//-->
 
             <div class="FreepassLec" id="passLec04">
-                <h3>일반행정직 | 윌비스 PASS</h3>
+                <h3>일반행정직</h3>
                 <div class="fpLecinfo">
                     <p>
                         2019년도 공무원 3만 3,000명 확대 채용 예정 ! <br />
@@ -871,139 +902,147 @@
                         <col width="20%" />
                         <col width="*" />
                         <col width="25%" />
-                        <c:choose>
-                            <c:when test="${armCount>0}">
-                                <!--인증후-->
-                                <tr>
-                                    <th>교재 미포함<br />
-                                        구매가격</th>
-                                    <td>
-                                        <ul class="price">
-                                            <li class="liSty1">990,000원</li>
-                                            <li class="liSty2">본인부담 : 198,000원
-                                                <div>(* 직업능력개발 교육비 792,000원 환급)</div>
-                                            </li>
-                                        </ul>
-                                    </td>
-                                    <td><a href="javascript:yearpackageDetail('001','Y201800012')"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a></td>
-                                </tr>
-                                <tr>
-                                    <th>교재 포함<br />
-                                        구매가격<br />
-                                        (기본이론서)</th>
-                                    <td>
-                                        <ul class="price">
-                                            <li class="liSty1">1,190,000원</li>
-                                            <li class="liSty2">본인부담 : 238,000원
-                                                <div>(* 직업능력개발 교육비 952,000원 환급)</div>
-                                            </li>
-                                        </ul>
-                                    </td>
-                                    <td><a href="javascript:yearpackageDetail('001','Y201800013')"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a></td>
-                                </tr>
-                            </c:when>
-                            <c:otherwise>
-                                <!--인증전-->
-                                <tr>
-                                    <th>교재 미포함<br />
-                                        구매가격</th>
-                                    <td class="before">
-                                        가입/인증 완료 시<br />
-                                        윌비스 PASS 금액이 공개됩니다.
-                                    </td>
-                                    <td><a href="javascript:openArmConfirm(11);"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a></td>
-                                </tr>
-                                <tr>
-                                    <th>교재 포함<br />
-                                        구매가격<br />
-                                        (기본이론서)</th>
-                                    <td class="before">
-                                        가입/인증 완료 시<br />
-                                        윌비스 PASS 금액이 공개됩니다.
-                                    </td>
-                                    <td><a href="javascript:openArmConfirm(11);"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a></td>
-                                </tr>
-                            </c:otherwise>
-                        </c:choose>
+
+                        <!--인증후-->
+                        <tr>
+                            <th>교재 미포함<br />
+                                구매가격</th>
+
+                            @if(empty($cert_apply))
+                                <td class="before">
+                                    가입/인증 완료 시<br />윌비스 PASS 금액이 공개됩니다.
+                                </td>
+                            @else
+                                <td>
+                                    <ul class="price">
+                                        <li class="liSty1">990,000원</li>
+                                        <li class="liSty2">본인부담 : 198,000원
+                                            <div>(* 직업능력개발 교육비 792,000원 환급)</div>
+                                        </li>
+                                    </ul>
+                                </td>
+                            @endif
+
+                            <td>
+                                @if(empty($cert_apply))
+                                    <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
+                                @else
+                                    <a href="javascript:go_product('',3)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>교재 포함<br />
+                                구매가격<br />
+                                (기본이론서)</th>
+
+                            @if(empty($cert_apply))
+                                <td class="before">
+                                    가입/인증 완료 시<br />윌비스 PASS 금액이 공개됩니다.
+                                </td>
+                            @else
+                                <td>
+                                    <ul class="price">
+                                        <li class="liSty1">1,190,000원</li>
+                                        <li class="liSty2">본인부담 : 238,000원
+                                            <div>(* 직업능력개발 교육비 952,000원 환급)</div>
+                                        </li>
+                                    </ul>
+                                </td>
+                            @endif
+
+                            <td>
+                                @if(empty($cert_apply))
+                                    <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
+                                @else
+                                    <a href="javascript:go_product('',3)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                @endif
+                            </td>
+                        </tr>
+
                     </table>
                     <div class="check">
-                        <label><input id="chk1" name="chk1" type="checkbox" value="" /> 상품 이용에 따른 유의 사항을 모두 확인하였으며, 이에 동의합니다.</label> <a onclick="go_popup()">이용안내 확인하기</a>
+                        <label><input id="chk3" name="chk3" type="checkbox" value="" /> 상품 이용에 따른 유의 사항을 모두 확인하였으며, 이에 동의합니다.</label> <a onclick="go_popup()">이용안내 확인하기</a>
                     </div>
                 </div><!--fpLecinfo//-->
             </div><!--FreepassLec//-->
 
             <div class="FreepassLec" id="passLec05">
-                <h3>소방자격증 | 윌비스 PASS<span>※ 소방자격증의 경우 수강기간 1년 / 10만 포인트 지급</span></h3>
+                <h3>소방자격증 <span>※ 소방자격증의 경우 수강기간 1년 / 10만 포인트 지급</span></h3>
                 <div class="fpLecinfo">
                     <p>
-                        윌비스× 대영소방전문학원 !<br />
+                        윌비스 <strong>×</strong> 대영소방전문학원 !<br />
                         소방자격증 스페셜리스트, 김종상 교수의 압도적인 강의력 !<br />
                         김종상 교수와 함께라면 소방자격증 단기간 취득 가능 !<br />
-                        <strong>중/장기 복무 전역(예정) 간부 필수 취득 자격증</strong>
+                        → 중/장기 복무 전역(예정) 간부 필수 취득 자격증
+
                     </p>
                     <table>
                         <col width="20%" />
                         <col width="*" />
                         <col width="25%" />
-                        <c:choose>
-                            <c:when test="${armCount>0}">
-                                <!--인증후-->
-                                <tr>
-                                    <th>소방설비(산업)기사 '전기'<br />
-                                        필기+실기 (교재포함)<br />
-                                        구매가격</th>
-                                    <td>
-                                        <ul class="price">
-                                            <li class="liSty1">1,090,000원</li>
-                                            <li class="liSty2">본인부담 : 218,000원
-                                                <div>(* 직업능력개발 교육비 872,000원 환급원)</div>
-                                            </li>
-                                        </ul>
-                                    </td>
-                                    <td><a href="javascript:yearpackageDetail('001','Y201900028')"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a></td>
-                                </tr>
-                                <tr>
-                                    <th>소방설비(산업)기사 '기계'<br />
-                                        필기+실기 (교재포함)<br />
-                                        구매가격
-                                    </th>
-                                    <td>
-                                        <ul class="price">
-                                            <li class="liSty1">1,190,000원</li>
-                                            <li class="liSty2">본인부담 : 218,000원
-                                                <div>(* 직업능력개발 교육비 872,000원 환급)</div>
-                                            </li>
-                                        </ul>
-                                    </td>
-                                    <td><a href="javascript:yearpackageDetail('001','Y201900029')"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a></td>
-                                </tr>
-                            </c:when>
-                            <c:otherwise>
-                                <!--인증전-->
-                                <tr>
-                                    <th>교재 미포함<br />
-                                        구매가격</th>
-                                    <td class="before">
-                                        가입/인증 완료 시<br />
-                                        윌비스 PASS 금액이 공개됩니다.
-                                    </td>
-                                    <td><a href="javascript:openArmConfirm(12);"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a></td>
-                                </tr>
-                                <tr>
-                                    <th>교재 포함<br />
-                                        구매가격<br />
-                                        (기본이론서)</th>
-                                    <td class="before">
-                                        가입/인증 완료 시<br />
-                                        윌비스 PASS 금액이 공개됩니다.
-                                    </td>
-                                    <td><a href="javascript:openArmConfirm(12);"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a></td>
-                                </tr>
-                            </c:otherwise>
-                        </c:choose>
+
+                        <!--인증후-->
+                        <tr>
+                            <th>소방설비(산업)기사 '전기'<br />
+                                필기+실기 (교재포함)<br />
+                                구매가격</th>
+
+                            @if(empty($cert_apply))
+                                <td class="before">
+                                    가입/인증 완료 시<br />윌비스 PASS 금액이 공개됩니다.
+                                </td>
+                            @else
+                                <td>
+                                    <ul class="price">
+                                        <li class="liSty1">1,090,000원</li>
+                                        <li class="liSty2">본인부담 : 218,000원
+                                            <div>(* 직업능력개발 교육비 872,000원 환급원)</div>
+                                        </li>
+                                    </ul>
+                                </td>
+                            @endif
+
+                            <td>
+                                @if(empty($cert_apply))
+                                    <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
+                                @else
+                                    <a href="javascript:go_product('',4)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>소방설비(산업)기사 '기계'<br />
+                                필기+실기 (교재포함)<br />
+                                구매가격
+                            </th>
+
+                            @if(empty($cert_apply))
+                                <td class="before">
+                                    가입/인증 완료 시<br />윌비스 PASS 금액이 공개됩니다.
+                                </td>
+                            @else
+                                <td>
+                                    <ul class="price">
+                                        <li class="liSty1">1,190,000원</li>
+                                        <li class="liSty2">본인부담 : 218,000원
+                                            <div>(* 직업능력개발 교육비 872,000원 환급)</div>
+                                        </li>
+                                    </ul>
+                                </td>
+                            @endif
+
+                            <td>
+                                @if(empty($cert_apply))
+                                    <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
+                                @else
+                                    <a href="javascript:go_product('',4)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                @endif
+                            </td>
+                        </tr>
                     </table>
                     <div class="check">
-                        <label><input id="chk1" name="chk1" type="checkbox" value="" /> 상품 이용에 따른 유의 사항을 모두 확인하였으며, 이에 동의합니다.</label> <a onclick="go_popup()">이용안내 확인하기</a>
+                        <label><input id="chk4" name="chk4" type="checkbox" value="" /> 상품 이용에 따른 유의 사항을 모두 확인하였으며, 이에 동의합니다.</label> <a onclick="go_popup()">이용안내 확인하기</a>
                     </div>
                 </div><!--fpLecinfo//-->
             </div><!--FreepassLec//-->
@@ -1014,12 +1053,9 @@
                 <ul>
                     <li class="liSty1">교육과정바로가기 &gt;</li>
                     <li><a target="_blank" href="#none">공무원 / 소방자격증</a></li>
-                    <li><a target="_blank" href="#none">경찰</a></li>
+                    <li><a target="_blank" href="#none">경찰 / 해양경찰</a></li>
                 </ul>
             </div>
-
-
-
         </div><!--LAeventB03//-->
 
         <div class="LAeventB04">
@@ -1174,46 +1210,43 @@
     <script type="text/javascript">
 
         function go_popup() {
-
             var targetOffset= $(".LAeventB04").offset().top;
             $('html, body').animate({scrollTop: targetOffset}, 1000);
             //setTimeout(go_pop(), 2000);
-
-        };
+        }
         function go_pop(){
             $('#popup').bPopup();
         }
-
         function go_popup1() {
             $('#popup1').bPopup();
-        };
+        }
         function go_popup2() {
             $('#popup2').bPopup();
-        };
-        function openArmConfirm(num){
+        }
 
-            if(num != 0){
+
+        function certOpen(){
+                    {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+                    @if(empty($arr_promotion_params) === false)
+            var url = '/certApply/index/page/{{$arr_promotion_params["page"]}}/cert/{{$arr_promotion_params["cert"]}}' ;
+            window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
+            @endif
+        }
+
+        function go_product(url,num) {
+
+            if(num == ""){
                 if (!$("input:checkbox[id='chk"+num+"']").is(":checked")) {
-                    alert("이용안내의 동의 하셔야 신청이 가능합니다.");
-                    $("input[name$='agreement']")[0].focus();
+                    alert("이용안내를 동의하셔야 신청이 가능합니다.");
+                    $("input:checkbox[id='chk"+num+"']").focus();
                     return;
                 }
             }
 
-            var url = 'https://www.local.willbes.net/home/html/event_onLeaveArmyPassConfirmPop' ;
-            window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
-        }
-        function yearpackageDetail(catecode,leccode){
-            location.href="<c:url value='/yearpackagelecture/yearpackagelectureDetail.html'/>?topMenu="+catecode+"&topMenuName=&topMenuType=O&searchCategoryCode="+catecode+"&searchLeccode="+leccode+"&leftMenuLType=M0001&lecKType=Y"
-        }
-        function goFileDownload(filePath, fileName) {
-            window.open("<c:url value='/download.do'/>?path="+filePath+"&filename="+fileName);
-        }
-        function armLoginCheck() {
-            var url = window.location.pathname+window.location.search;
-            $("#url_path").val(url);
-            $('#armFrm').attr("action","<c:url value='/user/confirmEventLogin'/>");
-            $('#armFrm').submit();
+            if(url != '') {
+                var win = window.open(url, '_blank');
+                win.focus();
+            }
         }
 
 
@@ -1243,36 +1276,29 @@
         );
     </script>
 
-    <script src="/public/js/willbes/jquery.nav.js"></script>
-    <script>
-        $( document ).ready( function() {
-            var jbOffset = $( '.rLnb' ).offset();
-            $( window ).scroll( function() {
-                if ( $( document ).scrollTop() > jbOffset.top ) {
-                    $( '.rLnb' ).addClass( 'rLnb_sectionFixed' );
-                }
-                else {
-                    $( '.rLnb' ).removeClass( 'rLnb_sectionFixed' );
-                }
-            });
-        } );
-        $(document).ready(function() {
-            $('.rLnb').onePageNav({
-                currentClass: 'hvr-shutter-out-horizontal_active'
-            });
-        });
-
-    </script>
-
-    <script src="/public/js/willbes/jquery.bpopup.min.js"></script>
     <script>
         $(function(e){
-            var targetOffset= $("#gridContainer").offset().top;
-            $('html, body').animate({scrollTop: targetOffset}, 1000);
+            var targetOffset= $("#evtContainer").offset().top;
+            $('html, body').animate({scrollTop: targetOffset}, 700);
             /*e.preventDefault(); */
         });
 
+        $(function(){
+            var vi = 0;  // 하단에 메뉴 표시할 스크롤 위치값 지정
+            var nav_y = $(".rLnb").offset().top + $(".rLnb").height();
+
+            $(window).scroll(function(){
+                var num = $(window).scrollTop();
+                if( num > nav_y ){
+                    if( num > vi ){
+                        $(".rLnb").css({"position":"fixed","top":"20px","rigth":"20px"}).fadeIn();
+                    }else{
+                        $(".rLnb").fadeOut();
+                    }
+                }else{
+                    $(".rLnb").finish().css({"top":"100px"});
+                }
+            });
+        });
     </script>
-
-
 @stop

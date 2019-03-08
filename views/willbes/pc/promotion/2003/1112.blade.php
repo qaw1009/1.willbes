@@ -118,10 +118,11 @@
                 <li><a href="/promotion/index/cate/3001/code/1114" class="menu5">윌비스 PASS</a></li>
             </ul>            <ul class="typeB">
                 <li class="NSK-Black">전역(예정)간부 가입/인증</li>
-                <!--인증 전-->
-                <li><a href="javascript:openArmConfirm(0);">가입 및 인증하기 &gt;</a></li>
-                <!--인증 후-->
-                <li><strong>홍길동</strong>님은<br /><span>인증완료</span><br />상태입니다.</li>
+                @if(empty($cert_apply))
+                    <li><a href="javascript:certOpen();">가입 및 인증하기 &gt;</a></li>
+                @else
+                    <li><strong>{{sess_data('mem_name')}}</strong>님은<br /><span>인증완료</span><br />상태입니다.</li>
+                @endif
             </ul>
             <div>
                 <img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_q_bnr02.jpg" alt=""/>
@@ -147,8 +148,8 @@
             </ul>
             <img src="/public/img/willbes/leave_army/la_on_02.jpg"  alt="" usemap="#Mappass02"/>
             <map name="Map" id="Mappass02">
-                <area shape="rect" coords="194,1063,398,1102" href="javascript:openArmConfirm(0);"/>
-                <area shape="rect" coords="714,1063,922,1102" href="https://www.local.willbes.net/home/html/event_onLeaveArmyPassLec" />
+                <area shape="rect" coords="194,1063,398,1102" href="javascript:certOpen();"/>
+                <area shape="rect" coords="714,1063,922,1102" href="/promotion/index/cate/3001/code/1114" />
             </map>
         </div>
         <div class="LAeventA03">
@@ -158,55 +159,19 @@
     <!-- End Container -->
 
     <script type="text/javascript">
-        function openArmConfirm(){
-            var url = 'https://www.local.willbes.net/home/html/event_onLeaveArmyPassConfirmPop' ;
-            window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
+
+        function certOpen(){
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+
+            @if(empty($cert_apply) === false)
+                alert("이미 인증이 완료된 상태입니다.");return;
+            @endif
+
+            @if(empty($arr_promotion_params) === false)
+                var url = '/certApply/index/page/{{$arr_promotion_params["page"]}}/cert/{{$arr_promotion_params["cert"]}}' ;
+                window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
+            @endif
         }
-
-
-        function armLoginCheck() {
-            var url = window.location.pathname+window.location.search;
-            $("#url_path").val(url);
-            $('#armFrm').attr("action","<c:url value='/user/confirmEventLogin'/>");
-            $('#armFrm').submit();
-        }
-
-        function suvreyPop(){
-            if("<c:out value='${userInfo.USER_ID}' />" == ""){
-                alert("로그인 후 이용해주세요.");
-                return;
-            }
-            if(parseInt('${armCount}')<1){
-                alert("먼저 제대군인 인증을 해주세요.");
-                return;
-            }
-            var surveyid = 1;
-            $.ajax({
-                type: "POST",
-                url : '<c:url value="/survey/user_survey_chk"/>?SURVEYID='+surveyid,
-                dataType: "text",
-                async : false,
-                beforeSubmit: function (data, frm, opt) {
-                },
-                success: function(RES) {
-                    if($.trim(RES)=="N"){
-                        alert("이미 참여하였습니다.");
-                        return;
-                    }else if($.trim(RES)=="Y"){
-                        var url = '<c:url value="/survey/view.html?event_cd=On_leaveArmySurveyPop"/>&SURVEYID='+surveyid;
-                        window.open(url,'survey', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=600,height=700');
-                    }else{
-                        alert("참여 실패하였습니다.");
-                        return;
-                    }
-                },complete: function(){
-                },error: function(){
-                    alert("참여 실패하였습니다.");
-                    return;
-                }
-            });
-        }
-
 
 
         $( document ).ready( function() {
@@ -226,15 +191,8 @@
                 currentClass: 'hvr-shutter-out-horizontal_active'
             });
         });
-
-        $(function(e){
-            var targetOffset= $("#gridContainer").offset().top;
-            $('html, body').animate({scrollTop: targetOffset}, 1000);
-            /*e.preventDefault(); */
-        });
     </script>
 
-    <script src="/public/js/willbes/jquery.nav.js"></script>
     <script>
         $(function(e){
             var targetOffset= $("#evtContainer").offset().top;
@@ -242,21 +200,21 @@
             /*e.preventDefault(); */
         });
 
-        $( document ).ready( function() {
-            var jbOffset = $( '.rLnb' ).offset();
-            $( window ).scroll( function() {
-                if ( $( document ).scrollTop() > jbOffset.top ) {
-                    $( '.rLnb' ).addClass( 'rLnb_sectionFixed' );
-                }
-                else {
-                    $( '.rLnb' ).removeClass( 'rLnb_sectionFixed' );
-                }
-            });
-        } );
+        $(function(){
+            var vi = 0;  // 하단에 메뉴 표시할 스크롤 위치값 지정
+            var nav_y = $(".rLnb").offset().top + $(".rLnb").height();
 
-        $(document).ready(function() {
-            $('.rLnb').onePageNav({
-                currentClass: 'hvr-shutter-out-horizontal_active'
+            $(window).scroll(function(){
+                var num = $(window).scrollTop();
+                if( num > nav_y ){
+                    if( num > vi ){
+                        $(".rLnb").css({"position":"fixed","top":"20px","rigth":"20px"}).fadeIn();
+                    }else{
+                        $(".rLnb").fadeOut();
+                    }
+                }else{
+                    $(".rLnb").finish().css({"top":"100px"});
+                }
             });
         });
     </script>

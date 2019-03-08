@@ -168,13 +168,13 @@ class SupportStudyComment extends BaseSupport
             ]
         ];
 
-        if ($this->_site_code != config_item('app_intg_site_code')) {
+        /*if ($this->_site_code != config_item('app_intg_site_code')) {
             $arr_condition = array_merge_recursive($arr_condition, [
                 'LKB' => [
                     'Category_String' => $cate_code
                 ]
             ]);
-        }
+        }*/
 
         $column = 'BoardIdx, IsBest, RegType, RegMemIdx, RegMemId, RegMemName';
         $column .= ',Title, Content, (ReadCnt + SettingReadCnt) as TotalReadCnt';

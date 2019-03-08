@@ -78,7 +78,7 @@
 
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner">
-            <div><a href="event_onCopPromotionPassPop" target="_blank"><img src="http://file3.willbes.net/new_cop/2019/01/EV190123_p_sky1.png" alt="현직경찰 인증하기"></a></div>
+            <div><a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_cop/2019/01/EV190123_p_sky1.png" alt="현직경찰 인증하기"></a></div>
             <div><a href="#go"><img src="http://file3.willbes.net/new_cop/2019/01/EV190123_p_sky2_new.png" alt="프리패스 구매하기"></a></div>
         </div>
 
@@ -228,6 +228,15 @@
     <!-- End Container -->
 
     <script>
+
+        function certOpen(){
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+             @if(empty($arr_promotion_params) === false)
+            var url = '/certApply/index/page/{{$arr_promotion_params["page"]}}/cert/{{$arr_promotion_params["cert"]}}' ;
+            window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
+            @endif
+        }
+
         $(document).ready(function() {
             var slidesImg3 = $("#slidesImg3").bxSlider({
                 mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'

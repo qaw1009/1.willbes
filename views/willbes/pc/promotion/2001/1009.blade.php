@@ -2,7 +2,6 @@
 
 @section('content')
     @include('willbes.pc.layouts.partial.site_menu')
-    <!-- content -->
     <!-- Container -->
     <style type="text/css">
         .subContainer {
@@ -26,18 +25,18 @@
         .wb_pop .wb_popWrap div {position:absolute; width:980px; top:230px; left:50%; margin-left:-490px; z-index:1; animation:rotation 0.5s linear;-webkit-animation:rotation 0.5s linear}
 
         @@keyframes rotation{
-            from{
-                opacity:0;
-                width:100px;
-                margin-left:-50px;
-                transform: rotate(360deg);
-            }
-            to{
-                opacity: 1;
-                width: 980px;
-                transform: rotate(0deg);
-            }
-        }
+             from{
+                 opacity:0;
+                 width:100px;
+                 margin-left:-50px;
+                 transform: rotate(360deg);
+             }
+             to{
+                 opacity: 1;
+                 width: 980px;
+                 transform: rotate(0deg);
+             }
+         }
         @@-webkit-keyframes rotation{
              from{
                  opacity:0;
@@ -51,7 +50,7 @@
              }
          }
 
-        .wb_pop2 {background:#252525 url(http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190207_01_bg.jpg) no-repeat center top}
+        .wb_pop2 {background:#252525 url(http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190307_01_bg.jpg) no-repeat center top}
         .wb_pop2 .wb_popWrap2 {width:1210px; margin:0 auto; position:relative}
         .wb_pop2 .wb_popWrap2 div {position:absolute; width:980px; top:230px; left:50%; margin-left:-490px; z-index:1}
 
@@ -66,7 +65,7 @@
         .wb_top .passLecBuy li:nth-child(2) {width:232px; padding-left:60px}
         .wb_top .passLecBuy li:nth-child(3) {width:400px; padding-left:140px}
         .wb_top .passLecBuy li div {margin:30px 0 0 0; font-size:20px; font-weight:bold; background:#000; color:#fff; text-align:center; padding:16px 0; border-radius:0 40px 40px 40px}
-        .wb_top .passLecBuy li:last-child div {background:#7316c2;} /*평생0원PASS가격배경컬러변경*/
+        .wb_top .passLecBuy li:last-child div {background:#008766;} /*평생0원PASS가격배경컬러변경*/
         .wb_top .passLecBuy li:last-child p {font-weight:bold; font-size:20px}
         .wb_top strong {font-family:Verdana, Geneva, sans-serif; font-size:30px}
         .wb_top .passLecBuy ul:after {content:""; display:block; clear:both}
@@ -101,10 +100,10 @@
         /*업다운 애니메이션*/
         .m_img1 {animation:upDown 1s infinite;-webkit-animation:upDown 1s infinite}
         @@keyframes upDown{
-            from{margin-top:0}
-            20%{margin-top:-10px}
-            to{margin-top:0}
-        }
+             from{margin-top:0}
+             20%{margin-top:-10px}
+             to{margin-top:0}
+         }
         @@-webkit-keyframes upDown{
              from{margin-top:0}
              20%{margin-top:-10px}
@@ -232,7 +231,7 @@
         <div class="evtCtnsBox wb_pop2" id="main">
             <img src="http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190307_01.png"  alt="평생0원 PASS 마감" usemap="#rebound"/>
             <map name="rebound" id="rebound">
-                <area shape="rect" coords="300,837,475,884" href="event_onCopReboundPop" target="_blank" alt="수강생인증"/>
+                <area shape="rect" coords="300,837,475,884" href="javascript:certOpen();" alt="수강생인증"/>
                 <area shape="rect" coords="500,837,675,884" href="javascript:goDesc('tab3')" alt="이용안내"/>
             </map>
         </div>
@@ -575,6 +574,15 @@
 
     <script type="text/javascript" src="/public/js/willbes/jquery.bpopup.min.js"></script>
     <script type="text/javascript">
+        function certOpen(){
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+            @if(empty($arr_promotion_params) === false)
+            var url = '/certApply/index/page/{{$arr_promotion_params["page"]}}/cert/{{$arr_promotion_params["cert"]}}' ;
+            window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
+            @endif
+        }
+
+
         /*tab*/
         $(document).ready(function(){
             $(".tabs li a").click(function(){
@@ -601,6 +609,37 @@
                 $(".content_guide_box:first").show();
             }
         });
+
+        function doEvent() {
+            if("<c:out value='${userInfo.USER_ID}' />" == ""){
+                alert("로그인을 해주세요.");
+                $("#loginFrm #USER_ID").focus();
+                return;
+            }
+            $.ajax({
+                type: "POST",
+                url : '<c:url value="/event/reboundEvent_Check.do"/>?EVENT_NO=192',
+                dataType: "text",
+                async : false,
+                success: function(RES) {
+                    if($.trim(RES)=="N"){
+                        alert("이미 인증한 계정입니다.");
+                        return;
+                    }else if($.trim(RES)=="R" || $.trim(RES)=="RN"){
+
+                        alert("기존 등록된 정보는 삭제되고 다시 등록합니다.");
+                        var url = '<c:url value="/event/movie/event.html?event_cd=On_pass_popup"/>' ;
+                        window.open(url,'event', 'top=100,scrollbars=no,toolbar=no,resizable=yes,width=600,height=720');
+                    }else{
+                        var url = '<c:url value="/event/movie/event.html?event_cd=On_pass_popup"/>' ;
+                        window.open(url,'event', 'top=100,scrollbars=no,toolbar=no,resizable=yes,width=600,height=720');
+                    }
+                },error: function(){
+                    alert("검색실패");
+                    return;
+                }
+            });
+        }
 
         function goDesc(tab){
             location.href = '#tab';
@@ -693,5 +732,18 @@
             $('html, body').animate({scrollTop: targetOffset}, 1000);
             /*e.preventDefault(); */
         });
+
+        $( document ).ready( function() {
+            var jbOffset = $( '.skybanner' ).offset();
+            $( window ).scroll( function() {
+                if ( $( document ).scrollTop() > jbOffset.top ) {
+                    $( '.skybanner' ).addClass( 'skybanner_sectionFixed' );
+                }
+                else {
+                    $( '.skybanner' ).removeClass( 'skybanner_sectionFixed' );
+                }
+            });
+        } );
     </script>
+
 @stop

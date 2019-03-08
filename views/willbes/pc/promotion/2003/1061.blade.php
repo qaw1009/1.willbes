@@ -143,7 +143,7 @@
         <div class="evtCtnsBox wb_cts04" id="event">
             <img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_c11.jpg" alt=" " usemap="#Map181220_c2" border="0" />
             <map name="Map181220_c2" >
-                <area shape="rect" coords="369,819,845,916" href="https://www.local.willbes.net/home/html/event_onCopReboundPop" target="_blank" alt="타 사이트 수강 인증하기" />
+                <area shape="rect" coords="369,819,845,916" href="javascript:certOpen();" alt="타 사이트 수강 인증하기" />
                 <area shape="rect" coords="499,925,675,969" href="#tab1" alt="유의사항 확인하기"/>
             </map>
         </div><!--wb_cts04//-->
@@ -155,6 +155,15 @@
     </div>
     <!-- End Container -->
     <script>
+
+        function certOpen(){
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+            @if(empty($arr_promotion_params) === false)
+            var url = '/certApply/index/page/{{$arr_promotion_params["page"]}}/cert/{{$arr_promotion_params["cert"]}}' ;
+            window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
+            @endif
+        }
+
         /*타이머*/
         var DdayDiff = { //타이머를 설정합니다.
             inDays: function(dd1, dd2) {

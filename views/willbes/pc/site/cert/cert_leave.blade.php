@@ -110,7 +110,7 @@
                     alert("인증 신청을 할 수 없습니다.");return;
                 @endif
 
-                {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+                {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
 
                 @if($data['ApprovalStatus'] == 'A' )
                     alert("신청하신 내역이 존재하며 '미승인' 상태입니다. ");return;
@@ -148,8 +148,8 @@
                     if(ret.ret_cd) {
                         //notifyAlert('success', '알림', ret.ret_msg);
                         alert('인증 신청이 완료되었습니다.');
-                        self.close();
                         opener.location.reload();
+                        self.close();
                     }
                 }, showValidateError, null, false, 'alert');
 

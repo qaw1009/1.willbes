@@ -1226,8 +1226,8 @@
 
 
         function certOpen(){
-                    {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
-                    @if(empty($arr_promotion_params) === false)
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+            @if(empty($arr_promotion_params) === false)
             var url = '/certApply/index/page/{{$arr_promotion_params["page"]}}/cert/{{$arr_promotion_params["cert"]}}' ;
             window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
             @endif
@@ -1235,7 +1235,7 @@
 
         function go_product(url,num) {
 
-            if(num == ""){
+            if(String(num) != ""){
                 if (!$("input:checkbox[id='chk"+num+"']").is(":checked")) {
                     alert("이용안내를 동의하셔야 신청이 가능합니다.");
                     $("input:checkbox[id='chk"+num+"']").focus();

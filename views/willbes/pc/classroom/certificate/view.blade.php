@@ -10,7 +10,7 @@
         body {
             margin: 0;
             padding: 0;
-            font: 12pt "Tahoma";
+            /*overflow-x:hidden;*/
         }
         * {
             box-sizing: border-box;
@@ -36,8 +36,8 @@
         }
     </style>
 </head>
-<body style="overflow-x:hidden;">
-<div class="willbes-Layer-PassBox willbes-Layer-PassBox740 abs mb20" style="display:block !important; position:relative; top:20px; left:20px;">
+<body>
+<div class="willbes-Layer-PassBox willbes-Layer-PassBox740 abs mb20">
     <div class="Layer-Tit tx-dark-black NG">수강확인증 출력</div>
     <div class="PASSZONE-List widthAutoFull">
         <div class="PASSZONE-Lec-Section">

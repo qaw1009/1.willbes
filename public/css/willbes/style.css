@@ -8686,6 +8686,10 @@ table.testTable tr td.w-date {
 .ExamBox .answerTb tr.nth {
     background: #f4f4f4;
 }
+.ExamBox .answerTb tr td input:checked + td{
+    background: #fefe38;  
+  }
+  
 
 /* subContainer : Mypage : 모의고사관리 : examTable */
 .LeclistTable .examTable tr td {

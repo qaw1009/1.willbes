@@ -20,39 +20,8 @@
 
         /************************************************************/        
         
-        .rLnb {
-            position:absolute; width:190px; top:100px; right:10px; z-index:1;
-        }
-        .rLnb ul {background:#fff; border:1px solid #2f2f2f; margin-bottom:10px;
-            -webkit-box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.21);
-            -moz-box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.21);
-            box-shadow:5px 5px 10px 0px rgba(0,0,0,0.21);
-        }
-        .rLnb li {}
-        .rLnb li:first-child {
-            background:#cdcdcd;
-            color:#000;
-            text-align:center;
-            padding:12px 0;
-            font-weight:bold;
-            font-size:15px;
-			letter-spacing:-1px			
-        }
-        .rLnb .typeA a {
-            border-bottom:1px solid #bfbfbf; display:block; padding:10px 10px 10px 15px; line-height:1.4; font-weight:bold; 
-            background:url(http://file3.willbes.net/new_gosi/2019/leave_army/leaveArmylnb_arrow.jpg) no-repeat 93% center;}
-        .rLnb .typeA a:hover {
-            font-weight: 600;
-            background:#ebebeb url(http://file3.willbes.net/new_gosi/2019/leave_army/leaveArmylnb_arrow.jpg) no-repeat 93% center;
-        }
-        .rLnb .typeA li:last-child a {border:0}
-        .rLnb .typeB li {            
-            text-align:center;
-            padding:15px 0;
-            line-height: 1.4;
-        }
-        .rLnb .typeB a {display:block; background:#000; color:#fff; border-radius: 20px; padding:8px 0; margin:0 20px}
-        .rLnb_sectionFixed {position:fixed; top:20px}	      
+
+       
         
         .LAeventZ01 {
             background:url(http://file3.willbes.net/new_gosi/2019/leave_army/la_00_top_bg.jpg) no-repeat center top; 
@@ -124,31 +93,12 @@
     </div>
     <!-- End Container -->
 
-    <script src="/public/js/willbes/jquery.nav.js"></script>
     <script>
         $(function(e){
             var targetOffset= $("#evtContainer").offset().top;
             $('html, body').animate({scrollTop: targetOffset}, 1000);
             /*e.preventDefault(); */   
-	    });
-
-        $( document ).ready( function() {
-            var jbOffset = $( '.rLnb' ).offset();
-            $( window ).scroll( function() {
-              if ( $( document ).scrollTop() > jbOffset.top ) {
-                $( '.rLnb' ).addClass( 'rLnb_sectionFixed' );
-              }
-              else {
-                $( '.rLnb' ).removeClass( 'rLnb_sectionFixed' );
-              }
-            });
-          } );
-
-        $(document).ready(function() {
-            $('.rLnb').onePageNav({
-                currentClass: 'hvr-shutter-out-horizontal_active'
-            });
-        });       
+	    });     
     </script>
 
 @stop

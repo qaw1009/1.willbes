@@ -52,7 +52,7 @@
             line-height: 1.4;
         }
         .rLnb .typeB a {display:block; background:#000; color:#fff; border-radius: 20px; padding:8px 0; margin:0 20px}
-        .rLnb_sectionFixed {position:fixed; top:20px}	
+
         
         .LAeventA01 {background:url(http://file3.willbes.net/new_gosi/2019/leave_army/la_on_top_bg.jpg) no-repeat center top; position:relative;}
         .LAeventA01 .main_img {position:absolute; width:601px; top:1000px; left:50%; margin-left:-488px; z-index:10; opacity:0;filter:alpha(opacity=0);-webkit-animation-duration: 1s;animation-duration: 1s;-webkit-animation-fill-mode: both;animation-fill-mode: both}
@@ -491,24 +491,24 @@
             
                 e.preventDefault()})})}
             );
-	</script>
-    
-    <script src="/public/js/willbes/jquery.nav.js"></script>    
+	</script>    
+ 
     <script>
-        $( document ).ready( function() {
-            var jbOffset = $( '.rLnb' ).offset();
-            $( window ).scroll( function() {
-            if ( $( document ).scrollTop() > jbOffset.top ) {
-                $( '.rLnb' ).addClass( 'rLnb_sectionFixed' );
-            }
-            else {
-                $( '.rLnb' ).removeClass( 'rLnb_sectionFixed' );
-            }
-            });
-        } );
-        $(document).ready(function() {
-            $('.rLnb').onePageNav({
-                currentClass: 'hvr-shutter-out-horizontal_active'
+        $(function(){
+            var vi = 0;  // 하단에 메뉴 표시할 스크롤 위치값 지정
+            var nav_y = $(".rLnb").offset().top + $(".rLnb").height();
+
+            $(window).scroll(function(){
+                var num = $(window).scrollTop();
+                if( num > nav_y ){
+                    if( num > vi ){
+                        $(".rLnb").css({"position":"fixed","top":"20px","rigth":"20px"}).fadeIn();
+                    }else{
+                        $(".rLnb").fadeOut();
+                    }
+                }else{
+                    $(".rLnb").finish().css({"top":"100px"});
+                } 
             });
         });
       

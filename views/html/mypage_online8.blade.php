@@ -9,20 +9,66 @@
     <style type="text/css">
         body {
             margin: 0;
-            padding: 0;
-            /*overflow-x:hidden;*/
+            padding: 0;            
+            width: 21cm;
+            min-height: 29.7cm;
+            padding: 2cm;
+            margin: 1cm auto;
+            border-radius: 5px;
+            background: white;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
         }
         * {
             box-sizing: border-box;
             -moz-box-sizing: border-box;
         }
-
+        .page h3 {
+            font-size:120%;
+            border-bottom:2px solid #000;
+            padding-bottom:15px;
+        }
+        .page a {
+            color:#2fb2f1;
+            padding: 5px 10px;
+            border:1px solid #adadad;
+            font-size:80%;
+            float:right;
+        }
+        .page .smSub {
+            padding:30px 0 20px; 
+            font-size:110%;
+        }
+        .page table {
+            border-top:1px solid #959595;
+        }
+        .page table th {
+            background:#f9f9f9; 
+            color:#707070;
+        }
+        .page table th,
+        .page table td {
+            padding:15px 20px;
+            border-right:1px solid #edeeef;
+        }
+        .page table th:last-child,
+        .page table td:last-child {
+            border-right:0;
+        }
+        .page table tr {
+            border-bottom:1px solid #edeeef;
+        }
+        .page .tdCenter td {
+            text-align:center;
+        }
         @@page {
             size: A4 landscape;
-            margin: 0;
-            /*size: landscape;*/
+            margin: 0;            
+            size: landscape;
         }
         @@media print {
+            body {
+                font-size: 12pt !important;
+            }
             .page {
                 margin: 0;
                 border: initial;
@@ -31,131 +77,95 @@
                 min-height: initial;
                 box-shadow: initial;
                 background: initial;
-                page-break-after: always;
-            }
+                page-break-after: always;                
+            }  
+        
         }
     </style>
 </head>
 <body>
-<div class="willbes-Layer-PassBox willbes-Layer-PassBox740 abs mb20" style="display:block !important; position:relative; top:20px; left:20px;">
-    <div class="Layer-Tit tx-dark-black NG">수강확인증 출력</div>
-    <div class="PASSZONE-List widthAutoFull">
-        <div class="PASSZONE-Lec-Section">
-            <div class="Search-Result strong mt40 mb15 tx-gray">· 수강확인증 <a class="aBox waitBox tx-sky-blue NSK f_right" style="margin-top: -5px;" href="#none" onclick="fnPrint(this);">인쇄하기</a></div>
-            <div class="LeclistTable bdt-gray">
-                <table cellspacing="0" cellpadding="0" class="listTable userMemoTable certifiTable under-gray tx-gray">
-                    <colgroup>
-                        <col style="width: 20%;"/>
-                        <col style="width: 30%;"/>
-                        <col style="width: 20%;"/>
-                        <col style="width: 30%;"/>
-                    </colgroup>
-                    <tbody>
-                    <tr>
-                        <th class="w-tit">성명</th>
-                        <td class="w-list">{{$member['MemName']}}</td>
-                        <th class="w-tit">생년월일</th>
-                        <td class="w-list">{{$member['BirthDay']}}</td>
-                    </tr>
-                    <tr>
-                        <th class="w-tit">주소</th>
-                        <td class="w-list" colspan="3">{{$member['Addr1']}} {{$member['Addr2']}} </td>
-                    </tr>
-                    <tr>
-                        <th class="w-tit">전화</th>
-                        <td class="w-list">{{$member['Tel']}}</td>
-                        <th class="w-tit">휴대폰</th>
-                        <td class="w-list">{{$member['Phone']}}</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="Search-Result strong mt40 mb15 tx-gray">· 수강내역</div>
-            <div class="LeclistTable bdt-gray">
-                @if($type == 'P' )
-                    <table cellspacing="0" cellpadding="0" class="listTable usertestTable certifiTable under-gray tx-gray">
-                        <colgroup>
-                            <col style="width: 40%;"/>
-                            <col style="width: 30%;"/>
-                            <col style="width: 15%;"/>
-                            <col style="width: 15%;"/>
-                        </colgroup>
-                        <thead>
-                        <tr>
-                            <th class="Top">수강강좌</th>
-                            <th>동영상 수강기간</th>
-                            <th>강사명</th>
-                            <th>금액</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td class="w-tit Top">{{$lec['ProdName']}}</td>
-                            <td class="w-info">{{str_replace('-', '.', $lec['LecStartDate'])}} ~ {{str_replace('-', '.', $lec['RealLecEndDate'])}}</td>
-                            <td class="w-name"></td>
-                            <td class="w-c-price">\{{number_format($lec['RealPayPrice'],0)}}</td>
-                        </tr>
-                        <tr>
-                            <th class="w-tit Top">합계</th>
-                            <td class="w-total-price" colspan="3">\{{number_format($lec['RealPayPrice'],0)}}</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                @else
-                    <table cellspacing="0" cellpadding="0" class="listTable usertestTable certifiTable under-gray tx-gray">
-                        <colgroup>
-                            <col style="width: 40%;"/>
-                            <col style="width: 30%;"/>
-                            <col style="width: 10%;"/>
-                            <col style="width: 10%;"/>
-                            <col style="width: 10%;"/>
-                        </colgroup>
-                        <thead>
-                        <tr>
-                            <th class="Top">수강강좌</th>
-                            <th>동영상 수강기간</th>
-                            <th>진도율</th>
-                            <th>강사명</th>
-                            <th>금액</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td class="w-tit Top">{{$lec['subProdName']}}</td>
-                            <td class="w-info">
-                                {{str_replace('-', '.', $lec['LecStartDate'])}} ~ {{str_replace('-', '.', $lec['RealLecEndDate'])}}<br/>
-                                <!-- 총 00시간 00분<span class="row-line" style="height: 10px; margin: 0 6px -1px;">|</span>수강 00시간 00분-->
-                            </td>
-                            <td class="w-percent">{{$lec['StudyRate'] > $lec['StudyRatePrint'] ? $lec['StudyRate'] : $lec['StudyRatePrint']}}%</td>
-                            <td class="w-name">{{$lec['wProfName']}}</td>
-                            <td class="w-c-price">\{{number_format($lec['RealPayPrice'],0)}}</td>
-                        </tr>
-                        <tr>
-                            <th class="w-tit Top">합계</th>
-                            <td class="w-total-price" colspan="4">\{{number_format($lec['RealPayPrice'],0)}}</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                @endif
-            </div>
-            <div class="tx-center pt40 pb40">
-                <div class="confirm-txt tx-sky-blue NSK">위 사람은 본사이트({{$lec['SiteUrl']}})에서 수강(중) 하였음을 확인합니다.</div>
-                <div class="date tx-gray">{{date('Y년 m월 d일')}}</div>
-            </div>
-            <ul class="certifi-info">
-                <li class="address">
-                    사업자번호: 119-85-23089 / 주소: 서울 관악구 신림로 101<br/>
-                    수강기관: (주)윌비스
-                </li>
-                <li class="stamp">
-                    확인<br/>
-                    <img src="{{ img_url('stamp/stamp.png') }}">
-                </li>
-            </ul>
-        </div>
+
+<div class="page NG">
+    <h3>수강확인증 출력</h3>
+    <div class="smSub">· 수강확인증 <a href="#none" onclick="fnPrint(this);">인쇄하기</a></div>
+    <div>
+        <table cellspacing="0" cellpadding="0">
+            <colgroup>
+                <col style="width: 20%;"/>
+                <col style="width: 30%;"/>
+                <col style="width: 20%;"/>
+                <col style="width: 30%;"/>
+            </colgroup>
+            <tbody>
+                <tr>
+                    <th>성명</th>
+                    <td>홍길동</td>
+                    <th>생년월일</th>
+                    <td>1900-00-00</td>
+                </tr>
+                <tr>
+                    <th>주소</th>
+                    <td colspan="3">서울시 관악구 신림로 101</td>
+                </tr>
+                <tr>
+                    <th>전화</th>
+                    <td>0200000000</td>
+                    <th>휴대폰</th>
+                    <td>010-0000-0000</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
-    <!-- PASSZONE-List -->
+    <div class="smSub">· 수강내역</div>
+    <div class="tdCenter">
+        <!-- 무한 PASS 패키지 무료특강 출력폼 -->
+        <table cellspacing="0" cellpadding="0">
+            <colgroup>
+                <col/>
+                <col style="width: 30%;"/>
+                <col style="width: 15%;"/>
+                <col style="width: 15%;"/>
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>수강강좌</th>
+                    <th>동영상 수강기간</th>
+                    <th>강사명</th>
+                    <th>금액</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>단강좌명이 노출됩니다.</td>
+                    <td>2018-00-00 ~<br>
+                         2018-00-00</td>
+                    <td></td>
+                    <td>\100,000</td>
+                </tr>
+                <tr>
+                    <th>합계</th>
+                    <td colspan="3">\100,000</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="tx-center pt40 pb40">
+        <div class="confirm-txt tx-sky-blue NSK">위 사람은 본사이트(cop.willbes.com)에서 수강(중) 하였음을 확인합니다.</div>
+        <div class="date tx-gray">2018년 12월 20일</div>
+    </div>
+    <ul class="certifi-info">
+        <li class="address">
+            사업자번호: 119-85-23089 / 주소: 서울 관악구 신림로 101<br/>
+            수강기관: (주)윌비스
+        </li>
+        <li class="stamp">
+            확인<br/>
+            <img src="{{ img_url('stamp/stamp.png') }}"> 
+        </li>
+    </ul>
+    </div>
 </div>
+
 <script type="text/javascript">
     function fnPrint(obj)
     {

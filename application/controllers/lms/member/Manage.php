@@ -117,10 +117,11 @@ class Manage extends \app\controllers\BaseController
 
                 case 'outdate':
                     $inQuery .= "
-                    INNER JOIN (
+                    AND Mem.IsStatus = 'N'
+                    AND Mem.MemIdx IN (
                         SELECT memIdx FROM lms_Member_Out_Log 
                         WHERE OutDatm >= '{$search_sdate} 00:00:00' AND OutDatm <= '{$search_edate} 23:59:59'
-                    ) AS tempA ON tempA.memIdx = Mem.MemIdx ";
+                    )";
                     break;
             }
         }
@@ -128,7 +129,10 @@ class Manage extends \app\controllers\BaseController
         // 탈퇴회원쿼리
         if($this->_reqP('IsOut') == 'Y' && $search_condition != 'outdate'){
             $inQuery .= "
-            INNER JOIN lms_Member_Out_Log AS outMem2 ON outMem2.memIdx = Mem.memIdx ";
+                    AND Mem.IsStatus = 'N'
+                    AND Mem.MemIdx IN (
+                        SELECT memIdx FROM lms_Member_Out_Log 
+                    )";
         }
 
         // 비번 6개월이상 미변경 회원
@@ -141,14 +145,16 @@ class Manage extends \app\controllers\BaseController
         // 휴면회원 1년이상 미로그인 회원
         if($this->_reqP('IsSleep') == 'Y'){
             $arr_condition += [
-                'LTE' => ['Mem.LastLoginDatm' => '']
+                'LTE' => ['Mem.LastLoginDatm' => date("Y-m-d H:m:s", strtotime("-12 month"))]
             ];
         }
 
         // 기기등록회원
         if($this->_reqP('IsRegDevice') == 'Y' ){
-            //$inQuery .= "
-            //INNER JOIN lms_Member_Out_Log AS outMem2 ON outMem2.memIdx = Mem.memIdx ";
+            $inQuery .= "
+                    AND Mem.MemIdx IN (
+                        SELECT memIdx FROM lms_member_device 
+                    )";
         }
 
         // 갯수 구해오기

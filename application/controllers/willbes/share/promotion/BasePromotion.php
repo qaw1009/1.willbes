@@ -75,7 +75,8 @@ class BasePromotion extends \app\controllers\FrontController
             'arr_base' => $arr_base,
             'data' => $data,
             'cert' => $cert_idx,
-            'cert_apply'=>$apply_result
+            'cert_apply'=>$apply_result,
+            'arr_promotion_params' => $arr_promotion_params
         ],false);
     }
 

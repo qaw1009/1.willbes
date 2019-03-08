@@ -7,6 +7,16 @@
     <link href="/public/css/willbes/basic.css?ver={{time()}}" rel="stylesheet">
     <link href="/public/css/willbes/style.css?ver={{time()}}" rel="stylesheet">
     <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+            font: 12pt "Tahoma";
+        }
+        * {
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+        }
+
         @@page {
             size: A4 landscape;
             margin: 0;

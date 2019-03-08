@@ -123,7 +123,7 @@
                 </div>
                 <!-- willbes-Class -->
 
-                <div class="willbes-Lec NG c_both">
+                <div class="willbes-Lec NG c_both mt50">
                     <div class="willbes-Lec-Subject tx-dark-black">교수선택</div>
                     <!-- willbes-Lec-Subject -->
 

@@ -23,7 +23,7 @@ class CertApplyFModel extends WB_Model
                         ,B.CateName
                         ,C.CcdName as CertTypeCcd_Name, C.CcdDesc as Sms_Content
                         ,D.CcdName as CertConditionCcd_Name
-                        ,E.SiteName
+                        ,E.SiteName,E.CsTel
                         ,G.productData,G.productData_json
                         ,J.couponData,J.couponData_json
                         ,if( A.IsUse=\'Y\' and current_timestamp() between A.CertStartDate and A.CertEndDate,\'Y\', \'N\') as IsCertAble 
@@ -113,6 +113,7 @@ class CertApplyFModel extends WB_Model
                     where  A.IsStatus=\'Y\' and B.IsStatus=\'Y\' and C.IsStatus=\'Y\' and D1.IsStatus=\'Y\' and D2.IsStatus=\'Y\' ';
         $where  = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
         $query = $this->_conn->query('select '. $column .$from .$where)->result_array();
+        //echo 'select '. $column .$from .$where;
         return $query;
     }
 
@@ -131,12 +132,16 @@ class CertApplyFModel extends WB_Model
             $cert_idx = element('CertIdx', $input);
             $certtypeccd = element('CertTypeCcd', $input);
 
+            $cert_data = $this->findCertByCertIdx($cert_idx);
+            if(empty($cert_data) === true) {
+                throw new \Exception('인증정보가 존재하지 않습니다.');
+            }
+
             $add_condition = [
                 'IN' => [
                     'ApprovalStatus' => ['A','Y']
                 ]
             ];
-
             if(empty($this->findApplyByCertIdx($cert_idx, $add_condition)) !== true) {
                 throw new \Exception('이미 신청하신 인증내역이 존재합니다.');
             }
@@ -191,6 +196,17 @@ class CertApplyFModel extends WB_Model
 
             if($this->_conn->insert('lms_cert_apply',$data) === false) {
                 throw new \Exception('인증 신청에 실패했습니다.');
+            }
+
+            //제대군인인증일 경우 자동 승인 처리로 인한 문자 발송
+            if($certtypeccd === '684002' && empty($cert_data['Sms_Content']===false && empty($cert_data['CsTel'])) ) {
+                if (empty($this->session->userdata('mem_phone')) === false) {
+                    /*sms 발송 모듈*/
+                    $this->load->library('sendsms');
+                    if($this->sendsms->send($this->session->userdata('mem_phone'), $cert_data['Sms_Content'], $cert_data['CsTel']) !== true) {
+                        throw new \Exception('인증 신청(SMS)에 실패했습니다.');
+                    }
+                }
             }
             //echo $this->_conn->last_query();
             //$this->_conn->trans_rollback();

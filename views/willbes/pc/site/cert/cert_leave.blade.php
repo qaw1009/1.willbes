@@ -14,6 +14,8 @@
         }
     </style>
 
+
+
     <div class="willbes-Layer-PassBox willbes-Layer-PassBox740 leaveArmyJoin NGR">
         <div class="laj_top">
             <h3>전역(예정)간부 간편회원가입</h3>
@@ -38,6 +40,9 @@
             <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
                 {!! csrf_field() !!}
                 {!! method_field('POST') !!}
+                <input type="hidden" name="CertIdx" id="CertIdx" value="{{$cert_idx}}">
+                <input type="hidden" name="CertTypeCcd" id="CertTypeCcd" value="{{$data['CertTypeCcd']}}">
+
                 <h4>군복무 정보</h4>
                 <div class="LeclistTable">
                     <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black bdb-gray tx-gray">
@@ -52,10 +57,10 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td><input id="ARM_NM" name="ARM_NM" type="text"></td>
-                            <td><input id="ARM_DIV" name="ARM_DIV" type="text"></td>
-                            <td><input id="ARM_RANK" name="ARM_RANK" type="text"></td>
-                            <td><input id="ARM_NO" name="ARM_NO" type="text"></td>
+                            <td><input id="Affiliation" name="Affiliation"  type="text"></td>
+                            <td><input id="WorkType" name="WorkType" type="text"></td>
+                            <td><input id="Position" name="Position" type="text"></td>
+                            <td><input id="EtcContent" name="EtcContent" type="text"></td>
                         </tr>
                         <tr>
                             <td class="w-file answer tx-left pl-zero" colspan="4">
@@ -80,10 +85,10 @@
                 </div>
 
                 <div class="laj_btns">
-                    <a href="#none" class="btnA">
+                    <a href="#none" class="btnA"  id="btn_cert_check" >
                         인증완료
                     </a>
-                    <a href="#none">
+                    <a href="javascript:;" onclick="self.close()">
                         닫기
                     </a>
                 </div>
@@ -98,37 +103,41 @@
 
         $(document).ready(function() {
 
-            $('button[name="btn_cert_check"]').on('click', function() {
+            //$('button[name="btn_cert_check"]').on('click', function() {
+            $("#btn_cert_check").click(function () {
 
                 @if($data["IsCertAble"] !== 'Y')
-                alert("인증 신청을 할 수 없습니다.");return;
+                    alert("인증 신청을 할 수 없습니다.");return;
                 @endif
 
                 {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
 
                 @if($data['ApprovalStatus'] == 'A' )
-                alert("신청하신 내역이 존재하며 '미승인' 상태입니다. ");return;
+                    alert("신청하신 내역이 존재하며 '미승인' 상태입니다. ");return;
                 @elseif($data['ApprovalStatus'] == 'Y' )
-                alert("이미 '승인'된 인증입니다.");return;
+                    alert("이미 '승인'된 인증입니다.");return;
                 @endif
 
-                if ($('input:radio[name="WorkType"]').is(':checked') === false) {
-                    alert('재직구분을 선택해 주세요.');
-                    return;
-                }
-
                 if ($('#Affiliation').val() == '') {
-                    alert('소속을 입력해 주세요.');
+                    alert('군무 기관명을 입력해 주세요.');
                     $('#Affiliation').focus();
                     return;
                 }
-
+                if ($('#WorkType').val() == '') {
+                    alert('군별을 입력해 주세요.');
+                    $('#WorkType').focus();
+                    return;
+                }
                 if ($('#Position').val() == '') {
-                    alert('직위/직급을 입력해 주세요.');
+                    alert('계급을 입력해 주세요.');
                     $('#Position').focus();
                     return;
                 }
-
+                if ($('#EtcContent').val() == '') {
+                    alert('군번을 입력해 주세요.');
+                    $('#EtcContent').focus();
+                    return;
+                }
                 if ($('#attachfile').val() == '') {
                     alert('인증파일을 등록해 주세요.');
                     return;
@@ -138,17 +147,15 @@
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         //notifyAlert('success', '알림', ret.ret_msg);
-                        alert('인증 신청이 등록되었습니다.');location.reload();
+                        alert('인증 신청이 완료되었습니다.');
+                        self.close();
+                        opener.location.reload();
                     }
                 }, showValidateError, null, false, 'alert');
 
             });
-
         });
 
-        function contentInfo(strCate,strProd,strPack,strLearn) {
-            location.href= "{{front_url('periodPackage/show')}}/cate/"+strCate+"/pack/"+strPack+"/prod-code/"+strProd
-        }
     </script>
 
 

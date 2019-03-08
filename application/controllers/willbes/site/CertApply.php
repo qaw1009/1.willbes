@@ -6,7 +6,7 @@ class CertApply extends \app\controllers\FrontController
     protected $models = array('cert/certApplyF');
     protected $helpers = array();
     protected $auth_controller = false;
-    protected $auth_methods = array('index','store','checkCert');
+    protected $auth_methods = array('store','checkCert');
 
 
     public function __construct()
@@ -30,15 +30,22 @@ class CertApply extends \app\controllers\FrontController
 
         $cert_data = $this->certApplyFModel->findCertByCertIdx($cert_idx);
 
-        //echo var_dump($cert_data);
+        $arr_condition = [];
+
+        $arr_condition['EQ'] = [
+            'A.SiteCode' => $this->_site_code
+        ];
+
+        $data = $this->certApplyFModel->findCertByCertIdx($cert_idx,$arr_condition);
+        $product_list = $this->certApplyFModel->listProductByCertIdx($cert_idx,$arr_condition);
 
         $this->load->view('site/cert/cert_'.$cert_page,[
-            'cert_data' => $cert_data
+            'cert_idx' => $cert_idx,
+            'data' => $data,
+            'product_list' => $product_list
         ]);
 
     }
-
-
 
     /**
      * 인증을 위한 테스트 페이지 호출

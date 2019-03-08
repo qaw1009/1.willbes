@@ -9,14 +9,7 @@
     <style type="text/css">
         body {
             margin: 0;
-            padding: 0;            
-            width: 21cm;
-            min-height: 29.7cm;
-            padding: 2cm;
-            margin: 1cm auto;
-            border-radius: 5px;
-            background: white;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            padding: 0;             
         }
         * {
             box-sizing: border-box;
@@ -68,6 +61,13 @@
         @@media print {
             body {
                 font-size: 12pt !important;
+                width: 21cm;
+                min-height: 29.7cm;
+                padding: 2cm;
+                margin: 1cm auto;
+                border-radius: 5px;
+                background: white;
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
             }
             .page {
                 margin: 0;

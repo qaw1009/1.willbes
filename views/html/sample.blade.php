@@ -259,7 +259,7 @@
                 <li><a href="{{ site_url('/home/html/mypage_online5') }}" target="_blank">내강의실 > 온라인강좌 > 북마크 page 이동</a></li>
                 <li><a href="{{ site_url('/home/html/mypage_online6') }}" target="_blank">내강의실 > 온라인강좌 > 북마크상세 page 이동</a></li>
                 <li><a href="{{ site_url('/home/html/mypage_online7') }}" target="_blank">내강의실 > 온라인강좌 > 수강확인증출력 page 이동</a></li>
-                <li><a href="{{ site_url('/home/html/mypage_online8') }}" target="_blank">내강의실 > 온라인강좌 > 수강확인증출력 page 이동</a></li>
+                <li><a href="{{ site_url('/home/html/mypage_online8') }}" target="_blank">내강의실 > 온라인강좌 > 수강확인증출력 팝업</a></li>
                 <li class="c_both"></li>
                 <li><a href="{{ site_url('/home/html/mypage_acad1') }}" target="_blank">내강의실 > 학원강좌 > 수강신청강좌 page 이동</a></li>
                 <li><a href="{{ site_url('/home/html/mypage_acad2') }}" target="_blank">내강의실 > 학원강좌 > 수강종료강좌 page 이동</a></li>

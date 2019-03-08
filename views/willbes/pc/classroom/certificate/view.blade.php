@@ -17,7 +17,7 @@
             -moz-box-sizing: border-box;
         }
         .page {
-            width: 700px;  
+            width: 770px;  
             margin:15px;        
         }
         .page h3 {
@@ -45,7 +45,7 @@
         }
         .page table th,
         .page table td {
-            padding:15px 20px;
+            padding:15px;
             border-right:1px solid #edeeef;
         }
         .page table th:last-child,

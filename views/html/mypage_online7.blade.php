@@ -232,7 +232,7 @@
                                             </dl>
                                         </td>
                                         <td class="w-answer">
-                                            <a href="#none" onclick="openWin('CERTIFIPASS')"><span class="bBox blueBox NSK">수강확인증</span></a>
+                                            <a href="javascript:openArmConfirm(0);"><span class="bBox blueBox NSK">수강확인증</span></a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -697,4 +697,11 @@
     </div>
 </div>
 <!-- End Container -->
+
+<script type="text/javascript">
+    function openArmConfirm(){
+        var url = 'mypage_online8' ;
+        window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
+    }
+</script>
 @stop

@@ -9,12 +9,16 @@
     <style type="text/css">
         body {
             margin: 0;
-            padding: 0; 
-            
+            padding: 0;            
+            overflow-x: hidden;           
         }
         * {
             box-sizing: border-box;
             -moz-box-sizing: border-box;
+        }
+        .page {
+            width: 700px;  
+            margin:15px;        
         }
         .page h3 {
             font-size:120%;
@@ -74,7 +78,7 @@
                 margin: 0;
                 border: initial;
                 border-radius: initial;
-                width: initial;
+                width: 100%;
                 min-height: initial;
                 box-shadow: initial;
                 background: initial;

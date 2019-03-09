@@ -143,7 +143,7 @@ class Lecture extends \app\controllers\FrontController
             return $this->json_error('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
         }
 
-        $data['lecture'] = $this->lectureFModel->findProductByProdCode($this->_learn_pattern, $prod_code);
+        $data['lecture'] = $this->lectureFModel->findProductByProdCode($this->_learn_pattern, $prod_code, '', ['EQ' => ['IsUse' => 'Y']]);
         $data['contents'] = $this->lectureFModel->findProductContents($prod_code);
         $data['salebooks'] = $this->lectureFModel->findProductSaleBooks($prod_code);
 
@@ -165,7 +165,7 @@ class Lecture extends \app\controllers\FrontController
         }
 
         // 상품 조회
-        $data = $this->lectureFModel->findProductByProdCode($this->_learn_pattern, $prod_code);
+        $data = $this->lectureFModel->findProductByProdCode($this->_learn_pattern, $prod_code, '', ['EQ' => ['IsUse' => 'Y']]);
         if (empty($data) === true) {
             show_alert('데이터 조회에 실패했습니다.', 'back');
         }
@@ -222,7 +222,7 @@ class Lecture extends \app\controllers\FrontController
         }
 
         // 상품 조회
-        $data = $this->lectureFModel->findProductByProdCode('on_free_lecture', $prod_code, ', fn_dec(FreeLecPasswd) as FreeLecPasswdDec');
+        $data = $this->lectureFModel->findProductByProdCode('on_free_lecture', $prod_code, ', fn_dec(FreeLecPasswd) as FreeLecPasswdDec', ['EQ' => ['IsUse' => 'Y']]);
         if (empty($data) === true) {
             return $this->json_error('데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
         }

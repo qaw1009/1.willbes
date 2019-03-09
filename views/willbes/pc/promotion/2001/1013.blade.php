@@ -124,7 +124,7 @@
                 <area shape="rect" coords="31,379,149,433" href="{{ site_url('/home/index/cate/3001') }}" onfocus='this.blur()'  alt="신광은경찰PASS" target="_blink">
                 <area shape="rect" coords="232,379,352,433" href="{{ site_url('/home/index/cate/3002') }}" onfocus='this.blur()'  alt="경행경채" target="_blink">
                 <area shape="rect" coords="430,379,550,433" href="{{ site_url('/home/index/cate/3006') }}" onfocus='this.blur()'  alt="경찰승진PASS" target="_blink">
-                <area shape="rect" coords="632,379,749,433" href="{{ site_url('/home/index/cate/3009') }}" onfocus='this.blur()'  alt="법학경채PASS" target="_blink">
+                <area shape="rect" coords="632,379,749,433" href="#none" onfocus='this.blur()'  alt="법학경채PASS" target="_blink">
                 <area shape="rect" coords="830,379,951,433" href="{{ site_url('/home/index/cate/3007') }}" onfocus='this.blur()'  alt="해양경찰" target="_blink">
             </map>
         </div>

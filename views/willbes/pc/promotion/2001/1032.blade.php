@@ -372,11 +372,11 @@
         <div class="wb_05">
             <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV06_1.jpg" alt="대한민국의 자랑스러원 경찰이 될 당신의 이야기를 기다립니다." usemap="#Map" />
             <map name="Map" id="Map">
-                <area shape="rect" coords="188,970,291,1016" href="/" target="_blank"  />
-                <area shape="rect" coords="374,970,475,1016" href="/082/index.html?topMenuType=O&topMenu=082&topMenuGnb=OM_001" target="_blank"  />
-                <area shape="rect" coords="557,970,658,1016" href="/085/index.html?topMenuType=O&topMenu=085&topMenuGnb=OM_001" target="_blank"  />
-                <area shape="rect" coords="739,970,844,1016" href="/089/index.html?topMenuType=O&topMenu=089&topMenuGnb=OM_001" target="_blank"  />
-                <area shape="rect" coords="924,970,1028,1017" href="/080/index.html?ltopMenuType=O&topMenu=083&topMenuGnb=OM_001&topMenuGnb=OM_001" target="_blank" />
+                <area shape="rect" coords="188,970,291,1016" href="{{ site_url('/home/index/cate/3001') }}" target="_blank"/>
+                <area shape="rect" coords="374,970,475,1016" href="{{ site_url('/home/index/cate/3002') }}" target="_blank"/>
+                <area shape="rect" coords="557,970,658,1016" href="{{ site_url('/home/index/cate/3006') }}" target="_blank"/>
+                <area shape="rect" coords="739,970,844,1016" href="#none" target="_blank"/>
+                <area shape="rect" coords="924,970,1028,1017" href="{{ site_url('/home/index/cate/3007') }}" target="_blank"/>
             </map>
         </div><!--wb_05//-->
 

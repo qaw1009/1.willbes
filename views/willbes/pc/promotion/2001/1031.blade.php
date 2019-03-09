@@ -51,9 +51,9 @@
         <div class="evtCtnsBox wb_cts04" id="table">
             <img src="http://file3.willbes.net/new_cop/2019/01/EV190113_p5.png"  alt="구매하기" usemap="#link2" />
             <map name="link2" >
-                <area shape="rect" coords="118,675,264,711" href="http://www.willbescop.net/lecture/movieLectureDetail.html?topMenu=081&topMenuType=O&searchSubjectCode=1029&searchLeccode=D201700090&leftMenuLType=M0001&lecKType=D" onfocus='this.blur()' alt="김현정" target="_blink"/>
-                <area shape="rect" coords="417,675,562,711" href="http://www.willbescop.net/lecture/movieLectureDetail.html?topMenu=081&topMenuType=O&searchSubjectCode=1029&searchLeccode=D201800122&leftMenuLType=M0001&lecKType=D" onfocus='this.blur()' alt="김준기" target="_blink"/>
-                <area shape="rect" coords="716,675,862,711" href="http://www.willbescop.net/packagelecture/packagelectureDetail.html?currentPage=1&pageRow=9999&topMenu=081&topMenuName=&topMenuType=O&searchCategoryCode=081&leftMenuLType=M0002&lecKType=P&searchLeccode=P201700006" onfocus='this.blur()' alt="패키지 " target="_blink"/>
+                <area shape="rect" coords="118,675,264,711" href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/131276') }}" onfocus='this.blur()' alt="김현정" target="_blink"/>
+                <area shape="rect" coords="417,675,562,711" href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/131733') }}" onfocus='this.blur()' alt="김준기" target="_blink"/>
+                <area shape="rect" coords="716,675,862,711" href="{{ site_url('/package/show/cate/3001/pack/648001/prod-code/149405') }}" onfocus='this.blur()' alt="패키지 " target="_blink"/>
             </map>
         </div>
 

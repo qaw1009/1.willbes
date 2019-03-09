@@ -53,8 +53,7 @@
         <div class="evtCtnsBox wb_cts02">
             <img src="http://file3.willbes.net/new_cop/2019/01/EV190114_p3.jpg" alt="박우찬 실용글쓰기 EVENT" usemap="#Map160224_c1" border="0" />
             <map name="Map160224_c1" id="Map160224_c1">
-                {{--<area shape="rect" coords="526,581,999,650" href="/lecture/index/cate/3001/pattern/only" target="_blank" onFocus="this.blur();" />--}}
-                <area shape="rect" coords="526,581,999,650" href="{{ front_url('/lecture/show/cate/3001/pattern/only/prod-code/132235') }}" target="_blank" onFocus="this.blur();" />
+                <area shape="rect" coords="526,581,999,650" href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/132235') }}" target="_blank" onFocus="this.blur();" />
             </map>
         </div>
 

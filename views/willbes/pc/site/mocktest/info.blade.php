@@ -20,7 +20,10 @@
             <div class="willbes-Mypage-Tabs mt10">
                 @include('willbes.pc.site.mocktest.tab_menu_partial')
 
-                모의고사안내 컨텐츠 삽입
+                <div class="mt10">
+                    <img src="{{ img_url('sub/mocktest_cop.jpg') }}" alt="경찰 통합목의고사">
+                    <img src="{{ img_url('sub/mocktest_gosi.jpg') }}" alt="공무원 통합목의고사">
+                </div>
 
 
 

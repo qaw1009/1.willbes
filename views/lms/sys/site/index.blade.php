@@ -89,10 +89,28 @@
                 paging: false,
                 searching: true,
                 buttons: [
+                    { text: '<i class="fa fa-floppy-o mr-5"></i> 수동캐시저장', className: 'btn-sm btn-danger border-radius-reset mr-15 btn-save-cache' },
                     { text: '<i class="fa fa-pencil mr-5"></i> 사이트 등록', className: 'btn-sm btn-primary border-radius-reset', action: function(e, dt, node, config) {
                         location.href = '{{ site_url('/sys/site/create') }}/code/' + dtParamsToQueryString($datatable);
                     }}
                 ]
+            });
+
+            // 수동캐시저장 버튼 클릭
+            $('.btn-save-cache').on('click', function() {
+                if (!confirm('수동으로 사이트 정보 캐시를 업데이트하시겠습니까?\n(주의요망 : 전체 사이트 정보 캐시가 업데이트 됨)')) {
+                    return;
+                }
+
+                var data = {
+                    '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                    '_method' : 'PUT'
+                };
+                sendAjax('{{ site_url('/sys/site/saveCache') }}', data, function(ret) {
+                    if (ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                    }
+                }, showError, false, 'POST');
             });
 
             // 데이터 수정 폼

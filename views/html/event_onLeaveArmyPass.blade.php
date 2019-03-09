@@ -198,35 +198,9 @@
             }
         });
     }
-
-
-
-    $( document ).ready( function() {
-                var jbOffset = $( '.rLnb' ).offset();
-                $( window ).scroll( function() {
-                if ( $( document ).scrollTop() > jbOffset.top ) {
-                    $( '.rLnb' ).addClass( 'rLnb_sectionFixed' );
-                }
-                else {
-                    $( '.rLnb' ).removeClass( 'rLnb_sectionFixed' );
-                }
-                });
-            } );
-
-            $(document).ready(function() {
-                $('.rLnb').onePageNav({
-                    currentClass: 'hvr-shutter-out-horizontal_active'
-                });
-            });
-
-    $(function(e){
-        var targetOffset= $("#gridContainer").offset().top;
-        $('html, body').animate({scrollTop: targetOffset}, 1000);
-        /*e.preventDefault(); */   
-    });
     </script>
 
-    <script src="/public/js/willbes/jquery.nav.js"></script>
+
     <script>
         $(function(e){
             var targetOffset= $("#evtContainer").offset().top;
@@ -234,23 +208,23 @@
             /*e.preventDefault(); */   
 	    });
 
-        $( document ).ready( function() {
-            var jbOffset = $( '.rLnb' ).offset();
-            $( window ).scroll( function() {
-              if ( $( document ).scrollTop() > jbOffset.top ) {
-                $( '.rLnb' ).addClass( 'rLnb_sectionFixed' );
-              }
-              else {
-                $( '.rLnb' ).removeClass( 'rLnb_sectionFixed' );
-              }
-            });
-          } );
+        $(function(){
+            var vi = 0;  // 하단에 메뉴 표시할 스크롤 위치값 지정
+            var nav_y = $(".rLnb").offset().top + $(".rLnb").height();
 
-        $(document).ready(function() {
-            $('.rLnb').onePageNav({
-                currentClass: 'hvr-shutter-out-horizontal_active'
+            $(window).scroll(function(){
+                var num = $(window).scrollTop();
+                if( num > nav_y ){
+                    if( num > vi ){
+                        $(".rLnb").css({"position":"fixed","top":"20px","rigth":"20px"}).fadeIn();
+                    }else{
+                        $(".rLnb").fadeOut();
+                    }
+                }else{
+                    $(".rLnb").finish().css({"top":"100px"});
+                } 
             });
-        });       
+        });      
     </script>
 
 @stop

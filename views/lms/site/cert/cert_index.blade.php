@@ -63,7 +63,7 @@
                     <th>카테고리</th>
                     <th>인증구분</th>
                     <th>인증조건</th>
-                    <th width="100">인증회차</th>
+                    <th>인증회차</th>
                     <th>인증기간</th>
                     <th>무한패스선택명</th>
                     <th>쿠폰선택명</th>
@@ -105,7 +105,7 @@
                     {'data' : 'CertTypeCcd_Name'},
                     {'data' : 'CertConditionCcd_Name'},
                     {'data' : null, 'render' : function(data,type,row,meta) {
-                        return '<a href="#" class="btn-modify" data-idx="' + data.CertIdx + '"><u>' + data.No + '회 [' + data.CertIdx+']</u></a>';
+                        return '<a href="#" class="btn-modify" data-idx="' + data.CertIdx + '"><u>' + data.No + '회 [' + data.CertIdx +' - ' + data.CertTitle +']</u></a>';
                     }},
                     {'data' : null, 'render' : function(data,type,row,meta) {
                             return data.CertStartDate + ' ~ ' +data.CertEndDate;

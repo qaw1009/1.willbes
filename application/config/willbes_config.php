@@ -34,12 +34,12 @@ $config['www'] = array(
 );
 
 // 경찰사이트 설정
-$config['cop'] = array(
+$config['police'] = array(
 
 );
 
 // 공무원사이트 설정
-$config['gosi'] = array(
+$config['pass'] = array(
 
 );
 

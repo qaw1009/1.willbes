@@ -76,6 +76,7 @@ class CertModel extends WB_Model
 
             $CertIdx = element('CertIdx',$input);
 
+            /* 기존 인증정보 존재 여부 파악 : 제거 함 - element('site_code',$input) 디사블 되어 값이 안넘어옴. 추후 다시 보는 것으로...
             $arr_condition = [
                 'EQ' => [
                     'A.CertTypeCcd' => element('CertTypeCcd',$input),
@@ -92,6 +93,7 @@ class CertModel extends WB_Model
             if($check > 0) {
                 throw new \Exception('이미 등록된 인증 정보입니다.');
             }
+            */
 
 
             $common_data = $this->inputCommon($input);
@@ -131,6 +133,7 @@ class CertModel extends WB_Model
             'CateCode'=>element('CateCode',$input)
             ,'CertTypeCcd'=>element('CertTypeCcd',$input)
             ,'CertConditionCcd'=>element('CertConditionCcd',$input)
+            ,'CertTitle'=>element('CertTitle',$input)
             ,'No'=>element('No',$input)
             ,'CertStartDate'=>element('CertStartDate',$input)
             ,'CertEndDate'=>element('CertEndDate',$input)
@@ -346,7 +349,7 @@ class CertModel extends WB_Model
 
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
-        //echo 'select ' . $column . $from . $where . $order_by_offset_limit;        exit;
+        //echo 'select ' . $column . $from . $where . $order_by_offset_limit;
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
 
     }

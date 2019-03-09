@@ -187,6 +187,24 @@ class SiteCode
     }
 
     /**
+     * 사이트 정보 캐쉬 수동 저장
+     */
+    public function saveCache()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]']
+        ];
+
+        if ($this->_CI->validate($rules) === false) {
+            return;
+        }
+
+        $result = true;
+        $this->_saveSiteCache($result);
+        $this->_CI->json_result($result, '저장 되었습니다.', $result);
+    }
+
+    /**
      * 사이트 정보 캐쉬 저장
      * @param $is_success
      */

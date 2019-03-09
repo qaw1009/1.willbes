@@ -21,7 +21,7 @@ Class OffPackageAdmin extends \app\controllers\BaseController
         $def_site_code = key($arr_code['arr_site_code']);
 
         //공통코드
-        $codes = $this->codeModel->getCcdInArray(['653','654','675']);
+        $codes = $this->codeModel->getCcdInArray(['648','653','654','675']);
 
         //캠퍼스
         $campusList = $this->siteModel->getSiteCampusArray('');
@@ -36,6 +36,7 @@ Class OffPackageAdmin extends \app\controllers\BaseController
         $this->load->view('product/off/offpackageadmin/index',[
             'arr_lg_category' => element('LG', $arr_category, []),
             'arr_md_category' => element('MD', $arr_category, []),
+            'packtype_ccd'=>$codes['648'], //패키지유형
             'studypattern_ccd' => $codes['653'],
             'studyapply_ccd' => $codes['654'],
             'accept_ccd' => $codes['675'],
@@ -61,6 +62,7 @@ Class OffPackageAdmin extends \app\controllers\BaseController
                 'B.SubjectIdx' => $this->_reqP('search_subject_idx'),
                 'B.CourseIdx' => $this->_reqP('search_course_idx'),
                 'B.StudyPatternCcd' =>$this->_reqP('search_studypattern_ccd'),
+                'B.PackTypeCcd' =>$this->_reqP('search_packtype_ccd'),
                 'B.StudyApplyCcd' =>$this->_reqP('search_studyapply_ccd'),
                 'B.SchoolStartYear' =>$this->_reqP('search_schoolstartyear'),
                 'B.SchoolStartMonth' =>$this->_reqP('search_schoolstartmonth'),
@@ -110,7 +112,7 @@ Class OffPackageAdmin extends \app\controllers\BaseController
         $count = $this->offPackageAdminModel->listLecture(true, $arr_condition);
 
         if ($count > 0) {
-            $list = $this->offPackageAdminModel->listLecture(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.ProdCode' => 'desc']);
+            $list = $this->offPackageAdminModel->listLecture(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.RegDatm' => 'desc']);
         }
 
         return $this->response([

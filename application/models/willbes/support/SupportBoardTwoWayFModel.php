@@ -190,7 +190,8 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
             // 등록된 게시판 식별자
             $board_idx = $this->_conn->insert_id();
 
-            if ($board_data['SiteCode'] != config_item('app_intg_site_code')) {
+            /*if ($board_data['SiteCode'] != config_item('app_intg_site_code')) {*/
+            if (empty($board_category_data['site_category']) === false) {
                 $set_board_category_data['BoardIdx'] = $board_idx;
                 $set_board_category_data['CateCode'] = $board_category_data['site_category'];
                 $set_board_category_data['RegMemIdx'] = $this->session->userdata('mem_idx');
@@ -199,6 +200,7 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
                     throw new \Exception('게시판 등록에 실패했습니다.');
                 }
             }
+            /*}*/
 
             $this->load->library('upload');
             $upload_sub_dir = config_item('upload_prefix_dir') . '/board/' . $board_data['BmIdx'] . '/' . date('Y') . '/' . date('md');

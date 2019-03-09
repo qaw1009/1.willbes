@@ -10,9 +10,9 @@
     <!-- 통합회원 전환 : 약관동의/정보입력 : 전환완료 -->
     <div class="Member mem-Convert widthAuto690">
         <ul class="tabs-Step mb60">
-            <li>본인인증</li>
-            <li>통합회원정보/약관동의</li>
-            <li class="on">전환완료</li>
+            <!-- <li>본인인증</li>
+            <li>통합회원정보/약관동의</li> -->
+            <li class="on" style="width:100% !important;">전환완료</li>
         </ul>
         <div class="user-Txt tx-black">
             <strong>윌비스 통합회원 전환을 환영합니다.</strong><br/>

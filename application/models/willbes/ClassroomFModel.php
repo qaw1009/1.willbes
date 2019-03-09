@@ -34,7 +34,7 @@ class ClassroomFModel extends WB_Model
      */
     private function getSelectList($columns, $cond, $isoff = false)
     {
-        $query = "SELECT DISTINCT ".$columns;
+        $query = "SELECT STRAIGHT_JOIN DISTINCT ".$columns;
         if($isoff == true){
             $query .= " FROM {$this->_table['myofflecture']}"; // WHERE LearnPatternCcd IN ('615001','615002','615003','615005') ";
         } else {
@@ -111,11 +111,11 @@ class ClassroomFModel extends WB_Model
     public function getLecture($cond = [], $order = [], $isCount = false, $isoff = false, $limit = null, $offset = null)
     {
         if($isCount == true){
-            $query = "SELECT COUNT(*) AS rownums ";
+            $query = "SELECT STRAIGHT_JOIN COUNT(*) AS rownums ";
             $order_by_offset_limit = '';
 
         } else {
-            $query = "SELECT *, TO_DAYS(RealLecEndDate) - TO_DAYS(NOW()) +1 AS remainDays
+            $query = "SELECT STRAIGHT_JOIN *, TO_DAYS(RealLecEndDate) - TO_DAYS(NOW()) +1 AS remainDays
             ";
             $order_by_offset_limit = $this->_conn->makeOrderBy($order)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -142,9 +142,9 @@ class ClassroomFModel extends WB_Model
     public function getPackage($cond = [], $order = [], $isCount = false)
     {
         if($isCount == true){
-            $query = "SELECT COUNT(*) AS rownums  ";
+            $query = "SELECT STRAIGHT_JOIN COUNT(*) AS rownums  ";
         } else {
-            $query = "SELECT *, TO_DAYS(RealLecEndDate) - TO_DAYS(NOW()) +1 AS remainDays
+            $query = "SELECT STRAIGHT_JOIN *, TO_DAYS(RealLecEndDate) - TO_DAYS(NOW()) +1 AS remainDays
             ";
         }
 

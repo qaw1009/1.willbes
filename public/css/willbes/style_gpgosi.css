@@ -3,13 +3,7 @@
 .gpgosi .tx-color {
     color: #8c6239;
 }
-.gpgosi .Menu .menu-List li.Acad a {
-    background: url("../../img/willbes/gosi/icon_acad.gif") no-repeat 0 0;
-    color: #8c6239;
-}
-.gpgosi .Menu .menu-List li.Acad a .arrow-Btn {
-    background: url("../../img/willbes/gosi/icon_arrow.gif") no-repeat 0 0;
-}
+
 .gpgosi .Section3 {
     background: #f0f0f0;
     padding: 40px 0;

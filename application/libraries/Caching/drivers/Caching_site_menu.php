@@ -102,19 +102,23 @@ class Caching_site_menu extends CI_Driver
 
             list($url_route_idx, $url_route_name) = explode('::', $row['UrlRouteBoth']);
             $arr_menu = [
-                'MenuIdx' => $row['MenuIdx'],
+                //'MenuIdx' => $row['MenuIdx'],
                 'MenuType' => $row['MenuType'],
                 'MenuName' => $row['MenuName'],
                 'MenuUrl' => $menu_url,
-                'MenuOrgUrl' => $row['MenuUrl'],
-                'MenuIcon' => $row['MenuIcon'],
-                'UrlType' => $row['UrlType'],
+                //'MenuOrgUrl' => $row['MenuUrl'],
+                //'MenuIcon' => $row['MenuIcon'],
+                //'UrlType' => $row['UrlType'],
                 'UrlTarget' => $row['UrlTarget'],
-                'UrlRouteIdx' => $url_route_idx,
+                //'UrlRouteIdx' => $url_route_idx,
                 'UrlRouteName' => $url_route_name,
-                'UrlSubDomain' => $url_sub_domain
+                //'UrlSubDomain' => $url_sub_domain
             ];
-            
+
+            if ($key_group == 'GNB' && $row['MenuDepth'] == 1) {
+                $arr_menu['UrlSubDomain'] = $url_sub_domain;
+            }
+
             if ($row['MenuDepth'] > 1) {
                 // $data 배열에 삽입되는 배열 키 생성
                 $child_key = $base_key;

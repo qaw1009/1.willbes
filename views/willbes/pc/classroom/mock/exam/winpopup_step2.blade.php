@@ -170,6 +170,7 @@
     var timer;
     var tempValue;
     var clickDelay = 'N';
+    var endExamYN = 'N';
 
     //남은시간
     $(document).ready(function() {
@@ -193,6 +194,7 @@
         $('#timer').html(hour + ":" + min + ":" + secc);
         if(sec == 300) alert('종료 5분 전! 시험시간 종료 전 답안을 제출해 주세요 (시간 종료 시 답안 제출 불가)');
         if(sec < 1){
+            endExamYN = 'Y';
             timeover();
         }
     }
@@ -293,14 +295,29 @@
     function timeover(){
         clearInterval(timer);
         if (confirm('시험이 종료되어 답안을 제출할 수 없습니다. 응시창을 닫으시겠습니까?')) {
+            examEndAjax();
             window.close();
         }
         $('#timer').html("00:00:00");
     }
 
+    function examEndAjax(){
+        var _url = '{{ front_url('/classroom/MockExam/examEndAjax') }}';
+        ajaxSubmit($regi_form, _url, function(ret) {
+            if(ret.ret_cd) {
+                alert('시험이 종료되었습니다.');
+                opener.location.reload();
+                window.close();
+            }
+        }, showValidateError, null, false, 'alert');
+    }
+
     $(window).on('beforeunload ',function() {
         if ($('#timer').html() != "--:--:--") {
             timeSaveAjax();
+        }
+        if(endExamYN == 'Y'){
+            examEndAjax();
         }
     });
 

@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends \app\controllers\FrontController
 {
-    protected $models = array('product/productF', 'onAirF', 'support/supportBoardF', 'bannerF', 'dDayF');
+    protected $models = array('product/productF', 'support/supportBoardF', 'support/supportBoardTwoWayF', 'bannerF', 'dDayF', 'onAirF');
     protected $helpers = array();
     protected $auth_controller = false;
     protected $auth_methods = array();
@@ -35,6 +35,11 @@ class Home extends \app\controllers\FrontController
                     }, explode(',', config_app('CampusCcdArr')));
                 }
             } else {
+                if (empty($this->_cate_code) === true) {
+                    // 카테고리코드가 없을 경우 디폴트 카테고리 페이지로 리다이렉트
+                    redirect(site_url('/home/index/' . config_get('uri_segment_keys.cate') . '/' . config_app('DefCateCode')));
+                }
+
                 $_view_path = $this->_site_code . '_' . $cate_code;
             }
         } else {
@@ -58,18 +63,21 @@ class Home extends \app\controllers\FrontController
      */
     private function _getSite2001Data($cate_code = '', $arr_campus = [])
     {
-        $arr_disp = ['메인_우측퀵_01','메인_우측퀵_02','메인_우측퀵_03'];
+        $s_cate_code = '';  // 디바이스별 카테고리 적용 구분
 
         if (APP_DEVICE == 'pc') {
+            $s_cate_code = $cate_code;
+
             $data['dday'] = $this->_dday();
-            $data['best_product'] = $this->_product('on_lecture', 4, $cate_code, 'Best');
-            $data['new_product'] = $this->_product('on_lecture', 4, $cate_code, 'New');
+            $data['best_product'] = $this->_product('on_lecture', 4, $s_cate_code, 'Best');
+            $data['new_product'] = $this->_product('on_lecture', 4, $s_cate_code, 'New');
+            $data['arr_main_banner'] = $this->_banner($s_cate_code);
+            $data['arr_main_quick'] = $this->_banner('0');
         }
 
-        $data['notice'] = $this->_boardNotice(4);
-        $data['exam_announcement'] = $this->_boardExamAnnouncement(4);
-        $data['exam_news'] = $this->_boardExamNews(4);
-        $data['main_quick'] = $this->_banner($arr_disp);
+        $data['notice'] = $this->_boardNotice(4, $s_cate_code);
+        $data['exam_announcement'] = $this->_boardExamAnnouncement(4, $s_cate_code);
+        $data['exam_news'] = $this->_boardExamNews(4, $s_cate_code);
 
         return $data;
     }
@@ -90,9 +98,8 @@ class Home extends \app\controllers\FrontController
             $data['notice'] = $this->_boardNotice(5);
             $data['exam_news'] = $this->_boardExamNews(5);
             $data['onAir'] = $this->_onAir();
-            foreach ($arr_campus as $row) {
-                $data['notice_campus'][$row['CampusCcd']] = $this->_boardNotice(2, '', [$row['CampusCcd']]);
-            }
+            $data['arr_main_banner'] = $this->_banner('0');
+            $data['notice_campus'] = $this->_boardNoticeByCampus(2);
         }
 
         return $data;
@@ -106,14 +113,23 @@ class Home extends \app\controllers\FrontController
      */
     private function _getSite2003Data($cate_code = '', $arr_campus = [])
     {
+        $s_cate_code = '';  // 디바이스별 카테고리 적용 구분
+
         if (APP_DEVICE == 'pc') {
-            $data['best_product'] = $this->_product('on_lecture', 2, $cate_code, 'Best');
-            $data['new_product'] = $this->_product('on_lecture', 2, $cate_code, 'New');
+            $s_cate_code = $cate_code;
+
+            $data['best_product'] = $this->_productLectureBySubjectIdx('on_lecture', 2, $s_cate_code, 'Best');  // 과목별 2개씩 베스트 상품 조회
+            $data['arr_main_banner'] = $this->_banner($s_cate_code);
+
+            // 9급공무원 카테고리에서만 노출
+            if ($s_cate_code == '3019') {
+                $data['study_comment'] = $this->_boardStudyComment(6, $s_cate_code);
+            }
         }
 
-        $data['notice'] = $this->_boardNotice(4);
-        $data['exam_announcement'] = $this->_boardExamAnnouncement(4);
-        $data['exam_news'] = $this->_boardExamNews(4);
+        $data['notice'] = $this->_boardNotice(5, $s_cate_code);
+        $data['exam_announcement'] = $this->_boardExamAnnouncement(5, $s_cate_code);
+        $data['exam_news'] = $this->_boardExamNews(5, $s_cate_code);
 
         return $data;
     }
@@ -127,19 +143,76 @@ class Home extends \app\controllers\FrontController
     private function _getSite2004Data($cate_code = '', $arr_campus = [])
     {
         $data = [];
-        $arr_disp = ['메인_빅배너','메인_서브1','메인_서브2','메인_서브3','메인_띠배너','메인_미들1','메인_미들2','메인_미들3','메인_미들4','메인_미들5','메인_이벤트','메인_대표교수','메인_포커스'];
 
         if (APP_DEVICE == 'pc') {
             $arr_campus = array_replace_recursive($arr_campus, $this->_getCampusInfo());
             $data['arr_campus'] = $arr_campus;
+            $data['gallery'] = $this->_gallery();
             $data['exam_announcement'] = $this->_boardExamAnnouncement(5);
             $data['exam_news'] = $this->_boardExamNews(5);
-            $data['arr_main_banner'] = $this->_banner($arr_disp);
-            foreach ($arr_campus as $row) {
-                $data['notice_campus'][$row['CampusCcd']] = $this->_boardNotice(2, '', [$row['CampusCcd']]);
-            }
+            $data['arr_main_banner'] = $this->_banner('0');
+            $data['notice_campus'] = $this->_boardNoticeByCampus(2);
+        }
+
+        return $data;
+    }
+
+    /**
+     * 메인 배너
+     * @param int $cate_code
+     * @return array
+     */
+    private function _banner($cate_code = 0)
+    {
+        $arr_banner_disp = $this->_getBannerDispArray($cate_code);  // 배너영역 조회
+        if (empty($arr_banner_disp) === true) {
+            return [];
+        }
+
+        $result = $this->bannerFModel->findBanners($arr_banner_disp, $this->_site_code, $cate_code);
+
+        $data = [];
+        foreach ($result as $key => $row) {
+            $data[$row['DispName']][] = $result[$key];
         }
         return $data;
+    }
+
+    /**
+     * 사이트, 카테고리별 메인 배너 섹션 리턴
+     * @param $cate_code
+     * @return mixed
+     */
+    private function _getBannerDispArray($cate_code = 0)
+    {
+        $arr_banner_disp = [
+            '2001' => [
+                '0' => ['메인_우측퀵_01', '메인_우측퀵_02', '메인_우측퀵_03'],
+                '3001' => ['메인_학원배너1', '메인_학원배너2', '메인_학원배너3', '메인_이벤트띠배너', '메인_hotpick1', '메인_hotpick2', '메인_특강이벤트1', '메인_특강이벤트2'],
+                '3002' => ['메인_학원배너1', '메인_학원배너2', '메인_학원배너3', '메인_이벤트띠배너', '메인_hotpick1', '메인_hotpick2', '메인_특강이벤트1', '메인_특강이벤트2']
+            ],
+            '2002' => [
+                '0' => ['메인_상품배너1', '메인_상품배너2', '메인_상품배너3', '메인_상품배너4', '메인_특별관리반1', '메인_특별관리반2', '메인_특별관리반3', '메인_특별관리반4']
+            ],
+            '2003' => [
+                '3019' => ['메인_서브1', '메인_서브2', '메인_띠배너', '메인_미들1', '메인_미들2', '메인_미들3', '메인_미들4', '메인_미들5'
+                    , '메인_hotpick1', '메인_hotpick2', '메인_hotpick3', '메인_hotpick4','메인_hotpick5', '메인_hotpick6', '메인_hotpick7', '메인_hotpick8', '메인_hotpick9', '메인_hotpick10'
+                    , '메인_무료특강1', '메인_무료특강2'
+                ],
+                '3024' => ['메인_빅배너', '메인_띠배너', '메인_미들1', '메인_미들2', '메인_미들3', '메인_미들4'
+                    , '메인_교수진1', '메인_교수진2', '메인_교수진3', '메인_교수진4', '메인_교수진5', '메인_교수진6', '메인_교수진7', '메인_교수진8'
+                ],
+                '3030' => ['메인_빅배너', '메인_띠배너', '메인_교수진1', '메인_교수진2', '메인_교수진3', '메인_교수진4'],
+                '3028' => ['메인_서브1', '메인_서브2', '메인_미들1', '메인_미들2', '메인_미들3', '메인_미들4', '메인_미들5', '메인_미들6', '메인_미들7', '메인_미들8'],
+                '3035' => ['메인_서브1', '메인_서브2', '메인_미들1', '메인_미들2', '메인_미들3', '메인_미들4', '메인_미들5', '메인_미들6', '메인_미들7', '메인_미들8'],
+            ],
+            '2004' => [
+                '0' => ['메인_빅배너', '메인_서브1', '메인_서브2', '메인_서브3', '메인_띠배너', '메인_미들1', '메인_미들2', '메인_미들3', '메인_미들4', '메인_미들5'
+                    , '메인_이벤트', '메인_대표교수', '메인_포커스']
+            ]
+        ];
+
+        return element($cate_code, element($this->_site_code, $arr_banner_disp, []), []);
     }
 
     /**
@@ -168,16 +241,49 @@ class Home extends \app\controllers\FrontController
 
         return $this->productFModel->listSalesProduct($learn_pattern, false, $arr_condition, $limit_cnt, 0, ['ProdCode' => 'desc'], $add_column);
     }
-    
-    /**
-     * OnAir 조회
-     * @return array
-     */
-    private function _onAir()
-    {
-        return $this->onAirFModel->getLiveOnAir($this->_site_code, '');
-    }
 
+    /**
+     * 과목별 {N}개씩 상품 조회 (온라인단강좌, 무료강좌, 학원단과만 해당)
+     * @param $learn_pattern
+     * @param int $limit_cnt
+     * @param string $cate_code
+     * @param string $is_best_new
+     * @return mixed
+     */
+    private function _productLectureBySubjectIdx($learn_pattern, $limit_cnt = 2, $cate_code = '', $is_best_new = '')
+    {
+        $arr_condition = [
+            'EQ' => ['SiteCode' => $this->_site_code],
+            'LKR' => ['CateCode' => $cate_code]
+        ];
+
+        if (empty($is_best_new) === false) {
+            $arr_condition['EQ']['Is' . ucfirst($is_best_new)] = 'Y';
+        }
+
+        // 상품 조회
+        $list = $this->productFModel->listSalesProductLimitBySubjectIdx($learn_pattern, $arr_condition, $limit_cnt);
+
+        // 상품조회 결과 배열 초기화
+        $selected_subjects = [];
+        $selected_list = [];
+
+        if (empty($list) === false) {
+            // 상품조회 결과에 존재하는 과목 정보
+            $selected_subjects = array_pluck($list, 'SubjectName', 'SubjectIdx');
+
+            // 상품 조회결과 재정의
+            foreach ($list as $idx => $row) {
+                $selected_list[$row['SubjectIdx']][] = $row;
+            }
+        }
+
+        return [
+            'subjects' => $selected_subjects,
+            'list' => $selected_list
+        ];
+    }
+    
     /**
      * 공지사항 조회
      * @param int $limit_cnt [조회건수]
@@ -189,9 +295,39 @@ class Home extends \app\controllers\FrontController
     {
         $column = 'b.BoardIdx, b.Title, b.IsBest, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
         $order_by = ['b.IsBest' => 'Desc', 'b.BoardIdx' => 'Desc'];
-        $arr_condition = ['EQ' => ['b.BmIdx' => 45, 'b.SiteCode' => $this->_site_code, 'b.IsUse' => 'Y'], 'IN' => ['b.CampusCcd' => $arr_campus]];
+        $arr_condition = ['EQ' => ['b.BmIdx' => 45, 'b.IsUse' => 'Y'], 'IN' => ['b.CampusCcd' => $arr_campus], 'LKB' => ['b.Category_String' => $cate_code]];
 
-        return $this->supportBoardFModel->listBoard(false, $arr_condition, $column, $limit_cnt, 0, $order_by);
+        return $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $arr_condition, $column, $limit_cnt, 0, $order_by);
+    }
+
+    /**
+     * 캠퍼스별 공지사항 조회
+     * @param int $limit_cnt
+     * @return array
+     */
+    private function _boardNoticeByCampus($limit_cnt = 2)
+    {
+        $arr_condition = [
+            'EQ' => [
+                'b.BmIdx' => '45',
+                'b.SiteCode' => $this->_site_code,
+                'b.IsUse' => 'Y'
+            ],
+            'RAW' => [
+                'b.CampusCcd IS' => ' NOT NULL',
+                'b.CampusCcd NOT' => ' LIKE \'%999\'',
+            ]
+        ];
+
+        $selected_list = [];
+        $list = $this->supportBoardFModel->listBoardByCampus($arr_condition, $limit_cnt);
+        if (empty($list) === false) {
+            foreach ($list as $row) {
+                $selected_list[$row['CampusCcd']][] = $row;
+            }
+        }
+
+        return $selected_list;
     }
 
     /**
@@ -205,7 +341,7 @@ class Home extends \app\controllers\FrontController
     {
         $column = 'b.BoardIdx, b.IsBest, b.AreaCcd_Name, b.Title, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
         $order_by = ['b.IsBest' => 'Desc', 'b.BoardIdx' => 'Desc'];
-        $arr_condition = ['EQ' => ['b.BmIdx' => 54, 'b.IsUse' => 'Y']];
+        $arr_condition = ['EQ' => ['b.BmIdx' => 54, 'b.IsUse' => 'Y'], 'LKB' => ['b.Category_String' => $cate_code]];
 
         return $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $arr_condition, $column, $limit_cnt, 0, $order_by);
     }
@@ -221,9 +357,51 @@ class Home extends \app\controllers\FrontController
     {
         $column = 'b.BoardIdx, b.Title, b.IsBest, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
         $order_by = ['b.IsBest' => 'Desc', 'b.BoardIdx' => 'Desc'];
-        $arr_condition = ['EQ' => ['b.BmIdx' => 57, 'b.IsUse' => 'Y']];
+        $arr_condition = ['EQ' => ['b.BmIdx' => 57, 'b.IsUse' => 'Y'], 'LKB' => ['b.Category_String' => $cate_code]];
 
         return $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $arr_condition, $column, $limit_cnt, 0, $order_by);
+    }
+
+    /**
+     * 수강후기 조회
+     * @param int $limit_cnt
+     * @param string $cate_code
+     * @param array $arr_campus
+     * @return array|int
+     */
+    private function _boardStudyComment($limit_cnt = 6, $cate_code = '', $arr_campus = [])
+    {
+        $column = 'b.BoardIdx, b.Title, b.IsBest, b.SubjectName, b.ProfName, b.ProdName, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm
+            , fn_professor_refer_value(b.ProfIdx, "lec_list_img") as ProfLecListImg';
+        $order_by = ['b.IsBest' => 'Desc', 'b.BoardIdx' => 'Desc'];
+        $arr_condition = ['EQ' => ['b.BmIdx' => 85, 'b.SiteCode' => $this->_site_code, 'b.IsUse' => 'Y'], 'LKB' => ['b.Category_String' => $cate_code]];
+
+        return $this->supportBoardTwoWayFModel->listBoard(false, $arr_condition, $column, $limit_cnt, 0, $order_by);
+    }
+
+    /**
+     * 갤러리 게시판 데이터 조회
+     * @return array|int
+     */
+    private function _gallery()
+    {
+        $arr_condition = [
+            'EQ' => [
+                'b.BmIdx' => '90'
+                ,'b.IsUse' => 'Y'
+                ,'b.SiteCode' => $this->_site_code
+            ]
+        ];
+        $column = 'b.BoardIdx, b.Title, b.AttachData, b.CampusCcd_Name, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
+        $order_by = ['b.BoardIdx'=>'Desc'];
+        $data = $this->supportBoardFModel->listBoard(false,$arr_condition,$column,2,0,$order_by);
+
+        if (empty($data) === false) {
+            foreach ($data as $idx => $row) {
+                $data[$idx]['AttachData'] = json_decode($row['AttachData'], true);       //첨부파일
+            }
+        }
+        return $data;
     }
 
     /**
@@ -247,27 +425,20 @@ class Home extends \app\controllers\FrontController
                     '8' => ['MapPath' => img_url('cop_acad/map/map_cop_jj.jpg'),'Addr' => '제주도 제주시 동광로 56 3층','Tel' => '064-722-8140']
                 ];
                 break;
+            case "2004":
+                $temp_campus = [
+                    '0' => ['MapPath' => img_url('gosi_acad/map/mapSeoul.jpg'),'Addr' => '서울시동작구만양로105 2층<br/>(서울시동작구노량진동116-2 2층)','Tel' => '1544-0336'],
+                    '1' => ['MapPath' => img_url('gosi_acad/map/mapIC.jpg'),'Addr' => '인천 부평구 부평동 534-28 중보빌딩 10층','Tel' => '1544-1661'],
+                    '2' => ['MapPath' => img_url('gosi_acad/map/mapDG.jpg'),'Addr' => '대구 중구 중앙대로 412(남일동) CGV 2층','Tel' => '1522-6112'],
+                    '3' => ['MapPath' => img_url('gosi_acad/map/mapBS.jpg'),'Addr' => '부산 진구 부정동 223-8','Tel' => '1522-8112'],
+                    '4' => ['MapPath' => img_url('gosi_acad/map/mapKJ.jpg'),'Addr' => '광주 북구 호동로 6-11','Tel' => '062-514-4560']
+                ];
+                break;
             default:
                 $temp_campus = [];
         }
 
         return $temp_campus;
-    }
-
-    /**
-     * 메인 우측 퀵배너
-     * @param array $arr_disp
-     * @return array
-     */
-    private function _banner($arr_disp = [])
-    {
-        $result = $this->bannerFModel->findBannersInArray($arr_disp, $this->_site_code, 0);
-
-        $data = [];
-        foreach ($result as $key => $row) {
-            $data[$row['DispName']][] = $result[$key];
-        }
-        return $data;
     }
 
     /**
@@ -285,5 +456,14 @@ class Home extends \app\controllers\FrontController
 
         $data = $this->dDayFModel->getDDays($arr_condition, '1');
         return $data;
+    }
+
+    /**
+     * OnAir 조회
+     * @return array
+     */
+    private function _onAir()
+    {
+        return $this->onAirFModel->getLiveOnAir($this->_site_code, '');
     }
 }

@@ -20,7 +20,7 @@
             </div>
             <img class="mt70" src="{{ img_url('login/willbes_welcome.jpg') }}">
             @if($ismobile == false)
-                <div class="info-Txt info-Txt-Wrap tx-black bg-none mt60">
+                <div class="info-Txt info-Txt-Wrap tx-black mt60">
                     <strong class="tx-gray">시작할 서비스를 선택해 주세요</strong>
                     <select id="site" name="site" title="선택안함" class="seleSite">
                         <option value="/">선택안함</option>

@@ -261,6 +261,11 @@
     }
 
     function goLink(type){
+        // 성적데이터가 없어 탭이동불가
+        if( '{{ $submission }}' == 'N' ){
+            alert('성적데이터가 처리되지 않아 성적 확인이 불가능합니다.');
+            return ;
+        }
         //값이 세팅되면 시작
         if(type == 1){
             var link = "{{ site_url('/classroom/MockResult/winStatTotal') }}";

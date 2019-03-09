@@ -59,21 +59,21 @@
                                 <col style="width: 60px;">
                                 <col style="width: 70px;">
                                 <col style="width: 90px;">
-                                <col style="width: 140px;">
-                                <col style="width: 260px;">
+                                <col style="width: 150px;">
+                                <col style="width: 250px;">
                                 <col style="width: 90px;">
                                 <col style="width: 130px;">
                                 <col style="width: 120px;">
                             </colgroup>
                             <thead>
                             <tr>
-                                <th>No<span class="row-line">|</span></li></th>
-                                <th>과정<span class="row-line">|</span></li></th>
-                                <th>응시분야<span class="row-line">|</span></li></th>
-                                <th>시험응시일<span class="row-line">|</span></li></th>
-                                <th>모의고사명<span class="row-line">|</span></li></th>
-                                <th>응시상태<span class="row-line">|</span></li></th>
-                                <th>나의응시일<span class="row-line">|</span></li></th>
+                                <th>No<span class="row-line">|</span></th>
+                                <th>과정<span class="row-line">|</span></th>
+                                <th>응시분야<span class="row-line">|</span></th>
+                                <th>시험응시일<span class="row-line">|</span></th>
+                                <th>모의고사명<span class="row-line">|</span></th>
+                                <th>응시상태<span class="row-line">|</span></th>
+                                <th>나의응시일<span class="row-line">|</span></th>
                                 <th>응시하기</th>
                             </tr>
                             </thead>
@@ -92,18 +92,32 @@
                                         <td class="w-list">
                                             {{hpSubString($row['ProdName'],0,40,'...')}}
                                         </td>
-                                        <td class="w-state">@if($row['MrIsStatus'] == 'Y') 응시 @else 미응시 @endif</td>
+                                        <td class="w-state">@if($row['IsTake'] == 'Y') 응시 @else 미응시 @endif</td>
                                         <td class="w-dday">
                                             @if(empty($row['IsDate']) === false) {{ $row['IsDate'] }} @else @endif
                                         </td>
+                                        @if($row['IsTake'] == 'N' && ($row['TakeStartDatm'] < date('Y-m-d H:i:s') && $row['TakeEndDatm'] > date('Y-m-d H:i:s')))
                                         <td class="w-btn tx-red">
-                                            @if($row['MrIsStatus'] == 'Y')
-                                                응시마감
-                                            @else
-                                                <a class="bg-blue bd-dark-blue NSK" href="javascript:popwin({{ $row['ProdCode']}},{{ $row['MrIdx'] }})"
-                                                   onclick="">응시하기</a>
-                                            @endif
+                                            <a class="bg-blue bd-dark-blue NSK" href="javascript:popwin({{ $row['ProdCode']}},{{ $row['MrIdx'] }})"
+                                               onclick="">응시하기 </a>
                                         </td>
+                                        @else
+                                            @if($row['TakeStartDatm'] > date('Y-m-d H:i:s'))
+                                                <td class="w-btn tx-red">
+                                                    <a class="bg-blue bd-dark-blue NSK" href="javascript:alert('응시기간 내에만 시험 응시가 가능합니다.');" onclick="">응시하기 </a>
+                                                </td>
+                                            @else
+                                                @if($row['IsTake'] == 'Y')
+                                                    <td class="w-btn tx-black">
+                                                        응시완료
+                                                    </td>
+                                                @else
+                                                    <td class="w-btn tx-red">
+                                                        응시마감
+                                                    </td>
+                                                @endif
+                                            @endif
+                                        @endif
                                     </tr>
                                     @php $paging['rownum']-- @endphp
                                 @endforeach
@@ -119,8 +133,6 @@
             </div>
 
             <!-- willbes-Leclist -->
-
-
         </div>
         {!! banner('내강의실_우측퀵', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
 

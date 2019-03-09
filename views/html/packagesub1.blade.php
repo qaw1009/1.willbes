@@ -135,7 +135,47 @@
         </div>
         <!-- willbes-Lec-Package-Price -->
 
-        <div class="willbes-Lec NG c_both">
+        <a name="Info"></a>
+            <div class="willbes-Class c_both">
+                <div class="willbes-Lec-Tit NG tx-black">패키지정보</div>
+                <div class="classInfoTable GM">
+                    <table cellspacing="0" cellpadding="0" class="classTable under-gray tx-gray">
+                        <colgroup>
+                            <col style="width: 140px;">
+                            <col width="*">
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <td class="w-list bg-light-white">
+                                    패키지유의사항<br/>
+                                    <span class="tx-red">(필독)</span>
+                                </td>
+                                <td class="w-data tx-left pl25">
+                                    LMS > 상품관리> [온라인]상품관리> 운영자패키지메뉴의‘패키지유의사항(필독)’ 항목에입력된정보가<br/>
+                                    자동출력됩니다. (온라인상품기준)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-list bg-light-white">패키지소개</td>
+                                <td class="w-data tx-left pl25">
+                                    LMS > 상품관리> [온라인]상품관리> 운영자패키지메뉴의‘패키지소개’ 항목에입력된정보가<br/>
+                                    자동출력됩니다. (온라인상품기준)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-list bg-light-white">패키지특징</td>
+                                <td class="w-data tx-left pl25">
+                                    LMS > 상품관리> [온라인]상품관리> 운영자패키지메뉴의‘패키지특징’ 항목에입력된정보가<br/>
+                                    자동출력됩니다. (온라인상품기준)
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- willbes-Class -->
+
+        <div class="willbes-Lec NG c_both mt50">
             <div class="willbes-Lec-Subject tx-dark-black">강좌구성 및 교재선택<span class="MoreBtn"><a href="#none">교재정보 전체보기 ▼</a></span></div>
             <!-- willbes-Lec-Subject -->
 
@@ -152,7 +192,7 @@
                         <tr>
                             <td class="w-lectit tx-left" colspan="2">
                                 <span class="w-obj NSK"><div class="pBox p2">패키지</div></span>
-                                <span class="MoreBtn"><a href="#Info">패키지정보 보기 ▼</a></span>
+                                <!--span class="MoreBtn"><a href="#Info">패키지정보 보기 ▼</a></span-->
                             </td>
                         </tr>
                         <tr>
@@ -330,51 +370,9 @@
 
             <div class="TopBtn">
                 <a href="#none" onclick="goTop()"><span class="arrow-Btn">></span> TOP</a>
-            </div>
+            </div>     
 
-            <a name="Info"></a>
-            <div class="willbes-Class c_both">
-                <div class="willbes-Lec-Tit NG tx-black">패키지정보</div>
-                <div class="classInfoTable GM">
-                    <table cellspacing="0" cellpadding="0" class="classTable under-gray tx-gray">
-                        <colgroup>
-                            <col style="width: 140px;">
-                            <col width="*">
-                        </colgroup>
-                        <tbody>
-                            <tr>
-                                <td class="w-list bg-light-white">
-                                    패키지유의사항<br/>
-                                    <span class="tx-red">(필독)</span>
-                                </td>
-                                <td class="w-data tx-left pl25">
-                                    LMS > 상품관리> [온라인]상품관리> 운영자패키지메뉴의‘패키지유의사항(필독)’ 항목에입력된정보가<br/>
-                                    자동출력됩니다. (온라인상품기준)
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="w-list bg-light-white">패키지소개</td>
-                                <td class="w-data tx-left pl25">
-                                    LMS > 상품관리> [온라인]상품관리> 운영자패키지메뉴의‘패키지소개’ 항목에입력된정보가<br/>
-                                    자동출력됩니다. (온라인상품기준)
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="w-list bg-light-white">패키지특징</td>
-                                <td class="w-data tx-left pl25">
-                                    LMS > 상품관리> [온라인]상품관리> 운영자패키지메뉴의‘패키지특징’ 항목에입력된정보가<br/>
-                                    자동출력됩니다. (온라인상품기준)
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <!-- willbes-Class -->
-
-            <div class="TopBtn">
-                <a href="#none" onclick="goTop()"><span class="arrow-Btn">></span> TOP</a>
-            </div>
+            
         </div>
         <!-- willbes-Lec -->
 

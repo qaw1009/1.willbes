@@ -145,6 +145,24 @@ class SiteMenu extends \app\controllers\BaseController
     }
 
     /**
+     * 사이트 메뉴 캐쉬 수동 저장
+     */
+    public function saveCache()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = true;
+        $this->_saveSiteMenuCache($result);
+        $this->json_result($result, '저장 되었습니다.', $result);
+    }
+
+    /**
      * 사이트 메뉴 캐쉬 저장
      * @param $is_success
      */

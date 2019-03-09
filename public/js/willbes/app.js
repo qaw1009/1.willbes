@@ -4,33 +4,31 @@ $(function() {
         return;
     }
 
-    var selector = $('#Gnb .sliderGNB .slider').length > 0 ? '#Gnb .sliderGNB .slider' : '#Gnb .sliderView .slider';
-    var option = {
+    var gnb_sub_silder = $('#Gnb .sliderViewWrap .sliderView > div').bxSlider({
         auto: true,
         controls: false,
         pause: 3000
-    };
-    var silder = $(selector).bxSlider(option);
+    });
 
     $('.toggle-Btn a').click(function() {
-        if($("#Gnb").hasClass("Gnb-md")) {
-            $(".NSK.Gnb-md").attr('class','NSK Gnb-sm');
-            $(".toggle-Btn").attr('class','toggle-Btn gnb-Open');
-            $(".toggle-Btn .Txt").text('열기');
-            $("#Gnb .logo img").attr('src','/public/img/willbes/gnb/logo_sm.gif');
-            $("#Gnb .setting img").attr('src','/public/img/willbes/gnb/icon_setting_sm.gif');
-            $("#Gnb .intro img").attr('src','/public/img/willbes/gnb/icon_intro_sm.gif');
+        if($('#Gnb').hasClass('Gnb-md')) {
+            $('.NSK.Gnb-md').attr('class','NSK Gnb-sm');
+            $('.toggle-Btn').attr('class','toggle-Btn gnb-Open');
+            $('.toggle-Btn .Txt').text('열기');
+            $('#Gnb .logo img').attr('src','/public/img/willbes/gnb/logo_sm.gif');
+            $('#Gnb .setting img').attr('src','/public/img/willbes/gnb/icon_setting_sm.gif');
+            $('#Gnb .intro img').attr('src','/public/img/willbes/gnb/icon_intro_sm.gif');
         } else {
-            $(".NSK.Gnb-sm").attr('class','NSK Gnb-md');
-            $(".toggle-Btn").attr('class','toggle-Btn gnb-Close');
-            $(".toggle-Btn .Txt").text('숨김');
-            $("#Gnb .logo img").attr('src','/public/img/willbes/gnb/logo.gif');
-            $("#Gnb .setting img").attr('src','/public/img/willbes/gnb/icon_setting.gif');
-            $("#Gnb .intro img").attr('src','/public/img/willbes/gnb/icon_intro.gif');
+            $('.NSK.Gnb-sm').attr('class','NSK Gnb-md');
+            $('.toggle-Btn').attr('class','toggle-Btn gnb-Close');
+            $('.toggle-Btn .Txt').text('숨김');
+            $('#Gnb .logo img').attr('src','/public/img/willbes/gnb/logo.gif');
+            $('#Gnb .setting img').attr('src','/public/img/willbes/gnb/icon_setting.gif');
+            $('#Gnb .intro img').attr('src','/public/img/willbes/gnb/icon_intro.gif');
 
             // slider redraw
-            if (typeof silder != 'undefined') {
-                silder.redrawSlider();
+            if (typeof gnb_sub_silder != 'undefined') {
+                gnb_sub_silder.redrawSlider();
             }
         }
     });
@@ -40,12 +38,11 @@ $(function() {
 $(function() {
     $('.topView ul li.dropdown').mouseover(function(){
         $(this).addClass('active');
-    })
+    });
     $('.topView ul li.dropdown').mouseleave(function(){
         $(this).removeClass('active');
     });
 });
-
 
 // GNB 아코디언 메뉴 Script
 $(function() {

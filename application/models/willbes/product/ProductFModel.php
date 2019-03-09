@@ -161,6 +161,37 @@ class ProductFModel extends WB_Model
     }
 
     /**
+     * 판매가능, 판매예정 상품 과목별 {N}개씩 조회 (온라인단강좌, 무료강좌, 학원단과만 해당)
+     * @param $learn_pattern
+     * @param array $arr_condition
+     * @param int $limit
+     * @return mixed
+     */
+    public function listSalesProductLimitBySubjectIdx($learn_pattern, $arr_condition = [], $limit = 2)
+    {
+        $column = 'row_number() over (partition by SubjectIdx order by ProdCode desc) as RowNum
+            , ProdCode, ProdName, SubjectIdx, SubjectName, wProfName
+            , ifnull(JSON_VALUE(ProfReferData, "$.lec_list_img"), "") as ProfLecListImg';
+        $learn_pattern != 'off_lecture' && $column .= ', if(LectureSampleData = "N", "N", JSON_VALUE(LectureSampleData, "$[0].wUnitIdx")) as wUnitIdx';
+        $arr_condition = array_merge_recursive($arr_condition, $this->getSalesProductCondition($learn_pattern));
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $query = /** @lang text */ '
+            select * from (
+                select ' . $column . ' from ' . $this->_table[$learn_pattern] . $where . '
+            ) U
+            where RowNum < ? 
+            order by SubjectIdx asc, ProdCode desc';
+
+        // 쿼리 실행
+        $query = $this->_conn->query($query, [$limit + 1]);
+        
+        return $query->result_array();
+    }
+
+    /**
      * 단일상품 조회
      * @param string $learn_pattern
      * @param int $prod_code

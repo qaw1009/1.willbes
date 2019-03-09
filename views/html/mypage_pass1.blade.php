@@ -83,6 +83,7 @@
             </ul>
         </h3>
     </div>
+
     <div class="Depth">
         <img src="{{ img_url('sub/icon_home.gif') }}"> 
         <span class="1depth">
@@ -90,18 +91,38 @@
             <span class="depth-Arrow">></span><strong>무한PASS존</strong>
         </span>
     </div>
-    <div class="Content p_re">
 
-        <div class="willbes-Mypage-PASSZONE c_both">
-            <div class="c_both f_left widthAutoFull NG mb30">
-                <ul>
-                    <li class="InfoBtn ml10"><a href="#none" onclick="openWin('MyTablets')">등록기기정보 <span>▶</span></a></li>
-                    <li class="InfoBtn ml10"><a href="#none" onclick="openWin('MorePASS')">프리패스이용안내 <span>▶</span></a></li>
-                </ul>
+    <div class="Content p_re">       
+
+        <div class="willbes-Mypage-PASSZONE">
+            <div class="d_block">
+                <div class="willbes-listTable widthAuto550 f_left">
+                    <div class="will-Tit NSK">무한 PASS <span class="tx-light-blue">공지사항</span> <a class="f_right" href="#none" onclick="openWin('MyPass')"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
+                    <ul class="List-Table GM tx-gray">
+                        <li><a href="#none">3월 무이자카드안내</a><span class="date">2018-04-01</span></li>
+                        <li><a href="#none">3월 31일(금) 새벽시스템점검안내</a><span class="date">2018-04-01</span></li>
+                        <li><a href="#none">설연휴학원고객센터운영안내</a><span class="date">2018-03-06</span></li>
+                        <li><a href="#none">설연휴학원고객센터운영안내</a><span class="date">2018-03-06</span></li>   
+                        <li>등록된 공지 내용이 없습니다.</li>
+                    </ul>
+                </div>
+                <div class="willbes-listTable widthAuto365 f_right">
+                    <div class="will-Tit NSK bd-none">Hot <span class="tx-light-blue">Issue</span></div>
+                    <div class="hotissueBn"></div>
+                </div>
             </div>
-            <div class="willbes-Lec-Table NG d_block">
-                <div class="willbes-PASS-Line bg-blue">이용중인 PASS (2)</div>
-                <div class="will-Tit-Zone">
+            
+            <div class="c_both willbes-Lec-Table NG d_block pt25">
+                <div class="willbes-PASS-Line bg-blue">
+                    이용중인 PASS (2)
+                    <div class="f_right NG mt10 mr10">
+                        <ul>
+                            <li class="InfoBtn ml10"><a href="#none" onclick="openWin('MorePASS')">프리패스이용안내 <span>▶</span></a></li>
+                            <li class="InfoBtn ml10"><a href="#none" onclick="openWin('MyTablets')">등록기기정보 <span>▶</span></a></li>                            
+                        </ul>
+                    </div>
+                </div>
+                <div class="will-Tit-Zone c_both">
                     <div class="will-Tit NG f_left">· 무한PASS선택</div>
                     <span class="willbes-Lec-Selected GM tx-gray" style="float: inherit">
                         <select id="process" name="process" title="process" class="seleProcess">
@@ -1418,7 +1439,7 @@
         </div>
         <!-- willbes-Layer-PassBox : 무한PASS 교재구매 -->
 
-        <div id="MyTablets" class="willbes-Layer-PassBox willbes-Layer-PassBox800 h960 abs">
+        <div id="MyTablets" class="willbes-Layer-PassBox willbes-Layer-PassBox800 abs">
             <a class="closeBtn" href="#none" onclick="closeWin('MyTablets')">
                 <img src="{{ img_url('sub/close.png') }}">
             </a>
@@ -1559,6 +1580,221 @@
 
         </div>
         <!-- willbes-Layer-PassBox : 등록기기정보 -->
+
+        <div id="MyPass" class="willbes-Layer-PassBox willbes-Layer-PassBox800 abs">
+            <a class="closeBtn" href="#none" onclick="closeWin('MyPass')">
+                <img src="{{ img_url('sub/close.png') }}">
+            </a>
+            <div class="Layer-Tit tx-dark-black NG">무한 PASS 공지사항</div> 
+
+            <div class="lecMoreWrap">
+
+                <div class="PASSZONE-List widthAutoFull">        
+                    <div class="PASSZONE-Lec-Section">                        
+                        <div class="LeclistTable bdt-gray">
+                            <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black bdb-gray tx-gray">
+                                <colgroup>
+                                    <col style="width: 65px;">
+                                    <col style="width: 110px;">
+                                    <col>
+                                    <col style="width: 65px;">
+                                    <col style="width: 100px;">
+                                    <col style="width: 90px;">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th>No<span class="row-line">|</span></th>
+                                        <th>캠퍼스<span class="row-line">|</span></th>
+                                        <th>제목<span class="row-line">|</span></th>
+                                        <th>첨부<span class="row-line">|</span></th>
+                                        <th>작성일<span class="row-line">|</span></th>
+                                        <th>조회수</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="w-no"><img src="{{ img_url('prof/icon_HOT.gif') }}"></td>
+                                        <td class="w-campus">공통</td>
+                                        <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
+                                        <td class="w-file">
+                                            <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"></a>
+                                        </td>
+                                        <td class="w-date">2018-00-00</td>
+                                        <td class="w-click">123</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-no"><img src="{{ img_url('prof/icon_HOT.gif') }}"></td>
+                                        <td class="w-campus">스파르타반</td>
+                                        <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
+                                        <td class="w-file">
+                                            <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"></a>
+                                        </td>
+                                        <td class="w-date">2018-00-00</td>
+                                        <td class="w-click">244</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-no">10</td>
+                                        <td class="w-campus">스파르타반</td>
+                                        <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
+                                        <td class="w-file">&nbsp;</td>
+                                        <td class="w-date">2018-00-00</td>
+                                        <td class="w-click">355</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-no">9</td>
+                                        <td class="w-campus">스파르타반</td>
+                                        <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
+                                        <td class="w-file">&nbsp;</td>
+                                        <td class="w-date">2018-00-00</td>
+                                        <td class="w-click">466</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-no">8</td>
+                                        <td class="w-campus">스파르타반</td>
+                                        <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
+                                        <td class="w-file">&nbsp;</td>
+                                        <td class="w-date">2018-00-00</td>
+                                        <td class="w-click">355</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-no">7</td>
+                                        <td class="w-campus">스파르타반</td>
+                                        <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
+                                        <td class="w-file">&nbsp;</td>
+                                        <td class="w-date">2018-00-00</td>
+                                        <td class="w-click">466</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-no">6</td>
+                                        <td class="w-campus">스파르타반</td>
+                                        <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
+                                        <td class="w-file">&nbsp;</td>
+                                        <td class="w-date">2018-00-00</td>
+                                        <td class="w-click">355</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-no">5</td>
+                                        <td class="w-campus">스파르타반</td>
+                                        <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
+                                        <td class="w-file">&nbsp;</td>
+                                        <td class="w-date">2018-00-00</td>
+                                        <td class="w-click">466</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-no">4</td>
+                                        <td class="w-campus">스파르타반</td>
+                                        <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
+                                        <td class="w-file">&nbsp;</td>
+                                        <td class="w-date">2018-00-00</td>
+                                        <td class="w-click">355</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-no">3</td>
+                                        <td class="w-campus">스파르타반</td>
+                                        <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
+                                        <td class="w-file">&nbsp;</td>
+                                        <td class="w-date">2018-00-00</td>
+                                        <td class="w-click">466</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-no">2</td>
+                                        <td class="w-campus">스파르타반</td>
+                                        <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
+                                        <td class="w-file">&nbsp;</td>
+                                        <td class="w-date">2018-00-00</td>
+                                        <td class="w-click">355</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-list tx-center" colspan="7">검색 결과가 없습니다.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="Paging">
+                                <ul>
+                                    <li class="Prev"><a href="#none"><img src="{{ img_url('paging/paging_prev.png') }}"> </a></li>
+                                    <li><a class="on" href="#none">1</a><span class="row-line">|</span></li>
+                                    <li><a href="#none">2</a><span class="row-line">|</span></li>
+                                    <li><a href="#none">3</a><span class="row-line">|</span></li>
+                                    <li><a href="#none">4</a><span class="row-line">|</span></li>
+                                    <li><a href="#none">5</a><span class="row-line">|</span></li>
+                                    <li><a href="#none">6</a><span class="row-line">|</span></li>
+                                    <li><a href="#none">7</a><span class="row-line">|</span></li>
+                                    <li><a href="#none">8</a><span class="row-line">|</span></li>
+                                    <li><a href="#none">9</a><span class="row-line">|</span></li>
+                                    <li><a href="#none">10</a></li>
+                                    <li class="Next"><a href="#none"><img src="{{ img_url('paging/paging_next.png') }}"> </a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- View -->
+                    <div class="willbes-Leclist c_both">
+                        <div class="LecViewTable">
+                            <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black bdb-gray tx-gray">
+                                <colgroup>
+                                    <col style="width: 65px;">
+                                    <col style="width: 575px;">
+                                    <col style="width: 150px;">
+                                    <col style="width: 150px;">
+                                </colgroup>
+                                <thead>
+                                    <tr><th colspan="4" class="w-list tx-left  pl20"><img src="{{ img_url('prof/icon_HOT.gif') }}" style="marign-right: 5px;"> <strong>[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</strong></th></tr>
+                                    <tr>
+                                        <td class="w-acad pl20"><span class="oBox onlineBox NSK">온라인</span></td>
+                                        <td class="w-lec tx-left pl20">헌법<span class="row-line">|</span></td>
+                                        <td class="w-date">2018-00-00<span class="row-line">|</span></td>
+                                        <td class="w-click"><strong>조회수</strong> 123</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="w-file tx-left pl20" colspan="4">
+                                            <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일1이 노출됩니다.docx</a>
+                                            <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일2가 노출됩니다.docx</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-txt tx-left" colspan="7">
+                                            이달의 개강 강좌 공지입니다.<br/>
+                                            이달의 개강 강좌 공지입니다.<br/>
+                                            이달의 개강 강좌 공지입니다.
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="search-Btn btnAuto90 h36 mt20 mb30 f_right">
+                                <button type="submit" onclick="" class="mem-Btn bg-purple-gray bd-dark-gray">
+                                    <span>목록</span>
+                                </button>
+                            </div>
+                            <table cellspacing="0" cellpadding="0" class="listTable prevnextTable upper-gray bdt-gray bdb-gray tx-gray">
+                                <colgroup>
+                                    <col style="width: 150px;">
+                                    <col style="width: 640px;">
+                                    <col style="width: 150px;">
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <td class="w-prev bg-light-gray"><strong>이전글</strong></td>
+                                        <td class="tx-left pl20"><a href="#none">[개강] 황남기 헌법, 행정법 리마인드 핵심 이론 + 기출문풀</a><span class="row-line">|</span></td>
+                                        <td class="w-date">2018-00-00</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-next bg-light-gray"><strong>다음글</strong></td>
+                                        <td class="tx-left pl20"><a href="#none">[헌법] 5~6월 강의안내</a><span class="row-line">|</span></td>
+                                        <td class="w-date">2018-00-00</td>
+                                    </tr> 
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- PASSZONE-List -->
+            </div>
+
+        </div>
+        <!-- willbes-Layer-PassBox : 무한 PASS 공지 -->
 
     </div>
     <div class="Quick-Bnr ml20">

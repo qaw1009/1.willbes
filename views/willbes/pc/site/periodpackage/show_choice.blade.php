@@ -92,7 +92,38 @@
 
                 <!-- willbes-Lec-Package-Price -->
 
-                <div class="willbes-Lec NG c_both">
+                <a name="Info"></a>
+                <div class="willbes-Class c_both">
+                    <div class="willbes-Lec-Tit NG tx-black">패키지정보</div>
+                    <div class="classInfoTable GM">
+                        <table cellspacing="0" cellpadding="0" class="classTable under-gray tx-gray">
+                            <colgroup>
+                                <col style="width: 140px;">
+                                <col width="*">
+                            </colgroup>
+                            <tbody>
+                            @foreach($data['contents'] as $idx => $row)
+                                @if($row['ContentTypeCcd'] != '633004')
+                                    <tr>
+                                        <td class="w-list bg-light-white">
+                                            패키지{{ $row['ContentTypeCcdName'] }}
+                                            @if($row['ContentTypeCcd'] == '633001')
+                                                <br/><span class="tx-red">(필독)</span>
+                                            @endif
+                                        </td>
+                                        <td class="w-data tx-left pl25">
+                                            {!! $row['Content'] !!}
+                                        </td>
+                                    </tr>
+                                @endif
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- willbes-Class -->
+
+                <div class="willbes-Lec NG c_both mt50">
                     <div class="willbes-Lec-Subject tx-dark-black">교수선택</div>
                     <!-- willbes-Lec-Subject -->
 
@@ -109,7 +140,7 @@
                             <tr>
                                 <td class="w-lectit tx-left" colspan="2">
                                     <span class="w-obj NSK"><div class="pBox p2">패키지</div></span>
-                                    <span class="MoreBtn"><a href="#Info">패키지정보 보기 ▼</a></span>
+                                    <!--span class="MoreBtn"><a href="#Info">패키지정보 보기 ▼</a></span-->
                                 </td>
                             </tr>
                             <tr>
@@ -229,37 +260,7 @@
                     <div class="TopBtn">
                         <a href="#none" onclick="goTop()"><span class="arrow-Btn">></span> TOP</a>
                     </div>
-
-                    <a name="Info"></a>
-                    <div class="willbes-Class c_both">
-                        <div class="willbes-Lec-Tit NG tx-black">패키지정보</div>
-                        <div class="classInfoTable GM">
-                            <table cellspacing="0" cellpadding="0" class="classTable under-gray tx-gray">
-                                <colgroup>
-                                    <col style="width: 140px;">
-                                    <col width="*">
-                                </colgroup>
-                                <tbody>
-                                @foreach($data['contents'] as $idx => $row)
-                                    @if($row['ContentTypeCcd'] != '633004')
-                                        <tr>
-                                            <td class="w-list bg-light-white">
-                                                패키지{{ $row['ContentTypeCcdName'] }}
-                                                @if($row['ContentTypeCcd'] == '633001')
-                                                    <br/><span class="tx-red">(필독)</span>
-                                                @endif
-                                            </td>
-                                            <td class="w-data tx-left pl25">
-                                                {!! $row['Content'] !!}
-                                            </td>
-                                        </tr>
-                                    @endif
-                                @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <!-- willbes-Class -->
+                    
                 </div>
                 <!-- willbes-Lec -->
             </form>

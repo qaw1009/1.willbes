@@ -390,8 +390,8 @@ class Pg_inisis extends CI_Driver
                 // 환불계좌정보 셋팅
                 $inipay->SetField('refundbankcode', $_refund_bank_code);    // 환불은행코드
                 $inipay->SetField('refundacctnum', $_refund_account_no);     // 환불계좌번호 (숫자만 입력)
-                $inipay->SetField('refundacctname', $_refund_deposit_name);    // 환불계좌 예금주명
-                $inipay->SetField('refundflgremit', '');                                // 펌뱅킹 사용여부 (사용 : 1, 사용안함 : 값없음)
+                $inipay->SetField('refundacctname', iconv('UTF-8', 'EUC-KR', $_refund_deposit_name));    // 환불계좌 예금주명 (계좌실명 상이 에러 발생)
+                $inipay->SetField('refundflgremit', '');    // 펌뱅킹 사용여부 (사용 : 1, 사용안함 : 값없음)
             } else {
                 $inipay->SetField('tax', $_tax);
                 $inipay->SetField('taxfree', $_taxfree);
@@ -519,8 +519,8 @@ class Pg_inisis extends CI_Driver
                     // 환불계좌정보 셋팅
                     $inipay->SetField('rbankcode', $_refund_bank_code);    // 환불은행코드
                     $inipay->SetField('racctnum', $_refund_account_no);     // 환불계좌번호 (숫자만 입력)
-                    $inipay->SetField('racctname', $_refund_deposit_name);    // 환불계좌 예금주명
-                    $inipay->SetField('refundflgremit', '');                        // 펌뱅킹 사용여부 (사용 : 1, 사용안함 : 값없음)
+                    $inipay->SetField('racctname', iconv('UTF-8', 'EUC-KR', $_refund_deposit_name));    // 환불계좌 예금주명 (계좌실명 상이 에러 발생)
+                    $inipay->SetField('refundflgremit', '');    // 펌뱅킹 사용여부 (사용 : 1, 사용안함 : 값없음)
                 }
 
                 $inipay->startAction();

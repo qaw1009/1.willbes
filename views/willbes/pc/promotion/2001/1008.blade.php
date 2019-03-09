@@ -1,10 +1,9 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
+    @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
     <style type="text/css">
-        body{width:100%; min-width:1240px; margin:auto;}
-        .Depth {display:none}
         .subContainer {
             min-height: auto !important;
             margin-bottom:0 !important;
@@ -17,11 +16,14 @@
             padding:0 !important;
             background:#fff;
         }
+        .evtCtnsBox {width:100%; text-align:center; min-width:1210px;}
 
-        .wb_top {width:100%; text-align:center; background:#686d76 url(http://file3.willbes.net/new_cop/2019/01/EV190123_p1_bg.jpg) no-repeat center; min-width:1210px;}
-        .wb_cts01 {width:100%; text-align:center; background:#1a1a1a url(http://file3.willbes.net/new_cop/2019/01/EV190123_p2_bg.jpg) repeat; min-width:1210px;}
-        .wb_cts02 {width:100%; text-align:center; background:#7d7d7d; padding:100px 0;min-width:1210px;}
-        .wb_cts03 {width:100%; text-align:center; background:#fff; padding-bottom:100px;min-width:1210px;}	
+        /************************************************************/
+
+        .wb_top {background:#686d76 url(http://file3.willbes.net/new_cop/2019/01/EV190123_p1_bg.jpg) no-repeat center;}
+        .wb_cts01 {background:#1a1a1a url(http://file3.willbes.net/new_cop/2019/01/EV190123_p2_bg.jpg) repeat;}
+        .wb_cts02 {background:#7d7d7d; padding:100px 0}
+        .wb_cts03 {background:#fff; padding-bottom:100px;}
         .wb_cts03 ul{width:100%; margin:0 auto; max-width:980px}
         .wb_cts03 div {width:932px; margin:0 auto; background:#fff; border:24px solid #f4f4f4; padding:20px 0}
         .wb_cts03 table {width:95%; margin:0 auto}
@@ -30,23 +32,23 @@
         .wb_cts03 div tr:hover td {color:#000}
         .wb_cts03 div a:hover {background:#c83438; color:#fff}
 
-        .wb_cts04 {width:100%; text-align:center; background:#ececec; min-width:1210px;}
+        .wb_cts04 {background:#ececec;}
 
         /* 슬라이드배너 */
-        .slide_con {position:relative; width:980px; margin:0 auto}	
+        .slide_con {position:relative; width:980px; margin:0 auto}
         .slide_con p {position:absolute; top:50%; width:56px; height:56px; z-index:100}
         .slide_con p a {cursor:pointer}
         .slide_con p.leftBtn {left:-30px; top:50%; width:67px; height:67px;}
-        .slide_con p.rightBtn {right:-35px;top:50%; width:67px; height:67px;}	
+        .slide_con p.rightBtn {right:-35px;top:50%; width:67px; height:67px;}
 
-        #slidesImg3 li {display:inline; float:left}	
+        #slidesImg3 li {display:inline; float:left}
         #slidesImg3 li img {width:100%}
         #slidesImg3:after {content::""; display:block; clear:both}
 
         /* 탭 */
         .tabContaier{width:100%; text-align:center;}
-        .tabContaier ul {width:100%; max-width:980px; text-align:center; margin:0 auto  }		
-        .tabContaier li {display:inline; float:left; }	
+        .tabContaier ul {width:100%; max-width:980px; text-align:center; margin:0 auto  }
+        .tabContaier li {display:inline; float:left; }
         .tabContaier a img.off {display:block}
         .tabContaier a img.on {display:none}
         .tabContaier a.active img.off {display:none}
@@ -65,32 +67,30 @@
         .content_guide_box dd p.guide_txt_01{margin:5px 0 5px 15px;}
 
         .skybanner {
-            position:absolute; 
-            top:20px; 
+            position:absolute;
+            top:20px;
             right:10px;
             width:170px;
-            z-index:1;            
+            z-index:1;
         }
         .skybanner_sectionFixed {position:fixed; top:20px}
     </style>
-    
-    @include('html.event_incOnTnb')
 
-    <div class="p_re evtContent" id="evtContainer">
+    <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner">
-			<div><a href="event_onCopPromotionPassPop" target="_blank"><img src="http://file3.willbes.net/new_cop/2019/01/EV190123_p_sky1.png" alt="현직경찰 인증하기"></a></div>
-			<div><a href="#go"><img src="http://file3.willbes.net/new_cop/2019/01/EV190123_p_sky2_new.png" alt="프리패스 구매하기"></a></div>
-		</div>
+            <div><a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_cop/2019/01/EV190123_p_sky1.png" alt="현직경찰 인증하기"></a></div>
+            <div><a href="#go"><img src="http://file3.willbes.net/new_cop/2019/01/EV190123_p_sky2_new.png" alt="프리패스 구매하기"></a></div>
+        </div>
 
-        <div class="wb_top" id="main">
-			<img src="http://file3.willbes.net/new_cop/2019/01/EV190123_p1.png"  alt="메인" />
-		</div>
-        
-		<div class="wb_cts01">
-			<img src="http://file3.willbes.net/new_cop/2019/01/EV190123_p2.png"  alt="실수강생 4,000명" />
-		</div> 
-        
-        <div class="wb_cts02">
+        <div class="evtCtnsBox wb_top" id="main">
+            <img src="http://file3.willbes.net/new_cop/2019/01/EV190123_p1.png"  alt="메인" />
+        </div>
+
+        <div class="wb_cts01">
+            <img src="http://file3.willbes.net/new_cop/2019/01/EV190123_p2.png"  alt="실수강생 4,000명" />
+        </div>
+
+        <div class="evtCtnsBox wb_cts02">
             <div class="slide_con">
                 <ul id="slidesImg3">
                     <li><img src="http://file3.willbes.net/new_cop/2019/01/EV190123_p3_1.jpg" alt="1" /></li>
@@ -101,29 +101,29 @@
                 <p class="leftBtn"><a id="imgBannerLeft3"><img src="http://file3.willbes.net/new_cop/2017/03/EV170306_p_prev.png"></a></p>
                 <p class="rightBtn"><a id="imgBannerRight3"><img src="http://file3.willbes.net/new_cop/2017/03/EV170306_p_next.png"></a></p>
             </div>
-		</div>  
+        </div>
 
-        <div class="wb_cts03 NSK" id="go">
-			<img src="http://file3.willbes.net/new_cop/2019/01/EV190123_p4_1.png"  alt="계급별"/>
+        <div class="evtCtnsBox wb_cts03 NSK" id="go">
+            <img src="http://file3.willbes.net/new_cop/2019/01/EV190123_p4_1.png"  alt="계급별"/>
             <div>
                 <table cellspacing="0" cellpadding="0">
                     <col />
                     <col width="15%"/>
                     <tr>
-                    <td class="tx-left">【경장,경사,경위 승진대비】 2020 신광은 형소법 &amp; 김원욱 형법 PASS</td>
-                    <td><a href="http://www.willbescop.net/yearpackagelecture/yearpackagelectureDetail.html?topMenu=085&topMenuName=&topMenuType=O&searchCategoryCode=085&searchLeccode=Y201900001&leftMenuLType=M0001&lecKType=Y">수강신청</a></td>
+                        <td class="tx-left">【경장,경사,경위 승진대비】 2020 신광은 형소법 &amp; 김원욱 형법 PASS</td>
+                        <td><a href="{{ front_url('/periodPackage/show/cate/3006/pack/648001/prod-code/149196') }}">수강신청</a></td>
                     </tr>
                     <tr>
-                    <td class="tx-left">【경장,경사 승진대비】 2020 신광은 형소법 &amp; 김원욱 형법 &amp; 송광호 경찰실무2 PASS</td>
-                    <td><a href="http://www.willbescop.net/yearpackagelecture/yearpackagelectureDetail.html?topMenu=085&topMenuName=&topMenuType=O&searchCategoryCode=085&searchLeccode=Y201900002&leftMenuLType=M0001&lecKType=Y">수강신청</a></td>
+                        <td class="tx-left">【경장,경사 승진대비】 2020 신광은 형소법 &amp; 김원욱 형법 &amp; 송광호 경찰실무2 PASS</td>
+                        <td><a href="{{ front_url('/periodPackage/show/cate/3006/pack/648001/prod-code/149197') }}">수강신청</a></td>
                     </tr>
                     <tr>
-                    <td class="tx-left">【경장,경사 승진대비】 2020 신광은 형소법 &amp; 김원욱 형법 &amp; 송광호 경찰실무3 PASS</td>
-                    <td><a href="http://www.willbescop.net/yearpackagelecture/yearpackagelectureDetail.html?topMenu=085&topMenuName=&topMenuType=O&searchCategoryCode=085&searchLeccode=Y201900003&leftMenuLType=M0001&lecKType=Y">수강신청</a></td>
+                        <td class="tx-left">【경장,경사 승진대비】 2020 신광은 형소법 &amp; 김원욱 형법 &amp; 송광호 경찰실무3 PASS</td>
+                        <td><a href="{{ front_url('/periodPackage/show/cate/3006/pack/648001/prod-code/149198') }}">수강신청</a></td>
                     </tr>
                     <tr>
-                    <td class="tx-left">【경위 승진대비】 2020 신광은 형소법 &amp; 김원욱 형법 &amp; 조용석 경찰실무종합 PASS</td>
-                    <td><a href="http://www.willbescop.net/yearpackagelecture/yearpackagelectureDetail.html?topMenu=085&topMenuName=&topMenuType=O&searchCategoryCode=085&searchLeccode=Y201900004&leftMenuLType=M0001&lecKType=Y">수강신청</a></td>
+                        <td class="tx-left">【경위 승진대비】 2020 신광은 형소법 &amp; 김원욱 형법 &amp; 조용석 경찰실무종합 PASS</td>
+                        <td><a href="{{ front_url('/periodPackage/show/cate/3006/pack/648001/prod-code/149097') }}">수강신청</a></td>
                     </tr>
                 </table>
             </div>
@@ -136,42 +136,42 @@
                     <col width="15%"/>
                     <tr>
                         <td class="tx-left">2020 승진대비 형소법 12개월 동영상 PASS >신광은 교수</td>
-                        <td><a href="http://www.willbescop.net/yearpackagelecture/yearpackagelectureDetail.html?topMenu=085&topMenuName=&topMenuType=O&searchCategoryCode=085&searchLeccode=Y201900005&leftMenuLType=M0001&lecKType=Y">수강신청</a></td>
+                        <td><a href="{{ front_url('/periodPackage/show/cate/3006/pack/648001/prod-code/149200') }}">수강신청</a></td>
                     </tr>
                     <tr>
                         <td class="tx-left">2020 승진대비 형법 12개월 동영상 PASS >김원욱 교수</td>
-                        <td><a href="http://www.willbescop.net/yearpackagelecture/yearpackagelectureDetail.html?topMenu=085&topMenuName=&topMenuType=O&searchCategoryCode=085&searchLeccode=Y201900006&leftMenuLType=M0001&lecKType=Y">수강신청</a></td>
+                        <td><a href="{{ front_url('/periodPackage/show/cate/3006/pack/648001/prod-code/149201') }}">수강신청</a></td>
                     </tr>
                     <tr>
                         <td class="tx-left">2020 승진대비 경찰실무2 12개월 동영상 PASS >송광호 교수</td>
-                        <td><a href="http://www.willbescop.net/yearpackagelecture/yearpackagelectureDetail.html?topMenu=085&topMenuName=&topMenuType=O&searchCategoryCode=085&searchLeccode=Y201900007&leftMenuLType=M0001&lecKType=Y">수강신청</a></td>
+                        <td><a href="{{ front_url('/periodPackage/show/cate/3006/pack/648001/prod-code/149202') }}">수강신청</a></td>
                     </tr>
                     <tr>
                         <td class="tx-left">2020 승진대비 경찰실무3 12개월 동영상 PASS >송광호 교수</td>
-                        <td><a href="http://www.willbescop.net/yearpackagelecture/yearpackagelectureDetail.html?topMenu=085&topMenuName=&topMenuType=O&searchCategoryCode=085&searchLeccode=Y201900008&leftMenuLType=M0001&lecKType=Y">수강신청</a></td>
+                        <td><a href="{{ front_url('/periodPackage/show/cate/3006/pack/648001/prod-code/149203') }}">수강신청</a></td>
                     </tr>
                     <tr>
                         <td class="tx-left">2020 승진대비 경찰실무종합 12개월 동영상 PASS >조용석 교수</td>
-                        <td><a href="http://www.willbescop.net/yearpackagelecture/yearpackagelectureDetail.html?topMenu=085&topMenuName=&topMenuType=O&searchCategoryCode=085&searchLeccode=Y201900009&leftMenuLType=M0001&lecKType=Y">수강신청</a></td>
+                        <td><a href="{{ front_url('/periodPackage/show/cate/3006/pack/648001/prod-code/149204') }}">수강신청</a></td>
                     </tr>
                 </table>
             </div>
         </div>
 
-        <div class="wb_cts04">
-			<img src="http://file3.willbes.net/new_cop/2019/01/EV190123_p5.png"  alt="인증방법"  />
-		</div>
+        <div class="evtCtnsBox wb_cts04">
+            <img src="http://file3.willbes.net/new_cop/2019/01/EV190123_p5.png"  alt="인증방법"  />
+        </div>
 
         <div class="content_guide_wrap NG">
-			<div class="content_guide_box">
-				<p class="guide_tit"> <img src="http://file3.willbes.net/new_cop/2019/01/EV190123_p6.png" alt="이용안내"> </p>
-				<dl>				
+            <div class="content_guide_box">
+                <p class="guide_tit"> <img src="http://file3.willbes.net/new_cop/2019/01/EV190123_p6.png" alt="이용안내"> </p>
+                <dl>
                     <dt>
                         <h3>상품안내</h3>
                     </dt>
                     <dd>
                         <p>승진PASS는 현직경찰 인증이 완료 된 후 관련 PASS 수강신청이 가능합니다. 상품 구매전 상단 현직경찰 인증하기를 진행해주세요.</p>
-                    </dd>                
+                    </dd>
                     <dt>
                         <h3>상품구성</h3>
                     </dt>
@@ -221,64 +221,54 @@
                     <dd>
                         <p>※ 이용문의 : 고객만족센터 1544-5006</p>
                     </dd>
-				</dl>
-			</div>
-		</div>
+                </dl>
+            </div>
+        </div>
     </div>
     <!-- End Container -->
 
     <script>
+
+        function certOpen(){
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+             @if(empty($arr_promotion_params) === false)
+            var url = '/certApply/index/page/{{$arr_promotion_params["page"]}}/cert/{{$arr_promotion_params["cert"]}}' ;
+            window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
+            @endif
+        }
+
         $(document).ready(function() {
-        var slidesImg3 = $("#slidesImg3").bxSlider({
-            mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
-            auto:true,
-            speed:350,
-            pause:4000,
-            pager:true,
-            controls:false,
-            minSlides:1,
-            maxSlides:1,
-            slideWidth:2000,
-            slideMargin:0,
-            autoHover: true,
-            moveSlides:1,
-            pager:false,
+            var slidesImg3 = $("#slidesImg3").bxSlider({
+                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
+                auto:true,
+                speed:350,
+                pause:4000,
+                pager:true,
+                controls:false,
+                minSlides:1,
+                maxSlides:1,
+                slideWidth:2000,
+                slideMargin:0,
+                autoHover: true,
+                moveSlides:1,
+                pager:false,
             });
-        
+
             $("#imgBannerLeft3").click(function (){
                 slidesImg3.goToPrevSlide();
             });
-        
+
             $("#imgBannerRight3").click(function (){
                 slidesImg3.goToNextSlide();
             });
         });
     </script>
     <script src="/public/js/willbes/jquery.nav.js"></script>
-    <script>       
+    <script>
         $(function(e){
             var targetOffset= $("#evtContainer").offset().top;
             $('html, body').animate({scrollTop: targetOffset}, 1000);
-            /*e.preventDefault(); */   
-	    });
-
-        $( document ).ready( function() {
-            var jbOffset = $( '.skybanner' ).offset();
-            $( window ).scroll( function() {
-              if ( $( document ).scrollTop() > jbOffset.top ) {
-                $( '.skybanner' ).addClass( 'skybanner_sectionFixed' );
-              }
-              else {
-                $( '.skybanner' ).removeClass( 'skybanner_sectionFixed' );
-              }
-            });
-          } );
-
-        $(document).ready(function() {
-            $('.skybanner').onePageNav({
-                currentClass: 'hvr-shutter-out-horizontal_active'
-            });
-        });       
+            /*e.preventDefault(); */
+        });
     </script>
-
 @stop

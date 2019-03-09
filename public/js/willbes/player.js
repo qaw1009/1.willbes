@@ -217,10 +217,6 @@ function fnSettingPOP()
     $('#settingPOP').toggle();
 }
 
-function fnViewFAQ()
-{
-
-}
 
 //document.onmousedown = click;
 //document.onkeydown = click;

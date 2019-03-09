@@ -22,6 +22,35 @@ if (!function_exists('get_auth_site_codes')) {
     }
 }
 
+if (!function_exists('get_auth_on_off_site_codes')) {
+    /**
+     * 운영자 권한이 있는 온라인/학원 사이트 코드 리턴
+     * @param string $is_off_site [학원 사이트 구분, Y => 학원 사이트, N => 온라인 사이트]
+     * @param bool $is_with_name [코드명을 포함할지 여부, true : key = 사이트 코드, value = 코드명, false : value = 사이트 코드]
+     * @param bool $is_intg_site_use [통합사이트 사용 여부, true = 사용]
+     * @return array
+     */
+    function get_auth_on_off_site_codes($is_off_site = 'Y', $is_with_name = false, $is_intg_site_use = false)
+    {
+        $_CI =& get_instance();
+        $sess_auth_site_codes = element('Site', $_CI->session->userdata('admin_auth_data'), []);
+        $auth_site_codes = [];
+
+        if ($is_intg_site_use === false) {
+            // 통합사이트 코드 제외
+            unset($sess_auth_site_codes[config_item('app_intg_site_code')]);
+        }
+
+        foreach ($sess_auth_site_codes as $site_code => $row) {
+            if ($row['IsCampus'] == $is_off_site) {
+                $auth_site_codes[$site_code] = $row;
+            }
+        }
+
+        return $is_with_name === false ? array_pluck($auth_site_codes, 'SiteCode') : array_pluck($auth_site_codes, 'SiteName', 'SiteCode');
+    }
+}
+
 if (!function_exists('get_auth_campus_ccds')) {
     /**
      * @param int $site_code [사이트 코드]

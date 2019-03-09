@@ -9,6 +9,101 @@
         </div>
         <div class="Content p_re">
             <form name="searchFrm1" id="searchFrm1" action="{{app_url('/classroom/pass/index', 'www')}}" onsubmit="">
+                <div class="willbes-Mypage-PASSZONE">
+                    <div class="d_block">
+                        <div class="willbes-listTable widthAuto550 f_left">
+                            <div class="will-Tit NSK">무한 PASS <span class="tx-light-blue">공지사항</span> <a class="f_right" href="{{ front_url('/classroom/passNotice/index') }}"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
+                            <ul class="List-Table GM tx-gray">
+                                @if (empty($list_pass_notice))
+                                    <li>등록된 공지 내용이 없습니다.</li>
+                                @else
+                                    @foreach($list_pass_notice as $row)
+                                        <li><a href="{{ front_url('/classroom/passNotice/show') . '?board_idx=' . $row['BoardIdx'] }}">{{ $row['Title'] }}</a><span class="date">{{ $row['Title'] }}</span></li>
+                                    @endforeach
+                                @endif
+                            </ul>
+                        </div>
+                        <div class="willbes-listTable widthAuto365 f_right">
+                            <div class="will-Tit NSK bd-none">Hot <span class="tx-light-blue">Issue</span></div>
+                            <div class="hotissueBn">
+                                @if(empty($arr_banner) === false)
+                                    @php $link_url = ''; $last_banner = end($arr_banner); @endphp
+                                    @if(empty($last_banner['LinkUrl']) === false)
+                                        @php $link_url = front_app_url('/banner/click?banner_idx=' . $last_banner['BIdx'] . '&return_url=' . urlencode($last_banner['LinkUrl']) . '&link_url_type=' . urlencode($last_banner['LinkUrlType']), 'www'); @endphp
+                                    @endif
+                                    <li><a href="{{ $link_url }}" target="_{{ $last_banner['LinkType'] }}"><img src="{{ $last_banner['BannerFullPath'] . $last_banner['BannerImgName'] }}" alt="{{ $last_banner['BannerName'] }}"></a></li>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="c_both willbes-Lec-Table NG d_block pt25">
+                        <div class="willbes-PASS-Line bg-blue">
+                            이용중인 PASS ({{count($passlist)}})
+                            <div class="f_right NG mt10 mr10">
+                                <ul>
+                                    <li class="InfoBtn ml10"><a href="javascript:;" onclick="fnMyDevice('');">등록기기정보 <span>▶</span></a></li>
+                                    <li class="InfoBtn ml10"><a href="javascript:;" onclick="openWin('MorePASS')">프리패스이용안내 <span>▶</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="will-Tit-Zone c_both">
+                            <div class="will-Tit NG f_left">· 무한PASS선택</div>
+                            <span class="willbes-Lec-Selected GM tx-gray" style="float: inherit">
+                                <select id="sitegroupcode" name="sitegroupcode" title="process" class="seleProcess">
+                                    <option value="">과정</option>
+                                    @foreach($sitegroup_arr as $row )
+                                        <option value="{{$row['SiteGroupCode']}}" @if(isset($input_arr['sitegroupcode']) && $input_arr['sitegroupcode'] == $row['SiteGroupCode']) selected="selected" @endif>{{$row['SiteGroupName']}}</option>
+                                    @endforeach
+                                </select>
+                                <select id="passidx" name="passidx" class="seleName" >
+                                    @if(empty($passlist) == true)
+                                        <option value="">무한PASS를 선택해주십시요.</option>
+                                    @else
+                                        @foreach($passlist as $row )
+                                            <option value="{{$row['ProdCode']}}" @if(isset($passinfo['ProdCode']) && $passinfo['ProdCode'] == $row['ProdCode']) selected="selected" @endif>{{$row['ProdName']}}</option>
+                                        @endforeach
+                                    @endif
+                                </select>
+                        </span>
+                        </div>
+                        <table cellspacing="0" cellpadding="0" class="lecTable PassZoneTable">
+                            <colgroup>
+                                <col style="width: 770px;">
+                                <col style="width: 170px;">
+                            </colgroup>
+                            <tbody>
+                            @if(empty($passinfo) == false)
+                                <tr>
+                                    <td class="w-data tx-left">
+                                        <div class="w-tit">
+                                            {{$passinfo['ProdName']}}
+                                        </div>
+                                        <dl class="w-info tx-gray">
+                                            <dt>[수강기간] <span class="tx-blue">{{str_replace('-', '.', $row['LecStartDate'])}}~{{str_replace('-', '.', $row['RealLecEndDate'])}}</span> <span class="tx-black">(잔여기간<span class="tx-pink">{{$row['remainDays']}}일</span>)</span></dt>
+                                        </dl>
+                                    </td>
+                                    @if($passinfo['TakeLecNum'] == 0)
+                                        <td class="w-lec">
+                                            <div class="tx-gray">수강중인 강좌가 없습니다.</div>
+                                            <div class="w-sj">강좌를 추가해 주세요.</div>
+                                            <div class="w-btn"><a class="bg-blue bd-dark-blue NSK" href="javascript:;" onclick="fnMoreLec('{{$passinfo['OrderIdx']}}','{{$passinfo['ProdCode']}}');">강좌추가</a></div>
+                                        </td>
+                                    @else
+                                        <td class="w-lec">
+                                            <div class="tx-gray">수강중인 강좌수</div>
+                                            <div class="w-sj"><span class="tx-blue">{{$passinfo['TakeLecNum']}}강좌</span> / {{$passinfo['LecNum']}}강좌</div>
+                                            <div class="w-btn"><a class="bg-blue bd-dark-blue NSK" href="javascript:;" onclick="fnMoreLec('{{$passinfo['OrderIdx']}}','{{$passinfo['ProdCode']}}');">강좌추가</a></div>
+                                        </td>
+                                    @endif
+                                </tr>
+                            @endif
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </form>
+            {{--<form name="searchFrm1" id="searchFrm1" action="{{app_url('/classroom/pass/index', 'www')}}" onsubmit="">
                 <div class="willbes-Mypage-PASSZONE c_both">
                     <div class="c_both f_left widthAutoFull NG mb30">
                         <ul>
@@ -74,7 +169,7 @@
                         </table>
                     </div>
                 </div>
-            </form>
+            </form>--}}
             <!-- willbes-Mypage-PASSZONE -->
 
             <div class="willbes-Mypage-Tabs mt70">

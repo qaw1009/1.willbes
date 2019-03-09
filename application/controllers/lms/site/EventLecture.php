@@ -88,6 +88,7 @@ class EventLecture extends \app\controllers\BaseController
         $el_idx = null;
         $list_event_register = null;
         $file_data = null;
+        $file_data_promotion = null;
 
         //관리옵션
         $optoins_keys = [];
@@ -132,10 +133,14 @@ class EventLecture extends \app\controllers\BaseController
 
             // 등록파일 데이터 조회
             $list_event_file = $this->eventLectureModel->listEventForFile($el_idx);
-            foreach ($list_event_file as $row) {
-                $file_data[$row['FileType']]['file_idx'] = $row['EfIdx'];
-                $file_data[$row['FileType']]['file_real_name'] = $row['FileRealName'];
-                $file_data[$row['FileType']]['file_path'] = $row['FileFullPath'].$row['FileName'];
+            if ($data['RequestType'] == '5') {
+                $file_data_promotion = $list_event_file;
+            } else {
+                foreach ($list_event_file as $row) {
+                    $file_data[$row['FileType']]['file_idx'] = $row['EfIdx'];
+                    $file_data[$row['FileType']]['file_real_name'] = $row['FileRealName'];
+                    $file_data[$row['FileType']]['file_path'] = $row['FileFullPath'] . $row['FileName'];
+                }
             }
 
             // 정원제한 데이터 조회 / 타입별 데이터 초기화
@@ -164,8 +169,10 @@ class EventLecture extends \app\controllers\BaseController
             'arr_take_types' => $this->eventLectureModel->_take_type_names,
             'arr_is_registers' => $this->eventLectureModel->_is_register_names,
             'file_data' => $file_data,
+            'file_data_promotion' => $file_data_promotion,
             'list_event_register' => $list_event_register,
-            'promotion_modify_type' => (ENVIRONMENT === 'production') ? false : true
+            'promotion_modify_type' => (ENVIRONMENT === 'production') ? false : true,
+            'promotion_attach_file_cnt' => (empty($file_data_promotion) === true) ? 3 : count($file_data_promotion)
         ]);
     }
 
@@ -241,10 +248,10 @@ class EventLecture extends \app\controllers\BaseController
             }
         }
 
-        // 프로모션 제외
-        if ($this->eventLectureModel->_request_type_names[$request_type] != '프로모션') {
-            // 등록,수정 조건 분기 처리, 프로모션 제외
-            if (empty($this->_reqP('el_idx')) === true) {
+        // 등록,수정 조건 분기 처리, 프로모션 제외
+        if (empty($this->_reqP('el_idx')) === true) {
+            // 프로모션 제외
+            if ($this->eventLectureModel->_request_type_names[$request_type] != '프로모션') {
                 if ($content_type == 'I' && empty($_FILES['attach_file']['size'][0]) === true) {
                     $rules = array_merge($rules, [
                         ['field' => "attach_file_C", 'label' => '이미지내용', 'rules' => "callback_validateFileRequired[attach_file_C]"]
@@ -260,9 +267,12 @@ class EventLecture extends \app\controllers\BaseController
                         ['field' => "attach_file_S", 'label' => '리스트썸네일', 'rules' => "callback_validateFileRequired[attach_file_S]"]
                     ]);
                 }
+            }
+        } else {
+            $method = 'modify';
 
-            } else {
-                $method = 'modify';
+            // 프로모션 제외
+            if ($this->eventLectureModel->_request_type_names[$request_type] != '프로모션') {
                 if ($content_type == 'E') {
                     $rules = array_merge($rules, [
                         ['field' => 'content', 'label' => '내용', 'rules' => 'trim|required']
@@ -320,6 +330,7 @@ class EventLecture extends \app\controllers\BaseController
     {
         $el_idx = $params[0];
         $file_data = null;
+        $file_data_promotion = null;
 
         $arr_condition = (['EQ'=>['A.ElIdx' => $el_idx,'A.IsStatus' => 'Y']]);
         $data = $this->eventLectureModel->findEventForModify($arr_condition);
@@ -366,16 +377,21 @@ class EventLecture extends \app\controllers\BaseController
 
         // 등록파일 데이터 조회
         $list_event_file = $this->eventLectureModel->listEventForFile($el_idx);
-        foreach ($list_event_file as $row) {
-            $file_data[$row['FileType']]['file_idx'] = $row['EfIdx'];
-            $file_data[$row['FileType']]['file_real_name'] = $row['FileRealName'];
-            $file_data[$row['FileType']]['file_path'] = $row['FileFullPath'].$row['FileName'];
+        if ($data['RequestType'] == '5') {
+            $file_data_promotion = $list_event_file;
+        } else {
+            foreach ($list_event_file as $row) {
+                $file_data[$row['FileType']]['file_idx'] = $row['EfIdx'];
+                $file_data[$row['FileType']]['file_real_name'] = $row['FileRealName'];
+                $file_data[$row['FileType']]['file_path'] = $row['FileFullPath'] . $row['FileName'];
+            }
         }
 
         $this->load->view("site/event_lecture/read", [
             'data' => $data,
             'el_idx' => $el_idx,
             'file_data' => $file_data,
+            'file_data_promotion' => $file_data_promotion,
             'data_register_LM' => $data_register_LM,
             'wAdmin_info' => $wAdmin_info,
             'ms_datas' => $ms_datas,
@@ -777,9 +793,8 @@ class EventLecture extends \app\controllers\BaseController
                 'A.RequestType' => $this->_reqP('search_request_type')
             ],
             'ORG1' => [
-                'LKB' => [
-                    'A.EventName' => $this->_reqP('search_value')
-                ]
+                'LKB' => ['A.EventName' => $this->_reqP('search_value')],
+                'LKR' => ['A.PromotionCode' => $this->_reqP('search_value')]
             ]
         ];
 

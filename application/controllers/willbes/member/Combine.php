@@ -17,6 +17,22 @@ class Combine extends BaseMember
      */
     public function index($params = [])
     {
+        $MemIdx = $this->session->userdata('combine_idx');
+        $MemId = $this->session->userdata('combine_id');
+
+        if(empty($MemIdx) === true || empty($MemId)){
+            show_alert("회원통합을 진행할 정보가 없습니다.", '/');
+        }
+
+        $data = $this->memberFModel->getMember(false, ['EQ' => [
+            'Mem.MemIdx' => $MemIdx,
+            'Mem.MemId' => $MemId,
+            ]]);
+
+        if(empty($data) === true){
+            show_alert("통합회원처리에 실패했습니다. 다시 시도해주십시요.", '/');
+        }
+
         $agree = $this->_req('agree');
 
         if($agree === 'Y'){
@@ -37,6 +53,37 @@ class Combine extends BaseMember
             'mail_domain_ccd' => $codes['661'],
             'encData' => $data['encData']
         ]);
+    }
+
+
+    /**
+     * 통홥회원 전환 동의 하면 그냥 처리
+     * @return object|string
+     */
+    public function agree()
+    {
+        $MemIdx = $this->session->userdata('combine_idx');
+        if(empty($MemIdx) === true){
+            redirect('/');
+        }
+
+        //아이디 중복상태가 아니므로 통합회원으로 플래그만 변경
+        $result = $this->memberFModel->setCombineMember($MemIdx, [ 'TrustStatus' => 'Y' ], false);
+
+        if($result === true) {
+            $data = $this->memberFModel->getMember(false, ['EQ' => ['Mem.MemIdx' => $MemIdx]]);
+
+            $this->session->set_userdata('combine_id', '');
+            $this->session->set_userdata('combine_idx', '');
+
+            return $this->load->view('member/find/combinesuccess', [
+                'MemName' => $data['MemName'],
+                'MemId' => $data['MemId'],
+                'ChangeDate' => $data['ChangeDate']
+            ]);
+        } else {
+            show_alert("통합회원처리에 실패했습니다. 다시 시도해주십시요.", '/member/combine');
+        }
     }
 
     /**
@@ -78,14 +125,13 @@ class Combine extends BaseMember
                         'Mem.IsChange' => 'N'
                     ]
                 ];
-
                 // 검색
                 $count = $this->memberFModel->getMember(true, $where);
 
                 if($count > 0){
                     //가입정보가 있을경우
                     $result = $this->memberFModel->getMember(false, $where);
-                    return $this->load->view('member/find/combine/form', [
+                    return $this->load->view('member/find/combineform', [
                         'MemId' => $MemId,
                         'Member' => $result,
                         'enc_data' => $enc_data,

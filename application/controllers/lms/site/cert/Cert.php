@@ -101,7 +101,6 @@ class Cert extends \app\controllers\BaseController
             ['field'=>'CertConditionCcd', 'label' => '인증조건', 'rules' => 'trim|required'],
         ];
 
-
         if($this->validate($rules) === false) {
             return;
         }

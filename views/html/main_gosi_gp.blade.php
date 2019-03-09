@@ -55,21 +55,31 @@
         </h3>
     </div>
 
-    <div class="Section MainVisual">        
-        <div class="widthAuto NSK mt30">            
-            <div class="VisualsubBox">
+    <div class="Section MainVisual mt20 p_re">        
+        <div class="NSK">            
+            <div class="VisualBox">
                 <div class="bSlider">
                     <div class="sliderStopAutoPager">
-                        <div><a href="#none"><img src="{{ img_url('gpgosi/banner/bnr_1120x380_01.jpg') }}" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="{{ img_url('gpgosi/banner/bnr_1120x380_02.jpg') }}" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="{{ img_url('gpgosi/banner/bnr_1120x380_03.jpg') }}" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="{{ img_url('gpgosi/banner/bnr_1920x400_01.jpg') }}" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="{{ img_url('gpgosi/banner/bnr_1920x400_02.jpg') }}" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="{{ img_url('gpgosi/banner/bnr_1920x400_03.jpg') }}" alt="배너명"></a></div>
                     </div>
                 </div>
+            </div>
+            <div class="VisualsubBox">
+                <div><a href="#none"><img src="{{ img_url('gpgosi/banner/bnr_364x128_01.jpg') }}" alt="배너명"></a></div>   
+                <div class="bSlider">
+                    <div class="sliderStopAutoPager">
+                        <div><a href="#none"><img src="{{ img_url('gpgosi/banner/bnr_364x248_01.jpg') }}" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="{{ img_url('gpgosi/banner/bnr_364x248_01.jpg') }}" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="{{ img_url('gpgosi/banner/bnr_364x248_01.jpg') }}" alt="배너명"></a></div>
+                    </div>
+                </div>   
             </div>
         </div>
     </div>
 
-    <div class="Section mt30">
+    <div class="Section barBnr">
         <div class="widthAuto">
             <a href="#none"><img src="{{ img_url('gpgosi/banner/bnr_1120x110.jpg') }}" alt="배너명"></a>
         </div>
@@ -79,9 +89,29 @@
         <div class="widthAuto">
             <img src="{{ img_url('gpgosi/visual/visual_tit01.jpg') }}" alt="빠른 합격을 위한 윌비스 군무원 추천강좌">            
             <ul class="PBcts">
-                <li><a href="#none"><img src="{{ img_url('gpgosi/visual/visual_prof01.jpg') }}" alt="배너명"></a></li>
-                <li><a href="#none"><img src="{{ img_url('gpgosi/visual/visual_prof02.jpg') }}" alt="배너명"></a></li>
-                <li><a href="#none"><img src="{{ img_url('gpgosi/visual/visual_prof03.jpg') }}" alt="배너명"></a></li>
+                <li>
+                    <div class="bSlider">
+                        <div class="slider">
+                            <div><a href="#none"><img src="{{ img_url('gpgosi/visual/visual_prof01.jpg') }}" alt="합격전략설명회"></a></div>
+                            <div><a href="#none"><img src="{{ img_url('gpgosi/visual/visual_prof01.jpg') }}" alt="황세웅면접캠프"></a></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="bSlider">
+                        <div class="slider">
+                            <div><a href="#none"><img src="{{ img_url('gpgosi/visual/visual_prof02.jpg') }}" alt="합격전략설명회"></a></div>
+                            <div><a href="#none"><img src="{{ img_url('gpgosi/visual/visual_prof02.jpg') }}" alt="황세웅면접캠프"></a></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="bSlider">
+                        <div class="slider">
+                            <div><a href="#none"><img src="{{ img_url('gpgosi/visual/visual_prof03.jpg') }}" alt="합격전략설명회"></a></div>
+                            <div><a href="#none"><img src="{{ img_url('gpgosi/visual/visual_prof03.jpg') }}" alt="황세웅면접캠프"></a></div>
+                        </div>
+                    </div>
                 <li><a href="#none"><img src="{{ img_url('gpgosi/visual/visual_prof04.jpg') }}" alt="배너명"></a></li>
             </ul>
         </div>

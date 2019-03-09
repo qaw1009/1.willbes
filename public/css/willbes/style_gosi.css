@@ -59,18 +59,9 @@
 .VisualsubBox {
     float: right;
     width: 394px;
-    height: 300px;
+    /*height: 300px;*/
     overflow: hidden;
 }
-
-/*
-.gosi .VisualsubBox .bx-wrapper .bx-controls-auto {
-    left: 0;
-    right: 0;
-    bottom: 20px;
-    margin: 0;
-    z-index: 90;
-  }*/
 
 .gosi .VisualsubBox .bx-wrapper .bx-controls-auto {
     left:20px;

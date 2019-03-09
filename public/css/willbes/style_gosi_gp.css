@@ -1,183 +1,230 @@
 /*********************************************     Main Container : tax     *********************************************/
 .gp .Section2 {
-    background: #f3f3f3;
+  background: #f3f3f3;
 }
 .gp .Section3 {
-    background: #f7f7f7;
+  background: #f7f7f7;
 }
 
 .gp .Depth .depth:last-child strong {
-    color: #ba560e;
+  color: #ba560e;
 }
 
 /* Main Container : MainVisual */
 .gp .MainVisual:after {
-    content: "";
-    display: block;
-    clear: both;
+  content: "";
+  display: block;
+  clear: both;
 }
 
-.gp .VisualsubBox {
-    position: relative;
-    width: 1120px;
-    height: 380px;
-    overflow: hidden;
+.gp .VisualBox {
+  position: relative;
+  width: 1920px;
+  margin:0 auto;
+  height: 400px;
+  overflow: hidden;
 }
-.gp .VisualsubBox .bx-wrapper .bx-controls-auto {
-    left:20px;
-    bottom: 20px;
-    margin: 0;
-    width: 50px;
-    z-index: 90;
+
+.gp .VisualBox .bx-wrapper .bx-controls-auto {
+  left:50%;
+  bottom: 20px;
+  margin-left: -560px;
+  width: 50px;
+  z-index: 90;
   }
-.gp .VisualsubBox .bx-wrapper .bx-pager {
-    float: right;
-    width: auto;
-    left:60px;
-    bottom: 20px;
-    text-align: right;
+.gp .VisualBox .bx-wrapper .bx-pager {
+  width: auto;
+  left:50%;
+  margin-left: -520px;
+  bottom: 20px;
+  text-align: left;
 }
-.gp .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a {
-    background: #fff;
-    width: 8px;
-    height: 8px;
-    margin: 0 2px;
+.gp .bx-wrapper .bx-pager.bx-default-pager a,
+.gp .bx-wrapper .bx-pager.bx-default-pager a {
+  background: #ccc !important;
+  width: 8px;
+  height: 8px;
+  margin: 0 2px;
+}
+.gp .VisualsubBox {
+  position: absolute;
+  left:50%;
+  margin-left:196px;
+  margin-top:10px;
+  width: 364px;
+  height: ;
+}
+.gp .VisualsubBox .bSlider {
+  margin-top:3px;
+  width: 364px;
+  height: 248px !important;
+  overflow: hidden;
+}
+.gp .VisualsubBox .bx-wrapper .bx-pager {
+  width: auto;
+  left:20px; 
+  bottom: 20px;
+  text-align: center;
+}
+.gp .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.gp .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
+.gp .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #000 !important;
+}
+
+/**/
+.gp .Section.barBnr {
+  background:url("../../img/willbes/gpgosi/banner/bnr_1120_bg.jpg") repeat-x left bottom;
 }
 
 /* Main Container : Prof */
 .gp .PBcts li {
-    float: left;
-    width: 274px;
-    height: 234px;
-    overflow: hidden;
-    margin-left: 8px;
+  float: left;
+  width: 274px;
+  height: 234px;
+  overflow: hidden;
+  margin-left: 8px;
 }
 .gp .PBcts li:first-child {
     margin-left: 0;
 }
 .gp .PBcts:after {
-    content: "";
-    display: block;
-    clear: both;
+  content: "";
+  display: block;
+  clear: both;
 }
 .gp .PBctsB li {
-    float: left;
-    width: 274px;
-    height: 192px;
-    overflow: hidden;
-    margin-left: 8px;
-    margin-bottom: 8px;
+  float: left;
+  width: 274px;
+  height: 192px;
+  overflow: hidden;
+  margin-left: 8px;
+  margin-bottom: 8px;
 }
 .gp .PBctsB li:nth-child(5),
 .gp .PBctsB li:first-child {
-    margin-left: 0;
+  margin-left: 0;
 }
 .gp .PBctsB:after {
-    content: "";
-    display: block;
-    clear: both;
+  content: "";
+  display: block;
+  clear: both;
 }
-
+.gp .PBcts .bSlider .bx-wrapper .bx-pager {
+  float: left;
+  width: auto;
+  left: 30px;
+  bottom: 10px;
+  text-align: left;
+}
+.gp .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.gp .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
+.gp .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
+  background: #217562 !important;
+}
 
 /**/
 .gp .smallTit {
-    border-top:1px solid #000;
-    font-size: 22px;
-    color:#363636;    
-    position: relative;
+  border-top:1px solid #000;
+  font-size: 22px;
+  color:#363636;    
+  position: relative;
 }
 .gp .smallTit p {
-    position: absolute;
-    top:-15px;
-    text-align:left;
-    width: 100%;
+  position: absolute;
+  top:-15px;
+  text-align:left;
+  width: 100%;
 }
-.gp .smallTit p a {vertical-align: top; margin-left: 10px}
+.gp .smallTit p a {
+  vertical-align:top;
+  margin-left: 10px
+}
 .gp .smallTit span {
-    font-weight: 600;
-    background: #fff;
-    padding:0 20px 0 0;
+  font-weight: 600;
+  background: #fff;
+  padding:0 20px 0 0;
 }
 .gp .smallTit strong {
-    color:#ba560e;
+  color:#ba560e;
 }
 
 .gp .will-listTit {
-    margin-bottom: 15px;
-    color:#181818;
+  margin-bottom: 15px;
+  color:#181818;
 }
 
 
 /* Main Container : Notice : noticeTabs */
 .gp .tabWrap.noticeWrap {
-    height: 16px;
-    border: none;
+  height: 16px;
+  border: none;
 }
 .gp .tabWrap.noticeWrap li {
-    float: left;
-    width: auto;
-    height: 16px;
-    margin-right: 10px;
+  float: left;
+  width: auto;
+  height: 16px;
+  margin-right: 10px;
 }
 .gp .tabWrap.noticeWrap li a {
-    display: block;
-    width: 100%;
-    height: 19px;
-    line-height: 19px;
-    font-size: 17px;
-    color: #c5c5c5;
-    text-align: center;
-    letter-spacing: 0;
-    border:none !important;
-    border-right:1px solid #999 !important;
-    padding-right: 10px;
+  display: block;
+  width: 100%;
+  height: 19px;
+  line-height: 19px;
+  font-size: 17px;
+  color: #c5c5c5;
+  text-align: center;
+  letter-spacing: 0;
+  border:none !important;
+  border-right:1px solid #999 !important;
+  padding-right: 10px;
 }
 .gp .tabWrap.noticeWrap li a.on {
-    height: 19px;
-    line-height: 19px;
-    font-weight: 600;
-    color: #217562;
-    border:none !important;
-    border-right:1px solid #999 !important;
+  height: 19px;
+  line-height: 19px;
+  font-weight: 600;
+  color: #217562;
+  border:none !important;
+  border-right:1px solid #999 !important;
 }
 .gp .tabWrap.noticeWrap li:last-child a.on,
 .gp .tabWrap.noticeWrap li:last-child a {
-    border-right:none !important;
+  border-right:none !important;
 }
 .gp .tabBox.noticeBox a.btn-add {
-    position: absolute;
-    top: -16px;
-    right: 0;
+  position: absolute;
+  top: -16px;
+  right: 0;
 }
 .gp .tabBox.noticeBox .List-Table {
-    width: 520px;
+  width: 520px;
 }
 .gp .tabBox.noticeBox .List-Table li {
-    position: relative;
-    font-size: 13px;
-    color: #3a3a3a;
-    height: 37px;
-    line-height: 37px;
-    border-bottom: 1px solid #e3e3e3;
+  position: relative;
+  font-size: 13px;
+  color: #3a3a3a;
+  height: 37px;
+  line-height: 37px;
+  border-bottom: 1px solid #e3e3e3;
 }
 .gp .tabBox.noticeBox .List-Table li a {
-    display: inline-block;
-    width: 80%;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    letter-spacing: 0;
+  display: inline-block;
+  width: 80%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  letter-spacing: 0;
 }
 .gp .tabBox.noticeBox .List-Table li a span {
-    background: #217562;
-    color:#fff;
-    padding: 0 10px;
-    border-radius: 10px;
-    margin-right: 5px;
+  background: #217562;
+  color:#fff;
+  padding: 0 10px;
+  border-radius: 10px;
+  margin-right: 5px;
 }
 
 
 /* Main Container : Gosi */
 .gp .tx-color {
-    color: #217562;
+  color: #217562;
 }

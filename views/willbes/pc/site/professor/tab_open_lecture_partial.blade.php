@@ -89,7 +89,7 @@
                                                     <dt><span class="row-line">|</span></dt>
                                                     <dt>수강기간 : <span class="study-period tx-blue" data-info="{{ $row['StudyPeriod'] }}">{{ $row['StudyPeriod'] }}일</span></dt>
                                                     <dt class="NSK ml15">
-                                                        <span class="multiple-apply nBox n1" data-info="{{ $row['MultipleApply'] }}">{{ $row['MultipleApply'] }}배수</span>
+                                                        <span class="multiple-apply nBox n1" data-info="{{ $row['MultipleApply'] }}">{{ $row['MultipleApply'] === "1" ? '무제한' : $row['MultipleApply'].'배수'}}</span>
                                                         <span class="lecture-progress nBox n{{ substr($row['wLectureProgressCcd'], -1)+1 }}" data-info="{{ substr($row['wLectureProgressCcd'], -1)+1 }}{{ $row['wLectureProgressCcdName'] }}">{{ $row['wLectureProgressCcdName'] }}</span>
                                                     </dt>
                                                 </dl>
@@ -224,7 +224,7 @@
                                                 <dt><span class="row-line">|</span></dt>
                                                 <dt>수강기간 : <span class="tx-blue">{{$row['StudyPeriod']}}일</span></dt>
                                                 <dt class="NSK ml15">
-                                                    <span class="nBox n1">{{$row['MultipleApply']}}배수</span>
+                                                    <span class="nBox n1">{{ $row['MultipleApply'] === "1" ? '무제한' : $row['MultipleApply'].'배수'}}</span>
                                                 </dt>
                                             </dl>
                                         </td>
@@ -286,7 +286,7 @@
                                                 <dt><span class="row-line">|</span></dt>
                                                 <dt>수강기간 : <span class="tx-blue">{{$row['StudyPeriod']}}일</span></dt>
                                                 <dt class="NSK ml15">
-                                                    <span class="nBox n1">{{$row['MultipleApply']}}배수</span>
+                                                    <span class="nBox n1">{{ $row['MultipleApply'] === "1" ? '무제한' : $row['MultipleApply'].'배수'}}</span>
                                                 </dt>
                                             </dl>
                                         </td>

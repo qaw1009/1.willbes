@@ -31,7 +31,7 @@
                     <dt><span class="row-line">|</span></dt>
                     <dt>수강기간 : <span class="tx-black">{{ $data['StudyPeriod'] }}일</span></dt>
                     <dt class="NSK ml15">
-                        <span class="nBox n1">{{ $data['MultipleApply'] }}배수</span>
+                        <span class="nBox n1">{{ $data['MultipleApply'] === "1" ? '무제한' : $data['MultipleApply'].'배수'}}</span>
                         <span class="nBox n{{ substr($data['wLectureProgressCcd'], -1)+1 }}">{{ $data['wLectureProgressCcdName'] }}</span>
                     </dt>
                 </dl>

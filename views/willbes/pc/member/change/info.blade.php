@@ -37,13 +37,19 @@
                                 <td class="w-tit">휴대폰번호</td>
                                 <td class="w-info">
                                     <div class="phoneBox">
-                                        <input type="text" id="Phone1" name="Phone1" class="iptCellhone1 phone" readonly value="{{$data['Phone1']}}"> -
-                                        <input type="text" id="Phone2" name="Phone2" class="iptCellhone1 phone" readonly value="{{$data['Phone2']}}"> -
-                                        <input type="text" id="Phone3" name="Phone3" class="iptCellhone2 phone" readonly value="{{$data['Phone3']}}">
+                                        <input type="text" id="Phone1" name="Phone1" class="iptCellhone1 phone" disabled value="{{$data['Phone1']}}"> -
+                                        <input type="text" id="Phone2" name="Phone2" class="iptCellhone1 phone" disabled value="{{$data['Phone2']}}"> -
+                                        <input type="text" id="Phone3" name="Phone3" class="iptCellhone2 phone" disabled value="{{$data['Phone3']}}">
                                     </div>
                                     <button type="button" onclick="openWin('PHONEPASS')" class="mem-Btn combine-Btn bg-blue bd-dark-blue">
                                         <span>변경</span>
                                     </button>
+                                    <div class="tx-red mt10" style="line-height:1">                            
+                                        <label>    
+                                            <input name="SmsRcvStatus" type="checkbox" value="Y" id="SmsRcvStatus" {{$data['SmsRcvStatus'] == 'Y' ? 'checked' : ''}} />
+                                            윌비스의 신규상품 안내 및 광고성 정보 SMS 수신에 동의합니다.
+                                        </label>
+                                    </div>
                                 </td>
                             </tr>
                             <tr>
@@ -66,6 +72,12 @@
                                     <button type="button" onclick="openWin('EMAILPASS')" class="mem-Btn combine-Btn bg-blue bd-dark-blue">
                                         <span>변경</span>
                                     </button>
+                                    <div class="tx-red mt10">                            
+                                        <label>
+                                            <input name="MailRcvStatus" type="checkbox" value="Y" id="MailRcvStatus" {{$data['MailRcvStatus'] == 'Y' ? 'checked' : ''}} />
+                                            윌비스의 신규상품 안내 및 광고성 정보 이메일 수신에 동의합니다.
+                                        </label>
+                                    </div>
                                 </td>
                             </tr>
                             <tr>
@@ -89,6 +101,7 @@
                             </tbody>
                         </table>
                     </div>
+                    <!--
                     <div class="InfoTable GM">
                         <div class="willbes-UserInfo-Tit NG">* 부가정보<span class="UserInfo-subTit">(부가정보를 입력하시면 맞춤형 수험관리 혜택을 받으실 수 있습니다.)</span></div>
                         <table cellspacing="0" cellpadding="0" class="classTable userInfoTable under-gray bdt-gray tx-gray">
@@ -187,25 +200,25 @@
                                     <div class="w-Area-Box">
                                         <div class="w-tit-Area">지역</div>
                                         <div class="w-selec-Area">
-                                            <ul>
-                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>서울</label></li>
-                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>경기</label></li>
-                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>강원</label></li>
-                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>충북</label></li>
-                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>충남</label></li>
-                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>경북</label></li>
-                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>경남</label></li>
-                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>전북</label></li>
-                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>전남</label></li>
-                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>제주</label></li>
-                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>부산</label></li>
-                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>인천</label></li>
-                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>대전</label></li>
-                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>광주</label></li>
-                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>울산</label></li>
-                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>세종</label></li>
-                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>대구</label></li>
-                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>국가직</label></li>
+                                        <ul>
+                                                <li><label><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> 서울</label></li>
+                                                <li><label><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> 경기</label></li>
+                                                <li><label><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> 강원</label></li>
+                                                <li><label><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> 충북</label></li>
+                                                <li><label><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> 충남</label></li>
+                                                <li><label><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> 경북</label></li>
+                                                <li><label><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> 경남</label></li>
+                                                <li><label><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> 전북</label></li>
+                                                <li><label><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> 전남</label></li>
+                                                <li><label><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> 제주</label></li>
+                                                <li><label><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> 부산</label></li>
+                                                <li><label><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> 인천</label></li>
+                                                <li><label><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> 대전</label></li>
+                                                <li><label><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> 광주</label></li>
+                                                <li><label><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> 울산</label></li>
+                                                <li><label><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> 세종</label></li>
+                                                <li><label><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> 대구</label></li>
+                                                <li><label><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> 국가직</label></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -234,24 +247,24 @@
                                         <div class="w-tit-Area">지역</div>
                                         <div class="w-selec-Area">
                                             <ul>
-                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>서울</label></li>
-                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>경기</label></li>
-                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>강원</label></li>
-                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>충북</label></li>
-                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>충남</label></li>
-                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>경북</label></li>
-                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>경남</label></li>
-                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>전북</label></li>
-                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>전남</label></li>
-                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>제주</label></li>
-                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>부산</label></li>
-                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>인천</label></li>
-                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>대전</label></li>
-                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>광주</label></li>
-                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>울산</label></li>
-                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>세종</label></li>
-                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>대구</label></li>
-                                                <li><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> <label>국가직</label></li>
+                                                <li><label><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> 서울</label></li>
+                                                <li><label><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> 경기</label></li>
+                                                <li><label><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> 강원</label></li>
+                                                <li><label><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> 충북</label></li>
+                                                <li><label><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> 충남</label></li>
+                                                <li><label><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> 경북</label></li>
+                                                <li><label><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> 경남</label></li>
+                                                <li><label><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> 전북</label></li>
+                                                <li><label><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> 전남</label></li>
+                                                <li><label><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> 제주</label></li>
+                                                <li><label><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> 부산</label></li>
+                                                <li><label><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> 인천</label></li>
+                                                <li><label><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> 대전</label></li>
+                                                <li><label><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> 광주</label></li>
+                                                <li><label><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> 울산</label></li>
+                                                <li><label><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> 세종</label></li>
+                                                <li><label><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> 대구</label></li>
+                                                <li><label><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> 국가직</label></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -288,12 +301,13 @@
                             <tr>
                                 <td class="w-tit">수신동의</td>
                                 <td class="w-info">
-                                    <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk ml-zero"> <label>개인정보 위탁동의</label>
+                                <label><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk ml-zero"> 개인정보 위탁동의</label>
                                 </td>
                             </tr>
                             </tbody>
                         </table>
                     </div>
+                    -->
                     <div class="willbes-Lec-buyBtn">
                         <ul>
                             <li class="btnAuto180 h36">
@@ -531,9 +545,7 @@
             <!-- willbes-Layer-PassBox : 회원탈퇴 -->
 
         </div>
-        <div class="Quick-Bnr ml20">
-            <img src="{{ img_url('sample/banner_180605.jpg') }}">
-        </div>
+        {!! banner('내강의실_우측퀵', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
     </div>
     <form name="ajaxForm" id="ajaxForm" method="post" >
         {!! csrf_field() !!}

@@ -34,6 +34,7 @@ class OffPackageAdminModel extends CommonLectureModel
                     ,Be.CcdName as StudyApplyCcd_Name
                     ,Bg.CcdName as CampusCcd_Name
                     ,Bh.CcdName as AcceptStatusCcd_Name
+                    ,Bi.CcdName as PackTypeCcd_Name
                     ,C.CateCode
                     ,Ca.CateName, Cb.CateName as CateName_Parent
                     ,D.SalePrice, D.SaleRate, D.RealSalePrice
@@ -57,6 +58,7 @@ class OffPackageAdminModel extends CommonLectureModel
                             left outer join lms_sys_code Be on B.StudyApplyCcd = Be.Ccd and Be.IsStatus=\'Y\'
                             left outer join lms_sys_code Bg on B.CampusCcd = Bg.Ccd
                             left outer join lms_sys_code Bh on B.AcceptStatusCcd = Bh.Ccd
+                            left outer join lms_sys_code Bi on B.PackTypeCcd = Bi.Ccd
                         join lms_product_r_category C on A.ProdCode = C.ProdCode and C.IsStatus=\'Y\'
                             join lms_sys_category Ca on C.CateCode = Ca.CateCode  and Ca.IsStatus=\'Y\'
                             left outer join lms_sys_category Cb on Ca.ParentCateCode = Cb.CateCode
@@ -222,7 +224,7 @@ class OffPackageAdminModel extends CommonLectureModel
             $product_data = array_merge($input_product,[
                 'UpdAdminIdx'=>$this->session->userdata('admin_idx')
             ]);
-            if ($this->_conn->set($product_data)->where('ProdCode', $prodcode)->update($this->_table['product']) === false) {
+            if ($this->_conn->set($product_data)->set('UpdDatm', 'NOW()', false)->where('ProdCode', $prodcode)->update($this->_table['product']) === false) {
                 throw new \Exception('상품 정보 수정에 실패했습니다.');
             }
             //echo $this->_conn->last_query();

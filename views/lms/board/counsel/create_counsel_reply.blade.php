@@ -186,6 +186,25 @@
                     }
                 }, showValidateError, null, false, 'alert');
             });
+
+            // 파일삭제
+            $('.file-delete').click(function() {
+                var _url = '{{ site_url("/board/{$boardName}/destroyFile/") }}' + getQueryString();
+                var data = {
+                    '{{ csrf_token_name() }}' : $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                    '_method' : 'DELETE',
+                    'attach_idx' : $(this).data('attach-idx')
+                };
+                if (!confirm('정말로 삭제하시겠습니까?')) {
+                    return;
+                }
+                sendAjax(_url, data, function(ret) {
+                    if (ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                        location.reload();
+                    }
+                }, showError, false, 'POST');
+            });
         });
     </script>
 @stop

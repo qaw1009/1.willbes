@@ -5,6 +5,7 @@ class BaseOrder extends \app\controllers\BaseController
 {
     protected $models = array();
     protected $helpers = array();
+    protected $_order_type = '';
     protected $_group_ccd = array();
     private $_is_refund_proc = false;
 
@@ -12,8 +13,9 @@ class BaseOrder extends \app\controllers\BaseController
     {
         parent::__construct();
 
+        $this->_order_type = strtolower($this->router->class);
         $this->_group_ccd = $this->orderListModel->_group_ccd;
-        $this->_is_refund_proc = strtolower($this->router->class) == 'refundproc' ? true : false;
+        $this->_is_refund_proc = $this->_order_type == 'refundproc' ? true : false;
     }
 
     /**
@@ -22,6 +24,12 @@ class BaseOrder extends \app\controllers\BaseController
      */
     protected function show($params = [])
     {
+        // add join array
+        $_show_add_join = ['delivery_info', 'refund', 'refund_proc', 'my_lecture', 'subproduct'];
+        if (in_array($this->_order_type, ['order', 'visit']) === true) {
+            $_show_add_join[] = 'campus';
+        }
+
         // url segment 에서 숫자 값 리턴
         $order_idx = current(array_filter($params, function ($val) {
             return is_numeric($val);
@@ -32,7 +40,7 @@ class BaseOrder extends \app\controllers\BaseController
         }
 
         // 주문 조회
-        $data = $this->orderListModel->listAllOrder(false, ['EQ' => ['O.OrderIdx' => $order_idx]], null, null, [], ['delivery_info', 'refund', 'refund_proc', 'my_lecture', 'subproduct']);
+        $data = $this->orderListModel->listAllOrder(false, ['EQ' => ['O.OrderIdx' => $order_idx]], null, null, [], $_show_add_join);
         if (empty($data) === true) {
             show_error('데이터 조회에 실패했습니다.');
         }
@@ -134,6 +142,7 @@ class BaseOrder extends \app\controllers\BaseController
                 'mem' => $mem_data,
                 'mem_point' => $point_data
             ],
+            '_order_type' => $this->_order_type,
             '_is_refund_proc' => $this->_is_refund_proc,
             '_is_refund_data' => $is_refund_data,
             '_prod_type_ccd' => $this->orderListModel->_prod_type_ccd,

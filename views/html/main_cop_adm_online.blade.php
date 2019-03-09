@@ -78,7 +78,7 @@
                     </li>
                     <li>
                         <a href="#tab2">
-                            신의 법칙! 주만에 1회독?
+                            신의 법칙! 2주만에 1회독?
                             <span>신광은경찰TV</span>
                         </a>
                     </li>
@@ -153,8 +153,9 @@
                             <div class="Tit">기본과정</div>
                             <div class="subTit">집중연강식 진행</div>
                             <ul class="info">
-                                <li>영어 매달 초 개강</li>
-                                <li>2주마다  형소법  →  경찰학<br/>→  한국사  →  형법 진행</li>
+                                <li>2주마다 개강</li>
+                                <li>형소법 → 경찰학 → 형법 진행
+                                    <br/> (수사, 행정법 영상반 진행)</li>
                             </ul>                            
                         </div>
                         <a href="#none">OT보기 &gt;</a>                      
@@ -219,164 +220,9 @@
         </div>
     </div>
 
-    <div class="Section Section4 pt100 pb90">
+    <div class="Section Section2 mt90 mb90">
         <div class="widthAuto">  
-            <div class="widthAuto smallTit smallTit2">          
-                <p><span>진짜 살아있는 정보를 알 수 있는 <strong>합격수기!</strong></span></p>            
-            </div>          
-            <div class="will-big-Tit big-Tit-line pt50 pb50">
-                <div class="big NSK-Black"><span class="cop-color">1,881명*</span> 최종합격</div>
-                <div class="small NSK-Thin mt10">합격의 기쁨을 나눌 다음 차례, 바로 당신입니다.</div>
-                <div class="will-subTit sm mt30">* 2018.경찰공무원 1차최종, 2차 팔가합격인원 기준</div>
-            </div> 
-            <div class="sliderPassList cSlider mt40">
-                <div class="sliderControlsTM">
-                    <div>
-                        <div class="passBox">
-                            <a href="http://www.willbescop.net/movie/event.html?event_cd=On_180713_y&topMenuType=O" target="_blank">
-                                <div class="name">합격자 오희*</div>
-                                <div class="img p_re">
-                                    <img class="cover" src="{{ img_url('cop_adm/pass/cover.png') }}">   
-                                    <img src="{{ img_url('cop_adm/pass/user_190101.png') }}">
-                                </div>
-                                <div class="cmt">
-                                    늦은 나이에 시작한<br/>
-                                    도전이었지만<br/>
-                                    끝내 해냈습니다.<br/>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="passBox">
-                            <a href="http://www.willbescop.net/movie/event.html?event_cd=On_180713_y&topMenuType=O" target="_blank">
-                                <div class="name">합격자 김태*</div>
-                                <div class="img p_re">
-                                    <img class="cover" src="{{ img_url('cop_adm/pass/cover.png') }}"> 
-                                    <img src="{{ img_url('cop_adm/pass/user_190102.png') }}">
-                                </div>
-                                <div class="cmt">
-                                    절대 포기마세요.<br/>
-                                    끝까지 앉아있는<br/>
-                                    여러분이 승자입니다.<br/>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="passBox">
-                            <a href="http://www.willbescop.net/movie/event.html?event_cd=On_180713_y&topMenuType=O" target="_blank">
-                                <div class="name">합격자 이진*</div>
-                                <div class="img p_re">
-                                    <img class="cover" src="{{ img_url('cop_adm/pass/cover.png') }}"> 
-                                    <img src="{{ img_url('cop_adm/pass/user_190103.png') }}">
-                                </div>
-                                <div class="cmt">
-                                    광은장학회 덕분에<br/>
-                                    합격의 기쁨을<br/>
-                                    누릴 수 있었습니다.<br/>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="passBox">
-                            <a href="http://www.willbescop.net/movie/event.html?event_cd=On_180713_y&topMenuType=O" target="_blank">
-                                <div class="name">합격자 최원*</div>
-                                <div class="img p_re">
-                                    <img class="cover" src="{{ img_url('cop_adm/pass/cover.png') }}"> 
-                                    <img src="{{ img_url('cop_adm/pass/user_190104.png') }}">
-                                </div>
-                                <div class="cmt">
-                                    합격자 명단을 확인하는<br/>
-                                    마지막 순간까지<br/>
-                                    최선을 다하세요.<br/>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="passBox">
-                            <a href="http://www.willbescop.net/movie/event.html?event_cd=On_180713_y&topMenuType=O" target="_blank">
-                                <div class="name">합격자 양동*</div>
-                                <div class="img p_re">
-                                    <img class="cover" src="{{ img_url('cop_adm/pass/cover.png') }}"> 
-                                    <img src="{{ img_url('cop_adm/pass/user_190105.png') }}">
-                                </div>
-                                <div class="cmt">
-                                    무조껀 신광은경찰팀이<br/>
-                                    제시하는 공부량을<br/>
-                                    따르세요.<br/>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="passBox">
-                            <a href="http://www.willbescop.net/movie/event.html?event_cd=On_180713_y&topMenuType=O" target="_blank">
-                                <div class="name">합격자 오희*</div>
-                                <div class="img p_re">
-                                    <img class="cover" src="{{ img_url('cop_adm/pass/cover.png') }}">   
-                                    <img src="{{ img_url('cop_adm/pass/user_190101.png') }}">
-                                </div>
-                                <div class="cmt">
-                                    늦은 나이에 시작한<br/>
-                                    도전이었지만<br/>
-                                    끝내 해냈습니다.<br/>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="passBox">
-                            <a href="http://www.willbescop.net/movie/event.html?event_cd=On_180713_y&topMenuType=O" target="_blank">
-                                <div class="name">합격자 김태*</div>
-                                <div class="img p_re">
-                                    <img class="cover" src="{{ img_url('cop_adm/pass/cover.png') }}"> 
-                                    <img src="{{ img_url('cop_adm/pass/user_190102.png') }}">
-                                </div>
-                                <div class="cmt">
-                                    절대 포기마세요.<br/>
-                                    끝까지 앉아있는<br/>
-                                    여러분이 승자입니다.<br/>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="passBox">
-                            <a href="http://www.willbescop.net/movie/event.html?event_cd=On_180713_y&topMenuType=O" target="_blank">
-                                <div class="name">합격자 이진*</div>
-                                <div class="img p_re">
-                                    <img class="cover" src="{{ img_url('cop_adm/pass/cover.png') }}"> 
-                                    <img src="{{ img_url('cop_adm/pass/user_190103.png') }}">
-                                </div>
-                                <div class="cmt">
-                                    광은장학회 덕분에<br/>
-                                    합격의 기쁨을<br/>
-                                    누릴 수 있었습니다.<br/>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="passBox">
-                            <a href="http://www.willbescop.net/movie/event.html?event_cd=On_180713_y&topMenuType=O" target="_blank">
-                                <div class="name">합격자 최원*</div>
-                                <div class="img p_re">
-                                    <img class="cover" src="{{ img_url('cop_adm/pass/cover.png') }}"> 
-                                    <img src="{{ img_url('cop_adm/pass/user_190104.png') }}">
-                                </div>
-                                <div class="cmt">
-                                    합격자 명단을 확인하는<br/>
-                                    마지막 순간까지<br/>
-                                    최선을 다하세요.<br/>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="passBox">
-                            <a href="http://www.willbescop.net/movie/event.html?event_cd=On_180713_y&topMenuType=O" target="_blank">
-                                <div class="name">합격자 양동*</div>
-                                <div class="img p_re">
-                                    <img class="cover" src="{{ img_url('cop_adm/pass/cover.png') }}"> 
-                                    <img src="{{ img_url('cop_adm/pass/user_190105.png') }}">
-                                </div>
-                                <div class="cmt">
-                                    무조껀 신광은경찰팀이<br/>
-                                    제시하는 공부량을<br/>
-                                    따르세요.<br/>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <img src="{{ img_url('cop_adm/visual/visual_03.jpg') }}" alt="합격수기">
         </div>
     </div>
 
@@ -394,7 +240,7 @@
                     <dt class="nLec p_re">
                         <div class="infoBox">
                             <div class="infoTit">
-                                <div class="small NSK-Thin">일반 / 경행 / 101단</div>
+                                <div class="small NSK-Thin">경행경채</div>
                                 <div class="big NSK-Black">
                                     최근 5개년<br/>
                                     기출문제
@@ -467,10 +313,11 @@
                 <ul>
                     <li><a href="http://www.willbescop.net/event/movie/event.html?event_cd=On_181226_p&topMenuType=O" target="_blank"><img src="{{ img_url('cop_adm/event/evt_190103.jpg') }}"></a></li>
                     <li>
-                        <div class="sliderNum">
+                        <a href="#none"><img src="{{ img_url('cop_adm/event/evt_190105.jpg') }}" alt="김원욱 형법 1개년 최신기출/판례"></a>
+                        <!--div class="sliderNum">
                             <div><img src="{{ img_url('cop_adm/event/evt_190104.jpg') }}"></div>
                             <div><img src="{{ img_url('cop_adm/event/evt_190105.jpg') }}"></div>
-                        </div>
+                        </div-->
                     </li>
                 </ul>
             </div>

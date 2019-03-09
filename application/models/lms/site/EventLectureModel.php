@@ -98,7 +98,8 @@ class EventLectureModel extends WB_Model
             K.FileFullPath, K.FileName, IFNULL(H.CCount,\'0\') AS CommentCount,
             CASE RequestType WHEN 1 THEN \'설명회\' WHEN 2 THEN \'특강\' WHEN 3 THEN \'이벤트\' WHEN 4 THEN \'합격수기\' WHEN 5 THEN \'프로모션\' END AS RequestTypeName,
             CASE IsRegister WHEN \'Y\' THEN \'접수중\' WHEN \'N\' THEN \'마감\' END AS IsRegisterName,
-            L.BannerName, L.BannerFullPath, L.BannerImgName, L.BannerImgRealName
+            L.BannerName, L.BannerFullPath, L.BannerImgName, L.BannerImgRealName,
+            P.PromotionAttachFilePath, P.PromotionAttachFileName, P.PromotionAttachRealFileName
             ';
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
@@ -128,6 +129,12 @@ class EventLectureModel extends WB_Model
             INNER JOIN {$this->_table['admin']} AS E ON A.RegAdminIdx = E.wAdminIdx AND E.wIsStatus='Y'
             LEFT OUTER JOIN {$this->_table['admin']} AS F ON A.UpdAdminIdx = F.wAdminIdx AND F.wIsStatus='Y'
             LEFT OUTER JOIN {$this->_table['banner']} AS L ON A.BIdx = L.BIdx AND L.LinkType = 'layer'
+            LEFT OUTER JOIN (
+                SELECT ElIdx, GROUP_CONCAT(FileFullPath) AS PromotionAttachFilePath, GROUP_CONCAT(FileName) AS PromotionAttachFileName, GROUP_CONCAT(FileRealName) AS PromotionAttachRealFileName
+                FROM {$this->_table['event_file']}
+                WHERE IsUse = 'Y' AND FileType = 'P'
+                GROUP BY ElIdx
+            ) AS P ON A.ElIdx = P.ElIdx
         ";
 
         $arr_condition['IN']['A.SiteCode'] = get_auth_site_codes();
@@ -152,7 +159,7 @@ class EventLectureModel extends WB_Model
             $option_ccds = element('option_ccds', $input);
             $comment_use_area = element('comment_use_area', $input);
 
-            if (count($option_ccds) > 0) {
+            if (empty($option_ccds) === false) {
                 foreach ($option_ccds as $key => $val) {
                     switch ($val) {
                         case $this->eventLectureModel->_event_lecture_option_ccds[3] :
@@ -163,7 +170,7 @@ class EventLectureModel extends WB_Model
                                 ]
                             ];
                             $banner_row = $this->findEvent('BIdx', $arr_condition);
-                            if (count($banner_row) > 0) {
+                            if (empty($banner_row) === false) {
                                 throw new \Exception('등록된 배너가 있습니다.', _HTTP_NOT_FOUND);
                             }
                             break;
@@ -174,7 +181,7 @@ class EventLectureModel extends WB_Model
             // 프로모션코드 셋팅
             $promotionCode = $this->_setPromotionCode();
 
-            $set_option_ccd = count($option_ccds) > 0 ? implode(',', $option_ccds) : '';
+            $set_option_ccd = (empty($option_ccds) === false) > 0 ? implode(',', $option_ccds) : '';
             $set_comment_use_area = '';
             if (empty($comment_use_area) === false) {
                 $set_comment_use_area = implode(',', $comment_use_area);
@@ -198,6 +205,7 @@ class EventLectureModel extends WB_Model
                 'RequestType' => element('request_type', $input),
                 'TakeType' => element('take_type', $input),
                 'PromotionCode' => $promotionCode,
+                'PromotionParams' => element('promotion_params', $input),
                 'BIdx' => element('banner_idx', $input),
                 'SubjectIdx' => element('subject_idx', $input),
                 'ProfIdx' => element('prof_idx', $input),
@@ -248,9 +256,16 @@ class EventLectureModel extends WB_Model
                 }
             }
 
-            //파일저장
+            // 이벤트 파일저장
+            $this->load->library('upload');
+            $this->load->library('image_lib');
             if ($this->_addContentAttach($el_idx, count($this->_set_attache_type)) === false) {
                 throw new \Exception('이벤트 파일 등록에 실패했습니다.');
+            }
+
+            // 프로모션 파일저장
+            if ($this->_addContentAttachByPromotion($el_idx, count($this->_set_attache_type)) === false) {
+                throw new \Exception('프로모션 파일 등록에 실패했습니다.');
             }
 
             $this->_conn->trans_commit();
@@ -284,12 +299,12 @@ class EventLectureModel extends WB_Model
 
             // 데이터 복사 실행
             $insert_column = '
-                SiteCode, CampusCcd, PromotionCode, BIdx, IsBest, RequestType, TakeType, SubjectIdx, ProfIdx, RegisterStartDate, RegisterEndDate, IsRegister, IsCopy, IsUse, IsStatus, EventName,
+                SiteCode, CampusCcd, PromotionCode, PromotionParams, BIdx, IsBest, RequestType, TakeType, SubjectIdx, ProfIdx, RegisterStartDate, RegisterEndDate, IsRegister, IsCopy, IsUse, IsStatus, EventName,
                 ContentType, Content, OptionCcds, LimitType, SelectType, SendTel, SmsContent, PopupTitle, CommentUseArea, Link, ReadCnt, AdjuReadCnt,
                 RegAdminIdx, RegIp
             ';
             $select_column = '
-                SiteCode, CampusCcd, '.$promotionCode.', BIdx, IsBest, RequestType, TakeType, SubjectIdx, ProfIdx, RegisterStartDate, RegisterEndDate, IsRegister, "Y", "N", IsStatus,
+                SiteCode, CampusCcd, '.$promotionCode.', PromotionParams, BIdx, IsBest, RequestType, TakeType, SubjectIdx, ProfIdx, RegisterStartDate, RegisterEndDate, IsRegister, "Y", "N", IsStatus,
                 CONCAT("복사본-", IF(LEFT(EventName,4)="복사본-", REPLACE(EventName, LEFT(EventName,4), ""), EventName)) AS EventName,
                 ContentType, Content, OptionCcds, LimitType, SelectType, SendTel, SmsContent, PopupTitle, CommentUseArea, Link, ReadCnt, AdjuReadCnt,
                 REPLACE(RegAdminIdx, RegAdminIdx, "'.$admin_idx.'") AS RegAdminIdx,
@@ -350,7 +365,7 @@ class EventLectureModel extends WB_Model
             $evnet_category_data = element('cate_code', $input);
             $option_ccds = element('option_ccds', $input);
 
-            if (count($option_ccds) > 0) {
+            if (empty($option_ccds) === false) {
                 foreach ($option_ccds as $key => $val) {
                     switch ($val) {
                         case $this->eventLectureModel->_event_lecture_option_ccds[3] :
@@ -362,7 +377,7 @@ class EventLectureModel extends WB_Model
                                 'NOT' => ['ElIdx' => $el_idx]
                             ];
                             $banner_row = $this->findEvent('BIdx', $arr_condition);
-                            if (count($banner_row) > 0) {
+                            if (empty($banner_row) === false) {
                                 throw new \Exception('등록된 배너가 있습니다.', _HTTP_NOT_FOUND);
                             }
                         break;
@@ -372,12 +387,12 @@ class EventLectureModel extends WB_Model
 
             //정보 조회
             $row = $this->findEvent('ElIdx', ['EQ' => ['ElIdx' => $el_idx]]);
-            if (count($row) < 1) {
+            if (empty($row) === true) {
                 throw new \Exception('데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
             }
 
             $comment_use_area = element('comment_use_area', $input);
-            $set_option_ccd = count($option_ccds) > 0 ? implode(',', $option_ccds) : '';
+            $set_option_ccd = (empty($option_ccds) === false) ? implode(',', $option_ccds) : '';
             $set_comment_use_area = '';
             if (empty($comment_use_area) === false) {
                 $set_comment_use_area = implode(',', $comment_use_area);
@@ -401,6 +416,7 @@ class EventLectureModel extends WB_Model
                 'RequestType' => element('request_type', $input),
                 'TakeType' => element('take_type', $input),
                 'PromotionCode' => element('promotion_code', $input),
+                'PromotionParams' => element('promotion_params', $input),
                 'BIdx' => element('banner_idx', $input),
                 'IsBest' => element('is_best', $input, 0),
                 'SubjectIdx' => element('subject_idx', $input),
@@ -441,6 +457,11 @@ class EventLectureModel extends WB_Model
                 throw new \Exception($is_attach);
             }
 
+            // 프로모션 파일 등록
+            if ($this->_addContentAttachByPromotion($el_idx, count($this->_set_attache_type)) === false) {
+                throw new \Exception('프로모션 파일 등록에 실패했습니다.');
+            }
+
             // 신청자 정보가 없을 때 수정가능. 이벤트 접수 관리(정원제한), 기존 데이터 삭제 후 저장
             if ($this->getMemberForRegisterCount($el_idx) <= 0) {
                 if ($option_ccds[0] == $this->_event_lecture_option_ccds[0]) {
@@ -478,7 +499,7 @@ class EventLectureModel extends WB_Model
     public function findEventForModify($arr_condition)
     {
         $column = "
-            A.ElIdx, A.SiteCode, A.CampusCcd, A.RequestType, A.TakeType, A.SubjectIdx, A.ProfIdx, A.IsBest, A.PromotionCode, A.BIdx, F.BannerName,
+            A.ElIdx, A.SiteCode, A.CampusCcd, A.RequestType, A.TakeType, A.SubjectIdx, A.ProfIdx, A.IsBest, A.PromotionCode, A.PromotionParams, A.BIdx, F.BannerName,
             A.RegisterStartDate, A.RegisterEndDate, A.IsRegister, A.IsUse, A.IsStatus, A.EventName,
             DATE_FORMAT(A.RegisterStartDate, '%Y-%m-%d') AS RegisterStartDay, DATE_FORMAT(A.RegisterStartDate, '%H') AS RegisterStartHour, DATE_FORMAT(A.RegisterStartDate, '%i') AS RegisterStartMin,
             DATE_FORMAT(A.RegisterEndDate, '%Y-%m-%d') AS RegisterEndDay, DATE_FORMAT(A.RegisterEndDate, '%H') AS RegisterEndHour, DATE_FORMAT(A.RegisterEndDate, '%i') AS RegisterEndMin,
@@ -915,7 +936,7 @@ class EventLectureModel extends WB_Model
     }
 
     /**
-     * 파일저장
+     * 이벤트 파일저장
      * @param $el_idx
      * @param $cnt
      * @return bool
@@ -923,17 +944,17 @@ class EventLectureModel extends WB_Model
     private function _addContentAttach($el_idx, $cnt)
     {
         try {
-            $this->load->library('upload');
-            $this->load->library('image_lib');
+            /*$this->load->library('upload');
+            $this->load->library('image_lib');*/
 
-            $upload_dir = config_item('upload_prefix_dir') . '/event/' . date('Ymd');
+            $upload_dir = config_item('upload_prefix_dir') . '/event/' . date('Y') . '/' . date('md');
             $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->_getAttachImgNames($cnt), $upload_dir);
             if (is_array($uploaded) === false) {
                 throw new \Exception($uploaded);
             }
 
             foreach ($uploaded as $idx => $attach_files) {
-                if (count($attach_files) > 0) {
+                if (empty($attach_files) === false) {
 
                     if ($this->_set_attache_type[$idx] == 'S' || $this->_set_attache_type[$idx] == 'I') {
                         // 썸네일 생성
@@ -949,6 +970,48 @@ class EventLectureModel extends WB_Model
                     $set_attach_data['FileFullPath'] = $this->upload->_upload_url . $upload_dir . '/';
                     $set_attach_data['FileRealName'] = $attach_files['client_name'];
                     $set_attach_data['FileType'] = $this->_set_attache_type[$idx];
+
+                    $set_attach_data['RegAdminIdx'] = $this->session->userdata('admin_idx');
+                    $set_attach_data['RegIp'] = $this->input->ip_address();
+
+                    if ($this->_addEventAttach($set_attach_data) === false) {
+                        throw new \Exception('fail');
+                    }
+                }
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * 프로모션 파일저장
+     * @param $el_idx
+     * @param $cnt
+     * @return bool
+     */
+    private function _addContentAttachByPromotion($el_idx, $cnt)
+    {
+        try {
+            /*$this->load->library('upload');
+            $this->load->library('image_lib');*/
+
+            $upload_dir = config_item('upload_prefix_dir') . '/promotion/' . date('Y') . '/' . date('md');
+            $uploaded = $this->upload->uploadFile('file', ['attach_file_promotion'], $this->_getAttachImgNames($cnt), $upload_dir);
+            if (is_array($uploaded) === false) {
+                throw new \Exception($uploaded);
+            }
+
+            foreach ($uploaded as $idx => $attach_files) {
+                if (empty($attach_files) === false) {
+                    $set_attach_data['ElIdx'] = $el_idx;
+                    $set_attach_data['FileName'] = $attach_files['orig_name'];
+                    $set_attach_data['FileFullPath'] = $this->upload->_upload_url . $upload_dir . '/';
+                    $set_attach_data['FileRealName'] = $attach_files['client_name'];
+                    $set_attach_data['FileType'] = 'P';
 
                     $set_attach_data['RegAdminIdx'] = $this->session->userdata('admin_idx');
                     $set_attach_data['RegIp'] = $this->input->ip_address();
@@ -1204,7 +1267,7 @@ class EventLectureModel extends WB_Model
 
             $this->load->library('upload');
             $this->load->library('image_lib');
-            $upload_dir = config_item('upload_prefix_dir') . '/event/' . date('Ymd');
+            $upload_dir = config_item('upload_prefix_dir') . '/event/' . date('Y') . '/' . date('md');
 
             $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->_getAttachImgNames($cnt), $upload_dir);
             if (is_array($uploaded) === false) {

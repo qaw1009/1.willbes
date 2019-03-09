@@ -14,6 +14,39 @@ class CertApply extends \app\controllers\FrontController
         parent::__construct();
     }
 
+    public function index($params=[])
+    {
+
+        if(empty($params) === true) {
+            show_alert('인증정보가 존재하지 않습니다.', 'close');
+        }
+
+        //페이지 정보
+        $cert_page = element('page',$params);
+        //인증회차 정보
+        $cert_idx = element('cert',$params);
+
+        //echo $cert_page.' -'.$cert_idx;exit;
+
+        $cert_data = $this->certApplyFModel->findCertByCertIdx($cert_idx);
+
+        $arr_condition = [];
+
+        $arr_condition['EQ'] = [
+            'A.SiteCode' => $this->_site_code
+        ];
+
+        $data = $this->certApplyFModel->findCertByCertIdx($cert_idx,$arr_condition);
+        $product_list = $this->certApplyFModel->listProductByCertIdx($cert_idx,$arr_condition);
+
+        $this->load->view('site/cert/cert_'.$cert_page,[
+            'cert_idx' => $cert_idx,
+            'data' => $data,
+            'product_list' => $product_list
+        ]);
+
+    }
+
     /**
      * 인증을 위한 테스트 페이지 호출
      */

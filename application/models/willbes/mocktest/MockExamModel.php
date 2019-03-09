@@ -44,6 +44,7 @@ class MockExamModel extends WB_Model
         'mockAnswerPaper' => 'lms_mock_answerpaper',
         'mockLog' => 'lms_mock_log',
         'mockGrades' => 'lms_mock_grades',
+        'mockGradesLog' => 'lms_mock_grades_log',
         'answerNote' => 'lms_mock_wronganswernote',
         'mockGroupRProduct' => 'lms_mock_group_r_product',
         'mockGroup' => 'lms_mock_group'
@@ -412,7 +413,7 @@ class MockExamModel extends WB_Model
 
         $column = "
             MP.*, A.wAdminName, MR.IsTake AS MrIsStatus,
-                   (SELECT RegDatm FROM {$this->_table['mockAnswerPaper']} WHERE MemIdx = MR.MemIdx AND MrIdx = MR.MrIdx ORDER BY RegDatm DESC LIMIT 1) AS IsDate,
+                   MR.RegDatm AS IsDate,
                    PD.ProdName, PD.SaleStartDatm, PD.SaleEndDatm, PS.SalePrice, PS.RealSalePrice,          
                    C1.CateName, C1.IsUse AS IsUseCate, MR.OrderProdIdx, MR.MrIdx, MR.TakeNumber,
                    fn_ccd_name(MR.TakeMockPart) AS TakeMockPartName
@@ -1045,7 +1046,7 @@ class MockExamModel extends WB_Model
      * @param array $MpIdx $ProdCode
      * @return mixed
      */
-    public function gradeSubjectDetailCall($ProdCode, $mode){
+    public function gradeSubjectDetailCall($ProdCode, $mridx, $mode){
 
         $column = "
             PM.MockType,
@@ -1057,8 +1058,8 @@ class MockExamModel extends WB_Model
             (
                 SELECT ROUND(ycnt / (ycnt + ncnt) * 100) FROM (
                     SELECT 
-                     (SELECT COUNT(IsWrong) FROM {$this->_table['mockAnswerPaper']} WHERE ProdCode = AP.ProdCode AND MpIdx = Ap.MpIdx AND IsWrong = 'Y') AS ycnt,
-                     (SELECT COUNT(IsWrong) FROM {$this->_table['mockAnswerPaper']} WHERE ProdCode = AP.ProdCode AND MpIdx = Ap.MpIdx AND IsWrong = 'N') AS ncnt,
+                      (SELECT COUNT(IsWrong) FROM {$this->_table['mockAnswerPaper']} WHERE ProdCode = " . $ProdCode . " AND MrIdx = " . $mridx . " AND MpIdx = MP.MpIdx AND IsWrong = 'Y') AS ycnt,
+                     (SELECT COUNT(IsWrong) FROM {$this->_table['mockAnswerPaper']} WHERE ProdCode = " . $ProdCode . " AND MrIdx = " . $mridx . " AND MpIdx = Mp.MpIdx AND IsWrong = 'N') AS ncnt,
                      MP.MpIdx
                     FROM
                     {$this->_table['mockExamBase']} AS MP
@@ -1100,7 +1101,7 @@ class MockExamModel extends WB_Model
                 {$this->_table['mockExamBase']} AS MP
                 JOIN {$this->_table['mockExamQuestion']} AS MQ ON MQ.MpIdx = MP.MpIdx AND MP.IsUse = 'Y' AND MQ.IsStatus = 'Y'
                 JOIN {$this->_table['mockProductExam']} AS PM ON Mp.MpIdx = PM.MpIdx AND PM.ProdCode = ".$ProdCode." AND PM.IsStatus = 'Y'
-                LEFT OUTER JOIN {$this->_table['mockAnswerPaper']} AS AP ON MQ.MqIdx = AP.MqIdx AND AP.ProdCode = ".$ProdCode." AND AP.MemIdx = ".$this->session->userdata('mem_idx')."
+                JOIN {$this->_table['mockAnswerPaper']} AS AP ON MQ.MqIdx = AP.MqIdx AND AP.ProdCode = ".$ProdCode." AND AP.MemIdx = ".$this->session->userdata('mem_idx')."
                 
         ";
 
@@ -1148,15 +1149,15 @@ class MockExamModel extends WB_Model
                 JOIN {$this->_table['mockAreaList']} AS MA ON MQ.MalIdx = MA.MalIdx AND MA.IsStatus = 'Y'
                 LEFT OUTER JOIN {$this->_table['mockAnswerPaper']} AS AP ON MQ.MqIdx = AP.MqIdx AND AP.ProdCode = ".$ProdCode." AND AP.MemIdx = ".$this->session->userdata('mem_idx')."
                 LEFT OUTER JOIN {$this->_table['answerNote']} AS WN ON AP.MqIdx = WN.MqIdx AND WN.ProdCode = ".$ProdCode." AND WN.MemIdx = ".$this->session->userdata('mem_idx')."  
-                JOIN {$this->_table['mockRegisterR']} AS RP ON MP.MpIdx = RP.MpIdx AND AP.MrIdx = RP.MrIdx
+                LEFT OUTER JOIN {$this->_table['mockRegisterR']} AS RP ON MP.MpIdx = RP.MpIdx AND AP.MrIdx = RP.MrIdx
         ";
 
         $obder_by = " ORDER BY QuestionNO ";
 
-        $where = "  WHERE AP.MpIdx = ".$MpIdx;
+        $where = "  WHERE MP.MpIdx = ".$MpIdx;
 
         if($MalIdxSet) $where .= " AND MQ.MalIdx in (".$MalIdxSet.")";
-
+        //echo "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";
         $query = $this->_conn->query('select ' . $column . $from . $where . $obder_by);
         return $query->result_array();
 
@@ -1184,7 +1185,7 @@ class MockExamModel extends WB_Model
                 LEFT OUTER JOIN {$this->_table['mockAnswerPaper']} AS AP ON MQ.MqIdx = AP.MqIdx AND AP.ProdCode = ".$prodcode ." AND AP.MemIdx = ".$this->session->userdata('mem_idx')."
         ";
 
-        $where = " WHERE AP.MpIdx = ".$mpidx;
+        $where = " WHERE MP.MpIdx = ".$mpidx;
         $obder_by = " GROUP BY MQ.MalIdx
                       ORDER BY MQ.MalIdx";
         //echo "<pre>".'select ' . $column . $from . $where . $obder_by."</pre>";

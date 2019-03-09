@@ -38,7 +38,7 @@
         @endforeach
 
         if (html !== '') {
-            html += '<div id="PopupBackWrap" class="willbes-Layer-Black"></div>';
+            html += '<div id="PopupBackWrap" class="willbes-Layer-Trans"></div>';   // class => willbes-Layer-Black
 
             $('body').append(html);
             $('.PopupWrap').fadeIn();

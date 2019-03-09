@@ -55,19 +55,35 @@
     background: #c9c9c9;
     color: #0a0a0a;
 }
+
 .VisualsubBox {
     float: right;
     width: 394px;
-    height: 300px;
+    /*height: 300px;*/
     overflow: hidden;
 }
-.VisualsubBox .bx-wrapper .bx-controls-auto {
-    left: 0;
-    right: 0;
+
+.gosi .VisualsubBox .bx-wrapper .bx-controls-auto {
+    left:20px;
     bottom: 20px;
     margin: 0;
+    width: 50px;
     z-index: 90;
   }
+.gosi .VisualsubBox .bx-wrapper .bx-pager {
+    float: right;
+    width: auto;
+    left:60px;
+    bottom: 20px;
+    text-align: right;
+}
+.gosi .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a {
+    background: #fff;
+    width: 8px;
+    height: 8px;
+    margin: 0 2px;
+}
+
 .VisualList {
     float: left;
     width: 100%;
@@ -169,7 +185,8 @@
 .bestLectBx .prof-professors {clear:both; margin-top:40px;}
 .bestLectBx .prof-slider {width:614px; height:120px; overflow:hidden;}
 .bestLectBx .prof-slider li {position:relative; display:inline; float:left; height:120px; width:50%}
-.bestLectBx .prof-slider li img {position:absolute; width:120px; height:120px}
+.bestLectBx .prof-slider li div {position:absolute; width:120px; height:120px; overflow: hidden; background:#ececec}
+.bestLectBx .prof-slider li img {width:120px}
 .bestLectBx .prof-slider li span {position:absolute; left:138px; width:150px}
 .bestLectBx .prof-slider li span.txt1 {top:0; color:#3a3a3a; font-size:17px}
 .bestLectBx .prof-slider li span.txt2 {top:22px; color:#ba560e; font-size:22px; font-weight:bold;}
@@ -289,6 +306,7 @@
     float: left;
     width: 82px;
     margin: 0 15px 0 25px;
+    background:#e1e1e1;
 }
 .lecReviewBx .sliderNumRv .imgBox img {
     width: 100%;
@@ -375,10 +393,10 @@
 }
 .gosi .Section .SpecialBox li:nth-child(5),
 .gosi .Section .SpecialBox li:last-child {
-    margin-right:0}
+    margin-right:0;
 }
 .gosi .Section .SpecialBox ul:after {
-    content:''; display: block; clear:both}
+    content:''; display: block; clear:both;
 }
 
 /* Main Container : QuickMenu : Gosi */

@@ -20,6 +20,10 @@
             <div class="form-group">
                 <label class="control-label col-md-1-1">운영사이트</label>
                 <div class="form-control-static col-md-4">{{$data['SiteName']}}</div>
+                <label class="control-label col-md-1-1 d-line">프로모션코드</label>
+                <div class="form-control-static col-md-4 ml-12-dot">
+                    {{$data['PromotionCode']}}
+                </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-md-1-1">카테고리 정보</label>
@@ -29,61 +33,90 @@
             <div class="form-group">
                 <label class="control-label col-md-1-1">캠퍼스</label>
                 <div class="form-control-static col-md-4">{{$data['CampusName']}}</div>
-                <label class="control-label col-md-1-1 d-line">프로모션코드</label>
-                <div class="form-control-static col-md-4 ml-12-dot">
-                    {{$data['PromotionCode']}}
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-md-1-1">신청유형</label>
-                <div class="form-control-static col-md-4">{{$data['RequestTypeName']}}</div>
-                <label class="control-label col-md-1-1 d-line">특강구분</label>
-                <div class="form-control-static col-md-4 ml-12-dot">
-                    {{$data['SubjectName']}} {{$data['ProfNickName']}}
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-md-1-1">참여구분</label>
-                <div class="form-control-static col-md-4">{{$data['TakeTypeName']}}</div>
-                <label class="control-label col-md-1-1 d-line">접수기간</label>
-                <div class="form-control-static col-md-4 ml-12-dot">{{$data['RegisterStartDate']}} ~ {{$data['RegisterEndDate']}}</div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-md-1-1">접수상태</label>
-                <div class="form-control-static col-md-4">{{$data['IsRegisterName']}}</div>
                 <label class="control-label col-md-1-1 d-line">사용여부</label>
                 <div class="form-control-static col-md-4 ml-12-dot">{{ ($data['IsUse'] == 'Y') ? '사용' : '미사용' }}</div>
             </div>
             <div class="form-group">
-                <label class="control-label col-md-1-1">프로모션 경로</label>
-                {{--<div class="form-control-static col-md-10">{{$data['Link']}}</div>--}}
-                <div class="form-control-static col-md-10">
-                    @foreach($arr_cate_code as $key => $val)
-                        <p><b>[{{$val}}]</b> 관리자 확인용 : {{$data['SiteUrl'].'/promotion/index/cate/'.$key.'/code/'.$data['PromotionCode'].'?type=1'}}</p>
-                        <p><b>[{{$val}}]</b> 실제 경로 : {{$data['SiteUrl'].'/promotion/index/cate/'.$key.'/code/'.$data['PromotionCode']}}</p><br>
-                    @endforeach
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-md-1-1">첨부</label>
-                <div class="form-control-static col-md-4">
-                    @if (empty($file_data['F']) === false)
-                        {{$file_data['F']['file_real_name']}}
-                    @endif
-                </div>
-                <label class="control-label col-md-1-1 d-line">조회수(생성)</label>
-                <div class="form-control-static col-md-4 ml-12-dot">{{$data['ReadCnt']}} ({{$data['AdjuReadCnt']}})</div>
+                <label class="control-label col-md-1-1">신청유형</label>
+                <div class="form-control-static col-md-4">{{$data['RequestTypeName']}}</div>
+                <label class="control-label col-md-1-1 d-line">접수기간</label>
+                <div class="form-control-static col-md-4 ml-12-dot">{{$data['RegisterStartDate']}} ~ {{$data['RegisterEndDate']}}</div>
             </div>
 
-            <div class="form-group">
-                <label class="control-label col-md-1-1">내용</label>
-                <div class="form-control-static col-md-10">
-                    @if ($data['ContentType'] == 'E')
-                        {!! $data['Content'] !!}
-                    @else
-                        <img src='{{$file_data['C']['file_path']}}'>
-                        <p>{{$file_data['C']['file_real_name']}}</p>
-                    @endif
+            <div class="promotion">
+                <div class="form-group">
+                    <label class="control-label col-md-1-1">추가 파라미터(GET방식) </label>
+                    <div class="form-control-static col-md-10">{{ $data['PromotionParams'] }}</div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-1-1">프로모션 경로</label>
+                    {{--<div class="form-control-static col-md-10">{{$data['Link']}}</div>--}}
+                    <div class="form-control-static col-md-10">
+                        @foreach($arr_cate_code as $key => $val)
+                            <p><b>[{{$val}}]</b> 관리자 확인용 : {{$data['SiteUrl'].'/promotion/index/cate/'.$key.'/code/'.$data['PromotionCode'].'?type=1'}}</p>
+                            <p><b>[{{$val}}]</b> 실제 경로 : {{$data['SiteUrl'].'/promotion/index/cate/'.$key.'/code/'.$data['PromotionCode']}}</p><br>
+                        @endforeach
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-1-1">프로모션 첨부</label>
+                    <div class="form-control-static col-md-4">
+                        @if (empty($file_data_promotion) === false)
+                            @foreach($file_data_promotion as $row)
+                                <a href="javascript:void(0);" class="file-download ml-5" data-file-path="{{ urlencode($row['FileFullPath'].$row['FileName'])}}" data-file-name="{{ urlencode($row['FileRealName']) }}" target="_blank">
+                                    [{{ $row['FileRealName'] }}]
+                                </a>
+                            @endforeach
+                            {{--{{$file_data['F']['file_real_name']}}--}}
+                        @endif
+                    </div>
+                </div>
+            </div>
+
+            <div class="event">
+                <div class="form-group">
+                    <label class="control-label col-md-1-1">참여구분</label>
+                    <div class="form-control-static col-md-4">{{$data['TakeTypeName']}}</div>
+                    <label class="control-label col-md-1-1 d-line">특강구분</label>
+                    <div class="form-control-static col-md-4 ml-12-dot">
+                        {{$data['SubjectName']}} {{$data['ProfNickName']}}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-1-1">접수상태</label>
+                    <div class="form-control-static col-md-4">{{$data['IsRegisterName']}}</div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-1-1">첨부</label>
+                    <div class="form-control-static col-md-4">
+                        @if (empty($file_data['F']) === false)
+                            <a href="javascript:void(0);" class="file-download ml-5" data-file-path="{{ urlencode($file_data['F']['file_path'])}}" data-file-name="{{ urlencode($file_data['F']['file_real_name']) }}" target="_blank">
+                                {{$file_data['F']['file_real_name']}}
+                            </a>
+                        @endif
+                    </div>
+                    <label class="control-label col-md-1-1 d-line">조회수(생성)</label>
+                    <div class="form-control-static col-md-4 ml-12-dot">{{$data['ReadCnt']}} ({{$data['AdjuReadCnt']}})</div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-1-1">내용</label>
+                    <div class="form-control-static col-md-10">
+                        @if ($data['RequestType'] != '5')
+                            @if ($data['ContentType'] == 'E')
+                                {!! $data['Content'] !!}
+                            @else
+                                @if (empty($file_data['C']) === false)
+                                    <img src='{{$file_data['C']['file_path']}}'>
+                                    <p>{{$file_data['C']['file_real_name']}}</p>
+                                @endif
+                            @endif
+                        @endif
+                    </div>
                 </div>
             </div>
 
@@ -143,6 +176,17 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
+            var request_type = '{{$data['RequestType']}}';
+            console.log(request_type);
+            if (request_type == 5) {
+                $('.promotion').show();
+                $('.event').hide();
+            } else {
+                $('.promotion').hide();
+                $('.event').show();
+            }
+
+
             // 목록
             $('#btn_list').click(function() {
                 location.href='{{ site_url("/site/eventLecture") }}/' + getQueryString();
@@ -156,6 +200,12 @@
             // 목록
             $('.btn-list').click(function() {
                 location.href='{{ site_url("/site/eventLecture/") }}';
+            });
+
+            // 파일 다운로드
+            $('.file-download').click(function() {
+                var _url = '{{ site_url("/site/eventLecture/download") }}/' + getQueryString() + '&path=' + $(this).data('file-path') + '&fname=' + $(this).data('file-name');
+                window.open(_url, '_blank');
             });
         });
     </script>

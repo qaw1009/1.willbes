@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Professor extends \app\controllers\BaseController
 {
-    protected $models = array('product/base/sortMapping', 'product/base/professor');
+    protected $models = array('product/base/sortMapping', 'product/base/professor', 'product/base/subject', 'sys/category');
     protected $helpers = array();
 
     public function __construct()
@@ -163,5 +163,71 @@ class Professor extends \app\controllers\BaseController
         }
 
         $this->json_result($result, '저장 되었습니다.', $result);
-    }    
+    }
+
+    /**
+     * 과목별 교수 정렬변경 인덱스
+     */
+    public function reorderList()
+    {
+        $arr_category = $this->categoryModel->getCategoryArray('', '', '', 1);  // 1차 카테고리 조회
+        $arr_subject = $this->subjectModel->getSubjectArray();
+
+        $this->load->view('product/base/professor/reorder', [
+            'arr_category' => $arr_category,
+            'arr_subject' => $arr_subject,
+        ]);
+    }
+
+    /**
+     * 과목별 교수 정렬변경 목록 조회
+     * @return CI_Output
+     */
+    public function reorderListAjax()
+    {
+        $search_site_code = $this->_reqP('_search_site_code');
+        $search_cate_code = $this->_reqP('_search_cate_code');
+        $search_subject_idx = $this->_reqP('_search_subject_idx');
+        $count = 0;
+        $list = [];
+
+        if (empty($search_site_code) === false && empty($search_site_code) === false && empty($search_site_code) === false) {
+            $arr_condition = [
+                'EQ' => [
+                    'PF.SiteCode' => $search_site_code,
+                    'PSC.CateCode' => $search_cate_code,
+                    'PSC.SubjectIdx' => $search_subject_idx
+                ],
+                'IN' => ['PF.SiteCode' => get_auth_site_codes()]    //사이트 권한 추가
+            ];
+
+            $list = $this->professorModel->listSearchProfessorSubjectMapping(false, $arr_condition, null, null, ['PSC.OrderNum' => 'asc', 'PSC.PcIdx' => 'desc']);
+            $count = count($list);
+        }
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list
+        ]);
+    }
+
+    /**
+     * 과목별 교수 정렬변경 저장
+     */
+    public function reorder()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'params', 'label' => '정렬순서', 'rules' => 'trim|required']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->professorModel->modifyProfessorSubjectMappingReorder(json_decode($this->_reqP('params'), true));
+
+        $this->json_result($result, '저장 되었습니다.', $result);
+    }
 }

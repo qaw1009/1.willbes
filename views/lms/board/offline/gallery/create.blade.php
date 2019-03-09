@@ -200,8 +200,6 @@
             });
             
             //첨부필드추가
-            //$regi_form.on('click', '.btn-add-file', function () {
-            //$('.btn-add-file').on('click', function() {
             $('.btn-add-file').click(function () {
                 var add_file_box_text = '';
                 var file_id = $('.file-input-box').length;

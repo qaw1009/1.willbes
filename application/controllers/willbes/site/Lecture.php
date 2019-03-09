@@ -108,7 +108,7 @@ class Lecture extends \app\controllers\FrontController
 
                 // 정렬방식이 과정순일 경우 배열키 재정의, 배열키 기준으로 재정렬하기 위해 필요 (OrderNumCourse + ProdCode)
                 if (element('search_order', $arr_input) == 'course') {
-                    $selected_list[$row['SubjectIdx']][$row['ProfIdx']][$row['OrderNumCourse'] . $row['ProdCode']] = $row;
+                    $selected_list[$row['SubjectIdx']][$row['ProfIdx']][str_pad($row['OrderNumCourse'], 3, '0', STR_PAD_LEFT) . $row['ProdCode']] = $row;
                 } else {
                     $selected_list[$row['SubjectIdx']][$row['ProfIdx']][] = $row;
                 }

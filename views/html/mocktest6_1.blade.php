@@ -98,7 +98,13 @@
                     </tbody>
                 </table> 
             </div>
-            <div class="willbes-Leclist c_both mt60">
+
+            <div class="mt10">
+                <img src="{{ img_url('sub/mocktest_cop.jpg') }}" alt="경찰 통합목의고사">
+                <img src="{{ img_url('sub/mocktest_gosi.jpg') }}" alt="공무원 통합목의고사">
+            </div>
+
+            <div class="willbes-Leclist c_both mt50">
                 <div class="willbes-LecreplyList tx-gray c_both mt-zero">
                     <span class="willbes-Lec-Search willbes-SelectBox mb20 GM f_left">
                         <select id="route" name="route" title="route" class="seleRoute mr10 h30 f_left">

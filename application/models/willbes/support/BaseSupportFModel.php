@@ -72,9 +72,10 @@ class BaseSupportFModel extends WB_Model
 
     /**
      * FAQ 구분 목록 추출
+     * @param string $site_code
      * @return mixed
      */
-    public function listFaqCcd()
+    public function listFaqCcd($site_code = '')
     {
         $arr_condition = [
         ];
@@ -93,12 +94,14 @@ class BaseSupportFModel extends WB_Model
                                 \'CcdName\', CcdName
                             )), \']\') AS subFaqData
                         FROM '.$this->_table['code'].' 
-                        WHERE CcdDesc=\'faq_use\' AND GroupCcd != 0 AND IsStatus=\'Y\' AND IsUse = \'Y\'  
+                        WHERE CcdDesc=\'faq_use\' AND GroupCcd != 0 AND IsStatus=\'Y\' AND IsUse = \'Y\'
+                        AND json_value(CcdEtc, "$.'.$site_code.'") = \'Y\'
                         GROUP BY GroupCcd
                         order by OrderNum ASC
                     ) B on A.Ccd = B.GroupCcd
             WHERE 
-            A.CcdDesc=\'faq_use\' and A.GroupCcd=0 AND A.IsStatus=\'Y\' AND A.IsUse = \'Y\' 
+            A.CcdDesc=\'faq_use\' and A.GroupCcd=0 AND A.IsStatus=\'Y\' AND A.IsUse = \'Y\'
+            AND json_value(A.CcdEtc, "$.'.$site_code.'") = \'Y\' 
         ';
 
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
@@ -348,7 +351,7 @@ class BaseSupportFModel extends WB_Model
             $arr_board_attach_keys = array_keys($arr_board_attach);
 
             $this->load->library('upload');
-            $upload_sub_dir = config_item('upload_prefix_dir') . '/board/' . $board_data['BmIdx'] . '/' . date('Ymd');
+            $upload_sub_dir = config_item('upload_prefix_dir') . '/board/' . $board_data['BmIdx'] . '/' . date('Y') . '/' . date('md');
             $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->getAttachImgNames($board_idx) , $upload_sub_dir
                 ,'allowed_types:'.$this->upload_file_rule['allowed_types'].',overwrite:'.$this->upload_file_rule['overwrite'].',max_size:'.$this->upload_file_rule['max_size']);
 
@@ -415,7 +418,7 @@ class BaseSupportFModel extends WB_Model
             $arr_board_attach_keys = array_keys($arr_board_attach);
 
             $this->load->library('upload');
-            $upload_sub_dir = config_item('upload_prefix_dir') . '/board/88/' . date('Ymd');
+            $upload_sub_dir = config_item('upload_prefix_dir') . '/board/88/' . date('Y') . '/' . date('md');
             $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->getAttachImgNames($ba_idx) , $upload_sub_dir
                 ,'allowed_types:'.$this->upload_file_rule['allowed_types'].',overwrite:'.$this->upload_file_rule['overwrite'].',max_size:'.$this->upload_file_rule['max_size']);
 

@@ -4,7 +4,9 @@
     $_gnb_img_size = $_gnb_size == 'md' ? '' : '_sm';
     $_gnb_open = $_gnb_size == 'md' ? 'Close' : 'Open';
     $_gnb_text = $_gnb_size == 'md' ? '숨김' : '열기';
-    $_gnb_logo = $_gnb_size == 'md' ? $__cfg['Logo'] : str_replace('.', $_gnb_img_size . '.', $__cfg['Logo']);
+    // 사이트설정 로고 이미지가 아닌 디자인 이미지 경로로 변경 (숨김 버튼 클릭시 이미지 경로가 초기화되기 때문에)
+    //$_gnb_logo = $_gnb_size == 'md' ? $__cfg['Logo'] : str_replace('.', $_gnb_img_size . '.', $__cfg['Logo']);
+    $_gnb_logo = $_gnb_size == 'md' ? img_url('gnb/logo.gif') : img_url('gnb/logo' . $_gnb_img_size . '.gif');
 @endphp
 <div id="Gnb" class="NSK Gnb-{{ $_gnb_size }}">
     <div class="toggle-Btn gnb-{{ $_gnb_open }}">
@@ -13,17 +15,12 @@
         </a>
     </div>
     <div class="logo">
-        <a href="{{ app_url('/', 'www') }}"><img src="{{ $_gnb_logo }}" onerror="this.src='{{ img_url('gnb/logo' . $_gnb_img_size . '.gif') }}'"></a>
+        <a href="{{ app_url('/', 'www') }}"><img src="{{ $_gnb_logo }}"></a>
     </div>
 
     @if(empty($__cfg['GNBMenu']['ActiveGroupMenuIdx']) === true)
         <!-- main slider -->
-        <div class="sliderGNB bSlider">
-            <div class="slider">
-                <div><a href="http://www.willbescop.net/movie/event.html?event_cd=On_181228_p&topMenuType=O" target="_blank"><img src="{{ img_url('gnbbanner/2_bn1.gif') }}"></a></div>
-                <div><a href="http://www.willbescop.net/movie/event.html?event_cd=On_190102_y" target="_blank"><img src="{{ img_url('gnbbanner/2_bn2.gif') }}"></a></div>
-            </div>
-        </div>
+        {!! banner('네비게이션_Top', 'sliderGNB', config_item('app_intg_site_code'), '0') !!}
     @else
         <!-- gnb site menu -->
         <div class="topView">
@@ -45,12 +42,7 @@
                                                 <li><a href="{{ $menu_child_row['MenuUrl'] }}" target="_{{ $menu_row['UrlTarget'] }}">{{ $menu_child_row['MenuName'] }}</a></li>
                                             @endforeach
                                         </ul>
-                                        <div class="sliderView bSlider">
-                                            <div class="slider">
-                                                <div><a href="http://www.willbescop.net/event/movie/event.html?event_cd=On_181226_p&topMenuType=O" target="_blank"><img src="{{ img_url('gnbbanner/1_bn1.gif') }}"></a></div>
-                                                <div><a href="http://www.willbescop.net/movie/event.html?event_cd=On_181228_p&topMenuType=O" target="_blank"><img src="{{ img_url('gnbbanner/1_bn2.gif') }}"></a></div>
-                                            </div>
-                                        </div>
+                                        <div class="sliderViewWrap"></div>
                                     </div>
                                 @endif
                             </li>
@@ -81,6 +73,8 @@
                 </ul>
             </h4>
         </div>
+        <!-- main sub menu slider (set html 방식) -->
+        {!! banner('네비게이션_레이어', 'sliderView', config_item('app_intg_site_code'), '0', 'sliderViewWrap') !!}
     @endif
     <!-- gnb menu -->
     <div class="gnb-List">

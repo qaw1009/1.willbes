@@ -113,7 +113,8 @@
                             @endforeach
                         </select>
                         <select id="orderby" name="orderby" title="Laststudy" class="seleStudy">
-                            <option value="lastStudyDate^DESC" @if(isset($input_arr['orderby']) && $input_arr['orderby'] == 'lastStudyDate') selected="selected" @endif>최종학습일순</option>
+                            <option value="OrderDate^DESC" @if(isset($input_arr['orderby']) && $input_arr['orderby'] == 'OrderDate^DESC') selected="selected" @endif>최근구매순</option>
+                            <option value="lastStudyDate^DESC" @if(isset($input_arr['orderby']) && $input_arr['orderby'] == 'lastStudyDate^DESC') selected="selected" @endif>최종학습일순</option>
                             <option value="LecStartDate^ASC" @if(isset($input_arr['orderby']) && $input_arr['orderby'] == 'LecStartDate^ASC') selected="selected" @endif>개강일순</option>
                             <option value="RealLecEndDate^ASC" @if(isset($input_arr['orderby']) && $input_arr['orderby'] == 'RealLecEndDate^ASC') selected="selected" @endif>종료임박순</option>
                         </select>
@@ -465,14 +466,14 @@
             </div>
             <!-- willbes-Mypage-Tabs -->
 
-            <div id="STOPPASS" class="willbes-Layer-PassBox willbes-Layer-PassBox740 h800 abs"></div>
+            <div id="STOPPASS" class="willbes-Layer-PassBox willbes-Layer-PassBox740 abs"></div>
             <!-- willbes-Layer-PassBox : 일시정지 -->
 
-            <div id="EXTRAPASS" class="willbes-Layer-PassBox willbes-Layer-PassBox740 h800 abs"></div>
+            <div id="EXTRAPASS" class="willbes-Layer-PassBox willbes-Layer-PassBox740 abs"></div>
             <!-- willbes-Layer-PassBox : 수강연장 -->
 
         </div>
-        {!! banner('내강의실_우측날개', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
+        {!! banner('내강의실_우측퀵', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
     </div>
     <!-- End Container -->
     <form name="postForm" id="postForm" >

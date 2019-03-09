@@ -1,6 +1,6 @@
 @extends('lcms.layouts.master')
 @section('content')
-    <h5>- 윌비스 사이트 운영을 위한 공통코드를 관리하는 메뉴입니다.</h5>
+    <h5>- 회원상세정보</h5>
     <form class="form-horizontal form-label-left" id="search_form" name="search_form" method="POST" onsubmit="return false;" novalidate>
         <div class="x_panel">
             <div class="x_content">
@@ -43,8 +43,8 @@
                     <th class="text-center">생년월일(성별)</th>
                     <th class="text-center">회원명</th>
                     <th class="text-center">아이디</th>
-                    <th class="text-center">휴대폰(수신여부)</th>
-                    <th class="text-center">E-Mail(수신여부)</th>
+                    <th class="text-center">회원인증방법</th>
+
                 </tr>
                 </thead>
                 <tbody>
@@ -54,8 +54,7 @@
                     <td>{{ $data['BirthDay'] }} ({{ $data['Sex'] == 'M' ? '남' : '여' }})</td>
                     <td>{{ $data['MemName'] }} <button type="button" class="btn btn-default" id="chgname">이름변경</button></td>
                     <td>{{ $data['MemId'] }}</td>
-                    <td>{{ $data['Phone'] }} ({{ $data['SmsRcvStatus'] }})</td>
-                    <td>{{ $data['Mail'] }} ({{ $data['MailRcvStatus'] }})</td>
+                    <td>{{ $data['CertName'] }}</td>
                 </tr>
                 </tbody>
             </table>
@@ -63,11 +62,15 @@
                 <thead>
                 <tr>
                     <th class="text-center">주소</th>
+                    <th class="text-center">휴대폰(수신여부)</th>
+                    <th class="text-center">E-Mail(수신여부)</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
                     <td>({{ $data['ZipCode'] }}) {{ $data['Addr1'] }} {{ $data['Addr2'] }}</td>
+                    <td>{{ $data['Phone'] }} ({{ $data['SmsRcvStatus'] }})</td>
+                    <td>{{ $data['Mail'] }} ({{ $data['MailRcvStatus'] }})</td>
                 </tr>
                 </tbody>
             </table>

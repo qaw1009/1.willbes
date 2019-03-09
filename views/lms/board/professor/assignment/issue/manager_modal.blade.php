@@ -174,9 +174,12 @@
         $editor_profile.config.editorHeight = '170px';
         $editor_profile.config.editorWidth = '100%';
         $editor_profile.inputForm = 'board_content';
-        $editor_profile.run();
 
-        $('.file-download').click(function() {
+        setTimeout(function() {
+            $editor_profile.run();
+        }, 0);
+
+       $('.file-download').click(function() {
             var _url = '{{ site_url("/board/professor/{$boardName}/download") }}/' + getQueryString() + '&path=' + $(this).data('file-path') + '&fname=' + $(this).data('file-name');
             window.open(_url, '_blank');
         });

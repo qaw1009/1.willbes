@@ -206,7 +206,7 @@
 
                                     data = ' data-prod-type="' + prod_type + '" data-learn-pattern-ccd=""';
                                     data += ' data-prod-name="' + Base64.encode(row.ProdName) + '" data-sale-price="' + row.SalePrice + '" data-real-sale-price="' + row.RealSalePrice + '"';
-                                    data += ' data-prod-type-ccd-name="모의고사" data-learn-pattern-ccd-name=""';
+                                    data += ' data-prod-type-ccd-name="모의고사" data-learn-pattern-ccd-name="" data-campus-ccd-name=""';
 
                                     $(document).find($target_id).append(
                                         '<span class="pr-10">[' + row.ProdCode + '] ' + row.ProdName +

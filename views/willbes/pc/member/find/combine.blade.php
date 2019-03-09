@@ -9,7 +9,7 @@
                 <span class="tx-blue">통합 서비스 안내</span>
             </div>
             <!-- 통합 서비스 안내 -->
-            <form id="agree_form" name="agree_form" method="post" action="/member/combine/">
+            <form id="agree_form" name="agree_form" method="post" action="/member/combine/agree/">
                 <div class="Member mem-Convert widthAuto690">
                     <div class="user-Txt tx-black">
                         윌비스공무원(www.willbesgosi.net), 신광은경찰(www.willbescop.net)이<br/>

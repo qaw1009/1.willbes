@@ -60,13 +60,13 @@ class SupportExamAnnouncement extends BaseSupport
             ]
         ];
 
-        /*if ($this->_site_code != config_item('app_intg_site_code')) {
+        if ($this->_site_code != config_item('app_intg_site_code')) {
             $arr_condition = array_merge_recursive($arr_condition, [
                 'LKB' => [
                     'Category_String' => $this->_cate_code
                 ]
             ]);
-        }*/
+        }
 
         $column = 'b.BoardIdx,b.CampusCcd,b.TypeCcd,b.IsBest,b.AreaCcd
                        ,b.Title,b.Content, (b.ReadCnt + b.SettingReadCnt) as TotalReadCnt
@@ -133,10 +133,8 @@ class SupportExamAnnouncement extends BaseSupport
                        ';
 
         $data = $this->supportBoardFModel->findBoardForSiteGroup($this->_site_code, $board_idx, $arr_condition, $column);
-        // 첨부파일 이미지일 경우 해당 배열에 담기
-        $data['Content'] = $this->_getBoardForContent($data['Content'], $data['AttachData']);
 
-        if (empty($data)) {
+        if (empty($data) === true) {
             show_alert('게시글이 존재하지 않습니다.', 'back');
         }
         $result = $this->supportBoardFModel->modifyBoardRead($board_idx);
@@ -144,6 +142,8 @@ class SupportExamAnnouncement extends BaseSupport
             show_alert('게시글 조회시 오류가 발생되었습니다.', 'back');
         }
 
+        // 첨부파일 이미지일 경우 해당 배열에 담기
+        $data['Content'] = $this->_getBoardForContent($data['Content'], $data['AttachData']);
         $data['AttachData'] = json_decode($data['AttachData'],true);       //첨부파일
         #-------------------------------- 게시글 조회
 

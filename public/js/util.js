@@ -49,10 +49,11 @@ function fnMobile($info_url, $license)
     StarPlayerApp.ios_version = "1.0.0";
     StarPlayerApp.referer = window.location.href;
     StarPlayerApp.android_referer_return = "false";
-    StarPlayerApp.debug = "true";
+    StarPlayerApp.debug = "false";
     StarPlayerApp.pmp = "false";
 
     checkInstalled2();
+    $info_url = decodeURIComponent($info_url);
     StarPlayerApp.executeApp($info_url);
 }
 
@@ -282,13 +283,20 @@ function formCreateSubmit(url, params, method, target) {
  * @returns {string}
  */
 function frontUrl(uri) {
-    var url = location.protocol + '//' + location.host;
-
     if (location.pathname.indexOf('/pass/') === 0) {
-        url += '/pass';
+        uri = '/pass' + uri;
     }
 
-    return url + uri;
+    return siteUrl(uri);
+}
+
+/**
+ * 학원 사이트 URL 생성
+ * @param uri
+ * @returns {string}
+ */
+function frontPassUrl(uri) {
+    return siteUrl('/pass' + uri);
 }
 
 /**

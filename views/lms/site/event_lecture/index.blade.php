@@ -41,11 +41,14 @@
 
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_value">통합검색</label>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <input type="text" class="form-control" id="search_value" name="search_value">
                     </div>
+                    <div class="col-md-2">
+                        <p class="form-control-static">제목, 프로모션코드 검색 가능</p>
+                    </div>
                     <label class="control-label col-md-1" for="search_start_date">기간검색</label>
-                    <div class="col-md-7">
+                    <div class="col-md-5">
                         <div class="col-md-11 form-inline">
                             <select class="form-control mr-10" id="search_date_type" name="search_date_type">
                                 <option value="I">신청일</option>
@@ -157,8 +160,12 @@
                         }},
 
                     {'data' : 'ElIdx', 'render' : function(data, type, row, meta) {
-                            var img_url = row.FileFullPath + row.FileName + '';
-                            return "<img class='img_"+row.ElIdx+"' src='"+img_url+"'>";
+                            if (row.RequestType == 5) {
+                                return '';
+                            } else {
+                                var img_url = row.FileFullPath + row.FileName + '';
+                                return "<img class='img_"+row.ElIdx+"' src='"+img_url+"'>";
+                            }
                         }},
 
                     {'data' : 'RequestTypeName'},

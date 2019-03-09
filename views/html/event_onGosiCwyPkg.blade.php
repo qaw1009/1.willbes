@@ -64,8 +64,6 @@
         }
 		 
     </style>
-    
-    @include('html.event_incOnTnb')
 
     <div class="p_re evtContent NSK" id="evtContainer">        
         <div class="skybanner">

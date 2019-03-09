@@ -68,7 +68,7 @@ class ManageMemberModel extends WB_Model
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
 
-        $rows = $this->_conn->query('SELECT ' . $column . $from . $inQuery . $where . $order_by_offset_limit);
+        $rows = $this->_conn->query('SELECT ' . $column . $from . $where . $inQuery . $order_by_offset_limit);
 
         return ($is_count === true) ? $rows->row(0)->rownums : $rows->result_array();
     }
@@ -94,11 +94,14 @@ class ManageMemberModel extends WB_Model
             IFNULL(Mem.IsBlackList, '') AS IsBlackList, 
             (SELECT COUNT(*) FROM {$this->_table['device']} WHERE MemIDX = Mem.MemIdx AND DeviceType = 'P' AND IsUse='Y' ) AS PcCount,
             (SELECT COUNT(*) FROM {$this->_table['device']} WHERE MemIDX = Mem.MemIdx AND DeviceType = 'M' AND IsUse='Y' ) AS MobileCount,
-            (SELECT SiteName FROM {$this->_table['site']} WHERE SiteCode = Mem.SiteCode) AS SiteName               
+            (SELECT SiteName FROM {$this->_table['site']} WHERE SiteCode = Mem.SiteCode) AS SiteName,
+            c1.CcdName AS CertName               
             ";
 
         $from = "FROM {$this->_table['member']} AS Mem 
-            INNER JOIN {$this->_table['info']} AS Info ON Info.MemIdx = Mem.MemIdx ";
+            INNER JOIN {$this->_table['info']} AS Info ON Info.MemIdx = Mem.MemIdx
+            LEFT JOIN {$this->_table['code']} AS c1 ON Mem.CertifiedInfoTypeCcd = c1.Ccd 
+            ";
 
         $where = " WHERE Mem.MemIdx = {$memIdx} ";
 

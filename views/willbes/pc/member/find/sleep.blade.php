@@ -20,9 +20,9 @@
                 <li><a class='on' href="{{front_app_url('/Member/Sleep', 'www')}}">휴면회원 해제</a></li>
             </ul>
             <ul class="tabWrap tabLoginDepth2 tabs-Certi">
-                <li id="tab1"><a href="#lock_certi1" class="on"><div>휴대폰 인증</div></a></li>
-                <li id="tab2"><a href="#lock_certi2"><div>E-mail 인증</div></a></li>
-                <li id="tab3"><a href="#lock_certi3"><div>아이핀 인증</div></a></li>
+                <li id="tab1" style="width:50% !important;"><a href="#lock_certi1" class="on"><div>휴대폰 인증</div></a></li>
+                <!-- <li id="tab2"><a href="#lock_certi2"><div>E-mail 인증</div></a></li> -->
+                <li id="tab3" style="width:50% !important;"><a href="#lock_certi3"><div>아이핀 인증</div></a></li>
             </ul>
             <div clsas="tabBox">
                 <form name="phone_form" id="phone_form" method="post" onsubmit=" return false;">
@@ -56,6 +56,7 @@
                         </div>
                     </div>
                 </form>
+                <!--
                 <form name="mail_form" id="mail_form" method="post" onsubmit=" return false;">
                     {!! csrf_field() !!}
                     <div id="lock_certi2">
@@ -82,6 +83,7 @@
                         <div class="notice-Txt tx-gray mt40">* 입력하신 메일로 발송된 인증메일의 인증링크를 유효시간 30분 안에 클릭해 주세요.</div>
                     </div>
                 </form>
+                -->
                 <div id="lock_certi3">
                     <form name="form_ipin" id="form_ipin" method="post">
                         <input type="hidden" name="m" value="pubmain">

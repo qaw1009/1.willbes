@@ -3,7 +3,11 @@
 @section('content')
     <!-- Container -->
     <div id="Container" class="subContainer widthAuto c_both">
-        @include('willbes.pc.layouts.partial.site_tab_menu')
+        @if (empty($__cfg['TabMenu']) === true)
+            @include('willbes.pc.layouts.partial.site_menu')
+        @else
+            @include('willbes.pc.layouts.partial.site_tab_menu')
+        @endif
         <div class="Depth">
             @include('willbes.pc.layouts.partial.site_route_path')
         </div>
@@ -24,7 +28,7 @@
                                 <select id="s_cate_code" name="s_cate_code" title="카테고리" class="seleCategory" onchange="goUrl('s_cate_code',this.value)" {{--@if($__cfg['SiteCode'] != config_item('app_intg_site_code')) disabled @endif--}}>
                                     <option value="">카테고리</option>
                                     @foreach($arr_base['category'] as $row)
-                                        <option value="{{$row['CateCode']}}" class="{{$row['SiteCode']}}" @if(element('s_cate_code', $arr_input) == $row['CateCode'])selected="selected"@endif>{{$row['CateName']}}</option>
+                                        <option value="{{$row['CateCode']}}" class="{{$row['SiteCode']}}" @if(element('s_cate_code', $arr_input, $__cfg['CateCode']) == $row['CateCode'])selected="selected"@endif>{{$row['CateName']}}</option>
                                     @endforeach
                                 </select>
                                 @endif
@@ -79,7 +83,7 @@
                                     <td class="w-no">@if($row['IsBest'] == '1')<img src="{{ img_url('prof/icon_HOT.gif') }}">@else{{$paging['rownum']}}@endif</td>
                                     @if($__cfg['CampusCcdArr'] != 'N')<td><span class="oBox campus_{{$row['CampusCcd']}} NSK">{{$row['CampusCcd_Name']}}</span></td>@endif
                                     <td class="w-list tx-left pl20">
-                                        <a href="{{front_url($default_path.'/notice/show?board_idx='.$row['BoardIdx'].'&'.$get_params)}}">
+                                        <a href="{{front_url($default_path.'/show/cate/'.$__cfg['CateCode'].'?board_idx='.$row['BoardIdx'].'&'.$get_params)}}">
                                             @if($row['IsBest'] == '1')<strong>@endif{{hpSubString($row['Title'],0,40,'...')}}@if($row['IsBest'] == '1')</strong>@endif
                                         </a>
                                     </td>
@@ -107,7 +111,7 @@
             </div>
             <!-- willbes-CScenter -->
         </div>
-        {!! banner('고객센터_우측날개', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
+        {!! banner('고객센터_우측퀵', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
     </div>
     <!-- End Container -->
 @stop

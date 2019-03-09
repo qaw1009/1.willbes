@@ -255,7 +255,7 @@
                     <div class="col-md-4 form-inline item">
                         <div class="checkbox">
                             @foreach($vodtype_ccd as $key => $val)
-                                <input type="checkbox" name="PlayerTypeCcds[]" value="{{$key}}" required="required" class="flat" @if( ($method == 'POST' && $loop->index == 1) || (strpos($data['PlayerTypeCcds'],trim($key)) !== false)   )checked="checked"@endif> {{$val}}&nbsp;
+                                <input type="checkbox" name="PlayerTypeCcds[]" value="{{$key}}" required="required" class="flat" @if( ($method == 'POST') || (strpos($data['PlayerTypeCcds'],trim($key)) !== false)   )checked="checked"@endif> {{$val}}&nbsp;
                                 &nbsp;@endforeach
                         </div>
                     </div>

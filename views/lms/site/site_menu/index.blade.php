@@ -45,7 +45,7 @@
                         <th>메뉴코드</th>
                         <th>메뉴구분</th>
                         <th class="searching">메뉴경로 (하위메뉴 등록)</th>
-                        <th class="searching">메뉴명 (메뉴 수정)</th>
+                        <th class="searching" style="width: 220px;">메뉴명 (메뉴 수정)</th>
                         <th>URL</th>
                         <th class="searching_is_use">사용여부</th>
                         <th>등록자</th>
@@ -65,10 +65,11 @@
                             <td>{{ $row['MenuIdx'] }}</td>
                             <td>{{ $row['MenuTypeName'] }}</td>
                             <td>
-                                <a href="#none" class="btn-regist" data-idx="{{ $row['MenuIdx'] }}" data-menu-depth="{{ $row['MenuDepth'] + 1 }}"><u>{{ str_replace('>', ' > ', $row['MenuRouteName']) }}</u></a></td>
+                                <a href="#none" class="btn-regist" data-idx="{{ $row['MenuIdx'] }}" data-menu-depth="{{ $row['MenuDepth'] + 1 }}"><u>{{ str_replace('>', ' > ', $row['MenuRouteName']) }}</u></a>
+                            </td>
                             <td>
                                 @if($row['MenuDepth'] > 1)
-                                    <i class="fa fa-reply fa-rotate-180 red" style="margin-left: {{ ($row['MenuDepth'] - 1) * 15 }}px;"></i>
+                                    <i class="fa fa-hand-o-right red bold" style="margin-left: {{ ($row['MenuDepth'] - 1) * 20 }}px;"></i>
                                 @endif
                                 <a href="#none" class="btn-modify" data-idx="{{ $row['MenuIdx'] }}"><u>{{ $row['MenuName'] }}</u></a>
                             </td>
@@ -99,6 +100,7 @@
                 searching: true,
                 rowsGroup: ['.rowspan'],
                 buttons: [
+                    { text: '<i class="fa fa-floppy-o mr-5"></i> 수동캐시저장', className: 'btn-sm btn-danger border-radius-reset mr-15 btn-save-cache' },
                     { text: '<i class="fa fa-sort-numeric-asc mr-5"></i> 정렬변경', className: 'btn-sm btn-success border-radius-reset mr-15 btn-reorder' },
                     { text: '<i class="fa fa-pencil mr-5"></i> 최상위 메뉴 등록', className: 'btn-sm btn-primary border-radius-reset btn-regist' }
                 ]
@@ -110,6 +112,23 @@
                     $('#tabs_site_code li:eq(0) > a').trigger('click');
                 }, 0);
             }
+
+            // 수동캐시저장 버튼 클릭
+            $('.btn-save-cache').on('click', function() {
+                if (!confirm('수동으로 사이트 메뉴 캐시를 업데이트하시겠습니까?\n(주의요망 : 전체 사이트 메뉴 캐시가 업데이트 됨)')) {
+                    return;
+                }
+
+                var data = {
+                    '{{ csrf_token_name() }}' : $list_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                    '_method' : 'PUT'
+                };
+                sendAjax('{{ site_url('/site/siteMenu/saveCache') }}', data, function(ret) {
+                    if (ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                    }
+                }, showError, false, 'POST');
+            });
 
             // 순서 변경
             $('.btn-reorder').on('click', function() {

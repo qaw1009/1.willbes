@@ -90,6 +90,34 @@ class SupportBoardFModel extends BaseSupportFModel
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 
+    /**
+     * 캠퍼스별 게시판 목록
+     * @param array $arr_condition
+     * @param int $limit
+     * @return mixed
+     */
+    public function listBoardByCampus($arr_condition = [], $limit = 2)
+    {
+        $column = 'ROW_NUMBER() OVER (PARTITION BY CampusCcd ORDER BY b.IsBest DESC, b.BoardIdx DESC) AS RowNum
+            , b.BoardIdx, b.SiteCode, b.Title, b.IsBest, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') AS RegDatm
+            , CampusCcd';
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $query = /** @lang text */ '
+            select * from (
+                select ' . $column . ' from ' . $this->_table['board'] . $where . '
+            ) U
+            where RowNum < ? 
+            ORDER BY IsBest DESC, BoardIdx DESC';
+
+        // 쿼리 실행
+        $query = $this->_conn->query($query, [$limit + 1]);
+
+        return $query->result_array();
+    }
+
     public function listBoardForProf($is_count, $site_code, $prof_idx, $arr_condition=[], $column = null, $limit = null, $offset = null, $order_by = [])
     {
         if ($is_count === true) {

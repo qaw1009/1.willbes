@@ -76,7 +76,7 @@
                     <div class="col-md-10 form-inline item">
                         <div class="item inline-block">
                             @foreach($packcate_ccd as $key => $val)
-                                <input type="radio" name="PackCateCcd" id="PackCateCcd{{$loop->index}}" value="{{$key}}" title='패키지분류' class="flat" required="required" @if($data['PackCateCcd']==$key) checked="checked"@endif> {{$val}}&nbsp;&nbsp;
+                                <input type="radio" name="PackCateCcd" id="PackCateCcd{{$loop->index}}" value="{{$key}}" title='패키지분류' class="flat" required="required" @if(($method=="POST" && $loop->index == 1) || $data['PackCateCcd']==$key) checked="checked"@endif> {{$val}}&nbsp;&nbsp;
                             @endforeach
                             <input type="text" name="PackCateEtcMemo" id="PackCateEtcMemo"  class="form-control"  style="width: 200px" value="{{$data['PackCateEtcMemo']}}">
                         </div>
@@ -164,7 +164,7 @@
                                                 <option value="R" @if($SaleDiscType == 'R') selected="selected"@endif>%</option>
                                                 <option value="P" @if($SaleDiscType == 'p') selected="selected"@endif>-</option>
                                             </select>&nbsp;
-                                            <input type="number" name="SaleRate[]" id="SaleRate_{{$key}}"  value="{{$SaleRate}}" maxlength="8" class="form-control" onkeyup="priceCheck('{{$key}}')" @if($key=="613001")required="required"@endif title="할인">
+                                            <input type="number" name="SaleRate[]" id="SaleRate_{{$key}}"  value="@if($method=="POST"){{0}}@else{{$SaleRate}}@endif" maxlength="8" class="form-control" onkeyup="priceCheck('{{$key}}')" @if($key=="613001")required="required"@endif title="할인">
                                         &nbsp;&nbsp;
                                         [판매가]
                                     <input type="number" name="RealSalePrice[]" id="RealSalePrice_{{$key}}"  value="{{$RealSalePrice}}" readonly class="form-control" @if($key=="613001")required="required"@endif title="판매가"> 원
@@ -333,7 +333,7 @@
                     <div class="col-md-4 form-inline item">
                         <div class="checkbox">
                             @foreach($vodtype_ccd as $key => $val)
-                            <input type="checkbox" name="PlayerTypeCcds[]" value="{{$key}}" required="required" class="flat" @if( ($method == 'POST' && $loop->index == 1) || (strpos($data['PlayerTypeCcds'],trim($key)) !== false)   )checked="checked"@endif> {{$val}}&nbsp;
+                            <input type="checkbox" name="PlayerTypeCcds[]" value="{{$key}}" required="required" class="flat" @if( ($method == 'POST') || (strpos($data['PlayerTypeCcds'],trim($key)) !== false)   )checked="checked"@endif> {{$val}}&nbsp;
                            &nbsp;@endforeach
                         </div>
                     </div>

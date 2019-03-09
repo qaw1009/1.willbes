@@ -190,7 +190,8 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
             // 등록된 게시판 식별자
             $board_idx = $this->_conn->insert_id();
 
-            if ($board_data['SiteCode'] != config_item('app_intg_site_code')) {
+            /*if ($board_data['SiteCode'] != config_item('app_intg_site_code')) {*/
+            if (empty($board_category_data['site_category']) === false) {
                 $set_board_category_data['BoardIdx'] = $board_idx;
                 $set_board_category_data['CateCode'] = $board_category_data['site_category'];
                 $set_board_category_data['RegMemIdx'] = $this->session->userdata('mem_idx');
@@ -199,9 +200,10 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
                     throw new \Exception('게시판 등록에 실패했습니다.');
                 }
             }
+            /*}*/
 
             $this->load->library('upload');
-            $upload_sub_dir = config_item('upload_prefix_dir') . '/board/' . $board_data['BmIdx'] . '/' . date('Ymd');
+            $upload_sub_dir = config_item('upload_prefix_dir') . '/board/' . $board_data['BmIdx'] . '/' . date('Y') . '/' . date('md');
             $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->getAttachImgNames($board_idx), $upload_sub_dir
                 ,'allowed_types:'.$this->upload_file_rule['allowed_types'].',overwrite:'.$this->upload_file_rule['overwrite'].',max_size:'.$this->upload_file_rule['max_size']);
 
@@ -492,7 +494,7 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
             $ba_idx = $this->_conn->insert_id();
 
             $this->load->library('upload');
-            $upload_sub_dir = config_item('upload_prefix_dir') . '/board/88/' . date('Ymd');
+            $upload_sub_dir = config_item('upload_prefix_dir') . '/board/88/' . date('Y') . '/' . date('md');
             $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->getAttachImgNames($ba_idx), $upload_sub_dir
                 ,'allowed_types:'.$this->upload_file_rule['allowed_types'].',overwrite:'.$this->upload_file_rule['overwrite'].',max_size:'.$this->upload_file_rule['max_size']);
 

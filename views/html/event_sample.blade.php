@@ -23,8 +23,6 @@
 
 </style>
 
-@include('html.event_incOnTnb')
-
     <div class="p_re evtContent">
         <div class="rLnb">
             <ul>

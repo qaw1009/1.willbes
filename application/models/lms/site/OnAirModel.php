@@ -259,7 +259,7 @@ class OnAirModel extends WB_Model
             }
 
             // 파일저장
-            $upload_dir = config_item('upload_prefix_dir') . '/onAir/' . date('Ymd');
+            $upload_dir = config_item('upload_prefix_dir') . '/onAir/' . date('Y') . '/' . date('md');
             $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->_getAttachImgNames(2), $upload_dir);
             if (is_array($uploaded) === false) {
                 throw new \Exception($uploaded);
@@ -399,7 +399,7 @@ class OnAirModel extends WB_Model
             // 파일 삭제/저장
             $this->load->library('upload');
             $this->load->helper('file');
-            $upload_dir = config_item('upload_prefix_dir') . '/onAir/' . date('Ymd');
+            $upload_dir = config_item('upload_prefix_dir') . '/onAir/' . date('Y') . '/' . date('md');
             if ($_FILES['attach_file']['size'][0] > 0) {
                 if (empty($row['LeftFileName']) === false) {
                     $file_path = $row['LeftFileFullPath'].$row['LeftFileName'];

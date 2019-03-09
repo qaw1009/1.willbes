@@ -94,7 +94,7 @@
                 return;
             }
 
-            if (confirm('해당 강좌를 방문결제 접수하시겠습니까?')) {
+            if (confirm('방문접수를 신청하시겠습니까?')) {
                 var url = '{{ front_url('/order/visit') }}';
                 ajaxSubmit($regi_visit_form, url, function(ret) {
                     if(ret.ret_cd) {

@@ -109,7 +109,7 @@
                     </li>
                     <li>
                         <a href="#tab2">
-                            신의 법칙! 주만에 1회독?
+                            신의 법칙! 2주만에 1회독?
                             <span>신광은경찰TV</span>
                         </a>
                     </li>
@@ -295,6 +295,7 @@
             </div>
 
             <div class="widthAuto CurriStepBox">
+                <div class="CurriView"><a href="#none">커리큘럼 자세히보기 &gt;</a></div>
                 <ul class="CurriStep">
                     <li class="active">                        
                         <div class="curriculumBox">
@@ -420,8 +421,10 @@
         </div>
     </div>
 
-    <div class="Section Section4 pt100 pb90">
+    <div class="Section Section4">
         <div class="widthAuto">  
+        <img src="{{ img_url('cop/visual/visual_03.jpg') }}" alt="합격수기">
+            <!--
             <div class="widthAuto smallTit smallTit2">          
                 <p><span>진짜 살아있는 정보를 알 수 있는 <strong>합격수기!</strong></span></p>            
             </div>          
@@ -578,6 +581,7 @@
                     </div>
                 </div>
             </div>
+            -->
         </div>
     </div>
 
@@ -708,7 +712,7 @@
                                     <a href="#none">
                                         <div class="imgBox cover">
                                             <img class="coverImg" src="{{ img_url('cop/prof_cover.png') }}">
-                                            <img src="{{ img_url('sample/prof10_4.jpg') }}">
+                                            <img src="{{ img_url('cop/prof/tea_list_1_kmj_104x104.png') }}">
                                         </div>
                                         <div class="infoBox">
                                             <div class="infoTit">경찰영어 하승민</div>
@@ -723,7 +727,7 @@
                                     <a href="#none">
                                         <div class="imgBox cover">
                                             <img class="coverImg" src="{{ img_url('cop/prof_cover.png') }}">
-                                            <img src="{{ img_url('sample/prof10_3.jpg') }}">
+                                            <img src="{{ img_url('cop/prof/tea_list_1_kmj_104x104.png') }}">
                                         </div>
                                         <div class="infoBox">
                                             <div class="infoTit">경찰학개론 장정훈</div>
@@ -740,7 +744,7 @@
                                     <a href="#none">
                                         <div class="imgBox cover">
                                             <img class="coverImg" src="{{ img_url('cop/prof_cover.png') }}">
-                                            <img src="{{ img_url('sample/prof10_2.jpg') }}">
+                                            <img src="{{ img_url('cop/prof/tea_list_1_kmj_104x104.png') }}">
                                         </div>
                                         <div class="infoBox">
                                             <div class="infoTit">한국사 오태진</div>
@@ -755,7 +759,7 @@
                                     <a href="#none">
                                         <div class="imgBox cover">
                                             <img class="coverImg" src="{{ img_url('cop/prof_cover.png') }}">
-                                            <img src="{{ img_url('sample/prof10_1.jpg') }}">
+                                            <img src="{{ img_url('cop/prof/tea_list_1_kmj_104x104.png') }}">
                                         </div>
                                         <div class="infoBox">
                                             <div class="infoTit">한국사 원유철</div>
@@ -779,7 +783,7 @@
                                     <a href="#none">
                                         <div class="imgBox cover">
                                             <img class="coverImg" src="{{ img_url('cop/prof_cover.png') }}">
-                                            <img src="{{ img_url('sample/prof10_2.jpg') }}">
+                                            <img src="{{ img_url('cop/prof/tea_list_1_kmj_104x104.png') }}">
                                         </div>
                                         <div class="infoBox">
                                             <div class="infoTit">한국사 오태진</div>
@@ -795,7 +799,7 @@
                                     <a href="#none">
                                         <div class="imgBox cover">
                                             <img class="coverImg" src="{{ img_url('cop/prof_cover.png') }}">
-                                            <img src="{{ img_url('sample/prof10_1.jpg') }}">
+                                            <img src="{{ img_url('cop/prof/tea_list_1_kmj_104x104.png') }}">
                                         </div>
                                         <div class="infoBox">
                                             <div class="infoTit">한국사 원유철</div>
@@ -813,7 +817,7 @@
                                     <a href="#none">
                                         <div class="imgBox cover">
                                             <img class="coverImg" src="{{ img_url('cop/prof_cover.png') }}">
-                                            <img src="{{ img_url('sample/prof10_4.jpg') }}">
+                                            <img src="{{ img_url('cop/prof/tea_list_1_kmj_104x104.png') }}">
                                         </div>
                                         <div class="infoBox">
                                             <div class="infoTit">경찰영어 하승민</div>
@@ -829,7 +833,7 @@
                                     <a href="#none">
                                         <div class="imgBox cover">
                                             <img class="coverImg" src="{{ img_url('cop/prof_cover.png') }}">
-                                            <img src="{{ img_url('sample/prof10_3.jpg') }}">
+                                            <img src="{{ img_url('cop/prof/tea_list_1_kmj_104x104.png') }}">
                                         </div>
                                         <div class="infoBox">
                                             <div class="infoTit">경찰학개론 장정훈</div>

@@ -3,8 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class BasePromotion extends \app\controllers\FrontController
 {
-    protected $models = array('eventF');
-    protected $helpers = array();
+    protected $models = array('eventF','downloadF','cert/certApplyF');
+    protected $helpers = array('download');
     protected $_paging_limit = 5;
     protected $_paging_count = 10;
 
@@ -21,6 +21,10 @@ class BasePromotion extends \app\controllers\FrontController
 
         $test_type = (int)element('type', $this->_reqG(null), '0');
         $promotion_code = (int)$params['code'];
+
+        //인증식별자
+        //$cert_idx = element('cert', $this->_reqG(null), '');
+
         $data = $this->eventFModel->findEventForPromotion($promotion_code, $test_type);
 
         if (empty($data) === true) {
@@ -42,14 +46,38 @@ class BasePromotion extends \app\controllers\FrontController
         $arr_base['option_ccd'] = $this->eventFModel->_ccd['option'];
         $arr_base['comment_use_area'] = $this->eventFModel->_comment_use_area_type;
 
+        // 프로모션 추가 파라미터 배열처리
+        $arr_promotion_params = [];
+        if (empty($data['PromotionParams']) === false) {
+            $temp_params = explode('&', $data['PromotionParams']);
+
+            if (empty($temp_params) === false) {
+                foreach ($temp_params as $key => $val) {
+                    $arr_temp_params = explode('=', $val);
+                    if (empty($arr_temp_params) === false && count($arr_temp_params) > 1) {
+                        $arr_promotion_params[$arr_temp_params[0]] = $arr_temp_params[1];
+                    }
+                }
+            }
+        }
+
         // 댓글사용영역 데이터 가공처리
         $data['data_option_ccd'] = array_flip(explode(',', $data['OptionCcds']));   // 관리옵션 데이터 가공처리
         $data['data_comment_use_area'] = array_flip(explode(',', $data['CommentUseArea']));   // 댓글사용영역 데이터 가공처리
 
+        // 인증여부 추출
+        $apply_result = null;
+        //인증 파람값이 존재한다면
+        if(empty($arr_promotion_params['cert']) === false && empty($this->session->userdata('mem_idx')) === false) {
+            $apply_result = $this->certApplyFModel->findApplyByCertIdx($arr_promotion_params['cert'])['CaIdx'];
+        }
+
         $view_file = 'willbes/pc/promotion/'.$this->_site_code.'/'.$promotion_code;
         $this->load->view($view_file, [
             'arr_base' => $arr_base,
-            'data' => $data
+            'data' => $data,
+            'cert_apply'=>$apply_result,
+            'arr_promotion_params' => $arr_promotion_params
         ],false);
     }
 
@@ -143,5 +171,15 @@ class BasePromotion extends \app\controllers\FrontController
             $result = $this->eventFModel->delEventComment($comment_idx);
         }
         $this->json_result($result, '삭제되었습니다.', $result);
+    }
+
+    public function download()
+    {
+        $file_path = $this->_reqG('path');
+        $file_name = $this->_reqG('fname');
+
+        public_download($file_path, $file_name);
+
+        show_alert('등록된 파일을 찾지 못했습니다.','close','');
     }
 }

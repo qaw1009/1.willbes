@@ -199,7 +199,7 @@ class BoardAssignmentModel extends BoardModel
 
             //파일저장
             $this->load->library('upload');
-            $upload_sub_dir = config_item('upload_prefix_dir') . '/board/' . $data['bm_idx'] . '/' . date('Ymd');
+            $upload_sub_dir = config_item('upload_prefix_dir') . '/board/' . $data['bm_idx'] . '/' . date('Y') . '/' . date('md');
 
             $uploaded = $this->upload->uploadFile('file', ['attach_file'], $this->_getAttachImgNames($ba_idx), $upload_sub_dir);
             if (is_array($uploaded) === false) {

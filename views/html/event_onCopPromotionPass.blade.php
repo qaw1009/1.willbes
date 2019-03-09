@@ -272,12 +272,6 @@
                 $( '.skybanner' ).removeClass( 'skybanner_sectionFixed' );
               }
             });
-          } );
-
-        $(document).ready(function() {
-            $('.skybanner').onePageNav({
-                currentClass: 'hvr-shutter-out-horizontal_active'
-            });
-        });       
+          } );       
     </script>
 @stop

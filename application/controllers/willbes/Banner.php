@@ -64,7 +64,8 @@ class Banner extends \app\controllers\BaseController
         return $this->load->view('common/banner', [
             'disp' => $disp_data,
             'data' => $data,
-            'css_class' => $arr_input['css_class']
+            'css_class' => $arr_input['css_class'],
+            'set_class' => $arr_input['set_class']
         ]);
     }
 
@@ -75,12 +76,15 @@ class Banner extends \app\controllers\BaseController
     {
         $banner_idx = $this->_reqG('banner_idx');
         $return_url = $this->_reqG('return_url');
+        $link_url_type = $this->_reqG('link_url_type'); //외부, 내부 링크 타입
 
         if(empty($banner_idx) === false && is_numeric($banner_idx) === true && empty($return_url) === false) {
             // 접속로그 저장
             $this->accessFModel->saveLog('banner', $banner_idx);
 
-            $return_url = '//' . (strpos($return_url, config_item('base_domain')) === false ? $return_url : app_to_env_url($return_url));
+            if (empty($link_url_type) === true || $link_url_type == 'I') {
+                $return_url = '//' . (strpos($return_url, config_item('base_domain')) === false ? $return_url : app_to_env_url($return_url));
+            }
             redirect($return_url);
         } else {
             redirect(app_url('/home/index', 'www'));

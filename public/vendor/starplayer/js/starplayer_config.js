@@ -13,8 +13,8 @@ var STARPLAYER_AGENT_SETUP_URL = "http://cab.starplayer.skcdn.com/starplayer/sta
 var STARPLAYER_AGENT_VERSION = "1,1,3,41";
 
 //OSX
-var STARPLAYER_OSX_SETUP_URL = "http://cab.starplayer.skcdn.com/starplayer/StarPlayerAgent_1_0_0_6.pkg";
-var STARPLAYER_OSX_VERSION = "1,0,0,6";
+var STARPLAYER_OSX_SETUP_URL = "http://cab.starplayer.skcdn.com/starplayer/StarPlayerAgent_1.0.0.8.pkg";
+var STARPLAYER_OSX_VERSION = "1,0,0,8";
 
 //CONFIG
 var STARPLAYER_CONFIG_URL = "http://mgt.hd.willbes.gscdn.com/config/starplayer.txt";

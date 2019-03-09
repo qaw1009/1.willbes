@@ -50,7 +50,7 @@
             }
         }
         
-        .wb_pop2 {background:#252525 url(http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190207_01_bg.jpg) no-repeat center top}
+        .wb_pop2 {background:#252525 url(http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190307_01_bg.jpg) no-repeat center top}
         .wb_pop2 .wb_popWrap2 {width:1210px; margin:0 auto; position:relative}
         .wb_pop2 .wb_popWrap2 div {position:absolute; width:980px; top:230px; left:50%; margin-left:-490px; z-index:1}
         
@@ -65,7 +65,7 @@
         .wb_top .passLecBuy li:nth-child(2) {width:232px; padding-left:60px}
         .wb_top .passLecBuy li:nth-child(3) {width:400px; padding-left:140px}		
         .wb_top .passLecBuy li div {margin:30px 0 0 0; font-size:20px; font-weight:bold; background:#000; color:#fff; text-align:center; padding:16px 0; border-radius:0 40px 40px 40px}
-        .wb_top .passLecBuy li:last-child div {background:#7316c2;} /*평생0원PASS가격배경컬러변경*/
+        .wb_top .passLecBuy li:last-child div {background:#008766;} /*평생0원PASS가격배경컬러변경*/
         .wb_top .passLecBuy li:last-child p {font-weight:bold; font-size:20px}
         .wb_top strong {font-family:Verdana, Geneva, sans-serif; font-size:30px}
         .wb_top .passLecBuy ul:after {content:""; display:block; clear:both}
@@ -206,7 +206,7 @@
                 <ul>
                     <li>
                     <span>윌비스신광은경찰 PASS</span><br />
-                    <span style="line-height:40px;font-size:22pt;color:#000">2019-64기</span>
+                    <span style="line-height:40px;font-size:22pt;color:#000">2019-68기</span>
                     </li>
                     <li><img id="dd1" src="http://file.willbes.net/new_image/0.png" /></li>
                     <li><img id="dd2" src="http://file.willbes.net/new_image/0.png" /></li>
@@ -221,7 +221,7 @@
                     <li><img id="ss2" src="http://file.willbes.net/new_image/0.png" /></li>
                     <li>
                     <a href="#pass" target="_self">수강하기 &gt;</a><br />
-                    <span style="line-height:40px;">2.20(수) 24:00 마감!</span>
+                    <span style="line-height:40px;">3.13(수) 24:00 마감!</span>
                     </li>
                 </ul>
             </div>
@@ -229,7 +229,7 @@
         <!--타이머//-->
         
 		<div class="evtCtnsBox wb_pop2" id="main">
-            <img src="http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190207_01.png"  alt="평생0원 PASS 마감" usemap="#rebound"/>
+            <img src="http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190307_01.png"  alt="평생0원 PASS 마감" usemap="#rebound"/>
             <map name="rebound" id="rebound">
             <area shape="rect" coords="300,837,475,884" href="event_onCopReboundPop" target="_blank" alt="수강생인증"/>
             <area shape="rect" coords="500,837,675,884" href="javascript:goDesc('tab3')" alt="이용안내"/>
@@ -272,8 +272,8 @@
                     <input type="checkbox" id="j_pkg" name="j_pkg" value="Y" onClick="fn_cal('j1')"/>
                     <label for="j_pkg">&lt; 경찰체력패키지를 수강하실 경우 체크하세요.</label>
                 </span>
-                <img src="http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190207_03_re1.jpg"  alt="신광은경찰PASS 수강료"/ usemap="#Map190123"><br />
-                <img src="http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190207_03_re2.jpg"  alt="체력" usemap="#Map190117A" border="0"/>
+                <img src="http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190307_03_re1.jpg"  alt="신광은경찰PASS 수강료"/ usemap="#Map190123"><br />
+                <img src="http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190307_03_re2.jpg"  alt="체력" usemap="#Map190117A" border="0"/>
                 <map name="Map190123" id="Map190123">
                 <area shape="rect" coords="220,545,285,564" href="javascript:go_popup()" alt="6개월과목" />
                 <area shape="rect" coords="483,545,546,564" href="javascript:go_popup()" alt="12개월과목" />
@@ -673,7 +673,7 @@
         
             function daycountDown() {
                 // 한달 전 날짜로 셋팅 
-                event_day = new Date(2019,2,21,23,59,59);
+                event_day = new Date(2019,2,13,23,59,59);
                 now = new Date();
                 var timeGap = new Date(0, 0, 0, 0, 0, 0, (event_day - now)); 
                 
@@ -734,13 +734,7 @@
                 $( '.skybanner' ).removeClass( 'skybanner_sectionFixed' );
               }
             });
-          } );
-
-        $(document).ready(function() {
-            $('.skybanner').onePageNav({
-                currentClass: 'hvr-shutter-out-horizontal_active'
-            });
-        });       
+          } );      
     </script>
 
 @stop

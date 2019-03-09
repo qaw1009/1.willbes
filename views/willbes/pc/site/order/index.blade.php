@@ -173,6 +173,11 @@
                             • {{ $results['point_type_name'] }} 포인트는 <span class="tx-light-blue">{{ number_format(config_item('use_min_point')) }}P</span> 부터
                             <span class="tx-light-blue">{{ config_item('use_point_unit') }}P</span> 단위로 <!--사용 가능하며,
                             주문금액의 <span class="tx-light-blue">{{ config_item('use_max_point_rate') }}%</span>까지만--> 사용 가능합니다.
+                            @if($cart_type == 'book')
+                                {{-- 교재상품 구매일 경우 배송료 안내문구 노출 --}}
+                                ({{ number_format(config_app('DeliveryFreePrice')) }}원 이상 교재 구매 시 무료 배송)
+                            @endif
+                            <p class="pt10">• 포인트를 사용하여 결제할 경우 포인트가 적립되지 않습니다.</p>
                         </div>
                     @endif
                 </div>
@@ -474,9 +479,8 @@
             <div id="MockExam" class="willbes-Layer-PassBox willbes-Layer-PassBox740 abs"></div>
             <!-- willbes-Layer-CartBox : 모의고사 응시정보 -->
         </div>
-        <div class="Quick-Bnr ml20 mt85">
-            {!! banner('강좌상품_우측날개', '', $__cfg['SiteCode'], '0') !!}
-        </div>
+        {!! banner('결제_우측퀵', 'Quick-Bnr ml20 mt85', $__cfg['SiteCode'], '0') !!}
+
     </div>
     <!-- End Container -->
     <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>

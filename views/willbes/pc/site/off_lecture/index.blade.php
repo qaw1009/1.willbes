@@ -130,12 +130,18 @@
         <!-- curriWrap -->
 
         <div class="willbes-Bnr">
-            {!! banner('단과_중단') !!}
+            {!! banner('수강신청_단과_중단') !!}
         </div>
         <!-- willbes-Bnr -->
 
         <div class="willbes-Lec-Search p_re">
             <div class="inputBox p_re">
+                <div class="selectBox">
+                    <select id="search_order" name="search_order" class="" onchange="goUrl('search_order', this.value);">
+                        <option value="regist" @if(element('search_order', $arr_input) == 'regist') selected="selected" @endif>최근등록순</option>
+                        <option value="course" @if(element('search_order', $arr_input) == 'course') selected="selected" @endif>과정순</option>
+                    </select>
+                </div>
                 @php $arr_search_text = explode(':', base64_decode(element('search_text', $arr_input)), 2) @endphp
                 <div class="selectBox">
                     <select id="search_keyword" name="search_keyword" title="직접입력" class="">
@@ -238,6 +244,12 @@
                 <div class="willbes-Lec-Line mt20">-</div>
                 <!-- willbes-Lec-Line -->
 
+                {{-- 상품 리스트 loop --}}
+                @if(element('search_order', $arr_input) == 'course')
+                    {{-- 정렬방식이 과정순일 경우 배열키 (OrderNumCourse + ProdCode) 순으로 재정렬 --}}
+                    @php ksort($data['list'][$subject_idx]); @endphp
+                @endif
+
                 @foreach($data['list'][$subject_idx] as $idx => $row)
                     <a name="{{ $row['ProdCode'] }}"></a>
                     <div class="willbes-Lec-Table">
@@ -285,7 +297,11 @@
                                                 </div>
                                             @endforeach                                        
                                         @endif
-                                        <div class="visitBuy"><a href="#none">방문결제</a></div>  
+
+                                        {{-- 방문결제 버튼 --}}
+                                        @if($row['StudyApplyCcd'] != '654002')
+                                            <div class="visitBuy"><a href="#none" class="btn-off-visit-pay" data-prod-code="{{ $row['ProdCode'] . ':' . $price_row['SaleTypeCcd'] . ':' . $row['ProdCode'] }}">방문결제</a></div>
+                                        @endif
                                     </td>
                                 </tr>
                             </tbody>
@@ -329,9 +345,8 @@
         {{-- footer script --}}
         @include('willbes.pc.site.off_lecture.only_footer_partial')
     </div>
-    <div class="Quick-Bnr ml20">
-        {!! banner('강좌상품_우측날개', '', $__cfg['SiteCode'], '0') !!}
-    </div>
+    {!! banner('수강신청_우측퀵', 'Quick-Bnr ml20', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
+
 </div>
 {!! popup('657002') !!}
 <!-- End Container -->

@@ -19,7 +19,7 @@
                         <div class="ProfImg">
                             <img src="{{ $lec['ProfReferData']['lec_list_img'] or '' }}">
                         </div>
-                        <div class="prof-home subBtn NSK"><a target="_blank" href="//{{app_to_env_url($lec['SiteUrl'])}}/professor/show/cate/{{$lec['CateCode']}}/prof-idx/{{$lec['ProfIdx']}}/?subject_idx={{$lec['SubjectIdx']}}&subject_name={{rawurlencode($lec['SubjectName'])}}"><img src="/public/img/willbes/sub/icon_profhome.gif" style="margin-top: -4px; margin-right: 4px">교수홈</a></div>
+                        <div class="prof-home subBtn NSK"><a target="_blank" href="//{{$lec['SiteUrl']}}/professor/show/cate/{{$lec['CateCode']}}/prof-idx/{{$lec['ProfIdx']}}/?subject_idx={{$lec['SubjectIdx']}}&subject_name={{rawurlencode($lec['SubjectName'])}}"><img src="/public/img/willbes/sub/icon_profhome.gif" style="margin-top: -4px; margin-right: 4px">교수홈</a></div>
                     </div>
                     <div class="lec-profile p_re">
                         <div class="w-tit">{{$lec['subProdName']}}</div>
@@ -97,13 +97,13 @@
                     <table cellspacing="0" cellpadding="0" class="listTable upper-black under-gray tx-gray">
                         <colgroup>
                             <col style="width: 80px;">
-                            <col style="width: 200px;">
+                            <col style="width: 380px;">
                             <col style="width: 90px;">
-                            <col style="width: 90px;">
+                            <col style="width: 50px;">
+                            <col style="width: 80px;">
+                            <col style="width: 70px;">
                             <col style="width: 120px;">
-                            <col style="width: 100px;">
-                            <col style="width: 155px;">
-                            <col style="width: 105px;">
+                            <col style="width: 70px;">
                         </colgroup>
                         <thead>
                         <tr>
@@ -121,7 +121,7 @@
                         @forelse($curriculum as $row)
                             <tr>
                                 <td class="w-no">{{$row['wUnitNum']}}회 {{$row['wUnitLectureNum']}}강</td>
-                                <td class="w-lec">{{$row['wUnitName']}}</td>
+                                <td class="w-lec tx-left">{{$row['wUnitName']}}</td>
                                 <td class="w-page">{{$row['wBookPage']}}</td>
                                 <td class="w-file">
                                     @if(empty($row['wUnitAttachFile']) == false)
@@ -169,7 +169,7 @@
             @endif
 
         </div>
-        {!! banner('내강의실_우측날개', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
+        {!! banner('내강의실_우측퀵', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
     </div>
 
     <!-- End Container -->

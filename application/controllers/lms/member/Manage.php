@@ -65,10 +65,10 @@ class Manage extends \app\controllers\BaseController
                 ]
             ],
             'EQ' => [
-                'Mem.IsChange' => $this->_reqP('IsChange'), // 회원통합 여부
-                'Info.SmsRcvStatus' => $this->_reqP('SmsRcv'), // sms 수신여부
-                'Info.MailRcvStatus' => $this->_reqP('MailRcv'), // 메일 수신여부
-                'Mem.IsBlackList' => $this->_reqp('IsBlackList') // 블랙리스트 여부
+                'Mem.IsChange' => $this->_req('IsChange'), // 회원통합 여부
+                'Info.SmsRcvStatus' => $this->_req('SmsRcv'), // sms 수신여부
+                'Info.MailRcvStatus' => $this->_req('MailRcv'), // 메일 수신여부
+                'Mem.IsBlackList' => $this->_req('IsBlackList') // 블랙리스트 여부
             ]
         ];
 
@@ -78,9 +78,9 @@ class Manage extends \app\controllers\BaseController
         ];
 
         // 날짜검색 쿼리생성
-        $search_condition = $this->_reqP('search_condition');
-        $search_sdate = $this->_reqP('search_start_date');
-        $search_edate = $this->_reqP('search_end_date');
+        $search_condition = $this->_req('search_condition');
+        $search_sdate = $this->_req('search_start_date');
+        $search_edate = $this->_req('search_end_date');
         if($search_sdate != '' && $search_edate != ''){
             switch($search_condition){
                 case 'joindate':
@@ -117,48 +117,54 @@ class Manage extends \app\controllers\BaseController
 
                 case 'outdate':
                     $inQuery .= "
-                    INNER JOIN (
+                    AND Mem.IsStatus = 'N'
+                    AND Mem.MemIdx IN (
                         SELECT memIdx FROM lms_Member_Out_Log 
                         WHERE OutDatm >= '{$search_sdate} 00:00:00' AND OutDatm <= '{$search_edate} 23:59:59'
-                    ) AS tempA ON tempA.memIdx = Mem.MemIdx ";
+                    )";
                     break;
             }
         }
 
         // 탈퇴회원쿼리
-        if($this->_reqP('IsOut') == 'Y' && $search_condition != 'outdate'){
+        if($this->_req('IsOut') == 'Y' && $search_condition != 'outdate'){
             $inQuery .= "
-            INNER JOIN lms_Member_Out_Log AS outMem2 ON outMem2.memIdx = Mem.memIdx ";
+                    AND Mem.IsStatus = 'N'
+                    AND Mem.MemIdx IN (
+                        SELECT memIdx FROM lms_Member_Out_Log 
+                    )";
         }
 
         // 비번 6개월이상 미변경 회원
-        if($this->_reqP('NoChangePwd') == 'Y'){
+        if($this->_req('NoChangePwd') == 'Y'){
             $arr_condition += [
                 'LTE' => ['Mem.LastPassModyDatm' => date("Y-m-d H:m:s", strtotime("-6 month"))]
             ];
         }
 
         // 휴면회원 1년이상 미로그인 회원
-        if($this->_reqP('IsSleep') == 'Y'){
+        if($this->_req('IsSleep') == 'Y'){
             $arr_condition += [
-                'LTE' => ['Mem.LastLoginDatm' => '']
+                'LTE' => ['Mem.LastLoginDatm' => date("Y-m-d H:m:s", strtotime("-12 month"))]
             ];
         }
 
         // 기기등록회원
-        if($this->_reqP('IsRegDevice') == 'Y' ){
-            //$inQuery .= "
-            //INNER JOIN lms_Member_Out_Log AS outMem2 ON outMem2.memIdx = Mem.memIdx ";
+        if($this->_req('IsRegDevice') == 'Y' ){
+            $inQuery .= "
+                    AND Mem.MemIdx IN (
+                        SELECT memIdx FROM lms_member_device 
+                    )";
         }
 
         // 갯수 구해오기
         $count = $this->manageMemberModel->list(true, $arr_condition,
-            $this->_reqP('length'), $this->_reqP('start'), $orderby, $inQuery);
+            $this->_req('length'), $this->_req('start'), $orderby, $inQuery);
 
         // 갯수가 1개 이상일 경우 데이타 구해오기
         if($count > 0){
             $list = $this->manageMemberModel->list(false, $arr_condition,
-                $this->_reqP('length'), $this->_reqP('start'), $orderby, $inQuery);
+                $this->_req('length'), $this->_req('start'), $orderby, $inQuery);
         }
 
         return $this->response([
@@ -199,6 +205,38 @@ class Manage extends \app\controllers\BaseController
         }
 
         $this->load->view('member/manage/view', [
+            'viewtype' => $viewType,
+            'data' => $data
+        ]);
+    }
+
+    public function detail_popup($params = [])
+    {
+        $memIdx = null;
+        $viewType = null;
+        $data = [];
+
+        if (empty($params[1]) === false) {
+            $viewType = $params[1];
+        }
+
+        if (empty($params[0]) === false) {
+            $memIdx = $params[0]; //회원번호
+
+            if(is_numeric($memIdx) == true){
+                $data = $this->manageMemberModel->getMember($memIdx);
+            } else {
+                show_alert('파라미터가 정확하기 않습니다.','close');
+            }
+        } else {
+            show_alert('파라미터가 정확하기 않습니다.','close');
+        }
+
+        if(empty($data) == true){
+            show_alert('회원검색에 실패했습니다.','close');
+        }
+
+        $this->load->view('member/manage/view_popup', [
             'viewtype' => $viewType,
             'data' => $data
         ]);
@@ -699,6 +737,68 @@ class Manage extends \app\controllers\BaseController
                 'wUnitIdx' => $wUnitIdxs
             ]
         ]);
+
+        // 회차별 수강시간 체크
+        foreach($curriculum AS $idx => $row){
+            if(empty($lec['MultipleApply']) == true){
+                // 무제한
+                $curriculum[$idx]['timeover'] = 'N';
+                $curriculum[$idx]['limittime'] = '무제한';
+                $curriculum[$idx]['remaintime'] = '무제한';
+            }
+            else if($lec['MultipleApply'] == '1'){
+                // 무제한
+                $curriculum[$idx]['timeover'] = 'N';
+                $curriculum[$idx]['limittime'] = '무제한';
+                $curriculum[$idx]['remaintime'] = '무제한';
+
+            } elseif($lec['MultipleTypeCcd'] == '612001') {
+                // 회차별 수강시간 체크
+
+                // 수강시간은 초
+                $studytime = intval($row['RealStudyTime']);
+
+                // 제한시간 분 -> 초
+                if($row['RealExpireTime'] == 0){
+                    $limittime = intval($row['wRuntime']) * intval($lec['MultipleApply']) * 60;
+                } else {
+                    $limittime = intval($row['RealExpireTime']);
+                }
+
+                if($studytime > $limittime){
+                    // 제한시간 초과
+                    $curriculum[$idx]['timeover'] = 'Y';
+                    $curriculum[$idx]['limittime'] = round(intval($limittime) / 60).'분';
+                    $curriculum[$idx]['remaintime'] = '0분';
+
+                } else {
+                    $curriculum[$idx]['timeover'] = 'N';
+                    $curriculum[$idx]['limittime'] = round(intval($limittime) / 60).'분';
+                    $curriculum[$idx]['remaintime'] = round(($limittime - $studytime)/60).'분';
+                }
+
+            } elseif($lec['MultipleTypeCcd'] == '612002') {
+                // 패키치 수강시간 체크
+
+                // 수강시간은 초
+                $studytime = intval($lec['StudyTimeSum']);
+
+                // 제한시간 분 -> 초
+                $limittime = intval($lec['RealExpireTime']) * 60;
+
+                if($studytime > $limittime){
+                    // 제한시간 초과
+                    $curriculum[$idx]['timeover'] = 'Y';
+                    $curriculum[$idx]['limittime'] = round(intval($limittime) / 60).'분';
+                    $curriculum[$idx]['remaintime'] = '0분';
+
+                } else {
+                    $curriculum[$idx]['timeover'] = 'N';
+                    $curriculum[$idx]['limittime'] = round(intval($limittime) / 60).'분';
+                    $curriculum[$idx]['remaintime'] = round(($limittime - $studytime)/60).'분';
+                }
+            }
+        }
 
         $this->load->view('member/layer/lecture/curriculum',[
             'member' => $member,
@@ -1975,6 +2075,44 @@ class Manage extends \app\controllers\BaseController
 
         // 실제로 파일 다운로드 처리
         public_download($filepath, $filename);
+    }
+
+
+    public function setRate()
+    {
+        $memidx = $this->_req('memidx');
+        $orderidx = $this->_req('orderidx');
+        $prodcode = $this->_req('prodcode');
+        $prodcodesub = $this->_req('prodcodesub');
+        $rate = $this->_req('rate');
+
+        if(is_numeric($rate) == false){
+            return $this->json_error('진도율은 0~100 사이의 숫자로 입력해주십시요.'.$rate);
+        }
+
+        if($rate < 0) {
+            $rate = 0;
+        } else if($rate > 100) {
+            $rate = 100;
+        }
+
+        if($this->manageLectureModel->setRate([
+                'MemIdx' => $memidx,
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub,
+                'Rate' => $rate
+            ]) == false){
+            return $this->json_error('진도율 변경에 실패했습니다.');
+        }
+
+        return $this->json_result(true, '진도율이 변경되었습니다.');
+    }
+
+
+    public function setViewtime()
+    {
+
     }
 
 }

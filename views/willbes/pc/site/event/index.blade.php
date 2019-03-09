@@ -102,13 +102,7 @@
             </div>
         </div>
     </div>
-
-    <!--
-    TODO : 배너섹션 등록 후 설정 필요
-    -->
-    <div class="Quick-Bnr ml20">
-        {!! banner('이벤트_우측', '', $__cfg['SiteCode'], '0') !!}
-    </div>
+    {!! banner('이벤트_우측퀵', 'Quick-Bnr ml20', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
 </div>
 <!-- End Container -->
 @stop

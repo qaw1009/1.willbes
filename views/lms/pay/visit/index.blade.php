@@ -11,6 +11,12 @@
                 <div class="form-group">
                     <label class="control-label col-md-1">결제기본정보</label>
                     <div class="col-md-11 form-inline">
+                        <select class="form-control mr-10" id="search_pay_route_ccd" name="search_pay_route_ccd">
+                            <option value="">결제루트</option>
+                            @foreach($arr_pay_route_ccd as $key => $val)
+                                <option value="{{ $key }}">{{ $val }}</option>
+                            @endforeach
+                        </select>
                         <select class="form-control mr-10" id="search_pay_method_ccd" name="search_pay_method_ccd">
                             <option value="">결제수단</option>
                         @foreach($arr_pay_method_ccd as $key => $val)
@@ -101,12 +107,15 @@
                     <th rowspan="2" class="valign-middle">No</th>
                     <th rowspan="2" class="rowspan valign-middle">주문번호</th>
                     <th rowspan="2" class="rowspan valign-middle">회원정보</th>
+                    <th rowspan="2" class="rowspan valign-middle">결제채널</th>
+                    <th rowspan="2" class="rowspan valign-middle">결제루트</th>
                     <th rowspan="2" class="rowspan valign-middle">결제수단</th>
                     <th rowspan="2" class="rowspan valign-middle">결제완료일<br/>(접수신청일)</th>
-                    <th colspan="6">상품구분별정보</th>
+                    <th colspan="7">상품구분별정보</th>
                 </tr>
                 <tr class="bg-odd">
                     <th>상품구분</th>
+                    <th>캠퍼스</th>
                     <th>상품명</th>
                     <th>결제금액</th>
                     <th>환불금액</th>
@@ -156,7 +165,7 @@
                         var t_html = '<strong>[총 실결제금액] <span class="blue">' + addComma(t_real_pay_price) + '</span>'
                             + '<span class="red pl-20">[총 환불금액] ' + addComma(t_refund_price) + '</span> = [남은금액] ' + addComma(t_remain_price) + '</strong>';
 
-                        return $('<tr class="bg-odd"><td colspan="6"></td><td colspan="6">' + t_html + '</td></tr>');
+                        return $('<tr class="bg-odd"><td colspan="8"></td><td colspan="7">' + t_html + '</td></tr>');
                     },
                     dataSrc : 'OrderIdx'
                 },
@@ -174,6 +183,8 @@
                     {'data' : 'MemName', 'render' : function(data, type, row, meta) {
                         return data + '(' + row.MemId + ')<br/>' + row.MemPhone;
                     }},
+                    {'data' : 'PayChannelCcdName'},
+                    {'data' : 'PayRouteCcdName'},
                     {'data' : 'PayMethodCcdName'},
                     {'data' : 'CompleteDatm', 'render' : function(data, type, row, meta) {
                         return data !== null ? data : '' + '(' + row.OrderDatm + ')';
@@ -181,6 +192,7 @@
                     {'data' : 'ProdTypeCcdName', 'render' : function(data, type, row, meta) {
                         return data + (row.SalePatternCcdName !== '' ? '<br/>(' + row.SalePatternCcdName + ')' : '');
                     }},
+                    {'data' : 'CampusCcdName'},
                     {'data' : 'ProdName', 'render' : function(data, type, row, meta) {
                         return '<span class="blue no-line-height">[' + (row.LearnPatternCcdName !== null ? row.LearnPatternCcdName : row.ProdTypeCcdName) + ']</span> ' + data;
                     }},

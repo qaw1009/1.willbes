@@ -191,14 +191,17 @@ if (!function_exists('form_errors')) {
 if (!function_exists('front_url')) {
     /**
      * site_url 대체 헬퍼 (모바일 사이트, 학원 사이트 여부를 판별하여 URI 생성)
-     * @param $uri
+     * @param string $uri [URI]
+     * @param bool $is_force_pass [학원사이트 URI 강제추가 여부]
      * @return string
      */
-    function front_url($uri)
+    function front_url($uri, $is_force_pass = false)
     {
         $uri_prefix = '';
         APP_DEVICE != 'pc' && $uri_prefix .= '/' . APP_DEVICE;
-        config_app('IsPassSite') === true && $uri_prefix .= '/' . config_item('app_pass_site_prefix');
+        if (config_app('IsPassSite') === true || $is_force_pass === true) {
+            $uri_prefix .= '/' . config_item('app_pass_site_prefix');
+        }
 
         return site_url($uri_prefix . $uri);
     }
@@ -207,15 +210,18 @@ if (!function_exists('front_url')) {
 if (!function_exists('front_app_url')) {
     /**
      * app_url 대체 헬퍼 (모바일 사이트, 학원 사이트 여부를 판별하여 URI 생성)
-     * @param $uri
-     * @param $sub_domain
+     * @param string $uri [URI]
+     * @param string $sub_domain [서브도메인]
+     * @param bool $is_force_pass [학원사이트 URI 강제추가 여부]
      * @return string
      */
-    function front_app_url($uri, $sub_domain)
+    function front_app_url($uri, $sub_domain, $is_force_pass = false)
     {
         $uri_prefix = '';
         APP_DEVICE != 'pc' && $uri_prefix .= '/' . APP_DEVICE;
-        config_app('IsPassSite') === true && $uri_prefix .= '/' . config_item('app_pass_site_prefix');
+        if (config_app('IsPassSite') === true || $is_force_pass === true) {
+            $uri_prefix .= '/' . config_item('app_pass_site_prefix');
+        }
 
         return app_url($uri_prefix . $uri, $sub_domain);
     }
@@ -520,6 +526,9 @@ if (!function_exists('make_image_tag')) {
     {
         $data = '';
         if (empty($path) === false) {
+            $_CI =& get_instance();
+            $_CI->load->helper('file');
+            
             $_img = public_to_upload_path($path);
             if (empty(@getimagesize($_img) === false)) {
                 $data = '<p style="margin-bottom: 20px;"><img src="' . $path . '"></p>';

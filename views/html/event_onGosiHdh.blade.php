@@ -59,7 +59,9 @@
 
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner">
-			<div><a href="http://www.willbesgosi.net/event/movie/event.html?event_cd=On_170405_c" target="_blank"><img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_c_sky2.png" alt="환승이벤트" ></a></div>
+			<a href="http://www.willbesgosi.net/event/movie/event.html?event_cd=On_170405_c" target="_blank">
+                <img src="http://file3.willbes.net/new_gosi/2018/06/EV180626_sky.png" alt="첨삭지도반" alt="환승이벤트" >
+            </a>
 		</div> 
 
         <div class="evtCtnsBox wb_cts01">
@@ -79,13 +81,13 @@
         <div class="evtCtnsBox wb_cts02"  id="evt01">
             <img src="http://file3.willbes.net/new_gosi/2019/01/EV190110_2.png" alt="갓덕현 2019대비신규강좌" usemap="#Map_lec_han" border="0">
             <map name="Map_lec_han">
-                <area shape="rect" coords="791,786,1038,847" href="http://www.willbesgosi.net/lecture/movieLectureDetail.html?topMenu=001&topMenuType=O&searchSubjectCode=1002&searchLeccode=D201800894&leftMenuLType=M0003&lecKType=D" target="_blank">
-                <area shape="rect" coords="801,426,1047,483" href="http://www.willbesgosi.net/lecture/movieLectureDetail.html?topMenu=001&topMenuType=O&searchSubjectCode=1002&searchLeccode=D201800898&leftMenuLType=M0003&lecKType=D" target="_blank">
-                <area shape="rect" coords="799,333,1050,394" href="http://www.willbesgosi.net/lecture/movieLectureDetail.html?topMenu=001&topMenuType=O&searchSubjectCode=1002&searchLeccode=D201800890&leftMenuLType=M0003&lecKType=D" target="_blank">
-                <area shape="rect" coords="798,598,1047,660" href="http://www.willbesgosi.net/lecture/movieLectureDetail.html?topMenu=001&topMenuType=O&searchSubjectCode=1002&searchLeccode=D201800867&leftMenuLType=M0003&lecKType=D" target="_blank">
-                <area shape="rect" coords="800,515,1045,579" href="http://www.willbesgosi.net/lecture/movieLectureDetail.html?topMenu=001&topMenuType=O&searchSubjectCode=1002&searchLeccode=D201800886&leftMenuLType=M0002&lecKType=D" target="_blank">
-                <area shape="rect" coords="799,695,1044,758" href="http://www.willbesgosi.net/lecture/movieLectureDetail.html?topMenu=001&topMenuType=O&searchSubjectCode=1002&searchLeccode=D201800992&leftMenuLType=M0003&lecKType=D" target="_blank">
-            </map>            
+                <area shape="rect" coords="800,782,1047,843" href="http://www.willbesgosi.net/lecture/movieLectureDetail.html?topMenu=001&topMenuType=O&searchSubjectCode=1002&searchLeccode=D201900098&leftMenuLType=M0003&lecKType=D" target="_blank">
+                <area shape="rect" coords="801,426,1047,483" href="http://www.willbesgosi.net/lecture/movieLectureDetail.html?topMenu=001&topMenuType=O&searchSubjectCode=1002&searchLeccode=D201900086&leftMenuLType=M0003&lecKType=D" target="_blank">
+                <area shape="rect" coords="799,333,1050,394" href="http://www.willbesgosi.net/lecture/movieLectureDetail.html?topMenu=001&topMenuType=O&searchSubjectCode=1002&searchLeccode=D201900222&leftMenuLType=M0003&lecKType=D" target="_blank">
+                <area shape="rect" coords="798,598,1047,660" href="http://www.willbesgosi.net/lecture/movieLectureDetail.html?topMenu=001&topMenuType=O&searchSubjectCode=1002&searchLeccode=D201900090&leftMenuLType=M0002&lecKType=D" target="_blank">
+                <area shape="rect" coords="800,515,1045,579" href="http://www.willbesgosi.net/lecture/movieLectureDetail.html?topMenu=001&topMenuType=O&searchSubjectCode=1002&searchLeccode=D201900083&leftMenuLType=M0002&lecKType=D" target="_blank">
+                <area shape="rect" coords="798,690,1043,753" href="http://www.willbesgosi.net/lecture/movieLectureDetail.html?topMenu=001&topMenuType=O&searchSubjectCode=1002&searchLeccode=D201900094&leftMenuLType=M0002&lecKType=D" target="_blank">
+            </map>          
         </div>
         <!--wb_cts02//-->
 

@@ -130,7 +130,7 @@ class LmsAuthService extends AdminAuthService
         $results = [];
         $admin_idx = $this->_CI->session->userdata('admin_idx');
 
-        $column = 'S.SiteCode, S.SiteName, ifnull(GROUP_CONCAT(distinct ASC2.CampusCcd, "::", C.CcdName order by ASC2.CampusCcd asc separator ","), "") as CampusCcds';
+        $column = 'S.SiteCode, S.SiteName, S.IsCampus, ifnull(GROUP_CONCAT(distinct ASC2.CampusCcd, "::", C.CcdName order by ASC2.CampusCcd asc separator ","), "") as CampusCcds';
         $from = '
             from lms_site as S
                 inner join lms_sys_admin_r_site_campus as ASC1
@@ -152,6 +152,7 @@ class LmsAuthService extends AdminAuthService
         foreach ($list as $idx => $row) {
             $results[$row['SiteCode']]['SiteCode'] = $row['SiteCode'];
             $results[$row['SiteCode']]['SiteName'] = $row['SiteName'];
+            $results[$row['SiteCode']]['IsCampus'] = $row['IsCampus'];
             $results[$row['SiteCode']]['CampusCcds'] = [];
 
             if (empty($row['CampusCcds']) === false) {

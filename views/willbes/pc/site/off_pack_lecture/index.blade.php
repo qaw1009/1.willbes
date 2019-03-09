@@ -75,12 +75,18 @@
             <!-- curriWrap -->
 
             <div class="willbes-Bnr">
-                {!! banner('종합반_중단') !!}
+                {!! banner('수강신청_종합반_중단') !!}
             </div>
             <!-- willbes-Bnr -->
 
             <div class="willbes-Lec-Search p_re">
                 <div class="inputBox p_re">
+                    <div class="selectBox">
+                        <select id="search_order" name="search_order" class="" onchange="goUrl('search_order', this.value);">
+                            <option value="regist" @if(element('search_order', $arr_input) == 'regist') selected="selected" @endif>최근등록순</option>
+                            <option value="course" @if(element('search_order', $arr_input) == 'course') selected="selected" @endif>과정순</option>
+                        </select>
+                    </div>
                     @php $arr_search_text = explode(':', base64_decode(element('search_text', $arr_input)), 2) @endphp
                     <div class="selectBox">
                         <select id="search_keyword" name="search_keyword" title="직접입력" class="">
@@ -171,7 +177,7 @@
                 <input type="hidden" name="learn_pattern" value="{{ $learn_pattern }}"/>  {{-- 학습형태 --}}
 
                 <div class="willbes-Lec NG c_both mt20">
-                    <div class="willbes-Lec-Subject tx-dark-black">· 종합반</div>
+                    <div class="willbes-Lec-Subject tx-dark-black"><!--· 종합반//--></div>
                     <!-- willbes-Lec-Subject -->
 
                     <div class="willbes-Lec-Line mt20">-</div>
@@ -239,9 +245,7 @@
                 <!-- willbes-Layer-Box -->
             </form>
         </div>
-        <div class="Quick-Bnr ml20">
-            {!! banner('강좌상품_우측날개', '', $__cfg['SiteCode'], '0') !!}
-        </div>
+        {!! banner('수강신청_우측퀵', 'Quick-Bnr ml20', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
     </div>
     {!! popup('657002') !!}
     <!-- End Container -->

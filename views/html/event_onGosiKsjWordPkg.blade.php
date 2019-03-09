@@ -29,9 +29,7 @@
 		 
     </style>
     
-    @include('html.event_incOnTnb')
-
-    <div class="p_re evtContent NSK" id="evtContainer">        
+    <div class="p_re evtContent NSK" id="evtContainer">
         <div class="evtCtnsBox wb_cts01" >
             <div>
                 <span><a href="#event"><img src="http://file3.willbes.net/new_gosi/2019/01/EV190111Y_ksj_01_btn.gif" alt="선착순 20명 교재 무료" /></a></span>

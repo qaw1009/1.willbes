@@ -15,7 +15,7 @@ class BannerFModel extends WB_Model
 
     /**
      * 노출섹션명, 사이트코드, 대분류 카테고리 코드에 맞는 배너 조회
-     * @param string $disp_name [노출섹션명]
+     * @param string|array $disp_name [노출섹션명]
      * @param int $site_code [사이트코드]
      * @param int $cate_code [대분류 카테고리 코드, `0`이면 전체카테고리]
      * @return array
@@ -26,12 +26,12 @@ class BannerFModel extends WB_Model
             return [];
         }
 
-        $column = 'B.BIdx, BD.BdIdx, B.BannerName, B.LinkType, B.LinkUrl, B.BannerFullPath, B.BannerImgName, BD.DispTypeCcd, BD.DispRollingTypeCcd, BD.DispRollingTime';
+        $column = 'B.BIdx, BD.BdIdx, B.BannerName, B.LinkType, B.LinkUrl, B.LinkUrlType, B.BannerFullPath, B.BannerImgName, B.Desc
+            , BD.DispName, BD.DispTypeCcd, BD.DispRollingTypeCcd, BD.DispRollingTime';
         $arr_condition = [
             'EQ' => [
                 'BD.SiteCode' => $site_code,
                 'BD.CateCode' => $cate_code,
-                'BD.DispName' => $disp_name,
                 'BD.IsUse' => 'Y',
                 'BD.IsStatus' => 'Y',
                 'B.IsUse' => 'Y',
@@ -41,6 +41,13 @@ class BannerFModel extends WB_Model
                 'NOW() between ' => 'B.DispStartDatm and B.DispEndDatm'
             ]
         ];
+
+        if (is_array($disp_name) === true) {
+            $arr_condition['IN']['BD.DispName'] = $disp_name;
+        } else {
+            $arr_condition['EQ']['BD.DispName'] = $disp_name;
+        }
+
         $order_by = ['B.OrderNum' => 'asc'];
 
         return $this->_conn->getJoinListResult($this->_table['banner'] . ' as B', 'inner', $this->_table['banner_disp'] . ' as BD', 'B.BdIdx = BD.BdIdx',

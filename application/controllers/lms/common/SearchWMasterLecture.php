@@ -62,7 +62,7 @@ class SearchWMasterLecture extends \app\controllers\BaseController
         $count = $this->searchWMasterLectureModel->listLecture(true,$arr_condition);
 
         if($count > 0) {
-            $list = $this->searchWMasterLectureModel->listLecture(false,$arr_condition,$this->_reqP('length'), $this->_reqP('start'), ['wLecIdx' => 'desc']);
+            $list = $this->searchWMasterLectureModel->listLecture(false,$arr_condition,$this->_reqP('length'), $this->_reqP('start'), ['wRegDatm' => 'desc']);
         }
         return $this->response([
             'recordsTotal' => $count,

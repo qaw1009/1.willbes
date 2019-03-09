@@ -1,6 +1,6 @@
 /*********************************************     Main Container : law     *********************************************/
 .law .Section2 {
-    background: #f3f3f3;
+    background:url("../../img/willbes/gosi_law/visual/visual_top_bg.jpg") repeat-x left 95px;
 }
 .law .Section3 {
     background: #f7f7f7;
@@ -11,6 +11,11 @@
 }
 
 /* Main Container : MainVisual */
+.law .VisualsubBox {
+    width: 1120px;
+    height: 380px;
+    overflow: hidden;
+}
 .law .VisualsubBox .bx-wrapper .bx-controls-auto {
     left:20px;
     bottom: 20px;
@@ -18,7 +23,7 @@
     width: 50px;
     z-index: 90;
   }
-.law .VisualsubBox .bx-wrapper .bx-pager {
+  .law .VisualsubBox .bx-wrapper .bx-pager {
     float: right;
     width: auto;
     left:60px;
@@ -30,6 +35,15 @@
     width: 8px;
     height: 8px;
     margin: 0 2px;
+}
+
+.law .bx-wrapper .bx-pager.bx-default-pager a {
+  background: #898989 !important;
+}
+.law .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.law .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
+.law .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #f7ec1e !important;
 }
 
 /* Main Container : Prof */
@@ -71,11 +85,22 @@
 .law .ProfBox .PBcts li:first-child {
     margin-left: 0;
 }
-
 .law .ProfBox .PBcts:after {
     content: "";
     display: block;
     clear: both;
+}
+.law .ProfBox .bSlider .bx-wrapper .bx-pager {
+    float: left;
+    width: auto;
+    left: 30px;
+    bottom: 10px;
+    text-align: left;
+}
+.law .ProfBox .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.law .ProfBox .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
+.law .ProfBox .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #643fb5 !important;
 }
 
 /**/

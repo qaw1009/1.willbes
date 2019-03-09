@@ -2,6 +2,52 @@
 
 @section('content')
 <!-- Container -->
+<style type="text/css">
+.tech .ProfBox {
+    margin-top:70px;
+}
+.tech .ProfBox .BnRTab li {
+    display: inline;
+    float: left;
+    width: 50%;
+}
+.tech .ProfBox .BnRTab li a {
+    display: block;
+    text-align: center;
+    font-size: 22px;
+    color:#b9b9b9;
+    height: 54px;
+    line-height: 54px;
+    border:1px solid #b9b9b9;
+    border-bottom:1px solid #6faf4e;
+}
+.tech .ProfBox .BnRTab li a.active {
+    color:#6faf4e;
+    border:1px solid #6faf4e;
+    border-bottom:1px solid #fff;
+    font-weight: 600;
+}
+.tech .ProfBox .BnRTab:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.tech .ProfBox .offSlider li {
+    float: left;
+    width: 274px;
+    height: 234px;
+    margin-left: 8px;
+}
+.tech .ProfBox .offSlider li:first-child {
+    margin-left: 0;
+}
+
+.tech .ProfBox .offSlider:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+</style>
 
 <div id="Container" class="Container tech c_both">
     <div class="Menu widthAuto NSK c_both">
@@ -53,50 +99,31 @@
                 </li>
             </ul>
         </h3>
-    </div>
-    
-    <div class="Section Section2">
-        <div class="widthAuto">
-            <a href="#none"><img src="{{ img_url('gosi_tech/visual/visual_top.jpg') }}" alt="최적의 합격솔루션 김동진 법원팀"></a>
-        </div>
-    </div>
+    </div>      
         
     <div class="Section MainVisual">        
         <div class="widthAuto NSK mt30">
-            <div class="VisualBox p_re bSlider">
-                <div id="MainRollingDiv" class="MaintabList three">
-                    <ul class="Maintab">
-                        <li><a data-slide-index="0" href="javascript:void(0);" class="active">농업직 장사원</a></li>
-                        <li><a data-slide-index="1" href="javascript:void(0);" class="">통신/전기 최우영</a></li>
-                        <li><a data-slide-index="2" href="javascript:void(0);" class="">기술직 최강 라인업</a></li>
-                    </ul>
-                </div>
-                <div id="MainRollingSlider" class="MaintabBox">
-                    <div class="bx-wrapper">
-                        <div class="bx-viewport">
-                            <ul class="MaintabSlider">
-                                <li><a href="#none" target="_blank"><img src="{{ img_url('gosi_tech/banner/bnr_714x300_01.jpg') }}" alt="배너명"></a></li>
-                                <li><a href="#none" target="_blank"><img src="{{ img_url('gosi_tech/banner/bnr_714x300_02.jpg') }}" alt="배너명"></a></li>
-                                <li><a href="#none" target="_blank"><img src="{{ img_url('gosi_tech/banner/bnr_714x300_03.jpg') }}" alt="배너명"></a></li>
-                            </ul>
-                        </div>
-                    </div> 
-                </div>
-            </div>
             <div class="VisualsubBox">
                 <div class="bSlider">
                     <div class="sliderStopAutoPager">
-                        <div><a href="#none"><img src="{{ img_url('gosi_tech/banner/bnr_394x300_01.jpg') }}" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="{{ img_url('gosi_tech/banner/bnr_394x300_02.jpg') }}" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="{{ img_url('gosi_tech/banner/bnr_394x300_03.jpg') }}" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="{{ img_url('gosi_tech/banner/bnr_1120x380_01.jpg') }}" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="{{ img_url('gosi_tech/banner/bnr_1120x380_02.jpg') }}" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="{{ img_url('gosi_tech/banner/bnr_1120x380_03.jpg') }}" alt="배너명"></a></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
+
+    <div class="Section Section2">
+        <div class="widthAuto ">
+            <a href="#none"><img src="{{ img_url('gosi_tech/visual/visual_top.jpg') }}" alt="최적의 합격솔루션 김동진 법원팀"></a>
+        </div>
+    </div> 
+
+
     <div class="Section ProfBox">
-        <div class="widthAuto">
+        <div class="widthAuto">        
             <ul class="PBtab NSK">
                 <li><a href="#tab01">현재 준비중인 수험생이라면</a></li>
                 <li><a href="#tab02">지금 시작하는 초시생이라면</a></li>
@@ -104,8 +131,22 @@
             <div id="tab01">  
                 <img src="{{ img_url('gosi_tech/visual/visual_tit01_01.jpg') }}" alt="지금은 전범위 모의고사로 마무리 할 때!">            
                 <ul class="PBcts">
-                    <li><a href="#none"><img src="{{ img_url('gosi_tech/visual/visual_prof01.jpg') }}" alt="배너명"></a></li>
-                    <li><a href="#none"><img src="{{ img_url('gosi_tech/visual/visual_prof01.jpg') }}" alt="배너명"></a></li>
+                    <li> 
+                        <div class="bSlider">
+                            <div class="slider">
+                                <div><a href="#none"><img src="{{ img_url('gosi_tech/visual/visual_prof01.jpg') }}" alt="배너명"></a></div>
+                                <div><a href="#none"><img src="{{ img_url('gosi_tech/visual/visual_prof01.jpg') }}" alt="배너명"></a></div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="bSlider">
+                            <div class="slider">
+                                <div><a href="#none"><img src="{{ img_url('gosi_tech/visual/visual_prof01.jpg') }}" alt="배너명"></a></div>
+                                <div><a href="#none"><img src="{{ img_url('gosi_tech/visual/visual_prof01.jpg') }}" alt="배너명"></a></div>
+                            </div>
+                        </div>
+                    </li>
                     <li><a href="#none"><img src="{{ img_url('gosi_tech/visual/visual_prof01.jpg') }}" alt="배너명"></a></li>
                     <li><a href="#none"><img src="{{ img_url('gosi_tech/visual/visual_prof01.jpg') }}" alt="배너명"></a></li>
                 </ul>
@@ -113,14 +154,29 @@
             <div id="tab02">  
                 <img src="{{ img_url('gosi_tech/visual/visual_tit01_02.jpg') }}" alt="지금은 전범위 모의고사로 마무리 할 때!">            
                 <ul class="PBcts">
-                    <li><a href="#none"><img src="{{ img_url('gosi_tech/visual/visual_prof01.jpg') }}" alt="배너명"></a></li>
-                    <li><a href="#none"><img src="{{ img_url('gosi_tech/visual/visual_prof01.jpg') }}" alt="배너명"></a></li>
+                    <li> 
+                        <div class="bSlider">
+                            <div class="slider">
+                                <div><a href="#none"><img src="{{ img_url('gosi_tech/visual/visual_prof01.jpg') }}" alt="배너명"></a></div>
+                                <div><a href="#none"><img src="{{ img_url('gosi_tech/visual/visual_prof01.jpg') }}" alt="배너명"></a></div>
+                            </div>
+                        </div>
+                    </li>
+                    <li> 
+                        <div class="bSlider">
+                            <div class="slider">
+                                <div><a href="#none"><img src="{{ img_url('gosi_tech/visual/visual_prof01.jpg') }}" alt="배너명"></a></div>
+                                <div><a href="#none"><img src="{{ img_url('gosi_tech/visual/visual_prof01.jpg') }}" alt="배너명"></a></div>
+                            </div>
+                        </div>
+                    </li>
                     <li><a href="#none"><img src="{{ img_url('gosi_tech/visual/visual_prof01.jpg') }}" alt="배너명"></a></li>
                     <li><a href="#none"><img src="{{ img_url('gosi_tech/visual/visual_prof01.jpg') }}" alt="배너명"></a></li>
                 </ul>
             </div>
         </div>
     </div>
+
 
     <div class="Section Section3 mt100">
         <div class="widthAuto p_re">
@@ -289,6 +345,6 @@
             $content.show();
         
             e.preventDefault()})})}
-        );
+        );        
 </script>
 @stop

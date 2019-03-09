@@ -4,64 +4,51 @@
 }
 
 /* Main Container : MainVisual */
-.MainVisual:after {
+.gosi .MainVisual:after {
     content: "";
     display: block;
     clear: both;
 }
-.MainVisual .will-Tit {
-    border-bottom: 0;
-    margin-top:0;
-    padding-top: 35px;
-}
-.VisualBox {
-    float: left;
-    width: 714px;
-    height: 300px;
+
+.gosi .VisualBox {
+    width: 1920px;
+    margin:0 auto;
+    height: 400px;
     overflow: hidden;
+  }
+  
+.gosi .VisualBox .bx-wrapper .bx-controls-auto {
+    left:50%;
+    bottom: 20px;
+    margin-left: -560px;
+    width: 50px;
+    z-index: 90;
 }
-.VisualBox .MaintabList {
+.gosi .VisualBox .bx-wrapper .bx-pager {
+    width: auto;
+    left:50%;
+    margin-left: -520px;
+    bottom: 20px;
+    text-align: left;
+}
+.gosi .bx-wrapper .bx-pager.bx-default-pager a {
+    background: #ccc;
+  }
+
+.gosi .VisualsubBox {
     position: absolute;
-    bottom: 10px;
-    left: 0;
-    right: 0;
-    z-index: 99;
-    text-align: center;
-}
-.VisualBox .MaintabList ul li {
-    background: #282828;
-    display: inline-block; 
-    height: 35px;
-    font-size: 14px;
-    color: #fff;
-    line-height: 35px;
-    margin:0 1px;
-}
-.VisualBox .MaintabList.three ul li {
-    width: 209px;
-}
-.VisualBox .MaintabList.four ul li {
-    width: 156px;
-}
-.VisualBox .MaintabList ul li a {
-    display: block;
-    width: 100%;
-    height: 100%;
-}
-.VisualBox .MaintabList ul li:last-child {
-    margin:0;
-}
-.VisualBox .MaintabList ul li a.active {
-    background: #c9c9c9;
-    color: #0a0a0a;
+    left:50%;
+    margin-left:196px;
+    top:10px;
+    width: 364px;
 }
 
-.VisualsubBox {
-    float: right;
-    width: 394px;
-    /*height: 300px;*/
+.gosi .VisualsubBox .bSlider {
+    margin-top:3px;
+    width: 364px;
+    height: 248px !important;
     overflow: hidden;
-}
+  }
 
 .gosi .VisualsubBox .bx-wrapper .bx-controls-auto {
     left:20px;
@@ -78,33 +65,50 @@
     text-align: right;
 }
 .gosi .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a {
-    background: #fff;
+    background: #cecece;
     width: 8px;
     height: 8px;
     margin: 0 2px;
 }
 
-.VisualList {
-    float: left;
-    width: 100%;
-    border-top: 1px solid #ebebeb;
-    border-bottom: 1px solid #ebebeb;
+
+/**/
+.gosi .Section.barBnr {
+    background:url("../../img/willbes/gosi/banner/bnr_1120_bg.jpg") repeat-x left bottom;
 }
-.VisualList:after {
+
+/* Main Container : Prof */
+.gosi .PBcts li {
+    display: inline;
+    float: left;    
+    width: 224px;
+    height: 390px;
+    overflow: hidden;
+    margin:0;
+}
+
+.gosi .PBcts:after {
     content: "";
     display: block;
     clear: both;
 }
-.VisualList ul li {
+.gosi .PBcts .bSlider .bx-wrapper .bx-pager {
     float: left;
-    border-right: 1px solid #ebebeb;
+    width: auto;
+    left: 0;
+    bottom: 10px;
+    text-align: center;
 }
-.VisualList ul li:first-child {
-    border-left: 1px solid #ebebeb;
+.gosi .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a {
+    background: #cecece;
+}
+.gosi .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.gosi .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
+.gosi .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #ba560e !important;
 }
 
-/* Main Container : Prof */
-.gosi .Section .ProfBox li {
+/*.gosi .Section .ProfBox li {
     float: left;
     width: 216px;
     height: 237px;
@@ -118,7 +122,7 @@
     content: "";
     display: block;
     clear: both;
-}
+}*/
 
 /**/
 .gosi .Section .willbesLec {

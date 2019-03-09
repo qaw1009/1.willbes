@@ -55,8 +55,8 @@
         </h3>
     </div>
 
-    <div class="Section MainVisual mt20 p_re">        
-        <div class="NSK">            
+    <div class="Section mt20 p_re">        
+        <div class="MainVisual NSK">            
             <div class="VisualBox">
                 <div class="bSlider">
                     <div class="sliderStopAutoPager">
@@ -92,26 +92,27 @@
                 <li>
                     <div class="bSlider">
                         <div class="slider">
-                            <div><a href="#none"><img src="{{ img_url('gpgosi/visual/visual_prof01.jpg') }}" alt="합격전략설명회"></a></div>
-                            <div><a href="#none"><img src="{{ img_url('gpgosi/visual/visual_prof01.jpg') }}" alt="황세웅면접캠프"></a></div>
+                            <div><a href="#none"><img src="{{ img_url('gpgosi/visual/visual_prof01.jpg') }}" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="{{ img_url('gpgosi/visual/visual_prof01.jpg') }}" alt="배너명"></a></div>
                         </div>
                     </div>
                 </li>
                 <li>
                     <div class="bSlider">
                         <div class="slider">
-                            <div><a href="#none"><img src="{{ img_url('gpgosi/visual/visual_prof02.jpg') }}" alt="합격전략설명회"></a></div>
-                            <div><a href="#none"><img src="{{ img_url('gpgosi/visual/visual_prof02.jpg') }}" alt="황세웅면접캠프"></a></div>
+                            <div><a href="#none"><img src="{{ img_url('gpgosi/visual/visual_prof02.jpg') }}" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="{{ img_url('gpgosi/visual/visual_prof02.jpg') }}" alt="배너명"></a></div>
                         </div>
                     </div>
                 </li>
                 <li>
                     <div class="bSlider">
                         <div class="slider">
-                            <div><a href="#none"><img src="{{ img_url('gpgosi/visual/visual_prof03.jpg') }}" alt="합격전략설명회"></a></div>
-                            <div><a href="#none"><img src="{{ img_url('gpgosi/visual/visual_prof03.jpg') }}" alt="황세웅면접캠프"></a></div>
+                            <div><a href="#none"><img src="{{ img_url('gpgosi/visual/visual_prof03.jpg') }}" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="{{ img_url('gpgosi/visual/visual_prof03.jpg') }}" alt="배너명"></a></div>
                         </div>
                     </div>
+                </li>
                 <li><a href="#none"><img src="{{ img_url('gpgosi/visual/visual_prof04.jpg') }}" alt="배너명"></a></li>
             </ul>
         </div>

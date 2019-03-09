@@ -39,7 +39,6 @@
   bottom: 20px;
   text-align: left;
 }
-.gp .bx-wrapper .bx-pager.bx-default-pager a,
 .gp .bx-wrapper .bx-pager.bx-default-pager a {
   background: #ccc !important;
   width: 8px;
@@ -50,9 +49,8 @@
   position: absolute;
   left:50%;
   margin-left:196px;
-  margin-top:10px;
+  top:10px;
   width: 364px;
-  height: ;
 }
 .gp .VisualsubBox .bSlider {
   margin-top:3px;

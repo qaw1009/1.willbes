@@ -55,53 +55,81 @@
         </h3>
     </div>
     
-    <div class="Section MainVisual mt30">
-        <div class="widthAuto">
-            <a href="#none"><img src="{{ img_url('gosi/banner/bnr_bar01.jpg') }}" alt="배너명"></a>
-        </div>
-        
-        <div class="widthAuto NSK mt30">
-            <div class="VisualBox p_re bSlider">
-                <div id="MainRollingDiv" class="MaintabList three">
-                    <ul class="Maintab">
-                        <li><a data-slide-index="0" href="javascript:void(0);" class="active">9급 PASS</a></li>
-                        <li><a data-slide-index="1" href="javascript:void(0);" class="">제니스 영어</a></li>
-                        <li><a data-slide-index="2" href="javascript:void(0);" class="">영어완성 PACK</a></li>
-                    </ul>
-                </div>
-                <div id="MainRollingSlider" class="MaintabBox">
-                    <div class="bx-wrapper">
-                        <div class="bx-viewport">
-                            <ul class="MaintabSlider">
-                                <li><a href="#none" target="_blank"><img src="{{ img_url('gosi/visual/visual_190225_01.jpg') }}" alt="배너명"></a></li>
-                                <li><a href="#none" target="_blank"><img src="{{ img_url('gosi/visual/visual_190225_02.jpg') }}" alt="배너명"></a></li>
-                                <li><a href="#none" target="_blank"><img src="{{ img_url('gosi/visual/visual_190225_03.jpg') }}" alt="배너명"></a></li>
-                            </ul>
-                        </div>
-                    </div> 
-                </div>
-            </div>
-            <div class="VisualsubBox">
+    <div class="Section mt20 p_re">        
+        <div class="MainVisual NSK">            
+            <div class="VisualBox">
                 <div class="bSlider">
                     <div class="sliderStopAutoPager">
-                        <div><a href="#none"><img src="{{ img_url('gosi/visual/visual_r190225_01.jpg') }}" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="{{ img_url('gosi/visual/visual_r190225_02.jpg') }}" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="{{ img_url('gosi/visual/visual_r190225_03.jpg') }}" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="{{ img_url('gosi/banner/bnr_1920x400_01.jpg') }}" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="{{ img_url('gosi/banner/bnr_1920x400_02.jpg') }}" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="{{ img_url('gosi/banner/bnr_1920x400_03.jpg') }}" alt="배너명"></a></div>
                     </div>
                 </div>
             </div>
+            <div class="VisualsubBox">
+                <div><a href="#none"><img src="{{ img_url('gosi/banner/bnr_364x128_01.jpg') }}" alt="배너명"></a></div>   
+                <div class="bSlider">
+                    <div class="sliderStopAutoPager">
+                        <div><a href="#none"><img src="{{ img_url('gosi/banner/bnr_364x248_01.jpg') }}" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="{{ img_url('gosi/banner/bnr_364x248_01.jpg') }}" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="{{ img_url('gosi/banner/bnr_364x248_01.jpg') }}" alt="배너명"></a></div>
+                    </div>
+                </div>   
+            </div>
+        </div>
+    </div>
+
+    <div class="Section barBnr">
+        <div class="widthAuto">
+            <a href="#none"><img src="{{ img_url('gosi/banner/bnr_1120x110.jpg') }}" alt="배너명"></a>
         </div>
     </div>
     
     <div class="Section">
         <div class="widthAuto">
             <div><img src="{{ img_url('gosi/visual/visual_tit01.jpg') }}" alt="더! 강력, 더! 완벽해진 윌비스 교수진"></div>
-            <ul class="ProfBox">
-                <li><a href="https://gosi.dev.willbes.net/professor/show/cate/3010/prof-idx/50080/?subject_idx=10014&subject_name=%EA%B5%AD%EC%96%B4" target="_blank"><img src="{{ img_url('gosi/prof/prof_190225_01.jpg') }}" alt="배너명"></a></li>
-                <li><a href="https://gosi.dev.willbes.net/professor/show/cate/3010/prof-idx/50081/?subject_idx=10017&subject_name=%EC%98%81%EC%96%B4" target="_blank"><img src="{{ img_url('gosi/prof/prof_190225_02.jpg') }}" alt="배너명"></a></li>
-                <li><a href="#none"><img src="{{ img_url('gosi/prof/prof_190225_03.jpg') }}" alt="배너명"></a></li>
-                <li><a href="#none"><img src="{{ img_url('gosi/prof/prof_190225_04.jpg') }}" alt="배너명"></a></li>
-                <li><a href="#none"><img src="{{ img_url('gosi/prof/prof_190225_05.jpg') }}" alt="배너명"></a></li>
+            <ul class="PBcts">
+                <li>
+                    <div class="bSlider">
+                        <div class="slider">
+                            <div><a href="#none"><img src="{{ img_url('gosi/banner/bnr_224x390_01.jpg') }}" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="{{ img_url('gosi/banner/bnr_224x390_01.jpg') }}" alt="배너명"></a></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="bSlider">
+                        <div class="slider">
+                            <div><a href="#none"><img src="{{ img_url('gosi/banner/bnr_224x390_02.jpg') }}" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="{{ img_url('gosi/banner/bnr_224x390_02.jpg') }}" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="{{ img_url('gosi/banner/bnr_224x390_02.jpg') }}" alt="배너명"></a></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="bSlider">
+                        <div class="slider">
+                            <div><a href="#none"><img src="{{ img_url('gosi/banner/bnr_224x390_03.jpg') }}" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="{{ img_url('gosi/banner/bnr_224x390_03.jpg') }}" alt="배너명"></a></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="bSlider">
+                        <div class="slider">
+                            <div><a href="#none"><img src="{{ img_url('gosi/banner/bnr_224x390_04.jpg') }}" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="{{ img_url('gosi/banner/bnr_224x390_04.jpg') }}" alt="배너명"></a></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="bSlider">
+                        <div class="slider">
+                            <div><a href="#none"><img src="{{ img_url('gosi/banner/bnr_224x390_05.jpg') }}" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="{{ img_url('gosi/banner/bnr_224x390_05.jpg') }}" alt="배너명"></a></div>
+                        </div>
+                    </div>
+                </li>
             </ul>
         </div>
     </div>

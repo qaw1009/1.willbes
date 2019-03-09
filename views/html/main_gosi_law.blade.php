@@ -53,45 +53,25 @@
                 </li>
             </ul>
         </h3>
-    </div>
-    
-    <div class="Section Section2">
-        <div class="widthAuto">
-            <a href="#none"><img src="{{ img_url('gosi_law/visual/visual_top.jpg') }}" alt="최적의 합격솔루션 김동진 법원팀"></a>
-        </div>
-    </div>
+    </div>   
         
     <div class="Section MainVisual">        
         <div class="widthAuto NSK mt30">
-            <div class="VisualBox p_re bSlider">
-                <div id="MainRollingDiv" class="MaintabList three">
-                    <ul class="Maintab">
-                        <li><a data-slide-index="0" href="javascript:void(0);" class="active">2020 법원팀 PASS</a></li>
-                        <li><a data-slide-index="1" href="javascript:void(0);" class="">법원팀 예비순환</a></li>
-                        <li><a data-slide-index="2" href="javascript:void(0);" class="">3~4월 신규강좌</a></li>
-                    </ul>
-                </div>
-                <div id="MainRollingSlider" class="MaintabBox">
-                    <div class="bx-wrapper">
-                        <div class="bx-viewport">
-                            <ul class="MaintabSlider">
-                                <li><a href="#none" target="_blank"><img src="{{ img_url('gosi_law/banner/bnr_714x300_01.jpg') }}" alt="배너명"></a></li>
-                                <li><a href="#none" target="_blank"><img src="{{ img_url('gosi_law/banner/bnr_714x300_02.jpg') }}" alt="배너명"></a></li>
-                                <li><a href="#none" target="_blank"><img src="{{ img_url('gosi_law/banner/bnr_714x300_03.jpg') }}" alt="배너명"></a></li>
-                            </ul>
-                        </div>
-                    </div> 
-                </div>
-            </div>
             <div class="VisualsubBox">
                 <div class="bSlider">
                     <div class="sliderStopAutoPager">
-                        <div><a href="#none"><img src="{{ img_url('gosi_law/banner/bnr_394x300_01.jpg') }}" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="{{ img_url('gosi_law/banner/bnr_394x300_02.jpg') }}" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="{{ img_url('gosi_law/banner/bnr_394x300_03.jpg') }}" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="{{ img_url('gosi_law/banner/bnr_1120x380_01.jpg') }}" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="{{ img_url('gosi_law/banner/bnr_1120x380_02.jpg') }}" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="{{ img_url('gosi_law/banner/bnr_1120x380_03.jpg') }}" alt="배너명"></a></div>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div class="Section Section2">
+        <div class="widthAuto">
+            <a href="#none"><img src="{{ img_url('gosi_law/visual/visual_top.jpg') }}" alt="최적의 합격솔루션 김동진 법원팀"></a>
         </div>
     </div>
     
@@ -104,16 +84,39 @@
             <div id="tab01">  
                 <img src="{{ img_url('gosi_law/visual/visual_tit01_01.jpg') }}" alt="지금은 전범위 모의고사로 마무리 할 때!">            
                 <ul class="PBcts">
-                    <li><a href="#none"><img src="{{ img_url('gosi_law/visual/visual_prof01.jpg') }}" alt="배너명"></a></li>
-                    <li><a href="#none"><img src="{{ img_url('gosi_law/visual/visual_prof02.jpg') }}" alt="배너명"></a></li>
+                    <li>
+                        <a href="#none"><img src="{{ img_url('gosi_law/visual/visual_prof01.jpg') }}" alt="배너명"></a>
+                    </li>
+                    <li>
+                        <div class="bSlider">
+                            <div class="slider">
+                                <div><a href="#none"><img src="{{ img_url('gosi_law/visual/visual_prof02.jpg') }}" alt="배너명"></a></div>
+                                <div><a href="#none"><img src="{{ img_url('gosi_law/visual/visual_prof02.jpg') }}" alt="배너명"></a></div>
+                            </div>
+                        </div>
+                    </li>
                     <li><a href="#none"><img src="{{ img_url('gosi_law/visual/visual_prof03.jpg') }}" alt="배너명"></a></li>
-                    <li><a href="#none"><img src="{{ img_url('gosi_law/visual/visual_prof04.jpg') }}" alt="배너명"></a></li>
+                    <li>
+                        <div class="bSlider">
+                            <div class="slider">
+                                <div><a href="#none"><img src="{{ img_url('gosi_law/visual/visual_prof04.jpg') }}" alt="배너명"></a></div>
+                                <div><a href="#none"><img src="{{ img_url('gosi_law/visual/visual_prof04.jpg') }}" alt="배너명"></a></div>
+                            </div>
+                        </div>
+                    </li>
                 </ul>
             </div>
             <div id="tab02">  
                 <img src="{{ img_url('gosi_law/visual/visual_tit01_02.jpg') }}" alt="지금은 전범위 모의고사로 마무리 할 때!">            
                 <ul class="PBcts">
-                    <li><a href="#none"><img src="{{ img_url('gosi_law/visual/visual_prof05.jpg') }}" alt="배너명"></a></li>
+                    <li>
+                        <div class="bSlider">
+                            <div class="slider">
+                                <div><a href="#none"><img src="{{ img_url('gosgosi_lawi_tech/visual/visual_prof01.jpg') }}" alt="배너명"></a></div>
+                                <div><a href="#none"><img src="{{ img_url('gosi_law/visual/visual_prof01.jpg') }}" alt="배너명"></a></div>
+                            </div>
+                        </div>
+                    </li>
                     <li><a href="#none"><img src="{{ img_url('gosi_law/visual/visual_prof06.jpg') }}" alt="배너명"></a></li>
                     <li><a href="#none"><img src="{{ img_url('gosi_law/visual/visual_prof07.jpg') }}" alt="배너명"></a></li>
                     <li><a href="#none"><img src="{{ img_url('gosi_law/visual/visual_prof08.jpg') }}" alt="배너명"></a></li>

@@ -84,8 +84,8 @@
         <div class="evtCtnsBox wb_cts04" id="wb_cts04">
             <img src="http://file3.willbes.net/new_cop/2019/01/EV190118Y_04.jpg" alt="커리큘럼" usemap="#Map190118" border="0"/>
             <map name="Map190118" id="Map190118">
-                <area shape="rect" coords="124,879,570,965" href="/lecture/index/cate/3001/pattern/only" target="_blank" alt="온라인강의신청" />
-                <area shape="rect" coords="640,878,1088,965" href="/pass/offLecture/index" target="_blank" alt="학원강의신청" />
+                <area shape="rect" coords="124,879,570,965" href="{{ front_url('/professor/show/cate/3001/prof-idx/50031/?subject_idx=1005&subject_name=%EA%B2%BD%EC%B0%B0%ED%95%99%EA%B0%9C%EB%A1%A0&tab=open_lecture') }}" target="_blank" alt="온라인강의신청" />
+                <area shape="rect" coords="640,878,1088,965" href="{{ front_url('/pass/professor/show/prof-idx/50032/?cate_code=3010&subject_idx=1058&subject_name=%EA%B2%BD%EC%B0%B0%ED%95%99%EA%B0%9C%EB%A1%A0&tab=open_lecture') }}" target="_blank" alt="학원강의신청" />
             </map>
         </div>
 

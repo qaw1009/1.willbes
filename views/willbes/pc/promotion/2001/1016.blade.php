@@ -65,27 +65,27 @@
                     <col width="20%" />
                     <tr>
                         <td>2019년 신광은 형사소송법 심화이론</td>
-                        <td><a href="http://www.willbescop.net/lecture/movieLectureDetail.html?topMenu=081&topMenuType=O&searchSubjectCode=1004&searchLeccode=D201900012&leftMenuLType=M0002&lecKType=D" target="_blank">수강신청</a></td>
+                        <td><a href="{{ front_url('/lecture/show/cate/3001/pattern/only/prod-code/132216') }}" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>2019년 장정훈 경찰학개론 심화기출</td>
-                        <td><a href="http://www.willbescop.net/lecture/movieLectureDetail.html?topMenu=081&topMenuType=O&searchSubjectCode=1005&searchLeccode=D201900017&leftMenuLType=M0001&newlearningCD=M0124&lecKType=D" target="_blank">수강신청</a></td>
+                        <td><a href="{{ front_url('/lecture/show/cate/3001/pattern/only/prod-code/132221') }}" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>2019년 김원욱 형법 원기총</td>
-                        <td><a href="http://www.willbescop.net/lecture/movieLectureDetail.html?topMenu=081&topMenuType=O&searchSubjectCode=1003&searchLeccode=D201900020&leftMenuLType=M0002&lecKType=D" target="_blank">수강신청</a></td>
+                        <td><a href="{{ front_url('/lecture/show/cate/3001/pattern/only/prod-code/132224') }}" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>2019년 하승민 영어 심화영어</td>
-                        <td><a href="http://www.willbescop.net/lecture/movieLectureDetail.html?topMenu=081&topMenuType=O&searchSubjectCode=1001&searchLeccode=D201900025&leftMenuLType=M0001&newlearningCD=M0112&lecKType=D" target="_blank">수강신청</a></td>
+                        <td><a href="{{ front_url('/lecture/show/cate/3001/pattern/only/prod-code/132229') }}" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>2019년 오태진 한국사 심화과정(기출)</td>
-                        <td><a href="http://www.willbescop.net/lecture/movieLectureDetail.html?topMenu=081&topMenuType=O&searchSubjectCode=1002&searchLeccode=D201900029&leftMenuLType=M0001&newlearningCD=M0112&lecKType=D" target="_blank">수강신청</a></td>
+                        <td><a href="{{ front_url('/lecture/show/cate/3001/pattern/only/prod-code/132233') }}" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>2019년 원유철 한국사 심화과정(이론)</td>
-                        <td><a href="http://www.willbescop.net/lecture/movieLectureDetail.html?topMenu=081&topMenuType=O&searchSubjectCode=1002&searchLeccode=D201900027&leftMenuLType=M0001&newlearningCD=M0112&lecKType=D" target="_blank">수강신청</a></td>
+                        <td><a href="{{ front_url('/lecture/show/cate/3001/pattern/only/prod-code/132231') }}" target="_blank">수강신청</a></td>
                     </tr>
                 </table>
                 <p>&nbsp;</p>
@@ -95,23 +95,20 @@
                     <col width="20%" />
                     <tr>
                         <td>2019년 일반경찰 심화과정 패키지 (史 오태진)</td>
-                        <td><a href="http://www.willbescop.net/lecture/movieLectureSDetail.html?searchLeccode=J201900004&topMenuType=O&leftMenuLType=M0001&newlearningCD=M0212&lecKType=J&topMenu=081&topMenuName">수강신청</a></td>
+                        <td><a href="{{ front_url('/package/show/cate/3001/pack/648001/prod-code/149540') }}" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>2019년 일반경찰 심화과정 패키지 (史 원유철)</td>
-                        <td><a href="http://www.willbescop.net/lecture/movieLectureSDetail.html?searchLeccode=J201900003&topMenuType=O&leftMenuLType=M0001&newlearningCD=M0212&lecKType=J&topMenu=081&topMenuName">수강신청</a></td>
+                        <td><a href="{{ front_url('/package/show/cate/3001/pack/648001/prod-code/149539') }}" target="_blank">수강신청</a></td>
                     </tr>
                 </table>
                 <div>
                     ※ 패키지는 결제완료시 수강이 자동시작됩니다.<br>
                 </div>
             </div><!--wb_04_c//-->
-
         </div><!--wb_04//-->
-
     </div>
     <!-- End Container -->
-
 
     <script src="/public/js/willbes/jquery.nav.js"></script>
     <script>

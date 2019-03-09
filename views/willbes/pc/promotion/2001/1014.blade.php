@@ -96,22 +96,22 @@
                 <div class="PeMenu">
                     <ul>
                         <li>
-                            <a href="/" target="_blank" onFocus="this.blur();" >
+                            <a href="{{ front_url('/home/index/cate/3001') }}" target="_blank" onFocus="this.blur();">
                                 <img src="http://file3.willbes.net/new_cop/2018/01/EV180122_c10_1.jpg" onmouseover="this.src='http://file3.willbes.net/new_cop/2018/01/EV180122_c10_1on.jpg'" onMouseOut="this.src='http://file3.willbes.net/new_cop/2018/01/EV180122_c10_1.jpg'" onMouseDown="this.src='http://file3.willbes.net/new_cop/2018/01/EV180122_c10_1.jpg'" alt=""  />
                             </a>
                         </li>
                         <li>
-                            <a href="http://www.willbescop.net/082/index.html?topMenuType=O&topMenu=082&topMenuGnb=OM_001" target="_blank" onFocus="this.blur();" >
+                            <a href="{{ front_url('/home/index/cate/3002') }}" target="_blank" onFocus="this.blur();" >
                                 <img src="http://file3.willbes.net/new_cop/2018/01/EV180122_c10_2.jpg" onmouseover="this.src='http://file3.willbes.net/new_cop/2018/01/EV180122_c10_2on.jpg'" onMouseOut="this.src='http://file3.willbes.net/new_cop/2018/01/EV180122_c10_2.jpg'" onMouseDown="this.src='http://file3.willbes.net/new_cop/2018/01/EV180122_c10_2.jpg'" alt=""  />
                             </a>
                         </li>
                         <li>
-                            <a href="http://www.willbescop.net/085/index.html?topMenuType=O&topMenu=085&topMenuGnb=OM_001" target="_blank" onFocus="this.blur();" >
+                            <a href="{{ front_url('/home/index/cate/3006') }}" target="_blank" onFocus="this.blur();" >
                                 <img src="http://file3.willbes.net/new_cop/2018/01/EV180122_c10_3.jpg" onmouseover="this.src='http://file3.willbes.net/new_cop/2018/01/EV180122_c10_3on.jpg'" onMouseOut="this.src='http://file3.willbes.net/new_cop/2018/01/EV180122_c10_3.jpg'" onMouseDown="this.src='http://file3.willbes.net/new_cop/2018/01/EV180122_c10_3.jpg'" alt=""  />
                             </a>
                         </li>
                         <li>
-                            <a href="http://www.willbescop.net/080/index.html?ltopMenuType=O&topMenu=083&topMenuGnb=OM_001&topMenuGnb=OM_001" target="_blank" onFocus="this.blur();" >
+                            <a href="{{ front_url('/home/index/cate/3007') }}" target="_blank" onFocus="this.blur();" >
                                 <img src="http://file3.willbes.net/new_cop/2018/01/EV180122_c10_4.jpg" onmouseover="this.src='http://file3.willbes.net/new_cop/2018/01/EV180122_c10_4on.jpg'" onMouseOut="this.src='http://file3.willbes.net/new_cop/2018/01/EV180122_c10_4.jpg'" onMouseDown="this.src='http://file3.willbes.net/new_cop/2018/01/EV180122_c10_4.jpg'" alt=""  />
                             </a>
                         </li>
@@ -119,10 +119,8 @@
                 </div>
             </div>
         </div><!--wb_cts03//-->
-
     </div>
     <!-- End Container -->
-
 
     <script src="/public/js/willbes/jquery.nav.js"></script>
     <script>

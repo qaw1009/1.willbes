@@ -108,20 +108,20 @@
             <img src="http://file3.willbes.net/new_cop/on_basic/OB190207_p5.png"  alt="강좌소개" usemap="#link2" />
             <map name="link2" >
                 <!--단과-->
-                <area shape="rect" coords="389,410,451,435" href="http://www.willbescop.net/lecture/movieLectureDetail.html?topMenu=081&topMenuType=O&searchSubjectCode=1004&searchLeccode=D201800590&leftMenuLType=M0001&lecKType=D" onfocus='this.blur()' alt="형사소송법 기본이론(19년 1월)" target="_blank"/>
-                <area shape="rect" coords="389,460,451,485" href="http://www.willbescop.net/lecture/movieLectureDetail.html?topMenu=081&topMenuType=O&searchSubjectCode=1005&searchLeccode=D201900046&leftMenuLType=M0001&newlearningCD=M0111&lecKType=D" onfocus='this.blur()' alt="경찰학개론 기본이론(19년 2월)" target="_blank"/>
-                <area shape="rect" coords="389,510,451,535" href="http://www.willbescop.net/lecture/movieLectureDetail.html?topMenu=081&topMenuType=O&searchSubjectCode=1003&searchLeccode=D201800584&leftMenuLType=M0001&lecKType=D" onfocus='this.blur()' alt="김원욱 형법 기본이론(19년 1월)" target="_blank"/>
-                <area shape="rect" coords="389,560,451,585" href="http://www.willbescop.net/lecture/movieLectureDetail.html?topMenu=081&topMenuType=O&searchSubjectCode=1001&searchLeccode=D201800589&leftMenuLType=M0001&lecKType=D" onfocus='this.blur()' alt="하승민 영어 기본이론(19년 1월)" target="_blank"/>
+                <area shape="rect" coords="389,410,451,435" href="{{ front_url('/lecture/show/cate/3001/pattern/only/prod-code/132199') }}" onfocus='this.blur()' alt="형사소송법 기본이론(19년 1월)" target="_blank"/>
+                <area shape="rect" coords="389,460,451,485" href="{{ front_url('/lecture/show/cate/3001/pattern/only/prod-code/132250') }}" onfocus='this.blur()' alt="경찰학개론 기본이론(19년 2월)" target="_blank"/>
+                <area shape="rect" coords="389,510,451,535" href="{{ front_url('/lecture/show/cate/3001/pattern/only/prod-code/132193') }}" onfocus='this.blur()' alt="김원욱 형법 기본이론(19년 1월)" target="_blank"/>
+                <area shape="rect" coords="389,560,451,585" href="{{ front_url('/lecture/show/cate/3001/pattern/only/prod-code/132198') }}" onfocus='this.blur()' alt="하승민 영어 기본이론(19년 1월)" target="_blank"/>
 
-                <area shape="rect" coords="814,410,872,435" href="http://www.willbescop.net/lecture/movieLectureDetail.html?topMenu=081&topMenuType=O&searchSubjectCode=1002&searchLeccode=D201900057&leftMenuLType=M0001&newlearningCD=M0111&lecKType=D" onfocus='this.blur()' alt="오태진 한국사 기본이론(19년 2월)" target="_blank"/>
-                <area shape="rect" coords="814,460,872,485" href="http://www.willbescop.net/lecture/movieLectureDetail.html?topMenu=081&topMenuType=O&searchSubjectCode=1002&searchLeccode=D201900055&leftMenuLType=M0001&newlearningCD=M0111&lecKType=D" onfocus='this.blur()' alt="원유철 한국사 기본이론(19년 2월)" target="_blank"/>
-                <area shape="rect" coords="814,510,872,535" href="http://www.willbescop.net/lecture/movieLectureDetail.html?topMenu=082&topMenuType=O&searchSubjectCode=1006&searchLeccode=D201700293&leftMenuLType=M0001&lecKType=D" onfocus='this.blur()' alt="신광은 수사 이론" target="_blank"/>
-                <area shape="rect" coords="814,560,872,585" href="http://www.willbescop.net/lecture/movieLectureDetail.html?topMenu=082&topMenuType=O&searchSubjectCode=1007&searchLeccode=D201800087&leftMenuLType=M0001&lecKType=D" onfocus='this.blur()' alt="장정훈 행정법 이론 (3월)" target="_blank"/>
+                <area shape="rect" coords="814,410,872,435" href="{{ front_url('/lecture/show/cate/3001/pattern/only/prod-code/132261') }}" onfocus='this.blur()' alt="오태진 한국사 기본이론(19년 2월)" target="_blank"/>
+                <area shape="rect" coords="814,460,872,485" href="{{ front_url('/lecture/show/cate/3001/pattern/only/prod-code/132259') }}" onfocus='this.blur()' alt="원유철 한국사 기본이론(19년 2월)" target="_blank"/>
+                <area shape="rect" coords="814,510,872,535" href="{{ front_url('/lecture/show/cate/3002/pattern/only/prod-code/131478') }}" onfocus='this.blur()' alt="신광은 수사 이론" target="_blank"/>
+                <area shape="rect" coords="814,560,872,585" href="{{ front_url('/lecture/show/cate/3002/pattern/only/prod-code/131698') }}" onfocus='this.blur()' alt="장정훈 행정법 이론 (3월)" target="_blank"/>
 
                 <!--패키지-->
-                <area shape="rect" coords="753,839,872,876" href="http://www.willbescop.net/lecture/movieLectureSDetail.html?searchLeccode=J201900012&topMenuType=O&leftMenuLType=M0001&newlearningCD=M0211&lecKType=J&topMenu=081&topMenuName" onfocus='this.blur()' alt="2019대비 일반경찰 기본이론 동영상 종합반(오태진史)" target="_blank"/>
-                <area shape="rect" coords="753,1059,872,1096" href="http://www.willbescop.net/lecture/movieLectureSDetail.html?searchLeccode=J201900011&topMenuType=O&leftMenuLType=M0001&newlearningCD=M0211&lecKType=J&topMenu=081&topMenuName" onfocus='this.blur()' alt="2019대비 일반경찰 기본이론 동영상 종합반(원유철史)" target="_blank"/>
-                <area shape="rect" coords="753,1279,872,1316" href="http://www.willbescop.net/lecture/movieLectureSDetail.html?searchLeccode=J201900010&topMenuType=O&leftMenuLType=M0001&newlearningCD=M0211&lecKType=J&topMenu=082&topMenuName" onfocus='this.blur()' alt="2019대비 경행경채 기본이론 동영상 종합반" target="_blank"/>
+                <area shape="rect" coords="753,839,872,876" href="{{ front_url('/package/show/cate/3001/pack/648001/prod-code/149548') }}" onfocus='this.blur()' alt="2019대비 일반경찰 기본이론 동영상 종합반(오태진史)" target="_blank"/>
+                <area shape="rect" coords="753,1059,872,1096" href="{{ front_url('/package/show/cate/3001/pack/648001/prod-code/149547') }}" onfocus='this.blur()' alt="2019대비 일반경찰 기본이론 동영상 종합반(원유철史)" target="_blank"/>
+                <area shape="rect" coords="753,1279,872,1316" href="{{ front_url('/package/show/cate/3001/pack/648001/prod-code/149546') }}" onfocus='this.blur()' alt="2019대비 경행경채 기본이론 동영상 종합반" target="_blank"/>
             </map>
         </div><!--//wb_cts04-->
 

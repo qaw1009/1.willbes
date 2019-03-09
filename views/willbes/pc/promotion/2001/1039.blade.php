@@ -252,7 +252,7 @@
                     </tr>
                 </table>
                 <div class=""bookimg>
-                    <img src="http://file3.willbes.net/new_cop/2019/02/EV190215_c9.jpg" usemap="#Map190227_c1" border="0" />
+{{--                    <img src="http://file3.willbes.net/new_cop/2019/02/EV190215_c9.jpg" usemap="#Map190227_c1" border="0" />
                     <map name="Map190227_c1" >
                         <area shape="rect" coords="121,340,190,366" href="/book/view.html?RSC_ID=L201902261" alt="김원욱" />
                         <area shape="rect" coords="372,341,439,367" href="/book/view.html?RSC_ID=L201902266" alt="하승민"/>
@@ -260,7 +260,7 @@
                         <area shape="rect" coords="124,569,189,595" href="javascript:alert('준비중입니다.');" alt="오태진"/>
                         <area shape="rect" coords="372,568,438,594" href="/book/view.html?topMenuType=O&topMenu=MAIN&topMenuName=ÀÏ¹Ý°æÂû&RSC_ID=L201902282" alt="원유철"/>
                         <area shape="rect" coords="634,568,696,594" href="javascript:alert('준비중입니다.');" alt="장정훈"/>
-                    </map>
+                    </map>--}}
                     <img src="http://file3.willbes.net/new_cop/2019/02/EV190215_c7.jpg" />
                 </div>
             </div>

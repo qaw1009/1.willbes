@@ -64,10 +64,10 @@
         <div class="evtCtnsBox WB_con04" id="Map_1115_cop_event">
             <img src="http://file3.willbes.net/new_cop/2019/02/EV190208_4.png" alt="수강신청" usemap="#Map_1115_lec" border="0" />
             <map name="Map_1115_lec">
-                <area shape="rect" coords="638,216,1065,452" href="http://www.willbescop.net/lecture/movieLectureDetail.html?topMenu=088&topMenuType=O&searchSubjectCode=1032&searchLeccode=D201900052&leftMenuLType=M0003&lecKType=D"  alt="권소현" target="_blank">
-                <area shape="rect" coords="156,221,585,450" href="http://www.willbescop.net/lecture/movieLectureDetail.html?topMenu=088&topMenuType=O&searchSubjectCode=1030&searchLeccode=D201900053&leftMenuLType=M0003&lecKType=D"  alt="공득인"  target="_blank">
-                <area shape="rect" coords="153,555,574,795" href="http://www.willbescop.net/lecture/movieLectureDetail.html?topMenu=088&topMenuType=O&searchSubjectCode=1033&searchLeccode=D201800483&leftMenuLType=M0003&lecKType=D"  alt="권소현"  target="_blank">
-                <area shape="rect" coords="636,560,1060,797" href="http://www.willbescop.net/lecture/movieLectureDetail.html?topMenu=088&topMenuType=O&searchSubjectCode=1034&searchLeccode=D201800484&leftMenuLType=M0003&lecKType=D"  alt="황다혜"  target="_blank">
+                <area shape="rect" coords="638,216,1065,452" href="{{ site_url('/lecture/show/cate/3008/pattern/free/prod-code/147616') }}"  alt="권소현" target="_blank">
+                <area shape="rect" coords="156,221,585,450" href="{{ site_url('/lecture/show/cate/3008/pattern/only/prod-code/132257') }}"  alt="공득인"  target="_blank">
+                <area shape="rect" coords="153,555,574,795" href="{{ site_url('/lecture/show/cate/3008/pattern/free/prod-code/147615') }}"  alt="권소현"  target="_blank">
+                <area shape="rect" coords="636,560,1060,797" href="{{ site_url('/lecture/show/cate/3008/pattern/free/prod-code/147620') }}"  alt="황다혜"  target="_blank">
             </map>
         </div>
 

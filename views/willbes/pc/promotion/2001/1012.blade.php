@@ -43,7 +43,7 @@
 
     <div class="evtContent NSK" id="evtContainer">
         <div class="skybanner" >
-            <a href="http://www.willbescop.net/lecture/movieLectureFreeList.html?topMenu=081&topMenuName=일반경찰&topMenuType=O&leftMenuLType=M0000&lecKType=F&FREE_TAB=TAB_001" target="_self">
+            <a href="{{ site_url('/lecture/index/cate/3001/pattern/free?course_idx=1071') }}" target="_blink">
                 <img src="http://file3.willbes.net/new_cop/2017/11/EV171129_p_sky.png" alt="스카이스크래퍼" />
             </a>
         </div>
@@ -51,7 +51,7 @@
         <div class="evtCtnsBox top"  id="main">
             <img src="http://file3.willbes.net/new_cop/2017/11/EV171129_p1.png"  alt="0원특강" usemap="#zero" />
             <map name="zero" id="zero">
-                <area shape="rect" coords="242,1462,735,1583" href="https://www.local.willbes.net/member/join/?ismobile=0&sitecode=2001" onfocus='this.blur()'  alt="0원특강">
+                <area shape="rect" coords="242,1462,735,1583" href="{{ app_url('/member/join/?ismobile=0&sitecode=' . $__cfg['SiteCode'], 'www') }}" onfocus='this.blur()'  alt="0원특강" target="_blink">
             </map>
         </div>
 

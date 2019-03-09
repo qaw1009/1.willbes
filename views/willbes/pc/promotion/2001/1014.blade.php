@@ -63,7 +63,7 @@
                 <img src="http://file3.willbes.net/new_cop/2018/01/EV180122_c1.jpg" usemap="#Map171218_c2" border="0"  >
                 <map name="Map171218_c2" >
                     <area shape="rect" coords="157,17,584,102"  href="#none"  onfocus="this.blur();" alt="초시생을 위한 합격비법"/>
-                    <area shape="rect" coords="677,22,1055,93" href="/promotion/index/cate/3001/code/1017"  onfocus="this.blur();"  alt="N수생을 위한 합격비법" />
+                    <area shape="rect" coords="677,22,1055,93" href="{{ site_url('/promotion/index/cate/3001/code/1017') }}"  onfocus="this.blur();"  alt="N수생을 위한 합격비법" />
                 </map>
                 <div class="why"><img src="http://file3.willbes.net/new_cop/2018/01/EV180122_top.gif" alt=""/></div>
                 <img src="http://file3.willbes.net/new_cop/2018/01/EV180122_c2.jpg"  >
@@ -96,22 +96,22 @@
                 <div class="PeMenu">
                     <ul>
                         <li>
-                            <a href="{{ front_url('/home/index/cate/3001') }}" target="_blank" onFocus="this.blur();">
+                            <a href="{{ site_url('/home/index/cate/3001') }}" target="_blank" onFocus="this.blur();">
                                 <img src="http://file3.willbes.net/new_cop/2018/01/EV180122_c10_1.jpg" onmouseover="this.src='http://file3.willbes.net/new_cop/2018/01/EV180122_c10_1on.jpg'" onMouseOut="this.src='http://file3.willbes.net/new_cop/2018/01/EV180122_c10_1.jpg'" onMouseDown="this.src='http://file3.willbes.net/new_cop/2018/01/EV180122_c10_1.jpg'" alt=""  />
                             </a>
                         </li>
                         <li>
-                            <a href="{{ front_url('/home/index/cate/3002') }}" target="_blank" onFocus="this.blur();" >
+                            <a href="{{ site_url('/home/index/cate/3002') }}" target="_blank" onFocus="this.blur();" >
                                 <img src="http://file3.willbes.net/new_cop/2018/01/EV180122_c10_2.jpg" onmouseover="this.src='http://file3.willbes.net/new_cop/2018/01/EV180122_c10_2on.jpg'" onMouseOut="this.src='http://file3.willbes.net/new_cop/2018/01/EV180122_c10_2.jpg'" onMouseDown="this.src='http://file3.willbes.net/new_cop/2018/01/EV180122_c10_2.jpg'" alt=""  />
                             </a>
                         </li>
                         <li>
-                            <a href="{{ front_url('/home/index/cate/3006') }}" target="_blank" onFocus="this.blur();" >
+                            <a href="{{ site_url('/home/index/cate/3006') }}" target="_blank" onFocus="this.blur();" >
                                 <img src="http://file3.willbes.net/new_cop/2018/01/EV180122_c10_3.jpg" onmouseover="this.src='http://file3.willbes.net/new_cop/2018/01/EV180122_c10_3on.jpg'" onMouseOut="this.src='http://file3.willbes.net/new_cop/2018/01/EV180122_c10_3.jpg'" onMouseDown="this.src='http://file3.willbes.net/new_cop/2018/01/EV180122_c10_3.jpg'" alt=""  />
                             </a>
                         </li>
                         <li>
-                            <a href="{{ front_url('/home/index/cate/3007') }}" target="_blank" onFocus="this.blur();" >
+                            <a href="{{ site_url('/home/index/cate/3007') }}" target="_blank" onFocus="this.blur();" >
                                 <img src="http://file3.willbes.net/new_cop/2018/01/EV180122_c10_4.jpg" onmouseover="this.src='http://file3.willbes.net/new_cop/2018/01/EV180122_c10_4on.jpg'" onMouseOut="this.src='http://file3.willbes.net/new_cop/2018/01/EV180122_c10_4.jpg'" onMouseDown="this.src='http://file3.willbes.net/new_cop/2018/01/EV180122_c10_4.jpg'" alt=""  />
                             </a>
                         </li>

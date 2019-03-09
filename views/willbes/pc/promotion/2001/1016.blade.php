@@ -65,27 +65,27 @@
                     <col width="20%" />
                     <tr>
                         <td>2019년 신광은 형사소송법 심화이론</td>
-                        <td><a href="{{ front_url('/lecture/show/cate/3001/pattern/only/prod-code/132216') }}" target="_blank">수강신청</a></td>
+                        <td><a href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/132216') }}" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>2019년 장정훈 경찰학개론 심화기출</td>
-                        <td><a href="{{ front_url('/lecture/show/cate/3001/pattern/only/prod-code/132221') }}" target="_blank">수강신청</a></td>
+                        <td><a href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/132221') }}" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>2019년 김원욱 형법 원기총</td>
-                        <td><a href="{{ front_url('/lecture/show/cate/3001/pattern/only/prod-code/132224') }}" target="_blank">수강신청</a></td>
+                        <td><a href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/132224') }}" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>2019년 하승민 영어 심화영어</td>
-                        <td><a href="{{ front_url('/lecture/show/cate/3001/pattern/only/prod-code/132229') }}" target="_blank">수강신청</a></td>
+                        <td><a href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/132229') }}" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>2019년 오태진 한국사 심화과정(기출)</td>
-                        <td><a href="{{ front_url('/lecture/show/cate/3001/pattern/only/prod-code/132233') }}" target="_blank">수강신청</a></td>
+                        <td><a href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/132233') }}" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>2019년 원유철 한국사 심화과정(이론)</td>
-                        <td><a href="{{ front_url('/lecture/show/cate/3001/pattern/only/prod-code/132231') }}" target="_blank">수강신청</a></td>
+                        <td><a href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/132231') }}" target="_blank">수강신청</a></td>
                     </tr>
                 </table>
                 <p>&nbsp;</p>
@@ -95,11 +95,11 @@
                     <col width="20%" />
                     <tr>
                         <td>2019년 일반경찰 심화과정 패키지 (史 오태진)</td>
-                        <td><a href="{{ front_url('/package/show/cate/3001/pack/648001/prod-code/149540') }}" target="_blank">수강신청</a></td>
+                        <td><a href="{{ site_url('/package/show/cate/3001/pack/648001/prod-code/149540') }}" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>2019년 일반경찰 심화과정 패키지 (史 원유철)</td>
-                        <td><a href="{{ front_url('/package/show/cate/3001/pack/648001/prod-code/149539') }}" target="_blank">수강신청</a></td>
+                        <td><a href="{{ site_url('/package/show/cate/3001/pack/648001/prod-code/149539') }}" target="_blank">수강신청</a></td>
                     </tr>
                 </table>
                 <div>

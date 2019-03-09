@@ -150,7 +150,7 @@
                                     @endif
                                 </td>
                                 <td class="w-lec-time">{{$row['wRuntime']}}분</td>
-                                <td class="w-study-time">{{floor(intval($row['RealStudyTime'])/60)}}분 / {{$row['limittime']}}</td>
+                                <td class="w-study-time" title="{{floor(intval($row['RealStudyTime'])/60)}}분 {{floor(intval($row['RealStudyTime'])%60)}}초">{{floor(intval($row['RealStudyTime'])/60)}}분 / {{$row['limittime']}}</td>
                                 <td class="w-r-time">{{$row['remaintime']}}</td>
                             </tr>
                         @empty

@@ -1,8 +1,6 @@
 var player;
 var step_;
 var realPlayerTime = null;
-//var pcScreenWidth = screen.availWidth;
-//var pcScreenHeight = screen.availHeight;
 
 var playerWidth;
 var playerHeight;
@@ -10,6 +8,8 @@ var playerHeight;
 var playerTitleHeight = 45;
 var playerPaddingWidth = 20;
 var playerPaddingHeight = 70;
+
+var chromePadding = 15;
 
 var video_container_width;
 var video_container_height;
@@ -121,15 +121,28 @@ function click()
     }
 }
 
+
 function setScreenReSizeVal()
 {
+    var checkChrome = false;
+    var agent = navigator.userAgent.toLowerCase();
+    if (agent.indexOf("chrome") != -1) {
+        checkChrome = true;
+    }
+
     video_container_height = parseInt(video_container_width * 9 / ratio);
 
     playerWidth = video_container_width + SubFrameTag_width + playerPaddingWidth;
+
+    if(checkChrome){
+        playerWidth = playerWidth + chromePadding;
+    }
+
     playerHeight = video_container_height + playerTitleHeight + controller_container_height + playerPaddingHeight;
     moveLeft = parseInt((( screen.availWidth - 10 ) - playerWidth) / 2);
     moveTop = parseInt((( screen.availHeight - 30 ) - playerHeight) / 2);
 }
+
 
 function screenResize()
 {
@@ -145,8 +158,6 @@ function screenResize()
 
 function fnDefense()
 {
-    return ;
-
     var checkStatus;
     var checkCrome = true;
     var element = new Image();
@@ -218,10 +229,10 @@ function fnSettingPOP()
 }
 
 
-//document.onmousedown = click;
-//document.onkeydown = click;
+document.onmousedown = click;
+document.onkeydown = click;
 
-/*
+
 $(document).keydown(function (event) {
     if (event.keyCode == 123) {
         return false;
@@ -234,7 +245,7 @@ $(document).keydown(function (event) {
 $(document).on("contextmenu", function (e) {
     e.preventDefault();
 });
-*/
+
 
 
 

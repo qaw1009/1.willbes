@@ -17,7 +17,7 @@
             -moz-box-sizing: border-box;
         }
         .page {
-            width: 770px;  
+            width:770px;  
             margin:15px;        
         }
         .page h3 {

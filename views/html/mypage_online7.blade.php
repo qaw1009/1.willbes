@@ -701,7 +701,7 @@
 <script type="text/javascript">
     function openArmConfirm(){
         var url = 'mypage_online8' ;
-        window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
+        window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=800,height=800');
     }
 </script>
 @stop

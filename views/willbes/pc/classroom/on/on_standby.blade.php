@@ -214,7 +214,7 @@
             </div>
             <!-- willbes-Mypage-Tabs -->
 
-            <div id="STARTPASS" class="willbes-Layer-PassBox willbes-Layer-PassBox740 h800 abs"></div>
+            <div id="STARTPASS" class="willbes-Layer-PassBox willbes-Layer-PassBox740 abs"></div>
             <!-- willbes-Layer-PassBox : 수강시작일 변경 -->
 
         </div>

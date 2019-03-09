@@ -466,10 +466,10 @@
             </div>
             <!-- willbes-Mypage-Tabs -->
 
-            <div id="STOPPASS" class="willbes-Layer-PassBox willbes-Layer-PassBox740 h800 abs"></div>
+            <div id="STOPPASS" class="willbes-Layer-PassBox willbes-Layer-PassBox740 abs"></div>
             <!-- willbes-Layer-PassBox : 일시정지 -->
 
-            <div id="EXTRAPASS" class="willbes-Layer-PassBox willbes-Layer-PassBox740 h800 abs"></div>
+            <div id="EXTRAPASS" class="willbes-Layer-PassBox willbes-Layer-PassBox740 abs"></div>
             <!-- willbes-Layer-PassBox : 수강연장 -->
 
         </div>

@@ -261,6 +261,8 @@
                         <tr>
                             <th>NO</th>
                             <th class="rowspan">주문번호</th>
+                            <th class="rowspan">결제채널</th>
+                            <th class="rowspan">결제루트</th>
                             <th class="rowspan">결제수단</th>
                             <th class="rowspan">결제완료일 (접수신청일)</th>
                             <th class="rowspan">총 실결제금액</th>
@@ -578,6 +580,8 @@
                     {'data' : 'OrderNo', 'render' : function(data, type, row, meta) {
                         return '<a href="{{ site_url('/pay/visit/show') }}/' + row.OrderIdx + '" class="blue" target="_blank"><u>' + data + '</u></a>';
                     }},
+                    {'data' : 'PayChannelCcdName'},
+                    {'data' : 'PayRouteCcdName'},
                     {'data' : 'PayMethodCcdName'},
                     {'data' : 'CompleteDatm', 'render' : function(data, type, row, meta) {
                         return (data !== null ? data : '') + '<br/>(' + row.OrderDatm + ')';

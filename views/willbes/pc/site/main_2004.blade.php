@@ -33,6 +33,8 @@
                     </div>
                 </div>
                 @endif
+
+                @if(isset($data['arr_main_banner']['메인_서브1'], $data['arr_main_banner']['메인_서브2'], $data['arr_main_banner']['메인_서브3']) === true)
                 <div class="VisualsubBox mt20">
                     <ul>
                         @for($i=1; $i<=3; $i++)
@@ -54,6 +56,7 @@
                         @endfor
                     </ul>
                 </div>
+                @endif
             </div>
         </div>
         <div class="Section Bnr mt5 mb80">

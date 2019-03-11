@@ -390,7 +390,7 @@
                                                 @endif
 
                                                 {{-- 방문결제 버튼 --}}
-                                                @if($row['StudyApplyCcd'] != '654002')
+                                                @if($row['StudyApplyCcd'] != '654002' && $row['IsSalesAble'] == 'Y')
                                                     <div class="visitBuy"><a href="#none" class="btn-off-visit-pay" data-prod-code="{{ $row['ProdCode'] . ':' . $price_row['SaleTypeCcd'] . ':' . $row['ProdCode'] }}">방문결제</a></div>
                                                 @endif
                                             </td>

@@ -103,7 +103,7 @@
         <div class="evtCtnsBox wb_03" >
             <img src="http://file3.willbes.net/new_cop/2018/03/EV180302_p4.png"  alt="02" usemap="#pass">
             <map name="pass" id="pass">
-                <area shape="rect" coords="465,644,688,670" href="{{ site_url('/home/index/cate/3001') }}" onfocus='this.blur()'  alt="신광은경찰PASS" target="_blink">
+                <area shape="rect" coords="465,644,688,670" href="{{ site_url('/promotion/index/cate/3001/code/1017') }}" onfocus='this.blur()'  alt="신광은경찰PASS" target="_blink">
             </map>
         </div>
 

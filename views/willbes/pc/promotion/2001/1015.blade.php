@@ -91,7 +91,7 @@
         <div class="evtCtnsBox wb_cts01" >
             <img src="http://file3.willbes.net/new_cop/on_basic/OB190207_p2.jpg"  alt="언론" usemap="#link1" />
             <map name="link1" >
-                <area shape="rect" coords="82,524,286,577" href="http://www.willbescop.net/event/movie/event.html?event_cd=On_170126_p&topMenuType=O#main" onfocus='this.blur()' alt="언론보도" target="_blank"/>
+                <area shape="rect" coords="82,524,286,577" href="{{ site_url('/promotion/index/cate/3001/code/1021') }}" onfocus='this.blur()' alt="언론보도" target="_blank"/>
             </map>
         </div><!--//wb_cts01-->
 

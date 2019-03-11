@@ -9951,10 +9951,11 @@ table.acadlecInfoPackageTable tr.Top td {
     padding: 0 15px;
 }
 .videoPopup .view .viewList .Tit {
+    display: inline-block;
     font-size: 16px; 
     color: #fff;
     line-height: 45px;
-    width:90%; 
+    width:80%; 
     overflow:hidden;
     white-space:nowrap; 
     text-overflow:ellipsis;

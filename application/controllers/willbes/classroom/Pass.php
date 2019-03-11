@@ -366,7 +366,11 @@ class Pass extends \app\controllers\FrontController
                 $studytime = intval($row['RealStudyTime']);
 
                 // 제한시간 분 -> 초
-                $limittime = intval($row['wRuntime']) * intval($lec['MultipleApply']) * 60;
+                if($row['RealExpireTime'] == 0){
+                    $limittime = intval($row['wRuntime']) * intval($lec['MultipleApply']) * 60;
+                } else {
+                    $limittime = intval($row['RealExpireTime']) * 60;
+                }
 
                 if($studytime > $limittime){
                     // 제한시간 초과

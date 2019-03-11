@@ -10,9 +10,9 @@
     <link href="/public/vendor/starplayer/css/starplayer.css?token={{time()}}" rel="stylesheet" type="text/css">
 </head>
 <body onkeydown="onKeyDown(event.keyCode);" style="background-color: black;margin: 0 0 0 0">
-<div class="videoPopup">
+<div class="videoPopup" id="videoPopup">
     <div class="view p_re">
-        <div class="viewList">
+        <div class="viewList" id="viewList">
             <span class="Tit NGR"><span class="NG" id="title">{{$data['pretitle']}}</span> : {{$data['title']}}</span>
             <ul class="btnList">
                 <!--
@@ -23,13 +23,13 @@
                 <li><span class="btnFAQ"><a href="{{front_url('/support/faq/index')}}" target="_blank">동영상 FAQ</a></span></li>
             </ul>
         </div>
-        <div id="settingPOP" class="settingPOP" style="right:-264px;">
-            <img src="{{ img_url('player/player_key.png') }}" usemap="#player_key" style="border: 0;">
+        <div id="settingPOP" class="settingPOP">
+            <img src="{{ img_url('player/player_key.png') }}" usemap="#player_key" style="border: 0; z-index:12;" onclick="alert('img');">
             <map name="player_key">
                 <area shape="rect" coords="234,1,262,32" href="javascript:;" onclick="fnSettingPOP();" onfocus="blur();" />
             </map>
         </div>
-        <div id="video-container" style="width:640px;height:400px;"></div>
+        <div id="video-container" style="width:640px;height:400px;position:absolute;"></div>
         <div id="controller-container" style="width:640px;height:81px;"></div>
         <div id="controller-container2" class="starplayer_script_ui" style="margin: 0 0 0 0; display:block; position:absolute; top:400px; background-color:black; width:640px; height:81px;">
             <div class="top_area">
@@ -97,6 +97,11 @@
     ratio = {{empty($data['ratio']) == true ? '16' : $data['ratio']}};
     startPosition = {{empty($data['startPosition']) == true ? '0' : $data['startPosition']}};
     video_container_width = @if($data['quility'] == 'WD'){{'1280'}}@elseif($data['quility'] == 'HD'){{'960'}}@else{{'642'}}@endif;
+
+    function fnSettingPOP()
+    {
+        $('#settingPOP').toggle();
+    }
 </script>
 @yield('script')
 </body>

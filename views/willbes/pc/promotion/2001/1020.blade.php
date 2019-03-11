@@ -264,26 +264,12 @@
                 alert("이용안내에 동의하셔야 합니다.");
                 return;
             }
-            var url = '{{ front_url('/periodPackage/show/cate/3008/pack/648001/prod-code/') }}' + code;
+            var url = '{{ site_url('/periodPackage/show/cate/3008/pack/648001/prod-code/') }}' + code;
             location.href = url;
         }
     </script>
-
-
     <script src="/public/js/willbes/jquery.nav.js"></script>
     <script>
-        $( document ).ready( function() {
-            var jbOffset = $( '.skybanner' ).offset();
-            $( window ).scroll( function() {
-                if ( $( document ).scrollTop() > jbOffset.top ) {
-                    $( '.skybanner' ).addClass( 'skybanner_sectionFixed' );
-                }
-                else {
-                    $( '.skybanner' ).removeClass( 'skybanner_sectionFixed' );
-                }
-            });
-        } );
-
         $(function(e){
             var targetOffset= $("#evtContainer").offset().top;
             $('html, body').animate({scrollTop: targetOffset}, 1000);

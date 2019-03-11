@@ -89,18 +89,22 @@
                             <td class="w-lec">{{$row['wUnitName']}}</td>
                             <td class="w-lec-time">{{$row['wRuntime']}}분</td>
                             <td class="w-free mypage">
-                                @if($row['isstart'] == 'Y' && $row['ispause'] == 'N')
-                                    @if($row['timeover'] == 'N')
-                                        @if($row['wWD'] != '')<div class="tBox NSK t3 white"><a href="javascript:;" onclick='fnPlayerBookmark("{{$row['OrderIdx']}}","{{$row['ProdCode']}}","{{$row['ProdCodeSub']}}","{{$row['wLecIdx']}}","{{$row['wUnitIdx']}}","WD","{{$row['Time']}}");' >WIDE</a></div>@endif
-                                        @if($row['wHD'] != '')<div class="tBox NSK t1 black"><a href="javascript:;" onclick='fnPlayerBookmark("{{$row['OrderIdx']}}","{{$row['ProdCode']}}","{{$row['ProdCodeSub']}}","{{$row['wLecIdx']}}","{{$row['wUnitIdx']}}","HD","{{$row['Time']}}");' >HIGH</a></div>@endif
-                                        @if($row['wSD'] != '')<div class="tBox NSK t2 gray"><a href="javascript:;" onclick='fnPlayerBookmark("{{$row['OrderIdx']}}","{{$row['ProdCode']}}","{{$row['ProdCodeSub']}}","{{$row['wLecIdx']}}","{{$row['wUnitIdx']}}","SD","{{$row['Time']}}");' >LOW</a></div>@endif
-                                    @else
-                                        <div class="tBox NSK t1 black"><a>시간초과</a></div>
-                                    @endif
-                                @elseif($row['ispause'] == 'Y')
-                                    <div class="tBox NSK t1 black"><a>일시중지</a></div>
+                                @if($lec['isBtob'] == 'Y' && $lec['enableIp'] == 'N')
+                                    <div class="tBox NSK t1 black"><a>수강불가</a></div>
                                 @else
-                                    <div class="tBox NSK t1 black"><a>수강대기</a></div>
+                                    @if($row['isstart'] == 'Y' && $row['ispause'] == 'N')
+                                        @if($row['timeover'] == 'N')
+                                            @if($row['wWD'] != '')<div class="tBox NSK t3 white"><a href="javascript:;" onclick='fnPlayerBookmark("{{$row['OrderIdx']}}","{{$row['ProdCode']}}","{{$row['ProdCodeSub']}}","{{$row['wLecIdx']}}","{{$row['wUnitIdx']}}","WD","{{$row['Time']}}");' >WIDE</a></div>@endif
+                                            @if($row['wHD'] != '')<div class="tBox NSK t1 black"><a href="javascript:;" onclick='fnPlayerBookmark("{{$row['OrderIdx']}}","{{$row['ProdCode']}}","{{$row['ProdCodeSub']}}","{{$row['wLecIdx']}}","{{$row['wUnitIdx']}}","HD","{{$row['Time']}}");' >HIGH</a></div>@endif
+                                            @if($row['wSD'] != '')<div class="tBox NSK t2 gray"><a href="javascript:;" onclick='fnPlayerBookmark("{{$row['OrderIdx']}}","{{$row['ProdCode']}}","{{$row['ProdCodeSub']}}","{{$row['wLecIdx']}}","{{$row['wUnitIdx']}}","SD","{{$row['Time']}}");' >LOW</a></div>@endif
+                                        @else
+                                            <div class="tBox NSK t1 black"><a>시간초과</a></div>
+                                        @endif
+                                    @elseif($row['ispause'] == 'Y')
+                                        <div class="tBox NSK t1 black"><a>일시중지</a></div>
+                                    @else
+                                        <div class="tBox NSK t1 black"><a>수강대기</a></div>
+                                    @endif
                                 @endif
                             </td>
                             <td class="w-bm-time">{{gmdate('H시 i분 s초', $row['Time'])}}</td>

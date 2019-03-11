@@ -237,12 +237,6 @@ function fnSetTop(obj)
     alert(player.getTopmost());
 }
 
-
-function fnSettingPOP()
-{
-    $('#settingPOP').toggle();
-}
-
 /*
 
 document.onmousedown = click;

@@ -9941,12 +9941,18 @@ table.acadlecInfoPackageTable tr.Top td {
 }
 
 /* Video Player */
+.videoPopu {
+    width: 1120px;
+    margin:0 auto;
+}
 .videoPopup .view {
     float: left;
     background: #000;
     height: 100%;
 }
+
 .videoPopup .view .viewList {
+    position: relative;
     height: 45px;
     padding: 0 15px;
 }
@@ -9964,7 +9970,9 @@ table.acadlecInfoPackageTable tr.Top td {
     vertical-align: baseline;
 }
 .videoPopup .view  .viewList .btnList {
-    float: right;
+    position: absolute;
+    top:0;
+    right:0
 }
 .videoPopup .view  .viewList .btnList li {
     display: inline-block;

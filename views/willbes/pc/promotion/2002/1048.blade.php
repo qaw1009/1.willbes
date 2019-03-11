@@ -97,7 +97,7 @@
         <div class="evtCtnsBox wb_top" id="main">
             <img src="http://file3.willbes.net/new_cop/2019/02/EV190211_p1_soldout.png"  alt="메인" usemap="#link"/>
             <map name="link" >
-                <area shape="rect" coords="962,752,1115,905" href="/boardCustomerOn/board_view.html?topMenuType=O&topMenuGnb=OM_008&topMenu=MAIN&menuID=OM_008_001&topMenuName=AI¹Y°æAu&BOARDTYPE=1&INCTYPE=view&BOARD_MNG_SEQ=NOTICE_013&currentPage=&BOARD_SEQ=12149&PARENT_BOARD_SEQ=0&SEARCHKIND=&SEARCHTEXT=" onfocus='this.blur()' target="_blank" alt="온라인모의고사안내" />
+                <area shape="rect" coords="962,752,1115,905" href="{{ site_url('/support/notice/index/cate/3001') }}" onfocus='this.blur()' target="_blank" alt="온라인모의고사안내" />
             </map>
         </div>
 
@@ -114,16 +114,16 @@
             <div>
                 <img src="http://file3.willbes.net/new_cop/2019/01/EV190115_p4_re.png"  alt="전국학원"/>
                 <ul>
-                    <li><a href="http://www.willbescop.net/mouigosa/request/list.html?topMenuType=F&topMenuGnb=FM_004&topMenu=MAIN&menuID=FM_004_002_002&topMenuName=수험연구소&BOARDTYPE=4&INCTYPE=list" alt="노량진" onmouseover="$('span.area01').addClass('on');" onmouseleave="$('span.area01').removeClass('on');">신청하기</a></li>
-                    <li><a href="http://www.willbescop.net/mouigosa/request/list.html?topMenuType=F&topMenuGnb=FM_004&topMenu=MAIN&menuID=FM_004_002_002&topMenuName=수험연구소&BOARDTYPE=4&INCTYPE=list" alt="신림" onmouseover="$('span.area02').addClass('on');" onmouseleave="$('span.area02').removeClass('on');">신청하기</a></li>
-                    <li><a href="http://www.willbescop.net/mouigosa/request/list.html?topMenuType=F&topMenuGnb=FM_004&topMenu=MAIN&menuID=FM_004_002_002&topMenuName=수험연구소&BOARDTYPE=4&INCTYPE=list" alt="인천" onmouseover="$('span.area03').addClass('on');" onmouseleave="$('span.area03').removeClass('on');">신청하기</a></li>
-                    <li><a href="http://www.willbescop.net/mouigosa/request/list.html?topMenuType=F&topMenuGnb=FM_004&topMenu=MAIN&menuID=FM_004_002_002&topMenuName=수험연구소&BOARDTYPE=4&INCTYPE=list" alt="광주" onmouseover="$('span.area04').addClass('on');" onmouseleave="$('span.area04').removeClass('on');">신청하기</a></li>
-                    <li><a href="http://www.willbescop.net/mouigosa/request/list.html?topMenuType=F&topMenuGnb=FM_004&topMenu=MAIN&menuID=FM_004_002_002&topMenuName=수험연구소&BOARDTYPE=4&INCTYPE=list" alt="전주" onmouseover="$('span.area05').addClass('on');" onmouseleave="$('span.area05').removeClass('on');">신청하기</a></li>
-                    <li><a href="#none" alt="익산" onmouseover="$('span.area05').addClass('on');" onmouseleave="$('span.area05').removeClass('on');" class="end">마감</a></li>
-                    <li><a href="http://www.willbescop.net/mouigosa/request/list.html?topMenuType=F&topMenuGnb=FM_004&topMenu=MAIN&menuID=FM_004_002_002&topMenuName=수험연구소&BOARDTYPE=4&INCTYPE=list" alt="대구" onmouseover="$('span.area06').addClass('on');" onmouseleave="$('span.area06').removeClass('on');">신청하기</a></li>
-                    <li><a href="http://www.willbescop.net/mouigosa/request/list.html?topMenuType=F&topMenuGnb=FM_004&topMenu=MAIN&menuID=FM_004_002_002&topMenuName=수험연구소&BOARDTYPE=4&INCTYPE=list" alt="부산" onmouseover="$('span.area07').addClass('on');" onmouseleave="$('span.area07').removeClass('on');">신청하기</a></li>
-                    <li><a href="http://www.willbescop.net/mouigosa/request/list.html?topMenuType=F&topMenuGnb=FM_004&topMenu=MAIN&menuID=FM_004_002_002&topMenuName=수험연구소&BOARDTYPE=4&INCTYPE=list" alt="진주" onmouseover="$('span.area08').addClass('on');" onmouseleave="$('span.area08').removeClass('on');">신청하기</a></li>
-                    <li><a href="http://www.willbescop.net/mouigosa/request/list.html?topMenuType=F&topMenuGnb=FM_004&topMenu=MAIN&menuID=FM_004_002_002&topMenuName=수험연구소&BOARDTYPE=4&INCTYPE=list" alt="제주" onmouseover="$('span.area09').addClass('on');" onmouseleave="$('span.area09').removeClass('on');">신청하기</a></li>
+                    <li><a href="{{ site_url('/pass/mockTest/apply/') }}" alt="노량진" onmouseover="$('span.area01').addClass('on');" onmouseleave="$('span.area01').removeClass('on');" target="_blank">신청하기</a></li>
+                    <li><a href="{{ site_url('/pass/mockTest/apply/') }}" alt="신림" onmouseover="$('span.area02').addClass('on');" onmouseleave="$('span.area02').removeClass('on');" target="_blank">신청하기</a></li>
+                    <li><a href="{{ site_url('/pass/mockTest/apply/') }}" alt="인천" onmouseover="$('span.area03').addClass('on');" onmouseleave="$('span.area03').removeClass('on');" target="_blank">신청하기</a></li>
+                    <li><a href="{{ site_url('/pass/mockTest/apply/') }}" alt="광주" onmouseover="$('span.area04').addClass('on');" onmouseleave="$('span.area04').removeClass('on');" target="_blank">신청하기</a></li>
+                    <li><a href="{{ site_url('/pass/mockTest/apply/') }}" alt="전주" onmouseover="$('span.area05').addClass('on');" onmouseleave="$('span.area05').removeClass('on');" target="_blank">신청하기</a></li>
+                    <li><a href="{{ site_url('/pass/mockTest/apply/') }}" alt="익산" onmouseover="$('span.area05').addClass('on');" onmouseleave="$('span.area05').removeClass('on');" class="end" target="_blank">마감</a></li>
+                    <li><a href="{{ site_url('/pass/mockTest/apply/') }}" alt="대구" onmouseover="$('span.area06').addClass('on');" onmouseleave="$('span.area06').removeClass('on');" target="_blank">신청하기</a></li>
+                    <li><a href="{{ site_url('/pass/mockTest/apply/') }}" alt="부산" onmouseover="$('span.area07').addClass('on');" onmouseleave="$('span.area07').removeClass('on');" target="_blank">신청하기</a></li>
+                    <li><a href="{{ site_url('/pass/mockTest/apply/') }}" alt="진주" onmouseover="$('span.area08').addClass('on');" onmouseleave="$('span.area08').removeClass('on');" target="_blank">신청하기</a></li>
+                    <li><a href="{{ site_url('/pass/mockTest/apply/') }}" alt="제주" onmouseover="$('span.area09').addClass('on');" onmouseleave="$('span.area09').removeClass('on');" target="_blank">신청하기</a></li>
                 </ul>
                 <span class="area01">노량진</span>
                 <span class="area02">신림</span>
@@ -208,10 +208,9 @@
             inYears: function(dd1, dd2) {
                 return dd2.getFullYear()-dd1.getFullYear();
             }
-        }
+        };
 
         function daycountDown() {
-            //event_day = new Date(2016,4,6,23,59,59);
             // 한달 전 날짜로 셋팅
             event_day = new Date(2019,1,22,17,59,59);
             now = new Date();
@@ -222,8 +221,6 @@
             var Hourleft = timeGap.getHours();
             var Minuteleft = timeGap.getMinutes();
             var Secondleft = timeGap.getSeconds();
-
-            //alert(Monthleft+"-"+Dateleft+"-"+Hourleft+"-"+Minuteleft+"-"+Secondleft)
 
             if((event_day.getTime() - now.getTime()) > 0) {
                 $("#dd1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Dateleft/10) + ".png");

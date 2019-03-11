@@ -50,7 +50,7 @@
         <div class="evtCtnsBox wb_cts01" >
             <img src="http://file3.willbes.net/new_cop/2018/08/EV180828_3.png"alt="막강한할인혜택3가지" usemap="#Map_lec_go" border="0"/>
             <map name="Map_lec_go">
-                <area shape="rect" coords="227,1042,1006,1137" href="http://www.willbescop.net/event/movie/event.html?event_cd=sparta&topMenuType=F" target="_blank" alt="관리반보러가기">
+                <area shape="rect" coords="227,1042,1006,1137" href="{{ site_url('/pass/promotion/index/code/1051') }}" target="_blank" alt="관리반보러가기">
                 <area shape="rect" coords="218,1564,1009,1655" href="http://www.willbescop.net/event/movie/event.html?event_cd=Off_171031_p&topMenuType=F#main" target="_blank" alt="체력학원보러가기">
             </map>
         </div>
@@ -79,11 +79,7 @@
         <!--wb_cts04//-->
 
         <div class="evtCtnsBox wb_cts01" >
-            <img src="http://file3.willbes.net/new_cop/2018/08/EV180828_6.png" alt="" usemap="#Map_lec180828" border="0" />
-            <map name="Map_lec180828">
-                <area shape="rect" coords="778,379,1068,462" href="javascript:alert('수강신청은 통합생활 관리반으로 문의 전화 바랍니다.');" alt="기본과정2">
-                <area shape="rect" coords="778,569,1069,654" href="javascript:alert('수강신청은 통합생활 관리반으로 문의 전화 바랍니다.');" alt="3차시험대비반">
-            </map>
+            <img src="http://file3.willbes.net/new_cop/2018/08/EV180828_6.png" alt="" border="0" />
         </div>
         <!--wb_cts05//-->
 

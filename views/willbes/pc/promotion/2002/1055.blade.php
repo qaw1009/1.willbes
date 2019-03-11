@@ -52,8 +52,8 @@
         <div class="evtCtnsBox wb_top">
             <img src="http://file3.willbes.net/new_gosi/2018/06/EV180607_1_1.png" alt="" />
             <ul class="tab_menu">
-                <li><a href="http://daegu.willbes.net/event/movie/event.html?event_cd=off_180611_01_g&EventReply=Y&topMenuType=F&topMenuGnb=FM_001"><img src="http://file3.willbes.net/new_gosi/2018/06/EV180607_t1_on.png"  onmouseover="this.src='http://file3.willbes.net/new_gosi/2018/06/EV180607_t1_on.png'" onMouseOut="this.src='http://file3.willbes.net/new_gosi/2018/06/EV180607_t1.png'" onMouseDown="this.src='http://file3.willbes.net/new_gosi/2018/06/EV180607_t1.png'" border="0"/></a></li>
-                <li><a href="http://daegu.willbes.net/event/movie/event.html?event_cd=off_180611_02_g&EventReply=Y&topMenuType=F&topMenuGnb=FM_001"><img src="http://file3.willbes.net/new_gosi/2018/06/EV180607_t2.png"  onmouseover="this.src='http://file3.willbes.net/new_gosi/2018/06/EV180607_t2_on.png'" onMouseOut="this.src='http://file3.willbes.net/new_gosi/2018/06/EV180607_t2.png'" onMouseDown="this.src='http://file3.willbes.net/new_gosi/2018/06/EV180607_t2.png'" border="0"/></a></li>
+                <li><a href="{{ site_url('/pass/promotion/index/code/1055') }}"><img src="http://file3.willbes.net/new_gosi/2018/06/EV180607_t1_on.png"  onmouseover="this.src='http://file3.willbes.net/new_gosi/2018/06/EV180607_t1_on.png'" onMouseOut="this.src='http://file3.willbes.net/new_gosi/2018/06/EV180607_t1.png'" onMouseDown="this.src='http://file3.willbes.net/new_gosi/2018/06/EV180607_t1.png'" border="0"/></a></li>
+                <li><a href="{{ site_url('/pass/promotion/index/code/1056') }}"><img src="http://file3.willbes.net/new_gosi/2018/06/EV180607_t2.png"  onmouseover="this.src='http://file3.willbes.net/new_gosi/2018/06/EV180607_t2_on.png'" onMouseOut="this.src='http://file3.willbes.net/new_gosi/2018/06/EV180607_t2.png'" onMouseDown="this.src='http://file3.willbes.net/new_gosi/2018/06/EV180607_t2.png'" border="0"/></a></li>
             </ul>
         </div>
         <!--WB_top//-->

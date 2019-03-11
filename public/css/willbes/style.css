@@ -9959,8 +9959,6 @@ table.acadlecInfoPackageTable tr.Top td {
     overflow:hidden;
     white-space:nowrap; 
     text-overflow:ellipsis;
-    background: #4b9e2b
-
 }
 .videoPopup .view .viewList span {
     vertical-align: baseline;
@@ -10014,7 +10012,7 @@ table.acadlecInfoPackageTable tr.Top td {
     display: none;
     position: absolute;
     top: 0;
-    right: 0;
+    left: 0;
     z-index: 9999;
 }
 

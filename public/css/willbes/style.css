@@ -9941,38 +9941,25 @@ table.acadlecInfoPackageTable tr.Top td {
 }
 
 /* Video Player */
-.videoPopu {
-    width: 1120px;
-    margin:0 auto;
-}
 .videoPopup .view {
     float: left;
     background: #000;
     height: 100%;
 }
-
 .videoPopup .view .viewList {
-    position: relative;
     height: 45px;
     padding: 0 15px;
 }
 .videoPopup .view .viewList .Tit {
-    display: inline-block;
     font-size: 16px; 
     color: #fff;
     line-height: 45px;
-    width:75%; 
-    overflow:hidden;
-    white-space:nowrap; 
-    text-overflow:ellipsis;
 }
 .videoPopup .view .viewList span {
     vertical-align: baseline;
 }
 .videoPopup .view  .viewList .btnList {
-    position: absolute;
-    top:0;
-    right:0
+    float: right;
 }
 .videoPopup .view  .viewList .btnList li {
     display: inline-block;

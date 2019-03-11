@@ -10013,7 +10013,7 @@ table.acadlecInfoPackageTable tr.Top td {
     position: absolute;
     top: 0;
     right: 0;
-    margin-right: 264px;
+    margin-right:0;
     z-index: 9999;
 }
 

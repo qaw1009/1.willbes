@@ -23,7 +23,7 @@
                 <li><span class="btnFAQ"><a href="{{front_url('/support/faq/index')}}" target="_blank">동영상 FAQ</a></span></li>
             </ul>
         </div>
-        <div id="settingPOP" class="settingPOP" style="right:-264px;">
+        <div id="settingPOP" class="settingPOP">
             <img src="{{ img_url('player/player_key.png') }}" usemap="#player_key" style="border: 0;">
             <map name="player_key">
                 <area shape="rect" coords="234,1,262,32" href="javascript:;" onclick="fnSettingPOP();" onfocus="blur();" />

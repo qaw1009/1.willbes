@@ -16,10 +16,15 @@
 }
 
 .gosi .VisualBox {
-    width: 1920px;
+    width: 100%;
+    max-width: 1920px;
     margin:0 auto;
     height: 400px;
     overflow: hidden;
+  }
+  .gosi .VisualBox img {
+    height: 400px;
+    max-width: 1920px;
   }
   
 .gosi .VisualBox .bx-wrapper .bx-controls-auto {

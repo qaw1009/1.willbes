@@ -240,9 +240,9 @@
 
                 <div class="noticeTabs mt30">
                     <ul class="tabWrap noticeWrap three">
-                        <li><a href="#notice1" class="on">시험공고</a></li>
-                        <li><a href="#notice2" class="">수험뉴스</a></li>
-                        <li><a href="#notice3" class="">합격수기</a></li>
+                        <li><a href="#notice1" class="on">시험정보</a></li>
+                        <li><a href="#notice2" class="">수험공고</a></li>
+                        <li><a href="#notice3" class="">수험뉴스</a></li>
                     </ul>
                     <div class="tabBox noticeBox">
                         <div id="notice1" class="tabContent p_re">

@@ -10,7 +10,7 @@
     <link href="/public/vendor/starplayer/css/starplayer.css?token={{time()}}" rel="stylesheet" type="text/css">
 </head>
 <body onkeydown="onKeyDown(event.keyCode);" style="background-color: black;margin: 0 0 0 0">
-<div class="videoPopup">
+<div class="videoPopup" id="videoPopup">
     <div class="view p_re">
         <div class="viewList">
             <span class="Tit NGR"><span class="NG" id="title">{{$data['pretitle']}}</span> : {{$data['title']}}</span>

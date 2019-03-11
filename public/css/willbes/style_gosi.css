@@ -1,7 +1,7 @@
 /* top bar banner */
-.topBanner {display:block; background:#ececec; width:100%; text-align:center}
-.topBanner p {width:100%; max-width:1120px; margin:0 auto}
-.topBanner p img {width:100%}
+.gosi .topBanner {display:block; background:#ececec; width:100%; text-align:center}
+.gosi .topBanner p {width:100%; max-width:1120px; margin:0 auto}
+.gosi .topBanner p img {width:100%}
 
 /*********************************************     Main Container : Gosi     *********************************************/
 .gosi .Depth .depth:last-child strong {

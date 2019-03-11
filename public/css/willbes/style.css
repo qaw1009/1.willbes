@@ -9954,6 +9954,11 @@ table.acadlecInfoPackageTable tr.Top td {
     font-size: 16px; 
     color: #fff;
     line-height: 45px;
+    width:90%; 
+    overflow:hidden;
+    white-space:nowrap; 
+    text-overflow:ellipsis;
+    color:#009ef5;
 }
 .videoPopup .view .viewList span {
     vertical-align: baseline;

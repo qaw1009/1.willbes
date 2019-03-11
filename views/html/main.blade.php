@@ -14,7 +14,7 @@
             <div class="ProcessBox">
                 <ul>
                     <li>
-                        <a href="https://gosi.dev.willbes.net/home/index/cate/3010" target="_blank">
+                        <a href="{{ site_url('https://pass.dev.willbes.net/home/index/cate/3010') }}" target="_blank">
                             <div class="wTit">
                                 <img src="{{ img_url('main/icon_willbes1.png') }}"> 공무원
                             </div>
@@ -25,7 +25,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="https://cop.dev.willbes.net/home/index/cate/3001" target="_blank">
+                        <a href="{{ site_url('https://police.dev.willbes.net/home/index/cate/3001') }}" target="_blank">
                             <div class="wTit">
                                 <img src="{{ img_url('main/icon_willbes2.png') }}"> 경찰
                             </div>
@@ -36,7 +36,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#none">
+                        <a href="{{ site_url('http://ssam.willbes.net') }}" target="_blank">
                             <div class="wTit">
                                 <img src="{{ img_url('main/icon_willbes3.png') }}"> 교원임용
                             </div>
@@ -60,18 +60,29 @@
                 </ul>
                 <ul>
                     <li>
-                        <a href="#none">
+                        <a href="{{ site_url('http://value.willbes.net') }}" target="_blank">
                             <div class="wTit">
                                 <img src="{{ img_url('main/icon_willbes5.png') }}"> 전문자격증
                             </div>
                             <div class="wTxt">
                                 노무/감평/변리/관세/세무/회계<br/>
-                                <strong>윌비스 한림법학원 나무 경영아카데미</strong>
+                                <strong>윌비스 한림법학원</strong>
                             </div>
                         </a>
                     </li>
                     <li>
-                        <a href="#none">
+                        <a href="{{ site_url('http://www.namucpa.com') }}" target="_blank">
+                            <div class="wTit">
+                                <img src="{{ img_url('main/icon_willbes5.png') }}"> 나무경영
+                            </div>
+                            <div class="wTxt">
+                                회계/세무/관세<br/>
+                                <strong>윌비스 나무경영 아카데미</strong>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ site_url('http://www.passhaja.co.kr') }}" target="_blank">
                             <div class="wTit">
                                 <img src="{{ img_url('main/icon_willbes6.png') }}"> 자격증
                             </div>
@@ -82,7 +93,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#none">
+                        <a href="{{ site_url('http://www.passhaja.co.kr') }}" target="_blank">
                             <div class="wTit">
                                 <img src="{{ img_url('main/icon_willbes7.png') }}"> 취업
                             </div>
@@ -92,8 +103,10 @@
                             </div>
                         </a>
                     </li>
+                </ul>
+                <ul>
                     <li>
-                        <a href="#none">
+                        <a href="{{ site_url('http://lang.willbes.net') }}" target="_blank">
                             <div class="wTit">
                                 <img src="{{ img_url('main/icon_willbes8.png') }}"> 어학
                             </div>
@@ -103,19 +116,54 @@
                             </div>
                         </a>
                     </li>
+                    <li>
+                        <a href="{{ site_url('http://www.willbeslife.net') }}" target="_blank">
+                            <div class="wTit">
+                                <img src="{{ img_url('main/icon_willbes8.png') }}"> 학점은행
+                            </div>
+                            <div class="wTxt">
+                                교육부 인정 학점은행 원격교육기관<br/>
+                                <strong>윌비스 원격평생교육원</strong>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ site_url('http://willbesedu.or.kr') }}" target="_blank">
+                            <div class="wTit">
+                                <img src="{{ img_url('main/icon_willbes8.png') }}"> 국비교육
+                            </div>
+                            <div class="wTxt">
+                                대한민국 국비교육 No.1<br/>
+                                <strong>윌비스 평생교육원</strong>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ site_url('http://willbesedu.or.kr') }}" target="_blank">
+                            <div class="wTit">
+                                <img src="{{ img_url('main/icon_willbes8.png') }}"> 출석 학점은행
+                            </div>
+                            <div class="wTxt">
+                                학점은행 평가인정 교육기관<br/>
+                                <strong>윌비스 고시학원 출석학점은행</strong>
+                            </div>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
     </div>
+
     <div class="Section Bnr">
         <div class="widthAuto">
             <div class="willbes-Bnr">
                 <ul>
-                    <li><a href="http://www.willbescop.net/event/movie/event.html?event_cd=On_180826_p&topMenuType=O#main" target="_blank"><img src="{{ img_url('main/banner/bnr_180913.png') }}"></a></li>
+                    <li><a href="none" target="_blank"><img src="{{ img_url('main/banner/bnr_180913.png') }}"></a></li>
                 </ul>
             </div>
         </div>
     </div>
+
     <div class="Section Act2 mb50">
         <div class="widthAuto">
             <div class="will-Tit mb-zero">시험일정</div>
@@ -193,6 +241,8 @@
             </div>
         </div>
     </div>
+
+<!--
     <div class="Section Act3 mb90">
         <div class="widthAuto">
             <dl>
@@ -241,6 +291,8 @@
             </dl>
         </div>
     </div>
+-->
+
     <div class="Section Bnr mb50">
         <div class="widthAuto">
             <dl class="willbes-Bnr">
@@ -283,7 +335,7 @@
                 <dt class="WhyWillbes">
                     <div class="will-Tit bd-none mb-zero">Why 윌비스 <span class="will-subTit sm">* JTBC·SBS·KBS·MBC · EBS·연합뉴스등국내주요언론및일본· 대만등해외취재</span></div>
                     <div class="whyBox c_both">
-                        <a href="#none"><img src="{{ img_url('main/video/video_180921.jpg') }}"></a>
+                        <a href="{{ site_url('https://police.dev.willbes.net/promotion/index/cate/3001/code/1021?type=1') }}"><img src="{{ img_url('main/video/video_180921.jpg') }}"></a>
                     </div>
                 </dt>
                 <dt class="NowWillbes">
@@ -314,40 +366,44 @@
                             <tr>
                                 <th class="Tit">공무원</th>
                                 <td>
-                                    <a href="#none">노량진</a>
-                                    <a href="#none">인천</a>
-                                    <a href="#none">대구</a>
-                                    <a href="#none">부산</a>
+                                    <a href="#{{ site_url('https://pass.dev.willbes.net/pass/home/index') }}" target="_blank">노량진</a>
+                                    <a href="#{{ site_url('https://pass.dev.willbes.net/pass/home/index') }}" target="_blank">인천</a>
+                                    <a href="#{{ site_url('https://pass.dev.willbes.net/pass/home/index') }}" target="_blank">대구</a>
+                                    <a href="#{{ site_url('https://pass.dev.willbes.net/pass/home/index') }}" target="_blank">부산</a>
                                 </td>
                             </tr>
                             <tr>
                                 <th class="Tit">경찰</th>
                                 <td>
-                                    <a href="#none">노량진</a>
-                                    <a href="#none">신림</a>
-                                    <a href="#none">인천</a>
-                                    <a href="#none">대구</a>
-                                    <a href="#none">부산</a>
-                                    <a href="#none">광주</a>
-                                    <a href="#none">제주</a>
-                                    <a href="#none">전북</a>
-                                    <a href="#none">진주</a>
+                                    <a href="#{{ site_url('https://police.dev.willbes.net/pass/campus/show/code/605001') }}" target="_blank">노량진</a>
+                                    <a href="#{{ site_url('https://police.dev.willbes.net/pass/campus/show/code/605002') }}" target="_blank">신림</a>
+                                    <a href="#{{ site_url('https://police.dev.willbes.net/pass/campus/show/code/605005') }}" target="_blank">인천</a>
+                                    <a href="#{{ site_url('https://police.dev.willbes.net/pass/campus/show/code/605004') }}" target="_blank">대구</a>
+                                    <a href="#{{ site_url('https://police.dev.willbes.net/pass/campus/show/code/605003') }}" target="_blank">부산</a>
+                                    <a href="#{{ site_url('https://police.dev.willbes.net/pass/campus/show/code/605006') }}" target="_blank">광주</a>
+                                    <a href="#{{ site_url('https://police.dev.willbes.net/pass/campus/show/code/605009') }}" target="_blank">제주</a>
+                                    <a href="#{{ site_url('https://police.dev.willbes.net/pass/campus/show/code/605007') }}" target="_blank">전북</a>
+                                    <a href="#{{ site_url('https://police.dev.willbes.net/pass/campus/show/code/605008') }}" target="_blank">진주</a>
                                 </td>
                             </tr>
                             <tr>
                                 <th class="Tit">교원임용</th>
-                                <td><a href="#none">노량진</a></td>
+                                <td>
+                                    <a href="#{{ site_url('http://ssam.willbes.net') }}" target="_blank">노량진</a>
+                                </td>
                             </tr>
                             <tr>
                                 <th class="Tit">고등고시</th>
-                                <td><a href="#none">신림(한림법학원)</a></td>
+                                <td>
+                                    <a href="#{{ site_url('http://www.hanlimgosi.co.kr') }}" target="_blank">신림(한림법학원)</a>
+                                </td>
                             </tr>
                             <tr>
                                 <th class="Tit">전문자격</th>
                                 <td>
-                                    <a href="#none">감평/노무 - 신림(한림법학원)</a>
-                                    <a href="#none">세무/회계 종로(나무아카데미)</a>
-                                    <a href="#none">변리사-강남</a>
+                                    <a href="#{{ site_url('http://value.willbes.net') }}" target="_blank">감평/노무 - 신림(한림법학원)</a>
+                                    <a href="#{{ site_url('http://www.namucpa.com') }}" target="_blank">세무/회계 종로(나무아카데미)</a>
+                                    <a href="#{{ site_url('http://patent.willbes.net') }}" target="_blank">변리사-강남</a>
                                 </td>
                             </tr>
                         </tbody>
@@ -356,9 +412,9 @@
                 </dt>
                 <dt class="imgBox">
                     <ul>
-                        <li><a href="http://www.willstory.co.kr/" target="_blank"><img src="{{ img_url('main/familysite_willstory.jpg') }}"></a></li>
-                        <li><a href="http://www.willbeslife.net/" target="_blank"><img src="{{ img_url('main/familysite_life.jpg') }}"></a></li>
-                        <li><a href="http://www.willbes.co.kr/" target="_blank"><img src="{{ img_url('main/familysite_edu.jpg') }}"></a></li>
+                        <li><a href="http://www.willstory.co.kr/" target="_blank"><img src="{{ img_url('main/familysite_willstory.jpg') }}" target="_blank"></a></li>
+                        <li><a href="http://www.willbeslife.net/" target="_blank"><img src="{{ img_url('main/familysite_life.jpg') }}" target="_blank"></a></li>
+                        <li><a href="http://www.willbes.co.kr/" target="_blank"><img src="{{ img_url('main/familysite_edu.jpg') }}" target="_blank"></a></li>
                     </ul>
                 </dt>
             </dl>

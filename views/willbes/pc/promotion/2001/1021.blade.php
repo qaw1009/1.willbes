@@ -95,10 +95,7 @@
                 <p class="rightBtn"><a id="imgBannerRight3"><img src="http://file3.willbes.net/new_cop/2017/01/EV170126_roll_arr_r.png"></a></p>
             </div>
             <img src="http://file3.willbes.net/new_cop/2017/01/EV170126_p5.png"  alt="5" /><br>
-            <a href="{{ app_url('/member/join/?ismobile=0&sitecode='.config_app('SiteCode'), 'www') }}"><img src="http://file3.willbes.net/new_cop/2017/01/EV170126_p2_1.png"  alt="신광은경찰팀 " usemap="#shin" border="0"/></a><br>
-            <map name="Map160927_p" id="shin">
-                <area shape="rect" coords="520,295,959,334" href="{{ front_url('/member/join/', 'www') }}" onfocus='this.blur()'  alt="회원가입" target="_blink">
-            </map>
+            <a href="{{ app_url('/member/join/?ismobile=0&sitecode=' . $__cfg['SiteCode'], 'www') }}" target="_blink"><img src="http://file3.willbes.net/new_cop/2017/01/EV170126_p2_1.png"  alt="신광은경찰팀 " border="0"/></a><br>
             <img src="http://file3.willbes.net/new_cop/2017/01/EV170126_p4_1.png"  alt="4" />
             </ul>
         </div>

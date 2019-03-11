@@ -9,7 +9,7 @@
             <div class="myToggle">
                 <div id="frame">
                     <div id="bannerList">
-                        <a href="http://willbescop.net/event/movie/event.html?event_cd=On_190123_c" target="_blank"><img src="{{ img_url('cop/banner/onTopBnar_190123C_02.png') }}" alt="신광은 경찰팀 적중" /></a>
+                        <a href="{{ site_url('/promotion/index/cate/3001/code/1022') }}" target="_blank"><img src="{{ img_url('cop/banner/onTopBnar_190123C_02.png') }}" alt="신광은 경찰팀 적중" /></a>
                     </div>
                 </div>
             </div>

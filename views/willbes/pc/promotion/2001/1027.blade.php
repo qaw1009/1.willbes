@@ -50,8 +50,7 @@
 
         <div class="evtCtnsBox wb_cts01" >
             <img src="http://file3.willbes.net/new_cop/2018/EV190111_pp2.png" alt="한국사정복" />
-            <a href="
-http://www.willbescop.net/teacher/movieTeacherBooklist.html?topMenuGnb=OM_002&topMenuType=O&topMenuGnb=OM_002&topMenu=081&topMenuName=일반경찰&menuID=OM_002_004&searchUserId=wc_005&searchSubjectNm=한국사&searchSubjectCode=1002" target="_blank"><img src="http://file3.willbes.net/new_cop/2018/04/EV180911_pp2_bt.png"  alt="한국사정복 " /></a>
+            <a href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/132280') }}" target="_blank"><img src="http://file3.willbes.net/new_cop/2018/04/EV180911_pp2_bt.png"  alt="한국사정복 " /></a>
         </div>
 
         <div class="evtCtnsBox wb_cts02">
@@ -65,8 +64,7 @@ http://www.willbescop.net/teacher/movieTeacherBooklist.html?topMenuGnb=OM_002&to
 
         <div class="evtCtnsBox wb_cts05" >
             <img src="http://file3.willbes.net/new_cop/2018/EV190111_pp5.png"  alt="적중사례" /></li>
-            <a href="http://www.willbescop.net/notice/view.html?topMenuType=F&topMenuGnb=FM_008&topMenu=MAIN&menuID=FM_008_001&topMenuName=ÀÏ¹Ý°æÂû&BOARD_MNG_SEQ=NOTICE_000&NOTICETYPE=notice&INCTYPE=view&currentPage=1&BOARD_SEQ=138280&PARENT_BOARD_SEQ=0&searchEventNo=undefined&SEARCHKIND=&SEARCHTEXT=
-" target="_blank">
+            <a href="{{ front_url('/support/notice/index/cate/3001') }}" target="_blank">
                 <img src="http://file3.willbes.net/new_cop/2018/04/EV180409_p5_bt.png"  alt="더 많은 적중사례 보러가기" />
             </a>
             <div class="slide_con">

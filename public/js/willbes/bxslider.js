@@ -44,7 +44,7 @@ $(function() {
 
 // Slider Number Script
 $(function() {
-    $('.sliderNum').bxSlider({
+    $('.sliderNum').bxSlider({        
         auto: true,
         controls: true,
         pause: 4000,
@@ -58,6 +58,7 @@ $(function() {
         }  
     });
 });
+
 
 // Slider Number Script (수동)
 $(function() {

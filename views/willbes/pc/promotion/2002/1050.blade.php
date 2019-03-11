@@ -72,10 +72,10 @@
         <div class="evtCtnsBox wb_cts04" id="lect">
             <img src="http://file3.willbes.net/new_cop/Off_superpass/SP190215_p5.jpg" alt="수강신청" usemap="#pass" />
             <map name="pass">
-                <area shape="rect" coords="302,1732,451,1791" href="http://www.willbescop.net/lecture/passLectureList.html?topMenuType=F&topMenuGnb=FM_003&topMenu=081&topMenuName=일반경찰&topMenuType=F&leftMenuLType=M0101&lecKType=D&searchSubjectCode=1044" alt="일반6개월">
-                <area shape="rect" coords="775,1732,927,1791" href="http://www.willbescop.net/lecture/passLectureList.html?topMenuType=F&topMenuGnb=FM_003&topMenu=082&topMenuName=일반경찰&topMenuType=F&leftMenuLType=M0101&lecKType=D&searchSubjectCode=1044" alt="경행6개월 ">
-                <area shape="rect" coords="302,2171,456,2233" href="http://www.willbescop.net/lecture/passLectureList.html?topMenuType=F&topMenuGnb=FM_003&topMenu=081&topMenuName=일반경찰&topMenuType=F&leftMenuLType=M0101&lecKType=D&searchSubjectCode=1044" alt="일반12개월">
-                <area shape="rect" coords="775,2171,927,2233" href="http://www.willbescop.net/lecture/passLectureList.html?topMenuType=F&topMenuGnb=FM_003&topMenu=082&topMenuName=일반경찰&topMenuType=F&leftMenuLType=M0101&lecKType=D&searchSubjectCode=1044" alt="경행12개월 ">
+                <area shape="rect" coords="302,1732,451,1791" href="{{ site_url('/pass/offVisitLecture?cate_code=3010&subject_idx=1097') }}" alt="일반6개월" target="_blank">
+                <area shape="rect" coords="775,1732,927,1791" href="{{ site_url('/pass/offVisitLecture?cate_code=3011&subject_idx=1097') }}" alt="경행6개월" target="_blank">
+                <area shape="rect" coords="302,2171,456,2233" href="{{ site_url('/pass/offVisitLecture?cate_code=3010&subject_idx=1097') }}" alt="일반12개월" target="_blank">
+                <area shape="rect" coords="775,2171,927,2233" href="{{ site_url('/pass/offVisitLecture?cate_code=3011&subject_idx=1097') }}" alt="경행12개월" target="_blank">
             </map>
         </div>
 

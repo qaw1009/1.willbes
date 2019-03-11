@@ -67,7 +67,7 @@
 
     <div class="evtContent NSK" id="evtContainer">
         <div class="skybanner" >
-            <a href="http://www.willbescop.net/notice/view.html?topMenuType=F&topMenuGnb=FM_008&topMenu=MAIN&menuID=FM_008_001&topMenuName=ÀÏ¹Ý°æÂû&BOARDTYPE=1&INCTYPE=view&BOARD_MNG_SEQ=NOTICE_000&currentPage=&BOARD_SEQ=143928&PARENT_BOARD_SEQ=&SEARCHKIND=&SEARCHTEXT=" target="_blank"><img src="http://file3.willbes.net/new_cop/sparta/SP190116_sky_right.jpg" alt="수강신청"></a>
+            <a href="{{ site_url('/pass/support/notice/index') }}" target="_blank"><img src="http://file3.willbes.net/new_cop/sparta/SP190116_sky_right.jpg" alt="수강신청"></a>
         </div>
 
         <div class="evtCtnsBox wb_top" id="sparta">
@@ -161,10 +161,10 @@
         <div class="evtCtnsBox wb_06" >
             <img src="http://file3.willbes.net/new_cop/sparta/SP190116_p6.png" alt="기대" usemap="#go"/>
             <map name="go" id="go">
-                <area shape="rect" coords="320,2519,399,2546" href="http://willbescop.net/lecture/passLectureList.html?topMenu=081&topMenuType=F&leftMenuLType=M0103&lecKType=D&searchCategoryCode=081&searchSubjectCode=1021" />
-                <area shape="rect" coords="320,2555,399,2580" href="http://busan.willbes.net/event/movie/event.html?event_cd=Off_180629_L&EventReply=Y&topMenuType=F&topMenu=001&topMenuGnb=FM_001" onfocus='this.blur()'  target="_blank"/>
-                <area shape="rect" coords="320,2591,399,2616" href="http://daegu.willbes.net/event/movie/event.html?event_cd=off_180611_01_g&EventReply=Y&topMenuType=F&topMenuGnb=FM_001"onfocus='this.blur()' target="_blank" />
-                <area shape="rect" coords="320,2624,399,2654" href="http://gwangju.willbes.net/movie/event.html?event_cd=sparta&topMenuType=F&topMenuGnb=FM_001"onfocus='this.blur()' target="_blank" />
+                <area shape="rect" coords="320,2519,399,2546" href="{{ site_url('/pass/offVisitLecture?cate_code=3010&subject_idx=1074&campus_ccd=605001') }}" target="_blank"/>
+                <area shape="rect" coords="320,2555,399,2580" href="{{ site_url('/pass/promotion/index/code/1057') }}" onfocus='this.blur()'  target="_blank"/>
+                <area shape="rect" coords="320,2591,399,2616" href="{{ site_url('/pass/promotion/index/code/1055') }}" onfocus='this.blur()' target="_blank" />
+                <area shape="rect" coords="320,2624,399,2654" href="{{ site_url('/pass/promotion/index/code/1051') }}" onfocus='this.blur()' target="_blank" />
             </map>
         </div>
 

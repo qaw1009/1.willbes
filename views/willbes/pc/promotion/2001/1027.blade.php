@@ -48,10 +48,10 @@
             <img src="http://file3.willbes.net/new_cop/2018/EV190111_pp1.png" alt="적중" />
         </div><!--wb_cts01//-->
 
-        <div class="evtCtnsBox wb_cts01" >
+{{--        <div class="evtCtnsBox wb_cts01" >
             <img src="http://file3.willbes.net/new_cop/2018/EV190111_pp2.png" alt="한국사정복" />
             <a href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/132280') }}" target="_blank"><img src="http://file3.willbes.net/new_cop/2018/04/EV180911_pp2_bt.png"  alt="한국사정복 " /></a>
-        </div>
+        </div>--}}
 
         <div class="evtCtnsBox wb_cts02">
             <img src="http://file3.willbes.net/new_cop/2018/04/EV180409_p3.png"  alt="고득점 전략가" />

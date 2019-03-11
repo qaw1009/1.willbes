@@ -52,12 +52,12 @@
         <div class="evtCtnsBox WB_con02" id="Map_0225_cop_event">
             <img src="http://file3.willbes.net/new_cop/2019/02/EV190225_2.png" alt="#" usemap="#Map_0225_lec" border="0" />
             <map name="Map_0225_lec">
-                <area shape="rect" coords="775,295,1069,358" href="/lecture/movieLectureDetail.html?topMenu=083&topMenuType=O&searchSubjectCode=1001&searchLeccode=D201800489&leftMenuLType=M0001&lecKType=D" target="_blank" alt="하승민">
-                <area shape="rect" coords="773,376,1071,440" href="/lecture/movieLectureDetail.html?topMenu=083&topMenuType=O&searchSubjectCode=1002&searchLeccode=D201900058&leftMenuLType=M0001&lecKType=D" target="_blank" alt="오태진">
-                <area shape="rect" coords="777,458,1072,523" href="/lecture/movieLectureDetail.html?topMenu=083&topMenuType=O&searchSubjectCode=1002&searchLeccode=D201900056&leftMenuLType=M0001&lecKType=D" target="_blank" alt="원유철">
-                <area shape="rect" coords="771,607,1069,670" href="/lecture/movieLectureDetail.html?topMenu=083&topMenuType=O&searchSubjectCode=1004&searchLeccode=D201800592&leftMenuLType=M0001&lecKType=D" target="_blank" alt="신광은">
-                <area shape="rect" coords="773,689,1073,751" href="/lecture/movieLectureDetail.html?topMenu=083&topMenuType=O&searchSubjectCode=1003&searchLeccode=D201800586&leftMenuLType=M0001&lecKType=D" target="_blank" alt="김원욱">
-                <area shape="rect" coords="765,766,1070,832" href="/lecture/movieLectureDetail.html?topMenu=083&topMenuType=O&searchSubjectCode=1030&searchLeccode=D201900039&leftMenuLType=M0001&lecKType=D" target="_blank" alt="공득인">
+                <area shape="rect" coords="775,295,1069,358" href="{{ site_url('/lecture/show/cate/3007/pattern/only/prod-code/132099') }}" target="_blank" alt="하승민">
+                <area shape="rect" coords="773,376,1071,440" href="{{ site_url('/lecture/show/cate/3007/pattern/only/prod-code/132262') }}" target="_blank" alt="오태진">
+                <area shape="rect" coords="777,458,1072,523" href="{{ site_url('/lecture/show/cate/3007/pattern/only/prod-code/132260') }}" target="_blank" alt="원유철">
+                <area shape="rect" coords="771,607,1069,670" href="{{ site_url('/lecture/show/cate/3007/pattern/only/prod-code/131926') }}" target="_blank" alt="신광은">
+                <area shape="rect" coords="773,689,1073,751" href="{{ site_url('/lecture/show/cate/3007/pattern/only/prod-code/131997') }}" target="_blank" alt="김원욱">
+                <area shape="rect" coords="765,766,1070,832" href="{{ site_url('/lecture/show/cate/3007/pattern/only/prod-code/132243') }}" target="_blank" alt="공득인">
             </map>
         </div>
 

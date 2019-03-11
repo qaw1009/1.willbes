@@ -56,7 +56,7 @@
         <div class="evtCtnsBox WB_con03">
             <img src="http://file3.willbes.net/new_cop/2019/02/EV190222_03.png" alt="#" usemap="#Map_ex_go" border="0" />
             <map name="Map_ex_go">
-                <area shape="rect" coords="305,624,791,722" href="/notice/view.html?topMenuType=F&topMenuGnb=FM_008&topMenu=MAIN&menuID=FM_008_001&topMenuName=ÀÏ¹Ý°æÂû&BOARD_MNG_SEQ=NOTICE_000&NOTICETYPE=notice&INCTYPE=view&currentPage=1&BOARD_SEQ=138232&PARENT_BOARD_SEQ=0&searchEventNo=undefined&SEARCHKIND=&SEARCHTEXT=" target="_blank" alt="사례보러가기">
+                <area shape="rect" coords="305,624,791,722" href="{{ site_url('/support/notice/index/cate/3001') }}" target="_blank" alt="사례보러가기">
             </map>
         </div>
 
@@ -71,8 +71,8 @@
         <div class="evtCtnsBox WB_con06"  id="0222_lecgo">
             <img src="http://file3.willbes.net/new_cop/2019/02/EV190222_06.png" alt="#" usemap="#Map_190222_lecgo" border="0" />
             <map name="Map_190222_lecgo">
-                <area shape="rect" coords="120,860,542,937" href="http://www.willbescop.net/lecture/passLectureDetail.html?topMenu=081&topMenuName=일반경찰&searchTopCategoryCode=&searchCategoryCode=081&searchSubjectCode=1001&searchLeccode=D201900154&leftMenuLType=&lecKType=&USER_ID=changhong79&hSEARCHTYPE=&hSEARCHTEXT=&learningCD=&topMenuType=F&topMenuGnb=OM_009&SEARCHSERIESCODE=" target="_blank" alt="학원신청">
-                <area shape="rect" coords="566,859,1010,937" href="http://www.willbescop.net/lecture/movieLectureDetail.html?topMenu=081&topMenuType=O&searchSubjectCode=1001&searchLeccode=D201900087&leftMenuLType=M0003&lecKType=D" target="_blank" alt="온라인동영상신청">
+                <area shape="rect" coords="120,860,542,937" href="{{ site_url('/pass/professor/show/prof-idx/50136/?cate_code=3010&subject_idx=1054&subject_name=%EC%98%81%EC%96%B4&tab=open_lecture') }}" target="_blank" alt="학원신청">
+                <area shape="rect" coords="566,859,1010,937" href="{{ site_url('/professor/show/cate/3001/prof-idx/50135/?subject_idx=1001&subject_name=%EC%98%81%EC%96%B4&tab=open_lecture') }}" target="_blank" alt="온라인동영상신청">
             </map>
         </div>
         <!--//WB_con06-->

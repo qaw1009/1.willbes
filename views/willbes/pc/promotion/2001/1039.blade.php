@@ -213,45 +213,45 @@
                         <td class="st03">적중예상 문제풀이 <span class="st02">2/25(월)~3/1(금),  총 5회 강의</span></td>
                         <td class="st01">2/25(월) 9:00</td>
                         <td class="st04"><a href="#none" class="active">마감</a></td>
-                        <td class="st04"><a href="http://willbescop.net/lecture/movieLectureDetail.html?topMenu=081&topMenuType=O&searchSubjectCode=1003&searchLeccode=D201900069&leftMenuLType=M0002&lecKType=D" target="_blank">수강신청</a></td>
+                        <td class="st04"><a href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/132273') }}" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td class="st01">하승민영어</td>
                         <td class="st03">적중예상 문제풀이 <span class="st02">3/2(토)~3/6(수), 총 5회 강의</span></td>
                         <td class="st01">3/2(토) 9:00</td>
                         <td class="st04"><a href="#none" class="active">마감</a></td>
-                        <td class="st04"><a href="http://willbescop.net/lecture/movieLectureDetail.html?topMenu=081&topMenuType=O&searchSubjectCode=1001&searchLeccode=D201900074&leftMenuLType=M0002&lecKType=D" target="_blank">수강신청</a></td>
+                        <td class="st04"><a href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/132278') }}" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td class="st01">신광은 형소법</td>
                         <td class="st03">적중예상 문제풀이 <span class="st02">3/7(목)~3/12(화), 총 5회 강의</span></td>
                         <td class="st01">3/7(목) 9:00</td>
-                        <td class="st04"><a href="http://willbescop.net/lecture/passLectureDetail.html?topMenu=081&topMenuName=%EC%9D%BC%EB%B0%98%EA%B2%BD%EC%B0%B0&searchTopCategoryCode=&searchCategoryCode=081&searchSubjectCode=1004&searchLeccode=D201900067&leftMenuLType=&lecKType=&USER_ID=changhong79&hSEARCHTYPE=&hSEARCHTEXT=&learningCD=&topMenuType=F&topMenuGnb=OM_009&SEARCHSERIESCODE=" target="_blank">수강신청</a></td>
-                        <td class="st04"><a href="http://willbescop.net/lecture/movieLectureDetail.html?topMenu=081&topMenuType=O&searchSubjectCode=1004&searchLeccode=D201900061&leftMenuLType=M0002&lecKType=D" target="_blank">수강신청</a></td>
+                        <td class="st04"><a href="{{ site_url('/pass/offLecture/index#110707') }}" target="_blank">수강신청</a></td>
+                        <td class="st04"><a href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/132265') }}" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td class="st01">오태진 한국사</td>
                         <td class="st03">사이다 모의고사 <span class="st02">3/13(수)~3/18(월), 총 5회 강의</span></td>
                         <td class="st01">3/13(수) 9:00</td>
-                        <td class="st04"><a href="http://willbescop.net/lecture/passLectureDetail.html?topMenu=081&topMenuName=%EC%9D%BC%EB%B0%98%EA%B2%BD%EC%B0%B0&searchTopCategoryCode=&searchCategoryCode=081&searchSubjectCode=1002&searchLeccode=D201900068&leftMenuLType=&lecKType=&USER_ID=changhong79&hSEARCHTYPE=&hSEARCHTEXT=&learningCD=&topMenuType=F&topMenuGnb=OM_009&SEARCHSERIESCODE=" target="_blank">수강신청</a></td>
-                        <td class="st04"><a href="http://willbescop.net/lecture/movieLectureDetail.html?topMenu=081&topMenuType=O&searchSubjectCode=1002&searchLeccode=D201900078&leftMenuLType=M0002&lecKType=D" target="_blank">수강신청</a></td>
+                        <td class="st04"><a href="{{ site_url('/pass/offLecture/index#110708') }}" target="_blank">수강신청</a></td>
+                        <td class="st04"><a href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/132282') }}" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td class="st01">원유철 한국사</td>
                         <td class="st03">시나지 빈칸채우기 <span class="st02">3/13(수)~3/18(월), 총 5회 강의</span></td>
                         <td class="st01">3/13(수) 9:00</td>
-                        <td class="st04"><a href="http://willbescop.net/lecture/passLectureDetail.html?topMenu=081&topMenuName=%EC%9D%BC%EB%B0%98%EA%B2%BD%EC%B0%B0&searchTopCategoryCode=&searchCategoryCode=081&searchSubjectCode=1002&searchLeccode=D201900069&leftMenuLType=&lecKType=&USER_ID=changhong79&hSEARCHTYPE=&hSEARCHTEXT=&learningCD=&topMenuType=F&topMenuGnb=OM_009&SEARCHSERIESCODE=" target="_blank">수강신청</a></td>
-                        <td class="st04"><a href="http://willbescop.net/lecture/movieLectureDetail.html?topMenu=081&topMenuType=O&searchSubjectCode=1002&searchLeccode=D201900076&leftMenuLType=M0002&lecKType=D" target="_blank">수강신청</a></td>
+                        <td class="st04"><a href="{{ site_url('/pass/offLecture/index#110709') }}" target="_blank">수강신청</a></td>
+                        <td class="st04"><a href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/132280') }}" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td class="st01">장정훈 경찰학</td>
                         <td class="st03">네친구 경찰학개론 <span class="st02">3/19(수)~3/23(토), 총 5회 강의</span></td>
                         <td class="st01">3/19(화) 9:00</td>
-                        <td class="st04"><a href="http://willbescop.net/lecture/passLectureDetail.html?topMenu=081&topMenuName=%EC%9D%BC%EB%B0%98%EA%B2%BD%EC%B0%B0&searchTopCategoryCode=&searchCategoryCode=081&searchSubjectCode=1005&searchLeccode=D201900070&leftMenuLType=&lecKType=&USER_ID=changhong79&hSEARCHTYPE=&hSEARCHTEXT=&learningCD=&topMenuType=F&topMenuGnb=OM_009&SEARCHSERIESCODE=" target="_blank">수강신청</a></td>
-                        <td class="st04"><a href="http://willbescop.net/lecture/movieLectureDetail.html?topMenu=081&topMenuType=O&searchSubjectCode=1005&searchLeccode=D201900066&leftMenuLType=M0002&lecKType=D" target="_blank">수강신청</a></td>
+                        <td class="st04"><a href="{{ site_url('/pass/offLecture/index#110710') }}" target="_blank">수강신청</a></td>
+                        <td class="st04"><a href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/132270') }}" target="_blank">수강신청</a></td>
                     </tr>
                 </table>
-                <div class=""bookimg>
+                <div class="bookimg">
 {{--                    <img src="http://file3.willbes.net/new_cop/2019/02/EV190215_c9.jpg" usemap="#Map190227_c1" border="0" />
                     <map name="Map190227_c1" >
                         <area shape="rect" coords="121,340,190,366" href="/book/view.html?RSC_ID=L201902261" alt="김원욱" />

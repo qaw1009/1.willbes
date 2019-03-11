@@ -202,7 +202,7 @@ class CertApplyFModel extends WB_Model
             if($certtypeccd === '684002' && empty($cert_data['Sms_Content']===false && empty($cert_data['CsTel'])) ) {
                 if (empty($this->session->userdata('mem_phone')) === false) {
                     /*sms 발송 모듈*/
-                    $this->load->library('sendsms');
+                    $this->load->library('sendSms');
                     if($this->sendsms->send($this->session->userdata('mem_phone'), $cert_data['Sms_Content'], $cert_data['CsTel']) !== true) {
                         throw new \Exception('인증 신청(SMS)에 실패했습니다.');
                     }

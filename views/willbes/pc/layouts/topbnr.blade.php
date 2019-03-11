@@ -32,7 +32,7 @@
     {{-- 공무원온라인 사이트일 경우만 적용 --}}
     <div id="topBannerLayer">
         <div class="topBanner">
-            <a href="#none"><img src="{{ img_url('gosi/banner/onTopBnar_190123C_01.gif') }}" alt="배너명"></a>
+            <a href="#none"><img src="{{ img_url('gosi/banner/bnr_top.jpg') }}" alt="배너명"></a>
         </div>
     </div>
 @endif

@@ -103,8 +103,8 @@
         <div class="evtCtnsBox wb_cts08" >
             <img src="http://file3.willbes.net/new_cop/2019/01/EV190111_c9.jpg" alt=" " usemap="#Map190111_c1" border="0" />
             <map name="Map190111_c1" >
-                <area shape="rect" coords="345,1054,610,1138" href="{{ front_url('/professor/show/cate/3001/prof-idx/50547/?subject_idx=1004&subject_name=%ED%98%95%EC%82%AC%EC%86%8C%EC%86%A1%EB%B2%95&tab=open_lecture') }}" target="_blank" />
-                <area shape="rect" coords="614,1054,871,1140" href="{{ front_url('/pass/professor/show/prof-idx/50548/?cate_code=3010&subject_idx=1057&subject_name=%ED%98%95%EC%82%AC%EC%86%8C%EC%86%A1%EB%B2%95&tab=open_lecture') }}"  target="_blank"/>
+                <area shape="rect" coords="345,1054,610,1138" href="{{ site_url('/professor/show/cate/3001/prof-idx/50547/?subject_idx=1004&subject_name=%ED%98%95%EC%82%AC%EC%86%8C%EC%86%A1%EB%B2%95&tab=open_lecture') }}" target="_blank" />
+                <area shape="rect" coords="614,1054,871,1140" href="{{ site_url('/pass/professor/show/prof-idx/50548/?cate_code=3010&subject_idx=1057&subject_name=%ED%98%95%EC%82%AC%EC%86%8C%EC%86%A1%EB%B2%95&tab=open_lecture') }}"  target="_blank"/>
             </map>
         </div><!--wb_cts08//-->
 

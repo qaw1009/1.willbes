@@ -208,7 +208,7 @@
                                             </select>
                                         </div>
                                         <div class="col-md-2">
-                                            <p class="form-control-static">• 다중리스트 옵션</p>
+                                            <p class="form-control-static">• 다중리스트 옵션 (관리차 필요값, 제어조건 없음)</p>
                                         </div>
                                     </div>
                                     <div class="form-group form-inline">

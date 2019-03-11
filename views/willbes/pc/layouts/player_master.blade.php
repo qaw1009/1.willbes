@@ -29,7 +29,7 @@
                 <area shape="rect" coords="234,1,262,32" href="javascript:;" onclick="fnSettingPOP();" onfocus="blur();" />
             </map>
         </div>
-        <div id="video-container" style="width:640px;height:400px;"></div>
+        <div id="video-container" style="width:640px;height:400px;position:absolute;z-index:-1"></div>
         <div id="controller-container" style="width:640px;height:81px;"></div>
         <div id="controller-container2" class="starplayer_script_ui" style="margin: 0 0 0 0; display:block; position:absolute; top:400px; background-color:black; width:640px; height:81px;">
             <div class="top_area">

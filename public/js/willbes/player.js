@@ -162,7 +162,7 @@ function screenResize()
     if(SubFrameTag_width > 0) {
         $("#subframe").attr("style", "height:" + parseInt(video_container_height + playerTitleHeight + controller_container_height) + "px; width:" + SubFrameTag_width + "px;");
     }
-
+    $("#viewList").attr("style", "width:" + video_container_width + "px !important;");
     $("#video-container").attr("style", "height:" + video_container_height + "px; width:" + video_container_width + "px;");
     $("#controller-container").attr("style", "height:" + controller_container_height + "px; width:" + video_container_width + "px;");
     $("#controller-container2").attr("style", "position:absolute;display:block;left:0px;height:" + controller_container_height + "px; width:" + video_container_width + "px;top:" + parseInt(video_container_height +playerTitleHeight) + "px;");

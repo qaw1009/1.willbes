@@ -12,7 +12,7 @@
 <body onkeydown="onKeyDown(event.keyCode);" style="background-color: black;margin: 0 0 0 0">
 <div class="videoPopup" id="videoPopup">
     <div class="view p_re">
-        <div class="viewList">
+        <div class="viewList" id="viewList">
             <span class="Tit NGR"><span class="NG" id="title">{{$data['pretitle']}}</span> : {{$data['title']}}</span>
             <ul class="btnList">
                 <!--

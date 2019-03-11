@@ -82,6 +82,7 @@
     height: 234px;
     margin-left: 8px;
 }
+
 .law .ProfBox .PBcts li:first-child {
     margin-left: 0;
 }
@@ -148,6 +149,24 @@
 .law .Section .tipGo li a:hover {
     background: #3b1984;
     border-bottom:none
+}
+
+/**/
+.law .ProfBoxB li {
+    float: left;
+    width: 274px;
+    height: 192px;
+    margin-left: 8px;
+    margin-bottom: 8px;
+}
+.law .ProfBoxB li:nth-child(5),
+.law .ProfBoxB li:first-child {
+    margin-left: 0;
+}
+.law .ProfBoxB:after {
+    content: "";
+    display: block;
+    clear: both;
 }
 
 /**/

@@ -107,7 +107,7 @@
                 </ul>
             </div>
             <div id="tab02">  
-                <img src="{{ img_url('gosi_law/visual/visual_tit01_02.jpg') }}" alt="지금은 전범위 모의고사로 마무리 할 때!">            
+                <img src="{{ img_url('gosi_law/visual/visual_tit01_02.jpg') }}" alt="빠르게 기본이론 강좌로 개념정립!">            
                 <ul class="PBcts">
                     <li>
                         <div class="bSlider">
@@ -127,7 +127,7 @@
 
     <div class="Section Section3 mt100">
         <div class="widthAuto p_re">
-            <div><img src="{{ img_url('gosi_law/visual/visual_tip.jpg') }}" alt="오직 법원직을 위한 최강 라인업 윌비스 김동진 법원팀"></div>
+            <div><img src="{{ img_url('gosi_law/visual/visual_tip.jpg') }}" alt="김동진 법원팀의 학습 Tip"></div>
             <ul class="tipGo NSK">
                 <li><a href="#none">강좌 바로가기</a></li>
                 <li><a href="#none">강좌 바로가기</a></li>
@@ -135,6 +135,22 @@
                 <li><a href="#none">강좌 바로가기</a></li>
                 <li><a href="#none">강좌 바로가기</a></li>
                 <li><a href="#none">강좌 바로가기</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="Section">
+        <div class="widthAuto p_re">
+            <img src="{{ img_url('gosi_law/visual/visual_tit02.jpg') }}" alt="오직 법원직을 위한 최강 라인업 윌비스 김동진 법원팀">
+            <ul class="ProfBoxB">
+                <li><a href="#none"><img src="{{ img_url('gosi_law/banner/bnr_prof_01.jpg') }}" alt="배너명"></a></li>
+                <li><a href="#none"><img src="{{ img_url('gosi_law/banner/bnr_prof_01.jpg') }}" alt="배너명"></a></li>
+                <li><a href="#none"><img src="{{ img_url('gosi_law/banner/bnr_prof_01.jpg') }}" alt="배너명"></a></li>
+                <li><a href="#none"><img src="{{ img_url('gosi_law/banner/bnr_prof_01.jpg') }}" alt="배너명"></a></li>
+                <li><a href="#none"><img src="{{ img_url('gosi_law/banner/bnr_prof_01.jpg') }}" alt="배너명"></a></li>
+                <li><a href="#none"><img src="{{ img_url('gosi_law/banner/bnr_prof_01.jpg') }}" alt="배너명"></a></li>
+                <li><a href="#none"><img src="{{ img_url('gosi_law/banner/bnr_prof_01.jpg') }}" alt="배너명"></a></li>
+                <li><a href="#none"><img src="{{ img_url('gosi_law/banner/bnr_prof_01.jpg') }}" alt="배너명"></a></li>
             </ul>
         </div>
     </div>

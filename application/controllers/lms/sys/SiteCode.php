@@ -149,14 +149,6 @@ class SiteCode
             return $this->_CI->json_error($is_delivery_price['ret_msg'], $is_delivery_price['ret_status']);
         }
 
-        /*if ($method == 'add') {
-            // 수강연장, 재수강 상품 등록 (등록만 있음) ==> 판매형태 공통코드로 대체 (사용안함)
-            $is_extend_retake_lecture = $this->_CI->extendNRetakeLectureModel->replaceProduct($result['ret_data']);
-            if ($is_extend_retake_lecture !== true) {
-                return $this->_CI->json_error($is_extend_retake_lecture['ret_msg'], $is_extend_retake_lecture['ret_status']);
-            }
-        }*/
-
         // 사이트 정보 캐쉬 저장
         $this->_saveSiteCache(true);
 

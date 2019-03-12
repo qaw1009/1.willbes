@@ -517,8 +517,8 @@ class Pass extends \app\controllers\FrontController
 
 
         foreach($leclist as $idx => $row){
-            $leclist[$idx]['ProdContents'] = $this->lectureFModel->findProductContents($row['ProdCode']);
-            $leclist[$idx]['LectureUnits'] = $this->lectureFModel->findProductLectureUnits($row['ProdCode']);
+            $leclist[$idx]['ProdContents'] = []; //$this->lectureFModel->findProductContents($row['ProdCode']);
+            $leclist[$idx]['LectureUnits'] = []; //$this->lectureFModel->findProductLectureUnits($row['ProdCode']);
         }
 
         return $this->load->view('/classroom/pass/layer/morelec', [

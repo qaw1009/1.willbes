@@ -104,7 +104,7 @@
                         <td colspan="5">
                             <div class="lecDetailWrap p_re mt30 mb60">
                                 <ul class="tabWrap tabDepth2">
-                                    <li><a href="#ch1-{{$row['ProdCode']}}">강좌상세정보</a></li>
+                                    <li><a href="#ch1-{{$row['ProdCode']}}" class="on">강좌상세정보</a></li>
                                     <li><a href="#ch2-{{$row['ProdCode']}}">강좌목차</a></li>
                                 </ul>
                                 <div class="w-btn">

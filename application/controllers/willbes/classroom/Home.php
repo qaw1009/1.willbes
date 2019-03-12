@@ -59,7 +59,7 @@ class Home extends \app\controllers\FrontController
         ]), null, true);
 
         // 최근수강강좌 3개
-        $data['ing_list'] = $this->classroomFModel->getLecture($cond_arr, ['OrderDate' => 'DESC'], false, false, 3);
+        $data['ing_list'] = $this->classroomFModel->getLecture($cond_arr, ['lastStudyDate' => 'DESC'], false, false, 3);
 
         // 수강대기 갯수
         $cond_arr = [
@@ -133,7 +133,6 @@ class Home extends \app\controllers\FrontController
         $data['msg_list'] = $this->messageFModel->listMessage(false, [], $memidx,
             2, null, ['a.SendIdx' => 'DESC']);
 
-        // 등록된 학습기기
         $this->load->view('/classroom/index', [
             'data' => $data
         ]);

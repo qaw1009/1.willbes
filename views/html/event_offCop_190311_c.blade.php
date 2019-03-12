@@ -73,23 +73,23 @@
         <div><a href="#go"><img src="http://file3.willbes.net/new_cop/2019/03/EV190311_sky.jpg" alt="스카이스크래퍼"></a></div>
     </div>
 		
-    <div class="wb_top" id="main">
+    <div class="evtCtnsBox wb_top" id="main">
         <img src="http://file3.willbes.net/new_cop/2019/03/EV190311_c1.png"  alt="메인" usemap="#link"/>
         <map name="link" >
             <area shape="rect" coords="731,1018,926,1181" href="#link3" onfocus='this.blur()' alt="온라인모의고사안내" />
         </map>
     </div>
 		
-    <div class="wb_01" >
+    <div class="evtCtnsBox wb_01" >
         <img src="http://file3.willbes.net/new_cop/2019/03/EV190311_c2.jpg" alt="설명" /><br>
         <img src="http://file3.willbes.net/new_cop/2019/03/EV190311_c3.jpg"  />
     </div>
        
-    <div class="wb_02" id="table">
+    <div class="evtCtnsBox wb_02" id="table">
         <img src="http://file3.willbes.net/new_cop/2019/03/EV190311_c4.jpg"  alt="시간표 및 장소" />
     </div>
 		
-    <div class="wb_03" >
+    <div class="evtCtnsBox wb_03" >
         <div>
             <img src="http://file3.willbes.net/new_cop/2019/03/EV190311_c5.jpg"  alt="전국학원"/>
             <ul>
@@ -117,11 +117,11 @@
         </div>
     </div>
 
-    <div class="wb_04" >
+    <div class="evtCtnsBox wb_04" id="go">
         <a name="link3"><img src="http://file3.willbes.net/new_cop/2019/03/EV190311_c6.jpg"  alt="경품" /></a>
     </div>
 		
-    <div class="wb_06" >
+    <div class="evtCtnsBox wb_06" >
         <img src="http://file3.willbes.net/new_cop/2019/03/EV190311_c7.jpg" alt="윌비스 이벤트를 여기저기 소문내개" usemap="#Map180212_c2"/>
         <map name="Map180212_c2" >
             <area shape="rect" coords="169,1375,326,1436" href="http://cafe.daum.net/policeacademy" onFocus="this.blur();" target="_blank" alt="다음카페 경시모"/>
@@ -133,7 +133,7 @@
         
     @include('html.event_replyUrl')
 
-    <div class="wb_05" id="go">
+    <div class="evtCtnsBox wb_05">
         <img src="http://file3.willbes.net/new_cop/2019/03/EV190311_c8.jpg"  alt="접수하기" usemap="#go"/>
         <map name="go">
             <area shape="rect" coords="414,343,707,420" href="http://www.willbescop.net/mouigosa/request/list.html?topMenuType=F&topMenuGnb=FM_004&topMenu=MAIN&menuID=FM_004_002_002&topMenuName=수험연구소&BOARDTYPE=4&INCTYPE=list" onfocus='this.blur()' alt="접수하기" target="_self"/>

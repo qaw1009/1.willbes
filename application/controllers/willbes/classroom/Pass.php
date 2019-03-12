@@ -96,7 +96,13 @@ class Pass extends \app\controllers\FrontController
 
         $orderby = element('orderby', $input_arr);
         $orderby = (empty($orderby) == true) ? 'lastStudyDate^DESC' : $orderby;
-
+        // 최신순으로
+        @list($orderby, $asc_desc) = @explode("^", $orderby);
+        if(empty($asc_desc) == false){
+            $orderby = [
+                $orderby => $asc_desc
+            ];
+        }
 
         // 학습형태 : 기간제패키지
         $passlist = $this->classroomFModel->getPackage($cond_arr, $orderby);
@@ -116,7 +122,6 @@ class Pass extends \app\controllers\FrontController
         // 해당패키지의 서브강좌
         if(empty($passinfo) == false ){
             $passinfo = $passinfo[0];
-            //$passinfo['SiteUrl'] = app_to_env_url($this->getSiteCacheItem($passinfo['SiteCode'], 'SiteUrl'));
 
             // 셀렉트박스 구해오기
             $cond_arr = [

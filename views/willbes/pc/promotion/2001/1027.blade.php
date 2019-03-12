@@ -27,7 +27,7 @@
         .wb_cts02 {background:#392031 url(http://file3.willbes.net/new_cop/2018/04/EV180409_p3_bg.png) no-repeat center;}
         .wb_cts03 {background:#2c2c2c; padding-bottom:100px;}
         .wb_cts04 {background:#bda97d; padding-bottom:100px;}
-        .wb_cts05 {background:#fff; padding-bottom:100px;}
+        .wb_cts05 {background:#fff; padding:100px; 0}
 
 
         /* 슬라이드배너 */

@@ -531,6 +531,26 @@ class Pass extends \app\controllers\FrontController
         ]);
     }
 
+
+    public function ajaxLecInfo()
+    {
+        $ProdCode = $this->_req("prodcode");
+
+        if(empty($ProdCode) == true){
+            $ProdContents = [];
+            $LectureUnits = [];
+        } else {
+            $ProdContents = $this->lectureFModel->findProductContents($ProdCode);
+            $LectureUnits = $this->lectureFModel->findProductLectureUnits($ProdCode);
+        }
+
+        return $this->load->view('/classroom/pass/layer/ajax_lecinfo', [
+            'ProdCode' => $ProdCode,
+            'ProdContents' => $ProdContents,
+            'LectureUnits' => $LectureUnits
+        ]);
+    }
+
     /**
      * 듣고 있는 강좌 교재 목록
      * @return object|string

@@ -84,7 +84,7 @@
                 </thead>
                 <tbody>
                 @forelse( $leclist as $key => $row )
-                    <tr class="replyList passzone-Leclist">
+                    <tr class="replyList passzone-Leclist" onclick="fnViewInfo({{$row['ProdCode']}})">
                         <td><input type="checkbox" id="checkBox" class="goods_chk prodCheck" value="{{$key}}" {{$row['IsTake'] == 'Y' ? 'disabled=disabled' : ''}}></td>
                         <td class="w-sbj">{{$row['SubjectName']}}</td>
                         <td class="w-prof">{{$row['wProfName']}}</td>
@@ -110,7 +110,8 @@
                                 <div class="w-btn">
                                     <a class="bg-blue bd-dark-blue NSK" href="javascript:;" onclick="@if($row['IsTake'] == 'Y') alert('이미 등록한 강좌입니다.'); @else fnAppend({{$key}}); @endif">현재 강좌추가</a>
                                 </div>
-                                <div class="tabBox mt30">
+                                <div class="tabBox mt30" id="info-{{$row['ProdCode']}}">
+                                    <!--
                                     <div id="ch1-{{$row['ProdCode']}}" class="tabLink">
                                         <table cellspacing="0" cellpadding="0" class="classTable under-gray bdt-gray tx-gray">
                                             <colgroup>
@@ -163,6 +164,7 @@
                                             </table>
                                         </div>
                                     </div>
+                                    -->
                                 </div>
                             </div>
                         </td>
@@ -243,4 +245,19 @@
             $('#addTable > tbody:last').append(data[$(this).val()]);
         }
     });
+
+    function fnViewInfo(prodcode)
+    {
+        url = "{{ site_url("/classroom/pass/ajaxLecInfo") }}";
+        data = 'prodcode='+prodcode;
+
+        sendAjax(url,
+            data,
+            function(d){
+                $('#info-'+prodcode).html(d).end();
+            },
+            function(ret, status){
+                alert(ret.ret_msg);
+            }, false, 'GET', 'html');
+    }
 </script>

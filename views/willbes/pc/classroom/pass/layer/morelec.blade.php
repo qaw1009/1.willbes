@@ -169,7 +169,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="4" class="tx-center">강좌정보가 없습니다.</td>
+                        <td colspan="5" class="tx-center">강좌정보가 없습니다.</td>
                     </tr>
                 @endforelse
                 </tbody>

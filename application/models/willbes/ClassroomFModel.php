@@ -784,7 +784,7 @@ class ClassroomFModel extends WB_Model
      * @param string $col
      * @return mixed
      */
-    public function getPassSubLecture($arr_condition, $col = '', $notake = false)
+    public function getPassSubLecture($arr_condition, $col = '', $subarr, $notake = false)
     {
         if(empty($col) == true){
             $column =  "A.ProdCode As Parent_ProdCode, B.IsEssential, B.SubGroupName, B.OrderNum, C.* , 
@@ -794,15 +794,17 @@ class ClassroomFModel extends WB_Model
             $column = $col;
         }
 
+        $subwhere = $this->_conn->makeWhere($subarr)->getMakeWhere(true);
+
         $from = " 
             FROM
                 vw_product_periodpack_lecture A
                 JOIN lms_product_r_sublecture B on A.ProdCode = B.ProdCode AND B.IsStatus = 'Y'
                 JOIN {$this->_table['on_lecture']} C on B.ProdCodeSub = C.ProdCode AND C.wIsUse = 'Y'
-                LEFT JOIN {$this->_table['mylec']} D ON A.ProdCode = D.ProdCode AND C.ProdCode = D.ProdCodeSub 
-                ";
+                LEFT JOIN {$this->_table['mylec']} D ON A.ProdCode = D.ProdCode AND C.ProdCode = D.ProdCodeSub ".$subwhere ;
 
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
+
         if($notake){
             $where = $where . " AND D.ProdCode IS NULL ";
         }

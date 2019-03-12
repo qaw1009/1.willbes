@@ -516,10 +516,12 @@ class Pass extends \app\controllers\FrontController
         $leclist = $this->classroomFModel->getPassSubLecture($cond_arr,'', $sub_arr, $take);
 
 
+        /*
         foreach($leclist as $idx => $row){
             $leclist[$idx]['ProdContents'] = []; //$this->lectureFModel->findProductContents($row['ProdCode']);
             $leclist[$idx]['LectureUnits'] = []; //$this->lectureFModel->findProductLectureUnits($row['ProdCode']);
         }
+        */
 
         return $this->load->view('/classroom/pass/layer/morelec', [
             'input_arr' => $input_arr,

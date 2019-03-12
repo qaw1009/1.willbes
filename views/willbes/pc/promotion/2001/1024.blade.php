@@ -23,8 +23,8 @@
         /************************************************************/
 
         .skybanner {
-            position:absolute;
-            top:20px;
+            position:fixed;
+            bottom:20px;
             right:10px;
             z-index:1;
         }
@@ -32,7 +32,7 @@
         .skybanner a {height:40px; line-height:40px; display:block; text-align:center; background:#009ef5; color:#fff; font-size:14px !important; font-weight:600 !important; border-bottom:1px solid #000}
         .skybanner a:hover {background:#fff; color:#000}
         .skybanner li:last-child a {background:#000; color:#fff;}
-        .skybanner_sectionFixed {position:fixed; top:20px}
+
 
         .wb_cts01 {background:url(http://file3.willbes.net/new_cop/2019/01/EV190118Y_01_bg.jpg) no-repeat center top; position:relative}
         .wb_cts01 span {position:absolute; width:520px; top:724px; left:50%; margin-left:-469px; background:#000; z-index:10}
@@ -92,7 +92,7 @@
     </div>
     <!-- End Container -->
 
-    <script src="/public/js/willbes/jquery.nav.js"></script>
+
     <script>
         $(function(e) {
             var targetOffset = $("#evtContainer").offset().top;

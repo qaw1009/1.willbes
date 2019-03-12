@@ -10657,7 +10657,23 @@ table.acadlecInfoPackageTable tr.Top td {
     line-height: 1.4; 
     color:#555556;
 }
+.urlWrap ul {
+    width: 90%;
+    margin: 0 auto;
+}
+.urlWrap li {
+    display: inline;
+    float: left;  
+    width: 25%;
+    text-align: center;  
+}
+.urlWrap ul:after {
+    content:'';
+    display: block;
+    clear:both;
+}
 .urlWrap .textarBox {
+    margin-top:80px;
     background:#e8e6d9;
     padding:20px;
     text-align: center;

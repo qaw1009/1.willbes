@@ -53,8 +53,8 @@
         .wb_06 {background:#fff;}        
         .wb_05 {background:#c69c6d;}	
 
-        .content_guide_wrap{background:#ffffff; margin:0;}
-        .content_guide_box{ position:relative; width:900px; margin:0 auto; padding:50px 0;}
+        .content_guide_wrap{ margin-bottom:50px;}
+        .content_guide_box{ position:relative; width:1000px; margin:0 auto; padding:50px 0;}
         .content_guide_box .guide_tit{margin-bottom:20px;}
         .content_guide_box dl{ margin:0 20px; word-break:keep-all;border:2px solid #202020;padding:30px;}
         .content_guide_box dt{ margin-bottom:10px;}
@@ -121,8 +121,8 @@
         <a name="link3"><img src="http://file3.willbes.net/new_cop/2019/03/EV190311_c6.jpg"  alt="경품" /></a>
     </div>
 		
-    <div class="evtCtnsBox wb_06" >
-        <img src="http://file3.willbes.net/new_cop/2019/03/EV190311_c7.jpg" alt="윌비스 이벤트를 여기저기 소문내개" usemap="#Map180212_c2"/>
+    <div class="evtCtnsBox wb_06" id="go">
+        <img src="http://file3.willbes.net/new_cop/2019/03/EV190311_c7_01.jpg" alt="윌비스 이벤트를 여기저기 소문내개" usemap="#Map180212_c2"/>
         <map name="Map180212_c2" >
             <area shape="rect" coords="169,1375,326,1436" href="http://cafe.daum.net/policeacademy" onFocus="this.blur();" target="_blank" alt="다음카페 경시모"/>
             <area shape="rect" coords="339,1378,489,1438" href="http://cafe.naver.com/polstudy" onFocus="this.blur();" target="_blank" alt="네이버카페 경꿈사"/>
@@ -133,7 +133,7 @@
         
     @include('html.event_replyUrl')
 
-    <div class="evtCtnsBox wb_05" id="go">
+    <div class="evtCtnsBox wb_05">
         <img src="http://file3.willbes.net/new_cop/2019/03/EV190311_c8.jpg"  alt="접수하기" usemap="#go"/>
         <map name="go">
             <area shape="rect" coords="414,343,707,420" href="http://www.willbescop.net/mouigosa/request/list.html?topMenuType=F&topMenuGnb=FM_004&topMenu=MAIN&menuID=FM_004_002_002&topMenuName=수험연구소&BOARDTYPE=4&INCTYPE=list" onfocus='this.blur()' alt="접수하기" target="_self"/>

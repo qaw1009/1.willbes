@@ -1,4 +1,14 @@
         <div class="urlWrap" id="url">
+            @if(config_app('SiteCode') == '2001')  
+            {{-- 경찰온라인 사이트일 경우만 적용 --}}  
+            <ul>
+                <li><a href="http://cafe.daum.net/policeacademy" target="_blank" ><img src="http://file3.willbes.net/new_cop/common/snsline01.png"alt="다음카페 경사모" /></a></li>
+                <li><a href="http://cafe.naver.com/polstudy" target="_blank" ><img src="http://file3.willbes.net/new_cop/common/snsline02.png" alt="네이버카페 경꿈사" /></a></li>
+                <li><a href="https://section.blog.naver.com/BlogHome.nhn?directoryNo=0&currentPage=1&groupId=0" target="_blank" ><img src="http://file3.willbes.net/new_cop/common/snsline03.png" alt="디시 공무원 갤러리" /></a></li>
+                <li><a href="http://gall.dcinside.com/board/lists/?id=government" target="_blank"><img src="http://file3.willbes.net/new_cop/common/snsline04.png" alt="디시 순경마이너 갤러리" /></a></li>
+            </ul>
+            @endif  
+
             <div class="textarBox NSK">
                 <span>홍보 URL 남기기</span>
                 <input type="text" name="SNS_TXT" id="SNS_TXT" onclick="javascript:fn_focusSns();">
@@ -7,67 +17,55 @@
             
             <div class="url-List">
                 <table>
-                    <col width="8%"/>
                     <col width="15%"/>
                     <col/>
                     <thead>							
-                        <tr>                    
-                            <th>No.</th>                        
+                        <tr>                   
                             <th>ID</th>
                             <th>URL</th>						        
                         </tr>    
                     </thead>
                     <tbody>							
-                        <tr>                    
-                            <td>10</td>                        
+                        <tr>                   
                             <td>willb...</td>
                             <td>http://www.willbescop.net <a href="#none">X</a></td>						        
                         </tr>    
-                        <tr>                    
-                            <td>9</td>                        
+                        <tr>                   
                             <td>willb...</td>
-                            <td>http://www.willbescop.net</td>						        
-                        </tr>
-                        <tr>                    
-                            <td>8</td>                        
-                            <td>willb...</td>
-                            <td>http://www.willbescop.net</td>						        
+                            <td>http://www.willbescop.net </td>						        
                         </tr> 
-                        <tr>                    
-                            <td>7</td>                        
+                        <tr>                   
+                            <td>willb...</td>
+                            <td>http://www.willbescop.net </td>						        
+                        </tr>  
+                        <tr>                   
+                            <td>willb...</td>
+                            <td>http://www.willbescop.net </td>						        
+                        </tr>  
+                        <tr>                   
                             <td>willb...</td>
                             <td>http://www.willbescop.net</td>						        
+                        </tr>  
+                        <tr>                   
+                            <td>willb...</td>
+                            <td>http://www.willbescop.net </td>						        
                         </tr> 
-                        <tr>                    
-                            <td>6</td>                        
+                        <tr>                   
                             <td>willb...</td>
-                            <td>http://www.willbescop.net</td>						        
+                            <td>http://www.willbescop.net </td>						        
                         </tr> 
-                        <tr>                    
-                            <td>5</td>                        
+                        <tr>                   
                             <td>willb...</td>
                             <td>http://www.willbescop.net</td>						        
-                        </tr> 
-                        <tr>                    
-                            <td>4</td>                        
+                        </tr>  
+                        <tr>                   
                             <td>willb...</td>
-                            <td>http://www.willbescop.net</td>						        
-                        </tr> 
-                        <tr>                    
-                            <td>3</td>                        
+                            <td>http://www.willbescop.net </td>						        
+                        </tr>  
+                        <tr>                   
                             <td>willb...</td>
-                            <td>http://www.willbescop.net</td>						        
-                        </tr> 
-                        <tr>                    
-                            <td>2</td>                        
-                            <td>willb...</td>
-                            <td>http://www.willbescop.net</td>						        
-                        </tr> 
-                        <tr>                    
-                            <td>1</td>                        
-                            <td>willb...</td>
-                            <td>http://www.willbescop.net</td>						        
-                        </tr>     
+                            <td>http://www.willbescop.net </td>						        
+                        </tr>      
                     </tbody>            
                 </table>
             </div>

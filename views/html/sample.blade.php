@@ -135,7 +135,7 @@
                 <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190307_y') }}" target="_blank">2단계 동형모의고사 <span>*</span></a></li>
                 <li><a href="{{ site_url('/home/html/event_replyUrl') }}" target="_blank">└ 홍보 url 댓글 include <span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onCop_basic_2019') }}" target="_blank">기본이론 2019 3/21(목) 개강</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_offCop_190311_c') }}" target="_blank">실전빅매치데이 1</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_offCop_190311_c') }}" target="_blank">실전빅매치데이 1 모의고사</a></li>
                 <li><p>경찰 학원 ▼</p></li> 
                 <li class="w50"><a href="{{ site_url('/home/html/event_offCop_190211_p') }}" target="_blank">19년 1차대비 2월 전국모의고사</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_offCop_basic') }}" target="_blank">2019 집중연강식 기본이론</a></li>

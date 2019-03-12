@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- Container -->
-<div id="Container" class="Container gosi GA NSK c_both">
+<div id="Container" class="Container GA NSK c_both">
     <div class="Menu widthAuto NSK c_both">
         <h3>
             <ul class="menu-Tit">

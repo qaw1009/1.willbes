@@ -54,8 +54,8 @@
         .wb_06 {background:#fff;}        
         .wb_05 {background:#c69c6d;}	
 
-        .content_guide_wrap{background:#ffffff; margin:0;}
-        .content_guide_box{ position:relative; width:900px; margin:0 auto; padding:50px 0;}
+        .content_guide_wrap{ margin-bottom:50px;}
+        .content_guide_box{ position:relative; width:1000px; margin:0 auto; padding:50px 0;}
         .content_guide_box .guide_tit{margin-bottom:20px;}
         .content_guide_box dl{ margin:0 20px; word-break:keep-all;border:2px solid #202020;padding:30px;}
         .content_guide_box dt{ margin-bottom:10px;}
@@ -117,18 +117,12 @@
         </div>
     </div>
 
-    <div class="evtCtnsBox wb_04" id="go">
+    <div class="evtCtnsBox wb_04">
         <a name="link3"><img src="http://file3.willbes.net/new_cop/2019/03/EV190311_c6.jpg"  alt="경품" /></a>
     </div>
 		
-    <div class="evtCtnsBox wb_06" >
-        <img src="http://file3.willbes.net/new_cop/2019/03/EV190311_c7.jpg" alt="윌비스 이벤트를 여기저기 소문내개" usemap="#Map180212_c2"/>
-        <map name="Map180212_c2" >
-            <area shape="rect" coords="169,1375,326,1436" href="http://cafe.daum.net/policeacademy" onFocus="this.blur();" target="_blank" alt="다음카페 경시모"/>
-            <area shape="rect" coords="339,1378,489,1438" href="http://cafe.naver.com/polstudy" onFocus="this.blur();" target="_blank" alt="네이버카페 경꿈사"/>
-            <area shape="rect" coords="528,1379,678,1439" href="https://section.blog.naver.com/BlogHome.nhn?directoryNo=0&currentPage=1&groupId=0"  onFocus="this.blur();" target="_blank" alt="네이버 블로그"/>
-            <area shape="rect" coords="713,1381,901,1437" href="http://gall.dcinside.com/board/lists/?id=government" onFocus="this.blur();" target="_blank" alt="공무원갤러리"/>
-        </map>              
+    <div class="evtCtnsBox wb_06" id="go">
+        <img src="http://file3.willbes.net/new_cop/2019/03/EV190311_c7_01.jpg" alt="윌비스 이벤트를 여기저기 소문내개" usemap="#Map180212_c2"/>             
     </div>
         
     @include('html.event_replyUrl')

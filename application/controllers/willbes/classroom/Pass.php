@@ -473,7 +473,8 @@ class Pass extends \app\controllers\FrontController
         $cond_arr = [
             'EQ' => [
                 'A.ProdCode' => $prodcode,
-                'D.OrderIdx' => $passinfo['OrderIdx']
+                'D.OrderIdx' => $passinfo['OrderIdx'],
+                'D.OrderProdIdx' => $passinfo['OrderProdIdx']
             ]
         ];
 
@@ -496,15 +497,14 @@ class Pass extends \app\controllers\FrontController
             ]
         ];
 
-        $leclist = $this->classroomFModel->getPassSubLecture($cond_arr,'', ['EQ' => [
-            'D.OrderIdx' => $passinfo['OrderIdx'],
-            'D.OrderProdIdx' => $passinfo['OrderProdIdx']
-        ]]);
+        $leclist = $this->classroomFModel->getPassSubLecture($cond_arr,'');
+
 
         foreach($leclist as $idx => $row){
-            $leclist[$idx]['ProdContents'] = $this->lectureFModel->findProductContents($row['ProdCode']);
-            $leclist[$idx]['LectureUnits'] = $this->lectureFModel->findProductLectureUnits($row['ProdCode']);
+            $leclist[$idx]['ProdContents'] = []; // $this->lectureFModel->findProductContents($row['ProdCode']);
+            $leclist[$idx]['LectureUnits'] = []; // $this->lectureFModel->findProductLectureUnits($row['ProdCode']);
         }
+
 
         return $this->load->view('/classroom/pass/layer/morelec', [
             'input_arr' => $input_arr,

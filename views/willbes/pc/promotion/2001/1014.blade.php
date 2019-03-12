@@ -23,15 +23,11 @@
         /************************************************************/
 
         .skybanner {
-            position:absolute;
-            top:20px;
+            position:fixed;
+            bottom:20px;
             right:10PX;
             z-index:1;
         }
-        .skybanner li {
-            margin-bottom:5px;
-        }
-        .skybanner_sectionFixed {position:fixed; top:20px}
 
         .wb_cts01 {background:#0091fa url(http://file3.willbes.net/new_cop/2018/01/EV180122_c1_bg.jpg) no-repeat center top; position:relative;}
         .wb_cts01 div {position:relative;}
@@ -122,7 +118,6 @@
     </div>
     <!-- End Container -->
 
-    <script src="/public/js/willbes/jquery.nav.js"></script>
     <script>
         $(function(e){
             var targetOffset= $("#evtContainer").offset().top;

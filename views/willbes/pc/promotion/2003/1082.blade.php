@@ -48,7 +48,7 @@
                     <div class="pngimg-real">
                         <img src="http://file3.willbes.net/new_gosi/2019/02/190201_01.png"  alt="메인" usemap="#welcomepack1"  />
                         <map name="welcomepack1" id="welcomepack1">
-                            <area shape="rect" coords="590,502,981,571" href="{{ site_url('/member/join/?ismobile=0&sitecode=2000') }}" onfocus='this.blur()'  alt="웰컴팩받기" target="_blink">
+                            <area shape="rect" coords="590,502,981,571" href="{{ site_url('https://www.dev.willbes.net/member/join') }}" onfocus='this.blur()'  alt="웰컴팩받기" target="_blink">
                         </map>
                     </div>
                 </div>
@@ -64,7 +64,7 @@
         <div class="evtCtnsBox wb_02">
             <img src="http://file3.willbes.net/new_gosi/2018/11/181101_03.png"  alt="01" usemap="#zero" />
             <map name="zero" id="zero">
-                <area shape="rect" coords="294,1447,686,1521" href="{{ site_url('/member/join/?ismobile=0&sitecode=2000') }}" />
+                <area shape="rect" coords="294,1447,686,1521" href="{{ site_url('https://www.dev.willbes.net/member/join') }}" />
             </map>
         </div>
         <!-- wb_02//-->

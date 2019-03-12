@@ -6,47 +6,14 @@
         <!-- site nav -->
         @include('willbes.pc.layouts.partial.site_menu')
 
-        <div class="Section Section2">
-            <div class="widthAuto">
-                <a href="#none"><img src="{{ img_url('gosi_law/visual/visual_top.jpg') }}" alt="최적의 합격솔루션 김동진 법원팀"></a>
-            </div>
-        </div>
-
+        @if(isset($data['arr_main_banner']['메인_빅배너']) === true)
         <div class="Section MainVisual">
             <div class="widthAuto NSK mt30">
-                @if(empty($data['arr_main_banner']['메인_서브1']) === false)
-                <div class="VisualBox p_re bSlider">
-                    <div id="MainRollingDiv" class="MaintabList three">
-                        <ul class="Maintab">
-                            @foreach($data['arr_main_banner']['메인_서브1'] as $row)
-                                <li><a data-slide-index="{{ $loop->index -1 }}" href="javascript:void(0);" class="{{ ($loop->first === true) ? 'active' : '' }}">{{ $row['BannerName'] }}</a></li>
-                            @endforeach
-                        </ul>
-                    </div>
-                    <div id="MainRollingSlider" class="MaintabBox">
-                        <div class="bx-wrapper">
-                            <div class="bx-viewport">
-                                <ul class="MaintabSlider">
-                                    @php $link_url = '#none'; @endphp
-                                    @foreach($data['arr_main_banner']['메인_서브1'] as $row)
-                                        @if(empty($row['LinkUrl']) === false)
-                                            @php $link_url = front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www'); @endphp
-                                        @endif
-                                        <li><a href="{{ $link_url }}" target="_{{ $row['LinkType'] }}"><img src="{{ $row['BannerFullPath'] . $row['BannerImgName'] }}" alt="{{ $row['BannerName'] }}"></a></li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @endif
-
-                @if(empty($data['arr_main_banner']['메인_서브2']) === false)
                 <div class="VisualsubBox">
                     <div class="bSlider">
                         <div class="sliderStopAutoPager">
                             @php $link_url = '#none'; @endphp
-                            @foreach($data['arr_main_banner']['메인_서브2'] as $row)
+                            @foreach($data['arr_main_banner']['메인_빅배너'] as $row)
                                 @if(empty($row['LinkUrl']) === false)
                                     @php $link_url = front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www'); @endphp
                                 @endif
@@ -55,7 +22,13 @@
                         </div>
                     </div>
                 </div>
-                @endif
+            </div>
+        </div>
+        @endif
+
+        <div class="Section Section2">
+            <div class="widthAuto">
+                <a href="#none"><img src="{{ img_url('gosi_law/visual/visual_top.jpg') }}" alt="최적의 합격솔루션 김동진 법원팀"></a>
             </div>
         </div>
 
@@ -70,11 +43,17 @@
                     <ul class="PBcts">
                         @for($i=1; $i<=4; $i++)
                             @if(empty($data['arr_main_banner']['메인_미들'.$i]) === false)
-                                @php $link_url = '#none'; $last_banner = end($data['arr_main_banner']['메인_미들'.$i]); @endphp
-                                @if(empty($last_banner['LinkUrl']) === false)
-                                    @php $link_url = front_app_url('/banner/click?banner_idx=' . $last_banner['BIdx'] . '&return_url=' . urlencode($last_banner['LinkUrl']) . '&link_url_type=' . urlencode($last_banner['LinkUrlType']), 'www'); @endphp
-                                @endif
-                                <li><a href="{{ $link_url }}" target="_{{ $last_banner['LinkType'] }}"><img src="{{ $last_banner['BannerFullPath'] . $last_banner['BannerImgName'] }}" alt="{{ $last_banner['BannerName'] }}"></a></li>
+                                <li>
+                                    @if(count($data['arr_main_banner']['메인_미들'.$i]) > 1) <div class="bSlider"><div class="slider"> @endif
+                                    @php $link_url = '#none'; @endphp
+                                    @foreach($data['arr_main_banner']['메인_미들'.$i] as $row)
+                                        @if(empty($row['LinkUrl']) === false)
+                                            @php $link_url = front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www'); @endphp
+                                        @endif
+                                        <div><a href="{{ $link_url }}" target="_{{ $row['LinkType'] }}"><img src="{{ $row['BannerFullPath'] . $row['BannerImgName'] }}" alt="{{ $row['BannerName'] }}"></a></div>
+                                    @endforeach
+                                    @if(count($data['arr_main_banner']['메인_미들'.$i]) > 1) </div></div> @endif
+                                </li>
                             @endif
                         @endfor
                     </ul>
@@ -82,13 +61,19 @@
                 <div id="tab02">
                     <img src="{{ img_url('gosi_law/visual/visual_tit01_02.jpg') }}" alt="지금은 전범위 모의고사로 마무리 할 때!">
                     <ul class="PBcts">
-                        @for($i=4; $i<=8; $i++)
+                        @for($i=5; $i<=8; $i++)
                             @if(empty($data['arr_main_banner']['메인_미들'.$i]) === false)
-                                @php $link_url = '#none'; $last_banner = end($data['arr_main_banner']['메인_미들'.$i]); @endphp
-                                @if(empty($last_banner['LinkUrl']) === false)
-                                    @php $link_url = front_app_url('/banner/click?banner_idx=' . $last_banner['BIdx'] . '&return_url=' . urlencode($last_banner['LinkUrl']) . '&link_url_type=' . urlencode($last_banner['LinkUrlType']), 'www'); @endphp
-                                @endif
-                                <li><a href="{{ $link_url }}" target="_{{ $last_banner['LinkType'] }}"><img src="{{ $last_banner['BannerFullPath'] . $last_banner['BannerImgName'] }}" alt="{{ $last_banner['BannerName'] }}"></a></li>
+                                <li>
+                                    @if(count($data['arr_main_banner']['메인_미들'.$i]) > 1) <div class="bSlider"><div class="slider"> @endif
+                                    @php $link_url = '#none'; @endphp
+                                    @foreach($data['arr_main_banner']['메인_미들'.$i] as $row)
+                                        @if(empty($row['LinkUrl']) === false)
+                                            @php $link_url = front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www'); @endphp
+                                        @endif
+                                        <div><a href="{{ $link_url }}" target="_{{ $row['LinkType'] }}"><img src="{{ $row['BannerFullPath'] . $row['BannerImgName'] }}" alt="{{ $row['BannerName'] }}"></a></div>
+                                    @endforeach
+                                    @if(count($data['arr_main_banner']['메인_미들'.$i]) > 1) </div></div> @endif
+                                </li>
                             @endif
                         @endfor
                     </ul>
@@ -106,6 +91,29 @@
                     <li><a href="#none">강좌 바로가기</a></li>
                     <li><a href="#none">강좌 바로가기</a></li>
                     <li><a href="#none">강좌 바로가기</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="Section">
+            <div class="widthAuto p_re">
+                <img src="{{ img_url('gosi_law/visual/visual_tit02.jpg') }}" alt="오직 법원직을 위한 최강 라인업 윌비스 김동진 법원팀">
+                <ul class="ProfBoxB">
+                    @for($i=1; $i<=8; $i++)
+                        @if(empty($data['arr_main_banner']['메인_교수진'.$i]) === false)
+                            <li>
+                                @if(count($data['arr_main_banner']['메인_교수진'.$i]) > 1) <div class="bSlider"><div class="slider"> @endif
+                                @php $link_url = '#none'; @endphp
+                                @foreach($data['arr_main_banner']['메인_교수진'.$i] as $row)
+                                    @if(empty($row['LinkUrl']) === false)
+                                        @php $link_url = front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www'); @endphp
+                                    @endif
+                                    <div><a href="{{ $link_url }}" target="_{{ $row['LinkType'] }}"><img src="{{ $row['BannerFullPath'] . $row['BannerImgName'] }}" alt="{{ $row['BannerName'] }}"></a></div>
+                                @endforeach
+                                @if(count($data['arr_main_banner']['메인_교수진'.$i]) > 1) </div></div> @endif
+                            </li>
+                        @endif
+                    @endfor
                 </ul>
             </div>
         </div>

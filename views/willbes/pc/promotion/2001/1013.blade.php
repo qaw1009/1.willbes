@@ -83,23 +83,6 @@
             <img src="http://file3.willbes.net/new_cop/2018/03/EV180302_p2.png"  alt="아주특별한혜택" />
         </div>
 
-        <div class="evtCtnsBox wb_02">
-            <img src="http://file3.willbes.net/new_cop/2018/03/EV180302_p3_1.png"  alt="01" usemap="#zero" />
-            <map name="zero" id="zero">
-                <area shape="rect" coords="847,243,931,271" href="{{ site_url('/promotion/index/cate/3006/code/1012') }}" onfocus='this.blur()'  alt="0원입문특강" target="_blink">
-            </map>
-            <div class="slide_con">
-                <ul id="slidesImg3">
-                    <li><img src="http://file3.willbes.net/new_cop/2018/01/EV180130_p3_slam1.jpg" alt="1" /></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2018/01/EV180130_p3_slam2.jpg" alt="2" /></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2018/01/EV180130_p3_slam3.jpg" alt="3" /></li>
-                </ul>
-                <p class="leftBtn"><a id="imgBannerLeft3"><img src="http://file3.willbes.net/new_cop/2017/03/EV170306_p_prev.png"></a></p>
-                <p class="rightBtn"><a id="imgBannerRight3"><img src="http://file3.willbes.net/new_cop/2017/03/EV170306_p_next.png"></a></p>
-            </div>
-            <img src="http://file3.willbes.net/new_cop/2018/01/EV180130_p3_2.png"  alt="교수님들" />
-        </div>
-
         <div class="evtCtnsBox wb_03" >
             <img src="http://file3.willbes.net/new_cop/2018/03/EV180302_p4.png"  alt="02" usemap="#pass">
             <map name="pass" id="pass">

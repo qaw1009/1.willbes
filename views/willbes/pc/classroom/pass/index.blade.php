@@ -637,6 +637,7 @@
             <input type="hidden" name="OrderIdx" id="OrderIdx" value="{{$passinfo['OrderIdx']}}" />
             <input type="hidden" name="ProdCode" id="ProdCode" value="{{$passinfo['ProdCode']}}" />
         @endif
+        <input type="hidden" name="take" value="Y" />
     </form>
     <script type="text/javascript">
         var bookprice = 0;

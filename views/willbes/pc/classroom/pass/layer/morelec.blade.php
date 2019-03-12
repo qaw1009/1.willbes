@@ -59,7 +59,7 @@
         <div class="Search-Result">
             <div class="Total">총 {{count($leclist)}}건</div>
             <div class="chkBox">
-                <input type="checkbox" id="take" name="take" value="Y" class="goods_chk" {{$input_arr['take'] == 'Y' ? 'checked' : ''}}> 수강중강좌 제외
+                <label><input type="checkbox" id="take" name="take" value="Y" class="goods_chk" {{$input_arr['take'] == 'Y' ? 'checked' : ''}}> 수강중강좌 제외</label>
             </div>
         </div>
     </div>

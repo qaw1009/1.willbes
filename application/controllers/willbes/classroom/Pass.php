@@ -453,11 +453,15 @@ class Pass extends \app\controllers\FrontController
         $input_arr = $this->_reqG(null);
         $today = date("Y-m-d", time());
 
-        if( element('take', $input_arr) == 'Y'){
-            $take = true;
+        if(array_key_exists('take', $input_arr) == true){
+            if( $input_arr['take'] == 'Y' ){
+                $take = true;
+            } else {
+                $take = false;
+            }
         } else {
-            $input_arr['take'] = 'N';
             $take = false;
+            $input_arr['take'] = 'N';
         }
 
         $cond_arr = [

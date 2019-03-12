@@ -47,16 +47,7 @@
         .wb_05 {background:#ebebeb}
         .wb_06 {background:#f5f5f5 url(http://file3.willbes.net/new_cop/2018/01/EV180130_p7_1_bg.jpg) no-repeat center;}
 
-        /* 슬라이드배너 */
-        .slide_con {position:relative; width:803px; margin:0 auto}
-        .slide_con p {position:absolute; top:50%; width:56px; height:56px; z-index:100}
-        .slide_con p a {cursor:pointer}
-        .slide_con p.leftBtn {left:-30px; top:46%; width:67px; height:67px;}
-        .slide_con p.rightBtn {right:-40px;top:46%; width:67px; height:67px;}
 
-        #slidesImg3 li {display:inline; float:left;}
-        #slidesImg3 li img {width:803px;}
-        #slidesImg3:after {content::""; display:block; clear:both}
 
     </style>
 

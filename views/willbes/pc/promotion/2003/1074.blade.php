@@ -33,6 +33,7 @@
             position:fixed;
             top:250px;
             right:10px;
+            z-index:1;
         }
     </style>
 

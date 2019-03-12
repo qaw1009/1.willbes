@@ -479,16 +479,21 @@ class Pass extends \app\controllers\FrontController
         // 셀렉트박스 구해오기
         $cond_arr = [
             'EQ' => [
-                'A.ProdCode' => $prodcode,
+                'A.ProdCode' => $prodcode
+            ]
+        ];
+
+        $sub_arr = [
+            'EQ' => [
                 'D.OrderIdx' => $passinfo['OrderIdx'],
                 'D.OrderProdIdx' => $passinfo['OrderProdIdx']
             ]
         ];
 
         // 셀렉트박스용 데이타
-        $course_arr = $this->classroomFModel->getPassSubLecture($cond_arr, 'DISTINCT C.CourseIdx, C.CourseName');
-        $subject_arr = $this->classroomFModel->getPassSubLecture( $cond_arr,'DISTINCT C.SubjectIdx, C.SubjectName');
-        $prof_arr = $this->classroomFModel->getPassSubLecture($cond_arr,'DISTINCT C.wProfIdx, C.wProfName');
+        $course_arr = $this->classroomFModel->getPassSubLecture($cond_arr, 'DISTINCT C.CourseIdx, C.CourseName', $sub_arr);
+        $subject_arr = $this->classroomFModel->getPassSubLecture( $cond_arr,'DISTINCT C.SubjectIdx, C.SubjectName', $sub_arr);
+        $prof_arr = $this->classroomFModel->getPassSubLecture($cond_arr,'DISTINCT C.wProfIdx, C.wProfName', $sub_arr);
 
         // 실제 리스트용
         $cond_arr = [
@@ -497,15 +502,14 @@ class Pass extends \app\controllers\FrontController
                 'C.SubjectIdx' => $this->_req('subject_ccd'), // 검색 : 과목
                 'C.wProfIdx' => $this->_req('prof_ccd'), // 검색 : 강사
                 'C.CourseIdx' => $this->_req('course_ccd'), // 검색 : 과정
-                'D.OrderIdx' => $passinfo['OrderIdx'],
-                'D.OrderProdIdx' => $passinfo['OrderProdIdx']
+
             ],
             'LKB' => [
                 'C.ProdName' => $this->_req('search_text') // 강의명 검색 (패키지명)
             ]
         ];
 
-        $leclist = $this->classroomFModel->getPassSubLecture($cond_arr,'', $take);
+        $leclist = $this->classroomFModel->getPassSubLecture($cond_arr,'', $sub_arr, $take);
 
 
         foreach($leclist as $idx => $row){

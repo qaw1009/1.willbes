@@ -47,8 +47,6 @@
         .wb_05 {background:#ebebeb}
         .wb_06 {background:#f5f5f5 url(http://file3.willbes.net/new_cop/2018/01/EV180130_p7_1_bg.jpg) no-repeat center;}
 
-
-
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
@@ -61,7 +59,7 @@
                 </div>
                 <div class="pngimg">
                     <div class="pngimg-real">
-                        <img src="http://file3.willbes.net/new_cop/2019/02/EV190225_p1.png"  alt="메인" usemap="#welcomepack1"  />
+                        <img src="http://file3.willbes.net/new_cop/2019/03/EV190311_p1_re.png"  alt="메인" usemap="#welcomepack1"  />
                         <map name="welcomepack1" id="welcomepack1">
                             <area shape="rect" coords="282,949,696,1005" href="{{ app_url('/member/join/?ismobile=0&sitecode=' . $__cfg['SiteCode'], 'www') }}" onfocus='this.blur()'  alt="웰컴팩받기" target="_blink">
                         </map>
@@ -71,18 +69,18 @@
         </div>
 
         <div class="evtCtnsBox wb_01">
-            <img src="http://file3.willbes.net/new_cop/2018/03/EV180302_p2.png"  alt="아주특별한혜택" />
+            <img src="http://file3.willbes.net/new_cop/2019/03/EV190311_p2_re.png"  alt="아주특별한혜택" />
         </div>
 
         <div class="evtCtnsBox wb_03" >
-            <img src="http://file3.willbes.net/new_cop/2018/03/EV180302_p4.png"  alt="02" usemap="#pass">
+            <img src="http://file3.willbes.net/new_cop/2019/03/EV190311_p4_re.png"  alt="02" usemap="#pass">
             <map name="pass" id="pass">
-                <area shape="rect" coords="465,644,688,670" href="{{ site_url('/home/index/cate/3001') }}" onfocus='this.blur()'  alt="신광은경찰PASS" target="_blink">
+                <area shape="rect" coords="466,644,689,670" href="{{ site_url('/home/index/cate/3001') }}" onfocus='this.blur()'  alt="신광은경찰PASS" target="_blink">
             </map>
         </div>
 
         <div class="evtCtnsBox wb_04" >
-            <img src="http://file3.willbes.net/new_cop/2018/03/EV180302_p5.png"  alt="03"  usemap="#welcomepack2">
+            <img src="http://file3.willbes.net/new_cop/2019/03/EV190311_p5_re.png"  alt="03"  usemap="#welcomepack2">
             <map name="welcomepack2" id="welcomepack2">
                 <area shape="rect" coords="86,1062,894,1168" href="{{ app_url('/member/join/?ismobile=0&sitecode=' . $__cfg['SiteCode'], 'www') }}" onfocus='this.blur()'  alt="웰컴팩받기" target="_blink">
             </map>
@@ -93,48 +91,18 @@
         </div>
 
         <div class="evtCtnsBox wb_06" >
-            <img src="http://file3.willbes.net/new_cop/2018/04/EV180430_p7_1.png"  alt="링크들"  usemap="#link">
+            <img src="http://file3.willbes.net/new_cop/2019/03/EV190311_p7_re.png"  alt="링크들"  usemap="#link">
             <map name="link" id="link">
-                <area shape="rect" coords="31,379,149,433" href="{{ site_url('/home/index/cate/3001') }}" onfocus='this.blur()'  alt="신광은경찰PASS" target="_blink">
-                <area shape="rect" coords="232,379,352,433" href="{{ site_url('/home/index/cate/3002') }}" onfocus='this.blur()'  alt="경행경채" target="_blink">
-                <area shape="rect" coords="430,379,550,433" href="{{ site_url('/home/index/cate/3006') }}" onfocus='this.blur()'  alt="경찰승진PASS" target="_blink">
-                <area shape="rect" coords="632,379,749,433" href="#none" onfocus='this.blur()'  alt="법학경채PASS" target="_blink">
-                <area shape="rect" coords="830,379,951,433" href="{{ site_url('/home/index/cate/3007') }}" onfocus='this.blur()'  alt="해양경찰" target="_blink">
+                <area shape="rect" coords="109,378,227,432" href="{{ site_url('/home/index/cate/3001') }}" onfocus='this.blur()'  alt="신광은경찰PASS" target="_blink">
+                <area shape="rect" coords="325,378,445,432" href="{{ site_url('/home/index/cate/3002') }}" onfocus='this.blur()'  alt="경행경채" target="_blink">
+                <area shape="rect" coords="540,378,660,432" href="{{ site_url('/home/index/cate/3006') }}" onfocus='this.blur()'  alt="경찰승진PASS" target="_blink">
+                <area shape="rect" coords="755,378,874,432" href="{{ site_url('/home/index/cate/3007') }}" onfocus='this.blur()'  alt="해양경찰" target="_blink">
             </map>
         </div>
 
     </div>
     <!-- End Container -->
 
-    <script language="javascript">
-        $(document).ready(function() {
-            var slidesImg3 = $("#slidesImg3").bxSlider({
-                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
-                auto:true,
-                speed:350,
-                pause:4000,
-                pager:true,
-                controls:false,
-                minSlides:1,
-                maxSlides:1,
-                slideWidth:2000,
-                slideMargin:0,
-                autoHover: true,
-                moveSlides:1,
-                pager:false,
-            });
-
-            $("#imgBannerLeft3").click(function (){
-                slidesImg3.goToPrevSlide();
-            });
-
-            $("#imgBannerRight3").click(function (){
-                slidesImg3.goToNextSlide();
-            });
-        });
-    </script>
-
-    <script src="/public/js/willbes/jquery.nav.js"></script>
     <script>
         $(function(e){
             var targetOffset= $("#evtContainer").offset().top;

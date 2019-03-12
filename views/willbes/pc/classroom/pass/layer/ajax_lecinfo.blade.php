@@ -50,3 +50,4 @@
         </table>
     </div>
 </div>
+<script src="/public/js/willbes/tabs.js?ver={{time()}}"></script>

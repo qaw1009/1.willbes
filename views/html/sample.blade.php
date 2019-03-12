@@ -31,7 +31,10 @@
                 <li class="w50"><a href="{{ site_url('/home/html/main_cop_acad') }}" target="_blank">경찰 학원 메인</a></li>
                 <li><a href="{{ site_url('/home/html/acad_sub_main') }}" target="_blank">경찰 캠퍼스 안내</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_gosi_online') }}" target="_blank">공무원 온라인 메인</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/main_gosi_seven') }}" target="_blank">공무원 7급 온라인 메인</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/main_gosi_tex') }}" target="_blank">공무원 세무직 온라인 메인</a></li>                
                 <li class="w50"><a href="{{ site_url('/home/html/main_gosi_law') }}" target="_blank">공무원 법원직 온라인 메인</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/main_gosi_fire') }}" target="_blank">공무원 소방직 온라인 메인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_gosi_tech') }}" target="_blank">공무원 기술직 온라인 메인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_gosi_gp') }}" target="_blank">공무원 군무원 온라인 메인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_gosi_noncom') }}" target="_blank">공무원 부사관 온라인 메인</a></li>

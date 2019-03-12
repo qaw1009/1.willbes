@@ -9949,17 +9949,26 @@ table.acadlecInfoPackageTable tr.Top td {
 .videoPopup .view .viewList {
     height: 45px;
     padding: 0 15px;
+    min-width: 640px;
 }
-.videoPopup .view .viewList .Tit {
+.videoPopup .view .viewList .Tit {    
     font-size: 16px; 
     color: #fff;
     line-height: 45px;
+    width:80%; 
+    overflow:hidden;
+    white-space:nowrap; 
+    text-overflow:ellipsis;
+    display: block;
 }
 .videoPopup .view .viewList span {
     vertical-align: baseline;
 }
 .videoPopup .view  .viewList .btnList {
-    float: right;
+    /*float: right;*/
+    position: absolute;
+    right:0;
+    top:0;
 }
 .videoPopup .view  .viewList .btnList li {
     display: inline-block;
@@ -10008,6 +10017,7 @@ table.acadlecInfoPackageTable tr.Top td {
     position: absolute;
     top: 0;
     right: 0;
+    margin-right: -264px;
     z-index: 9999;
 }
 

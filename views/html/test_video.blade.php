@@ -10,10 +10,10 @@
         <div id="videoPopup" class="videoPopup">
             <div class="view p_re">
                 <div class="viewList">
-                    <span class="Tit NGR"><span class="NG">2강 / 1월 9일</span> : P.20 국어의 특성</span>
+                    <span class="Tit NGR"><span class="NG">1회 10강 </span>1월 18일 : Unit 05. 5형식 문형: S + V + O + O·C [불완전타동사] p100~102</span>
                     <ul class="btnList">
-                        <li><a class="iconBtn btnUP" href="#none">버튼 위로</a></li>
-                        <li><a class="iconBtn btnBookMark" href="#none">버튼 즐겨찾기</a></li>
+                        <!--li><a class="iconBtn btnUP" href="#none">버튼 위로</a></li>
+                        <li><a class="iconBtn btnBookMark" href="#none">버튼 즐겨찾기</a></li-->
                         <li><a class="iconBtn btnSetting" href="#none" onclick="openWin('settingPOP')">버튼 설정</a></li>
                         <li><span class="btnFAQ"><a href="#none">동영상 FAQ</a></span></li>
                     </ul>
@@ -38,7 +38,7 @@
         <div id="videoPopup" class="videoPopup">
             <div class="view p_re">
                 <div class="viewList">
-                    <span class="Tit NGR"><span class="NG">2강 / 1월 9일</span> : P.20 국어의 특성</span>
+                    <span class="Tit NGR"><span class="NG">1회 10강 </span>1월 18일 : Unit 05. 5형식 문형: S + V + O + O·C [불완전타동사] p100~102</span>
                     <ul class="btnList">
                         <li><a class="iconBtn btnUP" href="#none">버튼 위로</a></li>
                         <li><a class="iconBtn btnBookMark" href="#none">버튼 즐겨찾기</a></li>

@@ -45,7 +45,7 @@
         .wb_03 {background:#303132}
         .wb_04 {background:#2b2c2d url(http://file3.willbes.net/new_cop/2018/01/EV180130_p5_bg.jpg) no-repeat center;}
         .wb_05 {background:#ebebeb}
-        .wb_06 {background:#f5f5f5 url(http://file3.willbes.net/new_cop/2018/01/EV180130_p7_1_bg.jpg) no-repeat center;}
+        .wb_06 {background:#f5f5f5}
 
     </style>
 

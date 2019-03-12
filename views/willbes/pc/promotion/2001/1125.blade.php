@@ -8,19 +8,18 @@
             min-height: auto !important;
             margin-bottom:0 !important;
         }
-        .evtContent { 
-            position:relative;            
+        .evtContent {
             width:100% !important;
             min-width:1210px !important;
             background:#ccc;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
-        }	
+        }
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
-        
+
         .skybanner {position:fixed; top:200px; right:10px; z-index:1;}
 
         .wb_top {background:#28282a url(http://file3.willbes.net/new_cop/2019/03/EV190311_c1_bg.jpg) no-repeat center;}
@@ -64,12 +63,13 @@
         .content_guide_box dd{ color:#777; font-size:13px; margin:0 0 20px 5px; line-height:17px;}
         .content_guide_box dd strong{ color:#555;}
         .content_guide_box dd p{ margin-bottom:3px;}
-        .content_guide_box dd p.guide_txt_01{margin:5px 0 5px 15px;}	      
-
+        .content_guide_box dd p.guide_txt_01{margin:5px 0 5px 15px;}
+        	
     </style>
 
-<div class="evtContent NSK" id="evtContainer">
-    <div class="skybanner">
+
+<div class="p_re evtContent" id="evtContainer">
+<div class="skybanner">
         <div><a href="#go"><img src="http://file3.willbes.net/new_cop/2019/03/EV190311_sky.jpg" alt="스카이스크래퍼"></a></div>
     </div>
 		
@@ -172,9 +172,9 @@
                 </dd>
             </dl>
         </div>
-    </div>             
-        
+    </div> 
+    
 </div>
-<!-- End Container -->  
-   
+<!-- End Container -->       
+
 @stop

@@ -57,8 +57,6 @@
         .wb_05 .st03 {font-weight:bold; color:#F30;}
         .wb_05 .st04 {text-align:center;}
 
-
-
         .content_guide_wrap{background:#fff; margin:0;min-width:1210px;}
         .content_guide_box{ position:relative; width:980px; margin:0 auto; padding:50px 0;}
         .content_guide_box .guide_tit{margin-bottom:20px;}
@@ -86,12 +84,12 @@
         #slidesImg3:after {content::""; display:block; clear:both}
 
         .skybanner {
-            position:absolute;
-            top:400px;
+            position:fixed;
+            bottom:20px;
             right:10px;
             z-index:1;
         }
-        .skybanner_sectionFixed {position:fixed; top:20px}
+
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
@@ -226,7 +224,7 @@
                         <td class="st01">신광은 형소법</td>
                         <td class="st03">적중예상 문제풀이 <span class="st02">3/7(목)~3/12(화), 총 5회 강의</span></td>
                         <td class="st01">3/7(목) 9:00</td>
-                        <td class="st04"><a href="{{ site_url('/pass/offLecture/index#110707') }}" target="_blank">수강신청</a></td>
+                        <td class="st04"><a href="#none" class="active">마감</a></td>
                         <td class="st04"><a href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/132265') }}" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
@@ -291,45 +289,118 @@
         });
 
         /**/
-        var tab1_url = "https://www.youtube.com/embed/-lGRHQZbs1Q?rel=0";
-        var tab2_url = "https://www.youtube.com/embed/bwwWmhepczM?rel=0";
-        var tab3_url = "https://www.youtube.com/embed/FHjAITpcihw?rel=0";
-        var tab4_url = "https://www.youtube.com/embed/wIQk137qLXM?rel=0";
-        var tab5_url = "https://www.youtube.com/embed/Gc_gGI3XfV4?rel=0";
-        var tab6_url = "https://www.youtube.com/embed/lZOlVgPUxfs?rel=0";
+        var tab1_url = "https://www.youtube.com/embed/-lGRHQZbs1Q?rel=0&enablejsapi=1";
+        var tab2_url = "https://www.youtube.com/embed/bwwWmhepczM?rel=0&enablejsapi=1";
+		var tab3_url = "https://www.youtube.com/embed/FHjAITpcihw?rel=0&enablejsapi=1";
+		var tab4_url = "https://www.youtube.com/embed/wIQk137qLXM?rel=0&enablejsapi=1";
+		var tab5_url = "https://www.youtube.com/embed/Gc_gGI3XfV4?rel=0&enablejsapi=1";
+		var tab6_url = "https://www.youtube.com/embed/lZOlVgPUxfs?rel=0&enablejsapi=1";
 
-
+	 	
+		var index = 1;
+	    var isPlaying = false;    
         $(document).ready(function(){
-            $(".tabContents").hide();
-            $(".tabContents:first").show();
-            $(".tabContaier ul li a").click(function(){
-                var activeTab = $(this).attr("href");
+        $(".tabContents").hide(); 
+        $(".tabContents:first").show();
+        
+        var tabs =  $(".tabContaier ul li");
+        setInterval(function(){
+        	if(!isPlaying){
+	            var activeItem = $(tabs).eq(index).children("a");
+	            var activeTab = activeItem.attr("href"); 
+	            var html_str = "";
+	            var html_img = "";
+	            if(activeTab == "#tab1"){
+	                html_str = "<iframe id='player' src='"+tab1_url+"' allowfullscreen></iframe>";
+	                html_img = "<img src='http://file3.willbes.net/new_cop/2019/02/EV190226_c10_1.jpg' />";
+	            }else if(activeTab == "#tab2"){
+	                html_str = "<iframe id='player' src='"+tab2_url+"' allowfullscreen></iframe>";
+	                html_img = "<img src='http://file3.willbes.net/new_cop/2019/02/EV190226_c10_2.jpg' />";
+				}else if(activeTab == "#tab3"){
+	                html_str = "<iframe id='player' src='"+tab3_url+"' allowfullscreen></iframe>";
+	                html_img = "<img src='http://file3.willbes.net/new_cop/2019/02/EV190226_c10_3.jpg' />";
+				}else if(activeTab == "#tab4"){
+	                html_str = "<iframe id='player' src='"+tab4_url+"' allowfullscreen></iframe>";
+	                html_img = "<img src='http://file3.willbes.net/new_cop/2019/02/EV190226_c10_4.jpg' />";
+				}else if(activeTab == "#tab5"){
+	                html_str = "<iframe id='player' src='"+tab5_url+"' allowfullscreen></iframe>";
+	                html_img = "<img src='http://file3.willbes.net/new_cop/2019/02/EV190226_c10_5.jpg' />";
+				}else if(activeTab == "#tab6"){
+	                html_str = "<iframe id='player' src='"+tab6_url+"' allowfullscreen></iframe>";
+	                html_img = "<img src='http://file3.willbes.net/new_cop/2019/02/EV190226_c10_6.jpg' />";
+	            }
+	            $(".tabContaier ul li a").removeClass("active"); 
+	            $(activeItem).addClass("active"); 
+	            $(".tabContents").hide(); 
+	            $(".tabContents").html(''); 
+	            $(".tabContents").html(html_str);
+	            $(".tabContents").fadeIn(); 
+	            $(".tabImg").html(html_img);
+	            onYouTubeIframeAPIReady();
+	            index++;
+	            if (index >= tabs.length){
+	                index = 0;
+	            }
+        	}
+        }, 5000);
+        
+     
+        $(".tabContaier ul li a").click(function(){ 
+                var activeTab = $(this).attr("href"); 
+                index = $( ".tabContaier ul li" ).index($(this).parent())+1;
                 var html_str = "";
+	            var html_img = "";
                 if(activeTab == "#tab1"){
-                    html_str = "<iframe src='"+tab1_url+"' allowfullscreen></iframe>";
+                    html_str = "<iframe id='player' src='"+tab1_url+"' allowfullscreen></iframe>";
+	                html_img = "<img src='http://file3.willbes.net/new_cop/2019/02/EV190226_c10_1.jpg' />";
                 }else if(activeTab == "#tab2"){
-                    html_str = "<iframe src='"+tab2_url+"' allowfullscreen></iframe>";
-                }else if(activeTab == "#tab3"){
-                    html_str = "<iframe src='"+tab3_url+"' allowfullscreen></iframe>";
-                }else if(activeTab == "#tab4"){
-                    html_str = "<iframe src='"+tab4_url+"' allowfullscreen></iframe>";
-                }else if(activeTab == "#tab5"){
-                    html_str = "<iframe src='"+tab5_url+"' allowfullscreen></iframe>";
-                }else if(activeTab == "#tab6"){
-                    html_str = "<iframe src='"+tab6_url+"' allowfullscreen></iframe>";
+                    html_str = "<iframe id='player' src='"+tab2_url+"' allowfullscreen></iframe>";
+	                html_img = "<img src='http://file3.willbes.net/new_cop/2019/02/EV190226_c10_2.jpg' />";
+				}else if(activeTab == "#tab3"){
+                    html_str = "<iframe id='player' src='"+tab3_url+"' allowfullscreen></iframe>";
+	                html_img = "<img src='http://file3.willbes.net/new_cop/2019/02/EV190226_c10_3.jpg' />";
+				}else if(activeTab == "#tab4"){
+                    html_str = "<iframe id='player' src='"+tab4_url+"' allowfullscreen></iframe>";
+	                html_img = "<img src='http://file3.willbes.net/new_cop/2019/02/EV190226_c10_4.jpg' />";
+				}else if(activeTab == "#tab5"){
+                    html_str = "<iframe id='player' src='"+tab5_url+"' allowfullscreen></iframe>";
+	                html_img = "<img src='http://file3.willbes.net/new_cop/2019/02/EV190226_c10_5.jpg' />";
+				}else if(activeTab == "#tab6"){
+                    html_str = "<iframe id='player' src='"+tab6_url+"' allowfullscreen></iframe>";
+	                html_img = "<img src='http://file3.willbes.net/new_cop/2019/02/EV190226_c10_6.jpg' />";
                 }
-                $(".tabContaier ul li a").removeClass("active");
-                $(this).addClass("active");
-                $(".tabContents").hide();
-                $(".tabContents").html('');
-                $(activeTab).html(html_str);
-                $(activeTab).fadeIn();
-                return false;
+                $(".tabContaier ul li a").removeClass("active"); 
+                $(this).addClass("active"); 
+                $(".tabContents").hide(); 
+                $(".tabContents").html(''); 
+                $(".tabContents").html(html_str);
+                $(".tabContents").fadeIn(); 
+	            $(".tabImg").html(html_img);
+                isPlaying = false;
+                onYouTubeIframeAPIReady();
+                return false; 
+                });
             });
-        });
-    </script>
+        
+        var player;
+		function onYouTubeIframeAPIReady() {
+		  player = new YT.Player( 'player', {
+		    events: { 
+		    	'onStateChange': onPlayerStateChange
+		    	}
+		  });
+		}
+		function onPlayerStateChange(event) {
+			if (event.data != 2) {
+				isPlaying = true;
+	        }else{
+	        	isPlaying = false;
+	        }
+		}
+		
+    </script>  
+	<script src="https://www.youtube.com/iframe_api"></script>
 
-    <script src="/public/js/willbes/jquery.nav.js"></script>
     <script>
         $(function(e){
             var targetOffset= $("#evtContainer").offset().top;

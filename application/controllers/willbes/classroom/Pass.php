@@ -472,7 +472,8 @@ class Pass extends \app\controllers\FrontController
         // 셀렉트박스 구해오기
         $cond_arr = [
             'EQ' => [
-                'A.ProdCode' => $prodcode
+                'A.ProdCode' => $prodcode,
+                'D.OrderIdx' => $passinfo['OrderIdx']
             ]
         ];
 

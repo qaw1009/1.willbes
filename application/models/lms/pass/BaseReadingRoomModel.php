@@ -675,7 +675,7 @@ class BaseReadingRoomModel extends WB_Model
             'IsSaleEnd' => 'N',
             'IsCoupon' => 'N',
             'IsPoint' => 'N',
-            'PointApplyCcd' => '635001',
+            'PointApplyCcd' => '635002',
             'PointSavePrice' => '0',
             'PointSaveType' => 'R',
             'IsBest' => 'N',

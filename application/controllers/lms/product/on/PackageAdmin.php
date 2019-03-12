@@ -99,7 +99,7 @@ Class PackageAdmin extends \app\controllers\BaseController
     {
         $method = 'POST';
 
-        $codes = $this->codeModel->getCcdInArray(['609','611','612','613','616','617','618','648','649','696']);
+        $codes = $this->codeModel->getCcdInArray(['609','611','612','613','616','617','618','648','649','696','635']);
         $courseList = $this->courseModel->listCourse([], null, null, ['PC.SiteCode' => 'asc','PC.OrderNum' => 'asc' ]);
         $arr_send_callback_ccd = $this->codeModel->getCcd(706, 'CcdValue');  // 발신번호조회
 
@@ -152,6 +152,7 @@ Class PackageAdmin extends \app\controllers\BaseController
             ,'packtype_ccd'=>$codes['648'] //패키지유형
             ,'packcate_ccd'=>$codes['649'] //패키지분류
             ,'extcorp_ccd'=>$codes['696'] //외부수강업체코드
+            ,'pointapply_ccd' => $codes['635']  //포인트적립타입
             ,'courseList'=>$courseList      //과정
             ,'prodcode' => $prodcode
             ,'arr_send_callback_ccd'=>$arr_send_callback_ccd

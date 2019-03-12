@@ -18,7 +18,7 @@ Class Lecture extends \app\controllers\BaseController
     public function index()
     {
         //공통코드
-        $codes = $this->codeModel->getCcdInArray(['607','611','618']);
+        $codes = $this->codeModel->getCcdInArray(['607','611','618','635']);
 
         $category_data = $this->categoryModel->getCategoryArray();
         $arr_category = [];
@@ -37,6 +37,7 @@ Class Lecture extends \app\controllers\BaseController
             'LecType_ccd' => $codes['607'],
             'Multiple_ccd' => $codes['611'],
             'Sales_ccd' => $codes['618'],
+            'PointApply_ccd' => $codes['635'],
         ]);
     }
 
@@ -135,7 +136,7 @@ Class Lecture extends \app\controllers\BaseController
     {
         $method = 'POST';
 
-        $codes = $this->codeModel->getCcdInArray(['607','609','610','611','612','613','616','617','618','696']); // 강좌유형,강좌제공방식,교재제공구분,수강배수적용구분,강좌제공구분,수강기간설정구분,VOD구분,판매상태
+        $codes = $this->codeModel->getCcdInArray(['607','609','610','611','612','613','616','617','618','696','635']); // 강좌유형,강좌제공방식,교재제공구분,수강배수적용구분,강좌제공구분,수강기간설정구분,VOD구분,판매상태
         $courseList = $this->courseModel->listCourse([], null, null, ['PC.SiteCode' => 'asc','PC.OrderNum' => 'asc' ]);
         $subjectList = $this->subjectModel->listSubject([], null, null, ['PS.SiteCode' => 'asc','PS.OrderNum' => 'asc' ]);
         $arr_send_callback_ccd = $this->codeModel->getCcd(706, 'CcdValue');  // 발신번호조회
@@ -191,6 +192,7 @@ Class Lecture extends \app\controllers\BaseController
             ,'vodtype_ccd'=>$codes['617'] //VOD구분
             ,'sales_ccd'=>$codes['618'] //판매상태
             ,'extcorp_ccd'=>$codes['696'] //외부수강업체코드
+            ,'pointapply_ccd' => $codes['635']  //포인트적립타입
             ,'courseList'=>$courseList      //과정
             ,'subjectList'=>$subjectList    //과목
             ,'prodcode' => $prodcode

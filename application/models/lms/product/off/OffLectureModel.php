@@ -372,7 +372,7 @@ class OffLectureModel extends CommonLectureModel
                 ,'IsSaleEnd'=>element('IsSaleEnd',$input,'N')
                 ,'IsCoupon'=>element('IsCoupon',$input,'N')
                 ,'IsPoint'=>element('IsPoint',$input,'N')
-                ,'PointApplyCcd'=>element('PointApplyCcd',$input,'635001')
+                ,'PointApplyCcd'=>element('PointApplyCcd',$input,'635002')
                 ,'PointSavePrice'=>get_var(element('PointSavePrice',$input),0)
                 ,'PointSaveType'=>element('PointSaveType',$input,'R')
                 ,'IsBest'=>element('IsBest',$input, 'N')

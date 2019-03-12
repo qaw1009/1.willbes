@@ -21,7 +21,7 @@
 
         /************************************************************/
         
-        .skybanner {position:fixed; top:200px; right:10px; z-index:1;}
+        .skybanner {position:fixed; top:250px; right:10px; z-index:1;}
 
         .wb_top {background:#28282a url(http://file3.willbes.net/new_cop/2019/03/EV190311_c1_bg.jpg) no-repeat center;}
         .wb_01 {background:#fff;}	        

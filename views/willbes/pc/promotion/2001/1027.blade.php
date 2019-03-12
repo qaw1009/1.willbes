@@ -63,10 +63,12 @@
         </div>
 
         <div class="evtCtnsBox wb_cts05" >
+            <!--
             <img src="http://file3.willbes.net/new_cop/2018/EV190111_pp5.png"  alt="적중사례" /></li>
             <a href="{{ site_url('/support/notice/index/cate/3001') }}" target="_blank">
                 <img src="http://file3.willbes.net/new_cop/2018/04/EV180409_p5_bt.png"  alt="더 많은 적중사례 보러가기" />
             </a>
+            -->
             <div class="slide_con">
                 <ul id="slidesImg3">
                     <li><img src="http://file3.willbes.net/new_cop/2019/01/EV190121_p5_1.png" alt="1-2" /></li>

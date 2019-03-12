@@ -147,15 +147,13 @@
                     </li>
                 </ul>
 
-                <div class="tabContents" id="tab1" >
-                    <iframe src="https://www.youtube.com/embed/-lGRHQZbs1Q?rel=0" frameborder="0" allowfullscreen></iframe>
+                <div class="tabContents" >
+                	<iframe id="player" src="https://www.youtube.com/embed/-lGRHQZbs1Q?rel=0&enablejsapi=1" frameborder="0" allowfullscreen></iframe>                    			
+                </div>
+                <div class="tabImg">
+                	<img src="http://file3.willbes.net/new_cop/2019/02/EV190226_c10_1.jpg" />	
                 </div>
 
-                <div class=" tabContents" id="tab2"></div>
-                <div class=" tabContents" id="tab3"></div>
-                <div class=" tabContents" id="tab4"></div>
-                <div class=" tabContents" id="tab5"></div>
-                <div class=" tabContents" id="tab6"></div>
             </div><!--tabContaier//-->
         </div><!--WB_top01//-->
 

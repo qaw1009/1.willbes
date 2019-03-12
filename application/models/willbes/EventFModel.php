@@ -211,9 +211,10 @@ class EventFModel extends WB_Model
      * 특강 신청자 등록
      * @param array $inputData
      * @param $site_code
+     * @param string $register_type 등록타입(이벤트, 프로모션)
      * @return array|bool
      */
-    public function addEventRegisterMember($inputData = [], $site_code)
+    public function addEventRegisterMember($inputData = [], $site_code, $register_type = '')
     {
         $this->_conn->trans_begin();
         try {
@@ -226,7 +227,7 @@ class EventFModel extends WB_Model
                     'A.RegisterEndDate' => date('Y-m-d H:i') . ':00'
                 ]
             ];
-            $event_data = $this->findEvent($arr_condition);
+            $event_data = $this->findEvent($arr_condition, $register_type);
             if (count($event_data) < 1) {
                 throw new \Exception('조회된 이벤트 정보가 없습니다.');
             }
@@ -260,21 +261,33 @@ class EventFModel extends WB_Model
                 }
 
                 //중복체크, 저장 데이터 셋팅
+                $register_tel = (empty($inputData['register_tel']) === true) ? '' : $this->memberFModel->getEncString($inputData['register_tel']);
+                $register_email = (empty($inputData['register_email']) === true) ? '' : $this->memberFModel->getEncString($inputData['register_email']);
+
+                $etc_value = '';
+                if (empty($inputData['target_params']) === false && is_array($inputData['target_params'])) {
+                    foreach ($inputData['target_params'] as $target_key => $target_param) {
+                        $etc_value .= $inputData[$target_param]. ',';
+                    }
+                    $etc_value = substr($etc_value, 0, -1);
+                }
+
                 if(empty($this->session->userdata('mem_idx')) === true) {
                     $arr_condition = [
                         'EQ' => [
                             'A.ErIdx' => $key,
                             'A.UserName' => $inputData['register_name'],
-                            'A.UserTelEnc' => $this->memberFModel->getEncString($inputData['register_tel']),
-                            'A.UserMailEnc' => $this->memberFModel->getEncString($inputData['register_email']),
+                            'A.UserTelEnc' => $register_tel,
+                            'A.UserMailEnc' => $register_email
                         ]
                     ];
 
                     $input_register_data = [
                         'ErIdx' => $key,
                         'UserName' => $inputData['register_name'],
-                        'UserTelEnc' => $this->memberFModel->getEncString($inputData['register_tel']),
-                        'UserMailEnc' => $this->memberFModel->getEncString($inputData['register_email']),
+                        'UserTelEnc' => $register_tel,
+                        'UserMailEnc' => $register_email,
+                        'EtcValue' => $etc_value
                     ];
                 } else {
                     $arr_condition = [
@@ -282,8 +295,8 @@ class EventFModel extends WB_Model
                             'A.ErIdx' => $key,
                             'A.MemIdx' => $this->session->userdata('mem_idx'),
                             'A.UserName' => $inputData['register_name'],
-                            'A.UserTelEnc' => $this->memberFModel->getEncString($inputData['register_tel']),
-                            'A.UserMailEnc' => $this->memberFModel->getEncString($inputData['register_email']),
+                            'A.UserTelEnc' => $register_tel,
+                            'A.UserMailEnc' => $register_email
                         ]
                     ];
 
@@ -291,8 +304,9 @@ class EventFModel extends WB_Model
                         'ErIdx' => $key,
                         'MemIdx' => $this->session->userdata('mem_idx'),
                         'UserName' => $inputData['register_name'],
-                        'UserTelEnc' => $this->memberFModel->getEncString($inputData['register_tel']),
-                        'UserMailEnc' => $this->memberFModel->getEncString($inputData['register_email']),
+                        'UserTelEnc' => $register_tel,
+                        'UserMailEnc' => $register_email,
+                        'EtcValue' => $etc_value
                     ];
                 }
 
@@ -606,7 +620,7 @@ class EventFModel extends WB_Model
     public function findEventForPromotion($promotion_code, $test_type = '')
     {
         $column = '
-            ElIdx, OptionCcds, EventName, PromotionCode, PromotionParams, RegisterEndDate, CommentUseArea
+            ElIdx, OptionCcds, EventName, PromotionCode, PromotionParams, RegisterEndDate, CommentUseArea, LimitType
         ';
         $from = "
             FROM {$this->_table['event_lecture']}

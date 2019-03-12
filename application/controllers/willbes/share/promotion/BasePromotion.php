@@ -20,12 +20,12 @@ class BasePromotion extends \app\controllers\FrontController
         }
 
         $test_type = (int)element('type', $this->_reqG(null), '0');
-        $promotion_code = (int)$params['code'];
+        $arr_base['promotion_code'] = (int)$params['code'];
 
         //인증식별자
         //$cert_idx = element('cert', $this->_reqG(null), '');
 
-        $data = $this->eventFModel->findEventForPromotion($promotion_code, $test_type);
+        $data = $this->eventFModel->findEventForPromotion($arr_base['promotion_code'], $test_type);
 
         if (empty($data) === true) {
             show_alert('조회에 실패했습니다.', 'back');
@@ -39,7 +39,7 @@ class BasePromotion extends \app\controllers\FrontController
 
         // 접근 로그 저장
         if ($test_type != 1) {
-            $this->eventFModel->saveLogPromotion($this->_site_code, $this->_cate_code, $promotion_code);
+            $this->eventFModel->saveLogPromotion($this->_site_code, $this->_cate_code, $arr_base['promotion_code']);
         }
 
         $arr_base['frame_params'] = 'cate_code='.$this->_cate_code.'&event_idx='.$data['ElIdx'].'&pattern=ongoing';
@@ -72,7 +72,7 @@ class BasePromotion extends \app\controllers\FrontController
             $apply_result = $this->certApplyFModel->findApplyByCertIdx($arr_promotion_params['cert'])['CaIdx'];
         }
 
-        $view_file = 'willbes/pc/promotion/'.$this->_site_code.'/'.$promotion_code;
+        $view_file = 'willbes/pc/promotion/'.$this->_site_code.'/'.$arr_base['promotion_code'];
         $this->load->view($view_file, [
             'arr_base' => $arr_base,
             'data' => $data,
@@ -181,5 +181,32 @@ class BasePromotion extends \app\controllers\FrontController
         public_download($file_path, $file_name);
 
         show_alert('등록된 파일을 찾지 못했습니다.','close','');
+    }
+
+    public function popup($param = [])
+    {
+        $arr_base['promotion_code'] = $param[0];
+        $test_type = (int)element('type', $this->_reqG(null), '0');
+        $arr_base['method'] = 'POST';
+
+        if (empty($arr_base['promotion_code']) === true) {
+            show_alert('잘못된 접근 입니다.','close','');
+        }
+
+        $arr_base['data'] = $this->eventFModel->findEventForPromotion($arr_base['promotion_code'], $test_type);
+        if (empty($arr_base['data']) === true) {
+            show_alert('프로모션 조회에 실패했습니다.', '');
+        }
+
+        //이벤트 신청리스트 조회
+        $arr_condition = ['EQ' => ['A.ElIdx' => $arr_base['data']['ElIdx'], 'A.IsStatus' => 'Y']];
+        $arr_base['register_list'] = $this->eventFModel->listEventForRegister($arr_condition);
+        if (empty($arr_base['register_list']) === true ) {
+            show_alert('이벤트 조회에 실패했습니다.', '');
+        }
+
+        $this->load->view('willbes/pc/promotion/popup/'.$arr_base['promotion_code'], [
+            'arr_base' => $arr_base
+        ],false);
     }
 }

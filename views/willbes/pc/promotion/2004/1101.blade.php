@@ -190,123 +190,19 @@
         <!--wb_cts11//-->
 
         <!--팝업-->
-        <div id="popup" class="Pstyle" alt="닫기">
-            <span class="b-close"></span>
-            <div class="popcontent">
-                <form name="eventForm" id="eventForm">
-                    <input type="hidden" name="searchEventNo"  id ="searchEventNo" value="892"/>
-                    <input type="hidden" name="GUBUN"  id ="GUBUN" value="2"/>
-                    <input type="hidden" name="SELECTED_OPTION_NO"  id ="SELECTED_OPTION_NO" value="1"/>
-                    <input type="hidden" name="EVENT_TXT"  id ="EVENT_TXT" value=""/>
-                    <h2>윌비스 관리반 상담신청</h2>
-                    <div class="inBx_con">
-                        <h3>상담구분</h3>
-                        <ul>
-                            <li><span class="tit"> - 강한학습관리반</span>
-                                <label class="label_radio" for="radio-01">
-                                    <input name=CATEGORY_INFO id="CATEGORY_INFO" value="강습반" type="radio" style="width:16px; height:16px;" />
-                                </label>
-                            </li>
-                            <li><span class="tit"> - 통합생활관리반</span>
-                                <label class="label_radio" for="radio-01">
-                                    <input name="CATEGORY_INFO" id="CATEGORY_INFO" value="통합생활관리반" type="radio" style="width:16px; height:16px;"/>
-                                </label>
-                            </li>
-                            <li><span class="tit"> - 김신주 영어 합격 관리반</span>
-                                <label class="label_radio" for="radio-01">
-                                    <input name="CATEGORY_INFO" id="CATEGORY_INFO" value="영어합격관리반" type="radio" checked style="width:16px; height:16px;"/>
-                                </label>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="inBx_con">
-                        <h3>상담자 정보 입력</h3>
-                        <ul>
-                            <li><span class="tit"><img src="http://file3.willbes.net/new_gosi/2018/04/EV180426_pop_layer1.png" alt="성명"/></span>
-                                <input type="text" id="USER_NAME" name="USER_NAME" style="width:200px; height:30px;" value="${userInfo.USER_NM}">
-                            </li>
-                            <li><span class="tit"><img src="http://file3.willbes.net/new_gosi/2018/04/EV180426_pop_layer2.png" alt="전화번호"/></span>
-                                <input type="text" id="PHONE_NO" name="PHONE_NO" style="width:200px; height:30px;" value="">
-                            </li>
-                            <li><span class="tit"><img src="http://file3.willbes.net/new_gosi/2018/04/EV180426_pop_layer3.png" alt="상담예약"/></span>
-                                <input type="text" id="REQ_DATE" name="REQ_DATE" readonly style="width:100px; height:30px;">
-                                <select id="REQ_HOUR" name="REQ_HOUR">
-                                    <option value="">시간선택</option>
-                                    <c:forEach varStatus="status" begin="9" end="18">
-                                        <option value="${status.index}">${status.index}시</option>
-                                    </c:forEach>
-                                </select>
-                        </ul>
-                    </div>
-                    <p class="btn_lec"><a href="javascript:fn_submit();"><img src="http://file3.willbes.net/new_gosi/2018/04/EV180426_btn_go.png" alt="신청하기"/></a></p>
-                </form>
-            </div>
-        </div>
+        <div id="popup_{{ $arr_base['promotion_code'] }}"></div>
         <!--//팝업-->
-
     </div>
     <!-- End Container -->
 
-    <script type="text/javascript" src="http://www.willbesgosi.net/resources/libs/jquery-timepicker/jquery.ui.timepicker.js"></script>
+    <script src="/public/js/willbes/jquery.nav.js"></script>
     <script type="text/javascript" src="/public/js/willbes/jquery.bpopup.min.js"></script>
     <script type="text/javascript">
-        $(function(){
-            $.datepicker.regional['ko'] = {
-                closeText: '닫기',
-                prevText: '이전',
-                nextText: '다음',
-                currentText: '오늘',
-                monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
-                monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
-                dayNames: ['일','월','화','수','목','금','토'],
-                dayNamesShort: ['일','월','화','수','목','금','토'],
-                dayNamesMin: ['일','월','화','수','목','금','토'],
-                dateFormat: 'yymmdd',
-                firstDay: 0,
-                showMonthAfterYear: true,
-                changeYear: true,
-                yearSuffix: '년 ',
-                autoSize: false};
-            $.datepicker.setDefaults($.datepicker.regional['ko']);
 
-            setDateFickerImageUrl("http://file3.willbes.net/new_gosi/2018/04/icon_calendar.png");
-// 			$('img.ui-datepicker-trigger').attr('style','cursor:pointer;');
-            initDatePicker("REQ_DATE");
-        });
-
-        var dateFickerImageUrl = '';
-
-        function setDateFickerImageUrl(url) {
-            dateFickerImageUrl = url;
-        }
-        /**
-         * 기간설정 dateFicker one
-         * @@param id
-         */
-        function initDatePicker(id) {
-            var receiptDates = $("#"+id).datepicker({
-                showMonthAfterYear: true,
-                changeMonth: true,
-                numberOfMonths: 1,
-                showOn: "button",
-                dateFormat: "yymmdd",
-                buttonImageOnly: true,
-                buttonImage: dateFickerImageUrl
-            });
-        }
-
-        function go_popup() {
-            if("<c:out value='${userInfo.USER_ID}' />" == ""){
-                alert("로그인해 주세요.");
-                location.href="#";
-                return;
-            }
-            $('#popup').bPopup();
-        }
-    </script>
-
-    <script type="text/javascript">
         $(document).ready(function() {
+            var targetOffset= $("#evtContainer").offset().top;
+            $('html, body').animate({scrollTop: targetOffset}, 700);
+
             var slidesImg1 = $("#slidesImg1").bxSlider({
                 mode:'fade',
                 auto:true,
@@ -330,15 +226,36 @@
             $("#imgBannerRight").click(function (){
                 slidesImg1.goToNextSlide();
             });
+
+            $(document).on('click', '.b-modal', function () {
+                /*$('.b-modal').on('click', function() {*/
+                /*$('.b-modal').click(function () {*/
+                console.log(1);
+            });
         });
+
+        function go_popup() {
+            //팝업 내용 초기화
+            $('.Pstyle').html('');
+
+            var url = "{{ site_url("/pass/promotion/popup/1123") }}";
+            var data = $('#promotionForm').serialize();
+
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','N') !!}
+            sendAjax(url,
+                data,
+                function(d){
+                    $("#popup_{{ $arr_base['promotion_code'] }}").html(d).end();
+                    $('#popup').bPopup();
+                },
+                function(ret, status){
+                    alert(ret.ret_msg);
+                }, false, 'GET', 'html');
+        }
     </script>
 
-    <script src="/public/js/willbes/jquery.nav.js"></script>
+
     <script>
-        $(function(e){
-            var targetOffset= $("#evtContainer").offset().top;
-            $('html, body').animate({scrollTop: targetOffset}, 700);
-            /*e.preventDefault(); */
-        });
+
     </script>
 @stop

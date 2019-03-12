@@ -211,7 +211,7 @@
                 </ul>
                 <span style="color:#fff">
                     <!--input type="checkbox" id="j_pkg" name="j_pkg" value="Y" onClick="fn_cal('j1')"/-->
-                    <label for="j_pkg">&lt; PASS 구매 시 할인 쿠폰이 자동 지급 됩니다.</label>
+                    <label for="j_pkg">PASS 구매 시 할인 쿠폰이 자동 지급 됩니다.</label>
                 </span>
                 <img src="http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190307_03_re1.jpg"  alt="신광은경찰PASS 수강료"/ usemap="#Map190123"><br />
                 <img src="http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190307_03_re2.jpg"  alt="체력" usemap="#Map190117A" border="0"/>
@@ -221,7 +221,7 @@
                     <area shape="rect" coords="777,545,838,564" href="javascript:go_popup1()" alt="평생목팝업" />
                 </map>
                 <map name="Map190117A" id="Map190117A">
-                    <area shape="rect" coords="656,183,776,227" href="http://www.willbescop.net/movie/event.html?event_cd=On_190102_y&amp;topMenuType=O" target="_blank" alt="경찰체력패키지" />
+                    <area shape="rect" coords="656,183,776,227" href="{{ site_url('promotion/index/cate/3001/code/1030?type=1') }}" target="_blank" alt="경찰체력패키지" />
                 </map>
             </div>
 
@@ -253,7 +253,7 @@
             <div class="passLecbtn">
                 <ul>
                     <!--li><div id="sum_y">합계 <span><strong>0</strong>원</span></div></li-->
-                    <li><a href="javascript:fn_cart();">신광은경찰 PASS 신청하기</a></li>
+                    <li><a href="javascript:fn_cart();">신광은경찰 PASS 신청하기 ☞</a></li>
                 </ul>
             </div>
 
@@ -282,7 +282,7 @@
             <img src="http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190104_08_re1.jpg"  alt="왕초보영어탑재" /><br />
             <img src="http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190104_08_re2.jpg"  alt="경찰체력" usemap="#Map190117B" border="0" />
             <map name="Map190117B" id="Map190117B">
-                <area shape="rect" coords="554,583,676,626" href="http://www.willbescop.net/movie/event.html?event_cd=On_190102_y&amp;topMenuType=O" target="_blank" alt="경찰체력 상세보기" />
+                <area shape="rect" coords="554,583,676,626" href="{{ site_url('promotion/index/cate/3001/code/1030?type=1') }}" target="_blank" alt="경찰체력 상세보기" />
             </map>
             <br />
             <img src="http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190104_08_re3.jpg"  alt="많은 수험생들의 꿈을 현실로 만드는 신광은 경찰팀" />

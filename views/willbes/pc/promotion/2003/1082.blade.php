@@ -46,7 +46,7 @@
                 </div>
                 <div class="pngimg">
                     <div class="pngimg-real">
-                        <img src="http://file3.willbes.net/new_gosi/2019/02/190201_01.png"  alt="메인" usemap="#welcomepack1"  />
+                        <img src="http://file3.willbes.net/new_gosi/2019/03/190312_01_re.png"  alt="메인" usemap="#welcomepack1"  />
                         <map name="welcomepack1" id="welcomepack1">
                             <area shape="rect" coords="590,502,981,571" href="{{ site_url('https://www.dev.willbes.net/member/join') }}" onfocus='this.blur()'  alt="웰컴팩받기" target="_blink">
                         </map>
@@ -62,7 +62,7 @@
         <!-- wb_01//-->
 
         <div class="evtCtnsBox wb_02">
-            <img src="http://file3.willbes.net/new_gosi/2018/11/181101_03.png"  alt="01" usemap="#zero" />
+            <img src="http://file3.willbes.net/new_gosi/2019/03/190312_03_re.png"  alt="01" usemap="#zero" />
             <map name="zero" id="zero">
                 <area shape="rect" coords="294,1447,686,1521" href="{{ site_url('https://www.dev.willbes.net/member/join') }}" />
             </map>
@@ -74,9 +74,9 @@
             <map name="190101" id="190101">
                 <area shape="rect" coords="73,649,271,700" href="{{ site_url('/promotion/index/cate/3019/code/1061') }}" alt="9급 pass"/>
                 <area shape="rect" coords="424,649,583,699" href="{{ site_url('/promotion/index/cate/3020/code/1062') }}" alt="7급 pass"/>
-                <area shape="rect" coords="743,649,911,703" href="{{ site_url('/promotion/index/cate/3020/code/1063') }}" alt="외무영사직 pass"/>
+                <area shape="rect" coords="739,644,907,698" href="{{ site_url('/promotion/index/cate/3020/code/1063') }}" alt="외무영사직 pass"/>
                 <area shape="rect" coords="91,1089,251,1138" href="{{ site_url('/promotion/index/cate/3035/code/1064') }}" alt="김동진 법원팀"/>
-                <area shape="rect" coords="421,1083,579,1143" href="{{ site_url('/promotion/index/cate/3023/code/1060') }}" alt="소방 pass"/>
+                <area shape="rect" coords="419,1082,577,1142" href="{{ site_url('/promotion/index/cate/3023/code/1060') }}" alt="소방 pass"/>
                 <area shape="rect" coords="726,1085,917,1140" href="{{ site_url('/home/index/cate/3028') }}" alt="윌비스 기술직"/>
             </map>
         </div>

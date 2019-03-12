@@ -40,11 +40,11 @@
         </div>
 
         <div class="evtCtnsBox WB_con01">
-            <img src="http://file3.willbes.net/new_cop/2019/02/EV190219_01.png" alt="#" />>
+            <img src="http://file3.willbes.net/new_cop/2019/02/EV190219_01.png" alt="#" />
         </div>
 
         <div class="evtCtnsBox WB_con02">
-            <img src="http://file3.willbes.net/new_cop/2019/02/EV190219_02.png" alt="#" /><
+            <img src="http://file3.willbes.net/new_cop/2019/02/EV190219_02.png" alt="#" />
         </div>
 
         <div class="evtCtnsBox WB_con03">

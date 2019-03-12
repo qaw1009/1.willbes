@@ -67,13 +67,13 @@
         .content_guide_box dd p.guide_txt_01{margin:5px 0 5px 15px;}
 
         .skybanner {
-            position:absolute;
-            top:20px;
+            position:fixed;
+            bottom:20px;
             right:10px;
             width:170px;
             z-index:1;
         }
-        .skybanner_sectionFixed {position:fixed; top:20px}
+
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
@@ -86,7 +86,7 @@
             <img src="http://file3.willbes.net/new_cop/2019/01/EV190123_p1.png"  alt="메인" />
         </div>
 
-        <div class="wb_cts01">
+        <div class="evtCtnsBox wb_cts01">
             <img src="http://file3.willbes.net/new_cop/2019/01/EV190123_p2.png"  alt="실수강생 4,000명" />
         </div>
 

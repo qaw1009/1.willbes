@@ -784,7 +784,7 @@ class ClassroomFModel extends WB_Model
      * @param string $col
      * @return mixed
      */
-    public function getPassSubLecture($arr_condition, $col = '')
+    public function getPassSubLecture($arr_condition, $col = '', $notake = false)
     {
         if(empty($col) == true){
             $column =  "A.ProdCode As Parent_ProdCode, B.IsEssential, B.SubGroupName, B.OrderNum, C.* , 
@@ -803,6 +803,9 @@ class ClassroomFModel extends WB_Model
                 ";
 
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
+        if($notake){
+            $where = $where . " AND D.ProdCode IS NULL ";
+        }
 
         return $this->_conn->query('SELECT '. $column. $from. $where)->result_array();
     }

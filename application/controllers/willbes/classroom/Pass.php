@@ -453,6 +453,13 @@ class Pass extends \app\controllers\FrontController
         $input_arr = $this->_reqG(null);
         $today = date("Y-m-d", time());
 
+        if( element('take', $input_arr) == 'Y'){
+            $take = true;
+        } else {
+            $input_arr['take'] = 'N';
+            $take = false;
+        }
+
         $cond_arr = [
             'EQ' => [
                 'MemIdx' => $this->session->userdata('mem_idx'), // 사용자번호
@@ -492,21 +499,19 @@ class Pass extends \app\controllers\FrontController
                 'C.CourseIdx' => $this->_req('course_ccd'), // 검색 : 과정
                 'D.OrderIdx' => $passinfo['OrderIdx'],
                 'D.OrderProdIdx' => $passinfo['OrderProdIdx']
-
             ],
             'LKB' => [
                 'C.ProdName' => $this->_req('search_text') // 강의명 검색 (패키지명)
             ]
         ];
 
-        $leclist = $this->classroomFModel->getPassSubLecture($cond_arr,'');
+        $leclist = $this->classroomFModel->getPassSubLecture($cond_arr,'', $take);
 
 
         foreach($leclist as $idx => $row){
             $leclist[$idx]['ProdContents'] = $this->lectureFModel->findProductContents($row['ProdCode']);
             $leclist[$idx]['LectureUnits'] = $this->lectureFModel->findProductLectureUnits($row['ProdCode']);
         }
-
 
         return $this->load->view('/classroom/pass/layer/morelec', [
             'input_arr' => $input_arr,

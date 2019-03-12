@@ -59,7 +59,7 @@
         <div class="Search-Result">
             <div class="Total">총 {{count($leclist)}}건</div>
             <div class="chkBox">
-                <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> 수강중강좌 제외
+                <input type="checkbox" id="take" name="take" value="Y" class="goods_chk" {{$input_arr['take'] == 'Y' ? 'checked' : ''}}> 수강중강좌 제외
             </div>
         </div>
     </div>
@@ -136,9 +136,9 @@
                                         <div class="LeclistTable">
                                             <table cellspacing="0" cellpadding="0" class="listTable upper-black under-gray tx-gray">
                                                 <colgroup>
-                                                    <col style="width: 50px;">
-                                                    <col style="width: 365px;">
-                                                    <col style="width: 120px;">
+                                                    <col style="width: 65px;">
+                                                    <col style="width: 370px;">
+                                                    <col style="width: 100px;">
                                                 </colgroup>
                                                 <thead>
                                                 <tr>

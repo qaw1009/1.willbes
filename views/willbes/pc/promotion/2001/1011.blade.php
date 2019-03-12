@@ -57,7 +57,7 @@
 
         <div class="evtCtnsBox wb_cts03" >
             <ul>
-                <li><a href="javascript:doEvent1()"><img src="http://file3.willbes.net/new_cop/2018/12/EV181228_p_02_btn1.gif"  alt="" /></a></li>
+                <!--li><a href="javascript:doEvent1()"><img src="http://file3.willbes.net/new_cop/2018/12/EV181228_p_02_btn1.gif"  alt="" /></a></li-->
                 <li><a href="javascript:doEvent2()"><img src="http://file3.willbes.net/new_cop/2018/12/EV181228_p_02_btn2.gif"  alt="" /></a></li>
             </ul>
         </div>

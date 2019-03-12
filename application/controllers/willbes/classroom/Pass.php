@@ -490,6 +490,8 @@ class Pass extends \app\controllers\FrontController
                 'C.SubjectIdx' => $this->_req('subject_ccd'), // 검색 : 과목
                 'C.wProfIdx' => $this->_req('prof_ccd'), // 검색 : 강사
                 'C.CourseIdx' => $this->_req('course_ccd'), // 검색 : 과정
+                'D.OrderIdx' => $passinfo['OrderIdx'],
+                'D.OrderProdIdx' => $passinfo['OrderProdIdx']
 
             ],
             'LKB' => [
@@ -501,8 +503,8 @@ class Pass extends \app\controllers\FrontController
 
 
         foreach($leclist as $idx => $row){
-            $leclist[$idx]['ProdContents'] = []; // $this->lectureFModel->findProductContents($row['ProdCode']);
-            $leclist[$idx]['LectureUnits'] = []; // $this->lectureFModel->findProductLectureUnits($row['ProdCode']);
+            $leclist[$idx]['ProdContents'] = $this->lectureFModel->findProductContents($row['ProdCode']);
+            $leclist[$idx]['LectureUnits'] = $this->lectureFModel->findProductLectureUnits($row['ProdCode']);
         }
 
 

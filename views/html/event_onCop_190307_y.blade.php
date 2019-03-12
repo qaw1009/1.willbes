@@ -112,13 +112,7 @@
         </div>
         
         <div class="evtCtnsBox wb_06" id="event_go">
-            <img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_06.jpg"  alt="#" usemap="#Map_0307_cafe" border="0"/>
-            <map name="Map_0307_cafe">
-                <area shape="rect" coords="208,1212,364,1296" href="http://cafe.daum.net/policeacademy" target="_blank" alt="다음카페경시모">
-                <area shape="rect" coords="408,1211,565,1296" href="https://cafe.naver.com/polstudy" target="_blank" alt="경꿈사">
-                <area shape="rect" coords="604,1213,784,1294" href="http://gall.dcinside.com/board/lists/?id=government" target="_blank" alt="공겔">
-                <area shape="rect" coords="831,1213,1039,1295" href="http://gall.dcinside.com/board/lists/?id=government" target="_blank" alt="순경마이너">
-            </map>
+            <img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_06_01.jpg"  alt="#" />
         </div>
 
         @include('html.event_replyUrl')

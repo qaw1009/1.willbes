@@ -75,7 +75,7 @@
                 <area shape="rect" coords="73,649,271,700" href="{{ site_url('/promotion/index/cate/3019/code/1061') }}" alt="9급 pass"/>
                 <area shape="rect" coords="424,649,583,699" href="{{ site_url('/promotion/index/cate/3020/code/1062') }}" alt="7급 pass"/>
                 <area shape="rect" coords="743,649,911,703" href="{{ site_url('/promotion/index/cate/3020/code/1063') }}" alt="외무영사직 pass"/>
-                <area shape="rect" coords="91,1089,251,1138" href="{{ site_url('/promotion/index/cate/3035/code/1064) }}" alt="김동진 법원팀"/>
+                <area shape="rect" coords="91,1089,251,1138" href="{{ site_url('/promotion/index/cate/3035/code/1064') }}" alt="김동진 법원팀"/>
                 <area shape="rect" coords="421,1083,579,1143" href="{{ site_url('/promotion/index/cate/3023/code/1060') }}" alt="소방 pass"/>
                 <area shape="rect" coords="726,1085,917,1140" href="#none" alt="윌비스 기술직"/>
             </map>

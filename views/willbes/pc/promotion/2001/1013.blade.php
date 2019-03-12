@@ -75,7 +75,7 @@
         <div class="evtCtnsBox wb_03" >
             <img src="http://file3.willbes.net/new_cop/2019/03/EV190311_p4_re.png"  alt="02" usemap="#pass">
             <map name="pass" id="pass">
-                <area shape="rect" coords="466,644,689,670" href="{{ site_url('/home/index/cate/3001') }}" onfocus='this.blur()'  alt="신광은경찰PASS" target="_blink">
+                <area shape="rect" coords="466,644,689,670" href="{{ site_url('/promotion/index/cate/3001/code/1009?type=1') }}" onfocus='this.blur()'  alt="신광은경찰PASS" target="_blink">
             </map>
         </div>
 
@@ -93,9 +93,9 @@
         <div class="evtCtnsBox wb_06" >
             <img src="http://file3.willbes.net/new_cop/2019/03/EV190311_p7_re.png"  alt="링크들"  usemap="#link">
             <map name="link" id="link">
-                <area shape="rect" coords="109,378,227,432" href="{{ site_url('/home/index/cate/3001') }}" onfocus='this.blur()'  alt="신광은경찰PASS" target="_blink">
+                <area shape="rect" coords="109,378,227,432" href="{{ site_url('/promotion/index/cate/3001/code/1009?type=1') }}" onfocus='this.blur()'  alt="신광은경찰PASS" target="_blink">
                 <area shape="rect" coords="325,378,445,432" href="{{ site_url('/home/index/cate/3002') }}" onfocus='this.blur()'  alt="경행경채" target="_blink">
-                <area shape="rect" coords="540,378,660,432" href="{{ site_url('/home/index/cate/3006') }}" onfocus='this.blur()'  alt="경찰승진PASS" target="_blink">
+                <area shape="rect" coords="540,378,660,432" href="{{ site_url('/promotion/index/cate/3006/code/1008?type=1') }}" onfocus='this.blur()'  alt="경찰승진PASS" target="_blink">
                 <area shape="rect" coords="755,378,874,432" href="{{ site_url('/home/index/cate/3007') }}" onfocus='this.blur()'  alt="해양경찰" target="_blink">
             </map>
         </div>

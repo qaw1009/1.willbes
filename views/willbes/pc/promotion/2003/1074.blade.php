@@ -31,31 +31,15 @@
 
         .skybanner {
             position:fixed;
-            top:200px;
-            right:0;
-            width:249px;
-            animation:upDown 1s infinite;
-            -webkit-animation:upDown 1s infinite;
-            z-index:10;
+            top:250px;
+            right:10px;
         }
-
-        @@keyframes upDown{
-             from{margin-top:0}
-             60%{margin-top:-30px}
-             to{margin-top:0}
-         }
-        @@-webkit-keyframes upDown{
-             from{margin-top:0}
-             60%{margin-top:-30px}
-             to{margin-top:0}
-         }
     </style>
 
 
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner">
             <div><a href="#lec_go"><img src="http://file3.willbes.net/new_gosi/2018/12/EV181211_sky_end.png" alt="수강신청" ></a></div>
-            <div><a href="http://www.willbesgosi.net/teacher/board/board_list.html?topMenuType=O&topMenuGnb=OM_002&topMenu=001&menuID=OM_002_006_007&BOARD_MNG_SEQ=TCC_000&BOARDTYPE=T4&INCTYPE=list&currentPage=1&SEARCHKIND=&SEARCHTEXT=&searchUserId=wgt178&searchUserNm=&searchSubjectNm=eμ­i？´&searchSubjectCode="><img src="http://file3.willbes.net/new_gosi/2018/12/EV181211_sky02.png" alt="난공불락" ></a></div>
         </div>
 
         <div class="evtCtnsBox wb_top">

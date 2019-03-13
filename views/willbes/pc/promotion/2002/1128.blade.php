@@ -64,23 +64,23 @@
 			</map>
         </div>
 
-		<div class="iron_top"  id="main">
+		<div class="evtCtnsBox iron_top"  id="main">
 			<img src="http://file3.willbes.net/new_cop/2017/10/EV171031_p1.png"  alt="아이언폴리스" />
 		</div>
 
-		<div class="iron1" id="iron1">
+		<div class="evtCtnsBox iron1" id="iron1">
 			<img src="http://file3.willbes.net/new_cop/2017/10/EV171031_p2.png"  alt="혜택" />
 		</div>
 	
-		<div class="iron2" id="iron2">
+		<div class="evtCtnsBox iron2" id="iron2">
 			<img src="http://file3.willbes.net/new_cop/2017/10/EV171031_p3.png"  alt="관리" />
 		</div>
         
-   		<div class="iron3" id="iron3">
+   		<div class="evtCtnsBox iron3" id="iron3">
 			<img src="http://file3.willbes.net/new_cop/2017/10/EV171031_p4.png"  alt="트레이닝" />
 		</div>
 
-   		<div class="iron4" id="iron4">
+   		<div class="evtCtnsBox iron4" id="iron4">
 			<img src="http://file3.willbes.net/new_cop/2017/10/EV171031_p5_1.png"  alt="한줄톡" />
             <div class="slide_con1">
                 <ul id="slidesImg1">
@@ -95,7 +95,7 @@
             <img src="http://file3.willbes.net/new_cop/2017/10/EV171031_p5_2.png"  alt="합격률" />
 		</div>
 
-   		<div class="iron5" id="iron5">
+   		<div class="evtCtnsBox iron5" id="iron5">
 			<img src="http://file3.willbes.net/new_cop/2017/10/EV171031_p6.png"  alt="현장스케치" />
 			<div class="slide_con2">
                 <ul id="slidesImg2">
@@ -110,7 +110,7 @@
             </div>
 		</div>
 
-   		<div class="iron6" id="iron6">
+   		<div class="evtCtnsBox iron6" id="iron6">
 			<img src="http://file3.willbes.net/new_cop/2017/10/EV171031_p7.png"  alt="수강신청" usemap="#wsip"/>
             <map name="wsip" id="wsip">
                 <area shape="rect" coords="368,1360,609,1420" href="{{ site_url('/pass/offPackage/index') }}" onfocus='this.blur()'  alt="강의신청">

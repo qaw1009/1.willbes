@@ -667,7 +667,7 @@ class Counsel extends BaseBoard
      */
     public function download($fileinfo = [])
     {
-        $this->_download($fileinfo);
+        $this->_download();
     }
 
     private function _setInputData($input){

@@ -154,7 +154,7 @@ class Gallery extends BaseBoard
             return;
         }
 
-        $result = $this->_boardIsBest(json_decode($this->_req('params'), true), json_decode($this->_req('before_params'), true));
+        $result = $this->_boardIsBest(json_decode($this->_reqP('params'), true));
         $this->json_result($result, '적용 되었습니다.', $result);
     }
 
@@ -379,7 +379,7 @@ class Gallery extends BaseBoard
      */
     public function download($fileinfo = [])
     {
-        $this->_download($fileinfo);
+        $this->_download();
     }
 
     private function _setInputData($input){

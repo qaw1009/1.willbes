@@ -120,6 +120,7 @@ class BoardModel extends WB_Model
                 ";
                 break;
             case "professorNotice" :
+            case "tcc" :
                 $from = $from."
                     LEFT OUTER JOIN {$this->_table_product_subject} as PS ON LB.SubjectIdx = PS.SubjectIdx
                 ";
@@ -618,6 +619,7 @@ class BoardModel extends WB_Model
                 ";
                 break;
             case "professorNotice" :
+            case "tcc" :
                 $from = $from."
                     LEFT OUTER JOIN {$this->_table_product_subject} as PS ON LB.SubjectIdx = PS.SubjectIdx
                 ";

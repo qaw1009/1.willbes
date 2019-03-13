@@ -3,12 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 require APPPATH . 'controllers/lms/board/BaseBoard.php';
 
-class Free extends BaseBoard
+class Tcc extends BaseBoard
 {
-    protected $temp_models = array('sys/boardMaster', 'sys/site', 'board/board');
+    protected $temp_models = array('sys/boardMaster', 'board/board', 'product/base/professor', 'product/base/subject');
     protected $helpers = array('download','file');
 
-    private $board_name = 'free';
+    private $board_name = 'tcc';
     private $site_code = '';
     private $bm_idx;
     private $_reg_type = [
@@ -26,14 +26,83 @@ class Free extends BaseBoard
         parent::__construct();
     }
 
-    /**
-     * 공지게시판 인덱스 (리스트페이지)
-     */
     public function index()
     {
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
+
+        redirect(site_url("/board/professor/{$this->board_name}/mainList?bm_idx={$this->bm_idx}"));
+    }
+
+    /**
+     * 강사게시판 - TCC
+     */
+    public function mainList()
+    {
+        $this->setDefaultBoardParam();
+        $board_params = $this->getDefaultBoardParam();
+        $this->bm_idx = $board_params['bm_idx'];
+
+        $this->load->view("board/professor/{$this->board_name}/mainList", [
+            'boardName' => $this->board_name,
+            'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}",
+        ]);
+    }
+
+    public function mainListAjax()
+    {
+        $this->setDefaultBoardParam();
+        $board_params = $this->getDefaultBoardParam();
+        $this->bm_idx = $board_params['bm_idx'];
+
+        $arr_condition = [
+            'ORG' => [
+                'LKB' => [
+                    'P.ProfIdx' => $this->_reqP('search_value'),
+                    'P.wProfName' => $this->_reqP('search_value')
+                ]
+            ]
+        ];
+
+        //교수관리자로 로그인 했을 경우 (T-zone)
+        if($this->session->userdata('admin_auth_data')['Role']['RoleIdx'] == $this->lms_prof_role_idx) {
+            $arr_condition = array_merge($arr_condition,[
+                'IN' => [
+                    'P.ProfIdx' => $this->session->userdata('admin_prof_idxs')
+                ]
+            ]);
+        }
+
+        if (empty($this->_reqP('search_site_code')) === false) {
+            $arr_condition['EQ']['P.SiteCode'] = $this->_reqP('search_site_code');
+        } else {
+            $arr_condition['IN']['P.SiteCode'] = get_auth_site_codes();
+        }
+
+        $list = [];
+        $count = $this->professorModel->listProfessorSubjectMappingForBoard(true, $arr_condition, $this->bm_idx, '');
+
+        if ($count > 0) {
+            $list = $this->professorModel->listProfessorSubjectMappingForBoard(false, $arr_condition, $this->bm_idx, '', $this->_reqP('length'), $this->_reqP('start'));
+        }
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list
+        ]);
+    }
+
+    /**
+     * 강사게시판 - 강사별 TCC
+     */
+    public function detailList()
+    {
+        $this->setDefaultBoardParam();
+        $board_params = $this->getDefaultBoardParam();
+        $this->bm_idx = $board_params['bm_idx'];
+        $prof_idx = $this->_req('prof_idx');
 
         //검색상태조회
         $arr_search_data = $this->getBoardSearchingArray($this->bm_idx);
@@ -41,36 +110,46 @@ class Free extends BaseBoard
         //카테고리 조회(구분)
         $arr_category = $this->_getCategoryArray('');
 
-        //캠퍼스 조회
-        $arr_campus = $this->_getCampusArray('');
+        //과목
+        $arr_subject = $this->professorModel->getProfessorSubjectArray($prof_idx);
 
-        $this->load->view("board/{$this->board_name}/index", [
+        // 기존 교수 기본정보 조회
+        $arr_prof_info = $this->_findProfessor($prof_idx);
+        if (count($arr_prof_info) < 1) {
+            show_error('조회된 교수 정보가 없습니다.', _HTTP_NO_PERMISSION, '정보 없음');
+        }
+
+        $this->load->view("board/professor/{$this->board_name}/detailList", [
             'bm_idx' => $this->bm_idx,
             'arr_search_data' => $arr_search_data['arr_search_data'],
             'ret_search_site_code' => $arr_search_data['ret_search_site_code'],
-            'arr_campus' => $arr_campus,
             'arr_category' => $arr_category,
+            'arr_subject' => $arr_subject,
             'boardName' => $this->board_name,
-            'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}"
+            'arr_prof_info' => $arr_prof_info,
+            'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}&prof_idx={$prof_idx}",
         ]);
     }
 
     /**
-     * 공지사항 목록 조회
+     * 강사게시판 - 강사별 TCC
+     * @param array $params
      * @return CI_Output
      */
-    public function listAjax()
+    public function detailListAjax()
     {
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
         $this->site_code = $this->_reqP('search_site_code');
+        $prof_idx = $this->_req('prof_idx');
 
         $arr_condition = [
             'EQ' => [
                 'LB.BmIdx' => $this->bm_idx,
+                'LB.ProfIdx' => $prof_idx,
                 'LB.IsStatus' => 'Y',
-                'LB.CampusCcd' => $this->_reqP('search_campus_ccd'),
+                'LB.SubjectIdx' => $this->_reqP('search_subject'),
                 'LB.IsUse' => $this->_reqP('search_is_use'),
             ],
             'ORG' => [
@@ -99,8 +178,9 @@ class Free extends BaseBoard
         ];
 
         $column = '
-            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
-            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName
+            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LBC.CateCode, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.ExamProblemYear, LB.VideoUrl,
+            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName,
+            LB.AreaCcd, LB.SubjectIdx, PS.SubjectName
         ';
 
         $list = [];
@@ -118,63 +198,33 @@ class Free extends BaseBoard
     }
 
     /**
-     * 게시글 복사
+     * 강사게시판 - 강사별 TCC 등록/수정 폼
      * @param array $params
      */
-    public function copy()
-    {
-        $rules = [
-            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
-            ['field' => 'board_idx', 'label' => '식별자', 'rules' => 'trim|required|integer']
-        ];
-
-        if ($this->validate($rules) === false) {
-            return;
-        }
-
-        $result = $this->_boardCopy($this->_reqP('board_idx'));
-        $this->json_result($result, '저장 되었습니다.', $result);
-    }
-
-    /**
-     * BEST 적용
-     */
-    public function storeIsBest()
-    {
-        $rules = [
-            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
-            ['field' => 'params', 'label' => '식별자', 'rules' => 'trim|required'],
-        ];
-
-        if ($this->validate($rules) === false) {
-            return;
-        }
-
-        $result = $this->_boardIsBest(json_decode($this->_reqP('params'), true));
-        $this->json_result($result, '적용 되었습니다.', $result);
-    }
-
-    /**
-     * 공지게시판 등록/수정 폼
-     * @param array $params
-     */
-    public function create($params = [])
+    public function createDetail($params = [])
     {
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
+        $prof_idx = $this->_req('prof_idx');
 
         $method = 'POST';
         $data = null;
         $board_idx = null;
 
-        //캠퍼스 조회
-        $arr_campus = $this->_getCampusArray('');
+        // 기존 교수 기본정보 조회
+        $arr_prof_info = $this->_findProfessor($prof_idx);
+        if (count($arr_prof_info) < 1) {
+            show_error('조회된 교수 정보가 없습니다.', _HTTP_NO_PERMISSION, '정보 없음');
+        }
+        $arr_prof_info['arr_prof_cate_code'] = explode(',', $arr_prof_info['CateCode']);
+        $arr_prof_info['arr_prof_cate_name'] = explode(',', $arr_prof_info['CateName']);
 
         if (empty($params[0]) === false) {
             $column = '
-            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
-            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName
+            LB.BoardIdx, LB.SiteCode, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.ExamProblemYear, LB.VideoUrl,
+            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName,
+            LB.AreaCcd, LB.SubjectIdx, PS.SubjectName
             ';
             $method = 'PUT';
             $board_idx = $params[0];
@@ -204,11 +254,14 @@ class Free extends BaseBoard
             $data['arr_attach_file_real_name'] = explode(',', $data['AttachRealFileName']);
         }
 
-        $this->load->view("board/{$this->board_name}/create", [
+        //과목
+        $arr_subject = $this->professorModel->getProfessorSubjectArray($prof_idx);
+
+        $this->load->view("board/professor/{$this->board_name}/create_detail", [
             'boardName' => $this->board_name,
             'bmIdx' => $this->bm_idx,
-            'arr_campus' => $arr_campus,
-            'campus_all_ccd' => $this->codeModel->campusAllCcd,
+            'arr_prof_info' => $arr_prof_info,
+            'arr_subject' => $arr_subject,
             'method' => $method,
             'data' => $data,
             'board_idx' => $board_idx,
@@ -217,27 +270,23 @@ class Free extends BaseBoard
         ]);
     }
 
-    /**
-     * 게시판 글 등록
-     */
     public function store()
     {
         $method = 'add';
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
+        $prof_idx = $this->_req('prof_idx');
         $idx = '';
 
-        //캠퍼스 Y 값 조회
-        $offLineSite_list = $this->siteModel->getOffLineSiteArray();
-
         $rules = [
-            ['field' => 'site_code', 'label' => '운영사이트', 'rules' => 'trim|required'],
-            ['field' => 'cate_code[]', 'label' => '카테고리', 'rules' => 'trim|required'],
-            ['field' => 'campus_ccd', 'label' => '캠퍼스', 'rules' => 'trim|integer|callback_validateRequiredIf[site_code,' . implode(',', array_keys($offLineSite_list)) . ']'],
+            ['field' => 'site_code', 'label' => '운영사이트', 'rules' => 'trim|required|integer'],
+            ['field' => 'cate_code[]', 'label' => '구분', 'rules' => 'trim|required'],
+            ['field' => 'subject_idx', 'label' => '지역', 'rules' => 'trim|required|integer'],
             ['field' => 'title', 'label' => '제목', 'rules' => 'trim|required|max_length[50]'],
             ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
-            ['field' => 'board_content', 'label' => '내용', 'rules' => 'trim|required'],
+            ['field' => 'video_url', 'label' => 'TCC URL', 'rules' => 'trim|required'],
+            ['field' => 'board_content', 'label' => '내용', 'rules' => 'trim|required']
         ];
 
         if ($this->validate($rules) === false) {
@@ -249,7 +298,7 @@ class Free extends BaseBoard
             $idx = $this->_reqP('idx');
         }
 
-        $inputData = $this->_setInputData($this->_reqP(null, false));
+        $inputData = $this->_setInputData($this->_reqP(null, false), $prof_idx);
 
         //_addBoard, _modifyBoard
         $result = $this->{'_' . $method . 'Board'}($method, $inputData, $idx);
@@ -258,27 +307,35 @@ class Free extends BaseBoard
     }
 
     /**
-     * 공지게시판 Read 페이지
-     * @param array $params
+     * 강사게시판 - 강사별 공지사항 뷰 페이지
      */
-    public function read($params = [])
+    public function readDetail($params = [])
     {
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
+        $prof_idx = $this->_req('prof_idx');
 
         if (empty($params[0]) === true) {
             show_error('잘못된 접근 입니다.');
         }
 
+        // 기존 교수 기본정보 조회
+        $arr_prof_info = $this->_findProfessor($prof_idx);
+        if (count($arr_prof_info) < 1) {
+            show_error('조회된 교수 정보가 없습니다.', _HTTP_NO_PERMISSION, '정보 없음');
+        }
+
         $column = '
-            LB.BoardIdx, LB.RegType, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
-            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm
+            LB.BoardIdx, LB.RegType, LB.SiteCode, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.ExamProblemYear, LB.VideoUrl,
+            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm,
+            LB.AreaCcd, LB.SubjectIdx, PS.SubjectName
             ';
         $board_idx = $params[0];
         $arr_condition = ([
             'EQ'=>[
                 'LB.BoardIdx' => $board_idx,
+                'LB.ProfIdx' => $prof_idx,
                 'LB.IsStatus' => 'Y'
             ]
         ]);
@@ -287,10 +344,8 @@ class Free extends BaseBoard
             'attach_file_type' => $this->_attach_reg_type['default']
         ];
         $data = $this->boardModel->findBoardForModify($this->board_name, $column, $arr_condition, $arr_condition_file);
-        if ($this->bm_idx != '91') {    //합격수기일 경우 제외
-            // 첨부파일 이미지일 경우 해당 배열에 담기
-            $data['Content'] = $this->_getBoardForContent($data['Content'], $data['AttachFilePath'], $data['AttachFileName']);
-        }
+        // 첨부파일 이미지일 경우 해당 배열에 담기
+        $data['Content'] = $this->_getBoardForContent($data['Content'], $data['AttachFilePath'], $data['AttachFileName']);
 
         if (count($data) < 1) {
             show_error('데이터 조회에 실패했습니다.');
@@ -299,7 +354,7 @@ class Free extends BaseBoard
         $query_string = base64_decode(element('q',$this->_reqG(null)));
         $search_datas = json_decode($query_string,true);
 
-        $data_PN = $this->_findBoardPrevious_Next($this->bm_idx, $board_idx, $data['IsBest'], $data['RegType'], $search_datas);
+        $data_PN = $this->_findBoardPrevious_Next($this->bm_idx, $board_idx, $data['IsBest'], $data['RegType'], $search_datas, '', $prof_idx);
         $board_previous = $data_PN['previous'];     //이전글
         $board_next = $data_PN['next'];             //다음글
 
@@ -324,8 +379,9 @@ class Free extends BaseBoard
             }
         }
 
-        $this->load->view("board/{$this->board_name}/read",[
+        $this->load->view("board/professor/{$this->board_name}/read_detail",[
             'boardName' => $this->board_name,
+            'arr_prof_info' => $arr_prof_info,
             'data' => $data,
             'getCategoryArray' => $get_category_array,
             'board_idx' => $board_idx,
@@ -336,40 +392,21 @@ class Free extends BaseBoard
     }
 
     /**
-     * 게시판 삭제
-     * @param array $params
+     * BEST 적용
      */
-    public function delete($params = [])
+    public function storeIsBest()
     {
         $rules = [
-            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]']
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'params', 'label' => '식별자', 'rules' => 'trim|required'],
         ];
 
         if ($this->validate($rules) === false) {
             return;
         }
 
-        $idx = $params[0];
-        $result = $this->_delete($idx);
-        $this->json_result($result, '정상 처리 되었습니다.', $result);
-    }
-
-    /**
-     * 파일 삭제
-     */
-    public function destroyFile()
-    {
-        $rules = [
-            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]'],
-            ['field' => 'attach_idx', 'label' => '식별자', 'rules' => 'trim|required|integer'],
-        ];
-
-        if ($this->validate($rules) === false) {
-            return;
-        }
-
-        $result = $this->boardModel->removeFile($this->_reqP('attach_idx'));
-        $this->json_result($result, '저장 되었습니다.', $result);
+        $result = $this->_boardIsBest(json_decode($this->_reqP('params'), true));
+        $this->json_result($result, '적용 되었습니다.', $result);
     }
 
     /**
@@ -381,13 +418,15 @@ class Free extends BaseBoard
         $this->_download();
     }
 
-    private function _setInputData($input){
+    private function _setInputData($input, $prof_idx){
         $input_data = [
             'board' => [
                 'SiteCode' => element('site_code', $input),
                 'BmIdx' => $this->bm_idx,
-                'CampusCcd' => element('campus_ccd', $input),
                 'RegType' => element('reg_type', $input),
+                'ProfIdx' => $prof_idx,
+                'SubjectIdx' => element('subject_idx', $input),
+                'VideoUrl' => element('video_url', $input),
                 'Title' => element('title', $input),
                 'IsBest' => (element('is_best', $input) == '1') ? '1' : '0',
                 'Content' => element('board_content', $input),

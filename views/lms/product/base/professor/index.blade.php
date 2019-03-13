@@ -50,7 +50,7 @@
                     <th rowspan="2" class="valign-middle">교수아이디</th>
                     <th rowspan="2" class="valign-middle">교수명</th>
                     <th rowspan="2" class="valign-middle">카테고리정보<br/>(대표카테고리만 표기)</th>
-                    <th colspan="5">게시판운영여부</th>
+                    <th colspan="6">게시판운영여부</th>
                     <th rowspan="2" class="valign-middle">사용여부</th>
                     <th rowspan="2" class="valign-middle">사용여부(W)</th>
                     <th rowspan="2" class="valign-middle">등록자</th>
@@ -61,7 +61,8 @@
                     <th>Q&A</th>
                     <th>자료실</th>
                     <th>T-pass자료실</th>
-                    <th style="border-right-width: 1px;">첨삭게시판</th>
+                    <th>첨삭게시판</th>
+                    <th style="border-right-width: 1px;">TCC게시판</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -110,6 +111,7 @@
                     {'data' : 'IsDataBoard'},
                     {'data' : 'IsTpassBoard'},
                     {'data' : 'IsAssignmentBoard'},
+                    {'data' : 'IsTccBoard'},
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                         return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
                     }},

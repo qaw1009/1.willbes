@@ -52,9 +52,10 @@
 
 
     <div class="evtContent" id="evtContainer">
+
         <div class="skybanner">
-            <div><img src="http://file3.willbes.net/new_cop/2017/10/EV171031_p_sky.png" alt="스카이스크래퍼" usemap="#sky"></div>
-            <map name="sky" id="sky">
+            <img src="http://file3.willbes.net/new_cop/2017/10/EV171031_p_sky.png" alt="스카이스크래퍼" usemap="#sky2019">
+            <map name="sky2019" id="sky2019">
 				<area shape="rect" coords="9,9,137,79" onclick="fnMove('1')" onfocus='this.blur()' alt="혜택">
 				<area shape="rect" coords="9,89,137,159" onclick="fnMove('2')" onfocus='this.blur()' alt="관리">
 				<area shape="rect" coords="9,169,137,239" onclick="fnMove('3')" onfocus='this.blur()' alt="트레이닝">
@@ -171,6 +172,11 @@
             slidesImg2.goToNextSlide();
         });
     });
+
+        function fnMove(seq){
+			var offset = $("#iron" + seq).offset();
+			$('html, body').animate({scrollTop : offset.top}, 400);
+		}
     </script>
 
 @stop

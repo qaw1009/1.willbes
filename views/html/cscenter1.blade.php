@@ -115,7 +115,7 @@
                             </li>
                             <li>
                                 <a class="qBox" href="#question7">
-                                    <img src="{{ img_url('cs/icon_question629.gif') }}">
+                                    <img src="{{ img_url('cs/icon_question710.gif') }}">
                                     <div>기타</div>
                                 </a>
                             </li>

@@ -67,11 +67,13 @@
         }
 
 
-        function fnSendLog()
+        function fnSendLog(isend = false)
         {
-            if (player.getPlayState() != PlayState.PLAYING) {
-                setTimeout(fnSendLog, 1000);
-                return;
+            if(isend == false){
+                if (player.getPlayState() != PlayState.PLAYING) {
+                    setTimeout(fnSendLog, 1000);
+                    return;
+                }
             }
 
             var url = "/player/log/";
@@ -123,26 +125,26 @@
         if (window.attachEvent) {
             /*IE and Opera*/
             window.attachEvent("onunload", function() {
-                fnSendLog();
+                fnSendLog(true);
                 window.opener.location.reload();
             });
         }
         else if (document.addEventListener) {
             /*Chrome, FireFox*/
             window.onbeforeunload = function() {
-                fnSendLog();
+                fnSendLog(true);
                 window.opener.location.reload();
             };
             /*IE 6, Mobile Safari, Chrome Mobile*/
             window.addEventListener("unload", function() {
-                fnSendLog();
+                fnSendLog(true);
                 window.opener.location.reload();
             }, false);
         }
         else {
             /*etc*/
             document.addEventListener("unload", function() {
-                fnSendLog();
+                fnSendLog(true);
                 window.opener.location.reload();
             }, false);
         }

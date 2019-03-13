@@ -20,7 +20,7 @@ class OrderListModel extends BaseOrderModel
         $is_all_from = true;    // 모든 테이블 조인
         if (is_bool($is_count) === true) {
             if ($is_count === true) {
-                $in_column = 'count(*) AS numrows';
+                $in_column = 'straight_join count(*) AS numrows';
                 $column = 'numrows';
                 $is_all_from = false;
             } else {
@@ -50,11 +50,11 @@ class OrderListModel extends BaseOrderModel
                     , CAR.CcdName as AdminReasonCcdName, CPT.CcdName as ProdTypeCcdName, CLP.CcdName as LearnPatternCcdName, CPS.CcdName as PayStatusCcdName';
 
                 $in_column .= $this->_getAddListQuery('column', $arr_add_join);
-                $column = '*, (tRealPayPrice - cast(tRefundPrice as int)) as tRemainPrice';
+                $column = 'straight_join *, (tRealPayPrice - cast(tRefundPrice as int)) as tRemainPrice';
             }
         } else {
             $in_column = $is_count;
-            $column = '*';
+            $column = 'straight_join *';
         }
 
         $from = $this->_getListFrom($arr_add_join, $is_all_from);
@@ -113,7 +113,7 @@ class OrderListModel extends BaseOrderModel
         }
 
         // 쿼리 실행 및 결과값 리턴
-        return $this->_conn->query('select ' . $column . ' from (select ' . $in_column . $from . $where . ') U ' . $order_by_offset_limit)->result_array();
+        return $this->_conn->query('select straight_join ' . $column . ' from (select ' . $in_column . $from . $where . ') U ' . $order_by_offset_limit)->result_array();
     }
 
     /**

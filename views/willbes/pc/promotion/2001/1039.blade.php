@@ -20,8 +20,7 @@
 
         /************************************************************/
 
-        .wb_top {background:#a61f29 url(http://file3.willbes.net/new_cop/2019/02/EV190215_c1_bg.jpg) repeat-y  center top;}
-
+        .wb_top {background:#a61f29 url(http://file3.willbes.net/new_cop/2019/02/EV190215_c1_bg.jpg) repeat-y center top;}
         .WB_cts01{background:#FFF;}
 
 

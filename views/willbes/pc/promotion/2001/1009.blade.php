@@ -11,7 +11,6 @@
         .evtContent {
             width:100% !important;
             min-width:1210px !important;
-            background:#ccc;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
@@ -78,7 +77,7 @@
 
         /* 이용안내 */
         .content_guide_wrap{background:#fff; width:1210px; margin:0 auto; padding:50px 0}
-        .content_guide_wrap .guide_tit{margin-bottom:20px;width:1210px;margin:0 auto;text-align:center; }
+        .content_guide_wrap .guide_tit{width:1210px;margin:0 auto;text-align:center; }
         .content_guide_wrap .tabs {width:960px; margin:0 auto;}
         .content_guide_wrap .tabs li {display:inline; float:left; width:320px}
         .content_guide_wrap .tabs li a {display:block; text-align:center; height:60px; line-height:60px; font-size:140% !important; border:2px solid #f3f3f3; border-bottom:2px solid #202020; background:#f3f3f3}
@@ -111,9 +110,9 @@
         .newTopDday ul li {display:inline; float:left; margin-right:5px; text-align:center; height:60px; padding-top:10px !important; font-weight:600; color:#000}
         .newTopDday ul li strong {line-height:70px}
         .newTopDday ul li img {width:50px}
-        .newTopDday ul li:first-child {line-height:none; text-align:right; padding-right:20px; width:28%}
+        .newTopDday ul li:first-child {text-align:right; padding-right:20px; width:28%}
         .newTopDday ul li:first-child span {font-size:12px; color:#999;margin-top:4px;}
-        .newTopDday ul li:last-child {line-height:none;  text-align:left; padding-left:20px; width:24%}
+        .newTopDday ul li:last-child {text-align:left; padding-left:20px; width:24%}
         .newTopDday ul li:last-child a {display:inline-block; font-size:14px; padding:4px 20px; background:#999; color:#FFF; text-align:center; border-radius:20px}
         .newTopDday ul li:last-child a:hover {background:#666}
         .newTopDday ul:after {content:""; display:block; clear:both}
@@ -186,34 +185,33 @@
                 <ul>
                     <li>
                         <h5>일반</h5>
-                        <p><input type="radio" id="y_pkg1" name="y_pkg" value="Y"  onClick="fn_cal('1')"/> <label for="y_pkg1">(선택) 오태진 한국사</label></p>
-                        <p><input type="radio" id="y_pkg2" name="y_pkg" value="Y"  onClick="fn_cal('2')"/> <label for="y_pkg2">(선택) 원유철 한국사</label></p>
+                        <p><input type="radio" id="y_pkg1" name="y_pkg" value="151711" onClick=""/> <label for="y_pkg1">(선택) 오태진 한국사</label></p>
+                        <p><input type="radio" id="y_pkg2" name="y_pkg" value="151747" onClick=""/> <label for="y_pkg2">(선택) 원유철 한국사</label></p>
                         <h5>특채</h5>
-                        <p><input type="radio" id="y_pkg3" name="y_pkg" value="Y"  onClick="fn_cal('3')"/> <label for="y_pkg3">경행경채</label></p>
+                        <p><input type="radio" id="y_pkg3" name="y_pkg" value="151764" onClick=""/> <label for="y_pkg3">경행경채</label></p>
                         <div><strong>61</strong>만원</div>
                     </li>
                     <li>
                         <h5>일반</h5>
-                        <p><input type="radio" id="y_pkg4" name="y_pkg" value="Y"  onClick="fn_cal('4')"/> <label for="y_pkg4">(선택) 오태진 한국사</label></p>
-                        <p><input type="radio" id="y_pkg5" name="y_pkg" value="Y"  onClick="fn_cal('5')"/> <label for="y_pkg5">(선택) 원유철 한국사</label></p>
+                        <p><input type="radio" id="y_pkg4" name="y_pkg" value="151790" onClick=""/> <label for="y_pkg4">(선택) 오태진 한국사</label></p>
+                        <p><input type="radio" id="y_pkg5" name="y_pkg" value="" onClick=""/> <label for="y_pkg5">(선택) 원유철 한국사</label></p>
                         <h5>특채</h5>
-                        <p><input type="radio" id="y_pkg6" name="y_pkg" value="Y"  onClick="fn_cal('6')"/> <label for="y_pkg6">경행경채</label></p>
+                        <p><input type="radio" id="y_pkg6" name="y_pkg" value="" onClick=""/> <label for="y_pkg6">경행경채</label></p>
                         <div><strong>70</strong>만원</div>
                     </li>
                     <li>
                         <h5>&nbsp;</h5>
                         <h5>&nbsp;</h5>
                         <p>&nbsp;</p>
-                        <p><input type="radio" id="y_pkg7" name="y_pkg" value="Y"  onClick="fn_cal('7')"/> <label for="y_pkg7">일반</label></p>
-                        <p><input type="radio" id="y_pkg8" name="y_pkg" value="Y"  onClick="fn_cal('8')"/> <label for="y_pkg8">특채 경행경채</label></p>
+                        <p><input type="radio" id="y_pkg7" name="y_pkg" value="" onClick=""/> <label for="y_pkg7">일반</label></p>
+                        <p><input type="radio" id="y_pkg8" name="y_pkg" value="" onClick=""/> <label for="y_pkg8">특채 경행경채</label></p>
                         <div><strong>143</strong>만원</div>
                     </li>
                 </ul>
                 <span style="color:#fff">
-                    <!--input type="checkbox" id="j_pkg" name="j_pkg" value="Y" onClick="fn_cal('j1')"/-->
                     <label for="j_pkg">PASS 구매 시 할인 쿠폰이 자동 지급 됩니다.</label>
                 </span>
-                <img src="http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190307_03_re1.jpg"  alt="신광은경찰PASS 수강료"/ usemap="#Map190123"><br />
+                <img src="http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190307_03_re1.jpg"  alt="신광은경찰PASS 수강료" usemap="#Map190123"><br />
                 <img src="http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190307_03_re2.jpg"  alt="체력" usemap="#Map190117A" border="0"/>
                 <map name="Map190123" id="Map190123">
                     <area shape="rect" coords="220,545,285,564" href="javascript:go_popup()" alt="6개월과목" />
@@ -221,7 +219,7 @@
                     <area shape="rect" coords="777,545,838,564" href="javascript:go_popup1()" alt="평생목팝업" />
                 </map>
                 <map name="Map190117A" id="Map190117A">
-                    <area shape="rect" coords="656,183,776,227" href="{{ site_url('promotion/index/cate/3001/code/1030?type=1') }}" target="_blank" alt="경찰체력패키지" />
+                    <area shape="rect" coords="656,183,776,227" href="{{ site_url('promotion/index/cate/3001/code/1030') }}" target="_blank" alt="경찰체력패키지" />
                 </map>
             </div>
 
@@ -246,14 +244,14 @@
                 <p>
                     ※ 강의공유, 콘텐츠 부정 사용 적발 시, 평생 0원 패스의 수강기간 갱신 및 환급이 불가합니다.<br />
                     ※ 강좌 및 교수진은 학원 사정에 따라 변경될 수 있습니다.<br/>
-                    ※ 쿠폰은 PASS 결제 후 [내강의실>결제관리>쿠폰/수강권관리] 에서 확인 가능합니다. 
+                    ※ 쿠폰은 PASS 결제 후 [내강의실>결제관리>쿠폰/수강권관리] 에서 확인 가능합니다.
                 </p>
             </div>
 
             <div class="passLecbtn">
                 <ul>
                     <!--li><div id="sum_y">합계 <span><strong>0</strong>원</span></div></li-->
-                    <li><a href="javascript:fn_cart();">신광은경찰 PASS 신청하기 ☞</a></li>
+                    <li><a href="#none" onclick="goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');">신광은경찰 PASS 신청하기 ☞</a></li>
                 </ul>
             </div>
 
@@ -282,7 +280,7 @@
             <img src="http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190104_08_re1.jpg"  alt="왕초보영어탑재" /><br />
             <img src="http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190104_08_re2.jpg"  alt="경찰체력" usemap="#Map190117B" border="0" />
             <map name="Map190117B" id="Map190117B">
-                <area shape="rect" coords="554,583,676,626" href="{{ site_url('promotion/index/cate/3001/code/1030?type=1') }}" target="_blank" alt="경찰체력 상세보기" />
+                <area shape="rect" coords="554,583,676,626" href="{{ site_url('promotion/index/cate/3001/code/1030') }}" target="_blank" alt="경찰체력 상세보기" />
             </map>
             <br />
             <img src="http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190104_08_re3.jpg"  alt="많은 수험생들의 꿈을 현실로 만드는 신광은 경찰팀" />
@@ -524,7 +522,6 @@
             @endif
         }
 
-
         /*tab*/
         $(document).ready(function(){
             $(".tabs li a").click(function(){
@@ -551,37 +548,6 @@
                 $(".content_guide_box:first").show();
             }
         });
-
-        function doEvent() {
-            if("<c:out value='${userInfo.USER_ID}' />" == ""){
-                alert("로그인을 해주세요.");
-                $("#loginFrm #USER_ID").focus();
-                return;
-            }
-            $.ajax({
-                type: "POST",
-                url : '<c:url value="/event/reboundEvent_Check.do"/>?EVENT_NO=192',
-                dataType: "text",
-                async : false,
-                success: function(RES) {
-                    if($.trim(RES)=="N"){
-                        alert("이미 인증한 계정입니다.");
-                        return;
-                    }else if($.trim(RES)=="R" || $.trim(RES)=="RN"){
-
-                        alert("기존 등록된 정보는 삭제되고 다시 등록합니다.");
-                        var url = '<c:url value="/event/movie/event.html?event_cd=On_pass_popup"/>' ;
-                        window.open(url,'event', 'top=100,scrollbars=no,toolbar=no,resizable=yes,width=600,height=720');
-                    }else{
-                        var url = '<c:url value="/event/movie/event.html?event_cd=On_pass_popup"/>' ;
-                        window.open(url,'event', 'top=100,scrollbars=no,toolbar=no,resizable=yes,width=600,height=720');
-                    }
-                },error: function(){
-                    alert("검색실패");
-                    return;
-                }
-            });
-        }
 
         function goDesc(tab){
             location.href = '#tab';
@@ -620,12 +586,12 @@
             inYears: function(dd1, dd2) {
                 return dd2.getFullYear()-dd1.getFullYear();
             }
-        }
+        };
 
         function daycountDown() {
             // 한달 전 날짜로 셋팅
-            event_day = new Date(2019,2,27,23,59,59);
-            now = new Date();
+            var event_day = new Date(2019,2,27,23,59,59);
+            var now = new Date();
             var timeGap = new Date(0, 0, 0, 0, 0, 0, (event_day - now));
 
             var Monthleft = event_day.getMonth() - now.getMonth();
@@ -633,8 +599,6 @@
             var Hourleft = timeGap.getHours();
             var Minuteleft = timeGap.getMinutes();
             var Secondleft = timeGap.getSeconds();
-
-            //alert(Monthleft+"-"+Dateleft+"-"+Hourleft+"-"+Minuteleft+"-"+Secondleft)
 
             if((event_day.getTime() - now.getTime()) > 0) {
                 $("#dd1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Dateleft/10) + ".png");
@@ -660,10 +624,12 @@
         /*레이어팝업*/
         function go_popup() {
             $('#popup').bPopup();
-        };
+        }
+
         function go_popup1() {
             $('#popup1').bPopup();
-        };
+        }
     </script>
-
+    {{-- 프로모션용 스크립트 include --}}
+    @include('willbes.pc.promotion.promotion_script')
 @stop

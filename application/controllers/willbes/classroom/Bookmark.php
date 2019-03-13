@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Bookmark extends \app\controllers\FrontController
 {
-    protected $models = array('classroomF');
+    protected $models = array('classroomF', 'memberF');
     protected $helpers = array();
     protected $auth_controller = true;
     protected $auth_methods = array();
@@ -241,7 +241,7 @@ class Bookmark extends \app\controllers\FrontController
                 if($row['RealExpireTime'] == 0){
                     $limittime = intval($row['wRuntime']) * intval($lec['MultipleApply']) * 60;
                 } else {
-                    $limittime = intval($row['RealExpireTime']);
+                    $limittime = intval($row['RealExpireTime']) * 60;
                 }
 
                 if($studytime > $limittime){

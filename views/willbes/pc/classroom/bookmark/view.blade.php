@@ -61,120 +61,70 @@
                         <input type="hidden" id="postform-orderidx" name="orderidx" value="{{$lec['OrderIdx']}}" />
                         <input type="hidden" id="postform-prodcode" name="prodcode" value="{{$lec['ProdCode']}}" />
                         <input type="hidden" id="postform-prodcodesub" name="prodcodesub" value="{{$lec['ProdCodeSub']}}" />
-                    <table cellspacing="0" cellpadding="0" class="listTable bookmarkTable upper-black under-gray tx-gray">
-                        <colgroup>
-                            <col style="width: 80px;">
-                            <col style="width: 250px;">
-                            <col style="width: 80px;">
-                            <col style="width: 90px;">
-                            <col style="width: 100px;">
-                            <col style="width: 240px;">
-                            <col style="width: 100px;">
-                        </colgroup>
-                        <thead>
-                        <tr>
-                            <th><input type="checkbox" id="allcheck" name="allcheck" class="goods_chk">No<span class="row-line">|</span></li></th>
-                            <th>강의명<span class="row-line">|</span></li></th>
-                            <th>강의시간<span class="row-line">|</span></li></th>
-                            <th>강의수강<span class="row-line">|</span></li></th>
-                            <th>북마크시간<span class="row-line">|</span></li></th>
-                            <th>북마크내용<span class="row-line">|</span></li></th>
-                            <th>북마크일</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @forelse($curriculum as $row)
-                        <tr>
-                            <td class="w-no"><input type="checkbox" id="bmidx" name="bmidx[]" class="goods_chk" value="{{$row['bmIdx']}}">{{$row['wUnitNum']}}회 {{$row['wUnitLectureNum']}}강</td>
-                            <td class="w-lec">{{$row['wUnitName']}}</td>
-                            <td class="w-lec-time">{{$row['wRuntime']}}분</td>
-                            <td class="w-free mypage">
-                                @if($lec['isBtob'] == 'Y' && $lec['enableIp'] == 'N')
-                                    <div class="tBox NSK t1 black"><a>수강불가</a></div>
-                                @else
-                                    @if($row['isstart'] == 'Y' && $row['ispause'] == 'N')
-                                        @if($row['timeover'] == 'N')
-                                            @if($row['wWD'] != '')<div class="tBox NSK t3 white"><a href="javascript:;" onclick='fnPlayerBookmark("{{$row['OrderIdx']}}","{{$row['ProdCode']}}","{{$row['ProdCodeSub']}}","{{$row['wLecIdx']}}","{{$row['wUnitIdx']}}","WD","{{$row['Time']}}");' >WIDE</a></div>@endif
-                                            @if($row['wHD'] != '')<div class="tBox NSK t1 black"><a href="javascript:;" onclick='fnPlayerBookmark("{{$row['OrderIdx']}}","{{$row['ProdCode']}}","{{$row['ProdCodeSub']}}","{{$row['wLecIdx']}}","{{$row['wUnitIdx']}}","HD","{{$row['Time']}}");' >HIGH</a></div>@endif
-                                            @if($row['wSD'] != '')<div class="tBox NSK t2 gray"><a href="javascript:;" onclick='fnPlayerBookmark("{{$row['OrderIdx']}}","{{$row['ProdCode']}}","{{$row['ProdCodeSub']}}","{{$row['wLecIdx']}}","{{$row['wUnitIdx']}}","SD","{{$row['Time']}}");' >LOW</a></div>@endif
-                                        @else
-                                            <div class="tBox NSK t1 black"><a>시간초과</a></div>
-                                        @endif
-                                    @elseif($row['ispause'] == 'Y')
-                                        <div class="tBox NSK t1 black"><a>일시중지</a></div>
-                                    @else
-                                        <div class="tBox NSK t1 black"><a>수강대기</a></div>
-                                    @endif
-                                @endif
-                            </td>
-                            <td class="w-bm-time">{{gmdate('H시 i분 s초', $row['Time'])}}</td>
-                            <td class="w-bm-txt">
-                                <input type="text" id="memo-{{$row['bmIdx']}}" name="memo-{{$row['bmIdx']}}" class="memoText" maxlength="100" value="{{$row['Title']}}" />
-                                <div class="aBox cancelBox_block"><a href="javascript:;" onclick="fnModifyMemo('{{$row['bmIdx']}}');">수정</a></div>
-                            </td>
-                            <td class="w-bm-day">{{substr($row['RegDatm'], 0, 10)}}</td>
-                        </tr>
-                        @empty
+                        <table cellspacing="0" cellpadding="0" class="listTable bookmarkTable upper-black under-gray tx-gray">
+                            <colgroup>
+                                <col style="width: 80px;">
+                                <col style="width: 250px;">
+                                <col style="width: 80px;">
+                                <col style="width: 90px;">
+                                <col style="width: 100px;">
+                                <col style="width: 240px;">
+                                <col style="width: 100px;">
+                            </colgroup>
+                            <thead>
                             <tr>
-                                <td colspan="8" class="w-no">등록된 북마크가 없습니다.</td>
+                                <th><input type="checkbox" id="allcheck" name="allcheck" class="goods_chk">No<span class="row-line">|</span></li></th>
+                                <th>강의명<span class="row-line">|</span></li></th>
+                                <th>강의시간<span class="row-line">|</span></li></th>
+                                <th>강의수강<span class="row-line">|</span></li></th>
+                                <th>북마크시간<span class="row-line">|</span></li></th>
+                                <th>북마크내용<span class="row-line">|</span></li></th>
+                                <th>북마크일</th>
                             </tr>
-                        @endforelse
-                        <!--
-                        <tr>
-                            <td class="w-no"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">2강</td>
-                            <td class="w-lec">강의명이 출력됩니다.</td>
-                            <td class="w-lec-time">50분</td>
-                            <td class="w-free mypage">
-                                <div class="tBox NSK t3 white"><a href="">WIDE</a></div>
-                                <div class="tBox NSK t1 black"><a href="">HIGH</a></div>
-                                <div class="tBox NSK t2 gray"><a href="">LOW</a></div>
-                            </td>
-                            <td class="w-bm-time">35분50.314초</td>
-                            <td class="w-bm-txt">
-                                <textarea id="" name="" cols="10" rows="1" class="memoText"></textarea>
-                                <div class="aBox cancelBox_block"><a href="#none">수정</a></div>
-                            </td>
-                            <td class="w-bm-day">2018-10-10</td>
-                        </tr>
-                        <tr>
-                            <td class="w-no"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">3강</td>
-                            <td class="w-lec">강의명이 출력됩니다.</td>
-                            <td class="w-lec-time">50분</td>
-                            <td class="w-free mypage">
-                                <div class="tBox NSK t3 white"><a href="">WIDE</a></div>
-                                <div class="tBox NSK t1 black"><a href="">HIGH</a></div>
-                                <div class="tBox NSK t2 gray"><a href="">LOW</a></div>
-                            </td>
-                            <td class="w-bm-time">35분50.314초</td>
-                            <td class="w-bm-txt">
-                                <textarea id="" name="" cols="10" rows="1" class="memoText"></textarea>
-                                <div class="aBox cancelBox_block"><a href="#none">수정</a></div>
-                            </td>
-                            <td class="w-bm-day">2018-10-10</td>
-                        </tr>
-                        <tr>
-                            <td class="w-no"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">4강</td>
-                            <td class="w-lec">강의명이 출력됩니다.</td>
-                            <td class="w-lec-time">50분</td>
-                            <td class="w-free mypage">
-                                <div class="tBox NSK t3 white"><a href="">WIDE</a></div>
-                                <div class="tBox NSK t1 black"><a href="">HIGH</a></div>
-                                <div class="tBox NSK t2 gray"><a href="">LOW</a></div>
-                            </td>
-                            <td class="w-bm-time">35분50.314초</td>
-                            <td class="w-bm-txt">
-                                <textarea id="" name="" cols="10" rows="1" class="memoText"></textarea>
-                                <div class="aBox cancelBox_block"><a href="#none">수정</a></div>
-                            </td>
-                            <td class="w-bm-day">2018-10-10</td>
-                        </tr> -->
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                            @forelse($curriculum as $row)
+                                <tr>
+                                    <td class="w-no"><input type="checkbox" id="bmidx" name="bmidx[]" class="goods_chk" value="{{$row['bmIdx']}}">{{$row['wUnitNum']}}회 {{$row['wUnitLectureNum']}}강</td>
+                                    <td class="w-lec">{{$row['wUnitName']}}</td>
+                                    <td class="w-lec-time">{{$row['wRuntime']}}분</td>
+                                    <td class="w-free mypage">
+                                        @if($lec['isBtob'] == 'Y' && $lec['enableIp'] == 'N')
+                                            <div class="tBox NSK t1 black"><a>수강불가</a></div>
+                                        @else
+                                            @if($row['isstart'] == 'Y' && $row['ispause'] == 'N')
+                                                @if($row['timeover'] == 'N')
+                                                    @if($row['wWD'] != '')<div class="tBox NSK t3 white"><a href="javascript:;" onclick='fnPlayerBookmark("{{$row['OrderIdx']}}","{{$row['ProdCode']}}","{{$row['ProdCodeSub']}}","{{$row['wLecIdx']}}","{{$row['wUnitIdx']}}","WD","{{$row['Time']}}");' >WIDE</a></div>@endif
+                                                    @if($row['wHD'] != '')<div class="tBox NSK t1 black"><a href="javascript:;" onclick='fnPlayerBookmark("{{$row['OrderIdx']}}","{{$row['ProdCode']}}","{{$row['ProdCodeSub']}}","{{$row['wLecIdx']}}","{{$row['wUnitIdx']}}","HD","{{$row['Time']}}");' >HIGH</a></div>@endif
+                                                    @if($row['wSD'] != '')<div class="tBox NSK t2 gray"><a href="javascript:;" onclick='fnPlayerBookmark("{{$row['OrderIdx']}}","{{$row['ProdCode']}}","{{$row['ProdCodeSub']}}","{{$row['wLecIdx']}}","{{$row['wUnitIdx']}}","SD","{{$row['Time']}}");' >LOW</a></div>@endif
+                                                @else
+                                                    <div class="tBox NSK t1 black"><a>시간초과</a></div>
+                                                @endif
+                                            @elseif($row['ispause'] == 'Y')
+                                                <div class="tBox NSK t1 black"><a>일시중지</a></div>
+                                            @else
+                                                <div class="tBox NSK t1 black"><a>수강대기</a></div>
+                                            @endif
+                                        @endif
+                                    </td>
+                                    <td class="w-bm-time">{{gmdate('H시 i분 s초', $row['Time'])}}</td>
+                                    <td class="w-bm-txt">
+                                        <input type="text" id="memo-{{$row['bmIdx']}}" name="memo-{{$row['bmIdx']}}" class="memoText" maxlength="100" value="{{$row['Title']}}" />
+                                        <div class="aBox cancelBox_block"><a href="javascript:;" onclick="fnModifyMemo('{{$row['bmIdx']}}');">수정</a></div>
+                                    </td>
+                                    <td class="w-bm-day">{{substr($row['RegDatm'], 0, 10)}}</td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="8" class="w-no">등록된 북마크가 없습니다.</td>
+                                </tr>
+                            @endforelse
+                            </tbody>
+                        </table>
                     </form>
                 </div>
             </div>
             <!-- willbes-Leclist -->
-
         </div>
         {!! banner('내강의실_우측퀵', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
     </div>

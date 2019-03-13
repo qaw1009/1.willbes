@@ -141,8 +141,7 @@ class ZeroPay extends BaseOrder
         $list = $this->orderListModel->listExcelAllOrder($column, $arr_condition, $this->_getListOrderBy(), $this->_list_add_join);
 
         // export excel
-        $this->load->library('excel');
-        $this->excel->exportExcel('0원결제현황리스트', $list, $headers);
+        $this->_makeExcel('0원결제현황리스트', $list, $headers);
     }
 
     /**

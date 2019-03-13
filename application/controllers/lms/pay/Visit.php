@@ -162,8 +162,7 @@ class Visit extends BaseOrder
         }
 
         // export excel
-        $this->load->library('excel');
-        $this->excel->exportExcel('일반수강접수리스트', $list, $headers);
+        $this->_makeExcel('학원수강접수리스트', $list, $headers);
     }
 
     /**

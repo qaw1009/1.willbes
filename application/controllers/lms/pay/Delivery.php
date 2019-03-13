@@ -202,8 +202,7 @@ class Delivery extends BaseOrder
         $list = $this->orderListModel->listExcelAllOrder($column, $arr_condition, $this->_getListOrderBy(), $this->_list_add_join);
 
         // export excel
-        $this->load->library('excel');
-        $this->excel->exportExcel('교재배송관리(' . $file_name . ')리스트', $list, $headers);
+        $this->_makeExcel('교재배송관리_' . $file_name . '리스트', $list, $headers);
     }
 
     /**

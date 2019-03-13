@@ -206,6 +206,8 @@ class BaseSales extends \app\controllers\BaseController
 
         // export excel
         $this->load->library('excel');
-        $this->excel->exportExcel('매출현황리스트', $list, $headers);
+        if ($this->excel->exportHugeExcel('매출현황리스트', $list, $headers) !== true) {
+            show_alert('엑셀파일 생성 중 오류가 발생하였습니다.', 'back');
+        }
     }
 }

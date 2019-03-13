@@ -139,7 +139,6 @@ class Vbank extends BaseOrder
         $list = $this->orderListModel->listExcelAllOrder($column, $arr_condition, $this->_getListOrderBy());
 
         // export excel
-        $this->load->library('excel');
-        $this->excel->exportExcel('무통장입금신청현황리스트', $list, $headers);
+        $this->_makeExcel('무통장입금신청현황리스트', $list, $headers);
     }
 }

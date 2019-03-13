@@ -366,44 +366,44 @@
                             <tr>
                                 <th class="Tit">공무원</th>
                                 <td>
-                                    <a href="#{{ site_url('https://pass.dev.willbes.net/pass/home/index') }}" target="_blank">노량진</a>
-                                    <a href="#{{ site_url('https://pass.dev.willbes.net/pass/home/index') }}" target="_blank">인천</a>
-                                    <a href="#{{ site_url('https://pass.dev.willbes.net/pass/home/index') }}" target="_blank">대구</a>
-                                    <a href="#{{ site_url('https://pass.dev.willbes.net/pass/home/index') }}" target="_blank">부산</a>
+                                    <a href="{{ site_url('https://pass.dev.willbes.net/pass/home/index') }}" target="_blank">노량진</a>
+                                    <a href="{{ site_url('https://pass.dev.willbes.net/pass/home/index') }}" target="_blank">인천</a>
+                                    <a href="{{ site_url('https://pass.dev.willbes.net/pass/home/index') }}" target="_blank">대구</a>
+                                    <a href="{{ site_url('https://pass.dev.willbes.net/pass/home/index') }}" target="_blank">부산</a>
                                 </td>
                             </tr>
                             <tr>
                                 <th class="Tit">경찰</th>
                                 <td>
-                                    <a href="#{{ site_url('https://police.dev.willbes.net/pass/campus/show/code/605001') }}" target="_blank">노량진</a>
-                                    <a href="#{{ site_url('https://police.dev.willbes.net/pass/campus/show/code/605002') }}" target="_blank">신림</a>
-                                    <a href="#{{ site_url('https://police.dev.willbes.net/pass/campus/show/code/605005') }}" target="_blank">인천</a>
-                                    <a href="#{{ site_url('https://police.dev.willbes.net/pass/campus/show/code/605004') }}" target="_blank">대구</a>
-                                    <a href="#{{ site_url('https://police.dev.willbes.net/pass/campus/show/code/605003') }}" target="_blank">부산</a>
-                                    <a href="#{{ site_url('https://police.dev.willbes.net/pass/campus/show/code/605006') }}" target="_blank">광주</a>
-                                    <a href="#{{ site_url('https://police.dev.willbes.net/pass/campus/show/code/605009') }}" target="_blank">제주</a>
-                                    <a href="#{{ site_url('https://police.dev.willbes.net/pass/campus/show/code/605007') }}" target="_blank">전북</a>
-                                    <a href="#{{ site_url('https://police.dev.willbes.net/pass/campus/show/code/605008') }}" target="_blank">진주</a>
+                                    <a href="{{ site_url('https://police.dev.willbes.net/pass/campus/show/code/605001') }}" target="_blank">노량진</a>
+                                    <a href="{{ site_url('https://police.dev.willbes.net/pass/campus/show/code/605002') }}" target="_blank">신림</a>
+                                    <a href="{{ site_url('https://police.dev.willbes.net/pass/campus/show/code/605005') }}" target="_blank">인천</a>
+                                    <a href="{{ site_url('https://police.dev.willbes.net/pass/campus/show/code/605004') }}" target="_blank">대구</a>
+                                    <a href="{{ site_url('https://police.dev.willbes.net/pass/campus/show/code/605003') }}" target="_blank">부산</a>
+                                    <a href="{{ site_url('https://police.dev.willbes.net/pass/campus/show/code/605006') }}" target="_blank">광주</a>
+                                    <a href="{{ site_url('https://police.dev.willbes.net/pass/campus/show/code/605009') }}" target="_blank">제주</a>
+                                    <a href="{{ site_url('https://police.dev.willbes.net/pass/campus/show/code/605007') }}" target="_blank">전북</a>
+                                    <a href="{{ site_url('https://police.dev.willbes.net/pass/campus/show/code/605008') }}" target="_blank">진주</a>
                                 </td>
                             </tr>
                             <tr>
                                 <th class="Tit">교원임용</th>
                                 <td>
-                                    <a href="#{{ site_url('http://ssam.willbes.net') }}" target="_blank">노량진</a>
+                                    <a href="{{ site_url('http://ssam.willbes.net') }}" target="_blank">노량진</a>
                                 </td>
                             </tr>
                             <tr>
                                 <th class="Tit">고등고시</th>
                                 <td>
-                                    <a href="#{{ site_url('http://www.hanlimgosi.co.kr') }}" target="_blank">신림(한림법학원)</a>
+                                    <a href="{{ site_url('http://www.hanlimgosi.co.kr') }}" target="_blank">신림(한림법학원)</a>
                                 </td>
                             </tr>
                             <tr>
                                 <th class="Tit">전문자격</th>
                                 <td>
-                                    <a href="#{{ site_url('http://value.willbes.net') }}" target="_blank">감평/노무 - 신림(한림법학원)</a>
-                                    <a href="#{{ site_url('http://www.namucpa.com') }}" target="_blank">세무/회계 종로(나무아카데미)</a>
-                                    <a href="#{{ site_url('http://patent.willbes.net') }}" target="_blank">변리사-강남</a>
+                                    <a href="{{ site_url('http://value.willbes.net') }}" target="_blank">감평/노무 - 신림(한림법학원)</a>
+                                    <a href="{{ site_url('http://www.namucpa.com') }}" target="_blank">세무/회계 종로(나무아카데미)</a>
+                                    <a href="{{ site_url('http://patent.willbes.net') }}" target="_blank">변리사-강남</a>
                                 </td>
                             </tr>
                         </tbody>

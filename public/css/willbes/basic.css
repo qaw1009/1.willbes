@@ -292,7 +292,7 @@ body {
   overflow-x: hidden;
 }
 body#widthFrame {
-  min-width: 100%;
+  min-width: 100%;  
 }
 ol, ul {
 	list-style: none;

@@ -213,10 +213,14 @@ class OrderListModel extends BaseOrderModel
             // 교수 정보 추가
             if (in_array('professor', $arr_add_join) === true) {
                 $from .= '
-                    left join ' . $this->_table['product_professor_concat'] . ' as PPC
+                    left join ' . $this->_table['product_professor_concat_repr'] . ' as PPC
                         on OP.ProdCode = PPC.ProdCode';
+                /* vw_product_r_professor_concat 테이블 사용
                 $column .= ', PPC.ProfIdx_String, PPC.wProfName_String, PPC.ReprProfIdx, PPC.ReprWProfName';
                 $excel_column .= ', PPC.wProfName_String, PPC.ReprWProfName';
+                */
+                $column .= ', PPC.ProfIdx_String, PPC.wProfName_String';
+                $excel_column .= ', PPC.wProfName_String';
             }
 
             // 배송지 추가

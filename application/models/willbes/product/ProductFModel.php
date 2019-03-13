@@ -24,6 +24,7 @@ class ProductFModel extends WB_Model
         'product_content' => 'lms_product_content',
         'product_memo' => 'lms_product_memo',
         'product_professor_concat' => 'vw_product_r_professor_concat',
+        'product_professor_concat_repr' => 'vw_product_r_professor_concat_repr',
         'cms_lecture' => 'wbs_cms_lecture',
         'cms_lecture_unit' => 'wbs_cms_lecture_unit',
         'code' => 'lms_sys_code'
@@ -401,12 +402,12 @@ class ProductFModel extends WB_Model
      */
     public function findProductSubLectures($prod_code, $prod_sub_codes = [])
     {
-        $column = 'PS.ProdCode, PS.ProdCodeSub, P.ProdName as ProdNameSub, PS.IsEssential, VPP.ReprProfIdx, VPP.ReprWProfName';
+        $column = 'PS.ProdCode, PS.ProdCodeSub, P.ProdName as ProdNameSub, PS.IsEssential, VPP.ProfIdx_String as ReprProfIdx, VPP.wProfName_String as ReprWProfName';
         $from = '
             from ' . $this->_table['product_r_sublecture'] . ' as PS
                 inner join ' . $this->_table['product'] . ' as P
                     on PS.ProdCodeSub = P.ProdCode
-                inner join ' . $this->_table['product_professor_concat'] . ' as VPP
+                inner join ' . $this->_table['product_professor_concat_repr'] . ' as VPP
                     on PS.ProdCodeSub = VPP.ProdCode
             where PS.ProdCode = ?
                 and PS.IsStatus = "Y"

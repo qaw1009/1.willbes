@@ -27,6 +27,7 @@ class BaseOrderModel extends WB_Model
         'product_r_product' => 'lms_product_r_product',
         'product_r_autocoupon' => 'lms_product_r_autocoupon',
         'product_professor_concat' => 'vw_product_r_professor_concat',
+        'product_professor_concat_repr' => 'vw_product_r_professor_concat_repr',
         'professor' => 'lms_professor',
         'professor_calculate_rate' => 'lms_professor_calculate_rate',
         'pms_professor' => 'wbs_pms_professor',

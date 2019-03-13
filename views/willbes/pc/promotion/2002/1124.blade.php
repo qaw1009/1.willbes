@@ -32,7 +32,7 @@
     <div class="evtCtnsBox wb_01" id="main">
 		<img src="http://file3.willbes.net/new_cop/basic/EVbasic_20190311_p1.png"  alt="메인" usemap="#link1" />		
 		<map name="link1" >
-			<area shape="rect" coords="822,249,1028,434" href="{{ site_url('/pass/offPackage/index?cate_code=3010&campus_ccd=605001&course_idx=1040') }}" alt="개강" target="_blink"/>
+			<area shape="rect" coords="822,249,1028,434" href="{{ site_url('/pass/offPackage/index?cate_code=3010&campus_ccd=605001&course_idx=1040') }}" alt="개강" />
 		</map>
 	</div>
 
@@ -47,7 +47,7 @@
 	<div class="evtCtnsBox wb_04" >
 		<img src="http://file3.willbes.net/new_cop/basic/EVbasic_20190311_p4.jpg"  alt="언론" usemap="#link2" />
 		<map name="link2" >
-			<area shape="rect" coords="80,523,287,576" href="{{ site_url('/promotion/index/cate/3001/code/1021?type=1') }}" alt="언론보도" target="_blink"/>
+			<area shape="rect" coords="80,523,287,576" href="{{ site_url('/promotion/index/cate/3001/code/1021?type=1') }}" alt="언론보도" />
 		</map>
 	</div>
 		
@@ -60,7 +60,7 @@
 		<iframe width="854" height="480" src="https://www.youtube.com/embed/re8w_IFAPS4?rel=0" frameborder="0" allowfullscreen></iframe>
 		<img src="http://file3.willbes.net/new_cop/basic/EVbasic_20190311_p6_2.png"  alt="수강신청하기"  usemap="#link3"/>
 		<map name="link3" >
-			<area shape="rect" coords="440,126,676,319" href="{{ site_url('/pass/offPackage/index?cate_code=3010&campus_ccd=605001&course_idx=1040') }}" alt="신광은경찰팀 일반공채" target="_blink"/>
+			<area shape="rect" coords="440,126,676,319" href="{{ site_url('/pass/offPackage/index?cate_code=3010&campus_ccd=605001&course_idx=1040') }}" alt="신광은경찰팀 일반공채" />
 		</map>
     </div>
     

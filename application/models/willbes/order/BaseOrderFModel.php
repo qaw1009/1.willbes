@@ -67,6 +67,9 @@ class BaseOrderFModel extends WB_Model
     // 포인트 구분명 (장바구니 구분명과 맵핑)
     public $_point_type_name = ['on_lecture' => '강좌', 'off_lecture' => '강좌', 'book' => '교재', 'mock_exam' => '강좌'];
 
+    // 포인트적용 공통코드 (전체, 강좌, 교재)
+    public $_point_apply_ccd = ['all' => '635001', 'lecture' => '635002', 'book' => '635003'];
+
     // 결제방법 공통코드
     public $_pay_method_ccd = ['card' => '604001', 'direct_bank' => '604002', 'vbank' => '604003', 'phone' => '604004'];
 

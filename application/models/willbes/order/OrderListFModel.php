@@ -118,7 +118,7 @@ class OrderListFModel extends BaseOrderFModel
             $order_by_offset_limit = '';
         } else {
             $column = 'OP.OrderProdIdx, O.SiteCode, OP.ProdCode, OP.SaleTypeCcd, OP.PayStatusCcd, CPS.CcdName as PayStatusCcdName
-                , OP.RealPayPrice, OP.OrderPrice, OP.DiscPrice, OP.UsePoint, OP.SavePoint
+                , OP.RealPayPrice, OP.OrderPrice, OP.DiscPrice, OP.UsePoint, OP.SavePoint, OP.SavePointType
                 , if(OP.IsUseCoupon = "Y", concat(OP.DiscRate, if(OP.DiscType = "R", "%", "원"), " 할인권"), "") as UseCoupon
                 , concat(P.ProdName, if(OP.SalePatternCcd != "' . $this->_sale_pattern_ccd['normal'] . '", concat(" (", fn_ccd_name(OP.SalePatternCcd), ")"), "")) as ProdName
                 , P.ProdTypeCcd, PL.LearnPatternCcd

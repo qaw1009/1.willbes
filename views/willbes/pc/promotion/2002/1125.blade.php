@@ -9,6 +9,7 @@
             margin-bottom:0 !important;
         }
         .evtContent {
+            position:relative;
             width:100% !important;
             min-width:1210px !important;
             background:#ccc;
@@ -69,7 +70,7 @@
 
 
 <div class="p_re evtContent" id="evtContainer">
-<div class="skybanner">
+    <div class="skybanner">
         <div><a href="#go"><img src="http://file3.willbes.net/new_cop/2019/03/EV190311_sky.jpg" alt="스카이스크래퍼"></a></div>
     </div>
 		
@@ -172,7 +173,7 @@
                 </dd>
             </dl>
         </div>
-    
+    </div>
 </div>
 <!-- End Container -->       
 

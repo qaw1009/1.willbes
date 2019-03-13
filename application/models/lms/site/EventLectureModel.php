@@ -138,8 +138,28 @@ class EventLectureModel extends WB_Model
         ";
 
         $arr_condition['IN']['A.SiteCode'] = get_auth_site_codes();
-        $where = $this->_conn->makeWhere($arr_condition);
-        $where = $where->getMakeWhere(false);
+        $where_temp = $this->_conn->makeWhere($arr_condition);
+        $where_temp = $where_temp->getMakeWhere(false);
+
+        // 캠퍼스 권한
+        $arr_auth_campus_ccds = get_auth_all_campus_ccds();
+        $where_campus = $this->_conn->group_start();
+        foreach ($arr_auth_campus_ccds as $set_site_ccd => $set_campus_ccd) {
+            $where_campus->or_group_start();
+            $where_campus->or_where('A.SiteCode',$set_site_ccd);
+            $where_campus->group_start();
+            $where_campus->where('A.CampusCcd', $this->codeModel->campusAllCcd);
+            $where_campus->or_where_in('A.CampusCcd', $set_campus_ccd);
+            $where_campus->group_end();
+            $where_campus->group_end();
+        }
+        $where_campus->or_where('A.CampusCcd', "''", false);
+        $where_campus->or_where('A.CampusCcd IS NULL');
+        $where_campus->group_end();
+        $where_campus = $where_campus->getMakeWhere(true);
+
+        // 쿼리 실행
+        $where = $where_temp . $where_campus;
 
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
@@ -609,7 +629,7 @@ class EventLectureModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
             $column = '
-            A.EmIdx, A.MemIdx, B.PersonLimitType, B.PersonLimit, B.Name AS RegisterName, A.RegDatm,
+            A.EmIdx, A.MemIdx, B.PersonLimitType, B.PersonLimit, B.Name AS RegisterName, A.EtcValue, A.RegDatm,
             A.UserName, C.MemId, fn_dec(A.UserTelEnc) AS Phone, fn_dec(A.UserMailEnc) AS Mail, D.registerCnt
             ';
 

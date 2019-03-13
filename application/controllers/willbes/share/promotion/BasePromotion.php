@@ -45,6 +45,7 @@ class BasePromotion extends \app\controllers\FrontController
         $arr_base['frame_params'] = 'cate_code='.$this->_cate_code.'&event_idx='.$data['ElIdx'].'&pattern=ongoing';
         $arr_base['option_ccd'] = $this->eventFModel->_ccd['option'];
         $arr_base['comment_use_area'] = $this->eventFModel->_comment_use_area_type;
+        $arr_base['test_type'] = $test_type;
 
         // 프로모션 추가 파라미터 배열처리
         $arr_promotion_params = [];

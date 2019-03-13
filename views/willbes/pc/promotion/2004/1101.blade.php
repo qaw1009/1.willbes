@@ -89,8 +89,13 @@
             z-index:1;
         }
         .skybanner_sectionFixed {position:fixed; top:20px}
-
     </style>
+
+    <form id="promotionForm" name="promotionForm" method="GET">
+        @if(empty($arr_base['test_type']) === false)
+            <input type="hidden" name="type" value="{{ $arr_base['test_type'] }}">
+        @endif
+    </form>
 
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner" >

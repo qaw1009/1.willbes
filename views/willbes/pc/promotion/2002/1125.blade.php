@@ -8,19 +8,19 @@
             min-height: auto !important;
             margin-bottom:0 !important;
         }
-        .evtContent {
-            position:relative;
+        .evtContent { 
+            position:relative;            
             width:100% !important;
             min-width:1210px !important;
             background:#ccc;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
-        }
+        }	
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
-
+        
         .skybanner {position:fixed; top:250px; right:10px; z-index:1;}
 
         .wb_top {background:#28282a url(http://file3.willbes.net/new_cop/2019/03/EV190311_c1_bg.jpg) no-repeat center;}
@@ -69,7 +69,7 @@
     </style>
 
 
-<div class="p_re evtContent" id="evtContainer">
+<div class="evtContent" id="evtContainer">
     <div class="skybanner">
         <div><a href="#go"><img src="http://file3.willbes.net/new_cop/2019/03/EV190311_sky.jpg" alt="스카이스크래퍼"></a></div>
     </div>
@@ -118,18 +118,12 @@
         </div>
     </div>
 
-    <div class="evtCtnsBox wb_04" >
+    <div class="evtCtnsBox wb_04">
         <a name="link3"><img src="http://file3.willbes.net/new_cop/2019/03/EV190311_c6.jpg"  alt="경품" /></a>
     </div>
 		
     <div class="evtCtnsBox wb_06" id="go">
-        <img src="http://file3.willbes.net/new_cop/2019/03/EV190311_c7_01.jpg" alt="윌비스 이벤트를 여기저기 소문내개" usemap="#Map180212_c2"/>
-        <map name="Map180212_c2" >
-            <area shape="rect" coords="169,1375,326,1436" href="http://cafe.daum.net/policeacademy" onFocus="this.blur();" target="_blank" alt="다음카페 경시모"/>
-            <area shape="rect" coords="339,1378,489,1438" href="http://cafe.naver.com/polstudy" onFocus="this.blur();" target="_blank" alt="네이버카페 경꿈사"/>
-            <area shape="rect" coords="528,1379,678,1439" href="https://section.blog.naver.com/BlogHome.nhn?directoryNo=0&currentPage=1&groupId=0"  onFocus="this.blur();" target="_blank" alt="네이버 블로그"/>
-            <area shape="rect" coords="713,1381,901,1437" href="http://gall.dcinside.com/board/lists/?id=government" onFocus="this.blur();" target="_blank" alt="공무원갤러리"/>
-        </map>              
+        <img src="http://file3.willbes.net/new_cop/2019/03/EV190311_c7_01.jpg" alt="윌비스 이벤트를 여기저기 소문내개" usemap="#Map180212_c2"/>             
     </div>
         
     @include('html.event_replyUrl')
@@ -173,7 +167,7 @@
                 </dd>
             </dl>
         </div>
-    </div>
+    </div> 
 </div>
 <!-- End Container -->       
 

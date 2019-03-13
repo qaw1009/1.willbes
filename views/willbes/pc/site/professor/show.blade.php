@@ -50,11 +50,11 @@
                 </div>
 
                 <ul class="prof-banner01">
-                    @if(isset($data['ProfReferData']['yt_url']) === true && empty($data['ProfReferData']['yt_url']) === false)
-                        <li>
+                    <li>
+                        @if(isset($data['ProfReferData']['yt_url']) === true && empty($data['ProfReferData']['yt_url']) === false)
                             <iframe src="{{ $data['ProfReferData']['yt_url'] }}" frameborder="0" allowfullscreen=""></iframe>
-                        </li>
-                    @endif
+                        @endif
+                    </li>
                     @if(isset($data['ProfBnrData']['01']) === true && empty($data['ProfBnrData']['01']) === false)
                         <li class="bSlider">
                             <div class="slider">
@@ -63,6 +63,8 @@
                                 @endforeach
                             </div>
                         </li>
+                    @else
+                        <li class=""></li>
                     @endif
                 </ul>
 

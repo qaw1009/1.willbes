@@ -569,16 +569,23 @@ class OrderListModel extends BaseOrderModel
         $req_start_date = $req_start_date . ' 00:00:00';
         $req_end_date = $req_end_date . ' 23:59:59';
 
-        $column = 'S.SiteCode, max(S.IsCampus) as IsCampus, max(S.SiteName) as SiteName, count(ORR.RefundReqIdx) as RefundReqCnt';
+        $column = 'S.SiteCode, S.SiteName, S.IsCampus, ifnull(RR.RefundReqCnt, 0) as RefundReqCnt';
         $from = '
             from ' . $this->_table['site'] . ' as S
-                left join ' . $this->_table['order'] . ' as O
-                    on S.SiteCode = O.SiteCode and O.CompleteDatm is not null
-                left join ' . $this->_table['order_refund_request'] . ' as ORR
-                    on O.OrderIdx = ORR.OrderIdx and ORR.RefundReqDatm between ? and ?
-            where S.SiteCode != ' . config_item('app_intg_site_code') . '
-                and S.IsUse = "Y"
-            group by S.SiteCode';
+                left join (
+                    select
+                        O.SiteCode, count(ORR.RefundReqIdx) as RefundReqCnt
+                    from ' . $this->_table['order_refund_request'] . ' as ORR
+                        inner join ' . $this->_table['order'] . ' as O
+                            on ORR.OrderIdx = O.OrderIdx
+                    where ORR.RefundReqDatm between ? and ?
+                        and O.CompleteDatm is not null	
+                    group by O.SiteCode
+                ) as RR
+                    on S.SiteCode = RR.SiteCode
+            where S.SiteCode != ' . config_item('app_intg_site_code') . ' 
+                and S.IsUse = "Y"	            
+        ';
 
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from, [$req_start_date, $req_end_date]);

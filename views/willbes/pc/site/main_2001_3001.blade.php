@@ -68,24 +68,24 @@
             <div class="widthAuto">
                 <ul class="inner">
                     <li class="l1">
-                        <a href="{{ site_url('promotion/index/cate/3001/code/1009') }}" target="_blank">
+                        <a href="{{ site_url('/promotion/index/cate/3001/code/1009') }}">
                             <img src="{{ img_url('cop/flipped/flipped01.jpg') }}" alt="평생0원PASS">
                         </a>
                     </li>
                     <li class="l2">
-                        <a href="http://www.willbescop.net/event/movie/event.html?event_cd=On_170831_p&topMenuType=O#main" target="_blank">
-                            <img src="{{ img_url('cop/flipped/flipped02.jpg') }}" alt="2019 대비 기본이론<">
+                        <a href="{{ site_url('/promotion/index/cate/3001/code/1127') }}">
+                            <img src="{{ img_url('cop/flipped/flipped02.jpg') }}" alt="2단계 동형모의고사">
                         </a>
                     </li>
                     <li class="l3">
-                        <a href="http://www.willbescop.net/movie/event.html?event_cd=On_premium&topMenuType=O" target="_blank">
-                            <img src="{{ img_url('cop/flipped/flipped03.jpg') }}" alt="2019 대비 심화이론/기출">
+                        <a href="{{ site_url('/promotion/index/cate/3001/code/1016') }}">
+                            <img src="{{ img_url('cop/flipped/flipped03.jpg') }}" alt="2019 대비 프리미엄 심화이론/기출">
                         </a>
                     </li>
                 </ul>
                 <div class="willbes-Bnr mt60">
                     <ul>
-                        <li><a href="http://www.willbescop.net/event/movie/event.html?event_cd=On_190102_p&topMenuType=O" target="_blank"><img src="{{ img_url('cop/banner/bnr_190108.jpg') }}"></a></li>
+                        <li><a href="{{ site_url('/promotion/index/cate/3001/code/1025') }}"><img src="{{ img_url('cop/banner/bnr_190108.jpg') }}" alt="하승민 경찰영어 적중"></a></li>
                     </ul>
                 </div>
             </div>
@@ -98,7 +98,7 @@
             </div>
 
             <div class="widthAuto CurriStepBox">
-                <div class="CurriView"><a href="#none">커리큘럼 자세히보기 &gt;</a></div>
+                <div class="CurriView"><a href="{{ site_url('/promotion/index/cate/3001/code/1127') }}">커리큘럼 자세히보기 &gt;</a></div>
                 <ul class="CurriStep">
                     <li class="active">
                         <div class="curriculumBox">
@@ -140,7 +140,7 @@
                 </ul>
                 <div class="curriculumTxt">
                     <span class="cop-color">모든 강의</span>를 평생 0원 PASS 하나로 <span class="cop-color">평생 수강</span>하실 수 있습니다.
-                    <span class="btn"><a href="http://www.willbescop.net/movie/event.html?event_cd=On_180327_yp" target="_blank">평생 0원 PASS 구매하기</a></span>
+                    <span class="btn"><a href="{{ site_url('/promotion/index/cate/3001/code/1009') }}">평생 0원 PASS 구매하기</a></span>
                 </div>
             </div>
             <!-- CurriStepBox //-->
@@ -208,7 +208,7 @@
 
         <div class="Section Section4">
             <div class="widthAuto">
-                <img src="{{ img_url('cop/visual/visual_03.jpg') }}" alt="합격수기">
+                <a href="{{ site_url('/promotion/index/cate/3001/code/1032') }}"><img src="{{ img_url('cop/visual/visual_03.jpg') }}" alt="합격수기"></a>
             </div>
         </div>
 
@@ -232,8 +232,8 @@
                                         기출문제
                                     </div>
                                     <div class="btn">
-                                        <div class="btn-sbj"><a href="http://www.willbescop.net/movie/event.html?event_cd=On_181126_y&topMenuType=O" target="_blank">+ &nbsp; 문제 더 보기</a></div>
-                                        <div class="btn-lec mt5"><a href="{{ front_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/free?course_idx=1075') }}" target="_blank">+ &nbsp; 강의 더 보기</a></div>
+                                        <div class="btn-sbj"><a href="{{ site_url('/promotion/index/cate/3001/code/1010') }}" target="_blank">+ &nbsp; 문제 더 보기</a></div>
+                                        <div class="btn-lec mt5"><a href="{{ front_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/free?course_idx=1075') }}">+ &nbsp; 강의 더 보기</a></div>
                                     </div>
                                 </div>
                                 <div class="infoList">

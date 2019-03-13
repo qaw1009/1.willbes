@@ -416,8 +416,8 @@ body.no_sidebar {
     padding-right: 0;
 }
 .top_col .main_top_menu .nav-tabs li {
-    min-width: 72px;
-    margin-left: 3px;
+    min-width: 62px;
+    margin-left: 2px;
 }
 .top_col .main_top_menu .navbar-nav .open .dropdown-menu {
     right: auto !important;

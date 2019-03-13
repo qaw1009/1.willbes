@@ -93,7 +93,7 @@
         </style>   
 
         <div class="urlWrap" id="url">
-            @if(config_app('SiteCode') == '2001')  
+            @if(config_app('SiteCode') == '2001' || config_app('SiteCode') == '2002')  
             {{-- 경찰온라인 사이트일 경우만 적용 --}}  
             <ul>
                 <li><a href="http://cafe.daum.net/policeacademy" target="_blank" ><img src="http://file3.willbes.net/new_cop/common/snsline01.png"alt="다음카페 경사모" /></a></li>

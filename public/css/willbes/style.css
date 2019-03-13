@@ -6979,7 +6979,7 @@ ul li.profList .willbes-Layer-ProfileBox {
 .tab_Question li {
     float: inherit;
     display: inline-block;
-    width: 120px;
+    width: 110px;
     height: 94px;
     padding-top: 10px;
     margin: 0 8px;
@@ -10971,3 +10971,5 @@ table.acadlecInfoPackageTable tr.Top td {
         margin: 30px 0 0 0;
     }
 }
+
+

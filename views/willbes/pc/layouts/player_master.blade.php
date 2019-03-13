@@ -23,10 +23,10 @@
                 <li><span class="btnFAQ"><a href="{{front_url('/support/faq/index')}}" target="_blank">동영상 FAQ</a></span></li>
             </ul>
         </div>
-        <div id="settingPOP" class="settingPOP">
-            <img src="{{ img_url('player/player_key.png') }}" usemap="#player_key" style="border: 0; z-index:12;" onclick="alert('img');">
+        <div id="settingPOP" class="settingPOP settingPOP2">
+            <img src="{{ img_url('player/player_keyH.png') }}" usemap="#player_key" style="border: 0; z-index:12;" onclick="alert('img');">
             <map name="player_key">
-                <area shape="rect" coords="234,1,262,32" href="javascript:;" onclick="fnSettingPOP();" onfocus="blur();" />
+                <area shape="rect" coords="930,10,960,36" href="javascript:;" onclick="fnSettingPOP();" onfocus="blur();" />
             </map>
         </div>
         <div id="video-container" style="width:640px;height:400px;position:absolute;"></div>

@@ -10020,6 +10020,14 @@ table.acadlecInfoPackageTable tr.Top td {
     margin-right: -264px;
     z-index: 9999;
 }
+.videoPopup .view .settingPOP2 {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right:0;
+    z-index: 9999;
+}
 
 /* Video Player : vodTabs */
 .vodTabs {

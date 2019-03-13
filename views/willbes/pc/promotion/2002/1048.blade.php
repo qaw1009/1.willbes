@@ -10,8 +10,6 @@
         }
         .evtContent {
             width:100% !important;
-            min-width:1210px !important;
-            background:#ccc;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
@@ -21,15 +19,14 @@
         /************************************************************/
 
         .skybanner {
-            position:absolute;
-            top:20px;
+            position:fixed;
+            bottom:20px;
             right:10px;
             z-index:1;
         }
         .skybanner li {
             margin-bottom:5px;
         }
-        .skybanner_sectionFixed {position:fixed; top:20px}
 
         .wb_top {background:#242424 url(http://file3.willbes.net/new_cop/2019/01/EV190115_p1_bg.jpg) no-repeat center; }
         .wb_01 {background:#dfdfdf}
@@ -244,7 +241,6 @@
         daycountDown();
     </script>
 
-    <script src="/public/js/willbes/jquery.nav.js"></script>
     <script>
         $(function(e){
             var targetOffset= $("#evtContainer").offset().top;

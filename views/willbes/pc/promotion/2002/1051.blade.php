@@ -11,8 +11,6 @@
         .evtContent {
             position:relative;
             width:100% !important;
-            min-width:1210px !important;
-            background:#ccc;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
@@ -22,12 +20,12 @@
         /************************************************************/
 
         .skybanner {
-            position:absolute;
-            top:20px;
+            position:fixed;
+            bottom:20px;
             right:0;
             z-index:1;
         }
-        .skybanner_sectionFixed {position:fixed; top:20px}
+
 
         .wb_top {background:#1a1e25 url(http://file3.willbes.net/new_cop/sparta/SP190116_p1_bg.jpg) no-repeat center top}
         .wb_01 {background:#3e4552}
@@ -250,10 +248,12 @@
         });
     </script>
 
-    <script src="/public/js/willbes/jquery.nav.js"></script>
+
     <script>
         $(function(e){
             var targetOffset= $("#evtContainer").offset().top;
             $('html, body').animate({scrollTop: targetOffset}, 1000);
-            </script>
+            /*e.preventDefault(); */
+        })
+    </script>
 @stop

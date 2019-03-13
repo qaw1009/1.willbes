@@ -68,7 +68,7 @@
             <div class="widthAuto">
                 <ul class="inner">
                     <li class="l1">
-                        <a href="http://www.willbescop.net/movie/event.html?event_cd=On_180327_yp" target="_blank">
+                        <a href="{{ site_url('promotion/index/cate/3001/code/1009') }}" target="_blank">
                             <img src="{{ img_url('cop/flipped/flipped01.jpg') }}" alt="평생0원PASS">
                         </a>
                     </li>

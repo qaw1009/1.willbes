@@ -11,8 +11,6 @@
         .evtContent { 
             position:relative;            
             width:100% !important;
-            min-width:1210px !important;
-            background:#ccc;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
@@ -22,8 +20,8 @@
         /************************************************************/
 
         .skybanner {
-            position:absolute; 
-            top:300px; 
+            position:fixed; 
+            bottom:20px; 
             right:0;
             z-index:1;            
         }
@@ -58,9 +56,7 @@
         .slide_con p {position:absolute; top:50%; width:56px; height:56px; z-index:100}
         .slide_con p a {cursor:pointer}
         .slide_con p.leftBtn {left:-40px; top:46%; width:80px; height:80px;}
-        .slide_con p.rightBtn {right:-40px;top:46%; width:80px; height:80px;}	
-
-        
+        .slide_con p.rightBtn {right:-40px;top:46%; width:80px; height:80px;}	    
 
         
         

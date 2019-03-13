@@ -9,9 +9,8 @@
             margin-bottom:0 !important;
         }
         .evtContent {
+            position:relative; 
             width:100% !important;
-            min-width:1210px !important;
-            background:#ccc;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
@@ -21,7 +20,7 @@
         /************************************************************/
 
         .rLnb {
-            position:absolute; width:190px; top:100px; right:10px; z-index:1;
+            position:fixed; width:190px; bottom:20px; right:10px; z-index:1;
         }
         .rLnb ul {background:#fff; border:1px solid #2f2f2f; margin-bottom:10px;
             -webkit-box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.21);
@@ -52,7 +51,7 @@
             line-height: 1.4;
         }
         .rLnb .typeB a {display:block; background:#000; color:#fff; border-radius: 20px; padding:8px 0; margin:0 20px}
-        .rLnb_sectionFixed {position:fixed; top:20px}
+
 
         .LAeventA01 {background:url(http://file3.willbes.net/new_gosi/2019/leave_army/la_on_top_bg.jpg) no-repeat center top; position:relative;}
         .LAeventA01 .main_img {position:absolute; width:601px; top:1000px; left:50%; margin-left:-488px; z-index:10; opacity:0;filter:alpha(opacity=0);-webkit-animation-duration: 1s;animation-duration: 1s;-webkit-animation-fill-mode: both;animation-fill-mode: both}
@@ -193,7 +192,7 @@
 
 
             <div class="FreepassLec" id="passLec01">
-                <h3>군무원</h3>
+                <h3>군무원 | 윌비스 PASS</h3>
                 <div class="fpLecinfo">
                     <p>
                         2019년도 군무원 5,600명 확대 채용 예정 !<br />
@@ -228,7 +227,7 @@
                                         <ul class="price">
                                             <li class="liSty1">990,000원</li>
                                             <li class="liSty2">본인부담 : 198,000원
-                                                <div>(* 직업능력개발 교육비 792,000원 지원)</div>
+                                                <div>(* 직업능력개발 교육비 792,000원 환급)</div>
                                             </li>
                                         </ul>
                                     </td>
@@ -255,7 +254,7 @@
                                         <ul class="price">
                                             <li class="liSty1">1,190,000원</li>
                                             <li class="liSty2">본인부담 : 238,000원
-                                                <div>(* 직업능력개발 교육비 952,000원 지원)</div>
+                                                <div>(* 직업능력개발 교육비 952,000원 환급)</div>
                                             </li>
                                         </ul>
                                     </td>
@@ -292,7 +291,7 @@
                                         <ul class="price">
                                             <li class="liSty1">990,000원</li>
                                             <li class="liSty2">본인부담 : 198,000원
-                                                <div>(* 직업능력개발 교육비 792,000원 지원)</div>
+                                                <div>(* 직업능력개발 교육비 792,000원 환급)</div>
                                             </li>
                                         </ul>
                                     </td>
@@ -320,7 +319,7 @@
                                         <ul class="price">
                                             <li class="liSty1">1,190,000원</li>
                                             <li class="liSty2">본인부담 : 238,000원
-                                                <div>(* 직업능력개발 교육비 952,000원 지원)</div>
+                                                <div>(* 직업능력개발 교육비 952,000원 환급)</div>
                                             </li>
                                         </ul>
                                     </td>
@@ -357,7 +356,7 @@
                                         <ul class="price">
                                             <li class="liSty1">990,000원</li>
                                             <li class="liSty2">본인부담 : 198,000원
-                                                <div>(* 직업능력개발 교육비 792,000원 지원)</div>
+                                                <div>(* 직업능력개발 교육비 792,000원 환급)</div>
                                             </li>
                                         </ul>
                                     </td>
@@ -385,7 +384,7 @@
                                         <ul class="price">
                                             <li class="liSty1">1,190,000원</li>
                                             <li class="liSty2">본인부담 : 238,000원
-                                                <div>(* 직업능력개발 교육비 952,000원 지원)</div>
+                                                <div>(* 직업능력개발 교육비 952,000원 환급)</div>
                                             </li>
                                         </ul>
                                     </td>
@@ -423,7 +422,7 @@
                                         <ul class="price">
                                             <li class="liSty1">990,000원</li>
                                             <li class="liSty2">본인부담 : 198,000원
-                                                <div>(* 직업능력개발 교육비 792,000원 지원)</div>
+                                                <div>(* 직업능력개발 교육비 792,000원 환급)</div>
                                             </li>
                                         </ul>
                                     </td>
@@ -451,7 +450,7 @@
                                         <ul class="price">
                                             <li class="liSty1">1,190,000원</li>
                                             <li class="liSty2">본인부담 : 238,000원
-                                                <div>(* 직업능력개발 교육비 952,000원 지원)</div>
+                                                <div>(* 직업능력개발 교육비 952,000원 환급)</div>
                                             </li>
                                         </ul>
                                     </td>
@@ -489,7 +488,7 @@
                                         <ul class="price">
                                             <li class="liSty1">990,000원</li>
                                             <li class="liSty2">본인부담 : 198,000원
-                                                <div>(* 직업능력개발 교육비 792,000원 지원)</div>
+                                                <div>(* 직업능력개발 교육비 792,000원 환급)</div>
                                             </li>
                                         </ul>
                                     </td>
@@ -517,7 +516,7 @@
                                         <ul class="price">
                                             <li class="liSty1">1,190,000원</li>
                                             <li class="liSty2">본인부담 : 238,000원
-                                                <div>(* 직업능력개발 교육비 952,000원 지원)</div>
+                                                <div>(* 직업능력개발 교육비 952,000원 환급)</div>
                                             </li>
                                         </ul>
                                     </td>
@@ -553,7 +552,7 @@
                                         <ul class="price">
                                             <li class="liSty1">990,000원</li>
                                             <li class="liSty2">본인부담 : 198,000원
-                                                <div>(* 직업능력개발 교육비 792,000원 지원)</div>
+                                                <div>(* 직업능력개발 교육비 792,000원 환급)</div>
                                             </li>
                                         </ul>
                                     </td>
@@ -581,7 +580,7 @@
                                         <ul class="price">
                                             <li class="liSty1">1,190,000원</li>
                                             <li class="liSty2">본인부담 : 238,000원
-                                                <div>(* 직업능력개발 교육비 952,000원 지원)</div>
+                                                <div>(* 직업능력개발 교육비 952,000원 환급)</div>
                                             </li>
                                         </ul>
                                     </td>
@@ -619,7 +618,7 @@
                                         <ul class="price">
                                             <li class="liSty1">990,000원</li>
                                             <li class="liSty2">본인부담 : 198,000원
-                                                <div>(* 직업능력개발 교육비 792,000원 지원)</div>
+                                                <div>(* 직업능력개발 교육비 792,000원 환급)</div>
                                             </li>
                                         </ul>
                                     </td>
@@ -646,7 +645,7 @@
                                         <ul class="price">
                                             <li class="liSty1">1,190,000원</li>
                                             <li class="liSty2">본인부담 : 238,000원
-                                                <div>(* 직업능력개발 교육비 952,000원 지원)</div>
+                                                <div>(* 직업능력개발 교육비 952,000원 환급)</div>
                                             </li>
                                         </ul>
                                     </td>
@@ -685,7 +684,7 @@
                                         <ul class="price">
                                             <li class="liSty1">990,000원</li>
                                             <li class="liSty2">본인부담 : 198,000원
-                                                <div>(* 직업능력개발 교육비 792,000원 지원)</div>
+                                                <div>(* 직업능력개발 교육비 792,000원 환급)</div>
                                             </li>
                                         </ul>
                                     </td>
@@ -714,7 +713,7 @@
                                         <ul class="price">
                                             <li class="liSty1">1,190,000원</li>
                                             <li class="liSty2">본인부담 : 238,000원
-                                                <div>(* 직업능력개발 교육비 952,000원 지원)</div>
+                                                <div>(* 직업능력개발 교육비 952,000원 환급)</div>
                                             </li>
                                         </ul>
                                     </td>
@@ -739,7 +738,7 @@
             </div><!--FreepassLec//-->
 
             <div class="FreepassLec" id="passLec02">
-                <h3>소방직</h3>
+                <h3>소방직 | 윌비스 PASS</h3>
                 <div class="fpLecinfo">
                     <p>
                         2019년도 소방공무원 5,200명 확대 채용 예정 ! <br />
@@ -816,7 +815,7 @@
             </div><!--FreepassLec//-->
 
             <div class="FreepassLec" id="passLec03">
-                <h3>기술직</h3>
+                <h3>기술직 | 윌비스 PASS</h3>
                 <div class="fpLecinfo">
                     <p>
                         직렬별 전문가로 구성된 기술직 TOP 교수진 !<br />
@@ -893,7 +892,7 @@
             </div><!--FreepassLec//-->
 
             <div class="FreepassLec" id="passLec04">
-                <h3>일반행정직</h3>
+                <h3>일반행정직 | 윌비스 PASS</h3>
                 <div class="fpLecinfo">
                     <p>
                         2019년도 공무원 3만 3,000명 확대 채용 예정 ! <br />
@@ -970,7 +969,7 @@
             </div><!--FreepassLec//-->
 
             <div class="FreepassLec" id="passLec05">
-                <h3>소방자격증 <span>※ 소방자격증의 경우 수강기간 1년 / 10만 포인트 지급</span></h3>
+                <h3>소방자격증 | 윌비스 PASS <span>※ 소방자격증의 경우 수강기간 1년 / 10만 포인트 지급</span></h3>
                 <div class="fpLecinfo">
                     <p>
                         윌비스 × 대영소방전문학원 !<br />
@@ -999,7 +998,7 @@
                                     <ul class="price">
                                         <li class="liSty1">1,090,000원</li>
                                         <li class="liSty2">본인부담 : 218,000원
-                                            <div>(* 직업능력개발 교육비 872,000원 환급원)</div>
+                                            <div>(* 직업능력개발 교육비 872,000원 환급)</div>
                                         </li>
                                     </ul>
                                 </td>
@@ -1284,24 +1283,6 @@
             var targetOffset= $("#evtContainer").offset().top;
             $('html, body').animate({scrollTop: targetOffset}, 700);
             /*e.preventDefault(); */
-        });
-
-        $(function(){
-            var vi = 0;  // 하단에 메뉴 표시할 스크롤 위치값 지정
-            var nav_y = $(".rLnb").offset().top + $(".rLnb").height();
-
-            $(window).scroll(function(){
-                var num = $(window).scrollTop();
-                if( num > nav_y ){
-                    if( num > vi ){
-                        $(".rLnb").css({"position":"fixed","top":"20px","rigth":"20px"}).fadeIn();
-                    }else{
-                        $(".rLnb").fadeOut();
-                    }
-                }else{
-                    $(".rLnb").finish().css({"top":"100px"});
-                }
-            });
         });
     </script>
 @stop

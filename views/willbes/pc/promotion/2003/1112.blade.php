@@ -11,9 +11,8 @@
             margin-bottom:0 !important;
         }
         .evtContent {
+            position:relative; 
             width:100% !important;
-            min-width:1210px !important;
-            background:#ccc;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
@@ -23,7 +22,7 @@
         /************************************************************/
 
         .rLnb {
-            position:absolute; width:190px; top:100px; right:10px; z-index:1;
+            position:fixed; width:190px; bottom:20px; right:10px; z-index:1;
         }
         .rLnb ul {background:#fff; border:1px solid #2f2f2f; margin-bottom:10px;
             -webkit-box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.21);
@@ -54,7 +53,7 @@
             line-height: 1.4;
         }
         .rLnb .typeB a {display:block; background:#000; color:#fff; border-radius: 20px; padding:8px 0; margin:0 20px}
-        .rLnb_sectionFixed {position:fixed; top:20px}
+ 
 
         .LAeventA01 {background:url(http://file3.willbes.net/new_gosi/2019/leave_army/la_on_top_bg.jpg) no-repeat center top; position:relative;}
         /*플립 애니메이션*/
@@ -159,7 +158,6 @@
     <!-- End Container -->
 
     <script type="text/javascript">
-
         function certOpen(){
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
 
@@ -172,51 +170,15 @@
                 window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
             @endif
         }
-
-
-        $( document ).ready( function() {
-            var jbOffset = $( '.rLnb' ).offset();
-            $( window ).scroll( function() {
-                if ( $( document ).scrollTop() > jbOffset.top ) {
-                    $( '.rLnb' ).addClass( 'rLnb_sectionFixed' );
-                }
-                else {
-                    $( '.rLnb' ).removeClass( 'rLnb_sectionFixed' );
-                }
-            });
-        } );
-
-        $(document).ready(function() {
-            $('.rLnb').onePageNav({
-                currentClass: 'hvr-shutter-out-horizontal_active'
-            });
-        });
     </script>
 
     <script>
         $(function(e){
             var targetOffset= $("#evtContainer").offset().top;
-            $('html, body').animate({scrollTop: targetOffset}, 700);
+            $('html, body').animate({scrollTop: targetOffset}, 1000);
             /*e.preventDefault(); */
         });
 
-        $(function(){
-            var vi = 0;  // 하단에 메뉴 표시할 스크롤 위치값 지정
-            var nav_y = $(".rLnb").offset().top + $(".rLnb").height();
-
-            $(window).scroll(function(){
-                var num = $(window).scrollTop();
-                if( num > nav_y ){
-                    if( num > vi ){
-                        $(".rLnb").css({"position":"fixed","top":"20px","rigth":"20px"}).fadeIn();
-                    }else{
-                        $(".rLnb").fadeOut();
-                    }
-                }else{
-                    $(".rLnb").finish().css({"top":"100px"});
-                }
-            });
-        });
     </script>
 
 @stop

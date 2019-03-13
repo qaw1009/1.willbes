@@ -9,9 +9,8 @@
             margin-bottom:0 !important;
         }
         .evtContent {
+            position:relative; 
             width:100% !important;
-            min-width:1210px !important;
-            background:#ccc;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
@@ -21,7 +20,7 @@
         /************************************************************/
 
         .rLnb {
-            position:absolute; width:190px; top:100px; right:10px; z-index:1;
+            position:fixed; width:190px; bottom:20px; right:10px; z-index:1;
         }
         .rLnb ul {background:#fff; border:1px solid #2f2f2f; margin-bottom:10px;
             -webkit-box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.21);
@@ -52,7 +51,7 @@
             line-height: 1.4;
         }
         .rLnb .typeB a {display:block; background:#000; color:#fff; border-radius: 20px; padding:8px 0; margin:0 20px}
-        .rLnb_sectionFixed {position:fixed; top:20px}
+
 
         .LAeventA01 {background:url(http://file3.willbes.net/new_gosi/2019/leave_army/la_on_top_bg.jpg) no-repeat center top; position:relative;}
         .LAeventA01 .main_img {position:absolute; width:601px; top:1000px; left:50%; margin-left:-488px; z-index:10; opacity:0;filter:alpha(opacity=0);-webkit-animation-duration: 1s;animation-duration: 1s;-webkit-animation-fill-mode: both;animation-fill-mode: both}
@@ -155,7 +154,7 @@
     </style>
 
 
-    <div class="p_re evtContent" id="evtContainer">
+    <div class="evtContent" id="evtContainer">
         <div class="rLnb">
             @include('html.event_onLeaveArmyPassRlnb')
             <ul class="typeB">
@@ -209,7 +208,7 @@
                                     <ul class="price">
                                         <li class="liSty1">990,000원</li>
                                         <li class="liSty2">본인부담 : 198,000원
-                                            <div>(* 직업능력개발 교육비 792,000원 환급원)</div>
+                                            <div>(* 직업능력개발 교육비 792,000원 환급)</div>
                                         </li>
                                     </ul>
                                 </td>
@@ -494,31 +493,10 @@
             );
         </script>
 
-        <script src="/public/js/willbes/jquery.nav.js"></script>
-        <script>
-            $( document ).ready( function() {
-                var jbOffset = $( '.rLnb' ).offset();
-                $( window ).scroll( function() {
-                    if ( $( document ).scrollTop() > jbOffset.top ) {
-                        $( '.rLnb' ).addClass( 'rLnb_sectionFixed' );
-                    }
-                    else {
-                        $( '.rLnb' ).removeClass( 'rLnb_sectionFixed' );
-                    }
-                });
-            } );
-            $(document).ready(function() {
-                $('.rLnb').onePageNav({
-                    currentClass: 'hvr-shutter-out-horizontal_active'
-                });
-            });
-
-        </script>
-
         <script src="/public/js/willbes/jquery.bpopup.min.js"></script>
         <script>
             $(function(e){
-                var targetOffset= $("#gridContainer").offset().top;
+                var targetOffset= $("#evtContainer").offset().top;
                 $('html, body').animate({scrollTop: targetOffset}, 1000);
                 /*e.preventDefault(); */
             });

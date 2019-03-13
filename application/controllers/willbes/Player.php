@@ -215,6 +215,7 @@ class Player extends \app\controllers\FrontController
             default:
                 $filename = $data['wWD'];
                 $ratio = 21; // 초 와이드는 고정
+                $quility = 'WD';
                 break;
         }
 
@@ -222,14 +223,17 @@ class Player extends \app\controllers\FrontController
         if(empty($filename) === true){
             $filename = $data['wWD'];
             $ratio = 21;
+            $quility = 'WD';
         }
         if(empty($filename) === true){
             $filename = $data['wHD'];
             $ratio = $data['wRatio'];
+            $quility = 'HD';
         }
         if(empty($filename) === true){
             $filename = $data['wSD'];
             $ratio = $data['wRatio'];
+            $quility = 'SD';
         }
 
         // 모든 경로없을때
@@ -343,6 +347,7 @@ class Player extends \app\controllers\FrontController
             default:
                 $filename = $data['wWD'];
                 $ratio = 21; // 초 와이드는 고정
+                $quility = 'WD';
                 break;
         }
 
@@ -350,14 +355,17 @@ class Player extends \app\controllers\FrontController
         if(empty($filename) === true){
             $filename = $data['wWD'];
             $ratio = 21;
+            $quility = 'WD';
         }
         if(empty($filename) === true){
             $filename = $data['wHD'];
             $ratio = $data['wRatio'];
+            $quility = 'HD';
         }
         if(empty($filename) === true){
             $filename = $data['wSD'];
             $ratio = $data['wRatio'];
+            $quility = 'SD';
         }
 
         // 모든 경로가 존재 없을때
@@ -371,7 +379,7 @@ class Player extends \app\controllers\FrontController
             'data' => [
                 'pretitle' => $data['wUnitNum'].'회 '.$data['wUnitLectureNum'].'강',
                 'title' => $data['wUnitName'],
-                'quility' => 'WD',
+                'quility' => $quility,
                 'startPosition' => 0,
                 'ratio' => 21,
                 'isIntro' => false,
@@ -433,6 +441,7 @@ class Player extends \app\controllers\FrontController
             default:
                 $filename = $data['wWD'];
                 $ratio = 21; // 초 와이드는 고정
+                $quility = 'WD';
                 break;
         }
 
@@ -440,14 +449,17 @@ class Player extends \app\controllers\FrontController
         if(empty($filename) === true){
             $filename = $data['wWD'];
             $ratio = 21;
+            $quility = 'WD';
         }
         if(empty($filename) === true){
             $filename = $data['wHD'];
             $ratio = $data['wRatio'];
+            $quility = 'HD';
         }
         if(empty($filename) === true){
             $filename = $data['wSD'];
             $ratio = $data['wRatio'];
+            $quility = 'SD';
         }
 
         // 모든 경로가 존재 없을때
@@ -461,7 +473,7 @@ class Player extends \app\controllers\FrontController
             'data' => [
                 'pretitle' => $data['wUnitNum'].'회 '.$data['wUnitLectureNum'].'강',
                 'title' => $data['wUnitName'],
-                'quility' => 'WD',
+                'quility' => $quility,
                 'startPosition' => 0,
                 'ratio' => 21,
                 'isIntro' => false,

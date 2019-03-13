@@ -24,7 +24,7 @@
             </ul>
         </div>
         <div id="settingPOP" class="settingPOP settingPOP2">
-            <img src="{{ img_url('player/player_keyH.png') }}" usemap="#player_key" style="border: 0; z-index:12;" onclick="alert('img');">
+            <img src="{{ img_url('player/player_keyH.png') }}" usemap="#player_key" style="border: 0; z-index:12;">
             <map name="player_key">
                 <area shape="rect" coords="930,10,960,36" href="javascript:;" onclick="fnSettingPOP();" onfocus="blur();" />
             </map>
@@ -96,7 +96,7 @@
 <script>
     ratio = {{empty($data['ratio']) == true ? '16' : $data['ratio']}};
     startPosition = {{empty($data['startPosition']) == true ? '0' : $data['startPosition']}};
-    video_container_width = @if($data['quility'] == 'WD'){{'1280'}}@elseif($data['quility'] == 'HD'){{'960'}}@else{{'642'}}@endif;
+    video_container_width = @if($data['quility'] == 'WD'){{'1280'}}@elseif($data['quility'] == 'HD'){{'960'}}@else{{'960'}}@endif;
 
     function fnSettingPOP()
     {

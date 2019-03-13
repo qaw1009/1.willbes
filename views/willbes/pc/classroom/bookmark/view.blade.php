@@ -64,11 +64,11 @@
                         <table cellspacing="0" cellpadding="0" class="listTable bookmarkTable upper-black under-gray tx-gray">
                             <colgroup>
                                 <col style="width: 80px;">
-                                <col style="width: 250px;">
+                                <col style="width: 320px;">
                                 <col style="width: 80px;">
                                 <col style="width: 90px;">
                                 <col style="width: 100px;">
-                                <col style="width: 240px;">
+                                <col style="width: 170px;">
                                 <col style="width: 100px;">
                             </colgroup>
                             <thead>
@@ -86,7 +86,7 @@
                             @forelse($curriculum as $row)
                                 <tr>
                                     <td class="w-no"><input type="checkbox" id="bmidx" name="bmidx[]" class="goods_chk" value="{{$row['bmIdx']}}">{{$row['wUnitNum']}}회 {{$row['wUnitLectureNum']}}강</td>
-                                    <td class="w-lec">{{$row['wUnitName']}}</td>
+                                    <td class="w-lec tx-left">{{$row['wUnitName']}}</td>
                                     <td class="w-lec-time">{{$row['wRuntime']}}분</td>
                                     <td class="w-free mypage">
                                         @if($lec['isBtob'] == 'Y' && $lec['enableIp'] == 'N')
@@ -108,8 +108,9 @@
                                         @endif
                                     </td>
                                     <td class="w-bm-time">{{gmdate('H시 i분 s초', $row['Time'])}}</td>
-                                    <td class="w-bm-txt">
+                                    <td class="w-bm-txt-delete">
                                         <input type="text" id="memo-{{$row['bmIdx']}}" name="memo-{{$row['bmIdx']}}" class="memoText" maxlength="100" value="{{$row['Title']}}" />
+                                        <br>
                                         <div class="aBox cancelBox_block"><a href="javascript:;" onclick="fnModifyMemo('{{$row['bmIdx']}}');">수정</a></div>
                                     </td>
                                     <td class="w-bm-day">{{substr($row['RegDatm'], 0, 10)}}</td>

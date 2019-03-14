@@ -161,7 +161,7 @@
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiKdjPass') }}" target="_blank">김동진 법원팀 PASS <span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiArmyCivilianPass') }}" target="_blank">군무원 PASS</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiHdh') }}" target="_blank">한덕현 영어</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_onGosiHdhReading') }}" target="_blank">한덕현 영어 독해첨삭지도반</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onGosiHdhReading') }}" target="_blank">한덕현 영어 독해첨삭지도반<span>*</span></a></li>
                 <li><a href="{{ site_url('/home/html/event_onGosiHdhReadinPop') }}" target="_blank">한덕현 영어 독해첨삭지도반 신청팝업<span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiJswPkg') }}" target="_blank">장사원 패키지 20% 할인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiKsjWordPkg') }}" target="_blank">김신주 영어 어휘패키지</a></li>

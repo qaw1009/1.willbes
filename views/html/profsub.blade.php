@@ -2950,7 +2950,7 @@
                                             앞으로 배운것만 틀리지 않고 다 맞을 수 있게 공부하자!
                                         </div>
                                     </div>   
-                                    <a href="#none" class="playBtn">영상보기</a> 
+                                    <a id="youtube-2" href="https://www.youtube.com/embed/3iEgf4R4oHU?rel=0" class="playBtn">영상보기</a> 
                                 </li>
                             </ul>
                         </div>

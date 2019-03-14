@@ -119,7 +119,7 @@
                         <li>
                             <a href="http://www.willbeslife.net" target="_blank">
                                 <div class="wTit">
-                                    <img src="{{ img_url('main/icon_willbes8.png') }}"> 학점은행
+                                    <img src="{{ img_url('main/icon_willbes10.png') }}"> 학점은행
                                 </div>
                                 <div class="wTxt">
                                     교육부 인정 학점은행 원격교육기관<br/>
@@ -130,7 +130,7 @@
                         <li>
                             <a href="http://willbes.or.kr" target="_blank">
                                 <div class="wTit">
-                                    <img src="{{ img_url('main/icon_willbes8.png') }}"> 국비교육
+                                    <img src="{{ img_url('main/icon_willbes9.png') }}"> 국비교육
                                 </div>
                                 <div class="wTxt">
                                     대한민국 국비교육 No.1<br/>
@@ -141,7 +141,7 @@
                         <li>
                             <a href="http://willbesedu.or.kr" target="_blank">
                                 <div class="wTit">
-                                    <img src="{{ img_url('main/icon_willbes8.png') }}"> 출석 학점은행
+                                    <img src="{{ img_url('main/icon_willbes10.png') }}"> 출석 학점은행
                                 </div>
                                 <div class="wTxt">
                                     학점은행 평가인정 교육기관<br/>

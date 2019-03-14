@@ -822,7 +822,7 @@
             // 배송메모 바이트수 계산
             $regi_form.find('input[name="delivery_memo"]').on('change keyup input', function() {
                 var byte_cnt = fn_chk_byte($(this).val());
-                if (byte_cnt > 10) {
+                if (byte_cnt > 120) {
                     alert('배송 메시지 길이가 초과되었습니다.');
                     $(this).val('');
                     return;

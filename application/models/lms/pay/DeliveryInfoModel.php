@@ -95,7 +95,7 @@ class DeliveryInfoModel extends BaseOrderModel
                 $check_pay_status_ccd = $this->_pay_status_ccd['paid'];
                 $check_error_msg = '결제완료된 주문만 발송완료 승인이 가능합니다.';
             } else {
-                $column_prefix = 'StatusUpdDatm';
+                $column_prefix = 'StatusUpd';
                 $check_pay_status_ccd = $this->_pay_status_ccd['refund'];
                 $check_error_msg = '환불완료된 주문만 발송전 취소가 가능합니다.';
             }

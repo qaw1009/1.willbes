@@ -85,7 +85,11 @@
                 </ul>
                 <div class="willbes-Bnr mt60">
                     <ul>
-                        <li><a href="{{ site_url('/promotion/index/cate/3001/code/1025') }}"><img src="{{ img_url('cop/banner/bnr_190108.jpg') }}" alt="하승민 경찰영어 적중"></a></li>
+                        <li>
+                            <a href="{{ site_url('/promotion/index/cate/3001/code/1025') }}">
+                                <img src="{{ img_url('cop/banner/190304_cBar_1120x110.jpg') }}" alt="하승민 경찰영어 적중">
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>

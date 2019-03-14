@@ -17,8 +17,15 @@
 
             <div class="subSection01 bSlider acad">
                 <div class="slider">
-                    <div><a href="#none"><img src="{{ img_url('cop_acad/visual/sub_visual_190211_01.jpg') }}" alt="배너명"></a></div>
-                    <div><a href="#none"><img src="{{ img_url('cop_acad/visual/sub_visual_190211_02.jpg') }}" alt="배너명"></a></div>
+                    @if(empty($arr_base['arr_main_banner']['캠퍼스_메인']) === false)
+                        @php $link_url = '#none'; @endphp
+                        @foreach($arr_base['arr_main_banner']['캠퍼스_메인'] as $row)
+                            @if(empty($row['LinkUrl']) === false)
+                                @php $link_url = front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www'); @endphp
+                            @endif
+                            <div><a href="{{ $link_url }}" target="_{{ $row['LinkType'] }}"><img src="{{ $row['BannerFullPath'] . $row['BannerImgName'] }}" alt="{{ $row['BannerName'] }}"></a></div>
+                        @endforeach
+                    @endif
                 </div>
             </div><!-- subSection01// -->
             <div class="subSection02 mt20">
@@ -26,16 +33,30 @@
                     <li>
                         <div class="bSlider acad blue">
                             <div class="sliderTM">
-                                <div><a href="#none"><img src="{{ img_url('cop_acad/visual/sub_visual_bnr_01.jpg') }}" alt="배너명"></a></div>
-                                <div><a href="#none"><img src="{{ img_url('cop_acad/visual/sub_visual_bnr_02.jpg') }}" alt="배너명"></a></div>
+                                @if(empty($arr_base['arr_main_banner']['캠퍼스_서브1']) === false)
+                                    @php $link_url = '#none'; @endphp
+                                    @foreach($arr_base['arr_main_banner']['캠퍼스_서브1'] as $row)
+                                        @if(empty($row['LinkUrl']) === false)
+                                            @php $link_url = front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www'); @endphp
+                                        @endif
+                                        <div><a href="{{ $link_url }}" target="_{{ $row['LinkType'] }}"><img src="{{ $row['BannerFullPath'] . $row['BannerImgName'] }}" alt="{{ $row['BannerName'] }}"></a></div>
+                                    @endforeach
+                                @endif
                             </div>
                         </div>
                     </li>
                     <li>
                         <div class="bSlider acad blue">
                             <div class="slider">
-                                <div><a href="#none"><img src="{{ img_url('cop_acad/visual/sub_visual_bnr_01.jpg') }}" alt="배너명"></a></div>
-                                <div><a href="#none"><img src="{{ img_url('cop_acad/visual/sub_visual_bnr_02.jpg') }}" alt="배너명"></a></div>
+                                @if(empty($arr_base['arr_main_banner']['캠퍼스_서브2']) === false)
+                                    @php $link_url = '#none'; @endphp
+                                    @foreach($arr_base['arr_main_banner']['캠퍼스_서브2'] as $row)
+                                        @if(empty($row['LinkUrl']) === false)
+                                            @php $link_url = front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www'); @endphp
+                                        @endif
+                                        <div><a href="{{ $link_url }}" target="_{{ $row['LinkType'] }}"><img src="{{ $row['BannerFullPath'] . $row['BannerImgName'] }}" alt="{{ $row['BannerName'] }}"></a></div>
+                                    @endforeach
+                                @endif
                             </div>
                         </div>
                     </li>

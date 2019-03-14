@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Campus extends \app\controllers\FrontController
 {
-    protected $models = array();
+    protected $models = array('bannerF');
     protected $helpers = array();
     protected $auth_controller = false;
     protected $auth_methods = array();
@@ -26,14 +26,28 @@ class Campus extends \app\controllers\FrontController
 
         $is_tab_select = isset($arr_input['tab']);
         $arr_input['tab'] = element('tab', $arr_input, 'notice');
+        $arr_base['arr_main_banner'] = $this->_banner();
         $tab_data = $this->{'_tab_' . $arr_input['tab']}($campus_code);
 
         $this->load->view('site/campus/show', [
             'arr_input' => $arr_input,
             'campus_code' => $campus_code,
+            'arr_base' => $arr_base,
             'tab_data' => $tab_data,
             'is_tab_select' => $is_tab_select
         ]);
+    }
+
+    private function _banner($cate_code = 0)
+    {
+        $arr_banner_disp = ['캠퍼스_메인', '캠퍼스_서브1', '캠퍼스_서브2'];
+        $result = $this->bannerFModel->findBanners($arr_banner_disp, $this->_site_code, $cate_code);
+
+        $data = [];
+        foreach ($result as $key => $row) {
+            $data[$row['DispName']][] = $result[$key];
+        }
+        return $data;
     }
 
     /**

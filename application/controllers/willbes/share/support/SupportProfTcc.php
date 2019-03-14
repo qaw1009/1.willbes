@@ -23,21 +23,31 @@ class SupportProfTcc extends  BaseSupport
     public function index()
     {
         $list = [];
+        $arr_base = [];
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
         $get_params = http_build_query($arr_input);
+
+        $s_cate_code = element('s_cate_code',$arr_input);
+        $s_campus = element('s_campus',$arr_input);
+        $s_keyword = element('s_keyword',$arr_input);
+        $s_tpass_lecture = element('s_tpass_lecture',$arr_input);
+        $prof_idx = element('prof_idx',$arr_input);
+        $subject_idx = element('subject_idx',$arr_input);
+        $view_type = element('view_type',$arr_input);
+        $get_page_params = 's_cate_code='.$s_cate_code.'&s_tpass_lecture='.$s_tpass_lecture.'&s_campus='.$s_campus.'&s_keyword='.$s_keyword;
+        $get_page_params .= '&prof_idx='.$prof_idx.'&subject_idx='.$subject_idx;
+        $get_page_params .= '&view_type='.$view_type;
 
         $arr_condition = [
             'EQ' => [
                 'b.BmIdx' => $this->_bm_idx
                 ,'b.IsUse' => 'Y'
-                ,'b.CampusCcd' => $s_campus
                 /*,'b.ProfIdx' => $prof_idx
                 ,'b.SubjectIdx' => $subject_idx*/
             ],
             'ORG' => [
                 'LKB' => [
-                    'b.Title' => $s_keyword
-                    ,'b.Content' => $s_keyword
+                    'b.Content' => $s_keyword
                 ]
             ],
             /*'LKB' => [

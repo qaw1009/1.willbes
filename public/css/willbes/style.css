@@ -6313,6 +6313,57 @@ ul li.profList .willbes-Layer-ProfileBox {
     border-width: 6px;
 }
 
+/*subContainer : Prof : TCC*/
+.tccWrap {
+    letter-spacing: 0;
+    color:#707070;
+    line-height: 1.4;
+}
+.tccWrap li {
+    position: relative;
+    border-bottom:1px solid #edeeef;
+    margin-bottom:20px;
+    min-height: 160px;
+}
+.tccWrap li img {
+    position: absolute;
+    width: 220px;
+    z-index: 1;
+}
+.tccInfo {
+    margin-left: 240px;
+}
+.tccInfo h4 {
+    background: #f9f9f9;
+    padding:10px;     
+    font-size: 16px;
+    border-top:1px solid #959595;
+    border-bottom:1px solid #959595;
+}
+.tccInfo h4 .date {
+    position: absolute;
+    right: 10px;
+    top:15px;
+    font-size: 12px;
+}
+.tccInfo div {
+    padding:10px 70px 10px 10px;
+}
+.tccWrap li .playBtn {
+    position: absolute;
+    top:48%;
+    right:10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background:#0d74ae url("../../img/willbes/prof/btn_play.png") no-repeat center center; background-size: 50%;
+    font-size: 0;
+    text-indent: -9999;
+}
+.tccWrap li .playBtn:hover {
+    background-color: #2784d2;
+}
+
 /* subContainer : Prof : tabDepthAcad */
 .tabWrap.tabDepthAcad {
     height: 45px;

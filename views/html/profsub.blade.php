@@ -270,14 +270,15 @@
         
         <div class="willbes-Prof-Tabs">
             <div class="ProfDetailWrap">
-                <ul class="tabWrap tabDepthProf tabDepthProf_7">
+                <ul class="tabWrap tabDepthProf tabDepthProf_6">
                     <li><a href="#Proftab1" class="on">교수님 홈</a></li>
                     <li><a href="#Proftab2">개설강좌</a></li>
                     <li><a href="#Proftab3">무료강좌</a></li>
                     <li><a href="#Proftab4">공지사항</a></li>
-                    <li><a href="#Proftab5">학습Q&amp;A</a></li>
+                    <!--li><a href="#Proftab5">학습Q&amp;A</a></li-->
                     <li><a href="#Proftab6">학습자료실</a></li>
-                    <li><a href="#Proftab7">T-pass자료실</a></li>
+                    <!--li><a href="#Proftab6">T-pass자료실 </a></li-->
+                    <li><a href="#Proftab8">교수님 TCC</a></li>
                 </ul>
                 <div class="tabBox">
                     <div id="Proftab1" class="tabLink">
@@ -2042,7 +2043,7 @@
                     </div>
                     <!-- Proftab4// -->
 
-                    <div id="Proftab5" class="tabLink">
+                    <div id="Proftab5" class="tabLink" style="display:none">
                         <div class="willbes-Prof-Subject pl-zero NG tx-dark-black">
                             · 학습Q&A
                             <div class="willbes-Lec-Search GM f_right">
@@ -2694,7 +2695,8 @@
                         <!-- willbes-Leclist -->
                     </div>
                     <!--Proftab6//-->                  
-
+                    
+                    <!--
                     <div id="Proftab7" class="tabLink">
                         <div class="willbes-Prof-Subject pl-zero NG tx-dark-black">
                             · T-pass자료실
@@ -2707,7 +2709,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- List -->
+                        
                         <div class="willbes-Leclist c_both">
                             <div class="willbes-Lec-Selected tx-gray">
                                 <select id="acad" name="acad" title="구분" class="seleAcad" style="width: 220px">
@@ -2845,11 +2847,11 @@
                                 </table>
                             </div>
                         </div>
-                        <!-- willbes-Leclist -->
+                        
 
                         <br/><br/><br/>
 
-                        <!-- View -->
+                        
                         <div class="willbes-Leclist c_both">
                             <div class="LecViewTable">
                                 <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black bdb-gray tx-gray">
@@ -2908,9 +2910,53 @@
                                 </table>
                             </div>
                         </div>
+                        
+                    </div>
+                    -->
+                    <!-- Proftab7// -->
+
+                    <div id="Proftab8" class="tabLink">
+                        <div class="willbes-Prof-Subject pl-zero NG tx-dark-black">
+                            · 교수님 TCC
+                        </div>
+                        <!-- List -->
+                        <div class="willbes-Leclist c_both">
+                            <ul class="tccWrap">
+                                <li>
+                                    <img src="{{ img_url('prof/tccImg.jpg') }}" alt="TCC영상제목">
+                                    <div class="tccInfo">
+                                        <h4><span class="NG">D-47 신광은 교수님의 당부의 말씀</span><span class="date">2018-06-22</span></h4>
+                                        <div>
+                                            경찰 3차 합격,<Br>
+                                            지금부터 하는 공부가 합격의 당락을 좌우합니다!<Br>
+                                            지금도 늦지 않았습니다.<Br>
+                                            <Br>
+                                            앞으로 남은기간 최선을 다하자!<Br>
+                                            앞으로 배운것만 틀리지 않고 다 맞을 수 있게 공부하자!<Br>
+                                        </div>
+                                    </div>   
+                                    <a href="#none" class="playBtn">영상보기</a> 
+                                </li>
+                                <li>
+                                    <img src="{{ img_url('prof/tccImg.jpg') }}" alt="TCC영상제목">
+                                    <div class="tccInfo">
+                                        <h4><span class="NG">D-47 신광은 교수님의 당부의 말씀</span><span class="date">2018-06-22</span></h4>
+                                        <div>
+                                            경찰 3차 합격,
+                                            지금부터 하는 공부가 합격의 당락을 좌우합니다!
+                                            지금도 늦지 않았습니다.
+                                            
+                                            앞으로 남은기간 최선을 다하자!
+                                            앞으로 배운것만 틀리지 않고 다 맞을 수 있게 공부하자!
+                                        </div>
+                                    </div>   
+                                    <a href="#none" class="playBtn">영상보기</a> 
+                                </li>
+                            </ul>
+                        </div>
                         <!-- willbes-Leclist -->
                     </div>
-                    <!-- Proftab7// -->
+                    <!-- Proftab8// -->
 
                 </div>
                 <!-- tabBox// -->

@@ -78,8 +78,8 @@
                         </a>
                     </li>
                     <li class="l3">
-                        <a href="{{ site_url('/promotion/index/cate/3001/code/1016') }}">
-                            <img src="{{ img_url('cop/flipped/flipped03.jpg') }}" alt="2019 대비 프리미엄 심화이론/기출">
+                        <a href="{{ site_url('/promotion/index/cate/3001/code/1015') }}">
+                            <img src="{{ img_url('cop/flipped/190304_cFlipped_280x740.jpg') }}" alt="기본이론">
                         </a>
                     </li>
                 </ul>

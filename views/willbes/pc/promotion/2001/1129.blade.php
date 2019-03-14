@@ -131,17 +131,17 @@
             <div class="PeMenu">
                 <ul>
                     <li> 
-                        <a href="/event/movie/event.html?event_cd=On_171129_p&topMenuType=O#main" target="_blank" onFocus="this.blur();" >
+                        <a href="{{ site_url('/promotion/index/cate/3001/code/1012) }}" target="_blank" onFocus="this.blur();" >
                         <img src="http://file3.willbes.net/new_cop/2019/02/EV190214_c5_tap01.jpg" onmouseover="this.src='http://file3.willbes.net/new_cop/2019/02/EV190214_c5_tap01on.jpg'" onMouseOut="this.src='http://file3.willbes.net/new_cop/2019/02/EV190214_c5_tap01.jpg'" onMouseDown="this.src='http://file3.willbes.net/new_cop/2019/02/EV190214_c5_tap01.jpg'" alt=""  />
                         </a>
                     </li>
                     <li>
-                        <a href="/event/movie/event.html?event_cd=On_basic&topMenuType=O" target="_blank" onFocus="this.blur();" >
+                        <a href="{{ site_url('/promotion/index/cate/3001/code/1015) }}" target="_blank" onFocus="this.blur();" >
                         <img src="http://file3.willbes.net/new_cop/2019/02/EV190214_c5_tap02.jpg" onmouseover="this.src='http://file3.willbes.net/new_cop/2019/02/EV190214_c5_tap02on.jpg'" onMouseOut="this.src='http://file3.willbes.net/new_cop/2019/02/EV190214_c5_tap02.jpg'" onMouseDown="this.src='http://file3.willbes.net/new_cop/2019/02/EV190214_c5_tap02.jpg'" alt=""  />
                         </a>
                     </li>
                     <li> 
-                        <a href="/movie/event.html?event_cd=On_premium&topMenuType=O" target="_blank" onFocus="this.blur();" >
+                        <a href="{{ site_url('/promotion/index/cate/3001/code/1016) }}" target="_blank" onFocus="this.blur();" >
                         <img src="http://file3.willbes.net/new_cop/2019/02/EV190214_c5_tap03.jpg" onmouseover="this.src='http://file3.willbes.net/new_cop/2019/02/EV190214_c5_tap03on.jpg'" onMouseOut="this.src='http://file3.willbes.net/new_cop/2019/02/EV190214_c5_tap03.jpg'" onMouseDown="this.src='http://file3.willbes.net/new_cop/2019/02/EV190214_c5_tap03.jpg'" alt=""  />
                         </a>
                     </li>

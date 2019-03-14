@@ -36,35 +36,20 @@
 
         .skybanner {
             position:fixed;
-            top:200px;
+            bottom:20px;
             right:10px;
             width:130px;
-            animation:upDown 1s infinite;
-            -webkit-animation:upDown 1s infinite;
             z-index:10;
         }
-        .skybanner div {margin-bottom:10px}
 
-        @@keyframes upDown{
-             from{margin-top:0}
-             60%{margin-top:-30px}
-             to{margin-top:0}
-         }
-        @@-webkit-keyframes upDown{
-             from{margin-top:0}
-             60%{margin-top:-30px}
-             to{margin-top:0}
-         }
 
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner">
-            <div>
-                <a href="http://www.willbesgosi.net/event/movie/event.html?event_cd=off_180426_02&topMenuType=F">
-                    <img src="http://file3.willbes.net/new_gosi/2018/11/EV181123_sky.png" alt="7급 초시생 합격전략설명회">
-                </a>
-            </div>
+            <a href="http://www.willbesgosi.net/event/movie/event.html?event_cd=off_180426_02&topMenuType=F">
+                <img src="http://file3.willbes.net/new_gosi/2018/11/EV181123_sky.png" alt="7급 초시생 합격전략설명회">
+            </a>
         </div>
 
         <div class="evtCtnsBox wb_cts01">

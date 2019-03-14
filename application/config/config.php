@@ -50,8 +50,8 @@ $config['app_app_site_prefix'] = 'app';     // 앱 사이트 구분값
 */
 $config['app_name_mapping'] = [
     'www' => 'willbes',
-    'cop' => 'willbes',
-    'gosi' => 'willbes',
+    'police' => 'willbes',
+    'pass' => 'willbes',
     'ssam' => 'willbes',
     'tzone' => 'lms'
 ];
@@ -63,8 +63,8 @@ $config['app_name_mapping'] = [
 */
 $config['app_front_site_except'] = [
     'www' => ['route_add_path' => ''],
-    'cop' => ['route_add_path' => '/site'],
-    'gosi' => ['route_add_path' => '/site'],
+    'police' => ['route_add_path' => '/site'],
+    'pass' => ['route_add_path' => '/site'],
     'ssam' => ['route_add_path' => '/site']
 ];
 

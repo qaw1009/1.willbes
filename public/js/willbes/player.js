@@ -171,10 +171,8 @@ function screenResize()
 
 function fnDefense()
 {
-    return;
-
     var checkStatus;
-    var checkCrome = true;
+    var checkChrome = true;
     var element = new Image();
 
     try {
@@ -182,13 +180,13 @@ function fnDefense()
             checkStatus = 'on';
         });
     } catch (e) {
-        checkCrome = false;
+        checkChrome = false;
     } finally {
 
     }
 
     var interVal = setInterval(function () {
-        if (checkCrome) {
+        if (checkChrome) {
             checkStatus = 'off';
             console.log(element);
             console.clear();
@@ -237,8 +235,6 @@ function fnSetTop(obj)
     alert(player.getTopmost());
 }
 
-/*
-
 document.onmousedown = click;
 document.onkeydown = click;
 
@@ -255,4 +251,3 @@ $(document).keydown(function (event) {
 $(document).on("contextmenu", function (e) {
     e.preventDefault();
 });
-*/

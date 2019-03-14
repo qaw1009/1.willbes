@@ -165,7 +165,7 @@ class Professor extends \app\controllers\FrontController
         $tab_data = $this->{'_tab_' . $arr_input['tab']}($prof_idx, $data['wProfIdx'], $arr_input);
 
         // 게시판 사용 유무에 탭 버튼 개수 설정
-        $temp_UseBoardJson = array($data['IsNoticeBoard'], $data['IsQnaBoard'], $data['IsDataBoard'], $data['IsTpassBoard']);
+        $temp_UseBoardJson = array($data['IsNoticeBoard'], $data['IsQnaBoard'], $data['IsDataBoard'], $data['IsTpassBoard'], $data['IsTccBoard']);
         $tabUseCount = 3;
         foreach ($temp_UseBoardJson as $key => $val) {
             if ($val == 'Y') {
@@ -498,6 +498,26 @@ class Professor extends \app\controllers\FrontController
     private function _tab_tpass($prof_idx, $wprof_idx, $arr_input)
     {
         $frame_path = '/prof/tpass/index';
+        $frame_params = 's_cate_code='.$this->_def_cate_code.'&prof_idx='.$prof_idx.'&subject_idx='.element('subject_idx',$arr_input);
+        $frame_params .= '&view_type=prof';
+
+        $data = [
+            'frame_path' => $frame_path,
+            'frame_params' => $frame_params
+        ];
+        return $data;
+    }
+
+    /**
+     * TCC 동영상 탭
+     * @param $prof_idx
+     * @param $wprof_idx
+     * @param $arr_input
+     * @return array
+     */
+    private function _tab_tcc($prof_idx, $wprof_idx, $arr_input)
+    {
+        $frame_path = '/prof/tcc/index';
         $frame_params = 's_cate_code='.$this->_def_cate_code.'&prof_idx='.$prof_idx.'&subject_idx='.element('subject_idx',$arr_input);
         $frame_params .= '&view_type=prof';
 

@@ -82,7 +82,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="attach_img_1">첨부</label>
+                    <label class="control-label col-md-1-1" for="attach_img_1">썸네일</label>
                     <div class="col-md-10 form-inline">
                         @for($i = 0; $i < $attach_file_cnt; $i++)
                             <div class="title">

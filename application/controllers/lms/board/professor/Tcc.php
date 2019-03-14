@@ -266,7 +266,7 @@ class Tcc extends BaseBoard
             'data' => $data,
             'board_idx' => $board_idx,
             'arr_reg_type' => $this->_reg_type,
-            'attach_file_cnt' => $this->boardModel->_attach_img_cnt
+            'attach_file_cnt' => 1
         ]);
     }
 

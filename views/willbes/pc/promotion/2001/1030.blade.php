@@ -12,8 +12,6 @@
         .evtContent {
             position:relative;
             width:100% !important;
-            min-width:1210px !important;
-            background:#ccc;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
@@ -23,8 +21,8 @@
         /************************************************************/
 
         .skybanner {
-            position:absolute;
-            top:20px;
+            position:fixed;
+            bottom:20px;
             right:10px;
             z-index:1;
         }
@@ -34,7 +32,7 @@
         .skybanner_sectionFixed {position:fixed; top:20px}
 
         .wb_cts01 {background:url(http://file3.willbes.net/new_cop/2019/01/EV190115P_01_bg.jpg) no-repeat center top}
-        .wb_cts01 .wb_popWrap {width:1210px; margin:0 auto; position:relative}
+
 
         .wb_cts01 .giveaway {position:absolute; width:661px; left:50%; margin-left:-330px; animation:only 2s infinite; z-index:11}
         @@keyframes only{
@@ -116,7 +114,7 @@
             <img src="http://file3.willbes.net/new_cop/2019/01/EV190102P_sky.png" alt="" />
             <ul>
                 <li><a href="#online">서비스</a></li>
-                <li><a href="http://www.willbescop.net/movie/event.html?event_cd=Off_171031_p&topMenuType=F#main" target="_blank">아이언짐</a></li>
+                <li><a href="{{ site_url('/pass/promotion/index/cate/3010/code/1128') }}" target="_blank">아이언짐</a></li>
                 <li><a href="#buy">파격할인</a></li>
                 <li><a href="{{ site_url('/professor/show/cate/3001/prof-idx/50575/?subject_idx=1043&subject_name=%EC%B2%B4%EB%A0%A5') }}" target="_blank">질답게시판</a></li>
             </ul>
@@ -474,7 +472,7 @@
         });
     </script>
 
-    <script src="/public/js/willbes/jquery.nav.js"></script>
+
     <script>
         $(function(e) {
             var targetOffset = $("#evtContainer").offset().top;

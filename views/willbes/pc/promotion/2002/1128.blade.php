@@ -56,12 +56,12 @@
         <div class="skybanner">
             <img src="http://file3.willbes.net/new_cop/2017/10/EV171031_p_sky.png" alt="스카이스크래퍼" usemap="#sky2019">
             <map name="sky2019">
-				<area shape="rect" coords="9,9,137,79" onclick="fnMove('1')" onfocus='this.blur()' alt="혜택">
-				<area shape="rect" coords="9,89,137,159" onclick="fnMove('2')" onfocus='this.blur()' alt="관리">
-				<area shape="rect" coords="9,169,137,239" onclick="fnMove('3')" onfocus='this.blur()' alt="트레이닝">
-				<area shape="rect" coords="9,249,137,319" onclick="fnMove('4')" onfocus='this.blur()' alt="한줄톡">
-				<area shape="rect" coords="9,329,137,399" onclick="fnMove('5')" onfocus='this.blur()' alt="현장스케치">
-				<area shape="rect" coords="9,409,137,499" onclick="fnMove('6')" onfocus='this.blur()' alt="수강신청">
+				<area shape="rect" coords="9,9,137,79" href="#iron1" onfocus='this.blur()' alt="혜택">
+				<area shape="rect" coords="9,89,137,159" href="#iron2" onfocus='this.blur()' alt="관리">
+				<area shape="rect" coords="9,169,137,239" href="#iron3" onfocus='this.blur()' alt="트레이닝">
+				<area shape="rect" coords="9,249,137,319" href="#iron4" onfocus='this.blur()' alt="한줄톡">
+				<area shape="rect" coords="9,329,137,399" href="#iron5" onfocus='this.blur()' alt="현장스케치">
+				<area shape="rect" coords="9,409,137,499" href="#iron6" onfocus='this.blur()' alt="수강신청">
 			</map>
         </div>
 

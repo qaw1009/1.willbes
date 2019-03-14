@@ -124,11 +124,6 @@
         $(function(e){
             var targetOffset= $("#evtContainer").offset().top;
             $('html, body').animate({scrollTop: targetOffset}, 1000);
-        })
-
-        $(function fnMove(seq){
-            var offset = $("#iron" + seq).offset();
-            $('html, body').animate({scrollTop : offset.top}, 400);
         });
 
         $(document).ready(function() {

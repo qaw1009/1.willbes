@@ -51,7 +51,7 @@
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner">
             <div>
-                <a href="/event/movie/event.html?event_cd=On_190201_L" target="_blank">
+                <a href="{{ site_url('/promotion/index/code/1082') }}" target="_blank">
                     <img src="http://file3.willbes.net/new_gosi/2018/10/EV181018_c5.png" alt="가입만 해도 6가지 혜택을 모~두! 윌비스 웰컴팩" >
                 </a>
             </div>

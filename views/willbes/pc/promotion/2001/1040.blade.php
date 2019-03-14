@@ -85,7 +85,7 @@
                     </map>
                     <img src="http://file3.willbes.net/new_cop/2019/03/EV190304_c4_2.jpg" usemap="#Map190325_c5" border="0" />
                     <map name="Map190325_c5" >
-                        <area shape="rect" coords="735,995,964,1022" href="http://www.willbescop.net/movie/event.html?event_cd=Off_171031_p&topMenuType=F#main" target="_blank"/>
+                        <area shape="rect" coords="735,995,964,1022" href="{{ site_url('/pass/promotion/index/code/1128') }}" target="_blank"/>
                     </map>
                 </div>
             </div>

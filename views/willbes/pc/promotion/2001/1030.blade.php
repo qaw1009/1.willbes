@@ -114,7 +114,7 @@
             <img src="http://file3.willbes.net/new_cop/2019/01/EV190102P_sky.png" alt="" />
             <ul>
                 <li><a href="#online">서비스</a></li>
-                <li><a href="{{ site_url('/pass/promotion/index/cate/3010/code/1128') }}" target="_blank">아이언짐</a></li>
+                <li><a href="{{ site_url('/pass/promotion/index/code/1128') }}" target="_blank">아이언짐</a></li>
                 <li><a href="#buy">파격할인</a></li>
                 <li><a href="{{ site_url('/professor/show/cate/3001/prof-idx/50575/?subject_idx=1043&subject_name=%EC%B2%B4%EB%A0%A5') }}" target="_blank">질답게시판</a></li>
             </ul>

@@ -2935,7 +2935,7 @@
                                             앞으로 배운것만 틀리지 않고 다 맞을 수 있게 공부하자!<Br>
                                         </div>
                                     </div>   
-                                    <a href="#none" class="playBtn">영상보기</a> 
+                                    <a id="youtube-1" href="https://www.youtube.com/embed/3iEgf4R4oHU?rel=0" class="playBtn">영상보기</a> 
                                 </li>
                                 <li>
                                     <img src="{{ img_url('prof/tccImg.jpg') }}" alt="TCC영상제목">
@@ -2966,4 +2966,72 @@
     </div>
 </div>
 <!-- End Container -->
+
+
+<link rel="stylesheet" type="text/css" href="/public/js/willbes/colorbox/colorbox.css" />
+<script type="text/javascript" src="/public/js/willbes/colorbox/jquery.colorbox.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {      
+        $("#youtube-1").colorbox({iframe:true, innerWidth:800, innerHeight:600});
+        $("#youtube-2").colorbox({iframe:true, innerWidth:800, innerHeight:600});
+        $("#youtube-3").colorbox({iframe:true, innerWidth:800, innerHeight:600});
+        $("#youtube-4").colorbox({iframe:true, innerWidth:800, innerHeight:600});
+        $("#youtube-5").colorbox({iframe:true, innerWidth:800, innerHeight:600});    
+    });
+    function goList(page) {
+        if(typeof(page) == "undefined") page = 1;
+        else page = page;
+        
+        var url = "/teacher/board/board_list.html?topMenuType=O&topMenuGnb=OM_002&topMenu=081&menuID=OM_002_007"
+                +"&BOARD_MNG_SEQ=TCC_000&BOARDTYPE=T4&INCTYPE=list&currentPage="+page 
+                +"&SEARCHKIND="+$("#SEARCHKIND").val()
+                +"&SEARCHTEXT="+$("#SEARCHTEXT").val()
+                +"&searchUserId=wc_001" 
+                +"&searchUserNm=" ;
+        location.href = url ;                    
+    }
+
+    function fn_view(board_seq , parent_board_seq){
+        var url = '/teacher/board/board_view.html?topMenuType=O&topMenuGnb=OM_002&topMenu=081&menuID=OM_002_007'
+            +'&BOARD_MNG_SEQ=TCC_000&BOARDTYPE=T4&INCTYPE=view&currentPage=1'
+            +'&BOARD_SEQ='+board_seq+'&PARENT_BOARD_SEQ='+parent_board_seq
+            +'&SEARCHKIND='
+            +'&SEARCHTEXT='
+            +'&searchUserId=wc_001'
+            +'&searchUserNm=' ;
+        location.href = url;
+    }
+
+    //영상Player
+    function fn_freeMp4Player(url,searchUserId){
+        if(searchUserId == null || searchUserId == '') {
+            searchUserId = 'anonymous';
+        }
+        var w = '960';  //가로 
+        var h = '500'; //세로 
+        var scroll = 'no'; //옵션
+        var name = "StarPlayer";
+        var LeftPosition = (screen.width) ? (screen.width-w)/2 : 0;
+        var TopPosition = (screen.height) ? (screen.height-h)/2 : 0;
+        var settings = 'height='+h+',width='+w+',top='+TopPosition+',left='+LeftPosition+',scrollbars='+scroll+',resizable=no'; 
+        var url = "/movieLectureInfo/freestarPlayer.pop2?searchUserId="+searchUserId+"&FREE_URL="+url;
+        //고화질 플레이어
+        try {
+        if(pop.name){//저화질 플레이어 팝업이 열려 있는 상태
+            //alert('저화질 플레이어 닫기');
+            pop.close();//저화질 플레이어 닫기
+            pop = null;
+        } 
+        }catch (exception) {}
+        //저화질 플레이어
+        try { 
+            if(pop.name){//저화질 플레이어 팝업이 열려 있는 상태
+                mp4pop =  window.open(url,name,settings);
+            } 
+        }catch(e){
+            mp4pop =  window.open(url,name,settings);
+        }
+    }
+</script>
+
 @stop

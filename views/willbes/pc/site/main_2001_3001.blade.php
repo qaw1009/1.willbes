@@ -102,7 +102,7 @@
             </div>
 
             <div class="widthAuto CurriStepBox">
-                <div class="CurriView"><a href="{{ site_url('/promotion/index/cate/3001/code/1127') }}">커리큘럼 자세히보기 &gt;</a></div>
+                <div class="CurriView"><a href="{{ site_url('/promotion/index/cate/3001/code/1126') }}">커리큘럼 자세히보기 &gt;</a></div>
                 <ul class="CurriStep">
                     <li class="active">
                         <div class="curriculumBox">

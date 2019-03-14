@@ -168,9 +168,10 @@ class Format {
      * to the constructor
      * @param NULL $structure
      * @param string $basenode
+     * @param string $itemnode
      * @return mixed
      */
-    public function to_xml($data = NULL, $structure = NULL, $basenode = 'xml')
+    public function to_xml($data = NULL, $structure = NULL, $basenode = 'xml', $itemnode = 'item')
     {
         if ($data === NULL && func_num_args() === 0)
         {
@@ -201,7 +202,7 @@ class Format {
             if (is_numeric($key))
             {
                 // make string key...
-                $key = (singular($basenode) != $basenode) ? singular($basenode) : 'item';
+                $key = (singular($basenode) != $basenode) ? singular($basenode) : $itemnode;
             }
 
             // replace anything not alpha numeric

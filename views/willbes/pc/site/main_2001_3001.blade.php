@@ -69,7 +69,7 @@
                 <ul class="inner">
                     <li class="l1">
                         <a href="{{ site_url('/promotion/index/cate/3001/code/1009') }}">
-                            <img src="{{ img_url('cop/flipped/flipped01.jpg') }}" alt="평생0원PASS">
+                            <img src="{{ img_url('cop/flipped/190304_cFlipped_520x740.jpg') }}" alt="평생0원PASS">
                         </a>
                     </li>
                     <li class="l2">

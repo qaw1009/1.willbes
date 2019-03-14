@@ -5,7 +5,7 @@
     <div id="Container" class="Container main NSK c_both">
         <div class="Section MainVisual mt30 mb50">
             <div class="widthAuto">
-                <a href="https://www.dev.willbes.net/member/join/" target="_blank"><img src="{{ img_url('main/visual/visual_180917.jpg') }}"></a>
+                <a href="{{ app_url('/member/join/', 'www') }}" target="_blank"><img src="{{ img_url('main/visual/visual_180917.jpg') }}"></a>
             </div>
         </div>
         <div class="Section Act1 mb50">

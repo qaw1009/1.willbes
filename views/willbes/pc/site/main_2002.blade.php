@@ -8,7 +8,7 @@
             <div class="widthAuto">
                 <div class="willbes-Bnr">
                     <ul>
-                        <li><a href="{{ site_url('/pass/promotion/index/cate/3010/code/1022') }}"><img src="{{ img_url('cop_acad/visual/visual_secA01.jpg') }}" alt="적중은역시신광은경찰팀"></a></li>
+                        <li><a href="{{ site_url('/promotion/index/cate/3001/code/1022') }}"><img src="{{ img_url('cop_acad/visual/visual_secA01.jpg') }}" alt="적중은역시신광은경찰팀"></a></li>
                     </ul>
                 </div>
             </div>

@@ -46,19 +46,29 @@ class Books extends \app\controllers\BaseController
         $data = $this->bookAModel->listOrder($sdate, $stime, $edate, $etime);
         foreach ($data as $row) {
             $results[] = [
-                'Name' => base64_encode($row['Receiver']),
-                'Tel' => base64_encode($row['ReceiverTel']),
-                'Hp' => base64_encode($row['ReceiverPhone']),
-                'Zipcode' => base64_encode($row['ZipCode']),
-                'Address' => base64_encode($row['Addr1'] . ' ' . $row['Addr2']),
-                'Msg' => base64_encode($row['DeliveryMemo']),
-                'BookName' => base64_encode($row['ReprProdName']),
-                'OrderNum' => base64_encode($row['OrderNo']),
-                'SiteCode' => $sitecode
+                'Name' => $this->_setItem($row['Receiver']),
+                'Tel' => $this->_setItem($row['ReceiverTel']),
+                'Hp' => $this->_setItem($row['ReceiverPhone']),
+                'Zipcode' => $this->_setItem($row['ZipCode']),
+                'Address' => $this->_setItem($row['Addr1'] . ' ' . $row['Addr2']),
+                'Msg' => $this->_setItem($row['DeliveryMemo']),
+                'BookName' => $this->_setItem($row['ReprProdName']),
+                'OrderNum' => $this->_setItem($row['OrderNo']),
+                'SiteCode' => $this->_setItem($sitecode)
             ];
         }
 
         return $this->_response($results);
+    }
+
+    /**
+     * 리턴값 가공
+     * @param $value
+     * @return string
+     */
+    private function _setItem($value)
+    {
+        return '<![CDATA[' . base64_encode($value) . ']]>';
     }
 
     /**
@@ -69,10 +79,13 @@ class Books extends \app\controllers\BaseController
      */
     private function _response($data, $http_code = _HTTP_OK)
     {
+        $output = $this->format->to_xml($data, null, 'NewDataSet', 'bookDelivery');
+        $output = htmlspecialchars_decode(trim(str_replace('<?xml version="1.0" encoding="utf-8"?>', '', $output)), ENT_XML1);
+
         return $this->output
             ->set_content_type($this->_content_type)
             ->set_status_header($http_code)
-            ->set_output($this->format->to_xml($data, null, 'NewDataSet', 'bookDelivery'));
+            ->set_output($output);
     }
 
     /**

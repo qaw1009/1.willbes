@@ -6322,6 +6322,7 @@ ul li.profList .willbes-Layer-ProfileBox {
 .tccWrap li {
     position: relative;
     border-bottom:1px solid #edeeef;
+    padding-bottom:20px;
     margin-bottom:20px;
     min-height: 160px;
 }
@@ -6347,22 +6348,20 @@ ul li.profList .willbes-Layer-ProfileBox {
     font-size: 12px;
 }
 .tccInfo div {
-    padding:10px 70px 10px 10px;
+    padding:10px 70px 0 10px;
 }
 .tccWrap li .playBtn {
     position: absolute;
     top:48%;
     right:10px;
-    width: 40px;
-    height: 40px;
-    border-radius: 20px;
-    background:#0d74ae url("../../img/willbes/prof/btn_play.png") no-repeat center center; background-size: 50%;
+    width: 50px;
+    height: 50px;
+    background:url("../../img/willbes/prof/btn_play.png") no-repeat center center;
+    background-size:60%;
     font-size: 0;
     text-indent: -9999;
 }
-.tccWrap li .playBtn:hover {
-    background-color: #2784d2;
-}
+
 
 /* subContainer : Prof : tabDepthAcad */
 .tabWrap.tabDepthAcad {

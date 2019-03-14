@@ -121,10 +121,10 @@
     <!-- End Container --> 
 
     <script>
-        function fnMove(seq){
+        $(function fnMove(seq){
             var offset = $("#iron" + seq).offset();
             $('html, body').animate({scrollTop : offset.top}, 400);
-        };
+        });
 
         $(document).ready(function() {
             var slidesImg1 = $("#slidesImg1").bxSlider({

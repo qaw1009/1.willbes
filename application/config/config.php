@@ -50,8 +50,8 @@ $config['app_app_site_prefix'] = 'app';     // 앱 사이트 구분값
 */
 $config['app_name_mapping'] = [
     'www' => 'willbes',
-    'police' => 'willbes',
-    'pass' => 'willbes',
+    'cop' => 'willbes',
+    'gosi' => 'willbes',
     'ssam' => 'willbes',
     'tzone' => 'lms'
 ];
@@ -63,8 +63,8 @@ $config['app_name_mapping'] = [
 */
 $config['app_front_site_except'] = [
     'www' => ['route_add_path' => ''],
-    'police' => ['route_add_path' => '/site'],
-    'pass' => ['route_add_path' => '/site'],
+    'cop' => ['route_add_path' => '/site'],
+    'gosi' => ['route_add_path' => '/site'],
     'ssam' => ['route_add_path' => '/site']
 ];
 
@@ -562,7 +562,7 @@ $config['csrf_cookie_name'] = 'csrf_token';
 //$config['csrf_regenerate'] = TRUE;
 $config['csrf_expire'] = 6000;
 $config['csrf_regenerate'] = FALSE;
-$config['csrf_exclude_uris'] = array('Auth/[A-Za-z]+', 'player/StarplayerAPI', 'player/StarplayerEntAPI', 'member/mailAuth', 'member/ipin', 'payment/returns', $config['app_pass_site_prefix'] . '/payment/returns', 'deposit/results');
+$config['csrf_exclude_uris'] = array('Auth/[A-Za-z]+', 'player/StarplayerAPI', 'player/StarplayerEntAPI', 'member/mailAuth', 'member/ipin', 'payment/returns', $config['app_pass_site_prefix'] . '/payment/returns', 'deposit/results', 'lcms/auth/login/login', 'mocktest/regGoods/fakeInsert2');
 
 /*
 |--------------------------------------------------------------------------

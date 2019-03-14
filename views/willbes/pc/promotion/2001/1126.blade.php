@@ -15,27 +15,64 @@
             padding:0 !important;
             background:#fff;
         }	
-        .evtCtnsBox {width:100%; text-align:center; min-width:1210px}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
 
         /************************************************************/
 
-        .wb_top {background:#4290e1 url(http://file3.willbes.net/new_cop/2019/02/EV190214_c1_bg.jpg) no-repeat center top}
-	    .wb_cts01 {background:#dfdfe1 url(http://file3.willbes.net/new_cop/2019/02/EV190214_c2_bg.jpg) center top no-repeat;}
+        .wb_top {background:#fff url(http://file3.willbes.net/new_cop/2019/03/1129_01_bg.jpg) no-repeat center top}
+        .wb_top div {position:absolute; width:200px; left:50%; margin-left:-100px; top:359px; z-index:1;}
+        .wb_top div a {
+            display:block; text-align:center; height:44px; line-height:44px;
+            background:#0c5dc0; color:#fff;
+            font-size:14px; font-weight:bold; 
+            border-bottom:5px solid #054088;
+        }
+        .wb_top div a:hover {font-size:16px}
+	    .wb_cts01 {background:#f7f7f7}
 	    .wb_cts02 {background:#dfdfe1;}	
 
         /* 탭 */
-        .evttab {width:1210px; margin:0 auto}	
-        .evttab li {display:inline; float:left; margin-bottom:20px}	
-        .evttab a img.off {display:block}
-        .evttab a img.on {display:none}
-        .evttab a.active img.off {display:none}
-        .evttab a.active img.on {display:block}
-        .tabContents .mv { display:inline; padding-left:15px;}  
+        .evttab {border-bottom:10px solid #0c5dc0}
+        .evttab ul {width:1120px; margin:0 auto}	
+        .evttab li {display:inline; float:left; margin-right:5px}	
+        .evttab li a {
+            display:block;
+            width:370px;
+            height:263px;
+            font-size:0;
+            text-indent:-9999;
+        }
+        .evttab li:first-child a {
+            background:url(http://file3.willbes.net/new_cop/2019/03/1129_02_tab1.jpg) no-repeat left top;
+        }        
+        .evttab li:nth-child(2) a {
+            background:url(http://file3.willbes.net/new_cop/2019/03/1129_02_tab2.jpg) no-repeat left top;
+        }
+        .evttab li:last-child a {
+            background:url(http://file3.willbes.net/new_cop/2019/03/1129_02_tab3.jpg) no-repeat left top;
+        }
+        .evttab li:last-child {            
+            margin:0
+        }
+        .evttab li a:hover,
+        .evttab li a.active {
+            background-position:right top;
+        } 
         .evttab ul:after {
             content:'';
             display:block;
             clear:both;
         }     
+        .tabCts {
+            position: relative;
+            width:1120px; margin:0 auto; 
+        }
+        .tabCts div {
+            display:block; width:80px; top:3076px; z-index:1;
+        }
+        .tabCts div a {
+            display:block; height:24px; line-height:24px; background:#0c5dc0; color:#fff; text-align:center;
+        }
         
         .wb_cts03 {background:#FFF;}
         .menuWarp {position:relative; width:1210px; height:490px; margin:0 auto; }
@@ -50,110 +87,44 @@
 <div class="evtContent" id="evtContainer">     
 
     <div class="evtCtnsBox wb_top" >
-        <img src="http://file3.willbes.net/new_cop/2019/02/EV190214_c1.jpg" alt=" 윌비스 신광은경찰팀 신의 법칙을 믿어라! " />
+        <img src="http://file3.willbes.net/new_cop/2019/03/1129_01.jpg" alt=" 윌비스 신광은경찰팀 신의 법칙을 믿어라! " />
+        <div>
+            <a href="{{ site_url('/promotion/index/cate/3010/code/1129') }}" class="NG">신의법칙 자세히보기 &gt;</a>
+        </div>
     </div>     
 
     <div class="evtCtnsBox wb_cts01">
-        <img src="http://file3.willbes.net/new_cop/2019/02/EV190214_c2.jpg" alt="여러분을 합격의 지름길로 안내할 3가지의 신의법칙 " /><br/>
-        <img src="http://file3.willbes.net/new_cop/2019/02/EV190214_c3.jpg" alt=" 경찰수험가 10년간 변함없는 신뢰의 아이콘, 신광은경찰팀" />
-    </div>
-    
-      
-    <div class="evtCtnsBox wb_cts02">
+        <img src="http://file3.willbes.net/new_cop/2019/03/1129_02.jpg" alt="여러분을 합격의 지름길로 안내할 3가지의 신의법칙 " />
         <div class="evttab">
-            <ul class="cf">
-                <li> 
-                    <a class="active" href="#tab1">
-                    <img src="http://file3.willbes.net/new_cop/2019/02/EV190214_c4_tap01.jpg"  class="off" alt=""/>
-                    <img src="http://file3.willbes.net/new_cop/2019/02/EV190214_c4_tap01on.jpg" class="on"  />
-                    </a>
-                </li>
-                <li> 
-                    <a  href="#tab2">
-                    <img src="http://file3.willbes.net/new_cop/2019/02/EV190214_c4_tap02.jpg"  class="off" alt=""/>
-                    <img src="http://file3.willbes.net/new_cop/2019/02/EV190214_c4_tap02on.jpg" class="on"  />
-                    </a>
-                </li>
-                <li> 
-                    <a  href="#tab3">
-                    <img src="http://file3.willbes.net/new_cop/2019/02/EV190214_c4_tap03.jpg"  class="off" alt=""/>
-                    <img src="http://file3.willbes.net/new_cop/2019/02/EV190214_c4_tap03on.jpg" class="on"  />
-                    </a>
-                </li>
-                <li> 
-                    <a  href="#tab4">
-                    <img src="http://file3.willbes.net/new_cop/2019/02/EV190214_c4_tap04.jpg"  class="off" alt=""/>
-                    <img src="http://file3.willbes.net/new_cop/2019/02/EV190214_c4_tap04on.jpg" class="on"  />
-                    </a>
-                </li>
+            <ul>
+                <li><a href="#tab01" class="active">기본과정</a></li>
+                <li><a href="#tab02">심화과정</a></li>
+                <li><a href="#tab03">3개월 필합 풀패키지</a></li>
             </ul>
-            
-            <div class="tabContents" id="tab1" >
-                <p><img src="http://file3.willbes.net/new_cop/2019/02/EV190214_c4_1.jpg"  alt=""/></p>  
-                <!--동영상-->
-                <p style="padding-bottom:150px;"><iframe width="876px" height="480px" src="https://www.youtube.com/embed/re8w_IFAPS4?rel=0" frameborder="0" allowfullscreen></iframe></p>
-                <!--//동영상-->
-            </div>
-
-            <div class=" tabContents" id="tab2">
-                <p><img src="http://file3.willbes.net/new_cop/2019/02/EV190214_c4_2.jpg"  alt=""/></p>                    
-            </div>
-
-            <div class=" tabContents" id="tab3">
-                <p><img src="http://file3.willbes.net/new_cop/2019/02/EV190214_c4_3.jpg"  alt=""/></p>  
-                <!--동영상-->
-                <p class="mv"><iframe width="380px" height="217px" src="https://www.youtube.com/embed/NxsREWiD_ME?rel=0" frameborder="0" allowfullscreen></iframe></p>
-                <p class="mv"><iframe width="380px" height="217px" src="https://www.youtube.com/embed/lrZxQV21DE8?rel=0" frameborder="0" allowfullscreen></iframe></p>
-                <p class="mv"><iframe width="380px" height="217px" src="https://www.youtube.com/embed/rkdSC-bAWws?rel=0" frameborder="0" allowfullscreen></iframe></p>
-                <!--//동영상-->
-                <p>
-                    <img src="http://file3.willbes.net/new_cop/2019/02/EV190214_c4_4.jpg"  alt="" usemap="#Map190214_c1" border="0"/>
-                    <map name="Map190214_c1" >
-                        <area shape="rect" coords="452,40,912,129" href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank" />
-                    </map>
-                </p>  
-            </div>
-
-            <div class=" tabContents" id="tab4">
-                <img src="http://file3.willbes.net/new_cop/2019/02/EV190214_c4_5.jpg"  alt="" usemap="#Map190214_c2" border="0"/>
-                <map name="Map190214_c2" >
-                    <area shape="rect" coords="235,483,484,580" href="/movie/event.html?event_cd=Off_superpass&topMenuType=F"  target="_blank"  alt="슈퍼패스"/>
-                    <area shape="rect" coords="740,486,978,573" href="/counsel/counsel_step1.html?BOARDTYPE=counselReserve&INCTYPE=counsel_step1&BOARD_MNG_SEQ=CR_000&topMenuType=F&topMenuGnb=FM_006&topMenu=081&topMenuName=AI¹Y°æAu&menuID=FM_006_002" target="_blank"  alt="1:1 심층상담" />
-                </map>                    
-            </div>                
-        </div><!--evttab//-->    
-    </div><!--wb_cts02//-->     
-      
-      
-    <div class="evtCtnsBox wb_cts03" >
-        <p><img src="http://file3.willbes.net/new_cop/2019/02/EV190214_c5.jpg" alt=""  /></p>
-        <div class="menuWarp">
-            <div class="PeMenu">
-                <ul>
-                    <li> 
-                        <a href="{{ site_url('/promotion/index/cate/3001/code/1012') }}" target="_blank" >
-                        <img src="http://file3.willbes.net/new_cop/2019/02/EV190214_c5_tap01.jpg" onmouseover="this.src='http://file3.willbes.net/new_cop/2019/02/EV190214_c5_tap01on.jpg'" onMouseOut="this.src='http://file3.willbes.net/new_cop/2019/02/EV190214_c5_tap01.jpg'" onMouseDown="this.src='http://file3.willbes.net/new_cop/2019/02/EV190214_c5_tap01.jpg'" alt=""  />
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ site_url('/promotion/index/cate/3001/code/1015') }}" target="_blank" >
-                        <img src="http://file3.willbes.net/new_cop/2019/02/EV190214_c5_tap02.jpg" onmouseover="this.src='http://file3.willbes.net/new_cop/2019/02/EV190214_c5_tap02on.jpg'" onMouseOut="this.src='http://file3.willbes.net/new_cop/2019/02/EV190214_c5_tap02.jpg'" onMouseDown="this.src='http://file3.willbes.net/new_cop/2019/02/EV190214_c5_tap02.jpg'" alt=""  />
-                        </a>
-                    </li>
-                    <li> 
-                        <a href="{{ site_url('/promotion/index/cate/3001/code/1016') }}" target="_blank" >
-                        <img src="http://file3.willbes.net/new_cop/2019/02/EV190214_c5_tap03.jpg" onmouseover="this.src='http://file3.willbes.net/new_cop/2019/02/EV190214_c5_tap03on.jpg'" onMouseOut="this.src='http://file3.willbes.net/new_cop/2019/02/EV190214_c5_tap03.jpg'" onMouseDown="this.src='http://file3.willbes.net/new_cop/2019/02/EV190214_c5_tap03.jpg'" alt=""  />
-                        </a>
-                    </li>
-                    <li> 
-                        <a href="javascript:alert('곧 공개됩니다.');">
-                        <img src="http://file3.willbes.net/new_cop/2019/02/EV190214_c5_tap04.jpg" onmouseover="this.src='http://file3.willbes.net/new_cop/2019/02/EV190214_c5_tap04on.jpg'" onMouseOut="this.src='http://file3.willbes.net/new_cop/2019/02/EV190214_c5_tap04.jpg'" onMouseDown="this.src='http://file3.willbes.net/new_cop/2019/02/EV190214_c5_tap04.jpg'" alt=""  />
-                        </a>
-                    </li>
-                </ul>
-            </div>
         </div>
-    </div><!--wb_cts03//-->
+        <div id="tab01" class="tabCts">
+            <img src="http://file3.willbes.net/new_cop/2019/03/1129_02_t01.jpg" alt="기본과정" usemap="#Map1126A" border="0">
+            <map name="Map1126A" id="Map1126A">
+                <area shape="rect" coords="354,585,438,614" href="{{ site_url('/pass/promotion/index/cate/3010/code/1124') }}" />
+                <area shape="rect" coords="235,2450,318,2476" href="{{ site_url('/pass/promotion/index/cate/3010/code/1131') }}" />
+                <area shape="rect" coords="803,2450,884,2476" href="{{ site_url('/pass/promotion/index/cate/3010/code/1128') }}" />
+            </map>
+        </div>
+        <div id="tab02" class="tabCts">
+            <img src="http://file3.willbes.net/new_cop/2019/03/1129_02_t02.jpg" alt="심화과정" usemap="#Map1126B" border="0">
+            <map name="Map1126B" id="Map1126B">
+                <area shape="rect" coords="235,2208,318,2240" href="{{ site_url('/pass/promotion/index/cate/3010/code/1131') }}" />
+                <area shape="rect" coords="803,2208,884,2240" href="{{ site_url('/pass/promotion/index/cate/3010/code/1128') }}" />
+            </map>
+        </div>
+        <div id="tab03" class="tabCts">
+            <img src="http://file3.willbes.net/new_cop/2019/03/1129_02_t03.jpg" alt="필합 풀패키지" usemap="#Map1126C" border="0">
+            <map name="Map1126C" id="Map1126C">
+                <area shape="rect" coords="235,3072,318,3104" href="{{ site_url('/pass/promotion/index/cate/3010/code/1131') }}" />
+                <area shape="rect" coords="803,3072,884,3104" href="{{ site_url('/pass/promotion/index/cate/3010/code/1128') }}" />
+            </map>
+        </div>
+    </div>
 
 </div>
 <!-- End Container -->
@@ -161,17 +132,14 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
-        $(".tabContents").hide(); 
-        $(".tabContents:first").show();
-        
-        $(".evttab ul li a").click(function(){ 
-            
+        $(".tabCts").hide(); 
+        $(".tabCts:first").show();        
+        $(".evttab ul li a").click(function(){             
             var activeTab = $(this).attr("href"); 
             $(".evttab ul li a").removeClass("active"); 
             $(this).addClass("active"); 
-            $(".tabContents").hide(); 
-            $(activeTab).fadeIn(); 
-            
+            $(".tabCts").hide(); 
+            $(activeTab).fadeIn();             
             return false; 
         });
     });

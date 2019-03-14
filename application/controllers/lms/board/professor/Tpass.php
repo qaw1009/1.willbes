@@ -184,10 +184,10 @@ class Tpass extends BaseBoard
         }
 
         $list = [];
-        $count = $this->packageAdminModel->listLectureForProf(true, $prof_idx, $arr_condition);
+        $count = $this->packageAdminModel->listLectureForProfByTpass(true, $prof_idx, $arr_condition);
 
         if ($count > 0) {
-            $list = $this->packageAdminModel->listLectureForProf(false, $prof_idx, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.ProdCode' => 'desc']);
+            $list = $this->packageAdminModel->listLectureForProfByTpass(false, $prof_idx, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.ProdCode' => 'desc']);
         }
 
         return $this->response([
@@ -226,7 +226,7 @@ class Tpass extends BaseBoard
                 'A.ProdCode' => $prod_code
             ]
         ];
-        $product_data = $this->packageAdminModel->listLectureForProf(false, $prof_idx, $arr_condition, 1, 0, ['A.ProdCode' => 'desc'])[0];
+        $product_data = $this->packageAdminModel->listLectureForProfByTpass(false, $prof_idx, $arr_condition, 1, 0, ['A.ProdCode' => 'desc'])[0];
 
         //자료유형
         $arr_type_group_ccd = $this->_getCcdArray($this->_groupCcd['type_group_ccd']);
@@ -341,7 +341,7 @@ class Tpass extends BaseBoard
                 'A.ProdCode' => $prod_code
             ]
         ];
-        $product_data = $this->packageAdminModel->listLectureForProf(false, $prof_idx, $arr_condition, 1, 0, ['A.ProdCode' => 'desc'])[0];
+        $product_data = $this->packageAdminModel->listLectureForProfByTpass(false, $prof_idx, $arr_condition, 1, 0, ['A.ProdCode' => 'desc'])[0];
 
         $this->load->view("board/professor/{$this->board_name}/create_member_authority", [
             'boardName' => $this->board_name,
@@ -475,7 +475,7 @@ class Tpass extends BaseBoard
                 'A.ProdCode' => $prod_code
             ]
         ];
-        $product_data = $this->packageAdminModel->listLectureForProf(false, $prof_idx, $arr_condition, 1, 0, ['A.ProdCode' => 'desc'])[0];
+        $product_data = $this->packageAdminModel->listLectureForProfByTpass(false, $prof_idx, $arr_condition, 1, 0, ['A.ProdCode' => 'desc'])[0];
 
         $method = 'POST';
         $data = null;
@@ -614,7 +614,7 @@ class Tpass extends BaseBoard
                 'A.ProdCode' => $prod_code
             ]
         ];
-        $product_data = $this->packageAdminModel->listLectureForProf(false, $prof_idx, $arr_condition, 1, 0, ['A.ProdCode' => 'desc'])[0];
+        $product_data = $this->packageAdminModel->listLectureForProfByTpass(false, $prof_idx, $arr_condition, 1, 0, ['A.ProdCode' => 'desc'])[0];
 
         $column = '
             LB.BoardIdx, LB.RegType, LB.SiteCode, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.ExamProblemYear,

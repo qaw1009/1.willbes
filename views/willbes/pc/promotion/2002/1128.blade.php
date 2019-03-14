@@ -120,63 +120,65 @@
     </div>
     <!-- End Container --> 
 
-<script language="javascript">
-    $(document).ready(function() {
-        var slidesImg1 = $("#slidesImg1").bxSlider({
-        mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
-        auto:true,
-        speed:350,
-        pause:4000,
-        pager:true,
-        controls:false,
-        minSlides:1,
-        maxSlides:1,
-        slideWidth:2000,
-        slideMargin:0,
-        autoHover: true,
-        moveSlides:1,
-        pager:false,
-        });
-            
-        $("#imgBannerLeft1").click(function (){
-            slidesImg1.goToPrevSlide();
-        });
-        
-        $("#imgBannerRight1").click(function (){
-            slidesImg1.goToNextSlide();
-        });
-    });
-
-    $(document).ready(function() {
-        var slidesImg2 = $("#slidesImg2").bxSlider({
-        mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
-        auto:true,
-        speed:350,
-        pause:4000,
-        pager:true,
-        controls:false,
-        minSlides:1,
-        maxSlides:1,
-        slideWidth:2000,
-        slideMargin:0,
-        autoHover: true,
-        moveSlides:1,
-        pager:false,
-        });
-    
-        $("#imgBannerLeft2").click(function (){
-            slidesImg2.goToPrevSlide();
-        });
-    
-        $("#imgBannerRight2").click(function (){
-            slidesImg2.goToNextSlide();
-        });
-    });
-
+    <script>
         function fnMove(seq){
-			var offset = $("#iron" + seq).offset();
-			$('html, body').animate({scrollTop : offset.top}, 400);
-		}
+            var offset = $("#iron" + seq).offset();
+            $('html, body').animate({scrollTop : offset.top}, 400);
+        };
+
+        $(document).ready(function() {
+            var slidesImg1 = $("#slidesImg1").bxSlider({
+            mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
+            auto:true,
+            speed:350,
+            pause:4000,
+            pager:true,
+            controls:false,
+            minSlides:1,
+            maxSlides:1,
+            slideWidth:2000,
+            slideMargin:0,
+            autoHover: true,
+            moveSlides:1,
+            pager:false,
+            });
+                
+            $("#imgBannerLeft1").click(function (){
+                slidesImg1.goToPrevSlide();
+            });
+            
+            $("#imgBannerRight1").click(function (){
+                slidesImg1.goToNextSlide();
+            });
+        });
+
+        $(document).ready(function() {
+            var slidesImg2 = $("#slidesImg2").bxSlider({
+            mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
+            auto:true,
+            speed:350,
+            pause:4000,
+            pager:true,
+            controls:false,
+            minSlides:1,
+            maxSlides:1,
+            slideWidth:2000,
+            slideMargin:0,
+            autoHover: true,
+            moveSlides:1,
+            pager:false,
+            });
+        
+            $("#imgBannerLeft2").click(function (){
+                slidesImg2.goToPrevSlide();
+            });
+        
+            $("#imgBannerRight2").click(function (){
+                slidesImg2.goToNextSlide();
+            });
+        });
+
+        
     </script>
 
 @stop

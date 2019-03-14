@@ -94,7 +94,7 @@
         <div class="Section Section2 pb110">
             <div class="widthAuto curriculumTit">
                 <img src="{{ img_url('cop/visual/visual_tit02.jpg') }}" alt="신의법칙 퍼펙트 커리큘럼">
-                <a href="#none">신의법칙 자세히 보기 &gt;</a>
+                <a href="{{ site_url('/promotion/index/cate/3001/code/1129') }}">신의법칙 자세히 보기 &gt;</a>
             </div>
 
             <div class="widthAuto CurriStepBox">

@@ -14,7 +14,7 @@
         @include('willbes.pc.site.professor.lnb_menu_partial')
     </div>
     <div class="Content p_re ml20">        
-        <div class="willbes-NoticeWrap mb60 c_both">
+        <div class="willbes-NoticeWrap mb40 c_both">
             {!! banner('교수진인덱스_신규강좌배너', 'sliderPromotion widthAuto460 f_left mr20', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
             <div class="willbes-listTable willbes-newLec widthAuto460 mt0">
                 <div class="will-Tit NG">신규강좌 <img style="vertical-align: top;" src="{{ img_url('prof/icon_new.gif') }}"></div>

@@ -188,19 +188,19 @@
                         </ul>
                     </li>
                     <li>
-                        <img src="{{ img_url('cop/prof/prof_otj.jpg') }}" alt="오태진">
-                        <ul class="ProfBtns">
-                            <li><a href="#none" onclick="fnPlayerProf('50131', 'OT');">▶</a></li>
-                            <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50131/?subject_idx=1002&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC') }}" target="_blank">교수소개</a></li>
-                        </ul>
-                    </li>
-                    <li>
                         <img src="{{ img_url('cop/prof/prof_wyc.jpg') }}" alt="원유철">
                         <ul class="ProfBtns">
                             <li><a href="#none" onclick="fnPlayerProf('50641', 'OT');">▶</a></li>
                             <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50641/?subject_idx=1002&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC') }}" target="_blank">교수소개</a></li>
                         </ul>
                     </li>
+                    <li>
+                        <img src="{{ img_url('cop/prof/prof_otj.jpg') }}" alt="오태진">
+                        <ul class="ProfBtns">
+                            <li><a href="#none" onclick="fnPlayerProf('50131', 'OT');">▶</a></li>
+                            <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50131/?subject_idx=1002&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC') }}" target="_blank">교수소개</a></li>
+                        </ul>
+                    </li>                    
                     <li>
                         <img src="{{ img_url('cop/prof/prof_khj.jpg') }}" alt="김현정">
                         <ul class="ProfBtns">

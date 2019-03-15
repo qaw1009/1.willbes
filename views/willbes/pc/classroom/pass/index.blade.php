@@ -562,7 +562,7 @@
                                     </tr>
                                     </thead>
                                 </table>
-                                <form name="bookOrderForm" id="bookOrderForm" method="POST" action="//{{$passinfo['SiteUrl']}}/cart/store">
+                                <form name="bookOrderForm" id="bookOrderForm" method="POST" action="//{{app_to_env_url($passinfo['SiteUrl'])}}/cart/store">
                                     {!! csrf_field() !!}
                                     {!! method_field('POST') !!}
                                     <input type="hidden" name="learn_pattern" value="on_lecture" />
@@ -586,14 +586,14 @@
                                             <div>상품주문금액</div>
                                             <div class="price tx-light-blue" id="book-price">0원</div>
                                         </dt>
-                                        <dt class="price-img">
+                                        <!-- <dt class="price-img">
                                             <span class="row-line">|</span>
                                             <img src="/public/img/willbes/sub/icon_plus.gif">
                                         </dt>
                                         <dt>
                                             <div>배송료</div>
                                             <span class="price tx-light-blue" id="trans-price">0원</span>
-                                        </dt>
+                                        </dt> -->
                                     </dl>
                                 </li>
                                 <li class="price-total">
@@ -692,6 +692,7 @@
                     alert(ret.ret_msg);
                 }, false, 'GET', 'html');
         }
+
 
         function fnMoreBook()
         {

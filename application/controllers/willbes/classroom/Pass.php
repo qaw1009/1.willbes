@@ -107,7 +107,7 @@ class Pass extends \app\controllers\FrontController
         // 학습형태 : 기간제패키지
         $passlist = $this->classroomFModel->getPackage($cond_arr, $orderby);
 
-        // 선택된 패키지번호가 없다면 그냥 첫번째것으로
+        // 선택된 패키지번호가 없다면 그냥 첫번째것으로OrderDate', 'DESC
         if(empty($passidx) == true && empty($passlist) == false){
             $passidx = $passlist[0]['ProdCode'];
         }
@@ -117,7 +117,7 @@ class Pass extends \app\controllers\FrontController
             'IN' => [
                 'ProdCode' => [$passidx]
             ]
-        ]), $orderby);
+        ]), ['OrderDate', 'DESC']);
 
         // 해당패키지의 서브강좌
         if(empty($passinfo) == false ){

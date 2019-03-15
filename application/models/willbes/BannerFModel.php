@@ -18,9 +18,10 @@ class BannerFModel extends WB_Model
      * @param string|array $disp_name [노출섹션명]
      * @param int $site_code [사이트코드]
      * @param int $cate_code [대분류 카테고리 코드, `0`이면 전체카테고리]
-     * @return array
+     * @param string $campus_code
+     * @return array|int
      */
-    public function findBanners($disp_name, $site_code, $cate_code = 0)
+    public function findBanners($disp_name, $site_code, $cate_code = 0, $campus_code = '')
     {
         if (empty($disp_name) === true || empty($site_code) === true) {
             return [];
@@ -34,6 +35,7 @@ class BannerFModel extends WB_Model
                 'BD.CateCode' => $cate_code,
                 'BD.IsUse' => 'Y',
                 'BD.IsStatus' => 'Y',
+                'B.CampusCcd' => $campus_code,
                 'B.IsUse' => 'Y',
                 'B.IsStatus' => 'Y'
             ],

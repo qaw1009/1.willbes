@@ -26,7 +26,7 @@ class Campus extends \app\controllers\FrontController
 
         $is_tab_select = isset($arr_input['tab']);
         $arr_input['tab'] = element('tab', $arr_input, 'notice');
-        $arr_base['arr_main_banner'] = $this->_banner();
+        $arr_base['arr_main_banner'] = $this->_banner('0', $campus_code);
         $tab_data = $this->{'_tab_' . $arr_input['tab']}($campus_code);
 
         $this->load->view('site/campus/show', [
@@ -38,10 +38,10 @@ class Campus extends \app\controllers\FrontController
         ]);
     }
 
-    private function _banner($cate_code = 0)
+    private function _banner($cate_code, $campus_code)
     {
         $arr_banner_disp = ['캠퍼스_메인', '캠퍼스_서브1', '캠퍼스_서브2'];
-        $result = $this->bannerFModel->findBanners($arr_banner_disp, $this->_site_code, $cate_code);
+        $result = $this->bannerFModel->findBanners($arr_banner_disp, $this->_site_code, $cate_code, $campus_code);
 
         $data = [];
         foreach ($result as $key => $row) {

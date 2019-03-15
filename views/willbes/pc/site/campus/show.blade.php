@@ -32,7 +32,7 @@
                 <ul>
                     <li>
                         <div class="bSlider acad blue">
-                            <div class="sliderTM">
+                            <div class="slider">
                                 @if(empty($arr_base['arr_main_banner']['캠퍼스_서브1']) === false)
                                     @php $link_url = '#none'; @endphp
                                     @foreach($arr_base['arr_main_banner']['캠퍼스_서브1'] as $row)

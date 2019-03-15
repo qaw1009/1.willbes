@@ -271,7 +271,10 @@
                                         <div class="w-tit w-acad-tit">{{ $row['ProdName'] }}</div>
                                         <dl class="w-info acad">
                                             <dt>
-                                                <a href="#none"><strong>강좌상세정보</strong></a>
+                                                <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', '', '{{ front_url('/offLecture') }}')">
+                                                    <strong class="open-info-modal">강좌상세정보</strong>
+                                                </a>
+                                                <!--a href="#none"><strong>강좌상세정보</strong></a//-->
                                             </dt>
                                             <dt><span class="row-line">|</span></dt>
                                             <dt>수강형태 : <span class="tx-blue">{{ $row['StudyPatternCcdName'] }}</span></dt>
@@ -307,7 +310,7 @@
                             </tbody>
                         </table>
                         <!-- lecTable -->
-                        <table cellspacing="0" cellpadding="0" class="lecInfoTable acadlecInfoTable">
+                        <!--table cellspacing="0" cellpadding="0" class="lecInfoTable acadlecInfoTable">
                             <tbody>
                             <tr>
                                 <td>
@@ -320,7 +323,7 @@
                                 </td>
                             </tr>
                             </tbody>
-                        </table>
+                        </table//-->
                         <!-- lecInfoTable -->
                     </div>
                     <!-- willbes-Lec-Table -->
@@ -340,6 +343,8 @@
                 </ul>
             </div>
             <!-- willbes-Lec-buyBtn -->
+
+            <div id="InfoForm" class="willbes-Layer-Box d3"></div>
         </form>
 
         {{-- footer script --}}

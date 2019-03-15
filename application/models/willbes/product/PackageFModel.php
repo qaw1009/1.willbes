@@ -33,7 +33,11 @@ class PackageFModel extends ProductFModel
         //학원종합반 일경우.
         if($learn_pattern === 'off_pack_lecture') {
             $_join_table = $this->_table['off_lecture'];        //단과반 뷰
-            $column = $column.',fn_product_content(C.ProdCode, "633002") as Content ';
+            $column = $column.',fn_product_content(C.ProdCode, "633002") as Content
+                                , fn_product_content(C.ProdCode, "633005") as Content5
+                                , fn_product_content(C.ProdCode, "633006") as Content6
+                                , fn_product_content(C.ProdCode, "633007") as Content7
+             ';
         } else {
             $_join_table = $this->_table['on_lecture'];        //단강좌 뷰
         }

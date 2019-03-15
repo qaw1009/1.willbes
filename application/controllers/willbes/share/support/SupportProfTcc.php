@@ -12,7 +12,7 @@ class SupportProfTcc extends  BaseSupport
 
     protected $_bm_idx;
     protected $_default_path;
-    protected $_paging_limit = 10;
+    protected $_paging_limit = 5;
     protected $_paging_count = 10;
 
     public function __construct()
@@ -30,11 +30,10 @@ class SupportProfTcc extends  BaseSupport
         $s_cate_code = element('s_cate_code',$arr_input);
         $s_campus = element('s_campus',$arr_input);
         $s_keyword = element('s_keyword',$arr_input);
-        $s_tpass_lecture = element('s_tpass_lecture',$arr_input);
         $prof_idx = element('prof_idx',$arr_input);
         $subject_idx = element('subject_idx',$arr_input);
         $view_type = element('view_type',$arr_input);
-        $get_page_params = 's_cate_code='.$s_cate_code.'&s_tpass_lecture='.$s_tpass_lecture.'&s_campus='.$s_campus.'&s_keyword='.$s_keyword;
+        $get_page_params = 's_cate_code='.$s_cate_code.'&s_campus='.$s_campus.'&s_keyword='.$s_keyword;
         $get_page_params .= '&prof_idx='.$prof_idx.'&subject_idx='.$subject_idx;
         $get_page_params .= '&view_type='.$view_type;
 
@@ -64,7 +63,7 @@ class SupportProfTcc extends  BaseSupport
         $order_by = ['b.IsBest'=>'Desc','b.BoardIdx'=>'Desc'];
         $paging_count = $this->_paging_count;
         $total_rows = $this->supportBoardFModel->listBoardForProf(true, $this->_site_code, $prof_idx, $arr_condition);
-        $paging = $this->pagination($this->_default_path.'/notice/index/?'.$get_page_params,$total_rows,$this->_paging_limit,$paging_count,true);
+        $paging = $this->pagination($this->_default_path.'/tcc/index/?'.$get_page_params,$total_rows,$this->_paging_limit,$paging_count,true);
 
         if ($total_rows > 0) {
             $list = $this->supportBoardFModel->listBoardForProf(false, $this->_site_code, $prof_idx, $arr_condition, $column, $paging['limit'], $paging['offset'], $order_by);

@@ -55,7 +55,7 @@
 
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner" >
-            <a href="http://www.willbesgosi.net/teacher/board/board_list.html?topMenuType=O&topMenuGnb=OM_002&topMenu=001&menuID=OM_002_006_007&BOARD_MNG_SEQ=TCC_000&BOARDTYPE=T4&INCTYPE=list&currentPage=1&SEARCHKIND=&SEARCHTEXT=&searchUserId=wgt178&searchUserNm=&searchSubjectNm=e%CE%BC%C2%ADi%EF%BC%9F%C2%B4&searchSubjectCode="  target="_blank" alt="기미진">
+            <a href="{{ site_url('/pass/professor/show/prof-idx/50242/?cate_code=3043&subject_idx=1253&subject_name=국어&tab=tcc') }}" target="_blank" alt="기미진">
                 <img src="http://file3.willbes.net/new_gosi/2019/02/EV190212_sky.png" />
             </a>
         </div>

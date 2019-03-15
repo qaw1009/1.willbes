@@ -206,7 +206,7 @@
 
                             <td class="w-notice p_re">
                                 @if(empty($sub_row['LectureSampleData']) === false)
-                                <div class="w-sp one"><a href="#none" onclick="openWin('lec_sample_{{ $sub_row['ProdCode'] }}')">맛보기{{count($sub_row['LectureSampleData'])}}</a></div>
+                                <div class="w-sp one"><a href="#none" onclick="openWin('lec_sample_{{ $sub_row['ProdCode'] }}')">맛보기</a></div>
                                 <div id="lec_sample_{{ $sub_row['ProdCode'] }}" class="viewBox">
                                     <a class="closeBtn" href="#none" onclick="closeWin('lec_sample_{{ $sub_row['ProdCode'] }}')"><img src="{{ img_url('cart/close.png') }}"></a>
                                     @foreach($sub_row['LectureSampleData'] as $sample_idx => $sample_row)

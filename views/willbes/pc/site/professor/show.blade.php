@@ -94,7 +94,7 @@
                                     <dt class="w-notice p_re">
                                         @if(empty($row['LectureSampleData']) === false)
                                             <ul class="w-sp">
-                                                <li><a href="#none" onclick="openWin('lec_sample_{{ $row['ProdCode'] }}')">맛보기{{ empty($row['LectureSampleData']) ? '' : count($row['LectureSampleData']) }}</a></li>
+                                                <li><a href="#none" onclick="openWin('lec_sample_{{ $row['ProdCode'] }}')">맛보기</a></li>
                                             </ul>
                                             <div id="lec_sample_{{ $row['ProdCode'] }}" class="viewBox" style="top: 0; left: 63px;">
                                                 <a class="closeBtn" href="#none" onclick="closeWin('lec_sample_{{ $row['ProdCode'] }}')"><img src="{{ img_url('cart/close.png') }}"></a>

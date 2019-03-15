@@ -237,9 +237,10 @@
                                                 </dl>
                                             </td>
 
+
                                             <td class="w-notice p_re">
                                                 @if(empty($sub_row['LectureSampleData']) === false)
-                                                    <div class="w-sp one"><a href="#none" onclick="openWin('lec_sample_{{ $sub_row['ProdCode'] }}')">맛보기{{count($sub_row['LectureSampleData'])}}</a></div>
+                                                    <div class="w-sp one"><a href="#none" onclick="openWin('lec_sample_{{ $sub_row['ProdCode'] }}')">맛보기</a></div>
                                                     <div id="lec_sample_{{ $sub_row['ProdCode'] }}" class="viewBox">
                                                         <a class="closeBtn" href="#none" onclick="closeWin('lec_sample_{{ $sub_row['ProdCode'] }}')"><img src="{{ img_url('cart/close.png') }}"></a>
                                                         @foreach($sub_row['LectureSampleData'] as $sample_idx => $sample_row)
@@ -375,7 +376,7 @@
                                             </td>
                                             <td class="w-notice p_re">
                                                 @if(empty($sub_row['LectureSampleData']) === false)
-                                                    <div class="w-sp one"><a href="#none" onclick="openWin('lec_sample_{{ $sub_row['ProdCode'] }}')">맛보기{{count($sub_row['LectureSampleData'])}}</a></div>
+                                                    <div class="w-sp one"><a href="#none" onclick="openWin('lec_sample_{{ $sub_row['ProdCode'] }}')">맛보기</a></div>
                                                     <div id="lec_sample_{{ $sub_row['ProdCode'] }}" class="viewBox">
                                                         <a class="closeBtn" href="#none" onclick="closeWin('lec_sample_{{ $sub_row['ProdCode'] }}')"><img src="{{ img_url('cart/close.png') }}"></a>
                                                         @foreach($sub_row['LectureSampleData'] as $sample_idx => $sample_row)
@@ -542,8 +543,10 @@
 
             price_cal();            //가격 계산
 
+            //
 
-            $(".choSubGroup").change(function() {
+
+            $(".checkbox").change(function() {
                 if(this.checked) {
                     //선택강좌
                     $check_cnt = 0;
@@ -553,7 +556,7 @@
                         }
                     });
 
-                    if($check_cnt > parseInt({{$data['PackSelCount']}})) {
+                    if($check_cnt !== parseInt({{$data['PackSelCount']}})) {
                         alert("선택과목 중 {{$data['PackSelCount']}} 개를 선택하셔야 합니다.");
                         return;
                     }

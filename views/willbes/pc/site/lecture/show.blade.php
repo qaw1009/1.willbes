@@ -39,7 +39,7 @@
                     <div class="w-notice p_re">
                         @if( empty($data['LectureSampleData']) === false)
                         <div class="w-sp one">
-                            <a href="#none" onclick="openWin('viewBox')">맛보기{{ empty($data['LectureSampleData']) ? '' : count($data['LectureSampleData']) }}</a>
+                            <a href="#none" onclick="openWin('viewBox')">맛보기</a>
                         </div>
                         <div id="viewBox" class="viewBox">
                             <a class="closeBtn" href="#none" onclick="closeWin('viewBox')"><img src="{{ img_url('cart/close.png') }}"></a>

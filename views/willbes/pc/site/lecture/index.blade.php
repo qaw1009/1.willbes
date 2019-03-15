@@ -293,7 +293,7 @@
                                             </div>
                                         @else
                                             @if(empty($row['LectureSampleData']) === false)
-                                                <div class="w-sp one"><a href="#none" onclick="openWin('lec_sample_{{ $row['ProdCode'] }}')">맛보기{{ empty($row['LectureSampleData']) ? '' : count($row['LectureSampleData']) }}</a></div>
+                                                <div class="w-sp one"><a href="#none" onclick="openWin('lec_sample_{{ $row['ProdCode'] }}')">맛보기</a></div>
                                                 <div id="lec_sample_{{ $row['ProdCode'] }}" class="viewBox">
                                                     <a class="closeBtn" href="#none" onclick="closeWin('lec_sample_{{ $row['ProdCode'] }}')"><img src="{{ img_url('cart/close.png') }}"></a>
                                                     @foreach($row['LectureSampleData'] as $sample_idx => $sample_row)

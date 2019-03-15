@@ -209,7 +209,7 @@
                                                 @php
                                                     $id = $sub_row['Parent_ProdCode'].'-'.$sub_row['ProdCode'];
                                                     $date = $sub_row['StudyStartDate'].' ~ '. $sub_row['StudyEndDate'];
-                                                    lecture_info_layer($id ,$sub_row['ProdName'] ,$date,$sub_row['WeekArrayName'] ,$sub_row['Amount'] ,$sub_row['Content']);
+                                                    lecture_info_layer($id ,$sub_row['ProdName'] ,$date,$sub_row['WeekArrayName'] ,$sub_row['Amount'] ,$sub_row['Content'],$sub_row['Content5'],$sub_row['Content6'],$sub_row['Content7']);
                                                 @endphp
 
                                             </td>
@@ -296,7 +296,7 @@
                                                 @php
                                                     $id = 'sel_'.$sub_row['Parent_ProdCode'].'-'.$sub_row['ProdCode'];
                                                     $date = $sub_row['StudyStartDate'].' ~ '. $sub_row['StudyEndDate'];
-                                                    lecture_info_layer($id ,$sub_row['ProdName'] ,$date,$sub_row['WeekArrayName'] ,$sub_row['Amount'] ,$sub_row['Content']);
+                                                    lecture_info_layer($id ,$sub_row['ProdName'] ,$date,$sub_row['WeekArrayName'] ,$sub_row['Amount'] ,$sub_row['Content'],$sub_row['Content5'],$sub_row['Content6'],$sub_row['Content7']);
                                                 @endphp
                                             </td>
                                             <td class="w-schedule">
@@ -359,7 +359,7 @@
         /*
         하위 강좌정보 레이어 팝업용
         */
-        function lecture_info_layer($id='', $prod_name='', $date='', $weekname='', $amount='', $content='')
+        function lecture_info_layer($id='', $prod_name='', $date='', $weekname='', $amount='', $content='', $content5='',$content6='',$content7='')
         {
                 $show_info = '
                 <div id="InfoForm_'.$id.'" class="willbes-Layer-Box d3">
@@ -383,13 +383,45 @@
                                     <col style="width: 140px;">
                                     <col width="*">
                                 </colgroup>
-                                <tbody>
-                                <tr>
-                                    <td class="w-list bg-light-white">강좌정보</td>
-                                    <td class="w-data tx-left pl25">
-                                        '. $content .'
-                                    </td>
-                                </tr>
+                                <tbody>';
+
+                    if(empty($content5) != true) {
+                        $show_info.= '<tr>
+                                                <td class="w-list bg-light-white">수강대상</td>
+                                                <td class="w-data tx-left pl25">
+                                                    '. $content5 .'
+                                                </td>
+                                            </tr>
+                                    ';
+                    }
+                                    $show_info.= '<tr>
+                                                <td class="w-list bg-light-white">강좌소개<Br>(강좌구성)</td>
+                                                <td class="w-data tx-left pl25">
+                                                    '. $content .'
+                                                </td>
+                                            </tr>
+                                    ';
+                if(empty($content6) != true) {
+                        $show_info.= '<tr>
+                                                <td class="w-list bg-light-white">강좌효과</td>
+                                                <td class="w-data tx-left pl25">
+                                                    '. $content6 .'
+                                                </td>
+                                            </tr>
+                                    ';
+                    }
+
+                if(empty($content7) != true) {
+                    $show_info.= '<tr>
+                                            <td class="w-list bg-light-white">수강후기</td>
+                                            <td class="w-data tx-left pl25">
+                                                '. $content7 .'
+                                            </td>
+                                        </tr>
+                                ';
+                }
+
+                $show_info.= '
                                 </tbody>
                             </table>
                         </div>

@@ -58,7 +58,7 @@
 
     <div class="p_re evtContent" id="evtContainer">
         <div class="skybanner">
-            <div><a href="#event"><img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_c_sky2_1.png" alt="환승이벤트" ></a></div>
+            <div><a href="#event"><img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_c0_1.jpg" alt="환승이벤트" ></a></div>
         </div>
 
         <!-- 타이머 -->

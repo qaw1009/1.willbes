@@ -13,7 +13,7 @@ class AdminAuthHook
         '/lcms/auth/regist/store',
         '/crm/manageCs/noAuthList',
         '/crm/manageCs/noAuthListAjax',
-        '/crm/manageCs/updateReadCnt',
+        '/crm/manageCs/updateReadCnt'
     ];
 
     // LMS 교수관리자 역할식별자
@@ -29,8 +29,7 @@ class AdminAuthHook
         '/sys/adminSettings/',
         '/pay/order/listAjax',
         '/service/coupon/issue/listAjax',
-        '/service/point/allStatus/listAjax',
-        '/sys/firewall'
+        '/service/point/allStatus/listAjax'
     ];
 
     public function __construct()

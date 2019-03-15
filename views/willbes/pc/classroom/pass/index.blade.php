@@ -8,7 +8,7 @@
             @include('willbes.pc.layouts.partial.site_route_path')
         </div>
         <div class="Content p_re">
-            <form name="searchFrm1" id="searchFrm1" action="{{app_url('/classroom/pass/index', 'www')}}" onsubmit="">
+            <form name="searchFrm1" id="searchFrm1" action="{{front_url('/classroom/pass/index')}}">
                 <div class="willbes-Mypage-PASSZONE">
                     <div class="d_block">
                         <div class="willbes-listTable widthAuto550 f_left">
@@ -103,74 +103,6 @@
                     </div>
                 </div>
             </form>
-            {{--<form name="searchFrm1" id="searchFrm1" action="{{app_url('/classroom/pass/index', 'www')}}" onsubmit="">
-                <div class="willbes-Mypage-PASSZONE c_both">
-                    <div class="c_both f_left widthAutoFull NG mb30">
-                        <ul>
-                            <li class="InfoBtn ml10"><a href="javascript:;" onclick="fnMyDevice('');">등록기기정보 <span>▶</span></a></li>
-                            <li class="InfoBtn ml10"><a href="javascript:;" onclick="openWin('MorePASS')">프리패스이용안내 <span>▶</span></a></li>
-                        </ul>
-                    </div>
-                    <div class="willbes-Lec-Table NG d_block">
-                        <div class="willbes-PASS-Line bg-blue">이용중인 PASS ({{count($passlist)}})</div>
-                        <div class="will-Tit-Zone">
-                            <div class="will-Tit NG f_left">· 무한PASS선택</div>
-                            <span class="willbes-Lec-Selected GM tx-gray" style="float: inherit">
-                                <select id="sitegroupcode" name="sitegroupcode" title="process" class="seleProcess">
-                                    <option value="">과정</option>
-                                    @foreach($sitegroup_arr as $row )
-                                        <option value="{{$row['SiteGroupCode']}}" @if(isset($input_arr['sitegroupcode']) && $input_arr['sitegroupcode'] == $row['SiteGroupCode']) selected="selected" @endif>{{$row['SiteGroupName']}}</option>
-                                    @endforeach
-                                </select>
-                                <select id="passidx" name="passidx" class="seleName" >
-                                    @if(empty($passlist) == true)
-                                        <option value="">무한PASS를 선택해주십시요.</option>
-                                    @else
-                                        @foreach($passlist as $row )
-                                            <option value="{{$row['ProdCode']}}" @if(isset($passinfo['ProdCode']) && $passinfo['ProdCode'] == $row['ProdCode']) selected="selected" @endif>{{$row['ProdName']}}</option>
-                                        @endforeach
-                                    @endif
-                                </select>
-                            </span>
-
-                        </div>
-                        <table cellspacing="0" cellpadding="0" class="lecTable PassZoneTable">
-                            <colgroup>
-                                <col style="width: 770px;">
-                                <col style="width: 170px;">
-                            </colgroup>
-                            <tbody>
-                            @if(empty($passinfo) == false)
-                                <tr>
-                                    <td class="w-data tx-left">
-                                        <div class="w-tit">
-                                            {{$passinfo['ProdName']}}
-                                        </div>
-                                        <dl class="w-info tx-gray">
-                                            <dt>[수강기간] <span class="tx-blue">{{str_replace('-', '.', $row['LecStartDate'])}}~{{str_replace('-', '.', $row['RealLecEndDate'])}}</span> <span class="tx-black">(잔여기간<span class="tx-pink">{{$row['remainDays']}}일</span>)</span></dt>
-                                        </dl>
-                                    </td>
-                                    @if($passinfo['TakeLecNum'] == 0)
-                                        <td class="w-lec">
-                                            <div class="tx-gray">수강중인 강좌가 없습니다.</div>
-                                            <div class="w-sj">강좌를 추가해 주세요.</div>
-                                            <div class="w-btn"><a class="bg-blue bd-dark-blue NSK" href="javascript:;" onclick="fnMoreLec('{{$passinfo['OrderIdx']}}','{{$passinfo['ProdCode']}}');">강좌추가</a></div>
-                                        </td>
-                                    @else
-                                        <td class="w-lec">
-                                            <div class="tx-gray">수강중인 강좌수</div>
-                                            <div class="w-sj"><span class="tx-blue">{{$passinfo['TakeLecNum']}}강좌</span> / {{$passinfo['LecNum']}}강좌</div>
-                                            <div class="w-btn"><a class="bg-blue bd-dark-blue NSK" href="javascript:;" onclick="fnMoreLec('{{$passinfo['OrderIdx']}}','{{$passinfo['ProdCode']}}');">강좌추가</a></div>
-                                        </td>
-                                    @endif
-                                </tr>
-                            @endif
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </form>--}}
-            <!-- willbes-Mypage-PASSZONE -->
 
             <div class="willbes-Mypage-Tabs mt70">
                 <form name="searchFrm2" id="searchFrm2" action="{{app_url('/classroom/pass/index', 'www')}}" onsubmit="">
@@ -283,7 +215,7 @@
                                 @if(empty($leclist_ing) == false)
                                     <div class="PASSZONE-Btn">
                                         <div class="w-answer">
-                                            <span class="w-chk-st"><a href="javascript:;" onclick="fnLike('all',null);><img src="{{ img_url('mypage/icon_star_on.png') }}"></a></span>
+                                            <span class="w-chk-st"><a href="javascript:;" onclick="fnLike('all',null);"><img src="{{ img_url('mypage/icon_star_on.png') }}"></a></span>
                                             <a href="javascript:;" onclick="fnHide('all',null);"><span class="aBox passBox waitBox NSK">숨기기</span></a>
                                         </div>
                                     </div>
@@ -642,7 +574,7 @@
     <script type="text/javascript">
         var bookprice = 0;
         $(document).ready(function() {
-            $('#passidx,#sitecode').on('change', function (){
+            $('#sitegroupcode,#passidx, #sitecode').on('change', function (){
                 $('#searchFrm1').submit();
             });
 

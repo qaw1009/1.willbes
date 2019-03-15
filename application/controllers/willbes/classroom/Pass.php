@@ -22,7 +22,7 @@ class Pass extends \app\controllers\FrontController
      */
     public function index($params = [])
     {
-        $passidx = $this->_req("prodcode");
+        $passidx = $this->_req("passidx");
         $sitegroupcode = $this->_req("sitegroupcode");
 
         $input_arr = $this->_reqG(null);
@@ -105,7 +105,7 @@ class Pass extends \app\controllers\FrontController
         }
 
         // 학습형태 : 기간제패키지
-        $passlist = $this->classroomFModel->getPackage($cond_arr, $orderby);
+        $passlist = $this->classroomFModel->getPackage($cond_arr, ['OrderDate' => 'DESC']);
 
         // 선택된 패키지번호가 없다면 그냥 첫번째것으로OrderDate', 'DESC
         if(empty($passidx) == true && empty($passlist) == false){

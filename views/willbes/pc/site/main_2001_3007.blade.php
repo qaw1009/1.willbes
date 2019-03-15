@@ -9,19 +9,21 @@
         <div class="Section mt30">
             <div class="widthAuto bnrSec01">
                 <div>
-                    <a href="#"><img src="{{ img_url('cop_sea/banner/bnr_756_01.jpg') }}" alt="기본이론"></a>
+                    <a href="{{ site_url('/lecture/index/cate/3007/pattern/only?course_idx=1004') }}">
+                        <img src="{{ img_url('cop_sea/banner/bnr_756_01.jpg') }}" alt="기본이론">
+                    </a>
                 </div>
                 <ul>
-                    <li><a href="#"><img src="{{ img_url('cop_sea/banner/bnr_360_01.jpg') }}" alt="정태정 핵심이론"></a></li>
-                    <li><a href="#"><img src="{{ img_url('cop_sea/banner/bnr_360_02.jpg') }}" alt="공득인 핵심이론"></a></li>
+                    <li><a href="{{ site_url('/lecture/index/cate/3007/pattern/only?subject_idx=1031') }}"><img src="{{ img_url('cop_sea/banner/bnr_360_01.jpg') }}" alt="공득인 핵심이론"></a></li>
+                    <li><a href="{{ site_url('/lecture/show/cate/3007/pattern/only/prod-code/132243') }}"><img src="{{ img_url('cop_sea/banner/bnr_360_02.jpg') }}" alt="공득인 핵심이론"></a></li>
                 </ul>
             </div>
         </div>
 
         <div class="Section mt30">
             <div class="widthAuto bnrSec02">
-                <div><a href="#"><img src="{{ img_url('cop_sea/banner/bnr_1120_01.jpg') }}" alt="기본이론"></a></div>
-                <div><a href="#"><img src="{{ img_url('cop_sea/banner/bnr_1120_02.jpg') }}" alt="기본이론"></a></div>
+                <div><a href="{{ site_url('/professor/show/cate/3007/prof-idx/50547/?subject_idx=1004&subject_name=형사소송법') }}"><img src="{{ img_url('cop_sea/banner/bnr_1120_01.jpg') }}" alt="기본이론"></a></div>
+                <div><a href="#none"><img src="{{ img_url('cop_sea/banner/bnr_1120_02.jpg') }}" alt="기본이론"></a></div>
             </div>
         </div>
 
@@ -36,49 +38,49 @@
                         <img src="{{ img_url('cop_sea/prof/prof_ske.jpg') }}" alt="신광은">
                         <ul class="ProfBtns">
                             <li><a href="#none" onclick="fnPlayerProf('50547', 'OT');">▶</a></li>
-                            <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50547/?subject_idx=1004&subject_name=%ED%98%95%EC%82%AC%EC%86%8C%EC%86%A1%EB%B2%95') }}" target="_blank">교수소개</a></li>
+                            <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50547/?subject_idx=1004&subject_name=%ED%98%95%EC%82%AC%EC%86%8C%EC%86%A1%EB%B2%95') }}">교수소개</a></li>
                         </ul>
                     </li>
                     <li>
                         <img src="{{ img_url('cop_sea/prof/prof_kwu.jpg') }}" alt="김원욱">
                         <ul class="ProfBtns">
                             <li><a href="#none" onclick="fnPlayerProf('50297', 'OT');">▶</a></li>
-                            <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50297/?subject_idx=1003&subject_name=%ED%98%95%EB%B2%95') }}" target="_blank">교수소개</a></li>
+                            <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50297/?subject_idx=1003&subject_name=%ED%98%95%EB%B2%95') }}">교수소개</a></li>
                         </ul>
                     </li>
                     <li>
                         <img src="{{ img_url('cop_sea/prof/prof_hsm.jpg') }}" alt="하승민">
                         <ul class="ProfBtns">
                             <li><a href="#none" onclick="fnPlayerProf('50135', 'OT');">▶</a></li>
-                            <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50135/?subject_idx=1001&subject_name=%EC%98%81%EC%96%B4') }}" target="_blank">교수소개</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <img src="{{ img_url('cop_sea/prof/prof_otj.jpg') }}" alt="오태진">
-                        <ul class="ProfBtns">
-                            <li><a href="#none" onclick="fnPlayerProf('50131', 'OT');">▶</a></li>
-                            <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50131/?subject_idx=1002&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC') }}" target="_blank">교수소개</a></li>
+                            <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50135/?subject_idx=1001&subject_name=%EC%98%81%EC%96%B4') }}">교수소개</a></li>
                         </ul>
                     </li>
                     <li>
                         <img src="{{ img_url('cop_sea/prof/prof_wuc.jpg') }}" alt="원유철">
                         <ul class="ProfBtns">
                             <li><a href="#none" onclick="fnPlayerProf('50641', 'OT');">▶</a></li>
-                            <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50641/?subject_idx=1002&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC') }}" target="_blank">교수소개</a></li>
+                            <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50641/?subject_idx=1002&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC') }}">교수소개</a></li>
                         </ul>
                     </li>
                     <li>
-                        <img src="{{ img_url('cop_sea/prof/prof_jtj.jpg') }}" alt="정태정">
+                        <img src="{{ img_url('cop_sea/prof/prof_otj.jpg') }}" alt="오태진">
                         <ul class="ProfBtns">
-                            <li><a href="#none" onclick="fnPlayerProf('50655', 'OT');">▶</a></li>
-                            <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50655/?subject_idx=1031&subject_name=%ED%95%B4%EC%96%91%EA%B2%BD%EC%B0%B0%ED%95%99%EA%B0%9C%EB%A1%A0') }}" target="_blank">교수소개</a></li>
+                            <li><a href="#none" onclick="fnPlayerProf('50131', 'OT');">▶</a></li>
+                            <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50131/?subject_idx=1002&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC') }}">교수소개</a></li>
+                        </ul>
+                    </li>                    
+                    <li>
+                        <img src="{{ img_url('cop_sea/prof/prof_gdi2.jpg') }}" alt="공득인">
+                        <ul class="ProfBtns">
+                            <li><a href="#none">▶</a></li>
+                            <li><a href="#none">교수소개</a></li>
                         </ul>
                     </li>
                     <li>
                         <img src="{{ img_url('cop_sea/prof/prof_gdi.jpg') }}" alt="공득인">
                         <ul class="ProfBtns">
                             <li><a href="#none" onclick="fnPlayerProf('50301', 'OT');">▶</a></li>
-                            <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50301/?subject_idx=1030&subject_name=%ED%95%B4%EC%82%AC%EB%B2%95%EA%B7%9C') }}" target="_blank">교수소개</a></li>
+                            <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50301/?subject_idx=1030&subject_name=%ED%95%B4%EC%82%AC%EB%B2%95%EA%B7%9C') }}">교수소개</a></li>
                         </ul>
                     </li>
                 </ul>

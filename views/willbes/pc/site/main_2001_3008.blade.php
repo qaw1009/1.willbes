@@ -9,8 +9,8 @@
         <div class="Section mt30">
             <div class="widthAuto bnrSec01">
                 <ul>
-                    <li><a href="#"><img src="{{ img_url('cop_sea_special/banner/bnr_556_01.jpg') }}" alt="정태정 핵심이론"></a></li>
-                    <li><a href="#"><img src="{{ img_url('cop_sea_special/banner/bnr_556_02.jpg') }}" alt="공득인 핵심이론"></a></li>
+                    <li><a href="{{ site_url('/package/index/cate/3008/pack/648002') }}"><img src="{{ img_url('cop_sea_special/banner/bnr_556_01.jpg') }}" alt="정태정 핵심이론"></a></li>
+                    <li><a href="{{ site_url('/lecture/index/cate/3008/pattern/only?course_idx=1010') }}"><img src="{{ img_url('cop_sea_special/banner/bnr_556_02.jpg') }}" alt="공득인 핵심이론"></a></li>
                 </ul>
             </div>
         </div>
@@ -26,7 +26,9 @@
 
         <div class="Section mt8">
             <div class="widthAuto">
-                <a href="#"><img src="{{ img_url('cop_sea_special/banner/bnr_1120_01.jpg') }}" alt="정태정 핵심이론"></a>
+                <a href="/package/index/cate/3008/pack/648002">
+                    <img src="{{ img_url('cop_sea_special/banner/bnr_1120_01.jpg') }}" alt="교수님 T-pass">
+                </a>
             </div>
         </div>
 
@@ -45,10 +47,10 @@
                         </ul>
                     </li>
                     <li>
-                        <img src="{{ img_url('cop_sea_special/prof/prof_jtj.jpg') }}" alt="정태정">
+                        <img src="{{ img_url('cop_sea_special/prof/prof_gdi2.jpg') }}" alt="공득인">
                         <ul class="ProfBtns">
-                            <li><a href="#none" onclick="fnPlayerProf('50655', 'OT');">▶</a></li>
-                            <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50655/?subject_idx=1031&subject_name=%ED%95%B4%EC%96%91%EA%B2%BD%EC%B0%B0%ED%95%99%EA%B0%9C%EB%A1%A0') }}" target="_blank">교수소개</a></li>
+                            <li><a href="#none">▶</a></li>
+                            <li><a href="#none" target="_blank">교수소개</a></li>
                         </ul>
                     </li>
                     <li>

@@ -104,7 +104,7 @@
             <div class="time_date" id="newTopDday">
                 <table width="1100px;" height="90px" border="0" cellpadding=0 cellspacing=0>
                     <tr>
-                        <td style="text-align:center;"><img src="http://file3.willbes.net/new_gosi/2019/01/EV190115_c0_1.jpg" alt=""  /></td>
+                        <td style="text-align:center;"><img src="http://file3.willbes.net/new_gosi/2019/01/EV190115_c0.jpg" alt=""  /></td>
                         <td width="150" align="center" class="time_txt">마감까지 <br /><span>남은 시간은</span></td>
                         <td width="62" height="101" align="center"><img id="dd1" src="http://file.willbes.net/new_image/0.png" class="t_img" /></td>
                         <td width="62" height="101" align="center"><img id="dd2" src="http://file.willbes.net/new_image/0.png" class="t_img" /></td>
@@ -262,7 +262,7 @@
 
         function daycountDown() {
             // 한달 전 날짜로 셋팅
-            event_day = new Date(2019,1,28,23,59,59);
+            event_day = new Date(2019,2,21,23,59,59);
             now = new Date();
             var timeGap = new Date(0, 0, 0, 0, 0, 0, (event_day - now));
 

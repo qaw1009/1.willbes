@@ -467,7 +467,7 @@ class Format {
      * @param string $data XML string
      * @return array XML element object; otherwise, empty array
      */
-    protected function _from_xml($data)
+    public function _from_xml($data)
     {
         return $data ? (array) simplexml_load_string($data, 'SimpleXMLElement', LIBXML_NOCDATA) : [];
     }

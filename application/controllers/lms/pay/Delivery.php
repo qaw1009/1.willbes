@@ -116,7 +116,8 @@ class Delivery extends BaseOrder
         switch ($this->_tab) {
             case 'invoice' :
                 $arr_condition['EQ']['OP.PayStatusCcd'] = $this->orderListModel->_pay_status_ccd['paid'];
-                $arr_condition['RAW']['OPD.DeliveryStatusCcd is '] = 'null';
+                $arr_condition['ORG0']['EQ']['OPD.DeliveryStatusCcd'] = $this->orderListModel->_delivery_status_ccd['invoice'];
+                $arr_condition['ORG0']['RAW']['OPD.DeliveryStatusCcd is '] = 'null';
                 break;
             case 'prepare' :
                 $arr_condition['IN']['OP.PayStatusCcd'] = $this->_delivery_pay_status_ccd;

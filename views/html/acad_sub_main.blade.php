@@ -109,232 +109,232 @@
                 </ul>
                 <div class="tabBox noticeBox_acad">
                     <div id="notice1" class="tabContent p_re">
-                    <div class="willbes-CScenter c_both mt40">
-                        <div class="Act2">
-                            <!-- List -->
-                            <div class="willbes-Leclist c_both">
-                                <div class="willbes-Lec-Selected tx-gray mt0">
-                                    <div class="f_left">
-                                        <select id="acad" name="acad" title="구분" class="seleAcad">
-                                            <option selected="selected">구분</option>
-                                            <option value="학원">학원</option>
-                                            <option value="온라인">온라인</option>
-                                        </select>
-                                        <select id="campus" name="campus" title="campus" class="seleCampus">
-                                            <option selected="selected">캠퍼스</option>
-                                            <option value="헌법">헌법</option>
-                                            <option value="스파르타반">스파르타반</option>
-                                            <option value="공직선거법">공직선거법</option>
-                                        </select>
-                                    </div>
-                                    <div class="willbes-Lec-Search GM f_left mg0">
-                                        <div class="inputBox p_re">
-                                            <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="제목 또는 내용을 입력해 주세요" maxlength="30">
-                                            <button type="submit" onclick="" class="search-Btn">
-                                                <span>검색</span>
-                                            </button>
+                        <div class="willbes-CScenter c_both mt40">
+                            <div class="Act2">
+                                <!-- List -->
+                                <div class="willbes-Leclist c_both">
+                                    <div class="willbes-Lec-Selected tx-gray mt0">
+                                        <div class="f_left">
+                                            <select id="acad" name="acad" title="구분" class="seleAcad">
+                                                <option selected="selected">구분</option>
+                                                <option value="학원">학원</option>
+                                                <option value="온라인">온라인</option>
+                                            </select>
+                                            <select id="campus" name="campus" title="campus" class="seleCampus">
+                                                <option selected="selected">캠퍼스</option>
+                                                <option value="헌법">헌법</option>
+                                                <option value="스파르타반">스파르타반</option>
+                                                <option value="공직선거법">공직선거법</option>
+                                            </select>
+                                        </div>
+                                        <div class="willbes-Lec-Search GM f_left mg0">
+                                            <div class="inputBox p_re">
+                                                <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="제목 또는 내용을 입력해 주세요" maxlength="30">
+                                                <button type="submit" onclick="" class="search-Btn">
+                                                    <span>검색</span>
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="LeclistTable">
-                                    <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black bdb-gray tx-gray">
-                                        <colgroup>
-                                            <col style="width: 65px;">
-                                            <col style="width: 65px;">
-                                            <col style="width: 110px;">
-                                            <col style="width: auto;">
-                                            <col style="width: 65px;">
-                                            <col style="width: 100px;">
-                                            <col style="width: 90px;">
-                                        </colgroup>
-                                        <thead>
-                                            <tr>
-                                                <th>No<span class="row-line">|</span></th>
-                                                <th>구분<span class="row-line">|</span></th>
-                                                <th>캠퍼스<span class="row-line">|</span></th>
-                                                <th>제목<span class="row-line">|</span></th>
-                                                <th>첨부<span class="row-line">|</span></th>
-                                                <th>작성일<span class="row-line">|</span></th>
-                                                <th>조회수</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td class="w-no"><img src="{{ img_url('prof/icon_HOT.gif') }}"></td>
-                                                <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
-                                                <td class="w-campus">공통</td>
-                                                <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
-                                                <td class="w-file">
-                                                    <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"></a>
-                                                </td>
-                                                <td class="w-date">2018-00-00</td>
-                                                <td class="w-click">123</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="w-no"><img src="{{ img_url('prof/icon_HOT.gif') }}"></td>
-                                                <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
-                                                <td class="w-campus">스파르타반</td>
-                                                <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
-                                                <td class="w-file">
-                                                    <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"></a>
-                                                </td>
-                                                <td class="w-date">2018-00-00</td>
-                                                <td class="w-click">244</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="w-no">10</td>
-                                                <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
-                                                <td class="w-campus">스파르타반</td>
-                                                <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
-                                                <td class="w-file">&nbsp;</td>
-                                                <td class="w-date">2018-00-00</td>
-                                                <td class="w-click">355</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="w-no">9</td>
-                                                <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
-                                                <td class="w-campus">스파르타반</td>
-                                                <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
-                                                <td class="w-file">&nbsp;</td>
-                                                <td class="w-date">2018-00-00</td>
-                                                <td class="w-click">466</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="w-no">8</td>
-                                                <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
-                                                <td class="w-campus">스파르타반</td>
-                                                <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
-                                                <td class="w-file">&nbsp;</td>
-                                                <td class="w-date">2018-00-00</td>
-                                                <td class="w-click">355</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="w-no">7</td>
-                                                <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
-                                                <td class="w-campus">스파르타반</td>
-                                                <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
-                                                <td class="w-file">&nbsp;</td>
-                                                <td class="w-date">2018-00-00</td>
-                                                <td class="w-click">466</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="w-no">6</td>
-                                                <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
-                                                <td class="w-campus">스파르타반</td>
-                                                <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
-                                                <td class="w-file">&nbsp;</td>
-                                                <td class="w-date">2018-00-00</td>
-                                                <td class="w-click">355</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="w-no">5</td>
-                                                <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
-                                                <td class="w-campus">스파르타반</td>
-                                                <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
-                                                <td class="w-file">&nbsp;</td>
-                                                <td class="w-date">2018-00-00</td>
-                                                <td class="w-click">466</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="w-no">4</td>
-                                                <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
-                                                <td class="w-campus">스파르타반</td>
-                                                <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
-                                                <td class="w-file">&nbsp;</td>
-                                                <td class="w-date">2018-00-00</td>
-                                                <td class="w-click">355</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="w-no">3</td>
-                                                <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
-                                                <td class="w-campus">스파르타반</td>
-                                                <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
-                                                <td class="w-file">&nbsp;</td>
-                                                <td class="w-date">2018-00-00</td>
-                                                <td class="w-click">466</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="w-no">2</td>
-                                                <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
-                                                <td class="w-campus">스파르타반</td>
-                                                <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
-                                                <td class="w-file">&nbsp;</td>
-                                                <td class="w-date">2018-00-00</td>
-                                                <td class="w-click">355</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="w-list tx-center" colspan="7">검색 결과가 없습니다.</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-
-
-                            <!-- View -->
-                            <div class="willbes-Leclist c_both mt40">
-                                <div class="LecViewTable">
-                                    <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black bdb-gray tx-gray">
-                                        <colgroup>
-                                            <col style="width: 65px;">
-                                            <col style="width: auto;">
-                                            <col style="width: 150px;">
-                                            <col style="width: 150px;">
-                                        </colgroup>
-                                        <thead>
-                                            <tr><th colspan="4" class="w-list tx-left  pl20"><img src="{{ img_url('prof/icon_HOT.gif') }}" style="marign-right: 5px;"> <strong>[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</strong></th></tr>
-                                            <tr>
-                                                <td class="w-acad pl20"><span class="oBox onlineBox NSK">온라인</span></td>
-                                                <td class="w-lec tx-left pl20">헌법<span class="row-line">|</span></td>
-                                                <td class="w-date">2018-00-00<span class="row-line">|</span></td>
-                                                <td class="w-click"><strong>조회수</strong> 123</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td class="w-file tx-left pl20" colspan="4">
-                                                    <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일1이 노출됩니다.docx</a>
-                                                    <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일2가 노출됩니다.docx</a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="w-txt tx-left" colspan="7">
-                                                    이달의 개강 강좌 공지입니다.<br/>
-                                                    이달의 개강 강좌 공지입니다.<br/>
-                                                    이달의 개강 강좌 공지입니다.
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <div class="search-Btn btnAuto90 h36 mt20 mb30 f_right">
-                                        <button type="submit" onclick="" class="mem-Btn bg-purple-gray bd-dark-gray">
-                                            <span>목록</span>
-                                        </button>
+                                    <div class="LeclistTable">
+                                        <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black bdb-gray tx-gray">
+                                            <colgroup>
+                                                <col style="width: 65px;">
+                                                <col style="width: 65px;">
+                                                <col style="width: 110px;">
+                                                <col style="width: auto;">
+                                                <col style="width: 65px;">
+                                                <col style="width: 100px;">
+                                                <col style="width: 90px;">
+                                            </colgroup>
+                                            <thead>
+                                                <tr>
+                                                    <th>No<span class="row-line">|</span></th>
+                                                    <th>구분<span class="row-line">|</span></th>
+                                                    <th>캠퍼스<span class="row-line">|</span></th>
+                                                    <th>제목<span class="row-line">|</span></th>
+                                                    <th>첨부<span class="row-line">|</span></th>
+                                                    <th>작성일<span class="row-line">|</span></th>
+                                                    <th>조회수</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="w-no"><img src="{{ img_url('prof/icon_HOT.gif') }}"></td>
+                                                    <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
+                                                    <td class="w-campus">공통</td>
+                                                    <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
+                                                    <td class="w-file">
+                                                        <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"></a>
+                                                    </td>
+                                                    <td class="w-date">2018-00-00</td>
+                                                    <td class="w-click">123</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-no"><img src="{{ img_url('prof/icon_HOT.gif') }}"></td>
+                                                    <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
+                                                    <td class="w-campus">스파르타반</td>
+                                                    <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
+                                                    <td class="w-file">
+                                                        <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"></a>
+                                                    </td>
+                                                    <td class="w-date">2018-00-00</td>
+                                                    <td class="w-click">244</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-no">10</td>
+                                                    <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
+                                                    <td class="w-campus">스파르타반</td>
+                                                    <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
+                                                    <td class="w-file">&nbsp;</td>
+                                                    <td class="w-date">2018-00-00</td>
+                                                    <td class="w-click">355</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-no">9</td>
+                                                    <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
+                                                    <td class="w-campus">스파르타반</td>
+                                                    <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
+                                                    <td class="w-file">&nbsp;</td>
+                                                    <td class="w-date">2018-00-00</td>
+                                                    <td class="w-click">466</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-no">8</td>
+                                                    <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
+                                                    <td class="w-campus">스파르타반</td>
+                                                    <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
+                                                    <td class="w-file">&nbsp;</td>
+                                                    <td class="w-date">2018-00-00</td>
+                                                    <td class="w-click">355</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-no">7</td>
+                                                    <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
+                                                    <td class="w-campus">스파르타반</td>
+                                                    <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
+                                                    <td class="w-file">&nbsp;</td>
+                                                    <td class="w-date">2018-00-00</td>
+                                                    <td class="w-click">466</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-no">6</td>
+                                                    <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
+                                                    <td class="w-campus">스파르타반</td>
+                                                    <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
+                                                    <td class="w-file">&nbsp;</td>
+                                                    <td class="w-date">2018-00-00</td>
+                                                    <td class="w-click">355</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-no">5</td>
+                                                    <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
+                                                    <td class="w-campus">스파르타반</td>
+                                                    <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
+                                                    <td class="w-file">&nbsp;</td>
+                                                    <td class="w-date">2018-00-00</td>
+                                                    <td class="w-click">466</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-no">4</td>
+                                                    <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
+                                                    <td class="w-campus">스파르타반</td>
+                                                    <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
+                                                    <td class="w-file">&nbsp;</td>
+                                                    <td class="w-date">2018-00-00</td>
+                                                    <td class="w-click">355</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-no">3</td>
+                                                    <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
+                                                    <td class="w-campus">스파르타반</td>
+                                                    <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
+                                                    <td class="w-file">&nbsp;</td>
+                                                    <td class="w-date">2018-00-00</td>
+                                                    <td class="w-click">466</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-no">2</td>
+                                                    <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
+                                                    <td class="w-campus">스파르타반</td>
+                                                    <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
+                                                    <td class="w-file">&nbsp;</td>
+                                                    <td class="w-date">2018-00-00</td>
+                                                    <td class="w-click">355</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-list tx-center" colspan="7">검색 결과가 없습니다.</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
-                                    <table cellspacing="0" cellpadding="0" class="listTable prevnextTable upper-gray bdt-gray bdb-gray tx-gray">
-                                        <colgroup>
-                                            <col style="width: 150px;">
-                                            <col style="width: 640px;">
-                                            <col style="width: 150px;">
-                                        </colgroup>
-                                        <tbody>
-                                            <tr>
-                                                <td class="w-prev bg-light-gray"><strong>이전글</strong></td>
-                                                <td class="tx-left pl20"><a href="#none">[개강] 황남기 헌법, 행정법 리마인드 핵심 이론 + 기출문풀</a><span class="row-line">|</span></td>
-                                                <td class="w-date">2018-00-00</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="w-next bg-light-gray"><strong>다음글</strong></td>
-                                                <td class="tx-left pl20"><a href="#none">[헌법] 5~6월 강의안내</a><span class="row-line">|</span></td>
-                                                <td class="w-date">2018-00-00</td>
-                                            </tr> 
-                                        </tbody>
-                                    </table>
+                                </div>
+
+
+                                <!-- View -->
+                                <div class="willbes-Leclist c_both mt40">
+                                    <div class="LecViewTable">
+                                        <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black bdb-gray tx-gray">
+                                            <colgroup>
+                                                <col style="width: 65px;">
+                                                <col style="width: auto;">
+                                                <col style="width: 150px;">
+                                                <col style="width: 150px;">
+                                            </colgroup>
+                                            <thead>
+                                                <tr><th colspan="4" class="w-list tx-left  pl20"><img src="{{ img_url('prof/icon_HOT.gif') }}" style="marign-right: 5px;"> <strong>[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</strong></th></tr>
+                                                <tr>
+                                                    <td class="w-acad pl20"><span class="oBox onlineBox NSK">온라인</span></td>
+                                                    <td class="w-lec tx-left pl20">헌법<span class="row-line">|</span></td>
+                                                    <td class="w-date">2018-00-00<span class="row-line">|</span></td>
+                                                    <td class="w-click"><strong>조회수</strong> 123</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="w-file tx-left pl20" colspan="4">
+                                                        <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일1이 노출됩니다.docx</a>
+                                                        <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일2가 노출됩니다.docx</a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-txt tx-left" colspan="7">
+                                                        이달의 개강 강좌 공지입니다.<br/>
+                                                        이달의 개강 강좌 공지입니다.<br/>
+                                                        이달의 개강 강좌 공지입니다.
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="search-Btn btnAuto90 h36 mt20 mb30 f_right">
+                                            <button type="submit" onclick="" class="mem-Btn bg-purple-gray bd-dark-gray">
+                                                <span>목록</span>
+                                            </button>
+                                        </div>
+                                        <table cellspacing="0" cellpadding="0" class="listTable prevnextTable upper-gray bdt-gray bdb-gray tx-gray">
+                                            <colgroup>
+                                                <col style="width: 150px;">
+                                                <col style="width: 640px;">
+                                                <col style="width: 150px;">
+                                            </colgroup>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="w-prev bg-light-gray"><strong>이전글</strong></td>
+                                                    <td class="tx-left pl20"><a href="#none">[개강] 황남기 헌법, 행정법 리마인드 핵심 이론 + 기출문풀</a><span class="row-line">|</span></td>
+                                                    <td class="w-date">2018-00-00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-next bg-light-gray"><strong>다음글</strong></td>
+                                                    <td class="tx-left pl20"><a href="#none">[헌법] 5~6월 강의안내</a><span class="row-line">|</span></td>
+                                                    <td class="w-date">2018-00-00</td>
+                                                </tr> 
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- willbes-CScenter -->
+                        <!-- willbes-CScenter -->
                     </div>
                     <!-- notice1// --> 
 
@@ -728,7 +728,285 @@
                     <!-- notice2//-->
 
                     <div id="notice3" class="tabContent p_re">
-                        <!-- 신림 -->
+                        <div class="noticeTabs campus c_both NSK mt50">
+                            <div class="tabBox noticeBox_campus">
+                                <div id="campus1" class="tabContent">
+                                    <div class="map_img">
+                                        <img src="{{ img_url('cop_acad/map/map_cop_origin.jpg') }}" alt="노량진">
+                                        <span class="origin">노량진(본원)</span>
+                                    </div>
+                                    <div class="campus_info">
+                                        <dl>                                
+                                            <dt>
+                                                <div class="c-tit"><span class="tx-color">노량진</span> 캠퍼스 오시는 길</div>
+                                                <div class="c-info">
+                                                    <div class="address">
+                                                        <span class="a-tit">주소</span>
+                                                        <span>
+                                                            서울시동작구만양로105 2층<br/>
+                                                            (서울시동작구노량진동116-2 2층)
+                                                        </span>
+                                                    </div>
+                                                    <div class="tel">
+                                                        <span class="a-tit">연락처</span>
+                                                        <span class="tx-color">1544-0336</span>
+                                                    </div>
+                                                </div>
+                                            </dt>
+                                        </dl>
+                                    </div>
+                                </div>
+                                <!-- 노량진//-->
+
+                                <div id="campus2" class="tabContent">
+                                    <div class="map_img">
+                                        <img src="{{ img_url('cop_acad/map/map_cop_sl.jpg') }}" alt="신림">
+                                        <span>신 림</span>
+                                    </div>
+                                    <div class="campus_info">
+                                        <dl>
+                                            <dt>
+                                                <div class="c-tit"><span class="tx-color">신림</span> 캠퍼스 오시는 길</div>
+                                                <div class="c-info">
+                                                    <div class="address">
+                                                        <span class="a-tit">주소</span>
+                                                        <span>
+                                                            서울 관악구 신림로 23길 16 4층
+                                                        </span>
+                                                    </div>
+                                                    <div class="tel">
+                                                        <span class="a-tit">연락처</span>
+                                                        <span class="tx-color">1544-4006</span>
+                                                    </div>
+                                                </div>
+                                            </dt>
+                                        </dl>
+                                    </div>
+                                </div>
+                                <!-- 신림 //-->
+
+                                <div id="campus3" class="tabContent">
+                                    <div class="map_img">
+                                        <img src="{{ img_url('cop_acad/map/map_cop_ic.jpg') }}" alt="인천">
+                                        <span>인 천</span>
+                                    </div>
+                                    <div class="campus_info">
+                                        <dl>
+                                            <dt>
+                                                <div class="c-tit"><span class="tx-color">인천</span> 캠퍼스 오시는 길</div>
+                                                <div class="c-info">
+                                                    <div class="address">
+                                                        <span class="a-tit">주소</span>
+                                                        <span>
+                                                            인천 부평구 부평동 534-28 중보빌딩 10층
+                                                        </span>
+                                                    </div>
+                                                    <div class="tel">
+                                                        <span class="a-tit">연락처</span>
+                                                        <span class="tx-color">1544-1661</span>
+                                                    </div>
+                                                </div>
+                                            </dt>
+                                        </dl>
+                                    </div>
+                                </div>
+                                <!-- 인천 //-->
+
+                                <div id="campus4" class="tabContent">
+                                    <div class="map_img">
+                                        <img src="{{ img_url('cop_acad/map/map_cop_dg.jpg') }}" alt="대구">
+                                        <span>대 구</span>
+                                    </div>
+                                    <div class="campus_info">
+                                        <dl>
+                                            <dt>
+                                                <div class="c-tit"><span class="tx-color">대구</span> 캠퍼스 오시는 길</div>
+                                                <div class="c-info">
+                                                    <div class="address">
+                                                        <span class="a-tit">주소</span>
+                                                        <span>
+                                                        대구 중구 중앙대로 412(남일동) CGV 2층
+                                                        </span>
+                                                    </div>
+                                                    <div class="tel">
+                                                        <span class="a-tit">연락처</span>
+                                                        <span class="tx-color">1522-6112</span>
+                                                    </div>
+                                                </div>
+                                            </dt>
+                                        </dl>
+                                    </div>
+                                </div>
+                                <!-- 대구// -->
+
+                                <div id="campus5" class="tabContent">
+                                    <div class="map_img">
+                                        <img src="{{ img_url('cop_acad/map/map_cop_bs.jpg') }}" alt="부산">
+                                        <span>부 산</span>
+                                    </div>
+                                    <div class="campus_info">
+                                        <dl>
+                                            <dt>
+                                                <div class="c-tit"><span class="tx-color">부산</span> 캠퍼스 오시는 길</div>
+                                                <div class="c-info">
+                                                    <div class="address">
+                                                        <span class="a-tit">주소</span>
+                                                        <span>
+                                                        부산 진구 부정동 223-8
+                                                        </span>
+                                                    </div>
+                                                    <div class="tel">
+                                                        <span class="a-tit">연락처</span>
+                                                        <span class="tx-color">1522-8112</span>
+                                                    </div>
+                                                </div>
+                                            </dt>
+                                        </dl>
+                                    </div>
+                                </div>
+                                <!-- 부산 //-->
+
+                                <div id="campus6" class="tabContent">
+                                    <div class="map_img">
+                                        <img src="{{ img_url('cop_acad/map/map_cop_kj.jpg') }}" alt="광주">
+                                        <span>광 주</span>
+                                    </div>
+                                    <div class="campus_info">
+                                        <dl>
+                                            <dt>
+                                                <div class="c-tit"><span class="tx-color">광주</span> 캠퍼스 오시는 길</div>
+                                                <div class="c-info">
+                                                    <div class="address">
+                                                        <span class="a-tit">주소</span>
+                                                        <span>
+                                                        광주 북구 호동로 6-11
+                                                        </span>
+                                                    </div>
+                                                    <div class="tel">
+                                                        <span class="a-tit">연락처</span>
+                                                        <span class="tx-color">062-722-8140</span>
+                                                    </div>
+                                                </div>
+                                            </dt>
+                                        </dl>
+                                    </div>
+                                </div>
+                                <!-- 광주 //-->
+                    
+                                <div id="campus7" class="tabContent">
+                                    <div class="map_img">
+                                        <img src="{{ img_url('cop_acad/map/map_cop_jj.jpg') }}" alt="제주">
+                                        <span>제 주</span>
+                                    </div>
+                                    <div class="campus_info">
+                                        <dl>
+                                            <dt>
+                                                <div class="c-tit"><span class="tx-color">제주</span> 캠퍼스 오시는 길</div>
+                                                <div class="c-info">
+                                                    <div class="address">
+                                                        <span class="a-tit">주소</span>
+                                                        <span>
+                                                        제주도 제주시 동광로 56 3층
+                                                        </span>
+                                                    </div>
+                                                    <div class="tel">
+                                                        <span class="a-tit">연락처</span>
+                                                        <span class="tx-color">064-722-8140</span>
+                                                    </div>
+                                                </div>
+                                            </dt>
+                                        </dl>
+                                    </div>
+                                </div>
+                                <!-- 제주//-->
+
+                                <div id="campus8" class="tabContent">
+                                    <div>
+                                        <div class="map_img">
+                                            <img src="{{ img_url('cop_acad/map/map_cop_jbjj.jpg') }}" alt="전북 전주">
+                                            <span>전북 전주</span>                       
+                                        </div>
+                                        <div class="campus_info">
+                                            <dl>
+                                                <dt>
+                                                    <div class="c-tit"><span class="tx-color">전북 전주</span> 캠퍼스 오시는 길</div>
+                                                    <div class="c-info">
+                                                        <div class="address">
+                                                            <span class="a-tit">주소</span>
+                                                            <span>
+                                                                전북 전주시 덕진동2가 전북대학교 농생대1호관 303호
+                                                            </span>
+                                                        </div>
+                                                        <div class="tel">
+                                                            <span class="a-tit">연락처</span>
+                                                            <span class="tx-color">063-270-4144</span>
+                                                        </div>
+                                                    </div>
+                                                </dt>
+                                                <dt>
+                                                    <div class="c-tit"><span class="tx-color">전북 익산</span> 캠퍼스 오시는 길</div>
+                                                    <div class="c-info">
+                                                        <div class="address">
+                                                            <span class="a-tit">주소</span>
+                                                            <span>
+                                                            전북 익산시 신용동 원광대학교 학생지원관 4층
+                                                            </span>
+                                                        </div>
+                                                        <div class="tel">
+                                                            <span class="a-tit">연락처</span>
+                                                            <span class="tx-color">063-270-4144</span>
+                                                        </div>
+                                                    </div>
+                                                </dt>
+                                            </dl>
+                                        </div>
+                                    </div>
+
+                                    <div class="c_both pt30">
+                                        <div class="map_img">
+                                            <img src="{{ img_url('cop_acad/map/map_cop_jbis.jpg') }}" alt="전북 익산">
+                                            <span>전북 익산</span>                       
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 전북 //-->
+
+                                <div id="campus9" class="tabContent">
+                                    <div class="map_img">
+                                        <img src="{{ img_url('cop_acad/map/map_cop_jinj.jpg') }}" alt="진주">
+                                        <span>진 주</span>
+                                    </div>
+                                    <div class="campus_info">
+                                        <dl>
+                                            <dt>
+                                                <div class="c-tit"><span class="tx-color">진주</span> 캠퍼스 오시는 길</div>
+                                                <div class="c-info">
+                                                    <div class="address">
+                                                        <span class="a-tit">주소</span>
+                                                        <span>
+                                                            경남 진주시 칠암동 490-8 엠코아빌딩 4층
+                                                        </span>
+                                                    </div>
+                                                    <div class="tel">
+                                                        <span class="a-tit">연락처</span>
+                                                        <span class="tx-color">055-755-7771</span>
+                                                    </div>
+                                                </div>
+                                            </dt>
+                                        </dl>
+
+                                    </div>
+                                </div>
+                                <!-- 진주//-->
+                            </div>
+                            <!-- noticeBox_campus //-->
+                        </div>
+                    </div>
+                    <!-- 캠퍼스//-->
+                    
+                    <!--
+                    <div id="notice3" class="tabContent p_re">
+
                         <div class="mapWrap">
                             <div class="mapImg">
                                 <img src="{{ img_url('cop_acad/map/map_cop_sl.jpg') }}" alt="신림캠퍼스">
@@ -742,7 +1020,7 @@
                             </div>
                         </div>
 
-                        <!-- 인천 -->
+
                         <div class="mapWrap">
                             <div class="mapImg">
                                 <img src="{{ img_url('cop_acad/map/map_cop_ic.jpg') }}" alt="인천캠퍼스">
@@ -756,7 +1034,7 @@
                             </div>
                         </div>
 
-                        <!-- 대구 -->
+
                         <div class="mapWrap">
                             <div class="mapImg">
                                 <img src="{{ img_url('cop_acad/map/map_cop_dg.jpg') }}" alt="대구캠퍼스">
@@ -770,7 +1048,7 @@
                             </div>
                         </div>
 
-                        <!-- 부산 -->
+
                         <div class="mapWrap">
                             <div class="mapImg">
                                 <img src="{{ img_url('cop_acad/map/map_cop_bs.jpg') }}" alt="대구캠퍼스">
@@ -784,7 +1062,7 @@
                             </div>
                         </div>
 
-                        <!-- 광주 -->
+
                         <div class="mapWrap">
                             <div class="mapImg">
                                 <img src="{{ img_url('cop_acad/map/map_cop_kj.jpg') }}" alt="광주캠퍼스">
@@ -798,7 +1076,7 @@
                             </div>
                         </div>
 
-                        <!-- 제주 -->
+
                         <div class="mapWrap">
                             <div class="mapImg">
                                 <img src="{{ img_url('cop_acad/map/map_cop_jj.jpg') }}" alt="제주캠퍼스">
@@ -812,7 +1090,7 @@
                             </div>
                         </div>
 
-                        <!-- 전북 -->
+
                         <div class="mapWrap">
                             <div class="mapImg">
                                 <img src="{{ img_url('cop_acad/map/map_cop_jbjj.jpg') }}" alt="전북전주캠퍼스">
@@ -838,7 +1116,7 @@
                             </div>
                         </div>
 
-                        <!-- 진주 -->
+
                         <div class="mapWrap">
                             <div class="mapImg">
                                 <img src="{{ img_url('cop_acad/map/map_cop_jinj.jpg') }}" alt="진주캠퍼스">
@@ -853,7 +1131,8 @@
                         </div>
 
                     </div>
-                    <!-- notice3// -->
+                    -->
+
                 </div>
             </div>
         

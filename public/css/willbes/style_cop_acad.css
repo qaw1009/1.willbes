@@ -2,6 +2,9 @@
 .cop_acad .tx-color {
     color: #0c5dc0;
 }
+.PA .tx-color {
+    color: #0c5dc0;
+}
 .cop_acad .Menu .menu-List li.Acad a {
     background: url("../../img/willbes/cop_acad/icon_acad.png") no-repeat 0 2px;
     color: #2784d2;
@@ -375,6 +378,8 @@
 .tabBox.noticeBox_acad .List-Table li a img {
     margin-right: 5px;
 }
+
+
 /* Main Container : campus : Cop Acad */
 .tabWrap.noticeWrap_campus {
     height: 60px;
@@ -536,6 +541,34 @@
     color: #0c5dc0;
     text-align: center;
     border: 1px solid #0c5dc0;
+}
+/*캠퍼스 메인 오시는 길*/
+.PA .map_img {
+    position: relative;
+    float: left;
+    width: 580px;
+    height: 328px;
+    overflow: hidden;
+}
+.PA .map_img img {
+    position: absolute;
+    left:50%;
+    margin-left:-349px;
+}
+
+.PA .campus_info {
+    position: relative;
+    float: right;
+    width: 320px;
+    height: 328px;
+}
+.PA .campus_info dl dt {
+    border-top: 1px solid #e3e3e3;
+    padding: 25px 0;
+}
+.PA .campus_info dl dt:first-child {
+    border-top: none;
+    padding: 0 0 25px;
 }
 
 /* Main Container : QuickMenu : Cop */

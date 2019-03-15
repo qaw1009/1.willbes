@@ -1,5 +1,36 @@
-<div id="notice3">
-    <!-- 지도 534x250 -->
+<div class="noticeTabs campus c_both NSK mt50">
+    <div class="tabBox noticeBox_campus">
+
+    <!-- 노량진 -->
+    @if($campus_code == '605001')
+        <div id="campus1" class="tabContent">
+            <div class="map_img">
+                <img src="{{ img_url('cop_acad/map/map_cop_origin.jpg') }}" alt="노량진">
+                <span class="origin">노량진(본원)</span>
+            </div>
+            <div class="campus_info">
+                <dl>                                
+                    <dt>
+                        <div class="c-tit"><span class="tx-color">노량진</span> 캠퍼스 오시는 길</div>
+                        <div class="c-info">
+                            <div class="address">
+                                <span class="a-tit">주소</span>
+                                <span>
+                                    서울시동작구만양로105 2층<br/>
+                                    (서울시동작구노량진동116-2 2층)
+                                </span>
+                            </div>
+                            <div class="tel">
+                                <span class="a-tit">연락처</span>
+                                <span class="tx-color">1544-0336</span>
+                            </div>
+                        </div>
+                    </dt>
+                </dl>
+            </div>
+        </div>
+    @endif
+    
     <!-- 신림 -->
     @if($campus_code == '605002')
         <div class="mapWrap">
@@ -139,4 +170,5 @@
             </div>
         </div>
     @endif
+    </div>
 </div>

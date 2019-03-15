@@ -263,7 +263,7 @@
             });
         });
     </script>
-    <script src="/public/js/willbes/jquery.nav.js"></script>
+
     <script>
         $(function(e){
             var targetOffset= $("#evtContainer").offset().top;

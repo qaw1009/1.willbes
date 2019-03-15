@@ -256,9 +256,9 @@
             var lUrl = "";
 
             if(parseInt(no)==1 || parseInt(no)==3 || parseInt(no)== 5){
-                lUrl = "http://www.willbesgosi.net/yearpackagelecture/yearpackagelectureDetail.html?topMenu=018&topMenuName=&topMenuType=O&searchCategoryCode=018&searchLeccode=Y201900005&leftMenuLType=M0001&lecKType="
+                lUrl = "/package/index/cate/3035/pack/648001"
             }else{
-                lUrl = "http://www.willbesgosi.net/yearpackagelecture/yearpackagelectureDetail.html?topMenu=018&topMenuName=&topMenuType=O&searchCategoryCode=018&searchLeccode=Y201900005&leftMenuLType=M0001&lecKType="
+                lUrl = "/package/index/cate/3035/pack/648001"
             }
 
             location.href = lUrl;

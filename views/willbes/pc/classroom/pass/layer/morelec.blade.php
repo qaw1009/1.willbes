@@ -1,6 +1,7 @@
 <script>
-    data = [@foreach( $leclist as $key => $row )
-        '<tr>'+
+    var lecData = [];
+    lecData = [@foreach( $leclist as $key => $row )
+    '<tr>'+
     '<td class="btnClose"><a href="javascript:;" onclick="fnDel(this);"><img src="{{ img_url('sub/icon_delete.gif') }}"></a></td>'+
     '<td class="w-info passzone">'+
     '<dl class="w-info">'+
@@ -19,7 +20,7 @@
     '</tr>' ,
         @endforeach ''];
 </script>
-<form name="lecForm" id="lecForm" metho="GET" onsubmit="return false;">
+<form name="lecForm" id="lecForm" method="POST" onsubmit="return false;">
     <ul class="passzoneInfo tx-gray NGR">
         <li>· '무한PASS존'에서 수강하기 위한 강좌를 추가하는 메뉴입니다.</li>
         <li>· '수강할 강좌 검색' 후 체크박스를 클릭하시면, 우측 '강좌 선택내역'에 선택한 강좌가 추가됩니다.</li>
@@ -111,7 +112,6 @@
                                     <a class="bg-blue bd-dark-blue NSK" href="javascript:;" onclick="@if($row['IsTake'] == 'Y') alert('이미 등록한 강좌입니다.'); @else fnAppend({{$key}}); @endif">현재 강좌추가</a>
                                 </div>
                                 <div class="tabBox mt30" id="info-{{$row['ProdCode']}}">
-
                                 </div>
                             </div>
                         </td>
@@ -133,7 +133,7 @@
 <script>
     function fnAppend(idx)
     {
-        $('#addTable > tbody:last').append(data[idx]);
+        $('#addTable > tbody:last').append(lecData[idx]);
     }
 
     function fnDel(obj)
@@ -147,7 +147,7 @@
             $(".prodCheck").each(function(){
                if(!$(this).is(":disabled")){
                    $(this).prop("checked", true);
-                   $('#addTable > tbody:last').append(data[$(this).val()]);
+                   $('#addTable > tbody:last').append(lecData[$(this).val()]);
                }
             });
         } else {
@@ -189,7 +189,7 @@
 
     $(".prodCheck").on("change", function(){
         if($(this).is(":checked")){
-            $('#addTable > tbody:last').append(data[$(this).val()]);
+            $('#addTable > tbody:last').append(lecData[$(this).val()]);
         }
     });
 

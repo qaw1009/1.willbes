@@ -126,7 +126,7 @@
                                             <td class="w-data tx-left pl25">
                                                 <dl class="w-info">
                                                     <dt>
-                                                        경찰<span class="row-line">|</span>
+                                                        {{$row['SiteGroupName']}}<span class="row-line">|</span>
                                                         {{$row['SubjectName']}}<span class="row-line">|</span>
                                                         {{$row['wProfName']}}교수님
                                                         <span class="NSK ml15 nBox n{{ substr($row['wLectureProgressCcd'], -1)+1 }}">{{$row['wLectureProgressCcdName']}}</span>

@@ -48,6 +48,7 @@
                             <div>상품주문금액</div>
                             <div id="product-price" class="price tx-light-blue">0원</div>
                         </dt>
+                        <!--
                         <dt class="price-img">
                             <span class="row-line">|</span>
                             <img src="/public/img/willbes/sub/icon_plus.gif">
@@ -55,7 +56,7 @@
                         <dt>
                             <div>배송료</div>
                             <span id="trans-price" class="price tx-light-blue">0원</span>
-                        </dt>
+                        </dt> -->
                     </dl>
                 </li>
                 <li class="price-total">
@@ -113,13 +114,15 @@
             }
         });
 
+        /*
         if(price > 0){
             trans = 2500;
         } else {
             trans = 0;
         }
+        */
 
-        $("#trans-price").text(addComma(trans) + '원');
+        // $("#trans-price").text(addComma(trans) + '원');
         $("#product-price").text(addComma(price) + '원');
         $("#total-price").text(addComma(trans+price) + '원');
     }

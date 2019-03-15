@@ -67,10 +67,10 @@ var book_data = [];
         fnUpdateBookPrice();
     }
 
-    function fnBookAdd(obj, price)
+    function fnBookAdd(obj)
     {
         if($(obj).is(":checked")){
-            $('#book-order-table > tbody:last').append(book_data[$(obj).val()]);
+            $('#book-order-table > tbody:last').append(book_data[$(obj).val()]).end();
         }
         fnUpdateBookPrice();
     }
@@ -84,13 +84,15 @@ var book_data = [];
             price += $(this).data('price')
         });
 
+        /*
         if(price > 0){
             trans = 2500;
         } else {
             trans = 0;
         }
+        */
 
-        $("#trans-price").text(addComma(trans) + '원');
+        //$("#trans-price").text(addComma(trans) + '원');
         $("#book-price").text(addComma(price) + '원');
         $("#tot-price").text(addComma(trans+price) + '원');
     }

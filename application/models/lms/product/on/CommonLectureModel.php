@@ -593,7 +593,7 @@ class CommonLectureModel extends WB_Model
                         $data = [
                             'ProdCode' => $prodcode
                             , 'ContentTypeCcd' => $ContentTypeCcd[$i]
-                            , 'Content' => $Content[$i]
+                            , 'Content' => str_replace(array("\r\n","\r","\n"),'',$Content[$i])
                             , 'RegAdminIdx' => $this->session->userdata('admin_idx')
                             , 'RegIp' => $this->input->ip_address()
                         ];

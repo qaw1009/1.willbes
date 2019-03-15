@@ -473,17 +473,57 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-2">단과반소개
+                    <label class="control-label col-md-2">수강대상
+                    </label>
+                    <div class="col-md-10 form-inline item" >
+                        <input type="hidden" name="ContentTypeCcd[]" value="633005">
+                        <textarea id="Content_633005" name="Content[]" class="form-control" rows="7" title="수강대상" placeholder="">
+                            @foreach($data_content as $row)
+                                @if($row['ContentTypeCcd'] === '633005'){{$row['Content']}}@endif
+                            @endforeach
+                        </textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">강좌소개(강좌구성)
                     </label>
                     <div class="col-md-10 form-inline item" >
                         <input type="hidden" name="ContentTypeCcd[]" value="633002">
-                        <textarea id="Content_633002" name="Content[]" class="form-control" rows="7" title="소개" placeholder="">
+                        <textarea id="Content_633002" name="Content[]" class="form-control" rows="7" title="강좌소개(강좌구성)" placeholder="">
                             @foreach($data_content as $row)
                                 @if($row['ContentTypeCcd'] === '633002'){{$row['Content']}}@endif
                             @endforeach
                         </textarea>
                     </div>
                 </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">강좌효과
+                    </label>
+                    <div class="col-md-10 form-inline item" >
+                        <input type="hidden" name="ContentTypeCcd[]" value="633006">
+                        <textarea id="Content_633006" name="Content[]" class="form-control" rows="7" title="강좌효과" placeholder="">
+                            @foreach($data_content as $row)
+                                @if($row['ContentTypeCcd'] === '633006'){{$row['Content']}}@endif
+                            @endforeach
+                        </textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">수강후기
+                    </label>
+                    <div class="col-md-10 form-inline item" >
+                        <input type="hidden" name="ContentTypeCcd[]" value="633007">
+                        <textarea id="Content_633007" name="Content[]" class="form-control" rows="7" title="수강후기" placeholder="">
+                            @foreach($data_content as $row)
+                                @if($row['ContentTypeCcd'] === '633007'){{$row['Content']}}@endif
+                            @endforeach
+                        </textarea>
+                    </div>
+                </div>
+
 
 
                 <div class="form-group">
@@ -761,11 +801,29 @@
 
         $(document).ready(function() {
 
+            var $editor_5 = new cheditor();
+            $editor_5.config.editorHeight = '170px';
+            $editor_5.config.editorWidth = '100%';
+            $editor_5.inputForm = 'Content_633005';
+            $editor_5.run();
+
             var $editor_2 = new cheditor();
             $editor_2.config.editorHeight = '170px';
             $editor_2.config.editorWidth = '100%';
             $editor_2.inputForm = 'Content_633002';
             $editor_2.run();
+
+            var $editor_6 = new cheditor();
+            $editor_6.config.editorHeight = '170px';
+            $editor_6.config.editorWidth = '100%';
+            $editor_6.inputForm = 'Content_633006';
+            $editor_6.run();
+
+            var $editor_7 = new cheditor();
+            $editor_7.config.editorHeight = '170px';
+            $editor_7.config.editorWidth = '100%';
+            $editor_7.inputForm = 'Content_633007';
+            $editor_7.run();
 
             var prev_val;
             $('#site_code').focus(function () {
@@ -944,6 +1002,9 @@
             $regi_form.submit(function() {
 
                 getEditorBodyContent($editor_2);
+                getEditorBodyContent($editor_5);
+                getEditorBodyContent($editor_6);
+                getEditorBodyContent($editor_7);
 
                 var week_str = "";
                 for(var i=0; i<7; i++) {

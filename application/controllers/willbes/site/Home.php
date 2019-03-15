@@ -121,8 +121,8 @@ class Home extends \app\controllers\FrontController
             $data['best_product'] = $this->_productLectureBySubjectIdx('on_lecture', 2, $s_cate_code, 'Best');  // 과목별 2개씩 베스트 상품 조회
             $data['arr_main_banner'] = $this->_banner($s_cate_code);
 
-            // 9급공무원 카테고리에서만 노출
-            if ($s_cate_code == '3019') {
+            // 특정 카테고리에서만 노출 (9급, 7급, 세무직, 소방직)
+            if (in_array($s_cate_code, ['3019', '3020', '3022', '3023']) === true) {
                 $data['study_comment'] = $this->_boardStudyComment(6, $s_cate_code);
             }
         }

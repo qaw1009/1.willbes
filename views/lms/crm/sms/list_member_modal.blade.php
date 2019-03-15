@@ -153,7 +153,7 @@
                                     }
                                     /!*var checked = ($ori_selected_data.hasOwnProperty(row.MemIdx) === true) ? 'checked="checked"' : '';*!/
                                     var checked = '';
-                                    return '<input type="checkbox" name="is_checked" value="'+ val +'" class="flat" data-is-checked-idx="' + row.MemIdx + '" data-is-checked-id="' + row.MemId + '" ' + checked + '>';
+                                    return '<input type="checkbox" name="is_checked" value="'+ val +'" class="flat" data-is-checked-idx="' + row.MemIdx + '" data-is-checked-id="' + row.MemId + '" data-is-checked-name="' + row.MemName + '" ' + checked + '>';
                                 }}
                         ]
                     });
@@ -161,8 +161,8 @@
                     $('#btn_setting').on('click', function() {
                         var j=1;
                         var $params = {};
-                        $('input[name="is_checked"]:checked').each(function() {
-                            $params[$(this).data('is-checked-idx')] = [$(this).data('is-checked-id'), $(this).val()];
+                        $('input[name="is_checked"]:checked').each(function(index) {
+                            $params[$(this).data('is-checked-idx')] = [$(this).data('is-checked-id'), $(this).val(), $(this).data('is-checked-name')];
                         });
 
                         if (set_mem_idx != '') {
@@ -191,8 +191,10 @@
                                 $('input[name="mem_phone[]"]').val('');
                                 var i=1;
                                 $.each($params, function(key, value) {
+                                    console.log(value);
                                     $('#mem_idx_'+i).val(key);
                                     $('#mem_phone_'+i).val(value[1]);
+                                    $('#mem_name_'+i).val(value[2]);
                                     i++;
                                 });
                                 break;

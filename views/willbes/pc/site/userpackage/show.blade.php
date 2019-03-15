@@ -48,6 +48,11 @@
                                     <span class="price-txt">강좌할인금액</span>
                                     <span class="tx-pink" id="lecSalePrice">0원</span>
                                 </span>
+                                <span>
+                                    <span class="price-txt">&nbsp;&nbsp;&nbsp;</span>
+                                    <span class="tx-pink" id="lecSale"></span>
+                                    <input type="hidden" name="pre_sale" id="pre_sale" value="">
+                                </span>
                                 <span class="price-total tx-light-blue" id="totalPrice">0원</span>
                             </div>
                             @php
@@ -292,7 +297,7 @@
                 if(packSaleArray.length > 0) {
 
                     for(i=0;i<packSaleArray.length;i++) {
-                        if( parseInt(packSaleArray[i]['DiscNum']) == sel_count) {
+                        if( parseInt(packSaleArray[i]['DiscNum']) == sel_count) {       //해당갯수의 할인율이 없을 경우 . 이전에 적용된 할인율을 사용한다.
                             sale_rate = packSaleArray[i]['DiscRate'];
                         }
 
@@ -325,10 +330,13 @@
 
                 $price_total = ($lecPrice_total-$lecPrice_sale_total) + $bookPrice_total;
 
+                alert($sale_rate);
+
                 $("#lecPrice").text(addComma($lecPrice_total)+'원');
                 $("#bookPrice").text(addComma($bookPrice_total)+'원');
                 $("#lecSalePrice").text(addComma($lecPrice_sale_total)+'원');
                 $("#totalPrice").text(addComma($price_total)+'원');
+                ($sale_rate == 0) ? '' : $("#lecSale").text('('+$sale_rate+'% 할인)');
             };
 
             // 강좌상품 선택/해제

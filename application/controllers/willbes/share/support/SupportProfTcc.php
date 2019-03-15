@@ -55,7 +55,7 @@ class SupportProfTcc extends  BaseSupport
             ]*/
         ];
 
-        $column = 'b.BoardIdx,b.CampusCcd,b.TypeCcd,b.IsBest,b.AreaCcd
+        $column = 'b.BoardIdx,b.CampusCcd,b.TypeCcd,b.IsBest,b.AreaCcd, b.VideoUrl
                        ,b.Title,b.Content, (b.ReadCnt + b.SettingReadCnt) as TotalReadCnt
                        ,b.CampusCcd_Name, b.TypeCcd_Name,b.AreaCcd_Name, Category_NameString
                        ,b.SubjectName,b.CourseName,b.AttachData,DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm,
@@ -73,7 +73,7 @@ class SupportProfTcc extends  BaseSupport
             }
         }
 
-        $this->load->view('support/'.$view_type.'/notice', [
+        $this->load->view('support/'.$view_type.'/tcc', [
             'default_path' => $this->_default_path,
             'arr_base' => $arr_base,
             'arr_input' => $arr_input,

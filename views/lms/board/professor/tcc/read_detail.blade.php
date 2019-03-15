@@ -72,7 +72,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="">TCC 영상</label>
                     <div class="form-control-static col-md-10">
-                        {!! $data['VideoUrl'] !!}
+                        <a href="{{ $data['VideoUrl'] }}" target="_blank"><u>영상보기</u></a>
                     </div>
                 </div>
 

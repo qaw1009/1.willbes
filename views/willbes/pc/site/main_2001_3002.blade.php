@@ -70,18 +70,18 @@
             <div class="widthAuto">
                 <ul class="inner">
                     <li class="l1">
-                        <a href="http://www.willbescop.net/movie/event.html?event_cd=On_180327_yp">
-                            <img src="{{ img_url('cop_adm/flipped/flipped01.jpg') }}" alt="평생0원PASS">
+                        <a href="{{ site_url('/promotion/index/cate/3001/code/1009') }}">
+                            <img src="{{ img_url('cop/flipped/190304_cFlipped_520x740.jpg') }}" alt="평생0원PASS">
                         </a>
                     </li>
                     <li class="l2">
-                        <a href="http://www.willbescop.net/event/movie/event.html?event_cd=On_170831_p&topMenuType=O#main">
-                            <img src="{{ img_url('cop_adm/flipped/flipped02.jpg') }}" alt="2019 대비 기본이론<">
+                        <a href="{{ site_url('/promotion/index/cate/3001/code/1127') }}">
+                            <img src="{{ img_url('cop/flipped/flipped02.jpg') }}" alt="2단계 동형모의고사">
                         </a>
                     </li>
                     <li class="l3">
-                        <a href="http://www.willbescop.net/movie/event.html?event_cd=On_premium&topMenuType=O">
-                            <img src="{{ img_url('cop_adm/flipped/flipped03.jpg') }}" alt="2019 대비 심화이론/기출">
+                        <a href="{{ site_url('/promotion/index/cate/3001/code/1015') }}">
+                            <img src="{{ img_url('cop/flipped/190304_cFlipped_280x740.jpg') }}" alt="기본이론">
                         </a>
                     </li>
                 </ul>

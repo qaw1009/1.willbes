@@ -183,6 +183,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property RegGoodsModel $regGoodsModel                                        MockTest RegGoods Model Class
  * @property RegGroupModel $regGroupModel                                         MockTest RegGroup Model Class
  * @property SearchMockTestModel $searchMockTestModel                      Search MockTest Model Class
+ ***************** Predict *****************************************************************************
+ * @property PredictModel $predictModel                              predict Model Class
  ***************** FRONT *******************************************************************************
  * @property BaseProductFModel $baseProductFModel                            Product Base Model Class
  * @property ProfessorFModel $professorFModel                                    Professor Model Class

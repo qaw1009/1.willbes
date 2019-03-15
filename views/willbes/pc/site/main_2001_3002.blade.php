@@ -10,7 +10,7 @@
             <div class="widthAuto">
                 <!--iframe src="https://www.youtube.com/embed/lrZxQV21DE8?rel=0&modestbranding=1&showinfo=1&controls=2" frameborder="0" allowfullscreen=""></iframe-->
                 <a href="{{ site_url('/promotion/index/cate/3001/code/1019') }}">
-                    <img src="{{ img_url('cop/visual/visual_190213.jpg') }}" alt="전국 4,000명 동시수강">
+                    <img src="{{ img_url('cop_adm/visual/visual_190213.jpg') }}" alt="전국 4,000명 동시수강">
                 </a>
             </div>
         </div>

@@ -2540,6 +2540,7 @@ table.auTable tr td {
 }
 .w-info dt {
     float: left;
+    vertical-align: middle;
 }
 .w-info dt .nBox {
     display: inline-block;
@@ -3141,7 +3142,9 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
 }
 .willbes-Layer-Box.d3 .classInfo {
     padding-top: 20px;
+    line-height: 20px;
 }
+
 .willbes-Layer-Box.d3 table.classTable tr td {
     line-height: 20px !important;
 }

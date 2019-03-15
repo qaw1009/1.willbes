@@ -29,7 +29,7 @@
                             {{sess_data('mem_name')}}님
                         </li>
                         <li class="Login">
-                        <img src="{{ img_url('gnb/icon_memo.png') }}"> (2)
+                            <a href="#none"><img src="{{ img_url('gnb/icon_memo.png') }}"> (2)</a>
                         </li>
                         <li class="joinUs">
                             <a class="Tit" href="{{ app_url('/member/logout/', 'www') }}">로그아웃</a>

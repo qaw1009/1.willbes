@@ -58,7 +58,7 @@
 
     <div class="p_re evtContent" id="evtContainer">
         <div class="skybanner">
-            <div><a href="#event"><img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_c0_1.jpg" alt="환승이벤트" ></a></div>
+            <div><a href="#event"><img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_c_sky2_1.png" alt="환승이벤트" ></a></div>
         </div>
 
         <!-- 타이머 -->
@@ -66,7 +66,7 @@
             <div class="time_date" id="newTopDday">
                 <table width="1100px;" height="90px" border="0" cellpadding=0 cellspacing=0>
                     <tr>
-                        <td style="text-align:center;"><img src="http://file3.willbes.net/new_gosi/2019/01/EV190115_c0_1.jpg" alt=""  /></td>
+                        <td style="text-align:center;"><img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_c0_1.jpg" alt=""  /></td>
                         <td width="150" align="center" class="time_txt">마감까지 <br /><span>남은 시간은</span></td>
                         <td width="62" height="101" align="center"><img id="dd1" src="http://file.willbes.net/new_image/0.png" class="t_img" /></td>
                         <td width="62" height="101" align="center"><img id="dd2" src="http://file.willbes.net/new_image/0.png" class="t_img" /></td>

@@ -6,7 +6,7 @@ require_once APPPATH . 'controllers/willbes/share/support/SupportProfTcc.php';
 class Tcc extends SupportProfTcc
 {
     protected $_bm_idx = '101';       //bmidx : 강사게시판 -> TCC
-    protected $_default_path = '/prof/tpass';
+    protected $_default_path = '/prof';
 
     public function __construct()
     {

@@ -106,7 +106,7 @@
             </div>
         </div>
 
-        <div class="Section NSK mt90">
+        <div class="Section NG mt90">
             <div class="widthAuto">
                 {{-- study comment include --}}
                 @include('willbes.pc.site.main_partial.study_comment_' . $__cfg['SiteCode'])

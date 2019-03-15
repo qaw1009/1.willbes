@@ -29,8 +29,8 @@
         }
 
         .WB_con01 {background:#ebe4d2 url('http://file3.willbes.net/new_cop/2019/02/EV190218_01_bg.png') no-repeat center;}
-        .WB_con02{background:#590100 url(http://file3.willbes.net/new_cop/2019/02/EV190218_02_bg.png) no-repeat center;}
-        .WB_con03{background:#3e100c;}
+        .WB_con02{background:#590100 url('http://file3.willbes.net/new_cop/2019/02/EV190218_02_bg.png') no-repeat center;}
+        .WB_con03{background:#f8f9fb;}
         .WB_con04{background:#e8e8e8;}
     </style>
 

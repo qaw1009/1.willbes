@@ -3,8 +3,8 @@
     <div class="smallTit mb30">
         <p><span>솔직한 <strong>수강후기</strong><a href="#none" class="btn-study-comment" data-board-idx=""><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a></span></p>
     </div>
-    <div class="lecReviewBx nSlider">
-        <div class="sliderNumRv">
+    <div class="sliderNumV vSlider">
+        <div class="lecReview">
             @foreach($data['study_comment'] as $row)
                 <div class="lecReview">
                     <div class="imgBox cover">

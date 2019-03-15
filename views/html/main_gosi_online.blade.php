@@ -282,13 +282,13 @@
         </div>
     </div>
 
-    <div class="Section NSK mt90">
+    <div class="Section NG mt90">
         <div class="widthAuto">            
             <div class="smallTit mb30">          
                 <p><span>솔직한 <strong>수강후기</strong><a href="#none"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a></span></p>                                
             </div>
-            <div class="lecReviewBx nSlider">
-                <div class="sliderNumRv">
+            <div class="reviewBx">
+                <div class="sliderNumV vSlider">
                     <div class="lecReview">
                         <div class="imgBox cover">
                             <img class="coverImg" src="{{ img_url('cop/prof_cover.png') }}">
@@ -449,20 +449,19 @@
     });
 
     $(function() {
-    $('.sliderNumRv').bxSlider({
-        speed:1000,
+    $('.sliderNumV').bxSlider({
+        mode: 'vertical', 
         auto: true,
         controls: true,
-        pause: 4000,
-        pager: true,
+        infiniteLoop: true,
+        slideWidth: 1120,
         pagerType: 'short',
-        slideWidth:1120,
-        moveSlides:3,        
-        minSlides:3,
-        maxSlides:3,
+        minSlides: 3,
+        pause: 3000,
+        pager: true,
         onSliderLoad: function(){
-            $(".nSlider").css("visibility", "visible").animate({opacity:1}); 
-        }  
+            $(".vSlider").css("visibility", "visible").animate({opacity:1}); 
+        } 
     });
 });
 </script>

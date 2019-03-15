@@ -49,30 +49,16 @@
 
         .skybanner {
             position:fixed;
-            top:200px;
-            right:0;
+            bottom:20px;
+            right:10px;
             width:290px;
-            animation:upDown 1s infinite;
-            -webkit-animation:upDown 1s infinite;
         }
-
-        @@keyframes upDown{
-            from{margin-top:0}
-            60%{margin-top:-30px}
-            to{margin-top:0}
-        }
-        @@-webkit-keyframes upDown{
-             from{margin-top:0}
-             60%{margin-top:-30px}
-             to{margin-top:0}
-         }
-
     </style>
 
 
     <div class="p_re evtContent" id="evtContainer">
         <div class="skybanner">
-            <div><a href="#event"><img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_c_sky2.png" alt="환승이벤트" ></a></div>
+            <div><a href="#event"><img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_c_sky2_1.png" alt="환승이벤트" ></a></div>
         </div>
 
         <!-- 타이머 -->
@@ -196,7 +182,7 @@
 
         function daycountDown() {
             // 한달 전 날짜로 셋팅
-            event_day = new Date(2019,1,28,23,59,59);
+            event_day = new Date(2019,2,20,23,59,59);
             now = new Date();
             var timeGap = new Date(0, 0, 0, 0, 0, 0, (event_day - now));
 

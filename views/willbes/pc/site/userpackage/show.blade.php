@@ -330,7 +330,7 @@
 
                 $price_total = ($lecPrice_total-$lecPrice_sale_total) + $bookPrice_total;
 
-                alert($sale_rate);
+                //alert($sale_rate);
 
                 $("#lecPrice").text(addComma($lecPrice_total)+'원');
                 $("#bookPrice").text(addComma($bookPrice_total)+'원');

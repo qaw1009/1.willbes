@@ -163,24 +163,5 @@
     </div>
     <!-- End Container -->
 
-    <script type="text/javascript">
-        $(function() {
-            $('.sliderNumRv').bxSlider({
-                speed:1000,
-                auto: true,
-                controls: true,
-                pause: 4000,
-                pager: true,
-                pagerType: 'short',
-                slideWidth:1120,
-                moveSlides:3,
-                minSlides:3,
-                maxSlides:3,
-                onSliderLoad: function(){
-                    $(".nSlider").css("visibility", "visible").animate({opacity:1});
-                }
-            });
-        });
-    </script>
     {!! popup('657001', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
 @stop

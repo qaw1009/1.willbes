@@ -1,10 +1,9 @@
 @if(empty($data['study_comment']) === false)
-    <div id="WrapStudyComment" class="p_re"></div>
     <div class="smallTit mb30">
         <p><span>솔직한 <strong>수강후기</strong><a href="#none" class="btn-study-comment" data-board-idx=""><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a></span></p>
     </div>
-    <div class="sliderNumV vSlider">
-        <div class="lecReview">
+    <div class="reviewBx">
+        <div class="sliderNumV vSlider">
             @foreach($data['study_comment'] as $row)
                 <div class="lecReview">
                     <div class="imgBox cover">
@@ -22,6 +21,21 @@
     </div>
     <script type="text/javascript">
         $(document).ready(function() {
+            $('.sliderNumV').bxSlider({
+                mode: 'vertical',
+                auto: true,
+                controls: true,
+                infiniteLoop: true,
+                slideWidth: 1120,
+                pagerType: 'short',
+                minSlides: 3,
+                pause: 3000,
+                pager: true,
+                onSliderLoad: function(){
+                    $(".vSlider").css("visibility", "visible").animate({opacity:1});
+                }
+            });
+
             $('.btn-study-comment').click(function() {
                 var ele_id = 'WrapStudyComment';
                 var data = {

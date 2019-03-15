@@ -28,8 +28,8 @@
                         <li class="Login">
                             {{sess_data('mem_name')}}님
                         </li>
-                        <li class="ml5">
-                            <a href="{{ app_url('/classroom/message/index', 'www') }}"><img src="{{ img_url('gnb/icon_memo.png') }}"> ( <span class="num-New">2</span> )</a>
+                        <li class="ml10">
+                            <a href="{{ app_url('/classroom/message/index', 'www') }}"><img src="{{ img_url('gnb/icon_memo.png') }}"> <span class="num-New">2</span></a>
                         </li>
                         <li class="joinUs">
                             <a class="Tit" href="{{ app_url('/member/logout/', 'www') }}">로그아웃</a>

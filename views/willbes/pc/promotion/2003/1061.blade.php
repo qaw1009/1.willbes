@@ -87,7 +87,7 @@
 
         <div class="evtCtnsBox wb_top" >
             <img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_c1.png" alt="윌비스9급PASS X 세무PASS와 만나다!"  /><br>
-            <img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_c2.gif" alt="11-12월 기출문제풀이 커리큘럼 업데이트 중"  /><br>
+            <img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_c2_1.gif" alt="11-12월 기출문제풀이 커리큘럼 업데이트 중"  /><br>
             <img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_c3.png" alt=""  />
         </div><!--WB_top//-->
 

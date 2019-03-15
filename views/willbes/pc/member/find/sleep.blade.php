@@ -114,7 +114,7 @@
         <br/><br/><br/><br/><br/><br/>
     </div>
     <!-- End Container -->
-    <form name="vnoform" id="vnoform" method="post" action="/Member/ActivateSleep/">
+    <form name="vnoform" id="vnoform" method="post" action="/member/sleep/activate">
         {!! csrf_field() !!}
         <input type="hidden" name="jointype" value="655001" />
         <input type="hidden" name="enc_data" value="" />

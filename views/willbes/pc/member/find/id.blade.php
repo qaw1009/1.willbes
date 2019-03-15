@@ -95,7 +95,7 @@
                             가입한 아이핀 ID를 통해 인증합니다.
                         </div>
                         <div class="search-Btn btnAuto120 h36">
-                            <button type="button" id="btn_ipin" xonclick="ipin();" class="mem-Btn bg-blue bd-dark-blue">
+                            <button type="button" id="btn_ipin" class="mem-Btn bg-blue bd-dark-blue">
                                 <span>아이핀 인증</span>
                             </button>
                         </div>

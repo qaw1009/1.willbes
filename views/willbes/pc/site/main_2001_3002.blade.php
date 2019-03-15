@@ -85,7 +85,7 @@
                 </ul>
                 <div class="willbes-Bnr mt60">
                     <ul>
-                        <li><a href="http://www.willbescop.net/event/movie/event.html?event_cd=On_190102_p&topMenuType=O" target="_blank"><img src="{{ img_url('cop_adm/banner/bnr_190108.jpg') }}"></a></li>
+                        <li><a href="{{ site_url('/promotion/index/cate/3001/code/1023') }}" target="_blank"><img src="{{ img_url('cop_adm/banner/bnr_190108.jpg') }}" alt="적중은 역시 신광은"></a></li>
                     </ul>
                 </div>
             </div>
@@ -94,10 +94,11 @@
         <div class="Section Section2 pb110">
             <div class="widthAuto curriculumTit">
                 <img src="{{ img_url('cop_adm/visual/visual_tit02.jpg') }}" alt="신의법칙 퍼펙트 커리큘럼">
-                <a href="#none">신의법칙 자세히 보기 &gt;</a>
+                <a href="{{ site_url('/promotion/index/cate/3001/code/1129') }}">신의법칙 자세히 보기 &gt;</a>
             </div>
 
             <div class="widthAuto CurriStepBox">
+                <div class="CurriView"><a href="{{ site_url('/promotion/index/cate/3001/code/1126') }}">커리큘럼 자세히보기 &gt;</a></div>
                 <ul class="CurriStep">
                     <li class="active">
                         <div class="curriculumBox">
@@ -140,7 +141,7 @@
                 </ul>
                 <div class="curriculumTxt">
                     <span class="cop-color">모든 강의</span>를 평생 0원 PASS 하나로 <span class="cop-color">평생 수강</span>하실 수 있습니다.
-                    <span class="btn"><a href="http://www.willbescop.net/movie/event.html?event_cd=On_180327_yp" target="_blank">평생 0원 PASS 구매하기</a></span>
+                    <span class="btn"><a href="{{ site_url('/promotion/index/cate/3001/code/1009') }}">평생 0원 PASS 구매하기</a></span>
                 </div>
             </div>
             <!-- CurriStepBox //-->
@@ -155,18 +156,18 @@
                 <ul class="ProfCopBox mt60 mb100">
                     <li class="sliderHotIssue nSlider pick">
                         <div class="sliderNum">
-                            <div><img src="{{ img_url('cop_adm/prof/prof_ske.jpg') }}"></div>
-                            <div><img src="{{ img_url('cop_adm/prof/prof_ske02.jpg') }}"></div>
+                            <div><a href="#none"><img src="{{ img_url('cop_adm/prof/prof_ske.jpg') }}"></a></div>
+                            <div><a href="#none"><img src="{{ img_url('cop_adm/prof/prof_ske02.jpg') }}"></a></div>
                         </div>
                     </li>
                     <li class="sliderHotIssue nSlider pick">
                         <div class="sliderNum">
-                            <div><img src="{{ img_url('cop_adm/prof/prof_jjh.jpg') }}"></div>
-                            <div><img src="{{ img_url('cop_adm/prof/prof_jjh02.jpg') }}"></div>
+                            <div><a href="#none"><img src="{{ img_url('cop_adm/prof/prof_jjh.jpg') }}"></a></div>
+                            <div><a href="#none"><img src="{{ img_url('cop_adm/prof/prof_jjh02.jpg') }}"></a></div>
                         </div>
                     </li>
                     <li>
-                        <img src="{{ img_url('cop_adm/prof/prof_kwu.jpg') }}" alt="김원욱">
+                        <a href="#none"><img src="{{ img_url('cop_adm/prof/prof_kwu.jpg') }}" alt="김원욱"></a>
                     </li>
                 </ul>
             </div>
@@ -174,7 +175,7 @@
 
         <div class="Section Section2 mt90 mb90">
             <div class="widthAuto">
-                <img src="{{ img_url('cop_adm/visual/visual_03.jpg') }}" alt="합격수기">
+                <a href="{{ site_url('/promotion/index/cate/3001/code/1032') }}"><img src="{{ img_url('cop_adm/visual/visual_03.jpg') }}" alt="합격수기"></a>
             </div>
         </div>
 

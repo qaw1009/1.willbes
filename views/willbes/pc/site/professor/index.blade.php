@@ -13,22 +13,7 @@
         <h2>교수진 소개</h2>
         @include('willbes.pc.site.professor.lnb_menu_partial')
     </div>
-    <div class="Content p_re ml20">
-        <form id="url_form" name="url_form" method="GET">
-            @foreach($arr_input as $key => $val)
-                <input type="hidden" name="{{ $key }}" value="{{ $val }}"/>
-            @endforeach
-        </form>
-        @if(isset($arr_base['category']) === true)
-        <div class="curriWrap c_both">
-            {{-- 카테고리 --}}
-            <ul class="curriTabs c_both mb40">
-                @foreach($arr_base['category'] as $idx => $row)
-                    <li><a href="#none" onclick="goUrl('cate_code', '{{ $row['CateCode'] }}');" class="@if($def_cate_code == $row['CateCode']) on @endif">{{ $row['CateName'] }}</a></li>
-                @endforeach
-            </ul>
-        </div>
-        @endif
+    <div class="Content p_re ml20">        
         <div class="willbes-NoticeWrap mb60 c_both">
             {!! banner('교수진인덱스_신규강좌배너', 'sliderPromotion widthAuto460 f_left mr20', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
             <div class="willbes-listTable willbes-newLec widthAuto460 mt0">
@@ -44,6 +29,22 @@
             </div>
         </div>
         <!-- willbes-NoticeWrap -->
+
+        <form id="url_form" name="url_form" method="GET">
+            @foreach($arr_input as $key => $val)
+                <input type="hidden" name="{{ $key }}" value="{{ $val }}"/>
+            @endforeach
+        </form>
+        @if(isset($arr_base['category']) === true)
+        <div class="curriWrap c_both">
+            {{-- 카테고리 --}}
+            <ul class="curriTabs c_both mb20">
+                @foreach($arr_base['category'] as $idx => $row)
+                    <li><a href="#none" onclick="goUrl('cate_code', '{{ $row['CateCode'] }}');" class="@if($def_cate_code == $row['CateCode']) on @endif">{{ $row['CateName'] }}</a></li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
 
         <div class="curriWrap GM c_both">
             <div class="CurriBox">

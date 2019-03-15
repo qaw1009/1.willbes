@@ -283,7 +283,7 @@
                                 @if(empty($leclist_ing) == false)
                                     <div class="PASSZONE-Btn">
                                         <div class="w-answer">
-                                            <span class="w-chk-st"><a href="javascript:;" onclick="fnLike('all',null);><img src="{{ img_url('mypage/icon_star_on.png') }}"></a></span>
+                                            <span class="w-chk-st"><a href="javascript:;" onclick="fnLike('all',null);"><img src="{{ img_url('mypage/icon_star_on.png') }}"></a></span>
                                             <a href="javascript:;" onclick="fnHide('all',null);"><span class="aBox passBox waitBox NSK">숨기기</span></a>
                                         </div>
                                     </div>

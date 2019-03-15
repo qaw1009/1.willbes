@@ -315,7 +315,6 @@ class Announcement extends BaseBoard
         $board_next = $data_PN['next'];             //다음글
 
         $site_code = $data['SiteCode'];
-        $arr_cate_code = explode(',', $data['CateCode']);
         $data['arr_attach_file_idx'] = explode(',', $data['AttachFileIdx']);
         $data['arr_attach_file_path'] = explode(',', $data['AttachFilePath']);
         $data['arr_attach_file_name'] = explode(',', $data['AttachFileName']);
@@ -324,14 +323,19 @@ class Announcement extends BaseBoard
         if (empty($this->site_code) === false) {
             $site_code = $this->site_code;
         }
+
         $get_category_array = $this->_getCategoryArray($site_code);
         if (empty($get_category_array) === true) {
             $data['arr_cate_code'] = [];
         } else {
-            foreach ($arr_cate_code as $item => $code) {
-                if (empty($get_category_array[$code]) === false) {
-                    $data['arr_cate_code'][$code] = $get_category_array[$code];
+            if (empty($data['CateCode']) === false) {
+                foreach ($data['CateCode'] as $item => $code) {
+                    if (empty($get_category_array[$code]) === false) {
+                        $data['arr_cate_code'][$code] = $get_category_array[$code];
+                    }
                 }
+            } else {
+                $data['arr_cate_code'] = [];
             }
         }
 

@@ -9,7 +9,7 @@
         <div class="Section MainVisual">
             <div class="widthAuto">
                 <!--iframe src="https://www.youtube.com/embed/lrZxQV21DE8?rel=0&modestbranding=1&showinfo=1&controls=2" frameborder="0" allowfullscreen=""></iframe-->
-                <a href="{{ site_url('/promotion/index/cate/3001/code/1019') }}" target="_blank">
+                <a href="{{ site_url('/promotion/index/cate/3001/code/1019') }}">
                     <img src="{{ img_url('cop/visual/visual_190213.jpg') }}" alt="전국 4,000명 동시수강">
                 </a>
             </div>
@@ -70,24 +70,24 @@
             <div class="widthAuto">
                 <ul class="inner">
                     <li class="l1">
-                        <a href="http://www.willbescop.net/movie/event.html?event_cd=On_180327_yp" target="_blank">
+                        <a href="http://www.willbescop.net/movie/event.html?event_cd=On_180327_yp">
                             <img src="{{ img_url('cop_adm/flipped/flipped01.jpg') }}" alt="평생0원PASS">
                         </a>
                     </li>
                     <li class="l2">
-                        <a href="http://www.willbescop.net/event/movie/event.html?event_cd=On_170831_p&topMenuType=O#main" target="_blank">
+                        <a href="http://www.willbescop.net/event/movie/event.html?event_cd=On_170831_p&topMenuType=O#main">
                             <img src="{{ img_url('cop_adm/flipped/flipped02.jpg') }}" alt="2019 대비 기본이론<">
                         </a>
                     </li>
                     <li class="l3">
-                        <a href="http://www.willbescop.net/movie/event.html?event_cd=On_premium&topMenuType=O" target="_blank">
+                        <a href="http://www.willbescop.net/movie/event.html?event_cd=On_premium&topMenuType=O">
                             <img src="{{ img_url('cop_adm/flipped/flipped03.jpg') }}" alt="2019 대비 심화이론/기출">
                         </a>
                     </li>
                 </ul>
                 <div class="willbes-Bnr mt60">
                     <ul>
-                        <li><a href="{{ site_url('/promotion/index/cate/3001/code/1023') }}" target="_blank"><img src="{{ img_url('cop_adm/banner/bnr_190108.jpg') }}" alt="적중은 역시 신광은"></a></li>
+                        <li><a href="{{ site_url('/promotion/index/cate/3001/code/1023') }}"><img src="{{ img_url('cop_adm/banner/bnr_190108.jpg') }}" alt="적중은 역시 신광은"></a></li>
                     </ul>
                 </div>
             </div>

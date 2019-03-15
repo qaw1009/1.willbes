@@ -348,10 +348,10 @@
 .reviewBx .sliderNumV:after {content:''; display: block; clear:both}
 
 .reviewBx .bx-wrapper .bx-prev {
-    background: url("../../img/willbes/prof/btn_prev.png") no-repeat 0 0 !important;
+    background: url("../../img/willbes/prof/btn_prev_V.png") no-repeat 0 0 !important;
 }
 .reviewBx .bx-wrapper .bx-next {
-    background: url("../../img/willbes/prof/btn_next.png") no-repeat 0 0 !important;
+    background: url("../../img/willbes/prof/btn_next_V.png") no-repeat 0 0 !important;
     left: 20px;
 }
 .reviewBx .bx-wrapper .bx-controls-direction {

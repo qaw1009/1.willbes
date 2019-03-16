@@ -4670,7 +4670,7 @@ table.counselTable .w-info .Detail-gradeBox {
 
 /* calendarTable */
 .calendarTable {
-    width: 68%;
+    width: 100%;
 }
 table.calendar {
     width: 100%;
@@ -4680,7 +4680,7 @@ tr.calendar_week td,
 tr.calendar_day td {
     border-top: 1px solid #bebebe;
     border-left: 1px solid #bebebe;
-    font-size: 12px;
+    font-size: 13px;
 }
 tr.calendar_week td:first-child,
 tr.calendar_day td:first-child {

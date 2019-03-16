@@ -51,6 +51,7 @@
                             <li class="Acad">
                                 <a class="willbes-Acad-Tit {{ $active_class }}" href="{{ $menu_row['MenuUrl'] }}" target="_{{ $menu_row['UrlTarget'] }}">{{ $menu_row['MenuName'] }}</a>                                
                                 <dl class="sns-Btn">
+                                    @if($__cfg['SiteGroupCode'] === '1001')
                                     <!--경찰-->                                    
                                     <dt>
                                         <a href="https://www.facebook.com/willbescop" target="_blank">
@@ -67,7 +68,9 @@
                                             <img src="{{ img_url('gnb/icon_youtube.png') }}" alt="유튜브">
                                         </a>
                                     </dt>
+                                    @endif
 
+                                    @if($__cfg['SiteGroupCode'] === '1002')
                                     <!--공무원-->
                                     <dt>
                                         <a href="https://www.facebook.com/willbesgosi" target="_blank">
@@ -84,6 +87,7 @@
                                             <img src="{{ img_url('gnb/icon_youtube.png') }}" alt="유튜브">
                                         </a>
                                     </dt>
+                                    @endif
                                 </dl>
                             </li>
                         @endif

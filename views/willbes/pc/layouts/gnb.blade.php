@@ -182,7 +182,7 @@
             <!-- End willbes Setting -->
         </li>
         <li>
-            <a class="intro" href="#none">
+            <a class="intro" href="//{{app_to_env_url('www.willbes.net/company/')}}">
                 <img src="{{ img_url('gnb/icon_intro' . $_gnb_img_size . '.gif') }}">
                 <div class="Txt">윌비스<br/>회사소개</div>
             </a>

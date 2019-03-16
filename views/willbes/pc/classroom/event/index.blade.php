@@ -36,8 +36,8 @@
                 <div class="willbes-Lec-Selected willbes-Mypage-Selected willbes-Mypage-Selected-Search tx-gray">
                     <span class="w-data">
                         기간검색 &nbsp;
-                        <input type="text" id="search_start_date" name="search_start_date" value="{{ element('0', $arr_search_text) }}" title="검색시작일자" class="iptDate" maxlength="10" autocomplete="off"/> ~&nbsp;
-                        <input type="text" id="search_end_date" name="search_end_date" value="{{ element('1', $arr_search_text) }}" title="검색종료일자" class="iptDate" maxlength="10" autocomplete="off"/>
+                        <input type="text" id="search_start_date" name="search_start_date" value="{{ element('0', $arr_search_text) }}" title="검색시작일자" class="iptDate datepicker" maxlength="10" autocomplete="off"/> ~&nbsp;
+                        <input type="text" id="search_end_date" name="search_end_date" value="{{ element('1', $arr_search_text) }}" title="검색종료일자" class="iptDate datepicker" maxlength="10" autocomplete="off"/>
                     </span>
                     <span class="w-month">
                         <ul>

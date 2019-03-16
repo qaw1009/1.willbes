@@ -11025,6 +11025,6 @@ table.acadlecInfoPackageTable tr.Top td {
     }
 }
 
-_:-ms-fullscreen, :root .table-condensed {
+.table-condensed {
     width: 250px !important;
 }

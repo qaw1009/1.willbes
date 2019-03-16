@@ -242,24 +242,24 @@
                             <tr>
                                 <th class="Tit">공무원</th>
                                 <td>
-                                    <a href="#{{ site_url('/pass/home/index/cate/3001', 'pass') }}" target="_blank">노량진</a>
-                                    <a href="#{{ app_url('/pass/home/index', 'pass') }}" target="_blank">인천</a>
-                                    <a href="#{{ app_url('/pass/home/index', 'pass') }}" target="_blank">대구</a>
-                                    <a href="#{{ app_url('/pass/home/index', 'pass') }}" target="_blank">부산</a>
+                                    <a href="{{ site_url('/pass/home/index/cate/3001', 'pass') }}" target="_blank">노량진</a>
+                                    <a href="{{ app_url('/pass/home/index', 'pass') }}" target="_blank">인천</a>
+                                    <a href="{{ app_url('/pass/home/index', 'pass') }}" target="_blank">대구</a>
+                                    <a href="{{ app_url('/pass/home/index', 'pass') }}" target="_blank">부산</a>
                                 </td>
                             </tr>
                             <tr>
                                 <th class="Tit">경찰</th>
                                 <td>
-                                    <a href="#{{ app_url('/pass/campus/show/code/605001', 'police') }}" target="_blank">노량진</a>
-                                    <a href="#{{ app_url('/pass/campus/show/code/605002', 'police') }}" target="_blank">신림</a>
-                                    <a href="#{{ app_url('/pass/campus/show/code/605005', 'police') }}" target="_blank">인천</a>
-                                    <a href="#{{ app_url('/pass/campus/show/code/605004', 'police') }}" target="_blank">대구</a>
-                                    <a href="#{{ app_url('/pass/campus/show/code/605003', 'police') }}" target="_blank">부산</a>
-                                    <a href="#{{ app_url('/pass/campus/show/code/605006', 'police') }}" target="_blank">광주</a>
-                                    <a href="#{{ app_url('/pass/campus/show/code/605009', 'police') }}" target="_blank">제주</a>
-                                    <a href="#{{ app_url('/pass/campus/show/code/605007', 'police') }}" target="_blank">전북</a>
-                                    <a href="#{{ app_url('/pass/campus/show/code/605008', 'police') }}" target="_blank">진주</a>
+                                    <a href="{{ app_url('/pass/campus/show/code/605001', 'police') }}" target="_blank">노량진</a>
+                                    <a href="{{ app_url('/pass/campus/show/code/605002', 'police') }}" target="_blank">신림</a>
+                                    <a href="{{ app_url('/pass/campus/show/code/605005', 'police') }}" target="_blank">인천</a>
+                                    <a href="{{ app_url('/pass/campus/show/code/605004', 'police') }}" target="_blank">대구</a>
+                                    <a href="{{ app_url('/pass/campus/show/code/605003', 'police') }}" target="_blank">부산</a>
+                                    <a href="{{ app_url('/pass/campus/show/code/605006', 'police') }}" target="_blank">광주</a>
+                                    <a href="{{ app_url('/pass/campus/show/code/605009', 'police') }}" target="_blank">제주</a>
+                                    <a href="{{ app_url('/pass/campus/show/code/605007', 'police') }}" target="_blank">전북</a>
+                                    <a href="{{ app_url('/pass/campus/show/code/605008', 'police') }}" target="_blank">진주</a>
                                 </td>
                             </tr>
                             <tr>

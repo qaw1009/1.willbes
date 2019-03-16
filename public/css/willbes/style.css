@@ -4670,7 +4670,7 @@ table.counselTable .w-info .Detail-gradeBox {
 
 /* calendarTable */
 .calendarTable {
-    width: 100%;
+    width: 68%;
 }
 table.calendar {
     width: 100%;
@@ -11025,4 +11025,6 @@ table.acadlecInfoPackageTable tr.Top td {
     }
 }
 
-
+.datepicker {
+    font-size: 11px !important
+}

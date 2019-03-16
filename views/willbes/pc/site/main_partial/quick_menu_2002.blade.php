@@ -6,5 +6,5 @@
     <!--li><a href="#map_campus">학원 오시는 길</a></li-->
     <li><a href="{{ front_url('/consultManagement/index') }}">1:1 방문상담</a></li>
     <li><a href="{{ front_url('/offinfo/gallery/index') }}">학원 갤러리</a></li>
-    <li><a href="{{ front_url('/lecture/index/cate/3001/pattern/free?course_idx=1077') }}" target="_blank">보강동영상</a></li>
+    <li><a href="{{ site_url('/lecture/index/cate/3001/pattern/free?course_idx=1077') }}" target="_blank">보강동영상</a></li>
 </ul>

@@ -50,6 +50,25 @@
                             @php $active_class = $__cfg['IsPassSite'] === true ? 'strong' : ''; @endphp
                             <li class="Acad">
                                 <a class="willbes-Acad-Tit {{ $active_class }}" href="{{ $menu_row['MenuUrl'] }}" target="_{{ $menu_row['UrlTarget'] }}">{{ $menu_row['MenuName'] }}</a>
+                                <!--경찰-->
+                                <dl class="sns-Btn">
+                                    <dt>
+                                        <a href="#none">
+                                            <img src="{{ img_url('gnb/icon_facebook.gif') }}">
+                                        </a>
+                                    </dt>
+                                    <dt>
+                                        <a href="#none">
+                                            <img src="{{ img_url('gnb/icon_linkedin.gif') }}">
+                                        </a>
+                                    </dt>
+                                    <dt>
+                                        <a href="#none">
+                                            <img src="{{ img_url('gnb/icon_youtube.gif') }}">
+                                        </a>
+                                    </dt>
+                                </dl>
+                                <!--공무원-->
                                 <dl class="sns-Btn">
                                     <dt>
                                         <a href="#none">

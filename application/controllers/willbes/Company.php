@@ -14,6 +14,11 @@ class Company extends \app\controllers\FrontController
 
     }
 
+    public function index()
+    {
+        return $this->load->view('/company/sub_01_01');
+    }
+
     public function sub_01_01()
     {
         return $this->load->view('/company/sub_01_01');

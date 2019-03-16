@@ -193,7 +193,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="http://www.willbescop.net/movie/event.html?event_cd=Off_171031_p&topMenuType=F#main" target="_blank">
+                    <a href="{{ site_url('/pass/promotion/index/code/1128') }}" target="_blank">
                         <img src="http://file3.willbes.net/new_cop/2019/01/EV190102P_03_tap02.jpg" alt="" class="off"/>
                         <img src="http://file3.willbes.net/new_cop/2019/01/EV190102P_03_tap02on.jpg" alt="" class="on"/>
                     </a>

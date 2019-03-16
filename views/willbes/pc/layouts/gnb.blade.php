@@ -54,17 +54,17 @@
                                 <dl class="sns-Btn">
                                     <dt>
                                         <a href="#none">
-                                            <img src="{{ img_url('gnb/icon_facebook.gif') }}">
+                                            <img src="{{ img_url('gnb/icon_facebook.png') }}" alt="페이스북">
                                         </a>
                                     </dt>
                                     <dt>
                                         <a href="#none">
-                                            <img src="{{ img_url('gnb/icon_linkedin.gif') }}">
+                                            <img src="{{ img_url('gnb/icon_Instagram.png') }}" alt="인스타그램">
                                         </a>
                                     </dt>
                                     <dt>
                                         <a href="#none">
-                                            <img src="{{ img_url('gnb/icon_youtube.gif') }}">
+                                            <img src="{{ img_url('gnb/icon_youtube.png') }}" alt="유튜브">
                                         </a>
                                     </dt>
                                 </dl>
@@ -72,17 +72,17 @@
                                 <dl class="sns-Btn">
                                     <dt>
                                         <a href="#none">
-                                            <img src="{{ img_url('gnb/icon_facebook.gif') }}">
+                                            <img src="{{ img_url('gnb/icon_facebook.gif') }}" alt="페이스북">
                                         </a>
                                     </dt>
                                     <dt>
                                         <a href="#none">
-                                            <img src="{{ img_url('gnb/icon_linkedin.gif') }}">
+                                            <img src="{{ img_url('gnb/icon_linkedin.gif') }}" alt="페이스북">
                                         </a>
                                     </dt>
                                     <dt>
                                         <a href="#none">
-                                            <img src="{{ img_url('gnb/icon_twitter.gif') }}">
+                                            <img src="{{ img_url('gnb/icon_twitter.gif') }}" alt="네이버TV">
                                         </a>
                                     </dt>
                                 </dl>

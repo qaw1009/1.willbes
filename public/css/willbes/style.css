@@ -11024,6 +11024,11 @@ table.acadlecInfoPackageTable tr.Top td {
         margin: 30px 0 0 0;
     }
 }
+
+/*기간검색 달력 사이즈*/
+.datepicker {
+    width: 250px !important;
+}
 .table-condensed * {
     font-size:11px !important
 }

@@ -230,7 +230,37 @@
         var IsSelLecCount = "{{$data['IsSelLecCount']}}";
         var SelCount = "{{$data['SelCount']}}";
 
+
+
+
         $(document).ready(function() {
+
+            var tempSaleArray = [];
+            var prodcode_sub_cnt = $("input:checkbox[name='prod_code_sub[]']").length;
+            var pre_rate = 0;
+
+            if(packSaleArray.length > 0) {
+                for (i = 1; i <= prodcode_sub_cnt; i++) {
+                    for (j = 0; j < packSaleArray.length; j++) {
+                        if (i == packSaleArray[j]['DiscNum']) {
+                            num_rate = packSaleArray[j]['DiscRate'];        {{--현재 갯수의 할인율--}}
+                            pre_rate = packSaleArray[j]['DiscRate'];        {{--이전 할인율 저장 : 해당갯수의 할인율이 존재하지 않을경우 이전 할인율 적용--}}
+                        } else {
+                            num_rate = pre_rate;
+                            pre_rate = pre_rate;
+                        }
+                    }
+                    //console.log(num_rate + ' - ' + pre_rate);
+                    tempSaleArray.push({'DiscNum': i, 'DiscRate': num_rate});
+                }
+            }
+
+//            console.log(tempSaleArray);
+
+            for(i=0;i<tempSaleArray.length;i++) {
+                console.log(tempSaleArray[i]['DiscNum'] +' - '+tempSaleArray[i]['DiscRate']);
+            }
+
 
             $(".chk_products,.chk_books").change( function() {
 
@@ -293,19 +323,24 @@
             sale_rate_check = function() {
                 var sel_count = parseInt($regi_form.find('.lecture-price').length);
                 var sale_rate = 0;
-
+                {{--
                 if(packSaleArray.length > 0) {
-
                     for(i=0;i<packSaleArray.length;i++) {
                         if( parseInt(packSaleArray[i]['DiscNum']) == sel_count) {       //해당갯수의 할인율이 없을 경우 . 이전에 적용된 할인율을 사용한다.
                             sale_rate = packSaleArray[i]['DiscRate'];
                         }
-
+                    }
+                }
+                --}}
+                if(tempSaleArray.length > 0) {
+                    for(i=0;i<tempSaleArray.length;i++) {
+                        if( parseInt(tempSaleArray[i]['DiscNum']) == sel_count) {       //해당갯수의 할인율이 없을 경우 . 이전에 적용된 할인율을 사용한다.
+                            sale_rate = tempSaleArray[i]['DiscRate'];
+                        }
                     }
                 }
                 return sale_rate;
             };
-
 
             price_cal = function() {
                 var $lecPrice_total = 0;

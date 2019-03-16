@@ -7752,6 +7752,8 @@ table.PassZoneTable .w-data {
 .willbes-Layer-PassBox.abs {
     display: none;
     position: absolute;
+    left:50%;
+    margin-left: -50%;
     z-index: 110;
     border: 1px solid #2f2f2f;
 }

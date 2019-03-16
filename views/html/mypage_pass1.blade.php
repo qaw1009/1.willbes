@@ -732,11 +732,11 @@
                         <div class="LeclistTable">
                             <table cellspacing="0" cellpadding="0" class="listTable under-gray tx-gray">
                                 <colgroup>
-                                    <col style="width: 50px;">
-                                    <col style="width: 55px;">
-                                    <col style="width: 55px;">
-                                    <col style="width: 80px;">
-                                    <col style="width: 320px;">
+                                    <col style="width: 5%;">
+                                    <col style="width: 15%;">
+                                    <col style="width: 10%;">
+                                    <col style="width: 15%;">
+                                    <col >
                                 </colgroup>
                                 <thead>
                                     <tr>

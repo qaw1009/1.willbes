@@ -676,7 +676,7 @@
         </div>
         <!-- willbes-Mypage-Tabs -->
 
-        <div id="MoreLec" class="willbes-Layer-PassBox willbes-Layer-PassBox900 h1100 abs">
+        <div id="MoreLec" class="willbes-Layer-PassBox willbes-Layer-PassBox1100 h1100 abs">
             <a class="closeBtn" href="#none" onclick="closeWin('MoreLec')">
                 <img src="{{ img_url('sub/close.png') }}">
             </a>
@@ -684,7 +684,7 @@
 
             <div class="lecMoreWrap">
 
-                <div class="PASSZONE-List widthAuto570">
+                <div class="PASSZONE-List widthAuto770">
                     <ul class="passzoneInfo tx-gray NGR">
                         <li>· '무한PASS존'에서 수강하기 위한 강좌를 추가하는 메뉴입니다.</li>
                         <li>· '수강할 강좌 검색' 후 체크박스를 클릭하시면, 우측 '강좌 선택내역'에 선택한 강좌가 추가됩니다.</li>
@@ -732,11 +732,11 @@
                         <div class="LeclistTable">
                             <table cellspacing="0" cellpadding="0" class="listTable under-gray tx-gray">
                                 <colgroup>
-                                    <col style="width: 50px;">
-                                    <col style="width: 55px;">
-                                    <col style="width: 55px;">
-                                    <col style="width: 80px;">
-                                    <col style="width: 320px;">
+                                    <col style="width: 5%;">
+                                    <col style="width: 15%;">
+                                    <col style="width: 10%;">
+                                    <col style="width: 15%;">
+                                    <col >
                                 </colgroup>
                                 <thead>
                                     <tr>
@@ -750,11 +750,11 @@
                                 <tbody>
                                     <tr class="replyList passzone-Leclist">
                                         <td><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></td>
-                                        <td class="w-sbj">국어</td>
+                                        <td class="w-sbj">국어 국어 국어</td>
                                         <td class="w-prof">정채영</td>
                                         <td class="w-type">문제풀이</td>
                                         <td class="w-info passzone">
-                                            <div class="w-tit tx-left">국어[현대] 문학종결자 문학 집중강의 (5월-6월)</div>
+                                            <div class="w-tit tx-left">국어[현대] 문학종결자 문학 집중강의 (5월-6월) 국어[현대] 문학종결자 문학 집중강의 (5월-6월) 국어[현대] 문학종결자 문학 집중강의 (5월-6월)</div>
                                             <dl class="w-info">
                                                 <dt>강의수 : 70강</dt>
                                                 <dt><span class="row-line">|</span></dt>

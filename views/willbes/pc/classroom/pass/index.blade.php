@@ -394,14 +394,14 @@
             </div>
             <!-- willbes-Mypage-Tabs -->
             @if(empty($passinfo) == false)
-            <div id="MoreLec" class="willbes-Layer-PassBox willbes-Layer-PassBox900 h1100 abs">
+            <div id="MoreLec" class="willbes-Layer-PassBox willbes-Layer-PassBox1100 h1100 abs">
                 <a class="closeBtn" href="#none" onclick="closeWin('MoreLec');">
                     <img src="{{ img_url('sub/close.png') }}">
                 </a>
                 <div class="Layer-Tit tx-dark-black NG">강좌추가</div>
 
                 <div class="lecMoreWrap">
-                    <div class="PASSZONE-List widthAuto570" id="lecList"> </div>
+                    <div class="PASSZONE-List widthAuto770" id="lecList"> </div>
                     <div class="PASSZONE-Add widthAuto260">
                         <div class="Tit tx-light-black NG">강좌선택내역</div>
                         <div class="PASSZONE-Add-Grid">

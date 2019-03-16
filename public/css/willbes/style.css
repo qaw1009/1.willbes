@@ -3710,8 +3710,9 @@ table.classTable tr td.w-data {
 .LeclistTable .listTable tr th,
 .LeclistTable .listTable tr td {
     text-align: center;
-    line-height: 40px !important;
+    line-height: 1.5 !important;
     letter-spacing: 0;
+    padding:15px 0;
 }
 .LeclistTable .csTable tr td {
     line-height: 1.4 !important;
@@ -3725,7 +3726,6 @@ table.classTable tr td.w-data {
     background: #e4e4e4;
     width: 1px;
     height: 11px;
-    margin: 14px 0;
 }
 .LeclistTable .listTable tbody tr td.w-free .w-sp {
     float: inherit;
@@ -7752,6 +7752,8 @@ table.PassZoneTable .w-data {
 .willbes-Layer-PassBox.abs {
     display: none;
     position: absolute;
+    left:50%;
+    margin-left: -50%;
     z-index: 110;
     border: 1px solid #2f2f2f;
 }
@@ -8097,7 +8099,7 @@ table.PassZoneTable .w-data {
     width: 60px;
 }
 .PASSZONE-List .willbes-Lec-Search .subBtn a {
-    width: 60px;
+    /*width: 60px;*/
     height: 27px;
     font-size: 12px;
     line-height: 18px;

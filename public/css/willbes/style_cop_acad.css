@@ -107,23 +107,36 @@
 }
 
 /* Main Container : acad_infoBox : Cop Acad */
+
 .caProfBox li {
     position: relative;
     display: inline;
     float: left;
+    width: 213px;
     height: 297px;
-    margin-right: 12px;
-    margin-bottom: 12px;
+    margin-right:14px;
+    margin-bottom: 14px;
+    overflow: hidden;
     background: url("../../img/willbes/cop_acad/prof/prof_temp.jpg") no-repeat 0 0;
 }
-.caProfBox li:nth-child(4),
+.caProfBox li:first-child,
+.caProfBox li:nth-child(6){
+    margin-right:13px;
+}
+.caProfBox li:nth-child(5),
 .caProfBox li:last-child {
     margin-right:0;
+}
+
+.caProfBox li img {
+    position: absolute;
+    left:50%;
+    margin-left: -120px;
 }
 .caProfBox .caProfBtsn {
     position: absolute;
     top:170px;
-    left:30px;
+    left:20px;
     font-size: 14px;
 }
 .caProfBox .caProfBtsn a {

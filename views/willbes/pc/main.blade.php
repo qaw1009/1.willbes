@@ -242,7 +242,7 @@
                             <tr>
                                 <th class="Tit">공무원</th>
                                 <td>
-                                    <a href="{{ site_url('/pass/home/index/cate/3001', 'pass') }}" target="_blank">노량진</a>
+                                    <a href="{{ app_url('/pass/home/index/cate/3001', 'pass') }}" target="_blank">노량진</a>
                                     <a href="{{ app_url('/pass/home/index', 'pass') }}" target="_blank">인천</a>
                                     <a href="{{ app_url('/pass/home/index', 'pass') }}" target="_blank">대구</a>
                                     <a href="{{ app_url('/pass/home/index', 'pass') }}" target="_blank">부산</a>

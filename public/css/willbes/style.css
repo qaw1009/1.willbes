@@ -3710,7 +3710,7 @@ table.classTable tr td.w-data {
 .LeclistTable .listTable tr th,
 .LeclistTable .listTable tr td {
     text-align: center;
-    line-height: 40px !important;
+    line-height: 1.5;
     letter-spacing: 0;
 }
 .LeclistTable .csTable tr td {

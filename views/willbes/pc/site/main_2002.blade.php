@@ -185,6 +185,7 @@
             </div>
         </div>
 
+        <!--                            
         <div class="Section Bnr mt50">
             <div class="widthAuto">
                 <div class="willbes-Bnr">
@@ -194,6 +195,7 @@
                 </div>
             </div>
         </div>
+        -->
 
         <div class="Section Section4 mb50 mt30">
             @include('willbes.pc.site.main_partial.campus_' . $__cfg['SiteCode'])

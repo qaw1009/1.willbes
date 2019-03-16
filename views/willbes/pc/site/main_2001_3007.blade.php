@@ -9,21 +9,21 @@
         <div class="Section mt30">
             <div class="widthAuto bnrSec01">
                 <div>
-                    <a href="{{ site_url('/lecture/index/cate/3007/pattern/only?course_idx=1004') }}">
+                    <a href="{{ site_url('/promotion/index/cate/3007/code/1043') }}">
                         <img src="{{ img_url('cop_sea/banner/bnr_756_01.jpg') }}" alt="기본이론">
                     </a>
                 </div>
                 <ul>
-                    <li><a href="{{ site_url('/lecture/index/cate/3007/pattern/only?subject_idx=1031') }}"><img src="{{ img_url('cop_sea/banner/bnr_360_01.jpg') }}" alt="공득인 핵심이론"></a></li>
-                    <li><a href="{{ site_url('/lecture/show/cate/3007/pattern/only/prod-code/132243') }}"><img src="{{ img_url('cop_sea/banner/bnr_360_02.jpg') }}" alt="공득인 핵심이론"></a></li>
+                    <li><a href="{{ site_url('/lecture/index/cate/3007/pattern/only?subject_idx=1031') }}"><img src="{{ img_url('cop_sea/banner/bnr_360_01.jpg') }}" alt="공득인 해양경찰학개론 핵심이론"></a></li>
+                    <li><a href="{{ site_url('/lecture/show/cate/3007/pattern/only/prod-code/132243') }}"><img src="{{ img_url('cop_sea/banner/bnr_360_02.jpg') }}" alt="공득인 해사법규 핵심이론"></a></li>
                 </ul>
             </div>
         </div>
 
         <div class="Section mt30">
             <div class="widthAuto bnrSec02">
-                <div><a href="{{ site_url('/professor/show/cate/3007/prof-idx/50547/?subject_idx=1004&subject_name=형사소송법') }}"><img src="{{ img_url('cop_sea/banner/bnr_1120_01.jpg') }}" alt="기본이론"></a></div>
-                <div><a href="#none"><img src="{{ img_url('cop_sea/banner/bnr_1120_02.jpg') }}" alt="기본이론"></a></div>
+                <div><a href="{{ site_url('/professor/show/cate/3007/prof-idx/50547/?subject_idx=1004&subject_name=형사소송법') }}"><img src="{{ img_url('cop_sea/banner/bnr_1120_01.jpg') }}" alt="신광은 형사소송법"></a></div>
+                <div><a href="{{ site_url('/professor/show/cate/3007/prof-idx/50301/?subject_idx=1031&subject_name=%ED%95%B4%EC%96%91%EA%B2%BD%EC%B0%B0%ED%95%99%EA%B0%9C%EB%A1%A0') }}"><img src="{{ img_url('cop_sea/banner/bnr_1120_02.jpg') }}" alt="공득인 해양경찰학개론"></a></div>
             </div>
         </div>
 

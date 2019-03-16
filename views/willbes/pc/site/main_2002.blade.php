@@ -108,6 +108,20 @@
                             <div><a href="#none">면접 스파르타</a></div>
                         </div>
                     </li>
+                    <li>
+                        <img src="{{ img_url('cop_acad/prof/prof_khj.jpg') }}" alt="기초영어 김현정">
+                        <div class="caProfBtsn">
+                            <div><a href="#none">지옥탈출<span>3.11 개강</span></a></div>
+                            <div><a href="#none">아침특강</a></div>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="{{ img_url('cop_acad/prof/prof_hsw.jpg') }}" alt="면접 황세웅">
+                        <div class="caProfBtsn">
+                            <div><a href="#none">면접캠프</a></div>
+                            <div><a href="#none">면접 스파르타</a></div>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>

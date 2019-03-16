@@ -171,6 +171,8 @@ function screenResize()
 
 function fnDefense()
 {
+    return ;
+
     var checkStatus;
     var checkChrome = true;
     var element = new Image();
@@ -235,6 +237,7 @@ function fnSetTop(obj)
     alert(player.getTopmost());
 }
 
+/*
 document.onmousedown = click;
 document.onkeydown = click;
 
@@ -251,3 +254,4 @@ $(document).keydown(function (event) {
 $(document).on("contextmenu", function (e) {
     e.preventDefault();
 });
+*/

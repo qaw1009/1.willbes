@@ -191,6 +191,11 @@
                 $('.acadBoxWrap .tabWrap.tabDepthAcad li:eq(0) a').addClass('on');
                 $('.acadBoxWrap #acad1 .tabWrap.acadline li:eq(0) a').addClass('on');
                 $('.acadBoxWrap #acad2 .tabWrap.acadline li:eq(0) a').addClass('on');
+
+                @if($__cfg['IsPassSite'] === true)
+                    {{-- 학원사이트일 경우 학원강좌 탭 디폴트 --}}
+                    $('.acadBoxWrap .tabWrap.tabDepthAcad li:eq(1) a').trigger('click');
+                @endif
             @endif
         });
 

@@ -15,7 +15,7 @@
                     <div><img src="{{ $row['ProfClassImg'] }}" alt="{{ $row['wProfName'] }}" class=""/></div>
                     <span class="txt1">{{ $row['SubjectName'] }}</span>
                     <span class="txt2">{{ $row['wProfName'] }}</span>
-                    <span class="txt3">{{ hpSubString($row['ProdName'], 0, 32, '...') }}</span>
+                    <span class="txt3"><a href="{{ front_url('/lecture/show/cate/' . $row['CateCode'] . '/pattern/only/prod-code/' . $row['ProdCode']) }}">{{ hpSubString($row['ProdName'], 0, 32, '...') }}</a></span>
                     @if($row['wUnitIdx'] != 'N')
                         <a href="javascript:fnPlayerSample('{{$row['ProdCode']}}','{{$row['wUnitIdx']}}','HD');">맛보기강좌 ></a>
                     @endif

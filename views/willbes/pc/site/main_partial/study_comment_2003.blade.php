@@ -1,4 +1,5 @@
 @if(empty($data['study_comment']) === false)
+    <div id="WrapStudyComment" class="p_re"></div>
     <div class="smallTit mb30">
         <p><span>솔직한 <strong>수강후기</strong><a href="#none" class="btn-study-comment" data-board-idx=""><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a></span></p>
     </div>

@@ -329,7 +329,8 @@ class Announcement extends BaseBoard
             $data['arr_cate_code'] = [];
         } else {
             if (empty($data['CateCode']) === false) {
-                foreach ($data['CateCode'] as $item => $code) {
+                $arr_cate_code = explode(',', $data['CateCode']);
+                foreach ($arr_cate_code as $item => $code) {
                     if (empty($get_category_array[$code]) === false) {
                         $data['arr_cate_code'][$code] = $get_category_array[$code];
                     }

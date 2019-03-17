@@ -22,7 +22,7 @@ class BoardModel extends WB_Model
     protected $_table_professor = 'lms_professor';                //교수관리테이블
 
     // 첨부 이미지 수
-    public $_attach_img_cnt = 2;
+    public $_attach_img_cnt = 7;
     public $_attach_img_cnt_gallery = 50;
 
     public function __construct()

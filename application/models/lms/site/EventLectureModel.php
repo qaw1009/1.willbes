@@ -65,7 +65,7 @@ class EventLectureModel extends WB_Model
     ];
 
     // 공지사항 이미지 등록 수
-    public $_attach_img_cnt = 2;
+    public $_attach_img_cnt = 7;
     
     // 이벤트 공지사항 식별자
     public $bm_idx = '86';

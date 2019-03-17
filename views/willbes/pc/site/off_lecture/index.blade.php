@@ -310,7 +310,7 @@
                             </tbody>
                         </table>
                         <!-- lecTable -->
-                        <!--table cellspacing="0" cellpadding="0" class="lecInfoTable acadlecInfoTable">
+                        {{--<table cellspacing="0" cellpadding="0" class="lecInfoTable acadlecInfoTable">
                             <tbody>
                             <tr>
                                 <td>
@@ -323,7 +323,7 @@
                                 </td>
                             </tr>
                             </tbody>
-                        </table//-->
+                        </table>--}}
                         <!-- lecInfoTable -->
                     </div>
                     <!-- willbes-Lec-Table -->

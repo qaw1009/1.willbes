@@ -136,10 +136,12 @@
                             {'data' : 'SiteName'},
                             {'data' : 'CampusName'},
                             {'data' : 'CateCode', 'render' : function(data, type, row, meta){
-                                    var obj = data.split(',');
-                                    var str = '';
-                                    for (key in obj) {
-                                        str += obj[key]+"<br>";
+                                    var str = '없음';
+                                    if (data != null) {
+                                        var obj = data.split(',');
+                                        for (key in obj) {
+                                            str += obj[key] + "<br>";
+                                        }
                                     }
                                     return str;
                                 }},

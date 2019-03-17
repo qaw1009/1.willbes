@@ -70,10 +70,12 @@
                             return '<a href="javascript:void(0);" class="btn-detailList" data-idx="' + row.ProfIdx + '"><u>' + data + '</u></a>';
                         }},
                     {'data' : 'CateCode', 'render' : function(data, type, row, meta){
-                            var obj = data.split(',');
-                            var str = '';
-                            for (key in obj) {
-                                str += obj[key]+"<br>";
+                            var str = '없음';
+                            if (data != null) {
+                                var obj = data.split(',');
+                                for (key in obj) {
+                                    str += obj[key] + "<br>";
+                                }
                             }
                             return str;
                         }},
@@ -82,7 +84,8 @@
 
             // 교수별 리스트 페이지
             $list_table.on('click', '.btn-detailList', function() {
-                location.href='{{ site_url("/board/professor/{$boardName}/productList") }}/' + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}' + '&prof_idx=' + $(this).data('idx');
+                /*location.href='{{ site_url("/board/professor/{$boardName}/productList") }}/' + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}' + '&prof_idx=' + $(this).data('idx');*/
+                location.href='{{ site_url("/board/professor/{$boardName}/productList") }}?' + '{!! $boardDefaultQueryString !!}' + '&prof_idx=' + $(this).data('idx');
             });
         });
     </script>

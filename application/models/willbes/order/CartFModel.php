@@ -558,7 +558,7 @@ class CartFModel extends BaseOrderFModel
             // 수강생 교재 체크
             $arr_input_prod_code = [];
             if ($is_order === false) {
-                // 장바구니에서만 부모상품코드 사용
+                // 장바구니에서만 부모상품코드 사용 (강좌 + 수강생교재를 바로결제할 경우 수강생교재를 장바구니에 담기 위해 임의로 강좌상품코드 전달)
                 $arr_input_prod_code[] = $parent_prod_code;
             }
 

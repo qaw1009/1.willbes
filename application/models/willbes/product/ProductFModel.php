@@ -173,7 +173,7 @@ class ProductFModel extends WB_Model
         $column = 'row_number() over (partition by SubjectIdx order by ProdCode desc) as RowNum
             , ProdCode, ProdName, SubjectIdx, SubjectName, wProfName
             , ifnull(JSON_VALUE(ProfReferData, "$.lec_list_img"), "") as ProfLecListImg
-            , ifnull(JSON_VALUE(ProfReferData, "$.class_detail_img"), "") as ProfClassImg';
+            , ifnull(fn_professor_refer_value(ProfIdx, "class_detail_img"), "") as ProfClassImg';
         $learn_pattern != 'off_lecture' && $column .= ', if(LectureSampleData = "N", "N", JSON_VALUE(LectureSampleData, "$[0].wUnitIdx")) as wUnitIdx';
         $arr_condition = array_merge_recursive($arr_condition, $this->getSalesProductCondition($learn_pattern));
 

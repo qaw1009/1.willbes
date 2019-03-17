@@ -428,11 +428,13 @@ if (!function_exists('str_first_pos_before')) {
      * haystack(대상 문자열)에서 첫번째 needle(찾을 문자열)의 위치 이전까지의 문자열 리턴
      * @param $haystack
      * @param $needle
+     * @param $default
      * @return string
      */
-    function str_first_pos_before($haystack, $needle)
+    function str_first_pos_before($haystack, $needle, $default = null)
     {
-        return strpos($haystack, $needle) === false ? $haystack : substr($haystack, 0, strpos($haystack, $needle));
+        is_null($default) === true && $default = $haystack;
+        return strpos($haystack, $needle) === false ? $default : substr($haystack, 0, strpos($haystack, $needle));
     }
 }
 
@@ -441,11 +443,13 @@ if (!function_exists('str_first_pos_after')) {
      * haystack(대상 문자열)에서 첫번째 needle(찾을 문자열)의 위치 다음부터의 문자열 리턴
      * @param $haystack
      * @param $needle
+     * @param $default
      * @return string
      */
-    function str_first_pos_after($haystack, $needle)
+    function str_first_pos_after($haystack, $needle, $default = null)
     {
-        return strpos($haystack, $needle) === false ? $haystack : substr($haystack, strpos($haystack, $needle) + strlen($needle));
+        is_null($default) === true && $default = $haystack;
+        return strpos($haystack, $needle) === false ? $default : substr($haystack, strpos($haystack, $needle) + strlen($needle));
     }
 }
 

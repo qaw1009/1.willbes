@@ -72,9 +72,9 @@
         });
 
         // 백그라운드 클릭
-        $('#PopupBackWrap').on('click', function() {
+        /*$('#PopupBackWrap').on('click', function() {
             $('.PopupWrap').fadeOut();
             $('#PopupBackWrap').fadeOut();
-        });
+        });*/
     });
 @endif

@@ -191,7 +191,7 @@
                                         <div class="col-md-11">
                                         <select class="form-control" id="person_limit_type" name="person_limit_type">
                                             <option value="L" @if((empty($list_event_register['S']) === false) && $list_event_register['S'][0]['PersonLimitType']=='L')selected="selected"@endif>인원제한</option>
-                                            <option value="N" @if((empty($list_event_register['S']) === false) && $list_event_register['S'][0]['PersonLimitType']=='M')selected="selected"@endif>무제한</option>
+                                            <option value="N" @if((empty($list_event_register['S']) === false) && $list_event_register['S'][0]['PersonLimitType']=='N')selected="selected"@endif>무제한</option>
                                         </select>
                                         <input type="text" id="person_limit" name="person_limit" class="form-control ml-5" required="required_if:person_limit_type,L" title="정원수" value="{{(empty($list_event_register['S']) === false) ? $list_event_register['S'][0]['PersonLimit'] : ''}}" style="width: 80px;"> 명
                                         <span class="ml-20">[특강명] </span><input type="text" id="register_name" name="register_name" class="form-control ml-5" required="required_if:person_limit_type,L" title="특강명" value="{{(empty($list_event_register['S']) === false) ? $list_event_register['S'][0]['Name'] : ''}}">
@@ -207,7 +207,7 @@
                                                 <option value="M" @if($data['SelectType']=='M')selected="selected"@endif>다중선택</option>
                                             </select>
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-5">
                                             <p class="form-control-static">• 다중리스트 옵션 (관리차 필요값, 제어조건 없음)</p>
                                         </div>
                                     </div>
@@ -487,6 +487,7 @@
             });
 
             //단일리스트 > 인원제한 선택
+            if ($('#person_limit_type').val() == 'N') { $regi_form.find('input[name="person_limit"]').prop('readonly', 'readonly'); }
             $('#person_limit_type').change(function() {
                 var set_val = $(this).val();
                 if (set_val === 'L') {

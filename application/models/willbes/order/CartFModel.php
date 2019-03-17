@@ -179,7 +179,7 @@ class CartFModel extends BaseOrderFModel
         $sess_mem_idx = $this->session->userdata('mem_idx');
 
         // 에러 메시지
-        $err_msg = '선택하신 수강생 교재에 해당하는 강좌를 선택하지 않으셨습니다.' . PHP_EOL . '해당 강좌를 선택해 주세요.';
+        $err_msg = '선택하신 수강생 교재에 해당하는 강좌를 선택하지 않으셨습니다. 해당 강좌를 선택해 주세요.';
 
         // 1. 해당 도서 수강생교재 여부 확인, 수강생교재일 경우 연관된 부모상품코드 조회
         $arr_target_prod_code = array_pluck($this->productFModel->findParentProductToStudentBook($prod_book_code), 'ProdCode');

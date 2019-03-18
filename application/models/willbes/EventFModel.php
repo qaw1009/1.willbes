@@ -323,7 +323,9 @@ class EventFModel extends WB_Model
             //SMS 발송
             $arr_event_option = array_flip(explode(',', $event_data['OptionCcds']));
             if (empty($arr_event_option) === false && array_key_exists($this->_ccd['option']['send_sms'], $arr_event_option) === true) {
-                $this->_sendSms($event_data, $inputData, $site_code);
+                if ($this->_sendSms($event_data, $inputData) === false) {
+                    throw new \Exception('SMS발송 실패했습니다. 관리자에게 문의해 주세요.');
+                }
             }
 
             $this->_conn->trans_commit();
@@ -757,7 +759,6 @@ class EventFModel extends WB_Model
                 throw new \Exception('특강 신청에 등록 실패했습니다.');
             }
         } catch (\Exception $e) {
-            $this->_conn->trans_rollback();
             return error_result($e);
         }
 
@@ -784,46 +785,19 @@ class EventFModel extends WB_Model
         return $query;
     }
 
-    private function _sendSms($data, $send_data, $site_code)
+    /**
+     * 발송완료 SMS 발송
+     * @param $data [발신자 정보]
+     * @param $send_data [수신자 정보]
+     * @return bool
+     */
+    private function _sendSms($data, $send_data)
     {
-        try {
-            $inputData = [
-                'SendGroupTypeCcd' => '641001',
-                'SiteCode' => $site_code,
-                'SendPatternCcd' => '637002',       //메세지성격
-                'SendTypeCcd' => '638001',          //SMS메세지종류
-                'SendOptionCcd' => '640001',        //메세지 발송옵션
-                'SendStatusCcd' => '639001',        //메세지 발송상태
-                'CsTel' => $data['SendTel'],
-                'Content' => $data['SmsContent'],
-                'RegAdminIdx' => $this->session->userdata('admin_idx'),
-                'RegIp' => $this->input->ip_address()
-            ];
-
-            $this->_conn->set($inputData)->set('SendDatm', 'NOW()', false);
-
-            // 데이터 등록
-            if ($this->_conn->set($inputData)->insert($this->_table['crm_send']) === false) {
-                throw new \Exception('등록에 실패했습니다.');
-            }
-            $send_idx = $this->_conn->insert_id();
-
-            $inputData_sms = [
-                'SendIdx' => $send_idx,
-                'MemIdx' => (empty($this->session->userdata('mem_idx')) ? 0 : $this->session->userdata('mem_idx')),
-                'Receive_Name' => $send_data['register_name'],
-            ];
-            $this->_conn->set($inputData_sms)->set('Receive_PhoneEnc',  'fn_enc("' . $send_data['register_tel'] . '")',false);
-
-            // SMS 개별등록 등록
-            if ($this->_conn->set($inputData_sms)->insert($this->_table['crm_send_r_receive_sms']) === false) {
-                throw new \Exception('세부 발송 등록에 실패했습니다.');
-            }
-
-        } catch (Exception $e) {
-            return $e->getMessage();
+        $this->load->library('sendSms');
+        if ($this->sendsms->send($send_data['register_tel'], $data['SmsContent'], $data['SendTel']) !== true) {
+            return false;
+        } else {
+            return true;
         }
-
-        return true;
     }
 }

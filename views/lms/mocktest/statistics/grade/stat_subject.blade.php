@@ -224,7 +224,6 @@
                 document.body.innerHTML = initBody;
             };
             window.print();
-            return false;
         }
 
         // 조정점수 반영

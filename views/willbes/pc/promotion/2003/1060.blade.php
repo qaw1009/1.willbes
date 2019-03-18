@@ -162,7 +162,7 @@
             <ul>
                 <li><div class="check01"><input type="radio" id="y_pkg" name="y_pkg" value="Y" onClick="fn_cal('1')"/></div></li> <!--공채 12개월 43만원-->
                 <li><div class="check02"><input type="radio" id="y_pkg" name="y_pkg" value="Y" onClick="fn_cal('2')"/></div></li> <!--특채 12개월 35만원-->
-                <!--li><div class="check03"><input type="radio" id="j_pkg" name="j_pkg" value="Y" onClick="fn_cal('j1')"/></div></li--> <!--소방체력 풀패키지 8만원-->
+                <li><div class="check03"><!--input type="radio" id="j_pkg" name="j_pkg" value="Y" onClick="fn_cal('j1')"/--></div></li> <!--소방체력 풀패키지 8만원-->
                 <li class="btn">
                     <a href="http://www.willbesgosi.net/event/movie/event.html?event_cd=On_190131_g&topMenuType=O" target="_blank">
                         <img src="http://file3.willbes.net/new_gosi/2019/01/EV190115_c10.png" alt="단기간 체력 40점 완성 프로젝트 상세보기" /><!--소방체력 풀패키지 상세보기-->
@@ -176,7 +176,7 @@
                 </li>
                 <li>
                     <div class="check04">
-                        <!--span id="sum_y">0</span--><!--합계-->
+                        <span id="sum_y">0</span><!--합계-->
                         <a href="javascript:fn_cart();"><img src="http://file3.willbes.net/new_gosi/2019/01/EV190115_c10.png" alt="장바구니"  /></a> <!--소방패스 신청하기-->
                     </div>
                 </li>

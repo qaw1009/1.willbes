@@ -86,11 +86,11 @@
                             <td class="w-list tx-left pl20">
                                 <dl>
                                     <dt class="tit">
-                                        <span class="pBox p3">모의고사</span> 2018 9급 시험대비 제4회 전국모의고사 (02/25시행) <span class="tBox NSK t1 white f_inherit mt-zero"><a href="#none" onclick="openWin('MOCKTESTPASSINFO')">응시정보</a></span>
-                                        <span class="tBox NSK t1 black"><a href="#none" onclick="openWin('Coupon')">쿠폰적용</a></span>
-                                    </dt>
-                                    <dt>
-                                        <span class="w-coupon">최대 5% 할인쿠폰 (<span class="tx-blue">5,000원 할인</span>) <a href="#none"><img src="{{ img_url('cart/close.png') }}"></a></span>
+                                        <span class="pBox p3">모의고사</span> 2018 9급 시험대비 제4회 전국모의고사 (02/25시행) <span class="tBox NSK t1 white f_inherit mt-zero"><a href="#none" onclick="openWin('MOCKTESTPASSINFO')">응시정보</a></span>                                        
+                                        <div class="w-coupon">
+                                            최대 5% 할인쿠폰 (<span class="tx-blue">5,000원 할인</span>) <a href="#none"><img src="{{ img_url('cart/close.png') }}"></a>
+                                            <span class="tBox NSK t1 black"><a href="#none" onclick="openWin('Coupon')">쿠폰적용</a></span>
+                                        </div>
                                     </dt>
                                 </dl>
                             </td>

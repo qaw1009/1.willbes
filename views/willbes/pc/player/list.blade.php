@@ -28,7 +28,7 @@
                         @forelse($curriculum as $row)
                             <li>
                                 <div class="tt1">{{$row['wUnitNum']}}회 {{$row['wUnitLectureNum']}}강</div>
-                                <div class="tt2">
+                                <div class="tt2 tx-left">
                                     @if($row['isstart'] == 'Y' && $row['ispause'] == 'N')
                                         @if($row['timeover'] == 'N')
                                             <a href="javascript:;" onclick='fnPlayer("{{$row['OrderIdx']}}","{{$row['ProdCode']}}","{{$row['ProdCodeSub']}}","{{$row['wLecIdx']}}","{{$row['wUnitIdx']}}","{{$input['q']}}");'>

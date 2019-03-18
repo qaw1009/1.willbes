@@ -2702,7 +2702,7 @@ table.lecWrapTable .w-list {
     font-size: 13px;
     color: #3a3a3a;
     border-bottom: 1px solid #c9c9c9;
-    border-right: 1px solid #c9c9c9;    
+    border-right: 1px solid #c9c9c9;   
 }
 table.lecWrapTable .lecInfoTable .w-sub {
     margin-left: 50px;
@@ -4337,7 +4337,7 @@ form .LeclistTable .evtTable tr td a.w-del {
 }
 .packageDetailTable .w-list {
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 600;    
 }
 .packageDetailTable .w-line .row-line {
     background: #e7e7e7;
@@ -4480,16 +4480,18 @@ form .LeclistTable .evtTable tr td a.w-del {
     width: 154px;
     height: 26px;
 }
-.mockpopupTable ul li {
+.mockpopupTable ul li {    
+    display: inline;
     float: left;
     margin-right: 30px;
+    line-height: 1.5;
 }
 .mockpopupTable ul li input[type="radio"] {
-    float: left;
-    margin-top: 14px;
+    /*float: left;
+    margin-top: 14px;*/
     margin-right: 5px;
-    vertical-align: middle;
 }
+
 .willbes-Layer-PassBox .passzoneListInfo {
     font-size: 12px;
     letter-spacing: 0;

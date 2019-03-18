@@ -76,22 +76,11 @@
 
         .skybanner {
             position:fixed;
-            top:200px;
+            top:250px;
             right:0;
             width:190px;
-            animation:upDown 1s infinite;
-            -webkit-animation:upDown 1s infinite;
         }
-        @@keyframes upDown{
-             from{margin-top:0}
-             60%{margin-top:-30px}
-             to{margin-top:0}
-         }
-        @@-webkit-keyframes upDown{
-             from{margin-top:0}
-             60%{margin-top:-30px}
-             to{margin-top:0}
-         }
+
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
@@ -171,9 +160,9 @@
 
         <div class="evtCtnsBox wb_cts03" id="event">
             <ul>
-                <li><div class="check01"><input type="checkbox" id="y_pkg" name="y_pkg" value="Y" onClick="fn_cal('1')"/></div></li> <!--공채 12개월 43만원-->
-                <li><div class="check02"><input type="checkbox" id="y_pkg" name="y_pkg" value="Y" onClick="fn_cal('2')"/></div></li> <!--특채 12개월 35만원-->
-                <li><div class="check03"><input type="checkbox" id="j_pkg" name="j_pkg" value="Y" onClick="fn_cal('j1')"/></div></li> <!--소방체력 풀패키지 8만원-->
+                <li><div class="check01"><input type="radio" id="y_pkg" name="y_pkg" value="Y" onClick="fn_cal('1')"/></div></li> <!--공채 12개월 43만원-->
+                <li><div class="check02"><input type="radio" id="y_pkg" name="y_pkg" value="Y" onClick="fn_cal('2')"/></div></li> <!--특채 12개월 35만원-->
+                <!--li><div class="check03"><input type="radio" id="j_pkg" name="j_pkg" value="Y" onClick="fn_cal('j1')"/></div></li--> <!--소방체력 풀패키지 8만원-->
                 <li class="btn">
                     <a href="http://www.willbesgosi.net/event/movie/event.html?event_cd=On_190131_g&topMenuType=O" target="_blank">
                         <img src="http://file3.willbes.net/new_gosi/2019/01/EV190115_c10.png" alt="단기간 체력 40점 완성 프로젝트 상세보기" /><!--소방체력 풀패키지 상세보기-->
@@ -181,13 +170,13 @@
                 </li>
                 <li>
                     <div class="check" id="chkInfo">
-                        <label><input name="is_chk" type="checkbox" value="Y" /> 페이지 하단 윌비스 소방 PASS 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
+                        <label><input name="is_chk" type="radio" value="Y" /> 페이지 하단 윌비스 소방 PASS 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
                         <a href="#tab1">이용안내확인하기 ↓</a>
                     </div>
                 </li>
                 <li>
                     <div class="check04">
-                        <span id="sum_y">0</span><!--합계-->
+                        <!--span id="sum_y">0</span--><!--합계-->
                         <a href="javascript:fn_cart();"><img src="http://file3.willbes.net/new_gosi/2019/01/EV190115_c10.png" alt="장바구니"  /></a> <!--소방패스 신청하기-->
                     </div>
                 </li>

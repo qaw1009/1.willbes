@@ -10321,6 +10321,7 @@ table.acadlecInfoPackageTable tr.Top td {
     white-space: nowrap;
     overflow: hidden;
     padding: 0 10px;
+    text-align: left;
 }
 
 /* Video Player : vodTabs : vodSbjBox */

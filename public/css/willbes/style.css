@@ -5068,6 +5068,11 @@ span.calendar_btn {
 .cart-PriceBox .price-total .price {
     font-size: 23px;
 }
+.cart-PriceBox:after {
+    content:'';
+    display: block;
+    clear:both;
+}
 .willbes-Cart-Txt .MoreBtn {
     position: absolute;
     top: 45px;
@@ -8006,8 +8011,9 @@ table.PassZoneTable .w-data {
 }
 .PASSZONE-List .PASSZONE-Lec-Section .cart-PriceBox {
     border-top: 1px solid #3a3e47; 
-    margin-top: 30px;    
+    margin: 30px 0;    
 }
+
 .PASSZONE-List .PASSZONE-Lec-Section .willbes-Lec-buyBtn {
     bottom: 40px;
     right: 25px;

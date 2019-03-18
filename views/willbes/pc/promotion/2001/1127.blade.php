@@ -155,17 +155,17 @@
                 <td class="st03">동형모의고사    <span class="st02">3/28(목) ~ 4/20(목) 총 5회</span></td>
                 <td class="st01">3/28(목) 8:40</td>
                 <td class="st04"><a href="{{ site_url('#none') }}" target="_blank">수강신청</a></td>
-            </tr>
-            <tr>
-		    <td colspan="3">문제풀이 2단계 동형모의고사 종합반</td>
-		    <td class="st04"><a href="{{ site_url('#none') }}" target="_blank">수강신청</a></td>
-	      </tr>
+            </tr>            
             <tr>
                 <td class="st01">하승민 영어</td>
                 <td class="st03">동형모의고사   <span class="st02">3/29(금) ~ 4/19(금) 총 5회</span></td>
                 <td class="st01">3/29(금) 8:40</td>
                 <td class="st04"><a href="{{ site_url('#none') }}" target="_blank">수강신청</a></td>
-            </tr>                
+            </tr>  
+            <tr>
+                <td colspan="3" class="st03">문제풀이 2단계 동형모의고사 종합반</td>
+                <td class="st04"><a href="{{ site_url('#none') }}" target="_blank">수강신청</a></td>
+            </tr>              
             <tr>
                 <td colspan="4" class="bookimg"><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_07_map.jpg" /></td>
             </tr>

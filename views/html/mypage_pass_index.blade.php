@@ -145,8 +145,8 @@
                         <div class="will-Tit NG">나의 학습 기기 (무한PASS) <a class="f_right" href="#none"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
                         <ul class="List-Table GM myTablet tx-gray">
                             <!-- 리스트 -->
-                            <li>PC 1대 <span class="tx-bright-gray">(2018.00.00 등록)</span></li>
-                            <li>모바일 1대 <span class="tx-bright-gray">(2018.00.00 등록)</span></li>
+                            <li>PC 1대 <span class="tx-bright-gray">(2019.03.14 14:24:19 등록)</span></li>
+                            <li>모바일 1대 <span class="tx-bright-gray">(2019.03.14 14:24:19 등록)</span></li>
                             <!-- 기기없음
                             <li>등록된 기기가 없습니다.</li>
                             <li><span class="tx-bright-gray">( ID당 2개만 등록가능 )</span></li>

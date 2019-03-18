@@ -16,6 +16,16 @@
             margin-right: 0px;
             margin-bottom: 0px;
         }
+
+        .event_btn {margin:auto; text-align:center; padding-top:30px;}
+        .event_table {width:970px; margin:auto; border-left:1px solid #cdcdcd; border-top:2px solid #222c50;}
+        .event_table th { padding:10px; font-weight:bold; color:#333; text-align:center; letter-spacing:-1px; background-color:#ececec; border-right:1px solid #cdcdcd; border-bottom:1px solid #cdcdcd;}
+        .event_table .th_non { border-right:none; }
+        .event_table td { padding:7px; text-align:center; border-bottom:1px solid #cdcdcd; border-right:1px solid #cdcdcd; letter-spacing:0px; color:#666;}
+        .event_table .td_l{ padding:7px; text-align:left; border-bottom:1px solid #cdcdcd; border-right:1px solid #cdcdcd; letter-spacing:0px; color:#666;}
+        .title {
+            font-weight: bold;
+        }
         -->
     </style>
     <script type="text/javascript">
@@ -54,17 +64,17 @@
                     <td><a href="{{front_url('/')}}"><img src="https://static.willbes.net/public/images/company/top_logo.gif" border="0" /></a></td>
                     <td align="right"><table border="0" cellspacing="0" cellpadding="0">
                             <tr>
-                                <td><a href="sub_01_01" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('회사소개','','https://static.willbes.net/public/images/company/menu_01_01.gif',1)"><img src="https://static.willbes.net/public/images/company/menu_01_02.gif" alt="회사소개" name="회사소개" border="0" id="회사소개" /></a></td>
+                                <td><a href="{{front_url('/company/sub_01_01')}}" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('회사소개','','https://static.willbes.net/public/images/company/menu_01_01.gif',1)"><img src="https://static.willbes.net/public/images/company/menu_01_02.gif" alt="회사소개" name="회사소개" border="0" id="회사소개" /></a></td>
                                 <td><img src="https://static.willbes.net/public/images/company/top_line.gif" /></td>
-                                <td><a href="sub_02_01" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('경영성과','','https://static.willbes.net/public/images/company/menu_02_01.gif',1)"><img src="https://static.willbes.net/public/images/company/menu_02_02.gif" alt="경영성과" name="경영성과" border="0" id="경영성과" /></a></td>
+                                <td><a href="{{front_url('/company/sub_02_01')}}" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('경영성과','','https://static.willbes.net/public/images/company/menu_02_01.gif',1)"><img src="https://static.willbes.net/public/images/company/menu_02_02.gif" alt="경영성과" name="경영성과" border="0" id="경영성과" /></a></td>
                                 <td><img src="https://static.willbes.net/public/images/company/top_line.gif" /></td>
-                                <td><a href="sub_03_01" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('사업전망','','https://static.willbes.net/public/images/company/menu_03_01.gif',1)"><img src="https://static.willbes.net/public/images/company/menu_03_02.gif" alt="사업전망" name="사업전망" border="0" id="사업전망" /></a></td>
+                                <td><a href="{{front_url('/company/sub_03_01')}}" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('사업전망','','https://static.willbes.net/public/images/company/menu_03_01.gif',1)"><img src="https://static.willbes.net/public/images/company/menu_03_02.gif" alt="사업전망" name="사업전망" border="0" id="사업전망" /></a></td>
                                 <td><img src="https://static.willbes.net/public/images/company/top_line.gif" /></td>
-                                <td><a href="sub_04_01" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('길안내','','https://static.willbes.net/public/images/company/menu_04_01.gif',1)"><img src="https://static.willbes.net/public/images/company/menu_04_02.gif" alt="길안내" name="길안내" border="0" id="길안내" /></a></td>
+                                <td><a href="{{front_url('/company/sub_04_01')}}" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('길안내','','https://static.willbes.net/public/images/company/menu_04_01.gif',1)"><img src="https://static.willbes.net/public/images/company/menu_04_02.gif" alt="길안내" name="길안내" border="0" id="길안내" /></a></td>
                                 <td><img src="https://static.willbes.net/public/images/company/top_line.gif" /></td>
-                                <td><a href="sub_05_01" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('제휴안내','','https://static.willbes.net/public/images/company/menu_05_01.gif',1)"><img src="https://static.willbes.net/public/images/company/menu_05_02.gif" alt="제휴안내" name="제휴안내" border="0" id="제휴안내" /></a></td>
+                                <td><a href="{{front_url('/company/sub_05_01')}}" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('제휴안내','','https://static.willbes.net/public/images/company/menu_05_01.gif',1)"><img src="https://static.willbes.net/public/images/company/menu_05_02.gif" alt="제휴안내" name="제휴안내" border="0" id="제휴안내" /></a></td>
                                 <td><img src="https://static.willbes.net/public/images/company/top_line.gif" /></td>
-                                <td><a href="sub_06_01" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('관계사','','https://static.willbes.net/public/images/company/menu_06_01.gif',1)"><img src="https://static.willbes.net/public/images/company/menu_06_02.gif" alt="관계사" name="관계사" border="0" id="관계사" /></a></td>
+                                <td><a href="{{front_url('/company/sub_06_01')}}" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('관계사','','https://static.willbes.net/public/images/company/menu_06_01.gif',1)"><img src="https://static.willbes.net/public/images/company/menu_06_02.gif" alt="관계사" name="관계사" border="0" id="관계사" /></a></td>
                                 <td><img src="https://static.willbes.net/public/images/company/top_line.gif" /></td>
                                 <td><a href="{{front_url('/company/')}}" onmouseover="MM_swapImage('홈으로','','https://static.willbes.net/public/images/company/home_02.gif',1)" onmouseout="MM_swapImgRestore()"><img src="https://static.willbes.net/public/images/company/home_01.gif" alt="홈으로" name="홈으로" border="0" id="홈으로" /></a></td>
                             </tr>

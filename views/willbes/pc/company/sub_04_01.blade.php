@@ -12,7 +12,7 @@
                     <tr>
                         <td height="52" valign="bottom"><table border="0" cellspacing="0" cellpadding="0">
                                 <tr>
-                                    <td><a href="sub_04_01"><img src="https://static.willbes.net/public/images/company/sub_04_01_02.gif" alt="교육사업부문 영업전망" width="90" height="41" border="0" /></a></td>
+                                    <td><a href="{{front_url('/company/sub_04_01')}}"><img src="https://static.willbes.net/public/images/company/sub_04_01_02.gif" alt="교육사업부문 영업전망" width="90" height="41" border="0" /></a></td>
                                 </tr>
                             </table></td>
                     </tr>

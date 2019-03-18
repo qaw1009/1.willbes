@@ -12,9 +12,9 @@
                     <tr>
                         <td height="52" valign="bottom"><table border="0" cellspacing="0" cellpadding="0">
                                 <tr>
-                                    <td><a href="sub_02_01" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('주요성과_메뉴','','https://static.willbes.net/public/images/company/sub_02_01_02.gif',1)"><img src="https://static.willbes.net/public/images/company/sub_02_01_01.gif" alt="주요성과_메뉴" name="주요성과_메뉴" border="0" id="주요성과_메뉴" /></a></td>
+                                    <td><a href="{{front_url('/company/sub_02_01')}}" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('주요성과_메뉴','','https://static.willbes.net/public/images/company/sub_02_01_02.gif',1)"><img src="https://static.willbes.net/public/images/company/sub_02_01_01.gif" alt="주요성과_메뉴" name="주요성과_메뉴" border="0" id="주요성과_메뉴" /></a></td>
                                     <td width="5"><img src="https://static.willbes.net/public/images/company/a.gif" width="1" height="1" /></td>
-                                    <td><a href="sub_02_02" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('요약손익계산서_메뉴','','https://static.willbes.net/public/images/company/sub_02_02_02.gif',1)"><img src="https://static.willbes.net/public/images/company/sub_02_02_02.gif" alt="요약손익계산서_메뉴" name="요약손익계산서_메뉴" border="0" id="요약손익계산서_메뉴" /></a></td>
+                                    <td><a href="{{front_url('/company/sub_02_02')}}" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('요약손익계산서_메뉴','','https://static.willbes.net/public/images/company/sub_02_02_02.gif',1)"><img src="https://static.willbes.net/public/images/company/sub_02_02_02.gif" alt="요약손익계산서_메뉴" name="요약손익계산서_메뉴" border="0" id="요약손익계산서_메뉴" /></a></td>
                                 </tr>
                             </table></td>
                     </tr>

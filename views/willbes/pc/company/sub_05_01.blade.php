@@ -1,30 +1,6 @@
 @extends('willbes.pc.company.company_master')
 
 @section('content')
-    <style type="text/css">
-        <!--
-        .event_btn {margin:auto; text-align:center; padding-top:30px;}
-        .event_table {width:970px; margin:auto; border-left:1px solid #cdcdcd; border-top:2px solid #222c50;}
-        .event_table th { padding:10px; font-weight:bold; color:#333; text-align:center; letter-spacing:-1px; background-color:#ececec; border-right:1px solid #cdcdcd; border-bottom:1px solid #cdcdcd;}
-        .event_table .th_non { border-right:none; }
-        .event_table td { padding:7px; text-align:center; border-bottom:1px solid #cdcdcd; border-right:1px solid #cdcdcd; letter-spacing:0px; color:#666;}
-        .event_table .td_l{ padding:7px; text-align:left; border-bottom:1px solid #cdcdcd; border-right:1px solid #cdcdcd; letter-spacing:0px; color:#666;}
-        .title {
-            font-weight: bold;
-        }
-        body,td,th {
-            font-family: 돋움;
-            font-size: 11px;
-            color: #666666;
-        }
-        body {
-            margin-left: 0px;
-            margin-top: 0px;
-            margin-right: 0px;
-            margin-bottom: 0px;
-        }
-        -->
-    </style>
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr>
             <td height="200" align="center" background="https://static.willbes.net/public/images/company/sub_bg.jpg"><img src="https://static.willbes.net/public/images/company/sub_img_05.jpg" /></td>
@@ -36,7 +12,7 @@
                     <tr>
                         <td height="52" valign="bottom"><table border="0" cellspacing="0" cellpadding="0">
                                 <tr>
-                                    <td><a href="sub_05_01"><img src="https://static.willbes.net/public/images/company/sub_05_01_02.gif" alt="교육사업부문 영업전망" width="109" height="41" border="0" /></a></td>
+                                    <td><a href="{{front_url('/company/sub_05_01')}}"><img src="https://static.willbes.net/public/images/company/sub_05_01_02.gif" alt="교육사업부문 영업전망" width="109" height="41" border="0" /></a></td>
                                 </tr>
                             </table></td>
                     </tr>

@@ -305,6 +305,11 @@ class Professor extends \app\controllers\FrontController
             $arr_condition['LKR']['CateCode'] = $this->_def_cate_code;
         }
 
+        if ($learn_pattern == 'on_free_lecture') {
+            // 보강동영상 제외
+            $arr_condition['EQ']['FreeLecTypeCcd'] = $this->lectureFModel->_free_lec_type_ccd['normal'];
+        }
+
         $data = $this->lectureFModel->listSalesProduct($learn_pattern, false, $arr_condition, null, null, ['ProdCode' => 'desc']);
 
         // 상품 json 데이터 decode

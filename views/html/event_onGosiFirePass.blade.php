@@ -56,42 +56,33 @@
             .PeMenu li:hover img.off {display:none} 	
             .PeMenu li:hover img.on {display:block}
         
-        .wb_cts03 {height:1169px; background:#f3f5f7 url(http://file3.willbes.net/new_gosi/2019/01/EV190115_c7_1.jpg) center top no-repeat;}	
+        .wb_cts03 {height:1169px; background:#f3f5f7 url(http://file3.willbes.net/new_gosi/2019/01/EV190115_c7_11.jpg) center top no-repeat;}	
+        .wb_cts03 ul {height:696px}
         .wb_cts03 li {text-align:center;} 
         .wb_cts03 .btn {padding-left:300px;}
-        .wb_cts03 li input {border:3px solid #000; height:30px; width:30px;}
+        .wb_cts03 li input {height:30px; width:30px;}
         .wb_cts03 .check01 input {margin:430px 0px 0px 740px;}
         .wb_cts03 .check02 input {margin:95px 0px 0px 740px;}
         .wb_cts03 .check03 input {margin:135px 0px 0px -280px; }
-        .wb_cts03 .check04 {width:877px; height:112px; margin:0 auto;  background: url(http://file3.willbes.net/new_gosi/2019/01/EV190115_c7_2.jpg) no-repeat; font-family:'Noto Sans KR', Arial, Sans-serif; font-size:3.5rem; font-weight:bold; letter-spacing:-2; color:#138c8f;    }
-        .wb_cts03 .check04 span {display:inline-block; width:380px;  text-align:right; letter-spacing:-1;}
-        .wb_cts03 .check04 img {padding-left:50px; width:380px; height:80px;}        
-        .wb_cts03 .check {width:980px; margin:0 auto;  padding:100px 0px 30px 20px; letter-spacing:3; font-weight:bold; color:#362f2d;}
+        .wb_cts03 .check04 {width:877px; height:112px; margin:0 auto;}
+        .btn { position:}
+
+     
+        .wb_cts03 .check {width:980px; margin:0 auto;  padding:100px 0px 30px 20px; letter-spacing:3; font-weight:bold; color:#362f2d; font-size:14px}
         .wb_cts03 .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px;}
         .wb_cts03 .check a {display:inline-block; padding:12px 20px 10px 20px; color:#fffbfb; background:#252525; margin-left:50px; border-radius:20px}
         
-        .wb_cts04 {width:100%; text-align:center;  min-width:1210px; background:#e5dac9;}
+        .wb_cts04 {width:100%; text-align:center;  min-width:1210px; background:#e5dac9 ;}
         
-        .wb_cts05 {width:100%; text-align:center;  min-width:1210px; background:#f3f5f7;}	
+        .wb_cts05 {width:100%; text-align:center;  min-width:1210px; background:#f3f5f7; padding-top:50px}	
 
         .skybanner {
             position:fixed;
-            top:200px;
+            top:250px;
             right:0;
             width:190px; 
-            animation:upDown 1s infinite;
-            -webkit-animation:upDown 1s infinite;
         }
-        @@keyframes upDown{
-        from{margin-top:0}
-        60%{margin-top:-30px}
-        to{margin-top:0}
-        }
-        @@-webkit-keyframes upDown{
-        from{margin-top:0}
-        60%{margin-top:-30px}
-        to{margin-top:0}
-        }        
+        
     </style>
     
     <div class="p_re evtContent NSK" id="evtContainer">
@@ -169,29 +160,25 @@
   			<img src="http://file3.willbes.net/new_gosi/2019/01/EV190115_c6.jpg" alt="소방공무원의 꿈을 이루어줄 따라만 가도 완성되는 커리큘럼"/>
         </div><!--wb_cts02//-->
           
-        <div class="evtCtnsBox wb_cts03" id="event">
+        <div class="evtCtnsBox wb_cts03" id="event">             
             <ul>
-                <li><div class="check01"><input type="checkbox" id="y_pkg" name="y_pkg" value="Y" onClick="fn_cal('1')"/></div></li> <!--공채 12개월 43만원-->
-                <li><div class="check02"><input type="checkbox" id="y_pkg" name="y_pkg" value="Y" onClick="fn_cal('2')"/></div></li> <!--특채 12개월 35만원-->
-                <li><div class="check03"><input type="checkbox" id="j_pkg" name="j_pkg" value="Y" onClick="fn_cal('j1')"/></div></li> <!--소방체력 풀패키지 8만원-->
-                <li class="btn">
-                    <a href="http://www.willbesgosi.net/event/movie/event.html?event_cd=On_190131_g&topMenuType=O" target="_blank">
-                    <img src="http://file3.willbes.net/new_gosi/2019/01/EV190115_c10.png" alt="단기간 체력 40점 완성 프로젝트 상세보기" /><!--소방체력 풀패키지 상세보기-->
-                    </a>
-                </li> 
-                <li>
-                    <div class="check" id="chkInfo">
-                        <label><input name="is_chk" type="checkbox" value="Y" /> 페이지 하단 윌비스 소방 PASS 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
-                        <a href="#tab1">이용안내확인하기 ↓</a>
-                    </div>
-                </li>                
-                <li>
-                    <div class="check04">
-                        <span id="sum_y">0</span><!--합계-->
-                        <a href="javascript:fn_cart();"><img src="http://file3.willbes.net/new_gosi/2019/01/EV190115_c10.png" alt="장바구니"  /></a> <!--소방패스 신청하기-->
-                    </div>
-                </li>                 
-            </ul>        
+                <li><div class="check01"><input type="radio" id="y_pkg" name="y_pkg" value="Y" onClick="fn_cal('1')"/></div></li> <!--공채 12개월 43만원-->
+                <li><div class="check02"><input type="radio" id="y_pkg" name="y_pkg" value="Y" onClick="fn_cal('2')"/></div></li> <!--특채 12개월 35만원-->
+            </ul>
+            <div>
+                <a href="/promotion/index/cate/3023/code/1091" target="_blank">
+                <img src="http://file3.willbes.net/new_gosi/2019/01/EV190115_c7_22.jpg" alt="단기간 체력 40점 완성 프로젝트 상세보기" /><!--소방체력 풀패키지 상세보기-->
+                </a>
+            </div>
+            <div>
+                <div class="check" id="chkInfo">
+                    <label><input name="is_chk" type="checkbox" value="Y" /> 페이지 하단 윌비스 소방 PASS 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
+                    <a href="#tab1">이용안내확인하기 ↓</a>
+                </div>
+                <div class="check04">
+                    <a href="javascript:fn_cart();"><img src="http://file3.willbes.net/new_gosi/2019/01/EV190115_c7_2_1.jpg" alt="장바구니"  /></a> <!--소방패스 신청하기-->
+                </div>
+            </div>                   
         </div><!--wb_cts03//-->
 
         <div class="evtCtnsBox wb_cts05" id="tab1">
@@ -293,13 +280,8 @@
                 }
         
             }
-            daycountDown();
-        
-        $(function(e){
-            var targetOffset= $("#evtContainer").offset().top;
-            $('html, body').animate({scrollTop: targetOffset}, 1000);
-            /*e.preventDefault(); */   
-	    });    
+            daycountDown();       
+  
     </script>
 
     <script type="text/javascript">

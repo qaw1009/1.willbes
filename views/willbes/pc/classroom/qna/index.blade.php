@@ -17,8 +17,8 @@
             </form>
             <div class="pointDetailWrap p_re">
                 <ul class="tabWrap tabDepth4 NG">
-                    <li><a href="#none" id="hover_counsel">1:1상담 ({{$count_complete_type['counsel']['not_complete']}})</a></li>
-                    <li><a href="#none" id="hover_professor">학습Q&A({{$count_complete_type['professor']['not_complete']}})</a></li>
+                    <li><a href="#none" id="hover_counsel">1:1상담 <!--({{$count_complete_type['counsel']['not_complete']}})--></a></li>
+                    <li><a href="#none" id="hover_professor">학습Q&A <!--({{$count_complete_type['professor']['not_complete']}})--></a></li>
                 </ul>
 
                 <div class="tabBox mt40" class="tabLink">

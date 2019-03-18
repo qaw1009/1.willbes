@@ -108,9 +108,9 @@
     <div class="evtCtnsBox wb_06" id="event_go">
         <img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_06_01.jpg"  alt="#" />
     </div>
-
+<!--
     @include('html.event_replyUrl')
-
+-->
     <div class="evtCtnsBox wb_07 NSK">
         <img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_07.jpg"  alt="#"  id="lec_go" />
         <div class="wb_07_c">
@@ -130,37 +130,41 @@
                 <td class="st01">신광은 형소법</td>
                 <td class="st03">동형모의고사    <span class="st02">3/25(월) ~ 4/15(월) , 총 5회</span></td>
                 <td class="st01">3/25(월) 8:40</td>
-                <td class="st04"><a href="/lecture/passLectureDetail.html?topMenu=081&topMenuName=%EC%9D%BC%EB%B0%98%EA%B2%BD%EC%B0%B0&searchTopCategoryCode=&searchCategoryCode=081&searchSubjectCode=1004&searchLeccode=D201900086&leftMenuLType=&lecKType=&USER_ID=&hSEARCHTYPE=&hSEARCHTEXT=&learningCD=&topMenuType=F&topMenuGnb=OM_009&SEARCHSERIESCODE=" target="_blank">수강신청</a></td>
+                <td class="st04"><a href="{{ site_url('#none') }}" target="_blank">수강신청</a></td>
             </tr>
             <tr>
                 <td class="st01">오태진 한국사</td>
                 <td class="st03">동형모의고사    <span class="st02">3/26(화) ~ 4/16(화) , 총 5회</span></td>
                 <td class="st01">3/26(화) 8:40</td>
-                <td class="st04"><a href="/lecture/passLectureDetail.html?topMenu=081&topMenuName=%EC%9D%BC%EB%B0%98%EA%B2%BD%EC%B0%B0&searchTopCategoryCode=&searchCategoryCode=081&searchSubjectCode=1002&searchLeccode=D201900089&leftMenuLType=&lecKType=&USER_ID=&hSEARCHTYPE=&hSEARCHTEXT=&learningCD=&topMenuType=F&topMenuGnb=OM_009&SEARCHSERIESCODE=" target="_blank">수강신청</a></td>
+                <td class="st04"><a href="{{ site_url('#none') }}" target="_blank">수강신청</a></td>
             </tr>
             <tr>
                 <td class="st01">원유철 한국사</td>
                 <td class="st03">동형모의고사    <span class="st02">3/26(화) ~ 4/16(화) , 총 5회</span></td>
                 <td class="st01">3/26(화) 8:40</td>
-                <td class="st04"><a href="/lecture/passLectureDetail.html?topMenu=081&topMenuName=%EC%9D%BC%EB%B0%98%EA%B2%BD%EC%B0%B0&searchTopCategoryCode=&searchCategoryCode=081&searchSubjectCode=1002&searchLeccode=D201900090&leftMenuLType=&lecKType=&USER_ID=&hSEARCHTYPE=&hSEARCHTEXT=&learningCD=&topMenuType=F&topMenuGnb=OM_009&SEARCHSERIESCODE=" target="_blank">수강신청</a></td>
+                <td class="st04"><a href="{{ site_url('#none') }}" target="_blank">수강신청</a></td>
             </tr>
             <tr>
                 <td class="st01">장정훈 경찰학</td>
                 <td class="st03">동형모의고사   <span class="st02">3/27(수) ~ 4/17(수) , 총 5회</span></td>
                 <td class="st01">3/27(수) 8:4</td>
-                <td class="st04"><a href="/lecture/passLectureDetail.html?topMenu=081&topMenuName=%EC%9D%BC%EB%B0%98%EA%B2%BD%EC%B0%B0&searchTopCategoryCode=&searchCategoryCode=081&searchSubjectCode=1005&searchLeccode=D201900087&leftMenuLType=&lecKType=&USER_ID=&hSEARCHTYPE=&hSEARCHTEXT=&learningCD=&topMenuType=F&topMenuGnb=OM_009&SEARCHSERIESCODE=" target="_blank">수강신청</a></td>
+                <td class="st04"><a href="{{ site_url('#none') }}" target="_blank">수강신청</a></td>
             </tr>
             <tr>
                 <td class="st01">김원욱 형법 </td>
                 <td class="st03">동형모의고사    <span class="st02">3/28(목) ~ 4/20(목) 총 5회</span></td>
                 <td class="st01">3/28(목) 8:40</td>
-                <td class="st04"><a href="/lecture/passLectureDetail.html?topMenu=081&topMenuName=%EC%9D%BC%EB%B0%98%EA%B2%BD%EC%B0%B0&searchTopCategoryCode=&searchCategoryCode=081&searchSubjectCode=1003&searchLeccode=D201900085&leftMenuLType=&lecKType=&USER_ID=&hSEARCHTYPE=&hSEARCHTEXT=&learningCD=&topMenuType=F&topMenuGnb=OM_009&SEARCHSERIESCODE=" target="_blank">수강신청</a></td>
+                <td class="st04"><a href="{{ site_url('#none') }}" target="_blank">수강신청</a></td>
             </tr>
+            <tr>
+		    <td colspan="3">문제풀이 2단계 동형모의고사 종합반</td>
+		    <td class="st04"><a href="{{ site_url('#none') }}" target="_blank">수강신청</a></td>
+	      </tr>
             <tr>
                 <td class="st01">하승민 영어</td>
                 <td class="st03">동형모의고사   <span class="st02">3/29(금) ~ 4/19(금) 총 5회</span></td>
                 <td class="st01">3/29(금) 8:40</td>
-                <td class="st04"><a href="/lecture/passLectureDetail.html?topMenu=081&topMenuName=%EC%9D%BC%EB%B0%98%EA%B2%BD%EC%B0%B0&searchTopCategoryCode=&searchCategoryCode=081&searchSubjectCode=1001&searchLeccode=D201900088&leftMenuLType=&lecKType=&USER_ID=&hSEARCHTYPE=&hSEARCHTEXT=&learningCD=&topMenuType=F&topMenuGnb=OM_009&SEARCHSERIESCODE=" target="_blank">수강신청</a></td>
+                <td class="st04"><a href="{{ site_url('#none') }}" target="_blank">수강신청</a></td>
             </tr>                
             <tr>
                 <td colspan="4" class="bookimg"><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_07_map.jpg" /></td>

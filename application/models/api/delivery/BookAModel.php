@@ -10,6 +10,7 @@ class BookAModel extends WB_Model
         'order_delivery_address' => 'lms_order_delivery_address',
         'product' => 'lms_product',
         'member' => 'lms_member',
+        'admin' => 'wbs_sys_admin'
     ];
 
     // 교재 상품구분 공통코드
@@ -20,6 +21,9 @@ class BookAModel extends WB_Model
 
     // 배송상태 공통코드 (송장등록, 발송준비, 발송취소, 발송완료)
     private $_delivery_status_ccd = ['invoice' => '677001', 'prepare' => '677002', 'cancel' => '677003', 'complete' => '677004'];
+    
+    // 교재배송 관리자 아이디
+    private $_admin_id = 'api_book';
 
     public function __construct()
     {
@@ -156,13 +160,17 @@ class BookAModel extends WB_Model
     public function modifyInvoiceNo($input)
     {
         $this->_conn->trans_begin();
-        $admin_idx = 0;
         $upd_cnt = 0;
 
         try {
             if (empty($input) === true) {
                 throw new \Exception('송장번호 등록 대상이 없습니다.');
             }
+            
+            // 관리자 식별자 조회
+            $admin_idx = element('wAdminIdx', $this->_conn->getFindResult($this->_table['admin'], 'wAdminIdx', [
+                'EQ' => ['wAdminId' => $this->_admin_id]
+            ]), 0);
 
             foreach ($input as $row) {
                 if (empty($row['OrderNum']) === false && empty($row['TransNum']) === false && empty($row['SiteCode']) === false) {
@@ -174,7 +182,7 @@ class BookAModel extends WB_Model
 
                         $data = [
                             'DeliveryStatusCcd' => $this->_delivery_status_ccd['invoice'],
-                            'InvoiceNo' => $row['TransNum'],
+                            'InvoiceNo' => str_replace('-', '', $row['TransNum']),
                             'InvoiceRegAdminIdx' => $admin_idx
                         ];
 
@@ -215,7 +223,6 @@ class BookAModel extends WB_Model
     public function modifyDeliveryStatus($delivery_status, $input)
     {
         $this->_conn->trans_begin();
-        $admin_idx = 0;
         $upd_cnt = 0;
 
         try {
@@ -230,10 +237,16 @@ class BookAModel extends WB_Model
                 throw new \Exception('배송상태 파라미터가 올바르지 않습니다.');
             }
 
+            // 관리자 식별자 조회
+            $admin_idx = element('wAdminIdx', $this->_conn->getFindResult($this->_table['admin'], 'wAdminIdx', [
+                'EQ' => ['wAdminId' => $this->_admin_id]
+            ]), 0);
+
             foreach ($input as $row) {
-                if (empty($row['OrderNum']) === false && empty($row['TransNum']) === false && empty($row['SiteCode']) === false) {
+                if (empty($row['OrderNum']) === false && empty($row['SiteCode']) === false) {
                     // 주문상품배송정보 조회
                     $info_rows = $this->findOrderProductDeliveryInfo($row['OrderNum'], $row['SiteCode']);
+
                     if (empty($info_rows) === false) {
                         // 업데이트 대상 주문상품배송정보 식별자
                         $arr_order_prod_delv_idx = array_pluck($info_rows, 'OrderProdDeliveryIdx');
@@ -287,7 +300,7 @@ class BookAModel extends WB_Model
             }
 
             foreach ($input as $row) {
-                if (empty($row['OrderNum']) === false && empty($row['TransNum']) === false && empty($row['SiteCode']) === false) {
+                if (empty($row['OrderNum']) === false && empty($row['SiteCode']) === false) {
                     // 주문상품배송정보 조회
                     $info_rows = $this->findOrderProductDeliveryInfo($row['OrderNum'], $row['SiteCode']);
                     if (empty($info_rows) === false) {

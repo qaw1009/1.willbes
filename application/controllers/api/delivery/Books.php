@@ -10,10 +10,17 @@ class Books extends \app\controllers\BaseController
     private $_content_type = 'application/xml';
     private $_base_node = 'NewDataSet';
     private $_item_node = 'bookDelivery';
+    private $_allow_ip = ['122.199.222.', '59.5.87.1.', '115.94.76.', '115.90.108.245', '58.150.126.91'];
 
     public function __construct()
     {
         parent::__construct();
+
+        // 접근 아이피 체크
+        $is_allow = $this->_checkAllowIp();
+        if ($is_allow !== true) {
+            exit($is_allow);
+        }
 
         // xml format library
         $this->load->library('format');
@@ -122,17 +129,17 @@ class Books extends \app\controllers\BaseController
                 'Hp' => $this->_setItem($row['ReceiverPhone']),
                 'Tel' => $this->_setItem($row['ReceiverTel']),
                 'OrderNum' => $this->_setItem($row['OrderNo']),
-                'AmountCount' => '1',
-                'Amount' => '1',
-                'refundFlag' => 'N',
+                'AmountCount' => $this->_setItem('1'),
+                'Amount' => $this->_setItem('1'),
+                'refundFlag' => $this->_setItem('N'),
                 'PCode' => $this->_setItem($row['ProdCode']),
-                'Remark' => '',
+                'Remark' => $this->_setItem(''),
                 'PayDate' => $this->_setItem($row['CompleteDatm']),
                 'Price' => $this->_setItem($row['RealPayPrice']),
                 'MemberID' => $this->_setItem($row['MemId']),
                 'MemberName' => $this->_setItem($row['MemName']),
                 'TransNum' => $this->_setItem($row['InvoiceNo']),
-                'booxencode' => '',
+                'booxencode' => $this->_setItem(''),
                 'SiteCode' => $this->_setItem($sitecode)
             ];
         }
@@ -142,13 +149,12 @@ class Books extends \app\controllers\BaseController
 
     /**
      * 송장번호 등록
+     * @example https://api.local.willbes.net/delivery/books/setCode?data={XML}
      * @return mixed
      */
     public function setCode()
     {
         $data = $this->_reqP('data');
-
-        logger('book api setCode => ' . $data);
 
         $result = $this->bookAModel->modifyInvoiceNo($this->_parse($data));
         return $result === true ? $this->_success() : $this->_error();
@@ -156,6 +162,7 @@ class Books extends \app\controllers\BaseController
 
     /**
      * 발송준비 상태 변경
+     * @example https://api.local.willbes.net/delivery/books/setStatus?data={XML}
      * @return mixed
      */
     public function setStatus()
@@ -168,6 +175,7 @@ class Books extends \app\controllers\BaseController
 
     /**
      * 발송완료 상태 변경
+     * @example https://api.local.willbes.net/delivery/books/setComplete?data={XML}
      * @return mixed
      */
     public function setComplete()
@@ -180,15 +188,12 @@ class Books extends \app\controllers\BaseController
 
     /**
      * 배송정보 초기화
+     * @example https://api.local.willbes.net/delivery/books/setInit?data={XML}
      * @return mixed
      */
     public function setInit()
     {
         $data = $this->_reqP('data');
-        $data = '<NewDataSet>
-                <bookDelivery><OrderNum><![CDATA[20190314114922135045]]></OrderNum><TransNum><![CDATA[123456789011]]></TransNum><SiteCode><![CDATA[2001]]></SiteCode></bookDelivery>
-                <bookDelivery><OrderNum><![CDATA[20190314191334907982]]></OrderNum><TransNum><![CDATA[123456789022]]></TransNum><SiteCode><![CDATA[2001]]></SiteCode></bookDelivery>
-            </NewDataSet>';
 
         $result = $this->bookAModel->modifyDeliveryInit($this->_parse($data));
         return $result === true ? $this->_success() : $this->_error();
@@ -213,7 +218,19 @@ class Books extends \app\controllers\BaseController
     private function _parse($data)
     {
         $input = $this->format->_from_xml($data);
-        return empty($input) === false ? array_map('get_object_vars', element($this->_item_node, $input)) : [];
+        $item_input = element($this->_item_node, $input);
+        $results = [];
+
+        if (empty($item_input) === false) {
+            if (is_array($item_input) === true) {
+                $results = array_map('get_object_vars', $item_input);
+            } else {
+                $item_input = get_object_vars($item_input);
+                $results[] = $item_input;
+            }
+        }
+
+        return $results;
     }
 
     /**
@@ -242,10 +259,30 @@ class Books extends \app\controllers\BaseController
 
     /**
      * error response
-     * @return null
+     * @param string $msg
      */
-    private function _error()
+    private function _error($msg = '')
     {
-        return null;
+        empty($msg) === true && $msg = 'ERROR';
+        echo $msg;
+    }
+
+    /**
+     * 접근 아이피 체크
+     * @return bool|string
+     */
+    private function _checkAllowIp()
+    {
+        // 로컬서버가 아닐 경우 체크 ==> TODO : 서버 환경별 실행
+        if (ENVIRONMENT != 'local') {
+            $access_ip = $this->input->ip_address();
+
+            $is_allow = starts_with($access_ip, $this->_allow_ip);
+            if ($is_allow !== true) {
+                return 'NOT_ALLOW_IP';
+            }
+        }
+
+        return true;
     }
 }

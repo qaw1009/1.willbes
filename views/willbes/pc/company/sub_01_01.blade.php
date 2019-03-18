@@ -12,11 +12,11 @@
                     <tr>
                         <td height="52" valign="bottom"><table border="0" cellspacing="0" cellpadding="0">
                                 <tr>
-                                    <td><a href="sub_01_01" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('회사소개_메뉴','','https://static.willbes.net/public/images/company/sub_01_01_02.gif',1)"><img src="https://static.willbes.net/public/images/company/sub_01_01_02.gif" alt="회사소개_메뉴" name="회사소개_메뉴" border="0" id="회사소개_메뉴" /></a></td>
+                                    <td><a href="{{front_url('/company/sub_01_01')}}" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('회사소개_메뉴','','https://static.willbes.net/public/images/company/sub_01_01_02.gif',1)"><img src="https://static.willbes.net/public/images/company/sub_01_01_02.gif" alt="회사소개_메뉴" name="회사소개_메뉴" border="0" id="회사소개_메뉴" /></a></td>
                                     <td width="5"><img src="https://static.willbes.net/public/images/company/a.gif" width="1" height="1" /></td>
-                                    <td><a href="sub_01_02" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('회사연혁_메뉴','','https://static.willbes.net/public/images/company/sub_01_02_02.gif',1)"><img src="https://static.willbes.net/public/images/company/sub_01_02_01.gif" alt="회사연혁_메뉴" name="회사연혁_메뉴" border="0" id="회사연혁_메뉴" /></a></td>
+                                    <td><a href="{{front_url('/company/sub_01_02')}}" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('회사연혁_메뉴','','https://static.willbes.net/public/images/company/sub_01_02_02.gif',1)"><img src="https://static.willbes.net/public/images/company/sub_01_02_01.gif" alt="회사연혁_메뉴" name="회사연혁_메뉴" border="0" id="회사연혁_메뉴" /></a></td>
                                     <td width="5"><img src="https://static.willbes.net/public/images/company/a.gif" width="1" height="1" /></td>
-                                    <td><a href="sub_01_03" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('회사연혁_IC소개','','https://static.willbes.net/public/images/company/sub_01_03_02.gif',1)"><img src="https://static.willbes.net/public/images/company/sub_01_03_01.gif" alt="회사연혁_IC소개" name="회사연혁_IC소개" border="0" id="회사연혁_IC소개" /></a></td>
+                                    <td><a href="{{front_url('/company/sub_01_03')}}" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('회사연혁_IC소개','','https://static.willbes.net/public/images/company/sub_01_03_02.gif',1)"><img src="https://static.willbes.net/public/images/company/sub_01_03_01.gif" alt="회사연혁_IC소개" name="회사연혁_IC소개" border="0" id="회사연혁_IC소개" /></a></td>
                                 </tr>
                             </table></td>
                     </tr>

@@ -128,6 +128,7 @@
                             @endforeach
                         </select>
                         <select id="orderby" name="orderby" title="Laststudy" class="seleStudy">
+                            <option value="MlIdx^DESC" @if(isset($input_arr['orderby']) && $input_arr['orderby'] == 'MlIdx^DESC') selected="selected" @endif>최근추가강좌</option>
                             <option value="lastStudyDate^DESC" @if(isset($input_arr['orderby']) && $input_arr['orderby'] == 'lastStudyDate^DESC') selected="selected" @endif>최종학습일순</option>
                             <option value="LecStartDate^ASC" @if(isset($input_arr['orderby']) && $input_arr['orderby'] == 'LecStartDate^ASC') selected="selected" @endif>개강일순</option>
                             <option value="RealLecEndDate^ASC" @if(isset($input_arr['orderby']) && $input_arr['orderby'] == 'RealLecEndDate^ASC') selected="selected" @endif>종료임박순</option>
@@ -603,6 +604,7 @@
                 data,
                 function(ret){
                     alert(ret.ret_msg);
+                    location.reload();
                 },
                 function(ret, status){
                     alert(ret.ret_msg);
@@ -676,7 +678,7 @@
                     if(code == 'all'){
                         location.reload();
                     } else {
-
+                        location.reload();
                     }
                 },
                 function(ret, status){
@@ -701,7 +703,8 @@
                     if(code == 'all'){
                         location.reload();
                     } else {
-                        $(obj).parent().parent().remove();
+                        location.reload();
+                        //$(obj).parent().parent().remove();
                     }
                 },
                 function(ret, status){
@@ -726,7 +729,8 @@
                     if(code == 'all'){
                         location.reload();
                     } else {
-                        $(obj).parent().parent().remove();
+                        location.reload();
+                        //$(obj).parent().parent().remove();
                     }
                 },
                 function(ret, status){
@@ -751,7 +755,8 @@
                     if(code == 'all'){
                         location.reload();
                     } else {
-                        $(obj).parent().parent().remove();
+                        location.reload();
+                        //$(obj).parent().parent().remove();
                     }
                 },
                 function(ret, status){

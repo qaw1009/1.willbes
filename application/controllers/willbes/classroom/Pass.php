@@ -95,7 +95,8 @@ class Pass extends \app\controllers\FrontController
         ];
 
         $orderby = element('orderby', $input_arr);
-        $orderby = (empty($orderby) == true) ? 'lastStudyDate^DESC' : $orderby;
+        //$orderby = (empty($orderby) == true) ? 'lastStudyDate^DESC' : $orderby;
+        $orderby = (empty($orderby) == true) ? 'MlIdx^DESC' : $orderby;
         // 최신순으로
         @list($orderby, $asc_desc) = @explode("^", $orderby);
         if(empty($asc_desc) == false){

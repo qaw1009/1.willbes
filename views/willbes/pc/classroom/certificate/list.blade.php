@@ -115,7 +115,7 @@
                                         </tr>
                                     @empty
                                         <tr>
-                                            <td colspan="3" class="tx-center">수강종료 강좌가 없습니다.</td>
+                                            <td colspan="3" class="tx-center">강좌가 없습니다.</td>
                                         </tr>
                                     @endforelse
                                     </tbody>
@@ -149,7 +149,7 @@
                                         <tbody>
                                         <tr class="bg-light-blue">
                                             <td class="w-data tx-center pl30">
-                                                수강종료 강좌가 없습니다.
+                                                강좌가 없습니다.
                                             </td>
                                         </tr>
                                         </tbody>
@@ -224,13 +224,11 @@
                                     </table>
                                 @empty
                                     <table cellspacing="0" cellpadding="0" class="packTable lecTable bdt-dark-gray">
-                                        <colgroup>
-                                            <col style="width: 820px;">
-                                            <col style="width: 120px;">
-                                        </colgroup>
                                         <tbody>
-                                        <tr>
-                                            <a href="javascript:;" onclick="fnView('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}');"><span class="bBox blueBox NSK">수강확인증</span></a>
+                                        <tr class="bg-light-blue">
+                                            <td class="w-data tx-center pl30">
+                                                강좌가 없습니다.
+                                            </td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -274,7 +272,7 @@
                                         </tr>
                                     @empty
                                         <tr>
-                                            <td colspan="3" class="tx-center">수강종료 강좌가 없습니다.</td>
+                                            <td colspan="3" class="tx-center">강좌가 없습니다.</td>
                                         </tr>
                                     @endforelse
                                     </tbody>

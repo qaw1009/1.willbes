@@ -258,7 +258,7 @@ class Professor extends \app\controllers\FrontController
             $data['on_course'] = $this->baseProductFModel->listCourse($arr_site_code['on']);
         } else {
             // 온라인사이트일 경우 과정 소트매핑 조회
-            $data['on_course'] = $this->baseProductFModel->listCourseCategoryMapping($arr_site_code['on'], $this->_cate_code);
+            $data['on_course'] = $this->baseProductFModel->listCourseCategoryMapping($arr_site_code['on'], $this->_def_cate_code);
         }
 
         if (empty($arr_prof_idx['on']) === false) {

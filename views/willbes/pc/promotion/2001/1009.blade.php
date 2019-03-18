@@ -203,8 +203,8 @@
                         <h5>&nbsp;</h5>
                         <h5>&nbsp;</h5>
                         <p>&nbsp;</p>
-                        <p><input type="radio" id="y_pkg7" name="y_pkg" value="" onClick=""/> <label for="y_pkg7">일반</label></p>
-                        <p><input type="radio" id="y_pkg8" name="y_pkg" value="" onClick=""/> <label for="y_pkg8">특채 경행경채</label></p>
+                        <p><input type="radio" id="y_pkg7" name="y_pkg" value="149107" onClick=""/> <label for="y_pkg7">일반</label></p>
+                        <p><input type="radio" id="y_pkg8" name="y_pkg" value="149108" onClick=""/> <label for="y_pkg8">특채 경행경채</label></p>
                         <div><strong>143</strong>만원</div>
                     </li>
                 </ul>

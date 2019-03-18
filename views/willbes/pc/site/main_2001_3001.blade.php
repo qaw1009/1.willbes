@@ -116,7 +116,7 @@
                                 <li>2주마다  형소법  →  경찰학<br/>→  한국사  →  형법 진행</li>
                             </ul>
                         </div>
-                        <a href="#none">OT보기 &gt;</a>
+                        <a href="#none" onclick="fnPlayerSample('132199', '1019097', 'HD');">OT보기 &gt;</a>
                     </li>
                     <li>&nbsp;</li>
                     <li>
@@ -128,7 +128,7 @@
                                 <li>10주 과정</li>
                             </ul>
                         </div>
-                        <a href="#none">OT보기 &gt;</a>
+                        <a href="#none" onclick="fnPlayerSample('132216', '1019296', 'HD');">OT보기 &gt;</a>
                     </li>
                     <li>&nbsp;</li>
                     <li>
@@ -141,7 +141,7 @@
                                 <li>FINAL 실전 모의고사</li>
                             </ul>
                         </div>
-                        <a href="#none">OT보기 &gt;</a>
+                        <a href="#none" onclick="fnPlayerSample('131811', '1014607', 'HD');">OT보기 &gt;</a>
                     </li>
                 </ul>
                 <div class="curriculumTxt">

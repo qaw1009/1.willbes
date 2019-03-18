@@ -144,9 +144,10 @@
                                         <div class="w-lectit">수강연장</div>
                                         <div class="w-lec NGEB"><span class="tx-light-blue">3</span>회</div>
                                         <div class="w-date tx-gray">
-                                            <div class="w-btn">
+                                            (* 3회까지)
+                                            <!--div class="w-btn">
                                                 <a class="bg-blue bd-dark-blue NSK" href="#none" onclick="">신청</a>
-                                            </div>
+                                            </div-->
                                         </div>
                                     </td>
                                     <td>

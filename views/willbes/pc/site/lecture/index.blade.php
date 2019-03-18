@@ -288,7 +288,7 @@
                                                 보강동영상 비밀번호 입력
                                                 <div>
                                                     <input type="password" id="free_lec_passwd_{{ $row['ProdCode'] }}" name="free_lec_passwd" placeholder="****" maxlength="20">
-                                                    <button type="button" name="btn_check_free_passwd" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 4) }}', '{{ $pattern }}');"><span>검색</span></button>
+                                                    <button type="button" name="btn_check_free_passwd" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 4) }}', '{{ $pattern }}');"><span>확인</span></button>
                                                 </div>
                                             </div>
                                         @else

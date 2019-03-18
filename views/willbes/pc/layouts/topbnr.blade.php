@@ -29,10 +29,34 @@
     </script>
 @endif
 @if($__cfg['CateCode'] == '3019')
-    {{-- 공무원온라인 사이트일 경우만 적용 --}}
+    {{-- 공무원 9급 사이트일 경우만 적용 --}}
     <div id="topBannerLayer" class="gosi">
         <div class="topBanner">
-            <a href="#none"><img src="{{ img_url('gosi/banner/bnr_top.jpg') }}" alt="배너명"></a>
+            <a href="#none"><img src="{{ img_url('gosi/banner/1119-70-3019.gif') }}" alt="9급"></a>
+        </div>
+    </div>
+@endif
+@if($__cfg['CateCode'] == '3020')
+    {{-- 공무원 7급 사이트일 경우만 적용 --}}
+    <div id="topBannerLayer" class="gosi">
+        <div class="topBanner">
+            <a href="#none"><img src="{{ img_url('gosi/banner/1119-70-3020.gif') }}" alt="7급"></a>
+        </div>
+    </div>
+@endif
+@if($__cfg['CateCode'] == '3022')
+    {{-- 공무원 세무직 사이트일 경우만 적용 --}}
+    <div id="topBannerLayer" class="gosi">
+        <div class="topBanner">
+            <a href="#none"><img src="{{ img_url('gosi/banner/1119-70-3022.gif') }}" alt="세무직"></a>
+        </div>
+    </div>
+@endif
+@if($__cfg['CateCode'] == '3023')
+    {{-- 공무원 소방직 사이트일 경우만 적용 --}}
+    <div id="topBannerLayer" class="gosi">
+        <div class="topBanner">
+            <a href="#none"><img src="{{ img_url('gosi/banner/1119-70-3023.gif') }}" alt="소방직"></a>
         </div>
     </div>
 @endif

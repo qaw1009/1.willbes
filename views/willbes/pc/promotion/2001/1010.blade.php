@@ -68,13 +68,14 @@
         .wb_cts03  {background:#274a35; margin-bottom:80px}
 
         .skybanner {
-            position:absolute;
-            top:20px;
+            position:fixed;
+            top:250px;
             right:0;
             width:280px;
             z-index:1;
+            display:none;
         }
-        .skybanner_sectionFixed {position:fixed; top:20px}
+ 
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">

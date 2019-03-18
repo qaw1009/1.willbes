@@ -243,9 +243,9 @@
             var lUrl = "";
 
             if(parseInt(no)==1 || parseInt(no)==3 || parseInt(no)== 5){
-                lUrl = "http://www.willbesgosi.net/yearpackagelecture/yearpackagelectureDetail.html?topMenu=001&topMenuName=&topMenuType=O&searchCategoryCode=001&searchLeccode=Y201800057&leftMenuLType=M0001&lecKType=Y"
+                lUrl = "/periodPackage/show/cate/3019/pack/648001/prod-code/149329"
             }else{
-                lUrl = "http://www.willbesgosi.net/yearpackagelecture/yearpackagelectureDetail.html?topMenu=001&topMenuName=&topMenuType=O&searchCategoryCode=001&searchLeccode=Y201800056&leftMenuLType=M0001&lecKType=Y"
+                lUrl = "/periodPackage/show/cate/3019/pack/648001/prod-code/149328"
             }
 
             location.href = lUrl;

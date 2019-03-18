@@ -25,7 +25,6 @@
                 </div>
 
                 <div class="VisualsubBox">
-                    <!--
                     @if(empty($data['arr_main_banner']['메인_서브1']) === false)
                         @if(count($data['arr_main_banner']['메인_서브1']) > 1) <div class="cSlider"><div class="slider"> @endif
                         @php $link_url = '#none'; @endphp
@@ -37,8 +36,7 @@
                         @endforeach
                         @if(count($data['arr_main_banner']['메인_서브1']) > 1) </div></div> @endif
                     @endif
-                    -->
-                    <div><a href="{{ $link_url }}" target="_{{ $row['LinkType'] }}"><img src="{{ $row['BannerFullPath'] . $row['BannerImgName'] }}" alt="{{ $row['BannerName'] }}"></a></div>
+
                     @if(empty($data['arr_main_banner']['메인_서브2']) === false)
                         <div class="bSlider">
                             <div class="sliderStopAutoPager">

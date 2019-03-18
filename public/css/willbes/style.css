@@ -5985,6 +5985,9 @@ ul li.profList .willbes-Layer-ProfileBox {
     border: 1px solid #e2e2e2;
     overflow-x: auto;
 }
+.willbes-Layer-CurriBox .Layer-Cont img {
+    max-width: 838px;
+}
 
 /* subContainer : Prof : willbes-Layer-ReplyBox */
 .willbes-Layer-ReplyBox {

@@ -112,18 +112,16 @@
     position: relative;
     display: inline;
     float: left;
-    width: 213px;
+    width: 271px;
     height: 297px;
-    margin-right:14px;
-    margin-bottom: 14px;
+    margin-right:12px;
+    margin-bottom: 12px;
     overflow: hidden;
     background: url("../../img/willbes/cop_acad/prof/prof_temp.jpg") no-repeat center center;
 }
-.caProfBox li:first-child,
-.caProfBox li:nth-child(6){
-    margin-right:13px;
-}
-.caProfBox li:nth-child(5),
+
+.caProfBox li:nth-child(4),
+.caProfBox li:nth-child(8),
 .caProfBox li:last-child {
     margin-right:0;
 }

@@ -124,70 +124,84 @@
             <div class="will-acadTit">교수별 <span class="tx-color">빠른강좌</span> 찾기</div>
                 <ul class="caProfBox">
                     <li>
-                        <img src="{{ img_url('cop_acad/prof/prof_ske_213.jpg') }}" alt="형사소송법/수사 신광은">
+                        <img src="{{ img_url('cop_acad/prof/prof_ske.jpg') }}" alt="형사소송법/수사 신광은">
                         <div class="caProfBtsn">
                             <div><a href="#none">문풀1단계<span>3.7 개강</span></a></div>
                             <div><a href="#none">기본형소법<span>3.21 개강</span></a></div>
                         </div>
                     </li>
                     <li>
-                        <img src="{{ img_url('cop_acad/prof/prof_jjh_213.jpg') }}" alt="경찰학개론 장정훈">
+                        <img src="{{ img_url('cop_acad/prof/prof_jjh.jpg') }}" alt="경찰학개론 장정훈">
                         <div class="caProfBtsn">
                             <div><a href="#none">문풀1단계<span>3.7 개강</span></a></div>
                             <div><a href="#none">무료특강</a></div>
                         </div>
                     </li>
                     <li>
-                        <img src="{{ img_url('cop_acad/prof/prof_kwu_213.jpg') }}" alt="형법 김원욱">
+                        <img src="{{ img_url('cop_acad/prof/prof_kwu.jpg') }}" alt="형법 김원욱">
                         <div class="caProfBtsn">
                             <div><a href="#none">기본형법<span>3.7 개강</span></a></div>
                             <div><a href="#none">심화강좌</a></div>
                         </div>
                     </li>
                     <li>
-                        <img src="{{ img_url('cop_acad/prof/prof_hsm_213.jpg') }}" alt="경찰영어 하승민">
+                        <img src="{{ img_url('cop_acad/prof/prof_hsm.jpg') }}" alt="경찰영어 하승민">
                         <div class="caProfBtsn">
                             <div><a href="#none">문풀1단계<span>3.2 개강</span></a></div>
                             <div><a href="#none">심화강좌</a></div>
                         </div>
                     </li>
                     <li>
-                        <img src="{{ img_url('cop_acad/prof/prof_otj_213.jpg') }}" alt="한국사 오태진">
-                        <div class="caProfBtsn">
-                            <div><a href="#none">기본한국사<span>2.25 개강</span></a></div>
-                            <div><a href="#none">문풀1단계<span>3.13 개강</span></a></div>
-                        </div>
-                    </li>
-                    <li>
-                        <img src="{{ img_url('cop_acad/prof/prof_wyc_213.jpg') }}" alt="한국사 원유철">
+                        <img src="{{ img_url('cop_acad/prof/prof_wyc.jpg') }}" alt="한국사 원유철">
                         <div class="caProfBtsn">
                             <div><a href="#none">기본한국사<span>2.25 개강</span></a></div>
                             <div><a href="#none">심화강좌</a></div>
                         </div>
                     </li>
                     <li>
-                        <img src="{{ img_url('cop_acad/prof/prof_khj_213.jpg') }}" alt="기초영어 김현정">
+                        <img src="{{ img_url('cop_acad/prof/prof_otj.jpg') }}" alt="한국사 오태진">
+                        <div class="caProfBtsn">
+                            <div><a href="#none">기본한국사<span>2.25 개강</span></a></div>
+                            <div><a href="#none">문풀1단계<span>3.13 개강</span></a></div>
+                        </div>
+                    </li>                    
+                    <li>
+                        <img src="{{ img_url('cop_acad/prof/prof_khj.jpg') }}" alt="기초영어 김현정">
                         <div class="caProfBtsn">
                             <div><a href="#none">지옥탈출<span>3.11 개강</span></a></div>
                             <div><a href="#none">아침특강</a></div>
                         </div>
                     </li>
                     <li>
-                        <img src="{{ img_url('cop_acad/prof/prof_kjk_213.jpg') }}" alt="기초영어 김준기">
+                        <img src="{{ img_url('cop_acad/prof/prof_kjk.jpg') }}" alt="기초영어 김준기">
                         <div class="caProfBtsn">
                             <div><a href="#none">지옥탈출<span>3.11 개강</span></a></div>
                             <div><a href="#none">아침특강</a></div>
                         </div>
                     </li>
                     <li>
-                        <img src="{{ img_url('cop_acad/prof/prof_hsw_213.jpg') }}" alt="면접 황세웅">
+                        <img src="{{ img_url('cop_acad/prof/prof_hsw.jpg') }}" alt="면접 황세웅">
                         <div class="caProfBtsn">
                             <div><a href="#none">면접캠프</a></div>
                             <div><a href="#none">면접 스파르타</a></div>
                         </div>
                     </li>
                     <li>
-                        <img src="{{ img_url('cop_acad/prof/prof_kiy_213.jpg') }}" alt="인적성검사 강인엽">
+                        <img src="{{ img_url('cop_acad/prof/prof_kiy.jpg') }}" alt="인적성검사 강인엽">
+                        <div class="caProfBtsn">
+                            <div><a href="#none">면접캠프</a></div>
+                            <div><a href="#none">면접 스파르타</a></div>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="{{ img_url('cop_acad/prof/prof_ubj.jpg') }}" alt="면접 유봉진">
+                        <div class="caProfBtsn">
+                            <div><a href="#none">면접캠프</a></div>
+                            <div><a href="#none">면접 스파르타</a></div>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="{{ img_url('cop_acad/prof/prof_jyw.jpg') }}" alt="면접 정용욱">
                         <div class="caProfBtsn">
                             <div><a href="#none">면접캠프</a></div>
                             <div><a href="#none">면접 스파르타</a></div>

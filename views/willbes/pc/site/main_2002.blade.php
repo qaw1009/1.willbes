@@ -67,20 +67,6 @@
                         </div>
                     </li>
                     <li>
-                        <img src="{{ img_url('cop_acad/prof/prof_kwu.jpg') }}" alt="형법 김원욱">
-                        <div class="caProfBtsn">
-                            <div><a href="#none">기본형법<span>3.7 개강</span></a></div>
-                            <div><a href="#none">심화강좌</a></div>
-                        </div>
-                    </li>
-                    <li>
-                        <img src="{{ img_url('cop_acad/prof/prof_hsm.jpg') }}" alt="경찰영어 하승민">
-                        <div class="caProfBtsn">
-                            <div><a href="#none">문풀1단계<span>3.2 개강</span></a></div>
-                            <div><a href="#none">심화강좌</a></div>
-                        </div>
-                    </li>
-                    <li>
                         <img src="{{ img_url('cop_acad/prof/prof_wyc.jpg') }}" alt="한국사 원유철">
                         <div class="caProfBtsn">
                             <div><a href="#none">기본한국사<span>2.25 개강</span></a></div>
@@ -93,7 +79,21 @@
                             <div><a href="#none">기본한국사<span>2.25 개강</span></a></div>
                             <div><a href="#none">문풀1단계<span>3.13 개강</span></a></div>
                         </div>
-                    </li>                    
+                    </li>
+                    <li>
+                        <img src="{{ img_url('cop_acad/prof/prof_kwu.jpg') }}" alt="형법 김원욱">
+                        <div class="caProfBtsn">
+                            <div><a href="#none">기본형법<span>3.7 개강</span></a></div>
+                            <div><a href="#none">심화강좌</a></div>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="{{ img_url('cop_acad/prof/prof_hsm.jpg') }}" alt="경찰영어 하승민">
+                        <div class="caProfBtsn">
+                            <div><a href="#none">문풀1단계<span>3.2 개강</span></a></div>
+                            <div><a href="#none">심화강좌</a></div>
+                        </div>
+                    </li>                                        
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_khj.jpg') }}" alt="기초영어 김현정">
                         <div class="caProfBtsn">

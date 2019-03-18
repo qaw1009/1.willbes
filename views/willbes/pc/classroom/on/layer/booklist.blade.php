@@ -47,16 +47,15 @@
                         <dt>
                             <div>상품주문금액</div>
                             <div id="product-price" class="price tx-light-blue">0원</div>
-                        </dt>
-                        <!--
+                        </dt>                        
                         <dt class="price-img">
                             <span class="row-line">|</span>
                             <img src="/public/img/willbes/sub/icon_plus.gif">
-                        </dt>
+                        </dt>                        
                         <dt>
                             <div>배송료</div>
-                            <span id="trans-price" class="price tx-light-blue">0원</span>
-                        </dt> -->
+                            <span id="trans-price" class="price tx-light-blue">2,500원</span>
+                        </dt> 
                     </dl>
                 </li>
                 <li class="price-total">
@@ -65,6 +64,7 @@
                 </li>
             </ul>
             <div class="willbes-Lec-buyBtn">
+                <div>* 30,000원 이상 교재 구매 시 배송료는 무료입니다.</div>
                 <ul>
                     <li class="btnAuto95 h30">
                         <button type="button" onclick="fnCart();" class="mem-Btn bg-white bd-dark-blue">

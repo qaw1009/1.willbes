@@ -9,6 +9,8 @@
     </li>
     @endif
     @if(empty($data['arr_main_quick']['메인_우측퀵_01']) === false)
+        <li><a href="#none" onclick="popupOpen('{{ front_url('/certApply/index/page/mou/cert/1') }}', '_auth_center', '806', '986', null, null, 'no', 'no');"><img src="{{ img_url('cop/quick/quick_190108.jpg') }}" alt="경찰인증센터"></a></li>
+        {{-- 배너 팝업오픈 기능이 없기 때문에 임의로 배너 삽입
         <li>
             <div class="QuickSlider">
                 <div class="sliderNum">
@@ -21,7 +23,7 @@
                     @endforeach
                 </div>
             </div>
-        </li>
+        </li>--}}
     @endif
     @if(empty($data['arr_main_quick']['메인_우측퀵_02']) === false)
         <li>

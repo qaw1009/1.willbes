@@ -538,10 +538,10 @@ class CartFModel extends BaseOrderFModel
      * @param int $parent_prod_code [부모상품코드]
      * @param string $is_visit_pay [방문결제여부, Y/N]
      * @param bool $is_data_return [상품 데이터 리턴 여부]
-     * @param bool $is_order [주문여부]
+     * @param bool $is_cart [장바구니여부]
      * @return bool|array|string
      */
-    public function checkProduct($learn_pattern, $site_code, $prod_code, $parent_prod_code, $is_visit_pay, $is_data_return = false, $is_order = true)
+    public function checkProduct($learn_pattern, $site_code, $prod_code, $parent_prod_code, $is_visit_pay, $is_data_return = false, $is_cart = false)
     {
         $data = $this->productFModel->findOnlySalesProductByProdCode($learn_pattern, $prod_code);
 
@@ -557,7 +557,7 @@ class CartFModel extends BaseOrderFModel
         if ($learn_pattern == 'book') {
             // 수강생 교재 체크
             $arr_input_prod_code = [];
-            if ($is_order === false) {
+            if ($is_cart === true) {
                 // 장바구니에서만 부모상품코드 사용 (강좌 + 수강생교재를 바로결제할 경우 수강생교재를 장바구니에 담기 위해 임의로 강좌상품코드 전달)
                 $arr_input_prod_code[] = $parent_prod_code;
             }

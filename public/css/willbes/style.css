@@ -4488,6 +4488,7 @@ form .LeclistTable .evtTable tr td a.w-del {
     float: left;
     margin-top: 14px;
     margin-right: 5px;
+    vertical-align: middle;
 }
 .willbes-Layer-PassBox .passzoneListInfo {
     font-size: 12px;

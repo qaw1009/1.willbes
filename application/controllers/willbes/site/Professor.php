@@ -253,7 +253,13 @@ class Professor extends \app\controllers\FrontController
         $arr_prof_idx = $this->professorFModel->getProfIdxBySiteGroupCode($wprof_idx, $site_group_code);
 
         // 온라인 과정 조회
-        $data['on_course'] = $this->baseProductFModel->listCourse($arr_site_code['on']);
+        if ($this->_is_pass_site === true) {
+            // 학원사이트일 경우 등록된 과정 조회
+            $data['on_course'] = $this->baseProductFModel->listCourse($arr_site_code['on']);
+        } else {
+            // 온라인사이트일 경우 과정 소트매핑 조회
+            $data['on_course'] = $this->baseProductFModel->listCourseCategoryMapping($arr_site_code['on'], $this->_cate_code);
+        }
 
         if (empty($arr_prof_idx['on']) === false) {
             // 온라인 단강좌 조회

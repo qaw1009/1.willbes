@@ -26,16 +26,16 @@
                     <ul class="youtubetab">
                         <li>
                             <a href="#tab1" class="active">
-                                2018년 2차 최종합격생 인터뷰
+                                신의 법칙! 2주만에 1회독?
                                 <span>신광은경찰TV</span>
                             </a>
                         </li>
                         <li>
                             <a href="#tab2">
-                                신의 법칙! 2주만에 1회독?
+                                2018년 2차 최종합격생 인터뷰
                                 <span>신광은경찰TV</span>
                             </a>
-                        </li>
+                        </li> 
                         <li>
                             <a href="#tab3">
                                 스타강사가 들려주는 시험 꿀팁!
@@ -51,11 +51,11 @@
                     </ul>
                 </div>
                 <div id="tab1" class="youtubeBox">
-                    <iframe src="https://www.youtube.com/embed/GlE9EGMDF98?rel=0&modestbranding=1&showinfo=0&controls=2" frameborder="0" allowfullscreen=""></iframe>
+                    <iframe src="https://www.youtube.com/embed/re8w_IFAPS4?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
                 </div>
                 <div id="tab2" class="youtubeBox">
-                    <iframe src="https://www.youtube.com/embed/re8w_IFAPS4?rel=0&modestbranding=1&showinfo=0&controls=2" frameborder="0" allowfullscreen=""></iframe>
-                </div>
+                    <iframe src="https://www.youtube.com/embed/GlE9EGMDF98?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
+                </div> 
                 <div id="tab3" class="youtubeBox">
                     <iframe src="https://www.youtube.com/embed/VEmBnYu8tcc?rel=0&modestbranding=1&showinfo=0&controls=2" frameborder="0" allowfullscreen=""></iframe>
                 </div>
@@ -292,8 +292,8 @@
     <!-- End Container -->
 
     <script type="text/javascript">
-        var tab1_url = "https://www.youtube.com/embed/GlE9EGMDF98?rel=0&modestbranding=1&showinfo=0";
-        var tab2_url = "https://www.youtube.com/embed/re8w_IFAPS4?rel=0&modestbranding=1&showinfo=0";
+        var tab1_url = "https://www.youtube.com/embed/re8w_IFAPS4?rel=0&modestbranding=1&showinfo=0";
+        var tab2_url = "https://www.youtube.com/embed/GlE9EGMDF98?rel=0&modestbranding=1&showinfo=0";        
         var tab3_url = "https://www.youtube.com/embed/VEmBnYu8tcc?rel=0&modestbranding=1&showinfo=0";
         var tab4_url = "https://www.youtube.com/embed/lrZxQV21DE8?rel=0&modestbranding=1&showinfo=0";
 

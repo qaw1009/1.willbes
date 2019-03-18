@@ -23,7 +23,7 @@
 
         .skybanner {
             position:fixed;
-            bottom:20px;
+            top:250px;
             right:10px;
             z-index:1;
         }

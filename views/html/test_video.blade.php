@@ -169,7 +169,6 @@
                                     <div class="tt2">2018 기미진 기특한 국어 이론요약</div>
                                     <div class="tt3">50분</div>
                                 </li>
-
                             </ul>
                         </div>
                     </div>

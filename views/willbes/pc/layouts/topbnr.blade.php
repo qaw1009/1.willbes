@@ -28,7 +28,7 @@
         }
     </script>
 @endif
-@if(config_app('cateCode') == '3019')
+@if(config_app('CateCode') == '3019')
     {{-- 공무원온라인 사이트일 경우만 적용 --}}
     <div id="topBannerLayer" class="gosi">
         <div class="topBanner">

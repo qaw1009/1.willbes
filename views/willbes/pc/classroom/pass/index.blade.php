@@ -43,7 +43,7 @@
                             <div class="f_right NG mt10 mr10">
                                 <ul>
                                     <li class="InfoBtn ml10"><a href="javascript:;" onclick="fnMyDevice('');">등록기기정보 <span>▶</span></a></li>
-                                    <li class="InfoBtn ml10"><a href="javascript:;" onclick="openWin('MorePASS')">프리패스이용안내 <span>▶</span></a></li>
+                                    <li class="InfoBtn ml10"><a href="javascript:;" onclick="openWin('MorePASS')">PASS 이용안내 <span>▶</span></a></li>
                                 </ul>
                             </div>
                         </div>

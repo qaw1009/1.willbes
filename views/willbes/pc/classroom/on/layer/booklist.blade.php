@@ -64,7 +64,6 @@
                 </li>
             </ul>
             <div class="willbes-Lec-buyBtn">
-                <div>* 30,000원 이상 교재 구매 시 배송료는 무료입니다.</div>
                 <ul>
                     <li class="btnAuto95 h30">
                         <button type="button" onclick="fnCart();" class="mem-Btn bg-white bd-dark-blue">

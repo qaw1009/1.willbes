@@ -55,7 +55,7 @@
                     </div>
                     <div class="MyInfoBox">
                         <div class="willbes-listTable MyInfoBoxList widthAutoFull">
-                            <div class="will-Tit NG">최근 받은 쪽지 <a class="f_right" href="#none"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
+                            <div class="will-Tit NG">최근 받은 쪽지 <a class="f_right" href="{{front_url('/classroom/message/index')}}"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
                             <ul class="List-Table GM tx-gray">
                                 @forelse($data['msg_list'] as $row)
                                     <li>

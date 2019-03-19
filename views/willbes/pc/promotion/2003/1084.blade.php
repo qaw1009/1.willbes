@@ -69,7 +69,7 @@
                 <img src="http://file3.willbes.net/new_gosi/2018/01/EV180110_c1_2.jpg" usemap="#Map171218_c2" border="0"  >
                 <map name="Map171218_c2" >
                     <area shape="rect" coords="158,18,585,103"  href="#none" onfocus="this.blur();" alt="초시생을 위한 합격비법"/>
-                    <area shape="rect" coords="677,22,1055,93" href="{{ site_url('/promotion/index/cate/3019/code/1085') }}"" target="_blank" onfocus="this.blur();" alt="N수생의 합격노트" />
+                    <area shape="rect" coords="677,22,1055,93" href="{{ site_url('/promotion/index/cate/3019/code/1085') }}" target="_blank" onfocus="this.blur();" alt="N수생의 합격노트" />
                 </map>
                 <div class="why"><img src="http://file3.willbes.net/new_gosi/2018/01/EV180110_top.gif" alt=""/></div>
                 <img src="http://file3.willbes.net/new_gosi/2018/01/EV180110_c2.jpg"  >
@@ -146,12 +146,4 @@
     </div>
     <!-- End Container -->
 
-    <script src="/public/js/willbes/jquery.nav.js"></script>
-    <script>
-        $(function(e){
-            var targetOffset= $("#evtContainer").offset().top;
-            $('html, body').animate({scrollTop: targetOffset}, 700);
-            /*e.preventDefault(); */
-        });
-    </script>
 @stop

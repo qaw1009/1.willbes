@@ -255,9 +255,9 @@
             var lUrl = "";
 
             if(parseInt(no)==1 || parseInt(no)==3 || parseInt(no)== 5){
-                lUrl = "/periodPackage/show/cate/3020/pack/648001/prod-code/149332";
+                lUrl = "/periodPackage/show/cate/3020/pack/648001/prod-code/149331";
             }else{
-                lUrl = "/periodPackage/show/cate/3020/pack/648001/prod-code/149307";
+                lUrl = "/periodPackage/show/cate/3020/pack/648001/prod-code/149331";
             }
 
             location.href = lUrl;

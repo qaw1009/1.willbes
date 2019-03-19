@@ -319,9 +319,21 @@ class Home extends \app\controllers\FrontController
     {
         $column = 'b.BoardIdx, b.Title, b.IsBest, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
         $order_by = ['b.IsBest' => 'Desc', 'b.BoardIdx' => 'Desc'];
-        $arr_condition = ['EQ' => ['b.BmIdx' => 45, 'b.IsUse' => 'Y'], 'IN' => ['b.CampusCcd' => $arr_campus], 'LKB' => ['b.Category_String' => $cate_code]];
+        $arr_condition = [
+            'EQ' => [
+                'b.BmIdx' => 45
+                ,'b.IsUse' => 'Y'
+                ,'b.SiteCode' => $this->_site_code
+            ],
+            'IN' => [
+                'b.CampusCcd' => $arr_campus
+            ],
+            'LKB' => [
+                'Category_String' => $cate_code
+            ]
+        ];
+        return $this->supportBoardFModel->listBoard(false,$arr_condition,$column,$limit_cnt,0,$order_by);
 
-        return $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $arr_condition, $column, $limit_cnt, 0, $order_by);
     }
 
     /**

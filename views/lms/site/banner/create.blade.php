@@ -108,6 +108,9 @@
                             <input type="radio" id="link_type_blank" name="link_type" class="flat" value="blank" @if($data['LinkType']=='blank')checked="checked"@endif/> <label for="link_type_blank" class="input-label">새창</label>
                             <input type="radio" id="link_type_layer" name="link_type" class="flat" value="layer" @if($data['LinkType']=='layer')checked="checked"@endif/>
                             <label for="link_type_layer" class="input-label">레이어팝업 (이벤트 바로신청팝업)</label>
+                            <input type="radio" id="link_type_popup" name="link_type" class="flat" value="popup" @if($data['LinkType']=='popup')checked="checked"@endif/> <label for="link_type_popup" class="input-label">팝업창</label>
+                            ( <input type="number" id="pop_width" name="pop_width" class="form-control" maxlength="4" title="팝업width" value="{{ $data['PopWidth'] }}" required="required_if:link_type,popup" style="width: 60px;">
+                            x <input type="number" id="pop_height" name="pop_height" class="form-control" maxlength="4" title="팝업height" value="{{ $data['PopHeight'] }}" required="required_if:link_type,popup" style="width: 60px;"> )
                         </div>
                     </div>
                 </div>

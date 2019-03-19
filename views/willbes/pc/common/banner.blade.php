@@ -26,13 +26,20 @@ var html = '', link_url = '#none';
     // 고정 or 랜덤
     @if($data[0]['LinkType'] == 'layer')
         link_url = '//{{ app_to_env_url($data[0]['LinkUrl']) }}/event/popupRegistCreateByBanner?banner_idx=' + {{ $data[0]['BIdx'] }};
-        html = '<a href="#none" onclick="event_layer_popup(link_url)" class="{{ $css_class }}"><img src="{{ $data[0]['BannerFullPath'] . $data[0]['BannerImgName'] }}" title="{{ $data[0]['BannerName'] }}"/></a>';
+        html = '<a href="#none" onclick="event_layer_popup(\'' + link_url + '\');" class="{{ $css_class }}"><img src="{{ $data[0]['BannerFullPath'] . $data[0]['BannerImgName'] }}" title="{{ $data[0]['BannerName'] }}"/></a>';
         html += '<div id="APPLYPASS" class="willbes-Layer-Black"></div>';
     @else
         @if(empty($data[0]['LinkUrl']) === false)
             link_url = '{{ front_app_url('/banner/click?banner_idx=' . $data[0]['BIdx'] . '&return_url=' . urlencode($data[0]['LinkUrl']) . '&link_url_type=' . $data[0]['LinkUrlType'], 'www') }}';
         @endif
-        html = '<a href="' + link_url + '" target="_{{ $data[0]['LinkType'] }}" class="{{ $css_class }}"><img src="{{ $data[0]['BannerFullPath'] . $data[0]['BannerImgName'] }}" title="{{ $data[0]['BannerName'] }}"/></a>';
+
+        @if($data[0]['LinkType'] == 'popup')
+            html = '<a href="#none" onclick="popupOpen(\'' + link_url + '\', \'_bn_pop_{{$data[0]['BIdx']}}\', \'{{$data[0]['PopWidth']}}\', \'{{$data[0]['PopHeight']}}\', null, null, \'no\', \'no\');" class="{{ $css_class }}">';
+        @else
+            html = '<a href="' + link_url + '" target="_{{ $data[0]['LinkType'] }}" class="{{ $css_class }}">';
+        @endif
+
+        html += '<img src="{{ $data[0]['BannerFullPath'] . $data[0]['BannerImgName'] }}" title="{{ $data[0]['BannerName'] }}"/></a>';
     @endif
 
     @if(empty($set_class) === true)

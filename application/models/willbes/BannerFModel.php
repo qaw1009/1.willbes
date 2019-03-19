@@ -27,7 +27,7 @@ class BannerFModel extends WB_Model
             return [];
         }
 
-        $column = 'B.BIdx, BD.BdIdx, B.BannerName, B.LinkType, B.LinkUrl, B.LinkUrlType, B.BannerFullPath, B.BannerImgName, B.Desc
+        $column = 'B.BIdx, BD.BdIdx, B.BannerName, B.LinkType, B.LinkUrl, B.LinkUrlType, B.PopWidth, B.PopHeight, B.BannerFullPath, B.BannerImgName, B.Desc
             , BD.DispName, BD.DispTypeCcd, BD.DispRollingTypeCcd, BD.DispRollingTime';
         $arr_condition = [
             'EQ' => [

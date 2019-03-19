@@ -9,8 +9,7 @@
     </li>
     @endif
     @if(empty($data['arr_main_quick']['메인_우측퀵_01']) === false)
-        <li><a href="#none" onclick="popupOpen('{{ front_url('/certApply/index/page/mou/cert/1') }}', '_auth_center', '806', '986', null, null, 'no', 'no');"><img src="{{ img_url('cop/quick/quick_190108.jpg') }}" alt="경찰인증센터"></a></li>
-        {{-- 배너 팝업오픈 기능이 없기 때문에 임의로 배너 삽입
+        {{-- 팝업창 링크 전용 배너 (인증센터) --}}
         <li>
             <div class="QuickSlider">
                 <div class="sliderNum">
@@ -19,11 +18,11 @@
                         @if (empty($row['LinkUrl']) === false)
                             @php $link_url = front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www'); @endphp
                         @endif
-                            <div><a href="{{ $link_url }}" target="_{{ $row['LinkType'] }}"><img src="{{ $row['BannerFullPath'] . $row['BannerImgName'] }}" alt="{{ $row['BannerName'] }}"></a></div>
+                            <div><a href="#none" onclick="popupOpen('{{ $link_url }}', '_bn_pop_{{ $row['BIdx'] }}', '{{ $row['PopWidth'] }}', '{{ $row['PopHeight'] }}', null, null, 'no', 'no');"><img src="{{ $row['BannerFullPath'] . $row['BannerImgName'] }}" alt="{{ $row['BannerName'] }}"></a></div>
                     @endforeach
                 </div>
             </div>
-        </li>--}}
+        </li>
     @endif
     @if(empty($data['arr_main_quick']['메인_우측퀵_02']) === false)
         <li>

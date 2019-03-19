@@ -12,13 +12,17 @@ class SupportNotice extends BaseSupport
 
     protected $_bm_idx;
     protected $_default_path;
-    protected $_paging_limit = 10;
+    protected $_cate_path = '';
+    protected $_paging_limit = 5;
     protected $_paging_count = 10;
     protected $_paging_count_m = 5;
 
     public function __construct()
     {
         parent::__construct();
+
+        // 카테고리 링크 path 설정 
+        empty($this->_cate_code) === false && $this->_cate_path = '/' . config_get('uri_segment_keys.cate') . '/' . $this->_cate_code;
     }
 
     public function index($params=[])
@@ -77,7 +81,7 @@ class SupportNotice extends BaseSupport
         }
 
         $total_rows = $this->supportBoardFModel->listBoard(true, $arr_condition);
-        $paging = $this->pagination($this->_default_path.'/index/?'.$get_page_params,$total_rows,$this->_paging_limit,$paging_count,true);
+        $paging = $this->pagination($this->_default_path.'/index'.$this->_cate_path.'?'.$get_page_params,$total_rows,$this->_paging_limit,$paging_count,true);
 
         if ($total_rows > 0) {
             $list = $this->supportBoardFModel->listBoard(false,$arr_condition,$column,$paging['limit'],$paging['offset'],$order_by);
@@ -88,6 +92,7 @@ class SupportNotice extends BaseSupport
 
         $this->load->view('support/'.$view_type.'/notice', [
             'default_path' => $this->_default_path,
+            'cate_path' => $this->_cate_path,
             'arr_base' => $arr_base,
             'arr_input' => $arr_input,
             'get_params' => $get_params,
@@ -190,6 +195,7 @@ class SupportNotice extends BaseSupport
 
         $this->load->view('support/'.$view_type.'/show_notice',[
                 'default_path' => $this->_default_path,
+                'cate_path' => $this->_cate_path,
                 'board_idx' => $board_idx,
                 'get_params' => $get_params,
                 'arr_input' => $arr_input,

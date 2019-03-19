@@ -64,7 +64,7 @@
                                 </table>
                                 <div class="search-Btn mt20 mb20 h36 p_re">
                                     <div class="btnAuto90 h36 mem-Btn bg-purple-gray bd-dark-gray f_right">
-                                        <a href="{{front_url($default_path.'/index/cate/'.$__cfg['CateCode'].'?'.$get_params)}}">목록</a>
+                                        <a href="{{front_url($default_path.'/index'.$cate_path.'?'.$get_params)}}">목록</a>
                                     </div>
                                 </div>
 
@@ -80,7 +80,7 @@
                                         <td class="w-prev bg-light-gray"><strong>이전글</strong></td>
                                         <td class="tx-left pl20">
                                             @if(empty($pre_data) === false)
-                                                <a href="{{front_url($default_path.'/show/cate/'.$__cfg['CateCode'].'?board_idx='.$pre_data['BoardIdx'].'&'.$get_params)}}">{{$pre_data['Title']}}</a><span class="row-line">|</span>
+                                                <a href="{{front_url($default_path.'/show'.$cate_path.'?board_idx='.$pre_data['BoardIdx'].'&'.$get_params)}}">{{$pre_data['Title']}}</a><span class="row-line">|</span>
                                             @else
                                                 이전글이 없습니다.
                                             @endif
@@ -91,7 +91,7 @@
                                         <td class="w-next bg-light-gray"><strong>다음글</strong></td>
                                         <td class="tx-left pl20">
                                             @if(empty($next_data) === false)
-                                                <a href="{{front_url($default_path.'/show/cate/'.$__cfg['CateCode'].'?board_idx='.$next_data['BoardIdx'].'&'.$get_params)}}">{{$next_data['Title']}}</a><span class="row-line">|</span>
+                                                <a href="{{front_url($default_path.'/show'.$cate_path.'?board_idx='.$next_data['BoardIdx'].'&'.$get_params)}}">{{$next_data['Title']}}</a><span class="row-line">|</span>
                                             @else
                                                 다음글이 없습니다.
                                             @endif

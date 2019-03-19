@@ -407,8 +407,8 @@ class Home extends \app\controllers\FrontController
      */
     private function _boardStudyComment($limit_cnt = 6, $cate_code = '', $arr_campus = [])
     {
-        $column = 'b.BoardIdx, b.Title, b.IsBest, b.SubjectName, b.ProfName, b.ProdName, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm
-            , fn_professor_refer_value(b.ProfIdx, "lec_list_img") as ProfLecListImg';
+        $column = 'b.BoardIdx, b.Title, b.IsBest, b.SubjectIdx, b.SubjectName, b.ProfIdx, b.ProfName, b.ProdName
+            , DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm, fn_professor_refer_value(b.ProfIdx, "lec_list_img") as ProfLecListImg';
         $order_by = ['b.IsBest' => 'Desc', 'b.BoardIdx' => 'Desc'];
         $arr_condition = ['EQ' => ['b.BmIdx' => 85, 'b.SiteCode' => $this->_site_code, 'b.IsUse' => 'Y'], 'LKB' => ['b.Category_String' => $cate_code]];
 

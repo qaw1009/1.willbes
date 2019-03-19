@@ -1,7 +1,7 @@
 @if(empty($data['study_comment']) === false)
     <div id="WrapStudyComment" class="p_re"></div>
     <div class="smallTit mb30">
-        <p><span>솔직한 <strong>수강후기</strong><a href="#none" class="btn-study-comment" data-board-idx=""><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a></span></p>
+        <p><span>솔직한 <strong>수강후기</strong><a href="#none" class="btn-study-comment" data-board-idx="" data-prof-idx="" data-subject-idx=""><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a></span></p>
     </div>
     <div class="reviewBx">
         <div class="sliderNumV vSlider">
@@ -14,7 +14,7 @@
                     <ul>
                         <li>[{{ $row['SubjectName'] }}] {{ $row['ProfName'] }}</li>
                         <li>{{ $row['ProdName'] }}</li>
-                        <li><a href="#none" class="btn-study-comment" data-board-idx="{{ $row['BoardIdx'] }}">{{ hpSubString($row['Title'], 0, 40, '...') }}</a></li>
+                        <li><a href="#none" class="btn-study-comment" data-board-idx="{{ $row['BoardIdx'] }}" data-prof-idx="{{ $row['ProfIdx'] }}" data-subject-idx="{{ $row['SubjectIdx'] }}">{{ hpSubString($row['Title'], 0, 40, '...') }}</a></li>
                     </ul>
                 </div>
             @endforeach
@@ -43,6 +43,8 @@
                     'ele_id' : ele_id,
                     'show_onoff' : 'off',
                     'cate_code' : '{{$__cfg['CateCode']}}',
+                    'prof_idx' : $(this).data('prof-idx'),
+                    'subject_idx' : $(this).data('subject-idx'),
                     'board_idx' : $(this).data('board-idx')
                 };
                 sendAjax('{{ front_url('/support/studyComment/') }}', data, function(ret) {

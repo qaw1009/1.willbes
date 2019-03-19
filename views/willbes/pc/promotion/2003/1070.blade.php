@@ -53,10 +53,10 @@
             <img src="http://file3.willbes.net/new_gosi/2018/06/EV180625_c7.jpg" alt="2018 김신주 매잊ㄱ아이 영어 문법/어휘/독해 패키지"  /><br>
             <img src="http://file3.willbes.net/new_gosi/2018/06/EV180625_c8.jpg" alt="윌비스 행정법 변원갑 수강신청하기" usemap="#Map180625_c1" border="0"  />
             <map name="Map180625_c1" >
-                <area shape="rect" coords="626,300,945,372" href="http://www.willbesgosi.net/packagelecture/packagelectureDetail.html?currentPage=1&pageRow=9999&topMenu=001&topMenuName=&topMenuType=O&searchCategoryCode=001&leftMenuLType=M0001&lecKType=P&searchLeccode=P201600179" target="_blank" onfocus="this.blur();"/>
-                <area shape="rect" coords="646,535,950,612" href="http://www.willbesgosi.net/packagelecture/packagelectureDetail.html?currentPage=1&pageRow=9999&topMenu=001&topMenuName=&topMenuType=O&searchCategoryCode=001&leftMenuLType=M0001&lecKType=P&searchLeccode=P201600176" target="_blank" onfocus="this.blur();"/>
-                <area shape="rect" coords="653,781,959,863" href="http://www.willbesgosi.net/packagelecture/packagelectureDetail.html?currentPage=1&pageRow=9999&topMenu=001&topMenuName=&topMenuType=O&searchCategoryCode=001&leftMenuLType=M0001&lecKType=P&searchLeccode=P201600177" target="_blank" onfocus="this.blur();"/>
-                <area shape="rect" coords="643,1021,954,1115" href="http://www.willbesgosi.net/packagelecture/packagelectureDetail.html?currentPage=1&pageRow=9999&topMenu=001&topMenuName=&topMenuType=O&searchCategoryCode=001&leftMenuLType=M0001&lecKType=P&searchLeccode=P201600178" target="_blank" onfocus="this.blur();"/>
+                <area shape="rect" coords="626,300,945,372" href="{{ site_url('/package/show/cate/3019/pack/648001/prod-code/150378') }}" target="_blank" onfocus="this.blur();"/>
+                <area shape="rect" coords="646,535,950,612" href="{{ site_url('/package/show/cate/3019/pack/648001/prod-code/150375') }}" target="_blank" onfocus="this.blur();"/>
+                <area shape="rect" coords="653,781,959,863" href="{{ site_url('/package/show/cate/3019/pack/648001/prod-code/150376') }}" target="_blank" onfocus="this.blur();"/>
+                <area shape="rect" coords="643,1021,954,1115" href="{{ site_url('/package/show/cate/3019/pack/648001/prod-code/150377') }}" target="_blank" onfocus="this.blur();"/>
             </map>
         </div><!--wb_cts03//-->
 

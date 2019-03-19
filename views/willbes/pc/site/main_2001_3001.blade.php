@@ -112,8 +112,9 @@
                             <div class="Tit">기본과정</div>
                             <div class="subTit">집중연강식 진행</div>
                             <ul class="info">
-                                <li>영어 매달 초 개강</li>
-                                <li>2주마다  형소법  →  경찰학<br/>→  한국사  →  형법 진행</li>
+                                <li>1과목 1회독 2주완성</li>
+                                <li>기본이론</li>
+                                <li>영어 매달 초 개강(2달완성)</li>
                             </ul>
                         </div>
                         <a href="#none" onclick="fnPlayerSample('132199', '1019097', 'HD');">OT보기 &gt;</a>
@@ -124,8 +125,9 @@
                             <div class="Tit">심화과정</div>
                             <div class="subTit">프리미엄 심화과정</div>
                             <ul class="info">
-                                <li>이론 재정리</li>
-                                <li>10주 과정</li>
+                                <li>7주,2달 완성</li>
+                                <li>심화 l 이론/기출학습</li>
+                                <li>고득점 합격발판 마련</li>
                             </ul>
                         </div>
                         <a href="#none" onclick="fnPlayerSample('132216', '1019296', 'HD');">OT보기 &gt;</a>
@@ -136,9 +138,9 @@
                             <div class="Tit">3개월 필합 풀패키지</div>
                             <div class="subTit">핵심요약/진도별 정리</div>
                             <ul class="info">
-                                <li>5주 단권화</li>
-                                <li>5주 동형모의고사</li>
-                                <li>FINAL 실전 모의고사</li>
+                                <li>1단계 진도별 핵심정리</li>
+                                <li>2단계 전범위 동형모의고사</li>
+                                <li>3단계 FINAL 실전 모의고사</li>
                             </ul>
                         </div>
                         <a href="#none" onclick="fnPlayerSample('131811', '1014607', 'HD');">OT보기 &gt;</a>

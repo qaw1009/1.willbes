@@ -30,7 +30,7 @@
                 @else
                     @foreach($data['exam_announcement'] as $row)
                         <li>
-                            <a href="{{front_url('/support/examAnnouncement/show/cate/'.$__cfg['CateCode'].'?board_idx='.$row['BoardIdx'])}}">
+                            <a href="{{front_url('/support/examAnnouncement/show?board_idx='.$row['BoardIdx'])}}">
                                 @if($row['IsBest'] == '1') <img src="{{ img_url('cop/icon_hot.png') }}" alt="HOT"> @endif
                                 {{$row['Title']}}
                             </a>
@@ -47,7 +47,7 @@
                 @else
                     @foreach($data['exam_news'] as $row)
                         <li>
-                            <a href="{{front_url('/support/examNews/show/cate/'.$__cfg['CateCode'].'?board_idx='.$row['BoardIdx'])}}">
+                            <a href="{{front_url('/support/examNews/show?board_idx='.$row['BoardIdx'])}}">
                                 @if($row['IsBest'] == '1') <img src="{{ img_url('cop/icon_hot.png') }}" alt="HOT"> @endif
                                 {{$row['Title']}}
                             </a>

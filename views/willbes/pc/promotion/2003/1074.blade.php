@@ -75,8 +75,8 @@
         <div class="evtCtnsBox wb_cts05" id="lec_go">
             <img src="http://file3.willbes.net/new_gosi/2018/12/EV181211_5.png" alt="수강신청" usemap="#Map_180730_lec2" border="0"/>
             <map name="Map_180730_lec2">
-                <area shape="rect" coords="532,803,752,873" href="http://www.willbesgosi.net/packagelecture/packagelectureDetail.html?currentPage=1&pageRow=9999&topMenu=001&topMenuName=&topMenuType=O&searchCategoryCode=001&leftMenuLType=M0001&lecKType=P&searchLeccode=P201800115" target="_blank" alt="아침특강제외">
-                <area shape="rect" coords="826,803,1043,869" href="http://www.willbesgosi.net/packagelecture/packagelectureDetail.html?currentPage=1&pageRow=9999&topMenu=001&topMenuName=&topMenuType=O&searchCategoryCode=001&leftMenuLType=M0001&lecKType=P&searchLeccode=P201800114" target="_blank" alt="2아침특강포함">
+                <area shape="rect" coords="532,803,752,873" href="{{ site_url('/package/show/cate/3019/pack/648001/prod-code/150648') }}" target="_blank" alt="아침특강제외">
+                <area shape="rect" coords="826,803,1043,869" href="{{ site_url('/package/show/cate/3019/pack/648001/prod-code/150647') }}" target="_blank" alt="2아침특강포함">
             </map>
         </div>
         <!--wb_cts05//-->

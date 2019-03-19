@@ -83,7 +83,7 @@
                 <area shape="rect" coords="97,943,305,1010" href="{{ site_url('/Package/show/cate/3028/pack/648001/prod-code/150615') }}"  onfocus="this.blur();" target="_blank"/>
                 <area shape="rect" coords="361,947,574,1009" href="{{ site_url('/Package/show/cate/3028/pack/648001/prod-code/150634') }}" onfocus="this.blur();" target="_blank"/>
                 <area shape="rect" coords="629,947,849,1018" href="{{ site_url('/Package/show/cate/3028/pack/648001/prod-code/150633') }}" onfocus="this.blur();" target="_blank" />
-                <area shape="rect" coords="892,942,1114,1011" href="{{ site_url('/package/show/cate/3028/pack/648001/prod-code/150635) }}" onfocus="this.blur();" target="_blank"/>
+                <area shape="rect" coords="892,942,1114,1011" href="{{ site_url('/package/show/cate/3028/pack/648001/prod-code/150635') }}" onfocus="this.blur();" target="_blank"/>
             </map>
         </div>
         <!--wb_cts04//-->

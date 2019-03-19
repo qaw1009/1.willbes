@@ -65,7 +65,7 @@
         .wb_cts03 .check01 input {margin:430px 0px 0px 740px;}
         .wb_cts03 .check02 input {margin:95px 0px 0px 740px;}
         .wb_cts03 .check03 input {margin:135px 0px 0px -280px; }
-        .wb_cts03 .check04 {width:877px; height:112px; margin:0 auto;}
+        .wb_cts03 .check04 {width:877px; height:112px; margin:20px auto 0;}
         .btn { position:}
 
      
@@ -174,7 +174,7 @@
             <div>
                 <div class="check" id="chkInfo">
                     <label>
-                    <input name="is_chk" type="checkbox" value="Y" /> 페이지 하단 윌비스 소방 PASS 이용안내를 모두 확인하였고, 이에 동의합니다.<Br>                   
+                    <input name="is_chk" type="checkbox" value="Y" /> 페이지 하단 윌비스 소방 PASS 이용안내를 모두 확인하였고, 이에 동의합니다.              
                     </label>
                     <a href="#tab1">이용안내확인하기 ↓</a>
                 </div>

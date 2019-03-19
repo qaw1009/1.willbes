@@ -47,7 +47,8 @@
                         <dt>
                             <div>상품주문금액</div>
                             <div id="product-price" class="price tx-light-blue">0원</div>
-                        </dt>                        
+                        </dt>
+                        <!--
                         <dt class="price-img">
                             <span class="row-line">|</span>
                             <img src="/public/img/willbes/sub/icon_plus.gif">
@@ -55,7 +56,8 @@
                         <dt>
                             <div>배송료</div>
                             <span id="trans-price" class="price tx-light-blue">2,500원</span>
-                        </dt> 
+                        </dt>
+                        -->
                     </dl>
                 </li>
                 <li class="price-total">

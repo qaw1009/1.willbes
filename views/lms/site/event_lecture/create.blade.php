@@ -329,6 +329,10 @@
                                     @endif
                                 </span>
                             </div>
+                            <div class="col-md-10 col-lg-offset-2 form-inline">
+                                <p class="form-control-static">• 사이트관리 > 배너관리 > 배너등록에서 링크방식을 '레이어팝업(이벤트 바로신청팝업)으로 등록한 배너만 노출됩니다.<br>
+                                    • 배너를 선택하고 이벤트 등록한 후 해당 섹션의 배너 클릭 시 해당 이벤트의 바로신청 팝업이 자동 노출됩니다.</p>
+                            </div>
                         </div>
                     </div>
                 </div>

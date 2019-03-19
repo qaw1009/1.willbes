@@ -1,4 +1,4 @@
-@if(config_app('SiteCode') == '2001')
+@if($__cfg['SiteCode'] == '2001')
     {{-- 경찰온라인 사이트일 경우만 적용 --}}
     <div id="topBannerLayer">
         <div class="topBanner">
@@ -20,7 +20,7 @@
         function showOrHidefigure(id_dummy) {
             var div = document.getElementById('topBannerWarp');
             var button = document.getElementById('show_topBanner');
-            if (div.style.display == "block") {
+            if (div.style.display === "block") {
                 div.style.display = "none";
             } else {
                 div.style.display = "block";

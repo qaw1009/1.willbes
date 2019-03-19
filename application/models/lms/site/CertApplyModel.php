@@ -231,13 +231,15 @@ class CertApplyModel extends WB_Model
                         throw new \Exception($is_sms, _HTTP_NO_PERMISSION);
                     }
                     */
-                    $smsData = [];
-                    $smsData['CsTel'] = $idx['CsTel'];
-                    $smsData['SmsContent'] = $idx['SmsContent'];
-                    $smsData['Phone'] = $idx['Phone'];
-                    $is_sms = $this->addSms($smsData);
-                    if($is_sms !== true) {
-                        throw new \Exception('SMS발송 실패입니다.');
+                    if(empty($idx['SmsContent'] == false)) {
+                        $smsData = [];
+                        $smsData['CsTel'] = $idx['CsTel'];
+                        $smsData['SmsContent'] = $idx['SmsContent'];
+                        $smsData['Phone'] = $idx['Phone'];
+                        $is_sms = $this->addSms($smsData);
+                        if ($is_sms !== true) {
+                            throw new \Exception('SMS발송 실패입니다.');
+                        }
                     }
                     
                 }

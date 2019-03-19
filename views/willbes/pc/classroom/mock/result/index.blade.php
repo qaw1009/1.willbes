@@ -33,7 +33,8 @@
                 <form id="url_form" name="url_form" method="GET">
 
                     <div class="willbes-LecreplyList tx-gray c_both mt-zero">
-                        <span class="willbes-Lec-Search willbes-SelectBox mb20 GM f_right">
+                        <span class="f_left"><a href="#none" class="btnAuto200 bg-black tx-white tx-center h30 d_block ">지난 모의고사 성적결과 보기 ▶</a></span>
+                        <span class="willbes-Lec-Search willbes-SelectBox GM f_right">
                             <div class="inputBox p_re">
                                 <input type="text" id="s_keyword" name="s_keyword" class="labelSearch" value="{{ element('s_keyword', $arr_input) }}" placeholder="모의고사명을 입력해 주세요" maxlength="30">
                                 <button type="button" onclick="goUrl('s_keyword', document.getElementById('s_keyword').value);" class="search-Btn">

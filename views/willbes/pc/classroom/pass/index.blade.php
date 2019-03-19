@@ -548,6 +548,7 @@
                                     </li>
                                 </ul>
                             </div>
+                            <div class="c_both tx-origin-red">* 30,000원 이상 교재 구매 시 배송료는 무료입니다.</div>
                         </div>
                     </div>
                     <!-- PASSZONE-List -->

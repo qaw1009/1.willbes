@@ -30,7 +30,7 @@
                     <tr class="flie">
                         <td class="w-file NGR">
                             @foreach($data['AttachData'] as $row)
-                                <a href="{{front_url($default_path.'/notice/download?path=').urlencode($row['FilePath'].$row['FileName']).'&fname='.urlencode($row['RealName']).'&board_idx='.$board_idx }}" target="_blank">
+                                <a href="{{front_url($default_path.'/download?path=').urlencode($row['FilePath'].$row['FileName']).'&fname='.urlencode($row['RealName']).'&board_idx='.$board_idx }}" target="_blank">
                                     <img src="{{ img_url('prof/icon_file.gif') }}"> {{$row['RealName']}}</a>
                             @endforeach
                         </td>
@@ -45,7 +45,7 @@
                 </tbody>
             </table>
             <div class="lecSubject mt40">
-                <a href="{{front_url($default_path.'/notice/index?'.$get_params)}}">목록</a>
+                <a href="{{front_url($default_path.'/index?'.$get_params)}}">목록</a>
             </div>
         </div>
 

@@ -46,7 +46,7 @@
 
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner">
-            <a href="http://www.willbesgosi.net/event/movie/event.html?event_cd=On_170405_c" target="_blank">
+            <a href="{{ site_url('/promotion/index/cate/3019/code/1067') }}" target="_blank">
                 <img src="http://file3.willbes.net/new_gosi/2018/06/EV180626_sky.png" alt="첨삭지도반" alt="환승이벤트" >
             </a>
         </div>

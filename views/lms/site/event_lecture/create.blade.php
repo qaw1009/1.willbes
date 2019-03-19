@@ -334,15 +334,15 @@
                 </div>
 
                 {{--
-                TODO : 해당 프로모션 링크 값에 대한 처리 방안 결정 필요.
+                TODO : 필요없는 항목
                 --}}
-                <div class="form-group">
+                {{--<div class="form-group">
                     <label class="control-label col-md-1-1">프로모션 링크</label>
                     <div class="form-inline col-md-10">
                         <input type="text" id="promotion_link" name="promotion_link" class="form-control" value="{{$data['Link']}}" title="프로모션 링크">
                         &nbsp;&nbsp;&nbsp;&nbsp;• 관리할 프로모션 링크를 입력해주세요.
                     </div>
-                </div>
+                </div>--}}
 
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="admin_mail_id">조회수</label>
@@ -351,7 +351,7 @@
                         +
                         생성 <input type="number" id="setting_readCnt" name="setting_readCnt" class="form-control" title="생성" value="{{$data['AdjuReadCnt']}}" style="width: 70px; padding:5px">
                         =
-                        노출 <input type="text" id="total_read_count" name="total_read_count" class="form-control" title="노출" readonly="readonly" value="" style="width: 70px; padding:5px">
+                        노출 <input type="text" id="total_read_count" name="total_read_count" class="form-control" title="노출" readonly="readonly" value="{{$data['TotalReadCnt']}}" style="width: 70px; padding:5px">
                         &nbsp;&nbsp;&nbsp;&nbsp;• 사용자단에 노출되는 조회수는‘실조회수 + 조회수생성’입니다.
                     </div>
                 </div>

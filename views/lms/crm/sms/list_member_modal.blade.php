@@ -59,7 +59,7 @@
                     <label class="control-label col-md-2 pt-5" for="search_value">통합검색
                     </label>
                     <div class="col-md-3">
-                        <input type="text" class="form-control input-sm" id="search_value" name="search_value" value="규호">
+                        <input type="text" class="form-control input-sm" id="search_value" name="search_value" value="">
                     </div>
                     <div class="col-md-4">
                         <p class="form-control-static">아이디, 이름, 휴대폰번호(끝4자리) 검색 가능</p>

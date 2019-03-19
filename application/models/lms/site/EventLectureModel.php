@@ -524,7 +524,7 @@ class EventLectureModel extends WB_Model
             DATE_FORMAT(A.RegisterStartDate, '%Y-%m-%d') AS RegisterStartDay, DATE_FORMAT(A.RegisterStartDate, '%H') AS RegisterStartHour, DATE_FORMAT(A.RegisterStartDate, '%i') AS RegisterStartMin,
             DATE_FORMAT(A.RegisterEndDate, '%Y-%m-%d') AS RegisterEndDay, DATE_FORMAT(A.RegisterEndDate, '%H') AS RegisterEndHour, DATE_FORMAT(A.RegisterEndDate, '%i') AS RegisterEndMin,
             A.ContentType, A.Content, A.OptionCcds, A.LimitType, A.SelectType,
-            A.SendTel, A.SmsContent, A.PopupTitle, A.CommentUseArea, A.Link, A.ReadCnt, A.AdjuReadCnt,
+            A.SendTel, A.SmsContent, A.PopupTitle, A.CommentUseArea, A.Link, A.ReadCnt, A.AdjuReadCnt, (A.ReadCnt + A.AdjuReadCnt) as TotalReadCnt,
             A.RegDatm, A.RegAdminIdx, A.RegIp, A.UpdDatm, A.UpdAdminIdx, C.wAdminName AS RegAdminName, D.wAdminName AS UpdAdminName,
             B.SiteName, E.CcdName AS CampusName,
             G.SubjectName, H.ProfNickName,

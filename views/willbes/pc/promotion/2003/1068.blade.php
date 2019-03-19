@@ -80,10 +80,10 @@
         <div class="evtCtnsBox wb_cts04" id="event">
             <img src="http://file3.willbes.net/new_gosi/2018/10/EV181030_c6.jpg" alt="윌비스 2019 농업직/농촌지도사 이론패키지" usemap="#Map20181030_c2" border="0"  />
             <map name="Map20181030_c2" >
-                <area shape="rect" coords="97,943,305,1010" href="http://www.willbesgosi.net/packagelecture/packagelectureDetail.html?currentPage=1&pageRow=9999&topMenu=001&topMenuName=&topMenuType=O&searchCategoryCode=011&leftMenuLType=M0001&lecKType=P&searchLeccode=P201800083"  onfocus="this.blur();" target="_blank"/>
-                <area shape="rect" coords="361,947,574,1009" href="http://www.willbesgosi.net/packagelecture/packagelectureDetail.html?currentPage=1&pageRow=9999&topMenu=001&topMenuName=&topMenuType=O&searchCategoryCode=011&leftMenuLType=M0001&lecKType=P&searchLeccode=P201800102" onfocus="this.blur();" target="_blank"/>
-                <area shape="rect" coords="629,947,849,1018" href="http://www.willbesgosi.net/packagelecture/packagelectureDetail.html?currentPage=1&pageRow=9999&topMenu=001&topMenuName=&topMenuType=O&searchCategoryCode=011&leftMenuLType=M0001&lecKType=P&searchLeccode=P201800101" onfocus="this.blur();" target="_blank" />
-                <area shape="rect" coords="892,942,1114,1011" href="http://www.willbesgosi.net/packagelecture/packagelectureDetail.html?currentPage=1&pageRow=9999&topMenu=001&topMenuName=&topMenuType=O&searchCategoryCode=011&leftMenuLType=M0001&lecKType=P&searchLeccode=P201800103" onfocus="this.blur();" target="_blank"/>
+                <area shape="rect" coords="97,943,305,1010" href="{{ site_url('/Package/show/cate/3028/pack/648001/prod-code/150615') }}"  onfocus="this.blur();" target="_blank"/>
+                <area shape="rect" coords="361,947,574,1009" href="{{ site_url('/Package/show/cate/3028/pack/648001/prod-code/150634') }}" onfocus="this.blur();" target="_blank"/>
+                <area shape="rect" coords="629,947,849,1018" href="{{ site_url('/Package/show/cate/3028/pack/648001/prod-code/150633') }}" onfocus="this.blur();" target="_blank" />
+                <area shape="rect" coords="892,942,1114,1011" href="{{ site_url('/package/show/cate/3028/pack/648001/prod-code/150635) }}" onfocus="this.blur();" target="_blank"/>
             </map>
         </div>
         <!--wb_cts04//-->

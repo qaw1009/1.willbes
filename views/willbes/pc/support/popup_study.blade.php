@@ -42,7 +42,7 @@
                             <th class="tx-gray">교수선택</th>
                             <td colspan="8" id="prof_list" class="tx-blue tx-left">* 과목 선택시 과목별 교수진을 확인하실 수 있습니다. 과목을 먼저 선택해 주세요!</td>
                         </tr>
-                        <tr>
+                        {{--<tr>
                             <th class="tx-gray">강좌선택</th>
                             <td colspan="8" class="tx-left">
                                 <select id="sel_prod_code" name="sel_prod_code" title="강좌를 선택해 주세요.">
@@ -52,7 +52,7 @@
                                     @endforeach
                                 </select>
                             </td>
-                        </tr>
+                        </tr>--}}
                         </tbody>
                     </table>
                 </div>
@@ -65,11 +65,11 @@
                         <dt><a href="#none" id="order_by_date" class="btn-order-by" data-order-by="date">최신순</a></dt>
                         <dt><a href="#none" id="order_by_score" class="btn-order-by" data-order-by="score">평점순</a></dt>
                     </dl>
-                    <div class="search-Btn btnAuto120 h27 f_right">
+                    {{--<div class="search-Btn btnAuto120 h27 f_right">
                         <button type="submit" onclick="{!! (sess_data('is_login') == true) ? "closeWin('AddList'); openWin('AddModify')" : "javascript:alert('로그인 후 이용해 주십시오.');"!!}" class="mem-Btn bg-blue bd-dark-blue">
                             <span>수강후기 작성</span>
                         </button>
-                    </div>
+                    </div>--}}
                 </div>
                 <div class="LeclistTable">
                     <table cellspacing="0" cellpadding="0" class="listTable replyTable upper-black upper-gray bdb-gray tx-gray" id="ajax_table">
@@ -124,6 +124,10 @@
             <input type="hidden" id="start_count" name="start_count">
             <input type="hidden" name="board_idx" value=""/>
             <input type="hidden" name="study_cate_code" value="{{element('cate_code', $arr_input)}}"/>
+            <input type="hidden" name="study_prod_code" value="{{element('prod_code', $arr_input)}}"/>
+            <input type="hidden" name="study_subject_idx" value="{{element('subject_idx', $arr_input)}}"/>
+            <input type="hidden" name="study_prof_idx" value="{{element('prof_idx', $arr_input)}}"/>
+
             <div class="willbes-Leclist c_both">
                 <div class="LecWriteTable">
                     <table cellspacing="0" cellpadding="0" class="listTable writeTable upper-gray upper-black bdt-gray bdb-gray fc-bd-none tx-gray">
@@ -133,26 +137,9 @@
                         </colgroup>
                         <tbody>
                         <tr>
-                            <td class="w-tit bg-light-white tx-left strong pl30">수강정보<span class="tx-light-blue">(*)</span></td>
+                            <td class="w-tit bg-light-white tx-left strong pl30">수강정보</td>
                             <td class="w-selected tx-left pl30 item">
-                                <select id="study_subject_idx" name="study_subject_idx" title="과목" class="seleSbj" required="required" style="width: 150px;">
-                                    <option value="">과목선택</option>
-                                    @foreach($arr_base['subject'] as $idx => $row)
-                                        <option value="{{$row['SubjectIdx']}}" @if(empty($arr_input['subject_idx']) === false && $arr_input['subject_idx'] == $row['SubjectIdx'])selected="selected"@endif>{{$row['SubjectName']}}</option>
-                                    @endforeach
-                                </select>
-                                <select id="study_prof_idx" name="study_prof_idx" title="교수" class="seleProf" required="required" style="width: 150px;">
-                                    <option value="">교수선택</option>
-                                    @foreach($arr_base['professor'] as $row)
-                                        <option class="{{$row['SubjectIdx']}}" value="{{$row['ProfIdx']}}" @if(empty($arr_input['prof_idx']) === false && $arr_input['prof_idx'] == $row['ProfIdx'])selected="selected"@endif>{{$row['wProfName']}}</option>
-                                    @endforeach
-                                </select>
-                                <select id="study_prod_code" name="study_prod_code" title="강좌" class="seleLec" required="required" style="width: 360px;">
-                                    <option value="">강좌선택</option>
-                                    @foreach($arr_base['on_my_lecture'] as $key => $val)
-                                        <option value="{{$key}}">{{$val}}</option>
-                                    @endforeach
-                                </select>
+                                {{ urldecode($arr_base['subject_name']) }}
                             </td>
                         </tr>
                         <tr>

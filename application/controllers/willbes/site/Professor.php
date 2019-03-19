@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Professor extends \app\controllers\FrontController
 {
-    protected $models = array('siteF', 'categoryF', 'product/baseProductF', 'product/lectureF', 'product/packageF', 'product/professorF', 'support/supportBoardF');
+    protected $models = array('siteF', 'categoryF', 'product/baseProductF', 'product/lectureF', 'product/packageF', 'product/professorF', 'support/supportBoardF', 'support/supportBoardTwoWayF');
     protected $helpers = array();
     protected $auth_controller = false;
     protected $auth_methods = array();
@@ -226,6 +226,17 @@ class Professor extends \app\controllers\FrontController
         // 수강후기 조회
         $data['study_comment'] = $this->professorFModel->findProfessorStudyCommentData($prof_idx, $this->_site_code, $this->_def_cate_code, element('subject_idx', $arr_input), 2);
         $data['study_comment'] = $data['study_comment'] != 'N' ? json_decode($data['study_comment'], true) : [];
+        /*$column = 'BoardIdx, BmIdx, Title, LecScore';
+        $arr_condition = [
+            'EQ' => [
+                'BmIdx' => 85,
+                'IsUse' => 'Y',
+                'SubjectIdx' => element('subject_idx', $arr_input),
+                'ProfIdx' => $prof_idx
+            ]
+        ];
+        $order_by = ['LecScore'=>'Desc','BoardIdx'=>'Desc'];
+        $data['study_comment'] = $this->supportBoardTwoWayFModel->listBoard(false,$arr_condition,$column,2,0,$order_by);*/
 
         return [
             'notice' => element('notice', $data, []),

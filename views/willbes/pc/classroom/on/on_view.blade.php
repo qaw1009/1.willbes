@@ -188,7 +188,9 @@
                     'show_onoff' : $(this).data('write-type'),
                     'site_code' : '{{$lec['SiteCode']}}',
                     'cate_code' : '{{$lec['CateCode']}}',
+                    'prod_code' : '{{$lec['ProdCode']}}',
                     'subject_idx' : '{{$lec['SubjectIdx']}}',
+                    'subject_name' : encodeURIComponent('{{$lec['subProdName']}}'),
                     'prof_idx' : '{{$lec['ProfIdx']}}'
                 };
 

@@ -17,7 +17,9 @@
                     'ele_id' : ele_id,
                     'show_onoff' : $(this).data('write-type'),
                     'cate_code' : '{{$__cfg['CateCode']}}',
+                    'prod_code' : '{{$data['ProdCode']}}',
                     'subject_idx' : '{{$data['SubjectIdx']}}',
+                    'subject_name' : encodeURIComponent('{{$data['ProdName']}}'),
                     'prof_idx' : '{{$data['ProfIdx']}}'
                 };
 

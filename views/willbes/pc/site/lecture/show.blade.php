@@ -275,7 +275,7 @@
                                     <div class="book-TxtBox tx-gray">
                                         {!! $row['wBookDesc'] !!}
                                     </div>
-                                    <div class="caution-txt tx-red">{{ $data['ProdBookMemo'] }}</div>
+                                    @if(empty($data['ProdBookMemo']) === false)<div class="caution-txt tx-red">{{ $data['ProdBookMemo'] }}</div>@endif
                                 </div>
                                 <div id="info2{{ $idx }}" class="tabContent">
                                     <div class="book-TxtBox tx-gray">

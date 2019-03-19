@@ -52,8 +52,8 @@
         <div class="evtCtnsBox wb_cts01">
             <img src="http://file3.willbes.net/new_gosi/2018/10/EV181031Y_01.jpg" alt="윌비스 군무원 PASS 시즌5" usemap="#Map180831" border="0">
             <map name="Map180831" id="Map180831">
-                <area shape="rect" coords="571,1699,731,1738" href="http://www.willbesgosi.net/yearpackagelecture/yearpackagelectureDetail.html?topMenu=007&topMenuName=&topMenuType=O&searchCategoryCode=007&searchLeccode=Y201700036&leftMenuLType=M0001&lecKType=Y" alt="59만원" />
-                <area shape="rect" coords="918,1698,1080,1737" href="http://www.willbesgosi.net/yearpackagelecture/yearpackagelectureDetail.html?topMenu=007&topMenuName=&topMenuType=O&searchCategoryCode=007&searchLeccode=Y201800045&leftMenuLType=M0001&lecKType=Y" alt="43만원" />
+                <area shape="rect" coords="571,1699,731,1738" href="{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/149253') }}" alt="59만원" />
+                <area shape="rect" coords="918,1698,1080,1737" href="{{ site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149317') }}" alt="43만원" />
             </map>
         </div><!--wb_cts01//-->
 
@@ -106,8 +106,8 @@
         <div class="evtCtnsBox wb_cts03">
             <img src="http://file3.willbes.net/new_gosi/2018/10/EV181031Y_03.jpg" alt="" usemap="#Map180831B" border="0"  />
             <map name="Map180831B" id="Map180831B">
-                <area shape="rect" coords="571,651,730,691" href="http://www.willbesgosi.net/yearpackagelecture/yearpackagelectureDetail.html?topMenu=007&topMenuName=&topMenuType=O&searchCategoryCode=007&searchLeccode=Y201700036&leftMenuLType=M0001&lecKType=Y" alt="49만원" />
-                <area shape="rect" coords="919,650,1082,691" href="http://www.willbesgosi.net/yearpackagelecture/yearpackagelectureDetail.html?topMenu=007&topMenuName=&topMenuType=O&searchCategoryCode=007&searchLeccode=Y201800045&leftMenuLType=M0001&lecKType=Y" alt="43만원" />
+                <area shape="rect" coords="571,651,730,691" href="{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/149253') }}" alt="59만원" />
+                <area shape="rect" coords="919,650,1082,691" href="{{ site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149317') }}" alt="43만원" />
             </map>
             <img src="http://file3.willbes.net/new_gosi/2018/10/EV181031Y_03_1.jpg" alt="군무원 수강생 이벤트"  />
             <div class="tbl_lec" id="tbl_lec">
@@ -127,14 +127,14 @@
                         <td>140만원</td>
                         <td>90만원</td>
                         <td class="sell">59만원</td>
-                        <td><a href="http://www.willbesgosi.net/yearpackagelecture/yearpackagelectureDetail.html?topMenu=007&topMenuName=&topMenuType=O&searchCategoryCode=007&searchLeccode=Y201700036&leftMenuLType=M0001&lecKType=Y" target="_blank"class="button01" alt="수강신청">수강신청</a></td>
+                        <td><a href="{{ site_url('#none') }}" target="_blank"class="button01" alt="수강신청">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>6개월</td>
                         <td>140만원</td>
                         <td>69만원</td>
                         <td class="sell">43만원</td>
-                        <td><a href="http://www.willbesgosi.net/yearpackagelecture/yearpackagelectureDetail.html?topMenu=007&topMenuName=&topMenuType=O&searchCategoryCode=007&searchLeccode=Y201800045&leftMenuLType=M0001&lecKType=Y" target="_blank"class="button01" alt="수강신청">수강신청</a></td>
+                        <td><a href="{{ site_url('#none') }}" target="_blank"class="button01" alt="수강신청">수강신청</a></td>
                     </tr>
                     <tr>
                         <th rowspan="2">2과목 패키지<br>
@@ -143,14 +143,14 @@
                         <td>90만원</td>
                         <td>65만원</td>
                         <td class="sell">42만원</td>
-                        <td><a href="http://www.willbesgosi.net/yearpackagelecture/yearpackagelectureDetail.html?topMenu=007&topMenuName=&topMenuType=O&searchCategoryCode=007&searchLeccode=Y201800047&leftMenuLType=M0001&lecKType=Y" target="_blank"class="button01" alt="수강신청">수강신청</a></td>
+                        <td><a href="{{ site_url('#none') }}" target="_blank"class="button01" alt="수강신청">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>6개월</td>
                         <td>90만원</td>
                         <td>50만원</td>
                         <td class="sell">35만원</td>
-                        <td><a href="http://www.willbesgosi.net/yearpackagelecture/yearpackagelectureDetail.html?topMenu=007&topMenuName=&topMenuType=O&searchCategoryCode=007&searchLeccode=Y201800046&leftMenuLType=M0001&lecKType=Y" target="_blank"class="button01" alt="수강신청">수강신청</a></td>
+                        <td><a href="{{ site_url('#none') }}" target="_blank"class="button01" alt="수강신청">수강신청</a></td>
                     </tr>
                     <tr>
                         <th rowspan="2">2과목 패키지<br>
@@ -159,14 +159,14 @@
                         <td>90만원</td>
                         <td>65만원</td>
                         <td class="sell">42만원</td>
-                        <td><a href="http://www.willbesgosi.net/yearpackagelecture/yearpackagelectureDetail.html?topMenu=007&topMenuName=&topMenuType=O&searchCategoryCode=007&searchLeccode=Y201800048&leftMenuLType=M0001&lecKType=Y" target="_blank"class="button01" alt="수강신청">수강신청</a></td>
+                        <td><a href="{{ site_url('#none') }}" target="_blank"class="button01" alt="수강신청">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>6개월</td>
                         <td>90만원</td>
                         <td>50만원</td>
                         <td class="sell">35만원</td>
-                        <td><a href="http://www.willbesgosi.net/yearpackagelecture/yearpackagelectureDetail.html?topMenu=007&topMenuName=&topMenuType=O&searchCategoryCode=007&searchLeccode=Y201800049&leftMenuLType=M0001&lecKType=Y" target="_blank"class="button01" alt="수강신청">수강신청</a></td>
+                        <td><a href="{{ site_url('#none') }}" target="_blank"class="button01" alt="수강신청">수강신청</a></td>
                     </tr>
                     <tr>
                         <th rowspan="2">2과목 패키지<br>
@@ -175,14 +175,14 @@
                         <td>90만원</td>
                         <td>65만원</td>
                         <td class="sell">42만원</td>
-                        <td><a href="http://www.willbesgosi.net/yearpackagelecture/yearpackagelectureDetail.html?topMenu=007&topMenuName=&topMenuType=O&searchCategoryCode=007&searchLeccode=Y201800050&leftMenuLType=M0001&lecKType=Y" target="_blank"class="button01" alt="수강신청">수강신청</a></td>
+                        <td><a href="{{ site_url('#none') }}" target="_blank"class="button01" alt="수강신청">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>6개월</td>
                         <td>90만원</td>
                         <td>50만원</td>
                         <td class="sell">35만원</td>
-                        <td><a href="http://www.willbesgosi.net/yearpackagelecture/yearpackagelectureDetail.html?topMenu=007&topMenuName=&topMenuType=O&searchCategoryCode=007&searchLeccode=Y201800051&leftMenuLType=M0001&lecKType=Y" target="_blank"class="button01" alt="수강신청">수강신청</a></td>
+                        <td><a href="{{ site_url('#none') }}" target="_blank"class="button01" alt="수강신청">수강신청</a></td>
                     </tr>
                 </table>
             </div><!--tbl_lec//-->

@@ -10,6 +10,7 @@
         <div class="Content p_re">
             <form name="searchFrm1" id="searchFrm1" action="{{front_url('/classroom/pass/index')}}">
                 <div class="willbes-Mypage-PASSZONE">
+                    <!--
                     <div class="d_block">
                         <div class="willbes-listTable widthAuto550 f_left">
                             <div class="will-Tit NSK">무한 PASS <span class="tx-light-blue">공지사항</span> <a class="f_right" href="{{ front_url('/classroom/passNotice/index') }}"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
@@ -36,6 +37,7 @@
                             </div>
                         </div>
                     </div>
+                    -->
 
                     <div class="c_both willbes-Lec-Table NG d_block pt25">
                         <div class="willbes-PASS-Line bg-blue">

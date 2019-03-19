@@ -10,9 +10,7 @@
         <div class="Content p_re">
 
             <div class="willbes-Mypage-TESTZONE c_both">
-                <div class="willbes-Prof-Subject willbes-Mypage-Tit NG">
-                    · 온라인모의고사 응시
-                </div>
+
                 <div class="willbes-Cart-Txt willbes-Mypage-Txt NG p_re">
                     <span class="MoreBtn"><a href="#none">유의사항안내 닫기 ▲</a></span>
                     <table cellspacing="0" cellpadding="0" class="txtTable tx-black">
@@ -36,8 +34,8 @@
                         <ul class="widthAutoFull">
                             <li class="f_left">
                                 지난 모의고사 성적결과 보기
-                                <a href="#none" class="btnAuto95 bg-black tx-white tx-center h30 d_inblock">경찰 ▶</a>
-                                <a href="#none" class="btnAuto95 bg-black tx-white tx-center h30 d_inblock">공무원 ▶</a>
+                                <a href="javascript:popCross(1);" class="btnAuto95 bg-black tx-white tx-center h30 d_inblock">경찰 ▶</a>
+                                <a href="javascript:popCross(2);" class="btnAuto95 bg-black tx-white tx-center h30 d_inblock">공무원 ▶</a>
                             </li>
                             <li class="f_right">
                                 <span class="willbes-Lec-Search">    
@@ -197,6 +195,18 @@
                     }
                 }
 
+            }
+
+            function popCross(num){
+                if(num == 1){
+                    _url = 'http://c3.willbescop.net/mouigosa/stats/statsMock.html?M_USER_ID='+'{{ $userid }}';
+                    win = window.open(_url, 'mockPopupRegasi', 'width=1024, height=845, scrollbars=yes, resizable=yes');
+                    win.focus();
+                } else {
+                    _url = 'http://w1.willbesgosi.net/mouigosa/stats/statsMock.html?M_USER_ID='+'{{ $userid }}';
+                    win = window.open(_url, 'mockPopupRegasi', 'width=1024, height=845, scrollbars=yes, resizable=yes');
+                    win.focus();
+                }
             }
 
             function selQaFileAjax(prodcode){

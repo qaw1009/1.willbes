@@ -89,7 +89,41 @@
             </ul>
             
             <div class="tabContents" id="tab1" >
-                <p><img src="http://file3.willbes.net/new_cop/2019/02/EV190214_c4_1.jpg"  alt=""/></p>  
+                <div class="Section Section2 mt100">
+                    <div class="widthAuto p_re">
+                        <img src="{{ img_url('cop_acad/visual/visual_curri_bg.jpg') }}" alt="신광은경찰 합격커리큘럼">
+                        <div class="passCurriWrap">
+                            <ul>
+                                <li class="curriStep1">
+                                    <img src="{{ img_url('cop_acad/visual/visual_curriM01.png') }}" alt="집중 연강식 진행" class="out">
+                                    <img src="{{ img_url('cop_acad/visual/visual_curriM01_on.png') }}" alt="집중 연강식 진행" class="over">
+                                </li>
+                                <li class="curriStep2">
+                                    <img src="{{ img_url('cop_acad/visual/visual_curriM02.png') }}" alt="프리미엄 심화과정" class="out">
+                                    <img src="{{ img_url('cop_acad/visual/visual_curriM02_on.png') }}" alt="프리미엄 심화과정" class="over">
+                                </li>
+                                <li class="curriStep3">
+                                    <img src="{{ img_url('cop_acad/visual/visual_curriM03.png') }}" alt="핵심요약/진도별 정리" class="out">
+                                    <img src="{{ img_url('cop_acad/visual/visual_curriM03_on.png') }}" alt="핵심요약/진도별 정리" class="over">
+                                </li>
+                                <li class="curriStep4">
+                                    <img src="{{ img_url('cop_acad/visual/visual_curriM04.png') }}" alt="집중 약점 보안" class="out">
+                                    <img src="{{ img_url('cop_acad/visual/visual_curriM04_on.png') }}" alt="집중 약점 보안" class="over">
+                                </li>
+                                <li class="curriStep5">
+                                    <img src="{{ img_url('cop_acad/visual/visual_curriM05.png') }}" alt="실전력 극대화" class="out">
+                                    <img src="{{ img_url('cop_acad/visual/visual_curriM05_on.png') }}" alt="실전력 극대화" class="over">
+                                </li>
+                                <li class="curriStep6">
+                                    <img src="{{ img_url('cop_acad/visual/visual_curriM06.png') }}" alt="집단+개별면접대비" class="out">
+                                    <img src="{{ img_url('cop_acad/visual/visual_curriM06_on.png') }}" alt="집단+개별면접대비" class="over">
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- 합격커리큘럼 //-->
+                <p><img src="http://file3.willbes.net/new_cop/2019/02/EV190214_c4_1NEW.jpg"  alt=""/></p>  
                 <!--동영상-->
                 <p style="padding-bottom:150px;"><iframe width="876px" height="480px" src="https://www.youtube.com/embed/re8w_IFAPS4?rel=0" frameborder="0" allowfullscreen></iframe></p>
                 <!--//동영상-->

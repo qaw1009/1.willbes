@@ -173,7 +173,10 @@
             </div>
             <div>
                 <div class="check" id="chkInfo">
-                    <label><input name="is_chk" type="checkbox" value="Y" /> 페이지 하단 윌비스 소방 PASS 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
+                    <label>
+                    <input name="is_chk" type="checkbox" value="Y" /> 페이지 하단 윌비스 소방 PASS 이용안내를 모두 확인하였고, 이에 동의합니다.<Br>
+                    ※ 쿠폰은 PASS 결제 후 [내강의실>결제관리>쿠폰/수강권관리] 에서 확인 가능합니다.
+                    </label>
                     <a href="#tab1">이용안내확인하기 ↓</a>
                 </div>
                 <div class="check04">

@@ -921,6 +921,9 @@ select[disabled] {
 .d_block {
   display: block !important;
 }
+.d_inblock {
+  display: inline-block !important;
+}
 .d_none {
   display: none !important;
 }

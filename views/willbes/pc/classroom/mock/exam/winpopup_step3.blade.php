@@ -99,7 +99,7 @@
                     </span>
                         <span>
                         <button type="submit" onclick="goStep2()" class="btnAuto130 h36 mem-Btn bg-blue bd-dark-blue strong">
-                            <span class="strong">모의고사 메인 이동</span>
+                            <span class="strong">응시리스트</span>
                         </button>
                     </span>
                     </div>

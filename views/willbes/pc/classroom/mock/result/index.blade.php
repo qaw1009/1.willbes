@@ -32,16 +32,24 @@
             <div class="willbes-Leclist c_both mt60">
                 <form id="url_form" name="url_form" method="GET">
 
-                    <div class="willbes-LecreplyList tx-gray c_both mt-zero">
-                        <span class="f_left"><a href="#none" class="btnAuto200 bg-black tx-white tx-center h30 d_block ">지난 모의고사 성적결과 보기 ▶</a></span>
-                        <span class="willbes-Lec-Search willbes-SelectBox GM f_right">
-                            <div class="inputBox p_re">
-                                <input type="text" id="s_keyword" name="s_keyword" class="labelSearch" value="{{ element('s_keyword', $arr_input) }}" placeholder="모의고사명을 입력해 주세요" maxlength="30">
-                                <button type="button" onclick="goUrl('s_keyword', document.getElementById('s_keyword').value);" class="search-Btn">
-                                    <span>검색</span>
-                                </button>
-                            </div>
-                        </span>
+                    <div class="willbes-LecreplyList tx-gray c_both">
+                        <ul class="widthAutoFull">
+                            <li class="f_left">
+                                지난 모의고사 성적결과 보기
+                                <a href="#none" class="btnAuto95 bg-black tx-white tx-center h30 d_inblock">경찰 ▶</a>
+                                <a href="#none" class="btnAuto95 bg-black tx-white tx-center h30 d_inblock">공무원 ▶</a>
+                            </li>
+                            <li class="f_right">
+                                <span class="willbes-Lec-Search">    
+                                    <div class="inputBox p_re">
+                                        <input type="text" id="s_keyword" name="s_keyword" class="labelSearch" value="{{ element('s_keyword', $arr_input) }}" placeholder="모의고사명을 입력해 주세요" maxlength="30">
+                                        <button type="button" onclick="goUrl('s_keyword', document.getElementById('s_keyword').value);" class="search-Btn">
+                                            <span>검색</span>
+                                        </button>
+                                    </div>
+                                </span>
+                            </li>
+                        </ul>                
                     </div>
 
                     <div class="LeclistTable pointTable">

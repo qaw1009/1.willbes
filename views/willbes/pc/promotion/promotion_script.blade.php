@@ -12,6 +12,8 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     --}}
     function goCartNDirectPay(ele_id, field_name, cart_type, learn_pattern, is_direct_pay)
     {
+        {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+
         var $regi_form = $('#' + ele_id);
         var $prod_code = $regi_form.find('input[name="' + field_name + '"]:checked');   // 상품코드
         var $is_chk = $regi_form.find('input[name="is_chk"]');  // 동의여부
@@ -22,6 +24,11 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                 alert('이용안내에 동의하셔야 합니다.');
                 return;
             }
+        }
+
+        if ($prod_code.length < 1) {
+            alert('강좌를 선택해 주세요.');
+            return;
         }
 
         {{-- 장바구니 저장 기본 파라미터 --}}

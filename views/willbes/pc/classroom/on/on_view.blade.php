@@ -59,7 +59,7 @@
                                     <td>
                                         <div class="w-lectit">수강연장</div>
                                         <div class="w-lec NGEB"><span class="tx-light-blue">{{$lec['RebuyCount']}}</span>회</div>
-                                        <div class="w-date tx-gray"> </div>
+                                        <div class="w-date tx-gray">(최대 3회까지)</div>
                                     </td>
                                     <td>
                                         <div class="w-lectit">잔여기간</div>

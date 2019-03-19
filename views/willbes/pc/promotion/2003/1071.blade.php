@@ -20,7 +20,7 @@
 
         /************************************************************/
 
-        .wb_top {background:#fef053 url(http://file3.willbes.net/new_gosi/2018/10/EV181005_c1_bg.jpg) no-repeat center top; position:relative;  }
+        .wb_top {background:#fef053 url(http://file3.willbes.net/new_gosi/2018/10/EV181005_c1_bg.jpg) no-repeat center top}
 
         .wb_cts01{background:#fff;}
         /* 탭 */
@@ -47,6 +47,7 @@
             top:250px;
             right:0;
             width:185px;
+            z-index:10;
         }
 
 

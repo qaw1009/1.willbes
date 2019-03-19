@@ -112,8 +112,8 @@
 
         <div class="willbes-Leclist c_both mt60">
             <div class="willbes-LecreplyList tx-gray c_both mt-zero">
-                <span class="f_left mb10"><a href="#none" class="btnAuto250 bg-black tx-white tx-center pl20 pr20 pb10 pt10">지난 모의고사 성적결과 보기 ▶</a></span>
-                <span class="willbes-Lec-Search willbes-SelectBox mb20 GM f_right">
+                <span class="f_left"><a href="#none" class="btnAuto200 bg-black tx-white tx-center h30 d_block ">지난 모의고사 성적결과 보기 ▶</a></span>
+                <span class="willbes-Lec-Search willbes-SelectBox GM f_right mt-zero">
                     <div class="inputBox p_re">
                         <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="모의고사명을 입력해 주세요" maxlength="30">
                         <button type="submit" onclick="" class="search-Btn">

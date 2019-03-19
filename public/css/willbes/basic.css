@@ -479,6 +479,10 @@ select[disabled] {
   width: 180px !important;
   margin: 0 auto;
 }
+.btnAuto200 {
+  width:200px !important;
+  margin: 0 auto;
+}
 .btnAuto250 {
   width: 250px !important;
   margin: 0 auto;

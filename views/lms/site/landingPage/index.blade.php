@@ -115,14 +115,19 @@
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                         }},
                     {'data' : 'CateCode', 'render' : function(data, type, row, meta){
-                            var str = '없음';
-                            if (data != null) {
-                                var obj = data.split(',');
-                                for (key in obj) {
-                                    str += obj[key] + "<br>";
+                            if (row.SiteCode == {{config_item('app_intg_site_code')}}) {
+                                return '통합';
+                            } else {
+                                var str = '없음';
+                                if (data != null) {
+                                    str = '';
+                                    var obj = data.split(',');
+                                    for (key in obj) {
+                                        str += obj[key] + "<br>";
+                                    }
                                 }
+                                return str;
                             }
-                            return str;
                         }},
                     {'data' : 'LIdx'},
                     {'data' : 'Title', 'render' : function(data, type, row, meta) {

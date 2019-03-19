@@ -197,19 +197,15 @@
                             if (row.SiteCode == {{config_item('app_intg_site_code')}}) {
                                 return '통합';
                             } else {
-                                if (row.SiteCode == {{config_item('app_intg_site_code')}}) {
-                                    return '통합';
-                                } else {
-                                    var str = '없음';
-                                    if (data != null) {
-                                        str = '';
-                                        var obj = data.split(',');
-                                        for (key in obj) {
-                                            str += obj[key] + "<br>";
-                                        }
+                                var str = '없음';
+                                if (data != null) {
+                                    str = '';
+                                    var obj = data.split(',');
+                                    for (key in obj) {
+                                        str += obj[key] + "<br>";
                                     }
-                                    return str;
                                 }
+                                return str;
                             }
                         }},
                     {'data' : 'Title', 'render' : function(data, type, row, meta) {

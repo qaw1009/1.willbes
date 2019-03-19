@@ -113,7 +113,7 @@
                     </span>
                     <div class="crtReply">
                         <p>{!! $row['MemIdx'] == sess_data('mem_idx') ? $row['MemName'] : hpSubString($row['MemName'],0,2,'*') !!}
-                            @if(sess_data('mem_idx') === $row['MemIdx'])
+                            @if(sess_data('is_login') === true && sess_data('mem_idx') === $row['MemIdx'])
                                 <a class="btn-comment-del" data-comment-idx="{{$row['Idx']}}" href="#none">삭제</a>
                             @endif
                         </p>

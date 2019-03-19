@@ -450,7 +450,7 @@ class Home extends \app\controllers\FrontController
         switch ($this->_site_code) {
             case "2002":
                 $temp_campus = [
-                    '0' => ['MapPath' => img_url('cop_acad/map/map_cop_origin.jpg'),'Addr' => '서울시동작구만양로105 2층<br/>(서울시동작구노량진동116-2 2층)','Tel' => '1544-0336'],
+                    '0' => ['MapPath' => img_url('cop_acad/map/map_cop_origin.jpg'),'Addr' => '서울시 동작구 만양로 105 2층<br/>(서울시 동작구 노량진동 116-2 2층)','Tel' => '1544-0336'],
                     '1' => ['MapPath' => img_url('cop_acad/map/map_cop_sl.jpg'),'Addr' => '서울 관악구 신림로 23길 16 4층','Tel' => '1544-4006'],
                     '2' => ['MapPath' => img_url('cop_acad/map/map_cop_bs.jpg'),'Addr' => '부산 진구 부정동 223-8','Tel' => '1522-8112'],
                     '3' => ['MapPath' => img_url('cop_acad/map/map_cop_dg.jpg'),'Addr' => '대구 중구 중앙대로 412(남일동) CGV 2층','Tel' => '1522-6112'],
@@ -463,7 +463,7 @@ class Home extends \app\controllers\FrontController
                 break;
             case "2004":
                 $temp_campus = [
-                    '0' => ['MapPath' => img_url('gosi_acad/map/mapSeoul.jpg'),'Addr' => '서울시동작구만양로105 2층<br/>(서울시동작구노량진동116-2 2층)','Tel' => '1544-0336'],
+                    '0' => ['MapPath' => img_url('gosi_acad/map/mapSeoul.jpg'),'Addr' => '서울시 동작구 만양로 105 2층<br/>(서울시 동작구 노량진동 116-2 2층)','Tel' => '1544-0336'],
                     '1' => ['MapPath' => img_url('gosi_acad/map/mapIC.jpg'),'Addr' => '인천 부평구 부평동 534-28 중보빌딩 10층','Tel' => '1544-1661'],
                     '2' => ['MapPath' => img_url('gosi_acad/map/mapDG.jpg'),'Addr' => '대구 중구 중앙대로 412(남일동) CGV 2층','Tel' => '1522-6112'],
                     '3' => ['MapPath' => img_url('gosi_acad/map/mapBS.jpg'),'Addr' => '부산 진구 부정동 223-8','Tel' => '1522-8112'],

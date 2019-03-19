@@ -146,72 +146,13 @@
                 <div class="DetailWrap c_both">
                     @if(empty($passinfo) == false)<div class="aBox passBox answerBox_block NSK f_right"><a href="javascript:;" onclick="fnMoreBook();">교재구매</a></div>@endif
                     <ul class="tabWrap tabDepthPass">
-                        <li><a href="#Mypagetab1" class="on">즐겨찾기강좌 ({{count($leclist_like)}})</a></li>
-                        <li><a href="#Mypagetab2">수강중강좌 ({{count($leclist_ing)}})</a></li>
+                        <li><a href="#Mypagetab1" class="on">수강중강좌 ({{count($leclist_ing)}})</a></li>
+                        <li><a href="#Mypagetab2">즐겨찾기강좌 ({{count($leclist_like)}})</a></li>
                         <li><a href="#Mypagetab3">수강완료강좌 ({{count($leclist_end)}})</a></li>
                         <li><a href="#Mypagetab4">숨긴강좌 ({{count($leclist_nodisp)}})</a></li>
                     </ul>
                     <div class="tabBox">
                         <div id="Mypagetab1" class="tabLink">
-                            <div class="willbes-Lec-Table NG d_block">
-                                @if(empty($leclist_like) == false)
-                                    <div class="PASSZONE-Btn">
-                                        <div class="w-answer"><a href="javascript:;" onclick="fnUnLike('all', null);"><span class="aBox passBox waitBox NSK">삭제</span></a></div>
-                                    </div>
-                                @endif
-                                <form name='likedForm' id='likedForm' >
-                                    @if(empty($passinfo) == false)
-                                        <input type='hidden' name='OrderIdx' value='{{$passinfo['OrderIdx']}}' />
-                                        <input type='hidden' name='ProdCode' value='{{$passinfo['ProdCode']}}' />
-                                        <input type='hidden' name='OrderProdIdx' value='{{$passinfo['OrderProdIdx']}}' />
-                                        <input type='hidden' name='ProdCodeSub[]' id='ProdCodeSub_liked' value='' />
-                                    @endif
-                                    <table cellspacing="0" cellpadding="0" class="lecTable bdt-dark-gray">
-                                        <colgroup>
-                                            <col style="width: 55px;">
-                                            <col style="width: 120px;">
-                                            <col style="width: 680px;">
-                                            <col style="width: 85px;">
-                                        </colgroup>
-                                        <tbody>
-                                        @forelse( $leclist_like as $row )
-                                            <tr>
-                                                <td class="w-chk"><input type="checkbox" id="ProdCodeSub_liked" name="ProdCodeSub[]" class="goods_chk" value="{{$row['ProdCodeSub']}}" ></td>
-                                                <td class="w-percent">진도율<br/>
-                                                    <span class="tx-blue">{{$row['StudyRate']}}%</span>
-                                                </td>
-                                                <td class="w-data tx-left pl25">
-                                                    <dl class="w-info">
-                                                        <dt>
-                                                            {{$row['SubjectName']}}<span class="row-line">|</span>
-                                                            {{$row['wProfName']}}교수님
-                                                            <span class="NSK ml15 nBox n{{ substr($row['wLectureProgressCcd'], -1)+1 }}">{{$row['wLectureProgressCcdName']}}</span>
-                                                        </dt>
-                                                    </dl><br/>
-                                                    <div class="w-tit">
-                                                        <a href="{{ site_url('/classroom/pass/view/') }}?o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&ps={{$row['ProdCodeSub']}}">{{$row['subProdName']}}</a>
-                                                    </div>
-                                                    <dl class="w-info tx-gray">
-                                                        <dt>강의수 : <span class="tx-black">{{$row['wUnitLectureCnt']}}강</span></dt>
-                                                        <dt><span class="row-line">|</span></dt>
-                                                        <dt>잔여기간 : <span class="tx-blue">{{$row['remainDays']}}일</span>({{str_replace('-', '.', $row['LecStartDate'])}}~{{str_replace('-', '.', $row['RealLecEndDate'])}})</dt>
-                                                        <dt><span class="row-line">|</span></dt>
-                                                        <dt>최종학습일 : <span class="tx-black">{{ $row['lastStudyDate'] == '' ? '학습이력없음' : $row['lastStudyDate'] }}</span></dt>
-                                                    </dl>
-                                                </td>
-                                                <td class="w-answer"><a href="javascript:;" onclick="fnUnLike('{{$row['ProdCodeSub']}}', this);"><span class="aBox passBox waitBox NSK">삭제</span></a></td>
-                                            </tr>
-                                        @empty
-                                            <tr>
-                                                <td colspan="4" class="tx-center">즐겨찾기 강좌 정보가 없습니다.</td>
-                                            </tr>
-                                        @endforelse
-                                        </tbody>
-                                    </table>
-                                </form>
-                            </div>
-                        </div>
-                        <div id="Mypagetab2" class="tabLink">
                             <div class="willbes-Lec-Table NG d_block">
                                 @if(empty($leclist_ing) == false)
                                     <div class="PASSZONE-Btn">
@@ -269,6 +210,65 @@
                                         @empty
                                             <tr>
                                                 <td colspan="4" class="tx-center">수강중강좌 정보가 없습니다.</td>
+                                            </tr>
+                                        @endforelse
+                                        </tbody>
+                                    </table>
+                                </form>
+                            </div>
+                        </div>
+                        <div id="Mypagetab2" class="tabLink">
+                            <div class="willbes-Lec-Table NG d_block">
+                                @if(empty($leclist_like) == false)
+                                    <div class="PASSZONE-Btn">
+                                        <div class="w-answer"><a href="javascript:;" onclick="fnUnLike('all', null);"><span class="aBox passBox waitBox NSK">삭제</span></a></div>
+                                    </div>
+                                @endif
+                                <form name='likedForm' id='likedForm' >
+                                    @if(empty($passinfo) == false)
+                                        <input type='hidden' name='OrderIdx' value='{{$passinfo['OrderIdx']}}' />
+                                        <input type='hidden' name='ProdCode' value='{{$passinfo['ProdCode']}}' />
+                                        <input type='hidden' name='OrderProdIdx' value='{{$passinfo['OrderProdIdx']}}' />
+                                        <input type='hidden' name='ProdCodeSub[]' id='ProdCodeSub_liked' value='' />
+                                    @endif
+                                    <table cellspacing="0" cellpadding="0" class="lecTable bdt-dark-gray">
+                                        <colgroup>
+                                            <col style="width: 55px;">
+                                            <col style="width: 120px;">
+                                            <col style="width: 680px;">
+                                            <col style="width: 85px;">
+                                        </colgroup>
+                                        <tbody>
+                                        @forelse( $leclist_like as $row )
+                                            <tr>
+                                                <td class="w-chk"><input type="checkbox" id="ProdCodeSub_liked" name="ProdCodeSub[]" class="goods_chk" value="{{$row['ProdCodeSub']}}" ></td>
+                                                <td class="w-percent">진도율<br/>
+                                                    <span class="tx-blue">{{$row['StudyRate']}}%</span>
+                                                </td>
+                                                <td class="w-data tx-left pl25">
+                                                    <dl class="w-info">
+                                                        <dt>
+                                                            {{$row['SubjectName']}}<span class="row-line">|</span>
+                                                            {{$row['wProfName']}}교수님
+                                                            <span class="NSK ml15 nBox n{{ substr($row['wLectureProgressCcd'], -1)+1 }}">{{$row['wLectureProgressCcdName']}}</span>
+                                                        </dt>
+                                                    </dl><br/>
+                                                    <div class="w-tit">
+                                                        <a href="{{ site_url('/classroom/pass/view/') }}?o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&ps={{$row['ProdCodeSub']}}">{{$row['subProdName']}}</a>
+                                                    </div>
+                                                    <dl class="w-info tx-gray">
+                                                        <dt>강의수 : <span class="tx-black">{{$row['wUnitLectureCnt']}}강</span></dt>
+                                                        <dt><span class="row-line">|</span></dt>
+                                                        <dt>잔여기간 : <span class="tx-blue">{{$row['remainDays']}}일</span>({{str_replace('-', '.', $row['LecStartDate'])}}~{{str_replace('-', '.', $row['RealLecEndDate'])}})</dt>
+                                                        <dt><span class="row-line">|</span></dt>
+                                                        <dt>최종학습일 : <span class="tx-black">{{ $row['lastStudyDate'] == '' ? '학습이력없음' : $row['lastStudyDate'] }}</span></dt>
+                                                    </dl>
+                                                </td>
+                                                <td class="w-answer"><a href="javascript:;" onclick="fnUnLike('{{$row['ProdCodeSub']}}', this);"><span class="aBox passBox waitBox NSK">삭제</span></a></td>
+                                            </tr>
+                                        @empty
+                                            <tr>
+                                                <td colspan="4" class="tx-center">즐겨찾기 강좌 정보가 없습니다.</td>
                                             </tr>
                                         @endforelse
                                         </tbody>

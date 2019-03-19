@@ -163,11 +163,11 @@
           
         <div class="evtCtnsBox wb_cts03" id="event">             
             <ul>
-                <li><div class="check01"><input type="radio" id="y_pkg" name="y_pkg" value="Y" onClick="fn_cal('1')"/></div></li> <!--공채 12개월 43만원-->
-                <li><div class="check02"><input type="radio" id="y_pkg" name="y_pkg" value="Y" onClick="fn_cal('2')"/></div></li> <!--특채 12개월 35만원-->
+                <li><div class="check01"><input type="radio" id="y_pkg" name="y_pkg" value="149304" onClick=""/></div></li> <!--공채 12개월 43만원-->
+                <li><div class="check02"><input type="radio" id="y_pkg" name="y_pkg" value="149305" onClick=""/></div></li> <!--특채 12개월 35만원-->
             </ul>
             <div>
-                <a href="/promotion/index/cate/3023/code/1091" target="_blank">
+                <a href="{{site_url('/promotion/index/cate/3023/code/1091')}}" target="_blank">
                 <img src="http://file3.willbes.net/new_gosi/2019/01/EV190115_c7_22.jpg" alt="단기간 체력 40점 완성 프로젝트 상세보기" /><!--소방체력 풀패키지 상세보기-->
                 </a>
             </div>
@@ -180,7 +180,7 @@
                 </div>
                 <div> ※ 쿠폰은 PASS 결제 후 [내강의실>결제관리>쿠폰/수강권관리] 에서 확인 가능합니다.</div>
                 <div class="check04">
-                    <a href="javascript:fn_cart();"><img src="http://file3.willbes.net/new_gosi/2019/01/EV190115_c7_2_1.jpg" alt="장바구니"  /></a> <!--소방패스 신청하기-->
+                    <a href="#none" onclick="goCartNDirectPay('event', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');"><img src="http://file3.willbes.net/new_gosi/2019/01/EV190115_c7_2_1.jpg" alt="장바구니"  /></a> <!--소방패스 신청하기-->
                 </div>
             </div>                   
         </div><!--wb_cts03//-->
@@ -292,4 +292,6 @@
             /*e.preventDefault(); */
         });
     </script>
+    {{-- 프로모션용 스크립트 include --}}
+    @include('willbes.pc.promotion.promotion_script')
 @stop

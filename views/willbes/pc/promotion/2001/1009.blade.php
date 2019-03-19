@@ -251,7 +251,7 @@
             <div class="passLecbtn">
                 <ul>
                     <!--li><div id="sum_y">합계 <span><strong>0</strong>원</span></div></li-->
-                    <li><a href="#none" onclick="goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');">신광은경찰 PASS 신청하기 ☞</a></li>
+                    <li><a href="#none" onclick="goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');">신광은경찰 PASS 신청하기 ☞</a></li>
                 </ul>
             </div>
 

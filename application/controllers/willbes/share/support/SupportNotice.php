@@ -13,7 +13,7 @@ class SupportNotice extends BaseSupport
     protected $_bm_idx;
     protected $_default_path;
     protected $_cate_path = '';
-    protected $_paging_limit = 5;
+    protected $_paging_limit = 10;
     protected $_paging_count = 10;
     protected $_paging_count_m = 5;
 
@@ -21,7 +21,7 @@ class SupportNotice extends BaseSupport
     {
         parent::__construct();
 
-        // 카테고리 링크 path 설정 
+        // 카테고리 링크 path 설정
         empty($this->_cate_code) === false && $this->_cate_path = '/' . config_get('uri_segment_keys.cate') . '/' . $this->_cate_code;
     }
 

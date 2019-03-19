@@ -106,8 +106,8 @@
         <div class="evtCtnsBox wb_cts03">
             <img src="http://file3.willbes.net/new_gosi/2018/10/EV181031Y_03.jpg" alt="" usemap="#Map180831B" border="0"  />
             <map name="Map180831B" id="Map180831B">
-                <area shape="rect" coords="571,651,730,691" href="{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/149253') }}" alt="59만원" />
-                <area shape="rect" coords="919,650,1082,691" href="{{ site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149317') }}" alt="43만원" />
+                <area shape="rect" coords="571,651,730,691" href="{{ site_url('/package/show/cate/3019/pack/648001/prod-code/149253') }}" alt="59만원" />
+                <area shape="rect" coords="919,650,1082,691" href="{{ site_url('/package/show/cate/3024/pack/648001/prod-code/149317') }}" alt="43만원" />
             </map>
             <img src="http://file3.willbes.net/new_gosi/2018/10/EV181031Y_03_1.jpg" alt="군무원 수강생 이벤트"  />
             <div class="tbl_lec" id="tbl_lec">

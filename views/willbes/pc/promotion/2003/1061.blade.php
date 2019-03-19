@@ -243,9 +243,9 @@
             var lUrl = "";
 
             if(parseInt(no)==1 || parseInt(no)==3 || parseInt(no)== 5){
-                lUrl = "/periodPackage/show/cate/3019/pack/648001/prod-code/149329"
+                lUrl = "/package/show/cate/3019/pack/648001/prod-code/149329"
             }else{
-                lUrl = "/periodPackage/show/cate/3019/pack/648001/prod-code/149328"
+                lUrl = "/package/show/cate/3019/pack/648001/prod-code/149328"
             }
 
             location.href = lUrl;

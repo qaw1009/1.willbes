@@ -96,6 +96,7 @@ class Home extends \app\controllers\FrontController
             $arr_campus = array_replace_recursive($arr_campus, $this->_getCampusInfo());
             $data['arr_campus'] = $arr_campus;
             $data['notice'] = $this->_boardNotice(5);
+            $data['exam_announcement'] = $this->_boardExamAnnouncement(5);
             $data['exam_news'] = $this->_boardExamNews(5);
             $data['onAir'] = $this->_onAir();
             $data['arr_main_banner'] = $this->_banner('0');

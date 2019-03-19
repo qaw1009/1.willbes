@@ -6,7 +6,7 @@
     </ul>
     <div class="tabBox noticeBox_acad">
         <div id="notice1" class="tabContent p_re">
-            <a href="#none" class="f_right btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}" alt="더보기"></a>
+            <a href="{{front_url('/support/notice/index')}}" class="f_right btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}" alt="더보기"></a>
             <ul class="List-Table">
                 @if(empty($data['notice']) === true)
                     <li>등록된 내용이 없습니다.</li>
@@ -23,14 +23,14 @@
             </ul>
         </div>
         <div id="notice2" class="tabContent p_re">
-            <a href="#none" class="f_right btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}" alt="더보기"></a>
+            <a href="{{front_url('/support/examAnnouncement/index')}}" class="f_right btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}" alt="더보기"></a>
             <ul class="List-Table">
-                @if(empty($data['exam_news']) === true)
+                @if(empty($data['exam_announcement']) === true)
                     <li>등록된 내용이 없습니다.</li>
                 @else
-                    @foreach($data['exam_news'] as $row)
+                    @foreach($data['exam_announcement'] as $row)
                         <li>
-                            <a href="{{front_url('/support/examNews/show/cate/'.$__cfg['CateCode'].'?board_idx='.$row['BoardIdx'])}}">
+                            <a href="{{front_url('/support/examAnnouncement/show/cate/'.$__cfg['CateCode'].'?board_idx='.$row['BoardIdx'])}}">
                                 @if($row['IsBest'] == '1') <img src="{{ img_url('cop/icon_hot.png') }}" alt="HOT"> @endif
                                 {{$row['Title']}}
                             </a>
@@ -40,7 +40,7 @@
             </ul>
         </div>
         <div id="notice3" class="tabContent p_re">
-            <a href="#none" class="f_right btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}" alt="더보기"></a>
+            <a href="{{front_url('/support/examNews/index')}}" class="f_right btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}" alt="더보기"></a>
             <ul class="List-Table">
                 @if(empty($data['exam_news']) === true)
                     <li>등록된 내용이 없습니다.</li>

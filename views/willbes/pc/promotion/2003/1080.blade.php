@@ -32,22 +32,8 @@
             top:200px;
             right:0;
             width:261px;
-            animation:upDown 1s infinite;
-            -webkit-animation:upDown 1s infinite;
             z-index:10;
         }
-
-        @@keyframes upDown{
-             from{margin-top:0}
-             60%{margin-top:-30px}
-             to{margin-top:0}
-         }
-        @@-webkit-keyframes upDown{
-             from{margin-top:0}
-             60%{margin-top:-30px}
-             to{margin-top:0}
-         }
-
     </style>
 
 
@@ -55,7 +41,7 @@
         <div class="evtCtnsBox wb_top">
             <img src="http://file3.willbes.net/new_gosi/2018/08/EV180806_c1.png" alt="윌비스 행정학의 대세 김덕관 행정학 T-PASS " usemap="#Map180806_c1" border="0"  />
             <map name="Map180806_c1">
-                <area shape="rect" coords="830,1068,1054,1171" href="http://www.willbesgosi.net/packagelecture/packagelectureDetail.html?currentPage=1&pageRow=9999&topMenu=001&topMenuName=&topMenuType=O&searchCategoryCode=001&leftMenuLType=M0001&lecKType=P&searchLeccode=P201800064" target="_blank" onfocus="this.blur();" />
+                <area shape="rect" coords="830,1068,1054,1171" href="{{ site_url('/package/show/cate/3019/pack/648001/prod-code/150596') }}" target="_blank" onfocus="this.blur();" />
             </map>
         </div>
         <!--WB_top//-->
@@ -75,7 +61,7 @@
         <div class="evtCtnsBox wb_cts03" id="event">
             <img src="http://file3.willbes.net/new_gosi/2018/08/EV180806_c5.jpg" alt="합격을 위한 단 하나의 선택, 정채영!" usemap="#Map180806_c2" border="0" />
             <map name="Map180806_c2" >
-                <area shape="rect" coords="725,785,973,925" href="http://www.willbesgosi.net/packagelecture/packagelectureDetail.html?currentPage=1&pageRow=9999&topMenu=001&topMenuName=&topMenuType=O&searchCategoryCode=001&leftMenuLType=M0001&lecKType=P&searchLeccode=P201800064" onfocus="this.blur();" target="_blank" />
+                <area shape="rect" coords="725,785,973,925" href="{{ site_url('/package/show/cate/3019/pack/648001/prod-code/150596') }}" onfocus="this.blur();" target="_blank" />
             </map>
         </div>
         <!--wb_cts03//-->
@@ -88,11 +74,4 @@
     </div>
     <!-- End Container -->
 
-    <script>
-        $(function(e){
-            var targetOffset= $("#evtContainer").offset().top;
-            $('html, body').animate({scrollTop: targetOffset}, 700);
-            /*e.preventDefault(); */
-        });
-    </script>
 @stop

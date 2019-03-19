@@ -124,6 +124,7 @@
             <input type="hidden" id='memidx' name="memidx" />
         </form>
         <!-- End Container -->
+    </div>
         <script>
             //https://cop.local.willbes.net/mockTest/apply_order/241
             var win = '';

@@ -60,7 +60,7 @@
                                 @forelse($data['msg_list'] as $row)
                                     <li>
                                         <a href="#none" class="btn-crm-view" data-send-Idx="{{$row['SendIdx']}}">
-                                            {{hpSubString($row['Content'],0,26,'...')}}{!!($row['IsReceive'] == 'Y') ? '' : '<img src="'.img_url('mypage/icon_N.png').'">'!!}
+                                            {{hpSubString($row['Content'],0,23,'...')}}{!!($row['IsReceive'] == 'Y') ? '' : '<img src="'.img_url('mypage/icon_N.png').'">'!!}
                                         </a>
                                     </li>
                                 @empty

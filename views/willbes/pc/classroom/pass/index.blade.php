@@ -560,6 +560,43 @@
             <div id="MyDevice" class="willbes-Layer-PassBox willbes-Layer-PassBox800 h960 abs"></div>
             <!-- willbes-Layer-PassBox : 등록기기정보 -->
 
+            <div id="MorePASS" class="willbes-Layer-PassBox willbes-Layer-PassBox990 abs">
+                <a class="closeBtn" href="#none" onclick="closeWin('MorePASS')">
+                    <img src="{{ img_url('sub/close.png') }}">
+                </a>
+                <div class="Layer-Tit tx-dark-black NG">PASS 이용안내</div> 
+
+                <div class="passinfoWrap">
+                    <div class="widthAutoFull">
+                        <ul class="passinfoTab">
+                            <li><a href="#tab01" class="on">수강권 확인</a></li>
+                            <li><a href="#tab02">강좌선택</a></li>
+                            <li><a href="#tab03">강의수강</a></li>
+                            <li><a href="#tab04">교재구매</a></li>
+                            <li><a href="#tab05">등록기기 정보 확인</a></li>
+                        </ul>
+                        <div id="tab01" class="passinfoCts">
+                            <img src="{{ img_url('mypage/passinfo01.jpg') }}" alt="수강권 확인">
+                        </div>
+                        <div id="tab02" class="passinfoCts">
+                            <img src="{{ img_url('mypage/passinfo02.jpg') }}" alt="강좌선택">
+                        </div>
+                        <div id="tab03" class="passinfoCts">
+                            <img src="{{ img_url('mypage/passinfo03.jpg') }}" alt="강의수강">
+                        </div>
+                        <div id="tab04" class="passinfoCts">
+                            <img src="{{ img_url('mypage/passinfo04.jpg') }}" alt="교재구매">
+                        </div>
+                        <div id="tab05" class="passinfoCts">
+                            <img src="{{ img_url('mypage/passinfo05.jpg') }}" alt="등록기기 정보 확인">
+                        </div>
+                    </div>
+                    <!-- PASSZONE-List -->
+                </div>
+
+            </div>
+            <!-- willbes-Layer-PassBox : 패스 이용안내 -->
+
         </div>
         {!! banner('내강의실_우측퀵', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
     </div>

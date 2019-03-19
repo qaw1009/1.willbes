@@ -117,7 +117,7 @@
                     이용중인 PASS (2)
                     <div class="f_right NG mt10 mr10">
                         <ul>
-                            <li class="InfoBtn ml10"><a href="#none" onclick="openWin('MorePASS')">프리패스이용안내 <span>▶</span></a></li>
+                            <li class="InfoBtn ml10"><a href="#none" onclick="openWin('MorePASS')">PASS 이용안내 <span>▶</span></a></li>
                             <li class="InfoBtn ml10"><a href="#none" onclick="openWin('MyTablets')">등록기기정보 <span>▶</span></a></li>                            
                         </ul>
                     </div>
@@ -1438,6 +1438,43 @@
 
         </div>
         <!-- willbes-Layer-PassBox : 무한PASS 교재구매 -->
+
+        <div id="MorePASS" class="willbes-Layer-PassBox willbes-Layer-PassBox990 abs">
+            <a class="closeBtn" href="#none" onclick="closeWin('MorePASS')">
+                <img src="{{ img_url('sub/close.png') }}">
+            </a>
+            <div class="Layer-Tit tx-dark-black NG">PASS 이용안내</div> 
+
+            <div class="passinfoWrap">
+                <div class="widthAutoFull">
+                    <ul class="passinfoTab">
+                        <li><a href="#tab01" class="on">수강권 확인</a></li>
+                        <li><a href="#tab02">강좌선택</a></li>
+                        <li><a href="#tab03">강의수강</a></li>
+                        <li><a href="#tab04">교재구매</a></li>
+                        <li><a href="#tab05">등록기기 정보 확인</a></li>
+                    </ul>
+                    <div id="tab01" class="passinfoCts">
+                        <img src="{{ img_url('mypage/passinfo01.jpg') }}" alt="수강권 확인">
+                    </div>
+                    <div id="tab02" class="passinfoCts">
+                        <img src="{{ img_url('mypage/passinfo02.jpg') }}" alt="강좌선택">
+                    </div>
+                    <div id="tab03" class="passinfoCts">
+                        <img src="{{ img_url('mypage/passinfo03.jpg') }}" alt="강의수강">
+                    </div>
+                    <div id="tab04" class="passinfoCts">
+                        <img src="{{ img_url('mypage/passinfo04.jpg') }}" alt="교재구매">
+                    </div>
+                    <div id="tab05" class="passinfoCts">
+                        <img src="{{ img_url('mypage/passinfo05.jpg') }}" alt="등록기기 정보 확인">
+                    </div>
+                </div>
+                <!-- PASSZONE-List -->
+            </div>
+
+        </div>
+        <!-- willbes-Layer-PassBox : 패스 이용안내 -->
 
         <div id="MyTablets" class="willbes-Layer-PassBox willbes-Layer-PassBox800 abs">
             <a class="closeBtn" href="#none" onclick="closeWin('MyTablets')">

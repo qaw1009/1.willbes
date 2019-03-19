@@ -121,6 +121,7 @@
                         <input type="text" id="link_url" name="link_url" class="form-control" maxlength="100" title="링크주소" value="{{ $data['LinkUrl'] }}" required="required" placeholder="링크주소 입니다." style="width: 40%">
                         <div class="mt-10">• 내부링크 : 프로토콜 (http, https) <span class="red bold">제외하고, 실제 서비스 도메인을 포함하여 입력 (예: police.willbes.net/home/index/cate/3001)</span></div>
                         <div class="mt-5">• 외부링크 : 프로토콜 (http, https) <span class="red bold">입력 필수 (예: http://www.hanlimgosi.co.kr)</span></div>
+                        <div class="mt-5">• 레이어팝업 : <span class="red bold">실제 서비스 도메인만 입력 (예 : ploice.willbes.net)</span></div>
                     </div>
                 </div>
 

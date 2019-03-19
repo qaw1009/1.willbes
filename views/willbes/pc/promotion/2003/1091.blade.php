@@ -277,13 +277,13 @@
         <div class="evtCtnsBox wb_cts09" id="buy">
             <img src="http://file3.willbes.net/new_gosi/2019/01/EV190131_09.png" alt="" usemap="#Map_jason_go" border="0"/>
                 <map name="Map_jason_go">
-                <area shape="rect" coords="843,503,1052,558" href="http://www.willbesgosi.net/lecture/movieLectureDetail.html?topMenu=006&topMenuType=O&searchSubjectCode=1147&searchLeccode=D201900067&leftMenuLType=M0001&lecKType=D" target="_blank" alt="풀패키지2019">
-                <area shape="rect" coords="846,582,1049,629" href="http://www.willbesgosi.net/lecture/movieLectureDetail.html?topMenu=006&topMenuType=O&searchSubjectCode=1147&searchLeccode=D201900066&leftMenuLType=M0001&lecKType=D" target="_blank" alt="한달코스">
-                <area shape="rect" coords="844,666,1055,715" href="http://www.willbesgosi.net/lecture/movieLectureDetail.html?topMenu=006&topMenuType=O&searchSubjectCode=1147&searchLeccode=D201900065&leftMenuLType=M0001&lecKType=D" target="_blank" alt="48점완성">
-                <area shape="rect" coords="844,741,1047,789" href="http://www.willbesgosi.net/lecture/movieLectureDetail.html?topMenu=006&topMenuType=O&searchSubjectCode=1147&searchLeccode=D201900064&leftMenuLType=M0001&lecKType=D" target="_blank" alt="16점완성">
-                <area shape="rect" coords="843,823,1055,870" href="http://www.willbesgosi.net/lecture/movieLectureDetail.html?topMenu=006&topMenuType=O&searchSubjectCode=1147&searchLeccode=D201900063&leftMenuLType=M0001&lecKType=D" target="_blank" alt="32점완성">
-                <area shape="rect" coords="809,961,996,1002" href="http://www.willbesgosi.net/event/movie/event.html?event_cd=On_190115_c" target="_blank" alt="자세히">
-                <area shape="rect" coords="716,1057,971,1105" href="http://www.willbesgosi.net/packagelecture/packagelectureDetail.html?currentPage=1&pageRow=9999&topMenu=001&topMenuName=&topMenuType=O&searchCategoryCode=001&leftMenuLType=M0001&lecKType=P&searchLeccode=P201900003" target="_blank" alt="동영상종합풀패키지">
+                <area shape="rect" coords="843,503,1052,558" href="{{ site_url('/lecture/show/cate/3023/pattern/only/prod-code/146950') }}" target="_blank" alt="풀패키지2019">
+                <area shape="rect" coords="846,582,1049,629" href="{{ site_url('/lecture/show/cate/3023/pattern/only/prod-code/146949') }}" target="_blank" alt="한달코스">
+                <area shape="rect" coords="844,666,1055,715" href="{{ site_url('/lecture/show/cate/3023/pattern/only/prod-code/146948') }}" target="_blank" alt="48점완성">
+                <area shape="rect" coords="844,741,1047,789" href="{{ site_url('/lecture/show/cate/3023/pattern/only/prod-code/146947') }}" target="_blank" alt="16점완성">
+                <area shape="rect" coords="843,823,1055,870" href="{{ site_url('/lecture/show/cate/3023/pattern/only/prod-code/146946') }}" target="_blank" alt="32점완성">
+                <area shape="rect" coords="809,961,996,1002" href="{{ site_url('/promotion/index/cate/3023/code/1060') }}" target="_blank" alt="자세히">
+                <area shape="rect" coords="716,1057,971,1105" href="{{ site_url('/package/show/cate/3023/pack/648001/prod-code/150660') }}" target="_blank" alt="동영상종합풀패키지">
             </map>
         </div>
         <!-- wb_cts09 //-->
@@ -291,7 +291,7 @@
         <div class="evtCtnsBox wb_cts10">
             <img src="http://file3.willbes.net/new_gosi/2019/01/EV190131_10.png" alt="" usemap="#Mapboard" border="0"/>
             <map name="Mapboard" id="Mapboard">
-                <area shape="rect" coords="340,544,870,668" href="http://www.willbesgosi.net/teacher/board/board_list.html?topMenuGnb=OM_002&BOARDTYPE=T3&INCTYPE=list&BOARD_MNG_SEQ=BOARD_012&topMenuType=O&topMenuGnb=OM_002&topMenu=006&topMenuName=%EC%86%8C%EB%B0%A9%EA%B3%B5%EB%AC%B4%EC%9B%90&menuID=OM_002_006_002&searchUserId=wgt801&searchSubjectNm=%EC%B2%B4%EB%A0%A5&searchSubjectCode=1147" target="_blank" alt="질답게시판 바로가기" />
+                <area shape="rect" coords="340,544,870,668" href="{{ site_url('/professor/show/cate/3023/prof-idx/50387/?subject_idx=1399&subject_name=%EC%B2%B4%EB%A0%A5&tab=qna') }}" target="_blank" alt="질답게시판 바로가기" />
             </map>
         </div>
         <!-- wb_cts10//-->

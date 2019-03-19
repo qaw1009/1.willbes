@@ -7172,38 +7172,24 @@ ul li.profList .willbes-Layer-ProfileBox {
     background: url("../../img/willbes/cs/icon_firstinfo1.gif") no-repeat 30px center;
 }
 .willbes-guide ul li.w-guide2 a {
-    background: url("../../img/willbes/cs/icon_firstinfo2.gif") no-repeat 30px center;
+    background: url("../../img/willbes/cs/icon_firstinfo2.png") no-repeat 30px center;
 }
 .willbes-guide ul li.w-guide3 a {
-    background: url("../../img/willbes/cs/icon_firstinfo3.gif") no-repeat 30px center;
+    background: url("../../img/willbes/cs/icon_firstinfo3.png") no-repeat 30px center;
 }
 .willbes-guide ul li.w-guide4 a {
-    background: url("../../img/willbes/cs/icon_firstinfo4.gif") no-repeat 30px center;
+    background: url("../../img/willbes/cs/icon_firstinfo4.png") no-repeat 30px center;
 }
 .willbes-guide ul li.w-guide5 a {
-    background: url("../../img/willbes/cs/icon_firstinfo5.gif") no-repeat 30px center;
+    background: url("../../img/willbes/cs/icon_firstinfo5.png") no-repeat 30px center;
 }
 
-.willbes-guide ul li.w-guide1 a.on,
-.willbes-guide ul li.w-guide1 a:hover {
-    background: url("../../img/willbes/cs/icon_firstinfo1_on.gif") no-repeat 30px center;
+.willbes-guide ul li a.on,
+.willbes-guide ul li a:hover {
+    background-color:#eee;
+    color:#0d74ae
 }
-.willbes-guide ul li.w-guide2 a.on,
-.willbes-guide ul li.w-guide2 a:hover {
-    background: url("../../img/willbes/cs/icon_firstinfo2_on.gif") no-repeat 30px center;
-}
-.willbes-guide ul li.w-guide3 a.on,
-.willbes-guide ul li.w-guide3 a:hover {
-    background: url("../../img/willbes/cs/icon_firstinfo3_on.gif") no-repeat 30px center;
-}
-.willbes-guide ul li.w-guide4 a.on,
-.willbes-guide ul li.w-guide4 a:hover {
-    background: url("../../img/willbes/cs/icon_firstinfo4_on.gif") no-repeat 30px center;
-}
-.willbes-guide ul li.w-guide5 a.on,
-.willbes-guide ul li.w-guide5 a:hover {
-    background: url("../../img/willbes/cs/icon_firstinfo5_on.gif") no-repeat 30px center;
-}
+
 
 /* subContainer : Cs : CScenter1 : Act5 : 모바일 서비스안내 */
 .tabWrap.tab_m_Guide {

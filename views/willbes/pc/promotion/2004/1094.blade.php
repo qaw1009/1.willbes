@@ -66,7 +66,7 @@
         <div class="skybanner">
             <ul>
                 <li><img src="http://file3.willbes.net/new_gosi/2019/01/EV190130_sky1.gif" alt="군무원상담전화번호"></li>
-                <li><a href="{{ site_url('/examAnnouncement/index/cate/3024') }}" target="_blank" ><img src="http://file3.willbes.net/new_gosi/2019/01/EV190130_sky2.png" alt="시험정보" ></a></li>
+                <li><a href="{{ site_url('/support/examAnnouncement/index/cate/3024') }}" target="_blank" ><img src="http://file3.willbes.net/new_gosi/2019/01/EV190130_sky2.png" alt="시험정보" ></a></li>
                 <li><a href="{{ site_url('/pass/promotion/index/cate/3043/code/1101') }}" target="_blank" ><img src="http://file3.willbes.net/new_gosi/2019/01/EV190130_sky3.png" alt="통생반" ></a></li>
                 <li><a href="https://www.youtube.com/watch?v=A6Vx6zyGmCg" target="_blank" ><img src="http://file3.willbes.net/new_gosi/2019/01/EV190130_sky4.png" alt="통생반" ></a></li>
             </ul>

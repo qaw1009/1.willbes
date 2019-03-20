@@ -22,7 +22,7 @@
         /************************************************************/
 
         .rLnb {
-            position:fixed; width:190px; top:50px; right:10px; z-index:1;
+            position:fixed; width:190px; bottom:100px; right:10px; z-index:1;
         }
         .rLnb ul {background:#fff; border:1px solid #2f2f2f; margin-bottom:10px;
             -webkit-box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.21);

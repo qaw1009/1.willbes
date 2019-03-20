@@ -22,15 +22,15 @@
         /************************************************************/
 
         .skybanner {
-            position:absolute;
-            top:20px;
+            position:fixed;
+            top:200px;
             right:10px;
             z-index:1;
         }
         .skybanner li {
             margin-bottom:5px;
         }
-        .skybanner_sectionFixed {position:fixed; top:20px}
+
 
         .wb_cts01 {position:relative;overflow:hidden; min-width:1210px; text-align:center; margin-top:20px; background:url("http://file3.willbes.net/new_gosi/2019/01/EV190121Y_01_bg.jpg") center top  no-repeat}
         .wb_cts02 {background:#111111 url("http://file3.willbes.net/new_gosi/2019/01/EV190121Y_02_bg.jpg") center top  no-repeat}
@@ -82,10 +82,10 @@
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner" >
             <ul>
-                <li><a href="http://www.willbesgosi.net/notice/view.html?topMenuType=F&topMenuGnb=FM_008&topMenu=002&menuID=FM_008_004&BOARD_MNG_SEQ=&NOTICETYPE=event&INCTYPE=view&currentPage=1&BOARD_SEQ=&PARENT_BOARD_SEQ=&searchEventNo=1001&SEARCHKIND=&SEARCHTEXT=" target="_blank" ><img src="http://file3.willbes.net/new_gosi/2019/01/EV190121Y_sky01.jpg" alt="9급합격완성커리큘럼설명회" ></a></li>
-                <li><a href="http://www.willbesgosi.net/counsel/counsel_step1.html?BOARDTYPE=counselReserve&INCTYPE=counsel_step1&BOARD_MNG_SEQ=CR_000&topMenuType=F&topMenuGnb=FM_006&topMenu=001&topMenuName=9%EA%B8%89%20%EA%B3%B5%EB%AC%B4%EC%9B%90&menuID=FM_006_002" target="_blank" ><img src="http://file3.willbes.net/new_gosi/2018/11/EV181115_sky2.png" alt="학원방문상담신청하기" ></a></li>
+                <li><a href="{{ site_url('#none') }}" target="_blank" ><img src="http://file3.willbes.net/new_gosi/2019/01/EV190121Y_sky01.jpg" alt="9급합격완성커리큘럼설명회" ></a></li>
+                <li><a href="{{ site_url('#none') }}" target="_blank" ><img src="http://file3.willbes.net/new_gosi/2018/11/EV181115_sky2.png" alt="학원방문상담신청하기" ></a></li>
                 <li><a href="http://pf.kakao.com/_kcZIu/chat" target="_blank"><img src="http://file3.willbes.net/new_gosi/2019/01/EV190121Y_sky02.jpg" alt="카카오톡상담"></a></li>
-                <li><a href="http://www.willbesgosi.net/event/movie/event.html?event_cd=off_180426_02&topMenuType=F" target="_blank" ><img src="http://file3.willbes.net/new_gosi/2018/11/EV181115_sky4.png" alt="통합생활관리반자세히보기" ></a></li>
+                <li><a href="{{ site_url('#none') }}" target="_blank" ><img src="http://file3.willbes.net/new_gosi/2018/11/EV181115_sky4.png" alt="통합생활관리반자세히보기" ></a></li>
             </ul>
         </div>
 
@@ -137,7 +137,7 @@
             <img src="http://file3.willbes.net/new_gosi/2019/01/EV190121Y_06_2.gif" alt="최대30%파격할인" /><br />
             <img src="http://file3.willbes.net/new_gosi/2019/01/EV190121Y_06_3.jpg" alt="4개월문제풀이순환반/2개월 기출문제분석 종합반" usemap="#Map1900121A" border="0" />
             <map name="Map1900121A" id="Map1900121A">
-                <area shape="rect" coords="384,943,821,1007" href="http://www.willbesgosi.net/lecture/passLectureList.html?topMenu=001&topMenuName=9%EA%B8%89%EA%B3%B5%EB%AC%B4%EC%9B%90&topMenuType=F&leftMenuLType=M0103&lecKType=D&searchSubjectCode=1140" target="_blank" alt="3월개강반 수강신청하기" />
+                <area shape="rect" coords="384,943,821,1007" href="{{ site_url('#none') }}" target="_blank" alt="3월개강반 수강신청하기" />
             </map>
         </div>
         <!--wb_cts06//-->

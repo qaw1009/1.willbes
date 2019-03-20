@@ -116,11 +116,15 @@
     </script>
 
 
-    <script>
-        $(function(e){
-            var targetOffset= $("#evtContainer").offset().top;
-            $('html, body').animate({scrollTop: targetOffset}, 700);
-        });
+    <script type="text/javascript">
+        function doEvent() {
+            if("<c:out value='${userInfo.USER_ID}' />" == ""){
+                alert("로그인을 해주세요.");
+                return;
+            }
+            var url = "{{ site_url('/promotion/index/cate/3001/code/1034_popup') }}" ;
+            window.open(url,'event', 'scrollbars=no,toolbar=no,resizable=yes,width=590,height=485,top=50,left=100');
+        }
     </script>
 
 @stop

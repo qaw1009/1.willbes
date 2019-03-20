@@ -43,9 +43,9 @@
                     </label>
                     <div class="col-md-10 form-inline">
                         @if($method == 'update')
-                            <input type="text" class="form-control datepicker" style="width:100px;" name="StartDate" value="{{ $data2['StartDate'] }}" readonly="" required="required" title="설문오픈일">
+                            <input type="text" class="form-control datepicker" style="width:100px;" name="StartDate" value="{{ substr($data2['StartDate'],0,10) }}" readonly="" required="required" title="설문오픈일">
                             ~
-                            <input type="text" class="form-control datepicker" style="width:100px;" name="EndDate" value="{{ $data2['EndDate'] }}" readonly="" required="required" title="설문오픈일">
+                            <input type="text" class="form-control datepicker" style="width:100px;" name="EndDate" value="{{ substr($data2['EndDate'],0,10) }}" readonly="" required="required" title="설문오픈일">
                         @else
                             <input type="text" class="form-control datepicker" style="width:100px;" name="StartDate" value="" readonly="" required="required" title="설문오픈일">
                             ~
@@ -53,8 +53,6 @@
                         @endif
                     </div>
                 </div>
-
-
 
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="is_use_y">문항세트 <span class="required">*</span></label>

@@ -32,8 +32,8 @@
 
         .wb_cts04 {background:#ebebe1;}
 
-        .wb_cts05 {background:#b99b81 url(http://file3.willbes.net/new_gosi/2019/01/EV190130_5_bg.png) no-repeat center top;}
-        .youtube01 {width:920px; border:16px solid #a98a6a; margin:auto; padding-bottom:100px;}
+        .wb_cts05 {background:#b99b81 url(http://file3.willbes.net/new_gosi/2019/01/EV190130_5_bg.png) no-repeat center top; padding-bottom:80px}
+        .youtube01 {width:952px; border:16px solid #a98a6a; margin:0 auto;}
 
         .wb_cts06 {background:#ebebe1;}
 
@@ -48,7 +48,7 @@
             -webkit-animation:upDown 1s infinite;
             z-index:10;
         }
-        .skybanner div {margin-bottom:5px}
+        .skybanner li {margin-bottom:5px}
         @@keyframes upDown{
              from{margin-top:0}
              60%{margin-top:-30px}

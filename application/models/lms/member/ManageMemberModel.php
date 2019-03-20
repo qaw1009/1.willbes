@@ -54,6 +54,7 @@ class ManageMemberModel extends WB_Model
             IFNULL(Mem.LastPassModyDatm, '') AS PwdUpdDate,
             IFNULL((SELECT outDatm FROM {$this->_table['outLog']} WHERE MemIdx = Mem.MemIdx ORDER BY outDatm DESC LIMIT 1), '') AS OutDate,
             IFNULL(Mem.IsBlackList, '') AS IsBlackList, 
+            Mem.IsStatus,
             (SELECT COUNT(*) FROM {$this->_table['device']} WHERE MemIDX = Mem.MemIdx AND DeviceType = 'P' AND IsUse='Y' ) AS PcCount,
             (SELECT COUNT(*) FROM {$this->_table['device']} WHERE MemIDX = Mem.MemIdx AND DeviceType = 'M' AND IsUse='Y' ) AS MobileCount         
             ";

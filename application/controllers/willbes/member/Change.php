@@ -53,6 +53,12 @@ class Change extends BaseMember
         $this->load->library('encrypt');
 
         $data = $this->memberFModel->getMember(false, ['EQ'=>['Mem.MemIdx'=>$MemIdx]]);
+        
+        // 수강중강좌 갯수
+        // 수강중 학원강좌 갯수
+        // 사용중인 서비스 
+        // 배송내역
+        // 포인트 쿠폰
 
         return $this->load->view('member/change/info', [
             'mail_domain_ccd' => $codes['661'],
@@ -283,6 +289,46 @@ class Change extends BaseMember
             'MemIdx' => $idx,
             'typeccd' => 'UPDMAIL' // 회원가입인증메일
         ]);
+    }
+
+
+    /**
+     * 탈퇴 진행
+     * @return CI_Output
+     */
+    public function draw()
+    {
+        $Password = $this->_req('pwd');
+        $opinion = $this->_req('opinion');
+        $reason = $this->_req('reason');
+        $MemIdx = $this->session->userdata('mem_idx');
+
+        if(empty($Password) === true){
+            return $this->json_error("비밀번호를 입력해주십시요.");
+        }
+
+        if(empty($reason) === true){
+            return $this->json_error("탈퇴사유를 선택해주십시요.");
+        }
+
+        if(empty($opinion) === true){
+            return $this->json_error("의견을 입력해주십시요.");
+        }
+
+        if($this->memberFModel->checkMemberPassword($MemIdx, $Password) === false){
+            return $this->json_error("비밀번호가 일치하지 않습니다.");
+        }
+
+        if($this->memberFModel->drawMember([
+                'MemIdx' => $MemIdx,
+                'reason' => $reason,
+                'opinion' => $opinion
+            ]) == false){
+            return $this->json_error("탈퇴처리에 실패했습니다.\n다시 시도해 주십시요.");
+        }
+
+        return $this->json_result(true,"탈퇴가 완료되었습니다.\n그동안 이용해주셔서 감사합니다.");
+
     }
 
 

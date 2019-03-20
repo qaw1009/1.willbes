@@ -22,7 +22,7 @@
         /************************************************************/
 
         .rLnb {
-            position:fixed; width:190px; bottom:20px; right:10px; z-index:1;
+            position:fixed; width:190px; top:50px; right:10px; z-index:1;
         }
         .rLnb ul {background:#fff; border:1px solid #2f2f2f; margin-bottom:10px;
             -webkit-box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.21);
@@ -110,11 +110,11 @@
         <div class="rLnb">
             <ul class="typeA">
                 <li class="NSK-Black">서비스 바로가기</li>
-                <li><a href="{{ site_url('/promotion/index/cate/3001/code/1111') }}" class="menu1" target="_blank">인증센터</a></li>
-                <li><a href="{{ site_url('/promotion/index/cate/3001/code/1116') }}" class="menu2" target="_blank">서울 노량진 교육과정</a></li>
-                <li><a href="{{ site_url('/promotion/index/cate/3001/code/1115') }}" class="menu3" target="_blank">인천 부평 교육과정</a></li>
-                <li><a href="{{ site_url('/promotion/index/cate/3001/code/1117') }}" class="menu4" target="_blank">부산 서면 교육과정</a></li>
-                <li><a href="{{ site_url('/promotion/index/cate/3001/code/1113') }}" class="menu5">윌비스 PASS</a></li>
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1111') }}" class="menu1" target="_blank">인증센터</a></li>
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1116') }}" class="menu2" target="_blank">서울 노량진 교육과정</a></li>
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1115') }}" class="menu3" target="_blank">인천 부평 교육과정</a></li>
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1117') }}" class="menu4" target="_blank">부산 서면 교육과정</a></li>
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1113') }}" class="menu5">윌비스 PASS</a></li>
             </ul>            <ul class="typeB">
                 <li class="NSK-Black">전역(예정)간부 가입/인증</li>
                 @if(empty($cert_apply))
@@ -148,7 +148,7 @@
             <img src="/public/img/willbes/leave_army/la_on_02.jpg"  alt="" usemap="#Mappass02"/>
             <map name="Map" id="Mappass02">
                 <area shape="rect" coords="194,1063,398,1102" href="javascript:certOpen();"/>
-                <area shape="rect" coords="714,1063,922,1102" href="/promotion/index/cate/3001/code/1113" />
+                <area shape="rect" coords="714,1063,922,1102" href="/promotion/index/' . $__cfg['CateCode'] . '/3001/code/1113" />
             </map>
         </div>
         <div class="LAeventA03">
@@ -171,14 +171,4 @@
             @endif
         }
     </script>
-
-    <script>
-        $(function(e){
-            var targetOffset= $("#evtContainer").offset().top;
-            $('html, body').animate({scrollTop: targetOffset}, 1000);
-            /*e.preventDefault(); */
-        });
-
-    </script>
-
 @stop

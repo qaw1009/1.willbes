@@ -23,7 +23,7 @@
         /************************************************************/
 
         .rLnb {
-            position:absolute; width:190px; top:100px; right:10px; z-index:1;
+            position:fixed; width:190px; top:50px; right:10px; z-index:1;
         }
         .rLnb ul {background:#fff; border:1px solid #2f2f2f; margin-bottom:10px;
             -webkit-box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.21);
@@ -125,33 +125,4 @@
 
     </div>
     <!-- End Container -->
-
-    <script src="/public/js/willbes/jquery.nav.js"></script>
-    <script>
-        $(function(e){
-            var targetOffset= $("#evtContainer").offset().top;
-            $('html, body').animate({scrollTop: targetOffset}, 1000);
-            /*e.preventDefault(); */
-        });
-
-        $( document ).ready( function() {
-            var jbOffset = $( '.rLnb' ).offset();
-            $( window ).scroll( function() {
-                if ( $( document ).scrollTop() > jbOffset.top ) {
-                    $( '.rLnb' ).addClass( 'rLnb_sectionFixed' );
-                }
-                else {
-                    $( '.rLnb' ).removeClass( 'rLnb_sectionFixed' );
-                }
-            });
-        } );
-
-        $(document).ready(function() {
-            $('.rLnb').onePageNav({
-                currentClass: 'hvr-shutter-out-horizontal_active'
-            });
-        });
-    </script>
-
-
 @stop

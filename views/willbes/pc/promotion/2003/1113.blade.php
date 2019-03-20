@@ -20,7 +20,7 @@
         /************************************************************/
 
         .rLnb {
-            position:fixed; width:190px; bottom:20px; right:10px; z-index:1;
+            position:fixed; width:190px; top:50px; right:10px; z-index:1;
         }
         .rLnb ul {background:#fff; border:1px solid #2f2f2f; margin-bottom:10px;
             -webkit-box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.21);
@@ -157,11 +157,11 @@
         <div class="rLnb">
             <ul class="typeA">
                 <li class="NSK-Black">서비스 바로가기</li>
-                <li><a href="{{ site_url('/promotion/index/cate/3019/code/1111') }}" class="menu1" target="_blank">인증센터</a></li>
-                <li><a href="{{ site_url('/promotion/index/cate/3019/code/1116') }}" class="menu2" target="_blank">서울 노량진 교육과정</a></li>
-                <li><a href="{{ site_url('/promotion/index/cate/3019/code/1115') }}" class="menu3" target="_blank">인천 부평 교육과정</a></li>
-                <li><a href="{{ site_url('/promotion/index/cate/3019/code/1117') }}" class="menu4" target="_blank">부산 서면 교육과정</a></li>
-                <li><a href="{{ site_url('/promotion/index/cate/3019/code/1113') }}" class="menu5">윌비스 PASS</a></li>
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1111') }}" class="menu1" target="_blank">인증센터</a></li>
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1116') }}" class="menu2" target="_blank">서울 노량진 교육과정</a></li>
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1115') }}" class="menu3" target="_blank">인천 부평 교육과정</a></li>
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1117') }}" class="menu4" target="_blank">부산 서면 교육과정</a></li>
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1113') }}" class="menu5">윌비스 PASS</a></li>
             </ul>
 
             <ul class="typeB">
@@ -1054,7 +1054,7 @@
                 <ul>
                     <li class="liSty1">교육과정바로가기 &gt;</li>
                     <li><a href="#none">공무원 / 소방자격증</a></li>
-                    <li><a target="_blank" href="{{ site_url('/promotion/index/cate/3001/code/1121') }}">경찰</a></li>
+                    <li><a target="_blank" href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1121') }}">경찰</a></li>
                 </ul>
             </div>
         </div><!--LAeventB03//-->
@@ -1276,13 +1276,5 @@
 
                     e.preventDefault()})})}
         );
-    </script>
-
-    <script>
-        $(function(e){
-            var targetOffset= $("#evtContainer").offset().top;
-            $('html, body').animate({scrollTop: targetOffset}, 700);
-            /*e.preventDefault(); */
-        });
     </script>
 @stop

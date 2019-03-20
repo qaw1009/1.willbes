@@ -107,7 +107,11 @@
                                         <td class="w-file on tx-blue">
                                             @if(substr($row['GradeOpenDatm'],0,10) <= date('Y-m-d')&&$row['gRegister']!=null)
                                                 <a href="javascript:selQaFileAjax({{ $row['ProdCode'] }});">[문제/해설]</a><br>
-                                                <a href="javascript:popwin({{ $row['ProdCode'] }}, 2, {{ $row['MrIdx'] }}, {{ $row['TCNT'] }})">[오답노트]</a>
+                                                @if($row['TCNT']!=null)
+                                                    <a href="javascript:popwin({{ $row['ProdCode'] }}, 2, {{ $row['MrIdx'] }}, {{ $row['TCNT'] }})">[오답노트]</a>
+                                                @else
+                                                    <a href="javascript:popwin({{ $row['ProdCode'] }}, 2, {{ $row['MrIdx'] }}, 0)">[오답노트]</a>
+                                                @endif
                                             @else
                                             @endif
                                         </td>

@@ -154,8 +154,15 @@
                 <li class="w50"><a href="{{ site_url('/home/html/event_offCop_180323') }}" target="_blank">실전에 강한 최준면접</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_offCop_181112') }}" target="_blank">독한회독</a></li> 
                 <li class="w50"><a href="{{ site_url('/home/html/1124') }}" target="_blank">기본이론 2019 3/25(월) 개강</a></li>    
-                <li class="w50"><a href="{{ site_url('/home/html/1131') }}" target="_blank">박우찬 실용글쓰기</a></li>            
-                <li><p>공무원 온라인 ▼</p></li>
+                <li class="w50"><a href="{{ site_url('/home/html/1131') }}" target="_blank">박우찬 실용글쓰기</a></li>           
+                
+            </ul>
+        </div>
+    </li>
+    <li>
+        <div>
+            <ul>
+            <li><p>공무원 온라인 ▼</p></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiFirePass') }}" target="_blank">소방 PASS <span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiNinePass') }}" target="_blank">9급 PASS <span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiSevenPass') }}" target="_blank">7급 PASS <span>*</span></a></li>
@@ -192,6 +199,9 @@
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiTech') }}" target="_blank">윌비스 기술직 TOP 라인업 <span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiNoncom') }}" target="_blank">부사관 PASS <span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiNoncomPop') }}" target="_blank">부사관 PASS 유튜브 팝업 <span>*</span></a></li>
+                <li>&nbsp;</li>
+                <li>3월 19일 이후 추가분 ▼</li>
+                <li class="w50"><a href="{{ site_url('/home/html/1135') }}" target="_blank">윌비스 전국모의고사</a></li>
                 <li><p>공무원 학원 ▼</p></li>                
                 <li class="w50"><a href="{{ site_url('/home/html/event_offGosiArmyQuestion') }}" target="_blank">군무원 이론요약&단원별 문제풀이</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_offGosiFianlTest') }}" target="_blank">시.확.찢 FINAL 모의고사</a></li>
@@ -256,8 +266,8 @@
         </div>
     </li>
     <li>
-        <div>
-            <ul>
+        <div>  
+            <ul>          
                 <li><a href="{{ site_url('/home/html/mypage_pass_index') }}" target="_blank">내강의실 > 무한PASS존 Index page 이동</a></li>
                 <li><a href="{{ site_url('/home/html/mypage_pass1') }}" target="_blank">내강의실 > 무한PASS존 page 이동</a></li>
                 <li><a href="{{ site_url('/home/html/mypage_pass2') }}" target="_blank">내강의실 > 무한PASS존 > 수강중인 강좌 page 이동</a></li>
@@ -293,12 +303,7 @@
                 <li class="c_both"></li>
                 <li><a href="{{ site_url('/home/html/mypage_userinfo1') }}" target="_blank">내강의실 > 회원정보 > 개인정보관리 page 이동</a></li>
                 <li><a href="{{ site_url('/home/html/mypage_userinfo2') }}" target="_blank">내강의실 > 회원정보 > 비밀번호변경 page 이동</a></li>
-            </ul>
-        </div>
-    </li>
-    <li>
-        <div>  
-            <ul>          
+                <li class="c_both"></li> 
                 <li><a href="{{ site_url('/home/html/cscenter_index') }}" target="_blank">고객센터 Index page 이동</a></li>
                 <li><a href="{{ site_url('/home/html/cscenter1') }}" target="_blank">고객센터 > 자주하는 질문 page 이동</a></li>
                 <li><a href="{{ site_url('/home/html/cscenter2') }}" target="_blank">고객센터 > 공지사항 page 이동</a></li>

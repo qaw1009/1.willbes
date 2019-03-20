@@ -25,7 +25,7 @@ class AdminAuthHook
         '/common/',
         '/lcms/auth/regist/edit',
         '/lcms/auth/regist/update',
-        '/lcms/logs/viewer/',
+        //'/lcms/logs/viewer/',     // 관리자관리 > 시스템관리 > 로그뷰어 메뉴 추가
         '/sys/adminSettings/',
         '/pay/order/listAjax',
         '/service/coupon/issue/listAjax',

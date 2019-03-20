@@ -200,7 +200,7 @@
                                 @if($row['IsEssential'] ==='Y')
                                 <tr name='essLecTrId' id='essLecTrId{{$loop->index}}'>
                                     <input type='hidden'  name='ProdCodeSub[]' id='ProdCodeSub{{$loop->index}}' value='{{$row['ProdCodeSub']}}'>
-                                    <input type='hidden'  name='essLecAddCheck[]' id='essLecAddCheck{{$loop->index}}' value=Y'>
+                                    <input type='hidden'  name='essLecAddCheck[]' id='essLecAddCheck{{$loop->index}}' value='Y'>
                                     <input type='hidden'  name='IsEssential[]' id='IsEssential{{$loop->index}}' value='Y'>
                                     <td>
                                         <select name='SubGroupName[]' id='SubGroupNamel{{$loop->index}}' class="form-control mr-10">
@@ -251,7 +251,7 @@
                                 @if($row['IsEssential'] !=='Y')
                                 <tr name='selLecTrId' id='selLecTrId{{$loop->index}}'>
                                     <input type='hidden'  name='ProdCodeSub[]' id='ProdCodeSub{{$loop->index}}' value='{{$row['ProdCodeSub']}}'>
-                                    <input type='hidden'  name='selLecAddCheck[]' id='selLecAddCheck{{$loop->index}}' value=Y'>
+                                    <input type='hidden'  name='selLecAddCheck[]' id='selLecAddCheck{{$loop->index}}' value='Y'>
                                     <input type='hidden'  name='IsEssential[]' id='IsEssential{{$loop->index}}' value='N'>
                                     <td>
                                             <select name='SubGroupName[]' id='SubGroupNamel{{$loop->index}}' class="form-control mr-10">

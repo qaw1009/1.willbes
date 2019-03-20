@@ -690,6 +690,24 @@ class EventFModel extends WB_Model
     }
 
     /**
+     * 등록파일 데이터 조회
+     * @param $el_idx
+     * @return mixed
+     */
+    public function listEventForFile($el_idx)
+    {
+        $column = 'EfIdx, FileName, FileRealName, FileFullPath, FileType';
+        $from = "
+            FROM {$this->_table['event_file']}
+        ";
+        $where = ' where ElIdx = ? and IsUse = "Y"';
+        $order_by_offset_limit = ' order by EfIdx asc';
+
+        // 쿼리 실행
+        return $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit, [$el_idx])->result_array();
+    }
+
+    /**
      * 프로모션 댓글 리스트
      * @param $is_count
      * @param $arr_condition

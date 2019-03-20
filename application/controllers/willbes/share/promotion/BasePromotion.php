@@ -73,11 +73,18 @@ class BasePromotion extends \app\controllers\FrontController
             $apply_result = $this->certApplyFModel->findApplyByCertIdx($arr_promotion_params['cert'])['CaIdx'];
         }
 
+        // 등록파일 데이터 조회
+        $list_event_file = $this->eventFModel->listEventForFile($data['ElIdx']);
+        $file_data_promotion = $list_event_file;
+        $arrCircle = array(0=>'①',1=>'②',2=>'③',3=>'④',4=>'⑤',5=>'⑥',6=>'⑦');
+
         $view_file = 'willbes/pc/promotion/'.$this->_site_code.'/'.$arr_base['promotion_code'];
         $this->load->view($view_file, [
             'arr_base' => $arr_base,
             'data' => $data,
+            'arrCircle' => $arrCircle,
             'cert_apply'=>$apply_result,
+            'file_data_promotion' => $file_data_promotion,
             'arr_promotion_params' => $arr_promotion_params
         ],false);
     }

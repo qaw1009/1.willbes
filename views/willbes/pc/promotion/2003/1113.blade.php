@@ -1083,8 +1083,16 @@
                     </li>
                     <li><strong>제대군인지원센터 직업훈련비 제출서류</strong>
                         <ul>
-                            <li>① 직업훈련계획서 <a href='{{ site_url('/promotion/download?path=').urlencode('/public/uploads/willbes/event/직업훈련계획서_2018년.hwp').'&fname='.urlencode('직업훈련계획서_2018년.hwp') }}' target="_blank">다운로드</a></li>
-                            <li>② 교육비 지원신청서  <a href='{{ site_url('/promotion/download?path=').urlencode('/public/uploads/willbes/event/교육비지원신청서_2018년.hwp').'&fname='.urlencode('교육비지원신청서_2018년.hwp') }}' target="_blank">다운로드</a></li>
+                            @if (empty($file_data_promotion) === false)
+                                @foreach($file_data_promotion as $key => $row)
+                                    <li> {{ $arrCircle[$key] }} {{ $row['FileRealName'] }}
+                                        <a href="{{ site_url('/promotion/download?path=').urlencode($row['FileFullPath']).'&fname='.urlencode($row['FileRealName']) }}" class="file-download ml-5"  target="_blank">
+                                            다운로드
+                                        </a>
+                                    </li>
+                                @endforeach
+                                {{--{{$file_data['F']['file_real_name']}}--}}
+                            @endif
                             <li>③ 교육비납부 영수증(카드명세표 또는 현금영수증) 1부</li>
                             <li>※ ①~③번 제출서류의 경우 교육시작일로부터 7일 이내 서류제출</li>
                             <li>교육과정 이수,  교육훈련과정 수료 후 14일 이내에 수료증 또는 교육수료 확인서 제출</li>

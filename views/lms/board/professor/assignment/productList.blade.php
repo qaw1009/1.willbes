@@ -109,12 +109,12 @@
 
         //과제등록관리
         $list_table.on('click', '.btn-assignment-manager', function() {
-            location.href='{{ site_url("/board/professor/{$boardName}/registForBoard") }}/' + $(this).data('prod-code') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}';
+            location.href='{{ site_url("/board/professor/{$boardName}/registForBoard") }}/' + $(this).data('prod-code') + '?' + '{!! $boardDefaultQueryString !!}';
         });
 
         //과제현황관리
         $list_table.on('click', '.btn-assignment-info', function() {
-            location.href='{{ site_url("/board/professor/{$boardName}/issueForBoard") }}/' + $(this).data('prod-code') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}';
+            location.href='{{ site_url("/board/professor/{$boardName}/issueForBoard") }}/' + $(this).data('prod-code') + '?' + '{!! $boardDefaultQueryString !!}';
         });
     });
 </script>

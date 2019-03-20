@@ -59,8 +59,8 @@
                               <area onfocus='blur()' shape="rect" coords="708,289,857,515" href="javascript:;" class="tch3" alt="하재남"/>
                               <area onfocus='blur()' shape="poly" coords="318,500,62,490,212,159,562,144,586,259,396,276,367,363" href="javascript:;" class="tch4" alt="김정배 고진목 송광진 장재영"/>
                               <area onfocus='blur()' shape="poly" coords="622,274,609,147,782,146,1079,279,1102,515,906,516,856,393,841,287" href="javascript:;" class="tch5" alt="장재영 송광진 고진목 김정배"/>
-                              <area onfocus='blur()' shape="rect" coords="331,583,599,648" href="/teacher/movieTeacherDetail.html?&topMenuType=O&topMenuGnb=OM_002&topMenu=011&menuID=&searchUserId=wgt103" class="tch6" alt="최우영 방송통신직 커리큘럼"/>
-                              <area onfocus='blur()' shape="rect" coords="612,583,881,648" href="/teacher/movieTeacherDetail.html?&topMenuType=O&topMenuGnb=OM_002&topMenu=011&menuID=&searchUserId=wgt_103" class="tch7" alt="최우영 전기직 커리큘럼"/>
+                              <area onfocus='blur()' shape="rect" coords="331,583,599,648" href="{{ site_url('/professor/show/cate/3028/prof-idx/50163/?subject_idx=1210&subject_name=%EC%A0%84%EA%B8%B0%EC%9E%90%EA%B8%B0%ED%95%99') }}" class="tch6" alt="최우영 방송통신직 커리큘럼"/>
+                              <area onfocus='blur()' shape="rect" coords="612,583,881,648" href="{{ site_url('/professor/show/cate/3028/prof-idx/50718/?subject_idx=1173&subject_name=%EC%A0%84%EA%B8%B0%EC%9D%B4%EB%A1%A0') }}" class="tch7" alt="최우영 전기직 커리큘럼"/>
                             </map> 
                       </li>
                         <li>
@@ -70,7 +70,7 @@
                               <area onfocus='blur()' shape="rect" coords="708,289,857,515" href="javascript:;" class="tch3" alt="하재남"/>
                               <area onfocus='blur()' shape="poly" coords="318,500,62,490,212,159,562,144,586,259,396,276,367,363" href="javascript:;" class="tch4" alt="김정배 고진목 송광진 장재영"/>
                               <area onfocus='blur()' shape="poly" coords="622,274,609,147,782,146,1079,279,1102,515,906,516,856,393,841,287" href="javascript:;" class="tch5" alt="장재영 송광진 고진목 김정배"/>
-                              <area onfocus='blur()' shape="rect" coords="430,580,777,651" href="/teacher/movieTeacherDetail.html?&topMenuType=O&topMenuGnb=OM_002&topMenu=011&menuID=&searchUserId=wgt-t001" class="tch6" alt="장사원 커리큘럼"/>
+                              <area onfocus='blur()' shape="rect" coords="430,580,777,651" href="{{ site_url('/professor/show/cate/3028/prof-idx/50429/?subject_idx=1230&subject_name=%EB%86%8D%EC%B4%8C%EC%A7%80%EB%8F%84%EB%A1%A0') }}" class="tch6" alt="장사원 커리큘럼"/>
                             </map> 
                       </li>
                         <li>
@@ -80,7 +80,7 @@
                               <area onfocus='blur()' shape="rect" coords="526,285,689,515" href="javascript:;" class="tch2" alt="장사원"/>
                               <area onfocus='blur()' shape="poly" coords="318,500,62,490,212,159,562,144,586,259,396,276,367,363" href="javascript:;" class="tch4" alt="김정배 고진목 송광진 장재영"/>
                               <area onfocus='blur()' shape="poly" coords="622,274,609,147,782,146,1079,279,1102,515,906,516,856,393,841,287" href="javascript:;" class="tch5" alt="장재영 송광진 고진목 김정배"/>
-                              <area onfocus='blur()' shape="rect" coords="431,582,779,650" href="/teacher/movieTeacherDetail.html?&topMenuType=O&topMenuGnb=OM_002&topMenu=011&menuID=&searchUserId=wgt102" class="tch6" alt="하재남 커리큘럼"/>
+                              <area onfocus='blur()' shape="rect" coords="431,582,779,650" href="{{ site_url('/professor/show/cate/3028/prof-idx/50395/?subject_idx=1129&subject_name=%EB%B3%B4%EA%B1%B4%ED%96%89%EC%A0%95') }}" class="tch6" alt="하재남 커리큘럼"/>
                             </map> 
                       </li>
                         <li>
@@ -90,10 +90,10 @@
                               <area onfocus='blur()' shape="rect" coords="533,285,696,515" href="javascript:;" class="tch2" alt="장사원"/>
                               <area onfocus='blur()' shape="rect" coords="708,289,857,515" href="javascript:;" class="tch3" alt="하재남"/>
                               <area onfocus='blur()' shape="poly" coords="622,274,609,147,782,146,1079,279,1102,515,906,516,856,393,841,287" href="javascript:;" class="tch5" alt="장재영 송광진 고진목 김정배"/>
-                              <area onfocus='blur()' shape="rect" coords="165,583,382,649" href="/teacher/movieTeacherDetail.html?&topMenuType=O&topMenuGnb=OM_011&topMenu=011&menuID=&searchUserId=wgt186" class="tch6" alt="김명애 커리큘럼"/>
-                              <area onfocus='blur()' shape="rect" coords="386,583,603,647" href="/teacher/movieTeacherDetail.html?&topMenuType=O&topMenuGnb=OM_002&topMenu=011&menuID=&searchUserId=wgt_1601" class="tch7" alt="유선영 커리큘럼"/>
-                              <area onfocus='blur()' shape="rect" coords="610,582,824,648" href="/teacher/movieTeacherDetail.html?&topMenuType=O&topMenuGnb=OM_002&topMenu=011&menuID=&searchUserId=wgt-1602" class="tch8" alt="장성국 커리큘럼"/>
-                              <area onfocus='blur()' shape="rect" coords="828,580,1048,649" href="/teacher/movieTeacherDetail.html?&topMenuType=O&topMenuGnb=OM_002&topMenu=011&menuID=&searchUserId=wgt8250" class="tch9" alt="조복희 커리큘럼"/>
+                              <area onfocus='blur()' shape="rect" coords="165,583,382,649" href="{{ site_url('/professor/show/cate/3028/prof-idx/50539/?subject_idx=1227&subject_name=%EA%B0%84%ED%98%B8%EA%B4%80%EB%A6%AC') }}" class="tch6" alt="김명애 커리큘럼"/>
+                              <area onfocus='blur()' shape="rect" coords="386,583,603,647" href="{{ site_url('/professor/show/cate/3028/prof-idx/50221/?subject_idx=1225&subject_name=%EC%9D%98%EB%A3%8C%EA%B4%80%EA%B3%84%EB%B2%95%EA%B7%9C') }}" class="tch7" alt="유선영 커리큘럼"/>
+                              <area onfocus='blur()' shape="rect" coords="610,582,824,648" href="{{ site_url('/professor/show/cate/3028/prof-idx/50435/?subject_idx=1215&subject_name=%ED%86%A0%EB%AA%A9%EC%84%A4%EA%B3%84') }}" class="tch8" alt="장성국 커리큘럼"/>
+                              <area onfocus='blur()' shape="rect" coords="828,580,1048,649" href="{{ site_url('/professor/show/cate/3028/prof-idx/50453/?subject_idx=1229&subject_name=%EC%9E%90%EB%8F%99%EC%B0%A8%EA%B5%AC%EC%A1%B0%EC%9B%90%EB%A6%AC') }}" class="tch9" alt="조복희 커리큘럼"/>
                             </map> 
                       </li>
                         <li>
@@ -103,10 +103,10 @@
                               <area onfocus='blur()' shape="rect" coords="533,285,696,515" href="javascript:;" class="tch2" alt="장사원"/>
                               <area onfocus='blur()' shape="rect" coords="708,289,857,515" href="javascript:;" class="tch3" alt="하재남"/>
                               <area onfocus='blur()' shape="poly" coords="318,500,62,490,212,159,562,144,586,259,396,276,367,363" href="javascript:;" class="tch4" alt="김정배 고진목 송광진 장재영"/>
-                              <area onfocus='blur()' shape="rect" coords="165,583,382,649" href="/teacher/movieTeacherDetail.html?&topMenuType=O&topMenuGnb=OM_002&topMenu=011&menuID=&searchUserId=wgt-t002" class="tch6" alt="김정배 커리큘럼"/>
-                              <area onfocus='blur()' shape="rect" coords="386,583,603,647" href="/teacher/movieTeacherDetail.html?&topMenuType=O&topMenuGnb=OM_002&topMenu=011&menuID=&searchUserId=wgt_1602" class="tch7" alt="고진목 커리큘럼"/>
-                              <area onfocus='blur()' shape="rect" coords="610,582,824,648" href="/teacher/movieTeacherDetail.html?topMenuType=O&topMenuGnb=OM_002&topMenu=001&topMenuName=9급공무원&menuID=&searchUserId=wgt-1603&searchSubjectNm=정보보호론&searchSubjectCode=1064" class="tch8" alt="송광진 커리큘럼"/>
-                              <area onfocus='blur()' shape="rect" coords="828,580,1048,649" href="/teacher/movieTeacherDetail.html?topMenuType=O&topMenuGnb=OM_002&topMenu=001&topMenuName=9급공무원&menuID=&searchUserId=wgt1603&searchSubjectNm=임업경영&searchSubjectCode=1117" class="tch9" alt="장재영 커리큘럼"/>
+                              <area onfocus='blur()' shape="rect" coords="165,583,382,649" href="{{ site_url('/professor/show/cate/3028/prof-idx/50463/?subject_idx=1420&subject_name=%EC%97%B4%EC%97%AD%ED%95%99') }}" class="tch6" alt="김정배 커리큘럼"/>
+                              <area onfocus='blur()' shape="rect" coords="386,583,603,647" href="{{ site_url('/professor/show/cate/3028/prof-idx/50127/?subject_idx=1226&subject_name=%EB%AC%BC%EB%A6%AC%ED%95%99%EA%B0%9C%EB%A1%A0') }}" class="tch7" alt="고진목 커리큘럼"/>
+                              <area onfocus='blur()' shape="rect" coords="610,582,824,648" href="{{ site_url('/professor/show/cate/3028/prof-idx/50185/?subject_idx=1169&subject_name=%EC%BB%B4%ED%93%A8%ED%84%B0%EC%9D%BC%EB%B0%98') }}" class="tch8" alt="송광진 커리큘럼"/>
+                              <area onfocus='blur()' shape="rect" coords="828,580,1048,649" href="{{ site_url('/professor/show/cate/3028/prof-idx/50541/?subject_idx=1223&subject_name=%EC%9E%84%EC%97%85%EA%B2%BD%EC%98%81') }}" class="tch9" alt="장재영 커리큘럼"/>
                             </map> 
                       </li>
                     </ul>

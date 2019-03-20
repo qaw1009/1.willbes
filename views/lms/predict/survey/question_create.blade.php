@@ -22,7 +22,7 @@
                     </label>
                     <div class="col-md-10 form-inline">
 
-                        <input type="text" id="SqTitle" name="SqTitle" style="width:100%; height:30px;" @if($method == 'update') value="{{ $data['SqTitle'] }}" @endif>
+                        <input type="text" id="SqTitle" name="SqTitle" style="width:80%; height:30px;" @if($method == 'update') value="{{ $data['SqTitle'] }}" @endif>
                     </div>
                 </div>
 

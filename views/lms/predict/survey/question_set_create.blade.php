@@ -12,8 +12,7 @@
                 <h2>문항세트등록</h2>
                 <div class="pull-right">
                     <span class="required">*</span> 표시된 항목은 필수 입력 항목입니다. <br>
-                    <span class="required">*</span> <span style="color:red;">그룹번호는 설문 묶음을 만들기위한 숫자입니다.(같은 숫자를 넣으면 묶음이 됩니다.)</span><br>
-                    <span class="required">*</span> <span style="color:red;">문항추가에 등록된 순서대로 설문페이지에 노출됩니다.</span>
+
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -59,9 +58,14 @@
                 </div>
 
                 <div class="form-group">
+                    <div class="col-md-1 item"></div>
+                    <div class="col-md-11 item">
+                        <span class="required" style="margin-left:50px;">*</span> <span style="color:red;">그룹번호는 설문 묶음을 만들기위한 숫자입니다.(같은 숫자를 넣으면 묶음이 됩니다.)</span><br>
+                        <span class="required" style="margin-left:60px;">-</span> <span style="color:red;">문항담기 → 그룹번호변경 → 그룹텍스트 순서로 입력하세요. 그룹번호를 수정하면 그룹텍스트는 초기화됩니다.</span>
+                    </div>
                     <label class="control-label col-md-1-1" for="is_use_y">문항추가<span class="required">*</span></label>
-                    <div class="col-md-4 item" style="border:1px solid gray; height:500px; overflow-y:auto;">
-                        <span class="required">*</span> <span style="color:red;">문항담기 > 그룹번호변경 > 그룹텍스트 순서로 입력하세요. 그룹번호를 수정하면 그룹텍스트는 초기화됩니다.</span>
+                    <div class="col-md-4 item" style="border:3px solid black; height:500px; overflow-y:auto;">
+
                         <input type="hidden" id="cartIn" style="width:100%;"/>
                         <table border=1 cellspacing="1" cellpadding="5" class="lecTable" style="margin-top:5px; text-align: center;">
                             <colgroup>
@@ -89,8 +93,10 @@
                         </table>
                     </div>
                     <div class="col-md-1 item" style="text-align:center; color:red; font-weight:bold;">
-                        <div style="margin-top:250px;">
-                            <h3> >>> </h3>
+                        <div style="margin-top:150px;">
+                            <h3> → </h3><br>
+                            <h3> → </h3><br>
+                            <h3> → </h3><br>
 
                         </div>
                     </div>
@@ -143,7 +149,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="is_use_y">미리보기</label>
                     <div class="col-md-10 item" >
-                        <div style="border:2px solid black; width:80%; padding:40px;">
+                        <div style="border:3px solid black; width:80%; padding:40px;">
                             <div style="margin:10px 0px 10px 20px; text-align:center;" id="pvtitle"></div>
                             <div id="pview" style="margin-top:20px;"></div>
                         </div>
@@ -192,7 +198,7 @@
             if(useYn == 'N') {
 
                 var tempR2 = $('#r2').html();
-                tempR2 = tempR2 + "<div id='r2" + sqidx + "'><input type='text' id='GroupNumber"+ sqidx +"' name='GroupNumber[]' value=" + currentnum + " style='width:25px;' onKeyup='groupTextMake()' /></div>";
+                tempR2 = tempR2 + "<div id='r2" + sqidx + "'>Q<input type='text' id='GroupNumber"+ sqidx +"' name='GroupNumber[]' value=" + currentnum + " style='width:25px;' onKeyup='groupTextMake()' /></div>";
                 $('#r2').html(tempR2);
 
                 var tempR3 = $('#r3').html();
@@ -248,7 +254,7 @@
                 var tobj = objtxt[i];
 
                 if(tempval != cobj.value) {
-                    gtxt = gtxt + '그룹텍스트' + cobj.value + " : <input type='text' id='g" + cobj.value + "' name='GroupTitle[]' value='" + tobj.value + "' style='width:80%' onKeyup='previewChange(" + cobj.value + ",this)' /><input type='hidden' name='Group[]' value='" + cobj.value + "' /><br>";
+                    gtxt = gtxt + 'Q' + cobj.value + " . <input type='text' id='g" + cobj.value + "' name='GroupTitle[]' value='" + tobj.value + "' style='width:80%' onKeyup='previewChange(" + cobj.value + ",this)' /><input type='hidden' name='Group[]' value='" + cobj.value + "' /><br>";
                 }
 
                 tempval = cobj.value;

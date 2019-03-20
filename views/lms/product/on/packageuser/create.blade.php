@@ -709,7 +709,7 @@
                 if($("#site_code").val() == "") {alert("운영사이트를 선택해 주세요.");$("#site_code").focus();return;}
                 $('#'+id).setLayer({
                     'url' : '{{ site_url('common/searchLecture/')}}'+'?site_code='+$("#site_code").val()+'&LearnPatternCcd=615001&locationid='+id+'&ProdCode='+$('#ProdCode').val()+'&cate_code='+$('#cate_code').val()
-                    ,'width' : 1200
+                    ,'width' : 1300
                 })
             });
 

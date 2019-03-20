@@ -118,8 +118,19 @@
                 var $parent_location_tr = @if($locationid === 'subLecAdd') 'subLecTrId'; @elseif($locationid === 'essLecAdd') 'essLecTrId'; @elseif($locationid === 'selLecAdd') 'selLecTrId'; @else 'lecTrId'; @endif
                 var $parent_element = @if($locationid === 'subLecAdd' || $locationid === 'essLecAdd' || $locationid === 'selLecAdd' ) 'ProdCodeSub'; @else 'ProdCode_lecture'; @endif
 
+                //본체에 등록된 상품 코드 배열
+                var $selected_prodcode = {};
+
                 $(document).ready(function() {
 
+                    $("#"+$parent_location).find("tr").each(function() {
+                        ele = $(this);
+                        prod_code = ele.find('input[name="ProdCodeSub[]"]').val();
+                        if(prod_code != undefined) {
+                            console.log(prod_code);
+                            $selected_prodcode[prod_code] = prod_code;
+                        }
+                    });
 
                     // 페이징 번호에 맞게 일부 데이터 조회
                     $datatable_modal = $list_table_modal.DataTable({
@@ -143,8 +154,8 @@
                         columns: [
                             @if(empty($wLecIdx) === true)
                             {'data' : null, 'render' : function(data, type, row, meta) {
-                                    //console.log(meta);
-                                    //var seq = meta.row + meta.settings._iDisplayStart;
+
+                                    var checked = ($selected_prodcode.hasOwnProperty(row.ProdCode) === true) ? 'Y' : '';
                                     var seq = meta.row;     //무조건 0 부터 시작 하단에서 걸림 ( for (i=0;i<allCnt;i++)	 {	//노출된 갯수에서 선택한 것만 적용되게끔... )
                                     var codeInfo= row.ProdCode+'@$'
                                         +row.CateName+'@$'
@@ -156,7 +167,7 @@
                                         +addComma(row.RealSalePrice)+'원@$'
                                         +row.SaleStatusCcd_Name+'@$'
                                     ;
-                                    return '<input type="checkbox" id="checkIdx' + seq + '" name="checkIdx" class="flat" value="' + codeInfo + '" />';
+                                    return checked == 'Y' ? '<span class="red"><b>선택</b></span>':'<input type="checkbox" id="checkIdx' + seq + '" name="checkIdx" class="flat" value="' + codeInfo + '" />';
                                 }},
                             @endif
                             {'data' : null, 'render' : function(data, type, row, meta) {
@@ -182,7 +193,9 @@
                             {'data' : null, 'render' : function(data, type, row, meta) {
                                     return addComma(row.RealSalePrice)+'원<BR><strike>'+addComma(row.SalePrice)+'원</strike>';
                                 }},
-                            {'data' : 'MultipleApply'},//배수
+                            {'data' : null, 'render' : function(data, type, row, meta) {
+                                    return row.MultipleApply == "1" ? "제한<BR>없음" : row.MultipleApply;
+                                }},
                             @endif
                             {'data' : 'SaleStatusCcd_Name', 'render' : function(data, type, row, meta) {
                                     return (data !== '판매불가') ? data : '<span class="red">'+data+'</span>';
@@ -215,8 +228,6 @@
                         $search_form_modal.find('#_btn_search').trigger('click');
                         $datatable_modal.draw();
                     });
-
-
 
                     // 적용 버튼
                     //$('#_btn_apply').on('click', function() {
@@ -272,9 +283,6 @@
                         }
                         $("#pop_modal").modal('toggle');
                     }
-
-
-
                 });
             </script>
         @stop

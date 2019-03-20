@@ -806,7 +806,7 @@
 
                 $('#sameLecture').setLayer({
                     'url' : '{{ site_url('common/searchLecture/')}}'+'?site_code='+$("#site_code").val()+'&LearnPatternCcd=615005&wLecIdx='+$('#wLecIdx').val()
-                    ,'width' : 1200
+                    ,'width' : 1300
                 })
             });
 

@@ -11,7 +11,7 @@
                     <span class="row-line">|</span>
                 </li>
                 <li>
-                    <a href="{{ front_url('/profRecruit/index/cate/' . $__cfg['CateCode']) }}">강사모집</a>
+                    <a href="{{ front_url('/profRecruit/index') }}">강사모집</a>
                 </li>
             </ul>
         </div>

@@ -207,7 +207,7 @@
                                 @if($row['IsEssential'] ==='Y')
                                     <tr name='essLecTrId' id='essLecTrId{{$loop->index}}'>
                                         <input type='hidden'  name='ProdCodeSub[]' id='ProdCodeSub{{$loop->index}}' value='{{$row['ProdCodeSub']}}'>
-                                        <input type='hidden'  name='essLecAddCheck[]' id='essLecAddCheck{{$loop->index}}' value=Y'>
+                                        <input type='hidden'  name='essLecAddCheck[]' id='essLecAddCheck{{$loop->index}}' value='Y'>
                                         <input type='hidden'  name='IsEssential[]' id='IsEssential{{$loop->index}}' value='Y'>
                                         <td>
                                             <select name='SubGroupName[]' id='SubGroupNamel{{$loop->index}}' class="form-control mr-10">
@@ -316,7 +316,7 @@
                     <label class="control-label col-md-2">수강제한기기개수 <span class="required">*</span>
                     </label>
                     <div class="col-md-10 form-inline item">
-                        <input type="number" name="DeviceLimitCount" id="DeviceLimitCount"  class="form-control" required="required" title="수강제한기기개수" style="width:50px;" maxlength="2" @if($method==='POST') value="0" @else value="{{$data['DeviceLimitCount']}}" @endif"> 개
+                        <input type="number" name="DeviceLimitCount" id="DeviceLimitCount"  class="form-control" required="required" title="수강제한기기개수" style="width:50px;" maxlength="2" value="@if($method==='POST'){{0}}@else{{$data['DeviceLimitCount']}}@endif"> 개
                         &nbsp;&nbsp;
                         •아이디 기준 수강 가능한 기기 개수 입력 (모바일,PC 구분없이 수강 가능하게 처리)
                     </div>
@@ -960,6 +960,7 @@
                 getEditorBodyContent($editor_2);
                 getEditorBodyContent($editor_3);
                 getEditorBodyContent($editor_4);
+
 
                 var _url = '{{ site_url('/product/on/packagePeriod/store') }}';
                 ajaxSubmit($regi_form, _url, function(ret) {

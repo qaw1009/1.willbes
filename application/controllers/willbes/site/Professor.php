@@ -226,17 +226,6 @@ class Professor extends \app\controllers\FrontController
         // 수강후기 조회
         $data['study_comment'] = $this->professorFModel->findProfessorStudyCommentData($prof_idx, $this->_site_code, $this->_def_cate_code, element('subject_idx', $arr_input), 2);
         $data['study_comment'] = $data['study_comment'] != 'N' ? json_decode($data['study_comment'], true) : [];
-        /*$column = 'BoardIdx, BmIdx, Title, LecScore';
-        $arr_condition = [
-            'EQ' => [
-                'BmIdx' => 85,
-                'IsUse' => 'Y',
-                'SubjectIdx' => element('subject_idx', $arr_input),
-                'ProfIdx' => $prof_idx
-            ]
-        ];
-        $order_by = ['LecScore'=>'Desc','BoardIdx'=>'Desc'];
-        $data['study_comment'] = $this->supportBoardTwoWayFModel->listBoard(false,$arr_condition,$column,2,0,$order_by);*/
 
         return [
             'notice' => element('notice', $data, []),
@@ -291,9 +280,12 @@ class Professor extends \app\controllers\FrontController
             $data['off_pack_lecture'] = $this->_getOffLectureData('off_pack_lecture', $arr_site_code['off'], $arr_prof_idx['off'], $arr_input);
         }
 
-        // 수강후기 조회
-        $data['study_comment'] = $this->professorFModel->findProfessorStudyCommentData($prof_idx, $this->_site_code, $this->_def_cate_code, element('subject_idx', $arr_input), 3);
-        $data['study_comment'] = $data['study_comment'] != 'N' ? json_decode($data['study_comment'], true) : [];
+        // 온라인 사이트일 경우만 수강후기 조회
+        $data['study_comment'] = [];
+        if ($this->_is_pass_site === false) {
+            $data['study_comment'] = $this->professorFModel->findProfessorStudyCommentData($prof_idx, $this->_site_code, $this->_def_cate_code, element('subject_idx', $arr_input), 3);
+            $data['study_comment'] = $data['study_comment'] != 'N' ? json_decode($data['study_comment'], true) : [];
+        }
 
         return [
             'on_course' => element('on_course', $data, []),
@@ -428,9 +420,12 @@ class Professor extends \app\controllers\FrontController
             $data['on_free_lecture'] = $this->_getOnLectureData('on_free_lecture', $arr_site_code['on'], $arr_prof_idx['on'], $arr_input);
         }
 
-        // 수강후기 조회
-        $data['study_comment'] = $this->professorFModel->findProfessorStudyCommentData($prof_idx, $this->_site_code, $this->_def_cate_code, element('subject_idx', $arr_input), 3);
-        $data['study_comment'] = $data['study_comment'] != 'N' ? json_decode($data['study_comment'], true) : [];
+        // 온라인 사이트일 경우만 수강후기 조회
+        $data['study_comment'] = [];
+        if ($this->_is_pass_site === false) {
+            $data['study_comment'] = $this->professorFModel->findProfessorStudyCommentData($prof_idx, $this->_site_code, $this->_def_cate_code, element('subject_idx', $arr_input), 3);
+            $data['study_comment'] = $data['study_comment'] != 'N' ? json_decode($data['study_comment'], true) : [];
+        }
 
         return [
             'on_free_lecture' => element('on_free_lecture', $data, []),

@@ -21,3 +21,6 @@
 <script src="/public/js/willbes/mobile.js?ver={{time()}}"></script>
 <script src="/public/js/willbes/app.js?ver={{time()}}"></script>
 <!--// JAVASCRIPT -->
+<!-- Common Site Script -->
+{!! base64_decode($__cfg['CommMobileScript']) !!}
+<!--// Common Site Script -->

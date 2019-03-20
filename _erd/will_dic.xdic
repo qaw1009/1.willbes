@@ -212,4 +212,11 @@
   <term name="잔여" physicalName="Remain"/>
   <term name="복구" description="Recovery" physicalName="Reco"/>
   <term name="접근" description="Connect" physicalName="Conn" physicalDescription="Conn"/>
+  <term name="공통" description="Common" physicalName="Comm"/>
+  <term name="스크립트" physicalName="Script"/>
+  <term name="PC" physicalName="Pc"/>
+  <term name="앱" physicalName="App"/>
+  <term name="소스" description="Source" physicalName="Src"/>
+  <term name="Width" physicalName="Width"/>
+  <term name="Height" physicalName="Height"/>
 </tm:TermDictionary>

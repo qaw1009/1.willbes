@@ -49,8 +49,8 @@
             <div class="quick">
                 <ul>
                     <li><img src="http://file3.willbes.net/new_gosi/2019/01/EV190118_sky1.png" alt="학원문의" ></li>
-                    <li><a href="http://www.willbesgosi.net/notice/view.html?topMenuType=F&topMenuGnb=FM_008&topMenu=001&menuID=FM_008_004&BOARD_MNG_SEQ=&NOTICETYPE=event&INCTYPE=view&currentPage=1&BOARD_SEQ=&PARENT_BOARD_SEQ=&searchEventNo=999&SEARCHKIND=&SEARCHTEXT=" target="_blank" ><img src="http://file3.willbes.net/new_gosi/2019/01/EV190118_sky2.png" alt="국어" ></a></li>
-                    <li><a href="http://www.willbesgosi.net/notice/view.html?topMenuType=F&topMenuGnb=FM_008&topMenu=001&menuID=FM_008_004&BOARD_MNG_SEQ=&NOTICETYPE=event&INCTYPE=view&currentPage=1&BOARD_SEQ=&PARENT_BOARD_SEQ=&searchEventNo=1000&SEARCHKIND=&SEARCHTEXT=" target="_blank" ><img src="http://file3.willbes.net/new_gosi/2019/01/EV190118_sky3.png" alt="영어" ></a></li>
+                    <!--li><a href="{{ site_url('#none') }}" target="_blank" ><img src="http://file3.willbes.net/new_gosi/2019/01/EV190118_sky2.png" alt="국어" ></a></li>
+                    <li><a href="{{ site_url('#none') }}" target="_blank" ><img src="http://file3.willbes.net/new_gosi/2019/01/EV190118_sky3.png" alt="영어" ></a></li-->
                 </ul>
             </div>
         </div>
@@ -62,7 +62,7 @@
         <div class="evtCtnsBox wb_cts02">
             <img src="http://file3.willbes.net/new_gosi/2019/01/EV190118_2.png" alt="기미진국어" usemap="#Map_1123_lec1" border="0" />
             <map name="Map_1123_lec1">
-                <area shape="rect" coords="318,642,894,715" href="http://www.willbesgosi.net/lecture/passLectureList.html?topMenu=001&topMenuName=9급공무원&topMenuType=F&leftMenuLType=M0103&lecKType=D&searchSubjectCode=1139" target="_blank">
+                <area shape="rect" coords="318,642,894,715" href="{{ site_url('#none') }}" target="_blank">
             </map>
         </div>
         <!--wb_cts02//-->
@@ -70,7 +70,7 @@
         <div class="evtCtnsBox wb_cts03">
             <img src="http://file3.willbes.net/new_gosi/2019/01/EV190118_3.png" alt="한덕현영어" usemap="#Map_1123_lec2" border="0" />
             <map name="Map_1123_lec2">
-                <area shape="rect" coords="314,676,895,754" href="http://www.willbesgosi.net/lecture/passLectureList.html?topMenu=001&topMenuName=9급공무원&topMenuType=F&leftMenuLType=M0103&lecKType=D&searchSubjectCode=1139" target="_blank">
+                <area shape="rect" coords="314,676,895,754" href="{{ site_url('#none') }}" target="_blank">
             </map>
         </div>
         <!--wb_cts03//-->
@@ -78,7 +78,7 @@
         <div class="evtCtnsBox wb_cts04">
             <img src="http://file3.willbes.net/new_gosi/2019/01/EV190118_4.png" alt="김영영어" usemap="#Map_1123_lec3" border="0" />
             <map name="Map_1123_lec3">
-                <area shape="rect" coords="288,695,928,759" href="http://www.willbesgosi.net/lecture/passLectureList.html?topMenu=001&topMenuName=9급공무원&topMenuType=F&leftMenuLType=M0103&lecKType=D&searchSubjectCode=1139" target="_blank">
+                <area shape="rect" coords="288,695,928,759" href="{{ site_url('#none') }}" target="_blank">
             </map>
         </div>
         <!--wb_cts04//-->
@@ -86,7 +86,7 @@
         <div class="evtCtnsBox wb_cts05">
             <img src="http://file3.willbes.net/new_gosi/2019/01/EV190118_5.png" alt="성기건영어" usemap="#Map_1123_lec4" border="0" />
             <map name="Map_1123_lec4">
-                <area shape="rect" coords="282,694,909,761" href="http://www.willbesgosi.net/lecture/passLectureList.html?topMenu=001&topMenuName=9급공무원&topMenuType=F&leftMenuLType=M0103&lecKType=D&searchSubjectCode=1139" target="_blank">
+                <area shape="rect" coords="282,694,909,761" href="{{ site_url('#none') }}" target="_blank">
             </map>
         </div>
         <!--wb_cts05//-->

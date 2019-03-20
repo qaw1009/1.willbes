@@ -136,7 +136,7 @@ class LoginModel extends WB_Model
             }
 
             $data = [
-                'wAdminId' => $admin_id,
+                'wAdminId' => get_var($admin_id, '_empty_id'),
                 $prefix . 'LoginIp' => $this->input->ip_address(),
                 $prefix . 'IsLogin' => $log_ccds[$log_ccd_name][1],
                 $prefix . 'LoginLogCcd' => $log_ccds[$log_ccd_name][0]

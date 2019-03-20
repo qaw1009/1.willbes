@@ -164,17 +164,17 @@
                                     @endif
                                     <input type="hidden" name="SaleTypeCcd[]" id="SaleTypeCcd_{{$key}}" value="{{$key}}">
                                     <input type="hidden" name="SalePriceIsUse[]" id="SalePriceIsUse_{{$key}}" value="Y">
-                                    [정상가] <input type="number" name="SalePrice[]" id="SalePrice_{{$key}}" value="{{$SalePrice}}"   maxlength="8" class="form-control" onkeyup="priceCheck('{{$key}}')" @if($key=="613001")required="required"@endif title="정상가"> 원
+                                    [정상가] <input type="number" name="SalePrice[]" id="SalePrice_{{$key}}" value="{{$SalePrice}}"   maxlength="8" class="form-control" onkeyup="priceCheck('{{$key}}')" @if($key=="613001")required="required" @endif title="정상가"> 원
                                     &nbsp;&nbsp;
                                     [할인율]
                                     <select name="SaleDiscType[]" id="SaleDiscType_{{$key}}" class="form-control" onchange="priceCheck('{{$key}}')">
                                         <option value="R" @if($SaleDiscType == 'R') selected="selected"@endif>%</option>
                                         <option value="P" @if($SaleDiscType == 'p') selected="selected"@endif>-</option>
                                     </select>&nbsp;
-                                    <input type="number" name="SaleRate[]" id="SaleRate_{{$key}}"  value="@if($method=="POST"){{0}}@else{{$SaleRate}}@endif" maxlength="8" class="form-control" onkeyup="priceCheck('{{$key}}')" @if($key=="613001")required="required"@endif title="할인">
+                                    <input type="number" name="SaleRate[]" id="SaleRate_{{$key}}"  value="@if($method=="POST"){{0}}@else{{$SaleRate}}@endif" maxlength="8" class="form-control" onkeyup="priceCheck('{{$key}}')" @if($key=="613001")required="required" @endif title="할인">
                                     &nbsp;&nbsp;
                                     [판매가]
-                                    <input type="number" name="RealSalePrice[]" id="RealSalePrice_{{$key}}"  value="{{$RealSalePrice}}" readonly class="form-control" @if($key=="613001")required="required"@endif title="판매가"> 원
+                                    <input type="number" name="RealSalePrice[]" id="RealSalePrice_{{$key}}"  value="{{$RealSalePrice}}" readonly class="form-control" @if($key=="613001")required="required" @endif title="판매가"> 원
                                     </tr>
                                 @endif
                             @endforeach
@@ -258,7 +258,7 @@
                                 @if($row['IsEssential'] !=='Y')
                                     <tr name='selLecTrId' id='selLecTrId{{$loop->index}}'>
                                         <input type='hidden'  name='ProdCodeSub[]' id='ProdCodeSub{{$loop->index}}' value='{{$row['ProdCodeSub']}}'>
-                                        <input type='hidden'  name='selLecAddCheck[]' id='selLecAddCheck{{$loop->index}}' value=Y'>
+                                        <input type='hidden'  name='selLecAddCheck[]' id='selLecAddCheck{{$loop->index}}' value='Y'>
                                         <input type='hidden'  name='IsEssential[]' id='IsEssential{{$loop->index}}' value='N'>
                                         <td>
                                             <select name='SubGroupName[]' id='SubGroupNamel{{$loop->index}}' class="form-control mr-10">

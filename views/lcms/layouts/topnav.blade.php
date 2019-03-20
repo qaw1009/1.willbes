@@ -73,12 +73,12 @@
                                                 <a id="{{ $mmenu['TreeNum'] }}" href="#">{{ $mmenu['MenuName'] }}</a>
                                                 <ul class="dropdown-menu animated fadeIn {{ $css_right_menu }}">
                                                     @foreach($mmenu['Children'] as $sidx => $smenu)
-                                                        <li role="presentation"><a tabindex="-1" href="{{ site_url($smenu['MenuUrl']) }}" class="{{ isset($__menu['CURRENT']['MenuIdx']) && $sidx == $__menu['CURRENT']['MenuIdx'] ? 'current' : '' }}">{{ $smenu['MenuName'] }}</a></li>
+                                                        <li role="presentation"><a tabindex="-1" href="{{ site_url($smenu['MenuUrl']) }}" target="_{{ $smenu['UrlTarget'] }}" class="{{ isset($__menu['CURRENT']['MenuIdx']) && $sidx == $__menu['CURRENT']['MenuIdx'] ? 'current' : '' }}">{{ $smenu['MenuName'] }}</a></li>
                                                     @endforeach
                                                 </ul>
                                             </li>
                                         @else
-                                            <li role="presentation"><a tabindex="-1" href="{{ site_url($mmenu['MenuUrl']) }}" class="{{ isset($__menu['CURRENT']['MenuIdx']) && $midx == $__menu['CURRENT']['MenuIdx'] ? 'current' : '' }}">{{ $mmenu['MenuName'] }}</a></li>
+                                            <li role="presentation"><a tabindex="-1" href="{{ site_url($mmenu['MenuUrl']) }}" target="_{{ $mmenu['UrlTarget'] }}" class="{{ isset($__menu['CURRENT']['MenuIdx']) && $midx == $__menu['CURRENT']['MenuIdx'] ? 'current' : '' }}">{{ $mmenu['MenuName'] }}</a></li>
                                         @endif
                                     @endforeach
                                 </ul>

@@ -140,6 +140,7 @@
                 <li class="w50"><a href="{{ site_url('/home/html/event_offCop_190311_c') }}" target="_blank">실전빅매치데이 1 모의고사</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/1129') }}" target="_blank">신의법칙을 믿어라</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/1126') }}" target="_blank">3단계 커리큘럼</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/1136') }}" target="_blank">신기록의 대행진</a></li>
                 <li><p>경찰 학원 ▼</p></li> 
                 <li class="w50"><a href="{{ site_url('/home/html/event_offCop_190211_p') }}" target="_blank">19년 1차대비 2월 전국모의고사</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_offCop_basic') }}" target="_blank">2019 집중연강식 기본이론</a></li>

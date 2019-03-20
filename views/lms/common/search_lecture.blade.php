@@ -121,8 +121,6 @@
                 $(document).ready(function() {
 
 
-
-
                     // 페이징 번호에 맞게 일부 데이터 조회
                     $datatable_modal = $list_table_modal.DataTable({
                         serverSide: true,
@@ -275,15 +273,6 @@
                         $("#pop_modal").modal('toggle');
                     }
 
-                    console.log($parent_location+' - '+$parent_location_tr);
-
-                    "#"+$parent_location.find($parent_location_tr).each(function() {
-                        that = $(this);
-                        code = that.find('input[name="ProdCodeSub[]"]').val();
-                        route_name = that.text().trim();
-
-
-                    });
 
 
                 });

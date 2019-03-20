@@ -23,9 +23,6 @@ class Package extends \app\controllers\FrontController
     {
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
 
-        //사이트별 과정 조회
-        $arr_base['course'] = $this->baseProductFModel->listCourseCategoryMapping($this->_site_code, $this->_cate_code);
-
         $pack = element('pack', $params);
 
         switch ($pack) {
@@ -61,6 +58,11 @@ class Package extends \app\controllers\FrontController
             $order_by = ['ProdCode'=>'desc'];
         }
 
+        // 사이트별 과정 조회 (카테고리 소트매핑된 과정 조회 => 상품에 설정된 과정 조회)
+        //$arr_base['course'] = $this->baseProductFModel->listCourseCategoryMapping($this->_site_code, $this->_cate_code);
+        $arr_base['course'] = $this->packageFModel->listSalesProduct($this->_learn_pattern, 'distinct(CourseIdx), CourseName', $arr_condition);
+
+        // 상품 목록 조회
         $list = $this->packageFModel->listSalesProduct($this->_learn_pattern,false,$arr_condition,null,null,$order_by);
 
         //$prod_codes = array_pluck($list,'ProdCode');        //추출목록 중 상품코드만 재 추출

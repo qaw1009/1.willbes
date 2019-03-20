@@ -72,7 +72,7 @@ class Sleep extends BaseMember
                         'Mem.MemId' => $MemId,
                         'Mem.CertifiedInfoTypeCcd' => $jointype,
                         'Mem.CertifiedInfo' => $dupInfo,
-                        'Mem.IsStatus' => 'S'
+                        'Mem.IsStatus' => 'D'
                     ]
                 ];
 
@@ -90,7 +90,7 @@ class Sleep extends BaseMember
                         // 복구 실패
                         show_alert("휴면회원 해제에 실패했습니다. 다시 시도해주십시요.", '/member/sleep/');
                     }
-                    redirect('/member/sleep/activate-success/');
+                    redirect('/member/sleep/activatesuccess/');
                 }
 
                 // 가입정보 없음
@@ -122,7 +122,7 @@ class Sleep extends BaseMember
                         'Mem.MemId' => $MemId,
                         'Mem.PhoneEnc' => $this->memberFModel->getEncString($phone),
                         'Mem.CertifiedInfoTypeCcd' => $jointype,
-                        'Mem.IsStatus' => 'S'
+                        'Mem.IsStatus' => 'D'
                     ]
                 ];
 
@@ -139,7 +139,7 @@ class Sleep extends BaseMember
                         show_alert("휴면회원 해제에 실패했습니다. 다시 시도해주십시요.", '/member/sleep/');
                     }
 
-                    redirect('/member/activate-success');
+                    redirect('/member/sleep/activatesuccess');
                 }
                 // 가입정보 없음
                 return $this->load->view('member/find/notfind');
@@ -183,7 +183,7 @@ class Sleep extends BaseMember
                         'Mem.MemId' => $MemId,
                         'Mem.MailEnc' => $this->memberFModel->getEncString($mail),
                         'Mem.CertifiedInfoTypeCcd' => $jointype,
-                        'Mem.IsStatus' => 'S'
+                        'Mem.IsStatus' => 'D'
                     ]
                 ];
 
@@ -203,7 +203,7 @@ class Sleep extends BaseMember
                     // 비밀번호 변경후 인증메일 완료처리
                     $result = $this->memberFModel->updateMailAuth($enc_data);
 
-                    redirect('/member/activatesuccess/');
+                    redirect('/member/sleep/activatesuccess/');
                 }
                 // 가입정보 없음
                 return $this->load->view('member/find/notfind');
@@ -253,7 +253,7 @@ class Sleep extends BaseMember
                 'Mem.CertifiedInfoTypeCcd' => '655002'
             ],
             'NOT' => [
-                'Mem.IsStatus' => 'D'
+                'Mem.IsStatus' => 'N' // 탈퇴가 아니고
             ]
         ];
 
@@ -266,7 +266,7 @@ class Sleep extends BaseMember
 
         $result = $this->memberFModel->getMember(false, $data);
 
-        if($result['IsStatus'] != 'S'){
+        if($result['IsStatus'] != 'D'){
             return $this->json_error("휴면회원이 아닙니다.");
         }
 
@@ -304,7 +304,7 @@ class Sleep extends BaseMember
                 'Mem.CertifiedInfoTypeCcd' => '655003'
             ],
             'NOT' => [
-                'Mem.IsStatus' => 'D'
+                'Mem.IsStatus' => 'N'
             ]
         ];
 
@@ -317,7 +317,7 @@ class Sleep extends BaseMember
 
         $data = $this->memberFModel->getMember(false, $data);
 
-        if($data['IsStatus'] != 'S'){
+        if($data['IsStatus'] != 'D'){
             return $this->json_error("휴면회원이 아닙니다.");
         }
 

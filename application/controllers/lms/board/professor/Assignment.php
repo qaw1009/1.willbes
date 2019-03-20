@@ -201,7 +201,7 @@ class Assignment extends BaseBoard
                 'E.ProfIdx_String' => $prof_idx,
             ]
         ];
-        $product_data = $this->lectureModel->listLecture(false, $arr_condition, 1, 0, ['A.ProdCode' => 'desc'])[0];
+        $product_data = $this->lectureModel->listLectureForBoard(false, $arr_condition, 1, 0, ['A.ProdCode' => 'desc'])[0];
 
         $this->load->view("board/professor/{$this->board_name}/regist/index", [
             'bm_idx' => $this->bm_idx,
@@ -299,7 +299,7 @@ class Assignment extends BaseBoard
                 'E.ProfIdx_String' => $prof_idx,
             ]
         ];
-        $product_data = $this->lectureModel->listLecture(false, $arr_condition, 1, 0, ['A.ProdCode' => 'desc'])[0];
+        $product_data = $this->lectureModel->listLectureForBoard(false, $arr_condition, 1, 0, ['A.ProdCode' => 'desc'])[0];
 
         // 스케줄 정보 조회
         $schedule = $this->boardModel->getAssignmentSchedule($prod_code);
@@ -378,7 +378,7 @@ class Assignment extends BaseBoard
             ]
         ];
 
-        $product_data = $this->lectureModel->listLecture(false, $arr_condition, 1, 0, ['A.ProdCode' => 'desc'])[0];
+        $product_data = $this->lectureModel->listLectureForBoard(false, $arr_condition, 1, 0, ['A.ProdCode' => 'desc'])[0];
         if (empty($product_data) === true) {
             $rules = array_merge($rules, [
                 ['field'=>'prod_code', 'label'=>'상품코드', 'rules'=>'trim|required']
@@ -619,7 +619,7 @@ class Assignment extends BaseBoard
                 'E.ProfIdx_String' => $prof_idx,
             ]
         ];
-        $product_data = $this->lectureModel->listLecture(false, $arr_condition, 1, 0, ['A.ProdCode' => 'desc'])[0];
+        $product_data = $this->lectureModel->listLectureForBoard(false, $arr_condition, 1, 0, ['A.ProdCode' => 'desc'])[0];
 
         $this->load->view("board/professor/{$this->board_name}/issue/index", [
             'bm_idx' => $this->bm_idx,

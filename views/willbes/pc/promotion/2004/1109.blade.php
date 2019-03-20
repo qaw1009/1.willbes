@@ -21,15 +21,14 @@
         /************************************************************/
 
         .skybanner {
-            position:absolute;
-            top:20px;
+            position:fixed;
+            top:200px;
             right:10px;
             z-index:1;
         }
         .skybanner li {
             margin-bottom:5px;
         }
-        .skybanner_sectionFixed {position:fixed; top:20px}
 
         .wb_cts01 {background:#5e5e5c url(http://file3.willbes.net/new_gosi/2018/11/EV181120_L1_bg.png) no-repeat center top; position:relative; }
         .wb_cts02 {background:#fff url(http://file3.willbes.net/new_gosi/2018/11/EV181120_L3_bg.jpg) no-repeat center bottom;  }

@@ -11,12 +11,15 @@
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">
-                    <label class="control-label col-md-1" for="search_value">통합검색</label>
-                    <div class="col-md-3">
+                    <label class="control-label col-md-1" for="search_value">주문번호</label>
+                    <div class="col-md-2">
                         <input type="text" class="form-control" id="search_value" name="search_value">
                     </div>
-                    <div class="col-md-2">
-                        <p class="form-control-static">주문번호 검색 가능</p>
+                    <div class="col-md-3">
+                        <div class="checkbox">
+                            <input type="checkbox" id="search_chk_is_error" name="search_chk_is_error" class="flat" value="Y"/>
+                            <label for="search_chk_is_error" class="input-label"><span class="red pull-none ml-0">연동오류만 보기</span></label>
+                        </div>
                     </div>
                     <label class="control-label col-md-1" for="search_start_date">날짜</label>
                     <div class="col-md-5 form-inline">

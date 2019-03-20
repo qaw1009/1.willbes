@@ -102,7 +102,7 @@
         </div><!--wb_cts03//-->
 
         <div class="evtCtnsBox wb_cts04" >
-            <a href="{{ site_url('/pass/offLecture/index?cate_code=3043&course_idx=1062) }}"><img src="http://file3.willbes.net/new_gosi/2019/02/190208_final_06.png" border="0" /></a>
+            <a href="{{ site_url('/pass/offLecture/index?cate_code=3043&course_idx=1062') }}" target="_blank"><img src="http://file3.willbes.net/new_gosi/2019/02/190208_final_06.png" border="0" /></a>
         </div><!--wb_cts04//-->
 
     </div>
@@ -173,11 +173,5 @@
         
             }
             daycountDown();
-
-        $(function(e){
-            var targetOffset= $("#evtContainer").offset().top;
-            $('html, body').animate({scrollTop: targetOffset}, 700);
-            /*e.preventDefault(); */   
-	    });
     </script> 
 @stop

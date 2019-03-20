@@ -25,8 +25,24 @@ $config['vbank_expire_days'] = '7'; // 입금시한 설정 일수
 // 추가 배송료 추가 대상 우편번호 앞자리
 $config['delivery_add_price_charge_zipcode'] = ['63', '69'];
 
-// 스타플레이어 모바일 라이센스
-$config['starplayer_license'] = '5EDC454C-81A1-4434-A386-7314FCB74991';
+if(ENVIRONMENT == "production" || ENVIRONMENT == "testing"){
+    /*
+    스타플레이어 모바일 라이센스 실서버용
+    서비스도메인	https://www.willbes.net
+    APP 이벤트	https://www.willbes.net/Player/StarplayerAPI/
+    SCMS URL	http://mgt.hd.willbes.gscdn.com/scms/log.asp
+    */
+    $config['starplayer_license'] = '70FBCADA-CE5A-4786-BCD3-960EAC8B4EA1';
+} else {
+    /*
+    스타플레이어 모바일 라이센스 테스트용
+    서비스도메인	https://www.dev.willbes.net
+    APP 이벤트	https://www.dev.willbes.net/Player/StarplayerAPI/
+    */
+    $config['starplayer_license'] = '5EDC454C-81A1-4434-A386-7314FCB74991';
+}
+
+
 
 // 통합사이트 설정
 $config['www'] = array(

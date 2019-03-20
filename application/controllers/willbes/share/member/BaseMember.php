@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class BaseMember extends \app\controllers\FrontController
 {
-    protected $models = array('_lms/sys/code', '_lms/sys/site', 'memberF', 'pointF');
+    protected $models = array('_lms/sys/code', '_lms/sys/site', 'memberF', 'pointF','classroomF', 'couponF', 'mocktest/mockExam');
     protected $helpers = array();
     protected $auth_controller = false;
     protected $auth_methods = array();

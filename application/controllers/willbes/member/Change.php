@@ -7,6 +7,16 @@ class Change extends BaseMember
 {
     protected $auth_controller = true;
 
+    // 결제루트코드 온라인/학원방문/0원/무료/제휴사/온라인0원
+    protected $_payroute_normal_ccd = ['670001','670002','670006'];
+    protected $_payroute_admin_ccd = ['670003','670004','670005'];
+
+    // 강의형태 단과/사용자패키지/운영자패키지/무료
+    protected $_LearnPatternCcd_dan = ['615001','615002'];
+    protected $_LearnPatternCcd_free = ['615005'];
+    protected $_LearnPatternCcd_pkg = ['615003'];
+    protected $_LearnPatternCcd_pass = ['615004'];
+
     public function __construct()
     {
         parent::__construct();
@@ -54,11 +64,77 @@ class Change extends BaseMember
 
         $data = $this->memberFModel->getMember(false, ['EQ'=>['Mem.MemIdx'=>$MemIdx]]);
         
+
+        $today = date("Y-m-d", time());
+        $memidx = $this->session->userdata('mem_idx');
+
+        $cond_arr = [
+            'EQ' => [
+                'MemIdx' => $memidx
+            ],
+            'GTE' => [
+                'RealLecEndDate' => $today // 종료일 >= 오늘
+            ],
+        ];
+
         // 수강중강좌 갯수
+        // 기긴제갯수
+        $data['on_cnt'] = $this->classroomFModel->getPackage(array_merge($cond_arr, [
+            'IN' => [
+                'LearnPatternCcd' => $this->_LearnPatternCcd_pass
+            ]
+        ]), null, true);
+        // 단과갯수
+        $data['on_cnt'] = $data['on_cnt'] + $this->classroomFModel->getLecture(array_merge($cond_arr, [
+            'IN' => [
+                'LearnPatternCcd' => $this->_LearnPatternCcd_dan
+            ]
+        ]), null, true);
+        // 패키지갯수
+        $data['on_cnt'] = $data['on_cnt'] + $this->classroomFModel->getPackage(array_merge($cond_arr, [
+                'IN' => [
+                    'LearnPatternCcd' => $this->_LearnPatternCcd_pkg
+                ]
+            ]), null, true);
+
+        // 단과갯수
+        $data['on_free_cnt'] = $this->classroomFModel->getLecture(array_merge($cond_arr, [
+                'IN' => [
+                    'LearnPatternCcd' => $this->_LearnPatternCcd_free
+                ]
+            ]), null, true);
+
         // 수강중 학원강좌 갯수
-        // 사용중인 서비스 
+        $cond_arr = [
+            'EQ' => [
+                'MemIdx' => $memidx
+            ],
+            'GTE' => [
+                'StudyEndDate' => $today // 종료일 >= 오늘
+            ],
+            'IN' => [
+                'LearnPatternCcd' => ['615006','615007'] // 학원종합, 학원단과
+            ]
+        ];
+        $data['off_cnt'] = $this->classroomFModel->getLecture($cond_arr, null,true, true);
+
         // 배송내역
+        $data['shop_cnt'] = 0;
+        
+        // 모의고사
+        $data['mock_cnt'] = $this->mockExamModel->listBoard(true, [
+            'EQ' => [
+                'MR.MemIdx'   => $memidx
+            ]
+        ]);
+
         // 포인트 쿠폰
+        $member_point = $this->pointFModel->getMemberPoint();
+        $data['lecture_point'] = element('lecture', $member_point, 0);
+        $data['book_point'] = element('book', $member_point, 0);
+
+        // 쿠폰갯수
+        $data['coupon_cnt'] = $this->couponFModel->listMemberCoupon(true);
 
         return $this->load->view('member/change/info', [
             'mail_domain_ccd' => $codes['661'],

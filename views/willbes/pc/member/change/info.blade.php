@@ -413,10 +413,6 @@
             </div>
             <!-- willbes-Layer-PassBox : 이메일 인증 -->
 
-
-
-
-
             <div id="WITHDRAWALPASS" class="willbes-Layer-Black">
                 <div class="willbes-Layer-PassBox willbes-Layer-PassBox740 h900 fix">
                     <a class="closeBtn" href="#none" onclick="closeWin('WITHDRAWALPASS')">
@@ -432,7 +428,7 @@
                                 <li>- 회원탈퇴 후, 임의해지 및 재가입 방지를 목적으로 1년 간 회원의 성명, 휴대폰번호, 아이디, 이메일 등의 정보를 보관합니다.</li>
                                 <li>- 그 외 개인정보는 개인정보처리방침에 따라 처리됩니다.  <span class="tx-red underline">개인정보처리방침 자세히보기 ></span></li>
                                 <li>- 회원탈퇴 후 재가입 시 신규 가입으로 처리되며, 탈퇴 전 사용한 아이디로는 재가입이 불가능합니다.</li>
-                                <li>- 최근 배송완료 교재가 있을 경우 교재 환불 기간으로 인해 ‘구매일로부터 30일 이후 탈퇴’가 가능합니다.</li>
+                                <li>- 최근 발송완료 상품이 있을 경우 교재 환불 기간으로 인해 ‘구매일로부터 30일 이후 탈퇴’가 가능합니다.</li>
                             </ul>
                             <table cellspacing="0" cellpadding="0" class="listTable withdrawalTable under-gray bdt-gray tx-gray GM">
                                 <colgroup>
@@ -453,8 +449,8 @@
                                 <tr>
                                     <td class="Top">수강중인 온라인강좌</td>
                                     <td>
-                                        유료강좌: <span class="tx-blue strong">0</span>건<br/>
-                                        무료강좌: <span class="tx-blue strong">1</span>건
+                                        유료강좌: <span class="tx-blue strong">{{$data['on_cnt']}}</span>건<br/>
+                                        무료강좌: <span class="tx-blue strong">{{$data['on_free_cnt']}}</span>건
                                     </td>
                                     <td>즉시탈퇴가능</td>
                                     <td>탈퇴후 강좌 수강 및 서비스 이용불가</td>
@@ -462,84 +458,91 @@
                                 <tr>
                                     <td class="Top">수강중인 학원강좌</td>
                                     <td>
-                                        유료강좌: <span class="tx-blue strong">0</span>건<br/>
-                                        무료강좌: <span class="tx-blue strong">1</span>건
+                                        수강중강좌: <span class="tx-blue strong">{{$data['off_cnt']}}</span>건
                                     </td>
                                     <td>즉시탈퇴가능</td>
                                     <td>탈퇴후 강좌 수강불가</td>
                                 </tr>
                                 <tr>
                                     <td class="Top">사용중인 서비스</td>
-                                    <td>응시예정 모의고사: <span class="tx-blue strong">1</span>건</td>
+                                    <td>응시예정 모의고사: <span class="tx-blue strong">{{$data['mock_cnt']}}</span>건</td>
                                     <td>즉시탈퇴가능</td>
                                     <td>탈퇴후 모의고사 응시 서비스 이용불가</td>
                                 </tr>
                                 <tr>
-                                    <td class="Top">30일 이내 배송 내역</td>
-                                    <td>교재: <span class="tx-blue strong">1</span>건</td>
-                                    <td><span class="tx-red">즉시탈퇴 불가능</span></td>
+                                    <td class="Top">30일 이내 발송 내역</td>
+                                    <td>교재: <span class="tx-blue strong">{{$data['shop_cnt']}}</span>건</td>
+                                    <td>
+                                        @if($data['shop_cnt'] > 0)
+                                            <span class="tx-red">즉시탈퇴 불가능</span>
+                                        @else
+                                            즉시탈퇴가능
+                                        @endif
+                                    </td>
                                     <td>거래 종료(환불) 후 탈퇴 가능</td>
                                 </tr>
                                 <tr>
                                     <td class="Top">포인트/쿠폰</td>
                                     <td>
-                                        포인트: <span class="tx-blue strong">50,000</span>P<br/>
-                                        쿠폰: <span class="tx-blue strong">0</span>장
+                                        포인트: <span class="tx-blue strong">{{number_format($data['lecture_point'] + $data['book_point'])}}</span>P<br/>
+                                        쿠폰: <span class="tx-blue strong">{{$data['coupon_cnt']}}</span>장
                                     </td>
                                     <td>즉시탈퇴가능</td>
                                     <td>탈퇴후 복구 불가</td>
                                 </tr>
                                 </tbody>
                             </table>
-                            <div class="Search-Result strong mt40 mb15 tx-gray">* 탈퇴신청 <span class="normal">( * 필수입력항목 )</span></div>
-                            <form name="draw_form" id="draw_form" method="post">
-                                {!! csrf_field() !!}
-                                <table cellspacing="0" cellpadding="0" class="listTable userMemoTable withdrawalListTable under-gray bdt-gray tx-gray GM">
-                                    <colgroup>
-                                        <col style="width: 20%;"/>
-                                        <col style="width: 30%;"/>
-                                        <col style="width: 20%;"/>
-                                        <col style="width: 30%;"/>
-                                    </colgroup>
-                                    <tbody>
-                                    <tr>
-                                        <th class="w-tit">이름</th>
-                                        <td class="w-list">{{$data['MemName']}}</td>
-                                        <th class="w-tit">아이디</th>
-                                        <td class="w-list">{{$data['MemId']}}</td>
-                                    </tr>
-                                    <tr>
-                                        <th class="w-tit">비밀번호*</th>
-                                        <td class="w-list"><input type="password" id="pwd" name="pwd" class="iptPwd" placeholder="" maxlength="30"></td>
-                                        <th class="w-tit">탈퇴사유*</th>
-                                        <td class="w-list">
-                                            <select id="reason" name="reason" class="seleCause">
-                                                <option value="" selected="selected">탈퇴사유</option>
-                                                <option value="강사불만">강사불만</option>
-                                                <option value="강좌불만">강좌불만</option>
-                                                <option value="교재불만">교재불만</option>
-                                                <option value="서비스불만">서비스불만</option>
-                                                <option value="정보부족">정보부족</option>
-                                                <option value="타사이트이용">타사이트이용</option>
-                                                <option value="아이디변경">아이디변경</option>
-                                                <option value="기타">기타</option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th class="w-tit">의견*</th>
-                                        <td class="w-list" colspan="3"><input type="text" id="opinion" name="opinion" class="iptWrite" placeholder="" maxlength="100" style="width: 498px;"></td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </form>
-                            <div class="w-btn">
-                                <ul>
-                                    <li><a class="blueBox NSK" href="javascript:;" id="btn_draw">탈퇴하기</a></li>
-                                    <li><a class="whiteBox NSK" href="javascript:;" onclick="closeWin('WITHDRAWALPASS')">탈퇴취소</a></li>
-                                </ul>
-                            </div>
+                            @if($data['shop_cnt'] == 0)
+                                <div class="Search-Result strong mt40 mb15 tx-gray">* 탈퇴신청 <span class="normal">( * 필수입력항목 )</span></div>
+                                <form name="draw_form" id="draw_form" method="post">
+                                    {!! csrf_field() !!}
+                                    <table cellspacing="0" cellpadding="0" class="listTable userMemoTable withdrawalListTable under-gray bdt-gray tx-gray GM">
+                                        <colgroup>
+                                            <col style="width: 20%;"/>
+                                            <col style="width: 30%;"/>
+                                            <col style="width: 20%;"/>
+                                            <col style="width: 30%;"/>
+                                        </colgroup>
+                                        <tbody>
+                                        <tr>
+                                            <th class="w-tit">이름</th>
+                                            <td class="w-list">{{$data['MemName']}}</td>
+                                            <th class="w-tit">아이디</th>
+                                            <td class="w-list">{{$data['MemId']}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th class="w-tit">비밀번호*</th>
+                                            <td class="w-list"><input type="password" id="pwd" name="pwd" class="iptPwd" placeholder="" maxlength="30"></td>
+                                            <th class="w-tit">탈퇴사유*</th>
+                                            <td class="w-list">
+                                                <select id="reason" name="reason" class="seleCause">
+                                                    <option value="" selected="selected">탈퇴사유</option>
+                                                    <option value="강사불만">강사불만</option>
+                                                    <option value="강좌불만">강좌불만</option>
+                                                    <option value="교재불만">교재불만</option>
+                                                    <option value="서비스불만">서비스불만</option>
+                                                    <option value="정보부족">정보부족</option>
+                                                    <option value="타사이트이용">타사이트이용</option>
+                                                    <option value="아이디변경">아이디변경</option>
+                                                    <option value="기타">기타</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th class="w-tit">의견*</th>
+                                            <td class="w-list" colspan="3"><input type="text" id="opinion" name="opinion" class="iptWrite" placeholder="" maxlength="100" style="width: 498px;"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </form>
+                                <div class="w-btn">
+                                    <ul>
+                                        <li><a class="blueBox NSK" href="javascript:;" id="btn_draw">탈퇴하기</a></li>
+                                        <li><a class="whiteBox NSK" href="javascript:;" onclick="closeWin('WITHDRAWALPASS')">탈퇴취소</a></li>
+                                    </ul>
+                                </div>
                         </div>
+                    @endif
                         <!-- PASSZONE-List -->
                     </div>
                 </div>

@@ -18,28 +18,28 @@
             padding:0 !important;
             background:#fff;
         }
-        .evtCtnsBox {width:100%; text-align:center; min-width:1210px}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px}
 
         /************************************************************/
 
-        .wb_top {background:#424ac7}
+        .wb_top {background:#099891}
         .wb_01 {background:#efefef}
         .wb_02 {background:#313c4e}
         .wb_03 {background:#ececec;}
-        .wb_03_con2 {position:relative; width:1210px; margin:0 auto; position:relative !important}
+        .wb_03_con2 {position:relative; width:1120px; margin:0 auto; position:relative !important}
         .wb_03_con2 p {position:absolute; top:45%; width:67px; height:67px; margin-top:-33px; z-index:100}
         .wb_03_con2 p a {cursor:pointer}
         .wb_03_con2 p.leftBtn {left:100px}
         .wb_03_con2 p.rightBtn {right:100px}
 
         .wb_04 {background:#ececec; padding-bottom:100px;}
-        .wb_04_con2 {position:relative; width:1210px; margin:0 auto; position:relative !important}
+        .wb_04_con2 {position:relative; width:1120px; margin:0 auto; position:relative !important}
         .wb_04_con2 p {position:absolute; top:45%; width:67px; height:67px; margin-top:-33px; z-index:100}
         .wb_04_con2 p a {cursor:pointer}
         .wb_04_con2 p.leftBtn {left:100px}
         .wb_04_con2 p.rightBtn {right:100px}
 
-        .wb_06 {background:#ffffff;}
+        .wb_06 {background:#fff;}
 
 
     </style>

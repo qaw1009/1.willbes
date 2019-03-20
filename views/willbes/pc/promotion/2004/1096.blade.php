@@ -47,7 +47,7 @@
 
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner">
-            <a href="http://www.willbesgosi.net/event/movie/event.html?event_cd=off_180426_02&topMenuType=F">
+            <a href="{{ site_url('/pass/promotion/index/cate/3043/code/1101') }}">
                 <img src="http://file3.willbes.net/new_gosi/2018/11/EV181123_sky.png" alt="7급 초시생 합격전략설명회">
             </a>
         </div>
@@ -55,8 +55,8 @@
         <div class="evtCtnsBox wb_cts01">
             <img src="http://file3.willbes.net/new_gosi/2019/01/EV190128_c1.png" alt="7급 행정직 탭" usemap="#Map181123_c1" border="0" /><br>
             <map name="Map181123_c1" >
-                <area shape="rect" coords="156,19,540,86" href="{{ site_url('#none') }}" onFocus="this.blur();"  alt="7개월 단기완성 커리큘럼"/>
-                <area shape="rect" coords="675,14,1061,91" href="{{ site_url('/pass/promotion/index/cate/3043/code/1101') }}" onFocus="this.blur();" alt="7개월 문제풀이 집약 커리큘럼"/>
+                <area shape="rect" coords="156,19,540,86" href="{{ site_url('#none') }}" onFocus="this.blur();"  alt="9급 106일 마무리반"/>
+                <area shape="rect" coords="675,14,1061,91" href="{{ site_url('/pass/promotion/index/cate/3044/code/1097') }}" target="_blank" onFocus="this.blur();" alt="7급 170일 마무리반"/>
             </map>
             <img src="http://file3.willbes.net/new_gosi/2019/01/EV190128_c2.png" alt="윌비스 7급 행정직 7개월 단기완성 순환반" />
         </div><!--wb_cts01//-->
@@ -84,7 +84,7 @@
                     <img src="http://file3.willbes.net/new_gosi/2018/11/EV181123_c4.png" /><br>
                     <img src="http://file3.willbes.net/new_gosi/2019/01/EV190128_c6.jpg" /><br>
                     <img src="http://file3.willbes.net/new_gosi/2019/01/EV190128_c7.jpg" /><br>
-                    <a href="{{ site_url('/pass/promotion/index/cate/3043/code/1101') }}">
+                    <a href="{{ site_url('/pass/promotion/index/cate/3043/code/1101') }}" target="_blank">
                         <img src="http://file3.willbes.net/new_gosi/2019/01/EV190128_c9.jpg" />
                     </a>
                 </div>
@@ -93,7 +93,7 @@
                     <img src="http://file3.willbes.net/new_gosi/2018/11/EV181123_c10.png" /><br>
                     <img src="http://file3.willbes.net/new_gosi/2018/11/EV181123_c12.jpg" /><br>
                     <img src="http://file3.willbes.net/new_gosi/2018/11/EV181123_c13.jpg" /><br>
-                    <a href="{{ site_url('/pass/promotion/index/cate/3043/code/1100') }}">
+                    <a href="{{ site_url('/pass/promotion/index/cate/3043/code/1100') }}" target="_blank">
                         <img src="http://file3.willbes.net/new_gosi/2019/01/EV190128_c14.jpg" />
                     </a>
                 </div>

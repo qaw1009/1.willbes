@@ -65,9 +65,9 @@
 
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner">
-            <div><a href="http://www.willbesgosi.net/notice/view.html?topMenuType=F&topMenuGnb=FM_008&topMenu=002&menuID=FM_008_004&BOARD_MNG_SEQ=&NOTICETYPE=event&INCTYPE=view&currentPage=1&BOARD_SEQ=&PARENT_BOARD_SEQ=&searchEventNo=1001&SEARCHKIND=&SEARCHTEXT="><img  src="http://file3.willbes.net/new_gosi/2019/02/EV190121Y_sky01.jpg" alt="환승 이벤트"></a></div>
-            <div><a href="http://www.willbesgosi.net/counsel/counsel_step1.html?BOARDTYPE=counselReserve&INCTYPE=counsel_step1&BOARD_MNG_SEQ=CR_000&topMenuType=F&topMenuGnb=FM_006&topMenu=001&topMenuName=9%EA%B8%89%20%EA%B3%B5%EB%AC%B4%EC%9B%90&menuID=FM_006_002"><img  src="http://file3.willbes.net/new_gosi/2019/02/EV181115_sky2.png" alt="환승 이벤트"></a></div>
-            <div><a href="https://pf.kakao.com/_kcZIu/chat"><img src="http://file3.willbes.net/new_gosi/2019/02/EV190121Y_sky02.jpg" alt="환승 이벤트" border="0"></a></div>
+            <!--div><a href="{{ site_url('#none') }}" target="_blank"><img src="http://file3.willbes.net/new_gosi/2019/02/EV190121Y_sky01.jpg" alt="9급 설명회"></a></div-->
+            <div><a href="{{ site_url('/pass/consultManagement/index') }}" target="_blank"><img  src="http://file3.willbes.net/new_gosi/2019/02/EV181115_sky2.png" alt="1:1"></a></div>
+            <div><a href="https://pf.kakao.com/_kcZIu/chat" target="_blank"><img src="http://file3.willbes.net/new_gosi/2019/02/EV190121Y_sky02.jpg" alt="카카오"></a></div>
         </div>
 
         <!-- 타이머 -->
@@ -113,7 +113,7 @@
         </div><!--wb_cts03//-->
 
         <div class="evtCtnsBox wb_cts04" >
-            <a href="http://www.willbesgosi.net/lecture/passLectureList.html?topMenuType=F&leftMenuLType=M0102&lecKType=D&topMenuType=F&topMenuGnb=FM_001&topMenu=001&topMenuName=9%EA%B8%89%EA%B3%B5%EB%AC%B4%EC%9B%90&menuID=FM_012_004&searchCategoryCode=001"><img src="http://file3.willbes.net/new_gosi/2019/02/190208_final_06.png" border="0" /></a>
+            <a href="{{ site_url('/pass/offLecture/index?cate_code=3043&course_idx=1062) }}"><img src="http://file3.willbes.net/new_gosi/2019/02/190208_final_06.png" border="0" /></a>
         </div><!--wb_cts04//-->
 
     </div>

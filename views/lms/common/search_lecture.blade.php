@@ -119,6 +119,10 @@
                 var $parent_element = @if($locationid === 'subLecAdd' || $locationid === 'essLecAdd' || $locationid === 'selLecAdd' ) 'ProdCodeSub'; @else 'ProdCode_lecture'; @endif
 
                 $(document).ready(function() {
+
+
+
+
                     // 페이징 번호에 맞게 일부 데이터 조회
                     $datatable_modal = $list_table_modal.DataTable({
                         serverSide: true,
@@ -215,6 +219,7 @@
                     });
 
 
+
                     // 적용 버튼
                     //$('#_btn_apply').on('click', function() {
                     function sendContent() {
@@ -226,12 +231,6 @@
 
                         var nowRowCnt = ($parent_regi_form.find("#"+$parent_location+" tr")).length - 1;
                         var seq = nowRowCnt+1;
-
-                        /*
-                        console.log($parent_location);
-                        console.log(nowRowCnt);
-                        console.log(seq);
-                        */
 
                         for (i=0;i<allCnt;i++)	 {	//노출된 갯수에서 선택한 것만 적용되게끔...
                             //##
@@ -275,6 +274,18 @@
                         }
                         $("#pop_modal").modal('toggle');
                     }
+
+                    console.log($parent_location+' - '+$parent_location_tr);
+
+                    "#"+$parent_location.find($parent_location_tr).each(function() {
+                        that = $(this);
+                        code = that.find('input[name="ProdCodeSub[]"]').val();
+                        route_name = that.text().trim();
+
+
+                    });
+
+
                 });
             </script>
         @stop

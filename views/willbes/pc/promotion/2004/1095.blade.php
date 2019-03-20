@@ -84,7 +84,7 @@
         <!-- 타이머 //-->
 
         <div class="evtCtnsBox wb_top" >
-            <img src="http://file3.willbes.net/new_gosi/2019/02/190208_final_01.png" alt="윌비스 파이널 모의고사"  />
+            <img src="http://file3.willbes.net/new_gosi/2019/03/190318_final_01.png" alt="윌비스 파이널 모의고사"  />
         </div><!--WB_top//-->
 
         <div class="evtCtnsBox wb_cts01" >

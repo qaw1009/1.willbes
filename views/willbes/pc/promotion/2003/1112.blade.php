@@ -138,12 +138,12 @@
         <div class="LAeventA02">
             <img src="/public/img/willbes/leave_army/la_on_01.jpg" alt=""/>
             <ul>
-                <li><a href="#none"><img src="/public/img/willbes/leave_army/la_on_01_m1.jpg" alt="소방직"/></a></li>
-                <li><a href="#none"><img src="/public/img/willbes/leave_army/la_on_01_m2.jpg" alt="경찰직"/></a></li>
-                <li><a href="#none"><img src="/public/img/willbes/leave_army/la_on_01_m3.jpg" alt="군무원"/></a></li>
-                <li><a href="#none"><img src="/public/img/willbes/leave_army/la_on_01_m4.jpg" alt="기술직"/></a></li>
-                <li><a href="#none"><img src="/public/img/willbes/leave_army/la_on_01_m5.jpg" alt="일반행정직"/></a></li>
-                <li><a href="#none"><img src="/public/img/willbes/leave_army/la_on_01_m6.jpg" alt="소방(산업)기사 자격증"/></a></li>
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1113') }}"><img src="/public/img/willbes/leave_army/la_on_01_m1.jpg" alt="소방직"/></a></li>
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1113') }}"><img src="/public/img/willbes/leave_army/la_on_01_m2.jpg" alt="경찰직"/></a></li>
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1113') }}"><img src="/public/img/willbes/leave_army/la_on_01_m3.jpg" alt="군무원"/></a></li>
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1113') }}"><img src="/public/img/willbes/leave_army/la_on_01_m4.jpg" alt="기술직"/></a></li>
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1113') }}"><img src="/public/img/willbes/leave_army/la_on_01_m5.jpg" alt="일반행정직"/></a></li>
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1113') }}"><img src="/public/img/willbes/leave_army/la_on_01_m6.jpg" alt="소방(산업)기사 자격증"/></a></li>
             </ul>
             <img src="/public/img/willbes/leave_army/la_on_02.jpg"  alt="" usemap="#Mappass02"/>
             <map name="Map" id="Mappass02">

@@ -1,7 +1,7 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5 class="mt-20">- 모의고사 기준으로 조정점수를 수동반영하고 성적 통계를 확인하는 메뉴입니다.(개인 성적표 통계 처리를 위한 단계)</h5>
+    <h5 class="mt-20">- 설문을 등록하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
 
@@ -17,7 +17,6 @@
         <input type="hidden" id="MgIdx" name="MgIdx" value="">
     </form>
 
-    <div class="mt-20">* 문항을 등록하는 페이지입니다.</div>
     <div style="text-align:right;"><button type="button" class="btn btn-primary" id="btn_search" onClick="addquestionCreate();">등록</button></div>
     <div class="x_panel mt-10" style="overflow-x: auto; overflow-y: hidden;">
         <div class="x_content">

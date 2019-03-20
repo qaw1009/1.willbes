@@ -1,6 +1,6 @@
 @extends('lcms.layouts.master')
 @section('content')
-    <h5>- 설문 문항을 등록하는 메뉴입니다.</h5>
+    <h5>- - 설문을 등록하는 메뉴입니다.</h5>
     {!! form_errors() !!}
     <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
         @if($method == 'update')
@@ -11,7 +11,7 @@
             <div class="x_title">
                 <h2>문항등록</h2>
                 <div class="pull-right">
-                    <span class="required">*</span> 표시된 항목은 필수 입력 항목입니다.
+                    <span class="required">*</span> 표시된 항목은 필수 입력 항목입니다. <br>
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -30,6 +30,7 @@
                     <label class="control-label col-md-1-1">유형 <span class="required">*</span>
                     </label>
                     <div class="col-md-10 form-inline">
+                        <span class="required">*</span> <span style="color:red;">유형설명 - 선택형(단일선택 객관식), 선다형(서술형 여러개), 복수형(다중선택 객관식)</span><br>
                         @if($method == 'update')
                             <select id="Type" name="Type" title="Type" class="seleProcess f_left" onchange="seltype(this);">
                                 <option>-유형-</option>

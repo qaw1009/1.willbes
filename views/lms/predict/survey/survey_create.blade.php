@@ -1,6 +1,6 @@
 @extends('lcms.layouts.master')
 @section('content')
-    <h5>- 설문 문항을 등록하는 메뉴입니다.</h5>
+    <h5>- 설문을 등록하는 메뉴입니다.</h5>
     {!! form_errors() !!}
     <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
         @if($method == 'update')

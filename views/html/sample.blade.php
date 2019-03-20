@@ -134,7 +134,7 @@
                 <li class="w50"><a href="{{ site_url('/home/html/event_replyNotice') }}" target="_blank">└ 공지기능 댓글 include <span>*</span></a></li>
                 <li><a href="{{ site_url('/home/html/event_replyNotice_pop') }}" target="_blank">└ 공지기능 댓글 공지글쓰기 팝업 size 800x700 <span>*</span></a></li>
                 <li><a href="{{ site_url('/home/html/event_onCop_190307_c_pop2') }}" target="_blank">└ 경찰면접 역전 꿀팁 대방출 인증하기 size 800x700 <span>*</span></a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190307_y') }}" target="_blank">2단계 동형모의고사 <span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/1127') }}" target="_blank">2단계 동형모의고사 <span>*</span></a></li>
                 <li><a href="{{ site_url('/home/html/event_replyUrl') }}" target="_blank">└ 홍보 url 댓글 include <span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onCop_basic_2019') }}" target="_blank">기본이론 2019 3/21(목) 개강</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_offCop_190311_c') }}" target="_blank">실전빅매치데이 1 모의고사</a></li>

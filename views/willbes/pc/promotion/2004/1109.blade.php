@@ -202,24 +202,24 @@
                 <div class="tabContents" id="tab1" >
                     <p><img src="http://file3.willbes.net/new_gosi/2018/11/EV181120_L1_5_c1.png"  alt="" usemap="#EV181120_L1_5_c1" border="0"/>
                         <map name="EV181120_L1_5_c1" >
-                            <area shape="rect" coords="187,148,532,181" href="{{ site_url('#none') }}"   target="_blank"/>
-                            <area shape="rect" coords="678,147,1022,181"  href="{{ site_url('#none') }}"  target="_blank"/>
-                            <area shape="rect" coords="186,357,533,393"  href="{{ site_url('#none') }}"   target="_blank"/>
-                            <area shape="rect" coords="679,358,1023,392"  href="{{ site_url('#none') }}"   target="_blank"/>
-                            <area shape="rect" coords="187,568,532,601"  href="{{ site_url('#none') }}"   target="_blank"/>
-                            <area shape="rect" coords="678,568,1022,601"  href="{{ site_url('#none') }}"   target="_blank"/>
+                            <area shape="rect" coords="187,148,532,181" href="{{ site_url('/pass/offPackage/index?cate_code=3050&course_idx=1062') }}"   target="_blank"/>
+                            <area shape="rect" coords="678,147,1022,181"  href="{{ site_url('/pass/offPackage/index?cate_code=3050&course_idx=1062) }}"  target="_blank"/>
+                            <area shape="rect" coords="186,357,533,393"  href="{{ site_url('/pass/offPackage/index?cate_code=3050&course_idx=1062') }}"   target="_blank"/>
+                            <area shape="rect" coords="679,358,1023,392"  href="{{ site_url('/pass/offPackage/index?cate_code=3050&course_idx=1062') }}"   target="_blank"/>
+                            <area shape="rect" coords="187,568,532,601"  href="{{ site_url('/pass/offPackage/index?cate_code=3050&course_idx=1062') }}"   target="_blank"/>
+                            <area shape="rect" coords="678,568,1022,601"  href="{{ site_url('/pass/offPackage/index?cate_code=3050&course_idx=1062') }}"   target="_blank"/>
                         </map>
                     </p>
                 </div>
                 <div class=" tabContents" id="tab2">
                     <p><img src="http://file3.willbes.net/new_gosi/2018/11/EV181120_L1_5_c2.png" usemap="#EV181120_L1_5_c2" border="0"   />
                         <map name="EV181120_L1_5_c2" >
-                            <area shape="rect" coords="187,148,532,181" href="{{ site_url('#none') }}"   target="_blank"/>
-                            <area shape="rect" coords="678,147,1022,181" href="{{ site_url('#none') }}"   target="_blank"/>
-                            <area shape="rect" coords="186,357,533,393" href="{{ site_url('#none') }}"   target="_blank"/>
-                            <area shape="rect" coords="679,358,1023,392" href="{{ site_url('#none') }}"   target="_blank"/>
-                            <area shape="rect" coords="187,568,532,601" href="{{ site_url('#none') }}"   target="_blank"/>
-                            <area shape="rect" coords="678,568,1022,601" href="{{ site_url('#none') }}"   target="_blank"/>
+                            <area shape="rect" coords="187,148,532,181" href="{{ site_url('/pass/offPackage/index?cate_code=3050&course_idx=1061') }}"   target="_blank"/>
+                            <area shape="rect" coords="678,147,1022,181" href="{{ site_url('/pass/offPackage/index?cate_code=3050&course_idx=1061') }}"   target="_blank"/>
+                            <area shape="rect" coords="186,357,533,393" href="{{ site_url('/pass/offPackage/index?cate_code=3050&course_idx=1061') }}"   target="_blank"/>
+                            <area shape="rect" coords="679,358,1023,392" href="{{ site_url('/pass/offPackage/index?cate_code=3050&course_idx=1061') }}"   target="_blank"/>
+                            <area shape="rect" coords="187,568,532,601" href="{{ site_url('/pass/offPackage/index?cate_code=3050&course_idx=1061') }}"   target="_blank"/>
+                            <area shape="rect" coords="678,568,1022,601" href="{{ site_url('/pass/offPackage/index?cate_code=3050&course_idx=1061') }}"   target="_blank"/>
                         </map>
                     </p>
                 </div>

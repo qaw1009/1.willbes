@@ -107,6 +107,7 @@ class LectureModel extends CommonLectureModel
                      ,Aa.CcdName as SaleStatusCcd_Name,A.SiteCode,Ab.SiteName
                     ,B.CourseIdx,B.SubjectIdx,B.LearnPatternCcd,B.SchoolYear,B.MultipleApply,B.wLecIdx,B.StudyStartDate
                     ,Ba.CourseName,Bb.SubjectName
+                    ,C.CateCode ,Ca.CateName, Cb.CateName as CateName_Parent
                     ,D.SalePrice, D.SaleRate, D.RealSalePrice ,Z.wAdminName
                     ,IFNULL(BoardTotal.BoardCnt,0) AS BoardTotalCnt
                     ,IFNULL(Board1.BoardCnt,0) AS BoardCnt1
@@ -127,6 +128,9 @@ class LectureModel extends CommonLectureModel
                 left outer join lms_product_course Ba on B.CourseIdx = Ba.CourseIdx and Ba.IsStatus=\'Y\'
                 left outer join lms_product_subject Bb on B.SubjectIdx = Bb.SubjectIdx and Bb.IsStatus=\'Y\'
                 join lms_sys_code Bd on B.LecTypeCcd = Bd.Ccd and Bd.IsStatus=\'Y\'
+                join lms_product_r_category C on A.ProdCode = C.ProdCode and C.IsStatus=\'Y\'
+                join lms_sys_category Ca on C.CateCode = Ca.CateCode  and Ca.IsStatus=\'Y\'
+                left outer join lms_sys_category Cb on Ca.ParentCateCode = Cb.CateCode
                 left outer join lms_product_sale D on A.ProdCode = D.ProdCode and D.SaleTypeCcd=\'613001\' and D.IsStatus=\'Y\'	#Pc+모바일 판매가만 추출
                 join vw_product_r_professor_concat_repr E ON A.ProdCode = E.ProdCode
                 join wbs_sys_admin Z on A.RegAdminIdx = Z.wAdminIdx

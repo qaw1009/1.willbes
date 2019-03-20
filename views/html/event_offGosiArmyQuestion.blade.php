@@ -33,6 +33,7 @@
         .wb_cts04 {background:#ebebe1;}
 
         .wb_cts05 {background:#b99b81 url(http://file3.willbes.net/new_gosi/2019/01/EV190130_5_bg.png) no-repeat center top;}
+        .youtube01 {width:920px; border:16px solid #a98a6a; margin:auto; padding-bottom:100px;}
 
         .wb_cts06 {background:#ebebe1;}
 
@@ -63,17 +64,12 @@
     
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner">
-			<div><img src="http://file3.willbes.net/new_gosi/2019/01/EV190130_sky1.gif" alt="군무원상담전화번호"></div>
-            <div>
-                <a href="http://www.willbesgosi.net/boardExamGuide/guide_list.html?topMenuGnb=FM_005&BOARDTYPE=4&INCTYPE=list&BOARD_MNG_SEQ=&topMenuType=F&topMenuGnb=FM_005&topMenu=001&topMenuName=9%EA%B8%89%20%EA%B3%B5%EB%AC%B4%EC%9B%90&menuID=FM_005_004" target="_blank" >
-                <img src="http://file3.willbes.net/new_gosi/2019/01/EV190130_sky2.png" alt="시험정보" >
-                </a>
-            </div>
-            <div>
-                <a href="http://www.willbesgosi.net/event/movie/event.html?event_cd=off_180426_02&topMenuType=F" target="_blank" >
-                <img src="http://file3.willbes.net/new_gosi/2019/01/EV190130_sky3.png" alt="통생반" >
-                </a>
-            </div>
+            <ul>
+                <li><img src="http://file3.willbes.net/new_gosi/2019/01/EV190130_sky1.gif" alt="군무원상담전화번호"></li>
+                <li><a href="{{ site_url('/examAnnouncement/index/cate/3024') }}" target="_blank" ><img src="http://file3.willbes.net/new_gosi/2019/01/EV190130_sky2.png" alt="시험정보" ></a></li>
+                <li><a href="{{ site_url('/pass/promotion/index/cate/3043/code/1101') }}" target="_blank" ><img src="http://file3.willbes.net/new_gosi/2019/01/EV190130_sky3.png" alt="통생반" ></a></li>
+                <li><a href="https://www.youtube.com/watch?v=A6Vx6zyGmCg" target="_blank" ><img src="http://file3.willbes.net/new_gosi/2019/01/EV190130_sky4.png" alt="통생반" ></a></li>
+            </ul>
 		</div>  
 
         <div class="evtCtnsBox wb_top">
@@ -97,10 +93,8 @@
         <!--wb_cts04//-->
 
         <div class="evtCtnsBox wb_cts05">
-            <img src="http://file3.willbes.net/new_gosi/2019/01/EV190130_5.png" alt="#" usemap="#Map_2019_aca_go" border="0" />
-            <map name="Map_2019_aca_go">
-                <area shape="rect" coords="304,640,928,727" href="/notice/view.html?topMenuType=F&topMenuGnb=FM_008&topMenu=001&menuID=FM_008_004&BOARD_MNG_SEQ=&NOTICETYPE=event&INCTYPE=view&currentPage=1&BOARD_SEQ=&PARENT_BOARD_SEQ=&searchEventNo=1010&SEARCHKIND=&SEARCHTEXT=" target="_blank" alt="설명회 바로가기">
-            </map>
+            <img src="http://file3.willbes.net/new_gosi/2018/11/EV181126_11_1.png" alt="#" border="0" />
+            <div class="youtube01"><iframe width="920" height="515" src="https://www.youtube.com/embed/rMz8yDR9QNg" frameborder="0" allowfullscreen></iframe></div>
         </div>
         <!--wb_cts05//-->
 
@@ -112,8 +106,8 @@
         <div class="evtCtnsBox wb_cts07">
             <img src="http://file3.willbes.net/new_gosi/2019/01/EV190130_7.png" alt="#"  usemap="#EV190130_7" border="0" />
             <map name="EV190130_7" id="EV190130_7">
-                <area shape="rect" coords="986,197,1088,250" href="http://www.willbesgosi.net/lecture/passLectureDetail.html?topMenu=001&topMenuName=9급공무원&leftMenuLType=M0103&lecKType=D&searchCategoryCode=001&searchSubjectCode=1127&searchSubjectNm=&searchLeccode=D201900173&LEC_TYPE_CHOICE=D&hSELYEAR=2016&hSELMONTH=&hUSER_ID=&searchUserNm=&CMD=view&LECCODE_ARR=&topMenuType=F&topMenuGnb=FM_009&LEARNING_CD=M0103" />
-                <area shape="rect" coords="988,476,1086,537" href="http://www.willbesgosi.net/lecture/passLectureDetail.html?topMenu=001&topMenuName=9급공무원&leftMenuLType=M0103&lecKType=D&searchCategoryCode=001&searchSubjectCode=1127&searchSubjectNm=&searchLeccode=D201900174&LEC_TYPE_CHOICE=D&hSELYEAR=2016&hSELMONTH=&hUSER_ID=&searchUserNm=&CMD=view&LECCODE_ARR=&topMenuType=F&topMenuGnb=FM_009&LEARNING_CD=M0103" />
+                <area shape="rect" coords="986,197,1088,250" href="{{ site_url('/Package/show/cate/3043/pack/648001/prod-code/127443') }}" />
+                <area shape="rect" coords="988,476,1086,537" href="{{ site_url('/Package/show/cate/3043/pack/648001/prod-code/127444') }}" />
             </map>
         </div>
         <!--wb_cts07//-->

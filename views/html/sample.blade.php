@@ -16,12 +16,13 @@
     .c_both {content:""; display:block; clear:both; height:20px;}
 </style>
 
-<h1><a href="{{ site_url('/') }}" target="_blank">통합 메인 페이지 이동 - HTML 퍼블리싱 페이지</a></h1>
+<h1><a href="{{ site_url('/') }}" target="_blank">통합 HTML 퍼블리싱 페이지</a></h1>
 
 <ul>
     <li>
         <div>
             <ul>
+                <li><a href="{{ site_url('/home/html/m/sample') }}" target="_blank">모바일 html 퍼블리싱 페이지</a></li>
                 <li><a href="{{ site_url('/home/html/main') }}" target="_blank">통합메인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_cop_online') }}" target="_blank">경찰 온라인 메인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_cop_adm_online') }}" target="_blank">경행경채 온라인 메인</a></li>

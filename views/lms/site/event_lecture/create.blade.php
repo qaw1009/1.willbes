@@ -21,7 +21,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="site_code">운영사이트<span class="required">*</span></label>
                     <div class="form-inline col-md-4 item">
-                        {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', '', false) !!}
+                        {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', '', true) !!}
                     </div>
                     <label class="control-label col-md-1-1 d-line" for="promotion_code">프로모션코드</label>
                     <div class="col-md-4 form-inline ml-12-dot">
@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-1-1">카테고리정보 <span class="required">*</span>
+                    <label class="control-label col-md-1-1">카테고리정보
                     </label>
                     <div class="col-md-10 form-inline">
                         <button type="button" id="btn_category_search" class="btn btn-sm btn-primary">카테고리검색</button>
@@ -634,12 +634,6 @@
             var $method = '{{$method}}';
             var limit_type = $(":input:radio[name=limit_type]:checked").val();
             var event_register_length = $regi_form.find('input[name="event_register_parson_limit_type[]"]').length;
-            var site_category_length = $("input[name='cate_code[]']").length;
-
-            if (site_category_length < 1) {
-                alert('카테고리 선택 필드는 필수입니다.');
-                return false;
-            }
 
             if ($method == 'POST' && limit_type == 'M' && event_register_length <= 0) {
                 alert('다중리스트 정보를 입력해 주세요.');

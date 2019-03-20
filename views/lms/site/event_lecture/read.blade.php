@@ -53,10 +53,15 @@
                     <label class="control-label col-md-1-1">프로모션 경로</label>
                     {{--<div class="form-control-static col-md-10">{{$data['Link']}}</div>--}}
                     <div class="form-control-static col-md-10">
-                        @foreach($arr_cate_code as $key => $val)
-                            <p><b>[{{$val}}]</b> 관리자 확인용 : {{$data['SiteUrl'].'/promotion/index/cate/'.$key.'/code/'.$data['PromotionCode'].'?type=1'}}</p>
-                            <p><b>[{{$val}}]</b> 실제 경로 : {{$data['SiteUrl'].'/promotion/index/cate/'.$key.'/code/'.$data['PromotionCode']}}</p><br>
-                        @endforeach
+                        @if ($data['SiteCode'] == config_item('app_intg_site_code'))
+                            <p><b>[통합 사이트]</b> 관리자 확인용 : {{$data['SiteUrl'].'/promotion/index/code/'.$data['PromotionCode'].'?type=1'}}</p>
+                            <p><b>[통합 사이트]</b> 실제 경로 : {{$data['SiteUrl'].'/promotion/index/code/'.$data['PromotionCode']}}</p><br>
+                        @else
+                            @foreach($arr_cate_code as $key => $val)
+                                <p><b>[{{$val}}]</b> 관리자 확인용 : {{$data['SiteUrl'].'/promotion/index/cate/'.$key.'/code/'.$data['PromotionCode'].'?type=1'}}</p>
+                                <p><b>[{{$val}}]</b> 실제 경로 : {{$data['SiteUrl'].'/promotion/index/cate/'.$key.'/code/'.$data['PromotionCode']}}</p><br>
+                            @endforeach
+                        @endif
                     </div>
                 </div>
 

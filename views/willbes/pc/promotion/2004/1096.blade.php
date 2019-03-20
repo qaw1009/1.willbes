@@ -47,7 +47,7 @@
 
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner">
-            <a href="{{ site_url('/pass/promotion/index/cate/3043/code/1101') }}">
+            <a href="{{ site_url('/pass/promotion/index/cate/3043/code/1101') }}" target="_blank">
                 <img src="http://file3.willbes.net/new_gosi/2018/11/EV181123_sky.png" alt="7급 초시생 합격전략설명회">
             </a>
         </div>

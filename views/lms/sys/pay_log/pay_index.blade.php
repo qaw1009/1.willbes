@@ -87,10 +87,8 @@
                     }
                 },
                 createdRow: function(row, data, dataIndex) {
-                    if (data.PayType === 'CA' || data.PayType === 'NC') {
+                    if (data.ResultCode !== '0000' && data.ResultCode !== '00') {
                         $(row).addClass("danger");
-                    } else if (data.PayType === 'RP') {
-                        $(row).addClass("info");
                     }
                 },
                 columns: [

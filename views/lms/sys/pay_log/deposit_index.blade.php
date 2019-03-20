@@ -2,8 +2,8 @@
 
 @section('content')
     <ul class="nav nav-tabs bar_tabs mb-20" role="tablist">
-        <li role="presentation"><a href="{{ site_url('/sys/payLog/index/pay') }}" class="cs-pointer"><strong>결제/취소</strong></a></li>
-        <li role="presentation" class="active"><a href="{{ site_url('/sys/payLog/index/deposit') }}">가상계좌입금통보</a></li>
+        <li role="presentation"><a href="{{ site_url('/sys/payLog/index/pay') }}">결제/취소</a></li>
+        <li role="presentation" class="active"><a href="{{ site_url('/sys/payLog/index/deposit') }}" class="cs-pointer"><strong>가상계좌입금통보</strong></a></li>
     </ul>
     <h5>- 결제 관련 로그를 확인하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">

@@ -217,7 +217,7 @@
                                     rtn = "정상회원";
                                     break;
                                 case "N":
-                                    rtn = "탈퇴회원<br/>(" + data.substring(0,10) + ")";
+                                    rtn = "탈퇴회원<br/>(" + row.OutDate.substring(0,10) + ")";
                                     break;
                                 case "D":
                                     rtn = "휴면회원";

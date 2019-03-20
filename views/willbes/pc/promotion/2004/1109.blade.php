@@ -81,13 +81,10 @@
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
-        <div class="skybanner" >
-            <img src="http://file3.willbes.net/new_gosi/2018/11/EV181120_L7.png" alt="7급 초시생 합격전략설명회" usemap="#EV181120_L7" border="0" >
-            <map name="EV181120_L7" >
-                <area shape="rect" coords="3,132,94,163" href="http://www.willbesgosi.net/mouigosa/request/list.html?topMenuType=F&topMenuGnb=FM_004&topMenu=MAIN&menuID=FM_004_002_002&topMenuName=%EC%88%98%ED%97%98%EC%97%B0%EA%B5%AC%EC%86%8C&BOARDTYPE=4&INCTYPE=list" target="_blank"/>
-                <area shape="rect" coords="5,337,95,367" href="http://willbesgosi.net/notice/view.html?topMenuType=F&topMenuGnb=FM_008&topMenu=001&menuID=FM_008_004&BOARD_MNG_SEQ=&NOTICETYPE=event&INCTYPE=view&currentPage=1&BOARD_SEQ=&PARENT_BOARD_SEQ=&searchEventNo=996&SEARCHKIND=&SEARCHTEXT=" target="_blank"/>
-            </map>
-        </div>
+        <ul class="skybanner" >
+            <li><a href="{{ site_url('#none') }}" target="_blank"><img src="http://file3.willbes.net/new_gosi/2019/01/EV190128_L7.png" alt="실전모의고사" border="0" ></a></li>
+            <li><a href="{{ site_url('#none') }}" target="_blank"><img src="http://file3.willbes.net/new_gosi/2019/02/EV190128_L7-1.png" alt="문법요약정리" border="0" ></a></li>
+        </ul>
 
         <div class="evtCtnsBox wb_cts01" >
             <img src="http://file3.willbes.net/new_gosi/2018/11/EV181120_L1_1.png" alt="불꽃소방 9~10월 이론완성 종합반 " />
@@ -95,7 +92,12 @@
 
         <div class="evtCtnsBox wb_cts02" >
             <ul>
-                <li ><img src="http://file3.willbes.net/new_gosi/2018/11/EV181120_L1_2.png"  alt="불꽃소방 9~10월 이론완성 종합반 " /></li>
+                <li >
+                    <img src="http://file3.willbes.net/new_gosi/2019/01/EV190128_L1_2.png"  alt="불꽃소방 9~10월 이론완성 종합반 "  usemap="#EV190128_L1_2" border="0" />
+                    <map name="EV190128_L1_2" id="EV190128_L1_2">
+                        <area shape="rect" coords="456,1279,759,1352" href="{{ site_url('#none') }}"  target="_blank"/>
+                    </map>
+                </li>      
                 <li ><img src="http://file3.willbes.net/new_gosi/2018/11/EV181120_L1_3.png"  alt="불꽃소방 9~10월 이론완성 종합반 " usemap="#EV181120_L1_3" /></li>
                 <map name="EV181120_L1_3" id="EV181120_L1_3">
                     <area shape="rect" coords="196,690,355,733" href="javascript:fn_AllStartPlayer('R201800439','F201800124','270398','', 'high_Q', '2', 'WIDE');" />
@@ -201,36 +203,36 @@
                 <div class="tabContents" id="tab1" >
                     <p><img src="http://file3.willbes.net/new_gosi/2018/11/EV181120_L1_5_c1.png"  alt="" usemap="#EV181120_L1_5_c1" border="0"/>
                         <map name="EV181120_L1_5_c1" >
-                            <area shape="rect" coords="187,148,532,181" href="http://www.willbesgosi.net/lecture/passLectuerSJong.html?topMenu=009&topMenuName=%EC%86%8C%EB%B0%A9/%EB%B0%A9%EC%9E%AC&topMenuType=F&leftMenuLType=M0202&lecKType=J"   target="_blank"/>
-                            <area shape="rect" coords="678,147,1022,181"  href="http://www.willbesgosi.net/lecture/passLectuerSJong.html?topMenu=009&topMenuName=%EC%86%8C%EB%B0%A9/%EB%B0%A9%EC%9E%AC&topMenuType=F&leftMenuLType=M0202&lecKType=J"  target="_blank"/>
-                            <area shape="rect" coords="186,357,533,393"  href="http://www.willbesgosi.net/lecture/passLectuerSJong.html?topMenu=009&topMenuName=%EC%86%8C%EB%B0%A9/%EB%B0%A9%EC%9E%AC&topMenuType=F&leftMenuLType=M0202&lecKType=J"   target="_blank"/>
-                            <area shape="rect" coords="679,358,1023,392"  href="http://www.willbesgosi.net/lecture/passLectuerSJong.html?topMenu=009&topMenuName=%EC%86%8C%EB%B0%A9/%EB%B0%A9%EC%9E%AC&topMenuType=F&leftMenuLType=M0202&lecKType=J"   target="_blank"/>
-                            <area shape="rect" coords="187,568,532,601"  href="http://www.willbesgosi.net/lecture/passLectuerSJong.html?topMenu=009&topMenuName=%EC%86%8C%EB%B0%A9/%EB%B0%A9%EC%9E%AC&topMenuType=F&leftMenuLType=M0202&lecKType=J"   target="_blank"/>
-                            <area shape="rect" coords="678,568,1022,601"  href="http://www.willbesgosi.net/lecture/passLectuerSJong.html?topMenu=009&topMenuName=%EC%86%8C%EB%B0%A9/%EB%B0%A9%EC%9E%AC&topMenuType=F&leftMenuLType=M0202&lecKType=J"   target="_blank"/>
+                            <area shape="rect" coords="187,148,532,181" href="{{ site_url('#none') }}"   target="_blank"/>
+                            <area shape="rect" coords="678,147,1022,181"  href="{{ site_url('#none') }}"  target="_blank"/>
+                            <area shape="rect" coords="186,357,533,393"  href="{{ site_url('#none') }}"   target="_blank"/>
+                            <area shape="rect" coords="679,358,1023,392"  href="{{ site_url('#none') }}"   target="_blank"/>
+                            <area shape="rect" coords="187,568,532,601"  href="{{ site_url('#none') }}"   target="_blank"/>
+                            <area shape="rect" coords="678,568,1022,601"  href="{{ site_url('#none') }}"   target="_blank"/>
                         </map>
                     </p>
                 </div>
                 <div class=" tabContents" id="tab2">
                     <p><img src="http://file3.willbes.net/new_gosi/2018/11/EV181120_L1_5_c2.png" usemap="#EV181120_L1_5_c2" border="0"   />
                         <map name="EV181120_L1_5_c2" >
-                            <area shape="rect" coords="187,148,532,181" href="http://www.willbesgosi.net/lecture/passLectuerSJong.html?topMenu=009&topMenuName=%EC%86%8C%EB%B0%A9/%EB%B0%A9%EC%9E%AC&topMenuType=F&leftMenuLType=M0201&lecKType=J"   target="_blank"/>
-                            <area shape="rect" coords="678,147,1022,181" href="http://www.willbesgosi.net/lecture/passLectuerSJong.html?topMenu=009&topMenuName=%EC%86%8C%EB%B0%A9/%EB%B0%A9%EC%9E%AC&topMenuType=F&leftMenuLType=M0201&lecKType=J"   target="_blank"/>
-                            <area shape="rect" coords="186,357,533,393" href="http://www.willbesgosi.net/lecture/passLectuerSJong.html?topMenu=009&topMenuName=%EC%86%8C%EB%B0%A9/%EB%B0%A9%EC%9E%AC&topMenuType=F&leftMenuLType=M0201&lecKType=J"   target="_blank"/>
-                            <area shape="rect" coords="679,358,1023,392" href="http://www.willbesgosi.net/lecture/passLectuerSJong.html?topMenu=009&topMenuName=%EC%86%8C%EB%B0%A9/%EB%B0%A9%EC%9E%AC&topMenuType=F&leftMenuLType=M0201&lecKType=J"   target="_blank"/>
-                            <area shape="rect" coords="187,568,532,601" href="http://www.willbesgosi.net/lecture/passLectuerSJong.html?topMenu=009&topMenuName=%EC%86%8C%EB%B0%A9/%EB%B0%A9%EC%9E%AC&topMenuType=F&leftMenuLType=M0201&lecKType=J"   target="_blank"/>
-                            <area shape="rect" coords="678,568,1022,601" href="http://www.willbesgosi.net/lecture/passLectuerSJong.html?topMenu=009&topMenuName=%EC%86%8C%EB%B0%A9/%EB%B0%A9%EC%9E%AC&topMenuType=F&leftMenuLType=M0201&lecKType=J"   target="_blank"/>
+                            <area shape="rect" coords="187,148,532,181" href="{{ site_url('#none') }}"   target="_blank"/>
+                            <area shape="rect" coords="678,147,1022,181" href="{{ site_url('#none') }}"   target="_blank"/>
+                            <area shape="rect" coords="186,357,533,393" href="{{ site_url('#none') }}"   target="_blank"/>
+                            <area shape="rect" coords="679,358,1023,392" href="{{ site_url('#none') }}"   target="_blank"/>
+                            <area shape="rect" coords="187,568,532,601" href="{{ site_url('#none') }}"   target="_blank"/>
+                            <area shape="rect" coords="678,568,1022,601" href="{{ site_url('#none') }}"   target="_blank"/>
                         </map>
                     </p>
                 </div>
             </div><!--tabContaier//-->
         </div><!--wb_cts04//-->
 
-        <div class="evtCtnsBox wb_cts05" >
+        <!--div class="evtCtnsBox wb_cts05" >
             <img src="http://file3.willbes.net/new_gosi/2018/11/EV181120_L1_6.png"  usemap="#EV181120_L1_6" border="0"   alt="불꽃소방 9~10월 이론완성 종합반 " />
             <map name="EV181120_L1_6" id="EV181120_L1_6">
-                <area shape="rect" coords="466,1383,757,1445" href="http://willbesgosi.net/notice/view.html?topMenuType=F&topMenuGnb=FM_008&topMenu=001&menuID=FM_008_004&BOARD_MNG_SEQ=&NOTICETYPE=event&INCTYPE=view&currentPage=1&BOARD_SEQ=&PARENT_BOARD_SEQ=&searchEventNo=996&SEARCHKIND=&SEARCHTEXT="  target="_blank"/>
+                <area shape="rect" coords="466,1383,757,1445" href="{{ site_url('#none') }}"  target="_blank"/>
             </map>
-        </div>
+        </div-->
         <!--wb_cts05//-->
 
         <div class="evtCtnsBox wb_cts08">
@@ -239,7 +241,6 @@
                     <li><a href="#txt1">환불규정</a></li>
                     <li><a href="#txt2">학습 프로그램</a></li>
                     <li><a href="#txt3">수강생 혜택</a></li>
-                    <!--li><a href="#txt4">윌비스 장학혜택</a></li-->
                     <li><a href="#txt5">기타</a></li>
                 </ul>
                 <div id="txt1">
@@ -427,17 +428,5 @@
 
                     e.preventDefault()})})}
         );
-    </script>
-
-    <script src="/public/js/willbes/jquery.nav.js"></script>
-    <script>
-        $(function(e){
-            var targetOffset= $("#evtContainer").offset().top;
-            $('html, body').animate({scrollTop: targetOffset}, 700);
-            /*e.preventDefault(); */
-        });
-
-
-
     </script>
 @stop

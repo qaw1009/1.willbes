@@ -157,10 +157,10 @@ class Assignment extends BaseBoard
         ];
 
         $list = [];
-        $count = $this->lectureModel->listLecture(true, $arr_condition);
+        $count = $this->lectureModel->listLectureForBoard(true, $arr_condition);
 
         if ($count > 0) {
-            $list = $this->lectureModel->listLecture(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.ProdCode' => 'desc']);
+            $list = $this->lectureModel->listLectureForBoard(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.ProdCode' => 'desc']);
         }
 
         return $this->response([

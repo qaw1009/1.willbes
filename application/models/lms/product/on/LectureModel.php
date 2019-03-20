@@ -85,6 +85,126 @@ class LectureModel extends CommonLectureModel
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 
+    /**
+     * 강좌목록추출 + 첨삭게시판 현황 조인
+     * @param $is_count
+     * @param array $arr_condition
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
+     * TODO : 첨삭게시판 현황 조인으로 인한 속도 저하 시 listLecture 해당 메소드로 원복
+     */
+    public function listLectureForBoard($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    {
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+
+            $column = ' STRAIGHT_JOIN
+                     A.ProdCode,A.ProdName,A.IsNew,A.IsBest,A.IsUse,A.RegDatm
+                    ,Aa.CcdName as SaleStatusCcd_Name,A.SiteCode,Ab.SiteName
+                    ,Ac.CcdName as ProdTypeCcd_Name
+                    ,B.CourseIdx,B.SubjectIdx,B.LearnPatternCcd,B.SchoolYear,B.MultipleApply,B.wLecIdx,B.StudyStartDate
+                    ,Ba.CourseName,Bb.SubjectName,Bc.CcdName as LearnPatternCcd_Name
+                    ,Bd.CcdName as LecTypeCcd_Name
+                    ,Bf.CcdName as FreeLecTypeCcd_Name
+                    ,Be.wProgressCcd_Name,Be.wUnitCnt, Be.wUnitLectureCnt
+                    ,C.CateCode
+                    ,Ca.CateName, Cb.CateName as CateName_Parent
+                    ,D.SalePrice, D.SaleRate, D.RealSalePrice
+                    ,E.ProfIdx_String,E.wProfName_String
+                    ,IFNULL(F.DivisionCount,0) AS DivisionCount
+                    #,fn_product_count_cart(A.ProdCode) as CartCnt
+                    #,fn_product_count_order(A.ProdCode,\'676002\') as PayIngCnt
+                    #,fn_product_count_order(A.ProdCode,\'676001\') as PayEndCnt
+                    ,0 as CartCnt       #장바구니테이블 스캔으로 인해 쿼리속도 저하    19.02.18 최진영 차장님 협의
+                    ,0 as PayIngCnt    #주문테이블 스캔으로 인해 쿼리속도 저하
+                    ,0 as PayEndCnt    #주문테이블 스캔으로 인해 쿼리속도 저하
+                    #,fn_product_professor_name(A.ProdCode) as ProfName_Arr	//검색때문에 vw_product_r_professor_concat_repr 사용
+                    ,IFNULL(Y.ProdCode_Original,\'\') as ProdCode_Original
+                    ,Z.wAdminName
+                    ,IFNULL(BoardTotal.BoardCnt,0) AS BoardTotalCnt
+                    ,IFNULL(Board1.BoardCnt,0) AS BoardCnt1
+                    ,IFNULL(Board2.BoardCnt,0) AS BoardCnt2
+                    ,IFNULL(Board3.BoardCnt,0) AS BoardCnt3
+            ';
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $from = '
+                    from
+                        lms_product A
+                            join lms_sys_code Aa on A.SaleStatusCcd = Aa.Ccd and Aa.IsStatus=\'Y\'
+                            join lms_site Ab on A.SiteCode = Ab.SiteCode
+                            join lms_sys_code Ac on A.ProdTypeCcd = Ac.Ccd and Ac.IsStatus=\'Y\'
+                            join lms_product_lecture B on A.ProdCode = B.ProdCode
+                            left outer join lms_product_course Ba on B.CourseIdx = Ba.CourseIdx and Ba.IsStatus=\'Y\'
+                            left outer join lms_product_subject Bb on B.SubjectIdx = Bb.SubjectIdx and Bb.IsStatus=\'Y\'
+                            join lms_sys_code Bc on B.LearnPatternCcd = Bc.Ccd and Bc.IsStatus=\'Y\'
+                            join lms_sys_code Bd on B.LecTypeCcd = Bd.Ccd and Bd.IsStatus=\'Y\'
+                            left outer join lms_sys_code Bf on B.FreeLecTypeCcd = Bf.Ccd and Bf.IsStatus=\'Y\'
+                            join wbs_cms_lecture_basics Be on B.wLecIdx = Be.wLecIdx
+                            join lms_product_r_category C on A.ProdCode = C.ProdCode and C.IsStatus=\'Y\'
+                            join lms_sys_category Ca on C.CateCode = Ca.CateCode  and Ca.IsStatus=\'Y\'
+                            left outer join lms_sys_category Cb on Ca.ParentCateCode = Cb.CateCode
+                            left outer join lms_product_sale D on A.ProdCode = D.ProdCode and D.SaleTypeCcd=\'613001\' and D.IsStatus=\'Y\'	#Pc+모바일 판매가만 추출
+                            join vw_product_r_professor_concat_repr E ON A.ProdCode = E.ProdCode 
+                            left outer join (select ProdCode, count(*) as DivisionCount from lms_product_division where IsStatus=\'Y\' group by ProdCode) as F on A.ProdCode = F.ProdCode
+                            left outer join lms_product_copy_log Y on A.ProdCode = Y.ProdCode
+                            join wbs_sys_admin Z on A.RegAdminIdx = Z.wAdminIdx
+                            
+                            LEFT JOIN (
+                                SELECT 
+                                ProdCode, COUNT(ProdCode) AS BoardCnt
+                                FROM lms_board
+                                WHERE BmIdx = 88
+                                #INNER JOIN lms_board AS b ON a.BoardIdx= b.BoardIdx
+                                GROUP BY ProdCode
+                            ) AS BoardTotal ON BoardTotal.ProdCode = A.ProdCode
+                            
+                            LEFT JOIN (
+                                SELECT
+                                b.ProdCode, a.AssignmentStatusCcd, COUNT(a.AssignmentStatusCcd) AS BoardCnt
+                                FROM lms_board_assignment AS a
+                                INNER JOIN lms_board AS b ON a.BoardIdx= b.BoardIdx
+                                WHERE a.AssignmentStatusCcd = \'698001\'
+                                GROUP BY b.ProdCode, a.AssignmentStatusCcd
+                            ) AS Board1 ON Board1.ProdCode = A.ProdCode
+                            
+                            LEFT JOIN (
+                                SELECT
+                                b.ProdCode, a.AssignmentStatusCcd, COUNT(a.AssignmentStatusCcd) AS BoardCnt
+                                FROM lms_board_assignment AS a
+                                INNER JOIN lms_board AS b ON a.BoardIdx= b.BoardIdx
+                                WHERE a.AssignmentStatusCcd = \'698002\'
+                                GROUP BY b.ProdCode, a.AssignmentStatusCcd
+                            ) AS Board2 ON Board2.ProdCode = A.ProdCode
+                            
+                            LEFT JOIN (
+                            SELECT
+                            b.ProdCode, a.AssignmentStatusCcd, COUNT(a.AssignmentStatusCcd) AS BoardCnt
+                            FROM lms_board_assignment AS a
+                            INNER JOIN lms_board AS b ON a.BoardIdx= b.BoardIdx
+                            WHERE a.AssignmentStatusCcd = \'698003\'
+                            GROUP BY b.ProdCode, a.AssignmentStatusCcd
+                            ) AS Board3 ON Board3.ProdCode = A.ProdCode
+                    where A.IsStatus=\'Y\'
+        ';
+
+        // 사이트 권한 추가
+        $arr_condition['IN']['A.SiteCode'] = get_auth_site_codes();
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(true);
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        //echo 'select ' . $column . $from . $where . $order_by_offset_limit;        exit;
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
 
     /**
      * 상품 및 강좌 등록

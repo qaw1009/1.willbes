@@ -42,7 +42,7 @@ class Package extends \app\controllers\FrontController
 
         // 사이트별 과정 조회 (카테고리 소트매핑된 과정 조회 => 상품에 설정된 과정 조회)
         //$arr_base['course'] = $this->baseProductFModel->listCourseCategoryMapping($this->_site_code, $this->_cate_code);
-        $arr_base['course'] = $this->packageFModel->listSalesProduct($this->_learn_pattern, 'distinct(CourseIdx), CourseName', $arr_condition);
+        $arr_base['course'] = $this->packageFModel->listSalesProduct($this->_learn_pattern, 'distinct(CourseIdx), CourseName', $arr_condition, null, null, ['OrderNumCourse' => 'asc']);
 
         // 상품 검색조건 추가
         $arr_condition = array_merge_recursive($arr_condition, [
@@ -57,7 +57,7 @@ class Package extends \app\controllers\FrontController
 
         // 상품 정렬조건
         if (element('search_order', $arr_input) == 'course') {
-            $order_by = ['OrderNumCourse'=>'desc'];
+            $order_by = ['OrderNumCourse'=>'asc'];
         } else {
             $order_by = ['ProdCode'=>'desc'];
         }

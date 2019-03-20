@@ -55,7 +55,7 @@ class Lecture extends \app\controllers\FrontController
             $arr_base['course'] = $this->baseProductFModel->listCourseCategoryMapping($this->_site_code, $this->_cate_code);
         } else {
             // 무료강좌 (상품에 설정된 과정 조회)
-            $arr_base['course'] = $this->lectureFModel->listSalesProduct($this->_learn_pattern, 'distinct(CourseIdx), CourseName', $arr_condition);
+            $arr_base['course'] = $this->lectureFModel->listSalesProduct($this->_learn_pattern, 'distinct(CourseIdx), CourseName', $arr_condition, null, null, ['OrderNumCourse' => 'asc']);
         }
 
         // 상품 검색조건 추가

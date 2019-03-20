@@ -167,7 +167,7 @@
                                         +addComma(row.RealSalePrice)+'원@$'
                                         +row.SaleStatusCcd_Name+'@$'
                                     ;
-                                    return checked == 'Y' ? '<span class="red"><b>선택</b></span>':'<input type="checkbox" id="checkIdx' + seq + '" name="checkIdx" class="flat" value="' + codeInfo + '" />';
+                                    return checked == 'Y' ? '<span class="red"><b>선택<BR>완료</b></span>':'<input type="checkbox" id="checkIdx' + seq + '" name="checkIdx" class="flat" value="' + codeInfo + '" />';
                                 }},
                             @endif
                             {'data' : null, 'render' : function(data, type, row, meta) {

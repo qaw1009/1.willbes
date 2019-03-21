@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Message extends \app\controllers\FrontController
 {
-    protected $models = array('crm/messageF', '_lms/sys/site', 'support/supportBoardTwoWayF');
+    protected $models = array('crm/messageF', '_lms/sys/site', 'support/supportBoardTwoWayF', 'downloadF');
     protected $helpers = array('download');
     protected $auth_controller = true;
     protected $auth_methods = array();
@@ -141,11 +141,16 @@ class Message extends \app\controllers\FrontController
      */
     public function download()
     {
-        $file_path = $this->_reqG('path');
-        $file_name = $this->_reqG('fname');
         $send_idx = $this->_reqG('send_idx');
+        $this->downloadFModel->saveLog($send_idx);
 
-        $this->messageFModel->saveLog($send_idx);
+        $file_data = $this->downloadFModel->getFileData($send_idx, '', 'crm_message');
+        if (empty($file_data) === true) {
+            show_alert('등록된 파일을 찾지 못했습니다.','close','');
+        }
+
+        $file_path = $file_data['FilePath'].$file_data['FileName'];
+        $file_name = $file_data['RealFileName'];
         public_download($file_path, $file_name);
 
         show_alert('등록된 파일을 찾지 못했습니다.','close','');

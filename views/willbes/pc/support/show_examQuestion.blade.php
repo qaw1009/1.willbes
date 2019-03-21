@@ -46,8 +46,7 @@
                                         <tr>
                                             <td class="w-file tx-left pl20" colspan="5">
                                                 @foreach($data['AttachData'] as $row)
-                                                    <a href="javascript:void(0);" onclick='javascript:file_download("{{front_url($default_path.'/examQuestion/download?path=').urlencode($row['FilePath'].$row['FileName']).'&fname='.urlencode($row['RealName']).'&board_idx='.$board_idx }}");'>
-                                                    {{--<a href="{{front_url($default_path.'/examQuestion/download?path=').urlencode($row['FilePath'].$row['FileName']).'&fname='.urlencode($row['RealName']).'&board_idx='.$board_idx }}" onclick="javascript:file_download();" target="_blank">--}}
+                                                    <a href="javascript:void(0);" onclick='javascript:file_download("{{front_url($default_path.'/examQuestion/download?file_idx=').$row['FileIdx'].'&board_idx='.$board_idx }}");'>
                                                         <img src="{{ img_url('prof/icon_file.gif') }}"> {{$row['RealName']}}</a>
                                                 @endforeach
                                             </td>

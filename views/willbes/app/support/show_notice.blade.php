@@ -30,7 +30,7 @@
                     <tr class="flie">
                         <td class="w-file NGR">
                             @foreach($data['AttachData'] as $row)
-                                <a href="{{front_url($default_path.'/notice/download?path=').urlencode($row['FilePath'].$row['FileName']).'&fname='.urlencode($row['RealName']).'&board_idx='.$board_idx }}" target="_blank">
+                                <a href="{{front_url($default_path.'/notice/download?file_idx=').$row['FileIdx'].'&board_idx='.$board_idx }}" target="_blank">
                                     <img src="{{ img_url('prof/icon_file.gif') }}"> {{$row['RealName']}}</a>
                             @endforeach
                         </td>

@@ -79,7 +79,7 @@
                                 <td class="w-file">
                                     <a href="#none">
                                         @if(empty($row['AttachData']) === false)
-                                            <a href="{{site_url('/classroom/message/download?path=').urlencode($row['AttachData']).'&fname='.urlencode($row['SendAttachRealFileName']).'&send_idx='.$row['SendIdx']}}" target="_blank">
+                                            <a href="{{site_url('/classroom/message/download?').'send_idx='.$row['SendIdx']}}" target="_blank">
                                                 <img src="{{ img_url('prof/icon_file.gif') }}"></a>
                                         @endif
                                     </a>

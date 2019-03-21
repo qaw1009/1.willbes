@@ -4,6 +4,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class DownloadFModel extends WB_Model
 {
     protected $_table = [
+        'board_attach' => 'lms_board_attach',
+        'event_file' => 'lms_event_file',
+        'crm_send' => 'lms_crm_send',
         'lms_board_download_log' => 'lms_board_download_log',
         'lms_event_download_log' => 'lms_event_download_log'
     ];
@@ -11,6 +14,72 @@ class DownloadFModel extends WB_Model
     public function __construct()
     {
         parent::__construct('lms');
+    }
+
+    /**
+     * 다운로드 파일 조회
+     * @param string $content_idx [게시물 식별자]
+     * @param string $file_idx [첨부파일 연관 테이블 식별자]
+     * @param string $type [다운로드 타입 : board,event]
+     * @return null
+     */
+    public function getFileData($content_idx = '', $file_idx = '', $type = 'board')
+    {
+        switch ($type) {
+            case "board":
+                $column = 'AttachFilePath AS FilePath, AttachFileName AS FileName, AttachRealFileName AS RealFileName';
+                $table = $this->_table['board_attach'];
+                $arr_condition = [
+                    'RAW' => [
+                        'BoardFileIdx = ' => (empty($file_idx) === true) ? '\'\'' : $file_idx,
+                        'BoardIdx = ' => (empty($content_idx) === true) ? '\'\'' : $content_idx
+                    ],
+                    'EQ' => ['IsStatus' => 'Y']
+                ];
+                break;
+            case "board_assignment":
+                $column = 'AttachFilePath AS FilePath, AttachFileName AS FileName, AttachRealFileName AS RealFileName';
+                $table = $this->_table['board_attach'];
+                $arr_condition = [
+                    'RAW' => [
+                        'BoardFileIdx = ' => (empty($file_idx) === true) ? '\'\'' : $file_idx,
+                    ],
+                    'EQ' => ['IsStatus' => 'Y']
+                ];
+                break;
+            case "event":
+                $column = 'FileFullPath AS FilePath, FileName AS FileName, FileRealName AS RealFileName';
+                $table = $this->_table['event_file'];
+                $arr_condition = [
+                    'RAW' => [
+                        'EfIdx = ' => (empty($file_idx) === true) ? '\'\'' : $file_idx,
+                        'ElIdx = ' => (empty($content_idx) === true) ? '\'\'' : $content_idx
+                    ],
+                    'EQ' => ['IsUse' => 'Y']
+                ];
+                break;
+            case "crm_message":
+                $column = 'SendAttachFilePath AS FilePath, SendAttachFileName AS FileName, SendAttachRealFileName AS RealFileName';
+                $table = $this->_table['crm_send'];
+                $arr_condition = [
+                    'RAW' => [
+                        'SendIdx = ' => (empty($content_idx) === true) ? '\'\'' : $content_idx
+                    ],
+                    'EQ' => ['IsUse' => 'Y', 'IsStatus' => 'Y']
+                ];
+                break;
+            default:
+                return null;
+                break;
+        }
+
+        $from = " FROM {$table} ";
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $order_by_offset_limit = $this->_conn->makeLimitOffset(1, 0)->getMakeLimitOffset();
+
+        return $this->_conn->query('select '.$column .$from .$where . $order_by_offset_limit)->row_array();
     }
 
     public function saveLog($idx=null, $attach_type = 0)

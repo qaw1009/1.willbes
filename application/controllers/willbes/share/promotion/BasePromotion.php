@@ -183,9 +183,17 @@ class BasePromotion extends \app\controllers\FrontController
 
     public function download()
     {
-        $file_path = $this->_reqG('path');
-        $file_name = $this->_reqG('fname');
+        $file_idx = $this->_reqG('file_idx');
+        $event_idx = $this->_reqG('event_idx');
+        $this->downloadFModel->saveLogEvent($event_idx);
 
+        $file_data = $this->downloadFModel->getFileData($event_idx, $file_idx, 'event');
+        if (empty($file_data) === true) {
+            show_alert('등록된 파일을 찾지 못했습니다.','close','');
+        }
+
+        $file_path = $file_data['FilePath'].$file_data['FileName'];
+        $file_name = $file_data['RealFileName'];
         public_download($file_path, $file_name);
 
         show_alert('등록된 파일을 찾지 못했습니다.','close','');

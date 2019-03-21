@@ -42,7 +42,7 @@
                                 @if(empty($data['AttachData']) === false)
                                     @foreach($data['AttachData'] as $row)
                                         <li>
-                                            <a href="{{front_url('/classroom/assignment/download?path=').urlencode($row['FilePath'].$row['FileName']).'&fname='.urlencode($row['RealName']).'&board_idx='.$board_idx.'&attach_type=0' }}" target="_blank">
+                                            <a href="{{front_url('/classroom/assignment/download?file_idx=').$row['FileIdx'].'&attach_type=0' }}" target="_blank">
                                                 <img src="{{ img_url('prof/icon_file.gif') }}"> {{$row['RealName']}}</a>
                                         </li>
                                     @endforeach
@@ -91,7 +91,7 @@
                                                 <input class="file-reset NSK" type="button" value="X" />
                                                 @if(empty($data['AttachAssignmentData_User'][$i]) === false)
                                                     <span>
-                                                        <a href="{{front_url('/classroom/assignment/download?path=').urlencode($data['AttachAssignmentData_User'][$i]['FilePath'].$data['AttachAssignmentData_User'][$i]['FileName']).'&fname='.urlencode($data['AttachAssignmentData_User'][$i]['RealName']).'&board_idx='.$board_idx.'&attach_type=1' }}" target="_blank">
+                                                        <a href="{{front_url('/classroom/assignment/download?file_idx=').$data['AttachAssignmentData_User'][$i]['FileIdx'].'&attach_type=1' }}" target="_blank">
                                                         <img src="{{ img_url('prof/icon_file.gif') }}"> {{$data['AttachAssignmentData_User'][$i]['RealName']}}</a>
                                                     </span>
                                                 @endif

@@ -299,7 +299,7 @@
                                 @if (empty($file_data_promotion) === false)
                                     @foreach($file_data_promotion as $key => $row)
                                         <li> {{ $arrCircle[$key] }} {{ $row['FileRealName'] }}
-                                            <a href="{{ site_url('/promotion/download?path=').urlencode($row['FileFullPath']).urlencode($row['FileName']).'&fname='.urlencode($row['FileRealName']) }}" class="file-download ml-5"  target="_blank">
+                                            <a href="{{front_url('/promotion/download?file_idx=').$row['EfIdx'].'&event_idx='.$data['ElIdx'] }}" class="file-download ml-5" target="_blank">
                                                 다운로드
                                             </a>
                                         </li>

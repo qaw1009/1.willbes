@@ -67,18 +67,23 @@
                             <tr>
                                 <td class="w-data tx-left pb-zero">
                                     <dl class="w-info">
-                                        <dt>영어<span class="row-line">|</span>한덕현교수님 <span class="NSK ml10 nBox n2">진행중</span></dt>
+                                        <dt>
+                                            {{$row['SubjectName']}}<span class="row-line">|</span>
+                                            {{$row['wProfName']}}교수님 <span class="NSK ml10 nBox nn{{ substr($row['wLectureProgressCcd'], -1)+1 }}">{{$row['wLectureProgressCcdName']}}</span>
+                                        </dt>
                                     </dl>
                                     <div class="w-tit">
-                                        <a href="#none">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
+                                        {!! ($row['IsRebuy'] > 0) ? '<span class="tx-red">[수강연장]</span> ':'' !!} {{$row['subProdName']}}
                                     </div>
                                     <dl class="w-info tx-gray">
-                                        <dt>수강기간 : <span class="tx-black">2018-00-00 ~ 2018-00-00</span></dt>
+                                        <dt>수강기간 : <span class="tx-black">{{str_replace('-', '.', $row['LecStartDate'])}}~{{str_replace('-', '.', $row['RealLecEndDate'])}}</span></dt>
                                     </dl>
                                     <div class="w-start tx-gray">
                                         <ul class="f_left two">
+                                            <!--
                                             <li class="btn_white"><a href="#none">후기등록</a></li>
                                             <li class="btn_blue"><a href="#none">재수강신청</a></li>
+                                            -->
                                         </ul>
                                     </div>
                                     <div class="w-line">-</div>

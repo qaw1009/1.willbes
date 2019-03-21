@@ -52,12 +52,13 @@
                         <div class="will-Tit-Zone c_both">
                             <div class="will-Tit NG f_left">· 무한PASS선택</div>
                             <span class="willbes-Lec-Selected GM tx-gray" style="float: inherit">
-                                <select id="sitegroupcode" name="sitegroupcode" title="process" class="seleProcess">
+                                &nbsp;
+                                <!-- <select id="sitegroupcode" name="sitegroupcode" title="process" class="seleProcess">
                                     <option value="">과정</option>
                                     @foreach($sitegroup_arr as $row )
                                         <option value="{{$row['SiteGroupCode']}}" @if(isset($input_arr['sitegroupcode']) && $input_arr['sitegroupcode'] == $row['SiteGroupCode']) selected="selected" @endif>{{$row['SiteGroupName']}}</option>
                                     @endforeach
-                                </select>
+                                </select> -->
                                 <select id="passidx" name="passidx" class="seleName" >
                                     @if(empty($passlist) == true)
                                         <option value="">무한PASS를 선택해주십시요.</option>

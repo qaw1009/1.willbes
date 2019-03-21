@@ -105,7 +105,7 @@
                                                 @else
                                                     <a href="javascript:;" onclick="fnRetake('{{app_to_env_url($row['SiteUrl'])}}','{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}');"><span class="bBox blueBox NSK">재수강신청</span></a>
                                                 @endif
-                                                <a href="javascript:;" onclick="fnPostscript();"><span class="bBox whiteBox NSK">후기등록</span></a>
+                                                <a href="javascript:;" onclick="fnPostscript('{{$row['SiteCode']}}', '{{$row['CateCode']}}', '{{$row['ProdCodeSub']}}', '{{$row['SubjectIdx']}}', '{{$row['subProdName']}}', '{{$row['ProfIdx']}}' );"><span class="bBox whiteBox NSK">후기등록</span></a>
                                             </td>
                                         </tr>
                                     @empty
@@ -182,7 +182,7 @@
                                                     </dl>
                                                 </td>
                                                 <td class="w-answer">
-                                                    <a href="javascript:;" onclick="fnPostscript();"><span class="bBox whiteBox NSK">후기등록</a>
+                                                    <a href="javascript:;" onclick="fnPostscript('{{$row['SiteCode']}}', '{{$row['CateCode']}}', '{{$row['ProdCodeSub']}}', '{{$row['SubjectIdx']}}', '{{$row['subProdName']}}', '{{$row['ProfIdx']}}' );"><span class="bBox whiteBox NSK">후기등록</a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -209,9 +209,11 @@
                 </div>
             </div>
             <!-- willbes-Mypage-Tabs -->
+            <div id="WrapReply"></div>
         </div>
         {!! banner('내강의실_우측퀵', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
     </div>
+
     <form name="retakeForm" id="retakeForm" method="POST" action="">
         {!! csrf_field() !!}
         {!! method_field('POST') !!}
@@ -235,6 +237,7 @@
             });
         });
 
+
         function fnRetake($site, $o, $p, $ps)
         {
             $('#retake_orderidx').val($o);
@@ -246,9 +249,30 @@
             }
         }
 
-        function fnPostscript()
-        {
 
+        function fnPostscript(sitecode, catecode, prodcode, subjectidx, prodname, profidx)
+        {
+            var is_login = '{{sess_data('is_login')}}';
+            var ele_id = 'WrapReply';
+            var data = {
+                'ele_id' : ele_id,
+                'show_onoff' : $(this).data('write-type'),
+                'site_code' : sitecode,
+                'cate_code' : catecode,
+                'prod_code' : prodcode,
+                'subject_idx' : subjectidx,
+                'subject_name' : encodeURIComponent(prodname),
+                'prof_idx' : profidx
+            };
+
+            if ($(this).data('write-type') == 'on' && is_login != true) {
+                alert('로그인 후 이용해 주세요.');
+                return false;
+            }
+
+            sendAjax('{{ front_url('/support/studyComment/') }}', data, function(ret) {
+                $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');
+            }, showAlertError, false, 'GET', 'html');
         }
     </script>
 @stop

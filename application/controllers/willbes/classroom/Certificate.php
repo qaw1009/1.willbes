@@ -67,10 +67,10 @@ class Certificate extends \app\controllers\FrontController
                 ]
             ],
             'GTE' => [
-                'RealLecEndDate' => element('search_start_date', $input_arr)
+                'OrderDate' => element('search_start_date', $input_arr)
             ],
             'LTE' => [
-                'RealLecEndDate' => element('search_end_date', $input_arr)
+                'OrderDate' => element('search_end_date', $input_arr)
             ]
         ];
 

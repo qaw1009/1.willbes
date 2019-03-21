@@ -69,7 +69,7 @@
                             </ul>
                         </div>
                         <div class="willbes-listTable MyInfoBoxList widthAutoFull">
-                            <div class="will-Tit NG">나의 학습 기기 (무한PASS) <a class="f_right" href="#none"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
+                            <div class="will-Tit NG">나의 학습 기기 (무한PASS) <a class="f_right" href="{{front_url('/classroom/pass/')}}"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
                             <ul class="List-Table GM myTablet tx-gray">
                                 @forelse($data['device_list'] as $row)
                                     @if($row['DeviceType'] == 'P')

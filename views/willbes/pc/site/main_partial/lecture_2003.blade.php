@@ -5,6 +5,13 @@
     @foreach($data['best_product']['subjects'] as $subject_idx => $subject_name)
         <li><a href='#tab_prof_subject_{{ $subject_idx }}'><span>|</span>{{ $subject_name }}</a></li>
     @endforeach
+
+    {{-- 과목이 8개 이하라면 모자란만큼 빈 슬라이드 생성 --}}
+    @if(count($data['best_product']['subjects']) < 8)
+        @for($i = 0; $i < (8 - count($data['best_product']['subjects'])); $i++)
+            <li><a href='#none'><span>|</span></a></li>
+        @endfor
+    @endif
     </ul>
 
     <div id="prof-professors" class="prof-professors">

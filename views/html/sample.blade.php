@@ -145,9 +145,7 @@
                 <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190218_g') }}" target="_blank">영어 지옥 탈출반</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onCop_190219_g') }}" target="_blank">경찰영어 아침특강</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onCop_180504_p') }}" target="_blank">법학경채 PASS</a></li>
-                <li><a href="{{ site_url('/home/html/event_onCop_190219_c') }}" target="_blank">19 경찰1차대비 실전 문제풀이 패키지 <span>*</span></a></li>                
-                
-                
+                <li><a href="{{ site_url('/home/html/event_onCop_190219_c') }}" target="_blank">19 경찰1차대비 실전 문제풀이 패키지 <span>*</span></a></li>             
                 
                 
                 <li><p>경찰 학원 ▼</p></li> 
@@ -200,7 +198,7 @@
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiLsgTPass') }}" target="_blank">이상구 국제법/국제정치학 T-PASS</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiKdgTPass') }}" target="_blank">김덕관 행정학 T-PASS</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiKjsTPass') }}" target="_blank">김종상 소방학/관계법규 T-PASS</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_onGosiWelcome') }}" target="_blank">2019 윌비스 웰컴팩 - 2월</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/event_onGosiWelcome') }}" target="_blank">2019 윌비스 웰컴팩</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiStartPkg') }}" target="_blank">윌비스 기초입문 풀패키지 0원</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiAtoZ') }}" target="_blank">공무원의 A to Z</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiPassNote') }}" target="_blank">N수생의 합격노트</a></li>

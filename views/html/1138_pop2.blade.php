@@ -26,7 +26,7 @@
     .eventPopS4 {text-align:center;padding:20px 0; margin-top:20px}
     .eventPopS4 a {margin:0 5px}
     select,
-    input[type=file]
+    input[type=file],
     input[type=text] {padding:2px; margin-right:10px}
     }
 </style>
@@ -40,19 +40,27 @@
     <div class="eventPop">
 		<h3>경찰면접 역전 꿀팁 대방출 인증하기</h3>
         <div class="eventPopS1">
-            <span>직렬</span>
-            <select  name="test_subject" id="test_subject"style="width:120px" onchange="fn_area(this.value);">
-                <option value="AA">일반공채:남</option>
-                <option value="BA">일반공채:여</option>
-                <!-- <option value="CA">101단</option> -->
-                <option value="DA">전의경경채</option>
-            </select>
-            <span>지역</span>
-            <select id="listview" name="listview" >
-                <option value="">지역구분</option>
-            </select>
-            <span>응시번호</span>
-            <input type="text" name="textfield" id="textfield" style="width:120px">
+			<div>	
+				<span>직렬</span>
+				<select  name="test_subject" id="test_subject"style="width:120px" onchange="fn_area(this.value);">
+					<option value="AA">일반공채:남</option>
+					<option value="BA">일반공채:여</option>
+					<!-- <option value="CA">101단</option> -->
+					<option value="DA">전의경경채</option>
+				</select>
+				<span>지역</span>
+				<select id="listview" name="listview" >
+					<option value="">지역구분</option>
+				</select>
+				<span>응시번호</span>
+				<input type="text" name="textfield" id="textfield" style="width:120px">
+			</div>
+			<div class="mt10">				
+				<span>추천인아이디</span>
+				<input type="text" name="RE_USER_ID" id="RE_USER_ID" style="width:120px">
+				<span>추천인이름</span>
+				<input type="text" name="RE_USER_NM" id="RE_USER_NM" style="width:120px">
+			</div>
         </div>
         <div class="eventPopS2">
 			<!--

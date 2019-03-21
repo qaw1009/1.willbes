@@ -36,13 +36,12 @@
         .content_guide_box dd strong{ color:#555;}
         .content_guide_box dd p{ margin-bottom:3px;}
         .content_guide_box dd p.guide_txt_01{margin:5px 0 5px 15px;}
-        }
 
         .skybanner {
             position:fixed;
             bottom:200px;
             right:10px;
-            width:130px;
+            width:167px;
             z-index:1;
         }
         .skybanner2 {

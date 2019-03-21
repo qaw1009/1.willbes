@@ -36,32 +36,31 @@
         .content_guide_box dd strong{ color:#555;}
         .content_guide_box dd p{ margin-bottom:3px;}
         .content_guide_box dd p.guide_txt_01{margin:5px 0 5px 15px;}
-        }
+
 
         .skybanner {
             position:fixed;
             bottom:200px;
             right:10px;
-            width:130px;
+            width:167px;
             z-index:1;
         }
         .skybanner2 {
             position:absolute;
             width:187px;
-            top:220px;
+            top:50px;
             left:50%;
             margin-left:-660px; 
             z-index:1;
         }        	
     </style>
 
-
     <div class="evtContent" id="evtContainer">      
 
         <!--퀵메뉴-->
         <div class="skybanner">
-            <img src="http://file3.willbes.net/new_cop/On_Transfer/EV190320_p_sky.png" usemap="#sky" alt="합격환승이벤트">
-            <map name="sky">
+            <img src="http://file3.willbes.net/new_cop/On_Transfer/EV190320_p_sky.png" usemap="#sky01" alt="합격환승이벤트">
+            <map name="sky01">
                 <area shape="rect" coords="34,18,129,88" href="#transfer" alt="맨위로">
                 <area shape="rect" coords="34,98,129,152" href="#sky1" alt="합격환승이벤트">
                 <area shape="rect" coords="34,169,129,226" href="#sky2" alt="타학원 수강 인증">

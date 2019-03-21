@@ -8,56 +8,55 @@
             min-height: auto !important;
             margin-bottom:0 !important;
         }
-        .evtContent { 
-            position:relative;            
+        .evtContent {
+            position:relative;
             width:100% !important;
             min-width:1210px !important;
-            background:#ccc;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
-        }	
+        }
         .evtCtnsBox {width:100%; text-align:center; min-width:1210px}
 
         /************************************************************/
 
         .wb_top {width:100%; text-align:center; background:#3c3e3f url(http://file3.willbes.net/new_cop/2018/07/180713_EV01_bg_1.jpg) no-repeat center; margin-top:20px; min-width:1210px}
         .wb_top div {width:1210px; margin:0 auto; position:relative}
-        .wb_top span {position:absolute; display:block; top:610px; left:374px; width:130px; z-index:10; color:#fff6c8; font-size:40px; font-weight:bold; font-family:Verdana, Geneva, sans-serif; letter-spacing:-1px}	
+        .wb_top span {position:absolute; display:block; top:610px; left:374px; width:130px; z-index:10; color:#fff6c8; font-size:40px; font-weight:bold; font-family:Verdana, Geneva, sans-serif; letter-spacing:-1px}
 
         .wb_01 {width:100%; text-align:center; background:#dedede; min-width:1210px; position:relative; padding-bottom:120px; }
-            /* 슬라이드배너 */
-            .slide_con5 {position:relative; width:900px; margin:0 auto}	
-            .slide_con5 p {position:absolute; top:50%; width:67px; height:67px; margin-top:-33px; z-index:100}
-            .slide_con5 p a {cursor:pointer}
-            .slide_con5 p.leftBtn {left:-100px}
-            .slide_con5 p.rightBtn {right:-100px}
-            #slidesImg5 li {display:inline; float:left}	
-            #slidesImg5:after {content::""; display:block; clear:both}	
+        /* 슬라이드배너 */
+        .slide_con5 {position:relative; width:900px; margin:0 auto}
+        .slide_con5 p {position:absolute; top:50%; width:67px; height:67px; margin-top:-33px; z-index:100}
+        .slide_con5 p a {cursor:pointer}
+        .slide_con5 p.leftBtn {left:-100px}
+        .slide_con5 p.rightBtn {right:-100px}
+        #slidesImg5 li {display:inline; float:left}
+        #slidesImg5:after {content:""; display:block; clear:both}
 
         /* 탭 */
-        .tabContaier{width:100%; text-align:center;}
-        .tabContaier ul {width:100%; max-width:980px; text-align:center; margin:0 auto  }		
-        .tabContaier li {display:inline; text-align:center; float:left; }	
-        .tabContaier a img.off {display:block}
-        .tabContaier a img.on {display:none}
-        .tabContaier a.active img.off {display:none}
-        .tabContaier a.active img.on {display:block}
+        .evttabWrap{width:100%; text-align:center;}
+        .evttabWrap ul {width:100%; max-width:980px; text-align:center; margin:0 auto  }
+        .evttabWrap li {display:inline; text-align:center; float:left; }
+        .evttabWrap a img.off {display:block}
+        .evttabWrap a img.on {display:none}
+        .evttabWrap a.active img.off {display:none}
+        .evttabWrap a.active img.on {display:block}
 
         .Pstyle {opacity:0; display:none; position:absolute; background-color:#fff;z-index:9;top:0;}
 
 
         .wb_02 {width:100%; text-align:center; background:#444645; min-width:1210px; padding:30px 0}
-            /* 슬라이드배너 */
-            .slide_con {position:relative; width:900px; margin:0 auto}	
-            .slide_con p {position:absolute; top:50%; width:67px; height:67px; margin-top:-33px; z-index:100}
-            .slide_con p a {cursor:pointer}
-            .slide_con p.leftBtn {left:-100px}
-            .slide_con p.rightBtn {right:-100px}
-            #slidesImg3 li {display:inline; float:left}	
-            #slidesImg3:after {content::""; display:block; clear:both}	
-            
-        
+        /* 슬라이드배너 */
+        .slide_con {position:relative; width:900px; margin:0 auto}
+        .slide_con p {position:absolute; top:50%; width:67px; height:67px; margin-top:-33px; z-index:100}
+        .slide_con p a {cursor:pointer}
+        .slide_con p.leftBtn {left:-100px}
+        .slide_con p.rightBtn {right:-100px}
+        #slidesImg3 li {display:inline; float:left}
+        #slidesImg3:after {content:""; display:block; clear:both}
+
+
         .wb_03 {width:100%; text-align:center; background:#dedede; min-width:1210px; padding:150px 0}
         .wb_03 .evTabs {width:864px; margin:30px auto 0; text-align: center;}
         .wb_03 .evTabs li {display:inline; float:left; text-align: center; margin-right:10px}
@@ -68,36 +67,37 @@
         .wb_03 .evTabs a.active img.off {display:none}
         .wb_03 .evTabs a.active img.on {display:block}
         .wb_03 .evTabs:after {content:""; display:block; clear:both}
-        
+
         .wb_03 .tabCts {clear:both; width:854px; margin:10px auto 0; position:relative !important}
         .wb_03 .tabCts a {position:absolute; right:20px; top:40px; z-index:10}
 
 
-        .wb_04 {width:100%; text-align:center; background:#fff; min-width:1210px; padding:150px 0}		
-            .slide_con2 {position:relative; width:854px; margin:100px auto 0; position:relative !important}	
-            .slide_con2 .bx-pager{position:absolute;top:12px;right:10px; z-index:1000}
-            .slide_con2 .bx-pager .bx-pager-item{display:inline-block;margin:0 2px}
-            .slide_con2 .bx-pager .bx-pager-item a{display:inline-block;width:10px;height:10px; border-radius:5px; font-size:0; background:#ccc; vertical-align:middle}
-            .slide_con2 .bx-pager .bx-pager-item a.active {background:#3e5ac8}	
-            
+        .wb_04 {width:100%; text-align:center; background:#fff; min-width:1210px; padding:150px 0}
+        .slide_con2 {width:854px; margin:100px auto 0; position:relative !important}
+        .slide_con2 .bx-pager{position:absolute;top:12px;right:10px; z-index:1000}
+        .slide_con2 .bx-pager .bx-pager-item{display:inline-block;margin:0 2px}
+        .slide_con2 .bx-pager .bx-pager-item a{display:inline-block;width:10px;height:10px; border-radius:5px; font-size:0; background:#ccc; vertical-align:middle}
+        .slide_con2 .bx-pager .bx-pager-item a.active {background:#3e5ac8}
+
         .Pstyle {opacity:0; display:none; position:relative; background-color:#fff}
         .Pstyle .fpcontent {height:auto; width:auto; border:1px solid #000}
         .Pstyle .b-close {position:absolute; right:10px; top:10px; display:inline-block; cursor:pointer; font-size:12px !important}
 
-        .wb_05 {width:100%; text-align:center; background:#f5f5f5; font-size:120%; background:#f5f5f5; padding-bottom:120px; min-width:1210px}
+        .wb_05 {width:100%; text-align:center; font-size:120%; background:#f5f5f5; padding-bottom:120px; min-width:1210px}
         .wb_05 .wb_05_c {width:880px; margin:0 auto; border:1px solid #d6d6d6; background:#fff; padding:48px 58px; text-align:left; margin-bottom:80px}
         .wb_05 .wb_05_c span {display:inline-block; font-size:140%; font-weight:500; background:#2360bb; color:#fff; height:36px; line-height:36px; padding:0 20px}
         .wb_05 .wb_05_c p {border-top:1px solid #c2c2c2; margin-bottom:20px}
 
         .wb_06 {width:100%; text-align:center; background:#dedede; min-width:1210px; position:relative; padding-bottom:120px; }
-            /* 슬라이드배너 */
-            .slide_con6 {position:relative; width:900px; margin:0 auto}	
-            .slide_con6 p {position:absolute; top:50%; width:67px; height:67px; margin-top:-33px; z-index:100}
-            .slide_con6 p a {cursor:pointer}
-            .slide_con6 p.leftBtn {left:-100px}
-            .slide_con6 p.rightBtn {right:-100px}
-            #slidesImg6 li {display:inline; float:left}	
-            #slidesImg6:after {content::""; display:block; clear:both}		
+        /* 슬라이드배너 */
+        .slide_con6 {position:relative; width:900px; margin:0 auto}
+        .slide_con6 p {position:absolute; top:50%; width:67px; height:67px; margin-top:-33px; z-index:100}
+        .slide_con6 p a {cursor:pointer}
+        .slide_con6 p.leftBtn {left:-100px}
+        .slide_con6 p.rightBtn {right:-100px}
+        #slidesImg6 li {display:inline; float:left}
+        #slidesImg6:after {content:""; display:block; clear:both}
+		
 
     </style>
 
@@ -115,7 +115,7 @@
             <div class="slide_con">
 				<ul id="slidesImg5">
 					<li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV02_3.jpg" alt="2"  usemap="#story"/></li>
-					<li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV02_1.jpg" alt="1" usemap="#story"/></li>
+					<!--li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV02_1.jpg" alt="1" usemap="#story"/></li-->
 					<li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV02_2.jpg" alt="2"  usemap="#story"/></li>
 				</ul>
 				<p class="leftBtn"><a id="imgBannerLeft5"><img src="http://file3.willbes.net/new_cop/2017/03/EV170306_p_prev.png" alt="이전" /></a></p>
@@ -123,13 +123,12 @@
 			</div>
             <map name="story" id="story">
               <area shape="rect" coords="670,457,887,505" href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ/videos?disable_polymer=1" target="_blank"  />
-            </map>
-			
+            </map>			
 		</div>
 
 		<div class="wb_01">
 			<div style="width:854px;text-align:center;margin:0 auto;">						 				
-                <div class="tabContaier">
+                <div class="evttabWrap">
                     <ul class="cf">
                         <li style="padding-bottom:40px;"> 
                             <a class="active" href="#tab1">
@@ -381,10 +380,8 @@
         
     </div>
     <!-- End Container -->
-    
-    <script src="/public/js/willbes/jquery.bpopup.min.js"></script>
-    <script src="/public/js/willbes/jquery.counterup.min.js"></script> 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+
+    <script src="/public/js/willbes/jquery.bpopup.min.js"></script>    
     <script type="text/javascript">
         function go_popup(){       
                 $('#popup').bPopup();            
@@ -415,13 +412,6 @@
                 $('#popup7').bPopup();            
             };
 
-        jQuery(document).ready(function( $ ) {
-            $('span').counterUp({
-                delay: 11, // the delay time in ms
-                time: 1000 // the speed time in ms
-            });
-        });
-
         $(document).ready(function(){
             $('ul.evTabs').each(function(){
                 var $active, $content, $links = $(this).find('a');
@@ -451,10 +441,10 @@
             $(".tabContents").hide(); 
             $(".tabContents:first").show();
             
-            $(".tabContaier ul li a").click(function(){ 
+            $(".evttabWrap ul li a").click(function(){ 
                 
                 var activeTab = $(this).attr("href"); 
-                $(".tabContaier ul li a").removeClass("active"); 
+                $(".evttabWrap ul li a").removeClass("active"); 
                 $(this).addClass("active"); 
                 $(".tabContents").hide(); 
                 $(activeTab).fadeIn(); 

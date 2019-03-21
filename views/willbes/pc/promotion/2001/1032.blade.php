@@ -36,13 +36,13 @@
         #slidesImg5:after {content:""; display:block; clear:both}
 
         /* 탭 */
-        .tabContaier{width:100%; text-align:center;}
-        .tabContaier ul {width:100%; max-width:980px; text-align:center; margin:0 auto  }
-        .tabContaier li {display:inline; text-align:center; float:left; }
-        .tabContaier a img.off {display:block}
-        .tabContaier a img.on {display:none}
-        .tabContaier a.active img.off {display:none}
-        .tabContaier a.active img.on {display:block}
+        .evttabWrap{width:100%; text-align:center;}
+        .evttabWrap ul {width:100%; max-width:980px; text-align:center; margin:0 auto  }
+        .evttabWrap li {display:inline; text-align:center; float:left; }
+        .evttabWrap a img.off {display:block}
+        .evttabWrap a img.on {display:none}
+        .evttabWrap a.active img.off {display:none}
+        .evttabWrap a.active img.on {display:block}
 
         .Pstyle {opacity:0; display:none; position:absolute; background-color:#fff;z-index:9;top:0;}
 
@@ -129,7 +129,7 @@
 
         <div class="wb_01">
             <div style="width:854px;text-align:center;margin:0 auto;">
-                <div class="tabContaier">
+                <div class="evttabWrap">
                     <ul class="cf">
                         <li style="padding-bottom:40px;">
                             <a class="active" href="#tab1">
@@ -381,9 +381,8 @@
 
     </div>
     <!-- End Container -->
-
-    <script src="/public/js/willbes/jquery.bpopup.min.js"></script>
     
+    <script src="/public/js/willbes/jquery.bpopup.min.js"></script>    
     <script type="text/javascript">
         function go_popup(){
             $('#popup').bPopup();
@@ -417,13 +416,6 @@
             $('#popup7').bPopup();
         }
 
-        jQuery(document).ready(function( $ ) {
-            $('span').counterUp({
-                delay: 11, // the delay time in ms
-                time: 1000 // the speed time in ms
-            });
-        });
-
         $(document).ready(function(){
             $('ul.evTabs').each(function(){
                 var $active, $content, $links = $(this).find('a');
@@ -453,10 +445,10 @@
             $(".tabContents").hide();
             $(".tabContents:first").show();
 
-            $(".tabContaier ul li a").click(function(){
+            $(".evttabWrap ul li a").click(function(){
 
                 var activeTab = $(this).attr("href");
-                $(".tabContaier ul li a").removeClass("active");
+                $(".evttabWrap ul li a").removeClass("active");
                 $(this).addClass("active");
                 $(".tabContents").hide();
                 $(activeTab).fadeIn();
@@ -544,5 +536,5 @@
             });
         });
     </script>
-    <script src="/public/js/willbes/jquery.counterup.min.js"></script>
+    
 @stop

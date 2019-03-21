@@ -11007,6 +11007,10 @@ table.acadlecInfoPackageTable tr.Top td {
     }
 
     /* Login Form : 통합회원가입 : 회원가입완료 */
+    .mem-CombineFin .welcomepack {
+        border-top:1px solid #e2e2e2;
+        border-bottom:1px solid #e2e2e2;
+    }
     .mem-CombineFin select.seleSite { 
         width: 50%;
         height: 38px;

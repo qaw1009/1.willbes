@@ -170,6 +170,11 @@
                 return;
             }
 
+            if(window.confirm('test') == false){
+                alert('ok');
+                return;
+            }
+
             $("#quility").val($quility);
 
             fnAppDown('https:{{front_url('/Player/getApp/')}}', $('#downForm').serialize());

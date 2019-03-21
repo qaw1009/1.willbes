@@ -256,7 +256,7 @@
             var ele_id = 'WrapReply';
             var data = {
                 'ele_id' : ele_id,
-                'show_onoff' : $(this).data('write-type'),
+                'show_onoff' : 'on',
                 'site_code' : sitecode,
                 'cate_code' : catecode,
                 'prod_code' : prodcode,

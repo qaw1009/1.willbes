@@ -185,7 +185,7 @@
                 var ele_id = 'WrapReply';
                 var data = {
                     'ele_id' : ele_id,
-                    'show_onoff' : $(this).data('write-type'),
+                    'show_onoff' : 'on',
                     'site_code' : '{{$lec['SiteCode']}}',
                     'cate_code' : '{{$lec['CateCode']}}',
                     'prod_code' : '{{$lec['ProdCode']}}',

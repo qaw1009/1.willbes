@@ -23,7 +23,7 @@
                             @endif
                         </li>
                     @elseif($menu_row['MenuType'] == 'GA')
-                        <li class="Acad">
+                        <li class="Acad {{ SUB_DOMAIN }}">
                             <a href="{{ $menu_row['MenuUrl'] }}" target="_{{ $menu_row['UrlTarget'] }}">{{ $menu_row['MenuName'] }} <span class="arrow-Btn">></span></a>
                         </li>
                     @endif

@@ -250,9 +250,9 @@
             var lUrl = "";
 
             if(parseInt(no)==1 || parseInt(no)==3 || parseInt(no)== 5){
-                lUrl = "/package/show/cate/3035/pack/648001/prod-code/151737"
+                lUrl = "{{ site_url('/periodPackage/show/cate/3035/pack/648001/prod-code/151737') }}"
             }else{
-                lUrl = "/package/show/cate/3035/pack/648001/prod-code/151737"
+                lUrl = "{{ site_url('/periodPackage/show/cate/3035/pack/648001/prod-code/151737') }}"
             }
 
             location.href = lUrl;

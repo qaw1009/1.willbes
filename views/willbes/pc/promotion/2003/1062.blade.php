@@ -222,9 +222,9 @@
             var lUrl = "";
 
             if(parseInt(no)==1 || parseInt(no)==3 || parseInt(no)== 5){
-                lUrl = "/package/show/cate/3020/pack/648001/prod-code/149332"
+                lUrl = "{{ site_url('/periodPackage/show/cate/3020/pack/648001/prod-code/149332') }}"
             }else{
-                lUrl = "/package/show/cate/3020/pack/648001/prod-code/149307"
+                lUrl = "{{ site_url('/periodPackage/show/cate/3020/pack/648001/prod-code/149307') }}"
             }
             location.href = lUrl;
         }

@@ -13,7 +13,6 @@
             position:relative;
             width:100% !important;
             min-width:1210px !important;
-            background:#ccc;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
@@ -34,7 +33,7 @@
         .slide_con5 p.leftBtn {left:-100px}
         .slide_con5 p.rightBtn {right:-100px}
         #slidesImg5 li {display:inline; float:left}
-        #slidesImg5:after {content::""; display:block; clear:both}
+        #slidesImg5:after {content:""; display:block; clear:both}
 
         /* 탭 */
         .tabContaier{width:100%; text-align:center;}
@@ -56,7 +55,7 @@
         .slide_con p.leftBtn {left:-100px}
         .slide_con p.rightBtn {right:-100px}
         #slidesImg3 li {display:inline; float:left}
-        #slidesImg3:after {content::""; display:block; clear:both}
+        #slidesImg3:after {content:""; display:block; clear:both}
 
 
         .wb_03 {width:100%; text-align:center; background:#dedede; min-width:1210px; padding:150px 0}
@@ -75,7 +74,7 @@
 
 
         .wb_04 {width:100%; text-align:center; background:#fff; min-width:1210px; padding:150px 0}
-        .slide_con2 {position:relative; width:854px; margin:100px auto 0; position:relative !important}
+        .slide_con2 {width:854px; margin:100px auto 0; position:relative !important}
         .slide_con2 .bx-pager{position:absolute;top:12px;right:10px; z-index:1000}
         .slide_con2 .bx-pager .bx-pager-item{display:inline-block;margin:0 2px}
         .slide_con2 .bx-pager .bx-pager-item a{display:inline-block;width:10px;height:10px; border-radius:5px; font-size:0; background:#ccc; vertical-align:middle}
@@ -85,7 +84,7 @@
         .Pstyle .fpcontent {height:auto; width:auto; border:1px solid #000}
         .Pstyle .b-close {position:absolute; right:10px; top:10px; display:inline-block; cursor:pointer; font-size:12px !important}
 
-        .wb_05 {width:100%; text-align:center; background:#f5f5f5; font-size:120%; background:#f5f5f5; padding-bottom:120px; min-width:1210px}
+        .wb_05 {width:100%; text-align:center; font-size:120%; background:#f5f5f5; padding-bottom:120px; min-width:1210px}
         .wb_05 .wb_05_c {width:880px; margin:0 auto; border:1px solid #d6d6d6; background:#fff; padding:48px 58px; text-align:left; margin-bottom:80px}
         .wb_05 .wb_05_c span {display:inline-block; font-size:140%; font-weight:500; background:#2360bb; color:#fff; height:36px; line-height:36px; padding:0 20px}
         .wb_05 .wb_05_c p {border-top:1px solid #c2c2c2; margin-bottom:20px}
@@ -98,7 +97,7 @@
         .slide_con6 p.leftBtn {left:-100px}
         .slide_con6 p.rightBtn {right:-100px}
         #slidesImg6 li {display:inline; float:left}
-        #slidesImg6:after {content::""; display:block; clear:both}
+        #slidesImg6:after {content:""; display:block; clear:both}
 
     </style>
 
@@ -116,7 +115,7 @@
             <div class="slide_con">
                 <ul id="slidesImg5">
                     <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV02_3.jpg" alt="2"  usemap="#story"/></li>
-                    <!--li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV02_1.jpg" alt="1" usemap="#story"/></li-->
+                    <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV02_1.jpg" alt="1" usemap="#story"/></li>
                     <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV02_2.jpg" alt="2"  usemap="#story"/></li>
                 </ul>
                 <p class="leftBtn"><a id="imgBannerLeft5"><img src="http://file3.willbes.net/new_cop/2017/03/EV170306_p_prev.png" alt="이전" /></a></p>
@@ -385,36 +384,38 @@
 
     <script src="/public/js/willbes/jquery.bpopup.min.js"></script>
     <script src="/public/js/willbes/jquery.counterup.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
     <script type="text/javascript">
         function go_popup(){
             $('#popup').bPopup();
-        };
+        }
+
         function go_popup1(){
             $('#popup1').bPopup();
-        };
+        }
+
         function go_popup2(){
             $('#popup2').bPopup();
-        };
+        }
+
         function go_popup3(){
             $('#popup3').bPopup();
-        };
+        }
 
         function go_popup4(){
             $('#popup4').bPopup();
-        };
+        }
 
         function go_popup5(){
             $('#popup5').bPopup();
-        };
+        }
 
         function go_popup6(){
             $('#popup6').bPopup();
-        };
+        }
 
         function go_popup7(){
             $('#popup7').bPopup();
-        };
+        }
 
         jQuery(document).ready(function( $ ) {
             $('span').counterUp({
@@ -532,7 +533,7 @@
                 controls:false,
                 slideWidth:900,
                 autoHover: true,
-                pager:false,
+                pager:false
             });
 
             $("#imgBannerLeft6").click(function (){
@@ -543,9 +544,6 @@
             });
         });
     </script>
-
-
-
     <script src="/public/js/willbes/jquery.nav.js"></script>
     <script>
         $(function(e){
@@ -553,5 +551,4 @@
             $('html, body').animate({scrollTop: targetOffset}, 700);
         });
     </script>
-
 @stop

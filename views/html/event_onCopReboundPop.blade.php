@@ -32,9 +32,12 @@
     resize: none;
     line-height: 1.3;
 }
+.laj_sec .termsBx01 {padding:10px ; height:80px; overflow:hidden; overflow-y:scroll; border:1px solid #cecece; line-height:1.5}
+.laj_sec .termsBx01 li {margin-bottom:10px}
+
 
 </style>
-<div class="willbes-Layer-PassBox willbes-Layer-PassBox740 leaveArmyJoin NGR">
+<div class="willbes-Layer-PassBox leaveArmyJoin NGR">
     <div><h3 class="NSK">타 학원 수강생 인증</h3></div>
     <div class="laj_sec">        
         <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
@@ -83,28 +86,39 @@
                     <li>* 관리자 인증 시, SMS로 개별 알림</li>
                 </ul>
 
-                <h4 class="mt40">개인정보 수집 및 이용에 대한 안내</h4>
-                <div>
-                    <textarea name="" rows="6" cols="">
-1. 개인정보 수집 이용 목적
-- 이벤트 신청 접수에 따른 본인 확인 절차 진행 및 문의사항 응대
-- 이벤트 참여에 따른 경품 지급
-
-2. 개인정보 수집 항목
-- 신청인의 이름, 휴대폰 번호, 이메일 주소
-
-3. 개인정보 이용기간 및 보유기간
-- 본 수집, 활용목적 달성 후 바로 파기
-
-4. 개인정보 제공 동의 거부 권리 및 동의 거부에 따른 불이익
-- 귀하는 개인 정보 제공 동의를 거부할 권리가 있으며 동의 거부에 따른 불이익은 없으나,
-- 위 제공사항은 이벤트 참여를 위해 반드시 필요한 사항으로 거부하실 경우 이벤트 신청이 불가능함을 알려드립니다.
-                    </textarea>
-                    <div class="mt20">
-                        위의 내용을 이해하였으며 위와 같은 개인정보 수집 이용에 
-                        <label for="ACCEPT_YN1"><input type="radio" name="ACCEPT_YN" value="Y" id="ACCEPT_YN1"> 동의합니다. </label>
-                        <label for="ACCEPT_YN2"><input type="radio" name="ACCEPT_YN" value="N" id="ACCEPT_YN2"> 동의하지 않습니다.</label>
-                    </div>
+                <h4 class="mt40">개인정보 수집/이용 동의 안내</h4>
+                <div class="termsBx01">
+                    <ul>
+                        <li>
+                            1. 개인정보 수집 이용 목적<br>
+                            - 신청자 본인 확인 및 신청 접수 및 문의사항 응대<br>
+                            - 통계분석 및 마케팅<br>
+                            - 윌비스 신광은경찰학원의 신상품이나 새로운 서비스, 이벤트 등 최신 정보 및 광고성 정보 제공
+                        </li>
+                        <li>
+                            2. 개인정보 수집 항목<br>
+                            - 필수항목 : 성명, 연락처, 이메일
+                        </li>
+                        <li>
+                            3. 개인정보 이용기간 및 보유기간<br>
+                            - 이용 목적 달성 또는 신청자의 신청 해지 및 삭제 요청 시 파기
+                        </li>
+                        <li>
+                            4. 신청자의 개인정보 수집 및 활용 동의 거부 시<br>
+                            - 개인정보 수집에 동의하지 않으시는 경우 설명회 접수 및 서비스 이용에 제한이 있을 수 있습니다.
+                        </li>
+                        <li>
+                            5. 입력하신 개인정보는 수집목적 외 신청자의 동의 없이 절대 제3 자에게 제공되지 않으며 개인정보 처리방침에 따라 보호되고 있습니다.
+                        </li>
+                        <li>
+                            6. 이벤트 진행에 따른 단체사진 및 영상 촬영에 대한 귀하의 초상권 사용을 동의하며, 해당 저작물에 대한 저작권은 윌비스에 귀속됩니다.
+                        </li> 
+                    </ul>                  
+                </div>
+                <div class="mt20">
+                    위의 내용을 이해하였으며 위와 같은 개인정보 수집 이용에 
+                    <label for="ACCEPT_YN1"><input type="radio" name="ACCEPT_YN" value="Y" id="ACCEPT_YN1"> 동의합니다. </label>
+                    <label for="ACCEPT_YN2"><input type="radio" name="ACCEPT_YN" value="N" id="ACCEPT_YN2"> 동의하지 않습니다.</label>
                 </div>
             </div>
 
@@ -120,65 +134,5 @@
     </div>   
 </div>
 <!--willbes-Layer-PassBox//-->
-
-<script src="/public/js/willbes/product_util.js"></script>
-    <script type="text/javascript">
-        var $regi_form = $('#regi_form');
-
-        $(document).ready(function() {
-
-            $('button[name="btn_cert_check"]').on('click', function() {
-
-                @if($data["IsCertAble"] !== 'Y')
-                    alert("인증 신청을 할 수 없습니다.");return;
-                @endif
-
-                {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
-
-                @if($data['ApprovalStatus'] == 'A' )
-                    alert("신청하신 내역이 존재하며 '미승인' 상태입니다. ");return;
-                @elseif($data['ApprovalStatus'] == 'Y' )
-                    alert("이미 '승인'된 인증입니다.");return;
-                @endif
-
-                if ($('input:radio[name="WorkType"]').is(':checked') === false) {
-                    alert('재직구분을 선택해 주세요.');
-                    return;
-                }
-
-                if ($('#Affiliation').val() == '') {
-                    alert('소속을 입력해 주세요.');
-                    $('#Affiliation').focus();
-                    return;
-                }
-
-                if ($('#Position').val() == '') {
-                    alert('직위/직급을 입력해 주세요.');
-                    $('#Position').focus();
-                    return;
-                }
-
-                if ($('#attachfile').val() == '') {
-                    alert('인증파일을 등록해 주세요.');
-                    return;
-                }
-                var _url = '{!! front_url('CertApply/store/') !!}';
-                if (!confirm('저장하시겠습니까?')) { return true; }
-                ajaxSubmit($regi_form, _url, function(ret) {
-                    if(ret.ret_cd) {
-                        //notifyAlert('success', '알림', ret.ret_msg);
-                        alert('인증 신청이 등록되었습니다.');location.reload();
-                    }
-                }, showValidateError, null, false, 'alert');
-
-            });
-
-        });
-
-        function contentInfo(strCate,strProd,strPack,strLearn) {
-            location.href= "{{front_url('periodPackage/show')}}/cate/"+strCate+"/pack/"+strPack+"/prod-code/"+strProd
-        }
-    </script>
-
 
 @stop

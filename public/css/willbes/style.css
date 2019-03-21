@@ -1841,14 +1841,14 @@ table.auTable tr td {
 
 /*경찰*/
 .Menu .menu-List li.Acad a,
-.Menu .menu-List li.Acad .police a {
+.Menu .menu-List li.police a {
     background: url("../../img/willbes/sub/icon_acad.gif") no-repeat 0 0;
     font-size: 16px;
     color: #0c5dc0;
     padding-left: 26px; 
 }
 .Menu .menu-List li.Acad a .arrow-Btn,
-.Menu .menu-List li.Acad a .police .arrow-Btn {
+.Menu .menu-List li.police a  .arrow-Btn {
     background: url("../../img/willbes/sub/icon_arrow.gif") no-repeat 0 0;
     float: right;
     width: 4px;
@@ -1857,11 +1857,11 @@ table.auTable tr td {
 }
 
 /*공무원*/
-.Menu  li.Acad .pass a {
+.Menu  li.pass a {
     background: url("../../img/willbes/gosi/icon_acad.gif") no-repeat 0 0;
     color: #ba560e;
 }
-.Menu .menu-List li.Acad .pass a .arrow-Btn {
+.Menu .menu-List li.pass a .arrow-Btn {
     background: url("../../img/willbes/gosi/icon_arrow.gif") no-repeat 0 0;
 }
 

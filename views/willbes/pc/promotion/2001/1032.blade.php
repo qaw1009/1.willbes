@@ -116,7 +116,7 @@
             <div class="slide_con">
                 <ul id="slidesImg5">
                     <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV02_3.jpg" alt="2"  usemap="#story"/></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV02_1.jpg" alt="1" usemap="#story"/></li>
+                    <!--li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV02_1.jpg" alt="1" usemap="#story"/></li-->
                     <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV02_2.jpg" alt="2"  usemap="#story"/></li>
                 </ul>
                 <p class="leftBtn"><a id="imgBannerLeft5"><img src="http://file3.willbes.net/new_cop/2017/03/EV170306_p_prev.png" alt="이전" /></a></p>

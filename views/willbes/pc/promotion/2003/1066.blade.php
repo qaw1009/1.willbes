@@ -68,12 +68,12 @@
         <div class="evtCtnsBox wb_cts02"  id="evt01">
             <img src="http://file3.willbes.net/new_gosi/2019/01/EV190110_2.png" alt="갓덕현 2019대비신규강좌" usemap="#Map_lec_han" border="0">
             <map name="Map_lec_han">
-                <area shape="rect" coords="800,782,1047,843" href="{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/147104') }}" target="_blank">
-                <area shape="rect" coords="801,426,1047,483" href="{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/146969') }}" target="_blank">
-                <area shape="rect" coords="799,333,1050,394" href="{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/146966') }}" target="_blank">
-                <area shape="rect" coords="798,598,1047,660" href="{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/146973') }}" target="_blank">
-                <area shape="rect" coords="800,515,1045,579" href="{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/146977') }}" target="_blank">
-                <area shape="rect" coords="798,690,1043,753" href="{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/146981') }}" target="_blank">
+                <area shape="rect" coords="799,333,1050,394" href="{{ site_url('/lecture/show/cate/3019/prod-code/147104') }}" target="_blank">
+                <area shape="rect" coords="801,426,1047,483" href="{{ site_url('/lecture/show/cate/3019/prod-code/146969') }}" target="_blank">
+                <area shape="rect" coords="800,515,1045,579" href="{{ site_url('/lecture/show/cate/3019/prod-code/146966') }}" target="_blank">
+                <area shape="rect" coords="798,598,1047,660" href="{{ site_url('/lecture/show/cate/3019/prod-code/146973') }}" target="_blank">
+                <area shape="rect" coords="798,690,1043,753" href="{{ site_url('/lecture/show/cate/3019/prod-code/146977') }}" target="_blank">
+                <area shape="rect" coords="800,782,1047,843" href="{{ site_url('/lecture/show/cate/3019/prod-code/146981') }}" target="_blank">
             </map>
         </div>
         <!--wb_cts02//-->
@@ -95,11 +95,11 @@
         <div class="evtCtnsBox wb_cts06" >
             <img src="http://file3.willbes.net/new_gosi/2019/01/EV190110_5.png" alt="학습비법패키지수강신청" usemap="#Map180412_lec2" border="0" />
             <map name="Map180412_lec2">
-                <area shape="rect" coords="920,663,1101,711" href="{{ site_url('/package/show/cate/3019/pack/648001/prod-code/150364') }}" target="_blank" />
-                <area shape="rect" coords="715,665,892,712" href="{{ site_url('/package/show/cate/3019/pack/648001/prod-code/150363') }}" target="_blank" />
+                <area shape="rect" coords="920,663,1101,711" href="{{ site_url('/lecture/show/cate/3019/prod-code/146033') }}" target="_blank" />
+                <area shape="rect" coords="715,665,892,712" href="{{ site_url('/package/show/cate/3019/pack/648001/prod-code/150515') }}" target="_blank" />
                 <area shape="rect" coords="507,664,676,711" href="{{ site_url('/package/show/cate/3019/pack/648001/prod-code/150362') }}" target="_blank" />
-                <area shape="rect" coords="291,661,467,712" href="{{ site_url('/package/show/cate/3019/pack/648001/prod-code/150515') }}" target="_blank" />
-                <area shape="rect" coords="86,662,257,712" href="{{ site_url('/package/show/cate/3019/pack/648001/prod-code/146033') }}" target="_blank" />
+                <area shape="rect" coords="291,661,467,712" href="{{ site_url('/package/show/cate/3019/pack/648001/prod-code/150363') }}" target="_blank" />
+                <area shape="rect" coords="86,662,257,712" href="{{ site_url('/package/show/cate/3019/pack/648001/prod-code/150364') }}" target="_blank" />
             </map>
         </div>
         <!--wb_cts06//-->

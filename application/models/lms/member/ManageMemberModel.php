@@ -206,7 +206,7 @@ class ManageMemberModel extends WB_Model
 
         } else {
             $column = " Log.MemIdx, Log.IsLogin, Log.LoginIp, Log.LoginDatm, Log.LogoutIp, Log.LogoutDatm, 
-                ifnull(A.wAdminName, '') as AdminName ";
+                ifnull(A.wAdminName, '') as AdminName, Log.LoginType";
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();

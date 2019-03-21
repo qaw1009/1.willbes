@@ -1,9 +1,9 @@
 /*********************************************     Main Container : Gosi Acad     *********************************************/
-.gosi .Menu .menu-List li.Acad a {
+.GA .Menu .menu-List li.Acad a {
     background: url("../../img/willbes/gosi/icon_acad.gif") no-repeat 0 0;
     color: #ba560e;
 }
-.gosi .Menu .menu-List li.Acad a .arrow-Btn {
+.GA .Menu .menu-List li.Acad a .arrow-Btn {
     background: url("../../img/willbes/gosi/icon_arrow.gif") no-repeat 0 0;
 }
 /* Main Container : Gosi Acad */

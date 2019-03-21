@@ -146,7 +146,7 @@
                 <ul>
                     <li>
                         <span>윌비스신광은경찰 PASS</span><br />
-                        <span style="line-height:40px;font-size:22pt;color:#000">2019-69기</span>
+                        <span style="line-height:40px;font-size:22pt;color:#000">2019-70기</span>
                     </li>
                     <li><img id="dd1" src="http://file.willbes.net/new_image/0.png" /></li>
                     <li><img id="dd2" src="http://file.willbes.net/new_image/0.png" /></li>
@@ -161,7 +161,7 @@
                     <li><img id="ss2" src="http://file.willbes.net/new_image/0.png" /></li>
                     <li>
                         <a href="#pass" target="_self">수강하기 &gt;</a><br />
-                        <span style="line-height:40px;">3.20(수) 24:00 마감!</span>
+                        <span style="line-height:40px;">3.27(수) 24:00 마감!</span>
                     </li>
                 </ul>
             </div>
@@ -197,7 +197,7 @@
                         <p><input type="radio" id="y_pkg5" name="y_pkg" value="152008" onClick=""/> <label for="y_pkg5">(선택) 원유철 한국사</label></p>
                         <h5>특채</h5>
                         <p><input type="radio" id="y_pkg6" name="y_pkg" value="149195" onClick=""/> <label for="y_pkg6">경행경채</label></p>
-                        <div><strong>70</strong>만원</div>
+                        <div><strong>73</strong>만원</div>
                     </li>
                     <li>
                         <h5>&nbsp;</h5>

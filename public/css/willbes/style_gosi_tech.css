@@ -1,5 +1,6 @@
 /*********************************************     Main Container : tech     *********************************************/
-.tech .tx-color {
+.tech .Menu .menu-List li.Acad a {
+    background: url("../../img/willbes/gosi/icon_acad.gif") no-repeat 0 0;
     color: #ba560e;
 }
 

@@ -130,7 +130,7 @@
                 <li>&nbsp;</li>
                 <li>3월 6일 이후 추가분 ▼</li>
                 <li class="w50"><a href="{{ site_url('/home/html/1138') }}" target="_blank">경찰면접 꿀팁 이벤트 <span>*</span></a></li>
-                <li><a href="{{ site_url('/home/html/1138_pop') }}" target="_blank">└ 필기합격 인증하기 팝업 size 600x700 <span>*</span></a></li>
+                <li><a href="{{ site_url('/home/html/1138_pop') }}" target="_blank">└ 필기합격 인증하기 팝업 size 590x550 <span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_replyNotice') }}" target="_blank">└ 공지기능 댓글 include <span>*</span></a></li>
                 <li><a href="{{ site_url('/home/html/event_replyNotice_pop') }}" target="_blank">└ 공지기능 댓글 공지글쓰기 팝업 size 800x700 <span>*</span></a></li>
                 <li><a href="{{ site_url('/home/html/1138_pop2') }}" target="_blank">└ 경찰면접 역전 꿀팁 대방출 인증하기 size 800x700 <span>*</span></a></li>

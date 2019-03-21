@@ -383,7 +383,7 @@
     <!-- End Container -->
 
     <script src="/public/js/willbes/jquery.bpopup.min.js"></script>
-    <script src="/public/js/willbes/jquery.counterup.min.js"></script>
+    
     <script type="text/javascript">
         function go_popup(){
             $('#popup').bPopup();
@@ -544,11 +544,5 @@
             });
         });
     </script>
-    <script src="/public/js/willbes/jquery.nav.js"></script>
-    <script>
-        $(function(e){
-            var targetOffset= $("#evtContainer").offset().top;
-            $('html, body').animate({scrollTop: targetOffset}, 700);
-        });
-    </script>
+    <script src="/public/js/willbes/jquery.counterup.min.js"></script>
 @stop

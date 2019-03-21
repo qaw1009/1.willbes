@@ -6,7 +6,7 @@
                 <span class="hidden">메뉴바</span>
             </button>
             <div class="logo">
-                <a><img src="{{ img_url('m/main/logo.png') }}"></a>
+                <a href="{{front_app_url('/classroom/on/list/ongoing','www')}}"><img src="{{ img_url('m/main/logo.png') }}"></a>
             </div>
         </div>
 

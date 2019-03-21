@@ -128,11 +128,11 @@
 
             <img src="http://file3.willbes.net/new_gosi/2019/01/EV190117_c7.jpg" alt="윌비스 최우영교수의 전기/통신직 대비 이론패키지"  usemap="#Map20181005_c2" border="0"  />
             <map name="Map20181005_c2">
-                <area shape="rect" coords="746,1174,974,1280" href="{{ site_url('/package/show/cate/3028/pack/648001/prod-code/150626') }}"  onfocus="this.blur();" target="_blank"/>
-                <area shape="rect" coords="747,942,970,1067" href="{{ site_url('/package/show/cate/3028/pack/648001/prod-code/150625') }}" onfocus="this.blur();" target="_blank"/>
+                <area shape="rect" coords="167,621,433,726" href="{{ site_url('/package/show/cate/3028/pack/648001/prod-code/150626') }}" onfocus="this.blur();" target="_blank"/>
+                <area shape="rect" coords="473,626,732,719" href="{{ site_url('/package/show/cate/3028/pack/648001/prod-code/150625') }}" onfocus="this.blur();" target="_blank"/>
                 <area shape="rect" coords="790,624,1043,718" href="{{ site_url('/package/show/cate/3028/pack/648001/prod-code/150621') }}" onfocus="this.blur();" target="_blank" />
-                <area shape="rect" coords="473,626,732,719" href="{{ site_url('#/package/show/cate/3028/pack/648001/prod-code/150644') }}" onfocus="this.blur();" target="_blank"/>
-                <area shape="rect" coords="167,621,433,726" href="{{ site_url('/package/show/cate/3028/pack/648001/prod-code/150643') }}" onfocus="this.blur();" target="_blank"/>
+                <area shape="rect" coords="747,942,970,1067" href="{{ site_url('/package/show/cate/3028/pack/648001/prod-code/150644') }}" onfocus="this.blur();" target="_blank"/>
+                <area shape="rect" coords="746,1174,974,1280" href="{{ site_url('/package/show/cate/3028/pack/648001/prod-code/150643') }}"  onfocus="this.blur();" target="_blank"/>
             </map>
         </div>
         <!--wb_cts02//-->
@@ -155,7 +155,7 @@
 
             <img src="http://file3.willbes.net/new_gosi/2019/01/EV190117_c8.jpg" alt="윌비스 최우영 교수의 학원실강"  usemap="#Map20181005_c4" border="0" />
             <map name="Map20181005_c4" >
-                <area shape="rect" coords="330,1128,874,1223" href="professor/show/cate/3028/prof-idx/50163/?subject_idx=1160&subject_name=%EC%A0%84%EA%B8%B0%EC%A7%81" onfocus="this.blur();" target="_blank"/>
+                <area shape="rect" coords="330,1128,874,1223" href="{{ site_url('/professor/show/cate/3028/prof-idx/50163/?subject_idx=1160&subject_name=%EC%A0%84%EA%B8%B0%EC%A7%81') }}" onfocus="this.blur();" target="_blank"/>
             </map>
         </div><!--wb_cts03//-->
     </div>

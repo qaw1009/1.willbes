@@ -115,7 +115,6 @@
             <div class="slide_con">
                 <ul id="slidesImg5">
                     <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV02_3.jpg" alt="2"  usemap="#story"/></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV02_1.jpg" alt="1" usemap="#story"/></li>
                     <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV02_2.jpg" alt="2"  usemap="#story"/></li>
                 </ul>
                 <p class="leftBtn"><a id="imgBannerLeft5"><img src="http://file3.willbes.net/new_cop/2017/03/EV170306_p_prev.png" alt="이전" /></a></p>
@@ -362,6 +361,7 @@
                     <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV07_3.jpg" alt="3" /></li>
                     <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV07_4.jpg" alt="4" /></li>
                     <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV07_5.jpg" alt="5" /></li>
+                    <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV07_15.jpg" alt="5" /></li>
                 </ul>
                 <p class="leftBtn"><a id="imgBannerLeft6"><img src="http://file3.willbes.net/new_cop/2017/03/EV170306_p_prev.png" alt="이전" /></a></p>
                 <p class="rightBtn"><a id="imgBannerRight6"><img src="http://file3.willbes.net/new_cop/2017/03/EV170306_p_next.png" alt="다음" /></a></p>
@@ -371,17 +371,16 @@
         <div class="wb_05">
             <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV06_1.jpg" alt="대한민국의 자랑스러원 경찰이 될 당신의 이야기를 기다립니다." usemap="#Map" />
             <map name="Map" id="Map">
-                <area shape="rect" coords="188,970,291,1016" href="{{ site_url('/home/index/cate/3001') }}" target="_blank"/>
-                <area shape="rect" coords="374,970,475,1016" href="{{ site_url('/home/index/cate/3002') }}" target="_blank"/>
-                <area shape="rect" coords="557,970,658,1016" href="{{ site_url('/home/index/cate/3006') }}" target="_blank"/>
-                <area shape="rect" coords="739,970,844,1016" href="#none" target="_blank"/>
-                <area shape="rect" coords="924,970,1028,1017" href="{{ site_url('/home/index/cate/3007') }}" target="_blank"/>
+                <area shape="rect" coords="305,968,408,1014" href="{{ site_url('/promotion/index/cate/3001/code/1009') }}" target="_blank" alt="신광은경찰PASS"/>
+                <area shape="rect" coords="494,968,595,1014" href="{{ site_url('/home/index/cate/3002') }}" target="_blank" alt="경행경채"/>
+                <area shape="rect" coords="678,968,779,1014" href="{{ site_url('/promotion/index/cate/3006/code/1008') }}" target="_blank" alt="경찰승진PASS"/>
+                <area shape="rect" coords="861,968,965,1014" href="{{ site_url('/promotion/index/cate/3008/code/1020') }}" target="_blank" alt="해양특채PASS"/>
             </map>
         </div><!--wb_05//-->
 
     </div>
     <!-- End Container -->
-    
+
     <script src="/public/js/willbes/jquery.bpopup.min.js"></script>    
     <script type="text/javascript">
         function go_popup(){

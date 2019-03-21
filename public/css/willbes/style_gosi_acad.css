@@ -1,4 +1,7 @@
 /*********************************************     Main Container : Gosi Acad     *********************************************/
+.GA .tx-color {
+    color: #ba560e;
+}
 /* Main Container : Gosi Acad */
 .GA .VisualBox {
     clear: both;

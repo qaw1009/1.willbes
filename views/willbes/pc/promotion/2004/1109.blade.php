@@ -81,8 +81,8 @@
 
     <div class="p_re evtContent NSK" id="evtContainer">
         <ul class="skybanner" >
-            <li><a href="{{ site_url('#none') }}" target="_blank"><img src="http://file3.willbes.net/new_gosi/2019/01/EV190128_L7.png" alt="실전모의고사" border="0" ></a></li>
-            <li><a href="{{ site_url('#none') }}" target="_blank"><img src="http://file3.willbes.net/new_gosi/2019/02/EV190128_L7-1.png" alt="문법요약정리" border="0" ></a></li>
+            <li><a href="{{ site_url('/pass/offLecture/index?cate_code=3050&campus_ccd=605001') }}" target="_blank"><img src="http://file3.willbes.net/new_gosi/2019/01/EV190128_L7.png" alt="실전모의고사" border="0" ></a></li>
+            <!--li><a href="{{ site_url('#none') }}" target="_blank"><img src="http://file3.willbes.net/new_gosi/2019/02/EV190128_L7-1.png" alt="문법요약정리" border="0" ></a></li-->
         </ul>
 
         <div class="evtCtnsBox wb_cts01" >

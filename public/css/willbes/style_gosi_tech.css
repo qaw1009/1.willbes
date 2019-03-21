@@ -1,4 +1,8 @@
 /*********************************************     Main Container : tech     *********************************************/
+.tech .tx-color {
+    color: #ba560e;
+}
+
 .tech .Section2 {
     background:url("../../img/willbes/gosi_tech/visual/visual_top_bg.jpg") repeat-x left 95px;
 }

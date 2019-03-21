@@ -1540,9 +1540,9 @@ class Player extends \app\controllers\FrontController
             }
 
             $url = $this->clearUrl($row['wMediaUrl'].'/'.$filename);
-            $title = $row['wUnitNum'].'회 '.$row['wUnitLectureNum'].'강 '.$row['wUnitName'];
+            $title = clean_string($row['wUnitNum'].'회 '.$row['wUnitLectureNum'].'강 '.$row['wUnitName']);
             $id = "^{$MemId}^{$MemIdx}^{$OrderIdx}^{$lec['OrderProdIdx']}^{$ProdCode}^{$ProdCodeSub}^{$row['wUnitIdx']}^{$logidx}^";
-            $category = $lec['SubjectName'].'/'.$lec['CourseName'];
+            $category = clean_string($lec['subProdName']); //$lec['SubjectName'].'/'.$lec['CourseName'];
             $enddate = $lec['RealLecEndDate'];
 
             if($type == 'download'){

@@ -5,6 +5,21 @@ require_once APPPATH . 'controllers/willbes/share/member/BaseMember.php';
 
 class Join extends BaseMember
 {
+    protected $_join_coupon = [
+        '2001' => [
+            ['type' => 'coupon', 'no' => '25'],
+            ['type' => 'coupon', 'no' => '26'],
+            ['type' => 'coupon', 'no' => '27'],
+            ['type' => 'coupon', 'no' => '28'],
+        ],
+        '2003' => [
+            ['type' => 'coupon', 'no' => '21'],
+            ['type' => 'coupon', 'no' => '22'],
+            ['type' => 'coupon', 'no' => '23'],
+            ['type' => 'coupon', 'no' => '24'],
+        ]
+    ];
+
     public function __construct()
     {
         parent::__construct();
@@ -359,7 +374,9 @@ class Join extends BaseMember
                 'etc_reason' => '가입축하포인트',
                 'reason_type' => 'join'
             ]); // 교재포인트 2000
-
+            
+            // 회원가입하고 넘어감
+            $this->session->set_userdata('is_join', true);
             redirect('/member/join/success');
         } else {
             // 실패시 오류 메세지 출력
@@ -372,6 +389,10 @@ class Join extends BaseMember
      */
     public function success()
     {
+        if($this->session->userdata("is_join") != true){
+            redirect('/');
+        }
+
         // 사용하고 있는 사이트들 검색
         $site = $this->siteModel->listSite(['SiteName', 'SiteUrl'], ['EQ'=>['IsUse'=>'Y'], 'NOT'=>['SiteCode'=>'2000']]);
         
@@ -474,6 +495,34 @@ class Join extends BaseMember
             'name' => $name,
             'typeccd' => 'JOIN' // 회원가입인증메일
         ]);
+    }
+
+
+    /**
+     * 회원가입후 이벤트로 각종 쿠폰 발급
+     * @return CI_Output
+     */
+    public function event()
+    {
+        if($this->session->userdata("is_join") != true) {
+            return $this->json_error('회원가입시에만 이벤트 신청이 가능합니다.');
+        }
+
+        $sitecode = $this->_req('sitecode');
+
+        if($this->session->userdata('is_login') != true || empty($sitecode) == true){
+            return $this->json_error('이벤트적용이 불가능합니다.');
+        }
+
+        $cnt = 0;
+        // 사이트에 따라서 쿠폰 발급
+        foreach($this->_join_coupon[$sitecode] as $key => $row){
+            $result = $this->couponFModel->addMemberCoupon($row['type'],$row['no']);
+            if($result['ret_cd'] == true){ $cnt++;}
+        }
+
+        $this->session->set_userdata('is_join', false);
+        return $this->json_result(true,$cnt.'개의 쿠폰이 발급되었습니다.');
     }
 
 

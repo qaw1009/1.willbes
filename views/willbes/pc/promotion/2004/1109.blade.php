@@ -94,7 +94,7 @@
                 <li >
                     <img src="http://file3.willbes.net/new_gosi/2019/01/EV190128_L1_2.png"  alt="불꽃소방 9~10월 이론완성 종합반 "  usemap="#EV190128_L1_2" border="0" />
                     <map name="EV190128_L1_2" id="EV190128_L1_2">
-                        <area shape="rect" coords="456,1279,759,1352" href="{{ site_url('#none') }}"  target="_blank"/>
+                        <area shape="rect" coords="456,1279,759,1352" href="{{ site_url('/pass/offLecture/index?cate_code=3050&campus_ccd=605001') }}"  target="_blank"/>
                     </map>
                 </li>      
                 <li ><img src="http://file3.willbes.net/new_gosi/2018/11/EV181120_L1_3.png"  alt="불꽃소방 9~10월 이론완성 종합반 " usemap="#EV181120_L1_3" /></li>

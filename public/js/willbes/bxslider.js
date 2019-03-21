@@ -11,6 +11,7 @@ $(function() {
 
 $(function() {
     $('.sliderStopAutoPager').bxSlider({
+        mode:'fade',
         auto: true,
         autoControls: true,
         stopAutoOnClick: true,

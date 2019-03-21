@@ -47,6 +47,7 @@
     margin-left: -520px;
     bottom: 20px;
     text-align: left;
+    z-index: 100;
 }
 .gosi .bx-wrapper .bx-pager.bx-default-pager a {
     background: #ccc;
@@ -58,6 +59,7 @@
     margin-left:196px;
     top:10px;
     width: 364px;
+    z-index: 100;
 }
 
 .gosi .VisualsubBox .bSlider {
@@ -80,6 +82,7 @@
     left:60px;
     bottom: 20px;
     text-align: right;
+    z-index: 100;
 }
 .gosi .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a {
     background: #cecece;

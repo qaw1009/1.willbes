@@ -384,13 +384,6 @@
 .gosi .tx-color {
     color: #ba560e;
 }
-.gosi .Menu .menu-List li.Acad a {
-    background: url("../../img/willbes/gosi/icon_acad.gif") no-repeat 0 0;
-    color: #ba560e;
-}
-.gosi .Menu .menu-List li.Acad a .arrow-Btn {
-    background: url("../../img/willbes/gosi/icon_arrow.gif") no-repeat 0 0;
-}
 .gosi .Section3 {
     background: #f8f8f8;
     padding-bottom:90px;

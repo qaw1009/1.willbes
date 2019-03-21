@@ -16,6 +16,11 @@ class BaseSupport extends \app\controllers\FrontController
         $file_name = $this->_reqG('fname');
         $board_idx = $this->_reqG('board_idx');
 
+        echo $file_path.'<Br>';
+        echo $file_name.'<Br>';
+        echo $board_idx;
+        exit;
+
         $this->downloadFModel->saveLog($board_idx);
         public_download($file_path, $file_name);
 

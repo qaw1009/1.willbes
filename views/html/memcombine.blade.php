@@ -346,7 +346,7 @@
             </select>
         </div-->
         <button type="submit" onclick="" class="mem-Btn h36 mt30 bg-blue bd-dark-blue">
-            <span>시작하기</span>
+            <span>이벤트 혜택 적용</span>
         </button>
     </div>
     <!-- End 통합회원가입 : 회원가입완료 -->

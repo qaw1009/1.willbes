@@ -27,6 +27,7 @@
                     <input name="cp1" type="radio" value="" id="cp2" /><label for="cp2"> 공무원</label>
                 </div>            
             </div>
+            <!--
             @if($ismobile == false)
                 <div class="info-Txt info-Txt-Wrap tx-black mt60">
                     <strong class="tx-gray">시작할 서비스를 선택해 주세요</strong>
@@ -42,8 +43,9 @@
                     <option value="/m/">선택안함</option>
                 </select>
             @endif
+            -->
             <button type="button" id="btn_start" class="mem-Btn h36 mt30 bg-blue bd-dark-blue">
-                <span>시작하기</span>
+                <span>이벤트 혜택 적용</span>
             </button>
         </div>
         <!-- End 통합회원가입 : 회원가입완료 -->

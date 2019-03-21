@@ -76,13 +76,13 @@
         </div>
 		
 		<div class="wbCommon wb_top">
-			<img src="http://file3.willbes.net/new_cop/2019/03/EV190312P_01.jpg"  alt="경찰면접 꿀팁 대방출" />
+			<img src="http://file3.willbes.net/new_cop/2019/03/EV190321P_01.jpg"  alt="경찰면접 꿀팁 대방출" />
             <div class="wb_top_01">
-                <img src="http://file3.willbes.net/new_cop/2019/03/EV190312P_02.jpg" alt="단언컨데, 지금까지 이런 혜택은 없었다!" usemap="#Map190308B" border="0" />
+                <img src="http://file3.willbes.net/new_cop/2019/03/EV190321P_02.jpg" alt="단언컨데, 지금까지 이런 혜택은 없었다!" usemap="#Map190308B" border="0" />
                 <map name="Map190308B" id="Map190308B">
-                  <area shape="rect" coords="405,1254,705,1323" href="javascript:doEvent()" alt="필기합격 인증하기" />
+                  <area shape="rect" coords="299,1850,819,1931" href="javascript:doEvent()" alt="필기합격 인증하기" />
                   <area shape="rect" coords="711,689,863,727" href="#event05" alt="상품혜택 상세보기" />
-                  <area shape="rect" coords="575,173,729,198" href="http://www.willbescop.net/notice/view.html?topMenuType=F&amp;topMenuGnb=FM_008&amp;topMenu=MAIN&amp;menuID=FM_008_001&amp;topMenuName=ÀÏ¹Ý°æÂû&amp;BOARD_MNG_SEQ=NOTICE_000&amp;NOTICETYPE=notice&amp;INCTYPE=view&amp;currentPage=2&amp;BOARD_SEQ=149756&amp;PARENT_BOARD_SEQ=0&amp;searchEventNo=undefined&amp;SEARCHKIND=&amp;SEARCHTEXT=" target="_blank" alt="당첨자발표" />
+                  <area shape="rect" coords="575,173,729,198" href="{{ site_url('#none') }}" target="_blank" alt="당첨자발표" />
                 </map>
                 <ul>
 					<li><img id="t1" src="http://file3.willbes.net/new_cop/2019/03/EV190312P_num00.png"  alt="숫자" /></li>

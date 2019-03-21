@@ -150,7 +150,7 @@
                 @endphp
                 <div class="widthAuto">
                     <div class="will-acadTit">윌비스 <span class="tx-color">공무원학원</span> 교수님</div>
-                    <img src="{{ $last_banner['BannerFullPath'] . $last_banner['BannerImgName'] }}" alt="{{ $last_banner['BannerName'] }}">
+                    <a href="{{ site_url('/pass/professor/index') }}"><img src="{{ $last_banner['BannerFullPath'] . $last_banner['BannerImgName'] }}" alt="{{ $last_banner['BannerName'] }}"></a>
                 </div>
             @endif
         </div>

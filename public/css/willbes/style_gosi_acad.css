@@ -212,6 +212,16 @@
 }
 
 /* Main Container : acad_infoBox : gosi Acad */
+.GA .acad_infoBox {
+    float: left;
+    width: 1120px;
+    border: 10px solid #b7550e;
+    clear: both;
+    margin-top: 50px;
+    padding: 10px 0;
+    height: 90px;
+}
+
 .GA .acad_infoBox li a.on,
 .GA .acad_infoBox li a:hover {
     color: #ba560e;

@@ -258,6 +258,9 @@
     height: 50px;
     border-left: 1px solid #ebebeb;
 }
+.acad_infoBox li:first-child {
+    border-left:0;
+}
 .acad_infoBox li a {
     background-size: 60px !important;
     float: left;

@@ -21,15 +21,14 @@
         /************************************************************/
 
         .skybanner {
-            position:absolute;
-            top:20px;
+            position:fixed;
+            top:200px;
             right:10px;
             z-index:1;
         }
         .skybanner li {
             margin-bottom:5px;
         }
-        .skybanner_sectionFixed {position:fixed; top:20px}
 
         .wb_top {background:#272324 url(http://file3.willbes.net/new_gosi/2019/01/190110_dg_01_bg.png) repeat;}
         .wb_01 {background:#e5edf0;min-width:1210px}
@@ -53,13 +52,13 @@
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
-        <div class="skybanner" >
+        <!--div class="skybanner" >
             <img src="http://file3.willbes.net/new_gosi/2018/11/EV181120_L7.png" alt="7급 초시생 합격전략설명회" usemap="#EV181120_L7" border="0" >
             <map name="EV181120_L7" >
-                <area shape="rect" coords="3,132,94,163" href="http://www.willbesgosi.net/mouigosa/request/list.html?topMenuType=F&topMenuGnb=FM_004&topMenu=MAIN&menuID=FM_004_002_002&topMenuName=%EC%88%98%ED%97%98%EC%97%B0%EA%B5%AC%EC%86%8C&BOARDTYPE=4&INCTYPE=list" target="_blank"/>
-                <area shape="rect" coords="5,337,95,367" href="http://willbesgosi.net/notice/view.html?topMenuType=F&topMenuGnb=FM_008&topMenu=001&menuID=FM_008_004&BOARD_MNG_SEQ=&NOTICETYPE=event&INCTYPE=view&currentPage=1&BOARD_SEQ=&PARENT_BOARD_SEQ=&searchEventNo=996&SEARCHKIND=&SEARCHTEXT=" target="_blank"/>
+                <area shape="rect" coords="3,132,94,163" href="{{ site_url('#none') }}" target="_blank"/>
+                <area shape="rect" coords="5,337,95,367" href="{{ site_url('#none') }}" target="_blank"/>
             </map>
-        </div>
+        </div-->
 
         <div class="evtCtnsBox wb_top">
             <img src="http://file3.willbes.net/new_gosi/2019/01/190110_dg_01.png"  alt="메인" />
@@ -150,12 +149,4 @@
         });
     </script>
 
-    <script src="/public/js/willbes/jquery.nav.js"></script>
-    <script>
-        $(function(e){
-            var targetOffset= $("#evtContainer").offset().top;
-            $('html, body').animate({scrollTop: targetOffset}, 700);
-            /*e.preventDefault(); */
-        });
-    </script>
 @stop

@@ -49,6 +49,8 @@
         </div>
         @endif
 
+        @if($__cfg['IsPassSite'] === false)
+        {{-- 온라인사이트만 노출 --}}
         <div class="curriWrap GM c_both">
             <div class="CurriBox">
                 <table cellspacing="0" cellpadding="0" class="curriTable">
@@ -120,6 +122,7 @@
             </div>
         </div>
         <!-- curriWrap -->
+        @endif
 
         {{-- 과목별 교수 리스트 --}}
         @foreach($data['subjects'] as $subject_idx => $subject_name)

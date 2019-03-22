@@ -33,28 +33,26 @@ class Professor extends \app\controllers\FrontController
         
         // 학원사이트일 경우
         if ($this->_is_pass_site === true) {
+            $learn_pattern = 'off_lecture'; // 학습형태
+
             // 카테고리 조회
             $arr_base['category'] = $this->categoryFModel->listSiteCategory($this->_site_code);
 
             // 카테고리 코드가 없을 경우 기본값 셋팅
             empty($this->_def_cate_code) === true && $this->_def_cate_code = array_get($arr_base['category'], '0.CateCode', '');
-
-            $learn_pattern = 'off_lecture'; // 학습형태
         } else {
             $learn_pattern = 'on_lecture';  // 학습형태
-        }
 
-        if (config_app('SiteGroupCode') == '1002') {
-            // 사이트그룹이 공무원일 경우 카테고별 직렬, 직렬별 과목 조회
-            $arr_base['series'] = $this->baseProductFModel->listSeriesCategoryMapping($this->_site_code, $this->_def_cate_code);
-            $arr_base['subject'] = $this->baseProductFModel->listSubjectSeriesMapping($this->_site_code, $this->_def_cate_code, element('series_ccd', $arr_input));
-        } else {
-            // 카테고리별 과목 조회
-            $arr_base['subject'] = $this->baseProductFModel->listSubjectCategoryMapping($this->_site_code, $this->_def_cate_code);
-        }
+            if ($this->_site_code == '2003') {
+                // 공무원사이트일 경우 카테고별 직렬, 직렬별 과목 조회
+                $arr_base['series'] = $this->baseProductFModel->listSeriesCategoryMapping($this->_site_code, $this->_def_cate_code);
+                $arr_base['subject'] = $this->baseProductFModel->listSubjectSeriesMapping($this->_site_code, $this->_def_cate_code, element('series_ccd', $arr_input));
+            } else {
+                // 카테고리별 과목 조회
+                $arr_base['subject'] = $this->baseProductFModel->listSubjectCategoryMapping($this->_site_code, $this->_def_cate_code);
+            }
 
-        // 신규강좌 조회 (온라인사이트만 조회)
-        if ($this->_is_pass_site === false) {
+            // 신규강좌 조회 (온라인사이트만 조회)
             $arr_base['product'] = $this->lectureFModel->listSalesProduct($learn_pattern, false
                 , ['EQ' => ['SiteCode' => $this->_site_code, 'IsNew' => 'Y'], 'LKR' => ['CateCode' => $this->_def_cate_code]]
                 , 5, 0, ['ProdCode' => 'desc']);

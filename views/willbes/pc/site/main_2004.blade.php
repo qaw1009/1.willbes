@@ -7,7 +7,7 @@
 
         <div class="Section MainVisual mt20">
             <div class="widthAuto">
-                @if(empty($data['arr_main_banner']['메인_빅배너']) === false)
+                @if(isset($data['arr_main_banner']['메인_빅배너']) === true)
                 <div class="VisualBox p_re">
                     <div id="MainRollingDiv" class="MaintabList">
                         <ul class="Maintab">
@@ -29,7 +29,7 @@
                 <div class="VisualsubBox mt20">
                     <ul>
                         @for($i=1; $i<=3; $i++)
-                            @if(empty($data['arr_main_banner']['메인_서브'.$i]) === false)
+                            @if(isset($data['arr_main_banner']['메인_서브'.$i]) === true)
                             <li>
                                 <div class="bSlider acad">
                                     {!! banner_html($data['arr_main_banner']['메인_서브'.$i], 'sliderTM') !!}
@@ -44,7 +44,7 @@
         <div class="Section Bnr mt5 mb80">
             <div class="widthAuto">
                 <div class="willbes-Bnr">
-                    {!! banner_html($data['arr_main_banner']['메인_띠배너']) !!}
+                    {!! banner_html(element('메인_띠배너', $data['arr_main_banner'])) !!}
                 </div>
             </div>
         </div>
@@ -56,7 +56,7 @@
                 </div>
                 <ul class="ProfBox">
                     @for($i=1; $i<=5; $i++)
-                        @if(empty($data['arr_main_banner']['메인_미들'.$i]) === false)
+                        @if(isset($data['arr_main_banner']['메인_미들'.$i]) === true)
                             <li>
                                 <div class="bSlider acad">
                                     {!! banner_html($data['arr_main_banner']['메인_미들'.$i], 'sliderTM') !!}
@@ -77,7 +77,7 @@
                 <div class="sliderEvt pick">
                     <div class="will-acadTit">윌비스 <span class="tx-color">이벤트</span></div>
                     <div class="bSlider acad">
-                        {!! banner_html($data['arr_main_banner']['메인_이벤트'], 'sliderTM') !!}
+                        {!! banner_html(element('메인_이벤트', $data['arr_main_banner']), 'sliderTM') !!}
                     </div>
                 </div>
 
@@ -104,7 +104,7 @@
         <div class="Section mt80">
             <div class="widthAuto">
                 <div class="will-acadTit">윌비스 <span class="tx-color">공무원학원</span> 교수님</div>
-                {!! banner_html($data['arr_main_banner']['메인_대표교수']) !!}
+                {!! banner_html(element('메인_대표교수', $data['arr_main_banner'])) !!}
             </div>
         </div>
 
@@ -134,7 +134,7 @@
                 <div class="sliderInfo">
                     <div class="will-acadTit">Hot <span class="tx-color">Focus</span></div>
                     <div class="bSlider acad">
-                        {!! banner_html($data['arr_main_banner']['메인_포커스'], 'sliderTM') !!}
+                        {!! banner_html(element('메인_포커스', $data['arr_main_banner']), 'sliderTM') !!}
                     </div>
                 </div>
             </div>

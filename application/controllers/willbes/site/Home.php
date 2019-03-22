@@ -74,8 +74,7 @@ class Home extends \app\controllers\FrontController
             $data['dday'] = $this->_dday();
             $data['best_product'] = $this->_product('on_lecture', 4, $s_cate_code, 'Best');
             $data['new_product'] = $this->_product('on_lecture', 4, $s_cate_code, 'New');
-            $data['arr_main_banner'] = $this->_banner($s_cate_code);
-            $data['arr_main_quick'] = $this->_banner('0');
+            $data['arr_main_banner'] = array_merge($this->_banner($s_cate_code), $this->_banner('0'));
         }
 
         $data['notice'] = $this->_boardNotice(4, $s_cate_code);

@@ -10,15 +10,15 @@
             <div class="MainVisual NSK">
                 <div class="VisualBox">
                     <div class="bSlider">
-                        {!! banner_html($data['arr_main_banner']['메인_빅배너'], 'sliderStopAutoPager') !!}
+                        {!! banner_html(element('메인_빅배너', $data['arr_main_banner']), 'sliderStopAutoPager') !!}
                     </div>
                 </div>
                 <div class="VisualsubBox">
                     <div class="VisualsubBoxTop">
-                        {!! banner_html($data['arr_main_banner']['메인_서브1']) !!}
+                        {!! banner_html(element('메인_서브1', $data['arr_main_banner'])) !!}
                     </div>
                     <div class="bSlider">
-                        {!! banner_html($data['arr_main_banner']['메인_서브2'], 'sliderStopAutoPager') !!}
+                        {!! banner_html(element('메인_서브2', $data['arr_main_banner']), 'sliderStopAutoPager') !!}
                     </div>
                 </div>
             </div>
@@ -26,7 +26,7 @@
 
         <div class="Section barBnr">
             <div class="widthAuto">
-                {!! banner_html($data['arr_main_banner']['메인_띠배너']) !!}
+                {!! banner_html(element('메인_띠배너', $data['arr_main_banner'])) !!}
             </div>
         </div>
 
@@ -35,7 +35,7 @@
                 <div><img src="{{ img_url('gosi/visual/visual_tit01.jpg') }}" alt="더! 강력, 더! 완벽해진 윌비스 교수진"></div>
                 <ul class="PBcts">
                     @for($i=1; $i<=5; $i++)
-                        @if(empty($data['arr_main_banner']['메인_교수진'.$i]) === false)
+                        @if(isset($data['arr_main_banner']['메인_교수진'.$i]) === true)
                             <li>
                                 <div class="bSlider">
                                     {!! banner_html($data['arr_main_banner']['메인_교수진'.$i], 'slider') !!}
@@ -52,7 +52,7 @@
                 <div><img src="{{ img_url('gosi/visual/visual_tit02.jpg') }}" alt="추천강좌/이벤트/최신소식"></div>
                 <ul class="SpecialBox">
                     @for($i=1; $i<=10; $i++)
-                        @if(empty($data['arr_main_banner']['메인_hotpick'.$i]) === false)
+                        @if(isset($data['arr_main_banner']['메인_hotpick'.$i]) === true)
                             <li>
                                 {!! banner_html($data['arr_main_banner']['메인_hotpick'.$i]) !!}
                             </li>
@@ -83,7 +83,7 @@
                     <div class="will-listTit mt45">무료특강</div>
                     <ul class="freeLectBx">
                         @for($i=1; $i<=2; $i++)
-                            @if(empty($data['arr_main_banner']['메인_무료특강'.$i]) === false)
+                            @if(isset($data['arr_main_banner']['메인_무료특강'.$i]) === true)
                                 <li>
                                     {!! banner_html($data['arr_main_banner']['메인_무료특강'.$i], '', '', true) !!}
                                 </li>

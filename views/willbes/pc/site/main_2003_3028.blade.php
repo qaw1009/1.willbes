@@ -10,7 +10,7 @@
             <div class="widthAuto NSK mt30">
                 <div class="VisualsubBox">
                     <div class="bSlider">
-                        {!! banner_html($data['arr_main_banner']['메인_빅배너'], 'sliderStopAutoPager') !!}
+                        {!! banner_html(element('메인_빅배너', $data['arr_main_banner']), 'sliderStopAutoPager') !!}
                     </div>
                 </div>
             </div>
@@ -32,7 +32,7 @@
                     <img src="{{ img_url('gosi_tech/visual/visual_tit01_01.jpg') }}" alt="고득점 문제풀이 스킬 확립">
                     <ul class="PBcts">
                         @for($i=1; $i<=4; $i++)
-                            @if(empty($data['arr_main_banner']['메인_미들'.$i]) === false)
+                            @if(isset($data['arr_main_banner']['메인_미들'.$i]) === true)
                                 <li>
                                     <div class="bSlider">
                                         {!! banner_html($data['arr_main_banner']['메인_미들'.$i], 'slider') !!}
@@ -46,7 +46,7 @@
                     <img src="{{ img_url('gosi_tech/visual/visual_tit01_02.jpg') }}" alt="점수의 기반을 형성하는 이론정립">
                     <ul class="PBcts">
                         @for($i=5; $i<=8; $i++)
-                            @if(empty($data['arr_main_banner']['메인_미들'.$i]) === false)
+                            @if(isset($data['arr_main_banner']['메인_미들'.$i]) === true)
                                 <li>
                                     <div class="bSlider">
                                         {!! banner_html($data['arr_main_banner']['메인_미들'.$i], 'slider') !!}
@@ -70,7 +70,7 @@
                 <img src="{{ img_url('gosi_tech/visual/visual_tit02.jpg') }}" alt="무엇 하나 빠지지 않는 빈틈없는 라인업 윌비스 TOP 기술직 교수진">
                 <ul class="ProfBoxB">
                     @for($i=1; $i<=8; $i++)
-                        @if(empty($data['arr_main_banner']['메인_교수진'.$i]) === false)
+                        @if(isset($data['arr_main_banner']['메인_교수진'.$i]) === true)
                             <li>
                                 {!! banner_html($data['arr_main_banner']['메인_교수진'.$i]) !!}
                             </li>

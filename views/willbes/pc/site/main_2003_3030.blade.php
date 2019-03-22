@@ -10,7 +10,7 @@
             <div class="widthAuto NSK mt30">
                 <div class="VisualsubBox">
                     <div class="bSlider">
-                        {!! banner_html($data['arr_main_banner']['메인_빅배너'], 'sliderStopAutoPager') !!}
+                        {!! banner_html(element('메인_빅배너', $data['arr_main_banner']), 'sliderStopAutoPager') !!}
                     </div>
                 </div>
             </div>
@@ -18,7 +18,7 @@
 
         <div class="Section mt30">
             <div class="widthAuto bSlider">
-                {!! banner_html($data['arr_main_banner']['메인_띠배너'], 'sliderPlay') !!}
+                {!! banner_html(element('메인_띠배너', $data['arr_main_banner']), 'sliderPlay') !!}
             </div>
         </div>
 
@@ -27,7 +27,7 @@
                 <img src="{{ img_url('gosi_noncom/visual/visual_tit01.jpg') }}" alt="오랜 경험과 노하우를 가진 전문 교수진">
                 <ul class="PBcts">
                     @for($i=1; $i<=4; $i++)
-                        @if(empty($data['arr_main_banner']['메인_교수진'.$i]) === false)
+                        @if(isset($data['arr_main_banner']['메인_교수진'.$i]) === true)
                             <li>
                                 {!! banner_html($data['arr_main_banner']['메인_교수진'.$i]) !!}
                             </li>

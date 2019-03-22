@@ -10,15 +10,15 @@
             <div class="MainVisual NSK">
                 <div class="VisualBox">
                     <div class="bSlider">
-                        {!! banner_html($data['arr_main_banner']['메인_빅배너'], 'sliderStopAutoPager') !!}
+                        {!! banner_html(element('메인_빅배너', $data['arr_main_banner']), 'sliderStopAutoPager') !!}
                     </div>
                 </div>
                 <div class="VisualsubBox">
                     <div class="VisualsubBoxTop">
-                        {!! banner_html($data['arr_main_banner']['메인_서브1']) !!}
+                        {!! banner_html(element('메인_서브1', $data['arr_main_banner'])) !!}
                     </div>
                     <div class="bSlider">
-                        {!! banner_html($data['arr_main_banner']['메인_서브2'], 'sliderStopAutoPager') !!}
+                        {!! banner_html(element('메인_서브2', $data['arr_main_banner']), 'sliderStopAutoPager') !!}
                     </div>
                 </div>
             </div>
@@ -26,7 +26,7 @@
 
         <div class="Section barBnr">
             <div class="widthAuto">
-                {!! banner_html($data['arr_main_banner']['메인_띠배너']) !!}
+                {!! banner_html(element('메인_띠배너', $data['arr_main_banner'])) !!}
             </div>
         </div>
 
@@ -35,7 +35,7 @@
                 <img src="{{ img_url('gpgosi/visual/visual_tit01.jpg') }}" alt="빠른 합격을 위한 윌비스 군무원 추천강좌">
                 <ul class="PBcts">
                     @for($i=1; $i<=4; $i++)
-                        @if(empty($data['arr_main_banner']['메인_미들'.$i]) === false)
+                        @if(isset($data['arr_main_banner']['메인_미들'.$i]) === true)
                             <li>
                                 <div class="bSlider">
                                     {!! banner_html($data['arr_main_banner']['메인_미들'.$i], 'slider') !!}
@@ -52,7 +52,7 @@
                 <img src="{{ img_url('gpgosi/visual/visual_tit02.jpg') }}" alt="독보적인 강의력! 군무원 강의에 최적화된 윌비스 군무원 명품 교수진">
                 <ul class="PBctsB">
                     @for($i=1; $i<=8; $i++)
-                        @if(empty($data['arr_main_banner']['메인_교수진'.$i]) === false)
+                        @if(isset($data['arr_main_banner']['메인_교수진'.$i]) === true)
                             <li>
                                 {!! banner_html($data['arr_main_banner']['메인_교수진'.$i]) !!}
                             </li>

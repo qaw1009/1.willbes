@@ -257,7 +257,7 @@
                                     @if(empty($row['wUnitAttachFile']) === false)
                                         <br>
                                         <p class="form-control-static ml-10 mr-10">
-                                            [ <a href="{{site_url('/cms/lecture/download/').'?filename='.urlencode($data['wAttachPath'].'/'.$row['wUnitAttachFile']).'&filename_ori='.urlencode($row['wUnitAttachFileReal'])}}" target="_blank">{{ $row['wUnitAttachFileReal'] }}</a> ]
+                                            [ <a href="{{site_url('/cms/lecture/download/').'?filename='.urlencode(str_replace($data['wAttachPath'].'/'.$row['wUnitAttachFile'], '//', '/')).'&filename_ori='.urlencode($row['wUnitAttachFileReal'])}}" target="_blank">{{ $row['wUnitAttachFileReal'] }}</a> ]
                                         </p>
                                     @endif
                                 </td>

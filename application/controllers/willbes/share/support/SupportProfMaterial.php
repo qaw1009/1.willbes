@@ -38,21 +38,15 @@ class SupportProfMaterial extends BaseSupport
         $list = [];
         $arr_condition = [
             'EQ' => [
-                /*'b.SiteCode' => $this->_site_code*/
                 'b.BmIdx' => $this->_bm_idx
                 ,'b.IsUse' => 'Y'
-                /*,'b.ProfIdx' => $prof_idx
-                ,'b.SubjectIdx' => $subject_idx*/
             ],
             'ORG' => [
                 'LKB' => [
                     'b.Title' => $s_keyword
                     ,'b.Content' => $s_keyword
                 ]
-            ],
-            /*'LKB' => [
-                'Category_String'=>$s_cate_code
-            ],*/
+            ]
         ];
 
         $column = 'b.BoardIdx,b.CampusCcd,b.TypeCcd,b.IsBest,b.AreaCcd
@@ -63,12 +57,12 @@ class SupportProfMaterial extends BaseSupport
 
         $order_by = ['b.IsBest'=>'Desc','b.BoardIdx'=>'Desc'];
 
-        $total_rows = $this->supportBoardFModel->listBoardForProf(true, $this->_site_code, $prof_idx, $arr_condition);
+        $total_rows = $this->supportBoardFModel->listBoardForProf(true, $this->_site_code, $prof_idx, $arr_condition, '');
 
         $paging = $this->pagination($this->_default_path.'/material/index/?'.$get_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
 
         if ($total_rows > 0) {
-            $list = $this->supportBoardFModel->listBoardForProf(false, $this->_site_code, $prof_idx, $arr_condition, $column, $paging['limit'], $paging['offset'], $order_by);
+            $list = $this->supportBoardFModel->listBoardForProf(false, $this->_site_code, $prof_idx, $arr_condition, '', $column, $paging['limit'], $paging['offset'], $order_by);
             foreach ($list as $idx => $row) {
                 $list[$idx]['AttachData'] = json_decode($row['AttachData'],true);       //첨부파일
             }

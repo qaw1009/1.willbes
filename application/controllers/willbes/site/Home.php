@@ -327,12 +327,9 @@ class Home extends \app\controllers\FrontController
             ],
             'IN' => [
                 'b.CampusCcd' => $arr_campus
-            ],
-            'LKB' => [
-                'Category_String' => $cate_code
             ]
         ];
-        return $this->supportBoardFModel->listBoard(false,$arr_condition,$column,$limit_cnt,0,$order_by);
+        return $this->supportBoardFModel->listBoard(false, $arr_condition, $cate_code, $column, $limit_cnt,0, $order_by);
 
     }
 
@@ -377,9 +374,9 @@ class Home extends \app\controllers\FrontController
     {
         $column = 'b.BoardIdx, b.IsBest, b.AreaCcd_Name, b.Title, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
         $order_by = ['b.IsBest' => 'Desc', 'b.BoardIdx' => 'Desc'];
-        $arr_condition = ['EQ' => ['b.BmIdx' => 54, 'b.IsUse' => 'Y'], 'LKB' => ['b.Category_String' => $cate_code]];
+        $arr_condition = ['EQ' => ['b.BmIdx' => 54, 'b.IsUse' => 'Y']];
 
-        return $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $arr_condition, $column, $limit_cnt, 0, $order_by);
+        return $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $cate_code, $arr_condition, $column, $limit_cnt, 0, $order_by);
     }
 
     /**
@@ -393,9 +390,9 @@ class Home extends \app\controllers\FrontController
     {
         $column = 'b.BoardIdx, b.Title, b.IsBest, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
         $order_by = ['b.IsBest' => 'Desc', 'b.BoardIdx' => 'Desc'];
-        $arr_condition = ['EQ' => ['b.BmIdx' => 57, 'b.IsUse' => 'Y'], 'LKB' => ['b.Category_String' => $cate_code]];
+        $arr_condition = ['EQ' => ['b.BmIdx' => 57, 'b.IsUse' => 'Y']];
 
-        return $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $arr_condition, $column, $limit_cnt, 0, $order_by);
+        return $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $cate_code, $arr_condition, $column, $limit_cnt, 0, $order_by);
     }
 
     /**
@@ -410,9 +407,9 @@ class Home extends \app\controllers\FrontController
         $column = 'b.BoardIdx, b.Title, b.IsBest, b.SubjectIdx, b.SubjectName, b.ProfIdx, b.ProfName, b.ProdName
             , DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm, fn_professor_refer_value(b.ProfIdx, "lec_list_img") as ProfLecListImg';
         $order_by = ['b.IsBest' => 'Desc', 'b.BoardIdx' => 'Desc'];
-        $arr_condition = ['EQ' => ['b.BmIdx' => 85, 'b.SiteCode' => $this->_site_code, 'b.IsUse' => 'Y'], 'LKB' => ['b.Category_String' => $cate_code]];
+        $arr_condition = ['EQ' => ['b.BmIdx' => 85, 'b.SiteCode' => $this->_site_code, 'b.IsUse' => 'Y']];
 
-        return $this->supportBoardTwoWayFModel->listBoard(false, $arr_condition, $column, $limit_cnt, 0, $order_by);
+        return $this->supportBoardTwoWayFModel->listBoard(false, $arr_condition, $cate_code, $column, $limit_cnt, 0, $order_by);
     }
 
     /**
@@ -430,7 +427,7 @@ class Home extends \app\controllers\FrontController
         ];
         $column = 'b.BoardIdx, b.Title, b.AttachData, b.CampusCcd_Name, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
         $order_by = ['b.BoardIdx'=>'Desc'];
-        $data = $this->supportBoardFModel->listBoard(false,$arr_condition,$column,2,0,$order_by);
+        $data = $this->supportBoardFModel->listBoard(false,$arr_condition, '',$column,2,0,$order_by);
 
         if (empty($data) === false) {
             foreach ($data as $idx => $row) {

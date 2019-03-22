@@ -655,11 +655,11 @@ class MockTest extends \app\controllers\FrontController
                        ';
         $order_by = ['b.IsBest'=>'Desc','b.BoardIdx'=>'Desc'];
 
-        $total_rows = $this->supportBoardFModel->listBoard(true, $arr_condition);
+        $total_rows = $this->supportBoardFModel->listBoard(true, $arr_condition, '');
         $paging = $this->pagination('/mockTest/listNotice/cate/'.$this->_cate_code.'/?'.$get_page_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
 
         if ($total_rows > 0) {
-            $list = $this->supportBoardFModel->listBoard(false,$arr_condition,$column,$paging['limit'],$paging['offset'],$order_by);
+            $list = $this->supportBoardFModel->listBoard(false,$arr_condition, '',$column,$paging['limit'],$paging['offset'],$order_by);
             foreach ($list as $idx => $row) {
                 $list[$idx]['AttachData'] = json_decode($row['AttachData'],true);       //첨부파일
             }

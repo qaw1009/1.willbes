@@ -6,10 +6,13 @@ class BaseSupportFModel extends WB_Model
     protected $_table = [
         'board' => 'vw_board as b'
         ,'twoway_board' => 'vw_board_twoway as b'
+        ,'board_2' => 'vw_board_2 as b'
+        ,'twoway_board_2' => 'vw_board_twoway_2 as b'
         ,'board_qna' => 'vw_board_qna'
         ,'lms_board' => 'lms_board'
         ,'lms_board_log' => 'lms_board_read_log'
         ,'lms_board_r_category' => 'lms_board_r_category'
+        ,'lms_sys_category' => 'lms_sys_category'
         ,'lms_board_attach' => 'lms_board_attach'
         ,'lms_board_assignment' => 'lms_board_assignment'
         ,'lms_board_assignment_r_schedule_date' => 'lms_board_assignment_r_schedule_date'

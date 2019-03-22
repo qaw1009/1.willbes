@@ -52,7 +52,6 @@ class SupportProfQna extends BaseSupport
 
         //사이트목록 (과정)
         $arr_base['site_list'] = $this->siteModel->getSiteArray(false);
-        /*unset($arr_base['site_list'][config_item('app_intg_site_code')]);*/
 
         // 카테고리 조회
         if ($this->_site_code == config_item('app_intg_site_code')) {
@@ -73,27 +72,22 @@ class SupportProfQna extends BaseSupport
 
         $arr_condition = [
             'EQ' => [
-                'BmIdx' => $this->_bm_idx,
-                'IsUse' => 'Y',
-                'TypeCcd' => $s_consult_type,
-                /*'ProfIdx' => $prof_idx,
-                'SubjectIdx' => $subject_idx*/
+                'b.BmIdx' => $this->_bm_idx,
+                'b.IsUse' => 'Y',
+                'b.TypeCcd' => $s_consult_type
             ],
             'ORG' => [
                 'LKB' => [
-                    'Title' => $s_keyword,
-                    'Content' => $s_keyword
+                    'b.Title' => $s_keyword,
+                    'b.Content' => $s_keyword
                 ]
-            ],
-            /*'LKB' => [
-                'Category_String'=>$s_cate_code
-            ],*/
+            ]
         ];
 
         // 공지숨기기
         if ($s_is_display == 1) {
             $arr_condition['EQ'] = array_merge($arr_condition['EQ'], [
-                'IsBest' => '0'
+                'b.IsBest' => '0'
             ]);
         }
 
@@ -101,36 +95,36 @@ class SupportProfQna extends BaseSupport
         if ($s_is_my_contents == 1) {
             if (empty($this->session->userdata('mem_idx')) === false) {
                 $arr_condition['EQ'] = array_merge($arr_condition['EQ'], [
-                    'RegMemIdx' => $this->session->userdata('mem_idx'),
-                    'RegType' => '0'
+                    'b.RegMemIdx' => $this->session->userdata('mem_idx'),
+                    'b.RegType' => '0'
                 ]);
             } else {
                 $arr_condition['EQ'] = array_merge($arr_condition['EQ'], [
-                    'RegMemIdx' => '0',
-                    'RegType' => '0'
+                    'b.RegMemIdx' => '0',
+                    'b.RegType' => '0'
                 ]);
             }
         }
 
-        $column = 'BoardIdx, CampusCcd, TypeCcd, IsBest, RegType, RegMemIdx, ProdName';
-        $column .= ', Title, Content, (ReadCnt + SettingReadCnt) as TotalReadCnt';
-        $column .= ', AttachData,DATE_FORMAT(RegDatm, \'%Y-%m-%d\') as RegDatm';
-        $column .= ', IsPublic, CampusCcd_Name, TypeCcd_Name';
-        $column .= ', SiteName, ReplyStatusCcd, ReplyStatusCcd_Name, Category_NameString';
-        $column .= ', IF(RegType=1, \'\', RegMemName) AS RegName';
-        $column .= ', IF(IsCampus=\'Y\',\'offline\',\'online\') AS CampusType';
-        $column .= ', IF(IsCampus=\'Y\',\'학원\',\'온라인\') AS CampusType_Name, SiteGroupName';
-        $order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
+        $column = 'b.BoardIdx, b.CampusCcd, b.TypeCcd, b.IsBest, b.RegType, b.RegMemIdx, b.ProdName';
+        $column .= ', b.Title, b.Content, (b.ReadCnt + b.SettingReadCnt) as TotalReadCnt';
+        $column .= ', b.AttachData,DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
+        $column .= ', b.IsPublic, b.CampusCcd_Name, b.TypeCcd_Name';
+        $column .= ', b.SiteName, b.ReplyStatusCcd, b.ReplyStatusCcd_Name';
+        $column .= ', IF(b.RegType=1, \'\', RegMemName) AS RegName';
+        $column .= ', IF(b.IsCampus=\'Y\',\'offline\',\'online\') AS CampusType';
+        $column .= ', IF(b.IsCampus=\'Y\',\'학원\',\'온라인\') AS CampusType_Name, SiteGroupName';
+        $order_by = ['b.IsBest'=>'Desc','b.BoardIdx'=>'Desc'];
 
         if (APP_DEVICE == 'pc') {
             $paging_count = $this->_paging_count;
         } else {
             $paging_count = $this->_paging_count_m;
         }
-        $total_rows = $this->supportBoardTwoWayFModel->listBoardForProf(true, $this->_site_code, $prof_idx, $arr_condition);
+        $total_rows = $this->supportBoardTwoWayFModel->listBoardForProf(true, $this->_site_code, $prof_idx, $arr_condition,'');
         $paging = $this->pagination($this->_default_path.'/index/?'.$get_page_params,$total_rows,$this->_paging_limit,$paging_count,true);
         if ($total_rows > 0) {
-            $list = $this->supportBoardTwoWayFModel->listBoardForProf(false, $this->_site_code, $prof_idx,$arr_condition,$column,$paging['limit'],$paging['offset'],$order_by);
+            $list = $this->supportBoardTwoWayFModel->listBoardForProf(false, $this->_site_code, $prof_idx,$arr_condition,'',$column,$paging['limit'],$paging['offset'],$order_by);
             foreach ($list as $idx => $row) {
                 $list[$idx]['AttachData'] = json_decode($row['AttachData'],true);       //첨부파일
             }

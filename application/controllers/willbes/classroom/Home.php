@@ -115,19 +115,19 @@ class Home extends \app\controllers\FrontController
         $order_by = ['b.IsBest' => 'Desc', 'b.BoardIdx' => 'Desc'];
         $arr_condition = ['EQ' => ['b.BmIdx' => 48, 'b.RegMemIdx' => $memidx,'b.IsUse' => 'Y']];
         $column = 'b.BoardIdx, b.Title, b.ReplyStatusCcd, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
-        $data['counsel'] = $this->supportBoardTwoWayFModel->listBoard(false, $arr_condition, $column, 4, 0, $order_by);
+        $data['counsel'] = $this->supportBoardTwoWayFModel->listBoard(false, $arr_condition, '', $column, 4, 0, $order_by);
 
         // 나의 학습Q&A
         $order_by = ['b.IsBest' => 'Desc', 'b.BoardIdx' => 'Desc'];
         $arr_condition = ['EQ' => ['b.BmIdx' => 66, 'b.RegMemIdx' => $memidx,'b.IsUse' => 'Y']];
         $column = 'b.BoardIdx, b.Title, b.ReplyStatusCcd, b.ProfIdx, b.SubjectIdx, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
-        $data['qna'] = $this->supportBoardTwoWayFModel->listBoard(false, $arr_condition, $column, 4, 0, $order_by);
+        $data['qna'] = $this->supportBoardTwoWayFModel->listBoard(false, $arr_condition, '', $column, 4, 0, $order_by);
 
         // 공지사항
         $order_by = ['b.IsBest' => 'Desc', 'b.BoardIdx' => 'Desc'];
         $arr_condition = ['EQ' => ['b.BmIdx' => 45,'b.SiteCode' => $this->_site_code,'b.IsUse' => 'Y']];
         $column = 'b.BoardIdx, b.Title, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
-        $data['notice'] = $this->supportBoardFModel->listBoard(false, $arr_condition, $column, 4, 0, $order_by);
+        $data['notice'] = $this->supportBoardFModel->listBoard(false, $arr_condition, '', $column, 4, 0, $order_by);
 
         // 쪽지
         $data['msg_list'] = $this->messageFModel->listMessage(false, [], $memidx,

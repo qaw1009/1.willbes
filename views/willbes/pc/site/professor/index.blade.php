@@ -13,7 +13,9 @@
         <h2>교수진 소개</h2>
         @include('willbes.pc.site.professor.lnb_menu_partial')
     </div>
-    <div class="Content p_re ml20">        
+    <div class="Content p_re ml20">
+        @if($__cfg['IsPassSite'] === false)
+        {{-- 온라인사이트만 노출 --}}
         <div class="willbes-NoticeWrap mb40 c_both">
             {!! banner('교수진인덱스_신규강좌배너', 'sliderPromotion widthAuto460 f_left mr20', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
             <div class="willbes-listTable willbes-newLec widthAuto460 mt0">
@@ -29,6 +31,7 @@
             </div>
         </div>
         <!-- willbes-NoticeWrap -->
+        @endif
 
         <form id="url_form" name="url_form" method="GET">
             @foreach($arr_input as $key => $val)

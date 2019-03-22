@@ -25,8 +25,8 @@
         <div class="Section ProfBox">
             <div class="widthAuto">
                 <ul class="PBtab NSK">
-                    <li><a href="#tab01">현재 준비중인 수험생이라면</a></li>
-                    <li><a href="#tab02">지금 시작하는 초시생이라면</a></li>
+                    <li><a href="#tab01">1순환, 큰 틀에서 흐름을 파악하라!</a></li>
+                    <li><a href="#tab02">예비순환, 동행의 첫걸음</a></li>
                 </ul>
                 <div id="tab01">
                     <img src="{{ img_url('gosi_law/visual/visual_tit01_01.jpg') }}" alt="지금은 전범위 모의고사로 마무리 할 때!">

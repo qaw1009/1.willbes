@@ -64,7 +64,7 @@
     {{-- 공무원 군무원 사이트일 경우만 적용 --}}
     <div id="topBannerLayer" class="gosi">
         <div class="topBanner">
-            <a href="#none"><img src="{{ img_url('gosi/banner/1119-70-3023.gif') }}" alt="군무원"></a>
+            <a href="#none"><img src="{{ img_url('gosi/banner/1119-70-3024.gif') }}" alt="군무원"></a>
         </div>
     </div>
 @endif

@@ -169,6 +169,46 @@
                         </div>
 					</div>
                 </li>
+                <li>
+                	<div class="bSlider acad">
+						<div class="sliderTM">
+							<div><a href="#none"><img src="{{ img_url('gosi_acad/prof/ProfBox01.jpg') }}" alt="배너명"></a></div>
+							<div><a href="#none"><img src="{{ img_url('gosi_acad/prof/ProfBox04.jpg') }}" alt="배너명"></a></div>
+                        </div>
+					</div>
+                </li>
+                <li>
+                	<div class="bSlider acad">
+						<div class="sliderTM">
+							<div><a href="#none"><img src="{{ img_url('gosi_acad/prof/ProfBox02.jpg') }}" alt="배너명"></a></div>
+							<div><a href="#none"><img src="{{ img_url('gosi_acad/prof/ProfBox05.jpg') }}" alt="배너명"></a></div>
+                        </div>
+					</div>
+                </li>
+                <li>
+                	<div class="bSlider acad">
+						<div class="sliderTM">
+							<div><a href="#none"><img src="{{ img_url('gosi_acad/prof/ProfBox03.jpg') }}" alt="배너명"></a></div>
+							<div><a href="#none"><img src="{{ img_url('gosi_acad/prof/ProfBox01.jpg') }}" alt="배너명"></a></div>
+                        </div>
+					</div>
+                </li>
+                <li>
+                	<div class="bSlider acad">
+						<div class="sliderTM">
+							<div><a href="#none"><img src="{{ img_url('gosi_acad/prof/ProfBox04.jpg') }}" alt="배너명"></a></div>
+							<div><a href="#none"><img src="{{ img_url('gosi_acad/prof/ProfBox02.jpg') }}" alt="배너명"></a></div>
+                        </div>
+					</div>
+                </li>
+                <li>
+                	<div class="bSlider acad">
+						<div class="sliderTM">
+							<div><a href="#none"><img src="{{ img_url('gosi_acad/prof/ProfBox05.jpg') }}" alt="배너명"></a></div>
+							<div><a href="#none"><img src="{{ img_url('gosi_acad/prof/ProfBox03.jpg') }}" alt="배너명"></a></div>
+                        </div>
+					</div>
+                </li>
             </ul>
         </div>
     </div>

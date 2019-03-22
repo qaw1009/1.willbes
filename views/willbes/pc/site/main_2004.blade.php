@@ -203,5 +203,5 @@
     </div>
     <!-- End Container -->
 
-    {!! popup('657001', $__cfg['SiteCode'], '0') !!}
+    {!! popup('657001', $__cfg['SiteCode'], '') !!}
 @stop

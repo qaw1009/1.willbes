@@ -17,8 +17,10 @@
 
         <div class="Section youtubeWrap">
             <div class="widthAuto smallTit">
-                <p><span>3법 300점, 공통 200점! 단기 합격까지!</span></p>
-                <div class="big NSK-Black">모든 것이 완벽한 <span class="cop-color">합격 커리큘럼</span></div>
+                <p>
+                    <span>3법 300점, 공통 200점! 단기 합격까지!</span><br>
+                    <span class="big NSK-Black">모든 것이 완벽한 <span class="cop-color">합격 커리큘럼</span></span>
+                </p>
                 <a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank"><img src="{{ img_url('cop/icon_add_big.png') }}" alt="동영상 더보기"></a>
             </div>
 

@@ -10015,6 +10015,7 @@ table.acadlecInfoPackageTable tr.Top td {
     padding: 15px;
     border: 1px solid #2f2f2f;
     box-shadow: none;
+    z-index: 200;
 }
 .drop-Box.academy-Box:before {
     margin-left: -87px;

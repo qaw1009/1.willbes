@@ -55,7 +55,7 @@
                     <strong class="NSK-Black">오늘도 최선을 다하는 <span class="tx-color">윌비스 고시학원</span></strong>
                 </div>
                 <ul class="ProfBox">
-                    @for($i=1; $i<=5; $i++)
+                    @for($i=1; $i<=10; $i++)
                         @if(empty($data['arr_main_banner']['메인_미들'.$i]) === false)
                             <li>
                                 <div class="bSlider acad">

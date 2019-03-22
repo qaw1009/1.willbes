@@ -58,9 +58,9 @@
         <div class="evtCtnsBox wb_cts04">
             <img src="http://file3.willbes.net/new_gosi/2018/08/180817_5.png"alt="압도하는 황남기 T-pass" usemap="#Map_180820_lec2" border="0" />
             <map name="Map_180820_lec2">
-                <area shape="rect" coords="837,724,1046,786" href="http://www.willbesgosi.net/packagelecture/packagelectureDetail.html?currentPage=1&pageRow=9999&topMenu=001&topMenuName=&topMenuType=O&searchCategoryCode=001&leftMenuLType=M0001&lecKType=P&searchLeccode=P201800072" target="_blank">
-                <area shape="rect" coords="839,799,1043,863" href="http://www.willbesgosi.net/packagelecture/packagelectureDetail.html?currentPage=1&pageRow=9999&topMenu=001&topMenuName=&topMenuType=O&searchCategoryCode=001&leftMenuLType=M0001&lecKType=P&searchLeccode=P201800074" target="_blank">
-                <area shape="rect" coords="840,871,1042,936" href="http://www.willbesgosi.net/packagelecture/packagelectureDetail.html?currentPage=1&pageRow=9999&topMenu=001&topMenuName=&topMenuType=O&searchCategoryCode=001&leftMenuLType=M0001&lecKType=P&searchLeccode=P201800071" target="_blank">
+                <area shape="rect" coords="837,724,1046,786" href="{{ site_url('#none') }}" target="_blank">
+                <area shape="rect" coords="839,799,1043,863" href="{{ site_url('/package/show/cate/3019/pack/648001/prod-code/150605') }}" target="_blank">
+                <area shape="rect" coords="840,871,1042,936" href="{{ site_url('/package/show/cate/3019/pack/648001/prod-code/150602') }}" target="_blank">
             </map>
         </div>
         <!--wb_cts04//-->
@@ -72,12 +72,4 @@
 
     </div>
     <!-- End Container -->
-
-    <script>
-        $(function(e){
-            var targetOffset= $("#evtContainer").offset().top;
-            $('html, body').animate({scrollTop: targetOffset}, 700);
-            /*e.preventDefault(); */
-        });
-    </script>
 @stop

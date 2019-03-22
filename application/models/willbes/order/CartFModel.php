@@ -55,7 +55,7 @@ class CartFModel extends BaseOrderFModel
                 , PL.StudyStartDate, PL.StudyEndDate, PL.StudyApplyCcd, PL.CampusCcd, fn_ccd_name(PL.CampusCcd) as CampusCcdName                  
                 , PS.SalePrice as OriSalePrice, PS.SaleRate as OriSaleRate, PS.SaleDiscType as OriSaleDiscType, PS.RealSalePrice as OriRealSalePrice
                 , case when PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['userpack_lecture'] . '" then fn_product_userpack_price_data(CA.ProdCode, CA.SaleTypeCcd, CA.ProdCodeSub)
-                    when CA.SalePatternCcd = "' . $this->_sale_pattern_ccd['retake'] . '" then JSON_OBJECT("RealSalePrice", cast(PS.SalePrice * ((100 - PL.RetakeSaleRate) / 100) as int))
+                    when CA.SalePatternCcd = "' . $this->_sale_pattern_ccd['retake'] . '" then JSON_OBJECT("RealSalePrice", cast(PS.RealSalePrice * ((100 - PL.RetakeSaleRate) / 100) as int))
                     when CA.SalePatternCcd = "' . $this->_sale_pattern_ccd['extend'] . '" then JSON_OBJECT("RealSalePrice", floor((PS.SalePrice * CA.ExtenDay) / PL.StudyPeriod))
                     else null
                   end as CalcPriceData                                              
@@ -179,7 +179,7 @@ class CartFModel extends BaseOrderFModel
         $sess_mem_idx = $this->session->userdata('mem_idx');
 
         // 에러 메시지
-        $err_msg = '선택하신 수강생 교재에 해당하는 강좌를 선택하지 않으셨습니다.' . PHP_EOL . '해당 강좌를 선택해 주세요.';
+        $err_msg = '선택하신 수강생 교재에 해당하는 강좌를 선택하지 않으셨습니다. 해당 강좌를 선택해 주세요.';
 
         // 1. 해당 도서 수강생교재 여부 확인, 수강생교재일 경우 연관된 부모상품코드 조회
         $arr_target_prod_code = array_pluck($this->productFModel->findParentProductToStudentBook($prod_book_code), 'ProdCode');
@@ -257,7 +257,7 @@ class CartFModel extends BaseOrderFModel
             // 데이터 저장
             foreach ($arr_prod_code as $prod_code => $prod_row) {
                 // 학습형태별 사전 체크
-                $check_result = $this->checkProduct($prod_row['LearnPattern'], $site_code, $prod_code, $prod_row['ParentProdCode'], $is_visit_pay);
+                $check_result = $this->checkProduct($prod_row['LearnPattern'], $site_code, $prod_code, $prod_row['ParentProdCode'], $is_visit_pay, false, false);
                 if ($check_result !== true) {
                     throw new \Exception($check_result);
                 }
@@ -538,9 +538,10 @@ class CartFModel extends BaseOrderFModel
      * @param int $parent_prod_code [부모상품코드]
      * @param string $is_visit_pay [방문결제여부, Y/N]
      * @param bool $is_data_return [상품 데이터 리턴 여부]
+     * @param bool $is_cart [장바구니여부]
      * @return bool|array|string
      */
-    public function checkProduct($learn_pattern, $site_code, $prod_code, $parent_prod_code, $is_visit_pay, $is_data_return = false)
+    public function checkProduct($learn_pattern, $site_code, $prod_code, $parent_prod_code, $is_visit_pay, $is_data_return = false, $is_cart = false)
     {
         $data = $this->productFModel->findOnlySalesProductByProdCode($learn_pattern, $prod_code);
 
@@ -555,7 +556,13 @@ class CartFModel extends BaseOrderFModel
 
         if ($learn_pattern == 'book') {
             // 수강생 교재 체크
-            $check_result = $this->checkStudentBook($site_code, $prod_code);
+            $arr_input_prod_code = [];
+            if ($is_cart === true) {
+                // 장바구니에서만 부모상품코드 사용 (강좌 + 수강생교재를 바로결제할 경우 수강생교재를 장바구니에 담기 위해 임의로 강좌상품코드 전달)
+                $arr_input_prod_code[] = $parent_prod_code;
+            }
+
+            $check_result = $this->checkStudentBook($site_code, $prod_code, $arr_input_prod_code);
             if ($check_result !== true) {
                 return $check_result;
             }

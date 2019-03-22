@@ -61,6 +61,7 @@
                 <tr>
                     <th>운영사이트</th>
                     <th>카테고리</th>
+                    <th>인증코드</th>
                     <th>인증구분</th>
                     <th>인증조건</th>
                     <th>인증회차</th>
@@ -102,10 +103,11 @@
                 columns: [
                     {'data' : 'SiteName'},
                     {'data' : 'CateName'},
+                    {'data' : 'CertIdx'},
                     {'data' : 'CertTypeCcd_Name'},
                     {'data' : 'CertConditionCcd_Name'},
                     {'data' : null, 'render' : function(data,type,row,meta) {
-                        return '<a href="#" class="btn-modify" data-idx="' + data.CertIdx + '"><u>' + data.No + '회 [' + data.CertIdx +' - ' + data.CertTitle +']</u></a>';
+                        return '<a href="#" class="btn-modify" data-idx="' + data.CertIdx + '"><u>' + data.No + '회 [' + data.CertTitle +']</u></a>';
                     }},
                     {'data' : null, 'render' : function(data,type,row,meta) {
                             return data.CertStartDate + ' ~ ' +data.CertEndDate;

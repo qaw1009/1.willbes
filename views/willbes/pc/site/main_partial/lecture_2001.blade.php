@@ -18,7 +18,7 @@
                                 <div class="infoBox">
                                     <div class="infoTit">{{ $row['SubjectName'] }} {{ $row['wProfName'] }}</div>
                                     <div class="infoTxt">
-                                        {{ hpSubString($row['ProdName'], 0, 28, '...') }}<br/>
+                                        {{ hpSubString($row['ProdName'], 0, 25, '...') }}<br/>
                                         <span class="small">{{ $row['wUnitLectureCnt'] }}강 / {{ $row['StudyPeriod'] }}일 / {{ $row['wLectureProgressCcdName'] }}</span><br/>
                                     </div>
                                 </div>
@@ -48,7 +48,7 @@
                                 <div class="infoBox">
                                     <div class="infoTit">{{ $row['SubjectName'] }} {{ $row['wProfName'] }}</div>
                                     <div class="infoTxt">
-                                        {{ hpSubString($row['ProdName'], 0, 28, '...') }}<br/>
+                                        {{ hpSubString($row['ProdName'], 0, 25, '...') }}<br/>
                                         <span class="small">{{ $row['wUnitLectureCnt'] }}강 / {{ $row['StudyPeriod'] }}일 / {{ $row['wLectureProgressCcdName'] }}</span><br/>
                                     </div>
                                 </div>

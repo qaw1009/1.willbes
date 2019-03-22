@@ -20,7 +20,7 @@ class OrderListModel extends BaseOrderModel
         $is_all_from = true;    // 모든 테이블 조인
         if (is_bool($is_count) === true) {
             if ($is_count === true) {
-                $in_column = 'count(*) AS numrows';
+                $in_column = 'straight_join count(*) AS numrows';
                 $column = 'numrows';
                 $is_all_from = false;
             } else {
@@ -44,17 +44,17 @@ class OrderListModel extends BaseOrderModel
                     , O.CompleteDatm, O.OrderDatm
                     , OP.SalePatternCcd, OP.PayStatusCcd, OP.OrderPrice, OP.RealPayPrice, OP.CardPayPrice, OP.CashPayPrice, OP.DiscPrice
                     , if(OP.DiscRate > 0, concat(OP.DiscRate, if(OP.DiscType = "R", "%", "원")), "") as DiscRate, OP.DiscReason
-                    , OP.UsePoint, OP.SavePoint, OP.IsUseCoupon, OP.UserCouponIdx, OP.UpdDatm 
+                    , OP.UsePoint, OP.SavePoint, OP.SavePointType, OP.IsUseCoupon, OP.UserCouponIdx, OP.UpdDatm 
                     , P.ProdTypeCcd, PL.LearnPatternCcd, P.ProdName, if(OP.SalePatternCcd != "' . $this->_sale_pattern_ccd['normal'] . '", CSP.CcdName, "") as SalePatternCcdName                                        
                     , CPG.CcdEtc as PgDriver, CPC.CcdName as PayChannelCcdName, CPR.CcdName as PayRouteCcdName, CPM.CcdName as PayMethodCcdName, CVB.CcdName as VBankCcdName
                     , CAR.CcdName as AdminReasonCcdName, CPT.CcdName as ProdTypeCcdName, CLP.CcdName as LearnPatternCcdName, CPS.CcdName as PayStatusCcdName';
 
                 $in_column .= $this->_getAddListQuery('column', $arr_add_join);
-                $column = '*, (tRealPayPrice - cast(tRefundPrice as int)) as tRemainPrice';
+                $column = 'straight_join *, (tRealPayPrice - cast(tRefundPrice as int)) as tRemainPrice';
             }
         } else {
             $in_column = $is_count;
-            $column = '*';
+            $column = 'straight_join *';
         }
 
         $from = $this->_getListFrom($arr_add_join, $is_all_from);
@@ -113,7 +113,7 @@ class OrderListModel extends BaseOrderModel
         }
 
         // 쿼리 실행 및 결과값 리턴
-        return $this->_conn->query('select ' . $column . ' from (select ' . $in_column . $from . $where . ') U ' . $order_by_offset_limit)->result_array();
+        return $this->_conn->query('select straight_join ' . $column . ' from (select ' . $in_column . $from . $where . ') U ' . $order_by_offset_limit)->result_array();
     }
 
     /**
@@ -213,10 +213,14 @@ class OrderListModel extends BaseOrderModel
             // 교수 정보 추가
             if (in_array('professor', $arr_add_join) === true) {
                 $from .= '
-                    left join ' . $this->_table['product_professor_concat'] . ' as PPC
+                    left join ' . $this->_table['product_professor_concat_repr'] . ' as PPC
                         on OP.ProdCode = PPC.ProdCode';
+                /* vw_product_r_professor_concat 테이블 사용
                 $column .= ', PPC.ProfIdx_String, PPC.wProfName_String, PPC.ReprProfIdx, PPC.ReprWProfName';
                 $excel_column .= ', PPC.wProfName_String, PPC.ReprWProfName';
+                */
+                $column .= ', PPC.ProfIdx_String, PPC.wProfName_String';
+                $excel_column .= ', PPC.wProfName_String';
             }
 
             // 배송지 추가
@@ -384,7 +388,7 @@ class OrderListModel extends BaseOrderModel
                 , O.IsEscrow, O.IsDelivery, O.IsVisitPay, O.CompleteDatm, O.OrderDatm 
                 , OP.SalePatternCcd, OP.PayStatusCcd, OP.OrderPrice, OP.RealPayPrice, OP.CardPayPrice, OP.CashPayPrice, OP.DiscPrice           
                 , OP.DiscRate, OP.DiscType, OP.DiscReason
-                , OP.UsePoint, OP.SavePoint, OP.IsUseCoupon, OP.UserCouponIdx, OP.UpdDatm
+                , OP.UsePoint, OP.SavePoint, OP.SavePointType, OP.IsUseCoupon, OP.UserCouponIdx, OP.UpdDatm
                 , P.ProdTypeCcd, P.ProdName, PL.LearnPatternCcd, PL.CampusCcd
                 , CPT.CcdName as ProdTypeCcdName, CLP.CcdName as LearnPatternCcdName, CCA.CcdName as CampusCcdName';
         }
@@ -569,16 +573,23 @@ class OrderListModel extends BaseOrderModel
         $req_start_date = $req_start_date . ' 00:00:00';
         $req_end_date = $req_end_date . ' 23:59:59';
 
-        $column = 'S.SiteCode, max(S.IsCampus) as IsCampus, max(S.SiteName) as SiteName, count(ORR.RefundReqIdx) as RefundReqCnt';
+        $column = 'S.SiteCode, S.SiteName, S.IsCampus, ifnull(RR.RefundReqCnt, 0) as RefundReqCnt';
         $from = '
             from ' . $this->_table['site'] . ' as S
-                left join ' . $this->_table['order'] . ' as O
-                    on S.SiteCode = O.SiteCode and O.CompleteDatm is not null
-                left join ' . $this->_table['order_refund_request'] . ' as ORR
-                    on O.OrderIdx = ORR.OrderIdx and ORR.RefundReqDatm between ? and ?
-            where S.SiteCode != ' . config_item('app_intg_site_code') . '
-                and S.IsUse = "Y"
-            group by S.SiteCode';
+                left join (
+                    select
+                        O.SiteCode, count(ORR.RefundReqIdx) as RefundReqCnt
+                    from ' . $this->_table['order_refund_request'] . ' as ORR
+                        inner join ' . $this->_table['order'] . ' as O
+                            on ORR.OrderIdx = O.OrderIdx
+                    where ORR.RefundReqDatm between ? and ?
+                        and O.CompleteDatm is not null	
+                    group by O.SiteCode
+                ) as RR
+                    on S.SiteCode = RR.SiteCode
+            where S.SiteCode != ' . config_item('app_intg_site_code') . ' 
+                and S.IsUse = "Y"	            
+        ';
 
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from, [$req_start_date, $req_end_date]);

@@ -23,8 +23,8 @@
         /************************************************************/
 
         .skybanner {
-            position:absolute;
-            top:20px;
+            position:fixed;
+            bottom:20px;
             right:10px;
             z-index:1;
         }
@@ -32,7 +32,7 @@
         .skybanner a {height:40px; line-height:40px; display:block; text-align:center; background:#009ef5; color:#fff; font-size:14px !important; font-weight:600 !important; border-bottom:1px solid #000}
         .skybanner a:hover {background:#fff; color:#000}
         .skybanner li:last-child a {background:#000; color:#fff;}
-        .skybanner_sectionFixed {position:fixed; top:20px}
+
 
         .wb_cts01 {background:url(http://file3.willbes.net/new_cop/2019/01/EV190118Y_01_bg.jpg) no-repeat center top; position:relative}
         .wb_cts01 span {position:absolute; width:520px; top:724px; left:50%; margin-left:-469px; background:#000; z-index:10}
@@ -84,15 +84,15 @@
         <div class="evtCtnsBox wb_cts04" id="wb_cts04">
             <img src="http://file3.willbes.net/new_cop/2019/01/EV190118Y_04.jpg" alt="커리큘럼" usemap="#Map190118" border="0"/>
             <map name="Map190118" id="Map190118">
-                <area shape="rect" coords="124,879,570,965" href="/lecture/index/cate/3001/pattern/only" target="_blank" alt="온라인강의신청" />
-                <area shape="rect" coords="640,878,1088,965" href="/pass/offLecture/index" target="_blank" alt="학원강의신청" />
+                <area shape="rect" coords="124,879,570,965" href="{{ site_url('/professor/show/cate/3001/prof-idx/50031/?subject_idx=1005&subject_name=%EA%B2%BD%EC%B0%B0%ED%95%99%EA%B0%9C%EB%A1%A0&tab=open_lecture') }}" target="_blank" alt="온라인강의신청" />
+                <area shape="rect" coords="640,878,1088,965" href="{{ site_url('/pass/professor/show/prof-idx/50032/?cate_code=3010&subject_idx=1058&subject_name=%EA%B2%BD%EC%B0%B0%ED%95%99%EA%B0%9C%EB%A1%A0&tab=open_lecture') }}" target="_blank" alt="학원강의신청" />
             </map>
         </div>
 
     </div>
     <!-- End Container -->
 
-    <script src="/public/js/willbes/jquery.nav.js"></script>
+
     <script>
         $(function(e) {
             var targetOffset = $("#evtContainer").offset().top;

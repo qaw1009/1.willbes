@@ -9,9 +9,8 @@
             margin-bottom:0 !important;
         }
         .evtContent {
+            position:relative; 
             width:100% !important;
-            min-width:1210px !important;
-            background:#ccc;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
@@ -21,7 +20,7 @@
         /************************************************************/
 
         .rLnb {
-            position:absolute; width:190px; top:100px; right:10px; z-index:1;
+            position:fixed; width:190px; bottom:100px; right:10px; z-index:1;
         }
         .rLnb ul {background:#fff; border:1px solid #2f2f2f; margin-bottom:10px;
             -webkit-box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.21);
@@ -52,7 +51,7 @@
             line-height: 1.4;
         }
         .rLnb .typeB a {display:block; background:#000; color:#fff; border-radius: 20px; padding:8px 0; margin:0 20px}
-        .rLnb_sectionFixed {position:fixed; top:20px}
+
 
         .LAeventA01 {background:url(http://file3.willbes.net/new_gosi/2019/leave_army/la_on_top_bg.jpg) no-repeat center top; position:relative;}
         .LAeventA01 .main_img {position:absolute; width:601px; top:1000px; left:50%; margin-left:-488px; z-index:10; opacity:0;filter:alpha(opacity=0);-webkit-animation-duration: 1s;animation-duration: 1s;-webkit-animation-fill-mode: both;animation-fill-mode: both}
@@ -155,7 +154,7 @@
     </style>
 
 
-    <div class="p_re evtContent" id="evtContainer">
+    <div class="evtContent" id="evtContainer">
         <div class="rLnb">
             @include('html.event_onLeaveArmyPassRlnb')
             <ul class="typeB">
@@ -209,7 +208,7 @@
                                     <ul class="price">
                                         <li class="liSty1">990,000원</li>
                                         <li class="liSty2">본인부담 : 198,000원
-                                            <div>(* 직업능력개발 교육비 792,000원 환급원)</div>
+                                            <div>(* 직업능력개발 교육비 792,000원 환급)</div>
                                         </li>
                                     </ul>
                                 </td>
@@ -297,8 +296,16 @@
                         </li>
                         <li><strong>제대군인지원센터 직업훈련비 제출서류</strong>
                             <ul>
-                                <li>① 직업훈련계획서 <a href="javascript:goFileDownload('board/201801/20180125132811107.hwp','직업훈련계획서_2018년.hwp');" class="btnSty1">다운로드</a></li>
-                                <li>② 교육비 지원신청서  <a href="javascript:goFileDownload('board/201801/20180125132811139.hwp','교육비지원신청서_2018년.hwp');" class="btnSty1">다운로드</a></li>
+                                @if (empty($file_data_promotion) === false)
+                                    @foreach($file_data_promotion as $key => $row)
+                                        <li> {{ $arrCircle[$key] }} {{ $row['FileRealName'] }}
+                                            <a href="{{front_url('/promotion/download?file_idx=').$row['EfIdx'].'&event_idx='.$data['ElIdx'] }}" class="file-download ml-5" target="_blank">
+                                                다운로드
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                    {{--{{$file_data['F']['file_real_name']}}--}}
+                                @endif
                                 <li>③ 교육비납부 영수증(카드명세표 또는 현금영수증) 1부</li>
                                 <li>※ ①~③번 제출서류의 경우 교육시작일로부터 7일 이내 서류제출</li>
                                 <li>교육과정 이수,  교육훈련과정 수료 후 14일 이내에 수료증 또는 교육수료 확인서 제출</li>
@@ -494,31 +501,10 @@
             );
         </script>
 
-        <script src="/public/js/willbes/jquery.nav.js"></script>
-        <script>
-            $( document ).ready( function() {
-                var jbOffset = $( '.rLnb' ).offset();
-                $( window ).scroll( function() {
-                    if ( $( document ).scrollTop() > jbOffset.top ) {
-                        $( '.rLnb' ).addClass( 'rLnb_sectionFixed' );
-                    }
-                    else {
-                        $( '.rLnb' ).removeClass( 'rLnb_sectionFixed' );
-                    }
-                });
-            } );
-            $(document).ready(function() {
-                $('.rLnb').onePageNav({
-                    currentClass: 'hvr-shutter-out-horizontal_active'
-                });
-            });
-
-        </script>
-
         <script src="/public/js/willbes/jquery.bpopup.min.js"></script>
         <script>
             $(function(e){
-                var targetOffset= $("#gridContainer").offset().top;
+                var targetOffset= $("#evtContainer").offset().top;
                 $('html, body').animate({scrollTop: targetOffset}, 1000);
                 /*e.preventDefault(); */
             });

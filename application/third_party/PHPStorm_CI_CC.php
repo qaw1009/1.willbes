@@ -27,7 +27,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * @description Completion in codeigniter
- ***************** CORE COMPONENTS *****************
+ ***************** CORE COMPONENTS *************************************************************
  * @property CI_Benchmark $benchmark                    This class enables you to mark points and calculate the time difference between them. Memory consumption can also be displayed.
  * @property CI_Config $config                                 This class contains functions that enable config files to be managed
  * @property CI_Controller $controller                        This class object is the super class that every library in CodeIgniter will be assigned to.
@@ -43,11 +43,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property CI_Security $security                           Security Class
  * @property CI_URI $uri                                         Parses URIs and determines routing
  * @property CI_Utf8 $utf8                                      Provides support for UTF-8 environments
- ***************** DATABASE COMPONENTS *****************
+ ***************** DATABASE COMPONENTS **********************************************************
  * @property CI_DB_forge $dbforge                           Database Forge Class
  * @property CI_DB_query_builder $db                       This is the platform-independent base Query Builder implementation class.
  * @property CI_DB_utility $dbutil                             Database Utility Class
- ***************** CORE LIBRARIES *****************
+ ***************** CORE LIBRARIES *****************************************************************
  * @property CI_Cache $cache                                CodeIgniter Caching Class
  * @property WB_Session $session                           CodeIgniter Session Class
  * @property CI_Calendar $calendar                          This class enables the creation of calendars
@@ -74,11 +74,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property Excel $excel                                      Loads framework components.
  * @property Jwt $jwt                                           Loads Libraries JWT
  * @property LogViewer $logviewer                          CodeIgniter Log Viewer
- ***************** DEPRECATED LIBRARIES *****************
+ ***************** DEPRECATED LIBRARIES **************************************************************
  * @property CI_Jquery $jquery                              Jquery Class
  * @property CI_Encrypt $encrypt                          Provides two-way keyed encoding using Mcrypt
  * @property CI_Javascript $javascript                    Javascript Class
- ***************** MY LIBRARIES *****************
+ ***************** MY LIBRARIES **********************************************************************
  * @property CI_DB_query_builder $wbs                   Query Builder instance
  * @property CI_DB_query_builder $lms                    Query Builder instance
  * @property FirePHP $firephp                                FirePHP Class
@@ -87,10 +87,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property RestClient $restclient                         REST Client Class
  * @property Caching $caching                              Application Caching Driver Class
  * @property Pg $pg                                            Pg Driver Class
- * @property SendSms $sendsms                               Send Sms Class
- ***************** MY MODELS *****************
+ * @property SendSms $sendsms                           Send Sms Class
+ ***************** MY MODELS ************************************************************************
  * @property SampleModel $sampleModel                       Sample Model Class
- ***************** WBS ***********************
+ ***************** WBS ******************************************************************************
  * @property AdminModel $adminModel                          Admin Model Class
  * @property CodeModel $codeModel                             Code Model Class
  * @property LoginModel $loginModel                             Login Model Class
@@ -105,7 +105,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property PublisherModel $publisherModel                   Publisher Model Class
  * @property AuthorModel $authorModel                         Author Model Class
  * @property BookModel $bookModel                              Book Model Class
- ***************** LMS ***********************
+ ***************** LMS *******************************************************************************
  * @property WCodeModel $wCodeModel                                             WBS Code Model Class
  * @property SearchWProfessorModel $searchWProfessorModel               Search WBS Professor Model Class
  * @property SearchWBookModel $searchWBookModel                           Search WBS Book Model Class
@@ -114,14 +114,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property SiteGroupModel $siteGroupModel                                      Site Group Model Class
  * @property SiteMenuModel $siteMenuModel                                       Site Menu Model Class
  * @property CategoryModel $categoryModel                                       Category Model Class
+ * @property PayLogModel $payLogModel                                            Pay Log Model Class
  * @property CourseModel $courseModel                                             Product Course Model Class
  * @property SubjectModel $subjectModel                                           Product Subject Model Class
  * @property SortMappingModel $sortMappingModel                               Product Sort Mapping Model Class
  * @property BoardMasterModel $boardMasterModel                               BoardMaster Model Class
- * @property BoardModel $boardModel                                                Board Model Class
- * @property BoardAssignmentModel $boardAssignmentModel                            Board For Assignment Model Class
- * @property BoardTpassModel $boardTpassModel                                      Board Tpass For Member Model Class
- * @property BoardMockModel $boardMockModel                                        Board Mock Model Class
+ * @property BoardModel $boardModel                                                 Board Model Class
+ * @property BoardAssignmentModel $boardAssignmentModel                   Board For Assignment Model Class
+ * @property BoardTpassModel $boardTpassModel                                 Board Tpass For Member Model Class
+ * @property BoardMockModel $boardMockModel                                   Board Mock Model Class
  * @property WCpModel $wCpModel                                                    WCp Model Class
  * @property SearchWMasterLectureModel $searchWMasterLectureModel  Search MasterLecture Model Class
  * @property SmsModel $smsModel                                                     Search Sms Model Class
@@ -155,7 +156,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property SearchaAnalysisModel $searchaAnalysisModel                     SearchaAnalysis Model Class
  * @property BtobModel $btobModel                                                    BtoB Model Class
  * @property DeliveryPriceModel $deliveryPriceModel                               Delivery Price Product Model Class
- * @property ExtendNRetakeLectureModel $extendNRetakeLectureModel    Extend and Retake Product Model Class
  * @property BaseReadingRoomModel $baseReadingRoomModel                 BaseReadingRoom Model Class
  * @property ReadingRoomModel $readingRoomModel                              ReadingRoom Model Class
  * @property CertModel $certModel                                                     Cert Model Class
@@ -171,24 +171,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property SalesProductModel $salesProductModel                              Sales Product Model Class
  * @property TmModel $tmModel                                                         Tm Model Class
  * @property StudentModel $studentModel                                           Student Model Class
- * @property ManageCsModel $manageCsModel                                   Member Manage Cs Model Class
- * @property ManageBlackConsumerModel $manageBlackConsumerModel             Member Manage BlackConsumer Model Class
- * @property CsModel $csModel                                               Manage Cs Model Class
-
-
- ***************** MockTest *********************
+ * @property ManageCsModel $manageCsModel                                     Member Manage Cs Model Class
+ * @property ManageBlackConsumerModel $manageBlackConsumerModel     Member Manage BlackConsumer Model Class
+ * @property CsModel $csModel                                                           Manage Cs Model Class
+ ***************** MockTest ****************************************************************************
  * @property MockCommonModel $mockCommonModel                              MockTest MockCommon Model Class
  * @property BaseCodeModel $baseCodeModel                                        MockTest BaseCod Model Class
  * @property ApplyExamModel $applyExamModel                                      MockTest ApplyExam Model Class
  * @property ApplyUserModel $applyUserModel                                        MockTest ApplyUser Model Class
- * @property BaseRangeModel $baseRangeModel                                        MockTest BaseRange Model Class
- * @property RegExamModel $regExamModel                                        MockTest RegExam Model Class
+ * @property BaseRangeModel $baseRangeModel                                     MockTest BaseRange Model Class
+ * @property RegExamModel $regExamModel                                           MockTest RegExam Model Class
  * @property RegGoodsModel $regGoodsModel                                        MockTest RegGoods Model Class
- * @property RegGroupModel $regGroupModel                                       MockTest RegGroup Model Class
- * @property StatsExamModel $statsExamModel                                        MockTest StatsExam Model Class
- * @property SearchMockTestModel $searchMockTestModel                   Search MockTest Model Class
- *
- ***************** FRONT ***********************
+ * @property RegGroupModel $regGroupModel                                         MockTest RegGroup Model Class
+ * @property SearchMockTestModel $searchMockTestModel                      Search MockTest Model Class
+ ***************** Predict *****************************************************************************
+ * @property PredictModel $predictModel                              predict Model Class
+ ***************** FRONT *******************************************************************************
  * @property BaseProductFModel $baseProductFModel                            Product Base Model Class
  * @property ProfessorFModel $professorFModel                                    Professor Model Class
  * @property ProductFModel $productFModel                                        Product Main Model Class
@@ -206,8 +204,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property PlayerFModel $playerFModel                                            Player Model Class
  * @property BaseSupportFModel $baseSupportFModel                           BaseSupport Model Class
  * @property SupportBoardFModel $supportBoardFModel                         SupportBoard Model Class
- * @property SupportBoardTwoWayFModel $supportBoardTwoWayFModel             SupportBoardTwoWayF Model Class
- * @property BoardAttachFModel $boardAttachFModel                           BoardAttachF Model Class
+ * @property SupportBoardTwoWayFModel $supportBoardTwoWayFModel  SupportBoardTwoWayF Model Class
+ * @property BoardAttachFModel $boardAttachFModel                            BoardAttachF Model Class
  * @property SiteFModel $siteFModel                                                   Site Model Class
  * @property CategoryFModel $categoryFModel                                     Category Model Class
  * @property AccessFModel $accessFModel                                          Access Model Class
@@ -220,9 +218,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property OnAirFModel $onAirFModel                                                OnAir Model Class
  * @property DDayFModel $dDayFModel                                                D-Day Model Class
  * @property MockInfoFModel $mockInfoFModel                                      MockTest Info  Model Class
- * @property MockExamModel $mockExamModel                                         MockExam Class
+ * @property MockExamModel $mockExamModel                                      MockExam Class
  * @property RegGradeModel $regGradeModel                                         RegGrade Class
- *
+ ***************** API ***********************************************************************************
+ * @property BookAModel $bookAModel                                                 API Delivery Book Model Class
+ *******************************************************************************************************
  */
 class PHPStorm_CI_CC
 {

@@ -259,19 +259,37 @@ class Event extends \app\controllers\FrontController
      */
     public function registerStore()
     {
+        // 프로모션일 경우 검증 데이터가 유동적이므로 해당 값으로 데이터 검증
+        $target_params = $this->_reqP('target_params');
+        $target_param_names = $this->_reqP('target_param_names');
+        $register_type = ($this->_reqP('register_type') == 'promotion') ? 'promotion' : 'event';
+
         $rules = [
             ['field' => 'event_idx', 'label' => '이벤트식별자', 'rules' => 'trim|required|integer'],
             ['field' => 'register_chk[]', 'label' => '특강', 'rules' => 'trim|required|integer'],
             ['field' => 'register_name', 'label' => '이름', 'rules' => 'trim|required|max_length[20]'],
-            ['field' => 'register_tel', 'label' => '휴대폰번호', 'rules' => 'trim|required|integer|max_length[11]'],
-            ['field' => 'register_email', 'label' => '이메일', 'rules' => 'trim|required|max_length[30]'],
+            ['field' => 'register_tel', 'label' => '휴대폰번호', 'rules' => 'trim|required|integer|max_length[11]']
         ];
+
+        if ($register_type == 'event') {
+            $rules = array_merge($rules, [
+                ['field' => 'register_email', 'label' => '이메일', 'rules' => 'trim|required|max_length[30]']
+            ]);
+        }
+
+        if (empty($target_params) === false && is_array($target_params) === true) {
+            foreach ($target_params as $key => $target_param) {
+                $rules = array_merge($rules, [
+                    ['field' => $target_param, 'label' => (empty($target_param_names) === false && empty($target_param_names[$key]) === false) ? $target_param_names[$key] : '데이타', 'rules' => 'trim|required']
+                ]);
+            }
+        }
 
         if ($this->validate($rules) === false) {
             return;
         }
 
-        $result = $this->eventFModel->addEventRegisterMember($this->_reqP(null, false), $this->_site_code);
+        $result = $this->eventFModel->addEventRegisterMember($this->_reqP(null, false), $this->_site_code, $register_type);
         $this->json_result($result, '신청되었습니다.', $result);
     }
 
@@ -367,7 +385,7 @@ class Event extends \app\controllers\FrontController
         ];
 
         $data = $this->eventFModel->findEvent($arr_condition);
-        if (count($data) < 1) {
+        if (empty($data) === true) {
             show_alert('데이터 조회에 실패했습니다.', '/', false);
         }
         $data['data_option_ccd'] = array_flip(explode(',', $data['OptionCcds']));   // 관리옵션 데이터 가공처리
@@ -381,7 +399,7 @@ class Event extends \app\controllers\FrontController
             ]
         ];
         $arr_register_data = $this->eventFModel->listEventForRegister($arr_condition);
-        if (count($arr_register_data) != 1 ) {
+        if (empty($arr_register_data) === true ) {
             show_alert('잘못된 설정값이 존재합니다. 관리자에게 문의해 주세요.', '/', false);
         }
 
@@ -409,11 +427,17 @@ class Event extends \app\controllers\FrontController
      */
     public function download()
     {
-        $file_path = $this->_reqG('path');
-        $file_name = $this->_reqG('fname');
+        $file_idx = $this->_reqG('file_idx');
         $event_idx = $this->_reqG('event_idx');
-
         $this->downloadFModel->saveLogEvent($event_idx);
+
+        $file_data = $this->downloadFModel->getFileData($event_idx, $file_idx, 'event');
+        if (empty($file_data) === true) {
+            show_alert('등록된 파일을 찾지 못했습니다.','close','');
+        }
+
+        $file_path = $file_data['FilePath'].$file_data['FileName'];
+        $file_name = $file_data['RealFileName'];
         public_download($file_path, $file_name);
 
         show_alert('등록된 파일을 찾지 못했습니다.','close','');

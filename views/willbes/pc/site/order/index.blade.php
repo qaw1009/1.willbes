@@ -165,7 +165,7 @@
                                 <dt>
                                     <span class="u-point tx-pink">{{ number_format($results['point']) }}P 보유</span>
                                     <span class="btnAll NSK"><a href="#none" id="btn-all-use-point">전액사용</a></span>
-                                    <input type="text" name="use_point" title="사용포인트" class="iptPoint optional chk_price" pattern="numeric" data-validate-minmax="-1" value="" placeholder="0" maxlength="10"> P 차감
+                                    <input type="text" name="use_point" title="사용포인트" class="iptPoint chk_price" required="required" pattern="numeric" data-validate-minmax="-1" value="0" maxlength="10"> P 차감
                                 </dt>
                             </dl>
                         </div>
@@ -822,7 +822,7 @@
             // 배송메모 바이트수 계산
             $regi_form.find('input[name="delivery_memo"]').on('change keyup input', function() {
                 var byte_cnt = fn_chk_byte($(this).val());
-                if (byte_cnt > 10) {
+                if (byte_cnt > 120) {
                     alert('배송 메시지 길이가 초과되었습니다.');
                     $(this).val('');
                     return;

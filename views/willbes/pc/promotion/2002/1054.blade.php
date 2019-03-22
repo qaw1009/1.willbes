@@ -69,8 +69,8 @@
         <div class="evtCtnsBox wb_05">
             <img src="http://file3.willbes.net/new_cop/2019/01/191008-dg06.png"  alt="메인" usemap="#191008-dg06"/>
             <map name="191008-dg06">
-                <area shape="rect" coords="0,612,470,663" href="http://daegu.willbes.net/boardExamGuide/guide_view.html?topMenuType=F&topMenuGnb=FM_005&topMenu=008&menuID=FM_005_001&BOARD_MNG_SEQ=NOTICE_008&BOARDTYPE=1&INCTYPE=view&currentPage=1&BOARD_SEQ=123044&PARENT_BOARD_SEQ=0&SEARCHKIND=&SEARCHTEXT=" />
-                <area shape="rect" coords="510,611,978,665" href="http://daegu.willbes.net/boardCounselRoomNew/board_list.html?topMenuType=F&topMenuGnb=FM_006&menuID=FM_006_001&BOARDTYPE=counselRoom&INCTYPE=c_list&BOARD_MNG_SEQ=BOARD_000&topMenu=001" />
+                <area shape="rect" coords="0,612,470,663" href="{{ site_url('/pass/support/examAnnouncement/index') }}" target="_blank"/>
+                <area shape="rect" coords="510,611,978,665" href="{{ site_url('/pass/campus/show/code/605004?tab=qna') }}" target="_blank"/>
             </map>
         </div>
 

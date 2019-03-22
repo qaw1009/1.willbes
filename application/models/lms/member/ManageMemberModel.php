@@ -54,6 +54,7 @@ class ManageMemberModel extends WB_Model
             IFNULL(Mem.LastPassModyDatm, '') AS PwdUpdDate,
             IFNULL((SELECT outDatm FROM {$this->_table['outLog']} WHERE MemIdx = Mem.MemIdx ORDER BY outDatm DESC LIMIT 1), '') AS OutDate,
             IFNULL(Mem.IsBlackList, '') AS IsBlackList, 
+            Mem.IsStatus,
             (SELECT COUNT(*) FROM {$this->_table['device']} WHERE MemIDX = Mem.MemIdx AND DeviceType = 'P' AND IsUse='Y' ) AS PcCount,
             (SELECT COUNT(*) FROM {$this->_table['device']} WHERE MemIDX = Mem.MemIdx AND DeviceType = 'M' AND IsUse='Y' ) AS MobileCount         
             ";
@@ -68,7 +69,7 @@ class ManageMemberModel extends WB_Model
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
 
-        $rows = $this->_conn->query('SELECT ' . $column . $from . $where . $inQuery . $order_by_offset_limit);
+        $rows = $this->_conn->query('SELECT straight_join ' . $column . $from . $where . $inQuery . $order_by_offset_limit);
 
         return ($is_count === true) ? $rows->row(0)->rownums : $rows->result_array();
     }
@@ -105,7 +106,7 @@ class ManageMemberModel extends WB_Model
 
         $where = " WHERE Mem.MemIdx = {$memIdx} ";
 
-        $rows = $this->_conn->query('SELECT ' . $column . $from . $where );
+        $rows = $this->_conn->query('SELECT straight_join ' . $column . $from . $where );
 
         return $rows->row_array();
     }
@@ -205,7 +206,7 @@ class ManageMemberModel extends WB_Model
 
         } else {
             $column = " Log.MemIdx, Log.IsLogin, Log.LoginIp, Log.LoginDatm, Log.LogoutIp, Log.LogoutDatm, 
-                ifnull(A.wAdminName, '') as AdminName ";
+                ifnull(A.wAdminName, '') as AdminName, Log.LoginType";
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();

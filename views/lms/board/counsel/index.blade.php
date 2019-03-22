@@ -195,6 +195,9 @@
                     {'data' : 'SiteName'},
                     {'data' : 'CampusName'},
                     {'data' : 'CateCode', 'render' : function(data, type, row, meta){
+                        if (row.SiteCode == {{config_item('app_intg_site_code')}}) {
+                            return '통합';
+                        } else {
                             var str = '없음';
                             if (data != null) {
                                 str = '';
@@ -204,6 +207,7 @@
                                 }
                             }
                             return str;
+                        }
                         }},
                     {'data' : 'MdCateName'},
                     {'data' : 'TypeCcdName'},

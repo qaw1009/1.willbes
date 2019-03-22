@@ -50,12 +50,8 @@
         <div class="evtCtnsBox wb_cts05" id="a0211">
             <img src="http://file3.willbes.net/new_cop/2018/12/EV181220j_05.jpg" alt="" usemap="#Map181220C"  />
             <map name="Map181220C" id="Map181220C">
-                <area shape="rect" coords="1128,298,1245,348" href="http://www.willbescop.net/lecture/passLectureDetail.html?topMenu=081&topMenuName=%EC%9D%BC%EB%B0%98%EA%B2%BD%EC%B0%B0&searchTopCategoryCode=&searchCategoryCode=081&
-            searchSubjectCode=1011&searchLeccode=D201801012&leftMenuLType=&lecKType=&USER_ID=&hSEARCHTYPE=&hSEARCHTEXT=&learningCD=&topMenuType=F&topMenuGnb=OM_009&SEARCHSERIESCODE=
-            " alt="수강신청하기" />
-                <area shape="rect" coords="1129,469,1247,518" href="http://www.willbescop.net/lecture/passLectureDetail.html?topMenu=081&topMenuName=%EC%9D%BC%EB%B0%98%EA%B2%BD%EC%B0%B0&searchTopCategoryCode=&searchCategoryCode=081&
-            searchSubjectCode=1011&searchLeccode=D201801013&leftMenuLType=&lecKType=&USER_ID=&hSEARCHTYPE=&hSEARCHTEXT=&learningCD=&topMenuType=F&topMenuGnb=OM_009&SEARCHSERIESCODE=
-            " alt="수강신청하기"/>
+                <area shape="rect" coords="1128,298,1245,348" href="#none" alt="수강신청하기" target="_blank"/>
+                <area shape="rect" coords="1129,469,1247,518" href="#none" alt="수강신청하기" target="_blank"/>
             </map>
         </div>
 

@@ -42,7 +42,7 @@
         <div class="evtCtnsBox wb_top" id="main">
             <img src="http://file3.willbes.net/new_cop/basic/EVbasic_20190211_p1.png"  alt="메인" usemap="#link1" />
             <map name="link1" >
-                <area shape="rect" coords="855,208,1089,404" href="http://www.willbescop.net/lecture/passLectuerSJong.html?topMenu=081&topMenuName=일반경찰&topMenuType=F&leftMenuLType=M0301&newlearningCD=M0311&lecKType=N" onfocus='this.blur()' alt="개강" target="_blink"/>
+                <area shape="rect" coords="855,208,1089,404" href="{{ site_url('/pass/offPackage/show/prod-code/150971') }}" onfocus='this.blur()' alt="개강" target="_blink"/>
             </map>
 
         </div>
@@ -50,7 +50,7 @@
         <div class="evtCtnsBox wb_cts01" >
             <img src="http://file3.willbes.net/new_cop/basic/EVbasic_20190211_p2.jpg"  alt="언론" usemap="#link2" />
             <map name="link2" >
-                <area shape="rect" coords="82,524,286,577" href="http://www.willbescop.net/event/movie/event.html?event_cd=On_170126_p&topMenuType=O#main" onfocus='this.blur()' alt="언론보도" target="_blink"/>
+                <area shape="rect" coords="82,524,286,577" href="{{ site_url('/promotion/index/cate/3001/code/1021') }}" onfocus='this.blur()' alt="언론보도" target="_blink"/>
             </map>
         </div>
 
@@ -68,7 +68,7 @@
             </ul>
 
             <map name="link3" >
-                <area shape="rect" coords="482,120,726,326" href="http://www.willbescop.net/lecture/passLectuerSJong.html?topMenu=081&topMenuName=일반경찰&topMenuType=F&leftMenuLType=M0301&newlearningCD=M0311&lecKType=N" onfocus='this.blur()' alt="신광은경찰팀 일반공채" target="_blink"/>
+                <area shape="rect" coords="482,120,726,326" href="{{ site_url('/pass/offPackage/show/prod-code/150971') }}" onfocus='this.blur()' alt="신광은경찰팀 일반공채" target="_blink"/>
             </map>
         </div>
 

@@ -23,7 +23,7 @@
         /************************************************************/
 
         .rLnb {
-            position:absolute; width:190px; top:100px; right:10px; z-index:1;
+            position:fixed; width:190px; bottom:100px; right:10px; z-index:1;
         }
         .rLnb ul {background:#fff; border:1px solid #2f2f2f; margin-bottom:10px;
             -webkit-box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.21);
@@ -116,42 +116,13 @@
         <div class="evtCtnsBox LAeventZ02">
             <img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_00_01.jpg" alt="학원실강/온라인동영상 교육과정" usemap="#Map180123" border="0"/>
             <map name="Map180123" id="Map180123">
-                <area shape="rect" coords="67,835,197,864" href="/promotion/index/cate/3001/code/1116" alt="학원실강 서울 노량진"/>
-                <area shape="rect" coords="215,835,346,864" href="/promotion/index/cate/3001/code/1115" alt="학원실강 인천 부평"/>
-                <area shape="rect" coords="365,835,494,864" href="/promotion/index/cate/3001/code/1117" alt="학원실강 부산 서면"/>
-                <area shape="rect" coords="776,835,905,864" href="/promotion/index/cate/3001/code/1112" alt="온라인 교육과정"/>
+                <area shape="rect" coords="67,835,197,864" href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1116') }}" alt="학원실강 서울 노량진"/>
+                <area shape="rect" coords="215,835,346,864" href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1115') }}" alt="학원실강 인천 부평"/>
+                <area shape="rect" coords="365,835,494,864" href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1117') }}" alt="학원실강 부산 서면"/>
+                <area shape="rect" coords="776,835,905,864" href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1112') }}" alt="온라인 교육과정"/>
             </map>
         </div>
 
     </div>
     <!-- End Container -->
-
-    <script src="/public/js/willbes/jquery.nav.js"></script>
-    <script>
-        $(function(e){
-            var targetOffset= $("#evtContainer").offset().top;
-            $('html, body').animate({scrollTop: targetOffset}, 1000);
-            /*e.preventDefault(); */
-        });
-
-        $( document ).ready( function() {
-            var jbOffset = $( '.rLnb' ).offset();
-            $( window ).scroll( function() {
-                if ( $( document ).scrollTop() > jbOffset.top ) {
-                    $( '.rLnb' ).addClass( 'rLnb_sectionFixed' );
-                }
-                else {
-                    $( '.rLnb' ).removeClass( 'rLnb_sectionFixed' );
-                }
-            });
-        } );
-
-        $(document).ready(function() {
-            $('.rLnb').onePageNav({
-                currentClass: 'hvr-shutter-out-horizontal_active'
-            });
-        });
-    </script>
-
-
 @stop

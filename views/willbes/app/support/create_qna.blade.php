@@ -89,11 +89,11 @@
 
         $('#btn_submit').click(function () {
             var _url = '{!! front_url($default_path.'/store?'.$get_params) !!}';
-            if (!confirm('저장하시겠습니까?')) { return true; }
+            /*if (!confirm('저장하시겠습니까?')) { return true; }*/
 
             ajaxSubmit($regi_form, _url, function(ret) {
                 if(ret.ret_cd) {
-                    notifyAlert('success', '알림', ret.ret_msg);
+                    alert(ret.ret_msg);
                     location.href = '{!! front_url($default_path.'/index?'.$get_params) !!}';
                 }
             }, showValidateError, addValidate, false, 'alert');

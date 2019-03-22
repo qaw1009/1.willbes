@@ -24,6 +24,7 @@ class ProductFModel extends WB_Model
         'product_content' => 'lms_product_content',
         'product_memo' => 'lms_product_memo',
         'product_professor_concat' => 'vw_product_r_professor_concat',
+        'product_professor_concat_repr' => 'vw_product_r_professor_concat_repr',
         'cms_lecture' => 'wbs_cms_lecture',
         'cms_lecture_unit' => 'wbs_cms_lecture_unit',
         'code' => 'lms_sys_code'
@@ -85,7 +86,7 @@ class ProductFModel extends WB_Model
                 // 학원 단과
                 case 'off_lecture' :
                         $column .= ', CateCode, IsBest, IsNew, IsCoupon, IsCart, IsFreebiesTrans, IsDeliveryInfo, SubjectIdx, SubjectName, CourseIdx, CourseName, OrderNumCourse, SchoolYear
-                            , CampusCcd, CampusCcdName, FixNumber, StudyPeriod, StudyStartDate, StudyEndDate, WeekArrayName, Amount, StudyPatternCcd, StudyPatternCcdName
+                            , CampusCcd, CampusCcdName, FixNumber, StudyPeriod, StudyStartDate, StudyEndDate, WeekArrayName, IFNULL(AmountDisp,Amount) AS Amount, StudyPatternCcd, StudyPatternCcdName
                             , AcceptStatusCcd, AcceptStatusCcdName, StudyApplyCcd, StudyApplyCcdName, ProfIdx, wProfIdx, wProfName, ProfSlogan, LecSaleType, ProdPriceData
                             , fn_product_content(ProdCode, "633002") as Content';
                     break;
@@ -170,8 +171,9 @@ class ProductFModel extends WB_Model
     public function listSalesProductLimitBySubjectIdx($learn_pattern, $arr_condition = [], $limit = 2)
     {
         $column = 'row_number() over (partition by SubjectIdx order by ProdCode desc) as RowNum
-            , ProdCode, ProdName, SubjectIdx, SubjectName, wProfName
-            , ifnull(JSON_VALUE(ProfReferData, "$.lec_list_img"), "") as ProfLecListImg';
+            , ProdCode, ProdName, CateCode, SubjectIdx, SubjectName, wProfName
+            , ifnull(JSON_VALUE(ProfReferData, "$.lec_list_img"), "") as ProfLecListImg
+            , ifnull(fn_professor_refer_value(ProfIdx, "class_detail_img"), "") as ProfClassImg';
         $learn_pattern != 'off_lecture' && $column .= ', if(LectureSampleData = "N", "N", JSON_VALUE(LectureSampleData, "$[0].wUnitIdx")) as wUnitIdx';
         $arr_condition = array_merge_recursive($arr_condition, $this->getSalesProductCondition($learn_pattern));
 
@@ -201,7 +203,7 @@ class ProductFModel extends WB_Model
      */
     public function findProductByProdCode($learn_pattern, $prod_code, $add_column = '', $arr_condition = [])
     {
-        $arr_condition = array_merge_recursive($arr_condition, ['EQ' => ['ProdCode' => $prod_code, 'IsUse' => 'Y']]);
+        $arr_condition = array_merge_recursive($arr_condition, ['EQ' => ['ProdCode' => $prod_code]]);
         $data = $this->listProduct($learn_pattern, false, $arr_condition, null, null, [], $add_column);
 
         return element('0', $data, []);
@@ -401,12 +403,12 @@ class ProductFModel extends WB_Model
      */
     public function findProductSubLectures($prod_code, $prod_sub_codes = [])
     {
-        $column = 'PS.ProdCode, PS.ProdCodeSub, P.ProdName as ProdNameSub, PS.IsEssential, VPP.ReprProfIdx, VPP.ReprWProfName';
+        $column = 'PS.ProdCode, PS.ProdCodeSub, P.ProdName as ProdNameSub, PS.IsEssential, VPP.ProfIdx_String as ReprProfIdx, VPP.wProfName_String as ReprWProfName';
         $from = '
             from ' . $this->_table['product_r_sublecture'] . ' as PS
                 inner join ' . $this->_table['product'] . ' as P
                     on PS.ProdCodeSub = P.ProdCode
-                inner join ' . $this->_table['product_professor_concat'] . ' as VPP
+                inner join ' . $this->_table['product_professor_concat_repr'] . ' as VPP
                     on PS.ProdCodeSub = VPP.ProdCode
             where PS.ProdCode = ?
                 and PS.IsStatus = "Y"

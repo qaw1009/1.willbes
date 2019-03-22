@@ -40,7 +40,7 @@
         <div class="evtCtnsBox wb_top" >
             <img src="http://file3.willbes.net/new_cop/2018/12/181203_01.png"  alt="찍기특강"   usemap="#181203_01" border="0" />
             <map name="181203_01" id="181203_01">
-                <area shape="rect" coords="232,741,750,798" href="http://www.willbescop.net/lecture/movieLectureFreeDetail.html?topMenu=081&topMenuType=O&searchTopCategoryCode=081&searchSubjectCode=1003&leftMenuLType=M0000&lecKType=F&learningCD=M0000&FREE_TAB=ALL&searchLeccode=F201800250" target="_blank"/>
+                <area shape="rect" coords="232,741,750,798" href="{{ site_url('/lecture/show/cate/3001/pattern/free/prod-code/147721') }}" target="_blank"/>
             </map>
         </div>
 
@@ -62,7 +62,7 @@
         </div>
 
         <div class="evtCtnsBox wb_cts01" >
-            <a href="http://www.willbescop.net/lecture/movieLectureFreeDetail.html?topMenu=081&topMenuType=O&searchTopCategoryCode=081&searchSubjectCode=1003&leftMenuLType=M0000&lecKType=F&learningCD=M0000&FREE_TAB=ALL&searchLeccode=F201800250" target="_blank"/><img src="http://file3.willbes.net/new_cop/2018/12/181203_04.png"  alt="찍기특강"  /></a>
+            <a href="{{ site_url('/lecture/show/cate/3001/pattern/free/prod-code/147721') }}" target="_blank"/><img src="http://file3.willbes.net/new_cop/2018/12/181203_04.png"  alt="찍기특강" /></a>
         </div>
 
     </div>

@@ -95,6 +95,7 @@ class MockResult extends \app\controllers\FrontController
             'total_img_path' => $total_img_path,
             'list'         =>$list,
             'paging'       => $paging,
+            'userid' => $_SESSION['mem_id']
         ]);
     }
 

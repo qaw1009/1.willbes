@@ -72,7 +72,7 @@
         <div class="evtCtnsBox wb_top" >
             <img src="http://file3.willbes.net/new_gosi/2018/09/EV180906_c1.png" alt=" 윌비스 공시 영어의 마스터, 김영 영어 " usemap="#Map20180906_c1" border="0"/>
             <map name="Map20180906_c1" >
-                <area shape="rect" coords="743,980,1003,1101" href="http://www.willbesgosi.net/packagelecture/packagelectureDetail.html?currentPage=1&pageRow=9999&topMenu=001&topMenuName=&topMenuType=O&searchCategoryCode=001&leftMenuLType=M0001&lecKType=P&searchLeccode=P201800075" target="_blank" onfocus="this.blur();"/>
+                <area shape="rect" coords="743,980,1003,1101" href="{{ site_url('/package/show/cate/3019/pack/648001/prod-code/150607') }}" target="_blank" onfocus="this.blur();"/>
             </map>
         </div>
         <!--WB_top//-->
@@ -120,7 +120,7 @@
         <div class="evtCtnsBox wb_cts03"  id="event">
             <img src="http://file3.willbes.net/new_gosi/2018/09/EV180906_c6.jpg" alt="윌비스 김영 교수 영어 완성PACK 수강신청" usemap="#Map20180906_c2" border="0" />
             <map name="Map20180906_c2" >
-                <area shape="rect" coords="531,723,1101,782" href="http://www.willbesgosi.net/packagelecture/packagelectureDetail.html?currentPage=1&pageRow=9999&topMenu=001&topMenuName=&topMenuType=O&searchCategoryCode=001&leftMenuLType=M0001&lecKType=P&searchLeccode=P201800075" onfocus="this.blur();" target="_blank" />
+                <area shape="rect" coords="531,723,1101,782" href="{{ site_url('/package/show/cate/3019/pack/648001/prod-code/150607') }}" onfocus="this.blur();" target="_blank" />
             </map>
         </div><!--wb_cts03//-->
 

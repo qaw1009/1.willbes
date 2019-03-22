@@ -48,7 +48,7 @@
                                             @if(empty($data['AttachData']) === false)
                                                 @foreach($data['AttachData'] as $row)
                                                 <li>
-                                                    <a href="{{front_url('/classroom/assignment/download?path=').urlencode($row['FilePath'].$row['FileName']).'&fname='.urlencode($row['RealName']).'&board_idx='.$board_idx.'&attach_type=0' }}" target="_blank">
+                                                    <a href="{{front_url('/classroom/assignment/download?file_idx=').$row['FileIdx'].'&attach_type=0' }}" target="_blank">
                                                         <img src="{{ img_url('prof/icon_file.gif') }}"> {{$row['RealName']}}</a>
                                                 </li>
                                                 @endforeach
@@ -83,7 +83,7 @@
                                             @if(empty($data['AttachAssignmentData_User']) === false)
                                                 @foreach($data['AttachAssignmentData_User'] as $row)
                                                     <li>
-                                                        <a href="{{front_url('/classroom/assignment/download?path=').urlencode($row['FilePath'].$row['FileName']).'&fname='.urlencode($row['RealName']).'&board_idx='.$board_idx.'&attach_type=1' }}" target="_blank">
+                                                        <a href="{{front_url('/classroom/assignment/download?file_idx=').$row['FileIdx'].'&attach_type=1' }}" target="_blank">
                                                             <img src="{{ img_url('prof/icon_file.gif') }}"> {{$row['RealName']}}</a>
                                                     </li>
                                                 @endforeach
@@ -118,7 +118,7 @@
                                             @if(empty($data['AttachAssignmentData_User']) === false)
                                                 @foreach($data['AttachAssignmentData_User'] as $row)
                                                     <li>
-                                                        <a href="{{front_url('/classroom/assignment/download?path=').urlencode($row['FilePath'].$row['FileName']).'&fname='.urlencode($row['RealName']).'&board_idx='.$board_idx.'&attach_type=2' }}" target="_blank">
+                                                        <a href="{{front_url('/classroom/assignment/download?file_idx=').$row['FileIdx'].'&attach_type=2' }}" target="_blank">
                                                             <img src="{{ img_url('prof/icon_file.gif') }}"> {{$row['RealName']}}</a>
                                                     </li>
                                                 @endforeach
@@ -146,7 +146,7 @@
                                             @if(empty($data['AttachAssignmentData_Admin']) === false)
                                                 @foreach($data['AttachAssignmentData_Admin'] as $row)
                                                     <li>
-                                                        <a href="{{front_url('/classroom/assignment/download?path=').urlencode($row['FilePath'].$row['FileName']).'&fname='.urlencode($row['RealName']).'&board_idx='.$board_idx.'&attach_type=0' }}" target="_blank">
+                                                        <a href="{{front_url('/classroom/assignment/download?file_idx=').$row['FileIdx'].'&attach_type=0' }}" target="_blank">
                                                             <img src="{{ img_url('prof/icon_file.gif') }}"> {{$row['RealName']}}</a>
                                                     </li>
                                                 @endforeach

@@ -5,7 +5,7 @@ class MessageFModel extends WB_Model
 {
     private $_ccd = [
         'send_type_message' => '641002',    //발송종류 : SMS(641001), 쪽지(641002), 메일(641003)
-        'send_status_success' => '639001'   //발송상태 : 성공(639001), 예약(639002), 취소(639003)
+        'send_status_success' => '639001, 639002'   //발송상태 : 성공(639001), 예약(639002), 취소(639003)
     ];
     protected $_table = [
         'crm_send' => 'lms_crm_send',
@@ -66,7 +66,8 @@ class MessageFModel extends WB_Model
                 ) AS temp_b ON temp_a.SendIdx = temp_b.SendIdx
             
                 WHERE temp_a.SendGroupTypeCcd = '{$this->_ccd['send_type_message']}'
-                AND temp_a.SendStatusCcd = '{$this->_ccd['send_status_success']}'
+                AND temp_a.SendStatusCcd IN ({$this->_ccd['send_status_success']})
+                AND temp_a.SendDatm <= NOW()
                 AND temp_a.IsStatus = 'Y' AND temp_a.IsUse = 'Y'
             ) AS a
             INNER JOIN {$this->_table['lms_site']} AS g

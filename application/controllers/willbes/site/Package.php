@@ -23,9 +23,6 @@ class Package extends \app\controllers\FrontController
     {
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
 
-        //사이트별 과정 조회
-        $arr_base['course'] = $this->baseProductFModel->listCourseCategoryMapping($this->_site_code, $this->_cate_code);
-
         $pack = element('pack', $params);
 
         switch ($pack) {
@@ -40,28 +37,33 @@ class Package extends \app\controllers\FrontController
                 break;
         }
 
-        $arr_condition = [
+        // 상품 기본조회 조건
+        $arr_condition = ['EQ' => ['SiteCode' => $this->_site_code, 'PackTypeCcd' => $pack], 'LKR' => ['CateCode' => $this->_cate_code]];
+
+        // 사이트별 과정 조회 (카테고리 소트매핑된 과정 조회 => 상품에 설정된 과정 조회)
+        //$arr_base['course'] = $this->baseProductFModel->listCourseCategoryMapping($this->_site_code, $this->_cate_code);
+        $arr_base['course'] = $this->packageFModel->listSalesProduct($this->_learn_pattern, 'distinct(CourseIdx), CourseName', $arr_condition, null, null, ['OrderNumCourse' => 'asc']);
+
+        // 상품 검색조건 추가
+        $arr_condition = array_merge_recursive($arr_condition, [
             'EQ' => [
-              'SiteCode' => $this->_site_code
-              ,'PackTypeCcd' => $pack
-              ,'CourseIdx' => element('course_idx',$arr_input)
-              ,'SchoolYear' => element('school_year',$arr_input)
-            ],
-            'LKR' => [
-                'CateCode'=>$this->_cate_code
+                'CourseIdx' => element('course_idx', $arr_input),
+                'SchoolYear' => element('school_year', $arr_input)
             ],
             'LKB' => [
                 'ProdName' => $this->_req('prod_name')
             ]
-        ];
+        ]);
 
+        // 상품 정렬조건
         if (element('search_order', $arr_input) == 'course') {
-            $order_by = ['OrderNumCourse'=>'desc'];
+            $order_by = ['OrderNumCourse'=>'asc'];
         } else {
             $order_by = ['ProdCode'=>'desc'];
         }
 
-        $list = $this->packageFModel->listSalesProduct($this->_learn_pattern,false,$arr_condition,null,null,$order_by);
+        // 상품 조회
+        $list = $this->packageFModel->listSalesProduct($this->_learn_pattern, false, $arr_condition, null, null, $order_by);
 
         //$prod_codes = array_pluck($list,'ProdCode');        //추출목록 중 상품코드만 재 추출
         //$contents = $this->packageFModel->findProductContents($prod_codes); //상품 컨텐츠 추출  : info() 로 대체

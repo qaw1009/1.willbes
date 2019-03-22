@@ -71,7 +71,7 @@
         <div class="evtCtnsBox wb_cts05">
             <img src="http://file3.willbes.net/new_gosi/2018/10/EV181012Y_08.jpg"  usemap="#Map181012B" border="0" />
             <map name="Map181012B" id="Map181012B">
-                <area shape="rect" coords="125,463,1084,546" href="/packagelecture/packagelectureDetail.html?currentPage=1&pageRow=9999&topMenu=013&topMenuName=&topMenuType=O&searchCategoryCode=013&leftMenuLType=M0001&lecKType=P&searchLeccode=P201800036" target="_blank">
+                <area shape="rect" coords="125,463,1084,546" href="{{ site_url('/package/show/cate/3030/pack/648001/prod-code/150567') }}" target="_blank">
             </map>
         </div><!--//wb_cts05-->
 

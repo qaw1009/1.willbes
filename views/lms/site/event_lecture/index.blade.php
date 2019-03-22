@@ -3,7 +3,7 @@
     <h5>- 이벤트, 설명회, 특강 등을 등록하고 관리하는 메뉴입니다.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
-        {!! html_def_site_tabs('', 'tabs_site_code', 'tab', true, [], false) !!}
+        {!! html_def_site_tabs('', 'tabs_site_code', 'tab', true, [], true) !!}
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">
@@ -151,12 +151,19 @@
                     {'data' : 'SiteName'},
                     {'data' : 'CampusName'},
                     {'data' : 'CateCode', 'render' : function(data, type, row, meta){
-                            var obj = data.split(',');
-                            var str = '';
-                            for (key in obj) {
-                                str += obj[key]+"<br>";
+                            if (row.SiteCode == {{config_item('app_intg_site_code')}}) {
+                                return '통합';
+                            } else {
+                                var str = '없음';
+                                if (data != null) {
+                                    str = '';
+                                    var obj = data.split(',');
+                                    for (key in obj) {
+                                        str += obj[key] + "<br>";
+                                    }
+                                }
+                                return str;
                             }
-                            return str;
                         }},
 
                     {'data' : 'ElIdx', 'render' : function(data, type, row, meta) {

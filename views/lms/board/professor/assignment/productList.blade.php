@@ -39,18 +39,25 @@
     <div class="x_content">
         <table id="list_ajax_table" class="table table-striped table-bordered">
             <thead>
-            <tr>
-                <th>NO</th>
-                <th>강좌기본정보</th>
-                <th>강좌유형</th>
-                <th>과정</th>
-                <th>과목</th>
-                <th>단강좌명</th>
-                <th>판매가</th>
-                <th>판매여부</th>
-                <th>사용여부</th>
-                <th>과제등록</th>
-                <th>첨삭현황</th>
+            <tr class="bg-odd">
+                <th rowspan="2" class="pb-30">NO</th>
+                <th rowspan="2" class="rowspan pb-30">강좌기본정보</th>
+                <th rowspan="2" class="rowspan pb-30">강좌유형</th>
+                <th rowspan="2" class="rowspan pb-30">과정</th>
+                <th rowspan="2" class="rowspan pb-30">과목</th>
+                <th rowspan="2" class="rowspan pb-30">단강좌명</th>
+                <th rowspan="2" class="rowspan pb-30">판매가</th>
+                <th rowspan="2" class="rowspan pb-30">판매여부</th>
+                <th rowspan="2" class="rowspan pb-30">사용여부</th>
+                <th rowspan="2" class="rowspan pb-30">과제등록</th>
+                <th rowspan="2" class="rowspan pb-30">첨삭현황</th>
+                <th colspan="4">강좌별 첨삭</th>
+            </tr>
+            <tr class="bg-odd">
+                <th>과제 수</th>
+                <th>제출 수</th>
+                <th>체점 수</th>
+                <th>임시저장 수</th>
             </tr>
             </thead>
             <tbody>
@@ -75,6 +82,7 @@
                     return $.extend(arrToJson($search_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
                 }
             },
+            rowsGroup: ['.rowspan'],
             columns: [
                 {'data' : null, 'render' : function(data, type, row, meta) {
                         // 리스트 번호
@@ -103,18 +111,22 @@
                     }},
                 {'data' : null, 'render' : function(data, type, row, meta) {
                         return '<a href="javascript:void(0);" class="btn-assignment-info" data-prod-code="' + row.ProdCode + '"><u>확인</u></a>';
-                    }}
+                    }},
+                {'data' : 'BoardTotalCnt'}, //첨삭 수
+                {'data' : 'BoardCnt2'}, //첨삭 제출 수
+                {'data' : 'BoardCnt3'}, //첨삭 체점 수
+                {'data' : 'BoardCnt1'} //첨삭 임시저장 수
             ],
         });
 
         //과제등록관리
         $list_table.on('click', '.btn-assignment-manager', function() {
-            location.href='{{ site_url("/board/professor/{$boardName}/registForBoard") }}/' + $(this).data('prod-code') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}';
+            location.href='{{ site_url("/board/professor/{$boardName}/registForBoard") }}/' + $(this).data('prod-code') + '?' + '{!! $boardDefaultQueryString !!}';
         });
 
         //과제현황관리
         $list_table.on('click', '.btn-assignment-info', function() {
-            location.href='{{ site_url("/board/professor/{$boardName}/issueForBoard") }}/' + $(this).data('prod-code') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}';
+            location.href='{{ site_url("/board/professor/{$boardName}/issueForBoard") }}/' + $(this).data('prod-code') + '?' + '{!! $boardDefaultQueryString !!}';
         });
     });
 </script>

@@ -169,7 +169,8 @@ class SiteModel extends WB_Model
     {
         $column = '
             S.SiteCode, S.SiteGroupCode, S.SiteTypeCcd, S.SiteName, S.SiteUrl, S.UseDomain, S.UseMail, S.PgCcd, S.PgMid, S.PgBookMid, S.PayMethodCcds, S.DeliveryCompCcd, S.DeliveryPrice, S.DeliveryAddPrice, S.DeliveryFreePrice
-                , S.Logo, S.Favicon, S.CsTel, S.HeadTitle, S.MetaKeyword, S.MetaDesc, S.FrontCss, S.FooterInfo, S.IsCampus, S.IsUse, S.RegDatm, S.RegAdminIdx, S.UpdDatm, S.UpdAdminIdx
+                , S.Logo, S.Favicon, S.CsTel, S.HeadTitle, S.MetaKeyword, S.MetaDesc, S.FrontCss, S.FooterInfo, S.CommPcScript, S.CommMobileScript, S.CommAppScript
+                , S.IsCampus, S.IsUse, S.RegDatm, S.RegAdminIdx, S.UpdDatm, S.UpdAdminIdx
                 , if(IsCampus = "Y", (
                     select GROUP_CONCAT(CampusCcd separator ", ") from ' . $this->_table['site_r_campus'] . ' where SiteCode = S.SiteCode and IsStatus = "Y"
                   ), "") as CampusCcds
@@ -236,6 +237,9 @@ class SiteModel extends WB_Model
                 'MetaDesc' => element('meta_desc', $input),
                 'FrontCss' => element('front_css', $input),
                 'FooterInfo' => element('footer_info', $input),
+                'CommPcScript' => base64_encode(element('comm_pc_script', $input)),
+                'CommMobileScript' => base64_encode(element('comm_mobile_script', $input)),
+                'CommAppScript' => base64_encode(element('comm_app_script', $input)),
                 'OrderNum' => $row['OrderNum'],
                 'IsUse' => element('is_use', $input),
                 'IsCampus' => element('is_campus', $input),
@@ -322,6 +326,9 @@ class SiteModel extends WB_Model
                 'MetaDesc' => element('meta_desc', $input),
                 'FrontCss' => element('front_css', $input),
                 'FooterInfo' => element('footer_info', $input),
+                'CommPcScript' => base64_encode(element('comm_pc_script', $input)),
+                'CommMobileScript' => base64_encode(element('comm_mobile_script', $input)),
+                'CommAppScript' => base64_encode(element('comm_app_script', $input)),
                 'IsUse' => element('is_use', $input),
                 'IsCampus' => element('is_campus', $input),
                 'UpdAdminIdx' => $this->session->userdata('admin_idx')

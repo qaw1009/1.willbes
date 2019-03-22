@@ -49,23 +49,45 @@
                         @elseif($menu_row['MenuType'] == 'GA')
                             @php $active_class = $__cfg['IsPassSite'] === true ? 'strong' : ''; @endphp
                             <li class="Acad">
-                                <a class="willbes-Acad-Tit {{ $active_class }}" href="{{ $menu_row['MenuUrl'] }}" target="_{{ $menu_row['UrlTarget'] }}">{{ $menu_row['MenuName'] }}</a>
+                                <a class="willbes-Acad-Tit {{ $active_class }}" href="{{ $menu_row['MenuUrl'] }}" target="_{{ $menu_row['UrlTarget'] }}">{{ $menu_row['MenuName'] }}</a>                                
                                 <dl class="sns-Btn">
+                                    @if($__cfg['SiteGroupCode'] === '1001')
+                                    <!--경찰-->                                    
                                     <dt>
-                                        <a href="#none">
-                                            <img src="{{ img_url('gnb/icon_facebook.gif') }}">
+                                        <a href="https://www.facebook.com/willbescop" target="_blank">
+                                            <img src="{{ img_url('gnb/icon_facebook.png') }}" alt="페이스북">
                                         </a>
                                     </dt>
                                     <dt>
-                                        <a href="#none">
-                                            <img src="{{ img_url('gnb/icon_linkedin.gif') }}">
+                                        <a href="https://www.instagram.com/willbescop" target="_blank">
+                                            <img src="{{ img_url('gnb/icon_Instagram.png') }}" alt="인스타그램">
                                         </a>
                                     </dt>
                                     <dt>
-                                        <a href="#none">
-                                            <img src="{{ img_url('gnb/icon_twitter.gif') }}">
+                                        <a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank">
+                                            <img src="{{ img_url('gnb/icon_youtube.png') }}" alt="유튜브">
                                         </a>
                                     </dt>
+                                    @endif
+
+                                    @if($__cfg['SiteGroupCode'] === '1002')
+                                    <!--공무원-->
+                                    <dt>
+                                        <a href="https://www.facebook.com/willbesgosi" target="_blank">
+                                            <img src="{{ img_url('gnb/icon_facebook.png') }}" alt="페이스북">
+                                        </a>
+                                    </dt>
+                                    <dt>
+                                        <a href="https://tv.naver.com/willbes79" target="_blank">
+                                            <img src="{{ img_url('gnb/icon_navertv.png') }}" alt="네이버TV">
+                                        </a>
+                                    </dt>
+                                    <dt>
+                                        <a href="https://www.youtube.com/channel/UCsNPdhwjR37qVtuePB599KQ" target="_blank">
+                                            <img src="{{ img_url('gnb/icon_youtube.png') }}" alt="유튜브">
+                                        </a>
+                                    </dt>
+                                    @endif
                                 </dl>
                             </li>
                         @endif
@@ -160,7 +182,7 @@
             <!-- End willbes Setting -->
         </li>
         <li>
-            <a class="intro" href="#none">
+            <a class="intro" href="//{{app_to_env_url('www.willbes.net/company/')}}">
                 <img src="{{ img_url('gnb/icon_intro' . $_gnb_img_size . '.gif') }}">
                 <div class="Txt">윌비스<br/>회사소개</div>
             </a>

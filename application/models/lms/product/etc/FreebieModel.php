@@ -194,6 +194,10 @@ class FreebieModel extends WB_Model
             ,'SaleStatusCcd'=>element('SaleStatusCcd',$input,'618003')
             ,'IsCart'=>element('IsCart',$input,'N')
             ,'IsUse'=>element('IsUse',$input)
+            ,'IsPoint'=>element('IsPoint',$input,'N')
+            ,'PointApplyCcd'=>element('PointApplyCcd',$input,'635002')
+            ,'PointSavePrice'=>get_var(element('PointSavePrice',$input),0)
+            ,'PointSaveType'=>element('PointSaveType',$input,'R')
         ];
 
         $input_freebie = [

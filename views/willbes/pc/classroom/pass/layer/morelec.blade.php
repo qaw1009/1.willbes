@@ -1,6 +1,7 @@
 <script>
-    data = [@foreach( $leclist as $key => $row )
-        '<tr>'+
+    var lecData = [];
+    lecData = [@foreach( $leclist as $key => $row )
+    '<tr>'+
     '<td class="btnClose"><a href="javascript:;" onclick="fnDel(this);"><img src="{{ img_url('sub/icon_delete.gif') }}"></a></td>'+
     '<td class="w-info passzone">'+
     '<dl class="w-info">'+
@@ -19,7 +20,7 @@
     '</tr>' ,
         @endforeach ''];
 </script>
-<form name="lecForm" id="lecForm" metho="GET" onsubmit="return false;">
+<form name="lecForm" id="lecForm" method="POST" onsubmit="return false;">
     <ul class="passzoneInfo tx-gray NGR">
         <li>· '무한PASS존'에서 수강하기 위한 강좌를 추가하는 메뉴입니다.</li>
         <li>· '수강할 강좌 검색' 후 체크박스를 클릭하시면, 우측 '강좌 선택내역'에 선택한 강좌가 추가됩니다.</li>
@@ -59,7 +60,7 @@
         <div class="Search-Result">
             <div class="Total">총 {{count($leclist)}}건</div>
             <div class="chkBox">
-                <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"> 수강중강좌 제외
+                <label><input type="checkbox" id="take" name="take" value="Y" class="goods_chk" {{$input_arr['take'] == 'Y' ? 'checked' : ''}}> 수강중강좌 제외</label>
             </div>
         </div>
     </div>
@@ -67,11 +68,11 @@
         <div class="LeclistTable" id="">
             <table cellspacing="0" cellpadding="0" class="listTable under-gray tx-gray">
                 <colgroup>
-                    <col style="width: 50px;">
-                    <col style="width: 55px;">
-                    <col style="width: 55px;">
-                    <col style="width: 80px;">
-                    <col style="width: 320px;">
+                    <col style="width: 5%;">
+                    <col style="width: 15%;">
+                    <col style="width: 10%;">
+                    <col style="width: 15%;">
+                    <col >
                 </colgroup>
                 <thead>
                 <tr>
@@ -84,7 +85,7 @@
                 </thead>
                 <tbody>
                 @forelse( $leclist as $key => $row )
-                    <tr class="replyList passzone-Leclist">
+                    <tr class="replyList passzone-Leclist" onclick="fnViewInfo({{$row['ProdCode']}})">
                         <td><input type="checkbox" id="checkBox" class="goods_chk prodCheck" value="{{$key}}" {{$row['IsTake'] == 'Y' ? 'disabled=disabled' : ''}}></td>
                         <td class="w-sbj">{{$row['SubjectName']}}</td>
                         <td class="w-prof">{{$row['wProfName']}}</td>
@@ -104,72 +105,20 @@
                         <td colspan="5">
                             <div class="lecDetailWrap p_re mt30 mb60">
                                 <ul class="tabWrap tabDepth2">
-                                    <li><a href="#ch1-{{$row['ProdCode']}}">강좌상세정보</a></li>
+                                    <li><a href="#ch1-{{$row['ProdCode']}}" class="on">강좌상세정보</a></li>
                                     <li><a href="#ch2-{{$row['ProdCode']}}">강좌목차</a></li>
                                 </ul>
                                 <div class="w-btn">
                                     <a class="bg-blue bd-dark-blue NSK" href="javascript:;" onclick="@if($row['IsTake'] == 'Y') alert('이미 등록한 강좌입니다.'); @else fnAppend({{$key}}); @endif">현재 강좌추가</a>
                                 </div>
-                                <div class="tabBox mt30">
-                                    <div id="ch1-{{$row['ProdCode']}}" class="tabLink">
-                                        <table cellspacing="0" cellpadding="0" class="classTable under-gray bdt-gray tx-gray">
-                                            <colgroup>
-                                                <col style="width: 105px;">
-                                                <col width="*">
-                                            </colgroup>
-                                            <tbody>
-                                            @foreach($row['ProdContents'] as $sub_row)
-                                                <tr>
-                                                    <td class="w-list bg-light-white">
-                                                        {{$sub_row['ContentTypeCcdName']}}
-                                                        @if($sub_row['ContentTypeCcd'] == '633001')
-                                                            <br/><span class="tx-red">(필독)</span>
-                                                        @endif
-                                                    </td>
-                                                    <td class="w-data tx-left pl25">{!! $sub_row['Content'] !!}</td>
-                                                </tr>
-                                            @endforeach
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <div id="ch2-{{$row['ProdCode']}}" class="tabLink">
-                                        <div class="LeclistTable">
-                                            <table cellspacing="0" cellpadding="0" class="listTable upper-black under-gray tx-gray">
-                                                <colgroup>
-                                                    <col style="width: 50px;">
-                                                    <col style="width: 365px;">
-                                                    <col style="width: 120px;">
-                                                </colgroup>
-                                                <thead>
-                                                <tr>
-                                                    <th>No<span class="row-line">|</span></th>
-                                                    <th>강의명<span class="row-line">|</span></th>
-                                                    <th>강의시간</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                @forelse($row['LectureUnits'] as $sub_row)
-                                                    <tr>
-                                                        <td class="w-no">{{$sub_row['wUnitNum']}}회 {{$sub_row['wUnitLectureNum']}}강</td>
-                                                        <td class="w-list tx-left pl20">{{$sub_row['wUnitName']}}</td>
-                                                        <td class="w-time">{{$sub_row['wRuntime']}}분</td>
-                                                    </tr>
-                                                @empty
-                                                    <tr>
-                                                        <td colspan="3">개설된 목차가 없습니다.</td>
-                                                    </tr>
-                                                @endforelse
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
+                                <div class="tabBox mt30" id="info-{{$row['ProdCode']}}">
                                 </div>
                             </div>
                         </td>
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="4" class="tx-center">강좌정보가 없습니다.</td>
+                        <td colspan="5" class="tx-center">강좌정보가 없습니다.</td>
                     </tr>
                 @endforelse
                 </tbody>
@@ -184,7 +133,7 @@
 <script>
     function fnAppend(idx)
     {
-        $('#addTable > tbody:last').append(data[idx]);
+        $('#addTable > tbody:last').append(lecData[idx]);
     }
 
     function fnDel(obj)
@@ -198,7 +147,7 @@
             $(".prodCheck").each(function(){
                if(!$(this).is(":disabled")){
                    $(this).prop("checked", true);
-                   $('#addTable > tbody:last').append(data[$(this).val()]);
+                   $('#addTable > tbody:last').append(lecData[$(this).val()]);
                }
             });
         } else {
@@ -240,7 +189,22 @@
 
     $(".prodCheck").on("change", function(){
         if($(this).is(":checked")){
-            $('#addTable > tbody:last').append(data[$(this).val()]);
+            $('#addTable > tbody:last').append(lecData[$(this).val()]);
         }
     });
+
+    function fnViewInfo(prodcode)
+    {
+        url = "{{ site_url("/classroom/pass/ajaxLecInfo") }}";
+        data = 'prodcode='+prodcode;
+
+        sendAjax(url,
+            data,
+            function(d){
+                $('#info-'+prodcode).html(d).end();
+            },
+            function(ret, status){
+                alert(ret.ret_msg);
+            }, false, 'GET', 'html');
+    }
 </script>

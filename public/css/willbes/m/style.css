@@ -1416,7 +1416,7 @@ body.memBody #Footer {
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: 10;
+    z-index: 3;
 }
 .Fixbtn ul li {
     float:left;
@@ -1936,7 +1936,9 @@ body.memBody #Footer {
     color: #fff;
 }
 
-
+.loading {background:#1a8ccb; height:100%; position:relative}
+.loadingImg {position:absolute; left:50%; top:50%; margin-left:-50%; width:100%; margin-top:-120px; text-align:center}
+.loadingImg div {text-align:center; color:#fff; font-size:130%; margin-top:20px; line-height: 1.5;}
 
 /*********************************************     MYPAGE     *********************************************/
 
@@ -1965,6 +1967,7 @@ body.memBody #Footer {
         margin: 0 1%;
     }
 }
+
 
 /* iPhone 6/7/8 */
 @media only screen and (min-width: 375px) and (max-width: 640px) {

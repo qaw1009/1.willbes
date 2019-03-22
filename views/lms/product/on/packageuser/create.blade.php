@@ -262,17 +262,21 @@
                     <label class="control-label col-md-2" for="IsPoint">결제포인트적립 <span class="required">*</span>
                     </label>
                     <div class="col-md-4 form-inline">
-                        <input type="hidden" name="PointApplyCcd" id="PointApplyCcd" value="635001">
-                        <input type="radio" name="IsPoint" class="flat" value="Y" required="required" title="결제포인트적립" @if($method == 'POST' || $data['IsPoint']=='Y')checked="checked"@endif/> 가능
+                        <input type="radio" name="IsPoint" class="flat" value="Y" required="required" title="결제포인트적립" @if( $data['IsPoint']=='Y')checked="checked"@endif/> 가능
                         [
-                        <input type='number' name='PointSavePrice' value='@if($method==="POST"){{1}}@else{{$data['PointSavePrice']}}@endif' title="결제포인트적립" class="form-control" style="width: 80px"  required="required" >
+                        <select name="PointApplyCcd" id="PointApplyCcd"  class="form-control" title="포인트지급타입">
+                            @foreach($pointapply_ccd as $key => $val)
+                                <option value="{{$key}}" @if($data['PointApplyCcd'] == $key) selected="selected" @endif>{{$val}}</option>
+                            @endforeach
+                        </select>
+                        <input type='number' name='PointSavePrice' value='@if($method==="POST"){{0}}@else{{$data['PointSavePrice']}}@endif' title="결제포인트적립" class="form-control" size="5"  required="required" >
                         <select name="PointSaveType" id="PointSaveType" class="form-control">
                             <option value="R" @if($data['PointSaveType'] == 'R')selected="selected"@endif>%</option>
                             <option value="P" @if($data['PointSaveType'] == 'P')selected="selected"@endif>원</option>
                         </select> 적립
                         ]
                         &nbsp;&nbsp;
-                        <input type="radio" name="IsPoint" class="flat" value="N" @if($data['IsPoint']=='N')checked="checked"@endif/> 불가능
+                        <input type="radio" name="IsPoint" class="flat" value="N" @if($method == 'POST' || $data['IsPoint']=='N')checked="checked"@endif/> 불가능
 
                     </div>
                 </div>
@@ -380,9 +384,9 @@
                     </label>
                     <div class="col-md-10 form-inline item" >
                         <div class="radio">
-                            <input type="radio" name="IsRefund" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['IsRefund']=='Y')checked="checked"@endif/> 가능
+                            <input type="radio" name="IsRefund" class="flat" value="Y" required="required" title="사용여부" @if($data['IsRefund']=='Y')checked="checked"@endif/> 가능
                             &nbsp;&nbsp;
-                            <input type="radio" name="IsRefund" class="flat" value="N" @if($data['IsRefund']=='N')checked="checked"@endif/> 불가능
+                            <input type="radio" name="IsRefund" class="flat" value="N" @if($method == 'POST' || $data['IsRefund']=='N')checked="checked"@endif/> 불가능
                             &nbsp;&nbsp;&nbsp;&nbsp;• 내강의실에서 사용자가 직접 환불신청 가능한지 여부
                         </div>
                     </div>
@@ -705,7 +709,7 @@
                 if($("#site_code").val() == "") {alert("운영사이트를 선택해 주세요.");$("#site_code").focus();return;}
                 $('#'+id).setLayer({
                     'url' : '{{ site_url('common/searchLecture/')}}'+'?site_code='+$("#site_code").val()+'&LearnPatternCcd=615001&locationid='+id+'&ProdCode='+$('#ProdCode').val()+'&cate_code='+$('#cate_code').val()
-                    ,'width' : 1200
+                    ,'width' : 1300
                 })
             });
 

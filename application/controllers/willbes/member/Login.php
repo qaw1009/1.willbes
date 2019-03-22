@@ -91,7 +91,7 @@ class Login extends BaseMember
 
             if($data['IsStatus'] != 'Y'){
                 // 활동상태가 정상이 아니면 인데.. 머머 체크해야할지..
-                if($data['IsStatus'] == 'S'){
+                if($data['IsStatus'] == 'D'){
                     // 활동상태가 휴면회원
                     return $this->load->view('member/login/sleep', [
                         'MemName' => $data['MemName']
@@ -102,6 +102,7 @@ class Login extends BaseMember
 
                 } else {
                     // 알수없는 활동상태
+                    show_alert('정상회원이 아닙니다.\n관리자에게 문의 바랍니다.', 'back');
                 }
 
             }

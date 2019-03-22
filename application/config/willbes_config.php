@@ -25,8 +25,24 @@ $config['vbank_expire_days'] = '7'; // 입금시한 설정 일수
 // 추가 배송료 추가 대상 우편번호 앞자리
 $config['delivery_add_price_charge_zipcode'] = ['63', '69'];
 
-// 스타플레이어 모바일 라이센스
-$config['starplayer_license'] = '5EDC454C-81A1-4434-A386-7314FCB74991';
+if(ENVIRONMENT == "production" || ENVIRONMENT == "testing"){
+    /*
+    스타플레이어 모바일 라이센스 실서버용
+    서비스도메인	https://www.willbes.net
+    APP 이벤트	https://www.willbes.net/Player/StarplayerAPI/
+    SCMS URL	http://mgt.hd.willbes.gscdn.com/scms/log.asp
+    */
+    $config['starplayer_license'] = '70FBCADA-CE5A-4786-BCD3-960EAC8B4EA1';
+} else {
+    /*
+    스타플레이어 모바일 라이센스 테스트용
+    서비스도메인	https://www.dev.willbes.net
+    APP 이벤트	https://www.dev.willbes.net/Player/StarplayerAPI/
+    */
+    $config['starplayer_license'] = '5EDC454C-81A1-4434-A386-7314FCB74991';
+}
+
+
 
 // 통합사이트 설정
 $config['www'] = array(
@@ -59,7 +75,7 @@ $config['mock'] = array(
     'sysCode_addPoint' => 693,         // 모의고사 가산점 ( 운영코드DB IsValueUse=Y)
     'sysCode_ProdTypeCcd' => 636010,   // lms_Product > 상품타입코드 입력값 (모의고사)
     'sysCode_SaleStatusCcd' => 618001, // lms_Product > 판매상태코드 입력값 (판매가능)
-    'sysCode_PointApplyCcd' => 635001, // lms_Product > 포인트적용코드 입력값 (전체)
+    'sysCode_PointApplyCcd' => 635002, // lms_Product > 포인트적용코드 입력값 (전체)
     'sysCode_SaleTypeCcd' => 613001,   // lms_Product_Sale > 판매타입코드 입력값 (PC+모바일)
     'sysCode_paymentStatus' => 676,    // 결제상태
     'sysCode_acceptStatus' => 675,        // 접수상태

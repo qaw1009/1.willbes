@@ -6,9 +6,10 @@ require_once APPPATH . 'third_party/crontask/tasks/MemberPointExpireTask.php';
 require_once APPPATH . 'third_party/crontask/tasks/VbankWaitToExpireTask.php';
 require_once APPPATH . 'third_party/crontask/tasks/MockGradeMakeTask.php';
 
-
 class Cron extends \app\controllers\BaseController
 {
+    private $_memory_limit_size = '512M';     // 메모리 제한 설정값
+
     public function __construct()
     {
         parent::__construct();
@@ -22,6 +23,9 @@ class Cron extends \app\controllers\BaseController
      */
     public function index()
     {
+        set_time_limit(0);
+        ini_set('memory_limit', $this->_memory_limit_size);
+
         $scheduler = new crontask\Scheduler();
 
         $scheduler->addTasks([

@@ -18,7 +18,17 @@
                 <span class="tx-blue">{{$MemName}}</span>님, <strong>윌비스 통합 회원 가입을 환영합니다.</strong></br>
                 아이디<span class="tx-blue"> {{$MemId}}</span>로 모든 윌비스 서비스를 이용하실 수 있습니다.
             </div>
-            <img class="mt70" src="{{ img_url('login/willbes_welcome.jpg') }}">
+            <div class="tx-center"><img class="mt70" src="{{ img_url('login/willbes_welcome.jpg') }}"></div>
+            <div class="info-Txt info-Txt-Wrap tx-black mt60">
+                현재 웰컴팩 이벤트 중입니다.<br>
+                특별한 혜택을 받으시려면 아래 서비스를 선택해주세요.
+                <div class="mt10">
+                    <input name="cp1" type="radio" value="2001" id="cp1" /><label for="cp1"> 경찰</label>
+                    &nbsp;&nbsp;&nbsp;
+                    <input name="cp1" type="radio" value="2003" id="cp2" /><label for="cp2"> 공무원</label>
+                </div>            
+            </div>
+            <!--
             @if($ismobile == false)
                 <div class="info-Txt info-Txt-Wrap tx-black mt60">
                     <strong class="tx-gray">시작할 서비스를 선택해 주세요</strong>
@@ -34,8 +44,9 @@
                     <option value="/m/">선택안함</option>
                 </select>
             @endif
+            -->
             <button type="button" id="btn_start" class="mem-Btn h36 mt30 bg-blue bd-dark-blue">
-                <span>시작하기</span>
+                <span>이벤트 혜택 적용</span>
             </button>
         </div>
         <!-- End 통합회원가입 : 회원가입완료 -->
@@ -45,8 +56,24 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $('#btn_start').click(function () {
-                var url = $("#site option:selected").val();
-                location.replace(url);
+                if($("input[name=cp1]:checked").length != 1){
+                    alert("서비스를 선택해주십시요.");
+                    return;
+                }
+                var sitecode = $("input[name=cp1]:checked").val();
+
+                url = '{{front_url('/member/join/event/')}}';
+                data = 'sitecode='+sitecode;
+
+                sendAjax(url,
+                    data,
+                    function(ret){
+                        alert(ret.ret_msg);
+                        location.replace('{{front_url('/classroom/coupon/index')}}');
+                    },
+                    function(ret, status){
+                        alert(ret.ret_msg);
+                    }, false, 'GET', 'json');
             });
         });
     </script>

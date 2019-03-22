@@ -10,9 +10,7 @@
         <div class="Content p_re">
 
             <div class="willbes-Mypage-TESTZONE c_both">
-                <div class="willbes-Prof-Subject willbes-Mypage-Tit NG">
-                    · 온라인모의고사 응시
-                </div>
+
                 <div class="willbes-Cart-Txt willbes-Mypage-Txt NG p_re">
                     <span class="MoreBtn"><a href="#none">유의사항안내 닫기 ▲</a></span>
                     <table cellspacing="0" cellpadding="0" class="txtTable tx-black">
@@ -135,7 +133,7 @@
             <!-- willbes-Leclist -->
         </div>
         {!! banner('내강의실_우측퀵', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
-
+    </div>
         <!-- End Container -->
         <script>
             var win = '';

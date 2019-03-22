@@ -202,24 +202,27 @@
 
             // ajax submit
             $regi_form.submit(function() {
-                var site_code = $regi_form.find('select[name="site_code"]').val();
-                var site_all_code = "{{config_item('app_intg_site_code')}}";
                 var _url = '{{ site_url("/site/landingPage/store") }}' + getQueryString();
 
                 ajaxSubmit($regi_form, _url, function(ret) {
-                    @if($method == 'POST')
-                    if(site_code != site_all_code && $regi_form.find('input[name="cate_code[]"]').length < 1) {
-                        alert('카테고리 선택 필드는 필수입니다.');
-                        return false;
-                    }
-                    @endif
-
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
                         location.replace('{{ site_url("/site/landingPage/") }}' + getQueryString());
                     }
-                }, showValidateError, null, false, 'alert');
+                }, showValidateError, addValidate, false, 'alert');
             });
+
+            function addValidate() {
+                var site_code = $regi_form.find('select[name="site_code"]').val();
+                var site_all_code = "{{config_item('app_intg_site_code')}}";
+
+                @if($method == 'POST')
+                if(site_code != site_all_code && $regi_form.find('input[name="cate_code[]"]').length < 1) {
+                    alert('카테고리 선택 필드는 필수입니다.');
+                    return false;
+                }
+                @endif
+                    return true;
         });
     </script>
 @stop

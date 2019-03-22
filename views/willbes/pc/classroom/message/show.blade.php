@@ -34,7 +34,7 @@
                         <th class="w-tit" rowspan="2">내용</th>
                         <td class="w-list w-file" colspan="3">
                             @if(empty($data['AttachData']) === false)
-                                <a href="{{site_url('/classroom/message/download?path=').urlencode($data['AttachData']).'&fname='.urlencode($data['SendAttachRealFileName']).'&send_idx='.$data['SendIdx']}}" target="_blank">
+                                <a href="{{site_url('/classroom/message/download?').'send_idx='.$data['SendIdx']}}" target="_blank">
                                     {{$data['SendAttachRealFileName']}}</a>
                             @endif
                         </td>

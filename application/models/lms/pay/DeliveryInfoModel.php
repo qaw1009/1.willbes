@@ -46,7 +46,9 @@ class DeliveryInfoModel extends BaseOrderModel
 
                     if (empty($order_prod_rows) === false) {
                         $arr_order_prod_idx = array_pluck($order_prod_rows, 'OrderProdIdx');
-                        $is_update = $this->_conn->set($data)->set($column_prefix . 'Datm', 'NOW()', false)->where_in('OrderProdIdx', $arr_order_prod_idx)
+                        $is_update = $this->_conn->set($data)->set($column_prefix . 'Datm', 'NOW()', false)
+                            ->where_in('OrderProdIdx', $arr_order_prod_idx)
+                            ->where('InvoiceNo is null')
                             ->update($this->_table['order_product_delivery_info']);
 
                         if ($is_update === false) {
@@ -94,8 +96,12 @@ class DeliveryInfoModel extends BaseOrderModel
                 $column_prefix = 'DeliverySend';
                 $check_pay_status_ccd = $this->_pay_status_ccd['paid'];
                 $check_error_msg = '결제완료된 주문만 발송완료 승인이 가능합니다.';
+            } elseif ($delivery_status == 'prepare') {
+                $column_prefix = 'StatusUpd';
+                $check_pay_status_ccd = $this->_pay_status_ccd['paid'];
+                $check_error_msg = '결제완료된 주문만 발송준비 승인이 가능합니다.';
             } else {
-                $column_prefix = 'StatusUpdDatm';
+                $column_prefix = 'StatusUpd';
                 $check_pay_status_ccd = $this->_pay_status_ccd['refund'];
                 $check_error_msg = '환불완료된 주문만 발송전 취소가 가능합니다.';
             }

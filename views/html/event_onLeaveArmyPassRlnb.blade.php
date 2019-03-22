@@ -4,5 +4,5 @@
                 <li><a href="https://www.local.willbes.net/home/html/event_onLeaveArmyPass_seoul" class="menu2" target="_blank">서울 노량진 교육과정</a></li>
                 <li><a href="https://www.local.willbes.net/home/html/event_onLeaveArmyPass_incheon" class="menu3" target="_blank">인천 부평 교육과정</a></li>
                 <li><a href="https://www.local.willbes.net/home/html/event_onLeaveArmyPass_busan" class="menu4" target="_blank">부산 서면 교육과정</a></li>
-                <li><a href="https://www.local.willbes.net/home/html/event_onLeaveArmyPassLec" class="menu5">윌비스 PASS</a></li>
+                <li><a href="{{ site_url('/promotion/index/cate/3001/code/1121') }}" class="menu5">윌비스 PASS</a></li>
             </ul>

@@ -231,13 +231,15 @@ class CertApplyModel extends WB_Model
                         throw new \Exception($is_sms, _HTTP_NO_PERMISSION);
                     }
                     */
-                    $smsData = [];
-                    $smsData['CsTel'] = $idx['CsTel'];
-                    $smsData['SmsContent'] = $idx['SmsContent'];
-                    $smsData['Phone'] = $idx['Phone'];
-                    $is_sms = $this->addSms($smsData);
-                    if($is_sms !== true) {
-                        throw new \Exception('SMS발송 실패입니다.');
+                    if(empty($idx['SmsContent'] == false)) {
+                        $smsData = [];
+                        $smsData['CsTel'] = $idx['CsTel'];
+                        $smsData['SmsContent'] = $idx['SmsContent'];
+                        $smsData['Phone'] = $idx['Phone'];
+                        $is_sms = $this->addSms($smsData);
+                        if ($is_sms !== true) {
+                            throw new \Exception('SMS발송 실패입니다.');
+                        }
                     }
                     
                 }
@@ -393,7 +395,7 @@ class CertApplyModel extends WB_Model
                 throw new \Exception('세부 발송 등록에 실패했습니다.');
             }
             */
-            $this->load->library('sendsms');
+            $this->load->library('sendSms');
             if($this->sendsms->send($data['Phone'], $data['SmsContent'], $data['CsTel']) !== true) {
                 throw new \Exception('SMS 발송에 실패했습니다.');
             }

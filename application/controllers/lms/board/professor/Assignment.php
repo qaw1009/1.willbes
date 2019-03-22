@@ -157,10 +157,10 @@ class Assignment extends BaseBoard
         ];
 
         $list = [];
-        $count = $this->lectureModel->listLecture(true, $arr_condition);
+        $count = $this->lectureModel->listLectureForBoard(true, $arr_condition);
 
         if ($count > 0) {
-            $list = $this->lectureModel->listLecture(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.ProdCode' => 'desc']);
+            $list = $this->lectureModel->listLectureForBoard(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.ProdCode' => 'desc']);
         }
 
         return $this->response([
@@ -201,7 +201,7 @@ class Assignment extends BaseBoard
                 'E.ProfIdx_String' => $prof_idx,
             ]
         ];
-        $product_data = $this->lectureModel->listLecture(false, $arr_condition, 1, 0, ['A.ProdCode' => 'desc'])[0];
+        $product_data = $this->lectureModel->listLectureForBoard(false, $arr_condition, 1, 0, ['A.ProdCode' => 'desc'])[0];
 
         $this->load->view("board/professor/{$this->board_name}/regist/index", [
             'bm_idx' => $this->bm_idx,
@@ -299,7 +299,7 @@ class Assignment extends BaseBoard
                 'E.ProfIdx_String' => $prof_idx,
             ]
         ];
-        $product_data = $this->lectureModel->listLecture(false, $arr_condition, 1, 0, ['A.ProdCode' => 'desc'])[0];
+        $product_data = $this->lectureModel->listLectureForBoard(false, $arr_condition, 1, 0, ['A.ProdCode' => 'desc'])[0];
 
         // 스케줄 정보 조회
         $schedule = $this->boardModel->getAssignmentSchedule($prod_code);
@@ -378,7 +378,7 @@ class Assignment extends BaseBoard
             ]
         ];
 
-        $product_data = $this->lectureModel->listLecture(false, $arr_condition, 1, 0, ['A.ProdCode' => 'desc'])[0];
+        $product_data = $this->lectureModel->listLectureForBoard(false, $arr_condition, 1, 0, ['A.ProdCode' => 'desc'])[0];
         if (empty($product_data) === true) {
             $rules = array_merge($rules, [
                 ['field'=>'prod_code', 'label'=>'상품코드', 'rules'=>'trim|required']
@@ -496,7 +496,6 @@ class Assignment extends BaseBoard
         }
 
         $site_code = $data['SiteCode'];
-        $arr_cate_code = explode(',', $data['CateCode']);
         $data['arr_attach_file_idx'] = explode(',', $data['AttachFileIdx']);
         $data['arr_attach_file_path'] = explode(',', $data['AttachFilePath']);
         $data['arr_attach_file_name'] = explode(',', $data['AttachFileName']);
@@ -505,14 +504,20 @@ class Assignment extends BaseBoard
         if (empty($this->site_code) === false) {
             $site_code = $this->site_code;
         }
+
         $get_category_array = $this->_getCategoryArray($site_code);
         if (empty($get_category_array) === true) {
             $data['arr_cate_code'] = [];
         } else {
-            foreach ($arr_cate_code as $item => $code) {
-                if (empty($get_category_array[$code]) === false) {
-                    $data['arr_cate_code'][$code] = $get_category_array[$code];
+            if (empty($data['CateCode']) === false) {
+                $arr_cate_code = explode(',', $data['CateCode']);
+                foreach ($arr_cate_code as $item => $code) {
+                    if (empty($get_category_array[$code]) === false) {
+                        $data['arr_cate_code'][$code] = $get_category_array[$code];
+                    }
                 }
+            } else {
+                $data['arr_cate_code'] = [];
             }
         }
 
@@ -614,7 +619,7 @@ class Assignment extends BaseBoard
                 'E.ProfIdx_String' => $prof_idx,
             ]
         ];
-        $product_data = $this->lectureModel->listLecture(false, $arr_condition, 1, 0, ['A.ProdCode' => 'desc'])[0];
+        $product_data = $this->lectureModel->listLectureForBoard(false, $arr_condition, 1, 0, ['A.ProdCode' => 'desc'])[0];
 
         $this->load->view("board/professor/{$this->board_name}/issue/index", [
             'bm_idx' => $this->bm_idx,

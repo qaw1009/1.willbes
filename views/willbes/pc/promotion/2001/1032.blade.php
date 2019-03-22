@@ -13,7 +13,6 @@
             position:relative;
             width:100% !important;
             min-width:1210px !important;
-            background:#ccc;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
@@ -34,16 +33,16 @@
         .slide_con5 p.leftBtn {left:-100px}
         .slide_con5 p.rightBtn {right:-100px}
         #slidesImg5 li {display:inline; float:left}
-        #slidesImg5:after {content::""; display:block; clear:both}
+        #slidesImg5:after {content:""; display:block; clear:both}
 
         /* 탭 */
-        .tabContaier{width:100%; text-align:center;}
-        .tabContaier ul {width:100%; max-width:980px; text-align:center; margin:0 auto  }
-        .tabContaier li {display:inline; text-align:center; float:left; }
-        .tabContaier a img.off {display:block}
-        .tabContaier a img.on {display:none}
-        .tabContaier a.active img.off {display:none}
-        .tabContaier a.active img.on {display:block}
+        .evttabWrap{width:100%; text-align:center;}
+        .evttabWrap ul {width:100%; max-width:980px; text-align:center; margin:0 auto  }
+        .evttabWrap li {display:inline; text-align:center; float:left; }
+        .evttabWrap a img.off {display:block}
+        .evttabWrap a img.on {display:none}
+        .evttabWrap a.active img.off {display:none}
+        .evttabWrap a.active img.on {display:block}
 
         .Pstyle {opacity:0; display:none; position:absolute; background-color:#fff;z-index:9;top:0;}
 
@@ -56,7 +55,7 @@
         .slide_con p.leftBtn {left:-100px}
         .slide_con p.rightBtn {right:-100px}
         #slidesImg3 li {display:inline; float:left}
-        #slidesImg3:after {content::""; display:block; clear:both}
+        #slidesImg3:after {content:""; display:block; clear:both}
 
 
         .wb_03 {width:100%; text-align:center; background:#dedede; min-width:1210px; padding:150px 0}
@@ -75,7 +74,7 @@
 
 
         .wb_04 {width:100%; text-align:center; background:#fff; min-width:1210px; padding:150px 0}
-        .slide_con2 {position:relative; width:854px; margin:100px auto 0; position:relative !important}
+        .slide_con2 {width:854px; margin:100px auto 0; position:relative !important}
         .slide_con2 .bx-pager{position:absolute;top:12px;right:10px; z-index:1000}
         .slide_con2 .bx-pager .bx-pager-item{display:inline-block;margin:0 2px}
         .slide_con2 .bx-pager .bx-pager-item a{display:inline-block;width:10px;height:10px; border-radius:5px; font-size:0; background:#ccc; vertical-align:middle}
@@ -85,7 +84,7 @@
         .Pstyle .fpcontent {height:auto; width:auto; border:1px solid #000}
         .Pstyle .b-close {position:absolute; right:10px; top:10px; display:inline-block; cursor:pointer; font-size:12px !important}
 
-        .wb_05 {width:100%; text-align:center; background:#f5f5f5; font-size:120%; background:#f5f5f5; padding-bottom:120px; min-width:1210px}
+        .wb_05 {width:100%; text-align:center; font-size:120%; background:#f5f5f5; padding-bottom:120px; min-width:1210px}
         .wb_05 .wb_05_c {width:880px; margin:0 auto; border:1px solid #d6d6d6; background:#fff; padding:48px 58px; text-align:left; margin-bottom:80px}
         .wb_05 .wb_05_c span {display:inline-block; font-size:140%; font-weight:500; background:#2360bb; color:#fff; height:36px; line-height:36px; padding:0 20px}
         .wb_05 .wb_05_c p {border-top:1px solid #c2c2c2; margin-bottom:20px}
@@ -98,7 +97,7 @@
         .slide_con6 p.leftBtn {left:-100px}
         .slide_con6 p.rightBtn {right:-100px}
         #slidesImg6 li {display:inline; float:left}
-        #slidesImg6:after {content::""; display:block; clear:both}
+        #slidesImg6:after {content:""; display:block; clear:both}
 
     </style>
 
@@ -116,7 +115,6 @@
             <div class="slide_con">
                 <ul id="slidesImg5">
                     <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV02_3.jpg" alt="2"  usemap="#story"/></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV02_1.jpg" alt="1" usemap="#story"/></li>
                     <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV02_2.jpg" alt="2"  usemap="#story"/></li>
                 </ul>
                 <p class="leftBtn"><a id="imgBannerLeft5"><img src="http://file3.willbes.net/new_cop/2017/03/EV170306_p_prev.png" alt="이전" /></a></p>
@@ -130,7 +128,7 @@
 
         <div class="wb_01">
             <div style="width:854px;text-align:center;margin:0 auto;">
-                <div class="tabContaier">
+                <div class="evttabWrap">
                     <ul class="cf">
                         <li style="padding-bottom:40px;">
                             <a class="active" href="#tab1">
@@ -363,6 +361,7 @@
                     <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV07_3.jpg" alt="3" /></li>
                     <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV07_4.jpg" alt="4" /></li>
                     <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV07_5.jpg" alt="5" /></li>
+                    <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV07_15.jpg" alt="5" /></li>
                 </ul>
                 <p class="leftBtn"><a id="imgBannerLeft6"><img src="http://file3.willbes.net/new_cop/2017/03/EV170306_p_prev.png" alt="이전" /></a></p>
                 <p class="rightBtn"><a id="imgBannerRight6"><img src="http://file3.willbes.net/new_cop/2017/03/EV170306_p_next.png" alt="다음" /></a></p>
@@ -372,56 +371,49 @@
         <div class="wb_05">
             <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV06_1.jpg" alt="대한민국의 자랑스러원 경찰이 될 당신의 이야기를 기다립니다." usemap="#Map" />
             <map name="Map" id="Map">
-                <area shape="rect" coords="188,970,291,1016" href="/" target="_blank"  />
-                <area shape="rect" coords="374,970,475,1016" href="/082/index.html?topMenuType=O&topMenu=082&topMenuGnb=OM_001" target="_blank"  />
-                <area shape="rect" coords="557,970,658,1016" href="/085/index.html?topMenuType=O&topMenu=085&topMenuGnb=OM_001" target="_blank"  />
-                <area shape="rect" coords="739,970,844,1016" href="/089/index.html?topMenuType=O&topMenu=089&topMenuGnb=OM_001" target="_blank"  />
-                <area shape="rect" coords="924,970,1028,1017" href="/080/index.html?ltopMenuType=O&topMenu=083&topMenuGnb=OM_001&topMenuGnb=OM_001" target="_blank" />
+                <area shape="rect" coords="305,968,408,1014" href="{{ site_url('/promotion/index/cate/3001/code/1009') }}" target="_blank" alt="신광은경찰PASS"/>
+                <area shape="rect" coords="494,968,595,1014" href="{{ site_url('/home/index/cate/3002') }}" target="_blank" alt="경행경채"/>
+                <area shape="rect" coords="678,968,779,1014" href="{{ site_url('/promotion/index/cate/3006/code/1008') }}" target="_blank" alt="경찰승진PASS"/>
+                <area shape="rect" coords="861,968,965,1014" href="{{ site_url('/promotion/index/cate/3008/code/1020') }}" target="_blank" alt="해양특채PASS"/>
             </map>
         </div><!--wb_05//-->
 
     </div>
     <!-- End Container -->
 
-    <script src="/public/js/willbes/jquery.bpopup.min.js"></script>
-    <script src="/public/js/willbes/jquery.counterup.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+    <script src="/public/js/willbes/jquery.bpopup.min.js"></script>    
     <script type="text/javascript">
         function go_popup(){
             $('#popup').bPopup();
-        };
+        }
+
         function go_popup1(){
             $('#popup1').bPopup();
-        };
+        }
+
         function go_popup2(){
             $('#popup2').bPopup();
-        };
+        }
+
         function go_popup3(){
             $('#popup3').bPopup();
-        };
+        }
 
         function go_popup4(){
             $('#popup4').bPopup();
-        };
+        }
 
         function go_popup5(){
             $('#popup5').bPopup();
-        };
+        }
 
         function go_popup6(){
             $('#popup6').bPopup();
-        };
+        }
 
         function go_popup7(){
             $('#popup7').bPopup();
-        };
-
-        jQuery(document).ready(function( $ ) {
-            $('span').counterUp({
-                delay: 11, // the delay time in ms
-                time: 1000 // the speed time in ms
-            });
-        });
+        }
 
         $(document).ready(function(){
             $('ul.evTabs').each(function(){
@@ -452,10 +444,10 @@
             $(".tabContents").hide();
             $(".tabContents:first").show();
 
-            $(".tabContaier ul li a").click(function(){
+            $(".evttabWrap ul li a").click(function(){
 
                 var activeTab = $(this).attr("href");
-                $(".tabContaier ul li a").removeClass("active");
+                $(".evttabWrap ul li a").removeClass("active");
                 $(this).addClass("active");
                 $(".tabContents").hide();
                 $(activeTab).fadeIn();
@@ -532,7 +524,7 @@
                 controls:false,
                 slideWidth:900,
                 autoHover: true,
-                pager:false,
+                pager:false
             });
 
             $("#imgBannerLeft6").click(function (){
@@ -543,15 +535,5 @@
             });
         });
     </script>
-
-
-
-    <script src="/public/js/willbes/jquery.nav.js"></script>
-    <script>
-        $(function(e){
-            var targetOffset= $("#evtContainer").offset().top;
-            $('html, body').animate({scrollTop: targetOffset}, 700);
-        });
-    </script>
-
+    
 @stop

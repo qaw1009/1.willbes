@@ -10,18 +10,18 @@
         <div id="videoPopup" class="videoPopup">
             <div class="view p_re">
                 <div class="viewList">
-                    <span class="Tit NGR"><span class="NG">2강 / 1월 9일</span> : P.20 국어의 특성</span>
+                    <span class="Tit NGR"><span class="NG">1회 10강 </span>1월 18일 : Unit 05. 5형식 문형: S + V + O + O·C [불완전타동사] p100~102</span>
                     <ul class="btnList">
-                        <li><a class="iconBtn btnUP" href="#none">버튼 위로</a></li>
-                        <li><a class="iconBtn btnBookMark" href="#none">버튼 즐겨찾기</a></li>
+                        <!--li><a class="iconBtn btnUP" href="#none">버튼 위로</a></li>
+                        <li><a class="iconBtn btnBookMark" href="#none">버튼 즐겨찾기</a></li-->
                         <li><a class="iconBtn btnSetting" href="#none" onclick="openWin('settingPOP')">버튼 설정</a></li>
                         <li><span class="btnFAQ"><a href="#none">동영상 FAQ</a></span></li>
                     </ul>
                 </div>
-                <div id="settingPOP" class="settingPOP">
-                    <img src="{{ img_url('player/player_key.png') }}" usemap="#player_key" style="border: 0;"> 
+                <div id="settingPOP" class="settingPOP settingPOP2">
+                    <img src="{{ img_url('player/player_keyH.png') }}" usemap="#player_key" style="border: 0;"> 
                     <map name="player_key">
-                        <area shape="rect" coords="234,1,262,32" href="#none" onclick="closeWin('settingPOP')" target="" alt="" onfocus="blur();" />
+                        <area shape="rect" coords="930,10,960,36" href="#none" onclick="closeWin('settingPOP')" target="" alt="" onfocus="blur();" />
                     </map>
                 </div>
                 video Player
@@ -38,7 +38,7 @@
         <div id="videoPopup" class="videoPopup">
             <div class="view p_re">
                 <div class="viewList">
-                    <span class="Tit NGR"><span class="NG">2강 / 1월 9일</span> : P.20 국어의 특성</span>
+                    <span class="Tit NGR"><span class="NG">1회 10강 </span>1월 18일 : Unit 05. 5형식 문형: S + V + O + O·C [불완전타동사] p100~102</span>
                     <ul class="btnList">
                         <li><a class="iconBtn btnUP" href="#none">버튼 위로</a></li>
                         <li><a class="iconBtn btnBookMark" href="#none">버튼 즐겨찾기</a></li>
@@ -46,7 +46,7 @@
                         <li><span class="btnFAQ"><a href="#none">동영상 FAQ</a></span></li>
                     </ul>
                 </div>
-                <div id="settingPOP" class="settingPOP">
+                <div id="settingPOP" class="settingPOP settingPOP2">
                     <img src="{{ img_url('player/player_key.png') }}" usemap="#player_key" style="border: 0;"> 
                     <map name="player_key">
                         <area shape="rect" coords="234,1,262,32" href="#none" onclick="closeWin('settingPOP')" target="" alt="" onfocus="blur();" />
@@ -169,7 +169,6 @@
                                     <div class="tt2">2018 기미진 기특한 국어 이론요약</div>
                                     <div class="tt3">50분</div>
                                 </li>
-
                             </ul>
                         </div>
                     </div>

@@ -36,12 +36,12 @@
                                 <li><a><i class="fa {{ $mmenu['IconClassName'] }}"></i> {{ $mmenu['MenuName'] }}<span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         @foreach($mmenu['Children'] as $smenu)
-                                            <li><a href="{{ site_url($smenu['MenuUrl']) }}">{{ $smenu['MenuName'] }}</a></li>
+                                            <li><a href="{{ site_url($smenu['MenuUrl']) }}" target="_{{ $smenu['UrlTarget'] }}">{{ $smenu['MenuName'] }}</a></li>
                                         @endforeach
                                     </ul>
                                 </li>
                             @else
-                                <li><a href="{{ site_url($mmenu['MenuUrl']) }}"><i class="fa {{ $mmenu['IconClassName'] }}"></i> {{ $mmenu['MenuName'] }}</a></li>
+                                <li><a href="{{ site_url($mmenu['MenuUrl']) }}" target="_{{ $mmenu['UrlTarget'] }}"><i class="fa {{ $mmenu['IconClassName'] }}"></i> {{ $mmenu['MenuName'] }}</a></li>
                             @endif
                         @endforeach
                     @endif

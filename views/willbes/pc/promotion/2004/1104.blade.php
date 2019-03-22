@@ -21,13 +21,11 @@
         /************************************************************/
 
         .skybanner {
-            position:absolute;
-            top:20px;
+            position:fixed;
+            top:200px;
             right:10px;
             z-index:1;
         }
-        .skybanner_sectionFixed {position:fixed; top:20px}
-
         .WB_con01 {background:#fae100; padding:100px 0}
 
 
@@ -53,15 +51,11 @@
     </div>
     <!-- End Container -->
 
-    <script src="/public/js/willbes/jquery.nav.js"></script>
     <script>
         $(function(e){
             var targetOffset= $("#evtContainer").offset().top;
             $('html, body').animate({scrollTop: targetOffset}, 700);
             /*e.preventDefault(); */
         });
-
-
-
     </script>
 @stop

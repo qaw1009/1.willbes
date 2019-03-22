@@ -68,18 +68,19 @@
         .wb_cts03  {background:#274a35; margin-bottom:80px}
 
         .skybanner {
-            position:absolute;
-            top:20px;
+            position:fixed;
+            top:250px;
             right:0;
             width:280px;
             z-index:1;
+            display:none;
         }
-        .skybanner_sectionFixed {position:fixed; top:20px}
+ 
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner">
-            <div><a href="http://www.willbescop.net/event/movie/event.html?event_cd=On_171129_p&topMenuType=O#main" target="_blank"><img src="http://file3.willbes.net/new_cop/2017/11/EV171129_p_sky.png" alt="0원 입문특강" /></a></div>
+            <div><a href="{{ site_url('/promotion/index/cate/3006/code/1012') }}" target="_blank"><img src="http://file3.willbes.net/new_cop/2017/11/EV171129_p_sky.png" alt="0원 입문특강" /></a></div>
         </div>
 
         <div class="evtCtnsBox wb_cts01" >
@@ -96,8 +97,8 @@
             <img src="http://file3.willbes.net/new_cop/2018/11/EV1811226Y_02.jpg" alt="" />
             <img src="http://file3.willbes.net/new_cop/2018/11/EV1811226Y_04.gif" alt="" usemap="#Map181127_c" border="0" />
             <map name="Map181127_c" >
-                <area shape="rect" coords="307,344,420,480" href="http://www.willbescop.net/movie/event.html?event_cd=On_181126_y#tab01" alt="최근 5개년 기출문제"/>
-                <area shape="rect" coords="571,314,728,474" href="http://www.willbescop.net/lecture/movieLectureFreeList.html?topMenu=081&topMenuName=일반경찰&topMenuType=O&leftMenuLType=M0000&lecKType=F&FREE_TAB=TAB_005"  target="_blank" alt="무료기출해설 특강"/>
+                <area shape="rect" coords="307,344,420,480" href="#tab01" alt="최근 5개년 기출문제"/>
+                <area shape="rect" coords="571,314,728,474" href="{{ site_url('/lecture/index/cate/3001/pattern/free?course_idx=1075') }}"  target="_blank" alt="무료기출해설 특강"/>
             </map>
 
             <div>
@@ -174,8 +175,8 @@
                         </tr>
                     </table>
                     <ul class="mt30">
-                        <li><a href="http://www.willbescop.net/lecture/movieLectureFreeList.html?topMenu=081&topMenuName=일반경찰&topMenuType=O&leftMenuLType=M0000&lecKType=F&FREE_TAB=TAB_005" target="_blank">일반/101단 기출해설 수강하기</a></li>
-                        <li><a href="http://www.willbescop.net/lecture/movieLectureFreeList.html?topMenu=082&topMenuName=경행경채&topMenuType=O&leftMenuLType=M0000&lecKType=F&FREE_TAB=TAB_005" target="_blank">경행경체 기출해설 수강하기</a></li>
+                        <li><a href="{{ site_url('/lecture/index/cate/3001/pattern/free?course_idx=1075') }}" target="_blank">일반/101단 기출해설 수강하기</a></li>
+                        <li><a href="{{ site_url('/lecture/index/cate/3002/pattern/free?course_idx=1075') }}" target="_blank">경행경체 기출해설 수강하기</a></li>
                     </ul>
                 </div>
 
@@ -230,7 +231,7 @@
                             <td><a href="http://www.willbescop.net/library/library_view.html?topMenuType=O&topMenuGnb=OM_004&topMenu=083&menuID=OM_004_004&BOARD_MNG_SEQ=NOTICE_005&BOARDTYPE=8&INCTYPE=view&currentPage=1&BOARD_SEQ=132726&PARENT_BOARD_SEQ=0&SEARCHKIND=&SEARCHTEXT=" target="_blank">바로가기</a></td>
                         </tr>
                     </table>
-                    <p class="mt30"><a href="http://www.willbescop.net/lecture/movieLectureFreeList.html?topMenu=088&topMenuName=해양경찰특채&topMenuType=O&leftMenuLType=M0000&lecKType=F&FREE_TAB=TAB_005"><img src="http://file3.willbes.net/new_cop/2018/11/EV1811226Y_02_btn02.jpg" alt="" /></a></p>
+                    <p class="mt30"><a href="{{ site_url('/lecture/index/cate/3008/pattern/free?course_idx=1075') }}" target="_blank"><img src="http://file3.willbes.net/new_cop/2018/11/EV1811226Y_02_btn02.jpg" alt="" /></a></p>
                 </div>
 
                 <div id="tab03" class="evtTabCts">
@@ -268,7 +269,11 @@
         </div>
 
         <!--  이모티콘 댓글 -->
-        @include('html.event_incReplyEmoticon')
+        {{--@include('html.event_incReplyEmoticon')--}}
+        <?php if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true): ?>
+            <?php echo $this->runChild('willbes.pc.promotion.show_comment_list_partial'); ?>
+        <?php endif; ?>
+
     </div>
     <!-- End Container -->
 

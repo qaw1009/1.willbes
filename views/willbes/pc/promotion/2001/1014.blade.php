@@ -23,15 +23,11 @@
         /************************************************************/
 
         .skybanner {
-            position:absolute;
-            top:20px;
+            position:fixed;
+            bottom:20px;
             right:10PX;
             z-index:1;
         }
-        .skybanner li {
-            margin-bottom:5px;
-        }
-        .skybanner_sectionFixed {position:fixed; top:20px}
 
         .wb_cts01 {background:#0091fa url(http://file3.willbes.net/new_cop/2018/01/EV180122_c1_bg.jpg) no-repeat center top; position:relative;}
         .wb_cts01 div {position:relative;}
@@ -63,7 +59,7 @@
                 <img src="http://file3.willbes.net/new_cop/2018/01/EV180122_c1.jpg" usemap="#Map171218_c2" border="0"  >
                 <map name="Map171218_c2" >
                     <area shape="rect" coords="157,17,584,102"  href="#none"  onfocus="this.blur();" alt="초시생을 위한 합격비법"/>
-                    <area shape="rect" coords="677,22,1055,93" href="/promotion/index/cate/3001/code/1017"  onfocus="this.blur();"  alt="N수생을 위한 합격비법" />
+                    <area shape="rect" coords="677,22,1055,93" href="{{ site_url('/promotion/index/cate/3001/code/1017') }}"  onfocus="this.blur();"  alt="N수생을 위한 합격비법" />
                 </map>
                 <div class="why"><img src="http://file3.willbes.net/new_cop/2018/01/EV180122_top.gif" alt=""/></div>
                 <img src="http://file3.willbes.net/new_cop/2018/01/EV180122_c2.jpg"  >
@@ -76,12 +72,12 @@
                 <li> <img src="http://file3.willbes.net/new_cop/2018/01/EV180122_c3.jpg" alt="과락률 50%, 70점 미만 86.6%!"  /></li>
                 <li id="Q1"> <img src="http://file3.willbes.net/new_cop/2018/01/EV180122_c4.jpg" alt="공무원에는 어떤 직렬이 있나요?" usemap="#Map180122_c2" border="0" />
                     <map name="Map180122_c2" >
-                        <area shape="rect" coords="111,433,241,484" href="/boardExamInfoOn/board_list.html?topMenuType=O&topMenuGnb=OM_005&topMenu=081&menuID=OM_005_001&BOARDTYPE=1&INCTYPE=list&BOARD_MNG_SEQ=NOTICE_008" target="_blank"   onfocus="this.blur();"/>
+                        <area shape="rect" coords="111,433,241,484" href="{{ site_url('/support/examAnnouncement/index/cate/3001') }}" target="_blank"   onfocus="this.blur();"/>
                     </map>
                 <li id="Q2"> <img src="http://file3.willbes.net/new_cop/2018/01/EV180122_c5.jpg" alt="Q2. 시험은 어떤 식으로 치러지나요?" usemap="#Map180122_c3" border="0" />
                     <map name="Map180122_c3" >
-                        <area shape="rect" coords="675,357,797,393" href="/boardExamInfoOn/board_list.html?topMenuGnb=OM_005&BOARDTYPE=3&INCTYPE=list&BOARD_MNG_SEQ=&topMenuType=O&topMenuGnb=OM_005&topMenu=081&topMenuName=ÀÏ¹Ý°æÂû&menuID=OM_005_003&active_menu=4" onfocus="this.blur();" target="_blank"/>
-                        <area shape="rect" coords="676,627,791,676" href="http://www.willbescop.net/boardExamInfoOn/board_list.html?topMenuGnb=OM_005&BOARDTYPE=3&INCTYPE=list&BOARD_MNG_SEQ=&topMenuType=O&topMenuGnb=OM_005&topMenu=081&topMenuName=ÀÏ¹Ý°æÂû&menuID=OM_005_003&active_menu=5" onfocus="this.blur();" target="_blank"/>
+                        <area shape="rect" coords="675,357,797,393" href="{{ site_url('/guide/show/cate/3001/pattern/cop#cop_guide1') }}" onfocus="this.blur();" target="_blank"/>
+                        <area shape="rect" coords="676,627,791,676" href="{{ site_url('/guide/show/cate/3001/pattern/cop#cop_guide3') }}" onfocus="this.blur();" target="_blank"/>
                     </map>
                 <li id="Q3"> <img src="http://file3.willbes.net/new_cop/2018/01/EV180122_c6.jpg" alt="Q3. 올해 시험 일정은 언제인가요?" />
                 <li id="Q4"> <img src="http://file3.willbes.net/new_cop/2018/01/EV180122_c7.jpg" alt="Q4. 시험 공부 계획은 어떻게 세워야 하나요?" />
@@ -96,22 +92,22 @@
                 <div class="PeMenu">
                     <ul>
                         <li>
-                            <a href="{{ front_url('/home/index/cate/3001') }}" target="_blank" onFocus="this.blur();">
+                            <a href="{{ site_url('/home/index/cate/3001') }}" target="_blank" onFocus="this.blur();">
                                 <img src="http://file3.willbes.net/new_cop/2018/01/EV180122_c10_1.jpg" onmouseover="this.src='http://file3.willbes.net/new_cop/2018/01/EV180122_c10_1on.jpg'" onMouseOut="this.src='http://file3.willbes.net/new_cop/2018/01/EV180122_c10_1.jpg'" onMouseDown="this.src='http://file3.willbes.net/new_cop/2018/01/EV180122_c10_1.jpg'" alt=""  />
                             </a>
                         </li>
                         <li>
-                            <a href="{{ front_url('/home/index/cate/3002') }}" target="_blank" onFocus="this.blur();" >
+                            <a href="{{ site_url('/home/index/cate/3002') }}" target="_blank" onFocus="this.blur();" >
                                 <img src="http://file3.willbes.net/new_cop/2018/01/EV180122_c10_2.jpg" onmouseover="this.src='http://file3.willbes.net/new_cop/2018/01/EV180122_c10_2on.jpg'" onMouseOut="this.src='http://file3.willbes.net/new_cop/2018/01/EV180122_c10_2.jpg'" onMouseDown="this.src='http://file3.willbes.net/new_cop/2018/01/EV180122_c10_2.jpg'" alt=""  />
                             </a>
                         </li>
                         <li>
-                            <a href="{{ front_url('/home/index/cate/3006') }}" target="_blank" onFocus="this.blur();" >
+                            <a href="{{ site_url('/home/index/cate/3006') }}" target="_blank" onFocus="this.blur();" >
                                 <img src="http://file3.willbes.net/new_cop/2018/01/EV180122_c10_3.jpg" onmouseover="this.src='http://file3.willbes.net/new_cop/2018/01/EV180122_c10_3on.jpg'" onMouseOut="this.src='http://file3.willbes.net/new_cop/2018/01/EV180122_c10_3.jpg'" onMouseDown="this.src='http://file3.willbes.net/new_cop/2018/01/EV180122_c10_3.jpg'" alt=""  />
                             </a>
                         </li>
                         <li>
-                            <a href="{{ front_url('/home/index/cate/3007') }}" target="_blank" onFocus="this.blur();" >
+                            <a href="{{ site_url('/home/index/cate/3007') }}" target="_blank" onFocus="this.blur();" >
                                 <img src="http://file3.willbes.net/new_cop/2018/01/EV180122_c10_4.jpg" onmouseover="this.src='http://file3.willbes.net/new_cop/2018/01/EV180122_c10_4on.jpg'" onMouseOut="this.src='http://file3.willbes.net/new_cop/2018/01/EV180122_c10_4.jpg'" onMouseDown="this.src='http://file3.willbes.net/new_cop/2018/01/EV180122_c10_4.jpg'" alt=""  />
                             </a>
                         </li>
@@ -122,7 +118,6 @@
     </div>
     <!-- End Container -->
 
-    <script src="/public/js/willbes/jquery.nav.js"></script>
     <script>
         $(function(e){
             var targetOffset= $("#evtContainer").offset().top;

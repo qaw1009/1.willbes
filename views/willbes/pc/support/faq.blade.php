@@ -32,17 +32,17 @@
                                         <img src="{{ img_url('cs/icon_question'.$row['Ccd'].'.gif') }}">
                                         <div>{{$row['CcdName']}}</div>
                                     </a>
-                                    @if(empty($row['subFaqData']) === false)
-                                    <div class="subBox @if($s_faq == $row['Ccd']) on @endif">
-                                        <dl>
-                                            @foreach($row['subFaqData'] as $sub)
-                                                <dt>
-                                                    <button type="button" onclick="javascript:goSubmit('{{$row['Ccd']}}', '{{$sub['Ccd']}}')" @if( (element('s_sub_faq', $arr_input) == $sub['Ccd']) || (empty(element('s_sub_faq', $arr_input)) === true && $loop->first == true) )style="color: #0a8cc2" @endif>{{$sub['CcdName']}}</button>
-                                                    @if($loop->last == false)<span class="row-line">|</span>@endif
-                                                </dt>
-                                            @endforeach
-                                        </dl>
-                                    </div>
+                                    @if(empty($faq_sub_ccd) === false)
+                                        <div class="subBox @if($s_faq == $row['Ccd']) on @endif">
+                                            <dl>
+                                                @foreach($faq_sub_ccd as $key => $val)
+                                                    <dt>
+                                                        <button type="button" onclick="javascript:goSubmit('{{$row['Ccd']}}', '{{$key}}')" @if( (element('s_sub_faq', $arr_input) == $key) || (empty(element('s_sub_faq', $arr_input)) === true && $loop->first == true) )style="color: #0a8cc2" @endif>{{$val}}</button>
+                                                        @if($loop->last == false)<span class="row-line">|</span>@endif
+                                                    </dt>
+                                                @endforeach
+                                            </dl>
+                                        </div>
                                     @endif
                                 </li>
                             @endforeach

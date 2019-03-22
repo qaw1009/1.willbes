@@ -11,7 +11,6 @@
         .evtContent {
             width:100% !important;
             min-width:1210px !important;
-            background:#ccc;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
@@ -20,39 +19,7 @@
 
         /************************************************************/
 
-        .wb_pop {background:#020000 url(http://file3.willbes.net/new_cop/2018/03/180327_EV01_bg2.jpg) no-repeat center top}
-        .wb_pop .wb_popWrap {width:1210px; margin:0 auto; position:relative}
-        .wb_pop .wb_popWrap div {position:absolute; width:980px; top:230px; left:50%; margin-left:-490px; z-index:1; animation:rotation 0.5s linear;-webkit-animation:rotation 0.5s linear}
-
-        @@keyframes rotation{
-             from{
-                 opacity:0;
-                 width:100px;
-                 margin-left:-50px;
-                 transform: rotate(360deg);
-             }
-             to{
-                 opacity: 1;
-                 width: 980px;
-                 transform: rotate(0deg);
-             }
-         }
-        @@-webkit-keyframes rotation{
-             from{
-                 opacity:0;
-                 width: 100px;
-                 transform: rotate(180deg);
-             }
-             to{
-                 opacity: 1;
-                 width: 980px;
-                 transform: rotate(0deg);
-             }
-         }
-
         .wb_pop2 {background:#252525 url(http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190307_01_bg.jpg) no-repeat center top}
-        .wb_pop2 .wb_popWrap2 {width:1210px; margin:0 auto; position:relative}
-        .wb_pop2 .wb_popWrap2 div {position:absolute; width:980px; top:230px; left:50%; margin-left:-490px; z-index:1}
 
         .wb_pop3 {background:#1e1e1e url(http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20181214_02_bg.jpg) no-repeat center top}
 
@@ -65,7 +32,7 @@
         .wb_top .passLecBuy li:nth-child(2) {width:232px; padding-left:60px}
         .wb_top .passLecBuy li:nth-child(3) {width:400px; padding-left:140px}
         .wb_top .passLecBuy li div {margin:30px 0 0 0; font-size:20px; font-weight:bold; background:#000; color:#fff; text-align:center; padding:16px 0; border-radius:0 40px 40px 40px}
-        .wb_top .passLecBuy li:last-child div {background:#008766;} /*평생0원PASS가격배경컬러변경*/
+        .wb_top .passLecBuy li:last-child div {background:#0f897e;} /*평생0원PASS가격배경컬러변경*/
         .wb_top .passLecBuy li:last-child p {font-weight:bold; font-size:20px}
         .wb_top strong {font-family:Verdana, Geneva, sans-serif; font-size:30px}
         .wb_top .passLecBuy ul:after {content:""; display:block; clear:both}
@@ -83,7 +50,7 @@
 
         .wb_top .passLecbtn {width:980px; margin:0 auto; padding:40px 20px; background:#898989}
         .wb_top .passLecbtn ul {border:1px solid #000; background:#fff; box-shadow: 0 5px 10px rgba(0,0,0,.5);}
-        .wb_top .passLecbtn li {display:inline; float:left; width:50%; color:#000; font-size:20px; height:80px; line-height:80px}
+        .wb_top .passLecbtn li {display:inline; float:left; width:100%; color:#000; font-size:20px; height:80px; line-height:80px}
         .wb_top .passLecbtn li a {background:#000; color:#fff; display:block}
         .wb_top .passLecbtn li a:hover {background:#06C}
         .wb_top .passLecbtn span {margin-left:50px}
@@ -97,19 +64,6 @@
         .wb_cts05 {background:#eee;}
         .wb_cts06 {background:#c4c4c4;}
 
-        /*업다운 애니메이션*/
-        .m_img1 {animation:upDown 1s infinite;-webkit-animation:upDown 1s infinite}
-        @@keyframes upDown{
-             from{margin-top:0}
-             20%{margin-top:-10px}
-             to{margin-top:0}
-         }
-        @@-webkit-keyframes upDown{
-             from{margin-top:0}
-             20%{margin-top:-10px}
-             to{margin-top:0}
-         }
-        .m_img1 {position:fixed;top:240px;right:10px;z-index:1000}
 
         /* 슬라이드배너 */
         .slide_con {position:relative; width:980px; margin:0 auto}
@@ -123,7 +77,7 @@
 
         /* 이용안내 */
         .content_guide_wrap{background:#fff; width:1210px; margin:0 auto; padding:50px 0}
-        .content_guide_wrap .guide_tit{margin-bottom:20px;width:1210px;margin:0 auto;text-align:center; }
+        .content_guide_wrap .guide_tit{width:1210px;margin:0 auto;text-align:center; }
         .content_guide_wrap .tabs {width:960px; margin:0 auto;}
         .content_guide_wrap .tabs li {display:inline; float:left; width:320px}
         .content_guide_wrap .tabs li a {display:block; text-align:center; height:60px; line-height:60px; font-size:140% !important; border:2px solid #f3f3f3; border-bottom:2px solid #202020; background:#f3f3f3}
@@ -156,9 +110,9 @@
         .newTopDday ul li {display:inline; float:left; margin-right:5px; text-align:center; height:60px; padding-top:10px !important; font-weight:600; color:#000}
         .newTopDday ul li strong {line-height:70px}
         .newTopDday ul li img {width:50px}
-        .newTopDday ul li:first-child {line-height:none; text-align:right; padding-right:20px; width:28%}
+        .newTopDday ul li:first-child {text-align:right; padding-right:20px; width:28%}
         .newTopDday ul li:first-child span {font-size:12px; color:#999;margin-top:4px;}
-        .newTopDday ul li:last-child {line-height:none;  text-align:left; padding-left:20px; width:24%}
+        .newTopDday ul li:last-child {text-align:left; padding-left:20px; width:24%}
         .newTopDday ul li:last-child a {display:inline-block; font-size:14px; padding:4px 20px; background:#999; color:#FFF; text-align:center; border-radius:20px}
         .newTopDday ul li:last-child a:hover {background:#666}
         .newTopDday ul:after {content:""; display:block; clear:both}
@@ -182,31 +136,17 @@
             cursor: pointer;
         }
         .Pstyle .content {height:auto; width:auto;}
-
-        .skybanner {
-            position:absolute;
-            top:20px;
-            right:10px;
-            width:170px;
-            z-index:1;
-        }
-        .skybanner_sectionFixed {position:fixed; top:20px}
     </style>
 
 
     <div class="p_re evtContent NSK" id="evtContainer">
-        <!--div class="skybanner">
-			<div><a href="event_onCopPromotionPassPop" target="_blank"><img src="http://file3.willbes.net/new_cop/2019/01/EV190123_p_sky1.png" alt="현직경찰 인증하기"></a></div>
-			<div><a href="#go"><img src="http://file3.willbes.net/new_cop/2019/01/EV190123_p_sky2_new.png" alt="프리패스 구매하기"></a></div>
-		</div-->
-
         <!-- 타이머 -->
         <div id="newTopDday" class="newTopDday">
             <div id="ddaytime">
                 <ul>
                     <li>
                         <span>윌비스신광은경찰 PASS</span><br />
-                        <span style="line-height:40px;font-size:22pt;color:#000">2019-68기</span>
+                        <span style="line-height:40px;font-size:22pt;color:#000">2019-70기</span>
                     </li>
                     <li><img id="dd1" src="http://file.willbes.net/new_image/0.png" /></li>
                     <li><img id="dd2" src="http://file.willbes.net/new_image/0.png" /></li>
@@ -221,7 +161,7 @@
                     <li><img id="ss2" src="http://file.willbes.net/new_image/0.png" /></li>
                     <li>
                         <a href="#pass" target="_self">수강하기 &gt;</a><br />
-                        <span style="line-height:40px;">3.13(수) 24:00 마감!</span>
+                        <span style="line-height:40px;">3.27(수) 24:00 마감!</span>
                     </li>
                 </ul>
             </div>
@@ -231,8 +171,8 @@
         <div class="evtCtnsBox wb_pop2" id="main">
             <img src="http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190307_01.png"  alt="평생0원 PASS 마감" usemap="#rebound"/>
             <map name="rebound" id="rebound">
-                <area shape="rect" coords="300,837,475,884" href="javascript:certOpen();" alt="수강생인증"/>
-                <area shape="rect" coords="500,837,675,884" href="javascript:goDesc('tab3')" alt="이용안내"/>
+                <area shape="rect" coords="300,1170,475,1213" href="javascript:certOpen();" alt="수강생인증"/>
+                <area shape="rect" coords="500,1170,675,1213" href="javascript:goDesc('tab3')" alt="이용안내"/>
             </map>
         </div>
 
@@ -245,34 +185,33 @@
                 <ul>
                     <li>
                         <h5>일반</h5>
-                        <p><input type="checkbox" id="y_pkg1" name="y_pkg" value="Y"  onClick="fn_cal('1')"/> <label for="y_pkg1">(선택) 오태진 한국사</label></p>
-                        <p><input type="checkbox" id="y_pkg2" name="y_pkg" value="Y"  onClick="fn_cal('2')"/> <label for="y_pkg2">(선택) 원유철 한국사</label></p>
+                        <p><input type="radio" id="y_pkg1" name="y_pkg" value="152010" onClick=""/> <label for="y_pkg1">(선택) 오태진 한국사</label></p>
+                        <p><input type="radio" id="y_pkg2" name="y_pkg" value="152009" onClick=""/> <label for="y_pkg2">(선택) 원유철 한국사</label></p>
                         <h5>특채</h5>
-                        <p><input type="checkbox" id="y_pkg3" name="y_pkg" value="Y"  onClick="fn_cal('3')"/> <label for="y_pkg3">경행경채</label></p>
+                        <p><input type="radio" id="y_pkg3" name="y_pkg" value="149193" onClick=""/> <label for="y_pkg3">경행경채</label></p>
                         <div><strong>61</strong>만원</div>
                     </li>
                     <li>
                         <h5>일반</h5>
-                        <p><input type="checkbox" id="y_pkg4" name="y_pkg" value="Y"  onClick="fn_cal('4')"/> <label for="y_pkg4">(선택) 오태진 한국사</label></p>
-                        <p><input type="checkbox" id="y_pkg5" name="y_pkg" value="Y"  onClick="fn_cal('5')"/> <label for="y_pkg5">(선택) 원유철 한국사</label></p>
+                        <p><input type="radio" id="y_pkg4" name="y_pkg" value="152007" onClick=""/> <label for="y_pkg4">(선택) 오태진 한국사</label></p>
+                        <p><input type="radio" id="y_pkg5" name="y_pkg" value="152008" onClick=""/> <label for="y_pkg5">(선택) 원유철 한국사</label></p>
                         <h5>특채</h5>
-                        <p><input type="checkbox" id="y_pkg6" name="y_pkg" value="Y"  onClick="fn_cal('6')"/> <label for="y_pkg6">경행경채</label></p>
-                        <div><strong>70</strong>만원</div>
+                        <p><input type="radio" id="y_pkg6" name="y_pkg" value="149195" onClick=""/> <label for="y_pkg6">경행경채</label></p>
+                        <div><strong>73</strong>만원</div>
                     </li>
                     <li>
                         <h5>&nbsp;</h5>
                         <h5>&nbsp;</h5>
                         <p>&nbsp;</p>
-                        <p><input type="checkbox" id="y_pkg7" name="y_pkg" value="Y"  onClick="fn_cal('7')"/> <label for="y_pkg7">일반</label></p>
-                        <p><input type="checkbox" id="y_pkg8" name="y_pkg" value="Y"  onClick="fn_cal('8')"/> <label for="y_pkg8">특채 경행경채</label></p>
+                        <p><input type="radio" id="y_pkg7" name="y_pkg" value="149107" onClick=""/> <label for="y_pkg7">일반</label></p>
+                        <p><input type="radio" id="y_pkg8" name="y_pkg" value="149108" onClick=""/> <label for="y_pkg8">특채 경행경채</label></p>
                         <div><strong>143</strong>만원</div>
                     </li>
                 </ul>
                 <span style="color:#fff">
-                    <input type="checkbox" id="j_pkg" name="j_pkg" value="Y" onClick="fn_cal('j1')"/>
-                    <label for="j_pkg">&lt; 경찰체력패키지를 수강하실 경우 체크하세요.</label>
+                    <label for="j_pkg">PASS 구매 시 할인 쿠폰이 자동 지급 됩니다.</label>
                 </span>
-                <img src="http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190307_03_re1.jpg"  alt="신광은경찰PASS 수강료"/ usemap="#Map190123"><br />
+                <img src="http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190307_03_re1.jpg"  alt="신광은경찰PASS 수강료" usemap="#Map190123"><br />
                 <img src="http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190307_03_re2.jpg"  alt="체력" usemap="#Map190117A" border="0"/>
                 <map name="Map190123" id="Map190123">
                     <area shape="rect" coords="220,545,285,564" href="javascript:go_popup()" alt="6개월과목" />
@@ -280,7 +219,7 @@
                     <area shape="rect" coords="777,545,838,564" href="javascript:go_popup1()" alt="평생목팝업" />
                 </map>
                 <map name="Map190117A" id="Map190117A">
-                    <area shape="rect" coords="656,183,776,227" href="http://www.willbescop.net/movie/event.html?event_cd=On_190102_y&amp;topMenuType=O" target="_blank" alt="경찰체력패키지" />
+                    <area shape="rect" coords="656,183,776,227" href="{{ site_url('promotion/index/cate/3001/code/1030') }}" target="_blank" alt="경찰체력패키지" />
                 </map>
             </div>
 
@@ -304,14 +243,15 @@
                 <a href="javascript:goDesc('tab1')">이용안내확인하기 ↓</a>
                 <p>
                     ※ 강의공유, 콘텐츠 부정 사용 적발 시, 평생 0원 패스의 수강기간 갱신 및 환급이 불가합니다.<br />
-                    ※ 강좌 및 교수진은 학원 사정에 따라 변경될 수 있습니다.
+                    ※ 강좌 및 교수진은 학원 사정에 따라 변경될 수 있습니다.<br/>
+                    ※ 쿠폰은 PASS 결제 후 [내강의실>결제관리>쿠폰/수강권관리] 에서 확인 가능합니다.
                 </p>
             </div>
 
             <div class="passLecbtn">
                 <ul>
-                    <li><div id="sum_y">합계 <span><strong>0</strong>원</span></div></li>
-                    <li><a href="javascript:fn_cart();">신광은경찰 PASS 신청하기</a></li>
+                    <!--li><div id="sum_y">합계 <span><strong>0</strong>원</span></div></li-->
+                    <li><a href="#none" onclick="goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');">신광은경찰 PASS 신청하기 ☞</a></li>
                 </ul>
             </div>
 
@@ -340,7 +280,7 @@
             <img src="http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190104_08_re1.jpg"  alt="왕초보영어탑재" /><br />
             <img src="http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190104_08_re2.jpg"  alt="경찰체력" usemap="#Map190117B" border="0" />
             <map name="Map190117B" id="Map190117B">
-                <area shape="rect" coords="554,583,676,626" href="http://www.willbescop.net/movie/event.html?event_cd=On_190102_y&amp;topMenuType=O" target="_blank" alt="경찰체력 상세보기" />
+                <area shape="rect" coords="554,583,676,626" href="{{ site_url('promotion/index/cate/3001/code/1030') }}" target="_blank" alt="경찰체력 상세보기" />
             </map>
             <br />
             <img src="http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190104_08_re3.jpg"  alt="많은 수험생들의 꿈을 현실로 만드는 신광은 경찰팀" />
@@ -582,7 +522,6 @@
             @endif
         }
 
-
         /*tab*/
         $(document).ready(function(){
             $(".tabs li a").click(function(){
@@ -609,37 +548,6 @@
                 $(".content_guide_box:first").show();
             }
         });
-
-        function doEvent() {
-            if("<c:out value='${userInfo.USER_ID}' />" == ""){
-                alert("로그인을 해주세요.");
-                $("#loginFrm #USER_ID").focus();
-                return;
-            }
-            $.ajax({
-                type: "POST",
-                url : '<c:url value="/event/reboundEvent_Check.do"/>?EVENT_NO=192',
-                dataType: "text",
-                async : false,
-                success: function(RES) {
-                    if($.trim(RES)=="N"){
-                        alert("이미 인증한 계정입니다.");
-                        return;
-                    }else if($.trim(RES)=="R" || $.trim(RES)=="RN"){
-
-                        alert("기존 등록된 정보는 삭제되고 다시 등록합니다.");
-                        var url = '<c:url value="/event/movie/event.html?event_cd=On_pass_popup"/>' ;
-                        window.open(url,'event', 'top=100,scrollbars=no,toolbar=no,resizable=yes,width=600,height=720');
-                    }else{
-                        var url = '<c:url value="/event/movie/event.html?event_cd=On_pass_popup"/>' ;
-                        window.open(url,'event', 'top=100,scrollbars=no,toolbar=no,resizable=yes,width=600,height=720');
-                    }
-                },error: function(){
-                    alert("검색실패");
-                    return;
-                }
-            });
-        }
 
         function goDesc(tab){
             location.href = '#tab';
@@ -678,12 +586,12 @@
             inYears: function(dd1, dd2) {
                 return dd2.getFullYear()-dd1.getFullYear();
             }
-        }
+        };
 
         function daycountDown() {
             // 한달 전 날짜로 셋팅
-            event_day = new Date(2019,2,13,23,59,59);
-            now = new Date();
+            var event_day = new Date(2019,2,27,23,59,59);
+            var now = new Date();
             var timeGap = new Date(0, 0, 0, 0, 0, 0, (event_day - now));
 
             var Monthleft = event_day.getMonth() - now.getMonth();
@@ -691,8 +599,6 @@
             var Hourleft = timeGap.getHours();
             var Minuteleft = timeGap.getMinutes();
             var Secondleft = timeGap.getSeconds();
-
-            //alert(Monthleft+"-"+Dateleft+"-"+Hourleft+"-"+Minuteleft+"-"+Secondleft)
 
             if((event_day.getTime() - now.getTime()) > 0) {
                 $("#dd1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Dateleft/10) + ".png");
@@ -718,32 +624,12 @@
         /*레이어팝업*/
         function go_popup() {
             $('#popup').bPopup();
-        };
+        }
+
         function go_popup1() {
             $('#popup1').bPopup();
-        };
+        }
     </script>
-
-
-    <script src="/public/js/willbes/jquery.nav.js"></script>
-    <script>
-        $(function(e){
-            var targetOffset= $("#evtContainer").offset().top;
-            $('html, body').animate({scrollTop: targetOffset}, 1000);
-            /*e.preventDefault(); */
-        });
-
-        $( document ).ready( function() {
-            var jbOffset = $( '.skybanner' ).offset();
-            $( window ).scroll( function() {
-                if ( $( document ).scrollTop() > jbOffset.top ) {
-                    $( '.skybanner' ).addClass( 'skybanner_sectionFixed' );
-                }
-                else {
-                    $( '.skybanner' ).removeClass( 'skybanner_sectionFixed' );
-                }
-            });
-        } );
-    </script>
-
+    {{-- 프로모션용 스크립트 include --}}
+    @include('willbes.pc.promotion.promotion_script')
 @stop

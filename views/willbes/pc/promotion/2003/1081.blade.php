@@ -51,9 +51,9 @@
         <div class="evtCtnsBox wb_top">
             <img src="http://file3.willbes.net/new_gosi/2018/11/EV181113_c1.png" alt="윌비스 행정학의 대세 김덕관 행정학 T-PASS " usemap="#Map18113_c1" border="0"  />
             <map name="Map18113_c1" >
-                <area shape="rect" coords="449,963,652,1063" href="http://www.willbesgosi.net/packagelecture/packagelectureDetail.html?currentPage=1&pageRow=9999&topMenu=006&topMenuName=&topMenuType=O&searchCategoryCode=006&leftMenuLType=M0001&lecKType=P&searchLeccode=P201800104 " target="_blank" onfocus="this.blur();" />
-                <area shape="rect" coords="678,978,882,1070" href="http://www.willbesgosi.net/packagelecture/packagelectureDetail.html?currentPage=1&pageRow=9999&topMenu=006&topMenuName=&topMenuType=O&searchCategoryCode=006&leftMenuLType=M0001&lecKType=P&searchLeccode=P201800106" target="_blank" onfocus="this.blur();"/>
-                <area shape="rect" coords="926,968,1141,1069" href="http://www.willbesgosi.net/packagelecture/packagelectureDetail.html?currentPage=1&pageRow=9999&topMenu=006&topMenuName=&topMenuType=O&searchCategoryCode=006&leftMenuLType=M0001&lecKType=P&searchLeccode=P201800108" target="_blank" onfocus="this.blur();"/>
+                <area shape="rect" coords="449,963,652,1063" href="{{ site_url('/package/show/cate/3023/pack/648001/prod-code/150636') }}" target="_blank" onfocus="this.blur();" />
+                <area shape="rect" coords="678,978,882,1070" href="{{ site_url('/package/show/cate/3023/pack/648001/prod-code/150638') }}" target="_blank" onfocus="this.blur();"/>
+                <area shape="rect" coords="926,968,1141,1069" href="{{ site_url('/package/show/cate/3023/pack/648001/prod-code/150640') }}" target="_blank" onfocus="this.blur();"/>
             </map>
         </div><!--WB_top//-->
 
@@ -77,9 +77,9 @@
         <div class="evtCtnsBox wb_cts02" >
             <img src="http://file3.willbes.net/new_gosi/2018/11/EV181113_c6.jpg" alt="윌비스 소방직의 새로운 합격 공식, 김종상!" usemap="#Map18113_c2" border="0" />
             <map name="Map18113_c2" >
-                <area shape="rect" coords="502,752,685,892" href="http://www.willbesgosi.net/packagelecture/packagelectureDetail.html?currentPage=1&pageRow=9999&topMenu=006&topMenuName=&topMenuType=O&searchCategoryCode=006&leftMenuLType=M0001&lecKType=P&searchLeccode=P201800104" target="_blank" onfocus="this.blur();"/>
-                <area shape="rect" coords="705,760,876,887" href="http://www.willbesgosi.net/packagelecture/packagelectureDetail.html?currentPage=1&pageRow=9999&topMenu=006&topMenuName=&topMenuType=O&searchCategoryCode=006&leftMenuLType=M0001&lecKType=P&searchLeccode=P201800106" target="_blank" onfocus="this.blur();"/>
-                <area shape="rect" coords="902,753,1082,893" href="http://www.willbesgosi.net/packagelecture/packagelectureDetail.html?currentPage=1&pageRow=9999&topMenu=006&topMenuName=&topMenuType=O&searchCategoryCode=006&leftMenuLType=M0001&lecKType=P&searchLeccode=P201800108" target="_blank" onfocus="this.blur();"/>
+                <area shape="rect" coords="502,752,685,892" href="{{ site_url('/package/show/cate/3023/pack/648001/prod-code/150636') }}" target="_blank" onfocus="this.blur();"/>
+                <area shape="rect" coords="705,760,876,887" href="{{ site_url('/package/show/cate/3023/pack/648001/prod-code/150638') }}" target="_blank" onfocus="this.blur();"/>
+                <area shape="rect" coords="902,753,1082,893" href="{{ site_url('/package/show/cate/3023/pack/648001/prod-code/150640') }}" target="_blank" onfocus="this.blur();"/>
             </map>
         </div><!--wb_cts02//-->
 
@@ -95,11 +95,5 @@
         function go_popup() {
             $('#popup').bPopup();
         };
-
-        /**/
-        $(function(e){
-            var targetOffset= $("#evtContainer").offset().top;
-            $('html, body').animate({scrollTop: targetOffset}, 700);
-        });
     </script>
 @stop

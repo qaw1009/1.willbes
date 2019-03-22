@@ -250,37 +250,42 @@
                         <p class="form-control-static">ex) 공무원, 가장 빠른 합격전략 윌비스</p>
                     </div>
                 </div>
+                {{-- 사용안함
                 <div class="form-group">
                     <label class="control-label col-md-2" for="front_css">CSS정보 (HTML)
                     </label>
                     <div class="col-md-9">
-                        <textarea id="front_css" name="front_css" class="form-control" rows="7" title="CSS정보" placeholder="">{!! $data['FrontCss'] !!}</textarea>
+                        <textarea id="front_css" name="front_css" class="form-control" rows="9" title="CSS정보" placeholder="">{!! $data['FrontCss'] !!}</textarea>
                     </div>
-                </div>
+                </div>--}}
                 <div class="form-group">
                     <label class="control-label col-md-2" for="footer_info">푸터영역 (HTML)
                     </label>
                     <div class="col-md-9">
-                        <textarea id="footer_info" name="footer_info" class="form-control" rows="7" title="푸터영역" placeholder="">{!! $data['FooterInfo'] !!}</textarea>
-                    </div>
-                </div>
-                {{-- 사용안함
-                <div class="form-group">
-                    <label class="control-label col-md-2" for="">이용약관
-                        <br/><button class="btn btn-dark btn-xs mt-5">불러오기</button>
-                    </label>
-                    <div class="col-md-9">
-                        <textarea id="terms_use" name="terms_use" class="form-control" rows="7" title="이용약관" placeholder=""></textarea>
+                        <textarea id="footer_info" name="footer_info" class="form-control" rows="9" title="푸터영역" placeholder="">{!! $data['FooterInfo'] !!}</textarea>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="terms_privacy">개인정보취급방침
-                        <br/><button class="btn btn-dark btn-xs mt-5">불러오기</button>
+                    <label class="control-label col-md-2" for="comm_pc_script">PC 공통스크립트
                     </label>
                     <div class="col-md-9">
-                        <textarea id="terms_privacy" name="terms_privacy" class="form-control" rows="7" title="개인정보취급방침" placeholder=""></textarea>
+                        <textarea id="comm_pc_script" name="comm_pc_script" class="form-control" rows="9" title="PC 공통스크립트" placeholder="">{!! base64_decode($data['CommPcScript']) !!}</textarea>
                     </div>
-                </div>--}}
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="comm_mobile_script">모바일 공통스크립트
+                    </label>
+                    <div class="col-md-9">
+                        <textarea id="comm_mobile_script" name="comm_mobile_script" class="form-control" rows="9" title="모바일 공통스크립트" placeholder="">{!! base64_decode($data['CommMobileScript']) !!}</textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="comm_app_script">APP 공통스크립트
+                    </label>
+                    <div class="col-md-9">
+                        <textarea id="comm_app_script" name="comm_app_script" class="form-control" rows="9" title="APP 공통스크립트" placeholder="">{!! base64_decode($data['CommAppScript']) !!}</textarea>
+                    </div>
+                </div>
                 <div class="form-group">
                     <label class="control-label col-md-2">등록자
                     </label>
@@ -314,33 +319,13 @@
         </div>
     </div>
     <!-- cheditor -->
-    <link href="/public/vendor/cheditor/css/ui.css" rel="stylesheet">
-    <script src="/public/vendor/cheditor/cheditor.js"></script>
-    <script src="/public/js/editor_util.js"></script>
     <script type="text/javascript">
         var $regi_form = $('#regi_form');
 
         $(document).ready(function() {
-            /*// editor load
-            var $editor_terms_use = new cheditor();
-            $editor_terms_use.config.editorHeight = '170px';
-            $editor_terms_use.config.editorWidth = '100%';
-            $editor_terms_use.inputForm = 'terms_use';
-            $editor_terms_use.run();
-
-            var $editor_terms_privacy = new cheditor();
-            $editor_terms_privacy.config.editorHeight = '170px';
-            $editor_terms_privacy.config.editorWidth = '100%';
-            $editor_terms_privacy.inputForm = 'terms_privacy';
-            $editor_terms_privacy.run();*/
-
             // 사이트 등록/수정
             $regi_form.submit(function() {
                 var _url = '{{ site_url('/sys/site/store/code') }}';
-
-                // editor
-                //getEditorBodyContent($editor_terms_use);
-                //getEditorBodyContent($editor_terms_privacy);
 
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {

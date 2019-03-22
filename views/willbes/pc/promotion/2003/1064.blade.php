@@ -94,7 +94,7 @@
         </div><!--wb_cts00//-->
 
         <div class="evtCtnsBox wb_cts03">
-            <img src="http://file3.willbes.net/new_gosi/2019/01/EV190108_c3_1.jpg" alt="김동진법원팀 지금 PASS 구매 시, 특별 혜택!" />
+            <img src="http://file3.willbes.net/new_gosi/2019/01/EV190108_c3.gif" alt="김동진법원팀 지금 PASS 구매 시, 특별 혜택!" />
         </div>
         <!--wb_cts01//-->
 
@@ -112,7 +112,7 @@
         <!--wb_cts02//-->
 
         <div class="evtCtnsBox wb_cts03">
-            <img src="http://file3.willbes.net/new_gosi/2019/01/EV190108_c7_1.jpg" alt="2020 윌비스 김동진 법원팀 PASS  " usemap="#Map190108_c2" border="0" />
+            <img src="http://file3.willbes.net/new_gosi/2019/01/EV190108_c7.jpg" alt="2020 윌비스 김동진 법원팀 PASS  " usemap="#Map190108_c2" border="0" />
             <map name="Map190108_c2" >
                 <area shape="rect" coords="872,750,1015,836" href="javascript:go_PassLecture(2);" onfocus="this.blur();" />
             </map>
@@ -192,7 +192,7 @@
 
         function daycountDown() {
             // 한달 전 날짜로 셋팅
-            event_day = new Date(2019,1,28,23,59,59);
+            event_day = new Date(2019,2,26,23,59,59);
             now = new Date();
             var timeGap = new Date(0, 0, 0, 0, 0, 0, (event_day - now));
 
@@ -224,12 +224,6 @@
 
         }
         daycountDown();
-
-        $(function(e){
-            var targetOffset= $("#evtContainer").offset().top;
-            $('html, body').animate({scrollTop: targetOffset}, 700);
-            /*e.preventDefault(); */
-        });
     </script>
 
     <script type="text/javascript">
@@ -256,9 +250,9 @@
             var lUrl = "";
 
             if(parseInt(no)==1 || parseInt(no)==3 || parseInt(no)== 5){
-                lUrl = "http://www.willbesgosi.net/yearpackagelecture/yearpackagelectureDetail.html?topMenu=018&topMenuName=&topMenuType=O&searchCategoryCode=018&searchLeccode=Y201900005&leftMenuLType=M0001&lecKType="
+                lUrl = "{{ site_url('/periodPackage/show/cate/3035/pack/648001/prod-code/151737') }}"
             }else{
-                lUrl = "http://www.willbesgosi.net/yearpackagelecture/yearpackagelectureDetail.html?topMenu=018&topMenuName=&topMenuType=O&searchCategoryCode=018&searchLeccode=Y201900005&leftMenuLType=M0001&lecKType="
+                lUrl = "{{ site_url('/periodPackage/show/cate/3035/pack/648001/prod-code/151737') }}"
             }
 
             location.href = lUrl;

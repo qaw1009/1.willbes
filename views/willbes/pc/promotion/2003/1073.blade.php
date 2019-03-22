@@ -49,9 +49,9 @@
         <div class="evtCtnsBox wb_cts03" id="event">
             <img src="http://file3.willbes.net/new_gosi/2018/10/EV181023_c5.jpg" alt="윌비스 2019 탐구한국사 수강신청" usemap="#Map20181023_c3" border="0" />
             <map name="Map20181023_c3" >
-                <area shape="rect" coords="808,327,1004,360" href="http://www.willbesgosi.net/lecture/movieLectureDetail.html?topMenu=001&topMenuType=O&searchSubjectCode=1003&searchLeccode=D201800745&leftMenuLType=M0001&lecKType=D"  alt="전근대사" onfocus="this.blur();" />
-                <area shape="rect" coords="809,370,1007,396" href="http://www.willbesgosi.net/lecture/movieLectureDetail.html?topMenu=001&topMenuType=O&searchSubjectCode=1003&searchLeccode=D201800747&leftMenuLType=M0001&lecKType=D"  alt="근현대사"  onfocus="this.blur();" />
-                <area shape="rect" coords="882,435,1027,512" href="http://www.willbesgosi.net/packagelecture/packagelectureDetail.html?currentPage=1&pageRow=9999&topMenu=001&topMenuName=&topMenuType=O&searchCategoryCode=001&leftMenuLType=M0001&lecKType=P&searchLeccode=P201800098" alt="전근대사+근현대사 PACKAGE" onfocus="this.blur();"/>
+                <area shape="rect" coords="808,327,1004,360" href="{{ site_url('/package/show/cate/3024/pack/648001/prod-code/146601') }}"  alt="전근대사" onfocus="this.blur();" />
+                <area shape="rect" coords="809,370,1007,396" href="{{ site_url('/package/show/cate/3024/pack/648001/prod-code/146603') }}"  alt="근현대사"  onfocus="this.blur();" />
+                <area shape="rect" coords="882,435,1027,512" href="{{ site_url('/package/show/cate/3024/pack/648001/prod-code/150630') }}" alt="전근대사+근현대사 PACKAGE" onfocus="this.blur();"/>
             </map>
         </div>
         <!--wb_cts03//-->
@@ -59,11 +59,4 @@
     </div>
     <!-- End Container -->
 
-    <script>
-        $(function(e){
-            var targetOffset= $("#evtContainer").offset().top;
-            $('html, body').animate({scrollTop: targetOffset}, 700);
-            /*e.preventDefault(); */
-        });
-    </script>
 @stop

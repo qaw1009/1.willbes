@@ -50,11 +50,11 @@
                 </div>
 
                 <ul class="prof-banner01">
-                    @if(isset($data['ProfReferData']['yt_url']) === true && empty($data['ProfReferData']['yt_url']) === false)
-                        <li>
+                    <li>
+                        @if(isset($data['ProfReferData']['yt_url']) === true && empty($data['ProfReferData']['yt_url']) === false)
                             <iframe src="{{ $data['ProfReferData']['yt_url'] }}" frameborder="0" allowfullscreen=""></iframe>
-                        </li>
-                    @endif
+                        @endif
+                    </li>
                     @if(isset($data['ProfBnrData']['01']) === true && empty($data['ProfBnrData']['01']) === false)
                         <li class="bSlider">
                             <div class="slider">
@@ -63,6 +63,8 @@
                                 @endforeach
                             </div>
                         </li>
+                    @else
+                        <li class=""></li>
                     @endif
                 </ul>
 
@@ -92,7 +94,7 @@
                                     <dt class="w-notice p_re">
                                         @if(empty($row['LectureSampleData']) === false)
                                             <ul class="w-sp">
-                                                <li><a href="#none" onclick="openWin('lec_sample_{{ $row['ProdCode'] }}')">맛보기{{ empty($row['LectureSampleData']) ? '' : count($row['LectureSampleData']) }}</a></li>
+                                                <li><a href="#none" onclick="openWin('lec_sample_{{ $row['ProdCode'] }}')">맛보기</a></li>
                                             </ul>
                                             <div id="lec_sample_{{ $row['ProdCode'] }}" class="viewBox" style="top: 0; left: 63px;">
                                                 <a class="closeBtn" href="#none" onclick="closeWin('lec_sample_{{ $row['ProdCode'] }}')"><img src="{{ img_url('cart/close.png') }}"></a>
@@ -158,6 +160,7 @@
                     @if($data['IsQnaBoard'] == 'Y')<li><a href="#none" id="hover_qna" onclick="goUrl('tab', 'qna');">학습Q&A</a></li>@endif
                     @if($data['IsDataBoard'] == 'Y')<li><a href="#none" id="hover_material" onclick="goUrl('tab', 'material');">학습자료실</a></li>@endif
                     @if($data['IsTpassBoard'] == 'Y')<li><a href="#none" id="hover_tpass" onclick="goUrl('tab', 'tpass');">T-pass 자료실</a></li>@endif
+                    @if($data['IsTccBoard'] == 'Y')<li><a href="#none" id="hover_tcc" onclick="goUrl('tab', 'tcc');">교수님 TCC</a></li>@endif
                 </ul>
                 <div class="tabBox">
                     <div id="{{ $arr_input['tab'] }}" class="tabLink">
@@ -188,6 +191,11 @@
                 $('.acadBoxWrap .tabWrap.tabDepthAcad li:eq(0) a').addClass('on');
                 $('.acadBoxWrap #acad1 .tabWrap.acadline li:eq(0) a').addClass('on');
                 $('.acadBoxWrap #acad2 .tabWrap.acadline li:eq(0) a').addClass('on');
+
+                @if($__cfg['IsPassSite'] === true)
+                    {{-- 학원사이트일 경우 학원강좌 탭 디폴트 --}}
+                    $('.acadBoxWrap .tabWrap.tabDepthAcad li:eq(1) a').trigger('click');
+                @endif
             @endif
         });
 

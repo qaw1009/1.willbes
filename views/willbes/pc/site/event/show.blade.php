@@ -39,7 +39,7 @@
                         <tr>
                             <td class="w-file tx-left pl20" colspan="7">
                                 @if(empty($arr_base['file_F']) === false)
-                                    <a href="{{front_url('/event/download?path=').urlencode($arr_base['file_F']['FileFullPath'].$arr_base['file_F']['FileName']).'&fname='.urlencode($arr_base['file_F']['FileRealName']).'&event_idx='.element('event_idx', $arr_input) }}" target="_blank">
+                                    <a href="{{front_url('/event/download?file_idx=').$arr_base['file_F']['EfIdx'].'&event_idx='.element('event_idx', $arr_input) }}" target="_blank">
                                         <img src="{{ img_url('prof/icon_file.gif') }}"> {{$arr_base['file_F']['FileRealName']}}</a>
                                 @endif
                             </td>

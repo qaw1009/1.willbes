@@ -5,6 +5,13 @@
     @foreach($data['best_product']['subjects'] as $subject_idx => $subject_name)
         <li><a href='#tab_prof_subject_{{ $subject_idx }}'><span>|</span>{{ $subject_name }}</a></li>
     @endforeach
+
+    {{-- 과목이 8개 이하라면 모자란만큼 빈 슬라이드 생성 --}}
+    @if(count($data['best_product']['subjects']) < 8)
+        @for($i = 0; $i < (8 - count($data['best_product']['subjects'])); $i++)
+            <li><a href='#none'><span>|</span></a></li>
+        @endfor
+    @endif
     </ul>
 
     <div id="prof-professors" class="prof-professors">
@@ -12,10 +19,10 @@
             <ul id="tab_prof_subject_{{ $subject_idx }}" class="prof-slider">
             @foreach($rows as $row)
                 <li>
-                    <div><img src="{{ $row['ProfLecListImg'] }}" alt="{{ $row['wProfName'] }}" class=""/></div>
+                    <div><img src="{{ $row['ProfClassImg'] }}" alt="{{ $row['wProfName'] }}" class=""/></div>
                     <span class="txt1">{{ $row['SubjectName'] }}</span>
                     <span class="txt2">{{ $row['wProfName'] }}</span>
-                    <span class="txt3">{{ hpSubString($row['ProdName'], 0, 32, '...') }}</span>
+                    <span class="txt3"><a href="{{ front_url('/lecture/show/cate/' . $row['CateCode'] . '/pattern/only/prod-code/' . $row['ProdCode']) }}">{{ hpSubString($row['ProdName'], 0, 32, '...') }}</a></span>
                     @if($row['wUnitIdx'] != 'N')
                         <a href="javascript:fnPlayerSample('{{$row['ProdCode']}}','{{$row['wUnitIdx']}}','HD');">맛보기강좌 ></a>
                     @endif

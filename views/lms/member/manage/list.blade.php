@@ -133,7 +133,7 @@
                     <th rowspan="2">마지막<br>로그인일</th>
                     <th rowspan="2">최종정보<br>변경일</th>
                     <th rowspan="2">비밀번호<br>변경일</th>
-                    <th rowspan="2">탈퇴일</th>
+                    <th rowspan="2">상태</th>
                     <th rowspan="2">블랙컨슈머<br>여부</th>
                     <th rowspan="2">기기<br>등록정보</th>
                     <th rowspan="2">자동로그인</th>
@@ -210,8 +210,20 @@
                     {'data' : 'PwdUpdDate', 'render' : function(data, type, row, meta){
                             return data.substring(0,10);
                         }},
-                    {'data' : 'OutDate', 'render' : function(data, type, row, meta){
-                            return data.substring(0,10);
+                    {'data' : 'IsStatus', 'render' : function(data, type, row, meta){
+                            var rtn = "";
+                            switch(data){
+                                case "Y":
+                                    rtn = "정상회원";
+                                    break;
+                                case "N":
+                                    rtn = "탈퇴회원<br/>(" + row.OutDate.substring(0,10) + ")";
+                                    break;
+                                case "D":
+                                    rtn = "휴면회원";
+                                    break;
+                            }
+                            return rtn;
                         }},
                     {'data' : 'IsBlackList'},
                     {'data' : null, 'render' : function(data, type, row, meta){

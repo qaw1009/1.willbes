@@ -99,6 +99,14 @@ class SupportStudyComment extends BaseSupport
         $arr_input = array_merge($this->_reqG(null));
         $site_code = element('site_code', $arr_input, $this->_site_code);
         $cate_code = element('cate_code', $arr_input, $this->_cate_code);
+        $prod_code = element('prod_code', $arr_input);
+        $arr_base['subject_idx'] = element('subject_idx', $arr_input);
+        $arr_base['subject_name'] = element('subject_name', $arr_input);
+        $arr_base['prof_idx'] = element('prof_idx', $arr_input);
+
+        /*if (empty($prod_code) === true || empty($arr_base['subject_idx']) === true || empty($arr_base['prof_idx']) === true) {
+            show_alert('강좌 정보가 없습니다.', 'close');
+        }*/
 
         if (element('show_onoff', $arr_input) == 'on') {
             $style_display['list'] = 'none';
@@ -120,7 +128,7 @@ class SupportStudyComment extends BaseSupport
         // 전체 교수 목록
         $arr_base['professor'] = $this->baseProductFModel->listProfessorSubjectMapping($site_code, ['ProfReferData', 'ProfEventData', 'IsNew'], $cate_code);
 
-        // 수강중인 강좌 목록 [단강좌 AND 수강이력 AND 강좌종료일 + 30 데이터]
+        /*// 수강중인 강좌 목록 [단강좌 AND 수강이력 AND 강좌종료일 + 30 데이터]
         $arr_condition = [
             'RAW' => [
                 'MemIdx = ' => empty($this->session->userdata('mem_idx')) === true ? '\'\'' : $this->session->userdata('mem_idx'),
@@ -128,7 +136,7 @@ class SupportStudyComment extends BaseSupport
                 'lastStudyDate != ' => '\'\''
             ]
         ];
-        $arr_base['on_my_lecture'] = $this->supportBoardTwoWayFModel->getOnMyLectureArray($arr_condition);
+        $arr_base['on_my_lecture'] = $this->supportBoardTwoWayFModel->getOnMyLectureArray($arr_condition);*/
 
         $this->load->view('support/popup_study', [
             'arr_input' => $arr_input,

@@ -33,21 +33,9 @@
             top:200px;
             right:0;
             width:261px;
-            animation:upDown 1s infinite;
-            -webkit-animation:upDown 1s infinite;
             z-index:10;
         }
 
-        @@keyframes upDown{
-             from{margin-top:0}
-             60%{margin-top:-30px}
-             to{margin-top:0}
-         }
-        @@-webkit-keyframes upDown{
-             from{margin-top:0}
-             60%{margin-top:-30px}
-             to{margin-top:0}
-         }
     </style>
 
 
@@ -80,9 +68,9 @@
         <div class="evtCtnsBox wb_cts04" >
             <img src="http://file3.willbes.net/new_gosi/2018/09/EV180921_5.png"alt="이상구 국제법/국제정치학 T-PASS " usemap="#Map_0921_lec2" border="0"  />
             <map name="Map_0921_lec2">
-                <area shape="rect" coords="652,646,1062,714" href="http://www.willbesgosi.net/packagelecture/packagelectureDetail.html?currentPage=1&pageRow=9999&topMenu=001&topMenuName=&topMenuType=O&searchCategoryCode=001&leftMenuLType=M0001&lecKType=P&searchLeccode=P201800079" target="_blank">
-                <area shape="rect" coords="650,740,1064,807" href="http://www.willbesgosi.net/packagelecture/packagelectureDetail.html?currentPage=1&pageRow=9999&topMenu=001&topMenuName=&topMenuType=O&searchCategoryCode=001&leftMenuLType=M0001&lecKType=P&searchLeccode=P201800080" target="_blank">
-                <area shape="rect" coords="650,831,1067,898" href="http://www.willbesgosi.net/packagelecture/packagelectureDetail.html?currentPage=1&pageRow=9999&topMenu=001&topMenuName=&topMenuType=O&searchCategoryCode=001&leftMenuLType=M0001&lecKType=P&searchLeccode=P201800081" target="_blank">
+                <area shape="rect" coords="652,646,1062,714" href="{{ site_url('/package/show/cate/3020/pack/648001/prod-code/150611') }}" target="_blank">
+                <area shape="rect" coords="650,740,1064,807" href="{{ site_url('/package/show/cate/3020/pack/648001/prod-code/150612') }}" target="_blank">
+                <area shape="rect" coords="650,831,1067,898" href="{{ site_url('/package/show/cate/3020/pack/648001/prod-code/150613') }}" target="_blank">
             </map>
         </div>
         <!--wb_cts04//-->
@@ -95,11 +83,4 @@
     </div>
     <!-- End Container -->
 
-    <script>
-        $(function(e){
-            var targetOffset= $("#evtContainer").offset().top;
-            $('html, body').animate({scrollTop: targetOffset}, 700);
-            /*e.preventDefault(); */
-        });
-    </script>
 @stop

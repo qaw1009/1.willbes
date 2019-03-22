@@ -124,10 +124,9 @@
         <div class="evtCtnsBox WB_con05" >
             <img src="http://file3.willbes.net/new_gosi/2018/10/EV181024Y_05_1.jpg" alt="경영학 종합 패키지" usemap="#Map181024" border="0" />
             <map name="Map181024" id="Map181024">
-                <area shape="rect" coords="860,747,1093,832" href="/packagelecture/packagelectureDetail.html?currentPage=1&pageRow=9999&topMenu=007&topMenuName=&topMenuType=O&searchCategoryCode=007&leftMenuLType=M0001&lecKType=P&searchLeccode=P201800100" target="_blank" alt="2019 경영학 패키지">
-                <area shape="rect" coords="860,886,1093,972" href="/lecture/movieLectureDetail.html?topMenu=007&topMenuType=O&searchSubjectCode=1079&searchLeccode=D201800791&leftMenuLType=M0001&lecKType=D" target="_blank" alt="2019 경영학 기본강의">
-                <area shape="rect" coords="860,1027,1093,1111" href="/lecture/movieLectureDetail.html?topMenu=007&topMenuType=O&searchSubjectCode=1079&searchLeccode=D201800793&leftMenuLType=M0002&lecKType=D" target="_blank" alt="2019 경영학 객관식 문제풀이"/>
-            </map>
+                <area shape="rect" coords="860,747,1093,832" href="{{ site_url('/package/show/cate/3024/pack/648001/prod-code/150632') }}" target="_blank" alt="2019 경영학 패키지">
+                <area shape="rect" coords="860,886,1093,972" href="{{ site_url('/package/show/cate/3024/pack/648001/prod-code/146647') }}" target="_blank" alt="2019 경영학 기본강의">
+                <area shape="rect" coords="860,1027,1093,1111" href="{{ site_url('/package/show/cate/3024/pack/648001/prod-code/146649') }}" target="_blank" alt="2019 감사직 객관식 문제풀이">
         </div>
         <!--WB_con05//-->
 
@@ -164,13 +163,6 @@
             $("#imgBannerRight2").click(function (){
                 slidesImg2.goToNextSlide();
             });
-        });
-    </script>
-    <script>
-        $(function(e){
-            var targetOffset= $("#evtContainer").offset().top;
-            $('html, body').animate({scrollTop: targetOffset}, 700);
-            /*e.preventDefault(); */
         });
     </script>
 @stop

@@ -12,8 +12,6 @@
         .evtContent {
             position:relative;
             width:100% !important;
-            min-width:1210px !important;
-            background:#ccc;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
@@ -22,8 +20,7 @@
 
         /************************************************************/
 
-        .wb_top {background:#a61f29 url(http://file3.willbes.net/new_cop/2019/02/EV190215_c1_bg.jpg) repeat-y  center top;}
-
+        .wb_top {background:#a61f29 url(http://file3.willbes.net/new_cop/2019/02/EV190215_c1_bg.jpg) repeat-y center top;}
         .WB_cts01{background:#FFF;}
 
 
@@ -57,8 +54,6 @@
         .wb_05 .st03 {font-weight:bold; color:#F30;}
         .wb_05 .st04 {text-align:center;}
 
-
-
         .content_guide_wrap{background:#fff; margin:0;min-width:1210px;}
         .content_guide_box{ position:relative; width:980px; margin:0 auto; padding:50px 0;}
         .content_guide_box .guide_tit{margin-bottom:20px;}
@@ -86,12 +81,12 @@
         #slidesImg3:after {content::""; display:block; clear:both}
 
         .skybanner {
-            position:absolute;
-            top:400px;
+            position:fixed;
+            bottom:20px;
             right:10px;
             z-index:1;
         }
-        .skybanner_sectionFixed {position:fixed; top:20px}
+
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
@@ -149,15 +144,13 @@
                     </li>
                 </ul>
 
-                <div class="tabContents" id="tab1" >
-                    <iframe src="https://www.youtube.com/embed/-lGRHQZbs1Q?rel=0" frameborder="0" allowfullscreen></iframe>
+                <div class="tabContents" >
+                	<iframe id="player" src="https://www.youtube.com/embed/-lGRHQZbs1Q?rel=0&enablejsapi=1" frameborder="0" allowfullscreen></iframe>                    			
+                </div>
+                <div class="tabImg">
+                	<img src="http://file3.willbes.net/new_cop/2019/02/EV190226_c10_1.jpg" />	
                 </div>
 
-                <div class=" tabContents" id="tab2"></div>
-                <div class=" tabContents" id="tab3"></div>
-                <div class=" tabContents" id="tab4"></div>
-                <div class=" tabContents" id="tab5"></div>
-                <div class=" tabContents" id="tab6"></div>
             </div><!--tabContaier//-->
         </div><!--WB_top01//-->
 
@@ -213,46 +206,46 @@
                         <td class="st03">적중예상 문제풀이 <span class="st02">2/25(월)~3/1(금),  총 5회 강의</span></td>
                         <td class="st01">2/25(월) 9:00</td>
                         <td class="st04"><a href="#none" class="active">마감</a></td>
-                        <td class="st04"><a href="http://willbescop.net/lecture/movieLectureDetail.html?topMenu=081&topMenuType=O&searchSubjectCode=1003&searchLeccode=D201900069&leftMenuLType=M0002&lecKType=D" target="_blank">수강신청</a></td>
+                        <td class="st04"><a href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/132273') }}" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td class="st01">하승민영어</td>
                         <td class="st03">적중예상 문제풀이 <span class="st02">3/2(토)~3/6(수), 총 5회 강의</span></td>
                         <td class="st01">3/2(토) 9:00</td>
                         <td class="st04"><a href="#none" class="active">마감</a></td>
-                        <td class="st04"><a href="http://willbescop.net/lecture/movieLectureDetail.html?topMenu=081&topMenuType=O&searchSubjectCode=1001&searchLeccode=D201900074&leftMenuLType=M0002&lecKType=D" target="_blank">수강신청</a></td>
+                        <td class="st04"><a href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/132278') }}" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td class="st01">신광은 형소법</td>
                         <td class="st03">적중예상 문제풀이 <span class="st02">3/7(목)~3/12(화), 총 5회 강의</span></td>
                         <td class="st01">3/7(목) 9:00</td>
-                        <td class="st04"><a href="http://willbescop.net/lecture/passLectureDetail.html?topMenu=081&topMenuName=%EC%9D%BC%EB%B0%98%EA%B2%BD%EC%B0%B0&searchTopCategoryCode=&searchCategoryCode=081&searchSubjectCode=1004&searchLeccode=D201900067&leftMenuLType=&lecKType=&USER_ID=changhong79&hSEARCHTYPE=&hSEARCHTEXT=&learningCD=&topMenuType=F&topMenuGnb=OM_009&SEARCHSERIESCODE=" target="_blank">수강신청</a></td>
-                        <td class="st04"><a href="http://willbescop.net/lecture/movieLectureDetail.html?topMenu=081&topMenuType=O&searchSubjectCode=1004&searchLeccode=D201900061&leftMenuLType=M0002&lecKType=D" target="_blank">수강신청</a></td>
+                        <td class="st04"><a href="#none" class="active">마감</a></td>
+                        <td class="st04"><a href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/132265') }}" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td class="st01">오태진 한국사</td>
                         <td class="st03">사이다 모의고사 <span class="st02">3/13(수)~3/18(월), 총 5회 강의</span></td>
                         <td class="st01">3/13(수) 9:00</td>
-                        <td class="st04"><a href="http://willbescop.net/lecture/passLectureDetail.html?topMenu=081&topMenuName=%EC%9D%BC%EB%B0%98%EA%B2%BD%EC%B0%B0&searchTopCategoryCode=&searchCategoryCode=081&searchSubjectCode=1002&searchLeccode=D201900068&leftMenuLType=&lecKType=&USER_ID=changhong79&hSEARCHTYPE=&hSEARCHTEXT=&learningCD=&topMenuType=F&topMenuGnb=OM_009&SEARCHSERIESCODE=" target="_blank">수강신청</a></td>
-                        <td class="st04"><a href="http://willbescop.net/lecture/movieLectureDetail.html?topMenu=081&topMenuType=O&searchSubjectCode=1002&searchLeccode=D201900078&leftMenuLType=M0002&lecKType=D" target="_blank">수강신청</a></td>
+                        <td class="st04"><a href="{{ site_url('/pass/offLecture/index#110708') }}" target="_blank">수강신청</a></td>
+                        <td class="st04"><a href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/132282') }}" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td class="st01">원유철 한국사</td>
                         <td class="st03">시나지 빈칸채우기 <span class="st02">3/13(수)~3/18(월), 총 5회 강의</span></td>
                         <td class="st01">3/13(수) 9:00</td>
-                        <td class="st04"><a href="http://willbescop.net/lecture/passLectureDetail.html?topMenu=081&topMenuName=%EC%9D%BC%EB%B0%98%EA%B2%BD%EC%B0%B0&searchTopCategoryCode=&searchCategoryCode=081&searchSubjectCode=1002&searchLeccode=D201900069&leftMenuLType=&lecKType=&USER_ID=changhong79&hSEARCHTYPE=&hSEARCHTEXT=&learningCD=&topMenuType=F&topMenuGnb=OM_009&SEARCHSERIESCODE=" target="_blank">수강신청</a></td>
-                        <td class="st04"><a href="http://willbescop.net/lecture/movieLectureDetail.html?topMenu=081&topMenuType=O&searchSubjectCode=1002&searchLeccode=D201900076&leftMenuLType=M0002&lecKType=D" target="_blank">수강신청</a></td>
+                        <td class="st04"><a href="{{ site_url('/pass/offLecture/index#110709') }}" target="_blank">수강신청</a></td>
+                        <td class="st04"><a href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/132280') }}" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td class="st01">장정훈 경찰학</td>
                         <td class="st03">네친구 경찰학개론 <span class="st02">3/19(수)~3/23(토), 총 5회 강의</span></td>
                         <td class="st01">3/19(화) 9:00</td>
-                        <td class="st04"><a href="http://willbescop.net/lecture/passLectureDetail.html?topMenu=081&topMenuName=%EC%9D%BC%EB%B0%98%EA%B2%BD%EC%B0%B0&searchTopCategoryCode=&searchCategoryCode=081&searchSubjectCode=1005&searchLeccode=D201900070&leftMenuLType=&lecKType=&USER_ID=changhong79&hSEARCHTYPE=&hSEARCHTEXT=&learningCD=&topMenuType=F&topMenuGnb=OM_009&SEARCHSERIESCODE=" target="_blank">수강신청</a></td>
-                        <td class="st04"><a href="http://willbescop.net/lecture/movieLectureDetail.html?topMenu=081&topMenuType=O&searchSubjectCode=1005&searchLeccode=D201900066&leftMenuLType=M0002&lecKType=D" target="_blank">수강신청</a></td>
+                        <td class="st04"><a href="{{ site_url('/pass/offLecture/index#110710') }}" target="_blank">수강신청</a></td>
+                        <td class="st04"><a href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/132270') }}" target="_blank">수강신청</a></td>
                     </tr>
                 </table>
-                <div class=""bookimg>
-                    <img src="http://file3.willbes.net/new_cop/2019/02/EV190215_c9.jpg" usemap="#Map190227_c1" border="0" />
+                <div class="bookimg">
+{{--                    <img src="http://file3.willbes.net/new_cop/2019/02/EV190215_c9.jpg" usemap="#Map190227_c1" border="0" />
                     <map name="Map190227_c1" >
                         <area shape="rect" coords="121,340,190,366" href="/book/view.html?RSC_ID=L201902261" alt="김원욱" />
                         <area shape="rect" coords="372,341,439,367" href="/book/view.html?RSC_ID=L201902266" alt="하승민"/>
@@ -260,7 +253,7 @@
                         <area shape="rect" coords="124,569,189,595" href="javascript:alert('준비중입니다.');" alt="오태진"/>
                         <area shape="rect" coords="372,568,438,594" href="/book/view.html?topMenuType=O&topMenu=MAIN&topMenuName=ÀÏ¹Ý°æÂû&RSC_ID=L201902282" alt="원유철"/>
                         <area shape="rect" coords="634,568,696,594" href="javascript:alert('준비중입니다.');" alt="장정훈"/>
-                    </map>
+                    </map>--}}
                     <img src="http://file3.willbes.net/new_cop/2019/02/EV190215_c7.jpg" />
                 </div>
             </div>
@@ -291,45 +284,118 @@
         });
 
         /**/
-        var tab1_url = "https://www.youtube.com/embed/-lGRHQZbs1Q?rel=0";
-        var tab2_url = "https://www.youtube.com/embed/bwwWmhepczM?rel=0";
-        var tab3_url = "https://www.youtube.com/embed/FHjAITpcihw?rel=0";
-        var tab4_url = "https://www.youtube.com/embed/wIQk137qLXM?rel=0";
-        var tab5_url = "https://www.youtube.com/embed/Gc_gGI3XfV4?rel=0";
-        var tab6_url = "https://www.youtube.com/embed/lZOlVgPUxfs?rel=0";
+        var tab1_url = "https://www.youtube.com/embed/-lGRHQZbs1Q?rel=0&enablejsapi=1";
+        var tab2_url = "https://www.youtube.com/embed/bwwWmhepczM?rel=0&enablejsapi=1";
+		var tab3_url = "https://www.youtube.com/embed/FHjAITpcihw?rel=0&enablejsapi=1";
+		var tab4_url = "https://www.youtube.com/embed/wIQk137qLXM?rel=0&enablejsapi=1";
+		var tab5_url = "https://www.youtube.com/embed/Gc_gGI3XfV4?rel=0&enablejsapi=1";
+		var tab6_url = "https://www.youtube.com/embed/lZOlVgPUxfs?rel=0&enablejsapi=1";
 
-
+	 	
+		var index = 1;
+	    var isPlaying = false;    
         $(document).ready(function(){
-            $(".tabContents").hide();
-            $(".tabContents:first").show();
-            $(".tabContaier ul li a").click(function(){
-                var activeTab = $(this).attr("href");
+        $(".tabContents").hide(); 
+        $(".tabContents:first").show();
+        
+        var tabs =  $(".tabContaier ul li");
+        setInterval(function(){
+        	if(!isPlaying){
+	            var activeItem = $(tabs).eq(index).children("a");
+	            var activeTab = activeItem.attr("href"); 
+	            var html_str = "";
+	            var html_img = "";
+	            if(activeTab == "#tab1"){
+	                html_str = "<iframe id='player' src='"+tab1_url+"' allowfullscreen></iframe>";
+	                html_img = "<img src='http://file3.willbes.net/new_cop/2019/02/EV190226_c10_1.jpg' />";
+	            }else if(activeTab == "#tab2"){
+	                html_str = "<iframe id='player' src='"+tab2_url+"' allowfullscreen></iframe>";
+	                html_img = "<img src='http://file3.willbes.net/new_cop/2019/02/EV190226_c10_2.jpg' />";
+				}else if(activeTab == "#tab3"){
+	                html_str = "<iframe id='player' src='"+tab3_url+"' allowfullscreen></iframe>";
+	                html_img = "<img src='http://file3.willbes.net/new_cop/2019/02/EV190226_c10_3.jpg' />";
+				}else if(activeTab == "#tab4"){
+	                html_str = "<iframe id='player' src='"+tab4_url+"' allowfullscreen></iframe>";
+	                html_img = "<img src='http://file3.willbes.net/new_cop/2019/02/EV190226_c10_4.jpg' />";
+				}else if(activeTab == "#tab5"){
+	                html_str = "<iframe id='player' src='"+tab5_url+"' allowfullscreen></iframe>";
+	                html_img = "<img src='http://file3.willbes.net/new_cop/2019/02/EV190226_c10_5.jpg' />";
+				}else if(activeTab == "#tab6"){
+	                html_str = "<iframe id='player' src='"+tab6_url+"' allowfullscreen></iframe>";
+	                html_img = "<img src='http://file3.willbes.net/new_cop/2019/02/EV190226_c10_6.jpg' />";
+	            }
+	            $(".tabContaier ul li a").removeClass("active"); 
+	            $(activeItem).addClass("active"); 
+	            $(".tabContents").hide(); 
+	            $(".tabContents").html(''); 
+	            $(".tabContents").html(html_str);
+	            $(".tabContents").fadeIn(); 
+	            $(".tabImg").html(html_img);
+	            onYouTubeIframeAPIReady();
+	            index++;
+	            if (index >= tabs.length){
+	                index = 0;
+	            }
+        	}
+        }, 5000);
+        
+     
+        $(".tabContaier ul li a").click(function(){ 
+                var activeTab = $(this).attr("href"); 
+                index = $( ".tabContaier ul li" ).index($(this).parent())+1;
                 var html_str = "";
+	            var html_img = "";
                 if(activeTab == "#tab1"){
-                    html_str = "<iframe src='"+tab1_url+"' allowfullscreen></iframe>";
+                    html_str = "<iframe id='player' src='"+tab1_url+"' allowfullscreen></iframe>";
+	                html_img = "<img src='http://file3.willbes.net/new_cop/2019/02/EV190226_c10_1.jpg' />";
                 }else if(activeTab == "#tab2"){
-                    html_str = "<iframe src='"+tab2_url+"' allowfullscreen></iframe>";
-                }else if(activeTab == "#tab3"){
-                    html_str = "<iframe src='"+tab3_url+"' allowfullscreen></iframe>";
-                }else if(activeTab == "#tab4"){
-                    html_str = "<iframe src='"+tab4_url+"' allowfullscreen></iframe>";
-                }else if(activeTab == "#tab5"){
-                    html_str = "<iframe src='"+tab5_url+"' allowfullscreen></iframe>";
-                }else if(activeTab == "#tab6"){
-                    html_str = "<iframe src='"+tab6_url+"' allowfullscreen></iframe>";
+                    html_str = "<iframe id='player' src='"+tab2_url+"' allowfullscreen></iframe>";
+	                html_img = "<img src='http://file3.willbes.net/new_cop/2019/02/EV190226_c10_2.jpg' />";
+				}else if(activeTab == "#tab3"){
+                    html_str = "<iframe id='player' src='"+tab3_url+"' allowfullscreen></iframe>";
+	                html_img = "<img src='http://file3.willbes.net/new_cop/2019/02/EV190226_c10_3.jpg' />";
+				}else if(activeTab == "#tab4"){
+                    html_str = "<iframe id='player' src='"+tab4_url+"' allowfullscreen></iframe>";
+	                html_img = "<img src='http://file3.willbes.net/new_cop/2019/02/EV190226_c10_4.jpg' />";
+				}else if(activeTab == "#tab5"){
+                    html_str = "<iframe id='player' src='"+tab5_url+"' allowfullscreen></iframe>";
+	                html_img = "<img src='http://file3.willbes.net/new_cop/2019/02/EV190226_c10_5.jpg' />";
+				}else if(activeTab == "#tab6"){
+                    html_str = "<iframe id='player' src='"+tab6_url+"' allowfullscreen></iframe>";
+	                html_img = "<img src='http://file3.willbes.net/new_cop/2019/02/EV190226_c10_6.jpg' />";
                 }
-                $(".tabContaier ul li a").removeClass("active");
-                $(this).addClass("active");
-                $(".tabContents").hide();
-                $(".tabContents").html('');
-                $(activeTab).html(html_str);
-                $(activeTab).fadeIn();
-                return false;
+                $(".tabContaier ul li a").removeClass("active"); 
+                $(this).addClass("active"); 
+                $(".tabContents").hide(); 
+                $(".tabContents").html(''); 
+                $(".tabContents").html(html_str);
+                $(".tabContents").fadeIn(); 
+	            $(".tabImg").html(html_img);
+                isPlaying = false;
+                onYouTubeIframeAPIReady();
+                return false; 
+                });
             });
-        });
-    </script>
+        
+        var player;
+		function onYouTubeIframeAPIReady() {
+		  player = new YT.Player( 'player', {
+		    events: { 
+		    	'onStateChange': onPlayerStateChange
+		    	}
+		  });
+		}
+		function onPlayerStateChange(event) {
+			if (event.data != 2) {
+				isPlaying = true;
+	        }else{
+	        	isPlaying = false;
+	        }
+		}
+		
+    </script>  
+	<script src="https://www.youtube.com/iframe_api"></script>
 
-    <script src="/public/js/willbes/jquery.nav.js"></script>
     <script>
         $(function(e){
             var targetOffset= $("#evtContainer").offset().top;

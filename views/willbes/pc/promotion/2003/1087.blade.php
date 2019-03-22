@@ -120,7 +120,7 @@
         <div class="evtCtnsBox wb_cts04" id="event">
             <img src="http://file3.willbes.net/new_gosi/2018/08/EV180820_c7.jpg" alt="" usemap="#Map170803_c2" border="0" />
             <map name="Map170803_c2" >
-                <area shape="rect" coords="402,460,803,564" href="http://www.willbesgosi.net/lecture/movieLectureDetail.html?topMenu=005&topMenuType=O&searchSubjectCode=1018&searchLeccode=D201800500&leftMenuLType=M0001&lecKType=D" target="_blank"  onFocus="this.blur();" />
+                <area shape="rect" coords="402,460,803,564" href="{{ site_url('/lecture/show/cate/3022/pattern/only/prod-code/146356') }}" target="_blank"  onFocus="this.blur();" />
             </map>
         </div><!--wb_cts04//-->
 

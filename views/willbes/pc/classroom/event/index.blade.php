@@ -34,7 +34,7 @@
             <div class="willbes-Leclist c_both mt60">
                 @php $arr_search_text = explode(':', base64_decode(element('search_text', $arr_input)), 3) @endphp
                 <div class="willbes-Lec-Selected willbes-Mypage-Selected willbes-Mypage-Selected-Search tx-gray">
-                <span class="w-data">
+                    <span class="w-data">
                         기간검색 &nbsp;
                         <input type="text" id="search_start_date" name="search_start_date" value="{{ element('0', $arr_search_text) }}" title="검색시작일자" class="iptDate datepicker" maxlength="10" autocomplete="off"/> ~&nbsp;
                         <input type="text" id="search_end_date" name="search_end_date" value="{{ element('1', $arr_search_text) }}" title="검색종료일자" class="iptDate datepicker" maxlength="10" autocomplete="off"/>

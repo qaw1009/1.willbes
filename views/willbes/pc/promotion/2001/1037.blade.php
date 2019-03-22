@@ -62,9 +62,9 @@
             <img src="http://file3.willbes.net/new_cop/2018/08/EV180809_p3_.jpg"  alt="T-PASS" usemap="#Map1" border="0" />
             <map name="Map1" id="Map1">
                 <area shape="rect" coords="913,464,1022,504" href="javascript:go_PassLecture(1);" alt="해사법규"/>
-                <area shape="rect" coords="915,574,1021,615" href="javascript:go_PassLecture(3);" alt="해사영어"/>
-                <area shape="rect" coords="914,684,1020,725" href="javascript:go_PassLecture(4);" alt="항해술"/>
-                <area shape="rect" coords="914,805,1020,843" href="javascript:go_PassLecture(5);" alt="기관술"/>
+                <area shape="rect" coords="915,574,1021,615" href="javascript:go_PassLecture(2);" alt="해사영어"/>
+                <area shape="rect" coords="914,684,1020,725" href="javascript:go_PassLecture(3);" alt="항해술"/>
+                <area shape="rect" coords="914,805,1020,843" href="javascript:go_PassLecture(4);" alt="기관술"/>
             </map>
             <div class="check"><label><input name="ischk" type="checkbox" value="Y" /> 페이지 하단 신광은경찰PASS 이용안내를 모두 확인하였고, 이에 동의합니다. </label><a href="javascript:goDesc('tab1')">이용안내확인하기 ↓</a></div>
             <div class="red">※ 강의공유, 콘텐츠 부정 사용 적발 시, 평생 0원 패스의 수강기간 갱신 및 환급이 불가합니다.</div>
@@ -140,17 +140,16 @@
                 alert("이용안내에 동의하셔야 합니다.");
                 return;
             }
+            var lUrl;
 
             if(no == 1){
-                lUrl = "http://www.willbescop.net/yearpackagelecture/yearpackagelectureDetail.html?topMenu=088&topMenuName=&topMenuType=O&searchCategoryCode=088&searchLeccode=Y201800008&leftMenuLType=M0001&lecKType=Y";
+                lUrl = "{{ site_url('/periodPackage/show/cate/3008/pack/648001/prod-code/149063') }}";
             }else if(no == 2){
-                lUrl = "http://www.willbescop.net/yearpackagelecture/yearpackagelectureDetail.html?topMenu=088&topMenuName=&topMenuType=O&searchCategoryCode=088&searchLeccode=Y201800009&leftMenuLType=M0001&lecKType=Y";
+                lUrl = "{{ site_url('/periodPackage/show/cate/3008/pack/648001/prod-code/149066') }}";
             }else if(no == 3){
-                lUrl = "http://www.willbescop.net/yearpackagelecture/yearpackagelectureDetail.html?topMenu=088&topMenuName=&topMenuType=O&searchCategoryCode=088&searchLeccode=Y201800011&leftMenuLType=M0001&lecKType=Y";
+                lUrl = "{{ site_url('/periodPackage/show/cate/3008/pack/648001/prod-code/149065') }}";
             }else if(no == 4){
-                lUrl = "http://www.willbescop.net/yearpackagelecture/yearpackagelectureDetail.html?topMenu=088&topMenuName=&topMenuType=O&searchCategoryCode=088&searchLeccode=Y201800010&leftMenuLType=M0001&lecKType=Y";
-            }else if(no == 5){
-                lUrl = "http://www.willbescop.net/yearpackagelecture/yearpackagelectureDetail.html?topMenu=088&topMenuName=&topMenuType=O&searchCategoryCode=088&searchLeccode=Y201800012&leftMenuLType=M0001&lecKType=Y";
+                lUrl = "{{ site_url('/periodPackage/show/cate/3008/pack/648001/prod-code/149067') }}";
             }
             location.href = lUrl;
         }
@@ -162,18 +161,6 @@
 
     <script src="/public/js/willbes/jquery.nav.js"></script>
     <script>
-        $( document ).ready( function() {
-            var jbOffset = $( '.skybanner' ).offset();
-            $( window ).scroll( function() {
-                if ( $( document ).scrollTop() > jbOffset.top ) {
-                    $( '.skybanner' ).addClass( 'skybanner_sectionFixed' );
-                }
-                else {
-                    $( '.skybanner' ).removeClass( 'skybanner_sectionFixed' );
-                }
-            });
-        } );
-
         $(function(e){
             var targetOffset= $("#evtContainer").offset().top;
             $('html, body').animate({scrollTop: targetOffset}, 700);

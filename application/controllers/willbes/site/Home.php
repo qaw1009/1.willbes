@@ -96,6 +96,7 @@ class Home extends \app\controllers\FrontController
             $arr_campus = array_replace_recursive($arr_campus, $this->_getCampusInfo());
             $data['arr_campus'] = $arr_campus;
             $data['notice'] = $this->_boardNotice(5);
+            $data['exam_announcement'] = $this->_boardExamAnnouncement(5);
             $data['exam_news'] = $this->_boardExamNews(5);
             $data['onAir'] = $this->_onAir();
             $data['arr_main_banner'] = $this->_banner('0');
@@ -121,8 +122,8 @@ class Home extends \app\controllers\FrontController
             $data['best_product'] = $this->_productLectureBySubjectIdx('on_lecture', 2, $s_cate_code, 'Best');  // 과목별 2개씩 베스트 상품 조회
             $data['arr_main_banner'] = $this->_banner($s_cate_code);
 
-            // 9급공무원 카테고리에서만 노출
-            if ($s_cate_code == '3019') {
+            // 특정 카테고리에서만 노출 (9급, 7급, 세무직, 소방직)
+            if (in_array($s_cate_code, ['3019', '3020', '3022', '3023']) === true) {
                 $data['study_comment'] = $this->_boardStudyComment(6, $s_cate_code);
             }
         }
@@ -195,20 +196,43 @@ class Home extends \app\controllers\FrontController
                 '0' => ['메인_상품배너1', '메인_상품배너2', '메인_상품배너3', '메인_상품배너4', '메인_특별관리반1', '메인_특별관리반2', '메인_특별관리반3', '메인_특별관리반4']
             ],
             '2003' => [
-                '3019' => ['메인_서브1', '메인_서브2', '메인_띠배너', '메인_미들1', '메인_미들2', '메인_미들3', '메인_미들4', '메인_미들5'
+                // 9급
+                '3019' => ['메인_빅배너', '메인_서브1', '메인_서브2', '메인_띠배너', '메인_교수진1', '메인_교수진2', '메인_교수진3', '메인_교수진4', '메인_교수진5'
                     , '메인_hotpick1', '메인_hotpick2', '메인_hotpick3', '메인_hotpick4','메인_hotpick5', '메인_hotpick6', '메인_hotpick7', '메인_hotpick8', '메인_hotpick9', '메인_hotpick10'
                     , '메인_무료특강1', '메인_무료특강2'
                 ],
-                '3024' => ['메인_빅배너', '메인_띠배너', '메인_미들1', '메인_미들2', '메인_미들3', '메인_미들4'
+                // 7급
+                '3020' => ['메인_빅배너', '메인_서브1', '메인_서브2', '메인_띠배너', '메인_교수진1', '메인_교수진2', '메인_교수진3', '메인_교수진4', '메인_교수진5'
+                    , '메인_hotpick1', '메인_hotpick2', '메인_hotpick3', '메인_hotpick4','메인_hotpick5', '메인_hotpick6', '메인_hotpick7', '메인_hotpick8', '메인_hotpick9', '메인_hotpick10'
+                    , '메인_무료특강1', '메인_무료특강2'
+                ],
+                // 세무직
+                '3022' => ['메인_빅배너', '메인_서브1', '메인_서브2', '메인_띠배너', '메인_교수진1', '메인_교수진2', '메인_교수진3', '메인_교수진4', '메인_교수진5'
+                    , '메인_hotpick1', '메인_hotpick2', '메인_hotpick3', '메인_hotpick4','메인_hotpick5', '메인_hotpick6', '메인_hotpick7', '메인_hotpick8', '메인_hotpick9', '메인_hotpick10'
+                    , '메인_무료특강1', '메인_무료특강2'
+                ],
+                // 법원직
+                '3035' => ['메인_빅배너', '메인_미들1', '메인_미들2', '메인_미들3', '메인_미들4', '메인_미들5', '메인_미들6', '메인_미들7', '메인_미들8'
                     , '메인_교수진1', '메인_교수진2', '메인_교수진3', '메인_교수진4', '메인_교수진5', '메인_교수진6', '메인_교수진7', '메인_교수진8'
                 ],
+                // 소방직
+                '3023' => ['메인_빅배너', '메인_서브1', '메인_서브2', '메인_띠배너', '메인_교수진1', '메인_교수진2', '메인_교수진3', '메인_교수진4', '메인_교수진5'
+                    , '메인_hotpick1', '메인_hotpick2', '메인_hotpick3', '메인_hotpick4','메인_hotpick5', '메인_hotpick6', '메인_hotpick7', '메인_hotpick8', '메인_hotpick9', '메인_hotpick10'
+                    , '메인_무료특강1', '메인_무료특강2'
+                ],
+                // 기술직
+                '3028' => ['메인_빅배너', '메인_미들1', '메인_미들2', '메인_미들3', '메인_미들4', '메인_미들5', '메인_미들6', '메인_미들7', '메인_미들8'
+                    , '메인_교수진1', '메인_교수진2', '메인_교수진3', '메인_교수진4', '메인_교수진5', '메인_교수진6', '메인_교수진7', '메인_교수진8'
+                ],
+                // 군무원
+                '3024' => ['메인_빅배너', '메인_서브1', '메인_서브2', '메인_띠배너', '메인_미들1', '메인_미들2', '메인_미들3', '메인_미들4'
+                    , '메인_교수진1', '메인_교수진2', '메인_교수진3', '메인_교수진4', '메인_교수진5', '메인_교수진6', '메인_교수진7', '메인_교수진8'
+                ],
+                // 부사관
                 '3030' => ['메인_빅배너', '메인_띠배너', '메인_교수진1', '메인_교수진2', '메인_교수진3', '메인_교수진4'],
-                '3028' => ['메인_서브1', '메인_서브2', '메인_미들1', '메인_미들2', '메인_미들3', '메인_미들4', '메인_미들5', '메인_미들6', '메인_미들7', '메인_미들8'],
-                '3035' => ['메인_서브1', '메인_서브2', '메인_미들1', '메인_미들2', '메인_미들3', '메인_미들4', '메인_미들5', '메인_미들6', '메인_미들7', '메인_미들8'],
             ],
             '2004' => [
-                '0' => ['메인_빅배너', '메인_서브1', '메인_서브2', '메인_서브3', '메인_띠배너', '메인_미들1', '메인_미들2', '메인_미들3', '메인_미들4', '메인_미들5'
-                    , '메인_이벤트', '메인_대표교수', '메인_포커스']
+                '0' => ['메인_빅배너', '메인_띠배너', '메인_미들1', '메인_미들2', '메인_미들3', '메인_미들4', '메인_미들5', '메인_이벤트', '메인_대표교수', '메인_포커스']
             ]
         ];
 
@@ -295,9 +319,21 @@ class Home extends \app\controllers\FrontController
     {
         $column = 'b.BoardIdx, b.Title, b.IsBest, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
         $order_by = ['b.IsBest' => 'Desc', 'b.BoardIdx' => 'Desc'];
-        $arr_condition = ['EQ' => ['b.BmIdx' => 45, 'b.IsUse' => 'Y'], 'IN' => ['b.CampusCcd' => $arr_campus], 'LKB' => ['b.Category_String' => $cate_code]];
+        $arr_condition = [
+            'EQ' => [
+                'b.BmIdx' => 45
+                ,'b.IsUse' => 'Y'
+                ,'b.SiteCode' => $this->_site_code
+            ],
+            'IN' => [
+                'b.CampusCcd' => $arr_campus
+            ],
+            'LKB' => [
+                'Category_String' => $cate_code
+            ]
+        ];
+        return $this->supportBoardFModel->listBoard(false,$arr_condition,$column,$limit_cnt,0,$order_by);
 
-        return $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $arr_condition, $column, $limit_cnt, 0, $order_by);
     }
 
     /**
@@ -371,8 +407,8 @@ class Home extends \app\controllers\FrontController
      */
     private function _boardStudyComment($limit_cnt = 6, $cate_code = '', $arr_campus = [])
     {
-        $column = 'b.BoardIdx, b.Title, b.IsBest, b.SubjectName, b.ProfName, b.ProdName, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm
-            , fn_professor_refer_value(b.ProfIdx, "lec_list_img") as ProfLecListImg';
+        $column = 'b.BoardIdx, b.Title, b.IsBest, b.SubjectIdx, b.SubjectName, b.ProfIdx, b.ProfName, b.ProdName
+            , DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm, fn_professor_refer_value(b.ProfIdx, "lec_list_img") as ProfLecListImg';
         $order_by = ['b.IsBest' => 'Desc', 'b.BoardIdx' => 'Desc'];
         $arr_condition = ['EQ' => ['b.BmIdx' => 85, 'b.SiteCode' => $this->_site_code, 'b.IsUse' => 'Y'], 'LKB' => ['b.Category_String' => $cate_code]];
 
@@ -414,7 +450,7 @@ class Home extends \app\controllers\FrontController
         switch ($this->_site_code) {
             case "2002":
                 $temp_campus = [
-                    '0' => ['MapPath' => img_url('cop_acad/map/map_cop_origin.jpg'),'Addr' => '서울시동작구만양로105 2층<br/>(서울시동작구노량진동116-2 2층)','Tel' => '1544-0336'],
+                    '0' => ['MapPath' => img_url('cop_acad/map/map_cop_origin.jpg'),'Addr' => '서울시 동작구 만양로 105 2층<br/>(서울시 동작구 노량진동 116-2 2층)','Tel' => '1544-0336'],
                     '1' => ['MapPath' => img_url('cop_acad/map/map_cop_sl.jpg'),'Addr' => '서울 관악구 신림로 23길 16 4층','Tel' => '1544-4006'],
                     '2' => ['MapPath' => img_url('cop_acad/map/map_cop_bs.jpg'),'Addr' => '부산 진구 부정동 223-8','Tel' => '1522-8112'],
                     '3' => ['MapPath' => img_url('cop_acad/map/map_cop_dg.jpg'),'Addr' => '대구 중구 중앙대로 412(남일동) CGV 2층','Tel' => '1522-6112'],
@@ -427,7 +463,7 @@ class Home extends \app\controllers\FrontController
                 break;
             case "2004":
                 $temp_campus = [
-                    '0' => ['MapPath' => img_url('gosi_acad/map/mapSeoul.jpg'),'Addr' => '서울시동작구만양로105 2층<br/>(서울시동작구노량진동116-2 2층)','Tel' => '1544-0336'],
+                    '0' => ['MapPath' => img_url('gosi_acad/map/mapSeoul.jpg'),'Addr' => '서울시 동작구 장승배기로 168 드림타워<br/>(서울시 동작구 노량진동 54-11번지)','Tel' => '1544-0330'],
                     '1' => ['MapPath' => img_url('gosi_acad/map/mapIC.jpg'),'Addr' => '인천 부평구 부평동 534-28 중보빌딩 10층','Tel' => '1544-1661'],
                     '2' => ['MapPath' => img_url('gosi_acad/map/mapDG.jpg'),'Addr' => '대구 중구 중앙대로 412(남일동) CGV 2층','Tel' => '1522-6112'],
                     '3' => ['MapPath' => img_url('gosi_acad/map/mapBS.jpg'),'Addr' => '부산 진구 부정동 223-8','Tel' => '1522-8112'],

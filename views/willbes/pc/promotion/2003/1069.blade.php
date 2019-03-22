@@ -51,20 +51,12 @@
         <div class="evtCtnsBox" id="event">
             <img src="http://file3.willbes.net/new_gosi/2019/01/EV190111Y_ksj_04.jpg" alt="매직아이 김신주 영어 어휘 PACK 수강신청" usemap="#Map190111" border="0"  />
             <map name="Map190111" id="Map190111">
-                <area shape="rect" coords="976,578,1153,627" href="http://www.willbesgosi.net/packagelecture/packagelectureDetail.html?currentPage=1&amp;pageRow=9999&amp;topMenu=001&amp;topMenuName=&amp;topMenuType=O&amp;searchCategoryCode=001&amp;leftMenuLType=M0001&amp;lecKType=P&amp;searchLeccode=P201600179" target="_blank" alt="어휘레벨패키지" />
-                <area shape="rect" coords="976,669,1153,718" href="http://www.willbesgosi.net/packagelecture/packagelectureDetail.html?currentPage=1&amp;pageRow=9999&amp;topMenu=001&amp;topMenuName=&amp;topMenuType=O&amp;searchCategoryCode=001&amp;leftMenuLType=M0001&amp;lecKType=P&amp;searchLeccode=P201900001" target="_blank" alt="빈출어휘 패키지" />
+                <area shape="rect" coords="976,578,1153,627" href="{{ site_url('/package/show/cate/3019/pack/648001/prod-code/150378') }}" target="_blank" alt="어휘레벨패키지" />
+                <area shape="rect" coords="976,669,1153,718" href="{{ site_url('/package/show/cate/3019/pack/648001/prod-code/150658') }}" target="_blank" alt="빈출어휘 패키지" />
             </map>
         </div>
         <!--wb_cts04//-->
 
     </div>
     <!-- End Container -->
-
-    <script>
-        $(function(e){
-            var targetOffset= $("#evtContainer").offset().top;
-            $('html, body').animate({scrollTop: targetOffset}, 700);
-            /*e.preventDefault(); */
-        });
-    </script>
 @stop

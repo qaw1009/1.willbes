@@ -261,12 +261,9 @@
                     </div>
                 </div>
 
-
                 <!-- 포인트 적립 //-->
                 <input type="hidden" name="IsPoint" id="IsPoint" value="N">
-                <input type="hidden" name="PointApplyCcd" id="PointApplyCcd" value="635001">
-
-
+                <input type="hidden" name="PointApplyCcd" id="PointApplyCcd" value="635002">
 
                 <!--// 가격 임의 지정 : 하단 강사료 지급 (강사 세팅) 을 위한 값  : 대표강사를 지정하기 위한 임의로 지정-->
                 <input type="hidden" name="SaleTypeCcd[]" id="SaleTypeCcd_613001" value="613001">
@@ -809,7 +806,7 @@
 
                 $('#sameLecture').setLayer({
                     'url' : '{{ site_url('common/searchLecture/')}}'+'?site_code='+$("#site_code").val()+'&LearnPatternCcd=615005&wLecIdx='+$('#wLecIdx').val()
-                    ,'width' : 1200
+                    ,'width' : 1300
                 })
             });
 

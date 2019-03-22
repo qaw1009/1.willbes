@@ -79,17 +79,17 @@
         <div class="evtCtnsBox wb06" id="pass">
             <img src="http://file3.willbes.net/new_cop/2017/07/EV180901_p4_1.jpg"  alt="PASS 수강료" usemap="#Map180523" border="0" />
             <map name="Map180523" id="Map180523">
-                <area shape="rect" coords="295,1059,402,1097" href="javascript:go_PassLecture(1);" alt="6개월항해술"/>
-                <area shape="rect" coords="291,1106,399,1140" href="javascript:go_PassLecture(2);" alt="6개월기관술"/>
-                <area shape="rect" coords="614,1061,715,1099" href="javascript:go_PassLecture(3);"  alt="12개월 3배수 항해술"/>
-                <area shape="rect" coords="611,1102,715,1143" href="javascript:go_PassLecture(4);"  alt="12개월 3배수 기관술"/>
-                <area shape="rect" coords="927,1064,1037,1097" href="javascript:go_PassLecture(5);"  alt="12개월 무제한 항해술"/>
-                <area shape="rect" coords="931,1103,1034,1142" href="javascript:go_PassLecture(6);" alt="12개월 무제한기관술"/>
-                <area shape="rect" coords="949,1532,1059,1574" href="javascript:go_PassLecture(7);" alt="해사법규"/>
-                <area shape="rect" coords="942,1643,1052,1689" href="javascript:go_PassLecture(8);" alt="경찰학개론"/>
-                <area shape="rect" coords="942,1750,1052,1794" href="javascript:go_PassLecture(9);" alt="해사영어"/>
-                <area shape="rect" coords="941,1865,1051,1914" href="javascript:go_PassLecture(10);" alt="항해술"/>
-                <area shape="rect" coords="939,1980,1049,2028" href="javascript:go_PassLecture(11);" alt="기관술"/>
+                <area shape="rect" coords="295,1059,402,1097" href="javascript:go_PassLecture('149020');" alt="6개월항해술"/>
+                <area shape="rect" coords="291,1106,399,1140" href="javascript:go_PassLecture('149021');" alt="6개월기관술"/>
+                <area shape="rect" coords="614,1061,715,1099" href="javascript:go_PassLecture('149174');"  alt="12개월 3배수 항해술"/>
+                <area shape="rect" coords="611,1102,715,1143" href="javascript:go_PassLecture('149175');"  alt="12개월 3배수 기관술"/>
+                <area shape="rect" coords="927,1064,1037,1097" href="javascript:go_PassLecture('149132');"  alt="12개월 무제한 항해술"/>
+                <area shape="rect" coords="931,1103,1034,1142" href="javascript:go_PassLecture('149131');" alt="12개월 무제한기관술"/>
+                <area shape="rect" coords="949,1532,1059,1574" href="javascript:go_PassLecture('149063');" alt="해사법규"/>
+                <area shape="rect" coords="942,1643,1052,1689" href="javascript:go_PassLecture('149064');" alt="경찰학개론"/>
+                <area shape="rect" coords="942,1750,1052,1794" href="javascript:go_PassLecture('149066');" alt="해사영어"/>
+                <area shape="rect" coords="941,1865,1051,1914" href="javascript:go_PassLecture('149065');" alt="항해술"/>
+                <area shape="rect" coords="939,1980,1049,2028" href="javascript:go_PassLecture('149067');" alt="기관술"/>
             </map>
             <div class="check"><label><input name="ischk" type="checkbox" value="Y" /> 페이지 하단 PASS 이용안내를 모두 확인하였고, 이에 동의합니다. </label><a href="#intropass">이용안내확인하기 ↓</a></div>
         </div>
@@ -259,58 +259,17 @@
         );
 
 
-        function go_PassLecture(no){
-
+        function go_PassLecture(code){
             if($("input[name='ischk']:checked").size() < 1){
                 alert("이용안내에 동의하셔야 합니다.");
                 return;
             }
-
-            if(no == 1){
-                lUrl = "/yearpackagelecture/yearpackagelectureDetail.html?topMenu=088&topMenuName=&topMenuType=O&searchCategoryCode=088&searchLeccode=Y201700022&leftMenuLType=M0001&lecKType=Y";
-            }else if(no == 2){
-                lUrl = "/yearpackagelecture/yearpackagelectureDetail.html?topMenu=088&topMenuName=&topMenuType=O&searchCategoryCode=088&searchLeccode=Y201700023&leftMenuLType=M0001&lecKType=Y";
-            }else if(no == 3){
-                lUrl = "/yearpackagelecture/yearpackagelectureDetail.html?topMenu=088&topMenuName=&topMenuType=O&searchCategoryCode=088&searchLeccode=Y201800119&leftMenuLType=M0001&lecKType=Y";
-            }else if(no == 4){
-                lUrl = "/yearpackagelecture/yearpackagelectureDetail.html?topMenu=088&topMenuName=&topMenuType=O&searchCategoryCode=088&searchLeccode=Y201800120&leftMenuLType=M0001&lecKType=Y";
-            }else if(no == 5){
-                lUrl = "/yearpackagelecture/yearpackagelectureDetail.html?topMenu=088&topMenuName=&topMenuType=O&searchCategoryCode=088&searchLeccode=Y201800077&leftMenuLType=M0001&lecKType=Y";
-            }else if(no == 6){
-                lUrl = "/yearpackagelecture/yearpackagelectureDetail.html?topMenu=088&topMenuName=&topMenuType=O&searchCategoryCode=088&searchLeccode=Y201800076&leftMenuLType=M0001&lecKType=Y";
-            }else if(no == 7){
-                lUrl = "/yearpackagelecture/yearpackagelectureDetail.html?topMenu=088&topMenuName=&topMenuType=O&searchCategoryCode=088&searchLeccode=Y201800008&leftMenuLType=M0001&lecKType=Y";
-            }else if(no == 8){
-                lUrl = "/yearpackagelecture/yearpackagelectureDetail.html?topMenu=088&topMenuName=&topMenuType=O&searchCategoryCode=088&searchLeccode=Y201800009&leftMenuLType=M0001&lecKType=Y";
-            }else if(no == 9){
-                lUrl = "/yearpackagelecture/yearpackagelectureDetail.html?topMenu=088&topMenuName=&topMenuType=O&searchCategoryCode=088&searchLeccode=Y201800011&leftMenuLType=M0001&lecKType=Y";
-            }else if(no == 10){
-                lUrl = "/yearpackagelecture/yearpackagelectureDetail.html?topMenu=088&topMenuName=&topMenuType=O&searchCategoryCode=088&searchLeccode=Y201800010&leftMenuLType=M0001&lecKType=Y";
-            }else if(no == 11){
-                lUrl = "/yearpackagelecture/yearpackagelectureDetail.html?topMenu=088&topMenuName=&topMenuType=O&searchCategoryCode=088&searchLeccode=Y201800012&leftMenuLType=M0001&lecKType=Y";
-            }
-
-            //	var newWindow = window.open("about:blank");
-            //	newWindow.location.href = lUrl;
-            location.href = lUrl;
+            var url = '{{ site_url('/periodPackage/show/cate/3008/pack/648001/prod-code/') }}' + code;
+            location.href = url;
         }
     </script>
-
-
     <script src="/public/js/willbes/jquery.nav.js"></script>
     <script>
-        $( document ).ready( function() {
-            var jbOffset = $( '.skybanner' ).offset();
-            $( window ).scroll( function() {
-                if ( $( document ).scrollTop() > jbOffset.top ) {
-                    $( '.skybanner' ).addClass( 'skybanner_sectionFixed' );
-                }
-                else {
-                    $( '.skybanner' ).removeClass( 'skybanner_sectionFixed' );
-                }
-            });
-        } );
-
         $(function(e){
             var targetOffset= $("#evtContainer").offset().top;
             $('html, body').animate({scrollTop: targetOffset}, 1000);

@@ -281,57 +281,57 @@
                             <tbody>
                                 <tr>
                                     <th class="w-tit">이름(아이디)</th>
-                                    <td class="w-list" colspan="3">홍길동(ABC***)</td>
+                                    <td class="w-list" colspan="3"><strong>홍길동(ABC***)</strong></td>
                                 </tr>
                                 <tr>
                                     <th class="w-tit">응시형태</th>
-                                    <td class="w-list">Off(학원)</td>
+                                    <td class="w-list"><strong>Off(학원)</strong></td>
                                     <th class="w-tit">응시분야</th>
-                                    <td class="w-list">9급</td>
+                                    <td class="w-list"><strong>9급</strong></td>
                                 </tr>
                                 <tr>
                                     <th class="w-tit">응시지역</th>
-                                    <td class="w-list">전국</td>
+                                    <td class="w-list"><strong>전국</strong></td>
                                     <th class="w-tit">응시번호</th>
-                                    <td class="w-list tx-bright-gray">결제후 응시번호 확인 가능</td>
+                                    <td class="w-list"><strong>결제후 응시번호 확인 가능</strong></td>
                                 </tr>
                                 <tr>
                                     <th class="w-tit">시험응시일</th>
-                                    <td class="w-list" colspan="3">2018-00-00 00:00 ~ 2018-00-00 00:00</td>
+                                    <td class="w-list" colspan="3"><strong>2018-00-00 00:00 ~ 2018-00-00 00:00</strong></td>
                                 </tr>
                                 <tr>
                                     <th class="w-tit">응시직렬</th>
-                                    <td class="w-list" colspan="3">일반행정직</td>
+                                    <td class="w-list" colspan="3"><strong>일반행정직</strong></td>
                                 </tr>
                                 <tr>
                                     <th class="w-tit">응시필수과목</th>
-                                    <td class="w-list" colspan="3">한국사, 영어</td>
+                                    <td class="w-list" colspan="3"><strong>한국사, 영어</strong></td>
                                 </tr>
                                 <tr>
                                     <th class="w-tit">응시선택과목</th>
-                                    <td class="w-list" colspan="3">[선택과목1] 행정학 [선택과목2] 수학</td>
+                                    <td class="w-list" colspan="3"><strong>[선택과목1] 행정학 [선택과목2] 수학</strong></td>
                                 </tr>
                                 <tr>
                                     <th class="w-tit">가산점</th>
-                                    <td class="w-list" colspan="3">해당없음</td>
+                                    <td class="w-list" colspan="3"><strong>해당없음</strong></td>
                                 </tr>
                                 <tr>
                                     <th class="w-tit">결제(접수)금액</th>
-                                    <td class="w-list">5,000원</td>
+                                    <td class="w-list"><strong>5,000원</strong></td>
                                     <th class="w-tit">쿠폰적용</th>
-                                    <td class="w-list">미적용</td>
+                                    <td class="w-list"><strong>미적용</strong></td>
                                 </tr>
                                 <tr>
                                     <th class="w-tit">결제(접수)루트</th>
-                                    <td class="w-list">온라인</td>
+                                    <td class="w-list"><strong>온라인</strong></td>
                                     <th class="w-tit">결제(접수)상태</th>
-                                    <td class="w-list">결제완료</td>
+                                    <td class="w-list"><strong>결제완료</strong></td>
                                 </tr>
                                 <tr>
                                     <th class="w-tit">결제(접수)수단</th>
-                                    <td class="w-list">신용카드</td>
+                                    <td class="w-list"><strong>신용카드</strong></td>
                                     <th class="w-tit">결제(접수)일</th>
-                                    <td class="w-list">2018-00-00 00:00</td>
+                                    <td class="w-list"><strong>2018-00-00 00:00</strong></td>
                                 </tr>
                             </tbody>
                         </table>

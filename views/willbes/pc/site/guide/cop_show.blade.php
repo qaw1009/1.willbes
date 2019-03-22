@@ -863,7 +863,7 @@
                                         자격증 등의 가산점 기준표<br/>
                                         &nbsp; - [관련 근거] 경찰공무원 채용시험 시행규칙 제 15조의 2 제 4항 관련 (2010.7.1)
                                     </p>
-                                    <p class="mgB1"><a href="http://public.jinhak.com/PoliceV2/data/formdata_list.aspx?ReturnSite=SC&ServiceID=19&CategoryID=5&CurrentPage=1" target="_blank"><strong>무도 인증단체 현황 다운받기 ></strong></a></p>
+                                    <p class="mgB1"><a href="https://public.jinhakapply.com/PoliceV2/data/testdata_list.aspx?ReturnSite=SC&ServiceID=19&CategoryID=13&CurrentPage=1" target="_blank"><strong>무도 인증단체 현황 다운받기 ></strong></a></p>
                                     <table class="basicTb">
                                         <colgroup>
                                             <col style="width: 82px;"/>

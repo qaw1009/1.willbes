@@ -9,7 +9,7 @@ class DeliveryPriceModel extends CommonLectureModel
     private $_prod_type_name = ['delivery_price' => '배송료', 'delivery_add_price' => '추가 배송료'];
     private $_prod_type_is_coupon = ['delivery_price' => 'Y', 'delivery_add_price' => 'N'];
     private $_available_sale_status_ccd = '618001'; // 판매상태 공통코드 : 판매가능
-    private $_default_point_apply_ccd = '635001';   // 포인트 적용 공통코드 : 전체
+    private $_default_point_apply_ccd = '635002';   // 포인트 적용 공통코드 : 강좌
     private $_default_sale_type_ccd = '613001'; // 판매가격 구분 공통코드 : PC+모바일
     private $_min_prod_code = '100001'; // 상품코드 채번을 위한 최소 상품코드 값
     private $_max_prod_code = '199999'; // 상품코드 채번을 위한 최대 상품코드 값

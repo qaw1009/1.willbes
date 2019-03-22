@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Professor extends \app\controllers\FrontController
 {
-    protected $models = array('siteF', 'categoryF', 'product/baseProductF', 'product/lectureF', 'product/packageF', 'product/professorF', 'support/supportBoardF');
+    protected $models = array('siteF', 'categoryF', 'product/baseProductF', 'product/lectureF', 'product/packageF', 'product/professorF', 'support/supportBoardF', 'support/supportBoardTwoWayF');
     protected $helpers = array();
     protected $auth_controller = false;
     protected $auth_methods = array();
@@ -165,7 +165,7 @@ class Professor extends \app\controllers\FrontController
         $tab_data = $this->{'_tab_' . $arr_input['tab']}($prof_idx, $data['wProfIdx'], $arr_input);
 
         // 게시판 사용 유무에 탭 버튼 개수 설정
-        $temp_UseBoardJson = array($data['IsNoticeBoard'], $data['IsQnaBoard'], $data['IsDataBoard'], $data['IsTpassBoard']);
+        $temp_UseBoardJson = array($data['IsNoticeBoard'], $data['IsQnaBoard'], $data['IsDataBoard'], $data['IsTpassBoard'], $data['IsTccBoard']);
         $tabUseCount = 3;
         foreach ($temp_UseBoardJson as $key => $val) {
             if ($val == 'Y') {
@@ -253,7 +253,13 @@ class Professor extends \app\controllers\FrontController
         $arr_prof_idx = $this->professorFModel->getProfIdxBySiteGroupCode($wprof_idx, $site_group_code);
 
         // 온라인 과정 조회
-        $data['on_course'] = $this->baseProductFModel->listCourse($arr_site_code['on']);
+        if ($this->_is_pass_site === true) {
+            // 학원사이트일 경우 등록된 과정 조회
+            $data['on_course'] = $this->baseProductFModel->listCourse($arr_site_code['on']);
+        } else {
+            // 온라인사이트일 경우 과정 소트매핑 조회
+            $data['on_course'] = $this->baseProductFModel->listCourseCategoryMapping($arr_site_code['on'], $this->_def_cate_code);
+        }
 
         if (empty($arr_prof_idx['on']) === false) {
             // 온라인 단강좌 조회
@@ -274,9 +280,12 @@ class Professor extends \app\controllers\FrontController
             $data['off_pack_lecture'] = $this->_getOffLectureData('off_pack_lecture', $arr_site_code['off'], $arr_prof_idx['off'], $arr_input);
         }
 
-        // 수강후기 조회
-        $data['study_comment'] = $this->professorFModel->findProfessorStudyCommentData($prof_idx, $this->_site_code, $this->_def_cate_code, element('subject_idx', $arr_input), 3);
-        $data['study_comment'] = $data['study_comment'] != 'N' ? json_decode($data['study_comment'], true) : [];
+        // 온라인 사이트일 경우만 수강후기 조회
+        $data['study_comment'] = [];
+        if ($this->_is_pass_site === false) {
+            $data['study_comment'] = $this->professorFModel->findProfessorStudyCommentData($prof_idx, $this->_site_code, $this->_def_cate_code, element('subject_idx', $arr_input), 3);
+            $data['study_comment'] = $data['study_comment'] != 'N' ? json_decode($data['study_comment'], true) : [];
+        }
 
         return [
             'on_course' => element('on_course', $data, []),
@@ -303,6 +312,11 @@ class Professor extends \app\controllers\FrontController
         if ($this->_is_pass_site === false) {
             // 온라인 사이트일 경우 카테고리 조건 추가
             $arr_condition['LKR']['CateCode'] = $this->_def_cate_code;
+        }
+
+        if ($learn_pattern == 'on_free_lecture') {
+            // 보강동영상 제외
+            $arr_condition['EQ']['FreeLecTypeCcd'] = $this->lectureFModel->_free_lec_type_ccd['normal'];
         }
 
         $data = $this->lectureFModel->listSalesProduct($learn_pattern, false, $arr_condition, null, null, ['ProdCode' => 'desc']);
@@ -406,9 +420,12 @@ class Professor extends \app\controllers\FrontController
             $data['on_free_lecture'] = $this->_getOnLectureData('on_free_lecture', $arr_site_code['on'], $arr_prof_idx['on'], $arr_input);
         }
 
-        // 수강후기 조회
-        $data['study_comment'] = $this->professorFModel->findProfessorStudyCommentData($prof_idx, $this->_site_code, $this->_def_cate_code, element('subject_idx', $arr_input), 3);
-        $data['study_comment'] = $data['study_comment'] != 'N' ? json_decode($data['study_comment'], true) : [];
+        // 온라인 사이트일 경우만 수강후기 조회
+        $data['study_comment'] = [];
+        if ($this->_is_pass_site === false) {
+            $data['study_comment'] = $this->professorFModel->findProfessorStudyCommentData($prof_idx, $this->_site_code, $this->_def_cate_code, element('subject_idx', $arr_input), 3);
+            $data['study_comment'] = $data['study_comment'] != 'N' ? json_decode($data['study_comment'], true) : [];
+        }
 
         return [
             'on_free_lecture' => element('on_free_lecture', $data, []),
@@ -498,6 +515,26 @@ class Professor extends \app\controllers\FrontController
     private function _tab_tpass($prof_idx, $wprof_idx, $arr_input)
     {
         $frame_path = '/prof/tpass/index';
+        $frame_params = 's_cate_code='.$this->_def_cate_code.'&prof_idx='.$prof_idx.'&subject_idx='.element('subject_idx',$arr_input);
+        $frame_params .= '&view_type=prof';
+
+        $data = [
+            'frame_path' => $frame_path,
+            'frame_params' => $frame_params
+        ];
+        return $data;
+    }
+
+    /**
+     * TCC 동영상 탭
+     * @param $prof_idx
+     * @param $wprof_idx
+     * @param $arr_input
+     * @return array
+     */
+    private function _tab_tcc($prof_idx, $wprof_idx, $arr_input)
+    {
+        $frame_path = '/prof/tcc/index';
         $frame_params = 's_cate_code='.$this->_def_cate_code.'&prof_idx='.$prof_idx.'&subject_idx='.element('subject_idx',$arr_input);
         $frame_params .= '&view_type=prof';
 

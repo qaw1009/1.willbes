@@ -85,7 +85,7 @@
                 </form>
                 -->
                 <div id="pwd_certi3">
-                    <form name="form_ipin" id="form_ipin" method="post" onsubmit="return false;">
+                    <form name="form_ipin" id="form_ipin" method="post">
                         <input type="hidden" name="m" value="pubmain">
                         <input type="hidden" name="enc_data" value="{{$encData}}">
                         <input type="hidden" name="param_r1" value="findpwd">
@@ -99,7 +99,7 @@
                             <br>
                         </div>
                         <div class="search-Btn btnAuto120 h36">
-                            <button type="button" id="btn_ipin" xonclick="ipin();" class="mem-Btn bg-blue bd-dark-blue">
+                            <button type="button" id="btn_ipin" class="mem-Btn bg-blue bd-dark-blue">
                                 <span>아이핀 인증</span>
                             </button>
                         </div>

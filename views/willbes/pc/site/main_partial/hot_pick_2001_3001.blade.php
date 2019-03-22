@@ -4,7 +4,7 @@
         <div class="pickBox pick1">
             @if(empty($data['arr_main_banner']['메인_hotpick1']) === false)
                 @php $link_url = ''; $last_banner = end($data['arr_main_banner']['메인_hotpick1']); @endphp
-                @if(empty($row['LinkUrl']) === false)
+                @if(empty($last_banner['LinkUrl']) === false)
                     @php $link_url = front_app_url('/banner/click?banner_idx=' . $last_banner['BIdx'] . '&return_url=' . urlencode($last_banner['LinkUrl']) . '&link_url_type=' . urlencode($last_banner['LinkUrlType']), 'www'); @endphp
                 @endif
                 <a href="{{ $link_url }}" target="_{{ $last_banner['LinkType'] }}"><img src="{{ $last_banner['BannerFullPath'] . $last_banner['BannerImgName'] }}" alt="{{ $last_banner['BannerName'] }}"></a>
@@ -38,7 +38,7 @@
                             @if(empty($row['LinkUrl']) === false)
                                 @php $link_url = front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www'); @endphp
                             @endif
-                            <div><img src="{{ $row['BannerFullPath'] . $row['BannerImgName'] }}" alt="{{ $row['BannerName'] }}"></div>
+                            <div><a href="{{ $link_url }}" target="_{{ $last_banner['LinkType'] }}"><img src="{{ $row['BannerFullPath'] . $row['BannerImgName'] }}" alt="{{ $row['BannerName'] }}"></a></div>
                         @endforeach
                     </div>
                 </li>

@@ -68,7 +68,7 @@
         <div class="evtCtnsBox wb_pop2" id="main">
             <img src="http://file3.willbes.net/new_cop/2018/08/EV180830_p5_1.png"  alt="인터뷰바로가기" usemap="#Map180920" border="0" />
             <map name="Map180920" id="Map180920">
-                <area shape="rect" coords="406,252,565,284" href="http://willbescop.net/boardCustomerOn/board_view.html?topMenuType=O&topMenuGnb=OM_008&topMenu=MAIN&menuID=OM_008_001&topMenuName=ÀÏ¹Ý°æÂû&BOARDTYPE=1&INCTYPE=view&BOARD_MNG_SEQ=NOTICE_013&currentPage=&BOARD_SEQ=138466&PARENT_BOARD_SEQ=&SEARCHKIND=&SEARCHTEXT=" alt="2018년 3차 시행 과목별 만점자 수기 바로가기" target="_blank"/>
+                <area shape="rect" coords="406,252,565,284" href="{{ site_url('/support/notice/index/cate/3001') }}" alt="2018년 3차 시행 과목별 만점자 수기 바로가기" target="_blank"/>
             </map>
         </div>
 
@@ -77,7 +77,7 @@
             <img src="http://file3.willbes.net/new_cop/2018/08/EV180830_p1_4_3.png" alt="문풀 PASS" usemap="#Map180830" border="0" /><br>
             <map name="Map180830" id="Map180830">
                 <area shape="rect" coords="186,486,343,524" href="javascript:go_PassLecture(1);"  alt="동영상"/>
-                <area shape="rect" coords="640,484,801,527"href="javascript:go_PassLecture(2);"    alt="학원실강"/>
+                <area shape="rect" coords="640,484,801,527"href="javascript:go_PassLecture(2);" alt="학원실강"/>
             </map>
             <div class="check"><label><input name="ischk" type="checkbox" value="Y" /> 페이지 하단 신광은경찰PASS 이용안내를 모두 확인하였고, 이에 동의합니다. </label><a href="#tabsEvt">이용안내확인하기 ↓</a></div>
         </div>
@@ -253,7 +253,6 @@
                     e.preventDefault()})})}
         );
 
-        /**/
         function go_PassLecture(no){
 
             if($("input[name='ischk']:checked").size() < 1){
@@ -262,25 +261,11 @@
             }
 
             if(no == 1){
-                lUrl = "http://willbescop.net/yearpackagelecture/yearpackagelectureDetail.html?topMenu=081&topMenuName=&topMenuType=O&searchCategoryCode=081&searchLeccode=Y201900017&leftMenuLType=M0001&lecKType=Y";
+                lUrl = "{{ site_url('/periodPackage/show/cate/3001/pack/648002/prod-code/149212') }}";
             }else if(no == 2){
-                lUrl = "http://willbescop.net/lecture/passLectuerSJong.html?topMenu=081&topMenuName=일반경찰&topMenuType=F&leftMenuLType=M0302&newlearningCD=M0321&lecKType=N";
-            }else if(no == 3){
-                lUrl = "http://willbescop.net/yearpackagelecture/yearpackagelectureDetail.html?topMenu=081&topMenuName=&topMenuType=O&searchCategoryCode=081&searchLeccode=Y201800117&leftMenuLType=M0001&lecKType=Y";
-            }else if(no == 4){
-                lUrl = "http://willbescop.net/yearpackagelecture/yearpackagelectureDetail.html?topMenu=082&topMenuName=&topMenuType=O&searchCategoryCode=082&searchLeccode=Y201800118&leftMenuLType=M0001&lecKType=Y";
-            }else if(no == 5){
-                lUrl = "http://willbescop.net/yearpackagelecture/yearpackagelectureDetail.html?topMenu=081&topMenuName=&topMenuType=O&searchCategoryCode=081&searchLeccode=Y201800050&leftMenuLType=M0001&lecKType=Y";
-            }else if(no == 6){
-                lUrl = "http://willbescop.net/yearpackagelecture/yearpackagelectureDetail.html?topMenu=082&topMenuName=&topMenuType=O&searchCategoryCode=082&searchLeccode=Y201800051&leftMenuLType=M0001&lecKType=Y";
-            }else if(no == 7){
-                lUrl = "http://willbescop.net/yearpackagelecture/yearpackagelectureDetail.html?topMenu=081&topMenuName=&topMenuType=O&searchCategoryCode=081&searchLeccode=Y201800052&leftMenuLType=M0001&lecKType=Y";
-            }else if(no == 8){
-                lUrl = "http://willbescop.net/yearpackagelecture/yearpackagelectureDetail.html?topMenu=082&topMenuName=&topMenuType=O&searchCategoryCode=082&searchLeccode=Y201800053&leftMenuLType=M0001&lecKType=Y";
+                lUrl = "#none";
             }
 
-            //	var newWindow = window.open("about:blank");
-            //	newWindow.location.href = lUrl;
             location.href = lUrl;
         }
 

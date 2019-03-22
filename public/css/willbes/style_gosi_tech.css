@@ -1,6 +1,6 @@
 /*********************************************     Main Container : tech     *********************************************/
 .tech .Section2 {
-    background: #f3f3f3;
+    background:url("../../img/willbes/gosi_tech/visual/visual_top_bg.jpg") repeat-x left 95px;
 }
 .tech .Section3 {
     background: #f7f7f7;
@@ -11,6 +11,11 @@
 }
 
 /* Main Container : MainVisual */
+.tech .VisualsubBox {
+    width: 1120px;
+    height: 380px;
+    overflow: hidden;
+}
 .tech .VisualsubBox .bx-wrapper .bx-controls-auto {
     left:20px;
     bottom: 20px;
@@ -30,6 +35,15 @@
     width: 8px;
     height: 8px;
     margin: 0 2px;
+}
+
+.tech .bx-wrapper .bx-pager.bx-default-pager a {
+  background: #898989 !important;
+}
+.tech .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.tech .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
+.tech .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #f7ec1e !important;
 }
 
 
@@ -74,6 +88,36 @@
 }
 
 .tech .ProfBox .PBcts:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.tech .ProfBox .bSlider .bx-wrapper .bx-pager {
+    float: left;
+    width: auto;
+    left: 30px;
+    bottom: 10px;
+    text-align: left;
+    }
+.tech .ProfBox .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.tech .ProfBox .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
+.tech .ProfBox .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #5a9f37 !important;
+    }
+
+/**/
+.tech .ProfBoxB li {
+    float: left;
+    width: 274px;
+    height: 234px;
+    margin-left: 8px;
+    margin-bottom: 8px;
+}
+.tech .ProfBoxB li:nth-child(5),
+.tech .ProfBoxB li:first-child {
+    margin-left: 0;
+}
+.tech .ProfBoxB:after {
     content: "";
     display: block;
     clear: both;

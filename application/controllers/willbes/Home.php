@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends \app\controllers\FrontController
 {
-    protected $models = array('dDayF', 'memberF');
+    protected $models = array('dDayF', 'support/supportBoardF', 'memberF');
     protected $helpers = array();
     protected $auth_controller = false;
     protected $auth_methods = array();
@@ -29,6 +29,12 @@ class Home extends \app\controllers\FrontController
         if (APP_DEVICE == 'pc') {
             // 시험일정 조회 (디데이)
             $data['dday'] = $this->dDayFModel->getDDays();
+            
+            // NOW 윌비스
+            $column = 'b.BoardIdx, b.Title, b.IsBest, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
+            $order_by = ['b.IsBest' => 'Desc', 'b.BoardIdx' => 'Desc'];
+            $arr_condition = ['EQ' => ['b.BmIdx' => 45, 'b.SiteCode' => $this->_site_code, 'b.IsUse' => 'Y']];
+            $data['notice'] = $this->supportBoardFModel->listBoard(false, $arr_condition, $column, 6, 0, $order_by);
         }
 
         return $this->load->view('main', [

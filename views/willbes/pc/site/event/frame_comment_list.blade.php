@@ -58,7 +58,7 @@
                             {{$row['Content']}}
                         @else
                             {!!nl2br($row['Content'])!!}
-                            @if(sess_data('mem_idx') === $row['MemIdx'])
+                            @if(sess_data('is_login') === true && sess_data('mem_idx') === $row['MemIdx'])
                                 <a class="w-del btn-comment-del" data-comment-idx="{{$row['Idx']}}" href="#none"><img src="/public/img/willbes/sub/icon_delete.gif"></a>
                             @endif
                         @endif

@@ -9,7 +9,7 @@
             <dt><span class="row-line">|</span></dt>
             <dt>수강기간 : <span class="tx-blue">{{$data['lecture']['StudyPeriod']}}일</span></dt>
             <dt class="NSK ml15">
-                <span class="nBox n1">{{$data['lecture']['MultipleApply']}}배수</span>
+                <span class="nBox n1">{{ $data['lecture']['MultipleApply'] === "1" ? '무제한' : $data['lecture']['MultipleApply'].'배수'}}</span>
             </dt>
         </dl>
     </div>

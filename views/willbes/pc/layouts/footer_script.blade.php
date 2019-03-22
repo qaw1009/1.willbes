@@ -25,3 +25,6 @@
 <script src="/public/js/willbes/sub.js?ver={{time()}}"></script>
 <script src="/public/js/willbes/app.js?ver={{time()}}"></script>
 <!--// JAVASCRIPT -->
+<!-- Common Site Script -->
+{!! base64_decode($__cfg['CommPcScript']) !!}
+<!--// Common Site Script -->

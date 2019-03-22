@@ -26,9 +26,20 @@
         .WB_con04 {background:#fff;}
         .WB_con05 {background:#191514;}
         .WB_con06 {background:#fd8062; padding-bottom:150px;}
+
+        .skybanner {
+            position:fixed;
+            top:200px;
+            right:10px;
+            z-index:1;
+        }
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
+        <div class="skybanner">
+            <a href="#0108lec_go"><img  src="http://file3.willbes.net/new_gosi/2019/01/EV190108_sky.png" alt="수강신청"></a>
+        </div>
+
         <div class="evtCtnsBox WB_con01">
             <img src="http://file3.willbes.net/new_gosi/2019/01/EV190108_1.png" alt="2020 김동진 법원팀 예비순환"/>
         </div>
@@ -57,17 +68,17 @@
         </div>
         <!--WB_con05//-->
 
-        <div class="evtCtnsBox WB_con06" >
+        <div class="evtCtnsBox WB_con06" id="0108lec_go">
             <img src="http://file3.willbes.net/new_gosi/2019/01/EV190108_5.png" alt="#" usemap="#Map_2019_law_1" border="0"/>
             <map name="Map_2019_law_1">
-                <area shape="rect" coords="793,138,1018,214" href="http://willbesgosi.net/lecture/movieLectureDetail.html?topMenu=018&topMenuType=O&searchSubjectCode=1002&searchLeccode=D201800236&leftMenuLType=M0001&lecKType=D" target="_blank" alt="김동진">
-                <area shape="rect" coords="804,379,1020,454" href="http://willbesgosi.net/lecture/movieLectureDetail.html?topMenu=018&topMenuType=O&searchSubjectCode=1002&searchLeccode=D201801013&leftMenuLType=M0001&lecKType=D" target="_blank" alt="박초롱">
-                <area shape="rect" coords="809,618,1029,690" href="http://willbesgosi.net/lecture/movieLectureDetail.html?topMenu=018&topMenuType=O&searchSubjectCode=1002&searchLeccode=D201801014&leftMenuLType=M0001&lecKType=D" target="_blank" alt="이국령">
-                <area shape="rect" coords="804,857,1022,931" href="http://willbesgosi.net/lecture/movieLectureDetail.html?topMenu=018&topMenuType=O&searchSubjectCode=1002&searchLeccode=D201801015&leftMenuLType=M0001&lecKType=D" target="_blank" alt="문형석">
-                <area shape="rect" coords="813,1092,1022,1171" href="http://willbesgosi.net/lecture/movieLectureDetail.html?topMenu=018&topMenuType=O&searchSubjectCode=1002&searchLeccode=D201801016&leftMenuLType=M0001&lecKType=D" target="_blank" alt="이덕훈">
-                <area shape="rect" coords="812,1334,1021,1412" href="http://willbesgosi.net/lecture/movieLectureDetail.html?topMenu=018&topMenuType=O&searchSubjectCode=1002&searchLeccode=D201801017&leftMenuLType=M0001&lecKType=D" target="_blank" alt="유안석">
-                <area shape="rect" coords="811,1577,1016,1650" href="http://willbesgosi.net/lecture/movieLectureDetail.html?topMenu=018&topMenuType=O&searchSubjectCode=1002&searchLeccode=D201801018&leftMenuLType=M0001&lecKType=D" target="_blank" alt="임진석">
-                <area shape="rect" coords="806,1817,1029,1894" href="http://willbesgosi.net/lecture/movieLectureDetail.html?topMenu=018&topMenuType=O&searchSubjectCode=1002&searchLeccode=D201801019&leftMenuLType=M0001&lecKType=D" target="_blank" alt="이현나">
+                <area shape="rect" coords="793,138,1018,214" href="{{ site_url('/lecture/show/cate/3035/pattern/only/prod-code/146110') }}" target="_blank" alt="김동진">
+                <area shape="rect" coords="804,379,1020,454" href="{{ site_url('/lecture/show/cate/3035/pattern/only/prod-code/146869') }}" target="_blank" alt="박초롱">
+                <area shape="rect" coords="809,618,1029,690" href="{{ site_url('/lecture/show/cate/3035/pattern/only/prod-code/146870') }}" target="_blank" alt="이국령">
+                <area shape="rect" coords="804,857,1022,931" href="{{ site_url('/lecture/show/cate/3035/pattern/only/prod-code/146871') }}" target="_blank" alt="문형석">
+                <area shape="rect" coords="813,1092,1022,1171" href="{{ site_url('/lecture/show/cate/3035/pattern/only/prod-code/146872') }}" target="_blank" alt="이덕훈">
+                <area shape="rect" coords="812,1334,1021,1412" href="{{ site_url('/lecture/show/cate/3035/pattern/only/prod-code/146873') }}" target="_blank" alt="유안석">
+                <area shape="rect" coords="811,1577,1016,1650" href="{{ site_url('/lecture/show/cate/3035/pattern/only/prod-code/146874') }}" target="_blank" alt="임진석">
+                <area shape="rect" coords="806,1817,1029,1894" href="{{ site_url('/lecture/index/cate/3035/pattern/only?subject_idx=1107') }}" target="_blank" alt="이현나">
             </map>
         </div>
         <!--WB_con06//-->

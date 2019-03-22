@@ -45,14 +45,14 @@
         <div class="evtCtnsBox wb_cts03" id="event" >
             <img src="http://file3.willbes.net/new_cop/2018/12/EV181218_c4.jpg" alt="" usemap="#Map181218_c2" border="0"  />
             <map name="Map181218_c2" >
-                <area shape="rect" coords="863,345,1025,412" href="http://www.willbescop.net/lecture/movieLectureDetail.html?topMenu=088&topMenuType=O&searchSubjectCode=1030&searchLeccode=D201800502&leftMenuLType=M0002&lecKType=D"  target="_blank" onfocus="this.blur();" />
-                <area shape="rect" coords="868,419,1020,476" href="http://www.willbescop.net/lecture/movieLectureDetail.html?topMenu=088&topMenuType=O&searchSubjectCode=1031&searchLeccode=D201800505&leftMenuLType=M0002&lecKType=D" target="_blank" onfocus="this.blur();" />
-                <area shape="rect" coords="866,481,1019,541" href="http://www.willbescop.net/lecture/movieLectureDetail.html?topMenu=088&topMenuType=O&searchSubjectCode=1032&searchLeccode=D201800506&leftMenuLType=M0002&lecKType=D" target="_blank" onfocus="this.blur();" />
-                <area shape="rect" coords="869,605,1021,666" href="http://www.willbescop.net/lecture/movieLectureDetail.html?topMenu=088&topMenuType=O&searchSubjectCode=1033&searchLeccode=D201800507&leftMenuLType=M0002&lecKType=D" target="_blank" onfocus="this.blur();" />
-                <area shape="rect" coords="869,670,1020,731" href="http://www.willbescop.net/lecture/movieLectureDetail.html?topMenu=088&topMenuType=O&searchSubjectCode=1034&searchLeccode=D201800508&leftMenuLType=M0002&lecKType=D" target="_blank" onfocus="this.blur();" />
+                <area shape="rect" coords="863,345,1025,412" href="{{ site_url('/lecture/show/cate/3008/pattern/only/prod-code/132111') }}"  target="_blank" onfocus="this.blur();" />
+                <area shape="rect" coords="868,419,1020,476" href="{{ site_url('/lecture/show/cate/3008/pattern/only/prod-code/132114') }}" target="_blank" onfocus="this.blur();" />
+                <area shape="rect" coords="866,481,1019,541" href="{{ site_url('/lecture/show/cate/3008/pattern/only/prod-code/132115') }}" target="_blank" onfocus="this.blur();" />
+                <area shape="rect" coords="869,605,1021,666" href="{{ site_url('/lecture/show/cate/3008/pattern/only/prod-code/132116') }}" target="_blank" onfocus="this.blur();" />
+                <area shape="rect" coords="869,670,1020,731" href="{{ site_url('/lecture/show/cate/3008/pattern/only/prod-code/132117') }}" target="_blank" onfocus="this.blur();" />
                 <!--종합반-->
-                <area shape="rect" coords="867,929,1043,1008" href="http://www.willbescop.net/lecture/movieLectureSDetail.html?searchLeccode=J201800077&topMenuType=O&leftMenuLType=M0002&newlearningCD=M0223&lecKType=J&topMenu=088&topMenuName" target="_blank" onfocus="this.blur();"/>
-                <area shape="rect" coords="870,1012,1044,1076" href="http://www.willbescop.net/lecture/movieLectureSDetail.html?searchLeccode=J201800078&topMenuType=O&leftMenuLType=M0002&newlearningCD=M0223&lecKType=J&topMenu=088&topMenuNam" target="_blank" onfocus="this.blur();"/>
+                <area shape="rect" coords="867,929,1043,1008" href="{{ site_url('/package/show/cate/3008/pack/648001/prod-code/149533') }}" target="_blank" onfocus="this.blur();"/>
+                <area shape="rect" coords="870,1012,1044,1076" href="{{ site_url('/package/show/cate/3008/pack/648001/prod-code/149534') }}" target="_blank" onfocus="this.blur();"/>
             </map>
         </div>
 

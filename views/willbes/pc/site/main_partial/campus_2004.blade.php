@@ -52,9 +52,7 @@
                                 <div class="c-info">
                                     <div class="address">
                                         <span class="a-tit">주소</span>
-                                        <span>
-                                                {{$row['Addr']}}
-                                            </span>
+                                        <span>{!! $row['Addr'] !!}</span>
                                     </div>
                                     <div class="tel">
                                         <span class="a-tit">연락처</span>

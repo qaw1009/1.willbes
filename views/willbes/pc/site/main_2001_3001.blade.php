@@ -16,9 +16,9 @@
         </div>
 
         <div class="Section youtubeWrap">
-            <div class="widthAuto smallTit">
+            <div class="widthAuto">
                 <a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank">    
-                    <img src="{{ img_url('cop/visual/visual_190213.jpg') }}" alt="전국 4,000명 동시수강">   
+                    <img src="{{ img_url('cop/visual/youtubetab_tit.jpg') }}" alt="3법 300점, 공통 200점! 단기 합격까지!">   
                 </a>
             </div>
 

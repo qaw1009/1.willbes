@@ -100,8 +100,10 @@
     width: 216px;
 	height: 207px !important;
     margin-left: 10px;
+    margin-bottom: 10px;
 }
-.GA .Section .ProfBox li:first-child {
+.GA .Section .ProfBox li:first-child,
+.GA .Section .ProfBox li:nth-child(6) {
     margin-left: 0;
 }
 

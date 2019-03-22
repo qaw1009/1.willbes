@@ -41,7 +41,8 @@ class Home extends \app\controllers\FrontController
         }
 
         return $this->load->view('main', [
-            'data' => $data
+            'data' => $data,
+            'is_site_home' => true
         ]);
     }
 

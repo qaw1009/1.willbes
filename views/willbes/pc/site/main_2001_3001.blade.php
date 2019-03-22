@@ -22,7 +22,7 @@
                 </a>
             </div>
 
-            <div class="widthAuto mt80">
+            <div class="widthAuto">
                 <div class="youtubetabWrap">
                     <ul class="youtubetab">
                         <li>

@@ -29,7 +29,7 @@
     height: 400px;
     overflow: hidden;
   }
-  .gosi .VisualBox img {
+.gosi .VisualBox img {
     height: 400px;
     max-width: 1920px;
   }
@@ -47,7 +47,7 @@
     margin-left: -520px;
     bottom: 20px;
     text-align: left;
-    z-index: 10;
+    z-index: 100;
 }
 .gosi .bx-wrapper .bx-pager.bx-default-pager a {
     background: #ccc;
@@ -59,7 +59,7 @@
     margin-left:196px;
     top:10px;
     width: 364px;
-    z-index: 20;
+    z-index: 60;
 }
 
 .gosi .VisualsubBox .bSlider {
@@ -67,7 +67,6 @@
     width: 364px;
     height: 248px !important;
     overflow: hidden;
-    z-index: 1;
   }
 
 .gosi .VisualsubBox .bx-wrapper .bx-controls-auto {

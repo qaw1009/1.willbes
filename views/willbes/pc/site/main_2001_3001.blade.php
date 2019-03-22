@@ -137,7 +137,7 @@
                     <li>
                         <div class="curriculumBox">
                             <div class="Tit">문제풀이 과정</div>
-                            <div class="subTit">(?실전1+2+3단계)</div>
+                            <div class="subTit">(실전 1+2+3 단계)</div>
                             <ul class="info">
                                 <li>1단계 진도별 핵심정리</li>
                                 <li>2단계 전범위 동형모의고사</li>

@@ -460,7 +460,7 @@ abstract class FrontController extends BaseController
                 } else { // 파람이 없으면
                     $viewPC = $this->session->userdata('viewPC');
                     if ($viewPC != 1) { // 세션이 있으면
-                        redirect(front_url('/m/home/'));
+                        redirect(front_url('/m/home/index'));
                     }
                 }
             }

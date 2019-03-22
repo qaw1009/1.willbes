@@ -147,8 +147,8 @@
             </ul>
             <img src="/public/img/willbes/leave_army/la_on_02.jpg"  alt="" usemap="#Mappass02"/>
             <map name="Map" id="Mappass02">
-                <area shape="rect" coords="194,1063,398,1102" href="javascript:certOpen();"/>
-                <area shape="rect" coords="714,1063,922,1102" href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1113') }}" />
+                <area shape="rect" coords="194,1063,398,1102" href="javascript:certOpen();" alt="빠른 간편가입 및 인증"/>
+                <area shape="rect" coords="714,1063,922,1102" href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1113') }}" alt="윌비스 pass 구매"/>
             </map>
         </div>
         <div class="LAeventA03">

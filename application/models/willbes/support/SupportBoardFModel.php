@@ -211,7 +211,7 @@ class SupportBoardFModel extends BaseSupportFModel
         ]);
         $column = $column . ',b.BoardIsComment';
 
-        $result = $this->_conn->getListResult($this->_table['board'], $column, $arr_condition, $limit, $offset, $order_by);
+        $result = $this->_conn->getListResult($this->_table['board_find'], $column, $arr_condition, $limit, $offset, $order_by);
         //echo $this->_conn->last_query();exit;
         return element('0', $result, []);
     }
@@ -236,7 +236,7 @@ class SupportBoardFModel extends BaseSupportFModel
         ]);
 
         $from = "
-            FROM {$this->_table['board']}
+            FROM {$this->_table['board_find']}
             INNER JOIN (
                 SELECT SiteGroupCode
                 FROM {$this->_table['site']}
@@ -263,7 +263,7 @@ class SupportBoardFModel extends BaseSupportFModel
         ]);
 
         $from = "
-            FROM {$this->_table['board']}
+            FROM {$this->_table['board_find']}
             INNER JOIN (
                 SELECT SiteGroupCode
                 FROM {$this->_table['site']}
@@ -350,7 +350,7 @@ class SupportBoardFModel extends BaseSupportFModel
         $query_string = $this->_makePackageQueryString($arr_condition_pkg, $arr_condition_auth);
 
         $from = "
-            FROM {$this->_table['board']}
+            FROM {$this->_table['board_find']}
             INNER JOIN (
                 SELECT SiteGroupCode
                 FROM {$this->_table['site']}

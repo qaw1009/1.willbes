@@ -76,7 +76,7 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
                 'BoardIdx' => $board_idx,
             ]
         ]);
-        $result = $this->_conn->getListResult($this->_table['twoway_board'], $column, $arr_condition, $limit, $offset, $order_by);
+        $result = $this->_conn->getListResult($this->_table['twoway_board_find'], $column, $arr_condition, $limit, $offset, $order_by);
         //echo $this->_conn->last_query();exit;
         return element('0', $result, []);
     }
@@ -165,7 +165,7 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
         ]);
 
         $from = "
-            FROM {$this->_table['twoway_board']}
+            FROM {$this->_table['twoway_board_find']}
             INNER JOIN (
                 SELECT SiteGroupCode
                 FROM {$this->_table['site']}
@@ -372,7 +372,7 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
         $column = 'count(*) AS numrows';
 
         $from = "
-            from {$this->_table['twoway_board']}
+            from {$this->_table['twoway_board_find']}
         ";
 
         $where = $this->_conn->makeWhere($arr_condition);
@@ -416,7 +416,7 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
     {
         $column = 'SubjectIdx, SubjectName';
         $from = "
-            from {$this->_table['twoway_board']}
+            from {$this->_table['twoway_board_find']}
         ";
 
         $where = $this->_conn->makeWhere($arr_condition);

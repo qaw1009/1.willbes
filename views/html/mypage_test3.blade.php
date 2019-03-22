@@ -111,15 +111,24 @@
         <!-- willbes-Mypage-TESTZONE -->
 
         <div class="willbes-Leclist c_both mt60">
-            <div class="willbes-LecreplyList tx-gray c_both mt-zero">
-                <span class="willbes-Lec-Search willbes-SelectBox mb20 GM f_right">
-                    <div class="inputBox p_re">
-                        <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="모의고사명을 입력해 주세요" maxlength="30">
-                        <button type="submit" onclick="" class="search-Btn">
-                            <span>검색</span>
-                        </button>
-                    </div>
-                </span>
+            <div class="willbes-LecreplyList tx-gray c_both">
+                <ul class="widthAutoFull">
+                    <li class="f_left">
+                        지난 모의고사 성적결과 보기
+                        <a href="#none" class="btnAuto95 bg-black tx-white tx-center h30 d_inblock">경찰 ▶</a>
+                        <a href="#none" class="btnAuto95 bg-black tx-white tx-center h30 d_inblock">공무원 ▶</a>
+                    </li>
+                    <li class="f_right">
+                        <span class="willbes-Lec-Search">    
+                            <div class="inputBox p_re">
+                                <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="모의고사명을 입력해 주세요" maxlength="30">
+                                <button type="submit" onclick="" class="search-Btn">
+                                    <span>검색</span>
+                                </button>
+                            </div>
+                        </span>
+                    </li>
+                </ul>                
             </div>
             <div class="LeclistTable pointTable">
                 <table cellspacing="0" cellpadding="0" class="listTable testTable under-gray bdt-gray tx-gray">

@@ -9,9 +9,8 @@
             margin-bottom:0 !important;
         }
         .evtContent {
+            position:relative; 
             width:100% !important;
-            min-width:1210px !important;
-            background:#ccc;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
@@ -21,7 +20,7 @@
         /************************************************************/
 
         .rLnb {
-            position:absolute; width:190px; top:100px; right:10px; z-index:1;
+            position:fixed; width:190px; bottom:100px; right:10px; z-index:1;
         }
         .rLnb ul {background:#fff; border:1px solid #2f2f2f; margin-bottom:10px;
             -webkit-box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.21);
@@ -52,7 +51,7 @@
             line-height: 1.4;
         }
         .rLnb .typeB a {display:block; background:#000; color:#fff; border-radius: 20px; padding:8px 0; margin:0 20px}
-        .rLnb_sectionFixed {position:fixed; top:20px}
+
 
         .LAeventA01 {background:url(http://file3.willbes.net/new_gosi/2019/leave_army/la_on_top_bg.jpg) no-repeat center top; position:relative;}
         .LAeventA01 .main_img {position:absolute; width:601px; top:1000px; left:50%; margin-left:-488px; z-index:10; opacity:0;filter:alpha(opacity=0);-webkit-animation-duration: 1s;animation-duration: 1s;-webkit-animation-fill-mode: both;animation-fill-mode: both}
@@ -158,11 +157,11 @@
         <div class="rLnb">
             <ul class="typeA">
                 <li class="NSK-Black">서비스 바로가기</li>
-                <li><a href="/promotion/index/cate/3001/code/1111" class="menu1" target="_blank">인증센터</a></li>
-                <li><a href="/promotion/index/cate/3001/code/1116" class="menu2" target="_blank">서울 노량진 교육과정</a></li>
-                <li><a href="/promotion/index/cate/3001/code/1115" class="menu3" target="_blank">인천 부평 교육과정</a></li>
-                <li><a href="/promotion/index/cate/3001/code/1117" class="menu4" target="_blank">부산 서면 교육과정</a></li>
-                <li><a href="/promotion/index/cate/3001/code/1113" class="menu5">윌비스 PASS</a></li>
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1111') }}" class="menu1" target="_blank">인증센터</a></li>
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1116') }}" class="menu2" target="_blank">서울 노량진 교육과정</a></li>
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1115') }}" class="menu3" target="_blank">인천 부평 교육과정</a></li>
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1117') }}" class="menu4" target="_blank">부산 서면 교육과정</a></li>
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1113') }}" class="menu5">윌비스 PASS</a></li>
             </ul>
 
             <ul class="typeB">
@@ -193,7 +192,7 @@
 
 
             <div class="FreepassLec" id="passLec01">
-                <h3>군무원</h3>
+                <h3>군무원 | 윌비스 PASS</h3>
                 <div class="fpLecinfo">
                     <p>
                         2019년도 군무원 5,600명 확대 채용 예정 !<br />
@@ -209,7 +208,7 @@
                         <li><a href="#tab5">전자직</a></li>
                         <li><a href="#tab6">통신직</a></li>
                         <li><a href="#tab7">일반기계직</a></li>
-                        <li><a href="#tab8">총포직</a></li>
+                        <li><a href="#tab8">유도무기/총포직</a></li>
                     </ul>
                     <div id="tab1">
                         <table>
@@ -228,7 +227,7 @@
                                         <ul class="price">
                                             <li class="liSty1">990,000원</li>
                                             <li class="liSty2">본인부담 : 198,000원
-                                                <div>(* 직업능력개발 교육비 792,000원 지원)</div>
+                                                <div>(* 직업능력개발 교육비 792,000원 환급)</div>
                                             </li>
                                         </ul>
                                     </td>
@@ -237,14 +236,14 @@
                                     @if(empty($cert_apply))
                                         <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
                                     @else
-                                        <a href="javascript:go_product('{{front_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149336')}}',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                        <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149336')}}',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
                                     @endif
                                 </td>
                             </tr>
                             <tr>
                                 <th>행정직 교재 포함<br />
                                     구매가격<br />
-                                    (기본이론서)</th>
+                                    </th>
 
                                 @if(empty($cert_apply))
                                     <td class="before">
@@ -255,7 +254,7 @@
                                         <ul class="price">
                                             <li class="liSty1">1,190,000원</li>
                                             <li class="liSty2">본인부담 : 238,000원
-                                                <div>(* 직업능력개발 교육비 952,000원 지원)</div>
+                                                <div>(* 직업능력개발 교육비 952,000원 환급)</div>
                                             </li>
                                         </ul>
                                     </td>
@@ -265,7 +264,7 @@
                                     @if(empty($cert_apply))
                                         <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
                                     @else
-                                        <a href="javascript:go_product('{{front_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149337')}}',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                        <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149337')}}',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
                                     @endif
                                 </td>
                             </tr>
@@ -292,7 +291,7 @@
                                         <ul class="price">
                                             <li class="liSty1">990,000원</li>
                                             <li class="liSty2">본인부담 : 198,000원
-                                                <div>(* 직업능력개발 교육비 792,000원 지원)</div>
+                                                <div>(* 직업능력개발 교육비 792,000원 환급)</div>
                                             </li>
                                         </ul>
                                     </td>
@@ -302,14 +301,14 @@
                                     @if(empty($cert_apply))
                                         <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
                                     @else
-                                        <a href="javascript:go_product('{{front_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149338')}}',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                        <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149338')}}',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
                                     @endif
                                 </td>
                             </tr>
                             <tr>
                                 <th>군수직 교재 포함<br />
                                     구매가격<br />
-                                    (기본이론서)</th>
+                                    </th>
 
                                 @if(empty($cert_apply))
                                     <td class="before">
@@ -320,7 +319,7 @@
                                         <ul class="price">
                                             <li class="liSty1">1,190,000원</li>
                                             <li class="liSty2">본인부담 : 238,000원
-                                                <div>(* 직업능력개발 교육비 952,000원 지원)</div>
+                                                <div>(* 직업능력개발 교육비 952,000원 환급)</div>
                                             </li>
                                         </ul>
                                     </td>
@@ -329,7 +328,7 @@
                                     @if(empty($cert_apply))
                                         <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
                                     @else
-                                        <a href="javascript:go_product('{{front_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149339')}}',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                        <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149339')}}',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
                                     @endif
                                 </td>
                             </tr>
@@ -357,7 +356,7 @@
                                         <ul class="price">
                                             <li class="liSty1">990,000원</li>
                                             <li class="liSty2">본인부담 : 198,000원
-                                                <div>(* 직업능력개발 교육비 792,000원 지원)</div>
+                                                <div>(* 직업능력개발 교육비 792,000원 환급)</div>
                                             </li>
                                         </ul>
                                     </td>
@@ -367,14 +366,14 @@
                                     @if(empty($cert_apply))
                                         <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
                                     @else
-                                        <a href="javascript:go_product('{{front_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149340')}}',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                        <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149340')}}',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
                                     @endif
                                 </td>
                             </tr>
                             <tr>
                                 <th>토목직 교재 포함<br />
                                     구매가격<br />
-                                    (기본이론서)</th>
+                                    </th>
 
                                 @if(empty($cert_apply))
                                     <td class="before">
@@ -385,7 +384,7 @@
                                         <ul class="price">
                                             <li class="liSty1">1,190,000원</li>
                                             <li class="liSty2">본인부담 : 238,000원
-                                                <div>(* 직업능력개발 교육비 952,000원 지원)</div>
+                                                <div>(* 직업능력개발 교육비 952,000원 환급)</div>
                                             </li>
                                         </ul>
                                     </td>
@@ -395,7 +394,7 @@
                                     @if(empty($cert_apply))
                                         <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
                                     @else
-                                        <a href="javascript:go_product('{{front_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149341')}}',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                        <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149341')}}',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
                                     @endif
                                 </td>
                             </tr>
@@ -423,7 +422,7 @@
                                         <ul class="price">
                                             <li class="liSty1">990,000원</li>
                                             <li class="liSty2">본인부담 : 198,000원
-                                                <div>(* 직업능력개발 교육비 792,000원 지원)</div>
+                                                <div>(* 직업능력개발 교육비 792,000원 환급)</div>
                                             </li>
                                         </ul>
                                     </td>
@@ -433,14 +432,14 @@
                                     @if(empty($cert_apply))
                                         <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
                                     @else
-                                        <a href="javascript:go_product('{{front_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149342')}}',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                        <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149342')}}',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
                                     @endif
                                 </td>
                             </tr>
                             <tr>
                                 <th>전기직 교재 포함<br />
                                     구매가격<br />
-                                    (기본이론서)</th>
+                                    </th>
 
                                 @if(empty($cert_apply))
                                     <td class="before">
@@ -451,7 +450,7 @@
                                         <ul class="price">
                                             <li class="liSty1">1,190,000원</li>
                                             <li class="liSty2">본인부담 : 238,000원
-                                                <div>(* 직업능력개발 교육비 952,000원 지원)</div>
+                                                <div>(* 직업능력개발 교육비 952,000원 환급)</div>
                                             </li>
                                         </ul>
                                     </td>
@@ -461,7 +460,7 @@
                                     @if(empty($cert_apply))
                                         <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
                                     @else
-                                        <a href="javascript:go_product('{{front_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149343')}}',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                        <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149343')}}',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
                                     @endif
                                 </td>
                             </tr>
@@ -489,7 +488,7 @@
                                         <ul class="price">
                                             <li class="liSty1">990,000원</li>
                                             <li class="liSty2">본인부담 : 198,000원
-                                                <div>(* 직업능력개발 교육비 792,000원 지원)</div>
+                                                <div>(* 직업능력개발 교육비 792,000원 환급)</div>
                                             </li>
                                         </ul>
                                     </td>
@@ -499,14 +498,14 @@
                                     @if(empty($cert_apply))
                                         <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
                                     @else
-                                        <a href="javascript:go_product('{{front_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149344')}}',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                        <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149344')}}',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
                                     @endif
                                 </td>
                             </tr>
                             <tr>
                                 <th>전자직 교재 포함<br />
                                     구매가격<br />
-                                    (기본이론서)</th>
+                                    </th>
 
                                 @if(empty($cert_apply))
                                     <td class="before">
@@ -517,7 +516,7 @@
                                         <ul class="price">
                                             <li class="liSty1">1,190,000원</li>
                                             <li class="liSty2">본인부담 : 238,000원
-                                                <div>(* 직업능력개발 교육비 952,000원 지원)</div>
+                                                <div>(* 직업능력개발 교육비 952,000원 환급)</div>
                                             </li>
                                         </ul>
                                     </td>
@@ -526,7 +525,7 @@
                                     @if(empty($cert_apply))
                                         <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
                                     @else
-                                        <a href="javascript:go_product('{{front_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149345')}}',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                        <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149345')}}',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
                                     @endif
                                 </td>
                             </tr>
@@ -553,7 +552,7 @@
                                         <ul class="price">
                                             <li class="liSty1">990,000원</li>
                                             <li class="liSty2">본인부담 : 198,000원
-                                                <div>(* 직업능력개발 교육비 792,000원 지원)</div>
+                                                <div>(* 직업능력개발 교육비 792,000원 환급)</div>
                                             </li>
                                         </ul>
                                     </td>
@@ -563,14 +562,14 @@
                                     @if(empty($cert_apply))
                                         <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
                                     @else
-                                        <a href="javascript:go_product('{{front_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149346')}}',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                        <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149346')}}',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
                                     @endif
                                 </td>
                             </tr>
                             <tr>
                                 <th>통신직 교재 포함<br />
                                     구매가격<br />
-                                    (기본이론서)</th>
+                                    </th>
 
                                 @if(empty($cert_apply))
                                     <td class="before">
@@ -581,7 +580,7 @@
                                         <ul class="price">
                                             <li class="liSty1">1,190,000원</li>
                                             <li class="liSty2">본인부담 : 238,000원
-                                                <div>(* 직업능력개발 교육비 952,000원 지원)</div>
+                                                <div>(* 직업능력개발 교육비 952,000원 환급)</div>
                                             </li>
                                         </ul>
                                     </td>
@@ -591,7 +590,7 @@
                                     @if(empty($cert_apply))
                                         <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
                                     @else
-                                        <a href="javascript:go_product('{{front_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149347')}}',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                        <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149347')}}',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
                                     @endif
                                 </td>
                             </tr>
@@ -619,7 +618,7 @@
                                         <ul class="price">
                                             <li class="liSty1">990,000원</li>
                                             <li class="liSty2">본인부담 : 198,000원
-                                                <div>(* 직업능력개발 교육비 792,000원 지원)</div>
+                                                <div>(* 직업능력개발 교육비 792,000원 환급)</div>
                                             </li>
                                         </ul>
                                     </td>
@@ -628,14 +627,14 @@
                                     @if(empty($cert_apply))
                                         <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
                                     @else
-                                        <a href="javascript:go_product('{{front_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149348')}}',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                        <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149348')}}',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
                                     @endif
                                 </td>
                             </tr>
                             <tr>
                                 <th>일반기계직 교재 포함<br />
                                     구매가격<br />
-                                    (기본이론서)</th>
+                                    </th>
 
                                 @if(empty($cert_apply))
                                     <td class="before">
@@ -646,7 +645,7 @@
                                         <ul class="price">
                                             <li class="liSty1">1,190,000원</li>
                                             <li class="liSty2">본인부담 : 238,000원
-                                                <div>(* 직업능력개발 교육비 952,000원 지원)</div>
+                                                <div>(* 직업능력개발 교육비 952,000원 환급)</div>
                                             </li>
                                         </ul>
                                     </td>
@@ -656,7 +655,7 @@
                                     @if(empty($cert_apply))
                                         <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
                                     @else
-                                        <a href="javascript:go_product('{{front_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149349')}}',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                        <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149349')}}',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
                                     @endif
                                 </td>
                             </tr>
@@ -672,7 +671,8 @@
 
                             <!--인증후-->
                             <tr>
-                                <th>총포직 교재 미포함<br />
+                                <th>유도무기/총포직<br>
+                                    교재 미포함<br />
                                     구매가격</th>
 
                                 @if(empty($cert_apply))
@@ -684,7 +684,7 @@
                                         <ul class="price">
                                             <li class="liSty1">990,000원</li>
                                             <li class="liSty2">본인부담 : 198,000원
-                                                <div>(* 직업능력개발 교육비 792,000원 지원)</div>
+                                                <div>(* 직업능력개발 교육비 792,000원 환급)</div>
                                             </li>
                                         </ul>
                                     </td>
@@ -694,14 +694,15 @@
                                     @if(empty($cert_apply))
                                         <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
                                     @else
-                                        <a href="javascript:go_product('{{front_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149350')}}',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                        <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149350')}}',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
                                     @endif
                                 </td>
                             </tr>
                             <tr>
-                                <th>총포직 교재 포함<br />
+                                <th>유도무기/총포직<br />
+                                    교재 포함<br />
                                     구매가격<br />
-                                    (기본이론서)</th>
+                                    </th>
 
                                 @if(empty($cert_apply))
                                     <td class="before">
@@ -712,7 +713,7 @@
                                         <ul class="price">
                                             <li class="liSty1">1,190,000원</li>
                                             <li class="liSty2">본인부담 : 238,000원
-                                                <div>(* 직업능력개발 교육비 952,000원 지원)</div>
+                                                <div>(* 직업능력개발 교육비 952,000원 환급)</div>
                                             </li>
                                         </ul>
                                     </td>
@@ -722,7 +723,7 @@
                                     @if(empty($cert_apply))
                                         <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
                                     @else
-                                        <a href="javascript:go_product('{{front_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149351')}}',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                        <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149351')}}',0)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
                                     @endif
                                 </td>
                             </tr>
@@ -737,7 +738,7 @@
             </div><!--FreepassLec//-->
 
             <div class="FreepassLec" id="passLec02">
-                <h3>소방직</h3>
+                <h3>소방직 | 윌비스 PASS</h3>
                 <div class="fpLecinfo">
                     <p>
                         2019년도 소방공무원 5,200명 확대 채용 예정 ! <br />
@@ -773,14 +774,14 @@
                                 @if(empty($cert_apply))
                                     <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
                                 @else
-                                    <a href="javascript:go_product('{{front_url('/periodPackage/show/cate/3023/pack/648001/prod-code/149357')}}',1)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                    <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3023/pack/648001/prod-code/149357')}}',1)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
                                 @endif
                             </td>
                         </tr>
                         <tr>
                             <th>교재 포함<br />
                                 구매가격<br />
-                                (기본이론서)</th>
+                                </th>
 
                             @if(empty($cert_apply))
                                 <td class="before">
@@ -801,7 +802,7 @@
                                 @if(empty($cert_apply))
                                     <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
                                 @else
-                                    <a href="javascript:go_product('{{front_url('/periodPackage/show/cate/3023/pack/648001/prod-code/149356')}}',1)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                    <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3023/pack/648001/prod-code/149356')}}',1)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
                                 @endif
                             </td>
                         </tr>
@@ -814,7 +815,7 @@
             </div><!--FreepassLec//-->
 
             <div class="FreepassLec" id="passLec03">
-                <h3>기술직</h3>
+                <h3>기술직 | 윌비스 PASS</h3>
                 <div class="fpLecinfo">
                     <p>
                         직렬별 전문가로 구성된 기술직 TOP 교수진 !<br />
@@ -851,14 +852,14 @@
                                 @if(empty($cert_apply))
                                     <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
                                 @else
-                                    <a href="javascript:go_product('{{front_url('/periodPackage/show/cate/3028/pack/648002/prod-code/149355')}}',2)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                    <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3028/pack/648002/prod-code/149355')}}',2)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
                                 @endif
                             </td>
                         </tr>
                         <tr>
                             <th>교재 포함<br />
                                 구매가격<br />
-                                (기본이론서)</th>
+                                </th>
 
                             @if(empty($cert_apply))
                                 <td class="before">
@@ -879,7 +880,7 @@
                                 @if(empty($cert_apply))
                                     <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
                                 @else
-                                    <a href="javascript:go_product('{{front_url('/periodPackage/show/cate/3028/pack/648002/prod-code/149354')}}',2)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                    <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3028/pack/648002/prod-code/149354')}}',2)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
                                 @endif
                             </td>
                         </tr>
@@ -891,7 +892,7 @@
             </div><!--FreepassLec//-->
 
             <div class="FreepassLec" id="passLec04">
-                <h3>일반행정직</h3>
+                <h3>일반행정직 | 윌비스 PASS</h3>
                 <div class="fpLecinfo">
                     <p>
                         2019년도 공무원 3만 3,000명 확대 채용 예정 ! <br />
@@ -927,14 +928,14 @@
                                 @if(empty($cert_apply))
                                     <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
                                 @else
-                                    <a href="javascript:go_product('{{front_url('/periodPackage/show/cate/3019/pack/648001/prod-code/149353')}}',3)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                    <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/149353')}}',3)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
                                 @endif
                             </td>
                         </tr>
                         <tr>
                             <th>교재 포함<br />
                                 구매가격<br />
-                                (기본이론서)</th>
+                                </th>
 
                             @if(empty($cert_apply))
                                 <td class="before">
@@ -955,7 +956,7 @@
                                 @if(empty($cert_apply))
                                     <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
                                 @else
-                                    <a href="javascript:go_product('{{front_url('/periodPackage/show/cate/3019/pack/648001/prod-code/149352')}}',3)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                    <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/149352')}}',3)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
                                 @endif
                             </td>
                         </tr>
@@ -968,10 +969,10 @@
             </div><!--FreepassLec//-->
 
             <div class="FreepassLec" id="passLec05">
-                <h3>소방자격증 <span>※ 소방자격증의 경우 수강기간 1년 / 10만 포인트 지급</span></h3>
+                <h3>소방자격증 | 윌비스 PASS <span>※ 소방자격증의 경우 수강기간 1년 / 10만 포인트 지급</span></h3>
                 <div class="fpLecinfo">
                     <p>
-                        윌비스 <strong>×</strong> 대영소방전문학원 !<br />
+                        윌비스 × 대영소방전문학원 !<br />
                         소방자격증 스페셜리스트, 김종상 교수의 압도적인 강의력 !<br />
                         김종상 교수와 함께라면 소방자격증 단기간 취득 가능 !<br />
                         → 중/장기 복무 전역(예정) 간부 필수 취득 자격증
@@ -997,7 +998,7 @@
                                     <ul class="price">
                                         <li class="liSty1">1,090,000원</li>
                                         <li class="liSty2">본인부담 : 218,000원
-                                            <div>(* 직업능력개발 교육비 872,000원 환급원)</div>
+                                            <div>(* 직업능력개발 교육비 872,000원 환급)</div>
                                         </li>
                                     </ul>
                                 </td>
@@ -1007,7 +1008,7 @@
                                 @if(empty($cert_apply))
                                     <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
                                 @else
-                                    <a href="javascript:go_product('{{front_url('/periodPackage/show/cate/3023/pack/648001/prod-code/149359')}}',4)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                    <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3023/pack/648001/prod-code/149359')}}',4)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
                                 @endif
                             </td>
                         </tr>
@@ -1036,7 +1037,7 @@
                                 @if(empty($cert_apply))
                                     <a href="javascript:certOpen();"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn02.jpg" alt="가입인증하기"/></a>
                                 @else
-                                    <a href="javascript:go_product('{{front_url('/periodPackage/show/cate/3023/pack/648001/prod-code/149358')}}',4)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
+                                    <a href="javascript:go_product('{{site_url('/periodPackage/show/cate/3023/pack/648001/prod-code/149358')}}',4)"><img src="http://file3.willbes.net/new_gosi/2019/leave_army/la_btn01.jpg" alt="결제하기"/></a>
                                 @endif
                             </td>
                         </tr>
@@ -1052,8 +1053,8 @@
                 <img src="http://file3.willbes.net/new_gosi/2017/01/leaveArmyB05.png" alt="혹시, 원하시는 교육과정을 찾지 못하셨나요?"/>
                 <ul>
                     <li class="liSty1">교육과정바로가기 &gt;</li>
-                    <li><a target="_blank" href="#none">공무원 / 소방자격증</a></li>
-                    <li><a target="_blank" href="#none">경찰 / 해양경찰</a></li>
+                    <li><a href="#none">공무원 / 소방자격증</a></li>
+                    <li><a target="_blank" href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1121') }}">경찰</a></li>
                 </ul>
             </div>
         </div><!--LAeventB03//-->
@@ -1071,7 +1072,7 @@
                                 (전역 예정자 : vnet에 등록된 회원으로, 국방전직교육원 전직 기본 교육 수료자 / <br />
                                 전역자 : vnet 및 보훈(지)청에 등록된 회원으로 전역 후 3년이내 미취업자 또는 비정규직 취업자)</li>
                             <li>- 장교 및 준사관 또는 부사관 전역예정자 및 전역자<br />
-                                (취업역량교육비 : 전역 1년 전부터 사용가능 / 바우처 : 전역 후 3년 이내 사용가능)
+                                (직업능력개발 교육비 : 전역 1년 전부터 전역 후 3년 이내 사용 가능)
                             </li>
                         </ul>
                     </li>
@@ -1082,8 +1083,16 @@
                     </li>
                     <li><strong>제대군인지원센터 직업훈련비 제출서류</strong>
                         <ul>
-                            <li>① 직업훈련계획서 <a href='{{ site_url('/promotion/download?path=').urlencode('/public/uploads/willbes/event/직업훈련계획서_2018년.hwp').'&fname='.urlencode('직업훈련계획서_2018년.hwp') }}' target="_blank">다운로드</a></li>
-                            <li>② 교육비 지원신청서  <a href='{{ site_url('/promotion/download?path=').urlencode('/public/uploads/willbes/event/교육비지원신청서_2018년.hwp').'&fname='.urlencode('교육비지원신청서_2018년.hwp') }}' target="_blank">다운로드</a></li>
+                            @if (empty($file_data_promotion) === false)
+                                @foreach($file_data_promotion as $key => $row)
+                                    <li> {{ $arrCircle[$key] }} {{ $row['FileRealName'] }}
+                                        <a href="{{front_url('/promotion/download?file_idx=').$row['EfIdx'].'&event_idx='.$data['ElIdx'] }}" class="file-download ml-5" target="_blank">
+                                            다운로드
+                                        </a>
+                                    </li>
+                                @endforeach
+                                {{--{{$file_data['F']['file_real_name']}}--}}
+                            @endif
                             <li>③ 교육비납부 영수증(카드명세표 또는 현금영수증) 1부</li>
                             <li>※ ①~③번 제출서류의 경우 교육시작일로부터 7일 이내 서류제출</li>
                             <li>교육과정 이수,  교육훈련과정 수료 후 14일 이내에 수료증 또는 교육수료 확인서 제출</li>
@@ -1104,8 +1113,8 @@
                 <div class="fpcontentinfo1">
                     <p>상품구성</p>
                     <ol>
-                        <li>본 상품은 '일반행정직/ 기술직/ 경찰직/ 소방직/ 군무원'를 구분하여 상품을 선택하셔야 합니다.</li>
-                        <li>선택한 윌비스 PASS 상품의 표기된 기간 동안 동영상 전 강좌를 무제한 수강 할  수 있습니다.</li>
+                        <li>본 상품은 ‘일반행정직 / 기술직 / 경찰직 / 소방직 / 군무원 / 소방자격증’으로 구분하여 상품을 선택하셔야 합니다.</li>
+                        <li>선택한 윌비스 PASS 상품의 표기된 기간 동안 동영상 전 강좌를 무제한 수강할 수 있습니다. 단, 소방자격증은 수강기간 1년(무제한 수강 가능)으로 제한합니다.</li>
                         <li>경찰직 윌비스 PASS의 경우 한국사 과목은 교수님 1명을 선택하셔야 합니다.(변경불가)</li>
                         <li>윌비스 PASS 강좌는 결제 완료되는 즉시 수강이 시작됩니다.  </li>
                         <li>학원 운영상 과목별 교수진 변동이 있을 수 있습니다.</li>
@@ -1125,9 +1134,10 @@
                         <li>갤럭시 탭 포함 <br />
                             갤럭시 탭 포함 상품을 구매한 경우 결제일로부터 3~4일 이내(주말 및 공휴일 제외) 받아보실 수 있습니다.<br />
                             갤럭시 탭 A/S는 가까운 삼성전자 서비스센터를 방문하시면 A/S가 가능합니다.(상품 A/S 문의전화 : 1588-3366)</li>
-                        <li>교재(기본이론서) 구매지원 포함<br />
-                            교재 구매지원 상품을 구매한 경우  윌비스 PASS 수강강좌의 기본이론서 교재구매가능 20만 포인트가 제공됩니다.<br />
-                            해당 포인트로 해당 교수님 기본이론서 교재를 별도로 신청하셔야 합니다.</li>
+                        <li>교재 구매지원 포함<br />
+                            교재 구매지원 상품을 구매한 경우 윌비스 PASS 수강강좌의 교재구매가능 20만 포인트가 제공됩니다. (단, 소방자격증은 10만 포인트 지급)
+                            지급된 포인트로 해당 교수님 교재를 별도로 신청하셔야 합니다.
+                        </li>
                     </ol>
                     <p>교재구매</p>
                     <ol>
@@ -1274,31 +1284,5 @@
 
                     e.preventDefault()})})}
         );
-    </script>
-
-    <script>
-        $(function(e){
-            var targetOffset= $("#evtContainer").offset().top;
-            $('html, body').animate({scrollTop: targetOffset}, 700);
-            /*e.preventDefault(); */
-        });
-
-        $(function(){
-            var vi = 0;  // 하단에 메뉴 표시할 스크롤 위치값 지정
-            var nav_y = $(".rLnb").offset().top + $(".rLnb").height();
-
-            $(window).scroll(function(){
-                var num = $(window).scrollTop();
-                if( num > nav_y ){
-                    if( num > vi ){
-                        $(".rLnb").css({"position":"fixed","top":"20px","rigth":"20px"}).fadeIn();
-                    }else{
-                        $(".rLnb").fadeOut();
-                    }
-                }else{
-                    $(".rLnb").finish().css({"top":"100px"});
-                }
-            });
-        });
     </script>
 @stop

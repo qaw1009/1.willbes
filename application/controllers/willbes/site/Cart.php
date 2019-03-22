@@ -116,7 +116,7 @@ class Cart extends \app\controllers\FrontController
 
         if ($learn_pattern == 'adminpack_lecture') {
             // 운영자 일반형 패키지 연결 단강좌 조회
-            $pack_data = $this->packageFModel->findProductByProdCode('adminpack_lecture', $group_prod_code);
+            $pack_data = $this->packageFModel->findProductByProdCode('adminpack_lecture', $group_prod_code, '', ['EQ' => ['IsUse' => 'Y']]);
             if (empty($pack_data) === false && $pack_data['PackTypeCcd'] === $this->cartFModel->_adminpack_lecture_type_ccd['normal']) {
                 $input_prod_code = explode(',', $pack_data['ProdCodeSub']);
             }

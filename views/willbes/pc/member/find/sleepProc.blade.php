@@ -17,7 +17,7 @@
                 이용과 관련한 궁금한 점이 있으실 경우 <a href="#none" class="tx-blue">윌비스 고객센터</a>로 문의주시기 바랍니다.
             </div>
             <div class="searchclear-Btn btnAuto180 mt50 h36">
-                <button type="button" onclick="location.replace('{{front_app_url('/member/loginform/', 'www')}}');" class="mem-Btn bg-blue bd-dark-blue">
+                <button type="button" onclick="location.replace('{{front_app_url('/member/login/', 'www')}}');" class="mem-Btn bg-blue bd-dark-blue">
                     <span>로그인페이지</span>
                 </button>
             </div>

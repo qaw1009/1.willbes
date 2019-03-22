@@ -164,17 +164,17 @@
                                     @endif
                                     <input type="hidden" name="SaleTypeCcd[]" id="SaleTypeCcd_{{$key}}" value="{{$key}}">
                                     <input type="hidden" name="SalePriceIsUse[]" id="SalePriceIsUse_{{$key}}" value="Y">
-                                    [정상가] <input type="number" name="SalePrice[]" id="SalePrice_{{$key}}" value="{{$SalePrice}}"   maxlength="8" class="form-control" onkeyup="priceCheck('{{$key}}')" @if($key=="613001")required="required"@endif title="정상가"> 원
+                                    [정상가] <input type="number" name="SalePrice[]" id="SalePrice_{{$key}}" value="{{$SalePrice}}"   maxlength="8" class="form-control" onkeyup="priceCheck('{{$key}}')" @if($key=="613001")required="required" @endif title="정상가"> 원
                                     &nbsp;&nbsp;
                                     [할인율]
                                     <select name="SaleDiscType[]" id="SaleDiscType_{{$key}}" class="form-control" onchange="priceCheck('{{$key}}')">
                                         <option value="R" @if($SaleDiscType == 'R') selected="selected"@endif>%</option>
                                         <option value="P" @if($SaleDiscType == 'p') selected="selected"@endif>-</option>
                                     </select>&nbsp;
-                                    <input type="number" name="SaleRate[]" id="SaleRate_{{$key}}"  value="@if($method=="POST"){{0}}@else{{$SaleRate}}@endif" maxlength="8" class="form-control" onkeyup="priceCheck('{{$key}}')" @if($key=="613001")required="required"@endif title="할인">
+                                    <input type="number" name="SaleRate[]" id="SaleRate_{{$key}}"  value="@if($method=="POST"){{0}}@else{{$SaleRate}}@endif" maxlength="8" class="form-control" onkeyup="priceCheck('{{$key}}')" @if($key=="613001")required="required" @endif title="할인">
                                     &nbsp;&nbsp;
                                     [판매가]
-                                    <input type="number" name="RealSalePrice[]" id="RealSalePrice_{{$key}}"  value="{{$RealSalePrice}}" readonly class="form-control" @if($key=="613001")required="required"@endif title="판매가"> 원
+                                    <input type="number" name="RealSalePrice[]" id="RealSalePrice_{{$key}}"  value="{{$RealSalePrice}}" readonly class="form-control" @if($key=="613001")required="required" @endif title="판매가"> 원
                                     </tr>
                                 @endif
                             @endforeach
@@ -207,7 +207,7 @@
                                 @if($row['IsEssential'] ==='Y')
                                     <tr name='essLecTrId' id='essLecTrId{{$loop->index}}'>
                                         <input type='hidden'  name='ProdCodeSub[]' id='ProdCodeSub{{$loop->index}}' value='{{$row['ProdCodeSub']}}'>
-                                        <input type='hidden'  name='essLecAddCheck[]' id='essLecAddCheck{{$loop->index}}' value=Y'>
+                                        <input type='hidden'  name='essLecAddCheck[]' id='essLecAddCheck{{$loop->index}}' value='Y'>
                                         <input type='hidden'  name='IsEssential[]' id='IsEssential{{$loop->index}}' value='Y'>
                                         <td>
                                             <select name='SubGroupName[]' id='SubGroupNamel{{$loop->index}}' class="form-control mr-10">
@@ -258,7 +258,7 @@
                                 @if($row['IsEssential'] !=='Y')
                                     <tr name='selLecTrId' id='selLecTrId{{$loop->index}}'>
                                         <input type='hidden'  name='ProdCodeSub[]' id='ProdCodeSub{{$loop->index}}' value='{{$row['ProdCodeSub']}}'>
-                                        <input type='hidden'  name='selLecAddCheck[]' id='selLecAddCheck{{$loop->index}}' value=Y'>
+                                        <input type='hidden'  name='selLecAddCheck[]' id='selLecAddCheck{{$loop->index}}' value='Y'>
                                         <input type='hidden'  name='IsEssential[]' id='IsEssential{{$loop->index}}' value='N'>
                                         <td>
                                             <select name='SubGroupName[]' id='SubGroupNamel{{$loop->index}}' class="form-control mr-10">
@@ -316,7 +316,7 @@
                     <label class="control-label col-md-2">수강제한기기개수 <span class="required">*</span>
                     </label>
                     <div class="col-md-10 form-inline item">
-                        <input type="number" name="DeviceLimitCount" id="DeviceLimitCount"  class="form-control" required="required" title="수강제한기기개수" style="width:50px;" maxlength="2" @if($method==='POST') value="0" @else value="{{$data['DeviceLimitCount']}}" @endif"> 개
+                        <input type="number" name="DeviceLimitCount" id="DeviceLimitCount"  class="form-control" required="required" title="수강제한기기개수" style="width:50px;" maxlength="2" value="@if($method==='POST'){{0}}@else{{$data['DeviceLimitCount']}}@endif"> 개
                         &nbsp;&nbsp;
                         •아이디 기준 수강 가능한 기기 개수 입력 (모바일,PC 구분없이 수강 가능하게 처리)
                     </div>
@@ -396,17 +396,21 @@
                     <label class="control-label col-md-2" for="IsPoint">결제포인트적립 <span class="required">*</span>
                     </label>
                     <div class="col-md-4 form-inline">
-                        <input type="hidden" name="PointApplyCcd" id="PointApplyCcd" value="635001">
-                        <input type="radio" name="IsPoint" class="flat" value="Y" required="required" title="결제포인트적립" @if($method == 'POST' || $data['IsPoint']=='Y')checked="checked"@endif/> 가능
+                        <input type="radio" name="IsPoint" class="flat" value="Y" required="required" title="결제포인트적립" @if($data['IsPoint']=='Y')checked="checked"@endif/> 가능
                         [
-                        <input type='number' name='PointSavePrice' value='@if($method==="POST"){{1}}@else{{$data['PointSavePrice']}}@endif' title="결제포인트적립" class="form-control" size="2" required="required" >
+                        <select name="PointApplyCcd" id="PointApplyCcd"  class="form-control" title="포인트지급타입">
+                            @foreach($pointapply_ccd as $key => $val)
+                                <option value="{{$key}}" @if($data['PointApplyCcd'] == $key) selected="selected" @endif>{{$val}}</option>
+                            @endforeach
+                        </select>
+                        <input type='number' name='PointSavePrice' value='@if($method==="POST"){{0}}@else{{$data['PointSavePrice']}}@endif' title="결제포인트적립" class="form-control" size="5" required="required" >
                         <select name="PointSaveType" id="PointSaveType" class="form-control">
                             <option value="R" @if($data['PointSaveType'] == 'R')selected="selected"@endif>%</option>
                             <option value="P" @if($data['PointSaveType'] == 'P')selected="selected"@endif>원</option>
                         </select> 적립
                         ]
                         &nbsp;&nbsp;
-                        <input type="radio" name="IsPoint" class="flat" value="N" @if($data['IsPoint']=='N')checked="checked"@endif/> 불가능
+                        <input type="radio" name="IsPoint" class="flat" value="N" @if($method == 'POST' || $data['IsPoint']=='N')checked="checked"@endif/> 불가능
 
                     </div>
                 </div>
@@ -416,9 +420,9 @@
                     </label>
                     <div class="col-md-10 form-inline item" >
                         <div class="radio">
-                            <input type="radio" name="IsLecStart" class="flat" value="Y" required="required" title="강좌시작일설정" @if($method == 'POST' || $data['IsLecStart']=='Y')checked="checked"@endif/> 가능
+                            <input type="radio" name="IsLecStart" class="flat" value="Y" required="required" title="강좌시작일설정" @if($data['IsLecStart']=='Y')checked="checked"@endif/> 가능
                             &nbsp;&nbsp;
-                            <input type="radio" name="IsLecStart" class="flat" value="N" title="강좌시작일설정" @if($data['IsLecStart']=='N')checked="checked"@endif/> 불가능
+                            <input type="radio" name="IsLecStart" class="flat" value="N" title="강좌시작일설정" @if($method == 'POST' || $data['IsLecStart']=='N')checked="checked"@endif/> 불가능
                             &nbsp;
                             •수강기간설정 조건이 '수강기간'일 경우 시작일이 개강일보다 빠르면 개강일에 맞춰 자동 시작
                         </div>
@@ -430,7 +434,7 @@
                     </label>
                     <div class="col-md-10 form-inline item" >
                         <div class="radio">
-                            <input type="radio" name="IsPause" class="flat" value="Y" required="required" title="일시정지설정" @if($method == 'POST' || $data['IsPause']=='Y')checked="checked"@endif/> 가능
+                            <input type="radio" name="IsPause" class="flat" value="Y" required="required" title="일시정지설정" @if($data['IsPause']=='Y')checked="checked"@endif/> 가능
                             [
                             총
                             <select name="PauseNum" id="PauseNum" class="form-control">
@@ -440,7 +444,7 @@
                             </select>
                             회
                             ]
-                            <input type="radio" name="IsPause" class="flat" value="N" @if($data['IsPause']=='N')checked="checked"@endif/> 불가능
+                            <input type="radio" name="IsPause" class="flat" value="N" @if($method == 'POST' || $data['IsPause']=='N')checked="checked"@endif/> 불가능
                             &nbsp;
                             •일시정지는 수강 잔여기간 내에서만 설정 가능
                         </div>
@@ -452,7 +456,7 @@
                     </label>
                     <div class="col-md-10 form-inline item" >
                         <div class="radio">
-                            <input type="radio" name="IsExten" class="flat" value="Y" required="required" title="수강연장신청" @if($method == 'POST' || $data['IsExten']=='Y')checked="checked"@endif/> 가능
+                            <input type="radio" name="IsExten" class="flat" value="Y" required="required" title="수강연장신청" @if($data['IsExten']=='Y')checked="checked"@endif/> 가능
                             [
                             총
                             <select name="ExtenNum" id="ExtenNum" class="form-control">
@@ -462,7 +466,7 @@
                             </select>
                             회
                             ]
-                            <input type="radio" name="IsExten" class="flat" value="N" @if($data['IsExten']=='N')checked="checked"@endif/> 불가능
+                            <input type="radio" name="IsExten" class="flat" value="N" @if($method == 'POST' || $data['IsExten']=='N')checked="checked"@endif/> 불가능
                             &nbsp;
                             •수강연장은 본 강좌 수강기간의 50% 범위 내에서만 가능
                         </div>
@@ -473,13 +477,13 @@
                     <label class="control-label col-md-2" for="IsRetake">재수강신청 <span class="required">*</span>
                     </label>
                     <div class="col-md-10 form-inline">
-                        <input type="radio" name="IsRetake" class="flat" value="Y" required="required" title="재수강신청" @if($method == 'POST' || $data['IsRetake']=='Y')checked="checked"@endif/> 가능
+                        <input type="radio" name="IsRetake" class="flat" value="Y" required="required" title="재수강신청" @if($data['IsRetake']=='Y')checked="checked"@endif/> 가능
                         &nbsp;&nbsp;
                         [할인율] <input type="number" name="RetakeSaleRate" id="RetakeSaleRate" value="@if($method == 'POST'){{0}}@else{{$data['RetakeSaleRate']}}@endif" class="form-control" size="2"> %
                         &nbsp;&nbsp;
                         [신청가능기간] 수강종료 후 <input type='number' name='RetakePeriod' value='{{$data['RetakePeriod']}} ' class="form-control" size="2"> 일까지 ]
                         &nbsp;&nbsp;
-                        <input type="radio" name="IsRetake" class="flat" value="N" @if($data['IsRetake']=='N')checked="checked"@endif/> 불가능
+                        <input type="radio" name="IsRetake" class="flat" value="N" @if($method == 'POST' || $data['IsRetake']=='N')checked="checked"@endif/> 불가능
                     </div>
                 </div>
 
@@ -488,9 +492,9 @@
                     </label>
                     <div class="col-md-10 form-inline item" >
                         <div class="radio">
-                            <input type="radio" name="IsRefund" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['IsRefund']=='Y')checked="checked"@endif/> 가능
+                            <input type="radio" name="IsRefund" class="flat" value="Y" required="required" title="사용여부" @if($data['IsRefund']=='Y')checked="checked"@endif/> 가능
                             &nbsp;&nbsp;
-                            <input type="radio" name="IsRefund" class="flat" value="N" @if($data['IsRefund']=='N')checked="checked"@endif/> 불가능
+                            <input type="radio" name="IsRefund" class="flat" value="N" @if($method == 'POST' || $data['IsRefund']=='N')checked="checked"@endif/> 불가능
                             &nbsp;&nbsp;&nbsp;&nbsp;• 내강의실에서 사용자가 직접 환불신청 가능한지 여부
                         </div>
                     </div>
@@ -917,7 +921,7 @@
                 if($("#site_code").val() == "") {alert("운영사이트를 선택해 주세요.");$("#site_code").focus();return;}
                 $('#'+id).setLayer({
                     'url' : '{{ site_url('common/searchLecture/')}}'+'?site_code='+$("#site_code").val()+'&LearnPatternCcd=615001&locationid='+id+'&ProdCode='+$('#ProdCode').val()+'&cate_code='+$('#cate_code').val()
-                    ,'width' : 1200
+                    ,'width' : 1300
                 })
             });
 
@@ -956,6 +960,7 @@
                 getEditorBodyContent($editor_2);
                 getEditorBodyContent($editor_3);
                 getEditorBodyContent($editor_4);
+
 
                 var _url = '{{ site_url('/product/on/packagePeriod/store') }}';
                 ajaxSubmit($regi_form, _url, function(ret) {

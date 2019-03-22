@@ -27,6 +27,7 @@ class BaseOrderModel extends WB_Model
         'product_r_product' => 'lms_product_r_product',
         'product_r_autocoupon' => 'lms_product_r_autocoupon',
         'product_professor_concat' => 'vw_product_r_professor_concat',
+        'product_professor_concat_repr' => 'vw_product_r_professor_concat_repr',
         'professor' => 'lms_professor',
         'professor_calculate_rate' => 'lms_professor_calculate_rate',
         'pms_professor' => 'wbs_pms_professor',
@@ -67,6 +68,9 @@ class BaseOrderModel extends WB_Model
 
     // 판매가능 공통코드 (판매가능, 판매중, 접수중 (학원 단과, 종합반 접수상태))
     public $_available_sale_status_ccd = ['product' => '618001', 'book' => '112001', 'accept' => '675002'];
+
+    // 포인트적용 공통코드 (전체, 강좌, 교재)
+    public $_point_apply_ccd = ['all' => '635001', 'lecture' => '635002', 'book' => '635003'];
 
     // 결제채널 공통코드
     public $_pay_channel_ccd = ['pc' => '669001', 'm' => '669002', 'app' => '669003'];

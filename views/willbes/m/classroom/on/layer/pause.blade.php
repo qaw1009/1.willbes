@@ -40,7 +40,7 @@
                         {{$lec['ProdName']}}
                     </div>
                     <dl class="w-info tx-gray">
-                        <dt>잔여기간 : <span class="tx-light-blue">{{$lec['remainDays']}}span>일 ({{$lec['LecStartDate']}}~{{$lec['RealLecEndDate']}})</dt>
+                        <dt>잔여기간 : <span class="tx-light-blue">{{$lec['remainDays']}}<span>일 ({{$lec['LecStartDate']}}~{{$lec['RealLecEndDate']}})</dt>
                     </dl>
                     <div class="w-s-date">
                         @if($lec['PauseCount'] >= $lec['PauseNum'])

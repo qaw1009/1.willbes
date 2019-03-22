@@ -76,7 +76,7 @@ class PackageAdminModel extends CommonLectureModel
 
 
     /**
-     * 강좌목록추출 [강사식별자 기준]
+     * T-PASS 강좌목록추출 [강사식별자 기준]
      * @param $is_count
      * @param $prof_idx
      * @param array $arr_condition
@@ -85,7 +85,7 @@ class PackageAdminModel extends CommonLectureModel
      * @param array $order_by
      * @return mixed
      */
-    public function listLectureForProf($is_count, $prof_idx, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    public function listLectureForProfByTpass($is_count, $prof_idx, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         if ($is_count === true) {
             $column = 'count(*) AS numrows';
@@ -119,7 +119,7 @@ class PackageAdminModel extends CommonLectureModel
                         SELECT b.ProdCode
                         FROM lms_product_division AS a
                         join lms_product_lecture AS b ON a.ProdCode = b.ProdCode AND b.LearnPatternCcd = \'615003\'
-                        WHERE a.ProfIdx = '.$prof_idx.' AND a.IsStatus = \'Y\'
+                        WHERE a.ProfIdx = '.$prof_idx.' AND a.IsStatus = \'Y\' AND b.IsTpass = \'Y\'
                         GROUP BY b.ProdCode
                         ) AS temp_a ON A.ProdCode = temp_a.ProdCode
                         left outer join lms_sys_code Aa on A.SaleStatusCcd = Aa.Ccd and Aa.IsStatus=\'Y\'

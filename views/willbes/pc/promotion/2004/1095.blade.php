@@ -44,30 +44,19 @@
             top:200px;
             right:10px;
             width:100px;
-            animation:upDown 1s infinite;
-            -webkit-animation:upDown 1s infinite;
             z-index:10;
         }
         .skybanner div {margin-bottom:10px}
 
-        @@keyframes upDown{
-             from{margin-top:0}
-             60%{margin-top:-30px}
-             to{margin-top:0}
-         }
-        @@-webkit-keyframes upDown{
-             from{margin-top:0}
-             60%{margin-top:-30px}
-             to{margin-top:0}
-         }
+
 
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner">
-            <div><a href="http://www.willbesgosi.net/notice/view.html?topMenuType=F&topMenuGnb=FM_008&topMenu=002&menuID=FM_008_004&BOARD_MNG_SEQ=&NOTICETYPE=event&INCTYPE=view&currentPage=1&BOARD_SEQ=&PARENT_BOARD_SEQ=&searchEventNo=1001&SEARCHKIND=&SEARCHTEXT="><img  src="http://file3.willbes.net/new_gosi/2019/02/EV190121Y_sky01.jpg" alt="환승 이벤트"></a></div>
-            <div><a href="http://www.willbesgosi.net/counsel/counsel_step1.html?BOARDTYPE=counselReserve&INCTYPE=counsel_step1&BOARD_MNG_SEQ=CR_000&topMenuType=F&topMenuGnb=FM_006&topMenu=001&topMenuName=9%EA%B8%89%20%EA%B3%B5%EB%AC%B4%EC%9B%90&menuID=FM_006_002"><img  src="http://file3.willbes.net/new_gosi/2019/02/EV181115_sky2.png" alt="환승 이벤트"></a></div>
-            <div><a href="https://pf.kakao.com/_kcZIu/chat"><img src="http://file3.willbes.net/new_gosi/2019/02/EV190121Y_sky02.jpg" alt="환승 이벤트" border="0"></a></div>
+            <!--div><a href="{{ site_url('#none') }}" target="_blank"><img src="http://file3.willbes.net/new_gosi/2019/02/EV190121Y_sky01.jpg" alt="9급 설명회"></a></div-->
+            <div><a href="{{ site_url('/pass/consultManagement/index') }}" target="_blank"><img  src="http://file3.willbes.net/new_gosi/2019/02/EV181115_sky2.png" alt="1:1"></a></div>
+            <div><a href="https://pf.kakao.com/_kcZIu/chat" target="_blank"><img src="http://file3.willbes.net/new_gosi/2019/02/EV190121Y_sky02.jpg" alt="카카오"></a></div>
         </div>
 
         <!-- 타이머 -->
@@ -95,7 +84,7 @@
         <!-- 타이머 //-->
 
         <div class="evtCtnsBox wb_top" >
-            <img src="http://file3.willbes.net/new_gosi/2019/02/190208_final_01.png" alt="윌비스 파이널 모의고사"  />
+            <img src="http://file3.willbes.net/new_gosi/2019/03/190318_final_01.png" alt="윌비스 파이널 모의고사"  />
         </div><!--WB_top//-->
 
         <div class="evtCtnsBox wb_cts01" >
@@ -113,82 +102,76 @@
         </div><!--wb_cts03//-->
 
         <div class="evtCtnsBox wb_cts04" >
-            <a href="http://www.willbesgosi.net/lecture/passLectureList.html?topMenuType=F&leftMenuLType=M0102&lecKType=D&topMenuType=F&topMenuGnb=FM_001&topMenu=001&topMenuName=9%EA%B8%89%EA%B3%B5%EB%AC%B4%EC%9B%90&menuID=FM_012_004&searchCategoryCode=001"><img src="http://file3.willbes.net/new_gosi/2019/02/190208_final_06.png" border="0" /></a>
+            <a href="{{ site_url('/pass/offLecture/index?cate_code=3043&course_idx=1062') }}" target="_blank"><img src="http://file3.willbes.net/new_gosi/2019/02/190208_final_06.png" border="0" /></a>
         </div><!--wb_cts04//-->
 
     </div>
     <!-- End Container -->
 
-    <script>
+    <script>       
         /*타이머*/
         var DdayDiff = { //타이머를 설정합니다.
-            inDays: function(dd1, dd2) {
-                var tt2 = dd2.getTime();
-                var tt1 = dd1.getTime();
-
-                return Math.floor((tt2-tt1) / (1000 * 60 * 60 * 24));
-            },
-
-            inWeeks: function(dd1, dd2) {
-                var tt2 = dd2.getTime();
-                var tt1 = dd1.getTime();
-
-                return parseInt((tt2-tt1)/(24*3600*1000*7));
-            },
-
-            inMonths: function(dd1, dd2) {
-                var dd1Y = dd1.getFullYear();
-                var dd2Y = dd2.getFullYear();
-                var dd1M = dd1.getMonth();
-                var dd2M = dd2.getMonth();
-
-                return (dd2M+12*dd2Y)-(dd1M+12*dd1Y);
-            },
-
-            inYears: function(dd1, dd2) {
-                return dd2.getFullYear()-dd1.getFullYear();
+                inDays: function(dd1, dd2) {
+                    var tt2 = dd2.getTime();
+                    var tt1 = dd1.getTime();
+        
+                    return Math.floor((tt2-tt1) / (1000 * 60 * 60 * 24));
+                },
+        
+                inWeeks: function(dd1, dd2) {
+                    var tt2 = dd2.getTime();
+                    var tt1 = dd1.getTime();
+        
+                    return parseInt((tt2-tt1)/(24*3600*1000*7));
+                },
+        
+                inMonths: function(dd1, dd2) {
+                    var dd1Y = dd1.getFullYear();
+                    var dd2Y = dd2.getFullYear();
+                    var dd1M = dd1.getMonth();
+                    var dd2M = dd2.getMonth();
+        
+                    return (dd2M+12*dd2Y)-(dd1M+12*dd1Y);
+                },
+        
+                inYears: function(dd1, dd2) {
+                    return dd2.getFullYear()-dd1.getFullYear();
+                }
             }
-        }
-
-        function daycountDown() {
-            // 한달 전 날짜로 셋팅
-            event_day = new Date(2019,2,4,23,59,59);
-            now = new Date();
-            var timeGap = new Date(0, 0, 0, 0, 0, 0, (event_day - now));
-
-            var Monthleft = event_day.getMonth() - now.getMonth();
-            var Dateleft = DdayDiff.inDays(now, event_day);
-            var Hourleft = timeGap.getHours();
-            var Minuteleft = timeGap.getMinutes();
-            var Secondleft = timeGap.getSeconds();
-
-            //alert(Monthleft+"-"+Dateleft+"-"+Hourleft+"-"+Minuteleft+"-"+Secondleft)
-
-            if((event_day.getTime() - now.getTime()) > 0) {
-                $("#dd1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Dateleft/10) + ".png");
-                $("#dd2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Dateleft%10) + ".png");
-
-                $("#hh1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Hourleft/10) + ".png");
-                $("#hh2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Hourleft%10) + ".png");
-
-                $("#mm1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Minuteleft/10) + ".png");
-                $("#mm2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Minuteleft%10) + ".png");
-
-                $("#ss1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Secondleft/10) + ".png");
-                $("#ss2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Secondleft%10) + ".png");
-                setTimeout(daycountDown, 1000);
+        
+            function daycountDown() {
+                // 한달 전 날짜로 셋팅 
+                event_day = new Date(2019,2,4,23,59,59);
+                now = new Date();
+                var timeGap = new Date(0, 0, 0, 0, 0, 0, (event_day - now)); 
+                
+                var Monthleft = event_day.getMonth() - now.getMonth();
+                var Dateleft = DdayDiff.inDays(now, event_day);
+                var Hourleft = timeGap.getHours();
+                var Minuteleft = timeGap.getMinutes(); 
+                var Secondleft = timeGap.getSeconds();
+        
+                //alert(Monthleft+"-"+Dateleft+"-"+Hourleft+"-"+Minuteleft+"-"+Secondleft)
+        
+                if((event_day.getTime() - now.getTime()) > 0) {
+                    $("#dd1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Dateleft/10) + ".png");
+                    $("#dd2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Dateleft%10) + ".png");
+        
+                    $("#hh1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Hourleft/10) + ".png");
+                    $("#hh2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Hourleft%10) + ".png");
+        
+                    $("#mm1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Minuteleft/10) + ".png");
+                    $("#mm2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Minuteleft%10) + ".png");
+        
+                    $("#ss1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Secondleft/10) + ".png");
+                    $("#ss2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Secondleft%10) + ".png");
+                    setTimeout(daycountDown, 1000);
+                }
+                else{
+                    $("#newTopDday").hide();
+                }
+        
             }
-            else{
-                $("#newTopDday").hide();
-            }
-
-        }
-        daycountDown();
-
-        $(function(e){
-            var targetOffset= $("#evtContainer").offset().top;
-            $('html, body').animate({scrollTop: targetOffset}, 700);
-            /*e.preventDefault(); */
-        });
-    </script>
+            daycountDown();
+    </script> 
 @stop

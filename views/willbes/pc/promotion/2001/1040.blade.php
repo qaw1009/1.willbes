@@ -48,8 +48,8 @@
         <div class="evtCtnsBox wb_cts01" >
             <img src="http://file3.willbes.net/new_cop/2019/03/EV190304_c1.png" alt="윌비스신광은경찰학원 노량진 24시" usemap="#Map190325_c1" border="0"  />
             <map name="Map190325_c1" >
-                <area shape="rect" coords="139,926,327,962" href="/movie/event.html?event_cd=On_180122_c&topMenuType=O#main" target="_blank" alt="초시생" />
-                <area shape="rect" coords="796,926,987,961" href="/movie/event.html?event_cd=On_181127_c" target="_blank" alt="N수생"  />
+                <area shape="rect" coords="164,988,351,1024" href="{{ site_url('/promotion/index/cate/3001/code/1014') }}" target="_blank" alt="초시생" />
+                <area shape="rect" coords="774,988,965,1024" href="{{ site_url('/promotion/index/cate/3001/code/1017') }}" target="_blank" alt="N수생"  />
             </map>
         </div>
 
@@ -73,7 +73,7 @@
                 <div class="tabContents " id="tab1" >
                     <img src="http://file3.willbes.net/new_cop/2019/03/EV190304_c3_1.jpg" usemap="#Map190325_c3" border="0" /><br>
                     <map name="Map190325_c3" >
-                        <area shape="rect" coords="180,717,390,746" href="http://www.willbescop.net/event/movie/event.html?event_cd=Off_basic&EventReply=Y&topMenuType=F#main" target="_blank" />
+                        <area shape="rect" coords="166,680,372,706" href="{{ site_url('/pass/promotion/index/code/1049') }}" target="_blank" />
                     </map>
                     <img src="http://file3.willbes.net/new_cop/2019/03/EV190304_c3_2.jpg" />
                 </div>
@@ -81,11 +81,11 @@
                 <div class=" tabContents " id="tab2">
                     <img src="http://file3.willbes.net/new_cop/2019/03/EV190304_c4_1.jpg" usemap="#Map190325_c4" border="0" /><br>
                     <map name="Map190325_c4" >
-                        <area shape="rect" coords="707,718,943,745" href="http://www.willbescop.net/lecture/passLectuerSJong.html?topMenu=081&topMenuName=일반경찰&topMenuType=F&leftMenuLType=M0301&newlearningCD=M0312&lecKType=N" target="_blank"/>
+                        <area shape="rect" coords="727,704,961,731" href="{{ site_url('/pass/offPackage/index?cate_code=3010&course_idx=1041') }}" target="_blank"/>
                     </map>
                     <img src="http://file3.willbes.net/new_cop/2019/03/EV190304_c4_2.jpg" usemap="#Map190325_c5" border="0" />
                     <map name="Map190325_c5" >
-                        <area shape="rect" coords="714,590,942,617" href="http://www.willbescop.net/movie/event.html?event_cd=Off_171031_p&topMenuType=F#main" target="_blank"/>
+                        <area shape="rect" coords="735,995,964,1022" href="{{ site_url('/pass/promotion/index/code/1128') }}" target="_blank"/>
                     </map>
                 </div>
             </div>
@@ -101,10 +101,10 @@
         <div class="evtCtnsBox wb_cts05" >
             <img src="http://file3.willbes.net/new_cop/2019/03/EV190304_c6.png" alt="윌비스신광은경찰학원만의 합격 솔루션  " usemap="#Map190325_c2" border="0" />
             <map name="Map190325_c2" >
-                <area shape="rect" coords="120,653,312,686" href="http://www.willbescop.net/movie/event.html?event_cd=Off_superpass&topMenuType=F"  target="_blank" alt="2019 윌비스신광은경찰팀 SUPER PASS"/>
-                <area shape="rect" coords="630,653,822,686" href="http://www.willbescop.net/movie/event.html?event_cd=sparta&topMenuType=F" target="_blank" alt="윌비스신광은경찰팀 스파르타"/>
-                <area shape="rect" coords="120,1054,311,1087" href="http://www.willbescop.net/gosi/event.html?event_cd=Off_180828_g&topMenuType=F" target="_blank" alt="경찰 통합 생활 관리반"/>
-                <area shape="rect" coords="630,1054,823,1085" href="http://www.willbescop.net/counsel/counsel_step1.html?BOARDTYPE=counselReserve&INCTYPE=counsel_step1&BOARD_MNG_SEQ=CR_000&topMenuType=F&topMenuGnb=FM_006&topMenu=081&topMenuName=AI¹Y°æAu&menuID=FM_006_002" target="_blank" alt="1:1 심층상담 / 컨설팅"/>
+                <area shape="rect" coords="133,643,323,677" href="{{ site_url('/pass/promotion/index/code/1050') }}"  target="_blank" alt="2019 윌비스신광은경찰팀 SUPER PASS"/>
+                <area shape="rect" coords="625,643,816,679" href="{{ site_url('/pass/promotion/index/code/1051') }}" target="_blank" alt="윌비스신광은경찰팀 스파르타"/>
+                <area shape="rect" coords="136,1032,321,1065" href="{{ site_url('/pass/promotion/index/code/1053') }}" target="_blank" alt="경찰 통합 생활 관리반"/>
+                <area shape="rect" coords="630,1034,815,1065" href="{{ site_url('/pass/consultManagement/index') }}" target="_blank" alt="1:1 심층상담 / 컨설팅"/>
             </map>
         </div>
 

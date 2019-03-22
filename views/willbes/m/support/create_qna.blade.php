@@ -8,7 +8,7 @@
         {!! method_field($method) !!}
         <input type="hidden" name="idx" value="{{ $board_idx }}"/>
         <input type="hidden" name="reg_type" value="{{$reg_type}}"/>
-        <input type="hidden" name="put_site_code" value="{{$data['SiteCode']}}"/>
+        <input type="hidden" name="put_site_code" value="{{($method=='PUT') ? $data['SiteCode'] : $__cfg['SiteCode']}}"/>
         <input type="hidden" name="is_public" value="N"/>
         <div class="willbes-Tit NGEB p_re">
             <button type="button" class="goback" onclick="history.back(-1); return false;">
@@ -93,7 +93,7 @@
 
             ajaxSubmit($regi_form, _url, function(ret) {
                 if(ret.ret_cd) {
-                    notifyAlert('success', '알림', ret.ret_msg);
+                    alert(ret.ret_msg);
                     location.href = '{!! front_url($default_path.'/index?'.$get_params) !!}';
                 }
             }, showValidateError, addValidate, false, 'alert');

@@ -11,8 +11,6 @@
         .evtContent { 
             position:relative;            
             width:100% !important;
-            min-width:1210px !important;
-            background:#ccc;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
@@ -22,8 +20,8 @@
         /************************************************************/
 
         .skybanner {
-            position:absolute; 
-            top:300px; 
+            position:fixed; 
+            bottom:20px; 
             right:0;
             z-index:1;            
         }
@@ -58,9 +56,7 @@
         .slide_con p {position:absolute; top:50%; width:56px; height:56px; z-index:100}
         .slide_con p a {cursor:pointer}
         .slide_con p.leftBtn {left:-40px; top:46%; width:80px; height:80px;}
-        .slide_con p.rightBtn {right:-40px;top:46%; width:80px; height:80px;}	
-
-        
+        .slide_con p.rightBtn {right:-40px;top:46%; width:80px; height:80px;}	    
 
         
         
@@ -112,13 +108,7 @@
         </div>
         
         <div class="evtCtnsBox wb_06" id="event_go">
-            <img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_06.jpg"  alt="#" usemap="#Map_0307_cafe" border="0"/>
-            <map name="Map_0307_cafe">
-                <area shape="rect" coords="208,1212,364,1296" href="http://cafe.daum.net/policeacademy" target="_blank" alt="다음카페경시모">
-                <area shape="rect" coords="408,1211,565,1296" href="https://cafe.naver.com/polstudy" target="_blank" alt="경꿈사">
-                <area shape="rect" coords="604,1213,784,1294" href="http://gall.dcinside.com/board/lists/?id=government" target="_blank" alt="공겔">
-                <area shape="rect" coords="831,1213,1039,1295" href="http://gall.dcinside.com/board/lists/?id=government" target="_blank" alt="순경마이너">
-            </map>
+            <img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_06_01.jpg"  alt="#" />
         </div>
 
         @include('html.event_replyUrl')

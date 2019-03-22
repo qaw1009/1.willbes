@@ -65,8 +65,8 @@
                 <span class="wb_cts01_tit2"><img src="http://file3.willbes.net/new_gosi/2018/03/180316_EV01_01.png" alt="노트이미지"></span>
                 <img src="http://file3.willbes.net/new_gosi/2018/03/180316_EV01.jpg" usemap="#Map180316" border="0" alt="N수생를 위한 합격비법">
                 <map name="Map180316" >
-                    <area shape="rect" coords="158,18,586,97"  href="/event/movie/event.html?event_cd=On_180110_c1&topMenuType=O" onFocus="this.blur();" alt="초시생을 위한 합격비법"/>
-                    <area shape="rect" coords="677,22,1055,93" href="#"  onfocus="this.blur();"  alt="N수생을 위한 합격비법" />
+                    <area shape="rect" coords="158,18,586,97"  href="{{ site_url('/promotion/index/cate/3019/code/1085') }}" onFocus="this.blur();" alt="초시생을 위한 합격비법"/>
+                    <area shape="rect" coords="677,22,1055,93" href="#none"  onfocus="this.blur();"  alt="N수생을 위한 합격비법" />
                 </map>
             </div>
         </div><!--wb_cts01//-->
@@ -100,51 +100,43 @@
             <img src="http://file3.willbes.net/new_gosi/2018/03/180316_EV04.jpg" alt="이제 합격을 위해 다시 도전할 준비가 되셨나요?"  />
             <ul>
                 <li>
-                    <a href="/001/index.html?topMenuType=O&topMenu=001&topMenuName=9급공무원&topMenuGnb=OM_001" target="_blank" onFocus="this.blur();" >
-                        <img src="http://file3.willbes.net/new_gosi/2018/01/EV180110_c10_1.jpg" class="off" alt="9급페트라pass"  />
-                        <img src="http://file3.willbes.net/new_gosi/2018/01/EV180110_c10_1on.jpg" class="on" alt="9급페트라pass" />
+                    <a href="{{ site_url('/home/index/cate/3019') }}" target="_blank" onFocus="this.blur();" >
+                        <img src="http://file3.willbes.net/new_gosi/2018/01/EV180110_c10_1.jpg" onmouseover="this.src='http://file3.willbes.net/new_gosi/2018/01/EV180110_c10_1on.jpg'" onMouseOut="this.src='http://file3.willbes.net/new_gosi/2018/01/EV180110_c10_1.jpg'" onMouseDown="this.src='http://file3.willbes.net/new_gosi/2018/01/EV180110_c10_1.jpg'" alt=""  />
                     </a>
                 </li>
                 <li>
-                    <a href="http://www.willbescop.net" target="_blank" onFocus="this.blur();" >
-                        <img src="http://file3.willbes.net/new_gosi/2018/01/EV180110_c10_2.jpg" class="off" alt="신광은경찰pass"  />
-                        <img src="http://file3.willbes.net/new_gosi/2018/01/EV180110_c10_2on.jpg" class="on" alt="신광은경찰pass" />
+                    <a href="{{ site_url('/home/index/cate/3020') }}" target="_blank" onFocus="this.blur();" >
+                        <img src="http://file3.willbes.net/new_gosi/2018/01/EV180110_c10_2.jpg" onmouseover="this.src='http://file3.willbes.net/new_gosi/2018/01/EV180110_c10_2on.jpg'" onMouseOut="this.src='http://file3.willbes.net/new_gosi/2018/01/EV180110_c10_2.jpg'" onMouseDown="this.src='http://file3.willbes.net/new_gosi/2018/01/EV180110_c10_2.jpg'" alt=""  />
                     </a>
                 </li>
                 <li>
-                    <a href="/005/index.html?topMenuType=O&topMenu=005&topMenuName=세무/관세&topMenuGnb=OM_001" target="_blank" onFocus="this.blur();" >
-                        <img src="http://file3.willbes.net/new_gosi/2018/01/EV180110_c10_3.jpg" class="off" alt="이진욱세무팀 세파르타"  />
-                        <img src="http://file3.willbes.net/new_gosi/2018/01/EV180110_c10_3on.jpg" class="on" alt="이진욱세무팀 세파르타"/>
+                    <a href="{{ site_url('/home/index/cate/3022') }}" target="_blank" onFocus="this.blur();" >
+                        <img src="http://file3.willbes.net/new_gosi/2018/01/EV180110_c10_3.jpg" onmouseover="this.src='http://file3.willbes.net/new_gosi/2018/01/EV180110_c10_3on.jpg'" onMouseOut="this.src='http://file3.willbes.net/new_gosi/2018/01/EV180110_c10_3.jpg'" onMouseDown="this.src='http://file3.willbes.net/new_gosi/2018/01/EV180110_c10_3.jpg'" alt=""  />
                     </a>
                 </li>
                 <li>
-                    <a href="/018/index.html?topMenuType=O&topMenu=018&topMenuName=법원직 김동진팀&topMenuGnb=OM_001&topMenuGnb=OM_001" target="_blank" onFocus="this.blur();" >
-                        <img src="http://file3.willbes.net/new_gosi/2018/01/EV180110_c10_4.jpg" class="off" alt="김동진 법원팀"  />
-                        <img src="http://file3.willbes.net/new_gosi/2018/01/EV180110_c10_4on.jpg" class="on" alt="김동진 법원팀"/>
+                    <a href="{{ site_url('/home/index/cate/3035') }}" target="_blank" onFocus="this.blur();" >
+                        <img src="http://file3.willbes.net/new_gosi/2018/01/EV180110_c10_4.jpg" onmouseover="this.src='http://file3.willbes.net/new_gosi/2018/01/EV180110_c10_4on.jpg'" onMouseOut="this.src='http://file3.willbes.net/new_gosi/2018/01/EV180110_c10_4.jpg'" onMouseDown="this.src='http://file3.willbes.net/new_gosi/2018/01/EV180110_c10_4.jpg'" alt=""  />
                     </a>
                 </li>
-                <li >
-                    <a href="/006/index.html?topMenuType=O&topMenu=006&topMenuName=소방공무원&topMenuGnb=OM_001" target="_blank" onFocus="this.blur();" >
-                        <img src="http://file3.willbes.net/new_gosi/2018/01/EV180110_c10_5.jpg" class="off" alt="소방직PASS" />
-                        <img src="http://file3.willbes.net/new_gosi/2018/01/EV180110_c10_5on.jpg" class="on" alt="소방직PASS"/>
-                    </a>
-                </li>
-                <li>
-                    <a href="/011/index.html?topMenuType=O&topMenu=011&topMenuName=기술직&topMenuGnb=OM_001" target="_blank" onFocus="this.blur();" >
-                        <img src="http://file3.willbes.net/new_gosi/2018/01/EV180110_c10_6.jpg" class="off" alt="윌비스기술직"  />
-                        <img src="http://file3.willbes.net/new_gosi/2018/01/EV180110_c10_6on.jpg" class="on" alt="윌비스기술직"/>
+                <li class="2line">
+                    <a href="{{ site_url('/home/index/cate/3023') }}" target="_blank" onFocus="this.blur();" >
+                        <img src="http://file3.willbes.net/new_gosi/2018/01/EV180110_c10_5.jpg" onmouseover="this.src='http://file3.willbes.net/new_gosi/2018/01/EV180110_c10_5on.jpg'" onMouseOut="this.src='http://file3.willbes.net/new_gosi/2018/01/EV180110_c10_5.jpg'" onMouseDown="this.src='http://file3.willbes.net/new_gosi/2018/01/EV180110_c10_5.jpg'" alt=""  />
                     </a>
                 </li>
                 <li>
-                    <a href="/007/index.html??topMenuType=O&topMenu=007&topMenuName=군무원&topMenuGnb=OM_001" target="_blank" onFocus="this.blur();" >
-                        <img src="http://file3.willbes.net/new_gosi/2018/01/EV180110_c10_7.jpg" class="off" alt="군무원행정직PASS"  />
-                        <img src="http://file3.willbes.net/new_gosi/2018/01/EV180110_c10_7on.jpg" class="on" alt="군무원행정직PASS"/>
+                    <a href="{{ site_url('/home/index/cate/3028') }}" target="_blank" onFocus="this.blur();" >
+                        <img src="http://file3.willbes.net/new_gosi/2018/01/EV180110_c10_6.jpg"  onmouseover="this.src='http://file3.willbes.net/new_gosi/2018/01/EV180110_c10_6on.jpg'" onMouseOut="this.src='http://file3.willbes.net/new_gosi/2018/01/EV180110_c10_6.jpg'" onMouseDown="this.src='http://file3.willbes.net/new_gosi/2018/01/EV180110_c10_6.jpg'" alt=""  />
                     </a>
                 </li>
                 <li>
-                    <a href="/main/index.html" target="_blank" onFocus="this.blur();" >
-                        <img src="http://file3.willbes.net/new_gosi/2018/01/EV180110_c10_8.jpg" class="off" alt="윌비스T-PASS"  />
-                        <img src="http://file3.willbes.net/new_gosi/2018/01/EV180110_c10_8on.jpg" class="on" alt="윌비스T-PASS" />
+                    <a href="{{ site_url('/home/index/cate/3024') }}" target="_blank" onFocus="this.blur();" >
+                        <img src="http://file3.willbes.net/new_gosi/2018/01/EV180110_c10_7.jpg" onmouseover="this.src='http://file3.willbes.net/new_gosi/2018/01/EV180110_c10_7on.jpg'" onMouseOut="this.src='http://file3.willbes.net/new_gosi/2018/01/EV180110_c10_7.jpg'" onMouseDown="this.src='http://file3.willbes.net/new_gosi/2018/01/EV180110_c10_4.jpg'" alt=""  />
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ site_url('/home/index/cate/3019') }}" target="_blank" onFocus="this.blur();" >
+                        <img src="http://file3.willbes.net/new_gosi/2018/01/EV180110_c10_8.jpg" onmouseover="this.src='http://file3.willbes.net/new_gosi/2018/01/EV180110_c10_8on.jpg'" onMouseOut="this.src='http://file3.willbes.net/new_gosi/2018/01/EV180110_c10_8.jpg'" onMouseDown="this.src='http://file3.willbes.net/new_gosi/2018/01/EV180110_c10_8.jpg'" alt=""  />
                     </a>
                 </li>
             </ul>
@@ -154,7 +146,7 @@
     </div>
     <!-- End Container -->
 
-    <script src="/public/js/willbes/jquery.nav.js"></script>
+
     <script>
         $(document).ready(function(){
             $('ul.tabs').each(function(){
@@ -181,11 +173,5 @@
                     e.preventDefault()})}
             )}
         );
-
-        $(function(e){
-            var targetOffset= $("#evtContainer").offset().top;
-            $('html, body').animate({scrollTop: targetOffset}, 700);
-            /*e.preventDefault(); */
-        });
     </script>
 @stop

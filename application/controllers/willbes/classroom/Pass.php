@@ -22,7 +22,7 @@ class Pass extends \app\controllers\FrontController
      */
     public function index($params = [])
     {
-        $passidx = $this->_req("prodcode");
+        $passidx = $this->_req("passidx");
         $sitegroupcode = $this->_req("sitegroupcode");
 
         $input_arr = $this->_reqG(null);
@@ -95,13 +95,20 @@ class Pass extends \app\controllers\FrontController
         ];
 
         $orderby = element('orderby', $input_arr);
-        $orderby = (empty($orderby) == true) ? 'lastStudyDate^DESC' : $orderby;
-
+        //$orderby = (empty($orderby) == true) ? 'lastStudyDate^DESC' : $orderby;
+        $orderby = (empty($orderby) == true) ? 'MlIdx^DESC' : $orderby;
+        // 최신순으로
+        @list($orderby, $asc_desc) = @explode("^", $orderby);
+        if(empty($asc_desc) == false){
+            $orderby = [
+                $orderby => $asc_desc
+            ];
+        }
 
         // 학습형태 : 기간제패키지
-        $passlist = $this->classroomFModel->getPackage($cond_arr, $orderby);
+        $passlist = $this->classroomFModel->getPackage($cond_arr, ['OrderDate' => 'DESC']);
 
-        // 선택된 패키지번호가 없다면 그냥 첫번째것으로
+        // 선택된 패키지번호가 없다면 그냥 첫번째것으로OrderDate', 'DESC
         if(empty($passidx) == true && empty($passlist) == false){
             $passidx = $passlist[0]['ProdCode'];
         }
@@ -111,12 +118,11 @@ class Pass extends \app\controllers\FrontController
             'IN' => [
                 'ProdCode' => [$passidx]
             ]
-        ]), $orderby);
+        ]), ['OrderDate', 'DESC']);
 
         // 해당패키지의 서브강좌
         if(empty($passinfo) == false ){
             $passinfo = $passinfo[0];
-            //$passinfo['SiteUrl'] = app_to_env_url($this->getSiteCacheItem($passinfo['SiteCode'], 'SiteUrl'));
 
             // 셀렉트박스 구해오기
             $cond_arr = [
@@ -366,7 +372,11 @@ class Pass extends \app\controllers\FrontController
                 $studytime = intval($row['RealStudyTime']);
 
                 // 제한시간 분 -> 초
-                $limittime = intval($row['wRuntime']) * intval($lec['MultipleApply']) * 60;
+                if($row['RealExpireTime'] == 0){
+                    $limittime = intval($row['wRuntime']) * intval($lec['MultipleApply']) * 60;
+                } else {
+                    $limittime = intval($row['RealExpireTime']) * 60;
+                }
 
                 if($studytime > $limittime){
                     // 제한시간 초과
@@ -444,6 +454,17 @@ class Pass extends \app\controllers\FrontController
         $input_arr = $this->_reqG(null);
         $today = date("Y-m-d", time());
 
+        if(array_key_exists('take', $input_arr) == true){
+            if( $input_arr['take'] == 'Y' ){
+                $take = true;
+            } else {
+                $take = false;
+            }
+        } else {
+            $take = false;
+            $input_arr['take'] = 'N';
+        }
+
         $cond_arr = [
             'EQ' => [
                 'MemIdx' => $this->session->userdata('mem_idx'), // 사용자번호
@@ -467,10 +488,17 @@ class Pass extends \app\controllers\FrontController
             ]
         ];
 
+        $sub_arr = [
+            'EQ' => [
+                'D.OrderIdx' => $passinfo['OrderIdx'],
+                'D.OrderProdIdx' => $passinfo['OrderProdIdx']
+            ]
+        ];
+
         // 셀렉트박스용 데이타
-        $course_arr = $this->classroomFModel->getPassSubLecture($cond_arr, 'DISTINCT C.CourseIdx, C.CourseName');
-        $subject_arr = $this->classroomFModel->getPassSubLecture( $cond_arr,'DISTINCT C.SubjectIdx, C.SubjectName');
-        $prof_arr = $this->classroomFModel->getPassSubLecture($cond_arr,'DISTINCT C.wProfIdx, C.wProfName');
+        $course_arr = $this->classroomFModel->getPassSubLecture($cond_arr, 'DISTINCT C.CourseIdx, C.CourseName', $sub_arr);
+        $subject_arr = $this->classroomFModel->getPassSubLecture( $cond_arr,'DISTINCT C.SubjectIdx, C.SubjectName', $sub_arr);
+        $prof_arr = $this->classroomFModel->getPassSubLecture($cond_arr,'DISTINCT C.wProfIdx, C.wProfName', $sub_arr);
 
         // 실제 리스트용
         $cond_arr = [
@@ -486,15 +514,15 @@ class Pass extends \app\controllers\FrontController
             ]
         ];
 
-        $leclist = $this->classroomFModel->getPassSubLecture($cond_arr,'', ['EQ' => [
-            'D.OrderIdx' => $passinfo['OrderIdx'],
-            'D.OrderProdIdx' => $passinfo['OrderProdIdx']
-        ]]);
+        $leclist = $this->classroomFModel->getPassSubLecture($cond_arr,'', $sub_arr, $take);
 
+
+        /*
         foreach($leclist as $idx => $row){
-            $leclist[$idx]['ProdContents'] = $this->lectureFModel->findProductContents($row['ProdCode']);
-            $leclist[$idx]['LectureUnits'] = $this->lectureFModel->findProductLectureUnits($row['ProdCode']);
+            $leclist[$idx]['ProdContents'] = []; //$this->lectureFModel->findProductContents($row['ProdCode']);
+            $leclist[$idx]['LectureUnits'] = []; //$this->lectureFModel->findProductLectureUnits($row['ProdCode']);
         }
+        */
 
         return $this->load->view('/classroom/pass/layer/morelec', [
             'input_arr' => $input_arr,
@@ -503,6 +531,26 @@ class Pass extends \app\controllers\FrontController
             'course_arr' => $course_arr,
             'subject_arr' => $subject_arr,
             'prof_arr' => $prof_arr
+        ]);
+    }
+
+
+    public function ajaxLecInfo()
+    {
+        $ProdCode = $this->_req("prodcode");
+
+        if(empty($ProdCode) == true){
+            $ProdContents = [];
+            $LectureUnits = [];
+        } else {
+            $ProdContents = $this->lectureFModel->findProductContents($ProdCode);
+            $LectureUnits = $this->lectureFModel->findProductLectureUnits($ProdCode);
+        }
+
+        return $this->load->view('/classroom/pass/layer/ajax_lecinfo', [
+            'ProdCode' => $ProdCode,
+            'ProdContents' => $ProdContents,
+            'LectureUnits' => $LectureUnits
         ]);
     }
 

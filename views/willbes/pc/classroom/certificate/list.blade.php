@@ -34,7 +34,13 @@
                 <form name="searchFrm" id="searchFrm" action="{{app_url('/classroom/certificate/list/', 'www')}}" onsubmit="">
                     <div class="willbes-Lec-Selected willbes-Mypage-Selected willbes-Mypage-Selected-Search tx-gray">
                         <span class="w-data">
-                            기간검색 &nbsp;
+                            <select id="sitegroup_ccd" name="sitegroup_ccd" title="process" class="seleProcess">
+                                <option selected="selected" value="">과정</option>
+                                @foreach($sitegroup_arr as $row )
+                                    <option value="{{$row['SiteGroupCode']}}" @if(isset($input_arr['sitegroup_ccd']) && $input_arr['sitegroup_ccd'] == $row['SiteGroupCode']) selected="selected" @endif  >{{$row['SiteGroupName']}}</option>
+                                @endforeach
+                            </select>
+                            결제일 &nbsp;
                             <input type="text" id="search_start_date" name="search_start_date" value="{{ $input_arr['search_start_date'] or '' }}" title="검색시작일자" class="iptDate datepicker" maxlength="10" autocomplete="off"/> ~&nbsp;
                             <input type="text" id="search_end_date" name="search_end_date" value="{{ $input_arr['search_end_date'] or '' }}" title="검색종료일자" class="iptDate datepicker" maxlength="10" autocomplete="off"/>
                         </span>
@@ -47,22 +53,9 @@
                             </ul>
                         </span>
                         <div class="willbes-Lec-Search GM f_right">
-                            <select id="sitegroup_ccd" name="sitegroup_ccd" title="process" class="seleProcess">
-                                <option selected="selected" value="">과정</option>
-                                @foreach($sitegroup_arr as $row )
-                                    <option value="{{$row['SiteGroupCode']}}" @if(isset($input_arr['sitegroup_ccd']) && $input_arr['sitegroup_ccd'] == $row['SiteGroupCode']) selected="selected" @endif  >{{$row['SiteGroupName']}}</option>
-                                @endforeach
-                            </select>
-                            <!--
-                            <select id="course_ccd" name="course_ccd" title="process" class="seleProcess f_left">
-                                <option selected="selected" value="">과정</option>
-                                @foreach($course_arr as $row )
-                                    <option value="{{$row['CourseIdx']}}" @if(isset($input_arr['course_ccd']) && $input_arr['course_ccd'] == $row['CourseIdx']) selected="selected" @endif  >{{$row['CourseName']}}</option>
-                                @endforeach
-                            </select>
-                            -->
+
                             <div class="inputBox p_re">
-                                <input type="text" id="search_text" name="search_text" class="labelSearch" value="@if(isset($input_arr['search_text'])){{$input_arr['search_text']}}@endif" placeholder="강좌명을 검색해 주세요" maxlength="30"  style="width: 220px;">
+                                <input type="text" id="search_text" name="search_text" class="labelSearch" value="@if(isset($input_arr['search_text'])){{$input_arr['search_text']}}@endif" placeholder="강좌명을 검색해 주세요" maxlength="30"  style="width: 210px;">
                                 <button type="submit" onclick="" class="search-Btn">
                                     <span>검색</span>
                                 </button>
@@ -115,7 +108,7 @@
                                         </tr>
                                     @empty
                                         <tr>
-                                            <td colspan="3" class="tx-center">수강종료 강좌가 없습니다.</td>
+                                            <td colspan="3" class="tx-center">강좌가 없습니다.</td>
                                         </tr>
                                     @endforelse
                                     </tbody>
@@ -149,7 +142,7 @@
                                         <tbody>
                                         <tr class="bg-light-blue">
                                             <td class="w-data tx-center pl30">
-                                                수강종료 강좌가 없습니다.
+                                                강좌가 없습니다.
                                             </td>
                                         </tr>
                                         </tbody>
@@ -224,13 +217,11 @@
                                     </table>
                                 @empty
                                     <table cellspacing="0" cellpadding="0" class="packTable lecTable bdt-dark-gray">
-                                        <colgroup>
-                                            <col style="width: 820px;">
-                                            <col style="width: 120px;">
-                                        </colgroup>
                                         <tbody>
-                                        <tr>
-                                            <a href="javascript:;" onclick="fnView('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}');"><span class="bBox blueBox NSK">수강확인증</span></a>
+                                        <tr class="bg-light-blue">
+                                            <td class="w-data tx-center pl30">
+                                                강좌가 없습니다.
+                                            </td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -274,7 +265,7 @@
                                         </tr>
                                     @empty
                                         <tr>
-                                            <td colspan="3" class="tx-center">수강종료 강좌가 없습니다.</td>
+                                            <td colspan="3" class="tx-center">강좌가 없습니다.</td>
                                         </tr>
                                     @endforelse
                                     </tbody>

@@ -51,48 +51,8 @@
     </div>
     <div class="row main_top_menu mt-10">
         <div class="col-md-12">
-            {{--
-            <div class="navbar navbar-default no-border bdb-line" role="navigation">
-                <div class="container-fluid bg-white-only">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                    </div>
-                    <div class="collapse navbar-collapse">
-                        <!--<ul class="nav navbar-nav navbar-right">
-                            <li><a href="#">Right Menu</a></li>
-                        </ul>-->
-                        <ul class="nav navbar-nav">
-                            <li class=""><a href="#">Home</a></li>
-                            <li>
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Menu 1 <b class="caret"></b></a>
-                                <ul class="dropdown-menu multi-level">
-                                    <li><a href="#">Action</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something else here</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="#">Separated link</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="#">One more separated link</a></li>
-                                    <li class="dropdown-submenu">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="#">Action</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div><!--/.nav-collapse -->
-                </div>
-            </div>
-            --}}
-            <ul class="nav nav-tabs bar_tabs">
-                <li role="presentation" class="active">
+            <ul class="nav nav-tabs bar_tabs pl-10">
+                <li role="presentation">
                     <a href="{{ site_url(get_var(element('home_url', $__settings), $__cfg['home_url'])) }}" class="cs-pointer">메인</a>
                 </li>
                 @if(isset($__menu['GNB']) === true)
@@ -113,12 +73,12 @@
                                                 <a id="{{ $mmenu['TreeNum'] }}" href="#">{{ $mmenu['MenuName'] }}</a>
                                                 <ul class="dropdown-menu animated fadeIn {{ $css_right_menu }}">
                                                     @foreach($mmenu['Children'] as $sidx => $smenu)
-                                                        <li role="presentation"><a tabindex="-1" href="{{ site_url($smenu['MenuUrl']) }}" class="{{ isset($__menu['CURRENT']['MenuIdx']) && $sidx == $__menu['CURRENT']['MenuIdx'] ? 'current' : '' }}">{{ $smenu['MenuName'] }}</a></li>
+                                                        <li role="presentation"><a tabindex="-1" href="{{ site_url($smenu['MenuUrl']) }}" target="_{{ $smenu['UrlTarget'] }}" class="{{ isset($__menu['CURRENT']['MenuIdx']) && $sidx == $__menu['CURRENT']['MenuIdx'] ? 'current' : '' }}">{{ $smenu['MenuName'] }}</a></li>
                                                     @endforeach
                                                 </ul>
                                             </li>
                                         @else
-                                            <li role="presentation"><a tabindex="-1" href="{{ site_url($mmenu['MenuUrl']) }}" class="{{ isset($__menu['CURRENT']['MenuIdx']) && $midx == $__menu['CURRENT']['MenuIdx'] ? 'current' : '' }}">{{ $mmenu['MenuName'] }}</a></li>
+                                            <li role="presentation"><a tabindex="-1" href="{{ site_url($mmenu['MenuUrl']) }}" target="_{{ $mmenu['UrlTarget'] }}" class="{{ isset($__menu['CURRENT']['MenuIdx']) && $midx == $__menu['CURRENT']['MenuIdx'] ? 'current' : '' }}">{{ $mmenu['MenuName'] }}</a></li>
                                         @endif
                                     @endforeach
                                 </ul>

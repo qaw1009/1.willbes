@@ -20,12 +20,12 @@ class BasePromotion extends \app\controllers\FrontController
         }
 
         $test_type = (int)element('type', $this->_reqG(null), '0');
-        $promotion_code = (int)$params['code'];
+        $arr_base['promotion_code'] = (int)$params['code'];
 
         //인증식별자
         //$cert_idx = element('cert', $this->_reqG(null), '');
 
-        $data = $this->eventFModel->findEventForPromotion($promotion_code, $test_type);
+        $data = $this->eventFModel->findEventForPromotion($arr_base['promotion_code'], $test_type);
 
         if (empty($data) === true) {
             show_alert('조회에 실패했습니다.', 'back');
@@ -39,12 +39,13 @@ class BasePromotion extends \app\controllers\FrontController
 
         // 접근 로그 저장
         if ($test_type != 1) {
-            $this->eventFModel->saveLogPromotion($this->_site_code, $this->_cate_code, $promotion_code);
+            $this->eventFModel->saveLogPromotion($this->_site_code, $this->_cate_code, $arr_base['promotion_code']);
         }
 
         $arr_base['frame_params'] = 'cate_code='.$this->_cate_code.'&event_idx='.$data['ElIdx'].'&pattern=ongoing';
         $arr_base['option_ccd'] = $this->eventFModel->_ccd['option'];
         $arr_base['comment_use_area'] = $this->eventFModel->_comment_use_area_type;
+        $arr_base['test_type'] = $test_type;
 
         // 프로모션 추가 파라미터 배열처리
         $arr_promotion_params = [];
@@ -72,11 +73,18 @@ class BasePromotion extends \app\controllers\FrontController
             $apply_result = $this->certApplyFModel->findApplyByCertIdx($arr_promotion_params['cert'])['CaIdx'];
         }
 
-        $view_file = 'willbes/pc/promotion/'.$this->_site_code.'/'.$promotion_code;
+        // 등록파일 데이터 조회
+        $list_event_file = $this->eventFModel->listEventForFile($data['ElIdx']);
+        $file_data_promotion = $list_event_file;
+        $arrCircle = array(0=>'①',1=>'②',2=>'③',3=>'④',4=>'⑤',5=>'⑥',6=>'⑦');
+
+        $view_file = 'willbes/pc/promotion/'.$this->_site_code.'/'.$arr_base['promotion_code'];
         $this->load->view($view_file, [
             'arr_base' => $arr_base,
             'data' => $data,
+            'arrCircle' => $arrCircle,
             'cert_apply'=>$apply_result,
+            'file_data_promotion' => $file_data_promotion,
             'arr_promotion_params' => $arr_promotion_params
         ],false);
     }
@@ -175,11 +183,46 @@ class BasePromotion extends \app\controllers\FrontController
 
     public function download()
     {
-        $file_path = $this->_reqG('path');
-        $file_name = $this->_reqG('fname');
+        $file_idx = $this->_reqG('file_idx');
+        $event_idx = $this->_reqG('event_idx');
+        $this->downloadFModel->saveLogEvent($event_idx);
 
+        $file_data = $this->downloadFModel->getFileData($event_idx, $file_idx, 'event');
+        if (empty($file_data) === true) {
+            show_alert('등록된 파일을 찾지 못했습니다.','close','');
+        }
+
+        $file_path = $file_data['FilePath'].$file_data['FileName'];
+        $file_name = $file_data['RealFileName'];
         public_download($file_path, $file_name);
 
         show_alert('등록된 파일을 찾지 못했습니다.','close','');
+    }
+
+    public function popup($param = [])
+    {
+        $arr_base['promotion_code'] = $param[0];
+        $test_type = (int)element('type', $this->_reqG(null), '0');
+        $arr_base['method'] = 'POST';
+
+        if (empty($arr_base['promotion_code']) === true) {
+            show_alert('잘못된 접근 입니다.','close','');
+        }
+
+        $arr_base['data'] = $this->eventFModel->findEventForPromotion($arr_base['promotion_code'], $test_type);
+        if (empty($arr_base['data']) === true) {
+            show_alert('프로모션 조회에 실패했습니다.', '');
+        }
+
+        //이벤트 신청리스트 조회
+        $arr_condition = ['EQ' => ['A.ElIdx' => $arr_base['data']['ElIdx'], 'A.IsStatus' => 'Y']];
+        $arr_base['register_list'] = $this->eventFModel->listEventForRegister($arr_condition);
+        if (empty($arr_base['register_list']) === true ) {
+            show_alert('이벤트 조회에 실패했습니다.', '');
+        }
+
+        $this->load->view('willbes/pc/promotion/popup/'.$arr_base['promotion_code'], [
+            'arr_base' => $arr_base
+        ],false);
     }
 }

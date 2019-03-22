@@ -73,7 +73,7 @@
                                     @if(empty($board_data['AttachData']) === false)
                                         @foreach($board_data['AttachData'] as $row)
                                             @if($row['FileType'] == 0)
-                                                <a href="{{front_url('/mockTest/boardFileDownload?path=').urlencode($row['FilePath'].$row['FileName']).'&fname='.urlencode($row['RealName']).'&board_idx='.$board_idx }}" target="_blank">
+                                                <a href="{{front_url('/mockTest/boardFileDownload?file_idx=').$row['FileIdx'].'&board_idx='.$board_idx }}" target="_blank">
                                                     <img src="{{ img_url('prof/icon_file.gif') }}"> {{$row['RealName']}}</a>
                                             @endif
                                         @endforeach
@@ -120,7 +120,7 @@
                                     @if(empty($board_data['AttachData']) === false)
                                         @foreach($board_data['AttachData'] as $row)
                                             @if($row['FileType'] == 1)
-                                                <a href="{{front_url('/mockTest/boardFileDownload?path=').urlencode($row['FilePath'].$row['FileName']).'&fname='.urlencode($row['RealName']).'&board_idx='.$board_idx }}" target="_blank">
+                                                <a href="{{front_url('/mockTest/boardFileDownload?file_idx=').$row['FileIdx'].'&board_idx='.$board_idx }}" target="_blank">
                                                     <img src="{{ img_url('prof/icon_file.gif') }}"> {{$row['RealName']}}</a>
                                             @endif
                                         @endforeach

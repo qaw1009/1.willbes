@@ -27,7 +27,7 @@
                                 <dt><span class="row-line">|</span></dt>
                                 <dt>수강기간 : <span class="tx-blue">{{$data['StudyPeriod']}}일</span></dt>
                                 <dt class="NSK ml15">
-                                    <span class="nBox n1">{{$data['MultipleApply']}}배수</span>
+                                    <span class="nBox n1">{{ $data['MultipleApply'] === "1" ? '무제한' : $data['MultipleApply'].'배수'}}</span>
                                 </dt>
                             </dl>
                         </td>
@@ -198,7 +198,7 @@
                                     @endif
                                     </dt>
                                     <dt class="NSK ml15">
-                                        <span class="nBox n1">{{$sub_row['MultipleApply']}}배수</span>
+                                        <span class="nBox n1">{{ $sub_row['MultipleApply'] === "1" ? '무제한' : $sub_row['MultipleApply'].'배수'}}</span>
                                         <span class="nBox n{{ substr($sub_row['wLectureProgressCcd'], -1)+1 }}">{{$sub_row['wLectureProgressCcdName']}}</span>
                                     </dt>
                                 </dl>
@@ -206,7 +206,7 @@
 
                             <td class="w-notice p_re">
                                 @if(empty($sub_row['LectureSampleData']) === false)
-                                <div class="w-sp one"><a href="#none" onclick="openWin('lec_sample_{{ $sub_row['ProdCode'] }}')">맛보기{{count($sub_row['LectureSampleData'])}}</a></div>
+                                <div class="w-sp one"><a href="#none" onclick="openWin('lec_sample_{{ $sub_row['ProdCode'] }}')">맛보기</a></div>
                                 <div id="lec_sample_{{ $sub_row['ProdCode'] }}" class="viewBox">
                                     <a class="closeBtn" href="#none" onclick="closeWin('lec_sample_{{ $sub_row['ProdCode'] }}')"><img src="{{ img_url('cart/close.png') }}"></a>
                                     @foreach($sub_row['LectureSampleData'] as $sample_idx => $sample_row)

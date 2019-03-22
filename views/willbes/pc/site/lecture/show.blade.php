@@ -31,7 +31,7 @@
                     <dt><span class="row-line">|</span></dt>
                     <dt>수강기간 : <span class="tx-black">{{ $data['StudyPeriod'] }}일</span></dt>
                     <dt class="NSK ml15">
-                        <span class="nBox n1">{{ $data['MultipleApply'] }}배수</span>
+                        <span class="nBox n1">{{ $data['MultipleApply'] === "1" ? '무제한' : $data['MultipleApply'].'배수'}}</span>
                         <span class="nBox n{{ substr($data['wLectureProgressCcd'], -1)+1 }}">{{ $data['wLectureProgressCcdName'] }}</span>
                     </dt>
                 </dl>
@@ -39,7 +39,7 @@
                     <div class="w-notice p_re">
                         @if( empty($data['LectureSampleData']) === false)
                         <div class="w-sp one">
-                            <a href="#none" onclick="openWin('viewBox')">맛보기{{ empty($data['LectureSampleData']) ? '' : count($data['LectureSampleData']) }}</a>
+                            <a href="#none" onclick="openWin('viewBox')">맛보기</a>
                         </div>
                         <div id="viewBox" class="viewBox">
                             <a class="closeBtn" href="#none" onclick="closeWin('viewBox')"><img src="{{ img_url('cart/close.png') }}"></a>
@@ -275,7 +275,7 @@
                                     <div class="book-TxtBox tx-gray">
                                         {!! $row['wBookDesc'] !!}
                                     </div>
-                                    <div class="caution-txt tx-red">{{ $data['ProdBookMemo'] }}</div>
+                                    @if(empty($data['ProdBookMemo']) === false)<div class="caution-txt tx-red">{{ $data['ProdBookMemo'] }}</div>@endif
                                 </div>
                                 <div id="info2{{ $idx }}" class="tabContent">
                                     <div class="book-TxtBox tx-gray">

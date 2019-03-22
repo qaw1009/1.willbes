@@ -294,7 +294,6 @@
             document.body.innerHTML = initBody;
         };
         window.print();
-        return false;
     }
 </script>
 

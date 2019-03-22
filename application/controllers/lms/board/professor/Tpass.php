@@ -184,10 +184,10 @@ class Tpass extends BaseBoard
         }
 
         $list = [];
-        $count = $this->packageAdminModel->listLectureForProf(true, $prof_idx, $arr_condition);
+        $count = $this->packageAdminModel->listLectureForProfByTpass(true, $prof_idx, $arr_condition);
 
         if ($count > 0) {
-            $list = $this->packageAdminModel->listLectureForProf(false, $prof_idx, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.ProdCode' => 'desc']);
+            $list = $this->packageAdminModel->listLectureForProfByTpass(false, $prof_idx, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['A.ProdCode' => 'desc']);
         }
 
         return $this->response([
@@ -226,7 +226,7 @@ class Tpass extends BaseBoard
                 'A.ProdCode' => $prod_code
             ]
         ];
-        $product_data = $this->packageAdminModel->listLectureForProf(false, $prof_idx, $arr_condition, 1, 0, ['A.ProdCode' => 'desc'])[0];
+        $product_data = $this->packageAdminModel->listLectureForProfByTpass(false, $prof_idx, $arr_condition, 1, 0, ['A.ProdCode' => 'desc'])[0];
 
         //자료유형
         $arr_type_group_ccd = $this->_getCcdArray($this->_groupCcd['type_group_ccd']);
@@ -341,7 +341,7 @@ class Tpass extends BaseBoard
                 'A.ProdCode' => $prod_code
             ]
         ];
-        $product_data = $this->packageAdminModel->listLectureForProf(false, $prof_idx, $arr_condition, 1, 0, ['A.ProdCode' => 'desc'])[0];
+        $product_data = $this->packageAdminModel->listLectureForProfByTpass(false, $prof_idx, $arr_condition, 1, 0, ['A.ProdCode' => 'desc'])[0];
 
         $this->load->view("board/professor/{$this->board_name}/create_member_authority", [
             'boardName' => $this->board_name,
@@ -475,7 +475,7 @@ class Tpass extends BaseBoard
                 'A.ProdCode' => $prod_code
             ]
         ];
-        $product_data = $this->packageAdminModel->listLectureForProf(false, $prof_idx, $arr_condition, 1, 0, ['A.ProdCode' => 'desc'])[0];
+        $product_data = $this->packageAdminModel->listLectureForProfByTpass(false, $prof_idx, $arr_condition, 1, 0, ['A.ProdCode' => 'desc'])[0];
 
         $method = 'POST';
         $data = null;
@@ -614,7 +614,7 @@ class Tpass extends BaseBoard
                 'A.ProdCode' => $prod_code
             ]
         ];
-        $product_data = $this->packageAdminModel->listLectureForProf(false, $prof_idx, $arr_condition, 1, 0, ['A.ProdCode' => 'desc'])[0];
+        $product_data = $this->packageAdminModel->listLectureForProfByTpass(false, $prof_idx, $arr_condition, 1, 0, ['A.ProdCode' => 'desc'])[0];
 
         $column = '
             LB.BoardIdx, LB.RegType, LB.SiteCode, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.ExamProblemYear,
@@ -649,7 +649,6 @@ class Tpass extends BaseBoard
         $board_next = $data_PN['next'];             //다음글
 
         $site_code = $data['SiteCode'];
-        $arr_cate_code = explode(',', $data['CateCode']);
         $data['arr_attach_file_idx'] = explode(',', $data['AttachFileIdx']);
         $data['arr_attach_file_path'] = explode(',', $data['AttachFilePath']);
         $data['arr_attach_file_name'] = explode(',', $data['AttachFileName']);
@@ -658,14 +657,20 @@ class Tpass extends BaseBoard
         if (empty($this->site_code) === false) {
             $site_code = $this->site_code;
         }
+
         $get_category_array = $this->_getCategoryArray($site_code);
         if (empty($get_category_array) === true) {
             $data['arr_cate_code'] = [];
         } else {
-            foreach ($arr_cate_code as $item => $code) {
-                if (empty($get_category_array[$code]) === false) {
-                    $data['arr_cate_code'][$code] = $get_category_array[$code];
+            if (empty($data['CateCode']) === false) {
+                $arr_cate_code = explode(',', $data['CateCode']);
+                foreach ($arr_cate_code as $item => $code) {
+                    if (empty($get_category_array[$code]) === false) {
+                        $data['arr_cate_code'][$code] = $get_category_array[$code];
+                    }
                 }
+            } else {
+                $data['arr_cate_code'] = [];
             }
         }
 
@@ -735,7 +740,7 @@ class Tpass extends BaseBoard
             return;
         }
 
-        $result = $this->_boardIsBest(json_decode($this->_req('params'), true), json_decode($this->_req('before_params'), true));
+        $result = $this->_boardIsBest(json_decode($this->_reqP('params'), true));
         $this->json_result($result, '적용 되었습니다.', $result);
     }
 

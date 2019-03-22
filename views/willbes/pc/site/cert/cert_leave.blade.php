@@ -32,8 +32,8 @@
 
         <div class="laj_tab">
             <strong>교육과정 바로가기</strong>
-            <a target="_blank" href="http://www.willbesgosi.net/event/arm_event.html?event_cd=On_leaveArmy02_2018&topMenuType=O&EVENT_NO=710" class="active">공무원</a>
-            <a target="_blank" href="http://www.willbescop.net/event/arm_event.html?event_cd=On_leaveArmy02_2018&topMenuType=O&EVENT_NO=53">경찰</a>
+            <a target="_blank" href="{{ site_url('/promotion/index/cate/3030/code/1113') }}" class="active">공무원 / 소방자격증</a>
+            <a target="_blank" href="{{ site_url('/promotion/index/cate/3001/code/1121') }}">경찰</a>
         </div>
 
         <div class="laj_sec">

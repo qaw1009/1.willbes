@@ -111,7 +111,7 @@ class OrderStatsModel extends BaseOrderModel
                         on PL.CourseIdx = PCO.CourseIdx and PCO.IsStatus = "Y"
                     left join ' . $this->_table['subject'] . ' as PSU
                         on PL.SubjectIdx = PSU.SubjectIdx and PSU.IsStatus = "Y"
-                    left join ' . $this->_table['product_professor_concat'] . ' as VPP
+                    left join ' . $this->_table['product_professor_concat_repr'] . ' as VPP
                         on SU.ProdCode = VPP.ProdCode
                     left join ' . $this->_table['cms_lecture_basics'] . ' as VCL
                         on PL.wLecIdx = VCL.wLecIdx                        	
@@ -148,7 +148,7 @@ class OrderStatsModel extends BaseOrderModel
                         on PL.CourseIdx = PCO.CourseIdx and PCO.IsStatus = "Y"
                     left join ' . $this->_table['subject'] . ' as PSU
                         on PL.SubjectIdx = PSU.SubjectIdx and PSU.IsStatus = "Y"
-                    left join ' . $this->_table['product_professor_concat'] . ' as VPP
+                    left join ' . $this->_table['product_professor_concat_repr'] . ' as VPP
                         on SU.ProdCode = VPP.ProdCode	
                     left join ' . $this->_table['code'] . ' as CCA
                         on PL.CampusCcd = CCA.Ccd and CCA.IsStatus = "Y"

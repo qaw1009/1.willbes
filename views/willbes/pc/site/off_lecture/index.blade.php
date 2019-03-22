@@ -157,7 +157,7 @@
                 </button>
             </div>
 
-            <div class="InfoBtnOff"><a href="/pass/offinfo/boardInfo/index">강의시간표 안내 <span>▶</span></a></div>
+            <div class="InfoBtnOff"><a href="{{ front_url('/offinfo/boardInfo/index') }}">강의시간표 안내 <span>▶</span></a></div>
             <div class="InfoBtn mr10"><a href="#none" onclick="openWin('requestInfo')">학원수강 안내 <span>▶</span></a></div>
 
             <div id="requestInfo" class="willbes-Layer-requestInfo">
@@ -271,7 +271,10 @@
                                         <div class="w-tit w-acad-tit">{{ $row['ProdName'] }}</div>
                                         <dl class="w-info acad">
                                             <dt>
-                                                <a href="#none"><strong>강좌상세정보</strong></a>
+                                                <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', '', '{{ front_url('/offLecture') }}')">
+                                                    <strong class="open-info-modal">강좌상세정보</strong>
+                                                </a>
+                                                <!--a href="#none"><strong>강좌상세정보</strong></a//-->
                                             </dt>
                                             <dt><span class="row-line">|</span></dt>
                                             <dt>수강형태 : <span class="tx-blue">{{ $row['StudyPatternCcdName'] }}</span></dt>
@@ -299,7 +302,7 @@
                                         @endif
 
                                         {{-- 방문결제 버튼 --}}
-                                        @if($row['StudyApplyCcd'] != '654002')
+                                        @if($row['StudyApplyCcd'] != '654002' && $row['IsSalesAble'] == 'Y')
                                             <div class="visitBuy"><a href="#none" class="btn-off-visit-pay" data-prod-code="{{ $row['ProdCode'] . ':' . $price_row['SaleTypeCcd'] . ':' . $row['ProdCode'] }}">방문결제</a></div>
                                         @endif
                                     </td>
@@ -307,7 +310,7 @@
                             </tbody>
                         </table>
                         <!-- lecTable -->
-                        <table cellspacing="0" cellpadding="0" class="lecInfoTable acadlecInfoTable">
+                        {{--<table cellspacing="0" cellpadding="0" class="lecInfoTable acadlecInfoTable">
                             <tbody>
                             <tr>
                                 <td>
@@ -320,7 +323,7 @@
                                 </td>
                             </tr>
                             </tbody>
-                        </table>
+                        </table>--}}
                         <!-- lecInfoTable -->
                     </div>
                     <!-- willbes-Lec-Table -->
@@ -340,6 +343,8 @@
                 </ul>
             </div>
             <!-- willbes-Lec-buyBtn -->
+
+            <div id="InfoForm" class="willbes-Layer-Box d3"></div>
         </form>
 
         {{-- footer script --}}

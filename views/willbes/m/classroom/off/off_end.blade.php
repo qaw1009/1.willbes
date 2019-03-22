@@ -9,7 +9,7 @@
             </button>
             수강종료강좌
         </div>
-        <form name="searchFrm" id="searchFrm" action="{{app_url('/classroom/off/list/end/', 'www')}}" onsubmit="">
+        <form name="searchFrm" id="searchFrm" action="{{front_url('/classroom/off/list/end/')}}" onsubmit="">
             <div class="willbes-Lec-Selected NG c_both tx-gray">
                 <select id="sitegroup_ccd" name="sitegroup_ccd" title="process" class="seleProcess width21p">
                     <option selected="selected" value="">과정</option>
@@ -38,7 +38,7 @@
                     @endforeach
                 </select>
                 <div class="resetBtn width10p ml1p">
-                    <a href="{{front_app_url('/classroom/off/list/end', 'www')}}"><img src="{{ img_url('m/mypage/icon_reset.png') }}"></a>
+                    <a href="{{front_url('/classroom/off/list/end')}}"><img src="{{ img_url('m/mypage/icon_reset.png') }}"></a>
                 </div>
             </div>
         </form>

@@ -97,7 +97,7 @@ Class PackagePeriod extends \app\controllers\BaseController
     {
         $method = 'POST';
 
-        $codes = $this->codeModel->getCcdInArray(['609','611','612','613','616','617','618','648','649','650','651']);
+        $codes = $this->codeModel->getCcdInArray(['609','611','612','613','616','617','618','648','649','650','651','635']);
         $arr_send_callback_ccd = $this->codeModel->getCcd(706, 'CcdValue');  // 발신번호조회
 
         $prodcode = null;
@@ -146,6 +146,7 @@ Class PackagePeriod extends \app\controllers\BaseController
             ,'packcate_ccd'=>$codes['649'] //패키지분류
             ,'packperiod_ccd'=>$codes['650'] //기간제 패키지 수강기간
             ,'packautostudyexten_ccd'=>$codes['651'] //기간제패키지 자동수강연장
+            ,'pointapply_ccd' => $codes['635']  //포인트적립타입
             ,'prodcode' => $prodcode
             ,'arr_send_callback_ccd'=>$arr_send_callback_ccd
             ,'data'=>$data

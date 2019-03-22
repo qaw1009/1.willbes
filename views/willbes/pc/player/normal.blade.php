@@ -69,11 +69,6 @@
 
         function fnSendLog()
         {
-            if (player.getPlayState() != PlayState.PLAYING) {
-                setTimeout(fnSendLog, 1000);
-                return;
-            }
-
             var url = "/player/log/";
             var data = "o={{$data['orderidx']}}&op={{$data['orderprodidx']}}&p={{$data['prodcode']}}&sp={{$data['prodcodesub']}}&u={{$data['unitidx']}}&m={{$data['memidx']}}&l={{$data['logidx']}}&w={{$data['lecidx']}}";
 

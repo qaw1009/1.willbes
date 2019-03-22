@@ -274,7 +274,7 @@
                                             <dt><span class="row-line">|</span></dt>
                                             <dt>수강기간 : <span class="study-period tx-blue" data-info="{{ $row['StudyPeriod'] }}">{{ $row['StudyPeriod'] }}일</span></dt>
                                             <dt class="NSK ml15">
-                                                <span class="multiple-apply nBox n1" data-info="{{ $row['MultipleApply'] }}">{{ $row['MultipleApply'] }}배수</span>
+                                                <span class="multiple-apply nBox n1" data-info="{{ $row['MultipleApply'] }}">{{ $row['MultipleApply'] === "1" ? '무제한' : $row['MultipleApply'].'배수'}}</span>
                                                 <span class="lecture-progress nBox n{{ substr($row['wLectureProgressCcd'], -1)+1 }}" data-info="{{ substr($row['wLectureProgressCcd'], -1)+1 }}{{ $row['wLectureProgressCcdName'] }}">{{ $row['wLectureProgressCcdName'] }}</span>
                                             </dt>
                                         </dl>
@@ -288,12 +288,12 @@
                                                 보강동영상 비밀번호 입력
                                                 <div>
                                                     <input type="password" id="free_lec_passwd_{{ $row['ProdCode'] }}" name="free_lec_passwd" placeholder="****" maxlength="20">
-                                                    <button type="button" name="btn_check_free_passwd" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 4) }}', '{{ $pattern }}');"><span>검색</span></button>
+                                                    <button type="button" name="btn_check_free_passwd" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 4) }}', '{{ $pattern }}');"><span>확인</span></button>
                                                 </div>
                                             </div>
                                         @else
                                             @if(empty($row['LectureSampleData']) === false)
-                                                <div class="w-sp one"><a href="#none" onclick="openWin('lec_sample_{{ $row['ProdCode'] }}')">맛보기{{ empty($row['LectureSampleData']) ? '' : count($row['LectureSampleData']) }}</a></div>
+                                                <div class="w-sp one"><a href="#none" onclick="openWin('lec_sample_{{ $row['ProdCode'] }}')">맛보기</a></div>
                                                 <div id="lec_sample_{{ $row['ProdCode'] }}" class="viewBox">
                                                     <a class="closeBtn" href="#none" onclick="closeWin('lec_sample_{{ $row['ProdCode'] }}')"><img src="{{ img_url('cart/close.png') }}"></a>
                                                     @foreach($row['LectureSampleData'] as $sample_idx => $sample_row)

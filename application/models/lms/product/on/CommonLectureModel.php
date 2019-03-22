@@ -593,7 +593,7 @@ class CommonLectureModel extends WB_Model
                         $data = [
                             'ProdCode' => $prodcode
                             , 'ContentTypeCcd' => $ContentTypeCcd[$i]
-                            , 'Content' => $Content[$i]
+                            , 'Content' => str_replace(array("\r\n","\r","\n"),'',$Content[$i])
                             , 'RegAdminIdx' => $this->session->userdata('admin_idx')
                             , 'RegIp' => $this->input->ip_address()
                         ];
@@ -738,10 +738,11 @@ class CommonLectureModel extends WB_Model
 
             if(empty($OrderNum) === false) {
                 for($i=0;$i<count($OrderNum);$i++) {
+                    $IsApplySelect = 'N';
                     $data = [
                         'ProdCode' => $prodcode
                         , 'OrderNum' => $OrderNum[$i]
-                        , 'IsApply' => empty($IsApply[$i]) === false ? 'Y' : 'N'
+                        //, 'IsApply' => empty($IsApply[$i]) === false ? 'Y' : 'N'
                         , 'DiscNum' => empty($DiscNum[$i]) === false ?  $DiscNum[$i] : NULL
                         , 'DiscRate' => empty($DiscRate[$i]) === false ?  $DiscRate[$i] : NULL
                         , 'LecExten' => empty($LecExten[$i]) === false ?  $LecExten[$i] : NULL
@@ -749,9 +750,21 @@ class CommonLectureModel extends WB_Model
                         , 'RegIp' => $this->input->ip_address()
                     ];
 
+                    if(empty($IsApply) === false) {
+                        for($k=0;$k<count($IsApply);$k++) {
+                            //echo $IsApply[$k];
+                            if($OrderNum[$i] == $IsApply[$k]) {
+                                $IsApplySelect = 'Y';
+                            }
+                        }
+                    }
+
+                    $data = array_merge($data,['IsApply' => $IsApplySelect]);
+
                     if($this->_conn->set($data)->insert($this->_table['packsale']) === false) {
                         throw new \Exception('패키지할인정보 등록에 실패했습니다.');
                     }
+
                 }
             }
             //echo $this->_conn->last_query();

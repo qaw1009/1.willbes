@@ -127,5 +127,33 @@ class OffLecture extends \app\controllers\FrontController
             ],
             'class_type' => $class_type     //방문신청시 패키지 여부 확인 차
         ]);
-    }    
+    }
+
+    /**
+     * 단과반 콘텐츠 보기
+     * @param array $params
+     * @return CI_Output
+     */
+    public function info($params = [])
+    {
+        $prod_code = element('prod-code', $params);
+        if (empty($prod_code) === true) {
+            return $this->json_error('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
+        }
+
+        /*
+         * 수강대상, 강좌효과, 수강후기 추출
+         * */
+        $add_column = ', fn_product_content(ProdCode, "633005") as Content5
+                                , fn_product_content(ProdCode, "633006") as Content6
+                                , fn_product_content(ProdCode, "633007") as Content7
+        ';
+
+        $data = $this->lectureFModel->findProductByProdCode($this->_learn_pattern, $prod_code,$add_column);
+
+        $this->load->view('site/off_lecture/info_modal', [
+            'ele_id' => $this->_req('ele_id'),
+            'data' => $data
+        ]);
+    }
 }

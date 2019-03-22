@@ -11,9 +11,8 @@
             margin-bottom:0 !important;
         }
         .evtContent {
+            position:relative; 
             width:100% !important;
-            min-width:1210px !important;
-            background:#ccc;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
@@ -23,7 +22,7 @@
         /************************************************************/
 
         .rLnb {
-            position:absolute; width:190px; top:100px; right:10px; z-index:1;
+            position:fixed; width:190px; bottom:100px; right:10px; z-index:1;
         }
         .rLnb ul {background:#fff; border:1px solid #2f2f2f; margin-bottom:10px;
             -webkit-box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.21);
@@ -54,7 +53,7 @@
             line-height: 1.4;
         }
         .rLnb .typeB a {display:block; background:#000; color:#fff; border-radius: 20px; padding:8px 0; margin:0 20px}
-        .rLnb_sectionFixed {position:fixed; top:20px}
+ 
 
         .LAeventA01 {background:url(http://file3.willbes.net/new_gosi/2019/leave_army/la_on_top_bg.jpg) no-repeat center top; position:relative;}
         /*플립 애니메이션*/
@@ -111,11 +110,11 @@
         <div class="rLnb">
             <ul class="typeA">
                 <li class="NSK-Black">서비스 바로가기</li>
-                <li><a href="/promotion/index/cate/3001/code/1111" class="menu1" target="_blank">인증센터</a></li>
-                <li><a href="/promotion/index/cate/3001/code/1116" class="menu2" target="_blank">서울 노량진 교육과정</a></li>
-                <li><a href="/promotion/index/cate/3001/code/1115" class="menu3" target="_blank">인천 부평 교육과정</a></li>
-                <li><a href="/promotion/index/cate/3001/code/1117" class="menu4" target="_blank">부산 서면 교육과정</a></li>
-                <li><a href="/promotion/index/cate/3001/code/1113" class="menu5">윌비스 PASS</a></li>
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1111') }}" class="menu1" target="_blank">인증센터</a></li>
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1116') }}" class="menu2" target="_blank">서울 노량진 교육과정</a></li>
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1115') }}" class="menu3" target="_blank">인천 부평 교육과정</a></li>
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1117') }}" class="menu4" target="_blank">부산 서면 교육과정</a></li>
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1113') }}" class="menu5">윌비스 PASS</a></li>
             </ul>            <ul class="typeB">
                 <li class="NSK-Black">전역(예정)간부 가입/인증</li>
                 @if(empty($cert_apply))
@@ -139,17 +138,17 @@
         <div class="LAeventA02">
             <img src="/public/img/willbes/leave_army/la_on_01.jpg" alt=""/>
             <ul>
-                <li><a href="#none"><img src="/public/img/willbes/leave_army/la_on_01_m1.jpg" alt="소방직"/></a></li>
-                <li><a href="#none"><img src="/public/img/willbes/leave_army/la_on_01_m2.jpg" alt="경찰직"/></a></li>
-                <li><a href="#none"><img src="/public/img/willbes/leave_army/la_on_01_m3.jpg" alt="군무원"/></a></li>
-                <li><a href="#none"><img src="/public/img/willbes/leave_army/la_on_01_m4.jpg" alt="기술직"/></a></li>
-                <li><a href="#none"><img src="/public/img/willbes/leave_army/la_on_01_m5.jpg" alt="일반행정직"/></a></li>
-                <li><a href="#none"><img src="/public/img/willbes/leave_army/la_on_01_m6.jpg" alt="소방(산업)기사 자격증"/></a></li>
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1113') }}"><img src="/public/img/willbes/leave_army/la_on_01_m1.jpg" alt="소방직"/></a></li>
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1113') }}"><img src="/public/img/willbes/leave_army/la_on_01_m2.jpg" alt="경찰직"/></a></li>
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1113') }}"><img src="/public/img/willbes/leave_army/la_on_01_m3.jpg" alt="군무원"/></a></li>
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1113') }}"><img src="/public/img/willbes/leave_army/la_on_01_m4.jpg" alt="기술직"/></a></li>
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1113') }}"><img src="/public/img/willbes/leave_army/la_on_01_m5.jpg" alt="일반행정직"/></a></li>
+                <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1113') }}"><img src="/public/img/willbes/leave_army/la_on_01_m6.jpg" alt="소방(산업)기사 자격증"/></a></li>
             </ul>
             <img src="/public/img/willbes/leave_army/la_on_02.jpg"  alt="" usemap="#Mappass02"/>
             <map name="Map" id="Mappass02">
                 <area shape="rect" coords="194,1063,398,1102" href="javascript:certOpen();"/>
-                <area shape="rect" coords="714,1063,922,1102" href="/promotion/index/cate/3001/code/1113" />
+                <area shape="rect" coords="714,1063,922,1102" href="/promotion/index/' . $__cfg['CateCode'] . '/3001/code/1113" />
             </map>
         </div>
         <div class="LAeventA03">
@@ -159,7 +158,6 @@
     <!-- End Container -->
 
     <script type="text/javascript">
-
         function certOpen(){
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
 
@@ -172,51 +170,5 @@
                 window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
             @endif
         }
-
-
-        $( document ).ready( function() {
-            var jbOffset = $( '.rLnb' ).offset();
-            $( window ).scroll( function() {
-                if ( $( document ).scrollTop() > jbOffset.top ) {
-                    $( '.rLnb' ).addClass( 'rLnb_sectionFixed' );
-                }
-                else {
-                    $( '.rLnb' ).removeClass( 'rLnb_sectionFixed' );
-                }
-            });
-        } );
-
-        $(document).ready(function() {
-            $('.rLnb').onePageNav({
-                currentClass: 'hvr-shutter-out-horizontal_active'
-            });
-        });
     </script>
-
-    <script>
-        $(function(e){
-            var targetOffset= $("#evtContainer").offset().top;
-            $('html, body').animate({scrollTop: targetOffset}, 700);
-            /*e.preventDefault(); */
-        });
-
-        $(function(){
-            var vi = 0;  // 하단에 메뉴 표시할 스크롤 위치값 지정
-            var nav_y = $(".rLnb").offset().top + $(".rLnb").height();
-
-            $(window).scroll(function(){
-                var num = $(window).scrollTop();
-                if( num > nav_y ){
-                    if( num > vi ){
-                        $(".rLnb").css({"position":"fixed","top":"20px","rigth":"20px"}).fadeIn();
-                    }else{
-                        $(".rLnb").fadeOut();
-                    }
-                }else{
-                    $(".rLnb").finish().css({"top":"100px"});
-                }
-            });
-        });
-    </script>
-
 @stop

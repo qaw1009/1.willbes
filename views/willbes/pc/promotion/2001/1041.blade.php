@@ -66,7 +66,7 @@
         <div class="evtCtnsBox wb_cts03" >
             <img src="http://file3.willbes.net/new_cop/2019/02/EV190226_c3.jpg" alt=" 형법 문제, 빈틈없는 적중을 직접 확인하세요!" usemap="#Map190226_c" border="0" />
             <map name="Map190226_c" >
-                <area shape="rect" coords="436,439,683,479" href="http://file3.willbes.net/board/201902/20190227102115134.pdf" alt="더 많은 적중사례 보러가기 "/>
+                <area shape="rect" coords="436,439,683,479" href="http://file3.willbes.net/board/201902/20190227102115134.pdf" alt="더 많은 적중사례 보러가기" target="_blank"/>
             </map>
         </div>
 
@@ -108,11 +108,10 @@
         <div class="evtCtnsBox wb_cts09" >
             <img src="http://file3.willbes.net/new_cop/2019/02/EV190226_c9.jpg" alt="김원욱 형법 必合 커리큘럼" usemap="#Map190226_c1" border="0" />
             <map name="Map190226_c1" >
-                <area shape="rect" coords="234,869,546,924" href="http://www.willbescop.net/teacher/movieTeacherDetail.html?topMenuType=O&topMenuGnb=OM_002&topMenu=081&topMenuName=일반경찰&menuID=&searchUserId=wc_002&searchSubjectNm=형법&searchSubjectCode=1003" target="_blank" />
-                <area shape="rect" coords="574,868,883,923" href="http://www.willbescop.net/teacher/passTeacherDetail.html?topMenuType=F&topMenuGnb=FM_002&topMenu=081&topMenuName=일반경찰&menuID=&searchUserId=wc_002&searchSubjectNm=형법&searchSubjectCode=1003"  target="_blank"/>
+                <area shape="rect" coords="234,869,546,924" href="{{ site_url('/professor/show/cate/3001/prof-idx/50297/?subject_idx=1003&subject_name=%ED%98%95%EB%B2%95&tab=open_lecture') }}" target="_blank" />
+                <area shape="rect" coords="574,868,883,923" href="{{ site_url('/pass/professor/show/prof-idx/50298/?cate_code=3010&subject_idx=1056&subject_name=%ED%98%95%EB%B2%95&tab=open_lecture') }}" target="_blank"/>
             </map>
         </div>
-
     </div>
     <!-- End Container -->
 

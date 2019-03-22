@@ -55,7 +55,7 @@ class Lecture extends \app\controllers\FrontController
             $arr_base['course'] = $this->baseProductFModel->listCourseCategoryMapping($this->_site_code, $this->_cate_code);
         } else {
             // 무료강좌 (상품에 설정된 과정 조회)
-            $arr_base['course'] = $this->lectureFModel->listSalesProduct($this->_learn_pattern, 'distinct(CourseIdx), CourseName', $arr_condition);
+            $arr_base['course'] = $this->lectureFModel->listSalesProduct($this->_learn_pattern, 'distinct(CourseIdx), CourseName', $arr_condition, null, null, ['OrderNumCourse' => 'asc']);
         }
 
         // 상품 검색조건 추가
@@ -165,7 +165,7 @@ class Lecture extends \app\controllers\FrontController
         }
 
         // 상품 조회
-        $data = $this->lectureFModel->findProductByProdCode($this->_learn_pattern, $prod_code);
+        $data = $this->lectureFModel->findProductByProdCode($this->_learn_pattern, $prod_code, '', ['EQ' => ['IsUse' => 'Y']]);
         if (empty($data) === true) {
             show_alert('데이터 조회에 실패했습니다.', 'back');
         }
@@ -222,7 +222,7 @@ class Lecture extends \app\controllers\FrontController
         }
 
         // 상품 조회
-        $data = $this->lectureFModel->findProductByProdCode('on_free_lecture', $prod_code, ', fn_dec(FreeLecPasswd) as FreeLecPasswdDec');
+        $data = $this->lectureFModel->findProductByProdCode('on_free_lecture', $prod_code, ', fn_dec(FreeLecPasswd) as FreeLecPasswdDec', ['EQ' => ['IsUse' => 'Y']]);
         if (empty($data) === true) {
             return $this->json_error('데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
         }

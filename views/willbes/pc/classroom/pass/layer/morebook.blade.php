@@ -12,34 +12,36 @@ var book_data = [];
 @endforeach
 </script>
 @forelse($data as $row)
-    <table cellspacing="0" cellpadding="0" class="listTable passTable under-gray tx-gray">
-        <colgroup>
-            <col style="width: 60px;">
-            <col style="width: 70px;">
-            <col style="width: 410px;">
-            <col style="width: 70px;">
-            <col style="width: 140px;">
-        </colgroup>
-        <thead>
-        <tr>
-            <th class="tx-left" colspan="5">
-                {{$row['SubjectName']}}<span class="row-line">|</span>{{$row['wProfName']}}<br/>
-                <div class="w-tit tx-left strong">{{$row['subProdName']}}</div>
-            </th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach($row['ProdBookData'] as $book_row)
+    @if(empty($row['ProdBookData']) == false)
+        <table cellspacing="0" cellpadding="0" class="listTable passTable under-gray tx-gray">
+            <colgroup>
+                <col style="width: 60px;">
+                <col style="width: 70px;">
+                <col style="width: 410px;">
+                <col style="width: 70px;">
+                <col style="width: 140px;">
+            </colgroup>
+            <thead>
             <tr>
-                <td><input type="checkbox" id="goods_chk" name="goods_chk" onchange="fnBookAdd(this);" class="goods_chk" value="{{$row['ProdCode']}}_{{$book_row['ProdBookCode']}}" @if($book_row['wSaleCcd'] != '112001' || $book_row['Paid'] == true) disabled="disabled" @endif></td>
-                <td class="w-type"><span class="tx-light-blue">{{$book_row['BookProvisionCcdName']}}</span></td>
-                <td class="w-tit tx-left pl20">{{$book_row['ProdBookName']}}</td>
-                <td class="w-buy"><span class="tx-{{($book_row['wSaleCcd'] == '112001') ? 'light-blue' : 'red'}}">[{{$book_row['wSaleCcdName']}}]</span></td>
-                <td class="w-price">{{number_format($book_row['RealSalePrice'])}}원 (<span class="tx-red">↓{{$book_row['SaleRate']}}{{$book_row['SaleRateUnit']}}</span>)</td>
+                <th class="tx-left" colspan="5">
+                    {{$row['SubjectName']}}<span class="row-line">|</span>{{$row['wProfName']}}<br/>
+                    <div class="w-tit tx-left strong">{{$row['subProdName']}}</div>
+                </th>
             </tr>
-        @endforeach
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            @foreach($row['ProdBookData'] as $book_row)
+                <tr>
+                    <td><input type="checkbox" id="goods_chk" name="goods_chk" onchange="fnBookAdd(this);" class="goods_chk" value="{{$row['ProdCode']}}_{{$book_row['ProdBookCode']}}" @if($book_row['wSaleCcd'] != '112001' || $book_row['Paid'] == true) disabled="disabled" @endif></td>
+                    <td class="w-type"><span class="tx-light-blue">{{$book_row['BookProvisionCcdName']}}</span></td>
+                    <td class="w-tit tx-left pl20">{{$book_row['ProdBookName']}}</td>
+                    <td class="w-buy"><span class="tx-{{($book_row['wSaleCcd'] == '112001') ? 'light-blue' : 'red'}}">[{{$book_row['wSaleCcdName']}}]</span></td>
+                    <td class="w-price">{{number_format($book_row['RealSalePrice'])}}원 (<span class="tx-red">↓{{$book_row['SaleRate']}}{{$book_row['SaleRateUnit']}}</span>)</td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+    @endif
 @empty
     <table cellspacing="0" cellpadding="0" class="listTable passTable under-gray tx-gray">
         <colgroup>
@@ -65,10 +67,10 @@ var book_data = [];
         fnUpdateBookPrice();
     }
 
-    function fnBookAdd(obj, price)
+    function fnBookAdd(obj)
     {
         if($(obj).is(":checked")){
-            $('#book-order-table > tbody:last').append(book_data[$(obj).val()]);
+            $('#book-order-table > tbody:last').append(book_data[$(obj).val()]).end();
         }
         fnUpdateBookPrice();
     }
@@ -82,13 +84,15 @@ var book_data = [];
             price += $(this).data('price')
         });
 
+        /*
         if(price > 0){
             trans = 2500;
         } else {
             trans = 0;
         }
+        */
 
-        $("#trans-price").text(addComma(trans) + '원');
+        //$("#trans-price").text(addComma(trans) + '원');
         $("#book-price").text(addComma(price) + '원');
         $("#tot-price").text(addComma(trans+price) + '원');
     }

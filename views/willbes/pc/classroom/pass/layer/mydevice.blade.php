@@ -39,20 +39,22 @@
             <div class="Search-Result strong mt25 mb10 tx-gray">· 기기등록 / 초기화(삭제) 내역</div>
             <form name="deviceForm" id="deviceForm" >
                 <input type="hidden" name="page" id="page" value="1" />
+                <input type="hidden" name="sdate" id="sdate" value="" />
+                <input type="hidden" name="edate" id="edate" value="{{date("Y-m-d", time())}}" />
                 {!! csrf_field() !!}
                 {!! method_field('POST') !!}
                 <div class="willbes-Lec-Selected willbes-Mypage-Selected tx-gray h42 mb10">
-                    <span class="w-data">
+                    <!-- <span class="w-data">
                         기간검색
                         <input type="text" id="search_start_date" name="search_start_date" class="iptDate datepicker" maxlength="10" autocomplete="off"> ~&nbsp;
                         <input type="text" id="search_end_date" name="search_end_date" class="iptDate datepicker" maxlength="10" autocomplete="off">
-                    </span>
+                    </span> -->
                     <span class="w-month">
                         <ul>
-                            <li><a class="btn-set-search-date" data-period="0-all" style="cursor:pointer;">전체</a></li>
-                            <li><a class="btn-set-search-date" data-period="1-months" style="cursor:pointer;">1개월</a></li>
-                            <li><a class="btn-set-search-date" data-period="3-months" style="cursor:pointer;">3개월</a></li>
-                            <li><a class="btn-set-search-date" data-period="6-months" style="cursor:pointer;">6개월</a></li>
+                            <li><a class="btn-set-search-date on" data-period="0-all" style="cursor:pointer;" onclick="fnDate('', this)">전체</a></li>
+                            <li><a class="btn-set-search-date" data-period="1-months" style="cursor:pointer;" onclick="fnDate('{{date("Y-m-d", strtotime(date('Y-m-d').'-1month'))}}', this)">1개월</a></li>
+                            <li><a class="btn-set-search-date" data-period="3-months" style="cursor:pointer;" onclick="fnDate('{{date("Y-m-d", strtotime(date('Y-m-d').'-3month'))}}', this)">3개월</a></li>
+                            <li><a class="btn-set-search-date" data-period="6-months" style="cursor:pointer;" onclick="fnDate('{{date("Y-m-d", strtotime(date('Y-m-d').'-6month'))}}', this)">6개월</a></li>
                         </ul>
                     </span>
                 </div>
@@ -66,6 +68,14 @@
     $(document).ready(function() {
         fnDeviceList(1)
     });
+
+    function fnDate($sdate, obj)
+    {
+        $(obj).parent().parent().find('a').removeClass();
+        $(obj).addClass('on');
+        $('#sdate').val($sdate);
+        fnDeviceList(1);
+    }
 
     function fnDeviceList($page)
     {

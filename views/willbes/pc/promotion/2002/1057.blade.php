@@ -102,8 +102,8 @@
             <img src="http://file3.willbes.net/new_gosi/2018/07/180629_03.png" usemap="#bu">
             <map name="bu" id="bu">
                 <area shape="rect" coords="208,1623,409,1671" href="https://blog.naver.com/ace5885" target="_blank"/>
-                <area shape="rect" coords="500,1503,702,1551" href="http://busan.willbes.net/event/movie/event.html?topMenu=033&event_cd=willbesoff_181112&topMenuType=F&topMenuGnb=&topMenuGnb=FM_001" target="_blank" alt="독한회독 바로가기"/>
-                <area shape="rect" coords="806,1623,1008,1671" href="http://busan.willbes.net/event/movie/event.html?topMenu=012&event_cd=willbesOFF_180323&topMenuType=F&topMenuGnb=FM_001"/>
+                <area shape="rect" coords="500,1503,702,1551" href="{{ site_url('/pass/promotion/index/code/1059') }}" target="_blank" alt="독한회독 바로가기"/>
+                <area shape="rect" coords="806,1623,1008,1671" href="{{ site_url('/pass/promotion/index/code/1058') }}" target="_blank" alt="실전에 강한 최준면접"/>
             </map>
         </div>
 
@@ -116,7 +116,7 @@
                     </a>
                 </li>
                 <li>
-                    <button type="button" onclick="window.open('http://www.willbescop.net/event/movie/event.html?event_cd=sparta&topMenuType=F')" target="_blank">
+                    <button type="button" onclick="window.open('{{ site_url('/pass/promotion/index/code/1051') }}')">
                         <img src="http://file3.willbes.net/new_gosi/2018/07/180629_04_2.png">
                     </button>
                 </li>

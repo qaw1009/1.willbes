@@ -185,9 +185,15 @@
                         return row.ZipCode + '<br/>' + data + '<br/>' + row.Addr2;
                     }},
                     {'data' : 'InvoiceNo', 'render' : function(data, type, row, meta) {
-                        return '<input type="number" name="invoice_no" class="form-control input-sm" value="' + data + '" data-order-idx="' + row.OrderIdx + '" style="width: 120px;" />' +
-                            '<button name="btn_invoice_regist" class="btn btn-xs btn-success mb-0 ml-5" data-order-idx="' + row.OrderIdx + '">저장</button>' +
-                            '<button name="btn_invoice_cancel" class="btn btn-xs btn-danger mb-0 mr-0" data-order-idx="' + row.OrderIdx + '">취소</button>';
+                        var bt_html = '', attr_disabled = '';
+                        if (data !== '') {
+                            attr_disabled = ' disabled="disabled"';
+                        } else {
+                            bt_html = '<button name="btn_invoice_regist" class="btn btn-xs btn-success mb-0 ml-5" data-order-idx="' + row.OrderIdx + '">저장</button>' +
+                                '<button name="btn_invoice_cancel" class="btn btn-xs btn-danger mb-0 mr-0" data-order-idx="' + row.OrderIdx + '">취소</button>';
+                        }
+
+                        return '<input type="number" name="invoice_no" class="form-control input-sm" value="' + data + '" data-order-idx="' + row.OrderIdx + '"' + attr_disabled + ' style="width: 120px;" />' + bt_html;
                     }}
                 ]
             });
@@ -245,7 +251,7 @@
                 $order_idx.each(function(idx) {
                     if ($(this).is(':checked') === true) {
                         invoice_no = $invoice_no.eq(idx).val();
-                        if (invoice_no.trim().length < 1) {
+                        if (invoice_no.trim().length < 1 || $invoice_no.eq(idx).prop('disabled') === true) {
                             is_check = false;
                             return false;
                         }

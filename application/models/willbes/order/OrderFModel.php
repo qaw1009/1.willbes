@@ -36,6 +36,8 @@ class OrderFModel extends BaseOrderFModel
         $total_prod_pay_price = 0;
         $total_use_point_target_price = 0;
         $total_coupon_disc_price = 0;
+        $total_save_lec_point = 0;
+        $total_save_book_point = 0;
         $total_save_point = 0;
         $delivery_price = 0;
         $delivery_pay_price = 0;
@@ -75,7 +77,7 @@ class OrderFModel extends BaseOrderFModel
 
                 if ($row['CartType'] == 'on_lecture' && $row['IsLecStart'] == 'Y') {
                     $today_date = date('Y-m-d');    // 결제일
-                    
+
                     if (empty($row['StudyStartDate']) === false && $today_date < $row['StudyStartDate']) {
                         // 개강일이 오늘 날짜보다 이후 인 경우 (개강하지 않은 상품)
                         $row['DefaultStudyStartDate'] = $row['StudyStartDate'];     // 개강일
@@ -101,10 +103,20 @@ class OrderFModel extends BaseOrderFModel
             }
 
             // 적립 포인트 (학원강좌, 배송료 상품일 경우 포인트 적립 불가, 포인트/쿠폰을 사용한 경우 포인트 적립 불가)
+            $row['RealSavePoint'] = 0;
+            $row['RealSaveLecPoint'] = 0;
+            $row['RealSaveBookPoint'] = 0;
+
             if (($make_type == 'pay' && ($use_point > 0 || $row['CouponDiscPrice'] > 0)) || $row['IsPoint'] != 'Y') {
-                $row['RealSavePoint'] = 0;
+                // do nothing
             } else {
                 $row['RealSavePoint'] = $row['PointSaveType'] == 'R' ? (int) ($row['RealPayPrice'] * ($row['PointSavePrice'] / 100)) : $row['PointSavePrice'];
+
+                if ($row['PointApplyCcd'] == $this->_point_apply_ccd['book']) {
+                    $row['RealSaveBookPoint'] = $row['RealSavePoint'];
+                } else {
+                    $row['RealSaveLecPoint'] = $row['RealSavePoint'];
+                }
             }
 
             // 배송정보 입력 여부
@@ -125,6 +137,8 @@ class OrderFModel extends BaseOrderFModel
                 // 전체상품 주문금액, 실제 결제금액, 실제 적립 포인트, 전체상품수
                 $total_prod_order_price += $row['RealSalePrice'];
                 $total_prod_pay_price += $row['RealPayPrice'];
+                $total_save_lec_point += $row['RealSaveLecPoint'];
+                $total_save_book_point += $row['RealSaveBookPoint'];
                 $total_save_point += $row['RealSavePoint'];
                 $total_prod_cnt++;
             }
@@ -165,6 +179,8 @@ class OrderFModel extends BaseOrderFModel
         $results['total_pay_price'] = $total_prod_pay_price + $delivery_pay_price + $delivery_add_price - $use_point;    // 실제 결제금액 + 실제 결제 배송료 + 추가 배송료 - 사용포인트
         $results['total_coupon_disc_price'] = $total_coupon_disc_price; // 전체 쿠폰할인금액
         $results['user_coupon_idxs'] = $arr_user_coupon_idx;     // 유효한 사용자 쿠폰식별자 배열
+        $results['total_save_lec_point'] = $total_save_lec_point;     // 전체 적립예정 강좌포인트
+        $results['total_save_book_point'] = $total_save_book_point;     // 전체 적립예정 교재포인트
         $results['total_save_point'] = $total_save_point;     // 전체 적립예정포인트
         $results['use_point'] = $use_point;     // 사용포인트
         $results['is_delivery_info'] = $is_delivery_info;   // 배송정보 입력 여부
@@ -291,7 +307,8 @@ class OrderFModel extends BaseOrderFModel
                 'DeliveryAddPrice' => element('delivery_add_price', $params),
                 'CouponDiscPrice' => element('coupon_disc_price', $params),
                 'UsePoint' => element('use_point', $params),
-                'SavePoint' => element('save_point', $params),
+                'SaveLecPoint' => element('save_lec_point', $params, 0),
+                'SaveBookPoint' => element('save_book_point', $params, 0),
                 'UserCouponIdxJson' => element('user_coupon_idx_json', $params, ''),
                 'PostData' => serialize($input),
                 'RegIp' => $this->input->ip_address()
@@ -365,7 +382,7 @@ class OrderFModel extends BaseOrderFModel
 
             // 주문요청 데이터 조회
             $post_row = $this->_conn->getFindResult($this->_table['order_post_data'],
-                'CartType, CartIdxs, SiteCode, PgCcd, PayMethodCcd, ReprProdName, OrderProdPrice, ReqPayPrice, DeliveryPrice, DeliveryAddPrice, CouponDiscPrice, UsePoint, SavePoint, UserCouponIdxJson, PostData',
+                'CartType, CartIdxs, SiteCode, PgCcd, PayMethodCcd, ReprProdName, OrderProdPrice, ReqPayPrice, DeliveryPrice, DeliveryAddPrice, CouponDiscPrice, UsePoint, SaveLecPoint, SaveBookPoint, UserCouponIdxJson, PostData',
                 ['EQ' => ['OrderNo' => $order_no, 'MemIdx' => $sess_mem_idx]]
             );
 
@@ -441,8 +458,8 @@ class OrderFModel extends BaseOrderFModel
                 'DiscPrice' => $post_row['CouponDiscPrice'],
                 'UseLecPoint' => ($post_row['CartType'] == 'book' ? 0 : $post_row['UsePoint']),
                 'UseBookPoint' => ($post_row['CartType'] == 'book' ? $post_row['UsePoint'] : 0),
-                'SaveLecPoint' => ($post_row['CartType'] == 'book' ? 0 : $post_row['SavePoint']),
-                'SaveBookPoint' => ($post_row['CartType'] == 'book' ? $post_row['SavePoint'] : 0),
+                'SaveLecPoint' => $post_row['SaveLecPoint'],
+                'SaveBookPoint' => $post_row['SaveBookPoint'],
                 'IsEscrow' => $is_escrow,
                 'IsCashReceipt' => 'N',
                 'IsDelivery' => ($cart_results['is_delivery_info'] === true ? 'Y' : 'N'),
@@ -614,9 +631,10 @@ class OrderFModel extends BaseOrderFModel
             $learn_pattern_ccd = element('LearnPatternCcd', $input);    // 학습형태
             $pack_type_ccd = element('PackTypeCcd', $input);    // 패키지구분
             $arr_prod_code_sub = empty(element('ProdCodeSub', $input)) === false ? explode(',', element('ProdCodeSub', $input)) : [];   // 패키지의 서브상품코드 배열
-            $point_type = $cart_type == 'book' ? 'book' : 'lecture';    // 포인트 구분
+            $use_point_type = $cart_type == 'book' ? 'book' : 'lecture';    // 사용포인트 구분
             $real_use_point = element('RealUsePoint', $input, 0);   // 사용포인트
             $real_pay_price = element('RealPayPrice', $input) - $real_use_point;    // 실결제금액에서 사용포인트 차감
+            $save_point_type = element('PointApplyCcd', $input) == $this->_point_apply_ccd['book'] ? 'book' : 'lecture';    // 적립포인트 구분
             $real_save_point = element('RealSavePoint', $input, 0);     // 적립포인트
             $is_visit_pay = element('IsVisitPay', $input, 'N');     // 방문결제 여부
             $is_delivery_info = element('IsDeliveryInfo', $input, 'N');     // 주문상품배송정보 입력 여부
@@ -660,6 +678,7 @@ class OrderFModel extends BaseOrderFModel
                 'DiscType' => element('CouponDiscType', $input, 'R'),
                 'UsePoint' => $real_use_point,
                 'SavePoint' => $real_save_point,
+                'SavePointType' => ($real_save_point > 0 ? $save_point_type : ''),
                 'IsUseCoupon' => (empty($user_coupon_idx) === false  ? 'Y' : 'N'),
                 'UserCouponIdx' => $user_coupon_idx,
                 'TargetOrderIdx' => element('TargetOrderIdx', $input),
@@ -786,7 +805,7 @@ class OrderFModel extends BaseOrderFModel
 
             // 회원포인트 적립 (결제상태가 결제완료일 경우)
             if ($real_save_point > 0 && $pay_status_ccd == $this->_pay_status_ccd['paid']) {
-                $is_point_save = $this->pointFModel->addOrderSavePoint($point_type, $real_save_point, $site_code, $order_idx, $order_prod_idx);
+                $is_point_save = $this->pointFModel->addOrderSavePoint($save_point_type, $real_save_point, $site_code, $order_idx, $order_prod_idx);
                 if ($is_point_save !== true) {
                     throw new \Exception($is_point_save);
                 }
@@ -794,7 +813,7 @@ class OrderFModel extends BaseOrderFModel
 
             // 회원 포인트 사용
             if ($real_use_point > 0) {
-                $is_point_use = $this->pointFModel->addOrderUsePoint($point_type, $real_use_point, $site_code, $order_idx, $order_prod_idx);
+                $is_point_use = $this->pointFModel->addOrderUsePoint($use_point_type, $real_use_point, $site_code, $order_idx, $order_prod_idx);
                 if ($is_point_use !== true) {
                     throw new \Exception($is_point_use);
                 }
@@ -917,6 +936,7 @@ class OrderFModel extends BaseOrderFModel
                     'DiscType' => 'R',
                     'UsePoint' => 0,
                     'SavePoint' => 0,
+                    'SavePointType' => '',
                     'IsUseCoupon' => 'N',
                     'UserCouponIdx' => 0
                 ];
@@ -1672,10 +1692,8 @@ class OrderFModel extends BaseOrderFModel
             $order_prod_rows = $this->orderListFModel->listOrderProduct(false, ['EQ' => ['O.OrderIdx' => $order_idx]], null, null, ['OP.OrderProdIdx' => 'asc']);
             foreach ($order_prod_rows as $idx => $order_prod_row) {
                 // 포인트 적립
-                if ($order_prod_row['SavePoint'] > 0) {
-                    $point_type = $order_prod_row['OrderProdType'] == 'book' ? 'book' : 'lecture';
-
-                    $is_point_save = $this->pointFModel->addOrderSavePoint($point_type, $order_prod_row['SavePoint'], $order_prod_row['SiteCode'], $order_idx, $order_prod_row['OrderProdIdx'], $mem_idx);
+                if ($order_prod_row['SavePoint'] > 0 && empty($order_prod_row['SavePointType']) === false) {
+                    $is_point_save = $this->pointFModel->addOrderSavePoint($order_prod_row['SavePointType'], $order_prod_row['SavePoint'], $order_prod_row['SiteCode'], $order_idx, $order_prod_row['OrderProdIdx'], $mem_idx);
                     if ($is_point_save !== true) {
                         throw new \Exception($is_point_save);
                     }

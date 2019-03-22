@@ -43,14 +43,14 @@
                                 <option value="{{$k}}">{{$v}}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-5" id="search_AcceptStatus" name="search_AcceptStatus">
+                        <!--select class="form-control mr-5" id="search_AcceptStatus" name="search_AcceptStatus">
                             <option value="">접수상태</option>
                             @foreach($accept_ccd as $key=>$val)
                                 @if($key != '675001' ) {{--접수예정 제외--}}
                                 <option value="{{$key}}">{{$val}}</option>
                                 @endif
                             @endforeach
-                        </select>
+                        </select-->
                         <!--select class="form-control mr-5" id="search_TakeType" name="search_TakeType">
                             <option value="">응시기간</option>
                             <option value="A">상시</option>
@@ -149,8 +149,8 @@
                 buttons: [
                     { text: '<i class="fa fa-copy mr-5"></i> 복사', className: 'btn btn-sm btn-primary mr-15 act-copy', action: copyAreaData },
                     { text: '<i class="fa fa-pencil mr-5"></i> 모의고사 등록', className: 'btn btn-sm btn-success', action: function(e, dt, node, config) {
-                        location.href = '{{ site_url('/mocktest/regGoods/create') }}' + dtParamsToQueryString($datatable);
-                    }}
+                            location.href = '{{ site_url('/mocktest/regGoods/create') }}' + dtParamsToQueryString($datatable);
+                        }}
                 ],
                 serverSide: true,
                 ajax: {
@@ -162,49 +162,51 @@
                 },
                 columns: [
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                        return '<input type="radio" class="flat" name="target" value="' + row.ProdCode + '">';
-                    }},
+                            return '<input type="radio" class="flat" name="target" value="' + row.ProdCode + '">';
+                        }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                        return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
-                    }},
+                            return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
+                        }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                        var IsUseCate = (row.IsUseCate === 'Y') ? '' : '<span class="red">(미사용)</span>';
-                        return row.CateName + IsUseCate;
-                    }},
+                            var IsUseCate = (row.IsUseCate === 'Y') ? '' : '<span class="red">(미사용)</span>';
+                            return row.CateName + IsUseCate;
+                        }},
                     {'data' : 'MockPartName', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                        return data.join('<br>');
-                    }},
+                            return data.join('<br>');
+                        }},
                     {'data' : 'MockYear', 'class': 'text-center'},
                     {'data' : 'MockRotationNo', 'class': 'text-center'},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                        return '<span class="blue underline-link act-edit">[' + row.ProdCode + '] ' + row.ProdName + '</span>';
-                    }},
+                            return '<span class="blue underline-link act-edit">[' + row.ProdCode + '] ' + row.ProdName + '</span>';
+                        }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                        return row.RealSalePrice + '원<br><span style="text-decoration:line-through">' + row.SalePrice + '원</span>';
-                    }},
+                            return row.RealSalePrice + '원<br><span style="text-decoration:line-through">' + row.SalePrice + '원</span>';
+                        }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                        return row.SaleStartDatm.substr(0,10) + ' ~ ' + row.SaleEndDatm.substr(0,10);
-                    }},
+                            return row.SaleStartDatm.substr(0,10) + ' ~ ' + row.SaleEndDatm.substr(0,10);
+                        }},
                     {'data' : 'TakePart_on', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                        return (data === 'Y') ? 'Y' : '<span class="red">N</span>';
-                    }},
+                            return (data === 'Y') ? 'Y' : '<span class="red">N</span>';
+                        }},
                     {'data' : 'TakePart_off', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                        return (data === 'Y') ? 'Y' : '<span class="red">N</span>';
-                    }},
+                            return (data === 'Y') ? 'Y' : '<span class="red">N</span>';
+                        }},
                     {'data' : 'OnlineRegCnt', 'class': 'text-center'},
                     {'data' : 'OfflineRegCnt', 'class': 'text-center'},
                     {'data' : 'OnlineCnt', 'class': 'text-center'},
                     {'data' : 'OfflineCnt', 'class': 'text-center'},
                     {'data' : 'AcceptStatusCcd_Name', 'class': 'text-center'},
                     {'data' : 'TakeType', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                        return (data === 'A') ? '상시' : '기간제한';
-                    }},
+                            return (data === 'A') ? '상시' : '기간제한';
+                        }},
                     {'data' : 'IsUse', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                        return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
-                    }},
+                            return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
+                        }},
                     {'data' : 'wAdminName', 'class': 'text-center'},
                     {'data' : 'RegDatm', 'class': 'text-center'}
-                   
+                    //{'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                    //        return '<span class="blue underline-link act-fake"><input type="hidden" class="flat" name="prod" value="'+ row.ProdCode + '">' + row.RegDatm + '</span>';
+                    //    }}
                 ]
             });
 

@@ -70,7 +70,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2" for="disp_start_datm">노출시간</label>
                     <div class="col-md-4 form-inline">
-                        <div class="input-group">
+                        <div class="input-group mb-0">
                             <input type="text" class="form-control datepicker" id="disp_start_datm" name="disp_start_datm" value="{{$data['DispStartDatm']}}">
                             <div class="input-group-btn">
                                 <select class="form-control ml-5" id="disp_start_time" name="disp_start_time">
@@ -132,8 +132,8 @@
                 <div class="form-group">
                     <label class="control-label col-md-2" for="link_type_self">링크방식<span class="required">*</span></label>
                     <div class="col-md-3 item form-inline">
-                        <div class="radio">
-                            <input type="radio" id="link_type_self" name="link_type" class="flat" value="self" required="required" title="링크방식" @if($method == 'POST' || $data['LinkType']=='self')checked="checked"@endif/><label for="link_type_self" class="hover mr-5">본창</label>
+                        <div class="radio pt-5">
+                            <input type="radio" id="link_type_self" name="link_type" class="flat" value="self" required="required" title="링크방식" @if($method == 'POST' || $data['LinkType']=='self')checked="checked"@endif/> <label for="link_type_self" class="hover mr-5">본창</label>
                             <input type="radio" id="link_type_blank" name="link_type" class="flat" value="blank" @if($data['LinkType']=='blank')checked="checked"@endif/> <label for="link_type_blank" class="">새창</label>
                         </div>
                     </div>
@@ -143,6 +143,7 @@
                     <label class="control-label col-md-2" for="link_url">링크주소<span class="required">*</span></label>
                     <div class="col-md-6 item">
                         <input type="text" id="link_url" name="link_url" required="required" class="form-control" title="링크주소" value="{{ $data['LinkUrl'] }}" placeholder="링크주소 입니다.">
+                        <div class="mt-10">• 프로토콜 (http, https) <span class="red bold">제외하고, 실제 서비스 도메인을 포함하여 입력 (예: police.willbes.net/home/index/cate/3001)</span></div>
                     </div>
                 </div>
 
@@ -360,8 +361,6 @@
             });
             // ajax submit
             $regi_form.submit(function() {
-                var site_code = $regi_form.find('select[name="site_code"]').val();
-                var site_all_code = "{{config_item('app_intg_site_code')}}";
                 var _url = '{{ site_url("/site/popup/store") }}' + getQueryString();
 
                 ajaxSubmit($regi_form, _url, function(ret) {
@@ -376,8 +375,21 @@
                         notifyAlert('success', '알림', ret.ret_msg);
                         location.replace('{{ site_url("/site/popup") }}/' + getQueryString());
                     }
-                }, showValidateError, null, false, 'alert');
+                }, showValidateError, addValidate, false, 'alert');
             });
+
+            function addValidate() {
+                var site_code = $regi_form.find('select[name="site_code"]').val();
+                var site_all_code = "{{config_item('app_intg_site_code')}}";
+
+                @if($method == 'POST')
+                if(site_code != site_all_code && $regi_form.find('input[name="cate_code[]"]').length < 1) {
+                    alert('카테고리 선택 필드는 필수입니다.');
+                    return false;
+                }
+                @endif
+                    return true;
+            }
         });
     </script>
 @stop

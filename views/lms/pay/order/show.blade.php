@@ -105,6 +105,7 @@
                             <th rowspan="2" class="valign-middle">상품코드</th>
                             <th rowspan="2" class="valign-middle">상품명</th>
                             <th rowspan="2" class="valign-middle">배송상태</th>
+                            <th rowspan="2" class="valign-middle">판매금액</th>
                             <th colspan="2">결제금액</th>
                             <th colspan="2">할인정보</th>
                             <th colspan="2">미수금정보</th>
@@ -138,6 +139,7 @@
                                         @endif
                                     </td>
                                     <td>{!! empty($order_prod_row['DeliveryStatusCcd']) === false ? $order_prod_row['DeliveryStatusCcdName'] . '<br/>' . substr($order_prod_row['DeliverySendDatm'], 0, 10) : '' !!}</td>
+                                    <td>{{ number_format($order_prod_row['OrderPrice']) }}</td>
                                     <td>{{ number_format($order_prod_row['CardPayPrice']) }}</td>
                                     <td>{{ number_format($order_prod_row['CashPayPrice']) }}</td>
                                     <td>{{ $order_prod_row['IsUseCoupon'] }} {!! $order_prod_row['IsUseCoupon'] == 'Y' ? '<br/>(' . $order_prod_row['UserCouponIdx'] . ')' : '' !!}</td>
@@ -152,7 +154,7 @@
                         </tbody>
                         <tfoot>
                         <tr>
-                            <td colspan="14" class="text-center bg-info">
+                            <td colspan="15" class="text-center bg-info">
                                 <strong>[총 실결제금액] <span class="blue">{{ number_format($data['order']['tRealPayPrice']) }}</span>
                                     (사용 포인트 : {{ number_format($data['order']['tUseLecPoint']) }} | 교재 {{ number_format($data['order']['tUseBookPoint']) }})
                                     <span class="red pl-20">[총 환불금액] {{ number_format($data['order']['tRefundPrice']) }}</span>

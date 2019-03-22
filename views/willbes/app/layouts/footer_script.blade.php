@@ -22,3 +22,6 @@
 <script src="/public/js/willbes/app.js?ver={{time()}}"></script>
 <script src="/public/vendor/starplayer/js/starplayer_bridge.js?ver={{time()}}"></script>
 <!--// JAVASCRIPT -->
+<!-- Common Site Script -->
+{!! base64_decode($__cfg['CommAppScript']) !!}
+<!--// Common Site Script -->

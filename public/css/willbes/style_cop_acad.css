@@ -2,6 +2,9 @@
 .cop_acad .tx-color {
     color: #0c5dc0;
 }
+.PA .tx-color {
+    color: #0c5dc0;
+}
 .cop_acad .Menu .menu-List li.Acad a {
     background: url("../../img/willbes/cop_acad/icon_acad.png") no-repeat 0 2px;
     color: #2784d2;
@@ -104,23 +107,34 @@
 }
 
 /* Main Container : acad_infoBox : Cop Acad */
+
 .caProfBox li {
     position: relative;
     display: inline;
     float: left;
+    width: 271px;
     height: 297px;
-    margin-right: 12px;
+    margin-right:12px;
     margin-bottom: 12px;
-    background: url("../../img/willbes/cop_acad/prof/prof_temp.jpg") no-repeat 0 0;
+    overflow: hidden;
+    background: url("../../img/willbes/cop_acad/prof/prof_temp.jpg") no-repeat center center;
 }
+
 .caProfBox li:nth-child(4),
+.caProfBox li:nth-child(8),
 .caProfBox li:last-child {
     margin-right:0;
+}
+
+.caProfBox li img {
+    position: absolute;
+    left:50%;
+    margin-left:-50%;
 }
 .caProfBox .caProfBtsn {
     position: absolute;
     top:170px;
-    left:30px;
+    left:35px;
     font-size: 14px;
 }
 .caProfBox .caProfBtsn a {
@@ -185,22 +199,22 @@
 .passCurriWrap li:hover img.over {display: block;}
 .passCurriWrap li.curriStep1:hover img.over {    
     margin-top:-41px;
-    margin-left:-46px;
+    margin-left:-24px;
 }
 .passCurriWrap li.curriStep2 {
-    top: 39px;
+    top: 40px;
     left: 170px;
 }
 .passCurriWrap li.curriStep2:hover img.over {    
     margin-top:-41px;
-    margin-left:-37px;
+    margin-left:-6px;
 }
 .passCurriWrap li.curriStep3 {
     top: 80px;
     left: 340px;
 }
 .passCurriWrap li.curriStep3:hover img.over {    
-    margin-top:-134px;
+    margin-top:-120px;
     margin-left:0;
 }
 .passCurriWrap li.curriStep4 {
@@ -209,102 +223,26 @@
 }
 .passCurriWrap li.curriStep4:hover img.over {    
     margin-top:-41px;
-    margin-left:-3px;
+    margin-left:0;
 }
 .passCurriWrap li.curriStep5 {
     top: 160px;
     left: 709px;
 }
 .passCurriWrap li.curriStep5:hover img.over {    
-    margin-top:-108px;
-    margin-left:0;
+    margin-top:-133px;
+    margin-left:-2px;
 }
 .passCurriWrap li.curriStep6 {
     top: 200px;
     left: 879px;
 }
 .passCurriWrap li.curriStep6:hover img.over {    
-    margin-top:-101px;
-    margin-left:-6px;
+    margin-top:-181px;
+    margin-left:-1px;
 }
 
-/* Main Container : acad_infoBox : Cop Acad */
-.acad_infoBox {
-    float: left;
-    width: 1120px;
-    border: 10px solid #e7e7e7;
-    clear: both;
-    margin-top: 50px;
-    padding: 10px 0;
-    height: 90px;
-}
-.acad_infoBox li {
-    float: left;
-    width: 20%;
-    height: 50px;
-    border-left: 1px solid #ebebeb;
-}
-.acad_infoBox li a {
-    background-size: 60px !important;
-    float: left;
-    display: block;
-    width: 100%;
-    height: 100%;
-    font-size: 17px;
-    font-weight: 600;
-    text-align: center;
-    color: #606060;
-    text-align: center;
-    line-height: inherit;
-    letter-spacing: 0;
-    border: none;
-}
-.acad_infoBox li a.on,
-.acad_infoBox li a:hover {
-    color: #0c5dc0;
-}
-.acad_infoBox li a span {
-    display: block;
-    text-align: left;
-    padding-top: 15px;
-    padding-left: 100px;
-}
-.acad_infoBox li.w-infoBox1 a {
-    background: url("../../img/willbes/cop_acad/icon_info1.png") no-repeat 30px center;
-}
-.acad_infoBox li.w-infoBox2 a {
-    background: url("../../img/willbes/cop_acad/icon_info2.png") no-repeat 30px center;
-}
-.acad_infoBox li.w-infoBox3 a {
-    background: url("../../img/willbes/cop_acad/icon_info3.png") no-repeat 30px center;
-}
-.acad_infoBox li.w-infoBox4 a {
-    background: url("../../img/willbes/cop_acad/icon_info4.png") no-repeat 30px center;
-}
-.acad_infoBox li.w-infoBox5 a {
-    background: url("../../img/willbes/cop_acad/icon_info5.png") no-repeat 30px center;
-}
 
-.acad_infoBox li.w-infoBox1 a.on,
-.acad_infoBox li.w-infoBox1 a:hover {
-    background: url("../../img/willbes/cop_acad/icon_info1_on.png") no-repeat 30px center;
-}
-.acad_infoBox li.w-infoBox2 a.on,
-.acad_infoBox li.w-infoBox2 a:hover {
-    background: url("../../img/willbes/cop_acad/icon_info2_on.png") no-repeat 30px center;
-}
-.acad_infoBox li.w-infoBox3 a.on,
-.acad_infoBox li.w-infoBox3 a:hover {
-    background: url("../../img/willbes/cop_acad/icon_info3_on.png") no-repeat 30px center;
-}
-.acad_infoBox li.w-infoBox4 a.on,
-.acad_infoBox li.w-infoBox4 a:hover {
-    background: url("../../img/willbes/cop_acad/icon_info4_on.png") no-repeat 30px center;
-}
-.acad_infoBox li.w-infoBox5 a.on,
-.acad_infoBox li.w-infoBox5 a:hover {
-    background: url("../../img/willbes/cop_acad/icon_info5_on.png") no-repeat 30px center;
-}
 
 /* Main Container : Notice : noticeTabs */
 .noticeTabs.acad {
@@ -375,6 +313,8 @@
 .tabBox.noticeBox_acad .List-Table li a img {
     margin-right: 5px;
 }
+
+
 /* Main Container : campus : Cop Acad */
 .tabWrap.noticeWrap_campus {
     height: 60px;
@@ -537,6 +477,34 @@
     text-align: center;
     border: 1px solid #0c5dc0;
 }
+/*캠퍼스 메인 오시는 길*/
+.PA .map_img {
+    position: relative;
+    float: left;
+    width: 580px;
+    height: 328px;
+    overflow: hidden;
+}
+.PA .map_img img {
+    position: absolute;
+    left:50%;
+    margin-left:-349px;
+}
+
+.PA .campus_info {
+    position: relative;
+    float: right;
+    width: 320px;
+    height: 328px;
+}
+.PA .campus_info dl dt {
+    border-top: 1px solid #e3e3e3;
+    padding: 25px 0;
+}
+.PA .campus_info dl dt:first-child {
+    border-top: none;
+    padding: 0 0 25px;
+}
 
 /* Main Container : QuickMenu : Cop */
 .cop_acad .MainQuickMenu {
@@ -575,19 +543,22 @@
     background: url("../../img/willbes/cop_acad/icon_rq01.png") no-repeat 3px center;
 }
 .cop_acad .MainQuickMenu li:nth-child(2) a {
-    background: url("../../img/willbes/cop_acad/icon_rq02.png") no-repeat 3px center;
+    background: url("../../img/willbes/cop_acad/icon_rq07.png") no-repeat 3px center;
 }
 .cop_acad .MainQuickMenu li:nth-child(3) a {
-    background: url("../../img/willbes/cop_acad/icon_rq03.png") no-repeat 3px center;
+    background: url("../../img/willbes/cop_acad/icon_rq02.png") no-repeat 3px center;
 }
 .cop_acad .MainQuickMenu li:nth-child(4) a {
-    background: url("../../img/willbes/cop_acad/icon_rq04.png") no-repeat 3px center;
+    background: url("../../img/willbes/cop_acad/icon_rq03.png") no-repeat 3px center;
 }
 .cop_acad .MainQuickMenu li:nth-child(5) a {
     background: url("../../img/willbes/cop_acad/icon_rq05.png") no-repeat 3px center;
 }
 .cop_acad .MainQuickMenu li:nth-child(6) a {
     background: url("../../img/willbes/cop_acad/icon_rq06.png") no-repeat 3px center;
+}
+.cop_acad .MainQuickMenu li:nth-child(7) a {
+    background: url("../../img/willbes/cop_acad/icon_rq08.png") no-repeat 3px center;
 }
 
 /*sub 메인*/

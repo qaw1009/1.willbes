@@ -518,10 +518,14 @@
                     <label class="control-label col-md-2" for="IsPoint">결제포인트적립 <span class="required">*</span>
                     </label>
                     <div class="col-md-4 form-inline">
-                        <input type="hidden" name="PointApplyCcd" id="PointApplyCcd" value="635001">
                         <input type="radio" name="IsPoint" class="flat" value="Y" required="required" title="결제포인트적립" @if($method == 'POST' || $data['IsPoint']=='Y')checked="checked"@endif/> 가능
                         [
-                        <input type='number' name='PointSavePrice' value='@if($method==="POST"){{1}}@else{{$data['PointSavePrice']}}@endif' title="결제포인트적립" class="form-control" size="2" required="required" >
+                        <select name="PointApplyCcd" id="PointApplyCcd"  class="form-control" title="포인트지급타입">
+                            @foreach($pointapply_ccd as $key => $val)
+                                <option value="{{$key}}" @if($data['PointApplyCcd'] == $key) selected="selected" @endif>{{$val}}</option>
+                            @endforeach
+                        </select>
+                        <input type='number' name='PointSavePrice' value='@if($method==="POST"){{1}}@else{{$data['PointSavePrice']}}@endif' title="결제포인트적립" class="form-control" size="5" required="required" >
                         <select name="PointSaveType" id="PointSaveType" class="form-control">
                             <option value="R" @if($data['PointSaveType'] == 'R')selected="selected"@endif>%</option>
                             <option value="P" @if($data['PointSaveType'] == 'P')selected="selected"@endif>원</option>
@@ -1265,7 +1269,7 @@
                 if($("#site_code").val() == "") {alert("운영사이트를 선택해 주세요.");$("#site_code").focus();return;}
                 $('#'+id).setLayer({
                     'url' : '{{ site_url('common/searchLecture/')}}'+'?site_code='+$("#site_code").val()+'&LearnPatternCcd=615001&locationid='+id+'&ProdCode='+$('#ProdCode').val()
-                    ,'width' : 1200
+                    ,'width' : 1300
                 })
             });
 
@@ -1277,7 +1281,7 @@
 
                 $('#sameLecture').setLayer({
                     'url' : '{{ site_url('common/searchLecture/')}}'+'?site_code='+$("#site_code").val()+'&LearnPatternCcd=615001&wLecIdx='+$('#wLecIdx').val()
-                    ,'width' : 1200
+                    ,'width' : 1300
                 })
             });
 

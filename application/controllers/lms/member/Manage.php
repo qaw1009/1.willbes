@@ -84,35 +84,35 @@ class Manage extends \app\controllers\BaseController
         if($search_sdate != '' && $search_edate != ''){
             switch($search_condition){
                 case 'joindate':
-                    $arr_condition += [
+                    $arr_condition = array_merge($arr_condition, [
                         'BDT' => [
                             'Mem.JoinDate' => [$search_sdate, $search_edate]
                         ]
-                    ];
+                    ]);
                     break;
 
                 case 'lastlogin':
-                    $arr_condition += [
+                    $arr_condition = array_merge($arr_condition, [
                         'BDT' => [
                             'Mem.JoinDate' => [$search_sdate, $search_edate]
                         ]
-                    ];
+                    ]);
                     break;
 
                 case 'lastmodify':
-                    $arr_condition += [
+                    $arr_condition = array_merge($arr_condition, [
                         'BDT' => [
                             'Mem.JoinDate' => [$search_sdate, $search_edate]
                         ]
-                    ];
+                    ]);
                     break;
 
                 case 'lastchgpwd':
-                    $arr_condition += [
+                    $arr_condition = array_merge($arr_condition, [
                         'BDT' => [
                             'Mem.JoinDate' => [$search_sdate, $search_edate]
                         ]
-                    ];
+                    ]);
                     break;
 
                 case 'outdate':
@@ -128,27 +128,23 @@ class Manage extends \app\controllers\BaseController
 
         // 탈퇴회원쿼리
         if($this->_req('IsOut') == 'Y' && $search_condition != 'outdate'){
-            $inQuery .= "
-                    AND Mem.IsStatus = 'N'
-                    AND Mem.MemIdx IN (
-                        SELECT memIdx FROM lms_Member_Out_Log 
-                    )";
+            $inQuery .= " AND Mem.IsStatus = 'N' ";
         }
 
         // 비번 6개월이상 미변경 회원
         if($this->_req('NoChangePwd') == 'Y'){
-            $arr_condition += [
+            $arr_condition = array_merge($arr_condition, [
                 'LTE' => ['Mem.LastPassModyDatm' => date("Y-m-d H:m:s", strtotime("-6 month"))]
-            ];
+            ]);
         }
 
         // 휴면회원 1년이상 미로그인 회원
         if($this->_req('IsSleep') == 'Y'){
-            $arr_condition += [
-                'LTE' => ['Mem.LastLoginDatm' => date("Y-m-d H:m:s", strtotime("-12 month"))]
-            ];
+            $arr_condition = array_merge($arr_condition, [
+                'EQ' => ['Mem.IsStatus' => 'D']
+                //'LTE' => ['Mem.LastLoginDatm' => date("Y-m-d H:m:s", strtotime("-12 month"))]
+            ]);
         }
-
         // 기기등록회원
         if($this->_req('IsRegDevice') == 'Y' ){
             $inQuery .= "

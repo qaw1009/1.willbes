@@ -21,7 +21,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="site_code">운영사이트<span class="required">*</span></label>
                     <div class="form-inline col-md-4 item">
-                        {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', '', false) !!}
+                        {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', '', true) !!}
                     </div>
                     <label class="control-label col-md-1-1 d-line" for="promotion_code">프로모션코드</label>
                     <div class="col-md-4 form-inline ml-12-dot">
@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-1-1">카테고리정보 <span class="required">*</span>
+                    <label class="control-label col-md-1-1">카테고리정보
                     </label>
                     <div class="col-md-10 form-inline">
                         <button type="button" id="btn_category_search" class="btn btn-sm btn-primary">카테고리검색</button>
@@ -181,8 +181,8 @@
                                         <label for="limit_type_M" class="input-label">다중리스트</label>
                                     </div>
                                 </div>
-                                <div class="col-md-5">
-                                    <p class="form-control-static">• 한 페이지에서 여러개의 특강 접수 시 '다중리스트' 선택</p>
+                                <div class="col-md-9">
+                                    <p class="form-control-static">• 한 페이지에서 여러개의 특강 접수 시 '다중리스트' 선택 <br>• <span class="red">이미 이벤트를 오픈하여 신청자를 접수 받은 경우 신청리스트 옵션 정보를 변경하더라도 변경된 정보는 반영될 수 없습니다.</span></p>
                                 </div>
                             </div>
                             <div class="row">
@@ -191,7 +191,7 @@
                                         <div class="col-md-11">
                                         <select class="form-control" id="person_limit_type" name="person_limit_type">
                                             <option value="L" @if((empty($list_event_register['S']) === false) && $list_event_register['S'][0]['PersonLimitType']=='L')selected="selected"@endif>인원제한</option>
-                                            <option value="N" @if((empty($list_event_register['S']) === false) && $list_event_register['S'][0]['PersonLimitType']=='M')selected="selected"@endif>무제한</option>
+                                            <option value="N" @if((empty($list_event_register['S']) === false) && $list_event_register['S'][0]['PersonLimitType']=='N')selected="selected"@endif>무제한</option>
                                         </select>
                                         <input type="text" id="person_limit" name="person_limit" class="form-control ml-5" required="required_if:person_limit_type,L" title="정원수" value="{{(empty($list_event_register['S']) === false) ? $list_event_register['S'][0]['PersonLimit'] : ''}}" style="width: 80px;"> 명
                                         <span class="ml-20">[특강명] </span><input type="text" id="register_name" name="register_name" class="form-control ml-5" required="required_if:person_limit_type,L" title="특강명" value="{{(empty($list_event_register['S']) === false) ? $list_event_register['S'][0]['Name'] : ''}}">
@@ -207,8 +207,8 @@
                                                 <option value="M" @if($data['SelectType']=='M')selected="selected"@endif>다중선택</option>
                                             </select>
                                         </div>
-                                        <div class="col-md-2">
-                                            <p class="form-control-static">• 다중리스트 옵션</p>
+                                        <div class="col-md-5">
+                                            <p class="form-control-static">• 다중리스트 옵션 (관리차 필요값, 제어조건 없음)</p>
                                         </div>
                                     </div>
                                     <div class="form-group form-inline">
@@ -329,20 +329,24 @@
                                     @endif
                                 </span>
                             </div>
+                            <div class="col-md-10 col-lg-offset-2 form-inline">
+                                <p class="form-control-static">• 사이트관리 > 배너관리 > 배너등록에서 링크방식을 '레이어팝업(이벤트 바로신청팝업)으로 등록한 배너만 노출됩니다.<br>
+                                    • 배너를 선택하고 이벤트 등록한 후 해당 섹션의 배너 클릭 시 해당 이벤트의 바로신청 팝업이 자동 노출됩니다.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 {{--
-                TODO : 해당 프로모션 링크 값에 대한 처리 방안 결정 필요.
+                TODO : 필요없는 항목
                 --}}
-                <div class="form-group">
+                {{--<div class="form-group">
                     <label class="control-label col-md-1-1">프로모션 링크</label>
                     <div class="form-inline col-md-10">
                         <input type="text" id="promotion_link" name="promotion_link" class="form-control" value="{{$data['Link']}}" title="프로모션 링크">
                         &nbsp;&nbsp;&nbsp;&nbsp;• 관리할 프로모션 링크를 입력해주세요.
                     </div>
-                </div>
+                </div>--}}
 
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="admin_mail_id">조회수</label>
@@ -351,7 +355,7 @@
                         +
                         생성 <input type="number" id="setting_readCnt" name="setting_readCnt" class="form-control" title="생성" value="{{$data['AdjuReadCnt']}}" style="width: 70px; padding:5px">
                         =
-                        노출 <input type="text" id="total_read_count" name="total_read_count" class="form-control" title="노출" readonly="readonly" value="" style="width: 70px; padding:5px">
+                        노출 <input type="text" id="total_read_count" name="total_read_count" class="form-control" title="노출" readonly="readonly" value="{{$data['TotalReadCnt']}}" style="width: 70px; padding:5px">
                         &nbsp;&nbsp;&nbsp;&nbsp;• 사용자단에 노출되는 조회수는‘실조회수 + 조회수생성’입니다.
                     </div>
                 </div>
@@ -487,6 +491,7 @@
             });
 
             //단일리스트 > 인원제한 선택
+            if ($('#person_limit_type').val() == 'N') { $regi_form.find('input[name="person_limit"]').prop('readonly', 'readonly'); }
             $('#person_limit_type').change(function() {
                 var set_val = $(this).val();
                 if (set_val === 'L') {
@@ -629,12 +634,6 @@
             var $method = '{{$method}}';
             var limit_type = $(":input:radio[name=limit_type]:checked").val();
             var event_register_length = $regi_form.find('input[name="event_register_parson_limit_type[]"]').length;
-            var site_category_length = $("input[name='cate_code[]']").length;
-
-            if (site_category_length < 1) {
-                alert('카테고리 선택 필드는 필수입니다.');
-                return false;
-            }
 
             if ($method == 'POST' && limit_type == 'M' && event_register_length <= 0) {
                 alert('다중리스트 정보를 입력해 주세요.');

@@ -108,6 +108,9 @@
                             <input type="radio" id="link_type_blank" name="link_type" class="flat" value="blank" @if($data['LinkType']=='blank')checked="checked"@endif/> <label for="link_type_blank" class="input-label">새창</label>
                             <input type="radio" id="link_type_layer" name="link_type" class="flat" value="layer" @if($data['LinkType']=='layer')checked="checked"@endif/>
                             <label for="link_type_layer" class="input-label">레이어팝업 (이벤트 바로신청팝업)</label>
+                            <input type="radio" id="link_type_popup" name="link_type" class="flat" value="popup" @if($data['LinkType']=='popup')checked="checked"@endif/> <label for="link_type_popup" class="input-label">팝업창</label>
+                            ( <input type="number" id="pop_width" name="pop_width" class="form-control" maxlength="4" title="팝업width" value="{{ $data['PopWidth'] }}" required="required_if:link_type,popup" style="width: 60px;">
+                            x <input type="number" id="pop_height" name="pop_height" class="form-control" maxlength="4" title="팝업height" value="{{ $data['PopHeight'] }}" required="required_if:link_type,popup" style="width: 60px;"> )
                         </div>
                     </div>
                 </div>
@@ -116,7 +119,9 @@
                     <label class="control-label col-md-1-1" for="link_url">링크주소<span class="required">*</span></label>
                     <div class="col-md-10 form-inline">
                         <input type="text" id="link_url" name="link_url" class="form-control" maxlength="100" title="링크주소" value="{{ $data['LinkUrl'] }}" required="required" placeholder="링크주소 입니다." style="width: 40%">
-                        &nbsp;&nbsp;&nbsp;&nbsp;• Ex) 프로토콜 미입력(Http,Https), 실제 서비스 도메인으로 입력
+                        <div class="mt-10">• 내부링크 : 프로토콜 (http, https) <span class="red bold">제외하고, 실제 서비스 도메인을 포함하여 입력 (예: police.willbes.net/home/index/cate/3001)</span></div>
+                        <div class="mt-5">• 외부링크 : 프로토콜 (http, https) <span class="red bold">입력 필수 (예: http://www.hanlimgosi.co.kr)</span></div>
+                        <div class="mt-5">• 레이어팝업 : <span class="red bold">실제 서비스 도메인만 입력 (예 : ploice.willbes.net)</span></div>
                     </div>
                 </div>
 
@@ -125,7 +130,6 @@
                     <div class="col-md-10 form-inline">
                         <input type="radio" id="link_url_type_I" name="link_url_type" class="flat" value="I" required="required" title="외내부 링크타입" @if($method == 'POST' || $data['LinkUrlType']=='I')checked="checked"@endif/> <label for="link_url_type_I" class="input-label">내부링크</label>
                         <input type="radio" id="link_url_type_O" name="link_url_type" class="flat" value="O" @if($data['LinkUrlType']=='O')checked="checked"@endif/> <label for="link_url_type_O" class="input-label">외부링크</label>
-                        &nbsp;&nbsp;&nbsp;&nbsp;• Ex) 외부 링크일 경우 Full URL 경로 입력
                     </div>
                 </div>
 

@@ -63,9 +63,9 @@
         <div class="skybanner" >
             <img src="http://file3.willbes.net/new_gosi/2018/08/EV180807_sky.png" alt="#" usemap="#Map_sky_go" border="0" />
             <map name="Map_sky_go">
-                <area shape="rect" coords="10,18,90,65" href="http://willbesgosi.net/event/movie/event.html?event_cd=off_180426_01&topMenuType=F#lec_send" alt="자습형">
-                <area shape="rect" coords="9,93,91,144" href="http://willbesgosi.net/event/movie/event.html?event_cd=off_180426_02&topMenuType=F#lec_send" alt="기숙형">
-                <area shape="rect" coords="7,165,92,222" href="http://willbesgosi.net/event/movie/event.html?event_cd=off_180426_03&topMenuType=F#lec_send"alt="영어집중형">
+                <area shape="rect" coords="10,18,90,65" href="{{ site_url('/pass/promotion/index/cate/3043/code/1100') }}" alt="자습형">
+                <area shape="rect" coords="9,93,91,144" href="{{ site_url('/pass/promotion/index/cate/3043/code/1101') }}" target="_blank" alt="기숙형">
+                <area shape="rect" coords="7,165,92,222" href="{{ site_url('/pass/promotion/index/cate/3043/code/1102') }}" target="_blank" alt="영어집중형">
             </map>
         </div>
 
@@ -88,9 +88,9 @@
             <div class="tab_box">
                 <div class="tab_menu">
                     <ul>
-                        <li><a href="<c:url value='/event/movie/event.html?event_cd=off_180426_01&topMenuType=F'/>"><img src="http://file3.willbes.net/new_gosi/2018/08/EV180806_t_tab1.png"  onmouseover="this.src='http://file3.willbes.net/new_gosi/2018/08/EV180806_t_tab1_on.png'" onMouseOut="this.src='http://file3.willbes.net/new_gosi/2018/08/EV180806_t_tab1.png'" onMouseDown="this.src='http://file3.willbes.net/new_gosi/2018/08/EV180806_t_tab1.png'" border="0"/></a></li>
-                        <li><a href="<c:url value='/event/movie/event.html?event_cd=off_180426_02&topMenuType=F'/>"><img src="http://file3.willbes.net/new_gosi/2018/08/EV180806_t_tab2.png"  onmouseover="this.src='http://file3.willbes.net/new_gosi/2018/08/EV180806_t_tab2_on.png'" onMouseOut="this.src='http://file3.willbes.net/new_gosi/2018/08/EV180806_t_tab2.png'" onMouseDown="this.src='http://file3.willbes.net/new_gosi/2018/08/EV180806_t_tab2.png'" border="0"/></a></li>
-                        <li><a href="<c:url value='/event/movie/event.html?event_cd=off_180426_03&topMenuType=F'/>"><img src="http://file3.willbes.net/new_gosi/2018/08/EV180806_t_tab3_on.png"  onmouseover="this.src='http://file3.willbes.net/new_gosi/2018/08/EV180806_t_tab3_on.png'" onMouseOut="this.src='http://file3.willbes.net/new_gosi/2018/08/EV180806_t_tab3.png'" onMouseDown="this.src='http://file3.willbes.net/new_gosi/2018/08/EV180806_t_tab3.png'" border="0"/></a></li>
+                        <li><a href="{{ site_url('/pass/promotion/index/cate/3043/code/1100') }}"><img src="http://file3.willbes.net/new_gosi/2018/08/EV180806_t_tab1.png"  onmouseover="this.src='http://file3.willbes.net/new_gosi/2018/08/EV180806_t_tab1_on.png'" onMouseOut="this.src='http://file3.willbes.net/new_gosi/2018/08/EV180806_t_tab1.png'" onMouseDown="this.src='http://file3.willbes.net/new_gosi/2018/08/EV180806_t_tab1.png'" border="0"/></a></li>
+                        <li><a href="{{ site_url('/pass/promotion/index/cate/3043/code/1101') }}"><img src="http://file3.willbes.net/new_gosi/2018/08/EV180806_t_tab2.png"  onmouseover="this.src='http://file3.willbes.net/new_gosi/2018/08/EV180806_t_tab2_on.png'" onMouseOut="this.src='http://file3.willbes.net/new_gosi/2018/08/EV180806_t_tab2.png'" onMouseDown="this.src='http://file3.willbes.net/new_gosi/2018/08/EV180806_t_tab2.png'" border="0"/></a></li>
+                        <li><a href="{{ site_url('/pass/promotion/index/cate/3043/code/1102') }}"><img src="http://file3.willbes.net/new_gosi/2018/08/EV180806_t_tab3_on.png"  onmouseover="this.src='http://file3.willbes.net/new_gosi/2018/08/EV180806_t_tab3_on.png'" onMouseOut="this.src='http://file3.willbes.net/new_gosi/2018/08/EV180806_t_tab3.png'" onMouseDown="this.src='http://file3.willbes.net/new_gosi/2018/08/EV180806_t_tab3.png'" border="0"/></a></li>
                     </ul>
                 </div>
             </div>
@@ -132,7 +132,7 @@
             <p><img src="http://file.willbes.net/new_image/2016/08/EV160812_p6_1.png" alt="혜택" /></p>
             <p id="lec_send"><img src="http://file.willbes.net/new_image/2016/08/EV160812_p6_3_1.png" alt="수강신청" usemap="#map2" />
                 <map name="map2" id="lecture">
-                    <area shape="rect" coords="273,61,710,142" href="http://www.willbesgosi.net/lecture/passLectureDetail.html?topMenu=001&topMenuName=9%EA%B8%89%EA%B3%B5%EB%AC%B4%EC%9B%90&searchTopCategoryCode=&searchCategoryCode=001&searchSubjectCode=1002&searchLeccode=D201801197&leftMenuLType=&lecKType=&USER_ID=&hSEARCHTYPE=&hSEARCHTEXT=&learningCD=&topMenuType=F&topMenuGnb=OM_009&SEARCHSERIESCODE=" onfocus="this.blur();"/>
+                    <area shape="rect" coords="273,61,710,142" href="{{ site_url('#none') }}" onfocus="this.blur();"/>
                 </map>
             </p>
         </div>

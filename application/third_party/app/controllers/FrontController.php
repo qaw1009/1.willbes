@@ -173,11 +173,15 @@ abstract class FrontController extends BaseController
                 $menu_path = element('path', $menu_parse_url);
 
                 if (empty($menu_path) === false && strpos(current_url(), $menu_parse_url['host']) !== false && starts_with($menu_path, $check_menu_prefix) === true) {
-                    // method를 제외한 uri params check (cate/{cate value}/pack/{pack value} ...)
-                    $check_menu_postfix = str_first_pos_after(str_first_pos_after($menu_path, $check_menu_prefix), '/');
+                    // 현재 URL의 후위 uri string
+                    $uri_post_string = urldecode(str_first_pos_after($uri_string, substr($check_menu_prefix, 1) . $this->router->method . '/', ''));
+
+                    // 메뉴 URL에서 method를 제외한 uri params check (cate/{cate value}/pack/{pack value} ...)
+                    $check_menu_postfix = str_first_pos_after(str_first_pos_after($menu_path, $check_menu_prefix), '/', '');
                     
                     // controller 만으로 체크 가능 || controller + 후위 uri string 으로 체크
-                    if (substr_count($menu_path, '/') == substr_count($check_menu_prefix, '/') || strpos($uri_string, $check_menu_postfix) !== false) {
+                    if ((empty($uri_post_string) === true && empty($check_menu_postfix) === true)
+                        || (empty($check_menu_postfix) === false && strpos($uri_post_string, $check_menu_postfix) !== false)) {
                         $_active_route_idx = $menu_route_idx;
                         break;
                     }

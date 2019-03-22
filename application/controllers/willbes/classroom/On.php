@@ -89,12 +89,6 @@ class On extends \app\controllers\FrontController
             'GT' => [
                 'LecStartDate' => $today // 시작일 > 오늘
             ],
-            'EQ' => [
-                'SubjectIdx' => $this->_req('subject_ccd'), // 검색 : 과목
-                'wProfIdx' => $this->_req('prof_ccd'), // 검색 : 강사
-                'CourseIdx' => $this->_req('course_ccd'), // 검색 : 과정
-                'MemIdx' => $this->session->userdata('mem_idx') // 사용자
-            ],
             'ORG' => [
                 'LKB' => [
                     'ProdName' => $this->_req('search_text'), // 검색 : 패키지이름 
@@ -117,10 +111,21 @@ class On extends \app\controllers\FrontController
             'IN' => [
                 'LearnPatternCcd' => $this->_LearnPatternCcd_dan, // 단과, 사용자
                 'PayRouteCcd' => $this->_payroute_normal_ccd // 온, 방
+            ],
+            'EQ' => [
+                'SiteGroupCode' => $this->_req('sitegroup_ccd'),
+                'MemIdx' => $this->session->userdata('mem_idx'), // 사용자
+                'SubjectIdx' => $this->_req('subject_ccd'), // 검색 : 과목
+                'wProfIdx' => $this->_req('prof_ccd'), // 검색 : 강사
+                'CourseIdx' => $this->_req('course_ccd') // 검색 : 과정
             ]
         ]));
 
         $pkglist = $this->classroomFModel->getPackage(array_merge($cond_arr, [
+            'EQ' => [
+                'SiteGroupCode' => $this->_req('sitegroup_ccd'),
+                'MemIdx' => $this->session->userdata('mem_idx') // 사용자
+            ],
             'IN' => [
                 'PayRouteCcd' => $this->_payroute_normal_ccd // 온, 방
             ]
@@ -187,12 +192,6 @@ class On extends \app\controllers\FrontController
 
         // 실제 리스트용
         $cond_arr = [
-            'EQ' => [
-                'MemIdx' => $this->session->userdata('mem_idx'), // 사용자번호
-                'SubjectIdx' => $this->_req('subject_ccd'), // 검색 : 과목
-                'wProfIdx' => $this->_req('prof_ccd'), // 검색 : 강사
-                'CourseIdx' => $this->_req('course_ccd') // 검색 : 과정
-            ],
             'LTE' => [
                 'LecStartDate' => $today // 시작일 <= 오늘
             ],
@@ -211,7 +210,7 @@ class On extends \app\controllers\FrontController
         ];
 
         $orderby = element('orderby', $input_arr);
-        $orderby = (empty($orderby) == true) ? 'lastStudyDate^DESC' : $orderby;
+        $orderby = (empty($orderby) == true) ? 'OrderDate^DESC' : $orderby;
         // 최신순으로
         @list($orderby, $asc_desc) = @explode("^", $orderby);
         if(empty($asc_desc) == false){
@@ -226,12 +225,23 @@ class On extends \app\controllers\FrontController
             'IN' => [
                 'LearnPatternCcd' => $this->_LearnPatternCcd_dan,
                 'PayRouteCcd' => $this->_payroute_normal_ccd
+            ],
+            'EQ' => [
+                'SiteGroupCode' => $this->_req('sitegroup_ccd'),
+                'MemIdx' => $this->session->userdata('mem_idx'), // 사용자번호
+                'SubjectIdx' => $this->_req('subject_ccd'), // 검색 : 과목
+                'wProfIdx' => $this->_req('prof_ccd'), // 검색 : 강사
+                'CourseIdx' => $this->_req('course_ccd') // 검색 : 과정
             ]
         ]), $orderby);
 
         // 학습형태 : 관리자패키지
         // 결제방식 : 온라인결제, 학원방문결제
         $pkglist = $this->classroomFModel->getPackage(array_merge($cond_arr, [
+            'EQ' => [
+                'SiteGroupCode' => $this->_req('sitegroup_ccd'),
+                'MemIdx' => $this->session->userdata('mem_idx') // 사용자번호
+            ],
             'IN' => [
                 'LearnPatternCcd' => $this->_LearnPatternCcd_pkg,
                 'PayRouteCcd' => $this->_payroute_normal_ccd
@@ -254,6 +264,13 @@ class On extends \app\controllers\FrontController
         $freelist = $this->classroomFModel->getLecture(array_merge($cond_arr, [
             'IN' => [
                 'LearnPatternCcd' => $this->_LearnPatternCcd_free // 무료
+            ],
+            'EQ' => [
+                'SiteGroupCode' => $this->_req('sitegroup_ccd'),
+                'MemIdx' => $this->session->userdata('mem_idx'), // 사용자번호
+                'SubjectIdx' => $this->_req('subject_ccd'), // 검색 : 과목
+                'wProfIdx' => $this->_req('prof_ccd'), // 검색 : 강사
+                'CourseIdx' => $this->_req('course_ccd') // 검색 : 과정
             ]
         ]), $orderby);
 
@@ -263,12 +280,23 @@ class On extends \app\controllers\FrontController
             'IN' => [
                 'LearnPatternCcd' => $this->_LearnPatternCcd_dan, // 단과, 사용자
                 'PayRouteCcd' => $this->_payroute_admin_ccd // 0원, 무료, 제휴사
+            ],
+            'EQ' => [
+                'SiteGroupCode' => $this->_req('sitegroup_ccd'),
+                'MemIdx' => $this->session->userdata('mem_idx'), // 사용자번호
+                'SubjectIdx' => $this->_req('subject_ccd'), // 검색 : 과목
+                'wProfIdx' => $this->_req('prof_ccd'), // 검색 : 강사
+                'CourseIdx' => $this->_req('course_ccd') // 검색 : 과정
             ]
         ]), $orderby);
 
         // 학습형태 : 관리자패키지
         // 결제방식 : 0월결제, 무료결제\, 제휴사 결제
         $adminlistPkg = $this->classroomFModel->getPackage(array_merge($cond_arr, [
+            'EQ' => [
+                'SiteGroupCode' => $this->_req('sitegroup_ccd'),
+                'MemIdx' => $this->session->userdata('mem_idx') // 사용자번호
+            ],
             'IN' => [
                 'LearnPatternCcd' => $this->_LearnPatternCcd_pkg, // 단과, 사용자
                 'PayRouteCcd' => $this->_payroute_admin_ccd // 0원, 무료, 제휴사
@@ -337,12 +365,6 @@ class On extends \app\controllers\FrontController
 
         // 실제 리스트용
         $cond_arr = [
-            'EQ' => [
-                'MemIdx' => $this->session->userdata('mem_idx'), // 사용자번호
-                'SubjectIdx' => $this->_req('subject_ccd'), // 검색 : 과목
-                'wProfIdx' => $this->_req('prof_ccd'), // 검색 : 강사
-                'CourseIdx' => $this->_req('course_ccd') // 검색 : 과정
-            ],
             'LTE' => [
                 'LecStartDate' => $today // 시작일 <= 오늘
             ],
@@ -370,14 +392,27 @@ class On extends \app\controllers\FrontController
 
         // 학습형태 : 단광좌, 사용자패키지
         // 결제방식 : 온라인결제, 학원방문결제
-        $leclist = $this->classroomFModel->getLecture(array_merge($cond_arr, ['IN' => [
-            'LearnPatternCcd' => $this->_LearnPatternCcd_dan, // 단과, 사용자
-            'PayRouteCcd' => $this->_payroute_normal_ccd // 온, 방
-        ]]));
+        $leclist = $this->classroomFModel->getLecture(array_merge($cond_arr, [
+            'IN' => [
+                'LearnPatternCcd' => $this->_LearnPatternCcd_dan, // 단과, 사용자
+                'PayRouteCcd' => $this->_payroute_normal_ccd // 온, 방
+            ],
+            'EQ' => [
+                'SiteGroupCode' => $this->_req('sitegroup_ccd'),
+                'MemIdx' => $this->session->userdata('mem_idx'), // 사용자번호
+                'SubjectIdx' => $this->_req('subject_ccd'), // 검색 : 과목
+                'wProfIdx' => $this->_req('prof_ccd'), // 검색 : 강사
+                'CourseIdx' => $this->_req('course_ccd') // 검색 : 과정
+            ]
+        ]));
 
         // 학습형태 : 관리자패키지
         // 결제방식 : 온라인결제, 학원방문결제
         $pkglist = $this->classroomFModel->getPackage(array_merge($cond_arr, [
+            'EQ' => [
+                'SiteGroupCode' => $this->_req('sitegroup_ccd'),
+                'MemIdx' => $this->session->userdata('mem_idx') // 사용자번호
+            ],
             'IN' => [
                 'PayRouteCcd' => $this->_payroute_normal_ccd // 온, 방
             ]
@@ -441,9 +476,6 @@ class On extends \app\controllers\FrontController
         $cond_arr = [
             'EQ' => [
                 'MemIdx' => $this->session->userdata('mem_idx'), // 사용자번호
-                'SubjectIdx' => $this->_req('subject_ccd'), // 검색 : 과목
-                'wProfIdx' => $this->_req('prof_ccd'), // 검색 : 강사
-                'CourseIdx' => $this->_req('course_ccd'), // 검색 : 과정
                 'IsRebuy' => '0' // 재수강이 아닌강의
             ],
             'LT' => [
@@ -464,7 +496,7 @@ class On extends \app\controllers\FrontController
         ];
 
         $orderby = element('orderby', $input_arr);
-        $orderby = (empty($orderby) == true) ? 'lastStudyDate^DESC' : $orderby;
+        $orderby = (empty($orderby) == true) ? 'OrderDate^DESC' : $orderby;
         // 최신순으로
         @list($orderby, $asc_desc) = @explode("^", $orderby);
         if(empty($asc_desc) == false){
@@ -586,7 +618,7 @@ class On extends \app\controllers\FrontController
         $lec['ProfReferData'] = json_decode($lec['ProfReferData'], true);
         $lec['isstart'] = $isstart;
         $lec['ispause'] = $ispause;
-        $lec['SiteUrl'] = app_to_env_url($this->getSiteCacheItem($lec['SiteCode'], 'SiteUrl'));
+        //$lec['SiteUrl'] = app_to_env_url($this->getSiteCacheItem($lec['SiteCode'], 'SiteUrl'));
 
         // 회차 열어준경우 IN 생성
         if(empty($lec['wUnitIdxs']) == true){
@@ -636,7 +668,7 @@ class On extends \app\controllers\FrontController
                 if($row['RealExpireTime'] == 0){
                     $limittime = intval($row['wRuntime']) * intval($lec['MultipleApply']) * 60;
                 } else {
-                    $limittime = intval($row['RealExpireTime']);
+                    $limittime = intval($row['RealExpireTime']) * 60;
                 }
 
                 if($studytime > $limittime){

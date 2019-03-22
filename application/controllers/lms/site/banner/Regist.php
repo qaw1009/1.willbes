@@ -105,14 +105,16 @@ class Regist extends \app\controllers\BaseController
      */
     public function store()
     {
-        //캠퍼스 Y 값 조회
-        $offLineSite_list = $this->siteModel->getOffLineSiteArray();
+        // 캠퍼스 Y 값 조회 (사용안함)
+        //$offLineSite_list = $this->siteModel->getOffLineSiteArray();
 
         $rules = [
             ['field' => 'banner_disp_idx', 'label' => '노출섹션', 'rules' => 'trim|required'],
             ['field' => 'banner_name', 'label' => '배너명', 'rules' => 'trim|required'],
-            ['field' => 'link_type', 'label' => '링크방식', 'rules' => 'trim|required|in_list[self,blank,layer]'],
-            ['field' => 'link_url', 'label' => '링크주소', 'rules' => 'trim|required']
+            ['field' => 'link_type', 'label' => '링크방식', 'rules' => 'trim|required|in_list[self,blank,layer,popup]'],
+            ['field' => 'link_url', 'label' => '링크주소', 'rules' => 'trim|required'],
+            ['field' => 'pop_width', 'label' => '팝업width', 'rules' => 'callback_validateRequiredIf[link_type,popup]'],
+            ['field' => 'pop_height', 'label' => '팝업height', 'rules' => 'callback_validateRequiredIf[link_type,popup]']
         ];
 
         if (empty($this->_reqP('b_idx')) === true) {

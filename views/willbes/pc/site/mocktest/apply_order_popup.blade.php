@@ -18,69 +18,73 @@
                         <tbody>
                         <tr>
                             <th class="w-tit">이름(아이디)</th>
-                            <td class="w-list" colspan="3">{{sess_data('mem_name')}}({{sess_data('mem_id')}})</td>
+                            <td class="w-list" colspan="3"><strong>{{sess_data('mem_name')}}({{sess_data('mem_id')}})</strong></td>
                         </tr>
                         <tr>
                             <th class="w-tit">응시형태</th>
-                            <td class="w-list">{{$order_info['TakeForm_Name']}}</td>
+                            <td class="w-list"><strong>{{$order_info['TakeForm_Name']}}</strong></td>
                             <th class="w-tit">응시분야</th>
-                            <td class="w-list">{{$order_info['CateName']}}</td>
+                            <td class="w-list"><strong>{{$order_info['CateName']}}</strong></td>
                         </tr>
                         <tr>
                             <th class="w-tit">응시지역</th>
-                            <td class="w-list">{{$order_info['TakeArea_Name']}}</td>
+                            <td class="w-list"><strong>{{$order_info['TakeArea_Name']}}</strong></td>
                             <th class="w-tit">응시번호</th>
-                            <td class="w-list">{{$order_info['TakeNumber']}}</td>
+                            <td class="w-list"><strong>{{$order_info['TakeNumber']}}</strong></td>
                         </tr>
                         <tr>
                             <th class="w-tit">시험응시일</th>
-                            <td class="w-list" colspan="3">{{$order_info['TakeStartDatm']}} ~ {{$order_info['TakeEndDatm']}}</td>
+                            <td class="w-list" colspan="3"><strong>{{$order_info['TakeStartDatm']}} ~ {{$order_info['TakeEndDatm']}}</strong></td>
                         </tr>
                         <tr>
                             <th class="w-tit">응시직렬</th>
-                            <td class="w-list" colspan="3">{{$order_info['TakeMockPart_Name']}}</td>
+                            <td class="w-list" colspan="3"><strong>{{$order_info['TakeMockPart_Name']}}</strong></td>
                         </tr>
                         <tr>
                             <th class="w-tit">응시필수과목</th>
-                            <td class="w-list" colspan="3">{{$subject_ess}}</td>
+                            <td class="w-list" colspan="3"><strong>{{$subject_ess}}</strong></td>
                         </tr>
                         <tr>
                             <th class="w-tit">응시선택과목</th>
                             <td class="w-list" colspan="3">
+                                <strong>
                                 @if(empty($subject_sub))
                                     선택과목 없음
                                 @else
                                     [선택과목1] {{$subject_sub[0]}} [선택과목2] {{$subject_sub[1]}}
                                 @endif
+                                </strong>
                             </td>
                         </tr>
                         <tr>
                             <th class="w-tit">가산점</th>
                             <td class="w-list" colspan="3">
+                                <strong>    
                                 @if($order_info['AddPoint'] == 0)
                                     해당없음
                                 @else
                                     {{$order_info['AddPoint']}}%
                                 @endif
+                                </strong>
                            </td>
                         </tr>
                         <tr>
                             <th class="w-tit">결제(접수)금액</th>
-                            <td class="w-list">{{number_format($order_info['RealPayPrice'])}}원</td>
+                            <td class="w-list"><strong>{{number_format($order_info['RealPayPrice'])}}원</strong></td>
                             <th class="w-tit">쿠폰적용</th>
-                            <td class="w-list">{{$order_info['IsUseCoupon'] == 'Y' ? '적용' : '미적용'}}</td>
+                            <td class="w-list"><strong>{{$order_info['IsUseCoupon'] == 'Y' ? '적용' : '미적용'}}</strong></td>
                         </tr>
                         <tr>
                             <th class="w-tit">결제(접수)루트</th>
-                            <td class="w-list">{{$order_info['PayRouteCcd_Name']}}</td>
+                            <td class="w-list"><strong>{{$order_info['PayRouteCcd_Name']}}</strong></td>
                             <th class="w-tit">결제(접수)상태</th>
-                            <td class="w-list">{{$order_info['PayStatusCcd_Name']}}</td>
+                            <td class="w-list"><strong>{{$order_info['PayStatusCcd_Name']}}</strong></td>
                         </tr>
                         <tr>
                             <th class="w-tit">결제(접수)수단</th>
-                            <td class="w-list">{{$order_info['PayMethodCcd_Name']}}</td>
+                            <td class="w-list"><strong>{{$order_info['PayMethodCcd_Name']}}</strong></td>
                             <th class="w-tit">결제(접수)일</th>
-                            <td class="w-list">{{$order_info['CompleteDatm']}}</td>
+                            <td class="w-list"><strong>{{$order_info['CompleteDatm']}}</strong></td>
                         </tr>
                         </tbody>
                     </table>

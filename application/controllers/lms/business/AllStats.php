@@ -117,7 +117,9 @@ class AllStats extends \app\controllers\BaseController
 
         // export excel
         $this->load->library('excel');
-        $this->excel->exportExcel('윌비스전체매출현황리스트', $data, $headers);
+        if ($this->excel->exportExcel('윌비스전체매출현황리스트', $data, $headers) !== true) {
+            show_alert('엑셀파일 생성 중 오류가 발생하였습니다.', 'back');
+        }
     }
 
     /**
@@ -251,6 +253,8 @@ class AllStats extends \app\controllers\BaseController
 
         // export excel
         $this->load->library('excel');
-        $this->excel->exportHugeExcel('윌비스전체매출현황_상세보기리스트', $list, $headers);
+        if ($this->excel->exportHugeExcel('윌비스전체매출현황_상세보기리스트', $list, $headers) !== true) {
+            show_alert('엑셀파일 생성 중 오류가 발생하였습니다.', 'back');
+        }
     }
 }

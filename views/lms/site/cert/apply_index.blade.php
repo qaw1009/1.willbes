@@ -176,7 +176,7 @@
                             return '<a href="javascript:;" class="btn-info btn-sm btn-primary border-radius-reset" data-idx="'+ data.CaIdx+ '">확인</a>';
                         }},
                     {'data' : null, 'render' : function(data,type,row,meta) {
-                            return data.AttachFileName !='' ? '<a class="btn-attachFile glyphicon glyphicon-file" href="{{site_url('/site/cert/apply/download/')}}?filename='+encodeURIComponent(data.AttachFilePath+data.AttachFileName)+'&filename_ori='+ encodeURIComponent(data.AttachFileReal) +'" target="_blank"></a>' : '';
+                            return data.AttachFileName !=null ? '<a class="btn-attachFile glyphicon glyphicon-file" href="{{site_url('/site/cert/apply/download/')}}?filename='+encodeURIComponent(data.AttachFilePath+data.AttachFileName)+'&filename_ori='+ encodeURIComponent(data.AttachFileReal) +'" target="_blank"></a>' : '';
                         }},
                     {'data' : 'RegDatm'},
                     {'data' : 'ApprovalAdmin_Name'},

@@ -49,30 +49,16 @@
 
         .skybanner {
             position:fixed;
-            top:200px;
-            right:0;
+            bottom:20px;
+            right:10px;
             width:290px;
-            animation:upDown 1s infinite;
-            -webkit-animation:upDown 1s infinite;
         }
-
-        @@keyframes upDown{
-            from{margin-top:0}
-            60%{margin-top:-30px}
-            to{margin-top:0}
-        }
-        @@-webkit-keyframes upDown{
-             from{margin-top:0}
-             60%{margin-top:-30px}
-             to{margin-top:0}
-         }
-
     </style>
 
 
     <div class="p_re evtContent" id="evtContainer">
         <div class="skybanner">
-            <div><a href="#event"><img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_c_sky2.png" alt="환승이벤트" ></a></div>
+            <div><a href="#event"><img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_c_sky2_1.png" alt="환승이벤트" ></a></div>
         </div>
 
         <!-- 타이머 -->
@@ -80,7 +66,7 @@
             <div class="time_date" id="newTopDday">
                 <table width="1100px;" height="90px" border="0" cellpadding=0 cellspacing=0>
                     <tr>
-                        <td style="text-align:center;"><img src="http://file3.willbes.net/new_gosi/2019/01/EV190115_c0_1.jpg" alt=""  /></td>
+                        <td style="text-align:center;"><img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_c0_1.jpg" alt=""  /></td>
                         <td width="150" align="center" class="time_txt">마감까지 <br /><span>남은 시간은</span></td>
                         <td width="62" height="101" align="center"><img id="dd1" src="http://file.willbes.net/new_image/0.png" class="t_img" /></td>
                         <td width="62" height="101" align="center"><img id="dd2" src="http://file.willbes.net/new_image/0.png" class="t_img" /></td>
@@ -101,7 +87,7 @@
 
         <div class="evtCtnsBox wb_top" >
             <img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_c1.png" alt="윌비스9급PASS X 세무PASS와 만나다!"  /><br>
-            <img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_c2.gif" alt="11-12월 기출문제풀이 커리큘럼 업데이트 중"  /><br>
+            <img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_c2_1.gif" alt="11-12월 기출문제풀이 커리큘럼 업데이트 중"  /><br>
             <img src="http://file3.willbes.net/new_gosi/2018/12/EV181220_c3.png" alt=""  />
         </div><!--WB_top//-->
 
@@ -196,7 +182,7 @@
 
         function daycountDown() {
             // 한달 전 날짜로 셋팅
-            event_day = new Date(2019,1,28,23,59,59);
+            event_day = new Date(2019,2,31,23,59,59);
             now = new Date();
             var timeGap = new Date(0, 0, 0, 0, 0, 0, (event_day - now));
 
@@ -257,9 +243,9 @@
             var lUrl = "";
 
             if(parseInt(no)==1 || parseInt(no)==3 || parseInt(no)== 5){
-                lUrl = "http://www.willbesgosi.net/yearpackagelecture/yearpackagelectureDetail.html?topMenu=001&topMenuName=&topMenuType=O&searchCategoryCode=001&searchLeccode=Y201800057&leftMenuLType=M0001&lecKType=Y"
+                lUrl = "{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/149329') }}"
             }else{
-                lUrl = "http://www.willbesgosi.net/yearpackagelecture/yearpackagelectureDetail.html?topMenu=001&topMenuName=&topMenuType=O&searchCategoryCode=001&searchLeccode=Y201800056&leftMenuLType=M0001&lecKType=Y"
+                lUrl = "{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/149328') }}"
             }
 
             location.href = lUrl;

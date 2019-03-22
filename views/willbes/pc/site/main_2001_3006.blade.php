@@ -8,8 +8,10 @@
 
         <div class="Section MainVisual">
             <div class="widthAuto">
-                <iframe src="https://www.youtube.com/embed/lrZxQV21DE8?rel=0&modestbranding=1&showinfo=0&&wmode=transparent" frameborder="0" allowfullscreen=""></iframe>
-                <img src="{{ img_url('cop/visual/visual_190213.jpg') }}" alt="전국 4,000명 동시수강">
+                <!--iframe src="https://www.youtube.com/embed/lrZxQV21DE8?rel=0&modestbranding=1&showinfo=1&controls=2" frameborder="0" allowfullscreen=""></iframe-->
+                <a href="{{ site_url('/promotion/index/cate/3006/code/1019') }}">
+                    <img src="{{ img_url('cop_pro/visual/visual_190213.jpg') }}" alt="전국 4,000명 동시수강">
+                </a>
             </div>
         </div>
 
@@ -30,8 +32,8 @@
             <div class="widthAuto">
                 <div class="will-nTit bd-none">승진대비 <span class="tx-color">계급&amp;직렬</span> 승진 PASS</div>
                 <ul class="proPAss">
-                    <li><a href="#none"><img src="{{ img_url('cop_pro/banner/bnr_557_01.jpg') }}" alt="계급별 12개월 PASS"></a></li>
-                    <li><a href="#none"><img src="{{ img_url('cop_pro/banner/bnr_557_02.jpg') }}" alt="교수별 12개월 PASS"></a></li>
+                    <li><a href="{{ site_url('/promotion/index/cate/3006/code/1008') }}"><img src="{{ img_url('cop_pro/banner/bnr_557_01.jpg') }}" alt="계급별 12개월 PASS"></a></li>
+                    <li><a href="{{ site_url('/promotion/index/cate/3006/code/1008') }}"><img src="{{ img_url('cop_pro/banner/bnr_557_02.jpg') }}" alt="교수별 12개월 PASS"></a></li>
                 </ul>
             </div>
         </div>

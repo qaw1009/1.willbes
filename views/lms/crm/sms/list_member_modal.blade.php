@@ -59,7 +59,7 @@
                     <label class="control-label col-md-2 pt-5" for="search_value">통합검색
                     </label>
                     <div class="col-md-3">
-                        <input type="text" class="form-control input-sm" id="search_value" name="search_value">
+                        <input type="text" class="form-control input-sm" id="search_value" name="search_value" value="">
                     </div>
                     <div class="col-md-4">
                         <p class="form-control-static">아이디, 이름, 휴대폰번호(끝4자리) 검색 가능</p>
@@ -153,7 +153,7 @@
                                     }
                                     /!*var checked = ($ori_selected_data.hasOwnProperty(row.MemIdx) === true) ? 'checked="checked"' : '';*!/
                                     var checked = '';
-                                    return '<input type="checkbox" name="is_checked" value="'+ val +'" class="flat" data-is-checked-idx="' + row.MemIdx + '" data-is-checked-id="' + row.MemId + '" ' + checked + '>';
+                                    return '<input type="checkbox" name="is_checked" value="'+ val +'" class="flat" data-is-checked-idx="' + row.MemIdx + '" data-is-checked-id="' + row.MemId + '" data-is-checked-name="' + row.MemName + '" ' + checked + '>';
                                 }}
                         ]
                     });
@@ -161,8 +161,8 @@
                     $('#btn_setting').on('click', function() {
                         var j=1;
                         var $params = {};
-                        $('input[name="is_checked"]:checked').each(function() {
-                            $params[$(this).data('is-checked-idx')] = [$(this).data('is-checked-id'), $(this).val()];
+                        $('input[name="is_checked"]:checked').each(function(index) {
+                            $params[$(this).data('is-checked-idx')] = [$(this).data('is-checked-id'), $(this).val(), $(this).data('is-checked-name')];
                         });
 
                         if (set_mem_idx != '') {
@@ -188,14 +188,20 @@
 
                         switch (send_type_modal) {
                             case 'sms' :
-                                $('input[name="mem_phone[]"]').val('');
-                                var i=1;
+                                var j = 1;
+                                for (var i=1; i<=12; i++) {
+                                    if ($('#mem_name_'+i).val() == '') {
+                                        j = i;
+                                        break;
+                                    }
+                                    j++;
+                                }
                                 $.each($params, function(key, value) {
-                                    $('#mem_idx_'+i).val(key);
-                                    $('#mem_phone_'+i).val(value[1]);
-                                    i++;
+                                    $('#mem_idx_'+j).val(key);
+                                    $('#mem_phone_'+j).val(value[1]);
+                                    $('#mem_name_'+j).val(value[2]);
+                                    j++;
                                 });
-                                break;
                             case "message" :
                                 $('input[name="mem_id[]"]').val('');
                                 $('input[name="choice_mem_idx"]').val('');
@@ -215,11 +221,18 @@
                                 $('input[name="choice_mem_id"]').val(arr_temp_id);
                                 break;
                             case "mail" :
-                                $('input[name="mem_mail[]"]').val('');
-                                var i=1;
+                                var j = 1;
+                                for (var i=1; i<=12; i++) {
+                                    if ($('#mem_name_'+i).val() == '') {
+                                        j = i;
+                                        break;
+                                    }
+                                    j++;
+                                }
                                 $.each($params, function(key, value) {
-                                    $('#mem_mail_'+i).val(value[1]);
-                                    i++;
+                                    $('#mem_mail_'+j).val(value[1]);
+                                    $('#mem_name_'+j).val(value[2]);
+                                    j++;
                                 });
                                 break;
                             default :

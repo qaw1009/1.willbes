@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- Container -->
-<div id="Container" class="Container gosi GA NSK c_both">
+<div id="Container" class="Container GA NSK c_both">
     <div class="Menu widthAuto NSK c_both">
         <h3>
             <ul class="menu-Tit">
@@ -325,13 +325,13 @@
                                         <div class="address">
                                             <span class="a-tit">주소</span>
                                             <span>
-                                                서울시동작구만양로105 2층<br/>
-                                                (서울시동작구노량진동116-2 2층)
+                                                서울시 동작구 장승배기로 168 드림타워<br/>
+                                                (서울시 동작구 노량진동 54-11번지)
                                             </span>
                                         </div>
                                         <div class="tel">
                                             <span class="a-tit">연락처</span>
-                                            <span class="tx-color">1544-0336</span>
+                                            <span class="tx-color">1544-0330</span>
                                         </div>
                                     </div>
                                 </dt>

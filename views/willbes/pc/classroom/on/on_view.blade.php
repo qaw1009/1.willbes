@@ -17,9 +17,10 @@
                             교수님
                         </div>
                         <div class="ProfImg">
-                            <img src="{{ $lec['ProfReferData']['lec_list_img'] or '' }}">
+                            {{--<img src="{{ $lec['ProfReferData']['lec_list_img'] or '' }}">--}}
+                            <img src="{{ $lec['ProfReferData']['lec_detail_img'] or '' }}">
                         </div>
-                        <div class="prof-home subBtn NSK"><a target="_blank" href="//{{$lec['SiteUrl']}}/professor/show/cate/{{$lec['CateCode']}}/prof-idx/{{$lec['ProfIdx']}}/?subject_idx={{$lec['SubjectIdx']}}&subject_name={{rawurlencode($lec['SubjectName'])}}"><img src="/public/img/willbes/sub/icon_profhome.gif" style="margin-top: -4px; margin-right: 4px">교수홈</a></div>
+                        <div class="prof-home subBtn NSK"><a target="_blank" href="//{{app_to_env_url($lec['SiteUrl'])}}/professor/show/cate/{{$lec['CateCode']}}/prof-idx/{{$lec['ProfIdx']}}/?subject_idx={{$lec['SubjectIdx']}}&subject_name={{rawurlencode($lec['SubjectName'])}}"><img src="/public/img/willbes/sub/icon_profhome.gif" style="margin-top: -4px; margin-right: 4px">교수홈</a></div>
                     </div>
                     <div class="lec-profile p_re">
                         <div class="w-tit">{{$lec['subProdName']}}</div>
@@ -58,7 +59,7 @@
                                     <td>
                                         <div class="w-lectit">수강연장</div>
                                         <div class="w-lec NGEB"><span class="tx-light-blue">{{$lec['RebuyCount']}}</span>회</div>
-                                        <div class="w-date tx-gray"> </div>
+                                        <div class="w-date tx-gray">(최대 3회까지)</div>
                                     </td>
                                     <td>
                                         <div class="w-lectit">잔여기간</div>
@@ -84,7 +85,9 @@
                 <div class="Mypage-PASSZONE-Btn">
                     <ul>
                         <li class="subBtn blue NSK"><a href="#none" class="btn-study" data-write-type="on">수강후기 작성하기</a></li>
-                        <li class="subBtn NSK"><a target="_blank" href="//{{$lec['SiteUrl']}}/professor/show/cate/{{$lec['CateCode']}}/prof-idx/{{$lec['ProfIdx']}}/?subject_idx={{$lec['SubjectIdx']}}&subject_name={{rawurlencode($lec['SubjectName'])}}&tab=qna">학습 Q&A</a></li>
+                        @if($lec['IsQnaBoard'] == 'Y')
+                            <li class="subBtn NSK"><a target="_blank" href="//{{$lec['SiteUrl']}}/professor/show/cate/{{$lec['CateCode']}}/prof-idx/{{$lec['ProfIdx']}}/?subject_idx={{$lec['SubjectIdx']}}&subject_name={{rawurlencode($lec['SubjectName'])}}&tab=qna">학습 Q&A</a></li>
+                        @endif
                     </ul>
                     <div class="aBox passBox answerBox_block NSK f_right"><a href="javascript:;" onclick="fnBookLayer('{{$lec['ProdCodeSub']}}');">교재구매</a></div>
                 </div>
@@ -148,7 +151,7 @@
                                     @endif
                                 </td>
                                 <td class="w-lec-time">{{$row['wRuntime']}}분</td>
-                                <td class="w-study-time">{{floor(intval($row['RealStudyTime'])/60)}}분 / {{$row['limittime']}}</td>
+                                <td class="w-study-time" title="{{floor(intval($row['RealStudyTime'])/60)}}분 {{floor(intval($row['RealStudyTime'])%60)}}초">{{floor(intval($row['RealStudyTime'])/60)}}분 / {{$row['limittime']}}</td>
                                 <td class="w-r-time">{{$row['remaintime']}}</td>
                             </tr>
                         @empty
@@ -182,10 +185,12 @@
                 var ele_id = 'WrapReply';
                 var data = {
                     'ele_id' : ele_id,
-                    'show_onoff' : $(this).data('write-type'),
+                    'show_onoff' : 'on',
                     'site_code' : '{{$lec['SiteCode']}}',
                     'cate_code' : '{{$lec['CateCode']}}',
+                    'prod_code' : '{{$lec['ProdCode']}}',
                     'subject_idx' : '{{$lec['SubjectIdx']}}',
+                    'subject_name' : encodeURIComponent('{{$lec['subProdName']}}'),
                     'prof_idx' : '{{$lec['ProfIdx']}}'
                 };
 

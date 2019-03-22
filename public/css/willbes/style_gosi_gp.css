@@ -11,6 +11,11 @@
 }
 
 /* Main Container : MainVisual */
+.gp .MainVisual {
+  position: relative;
+  width: 100%;
+  height: 400px;
+}
 .gp .MainVisual:after {
   content: "";
   display: block;
@@ -18,11 +23,17 @@
 }
 
 .gp .VisualBox {
-  position: relative;
-  width: 1920px;
-  margin:0 auto;
+  position:absolute;
+  top:0;
+  left:50%;
+  margin-left:-960px;
+  width:1920px;
   height: 400px;
   overflow: hidden;
+}
+.gp .VisualBox img {
+  height: 400px;
+  max-width: 1920px;
 }
 
 .gp .VisualBox .bx-wrapper .bx-controls-auto {
@@ -39,7 +50,6 @@
   bottom: 20px;
   text-align: left;
 }
-.gp .bx-wrapper .bx-pager.bx-default-pager a,
 .gp .bx-wrapper .bx-pager.bx-default-pager a {
   background: #ccc !important;
   width: 8px;
@@ -50,9 +60,8 @@
   position: absolute;
   left:50%;
   margin-left:196px;
-  margin-top:10px;
+  top:10px;
   width: 364px;
-  height: ;
 }
 .gp .VisualsubBox .bSlider {
   margin-top:3px;

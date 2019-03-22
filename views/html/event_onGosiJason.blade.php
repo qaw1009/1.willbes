@@ -95,11 +95,9 @@
 
         .skybanner {
             position:fixed;
-            top:200px;
+            top:300px;
             right:10px;
             width:120px; 
-            animation:upDown 1s infinite;
-            -webkit-animation:upDown 1s infinite;
             z-index:10;
         }
 
@@ -107,16 +105,7 @@
         .skybanner a {height:40px; line-height:40px; display:block; text-align:center; background:#c9302b; color:#fff; font-size:16px !important; font-weight:600 !important; border-bottom:1px solid #660401;}
         .skybanner a:hover {background:#fff; color:#000}
 
-        @@keyframes upDown{
-            from{margin-top:0}
-            60%{margin-top:-30px}
-            to{margin-top:0}
-        }
-        @@-webkit-keyframes upDown{
-            from{margin-top:0}
-            60%{margin-top:-30px}
-            to{margin-top:0}
-        }
+
 
     </style>
     

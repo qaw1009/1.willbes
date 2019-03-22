@@ -784,7 +784,7 @@ class ClassroomFModel extends WB_Model
      * @param string $col
      * @return mixed
      */
-    public function getPassSubLecture($arr_condition, $col = '', $mylec_cond = '')
+    public function getPassSubLecture($arr_condition, $col = '', $subarr, $notake = false)
     {
         if(empty($col) == true){
             $column =  "A.ProdCode As Parent_ProdCode, B.IsEssential, B.SubGroupName, B.OrderNum, C.* , 
@@ -794,22 +794,22 @@ class ClassroomFModel extends WB_Model
             $column = $col;
         }
 
-        $arr_condition = array_merge_recursive($arr_condition,[
-            'EQ' => ['B.IsStatus'=>'Y', 'C.wIsUse'=>'Y'],
-        ]);
-
-        $mylec_where = $this->_conn->makeWhere($mylec_cond)->getMakeWhere(true);
+        $subwhere = $this->_conn->makeWhere($subarr)->getMakeWhere(true);
 
         $from = " 
             FROM
                 vw_product_periodpack_lecture A
-                JOIN lms_product_r_sublecture B on A.ProdCode = B.ProdCode	
-                JOIN {$this->_table['on_lecture']} C on B.ProdCodeSub = C.ProdCode 
-                LEFT JOIN {$this->_table['mylec']} D ON A.ProdCode = D.ProdCode AND C.ProdCode = D.ProdCodeSub ".$mylec_where;
+                JOIN lms_product_r_sublecture B on A.ProdCode = B.ProdCode AND B.IsStatus = 'Y'
+                JOIN {$this->_table['on_lecture']} C on B.ProdCodeSub = C.ProdCode AND C.wIsUse = 'Y'
+                LEFT JOIN {$this->_table['mylec']} D ON A.ProdCode = D.ProdCode AND C.ProdCode = D.ProdCodeSub ".$subwhere ;
 
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
 
-        return $this->_conn->query('SELECT '. $column. $from. $where)->result_array();
+        if($notake){
+            $where = $where . " AND D.ProdCode IS NULL ";
+        }
+
+        return $this->_conn->query('SELECT straight_join '. $column. $from. $where)->result_array();
     }
 
     /**

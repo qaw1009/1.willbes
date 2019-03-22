@@ -22,16 +22,15 @@
         /************************************************************/
 
         .skybanner {
-            position:absolute;
-            top:400px;
+            position:fixed;
+            top:250px;
             right:10px;
             z-index:1;
         }
-        .skybanner_sectionFixed {position:fixed; top:20px}
 
         .WB_con01 {background:#ebe4d2 url('http://file3.willbes.net/new_cop/2019/02/EV190218_01_bg.png') no-repeat center;}
-        .WB_con02{background:#590100 url(http://file3.willbes.net/new_cop/2019/02/EV190218_02_bg.png) no-repeat center;}
-        .WB_con03{background:#3e100c;}
+        .WB_con02{background:#590100 url('http://file3.willbes.net/new_cop/2019/02/EV190218_02_bg.png') no-repeat center;}
+        .WB_con03{background:#f8f9fb;}
         .WB_con04{background:#e8e8e8;}
     </style>
 
@@ -41,11 +40,11 @@
         </div>
 
         <div class="evtCtnsBox WB_con01">
-            <img src="http://file3.willbes.net/new_cop/2019/02/EV190219_01.png" alt="#" />>
+            <img src="http://file3.willbes.net/new_cop/2019/02/EV190219_01.png" alt="#" />
         </div>
 
         <div class="evtCtnsBox WB_con02">
-            <img src="http://file3.willbes.net/new_cop/2019/02/EV190219_02.png" alt="#" /><
+            <img src="http://file3.willbes.net/new_cop/2019/02/EV190219_02.png" alt="#" />
         </div>
 
         <div class="evtCtnsBox WB_con03">
@@ -55,7 +54,7 @@
         <div class="evtCtnsBox WB_con04" id="0219_lecgo">
             <img src="http://file3.willbes.net/new_cop/2019/02/EV190219_04.png" alt="#" usemap="#Map_0219_lec" border="0" />
             <map name="Map_0219_lec">
-                <area shape="rect" coords="209,794,921,870" href="http://willbescop.net/lecture/passLectureDetail.html?topMenu=081&topMenuName=%EC%9D%BC%EB%B0%98%EA%B2%BD%EC%B0%B0&searchTopCategoryCode=&searchCategoryCode=081&searchSubjectCode=1042&searchLeccode=D201900139&leftMenuLType=&lecKType=&USER_ID=&hSEARCHTYPE=&hSEARCHTEXT=&learningCD=&topMenuType=F&topMenuGnb=OM_009&SEARCHSERIESCODE=" target="_blank">
+                <area shape="rect" coords="217,709,900,760" href="{{ site_url('/pass/offLecture/index?cate_code=3010&subject_idx=1063#110678') }}" target="_blank">
             </map>
         </div>
         <!--//WB_con04-->
@@ -63,7 +62,6 @@
     </div>
     <!-- End Container -->
 
-    <script src="/public/js/willbes/jquery.nav.js"></script>
     <script>
         $(function(e){
             var targetOffset= $("#evtContainer").offset().top;

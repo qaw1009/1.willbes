@@ -150,7 +150,6 @@ class RefundList extends BaseOrder
         $list = $this->orderListModel->listExcelAllOrder($column, $arr_condition, $this->_getListOrderBy(), $this->_list_add_join);
 
         // export excel
-        $this->load->library('excel');
-        $this->excel->exportExcel('환불완료현황리스트', $list, $headers);
+        $this->_makeExcel('환불완료현황리스트', $list, $headers);
     }
 }

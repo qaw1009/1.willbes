@@ -270,14 +270,15 @@
         
         <div class="willbes-Prof-Tabs">
             <div class="ProfDetailWrap">
-                <ul class="tabWrap tabDepthProf tabDepthProf_7">
+                <ul class="tabWrap tabDepthProf tabDepthProf_6">
                     <li><a href="#Proftab1" class="on">교수님 홈</a></li>
                     <li><a href="#Proftab2">개설강좌</a></li>
                     <li><a href="#Proftab3">무료강좌</a></li>
                     <li><a href="#Proftab4">공지사항</a></li>
-                    <li><a href="#Proftab5">학습Q&amp;A</a></li>
+                    <!--li><a href="#Proftab5">학습Q&amp;A</a></li-->
                     <li><a href="#Proftab6">학습자료실</a></li>
-                    <li><a href="#Proftab7">T-pass자료실</a></li>
+                    <!--li><a href="#Proftab6">T-pass자료실 </a></li-->
+                    <li><a href="#Proftab8">교수님 TCC</a></li>
                 </ul>
                 <div class="tabBox">
                     <div id="Proftab1" class="tabLink">
@@ -2042,7 +2043,7 @@
                     </div>
                     <!-- Proftab4// -->
 
-                    <div id="Proftab5" class="tabLink">
+                    <div id="Proftab5" class="tabLink" style="display:none">
                         <div class="willbes-Prof-Subject pl-zero NG tx-dark-black">
                             · 학습Q&A
                             <div class="willbes-Lec-Search GM f_right">
@@ -2694,7 +2695,8 @@
                         <!-- willbes-Leclist -->
                     </div>
                     <!--Proftab6//-->                  
-
+                    
+                    <!--
                     <div id="Proftab7" class="tabLink">
                         <div class="willbes-Prof-Subject pl-zero NG tx-dark-black">
                             · T-pass자료실
@@ -2707,7 +2709,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- List -->
+                        
                         <div class="willbes-Leclist c_both">
                             <div class="willbes-Lec-Selected tx-gray">
                                 <select id="acad" name="acad" title="구분" class="seleAcad" style="width: 220px">
@@ -2845,11 +2847,11 @@
                                 </table>
                             </div>
                         </div>
-                        <!-- willbes-Leclist -->
+                        
 
                         <br/><br/><br/>
 
-                        <!-- View -->
+                        
                         <div class="willbes-Leclist c_both">
                             <div class="LecViewTable">
                                 <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black bdb-gray tx-gray">
@@ -2908,9 +2910,53 @@
                                 </table>
                             </div>
                         </div>
+                        
+                    </div>
+                    -->
+                    <!-- Proftab7// -->
+
+                    <div id="Proftab8" class="tabLink">
+                        <div class="willbes-Prof-Subject pl-zero NG tx-dark-black">
+                            · 교수님 TCC
+                        </div>
+                        <!-- List -->
+                        <div class="willbes-Leclist c_both">
+                            <ul class="tccWrap">
+                                <li>
+                                    <img src="{{ img_url('prof/tccImg.jpg') }}" alt="TCC영상제목">
+                                    <div class="tccInfo">
+                                        <h4><span class="NG">D-47 신광은 교수님의 당부의 말씀</span><span class="date">2018-06-22</span></h4>
+                                        <div>
+                                            경찰 3차 합격,<Br>
+                                            지금부터 하는 공부가 합격의 당락을 좌우합니다!<Br>
+                                            지금도 늦지 않았습니다.<Br>
+                                            <Br>
+                                            앞으로 남은기간 최선을 다하자!<Br>
+                                            앞으로 배운것만 틀리지 않고 다 맞을 수 있게 공부하자!<Br>
+                                        </div>
+                                    </div>   
+                                    <a id="youtube-1" href="https://www.youtube.com/embed/3iEgf4R4oHU?rel=0" class="playBtn">영상보기</a> 
+                                </li>
+                                <li>
+                                    <img src="{{ img_url('prof/tccImg.jpg') }}" alt="TCC영상제목">
+                                    <div class="tccInfo">
+                                        <h4><span class="NG">D-47 신광은 교수님의 당부의 말씀</span><span class="date">2018-06-22</span></h4>
+                                        <div>
+                                            경찰 3차 합격,
+                                            지금부터 하는 공부가 합격의 당락을 좌우합니다!
+                                            지금도 늦지 않았습니다.
+                                            
+                                            앞으로 남은기간 최선을 다하자!
+                                            앞으로 배운것만 틀리지 않고 다 맞을 수 있게 공부하자!
+                                        </div>
+                                    </div>   
+                                    <a id="youtube-2" href="https://www.youtube.com/embed/3iEgf4R4oHU?rel=0" class="playBtn">영상보기</a> 
+                                </li>
+                            </ul>
+                        </div>
                         <!-- willbes-Leclist -->
                     </div>
-                    <!-- Proftab7// -->
+                    <!-- Proftab8// -->
 
                 </div>
                 <!-- tabBox// -->
@@ -2920,4 +2966,72 @@
     </div>
 </div>
 <!-- End Container -->
+
+
+<link rel="stylesheet" type="text/css" href="/public/js/willbes/colorbox/colorbox.css" />
+<script type="text/javascript" src="/public/js/willbes/colorbox/jquery.colorbox.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {      
+        $("#youtube-1").colorbox({iframe:true, innerWidth:800, innerHeight:600});
+        $("#youtube-2").colorbox({iframe:true, innerWidth:800, innerHeight:600});
+        $("#youtube-3").colorbox({iframe:true, innerWidth:800, innerHeight:600});
+        $("#youtube-4").colorbox({iframe:true, innerWidth:800, innerHeight:600});
+        $("#youtube-5").colorbox({iframe:true, innerWidth:800, innerHeight:600});    
+    });
+    function goList(page) {
+        if(typeof(page) == "undefined") page = 1;
+        else page = page;
+        
+        var url = "/teacher/board/board_list.html?topMenuType=O&topMenuGnb=OM_002&topMenu=081&menuID=OM_002_007"
+                +"&BOARD_MNG_SEQ=TCC_000&BOARDTYPE=T4&INCTYPE=list&currentPage="+page 
+                +"&SEARCHKIND="+$("#SEARCHKIND").val()
+                +"&SEARCHTEXT="+$("#SEARCHTEXT").val()
+                +"&searchUserId=wc_001" 
+                +"&searchUserNm=" ;
+        location.href = url ;                    
+    }
+
+    function fn_view(board_seq , parent_board_seq){
+        var url = '/teacher/board/board_view.html?topMenuType=O&topMenuGnb=OM_002&topMenu=081&menuID=OM_002_007'
+            +'&BOARD_MNG_SEQ=TCC_000&BOARDTYPE=T4&INCTYPE=view&currentPage=1'
+            +'&BOARD_SEQ='+board_seq+'&PARENT_BOARD_SEQ='+parent_board_seq
+            +'&SEARCHKIND='
+            +'&SEARCHTEXT='
+            +'&searchUserId=wc_001'
+            +'&searchUserNm=' ;
+        location.href = url;
+    }
+
+    //영상Player
+    function fn_freeMp4Player(url,searchUserId){
+        if(searchUserId == null || searchUserId == '') {
+            searchUserId = 'anonymous';
+        }
+        var w = '960';  //가로 
+        var h = '500'; //세로 
+        var scroll = 'no'; //옵션
+        var name = "StarPlayer";
+        var LeftPosition = (screen.width) ? (screen.width-w)/2 : 0;
+        var TopPosition = (screen.height) ? (screen.height-h)/2 : 0;
+        var settings = 'height='+h+',width='+w+',top='+TopPosition+',left='+LeftPosition+',scrollbars='+scroll+',resizable=no'; 
+        var url = "/movieLectureInfo/freestarPlayer.pop2?searchUserId="+searchUserId+"&FREE_URL="+url;
+        //고화질 플레이어
+        try {
+        if(pop.name){//저화질 플레이어 팝업이 열려 있는 상태
+            //alert('저화질 플레이어 닫기');
+            pop.close();//저화질 플레이어 닫기
+            pop = null;
+        } 
+        }catch (exception) {}
+        //저화질 플레이어
+        try { 
+            if(pop.name){//저화질 플레이어 팝업이 열려 있는 상태
+                mp4pop =  window.open(url,name,settings);
+            } 
+        }catch(e){
+            mp4pop =  window.open(url,name,settings);
+        }
+    }
+</script>
+
 @stop

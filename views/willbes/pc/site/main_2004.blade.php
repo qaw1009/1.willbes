@@ -1,7 +1,7 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
-    <div id="Container" class="Container gosi GA NSK c_both">
+    <div id="Container" class="Container GA NSK c_both">
         <!-- site nav -->
         @include('willbes.pc.layouts.partial.site_menu')
 
@@ -33,6 +33,8 @@
                     </div>
                 </div>
                 @endif
+
+                @if(isset($data['arr_main_banner']['메인_서브1'], $data['arr_main_banner']['메인_서브2'], $data['arr_main_banner']['메인_서브3']) === true)
                 <div class="VisualsubBox mt20">
                     <ul>
                         @for($i=1; $i<=3; $i++)
@@ -54,6 +56,7 @@
                         @endfor
                     </ul>
                 </div>
+                @endif
             </div>
         </div>
         <div class="Section Bnr mt5 mb80">
@@ -147,7 +150,7 @@
                 @endphp
                 <div class="widthAuto">
                     <div class="will-acadTit">윌비스 <span class="tx-color">공무원학원</span> 교수님</div>
-                    <img src="{{ $last_banner['BannerFullPath'] . $last_banner['BannerImgName'] }}" alt="{{ $last_banner['BannerName'] }}">
+                    <a href="{{ site_url('/pass/professor/index') }}"><img src="{{ $last_banner['BannerFullPath'] . $last_banner['BannerImgName'] }}" alt="{{ $last_banner['BannerName'] }}"></a>
                 </div>
             @endif
         </div>

@@ -1,15 +1,15 @@
 var player;
 var step_;
 var realPlayerTime = null;
-//var pcScreenWidth = screen.availWidth;
-//var pcScreenHeight = screen.availHeight;
 
 var playerWidth;
 var playerHeight;
 
 var playerTitleHeight = 45;
-var playerPaddingWidth = 20;
-var playerPaddingHeight = 70;
+var playerPaddingWidth = 0;
+var playerPaddingHeight = 0;
+
+var chromePadding = 15;
 
 var video_container_width;
 var video_container_height;
@@ -121,22 +121,48 @@ function click()
     }
 }
 
+
 function setScreenReSizeVal()
 {
+    document.body.style.overflow='hidden';
+
+    if(SubFrameTag_width == 0){
+        $('#subframe').hide();
+    }
+
     video_container_height = parseInt(video_container_width * 9 / ratio);
 
     playerWidth = video_container_width + SubFrameTag_width + playerPaddingWidth;
     playerHeight = video_container_height + playerTitleHeight + controller_container_height + playerPaddingHeight;
+
+    var conW = video_container_width + SubFrameTag_width;
+    var conH = video_container_height + playerTitleHeight + controller_container_height;
+
+    var winOuterW = window.outerWidth;
+    var winOuterH = window.outerHeight;
+
+    var winInnerW = window.innerWidth;
+    var winInnerH = window.innerHeight;
+
+    var borderW = winOuterW - winInnerW;
+    var borderH = winOuterH - winInnerH;
+
+    playerWidth = conW + borderW;
+    playerHeight = conH + borderH;
+
     moveLeft = parseInt((( screen.availWidth - 10 ) - playerWidth) / 2);
     moveTop = parseInt((( screen.availHeight - 30 ) - playerHeight) / 2);
 }
+
 
 function screenResize()
 {
     window.moveTo(moveLeft, moveTop);
     window.resizeTo(playerWidth, playerHeight);
-    $("#subframe").attr("style", "height:" + parseInt(video_container_height + playerTitleHeight + controller_container_height) + "px; width:" + SubFrameTag_width + "px;");
-
+    if(SubFrameTag_width > 0) {
+        $("#subframe").attr("style", "height:" + parseInt(video_container_height + playerTitleHeight + controller_container_height) + "px; width:" + SubFrameTag_width + "px;");
+    }
+    $("#viewList").attr("style", "width:" + video_container_width + "px !important;");
     $("#video-container").attr("style", "height:" + video_container_height + "px; width:" + video_container_width + "px;");
     $("#controller-container").attr("style", "height:" + controller_container_height + "px; width:" + video_container_width + "px;");
     $("#controller-container2").attr("style", "position:absolute;display:block;left:0px;height:" + controller_container_height + "px; width:" + video_container_width + "px;top:" + parseInt(video_container_height +playerTitleHeight) + "px;");
@@ -148,7 +174,7 @@ function fnDefense()
     return ;
 
     var checkStatus;
-    var checkCrome = true;
+    var checkChrome = true;
     var element = new Image();
 
     try {
@@ -156,13 +182,13 @@ function fnDefense()
             checkStatus = 'on';
         });
     } catch (e) {
-        checkCrome = false;
+        checkChrome = false;
     } finally {
 
     }
 
     var interVal = setInterval(function () {
-        if (checkCrome) {
+        if (checkChrome) {
             checkStatus = 'off';
             console.log(element);
             console.clear();
@@ -211,17 +237,11 @@ function fnSetTop(obj)
     alert(player.getTopmost());
 }
 
-
-function fnSettingPOP()
-{
-    $('#settingPOP').toggle();
-}
-
-
-//document.onmousedown = click;
-//document.onkeydown = click;
-
 /*
+document.onmousedown = click;
+document.onkeydown = click;
+
+
 $(document).keydown(function (event) {
     if (event.keyCode == 123) {
         return false;
@@ -235,6 +255,3 @@ $(document).on("contextmenu", function (e) {
     e.preventDefault();
 });
 */
-
-
-

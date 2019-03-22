@@ -116,7 +116,8 @@ class Delivery extends BaseOrder
         switch ($this->_tab) {
             case 'invoice' :
                 $arr_condition['EQ']['OP.PayStatusCcd'] = $this->orderListModel->_pay_status_ccd['paid'];
-                $arr_condition['RAW']['OPD.DeliveryStatusCcd is '] = 'null';
+                $arr_condition['ORG0']['EQ']['OPD.DeliveryStatusCcd'] = $this->orderListModel->_delivery_status_ccd['invoice'];
+                $arr_condition['ORG0']['RAW']['OPD.DeliveryStatusCcd is '] = 'null';
                 break;
             case 'prepare' :
                 $arr_condition['IN']['OP.PayStatusCcd'] = $this->_delivery_pay_status_ccd;
@@ -202,8 +203,7 @@ class Delivery extends BaseOrder
         $list = $this->orderListModel->listExcelAllOrder($column, $arr_condition, $this->_getListOrderBy(), $this->_list_add_join);
 
         // export excel
-        $this->load->library('excel');
-        $this->excel->exportExcel('교재배송관리(' . $file_name . ')리스트', $list, $headers);
+        $this->_makeExcel('교재배송관리_' . $file_name . '리스트', $list, $headers);
     }
 
     /**

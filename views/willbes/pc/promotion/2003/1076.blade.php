@@ -68,21 +68,8 @@
             top:200px;
             right:0;
             width:261px;
-            animation:upDown 1s infinite;
-            -webkit-animation:upDown 1s infinite;
             z-index:10;
         }
-
-        @@keyframes upDown{
-             from{margin-top:0}
-             60%{margin-top:-30px}
-             to{margin-top:0}
-         }
-        @@-webkit-keyframes upDown{
-             from{margin-top:0}
-             60%{margin-top:-30px}
-             to{margin-top:0}
-         }
     </style>
 
 
@@ -99,7 +86,7 @@
         <div class="evtCtnsBox wb_top" >
             <img src="http://file3.willbes.net/new_gosi/2018/07/EV180718_c11.png" alt="사회, 만점으로 가는 매직로드 문병일 사회 " usemap="#Map20180719_c1" border="0"  />
             <map name="Map20180719_c1" >
-                <area shape="rect" coords="819,1068,1043,1171" href="http://www.willbesgosi.net/packagelecture/packagelectureDetail.html?currentPage=1&pageRow=9999&topMenu=001&topMenuName=&topMenuType=O&searchCategoryCode=001&leftMenuLType=M0001&lecKType=P&searchLeccode=P201800122" target="_blank" onfocus="this.blur();" />
+                <area shape="rect" coords="819,1068,1043,1171" href="{{ site_url('/package/show/cate/3019/pack/648001/prod-code/150655') }}" target="_blank" onfocus="this.blur();" />
             </map>
         </div><!--WB_top//-->
 
@@ -134,7 +121,7 @@
         <div class="evtCtnsBox wb_cts03" id="event">
             <img src="http://file3.willbes.net/new_gosi/2018/07/EV180718_c7.jpg" alt="윌비스 문병일 사회, 만점으로 가는 매직로드" usemap="#Map180719_c2" border="0" />
             <map name="Map180719_c2" >
-                <area shape="rect" coords="723,773,971,913" href="http://www.willbesgosi.net/packagelecture/packagelectureDetail.html?currentPage=1&pageRow=9999&topMenu=001&topMenuName=&topMenuType=O&searchCategoryCode=001&leftMenuLType=M0001&lecKType=P&searchLeccode=P201800122" onfocus="this.blur();" target="_blank" />
+                <area shape="rect" coords="723,773,971,913" href="{{ site_url('/package/show/cate/3019/pack/648001/prod-code/150655') }}" onfocus="this.blur();" target="_blank" />
             </map>
         </div><!--wb_cts03//-->
 
@@ -170,13 +157,6 @@
             $("#imgBannerRight3").click(function (){
                 slidesImg3.goToNextSlide();
             });
-        });
-    </script>
-    <script>
-        $(function(e){
-            var targetOffset= $("#evtContainer").offset().top;
-            $('html, body').animate({scrollTop: targetOffset}, 700);
-            /*e.preventDefault(); */
         });
     </script>
 @stop

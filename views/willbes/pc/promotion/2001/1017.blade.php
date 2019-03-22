@@ -76,22 +76,22 @@
                 <div class="PeMenu">
                     <ul>
                         <li>
-                            <a href="/promotion/index/cate/3001/code/1016" target="_blank" onFocus="this.blur();" >
+                            <a href="{{ site_url('/promotion/index/cate/3001/code/1016') }}" target="_blank" onFocus="this.blur();">
                                 <img src="http://file3.willbes.net/new_cop/2018/11/EV181126_c6_1.jpg" onmouseover="this.src='http://file3.willbes.net/new_cop/2018/11/EV181126_c6_1on.jpg'" onMouseOut="this.src='http://file3.willbes.net/new_cop/2018/11/EV181126_c6_1.jpg'" onMouseDown="this.src='http://file3.willbes.net/new_cop/2018/11/EV181126_c6_1.jpg'" alt=""  />
                             </a>
                         </li>
                         <li>
-                            <a href="http://www.willbescop.net/lecture/movieLectureSList.html?topMenu=081&topMenuName=일반경찰&topMenuType=O&leftMenuLType=M0002&newlearningCD=M0221&lecKType=J" target="_blank" onFocus="this.blur();" >
+                            <a href="{{ site_url('/lecture/index/cate/3001/pattern/only?course_idx=1007') }}" target="_blank" onFocus="this.blur();" >
                                 <img src="http://file3.willbes.net/new_cop/2018/11/EV181126_c6_2.jpg" onmouseover="this.src='http://file3.willbes.net/new_cop/2018/11/EV181126_c6_2on.jpg'" onMouseOut="this.src='http://file3.willbes.net/new_cop/2018/11/EV181126_c6_2.jpg'" onMouseDown="this.src='http://file3.willbes.net/new_cop/2018/11/EV181126_c6_2on.jpg'" alt=""  />
                             </a>
                         </li>
                         <li>
-                            <a href="http://www.willbescop.net/lecture/movieLectureSList.html?topMenu=081&topMenuName=일반경찰&topMenuType=O&leftMenuLType=M0002&newlearningCD=M0222&lecKType=J" target="_blank" onFocus="this.blur();" >
+                            <a href="{{ site_url('/lecture/index/cate/3001/pattern/only?course_idx=1008') }}" target="_blank" onFocus="this.blur();" >
                                 <img src="http://file3.willbes.net/new_cop/2018/11/EV181126_c6_3.jpg" onmouseover="this.src='http://file3.willbes.net/new_cop/2018/11/EV181126_c6_3on.jpg'" onMouseOut="this.src='http://file3.willbes.net/new_cop/2018/11/EV181126_c6_3.jpg'" onMouseDown="this.src='http://file3.willbes.net/new_cop/2018/11/EV181126_c6_3.jpg'" alt=""  />
                             </a>
                         </li>
                         <li>
-                            <a href="http://www.willbescop.net/lecture/movieLectureSList.html?topMenu=081&topMenuName=일반경찰&topMenuType=O&leftMenuLType=M0002&newlearningCD=M0223&lecKType=J" target="_blank" onFocus="this.blur();" >
+                            <a href="{{ site_url('/lecture/index/cate/3001/pattern/only?course_idx=1009') }}" target="_blank" onFocus="this.blur();" >
                                 <img src="http://file3.willbes.net/new_cop/2018/11/EV181126_c6_4.jpg" onmouseover="this.src='http://file3.willbes.net/new_cop/2018/11/EV181126_c6_4on.jpg'" onMouseOut="this.src='http://file3.willbes.net/new_cop/2018/11/EV181126_c6_4.jpg'" onMouseDown="this.src='http://file3.willbes.net/new_cop/2018/11/EV181126_c6_4.jpg'" alt=""  />
                             </a>
                         </li>

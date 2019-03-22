@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Bookmark extends \app\controllers\FrontController
 {
-    protected $models = array('classroomF');
+    protected $models = array('classroomF', 'memberF');
     protected $helpers = array();
     protected $auth_controller = true;
     protected $auth_methods = array();
@@ -241,7 +241,7 @@ class Bookmark extends \app\controllers\FrontController
                 if($row['RealExpireTime'] == 0){
                     $limittime = intval($row['wRuntime']) * intval($lec['MultipleApply']) * 60;
                 } else {
-                    $limittime = intval($row['RealExpireTime']);
+                    $limittime = intval($row['RealExpireTime']) * 60;
                 }
 
                 if($studytime > $limittime){
@@ -277,6 +277,29 @@ class Bookmark extends \app\controllers\FrontController
                     $curriculum[$idx]['remaintime'] = round(($limittime - $studytime)/60).'분';
                 }
             }
+        }
+
+        // 사용자 가 BtoB 회원인지 체크
+        $btob = $this->memberFModel->getBtobMember($this->session->userdata('mem_idx'));
+        if(empty($btob['BtobIdx']) == false) {
+            // BtoB 회원
+            $lec['isBtob'] = 'Y';
+
+            // 수강가능한 아이피인지 체크
+            $btob_ip = $this->memberFModel->btobIpCheck($btob['BtobIdx']);
+
+            if (empty($btob_ip['ApprovalIp']) == true) {
+                // 아이피 목록 없음
+                $lec['enableIp'] = 'N';
+            } elseif ($btob_ip['ApprovalIp'] == $this->input->ip_address()) {
+                // 모델에서 확인했지만 다시한번
+                $lec['enableIp'] = 'Y';
+            } else {
+                $lec['enableIp'] = 'N';
+            }
+        } else {
+            $lec['isBtob'] = 'N';
+            $lec['enableIp'] = 'Y';
         }
 
         return $this->load->view('/classroom/bookmark/view', [

@@ -114,7 +114,7 @@
         <br/><br/><br/><br/><br/><br/>
     </div>
     <!-- End Container -->
-    <form name="vnoform" id="vnoform" method="post" action="/Member/ActivateSleep/">
+    <form name="vnoform" id="vnoform" method="post" action="/member/sleep/activate">
         {!! csrf_field() !!}
         <input type="hidden" name="jointype" value="655001" />
         <input type="hidden" name="enc_data" value="" />
@@ -178,7 +178,7 @@
             }
 
             $("#btn_send_sms").click(function () {
-                var _url = "/Member/SleepSms/";
+                var _url = "/member/sleep/sms/";
                 $('#sms_msg').html('');
 
                 ajaxSubmit($p_form, _url, function(ret) {
@@ -207,13 +207,13 @@
                     return;
                 }
 
-                var _url = "/Member/SleepSms/";
+                var _url = "/member/sleep/sms/";
 
                 ajaxSubmit($p_form, _url, function(ret) {
                     clearTimeout(objTimer);
                     $("#enc_data").val(ret.ret_data.enc_data);
                     $("#phone_number").val(ret.ret_data.phone_number);
-                    $("#find_form").prop("action", "/Member/ActivateSleep/").submit();
+                    $("#find_form").prop("action", "/member/sleep/activate/").submit();
 
                 }, function(ret){
                     //alert(ret.ret_msg);
@@ -223,7 +223,7 @@
 
 
             $("#btn_send_mail").click(function () {
-                var _url = "/Member/SleepMail/";
+                var _url = "/member/sleep/mail/";
                 $('#mail_msg').html('');
 
                 ajaxSubmit($m_form, _url, function(ret){

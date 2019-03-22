@@ -327,6 +327,7 @@ class SupportBoardFModel extends BaseSupportFModel
             FROM {$this->_table['mylecture_pkg']}
             {$where_mylecture}
             AND MemIdx = '{$this->session->userdata('mem_idx')}'
+            AND IsTpass = 'Y'
             UNION
             SELECT a.ProdCode, b.ProdName
             FROM {$this->_table['board_tpass_member_authority']} AS a

@@ -10,9 +10,7 @@
         <div class="Content p_re">
 
             <div class="willbes-Mypage-TESTZONE c_both">
-                <div class="willbes-Prof-Subject willbes-Mypage-Tit NG">
-                    · 온라인모의고사 응시
-                </div>
+
                 <div class="willbes-Cart-Txt willbes-Mypage-Txt NG p_re">
                     <span class="MoreBtn"><a href="#none">유의사항안내 닫기 ▲</a></span>
                     <table cellspacing="0" cellpadding="0" class="txtTable tx-black">
@@ -32,15 +30,24 @@
             <div class="willbes-Leclist c_both mt60">
                 <form id="url_form" name="url_form" method="GET">
 
-                    <div class="willbes-LecreplyList tx-gray c_both mt-zero">
-                        <span class="willbes-Lec-Search willbes-SelectBox mb20 GM f_right">
-                            <div class="inputBox p_re">
-                                <input type="text" id="s_keyword" name="s_keyword" class="labelSearch" value="{{ element('s_keyword', $arr_input) }}" placeholder="모의고사명을 입력해 주세요" maxlength="30">
-                                <button type="button" onclick="goUrl('s_keyword', document.getElementById('s_keyword').value);" class="search-Btn">
-                                    <span>검색</span>
-                                </button>
-                            </div>
-                        </span>
+                    <div class="willbes-LecreplyList tx-gray c_both">
+                        <ul class="widthAutoFull">
+                            <li class="f_left">
+                                지난 모의고사 성적결과 보기
+                                <a href="javascript:popCross(1);" class="btnAuto95 bg-black tx-white tx-center h30 d_inblock">경찰 ▶</a>
+                                <a href="javascript:popCross(2);" class="btnAuto95 bg-black tx-white tx-center h30 d_inblock">공무원 ▶</a>
+                            </li>
+                            <li class="f_right">
+                                <span class="willbes-Lec-Search">    
+                                    <div class="inputBox p_re">
+                                        <input type="text" id="s_keyword" name="s_keyword" class="labelSearch" value="{{ element('s_keyword', $arr_input) }}" placeholder="모의고사명을 입력해 주세요" maxlength="30">
+                                        <button type="button" onclick="goUrl('s_keyword', document.getElementById('s_keyword').value);" class="search-Btn">
+                                            <span>검색</span>
+                                        </button>
+                                    </div>
+                                </span>
+                            </li>
+                        </ul>                
                     </div>
 
                     <div class="LeclistTable pointTable">
@@ -100,7 +107,11 @@
                                         <td class="w-file on tx-blue">
                                             @if(substr($row['GradeOpenDatm'],0,10) <= date('Y-m-d')&&$row['gRegister']!=null)
                                                 <a href="javascript:selQaFileAjax({{ $row['ProdCode'] }});">[문제/해설]</a><br>
-                                                <a href="javascript:popwin({{ $row['ProdCode'] }}, 2, {{ $row['MrIdx'] }}, {{ $row['TCNT'] }})">[오답노트]</a>
+                                                @if($row['TCNT']!=null)
+                                                    <a href="javascript:popwin({{ $row['ProdCode'] }}, 2, {{ $row['MrIdx'] }}, {{ $row['TCNT'] }})">[오답노트]</a>
+                                                @else
+                                                    <a href="javascript:popwin({{ $row['ProdCode'] }}, 2, {{ $row['MrIdx'] }}, 0)">[오답노트]</a>
+                                                @endif
                                             @else
                                             @endif
                                         </td>
@@ -157,7 +168,7 @@
 
         </div>
         {!! banner('내강의실_우측퀵', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
-
+    </div>
         <!-- End Container -->
         <script>
             var win = '';
@@ -188,6 +199,18 @@
                     }
                 }
 
+            }
+
+            function popCross(num){
+                if(num == 1){
+                    _url = 'http://c3.willbescop.net/mouigosa/stats/statsMock.html?M_USER_ID='+'{{ $userid }}';
+                    win = window.open(_url, 'mockPopupRegasi', 'width=1024, height=845, scrollbars=yes, resizable=yes');
+                    win.focus();
+                } else {
+                    _url = 'http://w1.willbesgosi.net/mouigosa/stats/statsMock.html?M_USER_ID='+'{{ $userid }}';
+                    win = window.open(_url, 'mockPopupRegasi', 'width=1024, height=845, scrollbars=yes, resizable=yes');
+                    win.focus();
+                }
             }
 
             function selQaFileAjax(prodcode){

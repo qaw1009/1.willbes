@@ -353,7 +353,7 @@
                                     <div>
                                         <input type="text" id="" name="" placeholder="****" maxlength="10">
                                         <button type="submit" onclick="">
-                                            <span>검색</span>
+                                            <span>확인</span>
                                         </button>
                                     </div>
                                 </div>                                

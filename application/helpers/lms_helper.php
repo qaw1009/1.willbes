@@ -18,7 +18,7 @@ if (!function_exists('get_auth_site_codes')) {
             unset($sess_auth_site_codes[config_item('app_intg_site_code')]);
         }
 
-        return $is_with_name === false ? array_pluck($sess_auth_site_codes, 'SiteCode') : array_pluck($sess_auth_site_codes, 'SiteName', 'SiteCode');
+        return $is_with_name === false ? array_keys($sess_auth_site_codes) : array_pluck($sess_auth_site_codes, 'SiteName', 'SiteCode');
     }
 }
 
@@ -47,7 +47,7 @@ if (!function_exists('get_auth_on_off_site_codes')) {
             }
         }
 
-        return $is_with_name === false ? array_pluck($auth_site_codes, 'SiteCode') : array_pluck($auth_site_codes, 'SiteName', 'SiteCode');
+        return $is_with_name === false ? array_keys($auth_site_codes) : array_pluck($auth_site_codes, 'SiteName', 'SiteCode');
     }
 }
 

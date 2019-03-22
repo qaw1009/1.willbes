@@ -27,8 +27,6 @@ Class PackageUser extends \app\controllers\BaseController
             $arr_category[$arr_key][] = $row;
         }
 
-
-
         $this->load->view('product/on/packageuser/index',[
             'arr_lg_category' => element('LG', $arr_category, []),
             'arr_md_category' => element('MD', $arr_category, []),
@@ -97,7 +95,7 @@ Class PackageUser extends \app\controllers\BaseController
     {
         $method = 'POST';
 
-        $codes = $this->codeModel->getCcdInArray(['611','612','618']); // 수강배수,수강배수적용구분,판매상태
+        $codes = $this->codeModel->getCcdInArray(['611','612','618','635']); // 수강배수,수강배수적용구분,판매상태
         $arr_send_callback_ccd = $this->codeModel->getCcd(706, 'CcdValue');  // 발신번호조회
 
         $prodcode = null;
@@ -133,6 +131,7 @@ Class PackageUser extends \app\controllers\BaseController
             ,'multiplelimit_ccd'=>$codes['611'] //수강배수
             ,'multipleapply_ccd'=>$codes['612'] //수강배수적용구분
             ,'sales_ccd'=>$codes['618'] //판매상태
+            ,'pointapply_ccd' => $codes['635']  //포인트적립타입
             ,'prodcode' => $prodcode
             ,'arr_send_callback_ccd' =>$arr_send_callback_ccd
             ,'data'=>$data

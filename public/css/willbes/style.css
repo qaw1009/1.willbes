@@ -91,13 +91,14 @@
     line-height: 22px;
 }
 .Member .info-Txt-Wrap {
-    background: #f5f5f5;
-    height: 90px;
-    line-height: 86px;
+    background: #f5f5f5;    
+    line-height: 1.5;
     border-top: 1px solid #e2e2e2;
     border-bottom: 1px solid #e2e2e2;
     letter-spacing: 1px;
+    padding:20px 0;
 }
+
 .Member .notice-Txt {
     font-size: 12px;
     text-align: center;
@@ -1837,18 +1838,30 @@ table.auTable tr td {
 .Menu .menu-List li a {
     color: #363636;
 }
-.Menu .menu-List li.Acad a {
+
+/*경찰*/
+.Menu .menu-List li.police a {
     background: url("../../img/willbes/sub/icon_acad.gif") no-repeat 0 0;
     font-size: 16px;
     color: #0c5dc0;
     padding-left: 26px; 
 }
-.Menu .menu-List li.Acad a .arrow-Btn {
+
+.Menu .menu-List li.police a .arrow-Btn {
     background: url("../../img/willbes/sub/icon_arrow.gif") no-repeat 0 0;
     float: right;
     width: 4px;
     height: 8px;
     margin: 15px 5px 0;
+}
+
+/*공무원*/
+.Menu .menu-List li.pass a {
+    background: url("../../img/willbes/gosi/icon_acad.gif") no-repeat 0 0;
+    color: #ba560e;
+}
+.Menu .menu-List li.pass a .arrow-Btn {
+    background: url("../../img/willbes/gosi/icon_arrow.gif") no-repeat 0 0;
 }
 
 .Menu .menu-List-Center {
@@ -2540,6 +2553,7 @@ table.auTable tr td {
 }
 .w-info dt {
     float: left;
+    vertical-align: middle;
 }
 .w-info dt .nBox {
     display: inline-block;
@@ -2701,7 +2715,7 @@ table.lecWrapTable .w-list {
     font-size: 13px;
     color: #3a3a3a;
     border-bottom: 1px solid #c9c9c9;
-    border-right: 1px solid #c9c9c9;    
+    border-right: 1px solid #c9c9c9;   
 }
 table.lecWrapTable .lecInfoTable .w-sub {
     margin-left: 50px;
@@ -3141,7 +3155,9 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
 }
 .willbes-Layer-Box.d3 .classInfo {
     padding-top: 20px;
+    line-height: 20px;
 }
+
 .willbes-Layer-Box.d3 table.classTable tr td {
     line-height: 20px !important;
 }
@@ -3707,8 +3723,9 @@ table.classTable tr td.w-data {
 .LeclistTable .listTable tr th,
 .LeclistTable .listTable tr td {
     text-align: center;
-    line-height: 40px !important;
+    line-height: 1.5 !important;
     letter-spacing: 0;
+    padding:15px 0;
 }
 .LeclistTable .csTable tr td {
     line-height: 1.4 !important;
@@ -3722,7 +3739,6 @@ table.classTable tr td.w-data {
     background: #e4e4e4;
     width: 1px;
     height: 11px;
-    margin: 14px 0;
 }
 .LeclistTable .listTable tbody tr td.w-free .w-sp {
     float: inherit;
@@ -4334,7 +4350,7 @@ form .LeclistTable .evtTable tr td a.w-del {
 }
 .packageDetailTable .w-list {
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 600;    
 }
 .packageDetailTable .w-line .row-line {
     background: #e7e7e7;
@@ -4477,15 +4493,18 @@ form .LeclistTable .evtTable tr td a.w-del {
     width: 154px;
     height: 26px;
 }
-.mockpopupTable ul li {
+.mockpopupTable ul li {    
+    display: inline;
     float: left;
     margin-right: 30px;
+    line-height: 1.5;
 }
 .mockpopupTable ul li input[type="radio"] {
-    float: left;
-    margin-top: 14px;
+    /*float: left;
+    margin-top: 14px;*/
     margin-right: 5px;
 }
+
 .willbes-Layer-PassBox .passzoneListInfo {
     font-size: 12px;
     letter-spacing: 0;
@@ -5061,6 +5080,11 @@ span.calendar_btn {
 }
 .cart-PriceBox .price-total .price {
     font-size: 23px;
+}
+.cart-PriceBox:after {
+    content:'';
+    display: block;
+    clear:both;
 }
 .willbes-Cart-Txt .MoreBtn {
     position: absolute;
@@ -5982,6 +6006,9 @@ ul li.profList .willbes-Layer-ProfileBox {
     border: 1px solid #e2e2e2;
     overflow-x: auto;
 }
+.willbes-Layer-CurriBox .Layer-Cont img {
+    max-width: 838px;
+}
 
 /* subContainer : Prof : willbes-Layer-ReplyBox */
 .willbes-Layer-ReplyBox {
@@ -6312,6 +6339,56 @@ ul li.profList .willbes-Layer-ProfileBox {
     border-color: transparent transparent #fff;
     border-width: 6px;
 }
+
+/*subContainer : Prof : TCC*/
+.tccWrap {
+    letter-spacing: 0;
+    color:#707070;
+    line-height: 1.4;
+}
+.tccWrap li {
+    position: relative;
+    border-bottom:1px solid #edeeef;
+    padding-bottom:20px;
+    margin-bottom:20px;
+    min-height: 160px;
+}
+.tccWrap li img {
+    position: absolute;
+    width: 220px;
+    z-index: 1;
+}
+.tccInfo {
+    margin-left: 240px;
+}
+.tccInfo h4 {
+    background: #f9f9f9;
+    padding:10px;     
+    font-size: 16px;
+    border-top:1px solid #959595;
+    border-bottom:1px solid #959595;
+}
+.tccInfo h4 .date {
+    position: absolute;
+    right: 10px;
+    top:15px;
+    font-size: 12px;
+}
+.tccInfo div {
+    padding:10px 70px 0 10px;
+}
+.tccWrap li .playBtn {
+    position: absolute;
+    top:48%;
+    right:10px;
+    width: 50px;
+    height: 50px;
+    background:url("../../img/willbes/prof/btn_play.png") no-repeat center center;
+    background-size:60%;
+    font-size: 0;
+    text-indent: -9999;
+}
+
 
 /* subContainer : Prof : tabDepthAcad */
 .tabWrap.tabDepthAcad {
@@ -6979,7 +7056,7 @@ ul li.profList .willbes-Layer-ProfileBox {
 .tab_Question li {
     float: inherit;
     display: inline-block;
-    width: 120px;
+    width: 110px;
     height: 94px;
     padding-top: 10px;
     margin: 0 8px;
@@ -7108,38 +7185,24 @@ ul li.profList .willbes-Layer-ProfileBox {
     background: url("../../img/willbes/cs/icon_firstinfo1.gif") no-repeat 30px center;
 }
 .willbes-guide ul li.w-guide2 a {
-    background: url("../../img/willbes/cs/icon_firstinfo2.gif") no-repeat 30px center;
+    background: url("../../img/willbes/cs/icon_firstinfo2.png") no-repeat 30px center;
 }
 .willbes-guide ul li.w-guide3 a {
-    background: url("../../img/willbes/cs/icon_firstinfo3.gif") no-repeat 30px center;
+    background: url("../../img/willbes/cs/icon_firstinfo3.png") no-repeat 30px center;
 }
 .willbes-guide ul li.w-guide4 a {
-    background: url("../../img/willbes/cs/icon_firstinfo4.gif") no-repeat 30px center;
+    background: url("../../img/willbes/cs/icon_firstinfo4.png") no-repeat 30px center;
 }
 .willbes-guide ul li.w-guide5 a {
-    background: url("../../img/willbes/cs/icon_firstinfo5.gif") no-repeat 30px center;
+    background: url("../../img/willbes/cs/icon_firstinfo5.png") no-repeat 30px center;
 }
 
-.willbes-guide ul li.w-guide1 a.on,
-.willbes-guide ul li.w-guide1 a:hover {
-    background: url("../../img/willbes/cs/icon_firstinfo1_on.gif") no-repeat 30px center;
+.willbes-guide ul li a.on,
+.willbes-guide ul li a:hover {
+    background-color:#eee;
+    color:#0d74ae
 }
-.willbes-guide ul li.w-guide2 a.on,
-.willbes-guide ul li.w-guide2 a:hover {
-    background: url("../../img/willbes/cs/icon_firstinfo2_on.gif") no-repeat 30px center;
-}
-.willbes-guide ul li.w-guide3 a.on,
-.willbes-guide ul li.w-guide3 a:hover {
-    background: url("../../img/willbes/cs/icon_firstinfo3_on.gif") no-repeat 30px center;
-}
-.willbes-guide ul li.w-guide4 a.on,
-.willbes-guide ul li.w-guide4 a:hover {
-    background: url("../../img/willbes/cs/icon_firstinfo4_on.gif") no-repeat 30px center;
-}
-.willbes-guide ul li.w-guide5 a.on,
-.willbes-guide ul li.w-guide5 a:hover {
-    background: url("../../img/willbes/cs/icon_firstinfo5_on.gif") no-repeat 30px center;
-}
+
 
 /* subContainer : Cs : CScenter1 : Act5 : 모바일 서비스안내 */
 .tabWrap.tab_m_Guide {
@@ -7373,9 +7436,10 @@ ul li.profList .willbes-Layer-ProfileBox {
     margin: -4px 0 0 5px;
 }
 .MyInfoBoxList .List-Table.myTablet {
-    background: url("../../img/willbes/mypage/icon_pc_n.png") no-repeat 0 4px;
-    padding: 18px 0 18px 110px;
+    background: url("../../img/willbes/mypage/icon_pc_n.png") no-repeat -20px 4px;
+    padding: 18px 0 18px 80px;
     margin: 0;
+    min-height: 86px;
 }
 .MyInfoBoxList .List-Table.myTablet li {
     height: 25px;
@@ -7699,6 +7763,8 @@ table.PassZoneTable .w-data {
 .willbes-Layer-PassBox.abs {
     display: none;
     position: absolute;
+    left:50%;
+    margin-left: -50%;
     z-index: 110;
     border: 1px solid #2f2f2f;
 }
@@ -7727,6 +7793,44 @@ table.PassZoneTable .w-data {
     width: 100%;
     padding: 30px 0 0;
 }
+.willbes-Layer-PassBox .passinfoWrap {
+    width: 100%;
+    padding: 30px 0 0;
+}
+.passinfoWrap li {
+    display: inline;
+    float: left;
+    width: 20%;
+}
+.passinfoWrap li a {
+    display: block;
+    height: 34px;
+    line-height: 34px;
+    border:1px solid #bdbdbd;
+    border-bottom:1px solid #0d74ae;
+    border-right:0;
+    text-align: center;
+    color:#bdbdbd;
+    font-weight: bold;
+}
+.passinfoWrap li:last-child a {
+    border-right:1px solid #bdbdbd;
+}
+.passinfoWrap li a:hover,
+.passinfoWrap li a.on {
+    border:1px solid #0d74ae;
+    border-bottom:1px solid #fff;
+    color:#0d74ae;
+}
+.passinfoWrap ul:after {
+    content:'';
+    display: block;
+    clear:both;
+}
+.passinfoWrap .passinfoCts {
+    margin-top:40px;
+}
+
 .willbes-Layer-PassBox .passzoneTitInfo {
     background: #f9f9f9;
     font-size: 16px;
@@ -7825,6 +7929,9 @@ table.PassZoneTable .w-data {
 }
 .willbes-Layer-PassBox900 {
     width: 900px;
+}
+.willbes-Layer-PassBox990 {
+    width: 990px;
 }
 .willbes-Layer-PassBox1100 {
     width: 1100px;
@@ -7944,8 +8051,9 @@ table.PassZoneTable .w-data {
 }
 .PASSZONE-List .PASSZONE-Lec-Section .cart-PriceBox {
     border-top: 1px solid #3a3e47; 
-    margin-top: 30px;    
+    margin: 30px 0;    
 }
+
 .PASSZONE-List .PASSZONE-Lec-Section .willbes-Lec-buyBtn {
     bottom: 40px;
     right: 25px;
@@ -8044,7 +8152,7 @@ table.PassZoneTable .w-data {
     width: 60px;
 }
 .PASSZONE-List .willbes-Lec-Search .subBtn a {
-    width: 60px;
+    /*width: 60px;*/
     height: 27px;
     font-size: 12px;
     line-height: 18px;
@@ -9949,17 +10057,26 @@ table.acadlecInfoPackageTable tr.Top td {
 .videoPopup .view .viewList {
     height: 45px;
     padding: 0 15px;
+    min-width: 640px;
 }
-.videoPopup .view .viewList .Tit {
+.videoPopup .view .viewList .Tit {    
     font-size: 16px; 
     color: #fff;
     line-height: 45px;
+    width:80%; 
+    overflow:hidden;
+    white-space:nowrap; 
+    text-overflow:ellipsis;
+    display: block;
 }
 .videoPopup .view .viewList span {
     vertical-align: baseline;
 }
 .videoPopup .view  .viewList .btnList {
-    float: right;
+    /*float: right;*/
+    position: absolute;
+    right:0;
+    top:0;
 }
 .videoPopup .view  .viewList .btnList li {
     display: inline-block;
@@ -10008,6 +10125,15 @@ table.acadlecInfoPackageTable tr.Top td {
     position: absolute;
     top: 0;
     right: 0;
+    margin-right: -264px;
+    z-index: 9999;
+}
+.videoPopup .view .settingPOP2 {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right:0;
     z-index: 9999;
 }
 
@@ -10245,6 +10371,7 @@ table.acadlecInfoPackageTable tr.Top td {
     white-space: nowrap;
     overflow: hidden;
     padding: 0 10px;
+    text-align: left;
 }
 
 /* Video Player : vodTabs : vodSbjBox */
@@ -10639,82 +10766,7 @@ table.acadlecInfoPackageTable tr.Top td {
     border-bottom:1px solid #999;
 }
 
-/* 프로모션 홍보 url 댓글 */
-.urlWrap {
-    width:1000px; 
-    margin:30px auto 100px; 
-    font-size:12px; 
-    line-height: 1.4; 
-    color:#555556;
-}
-.urlWrap .textarBox {
-    background:#e8e6d9;
-    padding:20px;
-    text-align: center;
-    border-radius: 40px 40px 0 0;    
-}
-.urlWrap .textarBox span {
-    padding: 0 20px;
-    font-weight: 500;
-    font-size:14px;
-}
-.urlWrap .textarBox input {
-    width:65%; 
-    height:36px;
-    line-height:36px;
-    border:2px solid #929292;  
-    border-radius: 20px 0 0 20px;
-    padding-left:20px;
-    vertical-align: middle;      
-}
-.urlWrap .textarBox a {
-    display: inline-block;
-    text-align: center;
-    color:#fff;
-    background: #000;
-    margin-left:0;
-    height:36px;
-    line-height: 36px;
-    border-radius: 0 20px 20px 0;
-    vertical-align: middle; 
-}
-.urlWrap .url-List {
-    margin-top: 1px;
-}
-.urlWrap .url-List table {    
-    border-top:0;
-}
-.urlWrap .url-List tr {
-    border-bottom:1px solid #e8e6d9;
- }
-.urlWrap .url-List thead th {
-    background:#e8e6d9;
-    font-weight: bold;
-}
-.urlWrap .url-List thead th,
-.urlWrap .url-List td {
-    padding:10px;
-    text-align: center;    
-}
-.urlWrap .url-List td:last-child {
-    text-align: left;  
-}
-.urlWrap .url-List td a {
-    float: right;
-    font-size: 12px;
-    border:1px solid #eee;
-    width: 18px;
-    height: 18px;
-    line-height: 18px;
-    text-align: center;
-    color:#ccc;
-    font-family: "Helvetica", "Apple SD Gothic Neo", "sans-serif";
-}
-.urlWrap .url-List td a:hover {
-    border:1px solid #000;
-    color:#000;
 
-}
 
 /* Only IE Hack */
 /* IE7, IE8, IE9 */
@@ -10968,6 +11020,10 @@ table.acadlecInfoPackageTable tr.Top td {
     }
 
     /* Login Form : 통합회원가입 : 회원가입완료 */
+    .mem-CombineFin .welcomepack {
+        border-top:1px solid #e2e2e2;
+        border-bottom:1px solid #e2e2e2;
+    }
     .mem-CombineFin select.seleSite { 
         width: 50%;
         height: 38px;
@@ -11027,4 +11083,8 @@ table.acadlecInfoPackageTable tr.Top td {
     .mem-Expired .expired-Btn {
         margin: 30px 0 0 0;
     }
+}
+
+.table-condensed {
+    width: 250px !important;
 }

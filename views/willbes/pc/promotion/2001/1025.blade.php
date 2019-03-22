@@ -70,7 +70,7 @@
             <div style="margin:100px 0 50px 0;">
                 <img src="http://file3.willbes.net/new_cop/2019/01/EV190102_p5.png"  alt="100%" usemap="#more" />
                 <map name="more" id="more">
-                    <area shape="rect" coords="442,518,773,579" href="http://www.willbescop.net/notice/view.html?topMenuType=F&topMenuGnb=FM_008&topMenu=MAIN&menuID=FM_008_001&topMenuName=ÀÏ¹Ý°æÂû&BOARD_MNG_SEQ=NOTICE_000&NOTICETYPE=notice&INCTYPE=view&currentPage=1&BOARD_SEQ=138232&PARENT_BOARD_SEQ=0&searchEventNo=undefined&SEARCHKIND=&SEARCHTEXT=" onfocus='this.blur()'  alt="적중사례" target="_blank">
+                    <area shape="rect" coords="442,518,773,579" href="{{ site_url('/support/notice/index/cate/3001') }}" onfocus='this.blur()'  alt="적중사례" target="_blank">
                 </map>
             </div>
             <div style="width:980px;text-align:center;margin:0 auto;">
@@ -102,8 +102,8 @@
         <div class="evtCtnsBox wb_cts05" >
             <img src="http://file3.willbes.net/new_cop/2019/01/EV190102_p6.png"  alt="커리큘럼 & 강의신청" usemap="#p1" />
             <map name="p1" id="p1">
-                <area shape="rect" coords="167,1081,443,1149" href="/lecture/index/cate/3001/pattern/only" onfocus='this.blur()'  target="_blank" alt="온라인강의 신청">
-                <area shape="rect" coords="509,1081,787,1149" href="/pass/offLecture/index" onfocus='this.blur()' target="_blank" alt="학원강의 신청">
+                <area shape="rect" coords="167,1081,443,1149" href="{{ site_url('/professor/show/cate/3001/prof-idx/50135/?subject_idx=1001&subject_name=%EC%98%81%EC%96%B4&tab=open_lecture') }}" onfocus='this.blur()'  target="_blank" alt="온라인강의 신청">
+                <area shape="rect" coords="509,1081,787,1149" href="{{ site_url('/pass/professor/show/prof-idx/50136/?cate_code=3010&subject_idx=1054&subject_name=%EC%98%81%EC%96%B4&tab=open_lecture') }}" onfocus='this.blur()' target="_blank" alt="학원강의 신청">
             </map>
         </div>
 

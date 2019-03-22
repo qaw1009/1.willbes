@@ -67,13 +67,13 @@
         .content_guide_box dd p.guide_txt_01{margin:5px 0 5px 15px;}
 
         .skybanner {
-            position:absolute;
-            top:20px;
+            position:fixed;
+            bottom:20px;
             right:10px;
             width:170px;
             z-index:1;
         }
-        .skybanner_sectionFixed {position:fixed; top:20px}
+
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
@@ -86,7 +86,7 @@
             <img src="http://file3.willbes.net/new_cop/2019/01/EV190123_p1.png"  alt="메인" />
         </div>
 
-        <div class="wb_cts01">
+        <div class="evtCtnsBox wb_cts01">
             <img src="http://file3.willbes.net/new_cop/2019/01/EV190123_p2.png"  alt="실수강생 4,000명" />
         </div>
 
@@ -111,19 +111,19 @@
                     <col width="15%"/>
                     <tr>
                         <td class="tx-left">【경장,경사,경위 승진대비】 2020 신광은 형소법 &amp; 김원욱 형법 PASS</td>
-                        <td><a href="{{ front_url('/periodPackage/show/cate/3006/pack/648001/prod-code/149196') }}">수강신청</a></td>
+                        <td><a href="{{ site_url('/periodPackage/show/cate/3006/pack/648001/prod-code/149196') }}" target="_blink">수강신청</a></td>
                     </tr>
                     <tr>
                         <td class="tx-left">【경장,경사 승진대비】 2020 신광은 형소법 &amp; 김원욱 형법 &amp; 송광호 경찰실무2 PASS</td>
-                        <td><a href="{{ front_url('/periodPackage/show/cate/3006/pack/648001/prod-code/149197') }}">수강신청</a></td>
+                        <td><a href="{{ site_url('/periodPackage/show/cate/3006/pack/648001/prod-code/149197') }}" target="_blink">수강신청</a></td>
                     </tr>
                     <tr>
                         <td class="tx-left">【경장,경사 승진대비】 2020 신광은 형소법 &amp; 김원욱 형법 &amp; 송광호 경찰실무3 PASS</td>
-                        <td><a href="{{ front_url('/periodPackage/show/cate/3006/pack/648001/prod-code/149198') }}">수강신청</a></td>
+                        <td><a href="{{ site_url('/periodPackage/show/cate/3006/pack/648001/prod-code/149198') }}" target="_blink">수강신청</a></td>
                     </tr>
                     <tr>
                         <td class="tx-left">【경위 승진대비】 2020 신광은 형소법 &amp; 김원욱 형법 &amp; 조용석 경찰실무종합 PASS</td>
-                        <td><a href="{{ front_url('/periodPackage/show/cate/3006/pack/648001/prod-code/149097') }}">수강신청</a></td>
+                        <td><a href="{{ site_url('/periodPackage/show/cate/3006/pack/648001/prod-code/149097') }}" target="_blink">수강신청</a></td>
                     </tr>
                 </table>
             </div>
@@ -136,23 +136,23 @@
                     <col width="15%"/>
                     <tr>
                         <td class="tx-left">2020 승진대비 형소법 12개월 동영상 PASS >신광은 교수</td>
-                        <td><a href="{{ front_url('/periodPackage/show/cate/3006/pack/648001/prod-code/149200') }}">수강신청</a></td>
+                        <td><a href="{{ site_url('/periodPackage/show/cate/3006/pack/648001/prod-code/149200') }}" target="_blink">수강신청</a></td>
                     </tr>
                     <tr>
                         <td class="tx-left">2020 승진대비 형법 12개월 동영상 PASS >김원욱 교수</td>
-                        <td><a href="{{ front_url('/periodPackage/show/cate/3006/pack/648001/prod-code/149201') }}">수강신청</a></td>
+                        <td><a href="{{ site_url('/periodPackage/show/cate/3006/pack/648001/prod-code/149201') }}" target="_blink">수강신청</a></td>
                     </tr>
                     <tr>
                         <td class="tx-left">2020 승진대비 경찰실무2 12개월 동영상 PASS >송광호 교수</td>
-                        <td><a href="{{ front_url('/periodPackage/show/cate/3006/pack/648001/prod-code/149202') }}">수강신청</a></td>
+                        <td><a href="{{ site_url('/periodPackage/show/cate/3006/pack/648001/prod-code/149202') }}" target="_blink">수강신청</a></td>
                     </tr>
                     <tr>
                         <td class="tx-left">2020 승진대비 경찰실무3 12개월 동영상 PASS >송광호 교수</td>
-                        <td><a href="{{ front_url('/periodPackage/show/cate/3006/pack/648001/prod-code/149203') }}">수강신청</a></td>
+                        <td><a href="{{ site_url('/periodPackage/show/cate/3006/pack/648001/prod-code/149203') }}" target="_blink">수강신청</a></td>
                     </tr>
                     <tr>
                         <td class="tx-left">2020 승진대비 경찰실무종합 12개월 동영상 PASS >조용석 교수</td>
-                        <td><a href="{{ front_url('/periodPackage/show/cate/3006/pack/648001/prod-code/149204') }}">수강신청</a></td>
+                        <td><a href="{{ site_url('/periodPackage/show/cate/3006/pack/648001/prod-code/149204') }}" target="_blink">수강신청</a></td>
                     </tr>
                 </table>
             </div>
@@ -263,7 +263,7 @@
             });
         });
     </script>
-    <script src="/public/js/willbes/jquery.nav.js"></script>
+
     <script>
         $(function(e){
             var targetOffset= $("#evtContainer").offset().top;

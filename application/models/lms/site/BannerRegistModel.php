@@ -83,7 +83,8 @@ class BannerRegistModel extends WB_Model
             A.BIdx, A.SiteCode, A.CateCode, A.CampusCcd, A.BdIdx, A.BannerName, A.LinkUrlType, A.DispStartDatm, A.DispEndDatm,
             DATE_FORMAT(A.DispStartDatm, '%Y-%m-%d') AS DispStartDay, DATE_FORMAT(A.DispStartDatm, '%H') AS DispStartHour,
             DATE_FORMAT(A.DispEndDatm, '%Y-%m-%d') AS DispEndDay, DATE_FORMAT(A.DispEndDatm, '%H') AS DispEndHour,
-            A.BannerFullPath, A.BannerImgName, A.BannerImgRealName, A.LinkType, A.LinkUrl, A.OrderNum, A.Desc, A.IsUse, A.RegAdminIdx, A.RegDatm, A.UpdAdminIdx, A.UpdDatm,
+            A.BannerFullPath, A.BannerImgName, A.BannerImgRealName, A.LinkType, A.LinkUrl, A.PopWidth, A.PopHeight, A.OrderNum, A.Desc, A.IsUse,
+            A.RegAdminIdx, A.RegDatm, A.UpdAdminIdx, A.UpdDatm,
             B.SiteName, E.CateName, F.DispName,
             C.wAdminName AS RegAdminName, D.wAdminName AS UpdAdminName
             ";
@@ -111,6 +112,7 @@ class BannerRegistModel extends WB_Model
     {
         $this->_conn->trans_begin();
         try {
+            $admin_idx = $this->session->userdata('admin_idx');
             $site_code = element('site_code', $input);
             $arr_cate_code = explode('_',element('cate_code', $input));
             if (isset($arr_cate_code[1]) === false) {
@@ -119,8 +121,10 @@ class BannerRegistModel extends WB_Model
 
             $cate_code = $arr_cate_code[1];
             $banner_disp_idx = element('banner_disp_idx', $input);
+            $link_type = element('link_type', $input);
             $order_num = get_var(element('order_num', $input), $this->_getBannerOrderNum($site_code, $cate_code, $banner_disp_idx));
-            $admin_idx = $this->session->userdata('admin_idx');
+            $pop_width = null;
+            $pop_height = null;
 
             if (empty(element('disp_start_datm', $input)) === true) {
                 $disp_start_datm = date('Y-m-d') . ' ' . '00:00:00';
@@ -134,6 +138,11 @@ class BannerRegistModel extends WB_Model
                 $disp_end_datm = element('disp_end_datm', $input) . ' ' . element('disp_end_time', $input) . ':00:00';
             }
 
+            if ($link_type == 'popup') {
+                $pop_width = element('pop_width', $input, 0);
+                $pop_height = element('pop_height', $input, 0);
+            }
+
             $data = [
                 'SiteCode' => element('site_code', $input),
                 'CateCode' => $cate_code,
@@ -142,9 +151,11 @@ class BannerRegistModel extends WB_Model
                 'BannerName' => element('banner_name', $input),
                 'DispStartDatm' => $disp_start_datm,
                 'DispEndDatm' => $disp_end_datm,
-                'LinkType' => element('link_type', $input),
+                'LinkType' => $link_type,
                 'LinkUrl' => element('link_url', $input),
                 'LinkUrlType' => element('link_url_type', $input, 'I'),
+                'PopWidth' => $pop_width,
+                'PopHeight' => $pop_height,
                 'IsUse' => element('is_use', $input),
                 'OrderNum' => $order_num,
                 'Desc' => element('desc', $input),
@@ -204,7 +215,10 @@ class BannerRegistModel extends WB_Model
             $cate_code = $row['CateCode'];
             $site_code = $row['SiteCode'];
             $banner_disp_idx = element('banner_disp_idx', $input);
+            $link_type = element('link_type', $input);
             $order_num = get_var(element('order_num', $input), $this->_getBannerOrderNum($site_code, $cate_code, $banner_disp_idx));
+            $pop_width = null;
+            $pop_height = null;
 
             if (empty(element('disp_start_datm', $input)) === true) {
                 $disp_start_datm = date('Y-m-d') . ' ' . '00:00:00';
@@ -218,15 +232,22 @@ class BannerRegistModel extends WB_Model
                 $disp_end_datm = element('disp_end_datm', $input) . ' ' . element('disp_end_time', $input) . ':00:00';
             }
 
+            if ($link_type == 'popup') {
+                $pop_width = element('pop_width', $input, 0);
+                $pop_height = element('pop_height', $input, 0);
+            }
+
             $data = [
                 'BdIdx' => $banner_disp_idx,
                 'BannerName' => element('banner_name', $input),
                 'CampusCcd' => element('campus_ccd', $input),
                 'DispStartDatm' => $disp_start_datm,
                 'DispEndDatm' => $disp_end_datm,
-                'LinkType' => element('link_type', $input),
+                'LinkType' => $link_type,
                 'LinkUrl' => element('link_url', $input),
                 'LinkUrlType' => element('link_url_type', $input, 'I'),
+                'PopWidth' => $pop_width,
+                'PopHeight' => $pop_height,
                 'IsUse' => element('is_use', $input),
                 'OrderNum' => $order_num,
                 'Desc' => element('desc', $input),

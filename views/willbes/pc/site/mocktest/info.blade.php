@@ -21,11 +21,15 @@
                 @include('willbes.pc.site.mocktest.tab_menu_partial')
 
                 <div class="mt10">
+                @if($__cfg['SiteCode'] == '2001')
+                    {{-- 경찰온라인 사이트일 경우만 적용 --}}
                     <img src="{{ img_url('sub/mocktest_cop.jpg') }}" alt="경찰 통합목의고사">
+                @endif
+                @if($__cfg['SiteCode'] == '2003')
+                    {{-- 공무원 온라인 사이트일 경우만 적용 --}}
                     <img src="{{ img_url('sub/mocktest_gosi.jpg') }}" alt="공무원 통합목의고사">
+                @endif    
                 </div>
-
-
 
             </div>
             <!-- willbes-Mypage-Tabs -->

@@ -18,28 +18,28 @@
             padding:0 !important;
             background:#fff;
         }
-        .evtCtnsBox {width:100%; text-align:center; min-width:1210px}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px}
 
         /************************************************************/
 
-        .wb_top {background:#424ac7}
+        .wb_top {background:#099891}
         .wb_01 {background:#efefef}
         .wb_02 {background:#313c4e}
         .wb_03 {background:#ececec;}
-        .wb_03_con2 {position:relative; width:1210px; margin:0 auto; position:relative !important}
+        .wb_03_con2 {position:relative; width:1120px; margin:0 auto; position:relative !important}
         .wb_03_con2 p {position:absolute; top:45%; width:67px; height:67px; margin-top:-33px; z-index:100}
         .wb_03_con2 p a {cursor:pointer}
         .wb_03_con2 p.leftBtn {left:100px}
         .wb_03_con2 p.rightBtn {right:100px}
 
         .wb_04 {background:#ececec; padding-bottom:100px;}
-        .wb_04_con2 {position:relative; width:1210px; margin:0 auto; position:relative !important}
+        .wb_04_con2 {position:relative; width:1120px; margin:0 auto; position:relative !important}
         .wb_04_con2 p {position:absolute; top:45%; width:67px; height:67px; margin-top:-33px; z-index:100}
         .wb_04_con2 p a {cursor:pointer}
         .wb_04_con2 p.leftBtn {left:100px}
         .wb_04_con2 p.rightBtn {right:100px}
 
-        .wb_06 {background:#ffffff;}
+        .wb_06 {background:#fff;}
 
 
     </style>
@@ -49,7 +49,7 @@
         <div class="evtCtnsBox wb_top">
             <img src="http://file3.willbes.net/new_cop/2018/10/EV181027_p1_new2.png" alt="장정훈 경찰학개론 라이브 무료 숫자특강" usemap="#new2" />
             <map name="new2" id="new2">
-                <area shape="rect" coords="330,892,882,998" href="http://www.willbescop.net/lecture/movieLectureFreeDetail.html?topMenu=081&topMenuType=O&searchTopCategoryCode=081&searchSubjectCode=1005&leftMenuLType=M0000&lecKType=F&learningCD=M0000&FREE_TAB=ALL&searchLeccode=F201800247" target="_blank" alt="수강신청" />
+                <area shape="rect" coords="286,1005,838,1111" href="javascript:doEvent()" target="_blank" alt="수강신청" />
             </map>
         </div>
 
@@ -86,7 +86,7 @@
         <div class="evtCtnsBox wb_01" >
             <img src="http://file3.willbes.net/new_cop/2018/10/EV181027_p2_new1.png"  alt="경찰합격대세" usemap="#go"/>
             <map name="go" id="go">
-                <area shape="rect" coords="218,543,761,624" href="http://www.willbescop.net/lecture/movieLectureFreeDetail.html?topMenu=081&topMenuType=O&searchTopCategoryCode=081&searchSubjectCode=1005&leftMenuLType=M0000&lecKType=F&learningCD=M0000&FREE_TAB=ALL&searchLeccode=F201800247" target="_blank" alt="장정훈경찰학개론숫자특강무료신청GO" />
+                <area shape="rect" coords="288,544,831,625" href="javascript:doEvent()" target="_blank" alt="장정훈경찰학개론숫자특강무료신청GO" />
             </map>
         </div>
 
@@ -115,12 +115,16 @@
         });
     </script>
 
-    <script src="/public/js/willbes/jquery.nav.js"></script>
-    <script>
-        $(function(e){
-            var targetOffset= $("#evtContainer").offset().top;
-            $('html, body').animate({scrollTop: targetOffset}, 700);
-        });
+
+    <script type="text/javascript">
+        function doEvent() {
+            if("<c:out value='${userInfo.USER_ID}' />" == ""){
+                alert("로그인을 해주세요.");
+                return;
+            }
+            var url = "{{ site_url('/promotion/index/cate/3001/code/1034_popup') }}" ;
+            window.open(url,'event', 'scrollbars=no,toolbar=no,resizable=yes,width=590,height=485,top=50,left=100');
+        }
     </script>
 
 @stop

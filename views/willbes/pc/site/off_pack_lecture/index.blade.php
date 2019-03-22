@@ -202,7 +202,7 @@
                                     </div>
                                     <dl class="w-info acad">
                                         <dt>
-                                            <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', '', '{{ site_url() }}offPackage')">
+                                            <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', '', '{{ front_url('/offPackage') }}')">
                                                 <strong class="open-info-modal">종합반 상세정보</strong>
                                             </a>
                                         </dt>

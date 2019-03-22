@@ -8,7 +8,7 @@
             <div class="widthAuto">
                 <div class="willbes-Bnr">
                     <ul>
-                        <li><a href="#none"><img src="{{ img_url('cop_acad/visual/visual_secA01.jpg') }}" alt="적중은역시신광은경찰팀"></a></li>
+                        <li><a href="{{ site_url('/promotion/index/cate/3001/code/1022') }}"><img src="{{ img_url('cop_acad/visual/visual_secA01.jpg') }}" alt="적중은역시신광은경찰팀"></a></li>
                     </ul>
                 </div>
             </div>
@@ -67,6 +67,20 @@
                         </div>
                     </li>
                     <li>
+                        <img src="{{ img_url('cop_acad/prof/prof_wyc.jpg') }}" alt="한국사 원유철">
+                        <div class="caProfBtsn">
+                            <div><a href="#none">기본한국사<span>2.25 개강</span></a></div>
+                            <div><a href="#none">심화강좌</a></div>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="{{ img_url('cop_acad/prof/prof_otj.jpg') }}" alt="한국사 오태진">
+                        <div class="caProfBtsn">
+                            <div><a href="#none">기본한국사<span>2.25 개강</span></a></div>
+                            <div><a href="#none">문풀1단계<span>3.13 개강</span></a></div>
+                        </div>
+                    </li>
+                    <li>
                         <img src="{{ img_url('cop_acad/prof/prof_kwu.jpg') }}" alt="형법 김원욱">
                         <div class="caProfBtsn">
                             <div><a href="#none">기본형법<span>3.7 개강</span></a></div>
@@ -79,21 +93,7 @@
                             <div><a href="#none">문풀1단계<span>3.2 개강</span></a></div>
                             <div><a href="#none">심화강좌</a></div>
                         </div>
-                    </li>
-                    <li>
-                        <img src="{{ img_url('cop_acad/prof/prof_otj.jpg') }}" alt="한국사 오태진">
-                        <div class="caProfBtsn">
-                            <div><a href="#none">기본한국사<span>2.25 개강</span></a></div>
-                            <div><a href="#none">문풀1단계<span>3.13 개강</span></a></div>
-                        </div>
-                    </li>
-                    <li>
-                        <img src="{{ img_url('cop_acad/prof/prof_wyc.jpg') }}" alt="한국사 원유철">
-                        <div class="caProfBtsn">
-                            <div><a href="#none">기본한국사<span>2.25 개강</span></a></div>
-                            <div><a href="#none">심화강좌</a></div>
-                        </div>
-                    </li>
+                    </li>                                        
                     <li>
                         <img src="{{ img_url('cop_acad/prof/prof_khj.jpg') }}" alt="기초영어 김현정">
                         <div class="caProfBtsn">
@@ -102,7 +102,35 @@
                         </div>
                     </li>
                     <li>
+                        <img src="{{ img_url('cop_acad/prof/prof_kjk.jpg') }}" alt="기초영어 김준기">
+                        <div class="caProfBtsn">
+                            <div><a href="#none">지옥탈출<span>3.11 개강</span></a></div>
+                            <div><a href="#none">아침특강</a></div>
+                        </div>
+                    </li>
+                    <li>
                         <img src="{{ img_url('cop_acad/prof/prof_hsw.jpg') }}" alt="면접 황세웅">
+                        <div class="caProfBtsn">
+                            <div><a href="#none">면접캠프</a></div>
+                            <div><a href="#none">면접 스파르타</a></div>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="{{ img_url('cop_acad/prof/prof_kiy.jpg') }}" alt="인적성검사 강인엽">
+                        <div class="caProfBtsn">
+                            <div><a href="#none">면접캠프</a></div>
+                            <div><a href="#none">면접 스파르타</a></div>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="{{ img_url('cop_acad/prof/prof_ubj.jpg') }}" alt="면접 유봉진">
+                        <div class="caProfBtsn">
+                            <div><a href="#none">면접캠프</a></div>
+                            <div><a href="#none">면접 스파르타</a></div>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="{{ img_url('cop_acad/prof/prof_jyw.jpg') }}" alt="면접 정용욱">
                         <div class="caProfBtsn">
                             <div><a href="#none">면접캠프</a></div>
                             <div><a href="#none">면접 스파르타</a></div>
@@ -179,21 +207,23 @@
                 </div>
                 <div class="sliderInfo">
                     <div class="will-acadTit"><span class="tx-color">왜</span> 노량진 실강인가?</div>
-                    <a href="#none" target="_blank"><img src="{{ img_url('cop_acad/banner/bnr_B01.jpg') }}" alt="노량진24시"></a>
+                    <a href="{{ site_url('/promotion/index/cate/3001/code/1040') }}" target="_blank"><img src="{{ img_url('cop_acad/banner/bnr_B01.jpg') }}" alt="노량진24시"></a>
                 </div>
                 @include('willbes.pc.site.main_partial.board_' . $__cfg['SiteCode'])
             </div>
         </div>
 
+        <!--                            
         <div class="Section Bnr mt50">
             <div class="widthAuto">
                 <div class="willbes-Bnr">
                     <ul>
-                        <li><a href="https://cop.dev.willbes.net/lecture/index/cate/3001/pattern/free"><img src="{{ img_url('cop_acad/banner/bnr_190110.jpg') }}"></a></li>
+                        <li><a href="{{ site_url('/promotion/index/cate/3001/code/1012') }}"><img src="{{ img_url('cop_acad/banner/bnr_190110.jpg') }}" alt="0원특강"></a></li>
                     </ul>
                 </div>
             </div>
         </div>
+        -->
 
         <div class="Section Section4 mb50 mt30">
             @include('willbes.pc.site.main_partial.campus_' . $__cfg['SiteCode'])

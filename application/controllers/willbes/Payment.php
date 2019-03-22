@@ -99,7 +99,8 @@ class Payment extends \app\controllers\FrontController
             'delivery_add_price' => $results['delivery_add_price'],
             'coupon_disc_price' => $results['total_coupon_disc_price'],
             'use_point' => $results['use_point'],
-            'save_point' => $results['total_save_point'],
+            'save_lec_point' => $results['total_save_lec_point'],
+            'save_book_point' => $results['total_save_book_point'],
             'user_coupon_idx_json' => json_encode($results['user_coupon_idxs'])
         ], $arr_input);
 

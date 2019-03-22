@@ -8,8 +8,9 @@
             @include('willbes.pc.layouts.partial.site_route_path')
         </div>
         <div class="Content p_re">
-            <form name="searchFrm1" id="searchFrm1" action="{{app_url('/classroom/pass/index', 'www')}}" onsubmit="">
+            <form name="searchFrm1" id="searchFrm1" action="{{front_url('/classroom/pass/index')}}">
                 <div class="willbes-Mypage-PASSZONE">
+                    <!--
                     <div class="d_block">
                         <div class="willbes-listTable widthAuto550 f_left">
                             <div class="will-Tit NSK">무한 PASS <span class="tx-light-blue">공지사항</span> <a class="f_right" href="{{ front_url('/classroom/passNotice/index') }}"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
@@ -36,6 +37,7 @@
                             </div>
                         </div>
                     </div>
+                    -->
 
                     <div class="c_both willbes-Lec-Table NG d_block pt25">
                         <div class="willbes-PASS-Line bg-blue">
@@ -43,19 +45,20 @@
                             <div class="f_right NG mt10 mr10">
                                 <ul>
                                     <li class="InfoBtn ml10"><a href="javascript:;" onclick="fnMyDevice('');">등록기기정보 <span>▶</span></a></li>
-                                    <li class="InfoBtn ml10"><a href="javascript:;" onclick="openWin('MorePASS')">프리패스이용안내 <span>▶</span></a></li>
+                                    <li class="InfoBtn ml10"><a href="javascript:;" onclick="openWin('MorePASS')">PASS 이용안내 <span>▶</span></a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="will-Tit-Zone c_both">
                             <div class="will-Tit NG f_left">· 무한PASS선택</div>
                             <span class="willbes-Lec-Selected GM tx-gray" style="float: inherit">
-                                <select id="sitegroupcode" name="sitegroupcode" title="process" class="seleProcess">
+                                &nbsp;
+                                <!-- <select id="sitegroupcode" name="sitegroupcode" title="process" class="seleProcess">
                                     <option value="">과정</option>
                                     @foreach($sitegroup_arr as $row )
                                         <option value="{{$row['SiteGroupCode']}}" @if(isset($input_arr['sitegroupcode']) && $input_arr['sitegroupcode'] == $row['SiteGroupCode']) selected="selected" @endif>{{$row['SiteGroupName']}}</option>
                                     @endforeach
-                                </select>
+                                </select> -->
                                 <select id="passidx" name="passidx" class="seleName" >
                                     @if(empty($passlist) == true)
                                         <option value="">무한PASS를 선택해주십시요.</option>
@@ -103,74 +106,6 @@
                     </div>
                 </div>
             </form>
-            {{--<form name="searchFrm1" id="searchFrm1" action="{{app_url('/classroom/pass/index', 'www')}}" onsubmit="">
-                <div class="willbes-Mypage-PASSZONE c_both">
-                    <div class="c_both f_left widthAutoFull NG mb30">
-                        <ul>
-                            <li class="InfoBtn ml10"><a href="javascript:;" onclick="fnMyDevice('');">등록기기정보 <span>▶</span></a></li>
-                            <li class="InfoBtn ml10"><a href="javascript:;" onclick="openWin('MorePASS')">프리패스이용안내 <span>▶</span></a></li>
-                        </ul>
-                    </div>
-                    <div class="willbes-Lec-Table NG d_block">
-                        <div class="willbes-PASS-Line bg-blue">이용중인 PASS ({{count($passlist)}})</div>
-                        <div class="will-Tit-Zone">
-                            <div class="will-Tit NG f_left">· 무한PASS선택</div>
-                            <span class="willbes-Lec-Selected GM tx-gray" style="float: inherit">
-                                <select id="sitegroupcode" name="sitegroupcode" title="process" class="seleProcess">
-                                    <option value="">과정</option>
-                                    @foreach($sitegroup_arr as $row )
-                                        <option value="{{$row['SiteGroupCode']}}" @if(isset($input_arr['sitegroupcode']) && $input_arr['sitegroupcode'] == $row['SiteGroupCode']) selected="selected" @endif>{{$row['SiteGroupName']}}</option>
-                                    @endforeach
-                                </select>
-                                <select id="passidx" name="passidx" class="seleName" >
-                                    @if(empty($passlist) == true)
-                                        <option value="">무한PASS를 선택해주십시요.</option>
-                                    @else
-                                        @foreach($passlist as $row )
-                                            <option value="{{$row['ProdCode']}}" @if(isset($passinfo['ProdCode']) && $passinfo['ProdCode'] == $row['ProdCode']) selected="selected" @endif>{{$row['ProdName']}}</option>
-                                        @endforeach
-                                    @endif
-                                </select>
-                            </span>
-
-                        </div>
-                        <table cellspacing="0" cellpadding="0" class="lecTable PassZoneTable">
-                            <colgroup>
-                                <col style="width: 770px;">
-                                <col style="width: 170px;">
-                            </colgroup>
-                            <tbody>
-                            @if(empty($passinfo) == false)
-                                <tr>
-                                    <td class="w-data tx-left">
-                                        <div class="w-tit">
-                                            {{$passinfo['ProdName']}}
-                                        </div>
-                                        <dl class="w-info tx-gray">
-                                            <dt>[수강기간] <span class="tx-blue">{{str_replace('-', '.', $row['LecStartDate'])}}~{{str_replace('-', '.', $row['RealLecEndDate'])}}</span> <span class="tx-black">(잔여기간<span class="tx-pink">{{$row['remainDays']}}일</span>)</span></dt>
-                                        </dl>
-                                    </td>
-                                    @if($passinfo['TakeLecNum'] == 0)
-                                        <td class="w-lec">
-                                            <div class="tx-gray">수강중인 강좌가 없습니다.</div>
-                                            <div class="w-sj">강좌를 추가해 주세요.</div>
-                                            <div class="w-btn"><a class="bg-blue bd-dark-blue NSK" href="javascript:;" onclick="fnMoreLec('{{$passinfo['OrderIdx']}}','{{$passinfo['ProdCode']}}');">강좌추가</a></div>
-                                        </td>
-                                    @else
-                                        <td class="w-lec">
-                                            <div class="tx-gray">수강중인 강좌수</div>
-                                            <div class="w-sj"><span class="tx-blue">{{$passinfo['TakeLecNum']}}강좌</span> / {{$passinfo['LecNum']}}강좌</div>
-                                            <div class="w-btn"><a class="bg-blue bd-dark-blue NSK" href="javascript:;" onclick="fnMoreLec('{{$passinfo['OrderIdx']}}','{{$passinfo['ProdCode']}}');">강좌추가</a></div>
-                                        </td>
-                                    @endif
-                                </tr>
-                            @endif
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </form>--}}
-            <!-- willbes-Mypage-PASSZONE -->
 
             <div class="willbes-Mypage-Tabs mt70">
                 <form name="searchFrm2" id="searchFrm2" action="{{app_url('/classroom/pass/index', 'www')}}" onsubmit="">
@@ -196,7 +131,8 @@
                             @endforeach
                         </select>
                         <select id="orderby" name="orderby" title="Laststudy" class="seleStudy">
-                            <option value="lastStudyDate^DESC" @if(isset($input_arr['orderby']) && $input_arr['orderby'] == 'lastStudyDate') selected="selected" @endif>최종학습일순</option>
+                            <option value="MlIdx^DESC" @if(isset($input_arr['orderby']) && $input_arr['orderby'] == 'MlIdx^DESC') selected="selected" @endif>최근추가강좌</option>
+                            <option value="lastStudyDate^DESC" @if(isset($input_arr['orderby']) && $input_arr['orderby'] == 'lastStudyDate^DESC') selected="selected" @endif>최종학습일순</option>
                             <option value="LecStartDate^ASC" @if(isset($input_arr['orderby']) && $input_arr['orderby'] == 'LecStartDate^ASC') selected="selected" @endif>개강일순</option>
                             <option value="RealLecEndDate^ASC" @if(isset($input_arr['orderby']) && $input_arr['orderby'] == 'RealLecEndDate^ASC') selected="selected" @endif>종료임박순</option>
                         </select>
@@ -213,77 +149,18 @@
                 <div class="DetailWrap c_both">
                     @if(empty($passinfo) == false)<div class="aBox passBox answerBox_block NSK f_right"><a href="javascript:;" onclick="fnMoreBook();">교재구매</a></div>@endif
                     <ul class="tabWrap tabDepthPass">
-                        <li><a href="#Mypagetab1" class="on">즐겨찾기강좌 ({{count($leclist_like)}})</a></li>
-                        <li><a href="#Mypagetab2">수강중강좌 ({{count($leclist_ing)}})</a></li>
+                        <li><a href="#Mypagetab1" class="on">수강중강좌 ({{count($leclist_ing)}})</a></li>
+                        <li><a href="#Mypagetab2">즐겨찾기강좌 ({{count($leclist_like)}})</a></li>
                         <li><a href="#Mypagetab3">수강완료강좌 ({{count($leclist_end)}})</a></li>
                         <li><a href="#Mypagetab4">숨긴강좌 ({{count($leclist_nodisp)}})</a></li>
                     </ul>
                     <div class="tabBox">
                         <div id="Mypagetab1" class="tabLink">
                             <div class="willbes-Lec-Table NG d_block">
-                                @if(empty($leclist_like) == false)
-                                    <div class="PASSZONE-Btn">
-                                        <div class="w-answer"><a href="javascript:;" onclick="fnUnLike('all', null);"><span class="aBox passBox waitBox NSK">삭제</span></a></div>
-                                    </div>
-                                @endif
-                                <form name='likedForm' id='likedForm' >
-                                    @if(empty($passinfo) == false)
-                                        <input type='hidden' name='OrderIdx' value='{{$passinfo['OrderIdx']}}' />
-                                        <input type='hidden' name='ProdCode' value='{{$passinfo['ProdCode']}}' />
-                                        <input type='hidden' name='OrderProdIdx' value='{{$passinfo['OrderProdIdx']}}' />
-                                        <input type='hidden' name='ProdCodeSub[]' id='ProdCodeSub_liked' value='' />
-                                    @endif
-                                    <table cellspacing="0" cellpadding="0" class="lecTable bdt-dark-gray">
-                                        <colgroup>
-                                            <col style="width: 55px;">
-                                            <col style="width: 120px;">
-                                            <col style="width: 680px;">
-                                            <col style="width: 85px;">
-                                        </colgroup>
-                                        <tbody>
-                                        @forelse( $leclist_like as $row )
-                                            <tr>
-                                                <td class="w-chk"><input type="checkbox" id="ProdCodeSub_liked" name="ProdCodeSub[]" class="goods_chk" value="{{$row['ProdCodeSub']}}" ></td>
-                                                <td class="w-percent">진도율<br/>
-                                                    <span class="tx-blue">{{$row['StudyRate']}}%</span>
-                                                </td>
-                                                <td class="w-data tx-left pl25">
-                                                    <dl class="w-info">
-                                                        <dt>
-                                                            {{$row['SubjectName']}}<span class="row-line">|</span>
-                                                            {{$row['wProfName']}}교수님
-                                                            <span class="NSK ml15 nBox n{{ substr($row['wLectureProgressCcd'], -1)+1 }}">{{$row['wLectureProgressCcdName']}}</span>
-                                                        </dt>
-                                                    </dl><br/>
-                                                    <div class="w-tit">
-                                                        <a href="{{ site_url('/classroom/pass/view/') }}?o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&ps={{$row['ProdCodeSub']}}">{{$row['subProdName']}}</a>
-                                                    </div>
-                                                    <dl class="w-info tx-gray">
-                                                        <dt>강의수 : <span class="tx-black">{{$row['wUnitLectureCnt']}}강</span></dt>
-                                                        <dt><span class="row-line">|</span></dt>
-                                                        <dt>잔여기간 : <span class="tx-blue">{{$row['remainDays']}}일</span>({{str_replace('-', '.', $row['LecStartDate'])}}~{{str_replace('-', '.', $row['RealLecEndDate'])}})</dt>
-                                                        <dt><span class="row-line">|</span></dt>
-                                                        <dt>최종학습일 : <span class="tx-black">{{ $row['lastStudyDate'] == '' ? '학습이력없음' : $row['lastStudyDate'] }}</span></dt>
-                                                    </dl>
-                                                </td>
-                                                <td class="w-answer"><a href="javascript:;" onclick="fnUnLike('{{$row['ProdCodeSub']}}', this);"><span class="aBox passBox waitBox NSK">삭제</span></a></td>
-                                            </tr>
-                                        @empty
-                                            <tr>
-                                                <td colspan="4" class="tx-center">즐겨찾기 강좌 정보가 없습니다.</td>
-                                            </tr>
-                                        @endforelse
-                                        </tbody>
-                                    </table>
-                                </form>
-                            </div>
-                        </div>
-                        <div id="Mypagetab2" class="tabLink">
-                            <div class="willbes-Lec-Table NG d_block">
                                 @if(empty($leclist_ing) == false)
                                     <div class="PASSZONE-Btn">
                                         <div class="w-answer">
-                                            <span class="w-chk-st"><a href="javascript:;" onclick="fnLike('all',null);><img src="{{ img_url('mypage/icon_star_on.png') }}"></a></span>
+                                            <span class="w-chk-st"><a href="javascript:;" onclick="fnLike('all',null);"><img src="{{ img_url('mypage/icon_star_on.png') }}"></a></span>
                                             <a href="javascript:;" onclick="fnHide('all',null);"><span class="aBox passBox waitBox NSK">숨기기</span></a>
                                         </div>
                                     </div>
@@ -336,6 +213,65 @@
                                         @empty
                                             <tr>
                                                 <td colspan="4" class="tx-center">수강중강좌 정보가 없습니다.</td>
+                                            </tr>
+                                        @endforelse
+                                        </tbody>
+                                    </table>
+                                </form>
+                            </div>
+                        </div>
+                        <div id="Mypagetab2" class="tabLink">
+                            <div class="willbes-Lec-Table NG d_block">
+                                @if(empty($leclist_like) == false)
+                                    <div class="PASSZONE-Btn">
+                                        <div class="w-answer"><a href="javascript:;" onclick="fnUnLike('all', null);"><span class="aBox passBox waitBox NSK">삭제</span></a></div>
+                                    </div>
+                                @endif
+                                <form name='likedForm' id='likedForm' >
+                                    @if(empty($passinfo) == false)
+                                        <input type='hidden' name='OrderIdx' value='{{$passinfo['OrderIdx']}}' />
+                                        <input type='hidden' name='ProdCode' value='{{$passinfo['ProdCode']}}' />
+                                        <input type='hidden' name='OrderProdIdx' value='{{$passinfo['OrderProdIdx']}}' />
+                                        <input type='hidden' name='ProdCodeSub[]' id='ProdCodeSub_liked' value='' />
+                                    @endif
+                                    <table cellspacing="0" cellpadding="0" class="lecTable bdt-dark-gray">
+                                        <colgroup>
+                                            <col style="width: 55px;">
+                                            <col style="width: 120px;">
+                                            <col style="width: 680px;">
+                                            <col style="width: 85px;">
+                                        </colgroup>
+                                        <tbody>
+                                        @forelse( $leclist_like as $row )
+                                            <tr>
+                                                <td class="w-chk"><input type="checkbox" id="ProdCodeSub_liked" name="ProdCodeSub[]" class="goods_chk" value="{{$row['ProdCodeSub']}}" ></td>
+                                                <td class="w-percent">진도율<br/>
+                                                    <span class="tx-blue">{{$row['StudyRate']}}%</span>
+                                                </td>
+                                                <td class="w-data tx-left pl25">
+                                                    <dl class="w-info">
+                                                        <dt>
+                                                            {{$row['SubjectName']}}<span class="row-line">|</span>
+                                                            {{$row['wProfName']}}교수님
+                                                            <span class="NSK ml15 nBox n{{ substr($row['wLectureProgressCcd'], -1)+1 }}">{{$row['wLectureProgressCcdName']}}</span>
+                                                        </dt>
+                                                    </dl><br/>
+                                                    <div class="w-tit">
+                                                        <a href="{{ site_url('/classroom/pass/view/') }}?o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&ps={{$row['ProdCodeSub']}}">{{$row['subProdName']}}</a>
+                                                    </div>
+                                                    <dl class="w-info tx-gray">
+                                                        <dt>강의수 : <span class="tx-black">{{$row['wUnitLectureCnt']}}강</span></dt>
+                                                        <dt><span class="row-line">|</span></dt>
+                                                        <dt>잔여기간 : <span class="tx-blue">{{$row['remainDays']}}일</span>({{str_replace('-', '.', $row['LecStartDate'])}}~{{str_replace('-', '.', $row['RealLecEndDate'])}})</dt>
+                                                        <dt><span class="row-line">|</span></dt>
+                                                        <dt>최종학습일 : <span class="tx-black">{{ $row['lastStudyDate'] == '' ? '학습이력없음' : $row['lastStudyDate'] }}</span></dt>
+                                                    </dl>
+                                                </td>
+                                                <td class="w-answer"><a href="javascript:;" onclick="fnUnLike('{{$row['ProdCodeSub']}}', this);"><span class="aBox passBox waitBox NSK">삭제</span></a></td>
+                                            </tr>
+                                        @empty
+                                            <tr>
+                                                <td colspan="4" class="tx-center">즐겨찾기 강좌 정보가 없습니다.</td>
                                             </tr>
                                         @endforelse
                                         </tbody>
@@ -462,14 +398,14 @@
             </div>
             <!-- willbes-Mypage-Tabs -->
             @if(empty($passinfo) == false)
-            <div id="MoreLec" class="willbes-Layer-PassBox willbes-Layer-PassBox900 h1100 abs">
+            <div id="MoreLec" class="willbes-Layer-PassBox willbes-Layer-PassBox1100 h1100 abs">
                 <a class="closeBtn" href="#none" onclick="closeWin('MoreLec');">
                     <img src="{{ img_url('sub/close.png') }}">
                 </a>
                 <div class="Layer-Tit tx-dark-black NG">강좌추가</div>
 
                 <div class="lecMoreWrap">
-                    <div class="PASSZONE-List widthAuto570" id="lecList"> </div>
+                    <div class="PASSZONE-List widthAuto770" id="lecList"> </div>
                     <div class="PASSZONE-Add widthAuto260">
                         <div class="Tit tx-light-black NG">강좌선택내역</div>
                         <div class="PASSZONE-Add-Grid">
@@ -562,7 +498,7 @@
                                     </tr>
                                     </thead>
                                 </table>
-                                <form name="bookOrderForm" id="bookOrderForm" method="POST" action="//{{$passinfo['SiteUrl']}}/cart/store">
+                                <form name="bookOrderForm" id="bookOrderForm" method="POST" action="//{{app_to_env_url($passinfo['SiteUrl'])}}/cart/store">
                                     {!! csrf_field() !!}
                                     {!! method_field('POST') !!}
                                     <input type="hidden" name="learn_pattern" value="on_lecture" />
@@ -586,14 +522,14 @@
                                             <div>상품주문금액</div>
                                             <div class="price tx-light-blue" id="book-price">0원</div>
                                         </dt>
-                                        <dt class="price-img">
+                                        <!-- <dt class="price-img">
                                             <span class="row-line">|</span>
                                             <img src="/public/img/willbes/sub/icon_plus.gif">
                                         </dt>
                                         <dt>
                                             <div>배송료</div>
                                             <span class="price tx-light-blue" id="trans-price">0원</span>
-                                        </dt>
+                                        </dt> -->
                                     </dl>
                                 </li>
                                 <li class="price-total">
@@ -615,6 +551,7 @@
                                     </li>
                                 </ul>
                             </div>
+                            <div class="c_both tx-origin-red">* 30,000원 이상 교재 구매 시 배송료는 무료입니다.</div>
                         </div>
                     </div>
                     <!-- PASSZONE-List -->
@@ -625,6 +562,43 @@
             @endif
             <div id="MyDevice" class="willbes-Layer-PassBox willbes-Layer-PassBox800 h960 abs"></div>
             <!-- willbes-Layer-PassBox : 등록기기정보 -->
+
+            <div id="MorePASS" class="willbes-Layer-PassBox willbes-Layer-PassBox990 abs">
+                <a class="closeBtn" href="#none" onclick="closeWin('MorePASS')">
+                    <img src="{{ img_url('sub/close.png') }}">
+                </a>
+                <div class="Layer-Tit tx-dark-black NG">PASS 이용안내</div> 
+
+                <div class="passinfoWrap">
+                    <div class="widthAutoFull">
+                        <ul class="passinfoTab">
+                            <li><a href="#tab01" class="on">수강권 확인</a></li>
+                            <li><a href="#tab02">강좌선택</a></li>
+                            <li><a href="#tab03">강의수강</a></li>
+                            <li><a href="#tab04">교재구매</a></li>
+                            <li><a href="#tab05">등록기기 정보 확인</a></li>
+                        </ul>
+                        <div id="tab01" class="passinfoCts">
+                            <img src="{{ img_url('mypage/passinfo01.jpg') }}" alt="수강권 확인">
+                        </div>
+                        <div id="tab02" class="passinfoCts">
+                            <img src="{{ img_url('mypage/passinfo02.jpg') }}" alt="강좌선택">
+                        </div>
+                        <div id="tab03" class="passinfoCts">
+                            <img src="{{ img_url('mypage/passinfo03.jpg') }}" alt="강의수강">
+                        </div>
+                        <div id="tab04" class="passinfoCts">
+                            <img src="{{ img_url('mypage/passinfo04.jpg') }}" alt="교재구매">
+                        </div>
+                        <div id="tab05" class="passinfoCts">
+                            <img src="{{ img_url('mypage/passinfo05.jpg') }}" alt="등록기기 정보 확인">
+                        </div>
+                    </div>
+                    <!-- PASSZONE-List -->
+                </div>
+
+            </div>
+            <!-- willbes-Layer-PassBox : 패스 이용안내 -->
 
         </div>
         {!! banner('내강의실_우측퀵', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
@@ -637,11 +611,12 @@
             <input type="hidden" name="OrderIdx" id="OrderIdx" value="{{$passinfo['OrderIdx']}}" />
             <input type="hidden" name="ProdCode" id="ProdCode" value="{{$passinfo['ProdCode']}}" />
         @endif
+        <input type="hidden" name="take" value="Y" />
     </form>
     <script type="text/javascript">
         var bookprice = 0;
         $(document).ready(function() {
-            $('#passidx,#sitecode').on('change', function (){
+            $('#sitegroupcode,#passidx, #sitecode').on('change', function (){
                 $('#searchFrm1').submit();
             });
 
@@ -670,6 +645,7 @@
                 data,
                 function(ret){
                     alert(ret.ret_msg);
+                    location.reload();
                 },
                 function(ret, status){
                     alert(ret.ret_msg);
@@ -691,6 +667,7 @@
                     alert(ret.ret_msg);
                 }, false, 'GET', 'html');
         }
+
 
         function fnMoreBook()
         {
@@ -742,7 +719,7 @@
                     if(code == 'all'){
                         location.reload();
                     } else {
-
+                        location.reload();
                     }
                 },
                 function(ret, status){
@@ -767,7 +744,8 @@
                     if(code == 'all'){
                         location.reload();
                     } else {
-                        $(obj).parent().parent().remove();
+                        location.reload();
+                        //$(obj).parent().parent().remove();
                     }
                 },
                 function(ret, status){
@@ -792,7 +770,8 @@
                     if(code == 'all'){
                         location.reload();
                     } else {
-                        $(obj).parent().parent().remove();
+                        location.reload();
+                        //$(obj).parent().parent().remove();
                     }
                 },
                 function(ret, status){
@@ -817,7 +796,8 @@
                     if(code == 'all'){
                         location.reload();
                     } else {
-                        $(obj).parent().parent().remove();
+                        location.reload();
+                        //$(obj).parent().parent().remove();
                     }
                 },
                 function(ret, status){

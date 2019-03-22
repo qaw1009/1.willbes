@@ -16,7 +16,8 @@ class MemberFModel extends WB_Model
         'btob' => 'lms_btob',
         'btob_ip' => 'lms_btob_ip',
         'btob_log' => 'lms_btob_access_log',
-        'btob_member' => 'lms_btob_r_member'
+        'btob_member' => 'lms_btob_r_member',
+        'draw' => 'lms_member_out_log'
     ];
 
     protected $_mailSendTypeCcd = [
@@ -156,7 +157,7 @@ class MemberFModel extends WB_Model
             INNER JOIN {$this->_table['info']} AS Info ON Info.MemIdx = Mem.MemIdx
             WHERE Mem.MemId = ? 
             AND Mem.MemPassword = fn_hash(?) 
-            AND Mem.IsStatus != 'D'
+            AND Mem.IsStatus != 'N'
             AND Mem.MemPassword != ''
             ";
         // 로그인 가능한 회원인지 검색은 아이디와 암호가 동일하고 회원 상태가 탈퇴가 아니어야 한다.
@@ -865,6 +866,8 @@ class MemberFModel extends WB_Model
             'CertIp' => $this->input->ip_address()
         ];
 
+        $this->_conn->trans_begin();
+
         try {
             if($this->_conn->set($data)->set('CertDatm', 'NOW()', false)->
                     where('CertKey', $certkey)->update($this->_table['authmail']) === false){
@@ -920,6 +923,41 @@ class MemberFModel extends WB_Model
         } catch (\Exception $e) {
             return false;
         }
+        return true;
+    }
+
+    public function drawMember($data)
+    {
+        $this->_conn->trans_begin();
+        try {
+            // 탈퇴처리
+            if($this->_conn
+                    ->set('IsStatus', 'N')
+                    ->where('MemIdx', element('MemIdx', $data))
+                    ->update($this->_table['member']) === false){
+                throw new \Exception('탈퇴처리에 실패했습니다.');
+            }
+
+            // 로그데이타
+            if($this->_conn
+                    ->set([
+                        'MemIdx' => element('MemIdx', $data),
+                        'OutIp' => $this->input->ip_address(),
+                        'OutReason' => element('reason', $data),
+                        'OutOpinion' => element('opinion', $data)
+                    ])
+                    ->insert($this->_table['draw']) === false){
+                throw new \Exception('탈퇴 로그데이타 입력에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+            $this->session->sess_destroy();
+
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return false;
+        }
+
         return true;
     }
 

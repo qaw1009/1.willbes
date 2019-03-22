@@ -578,6 +578,15 @@ class RegGoodsModel extends WB_Model
             $it['TakePart_on'] = ( in_array($applyType_on, $takeFormsCcds) ) ? 'Y' : 'N';
             $it['TakePart_off'] = ( in_array($applyType_off, $takeFormsCcds) ) ? 'Y' : 'N';
 
+            if($it['SaleStartDatm'] > date('Y-m-d h:i:s')){
+                $dres = "접수대기";
+            } else if($it['SaleStartDatm'] < date('Y-m-d h:i:s') && $it['SaleEndDatm'] > date('Y-m-d h:i:s')) {
+                $dres = "접수중";
+            } else {
+                $dres = "접수마감";
+            }
+
+            $it['AcceptStatusCcd_Name'] = $dres;
             $mockPart = explode(',', $it['MockPart']);
             foreach ($mockPart as $mp) {
                 if( !empty($codes[$mockKindCode][$mp]) ) $it['MockPartName'][] = $codes[$mockKindCode][$mp];
@@ -706,11 +715,11 @@ class RegGoodsModel extends WB_Model
 
 
     /**
-     * 등록 (lms_Product_Mock, lms_Product_Mock_R_Paper, lms_Product, lms_Product_R_Category, lms_Product_Sale, lms_Product_Sms)
-     *
-     * lms_Product > SaleStatusCcd 판매가능으로 상태고정
-     * lms_Product_Mock > IsRegister 접수상태값으로 상태구분
-     */
+ * 등록 (lms_Product_Mock, lms_Product_Mock_R_Paper, lms_Product, lms_Product_R_Category, lms_Product_Sale, lms_Product_Sms)
+ *
+ * lms_Product > SaleStatusCcd 판매가능으로 상태고정
+ * lms_Product_Mock > IsRegister 접수상태값으로 상태구분
+ */
     public function store($SaleStartDatm, $SaleEndDatm, $TakeStartDatm, $TakeEndDatm)
     {
         $date = date("Y-m-d H:i:s");
@@ -732,7 +741,10 @@ class RegGoodsModel extends WB_Model
                 'SaleStartDatm' => $SaleStartDatm,
                 'SaleEndDatm'   => $SaleEndDatm,
                 'SaleStatusCcd' => $this->config->item('sysCode_SaleStatusCcd', 'mock'),
-                'PointApplyCcd' => $this->config->item('sysCode_PointApplyCcd', 'mock'),
+                'IsPoint'=>'N',
+                'PointApplyCcd'=> '635002',
+                'PointSavePrice'=> '0',
+                'PointSaveType'=> 'R',
                 'IsSms'         => $this->input->post('IsSms'),
                 'IsUse'         => $this->input->post('IsUse'),
                 'IsCoupon'       => $this->input->post('IsCoupon'),
@@ -792,7 +804,7 @@ class RegGoodsModel extends WB_Model
                 'MockYear'       => $this->input->post('MockYear'),
                 'MockRotationNo' => $this->input->post('MockRotationNo'),
                 'ClosingPerson'  => empty($this->input->post('ClosingPerson')) ? '' : $this->input->post('ClosingPerson'),
-                'AcceptStatusCcd' => $this->input->post('AcceptStatusCcd'),
+                //'AcceptStatusCcd' => $this->input->post('AcceptStatusCcd'),
                 //'IsRegister'     => $this->input->post('IsRegister'), // 접수상태
                 //'TakeType'       => $this->input->post('TakeType'),
                 'TakeStartDatm'  => ($this->input->post('TakeType') == 'A') ? null : $TakeStartDatm,
@@ -908,7 +920,7 @@ class RegGoodsModel extends WB_Model
                 'MockYear'       => $this->input->post('MockYear'),
                 'MockRotationNo' => $this->input->post('MockRotationNo'),
                 'ClosingPerson'  => empty($this->input->post('ClosingPerson')) ? '' : $this->input->post('ClosingPerson'),
-                'AcceptStatusCcd' => $this->input->post('AcceptStatusCcd'),
+                //'AcceptStatusCcd' => $this->input->post('AcceptStatusCcd'),
                 //'IsRegister'     => $this->input->post('IsRegister'),
                 //'TakeType'       => $this->input->post('TakeType'),
                 'TakeStartDatm'  => ($this->input->post('TakeType') == 'A') ? null : $TakeStartDatm,

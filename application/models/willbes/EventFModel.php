@@ -71,7 +71,7 @@ class EventFModel extends WB_Model
             $column = '
             A.ElIdx, A.SiteCode, A.CampusCcd, A.BIdx, A.IsBest, A.TakeType, A.RequestType, A.EventName,
             A.RegisterStartDate, A.RegisterEndDate, DATE_FORMAT(A.RegisterStartDate, \'%Y-%m-%d\') AS RegisterStartDay, DATE_FORMAT(A.RegisterEndDate, \'%Y-%m-%d\') AS RegisterEndDay,
-            A.OptionCcds, A.ReadCnt, A.IsRegister, A.IsUse, A.RegDatm,
+            A.OptionCcds, A.ReadCnt + A.AdjuReadCnt AS ReadCnt, A.IsRegister, A.IsUse, A.RegDatm,
             G.SiteName, J.CcdName AS CampusName, D.CateCode,
             K.FileFullPath, K.FileName, IFNULL(H.CCount,\'0\') AS CommentCount,
             CASE A.RequestType WHEN 1 THEN \'설명회\' WHEN 2 THEN \'특강\' WHEN 3 THEN \'이벤트\' WHEN 4 THEN \'합격수기\' END AS RequestTypeName,
@@ -119,7 +119,7 @@ class EventFModel extends WB_Model
         $column = '
             A.ElIdx, A.SiteCode, A.CampusCcd, A.BIdx, A.IsBest, A.TakeType, A.RequestType, A.EventName, A.PopupTitle, A.ContentType, A.Content, A.CommentUseArea, A.LimitType,
             A.RegisterStartDate, A.RegisterEndDate, DATE_FORMAT(A.RegisterStartDate, \'%Y-%m-%d\') AS RegisterStartDay, DATE_FORMAT(A.RegisterEndDate, \'%Y-%m-%d\') AS RegisterEndDay,
-            A.OptionCcds, A.ReadCnt, A.IsRegister, A.IsUse, A.RegDatm, DATE_FORMAT(A.RegDatm, \'%Y-%m-%d\') AS RegDay,
+            A.OptionCcds, A.ReadCnt + A.AdjuReadCnt AS ReadCnt, A.IsRegister, A.IsUse, A.RegDatm, DATE_FORMAT(A.RegDatm, \'%Y-%m-%d\') AS RegDay,
             A.SendTel, A.SmsContent,
             G.SiteName, J.CcdName AS CampusName,
             IFNULL(H.CCount,\'0\') AS CommentCount,
@@ -211,9 +211,10 @@ class EventFModel extends WB_Model
      * 특강 신청자 등록
      * @param array $inputData
      * @param $site_code
+     * @param string $register_type 등록타입(이벤트, 프로모션)
      * @return array|bool
      */
-    public function addEventRegisterMember($inputData = [], $site_code)
+    public function addEventRegisterMember($inputData = [], $site_code, $register_type = '')
     {
         $this->_conn->trans_begin();
         try {
@@ -226,7 +227,7 @@ class EventFModel extends WB_Model
                     'A.RegisterEndDate' => date('Y-m-d H:i') . ':00'
                 ]
             ];
-            $event_data = $this->findEvent($arr_condition);
+            $event_data = $this->findEvent($arr_condition, $register_type);
             if (count($event_data) < 1) {
                 throw new \Exception('조회된 이벤트 정보가 없습니다.');
             }
@@ -260,21 +261,33 @@ class EventFModel extends WB_Model
                 }
 
                 //중복체크, 저장 데이터 셋팅
+                $register_tel = (empty($inputData['register_tel']) === true) ? '' : $this->memberFModel->getEncString($inputData['register_tel']);
+                $register_email = (empty($inputData['register_email']) === true) ? '' : $this->memberFModel->getEncString($inputData['register_email']);
+
+                $etc_value = '';
+                if (empty($inputData['target_params']) === false && is_array($inputData['target_params'])) {
+                    foreach ($inputData['target_params'] as $target_key => $target_param) {
+                        $etc_value .= $inputData[$target_param]. ',';
+                    }
+                    $etc_value = substr($etc_value, 0, -1);
+                }
+
                 if(empty($this->session->userdata('mem_idx')) === true) {
                     $arr_condition = [
                         'EQ' => [
                             'A.ErIdx' => $key,
                             'A.UserName' => $inputData['register_name'],
-                            'A.UserTelEnc' => $this->memberFModel->getEncString($inputData['register_tel']),
-                            'A.UserMailEnc' => $this->memberFModel->getEncString($inputData['register_email']),
+                            'A.UserTelEnc' => $register_tel,
+                            'A.UserMailEnc' => $register_email
                         ]
                     ];
 
                     $input_register_data = [
                         'ErIdx' => $key,
                         'UserName' => $inputData['register_name'],
-                        'UserTelEnc' => $this->memberFModel->getEncString($inputData['register_tel']),
-                        'UserMailEnc' => $this->memberFModel->getEncString($inputData['register_email']),
+                        'UserTelEnc' => $register_tel,
+                        'UserMailEnc' => $register_email,
+                        'EtcValue' => $etc_value
                     ];
                 } else {
                     $arr_condition = [
@@ -282,8 +295,8 @@ class EventFModel extends WB_Model
                             'A.ErIdx' => $key,
                             'A.MemIdx' => $this->session->userdata('mem_idx'),
                             'A.UserName' => $inputData['register_name'],
-                            'A.UserTelEnc' => $this->memberFModel->getEncString($inputData['register_tel']),
-                            'A.UserMailEnc' => $this->memberFModel->getEncString($inputData['register_email']),
+                            'A.UserTelEnc' => $register_tel,
+                            'A.UserMailEnc' => $register_email
                         ]
                     ];
 
@@ -291,8 +304,9 @@ class EventFModel extends WB_Model
                         'ErIdx' => $key,
                         'MemIdx' => $this->session->userdata('mem_idx'),
                         'UserName' => $inputData['register_name'],
-                        'UserTelEnc' => $this->memberFModel->getEncString($inputData['register_tel']),
-                        'UserMailEnc' => $this->memberFModel->getEncString($inputData['register_email']),
+                        'UserTelEnc' => $register_tel,
+                        'UserMailEnc' => $register_email,
+                        'EtcValue' => $etc_value
                     ];
                 }
 
@@ -309,7 +323,9 @@ class EventFModel extends WB_Model
             //SMS 발송
             $arr_event_option = array_flip(explode(',', $event_data['OptionCcds']));
             if (empty($arr_event_option) === false && array_key_exists($this->_ccd['option']['send_sms'], $arr_event_option) === true) {
-                $this->_sendSms($event_data, $inputData, $site_code);
+                if ($this->_sendSms($event_data, $inputData) === false) {
+                    throw new \Exception('SMS발송 실패했습니다. 관리자에게 문의해 주세요.');
+                }
             }
 
             $this->_conn->trans_commit();
@@ -606,7 +622,7 @@ class EventFModel extends WB_Model
     public function findEventForPromotion($promotion_code, $test_type = '')
     {
         $column = '
-            ElIdx, OptionCcds, EventName, PromotionCode, PromotionParams, RegisterEndDate, CommentUseArea
+            ElIdx, OptionCcds, EventName, PromotionCode, PromotionParams, RegisterEndDate, CommentUseArea, LimitType
         ';
         $from = "
             FROM {$this->_table['event_lecture']}
@@ -671,6 +687,24 @@ class EventFModel extends WB_Model
         }
 
         return true;
+    }
+
+    /**
+     * 등록파일 데이터 조회
+     * @param $el_idx
+     * @return mixed
+     */
+    public function listEventForFile($el_idx)
+    {
+        $column = 'EfIdx, FileName, FileRealName, FileFullPath, FileType';
+        $from = "
+            FROM {$this->_table['event_file']}
+        ";
+        $where = ' where ElIdx = ? and IsUse = "Y"';
+        $order_by_offset_limit = ' order by EfIdx asc';
+
+        // 쿼리 실행
+        return $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit, [$el_idx])->result_array();
     }
 
     /**
@@ -743,7 +777,6 @@ class EventFModel extends WB_Model
                 throw new \Exception('특강 신청에 등록 실패했습니다.');
             }
         } catch (\Exception $e) {
-            $this->_conn->trans_rollback();
             return error_result($e);
         }
 
@@ -770,46 +803,19 @@ class EventFModel extends WB_Model
         return $query;
     }
 
-    private function _sendSms($data, $send_data, $site_code)
+    /**
+     * 발송완료 SMS 발송
+     * @param $data [발신자 정보]
+     * @param $send_data [수신자 정보]
+     * @return bool
+     */
+    private function _sendSms($data, $send_data)
     {
-        try {
-            $inputData = [
-                'SendGroupTypeCcd' => '641001',
-                'SiteCode' => $site_code,
-                'SendPatternCcd' => '637002',       //메세지성격
-                'SendTypeCcd' => '638001',          //SMS메세지종류
-                'SendOptionCcd' => '640001',        //메세지 발송옵션
-                'SendStatusCcd' => '639001',        //메세지 발송상태
-                'CsTel' => $data['SendTel'],
-                'Content' => $data['SmsContent'],
-                'RegAdminIdx' => $this->session->userdata('admin_idx'),
-                'RegIp' => $this->input->ip_address()
-            ];
-
-            $this->_conn->set($inputData)->set('SendDatm', 'NOW()', false);
-
-            // 데이터 등록
-            if ($this->_conn->set($inputData)->insert($this->_table['crm_send']) === false) {
-                throw new \Exception('등록에 실패했습니다.');
-            }
-            $send_idx = $this->_conn->insert_id();
-
-            $inputData_sms = [
-                'SendIdx' => $send_idx,
-                'MemIdx' => (empty($this->session->userdata('mem_idx')) ? 0 : $this->session->userdata('mem_idx')),
-                'Receive_Name' => $send_data['register_name'],
-            ];
-            $this->_conn->set($inputData_sms)->set('Receive_PhoneEnc',  'fn_enc("' . $send_data['register_tel'] . '")',false);
-
-            // SMS 개별등록 등록
-            if ($this->_conn->set($inputData_sms)->insert($this->_table['crm_send_r_receive_sms']) === false) {
-                throw new \Exception('세부 발송 등록에 실패했습니다.');
-            }
-
-        } catch (Exception $e) {
-            return $e->getMessage();
+        $this->load->library('sendSms');
+        if ($this->sendsms->send($send_data['register_tel'], $data['SmsContent'], $data['SendTel']) !== true) {
+            return false;
+        } else {
+            return true;
         }
-
-        return true;
     }
 }

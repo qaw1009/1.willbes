@@ -55,12 +55,12 @@
                     </div>
                     <div class="MyInfoBox">
                         <div class="willbes-listTable MyInfoBoxList widthAutoFull">
-                            <div class="will-Tit NG">최근 받은 쪽지 <a class="f_right" href="#none"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
+                            <div class="will-Tit NG">최근 받은 쪽지 <a class="f_right" href="{{front_url('/classroom/message/index')}}"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
                             <ul class="List-Table GM tx-gray">
                                 @forelse($data['msg_list'] as $row)
                                     <li>
                                         <a href="#none" class="btn-crm-view" data-send-Idx="{{$row['SendIdx']}}">
-                                            {{hpSubString($row['Content'],0,40,'...')}}{!!($row['IsReceive'] == 'Y') ? '' : '<img src="'.img_url('mypage/icon_N.png').'">'!!}
+                                            {{hpSubString($row['Content'],0,23,'...')}}{!!($row['IsReceive'] == 'Y') ? '' : '<img src="'.img_url('mypage/icon_N.png').'">'!!}
                                         </a>
                                     </li>
                                 @empty
@@ -69,7 +69,7 @@
                             </ul>
                         </div>
                         <div class="willbes-listTable MyInfoBoxList widthAutoFull">
-                            <div class="will-Tit NG">나의 학습 기기 (무한PASS) <a class="f_right" href="#none"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
+                            <div class="will-Tit NG">나의 학습 기기 (무한PASS) <a class="f_right" href="{{front_url('/classroom/pass/')}}"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
                             <ul class="List-Table GM myTablet tx-gray">
                                 @forelse($data['device_list'] as $row)
                                     @if($row['DeviceType'] == 'P')
@@ -126,7 +126,7 @@
                                             <td class="w-data tx-left pl25">
                                                 <dl class="w-info">
                                                     <dt>
-                                                        경찰<span class="row-line">|</span>
+                                                        {{$row['SiteGroupName']}}<span class="row-line">|</span>
                                                         {{$row['SubjectName']}}<span class="row-line">|</span>
                                                         {{$row['wProfName']}}교수님
                                                         <span class="NSK ml15 nBox n{{ substr($row['wLectureProgressCcd'], -1)+1 }}">{{$row['wLectureProgressCcdName']}}</span>

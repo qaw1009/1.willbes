@@ -65,7 +65,7 @@ class OffLectureModel extends CommonLectureModel
                         join lms_sys_category Ca on C.CateCode = Ca.CateCode  and Ca.IsStatus=\'Y\'
                         left outer join lms_sys_category Cb on Ca.ParentCateCode = Cb.CateCode
                         left outer join lms_product_sale D on A.ProdCode = D.ProdCode and D.SaleTypeCcd=\'613001\' and D.IsStatus=\'Y\'	#Pc+모바일 판매가만 추출
-                        join vw_product_r_professor_concat_repr E on A.ProdCode = E.ProdCode
+                        left outer join vw_product_r_professor_concat_repr E on A.ProdCode = E.ProdCode
                         left outer join (select ProdCode, count(*) as DivisionCount from lms_product_division where IsStatus=\'Y\' group by ProdCode) as F on A.ProdCode = F.ProdCode
                         left outer join lms_product_copy_log Y on A.ProdCode = Y.ProdCode
                         left outer join wbs_sys_admin Z on A.RegAdminIdx = Z.wAdminIdx
@@ -372,7 +372,7 @@ class OffLectureModel extends CommonLectureModel
                 ,'IsSaleEnd'=>element('IsSaleEnd',$input,'N')
                 ,'IsCoupon'=>element('IsCoupon',$input,'N')
                 ,'IsPoint'=>element('IsPoint',$input,'N')
-                ,'PointApplyCcd'=>element('PointApplyCcd',$input,'635001')
+                ,'PointApplyCcd'=>element('PointApplyCcd',$input,'635002')
                 ,'PointSavePrice'=>get_var(element('PointSavePrice',$input),0)
                 ,'PointSaveType'=>element('PointSaveType',$input,'R')
                 ,'IsBest'=>element('IsBest',$input, 'N')

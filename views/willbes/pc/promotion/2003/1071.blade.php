@@ -20,7 +20,7 @@
 
         /************************************************************/
 
-        .wb_top {background:#fef053 url(http://file3.willbes.net/new_gosi/2018/10/EV181005_c1_bg.jpg) no-repeat center top; position:relative;  }
+        .wb_top {background:#fef053 url(http://file3.willbes.net/new_gosi/2018/10/EV181005_c1_bg.jpg) no-repeat center top}
 
         .wb_cts01{background:#fff;}
         /* 탭 */
@@ -44,24 +44,12 @@
 
         .skybanner {
             position:fixed;
-            top:200px;
+            top:250px;
             right:0;
             width:185px;
-            animation:upDown 1s infinite;
-            -webkit-animation:upDown 1s infinite;
             z-index:10;
         }
 
-        @@keyframes upDown{
-             from{margin-top:0}
-             60%{margin-top:-30px}
-             to{margin-top:0}
-         }
-        @@-webkit-keyframes upDown{
-             from{margin-top:0}
-             60%{margin-top:-30px}
-             to{margin-top:0}
-         }
 
     </style>
 
@@ -79,7 +67,7 @@
         <div class="evtCtnsBox wb_top" >
             <img src="http://file3.willbes.net/new_gosi/2018/10/EV181005_c1.png" alt=" 윌비스 차원이 다른 전기/통신 기술직의 대가 최우영교수 " usemap="#Map20181005_c1" border="0"  />
             <map name="Map20181005_c1" >
-                <area shape="rect" coords="259,626,388,743" href="#event" onfocus="this.blur();"/>
+                <area shape="rect" coords="259,626,388,743" href="#event01" onfocus="this.blur();"/>
             </map>
         </div><!--WB_top//-->
 
@@ -140,11 +128,11 @@
 
             <img src="http://file3.willbes.net/new_gosi/2019/01/EV190117_c7.jpg" alt="윌비스 최우영교수의 전기/통신직 대비 이론패키지"  usemap="#Map20181005_c2" border="0"  />
             <map name="Map20181005_c2">
-                <area shape="rect" coords="746,1174,974,1280" href="http://www.willbesgosi.net/packagelecture/packagelectureDetail.html?currentPage=1&pageRow=9999&topMenu=001&topMenuName=&topMenuType=O&searchCategoryCode=011&leftMenuLType=M0001&lecKType=P&searchLeccode=P201800110"  onfocus="this.blur();" target="_blank"/>
-                <area shape="rect" coords="747,942,970,1067" href="http://www.willbesgosi.net/packagelecture/packagelectureDetail.html?currentPage=1&pageRow=9999&topMenu=001&topMenuName=&topMenuType=O&searchCategoryCode=011&leftMenuLType=M0001&lecKType=P&searchLeccode=P201800111" onfocus="this.blur();" target="_blank"/>
-                <area shape="rect" coords="790,624,1043,718" href="http://www.willbesgosi.net/packagelecture/packagelectureDetail.html?currentPage=1&pageRow=9999&topMenu=001&topMenuName=&topMenuType=O&searchCategoryCode=011&leftMenuLType=M0001&lecKType=P&searchLeccode=P201800089" onfocus="this.blur();" target="_blank" />
-                <area shape="rect" coords="473,626,732,719" href="http://www.willbesgosi.net/packagelecture/packagelectureDetail.html?currentPage=1&pageRow=9999&topMenu=001&topMenuName=&topMenuType=O&searchCategoryCode=011&leftMenuLType=M0001&lecKType=P&searchLeccode=P201800093" onfocus="this.blur();" target="_blank"/>
-                <area shape="rect" coords="167,621,433,726" href="http://www.willbesgosi.net/packagelecture/packagelectureDetail.html?currentPage=1&pageRow=9999&topMenu=001&topMenuName=&topMenuType=O&searchCategoryCode=011&leftMenuLType=M0001&lecKType=P&searchLeccode=P201800094" onfocus="this.blur();" target="_blank"/>
+                <area shape="rect" coords="167,621,433,726" href="{{ site_url('/package/show/cate/3028/pack/648001/prod-code/150626') }}" onfocus="this.blur();" target="_blank"/>
+                <area shape="rect" coords="473,626,732,719" href="{{ site_url('/package/show/cate/3028/pack/648001/prod-code/150625') }}" onfocus="this.blur();" target="_blank"/>
+                <area shape="rect" coords="790,624,1043,718" href="{{ site_url('/package/show/cate/3028/pack/648001/prod-code/150621') }}" onfocus="this.blur();" target="_blank" />
+                <area shape="rect" coords="747,942,970,1067" href="{{ site_url('/package/show/cate/3028/pack/648001/prod-code/150644') }}" onfocus="this.blur();" target="_blank"/>
+                <area shape="rect" coords="746,1174,974,1280" href="{{ site_url('/package/show/cate/3028/pack/648001/prod-code/150643') }}"  onfocus="this.blur();" target="_blank"/>
             </map>
         </div>
         <!--wb_cts02//-->
@@ -167,7 +155,7 @@
 
             <img src="http://file3.willbes.net/new_gosi/2019/01/EV190117_c8.jpg" alt="윌비스 최우영 교수의 학원실강"  usemap="#Map20181005_c4" border="0" />
             <map name="Map20181005_c4" >
-                <area shape="rect" coords="330,1128,874,1223" href="http://www.willbesgosi.net/teacher/passTeacherDetail.html?topMenu=011&topMenuName=기술직&topMenuType=F&topMenuGnb=FM_002&searchCategoryCode=011&searchSubjectCode=1087&searchSubjectNm=전자공학&searchUserId=wgt103&searchUserNm=최우영&LeftSel=&SEARCHSTJCODE=&SEARCHSERIESCODE_CHECK=01121&SEARCHSUBJECTCODE_CHECK=&SEARCHPRFCODE_CHECK=" onfocus="this.blur();" target="_blank"/>
+                <area shape="rect" coords="330,1128,874,1223" href="{{ site_url('/professor/show/cate/3028/prof-idx/50163/?subject_idx=1160&subject_name=%EC%A0%84%EA%B8%B0%EC%A7%81') }}" onfocus="this.blur();" target="_blank"/>
             </map>
         </div><!--wb_cts03//-->
     </div>
@@ -205,11 +193,4 @@
         });
     </script>
 
-    <script>
-        $(function(e){
-            var targetOffset= $("#evtContainer").offset().top;
-            $('html, body').animate({scrollTop: targetOffset}, 700);
-            /*e.preventDefault(); */
-        });
-    </script>
 @stop

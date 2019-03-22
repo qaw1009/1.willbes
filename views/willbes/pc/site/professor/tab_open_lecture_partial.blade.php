@@ -89,7 +89,7 @@
                                                     <dt><span class="row-line">|</span></dt>
                                                     <dt>수강기간 : <span class="study-period tx-blue" data-info="{{ $row['StudyPeriod'] }}">{{ $row['StudyPeriod'] }}일</span></dt>
                                                     <dt class="NSK ml15">
-                                                        <span class="multiple-apply nBox n1" data-info="{{ $row['MultipleApply'] }}">{{ $row['MultipleApply'] }}배수</span>
+                                                        <span class="multiple-apply nBox n1" data-info="{{ $row['MultipleApply'] }}">{{ $row['MultipleApply'] === "1" ? '무제한' : $row['MultipleApply'].'배수'}}</span>
                                                         <span class="lecture-progress nBox n{{ substr($row['wLectureProgressCcd'], -1)+1 }}" data-info="{{ substr($row['wLectureProgressCcd'], -1)+1 }}{{ $row['wLectureProgressCcdName'] }}">{{ $row['wLectureProgressCcdName'] }}</span>
                                                     </dt>
                                                 </dl>
@@ -99,7 +99,7 @@
                                             </td>
                                             <td class="w-notice p_re">
                                                 @if( empty($row['LectureSampleData']) === false)
-                                                    <div class="w-sp one"><a href="#none" onclick="openWin('lec_sample_{{ $row['ProdCode'] }}')">맛보기{{ empty($row['LectureSampleData']) ? '' : count($row['LectureSampleData'])   }}</a></div>
+                                                    <div class="w-sp one"><a href="#none" onclick="openWin('lec_sample_{{ $row['ProdCode'] }}')">맛보기</a></div>
                                                     <div id="lec_sample_{{ $row['ProdCode'] }}" class="viewBox">
                                                         <a class="closeBtn" href="#none" onclick="closeWin('lec_sample_{{ $row['ProdCode'] }}')"><img src="{{ img_url('cart/close.png') }}"></a>
                                                         @foreach($row['LectureSampleData'] as $sample_idx => $sample_row)
@@ -224,7 +224,7 @@
                                                 <dt><span class="row-line">|</span></dt>
                                                 <dt>수강기간 : <span class="tx-blue">{{$row['StudyPeriod']}}일</span></dt>
                                                 <dt class="NSK ml15">
-                                                    <span class="nBox n1">{{$row['MultipleApply']}}배수</span>
+                                                    <span class="nBox n1">{{ $row['MultipleApply'] === "1" ? '무제한' : $row['MultipleApply'].'배수'}}</span>
                                                 </dt>
                                             </dl>
                                         </td>
@@ -286,7 +286,7 @@
                                                 <dt><span class="row-line">|</span></dt>
                                                 <dt>수강기간 : <span class="tx-blue">{{$row['StudyPeriod']}}일</span></dt>
                                                 <dt class="NSK ml15">
-                                                    <span class="nBox n1">{{$row['MultipleApply']}}배수</span>
+                                                    <span class="nBox n1">{{ $row['MultipleApply'] === "1" ? '무제한' : $row['MultipleApply'].'배수'}}</span>
                                                 </dt>
                                             </dl>
                                         </td>
@@ -390,7 +390,7 @@
                                                 @endif
 
                                                 {{-- 방문결제 버튼 --}}
-                                                @if($row['StudyApplyCcd'] != '654002')
+                                                @if($row['StudyApplyCcd'] != '654002' && $row['IsSalesAble'] == 'Y')
                                                     <div class="visitBuy"><a href="#none" class="btn-off-visit-pay" data-prod-code="{{ $row['ProdCode'] . ':' . $price_row['SaleTypeCcd'] . ':' . $row['ProdCode'] }}">방문결제</a></div>
                                                 @endif
                                             </td>

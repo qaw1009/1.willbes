@@ -47,9 +47,9 @@ class EventLecture extends \app\controllers\BaseController
         ];
 
         $list = [];
-        $count = $this->eventLectureModel->listAllEvent(true, $arr_condition, $sub_query_condition);
+        $count = $this->eventLectureModel->listAllEvent(true, $arr_condition, $sub_query_condition, $this->_reqP('search_site_code'));
         if ($count > 0) {
-            $list = $this->eventLectureModel->listAllEvent(false, $arr_condition, $sub_query_condition, $this->_reqP('length'), $this->_reqP('start'), ['IsBest' => 'desc', 'ElIdx' => 'desc']);
+            $list = $this->eventLectureModel->listAllEvent(false, $arr_condition, $sub_query_condition, $this->_reqP('search_site_code'), $this->_reqP('length'), $this->_reqP('start'), ['IsBest' => 'desc', 'ElIdx' => 'desc']);
         }
 
         return $this->response([
@@ -188,7 +188,6 @@ class EventLecture extends \app\controllers\BaseController
 
         $rules = [
             ['field' => 'site_code', 'label' => '운영사이트', 'rules' => 'trim|required|integer'],
-            ['field' => 'cate_code[]', 'label' => '카테고리', 'rules' => 'trim|required'],
             ['field' => 'campus_ccd', 'label' => '캠퍼스', 'rules' => 'trim|integer|callback_validateRequiredIf[site_code,' . implode(',', array_keys($offLineSite_list)) . ']'],
             ['field' => 'request_type', 'label' => '신청유형', 'rules' => 'trim|required|integer'],
             ['field' => 'register_start_datm', 'label' => '접수기간시작일자', 'rules' => 'trim|required'],
@@ -198,6 +197,13 @@ class EventLecture extends \app\controllers\BaseController
             ['field' => 'content_type', 'label' => '내용옵션', 'rules' => 'trim|required|in_list[I,E]'],
             ['field' => 'option_ccds[]', 'label' => '관리옵션', 'rules' => 'callback_validateRequiredIf[request_type,'.implode(',', $this->eventLectureModel->_option_rules).']'],
         ];
+
+        //사이트코드 통합코드가 아닐경우 카테고리 체크
+        if ($this->_reqP('site_code') != config_item('app_intg_site_code')) {
+            $rules = array_merge($rules, [
+                ['field' => 'cate_code[]', 'label' => '카테고리', 'rules' => 'trim|required']
+            ]);
+        }
 
         //상태 값에 따른 rules 적용
         $request_type = $this->_reqP('request_type');       //신청유형

@@ -12,8 +12,6 @@
         .evtContent {
             position:relative;
             width:100% !important;
-            min-width:1210px !important;
-            background:#ccc;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
@@ -23,8 +21,8 @@
         /************************************************************/
 
         .skybanner {
-            position:absolute;
-            top:20px;
+            position:fixed;
+            bottom:20px;
             right:10px;
             z-index:1;
         }
@@ -34,7 +32,7 @@
         .skybanner_sectionFixed {position:fixed; top:20px}
 
         .wb_cts01 {background:url(http://file3.willbes.net/new_cop/2019/01/EV190115P_01_bg.jpg) no-repeat center top}
-        .wb_cts01 .wb_popWrap {width:1210px; margin:0 auto; position:relative}
+
 
         .wb_cts01 .giveaway {position:absolute; width:661px; left:50%; margin-left:-330px; animation:only 2s infinite; z-index:11}
         @@keyframes only{
@@ -116,9 +114,9 @@
             <img src="http://file3.willbes.net/new_cop/2019/01/EV190102P_sky.png" alt="" />
             <ul>
                 <li><a href="#online">서비스</a></li>
-                <li><a href="http://www.willbescop.net/movie/event.html?event_cd=Off_171031_p&topMenuType=F#main" target="_blank">아이언짐</a></li>
+                <li><a href="{{ site_url('/pass/promotion/index/code/1128') }}" target="_blank">아이언짐</a></li>
                 <li><a href="#buy">파격할인</a></li>
-                <li><a href="http://www.willbescop.net/teacher/board/board_list.html?topMenuGnb=OM_002&BOARDTYPE=T3&INCTYPE=list&BOARD_MNG_SEQ=BOARD_012&topMenuType=O&topMenuGnb=OM_002&topMenu=081&topMenuName=%C3%80%C3%8F%C2%B9%C3%9D%C2%B0%C3%A6%C3%82%C3%BB&menuID=OM_002_006_002&searchUserId=wct801&searchSubjectNm=&searchSubjectCode=" target="_blank">질답게시판</a></li>
+                <li><a href="{{ site_url('/professor/show/cate/3001/prof-idx/50575/?subject_idx=1043&subject_name=%EC%B2%B4%EB%A0%A5') }}" target="_blank">질답게시판</a></li>
             </ul>
         </div>
 
@@ -195,7 +193,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="http://www.willbescop.net/movie/event.html?event_cd=Off_171031_p&topMenuType=F#main" target="_blank">
+                    <a href="{{ site_url('/pass/promotion/index/code/1128') }}" target="_blank">
                         <img src="http://file3.willbes.net/new_cop/2019/01/EV190102P_03_tap02.jpg" alt="" class="off"/>
                         <img src="http://file3.willbes.net/new_cop/2019/01/EV190102P_03_tap02on.jpg" alt="" class="on"/>
                     </a>
@@ -397,23 +395,23 @@
 
         </div><!--wb_cts03//-->
 
-        <div class="evtCtnsBox wb_cts04">
+        <div class="evtCtnsBox wb_cts04" id="buy">
             <img src="http://file3.willbes.net/new_cop/2019/01/EV190115P_04.jpg" alt="" usemap="#Map190102" border="0"/>
             <map name="Map190102" id="Map190102">
-                <area shape="rect" coords="885,537,979,573" href="http://www.willbescop.net/lecture/movieLectureDetail.html?topMenu=081&amp;topMenuType=O&amp;searchSubjectCode=1004&amp;searchLeccode=D201900008&amp;leftMenuLType=M0001&amp;lecKType=D" target="_blank" alt="경찰코치풀패키지 신청하기" />
-                <area shape="rect" coords="885,637,979,672" href="http://www.willbescop.net/lecture/movieLectureDetail.html?topMenu=081&amp;topMenuType=O&amp;searchSubjectCode=1004&amp;searchLeccode=D201900006&amp;leftMenuLType=M0001&amp;lecKType=D" target="_blank" alt="종합단기완성 신청하기"/>
-                <area shape="rect" coords="885,737,979,772" href="http://www.willbescop.net/lecture/movieLectureDetail.html?topMenu=081&amp;topMenuType=O&amp;searchSubjectCode=1004&amp;searchLeccode=D201900004&amp;leftMenuLType=M0001&amp;lecKType=D" target="_blank" alt="달리기 단기완성 신청하기"/>
-                <area shape="rect" coords="885,838,978,872" href="http://www.willbescop.net/lecture/movieLectureDetail.html?topMenu=081&amp;topMenuType=O&amp;searchSubjectCode=1004&amp;searchLeccode=D201900002&amp;leftMenuLType=M0001&amp;lecKType=D" target="_blank" alt="근력단기완성 신청하기"/>
-                <area shape="rect" coords="884,1095,979,1129" href="http://www.willbescop.net/lecture/movieLectureSDetail.html?searchLeccode=J201900001&amp;topMenuType=O&amp;leftMenuLType=M0003&amp;newlearningCD=M0223&amp;lecKType=J&amp;topMenu=081&amp;topMenuName" target="_blank" alt="6개월종합반신청하기" />
-                <area shape="rect" coords="885,1189,979,1224" href="http://www.willbescop.net/lecture/movieLectureSDetail.html?searchLeccode=J201900005&amp;topMenuType=O&amp;leftMenuLType=M0003&amp;newlearningCD=M0223&amp;lecKType=J&amp;topMenu=081&amp;topMenuName" target="_blank" alt="12개월종합반신청하기" />
-                <area shape="rect" coords="884,992,978,1027" href="http://www.willbescop.net/movie/event.html?event_cd=On_pass&topMenuType=O" target="_blank" alt="PASS수강생 파격할인가"/>
+                <area shape="rect" coords="885,537,979,573" href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/132212') }}" target="_blank" alt="경찰코치풀패키지 신청하기" />
+                <area shape="rect" coords="885,637,979,672" href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/132210') }}" target="_blank" alt="종합단기완성 신청하기"/>
+                <area shape="rect" coords="885,737,979,772" href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/132208') }}" target="_blank" alt="달리기 단기완성 신청하기"/>
+                <area shape="rect" coords="885,838,978,872" href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/132206') }}" target="_blank" alt="근력단기완성 신청하기"/>
+                <area shape="rect" coords="884,1095,979,1129" href="{{ site_url('/package/show/cate/3001/pack/648001/prod-code/149542') }}" target="_blank" alt="6개월종합반신청하기" />
+                <area shape="rect" coords="885,1189,979,1224" href="{{ site_url('/package/show/cate/3001/pack/648001/prod-code/149541') }}" target="_blank" alt="12개월종합반신청하기" />
+                <area shape="rect" coords="884,992,978,1027" href="{{ site_url('/promotion/index/cate/3001/code/1009') }}" target="_blank" alt="PASS수강생 파격할인가"/>
             </map>
         </div>
 
         <div class="evtCtnsBox">
             <img src="http://file3.willbes.net/new_cop/2019/01/EV190102P_05.jpg" alt="" usemap="#Mapboard" border="0"/>
             <map name="Mapboard" id="Mapboard">
-                <area shape="rect" coords="340,544,870,668" href="http://www.willbescop.net/teacher/board/board_list.html?topMenuGnb=OM_002&amp;BOARDTYPE=T3&amp;INCTYPE=list&amp;BOARD_MNG_SEQ=BOARD_012&amp;topMenuType=O&amp;topMenuGnb=OM_002&amp;topMenu=081&amp;topMenuName=ÀÏ¹Ý°æÂû&amp;menuID=OM_002_006_002&amp;searchUserId=wct801&amp;searchSubjectNm=&amp;searchSubjectCode=" target="_blank" alt="질답게시판 바로가기" />
+                <area shape="rect" coords="340,544,870,668" href="{{ site_url('/professor/show/cate/3001/prof-idx/50575/?subject_idx=1043&subject_name=%EC%B2%B4%EB%A0%A5') }}" target="_blank" alt="질답게시판 바로가기" />
             </map>
         </div>
 
@@ -471,15 +469,6 @@
             $("#imgBannerRight2").click(function (){
                 slidesImg2.goToNextSlide();
             });
-        });
-    </script>
-
-    <script src="/public/js/willbes/jquery.nav.js"></script>
-    <script>
-        $(function(e) {
-            var targetOffset = $("#evtContainer").offset().top;
-            $('html, body').animate({scrollTop: targetOffset}, 700);
-            /*e.preventDefault(); */
         });
     </script>
 @stop

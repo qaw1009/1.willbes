@@ -8,6 +8,7 @@ class BaseOrder extends \app\controllers\BaseController
     protected $_order_type = '';
     protected $_group_ccd = array();
     private $_is_refund_proc = false;
+    private $_memory_limit_size = '512M';     // 엑셀파일 다운로드 메모리 제한 설정값
 
     public function __construct()
     {
@@ -186,5 +187,30 @@ class BaseOrder extends \app\controllers\BaseController
     protected function _getListOrderBy()
     {
         return ['OrderIdx' => 'desc'];
+    }
+
+    /**
+     * @param string $file_name [확장자를 제외한 생성파일명]
+     * @param array $list [엑셀내용]
+     * @param array $headers [엑셀헤더]
+     * @param bool $is_huge [대용량 다운로드 메소드 사용여부]
+     */
+    protected function _makeExcel($file_name, $list, $headers, $is_huge = true)
+    {
+        set_time_limit(0);
+        ini_set('memory_limit', $this->_memory_limit_size);
+
+        // export excel
+        $this->load->library('excel');
+
+        if ($is_huge === true) {
+            $result = $this->excel->exportHugeExcel($file_name, $list, $headers);
+        } else {
+            $result = $this->excel->exportExcel($file_name, $list, $headers);
+        }
+
+        if ($result !== true) {
+            show_alert('엑셀파일 생성 중 오류가 발생하였습니다.', 'back');
+        }
     }
 }

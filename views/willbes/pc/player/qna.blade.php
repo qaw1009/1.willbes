@@ -1,30 +1,30 @@
 @extends('willbes.pc.layouts.master_no_sitdbar')
 
 @section('content')
-    <form id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate="">
-        {!! csrf_field() !!}
-        <input type="hidden" name="_method" value="POST">
-        <input type="hidden" name="idx" value="">
-        <input type="hidden" name="reg_type" value="0">
-        <input type="hidden" name="s_site_code" value="{{$lec['SiteCode']}}">
-        <input type="hidden" name="s_cate_code" value="{{$lec['CateCode']}}">
-        <input type="hidden" name="s_prof_idx" value="{{$lec['ProfIdx']}}">
-        <input type="hidden" name="s_subject_idx" value="{{$lec['SubjectIdx']}}">
-
-        <div id="vodTabs" class="vodTabs p_re">
-            <ul class="vodWrap four NGEB">
-                <li><a href="/player/Curriculum/?o={{$input['o']}}&p={{$input['p']}}&sp={{$input['sp']}}&l={{$input['l']}}&u={{$input['u']}}&q={{$input['q']}}">강의목록</a></li>
-                <li><a href="/player/listBookmark/?o={{$input['o']}}&p={{$input['p']}}&sp={{$input['sp']}}&l={{$input['l']}}&u={{$input['u']}}&q={{$input['q']}}">북마크</a></li>
-                <li><a href="/player/qna/?o={{$input['o']}}&p={{$input['p']}}&sp={{$input['sp']}}&l={{$input['l']}}&u={{$input['u']}}&q={{$input['q']}}" class="on">학습Q&A</a></li>
-            </ul>
-            <div class="linkTabs NGEB"><a href="//{{app_to_env_url($lec['SiteUrl'])}}/professor/show/cate/{{$lec['CateCode']}}/prof-idx/{{$lec['ProfIdx']}}/?subject_idx={{$lec['SubjectIdx']}}&subject_name={{rawurlencode($lec['SubjectName'])}}" target="_blank">수강후기</a></div>
-            <div class="tabBox vodBox">
-                <div id="Faq" class="faqGrid">
-                    <div class="w-data w-box tx-left">
-                        <div class="w-tit tx-center NGR">
-                            수강중 궁금한 점은 교수님께 질문하세요.<br/>
-                            <span class="tx-sky-blue underline">{{$lec['wProfName']}} 교수님 학습Q&A</span>
-                        </div>
+    <div id="vodTabs" class="vodTabs p_re">
+        <ul class="vodWrap four NGEB">
+            <li><a href="/player/Curriculum/?o={{$input['o']}}&p={{$input['p']}}&sp={{$input['sp']}}&l={{$input['l']}}&u={{$input['u']}}&q={{$input['q']}}">강의목록</a></li>
+            <li><a href="/player/listBookmark/?o={{$input['o']}}&p={{$input['p']}}&sp={{$input['sp']}}&l={{$input['l']}}&u={{$input['u']}}&q={{$input['q']}}">북마크</a></li>
+            <li><a href="/player/qna/?o={{$input['o']}}&p={{$input['p']}}&sp={{$input['sp']}}&l={{$input['l']}}&u={{$input['u']}}&q={{$input['q']}}" class="on">학습Q&A</a></li>
+            <li><a href="//{{app_to_env_url($lec['SiteUrl'])}}/professor/show/cate/{{$lec['CateCode']}}/prof-idx/{{$lec['ProfIdx']}}/?subject_idx={{$lec['SubjectIdx']}}&subject_name={{rawurlencode($lec['SubjectName'])}}" target="_blank">수강후기</a></li>
+        </ul>
+    <!--            <div class="linkTabs NGEB"><a href="//{{app_to_env_url($lec['SiteUrl'])}}/professor/show/cate/{{$lec['CateCode']}}/prof-idx/{{$lec['ProfIdx']}}/?subject_idx={{$lec['SubjectIdx']}}&subject_name={{rawurlencode($lec['SubjectName'])}}" target="_blank">수강후기</a></div> -->
+        <div class="tabBox vodBox">
+            <div id="Faq" class="faqGrid">
+                <div class="w-data w-box tx-left">
+                    <div class="w-tit tx-center NGR">
+                        수강중 궁금한 점은 교수님께 질문하세요.<br/>
+                        <span class="tx-sky-blue underline">{{$lec['wProfName']}} 교수님 학습Q&A</span>
+                    </div>
+                    <form id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate="">
+                        {!! csrf_field() !!}
+                        <input type="hidden" name="_method" value="POST">
+                        <input type="hidden" name="idx" value="">
+                        <input type="hidden" name="reg_type" value="0">
+                        <input type="hidden" name="s_site_code" value="{{$lec['SiteCode']}}">
+                        <input type="hidden" name="s_cate_code" value="{{$lec['CateCode']}}">
+                        <input type="hidden" name="s_prof_idx" value="{{$lec['ProfIdx']}}">
+                        <input type="hidden" name="s_subject_idx" value="{{$lec['SubjectIdx']}}">
                         <input type="hidden" name="study_prod_code" value="{{$lec['ProdCodeSub']}}" />
                         <div class="faqBox">
                             <ul>
@@ -63,21 +63,21 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="buttonBtn cartBtn">
-                            <ul>
-                                <li>
-                                    <button type="submit" id="btn_submit" class="btnBlue"><span>저장</span></button>
-                                </li>
-                                <li>
-                                    <button type="reset" class="btnGray"><span>취소</span></button>
-                                </li>
-                            </ul>
-                        </div>
+                    </form>
+                    <div class="buttonBtn cartBtn">
+                        <ul>
+                            <li>
+                                <button type="submit" id="btn_submit" class="btnBlue"><span>저장</span></button>
+                            </li>
+                            <li>
+                                <button type="reset" class="btnGray"><span>취소</span></button>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-    </form>
+    </div>
     <script type="text/javascript">
         var $regi_form = $('#regi_form');
 

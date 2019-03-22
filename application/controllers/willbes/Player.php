@@ -215,6 +215,7 @@ class Player extends \app\controllers\FrontController
             default:
                 $filename = $data['wWD'];
                 $ratio = 21; // 초 와이드는 고정
+                $quility = 'WD';
                 break;
         }
 
@@ -222,14 +223,17 @@ class Player extends \app\controllers\FrontController
         if(empty($filename) === true){
             $filename = $data['wWD'];
             $ratio = 21;
+            $quility = 'WD';
         }
         if(empty($filename) === true){
             $filename = $data['wHD'];
             $ratio = $data['wRatio'];
+            $quility = 'HD';
         }
         if(empty($filename) === true){
             $filename = $data['wSD'];
             $ratio = $data['wRatio'];
+            $quility = 'SD';
         }
 
         // 모든 경로없을때
@@ -343,6 +347,7 @@ class Player extends \app\controllers\FrontController
             default:
                 $filename = $data['wWD'];
                 $ratio = 21; // 초 와이드는 고정
+                $quility = 'WD';
                 break;
         }
 
@@ -350,14 +355,17 @@ class Player extends \app\controllers\FrontController
         if(empty($filename) === true){
             $filename = $data['wWD'];
             $ratio = 21;
+            $quility = 'WD';
         }
         if(empty($filename) === true){
             $filename = $data['wHD'];
             $ratio = $data['wRatio'];
+            $quility = 'HD';
         }
         if(empty($filename) === true){
             $filename = $data['wSD'];
             $ratio = $data['wRatio'];
+            $quility = 'SD';
         }
 
         // 모든 경로가 존재 없을때
@@ -371,7 +379,7 @@ class Player extends \app\controllers\FrontController
             'data' => [
                 'pretitle' => $data['wUnitNum'].'회 '.$data['wUnitLectureNum'].'강',
                 'title' => $data['wUnitName'],
-                'quility' => 'WD',
+                'quility' => $quility,
                 'startPosition' => 0,
                 'ratio' => 21,
                 'isIntro' => false,
@@ -433,6 +441,7 @@ class Player extends \app\controllers\FrontController
             default:
                 $filename = $data['wWD'];
                 $ratio = 21; // 초 와이드는 고정
+                $quility = 'WD';
                 break;
         }
 
@@ -440,14 +449,17 @@ class Player extends \app\controllers\FrontController
         if(empty($filename) === true){
             $filename = $data['wWD'];
             $ratio = 21;
+            $quility = 'WD';
         }
         if(empty($filename) === true){
             $filename = $data['wHD'];
             $ratio = $data['wRatio'];
+            $quility = 'HD';
         }
         if(empty($filename) === true){
             $filename = $data['wSD'];
             $ratio = $data['wRatio'];
+            $quility = 'SD';
         }
 
         // 모든 경로가 존재 없을때
@@ -461,7 +473,7 @@ class Player extends \app\controllers\FrontController
             'data' => [
                 'pretitle' => $data['wUnitNum'].'회 '.$data['wUnitLectureNum'].'강',
                 'title' => $data['wUnitName'],
-                'quility' => 'WD',
+                'quility' => $quility,
                 'startPosition' => 0,
                 'ratio' => 21,
                 'isIntro' => false,
@@ -654,8 +666,13 @@ class Player extends \app\controllers\FrontController
 
                 // 수강시간은 초
                 $studytime = intval($row['RealStudyTime']);
+
                 // 제한시간 분 -> 초
-                $limittime = intval($row['wRuntime']) * intval($lec['MultipleApply']) * 60;
+                if($row['RealExpireTime'] == 0){
+                    $limittime = intval($row['wRuntime']) * intval($lec['MultipleApply']) * 60;
+                } else {
+                    $limittime = intval($row['RealExpireTime']) * 60;
+                }
 
                 if($studytime > $limittime){
                     // 제한시간 초과
@@ -1433,8 +1450,13 @@ class Player extends \app\controllers\FrontController
 
                 // 수강시간은 초
                 $studytime = intval($row['RealStudyTime']);
+
                 // 제한시간 분 -> 초
-                $limittime = intval($row['RealExpireTime']) * 60;
+                if($row['RealExpireTime'] == 0){
+                    $limittime = intval($row['wRuntime']) * intval($lec['MultipleApply']) * 60;
+                } else {
+                    $limittime = intval($row['RealExpireTime']) * 60;
+                }
 
                 if($studytime > $limittime){
                     $timeover = 'Y';
@@ -1518,9 +1540,9 @@ class Player extends \app\controllers\FrontController
             }
 
             $url = $this->clearUrl($row['wMediaUrl'].'/'.$filename);
-            $title = $row['wUnitNum'].'회 '.$row['wUnitLectureNum'].'강 '.$row['wUnitName'];
+            $title = clean_string($row['wUnitNum'].'회 '.$row['wUnitLectureNum'].'강 '.$row['wUnitName']);
             $id = "^{$MemId}^{$MemIdx}^{$OrderIdx}^{$lec['OrderProdIdx']}^{$ProdCode}^{$ProdCodeSub}^{$row['wUnitIdx']}^{$logidx}^";
-            $category = $lec['SubjectName'].'/'.$lec['CourseName'];
+            $category = clean_string($lec['subProdName']); //$lec['SubjectName'].'/'.$lec['CourseName'];
             $enddate = $lec['RealLecEndDate'];
 
             if($type == 'download'){

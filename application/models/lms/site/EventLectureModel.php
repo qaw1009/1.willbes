@@ -65,7 +65,7 @@ class EventLectureModel extends WB_Model
     ];
 
     // 공지사항 이미지 등록 수
-    public $_attach_img_cnt = 2;
+    public $_attach_img_cnt = 7;
     
     // 이벤트 공지사항 식별자
     public $bm_idx = '86';
@@ -85,7 +85,7 @@ class EventLectureModel extends WB_Model
         parent::__construct('lms');
     }
 
-    public function listAllEvent($is_count, $arr_condition = [], $sub_query_condition = [], $limit = null, $offset = null, $order_by = [])
+    public function listAllEvent($is_count, $arr_condition = [], $sub_query_condition = [], $site_code = '', $limit = null, $offset = null, $order_by = [])
     {
         if ($is_count === true) {
             $column = 'count(*) AS numrows';
@@ -111,7 +111,7 @@ class EventLectureModel extends WB_Model
 
         $from = "
             FROM {$this->_table['event_lecture']} AS A
-            INNER JOIN (
+            LEFT JOIN (
                 SELECT B.ElIdx, GROUP_CONCAT(CONCAT(C.CateName,'[',B.CateCode,']')) AS CateCode
                 FROM {$this->_table['event_lecture_r_category']} AS B
                 INNER JOIN {$this->_table['sys_category']} AS C ON B.CateCode = C.CateCode AND B.IsStatus = 'Y'
@@ -137,9 +137,35 @@ class EventLectureModel extends WB_Model
             ) AS P ON A.ElIdx = P.ElIdx
         ";
 
-        $arr_condition['IN']['A.SiteCode'] = get_auth_site_codes();
-        $where = $this->_conn->makeWhere($arr_condition);
-        $where = $where->getMakeWhere(false);
+        /*$arr_condition['IN']['A.SiteCode'] = get_auth_site_codes(false, true);*/
+        if (empty($site_code) === false) {
+            $arr_condition['EQ']['A.SiteCode'] = $site_code;
+        } else {
+            $arr_condition['IN']['A.SiteCode'] = get_auth_site_codes(false, true);
+        }
+
+        $where_temp = $this->_conn->makeWhere($arr_condition);
+        $where_temp = $where_temp->getMakeWhere(false);
+
+        // 캠퍼스 권한
+        $arr_auth_campus_ccds = get_auth_all_campus_ccds();
+        $where_campus = $this->_conn->group_start();
+        foreach ($arr_auth_campus_ccds as $set_site_ccd => $set_campus_ccd) {
+            $where_campus->or_group_start();
+            $where_campus->or_where('A.SiteCode',$set_site_ccd);
+            $where_campus->group_start();
+            $where_campus->where('A.CampusCcd', $this->codeModel->campusAllCcd);
+            $where_campus->or_where_in('A.CampusCcd', $set_campus_ccd);
+            $where_campus->group_end();
+            $where_campus->group_end();
+        }
+        $where_campus->or_where('A.CampusCcd', "''", false);
+        $where_campus->or_where('A.CampusCcd IS NULL');
+        $where_campus->group_end();
+        $where_campus = $where_campus->getMakeWhere(true);
+
+        // 쿼리 실행
+        $where = $where_temp . $where_campus;
 
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
@@ -239,13 +265,15 @@ class EventLectureModel extends WB_Model
 
             //카테고리 저장
             $category_code = element('cate_code', $input);
-            foreach ($category_code as $key => $val) {
-                $category_data['ElIdx'] = $el_idx;
-                $category_data['CateCode'] = $val;
-                $category_data['RegAdminIdx'] = $this->session->userdata('admin_idx');
-                $category_data['RegIp'] = $this->input->ip_address();
-                if ($this->_addEventCategory($category_data) === false) {
-                    throw new \Exception('카테고리 등록에 실패했습니다.');
+            if (empty($category_code) === false) {
+                foreach ($category_code as $key => $val) {
+                    $category_data['ElIdx'] = $el_idx;
+                    $category_data['CateCode'] = $val;
+                    $category_data['RegAdminIdx'] = $this->session->userdata('admin_idx');
+                    $category_data['RegIp'] = $this->input->ip_address();
+                    if ($this->_addEventCategory($category_data) === false) {
+                        throw new \Exception('카테고리 등록에 실패했습니다.');
+                    }
                 }
             }
 
@@ -446,7 +474,7 @@ class EventLectureModel extends WB_Model
             }
 
             // 카테고리수정
-            $is_category = $this->_modifyEventCategory($el_idx, $evnet_category_data);
+            $is_category = $this->_modifyEventCategory($el_idx, $evnet_category_data, element('site_code', $input));
             if ($is_category !== true) {
                 throw new \Exception($is_category);
             }
@@ -504,7 +532,7 @@ class EventLectureModel extends WB_Model
             DATE_FORMAT(A.RegisterStartDate, '%Y-%m-%d') AS RegisterStartDay, DATE_FORMAT(A.RegisterStartDate, '%H') AS RegisterStartHour, DATE_FORMAT(A.RegisterStartDate, '%i') AS RegisterStartMin,
             DATE_FORMAT(A.RegisterEndDate, '%Y-%m-%d') AS RegisterEndDay, DATE_FORMAT(A.RegisterEndDate, '%H') AS RegisterEndHour, DATE_FORMAT(A.RegisterEndDate, '%i') AS RegisterEndMin,
             A.ContentType, A.Content, A.OptionCcds, A.LimitType, A.SelectType,
-            A.SendTel, A.SmsContent, A.PopupTitle, A.CommentUseArea, A.Link, A.ReadCnt, A.AdjuReadCnt,
+            A.SendTel, A.SmsContent, A.PopupTitle, A.CommentUseArea, A.Link, A.ReadCnt, A.AdjuReadCnt, (A.ReadCnt + A.AdjuReadCnt) as TotalReadCnt,
             A.RegDatm, A.RegAdminIdx, A.RegIp, A.UpdDatm, A.UpdAdminIdx, C.wAdminName AS RegAdminName, D.wAdminName AS UpdAdminName,
             B.SiteName, E.CcdName AS CampusName,
             G.SubjectName, H.ProfNickName,
@@ -609,7 +637,7 @@ class EventLectureModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
             $column = '
-            A.EmIdx, A.MemIdx, B.PersonLimitType, B.PersonLimit, B.Name AS RegisterName, A.RegDatm,
+            A.EmIdx, A.MemIdx, B.PersonLimitType, B.PersonLimit, B.Name AS RegisterName, A.EtcValue, A.RegDatm,
             A.UserName, C.MemId, fn_dec(A.UserTelEnc) AS Phone, fn_dec(A.UserMailEnc) AS Mail, D.registerCnt
             ';
 
@@ -1188,31 +1216,39 @@ class EventLectureModel extends WB_Model
      * @param $event_category_data
      * @return bool|string
      */
-    private function _modifyEventCategory($el_idx, $event_category_data)
+    private function _modifyEventCategory($el_idx, $event_category_data, $post_site_code)
     {
         try {
-            // 기존 카테고리 조회
-            $arr_event_category = array_values($this->_getEventCategoryArray($el_idx));
-            $up_arr_category_data = array_diff($arr_event_category, $event_category_data);     //N 업데이트
-            $ins_arr_category_data = array_diff($event_category_data, $arr_event_category);     //insert
-
-            $up_cate_data = [];
-            foreach ($up_arr_category_data as $key => $val) {
+            //수정할 사이트코드가 통합사이트 코드일 경우 카테고리 N처리
+            if ($post_site_code == config_item('app_intg_site_code')) {
                 $up_cate_data['ElIdx'] = $el_idx;
-                $up_cate_data['CateCode'] = $val;
                 if ($this->_updateEventCategory($up_cate_data) === false) {
                     throw new \Exception('게시판 등록(카테고리)에 실패했습니다.');
                 }
-            }
+            } else {
+                // 기존 카테고리 조회
+                $arr_event_category = array_values($this->_getEventCategoryArray($el_idx));
+                $up_arr_category_data = array_diff($arr_event_category, $event_category_data);     //N 업데이트
+                $ins_arr_category_data = array_diff($event_category_data, $arr_event_category);     //insert
 
-            $ins_cate_data = [];
-            foreach ($ins_arr_category_data as $key => $val) {
-                $ins_cate_data['ElIdx'] = $el_idx;
-                $ins_cate_data['CateCode'] = $val;
-                $ins_cate_data['RegAdminIdx'] = $this->session->userdata('admin_idx');
-                $ins_cate_data['RegIp'] = $this->input->ip_address();
-                if ($this->_addEventCategory($ins_cate_data) === false) {
-                    throw new \Exception('게시판 등록(카테고리)에 실패했습니다.');
+                $up_cate_data = [];
+                foreach ($up_arr_category_data as $key => $val) {
+                    $up_cate_data['ElIdx'] = $el_idx;
+                    $up_cate_data['CateCode'] = $val;
+                    if ($this->_updateEventCategory($up_cate_data) === false) {
+                        throw new \Exception('게시판 등록(카테고리)에 실패했습니다.');
+                    }
+                }
+
+                $ins_cate_data = [];
+                foreach ($ins_arr_category_data as $key => $val) {
+                    $ins_cate_data['ElIdx'] = $el_idx;
+                    $ins_cate_data['CateCode'] = $val;
+                    $ins_cate_data['RegAdminIdx'] = $this->session->userdata('admin_idx');
+                    $ins_cate_data['RegIp'] = $this->input->ip_address();
+                    if ($this->_addEventCategory($ins_cate_data) === false) {
+                        throw new \Exception('게시판 등록(카테고리)에 실패했습니다.');
+                    }
                 }
             }
         } catch (\Exception $e) {

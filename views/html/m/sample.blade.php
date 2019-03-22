@@ -15,6 +15,7 @@
 <ul>
     <li>
         <div>
+            <a href="{{ site_url('/home/html/m/loading') }}" target="_blank">로딩화면</a>
             <a href="{{ site_url('/home/html/m/intro') }}" target="_blank">인트로 page 이동</a>
             <a href="{{ site_url('/home/html/m/main') }}" target="_blank">메인 page 이동</a>
             <a href="{{ site_url('/home/html/m/memjoin') }}" target="_blank">로그인 page 이동</a>          

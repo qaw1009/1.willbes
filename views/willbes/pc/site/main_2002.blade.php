@@ -18,32 +18,18 @@
             <div class="widthAuto">
                 <ul>
                     @for($i=1; $i<=3; $i++)
-                        @if(empty($data['arr_main_banner']['메인_상품배너'.$i]) === false)
-                            @php $link_url = ''; $last_banner = end($data['arr_main_banner']['메인_상품배너'.$i]); @endphp
-                            @if(empty($last_banner['LinkUrl']) === false)
-                                @php $link_url = front_app_url('/banner/click?banner_idx=' . $last_banner['BIdx'] . '&return_url=' . urlencode($last_banner['LinkUrl']) . '&link_url_type=' . urlencode($last_banner['LinkUrlType']), 'www'); @endphp
-                            @endif
+                        @if(isset($data['arr_main_banner']['메인_상품배너'.$i]) === true)
                             <li class="VisualsubBox_acad">
-                                <a href="{{ $link_url }}" target="_{{ $last_banner['LinkType'] }}"><img src="{{ $last_banner['BannerFullPath'] . $last_banner['BannerImgName'] }}" alt="{{ $last_banner['BannerName'] }}"></a>
+                                {!! banner_html(element('메인_상품배너'.$i, $data['arr_main_banner'])) !!}
                             </li>
                         @endif
                     @endfor
 
-                    @if(empty($data['arr_main_banner']['메인_상품배너4']) === false)
                     <li class="VisualsubBox_acad">
                         <div class="bSlider acad">
-                            <div class="bSlider slider">
-                                @php $link_url = ''; @endphp
-                                @foreach($data['arr_main_banner']['메인_상품배너4'] as $row)
-                                    @if(empty($row['LinkUrl']) === false)
-                                        @php $link_url = front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www'); @endphp
-                                    @endif
-                                    <div><a href="{{ $link_url }}" target="_{{ $row['LinkType'] }}"><img src="{{ $row['BannerFullPath'] . $row['BannerImgName'] }}" alt="{{ $row['BannerName'] }}"></a></div>
-                                @endforeach
-                            </div>
+                            {!! banner_html(element('메인_상품배너4', $data['arr_main_banner']), 'bSlider slider') !!}
                         </div>
                     </li>
-                    @endif
                 </ul>
             </div>
         </div>
@@ -147,12 +133,10 @@
                 <div class="will-acadTit">윌비스 <span class="tx-color">신광은경찰학원</span> 특별관리반</div>
                 <ul class="specialClass">
                     @for($i=1; $i<=4; $i++)
-                        @if(empty($data['arr_main_banner']['메인_특별관리반'.$i]) === false)
-                            @php $link_url = ''; $last_banner = end($data['arr_main_banner']['메인_특별관리반'.$i]); @endphp
-                            @if(empty($last_banner['LinkUrl']) === false)
-                                @php $link_url = front_app_url('/banner/click?banner_idx=' . $last_banner['BIdx'] . '&return_url=' . urlencode($last_banner['LinkUrl']) . '&link_url_type=' . urlencode($last_banner['LinkUrlType']), 'www'); @endphp
-                            @endif
-                            <li><a href="{{ $link_url }}" target="_{{ $last_banner['LinkType'] }}"><img src="{{ $last_banner['BannerFullPath'] . $last_banner['BannerImgName'] }}" alt="{{ $last_banner['BannerName'] }}"></a></li>
+                        @if(isset($data['arr_main_banner']['메인_특별관리반'.$i]) === true)
+                            <li>
+                                {!! banner_html(element('메인_특별관리반'.$i, $data['arr_main_banner'])) !!}
+                            </li>
                         @endif
                     @endfor
                 </ul>

@@ -66,6 +66,28 @@
                     <p class="form-control-static"><b>{{$data['EtcContent']}}</b></p>
                 </div>
             </div>
+            @elseif($data['CertTypeCcd'] ==='684005') {{-- 수험표인증 --}}
+            <div class="form-group form-group-sm item">
+                <label class="control-label col-md-2" >응시직렬</label>
+                <div class="col-md-4">
+                    <p class="form-control-static"><b>{{ empty($data['TakeKind_Name']) ? $data['TakeKind'] : $data['TakeKind_Name']}}</b></p>
+                </div>
+                <label class="control-label col-md-2" >응시지역</label>
+                <div class="col-md-4 form-inline item" >
+                    <p class="form-control-static"><b>{{ empty($data['TakeArea_Name']) ? $data['TakeArea'] : $data['TakeArea_Name']}}</b></p>
+                </div>
+            </div>
+            <div class="form-group form-group-sm item">
+                <label class="control-label col-md-2" >응시번호</label>
+                <div class="col-md-4">
+                    <p class="form-control-static"><b>{{$data['TakeNo']}}</b></p>
+                </div>
+                <label class="control-label col-md-2" >추가정보</label>
+                <div class="col-md-4">
+                    <p class="form-control-static"><b>@if(empty($data['AddContent1']) == false){{$data['AddContent1']}} - {{$data['AddContent2']}}@endif</b></p>
+                </div>
+
+            </div>
             @endif
 
             <div class="form-group form-group-sm item">

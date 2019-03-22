@@ -19,6 +19,9 @@ class Home extends \app\controllers\FrontController
      */
     public function index()
     {
+        // 모바일 리다이렉트
+        $this->_redirectMobile();
+
         $data = [];
 
         // APP 토큰 체크

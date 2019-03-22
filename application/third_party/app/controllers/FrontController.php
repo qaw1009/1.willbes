@@ -443,4 +443,31 @@ abstract class FrontController extends BaseController
             $this->session->set_userdata('make_sessionid', time().substr(microtime(), 2, 6).rand(1000, 9999)); //15373248440179507411  (20자리)
         }
     }
+
+    /**
+     * PC 화면 접속시 디바이스가 모바일이면 모바일로 redirect 시키고
+     * 사용자가 pc 보겠다고 viewPC=1 을 달고 오면 그냥 PC를 보여준다.
+     */
+    protected function _redirectMobile()
+    {
+        // PC 화면일때
+        if($this->_is_mobile == false && $this->_is_app == false) {
+            $this->load->library('user_agent');
+            if ($this->agent->is_mobile() == true) {
+                // 모바일 이면
+                $viewPC = $this->_req("viewPC");
+                if ($viewPC == 1) {
+                    // pc 보기 param 이 있으면 세션 생성
+                    $this->session->set_userdata('viewPC', 1);
+                } else {
+                    // pc 보기 param 이 없으면 세션을 보고
+                    $viewPC = $this->session->userdata('viewPC');
+                    if ($viewPC != 1) {
+                        // PC 보기가 아니면 모바일로
+                        redirect(front_url('/m/'));
+                    }
+                }
+            }
+        }
+    }
 }

@@ -18,6 +18,9 @@ class Home extends \app\controllers\FrontController
      */
     public function index()
     {
+        // 모바일 리다이렉트
+        $this->_redirectMobile();
+
         $cate_code = get_var($this->_cate_code, config_app('DefCateCode'));
         $arr_campus = [];
 

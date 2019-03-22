@@ -66,6 +66,15 @@
                     <p class="form-control-static"><b>{{$data['EtcContent']}}</b></p>
                 </div>
             </div>
+            @elseif($data['CertTypeCcd'] ==='684004') {{-- 환승인증 --}}
+            <div class="form-group form-group-sm item">
+                <label class="control-label col-md-2" >수강사이트</label>
+                <div class="col-md-10">
+                    <p class="form-control-static"><b>{{ $data['EtcContent']}}</b></p>
+                </div>
+            </div>
+
+
             @elseif($data['CertTypeCcd'] ==='684005') {{-- 수험표인증 --}}
             <div class="form-group form-group-sm item">
                 <label class="control-label col-md-2" >응시직렬</label>

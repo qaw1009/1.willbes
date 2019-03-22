@@ -140,7 +140,7 @@
             <ul>
                 <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1113') }}"><img src="/public/img/willbes/leave_army/la_on_01_m1.jpg" alt="군문원"/></a></li>
                 <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1113') }}"><img src="/public/img/willbes/leave_army/la_on_01_m2.jpg" alt="소방직"/></a></li>
-                <li><a href="{{ app_url('/promotion/index/cate/3001/code/1121', 'pass') }}" target="_blank"><img src="/public/img/willbes/leave_army/la_on_01_m3.jpg" alt="경찰직"/></a></li>
+                <li><a href="{{ app_url('/promotion/index/cate/3001/code/1121', 'police') }}" target="_blank"><img src="/public/img/willbes/leave_army/la_on_01_m3.jpg" alt="경찰직"/></a></li>
                 <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1113') }}"><img src="/public/img/willbes/leave_army/la_on_01_m4.jpg" alt="기술직"/></a></li>
                 <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1113') }}"><img src="/public/img/willbes/leave_army/la_on_01_m5.jpg" alt="일반행정직"/></a></li>
                 <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1113') }}"><img src="/public/img/willbes/leave_army/la_on_01_m6.jpg" alt="소방(산업)기사 자격증"/></a></li>

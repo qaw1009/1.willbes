@@ -144,12 +144,12 @@
         .Pstyle {opacity:0; display:none; position:relative; width:640px; padding:40px 20px 20px; background-color:#fff}
         .Pstyle .fpcontent {height:auto; width:auto; border:1px solid #000}
         .Pstyle .fpcontent h3 {text-align:center; background:#000; padding:15px}
-        .Pstyle  .fpcontentinfo1 {padding:30px}
-        .Pstyle  .fpcontentinfo1 p {font-size:120%; font-weight:bold; margin-bottom:15px; color:#000}
-        .Pstyle  .fpcontentinfo1 ol {margin-bottom:30px}
-        .Pstyle  .fpcontentinfo1 li {list-style:decimal; margin-left:20px; margin-bottom:5px; line-height:1.3}
-        .Pstyle  .fpcontentinfo1 li span {color:#F00}
-        .Pstyle  .fpcontentinfo1 .infoTxt {color:#F00; margin-bottom:10px}
+        .Pstyle .fpcontentinfo1 {padding:30px}
+        .Pstyle .fpcontentinfo1 p {font-size:120%; font-weight:bold; margin-bottom:15px; color:#000}
+        .Pstyle .fpcontentinfo1 ol {margin-bottom:30px}
+        .Pstyle .fpcontentinfo1 li {list-style:decimal; margin-left:20px; margin-bottom:5px; line-height:1.3}
+        .Pstyle .fpcontentinfo1 li span {color:#F00}
+        .Pstyle .fpcontentinfo1 .infoTxt {color:#F00; margin-bottom:10px}
         .b-close {position:absolute; right:15px; top:5px; display:inline-block; cursor:pointer}
     </style>
 

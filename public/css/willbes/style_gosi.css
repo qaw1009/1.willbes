@@ -67,6 +67,7 @@
     width: 364px;
     height: 248px !important;
     overflow: hidden;
+    z-index: 1;
   }
 
 .gosi .VisualsubBox .bx-wrapper .bx-controls-auto {

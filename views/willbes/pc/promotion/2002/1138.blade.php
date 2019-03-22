@@ -114,7 +114,7 @@
             </div>
 		</div>
         
-        @include('html.event_replyNotice') 
+        {{--@include('html.event_replyNotice') : 댓글 주석처리--}}
         
       	<div class="wbCommon wb_03" id="event03">
 			<img src="http://file3.willbes.net/new_cop/2019/03/EV190308P_07_new.jpg"  alt="황세웅 실시간 기출분석" />
@@ -132,43 +132,43 @@
             <area shape="rect" coords="486,2489,651,2552" href="https://gall.dcinside.com/board/lists/?id=government" target="_blank" />
             <area shape="rect" coords="666,2489,862,2552" href="https://gall.dcinside.com/mgallery/board/lists/?id=policeofficer&page=1" target="_blank" />
           </map>
-		</div> 
-        
-        @include('html.event_replyUrl')
-    
-        <div class="wbCommon wb_05" id="event05">
-			<img src="http://file3.willbes.net/new_cop/2019/03/EV190308P_11.jpg" alt="상품혜택 및 유의사항 안내" />
-		</div> 
-        
-    </div>
-    <!-- End Container --> 
+		</div>
 
-    <script src="/public/js/willbes/jwplayer/jwplayer.js"></script>
-    <script type="text/javascript">
-        function daycountDown() {
-            event_day = new Date(2019,3,25,23,59,59);
-            now = new Date();
-            var t1, t2;
-            
-            var Dateleft = event_day.getDate() - now.getDate();
-            if (Dateleft <10){
-                t1 = 0;
-                t2 = Dateleft;
-            }else{
-                t1 = 1;
-                t2 = Dateleft-10;
+            {{--@include('html.event_replyUrl') : 댓글 주석처리--}}
+
+            <div class="wbCommon wb_05" id="event05">
+                <img src="http://file3.willbes.net/new_cop/2019/03/EV190308P_11.jpg" alt="상품혜택 및 유의사항 안내" />
+            </div>
+
+        </div>
+        <!-- End Container -->
+
+        <script src="/public/js/willbes/jwplayer/jwplayer.js"></script>
+        <script type="text/javascript">
+            function daycountDown() {
+                event_day = new Date(2019,3,25,23,59,59);
+                now = new Date();
+                var t1, t2;
+
+                var Dateleft = event_day.getDate() - now.getDate();
+                if (Dateleft <10){
+                    t1 = 0;
+                    t2 = Dateleft;
+                }else{
+                    t1 = 1;
+                    t2 = Dateleft-10;
+                }
+
+                $("#t1").attr("src", "http://file3.willbes.net/new_cop/2019/03/EV190312P_num0"+t1+".png");
+                $("#t2").attr("src", "http://file3.willbes.net/new_cop/2019/03/EV190312P_num0"+t2+".png");
             }
-        
-            $("#t1").attr("src", "http://file3.willbes.net/new_cop/2019/03/EV190312P_num0"+t1+".png");
-            $("#t2").attr("src", "http://file3.willbes.net/new_cop/2019/03/EV190312P_num0"+t2+".png");
-        }
-    </script>
-    <script type="text/javascript">
+        </script>
+        <script type="text/javascript">
 
-    function certOpen(){
-        {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
-        @if(empty($arr_promotion_params) === false)
-        var url = '/certApply/index/page/{{$arr_promotion_params["page"]}}/cert/{{$arr_promotion_params["cert"]}}' ;
+        function certOpen(){
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+            @if(empty($arr_promotion_params) === false)
+            var url = '/certApply/index/page/{{$arr_promotion_params["page"]}}/cert/{{$arr_promotion_params["cert"]}}' ;
         window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=800,height=700');
         @endif
     }

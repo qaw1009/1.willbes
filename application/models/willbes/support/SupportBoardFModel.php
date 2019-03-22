@@ -29,30 +29,6 @@ class SupportBoardFModel extends BaseSupportFModel
     }
 
     /**
-     * 게시글 조회
-     * @param $board_idx
-     * @param array $arr_condition
-     * @param string $column
-     * @param null $limit
-     * @param null $offset
-     * @param array $order_by
-     * @return mixed
-     */
-    public function findBoard($board_idx,$arr_condition=[],$column='*',$limit = null, $offset = null, $order_by = [])
-    {
-        $arr_condition = array_merge_recursive($arr_condition,[
-            'EQ' => [
-                'b.BoardIdx' => $board_idx,
-            ]
-        ]);
-        $column = $column . ',b.BoardIsComment';
-
-        $result = $this->_conn->getListResult($this->_table['board'], $column, $arr_condition, $limit, $offset, $order_by);
-        //echo $this->_conn->last_query();exit;
-        return element('0', $result, []);
-    }
-
-    /**
      * 사이트 그룹에 속한 게시판 글 목록
      * @param $is_count
      * @param $site_code
@@ -153,6 +129,30 @@ class SupportBoardFModel extends BaseSupportFModel
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    /**
+     * 게시글 조회
+     * @param $board_idx
+     * @param array $arr_condition
+     * @param string $column
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
+     */
+    public function findBoard($board_idx,$arr_condition=[],$column='*',$limit = null, $offset = null, $order_by = [])
+    {
+        $arr_condition = array_merge_recursive($arr_condition,[
+            'EQ' => [
+                'b.BoardIdx' => $board_idx,
+            ]
+        ]);
+        $column = $column . ',b.BoardIsComment';
+
+        $result = $this->_conn->getListResult($this->_table['board'], $column, $arr_condition, $limit, $offset, $order_by);
+        //echo $this->_conn->last_query();exit;
+        return element('0', $result, []);
     }
 
     /**

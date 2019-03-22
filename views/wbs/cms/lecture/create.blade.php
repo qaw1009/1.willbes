@@ -162,7 +162,7 @@
                             <br>
                             <p class="form-control-static ml-10 mr-10">
                                 [
-                                <a href="{{site_url('/cms/lecture/download/').'?filename='.urlencode($data['wAttachPath'].$data['wAttachFile']).'&filename_ori='.urlencode($data['wAttachFileReal']) }}" target="_blank">
+                                <a href="{{site_url('/cms/lecture/download/').'?filename='.urlencode(str_replace($data['wAttachPath'].'/'.$data['wAttachFile'], '//','/')).'&filename_ori='.urlencode($data['wAttachFileReal']) }}" target="_blank">
                                 {{ $data['wAttachFileReal'] }}</a> ]
                             </p>
                             <div class="checkbox">

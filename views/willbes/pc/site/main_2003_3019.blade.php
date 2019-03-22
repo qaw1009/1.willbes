@@ -84,11 +84,8 @@
                     <ul class="freeLectBx">
                         @for($i=1; $i<=2; $i++)
                             @if(empty($data['arr_main_banner']['메인_무료특강'.$i]) === false)
-                                @php $last_banner = end($data['arr_main_banner']['메인_무료특강'.$i]); @endphp
                                 <li>
-                                    {!! banner_html($data['arr_main_banner']['메인_무료특강'.$i]) !!}
-                                    <p>{{ $last_banner['BannerName'] }}</p>
-                                    {{ $last_banner['Desc'] }}
+                                    {!! banner_html($data['arr_main_banner']['메인_무료특강'.$i], '', '', true) !!}
                                 </li>
                             @endif
                         @endfor

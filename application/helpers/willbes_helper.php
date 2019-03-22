@@ -24,73 +24,72 @@ if (!function_exists('banner_html')) {
     /**
      * 배너 HTML 리턴
      * @param $data
-     * @param string $css_class
+     * @param string $rolling_class
+     * @param string $a_class
+     * @param bool $is_desc
      * @return string
      */
-    function banner_html($data, $css_class = '')
+    function banner_html($data, $rolling_class = '', $a_class = '', $is_desc = false)
     {
         $html = '';
+        $rolling_start = '';
+        $rolling_end = '';
+        
         if (empty($data) === true) {
             return $html;
         }
 
-        if ($data[0]['DispTypeCcd'] == '664002') {
-            empty($css_class) === true && $css_class = 'slider';
+        if ($data[0]['DispTypeCcd'] != '664002' || count($data) === 1) {
+            $rolling_class = '';
+        } else {
+            empty($rolling_class) === true && $rolling_class = 'slider';
+        }
 
-            $html = '<div class="' . $css_class . '">';
+        if ($data[0]['DispTypeCcd'] == '664003') {
+            // 랜덤 노출일 경우
+            shuffle($data);
+        }
 
-            foreach ($data as $row) {
-                $banner_img = '<img src="' . $row['BannerFullPath'] . $row['BannerImgName'] . '" alt="' . $row['BannerName'] . '">';
-                $a_start = '';
-                $a_end = '';
+        // 롤링 class 있을 경우
+        if (empty($rolling_class) === false) {
+            $rolling_start = '<div class="' . $rolling_class . '">';
+            $rolling_end = '</div>';
+        } else {
+            $end_banner = end($data);
+            unset($data);
+            $data[0] = $end_banner;
+        }
 
-                if(empty($row['LinkUrl']) === false) {
+        foreach ($data as $row) {
+            $banner_img = '<img src="' . $row['BannerFullPath'] . $row['BannerImgName'] . '" alt="' . $row['BannerName'] . '">';
+            $a_start = '';
+            $a_end = '';
+
+            if(empty($row['LinkUrl']) === false) {
+                if ($row['LinkType'] == 'layer') {
+                    $link_url = app_to_env_url($row['LinkUrl']) . '/event/popupRegistCreateByBanner?banner_idx=' . $row['BIdx'];
+                    $a_start = '<a href="#none" onclick="event_layer_popup(\'' . $link_url . '\');" class="' . $a_class . '">';
+                    $a_end = '</a><div id="APPLYPASS" class="willbes-Layer-Black"></div>';
+                } else {
                     $link_url = front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www');
                     $a_end = '</a>';
 
                     if ($row['LinkType'] == 'popup') {
-                        $a_start = '<a href="#none" onclick="popupOpen(\'' . $link_url . '\', \'_bn_pop_' . $row['BIdx'] . '\', \'' . $row['PopWidth'] . '\', \'' . $row['PopHeight'] . '\', null, null, \'no\', \'no\');">';
+                        $a_start = '<a href="#none" onclick="popupOpen(\'' . $link_url . '\', \'_bn_pop_' . $row['BIdx'] . '\', \'' . $row['PopWidth'] . '\', \'' . $row['PopHeight'] . '\', null, null, \'no\', \'no\');" class="' . $a_class . '">';
                     } else {
-                        $a_start = '<a href="' . $link_url . '" target="_' . $row['LinkType'] . '">';
-                    }
-                }
-
-                $html .= '<div>' . $a_start . $banner_img . $a_end . '</div>';
-            }
-
-            $html .= '</div>';
-        } else {
-            // 랜덤 노출일 경우
-            if ($data[0]['DispTypeCcd'] == '664003') {
-                shuffle($data);
-            }
-
-            $end_banner = end($data);
-            $banner_img = '<img src="' . $end_banner['BannerFullPath'] . $end_banner['BannerImgName'] . '" alt="' . $end_banner['BannerName'] . '">';
-            $a_start = '';
-            $a_end = '';
-
-            if(empty($end_banner['LinkUrl']) === false) {
-                if ($end_banner['LinkType'] == 'layer') {
-                    $link_url = app_to_env_url($end_banner['LinkUrl']) . '/event/popupRegistCreateByBanner?banner_idx=' . $end_banner['BIdx'];
-                    $a_start = '<a href="#none" onclick="event_layer_popup(\'' . $link_url . '\');" class="' . $css_class . '">';
-                    $a_end = '</a><div id="APPLYPASS" class="willbes-Layer-Black"></div>';
-                } else {
-                    $link_url = front_app_url('/banner/click?banner_idx=' . $end_banner['BIdx'] . '&return_url=' . urlencode($end_banner['LinkUrl']) . '&link_url_type=' . urlencode($end_banner['LinkUrlType']), 'www');
-                    $a_end = '</a>';
-
-                    if ($end_banner['LinkType'] == 'popup') {
-                        $a_start = '<a href="#none" onclick="popupOpen(\'' . $link_url . '\', \'_bn_pop_' . $end_banner['BIdx'] . '\', \'' . $end_banner['PopWidth'] . '\', \'' . $end_banner['PopHeight'] . '\', null, null, \'no\', \'no\');" class="' . $css_class . '">';
-                    } else {
-                        $a_start = '<a href="' . $link_url . '" target="_' . $end_banner['LinkType'] . '" class="' . $css_class . '">';
+                        $a_start = '<a href="' . $link_url . '" target="_' . $row['LinkType'] . '" class="' . $a_class . '">';
                     }
                 }
             }
 
-            $html = $a_start . $banner_img . $a_end;
+            $html .= '<div>' . $a_start . $banner_img . $a_end . '</div>';
+
+            if ($is_desc === true) {
+                $html .= '<p>' . $row['BannerName'] . '</p>' . $row['Desc'];
+            }
         }
 
-        return $html;
+        return $rolling_start . $html . $rolling_end;
     }
 }
 

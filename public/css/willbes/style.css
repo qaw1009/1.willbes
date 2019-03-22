@@ -1859,9 +1859,14 @@ table.auTable tr td {
 .Menu .menu-List li.pass a {
     background: url("../../img/willbes/gosi/icon_acad.gif") no-repeat 0 0;
     color: #ba560e;
+    padding-left: 26px; 
 }
 .Menu .menu-List li.pass a .arrow-Btn {
     background: url("../../img/willbes/gosi/icon_arrow.gif") no-repeat 0 0;
+    float: right;
+    width: 4px;
+    height: 8px;
+    margin: 15px 5px 0;
 }
 
 .Menu .menu-List-Center {

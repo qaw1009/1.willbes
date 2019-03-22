@@ -25,11 +25,11 @@
         <div class="Section ProfBox">
             <div class="widthAuto">
                 <ul class="PBtab NSK">
-                    <li><a href="#tab01">현재 준비중인 수험생이라면</a></li>
-                    <li><a href="#tab02">지금 시작하는 초시생이라면</a></li>
+                    <li><a href="#tab01">빠르고 정확한 문제풀이를 원한다면</a></li>
+                    <li><a href="#tab02">체계적인 이론학습을 원한다면</a></li>
                 </ul>
                 <div id="tab01">
-                    <img src="{{ img_url('gosi_tech/visual/visual_tit01_01.jpg') }}" alt="지금은 전범위 모의고사로 마무리 할 때!">
+                    <img src="{{ img_url('gosi_tech/visual/visual_tit01_01.jpg') }}" alt="고득점 문제풀이 스킬 확립">
                     <ul class="PBcts">
                         @for($i=1; $i<=4; $i++)
                             @if(empty($data['arr_main_banner']['메인_미들'.$i]) === false)
@@ -43,7 +43,7 @@
                     </ul>
                 </div>
                 <div id="tab02">
-                    <img src="{{ img_url('gosi_tech/visual/visual_tit01_02.jpg') }}" alt="지금은 전범위 모의고사로 마무리 할 때!">
+                    <img src="{{ img_url('gosi_tech/visual/visual_tit01_02.jpg') }}" alt="점수의 기반을 형성하는 이론정립">
                     <ul class="PBcts">
                         @for($i=5; $i<=8; $i++)
                             @if(empty($data['arr_main_banner']['메인_미들'.$i]) === false)

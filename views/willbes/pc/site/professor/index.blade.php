@@ -143,7 +143,7 @@
                         @endif
                         <div class="Obj">{!! $row['ProfSlogan'] !!}</div>
                         <div class="Name">
-                            <strong>{{ $row['wProfName'] }}</strong><br/>
+                            <strong>{{ $row['ProfNickName'] }}</strong><br/>
                             교수님
                             @if($row['IsNew'] == 'Y') <img class="N" src="{{ img_url('prof/icon_N.gif') }}"> @endif
                         </div>

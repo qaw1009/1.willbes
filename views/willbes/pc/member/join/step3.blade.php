@@ -77,4 +77,9 @@
             });
         });
     </script>
+    <script type="text/javascript" charset="UTF-8" src="//t1.daumcdn.net/adfit/static/kp.js"></script>
+    <script type="text/javascript">
+        kakaoPixel('6331763949938786102').pageView();
+        kakaoPixel('6331763949938786102').completeRegistration();
+    </script>
 @stop

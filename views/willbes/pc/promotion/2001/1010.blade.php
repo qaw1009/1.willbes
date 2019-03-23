@@ -116,62 +116,62 @@
                         <tr>
                             <td>2018년 3차</td>
                             <td>경찰공무원(일반/경행) 채용시험 기출문제</td>
-                            <td><a href="http://www.willbescop.net/library/library_view.html?topMenuType=O&topMenuGnb=OM_004&topMenu=081&menuID=OM_004_004&BOARD_MNG_SEQ=NOTICE_005&BOARDTYPE=8&INCTYPE=view&currentPage=1&BOARD_SEQ=137933&PARENT_BOARD_SEQ=0&SEARCHKIND=&SEARCHTEXT=" target="_blank">바로가기</a></td>
+                            <td><a href="{{ site_url('/support/examQuestion/show/cate/3001?board_idx=166081&') }}" target="_blank">바로가기</a></td>
                         </tr>
                         <tr>
                             <td>2018년 2차 </td>
                             <td>경찰공무원(일반/101단/경행) 채용시험 기출문제</td>
-                            <td><a href="http://www.willbescop.net/library/library_view.html?topMenuType=O&topMenuGnb=OM_004&topMenu=081&menuID=OM_004_004&BOARD_MNG_SEQ=NOTICE_005&BOARDTYPE=8&INCTYPE=view&currentPage=1&BOARD_SEQ=132682&PARENT_BOARD_SEQ=0&SEARCHKIND=&SEARCHTEXT=" target="_blank">바로가기</a></td>
+                            <td><a href="{{ site_url('/support/examQuestion/show/cate/?board_idx=162320&s_keyword=&view_type=&s_area=&s_year=&s_subject=&page=2') }}" target="_blank">바로가기</a></td>
                         </tr>
                         <tr>
                             <td>2018년 1차 </td>
                             <td>경찰공무원(일반/101단/전의경) 채용시험 기출문제</td>
-                            <td><a href="http://www.willbescop.net/library/library_view.html?topMenuType=O&topMenuGnb=OM_004&topMenu=081&menuID=OM_004_004&BOARD_MNG_SEQ=NOTICE_005&BOARDTYPE=8&INCTYPE=view&currentPage=1&BOARD_SEQ=132680&PARENT_BOARD_SEQ=0&SEARCHKIND=&SEARCHTEXT=" target="_blank">바로가기</a></td>
+                            <td><a href="{{ site_url('/support/examQuestion/show/cate/?board_idx=162318&s_keyword=&view_type=&s_area=&s_year=&s_subject=&page=2') }}" target="_blank">바로가기</a></td>
                         </tr>
                         <tr>
                             <td>2017년 2차 </td>
                             <td>경찰공무원(일반/101단/경행) 채용시험 기출문제</td>
-                            <td><a href="http://www.willbescop.net/library/library_view.html?topMenuType=O&topMenuGnb=OM_004&topMenu=081&menuID=OM_004_004&BOARD_MNG_SEQ=NOTICE_005&BOARDTYPE=8&INCTYPE=view&currentPage=1&BOARD_SEQ=132677&PARENT_BOARD_SEQ=0&SEARCHKIND=&SEARCHTEXT=" target="_blank">바로가기</a></td>
+                            <td><a href="{{ site_url('/support/examQuestion/show/cate/?board_idx=162315&s_keyword=&view_type=&s_area=&s_year=&s_subject=&page=2') }}" target="_blank">바로가기</a></td>
                         </tr>
                         <tr>
                             <td>2017년 1차 </td>
                             <td>경찰공무원(일반/101단/전의경) 채용시험 기출문제</td>
-                            <td><a href="http://www.willbescop.net/library/library_view.html?topMenuType=O&topMenuGnb=OM_004&topMenu=081&menuID=OM_004_004&BOARD_MNG_SEQ=NOTICE_005&BOARDTYPE=8&INCTYPE=view&currentPage=1&BOARD_SEQ=132676&PARENT_BOARD_SEQ=0&SEARCHKIND=&SEARCHTEXT=" target="_blank">바로가기</a></td>
+                            <td><a href="{{ site_url('/support/examQuestion/show/cate/?board_idx=162314&s_keyword=&view_type=&s_area=&s_year=&s_subject=&page=2') }}" target="_blank">바로가기</a></td>
                         </tr>
                         <tr>
                             <td>2016년 2차 </td>
                             <td>경찰공무원(일반/101단/경행) 채용시험 기출문제</td>
-                            <td><a href="http://www.willbescop.net/library/library_view.html?topMenuType=O&topMenuGnb=OM_004&topMenu=081&menuID=OM_004_004&BOARD_MNG_SEQ=NOTICE_005&BOARDTYPE=8&INCTYPE=view&currentPage=1&BOARD_SEQ=132673&PARENT_BOARD_SEQ=0&SEARCHKIND=&SEARCHTEXT=" target="_blank">바로가기</a></td>
+                            <td><a href="{{ site_url('/support/examQuestion/show/cate/?board_idx=162312&s_keyword=&view_type=&s_area=&s_year=&s_subject=&page=2') }}" target="_blank">바로가기</a></td>
                         </tr>
                         <tr>
                             <td>2016년 1차 </td>
                             <td>경찰공무원(일반/101단/전의경) 채용시험 기출문제</td>
-                            <td><a href="http://www.willbescop.net/library/library_view.html?topMenuType=O&topMenuGnb=OM_004&topMenu=081&menuID=OM_004_004&BOARD_MNG_SEQ=NOTICE_005&BOARDTYPE=8&INCTYPE=view&currentPage=1&BOARD_SEQ=132671&PARENT_BOARD_SEQ=0&SEARCHKIND=&SEARCHTEXT=" target="_blank">바로가기</a></td>
+                            <td><a href="{{ site_url('/support/examQuestion/show/cate/?board_idx=162311&s_keyword=&view_type=&s_area=&s_year=&s_subject=&page=2') }}" target="_blank">바로가기</a></td>
                         </tr>
                         <tr>
                             <td>2015년 3차 </td>
                             <td>경찰공무원(일반/101단/경행) 채용시험 기출문제</td>
-                            <td><a href="http://www.willbescop.net/library/library_view.html?topMenuType=O&topMenuGnb=OM_004&topMenu=081&menuID=OM_004_004&BOARD_MNG_SEQ=NOTICE_005&BOARDTYPE=8&INCTYPE=view&currentPage=1&BOARD_SEQ=132669&PARENT_BOARD_SEQ=0&SEARCHKIND=&SEARCHTEXT=">바로가기</a></td>
+                            <td><a href="{{ site_url('/support/examQuestion/show/cate/?board_idx=162309&s_keyword=&view_type=&s_area=&s_year=&s_subject=&page=3') }}">바로가기</a></td>
                         </tr>
                         <tr>
                             <td>2015년 2차 </td>
                             <td>경찰공무원(일반/101단/전의경) 채용시험 기출문제</td>
-                            <td><a href="http://www.willbescop.net/library/library_view.html?topMenuType=O&topMenuGnb=OM_004&topMenu=081&menuID=OM_004_004&BOARD_MNG_SEQ=NOTICE_005&BOARDTYPE=8&INCTYPE=view&currentPage=1&BOARD_SEQ=132667&PARENT_BOARD_SEQ=0&SEARCHKIND=&SEARCHTEXT=" target="_blank">바로가기</a></td>
+                            <td><a href="{{ site_url('/support/examQuestion/show/cate/?board_idx=162306&s_keyword=&view_type=&s_area=&s_year=&s_subject=&page=3') }}" target="_blank">바로가기</a></td>
                         </tr>
                         <tr>
                             <td>2015년 1차 </td>
                             <td>경찰공무원(일반/101단/경행) 채용시험 기출문제</td>
-                            <td><a href="http://www.willbescop.net/library/library_view.html?topMenuType=O&topMenuGnb=OM_004&topMenu=081&menuID=OM_004_004&BOARD_MNG_SEQ=NOTICE_005&BOARDTYPE=8&INCTYPE=view&currentPage=1&BOARD_SEQ=132666&PARENT_BOARD_SEQ=0&SEARCHKIND=&SEARCHTEXT=">바로가기</a></td>
+                            <td><a href="{{ site_url('/support/examQuestion/show/cate/?board_idx=162304&s_keyword=&view_type=&s_area=&s_year=&s_subject=&page=3') }}">바로가기</a></td>
                         </tr>
                         <tr>
                             <td>2014년 2차 </td>
                             <td>경찰공무원(일반/101단/경행/전의경) 채용시험 기출문제</td>
-                            <td><a href="http://www.willbescop.net/library/library_view.html?topMenuType=O&topMenuGnb=OM_004&topMenu=081&menuID=OM_004_004&BOARD_MNG_SEQ=NOTICE_005&BOARDTYPE=8&INCTYPE=view&currentPage=1&BOARD_SEQ=132665&PARENT_BOARD_SEQ=0&SEARCHKIND=&SEARCHTEXT=" target="_blank">바로가기</a></td>
+                            <td><a href="{{ site_url('/support/examQuestion/show/cate/?board_idx=162303&s_keyword=&view_type=&s_area=&s_year=&s_subject=&page=3') }}" target="_blank">바로가기</a></td>
                         </tr>
                         <tr>
                             <td>2014년 1차 </td>
                             <td>경찰공무원(일반/101단/경행) 채용시험 기출문제 </td>
-                            <td><a href="http://www.willbescop.net/library/library_view.html?topMenuType=O&topMenuGnb=OM_004&topMenu=081&menuID=OM_004_004&BOARD_MNG_SEQ=NOTICE_005&BOARDTYPE=8&INCTYPE=view&currentPage=1&BOARD_SEQ=132663&PARENT_BOARD_SEQ=0&SEARCHKIND=&SEARCHTEXT=" target="_blank">바로가기</a></td>
+                            <td><a href="{{ site_url('/support/examQuestion/show/cate/?board_idx=162302&s_keyword=&view_type=&s_area=&s_year=&s_subject=&page=3') }}" target="_blank">바로가기</a></td>
                         </tr>
                     </table>
                     <ul class="mt30">
@@ -188,47 +188,47 @@
                         <tr>
                             <td>2018년 3차</td>
                             <td>해양경찰(함정요원) 채용시험 기출문제</td>
-                            <td><a href="http://www.willbescop.net/library/library_view.html?topMenuType=O&topMenuGnb=OM_004&topMenu=081&menuID=OM_004_004&BOARD_MNG_SEQ=NOTICE_005&BOARDTYPE=8&INCTYPE=view&currentPage=1&BOARD_SEQ=132709&PARENT_BOARD_SEQ=0&SEARCHKIND=&SEARCHTEXT=" target="_blank">바로가기</a></td>
+                            <td><a href="{{ site_url('/support/examQuestion/show/cate/?board_idx=162332&s_keyword=&view_type=&s_area=&s_year=&s_subject=&page=1') }}" target="_blank">바로가기</a></td>
                         </tr>
                         <tr>
                             <td>2018년 2차</td>
                             <td>해양경찰(순경) 채용시험 기출문제</td>
-                            <td><a href="http://www.willbescop.net/library/library_view.html?topMenuType=O&topMenuGnb=OM_004&topMenu=081&menuID=OM_004_004&BOARD_MNG_SEQ=NOTICE_005&BOARDTYPE=8&INCTYPE=view&currentPage=1&BOARD_SEQ=132711&PARENT_BOARD_SEQ=0&SEARCHKIND=&SEARCHTEXT=" target="_blank">바로가기</a></td>
+                            <td><a href="{{ site_url('/support/examQuestion/show/cate/?board_idx=162333&s_keyword=&view_type=&s_area=&s_year=&s_subject=&page=1') }}" target="_blank">바로가기</a></td>
                         </tr>
                         <tr>
-                            <td>2018년    1차</td>
+                            <td>2018년 1차</td>
                             <td>해양경찰(순경) 채용시험 기출문제</td>
-                            <td><a href="http://www.willbescop.net/library/library_view.html?topMenuType=O&topMenuGnb=OM_004&topMenu=081&menuID=OM_004_004&BOARD_MNG_SEQ=NOTICE_005&BOARDTYPE=8&INCTYPE=view&currentPage=1&BOARD_SEQ=132713&PARENT_BOARD_SEQ=0&SEARCHKIND=&SEARCHTEXT=" target="_blank">바로가기</a></td>
+                            <td><a href="{{ site_url('/support/examQuestion/show/cate/?board_idx=162334&s_keyword=&view_type=&s_area=&s_year=&s_subject=&page=1') }}" target="_blank">바로가기</a></td>
                         </tr>
                         <tr>
-                            <td>2017년    2차</td>
+                            <td>2017년 2차</td>
                             <td>해양경찰(함정요원/해경학과) 채용시험 기출문제</td>
-                            <td><a href="http://www.willbescop.net/library/library_view.html?topMenuType=O&topMenuGnb=OM_004&topMenu=083&menuID=OM_004_004&BOARD_MNG_SEQ=NOTICE_005&BOARDTYPE=8&INCTYPE=view&currentPage=1&BOARD_SEQ=132719&PARENT_BOARD_SEQ=0&SEARCHKIND=&SEARCHTEXT=" target="_blank">바로가기</a></td>
+                            <td><a href="{{ site_url('/support/examQuestion/show/cate/?board_idx=162338&s_keyword=&view_type=&s_area=&s_year=&s_subject=&page=1') }}" target="_blank">바로가기</a></td>
                         </tr>
                         <tr>
-                            <td>2017년    1차</td>
+                            <td>2017년 1차</td>
                             <td>해양경찰(함정요원/해경학과) 채용시험 기출문제</td>
-                            <td><a href="http://www.willbescop.net/library/library_view.html?topMenuType=O&topMenuGnb=OM_004&topMenu=083&menuID=OM_004_004&BOARD_MNG_SEQ=NOTICE_005&BOARDTYPE=8&INCTYPE=view&currentPage=1&BOARD_SEQ=132720&PARENT_BOARD_SEQ=0&SEARCHKIND=&SEARCHTEXT=" target="_blank">바로가기</a></td>
+                            <td><a href="{{ site_url('/support/examQuestion/show/cate/?board_idx=162339&s_keyword=&view_type=&s_area=&s_year=&s_subject=&page=1') }}" target="_blank">바로가기</a></td>
                         </tr>
                         <tr>
-                            <td>2016년    3차</td>
+                            <td>2016년 3차</td>
                             <td>해양경찰(순경) 채용시험 기출문제</td>
-                            <td><a href="http://www.willbescop.net/library/library_view.html?topMenuType=O&topMenuGnb=OM_004&topMenu=083&menuID=OM_004_004&BOARD_MNG_SEQ=NOTICE_005&BOARDTYPE=8&INCTYPE=view&currentPage=1&BOARD_SEQ=132721&PARENT_BOARD_SEQ=0&SEARCHKIND=&SEARCHTEXT=" target="_blank">바로가기</a></td>
+                            <td><a href="{{ site_url('/support/examQuestion/show/cate/?board_idx=162340&s_keyword=&view_type=&s_area=&s_year=&s_subject=&page=1') }}" target="_blank">바로가기</a></td>
                         </tr>
                         <tr>
                             <td>2016년 2차</td>
                             <td>해양경찰(함정요원/운용/해경학과) 채용시험 기출문제</td>
-                            <td><a href="http://www.willbescop.net/library/library_view.html?topMenuType=O&topMenuGnb=OM_004&topMenu=083&menuID=OM_004_004&BOARD_MNG_SEQ=NOTICE_005&BOARDTYPE=8&INCTYPE=view&currentPage=1&BOARD_SEQ=132722&PARENT_BOARD_SEQ=0&SEARCHKIND=&SEARCHTEXT=" target="_blank">바로가기</a></td>
+                            <td><a href="{{ site_url('/support/examQuestion/show/cate/?board_idx=162341&s_keyword=&view_type=&s_area=&s_year=&s_subject=&page=1') }}" target="_blank">바로가기</a></td>
                         </tr>
                         <tr>
                             <td>2015년 3차</td>
                             <td>해양경찰(순경) 채용시험 기출문제</td>
-                            <td><a href="http://www.willbescop.net/library/library_view.html?topMenuType=O&topMenuGnb=OM_004&topMenu=083&menuID=OM_004_004&BOARD_MNG_SEQ=NOTICE_005&BOARDTYPE=8&INCTYPE=view&currentPage=1&BOARD_SEQ=132725&PARENT_BOARD_SEQ=0&SEARCHKIND=&SEARCHTEXT=" target="_blank">바로가기</a></td>
+                            <td><a href="{{ site_url('/support/examQuestion/show/cate/?board_idx=162344&s_keyword=&view_type=&s_area=&s_year=&s_subject=&page=1') }}" target="_blank">바로가기</a></td>
                         </tr>
                         <tr>
-                            <td>2015년    2차</td>
+                            <td>2015년 2차</td>
                             <td>해양경찰(함정요원/해경학과) 채용시험 기출문제</td>
-                            <td><a href="http://www.willbescop.net/library/library_view.html?topMenuType=O&topMenuGnb=OM_004&topMenu=083&menuID=OM_004_004&BOARD_MNG_SEQ=NOTICE_005&BOARDTYPE=8&INCTYPE=view&currentPage=1&BOARD_SEQ=132726&PARENT_BOARD_SEQ=0&SEARCHKIND=&SEARCHTEXT=" target="_blank">바로가기</a></td>
+                            <td><a href="{{ site_url('/support/examQuestion/show/cate/?board_idx=162345&s_keyword=&view_type=&s_area=&s_year=&s_subject=&page=1') }}" target="_blank">바로가기</a></td>
                         </tr>
                     </table>
                     <p class="mt30"><a href="{{ site_url('/lecture/index/cate/3008/pattern/free?course_idx=1075') }}" target="_blank"><img src="http://file3.willbes.net/new_cop/2018/11/EV1811226Y_02_btn02.jpg" alt="" /></a></p>
@@ -241,23 +241,23 @@
                         <col width="15%"  />
                         <tr>
                             <td width="117">2019년 68기</td>
-                            <td width="374">경찰간부후보생 채용시험    기출문제</td>
-                            <td><a href="http://www.willbescop.net/library/library_view.html?topMenuType=O&topMenuGnb=OM_004&topMenu=081&menuID=OM_004_004&BOARD_MNG_SEQ=NOTICE_005&BOARDTYPE=8&INCTYPE=view&currentPage=1&BOARD_SEQ=132683&PARENT_BOARD_SEQ=0&SEARCHKIND=&SEARCHTEXT=" target="_blank">바로가기</a></td>
+                            <td width="374">경찰간부후보생 채용시험 기출문제</td>
+                            <td><a href="{{ site_url('/support/examQuestion/show/cate/?board_idx=162321&s_keyword=&view_type=&s_area=&s_year=&s_subject=&page=2') }}" target="_blank">바로가기</a></td>
                         </tr>
                         <tr>
                             <td>2018년 67기</td>
                             <td>경찰간부후보생 채용시험 기출문제</td>
-                            <td><a href="http://www.willbescop.net/library/library_view.html?topMenuType=O&topMenuGnb=OM_004&topMenu=081&menuID=OM_004_004&BOARD_MNG_SEQ=NOTICE_005&BOARDTYPE=8&INCTYPE=view&currentPage=1&BOARD_SEQ=132679&PARENT_BOARD_SEQ=0&SEARCHKIND=&SEARCHTEXT=" target="_blank">바로가기</a></td>
+                            <td><a href="{{ site_url('/support/examQuestion/show/cate/?board_idx=162317&s_keyword=&view_type=&s_area=&s_year=&s_subject=&page=2') }}" target="_blank">바로가기</a></td>
                         </tr>
                         <tr>
                             <td>2017년 66기</td>
                             <td>경찰간부후보생 채용시험 기출문제</td>
-                            <td><a href="http://www.willbescop.net/library/library_view.html?topMenuType=O&topMenuGnb=OM_004&topMenu=081&menuID=OM_004_004&BOARD_MNG_SEQ=NOTICE_005&BOARDTYPE=8&INCTYPE=view&currentPage=1&BOARD_SEQ=132678&PARENT_BOARD_SEQ=0&SEARCHKIND=&SEARCHTEXT=" target="_blank">바로가기</a></td>
+                            <td><a href="{{ site_url('/support/examQuestion/show/cate/?board_idx=162316&s_keyword=&view_type=&s_area=&s_year=&s_subject=&page=2') }}" target="_blank">바로가기</a></td>
                         </tr>
                         <tr>
                             <td>2016년 65기</td>
                             <td>경찰간부후보생 채용시험 기출문제</td>
-                            <td><a href="http://www.willbescop.net/library/library_view.html?topMenuType=O&topMenuGnb=OM_004&topMenu=081&menuID=OM_004_004&BOARD_MNG_SEQ=NOTICE_005&BOARDTYPE=8&INCTYPE=view&currentPage=1&BOARD_SEQ=132675&PARENT_BOARD_SEQ=0&SEARCHKIND=&SEARCHTEXT=" target="_blank">바로가기</a></td>
+                            <td><a href="{{ site_url('/support/examQuestion/show/cate/?board_idx=162313&s_keyword=&view_type=&s_area=&s_year=&s_subject=&page=2') }}" target="_blank">바로가기</a></td>
                         </tr>
                     </table>
                 </div>
@@ -277,8 +277,6 @@
     </div>
     <!-- End Container -->
 
-
-    <script src="/public/js/willbes/jquery.nav"></script>
     <script>
         /*tab*/
         $(document).ready(function(){
@@ -305,24 +303,6 @@
 
                     e.preventDefault()})})}
         );
-
-        $(function(e){
-            var targetOffset= $("#evtContainer").offset().top;
-            $('html, body').animate({scrollTop: targetOffset}, 1000);
-            /*e.preventDefault(); */
-        });
-
-        $( document ).ready( function() {
-            var jbOffset = $( '.skybanner' ).offset();
-            $( window ).scroll( function() {
-                if ( $( document ).scrollTop() > jbOffset.top ) {
-                    $( '.skybanner' ).addClass( 'skybanner_sectionFixed' );
-                }
-                else {
-                    $( '.skybanner' ).removeClass( 'skybanner_sectionFixed' );
-                }
-            });
-        } );
     </script>
 
 @stop

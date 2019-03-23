@@ -16,7 +16,7 @@
                                     <img src="{{ $row['ProfLecListImg'] }}" width="82" height="82">
                                 </div>
                                 <div class="infoBox">
-                                    <div class="infoTit">{{ $row['SubjectName'] }} {{ $row['wProfName'] }}</div>
+                                    <div class="infoTit">{{ $row['SubjectName'] }} {{ $row['ProfNickName'] }}</div>
                                     <div class="infoTxt">
                                         {{ hpSubString($row['ProdName'], 0, 25, '...') }}<br/>
                                         <span class="small">{{ $row['wUnitLectureCnt'] }}강 / {{ $row['StudyPeriod'] }}일 / {{ $row['wLectureProgressCcdName'] }}</span><br/>
@@ -46,7 +46,7 @@
                                     <img src="{{ $row['ProfLecListImg'] }}" width="82" height="82">
                                 </div>
                                 <div class="infoBox">
-                                    <div class="infoTit">{{ $row['SubjectName'] }} {{ $row['wProfName'] }}</div>
+                                    <div class="infoTit">{{ $row['SubjectName'] }} {{ $row['ProfNickName'] }}</div>
                                     <div class="infoTxt">
                                         {{ hpSubString($row['ProdName'], 0, 25, '...') }}<br/>
                                         <span class="small">{{ $row['wUnitLectureCnt'] }}강 / {{ $row['StudyPeriod'] }}일 / {{ $row['wLectureProgressCcdName'] }}</span><br/>

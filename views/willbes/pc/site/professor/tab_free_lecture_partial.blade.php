@@ -13,7 +13,7 @@
                     <div class="Obj">
                         {!! $data['ProfSlogan'] !!}
                     </div>
-                    <div class="Name">{{ $data['wProfName'] }} 교수님</div>
+                    <div class="Name">{{ $data['ProfNickName'] }} 교수님</div>
                 </li>
                 @if(empty($tab_data['study_comment']) === false)
                     <li class="Reply tx-blue">
@@ -48,7 +48,7 @@
                     <tbody>
                     <tr>
                         <td class="w-list">{{ $row['CourseName'] }}</td>
-                        <td class="w-name">{{ $row['SubjectName'] }}<br/><span class="tx-blue">{{ $row['wProfName'] }}</span></td>
+                        <td class="w-name">{{ $row['SubjectName'] }}<br/><span class="tx-blue">{{ $row['ProfNickName'] }}</span></td>
                         <td class="w-data tx-left pl25">
                             <div class="w-tit">
                                 <a href="#none" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 4) }}', 'free');" class="prod-name">{{ $row['ProdName'] }}</a>

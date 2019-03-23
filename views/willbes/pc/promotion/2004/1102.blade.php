@@ -132,7 +132,7 @@
             <p><img src="http://file.willbes.net/new_image/2016/08/EV160812_p6_1.png" alt="혜택" /></p>
             <p id="lec_send"><img src="http://file.willbes.net/new_image/2016/08/EV160812_p6_3_1.png" alt="수강신청" usemap="#map2" />
                 <map name="map2" id="lecture">
-                    <area shape="rect" coords="273,61,710,142" href="{{ site_url('/pass/offPackage/index') }}" onfocus="this.blur();"/>
+                    <area shape="rect" coords="273,61,710,142" href="{{ site_url('/pass/professor/show/prof-idx/50274/?cate_code=3043&subject_idx=1254&subject_name=%EC%98%81%EC%96%B4&tab=open_lecture') }}" onfocus="this.blur();"/>
                 </map>
             </p>
         </div>

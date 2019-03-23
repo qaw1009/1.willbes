@@ -66,7 +66,7 @@
                     <iframe src="https://www.youtube.com/embed/re8w_IFAPS4?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>        
                     <a href="{{ site_url('/promotion/index/cate/3001/code/1129') }}">신의법칙 자세히 보기 &gt;</a>   
                 </div>
-                <ul class="ProfCopBox mt60 mb100">
+                <ul class="ProfCopBox mt100">
                     <li>
                         <img src="{{ img_url('cop/prof/prof_ske.jpg') }}" title="신광은">
                         <ul class="ProfBtns">
@@ -231,15 +231,9 @@
             </div>
         </div>
 
-        <div class="Section Section3 mt100 pb90">
+        <div class="Section Section3 pb90">
             <div class="widthAuto">
-                <div class="widthAuto smallTit">
-                    <p><span>기출문제와 강의 <strong>One - Stop!</strong></span></p>
-                </div>
-                <div class="will-big-Tit pt100">
-                    <div class="small NSK-Thin">경찰공무원 시험 기출문제 분석 </div>
-                    <div class="big NSK-Black">가장 <span class="cop-color">완벽한 분석!</span> 가장 <span class="cop-color">명쾌한 해설!</span></div>
-                </div>
+                <img src="{{ img_url('cop/visual/visual_190323_06.jpg') }}" title="기출문제와 강의 One-Stop!">
                 <div class="SpecialLecBox mt60">
                     <dl>
                         <dt class="nLec p_re">
@@ -257,10 +251,10 @@
                                 </div>
                                 <div class="infoList">
                                     <ul class="List-Table">
-                                        <li><a href="#none"><span>[2018년 3차]</span>경찰공무원(일반/경행) 채용시험 기출</a><span class="btn-more"><a href="{{ site_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/free?course_idx=1075') }}" target="_blank">바로가기 ></a></span></li>
-                                        <li><a href="#none"><span>[2018년 2차]</span>경찰공무원(일반/101단/경행) 채용시험 기출</a><span class="btn-more"><a href="{{ site_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/free?course_idx=1075') }}" target="_blank">바로가기 ></a></span></li>
-                                        <li><a href="#none"><span>[2018년 1차]</span>경찰공무원(일반/101단/전의경) 채용시험 기출</a><span class="btn-more"><a href="{{ site_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/free?course_idx=1075') }}" target="_blank">바로가기 ></a></span></li>
-                                        <li><a href="#none"><span>[2017년 2차]</span>경찰공무원(일반/101단/경행) 채용시험 기출</a><span class="btn-more"><a href="{{ site_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/free?course_idx=1075') }}" target="_blank">바로가기 ></a></span></li>
+                                        <li><p><span>[2018년 3차]</span>경찰공무원(일반/경행) 채용시험 기출</p><span class="btn-more"><a href="{{ site_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/free?course_idx=1075') }}" target="_blank">바로가기 ></a></span></li>
+                                        <li><p><span>[2018년 2차]</span>경찰공무원(일반/101단/경행) 채용시험 기출</p><span class="btn-more"><a href="{{ site_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/free?course_idx=1075') }}" target="_blank">바로가기 ></a></span></li>
+                                        <li><p><span>[2018년 1차]</span>경찰공무원(일반/101단/전의경) 채용시험 기출</p><span class="btn-more"><a href="{{ site_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/free?course_idx=1075') }}" target="_blank">바로가기 ></a></span></li>
+                                        <li><p><span>[2017년 2차]</span>경찰공무원(일반/101단/경행) 채용시험 기출</p><span class="btn-more"><a href="{{ site_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/free?course_idx=1075') }}" target="_blank">바로가기 ></a></span></li>
                                     </ul>
                                 </div>
                             </div>

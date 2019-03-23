@@ -56,16 +56,9 @@ class OffLecture extends \app\controllers\FrontController
         if (empty($cate_code) === false) {
             // 과정 조회
             $arr_base['course'] = $this->baseProductFModel->listCourseCategoryMapping($this->_site_code, $cate_code);
-            
-            // 과목 조회    
-            if (config_app('SiteGroupCode') == '1002') {
-                // 사이트그룹이 공무원일 경우 카테고별 직렬, 직렬별 과목 조회
-                $arr_base['series'] = $this->baseProductFModel->listSeriesCategoryMapping($this->_site_code, $cate_code);
-                $arr_base['subject'] = $this->baseProductFModel->listSubjectSeriesMapping($this->_site_code, $cate_code, element('series_ccd', $arr_input));
-            } else {
-                // 카테고리별 과목 조회
-                $arr_base['subject'] = $this->baseProductFModel->listSubjectCategoryMapping($this->_site_code, $cate_code);
-            }
+
+            // 카테고리별 과목 조회
+            $arr_base['subject'] = $this->baseProductFModel->listSubjectCategoryMapping($this->_site_code, $cate_code);
         }
 
         // 과목이 선택된 경우 해당 교수 조회

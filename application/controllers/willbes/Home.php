@@ -19,6 +19,9 @@ class Home extends \app\controllers\FrontController
      */
     public function index()
     {
+        // 모바일 리다이렉트
+        $this->_redirectMobile();
+
         $data = [];
 
         // APP 토큰 체크
@@ -34,11 +37,12 @@ class Home extends \app\controllers\FrontController
             $column = 'b.BoardIdx, b.Title, b.IsBest, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
             $order_by = ['b.IsBest' => 'Desc', 'b.BoardIdx' => 'Desc'];
             $arr_condition = ['EQ' => ['b.BmIdx' => 45, 'b.SiteCode' => $this->_site_code, 'b.IsUse' => 'Y']];
-            $data['notice'] = $this->supportBoardFModel->listBoard(false, $arr_condition, $column, 6, 0, $order_by);
+            $data['notice'] = $this->supportBoardFModel->listBoard(false, $arr_condition, '', $column, 6, 0, $order_by);
         }
 
         return $this->load->view('main', [
-            'data' => $data
+            'data' => $data,
+            'is_site_home' => true
         ]);
     }
 

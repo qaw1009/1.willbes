@@ -60,12 +60,9 @@ class SupportExamAnnouncement extends BaseSupport
             ]
         ];
 
+        $cate_code = '';
         if ($this->_site_code != config_item('app_intg_site_code')) {
-            $arr_condition = array_merge_recursive($arr_condition, [
-                'LKB' => [
-                    'Category_String' => $this->_cate_code
-                ]
-            ]);
+            $cate_code = $this->_cate_code;
         }
 
         $column = 'b.BoardIdx,b.CampusCcd,b.TypeCcd,b.IsBest,b.AreaCcd
@@ -76,12 +73,12 @@ class SupportExamAnnouncement extends BaseSupport
 
         $order_by = ['b.IsBest'=>'Desc','b.BoardIdx'=>'Desc'];
 
-        $total_rows = $this->supportBoardFModel->listBoardForSiteGroup(true, $this->_site_code, $arr_condition);
+        $total_rows = $this->supportBoardFModel->listBoardForSiteGroup(true, $this->_site_code, $cate_code, $arr_condition);
 
         $paging = $this->pagination($this->_default_path.'/examAnnouncement/index/?'.$get_page_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
 
         if ($total_rows > 0) {
-            $list = $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $arr_condition, $column, $paging['limit'], $paging['offset'], $order_by);
+            $list = $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $cate_code, $arr_condition, $column, $paging['limit'], $paging['offset'], $order_by);
             foreach ($list as $idx => $row) {
                 $list[$idx]['AttachData'] = json_decode($row['AttachData'],true);       //첨부파일
             }

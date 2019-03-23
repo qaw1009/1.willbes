@@ -144,12 +144,12 @@
         .Pstyle {opacity:0; display:none; position:relative; width:640px; padding:40px 20px 20px; background-color:#fff}
         .Pstyle .fpcontent {height:auto; width:auto; border:1px solid #000}
         .Pstyle .fpcontent h3 {text-align:center; background:#000; padding:15px}
-        .Pstyle  .fpcontentinfo1 {padding:30px}
-        .Pstyle  .fpcontentinfo1 p {font-size:120%; font-weight:bold; margin-bottom:15px; color:#000}
-        .Pstyle  .fpcontentinfo1 ol {margin-bottom:30px}
-        .Pstyle  .fpcontentinfo1 li {list-style:decimal; margin-left:20px; margin-bottom:5px; line-height:1.3}
-        .Pstyle  .fpcontentinfo1 li span {color:#F00}
-        .Pstyle  .fpcontentinfo1 .infoTxt {color:#F00; margin-bottom:10px}
+        .Pstyle .fpcontentinfo1 {padding:30px}
+        .Pstyle .fpcontentinfo1 p {font-size:120%; font-weight:bold; margin-bottom:15px; color:#000}
+        .Pstyle .fpcontentinfo1 ol {margin-bottom:30px}
+        .Pstyle .fpcontentinfo1 li {list-style:decimal; margin-left:20px; margin-bottom:5px; line-height:1.3}
+        .Pstyle .fpcontentinfo1 li span {color:#F00}
+        .Pstyle .fpcontentinfo1 .infoTxt {color:#F00; margin-bottom:10px}
         .b-close {position:absolute; right:15px; top:5px; display:inline-block; cursor:pointer}
     </style>
 
@@ -158,11 +158,11 @@
         <div class="rLnb">
             <ul class="typeA">
                 <li class="NSK-Black">서비스 바로가기</li>
-                <li><a href="/promotion/index/cate/3019/code/1111" class="menu1" target="_blank">인증센터</a></li>
-                <li><a href="https://pass.dev.willbes.net/home/index/cate/3019/promotion/index/cate/3019/code/1116" class="menu2" target="_blank">서울 노량진 교육과정</a></li>
-                <li><a href="https://pass.dev.willbes.net/home/index/cate/3019/promotion/index/cate/3019/code/1115" class="menu3" target="_blank">인천 부평 교육과정</a></li>
-                <li><a href="https://pass.dev.willbes.net/home/index/cate/3019/promotion/index/cate/3019/code/1117" class="menu4" target="_blank">부산 서면 교육과정</a></li>
-                <li><a href="https://pass.dev.willbes.net/home/index/cate/3019/promotion/index/cate/3019/code/1113" class="menu5" target="_blank">윌비스 PASS</a></li>
+                <li><a href="{{ app_url('/promotion/index/cate/3019/code/1111', 'pass') }}" class="menu1" target="_blank">인증센터</a></li>
+                <li><a href="{{ app_url('/promotion/index/cate/3019/code/1116', 'pass') }}" class="menu2" target="_blank">서울 노량진 교육과정</a></li>
+                <li><a href="{{ app_url('/promotion/index/cate/3019/code/1115', 'pass') }}" class="menu3" target="_blank">인천 부평 교육과정</a></li>
+                <li><a href="{{ app_url('/promotion/index/cate/3019/code/1117', 'pass') }}" class="menu4" target="_blank">부산 서면 교육과정</a></li>
+                <li><a href="{{ app_url('/promotion/index/cate/3019/code/1113', 'pass') }}" class="menu5" target="_blank">윌비스 PASS</a></li>
             </ul>
 
             <ul class="typeB">
@@ -276,8 +276,8 @@
                     <img src="http://file3.willbes.net/new_gosi/2017/01/leaveArmyB05.png" alt="혹시, 원하시는 교육과정을 찾지 못하셨나요?"/>
                     <ul>
                         <li class="liSty1">교육과정바로가기 &gt;</li>
-                        <li><a target="_blank" href="{{ site_url('/promotion/index/cate/3030/code/1113') }}">공무원 / 소방자격증</a></li>
-                        <li><a href="{{ site_url('/promotion/index/cate/3001/code/1121') }}">경찰</a></li>
+                        <li><a href="{{ app_url('/promotion/index/cate/3019/code/1113', 'pass') }}" target="_blank">>공무원 / 소방자격증</a></li>
+                        <li><a href="#none">경찰</a></li>
                     </ul>
                 </div>
 

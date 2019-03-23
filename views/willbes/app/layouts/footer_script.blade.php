@@ -23,5 +23,8 @@
 <script src="/public/vendor/starplayer/js/starplayer_bridge.js?ver={{time()}}"></script>
 <!--// JAVASCRIPT -->
 <!-- Common Site Script -->
+@if(isset($is_site_home) === true && $is_site_home === true)
+{{-- 메인 페이지일 경우만 --}}
 {!! base64_decode($__cfg['CommAppScript']) !!}
+@endif
 <!--// Common Site Script -->

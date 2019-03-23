@@ -94,13 +94,36 @@
         </div>
     </div>
 
-    <div class="Section youtubeWrap">
-        <div class="widthAuto smallTit">          
+    <div class="newPlaybn">
+        <div class="layer">		
+            <div class="video">
+                <video style="width:100%" autoplay loop muted="" poster="">
+                    <source src="http://sample4.hd.willbes.gscdn.com/police/190131_junhkyeong_bus_1210x360.mp4" type="video/mp4" width="1210" height="360"></source>
+                </video>
+            </div>
+            <div class="pngimg-real">
+                <img src="http://file3.willbes.net/new_cop/2019/03/190321_junhkyeong_bus_btn.png" alt="자세히보기"  usemap="#190131_junhkyeong_bus_btn">
+                <map name="190131_junhkyeong_bus_btn" id="190131_junhkyeong_bus_btn">
+                    <area shape="rect" coords="413,36,515,74" href="http://www.willbescop.net/movie/event.html?event_cd=Off_190107_p&topMenuType=F" />
+                    <area shape="rect" coords="826,257,921,301" href="http://www.willbescop.net/event/movie/event.html?event_cd=On_190307_y" />
+                </map>
+            </div>		
+        </div>
+    </div>
+
+    <div class="Section youtubeWrap mt100">
+        <!--div class="widthAuto smallTit">          
             <p><span>수험생에게 도움이 되는 <strong>특별한 영상!</strong></span></p>
             <a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank"><img src="{{ img_url('cop/icon_add_big.png') }}" alt="동영상 더보기"></a>             
+        </div-->
+
+        <div class="widthAuto">
+            <a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank">    
+                <img src="{{ img_url('cop/visual/youtubetab_tit.jpg') }}" alt="3법 300점, 공통 200점! 단기 합격까지!">   
+            </a>
         </div>
 
-        <div class="widthAuto mt80">
+        <div class="widthAuto">
             <div class="youtubetabWrap">
                 <ul class="youtubetab">
                     <li>
@@ -187,7 +210,7 @@
             </ul>
             <div class="willbes-Bnr mt60">
                 <ul>
-                    <li><a href="http://www.willbescop.net/event/movie/event.html?event_cd=On_190102_p&topMenuType=O" target="_blank"><img src="{{ img_url('cop/banner/bnr_190108.jpg') }}"></a></li>
+                    <li><a href="#none" target="_blank"><img src="{{ img_url('cop/banner/190322_cBar_1120x110.jpg') }}" alt="숨은 필합자를 찾아라"></a></li>
                 </ul>
             </div>
         </div>

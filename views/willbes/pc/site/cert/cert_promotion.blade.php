@@ -46,7 +46,7 @@
                 현직 경찰임을 인증해 주시기 바랍니다.<br>
                 인증을 받으셔야 각종 할인 및 이벤트 혜택이 적용되오니 사이트 이용에 참고하시기 바랍니다.
             </div>
-            <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+
                 <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
                     {!! csrf_field() !!}
                     {!! method_field('POST') !!}

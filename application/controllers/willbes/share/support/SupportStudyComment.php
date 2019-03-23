@@ -50,18 +50,9 @@ class SupportStudyComment extends BaseSupport
             ]
         ];
 
+        $cate_code = '';
         if ($this->_site_code != config_item('app_intg_site_code')) {
-            $arr_best_condition = array_merge_recursive($arr_best_condition, [
-                'LKB' => [
-                    'Category_String' => $cate_code
-                ]
-            ]);
-
-            $arr_condition = array_merge_recursive($arr_condition, [
-                'LKB' => [
-                    'Category_String' => $cate_code
-                ]
-            ]);
+            $cate_code = $this->_cate_code;
         }
 
         $column = 'BoardIdx, IsBest, RegType, RegMemIdx, RegMemId, RegMemName';
@@ -74,13 +65,13 @@ class SupportStudyComment extends BaseSupport
         $order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
 
         $list = [];
-        $total_rows = $this->supportBoardTwoWayFModel->listBoard(true, $arr_condition);
+        $total_rows = $this->supportBoardTwoWayFModel->listBoard(true, $arr_condition,$cate_code);
         $paging = $this->pagination('/support/studyComment/listFrame/?'.$get_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
 
         if ($total_rows > 0) {
-            $list = $this->supportBoardTwoWayFModel->listBoard(false,$arr_condition,$column,$paging['limit'],$paging['offset'],$order_by);
+            $list = $this->supportBoardTwoWayFModel->listBoard(false,$arr_condition,$cate_code,$column,$paging['limit'],$paging['offset'],$order_by);
         }
-        $list_best = $this->supportBoardTwoWayFModel->listBoard(false,$arr_best_condition,$column,2,0,['LecScore' => 'Desc','BoardIdx'=>'Desc']);
+        $list_best = $this->supportBoardTwoWayFModel->listBoard(false,$arr_best_condition,$cate_code,$column,2,0,['LecScore' => 'Desc','BoardIdx'=>'Desc']);
 
         $this->load->view('support/frame/study', [
             'arr_input' => $arr_input,
@@ -207,11 +198,11 @@ class SupportStudyComment extends BaseSupport
         }
 
         $list = [];
-        $total_rows = $this->supportBoardTwoWayFModel->listBoard(true, $arr_condition);
+        $total_rows = $this->supportBoardTwoWayFModel->listBoard(true, $arr_condition,'');
         $paging = $this->pagination('/support/studyComment/listAjax/',$total_rows,$this->_paging_limit,$this->_paging_count,true);
 
         if ($total_rows > 0) {
-            $list = $this->supportBoardTwoWayFModel->listBoard(false,$arr_condition,$column,$paging['limit'],$paging['offset'],$order_by);
+            $list = $this->supportBoardTwoWayFModel->listBoard(false,$arr_condition,'',$column,$paging['limit'],$paging['offset'],$order_by);
         }
         return $this->response([
             'paging' => $paging,
@@ -234,29 +225,21 @@ class SupportStudyComment extends BaseSupport
 
         $arr_condition = [
             'EQ' => [
-                'BmIdx' => $this->_bm_idx,
-                'IsUse' => 'Y',
-                'SubjectIdx' => $subject_idx,
-                'ProfIdx' => $prof_idx,
-                'ProdCode' => $prod_code
+                'b.BmIdx' => $this->_bm_idx,
+                'b.IsUse' => 'Y',
+                'b.SubjectIdx' => $subject_idx,
+                'b.ProfIdx' => $prof_idx,
+                'b.ProdCode' => $prod_code
             ],
             'ORG' => [
                 'LKB' => [
-                    'Title' => $s_keyword,
-                    'Content' => $s_keyword
+                    'b.Title' => $s_keyword,
+                    'b.Content' => $s_keyword
                 ]
             ]
         ];
 
-        if ($this->_site_code != config_item('app_intg_site_code')) {
-            $arr_condition = array_merge_recursive($arr_condition, [
-                'LKB' => [
-                    'Category_String' => $cate_code
-                ]
-            ]);
-        }
-
-        $total_rows = $this->supportBoardTwoWayFModel->listBoard(true, $arr_condition);
+        $total_rows = $this->supportBoardTwoWayFModel->listBoard(true, $arr_condition,$cate_code);
         $paging = $this->pagination('/support/studyComment/listAjax/',$total_rows,$this->_paging_limit,$this->_paging_count,true);
 
         return $this->response([

@@ -13,7 +13,9 @@
         <h2>교수진 소개</h2>
         @include('willbes.pc.site.professor.lnb_menu_partial')
     </div>
-    <div class="Content p_re ml20">        
+    <div class="Content p_re ml20">
+        @if($__cfg['IsPassSite'] === false)
+        {{-- 온라인사이트만 노출 --}}
         <div class="willbes-NoticeWrap mb40 c_both">
             {!! banner('교수진인덱스_신규강좌배너', 'sliderPromotion widthAuto460 f_left mr20', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
             <div class="willbes-listTable willbes-newLec widthAuto460 mt0">
@@ -29,6 +31,7 @@
             </div>
         </div>
         <!-- willbes-NoticeWrap -->
+        @endif
 
         <form id="url_form" name="url_form" method="GET">
             @foreach($arr_input as $key => $val)
@@ -46,6 +49,8 @@
         </div>
         @endif
 
+        @if($__cfg['IsPassSite'] === false)
+        {{-- 온라인사이트만 노출 --}}
         <div class="curriWrap GM c_both">
             <div class="CurriBox">
                 <table cellspacing="0" cellpadding="0" class="curriTable">
@@ -117,6 +122,7 @@
             </div>
         </div>
         <!-- curriWrap -->
+        @endif
 
         {{-- 과목별 교수 리스트 --}}
         @foreach($data['subjects'] as $subject_idx => $subject_name)
@@ -137,7 +143,7 @@
                         @endif
                         <div class="Obj">{!! $row['ProfSlogan'] !!}</div>
                         <div class="Name">
-                            <strong>{{ $row['wProfName'] }}</strong><br/>
+                            <strong>{{ $row['ProfNickName'] }}</strong><br/>
                             교수님
                             @if($row['IsNew'] == 'Y') <img class="N" src="{{ img_url('prof/icon_N.gif') }}"> @endif
                         </div>

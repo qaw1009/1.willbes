@@ -14,56 +14,14 @@ class SupportBoardFModel extends BaseSupportFModel
      * 게시판 글 목록 추출
      * @param $is_count
      * @param array $arr_condition
-     * @param null $column
-     * @param null $limit
-     * @param null $offset
-     * @param array $order_by
-     * @return array|int
-     */
-    public function listBoard($is_count, $arr_condition=[], $column = null, $limit = null, $offset = null, $order_by = [])
-    {
-        $column = ($is_count === true) ? $is_count :  $column;
-        $result = $this->_conn->getListResult($this->_table['board'], $column, $arr_condition, $limit, $offset, $order_by);
-        //echo $this->_conn->last_query();
-        return $result;
-    }
-
-    /**
-     * 게시글 조회
-     * @param $board_idx
-     * @param array $arr_condition
-     * @param string $column
-     * @param null $limit
-     * @param null $offset
-     * @param array $order_by
-     * @return mixed
-     */
-    public function findBoard($board_idx,$arr_condition=[],$column='*',$limit = null, $offset = null, $order_by = [])
-    {
-        $arr_condition = array_merge_recursive($arr_condition,[
-            'EQ' => [
-                'b.BoardIdx' => $board_idx,
-            ]
-        ]);
-        $column = $column . ',b.BoardIsComment';
-
-        $result = $this->_conn->getListResult($this->_table['board'], $column, $arr_condition, $limit, $offset, $order_by);
-        //echo $this->_conn->last_query();exit;
-        return element('0', $result, []);
-    }
-
-    /**
-     * 사이트 그룹에 속한 게시판 글 목록
-     * @param $is_count
-     * @param $site_code
-     * @param array $arr_condition
+     * @param $cate_code
      * @param null $column
      * @param null $limit
      * @param null $offset
      * @param array $order_by
      * @return mixed
      */
-    public function listBoardForSiteGroup($is_count, $site_code, $arr_condition=[], $column = null, $limit = null, $offset = null, $order_by = [])
+    public function listBoard($is_count, $arr_condition=[], $cate_code, $column = null, $limit = null, $offset = null, $order_by = [])
     {
         if ($is_count === true) {
             $column = 'count(*) AS numrows';
@@ -74,13 +32,77 @@ class SupportBoardFModel extends BaseSupportFModel
         }
 
         $from = "
-            FROM {$this->_table['board']}
+            FROM {$this->_table['board_2']}
+        ";
+
+        if (empty($cate_code) === false) {
+            $from .= "
+                inner join {$this->_table['lms_board_r_category']} as c
+                    on b.BoardIdx = c.BoardIdx and c.IsStatus = 'Y'
+                inner join {$this->_table['lms_sys_category']} as d
+                    on c.CateCode = d.CateCode and d.IsStatus = 'Y'
+            ";
+
+            $arr_condition = array_merge($arr_condition,[
+                'RAW' => [
+                    'c.CateCode = ' => (empty($cate_code) === true) ? '\'\'' : $cate_code
+                ]
+            ]);
+        }
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    /**
+     * 사이트 그룹에 속한 게시판 글 목록
+     * @param $is_count
+     * @param $site_code
+     * @param $cate_code
+     * @param array $arr_condition
+     * @param null $column
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
+     */
+    public function listBoardForSiteGroup($is_count, $site_code, $cate_code, $arr_condition=[], $column = null, $limit = null, $offset = null, $order_by = [])
+    {
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $from = "
+            FROM {$this->_table['board_2']}
             INNER JOIN (
                 SELECT SiteGroupCode
                 FROM {$this->_table['site']}
                 WHERE SiteCode = '{$site_code}'
             ) AS s ON b.SiteGroupCode = s.SiteGroupCode
         ";
+
+        if (empty($cate_code) === false) {
+            $from .= "
+                inner join {$this->_table['lms_board_r_category']} as c
+                    on b.BoardIdx = c.BoardIdx and c.IsStatus = 'Y'
+                inner join {$this->_table['lms_sys_category']} as d
+                    on c.CateCode = d.CateCode and d.IsStatus = 'Y'
+            ";
+
+            $arr_condition = array_merge($arr_condition,[
+                'RAW' => [
+                    'c.CateCode = ' => (empty($cate_code) === true) ? '\'\'' : $cate_code
+                ]
+            ]);
+        }
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
@@ -107,7 +129,7 @@ class SupportBoardFModel extends BaseSupportFModel
 
         $query = /** @lang text */ '
             select * from (
-                select ' . $column . ' from ' . $this->_table['board'] . $where . '
+                select ' . $column . ' from ' . $this->_table['board_2'] . $where . '
             ) U
             where RowNum < ? 
             ORDER BY IsBest DESC, BoardIdx DESC';
@@ -118,7 +140,7 @@ class SupportBoardFModel extends BaseSupportFModel
         return $query->result_array();
     }
 
-    public function listBoardForProf($is_count, $site_code, $prof_idx, $arr_condition=[], $column = null, $limit = null, $offset = null, $order_by = [])
+    public function listBoardForProf($is_count, $site_code, $prof_idx, $arr_condition=[], $cate_code, $column = null, $limit = null, $offset = null, $order_by = [])
     {
         if ($is_count === true) {
             $column = 'count(*) AS numrows';
@@ -129,7 +151,7 @@ class SupportBoardFModel extends BaseSupportFModel
         }
 
         $from = "
-            FROM {$this->_table['board']}
+            FROM {$this->_table['board_2']}
             INNER JOIN (
                 SELECT SiteGroupCode
                 FROM {$this->_table['site']}
@@ -147,12 +169,51 @@ class SupportBoardFModel extends BaseSupportFModel
             ) AS p ON b.ProfIdx = p.ProfIdx
         ";
 
+        if (empty($cate_code) === false) {
+            $from .= "
+                inner join {$this->_table['lms_board_r_category']} as c
+                    on b.BoardIdx = c.BoardIdx and c.IsStatus = 'Y'
+                inner join {$this->_table['lms_sys_category']} as d
+                    on c.CateCode = d.CateCode and d.IsStatus = 'Y'
+            ";
+
+            $arr_condition = array_merge($arr_condition,[
+                'RAW' => [
+                    'c.CateCode = ' => (empty($cate_code) === true) ? '\'\'' : $cate_code
+                ]
+            ]);
+        }
+
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
 
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    /**
+     * 게시글 조회
+     * @param $board_idx
+     * @param array $arr_condition
+     * @param string $column
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
+     */
+    public function findBoard($board_idx,$arr_condition=[],$column='*',$limit = null, $offset = null, $order_by = [])
+    {
+        $arr_condition = array_merge_recursive($arr_condition,[
+            'EQ' => [
+                'b.BoardIdx' => $board_idx,
+            ]
+        ]);
+        $column = $column . ',b.BoardIsComment';
+
+        $result = $this->_conn->getListResult($this->_table['board_find'], $column, $arr_condition, $limit, $offset, $order_by);
+        //echo $this->_conn->last_query();exit;
+        return element('0', $result, []);
     }
 
     /**
@@ -175,7 +236,7 @@ class SupportBoardFModel extends BaseSupportFModel
         ]);
 
         $from = "
-            FROM {$this->_table['board']}
+            FROM {$this->_table['board_find']}
             INNER JOIN (
                 SELECT SiteGroupCode
                 FROM {$this->_table['site']}
@@ -202,7 +263,7 @@ class SupportBoardFModel extends BaseSupportFModel
         ]);
 
         $from = "
-            FROM {$this->_table['board']}
+            FROM {$this->_table['board_find']}
             INNER JOIN (
                 SELECT SiteGroupCode
                 FROM {$this->_table['site']}
@@ -231,7 +292,7 @@ class SupportBoardFModel extends BaseSupportFModel
         return $this->_conn->query('select '.$column .$from .$where . $order_by_offset_limit)->row_array();
     }
 
-    public function listBoardForTpass($site_code, $is_count, $arr_condition_board = [], $arr_condition_pkg = [], $arr_condition_auth = [], $column = null, $limit = null, $offset = null, $order_by = [])
+    public function listBoardForTpass($site_code, $is_count, $cate_code, $arr_condition_board = [], $arr_condition_pkg = [], $arr_condition_auth = [], $column = null, $limit = null, $offset = null, $order_by = [])
     {
         if ($is_count === true) {
             $column = 'count(*) AS numrows';
@@ -244,7 +305,7 @@ class SupportBoardFModel extends BaseSupportFModel
         $query_string = $this->_makePackageQueryString($arr_condition_pkg, $arr_condition_auth);
 
         $from = "
-            FROM {$this->_table['board']}
+            FROM {$this->_table['board_2']}
             INNER JOIN (
                 SELECT SiteGroupCode
                 FROM {$this->_table['site']}
@@ -255,6 +316,21 @@ class SupportBoardFModel extends BaseSupportFModel
                 {$query_string}
             ) AS p ON b.ProdCode = p.ProdCode
         ";
+
+        if (empty($cate_code) === false) {
+            $from .= "
+                inner join {$this->_table['lms_board_r_category']} as c
+                    on b.BoardIdx = c.BoardIdx and c.IsStatus = 'Y'
+                inner join {$this->_table['lms_sys_category']} as d
+                    on c.CateCode = d.CateCode and d.IsStatus = 'Y'
+            ";
+
+            $arr_condition_board = array_merge($arr_condition_board,[
+                'RAW' => [
+                    'c.CateCode = ' => (empty($cate_code) === true) ? '\'\'' : $cate_code
+                ]
+            ]);
+        }
 
         $where = $this->_conn->makeWhere($arr_condition_board);
         $where = $where->getMakeWhere(false);
@@ -274,7 +350,7 @@ class SupportBoardFModel extends BaseSupportFModel
         $query_string = $this->_makePackageQueryString($arr_condition_pkg, $arr_condition_auth);
 
         $from = "
-            FROM {$this->_table['board']}
+            FROM {$this->_table['board_find']}
             INNER JOIN (
                 SELECT SiteGroupCode
                 FROM {$this->_table['site']}

@@ -141,11 +141,11 @@ class Qna extends SupportQna
         $column .= ', IF(IsCampus=\'Y\',\'학원\',\'온라인\') AS CampusType_Name, SiteGroupName';
 
         $order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
-        $total_rows = $this->supportBoardTwoWayFModel->listBoard(true, $arr_condition);
+        $total_rows = $this->supportBoardTwoWayFModel->listBoard(true, $arr_condition, '');
 
         $paging = $this->pagination('/classroom/qna/index/?'.$get_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
         if ($total_rows > 0) {
-            $list = $this->supportBoardTwoWayFModel->listBoard(false,$arr_condition,$column,$paging['limit'],$paging['offset'],$order_by);
+            $list = $this->supportBoardTwoWayFModel->listBoard(false,$arr_condition, '',$column,$paging['limit'],$paging['offset'],$order_by);
             foreach ($list as $idx => $row) {
                 $list[$idx]['AttachData'] = json_decode($row['AttachData'],true);       //첨부파일
             }

@@ -62,9 +62,6 @@ class SupportOffBoardInfo extends BaseSupport
                 ,'b.CampusCcd' => $s_campus
 
             ],
-            'LKB' => [
-                'Category_String'=>$s_cate_code
-            ],
             'ORG' => [
                 'LKB' => [
                     'b.Title' => $s_keyword
@@ -75,7 +72,7 @@ class SupportOffBoardInfo extends BaseSupport
 
         $column = 'b.BoardIdx,b.CampusCcd,b.TypeCcd,b.IsBest,b.AreaCcd
                        ,b.Title,b.Content, (b.ReadCnt + b.SettingReadCnt) as TotalReadCnt
-                       ,b.CampusCcd_Name, b.TypeCcd_Name,b.AreaCcd_Name, Category_NameString
+                       ,b.CampusCcd_Name, b.TypeCcd_Name,b.AreaCcd_Name
                        ,b.SubjectName,b.CourseName,b.AttachData,DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm
                        ';
         $order_by = ['b.IsBest'=>'Desc','b.BoardIdx'=>'Desc'];
@@ -85,11 +82,11 @@ class SupportOffBoardInfo extends BaseSupport
         } else {
             $paging_count = $this->_paging_count_m;
         }
-        $total_rows = $this->supportBoardFModel->listBoard(true, $arr_condition);
+        $total_rows = $this->supportBoardFModel->listBoard(true, $arr_condition, $s_cate_code);
         $paging = $this->pagination($this->_default_path.'/index/'.$bm_idx.'?'.$get_page_params,$total_rows,$this->_paging_limit,$paging_count,true);
 
         if ($total_rows > 0) {
-            $list = $this->supportBoardFModel->listBoard(false,$arr_condition,$column,$paging['limit'],$paging['offset'],$order_by);
+            $list = $this->supportBoardFModel->listBoard(false,$arr_condition, $s_cate_code,$column,$paging['limit'],$paging['offset'],$order_by);
             foreach ($list as $idx => $row) {
                 $list[$idx]['AttachData'] = json_decode($row['AttachData'],true);       //첨부파일
             }

@@ -44,6 +44,8 @@ class CertApplyModel extends WB_Model
                             ,o.CompleteDatm as OrderDatm
                             ,\'\' as ExtendStatus
                             ,\'\' as ExtendDatm
+                            ,sc1.CcdName as TakeArea_Name
+            				,sc2.CcdName as TakeKind_Name
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -63,6 +65,8 @@ class CertApplyModel extends WB_Model
 	                    left outer join wbs_sys_admin H on SA.CancelAdminIdx = H.wAdminIdx
 	                    left outer join lms_order_product op on op.CaIdx = SA.CaIdx
 	                    left outer join lms_order o on op.OrderIdx = o.OrderIdx
+	                    left outer join lms_sys_code sc1 on sc1.Ccd = SA.TakeArea 
+	                    left outer join lms_sys_code sc2 on sc2.Ccd = SA.TakeKind
                     where SA.IsStatus=\'Y\' and A.IsStatus=\'Y\'
         ';
 
@@ -81,7 +85,6 @@ class CertApplyModel extends WB_Model
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
         //echo 'select ' . $column . $from . $where . $order_by_offset_limit;
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
-
     }
 
     /**

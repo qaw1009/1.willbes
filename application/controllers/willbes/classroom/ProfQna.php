@@ -125,49 +125,49 @@ class ProfQna extends SupportQna
 
         $arr_condition = [
             'EQ' => [
-                'BmIdx' => $this->_bm_idx,
-                'RegMemIdx' => $this->session->userdata('mem_idx'),
-                'RegType' => '0',
-                'IsUse' => 'Y',
-                'SiteCode' => $s_site_code,
-                'TypeCcd' => $s_consult_type,
-                'ProfIdx' => $prof_idx,
-                'SubjectIdx' => $subject_idx,
+                'b.BmIdx' => $this->_bm_idx,
+                'b.RegMemIdx' => $this->session->userdata('mem_idx'),
+                'b.RegType' => '0',
+                'b.IsUse' => 'Y',
+                'b.SiteCode' => $s_site_code,
+                'b.TypeCcd' => $s_consult_type,
+                'b.ProfIdx' => $prof_idx,
+                'b.SubjectIdx' => $subject_idx,
             ],
             'ORG' => [
                 'LKB' => [
-                    'Title' => $s_keyword,
-                    'Content' => $s_keyword
+                    'b.Title' => $s_keyword,
+                    'b.Content' => $s_keyword
                 ]
             ]
         ];
 
         if ($replay_type == 'Y') {
             $arr_condition['EQ'] = array_merge($arr_condition['EQ'], [
-                'ReplyStatusCcd' => $this->_groupCcd['reply_status_ccd_complete']
+                'b.ReplyStatusCcd' => $this->_groupCcd['reply_status_ccd_complete']
             ]);
         } else if ($replay_type == 'N') {
             $arr_condition['EQ'] = array_merge($arr_condition['EQ'], [
-                'ReplyStatusCcd' => $this->_groupCcd['reply_status_ccd_not_complete']
+                'b.ReplyStatusCcd' => $this->_groupCcd['reply_status_ccd_not_complete']
             ]);
         }
 
-        $column = 'BoardIdx, CampusCcd, TypeCcd, IsBest, RegType, RegMemIdx';
-        $column .= ', ProfIdx, SubjectIdx, SubjectName, ProfName, ProdName';
-        $column .= ', Title, Content, ReplyContent, (ReadCnt + SettingReadCnt) as TotalReadCnt';
-        $column .= ', AttachData,DATE_FORMAT(RegDatm, \'%Y-%m-%d\') as RegDatm';
-        $column .= ', IsPublic, CampusCcd_Name, TypeCcd_Name';
-        $column .= ', SiteName, ReplyStatusCcd, ReplyStatusCcd_Name';
-        $column .= ', IF(RegType=1, \'\', RegMemName) AS RegName';
-        $column .= ', IF(IsCampus=\'Y\',\'offline\',\'online\') AS CampusType';
-        $column .= ', IF(IsCampus=\'Y\',\'학원\',\'온라인\') AS CampusType_Name, SiteGroupName';
+        $column = 'b.BoardIdx, b.CampusCcd, b.TypeCcd, b.IsBest, b.RegType, b.RegMemIdx';
+        $column .= ', b.ProfIdx, b.SubjectIdx, b.SubjectName, b.ProfName, b.ProdName';
+        $column .= ', b.Title, b.Content, b.ReplyContent, (b.ReadCnt + b.SettingReadCnt) as TotalReadCnt';
+        $column .= ', b.AttachData,DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
+        $column .= ', b.IsPublic, b.CampusCcd_Name, b.TypeCcd_Name';
+        $column .= ', b.SiteName, b.ReplyStatusCcd, b.ReplyStatusCcd_Name';
+        $column .= ', IF(b.RegType=1, \'\', RegMemName) AS RegName';
+        $column .= ', IF(b.IsCampus=\'Y\',\'offline\',\'online\') AS CampusType';
+        $column .= ', IF(b.IsCampus=\'Y\',\'학원\',\'온라인\') AS CampusType_Name, SiteGroupName';
 
         $order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
-        $total_rows = $this->supportBoardTwoWayFModel->listBoard(true, $arr_condition);
+        $total_rows = $this->supportBoardTwoWayFModel->listBoard(true, $arr_condition,'');
 
         $paging = $this->pagination('/classroom/profQna/index/?'.$get_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
         if ($total_rows > 0) {
-            $list = $this->supportBoardTwoWayFModel->listBoard(false,$arr_condition,$column,$paging['limit'],$paging['offset'],$order_by);
+            $list = $this->supportBoardTwoWayFModel->listBoard(false,$arr_condition,'',$column,$paging['limit'],$paging['offset'],$order_by);
             foreach ($list as $idx => $row) {
                 $list[$idx]['AttachData'] = json_decode($row['AttachData'],true);       //첨부파일
             }

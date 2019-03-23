@@ -8,50 +8,19 @@
         </div>
     </li>
     @endif
-    @if(empty($data['arr_main_quick']['메인_우측퀵_01']) === false)
-        {{-- 팝업창 링크 전용 배너 (인증센터) --}}
-        <li>
-            <div class="QuickSlider">
-                <div class="sliderNum">
-                    @php $link_url = ''; @endphp
-                    @foreach($data['arr_main_quick']['메인_우측퀵_01'] as $row)
-                        @if (empty($row['LinkUrl']) === false)
-                            @php $link_url = front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www'); @endphp
-                        @endif
-                            <div><a href="#none" onclick="popupOpen('{{ $link_url }}', '_bn_pop_{{ $row['BIdx'] }}', '{{ $row['PopWidth'] }}', '{{ $row['PopHeight'] }}', null, null, 'no', 'no');"><img src="{{ $row['BannerFullPath'] . $row['BannerImgName'] }}" alt="{{ $row['BannerName'] }}"></a></div>
-                    @endforeach
-                </div>
-            </div>
-        </li>
-    @endif
-    @if(empty($data['arr_main_quick']['메인_우측퀵_02']) === false)
-        <li>
-            <div class="QuickSlider">
-                <div class="sliderNum">
-                    @php $link_url = ''; @endphp
-                    @foreach($data['arr_main_quick']['메인_우측퀵_02'] as $row)
-                        @if (empty($row['LinkUrl']) === false)
-                            @php $link_url = front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www'); @endphp
-                        @endif
-                        <div><a href="{{ $link_url }}" target="_{{ $row['LinkType'] }}"><img src="{{ $row['BannerFullPath'] . $row['BannerImgName'] }}" alt="{{ $row['BannerName'] }}"></a></div>
-                    @endforeach
-                </div>
-            </div>
-        </li>
-    @endif
-    @if(empty($data['arr_main_quick']['메인_우측퀵_03']) === false)
-        <li>
-            <div class="QuickSlider">
-                <div class="sliderNum">
-                    @php $link_url = ''; @endphp
-                    @foreach($data['arr_main_quick']['메인_우측퀵_03'] as $row)
-                        @if (empty($row['LinkUrl']) === false)
-                            @php $link_url = front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www'); @endphp
-                        @endif
-                        <div><a href="{{ $link_url }}" target="_{{ $row['LinkType'] }}"><img src="{{ $row['BannerFullPath'] . $row['BannerImgName'] }}" alt="{{ $row['BannerName'] }}"></a></div>
-                    @endforeach
-                </div>
-            </div>
-        </li>
-    @endif
+    <li>
+        <div class="QuickSlider">
+            {!! banner_html(element('메인_우측퀵_01', $data['arr_main_banner']), 'sliderNum') !!}
+        </div>
+    </li>
+    <li>
+        <div class="QuickSlider">
+            {!! banner_html(element('메인_우측퀵_02', $data['arr_main_banner']), 'sliderNum') !!}
+        </div>
+    </li>
+    <li>
+        <div class="QuickSlider">
+            {!! banner_html(element('메인_우측퀵_03', $data['arr_main_banner']), 'sliderNum') !!}
+        </div>
+    </li>
 </ul>

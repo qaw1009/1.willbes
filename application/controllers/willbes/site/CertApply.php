@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class CertApply extends \app\controllers\FrontController
 {
-    protected $models = array('cert/certApplyF');
+    protected $models = array('cert/certApplyF','_lms/sys/code');
     protected $helpers = array();
     protected $auth_controller = false;
     protected $auth_methods = array('store','checkCert');
@@ -36,8 +36,14 @@ class CertApply extends \app\controllers\FrontController
             'A.SiteCode' => $this->_site_code
         ];
 
+        //경찰시험직렬,경찰시험지역 : 꿀팁 이벤트 때문에 추출
+        $codes = $this->codeModel->getCcdInArray(['711','712']);
+
         $data = $this->certApplyFModel->findCertByCertIdx($cert_idx,$arr_condition);
         $product_list = $this->certApplyFModel->listProductByCertIdx($cert_idx,$arr_condition);
+
+        $data['kind_ccd'] = $codes['711'];
+        $data['area_ccd'] = $codes['712'];
 
         $this->load->view('site/cert/cert_'.$cert_page,[
             'cert_idx' => $cert_idx,
@@ -111,7 +117,44 @@ class CertApply extends \app\controllers\FrontController
 
             $this->json_result(true, '','',$apply_result);
         }
-
     }
+
+    /**
+     * 응시번호 확인 : 1.실제응시번호 2.사용여부
+     */
+    public function checkTakeNumber()
+    {
+        if (empty($this->_reqP('CenCode')) || empty($this->_reqP('TakeKind')) || empty($this->_reqP('TakeArea')) || empty($this->_reqP('TakeNo')) ) {
+            return $this->json_error('입력 정보가 비정상입니다.');
+        }
+
+        //합격자 응시번호 여부 파악
+        $take_result = $this->certApplyFModel->findPassTakeNumber($this->_reqP(null));
+        if($take_result == "0") {
+            return $this->json_error('정상적인  응시번호가 아닙니다. ');
+        }
+        //echo var_dump($take_result);exit;
+
+       $add_condition=[
+            'EQ'=>[
+                'CertIdx'=>$this->_reqP('CertIdx')
+                ,'TakeKind'=>$this->_reqP('TakeKind')
+                ,'TakeArea'=>$this->_reqP('TakeArea')
+                ,'TakeNo'=>$this->_reqP('TakeNo')
+            ]
+        ];
+
+        //기등록된 응시번호 여부 파악
+        $reg_result = $this->certApplyFModel->findApply($add_condition);
+        if($reg_result > 0) {
+            return $this->json_error('이미 등록 사용된 응시번호입니다.');
+        }
+
+        //인증 등록 처리 프로세스
+        $result = $this->certApplyFModel->addApply($this->_reqP(null));
+
+        $this->json_result(true, '','',true);
+    }
+
 
 }

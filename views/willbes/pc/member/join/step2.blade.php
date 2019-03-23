@@ -959,4 +959,8 @@
     </script>
     <script src="/public/vendor/jquery/validator/jquery.validate.js"></script>
     <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="//t1.daumcdn.net/adfit/static/kp.js"></script>
+    <script type="text/javascript">
+        kakaoPixel('6331763949938786102').pageView();
+    </script>
 @stop

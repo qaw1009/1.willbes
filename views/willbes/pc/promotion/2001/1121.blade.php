@@ -276,7 +276,7 @@
                     <img src="http://file3.willbes.net/new_gosi/2017/01/leaveArmyB05.png" alt="혹시, 원하시는 교육과정을 찾지 못하셨나요?"/>
                     <ul>
                         <li class="liSty1">교육과정바로가기 &gt;</li>
-                        <li><a href="{{ app_url('/promotion/index/cate/3019/code/1113', 'pass') }}" target="_blank">>공무원 / 소방자격증</a></li>
+                        <li><a href="{{ app_url('/promotion/index/cate/3019/code/1113', 'pass') }}" target="_blank">공무원 / 소방자격증</a></li>
                         <li><a href="#none">경찰</a></li>
                     </ul>
                 </div>

@@ -41,32 +41,27 @@ class SupportProfTcc extends  BaseSupport
             'EQ' => [
                 'b.BmIdx' => $this->_bm_idx
                 ,'b.IsUse' => 'Y'
-                /*,'b.ProfIdx' => $prof_idx
-                ,'b.SubjectIdx' => $subject_idx*/
             ],
             'ORG' => [
                 'LKB' => [
                     'b.Content' => $s_keyword
                 ]
-            ],
-            /*'LKB' => [
-                'Category_String'=>$s_cate_code
-            ]*/
+            ]
         ];
 
         $column = 'b.BoardIdx,b.CampusCcd,b.TypeCcd,b.IsBest,b.AreaCcd, b.VideoUrl
                        ,b.Title,b.Content, (b.ReadCnt + b.SettingReadCnt) as TotalReadCnt
-                       ,b.CampusCcd_Name, b.TypeCcd_Name,b.AreaCcd_Name, Category_NameString
+                       ,b.CampusCcd_Name, b.TypeCcd_Name,b.AreaCcd_Name
                        ,b.SubjectName,b.CourseName,b.AttachData,DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm,
                        IF(IsCampus=\'Y\',\'학원\',\'온라인\') AS CampusType_Name
                        ';
         $order_by = ['b.IsBest'=>'Desc','b.BoardIdx'=>'Desc'];
         $paging_count = $this->_paging_count;
-        $total_rows = $this->supportBoardFModel->listBoardForProf(true, $this->_site_code, $prof_idx, $arr_condition);
+        $total_rows = $this->supportBoardFModel->listBoardForProf(true, $this->_site_code, $prof_idx, $arr_condition, '');
         $paging = $this->pagination($this->_default_path.'/tcc/index/?'.$get_page_params,$total_rows,$this->_paging_limit,$paging_count,true);
 
         if ($total_rows > 0) {
-            $list = $this->supportBoardFModel->listBoardForProf(false, $this->_site_code, $prof_idx, $arr_condition, $column, $paging['limit'], $paging['offset'], $order_by);
+            $list = $this->supportBoardFModel->listBoardForProf(false, $this->_site_code, $prof_idx, $arr_condition, '', $column, $paging['limit'], $paging['offset'], $order_by);
             foreach ($list as $idx => $row) {
                 $list[$idx]['AttachData'] = json_decode($row['AttachData'],true);       //첨부파일
             }

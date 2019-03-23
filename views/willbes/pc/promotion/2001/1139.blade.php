@@ -85,13 +85,21 @@
             <img src="http://file3.willbes.net/new_cop/On_Transfer/EV190320_p3_1.png" alt="수강료지원" id="sky2"/>
             <img src="http://file3.willbes.net/new_cop/On_Transfer/EV190320_p3_2.png" alt="타학원 수강 인증" usemap="#rebound1" />
             <map name="rebound1">
-                <area shape="rect" coords="273,428,698,507" href="javascript:doEvent()" onfocus='this.blur()' alt="타학원 수강 인증">
+                <area shape="rect" coords="273,428,698,507" href="javascript:certOpen();" onfocus='this.blur()' alt="타학원 수강 인증">
             </map>  
             <img src="http://file3.willbes.net/new_cop/On_Transfer/EV190320_p3_3.png" alt="이벤트참여방법" id="sky3"/>
         </div>
               
     </div>
-    <!-- End Container --> 
-
+    <!-- End Container -->
+    <script type="text/javascript">
+        function certOpen(){
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+            @if(empty($arr_promotion_params) === false)
+            var url = '/certApply/index/page/{{$arr_promotion_params["page"]}}/cert/{{$arr_promotion_params["cert"]}}' ;
+            window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
+            @endif
+        }
+    </script>
     
 @stop

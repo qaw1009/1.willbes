@@ -54,15 +54,11 @@ class SupportProfTpass extends BaseSupport
             ],
             'GTE' => [
                 'RealLecEndDate' => $today // 종료일 >= 오늘
-            ],
-            /*'IN' => [
-                'PayRouteCcd' => ['670001','670002'] // 결제루트 : 온, 방
-            ]*/
+            ]
         ];
 
         $arr_condition_auth = [
             'EQ' => [
-                /*'a.MemIdx' => $this->session->userdata('mem_idx'),*/
                 'a.ProfIdx' => $prof_idx,
                 'a.IsValid' => 'Y',
                 'a.IsStatus' => 'Y'
@@ -82,7 +78,6 @@ class SupportProfTpass extends BaseSupport
                 'b.BmIdx' => $this->_bm_idx
                 ,'b.IsUse' => 'Y'
                 ,'b.ProfIdx' => $prof_idx
-                /*,'b.SubjectIdx' => $subject_idx*/
                 ,'b.ProdCode' => element('s_tpass_lecture', $arr_input)
             ],
             'ORG' => [
@@ -90,24 +85,21 @@ class SupportProfTpass extends BaseSupport
                     'b.Title' => $s_keyword
                     ,'b.Content' => $s_keyword
                 ]
-            ],
-            /*'LKB' => [
-                'Category_String'=>$s_cate_code
-            ]*/
+            ]
         ];
 
         $column = 'b.BoardIdx,b.CampusCcd,b.TypeCcd,b.IsBest,b.AreaCcd
                        ,b.Title,b.Content, (b.ReadCnt + b.SettingReadCnt) as TotalReadCnt
-                       ,b.CampusCcd_Name, b.TypeCcd_Name,b.AreaCcd_Name, Category_NameString
+                       ,b.CampusCcd_Name, b.TypeCcd_Name,b.AreaCcd_Name
                        ,b.SubjectName,b.CourseName,b.AttachData,DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm
                        ';
         $order_by = ['b.IsBest'=>'Desc','b.BoardIdx'=>'Desc'];
 
-        $total_rows = $this->supportBoardFModel->listBoardForTpass($this->_site_code, true, $arr_condition_board, $arr_condition_pkg, $arr_condition_auth);
+        $total_rows = $this->supportBoardFModel->listBoardForTpass($this->_site_code, '', true, $arr_condition_board, $arr_condition_pkg, $arr_condition_auth);
         $paging = $this->pagination($this->_default_path.'/index/?'.$get_page_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
 
         if ($total_rows > 0) {
-            $list = $this->supportBoardFModel->listBoardForTpass($this->_site_code, false, $arr_condition_board, $arr_condition_pkg, $arr_condition_auth, $column, $paging['limit'], $paging['offset'], $order_by);
+            $list = $this->supportBoardFModel->listBoardForTpass($this->_site_code, '', false, $arr_condition_board, $arr_condition_pkg, $arr_condition_auth, $column, $paging['limit'], $paging['offset'], $order_by);
             foreach ($list as $idx => $row) {
                 $list[$idx]['AttachData'] = json_decode($row['AttachData'],true);       //첨부파일
             }

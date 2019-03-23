@@ -158,17 +158,13 @@ class CertApplyFModel extends WB_Model
                 throw new \Exception($upload_result);
             }
 
-            $AttachFilePath = $this->upload->_upload_url.$file_path.'/';
-            $AttachFileReal= $upload_result[0]['client_name'];
-            $AttachFileName= $upload_result[0]['file_name'];
-                
-            /*
-            echo $file_path."<BR>";
-            echo $AttachFileName."<BR>";
-            echo $AttachFilePath."<BR>";
-            echo $AttachFileReal."<BR>";
-            exit;
-            */
+            //echo var_dump($upload_result);exit;
+            if(empty($upload_result) == false) {
+                $AttachFilePath = $this->upload->_upload_url.$file_path.'/';
+                $AttachFileReal= $upload_result[0]['client_name'];
+                $AttachFileName= $upload_result[0]['file_name'];
+            }
+
 
             $data = [
               'CertIdx' => $cert_idx,
@@ -184,10 +180,12 @@ class CertApplyFModel extends WB_Model
                 'AttachFileName' => empty($AttachFileName) ? null :$AttachFileName,
                 'AttachFileReal' => empty($AttachFileName) ? null :$AttachFileReal,
                 'AttachFilePath' => empty($AttachFileName) ? null : $AttachFilePath,
+                'AddContent1' => element('AddContent1', $input,null),
+                'AddContent2' => element('AddContent2', $input,null),
                 'RegIp' => $this->input->ip_address()
             ];
 
-            if($certtypeccd === '684002') { //제대군인인증일 경우 자동 승인 처리
+            if($certtypeccd === '684002' || $cert_idx === '13') { //제대군인인증, 꿀팁이벤트(추천인) 일 경우 자동 승인 처리   ///아오 썅 하드코딩하고 있네
                 $data = array_merge($data,[
                     'ApprovalStatus' => 'Y'
                 ]);
@@ -198,7 +196,7 @@ class CertApplyFModel extends WB_Model
                 throw new \Exception('인증 신청에 실패했습니다.');
             }
 
-            //제대군인인증일 경우 자동 승인 처리로 인한 문자 발송
+            //제대군인인증일 경우 자동 승인 처리로 인한 문자 발송 : 꿀팁은 제외
             if($certtypeccd === '684002' && empty($cert_data['Sms_Content']===false && empty($cert_data['CsTel'])) ) {
                 if (empty($this->session->userdata('mem_phone')) === false) {
                     /*sms 발송 모듈*/
@@ -266,6 +264,53 @@ class CertApplyFModel extends WB_Model
         $query = $this->_conn->query("select CaIdx from lms_cert_apply where IsStatus='Y' ".$where ." limit 1") -> row_array();
         //echo $this->_conn->last_query();
         return $query;
+    }
+
+    /**
+     * 인증 등록 여부 파악
+     * @param $cert_idx
+     * @return mixed
+     */
+    public function findApply($add_condition=[])
+    {
+        $arr_condition = array_merge_recursive($add_condition, [
+             'IN' => [
+                'ApprovalStatus' => ['A','Y']
+            ]
+        ]);
+
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
+
+        $query = $this->_conn->query("select " . "Count(*) as checkNum from lms_cert_apply where IsStatus='Y' ".$where ) -> row(0)->checkNum;
+        //echo $this->_conn->last_query();
+        return $query;
+    }
+
+
+    /**
+     * 응시번호 정확성 확인
+     * @param array $input
+     * @return mixed
+     */
+    public function findPassTakeNumber($input=[])
+    {
+        $CenCode = element('CenCode', $input);
+        $TakeKind = element('TakeKind', $input);
+        $TakeArea = element('TakeArea', $input);
+        $TakeNo = element('TakeNo', $input);
+
+        $arr_condition = [
+            'EQ'=>['CenCode'=>$CenCode , 'TakeKindCcd'=>$TakeKind, 'TakeAreaCcd'=>$TakeArea, 'PassTakeNumber'=>$TakeNo]
+        ];
+
+        $column = " count(*) as checkNum ";
+        $from = "from
+                            lms_cert_examnumber A 
+                        Where 1=1 ";
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
+
+        $result = $this->_conn->query('select ' . $column . $from . $where )->row(0)->checkNum;
+        return $result;
     }
 
 }

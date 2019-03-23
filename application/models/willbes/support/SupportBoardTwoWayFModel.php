@@ -18,18 +18,48 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
      * 게시판 글 목록 추출
      * @param $is_count
      * @param array $arr_condition
+     * @param null $cate_code
      * @param null $column
      * @param null $limit
      * @param null $offset
      * @param array $order_by
      * @return array|int
      */
-    public function listBoard($is_count, $arr_condition=[], $column = null, $limit = null, $offset = null, $order_by = [])
+    public function listBoard($is_count, $arr_condition=[], $cate_code, $column = null, $limit = null, $offset = null, $order_by = [])
     {
-        $column = ($is_count === true) ? $is_count :  $column;
-        $result = $this->_conn->getListResult($this->_table['twoway_board'], $column, $arr_condition, $limit, $offset, $order_by);
-        //echo $this->_conn->last_query();
-        return $result;
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $from = "
+            FROM {$this->_table['twoway_board_2']}
+        ";
+
+        if (empty($cate_code) === false) {
+            $from .= "
+                inner join {$this->_table['lms_board_r_category']} as c
+                    on b.BoardIdx = c.BoardIdx and c.IsStatus = 'Y'
+                inner join {$this->_table['lms_sys_category']} as d
+                    on c.CateCode = d.CateCode and d.IsStatus = 'Y'
+            ";
+
+            $arr_condition = array_merge($arr_condition,[
+                'RAW' => [
+                    'c.CateCode = ' => (empty($cate_code) === true) ? '\'\'' : $cate_code
+                ]
+            ]);
+        }
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 
     /**
@@ -46,23 +76,25 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
                 'BoardIdx' => $board_idx,
             ]
         ]);
-        $result = $this->_conn->getListResult($this->_table['twoway_board'], $column, $arr_condition, $limit, $offset, $order_by);
+        $result = $this->_conn->getListResult($this->_table['twoway_board_find'], $column, $arr_condition, $limit, $offset, $order_by);
         //echo $this->_conn->last_query();exit;
         return element('0', $result, []);
     }
 
     /**
-     * 사이트 그룹에 속한 게시판 글 목록
+     * 강사게시판
      * @param $is_count
      * @param $site_code
+     * @param $prof_idx
      * @param array $arr_condition
+     * @param $cate_code
      * @param null $column
      * @param null $limit
      * @param null $offset
      * @param array $order_by
      * @return mixed
      */
-    public function listBoardForSiteGroup($is_count, $site_code, $arr_condition=[], $column = null, $limit = null, $offset = null, $order_by = [])
+    public function listBoardForProf($is_count, $site_code, $prof_idx, $arr_condition=[], $cate_code, $column = null, $limit = null, $offset = null, $order_by = [])
     {
         if ($is_count === true) {
             $column = 'count(*) AS numrows';
@@ -73,33 +105,7 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
         }
 
         $from = "
-            FROM {$this->_table['twoway_board']}
-            INNER JOIN (
-                SELECT SiteGroupCode
-                FROM {$this->_table['site']}
-                WHERE SiteCode = '{$site_code}'
-            ) AS s ON b.SiteGroupCode = s.SiteGroupCode
-        ";
-
-        $where = $this->_conn->makeWhere($arr_condition);
-        $where = $where->getMakeWhere(false);
-
-        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
-        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
-    }
-
-    public function listBoardForProf($is_count, $site_code, $prof_idx, $arr_condition=[], $column = null, $limit = null, $offset = null, $order_by = [])
-    {
-        if ($is_count === true) {
-            $column = 'count(*) AS numrows';
-            $order_by_offset_limit = '';
-        } else {
-            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
-            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
-        }
-
-        $from = "
-            FROM {$this->_table['twoway_board']}
+            FROM {$this->_table['twoway_board_2']}
             INNER JOIN (
                 SELECT SiteGroupCode
                 FROM {$this->_table['site']}
@@ -116,6 +122,21 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
                 )
             ) AS p ON b.ProfIdx = p.ProfIdx
         ";
+
+        if (empty($cate_code) === false) {
+            $from .= "
+                inner join {$this->_table['lms_board_r_category']} as c
+                    on b.BoardIdx = c.BoardIdx and c.IsStatus = 'Y'
+                inner join {$this->_table['lms_sys_category']} as d
+                    on c.CateCode = d.CateCode and d.IsStatus = 'Y'
+            ";
+
+            $arr_condition = array_merge($arr_condition,[
+                'RAW' => [
+                    'c.CateCode = ' => (empty($cate_code) === true) ? '\'\'' : $cate_code
+                ]
+            ]);
+        }
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
@@ -144,7 +165,7 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
         ]);
 
         $from = "
-            FROM {$this->_table['twoway_board']}
+            FROM {$this->_table['twoway_board_find']}
             INNER JOIN (
                 SELECT SiteGroupCode
                 FROM {$this->_table['site']}
@@ -351,7 +372,7 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
         $column = 'count(*) AS numrows';
 
         $from = "
-            from {$this->_table['twoway_board']}
+            from {$this->_table['twoway_board_find']}
         ";
 
         $where = $this->_conn->makeWhere($arr_condition);
@@ -395,7 +416,7 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
     {
         $column = 'SubjectIdx, SubjectName';
         $from = "
-            from {$this->_table['twoway_board']}
+            from {$this->_table['twoway_board_find']}
         ";
 
         $where = $this->_conn->makeWhere($arr_condition);

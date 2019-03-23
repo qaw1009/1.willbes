@@ -246,23 +246,23 @@
                             <div class="will-Tit NSK">윌비스에 <span class="tx-light-blue">처음</span> 오셨나요?</div>
                             <ul class="NG">
                                 <li class="f-info1">
-                                    <a href="#none"><img src="{{ img_url('cs/icon_question.gif') }}"><span>주요메뉴 안내</span></a>
+                                    <a href="{{ site_url('/support/guide/index#guide1') }}"><img src="{{ img_url('cs/icon_question.gif') }}"><span>주요메뉴 안내</span></a>
                                     <span class="row-line">|</span>
                                 </li>
                                 <li class="f-info2">
-                                    <a href="#none"><img src="{{ img_url('cs/icon_question623.gif') }}"><span>회원정보</span></a>
+                                    <a href="{{ site_url('/support/guide/index#guide2') }}"><img src="{{ img_url('cs/icon_question623.gif') }}"><span>회원정보</span></a>
                                     <span class="row-line">|</span>
                                 </li>
                                 <li class="f-info3">
-                                    <a href="#none"><img src="{{ img_url('cs/icon_question624.gif') }}"><span>결제/환불</span></a>
+                                    <a href="{{ site_url('/support/guide/index#guide3') }}"><img src="{{ img_url('cs/icon_question624.gif') }}"><span>결제/환불</span></a>
                                     <span class="row-line">|</span>
                                 </li>
                                 <li class="f-info4">
-                                    <a href="#none"><img src="{{ img_url('cs/icon_question625.gif') }}"><span>교재</span></a>
+                                    <a href="{{ site_url('/support/guide/index#guide4') }}"><img src="{{ img_url('cs/icon_question625.gif') }}"><span>교재</span></a>
                                     <span class="row-line">|</span>
                                 </li>
                                 <li class="f-info5">
-                                    <a href="#none"><img src="{{ img_url('cs/icon_question626.gif') }}"><span>온라인수강</span></a>
+                                    <a href="{{ site_url('/support/guide/index#guide5') }}"><img src="{{ img_url('cs/icon_question626.gif') }}"><span>온라인수강</span></a>
                                 </li>
                             </ul>
                         </div>

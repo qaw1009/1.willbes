@@ -18,10 +18,10 @@ class PopupFModel extends WB_Model
      * 노출섹션공통코드, 사이트코드, 해당 대분류 카테고리 코드에 맞는 팝업 조회 (전체 카테고리 노출 팝업 포함)
      * @param int $disp_code [노출섹션공통코드]
      * @param int $site_code [사이트코드]
-     * @param int $cate_code [대분류 카테고리코드]
+     * @param string $cate_code [대분류 카테고리코드]
      * @return array
      */
-    public function findPopups($disp_code, $site_code, $cate_code = 0)
+    public function findPopups($disp_code, $site_code, $cate_code = '')
     {
         if (empty($disp_code) === true || empty($site_code) === true) {
             return [];
@@ -38,14 +38,11 @@ class PopupFModel extends WB_Model
                 'P.SiteCode' => $site_code,
                 'P.DispCcd' => $disp_code,
                 'P.IsUse' => 'Y',
-                'P.IsStatus' => 'Y'
+                'P.IsStatus' => 'Y',
+                'PC.CateCode' => $cate_code
             ],
             'RAW' => [
                 'NOW() between ' => 'P.DispStartDatm and P.DispEndDatm'
-            ],
-            'ORG' => [
-                'RAW' => ['PC.CateCode is ' => 'null'],
-                'EQ' => ['PC.CateCode' => $cate_code]
             ]
         ];
 

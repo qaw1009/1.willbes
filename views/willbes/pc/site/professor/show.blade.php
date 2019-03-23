@@ -8,7 +8,7 @@
     <div class="Depth">
         @include('willbes.pc.layouts.partial.site_route_path')
         <span class="depth"><span class="depth-Arrow">></span><strong>{{ rawurldecode($arr_input['subject_name']) }}</strong></span>
-        <span class="depth"><span class="depth-Arrow">></span><strong>{{ $data['wProfName'] }} 교수님</strong></span>
+        <span class="depth"><span class="depth-Arrow">></span><strong>{{ $data['ProfNickName'] }} 교수님</strong></span>
     </div>
     <!-- left nav -->
     <div class="Lnb NG">
@@ -24,10 +24,10 @@
         <!-- willbes-Prof-Profile -->
         <div class="willbes-Prof-Profile p_re mb40 NG tx-black">
             <div class="ProfImg p_re">
-                <img src="{{ $data['ProfReferData']['prof_detail_img'] or '' }}" alt="{{ $data['wProfName'] }}">
+                <img src="{{ $data['ProfReferData']['prof_detail_img'] or '' }}" alt="{{ $data['ProfNickName'] }}">
             </div>
             <div class="prof-profile p_re">
-                <div class="Name"><span class="Sbj tx-blue">{{ rawurldecode($arr_input['subject_name']) }}</span><strong>{{ $data['wProfName'] }}</strong><span class="NGR">교수님</span></div>
+                <div class="Name"><span class="Sbj tx-blue">{{ rawurldecode($arr_input['subject_name']) }}</span><strong>{{ $data['ProfNickName'] }}</strong><span class="NGR">교수님</span></div>
                 <ul class="prof-brief-btn">
                     <li>
                         <a href="#none" onclick="openWin('LayerProfile'); openWin('Profile');">
@@ -119,7 +119,7 @@
                 <a class="closeBtn" href="#none" onclick="closeWin('LayerProfile'); closeWin('Profile')">
                     <img src="{{ img_url('prof/close.png') }}">
                 </a>
-                <div class="Layer-Tit NG tx-dark-black"><span class="tx-blue">{{ $data['wProfName'] }}</span> 교수님 프로필</div>
+                <div class="Layer-Tit NG tx-dark-black"><span class="tx-blue">{{ $data['ProfNickName'] }}</span> 교수님 프로필</div>
                 <div class="Layer-Cont">
                     <div class="Layer-SubTit NG">· 약력</div>
                     <div class="Layer-Txt tx-gray">
@@ -138,7 +138,7 @@
                 <a class="closeBtn" href="#none" onclick="closeWin('LayerCurriculum'); closeWin('Curriculum')">
                     <img src="{{ img_url('prof/close.png') }}">
                 </a>
-                <div class="Layer-Tit NG tx-dark-black"><span class="tx-blue">{{ $data['wProfName'] }}</span> 교수님 커리큘럼</div>
+                <div class="Layer-Tit NG tx-dark-black"><span class="tx-blue">{{ $data['ProfNickName'] }}</span> 교수님 커리큘럼</div>
                 <div class="Layer-Cont">
                     {!! $data['ProfCurriculum'] !!}
                 </div>

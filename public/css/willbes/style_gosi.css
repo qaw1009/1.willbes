@@ -29,7 +29,7 @@
     height: 400px;
     overflow: hidden;
   }
-  .gosi .VisualBox img {
+.gosi .VisualBox img {
     height: 400px;
     max-width: 1920px;
   }
@@ -59,7 +59,7 @@
     margin-left:196px;
     top:10px;
     width: 364px;
-    z-index: 100;
+    z-index: 60;
 }
 
 .gosi .VisualsubBox .bSlider {

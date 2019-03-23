@@ -1382,7 +1382,7 @@ class On extends \app\controllers\FrontController
         }
         $curriculum = $curriculum[0];
 
-        $filepath = $curriculum['wAttachPath'] . $curriculum['wUnitAttachFile'];
+        $filepath = str_replace( '//', '/', $curriculum['wAttachPath'] .'/'. $curriculum['wUnitAttachFile']);
         $filename = $curriculum['wUnitAttachFileReal'];
 
         if(is_file(public_to_upload_path($filepath)) == false){

@@ -3,11 +3,11 @@
         <div class="widthAuto">
             <ul>
                 <li>
-                    <a href="#none">이용약관</a>
+                    <a href="javascript:;" onclick="popupOpen('http://www.willbes.net/company/agreementAll.asp', 'profPlayer', '1000', '600', null, null, 'yes');">이용약관</a>
                     <span class="row-line">|</span>
                 </li>
                 <li>
-                    <a href="javascript:;" onclick="popupOpen('http://www.willbes.net/company/protect.asp', 'profPlayer', '1000', '600', null, null, 'yes');">개인정보 취급방침</a>
+                    <a href="javascript:;" onclick="popupOpen('http://www.willbes.net/company/protectAll.asp', 'profPlayer', '1000', '600', null, null, 'yes');">개인정보 취급방침</a>
                     <span class="row-line">|</span>
                 </li>
                 <li>

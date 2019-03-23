@@ -16,12 +16,13 @@
         </div>
 
         <div class="Section youtubeWrap">
-            <div class="widthAuto smallTit">
-                <p><span>수험생에게 도움이 되는 <strong>특별한 영상!</strong></span></p>
-                <a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank"><img src="{{ img_url('cop/icon_add_big.png') }}" alt="동영상 더보기"></a>
+            <div class="widthAuto">
+                <a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank">    
+                    <img src="{{ img_url('cop/visual/youtubetab_tit.jpg') }}" alt="3법 300점, 공통 200점! 단기 합격까지!">   
+                </a>
             </div>
 
-            <div class="widthAuto mt80">
+            <div class="widthAuto">
                 <div class="youtubetabWrap">
                     <ul class="youtubetab">
                         <li>
@@ -112,9 +113,9 @@
                             <div class="Tit">기본과정</div>
                             <div class="subTit">집중연강식 진행</div>
                             <ul class="info">
-                                <li>1과목 1회독 2주완성</li>
-                                <li>기본이론</li>
-                                <li>영어 매달 초 개강(2달완성)</li>
+                                <li>기초개념 정리</li>
+                                <li>지속적인 복습테스트</li>
+                                <li>초시생 필수 수강과정</li>
                             </ul>
                         </div>
                         <a href="#none" onclick="fnPlayerSample('132199', '1019097', 'HD');">OT보기 &gt;</a>
@@ -125,7 +126,7 @@
                             <div class="Tit">심화과정</div>
                             <div class="subTit">프리미엄 심화과정</div>
                             <ul class="info">
-                                <li>7주,2달 완성</li>
+                                <li>실력업그레이드</li>
                                 <li>심화 l 이론/기출학습</li>
                                 <li>고득점 합격발판 마련</li>
                             </ul>
@@ -135,8 +136,8 @@
                     <li>&nbsp;</li>
                     <li>
                         <div class="curriculumBox">
-                            <div class="Tit">3개월 필합 풀패키지</div>
-                            <div class="subTit">핵심요약/진도별 정리</div>
+                            <div class="Tit">문제풀이 과정</div>
+                            <div class="subTit">(실전 1+2+3 단계)</div>
                             <ul class="info">
                                 <li>1단계 진도별 핵심정리</li>
                                 <li>2단계 전범위 동형모의고사</li>
@@ -223,11 +224,11 @@
         <div class="Section Section3 mt100 pb90">
             <div class="widthAuto">
                 <div class="widthAuto smallTit">
-                    <p><span>기출문제와 강의를 한 곳에 <strong>기출강의!</strong></span></p>
+                    <p><span>기출문제와 강의 <strong>One - Stop!</strong></span></p>
                 </div>
                 <div class="will-big-Tit pt100">
-                    <div class="small NSK-Thin">출제경향이 매번 반복되는 경찰공무원 시험.</div>
-                    <div class="big NSK-Black"><span class="cop-color">날카롭게 분석된</span> 기출강의<span class="small NSK-Thin">로 마무리해야합니다.</span></div>
+                    <div class="small NSK-Thin">경찰공무원 시험 기출문제 분석 </div>
+                    <div class="big NSK-Black">가장 <span class="cop-color">완벽한 분석!</span> 가장 <span class="cop-color">명쾌한 해설!</span></div>
                 </div>
                 <div class="SpecialLecBox mt60">
                     <dl>

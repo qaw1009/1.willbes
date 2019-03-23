@@ -107,6 +107,7 @@
                     <th>NO</th>
                     <th>운영사이트</th>
                     <th>카테고리</th>
+                    <th>인증코드</th>
                     <th>인증구분</th>
                     <th>회차</th>
                     <th>응시직렬</th>
@@ -123,6 +124,7 @@
                     <th>구매여부</th>
                     <th>결제완료일</th>
                     <th>기간연장<Br>(연장일)</th>
+                    <th>추가정보</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -164,11 +166,14 @@
                         }},
                     {'data' : 'SiteName'},
                     {'data' : 'CateName'},
+                    {'data' : 'CertIdx'},
                     {'data' : 'CertTypeCcd_Name'},
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            return data.No + ' [' + data.CertIdx +' - ' + data.CertTitle+ ']';
+                            return data.No + ' [' + data.CertTitle+ ']';
                         }},
-                    {'data' : 'TakeKind', 'name' : 'TakeKind'},
+                    {'data' : null,  'render' : function(data,type,row,meta) {
+                            return data.TakeKind_Name !=null ? data.TakeKind_Name:data.TakeKind;
+                        },'name' : 'TakeKind'},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return '<a href="javascript:;" class="btn-member" data-idx="'+ data.MemIdx+ '" ><u>'+data.MemName+'('+data.MemId+')</u></a><BR>'+data.Phone+'('+data.SmsRcvStatus+')';
                         }},
@@ -208,7 +213,12 @@
                     {'data' : 'OrderDatm' , 'name' : 'OrderDatm'},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return data.ExtendStatus;//data.ExtendStatus+ (data.ExtendStatus=='Y' ? '<Br>'+data.ExtendDatm : '');
-                        },'name' : 'Extend'}
+                        },'name' : 'Extend'},
+
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            return data.AddContent1 + '<BR>' + data.AddContent2;
+                        },'name' : 'AddContent'},
+
                 ]
             });
 
@@ -218,24 +228,28 @@
                 var $OrderDatm_col = $datatable.column('OrderDatm:name');
                 var $Extend_col = $datatable.column('Extend:name');
                 var $TakeKind_col = $datatable.column('TakeKind:name');
+                var $AddContent_col = $datatable.column('AddContent:name');
 
                 if ($('#search_type').val() == '' || $('#search_type').val() == '684001' || $('#search_type').val() == '684003' ) {
                     $OrderStatus_col.visible(true);
                     $OrderDatm_col.visible(true);
                     $Extend_col.visible(false);
                     $TakeKind_col.visible(false);
+                    $AddContent_col.visible(false);
 
                 }else if($('#search_type').val() == '684002') {         //제대군인인증
                     $OrderStatus_col.visible(true);
                     $OrderDatm_col.visible(true);
                     $Extend_col.visible(true);
                     $TakeKind_col.visible(false);
+                    $AddContent_col.visible(false);
 
                 } else if($('#search_type').val() == '684005') {        //수험표 인증
                     $TakeKind_col.visible(true);
                     $OrderStatus_col.visible(false);
                     $OrderDatm_col.visible(false);
                     $Extend_col.visible(false);
+                    $AddContent_col.visible(true);
                 } else {
                     $Extend_col.visible(false);
                     $TakeKind_col.visible(false);

@@ -18,6 +18,9 @@ class Home extends \app\controllers\FrontController
      */
     public function index()
     {
+        // 모바일 리다이렉트
+        $this->_redirectMobile();
+
         $cate_code = get_var($this->_cate_code, config_app('DefCateCode'));
         $arr_campus = [];
 
@@ -51,7 +54,8 @@ class Home extends \app\controllers\FrontController
         $data = $this->{'_getSite' . $this->_site_code . 'Data'}($cate_code, $arr_campus);
 
         $this->load->view('site/main_'. $_view_path, [
-            'data' => $data
+            'data' => $data,
+            'is_site_home' => true
         ]);
     }
 
@@ -71,8 +75,7 @@ class Home extends \app\controllers\FrontController
             $data['dday'] = $this->_dday();
             $data['best_product'] = $this->_product('on_lecture', 4, $s_cate_code, 'Best');
             $data['new_product'] = $this->_product('on_lecture', 4, $s_cate_code, 'New');
-            $data['arr_main_banner'] = $this->_banner($s_cate_code);
-            $data['arr_main_quick'] = $this->_banner('0');
+            $data['arr_main_banner'] = array_merge($this->_banner($s_cate_code), $this->_banner('0'));
         }
 
         $data['notice'] = $this->_boardNotice(4, $s_cate_code);
@@ -199,40 +202,46 @@ class Home extends \app\controllers\FrontController
                 // 9급
                 '3019' => ['메인_빅배너', '메인_서브1', '메인_서브2', '메인_띠배너', '메인_교수진1', '메인_교수진2', '메인_교수진3', '메인_교수진4', '메인_교수진5'
                     , '메인_hotpick1', '메인_hotpick2', '메인_hotpick3', '메인_hotpick4','메인_hotpick5', '메인_hotpick6', '메인_hotpick7', '메인_hotpick8', '메인_hotpick9', '메인_hotpick10'
-                    , '메인_무료특강1', '메인_무료특강2'
+                    , '메인_무료특강1', '메인_무료특강2', '메인_우측퀵_01', '메인_우측퀵_02', '메인_우측퀵_03'
                 ],
                 // 7급
                 '3020' => ['메인_빅배너', '메인_서브1', '메인_서브2', '메인_띠배너', '메인_교수진1', '메인_교수진2', '메인_교수진3', '메인_교수진4', '메인_교수진5'
                     , '메인_hotpick1', '메인_hotpick2', '메인_hotpick3', '메인_hotpick4','메인_hotpick5', '메인_hotpick6', '메인_hotpick7', '메인_hotpick8', '메인_hotpick9', '메인_hotpick10'
-                    , '메인_무료특강1', '메인_무료특강2'
+                    , '메인_무료특강1', '메인_무료특강2', '메인_우측퀵_01', '메인_우측퀵_02', '메인_우측퀵_03'
                 ],
                 // 세무직
                 '3022' => ['메인_빅배너', '메인_서브1', '메인_서브2', '메인_띠배너', '메인_교수진1', '메인_교수진2', '메인_교수진3', '메인_교수진4', '메인_교수진5'
                     , '메인_hotpick1', '메인_hotpick2', '메인_hotpick3', '메인_hotpick4','메인_hotpick5', '메인_hotpick6', '메인_hotpick7', '메인_hotpick8', '메인_hotpick9', '메인_hotpick10'
-                    , '메인_무료특강1', '메인_무료특강2'
+                    , '메인_무료특강1', '메인_무료특강2', '메인_우측퀵_01', '메인_우측퀵_02', '메인_우측퀵_03'
                 ],
                 // 법원직
                 '3035' => ['메인_빅배너', '메인_미들1', '메인_미들2', '메인_미들3', '메인_미들4', '메인_미들5', '메인_미들6', '메인_미들7', '메인_미들8'
                     , '메인_교수진1', '메인_교수진2', '메인_교수진3', '메인_교수진4', '메인_교수진5', '메인_교수진6', '메인_교수진7', '메인_교수진8'
+                    , '메인_우측퀵_01', '메인_우측퀵_02', '메인_우측퀵_03'
                 ],
                 // 소방직
                 '3023' => ['메인_빅배너', '메인_서브1', '메인_서브2', '메인_띠배너', '메인_교수진1', '메인_교수진2', '메인_교수진3', '메인_교수진4', '메인_교수진5'
                     , '메인_hotpick1', '메인_hotpick2', '메인_hotpick3', '메인_hotpick4','메인_hotpick5', '메인_hotpick6', '메인_hotpick7', '메인_hotpick8', '메인_hotpick9', '메인_hotpick10'
-                    , '메인_무료특강1', '메인_무료특강2'
+                    , '메인_무료특강1', '메인_무료특강2', '메인_우측퀵_01', '메인_우측퀵_02', '메인_우측퀵_03'
                 ],
                 // 기술직
                 '3028' => ['메인_빅배너', '메인_미들1', '메인_미들2', '메인_미들3', '메인_미들4', '메인_미들5', '메인_미들6', '메인_미들7', '메인_미들8'
                     , '메인_교수진1', '메인_교수진2', '메인_교수진3', '메인_교수진4', '메인_교수진5', '메인_교수진6', '메인_교수진7', '메인_교수진8'
+                    , '메인_우측퀵_01', '메인_우측퀵_02', '메인_우측퀵_03'
                 ],
                 // 군무원
                 '3024' => ['메인_빅배너', '메인_서브1', '메인_서브2', '메인_띠배너', '메인_미들1', '메인_미들2', '메인_미들3', '메인_미들4'
                     , '메인_교수진1', '메인_교수진2', '메인_교수진3', '메인_교수진4', '메인_교수진5', '메인_교수진6', '메인_교수진7', '메인_교수진8'
+                    , '메인_우측퀵_01', '메인_우측퀵_02', '메인_우측퀵_03'
                 ],
                 // 부사관
-                '3030' => ['메인_빅배너', '메인_띠배너', '메인_교수진1', '메인_교수진2', '메인_교수진3', '메인_교수진4'],
+                '3030' => ['메인_빅배너', '메인_띠배너', '메인_교수진1', '메인_교수진2', '메인_교수진3', '메인_교수진4', '메인_우측퀵_01', '메인_우측퀵_02', '메인_우측퀵_03'],
             ],
             '2004' => [
-                '0' => ['메인_빅배너', '메인_띠배너', '메인_미들1', '메인_미들2', '메인_미들3', '메인_미들4', '메인_미들5', '메인_이벤트', '메인_대표교수', '메인_포커스']
+                '0' => ['메인_빅배너', '메인_서브1', '메인_서브2', '메인_서브3', '메인_띠배너'
+                    , '메인_미들1', '메인_미들2', '메인_미들3', '메인_미들4', '메인_미들5'
+                    , '메인_미들6', '메인_미들7', '메인_미들8', '메인_미들9', '메인_미들10'
+                    , '메인_이벤트', '메인_대표교수', '메인_포커스']
             ]
         ];
 
@@ -327,12 +336,9 @@ class Home extends \app\controllers\FrontController
             ],
             'IN' => [
                 'b.CampusCcd' => $arr_campus
-            ],
-            'LKB' => [
-                'Category_String' => $cate_code
             ]
         ];
-        return $this->supportBoardFModel->listBoard(false,$arr_condition,$column,$limit_cnt,0,$order_by);
+        return $this->supportBoardFModel->listBoard(false, $arr_condition, $cate_code, $column, $limit_cnt,0, $order_by);
 
     }
 
@@ -377,9 +383,9 @@ class Home extends \app\controllers\FrontController
     {
         $column = 'b.BoardIdx, b.IsBest, b.AreaCcd_Name, b.Title, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
         $order_by = ['b.IsBest' => 'Desc', 'b.BoardIdx' => 'Desc'];
-        $arr_condition = ['EQ' => ['b.BmIdx' => 54, 'b.IsUse' => 'Y'], 'LKB' => ['b.Category_String' => $cate_code]];
+        $arr_condition = ['EQ' => ['b.BmIdx' => 54, 'b.IsUse' => 'Y']];
 
-        return $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $arr_condition, $column, $limit_cnt, 0, $order_by);
+        return $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $cate_code, $arr_condition, $column, $limit_cnt, 0, $order_by);
     }
 
     /**
@@ -393,9 +399,9 @@ class Home extends \app\controllers\FrontController
     {
         $column = 'b.BoardIdx, b.Title, b.IsBest, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
         $order_by = ['b.IsBest' => 'Desc', 'b.BoardIdx' => 'Desc'];
-        $arr_condition = ['EQ' => ['b.BmIdx' => 57, 'b.IsUse' => 'Y'], 'LKB' => ['b.Category_String' => $cate_code]];
+        $arr_condition = ['EQ' => ['b.BmIdx' => 57, 'b.IsUse' => 'Y']];
 
-        return $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $arr_condition, $column, $limit_cnt, 0, $order_by);
+        return $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $cate_code, $arr_condition, $column, $limit_cnt, 0, $order_by);
     }
 
     /**
@@ -410,9 +416,9 @@ class Home extends \app\controllers\FrontController
         $column = 'b.BoardIdx, b.Title, b.IsBest, b.SubjectIdx, b.SubjectName, b.ProfIdx, b.ProfName, b.ProdName
             , DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm, fn_professor_refer_value(b.ProfIdx, "lec_list_img") as ProfLecListImg';
         $order_by = ['b.IsBest' => 'Desc', 'b.BoardIdx' => 'Desc'];
-        $arr_condition = ['EQ' => ['b.BmIdx' => 85, 'b.SiteCode' => $this->_site_code, 'b.IsUse' => 'Y'], 'LKB' => ['b.Category_String' => $cate_code]];
+        $arr_condition = ['EQ' => ['b.BmIdx' => 85, 'b.SiteCode' => $this->_site_code, 'b.IsUse' => 'Y']];
 
-        return $this->supportBoardTwoWayFModel->listBoard(false, $arr_condition, $column, $limit_cnt, 0, $order_by);
+        return $this->supportBoardTwoWayFModel->listBoard(false, $arr_condition, $cate_code, $column, $limit_cnt, 0, $order_by);
     }
 
     /**
@@ -430,7 +436,7 @@ class Home extends \app\controllers\FrontController
         ];
         $column = 'b.BoardIdx, b.Title, b.AttachData, b.CampusCcd_Name, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
         $order_by = ['b.BoardIdx'=>'Desc'];
-        $data = $this->supportBoardFModel->listBoard(false,$arr_condition,$column,2,0,$order_by);
+        $data = $this->supportBoardFModel->listBoard(false,$arr_condition, '',$column,2,0,$order_by);
 
         if (empty($data) === false) {
             foreach ($data as $idx => $row) {

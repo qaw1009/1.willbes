@@ -22,5 +22,8 @@
 <script src="/public/js/willbes/app.js?ver={{time()}}"></script>
 <!--// JAVASCRIPT -->
 <!-- Common Site Script -->
+@if(isset($is_site_home) === true && $is_site_home === true)
+{{-- 메인 페이지일 경우만 --}}
 {!! base64_decode($__cfg['CommMobileScript']) !!}
+@endif
 <!--// Common Site Script -->

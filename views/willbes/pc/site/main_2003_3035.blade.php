@@ -6,25 +6,15 @@
         <!-- site nav -->
         @include('willbes.pc.layouts.partial.site_menu')
 
-        @if(isset($data['arr_main_banner']['메인_빅배너']) === true)
         <div class="Section MainVisual">
             <div class="widthAuto NSK mt30">
                 <div class="VisualsubBox">
                     <div class="bSlider">
-                        <div class="sliderStopAutoPager">
-                            @php $link_url = '#none'; @endphp
-                            @foreach($data['arr_main_banner']['메인_빅배너'] as $row)
-                                @if(empty($row['LinkUrl']) === false)
-                                    @php $link_url = front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www'); @endphp
-                                @endif
-                                <div><a href="{{ $link_url }}" target="_{{ $row['LinkType'] }}"><img src="{{ $row['BannerFullPath'] . $row['BannerImgName'] }}" alt="{{ $row['BannerName'] }}"></a></div>
-                            @endforeach
-                        </div>
+                        {!! banner_html(element('메인_빅배너', $data['arr_main_banner']), 'sliderStopAutoPager') !!}
                     </div>
                 </div>
             </div>
         </div>
-        @endif
 
         <div class="Section Section2">
             <div class="widthAuto">
@@ -35,24 +25,18 @@
         <div class="Section ProfBox">
             <div class="widthAuto">
                 <ul class="PBtab NSK">
-                    <li><a href="#tab01">현재 준비중인 수험생이라면</a></li>
-                    <li><a href="#tab02">지금 시작하는 초시생이라면</a></li>
+                    <li><a href="#tab01">1순환, 큰 틀에서 흐름을 파악하라!</a></li>
+                    <li><a href="#tab02">예비순환, 동행의 첫걸음</a></li>
                 </ul>
                 <div id="tab01">
                     <img src="{{ img_url('gosi_law/visual/visual_tit01_01.jpg') }}" alt="지금은 전범위 모의고사로 마무리 할 때!">
                     <ul class="PBcts">
                         @for($i=1; $i<=4; $i++)
-                            @if(empty($data['arr_main_banner']['메인_미들'.$i]) === false)
+                            @if(isset($data['arr_main_banner']['메인_미들'.$i]) === true)
                                 <li>
-                                    @if(count($data['arr_main_banner']['메인_미들'.$i]) > 1) <div class="bSlider"><div class="slider"> @endif
-                                    @php $link_url = '#none'; @endphp
-                                    @foreach($data['arr_main_banner']['메인_미들'.$i] as $row)
-                                        @if(empty($row['LinkUrl']) === false)
-                                            @php $link_url = front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www'); @endphp
-                                        @endif
-                                        <div><a href="{{ $link_url }}" target="_{{ $row['LinkType'] }}"><img src="{{ $row['BannerFullPath'] . $row['BannerImgName'] }}" alt="{{ $row['BannerName'] }}"></a></div>
-                                    @endforeach
-                                    @if(count($data['arr_main_banner']['메인_미들'.$i]) > 1) </div></div> @endif
+                                    <div class="bSlider">
+                                        {!! banner_html($data['arr_main_banner']['메인_미들'.$i], 'slider') !!}
+                                    </div>
                                 </li>
                             @endif
                         @endfor
@@ -62,17 +46,11 @@
                     <img src="{{ img_url('gosi_law/visual/visual_tit01_02.jpg') }}" alt="지금은 전범위 모의고사로 마무리 할 때!">
                     <ul class="PBcts">
                         @for($i=5; $i<=8; $i++)
-                            @if(empty($data['arr_main_banner']['메인_미들'.$i]) === false)
+                            @if(isset($data['arr_main_banner']['메인_미들'.$i]) === true)
                                 <li>
-                                    @if(count($data['arr_main_banner']['메인_미들'.$i]) > 1) <div class="bSlider"><div class="slider"> @endif
-                                    @php $link_url = '#none'; @endphp
-                                    @foreach($data['arr_main_banner']['메인_미들'.$i] as $row)
-                                        @if(empty($row['LinkUrl']) === false)
-                                            @php $link_url = front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www'); @endphp
-                                        @endif
-                                        <div><a href="{{ $link_url }}" target="_{{ $row['LinkType'] }}"><img src="{{ $row['BannerFullPath'] . $row['BannerImgName'] }}" alt="{{ $row['BannerName'] }}"></a></div>
-                                    @endforeach
-                                    @if(count($data['arr_main_banner']['메인_미들'.$i]) > 1) </div></div> @endif
+                                    <div class="bSlider">
+                                        {!! banner_html($data['arr_main_banner']['메인_미들'.$i], 'slider') !!}
+                                    </div>
                                 </li>
                             @endif
                         @endfor
@@ -85,12 +63,12 @@
             <div class="widthAuto p_re">
                 <div><img src="{{ img_url('gosi_law/visual/visual_tip.jpg') }}" alt="오직 법원직을 위한 최강 라인업 윌비스 김동진 법원팀"></div>
                 <ul class="tipGo NSK">
-                    <li><a href="#none">강좌 바로가기</a></li>
-                    <li><a href="#none">강좌 바로가기</a></li>
-                    <li><a href="#none">강좌 바로가기</a></li>
-                    <li><a href="#none">강좌 바로가기</a></li>
-                    <li><a href="#none">강좌 바로가기</a></li>
-                    <li><a href="#none">강좌 바로가기</a></li>
+                    <li><a href="{{ site_url('/promotion/index/cate/3035/code/1089') }}">강좌 바로가기</a></li>
+                    <li><a href="{{ site_url('/lecture/index/cate/3035/pattern/only?subject_idx=&course_idx=1055') }}">강좌 바로가기</a></li>
+                    <li><a href="#none">개강 준비중</a></li>
+                    <li><a href="#none">개강 준비중</a></li>
+                    <li><a href="#none">개강 준비중</a></li>
+                    <li><a href="#none">개강 준비중</a></li>
                 </ul>
             </div>
         </div>
@@ -100,17 +78,9 @@
                 <img src="{{ img_url('gosi_law/visual/visual_tit02.jpg') }}" alt="오직 법원직을 위한 최강 라인업 윌비스 김동진 법원팀">
                 <ul class="ProfBoxB">
                     @for($i=1; $i<=8; $i++)
-                        @if(empty($data['arr_main_banner']['메인_교수진'.$i]) === false)
+                        @if(isset($data['arr_main_banner']['메인_교수진'.$i]) === true)
                             <li>
-                                @if(count($data['arr_main_banner']['메인_교수진'.$i]) > 1) <div class="bSlider"><div class="slider"> @endif
-                                @php $link_url = '#none'; @endphp
-                                @foreach($data['arr_main_banner']['메인_교수진'.$i] as $row)
-                                    @if(empty($row['LinkUrl']) === false)
-                                        @php $link_url = front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www'); @endphp
-                                    @endif
-                                    <div><a href="{{ $link_url }}" target="_{{ $row['LinkType'] }}"><img src="{{ $row['BannerFullPath'] . $row['BannerImgName'] }}" alt="{{ $row['BannerName'] }}"></a></div>
-                                @endforeach
-                                @if(count($data['arr_main_banner']['메인_교수진'.$i]) > 1) </div></div> @endif
+                                {!! banner_html($data['arr_main_banner']['메인_교수진'.$i]) !!}
                             </li>
                         @endif
                     @endfor
@@ -134,7 +104,11 @@
                 @include('willbes.pc.site.main_partial.cscenter_' . $__cfg['SiteCode'])
             </div>
         </div>
-        <!-- CS센터 //-->
+
+        <div id="QuickMenu" class="MainQuickMenu">
+            {{-- quick menu --}}
+            @include('willbes.pc.site.main_partial.quick_menu_' . $__cfg['SiteCode'])
+        </div>
     </div>
     <!-- End Container -->
 

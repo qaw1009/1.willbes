@@ -37,10 +37,16 @@ class OffPackage extends \app\controllers\FrontController
         }
 
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
-        $cate_code = element('cate_code', $arr_input, $this->_cate_code);
 
         // 카테고리 조회
         $arr_base['category'] = $this->categoryFModel->listSiteCategory($this->_site_code);
+
+        // 카테고리 코드가 없을 경우 디폴트 설정
+        if (isset($arr_input['cate_code']) === false) {
+            $arr_input['cate_code'] = array_get($arr_base['category'], '0.CateCode');;
+        }
+
+        $cate_code = element('cate_code', $arr_input, $this->_cate_code);
 
         // 캠퍼스 조회
         $arr_base['campus'] = [];

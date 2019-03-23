@@ -8,10 +8,81 @@
 
         <div class="Section MainVisual">
             <div class="widthAuto">
-                <!--iframe src="https://www.youtube.com/embed/lrZxQV21DE8?rel=0&modestbranding=1&showinfo=1&controls=2" frameborder="0" allowfullscreen=""></iframe-->
-                <a href="{{ site_url('/promotion/index/cate/3002/code/1019') }}">
-                    <img src="{{ img_url('cop_adm/visual/visual_190213.jpg') }}" alt="전국 4,000명 동시수강">
-                </a>
+                <img src="{{ img_url('cop/visual/visual_190323_01.jpg') }}" title="수험생이 증명하는 압도적 대한민국 1등 경찰학원">
+            </div>
+        </div>
+
+        <div class="newPlaybn">
+            <div class="layer">		
+                <div class="video">
+                    <video style="width:100%" autoplay loop muted="" poster="">
+                        <source src="http://sample4.hd.willbes.gscdn.com/police/190318_junhkyeong_bus_1210x360(imsi).mp4" type="video/mp4" width="1210" height="360"></source>
+                    </video>
+                </div>
+                <div class="pngimg-real">
+                    <a href="{{ site_url('/promotion/index/cate/3001/code/1019') }}">
+                        <img src="{{ img_url('cop/visual/visual_190323_junhkyeong.png') }}" title="중경입교식, 그 현장을 가다!">
+                    </a>
+                </div>		
+            </div>
+        </div>
+
+        <div class="Section Flipped">
+            <div class="widthAuto">
+                <ul class="inner">
+                    <li class="l1">
+                        <a href="{{ site_url('/promotion/index/cate/3001/code/1009') }}">
+                            <img src="{{ img_url('cop/flipped/190304_cFlipped_520x740.jpg') }}" title="평생0원PASS">
+                        </a>
+                    </li>
+                    <li class="l2">
+                        <a href="{{ site_url('/promotion/index/cate/3001/code/1127') }}">
+                            <img src="{{ img_url('cop/flipped/flipped02.jpg') }}" title="2단계 동형모의고사">
+                        </a>
+                    </li>
+                    <li class="l3">
+                        <a href="{{ site_url('/promotion/index/cate/3001/code/1015') }}">
+                            <img src="{{ img_url('cop/flipped/190304_cFlipped_280x740.jpg') }}" title="기본이론">
+                        </a>
+                    </li>
+                </ul>
+                <div class="willbes-Bnr mt30">
+                    <ul>
+                        <li>
+                            <a href="{{ site_url('/pass/promotion/index/cate/3001/code/1138') }}">
+                                <img src="{{ img_url('cop/banner/190322_cBar_1120x110.jpg') }}" title="숨은 필합자를 찾아라">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="Section Section3 mt95">
+            <div class="widthAuto">
+                <div><img src="{{ img_url('cop/visual/visual_190323_02.jpg') }}" title="신광은 경찰팀이 1등일 수 밖에 없는 이유! 신의법칙"></div>
+                <div><img src="{{ img_url('cop/visual/visual_190323_02_01.jpg') }}" title="압도적 1등 경찰 전문 교수진만 가능합니다."></div>
+                <div class="youtubeGod">
+                    <iframe src="https://www.youtube.com/embed/S4Fa8vhOd2g?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>        
+                    <a href="{{ site_url('/promotion/index/cate/3001/code/1129') }}">신의법칙 자세히 보기 &gt;</a>   
+                </div>
+                <ul class="ProfCopBox mt100">
+                    <li class="sliderHotIssue nSlider pick">
+                        <div class="sliderNum">
+                            <div><a href="{{ site_url('/professor/show/cate/3002/prof-idx/50547/?subject_idx=1006&subject_name=%EC%88%98%EC%82%AC') }}"><img src="{{ img_url('cop_adm/prof/prof_ske.jpg') }}" alt="신광은 수사"></a></div>
+                            <div><a href="{{ site_url('/professor/show/cate/3002/prof-idx/50547/?subject_idx=1004&subject_name=%ED%98%95%EC%82%AC%EC%86%8C%EC%86%A1%EB%B2%95') }}"><img src="{{ img_url('cop_adm/prof/prof_ske02.jpg') }}" alt="신광은 형사소송법"></a></div>
+                        </div>
+                    </li>
+                    <li class="sliderHotIssue nSlider pick">
+                        <div class="sliderNum">
+                            <div><a href="{{ site_url('/professor/show/cate/3002/prof-idx/50031/?subject_idx=1005&subject_name=%EA%B2%BD%EC%B0%B0%ED%95%99%EA%B0%9C%EB%A1%A0') }}"><img src="{{ img_url('cop_adm/prof/prof_jjh.jpg') }}" alt="장정훈 경찰학개론"></a></div>
+                            <div><a href="{{ site_url('/professor/show/cate/3002/prof-idx/50031/?subject_idx=1007&subject_name=%ED%96%89%EC%A0%95%EB%B2%95') }}"><img src="{{ img_url('cop_adm/prof/prof_jjh02.jpg')}}" alt="장정훈 행정법"></a></div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="{{ site_url('/professor/show/cate/3002/prof-idx/50297/?subject_idx=1003&subject_name=%ED%98%95%EB%B2%95') }}"><img src="{{ img_url('cop_adm/prof/prof_kwu.jpg') }}" alt="김원욱 형법"></a>
+                    </li>
+                </ul>
             </div>
         </div>
 
@@ -32,19 +103,19 @@
                         </li>
                         <li>
                             <a href="#tab2">
-                                2018년 2차 최종합격생 인터뷰
+                                4개월 단기합격
                                 <span>신광은경찰TV</span>
                             </a>
-                        </li>                        
+                        </li> 
                         <li>
                             <a href="#tab3">
-                                스타강사가 들려주는 시험 꿀팁!
+                                영어, 한국사 200점! 오직 신광은팀에서만 가능하죠.
                                 <span>신광은경찰TV</span>
                             </a>
                         </li>
                         <li>
                             <a href="#tab4">
-                                중경입교식! 그 현장을 가다!
+                                3법 300점! 2단계 문제풀이에서 가능했습니다.
                                 <span>신광은경찰TV</span>
                             </a>
                         </li>
@@ -54,13 +125,13 @@
                     <iframe src="https://www.youtube.com/embed/re8w_IFAPS4?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
                 </div>
                 <div id="tab2" class="youtubeBox">
-                    <iframe src="https://www.youtube.com/embed/GlE9EGMDF98?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
-                </div>                
+                    <iframe src="https://www.youtube.com/embed/NPe7NiOyA5E?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
+                </div> 
                 <div id="tab3" class="youtubeBox">
-                    <iframe src="https://www.youtube.com/embed/VEmBnYu8tcc?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
+                    <iframe src="https://www.youtube.com/embed/my1yYcTb0ig?rel=0&modestbranding=1&showinfo=0&controls=2" frameborder="0" allowfullscreen=""></iframe>
                 </div>
                 <div id="tab4" class="youtubeBox">
-                    <iframe src="https://www.youtube.com/embed/lrZxQV21DE8?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
+                    <iframe src="https://www.youtube.com/embed/1mea_m4iMok?rel=0&modestbranding=1&showinfo=0&controls=2" frameborder="0" allowfullscreen=""></iframe>
                 </div>
             </div>
         </div>
@@ -154,31 +225,7 @@
             <!-- CurriStepBox //-->
         </div>
 
-        <div class="Section Section3 mt95">
-            <div class="widthAuto">
-                <div class="will-big-Tit">
-                    <div class="small NSK-Thin">여러분의 꿈과 목표를 위해,</div>
-                    <div class="big NSK-Black"><span class="cop-color">오늘도 최선을 다하는</span> 윌비스 신광은 경찰팀</div>
-                </div>
-                <ul class="ProfCopBox mt60 mb100">
-                    <li class="sliderHotIssue nSlider pick">
-                        <div class="sliderNum">
-                            <div><a href="{{ site_url('/professor/show/cate/3002/prof-idx/50547/?subject_idx=1006&subject_name=%EC%88%98%EC%82%AC') }}"><img src="{{ img_url('cop_adm/prof/prof_ske.jpg') }}" alt="신광은 수사"></a></div>
-                            <div><a href="{{ site_url('/professor/show/cate/3002/prof-idx/50547/?subject_idx=1004&subject_name=%ED%98%95%EC%82%AC%EC%86%8C%EC%86%A1%EB%B2%95') }}"><img src="{{ img_url('cop_adm/prof/prof_ske02.jpg') }}" alt="신광은 형사소송법"></a></div>
-                        </div>
-                    </li>
-                    <li class="sliderHotIssue nSlider pick">
-                        <div class="sliderNum">
-                            <div><a href="{{ site_url('/professor/show/cate/3002/prof-idx/50031/?subject_idx=1005&subject_name=%EA%B2%BD%EC%B0%B0%ED%95%99%EA%B0%9C%EB%A1%A0') }}"><img src="{{ img_url('cop_adm/prof/prof_jjh.jpg') }}" alt="장정훈 경찰학개론"></a></div>
-                            <div><a href="{{ site_url('/professor/show/cate/3002/prof-idx/50031/?subject_idx=1007&subject_name=%ED%96%89%EC%A0%95%EB%B2%95') }}"><img src="{{ img_url('cop_adm/prof/prof_jjh02.jpg')}}" alt="장정훈 행정법"></a></div>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="{{ site_url('/professor/show/cate/3002/prof-idx/50297/?subject_idx=1003&subject_name=%ED%98%95%EB%B2%95') }}"><img src="{{ img_url('cop_adm/prof/prof_kwu.jpg') }}" alt="김원욱 형법"></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+        
 
         <div class="Section Section2 mt90 mb90">
             <div class="widthAuto">
@@ -260,9 +307,9 @@
 
     <script type="text/javascript">
         var tab1_url = "https://www.youtube.com/embed/re8w_IFAPS4?rel=0&modestbranding=1&showinfo=0";
-        var tab2_url = "https://www.youtube.com/embed/GlE9EGMDF98?rel=0&modestbranding=1&showinfo=0";        
-        var tab3_url = "https://www.youtube.com/embed/VEmBnYu8tcc?rel=0&modestbranding=1&showinfo=0";
-        var tab4_url = "https://www.youtube.com/embed/lrZxQV21DE8?rel=0&modestbranding=1&showinfo=0";
+        var tab2_url = "https://www.youtube.com/embed/NPe7NiOyA5E?rel=0&modestbranding=1&showinfo=0";        
+        var tab3_url = "https://www.youtube.com/embed/my1yYcTb0ig?rel=0&modestbranding=1&showinfo=0";
+        var tab4_url = "https://www.youtube.com/embed/1mea_m4iMok?rel=0&modestbranding=1&showinfo=0";
 
         $(function() {
             $(".youtubeBox").hide();

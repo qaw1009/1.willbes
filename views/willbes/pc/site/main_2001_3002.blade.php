@@ -58,7 +58,7 @@
             </div>
         </div>
 
-        <div class="Section Section3 mt95">
+        <div class="Section Section3">
             <div class="widthAuto">
                 <div><img src="{{ img_url('cop/visual/visual_190323_02.jpg') }}" title="신광은 경찰팀이 1등일 수 밖에 없는 이유! 신의법칙"></div>
                 <div><img src="{{ img_url('cop/visual/visual_190323_02_01.jpg') }}" title="압도적 1등 경찰 전문 교수진만 가능합니다."></div>
@@ -83,13 +83,13 @@
                         <a href="{{ site_url('/professor/show/cate/3002/prof-idx/50297/?subject_idx=1003&subject_name=%ED%98%95%EB%B2%95') }}"><img src="{{ img_url('cop_adm/prof/prof_kwu.jpg') }}" alt="김원욱 형법"></a>
                     </li>
                 </ul>
+                <div><img src="{{ img_url('cop/visual/visual_190323_02_02.jpg') }}" ></div>
             </div>
         </div>
 
         <div class="Section youtubeWrap">
-            <div class="widthAuto smallTit">
-                <p><span>수험생에게 도움이 되는 <strong>특별한 영상!</strong></span></p>
-                <a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank"><img src="{{ img_url('cop_adm/icon_add_big.png') }}" alt="동영상 더보기"></a>
+            <div class="widthAuto tx-center pt100 mb100">   
+                <img src="{{ img_url('cop/visual/visual_190323_03.png') }}" title="4개월 단기합격 모든것이 완벽한 합격커리큘럼">   
             </div>
 
             <div class="widthAuto mt80">

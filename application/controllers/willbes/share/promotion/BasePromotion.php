@@ -131,7 +131,7 @@ class BasePromotion extends \app\controllers\FrontController
         $paging = $this->pagination($arr_base['page_url'].'?' . $get_page_params, $total_rows, $this->_paging_limit, $this->_paging_count, true);
 
         if ($total_rows > 0) {
-            $list = $this->eventFModel->listEventForCommentPromotion(false, $arr_condition, $paging['limit'], $paging['offset'], ['A.ElIdx' => 'DESC']);
+            $list = $this->eventFModel->listEventForCommentPromotion(false, $arr_condition, $paging['limit'], $paging['offset'], ['a.CIdx' => 'DESC']);
         }
 
         // 공지사항 조회 (페이징 처리 없음)

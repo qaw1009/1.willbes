@@ -33,9 +33,11 @@
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="">카테고리</label>
                     <div class="form-control-static col-md-4">
-                        @foreach($data['arr_cate_code'] as $key => $val)
-                            {{$val}} @if ($loop->last === false) | @endif
-                        @endforeach
+                        @if(empty($data['arr_cate_code']) === false)
+                            @foreach($data['arr_cate_code'] as $key => $val)
+                                {{$val}} @if ($loop->last === false) | @endif
+                            @endforeach
+                        @endif
                     </div>
                     <label class="control-label col-md-1-1 d-line" for="">사용</label>
                     <div class="form-control-static col-md-4 ml-12-dot">

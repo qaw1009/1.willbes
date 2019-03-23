@@ -30,9 +30,11 @@
                     </div>
                     <label class="control-label col-md-2" for="">구분</label>
                     <div class="form-control-static col-md-6">
-                        @foreach($data['arr_cate_code'] as $key => $val)
-                            {{$val}} @if ($loop->last === false) | @endif
-                        @endforeach
+                        @if(empty($data['arr_cate_code']) === false)
+                            @foreach($data['arr_cate_code'] as $key => $val)
+                                {{$val}} @if ($loop->last === false) | @endif
+                            @endforeach
+                        @endif
                     </div>
                 </div>
 

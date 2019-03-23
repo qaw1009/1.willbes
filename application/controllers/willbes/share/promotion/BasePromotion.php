@@ -91,9 +91,11 @@ class BasePromotion extends \app\controllers\FrontController
 
     /**
      * 프로모션 댓글리스트
+     * @param array $params
      */
-    public function frameCommentList()
+    public function frameCommentList($params = [])
     {
+        $comment_type = $params[0];
         $list = [];
         $method = 'POST';
         $arr_input = array_merge($this->_reqG(null));
@@ -109,7 +111,7 @@ class BasePromotion extends \app\controllers\FrontController
             $comment_create_type = '3';
         }
 
-        $arr_base['page_url'] = '/promotion/frameCommentList';
+        $arr_base['page_url'] = '/promotion/frameCommentList/'.$comment_type;
         $arr_base['comment_create_type'] = $comment_create_type;
 
         $arr_base['set_params '] = [
@@ -132,7 +134,11 @@ class BasePromotion extends \app\controllers\FrontController
             $list = $this->eventFModel->listEventForCommentPromotion(false, $arr_condition, $paging['limit'], $paging['offset'], ['A.ElIdx' => 'DESC']);
         }
 
-        $view_file = 'willbes/pc/promotion/frame_comment_list';
+        // 공지사항 조회 (페이징 처리 없음)
+        $arr_base['notice_data'] = $this->eventFModel->getEventForNotice(element('event_idx', $arr_input)
+        ,'BoardIdx, ElIdx, Title, Content, DATE_FORMAT(RegDatm, \'%Y-%m-%d\') AS RegDate');
+
+        $view_file = 'willbes/pc/promotion/frame_comment_list_'.$comment_type;
         $this->load->view($view_file, [
             'arr_input' => $arr_input,
             'arr_base' => $arr_base,

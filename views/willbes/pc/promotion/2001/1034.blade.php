@@ -86,7 +86,7 @@
         <div class="evtCtnsBox wb_01" >
             <img src="http://file3.willbes.net/new_cop/2018/10/EV181027_p2_new1.png"  alt="경찰합격대세" usemap="#go"/>
             <map name="go" id="go">
-                <area shape="rect" coords="198,544,831,625" href="javascript:doEvent()" target="_blank" alt="장정훈경찰학개론숫자특강무료신청GO" />
+                <area shape="rect" coords="230,543,863,624" href="javascript:doEvent()" target="_blank" alt="장정훈경찰학개론숫자특강무료신청GO" />
             </map>
         </div>
 

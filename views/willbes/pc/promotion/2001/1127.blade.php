@@ -150,7 +150,7 @@
         <img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_06_01.jpg"  alt="#" />
     </div>
 
-    @include('html.event_replyUrl')
+    {{--@include('html.event_replyUrl')--}}
 
     <div class="evtCtnsBox wb_07 NSK">
         <img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_07.jpg"  alt="#"  id="lec_go" />

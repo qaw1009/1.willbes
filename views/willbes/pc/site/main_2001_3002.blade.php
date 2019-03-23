@@ -8,7 +8,7 @@
 
         <div class="Section MainVisual">
             <div class="widthAuto">
-                <img src="{{ img_url('cop/visual/visual_190323_01.jpg') }}" title="수험생이 증명하는 압도적 대한민국 1등 경찰학원">
+                <img src="{{ img_url('cop_adm/visual/visual_190323_01.jpg') }}" title="수험생이 증명하는 압도적 대한민국 1등 경찰학원">
             </div>
         </div>
 
@@ -60,8 +60,8 @@
 
         <div class="Section Section3">
             <div class="widthAuto">
-                <div><img src="{{ img_url('cop/visual/visual_190323_02.jpg') }}" title="신광은 경찰팀이 1등일 수 밖에 없는 이유! 신의법칙"></div>
-                <div><img src="{{ img_url('cop/visual/visual_190323_02_01.jpg') }}" title="압도적 1등 경찰 전문 교수진만 가능합니다."></div>
+                <div><img src="{{ img_url('cop_adm/visual/visual_190323_02.jpg') }}" title="신광은 경찰팀이 1등일 수 밖에 없는 이유! 신의법칙"></div>
+                <div><img src="{{ img_url('cop_adm/visual/visual_190323_02_01.jpg') }}" title="압도적 1등 경찰 전문 교수진만 가능합니다."></div>
                 <div class="youtubeGod">
                     <iframe src="https://www.youtube.com/embed/S4Fa8vhOd2g?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>        
                     <a href="{{ site_url('/promotion/index/cate/3001/code/1129') }}">신의법칙 자세히 보기 &gt;</a>   
@@ -89,7 +89,7 @@
 
         <div class="Section youtubeWrap">
             <div class="widthAuto tx-center pt100 mb100">   
-                <img src="{{ img_url('cop/visual/visual_190323_03.png') }}" title="4개월 단기합격 모든것이 완벽한 합격커리큘럼">   
+                <img src="{{ img_url('cop_adm/visual/visual_190323_03.png') }}" title="4개월 단기합격 모든것이 완벽한 합격커리큘럼">   
             </div>
 
             <div class="widthAuto mt80">
@@ -193,17 +193,13 @@
 
         <div class="Section">
             <div class="widthAuto">
-                <a href="{{ site_url('/promotion/index/cate/3001/code/1032') }}"><img src="{{ img_url('cop/visual/visual_190323_05.jpg') }}" title="합격수기"></a>
+                <a href="{{ site_url('/promotion/index/cate/3001/code/1032') }}"><img src="{{ img_url('cop_adm/visual/visual_190323_05.jpg') }}" title="합격수기"></a>
             </div>
         </div>
 
         <div class="Section Section3 mt100 pb90">
             <div class="widthAuto">
-                <img src="{{ img_url('cop/visual/visual_190323_06.jpg') }}" title="기출문제와 강의 One-Stop!">
-                <div class="will-big-Tit pt100">
-                    <div class="small NSK-Thin">출제경향이 매번 반복되는 경찰공무원 시험.</div>
-                    <div class="big NSK-Black"><span class="cop-color">날카롭게 분석된</span> 기출강의<span class="small NSK-Thin">로 마무리해야합니다.</span></div>
-                </div>
+                <img src="{{ img_url('cop_adm/visual/visual_190323_06.jpg') }}" title="기출문제와 강의 One-Stop!">
                 <div class="SpecialLecBox mt60">
                     <dl>
                         <dt class="nLec p_re">

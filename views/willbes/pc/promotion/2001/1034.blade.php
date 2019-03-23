@@ -49,7 +49,7 @@
         <div class="evtCtnsBox wb_top">
             <img src="http://file3.willbes.net/new_cop/2018/10/EV181027_p1_new2.png" alt="장정훈 경찰학개론 라이브 무료 숫자특강" usemap="#new2" />
             <map name="new2" id="new2">
-                <area shape="rect" coords="336,901,874,988" href="javascript: doEvent();" target="_blank" alt="수강신청" />
+                <area shape="rect" coords="291,1015,829,1102" href="javascript: doEvent();" target="_blank" alt="수강신청" />
             </map>
         </div>
 
@@ -60,7 +60,7 @@
         <div class="evtCtnsBox wb_04">
             <img src="http://file3.willbes.net/new_cop/2018/10/EV181027_p4_1_new.jpg"  alt="타이틀" usemap="#more1" />
             <map name="more1" id="more1">
-                <area shape="rect" coords="562,390,762,431" href="http://www.willbescop.net/movie/event.html?event_cd=Off_180907_p&topMenuType=F" alt="더많은수기보기" target="_blank" />
+                <area shape="rect" coords="562,390,762,431" href="{{ site_url('#none') }}" alt="더많은수기보기" target="_blank" />
             </map>
             <div class="wb_04_con2">
                 <ul id="slidesImg2">

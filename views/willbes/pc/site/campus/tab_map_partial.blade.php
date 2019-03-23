@@ -167,7 +167,7 @@
                             </div>
                             <div class="tel">
                                 <span class="a-tit">연락처</span>
-                                <span class="tx-color">062-722-8140</span>
+                                <span class="tx-color">062-514-4560 / 070-7606-6060</span>
                             </div>
                         </div>
                     </dt>

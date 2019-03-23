@@ -281,8 +281,6 @@
                     </ul>
                 </div>
 
-
-
             </div><!--LAeventB03//-->
 
             <div class="LAeventB04">

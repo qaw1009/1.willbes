@@ -118,8 +118,7 @@
         
       	<div class="wbCommon wb_03" id="event03">
 			<img src="http://file3.willbes.net/new_cop/2019/03/EV190308P_07_new.jpg"  alt="황세웅 실시간 기출분석" />
-			
-
+			<img src="http://file3.willbes.net/new_cop/2019/03/EV190308P_08_end.jpg"  alt="황세웅 실시간 기출분석" />
             <img src="http://file3.willbes.net/new_cop/2019/03/EV190312P_05.jpg"  alt="라이브강의 안내" /><br />                            		        	 		        	 
 			<img src="http://file3.willbes.net/new_cop/2019/03/EV190308P_09.jpg"  alt="기출분석 라이브 특강 일정" />
 		</div>

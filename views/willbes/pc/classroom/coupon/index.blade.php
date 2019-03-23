@@ -20,7 +20,7 @@
                                 - 쿠폰으로 구매한 상품 취소 시, 사용된 쿠폰은 복원되지 않고 소멸됩니다.<br/>
 
                                 <div class="Tit pt30">수강권안내</div>
-                                - 수강권은 윌비스 제휴사( <img src="{{ img_url('mypage/icon_company1.png') }}"> <img src="{{ img_url('mypage/icon_company2.png') }}"> <img src="{{ img_url('mypage/icon_company3.png') }}"> <img src="{{ img_url('mypage/icon_company4.png') }}"> )를 통해서만 지급되며 특정 강좌만 수강할 수 있습니다.<br/>
+                                - 수강권은 윌비스 제휴사를 통해서만 지급되며 특정 강좌만 수강할 수 있습니다.<br/>
                                 - 수강권은 등록 후 즉시 수강중인강좌 > 관리자지급강좌에서 강좌 수강이 가능합니다.(결제 시 사용되지 않음)<br/>
                                 - 수강권은 표기된 유효기간 내에만 사용이 가능하며, 유효기간이 지난 수강권은 등록되지 않습니다.<br/>
                             </td>

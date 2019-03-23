@@ -138,11 +138,6 @@
         <!-- youtubeWrap //-->
 
         <div class="Section Section2 pb110">
-            <div class="widthAuto curriculumTit">
-                <img src="{{ img_url('cop_adm/visual/visual_tit02.jpg') }}" alt="신의법칙 퍼펙트 커리큘럼">
-                <a href="{{ site_url('/promotion/index/cate/3001/code/1129') }}">신의법칙 자세히 보기 &gt;</a>
-            </div>
-
             <div class="widthAuto CurriStepBox">
                 <div class="CurriView"><a href="{{ site_url('/promotion/index/cate/3001/code/1126') }}">커리큘럼 자세히보기 &gt;</a></div>
                 <ul class="CurriStep">
@@ -196,7 +191,7 @@
 
         
 
-        <div class="Section Section2 mt90 mb90">
+        <div class="Section">
             <div class="widthAuto">
                 <a href="{{ site_url('/promotion/index/cate/3001/code/1032') }}"><img src="{{ img_url('cop/visual/visual_190323_05.jpg') }}" title="합격수기"></a>
             </div>
@@ -204,9 +199,7 @@
 
         <div class="Section Section3 mt100 pb90">
             <div class="widthAuto">
-                <div class="widthAuto smallTit">
-                    <p><span>기출문제와 강의를 한 곳에 <strong>기출강의!</strong></span></p>
-                </div>
+                <img src="{{ img_url('cop/visual/visual_190323_06.jpg') }}" title="기출문제와 강의 One-Stop!">
                 <div class="will-big-Tit pt100">
                     <div class="small NSK-Thin">출제경향이 매번 반복되는 경찰공무원 시험.</div>
                     <div class="big NSK-Black"><span class="cop-color">날카롭게 분석된</span> 기출강의<span class="small NSK-Thin">로 마무리해야합니다.</span></div>

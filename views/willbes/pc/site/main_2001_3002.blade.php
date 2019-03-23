@@ -137,37 +137,6 @@
         </div>
         <!-- youtubeWrap //-->
 
-        <div class="Section Flipped">
-            <div class="widthAuto">
-                <ul class="inner">
-                    <li class="l1">
-                        <a href="{{ site_url('/promotion/index/cate/3001/code/1009') }}">
-                            <img src="{{ img_url('cop/flipped/190304_cFlipped_520x740.jpg') }}" alt="평생0원PASS">
-                        </a>
-                    </li>
-                    <li class="l2">
-                        <a href="{{ site_url('/promotion/index/cate/3001/code/1127') }}">
-                            <img src="{{ img_url('cop/flipped/flipped02.jpg') }}" alt="2단계 동형모의고사">
-                        </a>
-                    </li>
-                    <li class="l3">
-                        <a href="{{ site_url('/promotion/index/cate/3001/code/1015') }}">
-                            <img src="{{ img_url('cop/flipped/190304_cFlipped_280x740.jpg') }}" alt="기본이론">
-                        </a>
-                    </li>
-                </ul>
-                <div class="willbes-Bnr mt30">
-                    <ul>
-                        <li>
-                            <a href="{{ site_url('/pass/promotion/index/cate/3001/code/1138') }}">
-                                <img src="{{ img_url('cop/banner/190322_cBar_1120x110.jpg') }}" title="숨은 필합자를 찾아라">
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
         <div class="Section Section2 pb110">
             <div class="widthAuto curriculumTit">
                 <img src="{{ img_url('cop_adm/visual/visual_tit02.jpg') }}" alt="신의법칙 퍼펙트 커리큘럼">

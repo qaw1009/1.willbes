@@ -15,7 +15,7 @@
             </div>
         </div>
 
-        <div class="Section MainVisual MainVisual_acad mb50">
+        <div class="Section MainVisual MainVisual_acad mb50 mt20">
             <div class="widthAuto">
                 <ul>
                     @for($i=1; $i<=3; $i++)

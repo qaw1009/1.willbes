@@ -57,7 +57,7 @@
 
         <div class="evtCtnsBox wb_cts03" >
             <ul>
-                <li><a href="javascript:doEvent2()"><img src="http://file3.willbes.net/new_cop/2018/12/EV181228_p_02_btn2.gif"  alt="" /></a></li>
+                <li><a href="javascript:doEvent()"><img src="http://file3.willbes.net/new_cop/2018/12/EV181228_p_02_btn2.gif"  alt="" /></a></li>
             </ul>
         </div>
 
@@ -68,18 +68,8 @@
     <!-- End Container -->
 
     <script type="text/javascript">
-        function doEvent1() {
-            /*if("<c:out value='${userInfo.USER_ID}' />" == "") {
-                alert("로그인을 해주세요.");
-                return;
-            }*/
-
-            var url = 'https://www.local.willbes.net/home/html/event_onCop181228_p_pop1' ;
-            window.open(url,'gosi_event', 'scrollbars=yes,toolbar=no,resizable=yes,width=500,height=850');
-        }
-
-        function doEvent2() {
-            var url = 'https://www.local.willbes.net/home/html/event_onCop181228_p_pop2' ;
+        function doEvent() {
+            var url = '{{ site_url('/promotion/html/1011') }}';
             window.open(url,'gosi_event', 'scrollbars=yes,toolbar=no,resizable=yes,width=500,height=850');
         }
     </script>

@@ -40,7 +40,7 @@
                         </tr>
                         <tr>
                             <th class="tx-gray">교수선택</th>
-                            <td colspan="8" id="prof_list" class="tx-blue tx-left">* 과목 선택시 과목별 교수진을 확인하실 수 있습니다. 과목을 먼저 선택해 주세요!</td>
+                            <td colspan="8" id="prof_list" class="tx-blue">* 과목 선택시 과목별 교수진을 확인하실 수 있습니다. 과목을 먼저 선택해 주세요!</td>
                         </tr>
                         {{--<tr>
                             <th class="tx-gray">강좌선택</th>

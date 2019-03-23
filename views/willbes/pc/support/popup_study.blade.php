@@ -44,7 +44,7 @@
                         </tr>
                         {{--<tr>
                             <th class="tx-gray">강좌선택</th>
-                            <td colspan="8" class="tx-left">
+                            <td colspan="8">
                                 <select id="sel_prod_code" name="sel_prod_code" title="강좌를 선택해 주세요.">
                                     <option value="">강좌를 선택해 주세요.</option>
                                     @foreach($arr_base['on_my_lecture'] as $key => $val)

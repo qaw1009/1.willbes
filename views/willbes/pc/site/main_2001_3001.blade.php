@@ -8,18 +8,122 @@
 
         <div class="Section MainVisual">
             <div class="widthAuto">
-                <!--iframe src="https://www.youtube.com/embed/lrZxQV21DE8?rel=0&modestbranding=1&showinfo=1&controls=2" frameborder="0" allowfullscreen=""></iframe-->
-                <a href="{{ site_url('/promotion/index/cate/3001/code/1019') }}">
-                    <img src="{{ img_url('cop/visual/visual_190213.jpg') }}" alt="전국 4,000명 동시수강">
-                </a>
+                <img src="{{ img_url('cop/visual/visual_190323_01.jpg') }}" title="수험생이 증명하는 압도적 대한민국 1등 경찰학원">
             </div>
         </div>
 
-        <div class="Section youtubeWrap">
+        <div class="newPlaybn">
+            <div class="layer">		
+                <div class="video">
+                    <video style="width:100%" autoplay loop muted="" poster="">
+                        <source src="http://sample4.hd.willbes.gscdn.com/police/190318_junhkyeong_bus_1210x360(imsi).mp4" type="video/mp4" width="1210" height="360"></source>
+                    </video>
+                </div>
+                <div class="pngimg-real">
+                    <a href="{{ site_url('/promotion/index/cate/3001/code/1019') }}">
+                        <img src="{{ img_url('cop/visual/visual_190323_junhkyeong.png') }}" title="중경입교식, 그 현장을 가다!">
+                    </a>
+                </div>		
+            </div>
+        </div>
+
+        <div class="Section Flipped">
             <div class="widthAuto">
-                <a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank">    
-                    <img src="{{ img_url('cop/visual/youtubetab_tit.jpg') }}" alt="3법 300점, 공통 200점! 단기 합격까지!">   
-                </a>
+                <ul class="inner">
+                    <li class="l1">
+                        <a href="{{ site_url('/promotion/index/cate/3001/code/1009') }}">
+                            <img src="{{ img_url('cop/flipped/190304_cFlipped_520x740.jpg') }}" title="평생0원PASS">
+                        </a>
+                    </li>
+                    <li class="l2">
+                        <a href="{{ site_url('/promotion/index/cate/3001/code/1127') }}">
+                            <img src="{{ img_url('cop/flipped/flipped02.jpg') }}" title="2단계 동형모의고사">
+                        </a>
+                    </li>
+                    <li class="l3">
+                        <a href="{{ site_url('/promotion/index/cate/3001/code/1015') }}">
+                            <img src="{{ img_url('cop/flipped/190304_cFlipped_280x740.jpg') }}" title="기본이론">
+                        </a>
+                    </li>
+                </ul>
+                <div class="willbes-Bnr mt30">
+                    <ul>
+                        <li>
+                            <a href="{{ site_url('/pass/promotion/index/cate/3001/code/1138') }}">
+                                <img src="{{ img_url('cop/banner/190322_cBar_1120x110.jpg') }}" title="숨은 필합자를 찾아라">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="Section Section3">
+            <div class="widthAuto">
+                <div><img src="{{ img_url('cop/visual/visual_190323_02.jpg') }}" title="신광은 경찰팀이 1등일 수 밖에 없는 이유! 신의법칙"></div>
+                <div><img src="{{ img_url('cop/visual/visual_190323_02_01.jpg') }}" title="압도적 1등 경찰 전문 교수진만 가능합니다."></div>
+                <div class="youtubeGod">
+                    <iframe src="https://www.youtube.com/embed/S4Fa8vhOd2g?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>        
+                    <a href="{{ site_url('/promotion/index/cate/3001/code/1129') }}">신의법칙 자세히 보기 &gt;</a>   
+                </div>
+                <ul class="ProfCopBox mt100">
+                    <li>
+                        <img src="{{ img_url('cop/prof/prof_ske.jpg') }}" title="신광은">
+                        <ul class="ProfBtns">
+                            <li><a href="#none" onclick="fnPlayerProf('50547', 'OT');">▶</a></li>
+                            <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50547/?subject_idx=1004&subject_name=%ED%98%95%EC%82%AC%EC%86%8C%EC%86%A1%EB%B2%95') }}" target="_blank">교수소개</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <img src="{{ img_url('cop/prof/prof_jjh.jpg') }}" title="장정훈">
+                        <ul class="ProfBtns">
+                            <li><a href="#none" onclick="fnPlayerProf('50031', 'OT');">▶</a></li>
+                            <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50031/?subject_idx=1005&subject_name=%EA%B2%BD%EC%B0%B0%ED%95%99%EA%B0%9C%EB%A1%A0') }}" target="_blank">교수소개</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <img src="{{ img_url('cop/prof/prof_kwu.jpg') }}" title="김원욱">
+                        <ul class="ProfBtns">
+                            <li><a href="#none" onclick="fnPlayerProf('50297', 'OT');">▶</a></li>
+                            <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50297/?subject_idx=1003&subject_name=%ED%98%95%EB%B2%95') }}" target="_blank">교수소개</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <img src="{{ img_url('cop/prof/prof_hsm.jpg') }}" title="하승민">
+                        <ul class="ProfBtns">
+                            <li><a href="#none" onclick="fnPlayerProf('50135', 'OT');">▶</a></li>
+                            <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50135/?subject_idx=1001&subject_name=%EC%98%81%EC%96%B4') }}" target="_blank">교수소개</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <img src="{{ img_url('cop/prof/prof_wyc.jpg') }}" title="원유철">
+                        <ul class="ProfBtns">
+                            <li><a href="#none" onclick="fnPlayerProf('50641', 'OT');">▶</a></li>
+                            <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50641/?subject_idx=1002&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC') }}" target="_blank">교수소개</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <img src="{{ img_url('cop/prof/prof_otj.jpg') }}" title="오태진">
+                        <ul class="ProfBtns">
+                            <li><a href="#none" onclick="fnPlayerProf('50131', 'OT');">▶</a></li>
+                            <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50131/?subject_idx=1002&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC') }}" target="_blank">교수소개</a></li>
+                        </ul>
+                    </li>                    
+                    <li>
+                        <img src="{{ img_url('cop/prof/prof_khj.jpg') }}" title="김현정">
+                        <ul class="ProfBtns">
+                            <li><a href="#none" onclick="fnPlayerProf('50129', 'OT');">▶</a></li>
+                            <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50129/?subject_idx=1010&subject_name=%EC%98%81%EC%96%B4%EC%95%84%EC%B9%A8%ED%8A%B9%EA%B0%95') }}" target="_blank">교수소개</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div><img src="{{ img_url('cop/visual/visual_190323_02_02.jpg') }}" ></div>
+            </div>
+        </div> 
+
+        <div class="Section youtubeWrap">
+            <div class="widthAuto tx-center pt100 mb100">   
+                <img src="{{ img_url('cop/visual/visual_190323_03.png') }}" title="4개월 단기합격 모든것이 완벽한 합격커리큘럼">   
             </div>
 
             <div class="widthAuto">
@@ -33,19 +137,19 @@
                         </li>
                         <li>
                             <a href="#tab2">
-                                2018년 2차 최종합격생 인터뷰
+                                4개월 단기합격
                                 <span>신광은경찰TV</span>
                             </a>
                         </li> 
                         <li>
                             <a href="#tab3">
-                                스타강사가 들려주는 시험 꿀팁!
+                                영어, 한국사 200점! 오직 신광은팀에서만 가능하죠.
                                 <span>신광은경찰TV</span>
                             </a>
                         </li>
                         <li>
                             <a href="#tab4">
-                                중경입교식! 그 현장을 가다!
+                                3법 300점! 2단계 문제풀이에서 가능했습니다.
                                 <span>신광은경찰TV</span>
                             </a>
                         </li>
@@ -55,61 +159,27 @@
                     <iframe src="https://www.youtube.com/embed/re8w_IFAPS4?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
                 </div>
                 <div id="tab2" class="youtubeBox">
-                    <iframe src="https://www.youtube.com/embed/GlE9EGMDF98?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
+                    <iframe src="https://www.youtube.com/embed/NPe7NiOyA5E?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
                 </div> 
                 <div id="tab3" class="youtubeBox">
-                    <iframe src="https://www.youtube.com/embed/VEmBnYu8tcc?rel=0&modestbranding=1&showinfo=0&controls=2" frameborder="0" allowfullscreen=""></iframe>
+                    <iframe src="https://www.youtube.com/embed/my1yYcTb0ig?rel=0&modestbranding=1&showinfo=0&controls=2" frameborder="0" allowfullscreen=""></iframe>
                 </div>
                 <div id="tab4" class="youtubeBox">
-                    <iframe src="https://www.youtube.com/embed/lrZxQV21DE8?rel=0&modestbranding=1&showinfo=0&controls=2" frameborder="0" allowfullscreen=""></iframe>
+                    <iframe src="https://www.youtube.com/embed/1mea_m4iMok?rel=0&modestbranding=1&showinfo=0&controls=2" frameborder="0" allowfullscreen=""></iframe>
                 </div>
             </div>
         </div>
         <!-- youtubeWrap //-->
 
-        <div class="Section Flipped">
-            <div class="widthAuto">
-                <ul class="inner">
-                    <li class="l1">
-                        <a href="{{ site_url('/promotion/index/cate/3001/code/1009') }}">
-                            <img src="{{ img_url('cop/flipped/190304_cFlipped_520x740.jpg') }}" alt="평생0원PASS">
-                        </a>
-                    </li>
-                    <li class="l2">
-                        <a href="{{ site_url('/promotion/index/cate/3001/code/1127') }}">
-                            <img src="{{ img_url('cop/flipped/flipped02.jpg') }}" alt="2단계 동형모의고사">
-                        </a>
-                    </li>
-                    <li class="l3">
-                        <a href="{{ site_url('/promotion/index/cate/3001/code/1015') }}">
-                            <img src="{{ img_url('cop/flipped/190304_cFlipped_280x740.jpg') }}" alt="기본이론">
-                        </a>
-                    </li>
-                </ul>
-                <div class="willbes-Bnr mt60">
-                    <ul>
-                        <li>
-                            <a href="{{ site_url('/promotion/index/cate/3001/code/1025') }}">
-                                <img src="{{ img_url('cop/banner/190304_cBar_1120x110.jpg') }}" alt="하승민 경찰영어 적중">
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+               
 
         <div class="Section Section2 pb110">
-            <div class="widthAuto curriculumTit">
-                <img src="{{ img_url('cop/visual/visual_tit02.jpg') }}" alt="신의법칙 퍼펙트 커리큘럼">
-                <a href="{{ site_url('/promotion/index/cate/3001/code/1129') }}">신의법칙 자세히 보기 &gt;</a>
-            </div>
-
             <div class="widthAuto CurriStepBox">
                 <div class="CurriView"><a href="{{ site_url('/promotion/index/cate/3001/code/1126') }}">커리큘럼 자세히보기 &gt;</a></div>
                 <ul class="CurriStep">
                     <li class="active">
                         <div class="curriculumBox">
-                            <span><img src="{{ img_url('cop/icon_bubble.gif') }}" alt="2019대비 진행중"> </span>
+                            <span><img src="{{ img_url('cop/icon_bubble.gif') }}" title="2019대비 진행중"> </span>
                             <div class="Tit">기본과정</div>
                             <div class="subTit">집중연강식 진행</div>
                             <ul class="info">
@@ -153,84 +223,18 @@
                 </div>
             </div>
             <!-- CurriStepBox //-->
-        </div>
+        </div>        
 
-        <div class="Section Section3 mt95">
+        <div class="Section">
             <div class="widthAuto">
-                <div class="will-big-Tit">
-                    <div class="small NSK-Thin">여러분의 꿈과 목표를 위해,</div>
-                    <div class="big NSK-Black"><span class="cop-color">오늘도 최선을 다하는</span> 윌비스 신광은 경찰팀</div>
-                </div>
-                <ul class="ProfCopBox mt60 mb100">
-                    <li>
-                        <img src="{{ img_url('cop/prof/prof_ske.jpg') }}" alt="신광은">
-                        <ul class="ProfBtns">
-                            <li><a href="#none" onclick="fnPlayerProf('50547', 'OT');">▶</a></li>
-                            <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50547/?subject_idx=1004&subject_name=%ED%98%95%EC%82%AC%EC%86%8C%EC%86%A1%EB%B2%95') }}" target="_blank">교수소개</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <img src="{{ img_url('cop/prof/prof_jjh.jpg') }}" alt="장정훈">
-                        <ul class="ProfBtns">
-                            <li><a href="#none" onclick="fnPlayerProf('50031', 'OT');">▶</a></li>
-                            <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50031/?subject_idx=1005&subject_name=%EA%B2%BD%EC%B0%B0%ED%95%99%EA%B0%9C%EB%A1%A0') }}" target="_blank">교수소개</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <img src="{{ img_url('cop/prof/prof_kwu.jpg') }}" alt="김원욱">
-                        <ul class="ProfBtns">
-                            <li><a href="#none" onclick="fnPlayerProf('50297', 'OT');">▶</a></li>
-                            <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50297/?subject_idx=1003&subject_name=%ED%98%95%EB%B2%95') }}" target="_blank">교수소개</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <img src="{{ img_url('cop/prof/prof_hsm.jpg') }}" alt="하승민">
-                        <ul class="ProfBtns">
-                            <li><a href="#none" onclick="fnPlayerProf('50135', 'OT');">▶</a></li>
-                            <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50135/?subject_idx=1001&subject_name=%EC%98%81%EC%96%B4') }}" target="_blank">교수소개</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <img src="{{ img_url('cop/prof/prof_wyc.jpg') }}" alt="원유철">
-                        <ul class="ProfBtns">
-                            <li><a href="#none" onclick="fnPlayerProf('50641', 'OT');">▶</a></li>
-                            <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50641/?subject_idx=1002&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC') }}" target="_blank">교수소개</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <img src="{{ img_url('cop/prof/prof_otj.jpg') }}" alt="오태진">
-                        <ul class="ProfBtns">
-                            <li><a href="#none" onclick="fnPlayerProf('50131', 'OT');">▶</a></li>
-                            <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50131/?subject_idx=1002&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC') }}" target="_blank">교수소개</a></li>
-                        </ul>
-                    </li>                    
-                    <li>
-                        <img src="{{ img_url('cop/prof/prof_khj.jpg') }}" alt="김현정">
-                        <ul class="ProfBtns">
-                            <li><a href="#none" onclick="fnPlayerProf('50129', 'OT');">▶</a></li>
-                            <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50129/?subject_idx=1010&subject_name=%EC%98%81%EC%96%B4%EC%95%84%EC%B9%A8%ED%8A%B9%EA%B0%95') }}" target="_blank">교수소개</a></li>
-                        </ul>
-                    </li>
-                </ul>
+                <a href="{{ site_url('/promotion/index/cate/3001/code/1032') }}"><img src="{{ img_url('cop/visual/visual_190323_05.jpg') }}" title="합격수기"></a>
             </div>
         </div>
 
-        <div class="Section Section4">
+        <div class="Section Section3 pb90">
             <div class="widthAuto">
-                <a href="{{ site_url('/promotion/index/cate/3001/code/1032') }}"><img src="{{ img_url('cop/visual/visual_03.jpg') }}" alt="합격수기"></a>
-            </div>
-        </div>
-
-        <div class="Section Section3 mt100 pb90">
-            <div class="widthAuto">
-                <div class="widthAuto smallTit">
-                    <p><span>기출문제와 강의 <strong>One - Stop!</strong></span></p>
-                </div>
-                <div class="will-big-Tit pt100">
-                    <div class="small NSK-Thin">경찰공무원 시험 기출문제 분석 </div>
-                    <div class="big NSK-Black">가장 <span class="cop-color">완벽한 분석!</span> 가장 <span class="cop-color">명쾌한 해설!</span></div>
-                </div>
-                <div class="SpecialLecBox mt60">
+                <img src="{{ img_url('cop/visual/visual_190323_06.jpg') }}" title="기출문제와 강의 One-Stop!">
+                <div class="SpecialLecBox">
                     <dl>
                         <dt class="nLec p_re">
                             <div class="infoBox">
@@ -247,10 +251,10 @@
                                 </div>
                                 <div class="infoList">
                                     <ul class="List-Table">
-                                        <li><a href="#none"><span>[2018년 3차]</span>경찰공무원(일반/경행) 채용시험 기출</a><span class="btn-more"><a href="{{ site_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/free?course_idx=1075') }}" target="_blank">바로가기 ></a></span></li>
-                                        <li><a href="#none"><span>[2018년 2차]</span>경찰공무원(일반/101단/경행) 채용시험 기출</a><span class="btn-more"><a href="{{ site_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/free?course_idx=1075') }}" target="_blank">바로가기 ></a></span></li>
-                                        <li><a href="#none"><span>[2018년 1차]</span>경찰공무원(일반/101단/전의경) 채용시험 기출</a><span class="btn-more"><a href="{{ site_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/free?course_idx=1075') }}" target="_blank">바로가기 ></a></span></li>
-                                        <li><a href="#none"><span>[2017년 2차]</span>경찰공무원(일반/101단/경행) 채용시험 기출</a><span class="btn-more"><a href="{{ site_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/free?course_idx=1075') }}" target="_blank">바로가기 ></a></span></li>
+                                        <li><p><span>[2018년 3차]</span>경찰공무원(일반/경행) 채용시험 기출</p><span class="btn-more"><a href="{{ site_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/free?course_idx=1075') }}" target="_blank">바로가기 ></a></span></li>
+                                        <li><p><span>[2018년 2차]</span>경찰공무원(일반/101단/경행) 채용시험 기출</p><span class="btn-more"><a href="{{ site_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/free?course_idx=1075') }}" target="_blank">바로가기 ></a></span></li>
+                                        <li><p><span>[2018년 1차]</span>경찰공무원(일반/101단/전의경) 채용시험 기출</p><span class="btn-more"><a href="{{ site_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/free?course_idx=1075') }}" target="_blank">바로가기 ></a></span></li>
+                                        <li><p><span>[2017년 2차]</span>경찰공무원(일반/101단/경행) 채용시험 기출</p><span class="btn-more"><a href="{{ site_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/free?course_idx=1075') }}" target="_blank">바로가기 ></a></span></li>
                                     </ul>
                                 </div>
                             </div>
@@ -296,9 +300,9 @@
 
     <script type="text/javascript">
         var tab1_url = "https://www.youtube.com/embed/re8w_IFAPS4?rel=0&modestbranding=1&showinfo=0";
-        var tab2_url = "https://www.youtube.com/embed/GlE9EGMDF98?rel=0&modestbranding=1&showinfo=0";        
-        var tab3_url = "https://www.youtube.com/embed/VEmBnYu8tcc?rel=0&modestbranding=1&showinfo=0";
-        var tab4_url = "https://www.youtube.com/embed/lrZxQV21DE8?rel=0&modestbranding=1&showinfo=0";
+        var tab2_url = "https://www.youtube.com/embed/NPe7NiOyA5E?rel=0&modestbranding=1&showinfo=0";        
+        var tab3_url = "https://www.youtube.com/embed/my1yYcTb0ig?rel=0&modestbranding=1&showinfo=0";
+        var tab4_url = "https://www.youtube.com/embed/1mea_m4iMok?rel=0&modestbranding=1&showinfo=0";
 
         $(function() {
             $(".youtubeBox").hide();

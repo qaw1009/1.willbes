@@ -1,6 +1,6 @@
 <div class="nNoticeBox two">
     <div class="recommendLec Lec widthAuto550 f_left p_re">
-        <div class="will-nlistTit">추천강좌</div>
+        <div class="will-nlistTit">교수별 인기강좌</div>
         <div class="nSliderTM graySlider AbsControls">
             <div class="sliderNumTM">
                 <div>
@@ -16,7 +16,7 @@
                                     <img src="{{ $row['ProfLecListImg'] }}" width="82" height="82">
                                 </div>
                                 <div class="infoBox">
-                                    <div class="infoTit">{{ $row['SubjectName'] }} {{ $row['wProfName'] }}</div>
+                                    <div class="infoTit">{{ $row['SubjectName'] }} {{ $row['ProfNickName'] }}</div>
                                     <div class="infoTxt">
                                         {{ hpSubString($row['ProdName'], 0, 25, '...') }}<br/>
                                         <span class="small">{{ $row['wUnitLectureCnt'] }}강 / {{ $row['StudyPeriod'] }}일 / {{ $row['wLectureProgressCcdName'] }}</span><br/>
@@ -30,7 +30,7 @@
         </div>
     </div>
     <div class="newLec Lec widthAuto550 f_right p_re">
-        <div class="will-nlistTit">신규강좌</div>
+        <div class="will-nlistTit">이 달의 신규강좌</div>
         <div class="nSliderTM graySlider AbsControls">
             <div class="sliderNumTM">
                 <div>
@@ -46,7 +46,7 @@
                                     <img src="{{ $row['ProfLecListImg'] }}" width="82" height="82">
                                 </div>
                                 <div class="infoBox">
-                                    <div class="infoTit">{{ $row['SubjectName'] }} {{ $row['wProfName'] }}</div>
+                                    <div class="infoTit">{{ $row['SubjectName'] }} {{ $row['ProfNickName'] }}</div>
                                     <div class="infoTxt">
                                         {{ hpSubString($row['ProdName'], 0, 25, '...') }}<br/>
                                         <span class="small">{{ $row['wUnitLectureCnt'] }}강 / {{ $row['StudyPeriod'] }}일 / {{ $row['wLectureProgressCcdName'] }}</span><br/>

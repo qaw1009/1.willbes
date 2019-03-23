@@ -101,7 +101,7 @@
                             <tbody>
                             <tr>
                                 <td class="w-list">{{ $row['CourseName'] }}</td>
-                                <td class="w-name">{{ $row['SubjectName'] }}<br/><span class="tx-blue">{{ $row['wProfName'] }}</span></td>
+                                <td class="w-name">{{ $row['SubjectName'] }}<br/><span class="tx-blue">{{ $row['ProfNickName'] }}</span></td>
                                 <td class="w-data tx-left pl25">
                                     <div class="w-tit prod-title-{{ $row['ProdCode'] }}" data-inof="lec">{{ $row['ProdName'] }}</div>
                                     <dl class="w-info">

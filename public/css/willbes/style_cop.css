@@ -152,10 +152,13 @@
     right: 0;
     z-index: 1;
 }
-.youtubeWrap {    
-    height:530px;
+
+/**/
+.youtubeWrap {
     padding:0 0 80px;
+    background:#f7f7f7 url("../../img/willbes/cop/visual/visual_190323_03_bg.jpg") no-repeat center top;
 }
+
 .youtubetabWrap {
     float: right;
     background: url("../../img/willbes/cop/visual/youtubetab_bg.png") no-repeat 0 0;
@@ -229,6 +232,32 @@
 }
 
 /* Main Container : Prof : Cop */
+.Section .youtubeGod {
+    width: 100%;
+    text-align: center;
+}
+.Section .youtubeGod iframe {
+    width: 644px;
+    height: 362px;
+    margin:0 auto;
+}
+.Section .youtubeGod a {
+    display: block;
+    background: #0c5dc0;
+    padding: 8px 0;
+    width: 180px;
+    color:#fff;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    border-bottom: 7px solid #054088;
+    margin:16px auto 0;
+}
+.Section .youtubeGod a:hover {
+    border-bottom: 0;
+    border-top: 7px solid #fff;
+}
+
 .Section .ProfCopBox > li {
     position: relative;
     display: inline;
@@ -335,7 +364,7 @@
 .newPlaybn .layer .pngimg-real a {display:block}
 
 /* Main Container : flipped : Cop */
-.Flipped {background: url("../../img/willbes/cop/flipped/flipped_bg.jpg") repeat-x center 40px; padding-bottom: 60px; margin-top: 60px}
+.Flipped {background: url("../../img/willbes/cop/flipped/flipped_bg.jpg") repeat-x center 40px; padding-bottom:30px; margin-top: 60px}
 .Flipped ul.inner {height:370px}
 .Flipped ul.inner li {position: relative; float:left; width:280px; height:100%; margin-left:20px; overflow: hidden;}
 .Flipped ul.inner li:first-child {width:520px; margin-left:0}
@@ -768,6 +797,10 @@
     line-height: 20px;
     text-align: center;
 }
+.Section .SpecialLecBox .infoList ul li .btn-more a:hover {
+    color: #fff;
+    background: #898989
+}
 .Section .SpecialLecBox .infoList .List-Table {
     padding: 0;
 }
@@ -782,11 +815,11 @@
 .Section .SpecialLecBox .infoList .List-Table li:first-child {
     border-top: 1px solid #ececec; 
 }
-.Section .SpecialLecBox .infoList .List-Table li a {
+.Section .SpecialLecBox .infoList .List-Table li p {
     display: inline-block;
     width: 550px;
 }
-.Section .SpecialLecBox .infoList .List-Table li a span {
+.Section .SpecialLecBox .infoList .List-Table li p span {
     float: left;
     width: 130px;
     color: #009ef5;

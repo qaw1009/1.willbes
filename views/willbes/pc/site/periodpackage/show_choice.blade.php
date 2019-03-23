@@ -199,7 +199,7 @@
                                                class="essSubGroup-{{$sub_row['SubjectIdx']}}" onclick="checkOnly('.essSubGroup-{{$sub_row['SubjectIdx']}}', this.value);"
                                                @if($subject['subjectCount'] == '1')checked="checked"@endif>
                                         <img src="{{ $sub_row['ProfReferData']['lec_list_img'] }}">
-                                        <div class="prof-Name">{{$sub_row['wProfName']}}</div>
+                                        <div class="prof-Name">{{$sub_row['ProfNickName']}}</div>
                                     </li>
 
                                         @php
@@ -244,7 +244,7 @@
                                             <li>
                                                 <input type="checkbox" id="subject_prof_cho_{{$sub_row['SubjectIdx']}}_{{$sub_row['ProfIdx']}}" name="subject_prof[]" value="{{$sub_row['SubjectIdx']}}:{{$sub_row['ProfIdx']}}" class="choSubGroup">
                                                 <img src="{{ $sub_row['ProfReferData']['lec_list_img'] }}">
-                                                <div class="prof-Name">{{$sub_row['wProfName']}}</div>
+                                                <div class="prof-Name">{{$sub_row['ProfNickName']}}</div>
                                             </li>
                                         @endif
 

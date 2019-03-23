@@ -75,7 +75,7 @@
                                 <td colspan="9">
                                     <ul class="curriSelect">
                                         @foreach($arr_base['professor'] as $idx => $row)
-                                            <li><a href="#none" onclick="goUrl('prof_idx', '{{ $row['ProfIdx'] }}');" class="@if(element('prof_idx', $arr_input) == $row['ProfIdx']) on @endif">{{ $row['wProfName'] }}</a></li>
+                                            <li><a href="#none" onclick="goUrl('prof_idx', '{{ $row['ProfIdx'] }}');" class="@if(element('prof_idx', $arr_input) == $row['ProfIdx']) on @endif">{{ $row['ProfNickName'] }}</a></li>
                                         @endforeach
                                     </ul>
                                 </td>
@@ -129,7 +129,7 @@
                     <select id="search_keyword" name="search_keyword" title="직접입력" class="">
                         <option value="ProdName" @if($arr_search_text[0] == 'ProdName') selected="selected" @endif>강좌명</option>
                         <option value="SubjectName" @if($arr_search_text[0] == 'SubjectName') selected="selected" @endif>과목명</option>
-                        <option value="wProfName" @if($arr_search_text[0] == 'wProfName') selected="selected" @endif>교수명</option>
+                        <option value="ProfNickName" @if($arr_search_text[0] == 'ProfNickName') selected="selected" @endif>교수명</option>
                         <option value="CourseName" @if($arr_search_text[0] == 'CourseName') selected="selected" @endif>과정명</option>
                     </select>
                 </div>
@@ -259,7 +259,7 @@
                                 <tbody>
                                 <tr>
                                     <td class="w-list">{{ $row['CourseName'] }}</td>
-                                    <td class="w-name">{{ $row['SubjectName'] }}<br/><span class="tx-blue">{{ $row['wProfName'] }}</span></td>
+                                    <td class="w-name">{{ $row['SubjectName'] }}<br/><span class="tx-blue">{{ $row['ProfNickName'] }}</span></td>
                                     <td class="w-data tx-left pl25">
                                         <div class="w-tit">
                                             <a href="#none" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 4) }}', '{{ $pattern }}');" class="prod-name">{{ $row['ProdName'] }}</a>

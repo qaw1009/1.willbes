@@ -49,9 +49,9 @@
     right: 0;
     z-index: 1;
 }
-.adm .youtubeWrap {    
-    height:530px;
+.adm .youtubeWrap {
     padding:0 0 80px;
+    background:#f7f7f7 url("../../img/willbes/cop/visual/visual_190323_03_bg.jpg") no-repeat center top;
 }
 .adm .youtubetabWrap {
     float: right;
@@ -101,6 +101,23 @@
 }
 
 /* Main Container : Prof : Cop_adm */
+.adm .Section .youtubeGod a {
+    display: block;
+    background: #008b6c;
+    padding: 8px 0;
+    width: 180px;
+    color:#fff;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    border-bottom: 7px solid #026750;
+    margin:16px auto 0;
+}
+.adm .Section .youtubeGod a:hover {
+    border-bottom: 0;
+    border-top: 7px solid #fff;
+}
+
 .adm .Section .ProfCopBox > li {
     position: relative;
     display: inline;

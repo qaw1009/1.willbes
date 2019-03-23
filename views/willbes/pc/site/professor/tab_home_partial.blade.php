@@ -6,7 +6,7 @@
                 <li>등록된 내용이 없습니다.</li>
             @else
                 @foreach($tab_data['notice'] as $idx => $row)
-                    <li><a href="{{front_url('/professor/show/cate/'.$def_cate_code.'/prof-idx/'.$prof_idx.'/?subject_idx='.element('subject_idx', $arr_input).'&subject_name='.element('subject_name', $arr_input).'&board_idx='.$row['BoardIdx'].'&tab=notice')}}">{{ $row['Title'] }}</a></li>
+                    <li><a href="{{front_url('/professor/show/cate/'.$def_cate_code.'/prof-idx/'.$prof_idx.'/?subject_idx='.element('subject_idx', $arr_input).'&subject_name='.element('subject_name', $arr_input).'&board_idx='.$row['BoardIdx'].'&tab=notice')}}">{{ hpSubString($row['Title'], 0, 48, '...') }}</a></li>
                 @endforeach
             @endif
         </ul>
@@ -18,7 +18,7 @@
                 <li>등록된 내용이 없습니다.</li>
             @else
                 @foreach($tab_data['material'] as $idx => $row)
-                    <li><a href="{{front_url('/professor/show/cate/'.$def_cate_code.'/prof-idx/'.$prof_idx.'/?subject_idx='.element('subject_idx', $arr_input).'&subject_name='.element('subject_name', $arr_input).'&board_idx='.$row['BoardIdx'].'&tab=material')}}">{{ $row['Title'] }}</a></li>
+                    <li><a href="{{front_url('/professor/show/cate/'.$def_cate_code.'/prof-idx/'.$prof_idx.'/?subject_idx='.element('subject_idx', $arr_input).'&subject_name='.element('subject_name', $arr_input).'&board_idx='.$row['BoardIdx'].'&tab=material')}}">{{ hpSubString($row['Title'], 0, 48, '...') }}</a></li>
                 @endforeach
             @endif
         </ul>
@@ -27,7 +27,7 @@
         <div class="will-Tit NG">신규강좌 <img style="vertical-align: top;" src="{{ img_url('prof/icon_new.gif') }}"></div>
         <ul class="List-Table GM tx-gray">
             @foreach($tab_data['new_product'] as $idx => $row)
-                <li><a href="{{ $__cfg['IsPassSite'] === false ? front_url('/lecture/show/cate/' . $def_cate_code . '/pattern/only/prod-code/' . $row['ProdCode']) : front_url('/offLecture/index#' . $row['ProdCode']) }}">{{ $row['ProdName'] }}</a></li>
+                <li><a href="{{ $__cfg['IsPassSite'] === false ? front_url('/lecture/show/cate/' . $def_cate_code . '/pattern/only/prod-code/' . $row['ProdCode']) : front_url('/offLecture/index#' . $row['ProdCode']) }}">{{ hpSubString($row['ProdName'], 0, 48, '...') }}</a></li>
             @endforeach
         </ul>
     </div>
@@ -38,7 +38,7 @@
                 <li>등록된 내용이 없습니다.</li>
             @else
                 @foreach($tab_data['study_comment'] as $idx => $row)
-                    <li><img src="{{ img_url('sub/star' . $row['LecScore']. '.gif') }}"><a href="#none" class="btn-study" data-board-idx="{{$row['BoardIdx']}}">{{ hpSubString($row['Title'], 0, 25, '...') }}</a></li>
+                    <li><img src="{{ img_url('sub/star' . $row['LecScore']. '.gif') }}"><a href="#none" class="btn-study" data-board-idx="{{$row['BoardIdx']}}">{{ hpSubString($row['Title'], 0, 48, '...') }}</a></li>
                 @endforeach
             @endif
         </ul>

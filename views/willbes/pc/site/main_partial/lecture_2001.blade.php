@@ -1,6 +1,6 @@
 <div class="nNoticeBox two">
     <div class="recommendLec Lec widthAuto550 f_left p_re">
-        <div class="will-nlistTit">추천강좌</div>
+        <div class="will-nlistTit">교수별 인기강좌</div>
         <div class="nSliderTM graySlider AbsControls">
             <div class="sliderNumTM">
                 <div>
@@ -30,7 +30,7 @@
         </div>
     </div>
     <div class="newLec Lec widthAuto550 f_right p_re">
-        <div class="will-nlistTit">신규강좌</div>
+        <div class="will-nlistTit">이 달의 신규강좌</div>
         <div class="nSliderTM graySlider AbsControls">
             <div class="sliderNumTM">
                 <div>

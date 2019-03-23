@@ -138,7 +138,17 @@ class PointFModel extends WB_Model
             foreach ($arr_point_type as $type) {
                 if (isset($data[$type]) === false) {
                     $data[$type] = 0;
+                } else {
+                    // 사용가능포인트가 0 미만일 경우 0으로 설정
+                    if ($data[$type] < 0) {
+                        $data[$type] = 0;
+                    }
                 }
+            }
+        } else {
+            // 사용가능포인트가 0 미만일 경우 0으로 설정
+            if ($data < 0) {
+                $data = 0;
             }
         }
 

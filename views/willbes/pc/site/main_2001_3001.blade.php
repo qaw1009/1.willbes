@@ -46,7 +46,7 @@
                         </a>
                     </li>
                 </ul>
-                <div class="willbes-Bnr mt60">
+                <div class="willbes-Bnr mt30">
                     <ul>
                         <li>
                             <a href="{{ site_url('/pass/promotion/index/cate/3001/code/1138') }}">
@@ -58,57 +58,7 @@
             </div>
         </div>
 
-        <div class="Section youtubeWrap">
-            <div class="widthAuto tx-center pt100 mb100">   
-                <img src="{{ img_url('cop/visual/visual_190323_03.png') }}" title="4개월 단기합격 모든것이 완벽한 합격커리큘럼">   
-            </div>
-
-            <div class="widthAuto">
-                <div class="youtubetabWrap">
-                    <ul class="youtubetab">
-                        <li>
-                            <a href="#tab1" class="active">
-                                신의 법칙! 2주만에 1회독?
-                                <span>신광은경찰TV</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#tab2">
-                                2018년 2차 최종합격생 인터뷰
-                                <span>신광은경찰TV</span>
-                            </a>
-                        </li> 
-                        <li>
-                            <a href="#tab3">
-                                스타강사가 들려주는 시험 꿀팁!
-                                <span>신광은경찰TV</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#tab4">
-                                중경입교식! 그 현장을 가다!
-                                <span>신광은경찰TV</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div id="tab1" class="youtubeBox">
-                    <iframe src="https://www.youtube.com/embed/re8w_IFAPS4?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
-                </div>
-                <div id="tab2" class="youtubeBox">
-                    <iframe src="https://www.youtube.com/embed/GlE9EGMDF98?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
-                </div> 
-                <div id="tab3" class="youtubeBox">
-                    <iframe src="https://www.youtube.com/embed/VEmBnYu8tcc?rel=0&modestbranding=1&showinfo=0&controls=2" frameborder="0" allowfullscreen=""></iframe>
-                </div>
-                <div id="tab4" class="youtubeBox">
-                    <iframe src="https://www.youtube.com/embed/lrZxQV21DE8?rel=0&modestbranding=1&showinfo=0&controls=2" frameborder="0" allowfullscreen=""></iframe>
-                </div>
-            </div>
-        </div>
-        <!-- youtubeWrap //-->
-
-        <div class="Section Section3 mt95">
+        <div class="Section Section3">
             <div class="widthAuto">
                 <div><img src="{{ img_url('cop/visual/visual_190323_02.jpg') }}" title="신광은 경찰팀이 1등일 수 밖에 없는 이유! 신의법칙"></div>
                 <div><img src="{{ img_url('cop/visual/visual_190323_02_01.jpg') }}" title="압도적 1등 경찰 전문 교수진만 가능합니다."></div>
@@ -168,7 +118,59 @@
                     </li>
                 </ul>
             </div>
-        </div>        
+        </div> 
+
+        <div class="Section youtubeWrap">
+            <div class="widthAuto tx-center pt100 mb100">   
+                <img src="{{ img_url('cop/visual/visual_190323_03.png') }}" title="4개월 단기합격 모든것이 완벽한 합격커리큘럼">   
+            </div>
+
+            <div class="widthAuto">
+                <div class="youtubetabWrap">
+                    <ul class="youtubetab">
+                        <li>
+                            <a href="#tab1" class="active">
+                                신의 법칙! 2주만에 1회독?
+                                <span>신광은경찰TV</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#tab2">
+                                2018년 2차 최종합격생 인터뷰
+                                <span>신광은경찰TV</span>
+                            </a>
+                        </li> 
+                        <li>
+                            <a href="#tab3">
+                                스타강사가 들려주는 시험 꿀팁!
+                                <span>신광은경찰TV</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#tab4">
+                                중경입교식! 그 현장을 가다!
+                                <span>신광은경찰TV</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div id="tab1" class="youtubeBox">
+                    <iframe src="https://www.youtube.com/embed/re8w_IFAPS4?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
+                </div>
+                <div id="tab2" class="youtubeBox">
+                    <iframe src="https://www.youtube.com/embed/GlE9EGMDF98?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
+                </div> 
+                <div id="tab3" class="youtubeBox">
+                    <iframe src="https://www.youtube.com/embed/VEmBnYu8tcc?rel=0&modestbranding=1&showinfo=0&controls=2" frameborder="0" allowfullscreen=""></iframe>
+                </div>
+                <div id="tab4" class="youtubeBox">
+                    <iframe src="https://www.youtube.com/embed/lrZxQV21DE8?rel=0&modestbranding=1&showinfo=0&controls=2" frameborder="0" allowfullscreen=""></iframe>
+                </div>
+            </div>
+        </div>
+        <!-- youtubeWrap //-->
+
+               
 
         <div class="Section Section2 pb110">
             <div class="widthAuto CurriStepBox">

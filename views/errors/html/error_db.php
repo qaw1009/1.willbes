@@ -47,7 +47,7 @@ body {
 		<img src="../../public/img/error_500.png" alt="500 error"> 
 		<div>
 			고객센터 <strong>1544-5006</strong><Br>
-			<span>평일 09:00 ~ 18:00 / 토요일 09:00 ~ 13:00</span>
+			<span>평일 09:00 ~ 18:00 / 주말/공휴일휴무</span>
 			<p>
 				<a href="#none">메인으로 &gt;</a>
 				<a href="#none">이전으로 &gt;</a>

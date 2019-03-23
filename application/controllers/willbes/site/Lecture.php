@@ -95,7 +95,7 @@ class Lecture extends \app\controllers\FrontController
             $selected_subjects = array_pluck($this->baseProductFModel->listSubject($this->_site_code, array_unique(array_pluck($list, 'SubjectIdx'))), 'SubjectName', 'SubjectIdx');
 
             // 상품조회 결과에 존재하는 교수 정보
-            $selected_professor_names = array_data_pluck($list, ['wProfName', 'ProfSlogan'], ['SubjectIdx', 'ProfIdx']);    // 교수명, 슬로건
+            $selected_professor_names = array_data_pluck($list, ['ProfNickName', 'ProfSlogan'], ['SubjectIdx', 'ProfIdx']);    // 교수명, 슬로건
             $selected_professor_refers = array_map(function ($val) {
                 return json_decode($val, true);
             }, array_pluck($list, 'ProfReferData', 'ProfIdx'));

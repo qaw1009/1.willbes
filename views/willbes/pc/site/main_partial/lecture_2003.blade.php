@@ -19,9 +19,9 @@
             <ul id="tab_prof_subject_{{ $subject_idx }}" class="prof-slider">
             @foreach($rows as $row)
                 <li>
-                    <div><img src="{{ $row['ProfClassImg'] }}" alt="{{ $row['wProfName'] }}" class=""/></div>
+                    <div><img src="{{ $row['ProfClassImg'] }}" alt="{{ $row['ProfNickName'] }}" class=""/></div>
                     <span class="txt1">{{ $row['SubjectName'] }}</span>
-                    <span class="txt2">{{ $row['wProfName'] }}</span>
+                    <span class="txt2">{{ $row['ProfNickName'] }}</span>
                     <span class="txt3"><a href="{{ front_url('/lecture/show/cate/' . $row['CateCode'] . '/pattern/only/prod-code/' . $row['ProdCode']) }}">{{ hpSubString($row['ProdName'], 0, 32, '...') }}</a></span>
                     @if($row['wUnitIdx'] != 'N')
                         <a href="javascript:fnPlayerSample('{{$row['ProdCode']}}','{{$row['wUnitIdx']}}','HD');">맛보기강좌 ></a>

@@ -33,3 +33,13 @@ if (in_array(APP_NAME, ['api']) === false) {
         );
     }
 }
+
+if (in_array(APP_NAME, ['willbes']) === true) {
+    // 시스템 작동 초기
+    $hook['pre_system'][] = array(
+        'class' => 'FrontPreHook',
+        'function' => 'preCheck',
+        'filename' => 'FrontPreHook.php',
+        'filepath' => 'hooks'
+    );
+}

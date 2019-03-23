@@ -62,7 +62,7 @@ class Professor extends \app\controllers\FrontController
         $arr_professor = $this->baseProductFModel->listProfessorSubjectMapping($this->_site_code, ['ProfReferData', 'ProfEventData', 'IsNew'], $this->_def_cate_code);
 
         // LNB 메뉴용 전체 교수 정보
-        $arr_subject2professor = array_data_pluck($arr_professor, 'wProfName', ['SubjectIdx', 'SubjectName', 'ProfIdx']);
+        $arr_subject2professor = array_data_pluck($arr_professor, 'ProfNickName', ['SubjectIdx', 'SubjectName', 'ProfIdx']);
 
         // 선택된 과목에 맞는 교수 정보
         $arr_base['professor'] = current(element($subject_idx, $arr_subject2professor, []));
@@ -138,7 +138,7 @@ class Professor extends \app\controllers\FrontController
         $arr_professor = $this->baseProductFModel->listProfessorSubjectMapping($this->_site_code, null, $this->_def_cate_code);
 
         // LNB 메뉴용 전체 교수 정보
-        $arr_subject2professor = array_data_pluck($arr_professor, 'wProfName', ['SubjectIdx', 'SubjectName', 'ProfIdx']);
+        $arr_subject2professor = array_data_pluck($arr_professor, 'ProfNickName', ['SubjectIdx', 'SubjectName', 'ProfIdx']);
 
         // 교수 참조 정보
         $data['ProfReferData'] = $data['ProfReferData'] == 'N' ? [] : json_decode($data['ProfReferData'], true);

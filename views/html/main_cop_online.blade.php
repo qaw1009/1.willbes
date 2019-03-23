@@ -47,7 +47,7 @@
                 <li>
                     <a href="#none">이벤트</a>
                 </li>
-                <li class="Acad">
+                <li class="police">
                     <a href="#none">경찰학원 <span class="arrow-Btn">></span></a>
                 </li>
             </ul>
@@ -87,10 +87,7 @@
 
     <div class="Section MainVisual">
         <div class="widthAuto">
-            <!--iframe src="https://www.youtube.com/embed/lrZxQV21DE8?rel=0&modestbranding=1&showinfo=1&controls=2" frameborder="0" allowfullscreen=""></iframe-->
-            <a href="{{ site_url('/promotion/index/cate/3001/code/1019') }}">
-                <img src="{{ img_url('cop/visual/visual_190213.jpg') }}" alt="전국 4,000명 동시수강">
-            </a>
+            <img src="{{ img_url('cop/visual/visual_190323_01.jpg') }}" title="수험생이 증명하는 압도적 대한민국 1등 경찰학원">
         </div>
     </div>
 
@@ -98,30 +95,154 @@
         <div class="layer">		
             <div class="video">
                 <video style="width:100%" autoplay loop muted="" poster="">
-                    <source src="http://sample4.hd.willbes.gscdn.com/police/190131_junhkyeong_bus_1210x360.mp4" type="video/mp4" width="1210" height="360"></source>
+                    <source src="http://sample4.hd.willbes.gscdn.com/police/190318_junhkyeong_bus_1210x360(imsi).mp4" type="video/mp4" width="1210" height="360"></source>
                 </video>
             </div>
             <div class="pngimg-real">
-                <img src="http://file3.willbes.net/new_cop/2019/03/190321_junhkyeong_bus_btn.png" alt="자세히보기"  usemap="#190131_junhkyeong_bus_btn">
-                <map name="190131_junhkyeong_bus_btn" id="190131_junhkyeong_bus_btn">
-                    <area shape="rect" coords="413,36,515,74" href="http://www.willbescop.net/movie/event.html?event_cd=Off_190107_p&topMenuType=F" />
-                    <area shape="rect" coords="826,257,921,301" href="http://www.willbescop.net/event/movie/event.html?event_cd=On_190307_y" />
-                </map>
+                <a href="{{ site_url('/promotion/index/cate/3001/code/1019') }}">
+                    <img src="{{ img_url('cop/visual/visual_190323_junhkyeong.png') }}" title="중경입교식, 그 현장을 가다!">
+                </a>
             </div>		
         </div>
     </div>
 
-    <div class="Section youtubeWrap mt100">
-        <!--div class="widthAuto smallTit">          
-            <p><span>수험생에게 도움이 되는 <strong>특별한 영상!</strong></span></p>
-            <a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank"><img src="{{ img_url('cop/icon_add_big.png') }}" alt="동영상 더보기"></a>             
-        </div-->
-
+    <div class="Section Flipped">
         <div class="widthAuto">
-            <a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank">    
-                <img src="{{ img_url('cop/visual/youtubetab_tit.jpg') }}" alt="3법 300점, 공통 200점! 단기 합격까지!">   
-            </a>
+            <ul class="inner">
+                <li class="l1">
+                    <a href="{{ site_url('#none') }}" target="_blank">
+                        <img src="{{ img_url('cop/flipped/flipped01.jpg') }}" title="평생0원PASS">    
+                        <!--div class="f-tit tit1 NSK"># 평생0원PASS</div>
+                        <span class="wrap_ban front">
+                            <img src="{{ img_url('cop/flipped/flipped_front_190101.png') }}">
+                        </span>
+                        <span class="wrap_ban back">
+                            <img src="{{ img_url('cop/flipped/flipped_back_190101.png') }}">
+                        </span-->
+                    </a>
+                </li>
+                <li class="l2">
+                    <a href="{{ site_url('#none') }}" target="_blank">
+                        <img src="{{ img_url('cop/flipped/flipped02.jpg') }}" title="2단계 4주 동형모의고사">
+                        <!--div class="f-tit tit2 NSK"># 2019 대비 기본이론</div>
+                        <span class="wrap_ban front">
+                            <img src="{{ img_url('cop/flipped/flipped_front_190102.png') }}">
+                        </span>
+                        <span class="wrap_ban back">
+                            <img src="{{ img_url('cop/flipped/flipped_back_190102.png') }}">
+                        </span-->
+                    </a>
+                </li>
+                <li class="l3">
+                    <a href="{{ site_url('#none') }}" target="_blank">
+                        <img src="{{ img_url('cop/flipped/flipped03.jpg') }}" title="프리미엄 심화 이론/기출">
+                        <!--div class="f-tit tit3 NSK"># 2019 대비 심화이론/기출</div>
+                        <span class="wrap_ban front">
+                            <img src="{{ img_url('cop/flipped/flipped_front_190103.png') }}">
+                        </span>
+                        <span class="wrap_ban back">
+                            <img src="{{ img_url('cop/flipped/flipped_back_190103.png') }}">
+                        </span-->
+                    </a>
+                </li>
+            </ul>
+            <div class="willbes-Bnr mt30">
+                <ul>
+                    <li><a href="{{ site_url('#none') }}" target="_blank"><img src="{{ img_url('cop/banner/190322_cBar_1120x110.jpg') }}" title="숨은 필합자를 찾아라"></a></li>
+                </ul>
+            </div>
         </div>
+    </div>
+
+    <div class="Section Section3">
+        <div class="widthAuto">
+            <div><img src="{{ img_url('cop/visual/visual_190323_02.jpg') }}" title="신광은 경찰팀이 1등일 수 밖에 없는 이유! 신의법칙"></div>
+            <div><img src="{{ img_url('cop/visual/visual_190323_02_01.jpg') }}" title="압도적 1등 경찰 전문 교수진만 가능합니다."></div>
+            <div class="youtubeGod">
+                <iframe src="https://www.youtube.com/embed/re8w_IFAPS4?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>        
+                <a href="{{ site_url('/promotion/index/cate/3001/code/1129') }}">신의법칙 자세히 보기 &gt;</a>   
+            </div>
+            <!--div class="will-big-Tit">
+                <div class="small NSK-Thin">여러분의 꿈과 목표를 위해,</div>
+                <div class="big NSK-Black"><span class="cop-color">오늘도 최선을 다하는</span> 윌비스 신광은 경찰팀</div>
+            </div-->
+            <ul class="ProfCopBox mt100">
+                <li>
+                    <img src="{{ img_url('cop/prof/prof_ske.jpg') }}" title="신광은">
+                    <ul class="ProfBtns">
+                        <li><a href="#none">▶</a></li>
+                        <li><a href="#none" target="_blank">교수소개</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <img src="{{ img_url('cop/prof/prof_jjh.jpg') }}" title="장정훈">
+                    <ul class="ProfBtns">
+                        <li><a href="#none">▶</a></li>
+                        <li><a href="#none" target="_blank">교수소개</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <img src="{{ img_url('cop/prof/prof_kwu.jpg') }}" title="김원욱">
+                    <ul class="ProfBtns">
+                        <li><a href="#none">▶</a></li>
+                        <li><a href="#none" target="_blank">교수소개</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <img src="{{ img_url('cop/prof/prof_hsm.jpg') }}" title="하승민">
+                    <ul class="ProfBtns">
+                        <li><a href="#none">▶</a></li>
+                        <li><a href="#none" target="_blank">교수소개</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <img src="{{ img_url('cop/prof/prof_otj.jpg') }}" title="오태진">
+                    <ul class="ProfBtns">
+                        <li><a href="#none">▶</a></li>
+                        <li><a href="#none" target="_blank">교수소개</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <img src="{{ img_url('cop/prof/prof_wyc.jpg') }}" title="원유철">
+                    <ul class="ProfBtns">
+                        <li><a href="#none">▶</a></li>
+                        <li><a href="#none" target="_blank">교수소개</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <img src="{{ img_url('cop/prof/prof_khj.jpg') }}" title="김현정">
+                    <ul class="ProfBtns">
+                        <li><a href="#none">▶</a></li>
+                        <li><a href="#none" target="_blank">교수소개</a></li>
+                    </ul>
+                </li>
+                <!--
+                <li class="p_re">         
+                    <div class="cSlider copSlider AbsControls">
+                        <div class="sliderControls">
+                            <div><a href="#none"><img src="{{ img_url('cop/prof/prof_190101.png') }}"></a></div>
+                            <div><a href="#none"><img src="{{ img_url('cop/prof/prof_190107.png') }}"></a></div>
+                        </div>
+                    </div>
+                </li>
+                <li class="p_re">         
+                    <div class="cSlider copSlider AbsControls">
+                        <div class="sliderControls">
+                            <div><a href="#none"><img src="{{ img_url('cop/prof/prof_190102.png') }}"></a></div>
+                            <div><a href="#none"><img src="{{ img_url('cop/prof/prof_190108.png') }}"></a></div>
+                        </div>
+                    </div>
+                </li>
+                -->
+            </ul>
+            <div><img src="{{ img_url('cop/visual/visual_190323_02_02.jpg') }}" ></div>
+        </div>
+    </div>
+
+    <div class="Section youtubeWrap">
+        <div class="widthAuto tx-center pt100 mb100">   
+            <img src="{{ img_url('cop/visual/visual_190323_03.png') }}" title="4개월 단기합격 모든것이 완벽한 합격커리큘럼">   
+        </div>        
 
         <div class="widthAuto">
             <div class="youtubetabWrap">
@@ -168,53 +289,7 @@
     </div> 
     <!-- youtubeWrap //-->   
 
-    <div class="Section Flipped">
-        <div class="widthAuto">
-            <ul class="inner">
-                <li class="l1">
-                    <a href="http://www.willbescop.net/movie/event.html?event_cd=On_180327_yp" target="_blank">
-                        <img src="{{ img_url('cop/flipped/flipped01.jpg') }}" alt="평생0원PASS">    
-                        <!--div class="f-tit tit1 NSK"># 평생0원PASS</div>
-                        <span class="wrap_ban front">
-                            <img src="{{ img_url('cop/flipped/flipped_front_190101.png') }}">
-                        </span>
-                        <span class="wrap_ban back">
-                            <img src="{{ img_url('cop/flipped/flipped_back_190101.png') }}">
-                        </span-->
-                    </a>
-                </li>
-                <li class="l2">
-                    <a href="http://www.willbescop.net/event/movie/event.html?event_cd=On_170831_p&topMenuType=O#main" target="_blank">
-                        <img src="{{ img_url('cop/flipped/flipped02.jpg') }}" alt="2019 대비 기본이론<">
-                        <!--div class="f-tit tit2 NSK"># 2019 대비 기본이론</div>
-                        <span class="wrap_ban front">
-                            <img src="{{ img_url('cop/flipped/flipped_front_190102.png') }}">
-                        </span>
-                        <span class="wrap_ban back">
-                            <img src="{{ img_url('cop/flipped/flipped_back_190102.png') }}">
-                        </span-->
-                    </a>
-                </li>
-                <li class="l3">
-                    <a href="http://www.willbescop.net/movie/event.html?event_cd=On_premium&topMenuType=O" target="_blank">
-                        <img src="{{ img_url('cop/flipped/flipped03.jpg') }}" alt="2019 대비 심화이론/기출">
-                        <!--div class="f-tit tit3 NSK"># 2019 대비 심화이론/기출</div>
-                        <span class="wrap_ban front">
-                            <img src="{{ img_url('cop/flipped/flipped_front_190103.png') }}">
-                        </span>
-                        <span class="wrap_ban back">
-                            <img src="{{ img_url('cop/flipped/flipped_back_190103.png') }}">
-                        </span-->
-                    </a>
-                </li>
-            </ul>
-            <div class="willbes-Bnr mt60">
-                <ul>
-                    <li><a href="#none" target="_blank"><img src="{{ img_url('cop/banner/190322_cBar_1120x110.jpg') }}" alt="숨은 필합자를 찾아라"></a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
+    
 
     <div class="Section Section2 pb110">
         <!--
@@ -311,28 +386,29 @@
                         </li>
                     </ul>
                 </div>                
-            </div>
-            -->
+            </div>            
             
             <div class="widthAuto curriculumTit">                
-                <img src="{{ img_url('cop/visual/visual_tit02.jpg') }}" alt="신의법칙 퍼펙트 커리큘럼">
+                <img src="{{ img_url('cop/visual/visual_tit02.jpg') }}" title="신의법칙 퍼펙트 커리큘럼">
                 <a href="#none">신의법칙 자세히 보기 &gt;</a>                
             </div>
+            -->
 
             <div class="widthAuto CurriStepBox">
-                <div class="CurriView"><a href="#none">커리큘럼 자세히보기 &gt;</a></div>
+                <div class="CurriView"><a href="{{ site_url('/promotion/index/cate/3001/code/1126') }}">커리큘럼 자세히보기 &gt;</a></div>
                 <ul class="CurriStep">
-                    <li class="active">                        
+                    <li class="active">
                         <div class="curriculumBox">
                             <span><img src="{{ img_url('cop/icon_bubble.gif') }}" alt="2019대비 진행중"> </span>
                             <div class="Tit">기본과정</div>
                             <div class="subTit">집중연강식 진행</div>
                             <ul class="info">
-                                <li>영어 매달 초 개강</li>
-                                <li>2주마다  형소법  →  경찰학<br/>→  한국사  →  형법 진행</li>
-                            </ul>                            
+                                <li>기초개념 정리</li>
+                                <li>지속적인 복습테스트</li>
+                                <li>초시생 필수 수강과정</li>
+                            </ul>
                         </div>
-                        <a href="#none">OT보기 &gt;</a>                      
+                        <a href="#none" onclick="fnPlayerSample('132199', '1019097', 'HD');">OT보기 &gt;</a>
                     </li>
                     <li>&nbsp;</li>
                     <li>
@@ -340,34 +416,36 @@
                             <div class="Tit">심화과정</div>
                             <div class="subTit">프리미엄 심화과정</div>
                             <ul class="info">
-                                <li>이론 재정리</li>
-                                <li>10주 과정</li>
+                                <li>실력업그레이드</li>
+                                <li>심화 l 이론/기출학습</li>
+                                <li>고득점 합격발판 마련</li>
                             </ul>
                         </div>
-                        <a href="#none">OT보기 &gt;</a> 
+                        <a href="#none" onclick="fnPlayerSample('132216', '1019296', 'HD');">OT보기 &gt;</a>
                     </li>
                     <li>&nbsp;</li>
                     <li>
                         <div class="curriculumBox">
-                            <div class="Tit">3개월 필합 풀패키지</div>
-                            <div class="subTit">핵심요약/진도별 정리</div>
+                            <div class="Tit">문제풀이 과정</div>
+                            <div class="subTit">(실전 1+2+3 단계)</div>
                             <ul class="info">
-                                <li>5주 단권화</li>
-                                <li>5주 동형모의고사</li>
-                                <li>FINAL 실전 모의고사</li>
+                                <li>1단계 진도별 핵심정리</li>
+                                <li>2단계 전범위 동형모의고사</li>
+                                <li>3단계 FINAL 실전 모의고사</li>
                             </ul>
                         </div>
-                        <a href="#none">OT보기 &gt;</a> 
+                        <a href="#none" onclick="fnPlayerSample('131811', '1014607', 'HD');">OT보기 &gt;</a>
                     </li>
                 </ul>
                 <div class="curriculumTxt">
-                    <span class="cop-color">모든 강의</span>를 평생 0원 PASS 하나로 <span class="cop-color">평생 수강</span>하실 수 있습니다.                    
-                    <span class="btn"><a href="http://www.willbescop.net/movie/event.html?event_cd=On_180327_yp" target="_blank">평생 0원 PASS 구매하기</a></span>
+                    <span class="cop-color">모든 강의</span>를 평생 0원 PASS 하나로 <span class="cop-color">평생 수강</span>하실 수 있습니다.
+                    <span class="btn"><a href="{{ site_url('/promotion/index/cate/3001/code/1009') }}">평생 0원 PASS 구매하기</a></span>
                 </div>
             </div>
             <!-- CurriStepBox //-->        
     </div>
 
+    <!--
     <div class="Section Section3 mt95">
         <div class="widthAuto">
             <div class="will-big-Tit">
@@ -376,55 +454,55 @@
             </div>
             <ul class="ProfCopBox mt60 mb100">
                 <li>
-                    <img src="{{ img_url('cop/prof/prof_ske.jpg') }}" alt="신광은">
+                    <img src="{{ img_url('cop/prof/prof_ske.jpg') }}" title="신광은">
                     <ul class="ProfBtns">
                         <li><a href="#none">▶</a></li>
                         <li><a href="#none" target="_blank">교수소개</a></li>
                     </ul>
                 </li>
                 <li>
-                    <img src="{{ img_url('cop/prof/prof_jjh.jpg') }}" alt="장정훈">
+                    <img src="{{ img_url('cop/prof/prof_jjh.jpg') }}" title="장정훈">
                     <ul class="ProfBtns">
                         <li><a href="#none">▶</a></li>
                         <li><a href="#none" target="_blank">교수소개</a></li>
                     </ul>
                 </li>
                 <li>
-                    <img src="{{ img_url('cop/prof/prof_kwu.jpg') }}" alt="김원욱">
+                    <img src="{{ img_url('cop/prof/prof_kwu.jpg') }}" title="김원욱">
                     <ul class="ProfBtns">
                         <li><a href="#none">▶</a></li>
                         <li><a href="#none" target="_blank">교수소개</a></li>
                     </ul>
                 </li>
                 <li>
-                    <img src="{{ img_url('cop/prof/prof_hsm.jpg') }}" alt="하승민">
+                    <img src="{{ img_url('cop/prof/prof_hsm.jpg') }}" title="하승민">
                     <ul class="ProfBtns">
                         <li><a href="#none">▶</a></li>
                         <li><a href="#none" target="_blank">교수소개</a></li>
                     </ul>
                 </li>
                 <li>
-                    <img src="{{ img_url('cop/prof/prof_otj.jpg') }}" alt="오태진">
+                    <img src="{{ img_url('cop/prof/prof_otj.jpg') }}" title="오태진">
                     <ul class="ProfBtns">
                         <li><a href="#none">▶</a></li>
                         <li><a href="#none" target="_blank">교수소개</a></li>
                     </ul>
                 </li>
                 <li>
-                    <img src="{{ img_url('cop/prof/prof_wyc.jpg') }}" alt="원유철">
+                    <img src="{{ img_url('cop/prof/prof_wyc.jpg') }}" title="원유철">
                     <ul class="ProfBtns">
                         <li><a href="#none">▶</a></li>
                         <li><a href="#none" target="_blank">교수소개</a></li>
                     </ul>
                 </li>
                 <li>
-                    <img src="{{ img_url('cop/prof/prof_khj.jpg') }}" alt="김현정">
+                    <img src="{{ img_url('cop/prof/prof_khj.jpg') }}" title="김현정">
                     <ul class="ProfBtns">
                         <li><a href="#none">▶</a></li>
                         <li><a href="#none" target="_blank">교수소개</a></li>
                     </ul>
                 </li>
-                <!--
+                
                 <li class="p_re">         
                     <div class="cSlider copSlider AbsControls">
                         <div class="sliderControls">
@@ -441,14 +519,15 @@
                         </div>
                     </div>
                 </li>
-                -->
+                
             </ul>
         </div>
     </div>
-
-    <div class="Section Section4">
+    -->
+    
+    <div class="Section">
         <div class="widthAuto">  
-        <img src="{{ img_url('cop/visual/visual_03.jpg') }}" alt="합격수기">
+            <img src="{{ img_url('cop/visual/visual_190323_05.jpg') }}" title="이것이 진짜 Real 합격수기">
             <!--
             <div class="widthAuto smallTit smallTit2">          
                 <p><span>진짜 살아있는 정보를 알 수 있는 <strong>합격수기!</strong></span></p>            
@@ -606,20 +685,22 @@
                     </div>
                 </div>
             </div>
-            -->
+            -->            
         </div>
     </div>
+    
 
-    <div class="Section Section3 mt100 pb90">        
+    <div class="Section Section3 pb90">        
         <div class="widthAuto">
-            <div class="widthAuto smallTit">          
+            <img src="{{ img_url('cop/visual/visual_190323_06.jpg') }}" title="기출문제와 강의 One-Stop!">
+            <!--div class="widthAuto smallTit">          
                 <p><span>기출문제와 강의를 한 곳에 <strong>기출강의!</strong></span></p>            
             </div>
             <div class="will-big-Tit pt100">
                 <div class="small NSK-Thin">출제경향이 매번 반복되는 경찰공무원 시험.</div>
                 <div class="big NSK-Black"><span class="cop-color">날카롭게 분석된</span> 기출강의<span class="small NSK-Thin">로 마무리해야합니다.</span></div>
-            </div>
-            <div class="SpecialLecBox mt60">
+            </div-->
+            <div class="SpecialLecBox">
                 <dl>
                     <dt class="nLec p_re">
                         <div class="infoBox">
@@ -636,10 +717,10 @@
                             </div>
                             <div class="infoList">
                                 <ul class="List-Table">
-                                    <li><a href="#none"><span>[2018년 2차]</span>경찰공무원(일반/101단/경행) 채용시험 기출</a><span class="btn-more"><a href="https://cop.dev.willbes.net/support/examQuestion/show?board_idx=1286&" target="_blank">바로가기 ></a></span></li>
-                                    <li><a href="#none"><span>[2018년 1차]</span>경찰공무원(일반/101단/전의경) 채용시험 기출</a><span class="btn-more"><a href="https://cop.dev.willbes.net/support/examQuestion/show?board_idx=1286&" target="_blank">바로가기 ></a></span></li>
-                                    <li><a href="#none"><span>[2018년 2차]</span>경찰공무원(일반/101단/경행) 채용시험 기출</a><span class="btn-more"><a href="https://cop.dev.willbes.net/support/examQuestion/show?board_idx=1286&" target="_blank">바로가기 ></a></span></li>
-                                    <li><a href="#none"><span>[2018년 1차]</span>경찰공무원(일반/101단/경행) 채용시험 기출</a><span class="btn-more"><a href="https://cop.dev.willbes.net/support/examQuestion/show?board_idx=1286&" target="_blank">바로가기 ></a></span></li>
+                                    <li><p><span>[2018년 2차]</span>경찰공무원(일반/101단/경행) 채용시험 기출</p><span class="btn-more"><a href="https://cop.dev.willbes.net/support/examQuestion/show?board_idx=1286&" target="_blank">바로가기 ></a></span></li>
+                                    <li><p><span>[2018년 1차]</span>경찰공무원(일반/101단/전의경) 채용시험 기출</p><span class="btn-more"><a href="https://cop.dev.willbes.net/support/examQuestion/show?board_idx=1286&" target="_blank">바로가기 ></a></span></li>
+                                    <li><p><span>[2018년 2차]</span>경찰공무원(일반/101단/경행) 채용시험 기출</p><span class="btn-more"><a href="https://cop.dev.willbes.net/support/examQuestion/show?board_idx=1286&" target="_blank">바로가기 ></a></span></li>
+                                    <li><p><span>[2018년 1차]</span>경찰공무원(일반/101단/경행) 채용시험 기출</p><span class="btn-more"><a href="https://cop.dev.willbes.net/support/examQuestion/show?board_idx=1286&" target="_blank">바로가기 ></a></span></li>
                                 </ul>
                             </div>
                         </div>
@@ -657,8 +738,8 @@
             </div>
         </div>
         <ul class="widthAuto mt60">
-            <li><a href="#none"><img src="{{ img_url('cop/banner/bnr_onHiA01.jpg') }}" alt="배너명"></a></li>
-            <li><a href="#none"><img src="{{ img_url('cop/banner/bnr_onHiB01.jpg') }}" alt="배너명"></a></li>
+            <li><a href="#none"><img src="{{ img_url('cop/banner/bnr_onHiA01.jpg') }}" title="배너명"></a></li>
+            <li><a href="#none"><img src="{{ img_url('cop/banner/bnr_onHiB01.jpg') }}" title="배너명"></a></li>
             <li class="sliderHotIssue nSlider pick">
                 <div class="sliderNum">
                     <div><img src="{{ img_url('cop/banner/bnr_onHiC01.jpg') }}"></div>
@@ -669,6 +750,7 @@
     </div>
     <!-- HotIssue //-->    
 
+    <!--
     <div class="Section Bnr mt40 mb70">
         <div class="widthAuto">
             <div class="widthAuto smallTit">          
@@ -681,6 +763,8 @@
             </div>
         </div>
     </div>
+    -->
+
     <div class="Section Section5 mb70">
         <div class="widthAuto">
             <div class="sliderPick nSlider pick">
@@ -987,16 +1071,16 @@
             <li>   
                 <div class="QuickSlider">      
                     <div class="sliderNum">
-                        <div><a href="http://www.willbescop.net/event/movie/event.html?event_cd=On_170911_popup" target="_blank"><img src="{{ img_url('cop/quick/quick_190108.jpg') }}" alt="배너명"></a></div>
-                        <div><a href="http://www.willbescop.net/event/arm_event.html?event_cd=On_leaveArmy02_2018&topMenuType=O&EVENT_NO=53" target="_blank"><img src="{{ img_url('cop/quick/quick_190109.jpg') }}" alt="배너명"></a></div>
+                        <div><a href="http://www.willbescop.net/event/movie/event.html?event_cd=On_170911_popup" target="_blank"><img src="{{ img_url('cop/quick/quick_190108.jpg') }}" title="배너명"></a></div>
+                        <div><a href="http://www.willbescop.net/event/arm_event.html?event_cd=On_leaveArmy02_2018&topMenuType=O&EVENT_NO=53" target="_blank"><img src="{{ img_url('cop/quick/quick_190109.jpg') }}" title="배너명"></a></div>
                     </div>
                 </div>
             </li>
             <li>
-                <a href="http://www.willbescop.net/movie/event.html?event_cd=Off_181129_p&topMenuType=F" target="_blank"><img src="{{ img_url('cop/quick/quick_190110.jpg') }}" alt="배너명"></a>
+                <a href="http://www.willbescop.net/movie/event.html?event_cd=Off_181129_p&topMenuType=F" target="_blank"><img src="{{ img_url('cop/quick/quick_190110.jpg') }}" title="배너명"></a>
             </li>
             <li>
-                <a href="http://www.willbescop.net/movie/event.html?event_cd=Off_181129_p&topMenuType=F" target="_blank"><img src="{{ img_url('cop/quick/quick_talk.jpg') }}" alt="배너명"></a>
+                <a href="http://www.willbescop.net/movie/event.html?event_cd=Off_181129_p&topMenuType=F" target="_blank"><img src="{{ img_url('cop/quick/quick_talk.jpg') }}" title="배너명"></a>
             </li>
         </ul>
     </div>

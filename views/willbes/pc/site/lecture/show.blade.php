@@ -12,7 +12,7 @@
         <div class="willbes-Prof-Detail NG tx-black">
             <div class="prof-profile p_re">
                 <div class="Name">
-                    <strong>{{ $data['wProfName'] }}</strong><br/>교수님
+                    <strong>{{ $data['ProfNickName'] }}</strong><br/>교수님
                 </div>
                 <div class="ProfImg">
                     <img src="{{ $data['ProfReferData']['lec_detail_img'] or '' }}">

@@ -157,7 +157,7 @@
                 </div>
             </div>
             <div class="Quick-Top">
-                <div class="Quick-Bnr ml20">
+                <div class="Quick-Bnr">
                     <img src="{{ img_url('sample/banner_180605.jpg') }}"> 
                 </div>
             </div>

@@ -74,8 +74,9 @@ class ProductFModel extends WB_Model
                 case 'on_lecture' :
                 case 'on_free_lecture' :
                         $column .= ', CateCode, IsBest, IsNew, IsCoupon, IsCart, IsFreebiesTrans, IsDeliveryInfo, StudyPeriod, MultipleApply, StudyStartDate
-                            , SubjectIdx, SubjectName, CourseIdx, CourseName, OrderNumCourse, SchoolYear, ProfIdx, wProfIdx, wProfName, ProfSlogan, wLecIdx, wUnitLectureCnt
-                            , wLectureProgressCcd, wLectureProgressCcdName, LecSaleType, LectureSampleData, ProdBookData, ProdBookMemo, ProfReferData, ProdPriceData';
+                            , SubjectIdx, SubjectName, CourseIdx, CourseName, OrderNumCourse, SchoolYear, ProfIdx, wProfIdx, wProfName, ProfNickName, ProfSlogan
+                            , wLecIdx, wUnitLectureCnt, wLectureProgressCcd, wLectureProgressCcdName, LecSaleType, LectureSampleData, ProdBookData, ProdBookMemo
+                            , ProfReferData, ProdPriceData';
                         
                         // 온라인 무료강좌 컬럼 추가 (무료강좌타입, 보강동영상 비밀번호)
                         if ($learn_pattern == 'on_free_lecture') {
@@ -87,7 +88,7 @@ class ProductFModel extends WB_Model
                 case 'off_lecture' :
                         $column .= ', CateCode, IsBest, IsNew, IsCoupon, IsCart, IsFreebiesTrans, IsDeliveryInfo, SubjectIdx, SubjectName, CourseIdx, CourseName, OrderNumCourse, SchoolYear
                             , CampusCcd, CampusCcdName, FixNumber, StudyPeriod, StudyStartDate, StudyEndDate, WeekArrayName, IFNULL(AmountDisp,Amount) AS Amount, StudyPatternCcd, StudyPatternCcdName
-                            , AcceptStatusCcd, AcceptStatusCcdName, StudyApplyCcd, StudyApplyCcdName, ProfIdx, wProfIdx, wProfName, ProfSlogan, LecSaleType, ProdPriceData
+                            , AcceptStatusCcd, AcceptStatusCcdName, StudyApplyCcd, StudyApplyCcdName, ProfIdx, wProfIdx, wProfName, ProfNickName, ProfSlogan, LecSaleType, ProdPriceData
                             , fn_product_content(ProdCode, "633002") as Content';
                     break;
 
@@ -171,7 +172,7 @@ class ProductFModel extends WB_Model
     public function listSalesProductLimitBySubjectIdx($learn_pattern, $arr_condition = [], $limit = 2)
     {
         $column = 'row_number() over (partition by SubjectIdx order by ProdCode desc) as RowNum
-            , ProdCode, ProdName, CateCode, SubjectIdx, SubjectName, wProfName
+            , ProdCode, ProdName, CateCode, SubjectIdx, SubjectName, wProfName, ProfNickName
             , ifnull(JSON_VALUE(ProfReferData, "$.lec_list_img"), "") as ProfLecListImg
             , ifnull(fn_professor_refer_value(ProfIdx, "class_detail_img"), "") as ProfClassImg';
         $learn_pattern != 'off_lecture' && $column .= ', if(LectureSampleData = "N", "N", JSON_VALUE(LectureSampleData, "$[0].wUnitIdx")) as wUnitIdx';

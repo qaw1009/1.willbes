@@ -10622,9 +10622,10 @@ table.acadlecInfoPackageTable tr.Top td {
     position: absolute;
     top: -30px;
     right: 0;
+    width: 160px;
 }
 .Quick-Bnr {
-    float: left;
+    /*float: left;*/
 }
 
 /* 제대군인인증팝업 */

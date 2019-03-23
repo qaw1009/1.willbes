@@ -208,8 +208,8 @@
             <a onclick="go_popup()"><img src="http://file3.willbes.net/new_gosi/2018/04/EV180426_btn.png" alt="입실상담신청하기"></a><br>
             <img src="http://file3.willbes.net/new_gosi/2018/08/EV180806_9con.png" alt="문의및 접수"  usemap="#tel" border="0" />
             <map name="tel" id="tel">
-                <area shape="rect" coords="298,144,454,192" href="{{ site_url('#none') }}" target="_blank"/>
-                <area shape="rect" coords="782,145,947,196" href="{{ site_url('#none') }}" target="_blank"/>
+                <area shape="rect" coords="298,144,454,192" href="{{ site_url('/pass/promotion/index/cate/3010/code/1057') }}" target="_blank" title="부산캠퍼스"/>
+                <area shape="rect" coords="782,145,947,196" href="{{ site_url('/pass/promotion/index/cate/3010/code/1055') }}" target="_blank" title="대구캠퍼스"/>
             </map>
         </div>
         <!--wb_cts11//-->
@@ -229,7 +229,7 @@
                         <ul>
                             <li><span class="tit"> - 강한학습관리반</span>
                                 <label class="label_radio" for="radio-01">
-                                    <input name="CATEGORY_INFO id="CATEGORY_INFO" value="강습반" type="radio" checked style="width:16px; height:16px;" />
+                                    <input name="CATEGORY_INFO" id="CATEGORY_INFO" value="강습반" type="radio" checked style="width:16px; height:16px;" />
                                 </label>
                             </li>
                             <li><span class="tit"> - 통합생활관리반</span>

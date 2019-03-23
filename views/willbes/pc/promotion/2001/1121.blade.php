@@ -442,25 +442,23 @@
         </div>
         <!-- End Container -->
 
-
+        <script src="/public/js/willbes/jquery.bpopup.min.js"></script>
         <script type="text/javascript">
 
-            function go_popup() {
-
-                var targetOffset= $(".LAeventB04").offset().top;
-                $('html, body').animate({scrollTop: targetOffset}, 1000);
-                //setTimeout(go_pop(), 2000);
-
-            }
-            function go_pop(){
-                $('#popup').bPopup();
-            }
-            function go_popup1() {
-                $('#popup1').bPopup();
-            }
-            function go_popup2() {
-                $('#popup2').bPopup();
-            }
+        function go_popup() {
+            var targetOffset= $(".LAeventB04").offset().top;
+            $('html, body').animate({scrollTop: targetOffset}, 1000);
+            //setTimeout(go_pop(), 2000);
+        }
+        function go_pop(){
+            $('#popup').bPopup();
+        }
+        function go_popup1() {
+            $('#popup1').bPopup();
+        }
+        function go_popup2() {
+            $('#popup2').bPopup();
+        }
 
             function certOpen(){
                 {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
@@ -510,27 +508,6 @@
 
                         e.preventDefault()})})}
             );
-        </script>
-
-        <script src="/public/js/willbes/jquery.nav.js"></script>
-        <script>
-            $( document ).ready( function() {
-                var jbOffset = $( '.rLnb' ).offset();
-                $( window ).scroll( function() {
-                    if ( $( document ).scrollTop() > jbOffset.top ) {
-                        $( '.rLnb' ).addClass( 'rLnb_sectionFixed' );
-                    }
-                    else {
-                        $( '.rLnb' ).removeClass( 'rLnb_sectionFixed' );
-                    }
-                });
-            } );
-            $(document).ready(function() {
-                $('.rLnb').onePageNav({
-                    currentClass: 'hvr-shutter-out-horizontal_active'
-                });
-            });
-
         </script>
 
 @stop

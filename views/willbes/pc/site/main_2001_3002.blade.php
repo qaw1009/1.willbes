@@ -85,9 +85,13 @@
                         </a>
                     </li>
                 </ul>
-                <div class="willbes-Bnr mt60">
+                <div class="willbes-Bnr mt30">
                     <ul>
-                        <li><a href="{{ site_url('/promotion/index/cate/3001/code/1023') }}"><img src="{{ img_url('cop_adm/banner/bnr_190108.jpg') }}" alt="적중은 역시 신광은"></a></li>
+                        <li>
+                            <a href="{{ site_url('/pass/promotion/index/cate/3001/code/1138') }}">
+                                <img src="{{ img_url('cop/banner/190322_cBar_1120x110.jpg') }}" title="숨은 필합자를 찾아라">
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -108,9 +112,9 @@
                             <div class="Tit">기본과정</div>
                             <div class="subTit">집중연강식 진행</div>
                             <ul class="info">
-                                <li>2주마다 개강</li>
-                                <li>형소법 → 경찰학 → 형법 진행
-                                    <br/> (수사, 행정법 영상반 진행)</li>
+                                <li>기초개념 정리</li>
+                                <li>지속적인 복습테스트</li>
+                                <li>초시생 필수 수강과정</li>
                             </ul>
                         </div>
                         <a href="#none" onclick="fnPlayerSample('132200', '1019097', 'HD');">OT보기 &gt;</a>
@@ -121,8 +125,9 @@
                             <div class="Tit">심화과정</div>
                             <div class="subTit">프리미엄 심화과정</div>
                             <ul class="info">
-                                <li>이론 재정리</li>
-                                <li>10주 과정</li>
+                                <li>실력업그레이드</li>
+                                <li>심화 l 이론/기출학습</li>
+                                <li>고득점 합격발판 마련</li>
                             </ul>
                         </div>
                         <a href="#none" onclick="fnPlayerSample('132217', '1019296', 'HD');">OT보기 &gt;</a>
@@ -130,12 +135,12 @@
                     <li>&nbsp;</li>
                     <li>
                         <div class="curriculumBox">
-                            <div class="Tit">3개월 필합 풀패키지</div>
-                            <div class="subTit">핵심요약/진도별 정리</div>
+                            <div class="Tit">문제풀이 과정</div>
+                            <div class="subTit">(실전 1+2+3 단계))</div>
                             <ul class="info">
-                                <li>5주 단권화</li>
-                                <li>5주 동형모의고사</li>
-                                <li>FINAL 실전 모의고사</li>
+                                <li>1단계 진도별 핵심정리</li>
+                                <li>2단계 전범위 동형모의고사</li>
+                                <li>3단계 FINAL 실전 모의고사</li>
                             </ul>
                         </div>
                         <a href="#none" onclick="fnPlayerSample('131812', '1014607', 'HD');">OT보기 &gt;</a>

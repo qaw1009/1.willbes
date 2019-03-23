@@ -173,8 +173,8 @@
         <div class="evtCtnsBox wb_cts04" >
             <img src="http://file3.willbes.net/new_gosi/2018/11/EV181120_L1_5.png"  alt="불꽃소방 9~10월 이론완성 종합반 " /><br><img src="http://file3.willbes.net/new_gosi/2019/01/EV190128_L1_3.png"  alt="불꽃소방 9~10월 이론완성 종합반 "  usemap="#EV190128_L1_3" border="0" />
             <map name="EV190128_L1_3" id="EV190128_L1_3">
-                <area shape="rect" coords="189,141,548,228" href="http://www.willbesgosi.net/lecture/passLectuerSJong.html?topMenu=009&topMenuName=소방/방재&topMenuType=F&leftMenuLType=M0202&lecKType=J" />
-                <area shape="rect" coords="675,138,1043,228" href="http://www.willbesgosi.net/lecture/passLectuerSJong.html?topMenu=009&topMenuName=소방/방재&topMenuType=F&leftMenuLType=M0202&lecKType=J" />
+                <area shape="rect" coords="189,141,548,228" href="{{ site_url('/pass/offPackage/index?cate_code=3050&course_idx=1062') }}" target="_blank"/>
+                <area shape="rect" coords="675,138,1043,228" href="{{ site_url('/pass/offPackage/index?cate_code=3050&course_idx=1062') }}" target="_blank"/>
             </map>
         </div>
         <!--wb_cts04//-->

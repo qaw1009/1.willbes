@@ -101,6 +101,23 @@
 }
 
 /* Main Container : Prof : Cop_adm */
+.adm .Section .youtubeGod a {
+    display: block;
+    background: #008b6c;
+    padding: 8px 0;
+    width: 180px;
+    color:#fff;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    border-bottom: 7px solid #026750;
+    margin:16px auto 0;
+}
+.adm .Section .youtubeGod a:hover {
+    border-bottom: 0;
+    border-top: 7px solid #fff;
+}
+
 .adm .Section .ProfCopBox > li {
     position: relative;
     display: inline;

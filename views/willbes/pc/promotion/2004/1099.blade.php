@@ -74,8 +74,7 @@
 
     <div class="p_re evtContent NSK" id="evtContainer">
         <ul class="wb_skybn">
-            <li><a href="http://www.willbesgosi.net/lecture/passLectureList.html?topMenu=009&topMenuName=소방/방재&leftMenuLType=M0102&lecKType=D&searchCategoryCode=009&searchSubjectCode=1140&searchSubjectNm=&searchLeccode=&LEC_TYPE_CHOICE=D&hSELYEAR=2016&hSELMONTH=&hUSER_ID=&searchUserNm=&CMD=view&LECCODE_ARR=&topMenuType=F&topMenuGnb=FM_009&LEARNING_CD=M0102"><img src="http://file3.willbes.net/new_gosi/2019/01/EV190128_L7.png" alt="7급 초시생 합격전략설명회" border="0" ></a></li>
-            <li><a href="http://www.willbesgosi.net/lecture/passLectureDetail.html?topMenu=009&topMenuName=9%EA%B8%89+%EA%B3%B5%EB%AC%B4%EC%9B%90&searchTopCategoryCode=&searchCategoryCode=009&searchSubjectCode=1001&searchLeccode=D201900224&leftMenuLType=&lecKType=&USER_ID=&hSEARCHTYPE=&hSEARCHTEXT=&learningCD=&topMenuType=F&topMenuGnb=OM_009&SEARCHSERIESCODE="><img src="http://file3.willbes.net/new_gosi/2019/02/EV190128_L7-1.png" alt="7급 초시생 합격전략설명회" border="0" ></a></li>
+            <li><a href="{{ site_url('/pass/offLecture/index?cate_code=3050&course_idx=1062') }}" target="_blank"><img src="http://file3.willbes.net/new_gosi/2019/01/EV190128_L7.png" alt="실전 모의고사" ></a></li>
         </ul>
 
         <div class="evtCtnsBox wb_cts01" >
@@ -85,7 +84,7 @@
         <div class="evtCtnsBox wb_cts02" >
             <img src="http://file3.willbes.net/new_gosi/2019/01/EV190128_L1_2.png"  alt="불꽃소방 9~10월 이론완성 종합반 "  usemap="#EV190128_L1_2" border="0" />
             <map name="EV190128_L1_2" id="EV190128_L1_2">
-                <area shape="rect" coords="456,1279,759,1352" href="http://www.willbesgosi.net/lecture/passLectureList.html?topMenu=009&topMenuName=소방/방재&leftMenuLType=M0102&lecKType=D&searchCategoryCode=009&searchSubjectCode=1140&searchSubjectNm=&searchLeccode=&LEC_TYPE_CHOICE=D&hSELYEAR=2016&hSELMONTH=&hUSER_ID=&searchUserNm=&CMD=view&LECCODE_ARR=&topMenuType=F&topMenuGnb=FM_009&LEARNING_CD=M0102" />
+                <area shape="rect" coords="456,1279,759,1352" href="{{ site_url('/pass/offLecture/index?cate_code=3050&course_idx=1062') }}" target="_blank"/>
             </map>
             <img src="http://file3.willbes.net/new_gosi/2018/11/EV181120_L1_3.png"  alt="불꽃소방 9~10월 이론완성 종합반 " usemap="#EV181120_L1_3" /></li>
             <map name="EV181120_L1_3" id="EV181120_L1_3">
@@ -324,6 +323,140 @@
 
     </div>
     <!-- End Container -->
+
+    <script type="text/javascript">
+	//<![CDATA[
+		var sp = StarPlayerApp;
+		sp.license = "57C52A1F-AC21-4146-A5AC-2960BABEEA0E";
+		sp.version = "1.0.0";
+		sp.debug = "false";
+		var app = function(info_url) {
+			sp.executeApp(info_url);
+		}
+	//]]>
+
+	// 새로운 영상 플레이어
+		function fn_AllStartPlayer(brno, lno, mno, uid, flag, player_choice, mode){
+			//alert("mode="+mode);
+// 			<c:if test="${empty userInfo}">
+// 				alert("로그인을 하신 후 이용하여 주시기 바랍니다.");
+// 				return;
+// 			</c:if>
+			if(uid==null||uid==''){
+				uid = "ANONYMOUS"; 
+			}
+			var w = '960';  //가로
+			var h = '500'; //세로
+			
+			if(mode == 'WIDE'){
+				if(player_choice == 1){
+					//alert(1);
+					w = '1575';  //가로1178
+					h = '678'; //세로
+				} else if(player_choice == 2){
+					//alert(2);
+					w = '1530';  //가로960 + 570
+					h = '540'; //세로
+				} else if(player_choice == 3){
+					//alert(3);
+					w = '916';  //가로960
+					h = '405'; //세로
+				} else {
+					//alert(4);
+					w = '960';  //가로
+					h = '500'; //세로
+				}
+			} else {
+				//alert(5);
+				w = '960';  //가로
+				h = '500'; //세로
+			}
+			
+			var scroll = 'no'; //옵션
+			var name = "StarPlayer";
+			var LeftPosition = (screen.width) ? (screen.width-w)/2 : 0;
+		    var TopPosition = (screen.height) ? (screen.height-h)/2 : 0;
+		    var settings = 'height='+h+',width='+w+',top='+TopPosition+',left='+LeftPosition+',scrollbars='+scroll+',resizable=no';
+			var url = "<c:url value='/movieLectureInfo/starPlayer.pop2' />?BRIDGE_LECCODE="+brno+"&LECCODE="+lno+"&MOVIE_NO="+mno+"&USER_ID="+uid+"&SAMPLE=Y"+"&FLAG="+flag+"&PLAYER_CHOICE="+player_choice;
+			//alert(url);
+			//고화질 플레이어
+			try {
+			   if(pop.name){//저화질 플레이어 팝업이 열려 있는 상태
+				   //alert('저화질 플레이어 닫기');
+				   pop.close();//저화질 플레이어 닫기
+				   pop = null;
+			   }
+			}catch (exception) {}
+			//저화질 플레이어
+			try {
+				if(pop.name){//저화질 플레이어 팝업이 열려 있는 상태
+					mp4pop =  window.open(url,name,settings);
+				}
+			}catch(e){
+				mp4pop =  window.open(url,name,settings);
+			}
+		}
+	</script>
+
+    <script>            
+        $(document).ready(function(){
+            $(".tabContents").hide(); 
+            $(".tabContents:first").show();
+            
+            $(".tabContaier ul li a").click(function(){ 
+                
+                var activeTab = $(this).attr("href"); 
+                $(".tabContaier ul li a").removeClass("active"); 
+                $(this).addClass("active"); 
+                $(".tabContents").hide(); 
+                $(activeTab).fadeIn(); 
+                
+                return false; 
+            });
+        });
+
+        $(document).ready(function(){
+            $(".tabContents7").hide(); 
+            $(".tabContents7:first").show();
+            
+            $(".tabContaier7 ul li a").click(function(){ 
+                
+                var activeTab = $(this).attr("href"); 
+                $(".tabContaier7 ul li a").removeClass("active"); 
+                $(this).addClass("active"); 
+                $(".tabContents7").hide(); 
+                $(activeTab).fadeIn(); 
+                
+                return false; 
+            });
+        });
+
+        $(document).ready(function(){
+            $('.tab02').each(function(){
+                var $active, $content, $links = $(this).find('a');
+                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+                $active.addClass('active');
+            
+                $content = $($active[0].hash);
+            
+                $links.not($active).each(function () {
+                $(this.hash).hide()});
+            
+                // Bind the click event handler
+                $(this).on('click', 'a', function(e){
+                $active.removeClass('active');
+                $content.hide();
+            
+                $active = $(this);
+                $content = $(this.hash);
+            
+                $active.addClass('active');
+                $content.show();
+            
+                e.preventDefault()})})}
+            );       
+
+    </script>
 
 
 @stop

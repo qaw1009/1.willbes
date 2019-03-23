@@ -76,8 +76,9 @@
             <img src="http://file3.willbes.net/new_cop/2018/08/EV180830_p1_5.png" alt="" /><br>
             <img src="http://file3.willbes.net/new_cop/2018/08/EV180830_p1_4_3.png" alt="문풀 PASS" usemap="#Map180830" border="0" /><br>
             <map name="Map180830" id="Map180830">
-                <area shape="rect" coords="186,486,343,524" href="javascript:go_PassLecture(1);"  alt="동영상"/>
-                <area shape="rect" coords="640,484,801,527"href="javascript:go_PassLecture(2);" alt="학원실강"/>
+                <area shape="rect" coords="186,474,343,516" href="javascript:go_PassLecture(1);"  alt="동영상"/>
+                <area shape="rect" coords="641,474,802,517"href="javascript:go_PassLecture(2);" alt="학원실강"/>
+            </map>
             </map>
             <div class="check"><label><input name="ischk" type="checkbox" value="Y" /> 페이지 하단 신광은경찰PASS 이용안내를 모두 확인하였고, 이에 동의합니다. </label><a href="#tabsEvt">이용안내확인하기 ↓</a></div>
         </div>
@@ -263,7 +264,7 @@
             if(no == 1){
                 lUrl = "{{ site_url('/periodPackage/show/cate/3001/pack/648002/prod-code/149212') }}";
             }else if(no == 2){
-                lUrl = "#none";
+                lUrl = "{{ site_url('/pass/offPackage/index?cate_code=3010&course_idx=1043') }}";
             }
 
             location.href = lUrl;
@@ -271,11 +272,4 @@
 
     </script>
 
-    <script src="/public/js/willbes/jquery.nav.js"></script>
-    <script>
-        $(function(e){
-            var targetOffset= $("#evtContainer").offset().top;
-            $('html, body').animate({scrollTop: targetOffset}, 700);
-        });
-    </script>
 @stop

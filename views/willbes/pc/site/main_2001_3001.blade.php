@@ -117,6 +117,7 @@
                         </ul>
                     </li>
                 </ul>
+                <div><img src="{{ img_url('cop/visual/visual_190323_02_02.jpg') }}" ></div>
             </div>
         </div> 
 
@@ -222,13 +223,11 @@
                 </div>
             </div>
             <!-- CurriStepBox //-->
-        </div>
+        </div>        
 
-        
-
-        <div class="Section Section4">
+        <div class="Section">
             <div class="widthAuto">
-                <a href="{{ site_url('/promotion/index/cate/3001/code/1032') }}"><img src="{{ img_url('cop/visual/visual_03.jpg') }}" title="합격수기"></a>
+                <a href="{{ site_url('/promotion/index/cate/3001/code/1032') }}"><img src="{{ img_url('cop/visual/visual_190323_05.jpg') }}" title="합격수기"></a>
             </div>
         </div>
 

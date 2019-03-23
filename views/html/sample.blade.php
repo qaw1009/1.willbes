@@ -151,6 +151,7 @@
                 
                 
                 <li><p>경찰 학원 ▼</p></li> 
+                <li class="w50"><a href="{{ site_url('/home/html/1170') }}" target="_blank">필기고득점자 인터뷰</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_offCop_190211_p') }}" target="_blank">19년 1차대비 2월 전국모의고사</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_offCop_basic') }}" target="_blank">2019 집중연강식 기본이론</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_offCop_superpass') }}" target="_blank">2019 슈퍼패스</a></li>
@@ -175,7 +176,6 @@
             <li><p>공무원 온라인 ▼</p></li>
                 <li>3월 19일 이후 추가분 ▼</li>
                 <li class="w50"><a href="{{ site_url('/home/html/1135') }}" target="_blank">윌비스 전국모의고사</a></li>
-                <li>&nbsp;</li>
                 <li>&nbsp;</li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiFirePass') }}" target="_blank">소방 PASS <span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiNinePass') }}" target="_blank">9급 PASS <span>*</span></a></li>

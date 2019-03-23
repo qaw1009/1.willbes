@@ -472,7 +472,7 @@ class Event extends \app\controllers\FrontController
                 'A.IsUse' => 'Y',
                 'A.IsStatus' => 'Y',
                 'A.SiteCode' => $this->_site_code,
-                'A.RequstType' => element('s_request_type', $arr_input),
+                'A.RequestType' => element('s_request_type', $arr_input),
                 'A.CampusCcd' => element('s_campus', $arr_input)
             ],
             'ORG1' => [
@@ -536,7 +536,7 @@ class Event extends \app\controllers\FrontController
                 'A.IsUse' => 'Y',
                 'A.IsStatus' => 'Y',
                 'A.SiteCode' => $this->_site_code,
-                'A.RequstType' => element('s_request_type', $arr_input),
+                'A.RequestType' => element('s_request_type', $arr_input),
                 'A.CampusCcd' => element('s_campus', $arr_input)
             ],
             'ORG1' => [

@@ -113,7 +113,7 @@
     position: relative;
 }
 .cop .smallTit {
-    /*border-top:1px solid #b8b8b8;*/
+    border-top:1px solid #b8b8b8;
     font-size: 22px;
     color:#363636;    
     position: relative;
@@ -327,8 +327,15 @@
 .newTopDday #ddaytime li img {width:42px}
 .newTopDday #ddaytime ul:after {content:""; display:block; clear:both}
 
+/**/
+.newPlaybn {width:1120px; margin:0 auto}
+.newPlaybn .layer {position:absolute; width:1120px; height:333px; position:relative; overflow:hidden; z-index:1; background:#000}
+.newPlaybn .layer .video {width:100%;  background:#fff}
+.newPlaybn .layer .pngimg-real {position:absolute; width:100%; bottom:0; z-index:10}	
+.newPlaybn .layer .pngimg-real a {display:block}
+
 /* Main Container : flipped : Cop */
-.Flipped {background: url("../../img/willbes/cop/flipped/flipped_bg.jpg") repeat-x center 40px; padding-bottom: 90px; margin-top: 60px}
+.Flipped {background: url("../../img/willbes/cop/flipped/flipped_bg.jpg") repeat-x center 40px; padding-bottom: 60px; margin-top: 60px}
 .Flipped ul.inner {height:370px}
 .Flipped ul.inner li {position: relative; float:left; width:280px; height:100%; margin-left:20px; overflow: hidden;}
 .Flipped ul.inner li:first-child {width:520px; margin-left:0}

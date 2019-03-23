@@ -79,7 +79,7 @@
             <iframe width="854" height="480" src="https://www.youtube.com/embed/TGdcX7j5EAI?rel=0" frameborder="0" allowfullscreen></iframe><br>
             <img src="http://file3.willbes.net/new_cop/2018/10/EV181027_p4_5.png"  alt="더보기" usemap="#more2" />
             <map name="more2" id="more2">
-                <area shape="rect" coords="558,78,812,127" href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" alt="더많은영상보기" target="_blank" />
+                <area shape="rect" coords="628,80,882,129" href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" alt="더많은영상보기" target="_blank" />
             </map>
         </div>
 

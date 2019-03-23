@@ -234,7 +234,7 @@
         <div class="Section Section3 pb90">
             <div class="widthAuto">
                 <img src="{{ img_url('cop/visual/visual_190323_06.jpg') }}" title="기출문제와 강의 One-Stop!">
-                <div class="SpecialLecBox mt60">
+                <div class="SpecialLecBox">
                     <dl>
                         <dt class="nLec p_re">
                             <div class="infoBox">

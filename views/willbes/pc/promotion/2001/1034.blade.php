@@ -60,7 +60,7 @@
         <div class="evtCtnsBox wb_04">
             <img src="http://file3.willbes.net/new_cop/2018/10/EV181027_p4_1_new.jpg"  alt="타이틀" usemap="#more1" />
             <map name="more1" id="more1">
-                <area shape="rect" coords="562,390,762,431" href="{{ site_url('#none') }}" alt="더많은수기보기" target="_blank" />
+                <area shape="rect" coords="562,390,762,431" href="{{ site_url('/pass/promotion/index/cate/3010/code/1170') }}" alt="더많은수기보기" target="_blank" />
             </map>
             <div class="wb_04_con2">
                 <ul id="slidesImg2">

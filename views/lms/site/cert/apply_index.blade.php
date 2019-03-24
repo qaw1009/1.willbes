@@ -122,7 +122,7 @@
                     <th>승인<br>여부</th>
                     <th>승인확인</th>
                     <th>구매여부</th>
-                    <th>결제완료일</th>
+
                     <th>기간연장<Br>(연장일)</th>
                     <th>추가정보</th>
                 </tr>
@@ -208,15 +208,15 @@
                             }
                         }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            return (data.OrderStatus != null) ? 'Y' : '<span class="red">N</span>';
+                            return (data.orderCount != "0") ? 'Y' : '<span class="red">N</span>';
                         }},
-                    {'data' : 'OrderDatm' , 'name' : 'OrderDatm'},
+
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return data.ExtendStatus;//data.ExtendStatus+ (data.ExtendStatus=='Y' ? '<Br>'+data.ExtendDatm : '');
                         },'name' : 'Extend'},
 
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                            return data.AddContent1 + '<BR>' + data.AddContent2;
+                            return data.AddContent1 != null ? data.AddContent1 + '<BR>' + data.AddContent2 : '';
                         },'name' : 'AddContent'},
 
                 ]
@@ -225,28 +225,28 @@
 
             $datatable.on( 'draw', function () {
                 var $OrderStatus_col = $datatable.column('OrderStatus:name');
-                var $OrderDatm_col = $datatable.column('OrderDatm:name');
+                //var $OrderDatm_col = $datatable.column('OrderDatm:name');
                 var $Extend_col = $datatable.column('Extend:name');
                 var $TakeKind_col = $datatable.column('TakeKind:name');
                 var $AddContent_col = $datatable.column('AddContent:name');
 
                 if ($('#search_type').val() == '' || $('#search_type').val() == '684001' || $('#search_type').val() == '684003' ) {
                     $OrderStatus_col.visible(true);
-                    $OrderDatm_col.visible(true);
+                    //$OrderDatm_col.visible(true);
                     $Extend_col.visible(false);
                     $TakeKind_col.visible(false);
                     $AddContent_col.visible(false);
 
                 }else if($('#search_type').val() == '684002') {         //제대군인인증
                     $OrderStatus_col.visible(true);
-                    $OrderDatm_col.visible(true);
+                   //$OrderDatm_col.visible(true);
                     $Extend_col.visible(true);
                     $TakeKind_col.visible(false);
                     $AddContent_col.visible(false);
 
                 }else if($('#search_type').val() == '684004') {         //환승인증
                     $OrderStatus_col.visible(true);
-                    $OrderDatm_col.visible(true);
+                    //$OrderDatm_col.visible(true);
                     $Extend_col.visible(false);
                     $TakeKind_col.visible(false);
                     $AddContent_col.visible(false);
@@ -255,7 +255,7 @@
                 } else if($('#search_type').val() == '684005') {        //수험표 인증
                     $TakeKind_col.visible(true);
                     $OrderStatus_col.visible(false);
-                    $OrderDatm_col.visible(false);
+                    //$OrderDatm_col.visible(false);
                     $Extend_col.visible(false);
                     $AddContent_col.visible(true);
                 } else {

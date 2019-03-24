@@ -57,11 +57,17 @@
 
         <div class="evtCtnsBox wb_cts04">
             <img src="http://file3.willbes.net/new_gosi/2018/10/EV181012Y_04.jpg" alt="윌비스 Freemium 학습 콘텐츠 지원"  usemap="#Map181012A" border="0"/><br />
-            <map name="Map181012A" id="Map181012A">
+            <!--map name="Map181012A" id="Map181012A">
                 <area shape="rect" coords="231,1138,303,1166" href="javascript:openYoutube('event_onGosiNoncomPop?youtube_path=https://www.youtube.com/embed/nvE2uzvpaZ8?rel=0')" class="youtube" onclick='fn_bannerClick("8400");' alt="정훈의">
                 <area shape="rect" coords="454,1138,525,1166" href="javascript:openYoutube('event_onGosiNoncomPop?youtube_path=https://www.youtube.com/embed/TM58Ydr-MHc?rel=0')" class="youtube" onclick='fn_bannerClick("8400");' alt="황두기">
                 <area shape="rect" coords="694,1138,766,1166" href="javascript:openYoutube('event_onGosiNoncomPop?youtube_path=https://www.youtube.com/embed/zS5qUagCJK0?rel=0')" class="youtube" onclick='fn_bannerClick("8400");' alt="이서연">
                 <area shape="rect" coords="884,1138,956,1166" href="javascript:openYoutube('event_onGosiNoncomPop?youtube_path=https://www.youtube.com/embed/idWxxPsEThk?rel=0')" class="youtube" onclick='fn_bannerClick("8400");' alt="이현정">
+            </map-->
+            <map name="Map181012A" id="Map181012A">
+                <area shape="rect" coords="231,1138,303,1166" href="https://www.youtube.com/embed/nvE2uzvpaZ8?rel=0" target="_blank" alt="정훈의">
+                <area shape="rect" coords="454,1138,525,1166" href="https://www.youtube.com/embed/TM58Ydr-MHc?rel=0" target="_blank" alt="황두기">
+                <area shape="rect" coords="694,1138,766,1166" href="https://www.youtube.com/embed/zS5qUagCJK0?rel=0" target="_blank" alt="이서연">
+                <area shape="rect" coords="884,1138,956,1166" href="https://www.youtube.com/embed/idWxxPsEThk?rel=0" target="_blank" alt="이현정">
             </map>
             <img src="http://file3.willbes.net/new_gosi/2018/10/EV181012Y_05.jpg" /><br />
             <img src="http://file3.willbes.net/new_gosi/2018/10/EV181012Y_06.jpg" alt="부사관 전문교재" /><br />

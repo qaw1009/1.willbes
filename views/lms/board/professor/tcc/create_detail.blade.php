@@ -77,7 +77,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="video_url">TCC URL<span class="required">*</span></label>
                     <div class="col-md-10">
-                        <input type="text" id="video_url" name="video_url" required="required" class="form-control" title="제목" value="{{ $data['VideoUrl'] }}" placeholder="TCC URL">
+                        <input type="text" id="video_url" name="video_url" required="required" class="form-control" title="TCC URL" value="{{ $data['VideoUrl'] }}" placeholder="TCC URL">
                     </div>
                 </div>
 

@@ -220,13 +220,13 @@
                             <input type="text" id="left_link" name="left_link" class="form-control" title="영상LINK" required="required" placeholder="영상 LINK를 입력하세요." value="{{$data['LeftLink']}}">
                         </div>
                         <div class="form-inline form-left-exposure-input hide" id="left_type_file">
-                            <div class="filetype">
+                            <!--div class="filetype">
                                 <input type="text" class="form-control file-text" disabled="">
                                 <button class="btn btn-primary mb-0" type="button">파일 선택</button>
-                                <span class="file-select file-btn">
+                                <span class="file-select file-btn"-->
                                     <input type="file" name="attach_file[]" class="form-control input-file" title="첨부자료">
-                                </span>
-                            </div>
+                                <!--/span>
+                            </div-->
                             @if(empty($data['LeftFileName']) === false)
                                 <p class="form-control-static ml-10 mr-10">[ <a href="{{ $data['LeftFileFullPath'] . $data['LeftFileName'] }}" rel="popup-image">{{ $data['LeftFileRealName'] }}</a> ]
                                     <a href="#none" class="file-left-delete" data-attach-idx="{{ $data['OaIdx']  }}"><i class="fa fa-times red"></i></a>
@@ -248,13 +248,13 @@
                             <input type="text" id="right_link" name="right_link" class="form-control" title="영상LINK" required="required" placeholder="영상 LINK를 입력하세요." value="{{$data['RightLink']}}">
                         </div>
                         <div class="form-inline form-right-exposure-input hide" id="right_type_file">
-                            <div class="filetype">
+                            <!--div class="filetype">
                                 <input type="text" class="form-control file-text" disabled="">
                                 <button class="btn btn-primary mb-0" type="button">파일 선택</button>
-                                <span class="file-select file-btn">
+                                <span class="file-select file-btn"-->
                                     <input type="file" name="attach_file[]" class="form-control input-file" title="첨부자료">
-                                </span>
-                            </div>
+                                <!--/span>
+                            </div-->
                             @if(empty($data['RightFileName']) === false)
                                 <p class="form-control-static ml-10 mr-10">[ <a href="{{ $data['RightFileFullPath'] . $data['RightFileName'] }}" rel="popup-image">{{ $data['RightFileRealName'] }}</a> ]
                                     <a href="#none" class="file-right-delete" data-attach-idx="{{ $data['OaIdx']  }}"><i class="fa fa-times red"></i></a>

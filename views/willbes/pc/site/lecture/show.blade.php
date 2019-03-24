@@ -334,7 +334,7 @@
                         </td>
                         <td class="w-file">
                             @if(empty($row['wUnitAttachFile']) === false)
-                                <a href="{{ $row['wUnitAttachFileReal'] }}"><img src="{{ img_url('sub/icon_file.gif') }}"></a>
+                                <img src="{{ img_url('sub/icon_file.gif') }}">
                             @endif
                         </td>
                         <td class="w-time">{{ $row['wRuntime'] }}분</td>

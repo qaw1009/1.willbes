@@ -184,13 +184,13 @@
                     '_method' : 'DELETE'
                 };
 
-                if (!confirm('해당 공지사항을 삭제하시겠습니까?')) {
+                if (!confirm('해당 게시물을 삭제하시겠습니까?')) {
                     return;
                 }
                 sendAjax(_url, data, function(ret) {
                     if (ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
-                        location.replace('{{ site_url("/board/professor/{$boardName}") }}' + getQueryString());
+                        location.replace('{{ site_url("/board/professor/{$boardName}/detailList") }}' + getQueryString());
                     }
                 }, showError, false, 'POST');
             });

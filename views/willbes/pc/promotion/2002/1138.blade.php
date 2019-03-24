@@ -20,7 +20,7 @@
         /************************************************************/  
 
         .m_img1 {position:fixed; bottom:20px;right:10px;z-index:100;}
-        .wb_top {background:#293342 url(http://file3.willbes.net/new_cop/2019/03/EV190312P_01_bg.jpg) no-repeat center top; margin-top:20px;}
+        .wb_top {background:#293342 url(http://file3.willbes.net/new_cop/2019/03/EV190312P_01_bg.jpg) no-repeat center top;}
         .wb_top .wb_top_01 {width:1120px; margin:0 auto; position:relative}
         .wb_top .wb_top_01 ul {position:absolute; top:56px; left:758px; z-index:10}
         .wb_top .wb_top_01 ul li {display:block; float:left; width:98px; margin-right:4px; text-align:center}

@@ -9,7 +9,7 @@
             <div class="widthAuto">
                 <div class="willbes-Bnr">
                     <ul>
-                        <li><a href="/promotion/index/cate/3001/code/1019" target="_blank"><img src="{{ img_url('cop_acad/visual/visual_secA01.jpg') }}" title="적중은역시신광은경찰팀"></a></li>
+                        <li><a href="/promotion/index/cate/3001/code/1022" target="_blank"><img src="{{ img_url('cop_acad/visual/visual_secA01.jpg') }}" title="적중은역시신광은경찰팀"></a></li>
                     </ul>
                 </div>
             </div>
@@ -192,8 +192,8 @@
                     </li>
                 </ul>
                 <div class="curriculumTxt">
-                    <span class="cop-color">모든 강의</span>를 평생 0원 PASS 하나로 <span class="cop-color">평생 수강</span>하실 수 있습니다.
-                    <span class="btn"><a href="{{ site_url('/promotion/index/cate/3001/code/1009') }}" target="_blank">평생 0원 PASS 구매하기</a></span>
+                    <span class="cop-color">모든 강의</span>를 SUPER PASS 하나로 <span class="cop-color"> 수강</span>하실 수 있습니다.
+                    <span class="btn"><a href="{{ site_url('/pass/promotion/index/cate/3010/code/1050') }}" target="_blank">SUPER PASS 구매하기</a></span>
                 </div>
             </div>
             <!-- CurriStepBox //--> 

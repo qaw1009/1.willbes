@@ -484,9 +484,9 @@
                     </label>
                     <div class="col-md-4 form-inline item" >
                         <div class="radio">
-                            <input type="radio" name="IsCoupon" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['IsCoupon']=='Y')checked="checked"@endif/> 가능
+                            <input type="radio" name="IsCoupon" class="flat" value="Y" required="required" title="사용여부" @if($data['IsCoupon']=='Y')checked="checked"@endif/> 가능
                             &nbsp;
-                            <input type="radio" name="IsCoupon" class="flat" value="N" @if($data['IsCoupon']=='N')checked="checked"@endif/> 불가능
+                            <input type="radio" name="IsCoupon" class="flat" value="N" @if($method == 'POST' || $data['IsCoupon']=='N')checked="checked"@endif/> 불가능
                         </div>
                     </div>
                     <label class="control-label col-md-2" for="IsPoint">결제포인트적립 <span class="required">*</span>

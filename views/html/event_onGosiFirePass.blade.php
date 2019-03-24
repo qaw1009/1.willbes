@@ -22,16 +22,22 @@
 
         /*타이머*/
         .time{background:#e1e1e1;}
-        .time_date {max-width:1120px; text-align:center;  margin: 0 auto;}
-        .time_date .t_img {width:80%;}		
-        .time_txt {font-family: 'NanumGothic', '나눔고딕','NanumGothicWeb', '맑은 고딕', 'Malgun Gothic', Dotum; font-size:22px; color:#171717; letter-spacing: -1px; font-weight:bold;}
-        .time_txt span {color:#b61216;}	
+        .time_date {width:1120px; text-align:center;  margin: 0 auto; }
+        .time_date td {padding:15px 0; text-align:center}
+        .time_date td:first-child {
+            font-size:40px;
+            color:red;
+            font-weight: 600;
+        }
+        .time_date .t_img {width:60%;}		
+        .time_txt {font-size:22px; color:#171717; letter-spacing: -1px; font-weight:bold;}
+        .time_date td span {font-size:22px; color:#333}	
         .time p {text-align:center; padding-top:20px}      
         
 
         .wb_cts00 {background:#1c1c1c url(http://file3.willbes.net/new_gosi/2019/01/EV190115_c1_bg.jpg) no-repeat center top;}	
         .wb_cts00 ul { width:100%;  margin:0 auto;}
-            .bannerImg3 {position:relative; width:100%; max-width:1210px; margin:0 auto;   padding:0px 0px 124px 0px; }
+            .bannerImg3 {position:relative; width:100%; max-width:1210px; margin:0 auto; padding:0px 0px 124px 0px; }
             .bannerImg3 p {position:absolute; top:35%; width:30px; z-index:1000;}
             .bannerImg3 img {width:100%}
             .bannerImg3 p a {cursor:pointer}
@@ -65,7 +71,6 @@
         .wb_cts03 .check02 input {margin:95px 0px 0px 740px;}
         .wb_cts03 .check03 input {margin:135px 0px 0px -280px; }
         .wb_cts03 .check04 {width:877px; height:112px; margin:0 auto;}
-        .btn { position:}
 
      
         .wb_cts03 .check {width:980px; margin:0 auto;  padding:100px 0px 30px 20px; letter-spacing:3; font-weight:bold; color:#362f2d; font-size:14px}
@@ -92,22 +97,21 @@
 
         <!-- 타이머 -->    
         <div class="evtCtnsBox time">
-            <div class="time_date" id="newTopDday">			
-                <table width="1100px;" height="90px" border="0" cellpadding=0 cellspacing=0>
+            <div class="time_date">			
+                <table>
                     <tr>
-                        <td style="text-align:center;"><img src="http://file3.willbes.net/new_gosi/2019/01/EV190115_c0.jpg" alt=""  /></td>                        
-                        <td width="150" align="center" class="time_txt">마감까지 <br /><span>남은 시간은</span></td>
-                        <td width="62" height="101" align="center"><img id="dd1" src="http://file.willbes.net/new_image/0.png" class="t_img" /></td>
-                        <td width="62" height="101" align="center"><img id="dd2" src="http://file.willbes.net/new_image/0.png" class="t_img" /></td>
-                        <td width="60" height="101" align="center" class="time_txt">day</td>
-                        <td width="62" height="101" align="center"><img id="hh1" src="http://file.willbes.net/new_image/0.png" class="t_img"/></td>
-                        <td width="62" height="101" align="center"><img id="hh2" src="http://file.willbes.net/new_image/0.png" class="t_img"/></td>
-                        <td width="20" height="101" align="center" class="time_txt">:</td>
-                        <td width="62" height="101" align="center"><img id="mm1" src="http://file.willbes.net/new_image/0.png" class="t_img"/></td>
-                        <td width="62" height="101" align="center"><img id="mm2" src="http://file.willbes.net/new_image/0.png" class="t_img"/></td>
-                        <td width="20" height="101" align="center">:</td>
-                        <td width="62" height="101" align="center"><img id="ss1" src="http://file.willbes.net/new_image/0.png" class="t_img"/></td>
-                        <td width="62" height="101" align="center"><img id="ss2" src="http://file.willbes.net/new_image/0.png" class="t_img"/></td>
+                        <td>3.31(일)마감! <span>남은 시간은</span></td>        
+                        <td><img id="dd1" src="http://file.willbes.net/new_image/0.png" class="t_img" /></td>
+                        <td><img id="dd2" src="http://file.willbes.net/new_image/0.png" class="t_img" /></td>
+                        <td class="time_txt">일</td>
+                        <td><img id="hh1" src="http://file.willbes.net/new_image/0.png" class="t_img"/></td>
+                        <td><img id="hh2" src="http://file.willbes.net/new_image/0.png" class="t_img"/></td>
+                        <td class="time_txt">:</td>
+                        <td><img id="mm1" src="http://file.willbes.net/new_image/0.png" class="t_img"/></td>
+                        <td><img id="mm2" src="http://file.willbes.net/new_image/0.png" class="t_img"/></td>
+                        <td class="time_txt">:</td>
+                        <td><img id="ss1" src="http://file.willbes.net/new_image/0.png" class="t_img"/></td>
+                        <td><img id="ss2" src="http://file.willbes.net/new_image/0.png" class="t_img"/></td>
                     </tr>
                 </table>
             </div>
@@ -249,7 +253,7 @@
         
             function daycountDown() {
                 // 한달 전 날짜로 셋팅 
-                event_day = new Date(2019,1,28,23,59,59);
+                event_day = new Date(2019,2,28,23,59,59);
                 now = new Date();
                 var timeGap = new Date(0, 0, 0, 0, 0, 0, (event_day - now)); 
                 

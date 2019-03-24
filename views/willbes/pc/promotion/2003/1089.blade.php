@@ -78,7 +78,7 @@
                 <area shape="rect" coords="813,1092,1022,1171" href="{{ site_url('/lecture/show/cate/3035/pattern/only/prod-code/146872') }}" target="_blank" alt="이덕훈">
                 <area shape="rect" coords="812,1334,1021,1412" href="{{ site_url('/lecture/show/cate/3035/pattern/only/prod-code/146873') }}" target="_blank" alt="유안석">
                 <area shape="rect" coords="811,1577,1016,1650" href="{{ site_url('/lecture/show/cate/3035/pattern/only/prod-code/146874') }}" target="_blank" alt="임진석">
-                <area shape="rect" coords="806,1817,1029,1894" href="{{ site_url('/lecture/index/cate/3035/pattern/only?subject_idx=1107') }}" target="_blank" alt="이현나">
+                <area shape="rect" coords="806,1817,1029,1894" href="{{ site_url('/lecture/show/cate/3035/pattern/only/prod-code/146875') }}" target="_blank" alt="이현나">
             </map>
         </div>
         <!--WB_con06//-->

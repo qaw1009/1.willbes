@@ -91,17 +91,19 @@
                                 <ul class="attach">
                                     @for($i = 0; $i < $attach_file_cnt; $i++)
                                         <li>
-                                            <div class="filetype">
-                                                <input type="text" class="file-text" />
+                                            <!--div class="filetype"-->
+                                                <!--input type="text" class="file-text" />
                                                 <span class="file-btn bg-heavy-gray NSK">찾아보기</span>
-                                                <span class="file-select"><input type="file" id="attach_file{{ $i }}" name="attach_file[]" class="input-file" size="3"></span>
-                                                <input class="file-reset NSK" type="button" value="X" />
+                                                <span class="file-select"-->
+                                                    <input type="file" id="attach_file{{ $i }}" name="attach_file[]" class="input-file" size="3">
+                                                <!--/span>
+                                                <input class="file-reset NSK" type="button" value="X" /-->
                                                 @if(empty($data['AttachData'][$i]) === false)
                                                     <p class="">[ {{ $data['AttachData'][$i]['RealName'] }} ]
                                                         <a href="#none" class="file-delete" data-attach-idx="{{ $data['AttachData'][$i]['FileIdx']  }}">파일삭제</a>
                                                     </p>
                                                 @endif
-                                            </div>
+                                            <!--/div-->
                                         </li>
                                     @endfor
                                     <li>

@@ -115,9 +115,9 @@ class StudyComment extends BaseBoard
         ];
 
         $column = '
-            LB.RegType, LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LBC.CateCode, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
+            LB.RegType, LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
             LB.SubjectIdx, PS.SubjectName, LB.ProfIdx, PROFESSOR.ProfNickName, LB.LecScore, LB.RegMemId, LB.RegMemName, LB.ProdCode, lms_product.ProdName, LSC4.CcdName AS ProdApplyTypeName,
-            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName
+            LB.ReadCnt, LB.SettingReadCnt, ADMIN.wAdminName
             ';
 
         $list = [];

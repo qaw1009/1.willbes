@@ -19,9 +19,8 @@ class SupportMain extends BaseSupport
 
     public function index()
     {
-        $faq_ccd = $this->supportBoardFModel->listFaqCcd();
-
-        foreach ($faq_ccd as $idx=>$row) {
+        $faq_ccd = $this->supportBoardFModel->listFaqCcd($this->_site_code);
+        foreach ($faq_ccd as $idx => $row) {
             $faq_ccd[$idx]['subFaqData']  = json_decode($row['subFaqData'], true);
         }
 

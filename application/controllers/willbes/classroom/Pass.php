@@ -685,21 +685,22 @@ class Pass extends \app\controllers\FrontController
             'IsUse' => 'N'
         ]]);
 
-        // 리스트
-        $data['count'] = $this->classroomFModel->getMyDevice(true, [
+        $cond_arr = [
             'EQ' => [
                 'MemIdx' => $this->session->userdata('mem_idx')
             ],
-            'GT' => [
+            'GTE' => [
                 'RegDatm' => $sdate
-            ],
+            ]/*,
             'LT' => [
-                'RegDatm' => $edate
-            ]
-        ]);
+                'RegDatm' => (empty($edate) == true ? date('Y-m-d', str)
+            ] */
+        ];
+
+        // 리스트
+        $data['count'] = $this->classroomFModel->getMyDevice(true, $cond_arr);
+
         if($data['count'] > 0) {
-
-
             if (is_numeric($page) == false) {
                 $page = 1;
             } else if ($page < 1) {
@@ -709,17 +710,7 @@ class Pass extends \app\controllers\FrontController
             }
 
             $offset = ($page - 1) * $pagesize;
-            $data['list'] = $this->classroomFModel->getMyDevice(false, [
-                'EQ' => [
-                    'MemIdx' => $this->session->userdata('mem_idx')
-                ],
-                'GT' => [
-                    'RegDatm' => $sdate
-                ],
-                'LT' => [
-                    'RegDatm' => $edate
-                ]
-            ], $pagesize, $offset);
+            $data['list'] = $this->classroomFModel->getMyDevice(false, $cond_arr, $pagesize, $offset);
 
             $data['page'] = $page;
             $data['totalpage'] = ceil($data['count'] / $pagesize);

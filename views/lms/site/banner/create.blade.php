@@ -118,10 +118,11 @@
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="link_url">링크주소<span class="required">*</span></label>
                     <div class="col-md-10 form-inline">
-                        <input type="text" id="link_url" name="link_url" class="form-control" maxlength="100" title="링크주소" value="{{ $data['LinkUrl'] }}" required="required" placeholder="링크주소 입니다." style="width: 40%">
+                        <input type="text" id="link_url" name="link_url" class="form-control" maxlength="255" title="링크주소" value="{{ $data['LinkUrl'] }}" required="required" placeholder="링크주소 입니다." style="width: 40%">
                         <div class="mt-10">• 내부링크 : 프로토콜 (http, https) <span class="red bold">제외하고, 실제 서비스 도메인을 포함하여 입력 (예: police.willbes.net/home/index/cate/3001)</span></div>
                         <div class="mt-5">• 외부링크 : 프로토콜 (http, https) <span class="red bold">입력 필수 (예: http://www.hanlimgosi.co.kr)</span></div>
                         <div class="mt-5">• 레이어팝업 : <span class="red bold">실제 서비스 도메인만 입력 (예 : ploice.willbes.net)</span></div>
+                        <div class="mt-5">• 연결링크가 없을 경우 : <span class="red bold">#</span> 입력</div>
                     </div>
                 </div>
 
@@ -137,13 +138,13 @@
                     <label class="control-label col-md-1-1" for="attach_img">배너이미지<span class="required">*</span></label>
                     <div class="col-md-10 item form-inline">
                         <div class="title">
-                            <div class="filetype">
+                            <!--div class="filetype">
                                 <input type="text" class="form-control file-text" disabled="">
                                 <button class="btn btn-primary mb-0" type="button">파일 선택</button>
-                                <span class="file-select file-btn">
+                                <span class="file-select file-btn"-->
                                 <input type="file" id="attach_img" name="attach_img" @if($method == 'POST')required="required"@endif class="form-control input-file" title="배너 이미지">
-                                </span>
-                            </div>
+                                <!--/span>
+                            </div-->
                             @if($method == 'PUT')
                                 <div class="mt-5">
                                     <img src="{{$data['BannerFullPath']}}{{$data['BannerImgName']}}">

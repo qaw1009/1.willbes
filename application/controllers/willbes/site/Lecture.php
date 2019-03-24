@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Lecture extends \app\controllers\FrontController
 {
     protected $models = array('product/baseProductF', 'product/lectureF');
-    protected $helpers = array();
+    protected $helpers = array('download');
     protected $auth_controller = false;
     protected $auth_methods = array();
 
@@ -248,5 +248,13 @@ class Lecture extends \app\controllers\FrontController
         $this->session->set_userdata('free_bogang_prod_codes', array_unique(array_filter($sess_free_bogang_prod_codes)));
 
         return $this->json_result(true, '', []);
+    }
+
+    protected function _download()
+    {
+        $file_path = $this->_reqG('path');
+        $file_name = $this->_reqG('fname');
+
+        public_download($file_path, $file_name);
     }
 }

@@ -39,7 +39,7 @@
         .evtMenu ul:after {content:""; display:block; clear:both}
 
         .tabCts {
-            position:relative; width:1120px; margin:0 auto; 
+            position:relative; width:1120px; margin:0 auto; border-bottom:10px solid #000;
         }
         .download span {position:absolute; display:block; width:72px; height:24px; line-height:24px; text-align:center; z-index:1}
         .download span:nth-child(1) {left:128px; top:711px}
@@ -49,6 +49,9 @@
         .download span:nth-child(5) {left:900px; top:711px}
         .download span a {display:block; color:#fff; background:#d18f04; border-radius:14px;}
         .download span a:hover {background:#e50001}
+
+        .tabCts .youtube {width:100%; text-align:center; margin:3em 0}	
+        .tabCts .youtube iframe {width:800px; height:453px; margin:0 auto}
         
     </style>
 
@@ -91,7 +94,7 @@
 
 
         <!--최종 마무리 전략-->
-        <div id="tab1" class="tabCts">
+        <div id="tab1" class="evtCtnsBox tabCts">
             <div class="download">		
                 <!--국어-->
                 <span>
@@ -126,11 +129,11 @@
             </div>
                
             <img src="http://file3.willbes.net/new_gosi/2019/03/EV190320Y_01_2.jpg" alt="점수 10점 상승을 위한 시험 전 유의사항/최상의 컨디션을 위한 시험 당일 유의사항" /><br>
-            <img src="http://file3.willbes.net/new_gosi/2019/03/EV190320Y_01_3.jpg" alt="응시자 준수사항 및 필기장소 안내" />
+            <img src="http://file3.willbes.net/new_gosi/2019/03/EV190320Y_01_3.jpg" alt="응시자 준수사항 및 필기장소 안내" /><br>
             <div class="youtube">
-                <iframe class="youtubePlayer" src="https://www.youtube.com/embed/gpppIN1ISaw?rel=0" frameborder="0" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/gpppIN1ISaw?rel=0" frameborder="0" allowfullscreen></iframe>
             </div>
-            <div><a href="http://gosi.go.kr/cop/bbs/selectBoardList.do?bbsId=BBSMSTR_000000000131" target="_blank"><img src="http://file3.willbes.net/new_gosi/2019/03/EV190320Y_btn01.png" alt="필기시험 장소 안내 바로가기" /></a> </div>  
+            <a href="http://gosi.go.kr/cop/bbs/selectBoardList.do?bbsId=BBSMSTR_000000000131" target="_blank"><img src="http://file3.willbes.net/new_gosi/2019/03/EV190320Y_btn01.png" alt="필기시험 장소 안내 바로가기" /></a>
         </div>
     </div>
 

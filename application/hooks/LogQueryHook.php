@@ -30,7 +30,10 @@ class LogQueryHook
                     foreach($object->queries as $key => $query) {
                         // DB 세션 관련 쿼리 제외
                         if (strpos($query, 'ci_session_lock') === false && strpos($query, 'wb_sessions') === false) {
-                            $output .= $this->_makeLogData($idx, $query, $exec_times[$key]);
+                            // 실서버가 아닐 경우만 실행 ==> TODO : 서버 환경별 실행
+                            if (ENVIRONMENT !== 'production') {
+                                $output .= $this->_makeLogData($idx, $query, $exec_times[$key]);
+                            }
 
                             if($this->_checkSlowQuery($exec_times[$key]) === true) {
                                 $slow_output .= $this->_makeLogData($idx, $query, $exec_times[$key]);

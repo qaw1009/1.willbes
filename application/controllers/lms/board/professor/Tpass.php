@@ -289,8 +289,8 @@ class Tpass extends BaseBoard
         ];
 
         $column = '
-            LB.BoardIdx, LB.SiteCode, LBC.CateCode, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.TypeCcd, LSC.CcdName AS TypeCcdName,
-            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName
+            LB.BoardIdx, LB.SiteCode, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.TypeCcd, LSC.CcdName AS TypeCcdName,
+            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachRealFileName, ADMIN.wAdminName
         ';
 
         $list = [];

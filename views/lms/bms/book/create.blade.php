@@ -182,7 +182,7 @@
                     <div class="col-md-4 item">
                         <div class="radio form-inline">
                             <input type="radio" id="is_point_saving_y" name="is_point_saving" class="flat" value="Y" required="required" title="북포인트적용여부" @if($method == 'POST' || $data['IsPoint'] == 'Y')checked="checked"@endif/> <label for="is_point_saving_y" class="input-label">가능</label>
-                            [ <input type="number" id="point_saving_amt" name="point_saving_amt" class="form-control" required="requiredif:is_point_saving,Y" title="적립포인트" value="{{ $data['PointSavePrice'] }}" style="width: 120px;">
+                            [ <input type="number" id="point_saving_amt" name="point_saving_amt" class="form-control" required="requiredif:is_point_saving,Y" title="적립포인트" value="{{ $method == 'POST' ? '1' : $data['PointSavePrice'] }}" style="width: 120px;">
                             <select class="form-control" id="point_saving_type" name="point_saving_type">
                                 <option value="R"@if('R' == $data['PointSaveType']) selected="selected" @endif>%</option>
                                 <option value="P"@if('P' == $data['PointSaveType']) selected="selected" @endif>원</option>

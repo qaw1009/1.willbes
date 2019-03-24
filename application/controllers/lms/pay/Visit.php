@@ -80,7 +80,7 @@ class Visit extends BaseOrder
     {
         $arr_site_code = get_auth_on_off_site_codes('Y');
         $site_code = $this->_reqP('search_site_code');
-        $arr_site_campus_ccd = get_auth_campus_ccds($site_code);
+        $arr_site_campus_ccd = empty($site_code) === false ? get_auth_campus_ccds($site_code) : [];
 
         if (empty($arr_site_code) === true || empty($site_code) === true || empty($arr_site_campus_ccd) === true) {
             return [];
@@ -88,6 +88,9 @@ class Visit extends BaseOrder
 
         // 기본조건
         $arr_condition = [
+            'EQ' => [
+                'O.SiteCode' => $site_code
+            ],
             'IN' => [
                 'O.SiteCode' => $arr_site_code,     // 학원 사이트 권한 추가
                 'PL.CampusCcd' => $arr_site_campus_ccd,     // 학원 캠퍼스 권한 추가
@@ -98,7 +101,6 @@ class Visit extends BaseOrder
         if ($search_type == 'list') {
             $arr_condition = array_merge_recursive($arr_condition, [
                 'EQ' => [
-                    'O.SiteCode' => $site_code,
                     'O.PayRouteCcd' => $this->_reqP('search_pay_route_ccd'),
                     'O.PayMethodCcd' => $this->_reqP('search_pay_method_ccd'),
                     'P.ProdTypeCcd' => $this->_reqP('search_prod_type_ccd'),

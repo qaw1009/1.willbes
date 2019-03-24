@@ -10,6 +10,7 @@
                 {!! method_field($method) !!}
                 <input type="hidden" name="order_idx" value="{{ $idx }}"/>
                 <input type="hidden" name="mem_idx" value="{{ $data['mem']['MemIdx'] or '' }}" data-result-data=""/>
+                <input type="hidden" id="search_site_code" name="search_site_code" value="{{ $def_site_code }}"/>
                 @if(isset($data['mem']) === false)
                     <div class="row">
                         <label class="control-label col-md-1" for="search_mem_id">· 회원검색</label>
@@ -250,10 +251,13 @@
                     @include('lms.pay.order.order_memo_partial')
                 </div>
             @endif
-{{--            <div class="ln_solid mt-15"></div>
+            <div class="ln_solid mt-15"></div>
             <div class="row">
                 <div class="col-md-6">
                     <h4><strong>학원방문수강접수 전체내역</strong></h4>
+                </div>
+                <div class="col-md-12">
+                    {!! html_def_site_tabs($def_site_code, 'tabs_site_code', 'tab', false, [], false, $arr_site_code) !!}
                 </div>
                 <div class="col-md-12">
                     <table id="list_order_detail_table" class="table table-striped table-bordered">
@@ -278,7 +282,7 @@
                         </tbody>
                     </table>
                 </div>
-            </div>--}}
+            </div>
             <div class="ln_solid"></div>
             <div class="text-center">
                 <button class="btn btn-primary" type="button" id="btn_list">목록</button>
@@ -559,7 +563,7 @@
                     }
                 }
             };
-            {{--
+
             // 방문수강접수 목록
             $datatable = $list_table.DataTable({
                 serverSide: true,
@@ -567,45 +571,50 @@
                     'url' : '{{ site_url('/pay/visit/listAjax') }}?search_type=mem_idx',
                     'type' : 'POST',
                     'data' : function(data) {
-                        return $.extend(arrToJson($regi_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
+                        return $.extend(arrToJson($regi_form.serializeArray()), { 'start' : data.start, 'length' : data.length });
                     }
                 },
                 dom: 'T<"clear">rtip',
                 rowsGroup: ['.rowspan'],
                 columns: [
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                        // 리스트 번호
-                        return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
-                    }},
+                            // 리스트 번호
+                            return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
+                        }},
                     {'data' : 'OrderNo', 'render' : function(data, type, row, meta) {
-                        return '<a href="{{ site_url('/pay/visit/show') }}/' + row.OrderIdx + '" class="blue" target="_blank"><u>' + data + '</u></a>';
-                    }},
+                            return '<a href="{{ site_url('/pay/visit/show') }}/' + row.OrderIdx + '" class="blue" target="_blank"><u>' + data + '</u></a>';
+                        }},
                     {'data' : 'PayChannelCcdName'},
                     {'data' : 'PayRouteCcdName'},
                     {'data' : 'PayMethodCcdName'},
                     {'data' : 'CompleteDatm', 'render' : function(data, type, row, meta) {
-                        return (data !== null ? data : '') + '<br/>(' + row.OrderDatm + ')';
-                    }},
+                            return (data !== null ? data : '') + '<br/>(' + row.OrderDatm + ')';
+                        }},
                     {'data' : 'tRealPayPrice', 'render' : function(data, type, row, meta) {
-                        return addComma(data);
-                    }},
+                            return addComma(data);
+                        }},
                     {'data' : 'ProdTypeCcdName', 'render' : function(data, type, row, meta) {
-                        return data + (row.SalePatternCcdName !== '' ? '<br/>(' + row.SalePatternCcdName + ')' : '');
-                    }},
+                            return data + (row.SalePatternCcdName !== '' ? '<br/>(' + row.SalePatternCcdName + ')' : '');
+                        }},
                     {'data' : 'CampusCcdName'},
                     {'data' : 'ProdName', 'render' : function(data, type, row, meta) {
-                        return '<span class="blue no-line-height">[' + (row.LearnPatternCcdName !== null ? row.LearnPatternCcdName : row.ProdTypeCcdName) + ']</span> ' + data;
-                    }},
+                            return '<span class="blue no-line-height">[' + (row.LearnPatternCcdName !== null ? row.LearnPatternCcdName : row.ProdTypeCcdName) + ']</span> ' + data;
+                        }},
                     {'data' : 'RealPayPrice', 'render' : function(data, type, row, meta) {
-                        return addComma(data);
-                    }},
+                            return addComma(data);
+                        }},
                     {'data' : 'PayStatusCcdName', 'render' : function(data, type, row, meta) {
-                        return data + (row.PayStatusCcd === '{{ $_pay_status_ccd['refund'] }}' ? '<br/>' + (row.RefundDatm !== null ? row.RefundDatm.substr(0, 10) : '') + '<br/>(' + row.RefundAdminName + ')' : '');
-                    }},
+                            return data + (row.PayStatusCcd === '{{ $_pay_status_ccd['refund'] }}' ? '<br/>' + (row.RefundDatm !== null ? row.RefundDatm.substr(0, 10) : '') + '<br/>(' + row.RefundAdminName + ')' : '');
+                        }},
                     {'data' : 'RegAdminName'}
                 ]
             });
-            --}}
+
+            // 학원방문수강접수 전체내역 사이트 탭 클릭
+            $('#tabs_site_code').on('click', 'li > a', function() {
+                $regi_form.find('input[name="search_site_code"]').val($(this).data('site-code'));
+                $datatable.draw();
+            });
 
             // 목록 이동
             $('#btn_list').click(function() {

@@ -691,10 +691,10 @@ class Pass extends \app\controllers\FrontController
             ],
             'GTE' => [
                 'RegDatm' => $sdate
-            ],
+            ]/*,
             'LT' => [
-                'RegDatm' => $edate
-            ]
+                'RegDatm' => (empty($edate) == true ? date('Y-m-d', str)
+            ] */
         ];
 
         // 리스트

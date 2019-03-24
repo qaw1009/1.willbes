@@ -264,7 +264,7 @@
             if(no == 1){
                 lUrl = "{{ site_url('/periodPackage/show/cate/3001/pack/648002/prod-code/149212') }}";
             }else if(no == 2){
-                lUrl = "{{ site_url('/pass/offPackage/index?cate_code=3010&course_idx=1043') }}";
+                lUrl = "{!! site_url('/pass/offPackage/index?cate_code=3010&course_idx=1043') !!}";
             }
 
             location.href = lUrl;

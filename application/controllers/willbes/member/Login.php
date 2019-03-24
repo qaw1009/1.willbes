@@ -65,7 +65,7 @@ class Login extends BaseMember
             if($chklogin === true) {
                 return $this->json_error('아이디와 비밀번호를 정확하게 입력해주십시요.');
             } else {
-                show_alert('아이디와 비밀번호를 정확하게 입력해주십시요.', front_app_url("/member/login/", "www")."/?rtnUrl=".rawurlencode($rtnUrl), false);
+                show_alert('아이디와 비밀번호를 정확하게 입력해주십시요.', front_app_url("/member/login/", "www")."?rtnUrl=".rawurlencode($rtnUrl), false);
             }
         }
 
@@ -153,7 +153,7 @@ class Login extends BaseMember
                 }
 
             } else {
-                show_alert('로그인에 실패했습니다. 다시시도해 주십시요.', front_app_url("/member/login/", "www")."/?rtnUrl=".rawurlencode($rtnUrl), false);
+                show_alert('로그인에 실패했습니다. 다시시도해 주십시요.', front_app_url("/member/login/", "www")."?rtnUrl=".rawurlencode($rtnUrl), false);
             }
         }
     }

@@ -57,14 +57,14 @@
     <label class="control-label col-md-1-1">내용</label>
     <div class="col-md-10 item form-inline form-content-input hide" id="content_file">
         <div class="title">
-            <div class="filetype">
+            <!--div class="filetype">
                 <input type="text" class="form-control file-text" disabled="">
                 <button class="btn btn-primary mb-0" type="button">파일 선택</button>
-                <span class="file-select file-btn">
+                <span class="file-select file-btn"-->
                     <input type="file" id="attach_file_C" name="attach_file[]" class="form-control input-file" title="내용 이미지">
-                </span>
+                <!--/span>
                 <input class="file-reset btn-danger btn" type="button" value="X" />
-            </div>
+            </div-->
             @if(empty($file_data['C']) === false)
                 <p class="form-control-static ml-30 mr-10">[ <a href="{{ $file_data['C']['file_path'] }}" rel="popup-image">{{ $file_data['C']['file_real_name'] }}</a> ]
                     <a href="#none" class="file-delete" data-attach-idx="{{ $file_data['C']['file_idx'] }}"><i class="fa fa-times red"></i></a>

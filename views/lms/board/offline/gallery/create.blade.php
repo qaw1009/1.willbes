@@ -102,14 +102,14 @@
                     <div class="col-md-10 form-inline file-box">
                         @for($i = 0; $i < $attach_file_cnt; $i++)
                             <div class="title file-input-box">
-                                <div class="filetype">
+                                <!--div class="filetype">
                                     <input type="text" class="form-control file-text" disabled="">
                                     <button class="btn btn-primary mb-0" type="button">파일 선택</button>
-                                    <span class="file-select file-btn">
+                                    <span class="file-select file-btn"-->
                                         <input type="file" id="attach_file{{ $i }}" name="attach_file[]" class="form-control input-file" title="첨부{{ $i }}"/>
-                                    </span>
+                                    <!--/span>
                                     <input class="file-reset btn-danger btn" type="button" value="X" />
-                                </div>
+                                </div-->
                                 @if(empty($data['arr_attach_file_path'][$i]) === false)
                                     <p class="form-control-static ml-10 mr-10">[ <a href="{{ $data['arr_attach_file_path'][$i] . $data['arr_attach_file_name'][$i] }}" rel="popup-image">{{ $data['arr_attach_file_real_name'][$i] }}</a> ]
                                         <a href="#none" class="file-delete" data-attach-idx="{{ $data['arr_attach_file_idx'][$i]  }}"><i class="fa fa-times red"></i></a>
@@ -205,14 +205,14 @@
                 var file_id = $('.file-input-box').length;
 
                 add_file_box_text += '<div class="title file-input-box">';
-                add_file_box_text += '<div class="filetype">';
-                add_file_box_text += '<input type="text" class="form-control file-text" disabled="disabled">';
-                add_file_box_text += '<button class="btn btn-primary mb-0 ml-5" type="button">파일 선택</button>';
-                add_file_box_text += '<span class="file-select file-btn">';
+                //add_file_box_text += '<div class="filetype">';
+                //add_file_box_text += '<input type="text" class="form-control file-text" disabled="disabled">';
+                //add_file_box_text += '<button class="btn btn-primary mb-0 ml-5" type="button">파일 선택</button>';
+                //add_file_box_text += '<span class="file-select file-btn">';
                 add_file_box_text += '<input type="file" id="attach_file'+file_id+'" name="attach_file[]" class="form-control input-file" title="첨부'+file_id+'"/>';
-                add_file_box_text += '</span>';
-                add_file_box_text += '<input class="file-reset btn-danger btn" type="button" value="X" />';
-                add_file_box_text += '</div>';
+                //add_file_box_text += '</span>';
+                //add_file_box_text += '<input class="file-reset btn-danger btn" type="button" value="X" />';
+                //add_file_box_text += '</div>';
                 add_file_box_text += '</div>';
                 $('.file-box').append(add_file_box_text);
 

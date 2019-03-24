@@ -83,11 +83,13 @@
                                     <ul class="attach">
                                         @for($i = 0; $i < $attach_file_cnt; $i++)
                                             <li>
-                                                <div class="filetype">
+                                                <!--div class="filetype">
                                                     <input type="text" class="file-text" />
                                                     <span class="file-btn bg-heavy-gray NSK">찾아보기</span>
-                                                    <span class="file-select"><input type="file" id="attach_file{{ $i }}" name="attach_file[]" class="input-file" size="3"></span>
-                                                </div>
+                                                    <span class="file-select"-->
+                                                        <input type="file" id="attach_file{{ $i }}" name="attach_file[]" class="input-file" size="3">
+                                                    <!--/span>
+                                                </div-->
                                             </li>
                                         @endfor
                                         <li>

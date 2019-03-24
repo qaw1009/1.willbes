@@ -26,8 +26,21 @@ $(function() {
         controls: false,
         pause: 3000,
         onSliderLoad: function(){
-            $(".bSlider").css("visibility", "visible").animate({opacity:1}); 
-        } 
+            $(".bSlider").css("visibility", "visible").animate({opacity:1});
+        }
+    });
+});
+
+// 탭에서 사용하는 Slider
+$(function() {
+    $('.sliderTab').show().bxSlider({
+        auto: true,
+        controls: false,
+        pause: 3000,
+        preloadImages: 'all',
+        onSliderLoad: function(){
+            $(".bSlider").css("visibility", "visible").animate({opacity:1});
+        }
     });
 });
 

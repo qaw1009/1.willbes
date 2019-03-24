@@ -92,7 +92,7 @@
                 <div class="Section Section2 mt100">
                     <div class="widthAuto p_re">
                         <img src="{{ img_url('cop_acad/visual/visual_curri_bg.jpg') }}" alt="신광은경찰 합격커리큘럼">
-                        <div class="passCurriWrap mb50">
+                        <div class="passCurriWrap">
                             <ul>
                                 <li class="curriStep1">
                                     <img src="{{ img_url('cop_acad/visual/visual_curriM01.png') }}" alt="집중 연강식 진행" class="out">
@@ -125,7 +125,7 @@
                 <!-- 합격커리큘럼 //-->
                 <!--p><img src="http://file3.willbes.net/new_cop/2019/02/EV190214_c4_1.jpg"  alt=""/></p-->  
                 <!--동영상-->
-                <p style="padding-bottom:150px;"><iframe width="876px" height="480px" src="https://www.youtube.com/embed/re8w_IFAPS4?rel=0" frameborder="0" allowfullscreen></iframe></p>
+                <p style="padding-bottom:150px;" class="mt50"><iframe width="876px" height="480px" src="https://www.youtube.com/embed/re8w_IFAPS4?rel=0" frameborder="0" allowfullscreen></iframe></p>
                 <!--//동영상-->
             </div>
 

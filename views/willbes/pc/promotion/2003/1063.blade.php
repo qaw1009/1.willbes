@@ -95,24 +95,25 @@
     <div class="p_re evtContent NSK" id="evtContainer">
         <!-- 타이머 -->
         <div class="evtCtnsBox time">
-            <div class="time_date" id="newTopDday">
-            <table>
-                <tr>
-                <td class="time_txt"><span>3/31(일)</span> 마감까지 </td>
-                <td><img id="d1" src="http://file.willbes.net/new_image/0.png" /></td>
-                <td><img id="d2" src="http://file.willbes.net/new_image/0.png" /></td>
-                <td class="time_txt">일 </td>
-                <td><img id="h1" src="http://file.willbes.net/new_image/0.png" /></td>
-                <td><img id="h2" src="http://file.willbes.net/new_image/0.png" /></td>
-                <td class="time_txt">:</td>
-                <td><img id="m1" src="http://file.willbes.net/new_image/0.png" /></td>
-                <td><img id="m2" src="http://file.willbes.net/new_image/0.png" /></td>
-                <td class="time_txt">:</td>
-                <td><img id="s1" src="http://file.willbes.net/new_image/0.png" /></td>
-                <td><img id="s2" src="http://file.willbes.net/new_image/0.png" /></td>
-                <td align="center" class="time_txt"> 남았습니다.</td>
-                </tr>
-            </table>
+            <div class="time_date">
+                <table>
+                    <tr>
+                    <td class="time_txt"><span>3/31(일)</span> 마감까지 </td>
+                    <td><img id="dd1" src="http://file.willbes.net/new_image/0.png" /></td>
+                    <td><img id="dd2" src="http://file.willbes.net/new_image/0.png" /></td>
+                    <td class="time_txt">일 </td>
+                    <td><img id="hh1" src="http://file.willbes.net/new_image/0.png" /></td>
+                    <td><img id="hh2" src="http://file.willbes.net/new_image/0.png" /></td>
+                    <td class="time_txt">:</td>
+                    <td><img id="mm1" src="http://file.willbes.net/new_image/0.png" /></td>
+                    <td><img id="mm2" src="http://file.willbes.net/new_image/0.png" /></td>
+                    <td class="time_txt">:</td>
+                    <td><img id="ss1" src="http://file.willbes.net/new_image/0.png" /></td>
+                    <td><img id="ss2" src="http://file.willbes.net/new_image/0.png" /></td>
+                    <td align="center" class="time_txt"> 남았습니다.</td>
+                    </tr>
+                </table>
+                
             </div>
         </div>
         <!-- 타이머 //-->
@@ -159,76 +160,71 @@
     </div>
     <!-- End Container -->
     <script>
-        /*타이머*/
-        var DdayDiff = { //타이머를 설정합니다.
-            inDays: function(dd1, dd2) {
-                var tt2 = dd2.getTime();
-                var tt1 = dd1.getTime();
+        /*디데이*/
+		var DateDiff = {//타이머를 설정합니다.
+		inDays: function(d1, d2) {
+		var t2 = d2.getTime();
+		var t1 = d1.getTime();
 
-                return Math.floor((tt2-tt1) / (1000 * 60 * 60 * 24));
-            },
+		return parseInt((t2-t1)/(24*3600*1000));
+		},
 
-            inWeeks: function(dd1, dd2) {
-                var tt2 = dd2.getTime();
-                var tt1 = dd1.getTime();
+		inWeeks: function(d1, d2) {
+		var t2 = d2.getTime();
+		var t1 = d1.getTime();
 
-                return parseInt((tt2-tt1)/(24*3600*1000*7));
-            },
+		return parseInt((t2-t1)/(24*3600*1000*7));
+		},
 
-            inMonths: function(dd1, dd2) {
-                var dd1Y = dd1.getFullYear();
-                var dd2Y = dd2.getFullYear();
-                var dd1M = dd1.getMonth();
-                var dd2M = dd2.getMonth();
+		inMonths: function(d1, d2) {
+		var d1Y = d1.getFullYear();
+		var d2Y = d2.getFullYear();
+		var d1M = d1.getMonth();
+		var d2M = d2.getMonth();
 
-                return (dd2M+12*dd2Y)-(dd1M+12*dd1Y);
-            },
+		return (d2M+12*d2Y)-(d1M+12*d1Y);
+		},
 
-            inYears: function(dd1, dd2) {
-                return dd2.getFullYear()-dd1.getFullYear();
-            }
-        }
+		inYears: function(d1, d2) {
+		return d2.getFullYear()-d1.getFullYear();
+		}
+		}
 
-        function daycountDown() {
-            // 한달 전 날짜로 셋팅
-            event_day = new Date(2019,2,31,23,59,59);
-            now = new Date();
-            var timeGap = new Date(0, 0, 0, 0, 0, 0, (event_day - now));
+		function countDown() {
+		//event_day = new Date(2016,4,6,23,59,59);
+		// 이벤트 종료일의 한달 전 날짜로 입력한다. 
+		event_day = new Date(2019,2,31,23,59,59);
+		now = new Date();
 
-            var Monthleft = event_day.getMonth() - now.getMonth();
-            var Dateleft = DdayDiff.inDays(now, event_day);
-            var Hourleft = timeGap.getHours();
-            var Minuteleft = timeGap.getMinutes();
-            var Secondleft = timeGap.getSeconds();
+		var Monthleft = event_day.getMonth() - now.getMonth();
+		var Dateleft = DateDiff.inDays(now, event_day);
+		var Hourleft = event_day.getHours() - now.getHours();
+		var Minuteleft = event_day.getMinutes() - now.getMinutes();
+		var Secondleft = event_day.getSeconds() - now.getSeconds();
 
-            //alert(Monthleft+"-"+Dateleft+"-"+Hourleft+"-"+Minuteleft+"-"+Secondleft)
+		//alert(Monthleft+"-"+Dateleft+"-"+Hourleft+"-"+Minuteleft+"-"+Secondleft)
 
-            if((event_day.getTime() - now.getTime()) > 0) {
-                $("#dd1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Dateleft/10) + ".png");
-                $("#dd2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Dateleft%10) + ".png");
+		if((event_day.getTime() - now.getTime()) > 0) {
+		$("#d1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Dateleft/10) + ".png");
+		$("#d2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Dateleft%10) + ".png");
 
-                $("#hh1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Hourleft/10) + ".png");
-                $("#hh2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Hourleft%10) + ".png");
+		$("#h1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Hourleft/10) + ".png");
+		$("#h2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Hourleft%10) + ".png");
 
-                $("#mm1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Minuteleft/10) + ".png");
-                $("#mm2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Minuteleft%10) + ".png");
+		$("#m1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Minuteleft/10) + ".png");
+		$("#m2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Minuteleft%10) + ".png");
 
-                $("#ss1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Secondleft/10) + ".png");
-                $("#ss2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Secondleft%10) + ".png");
-                setTimeout(daycountDown, 1000);
-            }
-            else{
-                $("#newTopDday").hide();
-            }
+		$("#s1").attr("src", "http://file.willbes.net/new_image/" + parseInt(Secondleft/10) + ".png");
+		$("#s2").attr("src", "http://file.willbes.net/new_image/" + parseInt(Secondleft%10) + ".png");
+		}
+		else{
+		}
 
-        }
-        daycountDown();
+		setTimeout(countDown, 1000);
+		}
+		countDown();
 
-        $(function(e){
-            var targetOffset= $("#evtContainer").offset().top;
-            $('html, body').animate({scrollTop: targetOffset}, 700);
-            /*e.preventDefault(); */
-        });
+
     </script>
 
     <script type="text/javascript">

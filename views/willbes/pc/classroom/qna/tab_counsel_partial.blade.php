@@ -1,5 +1,5 @@
 <div id="point1">
-    <span class="subTit tx-gray">{{$count_complete_type['counsel']['not_complete']}} 답변대기 수가 표시됩니다.</span>
+    {{--<span class="subTit tx-gray">{{$count_complete_type['counsel']['not_complete']}} 답변대기 수가 표시됩니다.</span>--}}
     <div class="willbes-Mypage-PointBox h55 NG">
         <ul>
             <li class="Tit">1:1 상담현황</li>

@@ -424,6 +424,25 @@ class Tcc extends BaseBoard
     }
 
     /**
+     * 게시판 삭제
+     * @param array $params
+     */
+    public function deleteDetail($params = [])
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $idx = $params[0];
+        $result = $this->_delete($idx);
+        $this->json_result($result, '정상 처리 되었습니다.', $result);
+    }
+
+    /**
      * 파일 삭제
      */
     public function destroyFile()

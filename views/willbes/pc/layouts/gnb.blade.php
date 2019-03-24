@@ -70,7 +70,7 @@
                                     </dt>
                                     <dt>
                                         <a href="http://blog.naver.com/PostList.nhn?blogId=willbes79&from=postList&categoryNo=65" target="_blank">
-                                            <img src="{{ img_url('gnb/icon_youtube.png') }}" title="블로그">
+                                            <img src="{{ img_url('gnb/icon_blog.png') }}" title="블로그">
                                         </a>
                                     </dt>
                                     <dt>
@@ -89,12 +89,12 @@
                                     </dt>
                                     <dt>
                                         <a href="{{ site_url('/pass/promotion/index/cate/3048/code/1104') }}" target="_blank">
-                                            <img src="{{ img_url('gnb/icon_youtube.png') }}" title="카카오톡">
+                                            <img src="{{ img_url('gnb/icon_kakao.png') }}" title="카카오톡">
                                         </a>
                                     </dt>
                                     <dt>
                                         <a href="https://blog.naver.com/willbes79" target="_blank">
-                                            <img src="{{ img_url('gnb/icon_youtube.png') }}" title="블로그">
+                                            <img src="{{ img_url('gnb/icon_blog.png') }}" title="블로그">
                                         </a>
                                     </dt>
                                     <dt>

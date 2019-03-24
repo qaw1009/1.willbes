@@ -26,8 +26,8 @@
 
         <div class="Section mt8">
             <div class="widthAuto">
-                <a href="/promotion/index/cate/3007/code/1037">
-                    <img src="{{ img_url('cop_sea_special/banner/bnr_1120_01.jpg') }}" title="교수님 T-pass">
+                <a href="/professor/show/cate/3008/prof-idx/50301/?subject_idx=1031&subject_name=%ED%95%B4%EC%96%91%EA%B2%BD%EC%B0%B0%ED%95%99%EA%B0%9C%EB%A1%A0">
+                    <img src="{{ img_url('cop_sea_special/banner/bnr_1120_01.jpg') }}" title="합격은 공득인이 정답입니다.">
                 </a>
             </div>
         </div>

@@ -11225,10 +11225,10 @@ table.acadlecInfoPackageTable tr.Top td {
 .policyNew ol {margin-bottom:30px}
 .policyNew li {margin-bottom:8px; line-height:1.5; margin-left:20px}
 
-.titsubject {margin-top:20px; background:#f3f2f2; padding:20px 20px 10px;}
-.titsubject li {display:inline; float:left; width:50%; margin:0; padding:0; border:0}
-.titsubject li a {color:#000}
-.titsubject:after {content:""; display:block; clear:both}
+.policyNew .titsubject {margin-top:20px; background:#f3f2f2; padding:20px 20px 10px;}
+.policyNew .titsubject li {display:inline; float:left; width:50%; margin:0; padding:0; border:0}
+.policyNew .titsubject li a {color:#000}
+.policyNew .titsubject:after {content:""; display:block; clear:both}
 
 .policyNew th {background:#f0f0f0; border-right:#d7d7d7 1px solid; border-bottom:#d7d7d7 1px solid; color:#666; padding:10px 0}
 .policyNew td {border-right:#d7d7d7 1px solid; border-bottom:#d7d7d7 1px solid; padding:8px; line-height:1.5}

@@ -125,8 +125,8 @@
             <img src="http://file3.willbes.net/new_gosi/2018/10/EV181024Y_05_1.jpg" alt="경영학 종합 패키지" usemap="#Map181024" border="0" />
             <map name="Map181024" id="Map181024">
                 <area shape="rect" coords="860,747,1093,832" href="{{ site_url('/package/show/cate/3024/pack/648001/prod-code/150632') }}" target="_blank" alt="2019 경영학 패키지">
-                <area shape="rect" coords="860,886,1093,972" href="{{ site_url('/package/show/cate/3024/pack/648001/prod-code/146647') }}" target="_blank" alt="2019 경영학 기본강의">
-                <area shape="rect" coords="860,1027,1093,1111" href="{{ site_url('/package/show/cate/3024/pack/648001/prod-code/146649') }}" target="_blank" alt="2019 감사직 객관식 문제풀이">
+                <area shape="rect" coords="860,886,1093,972" href="{{ site_url('/lecture/show/cate/3024/pattern/only/prod-code/146647') }}" target="_blank" alt="2019 경영학 기본강의">
+                <area shape="rect" coords="860,1027,1093,1111" href="{{ site_url('/lecture/show/cate/3024/pattern/only/prod-code/146649') }}" target="_blank" alt="2019 감사직 객관식 문제풀이">
         </div>
         <!--WB_con05//-->
 

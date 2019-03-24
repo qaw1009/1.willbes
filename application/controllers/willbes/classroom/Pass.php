@@ -690,10 +690,10 @@ class Pass extends \app\controllers\FrontController
             'EQ' => [
                 'MemIdx' => $this->session->userdata('mem_idx')
             ],
-            'GT' => [
+            'GTE' => [
                 'RegDatm' => $sdate
             ],
-            'LT' => [
+            'LTE' => [
                 'RegDatm' => $edate
             ]
         ]);
@@ -713,10 +713,10 @@ class Pass extends \app\controllers\FrontController
                 'EQ' => [
                     'MemIdx' => $this->session->userdata('mem_idx')
                 ],
-                'GT' => [
+                'GTE' => [
                     'RegDatm' => $sdate
                 ],
-                'LT' => [
+                'LTE' => [
                     'RegDatm' => $edate
                 ]
             ], $pagesize, $offset);

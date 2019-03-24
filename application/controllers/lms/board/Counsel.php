@@ -422,10 +422,12 @@ class Counsel extends BaseBoard
         $data['arr_attach_file_real_name'] = explode(',', $data['AttachRealFileName']);
 
         if (empty($data['ReplyContent'])) {
-            $reply_content = '안녕하세요. 윌비스입니다.';
-            $reply_content .= '</br></br></br></br>';
-            $reply_content .= '더 궁금하신 점이 있다면 상담게시판에 남겨주시거나, ';
-            $reply_content .= '000-000-0000으로 전화주시면 친절하게 답변해드리겠습니다.';
+            $reply_content = '안녕하세요. 윌비스입니다.<br>';
+            $reply_content .= '문의해주신 내용 답변 드립니다.<br><br><br>';
+            $reply_content .= '"당장 내 뜻대로 되지 않는다고 해서 쉽게 포기하지 마세요.<br>';
+            $reply_content .= '"같은 환경, 같은 기회가 주어져도 성공의 계단은 어떤 상황에도 낙심하지 않는 사람,위기를 기회로 삼는 사람,<Br>';
+            $reply_content .= '"신념과 인내를 갖고 준비하는 사람에게 찾아올 것입니다."<br><br>';
+            $reply_content .= '"그럼 오늘도 파이팅 하세요^^';
         } else {
             $reply_content = $data['ReplyContent'];
         }

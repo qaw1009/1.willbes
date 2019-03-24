@@ -14,7 +14,7 @@
             @else
                 @foreach($list as $row)
                     <li>
-                        <img src="{{ img_url('prof/tccImg.jpg') }}" alt="TCC영상제목">
+                        <img src="{{ (empty($row['AttachData'][0]) === true) ? img_url('prof/tccImg.jpg') : $row['AttachData'][0]['FilePath'] . $row['AttachData'][0]['FileName']}}" alt="TCC영상제목">
                         <div class="tccInfo">
                             <h4><span class="NG">{{ hpSubString($row['Title'],0,40,'...') }}</span><span class="date">{{ $row['RegDatm'] }}</span></h4>
                             <div>

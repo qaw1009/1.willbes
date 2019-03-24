@@ -423,6 +423,24 @@ class Tcc extends BaseBoard
         $this->_download();
     }
 
+    /**
+     * 파일 삭제
+     */
+    public function destroyFile()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]'],
+            ['field' => 'attach_idx', 'label' => '식별자', 'rules' => 'trim|required|integer'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->boardModel->removeFile($this->_reqP('attach_idx'));
+        $this->json_result($result, '저장 되었습니다.', $result);
+    }
+
     private function _setInputData($input, $prof_idx){
         $input_data = [
             'board' => [

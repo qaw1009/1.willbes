@@ -73,17 +73,11 @@
         </div>
 
         <div class="evtCtnsBox wb_03" >
-            <img src="http://file3.willbes.net/new_cop/2019/03/EV190311_p4_re.png"  alt="02" usemap="#pass">
+            <img src="http://file3.willbes.net/new_cop/2019/03/EV190311_p4_re.png"  alt="02" usemap="#pass"><br>
             <map name="pass" id="pass">
                 <area shape="rect" coords="466,644,689,670" href="{{ site_url('/promotion/index/cate/3001/code/1009') }}" onfocus='this.blur()'  alt="신광은경찰PASS" target="_blink">
             </map>
-        </div>
-
-        <div class="evtCtnsBox wb_04" >
-            <img src="http://file3.willbes.net/new_cop/2019/03/EV190311_p5_re.png"  alt="03"  usemap="#welcomepack2">
-            <map name="welcomepack2" id="welcomepack2">
-                <area shape="rect" coords="86,1062,894,1168" href="{{ app_url('/member/join/?ismobile=0&sitecode=' . $__cfg['SiteCode'], 'www') }}" onfocus='this.blur()'  alt="웰컴팩받기" target="_blink">
-            </map>
+            <a href="{{ app_url('/member/join/?ismobile=0&sitecode=' . $__cfg['SiteCode'], 'www') }}"><img src="http://file3.willbes.net/new_cop/2019/03/EV190311_p5_re.png"  alt="03"  usemap="#welcomepack2"></a>
         </div>
 
         <div class="evtCtnsBox wb_05" >

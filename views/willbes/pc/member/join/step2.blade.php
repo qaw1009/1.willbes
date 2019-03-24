@@ -1,6 +1,35 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
+<style type="text/css">
+        .policyNew {padding:20px}
+        .policyNew {padding:20px}
+        .policyNew h3 {font-size:18px; color:#0c5dc0 !important; margin-bottom:20px; color:#06F; border-bottom:2px solid #0c5dc0; padding-bottom:10px}
+        .policyNew p {margin-bottom:20px; font-weight:bold; font-size:14px; color:#333; border-bottom:1px solid #ccc; border-top:1px solid #ccc; padding:10px 0}
+        .policyNew div {margin-bottom:10px}
+        .policyNew ul,
+        .policyNew ol {margin-bottom:30px}
+        .policyNew li {margin-bottom:8px; line-height:1.5; margin-left:20px}
+
+        .titsubject {margin-top:20px; background:#f3f2f2; padding:20px 20px 10px; }
+        .titsubject li {display:inline; float:left; width:50%; margin-left:0}
+        .titsubject li a {color:#000}
+        .titsubject:after {content:""; display:block; clear:both}
+
+        .policyNew th {background:#f0f0f0; border-right:#d7d7d7 1px solid; border-bottom:#d7d7d7 1px solid; color:#666; padding:10px 0}
+        .policyNew td {border-right:#d7d7d7 1px solid; border-bottom:#d7d7d7 1px solid; padding:8px; line-height:1.5}
+        .policyNew th:last-child,
+        .policyNew td:last-child {border-right:0}
+        .policyNew tr.trTypeA td:last-child {border-right:#d7d7d7 1px solid}
+        .policyNew tr.trTypeB td:last-child {border-bottom:#666 1px solid}
+        .policyNew tr.trTypeC th {border-bottom:#666 1px solid}
+        .policyNew tr:last-child td {border-bottom:0}
+        .policyNew table.tdCenter td {text-align:center}
+        .policyNew table {width:100%; border-collapse:collapse; border-spacing:0; border:#666 1px solid !important; background:#fff; margin:10px 0}
+        .policyNew .txtInfo {margin:40px 0}
+        .policyNew .tit2 {color:#F33}
+    </style>
+
     <form name="join_form" id="join_form" method="post" novalidate="novalidate">
         {!! csrf_field() !!}
         <input type="hidden" name="CertifiedInfoTypeCcd" id="CertifiedInfoTypeCcd" value="{{$jointype}}" />
@@ -525,13 +554,10 @@
                                     <p>부칙</p>
                                     <div>
                                         - 본 약관은 2019년 3월 25일부터 적용하고, 이전 약관은 본 약관으로 대체합니다.
-                                        <!-- <div><a href="javascript:privacy('20180903');">▶ 이전 이용약관 보기</a></div> -->
                                     </div>
                                 </div>
                                 {{--
                                 <link rel="stylesheet" type="text/css" href="/data/terms/terms.css" id="stylesheet" />
-                                <!-- 윌비스 2017-01-13 신규 이용약관 -->
-                                <!--이용약관 내용 부문 S-->
                                 <style type="text/css">
                                     .part {
                                         margin: 0;
@@ -936,7 +962,6 @@
                                     </ol>
 
                                 </div>
-                                <!--이용약관 내용 부문 E-->
                                 --}}
                             </div>
                         </li>
@@ -949,30 +974,7 @@
                                     <span class="tx-blue">(필수)</span> 개인정보 수입 및 이용 동의<span class="arrow">▼</span>
                                 </a>
                             </div>
-                            <div class="agree-Txt">
-                                <style type="text/css">
-                                    .policyNew * {font-size:12px;color:#555; line-height:1.5;}
-                                    .policyNew h3 {font-size:16px; color:#333; margin-bottom:20px; color:#06F; border-bottom:2px solid #06f; padding-bottom:10px}
-                                    .policyNew p {margin-bottom:20px; font-weight:bold; font-size:14px; color:#333; border-bottom:1px solid #ccc; border-top:1px solid #ccc; padding:10px 0}
-                                    .policyNew div {margin-bottom:10px}
-                                    .policyNew ul,
-                                    .policyNew ol {margin-bottom:30px}
-                                    .policyNew li {margin-bottom:8px; line-height:1.5; margin-left:20px}
-                                    .policyNew th {background:#f0f0f0; border-right:#d7d7d7 1px solid; border-bottom:#d7d7d7 1px solid; color:#666; padding:10px 0}
-                                    .policyNew td {border-right:#d7d7d7 1px solid; border-bottom:#d7d7d7 1px solid; padding:8px; line-height:1.5}
-                                    .policyNew th:last-child,
-                                    .policyNew td:last-child {border-right:0}
-                                    .policyNew tr.trTypeA td:last-child {border-right:#d7d7d7 1px solid}
-                                    .policyNew tr.trTypeB td:last-child {border-bottom:#666 1px solid}
-                                    .policyNew tr.trTypeC th {border-bottom:#666 1px solid}
-                                    .policyNew tr:last-child td {border-bottom:0}
-                                    .policyNew table.tdCenter td {text-align:center}
-                                    .policyNew table {width:100%; border-collapse:collapse; border-spacing:0; border:#666 1px solid !important; background:#fff; margin:10px 0}
-                                    .policyNew .txtInfo {margin:40px 0}
-                                    .policyNew .tit2 {color:#F33}
-                                    .closebtn {position:absolute; top:20px; right:20px; z-index:10}
-                                    .closebtn a {font-size:11px; color:#fff; background:#333; padding:3px; text-decoration:none}
-                                </style>
+                            <div class="agree-Txt">                               
 
                                 <div class="policyNew">
                                     <table class="tdCenter">
@@ -1007,9 +1009,6 @@
                                         -> 거부에 따른 불이익 : 평가인정 신청에 반드시 필요한 사항으로 거부하실 경우 평가인정을 받으실 수 없습니다. 또한 환불진행이 원할하게 진행되지 않는 등 홈페이지 이용이 제한됩니다.
                                     </div>
                                 </div>
-
-
-
                             </div>
                         </li>
                         <!--

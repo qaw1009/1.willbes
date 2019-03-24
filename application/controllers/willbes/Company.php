@@ -63,4 +63,14 @@ class Company extends \app\controllers\FrontController
     {
         return $this->load->view('/company/sub_06_01');
     }
+
+    public function protect()
+    {
+        return $this->load->view('/company/protect');
+    }
+
+    public function agreement()
+    {
+        return $this->load->view('/company/agreement');
+    }
 }

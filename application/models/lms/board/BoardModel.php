@@ -55,6 +55,7 @@ class BoardModel extends WB_Model
             $master_column = ' (SELECT COUNT(*) FROM lms_board_r_comment AS CT WHERE LB.BoardIdx = CT.BoardIdx AND CT.IsStatus = \'Y\') AS CommentCnt, ';
             $column .= '
                 ,IFNULL(FN_BOARD_CATECODE_DATA_LMS(LB.BoardIdx),\'N\') AS CateCode
+                ,IFNULL(fn_board_attach_data(LB.BoardIdx),NULL) AS AttachFileName
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -69,13 +70,6 @@ class BoardModel extends WB_Model
             LEFT OUTER JOIN {$this->_table_member} AS MEM ON LB.RegMemIdx = MEM.MemIdx
             LEFT OUTER JOIN {$this->_table_sys_site} as LS ON LB.SiteCode = LS.SiteCode
             LEFT OUTER JOIN {$this->_table_sys_admin} as ADMIN ON LB.RegAdminIdx = ADMIN.wAdminIdx AND ADMIN.wIsStatus='Y'
-            
-            LEFT OUTER JOIN (
-                SELECT BoardIdx, AttachFileType, GROUP_CONCAT(AttachFilePath) AS AttachFilePath, GROUP_CONCAT(AttachFileName) AS AttachFileName, GROUP_CONCAT(AttachRealFileName) AS AttachRealFileName
-                FROM {$this->_table_attach}
-                WHERE IsStatus = 'Y' AND RegType = 1
-                GROUP BY BoardIdx
-            ) AS LBA ON LB.BoardIdx = LBA.BoardIdx
         ";
 
         if (empty($sub_query_condition) === false) {

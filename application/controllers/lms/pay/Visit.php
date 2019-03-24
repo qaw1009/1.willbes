@@ -30,6 +30,7 @@ class Visit extends BaseOrder
         $arr_pay_status_ccd = array_filter_keys($codes[$this->_group_ccd['PayStatus']], array_filter_keys($this->orderListModel->_pay_status_ccd, ['receipt_wait', 'paid', 'refund']));
 
         $this->load->view('pay/visit/index', [
+            'def_site_code' => element('0', array_keys($arr_site_code)),
             'arr_site_code' => $arr_site_code,
             'arr_pay_route_ccd' => $codes[$this->_group_ccd['PayRoute']],
             'arr_pay_method_ccd' => $codes[$this->_group_ccd['PayMethod']],
@@ -78,7 +79,10 @@ class Visit extends BaseOrder
     private function _getListConditions($search_type = 'list')
     {
         $arr_site_code = get_auth_on_off_site_codes('Y');
-        if (empty($arr_site_code) === true) {
+        $site_code = $this->_reqP('search_site_code');
+        $arr_site_campus_ccd = get_auth_campus_ccds($site_code);
+
+        if (empty($arr_site_code) === true || empty($site_code) === true || empty($arr_site_campus_ccd) === true) {
             return [];
         }
 
@@ -86,6 +90,7 @@ class Visit extends BaseOrder
         $arr_condition = [
             'IN' => [
                 'O.SiteCode' => $arr_site_code,     // 학원 사이트 권한 추가
+                'PL.CampusCcd' => $arr_site_campus_ccd,     // 학원 캠퍼스 권한 추가
                 'OP.PayStatusCcd' => array_values(array_filter_keys($this->orderListModel->_pay_status_ccd, ['receipt_wait', 'paid', 'refund']))    // 방문결제용 결제상태 코드만 조회
             ]
         ];
@@ -93,7 +98,7 @@ class Visit extends BaseOrder
         if ($search_type == 'list') {
             $arr_condition = array_merge_recursive($arr_condition, [
                 'EQ' => [
-                    'O.SiteCode' => $this->_reqP('search_site_code'),
+                    'O.SiteCode' => $site_code,
                     'O.PayRouteCcd' => $this->_reqP('search_pay_route_ccd'),
                     'O.PayMethodCcd' => $this->_reqP('search_pay_method_ccd'),
                     'P.ProdTypeCcd' => $this->_reqP('search_prod_type_ccd'),
@@ -176,9 +181,12 @@ class Visit extends BaseOrder
         $target_order_idx = $this->_req('target_order_idx');
         $target_prod_code = $this->_req('target_prod_code');
         $method = 'POST';
-        $site_code = '';
-        $arr_off_site_code = [];
+        $regi_site_code = '';
+        $arr_regi_site_code = [];
         $data = [];
+
+        // 학원사이트 코드 조회
+        $arr_site_code = get_auth_on_off_site_codes('Y', true);
 
         // 방문결제 데이터 조회
         if ($is_order === true) {
@@ -197,8 +205,8 @@ class Visit extends BaseOrder
             // 회원정보
             $data['mem'] = $this->manageMemberModel->getMember($data['order']['MemIdx']);
         } else {
-            // 학원사이트 코드 조회
-            $arr_off_site_code = get_auth_on_off_site_codes('Y', true);
+            // 접수할 학원사이트 코드 조회
+            $arr_regi_site_code = $arr_site_code;
 
             // 연결 주문상품 정보 조회
             if (empty($target_order_idx) === false && empty($target_prod_code) === false) {
@@ -216,8 +224,8 @@ class Visit extends BaseOrder
                 // 회원정보
                 $data['mem'] = $this->manageMemberModel->getMember($data['order_prod'][0]['MemIdx']);
 
-                $site_code = $data['order_prod'][0]['SiteCode'];
-                $arr_off_site_code = array_filter_keys($arr_off_site_code, [$site_code]);
+                $regi_site_code = $data['order_prod'][0]['SiteCode'];
+                $arr_regi_site_code = array_filter_keys($arr_regi_site_code, [$regi_site_code]);
             }
         }
 
@@ -228,9 +236,11 @@ class Visit extends BaseOrder
             'method' => $method,
             'idx' => $order_idx,
             'data' => $data,
-            'site_code' => $site_code,
+            'def_site_code' => element('0', array_keys($arr_site_code)),
+            'arr_site_code' => $arr_site_code,
+            'regi_site_code' => $regi_site_code,
+            'arr_regi_site_code' => $arr_regi_site_code,
             'arr_card_ccd' => $arr_card_ccd,
-            'arr_off_site_code' => $arr_off_site_code,
             '_is_order' => $is_order,
             '_pay_method_ccd' => $this->orderListModel->_pay_method_ccd,
             '_pay_status_ccd' => $this->orderListModel->_pay_status_ccd

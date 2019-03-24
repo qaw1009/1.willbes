@@ -134,7 +134,7 @@
                             <h4><strong>상품결제정보</strong></h4>
                         </div>
                         <div class="col-md-6 text-right form-inline item">
-                            {!! html_site_select($site_code, 'site_code', 'site_code', 'form-control input-sm', '운영 사이트', 'required', '', false, $arr_off_site_code) !!}
+                            {!! html_site_select($regi_site_code, 'site_code', 'site_code', 'form-control input-sm', '운영 사이트', 'required', '', false, $arr_regi_site_code) !!}
                             <button type="button" id="btn_product_search" class="btn btn-sm btn-primary mb-0 ml-5">상품검색</button>
                             <span id="selected_product" class="hide"></span>
                         </div>
@@ -250,7 +250,7 @@
                     @include('lms.pay.order.order_memo_partial')
                 </div>
             @endif
-            <div class="ln_solid mt-15"></div>
+{{--            <div class="ln_solid mt-15"></div>
             <div class="row">
                 <div class="col-md-6">
                     <h4><strong>학원방문수강접수 전체내역</strong></h4>
@@ -278,7 +278,7 @@
                         </tbody>
                     </table>
                 </div>
-            </div>
+            </div>--}}
             <div class="ln_solid"></div>
             <div class="text-center">
                 <button class="btn btn-primary" type="button" id="btn_list">목록</button>
@@ -559,7 +559,7 @@
                     }
                 }
             };
-
+            {{--
             // 방문수강접수 목록
             $datatable = $list_table.DataTable({
                 serverSide: true,
@@ -605,6 +605,7 @@
                     {'data' : 'RegAdminName'}
                 ]
             });
+            --}}
 
             // 목록 이동
             $('#btn_list').click(function() {

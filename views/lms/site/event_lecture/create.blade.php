@@ -577,14 +577,14 @@
                 var file_id = $('.file-input-box').length;
 
                 add_file_box_text += '<div class="title file-input-box">';
-                add_file_box_text += '<div class="filetype">';
-                add_file_box_text += '<input type="text" class="form-control file-text" disabled="disabled">';
-                add_file_box_text += '<button class="btn btn-primary mb-0 ml-5" type="button">파일 선택</button>';
-                add_file_box_text += '<span class="file-select file-btn">';
+                //add_file_box_text += '<div class="filetype">';
+                //add_file_box_text += '<input type="text" class="form-control file-text" disabled="disabled">';
+                //add_file_box_text += '<button class="btn btn-primary mb-0 ml-5" type="button">파일 선택</button>';
+                //add_file_box_text += '<span class="file-select file-btn">';
                 add_file_box_text += '<input type="file" id="attach_file_promotion'+file_id+'" name="attach_file_promotion[]" class="form-control input-file" title="첨부'+file_id+'"/>';
-                add_file_box_text += '</span>';
-                add_file_box_text += '<input class="file-reset btn-danger btn" type="button" value="X" />';
-                add_file_box_text += '</div>';
+                //add_file_box_text += '</span>';
+                //add_file_box_text += '<input class="file-reset btn-danger btn" type="button" value="X" />';
+                //add_file_box_text += '</div>';
                 add_file_box_text += '</div>';
                 $('.file-box').append(add_file_box_text);
 

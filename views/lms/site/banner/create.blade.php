@@ -137,13 +137,13 @@
                     <label class="control-label col-md-1-1" for="attach_img">배너이미지<span class="required">*</span></label>
                     <div class="col-md-10 item form-inline">
                         <div class="title">
-                            <div class="filetype">
+                            <!--div class="filetype">
                                 <input type="text" class="form-control file-text" disabled="">
                                 <button class="btn btn-primary mb-0" type="button">파일 선택</button>
-                                <span class="file-select file-btn">
+                                <span class="file-select file-btn"-->
                                 <input type="file" id="attach_img" name="attach_img" @if($method == 'POST')required="required"@endif class="form-control input-file" title="배너 이미지">
-                                </span>
-                            </div>
+                                <!--/span>
+                            </div-->
                             @if($method == 'PUT')
                                 <div class="mt-5">
                                     <img src="{{$data['BannerFullPath']}}{{$data['BannerImgName']}}">

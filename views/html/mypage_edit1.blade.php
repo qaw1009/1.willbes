@@ -453,20 +453,24 @@
                                             <td class="w-file answer tx-left">
                                                 <ul class="attach">
                                                     <li>
-                                                        <div class="filetype">
+                                                        <!--div class="filetype">
                                                             <input type="text" class="file-text" />
                                                             <span class="file-btn bg-heavy-gray NSK">찾아보기</span>
-                                                            <span class="file-select"><input type="file" class="input-file" size="3"></span>
+                                                            <span class="file-select"-->
+                                                                <input type="file" class="input-file" size="3">
+                                                            <!--/span>
                                                             <input class="file-reset NSK" type="button" value="X" />
-                                                        </div>
+                                                        </div-->
                                                     </li>
                                                     <li>
-                                                        <div class="filetype">
+                                                        <!--div class="filetype">
                                                             <input type="text" class="file-text" />
                                                             <span class="file-btn bg-heavy-gray NSK">찾아보기</span>
-                                                            <span class="file-select"><input type="file" class="input-file" size="3"></span>
+                                                            <span class="file-select"-->
+                                                                <input type="file" class="input-file" size="3">
+                                                            <!--/span>
                                                             <input class="file-reset NSK" type="button" value="X" />
-                                                        </div>
+                                                        </div-->
                                                     </li>
                                                     <li>
                                                         • 첨부파일 총합 최대 5MB까지 등록 가능합니다.<br/>

@@ -258,7 +258,7 @@
                                     <span class="row-line">|</span>
                                 </li>
                                 <li class="f-info4">
-                                    <a href="{{ site_url('/support/guide/index') }}"><img src="{{ img_url('cs/icon_question625.gif') }}"><span>교재</span></a>
+                                    <a href="{{ site_url('/pass/support/faq/index') }}"><img src="{{ img_url('cs/icon_question625.gif') }}"><span>교재</span></a>
                                     <span class="row-line">|</span>
                                 </li>
                                 <li class="f-info5">

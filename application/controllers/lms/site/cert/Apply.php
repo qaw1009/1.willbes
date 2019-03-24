@@ -20,10 +20,16 @@ class Apply extends \app\controllers\BaseController
         $arr_category = $this->categoryModel->getCategoryArray('', '', '', 1);
         $codes = $this->codeModel->getCcdInArray(['684','685']);
 
+        $arr_search = [
+            'search_type' => $this->_req('search_type')
+            ,'search_no' => $this->_req('search_no')
+        ];
+
         $this->load->view("site/cert/apply_index", [
             'arr_category' => $arr_category,
             'CertType_ccd' => $codes['684'],
-            'CertCondition_ccd' => $codes['685']
+            'CertCondition_ccd' => $codes['685'],
+            'arr_search'=>$arr_search
         ]);
     }
 

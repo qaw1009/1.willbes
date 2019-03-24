@@ -103,7 +103,10 @@
                 columns: [
                     {'data' : 'SiteName'},
                     {'data' : 'CateName'},
-                    {'data' : 'CertIdx'},
+                    //{'data' : 'CertIdx'},
+                    {'data' : null, 'render' : function(data,type,row,meta){
+                            return '<a href="/site/cert/apply/?search_type='+data.CertTypeCcd+'&search_no='+data.No+'" target="_new">'+data.CertIdx+'</a>';
+                        }},
                     {'data' : 'CertTypeCcd_Name'},
                     {'data' : 'CertConditionCcd_Name'},
                     {'data' : null, 'render' : function(data,type,row,meta) {

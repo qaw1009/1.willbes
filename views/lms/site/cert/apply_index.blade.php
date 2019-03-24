@@ -21,7 +21,7 @@
                         <select class="form-control" id="search_type" name="search_type">
                             <option value="">인증구분</option>
                             @foreach($CertType_ccd as $key=>$val)
-                                <option value="{{ $key }}">{{ $val }}</option>
+                                <option value="{{ $key }}" @if($key == $arr_search['search_type']) selected @endif>{{ $val }}</option>
                             @endforeach
                         </select>
 
@@ -41,7 +41,7 @@
                         <select class="form-control" id="search_no" name="search_no">
                             <option value="">회차</option>
                             @for($i=1;$i<=10;$i++)
-                                <option value="{{$i}}">{{$i}}</option>
+                                <option value="{{$i}}" @if($i == $arr_search['search_no']) selected @endif>{{$i}}</option>
                             @endfor
                         </select>
 
@@ -240,7 +240,7 @@
                 }else if($('#search_type').val() == '684002') {         //제대군인인증
                     $OrderStatus_col.visible(true);
                    //$OrderDatm_col.visible(true);
-                    $Extend_col.visible(true);
+                    $Extend_col.visible(false);
                     $TakeKind_col.visible(false);
                     $AddContent_col.visible(false);
 
@@ -250,7 +250,6 @@
                     $Extend_col.visible(false);
                     $TakeKind_col.visible(false);
                     $AddContent_col.visible(false);
-
 
                 } else if($('#search_type').val() == '684005') {        //수험표 인증
                     $TakeKind_col.visible(true);

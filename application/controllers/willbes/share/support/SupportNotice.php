@@ -52,7 +52,6 @@ class SupportNotice extends BaseSupport
                 'b.BmIdx' => $this->_bm_idx
                 ,'b.IsUse' => 'Y'
                 ,'b.SiteCode' => $this->_site_code
-                ,'b.CampusCcd' => $s_campus
                 ,'b.ProfIdx' => $prof_idx
                 ,'b.SubjectIdx' => $subject_idx
             ],
@@ -63,6 +62,9 @@ class SupportNotice extends BaseSupport
                 ]
             ]
         ];
+        if (empty($s_campus) === false) {
+            $arr_condition['ORG2']['RAW'] = ['(b.CampusCcd = "' => $s_campus . '" OR b.CampusCcd = 605999)'];
+        }
 
         $column = 'b.BoardIdx,b.CampusCcd,b.TypeCcd,b.IsBest,b.AreaCcd
                        ,b.Title,b.Content, (b.ReadCnt + b.SettingReadCnt) as TotalReadCnt
@@ -157,7 +159,6 @@ class SupportNotice extends BaseSupport
                 ,'b.IsBest' => '0'
                 ,'b.BmIdx' => $this->_bm_idx
                 ,'b.IsUse' => 'Y'
-                ,'b.CampusCcd' => $s_campus
                 ,'b.ProfIdx' => $prof_idx
                 ,'b.SubjectIdx' => $subject_idx
             ],
@@ -171,6 +172,9 @@ class SupportNotice extends BaseSupport
                 'Category_String'=>$s_cate_code
             ],
         ];
+        if (empty($s_campus) === false) {
+            $arr_condition_base['ORG2']['RAW'] = ['(b.CampusCcd = "' => $s_campus . '" OR b.CampusCcd = 605999)'];
+        }
 
         $pre_arr_condition = array_merge($arr_condition_base,[
             'ORG1' => [

@@ -10861,7 +10861,7 @@ table.acadlecInfoPackageTable tr.Top td {
 @media screen and (-ms-black-contrast:active), (-ms-black-contrast:none) {
     #SettingForm .chkBox-Save strong {letter-spacing: -2px;}
 }
-/*
+
 @media only screen and (max-width: 768px) {
 
     body.memBody {
@@ -10869,7 +10869,7 @@ table.acadlecInfoPackageTable tr.Top td {
         word-break:keep-all;
     }
 
-    -- Basic Code --
+    /* Basic Code --*/
     body.memBody .widthAuto,
     body.memBody .widthAuto320,
     body.memBody .widthAuto460,
@@ -10886,7 +10886,7 @@ table.acadlecInfoPackageTable tr.Top td {
     }
 
 
-    -- Login Form : 공통 --
+    /*-- Login Form : 공통 --*/
     .mem-Tit {
         text-align: center;
         padding: 35px 0 70px;
@@ -10943,13 +10943,13 @@ table.acadlecInfoPackageTable tr.Top td {
         font-size: 12px;
     }
 
-    -- Login Form : 로그인 --
+    /*-- Login Form : 로그인 --*/
     table.joinTable tr td a {
         height: 56px;
         line-height: 56px;
     }
 
-    -- Login Form : 비밀번호 변경 --
+    /*-- Login Form : 비밀번호 변경 --*/
     .mem-Password .user-Txt {
         background-size: 30px;
         width: 340px;
@@ -10962,7 +10962,7 @@ table.acadlecInfoPackageTable tr.Top td {
         margin: 0 1%;
     }
     
-    -- Login Form : 비밀번호 5회입력 오류 --
+    /*-- Login Form : 비밀번호 5회입력 오류 --*/
     .mem-Wrong .user-Txt {
         background-size: 30px;
         width: 340px;
@@ -10971,13 +10971,13 @@ table.acadlecInfoPackageTable tr.Top td {
         margin-left: -190px;
     }
 
-    -- Login Form : 아이디 찾기 완료 --
+    /*-- Login Form : 아이디 찾기 완료 --*/
     .mem-SearchFin .searchfin-Btn ul li {
         width: 45% !important;
         margin: 0 1%;
     }
 
-    -- Login Form : 유효기간경과 --
+    /*-- Login Form : 유효기간경과 --*/
     .mem-Expired .user-Txt {
         background-size: 40px;
         line-height: 41px;
@@ -10994,7 +10994,7 @@ table.acadlecInfoPackageTable tr.Top td {
         margin: 30px 0 0 35px;
     }
 
-    -- Login Form : 통합회원가입 : 약관동의/정보입력 --
+    /*-- Login Form : 통합회원가입 : 약관동의/정보입력 --*/
     table.combineTable tr th,
     table.combineTable tr td {
         float: left;
@@ -11102,7 +11102,7 @@ table.acadlecInfoPackageTable tr.Top td {
         margin: 5px 0 0 40px;
     }
 
-    -- Login Form : 통합회원가입 : 회원가입완료 --
+    /*-- Login Form : 통합회원가입 : 회원가입완료 --*/
     .mem-CombineFin .welcomepack {
         border-top:1px solid #e2e2e2;
         border-bottom:1px solid #e2e2e2;
@@ -11116,18 +11116,18 @@ table.acadlecInfoPackageTable tr.Top td {
         width: 100%;
     }
 
-    -- Login Form : 통합회원가입 : 기가입자 --
+    /*-- Login Form : 통합회원가입 : 기가입자 --*/
     .mem-CombineFin .combinefin-Btn ul li {
         width: 45% !important;
         margin: 0 1%;
     }
 
-    -- Login Form : 통합 서비스 안내 --
+   /* -- Login Form : 통합 서비스 안내 --*/
     .mem-Convert img {
         width: 100%;
     }
 
-    -- Login Form : 통합회원 전환 --
+    /*-- Login Form : 통합회원 전환 --*/
     .mem-Convert .agreeBox {
         float: left;
         width: 100%;
@@ -11167,7 +11167,7 @@ table.acadlecInfoPackageTable tr.Top td {
         margin: 30px 0 0 0;
     }
 }
-*/
+
 .table-condensed {
     width: 250px !important;
 }

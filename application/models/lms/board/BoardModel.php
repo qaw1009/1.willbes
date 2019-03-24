@@ -53,33 +53,37 @@ class BoardModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
             $master_column = ' (SELECT COUNT(*) FROM lms_board_r_comment AS CT WHERE LB.BoardIdx = CT.BoardIdx AND CT.IsStatus = \'Y\') AS CommentCnt, ';
+            $column .= '
+                ,IFNULL(FN_BOARD_CATECODE_DATA_LMS(LB.BoardIdx),\'N\') AS CateCode
+            ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
 
-        $sub_query_where = $this->_conn->makeWhere($sub_query_condition);
+        /*$sub_query_where = $this->_conn->makeWhere($sub_query_condition);
         $sub_query_where = $sub_query_where->getMakeWhere(false);
-        $table_join_type = (empty($sub_query_condition['EQ']['subLBrC.CateCode']) === false) ? 'INNER' : 'LEFT';
+        $table_join_type = (empty($sub_query_condition['EQ']['subLBrC.CateCode']) === false) ? 'INNER' : 'LEFT';*/
 
         $from = "
             FROM {$this->_table} AS LB
             LEFT OUTER JOIN {$this->_table_member} AS MEM ON LB.RegMemIdx = MEM.MemIdx
-            {$table_join_type} JOIN (
-                SELECT subLBrC.BoardIdx, GROUP_CONCAT(CONCAT(subLSC.CateName,'[',subLBrC.CateCode,']')) AS CateCode
-                FROM {$this->_table_r_category} AS subLBrC
-                LEFT OUTER JOIN {$this->_table_sys_category} AS subLSC ON subLBrC.CateCode = subLSC.CateCode
-                {$sub_query_where}
-                GROUP BY subLBrC.BoardIdx
-            ) AS LBC ON LB.BoardIdx = LBC.BoardIdx
+            LEFT OUTER JOIN {$this->_table_sys_site} as LS ON LB.SiteCode = LS.SiteCode
+            LEFT OUTER JOIN {$this->_table_sys_admin} as ADMIN ON LB.RegAdminIdx = ADMIN.wAdminIdx AND ADMIN.wIsStatus='Y'
+            
             LEFT OUTER JOIN (
                 SELECT BoardIdx, AttachFileType, GROUP_CONCAT(AttachFilePath) AS AttachFilePath, GROUP_CONCAT(AttachFileName) AS AttachFileName, GROUP_CONCAT(AttachRealFileName) AS AttachRealFileName
                 FROM {$this->_table_attach}
                 WHERE IsStatus = 'Y' AND RegType = 1
                 GROUP BY BoardIdx
             ) AS LBA ON LB.BoardIdx = LBA.BoardIdx
-            LEFT OUTER JOIN {$this->_table_sys_site} as LS ON LB.SiteCode = LS.SiteCode
-            LEFT OUTER JOIN {$this->_table_sys_admin} as ADMIN ON LB.RegAdminIdx = ADMIN.wAdminIdx AND ADMIN.wIsStatus='Y'
         ";
+
+        if (empty($sub_query_condition) === false) {
+            $from .= "
+                LEFT OUTER JOIN {$this->_table_r_category} AS subLBrC ON LB.BoardIdx = subLBrC.BoardIdx
+            ";
+            $arr_condition = array_merge_recursive($arr_condition, $sub_query_condition);
+        }
 
         switch ($board_type) {
             case "notice" :

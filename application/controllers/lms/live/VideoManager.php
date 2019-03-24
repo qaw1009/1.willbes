@@ -230,7 +230,7 @@ class VideoManager extends \app\controllers\BaseController
         ];
 
         $column = '
-            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode, LS.SiteName, LB.Title,LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
+            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LS.SiteName, LB.Title,LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
             LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName,
             LB.SubjectIdx, PS.SubjectName, LB.CourseIdx, PRODUCT_COURSE.CourseName, LB.ProfIdx, PROFESSOR.ProfNickName
             ';

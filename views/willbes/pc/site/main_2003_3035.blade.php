@@ -35,7 +35,7 @@
                             @if(isset($data['arr_main_banner']['메인_미들'.$i]) === true)
                                 <li>
                                     <div class="bSlider">
-                                        {!! banner_html($data['arr_main_banner']['메인_미들'.$i], 'slider') !!}
+                                        {!! banner_html($data['arr_main_banner']['메인_미들'.$i], 'sliderTab') !!}
                                     </div>
                                 </li>
                             @endif
@@ -49,7 +49,7 @@
                             @if(isset($data['arr_main_banner']['메인_미들'.$i]) === true)
                                 <li>
                                     <div class="bSlider">
-                                        {!! banner_html($data['arr_main_banner']['메인_미들'.$i], 'slider') !!}
+                                        {!! banner_html($data['arr_main_banner']['메인_미들'.$i], 'sliderTab') !!}
                                     </div>
                                 </li>
                             @endif

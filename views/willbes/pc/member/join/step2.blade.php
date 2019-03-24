@@ -567,7 +567,7 @@
                                     <span class="tx-blue">(필수)</span> 개인정보 수입 및 이용 동의<span class="arrow">▼</span>
                                 </a>
                             </div>
-                            <div class="agree-Txt">                               
+                            <div class="agree-Txt">                       
 
                                 <div class="policyNew">
                                     <table class="tdCenter">

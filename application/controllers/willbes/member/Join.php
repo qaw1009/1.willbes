@@ -7,15 +7,15 @@ class Join extends BaseMember
 {
     protected $_join_coupon = [
         '2001' => [ // 경찰
-            ['type' => 'coupon', 'no' => '25'], // 온라인 모의고사쿠폰
-            ['type' => 'coupon', 'no' => '26'], // 단과10%
-            ['type' => 'coupon', 'no' => '27'], // PASS 1만원
-            ['type' => 'coupon', 'no' => '46'], // 교재무료배송
+            ['type' => 'coupon', 'no' => '30'], // 온라인 모의고사쿠폰
+            ['type' => 'coupon', 'no' => '71'], // 단과10%
+            ['type' => 'coupon', 'no' => '68'], // PASS 1만원
+            ['type' => 'coupon', 'no' => '129'], // 교재무료배송
         ],
         '2003' => [ // 공무원
-            ['type' => 'coupon', 'no' => '25'], // 온라인 모의고사쿠폰
-            ['type' => 'coupon', 'no' => '26'], // 단과10%
-            ['type' => 'coupon', 'no' => '27'], // PASS 1만원
+            ['type' => 'coupon', 'no' => '130'], // 온라인 모의고사쿠폰
+            ['type' => 'coupon', 'no' => '119'], // 단과10%
+            ['type' => 'coupon', 'no' => '111'], // PASS 1만원
             ['type' => 'coupon', 'no' => '116'], // 교재무료배송
         ]
     ];

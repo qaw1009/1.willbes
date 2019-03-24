@@ -79,12 +79,12 @@
         .wb_cts02 { background:#232228; font-family:'Noto Sans KR', Arial, Sans-serif; color:#232228}
 
         /*타이머*/
-        .time{background:#e1e1e1;}
-        .time_date {max-width:1120px; text-align:center;  margin: 0 auto;}
-        .time_date .t_img {width:80%;}
-        .time_txt {font-family: 'NanumGothic', '나눔고딕','NanumGothicWeb', '맑은 고딕', 'Malgun Gothic', Dotum; font-size:22px; color:#171717; letter-spacing: -1px; font-weight:bold;}
-        .time_txt span {color:#b61216;}
-        .time p {text-align:center; padding-top:20px}
+        .time{width:100%; min-width:1210px; text-align:center; background:#000}
+        .time_date {text-align:center; padding:20px 115px}
+        .time_date table {width:980px; margin:0 auto}
+        .time_txt {font-family: 'NanumGothic', '나눔고딕','NanumGothicWeb', '맑은 고딕', 'Malgun Gothic', Dotum; font-size:28px; color:#f2f2f2; letter-spacing: -1px; font-weight:bold}
+        .time_txt span {color:#ef6759}
+        .time p {text-alig:center}
 
         .check {width:100%; margin:0 auto; padding:20px 0 100px; letter-spacing:3 !important; color:#fff; font-size:14px}
         .check label {cursor:pointer}
@@ -110,7 +110,7 @@
                     <td class="time_txt">:</td>
                     <td><img id="ss1" src="http://file.willbes.net/new_image/0.png" /></td>
                     <td><img id="ss2" src="http://file.willbes.net/new_image/0.png" /></td>
-                    <td align="center" class="time_txt"> 남았습니다.</td>
+                    <td class="time_txt"> 남았습니다.</td>
                     </tr>
                 </table>
                 

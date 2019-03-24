@@ -151,13 +151,13 @@
                     <label class="control-label col-md-2" for="attach_img">팝업이미지<span class="required">*</span></label>
                     <div class="col-md-9 item form-inline">
                         <div class="title">
-                            <div class="filetype">
+                            <!--div class="filetype">
                                 <input type="text" class="form-control file-text" disabled="">
                                 <button class="btn btn-primary mb-0" type="button">파일 선택</button>
-                                <span class="file-select file-btn">
+                                <span class="file-select file-btn"-->
                                 <input type="file" id="attach_img" name="attach_img" @if($method == 'POST')required="required"@endif class="form-control input-file" title="팝업 이미지">
-                                </span>
-                            </div>
+                                <!--/span>
+                            </div-->
                         </div>
                     </div>
                     @if($method == 'PUT')

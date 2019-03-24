@@ -57,12 +57,16 @@
                     <div class="col-md-4">
                         @for($i = 0; $i < $attach_file_cnt; $i++)
                             @if(empty($data['arr_attach_file_path'][$i]) === false)
-                                <p class="form-control-static">[ <a href="{{ $data['arr_attach_file_path'][$i] . $data['arr_attach_file_name'][$i] }}" rel="popup-image">{{ $data['arr_attach_file_name'][$i] }}</a> ]</p>
+                                <p class="form-control-static">
+                                    [ <a href="javascript:void(0);" class="file-download" data-file-path="{{ urlencode($data['arr_attach_file_path'][$i].$data['arr_attach_file_name'][$i])}}" data-file-name="{{ urlencode($data['arr_attach_file_real_name'][$i]) }}" target="_blank">
+                                        {{ $data['arr_attach_file_real_name'][$i] }}
+                                    </a> ]
+                                </p>
                             @endif
                         @endfor
                     </div>
-                    <label class="control-label col-md-2" for="">조회수(생성)</label>
-                    <div class="form-control-static col-md-2">
+                    <label class="control-label col-md-1-1 d-line" for="">조회수(생성)</label>
+                    <div class="form-control-static col-md-4 ml-12-dot">
                         {{$data['ReadCnt']}} ({{$data['SettingReadCnt']}})
                     </div>
                 </div>
@@ -125,6 +129,11 @@
                 $('#btn_notice_modify').click(function() {
                     var uri_param = '?board_idx='+"{{$board_idx}}";
                     replaceModal('{{ site_url('/site/eventLecture/createNoticeModal/'.$el_idx) }}' + uri_param, {});
+                });
+
+                $('.file-download').click(function() {
+                    var _url = '{{ site_url("/site/eventLecture/download") }}/' + getQueryString() + '&path=' + $(this).data('file-path') + '&fname=' + $(this).data('file-name');
+                    window.open(_url, '_blank');
                 });
             });
         </script>

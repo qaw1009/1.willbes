@@ -22,7 +22,7 @@
                 <tr>
                     <td class="w-list tx-left pl20" colspan="2">{{$row['Name']}}</td>
                     <td class="w-chk">
-                        @if($data['LimitType'] == 'S')
+                        @if($data['SelectType'] == 'S')
                             <input type="radio" name="register_chk[]" class="goods_chk" value="{{$row['ErIdx']}}">
                         @else
                             <input type="checkbox" name="register_chk[]" class="goods_chk" value="{{$row['ErIdx']}}" @if($row['PersonLimitType'] == $arr_base['register_limit_type']['limit_true'] && $row['PersonLimit'] <= $row['MemCount']) disabled @endif>

@@ -34,6 +34,7 @@ class VideoManager extends \app\controllers\BaseController
     {
         //캠퍼스'Y'상태 사이트 코드 조회
         $offLineSite_list = $this->siteModel->getOffLineSiteArray();
+        $def_site_code = key($offLineSite_list);
 
         //캠퍼스 조회
         $arr_campus = $this->siteModel->getSiteCampusArray('');
@@ -41,6 +42,7 @@ class VideoManager extends \app\controllers\BaseController
         $list = $this->videoManagerModel->listLiveVideo([], null, null, ['lms_live_video.LecLiveVideoIdx' => 'asc', 'lms_live_video.OrderNum' => 'asc']);
 
         $this->load->view("live/video/index", [
+            'def_site_code' => $def_site_code,
             'offLineSite_list' => $offLineSite_list,
             'arr_campus' => $arr_campus,
             'boardInfo' => $this->boardInfo,

@@ -3,11 +3,11 @@
         <div class="widthAuto">
             <ul>
                 <li>
-                    <a href="javascript:;" onclick="popupOpen('//{{app_url('/company/agreement', 'www')}}', 'agreement', '1000', '600', null, null, 'yes');">이용약관</a>
+                    <a href="javascript:;" onclick="popupOpen('{{app_url('/company/agreement', 'www')}}', 'agreement', '1000', '600', null, null, 'yes');">이용약관</a>
                     <span class="row-line">|</span>
                 </li>
                 <li>
-                    <a href="javascript:;" onclick="popupOpen('//{{app_url('/company/protect', 'www')}}', 'protect', '1000', '600', null, null, 'yes');">개인정보 취급방침</a>
+                    <a href="javascript:;" onclick="popupOpen('{{app_url('/company/protect', 'www')}}', 'protect', '1000', '600', null, null, 'yes');">개인정보 취급방침</a>
                     <span class="row-line">|</span>
                 </li>
                 <li>

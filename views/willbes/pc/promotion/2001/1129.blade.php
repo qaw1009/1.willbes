@@ -92,7 +92,7 @@
                 <div class="Section Section2 mt100">
                     <div class="widthAuto p_re">
                         <img src="{{ img_url('cop_acad/visual/visual_curri_bg.jpg') }}" alt="신광은경찰 합격커리큘럼">
-                        <div class="passCurriWrap">
+                        <div class="passCurriWrap mb50">
                             <ul>
                                 <li class="curriStep1">
                                     <img src="{{ img_url('cop_acad/visual/visual_curriM01.png') }}" alt="집중 연강식 진행" class="out">

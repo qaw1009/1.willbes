@@ -548,13 +548,6 @@ class BoardModel extends WB_Model
         $from = "
             FROM {$this->_table} as LB
             INNER JOIN {$this->_table_master} as MST ON LB.BmIdx = MST.BmIdx AND MST.IsUse = 'Y' AND MST.IsStatus = 'Y'
-            LEFT JOIN (
-                select subLBrC.BoardIdx, GROUP_CONCAT(subLBrC.CateCode) AS CateCode
-                from {$this->_table_r_category} as subLBrC
-                LEFT OUTER JOIN {$this->_table_sys_category} as subLSC ON subLBrC.CateCode = subLSC.CateCode
-                WHERE subLBrC.IsStatus = 'Y'
-                group by subLBrC.BoardIdx
-            ) as LBC ON LB.BoardIdx = LBC.BoardIdx
             LEFT OUTER JOIN (
                 select BoardIdx, AttachFileType, GROUP_CONCAT(BoardFileIdx) AS AttachFileIdx, GROUP_CONCAT(AttachFilePath) AS AttachFilePath, GROUP_CONCAT(AttachFileName) AS AttachFileName, GROUP_CONCAT(AttachRealFileName) AS AttachRealFileName
                 from {$this->_table_attach}

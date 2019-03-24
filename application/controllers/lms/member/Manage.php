@@ -1527,12 +1527,15 @@ class Manage extends \app\controllers\BaseController
             $arr_condition['EQ'] = array_merge($arr_condition['EQ'], ['LB.IsStatus' => 'N']);
         }
 
-        $sub_query_condition = [
-            'EQ' => [
-                'subLBrC.IsStatus' => 'Y',
-                'subLBrC.CateCode' => $this->_reqP('search_category')
-            ]
-        ];
+        $sub_query_condition = [];
+        if (empty($this->_reqP('search_category')) === false) {
+            $sub_query_condition = [
+                'EQ' => [
+                    'subLBrC.IsStatus' => 'Y',
+                    'subLBrC.CateCode' => $this->_reqP('search_category')
+                ]
+            ];
+        }
 
         $column = '
             LB.BoardIdx, LB.RegType, LB.SiteCode, LB.MdCateCode, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode,
@@ -1739,12 +1742,15 @@ class Manage extends \app\controllers\BaseController
             $arr_condition['EQ'] = array_merge($arr_condition['EQ'], ['LB.IsStatus' => 'N']);
         }
 
-        $sub_query_condition = [
-            'EQ' => [
-                'subLBrC.IsStatus' => 'Y',
-                'subLBrC.CateCode' => $this->_reqP('search_category')
-            ]
-        ];
+        $sub_query_condition = [];
+        if (empty($this->_reqP('search_category')) === false) {
+            $sub_query_condition = [
+                'EQ' => [
+                    'subLBrC.IsStatus' => 'Y',
+                    'subLBrC.CateCode' => $this->_reqP('search_category')
+                ]
+            ];
+        }
 
         $column = '
             LB.BoardIdx, LB.RegType, LB.SiteCode, LB.CampusCcd, LBC.CateCode,

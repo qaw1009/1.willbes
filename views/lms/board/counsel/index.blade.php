@@ -131,6 +131,7 @@
                     <th>조회수</th>
                     <th>댓글수</th>
                     <th>수정</th>
+                    <th>삭제(관리자)</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -225,7 +226,7 @@
                                 if (row.RegMemName == null) {
                                     return '';
                                 } else {
-                                    return row.RegMemName+'('+row.RegMemIdx+')';
+                                    return row.RegMemName+'('+row.RegMemId+')';
                                 }
 
                             }
@@ -255,9 +256,12 @@
                                 if (row.ReplyStatusCcd == '{{$arr_ccd_reply['finish']}}') {
                                     return '<a href="javascript:void(0);" class="btn-reply-modify" data-idx="' + row.BoardIdx + '"><u>수정</u></a>';
                                 } else {
-                                    return '<a href="javascript:void(0);" class="btn-reply-modify" data-idx="' + row.BoardIdx + '"><u><p class="red">답변</p></u></a>';
+                                    return '<a href="javascript:void(0);" class="btn-reply-modify" data-idx="' + row.BoardIdx + '"><u><p class="blue">답변</p></u></a>';
                                 }
                             }
+                        }},
+                    {'data' : 'BoardIdx', 'render' : function(data, type, row, meta) {
+                            return '<a href="javascript:void(0);" class="btn-delete" data-idx="' + row.BoardIdx + '"><u><p class="red">삭제</p></u></a>';
                         }},
                 ]
             });
@@ -297,6 +301,23 @@
                 location.href='{{ site_url("/board/{$boardName}/readCounselReply") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}';
             });
 
+            $list_table.on('click', '.btn-delete', function() {
+                var _url = '{{ site_url("/board/{$boardName}/delete") }}/' + $(this).data('idx') + getQueryString();
+                var data = {
+                    '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                    '_method' : 'DELETE'
+                };
+
+                if (!confirm('해당 게시물을 삭제하시겠습니까?')) {
+                    return;
+                }
+                sendAjax(_url, data, function(ret) {
+                    if (ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                        $datatable.draw();
+                    }
+                }, showError, false, 'POST');
+            });
         });
     </script>
 @stop

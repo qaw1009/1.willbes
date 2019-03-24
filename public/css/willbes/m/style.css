@@ -598,7 +598,9 @@ body.memBody #Footer {
 .MainFixBnr ul li img {
     width: 100%;
 }
-
+.swiper-wrapper img {
+    width: 100%;
+}
 /* line 공통 */
 .line {
     background: #e9e9e9;

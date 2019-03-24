@@ -69,14 +69,14 @@
                 <ul class="ProfCopBox mt100">
                     <li class="sliderHotIssue nSlider pick">
                         <div class="sliderNum">
-                            <div><a href="{{ site_url('/professor/show/cate/3002/prof-idx/50547/?subject_idx=1006&subject_name=%EC%88%98%EC%82%AC') }}"><img src="{{ img_url('cop_adm/prof/prof_ske.jpg') }}" alt="신광은 수사"></a></div>
+                            <div><a href="{{ site_url('/professor/show/cate/3002/prof-idx/50721/?subject_idx=1006&subject_name=%EC%88%98%EC%82%AC') }}"><img src="{{ img_url('cop_adm/prof/prof_ske.jpg') }}" alt="신광은 수사"></a></div>
                             <div><a href="{{ site_url('/professor/show/cate/3002/prof-idx/50547/?subject_idx=1004&subject_name=%ED%98%95%EC%82%AC%EC%86%8C%EC%86%A1%EB%B2%95') }}"><img src="{{ img_url('cop_adm/prof/prof_ske02.jpg') }}" alt="신광은 형사소송법"></a></div>
                         </div>
                     </li>
                     <li class="sliderHotIssue nSlider pick">
                         <div class="sliderNum">
                             <div><a href="{{ site_url('/professor/show/cate/3002/prof-idx/50031/?subject_idx=1005&subject_name=%EA%B2%BD%EC%B0%B0%ED%95%99%EA%B0%9C%EB%A1%A0') }}"><img src="{{ img_url('cop_adm/prof/prof_jjh.jpg') }}" alt="장정훈 경찰학개론"></a></div>
-                            <div><a href="{{ site_url('/professor/show/cate/3002/prof-idx/50031/?subject_idx=1007&subject_name=%ED%96%89%EC%A0%95%EB%B2%95') }}"><img src="{{ img_url('cop_adm/prof/prof_jjh02.jpg')}}" alt="장정훈 행정법"></a></div>
+                            <div><a href="{{ site_url('/professor/show/cate/3002/prof-idx/50723/?subject_idx=1007&subject_name=%ED%96%89%EC%A0%95%EB%B2%95') }}"><img src="{{ img_url('cop_adm/prof/prof_jjh02.jpg')}}" alt="장정훈 행정법"></a></div>
                         </div>
                     </li>
                     <li>

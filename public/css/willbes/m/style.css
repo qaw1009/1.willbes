@@ -598,8 +598,8 @@ body.memBody #Footer {
 .MainFixBnr ul li img {
     width: 100%;
 }
-.swiper-wrapper img {
-    width: 100%;
+.swiper-slide img {
+    width: 100% !important;
 }
 /* line 공통 */
 .line {

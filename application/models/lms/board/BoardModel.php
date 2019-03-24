@@ -182,10 +182,10 @@ class BoardModel extends WB_Model
         $where_qna = '';
         if ($board_type == 'qna' || $board_type == 'mocktest/qna') {
             $where_qna = $this->_conn->group_start();
-                $this->_conn->group_start();
-                $where_qna->where('LB.RegType','1')->where('LB.IsStatus', 'Y');
-                $where_qna->group_end();
-                $where_qna->or_where('LB.RegType', '0');
+            $this->_conn->group_start();
+            $where_qna->where('LB.RegType','1')->where('LB.IsStatus', 'Y');
+            $where_qna->group_end();
+            $where_qna->or_where('LB.RegType', '0');
             $where_qna->group_end();
             $where_qna = $where_qna->getMakeWhere(true);
         }
@@ -195,11 +195,11 @@ class BoardModel extends WB_Model
         $where_campus = $this->_conn->group_start();
         foreach ($arr_auth_campus_ccds as $set_site_ccd => $set_campus_ccd) {
             $where_campus->or_group_start();
-                $where_campus->or_where('LB.SiteCode',$set_site_ccd);
-                    $where_campus->group_start();
-                        $where_campus->where('LB.CampusCcd', $this->codeModel->campusAllCcd);
-                        $where_campus->or_where_in('LB.CampusCcd', $set_campus_ccd);
-                    $where_campus->group_end();
+            $where_campus->or_where('LB.SiteCode',$set_site_ccd);
+            $where_campus->group_start();
+            $where_campus->where('LB.CampusCcd', $this->codeModel->campusAllCcd);
+            $where_campus->or_where_in('LB.CampusCcd', $set_campus_ccd);
+            $where_campus->group_end();
             $where_campus->group_end();
         }
         $where_campus->or_where('LB.CampusCcd', "''", false);
@@ -561,13 +561,13 @@ class BoardModel extends WB_Model
                 select BoardIdx, AttachFileType, GROUP_CONCAT(BoardFileIdx) AS AttachFileIdx, GROUP_CONCAT(AttachFilePath) AS AttachFilePath, GROUP_CONCAT(AttachFileName) AS AttachFileName, GROUP_CONCAT(AttachRealFileName) AS AttachRealFileName
                 from {$this->_table_attach}
                 where IsStatus = 'Y' ";
-                if (isset($arr_condition_file['reg_type']) === true) {
-                    $from .= "and RegType = {$arr_condition_file['reg_type']} ";
-                }
-                if (isset($arr_condition_file['attach_file_type']) === true) {
-                    $from .= "and AttachFileType = {$arr_condition_file['attach_file_type']} ";
-                }
-                $from .= "GROUP BY BoardIdx
+        if (isset($arr_condition_file['reg_type']) === true) {
+            $from .= "and RegType = {$arr_condition_file['reg_type']} ";
+        }
+        if (isset($arr_condition_file['attach_file_type']) === true) {
+            $from .= "and AttachFileType = {$arr_condition_file['attach_file_type']} ";
+        }
+        $from .= "GROUP BY BoardIdx
                 ) as LBA ON LB.BoardIdx = LBA.BoardIdx
             LEFT OUTER JOIN {$this->_table_sys_site} as LS ON LB.SiteCode = LS.SiteCode
             LEFT OUTER JOIN {$this->_table_sys_admin} as ADMIN ON LB.RegAdminIdx = ADMIN.wAdminIdx and ADMIN.wIsStatus='Y'

@@ -181,7 +181,7 @@
                             return '<a href="javascript:;" class="btn-info btn-sm btn-primary border-radius-reset" data-idx="'+ data.CaIdx+ '">확인</a>';
                         }},
                     {'data' : null, 'render' : function(data,type,row,meta) {
-                            return data.AttachFileName !=null ? '<a class="btn-attachFile glyphicon glyphicon-file" href="{{site_url('/site/cert/apply/download/')}}?filename='+encodeURIComponent(data.AttachFilePath+data.AttachFileName)+'&filename_ori='+ encodeURIComponent(data.AttachFileReal) +'" target="_blank"></a>' : '';
+                            return $return =  data.AttachFileName != null ? '<a class="btn-attachFile glyphicon glyphicon-file" href="{{site_url('/site/cert/apply/download/')}}?filename=' + encodeURIComponent(data.AttachFilePath + data.AttachFileName) + '&filename_ori=' + encodeURIComponent(data.AttachFileReal) + '" target="_blank"></a>' : '';
                         }},
                     {'data' : 'RegDatm'},
                     {'data' : 'ApprovalAdmin_Name'},
@@ -243,6 +243,14 @@
                     $Extend_col.visible(true);
                     $TakeKind_col.visible(false);
                     $AddContent_col.visible(false);
+
+                }else if($('#search_type').val() == '684004') {         //환승인증
+                    $OrderStatus_col.visible(true);
+                    $OrderDatm_col.visible(true);
+                    $Extend_col.visible(false);
+                    $TakeKind_col.visible(false);
+                    $AddContent_col.visible(false);
+
 
                 } else if($('#search_type').val() == '684005') {        //수험표 인증
                     $TakeKind_col.visible(true);

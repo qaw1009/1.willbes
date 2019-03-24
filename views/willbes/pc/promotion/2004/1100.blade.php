@@ -208,72 +208,21 @@
             <a onclick="go_popup()"><img src="http://file3.willbes.net/new_gosi/2018/04/EV180426_btn.png" alt="입실상담신청하기"></a><br>
             <img src="http://file3.willbes.net/new_gosi/2018/08/EV180806_9con.png" alt="문의및 접수"  usemap="#tel" border="0" />
             <map name="tel" id="tel">
-                <area shape="rect" coords="298,144,454,192" href="{{ site_url('#none') }}" target="_blank"/>
-                <area shape="rect" coords="782,145,947,196" href="{{ site_url('#none') }}" target="_blank"/>
+                <area shape="rect" coords="298,144,454,192" href="{{ site_url('/pass/promotion/index/cate/3010/code/1057') }}" target="_blank" title="부산캠퍼스"/>
+                <area shape="rect" coords="782,145,947,196" href="{{ site_url('/pass/promotion/index/cate/3010/code/1055') }}" target="_blank" title="대구캠퍼스"/>
             </map>
         </div>
         <!--wb_cts11//-->
 
         <!--팝업-->
-        <div id="popup" class="Pstyle">
-            <span class="b-close"></span>
-            <div class="popcontent">
-                <form name="eventForm" id="eventForm">
-                    <input type="hidden" name="searchEventNo"  id ="searchEventNo" value="892"/>
-                    <input type="hidden" name="GUBUN"  id ="GUBUN" value="2"/>
-                    <input type="hidden" name="SELECTED_OPTION_NO"  id ="SELECTED_OPTION_NO" value="1"/>
-                    <input type="hidden" name="EVENT_TXT"  id ="EVENT_TXT" value=""/>
-                    <h2>윌비스 관리반 상담신청</h2>
-                    <div class="inBx_con">
-                        <h3>상담구분</h3>
-                        <ul>
-                            <li><span class="tit"> - 강한학습관리반</span>
-                                <label class="label_radio" for="radio-01">
-                                    <input name="CATEGORY_INFO id="CATEGORY_INFO" value="강습반" type="radio" checked style="width:16px; height:16px;" />
-                                </label>
-                            </li>
-                            <li><span class="tit"> - 통합생활관리반</span>
-                                <label class="label_radio" for="radio-01">
-                                    <input name="CATEGORY_INFO" id="CATEGORY_INFO" value="통합 생활관리반" type="radio" style="width:16px; height:16px;"/>
-                                </label>
-                            </li>
-                            <li><span class="tit"> - 김신주 영어 합격 관리반</span>
-                                <label class="label_radio" for="radio-01">
-                                    <input name="CATEGORY_INFO" id="CATEGORY_INFO" value="영어합격관리반" type="radio" style="width:16px; height:16px;"/>
-                                </label>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="inBx_con">
-                        <h3>상담자 정보 입력</h3>
-                        <ul>
-                            <li><span class="tit"><img src="http://file3.willbes.net/new_gosi/2018/04/EV180426_pop_layer1.png" alt="성명"/></span>
-                                <input type="text" id="USER_NAME" name="USER_NAME" style="width:200px; height:30px;" value="${userInfo.USER_NM}">
-                            </li>
-                            <li><span class="tit"><img src="http://file3.willbes.net/new_gosi/2018/04/EV180426_pop_layer2.png" alt="전화번호"/></span>
-                                <input type="text" id="PHONE_NO" name="PHONE_NO" style="width:200px; height:30px;" value="">
-                            </li>
-                            <li><span class="tit"><img src="http://file3.willbes.net/new_gosi/2018/04/EV180426_pop_layer3.png" alt="상담예약"/></span>
-                                <input type="text" id="REQ_DATE" name="REQ_DATE" readonly style="width:100px; height:30px;">
-                                <select id="REQ_HOUR" name="REQ_HOUR">
-                                    <option value="">시간선택</option>
-                                    <c:forEach varStatus="status" begin="9" end="18">
-                                        <option value="${status.index}">${status.index}시</option>
-                                    </c:forEach>
-                                </select>
-                        </ul>
-                    </div>
-                    <p class="btn_lec"><a href="javascript:fn_submit();"><img src="http://file3.willbes.net/new_gosi/2018/04/EV180426_btn_go.png" alt="신청하기"/></a></p>
-                </form>
-            </div>
-        </div>
+        <div id="popup_{{ $arr_base['promotion_code'] }}"></div>
         <!--//팝업-->
 
     </div>
     <!-- End Container -->
 
 
-    <script type="text/javascript" src="http://www.willbesgosi.net/resources/libs/jquery-timepicker/jquery.ui.timepicker.js"></script>
+
     <script type="text/javascript" src="/public/js/willbes/jquery.bpopup.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
@@ -326,11 +275,31 @@
             $("#imgBannerRight2").click(function (){
                 slidesImg2.goToNextSlide();
             });
+
+            $(document).on('click', '.b-modal', function () {
+                /*$('.b-modal').on('click', function() {*/
+                /*$('.b-modal').click(function () {*/
+                console.log(1);
+            });
         });
 
-        /*신규*/
         function go_popup() {
-            return '';
+            //팝업 내용 초기화
+            $('.Pstyle').html('');
+
+            var url = "{{ site_url("/pass/promotion/popup/1123") }}";
+            var data = $('#promotionForm').serialize();
+
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','N') !!}
+            sendAjax(url,
+                data,
+                function(d){
+                    $("#popup_{{ $arr_base['promotion_code'] }}").html(d).end();
+                    $('#popup').bPopup();
+                },
+                function(ret, status){
+                    alert(ret.ret_msg);
+                }, false, 'GET', 'html');
         }
     </script>
 

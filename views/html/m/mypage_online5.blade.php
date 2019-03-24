@@ -38,8 +38,8 @@
                     <div class="w-s-date">
                         <div class="grid calendarPickerBtn">
                             <a class="pl20" href="#none" onclick="openWin('DATAPICKERPASS')">
-                                시작일 변경 : <input type="text" id="S-DATE" name="S-DATE" class="iptDate" maxlength="30" > (시작)
-                                ~ <input type="text" id="E-DATE" name="E-DATE" class="iptDate" maxlength="30"> (종료)
+                                시작일 변경 : <input type="text" id="S-DATE" name="S-DATE" class="iptDate" maxlength="30" placeholder="시작일">
+                                ~ <input type="text" id="E-DATE" name="E-DATE" class="iptDate" maxlength="30" placeholder="종료일">
                             </a>
                         </div>
                     </div>

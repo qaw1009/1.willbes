@@ -49,7 +49,7 @@
         <div class="evtCtnsBox wb_top">
             <img src="http://file3.willbes.net/new_cop/2018/10/EV181027_p1_new2.png" alt="장정훈 경찰학개론 라이브 무료 숫자특강" usemap="#new2" />
             <map name="new2" id="new2">
-                <area shape="rect" coords="286,1005,838,1111" href="javascript:doEvent()" target="_blank" alt="수강신청" />
+                <area shape="rect" coords="291,1015,829,1102" href="#none" onclick="doEvent();" target="_blank" alt="수강신청" />
             </map>
         </div>
 
@@ -60,7 +60,7 @@
         <div class="evtCtnsBox wb_04">
             <img src="http://file3.willbes.net/new_cop/2018/10/EV181027_p4_1_new.jpg"  alt="타이틀" usemap="#more1" />
             <map name="more1" id="more1">
-                <area shape="rect" coords="562,390,762,431" href="http://www.willbescop.net/movie/event.html?event_cd=Off_180907_p&topMenuType=F" alt="더많은수기보기" target="_blank" />
+                <area shape="rect" coords="562,390,762,431" href="{{ site_url('/pass/promotion/index/cate/3010/code/1170') }}" alt="더많은수기보기" target="_blank" />
             </map>
             <div class="wb_04_con2">
                 <ul id="slidesImg2">
@@ -79,14 +79,14 @@
             <iframe width="854" height="480" src="https://www.youtube.com/embed/TGdcX7j5EAI?rel=0" frameborder="0" allowfullscreen></iframe><br>
             <img src="http://file3.willbes.net/new_cop/2018/10/EV181027_p4_5.png"  alt="더보기" usemap="#more2" />
             <map name="more2" id="more2">
-                <area shape="rect" coords="558,78,812,127" href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" alt="더많은영상보기" target="_blank" />
+                <area shape="rect" coords="628,80,882,129" href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" alt="더많은영상보기" target="_blank" />
             </map>
         </div>
 
         <div class="evtCtnsBox wb_01" >
             <img src="http://file3.willbes.net/new_cop/2018/10/EV181027_p2_new1.png"  alt="경찰합격대세" usemap="#go"/>
             <map name="go" id="go">
-                <area shape="rect" coords="288,544,831,625" href="javascript:doEvent()" target="_blank" alt="장정훈경찰학개론숫자특강무료신청GO" />
+                <area shape="rect" coords="230,543,863,624" href="#none" onclick="doEvent();" target="_blank" alt="장정훈경찰학개론숫자특강무료신청GO" />
             </map>
         </div>
 
@@ -118,11 +118,9 @@
 
     <script type="text/javascript">
         function doEvent() {
-            if("<c:out value='${userInfo.USER_ID}' />" == ""){
-                alert("로그인을 해주세요.");
-                return;
-            }
-            var url = "{{ site_url('/promotion/index/cate/3001/code/1034_popup') }}" ;
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.', '') !!}
+
+            var url = "{{ site_url('/promotion/popup/' . $arr_base['promotion_code']) }}" ;
             window.open(url,'event', 'scrollbars=no,toolbar=no,resizable=yes,width=590,height=485,top=50,left=100');
         }
     </script>

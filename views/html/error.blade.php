@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Database Error</title>
+<title>404 Page Not Found</title>
 <style type="text/css">
 
 ::selection { background-color: #E13300; color: white; }
@@ -44,15 +44,16 @@ body {
 </head>
 <body>
 	<div id="container">
-		<img src="/public/img/error_500.png" alt="500 error">
-		<div>
-			고객센터 <strong>1544-5006</strong><Br>
-			<span>평일 09:00 ~ 18:00 / 주말/공휴일휴무</span>
-			<p>
-                <a href="/">메인으로 &gt;</a>
-                <a href="javascript:;" onclick="history.back()">이전으로 &gt;</a>
-			</p>
-        </div> 
+        <?php #요기에 작업하면 됩니다. ?>
+        <img src="../../public/img/error_404.png" alt="404 error">   
+        <div>
+        고객센터 <strong>1544-5006</strong><Br>
+        <span>평일 09:00 ~ 18:00 / 토요일 09:00 ~ 13:00</span>
+        <p>
+        	<a href="#none">메인으로 &gt;</a>
+            <a href="#none">이전으로 &gt;</a>
+        </p>
+        </div>     
 	</div>
 </body>
 </html>

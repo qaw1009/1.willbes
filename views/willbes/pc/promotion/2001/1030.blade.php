@@ -116,7 +116,7 @@
                 <li><a href="#online">서비스</a></li>
                 <li><a href="{{ site_url('/pass/promotion/index/code/1128') }}" target="_blank">아이언짐</a></li>
                 <li><a href="#buy">파격할인</a></li>
-                <li><a href="{{ site_url('/professor/show/cate/3001/prof-idx/50575/?subject_idx=1043&subject_name=%EC%B2%B4%EB%A0%A5') }}" target="_blank">질답게시판</a></li>
+                <li><a href="{{ site_url('/professor/show/cate/3001/prof-idx/50575/?subject_idx=1043&subject_name=%EC%B2%B4%EB%A0%A5&tab=qna') }}" target="_blank">질답게시판</a></li>
             </ul>
         </div>
 
@@ -411,7 +411,7 @@
         <div class="evtCtnsBox">
             <img src="http://file3.willbes.net/new_cop/2019/01/EV190102P_05.jpg" alt="" usemap="#Mapboard" border="0"/>
             <map name="Mapboard" id="Mapboard">
-                <area shape="rect" coords="340,544,870,668" href="{{ site_url('/professor/show/cate/3001/prof-idx/50575/?subject_idx=1043&subject_name=%EC%B2%B4%EB%A0%A5') }}" target="_blank" alt="질답게시판 바로가기" />
+                <area shape="rect" coords="340,544,870,668" href="{{ site_url('/professor/show/cate/3001/prof-idx/50575/?subject_idx=1043&subject_name=%EC%B2%B4%EB%A0%A5&tab=qna') }}" target="_blank" alt="질답게시판 바로가기" />
             </map>
         </div>
 

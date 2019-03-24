@@ -4,17 +4,18 @@
     <!-- Container -->
     <div id="Container" class="Container cop_acad NSK c_both">
         @include('willbes.pc.layouts.partial.site_menu')
-        <div class="Section Bnr">
+
+        <div class="Section Bnr mt40">
             <div class="widthAuto">
                 <div class="willbes-Bnr">
                     <ul>
-                        <li><a href="{{ site_url('/promotion/index/cate/3001/code/1022') }}"><img src="{{ img_url('cop_acad/visual/visual_secA01.jpg') }}" alt="적중은역시신광은경찰팀"></a></li>
+                        <li><a href="/promotion/index/cate/3001/code/1019" target="_blank"><img src="{{ img_url('cop_acad/visual/visual_secA01.jpg') }}" title="적중은역시신광은경찰팀"></a></li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <div class="Section MainVisual MainVisual_acad mb50">
+        <div class="Section MainVisual MainVisual_acad mb50 mt20">
             <div class="widthAuto">
                 <ul>
                     @for($i=1; $i<=3; $i++)
@@ -143,40 +144,63 @@
             </div>
         </div>
 
-        <div class="Section Section2 mb50">
-            <div class="widthAuto p_re">
-                <img src="{{ img_url('cop_acad/visual/visual_curri_bg.jpg') }}" alt="신광은경찰 합격커리큘럼">
-                <div class="passCurriWrap">
-                    <ul>
-                        <li class="curriStep1">
-                            <img src="{{ img_url('cop_acad/visual/visual_curriM01.png') }}" alt="집중 연강식 진행" class="out">
-                            <img src="{{ img_url('cop_acad/visual/visual_curriM01_on.png') }}" alt="집중 연강식 진행" class="over">
-                        </li>
-                        <li class="curriStep2">
-                            <img src="{{ img_url('cop_acad/visual/visual_curriM02.png') }}" alt="프리미엄 심화과정" class="out">
-                            <img src="{{ img_url('cop_acad/visual/visual_curriM02_on.png') }}" alt="프리미엄 심화과정" class="over">
-                        </li>
-                        <li class="curriStep3">
-                            <img src="{{ img_url('cop_acad/visual/visual_curriM03.png') }}" alt="핵심요약/진도별 정리" class="out">
-                            <img src="{{ img_url('cop_acad/visual/visual_curriM03_on.png') }}" alt="핵심요약/진도별 정리" class="over">
-                        </li>
-                        <li class="curriStep4">
-                            <img src="{{ img_url('cop_acad/visual/visual_curriM04.png') }}" alt="집중 약점 보안" class="out">
-                            <img src="{{ img_url('cop_acad/visual/visual_curriM04_on.png') }}" alt="집중 약점 보안" class="over">
-                        </li>
-                        <li class="curriStep5">
-                            <img src="{{ img_url('cop_acad/visual/visual_curriM05.png') }}" alt="실전력 극대화" class="out">
-                            <img src="{{ img_url('cop_acad/visual/visual_curriM05_on.png') }}" alt="실전력 극대화" class="over">
-                        </li>
-                        <li class="curriStep6">
-                            <img src="{{ img_url('cop_acad/visual/visual_curriM06.png') }}" alt="집단+개별면접대비" class="out">
-                            <img src="{{ img_url('cop_acad/visual/visual_curriM06_on.png') }}" alt="집단+개별면접대비" class="over">
-                        </li>
-                    </ul>
+        <div class="Section Section2 pb110">     
+            <div class="widthAuto tx-center pt80 pb80">    
+                <img src="{{ img_url('cop_acad/visual/visual_curri_tit.png') }}" title="최적의 합격 커리큘럼">
+            </div> 
+            <div class="widthAuto CurriStepBox">
+                <div class="CurriView"><a href="{{ site_url('/promotion/index/cate/3001/code/1126') }}" target="_blank">커리큘럼 자세히보기 &gt;</a></div>
+                <ul class="CurriStep">
+                    <li class="active">
+                        <div class="curriculumBox">
+                            <span><img src="{{ img_url('cop/icon_bubble.gif') }}" title="2019대비 진행중"> </span>
+                            <div class="Tit">기본과정</div>
+                            <div class="subTit">집중연강식 진행</div>
+                            <ul class="info">
+                                <li>기초개념 정리</li>
+                                <li>지속적인 복습테스트</li>
+                                <li>초시생 필수 수강과정</li>
+                            </ul>
+                        </div>
+                        <a href="#none" onclick="fnPlayerSample('132199', '1019097', 'HD');">OT보기 &gt;</a>
+                    </li>
+                    <li>&nbsp;</li>
+                    <li>
+                        <div class="curriculumBox">
+                            <div class="Tit">심화과정</div>
+                            <div class="subTit">프리미엄 심화과정</div>
+                            <ul class="info">
+                                <li>실력업그레이드</li>
+                                <li>심화 l 이론/기출학습</li>
+                                <li>고득점 합격발판 마련</li>
+                            </ul>
+                        </div>
+                        <a href="#none" onclick="fnPlayerSample('132216', '1019296', 'HD');">OT보기 &gt;</a>
+                    </li>
+                    <li>&nbsp;</li>
+                    <li>
+                        <div class="curriculumBox">
+                            <div class="Tit">문제풀이 과정</div>
+                            <div class="subTit">(실전 1+2+3 단계)</div>
+                            <ul class="info">
+                                <li>1단계 진도별 핵심정리</li>
+                                <li>2단계 전범위 동형모의고사</li>
+                                <li>3단계 FINAL 실전 모의고사</li>
+                            </ul>
+                        </div>
+                        <a href="#none" onclick="fnPlayerSample('131811', '1014607', 'HD');">OT보기 &gt;</a>
+                    </li>
+                </ul>
+                <div class="curriculumTxt">
+                    <span class="cop-color">모든 강의</span>를 평생 0원 PASS 하나로 <span class="cop-color">평생 수강</span>하실 수 있습니다.
+                    <span class="btn"><a href="{{ site_url('/promotion/index/cate/3001/code/1009') }}" target="_blank">평생 0원 PASS 구매하기</a></span>
                 </div>
             </div>
+            <!-- CurriStepBox //--> 
+            <div class="widthAuto tx-center pt80">    
+                <img src="{{ img_url('cop_acad/visual/visual_curri_table.png') }}" title="최적의 합격 커리큘럼 연간 테이블">
+            </div>        
         </div>
-        <!-- 합격커리큘럼 //-->
 
         {{-- on air include --}}
         @include('willbes.pc.site.main_partial.on_air')

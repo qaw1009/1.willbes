@@ -79,7 +79,8 @@ class SupportQna extends BaseSupport
                 'b.IsUse' => 'Y',
                 'b.TypeCcd' => $s_consult_type,
                 'b.ProfIdx' => $prof_idx,
-                'b.SubjectIdx' => $subject_idx
+                'b.SubjectIdx' => $subject_idx,
+                'b.CampusCcd' => $s_campus
             ],
             'ORG' => [
                 'LKB' => [
@@ -127,7 +128,7 @@ class SupportQna extends BaseSupport
         $column .= ', b.AttachData,DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
         $column .= ', b.IsPublic, b.CampusCcd_Name, b.TypeCcd_Name';
         $column .= ', b.SiteName, b.ReplyStatusCcd, b.ReplyStatusCcd_Name';
-        $column .= ', IF(b.RegType=1, \'\', RegMemName) AS RegName';
+        $column .= ', IF(b.RegType=1, \'\', m.MemName) AS RegName';
         $column .= ', IF(b.IsCampus=\'Y\',\'offline\',\'online\') AS CampusType';
         $column .= ', IF(b.IsCampus=\'Y\',\'학원\',\'온라인\') AS CampusType_Name, SiteGroupName';
         $order_by = ['b.IsBest'=>'Desc','b.BoardIdx'=>'Desc'];
@@ -137,10 +138,10 @@ class SupportQna extends BaseSupport
         } else {
             $paging_count = $this->_paging_count_m;
         }
-        $total_rows = $this->supportBoardTwoWayFModel->listBoard(true, $arr_condition,$s_cate_code);
+        $total_rows = $this->supportBoardTwoWayFModel->listBoardForQna(true, $arr_condition,$s_cate_code);
         $paging = $this->pagination($this->_default_path.'/index/?'.$get_page_params,$total_rows,$this->_paging_limit,$paging_count,true);
         if ($total_rows > 0) {
-            $list = $this->supportBoardTwoWayFModel->listBoard(false,$arr_condition,$s_cate_code,$column,$paging['limit'],$paging['offset'],$order_by);
+            $list = $this->supportBoardTwoWayFModel->listBoardForQna(false,$arr_condition,$s_cate_code,$column,$paging['limit'],$paging['offset'],$order_by);
             foreach ($list as $idx => $row) {
                 $list[$idx]['AttachData'] = json_decode($row['AttachData'],true);       //첨부파일
             }

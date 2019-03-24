@@ -13,7 +13,7 @@ class EventFModel extends WB_Model
         'event_read_log' => 'lms_event_read_log',
         'board' => 'lms_board',
         'board_r_category' => 'lms_board_r_category',
-        'vw_board' => 'vw_board',
+        'vw_board_2' => 'vw_board_2',
         'sys_category' => 'lms_sys_category',
         'site' => 'lms_site',
         'site_group' => 'lms_site_group',
@@ -366,7 +366,7 @@ class EventFModel extends WB_Model
             SELECT a.*
             FROM (
                 SELECT a.BoardIdx AS Idx, '' AS MemIdx, '공지' AS MemName, a.Title AS Content, a.RegDatm, DATE_FORMAT(a.RegDatm, '%Y-%m-%d') AS RegDay, '1' AS RegType
-                FROM {$this->_table['board']} AS a
+                FROM {$this->_table['vw_board_2']} AS a
                 INNER JOIN {$this->_table['board_r_category']} AS b ON a.BoardIdx = b.BoardIdx AND b.IsStatus = 'Y'
                 {$where_notice}
                 ORDER BY a.BoardIdx DESC
@@ -422,7 +422,7 @@ class EventFModel extends WB_Model
                 'MemName' => $this->session->userdata('mem_name'),
                 'CommentType' => 'U',
                 'Comment' => $requestData['event_comment'],
-                'EmoticonNo' => element('sns_icon', $requestData),
+                'EmoticonNo' => element('sns_icon', $requestData, ''),
                 'RegIp' => $this->input->ip_address()
             ];
 
@@ -484,9 +484,23 @@ class EventFModel extends WB_Model
                 'IsUse' => 'Y'
             ],
         ];
-        $result = $this->_conn->getListResult($this->_table['vw_board'], $column, $arr_condition, '1', null);
+        $result = $this->_conn->getListResult($this->_table['vw_board_2'], $column, $arr_condition, '1', null);
         //echo $this->_conn->last_query();exit;
         return element('0', $result, []);
+    }
+
+    public function getEventForNotice($event_idx, $column='*')
+    {
+        $arr_condition = [
+            'EQ' => [
+                'BmIdx' => $this->_bm_idx,
+                'ElIdx' => $event_idx,
+                'IsUse' => 'Y'
+            ],
+        ];
+        $result = $this->_conn->getListResult($this->_table['board'], $column, $arr_condition, null, null);
+        //echo $this->_conn->last_query();exit;
+        return $result;
     }
 
     /**

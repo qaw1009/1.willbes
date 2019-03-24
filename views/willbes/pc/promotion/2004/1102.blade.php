@@ -132,7 +132,7 @@
             <p><img src="http://file.willbes.net/new_image/2016/08/EV160812_p6_1.png" alt="혜택" /></p>
             <p id="lec_send"><img src="http://file.willbes.net/new_image/2016/08/EV160812_p6_3_1.png" alt="수강신청" usemap="#map2" />
                 <map name="map2" id="lecture">
-                    <area shape="rect" coords="273,61,710,142" href="{{ site_url('#none') }}" onfocus="this.blur();"/>
+                    <area shape="rect" coords="273,61,710,142" href="{{ site_url('/pass/professor/show/prof-idx/50274/?cate_code=3043&subject_idx=1254&subject_name=%EC%98%81%EC%96%B4&tab=open_lecture') }}" onfocus="this.blur();"/>
                 </map>
             </p>
         </div>
@@ -140,7 +140,7 @@
     </div>
     <!-- End Container -->
 
-
+    <script type="text/javascript" src="/public/js/willbes/jquery.bpopup.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             var slidesImg3 = $("#slidesImg3").bxSlider({
@@ -166,18 +166,11 @@
             $("#imgBannerRight3").click(function (){
                 slidesImg3.goToNextSlide();
             });
+            $(document).on('click', '.b-modal', function () {
+                /*$('.b-modal').on('click', function() {*/
+                /*$('.b-modal').click(function () {*/
+                console.log(1);
+            });
         });
-    </script>
-
-    <script src="/public/js/willbes/jquery.nav.js"></script>
-    <script>
-        $(function(e){
-            var targetOffset= $("#evtContainer").offset().top;
-            $('html, body').animate({scrollTop: targetOffset}, 1000);
-            /*e.preventDefault(); */
-        });
-
-
-
     </script>
 @stop

@@ -40,45 +40,395 @@
 		<ul class="tabs">
 			<li><a href="#tab1">일반공채</a></li>
 			<li><a href="#tab2">경행경채</a></li>
+<!-- 			<li><a href="#tab3">101여단</a></li> -->
 		</ul>
         
 		<div id="tab1" class="tabcts">
-			<c:forEach items="${type1}" var="data"  varStatus="status">
+			
 			<div class="areaList">
-				<div class="area">${data.GOSI_AREA_NM}</div>
+				<div class="area">서울</div>
 				<div class="graph">							
-                    <div class="man"><span style="width:${data.M_PR/3}%"></span></div>
-					<div class="woman"><span style="width:${data.W_PR/3}%"></span></div>
+                    <div class="man"><span style="width:102%"></span></div>
+					<div class="woman"><span style="width:32%"></span></div>
 				</div>
 				<div class="number">
-                    <span class="man">남</span> ${data.CNT_M}명<br> 
-                    <span class="woman">여</span> ${data.CNT_W}명
+                    <span class="man">남</span> 305명<br> 
+                    <span class="woman">여</span> 95명
                 </div>
 			</div>
-			</c:forEach>
+			
+			<div class="areaList">
+				<div class="area">부산</div>
+				<div class="graph">							
+                    <div class="man"><span style="width:5%"></span></div>
+					<div class="woman"><span style="width:2%"></span></div>
+				</div>
+				<div class="number">
+                    <span class="man">남</span> 16명<br> 
+                    <span class="woman">여</span> 7명
+                </div>
+			</div>
+			
+			<div class="areaList">
+				<div class="area">대구</div>
+				<div class="graph">							
+                    <div class="man"><span style="width:3%"></span></div>
+					<div class="woman"><span style="width:1%"></span></div>
+				</div>
+				<div class="number">
+                    <span class="man">남</span> 10명<br> 
+                    <span class="woman">여</span> 2명
+                </div>
+			</div>
+			
+			<div class="areaList">
+				<div class="area">인천</div>
+				<div class="graph">							
+                    <div class="man"><span style="width:22%"></span></div>
+					<div class="woman"><span style="width:4%"></span></div>
+				</div>
+				<div class="number">
+                    <span class="man">남</span> 65명<br> 
+                    <span class="woman">여</span> 13명
+                </div>
+			</div>
+			
+			<div class="areaList">
+				<div class="area">광주</div>
+				<div class="graph">							
+                    <div class="man"><span style="width:6%"></span></div>
+					<div class="woman"><span style="width:1%"></span></div>
+				</div>
+				<div class="number">
+                    <span class="man">남</span> 18명<br> 
+                    <span class="woman">여</span> 4명
+                </div>
+			</div>
+			
+			<div class="areaList">
+				<div class="area">대전</div>
+				<div class="graph">							
+                    <div class="man"><span style="width:11%"></span></div>
+					<div class="woman"><span style="width:1%"></span></div>
+				</div>
+				<div class="number">
+                    <span class="man">남</span> 34명<br> 
+                    <span class="woman">여</span> 2명
+                </div>
+			</div>
+			
+			<div class="areaList">
+				<div class="area">울산</div>
+				<div class="graph">							
+                    <div class="man"><span style="width:1%"></span></div>
+					<div class="woman"><span style="width:0%"></span></div>
+				</div>
+				<div class="number">
+                    <span class="man">남</span> 2명<br> 
+                    <span class="woman">여</span> 0명
+                </div>
+			</div>
+			
+			<div class="areaList">
+				<div class="area">경기남부</div>
+				<div class="graph">							
+                    <div class="man"><span style="width:90%"></span></div>
+					<div class="woman"><span style="width:18%"></span></div>
+				</div>
+				<div class="number">
+                    <span class="man">남</span> 270명<br> 
+                    <span class="woman">여</span> 53명
+                </div>
+			</div>
+			
+			<div class="areaList">
+				<div class="area">경기북부</div>
+				<div class="graph">							
+                    <div class="man"><span style="width:26%"></span></div>
+					<div class="woman"><span style="width:16%"></span></div>
+				</div>
+				<div class="number">
+                    <span class="man">남</span> 79명<br> 
+                    <span class="woman">여</span> 48명
+                </div>
+			</div>
+			
+			<div class="areaList">
+				<div class="area">강원</div>
+				<div class="graph">							
+                    <div class="man"><span style="width:4%"></span></div>
+					<div class="woman"><span style="width:6%"></span></div>
+				</div>
+				<div class="number">
+                    <span class="man">남</span> 11명<br> 
+                    <span class="woman">여</span> 17명
+                </div>
+			</div>
+			
+			<div class="areaList">
+				<div class="area">충북</div>
+				<div class="graph">							
+                    <div class="man"><span style="width:4%"></span></div>
+					<div class="woman"><span style="width:2%"></span></div>
+				</div>
+				<div class="number">
+                    <span class="man">남</span> 12명<br> 
+                    <span class="woman">여</span> 5명
+                </div>
+			</div>
+			
+			<div class="areaList">
+				<div class="area">충남</div>
+				<div class="graph">							
+                    <div class="man"><span style="width:11%"></span></div>
+					<div class="woman"><span style="width:9%"></span></div>
+				</div>
+				<div class="number">
+                    <span class="man">남</span> 34명<br> 
+                    <span class="woman">여</span> 26명
+                </div>
+			</div>
+			
+			<div class="areaList">
+				<div class="area">전북</div>
+				<div class="graph">							
+                    <div class="man"><span style="width:6%"></span></div>
+					<div class="woman"><span style="width:4%"></span></div>
+				</div>
+				<div class="number">
+                    <span class="man">남</span> 18명<br> 
+                    <span class="woman">여</span> 12명
+                </div>
+			</div>
+			
+			<div class="areaList">
+				<div class="area">전남</div>
+				<div class="graph">							
+                    <div class="man"><span style="width:8%"></span></div>
+					<div class="woman"><span style="width:3%"></span></div>
+				</div>
+				<div class="number">
+                    <span class="man">남</span> 23명<br> 
+                    <span class="woman">여</span> 9명
+                </div>
+			</div>
+			
+			<div class="areaList">
+				<div class="area">경북</div>
+				<div class="graph">							
+                    <div class="man"><span style="width:2%"></span></div>
+					<div class="woman"><span style="width:3%"></span></div>
+				</div>
+				<div class="number">
+                    <span class="man">남</span> 5명<br> 
+                    <span class="woman">여</span> 8명
+                </div>
+			</div>
+			
+			<div class="areaList">
+				<div class="area">경남</div>
+				<div class="graph">							
+                    <div class="man"><span style="width:6%"></span></div>
+					<div class="woman"><span style="width:2%"></span></div>
+				</div>
+				<div class="number">
+                    <span class="man">남</span> 18명<br> 
+                    <span class="woman">여</span> 5명
+                </div>
+			</div>
+			
+			<div class="areaList">
+				<div class="area">제주</div>
+				<div class="graph">							
+                    <div class="man"><span style="width:6%"></span></div>
+					<div class="woman"><span style="width:1%"></span></div>
+				</div>
+				<div class="number">
+                    <span class="man">남</span> 18명<br> 
+                    <span class="woman">여</span> 2명
+                </div>
+			</div>
+			
 		</div><!--tab1//-->
         
         <div id="tab2" class="tabcts">
-			<c:forEach items="${type3}" var="data"  varStatus="status">
+			
 			<div class="areaList">
-				<div class="area">${data.GOSI_AREA_NM}</div>
+				<div class="area">서울</div>
 				<div class="graph">							
-                    <div class="man"><span style="width:${data.PR/3}%"></span></div>
+                    <div class="man"><span style="width:11%"></span></div>
 				</div>
 				<div class="number">
-                    <span class="man"></span> ${data.CNT}명<br> 
+                    <span class="man"></span> 32명<br> 
                 </div>
 			</div>
-			</c:forEach>
+			
+			<div class="areaList">
+				<div class="area">부산</div>
+				<div class="graph">							
+                    <div class="man"><span style="width:0%"></span></div>
+				</div>
+				<div class="number">
+                    <span class="man"></span> 0명<br> 
+                </div>
+			</div>
+			
+			<div class="areaList">
+				<div class="area">대구</div>
+				<div class="graph">							
+                    <div class="man"><span style="width:0%"></span></div>
+				</div>
+				<div class="number">
+                    <span class="man"></span> 1명<br> 
+                </div>
+			</div>
+			
+			<div class="areaList">
+				<div class="area">인천</div>
+				<div class="graph">							
+                    <div class="man"><span style="width:4%"></span></div>
+				</div>
+				<div class="number">
+                    <span class="man"></span> 13명<br> 
+                </div>
+			</div>
+			
+			<div class="areaList">
+				<div class="area">광주</div>
+				<div class="graph">							
+                    <div class="man"><span style="width:3%"></span></div>
+				</div>
+				<div class="number">
+                    <span class="man"></span> 8명<br> 
+                </div>
+			</div>
+			
+			<div class="areaList">
+				<div class="area">대전</div>
+				<div class="graph">							
+                    <div class="man"><span style="width:1%"></span></div>
+				</div>
+				<div class="number">
+                    <span class="man"></span> 3명<br> 
+                </div>
+			</div>
+			
+			<div class="areaList">
+				<div class="area">울산</div>
+				<div class="graph">							
+                    <div class="man"><span style="width:1%"></span></div>
+				</div>
+				<div class="number">
+                    <span class="man"></span> 2명<br> 
+                </div>
+			</div>
+			
+			<div class="areaList">
+				<div class="area">경기남부</div>
+				<div class="graph">							
+                    <div class="man"><span style="width:13%"></span></div>
+				</div>
+				<div class="number">
+                    <span class="man"></span> 39명<br> 
+                </div>
+			</div>
+			
+			<div class="areaList">
+				<div class="area">경기북부</div>
+				<div class="graph">							
+                    <div class="man"><span style="width:2%"></span></div>
+				</div>
+				<div class="number">
+                    <span class="man"></span> 6명<br> 
+                </div>
+			</div>
+			
+			<div class="areaList">
+				<div class="area">강원</div>
+				<div class="graph">							
+                    <div class="man"><span style="width:1%"></span></div>
+				</div>
+				<div class="number">
+                    <span class="man"></span> 3명<br> 
+                </div>
+			</div>
+			
+			<div class="areaList">
+				<div class="area">충북</div>
+				<div class="graph">							
+                    <div class="man"><span style="width:1%"></span></div>
+				</div>
+				<div class="number">
+                    <span class="man"></span> 3명<br> 
+                </div>
+			</div>
+			
+			<div class="areaList">
+				<div class="area">충남</div>
+				<div class="graph">							
+                    <div class="man"><span style="width:2%"></span></div>
+				</div>
+				<div class="number">
+                    <span class="man"></span> 6명<br> 
+                </div>
+			</div>
+			
+			<div class="areaList">
+				<div class="area">전북</div>
+				<div class="graph">							
+                    <div class="man"><span style="width:0%"></span></div>
+				</div>
+				<div class="number">
+                    <span class="man"></span> 0명<br> 
+                </div>
+			</div>
+			
+			<div class="areaList">
+				<div class="area">전남</div>
+				<div class="graph">							
+                    <div class="man"><span style="width:0%"></span></div>
+				</div>
+				<div class="number">
+                    <span class="man"></span> 0명<br> 
+                </div>
+			</div>
+			
+			<div class="areaList">
+				<div class="area">경북</div>
+				<div class="graph">							
+                    <div class="man"><span style="width:0%"></span></div>
+				</div>
+				<div class="number">
+                    <span class="man"></span> 1명<br> 
+                </div>
+			</div>
+			
+			<div class="areaList">
+				<div class="area">경남</div>
+				<div class="graph">							
+                    <div class="man"><span style="width:0%"></span></div>
+				</div>
+				<div class="number">
+                    <span class="man"></span> 1명<br> 
+                </div>
+			</div>
+			
+			<div class="areaList">
+				<div class="area">제주</div>
+				<div class="graph">							
+                    <div class="man"><span style="width:1%"></span></div>
+				</div>
+				<div class="number">
+                    <span class="man"></span> 2명<br> 
+                </div>
+			</div>			
 		</div><!--tab2//-->       
 
                 
         <div class="btnSet">
         	<a href="javascript:window.close()" class="btnSt1">닫기</a>        	
         </div>
-        <!--미참여 상태//-->      
-        
-    </div>
+
 </div>
 <!--willbes-Layer-PassBox//-->
 

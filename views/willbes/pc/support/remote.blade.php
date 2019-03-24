@@ -54,7 +54,7 @@
                                                 <div class="w-tit tx-black">원격지원 전화상담</div>
                                                 <div class="w-txt">
                                                     고객센터<br/>
-                                                    (1544-6219)로<br/>
+                                                    (1544-5006)로<br/>
                                                     전화주세요.
                                                 </div>
                                             </li>
@@ -71,9 +71,9 @@
                                             <li>
                                                 <div class="w-tit tx-black">문제진단 및 해결</div>
                                                 <div class="w-txt">
-                                                    원격 진단을 받으실<br/>
-                                                    PC 사양을<br/>
-                                                    확인해주세요.
+                                                    상담원이 문제를 <br/>
+                                                    파악하고 빠르게 <br/>
+                                                    해결해드립니다.
                                                 </div>
                                             </li>
                                         </ul>

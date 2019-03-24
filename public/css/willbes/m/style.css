@@ -1317,6 +1317,7 @@ body.memBody #Footer {
 }
 .lecTable .w-s-date input[type="text"] {
     width: 15%; 
+    min-width: 80px;
     height: 30px;
     padding: 0 0.6rem;
 }

@@ -109,9 +109,9 @@
                 <li class="w50"><a href="{{ site_url('/home/html/event_onCopZeroPass') }}" target="_blank">평생 0원 PASS <span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onCopPromotionPassPop') }}" target="_blank">PASS 인증 팝업 size 740x700 <span>*</span></a></li>                        
                 <li class="w50"><a href="{{ site_url('/home/html/event_onCopSampleQuestions') }}" target="_blank">기출문제 이모티콘 댓글 <span>*</span></a></li>
-                <li><a href="{{ site_url('/home/html/event_onCop181228_p') }}" target="_blank">최종합격예측서비스 <span>*</span></a></li>
-                <li><a href="{{ site_url('/home/html/event_onCop181228_p_pop1') }}" target="_blank">최종합격예측서비스 나의 위치파악 팝업 size 500x850 <span>*</span></a></li>
-                <li><a href="{{ site_url('/home/html/event_onCop181228_p_pop2') }}" target="_blank">최종합격예측서비스 실시간 참여인원 팝업 size 500x850 <span>*</span></a></li>
+                <li><a href="{{ site_url('/home/html/event_onCop_181228_p') }}" target="_blank">최종합격예측서비스 <span>*</span></a></li>
+                <li><a href="{{ site_url('/home/html/event_onCop_181228_p_pop1') }}" target="_blank">최종합격예측서비스 나의 위치파악 팝업 size 500x850 <span>*</span></a></li>
+                <li><a href="{{ site_url('/home/html/event_onCop_181228_p_pop2') }}" target="_blank">최종합격예측서비스 실시간 참여인원 팝업 size 500x850 <span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onCop_171129_p') }}" target="_blank">0원 입문 특강 </a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onCop_181226_p') }}" target="_blank">윌비스 웰컴팩</a></li>
                 <li><a href="{{ site_url('/home/html/event_onMouPop') }}" target="_blank">온라인 교육 콘텐츠 제공 업무제공 체결(MOU) 팝업_size 850x700 <span>*</span></a></li> 
@@ -151,6 +151,7 @@
                 
                 
                 <li><p>경찰 학원 ▼</p></li> 
+                <li class="w50"><a href="{{ site_url('/home/html/1170') }}" target="_blank">필기고득점자 인터뷰</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_offCop_190211_p') }}" target="_blank">19년 1차대비 2월 전국모의고사</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_offCop_basic') }}" target="_blank">2019 집중연강식 기본이론</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_offCop_superpass') }}" target="_blank">2019 슈퍼패스</a></li>
@@ -175,7 +176,6 @@
             <li><p>공무원 온라인 ▼</p></li>
                 <li>3월 19일 이후 추가분 ▼</li>
                 <li class="w50"><a href="{{ site_url('/home/html/1135') }}" target="_blank">윌비스 전국모의고사</a></li>
-                <li>&nbsp;</li>
                 <li>&nbsp;</li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiFirePass') }}" target="_blank">소방 PASS <span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_onGosiNinePass') }}" target="_blank">9급 PASS <span>*</span></a></li>
@@ -329,6 +329,7 @@
                 <li class="c_both"></li>
                 <li><a href="{{ site_url('/home/html/profRecruit') }}" target="_blank">강사모집</a></li>
                 <li class="c_both"></li>
+                <li><a href="{{ site_url('/home/html/error') }}" target="_blank">error 페이지</a></li>
                 <li><a href="{{ site_url('/home/html/test_popup') }}" target="_blank">*** test popup page 이동</a></li>
                 <li><a href="{{ site_url('/home/html/test_popup2') }}" target="_blank">*** test 인증하기 page 이동</a></li>
                 <li><a href="{{ site_url('/home/html/test_popup3') }}" target="_blank">*** 전국모의고사 결제완료 popup page 이동</a></li>

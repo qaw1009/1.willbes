@@ -51,10 +51,10 @@
                             <table cellspacing="0" cellpadding="0" class="listTable cartTable upper-gray bdt-gray tx-gray">
                                 <colgroup>
                                     <col style="width: 60px;">
-                                    <col style="width: 600px;">
+                                    <col>
+                                    <col style="width: 80px;">
+                                    <col style="width: 80px;">
                                     <col style="width: 90px;">
-                                    <col style="width: 90px;">
-                                    <col style="width: 100px;">
                                 </colgroup>
                                 <thead>
                                 <tr>

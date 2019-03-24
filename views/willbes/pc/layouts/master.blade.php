@@ -18,5 +18,8 @@
 
     <!-- scripts -->
     @include('willbes.pc.layouts.footer_script')
+
+    <!-- post content -->
+    @yield('post_content')
 </body>
 </html>

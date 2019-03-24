@@ -5,7 +5,7 @@ var html = '', link_url = '#none';
     html = '<div class="{{ $disp['DispRollingTypeName'] }} {{ $css_class }}">';
     html += '    <div id="bn_slider_{{ $disp['BdIdx'] }}">';
     @foreach($data as $idx => $row)
-        @if(empty($row['LinkUrl']) === false)
+        @if(empty($row['LinkUrl']) === false && $data[0]['LinkUrl'] != '#')
             link_url = '{{ front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . $row['LinkUrlType'], 'www') }}';
         @endif
         html += '   <div><a href="' + link_url + '" target="_{{ $row['LinkType'] }}"><img src="{{ $row['BannerFullPath'] . $row['BannerImgName'] }}" title="{{ $row['BannerName'] }}"/></a></div>';
@@ -29,7 +29,7 @@ var html = '', link_url = '#none';
         html = '<a href="#none" onclick="event_layer_popup(\'' + link_url + '\');" class="{{ $css_class }}"><img src="{{ $data[0]['BannerFullPath'] . $data[0]['BannerImgName'] }}" title="{{ $data[0]['BannerName'] }}"/></a>';
         html += '<div id="APPLYPASS" class="willbes-Layer-Black"></div>';
     @else
-        @if(empty($data[0]['LinkUrl']) === false)
+        @if(empty($data[0]['LinkUrl']) === false && $data[0]['LinkUrl'] != '#')
             link_url = '{{ front_app_url('/banner/click?banner_idx=' . $data[0]['BIdx'] . '&return_url=' . urlencode($data[0]['LinkUrl']) . '&link_url_type=' . $data[0]['LinkUrlType'], 'www') }}';
         @endif
 

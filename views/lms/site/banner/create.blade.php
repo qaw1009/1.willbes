@@ -122,6 +122,7 @@
                         <div class="mt-10">• 내부링크 : 프로토콜 (http, https) <span class="red bold">제외하고, 실제 서비스 도메인을 포함하여 입력 (예: police.willbes.net/home/index/cate/3001)</span></div>
                         <div class="mt-5">• 외부링크 : 프로토콜 (http, https) <span class="red bold">입력 필수 (예: http://www.hanlimgosi.co.kr)</span></div>
                         <div class="mt-5">• 레이어팝업 : <span class="red bold">실제 서비스 도메인만 입력 (예 : ploice.willbes.net)</span></div>
+                        <div class="mt-5">• 연결링크가 없을 경우 : <span class="red bold">#</span> 입력</div>
                     </div>
                 </div>
 

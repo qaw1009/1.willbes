@@ -88,7 +88,6 @@ $(function() {
         centeredSlides: true,
         autoplay: {
             delay: 3000,
-            touchReleaseOnEdges: true,
             disableOnInteraction: false
         },
         loop: true,

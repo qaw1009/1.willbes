@@ -52,41 +52,62 @@
                                 <a class="willbes-Acad-Tit {{ $active_class }}" href="{{ $menu_row['MenuUrl'] }}" target="_{{ $menu_row['UrlTarget'] }}">{{ $menu_row['MenuName'] }}</a>                                
                                 <dl class="sns-Btn">
                                     @if($__cfg['SiteGroupCode'] === '1001')
-                                    <!--경찰-->                                    
-                                    <dt>
-                                        <a href="https://www.facebook.com/willbescop" target="_blank">
-                                            <img src="{{ img_url('gnb/icon_facebook.png') }}" alt="페이스북">
-                                        </a>
-                                    </dt>
-                                    <dt>
-                                        <a href="https://www.instagram.com/willbescop" target="_blank">
-                                            <img src="{{ img_url('gnb/icon_Instagram.png') }}" alt="인스타그램">
-                                        </a>
-                                    </dt>
+                                    <!--경찰--> 
                                     <dt>
                                         <a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank">
-                                            <img src="{{ img_url('gnb/icon_youtube.png') }}" alt="유튜브">
+                                            <img src="{{ img_url('gnb/icon_youtube.png') }}" title="유튜브">
+                                        </a>
+                                    </dt> 
+                                    <dt>
+                                        <a href="https://www.instagram.com/willbescop" target="_blank">
+                                            <img src="{{ img_url('gnb/icon_Instagram.png') }}" title="인스타그램">
+                                        </a>
+                                    </dt>                                 
+                                    <dt>
+                                        <a href="https://tv.naver.com/willbescop" target="_blank">
+                                            <img src="{{ img_url('gnb/icon_navertv.png') }}" title="네이버TV">
                                         </a>
                                     </dt>
+                                    <dt>
+                                        <a href="http://blog.naver.com/PostList.nhn?blogId=willbes79&from=postList&categoryNo=65" target="_blank">
+                                            <img src="{{ img_url('gnb/icon_blog.png') }}" title="블로그">
+                                        </a>
+                                    </dt>
+                                    <dt>
+                                        <a href="https://www.facebook.com/willbescop" target="_blank">
+                                            <img src="{{ img_url('gnb/icon_facebook.png') }}" title="페이스북">
+                                        </a>
+                                    </dt>                           
                                     @endif
 
                                     @if($__cfg['SiteGroupCode'] === '1002')
                                     <!--공무원-->
                                     <dt>
+                                        <a href="https://www.youtube.com/channel/UCsNPdhwjR37qVtuePB599KQ" target="_blank">
+                                            <img src="{{ img_url('gnb/icon_youtube.png') }}" title="유튜브">
+                                        </a>
+                                    </dt>
+                                    <dt>
+                                        <a href="{{ site_url('/pass/promotion/index/cate/3048/code/1104') }}" target="_blank">
+                                            <img src="{{ img_url('gnb/icon_kakao.png') }}" title="카카오톡">
+                                        </a>
+                                    </dt>
+                                    <dt>
+                                        <a href="https://blog.naver.com/willbes79" target="_blank">
+                                            <img src="{{ img_url('gnb/icon_blog.png') }}" title="블로그">
+                                        </a>
+                                    </dt>
+                                    <dt>
                                         <a href="https://www.facebook.com/willbesgosi" target="_blank">
-                                            <img src="{{ img_url('gnb/icon_facebook.png') }}" alt="페이스북">
+                                            <img src="{{ img_url('gnb/icon_facebook.png') }}" title="페이스북">
                                         </a>
                                     </dt>
                                     <dt>
                                         <a href="https://tv.naver.com/willbes79" target="_blank">
-                                            <img src="{{ img_url('gnb/icon_navertv.png') }}" alt="네이버TV">
+                                            <img src="{{ img_url('gnb/icon_navertv.png') }}" title="네이버TV">
                                         </a>
                                     </dt>
-                                    <dt>
-                                        <a href="https://www.youtube.com/channel/UCsNPdhwjR37qVtuePB599KQ" target="_blank">
-                                            <img src="{{ img_url('gnb/icon_youtube.png') }}" alt="유튜브">
-                                        </a>
-                                    </dt>
+                                    
                                     @endif
                                 </dl>
                             </li>

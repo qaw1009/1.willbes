@@ -1,10 +1,16 @@
 <ul>
     @if(empty($data['dday']) === false)
         <li>
-            <div class="QuickDdayBox">
-                <div class="q_tit">{{$data['dday'][0]['DayTitle']}}</div>
-                <div class="q_day">{{$data['dday'][0]['DayDatm']}}</div>
-                <div class="q_dday NSK-Blac">{{($data['dday'][0]['DDay'] == 0) ? 'D-'.$data['dday'][0]['DDay'] : 'D'.$data['dday'][0]['DDay']}}</div>
+            <div class="QuickSlider">
+                <div class="sliderNum">
+                    @foreach($data['dday'] as $row)
+                        <div class="QuickDdayBox">
+                            <div class="q_tit">{{$row['DayTitle']}}</div>
+                            <div class="q_day">{{$row['DayDatm']}}</div>
+                            <div class="q_dday NSK-Blac">{{($row['DDay'] == 0) ? 'D-'.$row['DDay'] : 'D'.$row['DDay']}}</div>
+                        </div>
+                    @endforeach
+                </div>
             </div>
         </li>
     @endif

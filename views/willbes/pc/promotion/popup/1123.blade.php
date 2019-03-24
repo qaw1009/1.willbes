@@ -22,7 +22,7 @@
                             @if($arr_base['data']['LimitType'] == 'S')
                                 <input type="radio" name="register_chk[]" class="goods_chk" value="{{$row['ErIdx']}}">
                             @else
-                                <input type="checkbox" name="register_chk[]" class="goods_chk" value="{{$row['ErIdx']}}">
+                                <input type="radio" name="register_chk[]" class="goods_chk" value="{{$row['ErIdx']}}">
                             @endif
                         </li>
                     @endforeach

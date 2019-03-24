@@ -6,17 +6,17 @@ require_once APPPATH . 'controllers/willbes/share/member/BaseMember.php';
 class Join extends BaseMember
 {
     protected $_join_coupon = [
-        '2001' => [
-            ['type' => 'coupon', 'no' => '25'],
-            ['type' => 'coupon', 'no' => '26'],
-            ['type' => 'coupon', 'no' => '27'],
-            ['type' => 'coupon', 'no' => '28'],
+        '2001' => [ // 경찰
+            ['type' => 'coupon', 'no' => '30'], // 온라인 모의고사쿠폰
+            ['type' => 'coupon', 'no' => '71'], // 단과10%
+            ['type' => 'coupon', 'no' => '68'], // PASS 1만원
+            ['type' => 'coupon', 'no' => '129'], // 교재무료배송
         ],
-        '2003' => [
-            ['type' => 'coupon', 'no' => '21'],
-            ['type' => 'coupon', 'no' => '22'],
-            ['type' => 'coupon', 'no' => '23'],
-            ['type' => 'coupon', 'no' => '24'],
+        '2003' => [ // 공무원
+            ['type' => 'coupon', 'no' => '130'], // 온라인 모의고사쿠폰
+            ['type' => 'coupon', 'no' => '119'], // 단과10%
+            ['type' => 'coupon', 'no' => '111'], // PASS 1만원
+            ['type' => 'coupon', 'no' => '116'], // 교재무료배송
         ]
     ];
 

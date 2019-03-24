@@ -184,6 +184,9 @@ html {
   html input[disabled] {
 	cursor: default;
   }
+  input[type="file"] {
+    width: 100%;
+  }
   button::-moz-focus-inner,
   input::-moz-focus-inner {
 	padding: 0;

@@ -85,10 +85,12 @@
                                     @for($i = 0; $i < $attach_file_cnt; $i++)
                                         <li>
                                             <div class="filetype">
-                                                <input type="text" class="file-text" />
+                                                <!--input type="text" class="file-text" />
                                                 <span class="file-btn bg-heavy-gray NSK">찾아보기</span>
-                                                <span class="file-select"><input type="file" id="attach_file{{ $i }}" name="attach_file[]" class="input-file" size="3"></span>
-                                                <input class="file-reset NSK" type="button" value="X" />
+                                                <span class="file-select"-->
+                                                    <input type="file" id="attach_file{{ $i }}" name="attach_file[]" class="input-file" size="3">
+                                                <!--/span>
+                                                <input class="file-reset NSK" type="button" value="X" /-->
                                                 @if(empty($data['AttachAssignmentData_User'][$i]) === false)
                                                     <span>
                                                         <a href="{{front_url('/classroom/assignment/download?file_idx=').$data['AttachAssignmentData_User'][$i]['FileIdx'].'&attach_type=1' }}" target="_blank">

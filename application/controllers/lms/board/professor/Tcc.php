@@ -178,8 +178,8 @@ class Tcc extends BaseBoard
         ];
 
         $column = '
-            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LBC.CateCode, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.ExamProblemYear, LB.VideoUrl,
-            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName,
+            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.ExamProblemYear, LB.VideoUrl,
+            LB.ReadCnt, LB.SettingReadCnt, ADMIN.wAdminName,
             LB.AreaCcd, LB.SubjectIdx, PS.SubjectName
         ';
 
@@ -421,6 +421,43 @@ class Tcc extends BaseBoard
     public function download($fileinfo = [])
     {
         $this->_download();
+    }
+
+    /**
+     * 게시판 삭제
+     * @param array $params
+     */
+    public function deleteDetail($params = [])
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $idx = $params[0];
+        $result = $this->_delete($idx);
+        $this->json_result($result, '정상 처리 되었습니다.', $result);
+    }
+
+    /**
+     * 파일 삭제
+     */
+    public function destroyFile()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]'],
+            ['field' => 'attach_idx', 'label' => '식별자', 'rules' => 'trim|required|integer'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->boardModel->removeFile($this->_reqP('attach_idx'));
+        $this->json_result($result, '저장 되었습니다.', $result);
     }
 
     private function _setInputData($input, $prof_idx){

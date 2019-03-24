@@ -40,12 +40,18 @@ class CertApplyModel extends WB_Model
                             ,Ifnull(F2.SmsRcvStatus,\'\') as SmsRcvStatus
                             ,G.wAdminName as ApprovalAdmin_Name
                             ,H.wAdminName as CancelAdmin_Name
-                            ,op.PayStatusCcd as OrderStatus
-                            ,o.CompleteDatm as OrderDatm
+                            /*
+                            ,(select o.CompleteDatm 
+                                from lms_order o 
+                                    join lms_order_product op on o.OrderIdx = op.OrderIdx
+                            where op.CaIdx is not null and op.CaIdx = SA.CaIdx and op.PayStatusCcd=\'676001\' order by o.OrderIdx desc limit 1
+                            ) as CompleteDatm
+                            */
                             ,\'\' as ExtendStatus
                             ,\'\' as ExtendDatm
                             ,sc1.CcdName as TakeArea_Name
             				,sc2.CcdName as TakeKind_Name
+            				,IFNULL(o.orderCount,0) AS orderCount
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -63,10 +69,18 @@ class CertApplyModel extends WB_Model
                         join lms_member_otherinfo F2 on F.MemIdx = F2.MemIdx
                         left outer join wbs_sys_admin G on SA.ApprovalAdminIdx = G.wAdminIdx
 	                    left outer join wbs_sys_admin H on SA.CancelAdminIdx = H.wAdminIdx
-	                    left outer join lms_order_product op on op.CaIdx = SA.CaIdx
-	                    left outer join lms_order o on op.OrderIdx = o.OrderIdx
 	                    left outer join lms_sys_code sc1 on sc1.Ccd = SA.TakeArea 
 	                    left outer join lms_sys_code sc2 on sc2.Ccd = SA.TakeKind
+
+	                    LEFT OUTER JOIN 
+                        (
+                            SELECT op.CaIdx, COUNT(*) AS orderCount
+                            FROM lms_order o 
+                                JOIN lms_order_product op ON o.OrderIdx = op.OrderIdx
+                            WHERE op.CaIdx IS NOT NULL AND op.PayStatusCcd=\'676001\' 
+                            GROUP BY op.CaIdx
+                        ) o ON o.CaIdx = Sa.CaIdx
+	                    
                     where SA.IsStatus=\'Y\' and A.IsStatus=\'Y\'
         ';
 

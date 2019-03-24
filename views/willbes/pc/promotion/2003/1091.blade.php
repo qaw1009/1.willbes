@@ -115,7 +115,7 @@
             <ul>
                 <li><a href="#online">교수소개</a></li>
                 <li><a href="#buy">파격할인</a></li>
-                <li><a href="http://www.willbesgosi.net/teacher/board/board_list.html?topMenuGnb=OM_002&BOARDTYPE=T3&INCTYPE=list&BOARD_MNG_SEQ=BOARD_012&topMenuType=O&topMenuGnb=OM_002&topMenu=006&topMenuName=%EC%86%8C%EB%B0%A9%EA%B3%B5%EB%AC%B4%EC%9B%90&menuID=OM_002_006_002&searchUserId=wgt801&searchSubjectNm=%EC%B2%B4%EB%A0%A5&searchSubjectCode=1147" target="_blank">질답게시판</a></li>
+                <li><a href="{{ site_url('/professor/show/cate/3023/prof-idx/50387/?subject_idx=1399&subject_name=%EC%B2%B4%EB%A0%A5&tab=qna') }}" target="_blank">질답게시판</a></li>
             </ul>
 		</div>    
     

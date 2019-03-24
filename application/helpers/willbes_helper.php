@@ -65,7 +65,7 @@ if (!function_exists('banner_html')) {
             $a_start = '';
             $a_end = '';
 
-            if(empty($row['LinkUrl']) === false) {
+            if(empty($row['LinkUrl']) === false && $row['LinkUrl'] != '#') {
                 if ($row['LinkType'] == 'layer') {
                     $link_url = app_to_env_url($row['LinkUrl']) . '/event/popupRegistCreateByBanner?banner_idx=' . $row['BIdx'];
                     $a_start = '<a href="#none" onclick="event_layer_popup(\'' . $link_url . '\');" class="' . $a_class . '">';

@@ -122,6 +122,7 @@ class Home extends \app\controllers\FrontController
         if (APP_DEVICE == 'pc') {
             $s_cate_code = $cate_code;
 
+            $data['dday'] = $this->_dday();
             $data['best_product'] = $this->_productLectureBySubjectIdx('on_lecture', 2, $s_cate_code, 'Best');  // 과목별 2개씩 베스트 상품 조회
             $data['arr_main_banner'] = $this->_banner($s_cate_code);
 
@@ -496,7 +497,7 @@ class Home extends \app\controllers\FrontController
             ]
         ];
 
-        $data = $this->dDayFModel->getDDays($arr_condition, '1');
+        $data = $this->dDayFModel->getDDays($arr_condition);
         return $data;
     }
 

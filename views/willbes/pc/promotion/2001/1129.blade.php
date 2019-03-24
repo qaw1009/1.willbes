@@ -123,7 +123,7 @@
                     </div>
                 </div>
                 <!-- 합격커리큘럼 //-->
-                <p><img src="http://file3.willbes.net/new_cop/2019/02/EV190214_c4_1.jpg"  alt=""/></p>  
+                <!--p><img src="http://file3.willbes.net/new_cop/2019/02/EV190214_c4_1.jpg"  alt=""/></p-->  
                 <!--동영상-->
                 <p style="padding-bottom:150px;"><iframe width="876px" height="480px" src="https://www.youtube.com/embed/re8w_IFAPS4?rel=0" frameborder="0" allowfullscreen></iframe></p>
                 <!--//동영상-->

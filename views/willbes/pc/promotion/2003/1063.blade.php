@@ -79,9 +79,10 @@
         .wb_cts02 { background:#232228; font-family:'Noto Sans KR', Arial, Sans-serif; color:#232228}
 
         /*타이머*/
-        .time{width:100%; min-width:1210px; text-align:center; background:#000}
-        .time_date {text-align:center; padding:20px 115px}
-        .time_date table {width:980px; margin:0 auto}
+        .time{width:100%; text-align:center; background:#000}
+        .time_date {text-align:center; padding:20px 0}
+        .time_date table {width:1120px; margin:0 auto}
+        .time_date table td:first-child {font-size:40px}
         .time_txt {font-family: 'NanumGothic', '나눔고딕','NanumGothicWeb', '맑은 고딕', 'Malgun Gothic', Dotum; font-size:28px; color:#f2f2f2; letter-spacing: -1px; font-weight:bold}
         .time_txt span {color:#ef6759}
         .time p {text-alig:center}
@@ -98,19 +99,19 @@
             <div class="time_date">
                 <table>
                     <tr>
-                    <td class="time_txt"><span>3/31(일)</span> 마감까지 </td>
-                    <td><img id="dd1" src="http://file.willbes.net/new_image/0.png" /></td>
-                    <td><img id="dd2" src="http://file.willbes.net/new_image/0.png" /></td>
+                    <td class="time_txt"><span>3/31(일) 마감!</span></td>
+                    <td class="time_txt">마감까지<br><span>남은 시간은</span></td>
+                    <td><img id="d1" src="http://file.willbes.net/new_image/0.png" /></td>
+                    <td><img id="d2" src="http://file.willbes.net/new_image/0.png" /></td>
                     <td class="time_txt">일 </td>
-                    <td><img id="hh1" src="http://file.willbes.net/new_image/0.png" /></td>
-                    <td><img id="hh2" src="http://file.willbes.net/new_image/0.png" /></td>
+                    <td><img id="h1" src="http://file.willbes.net/new_image/0.png" /></td>
+                    <td><img id="h2" src="http://file.willbes.net/new_image/0.png" /></td>
                     <td class="time_txt">:</td>
-                    <td><img id="mm1" src="http://file.willbes.net/new_image/0.png" /></td>
-                    <td><img id="mm2" src="http://file.willbes.net/new_image/0.png" /></td>
+                    <td><img id="m1" src="http://file.willbes.net/new_image/0.png" /></td>
+                    <td><img id="m2" src="http://file.willbes.net/new_image/0.png" /></td>
                     <td class="time_txt">:</td>
-                    <td><img id="ss1" src="http://file.willbes.net/new_image/0.png" /></td>
-                    <td><img id="ss2" src="http://file.willbes.net/new_image/0.png" /></td>
-                    <td class="time_txt"> 남았습니다.</td>
+                    <td><img id="s1" src="http://file.willbes.net/new_image/0.png" /></td>
+                    <td><img id="s2" src="http://file.willbes.net/new_image/0.png" /></td>
                     </tr>
                 </table>
                 

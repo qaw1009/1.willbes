@@ -1790,7 +1790,7 @@ table.auTable tr td {
     background: #fff;
     margin-bottom: 8px;
 }
-.QuickDdayBox {
+.QuickSlider .QuickDdayBox {
     position: relative; 
     height: 100px;
     border: 1px solid #dbdbdb;

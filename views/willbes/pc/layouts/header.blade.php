@@ -23,7 +23,6 @@
     <!-- Custom Theme Style -->
     <link href="/public/css/willbes/basic.css?ver={{time()}}" rel="stylesheet">
     <link href="/public/css/willbes/style.css?ver={{time()}}" rel="stylesheet">
-    <link href="/public/css/willbes/m/style.css?ver={{time()}}" rel="stylesheet">
     <!--// CSS -->
     <!-- JAVASCRIPT -->
     <!-- jQuery -->

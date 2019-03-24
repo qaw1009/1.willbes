@@ -144,12 +144,15 @@ class Counsel extends BaseBoard
             ]);
         }
 
-        $sub_query_condition = [
-            'EQ' => [
-                'subLBrC.IsStatus' => 'Y',
-                'subLBrC.CateCode' => $this->_reqP('search_category')
-            ]
-        ];
+        $sub_query_condition = [];
+        if (empty($this->_reqP('search_category')) === false) {
+            $sub_query_condition = [
+                'EQ' => [
+                    'subLBrC.IsStatus' => 'Y',
+                    'subLBrC.CateCode' => $this->_reqP('search_category')
+                ]
+            ];
+        }
 
         $column = '
             LB.BoardIdx, LB.RegType, LB.SiteCode, LB.MdCateCode, LB.CampusCcd, LSC.CcdName AS CampusName,

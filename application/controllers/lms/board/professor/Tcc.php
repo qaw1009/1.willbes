@@ -170,12 +170,15 @@ class Tcc extends BaseBoard
             ]);
         }
 
-        $sub_query_condition = [
-            'EQ' => [
-                'subLBrC.IsStatus' => 'Y',
-                'subLBrC.CateCode' => $this->_reqP('search_category')
-            ]
-        ];
+        $sub_query_condition = [];
+        if (empty($this->_reqP('search_category')) === false) {
+            $sub_query_condition = [
+                'EQ' => [
+                    'subLBrC.IsStatus' => 'Y',
+                    'subLBrC.CateCode' => $this->_reqP('search_category')
+                ]
+            ];
+        }
 
         $column = '
             LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.ExamProblemYear, LB.VideoUrl,

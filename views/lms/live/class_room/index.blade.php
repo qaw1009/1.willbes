@@ -4,7 +4,7 @@
     <h5>- 라이브강의 송출을 위해 캠퍼스별 강의실을 등록하고 관리하는 메뉴입니다.</h5>
     <form class="form-horizontal searching" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
-        {!! html_def_site_tabs('', 'tabs_site_code', 'tab', false, [], false, $offLineSite_list) !!}
+        {!! html_def_site_tabs('2002', 'tabs_site_code', 'tab', false, [], false, $offLineSite_list) !!}
 
         <div class="x_panel">
             <div class="x_content">
@@ -19,7 +19,7 @@
 
                     <label class="control-label col-md-1" for="search_is_use">조건</label>
                     <div class="col-md-5 form-inline">
-                        {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '', '', false, $offLineSite_list) !!}
+                        {!! html_site_select('2002', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '', '', false, $offLineSite_list) !!}
                         <select class="form-control" id="search_campus_ccd" name="search_campus_ccd">
                             <option value="">캠퍼스</option>
                             @foreach($arr_campus as $row)

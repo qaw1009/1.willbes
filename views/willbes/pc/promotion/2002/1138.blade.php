@@ -71,11 +71,10 @@
         <div class="m_img1">
             <img src="http://file3.willbes.net/new_cop/2019/03/EV190312P_skybanner.png" alt="라이브토크쇼" usemap="#Map190308A" border="0">
             <map name="Map190308A" id="Map190308A">
-                <area shape="rect" coords="8,11,168,126" href="#event01" />
-                <area shape="rect" coords="8,143,168,260" href="#event02" />
-                <area shape="rect" coords="8,274,168,409" href="#event03" />
-                <area shape="rect" coords="8,442,168,558" href="#event04" />
-                <area shape="rect" coords="8,569,168,693" @if(empty($cert_apply))href="javascript:certOpen();"@else href="javascript:alert('이미 이벤트에 참가하셨습니다.')" @endif />
+                            <area shape="rect" coords="13,23,173,138" href="#event01" />
+                            <area shape="rect" coords="15,159,175,276" href="#event02" />
+                            <area shape="rect" coords="16,290,176,425" href="#event03" />
+                            <area shape="rect" coords="15,434,175,558" @if(empty($cert_apply))href="javascript:certOpen();"@else href="javascript:alert('이미 이벤트에 참가하셨습니다.')" @endif />
             </map>			
         </div>
 		
@@ -86,7 +85,7 @@
                 <map name="Map190308B" id="Map190308B">
                   <area shape="rect" coords="299,1850,819,1931" @if(empty($cert_apply))href="javascript:certOpen();"@else href="javascript:alert('이미 이벤트에 참가하셨습니다.')" @endif alt="필기합격 인증하기" />
                   <area shape="rect" coords="711,689,863,727" href="#event05" alt="상품혜택 상세보기" />
-                  <area shape="rect" coords="575,173,729,198" href="{{ site_url('#none') }}" target="_blank" alt="당첨자발표" />
+                  <area shape="rect" coords="575,173,729,198" href="{{ site_url('/pass/support/notice/show?board_idx=214877&s_campus=605001&s_keyword') }}" target="_blank" alt="당첨자발표" />
                 </map>
                 <ul>
 					<li><img id="t1" src="http://file3.willbes.net/new_cop/2019/03/EV190312P_num00.png"  alt="숫자" /></li>

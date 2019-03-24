@@ -2,8 +2,8 @@
     <div class="ft-Link">
         <ul>
             <li><a href="{{ front_url('/support/faq/index') }}">고객센터</a></li>
-            <li><a href="#none">이용약관</a></li>
-            <li><a href="#none">개인정보처리방침</a></li>
+            <li><a href="{{app_url('/company/agreement', 'www')}}" target="_blank">이용약관</a></li>
+            <li><a href="{{app_url('/company/protect', 'www')}}" target="_blank">개인정보처리방침</a></li>
             <li class="tx-light-blue"><a href="{{site_url('/?viewPC=1')}}" target="_blank"><img src="{{ img_url('m/main/icon_pc.png') }}" style="width: 16px;"> PC버전</a></li>
         </ul>
     </div>

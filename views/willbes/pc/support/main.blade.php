@@ -254,11 +254,11 @@
                                     <span class="row-line">|</span>
                                 </li>
                                 <li class="f-info3">
-                                    <a href="{{ site_url('/support/guide/index') }}"><img src="{{ img_url('cs/icon_firstinfo3.gif') }}"><span>수강신청</span></a>
+                                    <a href="{{ site_url('/support/guide/index') }}"><img src="{{ img_url('cs/icon_firstinfo3.png') }}"><span>수강신청</span></a>
                                     <span class="row-line">|</span>
                                 </li>
                                 <li class="f-info4">
-                                    <a href="{{ site_url('/support/guide/index') }}"><img src="{{ img_url('cs/icon_firstinfo4.gif') }}"><span>주문/결제</span></a>
+                                    <a href="{{ site_url('/support/guide/index') }}"><img src="{{ img_url('cs/icon_firstinfo4.png') }}"><span>주문/결제</span></a>
                                     <span class="row-line">|</span>
                                 </li>
                                 <li class="f-info5">

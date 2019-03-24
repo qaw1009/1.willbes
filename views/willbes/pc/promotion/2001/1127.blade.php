@@ -173,37 +173,37 @@
                         <td class="st01">신광은 형소법</td>
                         <td class="st03">동형모의고사 <span class="st02">3/25(월) ~ 4/15(월) , 총 5회</span></td>
                         <td class="st01">3/25(월) 8:40</td>
-                        <td class="st04"><a href="{{ site_url('/pass/offLecture/index/type/test') }}">수강신청</a></td>
+                        <td class="st04"><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&subject_idx=1057') }}">수강신청</a></td>
                     </tr>
                     <tr>
                         <td class="st01">오태진 한국사</td>
                         <td class="st03">동형모의고사 <span class="st02">3/26(화) ~ 4/16(화) , 총 5회</span></td>
                         <td class="st01">3/26(화) 8:40</td>
-                        <td class="st04"><a href="{{ site_url('/pass/offLecture/index/type/test') }}">수강신청</a></td>
+                        <td class="st04"><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&subject_idx=1055&prof_idx=50132') }}">수강신청</a></td>
                     </tr>
                     <tr>
                         <td class="st01">원유철 한국사</td>
                         <td class="st03">동형모의고사 <span class="st02">3/26(화) ~ 4/16(화) , 총 5회</span></td>
                         <td class="st01">3/26(화) 8:40</td>
-                        <td class="st04"><a href="{{ site_url('/pass/offLecture/index/type/test') }}">수강신청</a></td>
+                        <td class="st04"><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&subject_idx=1055&prof_idx=50642') }}">수강신청</a></td>
                     </tr>
                     <tr>
                         <td class="st01">장정훈 경찰학</td>
                         <td class="st03">동형모의고사 <span class="st02">3/27(수) ~ 4/17(수) , 총 5회</span></td>
                         <td class="st01">3/27(수) 8:4</td>
-                        <td class="st04"><a href="{{ site_url('/pass/offLecture/index/type/test') }}">수강신청</a></td>
+                        <td class="st04"><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&subject_idx=1058&prof_idx=50032') }}">수강신청</a></td>
                     </tr>
                     <tr>
                         <td class="st01">김원욱 형법 </td>
                         <td class="st03">동형모의고사 <span class="st02">3/28(목) ~ 4/20(목) 총 5회</span></td>
                         <td class="st01">3/28(목) 8:40</td>
-                        <td class="st04"><a href="{{ site_url('/pass/offLecture/index/type/test') }}">수강신청</a></td>
+                        <td class="st04"><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&subject_idx=1056&prof_idx=50298') }}">수강신청</a></td>
                     </tr>            
                     <tr>
                         <td class="st01">하승민 영어</td>
                         <td class="st03">동형모의고사 <span class="st02">3/29(금) ~ 4/19(금) 총 5회</span></td>
                         <td class="st01">3/29(금) 8:40</td>
-                        <td class="st04"><a href="{{ site_url('/pass/offLecture/index/type/test') }}">수강신청</a></td>
+                        <td class="st04"><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&subject_idx=1054&prof_idx=50136') }}">수강신청</a></td>
                     </tr>
                 </tbody> 
             </table>
@@ -222,15 +222,15 @@
             <tbody>
                 <tr>
                     <td class="tx-left ">[학원] 2019년 1차대비 2+3단계 모의고사 문제풀이 종합반</td>
-                    <td><a href="{{ site_url('#none') }}" target="_blank">수강신청</a></td>
+                    <td><a href="{{ site_url('/pass/OffPackage/show/prod-code/150967') }}" target="_blank">수강신청</a></td>
                 </tr> 
                 <tr>
                     <td class="tx-left ">[동영상] 2019년 1차대비 2단계 동형 모의고사 문제풀이 종합반 (史 원유철)</td>
-                    <td><a href="{{ site_url('#none') }}" target="_blank">수강신청</a></td>
+                    <td><a href="{{ site_url('/package/show/cate/3001/pack/648001/prod-code/152117') }}" target="_blank">수강신청</a></td>
                 </tr>
                 <tr>
                     <td class="tx-left ">[동영상] 2019년 1차대비 2단계 동형 모의고사 문제풀이 종합반 (史 오태진)</td>
-                    <td><a href="{{ site_url('#none') }}" target="_blank">수강신청</a></td>
+                    <td><a href="{{ site_url('/package/show/cate/3001/pack/648001/prod-code/152116') }}" target="_blank">수강신청</a></td>
                 </tr>
                 <tr>
                     <td colspan="2"><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_07_map.jpg" /></td>

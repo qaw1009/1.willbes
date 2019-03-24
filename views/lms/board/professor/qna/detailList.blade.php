@@ -211,7 +211,7 @@
                                 if (row.RegMemName == null) {
                                     return '';
                                 } else {
-                                    return row.RegMemName+'('+row.RegMemIdx+')';
+                                    return row.RegMemName+'('+row.RegMemId+')';
                                 }
                             }
                         }},

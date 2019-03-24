@@ -29,12 +29,13 @@
     left:60px;
     bottom: 20px;
     text-align: right;
+    z-index: 100;
 }
 .tech .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a {
     background: #fff;
     width: 8px;
     height: 8px;
-    margin: 0 2px;
+    margin: 0 2px;    
 }
 
 .tech .bx-wrapper .bx-pager.bx-default-pager a {

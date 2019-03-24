@@ -170,12 +170,15 @@ class Tcc extends BaseBoard
             ]);
         }
 
-        $sub_query_condition = [
-            'EQ' => [
-                'subLBrC.IsStatus' => 'Y',
-                'subLBrC.CateCode' => $this->_reqP('search_category')
-            ]
-        ];
+        $sub_query_condition = [];
+        if (empty($this->_reqP('search_category')) === false) {
+            $sub_query_condition = [
+                'EQ' => [
+                    'subLBrC.IsStatus' => 'Y',
+                    'subLBrC.CateCode' => $this->_reqP('search_category')
+                ]
+            ];
+        }
 
         $column = '
             LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.ExamProblemYear, LB.VideoUrl,
@@ -222,7 +225,7 @@ class Tcc extends BaseBoard
 
         if (empty($params[0]) === false) {
             $column = '
-            LB.BoardIdx, LB.SiteCode, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.ExamProblemYear, LB.VideoUrl,
+            LB.BoardIdx, LB.SiteCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.ExamProblemYear, LB.VideoUrl,
             LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName,
             LB.AreaCcd, LB.SubjectIdx, PS.SubjectName
             ';
@@ -327,7 +330,7 @@ class Tcc extends BaseBoard
         }
 
         $column = '
-            LB.BoardIdx, LB.RegType, LB.SiteCode, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.ExamProblemYear, LB.VideoUrl,
+            LB.BoardIdx, LB.RegType, LB.SiteCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.ExamProblemYear, LB.VideoUrl,
             LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm,
             LB.AreaCcd, LB.SubjectIdx, PS.SubjectName
             ';
@@ -358,37 +361,21 @@ class Tcc extends BaseBoard
         $board_previous = $data_PN['previous'];     //이전글
         $board_next = $data_PN['next'];             //다음글
 
-        $site_code = $data['SiteCode'];
         $data['arr_attach_file_idx'] = explode(',', $data['AttachFileIdx']);
         $data['arr_attach_file_path'] = explode(',', $data['AttachFilePath']);
         $data['arr_attach_file_name'] = explode(',', $data['AttachFileName']);
         $data['arr_attach_file_real_name'] = explode(',', $data['AttachRealFileName']);
 
-        if (empty($this->site_code) === false) {
-            $site_code = $this->site_code;
-        }
-
-        $get_category_array = $this->_getCategoryArray($site_code);
-        if (empty($get_category_array) === true) {
-            $data['arr_cate_code'] = [];
-        } else {
-            if (empty($data['CateCode']) === false) {
-                $arr_cate_code = explode(',', $data['CateCode']);
-                foreach ($arr_cate_code as $item => $code) {
-                    if (empty($get_category_array[$code]) === false) {
-                        $data['arr_cate_code'][$code] = $get_category_array[$code];
-                    }
-                }
-            } else {
-                $data['arr_cate_code'] = [];
-            }
+        $data['arr_cate_code'] = [];
+        $arr_cate_code = $this->boardModel->listBoardCategory($board_idx);
+        if (empty($arr_cate_code) === false) {
+            $data['arr_cate_code'] = array_values($arr_cate_code);
         }
 
         $this->load->view("board/professor/{$this->board_name}/read_detail",[
             'boardName' => $this->board_name,
             'arr_prof_info' => $arr_prof_info,
             'data' => $data,
-            'getCategoryArray' => $get_category_array,
             'board_idx' => $board_idx,
             'attach_file_cnt' => $this->boardModel->_attach_img_cnt,
             'board_previous' => $board_previous,

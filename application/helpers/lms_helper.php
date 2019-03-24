@@ -53,6 +53,7 @@ if (!function_exists('get_auth_on_off_site_codes')) {
 
 if (!function_exists('get_auth_campus_ccds')) {
     /**
+     * 운영자 권한이 있는 사이트별 캠퍼스 코드 리턴
      * @param int $site_code [사이트 코드]
      * @param bool $is_with_name [캠퍼스명을 포함할지 여부, true : key = 캠퍼스 코드, value = 캠퍼스 명, false : value = 캠퍼스 코드]
      * @return array [캠퍼스 공통코드 배열]

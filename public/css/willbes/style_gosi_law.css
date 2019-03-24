@@ -29,6 +29,7 @@
     left:60px;
     bottom: 20px;
     text-align: right;
+    z-index: 100;
 }
 .law .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a {
     background: #fff;

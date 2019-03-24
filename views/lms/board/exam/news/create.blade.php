@@ -1,7 +1,15 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5>- 수험뉴스 게시판을 관리하는 메뉴입니다.</h5>
+    @if($bmIdx == '57')
+        수험뉴스 게시판을 관리하는 메뉴입니다.
+    @elseif($bmIdx == '97')
+        개정법령 게시판을 관리하는 메뉴입니다.
+    @elseif($bmIdx == '98')
+        최신판례 게시판을 관리하는 메뉴입니다.
+    @else
+        기간제패키지 공지사항을 관리하는 메뉴입니다.
+    @endif
     {!! form_errors() !!}
     <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
         {{--<form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" action="{{ site_url("/board/exam/{$boardName}/store") }}?bm_idx=45" novalidate>--}}

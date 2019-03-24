@@ -166,7 +166,7 @@
 
         @if(isset($data['dday']) === true)
             {{-- Dday --}}
-            <div class="Section Act2 mb50">
+            <div class="Section Act2 mb50 mt50">
                 <div class="widthAuto">
                     <div class="will-Tit mb-zero">시험일정</div>
                     <div class="sliderDayList cSlider">

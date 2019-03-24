@@ -74,12 +74,14 @@
                     </li>
                     <li>
                         <strong>첨부 파일</strong>                      
-                        <div class="filetype">
+                        <!--div class="filetype">
                             <input type="text" class="file-text" />
                             <span class="file-btn bg-heavy-gray NSK">찾아보기</span>
-                            <span class="file-select"><input type="file" class="input-file" size="3" id="attachfile" name="attachfile" ></span>
+                            <span class="file-select"-->
+                                <input type="file" class="input-file" size="3" id="attachfile" name="attachfile" >
+                            <!--/span>
                             <input class="file-reset NSK" type="button" value="X" />
-                        </div>                        
+                        </div-->
                     </li>
                     <li>* 파일의 크기는 2MB까지 업로드 가능</li>
                     <li>* 이미지파일 (jpg, png등) 또는 PDF 파일 첨부</li>                                

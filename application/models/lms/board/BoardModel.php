@@ -1050,6 +1050,8 @@ class BoardModel extends WB_Model
         $this->_conn->select("{$this->_table_sys_code}.Ccd, COUNT({$this->_table}.BoardIdx) AS count");
         $this->_conn->from($this->_table_sys_code);
         $this->_conn->where($this->_table.'.BmIdx', $bm_idx);
+        $this->_conn->where($this->_table.'.IsStatus', 'Y');
+        $this->_conn->where($this->_table.'.IsUse', 'Y');
         $this->_conn->where_in($this->_table_sys_code.'.Ccd', $groupCcd);
         $this->_conn->where_in($this->_table.'.SiteCode', get_auth_site_codes(false, true));
 

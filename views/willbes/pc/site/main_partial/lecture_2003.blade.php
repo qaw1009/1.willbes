@@ -3,7 +3,7 @@
 @if(empty($data['best_product']['subjects']) === false)
     <ul class="prof-subject">
     @foreach($data['best_product']['subjects'] as $subject_idx => $subject_name)
-        <li><a href='#tab_prof_subject_{{ $subject_idx }}'><span>|</span>{{ $subject_name }}</a></li>
+        <li id="tab_prof_subject_{{ $loop->index }}"><a href='#tab_prof_subject_{{ $subject_idx }}'><span>|</span>{{ $subject_name }}</a></li>
     @endforeach
 
     {{-- 과목이 8개 이하라면 모자란만큼 빈 슬라이드 생성 --}}
@@ -72,6 +72,6 @@
         });
 
         // 1번째 과목 상품 강제 노출
-        $('#prof-professors .prof-slider').eq(0).css('display', 'block');
+        $('.prof-subject > #tab_prof_subject_1 > a').trigger('click');
     });
 </script>

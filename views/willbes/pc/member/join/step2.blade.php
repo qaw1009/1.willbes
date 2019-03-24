@@ -200,7 +200,6 @@
                             <div class="agree-Txt">
                                 <div class="policyNew">
                                     <h3>이용약관</h3>
-                                    <div class="closebtn"><a href="javascript:window.close();">close</a></div>
                                     <ol class="titsubject">
                                         <li><a href="#N01">제 1 장 총칙</a></li>
                                         <li><a href="#N02">제 2 장 회원가입</a></li>

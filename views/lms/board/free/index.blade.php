@@ -171,7 +171,13 @@
                             (data === null) ? tmp_return = '' : tmp_return = '<p class="glyphicon glyphicon-file"></p>';
                             return tmp_return;
                         }},
-                    {'data' : 'wAdminName'},
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            if (row.RegType == '1') {
+                                return row.wAdminName;
+                            } else {
+                                return row.RegMemName+'<br>'+'('+row.RegMemId+')';
+                            }
+                        }},
                     {'data' : 'RegDatm'},
                     {'data' : 'IsBest', 'render' : function(data, type, row, meta) {
                             //return (data == 'Y') ? '사용' : '<p class="red">미사용</p>';

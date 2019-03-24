@@ -4,7 +4,7 @@
     <h5>- 라이브강의 송출을 위한 강의실과 영상정보를 매칭하고 기타 자료를 확인하는 페이지입니다..</h5>
     <form class="form-horizontal searching" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
-        {!! html_def_site_tabs('', 'tabs_site_code', 'tab', true, [], false, $offLineSite_list) !!}
+        {!! html_def_site_tabs('', 'tabs_site_code', 'tab', false, [], false, $offLineSite_list) !!}
 
         <div class="x_panel">
             <div class="x_content">

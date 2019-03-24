@@ -309,6 +309,7 @@ class News extends BaseBoard
         }
 
         $this->load->view("board/exam/{$this->board_name}/read",[
+            'bm_idx' => $this->bm_idx,
             'boardName' => $this->board_name,
             'data' => $data,
             'board_idx' => $board_idx,

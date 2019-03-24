@@ -71,7 +71,7 @@
                     <div class="col-md-4 item">
                         <div class="radio">
                             @foreach($arr_prodType_ccd as $key => $arr)
-                                <input type="radio" id="prod_type_ccd_{{ $loop->index }}" name="prod_type_ccd" data-input="{{ $arr[1] }}" class="flat" value="{{ $key }}" @if($loop->index === 1) required="required" title="쿠폰적용구분" @endif @if($data['ProdApplyTypeCcd'] == $key || ($method == 'POST' && $loop->index === 1))checked="checked"@endif/> <label for="prod_type_ccd_{{ $loop->index }}" class="input-label">{{ $arr[0] }}</label>
+                                <input type="radio" id="prod_type_ccd_{{ $loop->index }}" name="prod_type_ccd" data-input="{{ $arr[1] }}" class="flat" value="{{ $key }}" @if($loop->index === 1) required="required" title="강좌적용구분" @endif @if($data['ProdApplyTypeCcd'] == $key || ($method == 'POST' && $loop->index === 1))checked="checked"@endif/> <label for="prod_type_ccd_{{ $loop->index }}" class="input-label">{{ $arr[0] }}</label>
                             @endforeach
                         </div>
                     </div>

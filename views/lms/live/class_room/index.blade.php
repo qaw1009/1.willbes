@@ -4,7 +4,7 @@
     <h5>- 라이브강의 송출을 위해 캠퍼스별 강의실을 등록하고 관리하는 메뉴입니다.</h5>
     <form class="form-horizontal searching" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
-        {!! html_def_site_tabs('', 'tabs_site_code', 'tab', true, [], false, $offLineSite_list) !!}
+        {!! html_def_site_tabs('', 'tabs_site_code', 'tab', false, [], false, $offLineSite_list) !!}
 
         <div class="x_panel">
             <div class="x_content">

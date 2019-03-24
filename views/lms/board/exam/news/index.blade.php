@@ -1,7 +1,17 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5>- 수험뉴스 게시판을 관리하는 메뉴입니다.</h5>
+    <h5>-
+        @if($bm_idx == '57')
+            수험뉴스 게시판을 관리하는 메뉴입니다.
+        @elseif($bm_idx == '97')
+            개정법령 게시판을 관리하는 메뉴입니다.
+        @elseif($bm_idx == '98')
+            최신판례 게시판을 관리하는 메뉴입니다.
+        @else
+            기간제패키지 공지사항을 관리하는 메뉴입니다.
+        @endif
+    </h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         {!! html_def_site_tabs($ret_search_site_code,'tabs_site_code') !!}

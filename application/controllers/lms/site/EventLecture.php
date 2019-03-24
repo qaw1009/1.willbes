@@ -678,13 +678,12 @@ class EventLecture extends \app\controllers\BaseController
             show_error('데이터 조회에 실패했습니다.');
         }
 
-        $site_code = $data['SiteCode'];
-        $arr_cate_code = explode(',', $data['CateCode']);
         $data['arr_attach_file_idx'] = explode(',', $data['AttachFileIdx']);
         $data['arr_attach_file_path'] = explode(',', $data['AttachFilePath']);
         $data['arr_attach_file_name'] = explode(',', $data['AttachFileName']);
+        $data['arr_attach_file_real_name'] = explode(',', $data['AttachRealFileName']);
 
-        $get_category_array = $this->categoryModel->getCategoryArray($site_code);
+        /*$get_category_array = $this->categoryModel->getCategoryArray($site_code);
         if (empty($get_category_array) === true) {
             $data['arr_cate_code'] = [];
         } else {
@@ -693,6 +692,11 @@ class EventLecture extends \app\controllers\BaseController
                     $data['arr_cate_code'][$code] = $get_category_array[$code];
                 }
             }
+        }*/
+        $data['arr_cate_code'] = [];
+        $arr_cate_code = $this->boardModel->listBoardCategory($board_idx);
+        if (empty($arr_cate_code) === false) {
+            $data['arr_cate_code'] = array_values($arr_cate_code);
         }
 
         $this->load->view("site/event_lecture/read_notice_modal", [

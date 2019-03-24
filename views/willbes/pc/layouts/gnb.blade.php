@@ -93,20 +93,20 @@
                                         </a>
                                     </dt>
                                     <dt>
-                                        <a href="https://blog.naver.com/willbes79" target="_blank">
-                                            <img src="{{ img_url('gnb/icon_blog.png') }}" title="블로그">
-                                        </a>
-                                    </dt>
-                                    <dt>
-                                        <a href="https://www.facebook.com/willbesgosi" target="_blank">
-                                            <img src="{{ img_url('gnb/icon_facebook.png') }}" title="페이스북">
-                                        </a>
-                                    </dt>
-                                    <dt>
                                         <a href="https://tv.naver.com/willbes79" target="_blank">
                                             <img src="{{ img_url('gnb/icon_navertv.png') }}" title="네이버TV">
                                         </a>
                                     </dt>
+                                    <dt>
+                                        <a href="https://blog.naver.com/willbes79" target="_blank">
+                                            <img src="{{ img_url('gnb/icon_blog.png') }}" title="블로그">
+                                        </a>
+                                    </dt>                                    
+                                    <dt>
+                                        <a href="https://www.facebook.com/willbesgosi" target="_blank">
+                                            <img src="{{ img_url('gnb/icon_facebook.png') }}" title="페이스북">
+                                        </a>
+                                    </dt>                                   
                                     
                                     @endif
                                 </dl>

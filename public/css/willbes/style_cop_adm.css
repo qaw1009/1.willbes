@@ -232,10 +232,10 @@
 
 
 /* Main Container : SpecialLecBox */
-.adm .Section .SpecialLecBox .infoTit .btn .btn-sbj a {
+.adm .Section .SpecialLecBox .infoTit .btn .btn-sbj p {
     background: #008b6c;
 }
-.adm .Section .SpecialLecBox .infoList .List-Table li a span {
+.adm .Section .SpecialLecBox .infoList .List-Table li p span {
     float: left;
     width: 130px;
     color: #008b6c;

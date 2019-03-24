@@ -67,10 +67,7 @@
         </div><!--wb_cts02//-->
 
         <div class="evtCtnsBox wb_cts03" id="event">
-            <img src="http://file3.willbes.net/new_gosi/2018/06/EV180626_c6.jpg" alt="윌비스 행정법 변원갑 수강신청하기" usemap="#Map180625_c1" border="0"  />
-            <map name="Map180625_c1" >
-                <area shape="rect" coords="588,668,915,794"href="#" onclick="javascript:goPopup()" onFocus="this.blur()" />
-            </map>
+            <img src="http://file3.willbes.net/new_gosi/2018/06/EV180626_c6.jpg" alt="8기 예약 접수 마감" />
         </div><!--wb_cts03//-->
 
     </div>

@@ -1626,9 +1626,11 @@ class BladeOne
     public function showError($id, $text, $critic = false)
     {
         ob_get_clean();
-        echo "<div style='background-color: red; color: black; padding: 3px; border: solid 1px black;'>";
+        /* TODO : blade show error modified */
+        /*echo "<div style='background-color: red; color: black; padding: 3px; border: solid 1px black;'>";
         echo "BladeOne Error [{$id}]:<br>";
-        echo "<span style='color:white'>$text</span><br></div>\n";
+        echo "<span style='color:white'>$text</span><br></div>\n";*/
+        show_404('Blade Error [' . $id . ' : ' . $text . ']');
         if ($critic) {
             die(1);
         }

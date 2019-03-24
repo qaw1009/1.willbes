@@ -84,7 +84,7 @@
             <div class="wb_top_01">
                 <img src="http://file3.willbes.net/new_cop/2019/03/EV190321P_02.jpg" alt="단언컨데, 지금까지 이런 혜택은 없었다!" usemap="#Map190308B" border="0" />
                 <map name="Map190308B" id="Map190308B">
-                  <area shape="rect" coords="299,1850,819,1931" href="javascript:doEvent()" alt="필기합격 인증하기" />
+                  <area shape="rect" coords="299,1850,819,1931" @if(empty($cert_apply))href="javascript:certOpen();"@else href="javascript:alert('이미 이벤트에 참가하셨습니다.')" @endif alt="필기합격 인증하기" />
                   <area shape="rect" coords="711,689,863,727" href="#event05" alt="상품혜택 상세보기" />
                   <area shape="rect" coords="575,173,729,198" href="{{ site_url('#none') }}" target="_blank" alt="당첨자발표" />
                 </map>
@@ -118,8 +118,7 @@
         
       	<div class="wbCommon wb_03" id="event03">
 			<img src="http://file3.willbes.net/new_cop/2019/03/EV190308P_07_new.jpg"  alt="황세웅 실시간 기출분석" />
-			
-
+			<img src="http://file3.willbes.net/new_cop/2019/03/EV190308P_08_end.jpg"  alt="황세웅 실시간 기출분석" />
             <img src="http://file3.willbes.net/new_cop/2019/03/EV190312P_05.jpg"  alt="라이브강의 안내" /><br />                            		        	 		        	 
 			<img src="http://file3.willbes.net/new_cop/2019/03/EV190308P_09.jpg"  alt="기출분석 라이브 특강 일정" />
 		</div>
@@ -168,10 +167,10 @@
         function certOpen(){
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
             @if(empty($arr_promotion_params) === false)
-            var url = '/certApply/index/page/{{$arr_promotion_params["page"]}}/cert/{{$arr_promotion_params["cert"]}}' ;
-        window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=800,height=700');
-        @endif
-    }
+                var url = '/certApply/index/page/{{$arr_promotion_params["page"]}}/cert/{{$arr_promotion_params["cert"]}}' ;
+                window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=800,height=700');
+            @endif
+        }
 
 
 

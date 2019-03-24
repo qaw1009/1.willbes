@@ -199,8 +199,8 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
         try {
             $board_data = array_merge($board_data,[
                 'RegMemIdx'=> $this->session->userdata('mem_idx'),
-                'RegMemId'=> $this->session->userdata('mem_id'),
-                'RegMemName'=> $this->session->userdata('mem_name'),
+                /*'RegMemId'=> $this->session->userdata('mem_id'),
+                'RegMemName'=> $this->session->userdata('mem_name'),*/
                 'RegIp' => $this->input->ip_address()
             ]);
 
@@ -282,7 +282,7 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
             }
 
             $board_data = array_merge($board_data,[
-                'UpdAdminIdx' => $this->session->userdata('admin_idx'),
+                'UpdMemIdx' => $this->session->userdata('admin_idx'),
                 'UpdDatm' => date('Y-m-d H:i:s')
             ]);
             $this->_conn->set($board_data)->where('BoardIdx', $board_idx);
@@ -616,6 +616,55 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
             LEFT JOIN {$this->_table['lms_order_product']} AS op ON op.ProdCode = b.ProdCode AND b.RegMemIdx = op.MemIdx
             LEFT JOIN {$this->_table['lms_mock_register']} AS mr ON op.OrderProdIdx = mr.OrderProdIdx
         ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    /**
+     * 1:1 상담게시판 리스트
+     * @param $is_count
+     * @param array $arr_condition
+     * @param $cate_code
+     * @param null $column
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
+     */
+    public function listBoardForQna($is_count, $arr_condition=[], $cate_code, $column = null, $limit = null, $offset = null, $order_by = [])
+    {
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $from = "
+            FROM {$this->_table['twoway_board_2']}
+            left join {$this->_table['lms_member']} as m on b.RegMemIdx = m.MemIdx
+        ";
+
+        if (empty($cate_code) === false) {
+            $from .= "
+                inner join {$this->_table['lms_board_r_category']} as c
+                    on b.BoardIdx = c.BoardIdx and c.IsStatus = 'Y'
+                inner join {$this->_table['lms_sys_category']} as d
+                    on c.CateCode = d.CateCode and d.IsStatus = 'Y'
+            ";
+
+            $arr_condition = array_merge($arr_condition,[
+                'RAW' => [
+                    'c.CateCode = ' => (empty($cate_code) === true) ? '\'\'' : $cate_code
+                ]
+            ]);
+        }
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);

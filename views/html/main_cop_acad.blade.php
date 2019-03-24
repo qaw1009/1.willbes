@@ -85,33 +85,34 @@
             </ul>
         </h3>
     </div>
-    <div class="Section Bnr">
+    
+    <div class="Section Bnr mt40">
         <div class="widthAuto">
             <div class="willbes-Bnr">
                 <ul>
-                    <li><a href="#none"><img src="{{ img_url('cop_acad/visual/visual_secA01.jpg') }}" alt="적중은역시신광은경찰팀"></a></li>
+                    <li><a href="/promotion/index/cate/3001/code/1019" target="_blank"><img src="{{ img_url('cop_acad/visual/visual_secA01.jpg') }}" title="적중은역시신광은경찰팀"></a></li>
                 </ul>
             </div>
         </div>
     </div>
 
-    <div class="Section MainVisual MainVisual_acad mb50">
+    <div class="Section MainVisual MainVisual_acad mb50 mt20">
         <div class="widthAuto">
             <ul>
                 <li class="VisualsubBox_acad">
-                    <a href="#none"><img src="{{ img_url('cop_acad/visual/visual_secB01.jpg') }}" alt="기본이론종합반"></a>
+                    <a href="#none"><img src="{{ img_url('cop_acad/visual/visual_secB01.jpg') }}" title="기본이론종합반"></a>
                 </li>
                 <li class="VisualsubBox_acad">
-                    <a href="#none"><img src="{{ img_url('cop_acad/visual/visual_secB02.jpg') }}" alt="superpass"></a>
+                    <a href="#none"><img src="{{ img_url('cop_acad/visual/visual_secB02.jpg') }}" title="superpass"></a>
                 </li>
                 <li class="VisualsubBox_acad">
-                    <a href="#none"><img src="{{ img_url('cop_acad/visual/visual_secB03.jpg') }}" alt="문제풀이패키지"></a>
+                    <a href="#none"><img src="{{ img_url('cop_acad/visual/visual_secB03.jpg') }}" title="문제풀이패키지"></a>
                 </li>
                 <li class="VisualsubBox_acad">                    
                     <div class="bSlider acad">
                         <div class="bSlider slider">
-                            <div><a href="#none"><img src="{{ img_url('cop_acad/visual/visual_secB04_01.jpg') }}" alt="합격전략설명회"></a></div>
-                            <div><a href="#none"><img src="{{ img_url('cop_acad/visual/visual_secB04_02.jpg') }}" alt="황세웅면접캠프"></a></div>
+                            <div><a href="#none"><img src="{{ img_url('cop_acad/visual/visual_secB04_01.jpg') }}" title="합격전략설명회"></a></div>
+                            <div><a href="#none"><img src="{{ img_url('cop_acad/visual/visual_secB04_02.jpg') }}" title="황세웅면접캠프"></a></div>
                         </div>
                     </div>
                 </li>
@@ -124,84 +125,84 @@
             <div class="will-acadTit">교수별 <span class="tx-color">빠른강좌</span> 찾기</div>
                 <ul class="caProfBox">
                     <li>
-                        <img src="{{ img_url('cop_acad/prof/prof_ske.jpg') }}" alt="형사소송법/수사 신광은">
+                        <img src="{{ img_url('cop_acad/prof/prof_ske.jpg') }}" title="형사소송법/수사 신광은">
                         <div class="caProfBtsn">
                             <div><a href="#none">문풀1단계<span>3.7 개강</span></a></div>
                             <div><a href="#none">기본형소법<span>3.21 개강</span></a></div>
                         </div>
                     </li>
                     <li>
-                        <img src="{{ img_url('cop_acad/prof/prof_jjh.jpg') }}" alt="경찰학개론 장정훈">
+                        <img src="{{ img_url('cop_acad/prof/prof_jjh.jpg') }}" title="경찰학개론 장정훈">
                         <div class="caProfBtsn">
                             <div><a href="#none">문풀1단계<span>3.7 개강</span></a></div>
                             <div><a href="#none">무료특강</a></div>
                         </div>
                     </li>
                     <li>
-                        <img src="{{ img_url('cop_acad/prof/prof_wyc.jpg') }}" alt="한국사 원유철">
+                        <img src="{{ img_url('cop_acad/prof/prof_wyc.jpg') }}" title="한국사 원유철">
                         <div class="caProfBtsn">
                             <div><a href="#none">기본한국사<span>2.25 개강</span></a></div>
                             <div><a href="#none">심화강좌</a></div>
                         </div>
                     </li>
                     <li>
-                        <img src="{{ img_url('cop_acad/prof/prof_otj.jpg') }}" alt="한국사 오태진">
+                        <img src="{{ img_url('cop_acad/prof/prof_otj.jpg') }}" title="한국사 오태진">
                         <div class="caProfBtsn">
                             <div><a href="#none">기본한국사<span>2.25 개강</span></a></div>
                             <div><a href="#none">문풀1단계<span>3.13 개강</span></a></div>
                         </div>
                     </li>
                     <li>
-                        <img src="{{ img_url('cop_acad/prof/prof_kwu.jpg') }}" alt="형법 김원욱">
+                        <img src="{{ img_url('cop_acad/prof/prof_kwu.jpg') }}" title="형법 김원욱">
                         <div class="caProfBtsn">
                             <div><a href="#none">기본형법<span>3.7 개강</span></a></div>
                             <div><a href="#none">심화강좌</a></div>
                         </div>
                     </li>
                     <li>
-                        <img src="{{ img_url('cop_acad/prof/prof_hsm.jpg') }}" alt="경찰영어 하승민">
+                        <img src="{{ img_url('cop_acad/prof/prof_hsm.jpg') }}" title="경찰영어 하승민">
                         <div class="caProfBtsn">
                             <div><a href="#none">문풀1단계<span>3.2 개강</span></a></div>
                             <div><a href="#none">심화강좌</a></div>
                         </div>
                     </li>                                        
                     <li>
-                        <img src="{{ img_url('cop_acad/prof/prof_khj.jpg') }}" alt="기초영어 김현정">
+                        <img src="{{ img_url('cop_acad/prof/prof_khj.jpg') }}" title="기초영어 김현정">
                         <div class="caProfBtsn">
                             <div><a href="#none">지옥탈출<span>3.11 개강</span></a></div>
                             <div><a href="#none">아침특강</a></div>
                         </div>
                     </li>
                     <li>
-                        <img src="{{ img_url('cop_acad/prof/prof_kjk.jpg') }}" alt="기초영어 김준기">
+                        <img src="{{ img_url('cop_acad/prof/prof_kjk.jpg') }}" title="기초영어 김준기">
                         <div class="caProfBtsn">
                             <div><a href="#none">지옥탈출<span>3.11 개강</span></a></div>
                             <div><a href="#none">아침특강</a></div>
                         </div>
                     </li>
                     <li>
-                        <img src="{{ img_url('cop_acad/prof/prof_hsw.jpg') }}" alt="면접 황세웅">
+                        <img src="{{ img_url('cop_acad/prof/prof_hsw.jpg') }}" title="면접 황세웅">
                         <div class="caProfBtsn">
                             <div><a href="#none">면접캠프</a></div>
                             <div><a href="#none">면접 스파르타</a></div>
                         </div>
                     </li>
                     <li>
-                        <img src="{{ img_url('cop_acad/prof/prof_kiy.jpg') }}" alt="인적성검사 강인엽">
+                        <img src="{{ img_url('cop_acad/prof/prof_kiy.jpg') }}" title="인적성검사 강인엽">
                         <div class="caProfBtsn">
                             <div><a href="#none">면접캠프</a></div>
                             <div><a href="#none">면접 스파르타</a></div>
                         </div>
                     </li>
                     <li>
-                        <img src="{{ img_url('cop_acad/prof/prof_ubj.jpg') }}" alt="면접 유봉진">
+                        <img src="{{ img_url('cop_acad/prof/prof_ubj.jpg') }}" title="면접 유봉진">
                         <div class="caProfBtsn">
                             <div><a href="#none">면접캠프</a></div>
                             <div><a href="#none">면접 스파르타</a></div>
                         </div>
                     </li>
                     <li>
-                        <img src="{{ img_url('cop_acad/prof/prof_jyw.jpg') }}" alt="면접 정용욱">
+                        <img src="{{ img_url('cop_acad/prof/prof_jyw.jpg') }}" title="면접 정용욱">
                         <div class="caProfBtsn">
                             <div><a href="#none">면접캠프</a></div>
                             <div><a href="#none">면접 스파르타</a></div>
@@ -236,48 +237,108 @@
         <div class="widthAuto">
             <div class="will-acadTit">윌비스 <span class="tx-color">신광은경찰학원</span> 특별관리반</div>
             <ul class="specialClass">   
-                <li><a href="#none"><img src="{{ img_url('cop_acad/banner/bnr_A01.jpg') }}" alt="스파르타"></a></li>
-                <li><a href="#none"><img src="{{ img_url('cop_acad/banner/bnr_A02.jpg') }}" alt="영어지옥 탈출반"></a></li>
-                <li><a href="#none"><img src="{{ img_url('cop_acad/banner/bnr_A03.jpg') }}" alt="통합생활 관리반"></a></li>
-                <li><a href="#none"><img src="{{ img_url('cop_acad/banner/bnr_A04.jpg') }}" alt="특별체력 관리반"></a></li>
+                <li><a href="#none"><img src="{{ img_url('cop_acad/banner/bnr_A01.jpg') }}" title="스파르타"></a></li>
+                <li><a href="#none"><img src="{{ img_url('cop_acad/banner/bnr_A02.jpg') }}" title="영어지옥 탈출반"></a></li>
+                <li><a href="#none"><img src="{{ img_url('cop_acad/banner/bnr_A03.jpg') }}" title="통합생활 관리반"></a></li>
+                <li><a href="#none"><img src="{{ img_url('cop_acad/banner/bnr_A04.jpg') }}" title="특별체력 관리반"></a></li>
             </ul>
         </div>
     </div>
 
+    <div class="Section Section2 pb110">     
+        <div class="widthAuto tx-center pt80 pb80">    
+            <img src="{{ img_url('cop_acad/visual/visual_curri_tit.png') }}" title="최적의 합격 커리큘럼">
+        </div> 
+        <div class="widthAuto CurriStepBox">
+            <div class="CurriView"><a href="{{ site_url('/promotion/index/cate/3001/code/1126') }}" target="_blank">커리큘럼 자세히보기 &gt;</a></div>
+            <ul class="CurriStep">
+                <li class="active">
+                    <div class="curriculumBox">
+                        <span><img src="{{ img_url('cop/icon_bubble.gif') }}" title="2019대비 진행중"> </span>
+                        <div class="Tit">기본과정</div>
+                        <div class="subTit">집중연강식 진행</div>
+                        <ul class="info">
+                            <li>기초개념 정리</li>
+                            <li>지속적인 복습테스트</li>
+                            <li>초시생 필수 수강과정</li>
+                        </ul>
+                    </div>
+                    <a href="#none" onclick="fnPlayerSample('132199', '1019097', 'HD');">OT보기 &gt;</a>
+                </li>
+                <li>&nbsp;</li>
+                <li>
+                    <div class="curriculumBox">
+                        <div class="Tit">심화과정</div>
+                        <div class="subTit">프리미엄 심화과정</div>
+                        <ul class="info">
+                            <li>실력업그레이드</li>
+                            <li>심화 l 이론/기출학습</li>
+                            <li>고득점 합격발판 마련</li>
+                        </ul>
+                    </div>
+                    <a href="#none" onclick="fnPlayerSample('132216', '1019296', 'HD');">OT보기 &gt;</a>
+                </li>
+                <li>&nbsp;</li>
+                <li>
+                    <div class="curriculumBox">
+                        <div class="Tit">문제풀이 과정</div>
+                        <div class="subTit">(실전 1+2+3 단계)</div>
+                        <ul class="info">
+                            <li>1단계 진도별 핵심정리</li>
+                            <li>2단계 전범위 동형모의고사</li>
+                            <li>3단계 FINAL 실전 모의고사</li>
+                        </ul>
+                    </div>
+                    <a href="#none" onclick="fnPlayerSample('131811', '1014607', 'HD');">OT보기 &gt;</a>
+                </li>
+            </ul>
+            <div class="curriculumTxt">
+                <span class="cop-color">모든 강의</span>를 평생 0원 PASS 하나로 <span class="cop-color">평생 수강</span>하실 수 있습니다.
+                <span class="btn"><a href="{{ site_url('/promotion/index/cate/3001/code/1009') }}" target="_blank">평생 0원 PASS 구매하기</a></span>
+            </div>
+        </div>
+        <!-- CurriStepBox //--> 
+        <div class="widthAuto tx-center pt80">    
+            <img src="{{ img_url('cop_acad/visual/visual_curri_table.png') }}" title="최적의 합격 커리큘럼 연간 테이블">
+        </div>        
+    </div>
+
+    {{--
     <div class="Section Section2 mb50">
         <div class="widthAuto p_re">
-            <img src="{{ img_url('cop_acad/visual/visual_curri_bg.jpg') }}" alt="신광은경찰 합격커리큘럼">
+            <img src="{{ img_url('cop_acad/visual/visual_curri_bg.jpg') }}" title="신광은경찰 합격커리큘럼">
             <div class="passCurriWrap">
                 <ul>
                     <li class="curriStep1">
-                        <img src="{{ img_url('cop_acad/visual/visual_curriM01.png') }}" alt="집중 연강식 진행" class="out">
-                        <img src="{{ img_url('cop_acad/visual/visual_curriM01_on.png') }}" alt="집중 연강식 진행" class="over">
+                        <img src="{{ img_url('cop_acad/visual/visual_curriM01.png') }}" title="집중 연강식 진행" class="out">
+                        <img src="{{ img_url('cop_acad/visual/visual_curriM01_on.png') }}" title="집중 연강식 진행" class="over">
                     </li>
                     <li class="curriStep2">
-                        <img src="{{ img_url('cop_acad/visual/visual_curriM02.png') }}" alt="프리미엄 심화과정" class="out">
-                        <img src="{{ img_url('cop_acad/visual/visual_curriM02_on.png') }}" alt="프리미엄 심화과정" class="over">
+                        <img src="{{ img_url('cop_acad/visual/visual_curriM02.png') }}" title="프리미엄 심화과정" class="out">
+                        <img src="{{ img_url('cop_acad/visual/visual_curriM02_on.png') }}" title="프리미엄 심화과정" class="over">
                     </li>
                     <li class="curriStep3">
-                        <img src="{{ img_url('cop_acad/visual/visual_curriM03.png') }}" alt="핵심요약/진도별 정리" class="out">
-                        <img src="{{ img_url('cop_acad/visual/visual_curriM03_on.png') }}" alt="핵심요약/진도별 정리" class="over">
+                        <img src="{{ img_url('cop_acad/visual/visual_curriM03.png') }}" title="핵심요약/진도별 정리" class="out">
+                        <img src="{{ img_url('cop_acad/visual/visual_curriM03_on.png') }}" title="핵심요약/진도별 정리" class="over">
                     </li>
                     <li class="curriStep4">
-                        <img src="{{ img_url('cop_acad/visual/visual_curriM04.png') }}" alt="집중 약점 보안" class="out">
-                        <img src="{{ img_url('cop_acad/visual/visual_curriM04_on.png') }}" alt="집중 약점 보안" class="over">
+                        <img src="{{ img_url('cop_acad/visual/visual_curriM04.png') }}" title="집중 약점 보안" class="out">
+                        <img src="{{ img_url('cop_acad/visual/visual_curriM04_on.png') }}" title="집중 약점 보안" class="over">
                     </li>
                     <li class="curriStep5">
-                        <img src="{{ img_url('cop_acad/visual/visual_curriM05.png') }}" alt="실전력 극대화" class="out">
-                        <img src="{{ img_url('cop_acad/visual/visual_curriM05_on.png') }}" alt="실전력 극대화" class="over">
+                        <img src="{{ img_url('cop_acad/visual/visual_curriM05.png') }}" title="실전력 극대화" class="out">
+                        <img src="{{ img_url('cop_acad/visual/visual_curriM05_on.png') }}" title="실전력 극대화" class="over">
                     </li>
                     <li class="curriStep6">
-                        <img src="{{ img_url('cop_acad/visual/visual_curriM06.png') }}" alt="집단+개별면접대비" class="out">
-                        <img src="{{ img_url('cop_acad/visual/visual_curriM06_on.png') }}" alt="집단+개별면접대비" class="over">
+                        <img src="{{ img_url('cop_acad/visual/visual_curriM06.png') }}" title="집단+개별면접대비" class="out">
+                        <img src="{{ img_url('cop_acad/visual/visual_curriM06_on.png') }}" title="집단+개별면접대비" class="over">
                     </li>
                 </ul>
             </div>
         </div>
     </div>
     <!-- 합격커리큘럼 //-->
+    --}}
 
     {{-- on air include --}}
     @include('willbes.pc.site.main_partial.on_air')
@@ -292,7 +353,7 @@
                 </div>
             <div class="sliderInfo">
                 <div class="will-acadTit"><span class="tx-color">왜</span> 노량진 실강인가?</div>
-                <a href="#none" target="_blank"><img src="{{ img_url('cop_acad/banner/bnr_B01.jpg') }}" alt="노량진24시"></a>
+                <a href="#none" target="_blank"><img src="{{ img_url('cop_acad/banner/bnr_B01.jpg') }}" title="노량진24시"></a>
             </div>
             <div class="noticeTabs acad">
                 <ul class="tabWrap noticeWrap_acad two">
@@ -301,19 +362,19 @@
                 </ul>
                 <div class="tabBox noticeBox_acad">
                     <div id="notice1" class="tabContent p_re">
-                        <a href="#none" class="f_right btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}" alt="더보기"></a>
+                        <a href="#none" class="f_right btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}" title="더보기"></a>
                         <ul class="List-Table">
-                            <li><a href="#none"><img src="{{ img_url('cop/icon_hot.png') }}" alt="HOT"> 공지사항 제목이 출력됩니다. 공지사항 제목이 출력됩니다.</a></li>
-                            <li><a href="#none"><img src="{{ img_url('cop/icon_hot.png') }}" alt="HOT"> 3월 31일(금) 새벽시스템점검안내 안내안내안내 새벽시스템점검안내 안내안내안내</a></li>
+                            <li><a href="#none"><img src="{{ img_url('cop/icon_hot.png') }}" title="HOT"> 공지사항 제목이 출력됩니다. 공지사항 제목이 출력됩니다.</a></li>
+                            <li><a href="#none"><img src="{{ img_url('cop/icon_hot.png') }}" title="HOT"> 3월 31일(금) 새벽시스템점검안내 안내안내안내 새벽시스템점검안내 안내안내안내</a></li>
                             <li><a href="#none">설연휴학원고객센터운영안내 고객센터운영안내</a></li>
                             <li><a href="#none">추석교재배송및고객센터휴무안내 고객센터운영안내</a></li>
                             <li><a href="#none">추석교재배송및고객센터휴무안내 고객센터운영안내</a></li>
                         </ul>
                     </div>
                     <div id="notice2" class="tabContent p_re">
-                        <a href="#none" class="f_right btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}" alt="더보기"></a>
+                        <a href="#none" class="f_right btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}" title="더보기"></a>
                         <ul class="List-Table">
-                            <li><a href="#none"><img src="{{ img_url('cop/icon_hot.png') }}" alt="HOT"> 공지사항 제목이 출력됩니다.</a></li>
+                            <li><a href="#none"><img src="{{ img_url('cop/icon_hot.png') }}" title="HOT"> 공지사항 제목이 출력됩니다.</a></li>
                             <li><a href="#none">3월 31일(금) 새벽시스템점검안내222</a></li>
                             <li><a href="#none">설연휴학원고객센터운영안내22</a></li>
                             <li><a href="#none">추석교재배송및고객센터휴무안내22</a></li>
@@ -354,7 +415,7 @@
                 <div class="tabBox noticeBox_campus">
                     <div id="campus1" class="tabContent">
                         <div class="map_img">
-                            <img src="{{ img_url('cop_acad/map/map_cop_origin.jpg') }}" alt="노량진">
+                            <img src="{{ img_url('cop_acad/map/map_cop_origin.jpg') }}" title="노량진">
                             <span class="origin">노량진(본원)</span>
                         </div>
                         <div class="campus_info">
@@ -362,7 +423,7 @@
                                 <dt>
                                     <div class="c-tit">
                                         <span class="tx-color">노량진</span> 캠퍼스 공지사항
-                                        <a href="https://cop.dev.willbes.net/pass/support/notice/index" class="btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}" alt="더보기"></a>
+                                        <a href="https://cop.dev.willbes.net/pass/support/notice/index" class="btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}" title="더보기"></a>
                                     </div>
                                     <div class="c-info p_re">
                                         <ul class="List-Table">
@@ -397,7 +458,7 @@
 
                     <div id="campus2" class="tabContent">
                         <div class="map_img">
-                            <img src="{{ img_url('cop_acad/map/map_cop_sl.jpg') }}" alt="신림">
+                            <img src="{{ img_url('cop_acad/map/map_cop_sl.jpg') }}" title="신림">
                             <span>신 림</span>
                         </div>
                         <div class="campus_info">
@@ -439,7 +500,7 @@
 
                     <div id="campus3" class="tabContent">
                         <div class="map_img">
-                            <img src="{{ img_url('cop_acad/map/map_cop_ic.jpg') }}" alt="인천">
+                            <img src="{{ img_url('cop_acad/map/map_cop_ic.jpg') }}" title="인천">
                             <span>인 천</span>
                         </div>
                         <div class="campus_info">
@@ -481,7 +542,7 @@
 
                     <div id="campus4" class="tabContent">
                         <div class="map_img">
-                            <img src="{{ img_url('cop_acad/map/map_cop_dg.jpg') }}" alt="대구">
+                            <img src="{{ img_url('cop_acad/map/map_cop_dg.jpg') }}" title="대구">
                             <span>대 구</span>
                         </div>
                         <div class="campus_info">
@@ -523,7 +584,7 @@
 
                     <div id="campus5" class="tabContent">
                         <div class="map_img">
-                            <img src="{{ img_url('cop_acad/map/map_cop_bs.jpg') }}" alt="부산">
+                            <img src="{{ img_url('cop_acad/map/map_cop_bs.jpg') }}" title="부산">
                             <span>부 산</span>
                         </div>
                         <div class="campus_info">
@@ -565,7 +626,7 @@
 
                     <div id="campus6" class="tabContent">
                         <div class="map_img">
-                            <img src="{{ img_url('cop_acad/map/map_cop_kj.jpg') }}" alt="광주">
+                            <img src="{{ img_url('cop_acad/map/map_cop_kj.jpg') }}" title="광주">
                             <span>광 주</span>
                         </div>
                         <div class="campus_info">
@@ -607,7 +668,7 @@
         
                     <div id="campus7" class="tabContent">
                         <div class="map_img">
-                            <img src="{{ img_url('cop_acad/map/map_cop_jj.jpg') }}" alt="제주">
+                            <img src="{{ img_url('cop_acad/map/map_cop_jj.jpg') }}" title="제주">
                             <span>제 주</span>
                         </div>
                         <div class="campus_info">
@@ -650,7 +711,7 @@
                     <div id="campus8" class="tabContent">
                         <div>
                             <div class="map_img">
-                                <img src="{{ img_url('cop_acad/map/map_cop_jbjj.jpg') }}" alt="전북 전주">
+                                <img src="{{ img_url('cop_acad/map/map_cop_jbjj.jpg') }}" title="전북 전주">
                                 <span>전북 전주</span>                       
                             </div>
                             <div class="campus_info">
@@ -706,7 +767,7 @@
 
                         <div class="c_both pt30">
                             <div class="map_img">
-                                <img src="{{ img_url('cop_acad/map/map_cop_jbis.jpg') }}" alt="전북 익산">
+                                <img src="{{ img_url('cop_acad/map/map_cop_jbis.jpg') }}" title="전북 익산">
                                 <span>전북 익산</span>                       
                             </div>
                         </div>
@@ -715,7 +776,7 @@
 
                     <div id="campus9" class="tabContent">
                         <div class="map_img">
-                            <img src="{{ img_url('cop_acad/map/map_cop_jinj.jpg') }}" alt="진주">
+                            <img src="{{ img_url('cop_acad/map/map_cop_jinj.jpg') }}" title="진주">
                             <span>진 주</span>
                         </div>
                         <div class="campus_info">

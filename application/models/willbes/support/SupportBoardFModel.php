@@ -292,7 +292,7 @@ class SupportBoardFModel extends BaseSupportFModel
         return $this->_conn->query('select '.$column .$from .$where . $order_by_offset_limit)->row_array();
     }
 
-    public function listBoardForTpass($site_code, $is_count, $cate_code, $arr_condition_board = [], $arr_condition_pkg = [], $arr_condition_auth = [], $column = null, $limit = null, $offset = null, $order_by = [])
+    public function listBoardForTpass($site_code, $cate_code, $is_count, $arr_condition_board = [], $arr_condition_pkg = [], $arr_condition_auth = [], $column = null, $limit = null, $offset = null, $order_by = [])
     {
         if ($is_count === true) {
             $column = 'count(*) AS numrows';

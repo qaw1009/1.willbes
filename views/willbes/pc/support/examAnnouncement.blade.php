@@ -57,7 +57,7 @@
                             <thead>
                             <tr>
                                 <th>No<span class="row-line">|</span></th>
-                                <th>공고지역<span class="row-line">|</span></th>
+                                <th>공고유형<span class="row-line">|</span></th>
                                 <th>지역<span class="row-line">|</span></th>
                                 <th>제목<span class="row-line">|</span></th>
                                 <th>첨부<span class="row-line">|</span></th>

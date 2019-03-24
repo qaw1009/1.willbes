@@ -276,12 +276,10 @@
                     <img src="http://file3.willbes.net/new_gosi/2017/01/leaveArmyB05.png" alt="혹시, 원하시는 교육과정을 찾지 못하셨나요?"/>
                     <ul>
                         <li class="liSty1">교육과정바로가기 &gt;</li>
-                        <li><a href="{{ app_url('/promotion/index/cate/3019/code/1113', 'pass') }}" target="_blank">>공무원 / 소방자격증</a></li>
+                        <li><a href="{{ app_url('/promotion/index/cate/3019/code/1113', 'pass') }}" target="_blank">공무원 / 소방자격증</a></li>
                         <li><a href="#none">경찰</a></li>
                     </ul>
                 </div>
-
-
 
             </div><!--LAeventB03//-->
 
@@ -442,25 +440,23 @@
         </div>
         <!-- End Container -->
 
-
+        <script src="/public/js/willbes/jquery.bpopup.min.js"></script>
         <script type="text/javascript">
 
-            function go_popup() {
-
-                var targetOffset= $(".LAeventB04").offset().top;
-                $('html, body').animate({scrollTop: targetOffset}, 1000);
-                //setTimeout(go_pop(), 2000);
-
-            }
-            function go_pop(){
-                $('#popup').bPopup();
-            }
-            function go_popup1() {
-                $('#popup1').bPopup();
-            }
-            function go_popup2() {
-                $('#popup2').bPopup();
-            }
+        function go_popup() {
+            var targetOffset= $(".LAeventB04").offset().top;
+            $('html, body').animate({scrollTop: targetOffset}, 1000);
+            //setTimeout(go_pop(), 2000);
+        }
+        function go_pop(){
+            $('#popup').bPopup();
+        }
+        function go_popup1() {
+            $('#popup1').bPopup();
+        }
+        function go_popup2() {
+            $('#popup2').bPopup();
+        }
 
             function certOpen(){
                 {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
@@ -510,27 +506,6 @@
 
                         e.preventDefault()})})}
             );
-        </script>
-
-        <script src="/public/js/willbes/jquery.nav.js"></script>
-        <script>
-            $( document ).ready( function() {
-                var jbOffset = $( '.rLnb' ).offset();
-                $( window ).scroll( function() {
-                    if ( $( document ).scrollTop() > jbOffset.top ) {
-                        $( '.rLnb' ).addClass( 'rLnb_sectionFixed' );
-                    }
-                    else {
-                        $( '.rLnb' ).removeClass( 'rLnb_sectionFixed' );
-                    }
-                });
-            } );
-            $(document).ready(function() {
-                $('.rLnb').onePageNav({
-                    currentClass: 'hvr-shutter-out-horizontal_active'
-                });
-            });
-
         </script>
 
 @stop

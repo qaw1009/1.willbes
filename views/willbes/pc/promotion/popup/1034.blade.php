@@ -37,16 +37,15 @@
 </style>
 
 <div id="popup" class="Layerpop" >
-	<form name="eventForm" id="eventForm" method="post" enctype="multipart/form-data" action="">
-	<input type="hidden" name="searchEventNo"  id ="searchEventNo" value="224"/>
-	<input type="hidden" name="SELECTED_OPTION_NO"  id ="SELECTED_OPTION_NO" value="1"/>
-	<input type="hidden" name="MESSAGE"  id ="MESSAGE" value=""/>
-	<input type="hidden" name="MMS_YN"  id ="MMS_YN" value=""/>
+<form name="regi_form_register" id="regi_form_register">
+	{!! csrf_field() !!}
+	{!! method_field($arr_base['method']) !!}
+	<input type="hidden" name="event_idx"  id ="event_idx" value="{{ $arr_base['data']['ElIdx'] }}"/>
+	<input type="hidden" name="register_type" value="promotion"/>
 	
-    	<h1>장정훈 경찰학 무료 숫자특강</h1>
-       
-		
-	  <p class="tit"><b>특강 신청접수</b></p>
+	<h1>장정훈 경찰학 무료 숫자특강</h1>
+
+	<p class="tit"><b>특강 신청접수</b></p>
 
         <table class="preTb">
         	<colgroup>
@@ -56,33 +55,26 @@
         		<col width="28%" />
         	</colgroup>            
         	<tbody>
-            	<tr >
+            	<tr>
                 	<th>성명</th>
-                	<td><input type="text" id="USER_NAME" name="USER_NAME" value="${userInfo.USER_NM}" style="width:100px"/></td>
+                	<td class="item"><input type="text" id="register_name" name="register_name" value="{{sess_data('mem_name')}}" title="성명" required="required" style="width:100px"/></td>
                 	<th>연락처</th>
-                	<td><input type="text" id="PHONE_NO" name="PHONE_NO" value="${userInfo.PHONE_NO}" style="width:100px" onkeyup="fn_OnlyNumber1(this);"/></td>
+                	<td class="item"><input type="text" id="register_tel" name="register_tel" value="{{sess_data('mem_phone')}}" title="연락처" required="required" style="width:100px"/></td>
                 </tr>
-
-            	<tr >
-                	<th >캠퍼스</th>
+            	<tr>
+                	<th>캠퍼스</th>
 					<td colspan="3">
-						<select id="ARM_NM" name="ARM_NM">
-							<option value="노량진">노량진</option>
-							<option value="신림">신림</option>
-							<option value="인천">인천</option>
-							<option value="대구">대구</option>
-							<option value="부산">부산</option>
-							<option value="광주">광주</option>
-							<option value="제주">제주</option>
-							<option value="전북(전주/익산)">전북(전주/익산)</option>
-							<option value="진주">진주</option>
+						<select id="register_chk" name="register_chk[]" title="캠퍼스" required="required">
+							@foreach($arr_base['register_list'] as $row)
+								<option value="{{$row['ErIdx']}}">{{ $row['Name'] }}</option>
+							@endforeach
                         </select>
 					</td>
 				</tr>
-            	<tr >
-            	  <th >일정</th>
+            	<tr>
+            	  <th>일정</th>
             	  <td colspan="3">2019.3.30(토)~31(일) 14:00</td>
-          	  </tr>
+          	  	</tr>
             </tbody>
         </table>
 
@@ -115,14 +107,29 @@
 				</li> 
         	</ul>
     	</div><!--//termsBx01-->
-        <p class="ck"><input type="checkbox" id="accept_cb" value="N" > 윌비스 신광은경찰학원에 개인정보 제공 동의하기(필수)</p>
+        <p class="ck"><input type="checkbox" id="is_chk" name="is_chk" value="Y" title="약관동의"> 윌비스 신광은경찰학원에 개인정보 제공 동의하기(필수)</p>
         <p class="ck"> * 성명 / 연락처 / 지원청 입력 및 수험표 첨부파일을 등록해야만 신청가능합니다.</p>
         <p class="btn" ><a href="javascript:fn_submit()"><img src="http://file3.willbes.net/new_gosi/com_img/box_request.jpg" alt="신청하기" /></a><a href="javascript:window.close()"><img src="http://file3.willbes.net/new_gosi/com_img/box_cancel.jpg"alt="취소" /></a></p>
 	</form>
-	</div>
+</div>
 <!--willbes-Layer-PassBox//-->
+<script>
+	function fn_submit() {
+		var $regi_form_register = $('#regi_form_register');
+		var _url = '{!! front_url('/event/registerStore') !!}';
 
+		if ($regi_form_register.find('input[name="is_chk"]').is(':checked') === false) {
+			alert('개인정보 수집/이용 동의 안내에 동의하셔야 합니다.');
+			return;
+		}
 
-
-
+		if (!confirm('저장하시겠습니까?')) { return true; }
+		ajaxSubmit($regi_form_register, _url, function(ret) {
+			if(ret.ret_cd) {
+				alert(ret.ret_msg);
+				location.reload();
+			}
+		}, showValidateError, null, false, 'alert');
+	}
+</script>
 @stop

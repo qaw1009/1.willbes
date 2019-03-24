@@ -108,7 +108,7 @@ class Question extends BaseBoard
 
         $column = '
             LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.ExamProblemYear,
-            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName,
+            LB.ReadCnt, LB.SettingReadCnt, ADMIN.wAdminName,
             LB.AreaCcd, LB.SubjectIdx, LSC1.CcdName as AreaName, PS.SubjectName
         ';
 

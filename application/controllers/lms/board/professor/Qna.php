@@ -213,7 +213,7 @@ class Qna extends BaseBoard
         $column = '
             LB.BoardIdx, LB.RegType, LB.SiteCode, LB.CampusCcd,
             LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.IsPublic, LB.IsStatus,
-            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName,
+            LB.ReadCnt, LB.SettingReadCnt, ADMIN.wAdminName,
             LB.RegMemIdx, MEM.MemName AS RegMemName,
             LB.ReplyAdminIdx, LB.ReplyRegDatm,
             LB.typeCcd, LSC2.CcdName AS TypeCcdName,

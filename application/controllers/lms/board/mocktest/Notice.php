@@ -118,7 +118,7 @@ class Notice extends Main
 
         $column = '
             LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
-            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName
+            LB.ReadCnt, LB.SettingReadCnt, ADMIN.wAdminName
         ';
 
         $list = [];

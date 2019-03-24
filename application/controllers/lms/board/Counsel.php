@@ -154,7 +154,7 @@ class Counsel extends BaseBoard
         $column = '
             LB.BoardIdx, LB.RegType, LB.SiteCode, LB.MdCateCode, LB.CampusCcd, LSC.CcdName AS CampusName,
             LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.IsStatus,
-            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName,
+            LB.ReadCnt, LB.SettingReadCnt, ADMIN.wAdminName,
             LB.RegMemIdx, MEM.MemName AS RegMemName,
             LB.IsPublic, LB.VocCcd, LB.ReplyAdminIdx, LB.ReplyRegDatm,
             LB.typeCcd, LSC2.CcdName AS TypeCcdName,

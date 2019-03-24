@@ -1779,7 +1779,7 @@ table.auTable tr td {
 }
 /* Main Container : QuickMenu */
 .MainQuickMenu {
-    position: fixed;
+    position: absolute;
     top: 190px;
     right: 10px;
     width: 100px;

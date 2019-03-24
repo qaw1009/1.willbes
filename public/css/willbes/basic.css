@@ -185,7 +185,7 @@ html {
 	cursor: default;
   }
   input[type="file"] {
-    width: 50%;
+    width: 100%;
   }
   button::-moz-focus-inner,
   input::-moz-focus-inner {

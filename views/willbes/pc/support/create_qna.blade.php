@@ -91,7 +91,7 @@
                                 <ul class="attach">
                                     @for($i = 0; $i < $attach_file_cnt; $i++)
                                         <li>
-                                            <div class="filetype">
+                                            <!--div class="filetype"-->
                                                 <!--input type="text" class="file-text" />
                                                 <span class="file-btn bg-heavy-gray NSK">찾아보기</span>
                                                 <span class="file-select"-->
@@ -103,7 +103,7 @@
                                                         <a href="#none" class="file-delete" data-attach-idx="{{ $data['AttachData'][$i]['FileIdx']  }}">파일삭제</a>
                                                     </p>
                                                 @endif
-                                            </div>
+                                            <!--/div-->
                                         </li>
                                     @endfor
                                     <li>

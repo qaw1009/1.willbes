@@ -124,7 +124,7 @@
         <div id="nav">
             <img src="http://file3.willbes.net/new_gosi/2018/10/EV181030_scroll_bn.png" alt="예약하기" usemap="#Map_1030_lec_go" border="0"  />
             <map name="Map_1030_lec_go">
-                <area shape="rect" coords="813,16,1127,78" href="{{ site_url('#none') }}" target="_blank" alt="예약하기">
+                <area shape="rect" coords="813,16,1127,78" href="{{ site_url('/pass/event/show/ongoing?event_idx=159') }}" target="_blank" alt="예약하기">
             </map>
         </div>
 

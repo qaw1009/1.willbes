@@ -816,9 +816,13 @@ class EventLectureModel extends WB_Model
     public function listEventNotice($arr_condition)
     {
         $limit = 100;   // 페이지처리 없음으로 인한 limit 셋팅
-        $column = '
+        /*$column = '
             LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
             LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName
+        ';*/
+        $column = '
+            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
+            LB.ReadCnt, LB.SettingReadCnt, ADMIN.wAdminName
         ';
 
         return $this->boardModel->listAllBoard('notice', false, $arr_condition, '', '', $limit, '', ['LB.BoardIdx' => 'DESC'], $column);
@@ -858,8 +862,13 @@ class EventLectureModel extends WB_Model
         $column = '
             LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LS.SiteName,
             LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
-            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm
+            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm
             ';
+        /*$column = '
+            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LS.SiteName,
+            LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
+            LB.ReadCnt, LB.SettingReadCnt, ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm
+            ';*/
 
         $arr_condition = ([
             'EQ'=>[

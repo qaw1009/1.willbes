@@ -96,23 +96,23 @@
         <!-- 타이머 -->
         <div class="evtCtnsBox time">
             <div class="time_date" id="newTopDday">
-                <table width="1100px;" height="90px" border="0" cellpadding=0 cellspacing=0>
-                    <tr>
-                        <td style="text-align:center;"><img src="http://file3.willbes.net/new_gosi/2019/01/EV190115_c0_1.jpg" alt=""  /></td>
-                        <td width="150" align="center" class="time_txt">마감까지 <br /><span>남은 시간은</span></td>
-                        <td width="62" height="101" align="center"><img id="dd1" src="http://file.willbes.net/new_image/0.png" class="t_img" /></td>
-                        <td width="62" height="101" align="center"><img id="dd2" src="http://file.willbes.net/new_image/0.png" class="t_img" /></td>
-                        <td width="60" height="101" align="center" class="time_txt">day</td>
-                        <td width="62" height="101" align="center"><img id="hh1" src="http://file.willbes.net/new_image/0.png" class="t_img"/></td>
-                        <td width="62" height="101" align="center"><img id="hh2" src="http://file.willbes.net/new_image/0.png" class="t_img"/></td>
-                        <td width="20" height="101" align="center" class="time_txt">:</td>
-                        <td width="62" height="101" align="center"><img id="mm1" src="http://file.willbes.net/new_image/0.png" class="t_img"/></td>
-                        <td width="62" height="101" align="center"><img id="mm2" src="http://file.willbes.net/new_image/0.png" class="t_img"/></td>
-                        <td width="20" height="101" align="center">:</td>
-                        <td width="62" height="101" align="center"><img id="ss1" src="http://file.willbes.net/new_image/0.png" class="t_img"/></td>
-                        <td width="62" height="101" align="center"><img id="ss2" src="http://file.willbes.net/new_image/0.png" class="t_img"/></td>
-                    </tr>
-                </table>
+            <table>
+                <tr>
+                <td class="time_txt"><span>3/31(일)</span> 마감까지 </td>
+                <td><img id="d1" src="http://file.willbes.net/new_image/0.png" /></td>
+                <td><img id="d2" src="http://file.willbes.net/new_image/0.png" /></td>
+                <td class="time_txt">일 </td>
+                <td><img id="h1" src="http://file.willbes.net/new_image/0.png" /></td>
+                <td><img id="h2" src="http://file.willbes.net/new_image/0.png" /></td>
+                <td class="time_txt">:</td>
+                <td><img id="m1" src="http://file.willbes.net/new_image/0.png" /></td>
+                <td><img id="m2" src="http://file.willbes.net/new_image/0.png" /></td>
+                <td class="time_txt">:</td>
+                <td><img id="s1" src="http://file.willbes.net/new_image/0.png" /></td>
+                <td><img id="s2" src="http://file.willbes.net/new_image/0.png" /></td>
+                <td align="center" class="time_txt"> 남았습니다.</td>
+                </tr>
+            </table>
             </div>
         </div>
         <!-- 타이머 //-->

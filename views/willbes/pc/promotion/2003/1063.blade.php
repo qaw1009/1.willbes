@@ -83,6 +83,7 @@
         .time_date {text-align:center; padding:20px 0}
         .time_date table {width:1120px; margin:0 auto}
         .time_date table td:first-child {font-size:40px}
+        .time_date table td img {width:80%}
         .time_txt {font-family: 'NanumGothic', '나눔고딕','NanumGothicWeb', '맑은 고딕', 'Malgun Gothic', Dotum; font-size:28px; color:#f2f2f2; letter-spacing: -1px; font-weight:bold}
         .time_txt span {color:#ef6759}
         .time p {text-alig:center}

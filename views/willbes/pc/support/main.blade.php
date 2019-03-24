@@ -254,15 +254,15 @@
                                     <span class="row-line">|</span>
                                 </li>
                                 <li class="f-info3">
-                                    <a href="{{ site_url('/support/guide/index') }}"><img src="{{ img_url('cs/icon_question624.gif') }}"><span>결제/환불</span></a>
+                                    <a href="{{ site_url('/support/guide/index') }}"><img src="{{ img_url('cs/icon_firstinfo3.gif') }}"><span>수강신청</span></a>
                                     <span class="row-line">|</span>
                                 </li>
                                 <li class="f-info4">
-                                    <a href="{{ site_url('/pass/support/faq/index') }}"><img src="{{ img_url('cs/icon_question625.gif') }}"><span>교재</span></a>
+                                    <a href="{{ site_url('/support/guide/index') }}"><img src="{{ img_url('cs/icon_firstinfo4.gif') }}"><span>주문/결제</span></a>
                                     <span class="row-line">|</span>
                                 </li>
                                 <li class="f-info5">
-                                    <a href="{{ site_url('/support/guide/index') }}"><img src="{{ img_url('cs/icon_question626.gif') }}"><span>온라인수강</span></a>
+                                    <a href="{{ site_url('/support/guide/index') }}"><img src="{{ img_url('cs/icon_question626.gif') }}"><span>강의수강</span></a>
                                 </li>
                             </ul>
                         </div>

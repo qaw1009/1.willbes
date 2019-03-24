@@ -3,7 +3,7 @@
 @section('content')
 <!-- Container -->
 
-<div id="Container" class="Container gosi c_both">
+<div id="Container" class="Container gosi NSK c_both">
     <div class="Menu widthAuto NSK c_both">
         <h3>
             <ul class="menu-Tit">
@@ -435,14 +435,14 @@
     <div id="QuickMenu" class="MainQuickMenu">
         <ul>
             <li>
-                <div class="QuickDdayBox QuickSlider">
+                <div class="QuickSlider ">
                     <div class="sliderNum">
-                        <div>
+                        <div class="QuickDdayBox">
                             <div class="q_tit">3차 필기시험</div>
                             <div class="q_day">2018.12.12</div>
                             <div class="q_dday NSK-Blac">D-5</div>
                         </div>
-                        <div>
+                        <div class="QuickDdayBox">
                             <div class="q_tit">1차 공무원</div>
                             <div class="q_day">2019.04.05</div>
                             <div class="q_dday NSK-Blac">D-10</div>

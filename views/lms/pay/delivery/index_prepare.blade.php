@@ -192,7 +192,7 @@
                         return row.ZipCode + '<br/>' + data + '<br/>' + row.Addr2;
                     }},
                     {'data' : 'InvoiceNo', 'render' : function(data, type, row, meta) {
-                        return '<input type="number" name="invoice_no" class="form-control input-sm" value="' + data + '" data-order-prod-idx="' + row.OrderProdIdx + '" style="width: 120px;" />' +
+                        return '<input type="text" name="invoice_no" class="form-control input-sm" value="' + data + '" data-order-prod-idx="' + row.OrderProdIdx + '" style="width: 120px;" />' +
                             '<button name="btn_invoice_modify" class="btn btn-xs btn-success mb-0 ml-5 mr-0" data-order-prod-idx="' + row.OrderProdIdx + '">수정</button>';
                     }},
                     {'data' : 'InvoiceRegAdminName', 'render' : function(data, type, row, meta) {

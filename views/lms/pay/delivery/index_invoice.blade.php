@@ -193,7 +193,7 @@
                                 '<button name="btn_invoice_cancel" class="btn btn-xs btn-danger mb-0 mr-0" data-order-idx="' + row.OrderIdx + '">취소</button>';
                         }
 
-                        return '<input type="number" name="invoice_no" class="form-control input-sm" value="' + data + '" data-order-idx="' + row.OrderIdx + '"' + attr_disabled + ' style="width: 120px;" />' + bt_html;
+                        return '<input type="text" name="invoice_no" class="form-control input-sm" value="' + data + '" data-order-idx="' + row.OrderIdx + '"' + attr_disabled + ' style="width: 120px;" />' + bt_html;
                     }}
                 ]
             });

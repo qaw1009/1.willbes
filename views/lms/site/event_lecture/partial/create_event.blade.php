@@ -82,14 +82,14 @@
     <label class="control-label col-md-1-1" for="attach_file_F">첨부파일</label>
     <div class="col-md-10 item form-inline">
         <div class="title">
-            <div class="filetype">
+            <!--div class="filetype">
                 <input type="text" class="form-control file-text" disabled="">
                 <button class="btn btn-primary mb-0" type="button">파일 선택</button>
-                <span class="file-select file-btn">
+                <span class="file-select file-btn"-->
                     <input type="file" id="attach_file_F" name="attach_file[]" class="form-control input-file" title="첨부파일">
-                </span>
+                <!--/span>
                 <input class="file-reset btn-danger btn" type="button" value="X" />
-            </div>
+            </div-->
             @if(empty($file_data['F']) === false)
                 <p class="form-control-static ml-30 mr-10">[ <a href="{{ $file_data['F']['file_path'] }}" rel="popup-image">{{ $file_data['F']['file_real_name'] }}</a> ]
                     <a href="#none" class="file-delete" data-attach-idx="{{ $file_data['F']['file_idx'] }}"><i class="fa fa-times red"></i></a>
@@ -103,14 +103,14 @@
     <label class="control-label col-md-1-1" for="attach_file_S">리스트썸네일</label>
     <div class="col-md-10 item form-inline">
         <div class="title">
-            <div class="filetype">
+            <!--div class="filetype">
                 <input type="text" class="form-control file-text" disabled="">
                 <button class="btn btn-primary mb-0" type="button">파일 선택</button>
-                <span class="file-select file-btn">
+                <span class="file-select file-btn"-->
                     <input type="file" id="attach_file_S" name="attach_file[]" class="form-control input-file" title="리스트썸네일">
-                </span>
+                <!--/span>
                 <input class="file-reset btn-danger btn" type="button" value="X" />
-            </div>
+            </div-->
             @if(empty($file_data['S']) === false)
                 <p class="form-control-static ml-30 mr-10">[ <a href="{{ $file_data['S']['file_path'] }}" rel="popup-image">{{ $file_data['S']['file_real_name'] }}</a> ]
                     <a href="#none" class="file-delete" data-attach-idx="{{ $file_data['S']['file_idx'] }}"><i class="fa fa-times red"></i></a>
@@ -124,14 +124,14 @@
     <label class="control-label col-md-1-1" for="attach_file_I">이슈썸네일</label>
     <div class="col-md-10 form-inline">
         <div class="title">
-            <div class="filetype">
+            <!--div class="filetype">
                 <input type="text" class="form-control file-text" disabled="">
                 <button class="btn btn-primary mb-0" type="button">파일 선택</button>
-                <span class="file-select file-btn">
+                <span class="file-select file-btn"-->
                     <input type="file" id="attach_file_I" name="attach_file[]" class="form-control input-file" title="첨부파일">
-                </span>
+                <!--/span>
                 <input class="file-reset btn-danger btn" type="button" value="X" />
-            </div>
+            </div-->
             @if(empty($file_data['I']) === false)
                 <p class="form-control-static ml-30 mr-10">[ <a href="{{ $file_data['I']['file_path'] }}" rel="popup-image">{{ $file_data['I']['file_real_name'] }}</a> ]
                     <a href="#none" class="file-delete" data-attach-idx="{{ $file_data['I']['file_idx'] }}"><i class="fa fa-times red"></i></a>

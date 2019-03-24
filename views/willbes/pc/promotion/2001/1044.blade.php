@@ -22,10 +22,11 @@
         /************************************************************/
 
         .skybanner {
-            position:absolute;
+            position:fixed;
             top:400px;
             right:10px;
             z-index:1;
+            display:none;
         }
         .skybanner_sectionFixed {position:fixed; top:20px}
 

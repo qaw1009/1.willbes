@@ -8,7 +8,7 @@
             <ul>
                 <li>
                     <div>    
-                        <p class="subTit">독보적 일반/경행/승진/간부/해경</p>
+                        <p class="subTit">일반/경행/승진/간부/해경</p>
                         <p class="siteTit"><span>신광은 경찰</span><span> 온라인</span></p>
                         <a href="{{ front_app_url('/home/index', 'police') }}" class="btnGo">바로가기</a>
                     </div>

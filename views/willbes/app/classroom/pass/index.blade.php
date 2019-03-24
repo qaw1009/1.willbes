@@ -17,13 +17,6 @@
         <div class="willbes-Line">이용중인 무한 PASS ({{count($passlist)}})</div>
         <div class="willbes-Lec-Selected NG c_both tx-gray">
             <form name="searchFrm1" id="searchFrm1" action="{{front_app_url('/classroom/pass/index', 'www')}}" onsubmit="">
-                <!--
-                <select id="sitecode" name="sitecode" title="process" class="seleProcess width25p">
-                    <option value="">과정</option>
-                    @foreach($sitelist as $row )
-                        <option value="{{$row['SiteCode']}}" @if(isset($input_arr['sitecode']) && $input_arr['sitecode'] == $row['SiteCode']) selected="selected" @endif>{{$row['SiteName']}}</option>
-                    @endforeach
-                </select> -->
                 <select id="passidx" name="passidx" class="seleName width74p ml1p" >
                     @if(empty($passlist) == true)
                         <option value="">무한PASS를 선택해주십시요.</option>

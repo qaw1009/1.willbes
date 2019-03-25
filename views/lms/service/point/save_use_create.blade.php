@@ -63,7 +63,7 @@
                 <label class="control-label col-md-2">적립/차감선택 <span class="required">*</span>
                 </label>
                 <div class="col-md-9 item">
-                    <input type="radio" id="save_use_1" name="save_use" class="flat" value="save" title="적립/차감선택" required="required"/> <label for="save_use_1" class="input-label">적립</label>
+                    <input type="radio" id="save_use_1" name="save_use" class="flat" value="save" title="적립/차감선택" checked="checked" required="required"/> <label for="save_use_1" class="input-label">적립</label>
                     <input type="radio" id="save_use_2" name="save_use" class="flat" value="use"/> <label for="save_use_2" class="input-label">차감</label>
                 </div>
             </div>
@@ -71,13 +71,17 @@
                 <label class="control-label col-md-2">적립/차감사유 <span class="required">*</span>
                 </label>
                 <div class="col-md-9">
-                    <div class="inline-block item">
-                        <select class="form-control" id="reason_ccd" name="reason_ccd" required="required" title="적립/차감사유">
+                    <div class="inline-block">
+                        <select class="form-control" id="reason_ccd1" name="reason_ccd" required="required" title="적립사유" disabled="disabled">
                             <option value="">선택</option>
-                            @foreach($arr_reason_ccd as $group_key => $ccds)
-                                @foreach($ccds as $key => $val)
-                                    <option value="{{ $key }}" class="{{ array_search($group_key, $arr_reason_group_ccd) }} hide">{{ $val }}</option>
-                                @endforeach
+                            @foreach($arr_reason_ccd['680'] as $key => $val)
+                                <option value="{{ $key }}" class="SaveReason">{{ $val }}</option>
+                            @endforeach
+                        </select>
+                        <select class="form-control" id="reason_ccd2" name="reason_ccd" required="required" title="차감사유" disabled="disabled">
+                            <option value="">선택</option>
+                            @foreach($arr_reason_ccd['681'] as $key => $val)
+                                <option value="{{ $key }}" class="UseReason">{{ $val }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -173,16 +177,16 @@
                 if (save_use === 'save') {
                     $_regi_form.find('button[name="btn_member_search"]').data('result-type', 'multiple');
                     $_regi_form.find('#search_mem_type_2').iCheck('enable');
-                    $_regi_form.find('.SaveReason').removeClass('hide');
-                    $_regi_form.find('.UseReason').addClass('hide');
+                    $_regi_form.find('#reason_ccd1').prop('disabled', false).show();
+                    $_regi_form.find('#reason_ccd2').prop('disabled', true).hide();
                     $_regi_form.find('input[name="valid_start_date"]').prop('disabled', false);
                     $_regi_form.find('input[name="valid_end_date"]').prop('disabled', false);
                 } else {
                     $_regi_form.find('button[name="btn_member_search"]').data('result-type', 'single');
                     $_regi_form.find('#search_mem_type_2').iCheck('disable');
                     $_regi_form.find('#search_mem_type_1').iCheck('check');
-                    $_regi_form.find('.SaveReason').addClass('hide');
-                    $_regi_form.find('.UseReason').removeClass('hide');
+                    $_regi_form.find('#reason_ccd1').prop('disabled', true).hide();
+                    $_regi_form.find('#reason_ccd2').prop('disabled', false).show();
                     $_regi_form.find('input[name="valid_start_date"]').prop('disabled', true);
                     $_regi_form.find('input[name="valid_end_date"]').prop('disabled', true);
                     $_regi_form.find('#selected_member').html('');  // 차감일 경우 기존 등록한 회원 초기화
@@ -190,6 +194,10 @@
 
                 $_regi_form.find('select[name="reason_ccd"]').val('');  // 이미 선택된 적립/차감사유 초기화
             });
+
+            // 적립/차감사유 디폴트 처리
+            $_regi_form.find('#reason_ccd1').prop('disabled', false).show();
+            $_regi_form.find('#reason_ccd2').prop('disabled', true).hide();
 
             // 적립/차감 기타 사유 선택
             $_regi_form.on('change', 'select[name="reason_ccd"]', function() {

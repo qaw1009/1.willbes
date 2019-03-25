@@ -5,12 +5,12 @@
     <div id="Container" class="Container main NSK c_both">
         <div class="Section MainVisual mt30 mb50">
             <div class="widthAuto">
-                <a href="{{ site_url('/member/join/') }}" target="_blank"><img src="{{ img_url('main/visual/visual_180917.jpg') }}"></a>
+                <a href="{{ site_url('/member/join/') }}" target="_blank"><img src="{{ img_url('main/visual/visualTop.jpg') }}" title="통합회원 가입, 한번이면 OK"></a>
             </div>
         </div>
         <div class="Section Act1 mb50">
             <div class="widthAuto">
-                <div class="will-Tit">윌비스 1등 대표 과정 <span class="will-subTit">더 나은 미래, 윌비스가 책임지겠습니다.</span></div>
+                <div class="will-Tit">윌비스 평생교육 대표 과정 <span class="will-subTit">더 나은 미래, 윌비스가 책임지겠습니다.</span></div>
                 <div class="ProcessBox">
                     <ul>
                         <li>
@@ -19,7 +19,7 @@
                                     <img src="{{ img_url('main/icon_willbes1.png') }}"> 공무원
                                 </div>
                                 <div class="wTxt">
-                                    9급/7급/법원/소방/기술직NO.1<br/>
+                                    9급/7급/법원/소방/기술직 명가<br/>
                                     <strong>윌비스 고시학원</strong>
                                 </div>
                             </a>
@@ -133,7 +133,7 @@
                                     <img src="{{ img_url('main/icon_willbes9.png') }}"> 국비교육
                                 </div>
                                 <div class="wTxt">
-                                    대한민국 국비교육 No.1<br/>
+                                    대한민국 국비교육 기관<br/>
                                     <strong>윌비스 평생교육원</strong>
                                 </div>
                             </a>

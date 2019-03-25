@@ -684,16 +684,6 @@ class EventLecture extends \app\controllers\BaseController
         $data['arr_attach_file_name'] = explode(',', $data['AttachFileName']);
         $data['arr_attach_file_real_name'] = explode(',', $data['AttachRealFileName']);
 
-        /*$get_category_array = $this->categoryModel->getCategoryArray($site_code);
-        if (empty($get_category_array) === true) {
-            $data['arr_cate_code'] = [];
-        } else {
-            foreach ($arr_cate_code as $item => $code) {
-                if (empty($get_category_array[$code]) === false) {
-                    $data['arr_cate_code'][$code] = $get_category_array[$code];
-                }
-            }
-        }*/
         $data['arr_cate_code'] = [];
         $arr_cate_code = $this->boardModel->listBoardCategory($board_idx);
         if (empty($arr_cate_code) === false) {

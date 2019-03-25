@@ -53,7 +53,11 @@
                         <div class="col-md-3">
                             @for($i = 0; $i < $attach_file_cnt; $i++)
                                 @if(empty($data['arr_attach_file_path'][$i]) === false)
-                                    <p class="form-control-static">[ <a href="{{ $data['arr_attach_file_path'][$i] . $data['arr_attach_file_name'][$i] }}" rel="popup-image">{{ $data['arr_attach_file_name'][$i] }}</a> ]</p>
+                                    <p class="form-control-static">
+                                        [ <a href="javascript:void(0);" class="file-download" data-file-path="{{ urlencode($data['arr_attach_file_path'][$i].$data['arr_attach_file_name'][$i])}}" data-file-name="{{ urlencode($data['arr_attach_file_real_name'][$i]) }}" target="_blank">
+                                            {{ $data['arr_attach_file_real_name'][$i] }}
+                                        </a> ]
+                                    </p>
                                 @endif
                             @endfor
                         </div>
@@ -112,6 +116,11 @@
 
                     var uri_route = path + '/' + bm_idx + '?site_code=' + get_site_code;
                     replaceModal('{{ site_url('/live/videoManager/') }}' + uri_route, {});
+                });
+
+                $('.file-download').click(function() {
+                    var _url = '{{ site_url("/live/videoManager/download") }}/' + getQueryString() + '&path=' + $(this).data('file-path') + '&fname=' + $(this).data('file-name');
+                    window.open(_url, '_blank');
                 });
             </script>
 

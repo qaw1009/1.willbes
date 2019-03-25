@@ -1,6 +1,6 @@
-        <div class="layer" id="blackpopup">
+        <div class="modalPopup" id="blackpopup">
             <div class="bg"></div>
-            <div class="pop-layer" id="layer2">
+            <div class="pop-layer" id="modalPopup2">
                 <div class="pop-container">
                     <div class="pop-conts">
                         <!--content //-->
@@ -21,7 +21,7 @@
 
         <script type="text/javascript">
             $(document).ready(function(){
-            layer_open('layer2');
+            layer_open('modalpopup2');
             });
             function layer_open(el){
 
@@ -29,7 +29,7 @@
             var bg = temp.prev().hasClass('bg'); //dimmed 레이어를 감지하기 위한 boolean 변수
 
             if(bg){
-            $('.layer').fadeIn(); //'bg' 클래스가 존재하면 레이어가 나타나고 배경은 dimmed 된다.
+            $('.modalpopup').fadeIn(); //'bg' 클래스가 존재하면 레이어가 나타나고 배경은 dimmed 된다.
             }else{
             temp.fadeIn();
             }
@@ -42,15 +42,15 @@
 
             temp.find('a.cbtn').click(function(e){
             if(bg){
-                $('.layer').fadeOut(); //'bg' 클래스가 존재하면 레이어를 사라지게 한다.
+                $('.modalpopup').fadeOut(); //'bg' 클래스가 존재하면 레이어를 사라지게 한다.
             }else{
                 temp.fadeOut();
             }
             e.preventDefault();
             });
 
-            $('.layer .bg').click(function(e){ //배경을 클릭하면 레이어를 사라지게 하는 이벤트 핸들러
-            $('.layer').fadeOut();
+            $('.modalpopup .bg').click(function(e){ //배경을 클릭하면 레이어를 사라지게 하는 이벤트 핸들러
+            $('.modalpopup').fadeOut();
             e.preventDefault();
             });
 

@@ -173,7 +173,7 @@
 
                
 
-        <div class="Section Section2 pb110 NSK">
+        <div class="Section Section2 pb110">
             <div class="widthAuto CurriStepBox">
                 <div class="CurriView"><a href="{{ site_url('/promotion/index/cate/3001/code/1126') }}">커리큘럼 자세히보기 &gt;</a></div>
                 <ul class="CurriStep">
@@ -295,6 +295,24 @@
             {{-- quick menu --}}
             @include('willbes.pc.site.main_partial.quick_menu_' . $__cfg['SiteCode'])
         </div>
+
+        {{-- 모달 팝업 --}}
+        <div class="layer" id="blackpopup">
+            <div class="bg"></div>
+            <div class="pop-layer" id="layer2">
+                <div class="pop-container">
+                    <div class="pop-conts">
+                        <!--content //-->
+                        <a href="http://www.willbescop.net/event/movie/event.html?event_cd=On_190307_c&topMenuType=F"><img src="http://file3.willbes.net/new_cop/2019/03/LayPop190308_p.jpg" alt="경찰면접 역전 꿀팁 대방출"/></a>
+                        <div class="btn-r">
+                            <a class="cbtn" href="javascript:void(0)" onclick="closeLayerPop123('passpopup', 'blackpopup');" >하루 보지않기</a>
+                            <a class="cbtn" href="#">Close</a>
+                        </div>
+                        <!--// content-->
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- End Container -->
 
@@ -328,6 +346,43 @@
                 return false;
             });
         });
+
+        /*모달팝업*/ 
+        $(document).ready(function(){
+        layer_open('layer2');
+        });
+        function layer_open(el){
+
+        var temp = $('#' + el);
+        var bg = temp.prev().hasClass('bg'); //dimmed 레이어를 감지하기 위한 boolean 변수
+
+        if(bg){
+        $('.layer').fadeIn(); //'bg' 클래스가 존재하면 레이어가 나타나고 배경은 dimmed 된다.
+        }else{
+        temp.fadeIn();
+        }
+
+        // 화면의 중앙에 레이어를 띄운다.
+        if (temp.outerHeight() < $(document).height() ) temp.css('margin-top', '-'+temp.outerHeight()/2+'px');
+        else temp.css('top', '0px');
+        if (temp.outerWidth() < $(document).width() ) temp.css('margin-left', '-'+temp.outerWidth()/2+'px');
+        else temp.css('left', '0px');
+
+        temp.find('a.cbtn').click(function(e){
+        if(bg){
+            $('.layer').fadeOut(); //'bg' 클래스가 존재하면 레이어를 사라지게 한다.
+        }else{
+            temp.fadeOut();
+        }
+        e.preventDefault();
+        });
+
+        $('.layer .bg').click(function(e){ //배경을 클릭하면 레이어를 사라지게 하는 이벤트 핸들러
+        $('.layer').fadeOut();
+        e.preventDefault();
+        });
+
+        }    
     </script>
     {!! popup('657001', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
 @stop

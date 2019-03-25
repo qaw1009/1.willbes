@@ -39,7 +39,7 @@
         .evtMenu ul:after {content:""; display:block; clear:both}
 
         .tabCts {
-            position:relative; width:1120px; margin:0 auto; border-bottom:10px solid #000;
+            position:relative; width:1120px; margin:0 auto;
         }
         .download span {position:absolute; display:block; width:72px; height:24px; line-height:24px; text-align:center; z-index:1}
         .download span:nth-child(1) {left:128px; top:711px}

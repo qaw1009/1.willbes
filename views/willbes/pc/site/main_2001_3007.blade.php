@@ -15,7 +15,7 @@
                 </div>
                 <ul>
                     <li><a href="{{ site_url('/lecture/show/cate/3007/pattern/only/prod-code/132260') }}"><img src="{{ img_url('cop_sea/banner/bnr_360_01.jpg') }}" title="원유철 한국사 기본이론"></a></li>
-                    <li><a href="{{ site_url('/lecture/show/cate/3008/pattern/only/prod-code/151931') }}"><img src="{{ img_url('cop_sea/banner/bnr_360_02.jpg') }}" title="오태진 한국사 기본이론"></a></li>
+                    <li><a href="{{ site_url('/lecture/show/cate/3007/pattern/only/prod-code/132262') }}"><img src="{{ img_url('cop_sea/banner/bnr_360_02.jpg') }}" title="오태진 한국사 기본이론"></a></li>
                 </ul>
             </div>
         </div>

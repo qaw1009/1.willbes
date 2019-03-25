@@ -10,7 +10,7 @@
             <div class="widthAuto bnrSec01">
                 <ul>
                     <li><a href="{{ site_url('/promotion/index/cate/3007/code/1037') }}"><img src="{{ img_url('cop_sea_special/banner/bnr_556_01.jpg') }}" title="해양경찰 특채PASS"></a></li>
-                    <li><a href="{{ site_url('/promotion/index/cate/3008/code/1038') }}"><img src="{{ img_url('cop_sea_special/banner/bnr_556_02.jpg') }}" title="KCG 핵심요약"></a></li>
+                    <li><a href="{{ site_url('/promotion/index/cate/3001/code/1035') }}"><img src="{{ img_url('cop_sea_special/banner/bnr_556_02.jpg') }}" title="KCG 핵심요약"></a></li>
                 </ul>
             </div>
         </div>

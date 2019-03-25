@@ -85,7 +85,7 @@
     </style>
 
 
-    <div class="evtContent" id="evtContainer">      
+    <div class="evtContent NG" id="evtContainer">      
 
         <div class="evtCtnsBox evtTop" >
             <img src="http://file3.willbes.net/new_gosi/2019/03/EV190320Y_top.jpg" title="2019 국가직 9급 풀캐어 서비스" />
@@ -124,7 +124,7 @@
         </div>
 
         <!--최종 마무리 전략-->
-        <div id="tab1" class="tabCts mb100">
+        <div id="tab1" class="tabCts pb90">
             <div class="download">		
                 <!--국어-->
                 <span>
@@ -1089,7 +1089,7 @@
         </div>
 
         <!--시험총평 및 시험후기-->
-        <div id="tab3" class="tabCts Cts03 NG">
+        <div id="tab3" class="tabCts Cts03">
             <img src="http://file3.willbes.net/new_gosi/2019/03/EV190320Y_03_1.jpg" title="풀캐어 강사진" /> 
             <ul class="graphWrap">
                 <li>
@@ -1119,9 +1119,24 @@
                 </div>
             </div>
             <img src="http://file3.willbes.net/new_gosi/2019/03/EV190320Y_03_2.jpg" title="풀캐어 강사진" /> 
+
+            <div>
+                <div class="reply_inbx">							
+                    <ul>
+                        <li><input id=" " name=" " type="radio" value="1"> <img src="{{ img_url('common/icon_re01.png') }}" title="쉬웠어요"> 쉬웠어요</li>
+                        <li><input id=" " name=" " type="radio" value="2"> <img src="{{ img_url('common/icon_re02.png') }}" title="보통이예요"> 보통이예요</li>
+                        <li><input id=" " name=" " type="radio" value="3"> <img src="{{ img_url('common/icon_re03.png') }}" title="어려웠어요"> 어려웠어요</li>
+                    </ul>                
+                    <div class="textarBx">
+                        <textarea name="EVENT_TXT" id="EVENT_TXT" cols="30" rows="3" onclick="javascript:fn_focusComment();"></textarea>
+                        <button type="button" class="btnrwt" onclick="javascript:fn_comment_insert();"><span class="ir">글쓰기</span></button>
+                    </div>
+                    <p> * 지나친 도배, 욕설, 주제와 상관없는 글은 예고 없이 관리자에 의해 삭제될 수 있습니다. </p>
+                </div>
+            </div>
         </div>
     
-
+        
               
     </div>
     <!-- End Container --> 

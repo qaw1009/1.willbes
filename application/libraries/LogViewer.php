@@ -186,11 +186,11 @@ class LogViewer
             case 'pg' :
             case 'deposit' :
                 $log_path = 'pg/inisis';
-                $log_file = ($this->log_type == 'deposit' ? 'deposit-' : '') . 'log-' . $log_date . '.log';
+                $log_file = ($this->log_type == 'deposit' ? 'deposit' : 'log') . '-' . $log_date . '.log';
                 break;
             default :
                 $log_path = strtolower($this->log_type) . ($this->log_pattern == 'log' ? '' : '/sql');
-                $log_file = $this->log_pattern == 'log' ? 'log-' . $log_date . '.log' : $this->log_pattern . '-log-' . $log_date . '.sql';
+                $log_file = $this->log_pattern == 'log' ? 'log-' . $log_date . '.log' : $this->log_pattern . '-' . $log_date . '.sql';
                 break;
         }
 

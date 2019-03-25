@@ -626,8 +626,10 @@ class Pg_inisis extends CI_Driver
             }
 
             // 입금은행명, 입금자명 인코딩 변환
-            $returns['nm_inputbank'] = iconv('EUC-KR', 'UTF-8', $returns['nm_inputbank']);
-            $returns['nm_input'] = iconv('EUC-KR', 'UTF-8', $returns['nm_input']);
+            /*$returns['nm_inputbank'] = iconv('EUC-KR', 'UTF-8', $returns['nm_inputbank']);
+            $returns['nm_input'] = iconv('EUC-KR', 'UTF-8', $returns['nm_input']);*/
+            $returns['nm_inputbank'] = '';
+            $returns['nm_input'] = '';
 
             // 전달 결과 파일로그 저장
             $this->_parent->saveFileLog('가상계좌 입금통보 결과 데이터', $returns, 'debug', $log_type);

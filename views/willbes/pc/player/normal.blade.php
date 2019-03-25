@@ -36,7 +36,7 @@
             };
 
             var media = {
-                url: "{{$data['url']}}",
+                url: "{!! $data['url'] !!}",
                 @if($data['isIntro'] === true)
                 intro: "http://hd.willbes.gscdn.com/warning/warning_new_5.mp4",
                 @endif

@@ -110,7 +110,7 @@
         };
 
         media = {
-            url: "{{$url}}",
+            url: "{!! $url !!}",
             autoPlay: true,
             startTime: 0
         };

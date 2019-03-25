@@ -138,7 +138,6 @@
         <input type="hidden" id="postform-bmidx" name="bmidx" value="" />
         <input type="hidden" id="postform-memo" name="memo" value="" />
     </form>
-    <script src="/public/js/willbes/player.js?ver={{time()}}"></script>
     <script type="text/javascript">
         $(document).ready(function(){
             $('#allcheck').on('change', function(){

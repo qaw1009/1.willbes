@@ -129,8 +129,8 @@
             <img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_002.jpg"  alt="#" usemap="#Map_down" border="0" />
             
             <map name="Map_down" id="Map_down">
-              <area shape="rect" coords="82,27,405,86" href="javascript:goFileDownload('board/201903/20190308_law.hwp','형소법 적중자료_2019년.hwp');" >
-              <area shape="rect" coords="577,27,891,87" href="javascript:goFileDownload('board/201903/20190308_cop.hwp','경찰학 적중자료_2019년.hwp');">
+                <area shape="rect" coords="82,27,405,86" href="{{front_url('/promotion/download?file_idx=').$file_data_promotion[0]['EfIdx'].'&event_idx='.$data['ElIdx'] }}" >
+                <area shape="rect" coords="577,27,891,87" href="{{front_url('/promotion/download?file_idx=').$file_data_promotion[1]['EfIdx'].'&event_idx='.$data['ElIdx'] }}">
             </map>
             
             <p class="leftBtn"><a id="imgBannerLeft7"><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_arr_prev.png" alt="이전" /></a></p>

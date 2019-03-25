@@ -383,7 +383,7 @@ class EventLectureModel extends WB_Model
      * @param array $input
      * @return array|bool
      */
-    public function modifyEventLecture($input = [])
+    public function modifyEventLecture($input = [], $promotion_modify_type = false)
     {
         $this->_conn->trans_begin();
 
@@ -443,7 +443,6 @@ class EventLectureModel extends WB_Model
                 'CampusCcd' => element('campus_ccd', $input),
                 'RequestType' => element('request_type', $input),
                 'TakeType' => element('take_type', $input),
-                'PromotionCode' => element('promotion_code', $input),
                 'PromotionParams' => element('promotion_params', $input),
                 'BIdx' => element('banner_idx', $input),
                 'IsBest' => element('is_best', $input, 0),
@@ -468,6 +467,10 @@ class EventLectureModel extends WB_Model
                 'AdjuReadCnt' => (empty(element('setting_readCnt', $input))) ? '0' : element('setting_readCnt', $input),
                 'UpdAdminIdx' => $admin_idx
             ];
+
+            if ($promotion_modify_type === true) {
+                $data['PromotionCode'] = element('promotion_code', $input);
+            }
 
             if ($this->_conn->set($data)->where('ElIdx', $el_idx)->update($this->_table['event_lecture']) === false) {
                 throw new \Exception('수정에 실패했습니다.');

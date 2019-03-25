@@ -173,7 +173,7 @@
 
                
 
-        <div class="Section Section2 pb110 NSK">
+        <div class="Section Section2 pb110">
             <div class="widthAuto CurriStepBox">
                 <div class="CurriView"><a href="{{ site_url('/promotion/index/cate/3001/code/1126') }}">커리큘럼 자세히보기 &gt;</a></div>
                 <ul class="CurriStep">
@@ -295,6 +295,9 @@
             {{-- quick menu --}}
             @include('willbes.pc.site.main_partial.quick_menu_' . $__cfg['SiteCode'])
         </div>
+
+        {{-- 모달 팝업 --}}
+        @include('willbes.pc.site.main_partial.modal_popup_' . $__cfg['SiteCode'])
     </div>
     <!-- End Container -->
 
@@ -327,7 +330,8 @@
                 $(activeTab).fadeIn();
                 return false;
             });
-        });
+        });  
     </script>
+    
     {!! popup('657001', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
 @stop

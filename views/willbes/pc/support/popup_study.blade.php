@@ -391,7 +391,7 @@
 
     //문자열 길이 체크
     function sub_str(string, length, sing) {
-        if(string.length > length) {
+        if(string != null && string.length > length) {
             return string.substr(0,length)+sing;
         } else {
             return string;

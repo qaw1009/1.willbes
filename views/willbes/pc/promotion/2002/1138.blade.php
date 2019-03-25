@@ -26,7 +26,7 @@
         .wb_top .wb_top_01 ul li {display:block; float:left; width:98px; margin-right:4px; text-align:center}
         .wb_01 {background:#005ecc}		
         .wb_02 {background:#ececec url(http://file3.willbes.net/new_cop/2019/03/EV190312P_03_bg.jpg) no-repeat center top; padding-bottom:100px; position:relative}	
-        .wb_03 {background:#cbc7c0; padding-bottom:100px; position:relative}
+        .wb_03 {background:#cbc7c0; position:relative}
         .wb_04 {background:#fff;}
         .wb_05 {background:#ececec; margin-top:100px}
         

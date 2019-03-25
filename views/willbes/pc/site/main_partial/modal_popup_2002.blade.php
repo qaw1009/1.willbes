@@ -1,10 +1,14 @@
-        <div class="layer" id="blackpopup">
+        <div class="modalPopup" id="blackpopup">
             <div class="bg"></div>
-            <div class="pop-layer" id="layer2">
+            <div class="pop-layer" id="modalPopup2">
                 <div class="pop-container">
                     <div class="pop-conts">
                         <!--content //-->
-                        <a href="http://www.willbescop.net/event/movie/event.html?event_cd=On_190307_c&topMenuType=F"><img src="http://file3.willbes.net/new_cop/2019/03/LayPop190322_c.jpg" alt="2단계 동형모의고사/숨은 필합자를 찾아라"/></a>
+                        <img src="http://file3.willbes.net/new_cop/2019/03/LayPop190322_c.jpg" alt="2단계 동형모의고사/숨은 필합자를 찾아라" usemap="#Map190325" border="0"/>
+                        <map name="Map190325" id="Map190325">
+                            <area shape="rect" coords="216,319,541,366" href="{{ site_url('/promotion/index/cate/3001/code/1127e') }}" alt="2단계 동형모의고사" />
+                            <area shape="rect" coords="451,663,653,727" href="{{ site_url('/pass/promotion/index/cate/3001/code/1138') }}" alt="숨은 필홥자를 찾아라" />
+                        </map>
                         <div class="btn-r">
                             <a class="cbtn" href="javascript:void(0)" onclick="closeLayerPop123('passpopup', 'blackpopup');" >하루 보지않기</a>
                             <a class="cbtn" href="#">Close</a>
@@ -17,7 +21,7 @@
 
         <script type="text/javascript">
             $(document).ready(function(){
-            layer_open('layer2');
+            layer_open('modalPopup2');
             });
             function layer_open(el){
 
@@ -25,7 +29,7 @@
             var bg = temp.prev().hasClass('bg'); //dimmed 레이어를 감지하기 위한 boolean 변수
 
             if(bg){
-            $('.layer').fadeIn(); //'bg' 클래스가 존재하면 레이어가 나타나고 배경은 dimmed 된다.
+            $('.modalPopup').fadeIn(); //'bg' 클래스가 존재하면 레이어가 나타나고 배경은 dimmed 된다.
             }else{
             temp.fadeIn();
             }
@@ -38,15 +42,15 @@
 
             temp.find('a.cbtn').click(function(e){
             if(bg){
-                $('.layer').fadeOut(); //'bg' 클래스가 존재하면 레이어를 사라지게 한다.
+                $('.modalPopup').fadeOut(); //'bg' 클래스가 존재하면 레이어를 사라지게 한다.
             }else{
                 temp.fadeOut();
             }
             e.preventDefault();
             });
 
-            $('.layer .bg').click(function(e){ //배경을 클릭하면 레이어를 사라지게 하는 이벤트 핸들러
-            $('.layer').fadeOut();
+            $('.modalPopup .bg').click(function(e){ //배경을 클릭하면 레이어를 사라지게 하는 이벤트 핸들러
+            $('.modalPopup').fadeOut();
             e.preventDefault();
             });
 

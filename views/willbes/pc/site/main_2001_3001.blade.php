@@ -303,7 +303,7 @@
                 <div class="pop-container">
                     <div class="pop-conts">
                         <!--content //-->
-                        <a href="http://www.willbescop.net/event/movie/event.html?event_cd=On_190307_c&topMenuType=F"><img src="http://file3.willbes.net/new_cop/2019/03/LayPop190308_p.jpg" alt="경찰면접 역전 꿀팁 대방출"/></a>
+                        <a href="http://www.willbescop.net/event/movie/event.html?event_cd=On_190307_c&topMenuType=F"><img src="http://file3.willbes.net/new_cop/2019/03/LayPop190322_c.jpg" alt="2단계 동형모의고사/숨은 필합자를 찾아라"/></a>
                         <div class="btn-r">
                             <a class="cbtn" href="javascript:void(0)" onclick="closeLayerPop123('passpopup', 'blackpopup');" >하루 보지않기</a>
                             <a class="cbtn" href="#">Close</a>
@@ -383,6 +383,66 @@
         });
 
         }    
+    </script>
+    <script type="text/javascript">
+    /* 블랙팝업 시작*/
+    function closeLayerPop123(ckname, objname) {
+        setCookiePop123( ckname, "done" , 1 );	  
+        document.all[objname].style.visibility = "hidden";
+    }
+
+    function setCookiePop123( name, value, expiredays ) {
+        var todayDate = new Date();
+        todayDate.setDate( todayDate.getDate() + expiredays );
+        document.cookie = name + "=" + escape( value ) + "; path=/; expires=" + todayDate.toGMTString() + ";"
+    }
+    var agent = navigator.userAgent;
+    /*모바일 비활성
+    if (agent.match(/iPhone/) != null || agent.match(/iPod/) != null || agent.match(/IEMobile/) != null || agent.match(/Mobile/) != null || agent.match(/lgtelecom/) != null || agent.match(/PPC/) != null) {		
+        document.all['blackpopup'].style.visibility = "hidden";
+    }  else {
+        if ( getCookie123('passpopup') == 'done' ) {	
+        document.all['blackpopup'].style.visibility = "hidden";
+        }
+        else {
+        document.all['blackpopup'].style.visibility = "visible";
+        }
+    }*/
+    var event_day = new Date("March 25, 2019 23:59:59");  /*"November 30, 2017 23:59:59"*/
+    var now = new Date();
+
+    if((event_day.getTime() - now.getTime()) > 0) { /*기간제한 사용하지 않을경우 아래로 대체해주세요 - 4-1*/
+    //if((event_day.getTime() - now.getTime()) > 0) {
+        if (getCookie123('passpopup') == 'done' ) {	
+            document.all['blackpopup'].style.visibility = "hidden";
+        }
+        else {
+            document.all['blackpopup'].style.visibility = "visible";
+        }
+    } else {	/*기간제한 사용하지 않을경우 아래로 대체해주세요 - 4-2*/	
+    //} else {
+        document.all['blackpopup'].style.visibility = "hidden"; /*기간제한 사용하지 않을경우 아래로 대체해주세요 - 4-3*/	
+    //	document.all['blackpopup'].style.visibility = "hidden";
+    } /*기간제한 사용하지 않을경우 아래로 대체해주세요 - 4-4*/	
+    //}
+
+    function getCookie123( name ) {  
+        var nameOfCookie = name + "=";  
+        var x = 0;  
+        while ( x <= document.cookie.length )  {
+            var y = (x+nameOfCookie.length);  
+            if ( document.cookie.substring( x, y ) == nameOfCookie ) {
+                if ( (endOfCookie=document.cookie.indexOf( ";", y )) == -1 )  
+                    endOfCookie = document.cookie.length;  
+                    return unescape( document.cookie.substring( y, endOfCookie ) );  
+            }
+        x = document.cookie.indexOf( " ", x ) + 1;  
+        
+        if ( x == 0 )  
+            break;  
+        }  
+        return "";  
+    }
     </script>
     {!! popup('657001', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
 @stop

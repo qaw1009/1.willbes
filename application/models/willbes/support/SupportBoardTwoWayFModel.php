@@ -393,7 +393,7 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
     {
         $column = 'ProfIdx, ProfName';
         $from = "
-            from {$this->_table['twoway_board']}
+            from {$this->_table['twoway_board_2']}
         ";
 
         $where = $this->_conn->makeWhere($arr_condition);
@@ -469,7 +469,7 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
             SELECT (@rownum := @rownum + 1) AS rownum, t.*
             FROM (
             SELECT {$column}
-            FROM {$this->_table['twoway_board']}
+            FROM {$this->_table['twoway_board_2']}
             LEFT JOIN {$this->_table['lms_board_assignment']} AS a ON a.BoardIdx = b.BoardIdx AND a.MemIdx = {$this->session->userdata('mem_idx')}
             ,(SELECT @rownum := 0) AS tmp
             {$where}
@@ -490,7 +490,7 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
     public function findBoardForAssignment($join_type = 'INNER', $arr_condition=[], $column = null)
     {
         $from = "
-            FROM {$this->_table['twoway_board']}
+            FROM {$this->_table['twoway_board_2']}
             {$join_type} JOIN {$this->_table['lms_board_assignment']} AS a ON a.BoardIdx = b.BoardIdx
         ";
 
@@ -612,7 +612,7 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
         }
 
         $from = "
-            FROM {$this->_table['twoway_board']}
+            FROM {$this->_table['twoway_board_2']}
             LEFT JOIN {$this->_table['lms_order_product']} AS op ON op.ProdCode = b.ProdCode AND b.RegMemIdx = op.MemIdx
             LEFT JOIN {$this->_table['lms_mock_register']} AS mr ON op.OrderProdIdx = mr.OrderProdIdx
         ";

@@ -176,7 +176,6 @@
     </div>
 
     <!-- End Container -->
-    <script src="/public/js/willbes/player.js?ver={{time()}}"></script>
     <script>
         $(document).ready(function() {
             //수강후기작성

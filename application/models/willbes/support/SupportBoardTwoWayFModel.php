@@ -37,6 +37,7 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
 
         $from = "
             FROM {$this->_table['twoway_board_2']}
+            left join {$this->_table['lms_member']} as m on b.RegMemIdx = m.MemIdx
         ";
 
         if (empty($cate_code) === false) {
@@ -561,7 +562,8 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
     public function modifyBoardForAssignment($input = [], $ba_idx) {
         $this->_conn->trans_begin();
         try {
-            $board_idx = element('board_idx', $input);
+            /*$board_idx = element('board_idx', $input);*/
+            $board_idx = element('BoardIdx', $input);
 
             $result = $this->findBoard($board_idx);
             if (empty($result)) {

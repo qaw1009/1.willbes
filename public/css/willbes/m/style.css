@@ -326,6 +326,7 @@ span {
 }
 .MainTxtBnr strong {
     font-size: 14px;
+    font-weight: bold;
 }
 
 /* Login Form */

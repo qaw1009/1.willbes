@@ -19,7 +19,7 @@
         /************************************************************/
 
         .wb_01 {background:#4596db url(http://file3.willbes.net/new_cop/basic/EVbasic_20190311_p1_bg.jpg) no-repeat top;}
-        .wb_02 {background:#f5a54f}	            
+        .wb_02 {background:#464646}	            
         .wb_03 {background:#eee}            
         .wb_04 {background:#fff}	
         .wb_05 {background:#ededed}	

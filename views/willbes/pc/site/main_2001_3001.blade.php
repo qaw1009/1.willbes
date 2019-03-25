@@ -298,22 +298,6 @@
 
         {{-- 모달 팝업 --}}
         @include('willbes.pc.site.main_partial.modal_popup_' . $__cfg['SiteCode'])
-        <div class="layer" id="blackpopup">
-            <div class="bg"></div>
-            <div class="pop-layer" id="layer2">
-                <div class="pop-container">
-                    <div class="pop-conts">
-                        <!--content //-->
-                        <a href="http://www.willbescop.net/event/movie/event.html?event_cd=On_190307_c&topMenuType=F"><img src="http://file3.willbes.net/new_cop/2019/03/LayPop190322_c.jpg" alt="2단계 동형모의고사/숨은 필합자를 찾아라"/></a>
-                        <div class="btn-r">
-                            <a class="cbtn" href="javascript:void(0)" onclick="closeLayerPop123('passpopup', 'blackpopup');" >하루 보지않기</a>
-                            <a class="cbtn" href="#">Close</a>
-                        </div>
-                        <!--// content-->
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
     <!-- End Container -->
 

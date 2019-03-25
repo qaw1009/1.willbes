@@ -291,7 +291,8 @@ class EventLecture extends \app\controllers\BaseController
             return;
         }
 
-        $result = $this->eventLectureModel->{$method . 'EventLecture'}($this->_reqP(null, false));
+        $promotion_modify_type = (ENVIRONMENT === 'production') ? false : true;
+        $result = $this->eventLectureModel->{$method . 'EventLecture'}($this->_reqP(null, false), $promotion_modify_type);
         $this->json_result($result, '저장 되었습니다.', $result);
     }
 

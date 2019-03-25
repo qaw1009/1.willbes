@@ -71,10 +71,10 @@
         <div class="m_img1">
             <img src="http://file3.willbes.net/new_cop/2019/03/EV190312P_skybanner.png" alt="라이브토크쇼" usemap="#Map190308A" border="0">
             <map name="Map190308A" id="Map190308A">
-                            <area shape="rect" coords="13,23,173,138" href="#event01" />
-                            <area shape="rect" coords="15,159,175,276" href="#event02" />
-                            <area shape="rect" coords="16,290,176,425" href="#event03" />
-                            <area shape="rect" coords="15,434,175,558" @if(empty($cert_apply))href="javascript:certOpen();"@else href="javascript:alert('이미 이벤트에 참가하셨습니다.')" @endif />
+                <area shape="rect" coords="13,23,173,138" href="#event01" />
+                <area shape="rect" coords="15,159,175,276" href="#event02" />
+                <area shape="rect" coords="16,290,176,425" href="#event03" />
+                <area shape="rect" coords="15,434,175,558" @if(empty($cert_apply))href="javascript:certOpen();"@else href="javascript:alert('이미 이벤트에 참가하셨습니다.')" @endif />
             </map>			
         </div>
 		

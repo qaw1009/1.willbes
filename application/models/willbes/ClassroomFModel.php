@@ -436,8 +436,7 @@ class ClassroomFModel extends WB_Model
         $where = $this->_conn->makeWhere($cond);
         $query .= $where->getMakeWhere(false);
 
-//        $query .= " ORDER BY LphIdx DESC ";
-        $query .= " ORDER BY PauseEndDate DESC ";
+        $query .= " ORDER BY LphIdx DESC ";
 
         $result = $this->_conn->query($query);
 
@@ -542,7 +541,7 @@ class ClassroomFModel extends WB_Model
         $where = $this->_conn->makeWhere($cond);
         $query .= $where->getMakeWhere(false);
 
-        $query .= " ORDER BY PauseEndDate DESC LIMIT 1";
+        $query .= " ORDER BY LphIdx DESC LIMIT 1";
 
         $result = $this->_conn->query($query);
         $result = $result->result_array();;

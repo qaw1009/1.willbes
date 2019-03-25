@@ -83,7 +83,7 @@
                                             {{$passinfo['ProdName']}}
                                         </div>
                                         <dl class="w-info tx-gray">
-                                            <dt>[수강기간] <span class="tx-blue">{{str_replace('-', '.', $row['LecStartDate'])}}~{{str_replace('-', '.', $row['RealLecEndDate'])}}</span> <span class="tx-black">(잔여기간<span class="tx-pink">{{$row['remainDays']}}일</span>)</span></dt>
+                                            <dt>[수강기간] <span class="tx-blue">{{str_replace('-', '.', $passinfo['LecStartDate'])}}~{{str_replace('-', '.', $passinfo['RealLecEndDate'])}}</span> <span class="tx-black">(잔여기간<span class="tx-pink">{{$passinfo['remainDays']}}일</span>)</span></dt>
                                         </dl>
                                     </td>
                                     @if($passinfo['TakeLecNum'] == 0)

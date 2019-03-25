@@ -157,15 +157,17 @@
         <div class="wb_07_c">
             <h3>[단과]</h3>
             <table>
-                <col width="20%" />
+                <col width="15%" />
                 <col width="" />
-                <col width="20%" />
-                <col width="20%" />
+                <col width="15%" />
+                <col width="10%" />
+                <col width="10%" />
                 <thead>
                     <tr>
                         <th colspan="2" >강의명</th>
                         <th style="text-align:center; ">개강일</th>
-                        <th>학원 실강</th>
+                        <th>학원</th>
+                        <th>동영상강의</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -173,37 +175,43 @@
                         <td class="st01">신광은 형소법</td>
                         <td class="st03">동형모의고사 <span class="st02">3/25(월) ~ 4/15(월) , 총 5회</span></td>
                         <td class="st01">3/25(월) 8:40</td>
-                        <td class="st04"><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&subject_idx=1057') }}">수강신청</a></td>
+                        <td class="st04"><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&amp;campus_ccd=605001&amp;subject_idx=1057') }}">수강신청</a></td>
+                        <td class="st04"><a href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/152099') }}">수강신청</a></td>
                     </tr>
                     <tr>
                         <td class="st01">오태진 한국사</td>
                         <td class="st03">동형모의고사 <span class="st02">3/26(화) ~ 4/16(화) , 총 5회</span></td>
                         <td class="st01">3/26(화) 8:40</td>
-                        <td class="st04"><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&subject_idx=1055&prof_idx=50132') }}">수강신청</a></td>
+                        <td class="st04"><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&amp;campus_ccd=605001&amp;subject_idx=1055&amp;prof_idx=50132') }}">수강신청</a></td>
+                        <td class="st04"><a href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/152085') }}">수강신청</a></td>
                     </tr>
                     <tr>
                         <td class="st01">원유철 한국사</td>
                         <td class="st03">동형모의고사 <span class="st02">3/26(화) ~ 4/16(화) , 총 5회</span></td>
                         <td class="st01">3/26(화) 8:40</td>
-                        <td class="st04"><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&subject_idx=1055&prof_idx=50642') }}">수강신청</a></td>
+                        <td class="st04"><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&amp;campus_ccd=605001&amp;subject_idx=1055&amp;prof_idx=50642') }}">수강신청</a></td>
+                        <td class="st04"><a href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/152087') }}">수강신청</a></td>
                     </tr>
                     <tr>
                         <td class="st01">장정훈 경찰학</td>
                         <td class="st03">동형모의고사 <span class="st02">3/27(수) ~ 4/17(수) , 총 5회</span></td>
                         <td class="st01">3/27(수) 8:4</td>
-                        <td class="st04"><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&subject_idx=1058&prof_idx=50032') }}">수강신청</a></td>
+                        <td class="st04"><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&amp;campus_ccd=605001&amp;subject_idx=1058&amp;prof_idx=50032') }}">수강신청</a></td>
+                        <td class="st04"><a href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/152091') }}">수강신청</a></td>
                     </tr>
                     <tr>
                         <td class="st01">김원욱 형법 </td>
                         <td class="st03">동형모의고사 <span class="st02">3/28(목) ~ 4/20(목) 총 5회</span></td>
                         <td class="st01">3/28(목) 8:40</td>
-                        <td class="st04"><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&subject_idx=1056&prof_idx=50298') }}">수강신청</a></td>
+                        <td class="st04"><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&amp;campus_ccd=605001&amp;subject_idx=1056&amp;prof_idx=50298') }}">수강신청</a></td>
+                        <td class="st04"><a href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/152094') }}">수강신청</a></td>
                     </tr>            
                     <tr>
                         <td class="st01">하승민 영어</td>
                         <td class="st03">동형모의고사 <span class="st02">3/29(금) ~ 4/19(금) 총 5회</span></td>
                         <td class="st01">3/29(금) 8:40</td>
-                        <td class="st04"><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&campus_ccd=605001&subject_idx=1054&prof_idx=50136') }}">수강신청</a></td>
+                        <td class="st04"><a href="{{ site_url('/pass/offLecture/index?cate_code=3010&amp;campus_ccd=605001&amp;subject_idx=1054&amp;prof_idx=50136') }}">수강신청</a></td>
+                        <td class="st04"><a href="{{ site_url('/lecture/show/cate/3001/pattern/only/prod-code/152089') }}">수강신청</a></td>
                     </tr>
                 </tbody> 
             </table>

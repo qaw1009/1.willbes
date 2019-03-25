@@ -170,7 +170,7 @@ class Player extends \app\controllers\FrontController
             // 제한시간 분 -> 초
             //$limittime = intval($data['RealExpireTime']) * 60;
             // 제한시간 분 -> 초
-            if($row['RealExpireTime'] == 0){
+            if($data['RealExpireTime'] == 0){
                 $limittime = intval($data['wRuntime']) * intval($lec['MultipleApply']) * 60;
             } else {
                 $limittime = intval($data['RealExpireTime']) * 60;
@@ -1203,7 +1203,13 @@ class Player extends \app\controllers\FrontController
                 // 수강시간은 초
                 $studytime = intval($row['RealStudyTime']);
                 // 제한시간 분 -> 초
-                $limittime = intval($row['RealExpireTime']) * 60;
+                // $limittime = intval($row['RealExpireTime']) * 60;
+                if($row['RealExpireTime'] == 0){
+                    $limittime = intval($row['wRuntime']) * intval($lec['MultipleApply']) * 60;
+                } else {
+                    $limittime = intval($row['RealExpireTime']) * 60;
+                }
+
 
                 if($studytime > $limittime){
                     $timeover = 'Y';
@@ -1939,7 +1945,12 @@ class Player extends \app\controllers\FrontController
             // 수강시간은 초
             $studytime = intval($data['RealStudyTime']);
             // 제한시간 분 -> 초
-            $limittime = intval($data['RealExpireTime']) * 60;
+            //$limittime = intval($data['RealExpireTime']) * 60;
+            if($data['RealExpireTime'] == 0){
+                $limittime = intval($data['wRuntime']) * intval($lec['MultipleApply']) * 60;
+            } else {
+                $limittime = intval($data['RealExpireTime']) * 60;
+            }
 
             if($studytime > $limittime){
                 $timeover = 'Y';

@@ -3,7 +3,7 @@
 @section('content')
     <!-- Container -->
     <div id="Container" class="Container NG c_both mb20">
-        <div class="MainTxtBnr">이제 2018년 목표는 "경찰합격생 10명중 8~9명 신광은 경찰수강생"</div>
+        <div class="MainTxtBnr">적중! 적중! 또 다시 적중! <strong>신광은경찰팀</strong>은 곧, <strong>합격</strong>입니다.</div>
         {!! banner('M_메인_01', 'MainSlider c_both', $__cfg['SiteCode'], '0') !!}
         <div class="MainFixBnr c_both">
             <ul>

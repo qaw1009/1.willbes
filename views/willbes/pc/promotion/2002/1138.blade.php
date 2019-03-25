@@ -28,7 +28,7 @@
         .wb_02 {background:#ececec url(http://file3.willbes.net/new_cop/2019/03/EV190312P_03_bg.jpg) no-repeat center top; padding-bottom:100px; position:relative}	
         .wb_03 {background:#cbc7c0; position:relative}
         .wb_04 {background:#fff;}
-        .wb_05 {background:#ececec; margin-top:100px}
+        .wb_05 {background:#ececec}
         
         .wb_02_01,
         .wb_03_01 {position:relative}

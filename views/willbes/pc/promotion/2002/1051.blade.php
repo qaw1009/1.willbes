@@ -65,7 +65,7 @@
 
     <div class="evtContent NSK" id="evtContainer">
         <div class="skybanner" >
-            <a href="{{ site_url('#memo') }}" target="_blank"><img src="http://file3.willbes.net/new_cop/sparta/SP190116_sky_right.png" alt="수강신청"></a>
+            <a href="{{ site_url('/promotion/index/cate/3010/code/1051#memo') }}" target="_blank"><img src="http://file3.willbes.net/new_cop/sparta/SP190116_sky_right.png" alt="수강신청"></a>
         </div>
 
         <div class="evtCtnsBox wb_top" id="sparta">

@@ -404,8 +404,8 @@ body.memBody #Footer {
 
 /*********************************************     INTRO PAGE     *********************************************/
 .introBox .Tit {
-    font-size: 20px;
-    line-height: 66px;
+    font-size: 18px;
+    padding:20px 0;
     background: #1a8ccb;
     text-align: center;
     color:#fff;
@@ -431,7 +431,7 @@ body.memBody #Footer {
     font-size: 14px;
 }
 .introBox .siteTit {
-    font-size: 22px;
+    font-size: 20px;
     font-weight: bold;
     margin-top:20px;
 }

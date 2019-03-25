@@ -9,14 +9,14 @@
                 <li>
                     <div>    
                         <p class="subTit">일반/경행/승진/간부/해경</p>
-                        <p class="siteTit"><span>신광은 경찰</span><span> 온라인</span></p>
+                        <p class="siteTit"><span>신광은 경찰</span><br><span> 온라인</span></p>
                         <a href="{{ front_app_url('/home/index', 'police') }}" class="btnGo">바로가기</a>
                     </div>
                 </li>
                 <li>
                     <div>    
                         <p class="subTit">9급/7급/법원/소방/기술/군무원</p>
-                        <p class="siteTit"><span>공무원</span><span> 온라인</span></p>
+                        <p class="siteTit"><span>공무원</span><br><span> 온라인</span></p>
                         <a href="{{ front_app_url('/home/index', 'pass') }}" class="btnGo">바로가기</a>
                     </div>
                 </li>

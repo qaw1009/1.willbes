@@ -33,9 +33,9 @@
         .evtMenu li a span {padding:3px 10px; border-radius:15px; background:#868791; color:#36374d; font-weight:normal; font-size:70%}
         .evtMenu li a div {margin-top:8px}
         .evtMenu li:hover a,
-        .evtMenu li.active a {background:#e2be43; color:#fff}
+        .evtMenu li a.active {background:#e2be43; color:#fff}
         .evtMenu li:hover a span,
-        .evtMenu li.active a span {background:#fff; color:#e2be43}
+        .evtMenu li a.active span {background:#fff; color:#e2be43}
         .evtMenu ul:after {content:""; display:block; clear:both}
 
         .tabCts {
@@ -52,8 +52,8 @@
         .tabCts .youtube {width:100%; text-align:center; margin:3em 0}	
         .tabCts .youtube iframe {width:800px; height:453px; margin:0 auto}
 
-        .WB02 p a {display: inline-block; padding:5px 10px; color:#fff; background:#363636; font-size:90%; margin-left:20px}
-        .WB02 p a:hover {background:#e50001}
+        .CtsSecond a {display: inline-block; padding:5px 10px; color:#fff; background:#363636; font-size:90%; margin-left:20px}
+        .CtsSecond a:hover {background:#e50001}
         
         .boardD {width:900px; border-spacing:0px; border:1px solid #dedede; table-layout:auto; color:#666; margin:0 auto} 
         .boardD caption {display:none}
@@ -76,7 +76,7 @@
 
         <div class="evtCtnsBox evtMenu NG" id="evtMenu">                
             <ul>
-                <li class="active">
+                <li>
                     <a href="#tab1">
                         <span>합격을 위한</span>
                         <div>최종 마무리 전략</div>
@@ -105,7 +105,6 @@
                 </li>
             </ul>
         </div>
-
 
         <!--최종 마무리 전략-->
         <div id="tab1" class="tabCts mb100">
@@ -151,12 +150,12 @@
         </div>
 
         <!--완벽분석-->
-        <div id="tab2" class="tabCts">
+        <div id="tab2" class="tabCts CtsSecond">
             <img src="http://file3.willbes.net/new_gosi/2019/03/EV190320Y_02_1.jpg" title="전년도 국가직 9급 체감난이도" />            
             <img src="http://file3.willbes.net/new_gosi/2019/03/EV190320Y_02_2.jpg" title="풀캐어 강사진" />
-            <div class="">
+            <div class="mt20 mb100">
                 * 시험문제/가답안 다운로드 <a href="https://www.gosi.kr/cop/bbs/selectBoardList.do?bbsId=BBSMSTR_000000000138" target="_blank">바로가기</a>
-                <div>
+                <div class="mt20">
                     <table class="boardD">
                     <col />
                     <col span="5" />
@@ -1071,11 +1070,51 @@
                 </div>  
             </div>
         </div>
-    </div>
+
+        <!--시험총평 및 시험후기-->
+        <div id="tab3" class="tabCts mb100">
+            <img src="http://file3.willbes.net/new_gosi/2019/03/EV190320Y_03_1.jpg" title="풀캐어 강사진" /> 
+
+               
+            <img src="http://file3.willbes.net/new_gosi/2019/03/EV190320Y_01_2.jpg" title="점수 10점 상승을 위한 시험 전 유의사항/최상의 컨디션을 위한 시험 당일 유의사항" /><br>
+            <img src="http://file3.willbes.net/new_gosi/2019/03/EV190320Y_01_3.jpg" title="응시자 준수사항 및 필기장소 안내" />
+            <div class="youtube">
+                <iframe class="youtubePlayer" src="https://www.youtube.com/embed/gpppIN1ISaw?rel=0" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div><a href="http://gosi.go.kr/cop/bbs/selectBoardList.do?bbsId=BBSMSTR_000000000131" target="_blank"><img src="http://file3.willbes.net/new_gosi/2019/03/EV190320Y_btn01.png" title="필기시험 장소 안내 바로가기" /></a> </div>  
+        </div>
+    
 
               
     </div>
     <!-- End Container --> 
 
-    
+    <script type="text/javascript">	
+        /*tab*/
+        $(document).ready(function(){
+        $('.evtMenu ul').each(function(){
+            var $active, $content, $links = $(this).find('a');
+            $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+            $active.addClass('active');
+        
+            $content = $($active[0].hash);
+        
+            $links.not($active).each(function () {
+            $(this.hash).hide()});
+        
+            // Bind the click event handler
+            $(this).on('click', 'a', function(e){
+            $active.removeClass('active');
+            $content.hide();
+        
+            $active = $(this);
+            $content = $(this.hash);
+        
+            $active.addClass('active');
+            $content.show();
+        
+            e.preventDefault()})})}
+        );
+        
+    </script>
 @stop

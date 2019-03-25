@@ -17,7 +17,7 @@ $config = [
         'popup_method' => 'popup',
         'return_method' => 'returns',
         'card_nointerest' => '',
-        'card_quotabase' => '',
+        'card_quotabase' => '2:3:4:5:6:7:8:9:10:11:12',
         'script_src' => 'https://stgstdpay.inicis.com/stdjs/INIStdPay.js'
     ],
     'real' => [
@@ -34,7 +34,7 @@ $config = [
         'popup_method' => 'popup',
         'return_method' => 'returns',
         'card_nointerest' => '',
-        'card_quotabase' => '',
+        'card_quotabase' => '2:3:4:5:6:7:8:9:10:11:12',
         'script_src' => 'https://stdpay.inicis.com/stdjs/INIStdPay.js'
     ],
     'view_path' => [

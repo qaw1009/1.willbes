@@ -363,18 +363,6 @@ class Join extends BaseMember
             $data = $this->memberFModel->getMemberForLogin($input['MemId'], $input['MemPassword'], false);
             $result = $this->memberFModel->storeMemberLogin($data);
 
-            // 회원가입 축하 상품을 추가
-            $this->pointFModel->addSavePoint('lecture', 2000, [
-                'site_code' => $SiteCode,
-                'etc_reason' => '가입축하포인트',
-                'reason_type' => 'join'
-            ]); // 강좌포인트 2000
-            $this->pointFModel->addSavePoint('book', 1000, [
-                'site_code' => $SiteCode,
-                'etc_reason' => '가입축하포인트',
-                'reason_type' => 'join'
-            ]); // 교재포인트 2000
-            
             // 회원가입하고 넘어감
             $this->session->set_userdata('is_join', true);
             redirect('/member/join/success');
@@ -520,6 +508,18 @@ class Join extends BaseMember
             $result = $this->couponFModel->addMemberCoupon($row['type'],$row['no']);
             if($result['ret_cd'] == true){ $cnt++;}
         }
+
+        // 회원가입 축하 상품을 추가
+        $this->pointFModel->addSavePoint('lecture', 2000, [
+            'site_code' => $sitecode,
+            'etc_reason' => '가입축하포인트',
+            'reason_type' => 'join'
+        ]); // 강좌포인트 2000
+        $this->pointFModel->addSavePoint('book', 1000, [
+            'site_code' => $sitecode,
+            'etc_reason' => '가입축하포인트',
+            'reason_type' => 'join'
+        ]); // 교재포인트 2000
 
         $this->session->set_userdata('is_join', false);
         return $this->json_result(true,$cnt.'개의 쿠폰이 발급되었습니다.');

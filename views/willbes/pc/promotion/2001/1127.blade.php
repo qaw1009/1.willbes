@@ -157,10 +157,11 @@
         <div class="wb_07_c">
             <h3>[단과]</h3>
             <table>
-                <col width="20%" />
+                <col width="15%" />
                 <col width="" />
-                <col width="20%" />
-                <col width="20%" />
+                <col width="15%" />
+                <col width="10%" />
+                <col width="10%" />
                 <thead>
                     <tr>
                         <th colspan="2" >강의명</th>

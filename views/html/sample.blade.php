@@ -161,7 +161,7 @@
                 <li class="w50"><a href="{{ site_url('/home/html/event_offCop_190108_dg_L') }}" target="_blank">대구 경찰면접팀</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_offCop_180611_01_g') }}" target="_blank">스파르타 올인원 - 공무원 강습반</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_offCop_180611_02_g') }}" target="_blank">스파르타 올인원 - 신광은 경찰팀</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/event_offCop_180629_L') }}" target="_blank">스파르타 강한학습관리반</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/1051') }}" target="_blank">스파르타 강한학습관리반</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_offCop_180323') }}" target="_blank">실전에 강한 최준면접</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_offCop_181112') }}" target="_blank">독한회독</a></li> 
                 <li class="w50"><a href="{{ site_url('/home/html/1124') }}" target="_blank">기본이론 2019 3/25(월) 개강</a></li>    

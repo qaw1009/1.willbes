@@ -87,10 +87,10 @@
                   <area shape="rect" coords="711,689,863,727" href="#event05" alt="상품혜택 상세보기" />
                   <area shape="rect" coords="575,173,729,198" href="{{ site_url('/pass/support/notice/show?board_idx=214877&s_campus=605001&s_keyword') }}" target="_blank" alt="당첨자발표" />
                 </map>
-                <ul>
+                <!--ul>
 					<li><img id="t1" src="http://file3.willbes.net/new_cop/2019/03/EV190312P_num00.png"  alt="숫자" /></li>
                     <li><img id="t2" src="http://file3.willbes.net/new_cop/2019/03/EV190312P_num00.png"  alt="숫자" /></li>
-                </ul>
+                </ul-->
             </div>
 		</div>
 

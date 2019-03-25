@@ -46,7 +46,7 @@ class LogQueryHook
             }
         }
 
-        $this->_writeLogFile(array('query' => $output, 'slow-query' => $slow_output));
+        $this->_writeLogFile(array('query' => $output, 'slow' => $slow_output));
     }
 
     /**
@@ -93,7 +93,7 @@ class LogQueryHook
         // write sql log file
         foreach($log_data as $name => $data) {
             if(empty($data) === false) {
-                $sql_log_path = config_item('sql_log_path') . $name . '-log-' . date('Y-m-d') . '.sql';
+                $sql_log_path = config_item('sql_log_path') . $name . '-' . date('Y-m-d') . '.sql';
 
                 if(write_file($sql_log_path, $data, 'a+') === false) {
                     log_message('debug', 'Unable to write query the log file');

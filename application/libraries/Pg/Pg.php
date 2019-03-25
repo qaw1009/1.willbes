@@ -131,7 +131,7 @@ class Pg extends CI_Driver_Library
      */
     public function saveFileLog($msg, $vars = null, $log_level = 'debug', $log_type = 'pay')
     {
-        $log_path = $this->_log_dir . ($log_type != 'pay' ? $log_type . '-' : '') . 'log-' . date('Y-m-d') . '.log';
+        $log_path = $this->_log_dir . ($log_type != 'pay' ? $log_type : 'log') . '-' . date('Y-m-d') . '.log';
 
         logger($msg, $vars, $log_level, $log_path);
     }

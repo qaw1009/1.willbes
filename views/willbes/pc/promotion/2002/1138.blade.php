@@ -26,9 +26,9 @@
         .wb_top .wb_top_01 ul li {display:block; float:left; width:98px; margin-right:4px; text-align:center}
         .wb_01 {background:#005ecc}		
         .wb_02 {background:#ececec url(http://file3.willbes.net/new_cop/2019/03/EV190312P_03_bg.jpg) no-repeat center top; padding-bottom:100px; position:relative}	
-        .wb_03 {background:#cbc7c0; padding-bottom:100px; position:relative}
+        .wb_03 {background:#cbc7c0; position:relative}
         .wb_04 {background:#fff;}
-        .wb_05 {background:#ececec; margin-top:100px}
+        .wb_05 {background:#ececec}
         
         .wb_02_01,
         .wb_03_01 {position:relative}
@@ -115,12 +115,12 @@
         
       	<div class="wbCommon wb_03" id="event03">
 			<img src="http://file3.willbes.net/new_cop/2019/03/EV190308P_07_new.jpg"  alt="황세웅 실시간 기출분석" />
-			<img src="http://file3.willbes.net/new_cop/2019/03/EV190308P_08_end.jpg"  alt="황세웅 실시간 기출분석" />
+			<!--img src="http://file3.willbes.net/new_cop/2019/03/EV190308P_08_end.jpg"  alt="황세웅 실시간 기출분석" />
             <img src="http://file3.willbes.net/new_cop/2019/03/EV190312P_05.jpg"  alt="라이브강의 안내" /><br />                            		        	 		        	 
-			<img src="http://file3.willbes.net/new_cop/2019/03/EV190308P_09.jpg"  alt="기출분석 라이브 특강 일정" />
+			<img src="http://file3.willbes.net/new_cop/2019/03/EV190308P_09.jpg"  alt="기출분석 라이브 특강 일정" /-->
 		</div>
         
-        <div class="wbCommon wb_04" id="event04">
+        <!--div class="wbCommon wb_04" id="event04">
 		  <img src="http://file3.willbes.net/new_cop/2019/03/EV190308P_10_re.jpg" alt="경찰면접 꿀팁 소문내기이벤트" usemap="#Map190308C" border="0" />
           <map name="Map190308C" id="Map190308C">
             <area shape="rect" coords="139,2489,280,2552" href="http://cafe.daum.net/policeacademy" target="_blank" />
@@ -128,7 +128,7 @@
             <area shape="rect" coords="486,2489,651,2552" href="https://gall.dcinside.com/board/lists/?id=government" target="_blank" />
             <area shape="rect" coords="666,2489,862,2552" href="https://gall.dcinside.com/mgallery/board/lists/?id=policeofficer&page=1" target="_blank" />
           </map>
-		</div>
+		</div-->
 
             {{--@include('html.event_replyUrl') : 댓글 주석처리--}}
 

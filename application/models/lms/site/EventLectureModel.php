@@ -383,7 +383,7 @@ class EventLectureModel extends WB_Model
      * @param array $input
      * @return array|bool
      */
-    public function modifyEventLecture($input = [])
+    public function modifyEventLecture($input = [], $promotion_modify_type = false)
     {
         $this->_conn->trans_begin();
 
@@ -468,7 +468,7 @@ class EventLectureModel extends WB_Model
                 'UpdAdminIdx' => $admin_idx
             ];
 
-            if (ENVIRONMENT !== 'production') {
+            if ($promotion_modify_type === true) {
                 $data['PromotionCode'] = element('promotion_code', $input);
             }
 

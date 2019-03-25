@@ -83,9 +83,7 @@
             <div class="wb_top_01">
                 <img src="http://file3.willbes.net/new_cop/2019/03/EV190321P_02.jpg" alt="단언컨데, 지금까지 이런 혜택은 없었다!" usemap="#Map190308B" border="0" />
                 <map name="Map190308B" id="Map190308B">
-                  <area shape="rect" coords="299,1850,819,1931" @if(empty($cert_apply))href="javascript:certOpen();"@else href="javascript:alert('이미 이벤트에 참가하셨습니다.')" @endif alt="필기합격 인증하기" />
-                  <area shape="rect" coords="711,689,863,727" href="#event05" alt="상품혜택 상세보기" />
-                  <area shape="rect" coords="575,173,729,198" href="{{ site_url('/pass/support/notice/show?board_idx=214877&s_campus=605001&s_keyword') }}" target="_blank" alt="당첨자발표" />
+                    <area shape="rect" coords="300,1510,819,1587" @if(empty($cert_apply))href="javascript:certOpen();"@else href="javascript:alert('이미 이벤트에 참가하셨습니다.')" @endif alt="필기합격 인증하기" />
                 </map>
                 <!--ul>
 					<li><img id="t1" src="http://file3.willbes.net/new_cop/2019/03/EV190312P_num00.png"  alt="숫자" /></li>

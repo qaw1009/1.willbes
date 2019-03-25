@@ -71,6 +71,9 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
      */
     public function findBoard($board_idx,$arr_condition=[],$column='*',$limit = null, $offset = null, $order_by = [])
     {
+        if (empty($board_idx) === true) {
+            return null;
+        }
         $arr_condition = array_merge_recursive($arr_condition,[
             'EQ' => [
                 'BoardIdx' => $board_idx,

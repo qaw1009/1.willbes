@@ -43,7 +43,7 @@ class Deposit extends \app\controllers\FrontController
      * 입금통보 연동 테스트 폼
      * TODO : 추후 삭제 가능
      */
-    public function form()
+    /*public function form()
     {
         $this->load->loadModels(['order/orderListF']);
 
@@ -60,5 +60,5 @@ class Deposit extends \app\controllers\FrontController
         $this->load->view('pg/inisis/deposit_test_form', [
             'data' => $data
         ], false);
-    }
+    }*/
 }

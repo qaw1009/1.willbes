@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class VideoManager extends \app\controllers\BaseController
 {
     protected $models = array('live/videoManager', 'live/classRoom', 'sys/code', 'sys/site', 'sys/category', 'board/board', 'product/base/subject', 'product/base/course', 'product/base/professor');
-    protected $helpers = array();
+    protected $helpers = array('download');
     protected $boardInfo = [
         '82' => '강의배정표',
         '83' => '강의자료실'
@@ -233,7 +233,7 @@ class VideoManager extends \app\controllers\BaseController
 
         $column = '
             LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LS.SiteName, LB.Title,LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
-            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName,
+            LB.ReadCnt, LB.SettingReadCnt, ADMIN.wAdminName,
             LB.SubjectIdx, PS.SubjectName, LB.CourseIdx, PRODUCT_COURSE.CourseName, LB.ProfIdx, PROFESSOR.ProfNickName
             ';
 
@@ -321,8 +321,8 @@ class VideoManager extends \app\controllers\BaseController
         ];
 
         $column = '
-            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
-            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName
+            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
+            LB.ReadCnt, LB.SettingReadCnt, ADMIN.wAdminName
         ';
 
         $list = [];
@@ -350,8 +350,8 @@ class VideoManager extends \app\controllers\BaseController
         }
 
         $column = '
-            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
-            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm,
+            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
+            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm,
             LB.SubjectIdx, PS.SubjectName, LB.CourseIdx, PRODUCT_COURSE.CourseName, LB.ProfIdx, PROFESSOR.ProfNickName
         ';
 
@@ -371,21 +371,15 @@ class VideoManager extends \app\controllers\BaseController
             show_error('데이터 조회에 실패했습니다.');
         }
 
-        $site_code = $data['SiteCode'];
-        $arr_cate_code = explode(',', $data['CateCode']);
         $data['arr_attach_file_idx'] = explode(',', $data['AttachFileIdx']);
         $data['arr_attach_file_path'] = explode(',', $data['AttachFilePath']);
         $data['arr_attach_file_name'] = explode(',', $data['AttachFileName']);
+        $data['arr_attach_file_real_name'] = explode(',', $data['AttachRealFileName']);
 
-        $get_category_array = $this->categoryModel->getCategoryArray($site_code);
-        if (empty($get_category_array) === true) {
-            $data['arr_cate_code'] = [];
-        } else {
-            foreach ($arr_cate_code as $item => $code) {
-                if (empty($get_category_array[$code]) === false) {
-                    $data['arr_cate_code'][$code] = $get_category_array[$code];
-                }
-            }
+        $data['arr_cate_code'] = [];
+        $arr_cate_code = $this->boardModel->listBoardCategory($board_idx);
+        if (empty($arr_cate_code) === false) {
+            $data['arr_cate_code'] = array_values($arr_cate_code);
         }
 
         $this->load->view('live/video/board/read_liveLectureMaterial_modal', [
@@ -393,7 +387,6 @@ class VideoManager extends \app\controllers\BaseController
             'get_site_code' => $get_site_code,
             'boardInfo' => $this->boardInfo,
             'data' => $data,
-            'getCategoryArray' => $get_category_array,
             'attach_file_cnt' => $this->boardModel->_attach_img_cnt
         ]);
     }
@@ -409,8 +402,8 @@ class VideoManager extends \app\controllers\BaseController
         }
 
         $column = '
-            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LBC.CateCode, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
-            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm
+            LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
+            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm
         ';
 
         $arr_condition = ([
@@ -429,20 +422,15 @@ class VideoManager extends \app\controllers\BaseController
             show_error('데이터 조회에 실패했습니다.');
         }
 
-        $site_code = $data['SiteCode'];
-        $arr_cate_code = explode(',', $data['CateCode']);
         $data['arr_attach_file_idx'] = explode(',', $data['AttachFileIdx']);
         $data['arr_attach_file_path'] = explode(',', $data['AttachFilePath']);
         $data['arr_attach_file_name'] = explode(',', $data['AttachFileName']);
-        $get_category_array = $this->categoryModel->getCategoryArray($site_code);
+        $data['arr_attach_file_real_name'] = explode(',', $data['AttachRealFileName']);
 
         $data['arr_cate_code'] = [];
+        $arr_cate_code = $this->boardModel->listBoardCategory($board_idx);
         if (empty($arr_cate_code) === false) {
-            foreach ($arr_cate_code as $item => $code) {
-                if (empty($get_category_array[$code]) === false) {
-                    $data['arr_cate_code'][$code] = $get_category_array[$code];
-                }
-            }
+            $data['arr_cate_code'] = array_values($arr_cate_code);
         }
 
         $this->load->view('live/video/board/read_offLineBoard_modal', [
@@ -450,8 +438,15 @@ class VideoManager extends \app\controllers\BaseController
             'get_site_code' => $get_site_code,
             'boardInfo' => $this->boardInfo,
             'data' => $data,
-            'getCategoryArray' => $get_category_array,
             'attach_file_cnt' => $this->boardModel->_attach_img_cnt
         ]);
+    }
+
+    public function download()
+    {
+        $file_path = $this->_reqG('path');
+        $file_name = $this->_reqG('fname');
+
+        public_download($file_path, $file_name);
     }
 }

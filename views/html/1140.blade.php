@@ -52,8 +52,8 @@
         .tabCts .youtube {width:100%; text-align:center; margin:3em 0}	
         .tabCts .youtube iframe {width:800px; height:453px; margin:0 auto}
 
-        .CtsSecond a {display: inline-block; padding:5px 10px; color:#fff; background:#363636; font-size:90%; margin-left:20px}
-        .CtsSecond a:hover {background:#e50001}
+        .Cts02 a {display:inline-block; padding:5px 10px; color:#fff; background:#363636; font-size:90%; margin-left:20px}
+        .Cts02 a:hover {background:#e50001}
         
         .boardD {width:900px; border-spacing:0px; border:1px solid #dedede; table-layout:auto; color:#666; margin:0 auto} 
         .boardD caption {display:none}
@@ -64,6 +64,23 @@
         .boardD td:last-child {color:#C00}
         .boardD tr.gray th,
         .boardD tr.gray td {background:#eee}
+
+        .Cts03 {margin-bottom:100px}
+        .Cts03 .graphWrap {
+            margin-top:50px; font-size:14px; line-height:1.5;
+        }
+        .Cts03 .graphWrap li {
+            display:inline; float:left; width:48%; text-align:left; margin:0 0.5%; position:relative;
+        }
+        .Cts03 h3 {font-size:16px;}
+        .Cts03 h3 span {color:#fa7738}
+        .Cts03 .graphWrap select {position:absolute; top:20px; right:20px}
+        .Cts03 .graphWrap:after {content:""; display:block; clear:both}
+        .Cts03 .graphbox {padding:20px; border:1px solid #e4e4e4;}
+        .Cts03_01 {width:1120px; text-align:left; margin:50px auto 0}
+        .Cts03_01 div {border:1px solid #e4e4e4; padding:20px; margin-top:20px}
+
+
         
     </style>
 
@@ -150,7 +167,7 @@
         </div>
 
         <!--완벽분석-->
-        <div id="tab2" class="tabCts CtsSecond">
+        <div id="tab2" class="tabCts Cts02">
             <img src="http://file3.willbes.net/new_gosi/2019/03/EV190320Y_02_1.jpg" title="전년도 국가직 9급 체감난이도" />            
             <img src="http://file3.willbes.net/new_gosi/2019/03/EV190320Y_02_2.jpg" title="풀캐어 강사진" />
             <div class="mt20 mb100">
@@ -1072,16 +1089,36 @@
         </div>
 
         <!--시험총평 및 시험후기-->
-        <div id="tab3" class="tabCts mb100">
+        <div id="tab3" class="tabCts Cts03 NG">
             <img src="http://file3.willbes.net/new_gosi/2019/03/EV190320Y_03_1.jpg" title="풀캐어 강사진" /> 
-
-               
-            <img src="http://file3.willbes.net/new_gosi/2019/03/EV190320Y_01_2.jpg" title="점수 10점 상승을 위한 시험 전 유의사항/최상의 컨디션을 위한 시험 당일 유의사항" /><br>
-            <img src="http://file3.willbes.net/new_gosi/2019/03/EV190320Y_01_3.jpg" title="응시자 준수사항 및 필기장소 안내" />
-            <div class="youtube">
-                <iframe class="youtubePlayer" src="https://www.youtube.com/embed/gpppIN1ISaw?rel=0" frameborder="0" allowfullscreen></iframe>
+            <ul class="graphWrap">
+                <li>
+                    <div class="graphbox">
+                        <h3>전체 시험 난이도 </h3>
+                        <div>그래프영역</div>
+                    </div>
+                </li>
+                <li>
+                    <div class="graphbox">
+                        <h3>과목별 시험 난이도 : <span>[국어]</span></h3>
+                        <select title="과목선택" onchange="fn_select_poll_id(this.value)">                            	
+                            <option value=" " selected="selected">과목1</option>                        
+                            <option value=" ">과목2</option>                        
+                            <option value=" ">과목3</option>                        
+                            <option value=" ">과목4</option>                        
+                            <option value=" ">과목5</option>                      
+                        </select>
+                        <div>그래프영역</div>                        
+                    </div>
+                </li>
+            </ul>
+            <div class="Cts03_01">
+                <h3>2019년 4월 7일 시행 <span>국가직 9급 시험 총평</span></h3>
+                <div>
+                    총평 내용
+                </div>
             </div>
-            <div><a href="http://gosi.go.kr/cop/bbs/selectBoardList.do?bbsId=BBSMSTR_000000000131" target="_blank"><img src="http://file3.willbes.net/new_gosi/2019/03/EV190320Y_btn01.png" title="필기시험 장소 안내 바로가기" /></a> </div>  
+            <img src="http://file3.willbes.net/new_gosi/2019/03/EV190320Y_03_2.jpg" title="풀캐어 강사진" /> 
         </div>
     
 

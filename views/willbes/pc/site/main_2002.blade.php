@@ -241,6 +241,9 @@
             {{-- quick menu --}}
             @include('willbes.pc.site.main_partial.quick_menu_' . $__cfg['SiteCode'])
         </div>
+
+        {{-- 모달 팝업 --}}
+        @include('willbes.pc.site.main_partial.modal_popup_' . $__cfg['SiteCode'])
     </div>
     <!-- End Container -->
 

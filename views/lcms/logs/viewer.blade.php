@@ -54,7 +54,7 @@
                                 <option value="">PATTERN</option>
                                 <option value="log">log</option>
                                 <option value="query">query</option>
-                                <option value="slow-query">slow query</option>
+                                <option value="slow">slow query</option>
                             </select>
                         </div>
                         <div class="col-xs-1" style="padding-left: 0;">

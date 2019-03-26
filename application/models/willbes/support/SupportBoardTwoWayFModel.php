@@ -548,7 +548,7 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
     {
         $from = "
             FROM {$this->_table['twoway_board_2']}
-            {$join_type} JOIN {$this->_table['lms_board_assignment']} AS a ON a.BoardIdx = b.BoardIdx
+            {$join_type} JOIN {$this->_table['lms_board_assignment']} AS a ON a.BoardIdx = b.BoardIdx AND a.MemIdx = {$this->session->userdata('mem_idx')}
         ";
 
         $where = $this->_conn->makeWhere($arr_condition);

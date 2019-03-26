@@ -128,13 +128,31 @@
                             <div class="modal-dialog modal-sm">
                                 <div class="modal-content">
                                     <div class="modal-body">
+                                        ● {{$row['wUnitNum']}}회 {{$row['wUnitLectureNum']}}강 다운로드이력
+                                        <table class="table table-striped table-bordered">
+                                            <colgroup>
+                                                <col width="50%">
+                                                <col width="50%">
+                                            </colgroup>
+                                            <thead>
+                                            <tr>
+                                                <th>다운로드시간</th>
+                                                <th>다운로드아이피</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
                                         @php $isLog = false; @endphp
                                         @foreach($lec['down_log'] as $log)
                                             @if($log['wUnitIdx'] == $row['wUnitIdx'])
-                                                {{$log['DownloadDatm']}} - {{$log['DownloadIp']}}<br>
+                                                <tr>
+                                                    <td>{{$log['DownloadDatm']}}</td>
+                                                    <td>{{$log['DownloadIp']}}</td>
+                                                </tr>
                                                 @php $isLog = true; @endphp
                                             @endif
                                         @endforeach
+                                            </tbody>
+                                        </table>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn" data-dismiss="modal">닫기</button>

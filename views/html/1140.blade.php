@@ -78,7 +78,11 @@
         .Cts03 .graphWrap:after {content:""; display:block; clear:both}
         .Cts03 .graphbox {padding:20px; border:1px solid #e4e4e4;}
         .Cts03_01 {width:1120px; text-align:left; margin:80px auto 0}
-        .Cts03_01 div {border:1px solid #e4e4e4; padding:20px; margin-top:20px}        
+        .Cts03_01 div {border:1px solid #e4e4e4; padding:20px; margin-top:20px}
+        
+        .Cts04 .lecture li {
+            display:inline; float:left; width:25%}
+        }
     </style>
 
 
@@ -1131,7 +1135,7 @@
         <!--기출해설강의-->
         <div id="tab4" class="tabCts Cts04">
             <div><img src="https://static.willbes.net/public/images/promotion/2019/03/1140_04_1.jpg" title="기출해설강의" /></div>
-            <div>
+            <div class="lecture">
                 <ul>
                     <li>
                     <img src="https://pass.willbes.net/public/uploads/willbes/professor/50241/lec_detail_50241.png" alt="기미진" class="prof">

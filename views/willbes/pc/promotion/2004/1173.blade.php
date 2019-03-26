@@ -64,7 +64,7 @@
         <div class="evtCtnsBox evt08">
             <img src="https://static.willbes.net/public/images/promotion/2019/03/1173_08.jpg" usemap="#Map1173B" title="서울시 면접 CAMP 설명회" border="0">
             <map name="Map1173B" id="Map1173B">
-                <area shape="rect" coords="75,583,555,660" href="#none" alt="면접캠프 설명회 신청하기" />
+                <area shape="rect" coords="75,583,555,660" href="#none" title="면접캠프 설명회 신청하기" />
             </map>
         </div>
         <div class="evtCtnsBox evt09">

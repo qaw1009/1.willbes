@@ -126,14 +126,13 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#none">
+                    <a>
                         <span>2019 국가직 9급</span>
                         <div>시험총평 및 시험후기 준비중</div>
                     </a>
                 </li>     
                 <li>
-                    <a href="#none">    
-                    <!--a href="#tab4"-->
+                    <a>    
                         <span>2019 국가직 9급</span>
                         <div>기출해설강의 준비중</div>
                     </a>

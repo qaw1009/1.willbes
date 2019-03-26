@@ -301,7 +301,7 @@
 
                     if ($day < '20190328') {
                         $live_type = 'standby';
-                    } else if ($day >= '20190328' && $day <= '20190402'){
+                    } else if ($day >= '20190325' && $day <= '20190402'){
                         $live_type = 'on';
                     } else {
                         $live_type = 'off';

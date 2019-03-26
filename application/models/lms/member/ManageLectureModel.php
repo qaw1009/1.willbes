@@ -15,7 +15,7 @@ class ManageLectureModel extends WB_Model
         'extend' => 'lms_lecture_extend',
         'down_log' => 'lms_lecture_data_download_log',
         'order_product' => 'lms_order_product',
-        'device' => 'lms_member_device'
+        'device' => 'lms_member_device',
     ];
 
     public function __construct()
@@ -525,5 +525,22 @@ class ManageLectureModel extends WB_Model
             return false;
         }
         return true;
+    }
+
+    public function getDownLog($cond, $isCount = false)
+    {
+        if($isCount === true){
+            $query = "SELECT COUNT(*) AS rownums ";
+        } else {
+            $query = "SELECT * ";
+        }
+
+        $query .= " FROM {$this->_table['down_log']} AS L ";
+
+        $where = $this->_conn->makeWhere($cond);
+        $query .= $where->getMakeWhere(false);
+        $result = $this->_conn->query($query);
+
+        return ($isCount === true) ? $result->row(0)->rownums : $result->result_array();
     }
 }

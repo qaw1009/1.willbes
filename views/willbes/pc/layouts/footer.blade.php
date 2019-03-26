@@ -17,7 +17,6 @@
         </div>
     </div>
     <div class="widthAuto">
-
         {!! $__cfg['FooterInfo'] !!}
     </div>
 </div>

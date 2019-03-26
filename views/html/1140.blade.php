@@ -1130,6 +1130,30 @@
 
         <!--기출해설강의-->
         <div id="tab4" class="tabCts Cts04">
+            <div><img src="http://file3.willbes.net/new_gosi/2019/03/EV190320Y_04_1.jpg" title="기출해설강의" /></div>
+            <div>
+            <li>
+	                        <img src="/imgFileView.do?path=member_upload/20170616111157741.png" alt="교수이미지" class="prof">
+	                        <div class="t_tilte">
+	                            <p><strong>한국사 | 박민주</strong> <span>교수</span></p>
+	                            <p>공무원 한국사의 대명사</p>
+	                        </div>
+	                        <div class="t_file">
+	                        	
+	                        	
+	                        	<!-- 동영상 이미지넣는곳 -->
+	                        		
+	                        		
+	        	                		추후 제공 예정입니다.
+	                        		
+	                        	                            
+								
+	                            
+	                            <!-- 파일 이미지넣는곳 -->
+	                            
+	                        </div>
+                    	</li>
+            </div>
         </div>
     
         

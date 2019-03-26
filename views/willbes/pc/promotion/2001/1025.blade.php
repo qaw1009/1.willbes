@@ -70,7 +70,7 @@
             <div style="margin:100px 0 50px 0;">
                 <img src="http://file3.willbes.net/new_cop/2019/01/EV190102_p5.png"  alt="100%" usemap="#more" />
                 <map name="more" id="more">
-                    <area shape="rect" coords="442,518,773,579" href="{{ site_url('/support/notice/index/cate/3001') }}" onfocus='this.blur()'  alt="적중사례" target="_blank">
+                    <area shape="rect" coords="442,518,773,579" href="{{ site_url('/pass/support/notice/show?board_idx=166329&s_cate_code=&s_campus=&s_keyword=%ED%95%98%EC%8A%B9%EB%AF%BC&prof_idx=&subject_idx=&view_type=&page=4') }}" onfocus='this.blur()'  alt="적중사례" target="_blank">
                 </map>
             </div>
             <div style="width:980px;text-align:center;margin:0 auto;">
@@ -128,7 +128,7 @@
         });
     </script>
 
-    <script src="/public/js/willbes/jquery.nav.js"></script>
+
     <script>
         $(function(e){
             var targetOffset= $("#evtContainer").offset().top;

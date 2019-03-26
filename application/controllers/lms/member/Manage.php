@@ -734,6 +734,16 @@ class Manage extends \app\controllers\BaseController
             ]
         ]);
 
+        $lec['down_log'] = $this->manageLectureModel->getDownLog([
+            'EQ' => [
+                'MemIdx' => $lec['MemIdx'],
+                'OrderIdx' => $lec['OrderIdx'],
+                'ProdCode' => $lec['ProdCode'],
+                'ProdCodeSub' => $lec['ProdCodeSub'],
+                'wLecIdx' => $lec['wLecIdx']
+            ]
+        ]);
+
         // 회차별 수강시간 체크
         foreach($curriculum AS $idx => $row){
             if(empty($lec['MultipleApply']) == true){
@@ -2070,7 +2080,7 @@ class Manage extends \app\controllers\BaseController
 
         $curriculum = $curriculum[0];
 
-        $filepath = $curriculum['wAttachPath'] . $curriculum['wUnitAttachFile'];
+        $filepath = str_replace( '//', '/', $curriculum['wAttachPath'] .'/'. $curriculum['wUnitAttachFile']);
         $filename = $curriculum['wUnitAttachFileReal'];
 
         if(is_file(public_to_upload_path($filepath)) == false){

@@ -120,9 +120,11 @@
                         {{floor(intval($row['StudyTime'])/60)}}분<br>
                         ( {{floor(intval($row['RealStudyTime'])/60)}}분 / {{$row['remaintime']}} )
                     </td>
-                    <td>@if(empty($row['wUnitAttachFile']) == false)
-                            <a href="{{app_url('/member/manage/download/'.$row['ProdCode'].'/'.$row['ProdCodeSub'].'/'.$row['wLecIdx'].'/'.$row['wUnitIdx'], 'lms')}}"><img src="{{ img_url('prof/icon_file.gif') }}"></a>
-                        @endif</td>
+                    <td>
+                        @if(empty($row['wUnitAttachFile']) == false)
+                            <a href="{{app_url('/member/manage/download/'.$row['OrderIdx'].'/'.$row['ProdCode'].'/'.$row['ProdCodeSub'].'/'.$row['wLecIdx'].'/'.$row['wUnitIdx'], 'lms')}}"><img src="{{ 'https://static.willbes.net/public/images/willbes/prof/icon_file.gif' }}"></a>
+                        @endif
+                    </td>
                     <td>{{$row['FirstStudyDate']}}</td>
                     <td>{{$row['LastStudyDate']}}</td>
                 </tr>

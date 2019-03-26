@@ -155,7 +155,7 @@ class ProfQna extends SupportQna
         $column = 'b.BoardIdx, b.CampusCcd, b.TypeCcd, b.IsBest, b.RegType, b.RegMemIdx';
         $column .= ', b.ProfIdx, b.SubjectIdx, b.SubjectName, b.ProfName, b.ProdName';
         $column .= ', b.Title, b.Content, b.ReplyContent, (b.ReadCnt + b.SettingReadCnt) as TotalReadCnt';
-        $column .= ', b.AttachData,DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
+        $column .= ', DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
         $column .= ', b.IsPublic, b.CampusCcd_Name, b.TypeCcd_Name';
         $column .= ', b.SiteName, b.ReplyStatusCcd, b.ReplyStatusCcd_Name';
         $column .= ', IF(b.RegType=1, \'\', RegMemName) AS RegName';
@@ -232,7 +232,7 @@ class ProfQna extends SupportQna
             ];
 
             $column = '
-                BoardIdx, SiteCode, MdCateCode, CampusCcd, RegType, TypeCcd, IsBest, IsPublic
+                BoardIdx, b.SiteCode, MdCateCode, CampusCcd, RegType, TypeCcd, IsBest, IsPublic
                 , ProfIdx, SubjectIdx, ProdName
                 , VocCcd, ProdApplyTypeCcd, ProdCode, LecScore
                 , Title, Content, ReadCnt, SettingReadCnt
@@ -240,7 +240,7 @@ class ProfQna extends SupportQna
                 , ReplyContent, ReplyRegDatm, ReplyStatusCcd
                 , CampusCcd_Name, ReplyStatusCcd_Name, TypeCcd_Name
                 , VocCcd_Name, MdCateCode_Name, SubJectName
-                , IF(RegType=1, \'\', RegMemName) AS RegName
+                , IF(RegType=1, b.RegMemName, m.MemName) AS RegName
                 , IF(IsCampus=\'Y\',\'offline\',\'online\') AS CampusType
                 , IF(IsCampus=\'Y\',\'학원\',\'온라인\') AS CampusType_Name, SiteGroupName        
                 , AttachData, Category_String
@@ -297,7 +297,7 @@ class ProfQna extends SupportQna
         ];
 
         $column = '
-            BoardIdx, SiteCode, MdCateCode, CampusCcd
+            BoardIdx, b.SiteCode, MdCateCode, CampusCcd
             , ProfIdx, SubjectIdx, ProdName
             , RegType, TypeCcd, IsBest, IsPublic
             , VocCcd, ProdApplyTypeCcd, ProdCode, LecScore
@@ -307,7 +307,7 @@ class ProfQna extends SupportQna
             , ReplyContent, ReplyRegDatm, ReplyStatusCcd
             , CampusCcd_Name, ReplyStatusCcd_Name, TypeCcd_Name
             , VocCcd_Name, MdCateCode_Name, SubJectName
-            , IF(RegType=1, \'\', RegMemName) AS RegName
+            , IF(RegType=1, b.RegMemName, m.MemName) AS RegName
             , IF(IsCampus=\'Y\',\'offline\',\'online\') AS CampusType
             , IF(IsCampus=\'Y\',\'학원\',\'온라인\') AS CampusType_Name, SiteGroupName        
             , AttachData

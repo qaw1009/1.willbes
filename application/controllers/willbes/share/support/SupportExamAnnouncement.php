@@ -68,7 +68,7 @@ class SupportExamAnnouncement extends BaseSupport
         $column = 'b.BoardIdx,b.CampusCcd,b.TypeCcd,b.IsBest,b.AreaCcd
                        ,b.Title,b.Content, (b.ReadCnt + b.SettingReadCnt) as TotalReadCnt
                        ,b.CampusCcd_Name, b.TypeCcd_Name, b.AreaCcd_Name
-                       ,b.SubjectName,b.CourseName,b.AttachData,DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm
+                       ,b.SubjectName,b.CourseName,DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm
                        ';
 
         $order_by = ['b.IsBest'=>'Desc','b.BoardIdx'=>'Desc'];
@@ -114,6 +114,11 @@ class SupportExamAnnouncement extends BaseSupport
             show_alert('게시글번호가 존재하지 않습니다.', 'back');
         }
 
+        $cate_code = '';
+        if ($this->_site_code != config_item('app_intg_site_code')) {
+            $cate_code = $this->_cate_code;
+        }
+
         #-------------------------------- 게시글 조회
         $arr_condition = [
             'EQ' => [
@@ -129,7 +134,7 @@ class SupportExamAnnouncement extends BaseSupport
                        ,b.SubjectName,b.CourseName,b.AttachData,DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm
                        ';
 
-        $data = $this->supportBoardFModel->findBoardForSiteGroup($this->_site_code, $board_idx, $arr_condition, $column);
+        $data = $this->supportBoardFModel->findBoardForSiteGroup($this->_site_code, $cate_code, $board_idx, $arr_condition, $column);
 
         if (empty($data) === true) {
             show_alert('게시글이 존재하지 않습니다.', 'back');
@@ -187,8 +192,8 @@ class SupportExamAnnouncement extends BaseSupport
         $next_order_by = ['b.BoardIdx'=>'Asc'];
 
 
-        $pre_data = $this->supportBoardFModel->findBoardForSiteGroup($this->_site_code, false, $pre_arr_condition, $column,1,null, $pre_order_by);
-        $next_data = $this->supportBoardFModel->findBoardForSiteGroup($this->_site_code, false, $next_arr_condition, $column,1,null, $next_order_by);
+        $pre_data = $this->supportBoardFModel->findBoardForSiteGroup($this->_site_code, $cate_code, false, $pre_arr_condition, $column,1,null, $pre_order_by);
+        $next_data = $this->supportBoardFModel->findBoardForSiteGroup($this->_site_code, $cate_code, false, $next_arr_condition, $column,1,null, $next_order_by);
 
         $this->load->view('support/'.$view_type.'/show_examAnnouncement',[
                 'default_path' => $this->_default_path,

@@ -333,8 +333,8 @@ class MockTest extends \app\controllers\FrontController
         $column .= ', Title, Content, (ReadCnt + SettingReadCnt) as TotalReadCnt';
         $column .= ', AttachData,DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
         $column .= ', IsPublic, CampusCcd_Name, TypeCcd_Name';
-        $column .= ', SiteName, ReplyStatusCcd, ReplyStatusCcd_Name, Category_NameString';
-        $column .= ', IF(RegType=1, \'\', RegMemName) AS RegName';
+        $column .= ', SiteName, ReplyStatusCcd, ReplyStatusCcd_Name';
+        $column .= ', IF(RegType=1, b.RegMemName, m.MemName) AS RegName';
         $column .= ', IF(IsCampus=\'Y\',\'offline\',\'online\') AS CampusType';
         $column .= ', IF(IsCampus=\'Y\',\'학원\',\'온라인\') AS CampusType_Name, SiteGroupName';
         $column .= ', fn_ccd_name(mr.TakeMockPart) AS TakeMockPart_Name';
@@ -412,14 +412,14 @@ class MockTest extends \app\controllers\FrontController
             ];
 
             $column = '
-                BoardIdx, SiteCode, MdCateCode, CampusCcd, RegType, TypeCcd, IsBest, IsPublic
+                BoardIdx, b.SiteCode, MdCateCode, CampusCcd, RegType, TypeCcd, IsBest, IsPublic
                 , VocCcd, ProdApplyTypeCcd, ProdCode, LecScore, ProdName
                 , Title, Content, ReadCnt, SettingReadCnt
                 , RegDatm, RegMemIdx, RegMemId, RegMemName
                 , ReplyContent, ReplyRegDatm, ReplyStatusCcd
                 , CampusCcd_Name, ReplyStatusCcd_Name, TypeCcd_Name
                 , VocCcd_Name, MdCateCode_Name, SubJectName
-                , IF(RegType=1, \'\', RegMemName) AS RegName
+                , IF(RegType=1, b.RegMemName, m.MemName) AS RegName
                 , IF(IsCampus=\'Y\',\'offline\',\'online\') AS CampusType
                 , IF(IsCampus=\'Y\',\'학원\',\'온라인\') AS CampusType_Name, SiteGroupName
                 , AttachData, Category_String
@@ -519,7 +519,7 @@ class MockTest extends \app\controllers\FrontController
         ];
 
         $column = '
-            BoardIdx, SiteCode, MdCateCode, CampusCcd
+            BoardIdx, b.SiteCode, MdCateCode, CampusCcd
             , RegType, TypeCcd, IsBest, IsPublic
             , VocCcd, ProdApplyTypeCcd, ProdCode, LecScore, ProdName
             , Title, Content, ReadCnt, SettingReadCnt
@@ -528,7 +528,7 @@ class MockTest extends \app\controllers\FrontController
             , ReplyContent, ReplyRegDatm, ReplyStatusCcd
             , CampusCcd_Name, ReplyStatusCcd_Name, TypeCcd_Name
             , VocCcd_Name, MdCateCode_Name, SubJectName
-            , IF(RegType=1, \'\', RegMemName) AS RegName
+            , IF(RegType=1, b.RegMemName, m.MemName) AS RegName
             , IF(IsCampus=\'Y\',\'offline\',\'online\') AS CampusType
             , IF(IsCampus=\'Y\',\'학원\',\'온라인\') AS CampusType_Name, SiteGroupName        
             , AttachData
@@ -650,8 +650,8 @@ class MockTest extends \app\controllers\FrontController
 
         $column = 'b.BoardIdx,b.CampusCcd,b.TypeCcd,b.IsBest,b.AreaCcd
                        ,b.Title,b.Content, (b.ReadCnt + b.SettingReadCnt) as TotalReadCnt
-                       ,b.CampusCcd_Name, b.TypeCcd_Name,b.AreaCcd_Name, Category_NameString
-                       ,b.SubjectName,b.CourseName,b.AttachData,DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm
+                       ,b.CampusCcd_Name, b.TypeCcd_Name,b.AreaCcd_Name
+                       ,b.SubjectName,b.CourseName,DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm
                        ';
         $order_by = ['b.IsBest'=>'Desc','b.BoardIdx'=>'Desc'];
 

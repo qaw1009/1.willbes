@@ -19,18 +19,35 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
      * @param $is_count
      * @param array $arr_condition
      * @param null $cate_code
-     * @param null $column
+     * @param string $column
      * @param null $limit
      * @param null $offset
      * @param array $order_by
      * @return array|int
      */
-    public function listBoard($is_count, $arr_condition=[], $cate_code, $column = null, $limit = null, $offset = null, $order_by = [])
+    public function listBoard($is_count, $arr_condition=[], $cate_code, $column = 'b.BoardIdx', $limit = null, $offset = null, $order_by = [])
     {
         if ($is_count === true) {
-            $column = 'count(*) AS numrows';
+            $def_column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
+            $def_column = "
+                m.*,
+                IFNULL((
+                    SELECT
+                    CONCAT('[', GROUP_CONCAT(JSON_OBJECT(
+                        'FileIdx', BoardFileIdx,
+                        'FileType', AttachFiletype,
+                        'FilePath', AttachFilePath,
+                        'FileName', AttachFileName,
+                        'RealName', AttachRealFileName,
+                        'Filesize', AttachFileSize
+                    )), ']') AS AttachData	
+                    
+                    FROM lms_board_attach
+                    WHERE BoardIdx=m.BoardIdx AND IsStatus='Y'
+                ),'N') AS AttachData
+            ";
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
@@ -58,7 +75,10 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
 
-        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        $set_query = ' FROM ( select ' . $column;
+        $set_query .= $from . $where . $order_by_offset_limit;
+        $set_query .= ') AS m ';
+        $query = $this->_conn->query('select ' . $def_column . $set_query);
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
@@ -68,21 +88,31 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
      * @param $board_idx
      * @param array $arr_condition
      * @param string $column
-     * @return array|int
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
      */
     public function findBoard($board_idx,$arr_condition=[],$column='*',$limit = null, $offset = null, $order_by = [])
     {
-        if (empty($board_idx) === true) {
-            return null;
-        }
         $arr_condition = array_merge_recursive($arr_condition,[
             'EQ' => [
-                'BoardIdx' => $board_idx,
+                'b.BoardIdx' => $board_idx,
             ]
         ]);
-        $result = $this->_conn->getListResult($this->_table['twoway_board_find'], $column, $arr_condition, $limit, $offset, $order_by);
-        //echo $this->_conn->last_query();exit;
-        return element('0', $result, []);
+
+        $from = "
+            FROM {$this->_table['twoway_board_find']} AS b
+            left join {$this->_table['lms_member']} as m on b.RegMemIdx = m.MemIdx
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+        $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+
+        return $this->_conn->query('select '.$column .$from .$where . $order_by_offset_limit)->row_array();
     }
 
     /**
@@ -92,24 +122,43 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
      * @param $prof_idx
      * @param array $arr_condition
      * @param $cate_code
-     * @param null $column
+     * @param string $column
      * @param null $limit
      * @param null $offset
      * @param array $order_by
      * @return mixed
      */
-    public function listBoardForProf($is_count, $site_code, $prof_idx, $arr_condition=[], $cate_code, $column = null, $limit = null, $offset = null, $order_by = [])
+    public function listBoardForProf($is_count, $site_code, $prof_idx, $arr_condition=[], $cate_code, $column = 'b.BoardIdx', $limit = null, $offset = null, $order_by = [])
     {
         if ($is_count === true) {
-            $column = 'count(*) AS numrows';
+            $def_column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
+            $def_column = "
+                m.*,
+                IFNULL((
+                    SELECT
+                    CONCAT('[', GROUP_CONCAT(JSON_OBJECT(
+                        'FileIdx', BoardFileIdx,				
+                        'FileType', AttachFiletype,
+                        'FilePath', AttachFilePath,
+                        'FileName', AttachFileName,
+                        'RealName', AttachRealFileName,
+                        'Filesize', AttachFileSize
+                    )), ']') AS AttachData	
+                    
+                    FROM lms_board_attach
+                    WHERE BoardIdx=m.BoardIdx AND IsStatus='Y'
+                ),'N') AS AttachData
+            ";
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
 
         $from = "
             FROM {$this->_table['twoway_board_2']}
+            left join {$this->_table['lms_member']} as m on b.RegMemIdx = m.MemIdx
+            
             INNER JOIN (
                 SELECT SiteGroupCode
                 FROM {$this->_table['site']}
@@ -145,7 +194,11 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
 
-        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        $set_query = ' FROM ( select ' . $column;
+        $set_query .= $from . $where . $order_by_offset_limit;
+        $set_query .= ') AS m ';
+        $query = $this->_conn->query('select ' . $def_column . $set_query);
+
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 
@@ -606,18 +659,36 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
      * @param array $order_by
      * @return mixed
      */
-    public function listBoardForMockTest($is_count, $arr_condition=[], $column = null, $limit = null, $offset = null, $order_by = [])
+    public function listBoardForMockTest($is_count, $arr_condition=[], $column = 'b.BoardIdx', $limit = null, $offset = null, $order_by = [])
     {
         if ($is_count === true) {
-            $column = 'count(*) AS numrows';
+            $def_column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
+            $def_column = "
+                m.*,
+                IFNULL((
+                    SELECT
+                    CONCAT('[', GROUP_CONCAT(JSON_OBJECT(
+                        'FileIdx', BoardFileIdx,				
+                        'FileType', AttachFiletype,
+                        'FilePath', AttachFilePath,
+                        'FileName', AttachFileName,
+                        'RealName', AttachRealFileName,
+                        'Filesize', AttachFileSize
+                    )), ']') AS AttachData	
+                    
+                    FROM lms_board_attach
+                    WHERE BoardIdx=m.BoardIdx AND IsStatus='Y'
+                ),'N') AS AttachData
+            ";
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
 
         $from = "
             FROM {$this->_table['twoway_board_2']}
+            left join {$this->_table['lms_member']} as m on b.RegMemIdx = m.MemIdx
             LEFT JOIN {$this->_table['lms_order_product']} AS op ON op.ProdCode = b.ProdCode AND b.RegMemIdx = op.MemIdx
             LEFT JOIN {$this->_table['lms_mock_register']} AS mr ON op.OrderProdIdx = mr.OrderProdIdx
         ";
@@ -625,7 +696,10 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
 
-        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        $set_query = ' FROM ( select ' . $column;
+        $set_query .= $from . $where . $order_by_offset_limit;
+        $set_query .= ') AS m ';
+        $query = $this->_conn->query('select ' . $def_column . $set_query);
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
@@ -641,12 +715,29 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
      * @param array $order_by
      * @return mixed
      */
-    public function listBoardForQna($is_count, $arr_condition=[], $cate_code, $column = null, $limit = null, $offset = null, $order_by = [])
+    public function listBoardForQna($is_count, $arr_condition=[], $cate_code, $column = 'b.BoardIdx', $limit = null, $offset = null, $order_by = [])
     {
         if ($is_count === true) {
-            $column = 'count(*) AS numrows';
+            $def_column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
+            $def_column = "
+                m.*,
+                IFNULL((
+                    SELECT
+                    CONCAT('[', GROUP_CONCAT(JSON_OBJECT(
+                        'FileIdx', BoardFileIdx,				
+                        'FileType', AttachFiletype,
+                        'FilePath', AttachFilePath,
+                        'FileName', AttachFileName,
+                        'RealName', AttachRealFileName,
+                        'Filesize', AttachFileSize
+                    )), ']') AS AttachData	
+                    
+                    FROM lms_board_attach
+                    WHERE BoardIdx=m.BoardIdx AND IsStatus='Y'
+                ),'N') AS AttachData
+            ";
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
@@ -674,7 +765,10 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
 
-        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        $set_query = ' FROM ( select ' . $column;
+        $set_query .= $from . $where . $order_by_offset_limit;
+        $set_query .= ') AS m ';
+        $query = $this->_conn->query('select ' . $def_column . $set_query);
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }

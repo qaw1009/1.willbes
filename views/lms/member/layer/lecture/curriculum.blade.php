@@ -124,11 +124,51 @@
                         @if(empty($row['wUnitAttachFile']) == false)
                             <a href="{{app_url('/member/manage/download/'.$row['OrderIdx'].'/'.$row['ProdCode'].'/'.$row['ProdCodeSub'].'/'.$row['wLecIdx'].'/'.$row['wUnitIdx'], 'lms')}}"><img src="{{ 'https://static.willbes.net/public/images/willbes/prof/icon_file.gif' }}"></a>
                         @endif
-                        @foreach($lec['down_log'] as $log)
-                            @if($log['wUnitIdx'] == $row['wUnitIdx'])
-                                {{$log['DownloadDatm']}} - {{$log['DownloadIp']}}
-                            @endif
-                        @endforeach
+                        <div id="modal-{{$row['wUnitIdx']}}" class="modal" role="dialog" tabindex="-1">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <h2>● {{$row['wUnitNum']}}회 {{$row['wUnitLectureNum']}}강
+                                            {{$row['wUnitName']}}
+                                        </h2>
+
+                                        <table class="table table-striped table-bordered">
+                                            <colgroup>
+                                                <col width="50%">
+                                                <col width="50%">
+                                            </colgroup>
+                                            <thead>
+                                            <tr>
+                                                <th>다운로드시간</th>
+                                                <th>다운로드아이피</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @php $down_count = 0; @endphp
+                                            @foreach($lec['down_log'] as $log)
+                                                @if($log['wUnitIdx'] == $row['wUnitIdx'])
+                                                    <tr>
+                                                        <td>{{$log['DownloadDatm']}}</td>
+                                                        <td>{{$log['DownloadIp']}}</td>
+                                                    </tr>
+                                                    @php $down_count++ ; @endphp
+                                                @endif
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        @if($down_count > 0)
+                            <br/><br>
+                            총 {{$down_count}} 회 다운로드함<br/>
+                            <button class="btn btn-sm btn-primary border-radius-reset mr-15 btn-danger" data-toggle="modal" data-target="#modal-{{$row['wUnitIdx']}}">파일다운로드 이력 보기</button>
+                        @endif
                     </td>
                     <td>{{$row['FirstStudyDate']}}</td>
                     <td>{{$row['LastStudyDate']}}</td>
@@ -169,6 +209,7 @@
 
             }
         }
+
     </script>
 
 

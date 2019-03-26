@@ -122,7 +122,9 @@
                         </thead>
                         <tbody>
                         @forelse($curriculum as $row)
-                            <tr>
+                            <tr @if($row['StudyTime'] > 0)
+                                class="finish"
+                                    @endif>
                                 <td class="w-no">{{$row['wUnitNum']}}회 {{$row['wUnitLectureNum']}}강</td>
                                 <td class="w-lec tx-left">{{$row['wUnitName']}}</td>
                                 <td class="w-page">{{$row['wBookPage']}}</td>

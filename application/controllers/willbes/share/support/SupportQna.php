@@ -125,7 +125,7 @@ class SupportQna extends BaseSupport
 
         $column = 'b.BoardIdx, b.CampusCcd, b.TypeCcd, b.IsBest, b.RegType, b.RegMemIdx, b.ProdName';
         $column .= ', b.Title, b.Content, (b.ReadCnt + b.SettingReadCnt) as TotalReadCnt';
-        $column .= ', b.AttachData,DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
+        $column .= ', DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
         $column .= ', b.IsPublic, b.CampusCcd_Name, b.TypeCcd_Name';
         $column .= ', b.SiteName, b.ReplyStatusCcd, b.ReplyStatusCcd_Name';
         $column .= ', IF(b.RegType=1, \'\', m.MemName) AS RegName';
@@ -213,7 +213,7 @@ class SupportQna extends BaseSupport
             ];
 
             $column = '
-            BoardIdx, SiteCode, MdCateCode, CampusCcd, RegType, TypeCcd, IsBest, IsPublic
+            BoardIdx, b.SiteCode, MdCateCode, CampusCcd, RegType, TypeCcd, IsBest, IsPublic
             , VocCcd, ProdApplyTypeCcd, ProdCode, LecScore, ProdName
             , Title, Content, ReadCnt, SettingReadCnt
             , RegDatm, RegMemIdx, RegMemId, RegMemName
@@ -290,7 +290,7 @@ class SupportQna extends BaseSupport
         ];
 
         $column = '
-            BoardIdx, SiteCode, MdCateCode, CampusCcd
+            BoardIdx, b.SiteCode, MdCateCode, CampusCcd
             , RegType, TypeCcd, IsBest, IsPublic
             , VocCcd, ProdApplyTypeCcd, ProdCode, LecScore, ProdName
             , Title, Content, ReadCnt, SettingReadCnt

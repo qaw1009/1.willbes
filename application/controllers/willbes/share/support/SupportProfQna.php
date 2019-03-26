@@ -108,10 +108,10 @@ class SupportProfQna extends BaseSupport
 
         $column = 'b.BoardIdx, b.CampusCcd, b.TypeCcd, b.IsBest, b.RegType, b.RegMemIdx, b.ProdName';
         $column .= ', b.Title, b.Content, (b.ReadCnt + b.SettingReadCnt) as TotalReadCnt';
-        $column .= ', b.AttachData,DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
+        $column .= ', DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
         $column .= ', b.IsPublic, b.CampusCcd_Name, b.TypeCcd_Name';
         $column .= ', b.SiteName, b.ReplyStatusCcd, b.ReplyStatusCcd_Name';
-        $column .= ', IF(b.RegType=1, \'\', RegMemName) AS RegName';
+        $column .= ', IF(b.RegType=1, b.RegMemName, m.MemName) AS RegName';
         $column .= ', IF(b.IsCampus=\'Y\',\'offline\',\'online\') AS CampusType';
         $column .= ', IF(b.IsCampus=\'Y\',\'학원\',\'온라인\') AS CampusType_Name, SiteGroupName';
         $order_by = ['b.IsBest'=>'Desc','b.BoardIdx'=>'Desc'];
@@ -204,14 +204,14 @@ class SupportProfQna extends BaseSupport
             ];
 
             $column = '
-            BoardIdx, SiteCode, MdCateCode, CampusCcd, RegType, TypeCcd, IsBest, IsPublic
+            BoardIdx, b.SiteCode, MdCateCode, CampusCcd, RegType, TypeCcd, IsBest, IsPublic
             , VocCcd, ProdApplyTypeCcd, ProdCode, LecScore, ProdName
             , Title, Content, ReadCnt, SettingReadCnt
             , RegDatm, RegMemIdx, RegMemId, RegMemName
             , ReplyContent, ReplyRegDatm, ReplyStatusCcd
             , CampusCcd_Name, ReplyStatusCcd_Name, TypeCcd_Name
             , VocCcd_Name, MdCateCode_Name, SubJectName
-            , IF(RegType=1, \'\', RegMemName) AS RegName
+            , IF(RegType=1, b.RegMemName, m.MemName) AS RegName
             , IF(IsCampus=\'Y\',\'offline\',\'online\') AS CampusType
             , IF(IsCampus=\'Y\',\'학원\',\'온라인\') AS CampusType_Name, SiteGroupName        
             , AttachData, Category_String
@@ -278,7 +278,7 @@ class SupportProfQna extends BaseSupport
         ];
 
         $column = '
-            BoardIdx, SiteCode, MdCateCode, CampusCcd
+            BoardIdx, b.SiteCode, MdCateCode, CampusCcd
             , RegType, TypeCcd, IsBest, IsPublic
             , VocCcd, ProdApplyTypeCcd, ProdCode, LecScore, ProdName
             , Title, Content, ReadCnt, SettingReadCnt
@@ -287,7 +287,7 @@ class SupportProfQna extends BaseSupport
             , ReplyContent, ReplyRegDatm, ReplyStatusCcd
             , CampusCcd_Name, ReplyStatusCcd_Name, TypeCcd_Name
             , VocCcd_Name, MdCateCode_Name, SubJectName
-            , IF(RegType=1, \'\', RegMemName) AS RegName
+            , IF(RegType=1, b.RegMemName, m.MemName) AS RegName
             , IF(IsCampus=\'Y\',\'offline\',\'online\') AS CampusType
             , IF(IsCampus=\'Y\',\'학원\',\'온라인\') AS CampusType_Name, SiteGroupName        
             , AttachData

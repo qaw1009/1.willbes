@@ -108,7 +108,7 @@ class Qna extends SupportQna
                 'RegMemIdx' => $this->session->userdata('mem_idx'),
                 'RegType' => '0',
                 'IsUse' => 'Y',
-                'SiteCode' => $s_site_code,
+                'b.SiteCode' => $s_site_code,
                 'TypeCcd' => $s_consult_type,
                 'ProfIdx' => $prof_idx,
                 'SubjectIdx' => $subject_idx

@@ -47,9 +47,9 @@
         .skybanner2 {
             position:absolute;
             width:187px;
-            top:220px;
+            top:180px;
             left:50%;
-            margin-left:-660px; 
+            margin-left:-640px; 
             z-index:1;
         }        	
     </style>

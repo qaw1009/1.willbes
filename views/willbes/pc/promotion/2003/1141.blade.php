@@ -380,6 +380,14 @@
             }
         }
 
+        function inZero(p1,p2){
+            var zero = "";
+            for(var i=0; i<p2; i++){
+                zero += "0";
+            }
+            return zero.toString().concat(p1).match(new RegExp("\\d{"+p2+"}$"));
+        }
+
         function download(file_idx, event_idx, seq)
         {
             var today = new Date();
@@ -397,10 +405,10 @@
             timeStr += inZero(today.getMinutes(),2);
             timeStr += inZero(today.getSeconds(),2);
 
-            if(seq == 1 && (timeStr < 20190325150000 || timeStr > 20190329120000)){
+            if(seq == 1 && (timeStr < 20190328150000 || timeStr > 20190329120000)){
                 alert("3월28일 오후 3시부터 다운가능하며,\n정답해설은 다음날 12시까지 다운받으실 수 있습니다.");
                 return;
-            } else if(seq == 2 && (timeStr < 20190325150000 || timeStr > 20190330120000)){
+            } else if(seq == 2 && (timeStr < 20190329150000 || timeStr > 20190330120000)){
                 alert("3월29일 오후 3시부터 다운가능하며,\n정답해설은 다음날 12시까지 다운받으실 수 있습니다.");
                 return;
             } else if(seq == 3 && (timeStr < 20190331100000 || timeStr > 20180401120000)){

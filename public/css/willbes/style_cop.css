@@ -6,7 +6,7 @@
 .topBanner p {width:100%; max-width:1120px; margin:0 auto}
 .topBanner p img {width:100%}
 	
-#topBannerWarp {position:absolute; top:80px; width:100%; min-width:1210px; background:url("../../img/willbes/cop/banner/onTopBnar_190123C_02_bg.jpg") no-repeat center top; z-index:102}
+#topBannerWarp {position:absolute; top:70px; width:100%; min-width:1210px; background:url("../../img/willbes/cop/banner/onTopBnar_190123C_02_bg.jpg") no-repeat center top; z-index:102}
 	.myToggle {width:1120px; height:732px ;margin:0 auto}
 
 

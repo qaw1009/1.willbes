@@ -122,7 +122,7 @@
                             <p>
                                 @php
                                     if (empty($file_data_promotion[0]) === true) {
-                                        $download_data = "alert('자료가 없습니다.');";
+                                        $download_data = "alert('라이브 당일 오후 3시부터 출력 가능합니다.');";
                                     } else {
                                         $download_data = "download('".$file_data_promotion[0]['EfIdx']."', '".$data['ElIdx']."', '1');";
                                     }
@@ -137,7 +137,7 @@
                             <p>
                                 @php
                                     if (empty($file_data_promotion[1]) === true) {
-                                        $download_data = "alert('자료가 없습니다.');";
+                                        $download_data = "alert('라이브 당일 오후 3시부터 출력 가능합니다.');";
                                     } else {
                                         $download_data = "download('".$file_data_promotion[1]['EfIdx']."', '".$data['ElIdx']."', '2');";
                                     }
@@ -152,7 +152,7 @@
                             <p>
                                 @php
                                     if (empty($file_data_promotion[2]) === true) {
-                                        $download_data = "alert('자료가 없습니다.');";
+                                        $download_data = "alert('라이브 당일 오전 10시부터 출력 가능합니다.');";
                                     } else {
                                         $download_data = "download('".$file_data_promotion[2]['EfIdx']."', '".$data['ElIdx']."', '3');";
                                     }
@@ -167,7 +167,7 @@
                             <p>
                                 @php
                                     if (empty($file_data_promotion[3]) === true) {
-                                        $download_data = "alert('자료가 없습니다.');";
+                                        $download_data = "alert('라이브 당일 오후 3시부터 출력 가능합니다.');";
                                     } else {
                                         $download_data = "download('".$file_data_promotion[3]['EfIdx']."', '".$data['ElIdx']."', '4');";
                                     }
@@ -182,7 +182,7 @@
                             <p>
                                 @php
                                     if (empty($file_data_promotion[4]) === true) {
-                                        $download_data = "alert('자료가 없습니다.');";
+                                        $download_data = "alert('라이브 당일 오후 3시부터 출력 가능합니다.');";
                                     } else {
                                         $download_data = "download('".$file_data_promotion[4]['EfIdx']."', '".$data['ElIdx']."', '5');";
                                     }
@@ -195,7 +195,7 @@
                     </tr>
                 </tbody>
             </table>
-            <p class="btn_p"><a href="javascript:alert('실강 준비중입니다.');" ><img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_3_acago.png" alt="노량진 실강 신청하기" /></a></p>
+            <p class="btn_p"><a href="{{ site_url('/pass/event/show/ongoing?event_idx=155&') }}" target="_blank"><img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_3_acago.png" alt="노량진 실강 신청하기" /></a></p>
             <p><img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_4.png" alt="적중50선라이브와 함께 성적UP을 위한 완벽마무리" /></p>
         </div>
         <!--wb_cts02//-->
@@ -230,7 +230,7 @@
                     <p>
                         @php
                             if (empty($file_data_promotion[1]) === true) {
-                                $download_data = "alert('자료가 없습니다.');";
+                                $download_data = "alert('라이브 당일 오후 3시부터 출력 가능합니다.');";
                             } else {
                                 $download_data = "download('".$file_data_promotion[1]['EfIdx']."', '".$data['ElIdx']."', '2');";
                             }
@@ -245,7 +245,7 @@
                     <p>
                         @php
                             if (empty($file_data_promotion[2]) === true) {
-                                $download_data = "alert('자료가 없습니다.');";
+                                $download_data = "alert('라이브 당일 오전 10시부터 출력 가능합니다.');";
                             } else {
                                 $download_data = "download('".$file_data_promotion[2]['EfIdx']."', '".$data['ElIdx']."', '3');";
                             }
@@ -260,7 +260,7 @@
                     <p>
                         @php
                             if (empty($file_data_promotion[3]) === true) {
-                                $download_data = "alert('자료가 없습니다.');";
+                                $download_data = "alert('라이브 당일 오후 3시부터 출력 가능합니다.');";
                             } else {
                                 $download_data = "download('".$file_data_promotion[3]['EfIdx']."', '".$data['ElIdx']."', '4');";
                             }
@@ -275,7 +275,7 @@
                     <p>
                         @php
                             if (empty($file_data_promotion[4]) === true) {
-                                $download_data = "alert('자료가 없습니다.');";
+                                $download_data = "alert('라이브 당일 오후 3시부터 출력 가능합니다.');";
                             } else {
                                 $download_data = "download('".$file_data_promotion[4]['EfIdx']."', '".$data['ElIdx']."', '5');";
                             }

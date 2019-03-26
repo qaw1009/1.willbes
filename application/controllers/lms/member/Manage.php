@@ -24,7 +24,7 @@ class Manage extends \app\controllers\BaseController
         '2' => '639003'
     ];
 
-    protected $helpers = array();
+    protected $helpers = array('download','file');
 
     public function __construct()
     {
@@ -2044,11 +2044,41 @@ class Manage extends \app\controllers\BaseController
      * 강좌 첨부파일 다운로드
      * @param array $params
      */
-    public function download()
+    public function download($params = [])
     {
-        $path = rawurldecode($this->_req('path', false));
-        $name = rawurldecode($this->_req('name',false));
-        public_download($path, $name);
+        // 강좌정보 읽어오기
+        $orderidx = $params[0];
+        $prodcode = $params[1];
+        $prodcodesub = $params[2];
+        $lecidx = $params[3];
+        $unitidx = $params[4];
+
+        // 커리큘럼 읽어오기
+        $curriculum = $this->manageLectureModel->getCurriculum([
+            'EQ' => [
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub,
+                'wLecIdx' => $lecidx,
+                'wUnitIdx' => $unitidx
+            ]
+        ]);
+
+        if(empty($curriculum) == true){
+            show_alert('회차정보가 존재하지 않습니다.', 'back');
+        }
+
+        $curriculum = $curriculum[0];
+
+        $filepath = $curriculum['wAttachPath'] . $curriculum['wUnitAttachFile'];
+        $filename = $curriculum['wUnitAttachFileReal'];
+
+        if(is_file(public_to_upload_path($filepath)) == false){
+            show_alert('파일이 존재하지 않습니다.', 'back');
+        }
+
+        // 실제로 파일 다운로드 처리
+        public_download($filepath, $filename);
     }
 
 

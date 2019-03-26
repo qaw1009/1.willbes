@@ -126,15 +126,14 @@
                     </a>
                 </li>
                 <li>
-                    <!--a href="javascript:alert('준비중입니다.');"-->    
-                    <a href="#tab3">
+                    <a href="javascript:alert('준비중입니다.');">
                         <span>2019 국가직 9급</span>
                         <div>시험총평 및 시험후기</div>
                     </a>
                 </li>     
                 <li>
-                    <!--a href="javascript:alert('준비중입니다.');"-->    
-                    <a href="#tab4">
+                    <a href="javascript:alert('준비중입니다.');">    
+                    <!--a href="#tab4"-->
                         <span>2019 국가직 9급</span>
                         <div>기출해설강의</div>
                     </a>
@@ -147,32 +146,27 @@
             <div class="download">		
                 <!--국어-->
                 <span>
-                    <a href="javascript:alert('로그인 후 다운로드 가능합니다..');">다운로드</a>
-                    <!--a href="{{ site_url('#none') }}" title="다운로드">다운로드</a-->
+                    <a href="javascript:alert('준비중');">다운로드</a>
                 </span>
 
                 <!--영어-->
                 <span>
-                <a href="javascript:alert('로그인 후 다운로드 가능합니다..');">다운로드</a>
-                    <!--a href="{{ site_url('#none') }}" title="다운로드">다운로드</a-->
+                    <a href="javascript:alert('준비중);">다운로드</a>
                 </span>
                     
                 <!--한국사-->
                 <span>
-                    <a href="javascript:alert('로그인 후 다운로드 가능합니다..');">다운로드</a>
-                    <!--a href="{{ site_url('#none') }}" title="다운로드">다운로드</a-->
+                    <a href="javascript:alert('준비중');">다운로드</a>
                 </span>
     
                 <!--행정법-->
                 <span>
-                    <a href="javascript:alert('로그인 후 다운로드 가능합니다..');">다운로드</a>
-                    <!--a href="{{ site_url('#none') }}" title="다운로드">다운로드</a-->
+                    <a href="javascript:alert('준비중');">다운로드</a>
                 </span>
                     
                 <!--행정학-->
                 <span>
-                    <a href="javascript:alert('로그인 후 다운로드 가능합니다..');">다운로드</a>
-                    <!--a href="{{ site_url('#none') }}" title="다운로드">다운로드</a-->
+                    <a href="javascript:alert('준비중');">다운로드</a>
                 </span>
                 <img src="https://static.willbes.net/public/images/promotion/2019/03/1140_01_1.jpg" title="풀캐어 강사진" />            
             </div>
@@ -1108,7 +1102,7 @@
         </div>
 
         <!--시험총평 및 시험후기-->
-        <div id="tab3" class="tabCts Cts03">
+        <div id="tab3" class="tabCts Cts03" style="display:none">
             <img src="https://static.willbes.net/public/images/promotion/2019/03/1140_03_1.jpg" title="시험 총평 및 시험후기, 적중이벤트" /> 
             <ul class="graphWrap">
                 <li>
@@ -1151,7 +1145,7 @@
         </div>
 
         <!--기출해설강의-->
-        <div id="tab4" class="tabCts Cts04">
+        <div id="tab4" class="tabCts Cts04" style="display:none">
             <div><img src="https://static.willbes.net/public/images/promotion/2019/03/1140_04_1.jpg" title="기출해설강의" /></div>
             <div class="lecture">
                 <ul>

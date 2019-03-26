@@ -1132,7 +1132,7 @@
             </ul>
             <div class="mt30 tx-center"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/2019/03/1140_btn02.png" title="설문하기" /></a></div>
 
-            <div class="Cts03_01" style="display:none">
+            <div class="Cts03_01">
                 <h3>2019년 4월 7일 시행 <span>국가직 9급 시험 총평</span></h3>
                 <div>
                     총평 내용
@@ -1150,7 +1150,7 @@
         </div>
 
         <!--기출해설강의-->
-        <div id="tab4" class="tabCts Cts04">
+        <div id="tab4" class="tabCts Cts04" style="display:none">
             <div><img src="https://static.willbes.net/public/images/promotion/2019/03/1140_04_1.jpg" title="기출해설강의" /></div>
             <div class="lecture">
                 <ul>

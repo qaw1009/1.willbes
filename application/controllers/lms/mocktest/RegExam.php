@@ -136,12 +136,13 @@ class RegExam extends \app\controllers\BaseController
             ['field' => 'IsUse', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
         ];
+        /*
         if( $_FILES['QuestionFile']['error'] !== UPLOAD_ERR_OK || $_FILES['QuestionFile']['size'] == 0 ) {
             $rules[] = ['field' => 'QuestionFile', 'label' => '문제통파일', 'rules' => 'required'];
         }
         if( $_FILES['ExplanFile']['error'] !== UPLOAD_ERR_OK  || $_FILES['ExplanFile']['size'] == 0 ) {
             $rules[] = ['field' => 'ExplanFile', 'label' => '해설지통파일', 'rules' => 'required'];
-        }
+        }*/
         if ($this->validate($rules) === false) return;
 
         $result = $this->regExamModel->store();

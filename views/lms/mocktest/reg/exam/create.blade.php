@@ -111,7 +111,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <th colspan="1">문제통파일 <span class="required">*</span></th>
+                        <th colspan="1">문제통파일</th>
                         <td colspan="3">
                             <input type="file" name="QuestionFile">
                             @if($method == 'PUT' && !empty($data['QuestionFile']))
@@ -123,7 +123,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <th colspan="1">해설지통파일 <span class="required">*</span></th>
+                        <th colspan="1">해설지통파일</th>
                         <td colspan="3">
                             <input type="file" name="ExplanFile">
                             @if($method == 'PUT' && !empty($data['ExplanFile']))

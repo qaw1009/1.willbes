@@ -171,10 +171,11 @@ class CartFModel extends BaseOrderFModel
      * 수강생교재 구매시 부모상품 주문여부 및 장바구니 확인
      * @param int $site_code [사이트코드]
      * @param string $prod_book_code [교재상품코드]
+     * @param string $parent_prod_code [부모상품코드]
      * @param array $arr_input_prod_code [교재상품과 동시에 장바구니에 저장될 상품코드, form input 상품코드]
      * @return bool|string [true : 구매가능, string : 구매불가]
      */
-    public function checkStudentBook($site_code, $prod_book_code, $arr_input_prod_code = [])
+    public function checkStudentBook($site_code, $prod_book_code, $parent_prod_code, $arr_input_prod_code = [])
     {
         $sess_mem_idx = $this->session->userdata('mem_idx');
 
@@ -186,6 +187,11 @@ class CartFModel extends BaseOrderFModel
         if (empty($arr_target_prod_code) === true) {
             // 수강생교재가 아닐 경우
             return true;
+        } else {
+            // 부모상품의 구매교재정보에서 수강생교재로 설정되지 않을 경우
+            if (in_array($parent_prod_code, $arr_target_prod_code) === false) {
+                return true;
+            }
         }
 
         // 2. 수강생교재 구매여부 확인 (1권만 구매가능, 구매정보가 있다면 return false, 없다면 continue)
@@ -562,7 +568,7 @@ class CartFModel extends BaseOrderFModel
                 $arr_input_prod_code[] = $parent_prod_code;
             }
 
-            $check_result = $this->checkStudentBook($site_code, $prod_code, $arr_input_prod_code);
+            $check_result = $this->checkStudentBook($site_code, $prod_code, $parent_prod_code, $arr_input_prod_code);
             if ($check_result !== true) {
                 return $check_result;
             }

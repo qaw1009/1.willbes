@@ -435,7 +435,7 @@ class Home extends \app\controllers\FrontController
                 ,'b.SiteCode' => $this->_site_code
             ]
         ];
-        $column = 'b.BoardIdx, b.Title, b.AttachData, b.CampusCcd_Name, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
+        $column = 'b.BoardIdx, b.Title,  b.CampusCcd_Name, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
         $order_by = ['b.BoardIdx'=>'Desc'];
         $data = $this->supportBoardFModel->listBoard(false,$arr_condition, '',$column,2,0,$order_by);
 

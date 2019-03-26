@@ -123,7 +123,7 @@ class Cart extends \app\controllers\FrontController
         }
 
         // 수강생교재 주문가능여부 확인
-        $returns['is_check'] = $this->cartFModel->checkStudentBook($this->_site_code, $prod_book_code, $input_prod_code);
+        $returns['is_check'] = $this->cartFModel->checkStudentBook($this->_site_code, $prod_book_code, $parent_prod_code, $input_prod_code);
 
         $this->json_result(true, '', [], $returns);
     }

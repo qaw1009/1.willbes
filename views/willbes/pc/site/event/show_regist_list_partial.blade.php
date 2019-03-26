@@ -88,11 +88,6 @@
             var inputBox_type;
             if (limit_type == 'S') { inputBox_type = 'radio'; } else { inputBox_type = 'checkbox'; }
 
-            if ($('input:'+inputBox_type+'[name="register_chk[]"]').is(':checked') === false) {
-                alert('특강을 선택해 주세요');
-                return false;
-            }
-
             if ($('#register_name').val() == '') {
                 alert('이름을 입력해 주세요.');
                 return false;

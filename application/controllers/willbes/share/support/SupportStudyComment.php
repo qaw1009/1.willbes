@@ -57,7 +57,7 @@ class SupportStudyComment extends BaseSupport
 
         $column = 'BoardIdx, IsBest, RegType, RegMemIdx, RegMemId, RegMemName';
         $column .= ',Title, Content, (ReadCnt + SettingReadCnt) as TotalReadCnt';
-        $column .= ',AttachData, DATE_FORMAT(RegDatm, \'%Y-%m-%d\') as RegDatm';
+        $column .= ',DATE_FORMAT(RegDatm, \'%Y-%m-%d\') as RegDatm';
         $column .= ',SubjectIdx, ProfIdx, b.ProdCode';
         $column .= ',SubjectName, ProfName, ProdName';
         $column .= ',ProdApplyTypeCcd, LecScore';
@@ -178,7 +178,7 @@ class SupportStudyComment extends BaseSupport
         $column = 'BoardIdx, IsBest, RegType, RegMemIdx';
         $column .= ',IF(b.RegType=1, b.RegMemId, m.MemId) AS RegMemId, IF(b.RegType=1, b.RegMemName, m.MemName) AS RegMemName';
         $column .= ',Title, Content, (ReadCnt + SettingReadCnt) as TotalReadCnt';
-        $column .= ',AttachData, DATE_FORMAT(RegDatm, \'%Y-%m-%d\') as RegDatm';
+        $column .= ',DATE_FORMAT(RegDatm, \'%Y-%m-%d\') as RegDatm';
         $column .= ',SubjectIdx, ProfIdx, b.ProdCode';
         $column .= ',SubjectName, ProfName, ProdName';
         $column .= ',ProdApplyTypeCcd, LecScore';

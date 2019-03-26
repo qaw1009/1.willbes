@@ -3801,6 +3801,9 @@ table.classTable tr td.w-data {
 .LeclistTable {
     clear: both;
 }
+.LeclistTable .listTable tr.finish {
+    background: #f1f8fe;
+}
 .LeclistTable .listTable tr th,
 .LeclistTable .listTable tr td {
     text-align: center;

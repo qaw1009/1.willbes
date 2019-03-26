@@ -1123,7 +1123,11 @@
                     </div>
                 </li>
             </ul>
-            <div class="mt30 tx-center"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/2019/03/1140_btn02.png" title="설문하기" /></a></div>
+            <div class="mt30 tx-center">
+                <a href="javascript:pullOpen();">
+                    <img src="https://static.willbes.net/public/images/promotion/2019/03/1140_btn02.png" title="설문하기" />
+                </a>
+            </div>
 
             <div class="Cts03_01">
                 <h3>2019년 4월 7일 시행 <span>국가직 9급 시험 총평</span></h3>
@@ -1200,7 +1204,10 @@
             $content.show();
         
             e.preventDefault()})})}
-        );
-        
+        );        
+
+        function pullOpen(){
+            window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
+        }
     </script>
 @stop

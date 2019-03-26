@@ -124,6 +124,11 @@
                         @if(empty($row['wUnitAttachFile']) == false)
                             <a href="{{app_url('/member/manage/download/'.$row['OrderIdx'].'/'.$row['ProdCode'].'/'.$row['ProdCodeSub'].'/'.$row['wLecIdx'].'/'.$row['wUnitIdx'], 'lms')}}"><img src="{{ 'https://static.willbes.net/public/images/willbes/prof/icon_file.gif' }}"></a>
                         @endif
+                        @foreach($lec['down_log'] as $log)
+                            @if($log['wUnitIdx'] == $row['wUnitIdx'])
+                                {{$log['DownloadDatm']}} - {{$log['DownloadIp']}}
+                            @endif
+                        @endforeach
                     </td>
                     <td>{{$row['FirstStudyDate']}}</td>
                     <td>{{$row['LastStudyDate']}}</td>

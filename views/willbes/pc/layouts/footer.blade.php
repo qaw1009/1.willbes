@@ -11,13 +11,12 @@
                     <span class="row-line">|</span>
                 </li>
                 <li>
-                    <a href="{{ front_url('/profRecruit/index') }}">강사모집</a><font color="white">&nbsp;{{@(explode('.',$_SERVER["REMOTE_ADDR"])[3])}}</font>
+                    <a href="{{ front_url('/profRecruit/index') }}">강사모집</a><font color="white">&nbsp;{{@(explode('.',$_SERVER["SERVER_ADDR"])[3])}}</font>
                 </li>
             </ul>
         </div>
     </div>
     <div class="widthAuto">
-
         {!! $__cfg['FooterInfo'] !!}
     </div>
 </div>

@@ -79,7 +79,7 @@
                 document.all['blackpopup'].style.visibility = "visible";
                 }
             }*/
-            var event_day = new Date("March 25, 2019 23:59:59"); 
+            var event_day = new Date("March 31, 2019 23:59:59"); 
             var now = new Date();
 
             if((event_day.getTime() - now.getTime()) > 0) { /*기간제한 사용하지 않을경우 아래로 대체해주세요 - 4-1*/

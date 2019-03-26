@@ -380,6 +380,14 @@
             }
         }
 
+        function inZero(p1,p2){
+            var zero = "";
+            for(var i=0; i<p2; i++){
+                zero += "0";
+            }
+            return zero.toString().concat(p1).match(new RegExp("\\d{"+p2+"}$"));
+        }
+
         function download(file_idx, event_idx, seq)
         {
             var today = new Date();

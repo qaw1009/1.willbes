@@ -1,10 +1,19 @@
+        <style>
+        .modalPopup {display:block; position:fixed; _position:absolute; top:0; left:0; width:100%; height:100%; z-index:9999}
+        .modalPopup .bg {position:absolute; top:0; left:0; width:100%; height:100%; background:#000; opacity:.7; filter:alpha(opacity=70)}
+        .modalPopup .pop-layer {display:block; position:absolute; top:50%; left:50%; margin-left:-240px; margin-top:-380px; width:760px; height:auto; z-index:10} 
+        .modalPopup .pop-layer .btn-r {margin:10px 0; text-align:right}
+        .modalPopup .pop-layer .btn-r a.cbtn {display:inline-block; height:25px; line-height:25px; padding:0 14px 0; border:1px solid #bbb; background-color:#16120f; font-size:13px; color:#bbb; margin-left:10px} 
+        .modalPopup .pop-layer .btn-r a.cbtn:hover {border:1px solid #091940; background-color:#1f326a; color:#fff;}
+        </style>
+        
         <div class="modalPopup" id="blackpopup">
             <div class="bg"></div>
             <div class="pop-layer" id="modalPopup2">
                 <div class="pop-container">
                     <div class="pop-conts">
                         <!--content //-->
-                        <img src="https://static.willbes.net/public/images/promotion/2019/03/LayPop190322_c.jpg" alt="2단계 동형모의고사/숨은 필합자를 찾아라" usemap="#Map190325" border="0"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2019/03/LayPop190326_p.jpg" alt="2단계 동형모의고사/숨은 필합자를 찾아라" usemap="#Map190325" border="0"/>
                         <map name="Map190325" id="Map190325">
                             <area shape="rect" coords="216,319,541,366" href="{{ site_url('/promotion/index/cate/3001/code/1127e') }}" alt="2단계 동형모의고사" />
                             <area shape="rect" coords="451,663,653,727" href="{{ site_url('/pass/promotion/index/cate/3001/code/1138') }}" alt="숨은 필홥자를 찾아라" />

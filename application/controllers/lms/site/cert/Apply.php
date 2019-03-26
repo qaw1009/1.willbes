@@ -93,7 +93,7 @@ class Apply extends \app\controllers\BaseController
         $count = $this->certApplyModel->listApply(true, $arr_condition,null,null,[],$arr_condition_add);
 
         if ($count > 0) {
-            $list = $this->certApplyModel->listApply(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['SA.CaIdx' => 'desc'], $arr_condition_add);
+            $list = $this->certApplyModel->listApply(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['SA.RegDatm' => 'desc'], $arr_condition_add);
         }
 
 

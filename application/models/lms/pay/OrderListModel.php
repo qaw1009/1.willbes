@@ -140,25 +140,25 @@ class OrderListModel extends BaseOrderModel
         if ($is_all_from === true) {
             $from .= '                                
                 left join ' . $this->_table['code'] . ' as CPG
-                    on O.PgCcd = CPG.Ccd and CPG.IsStatus = "Y" and CPG.GroupCcd = "' . $this->_group_ccd['Pg']. '"                   
+                    on O.PgCcd = CPG.Ccd and CPG.IsStatus = "Y" and CPG.GroupCcd = "' . $this->_group_ccd['Pg'] . '"                   
                 left join ' . $this->_table['code'] . ' as CPC
-                    on O.PayChannelCcd = CPC.Ccd and CPC.IsStatus = "Y" and CPC.GroupCcd = "' . $this->_group_ccd['PayChannel']. '"
+                    on O.PayChannelCcd = CPC.Ccd and CPC.IsStatus = "Y" and CPC.GroupCcd = "' . $this->_group_ccd['PayChannel'] . '"
                 left join ' . $this->_table['code'] . ' as CPR
-                    on O.PayRouteCcd = CPR.Ccd and CPR.IsStatus = "Y" and CPR.GroupCcd = "' . $this->_group_ccd['PayRoute']. '"
+                    on O.PayRouteCcd = CPR.Ccd and CPR.IsStatus = "Y" and CPR.GroupCcd = "' . $this->_group_ccd['PayRoute'] . '"
                 left join ' . $this->_table['code'] . ' as CPM
-                    on O.PayMethodCcd = CPM.Ccd and CPM.IsStatus = "Y" and CPM.GroupCcd = "' . $this->_group_ccd['PayMethod']. '"
+                    on O.PayMethodCcd = CPM.Ccd and CPM.IsStatus = "Y" and CPM.GroupCcd = "' . $this->_group_ccd['PayMethod'] . '"
                 left join ' . $this->_table['code'] . ' as CVB
-                    on O.VBankCcd = CVB.Ccd and CVB.IsStatus = "Y" and CVB.GroupCcd = "' . $this->_group_ccd['Bank']. '"         
+                    on O.VBankCcd = CVB.Ccd and CVB.IsStatus = "Y" and CVB.GroupCcd = "' . $this->_group_ccd['Bank'] . '"         
                 left join ' . $this->_table['code'] . ' as CAR
-                    on O.AdminReasonCcd = CAR.Ccd and CAR.IsStatus = "Y" and CAR.GroupCcd = "' . $this->_group_ccd['AdminReason']. '"                    
+                    on O.AdminReasonCcd = CAR.Ccd and CAR.IsStatus = "Y" and CAR.GroupCcd = "' . $this->_group_ccd['AdminReason'] . '"                    
                 left join ' . $this->_table['code'] . ' as CPS
-                    on OP.PayStatusCcd = CPS.Ccd and CPS.IsStatus = "Y" and CPS.GroupCcd = "' . $this->_group_ccd['PayStatus']. '"
+                    on OP.PayStatusCcd = CPS.Ccd and CPS.IsStatus = "Y" and CPS.GroupCcd = "' . $this->_group_ccd['PayStatus'] . '"
                 left join ' . $this->_table['code'] . ' as CSP
-                    on OP.SalePatternCcd = CSP.Ccd and CSP.IsStatus = "Y" and CSP.GroupCcd = "' . $this->_group_ccd['SalePattern']. '"                                                      	
+                    on OP.SalePatternCcd = CSP.Ccd and CSP.IsStatus = "Y" and CSP.GroupCcd = "' . $this->_group_ccd['SalePattern'] . '"                                                      	
                 left join ' . $this->_table['code'] . ' as CPT
-                    on P.ProdTypeCcd = CPT.Ccd and CPT.IsStatus = "Y" and CPT.GroupCcd = "' . $this->_group_ccd['ProdType']. '"
+                    on P.ProdTypeCcd = CPT.Ccd and CPT.IsStatus = "Y" and CPT.GroupCcd = "' . $this->_group_ccd['ProdType'] . '"
                 left join ' . $this->_table['code'] . ' as CLP
-                    on PL.LearnPatternCcd = CLP.Ccd and CLP.IsStatus = "Y" and CLP.GroupCcd = "' . $this->_group_ccd['LearnPattern']. '"';
+                    on PL.LearnPatternCcd = CLP.Ccd and CLP.IsStatus = "Y" and CLP.GroupCcd = "' . $this->_group_ccd['LearnPattern'] . '"';
         }
 
         return $from . $this->_getAddListQuery('from', $arr_add_join, $is_all_from);
@@ -242,7 +242,7 @@ class OrderListModel extends BaseOrderModel
                 if ($is_all_from === true) {
                     $from .= '                        
                         left join ' . $this->_table['code'] . ' as CDS
-                            on OPD.DeliveryStatusCcd = CDS.Ccd and CDS.IsStatus = "Y" and CDS.GroupCcd = "' . $this->_group_ccd['DeliveryStatus']. '"
+                            on OPD.DeliveryStatusCcd = CDS.Ccd and CDS.IsStatus = "Y" and CDS.GroupCcd = "' . $this->_group_ccd['DeliveryStatus'] . '"
                         left join ' . $this->_table['admin'] . ' as AIR
                             on OPD.InvoiceRegAdminIdx = AIR.wAdminIdx and AIR.wIsStatus = "Y"
                         left join ' . $this->_table['admin'] . ' as AIU
@@ -402,9 +402,9 @@ class OrderListModel extends BaseOrderModel
                 left join ' . $this->_table['product_lecture'] . ' as PL
                     on OP.ProdCode = PL.ProdCode
                 left join ' . $this->_table['code'] . ' as CPT
-                    on P.ProdTypeCcd = CPT.Ccd and CPT.IsStatus = "Y" and CPT.GroupCcd = "' . $this->_group_ccd['ProdType']. '"
+                    on P.ProdTypeCcd = CPT.Ccd and CPT.IsStatus = "Y" and CPT.GroupCcd = "' . $this->_group_ccd['ProdType'] . '"
                 left join ' . $this->_table['code'] . ' as CLP
-                    on PL.LearnPatternCcd = CLP.Ccd and CLP.IsStatus = "Y" and CLP.GroupCcd = "' . $this->_group_ccd['LearnPattern']. '"
+                    on PL.LearnPatternCcd = CLP.Ccd and CLP.IsStatus = "Y" and CLP.GroupCcd = "' . $this->_group_ccd['LearnPattern'] . '"
                 left join ' . $this->_table['code'] . ' as CCA
                     on PL.CampusCcd = CCA.Ccd and CCA.IsStatus = "Y" and CCA.GroupCcd = "' . $this->_group_ccd['Campus'] . '"';
 
@@ -525,19 +525,39 @@ class OrderListModel extends BaseOrderModel
         }
 
         $data = element('0', $data);
+        $arr_prod_code = [];
         $add_data = [];
+        $prof_name = '';
 
         if ($data['SiteCode'] == '2002') {
             // 경찰학원
             $data['ViewType'] = 'C';
 
+            // 단과반, 종합반 상품코드 조회
+            if ($data['LearnPatternCcd'] == $this->_learn_pattern_ccd['off_lecture']) {
+                $arr_prod_code[] = $data['ProdCode'];
+            } else {
+                // 주문서브상품 상품코드 조회
+                $arr_prod_code = $this->_conn->getFindResult($this->_table['order_sub_product'], 'ProdCodeSub', [
+                    'EQ' => ['OrderProdIdx' => $order_prod_idx]
+                ]);
+
+                /*// 선택형 종합반 선택된 상품 교수명 조회 (추후 데이터 보정 후 반영)
+                $prof_name = $this->getChoicePackSelectedProfName($order_prod_idx, $data['ProdCode']);
+                $prof_name = empty($prof_name) === false ? ' (' . mb_substr($prof_name['wProfName'], 0, 1) . ')' : '';*/
+            }
+
+            /*// 나의 강좌정보 (my_lecture) 최소 강좌시작일자, 최대 강좌종료일자 조회 ==> 상품정보에서 조회로 변경
+            $add_data = $this->_conn->getFindResult($this->_table['my_lecture'], 'min(LecStartDate) as MinLecStartDate, max(LecEndDate) as MaxLecEndDate', [
+                'EQ' => ['OrderIdx' => $order_idx, 'OrderProdIdx' => $order_prod_idx]]);*/
+
+            // 상품정보의 최소 개강일, 최대 종강일 조회
+            $add_data = $this->_conn->getFindResult($this->_table['product_lecture'], 'min(StudyStartDate) as MinLecStartDate, max(StudyEndDate) as MaxLecEndDate', [
+                'IN' => ['ProdCode' => $arr_prod_code]]);
+
             // 상품명 길이 조정
             $this->load->helper('text');
-            $data['ProdName'] = ellipsize($data['ProdName'], 14, 1, '');
-
-            // 나의 강좌정보 (my_lecture) 최소 강좌시작일자, 최대 강좌종료일자 조회
-            $add_data = $this->_conn->getFindResult($this->_table['my_lecture'], 'min(LecStartDate) as MinLecStartDate, max(LecEndDate) as MaxLecEndDate', [
-                'EQ' => ['OrderIdx' => $order_idx, 'OrderProdIdx' => $order_prod_idx]]);
+            $data['ProdName'] = ellipsize($data['ProdName'], 14, 1, '') . $prof_name;
 
             $add_data['MinLecStartDate'] = date('m/d', strtotime($add_data['MinLecStartDate']));
             $add_data['MaxLecEndDate'] = date('m/d', strtotime($add_data['MaxLecEndDate']));
@@ -595,5 +615,32 @@ class OrderListModel extends BaseOrderModel
         $query = $this->_conn->query('select ' . $column . $from, [$req_start_date, $req_end_date]);
 
         return $query->result_array();
+    }
+
+    /**
+     * 운영자 선택형 패키지 선택상품 교수명 1건 조회
+     * @param $order_prod_idx
+     * @param $prod_code
+     * @return mixed
+     */
+    public function getChoicePackSelectedProfName($order_prod_idx, $prod_code)
+    {
+        $column = 'VWP.wProfName_String as wProfName';
+        $from = '
+            from ' . $this->_table['order_sub_product'] . ' as OSP
+                inner join ' . $this->_table['product_r_sublecture'] . ' as PRS
+                    on OSP.ProdCodeSub = PRS.ProdCodeSub
+                inner join ' . $this->_table['product_professor_concat_repr'] . ' as VWP
+                    on OSP.ProdCodeSub = VWP.ProdCode
+            where OSP.OrderProdIdx = ?
+                and PRS.ProdCode = ?
+                and PRS.IsStatus = "Y" and PRS.IsEssential = "N"                
+            order by OSP.OrderProdSubIdx desc limit 1
+        ';
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from, [$order_prod_idx, $prod_code]);
+
+        return $query->row_array();
     }
 }

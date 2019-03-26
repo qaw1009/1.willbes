@@ -178,9 +178,9 @@ abstract class FrontController extends BaseController
 
                     // 메뉴 URL에서 method를 제외한 uri params check (cate/{cate value}/pack/{pack value} ...)
                     $check_menu_postfix = str_first_pos_after(str_first_pos_after($menu_path, $check_menu_prefix), '/', '');
-                    
+
                     // controller 만으로 체크 가능 || controller + 후위 uri string 으로 체크
-                    if ((empty($uri_post_string) === true && empty($check_menu_postfix) === true)
+                    if ((empty($check_menu_postfix) === true)
                         || (empty($check_menu_postfix) === false && strpos($uri_post_string, $check_menu_postfix) !== false)) {
                         $_active_route_idx = $menu_route_idx;
                         break;

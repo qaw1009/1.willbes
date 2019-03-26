@@ -109,8 +109,8 @@
                     <td>{{$row['wUnitNum']}}회 {{$row['wUnitLectureNum']}}강</td>
                     <td>{{$row['wUnitName']}}</td>
                     <td>
-                        @if(empty($row['wWD']) == false)<button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodViewUnit('WD',{{$row['wUnitIdx']}})">와이드</button>@endif
-                        @if(empty($row['wHD']) == false)<button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodViewUnit('HD',{{$row['wUnitIdx']}})">고화질</button>@endif
+                        @if(empty($row['wWD']) == false)<button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodViewUnit('WD',{{$row['wUnitIdx']}})">와이드</button><br/>@endif
+                        @if(empty($row['wHD']) == false)<button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodViewUnit('HD',{{$row['wUnitIdx']}})">고화질</button><br/>@endif
                         @if(empty($row['wSD']) == false)<button class="btn btn-sm btn-primary border-radius-reset mr-15" type="button" onclick="vodViewUnit('SD',{{$row['wUnitIdx']}})">일반화질</button>@endif
                     </td>
                     <td>{{$row['wBookPage']}} 페이지</td>

@@ -41,12 +41,12 @@
         .tabCts {
             position:relative; width:1120px; margin:0 auto; text-align:center;
         }
-        .tabCts .download span {position:absolute; display:block; width:72px; height:24px; line-height:24px; text-align:center; z-index:1}
-        .tabCts .download span:nth-child(1) {left:128px; top:711px}
-        .tabCts .download span:nth-child(2) {left:326px; top:711px}
-        .tabCts .download span:nth-child(3) {left:534px; top:711px}
-        .tabCts .download span:nth-child(4) {left:720px; top:711px}
-        .tabCts .download span:nth-child(5) {left:900px; top:711px}
+        .tabCts .download span {position:absolute; top:660px; display:block; width:72px; height:24px; line-height:24px; text-align:center; z-index:1}
+        .tabCts .download span:nth-child(1) {left:128px;}
+        .tabCts .download span:nth-child(2) {left:326px;}
+        .tabCts .download span:nth-child(3) {left:534px;}
+        .tabCts .download span:nth-child(4) {left:720px;}
+        .tabCts .download span:nth-child(5) {left:900px;}
         .tabCts .download span a {display:block; color:#fff; background:#d18f04; border-radius:14px;}
         .tabCts .download span a:hover {background:#e50001}
         .tabCts .youtube {width:100%; text-align:center; margin:3em 0}	
@@ -67,7 +67,7 @@
 
         .Cts03 {margin-bottom:100px; text-align:left}
         .Cts03 .graphWrap {
-            margin-top:50px; font-size:14px; line-height:1.5;
+            margin-top:50px; font-size:14px; line-height:1.5; 
         }
         .Cts03 .graphWrap li {
             display:inline; float:left; width:48%; text-align:left; margin:0 0.5%; position:relative;
@@ -80,8 +80,26 @@
         .Cts03_01 {width:1120px; text-align:left; margin:80px auto 0}
         .Cts03_01 div {border:1px solid #e4e4e4; padding:20px; margin-top:20px}
         
+        .Cts04 {padding-bottom:100px}
+        .Cts04 .lecture {
+            width:1000px; margin:0 auto;
+        }
         .Cts04 .lecture li {
-            display:inline; float:left; width:25%}
+            display:inline; float:left; width:25%; text-align:center; margin-bottom:20px;
+        }
+        .Cts04 .lecture li img.prof {
+            width:200px !important; border:1px solid #ccc;
+        }
+        .Cts04 .t_tilte {
+           line-height:1.5; padding:10px 0; color:#666; width:200px; margin:0 auto
+        }
+        .Cts04 .t_tilte p {border-top:1px solid #e4e4e4; padding-top:10px; margin-top:10px}
+        .Cts04 .t_tilte span {
+            color:#36374d; font-size:14px; ;
+        }
+
+        .Cts04 .lecture ul:after {
+            content:""; display:block; clear:both;
         }
     </style>
 
@@ -1138,59 +1156,24 @@
             <div class="lecture">
                 <ul>
                     <li>
-                    <img src="https://pass.willbes.net/public/uploads/willbes/professor/50241/lec_detail_50241.png" alt="기미진" class="prof">
+                    <img src="https://pass.willbes.net/public/uploads/willbes/professor/50241/lec_detail_50241.png" title="교수명" class="prof">
                         <div class="t_tilte">
-                            <p><strong>국어 기미진</strong> <span>교수</span></p>
-                            <p>공무원 한국사의 대명사</p>
-                        </div>
-                        <div class="t_file">                                
-                            추후 제공 예정입니다.                            
+                            국어 기미진 교수<br>
+                            <span>공무원 한국사의 대명사</span>                               
+                            <p>추후 제공 예정입니다.</p>                            
                         </div>
                     </li>
                     <li>
-                        <img src="https://pass.willbes.net/public/uploads/willbes/professor/50241/lec_detail_50241.png" alt="한덕현" class="prof">
+                        <img src="https://pass.willbes.net/public/uploads/willbes/professor/50241/lec_detail_50241.png" title="교수명" class="prof">
                         <div class="t_tilte">
-                            <p><strong>영어 한덕현</strong> <span>교수</span></p>
-                            <p>공무원 한국사의 대명사</p>
-                        </div>
-                        <div class="t_file">
-	                        <a href="#none"><img src="http://file.willbes.net/new_image/2015/04/150413_exam_sub5_01.png" title="해설강의"></a>
-	                        <a href="#none"><img src="http://file.willbes.net/new_image/2015/04/150413_exam_sub5_02.png" title="해설자료"></a>
-	                    </div>
+                            국어 기미진 교수<br>
+                            <span>공무원 한국사의 대명사</span> 
+                            <p>
+                                <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2019/03/1140_btn03.png" title="해설강의"></a>
+                                <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2019/03/1140_btn04.png" title="해설자료"></a>
+                            </p>
                     </li>
-                    <li>
-                        <img src="https://pass.willbes.net/public/uploads/willbes/professor/50241/lec_detail_50241.png" alt="한경준" class="prof">
-                        <div class="t_tilte">
-                            <p><strong>한국사 한경준</strong> <span>교수</span></p>
-                            <p>공무원 한국사의 대명사</p>
-                        </div>
-                        <div class="t_file">
-	                        <a href="#none"><img src="http://file.willbes.net/new_image/2015/04/150413_exam_sub5_01.png" title="해설강의"></a>
-	                        <a href="#none"><img src="http://file.willbes.net/new_image/2015/04/150413_exam_sub5_02.png" title="해설자료"></a>
-	                    </div>
-                    </li>
-                    <li>
-                        <img src="https://pass.willbes.net/public/uploads/willbes/professor/50241/lec_detail_50241.png" alt="한세훈" class="prof">
-                        <div class="t_tilte">
-                            <p><strong>행정법 한세훈</strong> <span>교수</span></p>
-                            <p>공무원 한국사의 대명사</p>
-                        </div>
-                        <div class="t_file">
-	                        <a href="#none"><img src="http://file.willbes.net/new_image/2015/04/150413_exam_sub5_01.png" title="해설강의"></a>
-	                        <a href="#none"><img src="http://file.willbes.net/new_image/2015/04/150413_exam_sub5_02.png" title="해설자료"></a>
-	                    </div>
-                    </li>
-                    <li>
-                        <img src="https://pass.willbes.net/public/uploads/willbes/professor/50241/lec_detail_50241.png" alt="김덕관" class="prof">
-                        <div class="t_tilte">
-                            <p><strong>행정학 김덕관</strong> <span>교수</span></p>
-                            <p>공무원 한국사의 대명사</p>
-                        </div>
-                        <div class="t_file">
-	                        <a href="#none"><img src="http://file.willbes.net/new_image/2015/04/150413_exam_sub5_01.png" title="해설강의"></a>
-	                        <a href="#none"><img src="http://file.willbes.net/new_image/2015/04/150413_exam_sub5_02.png" title="해설자료"></a>
-	                    </div>
-                    </li>
+
                 </ul>
             </div>
         </div>

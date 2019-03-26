@@ -39,37 +39,37 @@
             <div class="PeMenu">
                 <ul>
                     <li>
-                        <a href="{{ site_url('#none') }}" onFocus="this.blur();" >
+                        <a href="#none" onFocus="this.blur();" >
                             <img src="http://file3.willbes.net/new_cop/2019/01/EV190123_c2_1.jpg" onmouseover="this.src='http://file3.willbes.net/new_cop/2019/01/EV190123_c2_1on.jpg'" onMouseOut="this.src='http://file3.willbes.net/new_cop/2019/01/EV190123_c2_1.jpg'" onMouseDown="this.src='http://file3.willbes.net/new_cop/2019/01/EV190123_c2_1on.jpg'" alt="신광은 형소법"  />
                         </a>
                     </li>
                     <li>
-                        <a href="{{ site_url('#none') }}" onFocus="this.blur();" >
+                        <a href="{#none" onFocus="this.blur();" >
                             <img src="http://file3.willbes.net/new_cop/2019/01/EV190123_c2_2.jpg" onmouseover="this.src='http://file3.willbes.net/new_cop/2019/01/EV190123_c2_2on.jpg'" onMouseOut="this.src='http://file3.willbes.net/new_cop/2019/01/EV190123_c2_2.jpg'" onMouseDown="this.src='http://file3.willbes.net/new_cop/2019/01/EV190123_c2_2on.jpg'" alt="장정훈 경찰학"  />
                         </a>
                     </li>
                     <li>
-                        <a href="{{ site_url('#none') }}" onfocus="this.blur();" >
+                        <a href="#none" onfocus="this.blur();" >
                             <img src="http://file3.willbes.net/new_cop/2019/01/EV190123_c2_3.jpg" onmouseover="this.src='http://file3.willbes.net/new_cop/2019/01/EV190123_c2_3on.jpg'" onMouseOut="this.src='http://file3.willbes.net/new_cop/2019/01/EV190123_c2_3.jpg'" onMouseDown="this.src='http://file3.willbes.net/new_cop/2019/01/EV190123_c2_3on.jpg'" alt="김원욱 형법"  />
                         </a>
                     </li>
                     <li>
-                        <a href="{{ site_url('#none') }}" onFocus="this.blur();" >
+                        <a href="#none" onFocus="this.blur();" >
                             <img src="http://file3.willbes.net/new_cop/2019/01/EV190123_c2_4.jpg" onmouseover="this.src='http://file3.willbes.net/new_cop/2019/01/EV190123_c2_4on.jpg'" onMouseOut="this.src='http://file3.willbes.net/new_cop/2019/01/EV190123_c2_4.jpg'" onMouseDown="this.src='http://file3.willbes.net/new_cop/2019/01/EV190123_c2_4on.jpg'" alt="하승민 경찰영어"  />
                         </a>
                     </li>
                     <li>
-                        <a href="{{ site_url('#none') }}" onFocus="this.blur();" >
+                        <a href="#none" onFocus="this.blur();" >
                             <img src="http://file3.willbes.net/new_cop/2019/01/EV190123_c2_5.jpg" onmouseover="this.src='http://file3.willbes.net/new_cop/2019/01/EV190123_c2_5on.jpg'" onMouseOut="this.src='http://file3.willbes.net/new_cop/2019/01/EV190123_c2_5.jpg'" onMouseDown="this.src='http://file3.willbes.net/new_cop/2019/01/EV190123_c2_5on.jpg'" alt="오태진 경찰한국사"  />
                         </a>
                     </li>
                     <li>
-                        <a href="{{ site_url('#none') }}" onFocus="this.blur();" >
+                        <a href="#none" onFocus="this.blur();" >
                             <img src="http://file3.willbes.net/new_cop/2019/01/EV190123_c2_6.jpg" onmouseover="this.src='http://file3.willbes.net/new_cop/2019/01/EV190123_c2_6on.jpg'" onMouseOut="this.src='http://file3.willbes.net/new_cop/2019/01/EV190123_c2_6.jpg'" onMouseDown="this.src='http://file3.willbes.net/new_cop/2019/01/EV190123_c2_6on.jpg'" alt="원유철 경찰한국사"  />
                         </a>
                     </li>
                     <li>
-                        <a href="{{ site_url('#none) }}" onFocus="this.blur();" >
+                        <a href="#none" onFocus="this.blur();" >
                             <img src="http://file3.willbes.net/new_cop/2019/01/EV190123_c2_7.jpg" onmouseover="this.src='http://file3.willbes.net/new_cop/2019/01/EV190123_c2_7on.jpg'" onMouseOut="this.src='http://file3.willbes.net/new_cop/2019/01/EV190123_c2_7.jpg'" onMouseDown="this.src='http://file3.willbes.net/new_cop/2019/01/EV190123_c2_7on.jpg'" alt="김현정 경찰영어"  />
                         </a>
                     </li>

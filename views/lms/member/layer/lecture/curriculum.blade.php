@@ -124,18 +124,26 @@
                         @if(empty($row['wUnitAttachFile']) == false)
                             <a href="{{app_url('/member/manage/download/'.$row['OrderIdx'].'/'.$row['ProdCode'].'/'.$row['ProdCodeSub'].'/'.$row['wLecIdx'].'/'.$row['wUnitIdx'], 'lms')}}"><img src="{{ 'https://static.willbes.net/public/images/willbes/prof/icon_file.gif' }}"></a>
                         @endif
-                        <div id="log-{{$row['wUnitIdx']}}" class=".downlog" style="display:none;">
-                            <a href="javascript:;" onclick="$('.downlog').hide();">닫기</a><br/><br/>
-                            @php $isLog = false; @endphp
-                            @foreach($lec['down_log'] as $log)
-                                @if($log['wUnitIdx'] == $row['wUnitIdx'])
-                                    {{$log['DownloadDatm']}} - {{$log['DownloadIp']}}<br>
-                                    @php $isLog = true; @endphp
-                                @endif
-                            @endforeach
+                        <div id="modal-{{$row['wUnitIdx']}}" class="modal" role="dialog" tabindex="-1">
+                            <div class="modal-dialog modal-sm">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        @php $isLog = false; @endphp
+                                        @foreach($lec['down_log'] as $log)
+                                            @if($log['wUnitIdx'] == $row['wUnitIdx'])
+                                                {{$log['DownloadDatm']}} - {{$log['DownloadIp']}}<br>
+                                                @php $isLog = true; @endphp
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn" data-dismiss="modal">닫기</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        @if($isLog == true)
-                            <span><a href="javascript:;" onclick="fnViewLog('{{$row['wUnitIdx']}}');">파일다운로드 이력 보기</a></span>
+                            @if($isLog == true)
+                            <span><a href="#" data-toggle="modal" data-target="#modal-{{$row['wUnitIdx']}}">파일다운로드 이력 보기</a></span>
                         @endif
                     </td>
                     <td>{{$row['FirstStudyDate']}}</td>
@@ -178,10 +186,6 @@
             }
         }
 
-        function fnViewLog(id){
-            $('.downlog').hide();
-            $('#log-'+id).show();
-        }
     </script>
 
 

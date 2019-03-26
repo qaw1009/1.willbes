@@ -20,7 +20,7 @@
         /*****************************************************************/  
 
         .evtTop {
-            background:url(http://file3.willbes.net/new_gosi/2019/03/EV190320Y_top_bg.jpg) no-repeat center top
+            background:url(https://static.willbes.net/public/images/promotion/2019/03/1140_top_bg.jpg) no-repeat center top
         }
         
         .evtMenu {width:100%; background:#36374d; border-bottom:5px solid #e2be43}
@@ -85,7 +85,7 @@
     <div class="evtContent NG" id="evtContainer">      
 
         <div class="evtCtnsBox evtTop" >
-            <img src="http://file3.willbes.net/new_gosi/2019/03/EV190320Y_top.jpg" title="2019 국가직 9급 풀캐어 서비스" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/03/1140_top.jpg" title="2019 국가직 9급 풀캐어 서비스" />
         </div>
 
         <div class="evtCtnsBox evtMenu NG" id="evtMenu">                
@@ -152,21 +152,21 @@
                     <a href="javascript:alert('로그인 후 다운로드 가능합니다..');">다운로드</a>
                     <!--a href="{{ site_url('#none') }}" title="다운로드">다운로드</a-->
                 </span>
-                <img src="http://file3.willbes.net/new_gosi/2019/03/EV190320Y_01_1.jpg" title="풀캐어 강사진" />            
+                <img src="https://static.willbes.net/public/images/promotion/2019/03/1140_01_1.jpg" title="풀캐어 강사진" />            
             </div>
                
-            <img src="http://file3.willbes.net/new_gosi/2019/03/EV190320Y_01_2.jpg" title="점수 10점 상승을 위한 시험 전 유의사항/최상의 컨디션을 위한 시험 당일 유의사항" /><br>
-            <img src="http://file3.willbes.net/new_gosi/2019/03/EV190320Y_01_3.jpg" title="응시자 준수사항 및 필기장소 안내" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/03/1140_01_2.jpg" title="점수 10점 상승을 위한 시험 전 유의사항/최상의 컨디션을 위한 시험 당일 유의사항" /><br>
+            <img src="https://static.willbes.net/public/images/promotion/2019/03/1140_01_3.jpg" title="응시자 준수사항 및 필기장소 안내" />
             <div class="youtube">
                 <iframe class="youtubePlayer" src="https://www.youtube.com/embed/gpppIN1ISaw?rel=0" frameborder="0" allowfullscreen></iframe>
             </div>
-            <div><a href="http://gosi.go.kr/cop/bbs/selectBoardList.do?bbsId=BBSMSTR_000000000131" target="_blank"><img src="http://file3.willbes.net/new_gosi/2019/03/EV190320Y_btn01.png" title="필기시험 장소 안내 바로가기" /></a> </div>  
+            <div><a href="http://gosi.go.kr/cop/bbs/selectBoardList.do?bbsId=BBSMSTR_000000000131" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/03/1140_btn01.png" title="필기시험 장소 안내 바로가기" /></a> </div>  
         </div>
 
         <!--완벽분석-->
         <div id="tab2" class="tabCts Cts02">
-            <img src="http://file3.willbes.net/new_gosi/2019/03/EV190320Y_02_1.jpg" title="전년도 국가직 9급 체감난이도" />            
-            <img src="http://file3.willbes.net/new_gosi/2019/03/EV190320Y_02_2.jpg" title="풀캐어 강사진" />
+            <img src="https://static.willbes.net/public/images/promotion/2019/03/1140_02_1.jpg" title="전년도 국가직 9급 체감난이도" />            
+            <img src="https://static.willbes.net/public/images/promotion/2019/03/1140_02_2.jpg" title="풀캐어 강사진" />
             <div class="mt20 mb100">
                 * 시험문제/가답안 다운로드 <a href="https://www.gosi.kr/cop/bbs/selectBoardList.do?bbsId=BBSMSTR_000000000138" target="_blank">바로가기</a>
                 <div class="mt20">
@@ -1087,7 +1087,7 @@
 
         <!--시험총평 및 시험후기-->
         <div id="tab3" class="tabCts Cts03">
-            <img src="http://file3.willbes.net/new_gosi/2019/03/EV190320Y_03_1.jpg" title="시험 총평 및 시험후기, 적중이벤트" /> 
+            <img src="https://static.willbes.net/public/images/promotion/2019/03/1140_03_1.jpg" title="시험 총평 및 시험후기, 적중이벤트" /> 
             <ul class="graphWrap">
                 <li>
                     <div class="graphbox">
@@ -1109,7 +1109,7 @@
                     </div>
                 </li>
             </ul>
-            <div class="mt30 tx-center"><a href="#none"><img src="http://file3.willbes.net/new_gosi/2019/03/EV190320Y_btn02.png" title="설문하기" /></a></div>
+            <div class="mt30 tx-center"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/2019/03/1140_btn02.png" title="설문하기" /></a></div>
 
             <div class="Cts03_01">
                 <h3>2019년 4월 7일 시행 <span>국가직 9급 시험 총평</span></h3>
@@ -1118,11 +1118,11 @@
                 </div>
             </div>
 
-            <div><img src="http://file3.willbes.net/new_gosi/2019/03/EV190320Y_03_2.jpg" title="시험후기 댓글 이벤트" /></div>
+            <div><img src="https://static.willbes.net/public/images/promotion/2019/03/1140_03_2.jpg" title="시험후기 댓글 이벤트" /></div>
 
             @include('html.event_replyEvaluate')
 
-            <div class="mt100"><img src="http://file3.willbes.net/new_gosi/2019/03/EV190320Y_03_3.jpg" title="소름돋는 적중" /> </div>
+            <div class="mt100"><img src="https://static.willbes.net/public/images/promotion/2019/03/1140_03_3.jpg" title="소름돋는 적중" /> </div>
 
             @include('html.event_replyNotice')
 
@@ -1130,29 +1130,64 @@
 
         <!--기출해설강의-->
         <div id="tab4" class="tabCts Cts04">
-            <div><img src="http://file3.willbes.net/new_gosi/2019/03/EV190320Y_04_1.jpg" title="기출해설강의" /></div>
+            <div><img src="https://static.willbes.net/public/images/promotion/2019/03/1140_04_1.jpg" title="기출해설강의" /></div>
             <div>
-            <li>
-	                        <img src="/imgFileView.do?path=member_upload/20170616111157741.png" alt="교수이미지" class="prof">
-	                        <div class="t_tilte">
-	                            <p><strong>한국사 | 박민주</strong> <span>교수</span></p>
-	                            <p>공무원 한국사의 대명사</p>
-	                        </div>
-	                        <div class="t_file">
-	                        	
-	                        	
-	                        	<!-- 동영상 이미지넣는곳 -->
-	                        		
-	                        		
-	        	                		추후 제공 예정입니다.
-	                        		
-	                        	                            
-								
-	                            
-	                            <!-- 파일 이미지넣는곳 -->
-	                            
-	                        </div>
-                    	</li>
+                <ul>
+                    <li>
+                    <img src="https://pass.willbes.net/public/uploads/willbes/professor/50241/lec_detail_50241.png" alt="기미진" class="prof">
+                        <div class="t_tilte">
+                            <p><strong>국어 기미진</strong> <span>교수</span></p>
+                            <p>공무원 한국사의 대명사</p>
+                        </div>
+                        <div class="t_file">                                
+                            추후 제공 예정입니다.                            
+                        </div>
+                    </li>
+                    <li>
+                        <img src="https://pass.willbes.net/public/uploads/willbes/professor/50241/lec_detail_50241.png" alt="한덕현" class="prof">
+                        <div class="t_tilte">
+                            <p><strong>영어 한덕현</strong> <span>교수</span></p>
+                            <p>공무원 한국사의 대명사</p>
+                        </div>
+                        <div class="t_file">
+	                        <a href="#none"><img src="http://file.willbes.net/new_image/2015/04/150413_exam_sub5_01.png" title="해설강의"></a>
+	                        <a href="#none"><img src="http://file.willbes.net/new_image/2015/04/150413_exam_sub5_02.png" title="해설자료"></a>
+	                    </div>
+                    </li>
+                    <li>
+                        <img src="https://pass.willbes.net/public/uploads/willbes/professor/50241/lec_detail_50241.png" alt="한경준" class="prof">
+                        <div class="t_tilte">
+                            <p><strong>한국사 한경준</strong> <span>교수</span></p>
+                            <p>공무원 한국사의 대명사</p>
+                        </div>
+                        <div class="t_file">
+	                        <a href="#none"><img src="http://file.willbes.net/new_image/2015/04/150413_exam_sub5_01.png" title="해설강의"></a>
+	                        <a href="#none"><img src="http://file.willbes.net/new_image/2015/04/150413_exam_sub5_02.png" title="해설자료"></a>
+	                    </div>
+                    </li>
+                    <li>
+                        <img src="https://pass.willbes.net/public/uploads/willbes/professor/50241/lec_detail_50241.png" alt="한세훈" class="prof">
+                        <div class="t_tilte">
+                            <p><strong>행정법 한세훈</strong> <span>교수</span></p>
+                            <p>공무원 한국사의 대명사</p>
+                        </div>
+                        <div class="t_file">
+	                        <a href="#none"><img src="http://file.willbes.net/new_image/2015/04/150413_exam_sub5_01.png" title="해설강의"></a>
+	                        <a href="#none"><img src="http://file.willbes.net/new_image/2015/04/150413_exam_sub5_02.png" title="해설자료"></a>
+	                    </div>
+                    </li>
+                    <li>
+                        <img src="https://pass.willbes.net/public/uploads/willbes/professor/50241/lec_detail_50241.png" alt="김덕관" class="prof">
+                        <div class="t_tilte">
+                            <p><strong>행정학 김덕관</strong> <span>교수</span></p>
+                            <p>공무원 한국사의 대명사</p>
+                        </div>
+                        <div class="t_file">
+	                        <a href="#none"><img src="http://file.willbes.net/new_image/2015/04/150413_exam_sub5_01.png" title="해설강의"></a>
+	                        <a href="#none"><img src="http://file.willbes.net/new_image/2015/04/150413_exam_sub5_02.png" title="해설자료"></a>
+	                    </div>
+                    </li>
+                </ul>
             </div>
         </div>
     

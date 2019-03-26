@@ -50,7 +50,7 @@ class SupportMain extends BaseSupport
         $column = 'b.BoardIdx,b.CampusCcd,b.FaqGroupTypeCcd,b.FaqTypeCcd,b.TypeCcd,b.IsBest,b.AreaCcd
                        ,b.Title,b.Content, (b.ReadCnt + b.SettingReadCnt) as TotalReadCnt
                        ,b.CampusCcd_Name,b.FaqGroupTypeCcd_Name, b.FaqTypeCcd_Name, b.TypeCcd_Name,b.AreaCcd_Name
-                       ,b.AttachData,DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
+                       ,DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
         $order_by = ['b.BoardIdx'=>'desc'];
 
         $list_faq = $this->supportBoardFModel->listBoard(false,$arr_condition_faq, '',$column,null,null,$order_by);     //best 로 등록된것 모두 가져오기(뷰에서 5개씩 제어 노출)

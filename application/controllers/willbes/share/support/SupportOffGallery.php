@@ -58,7 +58,7 @@ class SupportOffGallery extends BaseSupport
             b.BoardIdx,b.CampusCcd,b.TypeCcd,b.IsBest,b.AreaCcd
             ,b.Title,b.Content, (b.ReadCnt + b.SettingReadCnt) as TotalReadCnt
             ,b.CampusCcd_Name, b.TypeCcd_Name,b.AreaCcd_Name
-            ,b.SubjectName,b.CourseName,b.AttachData,DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm
+            ,b.SubjectName,b.CourseName,DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm
             ,(SELECT COUNT(*) AS cnt FROM lms_board_r_comment AS temp_c WHERE b.BoardIdx = temp_c.BoardIdx AND temp_c.IsStatus = \'Y\' AND temp_c.IsUse = \'Y\') AS TotalCommentCnt
             ,(SELECT COUNT(*) AS cnt FROM lms_board_attach AS temp_f WHERE b.BoardIdx = temp_f.BoardIdx AND temp_f.IsStatus = \'Y\') AS TotalFileCnt
         ';

@@ -2,7 +2,10 @@
     {{-- 경찰온라인 사이트일 경우만 적용 --}}
     <div id="topBannerLayer">
         <div class="topBanner">
-            <a id="show_topBanner" href="javascript:showOrHidefigure(0);"><img src="{{ img_url('cop/banner/onTopBnar_190123C_01.gif') }}" alt="배너명"></a>
+            <!--a id="show_topBanner" href="javascript:showOrHidefigure(0);"-->
+            <a href="{{ site_url('/promotion/index/cate/3001/code/1022') }}">
+                <img src="https://static.willbes.net/public/images/promotion/2019/03/1022_top_ban.jpg" alt="적중! 적중! 또 다시 적중!">
+            </a>
         </div>
 
         <div id="topBannerWarp" style="display:none">

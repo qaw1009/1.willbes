@@ -758,7 +758,7 @@ class Manage extends \app\controllers\BaseController
                 if($row['RealExpireTime'] == 0){
                     $limittime = intval($row['wRuntime']) * intval($lec['MultipleApply']) * 60;
                 } else {
-                    $limittime = intval($row['RealExpireTime']);
+                    $limittime = intval($row['RealExpireTime']) * 60;
                 }
 
                 if($studytime > $limittime){

@@ -454,6 +454,10 @@ class Pass extends \app\controllers\FrontController
         $input_arr = $this->_reqG(null);
         $today = date("Y-m-d", time());
 
+        if($this->session->userdata('is_login') != true || empty($prodcode) == true || empty($orderidx) == true){
+            return $this->json_error('신청한 강좌정보가 없습니다.');
+        }
+
         if(array_key_exists('take', $input_arr) == true){
             if( $input_arr['take'] == 'Y' ){
                 $take = true;
@@ -476,7 +480,7 @@ class Pass extends \app\controllers\FrontController
         $passinfo = $this->classroomFModel->getPackage($cond_arr);
 
         if(empty($passinfo) == true){
-            $this->json_error('신청한 강좌정보가 없습니다.');
+            return $this->json_error('신청한 강좌정보가 없습니다.');
         }
 
         $passinfo = $passinfo[0];
@@ -579,7 +583,7 @@ class Pass extends \app\controllers\FrontController
         $passinfo = $this->classroomFModel->getPackage($cond_arr);
 
         if(empty($passinfo) == true){
-            $this->json_error('신청한 강좌정보가 없습니다.');
+            return $this->json_error('신청한 강좌정보가 없습니다.');
         }
 
         $passinfo = $passinfo[0];

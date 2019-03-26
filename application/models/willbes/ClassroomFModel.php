@@ -786,6 +786,10 @@ class ClassroomFModel extends WB_Model
      */
     public function getPassSubLecture($arr_condition, $col = '', $subarr, $notake = false)
     {
+        if(empty($arr_condition) == true){
+            return [];
+        }
+
         if(empty($col) == true){
             $column =  "A.ProdCode As Parent_ProdCode, B.IsEssential, B.SubGroupName, B.OrderNum, C.* , 
                  if(D.ProdCode is null, 'N', 'Y') AS IsTake 

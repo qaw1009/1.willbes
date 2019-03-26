@@ -483,10 +483,9 @@ $config['sess_save_path'] = 'wb_sessions';
 //$config['sess_save_path'] = 'rediscluster';
 //$config['sess_match_ip'] = FALSE;
 $config['sess_match_ip'] = FALSE;
-//$config['sess_time_to_update'] = 300;
-$config['sess_time_to_update'] = 3000;  // 50분
+$config['sess_time_to_update'] = 300;
 //$config['sess_regenerate_destroy'] = FALSE;
-$config['sess_regenerate_destroy'] = TRUE;
+$config['sess_regenerate_destroy'] = FALSE;
 
 /*
 |--------------------------------------------------------------------------

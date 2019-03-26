@@ -195,7 +195,7 @@
                     </tr>
                 </tbody>
             </table>
-            <p class="btn_p"><a href="javascript:alert('실강 준비중입니다.');" ><img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_3_acago.png" alt="노량진 실강 신청하기" /></a></p>
+            <p class="btn_p"><a href="{{ site_url('/pass/event/show/ongoing?event_idx=155&') }}" ><img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_3_acago.png" alt="노량진 실강 신청하기" /></a></p>
             <p><img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_4.png" alt="적중50선라이브와 함께 성적UP을 위한 완벽마무리" /></p>
         </div>
         <!--wb_cts02//-->

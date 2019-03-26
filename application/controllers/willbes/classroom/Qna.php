@@ -133,7 +133,7 @@ class Qna extends SupportQna
 
         $column = 'BoardIdx, CampusCcd, TypeCcd, IsBest, RegType, RegMemIdx';
         $column .= ', Title, Content, (ReadCnt + SettingReadCnt) as TotalReadCnt';
-        $column .= ', AttachData,DATE_FORMAT(RegDatm, \'%Y-%m-%d\') as RegDatm';
+        $column .= ', DATE_FORMAT(RegDatm, \'%Y-%m-%d\') as RegDatm';
         $column .= ', IsPublic, CampusCcd_Name, TypeCcd_Name';
         $column .= ', SiteName, ReplyStatusCcd, ReplyStatusCcd_Name';
         $column .= ', IF(RegType=1, \'\', RegMemName) AS RegName';

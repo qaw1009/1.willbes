@@ -125,31 +125,31 @@
             <div class="download">		
                 <!--국어-->
                 <span>
-                    <!--a href="javascript:alert('로그인을 해주세요.');">다운로드</a-->
-                    <a href="{{ site_url('#none') }}" title="다운로드">다운로드</a>
+                    <a href="javascript:alert('로그인 후 다운로드 가능합니다..');">다운로드</a>
+                    <!--a href="{{ site_url('#none') }}" title="다운로드">다운로드</a-->
                 </span>
 
                 <!--영어-->
                 <span>
-                    <a href="javascript:alert('로그인을 해주세요.');">다운로드</a>
+                <a href="javascript:alert('로그인 후 다운로드 가능합니다..');">다운로드</a>
                     <!--a href="{{ site_url('#none') }}" title="다운로드">다운로드</a-->
                 </span>
                     
                 <!--한국사-->
                 <span>
-                    <a href="javascript:alert('로그인을 해주세요.');">다운로드</a>
+                    <a href="javascript:alert('로그인 후 다운로드 가능합니다..');">다운로드</a>
                     <!--a href="{{ site_url('#none') }}" title="다운로드">다운로드</a-->
                 </span>
     
                 <!--행정법-->
                 <span>
-                    <a href="javascript:alert('로그인을 해주세요.');">다운로드</a>
+                    <a href="javascript:alert('로그인 후 다운로드 가능합니다..');">다운로드</a>
                     <!--a href="{{ site_url('#none') }}" title="다운로드">다운로드</a-->
                 </span>
                     
                 <!--행정학-->
                 <span>
-                    <a href="javascript:alert('로그인을 해주세요.');">다운로드</a>
+                    <a href="javascript:alert('로그인 후 다운로드 가능합니다..');">다운로드</a>
                     <!--a href="{{ site_url('#none') }}" title="다운로드">다운로드</a-->
                 </span>
                 <img src="http://file3.willbes.net/new_gosi/2019/03/EV190320Y_01_1.jpg" title="풀캐어 강사진" />            

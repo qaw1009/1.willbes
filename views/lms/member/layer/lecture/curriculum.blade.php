@@ -124,11 +124,19 @@
                         @if(empty($row['wUnitAttachFile']) == false)
                             <a href="{{app_url('/member/manage/download/'.$row['OrderIdx'].'/'.$row['ProdCode'].'/'.$row['ProdCodeSub'].'/'.$row['wLecIdx'].'/'.$row['wUnitIdx'], 'lms')}}"><img src="{{ 'https://static.willbes.net/public/images/willbes/prof/icon_file.gif' }}"></a>
                         @endif
-                        @foreach($lec['down_log'] as $log)
-                            @if($log['wUnitIdx'] == $row['wUnitIdx'])
-                                {{$log['DownloadDatm']}} - {{$log['DownloadIp']}}
-                            @endif
-                        @endforeach
+                        <div id="log-{{$row['wUnitIdx']}}" class=".downlog" style="display:none;">
+                            <a href="javascript:;" onclick="$('.downlog').hide();">닫기</a><br/><br/>
+                            @php $isLog = false; @endphp
+                            @foreach($lec['down_log'] as $log)
+                                @if($log['wUnitIdx'] == $row['wUnitIdx'])
+                                    {{$log['DownloadDatm']}} - {{$log['DownloadIp']}}<br>
+                                    @php $isLog = true; @endphp
+                                @endif
+                            @endforeach
+                        </div>
+                        @if($isLog == true)
+                            <span><a href="javascript:;" onclick="fnViewLog('{{$row['wUnitIdx']}}');">파일다운로드 이력 보기</a></span>
+                        @endif
                     </td>
                     <td>{{$row['FirstStudyDate']}}</td>
                     <td>{{$row['LastStudyDate']}}</td>
@@ -168,6 +176,11 @@
                     }, false, 'GET', 'json');
 
             }
+        }
+
+        function fnViewLog(id){
+            $('.downlog').hide();
+            $('#log-'+id).show();
         }
     </script>
 

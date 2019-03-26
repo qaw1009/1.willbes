@@ -24,7 +24,7 @@ class DDayFModel extends WB_Model
         $column = 'a.DIdx, a.DayTitle, a.DayDatm, datediff(NOW(), a.DayDatm) as DDay';
         $arr_condition = array_merge_recursive($arr_condition, [
             'RAW' => ['a.DayDatm >= ' => 'DATE_FORMAT(NOW(), "%Y-%m-%d")'],
-            'EQ' => ['a.IsUse' => 'Y', 'a.IsStatus' => 'Y']
+            'EQ' => ['a.IsUse' => 'Y', 'a.IsStatus' => 'Y', 'b.IsStatus' => 'Y']
         ]);
 
         // where 조건
@@ -43,7 +43,6 @@ class DDayFModel extends WB_Model
 
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
-
         return $query->result_array();
     }
 }

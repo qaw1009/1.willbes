@@ -424,7 +424,7 @@
                             <td class="w-study-time">40분/ 100분</td>
                             <td class="w-r-time">50분</td>
                         </tr>
-                        <tr>
+                        <tr class="finish">
                             <td class="w-no">2강</td>
                             <td class="w-lec">강의명이 출력됩니다.</td>
                             <td class="w-page">5p~15p</td>

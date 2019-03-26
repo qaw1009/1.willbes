@@ -159,14 +159,14 @@
                         <td>90만원</td>
                         <td>65만원</td>
                         <td class="sell">42만원</td>
-                        <td><a href="{{ site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149321') }}" target="_blank"class="button01" alt="수강신청">수강신청</a></td>
+                        <td><a href="{{ site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149320') }}" target="_blank"class="button01" alt="수강신청">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>6개월</td>
                         <td>90만원</td>
                         <td>50만원</td>
                         <td class="sell">35만원</td>
-                        <td><a href="{{ site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149320') }}" target="_blank"class="button01" alt="수강신청">수강신청</a></td>
+                        <td><a href="{{ site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149321') }}" target="_blank"class="button01" alt="수강신청">수강신청</a></td>
                     </tr>
                     <tr>
                         <th rowspan="2">2과목 패키지<br>

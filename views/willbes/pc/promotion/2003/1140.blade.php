@@ -118,21 +118,20 @@
                         <div>최종 마무리 전략</div>
                     </a>
                 </li>
-                <li>
-                    
+                <li>                    
                     <a href="#tab2">
                         <span>전년도 국가직 9급</span>
                         <div>완벽분석</div>				
                     </a>
                 </li>
                 <li>
-                    <a>
+                    <a href="#tab3">
                         <span>2019 국가직 9급</span>
                         <div>시험총평 및 시험후기 준비중</div>
                     </a>
                 </li>     
                 <li>
-                    <a>    
+                    <a href="#tab4">    
                         <span>2019 국가직 9급</span>
                         <div>기출해설강의 준비중</div>
                     </a>
@@ -1101,7 +1100,7 @@
         </div>
 
         <!--시험총평 및 시험후기-->
-        <div id="tab3" class="tabCts Cts03" style="display:none">
+        <div id="tab3" class="tabCts Cts03">
             <img src="https://static.willbes.net/public/images/promotion/2019/03/1140_03_1.jpg" title="시험 총평 및 시험후기, 적중이벤트" /> 
             <ul class="graphWrap">
                 <li>
@@ -1144,7 +1143,7 @@
         </div>
 
         <!--기출해설강의-->
-        <div id="tab4" class="tabCts Cts04" style="display:none">
+        <div id="tab4" class="tabCts Cts04">
             <div><img src="https://static.willbes.net/public/images/promotion/2019/03/1140_04_1.jpg" title="기출해설강의" /></div>
             <div class="lecture">
                 <ul>

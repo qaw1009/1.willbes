@@ -1555,6 +1555,9 @@ body.memBody #Footer {
     width: 100%;
     padding: 0 20px;
 }
+.passListTabs tr.finish {
+    background: #f1f8fe;
+}
 .passListTabs thead tr td {
     padding-top: 20px;
     padding-bottom: 10px;  

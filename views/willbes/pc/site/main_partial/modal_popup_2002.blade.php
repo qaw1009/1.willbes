@@ -4,7 +4,7 @@
                 <div class="pop-container">
                     <div class="pop-conts">
                         <!--content //-->
-                        <img src="http://file3.willbes.net/new_cop/2019/03/LayPop190322_c.jpg" alt="2단계 동형모의고사/숨은 필합자를 찾아라" usemap="#Map190325" border="0"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2019/03/LayPop190322_c.jpg" alt="2단계 동형모의고사/숨은 필합자를 찾아라" usemap="#Map190325" border="0"/>
                         <map name="Map190325" id="Map190325">
                             <area shape="rect" coords="216,319,541,366" href="{{ site_url('/promotion/index/cate/3001/code/1127e') }}" alt="2단계 동형모의고사" />
                             <area shape="rect" coords="451,663,653,727" href="{{ site_url('/pass/promotion/index/cate/3001/code/1138') }}" alt="숨은 필홥자를 찾아라" />

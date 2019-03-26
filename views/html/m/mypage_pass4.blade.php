@@ -118,7 +118,7 @@
                                     </ul>
                                 </td>
                             </tr>
-                            <tr>
+                            <tr class="finish">
                                 <td class="w-chk"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></td>
                                 <td class="w-data tx-left">
                                     <div class="w-tit mb10">2강. 강의명이 출력됩니다.</div>

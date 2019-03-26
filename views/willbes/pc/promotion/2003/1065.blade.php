@@ -127,7 +127,7 @@
                         <td>140만원</td>
                         <td>90만원</td>
                         <td class="sell">59만원</td>
-                        <td><a href="{{ site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149253) }}" target="_blank"class="button01" alt="수강신청">수강신청</a></td>
+                        <td><a href="{{ site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/149253') }}" target="_blank"class="button01" alt="수강신청">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>6개월</td>

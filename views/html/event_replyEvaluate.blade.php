@@ -42,9 +42,9 @@
 <div class="replyEvaluate">
     <div class="reply_inbx">							
         <ul>
-            <li><input id="re1" name=" " type="radio" value=" "> <img src="{{ img_url('common/icon_re01.png') }}" title="쉬웠어요"> <label for="re1">쉬웠어요</label></li>
-            <li><input id="re2" name=" " type="radio" value=" "> <img src="{{ img_url('common/icon_re02.png') }}" title="보통이예요"> <label for="re2">보통이예요</label></li>
-            <li><input id="re3" name=" " type="radio" value=" "> <img src="{{ img_url('common/icon_re03.png') }}" title="어려웠어요"> <label for="re3">어려웠어요</label></li>
+            <li><input id="re1" name=" " type="radio" value=" "> <img src="https://static.willbes.net/public/images/promotion/common/icon_re01.png" title="쉬웠어요"> <label for="re1">쉬웠어요</label></li>
+            <li><input id="re2" name=" " type="radio" value=" "> <img src="https://static.willbes.net/public/images/promotion/common/icon_re02.png" title="보통이예요"> <label for="re2">보통이예요</label></li>
+            <li><input id="re3" name=" " type="radio" value=" "> <img src="https://static.willbes.net/public/images/promotion/common/icon_re03.png" title="어려웠어요"> <label for="re3">어려웠어요</label></li>
         </ul>                
         <div class="textarBx">
             <textarea name="EVENT_TXT" id="EVENT_TXT" cols="30" rows="5" onclick="javascript:fn_focusComment();"></textarea>                        
@@ -56,14 +56,14 @@
     <div class="replyList">
         <ul>
             <li>
-                <img src="{{ img_url('common/icon_re01.png') }}" title="쉬웠어요">
+                <img src="https://static.willbes.net/public/images/promotion/common/icon_re01.png" title="쉬웠어요">
                 <div>
                     <p>홍길* <span>2019-03-25</span></p>    
                     영어 논술평가 인데 문법상 오타가 없는지 검토해 주시면 감사하겠습니다.                                
                 </div>
             </li>
             <li>
-                <img src="{{ img_url('common/icon_re02.png') }}" title="보통이예요">
+                <img src="https://static.willbes.net/public/images/promotion/common/icon_re02.png" title="보통이예요">
                 <div>
                     <p>홍길* <span>2019-03-25</span></p>    
                     영어 논술평가 인데 문법상 오타가 없는지 검토해 주시면 감사하겠습니다.
@@ -74,7 +74,7 @@
                 <a href="#none" class="btnDel">삭제</a>
             </li>
             <li>
-                <img src="{{ img_url('common/icon_re03.png') }}" title="어려웠어요">
+                <img src="https://static.willbes.net/public/images/promotion/common/icon_re03.png" title="어려웠어요">
                 <div>
                     <p>홍길* <span>2019-03-25</span></p>    
                         영어 논술평가 인데 문법상 오타가 없는지 검토해 주시면 감사하겠습니다.
@@ -88,7 +88,7 @@
                 </div>
             </li>
             <li>
-                <img src="{{ img_url('common/icon_re02.png') }}" title="보통이예요">
+                <img src="https://static.willbes.net/public/images/promotion/common/icon_re02.png" title="보통이예요">
                 <div>
                     <p>홍길* <span>2019-03-25</span></p>    
                     영어 논술평가 인데 문법상 오타가 없는지 검토해 주시면 감사하겠습니다.
@@ -98,7 +98,7 @@
                 </div>
             </li>
             <li>
-                <img src="{{ img_url('common/icon_re01.png') }}" title="쉬웠어요">
+                <img src="https://static.willbes.net/public/images/promotion/common/icon_re01.png" title="쉬웠어요">
                 <div>
                     <p>홍길* <span>2019-03-25</span></p>    
                     영어 논술평가 인데 문법상 오타가 없는지 검토해 주시면 감사하겠습니다.                                

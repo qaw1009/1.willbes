@@ -934,6 +934,9 @@ class Manage extends \app\controllers\BaseController
             return $this->json_error('신청강좌정보를 찾을수 없습니다.');
         }
 
+/*
+        관리자는 마음대로
+
         if($lec['IsLecStart'] != 'Y'){
             return $this->json_error('시작일을 변경할 수 없는 강좌입니다.');
         }
@@ -952,6 +955,7 @@ class Manage extends \app\controllers\BaseController
         if($start_date > date("Y-m-d", strtotime(substr($lec['OrderDate'], 10).'+30day'))){
             return $this->json_error('시작일은 주문일로부터 30일 이내만 변경 가능합니다.');
         }
+*/
 
         if($this->manageLectureModel->setStartDate([
                 'MemIdx' => $memidx,

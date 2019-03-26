@@ -57,12 +57,6 @@ class Bookmark extends \app\controllers\FrontController
 
         // 실제 리스트용
         $cond_arr = [
-            'EQ' => [
-                'MemIdx' => $this->session->userdata('mem_idx'), // 사용자번호
-                'SubjectIdx' => $this->_req('subject_ccd'), // 검색 : 과목
-                'wProfIdx' => $this->_req('prof_ccd'), // 검색 : 강사
-                'CourseIdx' => $this->_req('course_ccd') // 검색 : 과정
-            ],
             'LTE' => [
                 'LecStartDate' => $today // 시작일 <= 오늘
             ],
@@ -93,6 +87,12 @@ class Bookmark extends \app\controllers\FrontController
         // 학습형태 : 단광좌, 사용자패키지
         // 결제방식 : 온라인결제, 학원방문결제
         $leclist = $this->classroomFModel->getLectureBookmark(array_merge($cond_arr, [
+            'EQ' => [
+                'MemIdx' => $this->session->userdata('mem_idx'), // 사용자번호
+                'SubjectIdx' => $this->_req('subject_ccd'), // 검색 : 과목
+                'wProfIdx' => $this->_req('prof_ccd'), // 검색 : 강사
+                'CourseIdx' => $this->_req('course_ccd') // 검색 : 과정
+            ],
             'IN' => [
                 'LearnPatternCcd' => $this->_LearnPatternCcd_dan,
                 'PayRouteCcd' => array_merge($this->_payroute_normal_ccd, $this->_payroute_admin_ccd)
@@ -102,6 +102,9 @@ class Bookmark extends \app\controllers\FrontController
         // 학습형태 : 관리자패키지
         // 결제방식 : 온라인결제, 학원방문결제
         $pkglist = $this->classroomFModel->getPackageBookmark(array_merge($cond_arr, [
+            'EQ' => [
+                'MemIdx' => $this->session->userdata('mem_idx'), // 사용자번호
+            ],
             'IN' => [
                 'LearnPatternCcd' => $this->_LearnPatternCcd_pkg,
                 'PayRouteCcd' => array_merge($this->_payroute_normal_ccd, $this->_payroute_admin_ccd)
@@ -122,6 +125,9 @@ class Bookmark extends \app\controllers\FrontController
         // 학습형태 : 관리자패키지
         // 결제방식 : 온라인결제, 학원방문결제
         $passlist = $this->classroomFModel->getPackageBookmark(array_merge($cond_arr, [
+            'EQ' => [
+                'MemIdx' => $this->session->userdata('mem_idx'), // 사용자번호
+            ],
             'IN' => [
                 'LearnPatternCcd' => $this->_LearnPatternCcd_pass,
                 'PayRouteCcd' => array_merge($this->_payroute_normal_ccd, $this->_payroute_admin_ccd)
@@ -142,6 +148,12 @@ class Bookmark extends \app\controllers\FrontController
         // 학습형태 : 무료강좌
         // 결제방식 : 모두
         $freelist = $this->classroomFModel->getLectureBookmark(array_merge($cond_arr, [
+            'EQ' => [
+                'MemIdx' => $this->session->userdata('mem_idx'), // 사용자번호
+                'SubjectIdx' => $this->_req('subject_ccd'), // 검색 : 과목
+                'wProfIdx' => $this->_req('prof_ccd'), // 검색 : 강사
+                'CourseIdx' => $this->_req('course_ccd') // 검색 : 과정
+            ],
             'IN' => [
                 'LearnPatternCcd' => $this->_LearnPatternCcd_free // 무료
             ]

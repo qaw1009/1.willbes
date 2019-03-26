@@ -262,7 +262,7 @@
     width: 100%;
 }
 
-/* Main Container : Dday : Cop */
+/* Main Container : Dday : Cop 
 .newTopDday {padding: 20px 0; border-bottom: 1px solid #f2f2f2}
 .newTopDday #ddaytime li {float:left; margin-right:1px; text-align:center; color:#000}
 .newTopDday #ddaytime li.txt {font-weight: 600; color: #3c3e3c}
@@ -277,7 +277,7 @@
 .newTopDday #ddaytime li .btn a:hover {background:#333}
 .newTopDday #ddaytime li strong {font-size: 24px; color: #3c3e3c; line-height:62px; margin: 0 7px}
 .newTopDday #ddaytime li img {width:42px}
-.newTopDday #ddaytime ul:after {content:""; display:block; clear:both}
+.newTopDday #ddaytime ul:after {content:""; display:block; clear:both}*/
 
 /**/
 .newPlaybn {width:1120px; margin:0 auto}

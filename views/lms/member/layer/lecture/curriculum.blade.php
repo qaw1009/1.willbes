@@ -122,7 +122,7 @@
                     </td>
                     <td>
                         @if(empty($row['wUnitAttachFile']) == false)
-                            <a href="{{app_url('/member/manage/download/?path='.rawurlencode($row['wAttachPath'].'/'.$row['wUnitAttachFile']).'&name='.rawurlencode($row['wUnitAttachFileReal']), 'lms')}}"><img src="{{ 'https://static.willbes.net/public/images/willbes/prof/icon_file.gif' }}"></a>
+                            <a href="{{app_url('/member/manage/download/'.$row['OrderIdx'].'/'.$row['ProdCode'].'/'.$row['ProdCodeSub'].'/'.$row['wLecIdx'].'/'.$row['wUnitIdx'], 'lms')}}"><img src="{{ 'https://static.willbes.net/public/images/willbes/prof/icon_file.gif' }}"></a>
                         @endif
                     </td>
                     <td>{{$row['FirstStudyDate']}}</td>

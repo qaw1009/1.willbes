@@ -354,7 +354,7 @@
                                     <th rowspan="2" class="valign-middle">상품명</th>
                                     <th colspan="2">결제금액</th>
                                     <th rowspan="2" class="valign-middle">결제상태</th>
-                                    <th colspan="6">환불정보</th>
+                                    <th colspan="8">환불정보</th>
                                 </tr>
                                 <tr>
                                     <th>카드</th>
@@ -363,6 +363,8 @@
                                     <th>현금</th>
                                     <th>쿠폰복구</th>
                                     <th>사용포인트복구</th>
+                                    <th>환불사유</th>
+                                    <th>환불메모</th>
                                     <th>환불자</th>
                                     <th>환불완료일</th>
                                 </tr>
@@ -380,6 +382,8 @@
                                             <td>{{ number_format($order_prod_row['CashRefundPrice']) }}</td>
                                             <td>{!! $order_prod_row['IsCouponRefund'] == 'Y' ? 'Y<br/>(' . $order_prod_row['RecoCouponIdx'] . ')' : '' !!}</td>
                                             <td>{!! $order_prod_row['IsPointRefund'] == 'Y' ? 'Y<br/>(' . $order_prod_row['RecoPointIdx'] . ')' : '' !!}</td>
+                                            <th>{{ $order_prod_row['RefundReason'] }}</th>
+                                            <th>{{ $order_prod_row['RefundMemo'] }}</th>
                                             <td>{{ $order_prod_row['RefundAdminName'] }}</td>
                                             <td>{{ $order_prod_row['RefundDatm'] }}</td>
                                         </tr>
@@ -388,7 +392,7 @@
                                 </tbody>
                                 <tfoot>
                                 <tr>
-                                    <td colspan="11" class="text-center bg-info">
+                                    <td colspan="13" class="text-center bg-info">
                                         <strong>[총 실결제금액] <span class="blue">{{ number_format($data['order']['tRealPayPrice']) }}</span>
                                             (사용 포인트 : {{ number_format($data['order']['tUseLecPoint']) }} | 교재 {{ number_format($data['order']['tUseBookPoint']) }})
                                             <span class="red pl-20">[총 환불금액] {{ number_format($data['order']['tRefundPrice']) }}</span>

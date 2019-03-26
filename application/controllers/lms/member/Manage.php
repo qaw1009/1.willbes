@@ -2047,14 +2047,16 @@ class Manage extends \app\controllers\BaseController
     public function download($params = [])
     {
         // 강좌정보 읽어오기
-        $prodcode = $params[0];
-        $prodcodesub = $params[1];
-        $lecidx = $params[2];
-        $unitidx = $params[3];
+        $orderidx = $params[0];
+        $prodcode = $params[1];
+        $prodcodesub = $params[2];
+        $lecidx = $params[3];
+        $unitidx = $params[4];
 
         // 커리큘럼 읽어오기
         $curriculum = $this->manageLectureModel->getCurriculum([
             'EQ' => [
+                'OrderIdx' => $orderidx,
                 'ProdCode' => $prodcode,
                 'ProdCodeSub' => $prodcodesub,
                 'wLecIdx' => $lecidx,

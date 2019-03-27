@@ -42,7 +42,7 @@
                                 @if(empty($data['AttachData']) === false)
                                     @foreach($data['AttachData'] as $row)
                                         <li>
-                                            <a href="{{front_url('/classroom/assignment/download?file_idx=').$row['FileIdx'].'&attach_type=0' }}" target="_blank">
+                                            <a href="{{front_url('/classroom/assignment/download?file_idx=').$row['FileIdx'].'&attach_type=0&board_idx='.$data['BoardIdx'] }}" target="_blank">
                                                 <img src="{{ img_url('prof/icon_file.gif') }}"> {{$row['RealName']}}</a>
                                         </li>
                                     @endforeach

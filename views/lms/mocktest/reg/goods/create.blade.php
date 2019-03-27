@@ -109,7 +109,7 @@
                         <th colspan="1">판매가 <span class="required">*</span></th>
                         <td colspan="3" class="form-inline">
                             <span class="blue">[정상가]</span> <input type="text" class="form-control" name="SalePrice" value="@if($method == 'PUT'){{ $data['SalePrice'] }}@endif" style="width:100px;"> 원
-                            <span class="blue ml-20">[할인]</span> <input type="text" class="form-control" name="SaleRate" @if($method == 'PUT')value="{{ $data['SaleRate'] }}" @else value="0" @endif" style="width:100px;">
+                            <span class="blue ml-20">[할인]</span> <input type="text" class="form-control" name="SaleRate" @if($method == 'PUT')value="{{ $data['SaleRate'] }}" @else value="0" @endif style="width:100px;">
                             <select name="SaleDiscType" class="form-control">
                                 <option value="R" @if($method == 'PUT' && $data['SaleDiscType'] == 'R') selected @endif>%</option>
                                 <option value="P" @if($method == 'PUT' && $data['SaleDiscType'] == 'P') selected @endif>-</option>

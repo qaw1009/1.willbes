@@ -86,7 +86,8 @@
                 <li><p>경찰 온라인 ▼</p></li> 
                 <li>3월 6일 이후 추가분 ▼</li>
                 <li><a href="{{ site_url('/home/html/1141') }}" target="_blank">2019 국가직 9급 대비 라이브 적중 <span>*</span></a></li>
-                <li><a href="{{ site_url('/home/html/1140') }}" target="_blank">2019 국가직 9급 풀캐어 서비스 코딩중... <span>*</span></a></li>
+                <li><a href="{{ site_url('/home/html/1140') }}" target="_blank">2019 국가직 9급 풀캐어 서비스 <span>*</span></a></li>
+                <li><a href="{{ site_url('/home/html/1140_popup') }}" target="_blank">└ 시험 설문팝업 <span>*</span></a></li>
                 <li><a href="{{ site_url('/home/html/1139') }}" target="_blank">리바운드 환승이벤트 <span>*</span></a></li>
                 <li><a href="{{ site_url('/home/html/event_onCopReboundPop') }}" target="_blank">└ 타학원 수강생 인증 팝업 size 740x700 <span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/1138') }}" target="_blank">경찰면접 꿀팁 이벤트 <span>*</span></a></li>

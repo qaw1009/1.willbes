@@ -42,11 +42,11 @@
             position:relative; width:1120px; margin:0 auto; text-align:center;
         }
         .tabCts .download span {position:absolute; top:660px; display:block; width:72px; height:24px; line-height:24px; text-align:center; z-index:1}
-        .tabCts .download span:nth-child(1) {left:185px;}
-        .tabCts .download span:nth-child(2) {left:278px;}
-        .tabCts .download span:nth-child(3) {left:570px;}
-        .tabCts .download span:nth-child(4) {left:815px;}
-        .tabCts .download span:nth-child(5) {left:900px;}
+        .tabCts .download span:nth-child(1) {left:160px;}
+        .tabCts .download span:nth-child(2) {left:362px;}
+        .tabCts .download span:nth-child(3) {left:572px;}
+        .tabCts .download span:nth-child(4) {left:760px;}
+        .tabCts .download span:nth-child(5) {left:940px;}
         .tabCts .download span a {display:block; color:#fff; background:#d18f04; border-radius:14px;}
         .tabCts .download span a:hover {background:#e50001}
         .tabCts .youtube {width:100%; text-align:center; margin:3em 0}	
@@ -144,27 +144,27 @@
             <div class="download">		
                 <!--국어-->
                 <span>
-                    <a href="{{front_url('/promotion/download?file_idx=').$file_data_promotion[0]['EfIdx'].'&event_idx='.$data['ElIdx'] }}">다운로드</a>
+                    <a href="javascript:alert('준비중입니다.')">다운로드</a>
                 </span>
 
                 <!--영어-->
                 <span>
-                    <a href="{{front_url('/promotion/download?file_idx=').$file_data_promotion[1]['EfIdx'].'&event_idx='.$data['ElIdx'] }}">다운로드</a>
+                    <a href="javascript:alert('준비중입니다.')">다운로드</a>
                 </span>
                     
                 <!--한국사-->
                 <span>
-                    <a href="{{front_url('/promotion/download?file_idx=').$file_data_promotion[2]['EfIdx'].'&event_idx='.$data['ElIdx'] }}">다운로드</a>
+                    <a href="javascript:alert('준비중입니다.')">다운로드</a>
                 </span>
     
                 <!--행정법-->
                 <span>
-                    <a href="{{front_url('/promotion/download?file_idx=').$file_data_promotion[3]['EfIdx'].'&event_idx='.$data['ElIdx'] }}">다운로드</a>
+                    <a href="javascript:alert('준비중입니다.')">다운로드</a>
                 </span>
                     
                 <!--행정학-->
                 <span>
-                    <a href="{{front_url('/promotion/download?file_idx=').$file_data_promotion[4]['EfIdx'].'&event_idx='.$data['ElIdx'] }}">다운로드</a>
+                    <a href="javascript:alert('준비중입니다.')">다운로드</a>
                 </span>
                 <img src="https://static.willbes.net/public/images/promotion/2019/03/1140_01_1.jpg" title="풀캐어 강사진" />            
             </div>
@@ -1138,11 +1138,11 @@
 
             <div><img src="https://static.willbes.net/public/images/promotion/2019/03/1140_03_2.jpg" title="시험후기 댓글 이벤트" /></div>
 
-            @include('html.event_replyEvaluate')
+            {{--@include('html.event_replyEvaluate')--}}
 
             <div class="mt100"><img src="https://static.willbes.net/public/images/promotion/2019/03/1140_03_3.jpg" title="소름돋는 적중" /> </div>
 
-            @include('html.event_replyNotice')
+            {{--@include('html.event_replyNotice')--}}
 
         </div>
 
@@ -1245,7 +1245,6 @@
                         $content.show();
                     }
                     else {
-                        // 와...양아치네 4월 6일 토요일인데..오전 11:30분에 오픈하래서 프로그래밍 처리함
                         alert('4월 6일 공개됩니다.');
                     }
                     e.preventDefault();
@@ -1253,8 +1252,6 @@
                 }
 
             }
-
-
             })})}
         );
 

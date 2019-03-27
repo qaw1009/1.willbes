@@ -98,8 +98,8 @@
                 <area shape="rect" coords="920,663,1101,711" href="{{ site_url('/lecture/show/cate/3019/prod-code/146033') }}" target="_blank" />
                 <area shape="rect" coords="715,665,892,712" href="{{ site_url('/package/show/cate/3019/pack/648001/prod-code/150515') }}" target="_blank" />
                 <area shape="rect" coords="507,664,676,711" href="{{ site_url('/package/show/cate/3019/pack/648001/prod-code/150362') }}" target="_blank" />
-                <area shape="rect" coords="291,661,467,712" href="{{ site_url('/package/show/cate/3019/pack/648001/prod-code/150363') }}" target="_blank" />
-                <area shape="rect" coords="86,662,257,712" href="{{ site_url('/package/show/cate/3019/pack/648001/prod-code/150364') }}" target="_blank" />
+                <area shape="rect" coords="291,661,467,712" href="{{ site_url('/lecture/show/cate/3019/pattern/only/prod-code/146750') }}" target="_blank" />
+                <area shape="rect" coords="86,662,257,712" href="{{ site_url('/lecture/show/cate/3019/pattern/only/prod-code/147104') }}" target="_blank" />
             </map>
         </div>
         <!--wb_cts06//-->

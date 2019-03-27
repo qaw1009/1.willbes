@@ -321,4 +321,63 @@ class RefundProc extends BaseOrder
             'data' => $data
         ]);
     }
+
+    /**
+     * 환불요청정보 수정 폼
+     * @param array $params
+     * @return mixed
+     */
+    public function edit($params = [])
+    {
+        $order_idx = $this->_reqG('order_idx');
+        $refund_req_idx = $this->_reqG('refund_req_idx');
+
+        if (empty($order_idx) === true || empty($refund_req_idx) === true) {
+            return $this->json_error('필수 파라미터 오류입니다.', _HTTP_VALIDATION_ERROR);
+        }
+
+        // 환불요청정보 조회
+        $data = $this->orderListModel->findOrderRefundRequest($order_idx, $refund_req_idx);
+        if (empty($data) === true) {
+            return $this->json_error('데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
+        }
+
+        // 입금은행공통코드 조회
+        $arr_bank_ccd = $this->codeModel->getCcd($this->_group_ccd['Bank']);
+
+        return $this->load->view('pay/refund/edit', [
+            'order_idx' => $order_idx,
+            'refund_req_idx' => $refund_req_idx,
+            'arr_bank_ccd' => $arr_bank_ccd,
+            'data' => $data
+        ]);
+    }
+
+    /**
+     * 환불요청정보 수정
+     * @return mixed
+     */
+    public function update()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
+            ['field' => 'order_idx', 'label' => '주문식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'refund_req_idx', 'label' => '환불요청식별자', 'rules' => 'trim|required|integer']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return null;
+        }
+
+        // 환불계좌 입력값 체크
+        if (empty($this->_reqP('refund_bank_ccd')) === false || empty($this->_reqP('refund_account_no')) === false || empty($this->_reqP('refund_deposit_name')) === false) {
+            if (!(empty($this->_reqP('refund_bank_ccd')) === false && empty($this->_reqP('refund_account_no')) === false && empty($this->_reqP('refund_deposit_name')) === false)) {
+                return $this->json_error('환불계좌정보를 모두 입력해 주세요.', _HTTP_BAD_REQUEST);
+            }
+        }
+
+        $result = $this->orderModel->modifyOrderRefundRequest($this->_reqP(null, false));
+
+        return $this->json_result($result, '저장 되었습니다.', $result);
+    }
 }

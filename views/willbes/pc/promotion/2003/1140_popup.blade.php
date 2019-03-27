@@ -2,36 +2,20 @@
 <link href="/public/css/willbes/basic.css" rel="stylesheet">
 <link href="/public/css/willbes/style.css" rel="stylesheet">
 <style type="text/css">
-    /* 팝업*/
-    .popcontent {padding:20px}
-    .popcontent h3 { font-size:18px; border:2px solid #353348; color:#d39004}	
-	.Layerpop {background:#FFF; border:#4582cd solid 3px; padding:30px;}
-	.Layerpop h1 {text-align:left; font-weight:bold; letter-spacing:-1px; font-size:20px; color:#000; margin-bottom:20px}
-	.Layerpop .tit {font-size:16px; color:#4582cd; font-weight:bold; letter-spacing:1px; text-align:left; padding:0; margin-bottom:10px}
-	.Layerpop .ck {padding-left:5px}
-	.Layerpop p {margin:10px 0 0 0}
-	.Layerpop .btn{text-align:center}
-	.Layerpop .btn img {padding:15px 5px 20px 0px}		
-		
-	.preTb {width:100%; margin-bottom:15px; border-top:#636363 solid 2px; border-bottom:2px solid #636363}
-	.preTb th,
-	.preTb td {padding:10px 5px; border-bottom:#EEE solid 1px; line-height:20px}
-	.preTb th{font-weight:bold !important; background:#F5F5F5}
-	.preTb input[type=text] {border:#CCC 1px solid; height:20px; line-height:20px} 	
-	.preTb label {margin-right:10px}	
-	
-	.Layerpop .termsBx01{padding:0px 20px ; height:80px;overflow:hidden;overflow-y:scroll;border:1px solid #cecece;line-height:1.5}
-	.Layerpop .termsBx01 h2{margin:10px 0;font-weight:bold;font-size:14px}
-	.Layerpop .termsBx01 .st  {margin-top:15px}
-	.Layerpop .termsBx01 ul li p {padding-left:6px}
-	.Layerpop .termsBx01 .span { height:60px; text-align:right}	
-
-	.popupCts {padding:0 30px}
-	.popupCts span {display:inline-block; color:#000; font-weight:bold; vertical-align:middle}	
-	.popupCts span.red {color:#F00; text-decoration:underline}
-	.popupCts input,
-	.popupCts select {vertical-align:middle; height:26px; line-height:26px}
-	.popupCts input[type=text] {padding:0 2px; height:24px; line-height:24px}	
+    /*설문팝업*/
+	.popcontent {height:auto; width:560px; padding:20px}
+	.question {margin-top:1em}
+	.question p {padding:10px; background:#898989; border-bottom:1px solid #666; color:#fff; margin-bottom:1em}
+	.question div.qBox {padding:5px 10px}
+	.question strong {color:#000}
+	.question div.qBox ul { margin:0; padding:0; margin-bottom:10px}
+	.question li {display:inline; float:left; margin-right:10px}
+	.question ul:after {content:""; display:block; clear:both}
+	.question .tab li {display:inline; float:left; margin-right:1px}
+	.question .tab:after {content:""; display:block; clear:both}
+	.question .tab a {display:block; padding:5px 10px}
+	.question .tab a:hover,
+	.question .tab a.active {background:#464646; color:#fff}	
 </style>
 
 @section('content')

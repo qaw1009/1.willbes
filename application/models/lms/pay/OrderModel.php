@@ -1408,4 +1408,52 @@ class OrderModel extends BaseOrderModel
 
         return true;
     }
+
+    /**
+     * 환불요청 정보 수정
+     * @param array $input
+     * @return array|bool
+     */
+    public function modifyOrderRefundRequest($input = [])
+    {
+        $this->_conn->trans_begin();
+
+        try {
+            $sess_admin_idx = $this->session->userdata('admin_idx');
+            $order_idx = element('order_idx', $input);
+            $refund_req_idx = element('refund_req_idx', $input);
+
+            // 환불요청정보 조회
+            $data = $this->orderListModel->findOrderRefundRequest($order_idx, $refund_req_idx);
+            if (empty($data) === true) {
+                throw new \Exception('데이터가 없습니다.', _HTTP_NOT_FOUND);
+            }
+
+            // 환불요청 데이터 저장
+            $data = [
+                'RefundBankCcd' => element('refund_bank_ccd', $input, ''),
+                'RefundAccountNo' => element('refund_account_no', $input, ''),
+                'RefundDepositName' => element('refund_deposit_name', $input, ''),
+                'RefundReason' => element('refund_reason', $input),
+                'RefundMemo' => element('refund_memo', $input),
+                'RefundReqUpdAdminIdx' => $sess_admin_idx
+            ];
+
+            $is_update = $this->_conn->set($data)->set('RefundReqUpdDatm', 'NOW()', false)
+                ->where('RefundReqIdx', $refund_req_idx)
+                ->where('OrderIdx', $order_idx)
+                ->update($this->_table['order_refund_request']);
+
+            if ($is_update === false) {
+                throw new \Exception('데이터 수정에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
 }

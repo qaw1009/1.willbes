@@ -4,34 +4,25 @@
 <style type="text/css">
     /* 팝업*/
     .popcontent {padding:20px}
-    .popcontent h3 { font-size:18px; border:2px solid #353348; color:#d39004}	
-	.Layerpop {background:#FFF; border:#4582cd solid 3px; padding:30px;}
-	.Layerpop h1 {text-align:left; font-weight:bold; letter-spacing:-1px; font-size:20px; color:#000; margin-bottom:20px}
-	.Layerpop .tit {font-size:16px; color:#4582cd; font-weight:bold; letter-spacing:1px; text-align:left; padding:0; margin-bottom:10px}
-	.Layerpop .ck {padding-left:5px}
-	.Layerpop p {margin:10px 0 0 0}
-	.Layerpop .btn{text-align:center}
-	.Layerpop .btn img {padding:15px 5px 20px 0px}		
-		
-	.preTb {width:100%; margin-bottom:15px; border-top:#636363 solid 2px; border-bottom:2px solid #636363}
-	.preTb th,
-	.preTb td {padding:10px 5px; border-bottom:#EEE solid 1px; line-height:20px}
-	.preTb th{font-weight:bold !important; background:#F5F5F5}
-	.preTb input[type=text] {border:#CCC 1px solid; height:20px; line-height:20px} 	
-	.preTb label {margin-right:10px}	
-	
-	.Layerpop .termsBx01{padding:0px 20px ; height:80px;overflow:hidden;overflow-y:scroll;border:1px solid #cecece;line-height:1.5}
-	.Layerpop .termsBx01 h2{margin:10px 0;font-weight:bold;font-size:14px}
-	.Layerpop .termsBx01 .st  {margin-top:15px}
-	.Layerpop .termsBx01 ul li p {padding-left:6px}
-	.Layerpop .termsBx01 .span { height:60px; text-align:right}	
+    .popcontent h3 {font-size:18px; border-bottom:2px solid #353348; color:#d39004; padding-bottom:10px}	
+	.question {margin-top:1em}
+	.question p {padding:10px; background:#898989; border-bottom:1px solid #666; color:#fff; margin-bottom:1em}
+	.question div.qBox {padding:5px 10px}
+    .question span {color:#000; width:50px; display:block; font-weight:bold}
+    .question div.qBox div {margin-bottom:10px}
+	.question div.qBox ul {margin:0; padding:0; margin-bottom:10px}
+	.question li {display:inline; float:left; margin-right:10px}
+	.question ul:after {content:""; display:block; clear:both}
+	.question .tab li {display:inline; float:left; margin-right:1px}
+	.question .tab:after {content:""; display:block; clear:both}
+	.question .tab a {display:block; padding:5px 10px}
+	.question .tab a:hover,
+    .question .tab a.active {background:#464646; color:#fff}
+    
+    .btnsSt3 {text-align:center; margin-top:20px}
+    .btnsSt3 a {display:inline-block; padding:8px 16px; background:#d39004; color:#fff !important; font-weight:400; border:1px solid #d39004}
+    .btnsSt3 a:hover {background:#fff; color:#d39004 !important}
 
-	.popupCts {padding:0 30px}
-	.popupCts span {display:inline-block; color:#000; font-weight:bold; vertical-align:middle}	
-	.popupCts span.red {color:#F00; text-decoration:underline}
-	.popupCts input,
-	.popupCts select {vertical-align:middle; height:26px; line-height:26px}
-	.popupCts input[type=text] {padding:0 2px; height:24px; line-height:24px}	
 </style>
 
 @section('content')
@@ -55,8 +46,8 @@
         <div class="question">
             <p>Q2. 공통 과목 시험 체감 난이도 </p>
             <div class="qBox">
-                <strong>국어</strong>
                 <ul>
+                    <li><span>국어</span></li>
                     <li><label><input type="radio" name=" " id=" " value="1" /> 매우 쉬움</label></li>
                     <li><label><input type="radio" name=" " id=" " value="2" /> 쉬움</label></li>
                     <li><label><input type="radio" name=" " id=" " value="3" /> 보통</label></li>
@@ -65,8 +56,8 @@
                 </ul>
             </div>
             <div class="qBox">
-                <strong>영어</strong>
                 <ul>
+                    <li><span>영어</span></li>    
                     <li><label><input type="radio" name=" " id=" " value="1" /> 매우 쉬움</label></li>
                     <li><label><input type="radio" name=" " id=" " value="2" /> 쉬움</label></li>
                     <li><label><input type="radio" name=" " id=" " value="3" /> 보통</label></li>
@@ -75,8 +66,8 @@
                 </ul>
             </div>
             <div class="qBox">
-                <strong>한국사</strong>
                 <ul>
+                    <li><span>한국사</span></li>
                     <li><label><input type="radio" name=" " id=" " value="1" /> 매우 쉬움</label></li>
                     <li><label><input type="radio" name=" " id=" " value="2" /> 쉬움</label></li>
                     <li><label><input type="radio" name=" " id=" " value="3" /> 보통</label></li>
@@ -91,23 +82,23 @@
             <div class="qBox">
                 <div>1) 응시한 과목을 선택해 주세요.</div>
                 <ul>
-                    <li><label><input type="checkbox" name=" "  id=" " value=" " />과목1</label></li>
-                    <li><label><input type="checkbox" name=" "  id=" " value=" " />과목2</label></li>
-                    <li><label><input type="checkbox" name=" "  id=" " value=" " />과목3</label></li>
-                    <li><label><input type="checkbox" name=" "  id=" " value=" " />과목4</label></li>
-                    <li><label><input type="checkbox" name=" "  id=" " value=" " />과목5</label></li>               
+                    <li><label><input type="checkbox" name=" "  id=" " value=" " /> 과목1</label></li>
+                    <li><label><input type="checkbox" name=" "  id=" " value=" " /> 과목2</label></li>
+                    <li><label><input type="checkbox" name=" "  id=" " value=" " /> 과목3</label></li>
+                    <li><label><input type="checkbox" name=" "  id=" " value=" " /> 과목4</label></li>
+                    <li><label><input type="checkbox" name=" "  id=" " value=" " /> 과목5</label></li>               
                 </ul>                                     
-                <div id="vItem" > 
-                    <strong>과목1</strong>   
+                <div id="vItem" class="mt20"> 
                     <ul>
+                        <li><span>과목1</span></li> 
                         <li><label><input type="radio" name=" " id=" " value="1" /> 매우 쉬움</label></li>
                         <li><label><input type="radio" name=" " id=" " value="2" /> 쉬움</label></li>
                         <li><label><input type="radio" name=" " id=" " value="3" /> 보통</label></li>
                         <li><label><input type="radio" name=" " id=" " value="4" /> 어려움</label></li>
                         <li><label><input type="radio" name=" " id=" " value="5" /> 매우 어려움</label></li>
-                    </ul>
-                    <strong>과목2</strong>   
+                    </ul> 
                     <ul>
+                        <li><span>과목2</span></li>     
                         <li><label><input type="radio" name=" " id=" " value="1" /> 매우 쉬움</label></li>
                         <li><label><input type="radio" name=" " id=" " value="2" /> 쉬움</label></li>
                         <li><label><input type="radio" name=" " id=" " value="3" /> 보통</label></li>

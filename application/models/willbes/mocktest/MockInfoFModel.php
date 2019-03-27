@@ -96,7 +96,7 @@ class MockInfoFModel extends WB_Model
     }
 
     /**
-     * 모의고사 상품 필수과목, 선택과목 추출
+     * 모의고사 상품 필수과목, 선택과목 추출6
      * @param $prod_code
      * @param $mock_type
      * @return mixed

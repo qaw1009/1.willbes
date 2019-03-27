@@ -122,7 +122,7 @@
                     $input_prod_code[idx] = $(this).val();
                 });
 
-                var url = frontUrl('/order/free');
+                var url = '{{ site_url('/order/free') }}';
                 var data = $.extend(arrToJson($regi_form.find('input[type="hidden"]').serializeArray()), {
                     'prod_code': JSON.stringify($input_prod_code)
                 });

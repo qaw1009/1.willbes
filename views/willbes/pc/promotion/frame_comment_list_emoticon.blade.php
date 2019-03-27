@@ -50,12 +50,12 @@
     .replySt3List li:after {content:""; display:block; clear:both}
     .rolling {width:1210px; margin:0 auto; text-align:center}
 
-    .emoticon_1 {background-image: url(http://file3.willbes.net/new_cop/character/01.png)}
-    .emoticon_2 {background-image: url(http://file3.willbes.net/new_cop/character/20.png)}
-    .emoticon_3 {background-image: url(http://file3.willbes.net/new_cop/character/17.png)}
-    .emoticon_4 {background-image: url(http://file3.willbes.net/new_cop/character/18.png)}
-    .emoticon_5 {background-image: url(http://file3.willbes.net/new_cop/character/13.png)}
-    .emoticon_6 {background-image: url(http://file3.willbes.net/new_cop/character/14.png)}
+    .emoticon_1 {background-image: url(https://static.willbes.net/public/images/promotion/common/icon_poof01.png)}
+    .emoticon_2 {background-image: url(https://static.willbes.net/public/images/promotion/common/icon_poof20.png)}
+    .emoticon_3 {background-image: url(https://static.willbes.net/public/images/promotion/common/icon_poof17.png)}
+    .emoticon_4 {background-image: url(https://static.willbes.net/public/images/promotion/common/icon_poof18.png)}
+    .emoticon_5 {background-image: url(https://static.willbes.net/public/images/promotion/common/icon_poof13.png)}
+    .emoticon_6 {background-image: url(https://static.willbes.net/public/images/promotion/common/icon_poof14.png)}
 </style>
 
 <div class="reEmo">
@@ -69,27 +69,27 @@
         <div class="characterSt2">
             <ul class="characterSt2Img">
                 <li>
-                    <img src="http://file3.willbes.net/new_cop/character/01.png" alt="" />
+                    <img src="https://static.willbes.net/public/images/promotion/common/icon_poof01.png" title="신광은" />
                     <p><label><input type="radio" name="sns_icon" value="1" /> 만점의 <span>신~</span></label></p>
                 </li>
                 <li>
-                    <img src="http://file3.willbes.net/new_cop/character/20.png" alt="" />
+                    <img src="https://static.willbes.net/public/images/promotion/common/icon_poof20.png" title="장정훈" />
                     <p><label><input type="radio" name="sns_icon" value="2" /> 만점의 <span>향기~~</span></label></p>
                 </li>
                 <li>
-                    <img src="http://file3.willbes.net/new_cop/character/17.png" alt="" />
+                    <img src="https://static.willbes.net/public/images/promotion/common/icon_poof17.png" title="김원욱" />
                     <p><label><input type="radio" name="sns_icon" value="3" /> 만점<span>맨!~</span></label></p>
                 </li>
                 <li>
-                    <img src="http://file3.willbes.net/new_cop/character/18.png" alt="" />
+                    <img src="https://static.willbes.net/public/images/promotion/common/icon_poof18.png" title="하승민" />
                     <p><label><input type="radio" name="sns_icon" value="4" /> 히든 <span>만점러~</span></label></p>
                 </li>
                 <li>
-                    <img src="http://file3.willbes.net/new_cop/character/13.png" alt="" />
+                    <img src="https://static.willbes.net/public/images/promotion/common/icon_poof13.png" title="오태진" />
                     <p><label><input type="radio" name="sns_icon" value="5" /> 불타는 <span>만점러!</span></label></p>
                 </li>
                 <li>
-                    <img src="http://file3.willbes.net/new_cop/character/14.png" alt="" />
+                    <img src="https://static.willbes.net/public/images/promotion/common/icon_poof14.png" title="원유철" />
                     <p><label><input type="radio" name="sns_icon" value="6" /> 만점의 <span>워너원~</span></label></p>
                 </li>
             </ul>
@@ -109,7 +109,7 @@
             @foreach($list as $row)
                 <li>
                     <span class="crtImg emoticon_{{$row['EmoticonNo']}}">
-                        {{--<img src="http://file3.willbes.net/new_cop/character/17.png" alt=""/>--}}
+                        {{--<img src="https://static.willbes.net/public/images/promotion/common/icon_poof17.png" alt=""/>--}}
                     </span>
                     <div class="crtReply">
                         <p>{!! $row['MemIdx'] == sess_data('mem_idx') ? $row['MemName'] : hpSubString($row['MemName'],0,2,'*') !!}

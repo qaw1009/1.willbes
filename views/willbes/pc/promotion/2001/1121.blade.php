@@ -166,9 +166,9 @@
             </ul>
 
             <ul class="typeB">
-                <li class="NSK-Black">전역(예정)간부 가입/인증</li>
+                <li class="NSK-Black">전역(예정)간부 인증</li>
                 @if(empty($cert_apply))
-                    <li><a href="javascript:certOpen();">가입 및 인증하기 &gt;</a></li>
+                    <li><a href="javascript:certOpen();">인증하기 &gt;</a></li>
                 @else
                     <li><strong>{{sess_data('mem_name')}}</strong>님은<br /><span>인증완료</span><br />상태입니다.</li>
                 @endif

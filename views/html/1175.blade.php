@@ -27,29 +27,71 @@
             z-index:1;            
         }
 
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2019/03/1177_top_bg.jpg) no-repeat center top;}
-        .evt01 {background:#fff}
-        .evt02 {background:#ececec; padding-bottom:100px}
-        .evt03 {background:#9f0f32}
+        .wb_top {width:100%; text-align:center;  min-width:1210px;  background:#2d1209 url(https://static.willbes.net/public/images/promotion/2019/03/1175_p1_bg.jpg) no-repeat center; }
 
-        /* 슬라이드배너 */
-        .bannerimg {position:relative; width:980px; margin:0 auto}
-        .bannerimg p {position:absolute; top:50%; width:50px; z-index:100}
-        .bannerimg img {width:100%}
-        .bannerimg p a {cursor:pointer}
-        .bannerimg p.leftBtn {left:-30px; top:50%; margin-top:-25px; width:50px; height:50px}
-        .bannerimg p.rightBtn {right:-30px; top:50%; margin-top:-25px; width:50px; height:50px}
+        .wb_01 {width:100%; text-align:center; background:#ffffff; min-width:1210px}	
+        .wb_02 {width:100%; text-align:center; background:#aeaeae; min-width:1210px}
+
+        .wb_03 {width:100%; text-align:center; background:#ececec; min-width:1210px}
+
+        .wb_04 {width:100%; text-align:center; background:#7d7d7d; min-width:1210px}
+        .wb_04 div {width:1210px; margin:0 auto; position:relative}
+        .wb_04 div ul {position:absolute; width:88px; top:378px; left:567px; z-index:10}
+        .wb_04 div li {margin-bottom:18px}
+        .wb_04 div li:nth-child(3) {margin-bottom:20px}
+        .wb_04 div li:nth-child(4) {margin-bottom:20px}
+        .wb_04 div li:nth-child(5) {margin-bottom:20px}
+        .wb_04 div li:nth-child(6) {margin-bottom:20px}
+        .wb_04 div li a {display:block; height:21px; line-height:21px; font-size:13px; font-weight:600; letter-spacing:-1px; background:#231f20; color:#fff; border:1px solid #231f20; font-family:'Noto Sans KR', Arial, Sans-serif}
+        .wb_04 div li a:hover {background:#ffda38; color:#231f20}
+        .wb_04 div span {position:absolute; display:block; height:31px; line-height:31px; padding:0 10px; background:#231f20; color:#fff; font-size:14px; font-weight:600; border-radius:22px; border:1px solid #231f20; z-index:11; letter-spacing:-1px}
+        .wb_04 div span em {font-size:11px}
+        .wb_04 div span.on {background:#ffda38; color:#231f20}
+        .wb_04 div span.area01 {top:438px; left:809px} /*본원*/
+        .wb_04 div span.area02 {top:490px; left:725px} /*신림*/
+        .wb_04 div span.area03 {top:522px; left:764px} /*인천*/
+        .wb_04 div span.area04 {top:737px; left:764px} /*광주*/
+        .wb_04 div span.area05 {top:667px; left:795px} /*전주,익산*/
+        .wb_04 div span.area06 {top:678px; left:915px} /*대구*/
+        .wb_04 div span.area07 {top:737px; left:964px} /*부산*/
+        .wb_04 div span.area08 {top:750px; left:856px} /*진주*/
+        .wb_04 div span.area09 {top:859px; left:774px} /*제주*/
+
+        .wb_05 {width:100%; text-align:center; background:#ffffff; min-width:1210px;}
+        .wb_06 {width:100%; text-align:center; background:#fd6c38; min-width:1210px;}	
+
+        .content_guide_wrap{background:#fff; margin:0}
+        .content_guide_box{ position:relative; width:900px; margin:0 auto; padding:50px 0}
+        .content_guide_box .guide_tit{margin-bottom:20px}
+        .content_guide_box dl{ margin:0 20px; word-break:keep-all;border:2px solid #202020;padding:30px}
+        .content_guide_box dt{ margin-bottom:10px}
+        .content_guide_box dt h3{color:#fff; background:#333; display:inline-block; padding:3px 7px; font-size:13px; font-weight:bold; margin-right:10px}
+        .content_guide_box dt img.btn{padding:2px 0 0 0}
+        .content_guide_box dd{ color:#777; font-size:13px; margin:0 0 20px 5px; line-height:17px}
+        .content_guide_box dd strong{ color:#555}
+        .content_guide_box dd p{ margin-bottom:3px}
+        .content_guide_box dd p.guide_txt_01{margin:5px 0 5px 15px}
+
+        /*타이머*/
+        #newTopDday * {font-family:'Noto Sans KR', Arial, Sans-serif; font-size:24px;}
+        #newTopDday { clear:both;background:#f5f5f5; width:100%; padding:20px 0}
+        #newTopDday ul {width:1210px; margin:0 auto}
+        #newTopDday ul li {display:inline; float:left; margin-right:5px; text-align:center; height:60px; padding-top:10px !important; font-weight:600; color:#000}
+        #newTopDday ul li strong {line-height:70px}
+        #newTopDday ul li img {width:50px}
+        #newTopDday ul li:first-child {line-height:none; text-align:right; padding-right:20px; width:28%}
+        #newTopDday ul li:first-child span {font-size:12px; color:#999;margin-top:4px;}
+        #newTopDday ul li:last-child {line-height:none;  text-align:left; padding-left:20px; width:24%}
+        #newTopDday ul li:last-child a {display:inline-block; font-size:14px; padding:4px 20px; background:#999; color:#FFF; text-align:center; border-radius:20px}
+        #newTopDday ul li:last-child a:hover {background:#666}
+        #newTopDday ul:after {content:""; display:block; clear:both}
 
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner">
-            <a href="#evt"><img src="https://static.willbes.net/public/images/promotion/2019/03/1177_p_sky.png" alt="스카이스크래퍼" ></a>
-        </div>
-
-        <div class="wb_top" id="main">
-			<img src="http://file3.willbes.net/new_cop/2019/03/EV190327_p1.png"  alt="메인" usemap="#link"/>
-		</div>
+            <a href="#evt"><img src="https://static.willbes.net/public/images/promotion/2019/03/1175_sky.png" alt="스카이스크래퍼" ></a>
+        </div>       
 
         <!-- 타이머 -->
         <div id="newTopDday" class="newTopDday">
@@ -78,26 +120,29 @@
             </div>
         </div>
 
+        <div class="wb_top" id="main">
+			<img src="https://static.willbes.net/public/images/promotion/2019/03/1175_p1.png"  alt="메인" usemap="#link"/>
+		</div>
+
         <div class="wb_01" >
-			<img src="http://file3.willbes.net/new_cop/2019/03/EV190327_p2.png"  alt="상금" usemap="#link2"/>
+			<img src="https://static.willbes.net/public/images/promotion/2019/03/1175_p2.png"  alt="상금" usemap="#link2"/>
 			<map name="link2" >
 				<area shape="rect" coords="439,1413,679,1471" href="#ask" alt="응모안내" />
 			</map>
 		</div>
 
 		<div class="wb_02" >
-			<img src="http://file3.willbes.net/new_cop/2019/03/EV190327_p3.png"  alt="3가지" />
+			<img src="https://static.willbes.net/public/images/promotion/2019/03/1175_p3.png"  alt="3가지" />
 		</div>
        
 		<div class="wb_03" id="table">
-			<img src="http://file3.willbes.net/new_cop/2019/03/EV190327_p4_1.png"  alt="시간표 및 장소" /><br />
-			<img src="http://file3.willbes.net/new_cop/2019/03/EV190327_p4_2.png"  alt="접수하기" />
-			<!--img src="http://file3.willbes.net/new_cop/2019/03/EV190327_p4_2_soldout.png"  alt="접수마감" /-->
+			<img src="https://static.willbes.net/public/images/promotion/2019/03/1175_p4_1.png"  alt="시간표 및 장소" /><br />
+			<img src="https://static.willbes.net/public/images/promotion/2019/03/1175_p4_2.png"  alt="접수하기" />
 		</div>
 		
 		<div class="wb_04" >
 			<div>
-                <img src="http://file3.willbes.net/new_cop/2019/03/EV190327_p5_re.png"  alt="전국학원"/>
+                <img src="https://static.willbes.net/public/images/promotion/2019/03/1175_p5_re.png"  alt="전국학원"/>
                 <ul>
                     <li><a href="{{ site_url('#none') }}" alt="노량진" onmouseover="$('span.area01').addClass('on');" onmouseleave="$('span.area01').removeClass('on');">신청하기</a></li>
                     <li><a href="{{ site_url('#none') }}" alt="신림" onmouseover="$('span.area02').addClass('on');" onmouseleave="$('span.area02').removeClass('on');">신청하기</a></li>
@@ -123,7 +168,7 @@
 		</div>
 
 		<div class="wb_05" id="evt">
-			<img src="http://file3.willbes.net/new_cop/2019/03/EV190327_p6.png" alt="무료응시+소문내기" usemap="#Map190115"/>
+			<img src="https://static.willbes.net/public/images/promotion/2019/03/1175_p6.png" alt="무료응시+소문내기" usemap="#Map190115"/>
               <map name="Map190115" >
                 <!--area shape="rect" coords="443,981,682,1057" href="#" onFocus="this.blur();" target="_blank" alt="쿠폰받기"/-->
 
@@ -134,10 +179,10 @@
               </map>
 		</div>
 
-        <!--홍보 url-->
+        @include('html.event_replyUrl')
 
         <div class="wb_06" id="go">
-			<img src="http://file3.willbes.net/new_cop/2019/03/EV190327_p7.png"  alt="접수하기" usemap="#go"/>
+			<img src="https://static.willbes.net/public/images/promotion/2019/03/1175_p7.png"  alt="접수하기" usemap="#go"/>
 			<map name="go">
 				<area shape="rect" coords="438,436,750,529" href="/mouigosa/request/list.html?topMenuType=F&topMenuGnb=FM_004&topMenu=MAIN&menuID=FM_004_002_002&topMenuName=수험연구소&BOARDTYPE=4&INCTYPE=list" onfocus='this.blur()' alt="접수하기" target="_self"/>
 			</map>

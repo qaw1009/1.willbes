@@ -49,12 +49,10 @@
         .tabContaier a.active img.on {display:block}
         .tabContaier ul:after {content:""; display:block; clear:both}
         
-        .wb_cts04 {background:#8f755c}	
+        .wb_cts04 {background:#8f755c;}	
         .wb_cts04 .movieFrame {width:980px; height:500px; margin:0 auto; background:url(http://file3.willbes.net/new_gosi/2019/03/EV190319_live_vod_off.png) no-repeat center top;}
-        .wb_cts04 .embedWrap {padding-top:13px;}
-        .wb_cts04 .embed-container {position:absolute; padding-bottom:46.25%; height:0; overflow:hidden; width:980px; height:auto; margin:0 auto}
-        /*.wb_cts04 .embedWrap {width:980px; margin:0 auto}
-        .wb_cts04 .embed-container {position:absolute; padding-bottom:46.25%; height:0; overflow:hidden; width:980px; height:auto; margin:0 auto}*/
+        .wb_cts04 .embedWrap {padding-top:13px; width:980px; margin:0 auto}
+        .wb_cts04 .embed-container {position:absolute; padding-bottom:46.25%; height:0; overflow:hidden; width:980px; height:auto; margin:0 auto}        
         .wb_cts04 .mobileCh li {width:50%; display:inline; float:left;}
         .wb_cts04 .mobileCh li a {display:block; text-align:center; font-size:150%; font-weight:bold; color:#FFF; background:#1e162b; padding:30px 0}
         .wb_cts04 .mobileCh li a.ch2 {color:#6CF}
@@ -64,7 +62,8 @@
         /*크롬*/
         @@media screen and (-webkit-min-device-pixel-ratio:0) {
         .wb_cts04 {background:#8f755c; position:relative;}	
-        .wb_cts04 .embedWrap {width:980px; margin-left:-28px; padding:0}
+        .wb_cts04 .movieFrame {width:980px; height:500px; margin:0 auto; background:url(http://file3.willbes.net/new_gosi/2019/03/EV190319_live_vod_off.png) no-repeat center top;}
+        .wb_cts04 .embedWrap {width:980px; margin-left:0; padding:0}
         .wb_cts04 .embed-container {position:absolute; padding-bottom:46.25%; height:0; overflow:hidden; width:980px; height:auto; margin:0 auto}
         }   
 
@@ -291,17 +290,17 @@
         </div>
         <!--WB_top03//-->
 
-        <div class="evtCtnsBox wb_cts04"> 
+        <div class="wb_cts04"> 
             <!--PC-->
             <div id="movieFrame">
                 @php
-                    $set_on_day = ['20190328', '20190329', '20190331', '20190401', '20190402'];
+                    $set_on_day = ['20190327', '20190329', '20190331', '20190401', '20190402'];
                     $day = date('Ymd');
                     $time = date('His');
 
-                    if ($day < '20190328') {
+                    if ($day < '20190327') {
                         $live_type = 'standby';
-                    } else if ($day >= '20190328' && $day <= '20190402'){
+                    } else if ($day >= '20190327' && $day <= '20190402'){
                         $live_type = 'on';
                     } else {
                         $live_type = 'off';
@@ -314,7 +313,7 @@
                                 $live_video_type = 'on';
                             }
                         } else if ($day == $val){
-                            if ($time >= '190000' && $time <= '220000') {
+                            if ($time >= '150000' && $time <= '220000') {
                                 $live_video_type = 'on';
                             }
                         }
@@ -335,7 +334,7 @@
                                         jwplayer("myElement").setup({
                                         width: '100%',
                                         logo: {file: 'http://file3.willbes.net/new_cop/2018/07/cop_bi.png'},
-                                        image: "http://file3.willbes.net/new_cop/2019/03/EV190308P_08_playBg.jpg",
+                                        image: "http://file3.willbes.net/new_gosi/2019/03/EV190319_live_vod_off.png",
                                         aspectratio: "16:9",
                                         autostart: "true",
                                         file: "rtmp://willbes.flive.skcdn.com/willbeslive/livestream11011"

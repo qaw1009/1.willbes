@@ -9,7 +9,7 @@ class Join extends BaseMember
         '2001' => [ // 경찰
             ['type' => 'coupon', 'no' => '30'], // 온라인 모의고사쿠폰
             ['type' => 'coupon', 'no' => '71'], // 단과10%
-            ['type' => 'coupon', 'no' => '68'], // PASS 1만원
+            ['type' => 'coupon', 'no' => '135'], // PASS 1만원
             ['type' => 'coupon', 'no' => '129'], // 교재무료배송
         ],
         '2003' => [ // 공무원

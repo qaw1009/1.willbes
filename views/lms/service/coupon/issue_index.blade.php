@@ -41,8 +41,9 @@
                         <select class="form-control mr-10" id="search_valid_status" name="search_valid_status">
                             <option value="">유효여부</option>
                             <option value="Y">유효</option>
-                            <option value="N">만료</option>
+                            <option value="N">비유효</option>
                             <option value="C">취소</option>
+                            <option value="R">회수</option>
                         </select>
                     </div>
                 </div>
@@ -160,7 +161,7 @@
                         return data.substr(0, 10) + '<br/>(' + row.IssueUserName + ')';
                     }},
                     {'data' : 'ValidStatus', 'render' : function(data, type, row, meta) {
-                        return ((data !== '유효') ? '<span class="red">' + data + '</span>' : data) + '<br/>(' + row.ExpireDatm.substr(0, 10) + ')';
+                        return ((data !== 'Y') ? '<span class="red">' + row.ValidStatusName + '</span>' : row.ValidStatusName) + '<br/>(' + row.ExpireDatm.substr(0, 10) + ')';
                     }},
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                         return (data === 'Y') ? '사용 (' + row.UseDatm.substr(0, 16) + ')' : '<span class="red">미사용</span>';
@@ -193,7 +194,7 @@
                 var $params = {};
                 $checked_cd_idx.each(function() {
                     if ($(this).data('is-retireable') === 'Y') {
-                        $params[$(this).data('idx')] = $(this).val();
+                        $params[$(this).data('idx') + '::' + $(this).val()] = $(this).val();
                     }
                 });
 

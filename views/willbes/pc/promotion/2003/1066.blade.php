@@ -94,13 +94,13 @@
 
         <div class="evtCtnsBox wb_cts06" >
             <img src="http://file3.willbes.net/new_gosi/2019/01/EV190110_5.png" alt="학습비법패키지수강신청" usemap="#Map180412_lec2" border="0" />
-            <map name="Map180412_lec2">
-                <area shape="rect" coords="920,663,1101,711" href="{{ site_url('/package/show/cate/3019/pack/648001/prod-code/150364') }}" target="_blank" alt="step1 기본이론"/>
-                <area shape="rect" coords="715,665,892,712" href="{{ site_url('/package/show/cate/3019/pack/648001/prod-code/150363') }}" target="_blank" alt="step2 심화+실전예비"/>
-                <area shape="rect" coords="507,664,676,711" href="{{ site_url('/package/show/cate/3019/pack/648001/prod-code/150362') }}" target="_blank" alt="step3 문제해결스킬up"/>
-                <area shape="rect" coords="291,661,467,712" href="{{ site_url('/lecture/show/cate/3019/pattern/only/prod-code/146750') }}" target="_blank" alt="step4 실전 실력다지기"/>
-                <area shape="rect" coords="86,662,257,712" href="{{ site_url('/lecture/show/cate/3019/pattern/only/prod-code/147104') }}" target="_blank" alt="step5 파이널"/>
-            </map>
+            <map name="Map180412_lec2" id="Map180412_lec2">
+                <area shape="rect" coords="87,662,256,711" href="{{ site_url('/package/show/cate/3019/pack/648001/prod-code/150364') }}" target="_blank" alt="step1 기본이론"/>
+                <area shape="rect" coords="296,664,466,708" href="{{ site_url('/package/show/cate/3019/pack/648001/prod-code/150363') }}" target="_blank" alt="step2 심화+실전예비"/>
+                <area shape="rect" coords="507,663,677,711" href="{{ site_url('/package/show/cate/3019/pack/648001/prod-code/150362') }}" target="_blank" alt="step3 문제해결 스킬up"/ >
+                <area shape="rect" coords="715,664,887,709" href="{{ site_url('/lecture/show/cate/3019/pattern/only/prod-code/146750') }}" target="_blank" alt="step4 실전 실력다지기" />
+                <area shape="rect" coords="926,663,1094,709" href="{{ site_url('/lecture/show/cate/3019/pattern/only/prod-code/147104') }}" target="_blank" alt="step5 파이널" />
+            </map>    
         </div>
         <!--wb_cts06//-->
 

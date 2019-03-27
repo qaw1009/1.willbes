@@ -84,23 +84,23 @@ class DownloadFModel extends WB_Model
 
     public function saveLog($idx=null, $attach_type = 0)
     {
-        $refer_info = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : null ;
-        $refer_domain = parse_url($refer_info, PHP_URL_HOST);
-        $this->__userAgent($agent_short, $agent, $platform);
-
-        $input_data = [
-            'BoardIdx' => $idx,
-            'MemIdx' => (empty($this->session->userdata('mem_idx')) ? null : $this->session->userdata('mem_idx')),
-            'AttachType' => $attach_type,
-            'ReferDomain' => (empty($refer_domain) ? null : $refer_domain ),
-            'ReferPath' => (empty($refer_info) ? null : $refer_info ),
-            'ReferQuery' => urldecode($_SERVER['QUERY_STRING']),
-            'UserPlatform' =>$platform,
-            'UserAgent' =>substr($agent,0,199),
-            'RegIp' =>$this->input->ip_address()
-        ];
-
         try {
+            $refer_info = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : null ;
+            $refer_domain = parse_url($refer_info, PHP_URL_HOST);
+            $this->__userAgent($agent_short, $agent, $platform);
+
+            $input_data = [
+                'BoardIdx' => $idx,
+                'MemIdx' => (empty($this->session->userdata('mem_idx')) ? null : $this->session->userdata('mem_idx')),
+                'AttachType' => $attach_type,
+                'ReferDomain' => (empty($refer_domain) ? null : $refer_domain ),
+                'ReferPath' => (empty($refer_info) ? null : $refer_info ),
+                'ReferQuery' => urldecode($_SERVER['QUERY_STRING']),
+                'UserPlatform' =>$platform,
+                'UserAgent' =>substr($agent,0,199),
+                'RegIp' =>$this->input->ip_address()
+            ];
+
             if ($this->_conn->set($input_data)->insert($this->_table['lms_board_download_log']) === false) {
                 //echo $this->_conn->last_query();
                 throw new \Exception('저장에 실패했습니다.');

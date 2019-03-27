@@ -5817,6 +5817,7 @@ ul li.profList .Obj {
     font-size: 14px;
     color: #999;
     line-height: 18px;
+    z-index: 10;
 }
 ul li.profList .Name {
     position: absolute;
@@ -5839,6 +5840,7 @@ ul li.profList img.profImg {
     position: absolute;
     right: 1px;
     bottom: 1px;
+    z-index: 1;
 }
 ul li.profList img.Evt {
     position: absolute;

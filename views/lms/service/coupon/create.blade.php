@@ -496,13 +496,11 @@
                     }
                 }
 
-                if (arr_set[1] === 'mock_exam') {
-                    // 모의고사
-                    $('#apply_product').removeClass('hide').addClass('show');
-
+                // 모의고사
+                if (arr_set[2] === 'mock_exam') {
                     if (evt.type === 'ifChanged') {
                         // 특정상품 선택
-                        $regi_form.find('input[name="apply_range_type"][value="P"]').prop('checked', true).iCheck('update');
+                        $regi_form.find('input[name="apply_range_type"][value="I"]').prop('disabled', true).iCheck('update');
                     }
                 }
             });

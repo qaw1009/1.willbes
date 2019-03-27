@@ -159,9 +159,10 @@
                             <input type="text" class="form-control" name="ClosingPerson" value="@if($method == 'PUT'){{ ($data['ClosingPerson'] == 0) ? '' : $data['ClosingPerson'] }}@endif" style="width: 100px;">
                             <span class="ml-20">응시형태가 'OFF(학원)'인 경우 마감인원 (미등록시 무제한)</span>
                         </td>
+                        <input type="hidden" name="AcceptStatusCcd" value="675002" />
                     </tr>
                     <!--tr>
-                        <th colspan="1">접수상태 <span class="required">*</span></th>
+                        <th colspan="1">접수사용여부 <span class="required">*</span></th>
                         <td colspan="3">
                             @foreach($accept_ccd as $key=>$val)
                                 @if($key != '675001' ) {{--접수예정 제외--}}

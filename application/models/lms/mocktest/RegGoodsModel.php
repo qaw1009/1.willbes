@@ -804,7 +804,7 @@ class RegGoodsModel extends WB_Model
                 'MockYear'       => $this->input->post('MockYear'),
                 'MockRotationNo' => $this->input->post('MockRotationNo'),
                 'ClosingPerson'  => empty($this->input->post('ClosingPerson')) ? '' : $this->input->post('ClosingPerson'),
-                //'AcceptStatusCcd' => $this->input->post('AcceptStatusCcd'),
+                'AcceptStatusCcd' => $this->input->post('AcceptStatusCcd'),
                 //'IsRegister'     => $this->input->post('IsRegister'), // 접수상태
                 //'TakeType'       => $this->input->post('TakeType'),
                 'TakeStartDatm'  => ($this->input->post('TakeType') == 'A') ? null : $TakeStartDatm,
@@ -920,7 +920,7 @@ class RegGoodsModel extends WB_Model
                 'MockYear'       => $this->input->post('MockYear'),
                 'MockRotationNo' => $this->input->post('MockRotationNo'),
                 'ClosingPerson'  => empty($this->input->post('ClosingPerson')) ? '' : $this->input->post('ClosingPerson'),
-                //'AcceptStatusCcd' => $this->input->post('AcceptStatusCcd'),
+                'AcceptStatusCcd' => $this->input->post('AcceptStatusCcd'),
                 //'IsRegister'     => $this->input->post('IsRegister'),
                 //'TakeType'       => $this->input->post('TakeType'),
                 'TakeStartDatm'  => ($this->input->post('TakeType') == 'A') ? null : $TakeStartDatm,

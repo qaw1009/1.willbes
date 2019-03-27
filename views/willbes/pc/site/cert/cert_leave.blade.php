@@ -32,7 +32,7 @@
 
         <div class="laj_tab">
             <strong>교육과정 바로가기</strong>
-            <a target="_blank" href="{{ app_url('/promotion/index/cate/3030/code/1113', 'pass')) }}" target="_blank">공무원 / 소방자격증</a>
+            <a target="_blank" href="{{ app_url('/promotion/index/cate/3030/code/1113', 'pass') }}" target="_blank">공무원 / 소방자격증</a>
             <a target="_blank" href="{{ app_url('/promotion/index/cate/3001/code/1121', 'police') }}" target="_blank">경찰</a>
         </div>
 

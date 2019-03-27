@@ -48,9 +48,9 @@
         </div>
 
         <div class="evtCtnsBox evt02">
-          <img src="https://static.willbes.net/public/images/promotion/2019/03/1177_02.jpg" usemap="#Map1177A" title="교수님 수기확인하기" border="0">
-          <map name="Map1177A" id="Map1177A">
-            <area shape="rect" coords="486,352,679,398" href="#" />
+          <img src="https://static.willbes.net/public/images/promotion/2019/03/1177_02.jpg" usemap="#Map1177C" title="교수님 수기확인하기" border="0">
+          <map name="Map1177C" id="Map1177C">
+            <area shape="rect" coords="486,352,679,398" href="{{ site_url('/pass/promotion/index/cate/3010/code/1170') }}" target="_blank" title="더 많은 수기 확인하기"/>
           </map>
             <div class="bannerimg">
               <ul id="slidesImg2">

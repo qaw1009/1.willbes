@@ -144,27 +144,27 @@
             <div class="download">		
                 <!--국어-->
                 <span>
-                    <a href="{{front_url('/promotion/download?file_idx=').$file_data_promotion[0]['EfIdx'].'&event_idx='.$data['ElIdx'] }}">다운로드</a>
+                    <a href="javascript:alert('준비중입니다.')">다운로드</a>
                 </span>
 
                 <!--영어-->
                 <span>
-                    <a href="{{front_url('/promotion/download?file_idx=').$file_data_promotion[1]['EfIdx'].'&event_idx='.$data['ElIdx'] }}">다운로드</a>
+                    <a href="javascript:alert('준비중입니다.')">다운로드</a>
                 </span>
                     
                 <!--한국사-->
                 <span>
-                    <a href="{{front_url('/promotion/download?file_idx=').$file_data_promotion[2]['EfIdx'].'&event_idx='.$data['ElIdx'] }}">다운로드</a>
+                    <a href="javascript:alert('준비중입니다.')">다운로드</a>
                 </span>
     
                 <!--행정법-->
                 <span>
-                    <a href="{{front_url('/promotion/download?file_idx=').$file_data_promotion[3]['EfIdx'].'&event_idx='.$data['ElIdx'] }}">다운로드</a>
+                    <a href="javascript:alert('준비중입니다.')">다운로드</a>
                 </span>
                     
                 <!--행정학-->
                 <span>
-                    <a href="{{front_url('/promotion/download?file_idx=').$file_data_promotion[4]['EfIdx'].'&event_idx='.$data['ElIdx'] }}">다운로드</a>
+                    <a href="javascript:alert('준비중입니다.')">다운로드</a>
                 </span>
                 <img src="https://static.willbes.net/public/images/promotion/2019/03/1140_01_1.jpg" title="풀캐어 강사진" />            
             </div>
@@ -1245,7 +1245,6 @@
                         $content.show();
                     }
                     else {
-                        // 와...양아치네 4월 6일 토요일인데..오전 11:30분에 오픈하래서 프로그래밍 처리함
                         alert('4월 6일 공개됩니다.');
                     }
                     e.preventDefault();
@@ -1253,8 +1252,6 @@
                 }
 
             }
-            /////////
-
             })})}
         );
 

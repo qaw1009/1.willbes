@@ -417,17 +417,6 @@
 
             <!--직원훈련비 신청절차 팝업-->
             <div id="popup2" class="Pstyle">
-                <span class="b-close">창닫기</span>
-                <div class="fpcontent">
-                    <h3><img src="http://file3.willbes.net/new_gosi/2017/01/leaveArmyP02.png" alt="직업훈련비 신청절차"/></h3>
-                    <div class="fpcontentinfo1">
-                        <img src="http://file3.willbes.net/new_gosi/2019/leave_army/leaveArmyP03.jpg" alt="직업훈련비 신청절차"/>
-                    </div>
-                </div>
-            </div><!--직원훈련비 신청절차 팝업//-->
-
-
-            <div id="popup2" class="Pstyle">
                 <span class="b-close"><img src="http://file3.willbes.net/new_gosi/2017/01/btn_close.jpg" alt="창닫기"/></span>
                 <div class="fpcontent">
                     <h3><img src="http://file3.willbes.net/new_gosi/2017/01/leaveArmyP02.png" alt="직업훈련비 신청절차"/></h3>

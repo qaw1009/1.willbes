@@ -167,15 +167,7 @@
 		</div>
 
 		<div class="wb_05" id="evt">
-			<img src="https://static.willbes.net/public/images/promotion/2019/03/1175_p6.png" alt="무료응시+소문내기" usemap="#Map190115"/>
-              <map name="Map190115" >
-                <!--area shape="rect" coords="443,981,682,1057" href="#" onFocus="this.blur();" target="_blank" alt="쿠폰받기"/-->
-
-                <area shape="rect" coords="186,1479,327,1543" href="http://cafe.daum.net/policeacademy" onFocus="this.blur();" target="_blank" alt="다음카페 경시모"/>
-                <area shape="rect" coords="358,1479,511,1543" href="http://cafe.naver.com/polstudy" onFocus="this.blur();" target="_blank" alt="네이버카페 경꿈사"/>
-                <area shape="rect" coords="543,1479,707,1543" href="http://gall.dcinside.com/board/lists/?id=government"  onFocus="this.blur();" target="_blank" alt="디시공갤"/>
-                <area shape="rect" coords="739,1479,938,1543" href="http://gall.dcinside.com/mgallery/board/lists/?id=policeofficer" onFocus="this.blur();" target="_blank" alt="디시순경마이너갤"/>
-              </map>
+			<img src="https://static.willbes.net/public/images/promotion/2019/03/1175_p6_1.png" alt="무료응시+소문내기" usemap="#Map190115"/>
 		</div>
 
         @include('html.event_replyUrl')
@@ -183,7 +175,7 @@
         <div class="wb_06" id="go">
 			<img src="https://static.willbes.net/public/images/promotion/2019/03/1175_p7.png"  alt="접수하기" usemap="#go"/>
 			<map name="go">
-				<area shape="rect" coords="438,436,750,529" href="/mouigosa/request/list.html?topMenuType=F&topMenuGnb=FM_004&topMenu=MAIN&menuID=FM_004_002_002&topMenuName=수험연구소&BOARDTYPE=4&INCTYPE=list" onfocus='this.blur()' alt="접수하기" target="_self"/>
+				<area shape="rect" coords="438,436,750,529" href="#none" alt="접수하기" target="_self"/>
 			</map>
         </div>
         

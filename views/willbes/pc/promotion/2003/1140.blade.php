@@ -113,25 +113,25 @@
         <div class="evtCtnsBox evtMenu NG" id="evtMenu">                
             <ul>
                 <li>
-                    <a href="#tab1">
+                    <a title='tab1' href="#tab1">
                         <span>합격을 위한</span>
                         <div>최종 마무리 전략</div>
                     </a>
                 </li>
                 <li>                    
-                    <a href="#tab2">
+                    <a title='tab2' href="#tab2">
                         <span>전년도 국가직 9급</span>
                         <div>완벽분석</div>				
                     </a>
                 </li>
                 <li>
-                    <a href="#tab3">
+                    <a title='tab3' href="#tab3">
                         <span>2019 국가직 9급</span>
                         <div>시험총평 및 시험후기 준비중</div>
                     </a>
                 </li>     
                 <li>
-                    <a href="#tab4">    
+                    <a title='tab4' href="#tab4">
                         <span>2019 국가직 9급</span>
                         <div>기출해설강의 준비중</div>
                     </a>
@@ -144,27 +144,27 @@
             <div class="download">		
                 <!--국어-->
                 <span>
-                    <a href="javascript:alert('준비중');">다운로드</a>
+                    <a href="{{front_url('/promotion/download?file_idx=').$file_data_promotion[0]['EfIdx'].'&event_idx='.$data['ElIdx'] }}">다운로드</a>
                 </span>
 
                 <!--영어-->
                 <span>
-                    <a href="javascript:alert('준비중);">다운로드</a>
+                    <a href="{{front_url('/promotion/download?file_idx=').$file_data_promotion[1]['EfIdx'].'&event_idx='.$data['ElIdx'] }}">다운로드</a>
                 </span>
                     
                 <!--한국사-->
                 <span>
-                    <a href="javascript:alert('준비중');">다운로드</a>
+                    <a href="{{front_url('/promotion/download?file_idx=').$file_data_promotion[2]['EfIdx'].'&event_idx='.$data['ElIdx'] }}">다운로드</a>
                 </span>
     
                 <!--행정법-->
                 <span>
-                    <a href="javascript:alert('준비중');">다운로드</a>
+                    <a href="{{front_url('/promotion/download?file_idx=').$file_data_promotion[3]['EfIdx'].'&event_idx='.$data['ElIdx'] }}">다운로드</a>
                 </span>
                     
                 <!--행정학-->
                 <span>
-                    <a href="javascript:alert('준비중');">다운로드</a>
+                    <a href="{{front_url('/promotion/download?file_idx=').$file_data_promotion[4]['EfIdx'].'&event_idx='.$data['ElIdx'] }}">다운로드</a>
                 </span>
                 <img src="https://static.willbes.net/public/images/promotion/2019/03/1140_01_1.jpg" title="풀캐어 강사진" />            
             </div>
@@ -1179,35 +1179,88 @@
     </div>
     <!-- End Container --> 
 
-    <script type="text/javascript">	
+    <script type="text/javascript">
+        var env = "{{ ENVIRONMENT }}";
+
+        var now = new Date();
+        var todayAtMidn = new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours(), now.getMinutes());
+
+        // Set start/end dates to a specified date (ISO format).
+        var startDate = new Date("2019-04-06T02:30:00Z");
+        var endDate = new Date("2099-06-09T15:20:00Z");
+
         /*tab*/
         $(document).ready(function(){
         $('.evtMenu ul').each(function(){
             var $active, $content, $links = $(this).find('a');
             $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
             $active.addClass('active');
-        
+
             $content = $($active[0].hash);
-        
+
+
             $links.not($active).each(function () {
-            $(this.hash).hide()});
+            $(this.hash).hide()
+            });
         
             // Bind the click event handler
             $(this).on('click', 'a', function(e){
-            $active.removeClass('active');
-            $content.hide();
-        
-            $active = $(this);
-            $content = $(this.hash);
-        
-            $active.addClass('active');
-            $content.show();
-        
-            e.preventDefault()})})}
-        );        
+            if(env == 'local'){
+                $active.removeClass('active');
+                $content.hide();
+
+                $active = $(this);
+                $content = $(this.hash);
+
+                $active.addClass('active');
+                $content.show();
+
+                e.preventDefault();
+            } else {
+
+                if($(this).attr('title') == 'tab1' || $(this).attr('title') == 'tab2'){
+                    $active.removeClass('active');
+                    $content.hide();
+
+                    $active = $(this);
+                    $content = $(this.hash);
+
+                    $active.addClass('active');
+                    $content.show();
+
+                    e.preventDefault();
+                } else {
+                    // Compare the two dates by comparing the millisecond
+                    // representations.
+                    if (todayAtMidn.getTime() > startDate.getTime() &&
+                        todayAtMidn.getTime() < endDate.getTime()) {
+
+                        $active.removeClass('active');
+                        $content.hide();
+
+                        $active = $(this);
+                        $content = $(this.hash);
+
+                        $active.addClass('active');
+                        $content.show();
+                    }
+                    else {
+                        // 와...양아치네 4월 6일 토요일인데..오전 11:30분에 오픈하래서 프로그래밍 처리함
+                        alert('4월 6일 공개됩니다.');
+                    }
+                    e.preventDefault();
+
+                }
+
+            }
+
+
+            })})}
+        );
 
         function pullOpen(){
             window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
         }
+
     </script>
 @stop

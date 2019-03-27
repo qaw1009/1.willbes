@@ -152,6 +152,7 @@
                 
                 
                 <li><p>경찰 학원 ▼</p></li> 
+                <li class="w50"><a href="{{ site_url('/home/html/1177') }}" target="_blank">김원욱 형법</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/1170') }}" target="_blank">필기고득점자 인터뷰</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_offCop_190211_p') }}" target="_blank">19년 1차대비 2월 전국모의고사</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/event_offCop_basic') }}" target="_blank">2019 집중연강식 기본이론</a></li>

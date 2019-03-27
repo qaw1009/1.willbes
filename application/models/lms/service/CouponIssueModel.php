@@ -49,7 +49,7 @@ class CouponIssueModel extends WB_Model
 
             if ($is_count == 'excel') {
                 $column = 'CouponPin, concat(MemName, " (", MemId, ")") as MemName, concat(Phone, " (", SmsRcvStatus, ")") as Phone, concat(CouponName, " [", CouponIdx, "]") as CouponName
-                    , IssueTypeName, concat(left(IssueDatm, 10), " (", IssueUserName, ")") as IssueDatm, concat(ValidStatus, " (", left(ExpireDatm, 10), ")") as ValidStatus
+                    , IssueTypeName, concat(left(IssueDatm, 10), " (", IssueUserName, ")") as IssueDatm, concat(ValidStatusName, " (", left(ExpireDatm, 10), ")") as ValidStatusName
                     , if(IsUse = "Y", concat("사용 (", left(UseDatm, 10), ")"), "미사용") as IsUse, if(IsUse = "Y", concat(ProdName, " (", OrderNo, ")"), "") as ProdName
                     , if(RetireDatm is not null, concat(left(RetireDatm, 10), " (", RetireUserName, ")"), "") as RetireDatm    
                 ';
@@ -71,13 +71,15 @@ class CouponIssueModel extends WB_Model
                 , concat(ifnull(P.ProdName, ""), if(P.ProdCode is not null and P.IsStatus = "N", " (삭제)", "")) as ProdName
                 , ifnull(O.OrderNo, "") as OrderNo
                 , SC.CcdName as IssueTypeName
-                , (case when now() between CD.IssueDatm and CD.ExpireDatm and CD.ValidStatus = "Y" then "유효"
-                        when now() > CD.ExpireDatm then "만료"
+                , CD.ValidStatus
+                , (case when CD.IsUse = "Y" then "사용" 
+                        when now() between CD.IssueDatm and CD.ExpireDatm and CD.ValidStatus = "Y" then "유효"                        
                         when CD.ValidStatus = "N" then "비유효"
                         when CD.ValidStatus = "R" then "회수"
                         when CD.ValidStatus = "C" then "취소"
+                        when now() > CD.ExpireDatm then "만료"                        
                         else CD.ValidStatus			
-                  end) as ValidStatus
+                  end) as ValidStatusName
                 , if(CD.IssueUserType = "M", M.MemId, AI.wAdminId) as IssueUserId
                 , if(CD.IssueUserType = "M", M.MemName, AI.wAdminName) as IssueUserName
                 , if(CD.RetireUserType = "M", M.MemName, AR.wAdminName) as RetireUserName
@@ -355,6 +357,8 @@ class CouponIssueModel extends WB_Model
             $reg_ip = $this->input->ip_address();
 
             foreach ($params as $coupon_idx => $cd_idx) {
+                $coupon_idx = str_first_pos_before($coupon_idx, '::');
+
                 // 사용자 쿠폰 회수
                 $this->_conn->set('RetireDatm', 'NOW()', false);
                 $this->_conn->set(['ValidStatus' => 'R', 'RetireUserType' => 'A', 'RetireUserIdx' => $admin_idx, 'RetireIp' => $reg_ip]);

@@ -62,12 +62,13 @@ function fnMobile($info_url, $license)
  * @param $url
  * @param $data
  */
-function fnApp($url, $data)
+function fnApp($url, $data, $subpage)
 {
     sendAjax($url, $data,
         function(d){
             var media = null;
             media = d.ret_data;
+            media['subpage'] = $subpage;
             app.streaming(media);
         },
         function(ret, status){

@@ -35,8 +35,7 @@ class MockTest extends \app\controllers\FrontController
     {
         $applyType = $this->codeModel->getCcd('675');
 
-        $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
-
+        $arr_input = array_merge($this->_reqP(null));
         $s_type = element('s_type',$arr_input);
         $s_keyword = element('s_keyword',$arr_input);
         $get_page_params = 's_type='.$s_type.'&s_keyword='.$s_keyword;

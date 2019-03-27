@@ -98,8 +98,8 @@
             <div id="ddaytime">
                 <ul>
                     <li>
-                    <span style="line-height:20px;font-size:16pt;">2019년 4월</span><br />
-                    <span style="line-height:40px;font-size:22pt;color:#000">실전빅매치2 모의고사</span>
+                    2019년 4월<br />
+                    <span>실전빅매치2 모의고사</span>
                     </li>
                     <li><img id="dd1" src="http://file.willbes.net/new_image/0.png" /></li>
                     <li><img id="dd2" src="http://file.willbes.net/new_image/0.png" /></li>

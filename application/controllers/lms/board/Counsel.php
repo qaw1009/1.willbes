@@ -460,6 +460,7 @@ class Counsel extends BaseBoard
         $this->bm_idx = $board_params['bm_idx'];
 
         $rules = [
+            ['field' => 'reply_status_ccd', 'label' => '답변상태', 'rules' => 'trim|required'],
             ['field' => 'voc_ccd', 'label' => 'VOC 강도', 'rules' => 'trim|required'],
             ['field' => 'reply_contents', 'label' => '답변 내용', 'rules' => 'trim|required'],
         ];

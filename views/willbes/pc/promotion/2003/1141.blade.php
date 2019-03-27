@@ -319,8 +319,6 @@
                             }
                         }
                     }
-
-                $live_type = 'on';
                 @endphp
 
                  @if ($live_type == 'standby')

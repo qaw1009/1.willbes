@@ -60,7 +60,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <th colspan="1">OFF(학원) 응시지역2 <span class="required">*</span></th>
+                        <th colspan="1">OFF(학원) 응시지역2 </th>
                         <td colspan="3">
                             @foreach($applyArea2 as $k => $v)
                                 <input type="checkbox" class="flat" name="TakeAreas2Ccds[]" value="{{$k}}" @if($method == 'PUT' && in_array($k, $data['TakeAreas2Ccds'])) checked @endif> <span class="flat-text mr-20">{{$v}}</span>

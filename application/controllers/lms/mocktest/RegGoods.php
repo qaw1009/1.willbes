@@ -91,9 +91,6 @@ class RegGoods extends \app\controllers\BaseController
         } else if($s_type == 2) {
             $searchdate1 = '(PD.SaleStartDatm < "';
             $searchdate2 = date('Y-m-d H:i:s') . '" AND PD.SaleEndDatm > "' . date('Y-m-d H:i:s') . '")';
-        } else if($s_type == 3){
-            $searchdate1 = '(PD.SaleEndDatm < "';
-            $searchdate2 = date('Y-m-d H:i:s') . '")';
         } else {
             $searchdate1 = '1';
             $searchdate2 = '1';

@@ -47,7 +47,6 @@
                             <option value="">접수상태</option>
                             <option value="1">접수대기</option>
                             <option value="2">접수중</option>
-                            <option value="3">접수마감</option>
                         </select>
                         <!--select class="form-control mr-5" id="search_TakeType" name="search_TakeType">
                             <option value="">응시기간</option>

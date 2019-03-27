@@ -73,18 +73,17 @@
         .content_guide_box dd p.guide_txt_01{margin:5px 0 5px 15px}
 
         /*타이머*/
-        #newTopDday * {font-family:'Noto Sans KR', Arial, Sans-serif; font-size:24px;}
-        #newTopDday { clear:both;background:#f5f5f5; width:100%; padding:20px 0}
-        #newTopDday ul {width:1210px; margin:0 auto}
-        #newTopDday ul li {display:inline; float:left; margin-right:5px; text-align:center; height:60px; padding-top:10px !important; font-weight:600; color:#000}
-        #newTopDday ul li strong {line-height:70px}
-        #newTopDday ul li img {width:50px}
-        #newTopDday ul li:first-child {line-height:none; text-align:right; padding-right:20px; width:28%}
-        #newTopDday ul li:first-child span {font-size:12px; color:#999;margin-top:4px;}
-        #newTopDday ul li:last-child {line-height:none;  text-align:left; padding-left:20px; width:24%}
-        #newTopDday ul li:last-child a {display:inline-block; font-size:14px; padding:4px 20px; background:#999; color:#FFF; text-align:center; border-radius:20px}
-        #newTopDday ul li:last-child a:hover {background:#666}
-        #newTopDday ul:after {content:""; display:block; clear:both}
+        .newTopDday {clear:both;background:#f5f5f5; width:100%; padding:20px 0; font-size:26px;}
+        .newTopDday ul {width:1120px; margin:0 auto}
+        .newTopDday ul li {display:inline; float:left; margin-right:5px; text-align:center; font-weight:600; color:#000}
+        .newTopDday ul li strong {line-height:70px}
+        .newTopDday ul li img {width:50px}
+        .newTopDday ul li:first-child {line-height:none; text-align:right; padding-right:10px; padding-top:10px; width:28%}
+        .newTopDday ul li:first-child div {font-size:14px; color:#999;margin:5px 0; font-weight:normal;}
+        .newTopDday ul li:last-child {line-height:none; text-align:left; padding-left:10px; width:24%}
+        .newTopDday ul li:last-child a {display:inline-block; font-size:14px; padding:4px 20px; background:#999; color:#FFF; text-align:center; border-radius:20px}
+        .newTopDday ul li:last-child a:hover {background:#666}
+        .newTopDday ul:after {content:""; display:block; clear:both}
 
     </style>
 
@@ -98,8 +97,8 @@
             <div id="ddaytime">
                 <ul>
                     <li>
-                    <span style="line-height:20px;font-size:16pt;">2019년 4월</span><br />
-                    <span style="line-height:40px;font-size:22pt;color:#000">실전빅매치2 모의고사</span>
+                        <div>2019년 4월</div>
+                        실전빅매치2 모의고사
                     </li>
                     <li><img id="dd1" src="http://file.willbes.net/new_image/0.png" /></li>
                     <li><img id="dd2" src="http://file.willbes.net/new_image/0.png" /></li>
@@ -113,8 +112,8 @@
                     <li><img id="ss1" src="http://file.willbes.net/new_image/0.png" /></li>
                     <li><img id="ss2" src="http://file.willbes.net/new_image/0.png" /></li>
                     <li>
-                    <a href="#go" target="_self">신청하기 &gt;</a><br />
-                    <span style="line-height:40px;">4.12(금) 18:00 마감!</span>
+                        <div class="mb10"><a href="#go" target="_self">신청하기 &gt;</a><div>
+                        <div>4.12(금) 18:00 마감!</div>
                     </li>
                 </ul>
             </div>

@@ -269,7 +269,7 @@ class RegGoods extends \app\controllers\BaseController
 
             ['field' => 'TakeFormsCcd', 'label' => '응시형태', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'TakeAreas1CCds[]', 'label' => 'Off(학원)응시지역1', 'rules' => 'trim|is_natural_no_zero'],
-            ['field' => 'TakeAreas2Ccds[]', 'label' => 'Off(학원)응시지역2', 'rules' => 'trim|is_natural_no_zero'],
+            //['field' => 'TakeAreas2Ccds[]', 'label' => 'Off(학원)응시지역2', 'rules' => 'trim|is_natural_no_zero'],
             ['field' => 'AddPointCcds[]', 'label' => '가산점', 'rules' => 'trim|required|is_natural'],
             ['field' => 'MockYear', 'label' => '연도', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'MockRotationNo', 'label' => '회차', 'rules' => 'trim|required|is_natural_no_zero'],
@@ -348,7 +348,7 @@ class RegGoods extends \app\controllers\BaseController
         // 응시형태 OFF 포함인 경우 응시지역, 접수마감인원 필수
         //if( in_array($this->applyType_off, $this->input->post('TakeFormsCcd')) ) {
         if( $this->applyType_off == $this->input->post('TakeFormsCcd') ) {
-            if( !$this->input->post('TakeAreas1CCds') || !$this->input->post('TakeAreas2Ccds') || !$this->input->post('ClosingPerson') ) {
+            if( !$this->input->post('TakeAreas1CCds') || !$this->input->post('ClosingPerson') ) {
                 $this->json_error('응시형태 OFF(학원)선택시 응시지역, 접수마감인원은 필수입니다.');
                 return;
             }
@@ -462,7 +462,7 @@ class RegGoods extends \app\controllers\BaseController
         $rules = [
             ['field' => 'TakeFormsCcd[]', 'label' => '응시형태', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'TakeAreas1CCds[]', 'label' => 'Off(학원)응시지역1', 'rules' => 'trim|is_natural_no_zero'],
-            ['field' => 'TakeAreas2Ccds[]', 'label' => 'Off(학원)응시지역2', 'rules' => 'trim|is_natural_no_zero'],
+            //['field' => 'TakeAreas2Ccds[]', 'label' => 'Off(학원)응시지역2', 'rules' => 'trim|is_natural_no_zero'],
             ['field' => 'AddPointCcds[]', 'label' => '가산점', 'rules' => 'trim|required|is_natural'],
             ['field' => 'MockYear', 'label' => '연도', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'MockRotationNo', 'label' => '회차', 'rules' => 'trim|required|is_natural_no_zero'],
@@ -546,7 +546,7 @@ class RegGoods extends \app\controllers\BaseController
         // 응시형태 OFF 포함인 경우 응시지역, 접수마감인원 필수
         //if( in_array($this->applyType_off, $this->input->post('TakeFormsCcd')) ) {
         if( $this->applyType_off == $this->input->post('TakeFormsCcd') ) {
-            if( !$this->input->post('TakeAreas1CCds') || !$this->input->post('TakeAreas2Ccds') || !$this->input->post('ClosingPerson') ) {
+            if( !$this->input->post('TakeAreas1CCds') || !$this->input->post('ClosingPerson') ) {
                 $this->json_error('응시형태 OFF(학원)선택시 응시지역, 접수마감인원은 필수입니다.');
                 return;
             }

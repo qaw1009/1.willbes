@@ -82,9 +82,9 @@
                                             <td class="w-price">@if(empty($sales_info)==false){{ number_format($sales_info[0]['RealSalePrice'],0)}}원@endif</td>
                                             <td class="w-day">{{$row['SaleStartDatm']}}~<br/>{{$row['SaleEndDatm']}}</td>
                                             <td class="w-state">
-                                                @if($row['SaleStartDatm'] > date('Y-m-d h:i:s'))
+                                                @if($row['SaleStartDatm'] > date('Y-m-d H:i:s'))
                                                     접수대기
-                                                @elseif($row['SaleStartDatm'] < date('Y-m-d h:i:s') && $row['SaleEndDatm'] > date('Y-m-d h:i:s'))
+                                                @elseif($row['SaleStartDatm'] < date('Y-m-d H:i:s') && $row['SaleEndDatm'] > date('Y-m-d H:i:s'))
                                                     접수중
                                                 @else
                                                     접수마감

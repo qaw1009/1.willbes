@@ -1138,11 +1138,11 @@
 
             <div><img src="https://static.willbes.net/public/images/promotion/2019/03/1140_03_2.jpg" title="시험후기 댓글 이벤트" /></div>
 
-            @include('html.event_replyEvaluate')
+            {{--@include('html.event_replyEvaluate')--}}
 
             <div class="mt100"><img src="https://static.willbes.net/public/images/promotion/2019/03/1140_03_3.jpg" title="소름돋는 적중" /> </div>
 
-            @include('html.event_replyNotice')
+            {{--@include('html.event_replyNotice')--}}
 
         </div>
 

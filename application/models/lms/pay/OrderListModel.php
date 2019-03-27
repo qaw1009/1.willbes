@@ -287,7 +287,7 @@ class OrderListModel extends BaseOrderModel
                 }
                 $column .= ', OPR.RefundIdx, OPR.RefundReqIdx, ifnull(OPR.RefundPrice, 0) as RefundPrice, ifnull(OPR.CardRefundPrice, 0) as CardRefundPrice, ifnull(OPR.CashRefundPrice, 0) as CashRefundPrice 
                     , OPR.IsPointRefund, OPR.RecoPointIdx, OPR.IsCouponRefund, OPR.RecoCouponIdx
-                    , OPR.RefundDatm, AR.wAdminName as RefundAdminName, ORR.RefundReason, ORR.RefundMemo, ORR.IsApproval, ORR.RefundType';
+                    , OPR.RefundDatm, AR.wAdminName as RefundAdminName, ORR.RefundReason, ORR.IsApproval, ORR.RefundType';
                 $excel_column .= ', OPR.RefundPrice, OPR.RefundDatm, AR.wAdminName as RefundAdminName';
             }
 
@@ -501,6 +501,32 @@ class OrderListModel extends BaseOrderModel
 
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from, [$order_prod_idx]);
+
+        return $query->row_array();
+    }
+
+    /**
+     * 주문환불요청 정보 조회
+     * @param $order_idx
+     * @param $refund_req_idx
+     * @return mixed
+     */
+    public function findOrderRefundRequest($order_idx, $refund_req_idx)
+    {
+        $column = 'ORR.RefundReqIdx, ORR.RefundType, ORR.RefundBankCcd, ORR.RefundAccountNo, ORR.RefundDepositName, ORR.RefundReason, ORR.RefundMemo
+            , ORR.IsApproval, ORR.RefundReqDatm, ORR.RefundReqUpdDatm
+            , ARR.wAdminName as RefundReqAdminName, ARRU.wAdminName as RefundReqUpdAdminName';
+
+        $from = '
+            from ' . $this->_table['order_refund_request'] . ' as ORR
+                left join ' . $this->_table['admin'] . ' as ARR
+                    on ORR.RefundReqAdminIdx = ARR.wAdminIdx and ARR.wIsStatus = "Y"
+                left join ' . $this->_table['admin'] . ' as ARRU
+                    on ORR.RefundReqUpdAdminIdx = ARRU.wAdminIdx and ARRU.wIsStatus = "Y"
+            where ORR.RefundReqIdx = ? and ORR.OrderIdx = ?';
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from, [$refund_req_idx, $order_idx]);
 
         return $query->row_array();
     }

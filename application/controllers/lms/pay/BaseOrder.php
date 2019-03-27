@@ -7,6 +7,7 @@ class BaseOrder extends \app\controllers\BaseController
     protected $helpers = array();
     protected $_order_type = '';
     protected $_group_ccd = array();
+    private $_is_refund = false;
     private $_is_refund_proc = false;
     private $_memory_limit_size = '512M';     // 엑셀파일 다운로드 메모리 제한 설정값
 
@@ -16,6 +17,7 @@ class BaseOrder extends \app\controllers\BaseController
 
         $this->_order_type = strtolower($this->router->class);
         $this->_group_ccd = $this->orderListModel->_group_ccd;
+        $this->_is_refund = starts_with($this->_order_type, 'refund');
         $this->_is_refund_proc = $this->_order_type == 'refundproc' ? true : false;
     }
 
@@ -69,8 +71,8 @@ class BaseOrder extends \app\controllers\BaseController
 
         foreach ($data as $idx => $row) {
             if ($row['PayStatusCcd'] == $this->orderListModel->_pay_status_ccd['refund']) {
-                // 환불내역 데이터 가공 (환불처리에서만 사용)
-                if ($this->_is_refund_proc === true) {
+                // 환불내역 데이터 가공 (환불 관련 메뉴에서만 사용)
+                if ($this->_is_refund === true) {
                     $refund_data[$row['RefundReqIdx']]['ProdTypeCcdName'][] = $row['ProdTypeCcdName'];
                     $refund_data[$row['RefundReqIdx']]['LearnPatternCcdName'][] = $row['LearnPatternCcdName'];
                     $refund_data[$row['RefundReqIdx']]['ProdName'][] = $row['ProdName'];
@@ -144,6 +146,7 @@ class BaseOrder extends \app\controllers\BaseController
                 'mem_point' => $point_data
             ],
             '_order_type' => $this->_order_type,
+            '_is_refund' => $this->_is_refund,
             '_is_refund_proc' => $this->_is_refund_proc,
             '_is_refund_data' => $is_refund_data,
             '_prod_type_ccd' => $this->orderListModel->_prod_type_ccd,

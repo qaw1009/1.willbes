@@ -83,13 +83,26 @@ class RegGoods extends \app\controllers\BaseController
         ];
         if ($this->validate($rules) === false) return;
 
+        $s_type = $this->input->post('search_AcceptStatus');
+
+        if($s_type == 1){
+            $searchdate1 = '(PD.SaleStartDatm > "';
+            $searchdate2 = date('Y-m-d H:i:s') . '")';
+        } else if($s_type == 2) {
+            $searchdate1 = '(PD.SaleStartDatm < "';
+            $searchdate2 = date('Y-m-d H:i:s') . '" AND PD.SaleEndDatm > "' . date('Y-m-d H:i:s') . '")';
+        } else {
+            $searchdate1 = '(PD.SaleEndDatm < "';
+            $searchdate2 = date('Y-m-d H:i:s') . '")';
+        }
+
         $condition = [
             'EQ' => [
                 'PD.SiteCode' => $this->input->post('search_site_code'),
                 'PC.CateCode' => $this->input->post('search_cateD1'),
                 'MP.MockYear' => $this->input->post('search_year'),
                 'MP.MockRotationNo' => $this->input->post('search_round'),
-                'MP.AcceptStatusCcd' => $this->input->post('search_AcceptStatus'),
+                //'MP.AcceptStatusCcd' => $this->input->post('search_AcceptStatus'),
                 'MP.TakeType' => $this->input->post('search_TakeType'),
                 'PD.IsUse' => $this->input->post('search_use'),
             ],
@@ -106,6 +119,7 @@ class RegGoods extends \app\controllers\BaseController
                     'PS.RealSalePrice' => $this->input->post('search_fi', true),
                 ]
             ],
+            'RAW' => [ $searchdate1 => $searchdate2 ],
         ];
         list($data, $count) = $this->regGoodsModel->mainList($condition, $this->input->post('length'), $this->input->post('start'));
 

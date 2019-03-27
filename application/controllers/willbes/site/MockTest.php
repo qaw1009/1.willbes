@@ -47,9 +47,12 @@ class MockTest extends \app\controllers\FrontController
         } else if($s_type == 2) {
             $searchdate1 = '(pm.SaleStartDatm < "';
             $searchdate2 = date('Y-m-d H:i:s') . '" AND pm.SaleEndDatm > "' . date('Y-m-d H:i:s') . '")';
-        } else {
+        } else if($s_type == 3) {
             $searchdate1 = '(pm.SaleEndDatm < "';
             $searchdate2 = date('Y-m-d H:i:s') . '")';
+        } else {
+            $searchdate1 = '1=';
+            $searchdate2 = '1';
         }
 
         $arr_condition = [

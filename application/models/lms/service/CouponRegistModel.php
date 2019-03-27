@@ -22,7 +22,7 @@ class CouponRegistModel extends WB_Model
     ];
     public $_coupon_type_ccd = ['coupon' => '644001', 'voucher' => '644002'];   // 쿠폰유형 (할인권, 수강권)
     public $_apply_type_to_lec_ccds = ['645001', '645002', '645003', '645004']; // 온라인강좌, 수강연장, 배수, 학원강좌
-    public $_apply_type_to_range_ccds = ['645001', '645002', '645003', '645004', '645005']; // 온라인강좌, 수강연장, 배수, 학원강좌, 교재
+    public $_apply_type_to_range_ccds = ['645001', '645002', '645003', '645004', '645005', '645007']; // 온라인강좌, 수강연장, 배수, 학원강좌, 교재, 모의고사
     public $_apply_type_to_mock_ccd = '645007'; // 모의고사
 
     public function __construct()
@@ -252,11 +252,7 @@ class CouponRegistModel extends WB_Model
             $pin_issue_cnt = ($deploy_type == 'F') ? element('pin_issue_cnt', $input) : 0;
             $apply_type_ccd = element('apply_type_ccd', $input);
             $lec_type_ccd = (in_array($apply_type_ccd, $this->_apply_type_to_lec_ccds) === true) ? implode(',', element('lec_type_ccd', $input)) : '';
-            if (in_array($apply_type_ccd, $this->_apply_type_to_range_ccds) === true) {
-                $apply_range_type = element('apply_range_type', $input, 'A');
-            } else {
-                $apply_range_type = $apply_type_ccd === $this->_apply_type_to_mock_ccd ? 'P' : 'A';
-            }
+            $apply_range_type = (in_array($apply_type_ccd, $this->_apply_type_to_range_ccds) === true) ? element('apply_range_type', $input, 'A') : 'A';
             $apply_school_year = ($apply_range_type == 'I') ? element('apply_school_year', $input) : '';
             $apply_subject_idx = ($apply_range_type == 'I') ? element('apply_subject_idx', $input) : '';
             $apply_course_idx = ($apply_range_type == 'I') ? element('apply_course_idx', $input) : '';

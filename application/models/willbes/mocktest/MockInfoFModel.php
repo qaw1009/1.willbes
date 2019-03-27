@@ -91,6 +91,7 @@ class MockInfoFModel extends WB_Model
         }
    
         $result = $this->_conn->getListResult($this->_table['mock_product'].' AS pm', $column, $arr_condition, $limit, $offset, $order_by);
+        //echo "<!--".$this->_conn->last_query() .'//-->';
         return $result;
     }
 

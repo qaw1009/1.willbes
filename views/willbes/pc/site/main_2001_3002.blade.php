@@ -168,12 +168,12 @@
                         <a href="#none" onclick="fnPlayerSample('131812', '1014607', 'HD');">OT보기 &gt;</a>
                     </li>
                 </ul>
-                {{--
+                
                 <div class="curriculumTxt">
                     <span class="cop-color">모든 강의</span>를 평생 0원 PASS 하나로 <span class="cop-color">평생 수강</span>하실 수 있습니다.
                     <span class="btn"><a href="{{ site_url('/promotion/index/cate/3001/code/1009') }}">평생 0원 PASS 구매하기</a></span>
                 </div>
-                --}}
+                
             </div>
             <!-- CurriStepBox //-->
         </div>

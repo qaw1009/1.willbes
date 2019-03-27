@@ -333,7 +333,7 @@
                                 <script type="text/javascript">
                                         jwplayer("myElement").setup({
                                         width: '100%',
-                                        logo: {file: 'http://file3.willbes.net/new_cop/2018/07/cop_bi.png'},
+                                        logo: {file: 'https://static.willbes.net/public/images/promotion/common/live_pass_bi.png'},
                                         image: "http://file3.willbes.net/new_gosi/2019/03/EV190319_live_vod_off.png",
                                         aspectratio: "16:9",
                                         autostart: "true",

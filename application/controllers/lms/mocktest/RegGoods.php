@@ -89,7 +89,7 @@ class RegGoods extends \app\controllers\BaseController
                 'PC.CateCode' => $this->input->post('search_cateD1'),
                 'MP.MockYear' => $this->input->post('search_year'),
                 'MP.MockRotationNo' => $this->input->post('search_round'),
-                //'MP.AcceptStatusCcd' => $this->input->post('search_AcceptStatus'),
+                'MP.AcceptStatusCcd' => $this->input->post('search_AcceptStatus'),
                 'MP.TakeType' => $this->input->post('search_TakeType'),
                 'PD.IsUse' => $this->input->post('search_use'),
             ],
@@ -466,7 +466,7 @@ class RegGoods extends \app\controllers\BaseController
             ['field' => 'SaleEndDatm_m', 'label' => '접수마감(분)', 'rules' => 'trim|required|numeric'],
 
             ['field' => 'ClosingPerson', 'label' => '접수마감인원', 'rules' => 'trim|is_natural_no_zero'],
-            //['field' => 'AcceptStatusCcd', 'label' => '접수상태', 'rules' => 'trim'],
+            ['field' => 'AcceptStatusCcd', 'label' => '접수상태', 'rules' => 'trim'],
             //['field' => 'TakeType', 'label' => '응시가능타입', 'rules' => 'trim|required|in_list[A,L]'],
             ['field' => 'TakeStartDatm_d', 'label' => '응시시작일', 'rules' => 'trim'],
             ['field' => 'TakeStartDatm_h', 'label' => '응시시작(시)', 'rules' => 'trim|numeric'],

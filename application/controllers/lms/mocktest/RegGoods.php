@@ -89,7 +89,7 @@ class RegGoods extends \app\controllers\BaseController
                 'PC.CateCode' => $this->input->post('search_cateD1'),
                 'MP.MockYear' => $this->input->post('search_year'),
                 'MP.MockRotationNo' => $this->input->post('search_round'),
-                //'MP.AcceptStatusCcd' => $this->input->post('search_AcceptStatus'),
+                'MP.AcceptStatusCcd' => $this->input->post('search_AcceptStatus'),
                 'MP.TakeType' => $this->input->post('search_TakeType'),
                 'PD.IsUse' => $this->input->post('search_use'),
             ],
@@ -290,7 +290,7 @@ class RegGoods extends \app\controllers\BaseController
 
             ['field' => 'IsSms', 'label' => '문자사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => 'Memo', 'label' => '문자내용', 'rules' => 'trim'],
-            ['field' => 'SendTel', 'label' => '문자발신번호', 'rules' => 'trim'],
+            //['field' => 'SendTel', 'label' => '문자발신번호', 'rules' => 'trim'],
 
             ['field' => 'IsUse', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
@@ -345,10 +345,11 @@ class RegGoods extends \app\controllers\BaseController
             $this->json_error('문자내용을 입력해 주세요.');
             return;
         }
+        /*
         if( !preg_match('/^[0-9\-]{3,}$/', $_POST['SendTel']) ) {
             $this->json_error('발신번호가 잘못되었습니다.');
             return;
-        }
+        }*/
 
         // 정렬번호 체크
         $orderE = $orderS = [];
@@ -466,7 +467,7 @@ class RegGoods extends \app\controllers\BaseController
             ['field' => 'SaleEndDatm_m', 'label' => '접수마감(분)', 'rules' => 'trim|required|numeric'],
 
             ['field' => 'ClosingPerson', 'label' => '접수마감인원', 'rules' => 'trim|is_natural_no_zero'],
-            //['field' => 'AcceptStatusCcd', 'label' => '접수상태', 'rules' => 'trim'],
+            ['field' => 'AcceptStatusCcd', 'label' => '접수상태', 'rules' => 'trim'],
             //['field' => 'TakeType', 'label' => '응시가능타입', 'rules' => 'trim|required|in_list[A,L]'],
             ['field' => 'TakeStartDatm_d', 'label' => '응시시작일', 'rules' => 'trim'],
             ['field' => 'TakeStartDatm_h', 'label' => '응시시작(시)', 'rules' => 'trim|numeric'],
@@ -482,7 +483,7 @@ class RegGoods extends \app\controllers\BaseController
 
             ['field' => 'IsSms', 'label' => '문자사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => 'Memo', 'label' => '문자내용', 'rules' => 'trim'],
-            ['field' => 'SendTel', 'label' => '문자발신번호', 'rules' => 'trim'],
+            //['field' => 'SendTel', 'label' => '문자발신번호', 'rules' => 'trim'],
 
             ['field' => 'IsUse', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
@@ -542,10 +543,11 @@ class RegGoods extends \app\controllers\BaseController
             $this->json_error('문자내용을 입력해 주세요.');
             return;
         }
+        /*
         if( !preg_match('/^[0-9\-]{3,}$/', $_POST['SendTel']) ) {
             $this->json_error('발신번호가 잘못되었습니다.');
             return;
-        }
+        }*/
 
         // 정렬번호 체크
         $orderE = $orderS = [];

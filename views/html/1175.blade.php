@@ -80,7 +80,8 @@
         .newTopDday ul li img {width:50px}
         .newTopDday ul li:first-child {line-height:none; text-align:right; padding-right:10px; padding-top:10px; width:28%}
         .newTopDday ul li:first-child div {font-size:14px; color:#999;margin:5px 0; font-weight:normal;}
-        .newTopDday ul li:last-child {line-height:none; text-align:left; padding-left:10px; width:24%}
+        .newTopDday ul li:first-child span {color:#fd6c38}
+        .newTopDday ul li:last-child {line-height:none; text-align:left; padding-left:10px; padding-top:10px; width:24%}
         .newTopDday ul li:last-child a {display:inline-block; font-size:14px; padding:4px 20px; background:#999; color:#FFF; text-align:center; border-radius:20px}
         .newTopDday ul li:last-child a:hover {background:#666}
         .newTopDday ul:after {content:""; display:block; clear:both}
@@ -98,7 +99,7 @@
                 <ul>
                     <li>
                         <div>2019년 4월</div>
-                        실전빅매치2 모의고사
+                        실전 <span>빅매치2 모의고사</span>
                     </li>
                     <li><img id="dd1" src="http://file.willbes.net/new_image/0.png" /></li>
                     <li><img id="dd2" src="http://file.willbes.net/new_image/0.png" /></li>

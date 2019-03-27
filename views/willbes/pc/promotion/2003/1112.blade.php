@@ -116,9 +116,9 @@
                 <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1117') }}" class="menu4" target="_blank">부산 서면 교육과정</a></li>
                 <li><a href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/1113') }}" class="menu5">윌비스 PASS</a></li>
             </ul>            <ul class="typeB">
-                <li class="NSK-Black">전역(예정)간부 가입/인증</li>
+                <li class="NSK-Black">전역(예정)간부 인증</li>
                 @if(empty($cert_apply))
-                    <li><a href="javascript:certOpen();">가입 및 인증하기 &gt;</a></li>
+                    <li><a href="javascript:certOpen();">인증하기 &gt;</a></li>
                 @else
                     <li><strong>{{sess_data('mem_name')}}</strong>님은<br /><span>인증완료</span><br />상태입니다.</li>
                 @endif

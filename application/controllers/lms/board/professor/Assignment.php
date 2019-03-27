@@ -250,9 +250,9 @@ class Assignment extends BaseBoard
         }
 
         $sub_query_condition = [
-            'EQ' => [
+            /*'EQ' => [
                 'subLBrC.IsStatus' => 'Y'
-            ]
+            ]*/
         ];
 
         $column = '

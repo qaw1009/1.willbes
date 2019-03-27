@@ -130,7 +130,8 @@ class Assignment extends BaseSupport
             ,IFNULL(a.IsReply,"N") AS am_IsReply ,DATE_FORMAT(a.RegDatm, \'%Y-%m-%d %H:%i\') AS am_RegDatm
             ,a.ReplyContent AS am_ReplyContent
             ,DATE_FORMAT(a.ReplyRegDatm, \'%Y-%m-%d %H:%i\') AS am_ReplyRegDatm
-            ,IFNULL(fn_board_attach_data_assignment(a.BaIdx,1),\'N\') AS AttachAssignmentData_Admin 
+            ,IFNULL(fn_board_attach_data(b.BoardIdx),NULL) AS AttachData
+            ,IFNULL(fn_board_attach_data_assignment(a.BaIdx,1),\'N\') AS AttachAssignmentData_Admin
             ,IFNULL(fn_board_attach_data_assignment(a.BaIdx,0),\'N\') AS AttachAssignmentData_User
         ';
         $arr_condition = [

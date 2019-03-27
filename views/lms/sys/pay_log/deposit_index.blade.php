@@ -11,19 +11,36 @@
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">
-                    <label class="control-label col-md-1" for="search_value">주문번호</label>
-                    <div class="col-md-2">
-                        <input type="text" class="form-control" id="search_value" name="search_value">
+                    <label class="control-label col-md-1" for="search_value">주문검색</label>
+                    <div class="col-md-3 form-inline">
+                        <select class="form-control mr-10" id="search_keyword" name="search_keyword">
+                            <option value="OrderNo">주문번호</option>
+                            <option value="PgMid">상점아이디</option>
+                            <option value="PgTid">Tid</option>
+                            <option value="VBankAccountNo">가상계좌번호</option>
+                        </select>
+                        <input type="text" class="form-control" id="search_value" name="search_value" style="width: 260px;">
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <div class="checkbox">
                             <input type="checkbox" id="search_chk_is_error" name="search_chk_is_error" class="flat" value="Y"/>
                             <label for="search_chk_is_error" class="input-label"><span class="red pull-none ml-0">연동오류만 보기</span></label>
                         </div>
                     </div>
-                    <label class="control-label col-md-1" for="search_start_date">날짜</label>
+                    <label class="control-label col-md-1" for="search_pay_type">구분</label>
                     <div class="col-md-5 form-inline">
-                        <div class="input-group">
+                        <select class="form-control mr-10" id="search_pg_mid" name="search_pg_mid">
+                            <option value="">상점아이디</option>
+                            <option value="willbes015">동영상(willbes015)</option>
+                            <option value="willbes515">교재(willbes515)</option>
+                            <option value="INIpayTest">테스트상점아이디</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-1" for="search_start_date">등록날짜</label>
+                    <div class="col-md-5 form-inline">
+                        <div class="input-group mb-0">
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
@@ -52,7 +69,7 @@
                     <th>No</th>
                     <th>주문번호</th>
                     <th>전문번호</th>
-                    <th>Mid</th>
+                    <th>상점아이디</th>
                     <th>Tid</th>
                     <th>입금금액</th>
                     <th>입금은행코드</th>
@@ -77,7 +94,7 @@
 
         $(document).ready(function() {
             // 기간 조회 디폴트 셋팅
-            setDefaultDatepicker(-1, 'days', 'search_start_date', 'search_end_date');
+            setDefaultDatepicker(0, 'days', 'search_start_date', 'search_end_date');
 
             // 페이징 번호에 맞게 일부 데이터 조회
             $datatable = $list_table.DataTable({

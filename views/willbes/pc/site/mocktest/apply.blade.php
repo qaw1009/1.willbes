@@ -32,7 +32,6 @@
                                         <option value="">진행상태</option>
                                         <option value="1" @if($s_type == 1) selected @endif>접수대기</option>
                                         <option value="2" @if($s_type == 2) selected @endif>접수중</option>
-                                        <option value="3" @if($s_type == 3) selected @endif>접수마감</option>
                                     </select>
                                     <input type="text" id="s_keyword" name="s_keyword" class="labelSearch" value="{{element('s_keyword', $arr_input)}}" placeholder="모의고사명을 입력해 주세요" maxlength="30">
                                     <button type="submit" onclick="goUrl('s_keyword', document.getElementById('s_keyword').value);" class="search-Btn">

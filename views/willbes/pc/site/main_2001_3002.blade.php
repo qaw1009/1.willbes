@@ -30,21 +30,8 @@
         <div class="Section Flipped">
             <div class="widthAuto">
                 <ul class="inner">
-                    <li class="l1">
-                        <a href="{{ site_url('/promotion/index/cate/3001/code/1009') }}">
-                            <img src="{{ img_url('cop/flipped/190304_cFlipped_520x740.jpg') }}" title="평생0원PASS">
-                        </a>
-                    </li>
-                    <li class="l2">
-                        <a href="{{ site_url('/promotion/index/cate/3001/code/1127') }}">
-                            <img src="{{ img_url('cop/flipped/flipped02.jpg') }}" title="2단계 동형모의고사">
-                        </a>
-                    </li>
-                    <li class="l3">
-                        <a href="{{ site_url('/promotion/index/cate/3001/code/1015') }}">
-                            <img src="{{ img_url('cop/flipped/190304_cFlipped_280x740.jpg') }}" title="기본이론">
-                        </a>
-                    </li>
+                    {{-- 메인핵심 배너 include --}}
+                    @include('willbes.pc.site.main_partial.main_point_' . $__cfg['SiteCode'])
                 </ul>
                 <div class="willbes-Bnr mt30">
                     <ul>

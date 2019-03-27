@@ -338,7 +338,7 @@
                                         image: "http://file3.willbes.net/new_cop/2019/03/EV190308P_08_playBg.jpg",
                                         aspectratio: "16:9",
                                         autostart: "true",
-                                        file: "rtmp://willbes.flive.skcdn.com/willbeslive/livestreamcop5011"
+                                        file: "rtmp://willbes.flive.skcdn.com/willbeslive/livestreamcop1101"
                                 });
                                 </script>
                             </div>

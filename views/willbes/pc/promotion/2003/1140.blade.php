@@ -42,11 +42,11 @@
             position:relative; width:1120px; margin:0 auto; text-align:center;
         }
         .tabCts .download span {position:absolute; top:660px; display:block; width:72px; height:24px; line-height:24px; text-align:center; z-index:1}
-        .tabCts .download span:nth-child(1) {left:185px;}
-        .tabCts .download span:nth-child(2) {left:278px;}
-        .tabCts .download span:nth-child(3) {left:570px;}
-        .tabCts .download span:nth-child(4) {left:815px;}
-        .tabCts .download span:nth-child(5) {left:900px;}
+        .tabCts .download span:nth-child(1) {left:160px;}
+        .tabCts .download span:nth-child(2) {left:362px;}
+        .tabCts .download span:nth-child(3) {left:572px;}
+        .tabCts .download span:nth-child(4) {left:760px;}
+        .tabCts .download span:nth-child(5) {left:940px;}
         .tabCts .download span a {display:block; color:#fff; background:#d18f04; border-radius:14px;}
         .tabCts .download span a:hover {background:#e50001}
         .tabCts .youtube {width:100%; text-align:center; margin:3em 0}	

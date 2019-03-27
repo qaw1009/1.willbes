@@ -86,7 +86,6 @@
                                     <div id="lec_sample_{{ $row['ProdCode'] }}" class="viewBox">
                                         <a class="closeBtn" href="#none" onclick="closeWin('lec_sample_{{ $row['ProdCode'] }}')"><img src="{{ img_url('cart/close.png') }}"></a>
                                         @foreach($row['LectureSampleData'] as $sample_idx => $sample_row)
-                                            @php var_dump($sample_row) @endphp
                                             <dl class="NSK">
                                                 <dt class="Tit NG">맛보기{{ $sample_idx + 1 }}</dt>
                                                 @if(empty($sample_row['wHD']) === false) <dt class="tBox t1 black"><a href="javascript:fnPlayerSample('{{$row['ProdCode']}}','{{$sample_row['wUnitIdx']}}','HD');">HIGH</a></dt> @endif

@@ -32,7 +32,6 @@
                                         <option value="">진행상태</option>
                                         <option value="1" @if($s_type == 1) selected @endif>접수대기</option>
                                         <option value="2" @if($s_type == 2) selected @endif>접수중</option>
-                                        <option value="3" @if($s_type == 3) selected @endif>접수마감</option>
                                     </select>
                                     <input type="text" id="s_keyword" name="s_keyword" class="labelSearch" value="{{element('s_keyword', $arr_input)}}" placeholder="모의고사명을 입력해 주세요" maxlength="30">
                                     <button type="submit" onclick="goUrl('s_keyword', document.getElementById('s_keyword').value);" class="search-Btn">
@@ -83,9 +82,9 @@
                                             <td class="w-price">@if(empty($sales_info)==false){{ number_format($sales_info[0]['RealSalePrice'],0)}}원@endif</td>
                                             <td class="w-day">{{$row['SaleStartDatm']}}~<br/>{{$row['SaleEndDatm']}}</td>
                                             <td class="w-state">
-                                                @if($row['SaleStartDatm'] > date('Y-m-d h:i:s'))
+                                                @if($row['SaleStartDatm'] > date('Y-m-d H:i:s'))
                                                     접수대기
-                                                @elseif($row['SaleStartDatm'] < date('Y-m-d h:i:s') && $row['SaleEndDatm'] > date('Y-m-d h:i:s'))
+                                                @elseif($row['SaleStartDatm'] < date('Y-m-d H:i:s') && $row['SaleEndDatm'] > date('Y-m-d H:i:s'))
                                                     접수중
                                                 @else
                                                     접수마감

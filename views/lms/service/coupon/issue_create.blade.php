@@ -263,7 +263,7 @@
                         return (data !== null) ? data.substr(0, 10) + '<br/>(' + row.IssueUserName + ')' : '';
                     }},
                     {'data' : 'ValidStatus', 'render' : function(data, type, row, meta) {
-                        return (data !== null) ? (((data !== '유효') ? '<span class="red">' + data + '</span>' : data) + '<br/>(' + row.ExpireDatm.substr(0, 10) + ')') : '';
+                        return ((data !== 'Y') ? '<span class="red">' + row.ValidStatusName + '</span>' : row.ValidStatusName) + '<br/>(' + row.ExpireDatm.substr(0, 10) + ')';
                     }},
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                         return (data !== null) ? ((data === 'Y') ? '사용 (' + row.UseDatm.substr(0, 16) + ')' : '<span class="red">미사용</span>') : '';
@@ -288,7 +288,7 @@
                 var $params = {};
                 $checked_cd_idx.each(function() {
                     if ($(this).data('is-retireable') === 'Y') {
-                        $params[$(this).data('idx')] = $(this).val();
+                        $params[$(this).data('idx') + '::' + $(this).val()] = $(this).val();
                     }
                 });
 

@@ -36,12 +36,12 @@
 
         .wb_04 {width:100%; text-align:center; background:#7d7d7d; min-width:1210px}
         .wb_04 div {width:1210px; margin:0 auto; position:relative}
-        .wb_04 div ul {position:absolute; width:88px; top:378px; left:567px; z-index:10}
-        .wb_04 div li {margin-bottom:18px}
+        .wb_04 div ul {position:absolute; width:88px; top:380px; left:567px; z-index:10}
+        .wb_04 div li {margin-bottom:20px}
         .wb_04 div li:nth-child(3) {margin-bottom:20px}
         .wb_04 div li:nth-child(4) {margin-bottom:20px}
-        .wb_04 div li:nth-child(5) {margin-bottom:20px}
-        .wb_04 div li:nth-child(6) {margin-bottom:20px}
+        .wb_04 div li:nth-child(5) {margin-bottom:22px}
+        .wb_04 div li:nth-child(6) {margin-bottom:22px}
         .wb_04 div li a {display:block; height:21px; line-height:21px; font-size:13px; font-weight:600; letter-spacing:-1px; background:#231f20; color:#fff; border:1px solid #231f20; font-family:'Noto Sans KR', Arial, Sans-serif}
         .wb_04 div li a:hover {background:#ffda38; color:#231f20}
         .wb_04 div span {position:absolute; display:block; height:31px; line-height:31px; padding:0 10px; background:#231f20; color:#fff; font-size:14px; font-weight:600; border-radius:22px; border:1px solid #231f20; z-index:11; letter-spacing:-1px}
@@ -144,16 +144,16 @@
 			<div>
                 <img src="https://static.willbes.net/public/images/promotion/2019/03/1175_p5_re.png"  alt="전국학원"/>
                 <ul>
-                    <li><a href="{{ site_url('#none') }}" alt="노량진" onmouseover="$('span.area01').addClass('on');" onmouseleave="$('span.area01').removeClass('on');">신청하기</a></li>
-                    <li><a href="{{ site_url('#none') }}" alt="신림" onmouseover="$('span.area02').addClass('on');" onmouseleave="$('span.area02').removeClass('on');">신청하기</a></li>
-                    <li><a href="{{ site_url('#none') }}" alt="인천" onmouseover="$('span.area03').addClass('on');" onmouseleave="$('span.area03').removeClass('on');">신청하기</a></li>
-                    <li><a href="{{ site_url('#none') }}" alt="광주" onmouseover="$('span.area04').addClass('on');" onmouseleave="$('span.area04').removeClass('on');">신청하기</a></li>
-                    <li><a href="{{ site_url('#none') }}" alt="전주" onmouseover="$('span.area05').addClass('on');" onmouseleave="$('span.area05').removeClass('on');">신청하기</a></li>
-                    <li><a href="{{ site_url('#none') }}" alt="익산" onmouseover="$('span.area05').addClass('on');" onmouseleave="$('span.area05').removeClass('on');">신청하기</a></li>
-                    <li><a href="{{ site_url('#none') }}" alt="대구" onmouseover="$('span.area06').addClass('on');" onmouseleave="$('span.area06').removeClass('on');">신청하기</a></li>
-                    <li><a href="{{ site_url('#none') }}" alt="부산" onmouseover="$('span.area07').addClass('on');" onmouseleave="$('span.area07').removeClass('on');">신청하기</a></li>
-                    <li><a href="{{ site_url('#none') }}" alt="진주" onmouseover="$('span.area08').addClass('on');" onmouseleave="$('span.area08').removeClass('on');">신청하기</a></li>
-                    <li><a href="{{ site_url('#none') }}" alt="제주" onmouseover="$('span.area09').addClass('on');" onmouseleave="$('span.area09').removeClass('on');">신청하기</a></li>
+                    <li><a href="#none" alt="노량진" onmouseover="$('span.area01').addClass('on');" onmouseleave="$('span.area01').removeClass('on');">접수 준비중</a></li>
+                    <li><a href="#none" alt="신림" onmouseover="$('span.area02').addClass('on');" onmouseleave="$('span.area02').removeClass('on');">접수 준비중</a></li>
+                    <li><a href="#none" alt="인천" onmouseover="$('span.area03').addClass('on');" onmouseleave="$('span.area03').removeClass('on');">접수 준비중</a></li>
+                    <li><a href="#none" alt="광주" onmouseover="$('span.area04').addClass('on');" onmouseleave="$('span.area04').removeClass('on');">접수 준비중</a></li>
+                    <li><a href="#none" alt="전주" onmouseover="$('span.area05').addClass('on');" onmouseleave="$('span.area05').removeClass('on');">접수 준비중</a></li>
+                    <li><a href="#none" alt="익산" onmouseover="$('span.area05').addClass('on');" onmouseleave="$('span.area05').removeClass('on');">접수 준비중</a></li>
+                    <li><a href="#none" alt="대구" onmouseover="$('span.area06').addClass('on');" onmouseleave="$('span.area06').removeClass('on');">접수 준비중</a></li>
+                    <li><a href="#none" alt="부산" onmouseover="$('span.area07').addClass('on');" onmouseleave="$('span.area07').removeClass('on');">접수 준비중</a></li>
+                    <li><a href="#none" alt="진주" onmouseover="$('span.area08').addClass('on');" onmouseleave="$('span.area08').removeClass('on');">접수 준비중</a></li>
+                    <li><a href="#none" alt="제주" onmouseover="$('span.area09').addClass('on');" onmouseleave="$('span.area09').removeClass('on');">접수 준비중</a></li>
                 </ul>
                 <span class="area01">노량진</span>
                 <span class="area02">신림</span>
@@ -168,15 +168,15 @@
 		</div>
 
 		<div class="wb_05" id="evt">
-			<img src="https://static.willbes.net/public/images/promotion/2019/03/1175_p6_1.png" alt="무료응시+소문내기" usemap="#Map190115"/>
+			<img src="https://static.willbes.net/public/images/promotion/2019/03/1175_p6_1.png" alt="무료응시+소문내기"/>
 		</div>
 
-        @include('html.event_replyUrl')
+        {{--홍보url--}}
 
         <div class="wb_06" id="go">
 			<img src="https://static.willbes.net/public/images/promotion/2019/03/1175_p7.png"  alt="접수하기" usemap="#go"/>
 			<map name="go">
-				<area shape="rect" coords="438,436,750,529" href="#none" alt="접수하기" target="_self"/>
+                <area shape="rect" coords="331,394,643,487" href="#none" alt="접수하기" target="_self"/>
 			</map>
         </div>
         

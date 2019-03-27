@@ -578,9 +578,9 @@ class RegGoodsModel extends WB_Model
             $it['TakePart_on'] = ( in_array($applyType_on, $takeFormsCcds) ) ? 'Y' : 'N';
             $it['TakePart_off'] = ( in_array($applyType_off, $takeFormsCcds) ) ? 'Y' : 'N';
 
-            if($it['SaleStartDatm'] > date('Y-m-d h:i:s')){
+            if($it['SaleStartDatm'] > date('Y-m-d H:i:s')){
                 $dres = "접수대기";
-            } else if($it['SaleStartDatm'] < date('Y-m-d h:i:s') && $it['SaleEndDatm'] > date('Y-m-d h:i:s')) {
+            } else if($it['SaleStartDatm'] < date('Y-m-d H:i:s') && $it['SaleEndDatm'] > date('Y-m-d H:i:s')) {
                 $dres = "접수중";
             } else {
                 $dres = "접수마감";

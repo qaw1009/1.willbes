@@ -41,17 +41,30 @@ class MockTest extends \app\controllers\FrontController
         $s_keyword = element('s_keyword',$arr_input);
         $get_page_params = 's_type='.$s_type.'&s_keyword='.$s_keyword;
 
+        if($s_type == 1){
+            $searchdate1 = '(pm.SaleStartDatm > "';
+            $searchdate2 = date('Y-m-d H:i:s') . '")';
+        } else if($s_type == 2) {
+            $searchdate1 = '(pm.SaleStartDatm < "';
+            $searchdate2 = date('Y-m-d H:i:s') . '" AND pm.SaleEndDatm > "' . date('Y-m-d H:i:s') . '")';
+        } else {
+            $searchdate1 = '(pm.SaleEndDatm < "';
+            $searchdate2 = date('Y-m-d H:i:s') . '")';
+        }
+
         $arr_condition = [
             'EQ' => [
                 'pm.CateCode' => $this->_cate_code
                 ,'pm.IsUse' => 'Y'
                 ,'pm.SiteCode' => $this->_site_code
-                ,'pm.AcceptStatusCcd' => $s_type
+                //,'pm.AcceptStatusCcd' => $s_type
             ],
 
             'LKB' => [
                 'pm.ProdName' => $s_keyword
-            ]
+            ],
+
+            'RAW' => [ $searchdate1 => $searchdate2 ]
         ];
 
         $order_by = ['pm.ProdCode'=>'Desc'];
@@ -71,7 +84,8 @@ class MockTest extends \app\controllers\FrontController
             'count' => $count,
             'list'=>$list,
             'paging' => $paging,
-            'page_type' => 'apply'
+            'page_type' => 'apply',
+            's_type' => $s_type
         ]);
     }
 

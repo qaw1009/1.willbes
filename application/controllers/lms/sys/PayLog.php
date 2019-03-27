@@ -40,8 +40,15 @@ class PayLog extends \app\controllers\BaseController
         $order_column = ucfirst($log_type) . 'Idx';
 
         $arr_condition = [
-            'BDT' => ['RegDatm' => [$this->input->post('search_start_date'), $this->input->post('search_end_date')]],
-            'EQ' => ['OrderNo' => $this->_reqP('search_value')]
+            'BDT' => ['RegDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]],
+            'EQ' => [
+                'PgMid' => $this->_reqP('search_pg_mid'),
+                'PayType' => $this->_reqP('search_pay_type'),
+                $this->_reqP('search_keyword') => $this->_reqP('search_value')
+            ],
+            'LKL' => [
+                'PayMethod' => $this->_reqP('search_pay_method')
+            ]
         ];
         
         // 연동오류만 보기 선택

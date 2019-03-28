@@ -24,12 +24,11 @@
         .wb_01 .youtube {height:1418px}	
         .wb_01 .youtube iframe {margin-top:439px; width:854px; height:480px}
         /* 슬라이드배너 */
-        .wb_01_photo {position:relative; width:854px; margin:0 auto}
-        .wb_01_photo span {position:absolute; top:50%; margin-top:-36px; width:72px; z-index:100; display:block; background:#fff}
-        .wb_01_photo img {width:100%}
-        .wb_01_photo span a {cursor:pointer}
-        .wb_01_photo span.leftBtn {left:-36px;}
-        .wb_01_photo span.rightBtn {right:-36px;} 
+        .slide_con {position:relative; width:1120px; margin:0 auto}	
+        .slide_con p {position:absolute; top:50%; width:56px; height:56px; z-index:100}
+        .slide_con p a {cursor:pointer}
+        .slide_con p.leftBtn {left:-40px; top:46%; width:80px; height:80px;}
+        .slide_con p.rightBtn {right:-40px;top:46%; width:80px; height:80px;}
 
         .wb_02 {background:#f297b8 url(https://static.willbes.net/public/images/promotion/2019/03/1174_02_bg.jpg) no-repeat center top;}       
                	
@@ -45,18 +44,34 @@
 		<div class="wbCommon wb_01">
             <div class="youtube"><iframe src="https://www.youtube.com/embed/-Q676VZ03FM?rel=0" frameborder="0" allowfullscreen></iframe></div>
             <div><img src="https://static.willbes.net/public/images/promotion/2019/03/1174_01_01.jpg" title=" " /></div>
-            <div class="wb_01_photo">
-                <ul>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/03/1174_01_img01.jpg" title="1" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/03/1174_01_img02.jpg" title="8" /></li>	
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/03/1174_01_img03.jpg" title="2" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/03/1174_01_img04.jpg" title="4" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/03/1174_01_img05.jpg" title="5" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/03/1174_01_img06.jpg" title="6" /></li>
-                <ul>
-                <span class="leftBtn"><a id="imgBannerLeft"><img src="https://static.willbes.net/public/images/promotion/2019/03/1174_01_pre.png" title="back"></a></span>
-                <span class="rightBtn"><a id="imgBannerRight"><img src="https://static.willbes.net/public/images/promotion/2019/03/1174_01_next.png" title="next"></a></span>
-		    </div>
+            <div class="slide_con">
+                <ul id="slidesImg7">
+                <li><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_001_1.jpg" alt="#" /></li>
+                <li><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_001_2.jpg" alt="#" /></li>
+                <li><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_001_3.jpg" alt="#" /></li>
+                <li><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_001_4.jpg" alt="#" /></li>
+                <li><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_001_5.jpg" alt="#" /></li>
+                <li><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_001_6.jpg" alt="#" /></li>
+                <li><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_001_7.jpg" alt="#" /></li>
+                <li><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_001_8.jpg" alt="#" /></li>
+                <li><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_001_9.jpg" alt="#" /></li>
+                <li><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_001_10.jpg" alt="#" /></li>
+                <li><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_001_11.jpg" alt="#" /></li>
+                <li><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_001_12.jpg" alt="#" /></li>
+                <li><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_001_13.jpg" alt="#" /></li>
+                <li><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_001_14.jpg" alt="#" /></li>
+                <li><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_001_15.jpg" alt="#" /></li>
+                <li><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_001_16.jpg" alt="#" /></li>
+                <li><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_001_17.jpg" alt="#" /></li>
+                <li><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_001_18.jpg" alt="#" /></li>
+                <li><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_001_19.jpg" alt="#" /></li>
+                <li><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_001_20.jpg" alt="#" /></li>
+                </ul>
+            
+                <p class="leftBtn"><a id="imgBannerLeft7"><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_arr_prev.png" alt="이전" /></a></p>
+                <p class="rightBtn"><a id="imgBannerRight7"><img src="http://file3.willbes.net/new_cop/2019/03/EV190306Y_arr_next.png" alt="다음" /></a></p>
+          </div>
+            
             <div><img src="https://static.willbes.net/public/images/promotion/2019/03/1174_01_02.jpg" title=" " /></div>
 		</div>
 
@@ -74,30 +89,25 @@
 
     <script>
         $(document).ready(function() {
-            var slidesImg1 = $(".wb_01_photo ul").bxSlider({
-                mode:'fade',
-                auto:true,
-                speed:350,
-                pause:3000,
-                pager:true,
-                controls:false,
-                minSlides:1,
-                maxSlides:1,
-                slideWidth:854,
-                slideMargin:0,
-                autoHover: true,
-                moveSlides:1,
-                pager:false
+            var slidesImg7 = $("#slidesImg7").bxSlider({
+            //mode:'fade', option : 'horizontal', 'vertical', 'fade'
+            auto:true,
+            speed:350,
+            pause:4000,
+            controls:false,
+            slideWidth:980,
+            autoHover: true,
+            pager:false,
             });
 
-            $("#imgBannerLeft").click(function (){
-                slidesImg1.goToPrevSlide();
+            $("#imgBannerLeft7").click(function (){
+            slidesImg7.goToPrevSlide();
             });
-
-            $("#imgBannerRight").click(function (){
-                slidesImg1.goToNextSlide();
+            $("#imgBannerRight7").click(function (){
+            slidesImg7.goToNextSlide();
             });
-        });
+		
+	    });
     </script>
     
 @stop

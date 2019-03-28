@@ -444,7 +444,7 @@ class CouponFModel extends WB_Model
         $arr_condition = array_merge_recursive($add_condition,[
             'EQ' => [
                 'C.CouponIdx' =>  $couponidx,
-                'C.MemIdx' =>  $this->session->userdata('mem_idx')
+                'CP.MemIdx' =>  $this->session->userdata('mem_idx')
             ]
         ]);
 
@@ -459,6 +459,7 @@ class CouponFModel extends WB_Model
 
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where)->row(0)->checkCnt;
+
         return $query;
     }
 }

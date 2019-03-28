@@ -123,6 +123,7 @@
             <thead>
             <tr>
                 <th>회차</th>
+                <th>이전시작일</th>
                 <th>수강시작일</th>
                 <th>변경일자</th>
                 <th>아이피</th>
@@ -133,6 +134,7 @@
             @forelse( $log as $key => $row)
                 <tr>
                     <td class="w-num">{{$key+1}}차</td>
+                    <td class="w-day">{{$row['BeforeStartDate']}} ~ {{$row['BeforeEndDate']}}</td>
                     <td class="w-day">{{$row['UpdStudyStartDate']}} ~ {{$row['UpdStudyEndDate']}}</td>
                     <td class="w-modify-day">{{$row['UpdDatm']}}</td>
                     <td >{{$row['UpdIp']}}</td>
@@ -158,6 +160,7 @@
             $('#startdate').on('dp.change', function(){
                 var $cdate = $(this).val();
 
+                /*
                 if($cdate > '{{ date("Y-m-d", strtotime(substr($lec['OrderDate'], 10).'+30day')) }}'){
                     $(this).val('');
                     $('#enddate').val('');
@@ -170,7 +173,7 @@
                     $('#enddate').val('');
                     alert("시작일은 오늘 이전 날짜는 불가능합니다.");
                     return;
-                }
+                } */
 
                 $('#enddate').val(moment($(this).val()).add({{$lec['RealLecExpireDay'] -1}}, 'days').format('YYYY-MM-DD'));
 

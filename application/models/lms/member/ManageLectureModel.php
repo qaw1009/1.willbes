@@ -138,7 +138,6 @@ class ManageLectureModel extends WB_Model
      */
     public function setStartDate($cond, $startdate)
     {
-
         $where = $this->_conn->makeWhere([
             'EQ' => [
                 'OrderIdx' => element('OrderIdx', $cond),

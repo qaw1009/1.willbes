@@ -71,11 +71,27 @@
         </div>
     </div>
 @endif
+@if($__cfg['CateCode'] == '3028')
+    {{-- 공무원 기술직 사이트일 경우만 적용 --}}
+    <div id="topBannerLayer" class="gosi">
+        <div class="topBanner">
+            <a href="#none"><img src="{{ img_url('gosi/banner/1119-70-3028.gif') }}" alt="기술직"></a>
+        </div>
+    </div>
+@endif
 @if($__cfg['CateCode'] == '3030')
     {{-- 공무원 부사관 사이트일 경우만 적용 --}}
     <div id="topBannerLayer" class="gosi">
         <div class="topBanner">
-            <a href="#none"><img src="{{ img_url('gosi/banner/1119-70-3030.gif') }}" alt="군무원"></a>
+            <a href="#none"><img src="{{ img_url('gosi/banner/1119-70-3030.gif') }}" alt="부사관"></a>
+        </div>
+    </div>
+@endif
+@if($__cfg['CateCode'] == '3035')
+    {{-- 공무원 법원직 사이트일 경우만 적용 --}}
+    <div id="topBannerLayer" class="gosi">
+        <div class="topBanner">
+            <a href="#none"><img src="{{ img_url('gosi/banner/1119-70-3035.gif') }}" alt="법원직"></a>
         </div>
     </div>
 @endif

@@ -97,6 +97,9 @@ class EventLecture extends \app\controllers\BaseController
             $optoins_keys[] = $key;
         }
 
+        //댓글UI종류
+        $arr_comment_ui_type_ccd = $this->codeModel->getCcd($this->_groupCcd['CommentUiType']);
+
         //캠퍼스 조회
         $arr_campus = $this->siteModel->getSiteCampusArray('');
 
@@ -152,10 +155,14 @@ class EventLecture extends \app\controllers\BaseController
             foreach ($arr_comment_use as $key => $val) {
                 $data['ArrCommentUseArea'][$val] = $val;
             }
+
+            // 댓글UI타입 데이터 가공
+            $data['comment_ui_type_ccds'] = array_flip(explode(',', $data['CommentUiTypeCcds']));   // 관리옵션 데이터 가공처리
         }
 
         $this->load->view("site/event_lecture/create", [
             'arr_options' => $arr_options,
+            'arr_comment_ui_type_ccd' => $arr_comment_ui_type_ccd,
             'optoins_keys' => $optoins_keys,
             'method' => $method,
             'data' => $data,

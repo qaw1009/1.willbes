@@ -121,7 +121,7 @@
                             <p>
                                 @php
                                     if (empty($file_data_promotion[0]) === true) {
-                                        $download_data = "alert('라이브 당일 오후 3시부터 출력 가능합니다.');";
+                                        $download_data = "alert('라이브 당일 오후 2시부터 출력 가능합니다.');";
                                     } else {
                                         $download_data = "download('".$file_data_promotion[0]['EfIdx']."', '".$data['ElIdx']."', '1');";
                                     }
@@ -136,7 +136,7 @@
                             <p>
                                 @php
                                     if (empty($file_data_promotion[1]) === true) {
-                                        $download_data = "alert('라이브 당일 오후 3시부터 출력 가능합니다.');";
+                                        $download_data = "alert('라이브 당일 오후 2시부터 출력 가능합니다.');";
                                     } else {
                                         $download_data = "download('".$file_data_promotion[1]['EfIdx']."', '".$data['ElIdx']."', '2');";
                                     }
@@ -166,7 +166,7 @@
                             <p>
                                 @php
                                     if (empty($file_data_promotion[3]) === true) {
-                                        $download_data = "alert('라이브 당일 오후 3시부터 출력 가능합니다.');";
+                                        $download_data = "alert('라이브 당일 오후 2시부터 출력 가능합니다.');";
                                     } else {
                                         $download_data = "download('".$file_data_promotion[3]['EfIdx']."', '".$data['ElIdx']."', '4');";
                                     }
@@ -181,7 +181,7 @@
                             <p>
                                 @php
                                     if (empty($file_data_promotion[4]) === true) {
-                                        $download_data = "alert('라이브 당일 오후 3시부터 출력 가능합니다.');";
+                                        $download_data = "alert('라이브 당일 오후 2시부터 출력 가능합니다.');";
                                     } else {
                                         $download_data = "download('".$file_data_promotion[4]['EfIdx']."', '".$data['ElIdx']."', '5');";
                                     }
@@ -204,17 +204,17 @@
             <img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_5.png" alt="윌비스가 준비한 수험생 합격 응원 선물 적중 50선 LIVE"/ >
             <div class="tabContaier">
                 <ul>
-                    <li><a href="#tab1" id="tab_css1" {!! (date('YmdHis') > '20190328150000' && date('YmdHis') < '20190329120000') ? 'class="active"' : '' !!}><img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_t1.png" class="off" alt="3/28 기미진" /><img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_t1_on.png" class="on"  alt="#"/></a></li>
-                    <li><a href="#tab2" id="tab_css2" {!! (date('YmdHis') > '20190329150000' && date('YmdHis') < '20190330120000') ? 'class="active"' : '' !!}><img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_t2.png" class="off" alt="3/29 한경준" /><img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_t2_on.png"  class="on" alt="#"/></a></li>
+                    <li><a href="#tab1" id="tab_css1" {!! (date('YmdHis') > '20190328190000' && date('YmdHis') < '20190329120000') ? 'class="active"' : '' !!}><img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_t1.png" class="off" alt="3/28 기미진" /><img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_t1_on.png" class="on"  alt="#"/></a></li>
+                    <li><a href="#tab2" id="tab_css2" {!! (date('YmdHis') > '20190329190000' && date('YmdHis') < '20190330120000') ? 'class="active"' : '' !!}><img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_t2.png" class="off" alt="3/29 한경준" /><img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_t2_on.png"  class="on" alt="#"/></a></li>
                     <li><a href="#tab3" id="tab_css3" {!! (date('YmdHis') > '20190331100000' && date('YmdHis') < '20180401120000') ? 'class="active"' : '' !!}><img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_t3.png" class="off" alt="3/31 김덕관" /><img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_t3_on.png"  class="on" alt="#"/></a></li>
-                    <li><a href="#tab4" id="tab_css4" {!! (date('YmdHis') > '20190401150000' && date('YmdHis') < '20180402120000') ? 'class="active"' : '' !!}><img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_t4.png" class="off" alt="4/1  한덕현" /><img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_t4_on.png" class="on"  alt="#"/></a></li>
-                    <li><a href="#tab5" id="tab_css5" {!! (date('YmdHis') > '20190402150000' && date('YmdHis') < '20180403120000') ? 'class="active"' : '' !!}><img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_t5.png" class="off" alt="4/2  한세훈" /><img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_t5_on.png" class="on"  alt="#"/></a></li>
+                    <li><a href="#tab4" id="tab_css4" {!! (date('YmdHis') > '20190401190000' && date('YmdHis') < '20180402120000') ? 'class="active"' : '' !!}><img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_t4.png" class="off" alt="4/1  한덕현" /><img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_t4_on.png" class="on"  alt="#"/></a></li>
+                    <li><a href="#tab5" id="tab_css5" {!! (date('YmdHis') > '20190402190000' && date('YmdHis') < '20180403120000') ? 'class="active"' : '' !!}><img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_t5.png" class="off" alt="4/2  한세훈" /><img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_t5_on.png" class="on"  alt="#"/></a></li>
                 </ul>
                 <div class="tabContents" id="tab1" style="display:none;">
                     <p>
                         @php
                             if (empty($file_data_promotion[0]) === true) {
-                                $download_data = "alert('자료가 없습니다.');";
+                                $download_data = "alert('라이브 당일 오후 2시부터 출력 가능합니다.');";
                             } else {
                                 $download_data = "download('".$file_data_promotion[0]['EfIdx']."', '".$data['ElIdx']."', '1');";
                             }
@@ -229,7 +229,7 @@
                     <p>
                         @php
                             if (empty($file_data_promotion[1]) === true) {
-                                $download_data = "alert('라이브 당일 오후 3시부터 출력 가능합니다.');";
+                                $download_data = "alert('라이브 당일 오후 2시부터 출력 가능합니다.');";
                             } else {
                                 $download_data = "download('".$file_data_promotion[1]['EfIdx']."', '".$data['ElIdx']."', '2');";
                             }
@@ -259,7 +259,7 @@
                     <p>
                         @php
                             if (empty($file_data_promotion[3]) === true) {
-                                $download_data = "alert('라이브 당일 오후 3시부터 출력 가능합니다.');";
+                                $download_data = "alert('라이브 당일 오후 2시부터 출력 가능합니다.');";
                             } else {
                                 $download_data = "download('".$file_data_promotion[3]['EfIdx']."', '".$data['ElIdx']."', '4');";
                             }
@@ -274,7 +274,7 @@
                     <p>
                         @php
                             if (empty($file_data_promotion[4]) === true) {
-                                $download_data = "alert('라이브 당일 오후 3시부터 출력 가능합니다.');";
+                                $download_data = "alert('라이브 당일 오후 2시부터 출력 가능합니다.');";
                             } else {
                                 $download_data = "download('".$file_data_promotion[4]['EfIdx']."', '".$data['ElIdx']."', '5');";
                             }
@@ -407,20 +407,20 @@
             timeStr += inZero(today.getMinutes(),2);
             timeStr += inZero(today.getSeconds(),2);
 
-            if(seq == 1 && (timeStr < 20190328150000 || timeStr > 20190329120000)){
-                alert("3월28일 오후 3시부터 다운가능하며,\n정답해설은 다음날 12시까지 다운받으실 수 있습니다.");
+            if(seq == 1 && (timeStr < 20190328140000 || timeStr > 20190329120000)){
+                alert("3월28일 오후 2시부터 다운가능하며,\n정답해설은 다음날 12시까지 다운받으실 수 있습니다.");
                 return;
-            } else if(seq == 2 && (timeStr < 20190329150000 || timeStr > 20190330120000)){
-                alert("3월29일 오후 3시부터 다운가능하며,\n정답해설은 다음날 12시까지 다운받으실 수 있습니다.");
+            } else if(seq == 2 && (timeStr < 20190329140000 || timeStr > 20190330120000)){
+                alert("3월29일 오후 2시부터 다운가능하며,\n정답해설은 다음날 12시까지 다운받으실 수 있습니다.");
                 return;
             } else if(seq == 3 && (timeStr < 20190331100000 || timeStr > 20180401120000)){
                 alert("3월31일 오전 10시부터 다운가능하며,\n정답해설은 다음날 12시까지 다운받으실 수 있습니다.");
                 return;
-            } else if(seq == 4 && (timeStr < 20190401150000 || timeStr > 20180402120000)){
-                alert("4월1일 오후 3시부터 다운가능하며,\n정답해설은 다음날 12시까지 다운받으실 수 있습니다.");
+            } else if(seq == 4 && (timeStr < 20190401140000 || timeStr > 20180402120000)){
+                alert("4월1일 오후 2시부터 다운가능하며,\n정답해설은 다음날 12시까지 다운받으실 수 있습니다.");
                 return;
-            } else if(seq == 5 && (timeStr < 20190402150000 || timeStr > 20180403120000)) {
-                alert("4월2일 오후 3시부터 다운가능하며,\n정답해설은 다음날 12시까지 다운받으실 수 있습니다.");
+            } else if(seq == 5 && (timeStr < 20190402140000 || timeStr > 20180403120000)) {
+                alert("4월2일 오후 2시부터 다운가능하며,\n정답해설은 다음날 12시까지 다운받으실 수 있습니다.");
                 return;
             } else {
                 var _url = '{{ site_url("/promotion/download") }}' + '?file_idx='+file_idx + '&event_idx='+event_idx;

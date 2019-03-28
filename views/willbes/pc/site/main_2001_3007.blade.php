@@ -113,10 +113,10 @@
                                 </div>
                                 <div class="infoList">
                                     <ul class="List-Table">
-                                        <li><a href="#none"><span>[2018년 2차]</span>해양경찰(순경) 채용시험 기출</a><span class="btn-more"><a href="{{ site_url('/lecture/index/cate/3007/pattern/free?course_idx=1075') }}" target="_blank">바로가기 ></a></span></li>
-                                        <li><a href="#none"><span>[2018년 1차]</span>해양경찰(순경) 채용시험 기출</a><span class="btn-more"><a href="{{ site_url('/lecture/index/cate/3007/pattern/free?course_idx=1075') }}" target="_blank">바로가기 ></a></span></li>
-                                        <li><a href="#none"><span>[2017년 2차]</span>해양경찰(순경) 채용시험 기출</a><span class="btn-more"><a href="{{ site_url('/lecture/index/cate/3007/pattern/free?course_idx=1075') }}" target="_blank">바로가기 ></a></span></li>
-                                        <li><a href="#none"><span>[2017년 1차]</span>해양경찰(순경) 채용시험 기출</a><span class="btn-more"><a href="{{ site_url('/lecture/index/cate/3007/pattern/free?course_idx=1075') }}" target="_blank">바로가기 ></a></span></li>
+                                        <li><p><span>[2018년 2차]</span>해양경찰(순경) 채용시험 기출</p><span class="btn-more"><a href="{{ site_url('/lecture/index/cate/3007/pattern/free?course_idx=1075') }}" target="_blank">바로가기 ></a></span></li>
+                                        <li><p><span>[2018년 1차]</span>해양경찰(순경) 채용시험 기출</p><span class="btn-more"><a href="{{ site_url('/lecture/index/cate/3007/pattern/free?course_idx=1075') }}" target="_blank">바로가기 ></a></span></li>
+                                        <li><p><span>[2017년 2차]</span>해양경찰(순경) 채용시험 기출</p><span class="btn-more"><a href="{{ site_url('/lecture/index/cate/3007/pattern/free?course_idx=1075') }}" target="_blank">바로가기 ></a></span></li>
+                                        <li><p><span>[2017년 1차]</span>해양경찰(순경) 채용시험 기출</p><span class="btn-more"><a href="{{ site_url('/lecture/index/cate/3007/pattern/free?course_idx=1075') }}" target="_blank">바로가기 ></a></span></li>
                                     </ul>
                                 </div>
                             </div>

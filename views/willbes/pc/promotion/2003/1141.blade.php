@@ -309,11 +309,11 @@
                     $live_video_type = 'off';
                     foreach ($set_on_day as $key => $val) {
                         if ($val == '20190331') {
-                            if ($time >= '140000' && $time <= '170000') {
+                            if ($time >= '140000' && $time <= '180000') {
                                 $live_video_type = 'on';
                             }
                         } else if ($day == $val){
-                            if ($time >= '190000' && $time <= '220000') {
+                            if ($time >= '190000' && $time <= '230000') {
                                 $live_video_type = 'on';
                             }
                         }

@@ -309,6 +309,7 @@ class BasePromotion extends \app\controllers\FrontController
             }else{
                 //발급여부 확인
                 $check = $this->couponFModel->checkIssueCoupon($give_idx);
+                echo $check;
 
                 if((int)$check > $limit_count) {
                     return $this->json_error("이미 발급받은 쿠폰이 존재합니다.");

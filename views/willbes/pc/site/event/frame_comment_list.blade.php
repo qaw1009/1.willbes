@@ -52,7 +52,7 @@
                             @if(empty($row['MemIdx']) === true && empty($row['MemName']) === true)
                                 비회원
                             @else
-                                {!! $row['MemIdx'] == sess_data('mem_idx') ? $row['MemName'] : hpSubString($row['MemName'],0,2,'*') !!}
+                                {!! hpSubString($row['MemName'],0,2,'*') !!}
                             @endif
                         @endif
                     </td>

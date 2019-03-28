@@ -27,15 +27,13 @@
             z-index:1;            
         }
 
-        .wb_top {width:100%; text-align:center;  min-width:1210px;  background:#2d1209 url(https://static.willbes.net/public/images/promotion/2019/03/1175_p1_bg.jpg) no-repeat center; }
+        .wb_top {background:#2d1209 url(https://static.willbes.net/public/images/promotion/2019/03/1175_p1_bg.jpg) no-repeat center;}
 
-        .wb_01 {width:100%; text-align:center; background:#ffffff; min-width:1210px}	
-        .wb_02 {width:100%; text-align:center; background:#aeaeae; min-width:1210px}
-
-        .wb_03 {width:100%; text-align:center; background:#ececec; min-width:1210px}
-
-        .wb_04 {width:100%; text-align:center; background:#7d7d7d; min-width:1210px}
-        .wb_04 div {width:1210px; margin:0 auto; position:relative}
+        .wb_01 {background:#fff}	
+        .wb_02 {background:#aeaeae;}
+        .wb_03 {background:#ececec;}
+        .wb_04 {background:#7d7d7d;}
+        .wb_04 div {width:1120px; margin:0 auto; position:relative}
         .wb_04 div ul {position:absolute; width:88px; top:380px; left:567px; z-index:10}
         .wb_04 div li {margin-bottom:20px}
         .wb_04 div li:nth-child(3) {margin-bottom:20px}
@@ -57,8 +55,8 @@
         .wb_04 div span.area08 {top:750px; left:856px} /*진주*/
         .wb_04 div span.area09 {top:859px; left:774px} /*제주*/
 
-        .wb_05 {width:100%; text-align:center; background:#ffffff; min-width:1210px;}
-        .wb_06 {width:100%; text-align:center; background:#fd6c38; min-width:1210px;}	
+        .wb_05 {background:#fff;}
+        .wb_06 {background:#fd6c38}	
 
         .content_guide_wrap{background:#fff; margin:0}
         .content_guide_box{ position:relative; width:900px; margin:0 auto; padding:50px 0}
@@ -120,40 +118,40 @@
             </div>
         </div>
 
-        <div class="wb_top" id="main">
+        <div class="evtCtnsBox wb_top" id="main">
 			<img src="https://static.willbes.net/public/images/promotion/2019/03/1175_p1.png"  alt="메인" usemap="#link"/>
 		</div>
 
-        <div class="wb_01" >
+        <div class="evtCtnsBox wb_01" >
 			<img src="https://static.willbes.net/public/images/promotion/2019/03/1175_p2.png"  alt="상금" usemap="#link2"/>
 			<map name="link2" >
 				<area shape="rect" coords="439,1413,679,1471" href="#ask" alt="응모안내" />
 			</map>
 		</div>
 
-		<div class="wb_02" >
+		<div class="evtCtnsBox wb_02" >
 			<img src="https://static.willbes.net/public/images/promotion/2019/03/1175_p3.png"  alt="3가지" />
 		</div>
        
-		<div class="wb_03" id="table">
+		<div class="evtCtnsBox wb_03" id="table">
 			<img src="https://static.willbes.net/public/images/promotion/2019/03/1175_p4_1.png"  alt="시간표 및 장소" /><br />
 			<img src="https://static.willbes.net/public/images/promotion/2019/03/1175_p4_2.png"  alt="접수하기" />
 		</div>
 		
-		<div class="wb_04" >
+		<div class="evtCtnsBox wb_04" >
 			<div>
                 <img src="https://static.willbes.net/public/images/promotion/2019/03/1175_p5_re.png"  alt="전국학원"/>
                 <ul>
-                    <li><a href="#none" alt="노량진" onmouseover="$('span.area01').addClass('on');" onmouseleave="$('span.area01').removeClass('on');">접수 준비중</a></li>
-                    <li><a href="#none" alt="신림" onmouseover="$('span.area02').addClass('on');" onmouseleave="$('span.area02').removeClass('on');">접수 준비중</a></li>
-                    <li><a href="#none" alt="인천" onmouseover="$('span.area03').addClass('on');" onmouseleave="$('span.area03').removeClass('on');">접수 준비중</a></li>
-                    <li><a href="#none" alt="광주" onmouseover="$('span.area04').addClass('on');" onmouseleave="$('span.area04').removeClass('on');">접수 준비중</a></li>
-                    <li><a href="#none" alt="전주" onmouseover="$('span.area05').addClass('on');" onmouseleave="$('span.area05').removeClass('on');">접수 준비중</a></li>
-                    <li><a href="#none" alt="익산" onmouseover="$('span.area05').addClass('on');" onmouseleave="$('span.area05').removeClass('on');">접수 준비중</a></li>
-                    <li><a href="#none" alt="대구" onmouseover="$('span.area06').addClass('on');" onmouseleave="$('span.area06').removeClass('on');">접수 준비중</a></li>
-                    <li><a href="#none" alt="부산" onmouseover="$('span.area07').addClass('on');" onmouseleave="$('span.area07').removeClass('on');">접수 준비중</a></li>
-                    <li><a href="#none" alt="진주" onmouseover="$('span.area08').addClass('on');" onmouseleave="$('span.area08').removeClass('on');">접수 준비중</a></li>
-                    <li><a href="#none" alt="제주" onmouseover="$('span.area09').addClass('on');" onmouseleave="$('span.area09').removeClass('on');">접수 준비중</a></li>
+                    <li><a href="{{ site_url('/pass/mockTest/apply/cate') }}" alt="노량진" onmouseover="$('span.area01').addClass('on');" onmouseleave="$('span.area01').removeClass('on');">신청하기</a></li>
+                    <li><a href="{{ site_url('/pass/mockTest/apply/cate') }}" alt="신림" onmouseover="$('span.area02').addClass('on');" onmouseleave="$('span.area02').removeClass('on');">신청하기</a></li>
+                    <li><a href="{{ site_url('/pass/mockTest/apply/cate') }}" alt="인천" onmouseover="$('span.area03').addClass('on');" onmouseleave="$('span.area03').removeClass('on');">신청하기</a></li>
+                    <li><a href="{{ site_url('/pass/mockTest/apply/cate') }}" alt="광주" onmouseover="$('span.area04').addClass('on');" onmouseleave="$('span.area04').removeClass('on');">신청하기</a></li>
+                    <li><a href="{{ site_url('/pass/mockTest/apply/cate') }}" alt="전주" onmouseover="$('span.area05').addClass('on');" onmouseleave="$('span.area05').removeClass('on');">신청하기</a></li>
+                    <li><a href="{{ site_url('/pass/mockTest/apply/cate') }}" alt="익산" onmouseover="$('span.area05').addClass('on');" onmouseleave="$('span.area05').removeClass('on');">신청하기</a></li>
+                    <li><a href="{{ site_url('/pass/mockTest/apply/cate') }}" alt="대구" onmouseover="$('span.area06').addClass('on');" onmouseleave="$('span.area06').removeClass('on');">신청하기</a></li>
+                    <li><a href="{{ site_url('/pass/mockTest/apply/cate') }}" alt="부산" onmouseover="$('span.area07').addClass('on');" onmouseleave="$('span.area07').removeClass('on');">신청하기</a></li>
+                    <li><a href="{{ site_url('/pass/mockTest/apply/cate') }}" alt="진주" onmouseover="$('span.area08').addClass('on');" onmouseleave="$('span.area08').removeClass('on');">신청하기</a></li>
+                    <li><a href="{{ site_url('/pass/mockTest/apply/cate') }}" alt="제주" onmouseover="$('span.area09').addClass('on');" onmouseleave="$('span.area09').removeClass('on');">신청하기</a></li>
                 </ul>
                 <span class="area01">노량진</span>
                 <span class="area02">신림</span>
@@ -167,16 +165,18 @@
 			</div>
 		</div>
 
-		<div class="wb_05" id="evt">
+		<div class="evtCtnsBox wb_05" id="evt">
 			<img src="https://static.willbes.net/public/images/promotion/2019/03/1175_p6_1.png" alt="무료응시+소문내기"/>
 		</div>
 
         {{--홍보url--}}
 
-        <div class="wb_06" id="go">
-			<img src="https://static.willbes.net/public/images/promotion/2019/03/1175_p7.png"  alt="접수하기" usemap="#go"/>
+        <div class="evtCtnsBox wb_06" id="go">
+            <img src="https://static.willbes.net/public/images/promotion/2019/03/1175_p7.png"  alt="접수하기" usemap="#go"/>
 			<map name="go">
-                <area shape="rect" coords="331,394,643,487" href="#none" alt="접수하기" target="_self"/>
+                <area shape="rect" coords="151,402,380,525" href="{{ site_url('/mockTest/apply/cate/3001') }}" alt="온라인 일반경찰 모의고사"/>
+                <area shape="rect" coords="393,401,628,526" href="{{ site_url('/mockTest/apply/cate/3002') }}" alt="온라인 경행경채 모의고사"/>
+                <area shape="rect" coords="748,400,972,520" href="{{ site_url('/pass/mockTest/apply/cate') }}" alt="학원모의고사" />
 			</map>
         </div>
         
@@ -197,7 +197,7 @@
                         <p>
                         1. 장학금 지급은 시험 당일 오프라인 응시 대상자에 한함<br>
 
-                        2. 선발기준 : 신광은 경찰학원 종합반 유료 수강이력이 있는 회원 중 성적 우수자 순으로 선발 (*단과는 2과목 이상 시 가능)<br>
+                        2. 선발기준 : 신광은 경찰학원 종합반 유료 수강이력이 있는 회원 중 성적 우수자 순으로 선발 (*단과는 3과목 이상 유료수강시 가능) <br>
 
                         3. 모의고사 후 시상식이 진행될 예정이며, 1·2·3등 성적 장학금 수상자의 경우 시상식 불참 시 장학금이 지급될 수 없습니다.<br>
                         (*장학금 시상식 일정 추후공지(개별연락))<br>

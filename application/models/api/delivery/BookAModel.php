@@ -153,13 +153,13 @@ class BookAModel extends WB_Model
     }
 
     /**
-     * 송장번호 등록
+     * 송장번호 등록 (트랜잭션 제외)
      * @param array $input [송장등록 정보]
      * @return array|bool
      */
     public function modifyInvoiceNo($input)
     {
-        $this->_conn->trans_begin();
+        //$this->_conn->trans_begin();
         $upd_cnt = 0;
 
         try {
@@ -205,9 +205,9 @@ class BookAModel extends WB_Model
                 throw new \Exception('등록된 송장번호가 없습니다.');
             }
 
-            $this->_conn->trans_commit();
+            //$this->_conn->trans_commit();
         } catch (\Exception $e) {
-            $this->_conn->trans_rollback();
+            //$this->_conn->trans_rollback();
             return error_result($e);
         }
 
@@ -215,14 +215,14 @@ class BookAModel extends WB_Model
     }
 
     /**
-     * 배송상태 변경 업데이트
+     * 배송상태 변경 업데이트 (트랜잭션 제외)
      * @param string $delivery_status [배송상태, prepare (발송준비), complete (발송완료)]
      * @param array $input [상태변경 정보]
      * @return array|bool
      */
     public function modifyDeliveryStatus($delivery_status, $input)
     {
-        $this->_conn->trans_begin();
+        //$this->_conn->trans_begin();
         $upd_cnt = 0;
 
         try {
@@ -275,9 +275,9 @@ class BookAModel extends WB_Model
                 throw new \Exception('상태 변경된 내역이 없습니다.');
             }
 
-            $this->_conn->trans_commit();
+            //$this->_conn->trans_commit();
         } catch (\Exception $e) {
-            $this->_conn->trans_rollback();
+            //$this->_conn->trans_rollback();
             return error_result($e);
         }
 
@@ -285,13 +285,13 @@ class BookAModel extends WB_Model
     }
 
     /**
-     * 배송정보 초기화
+     * 배송정보 초기화 (트랜잭션 제외)
      * @param $input
      * @return array|bool
      */
     public function modifyDeliveryInit($input)
     {
-        $this->_conn->trans_begin();
+        //$this->_conn->trans_begin();
         $upd_cnt = 0;
 
         try {
@@ -339,9 +339,9 @@ class BookAModel extends WB_Model
                 throw new \Exception('초기화 내역이 없습니다.');
             }
 
-            $this->_conn->trans_commit();
+            //$this->_conn->trans_commit();
         } catch (\Exception $e) {
-            $this->_conn->trans_rollback();
+            //$this->_conn->trans_rollback();
             return error_result($e);
         }
 

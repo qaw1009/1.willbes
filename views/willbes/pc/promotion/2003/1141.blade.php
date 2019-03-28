@@ -323,7 +323,7 @@
                  @if ($live_type == 'standby')
                     <!--강의전 화면-->
                     <img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_live_vod_off.png" alt="라이브강의_지금은 진행시간이아닙니다" border="0" />
-                 @elseif ($live_type == 'on')
+                 @elseif ($live_type == 'on' && $live_video_type == 'on')
                     <!--강의중 플레이어-->
                     <script src="/public/vendor/jwplayer/jwplayer.js"></script>
                     <div class="movieFrame">
@@ -350,6 +350,9 @@
                             @endif
                         </div>
                     </div>
+                 @elseif ($live_type == 'on' && $live_video_type == 'off')
+                     <!--강의전 화면-->
+                         <img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_live_vod_off.png" alt="라이브강의_지금은 진행시간이아닙니다" border="0" />
                  @else
                     <!--4월 2일 이후 강의 종료 후 화면-->
                     <img src="http://file3.willbes.net/new_gosi/2019/03/EV190319_live_vod_off2.png" alt="라이브강의_지금은 진행시간이아닙니다" border="0" />

@@ -443,7 +443,8 @@ class CouponFModel extends WB_Model
     {
         $arr_condition = array_merge_recursive($add_condition,[
             'EQ' => [
-                'C.CouponIdx' =>  $couponidx
+                'C.CouponIdx' =>  $couponidx,
+                'C.MemIdx' =>  $this->session->userdata('mem_idx')
             ]
         ]);
 

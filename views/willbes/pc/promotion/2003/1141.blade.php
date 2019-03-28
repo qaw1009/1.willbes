@@ -407,20 +407,20 @@
             timeStr += inZero(today.getMinutes(),2);
             timeStr += inZero(today.getSeconds(),2);
 
-            if(seq == 1 && (timeStr < 20190328150000 || timeStr > 20190329120000)){
-                alert("3월28일 오후 3시부터 다운가능하며,\n정답해설은 다음날 12시까지 다운받으실 수 있습니다.");
+            if(seq == 1 && (timeStr < 20190328140000 || timeStr > 20190329120000)){
+                alert("3월28일 오후 2시부터 다운가능하며,\n정답해설은 다음날 12시까지 다운받으실 수 있습니다.");
                 return;
-            } else if(seq == 2 && (timeStr < 20190329150000 || timeStr > 20190330120000)){
-                alert("3월29일 오후 3시부터 다운가능하며,\n정답해설은 다음날 12시까지 다운받으실 수 있습니다.");
+            } else if(seq == 2 && (timeStr < 20190329140000 || timeStr > 20190330120000)){
+                alert("3월29일 오후 2시부터 다운가능하며,\n정답해설은 다음날 12시까지 다운받으실 수 있습니다.");
                 return;
             } else if(seq == 3 && (timeStr < 20190331100000 || timeStr > 20180401120000)){
                 alert("3월31일 오전 10시부터 다운가능하며,\n정답해설은 다음날 12시까지 다운받으실 수 있습니다.");
                 return;
-            } else if(seq == 4 && (timeStr < 20190401150000 || timeStr > 20180402120000)){
-                alert("4월1일 오후 3시부터 다운가능하며,\n정답해설은 다음날 12시까지 다운받으실 수 있습니다.");
+            } else if(seq == 4 && (timeStr < 20190401140000 || timeStr > 20180402120000)){
+                alert("4월1일 오후 2시부터 다운가능하며,\n정답해설은 다음날 12시까지 다운받으실 수 있습니다.");
                 return;
-            } else if(seq == 5 && (timeStr < 20190402150000 || timeStr > 20180403120000)) {
-                alert("4월2일 오후 3시부터 다운가능하며,\n정답해설은 다음날 12시까지 다운받으실 수 있습니다.");
+            } else if(seq == 5 && (timeStr < 20190402140000 || timeStr > 20180403120000)) {
+                alert("4월2일 오후 2시부터 다운가능하며,\n정답해설은 다음날 12시까지 다운받으실 수 있습니다.");
                 return;
             } else {
                 var _url = '{{ site_url("/promotion/download") }}' + '?file_idx='+file_idx + '&event_idx='+event_idx;

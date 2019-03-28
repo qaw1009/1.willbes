@@ -38,6 +38,7 @@ class MockTest extends \app\controllers\FrontController
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
 
         $s_type = element('s_type',$arr_input);
+        $state = element('state',$arr_input);
         $s_keyword = element('s_keyword',$arr_input);
         $get_page_params = 's_type='.$s_type.'&s_keyword='.$s_keyword;
 
@@ -52,11 +53,18 @@ class MockTest extends \app\controllers\FrontController
             $searchdate2 = '1';
         }
 
+        if($state == '1'){
+            $TakeFormsCcd = '690001';
+        } else {
+            $TakeFormsCcd = '690002';
+        }
+
         $arr_condition = [
             'EQ' => [
                 'pm.CateCode' => $this->_cate_code
                 ,'pm.IsUse' => 'Y'
                 ,'pm.SiteCode' => $this->_site_code
+                , 'pm.TakeFormsCcd' => $TakeFormsCcd
                 //,'pm.AcceptStatusCcd' => $s_type
             ],
 
@@ -72,6 +80,8 @@ class MockTest extends \app\controllers\FrontController
         $list = [];
         $count = $this->mockInfoFModel->listMockTest(true, $arr_condition);
 
+        //var_dump($arr_condition);
+
         $paging = $this->pagination('mockTest/apply/cate/'.$this->_cate_code.'/?'.$get_page_params,$count,$this->_paging_limit,$this->_paging_count,true);
 
         if($count > 0) {
@@ -85,7 +95,8 @@ class MockTest extends \app\controllers\FrontController
             'list'=>$list,
             'paging' => $paging,
             'page_type' => 'apply',
-            's_type' => $s_type
+            's_type' => $s_type,
+            'state' => $state
         ]);
     }
 

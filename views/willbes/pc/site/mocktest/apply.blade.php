@@ -22,17 +22,24 @@
                 <form id="url_form" name="url_form" method="GET">
 
                     <div class="willbes-Leclist c_both mt60">
+
                         <div class="willbes-LecreplyList tx-gray c_both mt-zero">
                             <span class="willbes-Lec-Search willbes-SelectBox mb20 GM f_left">
-                                [총 {{$count}}건]
+                                <select id="state" name="state" title="state" class="seleState mr10 h30 f_left">
+                                    <option value="">응시형태</option>
+                                    <option value="1" @if($state == '1') selected @endif>Online</option>
+                                    <option value="2" @if($state == '2') selected @endif>Off(학원)</option>
+                                </select>
                             </span>
-                            <span class="willbes-Lec-Search willbes-SelectBox mb20 GM f_right">
+                            <span class="willbes-Lec-Search willbes-SelectBox mb20 GM f_left">
+                                <select id="s_type" name="s_type" title="state" class="seleState mr10 h30 f_left">
+                                    <option value="">진행상태</option>
+                                    <option value="1" @if($s_type == 1) selected @endif>접수대기</option>
+                                    <option value="2" @if($s_type == 2) selected @endif>접수중</option>
+                                </select>
+                            </span>
+                            <span class="willbes-Lec-Search willbes-SelectBox mb20 GM f_left">
                                 <div class="inputBox p_re">
-                                    <select id="s_type" name="s_type" title="state" class="seleState mr10 h30 f_left">
-                                        <option value="">진행상태</option>
-                                        <option value="1" @if($s_type == 1) selected @endif>접수대기</option>
-                                        <option value="2" @if($s_type == 2) selected @endif>접수중</option>
-                                    </select>
                                     <input type="text" id="s_keyword" name="s_keyword" class="labelSearch" value="{{element('s_keyword', $arr_input)}}" placeholder="모의고사명을 입력해 주세요" maxlength="30">
                                     <button type="submit" onclick="goUrl('s_keyword', document.getElementById('s_keyword').value);" class="search-Btn">
                                         <span>검색</span>
@@ -40,6 +47,7 @@
                                 </div>
                             </span>
                         </div>
+
 
                         <div class="LeclistTable">
                             <table cellspacing="0" cellpadding="0" class="listTable mockTable under-gray bdt-gray tx-gray">
@@ -76,7 +84,7 @@
                                         <tr>
                                             <td class="w-no">{{$paging['rownum']}}</td>
                                             <td class="w-type">{{$row['CateName']}}</td>
-                                            <td class="w-form">{{$row['TakeFormsCcd_Name']}}</td>
+                                            <td class="w-form">@if($row['TakeFormsCcd_Name'] == "off(학원)")<span class="tx-red strong">Off</span>@else<span class="tx-blue strong">Online</span>@endif</td>
                                             <td class="w-date">{{$row['TakeStartDatm']}} ~<br/>{{$row['TakeEndDatm']}}</td>
                                             <td class="w-list tx-left pl15"><a href="javascript:;" onclick="applyRegist('{{$row['ProdCode']}}','{{$row['OrderProdIdx']}}')">{{$row['ProdName']}}</a></td>
                                             <td class="w-price">@if(empty($sales_info)==false){{ number_format($sales_info[0]['RealSalePrice'],0)}}원@endif</td>

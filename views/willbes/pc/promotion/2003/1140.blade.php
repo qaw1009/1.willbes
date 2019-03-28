@@ -144,27 +144,27 @@
             <div class="download">		
                 <!--국어-->
                 <span>
-                    <a href="javascript:alert('준비중입니다.')">다운로드</a>
+                    <a href="@if($file_yn == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif">다운로드</a>
                 </span>
 
                 <!--영어-->
                 <span>
-                    <a href="javascript:alert('준비중입니다.')">다운로드</a>
+                    <a href="@if($file_yn == 'Y') {{ front_url($file_link[2]) }} @else {{ $file_link[2] }} @endif">다운로드</a>
                 </span>
                     
                 <!--한국사-->
                 <span>
-                    <a href="javascript:alert('준비중입니다.')">다운로드</a>
+                    <a href="@if($file_yn == 'Y') {{ front_url($file_link[3]) }} @else {{ $file_link[3] }} @endif">다운로드</a>
                 </span>
     
                 <!--행정법-->
                 <span>
-                    <a href="javascript:alert('준비중입니다.')">다운로드</a>
+                    <a href="@if($file_yn == 'Y') {{ front_url($file_link[4]) }} @else {{ $file_link[4] }} @endif">다운로드</a>
                 </span>
                     
                 <!--행정학-->
                 <span>
-                    <a href="javascript:alert('준비중입니다.')">다운로드</a>
+                    <a href="@if($file_yn == 'Y') {{ front_url($file_link[5]) }} @else {{ $file_link[5] }} @endif">다운로드</a>
                 </span>
                 <img src="https://static.willbes.net/public/images/promotion/2019/03/1140_01_1.jpg" title="풀캐어 강사진" />            
             </div>

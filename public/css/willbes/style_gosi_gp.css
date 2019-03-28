@@ -28,6 +28,7 @@
     width:1120px;  
     height: 400px;
     overflow: hidden;
+    z-index: 1;
 }
 .gp .VisualBox img {
   height: 400px;
@@ -60,7 +61,7 @@
   margin-left:196px;
   top:10px;
   width: 364px;
-  z-index: 100;
+  z-index: 2;
 }
 .gp .VisualsubBox .bSlider {
   margin-top:3px;

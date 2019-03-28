@@ -264,17 +264,36 @@
                             </div>
                         </div>
 
-                        <div class="form-group hide" id="limit_{{$optoins_keys[1]}}">
-                            <label class="control-label col-md-2">댓글사용영역</label>
-                            <div class="col-md-7 form-inline">
-                                <div class="checkbox">
-                                <input type="checkbox" id="comment_use_area_B" name="comment_use_area[]" value="B" class="flat" @if( (empty($data['ArrCommentUseArea']['B']) === false) && $data['ArrCommentUseArea']['B']=='B' )checked="checked"@endif/>
-                                <label class="inline-block mr-5" for="comment_use_area_B">이벤트페이지(하단)</label>
+                        <div class="hide" id="limit_{{$optoins_keys[1]}}">
+                            <div class="form-group">
+                                <label class="control-label col-md-2">댓글사용영역</label>
+                                <div class="col-md-7 form-inline">
+                                    <div class="checkbox">
+                                    <input type="checkbox" id="comment_use_area_B" name="comment_use_area[]" value="B" class="flat" @if( (empty($data['ArrCommentUseArea']['B']) === false) && $data['ArrCommentUseArea']['B']=='B' )checked="checked"@endif/>
+                                    <label class="inline-block mr-5" for="comment_use_area_B">이벤트페이지(하단)</label>
 
-                                <input type="checkbox" id="comment_use_area_P" name="comment_use_area[]" value="P" class="flat" @if( (empty($data['ArrCommentUseArea']['P']) === false) && $data['ArrCommentUseArea']['P']=='P' )checked="checked"@endif/>
-                                <label class="inline-block mr-5" for="comment_use_area_P">바로신청팝업</label>
+                                    <input type="checkbox" id="comment_use_area_P" name="comment_use_area[]" value="P" class="flat" @if( (empty($data['ArrCommentUseArea']['P']) === false) && $data['ArrCommentUseArea']['P']=='P' )checked="checked"@endif/>
+                                    <label class="inline-block mr-5" for="comment_use_area_P">바로신청팝업</label>
+                                    </div>
                                 </div>
                             </div>
+                            {{--<div class="form-group">
+                                <label class="control-label col-md-2">댓글Ui종류</label>
+                                <div class="col-md-7 form-inline">
+                                    <div class="checkbox">
+                                        @foreach($arr_comment_ui_type_ccd as $key => $val)
+                                            <input type="checkbox" id="comment_ui_type_{{$key}}" name="comment_ui_type[]" class="flat" title="댓글Ui종류" value="{{$key}}"
+                                                   @if( ($method == 'POST' && $loop->first === true) || (empty($data['comment_ui_type_ccds']) === false && array_key_exists($key, $data['comment_ui_type_ccds']) === true) )checked="checked"@endif/>
+                                            <label class="inline-block mr-5" for="comment_ui_type_{{$key}}">{{$val}}</label>
+                                        @endforeach
+                                    </div>
+                                </div>
+                                <div class="col-md-10 col-lg-offset-2 form-inline">
+                                    <p class="form-control-static">• 프로모션 댓글 종류에 따라 설정 할 수 있습니다.<br>
+                                        • <b>일반 이벤트의 댓글</b>은 기본형으로만 가능.
+                                    </p>
+                                </div>
+                            </div>--}}
                         </div>
 
                         <div class="form-group hide" id="limit_{{$optoins_keys[2]}}">

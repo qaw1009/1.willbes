@@ -1969,6 +1969,7 @@ table.auTable tr td {
     width: 144px;
     padding: 20px;
     text-align: left;
+    z-index:300;
 }
 .list-drop-Box ul li {
     line-height: 22px;

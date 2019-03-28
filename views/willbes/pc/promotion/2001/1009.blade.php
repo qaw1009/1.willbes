@@ -146,7 +146,7 @@
                 <ul>
                     <li>
                         <span>윌비스신광은경찰 PASS</span><br />
-                        <span style="line-height:40px;font-size:22pt;color:#000">2019-70기</span>
+                        <span style="line-height:40px;font-size:22pt;color:#000">2019-72기</span>
                     </li>
                     <li><img id="dd1" src="http://file.willbes.net/new_image/0.png" /></li>
                     <li><img id="dd2" src="http://file.willbes.net/new_image/0.png" /></li>
@@ -161,7 +161,7 @@
                     <li><img id="ss2" src="http://file.willbes.net/new_image/0.png" /></li>
                     <li>
                         <a href="#pass" target="_self">수강하기 &gt;</a><br />
-                        <span style="line-height:40px;">3.27(수) 24:00 마감!</span>
+                        <span style="line-height:40px;">3.31(수) 24:00 마감!</span>
                     </li>
                 </ul>
             </div>
@@ -381,7 +381,7 @@
                     </dt>
                     <dd>
                         <ol>
-                            <li>평생PASS는 갱신형 상품이며, 일반경찰/경행경채로 구분되는 상품입니다.(1회 변경 가능)<br />
+                            <li>평생PASS는 갱신형 상품이며, 일반경찰/경행경채로 구분되는 상품입니다.<br />
                                 시험 응시 후 불합격 인증하여야 수강기간이 갱신됩니다. 갱신시 다음 시험까지 무료 연장됩니다.
                             </li>
                             <li>수강기간 갱신이 필요한 경우 불합격 증빙(응시표, 성적표)자료를 제출하셔야 합니다.</li>

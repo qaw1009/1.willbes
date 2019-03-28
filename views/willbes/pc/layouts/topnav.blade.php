@@ -1,5 +1,5 @@
 <!-- Header -->
-<div id="Header" class="NSK c_both">
+<div id="Header" class="NGR c_both">
     <div class="widthAuto">
         <div class="topnavTxt {{ SUB_DOMAIN }}">내 인생 모든 시험, <span class="tx-color">윌비스</span>로 합격하다!</div>
         <div class="loginDepth p_re">

@@ -74,9 +74,26 @@ class BasePromotion extends \app\controllers\FrontController
         }
 
         // 등록파일 데이터 조회
+        $file_link = array();
+        $file_yn = array();
         $list_event_file = $this->eventFModel->listEventForFile($data['ElIdx']);
+
+        for($i = 1; $i <= 99; $i++){
+            $file_link[$i] = "javascript:alert('준비중입니다.')";
+            $file_yn[$i] = 'N';
+        }
+
         $file_data_promotion = $list_event_file;
         $arrCircle = array(0 => '①', 1 => '②', 2 => '③', 3 => '④', 4 => '⑤', 5 => '⑥', 6 => '⑦');
+
+        foreach ($file_data_promotion as $key => $row){
+            $fileidx = $row['Ordering'];
+            $file_link[$fileidx] = '/promotion/download?file_idx='.$row['EfIdx'].'&event_idx='.$data['ElIdx'];
+            $file_yn[$fileidx] = 'Y';
+        }
+
+        $this->load->library('user_agent');
+        $ismobile = $this->agent->is_mobile();
 
         $view_file = 'willbes/pc/promotion/' . $this->_site_code . '/' . $arr_base['promotion_code'];
         $this->load->view($view_file, [
@@ -85,7 +102,10 @@ class BasePromotion extends \app\controllers\FrontController
             'arrCircle' => $arrCircle,
             'cert_apply' => $apply_result,
             'file_data_promotion' => $file_data_promotion,
-            'arr_promotion_params' => $arr_promotion_params
+            'arr_promotion_params' => $arr_promotion_params,
+            'file_link' => $file_link,
+            'file_yn' => $file_yn,
+            'ismobile' => $ismobile
         ], false);
     }
 
@@ -115,12 +135,14 @@ class BasePromotion extends \app\controllers\FrontController
         $arr_base['comment_create_type'] = $comment_create_type;
 
         $arr_base['set_params '] = [
-            'event_idx' => element('event_idx', $arr_input)
+            'event_idx' => element('event_idx', $arr_input),
+            'comment_ui_ccd' => $comment_type
         ];
 
         $arr_condition = [
             'EQ' => [
                 'a.ElIdx' => element('event_idx', $arr_input),
+                'a.CommentUiCcd' => $comment_type,
                 'a.IsStatus' => 'Y',
                 'b.SiteCode' => $this->_site_code,
                 'c.CateCode' => element('cate_code', $arr_input),
@@ -152,6 +174,7 @@ class BasePromotion extends \app\controllers\FrontController
     {
         $rules = [
             ['field' => 'event_idx', 'label' => '이벤트식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'comment_ui_ccd', 'label' => '이벤트UI식별자', 'rules' => 'trim|required'],
             ['field' => 'event_comment', 'label' => '댓글', 'rules' => 'trim|required']
         ];
 
@@ -250,8 +273,6 @@ class BasePromotion extends \app\controllers\FrontController
         ], false);
     }
 
-
-
     public function promotionEventCheck()
     {
         //제공구분 : 포인트, 쿠폰
@@ -260,14 +281,31 @@ class BasePromotion extends \app\controllers\FrontController
         $give_idx = $this->_req('give_idx');
         //발급 제한 갯수
         $limit_count = 1;
+        
+        //이벤트식별자
+        $el_idx = (int)$this->_req('event_code');
+
+        // 댓글 참여 여부 확인
+        $arr_condition = [
+            'EQ' => [
+                'a.MemIdx' => $this->session->userdata('mem_idx'),
+                'a.ElIdx' => $el_idx,
+                'a.IsStatus' => 'Y',
+                'a.IsUse' => 'Y'
+            ]
+        ];
+        $comment_result = $this->eventFModel->listEventForCommentPromotion(false, $arr_condition, 1, 0, ['a.CIdx' => 'DESC']);
+        if (empty($comment_result) === true) {
+            return $this->json_error("소문내기 댓글을 등록해 주세요.");
+        }
 
         if(empty($give_type)) {
-            return $this->json_result('', '정보가 존재하지 않습니다.', '');
+            return $this->json_error("정보가 존재하지 않습니다.");
         }
 
         if($give_type === 'coupon') {
             if(empty($give_idx)) {
-                $this->json_result('', '정보가 존재하지 않습니다.', '');
+                return $this->json_error("정보가 존재하지 않습니다.");
             }else{
                 //발급여부 확인
                 $check = $this->couponFModel->checkIssueCoupon($give_idx);
@@ -286,8 +324,5 @@ class BasePromotion extends \app\controllers\FrontController
                 $this->json_result($result['ret_cd'] , $result, $result);
             }
         }
-
     }
-
-
 }

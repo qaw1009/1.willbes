@@ -19,7 +19,7 @@
 
         /************************************************************/
 
-        .wb_pop2 {background:#252525 url(http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190307_01_bg.jpg) no-repeat center top}
+        .wb_pop2 {background:#252525 url(https://static.willbes.net/public/images/promotion/2019/03/1009_71_top_bg.jpg) no-repeat center top}
 
         .wb_pop3 {background:#1e1e1e url(http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20181214_02_bg.jpg) no-repeat center top}
 
@@ -32,7 +32,7 @@
         .wb_top .passLecBuy li:nth-child(2) {width:232px; padding-left:60px}
         .wb_top .passLecBuy li:nth-child(3) {width:400px; padding-left:140px}
         .wb_top .passLecBuy li div {margin:30px 0 0 0; font-size:20px; font-weight:bold; background:#000; color:#fff; text-align:center; padding:16px 0; border-radius:0 40px 40px 40px}
-        .wb_top .passLecBuy li:last-child div {background:#0f897e;} /*평생0원PASS가격배경컬러변경*/
+        .wb_top .passLecBuy li:last-child div {background:#96232c;} /*평생0원PASS가격배경컬러변경*/
         .wb_top .passLecBuy li:last-child p {font-weight:bold; font-size:20px}
         .wb_top strong {font-family:Verdana, Geneva, sans-serif; font-size:30px}
         .wb_top .passLecBuy ul:after {content:""; display:block; clear:both}
@@ -146,7 +146,7 @@
                 <ul>
                     <li>
                         <span>윌비스신광은경찰 PASS</span><br />
-                        <span style="line-height:40px;font-size:22pt;color:#000">2019-70기</span>
+                        <span style="line-height:40px;font-size:22pt;color:#000">2019-71기</span>
                     </li>
                     <li><img id="dd1" src="http://file.willbes.net/new_image/0.png" /></li>
                     <li><img id="dd2" src="http://file.willbes.net/new_image/0.png" /></li>
@@ -161,7 +161,7 @@
                     <li><img id="ss2" src="http://file.willbes.net/new_image/0.png" /></li>
                     <li>
                         <a href="#pass" target="_self">수강하기 &gt;</a><br />
-                        <span style="line-height:40px;">3.27(수) 24:00 마감!</span>
+                        <span style="line-height:40px;">3.31(일) 24:00 마감!</span>
                     </li>
                 </ul>
             </div>
@@ -169,10 +169,10 @@
         <!--타이머//-->
 
         <div class="evtCtnsBox wb_pop2" id="main">
-            <img src="http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190307_01.png"  alt="평생0원 PASS 마감" usemap="#rebound"/>
+            <img src="https://static.willbes.net/public/images/promotion/2019/03/1009_71_top.jpg"  alt="평생0원 PASS" usemap="#rebound"/>
             <map name="rebound" id="rebound">
-                <area shape="rect" coords="300,1170,475,1213" href="javascript:certOpen();" alt="수강생인증"/>
-                <area shape="rect" coords="500,1170,675,1213" href="javascript:goDesc('tab3')" alt="이용안내"/>
+                <area shape="rect" coords="370,1172,545,1215" href="javascript:certOpen();" alt="수강생인증"/>
+                <area shape="rect" coords="567,1171,742,1214" href="javascript:goDesc('tab3')" alt="이용안내"/>
             </map>
         </div>
 
@@ -211,16 +211,17 @@
                 <span style="color:#fff">
                     <label for="j_pkg">PASS 구매 시 할인 쿠폰이 자동 지급 됩니다.</label>
                 </span>
-                <img src="http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190307_03_re1.jpg"  alt="신광은경찰PASS 수강료" usemap="#Map190123"><br />
-                <img src="http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190307_03_re2.jpg"  alt="체력" usemap="#Map190117A" border="0"/>
+                <img src="https://static.willbes.net/public/images/promotion/2019/03/1009_71_03.jpg"  alt="신광은경찰PASS 수강료" usemap="#Map190123"><br />
                 <map name="Map190123" id="Map190123">
-                    <area shape="rect" coords="220,545,285,564" href="javascript:go_popup()" alt="6개월과목" />
-                    <area shape="rect" coords="483,545,546,564" href="javascript:go_popup()" alt="12개월과목" />
-                    <area shape="rect" coords="777,545,838,564" href="javascript:go_popup1()" alt="평생목팝업" />
-                </map>
+                    <area shape="rect" coords="178,546,243,565" href="javascript:go_popup()" alt="6개월과목" />
+                    <area shape="rect" coords="439,545,502,564" href="javascript:go_popup()" alt="12개월과목" />
+                    <area shape="rect" coords="733,546,794,565" href="javascript:go_popup1()" alt="평생목팝업" />
+                </map> 
+                <img src="https://static.willbes.net/public/images/promotion/2019/03/1009_71_03_02.jpg"  alt="체력" usemap="#Map190117A"/>                
                 <map name="Map190117A" id="Map190117A">
                     <area shape="rect" coords="656,183,776,227" href="{{ site_url('promotion/index/cate/3001/code/1030') }}" target="_blank" alt="경찰체력패키지" />
                 </map>
+                               
             </div>
 
             <!--레이어팝업-->
@@ -381,7 +382,7 @@
                     </dt>
                     <dd>
                         <ol>
-                            <li>평생PASS는 갱신형 상품이며, 일반경찰/경행경채로 구분되는 상품입니다.(1회 변경 가능)<br />
+                            <li>평생PASS는 갱신형 상품이며, 일반경찰/경행경채로 구분되는 상품입니다.<br />
                                 시험 응시 후 불합격 인증하여야 수강기간이 갱신됩니다. 갱신시 다음 시험까지 무료 연장됩니다.
                             </li>
                             <li>수강기간 갱신이 필요한 경우 불합격 증빙(응시표, 성적표)자료를 제출하셔야 합니다.</li>
@@ -590,7 +591,7 @@
 
         function daycountDown() {
             // 한달 전 날짜로 셋팅
-            var event_day = new Date(2019,2,27,23,59,59);
+            var event_day = new Date(2019,2,31,23,59,59);
             var now = new Date();
             var timeGap = new Date(0, 0, 0, 0, 0, 0, (event_day - now));
 

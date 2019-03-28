@@ -23,7 +23,8 @@ class EventFModel extends WB_Model
         'product_subject' => 'lms_product_subject',
         'professor' => 'lms_professor',
         'pms_professor' => 'wbs_pms_professor',
-        'lms_event_promotion_log' => 'lms_event_promotion_log'
+        'lms_event_promotion_log' => 'lms_event_promotion_log',
+        'lms_member' => 'lms_member'
     ];
     public $_request_type = [
         '1' => '설명회',
@@ -421,6 +422,7 @@ class EventFModel extends WB_Model
                 'MemIdx' => $this->session->userdata('mem_idx'),
                 'MemName' => $this->session->userdata('mem_name'),
                 'CommentType' => 'U',
+                'CommentUiCcd' => element('comment_ui_ccd', $requestData, '713001'),
                 'Comment' => $requestData['event_comment'],
                 'EmoticonNo' => element('sns_icon', $requestData, ''),
                 'RegIp' => $this->input->ip_address()
@@ -710,7 +712,7 @@ class EventFModel extends WB_Model
      */
     public function listEventForFile($el_idx)
     {
-        $column = 'EfIdx, FileName, FileRealName, FileFullPath, FileType';
+        $column = "EfIdx, FileName, FileRealName, FileFullPath, FileType, Ordering";
         $from = "
             FROM {$this->_table['event_file']}
         ";
@@ -736,7 +738,7 @@ class EventFModel extends WB_Model
             $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $column = 'a.CIdx AS Idx, a.MemIdx, IFNULL(a.MemIdx, \'\'), a.MemName, a.Comment AS Content, a.EmoticonNo, a.RegDatm, DATE_FORMAT(a.RegDatm, \'%Y-%m-%d\') AS RegDay, \'2\' AS RegType';
+            $column = 'a.CIdx AS Idx, IFNULL(a.MemIdx, \'\') AS MemIdx, a.MemName, m.MemId, a.Comment AS Content, a.EmoticonNo, a.RegDatm, DATE_FORMAT(a.RegDatm, \'%Y-%m-%d\') AS RegDay, \'2\' AS RegType';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
@@ -745,6 +747,7 @@ class EventFModel extends WB_Model
             FROM {$this->_table['event_comment']} AS a
             INNER JOIN {$this->_table['event_lecture']} AS b ON a.ElIdx = b.ElIdx
             INNER JOIN {$this->_table['event_r_category']} AS c ON a.ElIdx = c.ElIdx AND c.IsStatus = 'Y'
+            LEFT JOIN {$this->_table['lms_member']} AS m ON a.MemIdx = m.MemIdx
         ";
 
         $where = $this->_conn->makeWhere($arr_condition);

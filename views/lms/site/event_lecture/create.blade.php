@@ -277,12 +277,12 @@
                                     </div>
                                 </div>
                             </div>
-                            {{--<div class="form-group">
+                            <div class="form-group">
                                 <label class="control-label col-md-2">댓글Ui종류</label>
                                 <div class="col-md-7 form-inline">
                                     <div class="checkbox">
                                         @foreach($arr_comment_ui_type_ccd as $key => $val)
-                                            <input type="checkbox" id="comment_ui_type_{{$key}}" name="comment_ui_type[]" class="flat" title="댓글Ui종류" value="{{$key}}"
+                                            <input type="checkbox" id="comment_ui_type_{{$key}}" name="comment_ui_type_ccds[]" class="flat" title="댓글Ui종류" value="{{$key}}"
                                                    @if( ($method == 'POST' && $loop->first === true) || (empty($data['comment_ui_type_ccds']) === false && array_key_exists($key, $data['comment_ui_type_ccds']) === true) )checked="checked"@endif/>
                                             <label class="inline-block mr-5" for="comment_ui_type_{{$key}}">{{$val}}</label>
                                         @endforeach
@@ -293,7 +293,7 @@
                                         • <b>일반 이벤트의 댓글</b>은 기본형으로만 가능.
                                     </p>
                                 </div>
-                            </div>--}}
+                            </div>
                         </div>
 
                         <div class="form-group hide" id="limit_{{$optoins_keys[2]}}">
@@ -600,7 +600,7 @@
                 //add_file_box_text += '<input type="text" class="form-control file-text" disabled="disabled">';
                 //add_file_box_text += '<button class="btn btn-primary mb-0 ml-5" type="button">파일 선택</button>';
                 //add_file_box_text += '<span class="file-select file-btn">';
-                add_file_box_text += '<input type="file" id="attach_file_promotion'+file_id+'" name="attach_file_promotion[]" class="form-control input-file" title="첨부'+file_id+'"/>';
+                add_file_box_text += '<input type="file" id="attach_file_promotion'+file_id+'" name="attach_file_promotion[]" class="form-control input-file" title="첨부'+file_id+'"/>&nbsp;<input type="text" id="Ordering'+file_id+'" name="Ordering[]" style="width:20px;"/>';
                 //add_file_box_text += '</span>';
                 //add_file_box_text += '<input class="file-reset btn-danger btn" type="button" value="X" />';
                 //add_file_box_text += '</div>';

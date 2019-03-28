@@ -646,7 +646,7 @@ class RegGoods extends \app\controllers\BaseController
 
         $condition = [
             'EQ' => [
-                'EB.SiteCode' => $this->input->post('sc_site_code'),
+                'EB.SiteCode' => $this->input->post('sc_siteCode'),
                 'MB.CateCode' => $this->input->post('sc_cateD1'),
                 'MB.Ccd' => $this->input->post('sc_cateD2'),
                 'EB.Year' => $this->input->post('sc_year'),

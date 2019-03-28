@@ -96,7 +96,7 @@ class EventLectureModel extends WB_Model
             A.ElIdx, A.SiteCode, A.CampusCcd, A.PromotionCode, A.BIdx, A.IsBest, A.RequestType, A.EventName, A.RegisterStartDate, A.RegisterEndDate, A.OptionCcds,
             A.ReadCnt, A.IsRegister, A.IsCopy, A.IsUse, A.RegDatm,
             G.SiteName, J.CcdName AS CampusName, D.CateCode, E.wAdminName AS RegAdminName, F.wAdminName AS UpdAdminName,
-            K.FileFullPath, K.FileName, IFNULL(H.CCount,\'0\') AS CommentCount,
+            K.Ordering, K.FileFullPath, K.FileName, IFNULL(H.CCount,\'0\') AS CommentCount,
             CASE RequestType WHEN 1 THEN \'설명회\' WHEN 2 THEN \'특강\' WHEN 3 THEN \'이벤트\' WHEN 4 THEN \'합격수기\' WHEN 5 THEN \'프로모션\' END AS RequestTypeName,
             CASE IsRegister WHEN \'Y\' THEN \'접수중\' WHEN \'N\' THEN \'마감\' END AS IsRegisterName,
             L.BannerName, L.BannerFullPath, L.BannerImgName, L.BannerImgRealName,
@@ -185,6 +185,9 @@ class EventLectureModel extends WB_Model
             $admin_idx = $this->session->userdata('admin_idx');
             $option_ccds = element('option_ccds', $input);
             $comment_use_area = element('comment_use_area', $input);
+            $comment_ui_type_ccds = element('comment_ui_type_ccds', $input);
+
+            $ordering = element('Ordering', $input);
 
             if (empty($option_ccds) === false) {
                 foreach ($option_ccds as $key => $val) {
@@ -212,6 +215,11 @@ class EventLectureModel extends WB_Model
             $set_comment_use_area = '';
             if (empty($comment_use_area) === false) {
                 $set_comment_use_area = implode(',', $comment_use_area);
+            }
+
+            $set_comment_ui_type_ccds = '';
+            if (empty($comment_ui_type_ccds) === false) {
+                $set_comment_ui_type_ccds = implode(',', $comment_ui_type_ccds);
             }
 
             if (empty(element('register_start_datm', $input)) === true) {
@@ -251,6 +259,7 @@ class EventLectureModel extends WB_Model
                 'SmsContent' => element('sms_content', $input),
                 'PopupTitle' => element('popup_title', $input),
                 'CommentUseArea' => $set_comment_use_area,
+                'CommentUiTypeCcds' => $set_comment_ui_type_ccds,
                 'Link' => element('promotion_link', $input),
                 'ReadCnt' => (empty(element('read_count', $input))) ? '0' : element('read_count', $input),
                 'AdjuReadCnt' => (empty(element('setting_readCnt', $input))) ? '0' : element('setting_readCnt', $input),
@@ -293,7 +302,7 @@ class EventLectureModel extends WB_Model
             }
 
             // 프로모션 파일저장
-            if ($this->_addContentAttachByPromotion($el_idx, count($this->_set_attache_type)) === false) {
+            if ($this->_addContentAttachByPromotion($el_idx, count($this->_set_attache_type), $ordering) === false) {
                 throw new \Exception('프로모션 파일 등록에 실패했습니다.');
             }
 
@@ -391,6 +400,8 @@ class EventLectureModel extends WB_Model
         try {
             $admin_idx = $this->session->userdata('admin_idx');
             $el_idx = element('el_idx', $input);
+            $ordering = element('Ordering', $input);
+
             $evnet_category_data = element('cate_code', $input);
             $option_ccds = element('option_ccds', $input);
 
@@ -421,10 +432,16 @@ class EventLectureModel extends WB_Model
             }
 
             $comment_use_area = element('comment_use_area', $input);
+            $comment_ui_type_ccds = element('comment_ui_type_ccds', $input);
             $set_option_ccd = (empty($option_ccds) === false) ? implode(',', $option_ccds) : '';
             $set_comment_use_area = '';
             if (empty($comment_use_area) === false) {
                 $set_comment_use_area = implode(',', $comment_use_area);
+            }
+
+            $set_comment_ui_type_ccds = '';
+            if (empty($comment_ui_type_ccds) === false) {
+                $set_comment_ui_type_ccds = implode(',', $comment_ui_type_ccds);
             }
 
             if (empty(element('register_start_datm', $input)) === true) {
@@ -463,6 +480,7 @@ class EventLectureModel extends WB_Model
                 'SmsContent' => element('sms_content', $input),
                 'PopupTitle' => element('popup_title', $input),
                 'CommentUseArea' => $set_comment_use_area,
+                'CommentUiTypeCcds' => $set_comment_ui_type_ccds,
                 'Link' => element('promotion_link', $input),
                 'ReadCnt' => (empty(element('read_count', $input))) ? '0' : element('read_count', $input),
                 'AdjuReadCnt' => (empty(element('setting_readCnt', $input))) ? '0' : element('setting_readCnt', $input),
@@ -490,7 +508,7 @@ class EventLectureModel extends WB_Model
             }
 
             // 프로모션 파일 등록
-            if ($this->_addContentAttachByPromotion($el_idx, count($this->_set_attache_type)) === false) {
+            if ($this->_addContentAttachByPromotion($el_idx, count($this->_set_attache_type), $ordering) === false) {
                 throw new \Exception('프로모션 파일 등록에 실패했습니다.');
             }
 
@@ -595,7 +613,7 @@ class EventLectureModel extends WB_Model
      */
     public function listEventForFile($el_idx)
     {
-        $column = 'EfIdx, FileName, FileRealName, FileFullPath, FileType';
+        $column = 'EfIdx, FileName, FileRealName, FileFullPath, FileType, Ordering';
         $from = "
             FROM {$this->_table['event_file']}
         ";
@@ -1034,7 +1052,7 @@ class EventLectureModel extends WB_Model
      * @param $cnt
      * @return bool
      */
-    private function _addContentAttachByPromotion($el_idx, $cnt)
+    private function _addContentAttachByPromotion($el_idx, $cnt, $ordering)
     {
         try {
             /*$this->load->library('upload');
@@ -1056,6 +1074,8 @@ class EventLectureModel extends WB_Model
 
                     $set_attach_data['RegAdminIdx'] = $this->session->userdata('admin_idx');
                     $set_attach_data['RegIp'] = $this->input->ip_address();
+
+                    $set_attach_data['Ordering'] = $ordering[$idx];
 
                     if ($this->_addEventAttach($set_attach_data) === false) {
                         throw new \Exception('fail');

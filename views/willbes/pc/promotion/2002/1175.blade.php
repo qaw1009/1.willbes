@@ -56,7 +56,7 @@
         .wb_04 div span.area09 {top:859px; left:774px} /*제주*/
 
         .wb_05 {background:#fff;}
-        .wb_06 {w background:#fd6c38}	
+        .wb_06 {background:#fd6c38}	
 
         .content_guide_wrap{background:#fff; margin:0}
         .content_guide_box{ position:relative; width:900px; margin:0 auto; padding:50px 0}

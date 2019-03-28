@@ -27,22 +27,15 @@
                 ctkprint_bar.prt_text_L24 = '{{ $data['OrderNo'] }}' + ';굴림;10;false;left';
             @elseif($data['ViewType'] == 'G')
                 {{-- 공무원학원 --}}
-                var txt_pack = '[종합] ';
                 var txt_blank = '{{ str_repeat(' ', 15) }}';
 
                 ctkprint_bar.prt_text_L4 = '{{ $data['MemName'] }}({{ $data['OrderNo'] }})' + ';굴림;10;true;left';
 
-                @if(isset($data['OrderSubProdData']) === true)
-                    ctkprint_bar.prt_text_L8 = txt_blank + txt_pack + '{{ str_mb_pad($data['ProdName'], 16) }}' + ';굴림;8;false;left';
-
-                    @for($i = 0; $i <=7; $i++)
-                        @if(empty(element($i, $data['OrderSubProdData'])) === false)
-                            ctkprint_bar.prt_text_L{{ 11 + ($i * 3) }} = txt_blank + txt_pack + '{{ str_mb_pad(element($i, $data['OrderSubProdData']), 16) }}' + ';굴림;8;false;left';
-                        @endif
-                    @endfor
-                @else
-                    ctkprint_bar.prt_text_L8 = txt_blank + '{{ str_mb_pad($data['ProdName'], 21) }}' + ';굴림;8;false;left';
-                @endif
+                @for($i = 0; $i <= 8; $i++)
+                    @if(empty(element($i, $data['OrderProdNameData'])) === false)
+                        ctkprint_bar.prt_text_L{{ 8 + ($i * 3) }} = txt_blank + '{{ str_mb_pad(element($i, $data['OrderProdNameData']), 21) }}' + ';굴림;8;false;left';
+                    @endif
+                @endfor
             @endif
 
             ctkprint_bar.prt_text_L28 = '{{ date('Y-m-d H:i') }}' + ';굴림;8;false;left';

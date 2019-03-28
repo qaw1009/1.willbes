@@ -341,7 +341,7 @@
                                 });
                                 </script>
                             </div>
-                            @if (APP_DEVICE == 'm')
+                            @if ($ismobile == true)
                                 <!--모바일용 -->
                                 <ul class="mobileCh">
                                     <li><a href="javascript:fn_live('hd')">▶ 고화질 보기 클릭!</a></li>

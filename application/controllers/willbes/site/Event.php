@@ -147,6 +147,8 @@ class Event extends \app\controllers\FrontController
         if (empty($data) === true) {
             show_alert('데이터 조회에 실패했습니다.', front_url($page_url), false);
         }
+        $frame_params .= '&take_type='.$data['TakeType'];   //댓글 등록타입
+
         $data['data_option_ccd'] = array_flip(explode(',', $data['OptionCcds']));   // 관리옵션 데이터 가공처리
         $data['data_comment_use_area'] = array_flip(explode(',', $data['CommentUseArea']));   // 댓글사용영역 데이터 가공처리
 
@@ -203,13 +205,17 @@ class Event extends \app\controllers\FrontController
         $method = 'POST';
         $arr_input = array_merge($this->_reqG(null));
         $get_params = http_build_query($arr_input);
-        $get_page_params = 'cate_code=' . element('cate_code', $arr_input) . '&event_idx=' . element('event_idx', $arr_input) . '&pattern=' . element('pattern', $arr_input);
+        $get_page_params = 'cate_code=' . element('cate_code', $arr_input) . '&event_idx=' . element('event_idx', $arr_input) . '&pattern=' . element('pattern', $arr_input) . '&take_type=' . element('take_type', $arr_input, '1');
         $onoff_type = element('pattern', $arr_input);
 
         $comment_create_type = '1';
         if ($onoff_type == 'ongoing') {
-            if ($this->session->userdata('is_login') === false) {
-                $comment_create_type = '2';
+            if (element('take_type', $arr_input) == 1) {
+                if ($this->session->userdata('is_login') === false) {
+                    $comment_create_type = '2';
+                }
+            } else {
+                $comment_create_type = '1';
             }
         } else {
             $comment_create_type = '3';

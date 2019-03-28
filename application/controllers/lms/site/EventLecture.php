@@ -242,7 +242,8 @@ class EventLecture extends \app\controllers\BaseController
                         break;
                     case $this->eventLectureModel->_event_lecture_option_ccds[1] :
                         $rules = array_merge($rules, [
-                            ['field' => 'comment_use_area[]', 'label' => '댓글기능옵션', 'rules' => 'trim|required']
+                            ['field' => 'comment_use_area[]', 'label' => '댓글기능옵션', 'rules' => 'trim|required'],
+                            ['field' => 'comment_ui_type_ccds[]', 'label' => '댓글Ui종류', 'rules' => 'trim|required']
                         ]);
                         break;
                     case $this->eventLectureModel->_event_lecture_option_ccds[2] :

@@ -170,13 +170,17 @@
 		</div>
 
 		<div class="evtCtnsBox wb_05" id="evt">
-			<img src="https://static.willbes.net/public/images/promotion/2019/03/1175_p6_1.png" alt="무료응시+소문내기" usemap="#Map1175A" border="0"//>
+			<img src="https://static.willbes.net/public/images/promotion/2019/03/1175_p6_1.png" alt="무료응시+소문내기" usemap="#Map1175A" border="0"/>
             <map name="Map1175A" id="Map1175A">
                 <area shape="rect" coords="440,1001,681,1080" href="javascript:;" onclick="giveCheck()" />
             </map>
 		</div>
 
         {{--홍보url--}}
+            <?php if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true): ?>
+            <?php echo $this->runChild('willbes.pc.promotion.show_comment_list_url_partial'); ?>
+        <?php endif; ?>
+
 
         <div class="evtCtnsBox wb_06" id="go">
             <img src="https://static.willbes.net/public/images/promotion/2019/03/1175_p7.png"  alt="접수하기" usemap="#go"/>
@@ -327,7 +331,7 @@
             function giveCheck() {
                 {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
                 @if(empty($arr_promotion_params) === false)
-                var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params["give_type"]}}&give_idx={{$arr_promotion_params["give_idx"]}}';
+                var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params["give_type"]}}&give_idx={{$arr_promotion_params["give_idx"]}}&event_code={{$data['ElIdx']}}';
                 ajaxSubmit($regi_form, _check_url, function (ret) {
                     if (ret.ret_cd) {
                         alert('온라인 모의고사 무료 응시쿠폰이 발급되었습니다. \n\n내강의실에서 확인해 주세요.');

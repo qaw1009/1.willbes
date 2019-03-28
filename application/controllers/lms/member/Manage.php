@@ -905,10 +905,11 @@ class Manage extends \app\controllers\BaseController
             return $this->json_error('시작일이 잘못된 날짜 입니다.');
         }
 
+        /*
         if($start_date < $today){
             return $this->json_error('시작일은 오늘 이후 날짜만 가능합니다.');
         }
-
+*/
         $cond_arr = [
             'EQ' => [
                 'MemIdx' => $memidx, // 사용자

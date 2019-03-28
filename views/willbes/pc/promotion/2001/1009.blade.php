@@ -19,7 +19,7 @@
 
         /************************************************************/
 
-        .wb_pop2 {background:#252525 url(http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190307_01_bg.jpg) no-repeat center top}
+        .wb_pop2 {background:#252525 url(https://static.willbes.net/public/images/promotion/2019/03/1009_71_top_bg.jpg) no-repeat center top}
 
         .wb_pop3 {background:#1e1e1e url(http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20181214_02_bg.jpg) no-repeat center top}
 

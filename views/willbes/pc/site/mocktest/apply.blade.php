@@ -84,7 +84,7 @@
                                         <tr>
                                             <td class="w-no">{{$paging['rownum']}}</td>
                                             <td class="w-type">{{$row['CateName']}}</td>
-                                            <td class="w-form">{{$row['TakeFormsCcd_Name']}}</td>
+                                            <td class="w-form">@if($row['TakeFormsCcd_Name'] == "off(학원)")<span class="tx-red strong">Off</span>@else<span class="tx-blue strong">Online</span>@endif</td>
                                             <td class="w-date">{{$row['TakeStartDatm']}} ~<br/>{{$row['TakeEndDatm']}}</td>
                                             <td class="w-list tx-left pl15"><a href="javascript:;" onclick="applyRegist('{{$row['ProdCode']}}','{{$row['OrderProdIdx']}}')">{{$row['ProdName']}}</a></td>
                                             <td class="w-price">@if(empty($sales_info)==false){{ number_format($sales_info[0]['RealSalePrice'],0)}}원@endif</td>

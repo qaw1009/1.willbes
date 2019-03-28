@@ -313,7 +313,7 @@
                                 $live_video_type = 'on';
                             }
                         } else if ($day == $val){
-                            if ($time >= '190000' && $time <= '230000') {
+                            if ($time >= '183000' && $time <= '230000') {
                                 $live_video_type = 'on';
                             }
                         }

@@ -26,7 +26,8 @@ class EventLectureModel extends WB_Model
         'option' => '660',
         'SerialCcd' => '666',
         'CandidateAreaCcd' => '631',
-        'SmsSendCallBackNum' => '706'   //SMS 발송번호
+        'SmsSendCallBackNum' => '706',   //SMS 발송번호
+        'CommentUiType' => '713'        //댓글 UI 종류
     ];
 
     // 이벤트 접수 관리(정원제한), 댓글기능, 자동문자, 바로신청팝업
@@ -535,7 +536,7 @@ class EventLectureModel extends WB_Model
             DATE_FORMAT(A.RegisterStartDate, '%Y-%m-%d') AS RegisterStartDay, DATE_FORMAT(A.RegisterStartDate, '%H') AS RegisterStartHour, DATE_FORMAT(A.RegisterStartDate, '%i') AS RegisterStartMin,
             DATE_FORMAT(A.RegisterEndDate, '%Y-%m-%d') AS RegisterEndDay, DATE_FORMAT(A.RegisterEndDate, '%H') AS RegisterEndHour, DATE_FORMAT(A.RegisterEndDate, '%i') AS RegisterEndMin,
             A.ContentType, A.Content, A.OptionCcds, A.LimitType, A.SelectType,
-            A.SendTel, A.SmsContent, A.PopupTitle, A.CommentUseArea, A.Link, A.ReadCnt, A.AdjuReadCnt, (A.ReadCnt + A.AdjuReadCnt) as TotalReadCnt,
+            A.SendTel, A.SmsContent, A.PopupTitle, A.CommentUseArea, A.CommentUiTypeCcds, A.Link, A.ReadCnt, A.AdjuReadCnt, (A.ReadCnt + A.AdjuReadCnt) as TotalReadCnt,
             A.RegDatm, A.RegAdminIdx, A.RegIp, A.UpdDatm, A.UpdAdminIdx, C.wAdminName AS RegAdminName, D.wAdminName AS UpdAdminName,
             B.SiteName, E.CcdName AS CampusName,
             G.SubjectName, H.ProfNickName,

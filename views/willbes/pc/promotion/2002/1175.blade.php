@@ -89,7 +89,11 @@
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner">
             <a href="#evt"><img src="https://static.willbes.net/public/images/promotion/2019/03/1175_sky.png" alt="스카이스크래퍼" ></a>
-        </div>       
+        </div>
+
+        <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+        {!! csrf_field() !!}
+        {!! method_field('POST') !!}
 
         <!-- 타이머 -->
         <div id="newTopDday" class="newTopDday">
@@ -166,7 +170,10 @@
 		</div>
 
 		<div class="evtCtnsBox wb_05" id="evt">
-			<img src="https://static.willbes.net/public/images/promotion/2019/03/1175_p6_1.png" alt="무료응시+소문내기"/>
+			<img src="https://static.willbes.net/public/images/promotion/2019/03/1175_p6_1.png" alt="무료응시+소문내기" usemap="#Map1175A" border="0"//>
+            <map name="Map1175A" id="Map1175A">
+                <area shape="rect" coords="440,1001,681,1080" href="javascript:;" onclick="giveCheck()" />
+            </map>
 		</div>
 
         {{--홍보url--}}
@@ -243,11 +250,14 @@
 				</dl>
 			</div>
 		</div>
-        
+        </form>
 	</div>
     <!-- End Container -->
 
     <script>
+
+        $regi_form = $('#regi_form');
+
     var DdayDiff = { //타이머를 설정합니다.
             inDays: function(dd1, dd2) {
                 var tt2 = dd2.getTime();
@@ -312,6 +322,27 @@
 
         }
         daycountDown();
+
+
+
+            {{--쿠폰발급--}}
+            function giveCheck() {
+                {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+                @if(empty($arr_promotion_params) === false)
+                var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params["give_type"]}}&give_idx={{$arr_promotion_params["give_idx"]}}';
+                ajaxSubmit($regi_form, _check_url, function (ret) {
+                    if (ret.ret_cd) {
+                        alert('온라인 모의고사 무료 응시쿠폰이 발급되었습니다. 내강의실에서 확인해 주세요.');
+                    } else {
+                        alert(ret.ret_msg);
+                        return;
+                    }
+                }, showValidateError, null, false, 'alert');
+                @endif
+            }
+
+
+
     </script>
 
 @stop

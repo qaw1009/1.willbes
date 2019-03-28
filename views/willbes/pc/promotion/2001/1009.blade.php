@@ -32,7 +32,7 @@
         .wb_top .passLecBuy li:nth-child(2) {width:232px; padding-left:60px}
         .wb_top .passLecBuy li:nth-child(3) {width:400px; padding-left:140px}
         .wb_top .passLecBuy li div {margin:30px 0 0 0; font-size:20px; font-weight:bold; background:#000; color:#fff; text-align:center; padding:16px 0; border-radius:0 40px 40px 40px}
-        .wb_top .passLecBuy li:last-child div {background:#0f897e;} /*평생0원PASS가격배경컬러변경*/
+        .wb_top .passLecBuy li:last-child div {background:#96232c;} /*평생0원PASS가격배경컬러변경*/
         .wb_top .passLecBuy li:last-child p {font-weight:bold; font-size:20px}
         .wb_top strong {font-family:Verdana, Geneva, sans-serif; font-size:30px}
         .wb_top .passLecBuy ul:after {content:""; display:block; clear:both}
@@ -169,7 +169,7 @@
         <!--타이머//-->
 
         <div class="evtCtnsBox wb_pop2" id="main">
-            <img src="http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190307_01.png"  alt="평생0원 PASS 마감" usemap="#rebound"/>
+            <img src="https://static.willbes.net/public/images/promotion/2019/03/1009_71_top.jpg"  alt="평생0원 PASS 마감" usemap="#rebound"/>
             <map name="rebound" id="rebound">
                 <area shape="rect" coords="300,1170,475,1213" href="javascript:certOpen();" alt="수강생인증"/>
                 <area shape="rect" coords="500,1170,675,1213" href="javascript:goDesc('tab3')" alt="이용안내"/>
@@ -211,8 +211,8 @@
                 <span style="color:#fff">
                     <label for="j_pkg">PASS 구매 시 할인 쿠폰이 자동 지급 됩니다.</label>
                 </span>
-                <img src="http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190307_03_re1.jpg"  alt="신광은경찰PASS 수강료" usemap="#Map190123"><br />
-                <img src="http://file3.willbes.net/new_cop/on_pass/EV_on_pass_20190307_03_re2.jpg"  alt="체력" usemap="#Map190117A" border="0"/>
+                <img src="https://static.willbes.net/public/images/promotion/2019/03/1009_71_03.jpg"  alt="신광은경찰PASS 수강료" usemap="#Map190123"><br />
+                <img src="https://static.willbes.net/public/images/promotion/2019/03/1009_71_03_02.jpg"  alt="체력" usemap="#Map190117A" border="0"/>
                 <map name="Map190123" id="Map190123">
                     <area shape="rect" coords="220,545,285,564" href="javascript:go_popup()" alt="6개월과목" />
                     <area shape="rect" coords="483,545,546,564" href="javascript:go_popup()" alt="12개월과목" />

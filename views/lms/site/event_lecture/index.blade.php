@@ -170,8 +170,7 @@
                             if (row.RequestType == 5) {
                                 return '';
                             } else {
-                                var img_url = row.FileFullPath + row.FileName + '';
-                                return "<img class='img_"+row.ElIdx+"' src='"+img_url+"'>";
+                                if (row.FileName == '') { return 'N'; } else { return 'Y'; }
                             }
                         }},
 

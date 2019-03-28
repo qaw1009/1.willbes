@@ -26,7 +26,7 @@
                         <div class="willbes-LecreplyList tx-gray c_both mt-zero">
                             <span class="willbes-Lec-Search willbes-SelectBox mb20 GM f_left">
                                 <select id="state" name="state" title="state" class="seleState mr10 h30 f_left">
-                                    <option>응시형태</option>
+                                    <option value="">응시형태</option>
                                     <option value="1" @if($state == '1') selected @endif>Online</option>
                                     <option value="2" @if($state == '2') selected @endif>Off(학원)</option>
                                 </select>

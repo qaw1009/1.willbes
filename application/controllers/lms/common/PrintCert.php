@@ -24,9 +24,10 @@ class PrintCert extends \app\controllers\BaseController
             case 'off_lecture' :
                 $order_idx = $this->_reqG('order_idx');
                 $order_prod_idx = $this->_reqG('order_prod_idx');
+                $site_code = $this->_reqG('site_code');
 
                 // 데이터 조회
-                $data = $this->orderListModel->getPrintCertData($order_idx, $order_prod_idx);
+                $data = $this->orderListModel->getPrintCertData($order_idx, $order_prod_idx, $site_code);
                 break;
             case 'mock_exam' :
 

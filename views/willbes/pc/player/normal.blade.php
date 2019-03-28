@@ -29,7 +29,7 @@
                 watermarkTextSize: "2%",
                 watermarkHorzAlign: WatermarkAlign.RANDOM,
                 watermarkVertAlign: WatermarkAlign.BOTTOM,
-                watermarkInterval: "60",
+                watermarkInterval: "1800",
                 watermarkShowInterval: "1",
                 blockMessenger: false,
                 blockVirtualMachine: true

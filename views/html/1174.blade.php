@@ -25,13 +25,13 @@
         .wb_01 .youtube iframe {margin-top:439px; width:854px; height:480px}
         /* 슬라이드배너 */
         .wb_01_photo {position:relative; width:854px; margin:0 auto}
-        .wb_01_photo span {position:absolute; top:50%;  margin-top:-36px; width:72px; z-index:100}
+        .wb_01_photo span {position:absolute; top:50%; margin-top:-36px; width:72px; z-index:100; display:block; background:#fff}
         .wb_01_photo img {width:100%}
         .wb_01_photo span a {cursor:pointer}
         .wb_01_photo span.leftBtn {left:-36px;}
         .wb_01_photo span.rightBtn {right:-36px;} 
 
-        .wb_02 {background:#dedede url(https://static.willbes.net/public/images/promotion/2019/03/1174_02_bg.jpg) no-repeat center top;}       
+        .wb_02 {background:#f297b8 url(https://static.willbes.net/public/images/promotion/2019/03/1174_02_bg.jpg) no-repeat center top;}       
                	
     </style>
 
@@ -63,7 +63,11 @@
    		<div class="wbCommon wb_02">
             <div><img src="https://static.willbes.net/public/images/promotion/2019/03/1174_02_01.jpg" title=" " /></div>
             <div><img src="https://static.willbes.net/public/images/promotion/2019/03/1174_02_02.jpg" title=" " /></div>
-		</div>   		
+        </div>
+        
+        <div>
+
+        </div>
         
     </div>
     <!-- End Container -->   

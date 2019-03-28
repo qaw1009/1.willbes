@@ -710,7 +710,7 @@ class EventFModel extends WB_Model
      */
     public function listEventForFile($el_idx)
     {
-        $column = 'EfIdx, FileName, FileRealName, FileFullPath, FileType';
+        $column = "EfIdx, FileName, FileRealName, FileFullPath, FileType, Ordering";
         $from = "
             FROM {$this->_table['event_file']}
         ";

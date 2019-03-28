@@ -376,9 +376,9 @@
     <script type="text/javascript">
         function fn_live(p_type) {
             if(p_type == "hd"){
-                location.href = "http://willbes.flive.skcdn.com/willbeslive/livestreamcop5011/Playlist.m3u8";
+                location.href = "http://willbes.flive.skcdn.com/willbeslive/livestream11011/Playlist.m3u8";
             }else{
-                location.href = "http://willbes.flive.skcdn.com/willbeslive/livestreamcop5012/Playlist.m3u8";
+                location.href = "http://willbes.flive.skcdn.com/willbeslive/livestream11011/Playlist.m3u8";
             }
         }
 

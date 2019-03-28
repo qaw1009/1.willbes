@@ -590,7 +590,7 @@
 
         function daycountDown() {
             // 한달 전 날짜로 셋팅
-            var event_day = new Date(2019,2,27,23,59,59);
+            var event_day = new Date(2019,2,31,23,59,59);
             var now = new Date();
             var timeGap = new Date(0, 0, 0, 0, 0, 0, (event_day - now));
 

@@ -161,7 +161,7 @@
                     <li><img id="ss2" src="http://file.willbes.net/new_image/0.png" /></li>
                     <li>
                         <a href="#pass" target="_self">수강하기 &gt;</a><br />
-                        <span style="line-height:40px;">3.31(수) 24:00 마감!</span>
+                        <span style="line-height:40px;">3.31(일) 24:00 마감!</span>
                     </li>
                 </ul>
             </div>

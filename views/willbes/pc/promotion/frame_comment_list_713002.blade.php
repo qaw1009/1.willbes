@@ -138,7 +138,7 @@
             @else
                 @foreach($list as $row)
                     <tr>
-                        <td>{!! $row['MemIdx'] == sess_data('mem_idx') ? $row['MemId'] : hpSubString($row['MemId'],0,2,'*') !!}</td>
+                        <td>{!! hpSubString($row['MemId'],0,2,'*') !!}</td>
                         <td>
                             {!! nl2br($row['Content']) !!}
                             @if(sess_data('is_login') === true && sess_data('mem_idx') === $row['MemIdx'])

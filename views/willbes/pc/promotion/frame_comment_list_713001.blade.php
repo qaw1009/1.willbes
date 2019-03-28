@@ -46,7 +46,7 @@
                 @foreach($list as $row)
                     <li>
                         <div class="ryw_info">
-                            <strong>{!! $row['MemIdx'] == sess_data('mem_idx') ? $row['MemName'] : hpSubString($row['MemName'],0,2,'*') !!}</strong> <span class="date">{{$row['RegDatm']}}</span>
+                            <strong>{!! hpSubString($row['MemName'],0,2,'*') !!}</strong> <span class="date">{{$row['RegDatm']}}</span>
                             @if(sess_data('is_login') === true && sess_data('mem_idx') === $row['MemIdx'])
                                 <a class="rnDelBtn f_right btn-comment-del" data-comment-idx="{{$row['Idx']}}" href="#none">삭제</a>
                             @endif

@@ -29,7 +29,7 @@
                     <a href="#none">패키지</a>
                     <div class="drop-Box list-drop-Box">
                         <ul>
-                        <li class="Tit">패키지</li>
+                            <li class="Tit">패키지</li>
                             <li><a href="#none">추천 패키지</a></li>
                             <li><a href="#none">선택 패키지</a></li>
                             <li><a href="#none">DIY 패키지</a></li>
@@ -42,8 +42,16 @@
                 <li>
                     <a href="#none">무료강좌</a>
                 </li>
-                <li>
+                <li class="dropdown">
                     <a href="#none">수험정보</a>
+                    <div class="drop-Box list-drop-Box">
+                        <ul>
+                            <li class="Tit">패키지</li>
+                            <li><a href="#none">추천 패키지</a></li>
+                            <li><a href="#none">선택 패키지</a></li>
+                            <li><a href="#none">DIY 패키지</a></li>
+                        </ul>
+                    </div>
                 </li>
                 <li>
                     <a href="#none">이벤트</a>

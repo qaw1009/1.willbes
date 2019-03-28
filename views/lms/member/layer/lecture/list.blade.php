@@ -474,7 +474,7 @@
     function fnStart(orderidx, prodcode, prodcodesub, prodtype)
     {
         popupOpen('/member/manage/start/?memidx={{$memIdx}}&orderidx='+orderidx+'&prodcode='+prodcode+'&prodcodesub='+prodcodesub+'&prodtype='+prodtype,
-            'setStart', 800, 800, null, null, 'yes','no');
+            'setStart', 1000, 800, null, null, 'yes','no');
     }
 
     function fnExtend(orderidx, prodcode, prodcodesub, prodtype)

@@ -535,29 +535,30 @@ class OrderListModel extends BaseOrderModel
      * 학원수강증 출력 데이터 조회
      * @param int $order_idx [주문식별자]
      * @param int $order_prod_idx [주문상품식별자]
+     * @param int $site_code [사이트코드]
      * @return array|string
      */
-    public function getPrintCertData($order_idx, $order_prod_idx)
+    public function getPrintCertData($order_idx, $order_prod_idx, $site_code)
     {
-        if (empty($order_idx) === true || empty($order_prod_idx) === true) {
+        if (empty($order_idx) === true || empty($order_prod_idx) === true || empty($site_code) === true) {
             return '필수 파라미터 오류입니다.';
         }
 
-        // 주문상품 조회
-        $arr_condition = ['EQ' => ['O.OrderIdx' => $order_idx, 'OP.OrderProdIdx' => $order_prod_idx, 'OP.PayStatusCcd' => $this->_pay_status_ccd['paid']]];
-        $data = $this->listAllOrder(false, $arr_condition, null, null, []);
-        if (empty($data) === true) {
-            return '데이터 조회에 실패했습니다.';
-        }
-
-        $data = element('0', $data);
-        $arr_prod_code = [];
+        $data = [];
         $add_data = [];
-        $prof_name = '';
 
-        if ($data['SiteCode'] == '2002') {
+        if ($site_code == '2002') {
             // 경찰학원
-            $data['ViewType'] = 'C';
+            $arr_prod_code = [];
+            $prof_name = '';
+
+            // 주문상품 조회
+            $arr_condition = ['EQ' => ['O.OrderIdx' => $order_idx, 'OP.OrderProdIdx' => $order_prod_idx, 'OP.PayStatusCcd' => $this->_pay_status_ccd['paid']]];
+            $data = $this->listAllOrder(false, $arr_condition, null, null, []);
+            if (empty($data) === true) {
+                return '데이터 조회에 실패했습니다.';
+            }
+            $data = element('0', $data);
 
             // 단과반, 종합반 상품코드 조회
             if ($data['LearnPatternCcd'] == $this->_learn_pattern_ccd['off_lecture']) {
@@ -587,20 +588,26 @@ class OrderListModel extends BaseOrderModel
 
             $add_data['MinLecStartDate'] = date('m/d', strtotime($add_data['MinLecStartDate']));
             $add_data['MaxLecEndDate'] = date('m/d', strtotime($add_data['MaxLecEndDate']));
-        } elseif ($data['SiteCode'] == '2004') {
+
+            // 결제방법 공통코드명 가공
+            $data['PayMethodCcdName'] = str_replace('결제(방문)', '', $data['PayMethodCcdName']);
+            $data['ViewType'] = 'C';
+        } elseif ($site_code == '2004') {
             // 공무원학원
-            $data['ViewType'] = 'G';
-
-            // 주문상품서브 정보 조회
-            $sub_prod_data = $this->_conn->query('select fn_order_sub_product_data(?) as OrderSubProdData', [$order_prod_idx])->row(0)->OrderSubProdData;
-
-            if (empty($sub_prod_data) === false) {
-                $add_data['OrderSubProdData'] = array_pluck(json_decode($sub_prod_data, true), 'ProdName');
+            // 주문상품 조회
+            $arr_condition = ['EQ' => ['O.OrderIdx' => $order_idx, 'OP.PayStatusCcd' => $this->_pay_status_ccd['paid']]];
+            $data = $this->listAllOrder('O.OrderNo, M.MemName, P.ProdName', $arr_condition, null, null, []);
+            if (empty($data) === true) {
+                return '데이터 조회에 실패했습니다.';
             }
-        }
 
-        // 추가 데이터 가공
-        $data['PayMethodCcdName'] = str_replace('결제(방문)', '', $data['PayMethodCcdName']);
+            // 주문상품명 추출
+            $add_data['OrderProdNameData'] = array_pluck($data, 'ProdName');
+            
+            // 주문정보 추출
+            $data = element('0', $data);
+            $data['ViewType'] = 'G';
+        }
 
         // 데이터 병합
         $data = array_merge($data, $add_data);

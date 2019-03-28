@@ -277,12 +277,12 @@
                                     </div>
                                 </div>
                             </div>
-                            {{--<div class="form-group">
+                            <div class="form-group">
                                 <label class="control-label col-md-2">댓글Ui종류</label>
                                 <div class="col-md-7 form-inline">
                                     <div class="checkbox">
                                         @foreach($arr_comment_ui_type_ccd as $key => $val)
-                                            <input type="checkbox" id="comment_ui_type_{{$key}}" name="comment_ui_type[]" class="flat" title="댓글Ui종류" value="{{$key}}"
+                                            <input type="checkbox" id="comment_ui_type_{{$key}}" name="comment_ui_type_ccds[]" class="flat" title="댓글Ui종류" value="{{$key}}"
                                                    @if( ($method == 'POST' && $loop->first === true) || (empty($data['comment_ui_type_ccds']) === false && array_key_exists($key, $data['comment_ui_type_ccds']) === true) )checked="checked"@endif/>
                                             <label class="inline-block mr-5" for="comment_ui_type_{{$key}}">{{$val}}</label>
                                         @endforeach
@@ -293,7 +293,7 @@
                                         • <b>일반 이벤트의 댓글</b>은 기본형으로만 가능.
                                     </p>
                                 </div>
-                            </div>--}}
+                            </div>
                         </div>
 
                         <div class="form-group hide" id="limit_{{$optoins_keys[2]}}">

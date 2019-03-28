@@ -185,6 +185,7 @@ class EventLectureModel extends WB_Model
             $admin_idx = $this->session->userdata('admin_idx');
             $option_ccds = element('option_ccds', $input);
             $comment_use_area = element('comment_use_area', $input);
+            $comment_ui_type_ccds = element('comment_ui_type_ccds', $input);
 
             $ordering = element('Ordering', $input);
 
@@ -214,6 +215,11 @@ class EventLectureModel extends WB_Model
             $set_comment_use_area = '';
             if (empty($comment_use_area) === false) {
                 $set_comment_use_area = implode(',', $comment_use_area);
+            }
+
+            $set_comment_ui_type_ccds = '';
+            if (empty($comment_ui_type_ccds) === false) {
+                $set_comment_ui_type_ccds = implode(',', $comment_ui_type_ccds);
             }
 
             if (empty(element('register_start_datm', $input)) === true) {
@@ -253,6 +259,7 @@ class EventLectureModel extends WB_Model
                 'SmsContent' => element('sms_content', $input),
                 'PopupTitle' => element('popup_title', $input),
                 'CommentUseArea' => $set_comment_use_area,
+                'CommentUiTypeCcds' => $set_comment_ui_type_ccds,
                 'Link' => element('promotion_link', $input),
                 'ReadCnt' => (empty(element('read_count', $input))) ? '0' : element('read_count', $input),
                 'AdjuReadCnt' => (empty(element('setting_readCnt', $input))) ? '0' : element('setting_readCnt', $input),
@@ -425,10 +432,16 @@ class EventLectureModel extends WB_Model
             }
 
             $comment_use_area = element('comment_use_area', $input);
+            $comment_ui_type_ccds = element('comment_ui_type_ccds', $input);
             $set_option_ccd = (empty($option_ccds) === false) ? implode(',', $option_ccds) : '';
             $set_comment_use_area = '';
             if (empty($comment_use_area) === false) {
                 $set_comment_use_area = implode(',', $comment_use_area);
+            }
+
+            $set_comment_ui_type_ccds = '';
+            if (empty($comment_ui_type_ccds) === false) {
+                $set_comment_ui_type_ccds = implode(',', $comment_ui_type_ccds);
             }
 
             if (empty(element('register_start_datm', $input)) === true) {
@@ -467,6 +480,7 @@ class EventLectureModel extends WB_Model
                 'SmsContent' => element('sms_content', $input),
                 'PopupTitle' => element('popup_title', $input),
                 'CommentUseArea' => $set_comment_use_area,
+                'CommentUiTypeCcds' => $set_comment_ui_type_ccds,
                 'Link' => element('promotion_link', $input),
                 'ReadCnt' => (empty(element('read_count', $input))) ? '0' : element('read_count', $input),
                 'AdjuReadCnt' => (empty(element('setting_readCnt', $input))) ? '0' : element('setting_readCnt', $input),

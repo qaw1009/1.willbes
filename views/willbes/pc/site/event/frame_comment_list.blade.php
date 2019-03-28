@@ -49,7 +49,11 @@
                         @if($row['RegType'] == '1')
                             <img src="{{ img_url('sub/icon_HOT.gif') }}">
                         @else
-                            {!! $row['MemIdx'] == sess_data('mem_idx') ? $row['MemName'] : hpSubString($row['MemName'],0,2,'*') !!}
+                            @if(empty($row['MemIdx']) === true && empty($row['MemName']) === true)
+                                비회원
+                            @else
+                                {!! $row['MemIdx'] == sess_data('mem_idx') ? $row['MemName'] : hpSubString($row['MemName'],0,2,'*') !!}
+                            @endif
                         @endif
                     </td>
                     <td class="w-date">{{$row['RegDay']}}</td>

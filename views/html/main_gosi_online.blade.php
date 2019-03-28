@@ -60,9 +60,9 @@
             <div class="VisualBox">
                 <div class="bSlider">
                     <div class="sliderStopAutoPager">
-                        <div><a href="#none"><img src="{{ img_url('gosi/banner/bnr_1920x400_01.jpg') }}" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="{{ img_url('gosi/banner/bnr_1920x400_02.jpg') }}" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="{{ img_url('gosi/banner/bnr_1920x400_03.jpg') }}" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="{{ img_url('gosi/banner/bnr_1120x400_01.jpg') }}" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="{{ img_url('gosi/banner/bnr_1120x400_01.jpg') }}" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="{{ img_url('gosi/banner/bnr_1120x400_01.jpg') }}" alt="배너명"></a></div>
                     </div>
                 </div>
             </div>

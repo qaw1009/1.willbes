@@ -11,7 +11,8 @@
 /* Main Container : MainVisual */
 .gosi .MainVisual {
     position: relative;
-    width: 100%;
+    width: 1120px;
+    margin:0 auto;
     height: 400px;
 }
 .gosi .MainVisual:after {
@@ -21,33 +22,29 @@
 }
 
 .gosi .VisualBox {
-    position:absolute;
-    top:0;
-    left:50%;
-    margin-left:-960px;
-    width:1920px;
+    position: absolute;
+    width:1120px;  
     height: 400px;
     overflow: hidden;
   }
 .gosi .VisualBox img {
     height: 400px;
-    max-width: 1920px;
   }
   
 .gosi .VisualBox .bx-wrapper .bx-controls-auto {
     left:50%;
     bottom: 20px;
-    margin-left: -560px;
+    margin-left: -540px;
     width: 50px;
-    z-index: 90;
+    z-index: 100;
 }
 .gosi .VisualBox .bx-wrapper .bx-pager {
     width: auto;
     left:50%;
-    margin-left: -520px;
+    margin-left: -500px;
     bottom: 20px;
     text-align: left;
-    z-index: 100;
+    z-index: 90;
 }
 .gosi .bx-wrapper .bx-pager.bx-default-pager a {
     background: #ccc;
@@ -55,11 +52,11 @@
 
 .gosi .VisualsubBox {
     position: absolute;
-    left:50%;
+    right:10px;
     margin-left:196px;
     top:10px;
     width: 364px;
-    z-index: 60;
+    z-index: 100;
 }
 
 .gosi .VisualsubBox .bSlider {
@@ -74,7 +71,7 @@
     bottom: 20px;
     margin: 0;
     width: 50px;
-    z-index: 90;
+    z-index: 110;
   }
 .gosi .VisualsubBox .bx-wrapper .bx-pager {
     float: right;
@@ -82,7 +79,7 @@
     left:60px;
     bottom: 20px;
     text-align: right;
-    z-index: 100;
+    z-index: 110;
 }
 .gosi .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a {
     background: #cecece;

@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class BasePromotion extends \app\controllers\FrontController
 {
-    protected $models = array('eventF', 'downloadF', 'cert/certApplyF');
+    protected $models = array('eventF', 'downloadF', 'cert/certApplyF','couponF');
     protected $helpers = array('download');
     protected $_paging_limit = 5;
     protected $_paging_count = 10;
@@ -249,4 +249,45 @@ class BasePromotion extends \app\controllers\FrontController
         $this->load->view('willbes/pc/promotion/html/' . $view_file, [
         ], false);
     }
+
+
+
+    public function promotionEventCheck()
+    {
+        //제공구분 : 포인트, 쿠폰
+        $give_type = $this->_req('give_type');
+        //제공식별자 : 쿠폰식별자
+        $give_idx = $this->_req('give_idx');
+        //발급 제한 갯수
+        $limit_count = 1;
+
+        if(empty($give_type)) {
+            return $this->json_result('', '정보가 존재하지 않습니다.', '');
+        }
+
+        if($give_type === 'coupon') {
+            if(empty($give_idx)) {
+                $this->json_result('', '정보가 존재하지 않습니다.', '');
+            }else{
+                //발급여부 확인
+                $check = $this->couponFModel->checkIssueCoupon($give_idx);
+
+                if($check > $limit_count) {
+                    return $this->json_error("이미 발급받은 쿠폰이 존재합니다.");
+                }
+
+                //쿠폰발급
+                $result = $this->couponFModel->addMemberCoupon($give_type, $give_idx);
+
+                if($result['ret_cd'] != true) {
+                    return $this->json_error($result["ret_msg"]);
+                }
+
+                $this->json_result($result['ret_cd'] , $result, $result);
+            }
+        }
+
+    }
+
+
 }

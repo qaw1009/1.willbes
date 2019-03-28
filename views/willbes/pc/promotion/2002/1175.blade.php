@@ -323,8 +323,6 @@
         }
         daycountDown();
 
-
-
             {{--쿠폰발급--}}
             function giveCheck() {
                 {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
@@ -332,16 +330,12 @@
                 var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params["give_type"]}}&give_idx={{$arr_promotion_params["give_idx"]}}';
                 ajaxSubmit($regi_form, _check_url, function (ret) {
                     if (ret.ret_cd) {
-                        alert('온라인 모의고사 무료 응시쿠폰이 발급되었습니다. 내강의실에서 확인해 주세요.');
-                    } else {
-                        alert(ret.ret_msg);
-                        return;
+                        alert('온라인 모의고사 무료 응시쿠폰이 발급되었습니다. \n\n내강의실에서 확인해 주세요.');
+                        location.href('{{ app_url('/classroom/coupon/index', 'www') }}');
                     }
                 }, showValidateError, null, false, 'alert');
                 @endif
             }
-
-
 
     </script>
 

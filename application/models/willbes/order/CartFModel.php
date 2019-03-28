@@ -269,8 +269,8 @@ class CartFModel extends BaseOrderFModel
                 }
 
                 $prod_sub_code = '';
-                if (empty(element('prod_code_sub', $input)) === false) {
-                    // 서브 강좌가 있는 경우 (운영자 선택형 패키지, 사용자 패키지)
+                if ($prod_row['LearnPattern'] != 'book' && empty(element('prod_code_sub', $input)) === false) {
+                    // 서브 강좌가 있는 경우 (운영자 선택형 패키지, 사용자 패키지, 학원 종합반)
                     $prod_sub_code = implode(',', element('prod_code_sub', $input, []));
                 }
 

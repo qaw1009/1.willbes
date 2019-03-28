@@ -170,7 +170,10 @@
 		</div>
 
 		<div class="evtCtnsBox wb_05" id="evt">
-			<a href="javascript:;" onclick="giveCheck()"><img src="https://static.willbes.net/public/images/promotion/2019/03/1175_p6_1.png" alt="무료응시+소문내기"/></a>
+			<img src="https://static.willbes.net/public/images/promotion/2019/03/1175_p6_1.png" alt="무료응시+소문내기" usemap="#Map1175A" border="0"//>
+            <map name="Map1175A" id="Map1175A">
+                <area shape="rect" coords="440,1001,681,1080" href="javascript:;" onclick="giveCheck()" />
+            </map>
 		</div>
 
         {{--홍보url--}}

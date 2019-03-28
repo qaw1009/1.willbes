@@ -103,6 +103,13 @@
                 <div class="willbes-LecreplyList tx-gray c_both mt-zero">
                     <span class="willbes-Lec-Search willbes-SelectBox mb20 GM f_left">
                         <select id="state" name="state" title="state" class="seleState mr10 h30 f_left">
+                            <option selected="selected">응시형태</option>
+                            <option value="진행중">Online</option>
+                            <option value="접수마감">Off(학원)</option>
+                        </select>
+                    </span>    
+                    <span class="willbes-Lec-Search willbes-SelectBox mb20 GM f_left">
+                        <select id="state" name="state" title="state" class="seleState mr10 h30 f_left">
                             <option selected="selected">진행상태</option>
                             <option value="진행중">진행중</option>
                             <option value="접수마감">접수마감</option>
@@ -158,7 +165,7 @@
                             <tr>
                                 <td class="w-no">7</td>
                                 <td class="w-type">일반경찰</td>
-                                <td class="w-form">Online</td>
+                                <td class="w-form"><span class="tx-blue strong">Online</span></td>
                                 <td class="w-date">2018-10-10~</td>
                                 <td class="w-list tx-left pl15"><a href="#none" onclick="openWin('MOCKTESTPASSFIN')">8/13 빅매지2-경행경채 모의고사</a></td>
                                 <td class="w-price">5,000원</td>
@@ -169,7 +176,7 @@
                             <tr>
                                 <td class="w-no">6</td>
                                 <td class="w-type">경행경채</td>
-                                <td class="w-form">Off</td>
+                                <td class="w-form"><span class="tx-origin-red strong">Off</span></td>
                                 <td class="w-date">상시</td>
                                 <td class="w-list tx-left pl15">7/2 전국모의고사-일방경찰</td>
                                 <td class="w-price">5,000원</td>

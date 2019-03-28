@@ -194,9 +194,9 @@ class BookAModel extends WB_Model
                             throw new \Exception('송장번호 등록에 실패했습니다.');
                         }
 
-                        if ($this->_conn->affected_rows() > 0) {
+                        //if ($this->_conn->affected_rows() > 0) {
                             $upd_cnt++;
-                        }
+                        //}
                     }
                 }
             }
@@ -264,9 +264,9 @@ class BookAModel extends WB_Model
                             throw new \Exception('상태 변경에 실패했습니다.');
                         }
 
-                        if ($this->_conn->affected_rows() > 0) {
+                        //if ($this->_conn->affected_rows() > 0) {
                             $upd_cnt++;
-                        }
+                        //}
                     }
                 }
             }
@@ -328,9 +328,9 @@ class BookAModel extends WB_Model
                             throw new \Exception('초기화에 실패했습니다.');
                         }
 
-                        if ($this->_conn->affected_rows() > 0) {
+                        //if ($this->_conn->affected_rows() > 0) {
                             $upd_cnt++;
-                        }
+                        //}
                     }
                 }
             }

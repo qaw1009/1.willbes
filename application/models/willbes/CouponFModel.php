@@ -432,4 +432,32 @@ class CouponFModel extends WB_Model
             return ['ret_cd' => false, 'ret_msg' => $e->getMessage()];
         }
     }
+
+    /**
+     * 쿠폰 발급여부 확인
+     * @param $couponidx
+     * @param $add_condition
+     * @return mixed
+     */
+    public function checkIssueCoupon($couponidx, $add_condition=[])
+    {
+        $arr_condition = array_merge_recursive($add_condition,[
+            'EQ' => [
+                'C.CouponIdx' =>  $couponidx
+            ]
+        ]);
+
+        $column = 'count(*) as checkCnt';
+        $from = '
+            from ' . $this->_table['coupon'] . ' as C
+                inner join ' . $this->_table['coupon_detail'] . ' as CP
+                    on C.CouponIdx = CP.CouponIdx
+            where  CP.ValidStatus = "Y"
+            ';
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where)->row(0)->checkCnt;
+        return $query;
+    }
 }

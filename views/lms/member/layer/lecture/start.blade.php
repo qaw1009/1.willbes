@@ -135,8 +135,8 @@
             @forelse( $log as $key => $row)
                 <tr>
                     <td class="w-num">{{$key+1}}차</td>
-                    <td class="w-day">{{$row['BeforeStartDate']}} ~ {{$row['BeforeEndDate']}}</td>
-                    <td class="w-day">{{$row['UpdStudyStartDate']}} ~ {{$row['UpdStudyEndDate']}}</td>
+                    <td class="w-day">{{$row['BeforeStartDate']}}~{{$row['BeforeEndDate']}}</td>
+                    <td class="w-day">{{$row['UpdStudyStartDate']}}~{{$row['UpdStudyEndDate']}}</td>
                     <td class="w-modify-day">{{$row['UpdDatm']}}</td>
                     <td >{{$row['UpdIp']}}</td>
                     <td class="w-user">{{$row['adminName'] == '' ? '사용자' : '관리자('.$row['adminName'].')' }}</td>

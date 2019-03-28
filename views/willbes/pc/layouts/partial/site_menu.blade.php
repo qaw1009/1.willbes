@@ -1,5 +1,5 @@
 @if(empty($__cfg['SiteMenu']['TreeMenu']) === false)
-    <div class="Menu widthAuto NSK c_both">
+    <div class="Menu widthAuto NGR c_both">
         <h3>
             <ul class="menu-Tit">
                 <li class="Tit">{{ $__cfg['SiteMenu']['ActiveMenu']['UrlRouteNames'][0] }}<span class="row-line">|</span></li>

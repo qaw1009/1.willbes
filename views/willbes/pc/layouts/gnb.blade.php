@@ -8,7 +8,7 @@
     //$_gnb_logo = $_gnb_size == 'md' ? $__cfg['Logo'] : str_replace('.', $_gnb_img_size . '.', $__cfg['Logo']);
     $_gnb_logo = $_gnb_size == 'md' ? img_url('gnb/logo.gif') : img_url('gnb/logo' . $_gnb_img_size . '.gif');
 @endphp
-<div id="Gnb" class="NSK Gnb-{{ $_gnb_size }}">
+<div id="Gnb" class="NGR Gnb-{{ $_gnb_size }}">
     <div class="toggle-Btn gnb-{{ $_gnb_open }}">
         <a href="#none">
             <div class="Txt c_both">{{ $_gnb_text }}</div><span class="arrow-Btn">></span>
